@@ -39,7 +39,7 @@ public class StrategyImporter extends BaseObjectImporter
 	{
 		super.importFields(baseObjectNode, refToUse);
 		
-		getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), Strategy.TAG_ACTIVITY_IDS, TaskSchema.getObjectType(), ACTIVITY);
+		getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), Strategy.TAG_ACTIVITY_IDS, ACTIVITY, TaskSchema.getObjectType());
 	}
 	
 	@Override

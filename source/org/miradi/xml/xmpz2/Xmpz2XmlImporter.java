@@ -244,7 +244,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 		setData(destinationRefToUse, fieldSchema.getTag(), importedRefs);
 	}
 	
-	public void importIds(Node baseObjectNode, ORef destinationRef,	BaseObjectSchema baseObjectSchema, String idsElementName, int idListType, String idElementName) throws Exception
+	public void importIds(Node baseObjectNode, ORef destinationRef,	BaseObjectSchema baseObjectSchema, String idsElementName, String idElementName, int idListType) throws Exception
 	{
 		ORefList importedRefs = extractRefs(baseObjectNode, baseObjectSchema.getXmpz2ElementName(), idsElementName, idElementName);
 		setData(destinationRef, idsElementName, importedRefs.convertToIdList(idListType));

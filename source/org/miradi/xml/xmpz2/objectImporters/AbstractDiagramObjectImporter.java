@@ -41,8 +41,8 @@ abstract public class AbstractDiagramObjectImporter extends BaseObjectImporter
 	{
 		super.importFields(baseObjectNode, destinationRef);
 		
-		getImporter().importIds(baseObjectNode, destinationRef, getBaseObjectSchema(), DiagramObject.TAG_DIAGRAM_FACTOR_IDS, DiagramFactorSchema.getObjectType(), XmpzXmlConstants.DIAGRAM_FACTOR);
-		getImporter().importIds(baseObjectNode, destinationRef, getBaseObjectSchema(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, DiagramLinkSchema.getObjectType(), XmpzXmlConstants.DIAGRAM_LINK);
+		getImporter().importIds(baseObjectNode, destinationRef, getBaseObjectSchema(), DiagramObject.TAG_DIAGRAM_FACTOR_IDS, XmpzXmlConstants.DIAGRAM_FACTOR, DiagramFactorSchema.getObjectType());
+		getImporter().importIds(baseObjectNode, destinationRef, getBaseObjectSchema(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, XmpzXmlConstants.DIAGRAM_LINK, DiagramLinkSchema.getObjectType());
 	}
 	
 	@Override

@@ -42,7 +42,7 @@ public class IndicatorImporter extends BaseObjectImporter
 		super.importFields(baseObjectNode, refToUse);
 		
 		importThresholds(baseObjectNode, refToUse);
-		getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), Indicator.TAG_METHOD_IDS, TaskSchema.getObjectType(), METHOD);
+		getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), Indicator.TAG_METHOD_IDS, METHOD, TaskSchema.getObjectType());
 	}
 
 	@Override
