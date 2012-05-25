@@ -154,7 +154,7 @@ abstract public class AbstractXmlImporter
 	
 	public void importCodeField(Node node, String elementName, ORef destinationRef, String destinationTag, ChoiceQuestion question) throws Exception
 	{
-		String importedReadableCode = getPathData(node, new String[]{elementName, });
+		String importedReadableCode = getPathData(node, new String[]{elementName +  destinationTag, });
 		String internalCode = question.convertToInternalCode(importedReadableCode);		
 		importField(destinationRef, destinationTag, internalCode);
 	}

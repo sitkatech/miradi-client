@@ -25,7 +25,9 @@ import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.Xenodata;
+import org.miradi.questions.BudgetTimePeriodQuestion;
 import org.miradi.questions.ProjectSharingQuestion;
+import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.schemas.XenodataSchema;
 import org.miradi.xml.generic.XmlSchemaCreator;
@@ -43,7 +45,7 @@ public class Xmpz2ProjectSummaryImporter extends BaseObjectImporter
 
 	public void importFields() throws Exception
 	{
-		Node projectSumaryNode = getImporter().getNode(getImporter().getRootNode(), XmpzXmlConstants.PROJECT_SUMMARY);
+		Node projectSumaryNode = getImporter().getNode(getImporter().getRootNode(), PROJECT_SUMMARY);
 				
 		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_NAME);
 		writeShareOutsideOrganizationElement(projectSumaryNode);
@@ -56,11 +58,10 @@ public class Xmpz2ProjectSummaryImporter extends BaseObjectImporter
 		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_STATUS);
 		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_NEXT_STEPS);
 		importExternalProjectId(projectSumaryNode);
-		//getImporter().importCodeField(projectSumaryNode, getMetadataRef(), ProjectMetadata.TAG_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion());
-		//getImporter().importCodeField(projectSumaryNode, getMetadataRef(), ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, getProject().getQuestion(QuarterColumnsVisibilityQuestion.class));
-		//getImporter().importCodeField(projectSumaryNode, getMetadataRef(), ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, getProject().getQuestion(BudgetTimePeriodQuestion.class));
-		
-		getImporter().importCodeField(projectSumaryNode, XmpzXmlConstants.PROJECT_SUMMARY, getMetadataRef(), ProjectMetadata.TAG_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion());
+		getImporter().importCodeField(projectSumaryNode, ProjectMetadata.TAG_THREAT_RATING_MODE, getMetadataRef(), ProjectMetadata.TAG_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion());
+		getImporter().importCodeField(projectSumaryNode, ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, getMetadataRef(), ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, getProject().getQuestion(QuarterColumnsVisibilityQuestion.class));
+		getImporter().importCodeField(projectSumaryNode, PROJECT_SUMMARY, getMetadataRef(), ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, getProject().getQuestion(BudgetTimePeriodQuestion.class));
+		getImporter().importCodeField(projectSumaryNode, PROJECT_SUMMARY, getMetadataRef(), ProjectMetadata.TAG_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion());
 	}
 	
 	private void writeShareOutsideOrganizationElement(Node projectSumaryNode) throws Exception
@@ -99,10 +100,5 @@ public class Xmpz2ProjectSummaryImporter extends BaseObjectImporter
 		}
 		
 		getImporter().setData(getMetadataRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, stringRefMap.toJsonString());
-	}
-
-	protected ORef getMetadataRef()
-	{
-		return getImporter().getProject().getMetadata().getRef();
 	}
 }

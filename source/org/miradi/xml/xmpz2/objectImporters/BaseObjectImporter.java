@@ -132,6 +132,11 @@ public class BaseObjectImporter implements XmpzXmlConstants
 		return getImporter().getProject();
 	}
 	
+	protected ORef getMetadataRef()
+	{
+		return getProject().getMetadata().getRef();
+	}
+	
 	protected ORef getWcpaProjectDataRef()
 	{
 		return getSingletonObject(WcpaProjectDataSchema.getObjectType());
