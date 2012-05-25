@@ -22,15 +22,15 @@ package org.miradi.xml.xmpz2.objectImporters;
 
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
-import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 
 public class TncProjectDataImporter extends SingletonObjectImporter
 {
-	public TncProjectDataImporter(Xmpz2XmlImporter importerToUse, BaseObjectSchema baseObjectSchemaToUse)
+	public TncProjectDataImporter(Xmpz2XmlImporter importerToUse)
 	{
-		super(importerToUse, baseObjectSchemaToUse);
+		super(importerToUse, new TncProjectDataSchema());
 	}
 	
 	@Override
