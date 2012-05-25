@@ -20,8 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectImporters;
 
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.DiagramObject;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
+import org.w3c.dom.Node;
 
 abstract public class AbstractDiagramObjectImporter extends BaseObjectImporter
 {
@@ -29,5 +35,25 @@ abstract public class AbstractDiagramObjectImporter extends BaseObjectImporter
 	{
 		super(importerToUse, baseObjectSchemaToUse);
 	}
-
+	
+	@Override
+	public void importFields(Node baseObjectNode, ORef destinationRef) throws Exception
+	{
+		super.importFields(baseObjectNode, destinationRef);
+		
+		getImporter().importIds(baseObjectNode, destinationRef, getBaseObjectSchema(), DiagramObject.TAG_DIAGRAM_FACTOR_IDS, DiagramFactorSchema.getObjectType(), XmpzXmlConstants.DIAGRAM_FACTOR);
+		getImporter().importIds(baseObjectNode, destinationRef, getBaseObjectSchema(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, DiagramLinkSchema.getObjectType(), XmpzXmlConstants.DIAGRAM_LINK);
+	}
+	
+	@Override
+	protected boolean isCustomImportField(String tag)
+	{
+		if (tag.equals(DiagramObject.TAG_DIAGRAM_FACTOR_IDS))
+			return true;
+		
+		if (tag.equals(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS))
+			return true;
+		
+		return super.isCustomImportField(tag);
+	}
 }
