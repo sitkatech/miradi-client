@@ -46,8 +46,6 @@ public class TncProjectDataImporter extends SingletonObjectImporter
 		importProjectMetadataField(tncProjectDataNode, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
 		importProjectMetadataField(tncProjectDataNode, ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 		importProjectMetadataField(tncProjectDataNode, ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS);
-		getImporter().importCodeListField(tncProjectDataNode, TNC_PROJECT_DATA, getTncProjectDataRef(), TncProjectData.TAG_PROJECT_PLACE_TYPES);
-		getImporter().importCodeListField(tncProjectDataNode, TNC_PROJECT_DATA, getTncProjectDataRef(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES);
 		getImporter().importCodeListField(tncProjectDataNode, TNC_PROJECT_DATA, getMetadataRef(), ProjectMetadata.TAG_TNC_OPERATING_UNITS);
 		getImporter().importCodeListField(tncProjectDataNode, TNC_PROJECT_DATA, getMetadataRef(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION);
 		getImporter().importCodeListField(tncProjectDataNode, TNC_PROJECT_DATA, getMetadataRef(), ProjectMetadata.TAG_TNC_MARINE_ECO_REGION);
@@ -61,6 +59,8 @@ public class TncProjectDataImporter extends SingletonObjectImporter
 		importTncProjectDataField(tncProjectDataNode, TncProjectData.TAG_MAKING_THE_CASE);
 		importTncProjectDataField(tncProjectDataNode, TncProjectData.TAG_RISKS);
 		importTncProjectDataField(tncProjectDataNode, TncProjectData.TAG_CAPACITY_AND_FUNDING);
+		getImporter().importCodeListField(tncProjectDataNode, TNC_PROJECT_DATA, getTncProjectDataRef(), TncProjectData.TAG_PROJECT_PLACE_TYPES);
+		getImporter().importCodeListField(tncProjectDataNode, TNC_PROJECT_DATA, getTncProjectDataRef(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES);
 	}
 	
 	private void importProjectMetadataField(Node projectSummaryNode, String tag) throws Exception
