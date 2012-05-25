@@ -462,14 +462,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter
 		if (idNode == null)
 			return ORef.INVALID;
 
-		//TODO this code was copied, make sure FIXME still applies
-		//FIXME low: We don not understand where a new line is coming from.  
-		//Due to lack of source and debugging capabilies, the string is trimmed.
-		//Need to understand where the new line is coming from and remove the trim.
-		String trimmedIdAsString = idNode.getTextContent().trim();
-		BaseId baseObjectIdToImport = new BaseId(trimmedIdAsString);
-		
-		return new ORef(getObjectTypeOfNode(idNode), baseObjectIdToImport);
+		return getNodeAsRef(idNode, elementName, getObjectTypeOfNode(idNode));
 	}
 	
 	public void importPointListField(Node node, ORef destinationRef, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
