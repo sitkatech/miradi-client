@@ -37,16 +37,11 @@ import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class ThreatTargetRatingImporter extends BaseObjectImporter
+public class ThreatTargetRatingImporter extends AbstractXmpz2ObjectImporter
 {
 	public ThreatTargetRatingImporter(Xmpz2XmlImporter xmpz2XmlImporter)
 	{
-		super(xmpz2XmlImporter, null);
-	}
-	
-	@Override
-	public void importFields(Node baseObjectNode, ORef refToUse) throws Exception
-	{
+		super(xmpz2XmlImporter);
 	}
 	
 	public void importFields() throws Exception

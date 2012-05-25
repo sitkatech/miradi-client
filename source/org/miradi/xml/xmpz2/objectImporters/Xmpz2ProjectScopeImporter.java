@@ -26,11 +26,11 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 
-public class Xmpz2ProjectScopeImporter extends BaseObjectImporter
+public class Xmpz2ProjectScopeImporter extends AbstractXmpz2ObjectImporter
 {
 	public Xmpz2ProjectScopeImporter(Xmpz2XmlImporter importerToUse)
 	{
-		super(importerToUse, null);
+		super(importerToUse);
 	}
 
 	public void importFields() throws Exception
