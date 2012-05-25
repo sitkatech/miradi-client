@@ -46,6 +46,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.XmlUtilities2;
+import org.miradi.xml.wcs.TagToElementNameMap;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
@@ -152,9 +153,11 @@ abstract public class AbstractXmlImporter
 		importField(ref, destinationTag, data);
 	}
 	
-	public void importCodeField(Node node, String elementName, ORef destinationRef, String destinationTag, ChoiceQuestion question) throws Exception
+	public void importCodeField(Node node, String containerName, ORef destinationRef, String destinationTag, ChoiceQuestion question) throws Exception
 	{
-		String importedReadableCode = getPathData(node, new String[]{elementName +  destinationTag, });
+		TagToElementNameMap map = new TagToElementNameMap();
+		String elementName = map.findElementName(containerName, destinationTag);
+		String importedReadableCode = getPathData(node, new String[]{containerName  + elementName, });
 		String internalCode = question.convertToInternalCode(importedReadableCode);		
 		importField(destinationRef, destinationTag, internalCode);
 	}
