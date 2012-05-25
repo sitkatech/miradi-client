@@ -53,6 +53,12 @@ public class WcsProjectDataSchema extends BaseObjectSchema
 	{
 		return getObjectType();
 	}
+	
+	@Override
+	public String getXmpz2ElementName()
+	{
+		return WCS_PROJECT_DATA;
+	}
 
 	@Override
 	public String getObjectName()
