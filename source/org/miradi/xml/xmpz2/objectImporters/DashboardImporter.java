@@ -23,17 +23,19 @@ package org.miradi.xml.xmpz2.objectImporters;
 import org.miradi.objecthelpers.CodeToChoiceMap;
 import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.CodeToUserStringMap;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
+import org.miradi.schemas.DashboardSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class DashboardImporter extends BaseObjectImporter
+public class DashboardImporter extends AbstractXmpz2ObjectImporter
 {
 	public DashboardImporter(Xmpz2XmlImporter importerToUse)
 	{
-		super(importerToUse, null);
+		super(importerToUse);
 	}
 	
 	public void importFields() throws Exception
@@ -72,8 +74,12 @@ public class DashboardImporter extends BaseObjectImporter
 		getImporter().setData(getDashboardRef(), Dashboard.TAG_FLAGS_MAP, userFlagsMap.toJsonString());
 		getImporter().setData(getDashboardRef(), Dashboard.TAG_COMMENTS_MAP, userCommentsMap.toJsonString());
 	}
+	
+	protected ORef getDashboardRef()
+	{
+		return getSingletonObject(DashboardSchema.getObjectType());
+	}
 
-	@Override
 	public String getPoolName()
 	{
 		return DASHBOARD;

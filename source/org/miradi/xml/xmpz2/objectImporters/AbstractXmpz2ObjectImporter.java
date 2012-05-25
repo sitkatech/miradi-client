@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectImporters;
 
+import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
@@ -29,6 +30,11 @@ public class AbstractXmpz2ObjectImporter  implements XmpzXmlConstants
 	public AbstractXmpz2ObjectImporter(Xmpz2XmlImporter importerToUse)
 	{
 		importer = importerToUse;
+	}
+	
+	protected ORef getSingletonObject(int objectType)
+	{
+		return getProject().getSingletonObjectRef(objectType);
 	}
 	
 	protected Xmpz2XmlImporter getImporter()
