@@ -83,6 +83,7 @@ import org.miradi.schemas.WwfProjectDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
+import org.miradi.utils.ProgressInterface;
 import org.miradi.xml.AbstractXmlImporter;
 import org.miradi.xml.MiradiXmlValidator;
 import org.miradi.xml.generic.XmlSchemaCreator;
@@ -116,11 +117,13 @@ import org.w3c.dom.NodeList;
 
 public class Xmpz2XmlImporter extends AbstractXmlImporter
 {
-	public Xmpz2XmlImporter(Project projectToFill) throws Exception
+	public Xmpz2XmlImporter(Project projectToFill, ProgressInterface progressIndicatorToUse) throws Exception
 	{
 		super(projectToFill);
 		
 		tagToElementNameMap = new Xmpz2TagToElementNameMap();
+		progressIndicator = progressIndicatorToUse;
+		progressIndicator.setStatusMessage(EAM.text("Importing XML..."), 10);
 	}
 		
 	@Override
@@ -128,15 +131,34 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter
 	{
 		LinkedHashMap<Integer, BaseObjectImporter> typeToImporterMap = fillTypeToImporterMap();
 		importSummaryData();
+		incrementProgress();
+		
 		importTncProjectData();
+		incrementProgress();
+		
 		importSingletonObject(new WwfProjectDataSchema());
+		incrementProgress();
+		
 		importSingletonObject(new WcsProjectDataSchema());
+		incrementProgress();
+		
 		importSingletonObject(new FosProjectDataSchema());
+		incrementProgress();
+		
 		importSingletonObject(new RareProjectDataSchema());
+		incrementProgress();
+		
 		importPools(typeToImporterMap);
+		incrementProgress();
+		
 		importThreatTargetRatings();
+		incrementProgress();
+		
 		importDashboardData();
+		incrementProgress();
+		
 		importExtraData();
+		incrementProgress();
 	}
 	
 	private LinkedHashMap<Integer, BaseObjectImporter> fillTypeToImporterMap()
@@ -602,5 +624,11 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter
 		return tagToElementNameMap;
 	}
 	
+	private void incrementProgress() throws Exception
+	{
+		progressIndicator.incrementProgress();
+	}
+	
 	private Xmpz2TagToElementNameMap tagToElementNameMap;
+	protected ProgressInterface progressIndicator;
 }
