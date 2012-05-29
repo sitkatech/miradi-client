@@ -156,6 +156,7 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionImportMpz.class, KeyEvent.VK_M);
 		addMenuItem(actions, menu, ActionImportCpmz.class, KeyEvent.VK_C);
 		addMenuItem(actions, menu, ActionImportXmpz.class, KeyEvent.VK_X);
+		addMenuItem(actions, menu, ActionImportXmpz2.class);
 		
 		if(Miradi.isDemoMode())
 		{
