@@ -23,6 +23,7 @@ package org.miradi.xml;
 import org.martus.util.UnicodeStringWriter;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objects.Strategy;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
@@ -42,6 +43,8 @@ public class TestXmpz2Importer extends TestCaseWithProject
 	public void testImportFilledProject() throws Exception
 	{
 		getProject().populateEverything();
+		Strategy strategy = getProject().createStrategy();
+		getProject().createAndPopulateIndicator(strategy);
 		validateUsingStringWriter();
 	}
 	
