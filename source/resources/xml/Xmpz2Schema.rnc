@@ -402,7 +402,7 @@ TextBoxPool.element = element miradi:TextBoxPool { TextBox.element* }
 TextBox.element = element miradi:TextBox
 {
   attribute Id {xsd:integer}  &
-  element miradi:TextBoxName { text }? &
+  element miradi:TextBoxName { formatted_text }? &
   element miradi:TextBoxId { text }? &
   element miradi:TextBoxDetails {formatted_text }? &
   element miradi:TextBoxComments {formatted_text }?
@@ -423,7 +423,7 @@ KeyEcologicalAttributePool.element = element miradi:KeyEcologicalAttributePool {
 KeyEcologicalAttribute.element = element miradi:KeyEcologicalAttribute
 {
   attribute Id {xsd:integer}  &
-  element miradi:KeyEcologicalAttributeName { text }? &
+  element miradi:KeyEcologicalAttributeName { formatted_text }? &
   element miradi:KeyEcologicalAttributeId { text }? &
   element miradi:KeyEcologicalAttributeIndicatorIds { IndicatorId.element* }? &
   element miradi:KeyEcologicalAttributeComments {formatted_text }? &
@@ -484,19 +484,19 @@ IndicatorPool.element = element miradi:IndicatorPool { Indicator.element* }
 Indicator.element = element miradi:Indicator
 {
   attribute Id {xsd:integer}  &
-  element miradi:IndicatorName { text }? &
+  element miradi:IndicatorName { formatted_text }? &
   element miradi:IndicatorId { text }? &
   element miradi:IndicatorDetails {formatted_text }? &
   element miradi:IndicatorComments {formatted_text }? &
-  element miradi:IndicatorPriority { vocabulary_priority_rating_code  } &
+  element miradi:IndicatorPriority { vocabulary_priority_rating_code  }? &
   element miradi:IndicatorFutureStatusDate { vocabulary_date }? &
   element miradi:IndicatorFutureStatusSummary { text }? &
-  element miradi:IndicatorFutureStatusRating { vocabulary_measurement_status  } &
+  element miradi:IndicatorFutureStatusRating { vocabulary_measurement_status  }? &
   element miradi:IndicatorFutureStatusDetails {formatted_text }? &
   element miradi:IndicatorFutureStatusComments {formatted_text }? &
   element miradi:IndicatorProgressReportIds { ProgressReportId.element* }? &
-  element miradi:IndicatorExpenseIds { ExpenseAssignmentId.element* }? &
-  element miradi:IndicatorAssignmentIds { ResourceAssignmentId.element* }? &
+  element miradi:IndicatorExpenseAssignmentIds { ExpenseAssignmentId.element* }? &
+  element miradi:IndicatorResourceAssignmentIds { ResourceAssignmentId.element* }? &
   element miradi:IndicatorMeasurementIds { MeasurementId.element* }? &
   element miradi:IndicatorSortedMethodIds { MethodId.element* }? &
   element miradi:IndicatorThresholds { IndicatorThreshold.element* }? &
