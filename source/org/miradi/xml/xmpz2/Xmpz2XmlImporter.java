@@ -419,6 +419,9 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter
 		if (objectTypeName.equals(RESOURCE))
 			return ProjectResourceSchema.getObjectType();
 		
+		if (objectTypeName.equals(GOAL))
+			return GoalSchema.getObjectType();
+		
 		EAM.logError("Could not find type for node: " + objectTypeName);
 		return ObjectType.FAKE;
 	}
