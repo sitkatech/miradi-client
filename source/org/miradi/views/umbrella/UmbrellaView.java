@@ -84,6 +84,7 @@ import org.miradi.actions.ActionHowToSave;
 import org.miradi.actions.ActionImportCpmz;
 import org.miradi.actions.ActionImportMpz;
 import org.miradi.actions.ActionImportXmpz;
+import org.miradi.actions.ActionImportXmpz2;
 import org.miradi.actions.ActionInvokeDashboard;
 import org.miradi.actions.ActionPreferences;
 import org.miradi.actions.ActionPrint;
@@ -400,6 +401,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionImportXmpz.class, new ImportXmpzDoer());
 		addDoerToMap(ActionExportXmpz.class, new ExportXmpzDoer());
 		addDoerToMap(ActionExportXmpz2.class, new Xmpz2ProjectExportDoer());
+		addDoerToMap(ActionImportXmpz2.class, new ImportXmpz2Doer());
 		addDoerToMap(ActionExportWcsProjectZip.class, new WcsXmlExportDoer());
 		addDoerToMap(ActionExportRtf.class, new ExportRtfDoer());
 		addDoerToMap(ActionExportTable.class, new TabDelimitedTableExportDoer());
