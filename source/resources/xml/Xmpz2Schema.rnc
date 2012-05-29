@@ -55,7 +55,7 @@ ConservationProject.element = element miradi:ConservationProject
 
 ProjectSummary.element = element miradi:ProjectSummary
 {
-  element miradi:ProjectSummaryProjectName { text }? &
+  element miradi:ProjectSummaryProjectName { formatted_text }? &
   element miradi:ProjectSummaryShareOutsideOrganization { xsd:boolean }? &
   element miradi:ProjectSummaryProjectLanguage { vocabulary_language_code  }? &
   element miradi:ProjectSummaryDataEffectiveDate { vocabulary_date }? &
@@ -161,7 +161,7 @@ OrganizationPool.element = element miradi:OrganizationPool { Organization.elemen
 Organization.element = element miradi:Organization
 {
   attribute Id {xsd:integer}  &
-  element miradi:OrganizationName { text }? &
+  element miradi:OrganizationName { formatted_text }? &
   element miradi:OrganizationId { text }? &
   element miradi:OrganizationRolesDescription {formatted_text }? &
   element miradi:OrganizationGivenName { text }? &
@@ -251,7 +251,7 @@ ResultsChainPool.element = element miradi:ResultsChainPool { ResultsChain.elemen
 ResultsChain.element = element miradi:ResultsChain
 {
   attribute Id {xsd:integer}  &
-  element miradi:ResultsChainName { text }? &
+  element miradi:ResultsChainName { formatted_text }? &
   element miradi:ResultsChainId { text }? &
   element miradi:ResultsChainDetails {formatted_text }? &
   element miradi:ResultsChainZoomScale { xsd:decimal }? &
@@ -265,7 +265,7 @@ DiagramFactorPool.element = element miradi:DiagramFactorPool { DiagramFactor.ele
 DiagramFactor.element = element miradi:DiagramFactor
 {
   attribute Id {xsd:integer}  &
-  element miradi:DiagramFactorName { text }? &
+  element miradi:DiagramFactorName { formatted_text }? &
   element miradi:DiagramFactorWrappedFactorId{ WrappedByDiagramFactorId.element } &
   element miradi:DiagramFactorLocation { DiagramPoint.element } &
   element miradi:DiagramFactorSize { DiagramSize.element } &
@@ -278,7 +278,7 @@ DiagramLinkPool.element = element miradi:DiagramLinkPool { DiagramLink.element* 
 DiagramLink.element = element miradi:DiagramLink
 {
   attribute Id {xsd:integer}  &
-  element miradi:DiagramLinkName { text }? &
+  element miradi:DiagramLinkName { formatted_text }? &
   element miradi:DiagramLinkFromDiagramFactorId{ LinkableFactorId.element } &
   element miradi:DiagramLinkToDiagramFactorId{ LinkableFactorId.element } &
   element miradi:DiagramLinkBendPoints{ DiagramPoint.element* } &
@@ -312,7 +312,7 @@ HumanWelfareTargetPool.element = element miradi:HumanWelfareTargetPool { HumanWe
 HumanWelfareTarget.element = element miradi:HumanWelfareTarget
 {
   attribute Id {xsd:integer}  &
-  element miradi:HumanWelfareTargetName { text }? &
+  element miradi:HumanWelfareTargetName { formatted_text }? &
   element miradi:HumanWelfareTargetId { text }? &
   element miradi:HumanWelfareTargetDetails {formatted_text }? &
   element miradi:HumanWelfareTargetComments {formatted_text }? &
@@ -367,7 +367,7 @@ ThreatReductionResultPool.element = element miradi:ThreatReductionResultPool { T
 ThreatReductionResult.element = element miradi:ThreatReductionResult
 {
   attribute Id {xsd:integer}  &
-  element miradi:ThreatReductionResultName { text }? &
+  element miradi:ThreatReductionResultName { formatted_text }? &
   element miradi:ThreatReductionResultId { text }? &
   element miradi:ThreatReductionResultDetails {formatted_text }? &
   element miradi:ThreatReductionResultComments {formatted_text }? &
@@ -380,7 +380,7 @@ IntermediateResultPool.element = element miradi:IntermediateResultPool { Interme
 IntermediateResult.element = element miradi:IntermediateResult
 {
   attribute Id {xsd:integer}  &
-  element miradi:IntermediateResultName { text }? &
+  element miradi:IntermediateResultName { formatted_text }? &
   element miradi:IntermediateResultId { text }? &
   element miradi:IntermediateResultDetails {formatted_text }? &
   element miradi:IntermediateResultComments {formatted_text }? &
@@ -392,7 +392,7 @@ GroupBoxPool.element = element miradi:GroupBoxPool { GroupBox.element* }
 GroupBox.element = element miradi:GroupBox
 {
   attribute Id {xsd:integer}  &
-  element miradi:GroupBoxName { text }? &
+  element miradi:GroupBoxName { formatted_text }? &
   element miradi:GroupBoxId { text }? &
   element miradi:GroupBoxDetails {formatted_text }? &
   element miradi:GroupBoxComments {formatted_text }?
@@ -412,7 +412,7 @@ ScopeBoxPool.element = element miradi:ScopeBoxPool { ScopeBox.element* }
 ScopeBox.element = element miradi:ScopeBox
 {
   attribute Id {xsd:integer}  &
-  element miradi:ScopeBoxName { text }? &
+  element miradi:ScopeBoxName { formatted_text }? &
   element miradi:ScopeBoxId { text }? &
   element miradi:ScopeBoxDetails {formatted_text }? &
   element miradi:ScopeBoxComments {formatted_text }? &
@@ -435,7 +435,7 @@ StressPool.element = element miradi:StressPool { Stress.element* }
 Stress.element = element miradi:Stress
 {
   attribute Id {xsd:integer}  &
-  element miradi:StressName { text }? &
+  element miradi:StressName { formatted_text }? &
   element miradi:StressId { text }? &
   element miradi:StressDetails {formatted_text }? &
   element miradi:StressComments {formatted_text }? &
@@ -447,7 +447,7 @@ SubTargetPool.element = element miradi:SubTargetPool { SubTarget.element* }
 SubTarget.element = element miradi:SubTarget
 {
   attribute Id {xsd:integer}  &
-  element miradi:SubTargetName { text }? &
+  element miradi:SubTargetName { formatted_text }? &
   element miradi:SubTargetId { text }? &
   element miradi:SubTargetDetails {formatted_text }?
 }
@@ -456,7 +456,7 @@ GoalPool.element = element miradi:GoalPool { Goal.element* }
 Goal.element = element miradi:Goal
 {
   attribute Id {xsd:integer}  &
-  element miradi:GoalName { text }? &
+  element miradi:GoalName { formatted_text }? &
   element miradi:GoalId { text }? &
   element miradi:GoalDetails {formatted_text }? &
   element miradi:GoalRelevantIndicatorIds { IndicatorId.element* }? &
@@ -470,7 +470,7 @@ ObjectivePool.element = element miradi:ObjectivePool { Objective.element* }
 Objective.element = element miradi:Objective
 {
   attribute Id {xsd:integer}  &
-  element miradi:ObjectiveName { text }? &
+  element miradi:ObjectiveName { formatted_text }? &
   element miradi:ObjectiveId { text }? &
   element miradi:ObjectiveDetails {formatted_text }? &
   element miradi:ObjectiveRelevantIndicatorIds { IndicatorId.element* }? &
@@ -509,7 +509,7 @@ TaskPool.element = element miradi:TaskPool { Task.element* }
 Task.element = element miradi:Task
 {
   attribute Id {xsd:integer}  &
-  element miradi:TaskName { text }? &
+  element miradi:TaskName { formatted_text }? &
   element miradi:TaskId { text }? &
   element miradi:TaskDetails {formatted_text }? &
   element miradi:TaskComments {formatted_text }? &
@@ -526,7 +526,7 @@ ProgressReport.element = element miradi:ProgressReport
   attribute Id {xsd:integer}  &
   element miradi:ProgressReportProgressDate { vocabulary_date }? &
   element miradi:ProgressReportDetails {formatted_text }? &
-  element miradi:ProgressReportProgressStatus { vocabulary_progress_report_status  }
+  element miradi:ProgressReportProgressStatus { vocabulary_progress_report_status  }?
 }
 
 ProgressPercentPool.element = element miradi:ProgressPercentPool { ProgressPercent.element* }
@@ -542,13 +542,13 @@ MeasurementPool.element = element miradi:MeasurementPool { Measurement.element* 
 Measurement.element = element miradi:Measurement
 {
   attribute Id {xsd:integer}  &
-  element miradi:MeasurementName { text }? &
-  element miradi:MeasurementTrend { vocabulary_measurement_trend  } &
-  element miradi:MeasurementRating { vocabulary_measurement_status  } &
+  element miradi:MeasurementName { formatted_text }? &
+  element miradi:MeasurementTrend { vocabulary_measurement_trend  }? &
+  element miradi:MeasurementRating { vocabulary_measurement_status  }? &
   element miradi:MeasurementDate { vocabulary_date }? &
   element miradi:MeasurementMeasurementValue { text }? &
   element miradi:MeasurementDetail {formatted_text }? &
-  element miradi:MeasurementSource { vocabulary_measurement_status_confidence  } &
+  element miradi:MeasurementSource { vocabulary_measurement_status_confidence  }? &
   element miradi:MeasurementComments {formatted_text }?
 }
 
@@ -556,7 +556,7 @@ AccountingCodePool.element = element miradi:AccountingCodePool { AccountingCode.
 AccountingCode.element = element miradi:AccountingCode
 {
   attribute Id {xsd:integer}  &
-  element miradi:AccountingCodeName { text }? &
+  element miradi:AccountingCodeName { formatted_text }? &
   element miradi:AccountingCodeCode { text }? &
   element miradi:AccountingCodeComments {formatted_text }?
 }
@@ -565,7 +565,7 @@ FundingSourcePool.element = element miradi:FundingSourcePool { FundingSource.ele
 FundingSource.element = element miradi:FundingSource
 {
   attribute Id {xsd:integer}  &
-  element miradi:FundingSourceName { text }? &
+  element miradi:FundingSourceName { formatted_text }? &
   element miradi:FundingSourceCode { text }? &
   element miradi:FundingSourceComments {formatted_text }?
 }
@@ -592,7 +592,7 @@ ExpenseAssignmentPool.element = element miradi:ExpenseAssignmentPool { ExpenseAs
 ExpenseAssignment.element = element miradi:ExpenseAssignment
 {
   attribute Id {xsd:integer}  &
-  element miradi:ExpenseAssignmentName { text }? &
+  element miradi:ExpenseAssignmentName { formatted_text }? &
   element miradi:ExpenseAssignmentFundingSourceId{ FundingSourceId.element }? &
   element miradi:ExpenseAssignmentAccountingCodeId{ AccountingCodeId.element }? &
   element miradi:ExpenseAssignmentBudgetCategoryOneId{ BudgetCategoryOneId.element }? &
@@ -604,7 +604,7 @@ ResourceAssignmentPool.element = element miradi:ResourceAssignmentPool { Resourc
 ResourceAssignment.element = element miradi:ResourceAssignment
 {
   attribute Id {xsd:integer}  &
-  element miradi:ResourceAssignmentName { text }? &
+  element miradi:ResourceAssignmentName { formatted_text }? &
   element miradi:ResourceAssignmentFundingSourceId{ FundingSourceId.element }? &
   element miradi:ResourceAssignmentAccountingCodeId{ AccountingCodeId.element }? &
   element miradi:ResourceAssignmentBudgetCategoryOneId{ BudgetCategoryOneId.element }? &
@@ -641,7 +641,7 @@ AudiencePool.element = element miradi:AudiencePool { Audience.element* }
 Audience.element = element miradi:Audience
 {
   attribute Id {xsd:integer}  &
-  element miradi:AudienceName { text }? &
+  element miradi:AudienceName { formatted_text }? &
   element miradi:AudiencePeopleCount { text }? &
   element miradi:AudienceSummary {formatted_text }?
 }
@@ -650,7 +650,7 @@ PlanningViewConfigurationPool.element = element miradi:PlanningViewConfiguration
 PlanningViewConfiguration.element = element miradi:PlanningViewConfiguration
 {
   attribute Id {xsd:integer}  &
-  element miradi:PlanningViewConfigurationName { text }? &
+  element miradi:PlanningViewConfigurationName { formatted_text }? &
   element miradi:PlanningViewConfigurationDiagramDataInclusion { vocabulary_included_diagram_types  }? &
   element miradi:PlanningViewConfigurationStrategyObjectiveOrder { vocabulary_planning_tree_objective_strategy_node_order  }? &
   element miradi:PlanningViewConfigurationTargetNodePosition { vocabulary_planning_tree_target_node_position  }?
@@ -667,7 +667,7 @@ TaggedObjectSetPool.element = element miradi:TaggedObjectSetPool { TaggedObjectS
 TaggedObjectSet.element = element miradi:TaggedObjectSet
 {
   attribute Id {xsd:integer}  &
-  element miradi:TaggedObjectSetName { text }? &
+  element miradi:TaggedObjectSetName { formatted_text }? &
   element miradi:TaggedObjectSetId { text }? &
   element miradi:TaggedObjectSetComments {formatted_text }? &
   element miradi:TaggedObjectSetFactorIds { WrappedByDiagramFactorId.element* }

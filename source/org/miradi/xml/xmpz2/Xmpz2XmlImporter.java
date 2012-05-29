@@ -37,7 +37,10 @@ import org.miradi.objectpools.BaseObjectPool;
 import org.miradi.objects.Dashboard;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
+import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.RatingCriterion;
+import org.miradi.objects.ReportTemplate;
+import org.miradi.objects.XslTemplate;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.schemas.AbstractFieldSchema;
@@ -190,6 +193,15 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter
 			return true;
 		
 		if (Dashboard.is(objectType))
+			return true;
+		
+		if (ObjectTreeTableConfiguration.is(objectType))
+			return true;
+		
+		if (ReportTemplate.is(objectType))
+			return true;
+		
+		if (XslTemplate.is(objectType))
 			return true;
 		
 		return false;
