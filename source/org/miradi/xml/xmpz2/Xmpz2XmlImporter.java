@@ -101,6 +101,7 @@ import org.miradi.xml.xmpz2.objectImporters.ResultsChainDiagramImporter;
 import org.miradi.xml.xmpz2.objectImporters.SingletonObjectImporter;
 import org.miradi.xml.xmpz2.objectImporters.StrategyImporter;
 import org.miradi.xml.xmpz2.objectImporters.TaskImporter;
+import org.miradi.xml.xmpz2.objectImporters.ThreatReductionResultsImporter;
 import org.miradi.xml.xmpz2.objectImporters.ThreatTargetRatingImporter;
 import org.miradi.xml.xmpz2.objectImporters.TncProjectDataImporter;
 import org.miradi.xml.xmpz2.objectImporters.Xmpz2ExtraDataImporter;
@@ -144,6 +145,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter
 		typeToImporterMap.put(DiagramFactorSchema.getObjectType(), new DiagramFactorImporter(this, new DiagramFactorSchema()));
 		typeToImporterMap.put(DiagramLinkSchema.getObjectType(), new DiagramLinkImporter(this, new DiagramLinkSchema()));
 		typeToImporterMap.put(StrategySchema.getObjectType(), new StrategyImporter(this));
+		typeToImporterMap.put(ThreatReductionResultSchema.getObjectType(), new ThreatReductionResultsImporter(this));
 		typeToImporterMap.put(IndicatorSchema.getObjectType(), new IndicatorImporter(this, new IndicatorSchema()));
 		typeToImporterMap.put(ResourceAssignmentSchema.getObjectType(), new ResourceAssignmentImporter(this, new ResourceAssignmentSchema()));
 		typeToImporterMap.put(ExpenseAssignmentSchema.getObjectType(), new ExpenseAssignmentImporter(this, new ExpenseAssignmentSchema()));

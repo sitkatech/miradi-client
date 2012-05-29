@@ -291,7 +291,7 @@ BiodiversityTargetPool.element = element miradi:BiodiversityTargetPool { Biodive
 BiodiversityTarget.element = element miradi:BiodiversityTarget
 {
   attribute Id {xsd:integer}  &
-  element miradi:BiodiversityTargetName { text }? &
+  element miradi:BiodiversityTargetName { formatted_text }? &
   element miradi:BiodiversityTargetId { text }? &
   element miradi:BiodiversityTargetDetails {formatted_text }? &
   element miradi:BiodiversityTargetComments {formatted_text }? &

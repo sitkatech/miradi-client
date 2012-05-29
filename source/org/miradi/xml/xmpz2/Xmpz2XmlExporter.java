@@ -48,7 +48,6 @@ import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.SubTargetSchema;
 import org.miradi.schemas.TextBoxSchema;
-import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.schemas.XslTemplateSchema;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.XmlExporter;
@@ -75,6 +74,7 @@ import org.miradi.xml.xmpz2.objectExporters.TaggedObjectSetExporter;
 import org.miradi.xml.xmpz2.objectExporters.TargetExporter;
 import org.miradi.xml.xmpz2.objectExporters.TaskExporter;
 import org.miradi.xml.xmpz2.objectExporters.ThreatRatingExporter;
+import org.miradi.xml.xmpz2.objectExporters.ThreatReductionResultExporter;
 
 public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 {
@@ -172,6 +172,7 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		addExporterToMap(new ResultsChainExporter(writerToUse));
 		addExporterToMap(new DiagramFactorExporter(writerToUse));
 		addExporterToMap(new StrategyExporter(writerToUse));
+		addExporterToMap(new ThreatReductionResultExporter(writerToUse));
 		addExporterToMap(new TargetExporter(writerToUse));
 		addExporterToMap(new HumanWelfareTargetExporter(writerToUse));
 		addExporterToMap(new TaggedObjectSetExporter(writerToUse));
@@ -184,7 +185,6 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		addGenericExporterToMap(KeyEcologicalAttributeSchema.getObjectType());
 		addGenericExporterToMap(CauseSchema.getObjectType());
 		addGenericExporterToMap(IntermediateResultSchema.getObjectType());
-		addGenericExporterToMap(ThreatReductionResultSchema.getObjectType());
 		addGenericExporterToMap(TextBoxSchema.getObjectType());
 		addGenericExporterToMap(ObjectTreeTableConfigurationSchema.getObjectType());
 		addGenericExporterToMap(CostAllocationRuleSchema.getObjectType());

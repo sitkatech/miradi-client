@@ -48,6 +48,7 @@ public class TestXmpz2Importer extends TestCaseWithProject
 		Strategy strategy = getProject().createStrategy();
 		getProject().addExpenseWithValue(strategy);
 		getProject().addResourceAssignment(strategy);
+		getProject().createandpopulateThreatReductionResult();
 		PointList bendPointList = TestLinkBendPointsMoveHandler.createBendPointList();
 		getProject().createLinkCellWithBendPoints(bendPointList);
 		getProject().createAndPopulateIndicator(strategy);
@@ -62,6 +63,7 @@ public class TestXmpz2Importer extends TestCaseWithProject
 		Xmpz2XmlImporter xmlImporter = new Xmpz2XmlImporter(projectToImportInto);
 		
 		String exportedProjectXml = projectWriter.toString();
+		System.out.println(exportedProjectXml);
 		StringInputStreamWithSeek stringInputputStream = new StringInputStreamWithSeek(exportedProjectXml);
 		try
 		{
