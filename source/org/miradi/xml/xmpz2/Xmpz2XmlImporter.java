@@ -123,7 +123,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter
 		
 		tagToElementNameMap = new Xmpz2TagToElementNameMap();
 		progressIndicator = progressIndicatorToUse;
-		progressIndicator.setStatusMessage(EAM.text("Importing XML..."), 10);
+		progressIndicator.setStatusMessage(EAM.text("Importing XML..."), ObjectType.OBJECT_TYPE_COUNT);
 	}
 		
 	@Override
@@ -149,7 +149,6 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter
 		incrementProgress();
 		
 		importPools(typeToImporterMap);
-		incrementProgress();
 		
 		importThreatTargetRatings();
 		incrementProgress();
@@ -202,6 +201,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter
 		for(BaseObjectImporter importer : importers)
 		{
 			importBaseObjects(importer);
+			incrementProgress();
 		}
 	}
 
