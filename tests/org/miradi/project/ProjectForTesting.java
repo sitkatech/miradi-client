@@ -1157,6 +1157,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_DATE, "2020-01-23");
 		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_COMMENTS, "Some Indicator future status comment");
 		fillObjectUsingCommand(indicator, Indicator.TAG_COMMENTS, "Some indicator Comment");
+		addExpenseWithValue(indicator);
+		addResourceAssignment(indicator);
 	}
 	
 	public void populateTask(Task task, String customLabel) throws Exception

@@ -164,6 +164,7 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 		indicatorMap.put(Indicator.TAG_MEASUREMENT_REFS, MEASUREMENT_IDS);
 		indicatorMap.put(Indicator.TAG_PROGRESS_REPORT_REFS, PROGRESS_REPORT_IDS);
 		indicatorMap.put(Indicator.TAG_RESOURCE_ASSIGNMENT_IDS, RESOURCE_ASSIGNMENT + "Ids");
+		indicatorMap.put(Indicator.TAG_EXPENSE_ASSIGNMENT_REFS, EXPENSE_ASSIGNMENT + "Ids");
 		
 		return indicatorMap;
 	}
