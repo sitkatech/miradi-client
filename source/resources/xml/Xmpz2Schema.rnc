@@ -330,7 +330,7 @@ CausePool.element = element miradi:CausePool { Cause.element* }
 Cause.element = element miradi:Cause
 {
   attribute Id {xsd:integer}  &
-  element miradi:CauseName { text }? &
+  element miradi:CauseName { formatted_text }? &
   element miradi:CauseId { text }? &
   element miradi:CauseDetails {formatted_text }? &
   element miradi:CauseComments {formatted_text }? &
