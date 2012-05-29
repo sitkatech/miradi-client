@@ -41,13 +41,17 @@ import org.miradi.objects.RatingCriterion;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.schemas.AbstractFieldSchema;
+import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.BudgetCategoryOneSchema;
+import org.miradi.schemas.BudgetCategoryTwoSchema;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FosProjectDataSchema;
+import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
@@ -57,12 +61,15 @@ import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ProgressPercentSchema;
+import org.miradi.schemas.ProgressReportSchema;
+import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.StressSchema;
+import org.miradi.schemas.SubTargetSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.TextBoxSchema;
@@ -377,6 +384,27 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter
 		if (objectTypeName.equals(SUB_TASK))
 			return TaskSchema.getObjectType();
 		
+		if (objectTypeName.equals(PROGRESS_REPORT))
+			return ProgressReportSchema.getObjectType();
+		
+		if (objectTypeName.equals(SUB_TARGET))
+			return SubTargetSchema.getObjectType();
+		
+		if (objectTypeName.equals(BUDGET_CATEGORY_ONE))
+			return BudgetCategoryOneSchema.getObjectType();
+		
+		if (objectTypeName.equals(BUDGET_CATEGORY_TWO))
+			return BudgetCategoryTwoSchema.getObjectType();
+		
+		if (objectTypeName.equals(ACCOUNTING_CODE))
+			return AccountingCodeSchema.getObjectType();
+		
+		if (objectTypeName.equals(FUNDING_SOURCE))
+			return FundingSourceSchema.getObjectType();
+		
+		if (objectTypeName.equals(RESOURCE))
+			return ProjectResourceSchema.getObjectType();
+		
 		EAM.logError("Could not find type for node: " + objectTypeName);
 		return ObjectType.FAKE;
 	}
@@ -457,12 +485,18 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter
 	private ORef getRefToImport(Node node, String poolName, String idElementName) throws Exception
 	{
 		String elementName = findElementName(poolName, idElementName);
-		String element = poolName + elementName;
-		Node idNode = getNode(node, element);
+		String idParentElement = poolName + elementName;
+		Node idParentNode = getNode(node, idParentElement);
+		if (idParentNode == null)
+			return ORef.INVALID;
+		
+		Node idNode = getNode(idParentNode, elementName);
 		if (idNode == null)
 			return ORef.INVALID;
-
-		return getNodeAsRef(idNode, elementName, getObjectTypeOfNode(idNode));
+		
+		String trimmedIdAsString = getSafeNodeContent(idNode);
+		
+		return new ORef(getObjectTypeOfNode(idNode), new BaseId(trimmedIdAsString));
 	}
 	
 	public void importPointListField(Node node, ORef destinationRef, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception

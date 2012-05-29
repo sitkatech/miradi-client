@@ -283,7 +283,7 @@ abstract public class AbstractXmlImporter implements XmpzXmlConstants
 		return (Node) expression.evaluate(getDocument(), XPathConstants.NODE);
 	}
 	
-	private String getNodeContent(Node node, String element) throws Exception
+	protected String getNodeContent(Node node, String element) throws Exception
 	{
 		Node foundNode = getNode(node, element);
 		return getSafeNodeContent(foundNode);
