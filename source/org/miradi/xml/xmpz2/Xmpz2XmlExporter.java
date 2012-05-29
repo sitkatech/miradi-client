@@ -38,7 +38,6 @@ import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
-import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 import org.miradi.schemas.OrganizationSchema;
 import org.miradi.schemas.OtherNotableSpeciesSchema;
 import org.miradi.schemas.ProgressPercentSchema;
@@ -62,6 +61,7 @@ import org.miradi.xml.xmpz2.objectExporters.GoalExporter;
 import org.miradi.xml.xmpz2.objectExporters.HumanWelfareTargetExporter;
 import org.miradi.xml.xmpz2.objectExporters.IndicatorExporter;
 import org.miradi.xml.xmpz2.objectExporters.IucnRedlistSpeciesExporter;
+import org.miradi.xml.xmpz2.objectExporters.ObjectTreeTableConfigurationExporter;
 import org.miradi.xml.xmpz2.objectExporters.ObjectiveExporter;
 import org.miradi.xml.xmpz2.objectExporters.ProjectMetadataExporter;
 import org.miradi.xml.xmpz2.objectExporters.ProjectResourceExporter;
@@ -177,6 +177,7 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		addExporterToMap(new IucnRedlistSpeciesExporter(writerToUse));
 		addExporterToMap(new BudgetCategoryOneExporter(writerToUse));
 		addExporterToMap(new BudgetCategoryTwoExporter(writerToUse));
+		addExporterToMap(new ObjectTreeTableConfigurationExporter(writerToUse));
 		
 		addGenericExporterToMap(AccountingCodeSchema.getObjectType());
 		addGenericExporterToMap(FundingSourceSchema.getObjectType());
@@ -184,7 +185,6 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		addGenericExporterToMap(CauseSchema.getObjectType());
 		addGenericExporterToMap(IntermediateResultSchema.getObjectType());
 		addGenericExporterToMap(TextBoxSchema.getObjectType());
-		addGenericExporterToMap(ObjectTreeTableConfigurationSchema.getObjectType());
 		addGenericExporterToMap(CostAllocationRuleSchema.getObjectType());
 		addGenericExporterToMap(MeasurementSchema.getObjectType());
 		addGenericExporterToMap(StressSchema.getObjectType());
