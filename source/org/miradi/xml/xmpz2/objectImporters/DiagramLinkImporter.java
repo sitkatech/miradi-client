@@ -41,6 +41,15 @@ public class DiagramLinkImporter extends BaseObjectImporter
 	}
 	
 	@Override
+	protected boolean isCustomImportField(String tag)
+	{
+		if (tag.equals(DiagramLink.TAG_WRAPPED_ID))
+			return true;
+		
+		return super.isCustomImportField(tag);
+	}
+	
+	@Override
 	public void postCreateFix(ORef ref, Node node) throws Exception
 	{
 		Node fromDiagramFactorIdNode = getImporter().getNode(node, getPoolName() + FROM_DIAGRAM_FACTOR_ID);

@@ -35,9 +35,12 @@ public class DiagramFactorImporter extends BaseObjectImporter
 	}
 	
 	@Override
-	public void importFields(Node baseObjectNode, ORef refToUse) throws Exception
+	protected boolean isCustomImportField(String tag)
 	{
-		super.importFields(baseObjectNode, refToUse);
+		if (tag.equals(DiagramFactor.TAG_WRAPPED_REF))
+			return true;
+		
+		return super.isCustomImportField(tag);
 	}
 	
 	@Override
