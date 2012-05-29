@@ -267,7 +267,7 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 		map.put(Strategy.TAG_TEXT, DETAILS);
 		map.put(Strategy.TAG_ACTIVITY_IDS, SORTED_ACTIVITY_IDS);
 		map.put(Strategy.TAG_RESOURCE_ASSIGNMENT_IDS, RESOURCE_ASSIGNMENT + "Ids");
-		map.put(Strategy.TAG_EXPENSE_ASSIGNMENT_REFS, EXPENSE_IDS);
+		map.put(Strategy.TAG_EXPENSE_ASSIGNMENT_REFS, EXPENSE_ASSIGNMENT + "Ids");
 		map.put(Strategy.TAG_PROGRESS_REPORT_REFS, PROGRESS_REPORT_IDS);
 		
 		return map;

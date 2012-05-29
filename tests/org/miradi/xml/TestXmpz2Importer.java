@@ -46,6 +46,8 @@ public class TestXmpz2Importer extends TestCaseWithProject
 	{
 		getProject().populateEverything();
 		Strategy strategy = getProject().createStrategy();
+		getProject().addExpenseWithValue(strategy);
+		getProject().addResourceAssignment(strategy);
 		PointList bendPointList = TestLinkBendPointsMoveHandler.createBendPointList();
 		getProject().createLinkCellWithBendPoints(bendPointList);
 		getProject().createAndPopulateIndicator(strategy);
