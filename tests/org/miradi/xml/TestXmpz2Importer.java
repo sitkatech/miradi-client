@@ -25,6 +25,7 @@ import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objects.Strategy;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.PointList;
 import org.miradi.views.diagram.TestLinkBendPointsMoveHandler;
 import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
@@ -60,7 +61,7 @@ public class TestXmpz2Importer extends TestCaseWithProject
 		UnicodeStringWriter projectWriter = createWriter(getProject());
 		
 		ProjectForTesting projectToImportInto = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToImportInto");
-		Xmpz2XmlImporter xmlImporter = new Xmpz2XmlImporter(projectToImportInto);
+		Xmpz2XmlImporter xmlImporter = new Xmpz2XmlImporter(projectToImportInto, new NullProgressMeter());
 		
 		String exportedProjectXml = projectWriter.toString();
 		System.out.println(exportedProjectXml);
