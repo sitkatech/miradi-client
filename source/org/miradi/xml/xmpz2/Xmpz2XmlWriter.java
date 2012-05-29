@@ -187,7 +187,9 @@ public class Xmpz2XmlWriter implements XmpzXmlConstants
 	public void writeDiagramPointData(BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, final Point point) throws Exception
 	{
 		final String elementName = appendChildNameToParentName(baseObjectSchema, fieldSchema);
+		writeStartElement(elementName);
 		writeDiagramPoint(elementName, point);
+		writeEndElement(elementName);
 	}
 
 	public void writeBendPointListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, PointList points) throws Exception
@@ -209,12 +211,10 @@ public class Xmpz2XmlWriter implements XmpzXmlConstants
 	
 	public void writeDiagramPoint(final String pointElementName, Point point) throws Exception
 	{
-		writeStartElement(pointElementName);
 		writeStartElement(DIAGRAM_POINT_ELEMENT_NAME);
 		writeElement(X_ELEMENT_NAME, point.x);
 		writeElement(Y_ELEMENT_NAME, point.y);
 		writeEndElement(DIAGRAM_POINT_ELEMENT_NAME);
-		writeEndElement(pointElementName);
 	}
 
 	public void writePseudoQuestionData(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, String string)

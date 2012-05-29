@@ -25,6 +25,8 @@ import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objects.Strategy;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.utils.PointList;
+import org.miradi.views.diagram.TestLinkBendPointsMoveHandler;
 import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 
@@ -44,6 +46,8 @@ public class TestXmpz2Importer extends TestCaseWithProject
 	{
 		getProject().populateEverything();
 		Strategy strategy = getProject().createStrategy();
+		PointList bendPointList = TestLinkBendPointsMoveHandler.createBendPointList();
+		getProject().createLinkCellWithBendPoints(bendPointList);
 		getProject().createAndPopulateIndicator(strategy);
 		validateUsingStringWriter();
 	}
