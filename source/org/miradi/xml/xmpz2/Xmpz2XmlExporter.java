@@ -43,12 +43,10 @@ import org.miradi.schemas.OrganizationSchema;
 import org.miradi.schemas.OtherNotableSpeciesSchema;
 import org.miradi.schemas.ProgressPercentSchema;
 import org.miradi.schemas.ProgressReportSchema;
-import org.miradi.schemas.ReportTemplateSchema;
 import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.SubTargetSchema;
 import org.miradi.schemas.TextBoxSchema;
-import org.miradi.schemas.XslTemplateSchema;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.wcs.XmpzXmlConstants;
@@ -195,11 +193,9 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		addGenericExporterToMap(ProgressReportSchema.getObjectType());
 		addGenericExporterToMap(OrganizationSchema.getObjectType());
 		addGenericExporterToMap(ProgressPercentSchema.getObjectType());
-		addGenericExporterToMap(ReportTemplateSchema.getObjectType());
 		addGenericExporterToMap(ScopeBoxSchema.getObjectType());
 		addGenericExporterToMap(OtherNotableSpeciesSchema.getObjectType());
 		addGenericExporterToMap(AudienceSchema.getObjectType());
-		addGenericExporterToMap(XslTemplateSchema.getObjectType());
 	}
 	
 	private void addGenericExporterToMap(final int objectType)
