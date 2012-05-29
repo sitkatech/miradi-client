@@ -63,10 +63,21 @@ public class TncProjectDataImporter extends SingletonObjectImporter
 		importProjectMetadataField(tncProjectDataNode, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
 		importProjectMetadataField(tncProjectDataNode, ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 		importProjectMetadataField(tncProjectDataNode, ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS);
-		getImporter().importCodeListField(tncProjectDataNode, TNC_PROJECT_DATA, getMetadataRef(), ProjectMetadata.TAG_TNC_OPERATING_UNITS);
-		getImporter().importCodeListField(tncProjectDataNode, TNC_PROJECT_DATA, getMetadataRef(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION);
-		getImporter().importCodeListField(tncProjectDataNode, TNC_PROJECT_DATA, getMetadataRef(), ProjectMetadata.TAG_TNC_MARINE_ECO_REGION);
-		getImporter().importCodeListField(tncProjectDataNode, TNC_PROJECT_DATA, getMetadataRef(), ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION);		
+		
+		final String[] codelistTagsToImport = new String[]{ProjectMetadata.TAG_TNC_OPERATING_UNITS, 
+														   ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, 
+														   ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, 
+														   ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION};
+		
+		importCodeListsIntoProjectMetadata(tncProjectDataNode, codelistTagsToImport);
+	}
+	
+	private void importCodeListsIntoProjectMetadata(Node tncProjectDataNode, String[] codelistfieldTagsToImport) throws Exception
+	{
+		for (int index = 0; index < codelistfieldTagsToImport.length; ++index)
+		{
+			getImporter().importCodeListField(tncProjectDataNode, TNC_PROJECT_DATA, getMetadataRef(), codelistfieldTagsToImport[index]);
+		}
 	}
 	
 	private void importProjectMetadataField(Node projectSummaryNode, String tag) throws Exception
