@@ -330,7 +330,7 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 
 	private HashMap<String, String> createScopeBoxMap()
 	{
-		HashMap<String, String> map = createBaseObjectMap();
+		HashMap<String, String> map = createFactorMap();
 		map.put(ScopeBox.TAG_SCOPE_BOX_TYPE_CODE, XmlSchemaCreator.SCOPE_BOX_COLOR_ELEMENT_NAME);
 		
 		return map;
