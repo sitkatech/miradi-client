@@ -225,4 +225,5 @@ public interface Xmpz2XmlConstants
 	public static final String TNC_PLANNING_TEAM_COMMENTS = "PlanningTeamComments";
 	public static final String TNC_LESSONS_LEARNED = "LessonsLearned";
 	public static final String CODE_ELEMENT_NAME = "code";
+	public static final String RESOURCE_ID_ELEMENT_NAME = "Resource";
 }
