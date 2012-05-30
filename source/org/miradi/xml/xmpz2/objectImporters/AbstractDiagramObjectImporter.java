@@ -25,7 +25,6 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 
@@ -41,8 +40,8 @@ abstract public class AbstractDiagramObjectImporter extends BaseObjectImporter
 	{
 		super.importFields(baseObjectNode, destinationRef);
 		
-		getImporter().importIds(baseObjectNode, destinationRef, getBaseObjectSchema(), DiagramObject.TAG_DIAGRAM_FACTOR_IDS, XmpzXmlConstants.DIAGRAM_FACTOR, DiagramFactorSchema.getObjectType());
-		getImporter().importIds(baseObjectNode, destinationRef, getBaseObjectSchema(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, XmpzXmlConstants.DIAGRAM_LINK, DiagramLinkSchema.getObjectType());
+		getImporter().importIds(baseObjectNode, destinationRef, getBaseObjectSchema(), DiagramObject.TAG_DIAGRAM_FACTOR_IDS, DIAGRAM_FACTOR, DiagramFactorSchema.getObjectType());
+		getImporter().importIds(baseObjectNode, destinationRef, getBaseObjectSchema(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, DIAGRAM_LINK, DiagramLinkSchema.getObjectType());
 	}
 	
 	@Override

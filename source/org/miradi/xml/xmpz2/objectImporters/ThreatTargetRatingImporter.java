@@ -32,7 +32,6 @@ import org.miradi.questions.StressIrreversibilityQuestion;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -58,7 +57,7 @@ public class ThreatTargetRatingImporter extends AbstractXmpz2ObjectImporter
 		}
 
 		
-		Node threatRatingPoolNode = getImporter().getNode(getImporter().getRootNode(), THREAT_RATING + XmpzXmlConstants.POOL_ELEMENT_TAG);
+		Node threatRatingPoolNode = getImporter().getNode(getImporter().getRootNode(), THREAT_RATING + POOL_ELEMENT_TAG);
 		NodeList threatRatingNodes = getImporter().getNodes(threatRatingPoolNode, new String[]{THREAT_RATING, });
 		for (int index = 0; index < threatRatingNodes.getLength(); ++index)
 		{

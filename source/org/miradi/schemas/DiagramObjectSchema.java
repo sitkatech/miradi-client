@@ -22,7 +22,6 @@ package org.miradi.schemas;
 
 import org.miradi.objects.DiagramObject;
 import org.miradi.questions.DiagramLegendQuestion;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 
 abstract public class DiagramObjectSchema extends BaseObjectSchema
 {
@@ -41,7 +40,7 @@ abstract public class DiagramObjectSchema extends BaseObjectSchema
 		createFieldSchemaSingleLineUserText(DiagramObject.TAG_SHORT_LABEL);
 		createFieldSchemaMultiLineUserText(DiagramObject.TAG_DETAIL);
 		createFieldSchemaCodeList(DiagramObject.TAG_HIDDEN_TYPES, getQuestion(DiagramLegendQuestion.class));
-		createFieldSchemaReflist(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, XmpzXmlConstants.TAGGED_OBJECT_SET_ELEMENT_NAME);
+		createFieldSchemaReflist(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, TAGGED_OBJECT_SET_ELEMENT_NAME);
 		createFieldSchemaNumber(DiagramObject.TAG_ZOOM_SCALE);
 		
 		createPseudoFieldSchemaString(DiagramObject.PSEUDO_COMBINED_LABEL);

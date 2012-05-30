@@ -48,10 +48,10 @@ import org.miradi.schemas.WcsProjectDataSchema;
 import org.miradi.schemas.WwfProjectDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.xml.generic.XmlSchemaCreator;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
-public class ProjectMetadataExporter implements XmpzXmlConstants
+public class ProjectMetadataExporter implements Xmpz2XmlConstants
 {
 	public ProjectMetadataExporter(Xmpz2XmlWriter writerToUse)
 	{
@@ -189,7 +189,7 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 		writeProjetScopeElement(ProjectMetadata.TAG_HUMAN_POPULATION);
 		writeProjetScopeElement(ProjectMetadata.TAG_HUMAN_POPULATION_NOTES);
 		writeProjetScopeElement(ProjectMetadata.TAG_SOCIAL_CONTEXT);
-		writeCodeListElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES, getMetadata(), ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES);		
+		writeCodeListElement(PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES, getMetadata(), ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES);		
 		writeProjetScopeElement(ProjectMetadata.TAG_PROTECTED_AREA_CATEGORY_NOTES);
 		writeWcpaElement(WcpaProjectData.TAG_LEGAL_STATUS);
 		writeWcpaElement(WcpaProjectData.TAG_LEGISLATIVE);
@@ -211,7 +211,7 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 		getWriter().writeStartElement(PROJECT_SUMMARY_LOCATION);
 		
 		createGeospatialLocationField();
-		writeCodeListElement(XmpzXmlConstants.PROJECT_SUMMARY_LOCATION, ProjectMetadata.TAG_COUNTRIES, getMetadata(), ProjectMetadata.TAG_COUNTRIES);
+		writeCodeListElement(PROJECT_SUMMARY_LOCATION, ProjectMetadata.TAG_COUNTRIES, getMetadata(), ProjectMetadata.TAG_COUNTRIES);
 		writeProjectLocationElement(ProjectMetadata.TAG_STATE_AND_PROVINCES);
 		writeProjectLocationElement(ProjectMetadata.TAG_MUNICIPALITIES);
 		writeProjectLocationElement(ProjectMetadata.TAG_LEGISLATIVE_DISTRICTS);
@@ -387,7 +387,7 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 	
 	private void writeWcpaElement(final String tag) throws Exception
 	{
-		writeElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), tag);
+		writeElement(PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), tag);
 	}
 	
 	private void writeTncElement(final String tag) throws Exception
@@ -422,7 +422,7 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 	
 	private void writeProjetScopeElement(final String tag) throws Exception
 	{
-		writeProjectMetadataElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, tag);
+		writeProjectMetadataElement(PROJECT_SUMMARY_SCOPE, tag);
 	}
 	
 	private void writeProjectLocationElement(final String tag) throws Exception

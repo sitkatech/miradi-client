@@ -23,7 +23,6 @@ package org.miradi.schemas;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramLink;
 import org.miradi.questions.DiagramLinkColorQuestion;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class DiagramLinkSchema extends BaseObjectSchema
 {
@@ -41,7 +40,7 @@ public class DiagramLinkSchema extends BaseObjectSchema
 		createFieldSchemaBaseId(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, DiagramFactorSchema.getObjectType());
 		createFieldSchemaBaseId(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, DiagramFactorSchema.getObjectType());
 		createFieldSchemaPointList(DiagramLink.TAG_BEND_POINTS);
-		createFieldSchemaReflist(DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS, XmpzXmlConstants.DIAGRAM_LINK);
+		createFieldSchemaReflist(DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS, DIAGRAM_LINK);
 		createFieldSchemaChoice(DiagramLink.TAG_COLOR, getQuestion(DiagramLinkColorQuestion.class));
 		createFieldSchemaBoolean(DiagramLink.TAG_IS_BIDIRECTIONAL_LINK);
 	}

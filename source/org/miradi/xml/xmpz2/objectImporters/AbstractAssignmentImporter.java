@@ -28,7 +28,6 @@ import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.DoubleUtilities;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -88,8 +87,8 @@ abstract public class AbstractAssignmentImporter extends BaseObjectImporter
 		Node yearNode = getImporter().getNode(dateUnitNode, getYearElementName());
 		if (yearNode != null)
 		{
-			int startYear = getAttributeAsInt(yearNode, XmpzXmlConstants.START_YEAR);
-			int startMonth = getAttributeAsInt(yearNode, XmpzXmlConstants.START_MONTH);
+			int startYear = getAttributeAsInt(yearNode, START_YEAR);
+			int startMonth = getAttributeAsInt(yearNode, START_MONTH);
 
 			return DateUnit.createFiscalYear(startYear, startMonth);
 		}
@@ -97,8 +96,8 @@ abstract public class AbstractAssignmentImporter extends BaseObjectImporter
 		Node quarterNode = getImporter().getNode(dateUnitNode, getQuarterElementName());
 		if (quarterNode != null)
 		{
-			int year = getAttributeAsInt(quarterNode, XmpzXmlConstants.YEAR);
-			int startMonth = getAttributeAsInt(quarterNode, XmpzXmlConstants.START_MONTH);
+			int year = getAttributeAsInt(quarterNode, YEAR);
+			int startMonth = getAttributeAsInt(quarterNode, START_MONTH);
 			
 			return DateUnit.createQuarterDateUnit(year, (startMonth-1)/3 + 1);
 		}
@@ -106,8 +105,8 @@ abstract public class AbstractAssignmentImporter extends BaseObjectImporter
 		Node monthNode = getImporter().getNode(dateUnitNode, getMonthElementName());
 		if (monthNode != null)
 		{
-			int year = getAttributeAsInt(monthNode, XmpzXmlConstants.YEAR);
-			int month = getAttributeAsInt(monthNode, XmpzXmlConstants.MONTH);
+			int year = getAttributeAsInt(monthNode, YEAR);
+			int month = getAttributeAsInt(monthNode, MONTH);
 			MultiCalendar date = MultiCalendar.createFromGregorianYearMonthDay(year, month, 1);
 			
 			return DateUnit.createMonthDateUnit(date.toIsoDateString());

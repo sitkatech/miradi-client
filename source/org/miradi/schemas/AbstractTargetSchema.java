@@ -23,7 +23,6 @@ package org.miradi.schemas;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 
 abstract public class AbstractTargetSchema extends FactorSchema
 {
@@ -40,7 +39,7 @@ abstract public class AbstractTargetSchema extends FactorSchema
 		createFieldSchemaChoice(AbstractTarget.TAG_TARGET_STATUS, getQuestion(StatusQuestion.class));
 		createFieldSchemaChoice(AbstractTarget.TAG_VIABILITY_MODE, getQuestion(ViabilityModeQuestion.class));
 		createFieldSchemaMultiLineUserText(AbstractTarget.TAG_CURRENT_STATUS_JUSTIFICATION);
-		createFieldSchemaReflist(AbstractTarget.TAG_SUB_TARGET_REFS, XmpzXmlConstants.SUB_TARGET);
+		createFieldSchemaReflist(AbstractTarget.TAG_SUB_TARGET_REFS, SUB_TARGET);
 		createFieldSchemaIdList(AbstractTarget.TAG_GOAL_IDS, GoalSchema.getObjectType());
 		createFieldSchemaIdList(AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, KeyEcologicalAttributeSchema.getObjectType());
 	    writeIndicatorIds();

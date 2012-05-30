@@ -48,7 +48,6 @@ import org.miradi.schemas.SubTargetSchema;
 import org.miradi.schemas.TextBoxSchema;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.XmlExporter;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.objectExporters.BudgetCategoryOneExporter;
 import org.miradi.xml.xmpz2.objectExporters.BudgetCategoryTwoExporter;
 import org.miradi.xml.xmpz2.objectExporters.ConceptualModelDiagramExporter;
@@ -74,7 +73,7 @@ import org.miradi.xml.xmpz2.objectExporters.TaskExporter;
 import org.miradi.xml.xmpz2.objectExporters.ThreatRatingExporter;
 import org.miradi.xml.xmpz2.objectExporters.ThreatReductionResultExporter;
 
-public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
+public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 {
 	public Xmpz2XmlExporter(Project projectToExport)
 	{

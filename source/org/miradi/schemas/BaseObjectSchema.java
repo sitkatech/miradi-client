@@ -28,9 +28,9 @@ import org.miradi.objectdata.ObjectData;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StaticQuestionManager;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 
-abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>, XmpzXmlConstants
+abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>, Xmpz2XmlConstants
 {
 	public BaseObjectSchema()
 	{
@@ -240,14 +240,14 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 	protected void createBudgetSchemas()
 	{
 		createFieldSchemaIdList(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignmentSchema.getObjectType());
-		createFieldSchemaReflist(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, XmpzXmlConstants.EXPENSE_ASSIGNMENT);
+		createFieldSchemaReflist(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, EXPENSE_ASSIGNMENT);
 		
 		createPseudoFieldSchemaString(BaseObject.PSEUDO_TAG_WHEN_TOTAL);
 	}
 
 	protected void createProgressReportSchema()
 	{
-		createFieldSchemaReflist(BaseObject.TAG_PROGRESS_REPORT_REFS, XmpzXmlConstants.PROGRESS_REPORT);
+		createFieldSchemaReflist(BaseObject.TAG_PROGRESS_REPORT_REFS, PROGRESS_REPORT);
 		
 		createPseudoFieldSchemaQuestion(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, BaseObject.createSet(BaseObject.TAG_PROGRESS_REPORT_REFS));
 		createPseudoFieldSchemaString(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);

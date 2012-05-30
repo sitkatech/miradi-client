@@ -26,7 +26,6 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.TaggedObjectSetSchema;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.BaseObjectExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
@@ -43,7 +42,7 @@ public class TaggedObjectSetExporter extends BaseObjectExporter
 		super.writeFields(baseObject, baseObjectSchema);
 		
 		TaggedObjectSet taggedObjectSet = (TaggedObjectSet) baseObject;
-		writeFactorIds(baseObjectSchema.getObjectName(), XmpzXmlConstants.TAGGED_FACTOR_IDS, taggedObjectSet.getTaggedObjectRefs());
+		writeFactorIds(baseObjectSchema.getObjectName(), TAGGED_FACTOR_IDS, taggedObjectSet.getTaggedObjectRefs());
 	}
 	
 	@Override

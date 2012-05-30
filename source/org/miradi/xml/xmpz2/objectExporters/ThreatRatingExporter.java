@@ -47,10 +47,10 @@ import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.questions.ThreatStressRatingChoiceQuestion;
 import org.miradi.utils.ThreatStressRatingDetailsTableExporter;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
-public class ThreatRatingExporter implements XmpzXmlConstants
+public class ThreatRatingExporter implements Xmpz2XmlConstants
 {
 	public ThreatRatingExporter(Xmpz2XmlWriter writerToUse)
 	{

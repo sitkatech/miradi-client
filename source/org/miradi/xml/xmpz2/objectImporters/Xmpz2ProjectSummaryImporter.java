@@ -31,7 +31,6 @@ import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.schemas.XenodataSchema;
 import org.miradi.xml.generic.XmlSchemaCreator;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -91,7 +90,7 @@ public class Xmpz2ProjectSummaryImporter extends BaseObjectImporter
 			Node externalAppNode = getImporter().getNode(node, EXTERNAL_APP_ELEMENT_NAME);
 			String externalAppThatAssignedId = externalAppNode.getTextContent();
 			
-			Node externalProjectIdNode = getImporter().getNode(node, XmpzXmlConstants.PROJECT_ID);
+			Node externalProjectIdNode = getImporter().getNode(node, PROJECT_ID);
 			String externalProjectId = externalProjectIdNode.getTextContent();
 			
 			ORef xenodataRef = getProject().createObject(XenodataSchema.getObjectType());
