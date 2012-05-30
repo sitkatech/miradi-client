@@ -49,13 +49,14 @@ import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.wcs.TagToElementNameMap;
 import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
-abstract public class AbstractXmlImporter implements XmpzXmlConstants
+abstract public class AbstractXmlImporter
 {
 	public AbstractXmlImporter(Project projectToFill) throws Exception
 	{
@@ -354,7 +355,7 @@ abstract public class AbstractXmlImporter implements XmpzXmlConstants
 		if (objectTypeName.equals(TaskSchema.METHOD_NAME))
 			return true;
 		
-		return objectTypeName.equals(TASK);
+		return objectTypeName.equals(Xmpz2XmlConstants.TASK);
 	}
 	
 	protected ORef getProjectMetadataRef()
