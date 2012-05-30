@@ -50,7 +50,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 {
 	public Xmpz2TagToElementNameMap()
 	{
-		createTagToElementMap();
+		fieldTagToElementMap = createTagToElementMap();
 	}
 	
 	public String findElementName(String objectName, String tagToUse)
@@ -65,47 +65,49 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		return tagToUse;
 	}
 	
-	private void createTagToElementMap()
+	private HashMap<String, HashMap<String, String>> createTagToElementMap()
 	{
-		fieldTagToElementMap = new HashMap<String, HashMap<String,String>>();
+		HashMap<String, HashMap<String,String>> map = new HashMap<String, HashMap<String,String>>();
 		
-		fieldTagToElementMap.put(METHOD, createTaskMap());
-		fieldTagToElementMap.put(ACTIVITY, createTaskMap());
-		fieldTagToElementMap.put(TASK, createTaskMap());
-		fieldTagToElementMap.put(PROJECT_RESOURCE, createProjectResourceMap());
-		fieldTagToElementMap.put(INDICATOR, createIndicatorMap());
-		fieldTagToElementMap.put(OBJECTIVE, createDesireMap());
-		fieldTagToElementMap.put(GOAL, createDesireMap());
-		fieldTagToElementMap.put(PROJECT_METADATA, createProjectMetadataMap());
-		fieldTagToElementMap.put(ACCOUNTING_CODE, createBaseObjectMap());
-		fieldTagToElementMap.put(FUNDING_SOURCE, createBaseObjectMap());
-		fieldTagToElementMap.put(KEY_ECOLOGICAL_ATTRIBUTE, createKeyEcologicalAttributeMap());
-		fieldTagToElementMap.put(CONCEPTUAL_MODEL, createDiagramObjectMap());
-		fieldTagToElementMap.put(CAUSE, createCauseMap());
-		fieldTagToElementMap.put(STRATEGY, createStrategyMap());
-		fieldTagToElementMap.put(BIODIVERSITY_TARGET, createTargetMap());
-		fieldTagToElementMap.put(HUMAN_WELFARE_TARGET, createAbstractTargetMap());
-		fieldTagToElementMap.put(INTERMEDIATE_RESULTS, createFactorMap());
-		fieldTagToElementMap.put(RESULTS_CHAIN, createDiagramObjectMap());
-		fieldTagToElementMap.put(THREAT_REDUCTION_RESULTS, createFactorMap());
-		fieldTagToElementMap.put(TEXT_BOX, createFactorMap());
-		fieldTagToElementMap.put(MEASUREMENT, createMeasurementMap());
-		fieldTagToElementMap.put(STRESS, createStressMap());
-		fieldTagToElementMap.put(GROUP_BOX, createFactorMap());
-		fieldTagToElementMap.put(SUB_TARGET, createSubTargetMap());
-		fieldTagToElementMap.put(ORGANIZATION, createOrganizationMap());
-		fieldTagToElementMap.put(PROGRESS_PERCENT, createProgressPercentMap());
-		fieldTagToElementMap.put(SCOPE_BOX, createScopeBoxMap());
-		fieldTagToElementMap.put(DIAGRAM_FACTOR, createBaseObjectMap());
-		fieldTagToElementMap.put(DIAGRAM_LINK, createBaseObjectMap());
-		fieldTagToElementMap.put(EXPENSE_ASSIGNMENT, createExpenseAssignmentMap());
-		fieldTagToElementMap.put(RESOURCE_ASSIGNMENT, createResourceAssignmentMap());
-		fieldTagToElementMap.put(IUCN_REDLIST_SPECIES, createBaseObjectMap());
-		fieldTagToElementMap.put(OTHER_NOTABLE_SPECIES, createBaseObjectMap());
-		fieldTagToElementMap.put(AUDIENCE, createBaseObjectMap());
-		fieldTagToElementMap.put(OBJECT_TREE_TABLE_CONFIGURATION, createObjectTreeTableConfigurationMap());
-		fieldTagToElementMap.put(TNC_PROJECT_DATA, createTncProjectDataMap());
-		fieldTagToElementMap.put(TAGGED_OBJECT_SET_ELEMENT_NAME, createBaseObjectMap());
+		map.put(METHOD, createTaskMap());
+		map.put(ACTIVITY, createTaskMap());
+		map.put(TASK, createTaskMap());
+		map.put(PROJECT_RESOURCE, createProjectResourceMap());
+		map.put(INDICATOR, createIndicatorMap());
+		map.put(OBJECTIVE, createDesireMap());
+		map.put(GOAL, createDesireMap());
+		map.put(PROJECT_METADATA, createProjectMetadataMap());
+		map.put(ACCOUNTING_CODE, createBaseObjectMap());
+		map.put(FUNDING_SOURCE, createBaseObjectMap());
+		map.put(KEY_ECOLOGICAL_ATTRIBUTE, createKeyEcologicalAttributeMap());
+		map.put(CONCEPTUAL_MODEL, createDiagramObjectMap());
+		map.put(CAUSE, createCauseMap());
+		map.put(STRATEGY, createStrategyMap());
+		map.put(BIODIVERSITY_TARGET, createTargetMap());
+		map.put(HUMAN_WELFARE_TARGET, createAbstractTargetMap());
+		map.put(INTERMEDIATE_RESULTS, createFactorMap());
+		map.put(RESULTS_CHAIN, createDiagramObjectMap());
+		map.put(THREAT_REDUCTION_RESULTS, createFactorMap());
+		map.put(TEXT_BOX, createFactorMap());
+		map.put(MEASUREMENT, createMeasurementMap());
+		map.put(STRESS, createStressMap());
+		map.put(GROUP_BOX, createFactorMap());
+		map.put(SUB_TARGET, createSubTargetMap());
+		map.put(ORGANIZATION, createOrganizationMap());
+		map.put(PROGRESS_PERCENT, createProgressPercentMap());
+		map.put(SCOPE_BOX, createScopeBoxMap());
+		map.put(DIAGRAM_FACTOR, createBaseObjectMap());
+		map.put(DIAGRAM_LINK, createBaseObjectMap());
+		map.put(EXPENSE_ASSIGNMENT, createExpenseAssignmentMap());
+		map.put(RESOURCE_ASSIGNMENT, createResourceAssignmentMap());
+		map.put(IUCN_REDLIST_SPECIES, createBaseObjectMap());
+		map.put(OTHER_NOTABLE_SPECIES, createBaseObjectMap());
+		map.put(AUDIENCE, createBaseObjectMap());
+		map.put(OBJECT_TREE_TABLE_CONFIGURATION, createObjectTreeTableConfigurationMap());
+		map.put(TNC_PROJECT_DATA, createTncProjectDataMap());
+		map.put(TAGGED_OBJECT_SET_ELEMENT_NAME, createBaseObjectMap());
+		
+		return map;
 	}
 	
 	private HashMap<String, String> createObjectTreeTableConfigurationMap()
