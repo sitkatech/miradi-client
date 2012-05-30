@@ -20,14 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectImporters;
 
-import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 
 public class ResourceAssignmentImporter extends AbstractAssignmentImporter
 {
-	public ResourceAssignmentImporter(Xmpz2XmlImporter importerToUse, BaseObjectSchema baseObjectSchemaToUse)
+	public ResourceAssignmentImporter(Xmpz2XmlImporter importerToUse)
 	{
-		super(importerToUse, baseObjectSchemaToUse);
+		super(importerToUse, new ResourceAssignmentSchema());
 	}
 	
 	@Override

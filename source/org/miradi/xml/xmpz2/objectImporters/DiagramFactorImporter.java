@@ -23,15 +23,15 @@ package org.miradi.xml.xmpz2.objectImporters;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramFactor;
-import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 
 public class DiagramFactorImporter extends BaseObjectImporter
 {
-	public DiagramFactorImporter(Xmpz2XmlImporter importerToUse, BaseObjectSchema baseObjectSchemaToUse)
+	public DiagramFactorImporter(Xmpz2XmlImporter importerToUse)
 	{
-		super(importerToUse, baseObjectSchemaToUse);
+		super(importerToUse, new DiagramFactorSchema());
 	}
 	
 	@Override

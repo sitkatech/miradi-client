@@ -27,17 +27,17 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.FactorLink;
-import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 
 public class DiagramLinkImporter extends BaseObjectImporter
 {
-	public DiagramLinkImporter(Xmpz2XmlImporter importerToUse, BaseObjectSchema baseObjectSchema)
+	public DiagramLinkImporter(Xmpz2XmlImporter importerToUse)
 	{
-		super(importerToUse, baseObjectSchema);
+		super(importerToUse, new DiagramLinkSchema());
 	}
 	
 	@Override

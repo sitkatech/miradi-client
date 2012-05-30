@@ -23,7 +23,7 @@ package org.miradi.xml.xmpz2.objectImporters;
 import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Indicator;
-import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
@@ -32,9 +32,9 @@ import org.w3c.dom.NodeList;
 
 public class IndicatorImporter extends BaseObjectImporter
 {
-	public IndicatorImporter(Xmpz2XmlImporter importerToUse, BaseObjectSchema baseObjectSchemaToUse)
+	public IndicatorImporter(Xmpz2XmlImporter importerToUse)
 	{
-		super(importerToUse, baseObjectSchemaToUse);
+		super(importerToUse, new IndicatorSchema());
 	}
 
 	@Override

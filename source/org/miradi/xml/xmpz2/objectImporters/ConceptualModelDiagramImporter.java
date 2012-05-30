@@ -20,13 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectImporters;
 
-import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 
 public class ConceptualModelDiagramImporter extends AbstractDiagramObjectImporter
 {
-	public ConceptualModelDiagramImporter(Xmpz2XmlImporter importerToUse, BaseObjectSchema baseObjectSchemaToUse)
+	public ConceptualModelDiagramImporter(Xmpz2XmlImporter importerToUse)
 	{
-		super(importerToUse, baseObjectSchemaToUse);
+		super(importerToUse, new ConceptualModelDiagramSchema());
 	}
 }

@@ -161,17 +161,17 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	private LinkedHashMap<Integer, BaseObjectImporter> fillTypeToImporterMap()
 	{
 		LinkedHashMap<Integer, BaseObjectImporter> typeToImporterMap = new LinkedHashMap<Integer, BaseObjectImporter>();		
-		typeToImporterMap.put(ConceptualModelDiagramSchema.getObjectType(), new ConceptualModelDiagramImporter(this, new ConceptualModelDiagramSchema()));
+		typeToImporterMap.put(ConceptualModelDiagramSchema.getObjectType(), new ConceptualModelDiagramImporter(this));
 		typeToImporterMap.put(ResultsChainDiagramSchema.getObjectType(), new ResultsChainDiagramImporter(this));
-		typeToImporterMap.put(DiagramFactorSchema.getObjectType(), new DiagramFactorImporter(this, new DiagramFactorSchema()));
-		typeToImporterMap.put(DiagramLinkSchema.getObjectType(), new DiagramLinkImporter(this, new DiagramLinkSchema()));
+		typeToImporterMap.put(DiagramFactorSchema.getObjectType(), new DiagramFactorImporter(this));
+		typeToImporterMap.put(DiagramLinkSchema.getObjectType(), new DiagramLinkImporter(this));
 		typeToImporterMap.put(StrategySchema.getObjectType(), new StrategyImporter(this));
 		typeToImporterMap.put(ThreatReductionResultSchema.getObjectType(), new ThreatReductionResultsImporter(this));
-		typeToImporterMap.put(IndicatorSchema.getObjectType(), new IndicatorImporter(this, new IndicatorSchema()));
-		typeToImporterMap.put(ResourceAssignmentSchema.getObjectType(), new ResourceAssignmentImporter(this, new ResourceAssignmentSchema()));
-		typeToImporterMap.put(ExpenseAssignmentSchema.getObjectType(), new ExpenseAssignmentImporter(this, new ExpenseAssignmentSchema()));
-		typeToImporterMap.put(ObjectiveSchema.getObjectType(), new ObjectiveImporter(this, new ObjectiveSchema()));
-		typeToImporterMap.put(GoalSchema.getObjectType(), new GoalImporter(this, new GoalSchema()));
+		typeToImporterMap.put(IndicatorSchema.getObjectType(), new IndicatorImporter(this));
+		typeToImporterMap.put(ResourceAssignmentSchema.getObjectType(), new ResourceAssignmentImporter(this));
+		typeToImporterMap.put(ExpenseAssignmentSchema.getObjectType(), new ExpenseAssignmentImporter(this));
+		typeToImporterMap.put(ObjectiveSchema.getObjectType(), new ObjectiveImporter(this));
+		typeToImporterMap.put(GoalSchema.getObjectType(), new GoalImporter(this));
 		typeToImporterMap.put(TaskSchema.getObjectType(), new TaskImporter(this));
 		
 		for(int objectType = ObjectType.FIRST_OBJECT_TYPE; objectType < ObjectType.OBJECT_TYPE_COUNT; ++objectType)

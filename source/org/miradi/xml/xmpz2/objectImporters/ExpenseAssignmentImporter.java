@@ -20,14 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectImporters;
 
-import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 
 public class ExpenseAssignmentImporter extends AbstractAssignmentImporter
 {
-	public ExpenseAssignmentImporter(Xmpz2XmlImporter importerToUse, BaseObjectSchema baseObjectSchemaToUse)
+	public ExpenseAssignmentImporter(Xmpz2XmlImporter importerToUse)
 	{
-		super(importerToUse, baseObjectSchemaToUse);
+		super(importerToUse, new ExpenseAssignmentSchema());
 	}
 	
 	@Override
