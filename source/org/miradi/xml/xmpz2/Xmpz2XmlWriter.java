@@ -498,5 +498,4 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	private Project project;
 	private UnicodeWriter writer;
 	private static final String MIRADI_NAMSPACE = "miradi";
-	private static final String COLON = ":";
 }
