@@ -114,7 +114,7 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createObjectTreeTableConfigurationMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
-		map.put(ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, "DiagramDataInclusion");
+		map.put(ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, DIAGRAM_DATA_INCLUSION);
 		
 		return map;
 	}
@@ -122,8 +122,8 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createBaseObjectMap()
 	{
 		HashMap<String, String> map = new HashMap<String, String>();
-		map.put(BaseObject.TAG_LABEL, "Name");
-		map.put(Target.TAG_SHORT_LABEL, "Id");
+		map.put(BaseObject.TAG_LABEL, NAME);
+		map.put(Target.TAG_SHORT_LABEL, ID);
 		map.put(BaseObject.TAG_PROGRESS_REPORT_REFS, PROGRESS_REPORT_IDS);
 		map.put(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, RESOURCE_ASSIGNMENT + IDS);
 		map.put(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, EXPENSE_ASSIGNMENT + IDS);
@@ -151,10 +151,10 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 		//Indicator: has no status tag Status,
 		HashMap<String, String> indicatorMap = createBaseObjectMap();
 		indicatorMap.put(Indicator.TAG_DETAIL, DETAILS);
-		indicatorMap.put(Indicator.TAG_FUTURE_STATUS_DETAIL, "FutureStatusDetails");
+		indicatorMap.put(Indicator.TAG_FUTURE_STATUS_DETAIL, FUTURE_STATUS_DETAILS);
 		indicatorMap.put(Indicator.TAG_METHOD_IDS, XmpzXmlConstants.METHOD_IDS);
-		indicatorMap.put(Indicator.TAG_FUTURE_STATUS_COMMENTS, "FutureStatusComments");
-		indicatorMap.put(Indicator.TAG_VIABILITY_RATINGS_COMMENTS, "ViabilityRatingsComments");
+		indicatorMap.put(Indicator.TAG_FUTURE_STATUS_COMMENTS, FUTURE_STATUS_COMMENTS);
+		indicatorMap.put(Indicator.TAG_VIABILITY_RATINGS_COMMENTS, VIABILITY_RATINGS_COMMENTS);
 		indicatorMap.put(Indicator.TAG_MEASUREMENT_REFS, MEASUREMENT_IDS);
 		
 		return indicatorMap;
@@ -180,16 +180,16 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createProjectMetadataMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
-		map.put(ProjectMetadata.TAG_PROJECT_SCOPE, "ScopeDescription");
-		map.put(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE, "ScopeName");
-		map.put(ProjectMetadata.TAG_PROJECT_VISION, "VisionStatementText");
-		map.put(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE, "VisionLabel");	
-		map.put(ProjectMetadata.TAG_LOCATION_DETAIL, "LocationDetails");
-		map.put(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, "ConProProjectNumber");
+		map.put(ProjectMetadata.TAG_PROJECT_SCOPE, SCOPE_DESCRIPTION);
+		map.put(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE, SCOPE_NAME);
+		map.put(ProjectMetadata.TAG_PROJECT_VISION, VISION_STATEMENT_TEXT);
+		map.put(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE, VISION_LABEL);	
+		map.put(ProjectMetadata.TAG_LOCATION_DETAIL, LOCATION_DETAILS);
+		map.put(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, CONPRO_PROJECT_NUMBER);
 
 		return map;
 	}
-	
+
 	private HashMap<String, String> createTncProjectDataMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
@@ -210,12 +210,12 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createKeyEcologicalAttributeMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
-		map.put(KeyEcologicalAttribute.TAG_DESCRIPTION, "Comments");
+		map.put(KeyEcologicalAttribute.TAG_DESCRIPTION, COMMENTS);
 		
 		return map;
 	}
 
-	private HashMap<String, String> createCauseMap()
+		private HashMap<String, String> createCauseMap()
 	{
 		HashMap<String, String> map = createFactorMap();
 		map.put(Cause.TAG_TAXONOMY_CODE, STANDARD_CLASSIFICATION);
@@ -342,10 +342,10 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	{
 		HashMap<String, String> projectResourceMap = createBaseObjectMap();
 		projectResourceMap.put(ProjectResource.TAG_GIVEN_NAME, GIVEN_NAME);
-		projectResourceMap.put(ProjectResource.TAG_INITIALS, "Resource_Id");
+		projectResourceMap.put(ProjectResource.TAG_INITIALS, RESOURCE_ID);
 		projectResourceMap.put(ProjectResource.TAG_SUR_NAME, Surname);
-		projectResourceMap.put(ProjectResource.TAG_PHONE_NUMBER, "OfficePhoneNumber");
-		projectResourceMap.put(ProjectResource.TAG_COST_PER_UNIT, "DailyRate");
+		projectResourceMap.put(ProjectResource.TAG_PHONE_NUMBER, OFFICE_PHONE_NUMBER);
+		projectResourceMap.put(ProjectResource.TAG_COST_PER_UNIT, DAILY_RATE);
 		
 		return projectResourceMap;
 	}
@@ -359,5 +359,20 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private final String SOURCE = "Source";
 	private final String MEASUREMENT_VALUE = "MeasurementValue";
 	private final String RATING = "Rating";
-	final String MAGNITUDE = "Magnitude";
+	private final String MAGNITUDE = "Magnitude";
+	private final String OFFICE_PHONE_NUMBER = "OfficePhoneNumber";
+	private final String RESOURCE_ID = "Resource_Id";
+	private final String NAME = "Name";
+	private final String COMMENTS = "Comments";
+	private final String VIABILITY_RATINGS_COMMENTS = "ViabilityRatingsComments";
+	private final String FUTURE_STATUS_COMMENTS = "FutureStatusComments";
+	private final String FUTURE_STATUS_DETAILS = "FutureStatusDetails";
+	private final String CONPRO_PROJECT_NUMBER = "ConProProjectNumber";
+	private final String LOCATION_DETAILS = "LocationDetails";
+	private final String VISION_LABEL = "VisionLabel";
+	private final String VISION_STATEMENT_TEXT = "VisionStatementText";
+	private final String SCOPE_NAME = "ScopeName";
+	private final String SCOPE_DESCRIPTION = "ScopeDescription";
+	private final String DIAGRAM_DATA_INCLUSION = "DiagramDataInclusion";
+	private final String DAILY_RATE = "DailyRate";
 }
