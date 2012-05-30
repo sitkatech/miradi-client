@@ -86,7 +86,6 @@ import org.miradi.utils.PointList;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.xml.AbstractXmlImporter;
 import org.miradi.xml.MiradiXmlValidator;
-import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.wcs.Xmpz2XmlValidator;
 import org.miradi.xml.xmpz.XmpzNameSpaceContext;
 import org.miradi.xml.xmpz2.objectImporters.BaseObjectImporter;
@@ -326,7 +325,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 
 	public CodeList getCodeList(Node node, String containerElementName) throws Exception
 	{
-		NodeList codeNodes = getNodes(node, new String[]{containerElementName, XmlSchemaCreator.CODE_ELEMENT_NAME});
+		NodeList codeNodes = getNodes(node, new String[]{containerElementName, CODE_ELEMENT_NAME});
 		CodeList codesToImport = new CodeList();
 		for (int index = 0; index < codeNodes.getLength(); ++index)
 		{

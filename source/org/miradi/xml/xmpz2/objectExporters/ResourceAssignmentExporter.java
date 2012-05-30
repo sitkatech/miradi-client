@@ -24,7 +24,6 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
-import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
 
@@ -41,7 +40,7 @@ public class ResourceAssignmentExporter extends AbstractAssignmentExporter
 		super.writeFields(baseObject, baseObjectSchema);
 		
 		ResourceAssignment resourceAssignment = (ResourceAssignment) baseObject;
-		String idElementName = XmlSchemaCreator.RESOURCE_ID_ELEMENT_NAME + ID;
+		String idElementName = RESOURCE_ID_ELEMENT_NAME + ID;
 		
 		getWriter().writeRefIfValid(baseObjectSchema.getObjectName(), idElementName, resourceAssignment.getResourceRef());
 	}
