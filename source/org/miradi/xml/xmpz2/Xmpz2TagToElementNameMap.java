@@ -28,7 +28,6 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
-import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
@@ -75,8 +74,8 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		fieldTagToElementMap.put(TASK, createTaskMap());
 		fieldTagToElementMap.put(PROJECT_RESOURCE, createProjectResourceMap());
 		fieldTagToElementMap.put(INDICATOR, createIndicatorMap());
-		fieldTagToElementMap.put(OBJECTIVE, createObjectiveMap());
-		fieldTagToElementMap.put(GOAL, createGoalMap());
+		fieldTagToElementMap.put(OBJECTIVE, createDesireMap());
+		fieldTagToElementMap.put(GOAL, createDesireMap());
 		fieldTagToElementMap.put(PROJECT_METADATA, createProjectMetadataMap());
 		fieldTagToElementMap.put(ACCOUNTING_CODE, createBaseObjectMap());
 		fieldTagToElementMap.put(FUNDING_SOURCE, createBaseObjectMap());
@@ -158,7 +157,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		return map;
 	}
 
-	private HashMap<String, String> createObjectiveMap()
+	private HashMap<String, String> createDesireMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
 		map.put(Objective.TAG_FULL_TEXT, DETAILS);
@@ -167,14 +166,6 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		return map;
 	}
 	
-	private HashMap<String, String> createGoalMap()
-	{
-		HashMap<String, String> goalMap = createBaseObjectMap();
-		goalMap.put(Goal.TAG_FULL_TEXT, DETAILS);
-
-		return goalMap;
-	}
-
 	private HashMap<String, String> createProjectMetadataMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
