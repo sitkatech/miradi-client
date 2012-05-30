@@ -229,7 +229,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	private void importBaseObjects(final BaseObjectImporter importer) throws Exception
 	{
 		final String elementObjectName = importer.getBaseObjectSchema().getXmpz2ElementName();
-		final String containerElementName = elementObjectName + POOL_ELEMENT_TAG;
+		final String containerElementName = Xmpz2XmlWriter.createPoolElementName(elementObjectName);
 		final Node rootNode = getRootNode();
 		final NodeList baseObjectNodes = getNodes(rootNode, new String[]{containerElementName, elementObjectName, });
 		for (int index = 0; index < baseObjectNodes.getLength(); ++index)

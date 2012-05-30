@@ -64,7 +64,7 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 		writeEndElement(createPoolElementName(endElementName));
 	}
 	
-	public String createPoolElementName(String startElementName)
+	public static String createPoolElementName(String startElementName)
 	{
 		return startElementName + POOL_ELEMENT_TAG;
 	}
