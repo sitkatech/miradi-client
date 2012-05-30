@@ -97,7 +97,7 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 		getWriter().writeMainElementEnd();
 	}
 
-	protected Xmpz2XmlWriter createWriter(UnicodeWriter outToUse) throws Exception
+	private Xmpz2XmlWriter createWriter(UnicodeWriter outToUse) throws Exception
 	{
 		return new Xmpz2XmlWriter(getProject(), outToUse);
 	}
