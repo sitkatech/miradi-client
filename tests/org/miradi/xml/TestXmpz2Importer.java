@@ -23,7 +23,9 @@ package org.miradi.xml;
 import org.martus.util.UnicodeStringWriter;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.Task;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.PointList;
@@ -46,10 +48,17 @@ public class TestXmpz2Importer extends TestCaseWithProject
 	public void testImportFilledProject() throws Exception
 	{
 		getProject().populateEverything();
+		
 		Strategy strategy = getProject().createStrategy();
+		Indicator indicator = getProject().createAndPopulateIndicator(strategy);
+		Task task = getProject().createAndPopulateTask(indicator, "TASK");
+		getProject().addProgressReport(task);
+		getProject().addProgressReport(indicator);
+		getProject().addProgressReport(strategy);
 		getProject().addExpenseWithValue(strategy);
 		getProject().addResourceAssignment(strategy);
 		getProject().createandpopulateThreatReductionResult();
+		
 		PointList bendPointList = TestLinkBendPointsMoveHandler.createBendPointList();
 		getProject().createLinkCellWithBendPoints(bendPointList);
 		getProject().createAndPopulateIndicator(strategy);
