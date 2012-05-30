@@ -219,16 +219,12 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 
 	private HashMap<String, String> createAccountingCodeMap()
 	{
-		HashMap<String, String> map = createBaseObjectMap();
-
-		return map;
+		return createBaseObjectMap();
 	}
 
 	private HashMap<String, String> createFundingSourceMap()
 	{
-		HashMap<String, String> map = createBaseObjectMap();
-
-		return map;
+		return createBaseObjectMap();
 	}
 
 	private HashMap<String, String> createKeyEcologicalAttributeMap()
