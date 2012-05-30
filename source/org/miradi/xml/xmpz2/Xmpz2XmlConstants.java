@@ -226,4 +226,26 @@ public interface Xmpz2XmlConstants
 	public static final String TNC_LESSONS_LEARNED = "LessonsLearned";
 	public static final String CODE_ELEMENT_NAME = "code";
 	public static final String RESOURCE_ID_ELEMENT_NAME = "Resource";
+	public static final String STANDARD_CLASSIFICATION = "StandardClassification";
+	public static final String GIVEN_NAME = "GivenName";
+	public static final String IDS = "Ids";
+	public static final String SURNAME = "Surname";
+	public static final String SOURCE = "Source";
+	public static final String MEASUREMENT_VALUE = "MeasurementValue";
+	public static final String RATING = "Rating";
+	public static final String MAGNITUDE = "Magnitude";
+	public static final String OFFICE_PHONE_NUMBER = "OfficePhoneNumber";
+	public static final String PROJECT_RESOURCE_ID = "Resource_Id";
+	public static final String NAME = "Name";
+	public static final String VIABILITY_RATINGS_COMMENTS = "ViabilityRatingsComments";
+	public static final String FUTURE_STATUS_COMMENTS = "FutureStatusComments";
+	public static final String FUTURE_STATUS_DETAILS = "FutureStatusDetails";
+	public static final String CONPRO_PROJECT_NUMBER = "ConProProjectNumber";
+	public static final String LOCATION_DETAILS = "LocationDetails";
+	public static final String VISION_LABEL = "VisionLabel";
+	public static final String VISION_STATEMENT_TEXT = "VisionStatementText";
+	public static final String SCOPE_NAME = "ScopeName";
+	public static final String SCOPE_DESCRIPTION = "ScopeDescription";
+	public static final String DIAGRAM_DATA_INCLUSION = "DiagramDataInclusion";
+	public static final String DAILY_RATE = "DailyRate";
 }
