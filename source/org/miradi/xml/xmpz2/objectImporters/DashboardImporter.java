@@ -28,6 +28,7 @@ import org.miradi.objects.Dashboard;
 import org.miradi.schemas.DashboardSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
+import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -40,7 +41,8 @@ public class DashboardImporter extends AbstractXmpz2ObjectImporter
 	
 	public void importFields() throws Exception
 	{
-		Node dashboardPoolNode = getImporter().getNode(getImporter().getRootNode(), getPoolName() + POOL_ELEMENT_TAG);
+		String poolName = Xmpz2XmlWriter.createPoolElementName(getPoolName());
+		Node dashboardPoolNode = getImporter().getNode(getImporter().getRootNode(), poolName);
 		Node dashboardNode = getImporter().getNode(dashboardPoolNode, getPoolName());
 		Node statusesNode = getImporter().getNode(dashboardNode,  getPoolName() + DASHBOARD_STATUS_ENTRIES);
 		NodeList statusNodes = getImporter().getNodes(statusesNode, new String[]{DASHBOARD_STATUS_ENTRY});

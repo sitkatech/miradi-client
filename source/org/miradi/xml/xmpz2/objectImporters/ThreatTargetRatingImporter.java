@@ -33,6 +33,7 @@ import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
+import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -56,8 +57,8 @@ public class ThreatTargetRatingImporter extends AbstractXmpz2ObjectImporter
 			endUsingCommandsToSetData();
 		}
 
-		
-		Node threatRatingPoolNode = getImporter().getNode(getImporter().getRootNode(), THREAT_RATING + POOL_ELEMENT_TAG);
+		String poolName = Xmpz2XmlWriter.createPoolElementName(THREAT_RATING);
+		Node threatRatingPoolNode = getImporter().getNode(getImporter().getRootNode(), poolName);
 		NodeList threatRatingNodes = getImporter().getNodes(threatRatingPoolNode, new String[]{THREAT_RATING, });
 		for (int index = 0; index < threatRatingNodes.getLength(); ++index)
 		{
