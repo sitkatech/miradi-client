@@ -138,6 +138,13 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 		map.put(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, EXPENSE_IDS);
 		return map;
 	}
+	
+	private HashMap<String, String> createFactorMap()
+	{
+		HashMap<String, String> taskMap = createBaseObjectMap();
+		
+		return taskMap;
+	}
 
 	private HashMap<String, String> createTaskMap()
 	{
@@ -222,7 +229,7 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 
 	private HashMap<String, String> createCauseMap()
 	{
-		HashMap<String, String> map = createBaseObjectMap();
+		HashMap<String, String> map = createFactorMap();
 		map.put(Cause.TAG_TAXONOMY_CODE, "StandardClassification");
 		map.put(Cause.TAG_TEXT, DETAILS);
 		
@@ -231,7 +238,7 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 
 	private HashMap<String, String> createStrategyMap()
 	{
-		HashMap<String, String> map = createBaseObjectMap();
+		HashMap<String, String> map = createFactorMap();
 		map.put(Strategy.TAG_TAXONOMY_CODE, "StandardClassification");
 		map.put(Strategy.TAG_TEXT, DETAILS);
 		map.put(Strategy.TAG_ACTIVITY_IDS, SORTED_ACTIVITY_IDS);
@@ -244,7 +251,7 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 
 	private HashMap<String, String> createTargetMap()
 	{
-		HashMap<String, String> map = createBaseObjectMap();
+		HashMap<String, String> map = createFactorMap();
 		map.put(Target.TAG_TEXT, DETAILS);
 		map.put(Target.TAG_SUB_TARGET_REFS, SUB_TARGET_IDS_ELEMENT);
 		map.put(Target.TAG_STRESS_REFS, STRESS_IDS_ELEMENT);
@@ -254,7 +261,7 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 
 	private HashMap<String, String> createInterMediateResultMap()
 	{
-		HashMap<String, String> map = createBaseObjectMap();
+		HashMap<String, String> map = createFactorMap();
 		map.put(IntermediateResult.TAG_TEXT, DETAILS);
 		
 		return map;
@@ -282,7 +289,7 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 
 	private HashMap<String, String> createThreatReductionResultsMap()
 	{
-		HashMap<String, String> map = createBaseObjectMap();
+		HashMap<String, String> map = createFactorMap();
 		map.put(ThreatReductionResult.TAG_TEXT, DETAILS);
 		
 		return map;
@@ -290,7 +297,7 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 
 	private HashMap<String, String> createTextBoxMap()
 	{
-		HashMap<String, String> map = createBaseObjectMap();
+		HashMap<String, String> map = createFactorMap();
 		map.put(TextBox.TAG_TEXT, DETAILS);
 		
 		return map;
@@ -317,7 +324,7 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 
 	private HashMap<String, String> createGroupBoxMap()
 	{
-		HashMap<String, String> map = createBaseObjectMap();
+		HashMap<String, String> map = createFactorMap();
 		map.put(GroupBox.TAG_TEXT, DETAILS);
 		
 		return map;
@@ -387,7 +394,7 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 
 	private HashMap<String, String> createHumanWelfareTargetMap()
 	{
-		HashMap<String, String> map = new HashMap<String, String>();
+		HashMap<String, String> map = createFactorMap();
 		map.put(HumanWelfareTarget.TAG_TEXT, DETAILS);
 		
 		return map;
