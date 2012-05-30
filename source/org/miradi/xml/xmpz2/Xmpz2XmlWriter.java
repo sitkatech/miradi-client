@@ -327,7 +327,7 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	
 	public void writeXmlHeader() throws Exception
 	{
-		writeln("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>");
+		writeln(XML_HEADER);
 	}
 	
 	public void writeMainElementStart() throws Exception
