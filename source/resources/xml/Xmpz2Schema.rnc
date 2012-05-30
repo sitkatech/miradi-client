@@ -513,8 +513,8 @@ Task.element = element miradi:Task
   element miradi:TaskId { text }? &
   element miradi:TaskDetails {formatted_text }? &
   element miradi:TaskComments {formatted_text }? &
-  element miradi:TaskExpenseIds { ExpenseAssignmentId.element* }? &
-  element miradi:TaskAssignmentIds { ResourceAssignmentId.element* }? &
+  element miradi:TaskExpenseAssignmentIds { ExpenseAssignmentId.element* }? &
+  element miradi:TaskResourceAssignmentIds { ResourceAssignmentId.element* }? &
   element miradi:TaskProgressReportIds { ProgressReportId.element* }? &
   element miradi:TaskSortedSubTaskIds { SubTaskId.element* }? &
   element miradi:TaskCalculatedCosts { CalculatedCosts.element }?

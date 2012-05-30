@@ -124,7 +124,10 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put(BaseObject.TAG_LABEL, "Name");
 		map.put(Target.TAG_SHORT_LABEL, "Id");
-		map.put(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, EXPENSE_IDS);
+		map.put(BaseObject.TAG_PROGRESS_REPORT_REFS, PROGRESS_REPORT_IDS);
+		map.put(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, RESOURCE_ASSIGNMENT + "Ids");
+		map.put(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, EXPENSE_ASSIGNMENT + "Ids");
+
 		return map;
 	}
 	
@@ -140,7 +143,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	{
 		HashMap<String, String> taskMap = createBaseObjectMap();
 		taskMap.put(Task.TAG_SUBTASK_IDS, SUB_TASK_IDS);
-		taskMap.put(Task.TAG_PROGRESS_REPORT_REFS, PROGRESS_REPORT_IDS);
 		return taskMap;
 	}
 
@@ -154,9 +156,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 		indicatorMap.put(Indicator.TAG_FUTURE_STATUS_COMMENTS, "FutureStatusComments");
 		indicatorMap.put(Indicator.TAG_VIABILITY_RATINGS_COMMENTS, "ViabilityRatingsComments");
 		indicatorMap.put(Indicator.TAG_MEASUREMENT_REFS, MEASUREMENT_IDS);
-		indicatorMap.put(Indicator.TAG_PROGRESS_REPORT_REFS, PROGRESS_REPORT_IDS);
-		indicatorMap.put(Indicator.TAG_RESOURCE_ASSIGNMENT_IDS, RESOURCE_ASSIGNMENT + "Ids");
-		indicatorMap.put(Indicator.TAG_EXPENSE_ASSIGNMENT_REFS, EXPENSE_ASSIGNMENT + "Ids");
 		
 		return indicatorMap;
 	}
@@ -174,7 +173,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	{
 		HashMap<String, String> goalMap = createBaseObjectMap();
 		goalMap.put(Goal.TAG_FULL_TEXT, DETAILS);
-		goalMap.put(Goal.TAG_PROGRESS_PERCENT_REFS, PROGRESS_PERCENT_IDS);
 
 		return goalMap;
 	}
@@ -230,9 +228,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 		HashMap<String, String> map = createFactorMap();
 		map.put(Strategy.TAG_TAXONOMY_CODE, "StandardClassification");
 		map.put(Strategy.TAG_ACTIVITY_IDS, SORTED_ACTIVITY_IDS);
-		map.put(Strategy.TAG_RESOURCE_ASSIGNMENT_IDS, RESOURCE_ASSIGNMENT + "Ids");
-		map.put(Strategy.TAG_EXPENSE_ASSIGNMENT_REFS, EXPENSE_ASSIGNMENT + "Ids");
-		map.put(Strategy.TAG_PROGRESS_REPORT_REFS, PROGRESS_REPORT_IDS);
 		
 		return map;
 	}
