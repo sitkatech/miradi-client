@@ -27,11 +27,9 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ExpenseAssignment;
+import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
-import org.miradi.objects.GroupBox;
-import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
-import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.ObjectTreeTableConfiguration;
@@ -47,8 +45,6 @@ import org.miradi.objects.Stress;
 import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
-import org.miradi.objects.TextBox;
-import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.TncProjectData;
 import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.wcs.XmpzXmlConstants;
@@ -141,9 +137,10 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	
 	private HashMap<String, String> createFactorMap()
 	{
-		HashMap<String, String> taskMap = createBaseObjectMap();
+		HashMap<String, String> map = createBaseObjectMap();
+		map.put(Factor.TAG_TEXT, DETAILS);
 		
-		return taskMap;
+		return map;
 	}
 
 	private HashMap<String, String> createTaskMap()
@@ -231,7 +228,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	{
 		HashMap<String, String> map = createFactorMap();
 		map.put(Cause.TAG_TAXONOMY_CODE, "StandardClassification");
-		map.put(Cause.TAG_TEXT, DETAILS);
 		
 		return map;
 	}
@@ -240,7 +236,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	{
 		HashMap<String, String> map = createFactorMap();
 		map.put(Strategy.TAG_TAXONOMY_CODE, "StandardClassification");
-		map.put(Strategy.TAG_TEXT, DETAILS);
 		map.put(Strategy.TAG_ACTIVITY_IDS, SORTED_ACTIVITY_IDS);
 		map.put(Strategy.TAG_RESOURCE_ASSIGNMENT_IDS, RESOURCE_ASSIGNMENT + "Ids");
 		map.put(Strategy.TAG_EXPENSE_ASSIGNMENT_REFS, EXPENSE_ASSIGNMENT + "Ids");
@@ -252,7 +247,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createTargetMap()
 	{
 		HashMap<String, String> map = createFactorMap();
-		map.put(Target.TAG_TEXT, DETAILS);
 		map.put(Target.TAG_SUB_TARGET_REFS, SUB_TARGET_IDS_ELEMENT);
 		map.put(Target.TAG_STRESS_REFS, STRESS_IDS_ELEMENT);
 		
@@ -262,7 +256,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createInterMediateResultMap()
 	{
 		HashMap<String, String> map = createFactorMap();
-		map.put(IntermediateResult.TAG_TEXT, DETAILS);
 		
 		return map;
 	}
@@ -290,7 +283,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createThreatReductionResultsMap()
 	{
 		HashMap<String, String> map = createFactorMap();
-		map.put(ThreatReductionResult.TAG_TEXT, DETAILS);
 		
 		return map;
 	}
@@ -298,7 +290,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createTextBoxMap()
 	{
 		HashMap<String, String> map = createFactorMap();
-		map.put(TextBox.TAG_TEXT, DETAILS);
 		
 		return map;
 	}
@@ -325,7 +316,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createGroupBoxMap()
 	{
 		HashMap<String, String> map = createFactorMap();
-		map.put(GroupBox.TAG_TEXT, DETAILS);
 		
 		return map;
 	}
@@ -386,7 +376,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createScopeBoxMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
-		map.put(ScopeBox.TAG_TEXT, DETAILS);
 		map.put(ScopeBox.TAG_SCOPE_BOX_TYPE_CODE, XmlSchemaCreator.SCOPE_BOX_COLOR_ELEMENT_NAME);
 		
 		return map;
@@ -395,7 +384,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createHumanWelfareTargetMap()
 	{
 		HashMap<String, String> map = createFactorMap();
-		map.put(HumanWelfareTarget.TAG_TEXT, DETAILS);
 		
 		return map;
 	}
