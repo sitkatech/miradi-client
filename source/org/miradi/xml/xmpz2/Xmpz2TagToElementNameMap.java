@@ -46,7 +46,6 @@ import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.TncProjectData;
-import org.miradi.xml.generic.XmlSchemaCreator;
 
 public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 {
@@ -193,15 +192,15 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 	{
 		HashMap<String, String> map = createBaseObjectMap();
 		
-		map.put(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE, XmlSchemaCreator.TNC_DATABASE_DOWNLOAD_DATE);
-		map.put(ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS, XmlSchemaCreator.TNC_PLANNING_TEAM_COMMENTS);
-		map.put(ProjectMetadata.TAG_TNC_LESSONS_LEARNED, XmlSchemaCreator.TNC_LESSONS_LEARNED);
-		map.put(ProjectMetadata.TAG_TNC_OPERATING_UNITS, XmlSchemaCreator.TNC_OPERATING_UNITS);
-		map.put(TncProjectData.TAG_PROJECT_PLACE_TYPES, XmlSchemaCreator.TNC_PROJECT_PLACE_TYPES);
-		map.put(TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, XmlSchemaCreator.TNC_ORGANIZATIONAL_PRIORITIES);
-		map.put(ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, XmlSchemaCreator.TNC_TERRESTRIAL_ECO_REGION);
-		map.put(ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, XmlSchemaCreator.TNC_MARINE_ECO_REGION);
-		map.put(ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, XmlSchemaCreator.TNC_FRESHWATER_ECO_REGION);
+		map.put(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE, TNC_DATABASE_DOWNLOAD_DATE);
+		map.put(ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS, TNC_PLANNING_TEAM_COMMENTS);
+		map.put(ProjectMetadata.TAG_TNC_LESSONS_LEARNED, TNC_LESSONS_LEARNED);
+		map.put(ProjectMetadata.TAG_TNC_OPERATING_UNITS, TNC_OPERATING_UNITS);
+		map.put(TncProjectData.TAG_PROJECT_PLACE_TYPES, TNC_PROJECT_PLACE_TYPES);
+		map.put(TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, TNC_ORGANIZATIONAL_PRIORITIES);
+		map.put(ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, TNC_TERRESTRIAL_ECO_REGION);
+		map.put(ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, TNC_MARINE_ECO_REGION);
+		map.put(ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, TNC_FRESHWATER_ECO_REGION);
 		
 		return map;
 	}
@@ -332,7 +331,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 	private HashMap<String, String> createScopeBoxMap()
 	{
 		HashMap<String, String> map = createFactorMap();
-		map.put(ScopeBox.TAG_SCOPE_BOX_TYPE_CODE, XmlSchemaCreator.SCOPE_BOX_COLOR_ELEMENT_NAME);
+		map.put(ScopeBox.TAG_SCOPE_BOX_TYPE_CODE, SCOPE_BOX_COLOR_ELEMENT_NAME);
 		
 		return map;
 	}

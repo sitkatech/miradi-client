@@ -47,7 +47,6 @@ import org.miradi.schemas.WcpaProjectDataSchema;
 import org.miradi.schemas.WcsProjectDataSchema;
 import org.miradi.schemas.WwfProjectDataSchema;
 import org.miradi.utils.CodeList;
-import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
@@ -114,7 +113,7 @@ public class ProjectMetadataExporter implements Xmpz2XmlConstants
 	
 	private void writeShareOutsideOrganizationElement() throws Exception
 	{
-		getWriter().writeBooleanElement(PROJECT_SUMMARY + XmlSchemaCreator.PROJECT_SHARE_OUTSIDE_ORGANIZATION, getTncProjectData().canShareOutsideOfTnc());
+		getWriter().writeBooleanElement(PROJECT_SUMMARY + PROJECT_SHARE_OUTSIDE_ORGANIZATION, getTncProjectData().canShareOutsideOfTnc());
 	}
 	
 	private void writeOverallProjectThreatRating() throws Exception
@@ -269,14 +268,14 @@ public class ProjectMetadataExporter implements Xmpz2XmlConstants
 		
 		writeProjectMetadataElement(TNC_PROJECT_DATA, ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
 		writeProjectMetadataElement(TNC_PROJECT_DATA, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
-		writeCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_PROJECT_PLACE_TYPES, getTncProjectData(), TncProjectData.TAG_PROJECT_PLACE_TYPES);
-		writeCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_ORGANIZATIONAL_PRIORITIES, getTncProjectData(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES);
+		writeCodeListElement(TNC_PROJECT_DATA, TNC_PROJECT_PLACE_TYPES, getTncProjectData(), TncProjectData.TAG_PROJECT_PLACE_TYPES);
+		writeCodeListElement(TNC_PROJECT_DATA, TNC_ORGANIZATIONAL_PRIORITIES, getTncProjectData(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES);
 		writeProjectMetadataElement(TNC_PROJECT_DATA, ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS);
 		writeElement(TNC_PROJECT_DATA, getTncProjectData(), TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
 		exportTncOperatingUnits();
-		writeCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_TERRESTRIAL_ECO_REGION, getMetadata(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION);
-		writeCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_MARINE_ECO_REGION, getMetadata(), ProjectMetadata.TAG_TNC_MARINE_ECO_REGION);
-		writeCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_FRESHWATER_ECO_REGION, getMetadata(), ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION);
+		writeCodeListElement(TNC_PROJECT_DATA, TNC_TERRESTRIAL_ECO_REGION, getMetadata(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION);
+		writeCodeListElement(TNC_PROJECT_DATA, TNC_MARINE_ECO_REGION, getMetadata(), ProjectMetadata.TAG_TNC_MARINE_ECO_REGION);
+		writeCodeListElement(TNC_PROJECT_DATA, TNC_FRESHWATER_ECO_REGION, getMetadata(), ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION);
 		writeProjectMetadataElement(TNC_PROJECT_DATA, ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 		
 		writeTncElement(TncProjectData.TAG_PROJECT_RESOURCES_SCORECARD);
@@ -356,7 +355,7 @@ public class ProjectMetadataExporter implements Xmpz2XmlConstants
 	public void exportTncOperatingUnits() throws Exception
 	{
 		CodeList codes = getOperatingUnitsWithoutLegacyCode(getMetadata());
-		getWriter().writeCodeList(TNC_PROJECT_DATA + XmlSchemaCreator.TNC_OPERATING_UNITS, codes);
+		getWriter().writeCodeList(TNC_PROJECT_DATA + TNC_OPERATING_UNITS, codes);
 	}
 	
 	public static CodeList getOperatingUnitsWithoutLegacyCode(ProjectMetadata projectMetadata) throws Exception

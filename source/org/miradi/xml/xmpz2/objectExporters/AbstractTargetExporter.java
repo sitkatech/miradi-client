@@ -29,7 +29,6 @@ import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.xmpz2.BaseObjectExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
@@ -47,7 +46,7 @@ abstract public class AbstractTargetExporter extends BaseObjectExporter
 		
 		AbstractTarget abstractTarget = (AbstractTarget) baseObject;
 		exportThreatTargetRating(abstractTarget);
-		writeNonOptionalCodeElement(XmlSchemaCreator.TARGET_STATUS_ELEMENT_NAME, StatusQuestion.class, abstractTarget.getTargetViability());
+		writeNonOptionalCodeElement(TARGET_STATUS_ELEMENT_NAME, StatusQuestion.class, abstractTarget.getTargetViability());
 		writeNonOptionalCodeElement(AbstractTarget.TAG_VIABILITY_MODE, ViabilityModeQuestion.class, abstractTarget.getViabilityMode());
 	}
 

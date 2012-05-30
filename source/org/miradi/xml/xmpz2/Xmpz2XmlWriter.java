@@ -45,7 +45,6 @@ import org.miradi.schemas.FieldSchemaIdList;
 import org.miradi.schemas.FieldSchemaReflist;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.PointList;
-import org.miradi.xml.generic.XmlSchemaCreator;
 
 public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 {
@@ -102,7 +101,7 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 		writeStartElement(elementContainerName);
 		for(String code : codes)
 		{
-			writeElement(XmlSchemaCreator.CODE_ELEMENT_NAME, code);
+			writeElement(CODE_ELEMENT_NAME, code);
 		}
 		
 		writeEndElement(elementContainerName);
