@@ -30,7 +30,6 @@ import org.miradi.questions.ProjectSharingQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.schemas.XenodataSchema;
-import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -65,7 +64,7 @@ public class Xmpz2ProjectSummaryImporter extends BaseObjectImporter
 	
 	private void writeShareOutsideOrganizationElement(Node projectSumaryNode) throws Exception
 	{
-		Node shareOutsideTncNode = getImporter().getNode(projectSumaryNode, PROJECT_SUMMARY + XmlSchemaCreator.PROJECT_SHARE_OUTSIDE_ORGANIZATION);
+		Node shareOutsideTncNode = getImporter().getNode(projectSumaryNode, PROJECT_SUMMARY + PROJECT_SHARE_OUTSIDE_ORGANIZATION);
 		String isShareWithAnyOneCode = ProjectSharingQuestion.SHARE_ONLY_INSIDE_ORGANIZATION;
 		if (getImporter().isTrue(shareOutsideTncNode.getTextContent()))
 			isShareWithAnyOneCode = ProjectSharingQuestion.SHARE_WITH_ANYONE;

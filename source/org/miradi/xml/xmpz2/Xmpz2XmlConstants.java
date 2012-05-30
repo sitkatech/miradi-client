@@ -212,4 +212,17 @@ public interface Xmpz2XmlConstants
 	public static final String DETAILS = "Details";
 	public static final String CHAIN_MODE_FACTORS = "ChainFactors";
 	public static final String DELETED_ORPHANS_ELEMENT_NAME = "DeletedOrphans";
+	public static final String SCOPE_BOX_COLOR_ELEMENT_NAME = "ScopeBoxTypeCode";
+	public static final String PROJECT_SHARE_OUTSIDE_ORGANIZATION = "ShareOutsideOrganization";
+	public static final String TARGET_STATUS_ELEMENT_NAME = "ViabilityStatus";
+	public static final String TNC_OPERATING_UNITS = "TNCOperatingUnits";
+	public static final String TNC_PROJECT_PLACE_TYPES = "TNCProjectPlaceTypes";
+	public static final String TNC_ORGANIZATIONAL_PRIORITIES = "TNCOrganizationalPriorities";
+	public static final String TNC_TERRESTRIAL_ECO_REGION = "TNCTerrestrialEcoRegion";
+	public static final String TNC_MARINE_ECO_REGION = "TNCMarineEcoRegion";
+	public static final String TNC_FRESHWATER_ECO_REGION = "TNCFreshwaterEcoRegion";
+	public static final String TNC_DATABASE_DOWNLOAD_DATE = "DatabaseDownloadDate";
+	public static final String TNC_PLANNING_TEAM_COMMENTS = "PlanningTeamComments";
+	public static final String TNC_LESSONS_LEARNED = "LessonsLearned";
+	public static final String CODE_ELEMENT_NAME = "code";
 }
