@@ -53,6 +53,7 @@ import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Dashboard;
+import org.miradi.objects.Desire;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
@@ -863,10 +864,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return objective;
 	}
 	
-	public Goal createGoal(Target targetOwner) throws Exception
+	public Goal createGoal(AbstractTarget targetOwner) throws Exception
 	{
 		ORef goalRef = createObject(GoalSchema.getObjectType());
-		CommandSetObjectData append = CommandSetObjectData.createAppendIdCommand(targetOwner, Target.TAG_GOAL_IDS, goalRef.getObjectId());
+		CommandSetObjectData append = CommandSetObjectData.createAppendIdCommand(targetOwner, AbstractTarget.TAG_GOAL_IDS, goalRef.getObjectId());
 		executeCommand(append);
 		
 		return Goal.find(this, goalRef);
@@ -1253,11 +1254,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(objective, Objective.TAG_PROGRESS_PERCENT_REFS, progressPercentRefs.toString());
 	}
 	
-	public void createAndPopulateGoal(Target targetOwner) throws Exception
+	public Goal createAndPopulateGoal(AbstractTarget targetOwner) throws Exception
 	{
 		Goal goal = createGoal(targetOwner);
 		
 		fillRelevantIndicators(goal);
+		
+		return goal;
 	}
 	
 	public void createAndPopulateTextBox() throws Exception
@@ -1371,6 +1374,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 		ProgressReport progressReport = createAndPopulateProgressReport();
 		ORefList progressReportRefs = new ORefList(progressReport.getRef());
 		fillObjectUsingCommand(baseObject, BaseObject.TAG_PROGRESS_REPORT_REFS, progressReportRefs.toString());
+	}
+	
+	public void addProgressPercent(Desire desire) throws Exception
+	{
+		ProgressPercent progressPercent = createAndPopulateProgressPercent();
+		ORefList progressReportRefs = new ORefList(progressPercent.getRef());
+		fillObjectUsingCommand(desire, Desire.TAG_PROGRESS_PERCENT_REFS, progressReportRefs.toString());
 	}
 	
 	public void addObjective(Factor factor) throws Exception

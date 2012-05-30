@@ -23,6 +23,8 @@ package org.miradi.xml;
 import org.martus.util.UnicodeStringWriter;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objects.AbstractTarget;
+import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
@@ -49,13 +51,15 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	{
 		getProject().populateEverything();
 		
-		getProject().createAndPopulateHumanWelfareTarget();
+		AbstractTarget target = getProject().createAndPopulateHumanWelfareTarget();
 		Strategy strategy = getProject().createStrategy();
 		Indicator indicator = getProject().createAndPopulateIndicator(strategy);
 		Task task = getProject().createAndPopulateTask(indicator, "TASK");
+		Goal goal = getProject().createAndPopulateGoal(target);
 		getProject().addProgressReport(task);
 		getProject().addProgressReport(indicator);
 		getProject().addProgressReport(strategy);
+		getProject().addProgressPercent(goal);
 		getProject().addExpenseWithValue(strategy);
 		getProject().addResourceAssignment(strategy);
 		getProject().createandpopulateThreatReductionResult();
