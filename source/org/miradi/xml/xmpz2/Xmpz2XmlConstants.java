@@ -229,6 +229,7 @@ public interface Xmpz2XmlConstants
 	public static final String STANDARD_CLASSIFICATION = "StandardClassification";
 	public static final String GIVEN_NAME = "GivenName";
 	public static final String IDS = "Ids";
+	public static final String REFS = "Refs";
 	public static final String SURNAME = "Surname";
 	public static final String SOURCE = "Source";
 	public static final String MEASUREMENT_VALUE = "MeasurementValue";
