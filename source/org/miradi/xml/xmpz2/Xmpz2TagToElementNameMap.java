@@ -121,9 +121,7 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 
 	private HashMap<String, String> createTaggedObjectSetMap()
 	{
-		HashMap<String, String> map = createBaseObjectMap();
-				
-		return map;
+		return createBaseObjectMap();
 	}
 
 	private HashMap<String, String> createBaseObjectMap()
@@ -255,9 +253,7 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 
 	private HashMap<String, String> createInterMediateResultMap()
 	{
-		HashMap<String, String> map = createFactorMap();
-		
-		return map;
+		return createFactorMap();
 	}
 	
 	private HashMap<String, String> createConceptualModelMap()
@@ -282,16 +278,12 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 
 	private HashMap<String, String> createThreatReductionResultsMap()
 	{
-		HashMap<String, String> map = createFactorMap();
-		
-		return map;
+		return createFactorMap();
 	}
 
 	private HashMap<String, String> createTextBoxMap()
 	{
-		HashMap<String, String> map = createFactorMap();
-		
-		return map;
+		return createFactorMap();
 	}
 
 	private HashMap<String, String> createMeasurementMap()
@@ -315,9 +307,7 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 
 	private HashMap<String, String> createGroupBoxMap()
 	{
-		HashMap<String, String> map = createFactorMap();
-		
-		return map;
+		return createFactorMap();
 	}
 
 	private HashMap<String, String> createSubTargetMap()
@@ -383,9 +373,7 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 
 	private HashMap<String, String> createHumanWelfareTargetMap()
 	{
-		HashMap<String, String> map = createFactorMap();
-		
-		return map;
+		return createFactorMap();
 	}
 
 	private HashMap<String, String> createProjectResourceMap()
