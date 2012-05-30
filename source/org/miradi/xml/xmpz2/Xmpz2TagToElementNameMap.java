@@ -85,7 +85,7 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 		fieldTagToElementMap.put(OBJECTIVE, createObjectiveMap());
 		fieldTagToElementMap.put(GOAL, createGoalMap());
 		fieldTagToElementMap.put(PROJECT_METADATA, createProjectMetadataMap());
-		fieldTagToElementMap.put(ACCOUNTING_CODE, createAccountingCodeMap());
+		fieldTagToElementMap.put(ACCOUNTING_CODE, createBaseObjectMap());
 		fieldTagToElementMap.put(FUNDING_SOURCE, createFundingSourceMap());
 		fieldTagToElementMap.put(KEY_ECOLOGICAL_ATTRIBUTE, createKeyEcologicalAttributeMap());
 		fieldTagToElementMap.put(CONCEPTUAL_MODEL, createConceptualModelMap());
@@ -215,11 +215,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 		map.put(ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, XmlSchemaCreator.TNC_FRESHWATER_ECO_REGION);
 		
 		return map;
-	}
-
-	private HashMap<String, String> createAccountingCodeMap()
-	{
-		return createBaseObjectMap();
 	}
 
 	private HashMap<String, String> createFundingSourceMap()
