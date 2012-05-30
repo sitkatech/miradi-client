@@ -33,9 +33,9 @@ import org.miradi.views.diagram.TestLinkBendPointsMoveHandler;
 import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 
-public class TestXmpz2Importer extends TestCaseWithProject
+public class TestXmpz2XmlImporter extends TestCaseWithProject
 {
-	public TestXmpz2Importer(String name)
+	public TestXmpz2XmlImporter(String name)
 	{
 		super(name);
 	}
