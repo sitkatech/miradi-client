@@ -68,7 +68,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		Vector<String> elementNames = new Vector<String>();
 		for(BaseObjectSchema baseObjectSchema : baseObjectSchemas)
 		{
-			String member = baseObjectSchema.getXmpz2ElementName() + ".element";
+			String poolName = Xmpz2XmlWriter.createPoolElementName(baseObjectSchema.getXmpz2ElementName());
+			String member = poolName + ".element ";
 			elementNames.add(member);
 		}
 		
