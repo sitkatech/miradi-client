@@ -87,6 +87,7 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 		fieldTagToElementMap.put(CAUSE, createCauseMap());
 		fieldTagToElementMap.put(STRATEGY, createStrategyMap());
 		fieldTagToElementMap.put(BIODIVERSITY_TARGET, createTargetMap());
+		fieldTagToElementMap.put(HUMAN_WELFARE_TARGET, createAbstractTargetMap());
 		fieldTagToElementMap.put(INTERMEDIATE_RESULTS, createFactorMap());
 		fieldTagToElementMap.put(RESULTS_CHAIN, createDiagramObjectMap());
 		fieldTagToElementMap.put(THREAT_REDUCTION_RESULTS, createFactorMap());
@@ -98,7 +99,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 		fieldTagToElementMap.put(ORGANIZATION, createOrganizationMap());
 		fieldTagToElementMap.put(PROGRESS_PERCENT, createProgressPercentMap());
 		fieldTagToElementMap.put(SCOPE_BOX, createScopeBoxMap());
-		fieldTagToElementMap.put(HUMAN_WELFARE_TARGET, createFactorMap());
 		fieldTagToElementMap.put(DIAGRAM_FACTOR, createBaseObjectMap());
 		fieldTagToElementMap.put(DIAGRAM_LINK, createBaseObjectMap());
 		fieldTagToElementMap.put(EXPENSE_ASSIGNMENT, createExpenseAssignmentMap());
@@ -236,11 +236,18 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 		
 		return map;
 	}
-
-	private HashMap<String, String> createTargetMap()
+	
+	private HashMap<String, String> createAbstractTargetMap()
 	{
 		HashMap<String, String> map = createFactorMap();
 		map.put(Target.TAG_SUB_TARGET_REFS, SUB_TARGET_IDS_ELEMENT);
+		
+		return map;
+	}
+
+	private HashMap<String, String> createTargetMap()
+	{
+		HashMap<String, String> map = createAbstractTargetMap();
 		map.put(Target.TAG_STRESS_REFS, STRESS_IDS_ELEMENT);
 		
 		return map;

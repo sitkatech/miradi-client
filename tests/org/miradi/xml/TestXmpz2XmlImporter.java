@@ -49,6 +49,7 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	{
 		getProject().populateEverything();
 		
+		getProject().createAndPopulateHumanWelfareTarget();
 		Strategy strategy = getProject().createStrategy();
 		Indicator indicator = getProject().createAndPopulateIndicator(strategy);
 		Task task = getProject().createAndPopulateTask(indicator, "TASK");

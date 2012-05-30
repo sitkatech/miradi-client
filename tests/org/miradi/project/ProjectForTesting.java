@@ -45,6 +45,7 @@ import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objects.AbstractBudgetCategoryObject;
+import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.Audience;
 import org.miradi.objects.BaseObject;
@@ -62,6 +63,7 @@ import org.miradi.objects.FosProjectData;
 import org.miradi.objects.FundingSource;
 import org.miradi.objects.Goal;
 import org.miradi.objects.GroupBox;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IucnRedlistSpecies;
 import org.miradi.objects.KeyEcologicalAttribute;
@@ -143,6 +145,7 @@ import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.GroupBoxSchema;
+import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.IucnRedlistSpeciesSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
@@ -428,6 +431,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return target;
 	}
 	
+	public HumanWelfareTarget createAndPopulateHumanWelfareTarget() throws Exception
+	{
+		HumanWelfareTarget humanWelfareTarget = createHumanWelfareTarget();
+		populateAbstractTarget(humanWelfareTarget);
+		
+		return humanWelfareTarget;
+	}
+	
 	public Stress createAndPopulateStress() throws Exception
 	{
 		Stress stress = createStress();
@@ -470,7 +481,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return created;
 	}
 	
-	private DiagramLink createAndPopulateDirectThreatLink(Target target) throws Exception
+	private DiagramLink createAndPopulateDirectThreatLink(AbstractTarget target) throws Exception
 	{
 		DiagramFactor diagramFactor = createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		enableAsThreat(diagramFactor.getWrappedORef());
@@ -718,6 +729,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ORef targetRef = createObject(TargetSchema.getObjectType(), new FactorId(takeNextId(TargetSchema.getObjectType())));
 		return Target.find(this, targetRef);
+	}
+	
+	public HumanWelfareTarget createHumanWelfareTarget() throws Exception
+	{
+		ORef ref = createObject(HumanWelfareTargetSchema.getObjectType(), new FactorId(takeNextId(HumanWelfareTargetSchema.getObjectType())));
+		return HumanWelfareTarget.find(this, ref);
 	}
 	
 	public Stress createStress() throws Exception
@@ -1002,36 +1019,41 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void populateTarget(Target target) throws Exception
 	{
-		fillObjectUsingCommand(target, Target.TAG_LABEL, "Reefs " + target.getId().toString());
-		fillObjectUsingCommand(target, Target.TAG_TEXT, "Some Description Text");
-		fillObjectUsingCommand(target, Target.TAG_COMMENTS, "Some comment Text");
-		fillObjectUsingCommand(target, Target.TAG_CURRENT_STATUS_JUSTIFICATION, "Some status justification");
-		fillObjectUsingCommand(target, Target.TAG_TARGET_STATUS, StatusQuestion.VERY_GOOD);
-		turnOnTncMode(target);
+		populateAbstractTarget(target);
 				
 		CodeList habitatCodes = new CodeList();
 		habitatCodes.add(HabitatAssociationQuestion.FOREST_CODE);
 		habitatCodes.add(HabitatAssociationQuestion.SAVANNA_CODE);
 		fillObjectUsingCommand(target, Target.TAG_HABITAT_ASSOCIATION, habitatCodes.toString());
 		
-		ORefList stressRefs = new ORefList(createAndPopulateStress().getRef());
-		fillObjectUsingCommand(target, Target.TAG_STRESS_REFS, stressRefs.toString());
-	
 		createAndPopulateDirectThreatLink(target);
 		
+		ORefList stressRefs = new ORefList(createAndPopulateStress().getRef());
+		fillObjectUsingCommand(target, Target.TAG_STRESS_REFS, stressRefs.toString());		
+	}
+	
+	public void populateAbstractTarget(AbstractTarget target) throws Exception
+	{
+		fillObjectUsingCommand(target, AbstractTarget.TAG_LABEL, "Reefs " + target.getId().toString());
+		fillObjectUsingCommand(target, AbstractTarget.TAG_TEXT, "Some Description Text");
+		fillObjectUsingCommand(target, AbstractTarget.TAG_COMMENTS, "Some comment Text");
+		fillObjectUsingCommand(target, AbstractTarget.TAG_CURRENT_STATUS_JUSTIFICATION, "Some status justification");
+		fillObjectUsingCommand(target, AbstractTarget.TAG_TARGET_STATUS, StatusQuestion.VERY_GOOD);
+		turnOnTncMode(target);
+				
 		SubTarget subTarget = createAndPopulateSubTarget();
 		ORefList subTargetRefs = new ORefList(subTarget.getRef());
-		fillObjectUsingCommand(target, Target.TAG_SUB_TARGET_REFS, subTargetRefs.toString());
+		fillObjectUsingCommand(target, AbstractTarget.TAG_SUB_TARGET_REFS, subTargetRefs.toString());
 		
 		KeyEcologicalAttribute kea = createAndPopulateKea();
 		IdList keaIds = new IdList(KeyEcologicalAttributeSchema.getObjectType());
 		keaIds.addRef(kea.getRef());
-		fillObjectUsingCommand(target, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaIds.toString());
+		fillObjectUsingCommand(target, AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaIds.toString());
 	}
 
-	public void turnOnTncMode(Target target) throws Exception
+	public void turnOnTncMode(AbstractTarget target) throws Exception
 	{
-		fillObjectUsingCommand(target, Target.TAG_VIABILITY_MODE, ViabilityModeQuestion.TNC_STYLE_CODE);
+		fillObjectUsingCommand(target, AbstractTarget.TAG_VIABILITY_MODE, ViabilityModeQuestion.TNC_STYLE_CODE);
 	}
 	
 	public void turnOffVisibleQuarterColumns() throws Exception
