@@ -268,7 +268,7 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	
 	private String convertRefsToIdsSuffix(final String elementContainerName)
 	{
-		return elementContainerName.replaceAll("Refs", "Ids");
+		return elementContainerName.replaceAll(REFS, IDS);
 	}
 
 	public void writeXmlFormattedText(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String xmlFormattedText) throws Exception
@@ -332,7 +332,7 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	
 	public void writeMainElementStart() throws Exception
 	{
-		writeStartElementWithAttribute(CONSERVATION_PROJECT, "xmlns:miradi", NAME_SPACE);
+		writeStartElementWithAttribute(CONSERVATION_PROJECT, XMLNS + COLON + RAW_PREFIX, NAME_SPACE);
 		writeln();
 	}
 	
