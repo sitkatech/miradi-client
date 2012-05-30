@@ -125,12 +125,12 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 		map.put(BaseObject.TAG_LABEL, "Name");
 		map.put(Target.TAG_SHORT_LABEL, "Id");
 		map.put(BaseObject.TAG_PROGRESS_REPORT_REFS, PROGRESS_REPORT_IDS);
-		map.put(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, RESOURCE_ASSIGNMENT + "Ids");
-		map.put(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, EXPENSE_ASSIGNMENT + "Ids");
+		map.put(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, RESOURCE_ASSIGNMENT + IDS);
+		map.put(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, EXPENSE_ASSIGNMENT + IDS);
 
 		return map;
 	}
-	
+
 	private HashMap<String, String> createFactorMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
@@ -218,7 +218,7 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createCauseMap()
 	{
 		HashMap<String, String> map = createFactorMap();
-		map.put(Cause.TAG_TAXONOMY_CODE, "StandardClassification");
+		map.put(Cause.TAG_TAXONOMY_CODE, STANDARD_CLASSIFICATION);
 		
 		return map;
 	}
@@ -226,7 +226,7 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createStrategyMap()
 	{
 		HashMap<String, String> map = createFactorMap();
-		map.put(Strategy.TAG_TAXONOMY_CODE, "StandardClassification");
+		map.put(Strategy.TAG_TAXONOMY_CODE, STANDARD_CLASSIFICATION);
 		map.put(Strategy.TAG_ACTIVITY_IDS, SORTED_ACTIVITY_IDS);
 		
 		return map;
@@ -261,9 +261,9 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createMeasurementMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
-		map.put(Measurement.TAG_STATUS_CONFIDENCE, "Source");
-		map.put(Measurement.TAG_SUMMARY, "MeasurementValue");
-		map.put(Measurement.TAG_STATUS, "Rating");
+		map.put(Measurement.TAG_STATUS_CONFIDENCE, SOURCE);
+		map.put(Measurement.TAG_SUMMARY, MEASUREMENT_VALUE);
+		map.put(Measurement.TAG_STATUS, RATING);
 		
 		return map;
 	}
@@ -272,7 +272,7 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	{
 		HashMap<String, String> map = createBaseObjectMap();
 		map.put(Stress.TAG_DETAIL, DETAILS);
-		map.put(Stress.PSEUDO_STRESS_RATING, "Magnitude");
+		map.put(Stress.PSEUDO_STRESS_RATING, MAGNITUDE);
 		
 		return map;
 	}
@@ -289,8 +289,8 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createOrganizationMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
-		map.put(Organization.TAG_CONTACT_FIRST_NAME, "GivenName");
-		map.put(Organization.TAG_CONTACT_LAST_NAME, "Surname");
+		map.put(Organization.TAG_CONTACT_FIRST_NAME, GIVEN_NAME);
+		map.put(Organization.TAG_CONTACT_LAST_NAME, Surname);
 		
 		return map;
 	}
@@ -341,9 +341,9 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createProjectResourceMap()
 	{
 		HashMap<String, String> projectResourceMap = createBaseObjectMap();
-		projectResourceMap.put(ProjectResource.TAG_GIVEN_NAME, "GivenName");
+		projectResourceMap.put(ProjectResource.TAG_GIVEN_NAME, GIVEN_NAME);
 		projectResourceMap.put(ProjectResource.TAG_INITIALS, "Resource_Id");
-		projectResourceMap.put(ProjectResource.TAG_SUR_NAME, "Surname");
+		projectResourceMap.put(ProjectResource.TAG_SUR_NAME, Surname);
 		projectResourceMap.put(ProjectResource.TAG_PHONE_NUMBER, "OfficePhoneNumber");
 		projectResourceMap.put(ProjectResource.TAG_COST_PER_UNIT, "DailyRate");
 		
@@ -352,4 +352,12 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	
 	private HashMap<String, HashMap<String, String>> fieldTagToElementMap;
 	private static final String DETAILS = "Details";
+	private static final String STANDARD_CLASSIFICATION = "StandardClassification";
+	private static final String GIVEN_NAME = "GivenName";
+	private static final String IDS = "Ids";
+	private static final String Surname = "Surname";
+	private final String SOURCE = "Source";
+	private final String MEASUREMENT_VALUE = "MeasurementValue";
+	private final String RATING = "Rating";
+	final String MAGNITUDE = "Magnitude";
 }
