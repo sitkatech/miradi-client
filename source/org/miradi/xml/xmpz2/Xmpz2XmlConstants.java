@@ -23,8 +23,8 @@ package org.miradi.xml.xmpz2;
 public interface Xmpz2XmlConstants
 {
 	public static final String RAW_PREFIX = "miradi";
-	public static final String PREFIX = RAW_PREFIX + ":";
 	public static final String COLON = ":";
+	public static final String PREFIX = RAW_PREFIX + COLON;
 	public static final String SINGLE_SPACE = " ";
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
 	public static final String OPTIONAL_ELEMENT = SINGLE_SPACE + "?" + SINGLE_SPACE;
