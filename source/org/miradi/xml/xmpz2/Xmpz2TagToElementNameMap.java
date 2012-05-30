@@ -281,7 +281,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 	{
 		HashMap<String, String> map = createBaseObjectMap();
 		map.put(Organization.TAG_CONTACT_FIRST_NAME, GIVEN_NAME);
-		map.put(Organization.TAG_CONTACT_LAST_NAME, Surname);
+		map.put(Organization.TAG_CONTACT_LAST_NAME, SURNAME);
 		
 		return map;
 	}
@@ -334,7 +334,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		HashMap<String, String> map = createBaseObjectMap();
 		map.put(ProjectResource.TAG_GIVEN_NAME, GIVEN_NAME);
 		map.put(ProjectResource.TAG_INITIALS, RESOURCE_ID);
-		map.put(ProjectResource.TAG_SUR_NAME, Surname);
+		map.put(ProjectResource.TAG_SUR_NAME, SURNAME);
 		map.put(ProjectResource.TAG_PHONE_NUMBER, OFFICE_PHONE_NUMBER);
 		map.put(ProjectResource.TAG_COST_PER_UNIT, DAILY_RATE);
 		
@@ -346,7 +346,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 	private static final String STANDARD_CLASSIFICATION = "StandardClassification";
 	private static final String GIVEN_NAME = "GivenName";
 	private static final String IDS = "Ids";
-	private static final String Surname = "Surname";
+	private static final String SURNAME = "Surname";
 	private final String SOURCE = "Source";
 	private final String MEASUREMENT_VALUE = "MeasurementValue";
 	private final String RATING = "Rating";
