@@ -22,6 +22,7 @@ package org.miradi.xml.xmpz2;
 
 public interface Xmpz2XmlConstants
 {
+	public static final String XML_HEADER = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>";
 	public static final String RAW_PREFIX = "miradi";
 	public static final String COLON = ":";
 	public static final String PREFIX = RAW_PREFIX + COLON;
