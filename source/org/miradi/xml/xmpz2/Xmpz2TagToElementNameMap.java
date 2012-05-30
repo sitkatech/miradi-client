@@ -141,32 +141,32 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 
 	private HashMap<String, String> createTaskMap()
 	{
-		HashMap<String, String> taskMap = createBaseObjectMap();
-		taskMap.put(Task.TAG_SUBTASK_IDS, SUB_TASK_IDS);
-		return taskMap;
+		HashMap<String, String> map = createBaseObjectMap();
+		map.put(Task.TAG_SUBTASK_IDS, SUB_TASK_IDS);
+		return map;
 	}
 
 	private HashMap<String, String> createIndicatorMap()
 	{
 		//Indicator: has no status tag Status,
-		HashMap<String, String> indicatorMap = createBaseObjectMap();
-		indicatorMap.put(Indicator.TAG_DETAIL, DETAILS);
-		indicatorMap.put(Indicator.TAG_FUTURE_STATUS_DETAIL, FUTURE_STATUS_DETAILS);
-		indicatorMap.put(Indicator.TAG_METHOD_IDS, XmpzXmlConstants.METHOD_IDS);
-		indicatorMap.put(Indicator.TAG_FUTURE_STATUS_COMMENTS, FUTURE_STATUS_COMMENTS);
-		indicatorMap.put(Indicator.TAG_VIABILITY_RATINGS_COMMENTS, VIABILITY_RATINGS_COMMENTS);
-		indicatorMap.put(Indicator.TAG_MEASUREMENT_REFS, MEASUREMENT_IDS);
+		HashMap<String, String> map = createBaseObjectMap();
+		map.put(Indicator.TAG_DETAIL, DETAILS);
+		map.put(Indicator.TAG_FUTURE_STATUS_DETAIL, FUTURE_STATUS_DETAILS);
+		map.put(Indicator.TAG_METHOD_IDS, XmpzXmlConstants.METHOD_IDS);
+		map.put(Indicator.TAG_FUTURE_STATUS_COMMENTS, FUTURE_STATUS_COMMENTS);
+		map.put(Indicator.TAG_VIABILITY_RATINGS_COMMENTS, VIABILITY_RATINGS_COMMENTS);
+		map.put(Indicator.TAG_MEASUREMENT_REFS, MEASUREMENT_IDS);
 		
-		return indicatorMap;
+		return map;
 	}
 
 	private HashMap<String, String> createObjectiveMap()
 	{
-		HashMap<String, String> objectiveMap = createBaseObjectMap();
-		objectiveMap.put(Objective.TAG_FULL_TEXT, DETAILS);
-		objectiveMap.put(Objective.TAG_PROGRESS_PERCENT_REFS, PROGRESS_PERCENT_IDS);
+		HashMap<String, String> map = createBaseObjectMap();
+		map.put(Objective.TAG_FULL_TEXT, DETAILS);
+		map.put(Objective.TAG_PROGRESS_PERCENT_REFS, PROGRESS_PERCENT_IDS);
 		
-		return objectiveMap;
+		return map;
 	}
 	
 	private HashMap<String, String> createGoalMap()
@@ -340,14 +340,14 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 
 	private HashMap<String, String> createProjectResourceMap()
 	{
-		HashMap<String, String> projectResourceMap = createBaseObjectMap();
-		projectResourceMap.put(ProjectResource.TAG_GIVEN_NAME, GIVEN_NAME);
-		projectResourceMap.put(ProjectResource.TAG_INITIALS, RESOURCE_ID);
-		projectResourceMap.put(ProjectResource.TAG_SUR_NAME, Surname);
-		projectResourceMap.put(ProjectResource.TAG_PHONE_NUMBER, OFFICE_PHONE_NUMBER);
-		projectResourceMap.put(ProjectResource.TAG_COST_PER_UNIT, DAILY_RATE);
+		HashMap<String, String> map = createBaseObjectMap();
+		map.put(ProjectResource.TAG_GIVEN_NAME, GIVEN_NAME);
+		map.put(ProjectResource.TAG_INITIALS, RESOURCE_ID);
+		map.put(ProjectResource.TAG_SUR_NAME, Surname);
+		map.put(ProjectResource.TAG_PHONE_NUMBER, OFFICE_PHONE_NUMBER);
+		map.put(ProjectResource.TAG_COST_PER_UNIT, DAILY_RATE);
 		
-		return projectResourceMap;
+		return map;
 	}
 	
 	private HashMap<String, HashMap<String, String>> fieldTagToElementMap;
