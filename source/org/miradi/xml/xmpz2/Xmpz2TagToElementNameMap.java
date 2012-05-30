@@ -333,7 +333,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 	{
 		HashMap<String, String> map = createBaseObjectMap();
 		map.put(ProjectResource.TAG_GIVEN_NAME, GIVEN_NAME);
-		map.put(ProjectResource.TAG_INITIALS, RESOURCE_ID);
+		map.put(ProjectResource.TAG_INITIALS, PROJECT_RESOURCE_ID);
 		map.put(ProjectResource.TAG_SUR_NAME, SURNAME);
 		map.put(ProjectResource.TAG_PHONE_NUMBER, OFFICE_PHONE_NUMBER);
 		map.put(ProjectResource.TAG_COST_PER_UNIT, DAILY_RATE);
@@ -342,28 +342,4 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 	}
 	
 	private HashMap<String, HashMap<String, String>> fieldTagToElementMap;
-	private static final String DETAILS = "Details";
-	private static final String STANDARD_CLASSIFICATION = "StandardClassification";
-	private static final String GIVEN_NAME = "GivenName";
-	private static final String IDS = "Ids";
-	private static final String SURNAME = "Surname";
-	private final String SOURCE = "Source";
-	private final String MEASUREMENT_VALUE = "MeasurementValue";
-	private final String RATING = "Rating";
-	private final String MAGNITUDE = "Magnitude";
-	private final String OFFICE_PHONE_NUMBER = "OfficePhoneNumber";
-	private final String RESOURCE_ID = "Resource_Id";
-	private final String NAME = "Name";
-	private final String COMMENTS = "Comments";
-	private final String VIABILITY_RATINGS_COMMENTS = "ViabilityRatingsComments";
-	private final String FUTURE_STATUS_COMMENTS = "FutureStatusComments";
-	private final String FUTURE_STATUS_DETAILS = "FutureStatusDetails";
-	private final String CONPRO_PROJECT_NUMBER = "ConProProjectNumber";
-	private final String LOCATION_DETAILS = "LocationDetails";
-	private final String VISION_LABEL = "VisionLabel";
-	private final String VISION_STATEMENT_TEXT = "VisionStatementText";
-	private final String SCOPE_NAME = "ScopeName";
-	private final String SCOPE_DESCRIPTION = "ScopeDescription";
-	private final String DIAGRAM_DATA_INCLUSION = "DiagramDataInclusion";
-	private final String DAILY_RATE = "DailyRate";
 }
