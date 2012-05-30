@@ -22,13 +22,11 @@ package org.miradi.xml.xmpz2;
 
 import java.util.HashMap;
 
-import org.miradi.objects.AccountingCode;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ExpenseAssignment;
-import org.miradi.objects.FundingSource;
 import org.miradi.objects.Goal;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.HumanWelfareTarget;
@@ -155,7 +153,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	{
 		//Indicator: has no status tag Status,
 		HashMap<String, String> indicatorMap = createBaseObjectMap();
-		indicatorMap.put(Indicator.TAG_LABEL, "Name");
 		indicatorMap.put(Indicator.TAG_SHORT_LABEL, "Id");
 		indicatorMap.put(Indicator.TAG_DETAIL, DETAILS);
 		indicatorMap.put(Indicator.TAG_FUTURE_STATUS_DETAIL, "FutureStatusDetails");
@@ -173,7 +170,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createObjectiveMap()
 	{
 		HashMap<String, String> objectiveMap = createBaseObjectMap();
-		objectiveMap.put(Objective.TAG_LABEL, "Name");
 		objectiveMap.put(Objective.TAG_SHORT_LABEL, "Id");
 		objectiveMap.put(Objective.TAG_FULL_TEXT, DETAILS);
 		objectiveMap.put(Objective.TAG_PROGRESS_PERCENT_REFS, PROGRESS_PERCENT_IDS);
@@ -184,7 +180,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createGoalMap()
 	{
 		HashMap<String, String> goalMap = createBaseObjectMap();
-		goalMap.put(Goal.TAG_LABEL, "Name");
 		goalMap.put(Goal.TAG_SHORT_LABEL, "Id");
 		goalMap.put(Goal.TAG_FULL_TEXT, DETAILS);
 		goalMap.put(Goal.TAG_PROGRESS_PERCENT_REFS, PROGRESS_PERCENT_IDS);
@@ -225,7 +220,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createAccountingCodeMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
-		map.put(AccountingCode.TAG_LABEL, "Name");
 
 		return map;
 	}
@@ -233,7 +227,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createFundingSourceMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
-		map.put(FundingSource.TAG_LABEL, "Name");
 
 		return map;
 	}
@@ -241,7 +234,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createKeyEcologicalAttributeMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
-		map.put(KeyEcologicalAttribute.TAG_LABEL, "Name");
 		map.put(KeyEcologicalAttribute.TAG_SHORT_LABEL, "Id");
 		map.put(KeyEcologicalAttribute.TAG_DESCRIPTION, "Comments");
 		
@@ -251,7 +243,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createCauseMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
-		map.put(Cause.TAG_LABEL, "Name");
 		map.put(Cause.TAG_SHORT_LABEL, "Id");
 		map.put(Cause.TAG_TAXONOMY_CODE, "StandardClassification");
 		map.put(Cause.TAG_TEXT, DETAILS);
@@ -262,7 +253,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createStrategyMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
-		map.put(Strategy.TAG_LABEL, "Name");
 		map.put(Strategy.TAG_SHORT_LABEL, "Id");
 		map.put(Strategy.TAG_TAXONOMY_CODE, "StandardClassification");
 		map.put(Strategy.TAG_TEXT, DETAILS);
@@ -277,7 +267,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createTargetMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
-		map.put(Target.TAG_LABEL, "Name");
 		map.put(Target.TAG_SHORT_LABEL, "Id");
 		map.put(Target.TAG_TEXT, DETAILS);
 		map.put(Target.TAG_SUB_TARGET_REFS, SUB_TARGET_IDS_ELEMENT);
@@ -289,7 +278,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createInterMediateResultMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
-		map.put(IntermediateResult.TAG_LABEL, "Name");
 		map.put(IntermediateResult.TAG_SHORT_LABEL, "Id");
 		map.put(IntermediateResult.TAG_TEXT, DETAILS);
 		
@@ -309,7 +297,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createDiagramObjectMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
-		map.put(DiagramObject.TAG_LABEL, "Name");
 		map.put(DiagramObject.TAG_SHORT_LABEL, "Id");
 		map.put(DiagramObject.TAG_DETAIL, DETAILS);
 		map.put(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, DIAGRAM_LINK_IDS);
@@ -321,7 +308,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createThreatReductionResultsMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
-		map.put(ThreatReductionResult.TAG_LABEL, "Name");
 		map.put(ThreatReductionResult.TAG_SHORT_LABEL, "Id");
 		map.put(ThreatReductionResult.TAG_TEXT, DETAILS);
 		
@@ -331,7 +317,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createTextBoxMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
-		map.put(TextBox.TAG_LABEL, "Name");
 		map.put(TextBox.TAG_SHORT_LABEL, "Id");
 		map.put(TextBox.TAG_TEXT, DETAILS);
 		
@@ -341,7 +326,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createMeasurementMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
-		map.put(Measurement.TAG_LABEL, "Name");
 		map.put(Measurement.TAG_STATUS_CONFIDENCE, "Source");
 		map.put(Measurement.TAG_SUMMARY, "MeasurementValue");
 		map.put(Measurement.TAG_STATUS, "Rating");
@@ -352,7 +336,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createStressMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
-		map.put(Stress.TAG_LABEL, "Name");
 		map.put(Stress.TAG_SHORT_LABEL, "Id");
 		map.put(Stress.TAG_DETAIL, DETAILS);
 		map.put(Stress.PSEUDO_STRESS_RATING, "Magnitude");
@@ -363,10 +346,8 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createGroupBoxMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
-		map.put(GroupBox.TAG_LABEL, "Name");
 		map.put(GroupBox.TAG_SHORT_LABEL, "Id");
 		map.put(GroupBox.TAG_TEXT, DETAILS);
-		
 		
 		return map;
 	}
@@ -374,7 +355,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createSubTargetMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
-		map.put(SubTarget.TAG_LABEL, "Name");
 		map.put(SubTarget.TAG_SHORT_LABEL, "Id");
 		map.put(SubTarget.TAG_DETAIL, DETAILS);
 		
@@ -385,7 +365,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createOrganizationMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
-		map.put(Organization.TAG_LABEL, "Name");
 		map.put(Organization.TAG_SHORT_LABEL, "Id");
 		map.put(Organization.TAG_CONTACT_FIRST_NAME, "GivenName");
 		map.put(Organization.TAG_CONTACT_LAST_NAME, "Surname");
@@ -431,7 +410,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createScopeBoxMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
-		map.put(ScopeBox.TAG_LABEL, "Name");
 		map.put(Organization.TAG_SHORT_LABEL, "Id");
 		map.put(ScopeBox.TAG_TEXT, DETAILS);
 		map.put(ScopeBox.TAG_SCOPE_BOX_TYPE_CODE, XmlSchemaCreator.SCOPE_BOX_COLOR_ELEMENT_NAME);
@@ -442,7 +420,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createHumanWelfareTargetMap()
 	{
 		HashMap<String, String> map = new HashMap<String, String>();
-		map.put(HumanWelfareTarget.TAG_LABEL, "Name");
 		map.put(HumanWelfareTarget.TAG_SHORT_LABEL, "Id");
 		map.put(HumanWelfareTarget.TAG_TEXT, DETAILS);
 		
@@ -452,7 +429,6 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createProjectResourceMap()
 	{
 		HashMap<String, String> projectResourceMap = createBaseObjectMap();
-		projectResourceMap.put(ProjectResource.TAG_LABEL, "Name");
 		projectResourceMap.put(ProjectResource.TAG_GIVEN_NAME, "GivenName");
 		projectResourceMap.put(ProjectResource.TAG_INITIALS, "Resource_Id");
 		projectResourceMap.put(ProjectResource.TAG_SUR_NAME, "Surname");
