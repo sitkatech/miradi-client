@@ -49,7 +49,7 @@ import org.miradi.objects.TncProjectData;
 import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 
-public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
+public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 {
 	public Xmpz2TagToElementNameMap()
 	{

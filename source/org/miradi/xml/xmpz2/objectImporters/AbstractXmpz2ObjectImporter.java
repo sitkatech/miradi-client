@@ -24,10 +24,10 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.schemas.WcpaProjectDataSchema;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 
-public class AbstractXmpz2ObjectImporter  implements XmpzXmlConstants
+public class AbstractXmpz2ObjectImporter  implements Xmpz2XmlConstants
 {
 	public AbstractXmpz2ObjectImporter(Xmpz2XmlImporter importerToUse)
 	{
