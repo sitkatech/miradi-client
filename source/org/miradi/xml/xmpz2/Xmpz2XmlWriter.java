@@ -378,12 +378,12 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	
 	public void writeStartElementWithAttribute(String startElementName, String attributeName, String attributeValue) throws Exception
 	{
-		write("<" + MIRADI_NAMSPACE + COLON + startElementName + " " + attributeName + "=\"" + attributeValue + "\">");
+		write("<" + RAW_PREFIX + COLON + startElementName + " " + attributeName + "=\"" + attributeValue + "\">");
 	}
 	
 	public void writeStartElementWithTwoAttributes(String startElementName, String attributeName1, int attributeValue1, String attributeName2, int attributeValue2) throws Exception
 	{
-		write("<" + MIRADI_NAMSPACE + COLON+ startElementName + " " + attributeName1 + "=\"" + Integer.toString(attributeValue1) + "\" " + attributeName2 + "=\"" + Integer.toString(attributeValue2) + "\">");
+		write("<" + RAW_PREFIX + COLON+ startElementName + " " + attributeName1 + "=\"" + Integer.toString(attributeValue1) + "\" " + attributeName2 + "=\"" + Integer.toString(attributeValue2) + "\">");
 	}
 	
 	public void writeMainElementEnd() throws Exception
@@ -455,12 +455,12 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	
 	public void writeStartElement(final String elemnentName)	throws Exception
 	{
-		write("<" + MIRADI_NAMSPACE + COLON + elemnentName + ">");
+		write("<" + RAW_PREFIX + COLON + elemnentName + ">");
 	}
 	
 	public void writeEndElement(final String elemnentName)	throws Exception
 	{
-		write("</" + MIRADI_NAMSPACE + COLON + elemnentName + ">");
+		write("</" + RAW_PREFIX + COLON + elemnentName + ">");
 		writeln();
 	}
 	
@@ -497,5 +497,4 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	
 	private Project project;
 	private UnicodeWriter writer;
-	private static final String MIRADI_NAMSPACE = "miradi";
 }
