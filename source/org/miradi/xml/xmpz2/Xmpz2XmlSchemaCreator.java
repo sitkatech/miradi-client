@@ -57,13 +57,12 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void writeHeader(SchemaWriter writer)
 	{
 		writer.writeNamespace(NAME_SPACE);
-		writer.defineAlias("start", "ConservationProject.element");
+		writer.defineAlias("start", CONSERVATION_PROJECT + ".element");
 	}
 
 	private void writeConservationProjectElement(SchemaWriter writer)
 	{
-		String name = "ConservationProject";
-		writer.startElementDefinition(name);
+		writer.startElementDefinition(CONSERVATION_PROJECT);
 
 		Vector<String> elementNames = new Vector<String>();
 		for(BaseObjectSchema baseObjectSchema : baseObjectSchemas)
@@ -76,7 +75,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writer.writeContentsList(elementNames);
 		
 
-		writer.endElementDefinition(name);
+		writer.endElementDefinition(CONSERVATION_PROJECT);
 		writer.flush();
 	}
 
