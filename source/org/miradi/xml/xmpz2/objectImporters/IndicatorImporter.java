@@ -25,6 +25,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Indicator;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.TaskSchema;
+import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -73,10 +74,12 @@ public class IndicatorImporter extends BaseObjectImporter
 			{
 				String statusCode = statusCodeNode.getTextContent();
 				Node thresholdValueNode = getImporter().getNode(thrsholdNode, THRESHOLD_VALUE);
-				thresholdValues.putUserString(statusCode, getImporter().getSafeNodeContent(thresholdValueNode));
+				final String thresholdValue = getImporter().getSafeNodeContent(thresholdValueNode);
+				thresholdValues.putUserString(statusCode, XmlUtilities2.getXmlEncoded(thresholdValue));
 				
 				Node thresholdDetailsNode = getImporter().getNode(thrsholdNode, THRESHOLD_DETAILS);
-				thresholdDetails.putUserString(statusCode, getImporter().getSafeNodeContent(thresholdDetailsNode));
+				final String details = getImporter().getSafeNodeContent(thresholdDetailsNode);
+				thresholdDetails.putUserString(statusCode, XmlUtilities2.getXmlEncoded(details));
 			}			
 		}
 		
