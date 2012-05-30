@@ -22,7 +22,6 @@ package org.miradi.xml.xmpz2.objectImporters;
 
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.WcpaProjectData;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 
@@ -35,7 +34,7 @@ public class Xmpz2ProjectScopeImporter extends AbstractXmpz2ObjectImporter
 
 	public void importFields() throws Exception
 	{
-		Node projectSummaryNode = getImporter().getNode(getImporter().getRootNode(), XmpzXmlConstants.PROJECT_SUMMARY_SCOPE);
+		Node projectSummaryNode = getImporter().getNode(getImporter().getRootNode(), PROJECT_SUMMARY_SCOPE);
 		
 		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_SHORT_PROJECT_SCOPE);
 		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_PROJECT_SCOPE);

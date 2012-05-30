@@ -25,7 +25,6 @@ import org.miradi.objects.Indicator;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class IndicatorSchema extends BaseObjectSchema
 {
@@ -45,7 +44,7 @@ public class IndicatorSchema extends BaseObjectSchema
 		createFieldSchemaCodeToUserStringMap(Indicator.TAG_THRESHOLDS_MAP);
 		createFieldSchemaCodeToUserStringMap(Indicator.TAG_THRESHOLD_DETAILS_MAP);
 		createFieldSchemaChoice(Indicator.TAG_RATING_SOURCE, getQuestion(RatingSourceQuestion.class));
-		createFieldSchemaReflist(Indicator.TAG_MEASUREMENT_REFS, XmpzXmlConstants.MEASUREMENT);
+		createFieldSchemaReflist(Indicator.TAG_MEASUREMENT_REFS, MEASUREMENT);
 		createFieldSchemaMultiLineUserText(Indicator.TAG_DETAIL);
 		createFieldSchemaMultiLineUserText(Indicator.TAG_COMMENTS);
 		createFieldSchemaMultiLineUserText(Indicator.TAG_VIABILITY_RATINGS_COMMENTS);

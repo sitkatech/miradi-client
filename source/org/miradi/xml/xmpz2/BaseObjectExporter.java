@@ -27,9 +27,8 @@ import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 
-public class BaseObjectExporter implements XmpzXmlConstants
+public class BaseObjectExporter implements Xmpz2XmlConstants
 {
 	public BaseObjectExporter(final Xmpz2XmlWriter writerToUse, final int objectTypeToUse)
 	{
@@ -86,10 +85,10 @@ public class BaseObjectExporter implements XmpzXmlConstants
 	protected String getDiagramFactorWrappedFactorTypeName(Factor wrappedFactor)
 	{
 		if (Target.is(wrappedFactor))
-			return XmpzXmlConstants.BIODIVERSITY_TARGET;
+			return BIODIVERSITY_TARGET;
 		
 		if (Cause.is(wrappedFactor))
-			return XmpzXmlConstants.CAUSE;
+			return CAUSE;
 		
 		return wrappedFactor.getTypeName();
 	}

@@ -25,10 +25,10 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.schemas.TableSettingsSchema;
 import org.miradi.schemas.ViewDataSchema;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
-public class ExtraDataExporter implements XmpzXmlConstants
+public class ExtraDataExporter implements Xmpz2XmlConstants
 {
 	public ExtraDataExporter(final Project projectToUse, final Xmpz2XmlWriter writerToUse)
 	{

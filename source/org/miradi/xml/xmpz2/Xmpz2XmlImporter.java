@@ -88,7 +88,6 @@ import org.miradi.xml.AbstractXmlImporter;
 import org.miradi.xml.MiradiXmlValidator;
 import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.wcs.Xmpz2XmlValidator;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz.XmpzNameSpaceContext;
 import org.miradi.xml.xmpz2.objectImporters.BaseObjectImporter;
 import org.miradi.xml.xmpz2.objectImporters.ConceptualModelDiagramImporter;
@@ -228,13 +227,13 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter
 	private void importBaseObjects(final BaseObjectImporter importer) throws Exception
 	{
 		final String elementObjectName = importer.getBaseObjectSchema().getXmpz2ElementName();
-		final String containerElementName = elementObjectName + XmpzXmlConstants.POOL_ELEMENT_TAG;
+		final String containerElementName = elementObjectName + POOL_ELEMENT_TAG;
 		final Node rootNode = getRootNode();
 		final NodeList baseObjectNodes = getNodes(rootNode, new String[]{containerElementName, elementObjectName, });
 		for (int index = 0; index < baseObjectNodes.getLength(); ++index)
 		{
 			Node baseObjectNode = baseObjectNodes.item(index);
-			String intIdAsString = getAttributeValue(baseObjectNode, XmpzXmlConstants.ID);
+			String intIdAsString = getAttributeValue(baseObjectNode, ID);
 			ORef ref = getProject().createObject(importer.getBaseObjectSchema().getType(), new BaseId(intIdAsString));
 			
 			importer.importFields(baseObjectNode, ref);
@@ -319,7 +318,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter
 	public void importCodeListField(Node node, String elementContainerName, ORef destinationRef, String destinationTag) throws Exception
 	{
 		String elementName = findElementName(elementContainerName, destinationTag);
-		String containerElementName = elementContainerName + elementName + XmpzXmlConstants.CONTAINER_ELEMENT_TAG;
+		String containerElementName = elementContainerName + elementName + CONTAINER_ELEMENT_TAG;
 		CodeList codesToImport = getCodeList(node, containerElementName);
 		
 		setData(destinationRef, destinationTag, codesToImport.toString());

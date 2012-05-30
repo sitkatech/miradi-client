@@ -24,7 +24,6 @@ import java.util.Vector;
 
 import org.miradi.objecthelpers.CategorizedQuantity;
 import org.miradi.objecthelpers.TimePeriodCosts;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class ExpenseTimePeriodCostsWriter2 extends AbstractTimePeriodCostsWriter2
 {
@@ -42,13 +41,13 @@ public class ExpenseTimePeriodCostsWriter2 extends AbstractTimePeriodCostsWriter
 	@Override
 	protected String getDateUnitElementName()
 	{
-		return XmpzXmlConstants.EXPENSES_DATE_UNIT;
+		return EXPENSES_DATE_UNIT;
 	}
 	
 	@Override
 	protected String getQuantityDateUnitElementName()
 	{
-		return XmpzXmlConstants.DATE_UNITS_EXPENSE;
+		return DATE_UNITS_EXPENSE;
 	}
 	
 	@Override
@@ -84,7 +83,7 @@ public class ExpenseTimePeriodCostsWriter2 extends AbstractTimePeriodCostsWriter
 	@Override
 	protected String getQuantatityElementName()
 	{
-		return XmpzXmlConstants.EXPENSE;
+		return EXPENSE;
 	}
 
 	@Override

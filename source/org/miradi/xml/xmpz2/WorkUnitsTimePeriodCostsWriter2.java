@@ -24,7 +24,6 @@ import java.util.Vector;
 
 import org.miradi.objecthelpers.CategorizedQuantity;
 import org.miradi.objecthelpers.TimePeriodCosts;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class WorkUnitsTimePeriodCostsWriter2 extends AbstractTimePeriodCostsWriter2
 {
@@ -42,13 +41,13 @@ public class WorkUnitsTimePeriodCostsWriter2 extends AbstractTimePeriodCostsWrit
 	@Override
 	protected String getDateUnitElementName()
 	{
-		return XmpzXmlConstants.WORK_UNITS_DATE_UNIT;
+		return WORK_UNITS_DATE_UNIT;
 	}
 
 	@Override
 	protected String getQuantityDateUnitElementName()
 	{
-		return XmpzXmlConstants.DATE_UNIT_WORK_UNITS;
+		return DATE_UNIT_WORK_UNITS;
 	}
 	
 	@Override
@@ -84,7 +83,7 @@ public class WorkUnitsTimePeriodCostsWriter2 extends AbstractTimePeriodCostsWrit
 	@Override
 	protected String getQuantatityElementName()
 	{
-		return XmpzXmlConstants.WORK_UNITS;
+		return WORK_UNITS;
 	}
 
 	@Override

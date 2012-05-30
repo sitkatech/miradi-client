@@ -46,9 +46,8 @@ import org.miradi.schemas.FieldSchemaReflist;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.PointList;
 import org.miradi.xml.generic.XmlSchemaCreator;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 
-public class Xmpz2XmlWriter implements XmpzXmlConstants
+public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 {
 	public Xmpz2XmlWriter(Project projectToUse, UnicodeWriter writerToUse) throws Exception
 	{

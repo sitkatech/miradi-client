@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2.objectImporters;
 
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 
 public class ResourceAssignmentImporter extends AbstractAssignmentImporter
@@ -34,13 +33,13 @@ public class ResourceAssignmentImporter extends AbstractAssignmentImporter
 	@Override
 	protected String getDateUnitsElementName()
 	{
-		return XmpzXmlConstants.DATE_UNIT_WORK_UNITS;
+		return DATE_UNIT_WORK_UNITS;
 	}
 	
 	@Override
 	protected String getDateUnitElementName()
 	{
-		return XmpzXmlConstants.WORK_UNITS_DATE_UNIT;
+		return WORK_UNITS_DATE_UNIT;
 	}
 	
 	@Override
@@ -76,6 +75,6 @@ public class ResourceAssignmentImporter extends AbstractAssignmentImporter
 	@Override
 	protected String getQuantatityElementName()
 	{
-		return XmpzXmlConstants.WORK_UNITS;
+		return WORK_UNITS;
 	}
 }

@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.schemas;
 
 import org.miradi.objects.Desire;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 
 abstract public class DesireSchema extends BaseObjectSchema
 {
@@ -40,7 +39,7 @@ abstract public class DesireSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(Desire.TAG_COMMENTS);
 		createFieldSchemaRelevancyOverrideSet(Desire.TAG_RELEVANT_INDICATOR_SET);
 		createFieldSchemaRelevancyOverrideSet(Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
-		createFieldSchemaReflist(Desire.TAG_PROGRESS_PERCENT_REFS, XmpzXmlConstants.PROGRESS_PERCENT);
+		createFieldSchemaReflist(Desire.TAG_PROGRESS_PERCENT_REFS, PROGRESS_PERCENT);
 		
 		createPseudoFieldSchemaString(Desire.PSEUDO_TAG_TARGETS);
 		createPseudoFieldSchemaString(Desire.PSEUDO_TAG_DIRECT_THREATS);

@@ -29,9 +29,8 @@ import org.miradi.project.Project;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.Translation;
 import org.miradi.xml.generic.SchemaWriter;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 
-public class Xmpz2XmlSchemaCreator
+public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 {
 	public static void main(String[] args) throws Exception
 	{
@@ -57,7 +56,7 @@ public class Xmpz2XmlSchemaCreator
 
 	private void writeHeader(SchemaWriter writer)
 	{
-		writer.writeNamespace(XmpzXmlConstants.NAME_SPACE);
+		writer.writeNamespace(NAME_SPACE);
 		writer.defineAlias("start", "ConservationProject.element");
 	}
 

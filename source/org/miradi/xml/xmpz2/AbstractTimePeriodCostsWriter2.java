@@ -27,9 +27,8 @@ import org.miradi.objecthelpers.CategorizedQuantity;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.utils.DoubleUtilities;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 
-abstract public class AbstractTimePeriodCostsWriter2 implements XmpzXmlConstants
+abstract public class AbstractTimePeriodCostsWriter2 implements Xmpz2XmlConstants
 {
 	public AbstractTimePeriodCostsWriter2(final Xmpz2XmlWriter writerToUse)
 	{

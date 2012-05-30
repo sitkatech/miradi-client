@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2.objectImporters;
 
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 
 public class ExpenseAssignmentImporter extends AbstractAssignmentImporter
@@ -34,48 +33,48 @@ public class ExpenseAssignmentImporter extends AbstractAssignmentImporter
 	@Override
 	protected String getDateUnitsElementName()
 	{
-		return XmpzXmlConstants.DATE_UNITS_EXPENSE;
+		return DATE_UNITS_EXPENSE;
 	}
 	
 	@Override
 	protected String getDayElementName()
 	{
-		return XmpzXmlConstants.EXPENSES_DAY;
+		return EXPENSES_DAY;
 	}
 	
 	@Override
 	protected String getMonthElementName()
 	{
-		return XmpzXmlConstants.EXPENSES_MONTH;
+		return EXPENSES_MONTH;
 	}
 	
 	@Override
 	protected String getQuarterElementName()
 	{
-		return XmpzXmlConstants.EXPENSES_QUARTER;
+		return EXPENSES_QUARTER;
 	}
 	
 	@Override
 	protected String getYearElementName()
 	{
-		return XmpzXmlConstants.EXPENSES_YEAR;
+		return EXPENSES_YEAR;
 	}
 	
 	@Override
 	protected String getFullProjectTimespanElementName()
 	{
-		return XmpzXmlConstants.EXPENSES_FULL_PROJECT_TIMESPAN;
+		return EXPENSES_FULL_PROJECT_TIMESPAN;
 	}
 	
 	@Override
 	protected String getQuantatityElementName()
 	{
-		return XmpzXmlConstants.EXPENSE;
+		return EXPENSE;
 	}
 
 	@Override
 	protected String getDateUnitElementName()
 	{
-		return XmpzXmlConstants.EXPENSES_DATE_UNIT;
+		return EXPENSES_DATE_UNIT;
 	}
 }

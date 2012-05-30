@@ -26,7 +26,6 @@ import org.miradi.objects.Desire;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaskSchema;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.BaseObjectExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
@@ -75,6 +74,6 @@ public class DesireExporter extends BaseObjectExporter
 	private void writeRelevantActivityIds(final String objectName, Desire desire) throws Exception
 	{
 		ORefList relevantActivityRefs = desire.getRelevantStrategyAndActivityRefs().getFilteredBy(TaskSchema.getObjectType());
-		getWriter().writeReflist(objectName, XmpzXmlConstants.RELEVANT_ACTIVITY_IDS, XmpzXmlConstants.ACTIVITY, relevantActivityRefs);
+		getWriter().writeReflist(objectName, RELEVANT_ACTIVITY_IDS, ACTIVITY, relevantActivityRefs);
 	}
 }

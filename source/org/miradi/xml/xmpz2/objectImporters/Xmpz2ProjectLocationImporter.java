@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2.objectImporters;
 
 import org.miradi.objects.ProjectMetadata;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 
@@ -49,16 +48,16 @@ public class Xmpz2ProjectLocationImporter extends AbstractXmpz2ObjectImporter
 	
 	private void importGeospatialLocationField(Node projectSummaryLocationNode) throws Exception
 	{
-		Node locationNode = getImporter().getNode(projectSummaryLocationNode, XmpzXmlConstants.PROJECT_SUMMARY_LOCATION + XmpzXmlConstants.PROJECT_LOCATION);
+		Node locationNode = getImporter().getNode(projectSummaryLocationNode, PROJECT_SUMMARY_LOCATION + PROJECT_LOCATION);
 		if(locationNode == null)
 			return;
 		
-		Node gespatialLocationNode = getImporter().getNode(locationNode, XmpzXmlConstants.GEOSPATIAL_LOCATION);
+		Node gespatialLocationNode = getImporter().getNode(locationNode, GEOSPATIAL_LOCATION);
 		if(gespatialLocationNode == null)
 			return;
 		
-		getImporter().importField(gespatialLocationNode, XmpzXmlConstants.LATITUDE, getMetadataRef(), ProjectMetadata.TAG_PROJECT_LATITUDE);
-		getImporter().importField(gespatialLocationNode, XmpzXmlConstants.LONGITUDE, getMetadataRef(), ProjectMetadata.TAG_PROJECT_LONGITUDE);
+		getImporter().importField(gespatialLocationNode, LATITUDE, getMetadataRef(), ProjectMetadata.TAG_PROJECT_LATITUDE);
+		getImporter().importField(gespatialLocationNode, LONGITUDE, getMetadataRef(), ProjectMetadata.TAG_PROJECT_LONGITUDE);
 	}
 	
 	private void importProjectMetadataField(Node projectSummaryNode, String tag) throws Exception
