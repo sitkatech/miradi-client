@@ -73,7 +73,6 @@ public class TestXmpz2Importer extends TestCaseWithProject
 		Xmpz2XmlImporter xmlImporter = new Xmpz2XmlImporter(projectToImportInto, new NullProgressMeter());
 		
 		String exportedProjectXml = projectWriter.toString();
-		System.out.println(exportedProjectXml);
 		StringInputStreamWithSeek stringInputputStream = new StringInputStreamWithSeek(exportedProjectXml);
 		try
 		{
