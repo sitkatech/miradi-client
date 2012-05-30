@@ -223,7 +223,7 @@ import org.miradi.views.planning.TestWorkPlanRowColumnProvider;
 import org.miradi.views.threatrating.TestTargetSummartyRowTableModel;
 import org.miradi.views.umbrella.TestUndoRedo;
 import org.miradi.views.workplan.TestDeleteActivity;
-import org.miradi.xml.TestXmpz2Importer;
+import org.miradi.xml.TestXmpz2XmlImporter;
 import org.miradi.xml.TestXmpzXmlImporter;
 import org.miradi.xml.conpro.TestConProCodeMapHelper;
 import org.miradi.xml.conpro.exporter.TestConproXmlExporter;
@@ -508,7 +508,7 @@ public class MainTestSuite extends TestSuite
 		//xml.conpro.importer
 		addTest(new TestSuite(TestConproXmlImporter.class));
 		addTest(new TestSuite(TestXmpzXmlImporter.class));
-		addTest(new TestSuite(TestXmpz2Importer.class));
+		addTest(new TestSuite(TestXmpz2XmlImporter.class));
 	}
 
 	@Override
