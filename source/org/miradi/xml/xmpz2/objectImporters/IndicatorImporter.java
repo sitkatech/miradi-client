@@ -78,8 +78,8 @@ public class IndicatorImporter extends BaseObjectImporter
 				thresholdValuesMap.putUserString(statusCode, XmlUtilities2.getXmlEncoded(thresholdValue));
 				
 				Node thresholdDetailsNode = getImporter().getNode(thrsholdNode, THRESHOLD_DETAILS);
-				final String details = getImporter().getSafeNodeContent(thresholdDetailsNode);
-				thresholdDetailsMap.putUserString(statusCode, XmlUtilities2.getXmlEncoded(details));
+				final String thresholdDetails = getImporter().getSafeNodeContent(thresholdDetailsNode);
+				thresholdDetailsMap.putUserString(statusCode, XmlUtilities2.getXmlEncoded(thresholdDetails));
 			}			
 		}
 		
