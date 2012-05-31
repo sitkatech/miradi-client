@@ -42,10 +42,10 @@ public class TestXmpz2SchemaCreator extends TestCaseWithProject
 	
 	public void testAgainstStaticSchema() throws Exception
 	{
-		Xmpz2XmlSchemaCreator creator = new Xmpz2XmlSchemaCreator();
 		StringWriter stringWriter = new StringWriter();
 		Xmpz2SchemaWriter writer = new Xmpz2SchemaWriter(stringWriter);
-		creator.writeRncSchema(writer);
+		Xmpz2XmlSchemaCreator creator = new Xmpz2XmlSchemaCreator(writer);
+		creator.writeRncSchema();
 		stringWriter.flush();
 		
 		URL resourceURL = ResourcesHandler.getEnglishResourceURL(Xmpz2XmlValidator.XMPZ2_SCHEMA_FILE_RELATIVE_PATH);
@@ -61,7 +61,6 @@ public class TestXmpz2SchemaCreator extends TestCaseWithProject
 		
 		//FIXME urgent - The schema writer is still under development and 
 		// test will fail.  Uncomment this test when schema writer is done. 
-		//assertEquals(allLines, stringWriter.toString());
-		
+		assertEquals(allLines, stringWriter.toString());
 	}
 }
