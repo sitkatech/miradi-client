@@ -33,13 +33,16 @@ import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.ViewData;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
+import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.CostAllocationRuleSchema;
 import org.miradi.schemas.WcpaProjectDataSchema;
 import org.miradi.utils.Translation;
 import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.xmpz2.Xmpz2TagToElementNameMap;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
+import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
 public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 {
@@ -57,6 +60,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	public Xmpz2XmlSchemaCreator(Xmpz2SchemaWriter writerToUse) throws Exception
 	{
 		writer = writerToUse;
+		tagToElementNameMap = new Xmpz2TagToElementNameMap();
 		project = new Project();
 		baseObjectSchemaWriters = getTopLevelBaseObjectSchemas();
 	}
@@ -136,6 +140,29 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		return elementName + ".element";
 	}
+	
+	public void writeStringSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	{
+		writeElementSchema(baseObjectSchema, fieldSchema, "text");
+	}
+
+	public void writeUserTextSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	{
+		writeElementSchema(baseObjectSchema, fieldSchema, "formatted_text");
+	}
+	
+	public void writeBooleanSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	{
+		writeElementSchema(baseObjectSchema, fieldSchema, "xsd:boolean");
+	}
+	
+	public void writeElementSchema(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String elementType)
+	{
+		String poolName = createPoolName(baseObjectSchema);
+		String elementName = getTagToElementNameMap().findElementName(baseObjectSchema.getObjectName(), fieldSchema.getTag());
+		getSchemaWriter().printIndented("element " + PREFIX + poolName + elementName);
+		getSchemaWriter().print(" { " + elementType + " }?");
+	}
 
 	private Vector<BaseObjectSchemaWriter> getTopLevelBaseObjectSchemas()
 	{
@@ -188,6 +215,16 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return !Xmpz2XmlImporter.isCustomImport(objectType);
 	}
 	
+	private String createPoolName(BaseObjectSchema baseObjectSchema)
+	{
+		return Xmpz2XmlWriter.createPoolElementName(baseObjectSchema.getXmpz2ElementName());
+	}
+	
+	private Xmpz2TagToElementNameMap getTagToElementNameMap()
+	{
+		return tagToElementNameMap;
+	}
+	
 	public Xmpz2SchemaWriter getSchemaWriter()
 	{
 		return writer;
@@ -198,6 +235,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return project;
 	}
 
+	private Xmpz2TagToElementNameMap tagToElementNameMap;
 	private Project project;
 	private Xmpz2SchemaWriter writer;
 	private Vector<BaseObjectSchemaWriter> baseObjectSchemaWriters;

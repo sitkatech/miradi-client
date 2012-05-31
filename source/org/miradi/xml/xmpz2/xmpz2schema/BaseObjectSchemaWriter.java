@@ -43,12 +43,14 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 		{
 			if (!doesFieldRequireSpecialHandling(fieldSchema.getTag()))
 			{
-				writeFieldSchem(fieldSchema);
+				writeFieldSchema(fieldSchema);
+				getCreator().getSchemaWriter().print(" &");
+				getCreator().getSchemaWriter().println();
 			}
 		}
 	}
 
-	private void writeFieldSchem(AbstractFieldSchema fieldSchema) throws Exception
+	private void writeFieldSchema(AbstractFieldSchema fieldSchema) throws Exception
 	{
 		ObjectData objectData = fieldSchema.createField(null);
 		objectData.writeAsXmpz2SchemaElement(creator, baseObjectSchema, fieldSchema);
@@ -57,6 +59,11 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 	private boolean doesFieldRequireSpecialHandling(String tag)
 	{
 		return false;
+	}
+	
+	public Xmpz2XmlSchemaCreator getCreator()
+	{
+		return creator;
 	}
 
 	public String getPoolName()

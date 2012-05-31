@@ -26,7 +26,6 @@ import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
-import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2XmlSchemaCreator;
 import org.w3c.dom.Node;
 
 public class BaseIdData extends ObjectData
@@ -113,12 +112,6 @@ public class BaseIdData extends ObjectData
 		importer.importIdField(node, destinationRefToUse, baseObjectSchema, fieldSchema);
 	}
 	
-	@Override
-	public void writeAsXmpz2SchemaElement(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
-	{
-		creator.writeIdAttribute();
-	}
-
 	private int objectType;
 	private BaseId id;
 }
