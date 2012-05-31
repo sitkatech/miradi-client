@@ -45,12 +45,19 @@ import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.TncProjectData;
+import org.miradi.schemas.AbstractFieldSchema;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 {
 	public Xmpz2TagToElementNameMap()
 	{
 		fieldTagToElementMap = createTagToElementMap();
+	}
+	
+	public String findElementName(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	{
+		return findElementName(baseObjectSchema.getObjectName(), fieldSchema.getTag());
 	}
 	
 	public String findElementName(String objectName, String tagToUse)

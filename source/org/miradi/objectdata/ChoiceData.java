@@ -25,6 +25,7 @@ import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
+import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2XmlSchemaCreator;
 import org.w3c.dom.Node;
 
 
@@ -59,6 +60,12 @@ public class ChoiceData extends StringData
 	public void readAsXmpz2XmlData(Xmpz2XmlImporter importer, Node node, ORef destinationRefToUse, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
 		importer.importChoiceField(node, baseObjectSchema.getXmpz2ElementName(), destinationRefToUse, fieldSchema.getTag(), getChoiceQuestion());
+	}
+	
+	@Override	
+	public void writeAsXmpz2SchemaElement(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		creator.writeChoiceSchemaElement(baseObjectSchema, fieldSchema, getChoiceQuestion());
 	}
 
 	private ChoiceQuestion question;

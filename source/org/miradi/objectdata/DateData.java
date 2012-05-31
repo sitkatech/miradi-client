@@ -26,6 +26,7 @@ import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.InvalidDateException;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
+import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2XmlSchemaCreator;
 import org.w3c.dom.Node;
 
 public class DateData extends ObjectData
@@ -94,6 +95,12 @@ public class DateData extends ObjectData
 	public void readAsXmpz2XmlData(Xmpz2XmlImporter importer, Node node, ORef destinationRefToUse, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
 		importer.importDateField(node, destinationRefToUse, baseObjectSchema, fieldSchema);
+	}
+	
+	@Override
+	public void writeAsXmpz2SchemaElement(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		creator.writeDateSchemaElement(baseObjectSchema, fieldSchema);
 	}
 	
 	private MultiCalendar date;
