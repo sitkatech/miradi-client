@@ -20,15 +20,43 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.xmpz2schema;
 
+import org.miradi.objectdata.ObjectData;
+import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.xml.generic.SchemaWriter;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
 public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 {
-	public BaseObjectSchemaWriter(BaseObjectSchema baseObjectSchemaToUse)
+	public BaseObjectSchemaWriter(Xmpz2XmlSchemaCreator creatorToUse, BaseObjectSchema baseObjectSchemaToUse)
 	{
+		creator = creatorToUse;
 		baseObjectSchema = baseObjectSchemaToUse;
+	}
+	
+	public void writeFields(SchemaWriter writer) throws Exception
+	{
+		writer.printIndented("attribute " + ID + " "+ "{xsd:integer} &");
+		writer.println();
+		for(AbstractFieldSchema fieldSchema : getBaseObjectSchema())
+		{
+			if (!doesFieldRequireSpecialHandling(fieldSchema.getTag()))
+			{
+				writeFieldSchem(fieldSchema);
+			}
+		}
+	}
+
+	private void writeFieldSchem(AbstractFieldSchema fieldSchema) throws Exception
+	{
+		ObjectData objectData = fieldSchema.createField(null);
+		objectData.writeAsXmpz2SchemaElement(creator, baseObjectSchema, fieldSchema);
+	}
+
+	private boolean doesFieldRequireSpecialHandling(String tag)
+	{
+		return false;
 	}
 
 	public String getPoolName()
@@ -46,5 +74,6 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 		return baseObjectSchema;
 	}
 	
+	private Xmpz2XmlSchemaCreator creator;
 	private BaseObjectSchema baseObjectSchema;
 }

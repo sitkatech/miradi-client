@@ -37,7 +37,6 @@ import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.CostAllocationRuleSchema;
 import org.miradi.schemas.WcpaProjectDataSchema;
 import org.miradi.utils.Translation;
-import org.miradi.xml.generic.SchemaWriter;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
@@ -49,31 +48,33 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		Miradi.addThirdPartyJarsToClasspath();
 		Translation.initialize();
 
-		Xmpz2XmlSchemaCreator creator = new Xmpz2XmlSchemaCreator();
 		Xmpz2SchemaWriter writer = new Xmpz2SchemaWriter(System.out);
-		creator.writeRncSchema(writer);
+		Xmpz2XmlSchemaCreator creator = new Xmpz2XmlSchemaCreator(writer);
+		
+		creator.writeRncSchema();
 	}
 
-	public Xmpz2XmlSchemaCreator() throws Exception
+	public Xmpz2XmlSchemaCreator(Xmpz2SchemaWriter writerToUse) throws Exception
 	{
+		writer = writerToUse;
 		project = new Project();
 		baseObjectSchemaWriters = getTopLevelBaseObjectSchemas();
 	}
 
-	public void writeRncSchema(Xmpz2SchemaWriter writer) throws Exception
+	public void writeRncSchema() throws Exception
 	{
-		writeHeader(writer);
-		writeConservationProjectElement(writer);
-		writeBaseObjectSchemaElements(writer);
+		writeHeader();
+		writeConservationProjectElement();
+		writeBaseObjectSchemaElements();
 	}
 
-	private void writeHeader(Xmpz2SchemaWriter writer)
+	private void writeHeader()
 	{
 		writer.writeNamespace(NAME_SPACE);
 		writer.defineAlias("start", CONSERVATION_PROJECT + ".element");
 	}
 
-	private void writeConservationProjectElement(Xmpz2SchemaWriter writer)
+	private void writeConservationProjectElement()
 	{
 		writer.startElementDefinition(CONSERVATION_PROJECT);
 
@@ -94,28 +95,34 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writer.flush();
 	}
 	
-	private void writeBaseObjectSchemaElements(SchemaWriter writer)
+	private void writeBaseObjectSchemaElements() throws Exception
 	{
 		for(BaseObjectSchemaWriter baseObjectSchemaWriter : baseObjectSchemaWriters)
 		{
-			writeBaseObjectSchema(writer, baseObjectSchemaWriter);
+			writeBaseObjectSchema(baseObjectSchemaWriter);
 		}		
 	}
 
-	private void writeBaseObjectSchema(SchemaWriter writer, BaseObjectSchemaWriter baseObjectSchemaWriter)
+	private void writeBaseObjectSchema(BaseObjectSchemaWriter baseObjectSchemaWriter) throws Exception
 	{
-		writeBaseObjectSchemaHeader(writer, baseObjectSchemaWriter);
+		writeBaseObjectSchemaHeader(baseObjectSchemaWriter);
 		writer.startBlock();
-		writeElementContent(writer, baseObjectSchemaWriter);
+		writeElementContent(baseObjectSchemaWriter);
 		writer.endBlock();
 	}
 
-	private void writeElementContent(SchemaWriter writer,  BaseObjectSchemaWriter baseObjectSchemaWriter)
+	private void writeElementContent(BaseObjectSchemaWriter baseObjectSchemaWriter) throws Exception
 	{
-		writer.printIndented("attribute " + ID + " "+ "{xsd:integer}");
+		baseObjectSchemaWriter.writeFields(writer);
+		writer.println();
+	}
+	
+	public void writeIdAttribute()
+	{
+		writer.printIndented("attribute " + ID + " "+ "{xsd:integer} &");
 	}
 
-	private void writeBaseObjectSchemaHeader(SchemaWriter writer, BaseObjectSchemaWriter baseObjectSchemaWriter)
+	private void writeBaseObjectSchemaHeader(BaseObjectSchemaWriter baseObjectSchemaWriter)
 	{
 		String baseObjectName = baseObjectSchemaWriter.getXmpz2ElementName();
 		String baseObjectPoolName = baseObjectSchemaWriter.getPoolName();
@@ -143,7 +150,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 				continue;
 			
 			BaseObjectSchema baseObjectSchema = pool.createBaseObjectSchema(getProject());
-			schemaWriters.add(new BaseObjectSchemaWriter(baseObjectSchema));
+			schemaWriters.add(new BaseObjectSchemaWriter(this, baseObjectSchema));
 		}
 		
 		return schemaWriters;
@@ -187,5 +194,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	}
 
 	private Project project;
+	private Xmpz2SchemaWriter writer;
 	private Vector<BaseObjectSchemaWriter> baseObjectSchemaWriters;
 }
