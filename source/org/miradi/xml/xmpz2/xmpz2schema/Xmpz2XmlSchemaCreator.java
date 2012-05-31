@@ -90,7 +90,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		for(BaseObjectSchemaWriter baseObjectSchemaWriter : baseObjectSchemaWriters)
 		{
 			String poolName = baseObjectSchemaWriter.getPoolName();
-			elementNames.add(createElementName(poolName));
+			elementNames.add(createElementName(poolName) + " ? ");
 		}
 		
 		getSchemaWriter().writeContentsList(elementNames);
@@ -154,6 +154,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	public void writeBooleanSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
 		writeElementSchema(baseObjectSchema, fieldSchema, "xsd:boolean");
+	}
+	
+	public void writeNumberSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema)
+	{
+		writeElementSchema(baseObjectSchema, fieldSchema, "xsd:decimal");
 	}
 	
 	public void writeElementSchema(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String elementType)
