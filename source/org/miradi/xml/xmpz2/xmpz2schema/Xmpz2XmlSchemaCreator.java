@@ -60,20 +60,20 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		baseObjectSchemaWriters = getTopLevelBaseObjectSchemas();
 	}
 
-	public void writeRncSchema(SchemaWriter writer) throws Exception
+	public void writeRncSchema(Xmpz2SchemaWriter writer) throws Exception
 	{
 		writeHeader(writer);
 		writeConservationProjectElement(writer);
 		writeBaseObjectSchemaElements(writer);
 	}
 
-	private void writeHeader(SchemaWriter writer)
+	private void writeHeader(Xmpz2SchemaWriter writer)
 	{
 		writer.writeNamespace(NAME_SPACE);
 		writer.defineAlias("start", CONSERVATION_PROJECT + ".element");
 	}
 
-	private void writeConservationProjectElement(SchemaWriter writer)
+	private void writeConservationProjectElement(Xmpz2SchemaWriter writer)
 	{
 		writer.startElementDefinition(CONSERVATION_PROJECT);
 
@@ -106,9 +106,14 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		writeBaseObjectSchemaHeader(writer, baseObjectSchemaWriter);
 		writer.startBlock();
+		writeElementContent(writer, baseObjectSchemaWriter);
 		writer.endBlock();
 	}
 
+	private void writeElementContent(SchemaWriter writer,  BaseObjectSchemaWriter baseObjectSchemaWriter)
+	{
+		writer.printIndented("attribute " + ID + " "+ "{xsd:integer}");
+	}
 
 	private void writeBaseObjectSchemaHeader(SchemaWriter writer, BaseObjectSchemaWriter baseObjectSchemaWriter)
 	{

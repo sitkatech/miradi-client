@@ -24,8 +24,9 @@ import java.io.PrintStream;
 import java.io.StringWriter;
 
 import org.miradi.xml.generic.SchemaWriter;
+import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 
-public class Xmpz2SchemaWriter extends SchemaWriter
+public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 {
 	public Xmpz2SchemaWriter(StringWriter writer)
 	{
@@ -36,13 +37,16 @@ public class Xmpz2SchemaWriter extends SchemaWriter
 	{
 		super(out);
 	}
+	
+	public void writeNamespace(String uri)
+	{
+		println("namespace " + RAW_PREFIX + " = " + "'" + uri + "'");
+	}
 
 	@Override	
 	public void startElementDefinition(String name)
 	{
-		println(name + ".element = element " +  prefix + ":" + name);
+		println(name + ".element = element " +  RAW_PREFIX + ":" + name);
 		startBlock();
 	}
-	
-	private static final String prefix = "miradi";
 }

@@ -68,11 +68,6 @@ public class SchemaWriter extends PrintWriter
 		println();
 	}
 
-	public void writeNamespace(String uri)
-	{
-		println("namespace " + prefix + " = " + "'" + uri + "'");
-	}
-
 	public void startElementDefinition(String name)
 	{
 		println(name + ".element = element " + name);
@@ -97,8 +92,5 @@ public class SchemaWriter extends PrintWriter
 		
 	}
 
-	private static final String prefix = "miradi:";
-
 	private int indentLevel;
-
 }
