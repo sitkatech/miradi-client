@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.xmpz2;
+package org.miradi.xml.xmpz2.xmpz2schema;
 
 import java.util.Vector;
 
@@ -39,8 +39,8 @@ import org.miradi.schemas.WcpaProjectDataSchema;
 import org.miradi.utils.Translation;
 import org.miradi.xml.generic.SchemaWriter;
 import org.miradi.xml.wcs.XmpzXmlConstants;
-import org.miradi.xml.xmpz2.xmpz2schema.BaseObjectSchemaWriter;
-import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2SchemaWriter;
+import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
+import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 
 public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 {
