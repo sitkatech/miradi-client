@@ -25,14 +25,17 @@ import java.util.Vector;
 import org.miradi.main.Miradi;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.BaseObjectPool;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.ViewData;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.CostAllocationRuleSchema;
@@ -42,7 +45,6 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2TagToElementNameMap;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
-import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
 public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 {
@@ -161,9 +163,40 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeElementSchema(baseObjectSchema, fieldSchema, "xsd:decimal");
 	}
 	
-	public void writeElementSchema(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String elementType)
+	public void writeDateSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		String poolName = createPoolName(baseObjectSchema);
+		writeElementSchema(baseObjectSchema, fieldSchema, "vocabulary_date");
+	}
+	
+	public void writeRefSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	{
+		String fieldName = getTagToElementNameMap().findElementName(baseObjectSchema, fieldSchema);
+		writeSchemaElement(baseObjectSchema, fieldSchema, fieldName);
+	}
+	
+	public void writeBaseIdSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, int objectType)
+	{
+		String objectName = getProject().getObjectManager().getInternalObjectTypeName(objectType);
+		writeSchemaElement(baseObjectSchema, fieldSchema, objectName + ID);
+	}
+
+	public void writeDateUnitEffortListSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	{
+		writeSchemaElement(baseObjectSchema, fieldSchema, "DateUnit" + getDateUniteTypeName(baseObjectSchema.getType()));
+	}
+	
+	public void writeChoiceSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, ChoiceQuestion choiceQuestion)
+	{
+	}
+	
+	public void writeSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, final String elementType)
+	{
+		writeElementSchema(baseObjectSchema, fieldSchema, elementType + ".element*");
+	}
+
+	private void writeElementSchema(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String elementType)
+	{
+		String poolName = baseObjectSchema.getXmpz2ElementName();
 		String elementName = getTagToElementNameMap().findElementName(baseObjectSchema.getObjectName(), fieldSchema.getTag());
 		getSchemaWriter().printIndented("element " + PREFIX + poolName + elementName);
 		getSchemaWriter().print(" { " + elementType + " }?");
@@ -220,11 +253,17 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return !Xmpz2XmlImporter.isCustomImport(objectType);
 	}
 	
-	private String createPoolName(BaseObjectSchema baseObjectSchema)
+	private String getDateUniteTypeName(int objectType)
 	{
-		return Xmpz2XmlWriter.createPoolElementName(baseObjectSchema.getXmpz2ElementName());
+		if (ExpenseAssignment.is(objectType))
+			return EXPENSE;
+		
+		if (ResourceAssignment.is(objectType))
+			return WORK_UNITS;
+		
+		throw new RuntimeException("Object type " + objectType + " cannot have a dateunitEffortsList field");
 	}
-	
+		
 	private Xmpz2TagToElementNameMap getTagToElementNameMap()
 	{
 		return tagToElementNameMap;
