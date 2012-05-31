@@ -30,8 +30,8 @@ import java.net.URL;
 import org.miradi.main.ResourcesHandler;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.xml.wcs.Xmpz2XmlValidator;
-import org.miradi.xml.xmpz2.Xmpz2XmlSchemaCreator;
 import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2SchemaWriter;
+import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2XmlSchemaCreator;
 
 public class TestXmpz2SchemaCreator extends TestCaseWithProject
 {
