@@ -70,13 +70,13 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	private void writeHeader()
 	{
-		writer.writeNamespace(NAME_SPACE);
-		writer.defineAlias("start", CONSERVATION_PROJECT + ".element");
+		getSchemaWriter().writeNamespace(NAME_SPACE);
+		getSchemaWriter().defineAlias("start", CONSERVATION_PROJECT + ".element");
 	}
 
 	private void writeConservationProjectElement()
 	{
-		writer.startElementDefinition(CONSERVATION_PROJECT);
+		getSchemaWriter().startElementDefinition(CONSERVATION_PROJECT);
 
 		Vector<String> elementNames = new Vector<String>();
 		elementNames.add(createElementName(PROJECT_SUMMARY));
@@ -89,10 +89,10 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			elementNames.add(createElementName(poolName));
 		}
 		
-		writer.writeContentsList(elementNames);
+		getSchemaWriter().writeContentsList(elementNames);
 		
-		writer.endElementDefinition(CONSERVATION_PROJECT);
-		writer.flush();
+		getSchemaWriter().endElementDefinition(CONSERVATION_PROJECT);
+		getSchemaWriter().flush();
 	}
 	
 	private void writeBaseObjectSchemaElements() throws Exception
@@ -106,20 +106,20 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void writeBaseObjectSchema(BaseObjectSchemaWriter baseObjectSchemaWriter) throws Exception
 	{
 		writeBaseObjectSchemaHeader(baseObjectSchemaWriter);
-		writer.startBlock();
+		getSchemaWriter().startBlock();
 		writeElementContent(baseObjectSchemaWriter);
-		writer.endBlock();
+		getSchemaWriter().endBlock();
 	}
 
 	private void writeElementContent(BaseObjectSchemaWriter baseObjectSchemaWriter) throws Exception
 	{
-		baseObjectSchemaWriter.writeFields(writer);
-		writer.println();
+		baseObjectSchemaWriter.writeFields(getSchemaWriter());
+		getSchemaWriter().println();
 	}
 	
 	public void writeIdAttribute()
 	{
-		writer.printIndented("attribute " + ID + " "+ "{xsd:integer} &");
+		getSchemaWriter().printIndented("attribute " + ID + " "+ "{xsd:integer} &");
 	}
 
 	private void writeBaseObjectSchemaHeader(BaseObjectSchemaWriter baseObjectSchemaWriter)
@@ -128,8 +128,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		String baseObjectPoolName = baseObjectSchemaWriter.getPoolName();
 		
 		String result = XmpzXmlConstants.ELEMENT_NAME + XmpzXmlConstants.PREFIX + baseObjectPoolName + " { " + createElementName(baseObjectName) + "* }";
-		writer.defineAlias(createElementName(baseObjectPoolName), result);
-		writer.defineAlias(createElementName(baseObjectName), "element miradi:" + baseObjectName);
+		getSchemaWriter().defineAlias(createElementName(baseObjectPoolName), result);
+		getSchemaWriter().defineAlias(createElementName(baseObjectName), "element miradi:" + baseObjectName);
 	}
 
 	private String createElementName(String elementName)
@@ -186,6 +186,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			  return false;
 		  
 		return !Xmpz2XmlImporter.isCustomImport(objectType);
+	}
+	
+	public Xmpz2SchemaWriter getSchemaWriter()
+	{
+		return writer;
 	}
 
 	public Project getProject()
