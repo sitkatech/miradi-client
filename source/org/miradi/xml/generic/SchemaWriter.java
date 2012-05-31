@@ -22,10 +22,16 @@ package org.miradi.xml.generic;
 
 import java.io.PrintStream;
 import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.Vector;
 
 public class SchemaWriter extends PrintWriter
 {
+	public SchemaWriter(StringWriter writer)
+	{
+		super(writer);
+	}
+	
 	public SchemaWriter(PrintStream out)
 	{
 		super(out);
