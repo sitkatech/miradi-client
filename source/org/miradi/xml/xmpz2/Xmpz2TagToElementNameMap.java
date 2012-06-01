@@ -147,7 +147,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 
 	private HashMap<String, String> createTaskMap()
 	{
-		HashMap<String, String> map = createBaseObjectMap();
+		HashMap<String, String> map = createFactorMap();
 		map.put(Task.TAG_SUBTASK_IDS, SUB_TASK_IDS);
 		return map;
 	}
@@ -268,7 +268,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 
 	private HashMap<String, String> createStressMap()
 	{
-		HashMap<String, String> map = createBaseObjectMap();
+		HashMap<String, String> map = createFactorMap();
 		map.put(Stress.TAG_DETAIL, DETAILS);
 		map.put(Stress.PSEUDO_STRESS_RATING, MAGNITUDE);
 		
