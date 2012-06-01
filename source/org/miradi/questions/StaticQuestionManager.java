@@ -48,6 +48,7 @@ public class StaticQuestionManager
 		addQuestion(new ResourceRoleQuestion());
 		addQuestion(new ResourceTypeQuestion());
 		addQuestion(new StatusConfidenceQuestion());
+		addQuestion(new StatusQuestion());
 		addQuestion(new TargetStatusQuestion());
 		addQuestion(new MeasurementStatusQuestion());
 		addQuestion(new StrategyClassificationQuestion());
