@@ -23,10 +23,15 @@ package org.miradi.xml;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.net.URL;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Vector;
 
+import org.martus.util.UnicodeStringReader;
 import org.miradi.main.ResourcesHandler;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.xml.wcs.Xmpz2XmlValidator;
@@ -42,25 +47,58 @@ public class TestXmpz2SchemaCreator extends TestCaseWithProject
 	
 	public void testAgainstStaticSchema() throws Exception
 	{
+		HashSet<String> actualLinesSet = getActualLines();
+		HashSet<String> expectedLinesSet = getExpectedLines();
+		
+		expectedLinesSet.removeAll(actualLinesSet);
+		PRINT_LEFT_OVER_LINES_FOR_DEV_PURPOSES(expectedLinesSet);
+		assertTrue("non matching schema lines found?", expectedLinesSet.size() == 0);
+	}
+
+	public HashSet<String> getExpectedLines() throws Exception
+	{
+		URL resourceURL = ResourcesHandler.getEnglishResourceURL(Xmpz2XmlValidator.XMPZ2_SCHEMA_FILE_RELATIVE_PATH);
+		FileInputStream fileInputStream = new FileInputStream(resourceURL.getFile());
+		DataInputStream in = new DataInputStream(fileInputStream);
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in));
+		String expectedLine;
+		HashSet<String> expectedLinesSet = new HashSet<String>();
+		while ((expectedLine = bufferedReader.readLine()) != null)   
+		{
+			expectedLinesSet.add(expectedLine);
+		}
+
+		return expectedLinesSet;
+	}
+
+	public HashSet<String> getActualLines() throws Exception, IOException
+	{
 		StringWriter stringWriter = new StringWriter();
 		Xmpz2SchemaWriter writer = new Xmpz2SchemaWriter(stringWriter);
 		Xmpz2XmlSchemaCreator creator = new Xmpz2XmlSchemaCreator(writer);
 		creator.writeRncSchema();
 		stringWriter.flush();
 		
-		URL resourceURL = ResourcesHandler.getEnglishResourceURL(Xmpz2XmlValidator.XMPZ2_SCHEMA_FILE_RELATIVE_PATH);
-		FileInputStream fileInputStream = new FileInputStream(resourceURL.getFile());
-		DataInputStream in = new DataInputStream(fileInputStream);
-		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in));
-		String line;
-		String allLines = "";
-		while ((line = bufferedReader.readLine()) != null)   
+		UnicodeStringReader reader = new UnicodeStringReader(stringWriter.toString());
+		HashSet<String> actualLinesSet = new HashSet<String>();
+		String actualLine = null;
+		while ((actualLine = reader.readLine()) != null)
 		{
-			allLines += line + "\n";
+			actualLinesSet.add(actualLine);
 		}
-		
-		//FIXME urgent - The schema writer is still under development and 
-		// test will fail.  Uncomment this test when schema writer is done. 
-		//assertEquals(allLines, stringWriter.toString());
+
+		return actualLinesSet;
+	}
+
+	private void PRINT_LEFT_OVER_LINES_FOR_DEV_PURPOSES(HashSet<String> expectedLinesSet)
+	{
+		Vector<String> sortedLines = new Vector<String>();
+		sortedLines.addAll(expectedLinesSet);
+		Collections.sort(sortedLines);
+		for(String line : sortedLines)
+		{
+			//FIXME this is for development only!
+			//System.out.println(line);
+		}
 	}
 }
