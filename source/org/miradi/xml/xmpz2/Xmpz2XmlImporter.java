@@ -82,6 +82,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
 import org.miradi.utils.ProgressInterface;
+import org.miradi.utils.StringUtilities;
 import org.miradi.xml.AbstractXmlImporter;
 import org.miradi.xml.MiradiXmlValidator;
 import org.miradi.xml.wcs.Xmpz2XmlValidator;
@@ -309,12 +310,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	
 	private String convertIdsToIdString(String elementName)
 	{
-		return removeLastChar(elementName);
-	}
-
-	private String removeLastChar(String elementName)
-	{
-		return elementName.substring(0, elementName.length() - 1);
+		return StringUtilities.removeLastChar(elementName);
 	}
 
 	public void importCodeListField(Node node, String elementContainerName, ORef destinationRef, String destinationTag) throws Exception
