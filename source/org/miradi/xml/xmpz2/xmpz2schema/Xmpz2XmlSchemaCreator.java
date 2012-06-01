@@ -45,6 +45,7 @@ import org.miradi.schemas.CostAllocationRuleSchema;
 import org.miradi.schemas.WcpaProjectDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.HtmlUtilities;
+import org.miradi.utils.StringUtilities;
 import org.miradi.utils.Translation;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2TagToElementNameMap;
@@ -225,14 +226,20 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		String vocabularyName = getChoiceQuestionToSchemaElementNameMap().get(choiceQuestion.getClass());
 		writeElementSchema(baseObjectSchema, fieldSchema, vocabularyName);
 	}
+	
+	public void writeIdListSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema)
+	{
+		String elementName = getTagToElementNameMap().findElementName(baseObjectSchema.getObjectName(), fieldSchema.getTag());
+		String idListElementName = baseObjectSchema.getXmpz2ElementName() + elementName;
+		final String text = "element " + PREFIX + idListElementName + " { " + StringUtilities.removeLastChar(elementName) + ".element* }? ";
+		getSchemaWriter().printIndented(text);
+	}
 
-	//FIXME urgent - method is not complete
 	public void writeRefListSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
 		String elementName = getTagToElementNameMap().findElementName(baseObjectSchema.getObjectName(), fieldSchema.getTag());
 		String reflistElementName = baseObjectSchema.getXmpz2ElementName() + elementName;
-		//element miradi:ConceptualModelSelectedTaggedObjectSetIds { TaggedObjectSetId.element* }
-		getSchemaWriter().printIndented("element " + PREFIX + reflistElementName);
+		getSchemaWriter().printIndented("element " + PREFIX + reflistElementName + " { " + StringUtilities.removeLastChar(elementName) + ".element* }? ");
 	}
 	
 	public void writeCodelistSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ChoiceQuestion question)
