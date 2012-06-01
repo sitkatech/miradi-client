@@ -37,11 +37,15 @@ public class StressSchema extends FactorSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaSingleLineUserText(Stress.TAG_SHORT_LABEL);
-		createFieldSchemaMultiLineUserText(Stress.TAG_DETAIL);
 		createFieldSchemaChoice(Stress.TAG_SCOPE, getQuestion(StressScopeChoiceQuestion.class));
 		createFieldSchemaChoice(Stress.TAG_SEVERITY, getQuestion(StressSeverityChoiceQuestion.class));
 		createPseudoFieldSchemaQuestion(Stress.PSEUDO_STRESS_RATING);
+	}
+	
+	@Override
+	protected void addDetailsField()
+	{
+		createFieldSchemaMultiLineUserText(Stress.TAG_DETAIL);
 	}
 
 	public static int getObjectType()
