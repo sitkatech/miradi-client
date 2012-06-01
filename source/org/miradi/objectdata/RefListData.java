@@ -26,6 +26,7 @@ import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.FieldSchemaReflist;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
+import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2XmlSchemaCreator;
 import org.w3c.dom.Node;
 
 public class RefListData extends ObjectData
@@ -96,6 +97,12 @@ public class RefListData extends ObjectData
 	public void readAsXmpz2XmlData(Xmpz2XmlImporter importer, Node node, ORef detinationRef, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
 		importer.importRefs(node, detinationRef, baseObjectSchema, fieldSchema, ((FieldSchemaReflist)fieldSchema).getTypeName());
+	}
+	
+	@Override
+	public void writeAsXmpz2SchemaElement(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		creator.writeRefListSchemaElement(baseObjectSchema, fieldSchema);
 	}
 	
 	private ORefList refList;

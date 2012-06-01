@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.xmpz2schema;
 
+import java.util.Set;
 import java.util.Vector;
 
 import org.miradi.main.Miradi;
@@ -36,10 +37,12 @@ import org.miradi.objects.ViewData;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.TextBoxZOrderQuestion;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.CostAllocationRuleSchema;
 import org.miradi.schemas.WcpaProjectDataSchema;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.Translation;
 import org.miradi.xml.wcs.XmpzXmlConstants;
@@ -76,6 +79,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeConservationProjectElement();
 		writeBaseObjectSchemaElements();
 		writeCodelistSchemaElements();
+		writeVocabularyDefinitions();
 	}
 
 	private void writeHeader()
@@ -134,6 +138,22 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			getSchemaWriter().printIndented(codelistSchemaElement);
 			getSchemaWriter().println();
 		}
+	}
+	
+	private void writeVocabularyDefinitions()
+	{
+		Set<ChoiceQuestion> choiceQuestions = choiceQuestionToSchemaElementNameMap.keySet();
+		for(ChoiceQuestion question : choiceQuestions)
+		{
+			String vocabularyName = choiceQuestionToSchemaElementNameMap.get(question);
+			defineVocabulary(question, vocabularyName);
+		}
+		
+		getSchemaWriter().println("vocabulary_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } ");
+		getSchemaWriter().println("vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } ");
+		getSchemaWriter().println("vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='12' } ");
+		getSchemaWriter().println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
+		getSchemaWriter().println(VOCABULARY_TEXT_BOX_Z_ORDER + " = '" + Z_ORDER_BACK_CODE + "' | '" + TextBoxZOrderQuestion.FRONT_CODE + "'");
 	}
 	
 	public void writeIdAttribute()
@@ -203,11 +223,20 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		String vocabularyName = getChoiceQuestionToSchemaElementNameMap().get(choiceQuestion.getClass());
 		writeElementSchema(baseObjectSchema, fieldSchema, vocabularyName);
 	}
+
+	//FIXME urgent - method is not complete
+	public void writeRefListSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	{
+		String elementName = getTagToElementNameMap().findElementName(baseObjectSchema.getObjectName(), fieldSchema.getTag());
+		String reflistElementName = baseObjectSchema.getXmpz2ElementName() + elementName;
+		//element miradi:ConceptualModelSelectedTaggedObjectSetIds { TaggedObjectSetId.element* }
+		getSchemaWriter().printIndented("element " + PREFIX + reflistElementName);
+	}
 	
 	public void writeCodelistSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ChoiceQuestion question)
 	{
 		String elementName = getTagToElementNameMap().findElementName(baseObjectSchema.getObjectName(), fieldSchema.getTag());
-		String codelistElementName = baseObjectSchema.getXmpz2ElementName() + elementName ;
+		String codelistElementName = baseObjectSchema.getXmpz2ElementName() + elementName;
 		getSchemaWriter().printIndented(codelistElementName + "Container.element ?");
 		
 		codelistSchemaElements.add(createCodelistSchemaElement(codelistElementName, question));
@@ -223,7 +252,23 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		return containerElement;
 	}
-
+	
+	private void defineVocabulary(ChoiceQuestion question, String vocabularyName)
+	{
+		CodeList codes = question.getAllCodes();
+		getSchemaWriter().print(vocabularyName + " = ");
+		for(int index = 0; index < codes.size(); ++index)
+		{
+			String code = codes.get(index);
+			code = question.convertToReadableCode(code);
+			getSchemaWriter().write("'" + code + "'");
+			if (index < codes.size() - 1)
+				getSchemaWriter().print("|");
+		}
+		
+		getSchemaWriter().println();
+	}
+	
 	public void writeSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, final String elementType)
 	{
 		writeElementSchema(baseObjectSchema, fieldSchema, elementType + ".element*");

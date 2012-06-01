@@ -23,6 +23,7 @@ package org.miradi.xml.xmpz2.xmpz2schema;
 import java.util.HashMap;
 
 import org.miradi.questions.BudgetTimePeriodQuestion;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CountriesQuestion;
 import org.miradi.questions.DashboardFlagsQuestion;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
@@ -35,8 +36,10 @@ import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.FiscalYearStartQuestion;
 import org.miradi.questions.FosTrainingTypeQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
+import org.miradi.questions.IrreversibilityThreatRatingQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.LanguageQuestion;
+import org.miradi.questions.MeasurementStatusQuestion;
 import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
@@ -46,6 +49,9 @@ import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
 import org.miradi.questions.ScopeBoxTypeQuestion;
+import org.miradi.questions.ScopeThreatRatingQuestion;
+import org.miradi.questions.SeverityThreatRatingQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StrategyFeasibilityQuestion;
@@ -71,7 +77,7 @@ import org.miradi.questions.WwfEcoRegionsQuestion;
 import org.miradi.questions.WwfManagingOfficesQuestion;
 import org.miradi.questions.WwfRegionsQuestion;
 
-public class ChoiceQuestionToSchemaElementNameMap extends HashMap<Class, String>
+public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion, String>
 {
 	public ChoiceQuestionToSchemaElementNameMap()
 	{
@@ -80,7 +86,8 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<Class, String>
 	
 	private void fillMap()
 	{
-		addItem(LanguageQuestion.class, VOCABULARY_LANGUAGE_CODE);
+		addItem(ScopeBoxTypeQuestion.createScopeBoxTypeQuestion(), VOCABULARY_SCOPE_BOX_TYPE);
+		addItem(new LanguageQuestion(), VOCABULARY_LANGUAGE_CODE);
 		addItem(FiscalYearStartQuestion.class, VOCABULARY_FISCAL_YEAR_START);
 		addItem(ProtectedAreaCategoryQuestion.class, VOCABULARY_PROTECTED_AREA_CATEGORIES);
 		addItem(ResourceTypeQuestion.class, VOCABULARY_RESOURCE_TYPE);
@@ -95,7 +102,6 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<Class, String>
 		addItem(StatusQuestion.class, VOCABULARY_TARGET_STATUS);
 		addItem(ViabilityModeQuestion.class, VOCABULARY_TARGET_VIABILITY_MODE);
 		addItem(ThreatClassificationQuestion.class, VOCABULARY_THREAT_TAXONOMY_CODE);
-		addItem(ScopeBoxTypeQuestion.class, VOCABULARY_SCOPE_BOX_TYPE);
 		addItem(StressSeverityChoiceQuestion.class, VOCABULARY_STRESS_SEVERITY);
 		addItem(StressScopeChoiceQuestion.class, VOCABULARY_STRESS_SCOPE);
 		addItem(StrategyTaxonomyQuestion.class, VOCABULARY_STRATEGY_TAXONOMY_CODE);
@@ -105,9 +111,9 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<Class, String>
 		addItem(KeyEcologicalAttributeTypeQuestion.class, VOCABULARY_KEA_TYPE);
 		addItem(StressContributionQuestion.class, VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE);
 		addItem(StressIrreversibilityQuestion.class, VOCABULARY_THREAT_STRESS_RATING_IRREVERSIBILITY_CODE);
-		addItem(ThreatRatingQuestion.class, VOCABULARY_SIMPLE_THREAT_RATING_SCOPE_CODE);
-		addItem(ThreatRatingQuestion.class, VOCABULARY_SIMPLE_THREAT_RATING_SEVERITY_CODE);
-		addItem(ThreatRatingQuestion.class, VOCABULARY_SIMPLE_THREAT_RATING_IRREVERSIBILITY_CODE);
+		addItem(ScopeThreatRatingQuestion.class, VOCABULARY_SIMPLE_THREAT_RATING_SCOPE_CODE);
+		addItem(SeverityThreatRatingQuestion.class, VOCABULARY_SIMPLE_THREAT_RATING_SEVERITY_CODE);
+		addItem(IrreversibilityThreatRatingQuestion.class, VOCABULARY_SIMPLE_THREAT_RATING_IRREVERSIBILITY_CODE);
 		addItem(TncProjectPlaceTypeQuestion.class, VOCABULARY_TNC_PROJECT_PLACE_TYPES);
 		addItem(TncOrganizationalPrioritiesQuestion.class, VOCABULARY_TNC_ORGANIZATIONAL_PRIORITIES);
 		addItem(TncOperatingUnitsQuestion.class, VOCABULARY_TNC_OPERATING_UNTIS);
@@ -120,7 +126,7 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<Class, String>
 		addItem(FosTrainingTypeQuestion.class, VOCABULARY_FOS_TRAINING_TYPE);
 		addItem(ProgressReportLongStatusQuestion.class, VOCABULARY_PROGRESS_REPORT_STATUS);
 		addItem(TrendQuestion.class, VOCABULARY_MEASUREMENT_TREND);
-		addItem(StatusQuestion.class, VOCABULARY_MEASUREMENT_STATUS);
+		addItem(MeasurementStatusQuestion.class, VOCABULARY_MEASUREMENT_STATUS);
 		addItem(StatusConfidenceQuestion.class, VOCABULARY_MEASUREMENT_STATUS_CONFIDENCE);
 		addItem(CountriesQuestion.class, VOCABULARY_COUNTRIES);
 		addItem(ThreatRatingQuestion.class, VOCABULARY_THREAT_RATING);
@@ -135,9 +141,15 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<Class, String>
 
 	}
 	
-	private void addItem(Class choiceItemClass, String value)
+	private void addItem(Class questionClass, String value)
 	{
-		put(choiceItemClass, value);
+		final ChoiceQuestion question = StaticQuestionManager.getQuestion(questionClass);
+		addItem(question, value);
+	}
+
+	private void addItem(final ChoiceQuestion question, String value)
+	{
+		put(question, value);
 	}
 	
 	public static final String VOCABULARY_LANGUAGE_CODE = "vocabulary_language_code";
