@@ -164,6 +164,7 @@ public interface Xmpz2XmlConstants
 	public static final String STYLING = "Style";
 	public static final String Z_ORDER_BACK_CODE = "Back";
 	public static final String VOCABULARY_TEXT_BOX_Z_ORDER = "vocabulary_text_box_z_order";
+	public static final String VOCABULARY_DASHBOARD_ROW_PROGRESS = "vocabulary_dashboard_row_progress";
 	public static final String STRESS_RATING = "StressRating";
 	public static final String THREAT_STRESS_RATING = "ThreatStressRating";
 	public static final String THREAT_TARGET_RATING = "ThreatTargetRating";

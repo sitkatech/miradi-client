@@ -37,6 +37,7 @@ import org.miradi.objects.ViewData;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.OpenStandardsProgressStatusQuestion;
 import org.miradi.questions.TextBoxZOrderQuestion;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
@@ -154,6 +155,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().println("vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='12' } ");
 		getSchemaWriter().println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
 		getSchemaWriter().println(VOCABULARY_TEXT_BOX_Z_ORDER + " = '" + Z_ORDER_BACK_CODE + "' | '" + TextBoxZOrderQuestion.FRONT_CODE + "'");
+		defineDashboardStatusesVocabulary();
 	}
 	
 	public void writeIdAttribute()
@@ -244,7 +246,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private String createCodelistSchemaElement(String codelistElementName, ChoiceQuestion question)
 	{
-		String vocabularyName = getChoiceQuestionToSchemaElementNameMap().get(question.getClass());
+		String vocabularyName = getChoiceQuestionToSchemaElementNameMap().get(question);
 		String containerElement = codelistElementName + "Container.element = element " +  RAW_PREFIX + ":" + codelistElementName + "Container " + HtmlUtilities.NEW_LINE;
 		containerElement += "{" + HtmlUtilities.NEW_LINE;
 		containerElement += getSchemaWriter().INDENTATION + "element " + PREFIX + "code { " + vocabularyName + " } *" + HtmlUtilities.NEW_LINE;
@@ -268,6 +270,28 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		getSchemaWriter().println();
 	}
+	
+	private void defineDashboardStatusesVocabulary()
+	{
+		final String[] allCodesFromDynamicQuestion = new String[]{
+			OpenStandardsProgressStatusQuestion.NOT_SPECIFIED_CODE,
+			OpenStandardsProgressStatusQuestion.NOT_STARTED_CODE,
+			OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE,
+			OpenStandardsProgressStatusQuestion.COMPLETE_CODE,
+			OpenStandardsProgressStatusQuestion.NOT_APPLICABLE_CODE,
+		};
+		
+		getSchemaWriter().print(VOCABULARY_DASHBOARD_ROW_PROGRESS + " = ");
+		for(int index = 0; index < allCodesFromDynamicQuestion.length; ++index)
+		{
+			String code = allCodesFromDynamicQuestion[index];
+			getSchemaWriter().write("'" + code + "'");
+			if (index < allCodesFromDynamicQuestion.length - 1)
+				getSchemaWriter().print("|");
+		}
+		
+		getSchemaWriter().println();
+	}	
 	
 	public void writeSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, final String elementType)
 	{
