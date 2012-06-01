@@ -25,6 +25,8 @@ import java.util.HashMap;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
+import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
@@ -103,8 +105,8 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(ORGANIZATION, createOrganizationMap());
 		map.put(PROGRESS_PERCENT, createProgressPercentMap());
 		map.put(SCOPE_BOX, createScopeBoxMap());
-		map.put(DIAGRAM_FACTOR, createBaseObjectMap());
-		map.put(DIAGRAM_LINK, createBaseObjectMap());
+		map.put(DIAGRAM_FACTOR, createDiagramFactorMap());
+		map.put(DIAGRAM_LINK, createDiagramLinkMap());
 		map.put(EXPENSE_ASSIGNMENT, createExpenseAssignmentMap());
 		map.put(RESOURCE_ASSIGNMENT, createResourceAssignmentMap());
 		map.put(IUCN_REDLIST_SPECIES, createBaseObjectMap());
@@ -141,6 +143,22 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 	{
 		HashMap<String, String> map = createBaseObjectMap();
 		map.put(Factor.TAG_TEXT, DETAILS);
+		
+		return map;
+	}
+	
+	private HashMap<String, String> createDiagramFactorMap()
+	{
+		HashMap<String, String> map = createBaseObjectMap();
+		map.put(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, GROUP_BOX_CHILDREN_IDS);
+		
+		return map;
+	}
+	
+	private HashMap<String, String> createDiagramLinkMap()
+	{
+		HashMap<String, String> map = createBaseObjectMap();
+		map.put(DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS, GROUP_BOX_DIAGRAM_LINK_CHILDREN_ID);
 		
 		return map;
 	}
