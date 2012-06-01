@@ -58,7 +58,7 @@ public class SchemaWriter extends PrintWriter
 	public void printIndented(String text)
 	{
 		for(int i = 0; i < indentLevel; ++i)
-			print("  ");
+			print(INDENTATION);
 		print(text);
 	}
 	
@@ -93,4 +93,5 @@ public class SchemaWriter extends PrintWriter
 	}
 
 	private int indentLevel;
+	public static final String INDENTATION = "  ";
 }
