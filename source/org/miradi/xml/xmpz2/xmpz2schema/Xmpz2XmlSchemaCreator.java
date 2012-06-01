@@ -229,22 +229,19 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	public void writeIdListSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema)
 	{
-		String elementName = getTagToElementNameMap().findElementName(baseObjectSchema.getObjectName(), fieldSchema.getTag());
-		String idListElementName = baseObjectSchema.getXmpz2ElementName() + elementName;
-		final String text = "element " + PREFIX + idListElementName + " { " + StringUtilities.removeLastChar(elementName) + ".element* }? ";
-		getSchemaWriter().printIndented(text);
+		writeRefListSchemaElement(baseObjectSchema, fieldSchema);
 	}
 
 	public void writeRefListSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		String elementName = getTagToElementNameMap().findElementName(baseObjectSchema.getObjectName(), fieldSchema.getTag());
+		String elementName = getTagToElementNameMap().findElementName(baseObjectSchema.getXmpz2ElementName(), fieldSchema.getTag());
 		String reflistElementName = baseObjectSchema.getXmpz2ElementName() + elementName;
 		getSchemaWriter().printIndented("element " + PREFIX + reflistElementName + " { " + StringUtilities.removeLastChar(elementName) + ".element* }? ");
 	}
 	
 	public void writeCodelistSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ChoiceQuestion question)
 	{
-		String elementName = getTagToElementNameMap().findElementName(baseObjectSchema.getObjectName(), fieldSchema.getTag());
+		String elementName = getTagToElementNameMap().findElementName(baseObjectSchema.getXmpz2ElementName(), fieldSchema.getTag());
 		String codelistElementName = baseObjectSchema.getXmpz2ElementName() + elementName;
 		getSchemaWriter().printIndented(codelistElementName + "Container.element ?");
 		
@@ -308,7 +305,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void writeElementSchema(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String elementType)
 	{
 		String poolName = baseObjectSchema.getXmpz2ElementName();
-		String elementName = getTagToElementNameMap().findElementName(baseObjectSchema.getObjectName(), fieldSchema.getTag());
+		String elementName = getTagToElementNameMap().findElementName(poolName, fieldSchema.getTag());
 		getSchemaWriter().printIndented("element " + PREFIX + poolName + elementName);
 		getSchemaWriter().print(" { " + elementType + " }?");
 	}
