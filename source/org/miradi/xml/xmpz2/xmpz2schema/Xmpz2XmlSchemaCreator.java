@@ -40,6 +40,7 @@ import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.CostAllocationRuleSchema;
 import org.miradi.schemas.WcpaProjectDataSchema;
+import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.Translation;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2TagToElementNameMap;
@@ -63,8 +64,10 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		writer = writerToUse;
 		tagToElementNameMap = new Xmpz2TagToElementNameMap();
+		choiceQuestionToSchemaElementNameMap = new ChoiceQuestionToSchemaElementNameMap();
 		project = new Project();
 		baseObjectSchemaWriters = getTopLevelBaseObjectSchemas();
+		codelistSchemaElements = new Vector<String>();
 	}
 
 	public void writeRncSchema() throws Exception
@@ -72,6 +75,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeHeader();
 		writeConservationProjectElement();
 		writeBaseObjectSchemaElements();
+		writeCodelistSchemaElements();
 	}
 
 	private void writeHeader()
@@ -121,6 +125,15 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		baseObjectSchemaWriter.writeFields(getSchemaWriter());
 		getSchemaWriter().println();
+	}
+	
+	private void writeCodelistSchemaElements()
+	{
+		for (String codelistSchemaElement : codelistSchemaElements)
+		{
+			getSchemaWriter().printIndented(codelistSchemaElement);
+			getSchemaWriter().println();
+		}
 	}
 	
 	public void writeIdAttribute()
@@ -187,15 +200,30 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	public void writeChoiceSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, ChoiceQuestion choiceQuestion)
 	{
-		ChoiceQuestionToSchemaElementNameMap map = new ChoiceQuestionToSchemaElementNameMap();
-		String vocabularyName = map.get(choiceQuestion.getClass());
+		String vocabularyName = getChoiceQuestionToSchemaElementNameMap().get(choiceQuestion.getClass());
 		writeElementSchema(baseObjectSchema, fieldSchema, vocabularyName);
 	}
 	
 	public void writeCodelistSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ChoiceQuestion question)
 	{
+		String elementName = getTagToElementNameMap().findElementName(baseObjectSchema.getObjectName(), fieldSchema.getTag());
+		String codelistElementName = baseObjectSchema.getXmpz2ElementName() + elementName ;
+		getSchemaWriter().printIndented(codelistElementName + "Container.element ?");
+		
+		codelistSchemaElements.add(createCodelistSchemaElement(codelistElementName, question));
 	}
 	
+	private String createCodelistSchemaElement(String codelistElementName, ChoiceQuestion question)
+	{
+		String vocabularyName = getChoiceQuestionToSchemaElementNameMap().get(question.getClass());
+		String containerElement = codelistElementName + "Container.element = element " +  RAW_PREFIX + ":" + codelistElementName + "Container " + HtmlUtilities.NEW_LINE;
+		containerElement += "{" + HtmlUtilities.NEW_LINE;
+		containerElement += getSchemaWriter().INDENTATION + "element " + PREFIX + "code { " + vocabularyName + " } *" + HtmlUtilities.NEW_LINE;
+		containerElement += "}" + HtmlUtilities.NEW_LINE;
+		
+		return containerElement;
+	}
+
 	public void writeSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, final String elementType)
 	{
 		writeElementSchema(baseObjectSchema, fieldSchema, elementType + ".element*");
@@ -270,6 +298,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		throw new RuntimeException("Object type " + objectType + " cannot have a dateunitEffortsList field");
 	}
+	
+	private ChoiceQuestionToSchemaElementNameMap getChoiceQuestionToSchemaElementNameMap()
+	{
+		return choiceQuestionToSchemaElementNameMap;
+	}
 		
 	private Xmpz2TagToElementNameMap getTagToElementNameMap()
 	{
@@ -287,7 +320,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	}
 
 	private Xmpz2TagToElementNameMap tagToElementNameMap;
+	private ChoiceQuestionToSchemaElementNameMap choiceQuestionToSchemaElementNameMap;
 	private Project project;
 	private Xmpz2SchemaWriter writer;
 	private Vector<BaseObjectSchemaWriter> baseObjectSchemaWriters;
+	private Vector<String> codelistSchemaElements;
 }
