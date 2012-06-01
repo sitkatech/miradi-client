@@ -22,6 +22,11 @@ package org.miradi.utils;
 
 public class StringUtilities
 {
+	public static String removeLastChar(String elementName)
+	{
+		return elementName.substring(0, elementName.length() - 1);
+	}
+
 	public static String substringAfter(String value, String token)
 	{
 		final int firstIndexOf = value.indexOf(token);
