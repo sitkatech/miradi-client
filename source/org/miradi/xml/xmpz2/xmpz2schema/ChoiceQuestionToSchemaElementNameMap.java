@@ -1,0 +1,204 @@
+/* 
+Copyright 2005-2012, Foundations of Success, Bethesda, Maryland 
+(on behalf of the Conservation Measures Partnership, "CMP") and 
+Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
+
+This file is part of Miradi
+
+Miradi is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License version 3, 
+as published by the Free Software Foundation.
+
+Miradi is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
+*/ 
+
+package org.miradi.xml.xmpz2.xmpz2schema;
+
+import java.util.HashMap;
+
+import org.miradi.questions.BudgetTimePeriodQuestion;
+import org.miradi.questions.CountriesQuestion;
+import org.miradi.questions.DashboardFlagsQuestion;
+import org.miradi.questions.DiagramFactorBackgroundQuestion;
+import org.miradi.questions.DiagramFactorFontColorQuestion;
+import org.miradi.questions.DiagramFactorFontSizeQuestion;
+import org.miradi.questions.DiagramFactorFontStyleQuestion;
+import org.miradi.questions.DiagramLegendQuestion;
+import org.miradi.questions.DiagramLinkColorQuestion;
+import org.miradi.questions.DiagramObjectDataInclusionQuestion;
+import org.miradi.questions.FiscalYearStartQuestion;
+import org.miradi.questions.FosTrainingTypeQuestion;
+import org.miradi.questions.HabitatAssociationQuestion;
+import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
+import org.miradi.questions.LanguageQuestion;
+import org.miradi.questions.PlanningTreeTargetPositionQuestion;
+import org.miradi.questions.PriorityRatingQuestion;
+import org.miradi.questions.ProgressReportLongStatusQuestion;
+import org.miradi.questions.ProtectedAreaCategoryQuestion;
+import org.miradi.questions.QuarterColumnsVisibilityQuestion;
+import org.miradi.questions.RatingSourceQuestion;
+import org.miradi.questions.ResourceRoleQuestion;
+import org.miradi.questions.ResourceTypeQuestion;
+import org.miradi.questions.ScopeBoxTypeQuestion;
+import org.miradi.questions.StatusConfidenceQuestion;
+import org.miradi.questions.StatusQuestion;
+import org.miradi.questions.StrategyFeasibilityQuestion;
+import org.miradi.questions.StrategyImpactQuestion;
+import org.miradi.questions.StrategyObjectiveTreeOrderQuestion;
+import org.miradi.questions.StrategyTaxonomyQuestion;
+import org.miradi.questions.StressContributionQuestion;
+import org.miradi.questions.StressIrreversibilityQuestion;
+import org.miradi.questions.StressScopeChoiceQuestion;
+import org.miradi.questions.StressSeverityChoiceQuestion;
+import org.miradi.questions.ThreatClassificationQuestion;
+import org.miradi.questions.ThreatRatingModeChoiceQuestion;
+import org.miradi.questions.ThreatRatingQuestion;
+import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
+import org.miradi.questions.TncMarineEcoRegionQuestion;
+import org.miradi.questions.TncOperatingUnitsQuestion;
+import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
+import org.miradi.questions.TncProjectPlaceTypeQuestion;
+import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
+import org.miradi.questions.TrendQuestion;
+import org.miradi.questions.ViabilityModeQuestion;
+import org.miradi.questions.WwfEcoRegionsQuestion;
+import org.miradi.questions.WwfManagingOfficesQuestion;
+import org.miradi.questions.WwfRegionsQuestion;
+
+public class ChoiceQuestionToSchemaElementNameMap extends HashMap<Class, String>
+{
+	public ChoiceQuestionToSchemaElementNameMap()
+	{
+		fillMap();
+	}
+	
+	private void fillMap()
+	{
+		addItem(LanguageQuestion.class, VOCABULARY_LANGUAGE_CODE);
+		addItem(FiscalYearStartQuestion.class, VOCABULARY_FISCAL_YEAR_START);
+		addItem(ProtectedAreaCategoryQuestion.class, VOCABULARY_PROTECTED_AREA_CATEGORIES);
+		addItem(ResourceTypeQuestion.class, VOCABULARY_RESOURCE_TYPE);
+		addItem(ResourceRoleQuestion.class, VOCABULARY_RESOURCE_ROLE_CODES);
+		addItem(DiagramLegendQuestion.class, VOCABULARY_HIDDEN_TYPES);
+		addItem(DiagramFactorFontSizeQuestion.class, VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE);
+		addItem(DiagramFactorFontStyleQuestion.class, VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE);
+		addItem(DiagramFactorBackgroundQuestion.class, VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR);
+		addItem(DiagramFactorFontColorQuestion.class, VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR);
+		addItem(DiagramLinkColorQuestion.class, VOCABULARY_DIAGRAM_LINK_COLOR);
+		addItem(HabitatAssociationQuestion.class, VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION);
+		addItem(StatusQuestion.class, VOCABULARY_TARGET_STATUS);
+		addItem(ViabilityModeQuestion.class, VOCABULARY_TARGET_VIABILITY_MODE);
+		addItem(ThreatClassificationQuestion.class, VOCABULARY_THREAT_TAXONOMY_CODE);
+		addItem(ScopeBoxTypeQuestion.class, VOCABULARY_SCOPE_BOX_TYPE);
+		addItem(StressSeverityChoiceQuestion.class, VOCABULARY_STRESS_SEVERITY);
+		addItem(StressScopeChoiceQuestion.class, VOCABULARY_STRESS_SCOPE);
+		addItem(StrategyTaxonomyQuestion.class, VOCABULARY_STRATEGY_TAXONOMY_CODE);
+		addItem(StrategyImpactQuestion.class, VOCABULARY_STRATEGY_IMAPACT_RATING_CODE);
+		addItem(StrategyFeasibilityQuestion.class, VOCABULARY_STRATEGY_FEASIBILITY_RATING_CODE);
+		addItem(PriorityRatingQuestion.class, VOCABULARY_PRIORITY_RATING_CODE);
+		addItem(KeyEcologicalAttributeTypeQuestion.class, VOCABULARY_KEA_TYPE);
+		addItem(StressContributionQuestion.class, VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE);
+		addItem(StressIrreversibilityQuestion.class, VOCABULARY_THREAT_STRESS_RATING_IRREVERSIBILITY_CODE);
+		addItem(ThreatRatingQuestion.class, VOCABULARY_SIMPLE_THREAT_RATING_SCOPE_CODE);
+		addItem(ThreatRatingQuestion.class, VOCABULARY_SIMPLE_THREAT_RATING_SEVERITY_CODE);
+		addItem(ThreatRatingQuestion.class, VOCABULARY_SIMPLE_THREAT_RATING_IRREVERSIBILITY_CODE);
+		addItem(TncProjectPlaceTypeQuestion.class, VOCABULARY_TNC_PROJECT_PLACE_TYPES);
+		addItem(TncOrganizationalPrioritiesQuestion.class, VOCABULARY_TNC_ORGANIZATIONAL_PRIORITIES);
+		addItem(TncOperatingUnitsQuestion.class, VOCABULARY_TNC_OPERATING_UNTIS);
+		addItem(TncTerrestrialEcoRegionQuestion.class, VOCABULARY_TNC_TERRESTRIAL_ECO_REGION);
+		addItem(TncMarineEcoRegionQuestion.class, VOCABULARY_TNC_MARINE_ECO_REGION);
+		addItem(TncFreshwaterEcoRegionQuestion.class, VOCABULARY_TNC_FRESHWATER_ECO_REGION);
+		addItem(WwfManagingOfficesQuestion.class, VOCABULARY_WWF_MANAGING_OFFICES);
+		addItem(WwfRegionsQuestion.class, VOCABULARY_WWF_REGIONS);
+		addItem(WwfEcoRegionsQuestion.class, VOCABULARY_WWF_ECOREGIONS);
+		addItem(FosTrainingTypeQuestion.class, VOCABULARY_FOS_TRAINING_TYPE);
+		addItem(ProgressReportLongStatusQuestion.class, VOCABULARY_PROGRESS_REPORT_STATUS);
+		addItem(TrendQuestion.class, VOCABULARY_MEASUREMENT_TREND);
+		addItem(StatusQuestion.class, VOCABULARY_MEASUREMENT_STATUS);
+		addItem(StatusConfidenceQuestion.class, VOCABULARY_MEASUREMENT_STATUS_CONFIDENCE);
+		addItem(CountriesQuestion.class, VOCABULARY_COUNTRIES);
+		addItem(ThreatRatingQuestion.class, VOCABULARY_THREAT_RATING);
+		addItem(DiagramObjectDataInclusionQuestion.class, VOCABULARY_DIAGRAM_OBJECT_DATA_INCLUSION);
+		addItem(StrategyObjectiveTreeOrderQuestion.class, VOCABULARY_PLANNING_TREE_OBJECTIVE_STRATEGY_NODE_ORDER);
+		addItem(PlanningTreeTargetPositionQuestion.class, VOCABULARY_PLANNING_TREE_TARGET_NODE_POSITION);
+		addItem(ThreatRatingModeChoiceQuestion.class, VOCABULARY_THREAT_RATING_MODE);
+		addItem(DashboardFlagsQuestion.class, VOCABULARY_DASHBOARD_ROW_FLAGS);
+		addItem(QuarterColumnsVisibilityQuestion.class, VOCABULARY_QUARTER_COLUMNS_VISIBILITY);
+		addItem(BudgetTimePeriodQuestion.class, VOCABULARY_WORK_PLAN_TIME_UNIT);
+		addItem(RatingSourceQuestion.class, VOCABULARY_RATING_SOURCE);
+
+	}
+	
+	private void addItem(Class choiceItemClass, String value)
+	{
+		put(choiceItemClass, value);
+	}
+	
+	public static final String VOCABULARY_LANGUAGE_CODE = "vocabulary_language_code";
+	private static final String VOCABULARY_FISCAL_YEAR_START = "vocabulary_fiscal_year_start_month";
+	private static final String VOCABULARY_PROTECTED_AREA_CATEGORIES = "vocabulary_protected_area_categories";
+	public static final String VOCABULARY_RESOURCE_TYPE = "vocabulary_resource_type";
+	private static final String VOCABULARY_RESOURCE_ROLE_CODES = "vocabulary_resource_role_codes";
+	private static final String VOCABULARY_HIDDEN_TYPES = "vocabulary_hidden_types";
+	static final String VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE = "vocabulary_diagram_factor_font_size";
+	public static final String VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE = "vocabulary_diagram_factor_font_style";
+	public static final String VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR = "vocabulary_diagram_factor_background_color";
+	public static final String VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR = "vocabulary_diagram_factor_foreground_color";
+	public static final String VOCABULARY_DIAGRAM_LINK_COLOR = "vocabulary_diagram_link_color";
+	private static final String VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION = "vocabulary_biodiversity_target_habitat_association";
+	static final String VOCABULARY_TARGET_STATUS = "vocabulary_target_status";
+	static final String VOCABULARY_TARGET_VIABILITY_MODE = "vocabulary_target_viability_mode";
+	public static final String VOCABULARY_THREAT_TAXONOMY_CODE = "vocabulary_cause_taxonomy_code";
+	public static final String VOCABULARY_STRATEGY_TAXONOMY_CODE = "vocabulary_strategy_taxonomy_code";
+	public static final String VOCABULARY_SCOPE_BOX_TYPE = "vocabulary_scope_box_type";
+	public static final String VOCABULARY_STRESS_SEVERITY = "vocabulary_stress_severity";
+	public static final String VOCABULARY_STRESS_SCOPE = "vocabulary_stress_scope";
+	public static final String VOCABULARY_STRATEGY_IMAPACT_RATING_CODE = "vocabulary_strategy_impact_rating_code";
+	public static final String VOCABULARY_STRATEGY_FEASIBILITY_RATING_CODE = "vocabulary_strategy_feasibility_rating_code";
+	public static final String VOCABULARY_PRIORITY_RATING_CODE = "vocabulary_priority_rating_code";
+	public static final String VOCABULARY_KEA_TYPE = "vocabulary_key_ecological_attribute_type";
+	public static final String VOCABULARY_THREAT_STRESS_RATING_IRREVERSIBILITY_CODE = "vocabulary_irreversibility_code";
+	public static final String VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE = "vocabulary_contribution_code";
+	public static final String VOCABULARY_SIMPLE_THREAT_RATING_SCOPE_CODE = "vocabulary_simple_threat_rating_scope_code";
+	public static final String VOCABULARY_SIMPLE_THREAT_RATING_SEVERITY_CODE = "vocabulary_simple_threat_rating_severitiy_code";
+	public static final String VOCABULARY_SIMPLE_THREAT_RATING_IRREVERSIBILITY_CODE = "vocabulary_simple_threat_rating_irreversibility_code";
+	public static final String VOCABULARY_MONTH = "vocabulary_month";
+	public static final String VOCABULARY_START_MONTH = "vocabulary_start_month";
+	public static final String VOCABULARY_YEAR = "vocabulary_year";
+	public static final String VOCABULARY_START_YEAR = "vocabulary_start_year";
+	public static final String VOCABULARY_TNC_PROJECT_PLACE_TYPES = "vocabulary_tnc_project_place_types";
+	public static final String VOCABULARY_TNC_ORGANIZATIONAL_PRIORITIES = "vocabulary_tnc_organizational_priorities";
+	public static final String VOCABULARY_TNC_OPERATING_UNTIS = "vocabulary_tnc_operating_units";
+	public static final String VOCABULARY_TNC_TERRESTRIAL_ECO_REGION = "vocabulary_tnc_terrestrial_eco_region";
+	public static final String VOCABULARY_TNC_MARINE_ECO_REGION = "vocabulary_tnc_marine_eco_region";
+	public static final String VOCABULARY_TNC_FRESHWATER_ECO_REGION = "vocabulary_tnc_freshwater_eco_region";
+	public static final String VOCABULARY_SHARE_OUTSIDE_TNC = "vocabulary_share_outside_tnc";
+	public static final String VOCABULARY_WWF_MANAGING_OFFICES = "vocabulary_wwf_managing_offices";
+	public static final String VOCABULARY_WWF_REGIONS = "vocabulary_wwf_regions";
+	public static final String VOCABULARY_WWF_ECOREGIONS = "vocabulary_wwf_ecoregions";
+	public static final String VOCABULARY_FOS_TRAINING_TYPE = "vocabulary_fos_training_type";
+	public static final String VOCABULARY_PROGRESS_REPORT_STATUS = "vocabulary_progress_report_status";
+	public static final String VOCABULARY_MEASUREMENT_TREND = "vocabulary_measurement_trend";
+	public static final String VOCABULARY_MEASUREMENT_STATUS = "vocabulary_measurement_status";
+	public static final String VOCABULARY_MEASUREMENT_STATUS_CONFIDENCE = "vocabulary_measurement_status_confidence";
+	public static final String VOCABULARY_COUNTRIES = "vocabulary_countries";
+	public static final String VOCABULARY_TEXT_BOX_Z_ORDER = "vocabulary_text_box_z_order";
+	public static final String VOCABULARY_THREAT_RATING = "vocabulary_threat_rating";
+	public static final String VOCABULARY_DIAGRAM_OBJECT_DATA_INCLUSION = "vocabulary_included_diagram_types";
+	public static final String VOCABULARY_PLANNING_TREE_TARGET_NODE_POSITION = "vocabulary_planning_tree_target_node_position";
+	public static final String VOCABULARY_THREAT_RATING_MODE = "vocabulary_threat_rating_mode";
+	public static final String VOCABULARY_DASHBOARD_ROW_PROGRESS = "vocabulary_dashboard_row_progress";
+	public static final String VOCABULARY_DASHBOARD_ROW_FLAGS = "vocabulary_dashboard_row_flags";
+	public static final String VOCABULARY_DASHBOARD_ROW_FLAG = "vocabulary_dashboard_row_flag";
+	public static final String VOCABULARY_PLANNING_TREE_OBJECTIVE_STRATEGY_NODE_ORDER = "vocabulary_planning_tree_objective_strategy_node_order";
+	public static final String VOCABULARY_QUARTER_COLUMNS_VISIBILITY = "vocabulary_quarter_columns_visibility";
+	public static final String VOCABULARY_WORK_PLAN_TIME_UNIT = "vocabulary_work_plan_time_unit";
+	public static final String VOCABULARY_RATING_SOURCE = "vocabulary_rating_source";
+
+}
