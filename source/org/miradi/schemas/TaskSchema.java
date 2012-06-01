@@ -36,7 +36,6 @@ public class TaskSchema extends FactorSchema
 		super.fillFieldSchemas();
 		
 		createFieldSchemaIdList(Task.TAG_SUBTASK_IDS, TaskSchema.getObjectType());
-		createFieldSchemaMultiLineUserText(Task.TAG_DETAILS);
 		createBudgetSchemas();
 		createProgressReportSchema();
 		
@@ -44,6 +43,12 @@ public class TaskSchema extends FactorSchema
 		createPseudoFieldSchemaString(Task.PSEUDO_TAG_INDICATOR_LABEL);
 		createPseudoFieldSchemaRefList(Task.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
 		createPseudoFieldSchemaRefList(Task.PSEUDO_TAG_RELEVANT_GOAL_REFS);
+	}
+	
+	@Override
+	protected void addDetailsField()
+	{
+		createFieldSchemaMultiLineUserText(Task.TAG_DETAILS);
 	}
 
 	public static int getObjectType()

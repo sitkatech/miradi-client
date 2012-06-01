@@ -35,7 +35,7 @@ abstract public class FactorSchema extends BaseObjectSchema
 		super.fillFieldSchemas();
 		
 		createFieldSchemaMultiLineUserText(Factor.TAG_COMMENTS);
-		createFieldSchemaMultiLineUserText(Factor.TAG_TEXT);
+		addDetailsField();
 		createFieldSchemaSingleLineUserText(Factor.TAG_SHORT_LABEL);
 		
 		createPseudoFieldSchemaString(Factor.PSEUDO_TAG_OBJECTIVES);
@@ -45,6 +45,11 @@ abstract public class FactorSchema extends BaseObjectSchema
 		createPseudoFieldSchemaRefList(Factor.PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS);
 		createPseudoFieldSchemaRefList(Factor.PSEUDO_TAG_RESULTS_CHAIN_REFS);
 		createPseudoFieldSchemaRefList(Factor.PSEUDO_TAG_REFERRING_TAG_REFS);
+	}
+
+	protected void addDetailsField()
+	{
+		createFieldSchemaMultiLineUserText(Factor.TAG_TEXT);
 	}
 
 	protected void writeObjectiveIds()
