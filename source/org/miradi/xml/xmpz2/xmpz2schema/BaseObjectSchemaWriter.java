@@ -39,13 +39,18 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 	{
 		writer.printIndented("attribute " + ID + " "+ "{xsd:integer} &");
 		writer.println();
+		int indexCount = 0;
 		for(AbstractFieldSchema fieldSchema : getBaseObjectSchema())
 		{
 			if (!doesFieldRequireSpecialHandling(fieldSchema.getTag()))
 			{
 				writeFieldSchema(fieldSchema);
-				getCreator().getSchemaWriter().print(" &");
-				getCreator().getSchemaWriter().println();
+				if (indexCount < getBaseObjectSchema().numberOfFields() - 1)
+				{
+					getCreator().getSchemaWriter().print(" &");
+					getCreator().getSchemaWriter().println();
+				}
+				++indexCount;
 			}
 		}
 	}
