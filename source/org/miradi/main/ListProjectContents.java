@@ -28,11 +28,9 @@ import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.BaseObjectPool;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectLoader;
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.utils.MiradiLogger;
 import org.miradi.utils.Translation;
 
 public class ListProjectContents
