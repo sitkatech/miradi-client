@@ -82,6 +82,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeBaseObjectSchemaElements();
 		writeCodelistSchemaElements();
 		writeVocabularyDefinitions();
+		writeObjectTypeIdElements();
+		writeWrappedByDiagramFactorSchemaElement();
+		writeHtmlTagSchemaElements();
 	}
 
 	private void writeHeader()
@@ -159,6 +162,50 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		defineDashboardStatusesVocabulary();
 	}
 	
+	private void writeObjectTypeIdElements()
+	{
+		defineIdElement(CONCEPTUAL_MODEL);
+		defineIdElement(RESULTS_CHAIN);
+		defineIdElement(DIAGRAM_FACTOR);
+		defineIdElement(DIAGRAM_LINK);
+		defineIdElement(BIODIVERSITY_TARGET);
+		defineIdElement(HUMAN_WELFARE_TARGET);
+		defineIdElement(CAUSE);
+		defineIdElement(STRATEGY);
+		defineIdElement(THREAT_REDUCTION_RESULTS);
+		defineIdElement(INTERMEDIATE_RESULTS);
+		defineIdElement(GROUP_BOX);
+		defineIdElement(TEXT_BOX);
+		defineIdElement(SCOPE_BOX);
+		defineIdElement(ACTIVITY);
+		defineIdElement(STRESS);
+		defineIdElement(GOAL);
+		defineIdElement(OBJECTIVE);
+		defineIdElement(INDICATOR);
+		defineIdElement(KEY_ECOLOGICAL_ATTRIBUTE);
+		defineIdElement(TAGGED_OBJECT_SET_ELEMENT_NAME);
+		defineIdElement(SUB_TARGET);
+		defineIdElement(THREAT);
+		defineIdElement(ACCOUNTING_CODE);
+		defineIdElement(FUNDING_SOURCE);
+		defineIdElement(BUDGET_CATEGORY_ONE);
+		defineIdElement(BUDGET_CATEGORY_TWO);
+		defineIdElement(PROGRESS_REPORT);
+		defineIdElement(PROGRESS_PERCENT);
+		defineIdElement(EXPENSE_ASSIGNMENT);
+		defineIdElement(RESOURCE_ASSIGNMENT);
+		defineIdElement(RESOURCE_ID_ELEMENT_NAME);
+		defineIdElement(ACTIVITY);
+		defineIdElement(MEASUREMENT);
+		defineIdElement(METHOD);
+		defineIdElement(SUB_TASK);
+	}
+	
+	private void defineIdElement(String baseName)
+	{
+		getSchemaWriter().println(baseName + "Id.element = element " + XmpzXmlConstants.PREFIX + baseName + "Id { xsd:integer }");
+	}
+	
 	public void writeIdAttribute()
 	{
 		getSchemaWriter().printIndented("attribute " + ID + " "+ "{xsd:integer} &");
@@ -223,7 +270,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	public void writeChoiceSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, ChoiceQuestion choiceQuestion)
 	{
-		String vocabularyName = getChoiceQuestionToSchemaElementNameMap().get(choiceQuestion.getClass());
+		String vocabularyName = getChoiceQuestionToSchemaElementNameMap().get(choiceQuestion);
 		writeElementSchema(baseObjectSchema, fieldSchema, vocabularyName);
 	}
 	
@@ -236,7 +283,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		String elementName = getTagToElementNameMap().findElementName(baseObjectSchema.getXmpz2ElementName(), fieldSchema.getTag());
 		String reflistElementName = baseObjectSchema.getXmpz2ElementName() + elementName;
-		getSchemaWriter().printIndented("element " + PREFIX + reflistElementName + " { " + StringUtilities.removeLastChar(elementName) + ".element* }? ");
+		final String idElementName = StringUtilities.removeLastChar(elementName);
+		getSchemaWriter().printIndented("element " + PREFIX + reflistElementName + " { " + idElementName + ".element* }? ");
 	}
 	
 	public void writeCodelistSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ChoiceQuestion question)
@@ -275,6 +323,65 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().println();
 	}
 	
+	private void writeWrappedByDiagramFactorSchemaElement()
+	{
+		final String[] factorNames = new String[]{BIODIVERSITY_TARGET, 
+												  HUMAN_WELFARE_TARGET, 
+												  CAUSE, 
+												  STRATEGY, 
+												  THREAT_REDUCTION_RESULTS, 
+												  INTERMEDIATE_RESULTS,
+												  GROUP_BOX,
+												  TEXT_BOX,
+												  SCOPE_BOX,
+												  ACTIVITY,
+												  STRESS,
+		};
+		
+		getSchemaWriter().startElementDefinition(WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
+		for (int index = 0; index < factorNames.length; ++index)
+		{
+			getSchemaWriter().printIndented(factorNames[index] + ID + ".element");
+			if (index < factorNames.length - 1)
+				getSchemaWriter().println(" |");
+		}
+		getSchemaWriter().println();
+		getSchemaWriter().endBlock();
+	}
+	
+	private void writeHtmlTagSchemaElements()
+	{
+		String[] tagNames = new String[] {"br", "b", "i", "u", "strike", "a", "ul", "ol",};
+		getSchemaWriter().write("formatted_text = ( text |");
+		getSchemaWriter().println();
+		for (int index = 0; index < tagNames.length; ++index)
+		{
+			getSchemaWriter().printIndented("element." + tagNames[index]);
+			if (index < tagNames.length - 1)
+				getSchemaWriter().println(" | ");
+		}
+		getSchemaWriter().println();
+		getSchemaWriter().println(")*");
+		
+		getSchemaWriter().printlnIndented("element.br = element br { empty }");
+		getSchemaWriter().printlnIndented("element.b = element b { formatted_text }");
+		getSchemaWriter().printlnIndented("element.i = element i { formatted_text }");
+		getSchemaWriter().printlnIndented("element.u = element u { formatted_text }");
+		getSchemaWriter().printlnIndented("element.strike = element strike { formatted_text }");
+		getSchemaWriter().printlnIndented("element.ul = element ul { element.li* }");
+		getSchemaWriter().printlnIndented("element.ol = element ol { element.li* }");
+		getSchemaWriter().printlnIndented("element.li = element li { formatted_text }");
+		
+		getSchemaWriter().printlnIndented("element.a = element a ");
+		getSchemaWriter().printlnIndented("{");
+		getSchemaWriter().printlnIndented("	attribute href {text} &");
+		getSchemaWriter().printlnIndented("	attribute name {text}? &");
+		getSchemaWriter().printlnIndented("	attribute title {text}? &");
+		getSchemaWriter().printlnIndented("	attribute target {text}? &");			  
+		getSchemaWriter().printlnIndented(" formatted_text  ");
+		getSchemaWriter().printlnIndented("}");
+	}
+
 	private void defineDashboardStatusesVocabulary()
 	{
 		final String[] allCodesFromDynamicQuestion = new String[]{
