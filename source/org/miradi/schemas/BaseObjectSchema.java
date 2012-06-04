@@ -38,7 +38,18 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 		fillFieldSchemas();
 	}
 	
-	private AbstractFieldSchema addFieldSchema(final AbstractFieldSchema fieldSchema)
+	public AbstractFieldSchema getFieldSchema(final String tag)
+	{
+		for(AbstractFieldSchema fieldSchema : this)
+		{
+			if (fieldSchema.getTag().equals(tag))
+				return fieldSchema;
+		}
+		
+		throw new RuntimeException("Tag is not contained in this schema. Tag = " + tag);
+	}
+	
+	protected AbstractFieldSchema addFieldSchema(final AbstractFieldSchema fieldSchema)
 	{
 		fieldSchemas.add(fieldSchema);
 		return fieldSchema;

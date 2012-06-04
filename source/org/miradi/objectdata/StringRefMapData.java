@@ -25,6 +25,7 @@ import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
+import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2XmlSchemaCreator;
 
 public class StringRefMapData extends ObjectData
 {
@@ -80,6 +81,12 @@ public class StringRefMapData extends ObjectData
 	public void writeAsXmpz2XmlData(Xmpz2XmlWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
 		writer.writeRefMapXenoData(get());
+	}
+	
+	@Override
+	public void writeAsXmpz2SchemaElement(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		creator.writeStringRefMapSchemaElement(baseObjectSchema, fieldSchema);
 	}
 
 	private StringRefMap data;

@@ -1,0 +1,67 @@
+/* 
+Copyright 2005-2012, Foundations of Success, Bethesda, Maryland 
+(on behalf of the Conservation Measures Partnership, "CMP") and 
+Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
+
+This file is part of Miradi
+
+Miradi is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License version 3, 
+as published by the Free Software Foundation.
+
+Miradi is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
+*/ 
+
+package org.miradi.schemas;
+
+import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.TncProjectData;
+import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2XmlSchemaCreator;
+
+
+public class ProjectSummarySchema extends BaseObjectSchema
+{
+	public ProjectSummarySchema(Xmpz2XmlSchemaCreator creatorToUse) throws Exception
+	{
+		super();
+	}
+	
+	@Override
+	protected void fillFieldSchemas()
+	{
+		ProjectMetadataSchema schema = new ProjectMetadataSchema();
+		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_PROJECT_NAME));
+		addFieldSchema(new TncProjectDataSchema().getFieldSchema(TncProjectData.TAG_PROJECT_SHARING_CODE));
+		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_PROJECT_LANGUAGE));
+		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE));
+		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER));
+		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS));
+		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_PROJECT_URL));
+		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_PROJECT_DESCRIPTION));
+		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_PROJECT_STATUS));
+		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_NEXT_STEPS));
+		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP));
+		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_THREAT_RATING_MODE));
+		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY));
+		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT));
+	}
+
+	@Override
+	public int getType()
+	{
+		return ObjectType.FAKE;
+	}
+
+	@Override
+	public String getObjectName()
+	{
+		return PROJECT_SUMMARY;
+	}
+}
