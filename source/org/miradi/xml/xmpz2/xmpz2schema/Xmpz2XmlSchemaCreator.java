@@ -122,7 +122,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void writeSingletonElements() throws Exception
 	{
-		writeSingletonObjectSchema(new ProjectSummarySchema(this));
+		writeSingletonObjectSchema(new ProjectSummarySchema());
 		writeSingletonObjectSchema(new WwfProjectDataSchema());
 		writeSingletonObjectSchema(new WcsProjectDataSchema());
 		writeSingletonObjectSchema(new FosProjectDataSchema());
