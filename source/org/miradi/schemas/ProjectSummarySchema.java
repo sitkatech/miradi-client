@@ -23,12 +23,11 @@ package org.miradi.schemas;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
-import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2XmlSchemaCreator;
 
 
 public class ProjectSummarySchema extends BaseObjectSchema
 {
-	public ProjectSummarySchema(Xmpz2XmlSchemaCreator creatorToUse) throws Exception
+	public ProjectSummarySchema() throws Exception
 	{
 		super();
 	}
