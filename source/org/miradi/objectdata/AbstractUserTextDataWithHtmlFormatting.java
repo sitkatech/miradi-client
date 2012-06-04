@@ -20,7 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objectdata;
 
+import org.miradi.schemas.AbstractFieldSchema;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.HtmlUtilities;
+import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2XmlSchemaCreator;
 
 public class AbstractUserTextDataWithHtmlFormatting extends UserTextData
 {
@@ -52,5 +55,11 @@ public class AbstractUserTextDataWithHtmlFormatting extends UserTextData
 	public static String[] getAllowedHtmlTags()
 	{
 		return new String[] {"br", "b", "i", "ul", "ol", "li", "u", "strike", "a", };
+	}
+	
+	@Override
+	public void writeAsXmpz2SchemaElement(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		creator.writeUserTextSchemaElement(baseObjectSchema, fieldSchema);
 	}
 }
