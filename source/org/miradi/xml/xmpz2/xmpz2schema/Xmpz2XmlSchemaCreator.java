@@ -43,6 +43,7 @@ import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.CostAllocationRuleSchema;
 import org.miradi.schemas.FosProjectDataSchema;
+import org.miradi.schemas.ProjectSummarySchema;
 import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.schemas.WcpaProjectDataSchema;
 import org.miradi.schemas.WcsProjectDataSchema;
@@ -121,6 +122,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void writeSingletonElements() throws Exception
 	{
+		writeSingletonObjectSchema(new ProjectSummarySchema(this));
 		writeSingletonObjectSchema(new WwfProjectDataSchema());
 		writeSingletonObjectSchema(new WcsProjectDataSchema());
 		writeSingletonObjectSchema(new FosProjectDataSchema());
@@ -129,8 +131,14 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void writeSingletonObjectSchema(BaseObjectSchema baseObjectSchema) throws Exception
 	{
-		getSchemaWriter().startElementDefinition(baseObjectSchema.getXmpz2ElementName());
-		writeElementContent(new SingletonSchemaWriter(this, baseObjectSchema));
+		final SingletonSchemaWriter baseObjectSchemaWriter = new SingletonSchemaWriter(this, baseObjectSchema);
+		writeSingletonObjectSchema(baseObjectSchemaWriter);
+	}
+
+	private void writeSingletonObjectSchema(final SingletonSchemaWriter baseObjectSchemaWriter) throws Exception
+	{
+		getSchemaWriter().startElementDefinition(baseObjectSchemaWriter.getXmpz2ElementName());
+		writeElementContent(baseObjectSchemaWriter);
 		getSchemaWriter().endBlock();
 	}
 
@@ -163,6 +171,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			getSchemaWriter().printIndented(codelistSchemaElement);
 			getSchemaWriter().println();
 		}
+	}
+	
+	public void writeStringRefMapSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	{
+		writeSchemaElement(baseObjectSchema, fieldSchema, EXTERNAL_PROJECT_ID_ELEMENT_NAME);
 	}
 	
 	private void writeVocabularyDefinitions()

@@ -78,6 +78,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 	{
 		HashMap<String, HashMap<String,String>> map = new HashMap<String, HashMap<String,String>>();
 		
+		map.put(PROJECT_SUMMARY, createProjectMetadataMap());
 		map.put(METHOD, createTaskMap());
 		map.put(ACTIVITY, createTaskMap());
 		map.put(TASK, createTaskMap());
@@ -85,7 +86,6 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(INDICATOR, createIndicatorMap());
 		map.put(OBJECTIVE, createDesireMap());
 		map.put(GOAL, createDesireMap());
-		map.put(PROJECT_METADATA, createProjectMetadataMap());
 		map.put(ACCOUNTING_CODE, createBaseObjectMap());
 		map.put(FUNDING_SOURCE, createBaseObjectMap());
 		map.put(KEY_ECOLOGICAL_ATTRIBUTE, createKeyEcologicalAttributeMap());
