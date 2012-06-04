@@ -39,26 +39,24 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 	{
 		writer.printIndented("attribute " + ID + " "+ "{xsd:integer} &");
 		writer.println();
-		int indexCount = 0;
+		int index = 0;
 		for(AbstractFieldSchema fieldSchema : getBaseObjectSchema())
 		{
-			if (!doesFieldRequireSpecialHandling(fieldSchema.getTag()))
+			++index;
+			ObjectData objectData = fieldSchema.createField(null);
+			if (objectData.isPseudoField())
+				continue;
+			
+			if (doesFieldRequireSpecialHandling(fieldSchema.getTag()))
+				continue;
+
+			objectData.writeAsXmpz2SchemaElement(creator, baseObjectSchema, fieldSchema);
+			if (index < getBaseObjectSchema().numberOfFields())
 			{
-				writeFieldSchema(fieldSchema);
-				if (indexCount < getBaseObjectSchema().numberOfFields() - 1)
-				{
-					getCreator().getSchemaWriter().print(" &");
-					getCreator().getSchemaWriter().println();
-				}
-				++indexCount;
+				getCreator().getSchemaWriter().print(" &");
+				getCreator().getSchemaWriter().println();
 			}
 		}
-	}
-
-	private void writeFieldSchema(AbstractFieldSchema fieldSchema) throws Exception
-	{
-		ObjectData objectData = fieldSchema.createField(null);
-		objectData.writeAsXmpz2SchemaElement(creator, baseObjectSchema, fieldSchema);
 	}
 
 	private boolean doesFieldRequireSpecialHandling(String tag)
