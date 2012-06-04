@@ -20,6 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objectdata;
 
+import org.miradi.schemas.AbstractFieldSchema;
+import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2XmlSchemaCreator;
+
 public class SingleLineUserTextData extends UserTextData
 {
 	public SingleLineUserTextData(String tagToUse)
@@ -31,5 +35,11 @@ public class SingleLineUserTextData extends UserTextData
 	public boolean isSingleLineUserText()
 	{
 		return true;
+	}
+	
+	@Override
+	public void writeAsXmpz2SchemaElement(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		creator.writeStringSchemaElement(baseObjectSchema, fieldSchema);
 	}
 }

@@ -23,7 +23,6 @@ package org.miradi.objectdata;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
-import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2XmlSchemaCreator;
 
 abstract public class UserTextData extends StringData
 {
@@ -42,11 +41,5 @@ abstract public class UserTextData extends StringData
 	public void writeAsXmpz2XmlData(Xmpz2XmlWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
 		writer.writeXmlFormattedText(baseObjectSchema, fieldSchema, get());
-	}
-	
-	@Override
-	public void writeAsXmpz2SchemaElement(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
-	{
-		creator.writeUserTextSchemaElement(baseObjectSchema, fieldSchema);
 	}
 }
