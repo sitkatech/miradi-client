@@ -37,7 +37,9 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 	
 	public void writeFields(SchemaWriter writer) throws Exception
 	{
-		writer.printIndented("attribute " + ID + " "+ "{xsd:integer} &");
+		if (ShouldWriteIdAttribute())
+			writer.printIndented("attribute " + ID + " "+ "{xsd:integer} &");
+		
 		writer.println();
 		int index = 0;
 		for(AbstractFieldSchema fieldSchema : getBaseObjectSchema())
@@ -57,6 +59,11 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 				getCreator().getSchemaWriter().println();
 			}
 		}
+	}
+
+	protected boolean ShouldWriteIdAttribute()
+	{
+		return true;
 	}
 
 	private boolean doesFieldRequireSpecialHandling(String tag)

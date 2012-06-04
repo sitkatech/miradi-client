@@ -42,7 +42,11 @@ import org.miradi.questions.TextBoxZOrderQuestion;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.CostAllocationRuleSchema;
+import org.miradi.schemas.FosProjectDataSchema;
+import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.schemas.WcpaProjectDataSchema;
+import org.miradi.schemas.WcsProjectDataSchema;
+import org.miradi.schemas.WwfProjectDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.StringUtilities;
@@ -79,6 +83,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		writeHeader();
 		writeConservationProjectElement();
+		writeSingletonElements();
 		writeBaseObjectSchemaElements();
 		writeCodelistSchemaElements();
 		writeVocabularyDefinitions();
@@ -105,7 +110,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		for(BaseObjectSchemaWriter baseObjectSchemaWriter : baseObjectSchemaWriters)
 		{
 			String poolName = baseObjectSchemaWriter.getPoolName();
-			elementNames.add(createElementName(poolName) + " ? ");
+			elementNames.add(createElementName(poolName) + " ?");
 		}
 		
 		getSchemaWriter().writeContentsList(elementNames);
@@ -114,6 +119,21 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().flush();
 	}
 	
+	private void writeSingletonElements() throws Exception
+	{
+		writeSingletonObjectSchema(new WwfProjectDataSchema());
+		writeSingletonObjectSchema(new WcsProjectDataSchema());
+		writeSingletonObjectSchema(new FosProjectDataSchema());
+		writeSingletonObjectSchema(new RareProjectDataSchema());
+	}
+	
+	private void writeSingletonObjectSchema(BaseObjectSchema baseObjectSchema) throws Exception
+	{
+		getSchemaWriter().startElementDefinition(baseObjectSchema.getXmpz2ElementName());
+		writeElementContent(new SingletonSchemaWriter(this, baseObjectSchema));
+		getSchemaWriter().endBlock();
+	}
+
 	private void writeBaseObjectSchemaElements() throws Exception
 	{
 		for(BaseObjectSchemaWriter baseObjectSchemaWriter : baseObjectSchemaWriters)
@@ -284,7 +304,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		String elementName = getTagToElementNameMap().findElementName(baseObjectSchema.getXmpz2ElementName(), fieldSchema.getTag());
 		String reflistElementName = baseObjectSchema.getXmpz2ElementName() + elementName;
 		final String idElementName = StringUtilities.removeLastChar(elementName);
-		getSchemaWriter().printIndented("element " + PREFIX + reflistElementName + " { " + idElementName + ".element* }? ");
+		getSchemaWriter().printIndented("element " + PREFIX + reflistElementName + " { " + idElementName + ".element* }?");
 	}
 	
 	public void writeCodelistSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ChoiceQuestion question)
