@@ -20,12 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
+import org.miradi.xml.xmpz2.xmpz2schema.AbstractProjectSummarySchema;
 
 
-public class ProjectSummarySchema extends BaseObjectSchema
+public class ProjectSummarySchema extends AbstractProjectSummarySchema
 {
 	public ProjectSummarySchema() throws Exception
 	{
@@ -50,12 +50,6 @@ public class ProjectSummarySchema extends BaseObjectSchema
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_THREAT_RATING_MODE));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT));
-	}
-
-	@Override
-	public int getType()
-	{
-		return ObjectType.FAKE;
 	}
 
 	@Override
