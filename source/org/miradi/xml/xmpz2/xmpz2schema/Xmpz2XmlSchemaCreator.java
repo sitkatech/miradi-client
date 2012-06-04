@@ -91,6 +91,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeObjectTypeIdElements();
 		writeWrappedByDiagramFactorSchemaElement();
 		writeHtmlTagSchemaElements();
+		writeGeospacialLocationElement();
+		writeDiagramPointElement();
+		writeDiagramSizeElement();
 	}
 
 	private void writeHeader()
@@ -416,6 +419,33 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().printlnIndented("	attribute target {text}? &");			  
 		getSchemaWriter().printlnIndented(" formatted_text  ");
 		getSchemaWriter().printlnIndented("}");
+	}
+	
+	private void writeGeospacialLocationElement()
+	{
+		getSchemaWriter().startElementDefinition(GEOSPATIAL_LOCATION);
+		getSchemaWriter().startBlock();
+		getSchemaWriter().printlnIndented("element " + PREFIX + "latitude { xsd:decimal } &");
+		getSchemaWriter().printlnIndented("element " + PREFIX + "longitude { xsd:decimal } ");
+		getSchemaWriter().endBlock();
+	}
+	
+	private void writeDiagramPointElement()
+	{
+		getSchemaWriter().startElementDefinition(DIAGRAM_POINT_ELEMENT_NAME);
+		getSchemaWriter().startBlock();
+		getSchemaWriter().printlnIndented("element " + PREFIX + "x { xsd:integer } & ");
+		getSchemaWriter().printlnIndented("element " + PREFIX + "y { xsd:integer }"); 
+		getSchemaWriter().endBlock();
+	}
+	
+	private void writeDiagramSizeElement()
+	{
+		getSchemaWriter().startElementDefinition(DIAGRAM_SIZE_ELEMENT_NAME);
+		getSchemaWriter().startBlock();
+		getSchemaWriter().printlnIndented("element " + PREFIX + "width { xsd:integer } & ");
+		getSchemaWriter().printlnIndented("element " + PREFIX + "height { xsd:integer }"); 
+		getSchemaWriter().endBlock();
 	}
 
 	private void defineDashboardStatusesVocabulary()
