@@ -986,11 +986,6 @@ ExpensesDay.element = element miradi:ExpensesDay
   attribute Date {vocabulary_date}
 }
 
-ProjectSummaryPlanningFiscalYearStartMonthContainer.element = element miradi:ProjectSummaryPlanningFiscalYearStartMonthContainer
-{
-  element miradi:code { vocabulary_fiscal_year_start_month } * 
-}
-
 ProjectSummaryScopeProtectedAreaCategoriesContainer.element = element miradi:ProjectSummaryScopeProtectedAreaCategoriesContainer
 {
   element miradi:code { vocabulary_protected_area_categories } * 
