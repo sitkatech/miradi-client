@@ -55,7 +55,6 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.StringUtilities;
 import org.miradi.utils.Translation;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2TagToElementNameMap;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
@@ -278,7 +277,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void defineIdElement(String baseName)
 	{
-		getSchemaWriter().println(baseName + "Id.element = element " + XmpzXmlConstants.PREFIX + baseName + "Id { xsd:integer }");
+		getSchemaWriter().println(baseName + "Id.element = element " + PREFIX + baseName + "Id { xsd:integer }");
 	}
 	
 	public void writeIdAttribute()
@@ -291,7 +290,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		String baseObjectName = baseObjectSchemaWriter.getXmpz2ElementName();
 		String baseObjectPoolName = baseObjectSchemaWriter.getPoolName();
 		
-		String result = XmpzXmlConstants.ELEMENT_NAME + XmpzXmlConstants.PREFIX + baseObjectPoolName + " { " + createElementName(baseObjectName) + "* }";
+		String result = ELEMENT_NAME + PREFIX + baseObjectPoolName + " { " + createElementName(baseObjectName) + "* }";
 		getSchemaWriter().defineAlias(createElementName(baseObjectPoolName), result);
 		getSchemaWriter().defineAlias(createElementName(baseObjectName), "element miradi:" + baseObjectName);
 	}
@@ -525,19 +524,19 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void defineDateUnitEfforts()
 	{
-		writer.defineAlias("DateUnitWorkUnits.element", "element " + XmpzXmlConstants.PREFIX + "DateUnitWorkUnits");
+		writer.defineAlias("DateUnitWorkUnits.element", "element " + PREFIX + "DateUnitWorkUnits");
 		writer.startBlock();
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "WorkUnitsDateUnit{WorkUnitsDay.element | WorkUnitsMonth.element | WorkUnitsQuarter.element | WorkUnitsYear.element | WorkUnitsFullProjectTimespan.element }? &");
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "NumberOfUnits { xsd:decimal }?");
+		writer.printlnIndented("element " + PREFIX + "WorkUnitsDateUnit{WorkUnitsDay.element | WorkUnitsMonth.element | WorkUnitsQuarter.element | WorkUnitsYear.element | WorkUnitsFullProjectTimespan.element }? &");
+		writer.printlnIndented("element " + PREFIX + "NumberOfUnits { xsd:decimal }?");
 		writer.endBlock();
 	}
 
 	private void defineDateUnitExpense()
 	{
-		writer.defineAlias("DateUnitExpense.element", "element " + XmpzXmlConstants.PREFIX + "DateUnitExpense");
+		writer.defineAlias("DateUnitExpense.element", "element " + PREFIX + "DateUnitExpense");
 		writer.startBlock();
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + XmpzXmlConstants.EXPENSES_DATE_UNIT + "{ExpensesDay.element | ExpensesMonth.element | ExpensesQuarter.element | ExpensesYear.element | ExpensesFullProjectTimespan.element }? &");
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + XmpzXmlConstants.EXPENSE + " { xsd:decimal }?");
+		writer.printlnIndented("element " + PREFIX + EXPENSES_DATE_UNIT + "{ExpensesDay.element | ExpensesMonth.element | ExpensesQuarter.element | ExpensesYear.element | ExpensesFullProjectTimespan.element }? &");
+		writer.printlnIndented("element " + PREFIX + EXPENSE + " { xsd:decimal }?");
 		writer.endBlock();
 	}
 	
@@ -639,17 +638,17 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void defineThresholdsElement()
 	{
-		writer.defineAlias(THRESHOLD + ".element", "element " + XmpzXmlConstants.PREFIX + THRESHOLD);
+		writer.defineAlias(THRESHOLD + ".element", "element " + PREFIX + THRESHOLD);
 		writer.startBlock();
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + STATUS_CODE + "{" + VOCABULARY_MEASUREMENT_STATUS + "}? &");
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + THRESHOLD_VALUE + " { text }? &");
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + THRESHOLD_DETAILS + " { text }?");
+		writer.printlnIndented("element " + PREFIX + STATUS_CODE + "{" + VOCABULARY_MEASUREMENT_STATUS + "}? &");
+		writer.printlnIndented("element " + PREFIX + THRESHOLD_VALUE + " { text }? &");
+		writer.printlnIndented("element " + PREFIX + THRESHOLD_DETAILS + " { text }?");
 		writer.endBlock();
 	}
 	
 	private void defineTimePeriodCostsElement()
 	{
-		writer.defineAlias(TIME_PERIOD_COSTS + ".element", "element " + XmpzXmlConstants.PREFIX + TIME_PERIOD_COSTS);
+		writer.defineAlias(TIME_PERIOD_COSTS + ".element", "element " + PREFIX + TIME_PERIOD_COSTS);
 		writer.startBlock();
 		writer.printlnIndented("element " + PREFIX + CALCULATED_START_DATE + "{ vocabulary_date } &");
 		writer.printlnIndented("element " + PREFIX + CALCULATED_END_DATE + "{ vocabulary_date } &");
