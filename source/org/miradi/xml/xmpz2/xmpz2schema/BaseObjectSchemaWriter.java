@@ -47,17 +47,35 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 			if (objectData.isPseudoField())
 				continue;
 			
-			if (doesFieldRequireSpecialHandling(fieldSchema.getTag()))
+			if (shouldOmitField(fieldSchema.getTag()))
 				continue;
 
 			++index;
-			objectData.writeAsXmpz2SchemaElement(creator, baseObjectSchema, fieldSchema);
-			if (index < getBaseObjectSchema().numberOfNonPseudoFields())
+			if (doesFieldRequireSpecialHandling(fieldSchema.getTag()))
+				writeCustomField(fieldSchema);
+			else
+				objectData.writeAsXmpz2SchemaElement(creator, baseObjectSchema, fieldSchema);
+			
+			if (index < getFieldCount())
 			{
 				getCreator().getSchemaWriter().print(" &");
 				getCreator().getSchemaWriter().println();
 			}
 		}
+	}
+
+	protected int getFieldCount()
+	{
+		return getBaseObjectSchema().numberOfNonPseudoFields();
+	}
+
+	protected boolean shouldOmitField(String tag)
+	{
+		return false;
+	}
+
+	protected void writeCustomField(AbstractFieldSchema fieldSchema)
+	{
 	}
 
 	protected boolean ShouldWriteIdAttribute()

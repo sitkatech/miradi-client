@@ -21,8 +21,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2.xmpz2schema;
 
 import org.miradi.objects.Indicator;
+import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.xml.generic.SchemaWriter;
 
 public class IndicatorSchemaWriter extends BaseObjectSchemaWriter
 {
@@ -32,10 +32,8 @@ public class IndicatorSchemaWriter extends BaseObjectSchemaWriter
 	}
 	
 	@Override
-	public void writeFields(SchemaWriter writer) throws Exception
+	protected void writeCustomField(AbstractFieldSchema fieldSchema)
 	{
-		super.writeFields(writer);
-		
 		getCreator().writeThresholdsSchemaElement(getBaseObjectSchema());
 	}
 	
