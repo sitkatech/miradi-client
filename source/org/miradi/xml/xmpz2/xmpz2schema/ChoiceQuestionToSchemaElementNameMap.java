@@ -25,6 +25,7 @@ import java.util.HashMap;
 import org.miradi.questions.BudgetTimePeriodQuestion;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CountriesQuestion;
+import org.miradi.questions.CurrencyTypeQuestion;
 import org.miradi.questions.DashboardFlagsQuestion;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.questions.DiagramFactorFontColorQuestion;
@@ -54,15 +55,18 @@ import org.miradi.questions.ScopeThreatRatingQuestion;
 import org.miradi.questions.SeverityThreatRatingQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StatusConfidenceQuestion;
+import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StrategyFeasibilityQuestion;
 import org.miradi.questions.StrategyImpactQuestion;
 import org.miradi.questions.StrategyObjectiveTreeOrderQuestion;
+import org.miradi.questions.StrategyStatusQuestion;
 import org.miradi.questions.StrategyTaxonomyQuestion;
 import org.miradi.questions.StressContributionQuestion;
 import org.miradi.questions.StressIrreversibilityQuestion;
 import org.miradi.questions.StressScopeChoiceQuestion;
 import org.miradi.questions.StressSeverityChoiceQuestion;
 import org.miradi.questions.TargetStatusQuestion;
+import org.miradi.questions.TextBoxZOrderQuestion;
 import org.miradi.questions.ThreatClassificationQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
@@ -140,7 +144,10 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(QuarterColumnsVisibilityQuestion.class, VOCABULARY_QUARTER_COLUMNS_VISIBILITY);
 		addItem(BudgetTimePeriodQuestion.class, VOCABULARY_WORK_PLAN_TIME_UNIT);
 		addItem(RatingSourceQuestion.class, VOCABULARY_RATING_SOURCE);
-
+		addItem(CurrencyTypeQuestion.class, VOCABULARY_CURRENCY_TYPE);
+		addItem(TextBoxZOrderQuestion.class, VOCABULARY_TEXT_BOX_Z_ORDER);
+		addItem(StrategyStatusQuestion.class, VOCABULARY_STRATEGY_STATUS);
+		addItem(StatusQuestion.class, VOCABULARY_STATUS);
 	}
 	
 	private void addItem(Class questionClass, String value)
@@ -153,6 +160,17 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 	{
 		put(question, value);
 	}
+	
+	public String findVocabulary(ChoiceQuestion questionToFind)
+	{
+		for(ChoiceQuestion question : keySet())
+		{
+			if (questionToFind.getClass().equals(question.getClass()))
+				return get(question); 
+		}
+		
+		throw new RuntimeException("Could not find a vocabulary for question: " + questionToFind.getClass().getSimpleName());
+	}		
 	
 	public static final String VOCABULARY_LANGUAGE_CODE = "vocabulary_language_code";
 	private static final String VOCABULARY_FISCAL_YEAR_START = "vocabulary_fiscal_year_start_month";
@@ -214,5 +232,7 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 	public static final String VOCABULARY_QUARTER_COLUMNS_VISIBILITY = "vocabulary_quarter_columns_visibility";
 	public static final String VOCABULARY_WORK_PLAN_TIME_UNIT = "vocabulary_work_plan_time_unit";
 	public static final String VOCABULARY_RATING_SOURCE = "vocabulary_rating_source";
-
+	public static final String VOCABULARY_CURRENCY_TYPE = "vocabulary_currency_type";
+	public static final String VOCABULARY_STATUS = "vocabulary_status";
+	public static final String VOCABULARY_STRATEGY_STATUS = "vocabulary_strategy_status";
 }
