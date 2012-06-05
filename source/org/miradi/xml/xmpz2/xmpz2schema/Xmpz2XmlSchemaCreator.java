@@ -646,10 +646,15 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 				continue;
 			
 			BaseObjectSchema baseObjectSchema = pool.createBaseObjectSchema(getProject());
-			schemaWriters.add(new BaseObjectSchemaWriter(this, baseObjectSchema));
+			schemaWriters.add(createSchemaWriter(baseObjectSchema));
 		}
 		
 		return schemaWriters;
+	}
+
+	private BaseObjectSchemaWriter createSchemaWriter(BaseObjectSchema baseObjectSchema)
+	{
+		return new BaseObjectSchemaWriter(this, baseObjectSchema);
 	}
 	
 	private boolean isPoolDirectlyInXmpz2(int objectType)
