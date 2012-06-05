@@ -333,8 +333,16 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	public void writeBaseIdSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, int objectType)
 	{
-		String objectName = getProject().getObjectManager().getInternalObjectTypeName(objectType);
+		String objectName = getIdElementName(baseObjectSchema, fieldSchema, objectType);
 		writeSchemaElement(baseObjectSchema, fieldSchema, objectName + ID);
+	}
+
+	private String getIdElementName(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, int objectType)
+	{
+		if (ResourceAssignment.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(ResourceAssignment.TAG_RESOURCE_ID))
+			return RESOURCE_ID;
+	
+		return getProject().getObjectManager().getInternalObjectTypeName(objectType);
 	}
 
 	public void writeDateUnitEffortListSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
@@ -364,8 +372,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private String createIdElementName(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String elementName)
 	{
 		if (Task.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(Task.TAG_SUBTASK_IDS))
-			return SUB_TASK + ID; 
-			
+			return SUB_TASK + ID;
+				
 		return StringUtilities.removeLastChar(elementName);
 	}
 	
@@ -758,7 +766,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			return EXPENSE;
 		
 		if (ResourceAssignment.is(objectType))
-			return WORK_UNITS;
+			return "WorkUnits";
 		
 		throw new RuntimeException("Object type " + objectType + " cannot have a dateunitEffortsList field");
 	}
