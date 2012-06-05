@@ -25,6 +25,7 @@ import java.util.HashMap;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
+import org.miradi.objects.Desire;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
@@ -34,7 +35,6 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.ObjectTreeTableConfiguration;
-import org.miradi.objects.Objective;
 import org.miradi.objects.Organization;
 import org.miradi.objects.ProgressPercent;
 import org.miradi.objects.ProjectMetadata;
@@ -187,8 +187,10 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 	private HashMap<String, String> createDesireMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
-		map.put(Objective.TAG_FULL_TEXT, DETAILS);
-		map.put(Objective.TAG_PROGRESS_PERCENT_REFS, PROGRESS_PERCENT_IDS);
+		map.put(Desire.TAG_FULL_TEXT, DETAILS);
+		map.put(Desire.TAG_PROGRESS_PERCENT_REFS, PROGRESS_PERCENT_IDS);
+		map.put(Desire.TAG_RELEVANT_INDICATOR_SET, RELEVANT_INDICATOR_IDS);
+		map.put(Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, RELEVANT_STRATEGY_IDS);
 		
 		return map;
 	}
