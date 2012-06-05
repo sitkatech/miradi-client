@@ -36,6 +36,18 @@ public class TextBoxZOrderQuestion extends StaticChoiceQuestion
 		};
 	}
 	
+	@Override
+	protected boolean hasReadableAlternativeDefaultCode()
+	{
+		return true;
+	}
+	
+	@Override
+	protected String getReadableAlternativeDefaultCode()
+	{
+		return "Back";
+	}
+	
 	private static final String BEHIND_CODE = "";
 	public static final String FRONT_CODE = "Front";
 	public static final String DEFAULT_Z_ORDER = BEHIND_CODE;
