@@ -500,7 +500,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void writeGeospacialLocationElement()
 	{
 		getSchemaWriter().startElementDefinition(GEOSPATIAL_LOCATION);
-		getSchemaWriter().startBlock();
 		getSchemaWriter().printlnIndented("element " + PREFIX + "latitude { xsd:decimal } &");
 		getSchemaWriter().printlnIndented("element " + PREFIX + "longitude { xsd:decimal } ");
 		getSchemaWriter().endBlock();
@@ -509,7 +508,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void writeDiagramPointElement()
 	{
 		getSchemaWriter().startElementDefinition(DIAGRAM_POINT_ELEMENT_NAME);
-		getSchemaWriter().startBlock();
 		getSchemaWriter().printlnIndented("element " + PREFIX + "x { xsd:integer } & ");
 		getSchemaWriter().printlnIndented("element " + PREFIX + "y { xsd:integer }"); 
 		getSchemaWriter().endBlock();
@@ -518,7 +516,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void writeDiagramSizeElement()
 	{
 		getSchemaWriter().startElementDefinition(DIAGRAM_SIZE_ELEMENT_NAME);
-		getSchemaWriter().startBlock();
 		getSchemaWriter().printlnIndented("element " + PREFIX + "width { xsd:integer } & ");
 		getSchemaWriter().printlnIndented("element " + PREFIX + "height { xsd:integer }"); 
 		getSchemaWriter().endBlock();
