@@ -45,6 +45,7 @@ import org.miradi.schemas.CostAllocationRuleSchema;
 import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.schemas.ProjectSummarySchema;
 import org.miradi.schemas.RareProjectDataSchema;
+import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.schemas.WcpaProjectDataSchema;
 import org.miradi.schemas.WcsProjectDataSchema;
 import org.miradi.schemas.WwfProjectDataSchema;
@@ -94,6 +95,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeGeospacialLocationElement();
 		writeDiagramPointElement();
 		writeDiagramSizeElement();
+		writeDateUnitSchemaElements();
 	}
 
 	private void writeHeader()
@@ -129,6 +131,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeSingletonObjectSchema(new ProjectSummaryScopeSchema());
 		writeSingletonObjectSchema(new ProjectSummaryLocationSchema());
 		writeSingletonObjectSchema(new ProjectSummaryPlanningSchema());
+		writeSingletonObjectSchema(new TncProjectDataSchema());
 		writeSingletonObjectSchema(new WwfProjectDataSchema());
 		writeSingletonObjectSchema(new WcsProjectDataSchema());
 		writeSingletonObjectSchema(new FosProjectDataSchema());
@@ -468,7 +471,138 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		}
 		
 		getSchemaWriter().println();
-	}	
+	}
+	
+	private void writeDateUnitSchemaElements()
+	{
+		defineDateUnitEfforts();
+		defineWorkUnitsFullProjectTimeSpanElement();
+		defineWorkUnitsYearElement();
+		defineWorkUnitsQuarterElement();
+		defineWorkUnitsMonthElement();
+		defineWorkUnitsDayElement();
+		
+		defineDateUnitExpense();
+		defineExpenseFullProjectTimeSpanElement();
+		defineExpenseYearElement();
+		defineExpenseQuarterElement();
+		defineExpenseMonthElement();
+		defineExpenseDayElement();
+	}
+	
+	private void defineDateUnitEfforts()
+	{
+		writer.defineAlias("DateUnitWorkUnits.element", "element " + XmpzXmlConstants.PREFIX + "DateUnitWorkUnits");
+		writer.startBlock();
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "WorkUnitsDateUnit{WorkUnitsDay.element | WorkUnitsMonth.element | WorkUnitsQuarter.element | WorkUnitsYear.element | WorkUnitsFullProjectTimespan.element }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "NumberOfUnits { xsd:decimal }?");
+		writer.endBlock();
+	}
+
+	private void defineDateUnitExpense()
+	{
+		writer.defineAlias("DateUnitExpense.element", "element " + XmpzXmlConstants.PREFIX + "DateUnitExpense");
+		writer.startBlock();
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + XmpzXmlConstants.EXPENSES_DATE_UNIT + "{ExpensesDay.element | ExpensesMonth.element | ExpensesQuarter.element | ExpensesYear.element | ExpensesFullProjectTimespan.element }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + XmpzXmlConstants.EXPENSE + " { xsd:decimal }?");
+		writer.endBlock();
+	}
+	
+	private void defineExpenseFullProjectTimeSpanElement()
+	{
+		defineFullProjectTimeSpanElement("ExpensesFullProjectTimespan");
+	}
+	
+	private void defineExpenseYearElement()
+	{
+		defineYearElement("ExpensesYear");
+	}
+
+	private void defineExpenseQuarterElement()
+	{
+		defineQuarterElement("ExpensesQuarter");
+	}
+	
+	private void defineExpenseMonthElement()
+	{
+		defineMonthElement("ExpensesMonth");
+	}
+	
+	private void defineExpenseDayElement()
+	{
+		defineDayElement("ExpensesDay");
+	}
+	
+	private void defineWorkUnitsFullProjectTimeSpanElement()
+	{
+		defineFullProjectTimeSpanElement("WorkUnitsFullProjectTimespan");
+	}
+		
+	private void defineWorkUnitsYearElement()
+	{
+		defineYearElement("WorkUnitsYear");
+	}
+
+	private void defineWorkUnitsQuarterElement()
+	{
+		defineQuarterElement("WorkUnitsQuarter");
+	}
+
+	private void defineWorkUnitsMonthElement()
+	{
+		defineMonthElement("WorkUnitsMonth");
+	}
+	
+	private void defineWorkUnitsDayElement()
+	{
+		defineDayElement("WorkUnitsDay");
+	}
+	
+	private void defineFullProjectTimeSpanElement(String fullProjectTimeSpanElementName)
+	{
+		String[] subElements = new String[]{"attribute " + FULL_PROJECT_TIMESPAN + " { vocabulary_full_project_timespan }"};
+		defineElement(fullProjectTimeSpanElementName, subElements);
+	}
+	
+	private void defineYearElement(String yearElementName)
+	{
+		String[] subElements = new String[]{"attribute StartYear {vocabulary_year}", "attribute StartMonth {vocabulary_month}"};
+		defineElement(yearElementName, subElements);
+	}
+		
+	private void defineQuarterElement(String quarterElementName)
+	{
+		String[] subElements = new String[]{"attribute Year {vocabulary_year}", "attribute StartMonth {vocabulary_month}"};
+		defineElement(quarterElementName, subElements);
+	}
+	
+	private void defineMonthElement(String monthElementName)
+	{
+		String[] subElements = new String[]{"attribute Year {vocabulary_year}", "attribute Month {vocabulary_month}"};
+		defineElement(monthElementName, subElements);
+	}
+	
+	private void defineDayElement(String dayElementName)
+	{
+		String[] subElements = new String[]{"attribute Date {vocabulary_date}"};
+		defineElement(dayElementName, subElements);
+	}
+
+	private void defineElement(String elementName, String[] subElements)
+	{
+		writer.defineAlias(elementName + ".element", "element miradi:" + elementName);
+		writer.startBlock();
+		for (int index = 0; index < subElements.length; ++index)
+		{
+			if (index > 0)
+				writer.println(" &");
+			
+			writer.printIndented(subElements[index]);
+		}
+		
+		writer.println();
+		writer.endBlock();
+	}
 	
 	public void writeSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, final String elementType)
 	{
