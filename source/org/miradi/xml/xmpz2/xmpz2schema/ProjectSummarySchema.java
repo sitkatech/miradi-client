@@ -18,11 +18,12 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.schemas;
+package org.miradi.xml.xmpz2.xmpz2schema;
 
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
-import org.miradi.xml.xmpz2.xmpz2schema.AbstractProjectSummarySchema;
+import org.miradi.schemas.ProjectMetadataSchema;
+import org.miradi.schemas.TncProjectDataSchema;
 
 
 public class ProjectSummarySchema extends AbstractProjectSummarySchema
