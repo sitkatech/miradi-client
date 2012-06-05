@@ -26,6 +26,7 @@ import java.util.Vector;
 import org.miradi.main.Miradi;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.BaseObjectPool;
+import org.miradi.objects.Desire;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.ProjectMetadata;
@@ -170,6 +171,22 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		baseObjectSchemaWriter.writeFields(getSchemaWriter());
 		getSchemaWriter().println();
+	}
+	
+	public void writeRelevantSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	{
+		writeElementSchema(baseObjectSchema, fieldSchema, getRelevantTypeName(fieldSchema));
+	}
+	
+	private String getRelevantTypeName(AbstractFieldSchema fieldSchema)
+	{
+		if (fieldSchema.getTag().equals(Desire.TAG_RELEVANT_INDICATOR_SET))
+			return "IndicatorId.element*";
+		
+		if (fieldSchema.getTag().equals(Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET))
+			return "StrategyId.element*";
+		
+		throw new RuntimeException("FieldSchema is not a relevancy field: " + fieldSchema.getTag());
 	}
 	
 	private void writeCodelistSchemaElements()
