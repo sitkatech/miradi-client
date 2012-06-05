@@ -357,8 +357,16 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		String elementName = getTagToElementNameMap().findElementName(baseObjectSchema.getXmpz2ElementName(), fieldSchema.getTag());
 		String reflistElementName = baseObjectSchema.getXmpz2ElementName() + elementName;
-		final String idElementName = StringUtilities.removeLastChar(elementName);
+		final String idElementName = createIdElementName(baseObjectSchema, fieldSchema, elementName);
 		getSchemaWriter().printIndented("element " + PREFIX + reflistElementName + " { " + idElementName + ".element* }?");
+	}
+
+	private String createIdElementName(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String elementName)
+	{
+		if (Task.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(Task.TAG_SUBTASK_IDS))
+			return SUB_TASK + ID; 
+			
+		return StringUtilities.removeLastChar(elementName);
 	}
 	
 	public void writeCodelistSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ChoiceQuestion question)
