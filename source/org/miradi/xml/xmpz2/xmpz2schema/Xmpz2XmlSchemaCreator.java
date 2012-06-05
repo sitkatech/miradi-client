@@ -130,6 +130,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeSingletonObjectSchema(new ProjectSummaryScopeSchema());
 		writeSingletonObjectSchema(new ProjectSummaryLocationSchema());
 		writeSingletonObjectSchema(new ProjectSummaryPlanningSchema());
+		writeSingletonObjectSchema(new ProjectSummaryTncProjectDataSchema());
 		writeSingletonObjectSchema(new WwfProjectDataSchema());
 		writeSingletonObjectSchema(new WcsProjectDataSchema());
 		writeSingletonObjectSchema(new FosProjectDataSchema());
