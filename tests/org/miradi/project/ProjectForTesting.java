@@ -322,6 +322,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectWithSampleStringData(tncProjectDataRef, TncProjectData.TAG_MAKING_THE_CASE);
 		fillObjectWithSampleStringData(tncProjectDataRef, TncProjectData.TAG_RISKS);
 		fillObjectWithSampleStringData(tncProjectDataRef, TncProjectData.TAG_CAPACITY_AND_FUNDING);
+		fillObjectWithSampleStringData(tncProjectDataRef, TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
+		fillObjectWithSampleStringData(tncProjectDataRef, TncProjectData.TAG_PROJECT_RESOURCES_SCORECARD);
+		fillObjectWithSampleStringData(tncProjectDataRef, TncProjectData.TAG_PROJECT_LEVEL_COMMENTS);
+		fillObjectWithSampleStringData(tncProjectDataRef, TncProjectData.TAG_PROJECT_CITATIONS);
+		fillObjectWithSampleStringData(tncProjectDataRef, TncProjectData.TAG_CAP_STANDARDS_SCORECARD);
+		fillObjectWithSampleStringData(tncProjectDataRef, TncProjectData.TAG_MAKING_THE_CASE);
+		fillObjectWithSampleStringData(tncProjectDataRef, TncProjectData.TAG_RISKS);
+		fillObjectWithSampleStringData(tncProjectDataRef, TncProjectData.TAG_CAPACITY_AND_FUNDING);
 	}
 	
 	public void setFiscalYearStartMonth(int startMonth) throws Exception
