@@ -43,7 +43,6 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 		int index = 0;
 		for(AbstractFieldSchema fieldSchema : getBaseObjectSchema())
 		{
-			++index;
 			ObjectData objectData = fieldSchema.createField(null);
 			if (objectData.isPseudoField())
 				continue;
@@ -51,6 +50,7 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 			if (doesFieldRequireSpecialHandling(fieldSchema.getTag()))
 				continue;
 
+			++index;
 			objectData.writeAsXmpz2SchemaElement(creator, baseObjectSchema, fieldSchema);
 			if (index < getBaseObjectSchema().numberOfNonPseudoFields())
 			{
