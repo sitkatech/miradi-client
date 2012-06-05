@@ -45,7 +45,6 @@ import org.miradi.schemas.CostAllocationRuleSchema;
 import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.schemas.ProjectSummarySchema;
 import org.miradi.schemas.RareProjectDataSchema;
-import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.schemas.WcpaProjectDataSchema;
 import org.miradi.schemas.WcsProjectDataSchema;
 import org.miradi.schemas.WwfProjectDataSchema;
@@ -131,7 +130,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeSingletonObjectSchema(new ProjectSummaryScopeSchema());
 		writeSingletonObjectSchema(new ProjectSummaryLocationSchema());
 		writeSingletonObjectSchema(new ProjectSummaryPlanningSchema());
-		writeSingletonObjectSchema(new TncProjectDataSchema());
 		writeSingletonObjectSchema(new WwfProjectDataSchema());
 		writeSingletonObjectSchema(new WcsProjectDataSchema());
 		writeSingletonObjectSchema(new FosProjectDataSchema());
