@@ -46,5 +46,11 @@ public class FieldSchemaPseudoQuestionField extends AbstractFieldSchema
 		return new PseudoQuestionData(baseObjectToUse, getTag(), dependencySet);
 	}
 	
+	@Override
+	public boolean isPseudoField()
+	{
+		return true;
+	}
+	
 	private HashSet<String> dependencySet;
 }

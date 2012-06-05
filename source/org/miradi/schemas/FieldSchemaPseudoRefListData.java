@@ -36,4 +36,10 @@ public class FieldSchemaPseudoRefListData extends AbstractFieldSchema
 	{
 		return new PseudoRefListData(baseObjectToUse, getTag());
 	}
+	
+	@Override
+	public boolean isPseudoField()
+	{
+		return true;
+	}
 }

@@ -52,7 +52,7 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 				continue;
 
 			objectData.writeAsXmpz2SchemaElement(creator, baseObjectSchema, fieldSchema);
-			if (index < getBaseObjectSchema().numberOfFields())
+			if (index < getBaseObjectSchema().numberOfNonPseudoFields())
 			{
 				getCreator().getSchemaWriter().print(" &");
 				getCreator().getSchemaWriter().println();
