@@ -42,7 +42,6 @@ import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.OpenStandardsProgressStatusQuestion;
-import org.miradi.questions.TextBoxZOrderQuestion;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.CostAllocationRuleSchema;
@@ -247,7 +246,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().println("vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } ");
 		getSchemaWriter().println("vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='12' } ");
 		getSchemaWriter().println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
-		getSchemaWriter().println(VOCABULARY_TEXT_BOX_Z_ORDER + " = '" + Z_ORDER_BACK_CODE + "' | '" + TextBoxZOrderQuestion.FRONT_CODE + "'");
 		defineDashboardStatusesVocabulary();
 	}
 	
