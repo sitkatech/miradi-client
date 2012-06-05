@@ -253,4 +253,5 @@ public interface Xmpz2XmlConstants
 	public static final String SCOPE_DESCRIPTION = "ScopeDescription";
 	public static final String DIAGRAM_DATA_INCLUSION = "DiagramDataInclusion";
 	public static final String DAILY_RATE = "DailyRate";
+	public static final String VOCABULARY_MEASUREMENT_STATUS = "vocabulary_measurement_status";
 }
