@@ -92,6 +92,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeVocabularyDefinitions();
 		writeObjectTypeIdElements();
 		writeWrappedByDiagramFactorSchemaElement();
+		writeLinkableFactorIds();
 		writeHtmlTagSchemaElements();
 		writeGeospacialLocationElement();
 		writeDiagramPointElement();
@@ -435,6 +436,21 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().println();
 	}
 	
+	private void writeLinkableFactorIds()
+	{
+		final String[] factorNames = new String[]{
+				  BIODIVERSITY_TARGET, 
+				  HUMAN_WELFARE_TARGET, 
+				  CAUSE, 
+				  STRATEGY, 
+				  THREAT_REDUCTION_RESULTS, 
+				  INTERMEDIATE_RESULTS,
+				  GROUP_BOX,
+				};
+		
+		writeOredSchemaElements(LINKABLE_FACTOR_ID, factorNames);
+	}
+	
 	private void writeWrappedByDiagramFactorSchemaElement()
 	{
 		final String[] factorNames = new String[]{BIODIVERSITY_TARGET, 
@@ -450,11 +466,16 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 												  STRESS,
 		};
 		
-		getSchemaWriter().startElementDefinition(WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
-		for (int index = 0; index < factorNames.length; ++index)
+		writeOredSchemaElements(WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME, factorNames);
+	}
+
+	private void writeOredSchemaElements(final String elementName, final String[] elementNames)
+	{
+		getSchemaWriter().startElementDefinition(elementName);
+		for (int index = 0; index < elementNames.length; ++index)
 		{
-			getSchemaWriter().printIndented(factorNames[index] + ID + ".element");
-			if (index < factorNames.length - 1)
+			getSchemaWriter().printIndented(elementNames[index] + ID + ".element");
+			if (index < elementNames.length - 1)
 				getSchemaWriter().println(" |");
 		}
 		getSchemaWriter().println();
