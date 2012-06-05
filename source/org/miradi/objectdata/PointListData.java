@@ -28,6 +28,7 @@ import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.PointList;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
+import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2XmlSchemaCreator;
 import org.w3c.dom.Node;
 
 public class PointListData extends ObjectData
@@ -111,6 +112,12 @@ public class PointListData extends ObjectData
 	public void readAsXmpz2XmlData(Xmpz2XmlImporter importer, Node node, ORef destinationRefToUse, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
 		importer.importPointListField(node, destinationRefToUse, baseObjectSchema, fieldSchema);
+	}
+	
+	@Override
+	public void writeAsXmpz2SchemaElement(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		creator.writePointListElement(baseObjectSchema, fieldSchema);
 	}
 	
 	PointList points;

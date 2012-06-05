@@ -195,7 +195,7 @@ abstract public class ObjectData
 	
 	public void writeAsXmpz2SchemaElement(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		
+		throw new RuntimeException("This method should be overriden and must call back into the importer. Type name = " + baseObjectSchema.getObjectName() + ". Tag = " + fieldSchema.getTag() + ". Class needing to override = " +  getClass().getSimpleName());
 	}
 	
 	private HashSet<String> dependencyTags;

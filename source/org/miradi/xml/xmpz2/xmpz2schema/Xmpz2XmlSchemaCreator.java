@@ -27,6 +27,7 @@ import org.miradi.main.Miradi;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.BaseObjectPool;
 import org.miradi.objects.Desire;
+import org.miradi.objects.DiagramLink;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
@@ -204,6 +205,21 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		}
 	}
 	
+	public void writeDimensionSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	{
+		writeSchemaElement(baseObjectSchema, fieldSchema, DIAGRAM_SIZE_ELEMENT_NAME);
+	}
+	
+	public void writeDiagramPointSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	{
+		writeSchemaElement(baseObjectSchema, fieldSchema, DIAGRAM_POINT_ELEMENT_NAME);
+	}
+	
+	public void writePointListElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	{
+		writeSchemaElement(baseObjectSchema, fieldSchema, DIAGRAM_POINT_ELEMENT_NAME);
+	}
+	
 	public void writeCalculatedCostSchemaElement(BaseObjectSchema baseObjectSchema)
 	{
 		writeSchemaElement(baseObjectSchema.getXmpz2ElementName(), TIME_PERIOD_COSTS, TIME_PERIOD_COSTS + ".element");
@@ -341,6 +357,12 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		if (ResourceAssignment.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(ResourceAssignment.TAG_RESOURCE_ID))
 			return RESOURCE_ID;
+		
+		if (DiagramLink.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID))
+			return LINKABLE_FACTOR;
+		
+		if (DiagramLink.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID))
+			return LINKABLE_FACTOR;
 	
 		return getProject().getObjectManager().getInternalObjectTypeName(objectType);
 	}
@@ -373,6 +395,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		if (Task.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(Task.TAG_SUBTASK_IDS))
 			return SUB_TASK + ID;
+		
+		if (DiagramLink.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS))
+			return DIAGRAM_LINK + ID;
 				
 		return StringUtilities.removeLastChar(elementName);
 	}
@@ -724,6 +749,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		if (Task.is(baseObjectSchema.getType()))
 			return new TaskSchemaWriter(this, baseObjectSchema);
+		
+		if (DiagramLink.is(baseObjectSchema.getType()))
+			return new DiagramLinkSchemaWriter(this, baseObjectSchema);
 		
 		return new BaseObjectSchemaWriter(this, baseObjectSchema);
 	}

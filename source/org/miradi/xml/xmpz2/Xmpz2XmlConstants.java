@@ -118,6 +118,7 @@ public interface Xmpz2XmlConstants
 	public static final String WRAPPED_BY_DIAGRAM_FACTOR_ELEMENT_NAME = "WrappedByDiagramFactor";
 	public static final String WRAPPED_FACTOR_ID_ELEMENT_NAME = "WrappedFactorId";
 	public static final String ID_ELEMENT_NAME = "Id";
+	public static final String LINKABLE_FACTOR = "LinkableFactor";
 	public static final String LINKABLE_FACTOR_ID = "LinkableFactorId";
 	public static final String FROM_DIAGRAM_FACTOR_ID = "FromDiagramFactorId";
 	public static final String TO_DIAGRAM_FACTOR_ID = "ToDiagramFactorId";
