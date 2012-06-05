@@ -47,6 +47,7 @@ import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.CostAllocationRuleSchema;
 import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.schemas.RareProjectDataSchema;
+import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.schemas.WcpaProjectDataSchema;
 import org.miradi.schemas.WcsProjectDataSchema;
 import org.miradi.schemas.WwfProjectDataSchema;
@@ -282,7 +283,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		defineIdElement(EXPENSE_ASSIGNMENT);
 		defineIdElement(RESOURCE_ASSIGNMENT);
 		defineIdElement(RESOURCE_ID_ELEMENT_NAME);
-		defineIdElement(ACTIVITY);
 		defineIdElement(MEASUREMENT);
 		defineIdElement(METHOD);
 		defineIdElement(SUB_TASK);
@@ -768,6 +768,24 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			  return false;
 		  
 		  if (WcpaProjectDataSchema.getObjectType() == objectType)
+			  return false;
+		  
+		  if (WwfProjectDataSchema.getObjectType() == objectType)
+			  return false;
+		  
+		  if (RareProjectDataSchema.getObjectType() == objectType)
+			  return false;
+		  
+		  if (WcsProjectDataSchema.getObjectType() == objectType)
+			  return false;
+		  
+		  if (TncProjectDataSchema.getObjectType() == objectType)
+			  return false;
+		  
+		  if (FosProjectDataSchema.getObjectType() == objectType)
+			  return false;
+		  
+		  if (WwfProjectDataSchema.getObjectType() == objectType)
 			  return false;
 		  
 		  if (Xenodata.is(objectType))
