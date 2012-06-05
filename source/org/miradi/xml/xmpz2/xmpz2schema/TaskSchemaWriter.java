@@ -35,7 +35,7 @@ public class TaskSchemaWriter extends BaseObjectSchemaWriter
 	{
 		super.writeFields(writer);
 		
-		getCreator().getSchemaWriter().println("*");
+		getCreator().getSchemaWriter().println("&");
 		getCreator().writeCalculatedCostSchemaElement(getBaseObjectSchema());
 	}
 }
