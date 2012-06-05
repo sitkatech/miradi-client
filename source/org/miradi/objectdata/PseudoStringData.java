@@ -21,9 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objectdata;
 
 import org.miradi.objects.BaseObject;
-import org.miradi.schemas.AbstractFieldSchema;
-import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2XmlSchemaCreator;
 
 public class PseudoStringData  extends StringData
 {
@@ -50,11 +47,6 @@ public class PseudoStringData  extends StringData
 	public String get()
 	{
 		return object.getPseudoData(getTag());
-	}
-	
-	@Override
-	public void writeAsXmpz2SchemaElement(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
-	{
 	}
 	
 	private BaseObject object;
