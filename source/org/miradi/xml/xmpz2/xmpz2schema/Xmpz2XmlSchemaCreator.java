@@ -29,6 +29,7 @@ import org.miradi.objectpools.BaseObjectPool;
 import org.miradi.objects.Desire;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.FactorLink;
+import org.miradi.objects.Indicator;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.TableSettings;
@@ -96,6 +97,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeDiagramPointElement();
 		writeDiagramSizeElement();
 		writeDateUnitSchemaElements();
+		defineThresholdsElement();
 	}
 
 	private void writeHeader()
@@ -183,8 +185,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		if (fieldSchema.getTag().equals(Desire.TAG_RELEVANT_INDICATOR_SET))
 			return "IndicatorId.element*";
 		
-		if (fieldSchema.getTag().equals(Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET))
+		if (fieldSchema.getTag().equals(RELEVANT_STRATEGY_IDS))
 			return "StrategyId.element*";
+		
+		if (fieldSchema.getTag().equals(RELEVANT_ACTIVITY_IDS))
+			return "ActivityId.element*";
 		
 		throw new RuntimeException("FieldSchema is not a relevancy field: " + fieldSchema.getTag());
 	}
@@ -196,6 +201,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			getSchemaWriter().printIndented(codelistSchemaElement);
 			getSchemaWriter().println();
 		}
+	}
+	
+	public void writeThresholdsSchemaElement(BaseObjectSchema baseObjectSchema)
+	{
+		writeSchemaElement(baseObjectSchema.getXmpz2ElementName(), THRESHOLDS, "IndicatorThreshold.element*");
 	}
 	
 	public void writeStringRefMapSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
@@ -620,6 +630,18 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writer.endBlock();
 	}
 	
+	private void defineThresholdsElement()
+	{
+		writer.defineAlias(THRESHOLD + ".element", "element " + XmpzXmlConstants.PREFIX + THRESHOLD);
+		writer.startBlock();
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + STATUS_CODE + "{" + VOCABULARY_MEASUREMENT_STATUS + "}? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + THRESHOLD_VALUE + " { text }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + THRESHOLD_DETAILS + " { text }?");
+		writer.endBlock();
+	}
+	
+
+	
 	public void writeSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, final String elementType)
 	{
 		writeElementSchema(baseObjectSchema, fieldSchema, elementType + ".element*");
@@ -629,6 +651,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		String poolName = baseObjectSchema.getXmpz2ElementName();
 		String elementName = getTagToElementNameMap().findElementName(poolName, fieldSchema.getTag());
+		writeSchemaElement(poolName, elementName, elementType);
+	}
+
+	private void writeSchemaElement(String poolName, String elementName, String elementType)
+	{
 		getSchemaWriter().printIndented("element " + PREFIX + poolName + elementName);
 		getSchemaWriter().print(" { " + elementType + " }?");
 	}
@@ -654,6 +681,12 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	private BaseObjectSchemaWriter createSchemaWriter(BaseObjectSchema baseObjectSchema)
 	{
+		if (Indicator.is(baseObjectSchema.getType()))
+			return new IndicatorSchemaWriter(this, baseObjectSchema);
+		
+		if (Desire.isDesire(baseObjectSchema.getType()))
+			return new DesireSchemaWriter(this, baseObjectSchema);
+		
 		return new BaseObjectSchemaWriter(this, baseObjectSchema);
 	}
 	

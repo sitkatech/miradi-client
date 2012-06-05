@@ -65,7 +65,7 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 		return true;
 	}
 
-	private boolean doesFieldRequireSpecialHandling(String tag)
+	protected boolean doesFieldRequireSpecialHandling(String tag)
 	{
 		return false;
 	}
