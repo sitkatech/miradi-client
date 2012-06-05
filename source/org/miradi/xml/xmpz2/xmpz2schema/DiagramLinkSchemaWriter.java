@@ -29,13 +29,20 @@ public class DiagramLinkSchemaWriter extends BaseObjectSchemaWriter
 	{
 		super(creatorToUse, baseObjectSchemaToUse);
 	}
+
+	@Override
+	protected int getFieldCount()
+	{
+		final int ONE_OMMITTED_FIELD = 1;
+		return super.getFieldCount() - ONE_OMMITTED_FIELD;
+	}
 	
 	@Override
-	protected boolean doesFieldRequireSpecialHandling(String tag)
+	protected boolean shouldOmitField(String tag)
 	{
 		if (tag.equals(DiagramLink.TAG_WRAPPED_ID))
 			return true;
 		
-		return super.doesFieldRequireSpecialHandling(tag);
+		return super.shouldOmitField(tag);
 	}
 }

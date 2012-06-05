@@ -21,9 +21,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2.xmpz2schema;
 
 import org.miradi.objects.Desire;
+import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.FieldSchemaRelevancyOverrideSetData;
-import org.miradi.xml.generic.SchemaWriter;
 
 public class DesireSchemaWriter extends BaseObjectSchemaWriter
 {
@@ -33,10 +33,8 @@ public class DesireSchemaWriter extends BaseObjectSchemaWriter
 	}
 	
 	@Override
-	public void writeFields(SchemaWriter writer) throws Exception
+	protected void writeCustomField(AbstractFieldSchema fieldSchema)
 	{
-		super.writeFields(writer);
-		
 		writeSingleTagAsTwoSchemaElements();
 	}
 
