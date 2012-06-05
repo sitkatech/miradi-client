@@ -33,6 +33,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.TableSettings;
+import org.miradi.objects.Task;
 import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.ViewData;
@@ -98,6 +99,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeDiagramSizeElement();
 		writeDateUnitSchemaElements();
 		defineThresholdsElement();
+		defineTimePeriodCostsElement();
 	}
 
 	private void writeHeader()
@@ -201,6 +203,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			getSchemaWriter().printIndented(codelistSchemaElement);
 			getSchemaWriter().println();
 		}
+	}
+	
+	public void writeCalculatedCostSchemaElement(BaseObjectSchema baseObjectSchema)
+	{
+		writeSchemaElement(baseObjectSchema.getXmpz2ElementName(), TIME_PERIOD_COSTS, TIME_PERIOD_COSTS + ".element");
 	}
 	
 	public void writeThresholdsSchemaElement(BaseObjectSchema baseObjectSchema)
@@ -640,7 +647,20 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writer.endBlock();
 	}
 	
-
+	private void defineTimePeriodCostsElement()
+	{
+		writer.defineAlias(TIME_PERIOD_COSTS + ".element", "element " + XmpzXmlConstants.PREFIX + TIME_PERIOD_COSTS);
+		writer.startBlock();
+		writer.printlnIndented("element " + PREFIX + CALCULATED_START_DATE + "{ vocabulary_date } &");
+		writer.printlnIndented("element " + PREFIX + CALCULATED_END_DATE + "{ vocabulary_date } &");
+		writer.printlnIndented("element " + PREFIX + CALCULATED_EXPENSE_TOTAL + "{ xsd:decimal }? &");
+		writer.printlnIndented("element " + PREFIX + CALCULATED_WORK_UNITS_TOTAL + "{ xsd:decimal }? &");
+		writer.printlnIndented("element " + PREFIX + CALCULATED_TOTAL_BUDGET_COST + "{ xsd:decimal }? &");
+		writer.printlnIndented("element " + PREFIX + CALCULATED_WHO + "{ ResourceId.element* }? &");
+		writer.printlnIndented("element " + PREFIX + CALCULATED_EXPENSE_ENTRIES + "{ " + EXPENSE_ENTRY + ".element* }? &");
+		writer.printlnIndented("element " + PREFIX + CALCULATED_WORK_UNITS_ENTRIES + "{ " + WORK_UNITS_ENTRY + ".element* }?");
+		writer.endBlock();
+	}
 	
 	public void writeSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, final String elementType)
 	{
@@ -686,6 +706,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		if (Desire.isDesire(baseObjectSchema.getType()))
 			return new DesireSchemaWriter(this, baseObjectSchema);
+		
+		if (Task.is(baseObjectSchema.getType()))
+			return new TaskSchemaWriter(this, baseObjectSchema);
 		
 		return new BaseObjectSchemaWriter(this, baseObjectSchema);
 	}
