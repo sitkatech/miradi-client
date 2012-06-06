@@ -27,12 +27,14 @@ import org.miradi.main.Miradi;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.BaseObjectPool;
 import org.miradi.objects.Desire;
+import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResourceAssignment;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatRatingCommentsData;
@@ -100,6 +102,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeDateUnitSchemaElements();
 		defineThresholdsElement();
 		defineTimePeriodCostsElement();
+		writeExpenseEntryElement();
+		writeWorkUnitsEntryElement();
 	}
 
 	private void writeHeader()
@@ -354,7 +358,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private String getIdElementName(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, int objectType)
 	{
 		if (ResourceAssignment.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(ResourceAssignment.TAG_RESOURCE_ID))
-			return RESOURCE_ID;
+			return RESOURCE;
 		
 		if (DiagramLink.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID))
 			return LINKABLE_FACTOR;
@@ -394,8 +398,17 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		if (Task.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(Task.TAG_SUBTASK_IDS))
 			return SUB_TASK + ID;
 		
+		if (Indicator.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(Indicator.TAG_METHOD_IDS))
+			return METHOD + ID;
+		
+		if (Strategy.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(Strategy.TAG_ACTIVITY_IDS))
+			return ACTIVITY + ID;
+		
 		if (DiagramLink.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS))
 			return DIAGRAM_LINK + ID;
+		
+		if (DiagramFactor.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS))
+			return DIAGRAM_FACTOR + ID;
 				
 		return StringUtilities.removeLastChar(elementName);
 	}
@@ -714,6 +727,31 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writer.printlnIndented("element " + PREFIX + CALCULATED_WHO + "{ ResourceId.element* }? &");
 		writer.printlnIndented("element " + PREFIX + CALCULATED_EXPENSE_ENTRIES + "{ " + EXPENSE_ENTRY + ".element* }? &");
 		writer.printlnIndented("element " + PREFIX + CALCULATED_WORK_UNITS_ENTRIES + "{ " + WORK_UNITS_ENTRY + ".element* }?");
+		writer.endBlock();
+	}
+	
+	private void writeExpenseEntryElement()
+	{
+		writer.defineAlias(EXPENSE_ENTRY + ".element", "element " + PREFIX + EXPENSE_ENTRY);
+		writer.startBlock();
+		writer.printlnIndented("element " + PREFIX + EXPENSE_ENTRY + FUNDING_SOURCE_ID + "{ " + FUNDING_SOURCE_ID + ".element }? &");
+		writer.printlnIndented("element " + PREFIX + EXPENSE_ENTRY + ACCOUNTING_CODE_ID + "{ " + ACCOUNTING_CODE_ID + ".element }? &");
+		writer.printlnIndented("element " + PREFIX + EXPENSE_ENTRY + BUDGET_CATEGORY_ONE_ID + "{ " + BUDGET_CATEGORY_ONE_ID + ".element }? &");
+		writer.printlnIndented("element " + PREFIX + EXPENSE_ENTRY + BUDGET_CATEGORY_TWO_ID + "{ " + BUDGET_CATEGORY_TWO_ID + ".element }? &");
+		writer.printlnIndented("element " + PREFIX + EXPENSE_ENTRY + DETAILS + "{ " + DATE_UNITS_EXPENSE + ".element* }?");
+		writer.endBlock();
+	}
+	
+	private void writeWorkUnitsEntryElement()
+	{
+		writer.defineAlias(WORK_UNITS_ENTRY + ".element", "element " + PREFIX + WORK_UNITS_ENTRY);
+		writer.startBlock();
+		writer.printlnIndented("element " + PREFIX + WORK_UNITS_ENTRY + RESOURCE_ID + "{ " + RESOURCE_ID + ".element }? &");
+		writer.printlnIndented("element " + PREFIX + WORK_UNITS_ENTRY + FUNDING_SOURCE_ID + "{ " + FUNDING_SOURCE_ID + ".element }? &");
+		writer.printlnIndented("element " + PREFIX + WORK_UNITS_ENTRY + ACCOUNTING_CODE_ID + "{ " + ACCOUNTING_CODE_ID + ".element }? &");
+		writer.printlnIndented("element " + PREFIX + WORK_UNITS_ENTRY + BUDGET_CATEGORY_ONE_ID + "{ " + BUDGET_CATEGORY_ONE_ID + ".element }? &");
+		writer.printlnIndented("element " + PREFIX + WORK_UNITS_ENTRY + BUDGET_CATEGORY_TWO_ID + "{ " + BUDGET_CATEGORY_TWO_ID + ".element }? &");
+		writer.printlnIndented("element " + PREFIX + WORK_UNITS_ENTRY + DETAILS + "{ " + DATE_UNIT_WORK_UNITS + ".element* }?");
 		writer.endBlock();
 	}
 	
