@@ -29,6 +29,7 @@ import org.miradi.objectpools.BaseObjectPool;
 import org.miradi.objects.Desire;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
@@ -414,6 +415,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		if (TaggedObjectSet.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(TaggedObjectSet.TAG_TAGGED_OBJECT_REFS))
 			return WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME;
+		
+		if (DiagramObject.isDiagramObject(baseObjectSchema.getType()) && fieldSchema.getTag().equals(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS))
+			return TAGGED_OBJECT_SET_ELEMENT_NAME + ID;
 				
 		return StringUtilities.removeLastChar(elementName);
 	}
