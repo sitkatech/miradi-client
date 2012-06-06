@@ -113,7 +113,7 @@ public class ProjectMetadataExporter implements Xmpz2XmlConstants
 	
 	private void writeShareOutsideOrganizationElement() throws Exception
 	{
-		getWriter().writeBooleanElement(PROJECT_SUMMARY + PROJECT_SHARE_OUTSIDE_ORGANIZATION, getTncProjectData().canShareOutsideOfTnc());
+		getWriter().writeElement(PROJECT_SUMMARY + PROJECT_SHARE_OUTSIDE_ORGANIZATION, getTncProjectData().getData(TncProjectData.TAG_PROJECT_SHARING_CODE));
 	}
 	
 	private void writeOverallProjectThreatRating() throws Exception
