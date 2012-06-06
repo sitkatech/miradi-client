@@ -215,6 +215,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE, VISION_LABEL);	
 		map.put(ProjectMetadata.TAG_LOCATION_DETAIL, LOCATION_DETAILS);
 		map.put(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, PROJECT_ID);
+		map.put(TncProjectData.TAG_PROJECT_SHARING_CODE, PROJECT_SHARE_OUTSIDE_ORGANIZATION);
 
 		return map;
 	}
