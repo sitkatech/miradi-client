@@ -22,6 +22,9 @@ package org.miradi.xml.xmpz2.xmpz2schema;
 
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
+import org.miradi.questions.StatusQuestion;
+import org.miradi.questions.ThreatRatingQuestion;
+import org.miradi.schemas.FieldSchemaChoice;
 import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.schemas.TncProjectDataSchema;
 
@@ -51,6 +54,8 @@ public class ProjectSummarySchema extends AbstractProjectSummarySchema
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_THREAT_RATING_MODE));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT));
+		addFieldSchema(new FieldSchemaChoice(OVERALL_PROJECT_THREAT_RATING, getQuestion(ThreatRatingQuestion.class)));
+		addFieldSchema(new FieldSchemaChoice(OVERALL_PROJECT_VIABILITY_RATING, getQuestion(StatusQuestion.class)));
 	}
 
 	@Override
