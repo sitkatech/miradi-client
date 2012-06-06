@@ -59,9 +59,13 @@ public class IndicatorSchemaWriter extends BaseObjectSchemaWriter
 		if (tag.equals(Indicator.TAG_THRESHOLDS_MAP))
 			return true;
 		
-		if (tag.equals(Indicator.TAG_THRESHOLD_DETAILS_MAP))
-			return true;
-		
 		return super.doesFieldRequireSpecialHandling(tag);
+	}
+	
+	@Override
+	protected int getFieldCount()
+	{
+		final int ONE_OMMITTED_FIELD = 1;
+		return super.getFieldCount() - ONE_OMMITTED_FIELD;
 	}
 }
