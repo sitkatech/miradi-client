@@ -33,6 +33,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
@@ -823,6 +824,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		if (DiagramLink.is(baseObjectSchema.getType()))
 			return new DiagramLinkSchemaWriter(this, baseObjectSchema);
+		
+		if (ObjectTreeTableConfiguration.is(baseObjectSchema.getType()))
+			return new ObjectTreeTableConfigurationSchemaWriter(this, baseObjectSchema);
 		
 		return new BaseObjectSchemaWriter(this, baseObjectSchema);
 	}
