@@ -34,7 +34,23 @@ public class IndicatorSchemaWriter extends BaseObjectSchemaWriter
 	@Override
 	protected void writeCustomField(AbstractFieldSchema fieldSchema)
 	{
-		getCreator().writeThresholdsSchemaElement(getBaseObjectSchema());
+		if (shouldWriteFieldOnlyOnce(fieldSchema))
+			getCreator().writeThresholdsSchemaElement(getBaseObjectSchema());
+	}
+	
+	@Override
+	protected boolean shouldOmitField(String tag)
+	{
+		final boolean IS_ALREADY_WRITTEN_DUE_TO_SIBLING_FIELD = tag.equals(Indicator.TAG_THRESHOLD_DETAILS_MAP);
+		if (IS_ALREADY_WRITTEN_DUE_TO_SIBLING_FIELD)
+			return true;
+		
+		return super.shouldOmitField(tag);
+	}
+
+	private boolean shouldWriteFieldOnlyOnce(AbstractFieldSchema fieldSchema)
+	{
+		return fieldSchema.getTag().equals(Indicator.TAG_THRESHOLDS_MAP);
 	}
 	
 	@Override
