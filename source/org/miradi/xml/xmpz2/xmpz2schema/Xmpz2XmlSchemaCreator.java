@@ -36,6 +36,7 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ThreatStressRating;
@@ -104,6 +105,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		defineTimePeriodCostsElement();
 		writeExpenseEntryElement();
 		writeWorkUnitsEntryElement();
+		writeExternaIdSchemaElement();
 	}
 
 	private void writeHeader()
@@ -409,6 +411,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		if (DiagramFactor.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS))
 			return DIAGRAM_FACTOR + ID;
+		
+		if (TaggedObjectSet.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(TaggedObjectSet.TAG_TAGGED_OBJECT_REFS))
+			return WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME;
 				
 		return StringUtilities.removeLastChar(elementName);
 	}
@@ -755,6 +760,15 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writer.endBlock();
 	}
 	
+	private void writeExternaIdSchemaElement()
+	{
+		writer.defineAlias(EXTERNAL_PROJECT_ID_ELEMENT_NAME + ".element", "element " + PREFIX + EXTERNAL_PROJECT_ID_ELEMENT_NAME);
+		writer.startBlock();
+		writer.printlnIndented("element " + PREFIX + EXTERNAL_APP_ELEMENT_NAME + " { text } &");
+		writer.printlnIndented("element " + PREFIX + PROJECT_ID + " { text } ");
+		writer.endBlock();
+	}
+
 	public void writeSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, final String elementType)
 	{
 		writeElementSchema(baseObjectSchema, fieldSchema, elementType + ".element*");
