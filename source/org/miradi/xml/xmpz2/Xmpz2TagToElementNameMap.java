@@ -44,6 +44,7 @@ import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.SubTarget;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.TncProjectData;
@@ -114,7 +115,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(AUDIENCE, createBaseObjectMap());
 		map.put(OBJECT_TREE_TABLE_CONFIGURATION, createObjectTreeTableConfigurationMap());
 		map.put(TNC_PROJECT_DATA, createTncProjectDataMap());
-		map.put(TAGGED_OBJECT_SET_ELEMENT_NAME, createBaseObjectMap());
+		map.put(TAGGED_OBJECT_SET_ELEMENT_NAME, createTaggedObjectSetMap());
 		
 		return map;
 	}
@@ -203,7 +204,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(ProjectMetadata.TAG_PROJECT_VISION, VISION_STATEMENT_TEXT);
 		map.put(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE, VISION_LABEL);	
 		map.put(ProjectMetadata.TAG_LOCATION_DETAIL, LOCATION_DETAILS);
-		map.put(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, CONPRO_PROJECT_NUMBER);
+		map.put(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, PROJECT_ID);
 
 		return map;
 	}
@@ -365,6 +366,14 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(ProjectResource.TAG_PHONE_NUMBER, OFFICE_PHONE_NUMBER);
 		map.put(ProjectResource.TAG_COST_PER_UNIT, DAILY_RATE);
 		
+		return map;
+	}
+	
+	private HashMap<String, String> createTaggedObjectSetMap()
+	{
+		HashMap<String, String> map = createBaseObjectMap();
+		map.put(TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, TAGGED_OBJECT_SET_ELEMENT_NAME + IDS);
+
 		return map;
 	}
 	
