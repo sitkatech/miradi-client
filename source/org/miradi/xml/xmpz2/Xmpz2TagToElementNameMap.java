@@ -47,6 +47,7 @@ import org.miradi.objects.SubTarget;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
+import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.TncProjectData;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
@@ -97,7 +98,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(HUMAN_WELFARE_TARGET, createAbstractTargetMap());
 		map.put(INTERMEDIATE_RESULTS, createFactorMap());
 		map.put(RESULTS_CHAIN, createDiagramObjectMap());
-		map.put(THREAT_REDUCTION_RESULTS, createFactorMap());
+		map.put(THREAT_REDUCTION_RESULTS, createThreatReductionResultsMap());
 		map.put(TEXT_BOX, createFactorMap());
 		map.put(MEASUREMENT, createMeasurementMap());
 		map.put(STRESS, createStressMap());
@@ -144,6 +145,14 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 	{
 		HashMap<String, String> map = createBaseObjectMap();
 		map.put(Factor.TAG_TEXT, DETAILS);
+		
+		return map;
+	}
+	
+	private HashMap<String, String> createThreatReductionResultsMap()
+	{
+		HashMap<String, String> map = createFactorMap();
+		map.put(ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, THREAT_ID);
 		
 		return map;
 	}
