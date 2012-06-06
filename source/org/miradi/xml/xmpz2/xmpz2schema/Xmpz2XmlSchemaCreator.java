@@ -349,8 +349,16 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	public void writeRefSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		String fieldName = getTagToElementNameMap().findElementName(baseObjectSchema, fieldSchema);
+		String fieldName = getIdElementName(baseObjectSchema, fieldSchema);
 		writeSchemaElement(baseObjectSchema, fieldSchema, fieldName);
+	}
+
+	private String getIdElementName(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	{
+		if (DiagramFactor.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(DiagramFactor.TAG_WRAPPED_REF))
+			return WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME;
+		
+		return getTagToElementNameMap().findElementName(baseObjectSchema, fieldSchema);
 	}
 	
 	public void writeBaseIdSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, int objectType)
