@@ -152,7 +152,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 	private HashMap<String, String> createThreatReductionResultsMap()
 	{
 		HashMap<String, String> map = createFactorMap();
-		map.put(ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, THREAT_ID);
+		map.put(ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, RELATED_THREAT_ID);
 		
 		return map;
 	}
