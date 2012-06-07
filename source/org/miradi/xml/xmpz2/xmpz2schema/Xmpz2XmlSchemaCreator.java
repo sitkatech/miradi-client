@@ -32,6 +32,7 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.FactorLink;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.ProjectMetadata;
@@ -39,6 +40,7 @@ import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.TaggedObjectSet;
+import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ThreatStressRating;
@@ -890,6 +892,12 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		if (ObjectTreeTableConfiguration.is(baseObjectSchema.getType()))
 			return new ObjectTreeTableConfigurationSchemaWriter(this, baseObjectSchema);
+		
+		if (Target.is(baseObjectSchema.getType()))
+			return new TargetSchemaWriter(this, baseObjectSchema);
+		
+		if (HumanWelfareTarget.is(baseObjectSchema.getType()))
+			return new HumanWelfareTargetSchemaWriter(this, baseObjectSchema);
 		
 		return new BaseObjectSchemaWriter(this, baseObjectSchema);
 	}
