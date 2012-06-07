@@ -170,7 +170,7 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 		writeRef(ref, parentElementName + idElementName, idElementName);
 	}
 	
-	private void writeRef(final ORef ref, final String parentElementName, final String idElementName) throws Exception, IOException
+	public void writeRef(final ORef ref, final String parentElementName, final String idElementName) throws Exception, IOException
 	{
 		if (ref.isValid())
 		{

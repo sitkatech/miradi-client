@@ -43,6 +43,7 @@ import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatRatingCommentsData;
+import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.ViewData;
 import org.miradi.objects.Xenodata;
@@ -113,7 +114,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		defineSimpleThreatRatingElement();
 		defineStressBasedThreatRatingElement();
 		defineDiagramFactorUiSettings();
-		writeRelatedThreatId();
 	}
 
 	private void writeHeader()
@@ -374,6 +374,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		if (DiagramFactor.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(DiagramFactor.TAG_WRAPPED_REF))
 			return WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME;
 		
+		if (ThreatReductionResult.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF))
+			return THREAT_ID;
+		
 		return getTagToElementNameMap().findElementName(baseObjectSchema, fieldSchema);
 	}
 	
@@ -586,13 +589,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().endBlock();
 	}
 	
-	private void writeRelatedThreatId()
-	{
-		getSchemaWriter().startElementDefinition(RELATED_THREAT_ID);
-		getSchemaWriter().printlnIndented(THREAT_ID + ".element*");
-		getSchemaWriter().endBlock();
-	}
-
 	private void defineDashboardStatusesVocabulary()
 	{
 		final String[] allCodesFromDynamicQuestion = new String[]{
