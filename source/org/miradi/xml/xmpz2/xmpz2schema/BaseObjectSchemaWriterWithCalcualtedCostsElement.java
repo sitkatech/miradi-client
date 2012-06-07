@@ -21,11 +21,21 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2.xmpz2schema;
 
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.xml.generic.SchemaWriter;
 
-public class TaskSchemaWriter extends BaseObjectSchemaWriterWithCalcualtedCostsElement
+abstract public class BaseObjectSchemaWriterWithCalcualtedCostsElement extends BaseObjectSchemaWriter
 {
-	public TaskSchemaWriter(Xmpz2XmlSchemaCreator creatorToUse,	BaseObjectSchema baseObjectSchemaToUse)
+	public BaseObjectSchemaWriterWithCalcualtedCostsElement(Xmpz2XmlSchemaCreator creatorToUse,	BaseObjectSchema baseObjectSchemaToUse)
 	{
 		super(creatorToUse, baseObjectSchemaToUse);
+	}
+	
+	@Override
+	public void writeFields(SchemaWriter writer) throws Exception
+	{
+		super.writeFields(writer);
+		
+		getCreator().getSchemaWriter().println(" &");
+		getCreator().writeCalculatedCostSchemaElement(getBaseObjectSchema());
 	}
 }

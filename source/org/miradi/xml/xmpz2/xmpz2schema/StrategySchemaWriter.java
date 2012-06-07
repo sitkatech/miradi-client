@@ -22,9 +22,9 @@ package org.miradi.xml.xmpz2.xmpz2schema;
 
 import org.miradi.schemas.BaseObjectSchema;
 
-public class TaskSchemaWriter extends BaseObjectSchemaWriterWithCalcualtedCostsElement
+public class StrategySchemaWriter extends BaseObjectSchemaWriterWithCalcualtedCostsElement
 {
-	public TaskSchemaWriter(Xmpz2XmlSchemaCreator creatorToUse,	BaseObjectSchema baseObjectSchemaToUse)
+	public StrategySchemaWriter(Xmpz2XmlSchemaCreator creatorToUse, BaseObjectSchema baseObjectSchemaToUse)
 	{
 		super(creatorToUse, baseObjectSchemaToUse);
 	}

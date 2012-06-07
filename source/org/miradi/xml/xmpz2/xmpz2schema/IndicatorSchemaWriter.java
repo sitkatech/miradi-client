@@ -24,7 +24,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 
-public class IndicatorSchemaWriter extends BaseObjectSchemaWriter
+public class IndicatorSchemaWriter extends BaseObjectSchemaWriterWithCalcualtedCostsElement
 {
 	public IndicatorSchemaWriter(Xmpz2XmlSchemaCreator creatorToUse, BaseObjectSchema baseObjectSchemaToUse)
 	{

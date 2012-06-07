@@ -874,6 +874,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		if (Task.is(baseObjectSchema.getType()))
 			return new TaskSchemaWriter(this, baseObjectSchema);
 		
+		if (Strategy.is(baseObjectSchema.getType()))
+			return new StrategySchemaWriter(this, baseObjectSchema);
+		
 		if (DiagramLink.is(baseObjectSchema.getType()))
 			return new DiagramLinkSchemaWriter(this, baseObjectSchema);
 		
