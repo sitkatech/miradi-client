@@ -151,8 +151,13 @@ abstract public class AbstractXmlImporter
 	private void importField(Node node, String[] elements, ORef ref, String destinationTag) throws Exception 
 	{
 		String data = getPathData(node, elements);
-		data = XmlUtilities2.getXmlEncoded(data);
+		data = escapeDueToParserUnescaping(data);
 		importField(ref, destinationTag, data);
+	}
+
+	public String escapeDueToParserUnescaping(String data)
+	{
+		return XmlUtilities2.getXmlEncoded(data);
 	}
 	
 	public void importCodeField(Node node, String containerName, ORef destinationRef, String destinationTag, ChoiceQuestion question) throws Exception
