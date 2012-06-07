@@ -20,13 +20,33 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectImporters;
 
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.ThreatReductionResult;
 import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
+import org.w3c.dom.Node;
 
 public class ThreatReductionResultsImporter extends BaseObjectImporter
 {
 	public ThreatReductionResultsImporter(Xmpz2XmlImporter importerToUse)
 	{
 		super(importerToUse, new ThreatReductionResultSchema());
+	}
+	
+	@Override
+	protected boolean isCustomImportField(String tag)
+	{
+		if (tag.equals(ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF))
+			return true;
+		
+		return super.isCustomImportField(tag);
+	}
+	
+	@Override
+	public void importFields(Node baseObjectNode, ORef refToUse) throws Exception
+	{
+		super.importFields(baseObjectNode, refToUse);
+		
+		getImporter().importRefField(baseObjectNode, refToUse, RELATED_THREAT_ID, ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF);
 	}
 }
