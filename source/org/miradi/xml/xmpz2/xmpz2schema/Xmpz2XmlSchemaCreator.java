@@ -108,6 +108,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeExpenseEntryElement();
 		writeWorkUnitsEntryElement();
 		writeExternaIdSchemaElement();
+		defineSimpleThreatRatingElement();
+		defineStressBasedThreatRatingElement();
+		defineDiagramFactorUiSettings();
 	}
 
 	private void writeHeader()
@@ -786,6 +789,40 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().printlnIndented("element " + PREFIX + PROJECT_ID + " { text } ");
 		getSchemaWriter().endBlock();
 	}
+	
+	private void defineSimpleThreatRatingElement()
+	{
+		getSchemaWriter().defineAlias(SIMPLE_BASED_THREAT_RATING + ".element"	, ELEMENT_NAME + PREFIX + SIMPLE_BASED_THREAT_RATING);
+		getSchemaWriter().startBlock();
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + SIMPLE_BASED_THREAT_RATING + SCOPE + " { " + VOCABULARY_SIMPLE_THREAT_RATING_SCOPE_CODE + " }? &");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + SIMPLE_BASED_THREAT_RATING + SEVERITY + " { " + VOCABULARY_SIMPLE_THREAT_RATING_SEVERITY_CODE +" }? &");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + SIMPLE_BASED_THREAT_RATING + IRREVERSIBILITY + " { " + VOCABULARY_SIMPLE_THREAT_RATING_IRREVERSIBILITY_CODE + " }?");
+		getSchemaWriter().endBlock();
+    }
+
+	private void defineStressBasedThreatRatingElement()
+	{
+		getSchemaWriter().defineAlias(STRESS_BASED_THREAT_RATING + ".element", ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING);
+		getSchemaWriter().startBlock();
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING + "StressId{ StressId.element } &");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING + CONTRIBUTION + " { " + VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE + " }? &");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING + IRREVERSIBILITY + " { " + VOCABULARY_THREAT_STRESS_RATING_IRREVERSIBILITY_CODE + " }? &");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING + IS_ACTIVE + " { xsd:boolean }? &");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING + STRESS_RATING + " { " + VOCABULARY_THREAT_RATING + " }? &");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING + THREAT_STRESS_RATING + " { " + VOCABULARY_THREAT_RATING + " }? ");
+		getSchemaWriter().endBlock();
+	}
+	
+	private void defineDiagramFactorUiSettings()
+	{
+		writer.defineAlias(STYLING + ".element"	, ELEMENT_NAME + PREFIX + STYLING);
+		writer.startBlock();
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + DIAGRAM_FACTOR + DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME + " { " + ChoiceQuestionToSchemaElementNameMap.VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE + " }? &");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + DIAGRAM_FACTOR + DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME + " { " + ChoiceQuestionToSchemaElementNameMap.VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE + " }? &");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + DIAGRAM_FACTOR + DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME + " { " + ChoiceQuestionToSchemaElementNameMap.VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR + " }? &");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + DIAGRAM_FACTOR + DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME + " { " + ChoiceQuestionToSchemaElementNameMap.VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR + " }?");
+		writer.endBlock();		
+	}
 
 	public void writeSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, final String elementType)
 	{
@@ -821,6 +858,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			schemaWriters.add(createSchemaWriter(baseObjectSchema));
 		}
 		
+		schemaWriters.add(new ThreatTargetThreatRatingSchemaWriter(this));
+		
 		return schemaWriters;
 	}
 
@@ -837,6 +876,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		if (DiagramLink.is(baseObjectSchema.getType()))
 			return new DiagramLinkSchemaWriter(this, baseObjectSchema);
+		
+		if (DiagramFactor.is(baseObjectSchema.getType()))
+			return new DiagramFactorSchemaWriter(this, baseObjectSchema);
 		
 		if (ObjectTreeTableConfiguration.is(baseObjectSchema.getType()))
 			return new ObjectTreeTableConfigurationSchemaWriter(this, baseObjectSchema);
@@ -905,7 +947,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		throw new RuntimeException("Object type " + objectType + " cannot have a dateunitEffortsList field");
 	}
 	
-	private ChoiceQuestionToSchemaElementNameMap getChoiceQuestionToSchemaElementNameMap()
+	public ChoiceQuestionToSchemaElementNameMap getChoiceQuestionToSchemaElementNameMap()
 	{
 		return choiceQuestionToSchemaElementNameMap;
 	}
