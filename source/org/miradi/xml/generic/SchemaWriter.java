@@ -22,12 +22,13 @@ package org.miradi.xml.generic;
 
 import java.io.PrintStream;
 import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.Vector;
+
+import org.martus.util.UnicodeWriter;
 
 public class SchemaWriter extends PrintWriter
 {
-	public SchemaWriter(StringWriter writer)
+	public SchemaWriter(UnicodeWriter writer)
 	{
 		super(writer);
 	}
