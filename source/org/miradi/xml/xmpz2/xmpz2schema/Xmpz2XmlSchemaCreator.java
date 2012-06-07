@@ -113,6 +113,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		defineSimpleThreatRatingElement();
 		defineStressBasedThreatRatingElement();
 		defineDiagramFactorUiSettings();
+		writeRelatedThreatId();
 	}
 
 	private void writeHeader()
@@ -582,6 +583,13 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().startElementDefinition(DIAGRAM_SIZE_ELEMENT_NAME);
 		getSchemaWriter().printlnIndented("element " + PREFIX + "width { xsd:integer } & ");
 		getSchemaWriter().printlnIndented("element " + PREFIX + "height { xsd:integer }"); 
+		getSchemaWriter().endBlock();
+	}
+	
+	private void writeRelatedThreatId()
+	{
+		getSchemaWriter().startElementDefinition(RELATED_THREAT_ID);
+		getSchemaWriter().printlnIndented(THREAT_ID + ".element*");
 		getSchemaWriter().endBlock();
 	}
 
