@@ -106,7 +106,7 @@ public class IntegerData extends ObjectData
 	@Override
 	public void writeAsXmpz2SchemaElement(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		creator.writeStringSchemaElement(baseObjectSchema, fieldSchema);
+		creator.writeIntegerSchemaElement(baseObjectSchema, fieldSchema);
 	}
 
 	private int value;
