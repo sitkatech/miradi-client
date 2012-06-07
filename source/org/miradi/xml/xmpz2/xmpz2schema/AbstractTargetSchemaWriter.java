@@ -37,7 +37,6 @@ public class AbstractTargetSchemaWriter extends BaseObjectSchemaWriter
 		super.writeFields(writer);
 		
 		writer.println(" &");
-		//createOptionalCodeField(TARGET_THREAT_RATING, XmlSchemaCreator.VOCABULARY_THREAT_RATING);
 		getCreator().writeSchemaElement(getXmpz2ElementName(), TARGET_THREAT_RATING, XmlSchemaCreator.VOCABULARY_THREAT_RATING);
 	}
 }
