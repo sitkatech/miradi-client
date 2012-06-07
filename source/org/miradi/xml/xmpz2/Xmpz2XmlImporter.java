@@ -120,13 +120,14 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		
 		tagToElementNameMap = new Xmpz2TagToElementNameMap();
 		progressIndicator = progressIndicatorToUse;
-		progressIndicator.setStatusMessage(EAM.text("Importing XML..."), ObjectType.OBJECT_TYPE_COUNT);
 	}
 		
 	@Override
 	protected void importXml() throws Exception
 	{
 		LinkedHashMap<Integer, BaseObjectImporter> typeToImporterMap = fillTypeToImporterMap();
+		progressIndicator.setStatusMessage(EAM.text("Importing XML..."),  9 + typeToImporterMap.size());
+		
 		importSummaryData();
 		incrementProgress();
 		
