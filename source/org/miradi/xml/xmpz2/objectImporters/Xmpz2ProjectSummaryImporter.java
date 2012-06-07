@@ -26,7 +26,6 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.questions.BudgetTimePeriodQuestion;
-import org.miradi.questions.ProjectSharingQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.schemas.XenodataSchema;
@@ -65,11 +64,7 @@ public class Xmpz2ProjectSummaryImporter extends BaseObjectImporter
 	private void writeShareOutsideOrganizationElement(Node projectSumaryNode) throws Exception
 	{
 		Node shareOutsideTncNode = getImporter().getNode(projectSumaryNode, PROJECT_SUMMARY + PROJECT_SHARE_OUTSIDE_ORGANIZATION);
-		String isShareWithAnyOneCode = ProjectSharingQuestion.SHARE_ONLY_INSIDE_ORGANIZATION;
-		if (getImporter().isTrue(shareOutsideTncNode.getTextContent()))
-			isShareWithAnyOneCode = ProjectSharingQuestion.SHARE_WITH_ANYONE;
-		
-		getImporter().setData(getTncProjectDataRef(), TncProjectData.TAG_PROJECT_SHARING_CODE, isShareWithAnyOneCode);
+		getImporter().setData(getTncProjectDataRef(), TncProjectData.TAG_PROJECT_SHARING_CODE, shareOutsideTncNode.getTextContent());
 	}	
 
 	private void importProjectMetadataField(Node projectSummaryNode, String tag) throws Exception
