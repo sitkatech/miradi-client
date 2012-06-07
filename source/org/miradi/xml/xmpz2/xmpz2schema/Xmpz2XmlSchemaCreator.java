@@ -350,6 +350,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeElementSchema(baseObjectSchema, fieldSchema, "xsd:decimal");
 	}
 	
+	public void writeIntegerSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	{
+		writeElementSchema(baseObjectSchema, fieldSchema, "xsd:integer");
+	}
+	
 	public void writeDateSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
 		writeElementSchema(baseObjectSchema, fieldSchema, "vocabulary_date");
