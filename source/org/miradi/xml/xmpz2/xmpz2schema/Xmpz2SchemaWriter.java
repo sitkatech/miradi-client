@@ -21,14 +21,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2.xmpz2schema;
 
 import java.io.PrintStream;
-import java.io.StringWriter;
 
+import org.martus.util.UnicodeWriter;
 import org.miradi.xml.generic.SchemaWriter;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 
 public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 {
-	public Xmpz2SchemaWriter(StringWriter writer)
+	public Xmpz2SchemaWriter(UnicodeWriter writer)
 	{
 		super(writer);
 	}
