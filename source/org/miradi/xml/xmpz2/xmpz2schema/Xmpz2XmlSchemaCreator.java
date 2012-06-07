@@ -125,6 +125,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		elementNames.add(createElementName(PROJECT_SUMMARY_SCOPE));
 		elementNames.add(createElementName(PROJECT_SUMMARY_LOCATION));
 		elementNames.add(createElementName(PROJECT_SUMMARY_PLANNING));
+		elementNames.add(createElementName(TNC_PROJECT_DATA));
+		elementNames.add(createElementName(WWF_PROJECT_DATA));
+		elementNames.add(createElementName(WCS_PROJECT_DATA));
+		elementNames.add(createElementName(RARE_PROJECT_DATA));
+		elementNames.add(createElementName(FOS_PROJECT_DATA));
 		for(BaseObjectSchemaWriter baseObjectSchemaWriter : baseObjectSchemaWriters)
 		{
 			String poolName = baseObjectSchemaWriter.getPoolName();
@@ -141,7 +146,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		writeSingletonObjectSchema(new ProjectSummarySchema());
 		writeSingletonObjectSchema(new ProjectSummaryScopeSchema());
-		writeSingletonObjectSchema(new ProjectSummaryLocationSchema());
+		writeSingletonObjectSchema(new ProjectSummaryLocationSchemaWriter(this, new ProjectSummaryLocationSchema()));
 		writeSingletonObjectSchema(new ProjectSummaryPlanningSchema());
 		writeSingletonObjectSchema(new ProjectSummaryTncProjectDataSchema());
 		writeSingletonObjectSchema(new WwfProjectDataSchema());
@@ -794,7 +799,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeSchemaElement(poolName, elementName, elementType);
 	}
 
-	private void writeSchemaElement(String poolName, String elementName, String elementType)
+	public void writeSchemaElement(String poolName, String elementName, String elementType)
 	{
 		getSchemaWriter().printIndented("element " + PREFIX + poolName + elementName);
 		getSchemaWriter().print(" { " + elementType + " }?");
