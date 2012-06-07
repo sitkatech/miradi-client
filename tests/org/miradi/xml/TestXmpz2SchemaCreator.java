@@ -25,13 +25,14 @@ import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.StringWriter;
 import java.net.URL;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Vector;
 
 import org.martus.util.UnicodeStringReader;
+import org.martus.util.UnicodeStringWriter;
+import org.martus.util.UnicodeWriter;
 import org.miradi.main.ResourcesHandler;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.xml.wcs.Xmpz2XmlValidator;
@@ -73,7 +74,7 @@ public class TestXmpz2SchemaCreator extends TestCaseWithProject
 
 	public HashSet<String> getActualLines() throws Exception, IOException
 	{
-		StringWriter stringWriter = new StringWriter();
+		UnicodeWriter stringWriter = UnicodeStringWriter.create();
 		Xmpz2SchemaWriter writer = new Xmpz2SchemaWriter(stringWriter);
 		Xmpz2XmlSchemaCreator creator = new Xmpz2XmlSchemaCreator(writer);
 		creator.writeRncSchema();
@@ -95,10 +96,11 @@ public class TestXmpz2SchemaCreator extends TestCaseWithProject
 		Vector<String> sortedLines = new Vector<String>();
 		sortedLines.addAll(expectedLinesSet);
 		Collections.sort(sortedLines);
-		for(String line : sortedLines)
-		{
-			//FIXME this is for development only!
-			//System.out.println(line);
-		}
+		//FIXME this is for development only!
+//		for(String line : sortedLines)
+//		{
+//			
+//			System.out.println(line);
+//		}
 	}
 }
