@@ -38,5 +38,8 @@ public class AbstractTargetSchemaWriter extends BaseObjectSchemaWriter
 		
 		writer.println(" &");
 		getCreator().writeSchemaElement(getXmpz2ElementName(), TARGET_THREAT_RATING, XmlSchemaCreator.VOCABULARY_THREAT_RATING);
+		
+		writer.println(" &");
+		getCreator().writeSchemaElement(getXmpz2ElementName(), TARGET_STATUS_ELEMENT_NAME, VOCABULARY_TARGET_STATUS);
 	}
 }
