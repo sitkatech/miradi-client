@@ -64,7 +64,8 @@ public class Xmpz2ProjectSummaryImporter extends BaseObjectImporter
 	private void writeShareOutsideOrganizationElement(Node projectSumaryNode) throws Exception
 	{
 		Node shareOutsideTncNode = getImporter().getNode(projectSumaryNode, PROJECT_SUMMARY + PROJECT_SHARE_OUTSIDE_ORGANIZATION);
-		getImporter().setData(getTncProjectDataRef(), TncProjectData.TAG_PROJECT_SHARING_CODE, shareOutsideTncNode.getTextContent());
+		String shareOutsideTncValue = getImporter().getSafeNodeContent(shareOutsideTncNode);
+		getImporter().setData(getTncProjectDataRef(), TncProjectData.TAG_PROJECT_SHARING_CODE, shareOutsideTncValue);
 	}	
 
 	private void importProjectMetadataField(Node projectSummaryNode, String tag) throws Exception
