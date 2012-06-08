@@ -70,6 +70,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.StringUtilities;
 import org.miradi.utils.Translation;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2TagToElementNameMap;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 
@@ -122,6 +123,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		defineDiagramFactorUiSettings();
 		defineDashboardUserChoiceMap();
 		defineDashboardFlagsContainer();
+		defineExtraDataSectionElement();
 	}
 
 	private void writeHeader()
@@ -144,6 +146,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		elementNames.add(createElementName(WCS_PROJECT_DATA));
 		elementNames.add(createElementName(RARE_PROJECT_DATA));
 		elementNames.add(createElementName(FOS_PROJECT_DATA));
+		elementNames.add(createElementName(EXTRA_DATA));
 		for(BaseObjectSchemaWriter baseObjectSchemaWriter : baseObjectSchemaWriters)
 		{
 			String poolName = baseObjectSchemaWriter.getPoolName();
@@ -636,6 +639,26 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().println(falgsContainerSchema);
 	}
 	
+	private void defineExtraDataSectionElement()
+	{
+		writer.defineAlias(EXTRA_DATA_SECTION + ".element", "element " + XmpzXmlConstants.PREFIX + EXTRA_DATA_SECTION);
+		writer.startBlock();
+		writer.printlnIndented("attribute " + EXTRA_DATA_SECTION_OWNER_ATTRIBUTE + " { text } &");
+		writer.printlnIndented(EXTRA_DATA_ITEM + ".element *");
+		writer.endBlock();
+		
+		defineExtraDataItemElement();
+	}
+
+	private void defineExtraDataItemElement()
+	{
+		writer.defineAlias(EXTRA_DATA_ITEM + ".element", "element " + XmpzXmlConstants.PREFIX + EXTRA_DATA_ITEM);
+		writer.startBlock();
+		writer.printlnIndented("attribute " + EXTRA_DATA_ITEM_NAME + " { text } &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + EXTRA_DATA_ITEM_VALUE + " { text }?");
+		writer.endBlock();
+	}
+	
 	private void writeDateUnitSchemaElements()
 	{
 		defineDateUnitEfforts();
@@ -895,6 +918,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		}
 		
 		schemaWriters.add(new ThreatTargetThreatRatingSchemaWriter(this));
+		schemaWriters.add(new ExtraDataWriter(this));
 		
 		return schemaWriters;
 	}
