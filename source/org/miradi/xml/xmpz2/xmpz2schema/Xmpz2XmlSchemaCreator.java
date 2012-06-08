@@ -53,7 +53,9 @@ import org.miradi.objects.Xenodata;
 import org.miradi.objects.XslTemplate;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.DashboardFlagsQuestion;
 import org.miradi.questions.OpenStandardsProgressStatusQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.CostAllocationRuleSchema;
@@ -119,6 +121,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		defineStressBasedThreatRatingElement();
 		defineDiagramFactorUiSettings();
 		defineDashboardUserChoiceMap();
+		defineDashboardFlagsContainer();
 	}
 
 	private void writeHeader()
@@ -625,6 +628,12 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().printlnIndented(DASHBOARD + DASHBOARD_FLAGS + CONTAINER_ELEMENT_TAG + ".element? &");
 		getSchemaWriter().printlnIndented("element " + PREFIX + DASHBOARD_COMMENTS + " { text }?");
 		getSchemaWriter().endBlock();
+	}
+	
+	private void defineDashboardFlagsContainer()
+	{
+		String falgsContainerSchema = createCodelistSchemaElement("DashboardFlags", StaticQuestionManager.getQuestion(DashboardFlagsQuestion.class));
+		getSchemaWriter().println(falgsContainerSchema);
 	}
 	
 	private void writeDateUnitSchemaElements()
