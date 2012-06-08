@@ -165,7 +165,6 @@ public interface Xmpz2XmlConstants
 	public static final String WORK_UNITS_QUARTER = "WorkUnitsQuarter";
 	public static final String WORK_UNITS_YEAR = "WorkUnitsYear";
 	public static final String STYLING = "Style";
-	public static final String Z_ORDER_BACK_CODE = "Back";
 	public static final String STRESS_RATING = "StressRating";
 	public static final String THREAT_STRESS_RATING = "ThreatStressRating";
 	public static final String THREAT_TARGET_RATING = "ThreatTargetRating";
