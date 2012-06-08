@@ -383,7 +383,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 	private HashMap<String, String> createTaggedObjectSetMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
-		map.put(TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, TAGGED_OBJECT_SET_ELEMENT_NAME + IDS);
+		map.put(TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, TAGGED_FACTOR_IDS);		
 
 		return map;
 	}
