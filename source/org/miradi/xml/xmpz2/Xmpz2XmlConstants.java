@@ -30,7 +30,6 @@ public interface Xmpz2XmlConstants
 	public static final String PREFIX = RAW_PREFIX + COLON;
 	public static final String SINGLE_SPACE = " ";
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
-	public static final String OPTIONAL_ELEMENT = SINGLE_SPACE + "?" + SINGLE_SPACE;
 	
 	public static final String NAME_SPACE_VERSION = "73";
 	public static final String PARTIAL_NAME_SPACE = "http://xml.miradi.org/schema/ConservationProject/";
@@ -80,7 +79,6 @@ public interface Xmpz2XmlConstants
 	public static final String METHOD = "Method";
 	public static final String TASK = "Task";
 	public static final String SUB_TASK = "SubTask";
-	public static final String PROJECT_METADATA = "Metadata";
 	public static final String RESOURCE_ASSIGNMENT = "ResourceAssignment";
 	public static final String EXPENSE_ASSIGNMENT = "ExpenseAssignment";
 	public static final String PROGRESS_REPORT = "ProgressReport";
@@ -117,7 +115,6 @@ public interface Xmpz2XmlConstants
 	public static final String WIDTH_ELEMENT_NAME = "width";
 	public static final String HEIGHT_ELEMENT_NAME = "height";
 	public static final String WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME = "WrappedByDiagramFactorId";
-	public static final String WRAPPED_BY_DIAGRAM_FACTOR_ELEMENT_NAME = "WrappedByDiagramFactor";
 	public static final String WRAPPED_FACTOR_ID_ELEMENT_NAME = "WrappedFactorId";
 	public static final String ID_ELEMENT_NAME = "Id";
 	public static final String LINKABLE_FACTOR = "LinkableFactor";
@@ -135,7 +132,6 @@ public interface Xmpz2XmlConstants
 	public static final String BUDGET_CATEGORY_TWO_ID = "BudgetCategoryTwoId";
 	public static final String PROGRESS_REPORT_IDS = "ProgressReportIds";
 	public static final String PROGRESS_PERCENT_IDS = "ProgressPercentIds";
-	public static final String EXPENSE_IDS = "ExpenseIds";
 	public static final String RELATED_THREAT_ID = "RelatedDirectThreatId";
 	public static final String THREAT_ID = "ThreatId";
 	public static final String RELEVANT_ACTIVITY_IDS = "RelevantActivityIds";
@@ -168,7 +164,6 @@ public interface Xmpz2XmlConstants
 	public static final String STRESS_RATING = "StressRating";
 	public static final String THREAT_STRESS_RATING = "ThreatStressRating";
 	public static final String THREAT_TARGET_RATING = "ThreatTargetRating";
-	public static final String TARGET_RATING = "TargetRating";
 	public static final String TARGET_THREAT_RATING = "ThreatRating";
 	public static final String OVERALL_PROJECT_THREAT_RATING = "OverallProjectThreatRating";
 	public static final String OVERALL_PROJECT_VIABILITY_RATING = "OverallProjectViabilityRating";
@@ -245,7 +240,6 @@ public interface Xmpz2XmlConstants
 	public static final String VIABILITY_RATINGS_COMMENTS = "ViabilityRatingsComments";
 	public static final String FUTURE_STATUS_COMMENTS = "FutureStatusComments";
 	public static final String FUTURE_STATUS_DETAILS = "FutureStatusDetails";
-	public static final String CONPRO_PROJECT_NUMBER = "ConProProjectNumber";
 	public static final String LOCATION_DETAILS = "LocationDetails";
 	public static final String VISION_LABEL = "VisionLabel";
 	public static final String VISION_STATEMENT_TEXT = "VisionStatementText";
@@ -286,10 +280,6 @@ public interface Xmpz2XmlConstants
 	public static final String VOCABULARY_SIMPLE_THREAT_RATING_SCOPE_CODE = "vocabulary_simple_threat_rating_scope_code";
 	public static final String VOCABULARY_SIMPLE_THREAT_RATING_SEVERITY_CODE = "vocabulary_simple_threat_rating_severitiy_code";
 	public static final String VOCABULARY_SIMPLE_THREAT_RATING_IRREVERSIBILITY_CODE = "vocabulary_simple_threat_rating_irreversibility_code";
-	public static final String VOCABULARY_MONTH = "vocabulary_month";
-	public static final String VOCABULARY_START_MONTH = "vocabulary_start_month";
-	public static final String VOCABULARY_YEAR = "vocabulary_year";
-	public static final String VOCABULARY_START_YEAR = "vocabulary_start_year";
 	public static final String VOCABULARY_TNC_PROJECT_PLACE_TYPES = "vocabulary_tnc_project_place_types";
 	public static final String VOCABULARY_TNC_ORGANIZATIONAL_PRIORITIES = "vocabulary_tnc_organizational_priorities";
 	public static final String VOCABULARY_TNC_OPERATING_UNTIS = "vocabulary_tnc_operating_units";
@@ -313,7 +303,6 @@ public interface Xmpz2XmlConstants
 	public static final String VOCABULARY_THREAT_RATING_MODE = "vocabulary_threat_rating_mode";
 	public static final String VOCABULARY_DASHBOARD_ROW_PROGRESS = "vocabulary_dashboard_row_progress";
 	public static final String VOCABULARY_DASHBOARD_ROW_FLAGS = "vocabulary_dashboard_row_flags";
-	public static final String VOCABULARY_DASHBOARD_ROW_FLAG = "vocabulary_dashboard_row_flag";
 	public static final String VOCABULARY_PLANNING_TREE_OBJECTIVE_STRATEGY_NODE_ORDER = "vocabulary_planning_tree_objective_strategy_node_order";
 	public static final String VOCABULARY_QUARTER_COLUMNS_VISIBILITY = "vocabulary_quarter_columns_visibility";
 	public static final String VOCABULARY_WORK_PLAN_TIME_UNIT = "vocabulary_work_plan_time_unit";
