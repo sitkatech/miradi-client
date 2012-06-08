@@ -34,6 +34,6 @@ public class DashboardSchemaWriter extends BaseObjectSchemaWriter
 	public void writeFields(SchemaWriter writer) throws Exception
 	{
 		writer.printlnIndented("attribute " + ID + " "+ "{xsd:integer} &");
-		getCreator().writeSchemaElement(getXmpz2ElementName(), DASHBOARD_STATUS_ENTRIES, DASHBOARD_STATUS_ENTRY);
+		getCreator().writeSchemaElement(getXmpz2ElementName(), DASHBOARD_STATUS_ENTRIES, DASHBOARD_STATUS_ENTRY + ".element*");
 	}
 }
