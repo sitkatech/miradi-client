@@ -26,6 +26,7 @@ import java.util.Vector;
 import org.miradi.main.Miradi;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.BaseObjectPool;
+import org.miradi.objects.Dashboard;
 import org.miradi.objects.Desire;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
@@ -36,6 +37,8 @@ import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.RatingCriterion;
+import org.miradi.objects.ReportTemplate;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
@@ -47,6 +50,7 @@ import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.ViewData;
 import org.miradi.objects.Xenodata;
+import org.miradi.objects.XslTemplate;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.OpenStandardsProgressStatusQuestion;
@@ -56,6 +60,7 @@ import org.miradi.schemas.CostAllocationRuleSchema;
 import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.schemas.TncProjectDataSchema;
+import org.miradi.schemas.ValueOptionSchema;
 import org.miradi.schemas.WcpaProjectDataSchema;
 import org.miradi.schemas.WcsProjectDataSchema;
 import org.miradi.schemas.WwfProjectDataSchema;
@@ -65,7 +70,6 @@ import org.miradi.utils.StringUtilities;
 import org.miradi.utils.Translation;
 import org.miradi.xml.xmpz2.Xmpz2TagToElementNameMap;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
-import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 
 public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 {
@@ -114,6 +118,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		defineSimpleThreatRatingElement();
 		defineStressBasedThreatRatingElement();
 		defineDiagramFactorUiSettings();
+		defineDashboardUserChoiceMap();
 	}
 
 	private void writeHeader()
@@ -611,6 +616,17 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().println();
 	}
 	
+	private void defineDashboardUserChoiceMap()
+	{
+		getSchemaWriter().defineAlias(DASHBOARD_STATUS_ENTRY + ".element", "element " + PREFIX + DASHBOARD_STATUS_ENTRY);
+		getSchemaWriter().startBlock();
+		getSchemaWriter().printlnIndented("attribute " + KEY_ATTRIBUTE_NAME + " { text } &");
+		getSchemaWriter().printlnIndented("element " + PREFIX + DASHBOARD_PROGRESS + " { " + VOCABULARY_DASHBOARD_ROW_PROGRESS + " }? &");
+		getSchemaWriter().printlnIndented(DASHBOARD + DASHBOARD_FLAGS + CONTAINER_ELEMENT_TAG + ".element? &");
+		getSchemaWriter().printlnIndented("element " + PREFIX + DASHBOARD_COMMENTS + " { text }?");
+		getSchemaWriter().endBlock();
+	}
+	
 	private void writeDateUnitSchemaElements()
 	{
 		defineDateUnitEfforts();
@@ -903,6 +919,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		if (HumanWelfareTarget.is(baseObjectSchema.getType()))
 			return new HumanWelfareTargetSchemaWriter(this, baseObjectSchema);
 		
+		if (Dashboard.is(baseObjectSchema.getType()))
+			return new DashboardSchemaWriter(this, baseObjectSchema);
+		
 		return new BaseObjectSchemaWriter(this, baseObjectSchema);
 	}
 	
@@ -916,44 +935,56 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		if (ProjectMetadata.is(objectType))
 			return false;
-		
-		 if (CostAllocationRuleSchema.getObjectType() == objectType)
-			 return false;
-		 
-		  if (ThreatStressRating.is(objectType))
-			  return false;
-		  
-		  if (WcpaProjectDataSchema.getObjectType() == objectType)
-			  return false;
-		  
-		  if (WwfProjectDataSchema.getObjectType() == objectType)
-			  return false;
-		  
-		  if (RareProjectDataSchema.getObjectType() == objectType)
-			  return false;
-		  
-		  if (WcsProjectDataSchema.getObjectType() == objectType)
-			  return false;
-		  
-		  if (TncProjectDataSchema.getObjectType() == objectType)
-			  return false;
-		  
-		  if (FosProjectDataSchema.getObjectType() == objectType)
-			  return false;
-		  
-		  if (WwfProjectDataSchema.getObjectType() == objectType)
-			  return false;
-		  
-		  if (Xenodata.is(objectType))
-			  return false;
-		  
-		  if (TableSettings.is(objectType))
-			  return false;
-		  
-		  if (ThreatRatingCommentsData.is(objectType))
-			  return false;
-		  
-		return !Xmpz2XmlImporter.isCustomImport(objectType);
+
+		if (CostAllocationRuleSchema.getObjectType() == objectType)
+			return false;
+
+		if (ThreatStressRating.is(objectType))
+			return false;
+
+		if (WcpaProjectDataSchema.getObjectType() == objectType)
+			return false;
+
+		if (WwfProjectDataSchema.getObjectType() == objectType)
+			return false;
+
+		if (RareProjectDataSchema.getObjectType() == objectType)
+			return false;
+
+		if (WcsProjectDataSchema.getObjectType() == objectType)
+			return false;
+
+		if (TncProjectDataSchema.getObjectType() == objectType)
+			return false;
+
+		if (FosProjectDataSchema.getObjectType() == objectType)
+			return false;
+
+		if (WwfProjectDataSchema.getObjectType() == objectType)
+			return false;
+
+		if (Xenodata.is(objectType))
+			return false;
+
+		if (TableSettings.is(objectType))
+			return false;
+
+		if (ThreatRatingCommentsData.is(objectType))
+			return false;
+
+		if (RatingCriterion.is(objectType))
+			return false;
+
+		if (ValueOptionSchema.getObjectType() == objectType)
+			return false;
+
+		if (ReportTemplate.is(objectType))
+			return false;
+
+		if (XslTemplate.is(objectType))
+			return false;
+
+		return true;
 	}
 	
 	private String getDateUniteTypeName(int objectType)
