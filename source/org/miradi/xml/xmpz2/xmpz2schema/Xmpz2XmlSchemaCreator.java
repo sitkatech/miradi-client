@@ -274,6 +274,98 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return createSchemaElement(baseObjectSchema, fieldSchema, EXTERNAL_PROJECT_ID_ELEMENT_NAME);
 	}
 	
+	private String createElementName(String elementName)
+	{
+		return elementName + DOT_ELEMENT;
+	}
+	
+	public String createStringSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	{
+		return createElementSchema(baseObjectSchema, fieldSchema, "text");
+	}
+
+	public String createUserTextSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	{
+		return createElementSchema(baseObjectSchema, fieldSchema, "formatted_text");
+	}
+	
+	public String createBooleanSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	{
+		return createElementSchema(baseObjectSchema, fieldSchema, "xsd:boolean");
+	}
+	
+	public String createNumberSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema)
+	{
+		return createElementSchema(baseObjectSchema, fieldSchema, "xsd:decimal");
+	}
+	
+	public String createIntegerSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	{
+		return createElementSchema(baseObjectSchema, fieldSchema, "xsd:integer");
+	}
+	
+	public String createDateSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	{
+		return createElementSchema(baseObjectSchema, fieldSchema, "vocabulary_date");
+	}
+	
+	public String createRefSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	{
+		String fieldName = getIdElementName(baseObjectSchema, fieldSchema);
+		return createSchemaElement(baseObjectSchema, fieldSchema, fieldName);
+	}
+	
+	public String createBaseIdSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, int objectType)
+	{
+		String objectName = getIdElementName(baseObjectSchema, fieldSchema, objectType);
+		return createSchemaElement(baseObjectSchema, fieldSchema, objectName + ID);
+	}
+
+	public String createDateUnitEffortListSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	{
+		return createSchemaElement(baseObjectSchema, fieldSchema, "DateUnit" + getDateUniteTypeName(baseObjectSchema.getType()));
+	}
+	
+	public String createChoiceSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, ChoiceQuestion choiceQuestion)
+	{
+		String vocabularyName = getChoiceQuestionToSchemaElementNameMap().findVocabulary(choiceQuestion);
+		return createElementSchema(baseObjectSchema, fieldSchema, vocabularyName);
+	}
+	
+	public String createIdListSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema)
+	{
+		return createRefListSchemaElement(baseObjectSchema, fieldSchema);
+	}
+
+	public String createRefListSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	{
+		String elementName = getTagToElementNameMap().findElementName(baseObjectSchema.getXmpz2ElementName(), fieldSchema.getTag());
+		String reflistElementName = baseObjectSchema.getXmpz2ElementName() + elementName;
+		final String idElementName = createIdElementName(baseObjectSchema, fieldSchema, elementName);
+		return ELEMENT_NAME + PREFIX + reflistElementName + " { " + idElementName + ".element* }?";
+	}
+
+	public String createCodelistSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ChoiceQuestion question)
+	{
+		String elementName = getTagToElementNameMap().findElementName(baseObjectSchema.getXmpz2ElementName(), fieldSchema.getTag());
+		String codelistElementName = baseObjectSchema.getXmpz2ElementName() + elementName;
+		
+		codelistSchemaElements.add(createCodelistSchemaElement(codelistElementName, question));
+		
+		return codelistElementName + "Container.element ?";
+	}
+	
+	private String createCodelistSchemaElement(String codelistElementName, ChoiceQuestion question)
+	{
+		String vocabularyName = getChoiceQuestionToSchemaElementNameMap().get(question);
+		String containerElement = codelistElementName + "Container.element = element " +  PREFIX + codelistElementName + "Container " + HtmlUtilities.NEW_LINE;
+		containerElement += "{" + HtmlUtilities.NEW_LINE;
+		containerElement += getSchemaWriter().INDENTATION + ELEMENT_NAME + PREFIX + "code { " + vocabularyName + " } *" + HtmlUtilities.NEW_LINE;
+		containerElement += "}" + HtmlUtilities.NEW_LINE;
+		
+		return containerElement;
+	}
+	
 	private void writeVocabularyDefinitions()
 	{
 		Set<ChoiceQuestion> choiceQuestions = choiceQuestionToSchemaElementNameMap.keySet();
@@ -330,117 +422,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeIdElement(SUB_TASK);
 	}
 	
-	private void writeIdElement(String baseName)
-	{
-		getSchemaWriter().println(baseName + "Id.element = element " + PREFIX + baseName + "Id { xsd:integer }");
-	}
-	
-	private void writeBaseObjectSchemaHeader(BaseObjectSchemaWriter baseObjectSchemaWriter)
-	{
-		String baseObjectName = baseObjectSchemaWriter.getXmpz2ElementName();
-		String baseObjectPoolName = baseObjectSchemaWriter.getPoolName();
-		
-		String result = ELEMENT_NAME + PREFIX + baseObjectPoolName + " { " + createElementName(baseObjectName) + "* }";
-		getSchemaWriter().defineAlias(createElementName(baseObjectPoolName), result);
-		getSchemaWriter().defineAlias(createElementName(baseObjectName), "element miradi:" + baseObjectName);
-	}
-
-	private String createElementName(String elementName)
-	{
-		return elementName + DOT_ELEMENT;
-	}
-	
-	public String createStringSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
-	{
-		return createElementSchema(baseObjectSchema, fieldSchema, "text");
-	}
-
-	public String createUserTextSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
-	{
-		return createElementSchema(baseObjectSchema, fieldSchema, "formatted_text");
-	}
-	
-	public String createBooleanSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
-	{
-		return createElementSchema(baseObjectSchema, fieldSchema, "xsd:boolean");
-	}
-	
-	public String createNumberSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema)
-	{
-		return createElementSchema(baseObjectSchema, fieldSchema, "xsd:decimal");
-	}
-	
-	public String createIntegerSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
-	{
-		return createElementSchema(baseObjectSchema, fieldSchema, "xsd:integer");
-	}
-	
-	public String createDateSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
-	{
-		return createElementSchema(baseObjectSchema, fieldSchema, "vocabulary_date");
-	}
-	
-	public String createRefSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
-	{
-		String fieldName = getIdElementName(baseObjectSchema, fieldSchema);
-		return createSchemaElement(baseObjectSchema, fieldSchema, fieldName);
-	}
-
-	private String getIdElementName(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
-	{
-		if (DiagramFactor.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(DiagramFactor.TAG_WRAPPED_REF))
-			return WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME;
-		
-		if (ThreatReductionResult.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF))
-			return THREAT_ID;
-		
-		return getTagToElementNameMap().findElementName(baseObjectSchema, fieldSchema);
-	}
-	
-	public String createBaseIdSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, int objectType)
-	{
-		String objectName = getIdElementName(baseObjectSchema, fieldSchema, objectType);
-		return createSchemaElement(baseObjectSchema, fieldSchema, objectName + ID);
-	}
-
-	private String getIdElementName(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, int objectType)
-	{
-		if (ResourceAssignment.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(ResourceAssignment.TAG_RESOURCE_ID))
-			return RESOURCE;
-		
-		if (DiagramLink.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID))
-			return LINKABLE_FACTOR;
-		
-		if (DiagramLink.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID))
-			return LINKABLE_FACTOR;
-	
-		return getProject().getObjectManager().getInternalObjectTypeName(objectType);
-	}
-
-	public String createDateUnitEffortListSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
-	{
-		return createSchemaElement(baseObjectSchema, fieldSchema, "DateUnit" + getDateUniteTypeName(baseObjectSchema.getType()));
-	}
-	
-	public String createChoiceSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, ChoiceQuestion choiceQuestion)
-	{
-		String vocabularyName = getChoiceQuestionToSchemaElementNameMap().findVocabulary(choiceQuestion);
-		return createElementSchema(baseObjectSchema, fieldSchema, vocabularyName);
-	}
-	
-	public String createIdListSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema)
-	{
-		return createRefListSchemaElement(baseObjectSchema, fieldSchema);
-	}
-
-	public String createRefListSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
-	{
-		String elementName = getTagToElementNameMap().findElementName(baseObjectSchema.getXmpz2ElementName(), fieldSchema.getTag());
-		String reflistElementName = baseObjectSchema.getXmpz2ElementName() + elementName;
-		final String idElementName = createIdElementName(baseObjectSchema, fieldSchema, elementName);
-		return ELEMENT_NAME + PREFIX + reflistElementName + " { " + idElementName + ".element* }?";
-	}
-
 	private String createIdElementName(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String elementName)
 	{
 		if (Task.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(Task.TAG_SUBTASK_IDS))
@@ -467,27 +448,46 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return StringUtilities.removeLastChar(elementName);
 	}
 	
-	public String createCodelistSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ChoiceQuestion question)
+	private String getIdElementName(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		String elementName = getTagToElementNameMap().findElementName(baseObjectSchema.getXmpz2ElementName(), fieldSchema.getTag());
-		String codelistElementName = baseObjectSchema.getXmpz2ElementName() + elementName;
+		if (DiagramFactor.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(DiagramFactor.TAG_WRAPPED_REF))
+			return WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME;
 		
-		codelistSchemaElements.add(createCodelistSchemaElement(codelistElementName, question));
+		if (ThreatReductionResult.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF))
+			return THREAT_ID;
 		
-		return codelistElementName + "Container.element ?";
+		return getTagToElementNameMap().findElementName(baseObjectSchema, fieldSchema);
 	}
 	
-	private String createCodelistSchemaElement(String codelistElementName, ChoiceQuestion question)
+	private String getIdElementName(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, int objectType)
 	{
-		String vocabularyName = getChoiceQuestionToSchemaElementNameMap().get(question);
-		String containerElement = codelistElementName + "Container.element = element " +  PREFIX + codelistElementName + "Container " + HtmlUtilities.NEW_LINE;
-		containerElement += "{" + HtmlUtilities.NEW_LINE;
-		containerElement += getSchemaWriter().INDENTATION + ELEMENT_NAME + PREFIX + "code { " + vocabularyName + " } *" + HtmlUtilities.NEW_LINE;
-		containerElement += "}" + HtmlUtilities.NEW_LINE;
+		if (ResourceAssignment.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(ResourceAssignment.TAG_RESOURCE_ID))
+			return RESOURCE;
 		
-		return containerElement;
+		if (DiagramLink.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID))
+			return LINKABLE_FACTOR;
+		
+		if (DiagramLink.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID))
+			return LINKABLE_FACTOR;
+	
+		return getProject().getObjectManager().getInternalObjectTypeName(objectType);
 	}
 	
+	private void writeIdElement(String baseName)
+	{
+		getSchemaWriter().println(baseName + "Id.element = element " + PREFIX + baseName + "Id { xsd:integer }");
+	}
+	
+	private void writeBaseObjectSchemaHeader(BaseObjectSchemaWriter baseObjectSchemaWriter)
+	{
+		String baseObjectName = baseObjectSchemaWriter.getXmpz2ElementName();
+		String baseObjectPoolName = baseObjectSchemaWriter.getPoolName();
+		
+		String result = ELEMENT_NAME + PREFIX + baseObjectPoolName + " { " + createElementName(baseObjectName) + "* }";
+		getSchemaWriter().defineAlias(createElementName(baseObjectPoolName), result);
+		getSchemaWriter().defineAlias(createElementName(baseObjectName), "element miradi:" + baseObjectName);
+	}
+
 	private void defineVocabulary(ChoiceQuestion question, String vocabularyName)
 	{
 		CodeList codes = question.getAllCodes();
