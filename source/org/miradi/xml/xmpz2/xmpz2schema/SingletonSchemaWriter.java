@@ -30,7 +30,7 @@ public class SingletonSchemaWriter extends BaseObjectSchemaWriter
 	}
 	
 	@Override
-	protected boolean ShouldWriteIdAttribute()
+	protected boolean hasIdAttributeElement()
 	{
 		return false;
 	}
