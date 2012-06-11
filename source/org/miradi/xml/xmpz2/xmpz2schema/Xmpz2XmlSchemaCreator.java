@@ -669,18 +669,18 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void writeDateUnitSchemaElements()
 	{
 		defineDateUnitEfforts();
-		defineWorkUnitsFullProjectTimeSpanElement();
-		defineWorkUnitsYearElement();
-		defineWorkUnitsQuarterElement();
-		defineWorkUnitsMonthElement();
-		defineWorkUnitsDayElement();
+		defineFullProjectTimeSpanElement("WorkUnitsFullProjectTimespan");
+		defineYearElement("WorkUnitsYear");
+		defineQuarterElement("WorkUnitsQuarter");
+		defineMonthElement("WorkUnitsMonth");
+		defineDayElement("WorkUnitsDay");
 		
 		defineDateUnitExpense();
-		defineExpenseFullProjectTimeSpanElement();
-		defineExpenseYearElement();
-		defineExpenseQuarterElement();
-		defineExpenseMonthElement();
-		defineExpenseDayElement();
+		defineFullProjectTimeSpanElement("ExpensesFullProjectTimespan");
+		defineYearElement("ExpensesYear");
+		defineQuarterElement("ExpensesQuarter");
+		defineMonthElement("ExpensesMonth");
+		defineDayElement("ExpensesDay");
 	}
 	
 	private void defineDateUnitEfforts()
@@ -699,56 +699,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writer.printlnIndented(ELEMENT_NAME + PREFIX + EXPENSES_DATE_UNIT + "{ExpensesDay.element | ExpensesMonth.element | ExpensesQuarter.element | ExpensesYear.element | ExpensesFullProjectTimespan.element }? &");
 		writer.printlnIndented(ELEMENT_NAME + PREFIX + EXPENSE + " { xsd:decimal }?");
 		writer.endBlock();
-	}
-	
-	private void defineExpenseFullProjectTimeSpanElement()
-	{
-		defineFullProjectTimeSpanElement("ExpensesFullProjectTimespan");
-	}
-	
-	private void defineExpenseYearElement()
-	{
-		defineYearElement("ExpensesYear");
-	}
-
-	private void defineExpenseQuarterElement()
-	{
-		defineQuarterElement("ExpensesQuarter");
-	}
-	
-	private void defineExpenseMonthElement()
-	{
-		defineMonthElement("ExpensesMonth");
-	}
-	
-	private void defineExpenseDayElement()
-	{
-		defineDayElement("ExpensesDay");
-	}
-	
-	private void defineWorkUnitsFullProjectTimeSpanElement()
-	{
-		defineFullProjectTimeSpanElement("WorkUnitsFullProjectTimespan");
-	}
-		
-	private void defineWorkUnitsYearElement()
-	{
-		defineYearElement("WorkUnitsYear");
-	}
-
-	private void defineWorkUnitsQuarterElement()
-	{
-		defineQuarterElement("WorkUnitsQuarter");
-	}
-
-	private void defineWorkUnitsMonthElement()
-	{
-		defineMonthElement("WorkUnitsMonth");
-	}
-	
-	private void defineWorkUnitsDayElement()
-	{
-		defineDayElement("WorkUnitsDay");
 	}
 	
 	private void defineFullProjectTimeSpanElement(String fullProjectTimeSpanElementName)
