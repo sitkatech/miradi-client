@@ -59,6 +59,19 @@ public abstract class ChoiceQuestion implements Comparable<ChoiceQuestion>
 		return allCodes;
 	}
 	
+	public CodeList getCodesAsReadableCodes()
+	{
+		CodeList convertedToReadableCodes = new CodeList();
+		CodeList allCodes = getAllCodes();
+		for(int index = 0; index < allCodes.size(); ++index)
+		{
+			String code = allCodes.get(index);
+			convertedToReadableCodes.add(convertToReadableCode(code));
+		}
+		
+		return convertedToReadableCodes;
+	}
+	
 	abstract public ChoiceItem[] getChoices();
 	
 	public ChoiceItem findChoiceByCode(String code)
