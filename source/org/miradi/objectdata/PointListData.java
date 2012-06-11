@@ -117,7 +117,7 @@ public class PointListData extends ObjectData
 	@Override
 	public String createXmpz2SchemaElementString(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		return creator.writePointListElement(baseObjectSchema, fieldSchema);
+		return creator.createPointListElement(baseObjectSchema, fieldSchema);
 	}
 	
 	PointList points;
