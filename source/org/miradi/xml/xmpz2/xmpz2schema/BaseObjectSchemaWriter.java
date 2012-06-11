@@ -39,7 +39,7 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 	public Vector<String> createFieldSchemas() throws Exception
 	{
 		Vector<String> fieldSchemasAsString = new Vector<String>();
-		if (ShouldWriteIdAttribute())
+		if (hasIdAttributeElement())
 			fieldSchemasAsString.add("attribute " + ID + " "+ "{xsd:integer}");
 		
 		for(AbstractFieldSchema fieldSchema : getBaseObjectSchema())
@@ -70,7 +70,7 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 		return new Vector<String>();
 	}
 
-	protected boolean ShouldWriteIdAttribute()
+	protected boolean hasIdAttributeElement()
 	{
 		return true;
 	}
