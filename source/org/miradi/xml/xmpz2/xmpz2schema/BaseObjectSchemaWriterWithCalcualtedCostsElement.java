@@ -36,7 +36,7 @@ abstract public class BaseObjectSchemaWriterWithCalcualtedCostsElement extends B
 	{
 		Vector<String> schemaElements = super.createFieldSchemas();
 		
-		schemaElements.add(getCreator().writeCalculatedCostSchemaElement(getBaseObjectSchema()));
+		schemaElements.add(getXmpz2XmlSchemaCreator().writeCalculatedCostSchemaElement(getBaseObjectSchema()));
 		
 		return schemaElements;
 	}	
