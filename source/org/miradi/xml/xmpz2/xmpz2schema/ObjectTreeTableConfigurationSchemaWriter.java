@@ -31,7 +31,7 @@ public class ObjectTreeTableConfigurationSchemaWriter extends BaseObjectSchemaWr
 	}
 
 	@Override
-	protected boolean shouldOmitField(String tag)
+	protected boolean hasNoSchema(String tag)
 	{
 		if (tag.equals(ObjectTreeTableConfiguration.TAG_COL_CONFIGURATION))
 			return true;
@@ -39,6 +39,6 @@ public class ObjectTreeTableConfigurationSchemaWriter extends BaseObjectSchemaWr
 		if (tag.equals(ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION))
 			return true;
 		
-		return super.shouldOmitField(tag);
+		return super.hasNoSchema(tag);
 	}
 }
