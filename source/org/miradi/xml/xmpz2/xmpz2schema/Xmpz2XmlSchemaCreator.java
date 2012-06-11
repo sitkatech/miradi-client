@@ -114,17 +114,17 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeDiagramPointElement();
 		writeDiagramSizeElement();
 		writeDateUnitSchemaElements();
-		defineThresholdsElement();
-		defineTimePeriodCostsElement();
+		writeThresholdsElement();
+		writeTimePeriodCostsElement();
 		writeExpenseEntryElement();
 		writeWorkUnitsEntryElement();
 		writeExternaIdSchemaElement();
-		defineSimpleThreatRatingElement();
-		defineStressBasedThreatRatingElement();
-		defineDiagramFactorUiSettings();
-		defineDashboardUserChoiceMap();
-		defineDashboardFlagsContainer();
-		defineExtraDataSectionElement();
+		writeSimpleThreatRatingElement();
+		writeStressBasedThreatRatingElement();
+		writeDiagramFactorUiSettings();
+		writeDashboardUserChoiceMap();
+		writeDashboardFlagsContainer();
+		writeExtraDataSectionElement();
 	}
 
 	private void writeHeader()
@@ -287,43 +287,43 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void writeObjectTypeIdElements()
 	{
-		defineIdElement(CONCEPTUAL_MODEL);
-		defineIdElement(RESULTS_CHAIN);
-		defineIdElement(DIAGRAM_FACTOR);
-		defineIdElement(DIAGRAM_LINK);
-		defineIdElement(BIODIVERSITY_TARGET);
-		defineIdElement(HUMAN_WELFARE_TARGET);
-		defineIdElement(CAUSE);
-		defineIdElement(STRATEGY);
-		defineIdElement(THREAT_REDUCTION_RESULTS);
-		defineIdElement(INTERMEDIATE_RESULTS);
-		defineIdElement(GROUP_BOX);
-		defineIdElement(TEXT_BOX);
-		defineIdElement(SCOPE_BOX);
-		defineIdElement(ACTIVITY);
-		defineIdElement(STRESS);
-		defineIdElement(GOAL);
-		defineIdElement(OBJECTIVE);
-		defineIdElement(INDICATOR);
-		defineIdElement(KEY_ECOLOGICAL_ATTRIBUTE);
-		defineIdElement(TAGGED_OBJECT_SET_ELEMENT_NAME);
-		defineIdElement(SUB_TARGET);
-		defineIdElement(THREAT);
-		defineIdElement(ACCOUNTING_CODE);
-		defineIdElement(FUNDING_SOURCE);
-		defineIdElement(BUDGET_CATEGORY_ONE);
-		defineIdElement(BUDGET_CATEGORY_TWO);
-		defineIdElement(PROGRESS_REPORT);
-		defineIdElement(PROGRESS_PERCENT);
-		defineIdElement(EXPENSE_ASSIGNMENT);
-		defineIdElement(RESOURCE_ASSIGNMENT);
-		defineIdElement(RESOURCE_ID_ELEMENT_NAME);
-		defineIdElement(MEASUREMENT);
-		defineIdElement(METHOD);
-		defineIdElement(SUB_TASK);
+		writeIdElement(CONCEPTUAL_MODEL);
+		writeIdElement(RESULTS_CHAIN);
+		writeIdElement(DIAGRAM_FACTOR);
+		writeIdElement(DIAGRAM_LINK);
+		writeIdElement(BIODIVERSITY_TARGET);
+		writeIdElement(HUMAN_WELFARE_TARGET);
+		writeIdElement(CAUSE);
+		writeIdElement(STRATEGY);
+		writeIdElement(THREAT_REDUCTION_RESULTS);
+		writeIdElement(INTERMEDIATE_RESULTS);
+		writeIdElement(GROUP_BOX);
+		writeIdElement(TEXT_BOX);
+		writeIdElement(SCOPE_BOX);
+		writeIdElement(ACTIVITY);
+		writeIdElement(STRESS);
+		writeIdElement(GOAL);
+		writeIdElement(OBJECTIVE);
+		writeIdElement(INDICATOR);
+		writeIdElement(KEY_ECOLOGICAL_ATTRIBUTE);
+		writeIdElement(TAGGED_OBJECT_SET_ELEMENT_NAME);
+		writeIdElement(SUB_TARGET);
+		writeIdElement(THREAT);
+		writeIdElement(ACCOUNTING_CODE);
+		writeIdElement(FUNDING_SOURCE);
+		writeIdElement(BUDGET_CATEGORY_ONE);
+		writeIdElement(BUDGET_CATEGORY_TWO);
+		writeIdElement(PROGRESS_REPORT);
+		writeIdElement(PROGRESS_PERCENT);
+		writeIdElement(EXPENSE_ASSIGNMENT);
+		writeIdElement(RESOURCE_ASSIGNMENT);
+		writeIdElement(RESOURCE_ID_ELEMENT_NAME);
+		writeIdElement(MEASUREMENT);
+		writeIdElement(METHOD);
+		writeIdElement(SUB_TASK);
 	}
 	
-	private void defineIdElement(String baseName)
+	private void writeIdElement(String baseName)
 	{
 		getSchemaWriter().println(baseName + "Id.element = element " + PREFIX + baseName + "Id { xsd:integer }");
 	}
@@ -626,7 +626,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().println();
 	}
 	
-	private void defineDashboardUserChoiceMap()
+	private void writeDashboardUserChoiceMap()
 	{
 		getSchemaWriter().defineAlias(DASHBOARD_STATUS_ENTRY + DOT_ELEMENT, ELEMENT_NAME + PREFIX + DASHBOARD_STATUS_ENTRY);
 		getSchemaWriter().startBlock();
@@ -637,13 +637,13 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().endBlock();
 	}
 	
-	private void defineDashboardFlagsContainer()
+	private void writeDashboardFlagsContainer()
 	{
 		String falgsContainerSchema = createCodelistSchemaElement("DashboardFlags", StaticQuestionManager.getQuestion(DashboardFlagsQuestion.class));
 		getSchemaWriter().println(falgsContainerSchema);
 	}
 	
-	private void defineExtraDataSectionElement()
+	private void writeExtraDataSectionElement()
 	{
 		writer.defineAlias(EXTRA_DATA_SECTION + DOT_ELEMENT, ELEMENT_NAME + PREFIX + EXTRA_DATA_SECTION);
 		writer.startBlock();
@@ -794,7 +794,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().endBlock();
 	}
 	
-	private void defineThresholdsElement()
+	private void writeThresholdsElement()
 	{
 		getSchemaWriter().defineAlias(THRESHOLD + DOT_ELEMENT, ELEMENT_NAME + PREFIX + THRESHOLD);
 		getSchemaWriter().startBlock();
@@ -804,7 +804,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().endBlock();
 	}
 
-	private void defineTimePeriodCostsElement()
+	private void writeTimePeriodCostsElement()
 	{
 		getSchemaWriter().defineAlias(TIME_PERIOD_COSTS + DOT_ELEMENT, ELEMENT_NAME + PREFIX + TIME_PERIOD_COSTS);
 		getSchemaWriter().startBlock();
@@ -853,7 +853,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().endBlock();
 	}
 	
-	private void defineSimpleThreatRatingElement()
+	private void writeSimpleThreatRatingElement()
 	{
 		getSchemaWriter().defineAlias(SIMPLE_BASED_THREAT_RATING + DOT_ELEMENT	, ELEMENT_NAME + PREFIX + SIMPLE_BASED_THREAT_RATING);
 		getSchemaWriter().startBlock();
@@ -863,7 +863,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().endBlock();
     }
 
-	private void defineStressBasedThreatRatingElement()
+	private void writeStressBasedThreatRatingElement()
 	{
 		getSchemaWriter().defineAlias(STRESS_BASED_THREAT_RATING + DOT_ELEMENT, ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING);
 		getSchemaWriter().startBlock();
@@ -876,7 +876,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().endBlock();
 	}
 	
-	private void defineDiagramFactorUiSettings()
+	private void writeDiagramFactorUiSettings()
 	{
 		writer.defineAlias(STYLING + DOT_ELEMENT	, ELEMENT_NAME + PREFIX + STYLING);
 		writer.startBlock();
