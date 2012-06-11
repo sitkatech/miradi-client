@@ -106,7 +106,7 @@ public class DiagramPointData extends ObjectData
 	@Override
 	public String createXmpz2SchemaElementString(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		return creator.writeDiagramPointSchemaElement(baseObjectSchema, fieldSchema);
+		return creator.createDiagramPointSchemaElement(baseObjectSchema, fieldSchema);
 	}
 
 	Point point;
