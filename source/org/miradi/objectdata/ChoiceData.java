@@ -65,7 +65,7 @@ public class ChoiceData extends StringData
 	@Override	
 	public String createXmpz2SchemaElementString(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		return creator.writeChoiceSchemaElement(baseObjectSchema, fieldSchema, getChoiceQuestion());
+		return creator.createChoiceSchemaElement(baseObjectSchema, fieldSchema, getChoiceQuestion());
 	}
 
 	private ChoiceQuestion question;
