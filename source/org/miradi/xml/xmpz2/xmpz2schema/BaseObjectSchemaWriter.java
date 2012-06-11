@@ -86,7 +86,7 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 		return true;
 	}
 
-	protected Xmpz2XmlSchemaCreator getCreator()
+	protected Xmpz2XmlSchemaCreator getXmpz2XmlSchemaCreator()
 	{
 		return creator;
 	}

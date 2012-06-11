@@ -36,7 +36,7 @@ public class IndicatorSchemaWriter extends BaseObjectSchemaWriterWithCalcualtedC
 	protected Vector<String> createCustomSchemaFields()
 	{
 		Vector<String> schemaElements = new Vector<String>();
-		schemaElements.add(getCreator().createThresholdsSchemaElement(getBaseObjectSchema()));
+		schemaElements.add(getXmpz2XmlSchemaCreator().createThresholdsSchemaElement(getBaseObjectSchema()));
 		
 		return schemaElements;
 	}
