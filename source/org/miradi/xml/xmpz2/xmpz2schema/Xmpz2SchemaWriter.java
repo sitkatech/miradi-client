@@ -46,7 +46,7 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 	@Override	
 	public void startElementDefinition(String name)
 	{
-		println(name + ".element = element " +  RAW_PREFIX + ":" + name);
+		println(name + ".element = element " +  PREFIX + name);
 		startBlock();
 	}
 }
