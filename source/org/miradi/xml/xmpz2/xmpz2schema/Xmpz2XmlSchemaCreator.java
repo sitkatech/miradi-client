@@ -539,12 +539,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void defineVocabulary(ChoiceQuestion question, String vocabularyName)
 	{
-		CodeList codes = question.getAllCodes();
+		CodeList codes = question.getCodesAsReadableCodes();
 		getSchemaWriter().print(vocabularyName + " = ");
 		for(int index = 0; index < codes.size(); ++index)
 		{
 			String code = codes.get(index);
-			code = question.convertToReadableCode(code);
 			getSchemaWriter().write("'" + code + "'");
 			if (index < codes.size() - 1)
 				getSchemaWriter().print("|");
