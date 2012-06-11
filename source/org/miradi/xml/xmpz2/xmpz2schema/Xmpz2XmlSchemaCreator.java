@@ -264,7 +264,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return createSchemaElement(baseObjectSchema.getXmpz2ElementName(), TIME_PERIOD_COSTS, TIME_PERIOD_COSTS + DOT_ELEMENT);
 	}
 	
-	public String writeThresholdsSchemaElement(BaseObjectSchema baseObjectSchema)
+	public String createThresholdsSchemaElement(BaseObjectSchema baseObjectSchema)
 	{
 		return createSchemaElement(baseObjectSchema.getXmpz2ElementName(), THRESHOLDS, "IndicatorThreshold.element*");
 	}
