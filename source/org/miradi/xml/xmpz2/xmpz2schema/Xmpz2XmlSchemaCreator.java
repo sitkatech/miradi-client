@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.xmpz2schema;
 
+import java.util.Collections;
 import java.util.Set;
 import java.util.Vector;
 
@@ -85,6 +86,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		Xmpz2XmlSchemaCreator creator = new Xmpz2XmlSchemaCreator(writer);
 		
 		creator.writeRncSchema();
+		creator.getSchemaWriter().flush();
 	}
 
 	public Xmpz2XmlSchemaCreator(Xmpz2SchemaWriter writerToUse) throws Exception
@@ -269,7 +271,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void writeVocabularyDefinitions()
 	{
 		Set<ChoiceQuestion> choiceQuestions = choiceQuestionToSchemaElementNameMap.keySet();
-		for(ChoiceQuestion question : choiceQuestions)
+		Vector<ChoiceQuestion> sortedQuestions = new Vector<ChoiceQuestion>(choiceQuestions);
+		Collections.sort(sortedQuestions);
+		for(ChoiceQuestion question : sortedQuestions)
 		{
 			String vocabularyName = choiceQuestionToSchemaElementNameMap.get(question);
 			defineVocabulary(question, vocabularyName);
@@ -474,7 +478,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private String createCodelistSchemaElement(String codelistElementName, ChoiceQuestion question)
 	{
 		String vocabularyName = getChoiceQuestionToSchemaElementNameMap().get(question);
-		String containerElement = codelistElementName + "Container.element = element " +  RAW_PREFIX + ":" + codelistElementName + "Container " + HtmlUtilities.NEW_LINE;
+		String containerElement = codelistElementName + "Container.element = element " +  PREFIX + codelistElementName + "Container " + HtmlUtilities.NEW_LINE;
 		containerElement += "{" + HtmlUtilities.NEW_LINE;
 		containerElement += getSchemaWriter().INDENTATION + "element " + PREFIX + "code { " + vocabularyName + " } *" + HtmlUtilities.NEW_LINE;
 		containerElement += "}" + HtmlUtilities.NEW_LINE;

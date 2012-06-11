@@ -26,7 +26,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.ColorManager;
 
 
-public abstract class ChoiceQuestion
+public abstract class ChoiceQuestion implements Comparable<ChoiceQuestion>
 {
 	public ChoiceQuestion()
 	{
@@ -194,6 +194,11 @@ public abstract class ChoiceQuestion
 			return false;
 		
 		return true;
+	}
+	
+	public int compareTo(ChoiceQuestion other)
+	{
+		return getClass().getSimpleName().compareTo(other.getClass().getSimpleName());
 	}
 	
 	public static final Color COLOR_ALERT = Color.RED;

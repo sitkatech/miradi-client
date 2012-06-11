@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.xmpz2schema;
 
+import java.util.Vector;
+
 import org.miradi.objectdata.ObjectData;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
@@ -33,6 +35,30 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 	{
 		creator = creatorToUse;
 		baseObjectSchema = baseObjectSchemaToUse;
+	}
+	
+	public Vector<String> createFieldSchemas() throws Exception
+	{
+		Vector<String> fieldSchemasAsString = new Vector<String>();
+		if (ShouldWriteIdAttribute())
+			fieldSchemasAsString.add("attribute " + ID + " "+ "{xsd:integer}");
+		
+		for(AbstractFieldSchema fieldSchema : getBaseObjectSchema())
+		{
+			ObjectData objectData = fieldSchema.createField(null);
+			if (objectData.isPseudoField())
+				continue;
+			
+			if (shouldOmitField(fieldSchema.getTag()))
+				continue;
+
+			if (doesFieldRequireSpecialHandling(fieldSchema.getTag()))
+				writeCustomField(fieldSchema);
+			else
+				objectData.writeAsXmpz2SchemaElement(creator, baseObjectSchema, fieldSchema);
+		}
+		
+		return fieldSchemasAsString;
 	}
 	
 	public void writeFields(SchemaWriter writer) throws Exception
