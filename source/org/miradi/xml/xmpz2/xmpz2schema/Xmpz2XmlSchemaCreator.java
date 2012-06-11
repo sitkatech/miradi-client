@@ -355,22 +355,22 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return elementName + DOT_ELEMENT;
 	}
 	
-	public String writeStringSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	public String createStringSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
 		return createElementSchema(baseObjectSchema, fieldSchema, "text");
 	}
 
-	public String writeUserTextSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	public String createUserTextSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
 		return createElementSchema(baseObjectSchema, fieldSchema, "formatted_text");
 	}
 	
-	public String writeBooleanSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	public String createBooleanSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
 		return createElementSchema(baseObjectSchema, fieldSchema, "xsd:boolean");
 	}
 	
-	public String writeNumberSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema)
+	public String createNumberSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema)
 	{
 		return createElementSchema(baseObjectSchema, fieldSchema, "xsd:decimal");
 	}

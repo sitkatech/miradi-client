@@ -40,6 +40,6 @@ public class SingleLineUserTextData extends UserTextData
 	@Override
 	public String createXmpz2SchemaElementString(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		return creator.writeStringSchemaElement(baseObjectSchema, fieldSchema);
+		return creator.createStringSchemaElement(baseObjectSchema, fieldSchema);
 	}
 }

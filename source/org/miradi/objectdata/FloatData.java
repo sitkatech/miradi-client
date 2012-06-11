@@ -95,7 +95,7 @@ public class FloatData extends ObjectData
 	@Override
 	public String createXmpz2SchemaElementString(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		return creator.writeNumberSchemaElement(baseObjectSchema, fieldSchema);
+		return creator.createNumberSchemaElement(baseObjectSchema, fieldSchema);
 	}
 
 	private double value;
