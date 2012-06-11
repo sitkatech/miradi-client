@@ -23,7 +23,6 @@ package org.miradi.xml.xmpz2.xmpz2schema;
 import java.util.Vector;
 
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.xml.generic.SchemaWriter;
 
 abstract public class BaseObjectSchemaWriterWithCalcualtedCostsElement extends BaseObjectSchemaWriter
 {
@@ -40,14 +39,5 @@ abstract public class BaseObjectSchemaWriterWithCalcualtedCostsElement extends B
 		schemaElements.add(getCreator().writeCalculatedCostSchemaElement(getBaseObjectSchema()));
 		
 		return schemaElements;
-	}
-	
-	@Override
-	public void writeFields(SchemaWriter writer) throws Exception
-	{
-		super.writeFields(writer);
-		
-		getCreator().getSchemaWriter().println(" &");
-		getCreator().writeCalculatedCostSchemaElement(getBaseObjectSchema());
-	}
+	}	
 }

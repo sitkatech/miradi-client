@@ -25,7 +25,6 @@ import java.util.Vector;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.xml.generic.SchemaWriter;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
@@ -61,35 +60,6 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 		return fieldSchemasAsString;
 	}
 	
-	public void writeFields(SchemaWriter writer) throws Exception
-	{
-		if (ShouldWriteIdAttribute())
-			writer.printlnIndented("attribute " + ID + " "+ "{xsd:integer} &");
-		
-		int index = 0;
-		for(AbstractFieldSchema fieldSchema : getBaseObjectSchema())
-		{
-			ObjectData objectData = fieldSchema.createField(null);
-			if (objectData.isPseudoField())
-				continue;
-			
-			if (shouldOmitField(fieldSchema.getTag()))
-				continue;
-
-			++index;
-			if (doesFieldRequireSpecialHandling(fieldSchema.getTag()))
-				writeCustomField(fieldSchema);
-			else
-				objectData.writeAsXmpz2SchemaElement(creator, baseObjectSchema, fieldSchema);
-			
-			if (index < getFieldCount())
-			{
-				getCreator().getSchemaWriter().print(" &");
-				getCreator().getSchemaWriter().println();
-			}
-		}
-	}
-
 	protected int getFieldCount()
 	{
 		return getBaseObjectSchema().numberOfNonPseudoFields();

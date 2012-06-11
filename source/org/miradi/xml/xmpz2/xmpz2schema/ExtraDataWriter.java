@@ -22,8 +22,6 @@ package org.miradi.xml.xmpz2.xmpz2schema;
 
 import java.util.Vector;
 
-import org.miradi.xml.generic.SchemaWriter;
-
 
 public class ExtraDataWriter extends BaseObjectSchemaWriter
 {
@@ -40,12 +38,6 @@ public class ExtraDataWriter extends BaseObjectSchemaWriter
 		schemaElements.add(EXTRA_DATA_SECTION + ".element *");
 		
 		return schemaElements;
-	}
-	
-	@Override
-	public void writeFields(SchemaWriter writer) throws Exception
-	{
-		writer.write(EXTRA_DATA_SECTION + ".element *");
 	}
 	
 	@Override

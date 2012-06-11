@@ -23,7 +23,6 @@ package org.miradi.xml.xmpz2.xmpz2schema;
 import java.util.Vector;
 
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.xml.generic.SchemaWriter;
 
 public class ProjectSummaryLocationSchemaWriter extends SingletonSchemaWriter
 {
@@ -40,14 +39,5 @@ public class ProjectSummaryLocationSchemaWriter extends SingletonSchemaWriter
 		schemaElements.add(getCreator().writeSchemaElement(getXmpz2ElementName(), PROJECT_LOCATION, GEOSPATIAL_LOCATION + ".element*"));
 		
 		return schemaElements;
-	}
-	
-	@Override
-	public void writeFields(SchemaWriter writer) throws Exception
-	{
-		super.writeFields(writer);
-		
-		writer.println(" &");
-		getCreator().writeSchemaElement(getXmpz2ElementName(), PROJECT_LOCATION, GEOSPATIAL_LOCATION + ".element*");
-	}
+	}	
 }
