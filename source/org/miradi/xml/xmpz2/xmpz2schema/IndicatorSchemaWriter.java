@@ -38,7 +38,7 @@ public class IndicatorSchemaWriter extends BaseObjectSchemaWriterWithCalcualtedC
 	{
 		Vector<String> schemaElements = new Vector<String>();
 		if (shouldWriteFieldOnlyOnce(fieldSchema))
-			schemaElements.add(getCreator().writeThresholdsSchemaElement(getBaseObjectSchema()));
+			schemaElements.add(getCreator().createThresholdsSchemaElement(getBaseObjectSchema()));
 		
 		return schemaElements;
 	}
