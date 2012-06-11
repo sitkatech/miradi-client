@@ -30,6 +30,7 @@ public interface Xmpz2XmlConstants
 	public static final String PREFIX = RAW_PREFIX + COLON;
 	public static final String SINGLE_SPACE = " ";
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
+	public static final String DOT_ELEMENT = ".element";
 	
 	public static final String NAME_SPACE_VERSION = "73";
 	public static final String PARTIAL_NAME_SPACE = "http://xml.miradi.org/schema/ConservationProject/";
