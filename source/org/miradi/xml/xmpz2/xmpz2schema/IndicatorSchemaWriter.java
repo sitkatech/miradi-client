@@ -23,7 +23,6 @@ package org.miradi.xml.xmpz2.xmpz2schema;
 import java.util.Vector;
 
 import org.miradi.objects.Indicator;
-import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 
 public class IndicatorSchemaWriter extends BaseObjectSchemaWriterWithCalcualtedCostsElement
@@ -34,7 +33,7 @@ public class IndicatorSchemaWriter extends BaseObjectSchemaWriterWithCalcualtedC
 	}
 	
 	@Override
-	protected Vector<String> writeCustomField(AbstractFieldSchema fieldSchema)
+	protected Vector<String> writeCustomField()
 	{
 		Vector<String> schemaElements = new Vector<String>();
 		schemaElements.add(getCreator().createThresholdsSchemaElement(getBaseObjectSchema()));

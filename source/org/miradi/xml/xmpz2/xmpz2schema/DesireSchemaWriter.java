@@ -23,7 +23,6 @@ package org.miradi.xml.xmpz2.xmpz2schema;
 import java.util.Vector;
 
 import org.miradi.objects.Desire;
-import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.FieldSchemaRelevancyOverrideSetData;
 
@@ -35,7 +34,7 @@ public class DesireSchemaWriter extends BaseObjectSchemaWriter
 	}
 	
 	@Override
-	protected Vector<String> writeCustomField(AbstractFieldSchema fieldSchema)
+	protected Vector<String> writeCustomField()
 	{
 		return writeSingleTagAsTwoSchemaElements();
 	}
