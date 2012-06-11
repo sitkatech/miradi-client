@@ -65,12 +65,5 @@ public class IndicatorSchemaWriter extends BaseObjectSchemaWriterWithCalcualtedC
 			return true;
 		
 		return super.doesFieldRequireSpecialHandling(tag);
-	}
-	
-	@Override
-	protected int getFieldCount()
-	{
-		final int ONE_OMMITTED_FIELD = 1;
-		return super.getFieldCount() - ONE_OMMITTED_FIELD;
-	}
+	}	
 }

@@ -60,11 +60,6 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 		return fieldSchemasAsString;
 	}
 	
-	protected int getFieldCount()
-	{
-		return getBaseObjectSchema().numberOfNonPseudoFields();
-	}
-
 	protected boolean shouldOmitField(String tag)
 	{
 		return false;
