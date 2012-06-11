@@ -72,7 +72,7 @@ public class DateUnitEffortListData extends ObjectData
 	@Override
 	public String createXmpz2SchemaElementString(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		return creator.writeDateUnitEffortListSchemaElement(baseObjectSchema, fieldSchema);
+		return creator.createDateUnitEffortListSchemaElement(baseObjectSchema, fieldSchema);
 	}
 	
 	private DateUnitEffortList dateUnitEffortList;

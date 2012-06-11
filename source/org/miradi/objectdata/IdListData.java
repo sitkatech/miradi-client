@@ -131,7 +131,7 @@ public class IdListData extends ObjectData
 	@Override
 	public String createXmpz2SchemaElementString(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		return creator.writeIdListSchemaElement(baseObjectSchema, fieldSchema);
+		return creator.createIdListSchemaElement(baseObjectSchema, fieldSchema);
 	}
 	
 	private IdList ids;
