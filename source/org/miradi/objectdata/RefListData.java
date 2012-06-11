@@ -102,7 +102,7 @@ public class RefListData extends ObjectData
 	@Override
 	public String createXmpz2SchemaElementString(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		return creator.writeRefListSchemaElement(baseObjectSchema, fieldSchema);
+		return creator.createRefListSchemaElement(baseObjectSchema, fieldSchema);
 	}
 	
 	private ORefList refList;
