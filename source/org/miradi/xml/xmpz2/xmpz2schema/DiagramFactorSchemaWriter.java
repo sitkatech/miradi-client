@@ -23,7 +23,6 @@ package org.miradi.xml.xmpz2.xmpz2schema;
 import java.util.Vector;
 
 import org.miradi.objects.DiagramFactor;
-import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 
 public class DiagramFactorSchemaWriter extends BaseObjectSchemaWriter
@@ -52,9 +51,9 @@ public class DiagramFactorSchemaWriter extends BaseObjectSchemaWriter
 	}
 	
 	@Override
-	protected Vector<String> writeCustomField(AbstractFieldSchema fieldSchema)
+	protected Vector<String> writeCustomField()
 	{
-		Vector<String> schemaElements = super.writeCustomField(fieldSchema);
+		Vector<String> schemaElements = super.writeCustomField();
 		
 		schemaElements.add(getCreator().createSchemaElement(getXmpz2ElementName(), STYLING, STYLING + ".element"));
 		
