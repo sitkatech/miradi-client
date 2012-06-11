@@ -40,20 +40,14 @@ public class IndicatorSchemaWriter extends BaseObjectSchemaWriterWithCalcualtedC
 		
 		return schemaElements;
 	}
-	
-	@Override
-	protected boolean shouldOmitField(String tag)
-	{
-		if (tag.equals(Indicator.TAG_THRESHOLD_DETAILS_MAP))
-			return true;
-		
-		return super.shouldOmitField(tag);
-	}
 
 	@Override
 	protected boolean doesFieldRequireSpecialHandling(String tag)
 	{
 		if (tag.equals(Indicator.TAG_THRESHOLDS_MAP))
+			return true;
+		
+		if (tag.equals(Indicator.TAG_THRESHOLD_DETAILS_MAP))
 			return true;
 		
 		return super.doesFieldRequireSpecialHandling(tag);
