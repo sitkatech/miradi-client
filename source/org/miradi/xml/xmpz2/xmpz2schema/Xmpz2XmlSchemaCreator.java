@@ -218,7 +218,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	public String createRelevantSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		return writeElementSchema(baseObjectSchema, fieldSchema, getRelevantTypeName(fieldSchema));
+		return createElementSchema(baseObjectSchema, fieldSchema, getRelevantTypeName(fieldSchema));
 	}
 	
 	private String getRelevantTypeName(AbstractFieldSchema fieldSchema)
@@ -357,32 +357,32 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	public String writeStringSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		return writeElementSchema(baseObjectSchema, fieldSchema, "text");
+		return createElementSchema(baseObjectSchema, fieldSchema, "text");
 	}
 
 	public String writeUserTextSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		return writeElementSchema(baseObjectSchema, fieldSchema, "formatted_text");
+		return createElementSchema(baseObjectSchema, fieldSchema, "formatted_text");
 	}
 	
 	public String writeBooleanSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		return writeElementSchema(baseObjectSchema, fieldSchema, "xsd:boolean");
+		return createElementSchema(baseObjectSchema, fieldSchema, "xsd:boolean");
 	}
 	
 	public String writeNumberSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema)
 	{
-		return writeElementSchema(baseObjectSchema, fieldSchema, "xsd:decimal");
+		return createElementSchema(baseObjectSchema, fieldSchema, "xsd:decimal");
 	}
 	
 	public String writeIntegerSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		return writeElementSchema(baseObjectSchema, fieldSchema, "xsd:integer");
+		return createElementSchema(baseObjectSchema, fieldSchema, "xsd:integer");
 	}
 	
 	public String writeDateSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		return writeElementSchema(baseObjectSchema, fieldSchema, "vocabulary_date");
+		return createElementSchema(baseObjectSchema, fieldSchema, "vocabulary_date");
 	}
 	
 	public String writeRefSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
@@ -430,7 +430,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	public String writeChoiceSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, ChoiceQuestion choiceQuestion)
 	{
 		String vocabularyName = getChoiceQuestionToSchemaElementNameMap().findVocabulary(choiceQuestion);
-		return writeElementSchema(baseObjectSchema, fieldSchema, vocabularyName);
+		return createElementSchema(baseObjectSchema, fieldSchema, vocabularyName);
 	}
 	
 	public String writeIdListSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema)
@@ -897,10 +897,10 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	public String createSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, final String elementType)
 	{
-		return writeElementSchema(baseObjectSchema, fieldSchema, elementType + ".element*");
+		return createElementSchema(baseObjectSchema, fieldSchema, elementType + ".element*");
 	}
 
-	private String writeElementSchema(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String elementType)
+	private String createElementSchema(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String elementType)
 	{
 		String poolName = baseObjectSchema.getXmpz2ElementName();
 		String elementName = getTagToElementNameMap().findElementName(poolName, fieldSchema.getTag());
