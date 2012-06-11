@@ -116,7 +116,7 @@ public class ORefData extends ObjectData
 	@Override
 	public String createXmpz2SchemaElementString(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		return creator.writeRefSchemaElement(baseObjectSchema, fieldSchema);
+		return creator.createRefSchemaElement(baseObjectSchema, fieldSchema);
 	}
 
 	ORef ref;

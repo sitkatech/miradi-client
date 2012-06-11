@@ -100,7 +100,7 @@ public class DateData extends ObjectData
 	@Override
 	public String createXmpz2SchemaElementString(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		return creator.writeDateSchemaElement(baseObjectSchema, fieldSchema);
+		return creator.createDateSchemaElement(baseObjectSchema, fieldSchema);
 	}
 	
 	private MultiCalendar date;
