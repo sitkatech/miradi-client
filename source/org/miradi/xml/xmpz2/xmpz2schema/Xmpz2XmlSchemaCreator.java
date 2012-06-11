@@ -155,7 +155,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			elementNames.add(createElementName(poolName) + " ?");
 		}
 		
-		elementNames.add("element " + XmpzXmlConstants.PREFIX + DELETED_ORPHANS_ELEMENT_NAME +  "{ text }?");
+		elementNames.add(ELEMENT_NAME + XmpzXmlConstants.PREFIX + DELETED_ORPHANS_ELEMENT_NAME +  "{ text }?");
 		getSchemaWriter().writeContentsList(elementNames);
 		
 		getSchemaWriter().endElementDefinition(CONSERVATION_PROJECT);
@@ -437,7 +437,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		String elementName = getTagToElementNameMap().findElementName(baseObjectSchema.getXmpz2ElementName(), fieldSchema.getTag());
 		String reflistElementName = baseObjectSchema.getXmpz2ElementName() + elementName;
 		final String idElementName = createIdElementName(baseObjectSchema, fieldSchema, elementName);
-		getSchemaWriter().printIndented("element " + PREFIX + reflistElementName + " { " + idElementName + ".element* }?");
+		getSchemaWriter().printIndented(ELEMENT_NAME + PREFIX + reflistElementName + " { " + idElementName + ".element* }?");
 	}
 
 	private String createIdElementName(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String elementName)
@@ -480,7 +480,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		String vocabularyName = getChoiceQuestionToSchemaElementNameMap().get(question);
 		String containerElement = codelistElementName + "Container.element = element " +  PREFIX + codelistElementName + "Container " + HtmlUtilities.NEW_LINE;
 		containerElement += "{" + HtmlUtilities.NEW_LINE;
-		containerElement += getSchemaWriter().INDENTATION + "element " + PREFIX + "code { " + vocabularyName + " } *" + HtmlUtilities.NEW_LINE;
+		containerElement += getSchemaWriter().INDENTATION + ELEMENT_NAME + PREFIX + "code { " + vocabularyName + " } *" + HtmlUtilities.NEW_LINE;
 		containerElement += "}" + HtmlUtilities.NEW_LINE;
 		
 		return containerElement;
@@ -584,24 +584,24 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void writeGeospacialLocationElement()
 	{
 		getSchemaWriter().startElementDefinition(GEOSPATIAL_LOCATION);
-		getSchemaWriter().printlnIndented("element " + PREFIX + "latitude { xsd:decimal } &");
-		getSchemaWriter().printlnIndented("element " + PREFIX + "longitude { xsd:decimal } ");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + "latitude { xsd:decimal } &");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + "longitude { xsd:decimal } ");
 		getSchemaWriter().endBlock();
 	}
 	
 	private void writeDiagramPointElement()
 	{
 		getSchemaWriter().startElementDefinition(DIAGRAM_POINT_ELEMENT_NAME);
-		getSchemaWriter().printlnIndented("element " + PREFIX + "x { xsd:integer } & ");
-		getSchemaWriter().printlnIndented("element " + PREFIX + "y { xsd:integer }"); 
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + "x { xsd:integer } & ");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + "y { xsd:integer }"); 
 		getSchemaWriter().endBlock();
 	}
 	
 	private void writeDiagramSizeElement()
 	{
 		getSchemaWriter().startElementDefinition(DIAGRAM_SIZE_ELEMENT_NAME);
-		getSchemaWriter().printlnIndented("element " + PREFIX + "width { xsd:integer } & ");
-		getSchemaWriter().printlnIndented("element " + PREFIX + "height { xsd:integer }"); 
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + "width { xsd:integer } & ");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + "height { xsd:integer }"); 
 		getSchemaWriter().endBlock();
 	}
 	
@@ -629,12 +629,12 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void defineDashboardUserChoiceMap()
 	{
-		getSchemaWriter().defineAlias(DASHBOARD_STATUS_ENTRY + ".element", "element " + PREFIX + DASHBOARD_STATUS_ENTRY);
+		getSchemaWriter().defineAlias(DASHBOARD_STATUS_ENTRY + ".element", ELEMENT_NAME + PREFIX + DASHBOARD_STATUS_ENTRY);
 		getSchemaWriter().startBlock();
 		getSchemaWriter().printlnIndented("attribute " + KEY_ATTRIBUTE_NAME + " { text } &");
-		getSchemaWriter().printlnIndented("element " + PREFIX + DASHBOARD_PROGRESS + " { " + VOCABULARY_DASHBOARD_ROW_PROGRESS + " }? &");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + DASHBOARD_PROGRESS + " { " + VOCABULARY_DASHBOARD_ROW_PROGRESS + " }? &");
 		getSchemaWriter().printlnIndented(DASHBOARD + DASHBOARD_FLAGS + CONTAINER_ELEMENT_TAG + ".element? &");
-		getSchemaWriter().printlnIndented("element " + PREFIX + DASHBOARD_COMMENTS + " { text }?");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + DASHBOARD_COMMENTS + " { text }?");
 		getSchemaWriter().endBlock();
 	}
 	
@@ -646,7 +646,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void defineExtraDataSectionElement()
 	{
-		writer.defineAlias(EXTRA_DATA_SECTION + ".element", "element " + XmpzXmlConstants.PREFIX + EXTRA_DATA_SECTION);
+		writer.defineAlias(EXTRA_DATA_SECTION + ".element", ELEMENT_NAME + XmpzXmlConstants.PREFIX + EXTRA_DATA_SECTION);
 		writer.startBlock();
 		writer.printlnIndented("attribute " + EXTRA_DATA_SECTION_OWNER_ATTRIBUTE + " { text } &");
 		writer.printlnIndented(EXTRA_DATA_ITEM + ".element *");
@@ -657,10 +657,10 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	private void defineExtraDataItemElement()
 	{
-		writer.defineAlias(EXTRA_DATA_ITEM + ".element", "element " + XmpzXmlConstants.PREFIX + EXTRA_DATA_ITEM);
+		writer.defineAlias(EXTRA_DATA_ITEM + ".element", ELEMENT_NAME + XmpzXmlConstants.PREFIX + EXTRA_DATA_ITEM);
 		writer.startBlock();
 		writer.printlnIndented("attribute " + EXTRA_DATA_ITEM_NAME + " { text } &");
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + EXTRA_DATA_ITEM_VALUE + " { text }?");
+		writer.printlnIndented(ELEMENT_NAME + XmpzXmlConstants.PREFIX + EXTRA_DATA_ITEM_VALUE + " { text }?");
 		writer.endBlock();
 	}
 	
@@ -683,19 +683,19 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void defineDateUnitEfforts()
 	{
-		writer.defineAlias("DateUnitWorkUnits.element", "element " + PREFIX + "DateUnitWorkUnits");
+		writer.defineAlias("DateUnitWorkUnits.element", ELEMENT_NAME + PREFIX + "DateUnitWorkUnits");
 		writer.startBlock();
-		writer.printlnIndented("element " + PREFIX + "WorkUnitsDateUnit{WorkUnitsDay.element | WorkUnitsMonth.element | WorkUnitsQuarter.element | WorkUnitsYear.element | WorkUnitsFullProjectTimespan.element }? &");
-		writer.printlnIndented("element " + PREFIX + "NumberOfUnits { xsd:decimal }?");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + "WorkUnitsDateUnit{WorkUnitsDay.element | WorkUnitsMonth.element | WorkUnitsQuarter.element | WorkUnitsYear.element | WorkUnitsFullProjectTimespan.element }? &");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + "NumberOfUnits { xsd:decimal }?");
 		writer.endBlock();
 	}
 
 	private void defineDateUnitExpense()
 	{
-		writer.defineAlias("DateUnitExpense.element", "element " + PREFIX + "DateUnitExpense");
+		writer.defineAlias("DateUnitExpense.element", ELEMENT_NAME + PREFIX + "DateUnitExpense");
 		writer.startBlock();
-		writer.printlnIndented("element " + PREFIX + EXPENSES_DATE_UNIT + "{ExpensesDay.element | ExpensesMonth.element | ExpensesQuarter.element | ExpensesYear.element | ExpensesFullProjectTimespan.element }? &");
-		writer.printlnIndented("element " + PREFIX + EXPENSE + " { xsd:decimal }?");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + EXPENSES_DATE_UNIT + "{ExpensesDay.element | ExpensesMonth.element | ExpensesQuarter.element | ExpensesYear.element | ExpensesFullProjectTimespan.element }? &");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + EXPENSE + " { xsd:decimal }?");
 		writer.endBlock();
 	}
 	
@@ -797,60 +797,60 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void defineThresholdsElement()
 	{
-		getSchemaWriter().defineAlias(THRESHOLD + ".element", "element " + PREFIX + THRESHOLD);
+		getSchemaWriter().defineAlias(THRESHOLD + ".element", ELEMENT_NAME + PREFIX + THRESHOLD);
 		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented("element " + PREFIX + STATUS_CODE + "{" + VOCABULARY_MEASUREMENT_STATUS + "}? &");
-		getSchemaWriter().printlnIndented("element " + PREFIX + THRESHOLD_VALUE + " { text }? &");
-		getSchemaWriter().printlnIndented("element " + PREFIX + THRESHOLD_DETAILS + " { text }?");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + STATUS_CODE + "{" + VOCABULARY_MEASUREMENT_STATUS + "}? &");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + THRESHOLD_VALUE + " { text }? &");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + THRESHOLD_DETAILS + " { text }?");
 		getSchemaWriter().endBlock();
 	}
 	
 	private void defineTimePeriodCostsElement()
 	{
-		getSchemaWriter().defineAlias(TIME_PERIOD_COSTS + ".element", "element " + PREFIX + TIME_PERIOD_COSTS);
+		getSchemaWriter().defineAlias(TIME_PERIOD_COSTS + ".element", ELEMENT_NAME + PREFIX + TIME_PERIOD_COSTS);
 		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented("element " + PREFIX + CALCULATED_START_DATE + "{ vocabulary_date } &");
-		getSchemaWriter().printlnIndented("element " + PREFIX + CALCULATED_END_DATE + "{ vocabulary_date } &");
-		getSchemaWriter().printlnIndented("element " + PREFIX + CALCULATED_EXPENSE_TOTAL + "{ xsd:decimal }? &");
-		getSchemaWriter().printlnIndented("element " + PREFIX + CALCULATED_WORK_UNITS_TOTAL + "{ xsd:decimal }? &");
-		getSchemaWriter().printlnIndented("element " + PREFIX + CALCULATED_TOTAL_BUDGET_COST + "{ xsd:decimal }? &");
-		getSchemaWriter().printlnIndented("element " + PREFIX + CALCULATED_WHO + "{ ResourceId.element* }? &");
-		getSchemaWriter().printlnIndented("element " + PREFIX + CALCULATED_EXPENSE_ENTRIES + "{ " + EXPENSE_ENTRY + ".element* }? &");
-		getSchemaWriter().printlnIndented("element " + PREFIX + CALCULATED_WORK_UNITS_ENTRIES + "{ " + WORK_UNITS_ENTRY + ".element* }?");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + CALCULATED_START_DATE + "{ vocabulary_date } &");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + CALCULATED_END_DATE + "{ vocabulary_date } &");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + CALCULATED_EXPENSE_TOTAL + "{ xsd:decimal }? &");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + CALCULATED_WORK_UNITS_TOTAL + "{ xsd:decimal }? &");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + CALCULATED_TOTAL_BUDGET_COST + "{ xsd:decimal }? &");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + CALCULATED_WHO + "{ ResourceId.element* }? &");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + CALCULATED_EXPENSE_ENTRIES + "{ " + EXPENSE_ENTRY + ".element* }? &");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + CALCULATED_WORK_UNITS_ENTRIES + "{ " + WORK_UNITS_ENTRY + ".element* }?");
 		getSchemaWriter().endBlock();
 	}
 	
 	private void writeExpenseEntryElement()
 	{
-		getSchemaWriter().defineAlias(EXPENSE_ENTRY + ".element", "element " + PREFIX + EXPENSE_ENTRY);
+		getSchemaWriter().defineAlias(EXPENSE_ENTRY + ".element", ELEMENT_NAME + PREFIX + EXPENSE_ENTRY);
 		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented("element " + PREFIX + EXPENSE_ENTRY + FUNDING_SOURCE_ID + "{ " + FUNDING_SOURCE_ID + ".element }? &");
-		getSchemaWriter().printlnIndented("element " + PREFIX + EXPENSE_ENTRY + ACCOUNTING_CODE_ID + "{ " + ACCOUNTING_CODE_ID + ".element }? &");
-		getSchemaWriter().printlnIndented("element " + PREFIX + EXPENSE_ENTRY + BUDGET_CATEGORY_ONE_ID + "{ " + BUDGET_CATEGORY_ONE_ID + ".element }? &");
-		getSchemaWriter().printlnIndented("element " + PREFIX + EXPENSE_ENTRY + BUDGET_CATEGORY_TWO_ID + "{ " + BUDGET_CATEGORY_TWO_ID + ".element }? &");
-		getSchemaWriter().printlnIndented("element " + PREFIX + EXPENSE_ENTRY + DETAILS + "{ " + DATE_UNITS_EXPENSE + ".element* }?");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + EXPENSE_ENTRY + FUNDING_SOURCE_ID + "{ " + FUNDING_SOURCE_ID + ".element }? &");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + EXPENSE_ENTRY + ACCOUNTING_CODE_ID + "{ " + ACCOUNTING_CODE_ID + ".element }? &");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + EXPENSE_ENTRY + BUDGET_CATEGORY_ONE_ID + "{ " + BUDGET_CATEGORY_ONE_ID + ".element }? &");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + EXPENSE_ENTRY + BUDGET_CATEGORY_TWO_ID + "{ " + BUDGET_CATEGORY_TWO_ID + ".element }? &");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + EXPENSE_ENTRY + DETAILS + "{ " + DATE_UNITS_EXPENSE + ".element* }?");
 		getSchemaWriter().endBlock();
 	}
 	
 	private void writeWorkUnitsEntryElement()
 	{
-		getSchemaWriter().defineAlias(WORK_UNITS_ENTRY + ".element", "element " + PREFIX + WORK_UNITS_ENTRY);
+		getSchemaWriter().defineAlias(WORK_UNITS_ENTRY + ".element", ELEMENT_NAME + PREFIX + WORK_UNITS_ENTRY);
 		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented("element " + PREFIX + WORK_UNITS_ENTRY + RESOURCE_ID + "{ " + RESOURCE_ID + ".element }? &");
-		getSchemaWriter().printlnIndented("element " + PREFIX + WORK_UNITS_ENTRY + FUNDING_SOURCE_ID + "{ " + FUNDING_SOURCE_ID + ".element }? &");
-		getSchemaWriter().printlnIndented("element " + PREFIX + WORK_UNITS_ENTRY + ACCOUNTING_CODE_ID + "{ " + ACCOUNTING_CODE_ID + ".element }? &");
-		getSchemaWriter().printlnIndented("element " + PREFIX + WORK_UNITS_ENTRY + BUDGET_CATEGORY_ONE_ID + "{ " + BUDGET_CATEGORY_ONE_ID + ".element }? &");
-		getSchemaWriter().printlnIndented("element " + PREFIX + WORK_UNITS_ENTRY + BUDGET_CATEGORY_TWO_ID + "{ " + BUDGET_CATEGORY_TWO_ID + ".element }? &");
-		getSchemaWriter().printlnIndented("element " + PREFIX + WORK_UNITS_ENTRY + DETAILS + "{ " + DATE_UNIT_WORK_UNITS + ".element* }?");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + WORK_UNITS_ENTRY + RESOURCE_ID + "{ " + RESOURCE_ID + ".element }? &");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + WORK_UNITS_ENTRY + FUNDING_SOURCE_ID + "{ " + FUNDING_SOURCE_ID + ".element }? &");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + WORK_UNITS_ENTRY + ACCOUNTING_CODE_ID + "{ " + ACCOUNTING_CODE_ID + ".element }? &");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + WORK_UNITS_ENTRY + BUDGET_CATEGORY_ONE_ID + "{ " + BUDGET_CATEGORY_ONE_ID + ".element }? &");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + WORK_UNITS_ENTRY + BUDGET_CATEGORY_TWO_ID + "{ " + BUDGET_CATEGORY_TWO_ID + ".element }? &");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + WORK_UNITS_ENTRY + DETAILS + "{ " + DATE_UNIT_WORK_UNITS + ".element* }?");
 		getSchemaWriter().endBlock();
 	}
 	
 	private void writeExternaIdSchemaElement()
 	{
-		getSchemaWriter().defineAlias(EXTERNAL_PROJECT_ID_ELEMENT_NAME + ".element", "element " + PREFIX + EXTERNAL_PROJECT_ID_ELEMENT_NAME);
+		getSchemaWriter().defineAlias(EXTERNAL_PROJECT_ID_ELEMENT_NAME + ".element", ELEMENT_NAME + PREFIX + EXTERNAL_PROJECT_ID_ELEMENT_NAME);
 		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented("element " + PREFIX + EXTERNAL_APP_ELEMENT_NAME + " { text } &");
-		getSchemaWriter().printlnIndented("element " + PREFIX + PROJECT_ID + " { text } ");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + EXTERNAL_APP_ELEMENT_NAME + " { text } &");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + PROJECT_ID + " { text } ");
 		getSchemaWriter().endBlock();
 	}
 	
@@ -902,7 +902,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	public void writeSchemaElement(String poolName, String elementName, String elementType)
 	{
-		getSchemaWriter().printIndented("element " + PREFIX + poolName + elementName);
+		getSchemaWriter().printIndented(ELEMENT_NAME + PREFIX + poolName + elementName);
 		getSchemaWriter().print(" { " + elementType + " }?");
 	}
 
