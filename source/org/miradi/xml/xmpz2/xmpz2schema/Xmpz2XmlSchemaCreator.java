@@ -254,7 +254,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return writeSchemaElement(baseObjectSchema, fieldSchema, DIAGRAM_POINT_ELEMENT_NAME);
 	}
 	
-	public String writePointListElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	public String createPointListElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
 		return writeSchemaElement(baseObjectSchema, fieldSchema, DIAGRAM_POINT_ELEMENT_NAME);
 	}
