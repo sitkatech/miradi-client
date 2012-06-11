@@ -98,7 +98,7 @@ public class DateData extends ObjectData
 	}
 	
 	@Override
-	public String writeAsXmpz2SchemaElement(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	public String createXmpz2SchemaElementString(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
 		return creator.writeDateSchemaElement(baseObjectSchema, fieldSchema);
 	}

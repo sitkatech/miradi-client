@@ -54,7 +54,7 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 			if (doesFieldRequireSpecialHandling(fieldSchema.getTag()))
 				fieldSchemasAsString.addAll(writeCustomField(fieldSchema));
 			else
-				fieldSchemasAsString.add(objectData.writeAsXmpz2SchemaElement(creator, baseObjectSchema, fieldSchema));
+				fieldSchemasAsString.add(objectData.createXmpz2SchemaElementString(creator, baseObjectSchema, fieldSchema));
 		}
 		
 		return fieldSchemasAsString;
