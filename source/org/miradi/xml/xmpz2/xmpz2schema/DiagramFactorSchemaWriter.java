@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.xmpz2schema;
 
+import java.util.Vector;
+
 import org.miradi.objects.DiagramFactor;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
@@ -41,11 +43,13 @@ public class DiagramFactorSchemaWriter extends BaseObjectSchemaWriter
 	}
 	
 	@Override
-	protected void writeCustomField(AbstractFieldSchema fieldSchema)
+	protected Vector<String> writeCustomField(AbstractFieldSchema fieldSchema)
 	{
-		super.writeCustomField(fieldSchema);
+		Vector<String> schemaElements = super.writeCustomField(fieldSchema);
 		
-		getCreator().writeSchemaElement(getXmpz2ElementName(), STYLING, STYLING + ".element");
+		schemaElements.add(getCreator().writeSchemaElement(getXmpz2ElementName(), STYLING, STYLING + ".element"));
+		
+		return schemaElements;
 	}
 
 	@Override

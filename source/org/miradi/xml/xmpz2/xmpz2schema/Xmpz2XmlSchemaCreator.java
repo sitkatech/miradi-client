@@ -205,13 +205,20 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	private void writeElementContent(BaseObjectSchemaWriter baseObjectSchemaWriter) throws Exception
 	{
-		baseObjectSchemaWriter.writeFields(getSchemaWriter());
-		getSchemaWriter().println();
+		Vector<String> schemaFieldElements = baseObjectSchemaWriter.createFieldSchemas();
+		for(int index = 0; index < schemaFieldElements.size(); ++index)
+		{
+			getSchemaWriter().printIndented(schemaFieldElements.get(index));
+			if (index < schemaFieldElements.size() - 1)
+				getSchemaWriter().print(" &");
+			
+			getSchemaWriter().println();
+		}
 	}
 	
-	public void writeRelevantSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	public String writeRelevantSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		writeElementSchema(baseObjectSchema, fieldSchema, getRelevantTypeName(fieldSchema));
+		return writeElementSchema(baseObjectSchema, fieldSchema, getRelevantTypeName(fieldSchema));
 	}
 	
 	private String getRelevantTypeName(AbstractFieldSchema fieldSchema)
@@ -237,34 +244,34 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		}
 	}
 	
-	public void writeDimensionSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	public String writeDimensionSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		writeSchemaElement(baseObjectSchema, fieldSchema, DIAGRAM_SIZE_ELEMENT_NAME);
+		return writeSchemaElement(baseObjectSchema, fieldSchema, DIAGRAM_SIZE_ELEMENT_NAME);
 	}
 	
-	public void writeDiagramPointSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	public String writeDiagramPointSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		writeSchemaElement(baseObjectSchema, fieldSchema, DIAGRAM_POINT_ELEMENT_NAME);
+		return writeSchemaElement(baseObjectSchema, fieldSchema, DIAGRAM_POINT_ELEMENT_NAME);
 	}
 	
-	public void writePointListElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	public String writePointListElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		writeSchemaElement(baseObjectSchema, fieldSchema, DIAGRAM_POINT_ELEMENT_NAME);
+		return writeSchemaElement(baseObjectSchema, fieldSchema, DIAGRAM_POINT_ELEMENT_NAME);
 	}
 	
-	public void writeCalculatedCostSchemaElement(BaseObjectSchema baseObjectSchema)
+	public String writeCalculatedCostSchemaElement(BaseObjectSchema baseObjectSchema)
 	{
-		writeSchemaElement(baseObjectSchema.getXmpz2ElementName(), TIME_PERIOD_COSTS, TIME_PERIOD_COSTS + DOT_ELEMENT);
+		return writeSchemaElement(baseObjectSchema.getXmpz2ElementName(), TIME_PERIOD_COSTS, TIME_PERIOD_COSTS + DOT_ELEMENT);
 	}
 	
-	public void writeThresholdsSchemaElement(BaseObjectSchema baseObjectSchema)
+	public String writeThresholdsSchemaElement(BaseObjectSchema baseObjectSchema)
 	{
-		writeSchemaElement(baseObjectSchema.getXmpz2ElementName(), THRESHOLDS, "IndicatorThreshold.element*");
+		return writeSchemaElement(baseObjectSchema.getXmpz2ElementName(), THRESHOLDS, "IndicatorThreshold.element*");
 	}
 	
-	public void writeStringRefMapSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	public String writeStringRefMapSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		writeSchemaElement(baseObjectSchema, fieldSchema, EXTERNAL_PROJECT_ID_ELEMENT_NAME);
+		return writeSchemaElement(baseObjectSchema, fieldSchema, EXTERNAL_PROJECT_ID_ELEMENT_NAME);
 	}
 	
 	private void writeVocabularyDefinitions()
@@ -348,40 +355,40 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return elementName + DOT_ELEMENT;
 	}
 	
-	public void writeStringSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	public String writeStringSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		writeElementSchema(baseObjectSchema, fieldSchema, "text");
+		return writeElementSchema(baseObjectSchema, fieldSchema, "text");
 	}
 
-	public void writeUserTextSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	public String writeUserTextSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		writeElementSchema(baseObjectSchema, fieldSchema, "formatted_text");
+		return writeElementSchema(baseObjectSchema, fieldSchema, "formatted_text");
 	}
 	
-	public void writeBooleanSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	public String writeBooleanSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		writeElementSchema(baseObjectSchema, fieldSchema, "xsd:boolean");
+		return writeElementSchema(baseObjectSchema, fieldSchema, "xsd:boolean");
 	}
 	
-	public void writeNumberSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema)
+	public String writeNumberSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema)
 	{
-		writeElementSchema(baseObjectSchema, fieldSchema, "xsd:decimal");
+		return writeElementSchema(baseObjectSchema, fieldSchema, "xsd:decimal");
 	}
 	
-	public void writeIntegerSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	public String writeIntegerSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		writeElementSchema(baseObjectSchema, fieldSchema, "xsd:integer");
+		return writeElementSchema(baseObjectSchema, fieldSchema, "xsd:integer");
 	}
 	
-	public void writeDateSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	public String writeDateSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		writeElementSchema(baseObjectSchema, fieldSchema, "vocabulary_date");
+		return writeElementSchema(baseObjectSchema, fieldSchema, "vocabulary_date");
 	}
 	
-	public void writeRefSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	public String writeRefSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
 		String fieldName = getIdElementName(baseObjectSchema, fieldSchema);
-		writeSchemaElement(baseObjectSchema, fieldSchema, fieldName);
+		return writeSchemaElement(baseObjectSchema, fieldSchema, fieldName);
 	}
 
 	private String getIdElementName(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
@@ -395,10 +402,10 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return getTagToElementNameMap().findElementName(baseObjectSchema, fieldSchema);
 	}
 	
-	public void writeBaseIdSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, int objectType)
+	public String writeBaseIdSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, int objectType)
 	{
 		String objectName = getIdElementName(baseObjectSchema, fieldSchema, objectType);
-		writeSchemaElement(baseObjectSchema, fieldSchema, objectName + ID);
+		return writeSchemaElement(baseObjectSchema, fieldSchema, objectName + ID);
 	}
 
 	private String getIdElementName(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, int objectType)
@@ -415,28 +422,28 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return getProject().getObjectManager().getInternalObjectTypeName(objectType);
 	}
 
-	public void writeDateUnitEffortListSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	public String writeDateUnitEffortListSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		writeSchemaElement(baseObjectSchema, fieldSchema, "DateUnit" + getDateUniteTypeName(baseObjectSchema.getType()));
+		return writeSchemaElement(baseObjectSchema, fieldSchema, "DateUnit" + getDateUniteTypeName(baseObjectSchema.getType()));
 	}
 	
-	public void writeChoiceSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, ChoiceQuestion choiceQuestion)
+	public String writeChoiceSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, ChoiceQuestion choiceQuestion)
 	{
 		String vocabularyName = getChoiceQuestionToSchemaElementNameMap().findVocabulary(choiceQuestion);
-		writeElementSchema(baseObjectSchema, fieldSchema, vocabularyName);
+		return writeElementSchema(baseObjectSchema, fieldSchema, vocabularyName);
 	}
 	
-	public void writeIdListSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema)
+	public String writeIdListSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema)
 	{
-		writeRefListSchemaElement(baseObjectSchema, fieldSchema);
+		return writeRefListSchemaElement(baseObjectSchema, fieldSchema);
 	}
 
-	public void writeRefListSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	public String writeRefListSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
 		String elementName = getTagToElementNameMap().findElementName(baseObjectSchema.getXmpz2ElementName(), fieldSchema.getTag());
 		String reflistElementName = baseObjectSchema.getXmpz2ElementName() + elementName;
 		final String idElementName = createIdElementName(baseObjectSchema, fieldSchema, elementName);
-		getSchemaWriter().printIndented(ELEMENT_NAME + PREFIX + reflistElementName + " { " + idElementName + ".element* }?");
+		return ELEMENT_NAME + PREFIX + reflistElementName + " { " + idElementName + ".element* }?";
 	}
 
 	private String createIdElementName(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String elementName)
@@ -465,13 +472,14 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return StringUtilities.removeLastChar(elementName);
 	}
 	
-	public void writeCodelistSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ChoiceQuestion question)
+	public String writeCodelistSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ChoiceQuestion question)
 	{
 		String elementName = getTagToElementNameMap().findElementName(baseObjectSchema.getXmpz2ElementName(), fieldSchema.getTag());
 		String codelistElementName = baseObjectSchema.getXmpz2ElementName() + elementName;
-		getSchemaWriter().printIndented(codelistElementName + "Container.element ?");
 		
 		codelistSchemaElements.add(createCodelistSchemaElement(codelistElementName, question));
+		
+		return codelistElementName + "Container.element ?";
 	}
 	
 	private String createCodelistSchemaElement(String codelistElementName, ChoiceQuestion question)
@@ -887,22 +895,21 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writer.endBlock();		
 	}
 
-	public void writeSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, final String elementType)
+	public String writeSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, final String elementType)
 	{
-		writeElementSchema(baseObjectSchema, fieldSchema, elementType + ".element*");
+		return writeElementSchema(baseObjectSchema, fieldSchema, elementType + ".element*");
 	}
 
-	private void writeElementSchema(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String elementType)
+	private String writeElementSchema(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String elementType)
 	{
 		String poolName = baseObjectSchema.getXmpz2ElementName();
 		String elementName = getTagToElementNameMap().findElementName(poolName, fieldSchema.getTag());
-		writeSchemaElement(poolName, elementName, elementType);
+		return writeSchemaElement(poolName, elementName, elementType);
 	}
 
-	public void writeSchemaElement(String poolName, String elementName, String elementType)
+	public String writeSchemaElement(String poolName, String elementName, String elementType)
 	{
-		getSchemaWriter().printIndented(ELEMENT_NAME + PREFIX + poolName + elementName);
-		getSchemaWriter().print(" { " + elementType + " }?");
+		return ELEMENT_NAME + PREFIX + poolName + elementName + " { " + elementType + " }?";
 	}
 
 	private Vector<BaseObjectSchemaWriter> getTopLevelBaseObjectSchemas()

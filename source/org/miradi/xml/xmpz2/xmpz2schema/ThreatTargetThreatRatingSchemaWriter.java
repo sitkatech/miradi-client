@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.xmpz2schema;
 
+import java.util.Vector;
+
 import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.xml.generic.SchemaWriter;
 
@@ -28,6 +30,20 @@ public class ThreatTargetThreatRatingSchemaWriter extends BaseObjectSchemaWriter
 	public ThreatTargetThreatRatingSchemaWriter(Xmpz2XmlSchemaCreator creatorToUse)
 	{
 		super(creatorToUse, null);
+	}
+	
+	@Override
+	public Vector<String> createFieldSchemas() throws Exception
+	{
+		Vector<String> schemaElements = new Vector<String>();
+		schemaElements.add(getCreator().writeSchemaElement(THREAT_RATING, TARGET + ID, BIODIVERSITY_TARGET + ID + ".element*"));
+		schemaElements.add(getCreator().writeSchemaElement(THREAT_RATING, THREAT_ID, THREAT_ID + ".element*"));
+		String vocabularyName = getCreator().getChoiceQuestionToSchemaElementNameMap().findVocabulary(new ThreatRatingQuestion());
+		schemaElements.add(getCreator().writeSchemaElement(THREAT_RATING, THREAT_TARGET_RATING, vocabularyName));
+		schemaElements.add(getCreator().writeSchemaElement(THREAT_RATING, COMMENTS, "formatted_text"));
+		schemaElements.add(getCreator().writeSchemaElement(THREAT, RATING + RATINGS, " SimpleThreatRating.element | StressBasedThreatRating.element* "));
+				
+		return schemaElements;
 	}
 	
 	@Override
