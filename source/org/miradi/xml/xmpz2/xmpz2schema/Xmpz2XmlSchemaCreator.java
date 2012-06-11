@@ -246,17 +246,17 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	public String writeDimensionSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		return writeSchemaElement(baseObjectSchema, fieldSchema, DIAGRAM_SIZE_ELEMENT_NAME);
+		return createSchemaElement(baseObjectSchema, fieldSchema, DIAGRAM_SIZE_ELEMENT_NAME);
 	}
 	
 	public String createDiagramPointSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		return writeSchemaElement(baseObjectSchema, fieldSchema, DIAGRAM_POINT_ELEMENT_NAME);
+		return createSchemaElement(baseObjectSchema, fieldSchema, DIAGRAM_POINT_ELEMENT_NAME);
 	}
 	
 	public String createPointListElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		return writeSchemaElement(baseObjectSchema, fieldSchema, DIAGRAM_POINT_ELEMENT_NAME);
+		return createSchemaElement(baseObjectSchema, fieldSchema, DIAGRAM_POINT_ELEMENT_NAME);
 	}
 	
 	public String writeCalculatedCostSchemaElement(BaseObjectSchema baseObjectSchema)
@@ -271,7 +271,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	public String createStringRefMapSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		return writeSchemaElement(baseObjectSchema, fieldSchema, EXTERNAL_PROJECT_ID_ELEMENT_NAME);
+		return createSchemaElement(baseObjectSchema, fieldSchema, EXTERNAL_PROJECT_ID_ELEMENT_NAME);
 	}
 	
 	private void writeVocabularyDefinitions()
@@ -388,7 +388,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	public String writeRefSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
 		String fieldName = getIdElementName(baseObjectSchema, fieldSchema);
-		return writeSchemaElement(baseObjectSchema, fieldSchema, fieldName);
+		return createSchemaElement(baseObjectSchema, fieldSchema, fieldName);
 	}
 
 	private String getIdElementName(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
@@ -405,7 +405,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	public String writeBaseIdSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, int objectType)
 	{
 		String objectName = getIdElementName(baseObjectSchema, fieldSchema, objectType);
-		return writeSchemaElement(baseObjectSchema, fieldSchema, objectName + ID);
+		return createSchemaElement(baseObjectSchema, fieldSchema, objectName + ID);
 	}
 
 	private String getIdElementName(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, int objectType)
@@ -424,7 +424,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	public String writeDateUnitEffortListSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		return writeSchemaElement(baseObjectSchema, fieldSchema, "DateUnit" + getDateUniteTypeName(baseObjectSchema.getType()));
+		return createSchemaElement(baseObjectSchema, fieldSchema, "DateUnit" + getDateUniteTypeName(baseObjectSchema.getType()));
 	}
 	
 	public String writeChoiceSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, ChoiceQuestion choiceQuestion)
@@ -895,7 +895,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writer.endBlock();		
 	}
 
-	public String writeSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, final String elementType)
+	public String createSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, final String elementType)
 	{
 		return writeElementSchema(baseObjectSchema, fieldSchema, elementType + ".element*");
 	}
