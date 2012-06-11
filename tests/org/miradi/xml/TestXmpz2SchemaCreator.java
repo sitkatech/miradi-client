@@ -26,11 +26,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Vector;
 
-import org.martus.util.UnicodeStringReader;
 import org.martus.util.UnicodeStringWriter;
 import org.martus.util.UnicodeWriter;
 import org.miradi.main.ResourcesHandler;
@@ -48,59 +44,36 @@ public class TestXmpz2SchemaCreator extends TestCaseWithProject
 	
 	public void testAgainstStaticSchema() throws Exception
 	{
-		HashSet<String> actualLinesSet = getActualLines();
-		HashSet<String> expectedLinesSet = getExpectedLines();
+		String expectedSchema = getExpectedLines();
+		String actualSchema = getActualSchema();
 		
-		expectedLinesSet.removeAll(actualLinesSet);
-		PRINT_LEFT_OVER_LINES_FOR_DEV_PURPOSES(expectedLinesSet);
-		assertTrue("non matching schema lines found?", expectedLinesSet.size() == 0);
+		assertEquals("Generated schema doesnt match existing?", expectedSchema, actualSchema);
 	}
 
-	public HashSet<String> getExpectedLines() throws Exception
+	public String getExpectedLines() throws Exception
 	{
 		URL resourceURL = ResourcesHandler.getEnglishResourceURL(Xmpz2XmlValidator.XMPZ2_SCHEMA_FILE_RELATIVE_PATH);
 		FileInputStream fileInputStream = new FileInputStream(resourceURL.getFile());
 		DataInputStream in = new DataInputStream(fileInputStream);
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in));
+		String allLines = "";
 		String expectedLine;
-		HashSet<String> expectedLinesSet = new HashSet<String>();
 		while ((expectedLine = bufferedReader.readLine()) != null)   
 		{
-			expectedLinesSet.add(expectedLine);
+			allLines += expectedLine + "\n";
 		}
 
-		return expectedLinesSet;
+		return allLines;
 	}
 
-	public HashSet<String> getActualLines() throws Exception, IOException
+	public String getActualSchema() throws Exception, IOException
 	{
 		UnicodeWriter stringWriter = UnicodeStringWriter.create();
 		Xmpz2SchemaWriter writer = new Xmpz2SchemaWriter(stringWriter);
 		Xmpz2XmlSchemaCreator creator = new Xmpz2XmlSchemaCreator(writer);
 		creator.writeRncSchema();
 		stringWriter.flush();
-		
-		UnicodeStringReader reader = new UnicodeStringReader(stringWriter.toString());
-		HashSet<String> actualLinesSet = new HashSet<String>();
-		String actualLine = null;
-		while ((actualLine = reader.readLine()) != null)
-		{
-			actualLinesSet.add(actualLine);
-		}
 
-		return actualLinesSet;
-	}
-
-	private void PRINT_LEFT_OVER_LINES_FOR_DEV_PURPOSES(HashSet<String> expectedLinesSet)
-	{
-		Vector<String> sortedLines = new Vector<String>();
-		sortedLines.addAll(expectedLinesSet);
-		Collections.sort(sortedLines);
-		//FIXME this is for development only!
-//		for(String line : sortedLines)
-//		{
-//			
-//			System.out.println(line);
-//		}
+		return stringWriter.toString();
 	}
 }
