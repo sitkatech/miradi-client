@@ -216,7 +216,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		}
 	}
 	
-	public String writeRelevantSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	public String createRelevantSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
 		return writeElementSchema(baseObjectSchema, fieldSchema, getRelevantTypeName(fieldSchema));
 	}
@@ -244,7 +244,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		}
 	}
 	
-	public String writeDimensionSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	public String createDimensionSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
 		return createSchemaElement(baseObjectSchema, fieldSchema, DIAGRAM_SIZE_ELEMENT_NAME);
 	}

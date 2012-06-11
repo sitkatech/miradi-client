@@ -43,8 +43,8 @@ public class DesireSchemaWriter extends BaseObjectSchemaWriter
 	private Vector<String> writeSingleTagAsTwoSchemaElements()
 	{
 		Vector<String> schemaElements = new Vector<String>();
-		schemaElements.add(getCreator().writeRelevantSchemaElement(getBaseObjectSchema(), new FieldSchemaRelevancyOverrideSetData(RELEVANT_STRATEGY_IDS)));
-		schemaElements.add(getCreator().writeRelevantSchemaElement(getBaseObjectSchema(), new FieldSchemaRelevancyOverrideSetData(RELEVANT_ACTIVITY_IDS)));
+		schemaElements.add(getCreator().createRelevantSchemaElement(getBaseObjectSchema(), new FieldSchemaRelevancyOverrideSetData(RELEVANT_STRATEGY_IDS)));
+		schemaElements.add(getCreator().createRelevantSchemaElement(getBaseObjectSchema(), new FieldSchemaRelevancyOverrideSetData(RELEVANT_ACTIVITY_IDS)));
 		
 		return schemaElements;
 	}
