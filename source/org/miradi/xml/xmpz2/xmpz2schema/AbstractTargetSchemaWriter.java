@@ -23,7 +23,6 @@ package org.miradi.xml.xmpz2.xmpz2schema;
 import java.util.Vector;
 
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.xml.generic.SchemaWriter;
 import org.miradi.xml.generic.XmlSchemaCreator;
 
 public class AbstractTargetSchemaWriter extends BaseObjectSchemaWriter
@@ -42,17 +41,5 @@ public class AbstractTargetSchemaWriter extends BaseObjectSchemaWriter
 		schemaElements.add(getCreator().writeSchemaElement(getXmpz2ElementName(), TARGET_STATUS_ELEMENT_NAME, VOCABULARY_TARGET_STATUS));
 		
 		return schemaElements;
-	}
-	
-	@Override
-	public void writeFields(SchemaWriter writer) throws Exception
-	{
-		super.writeFields(writer);
-		
-		writer.println(" &");
-		getCreator().writeSchemaElement(getXmpz2ElementName(), TARGET_THREAT_RATING, XmlSchemaCreator.VOCABULARY_THREAT_RATING);
-		
-		writer.println(" &");
-		getCreator().writeSchemaElement(getXmpz2ElementName(), TARGET_STATUS_ELEMENT_NAME, VOCABULARY_TARGET_STATUS);
-	}
+	}	
 }

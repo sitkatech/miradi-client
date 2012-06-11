@@ -23,7 +23,6 @@ package org.miradi.xml.xmpz2.xmpz2schema;
 import java.util.Vector;
 
 import org.miradi.questions.ThreatRatingQuestion;
-import org.miradi.xml.generic.SchemaWriter;
 
 public class ThreatTargetThreatRatingSchemaWriter extends BaseObjectSchemaWriter
 {
@@ -44,25 +43,6 @@ public class ThreatTargetThreatRatingSchemaWriter extends BaseObjectSchemaWriter
 		schemaElements.add(getCreator().writeSchemaElement(THREAT, RATING + RATINGS, " SimpleThreatRating.element | StressBasedThreatRating.element* "));
 				
 		return schemaElements;
-	}
-	
-	@Override
-	public void writeFields(SchemaWriter writer) throws Exception
-	{
-		getCreator().writeSchemaElement(THREAT_RATING, TARGET + ID, BIODIVERSITY_TARGET + ID + ".element*");
-		writer.println(" &");
-		
-		getCreator().writeSchemaElement(THREAT_RATING, THREAT_ID, THREAT_ID + ".element*");
-		writer.println(" &");
-		
-		String vocabularyName = getCreator().getChoiceQuestionToSchemaElementNameMap().findVocabulary(new ThreatRatingQuestion());
-		getCreator().writeSchemaElement(THREAT_RATING, THREAT_TARGET_RATING, vocabularyName);
-		writer.println(" &");
-		
-		getCreator().writeSchemaElement(THREAT_RATING, COMMENTS, "formatted_text");
-		writer.println(" &");
-		
-		getCreator().writeSchemaElement(THREAT, RATING + RATINGS, " SimpleThreatRating.element | StressBasedThreatRating.element* ");
 	}
 	
 	@Override

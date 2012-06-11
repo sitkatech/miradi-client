@@ -23,7 +23,6 @@ package org.miradi.xml.xmpz2.xmpz2schema;
 import java.util.Vector;
 
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.xml.generic.SchemaWriter;
 
 public class DashboardSchemaWriter extends BaseObjectSchemaWriter
 {
@@ -41,12 +40,5 @@ public class DashboardSchemaWriter extends BaseObjectSchemaWriter
 		schemaElements.add(getCreator().writeSchemaElement(getXmpz2ElementName(), DASHBOARD_STATUS_ENTRIES, DASHBOARD_STATUS_ENTRY + ".element*"));
 		
 		return schemaElements;
-	}
-	
-	@Override
-	public void writeFields(SchemaWriter writer) throws Exception
-	{
-		writer.printlnIndented("attribute " + ID + " "+ "{xsd:integer} &");
-		getCreator().writeSchemaElement(getXmpz2ElementName(), DASHBOARD_STATUS_ENTRIES, DASHBOARD_STATUS_ENTRY + ".element*");
 	}
 }
