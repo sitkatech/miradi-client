@@ -210,11 +210,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().println();
 	}
 	
-	public String createRelevantSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
-	{
-		return createElementSchema(baseObjectSchema, fieldSchema, getRelevantTypeName(fieldSchema));
-	}
-	
 	private String getRelevantTypeName(AbstractFieldSchema fieldSchema)
 	{
 		if (fieldSchema.getTag().equals(Desire.TAG_RELEVANT_INDICATOR_SET))
@@ -358,6 +353,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		containerElement += "}" + HtmlUtilities.NEW_LINE;
 		
 		return containerElement;
+	}
+	
+	public String createRelevantSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	{
+		return createElementSchema(baseObjectSchema, fieldSchema, getRelevantTypeName(fieldSchema));
 	}
 	
 	private void writeVocabularyDefinitions()
