@@ -53,9 +53,9 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 				continue;
 
 			if (doesFieldRequireSpecialHandling(fieldSchema.getTag()))
-				writeCustomField(fieldSchema);
+				fieldSchemasAsString.addAll(writeCustomField(fieldSchema));
 			else
-				objectData.writeAsXmpz2SchemaElement(creator, baseObjectSchema, fieldSchema);
+				fieldSchemasAsString.add(objectData.writeAsXmpz2SchemaElement(creator, baseObjectSchema, fieldSchema));
 		}
 		
 		return fieldSchemasAsString;
@@ -100,8 +100,9 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 		return false;
 	}
 
-	protected void writeCustomField(AbstractFieldSchema fieldSchema)
+	protected Vector<String> writeCustomField(AbstractFieldSchema fieldSchema)
 	{
+		return new Vector<String>();
 	}
 
 	protected boolean ShouldWriteIdAttribute()

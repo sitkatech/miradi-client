@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.xmpz2schema;
 
+import java.util.Vector;
+
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.generic.SchemaWriter;
 
@@ -28,6 +30,16 @@ abstract public class BaseObjectSchemaWriterWithCalcualtedCostsElement extends B
 	public BaseObjectSchemaWriterWithCalcualtedCostsElement(Xmpz2XmlSchemaCreator creatorToUse,	BaseObjectSchema baseObjectSchemaToUse)
 	{
 		super(creatorToUse, baseObjectSchemaToUse);
+	}
+	
+	@Override
+	public Vector<String> createFieldSchemas() throws Exception
+	{
+		Vector<String> schemaElements = super.createFieldSchemas();
+		
+		schemaElements.add(getCreator().writeCalculatedCostSchemaElement(getBaseObjectSchema()));
+		
+		return schemaElements;
 	}
 	
 	@Override

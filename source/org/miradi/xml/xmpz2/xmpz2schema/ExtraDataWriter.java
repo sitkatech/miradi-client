@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.xmpz2schema;
 
+import java.util.Vector;
+
 import org.miradi.xml.generic.SchemaWriter;
 
 
@@ -28,6 +30,16 @@ public class ExtraDataWriter extends BaseObjectSchemaWriter
 	public ExtraDataWriter(Xmpz2XmlSchemaCreator creatorToUse)
 	{
 		super(creatorToUse, null);
+	}
+	
+	@Override
+	public Vector<String> createFieldSchemas() throws Exception
+	{
+		Vector<String> schemaElements = new Vector<String>();
+		
+		schemaElements.add(EXTRA_DATA_SECTION + ".element *");
+		
+		return schemaElements;
 	}
 	
 	@Override

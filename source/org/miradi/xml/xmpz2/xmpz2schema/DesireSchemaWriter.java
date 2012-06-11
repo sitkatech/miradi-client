@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.xmpz2schema;
 
+import java.util.Vector;
+
 import org.miradi.objects.Desire;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
@@ -33,17 +35,18 @@ public class DesireSchemaWriter extends BaseObjectSchemaWriter
 	}
 	
 	@Override
-	protected void writeCustomField(AbstractFieldSchema fieldSchema)
+	protected Vector<String> writeCustomField(AbstractFieldSchema fieldSchema)
 	{
-		writeSingleTagAsTwoSchemaElements();
+		return writeSingleTagAsTwoSchemaElements();
 	}
 
-	private void writeSingleTagAsTwoSchemaElements()
+	private Vector<String> writeSingleTagAsTwoSchemaElements()
 	{
-		getCreator().writeRelevantSchemaElement(getBaseObjectSchema(), new FieldSchemaRelevancyOverrideSetData(RELEVANT_STRATEGY_IDS));
-		getCreator().getSchemaWriter().println(" &");
+		Vector<String> schemaElements = new Vector<String>();
+		schemaElements.add(getCreator().writeRelevantSchemaElement(getBaseObjectSchema(), new FieldSchemaRelevancyOverrideSetData(RELEVANT_STRATEGY_IDS)));
+		schemaElements.add(getCreator().writeRelevantSchemaElement(getBaseObjectSchema(), new FieldSchemaRelevancyOverrideSetData(RELEVANT_ACTIVITY_IDS)));
 		
-		getCreator().writeRelevantSchemaElement(getBaseObjectSchema(), new FieldSchemaRelevancyOverrideSetData(RELEVANT_ACTIVITY_IDS));
+		return schemaElements;
 	}
 	
 	@Override

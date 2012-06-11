@@ -76,9 +76,9 @@ abstract public class StringData extends ObjectData
 	}
 	
 	@Override
-	public void writeAsXmpz2SchemaElement(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	public String writeAsXmpz2SchemaElement(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		creator.writeStringSchemaElement(baseObjectSchema, fieldSchema);
+		return creator.writeStringSchemaElement(baseObjectSchema, fieldSchema);
 	}
 
 	private String value;

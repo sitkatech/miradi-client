@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.xmpz2schema;
 
+import java.util.Vector;
+
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.generic.SchemaWriter;
 
@@ -28,6 +30,17 @@ public class DashboardSchemaWriter extends BaseObjectSchemaWriter
 	public DashboardSchemaWriter(Xmpz2XmlSchemaCreator creatorToUse, BaseObjectSchema baseObjectSchemaToUse)
 	{
 		super(creatorToUse, baseObjectSchemaToUse);
+	}
+	
+	@Override
+	public Vector<String> createFieldSchemas() throws Exception
+	{
+		Vector<String> schemaElements = new Vector<String>();
+		
+		schemaElements.add("attribute " + ID + " "+ "{xsd:integer}");
+		schemaElements.add(getCreator().writeSchemaElement(getXmpz2ElementName(), DASHBOARD_STATUS_ENTRIES, DASHBOARD_STATUS_ENTRY + ".element*"));
+		
+		return schemaElements;
 	}
 	
 	@Override
