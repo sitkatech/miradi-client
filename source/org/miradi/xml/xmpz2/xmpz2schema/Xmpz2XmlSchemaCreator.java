@@ -482,22 +482,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().defineAlias(createElementName(baseObjectName), "element miradi:" + baseObjectName);
 	}
 
-	private void defineVocabulary(ChoiceQuestion question, String vocabularyName)
-	{
-		CodeList codes = question.getAllCodes();
-		getSchemaWriter().print(vocabularyName + " = ");
-		for(int index = 0; index < codes.size(); ++index)
-		{
-			String code = codes.get(index);
-			code = question.convertToReadableCode(code);
-			getSchemaWriter().write("'" + code + "'");
-			if (index < codes.size() - 1)
-				getSchemaWriter().print("|");
-		}
-		
-		getSchemaWriter().println();
-	}
-	
 	private void writeLinkableFactorIds()
 	{
 		final String[] factorNames = new String[]{
@@ -530,6 +514,44 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		writeOredSchemaElements(WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME, factorNames);
 	}
+	
+	private void defineDashboardStatusesVocabulary()
+	{
+		final String[] allCodesFromDynamicQuestion = new String[]{
+			OpenStandardsProgressStatusQuestion.NOT_SPECIFIED_CODE,
+			OpenStandardsProgressStatusQuestion.NOT_STARTED_CODE,
+			OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE,
+			OpenStandardsProgressStatusQuestion.COMPLETE_CODE,
+			OpenStandardsProgressStatusQuestion.NOT_APPLICABLE_CODE,
+		};
+		
+		getSchemaWriter().print(VOCABULARY_DASHBOARD_ROW_PROGRESS + " = ");
+		for(int index = 0; index < allCodesFromDynamicQuestion.length; ++index)
+		{
+			String code = allCodesFromDynamicQuestion[index];
+			getSchemaWriter().write("'" + code + "'");
+			if (index < allCodesFromDynamicQuestion.length - 1)
+				getSchemaWriter().print("|");
+		}
+		
+		getSchemaWriter().println();
+	}
+	
+	private void defineVocabulary(ChoiceQuestion question, String vocabularyName)
+	{
+		CodeList codes = question.getAllCodes();
+		getSchemaWriter().print(vocabularyName + " = ");
+		for(int index = 0; index < codes.size(); ++index)
+		{
+			String code = codes.get(index);
+			code = question.convertToReadableCode(code);
+			getSchemaWriter().write("'" + code + "'");
+			if (index < codes.size() - 1)
+				getSchemaWriter().print("|");
+		}
+		
+		getSchemaWriter().println();
+	}
 
 	private void writeOredSchemaElements(final String elementName, final String[] elementNames)
 	{
@@ -543,7 +565,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().println();
 		getSchemaWriter().endBlock();
 	}
-	
+
 	private void writeHtmlTagSchemaElements()
 	{
 		String[] tagNames = new String[] {"br", "b", "i", "u", "strike", "a", "ul", "ol",};
@@ -599,28 +621,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + "width { xsd:integer } & ");
 		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + "height { xsd:integer }"); 
 		getSchemaWriter().endBlock();
-	}
-	
-	private void defineDashboardStatusesVocabulary()
-	{
-		final String[] allCodesFromDynamicQuestion = new String[]{
-			OpenStandardsProgressStatusQuestion.NOT_SPECIFIED_CODE,
-			OpenStandardsProgressStatusQuestion.NOT_STARTED_CODE,
-			OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE,
-			OpenStandardsProgressStatusQuestion.COMPLETE_CODE,
-			OpenStandardsProgressStatusQuestion.NOT_APPLICABLE_CODE,
-		};
-		
-		getSchemaWriter().print(VOCABULARY_DASHBOARD_ROW_PROGRESS + " = ");
-		for(int index = 0; index < allCodesFromDynamicQuestion.length; ++index)
-		{
-			String code = allCodesFromDynamicQuestion[index];
-			getSchemaWriter().write("'" + code + "'");
-			if (index < allCodesFromDynamicQuestion.length - 1)
-				getSchemaWriter().print("|");
-		}
-		
-		getSchemaWriter().println();
 	}
 	
 	private void writeDashboardUserChoiceMap()
