@@ -686,7 +686,7 @@ ThreatRating.element = element miradi:ThreatRating
 ExtraDataPool.element = element miradi:ExtraDataPool { ExtraData.element* }
 ExtraData.element = element miradi:ExtraData
 {
-ExtraDataSection.element *
+  ExtraDataSection.element *
 }
 
 ProjectSummaryScopeProtectedAreaCategoriesContainer.element = element miradi:ProjectSummaryScopeProtectedAreaCategoriesContainer 
