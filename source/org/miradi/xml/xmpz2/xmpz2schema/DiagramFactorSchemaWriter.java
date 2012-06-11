@@ -65,12 +65,5 @@ public class DiagramFactorSchemaWriter extends BaseObjectSchemaWriter
 			return true;
 		
 		return super.shouldOmitField(tag);
-	}
-	
-	@Override
-	protected int getFieldCount()
-	{
-		final int OMITTED_COUNT = 3;
-		return super.getFieldCount() - OMITTED_COUNT;
-	}
+	}	
 }

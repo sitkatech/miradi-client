@@ -30,15 +30,6 @@ public class ObjectTreeTableConfigurationSchemaWriter extends BaseObjectSchemaWr
 		super(creatorToUse, baseObjectSchemaToUse);
 	}
 
-	//FIXME this should be replaced with a size of the list of omitted tags.  
-	//Which will remove the shouldImitField method, and replace it with getTagsToOmit
-	@Override
-	protected int getFieldCount()
-	{
-		final int TWO_OMMITTED_FIELD = 2;
-		return super.getFieldCount() - TWO_OMMITTED_FIELD;
-	}
-
 	@Override
 	protected boolean shouldOmitField(String tag)
 	{
