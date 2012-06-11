@@ -60,6 +60,6 @@ public class AbstractUserTextDataWithHtmlFormatting extends UserTextData
 	@Override
 	public String createXmpz2SchemaElementString(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		return creator.writeUserTextSchemaElement(baseObjectSchema, fieldSchema);
+		return creator.createUserTextSchemaElement(baseObjectSchema, fieldSchema);
 	}
 }

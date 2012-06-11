@@ -79,7 +79,7 @@ public class BooleanData extends IntegerData
 	@Override
 	public String createXmpz2SchemaElementString(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		return creator.writeBooleanSchemaElement(baseObjectSchema, fieldSchema);
+		return creator.createBooleanSchemaElement(baseObjectSchema, fieldSchema);
 	}
 	
 	static public final String BOOLEAN_FALSE = "";
