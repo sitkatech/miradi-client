@@ -70,6 +70,11 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 	{
 		return false;
 	}
+	
+	protected boolean doesFieldRequireSpecialHandling(String tag)
+	{
+		return false;
+	}
 
 	protected Vector<String> createCustomSchemaFields()
 	{
@@ -81,11 +86,6 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 		return true;
 	}
 
-	protected boolean doesFieldRequireSpecialHandling(String tag)
-	{
-		return false;
-	}
-	
 	protected Xmpz2XmlSchemaCreator getCreator()
 	{
 		return creator;
