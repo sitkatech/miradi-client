@@ -71,7 +71,6 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.StringUtilities;
 import org.miradi.utils.Translation;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2TagToElementNameMap;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 
@@ -155,7 +154,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			elementNames.add(createElementName(poolName) + " ?");
 		}
 		
-		elementNames.add(ELEMENT_NAME + XmpzXmlConstants.PREFIX + DELETED_ORPHANS_ELEMENT_NAME +  "{ text }?");
+		elementNames.add(ELEMENT_NAME + PREFIX + DELETED_ORPHANS_ELEMENT_NAME +  "{ text }?");
 		getSchemaWriter().writeContentsList(elementNames);
 		
 		getSchemaWriter().endElementDefinition(CONSERVATION_PROJECT);
@@ -646,7 +645,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void defineExtraDataSectionElement()
 	{
-		writer.defineAlias(EXTRA_DATA_SECTION + ".element", ELEMENT_NAME + XmpzXmlConstants.PREFIX + EXTRA_DATA_SECTION);
+		writer.defineAlias(EXTRA_DATA_SECTION + ".element", ELEMENT_NAME + PREFIX + EXTRA_DATA_SECTION);
 		writer.startBlock();
 		writer.printlnIndented("attribute " + EXTRA_DATA_SECTION_OWNER_ATTRIBUTE + " { text } &");
 		writer.printlnIndented(EXTRA_DATA_ITEM + ".element *");
@@ -657,10 +656,10 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	private void defineExtraDataItemElement()
 	{
-		writer.defineAlias(EXTRA_DATA_ITEM + ".element", ELEMENT_NAME + XmpzXmlConstants.PREFIX + EXTRA_DATA_ITEM);
+		writer.defineAlias(EXTRA_DATA_ITEM + ".element", ELEMENT_NAME + PREFIX + EXTRA_DATA_ITEM);
 		writer.startBlock();
 		writer.printlnIndented("attribute " + EXTRA_DATA_ITEM_NAME + " { text } &");
-		writer.printlnIndented(ELEMENT_NAME + XmpzXmlConstants.PREFIX + EXTRA_DATA_ITEM_VALUE + " { text }?");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + EXTRA_DATA_ITEM_VALUE + " { text }?");
 		writer.endBlock();
 	}
 	
