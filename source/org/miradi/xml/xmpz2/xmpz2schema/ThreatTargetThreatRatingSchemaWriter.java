@@ -35,12 +35,12 @@ public class ThreatTargetThreatRatingSchemaWriter extends BaseObjectSchemaWriter
 	public Vector<String> createFieldSchemas() throws Exception
 	{
 		Vector<String> schemaElements = new Vector<String>();
-		schemaElements.add(getCreator().writeSchemaElement(THREAT_RATING, TARGET + ID, BIODIVERSITY_TARGET + ID + ".element*"));
-		schemaElements.add(getCreator().writeSchemaElement(THREAT_RATING, THREAT_ID, THREAT_ID + ".element*"));
+		schemaElements.add(getCreator().createSchemaElement(THREAT_RATING, TARGET + ID, BIODIVERSITY_TARGET + ID + ".element*"));
+		schemaElements.add(getCreator().createSchemaElement(THREAT_RATING, THREAT_ID, THREAT_ID + ".element*"));
 		String vocabularyName = getCreator().getChoiceQuestionToSchemaElementNameMap().findVocabulary(new ThreatRatingQuestion());
-		schemaElements.add(getCreator().writeSchemaElement(THREAT_RATING, THREAT_TARGET_RATING, vocabularyName));
-		schemaElements.add(getCreator().writeSchemaElement(THREAT_RATING, COMMENTS, "formatted_text"));
-		schemaElements.add(getCreator().writeSchemaElement(THREAT, RATING + RATINGS, " SimpleThreatRating.element | StressBasedThreatRating.element* "));
+		schemaElements.add(getCreator().createSchemaElement(THREAT_RATING, THREAT_TARGET_RATING, vocabularyName));
+		schemaElements.add(getCreator().createSchemaElement(THREAT_RATING, COMMENTS, "formatted_text"));
+		schemaElements.add(getCreator().createSchemaElement(THREAT, RATING + RATINGS, " SimpleThreatRating.element | StressBasedThreatRating.element* "));
 				
 		return schemaElements;
 	}

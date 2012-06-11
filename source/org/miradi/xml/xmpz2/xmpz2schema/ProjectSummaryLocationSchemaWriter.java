@@ -36,7 +36,7 @@ public class ProjectSummaryLocationSchemaWriter extends SingletonSchemaWriter
 	{
 		Vector<String> schemaElements = super.createFieldSchemas();
 		
-		schemaElements.add(getCreator().writeSchemaElement(getXmpz2ElementName(), PROJECT_LOCATION, GEOSPATIAL_LOCATION + ".element*"));
+		schemaElements.add(getCreator().createSchemaElement(getXmpz2ElementName(), PROJECT_LOCATION, GEOSPATIAL_LOCATION + ".element*"));
 		
 		return schemaElements;
 	}	

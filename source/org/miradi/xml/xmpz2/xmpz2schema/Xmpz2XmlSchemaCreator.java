@@ -261,12 +261,12 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	public String writeCalculatedCostSchemaElement(BaseObjectSchema baseObjectSchema)
 	{
-		return writeSchemaElement(baseObjectSchema.getXmpz2ElementName(), TIME_PERIOD_COSTS, TIME_PERIOD_COSTS + DOT_ELEMENT);
+		return createSchemaElement(baseObjectSchema.getXmpz2ElementName(), TIME_PERIOD_COSTS, TIME_PERIOD_COSTS + DOT_ELEMENT);
 	}
 	
 	public String writeThresholdsSchemaElement(BaseObjectSchema baseObjectSchema)
 	{
-		return writeSchemaElement(baseObjectSchema.getXmpz2ElementName(), THRESHOLDS, "IndicatorThreshold.element*");
+		return createSchemaElement(baseObjectSchema.getXmpz2ElementName(), THRESHOLDS, "IndicatorThreshold.element*");
 	}
 	
 	public String writeStringRefMapSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
@@ -904,10 +904,10 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		String poolName = baseObjectSchema.getXmpz2ElementName();
 		String elementName = getTagToElementNameMap().findElementName(poolName, fieldSchema.getTag());
-		return writeSchemaElement(poolName, elementName, elementType);
+		return createSchemaElement(poolName, elementName, elementType);
 	}
 
-	public String writeSchemaElement(String poolName, String elementName, String elementType)
+	public String createSchemaElement(String poolName, String elementName, String elementType)
 	{
 		return ELEMENT_NAME + PREFIX + poolName + elementName + " { " + elementType + " }?";
 	}
