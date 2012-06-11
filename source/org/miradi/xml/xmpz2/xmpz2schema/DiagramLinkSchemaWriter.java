@@ -31,11 +31,11 @@ public class DiagramLinkSchemaWriter extends BaseObjectSchemaWriter
 	}
 
 	@Override
-	protected boolean shouldOmitField(String tag)
+	protected boolean hasNoSchema(String tag)
 	{
 		if (tag.equals(DiagramLink.TAG_WRAPPED_ID))
 			return true;
 		
-		return super.shouldOmitField(tag);
+		return super.hasNoSchema(tag);
 	}
 }
