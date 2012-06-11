@@ -206,14 +206,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void writeElementContent(BaseObjectSchemaWriter baseObjectSchemaWriter) throws Exception
 	{
 		Vector<String> schemaFieldElements = baseObjectSchemaWriter.createFieldSchemas();
-		for(int index = 0; index < schemaFieldElements.size(); ++index)
-		{
-			getSchemaWriter().printIndented(schemaFieldElements.get(index));
-			if (index < schemaFieldElements.size() - 1)
-				getSchemaWriter().print(" &");
-			
-			getSchemaWriter().println();
-		}
+		defineElements(schemaFieldElements.toArray(new String[0]));
+		getSchemaWriter().println();
 	}
 	
 	public String createRelevantSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
@@ -666,7 +660,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writer.endBlock();
 	}
 	
-	private void writeDateUnitSchemaElements()
+	private void writeDateUnitSchemaElements() 
 	{
 		defineDateUnitEfforts();
 		defineFullProjectTimeSpanElement("WorkUnitsFullProjectTimespan");
@@ -730,21 +724,25 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		String[] subElements = new String[]{"attribute Date {vocabulary_date}"};
 		defineElement(dayElementName, subElements);
 	}
-
+	
 	private void defineElement(String elementName, String[] subElements)
 	{
 		getSchemaWriter().defineAlias(elementName + DOT_ELEMENT, "element miradi:" + elementName);
 		getSchemaWriter().startBlock();
-		for (int index = 0; index < subElements.length; ++index)
+		defineElements(subElements);
+		getSchemaWriter().println();
+		getSchemaWriter().endBlock();
+	}
+
+	private void defineElements(String[] elements)
+	{
+		for (int index = 0; index < elements.length; ++index)
 		{
 			if (index > 0)
 				getSchemaWriter().println(" &");
 			
-			getSchemaWriter().printIndented(subElements[index]);
+			getSchemaWriter().printIndented(elements[index]);
 		}
-		
-		getSchemaWriter().println();
-		getSchemaWriter().endBlock();
 	}
 	
 	private void writeThresholdsElement()
