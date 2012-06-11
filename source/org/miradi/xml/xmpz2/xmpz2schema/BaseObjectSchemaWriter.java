@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.xmpz2schema;
 
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Vector;
 
 import org.miradi.objectdata.ObjectData;
@@ -38,7 +40,7 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 	
 	public Vector<String> createFieldSchemas() throws Exception
 	{
-		Vector<String> fieldSchemasAsString = new Vector<String>();
+		HashSet<String> fieldSchemasAsString = new HashSet<String>();
 		if (hasIdAttributeElement())
 			fieldSchemasAsString.add("attribute " + ID + " "+ "{xsd:integer}");
 		
@@ -57,7 +59,10 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 				fieldSchemasAsString.add(objectData.createXmpz2SchemaElementString(creator, baseObjectSchema, fieldSchema));
 		}
 		
-		return fieldSchemasAsString;
+		final Vector<String> sortedFieldSchemas = new Vector<String>(fieldSchemasAsString);
+		Collections.sort(sortedFieldSchemas);
+		
+		return sortedFieldSchemas;
 	}
 	
 	protected boolean shouldOmitField(String tag)

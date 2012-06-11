@@ -37,8 +37,7 @@ public class IndicatorSchemaWriter extends BaseObjectSchemaWriterWithCalcualtedC
 	protected Vector<String> writeCustomField(AbstractFieldSchema fieldSchema)
 	{
 		Vector<String> schemaElements = new Vector<String>();
-		if (shouldWriteFieldOnlyOnce(fieldSchema))
-			schemaElements.add(getCreator().createThresholdsSchemaElement(getBaseObjectSchema()));
+		schemaElements.add(getCreator().createThresholdsSchemaElement(getBaseObjectSchema()));
 		
 		return schemaElements;
 	}
@@ -46,18 +45,12 @@ public class IndicatorSchemaWriter extends BaseObjectSchemaWriterWithCalcualtedC
 	@Override
 	protected boolean shouldOmitField(String tag)
 	{
-		final boolean IS_ALREADY_WRITTEN_DUE_TO_SIBLING_FIELD = tag.equals(Indicator.TAG_THRESHOLD_DETAILS_MAP);
-		if (IS_ALREADY_WRITTEN_DUE_TO_SIBLING_FIELD)
+		if (tag.equals(Indicator.TAG_THRESHOLD_DETAILS_MAP))
 			return true;
 		
 		return super.shouldOmitField(tag);
 	}
 
-	private boolean shouldWriteFieldOnlyOnce(AbstractFieldSchema fieldSchema)
-	{
-		return fieldSchema.getTag().equals(Indicator.TAG_THRESHOLDS_MAP);
-	}
-	
 	@Override
 	protected boolean doesFieldRequireSpecialHandling(String tag)
 	{

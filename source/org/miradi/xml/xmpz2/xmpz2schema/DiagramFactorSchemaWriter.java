@@ -39,6 +39,15 @@ public class DiagramFactorSchemaWriter extends BaseObjectSchemaWriter
 		if (tag.equals(DiagramFactor.TAG_FONT_STYLE))
 			return true;
 		
+		if (tag.equals(DiagramFactor.TAG_BACKGROUND_COLOR))
+			return true;
+		
+		if (tag.equals(DiagramFactor.TAG_FONT_SIZE))
+			return true;
+		
+		if (tag.equals(DiagramFactor.TAG_FOREGROUND_COLOR))
+			return true;
+				
 		return super.doesFieldRequireSpecialHandling(tag);
 	}
 	
@@ -51,19 +60,4 @@ public class DiagramFactorSchemaWriter extends BaseObjectSchemaWriter
 		
 		return schemaElements;
 	}
-
-	@Override
-	protected boolean shouldOmitField(String tag)
-	{
-		if (tag.equals(DiagramFactor.TAG_BACKGROUND_COLOR))
-			return true;
-		
-		if (tag.equals(DiagramFactor.TAG_FONT_SIZE))
-			return true;
-		
-		if (tag.equals(DiagramFactor.TAG_FOREGROUND_COLOR))
-			return true;
-		
-		return super.shouldOmitField(tag);
-	}	
 }
