@@ -33,7 +33,7 @@ public class IndicatorSchemaWriter extends BaseObjectSchemaWriterWithCalcualtedC
 	}
 	
 	@Override
-	protected Vector<String> writeCustomField()
+	protected Vector<String> createCustomSchemaFields()
 	{
 		Vector<String> schemaElements = new Vector<String>();
 		schemaElements.add(getCreator().createThresholdsSchemaElement(getBaseObjectSchema()));

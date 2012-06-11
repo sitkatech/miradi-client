@@ -51,9 +51,9 @@ public class DiagramFactorSchemaWriter extends BaseObjectSchemaWriter
 	}
 	
 	@Override
-	protected Vector<String> writeCustomField()
+	protected Vector<String> createCustomSchemaFields()
 	{
-		Vector<String> schemaElements = super.writeCustomField();
+		Vector<String> schemaElements = super.createCustomSchemaFields();
 		
 		schemaElements.add(getCreator().createSchemaElement(getXmpz2ElementName(), STYLING, STYLING + ".element"));
 		

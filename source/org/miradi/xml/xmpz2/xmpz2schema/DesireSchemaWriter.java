@@ -34,7 +34,7 @@ public class DesireSchemaWriter extends BaseObjectSchemaWriter
 	}
 	
 	@Override
-	protected Vector<String> writeCustomField()
+	protected Vector<String> createCustomSchemaFields()
 	{
 		return writeSingleTagAsTwoSchemaElements();
 	}
