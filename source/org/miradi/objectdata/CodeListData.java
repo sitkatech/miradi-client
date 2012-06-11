@@ -64,7 +64,7 @@ public class CodeListData extends AbstractStringListData
 	@Override
 	public String createXmpz2SchemaElementString(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		return creator.writeCodelistSchemaElement(baseObjectSchema, fieldSchema, question);
+		return creator.createCodelistSchemaElement(baseObjectSchema, fieldSchema, question);
 	}
 	
 	private ChoiceQuestion question;

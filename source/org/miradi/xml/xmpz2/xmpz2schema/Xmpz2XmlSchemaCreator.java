@@ -472,7 +472,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return StringUtilities.removeLastChar(elementName);
 	}
 	
-	public String writeCodelistSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ChoiceQuestion question)
+	public String createCodelistSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ChoiceQuestion question)
 	{
 		String elementName = getTagToElementNameMap().findElementName(baseObjectSchema.getXmpz2ElementName(), fieldSchema.getTag());
 		String codelistElementName = baseObjectSchema.getXmpz2ElementName() + elementName;
