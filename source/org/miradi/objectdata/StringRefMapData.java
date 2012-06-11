@@ -86,7 +86,7 @@ public class StringRefMapData extends ObjectData
 	@Override
 	public String createXmpz2SchemaElementString(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		return creator.writeStringRefMapSchemaElement(baseObjectSchema, fieldSchema);
+		return creator.createStringRefMapSchemaElement(baseObjectSchema, fieldSchema);
 	}
 
 	private StringRefMap data;
