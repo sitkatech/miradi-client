@@ -786,11 +786,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return ELEMENT_NAME + PREFIX + elementName + " { " + elementType + " }";
 	}
 
-	public String createSchemaElement4(final String elementName,	final String elementType)
-	{
-		return ELEMENT_NAME + PREFIX + elementName + " { " + elementType + " } &";
-	}
-
 	public String createSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, final String elementType)
 	{
 		return createElementSchema(baseObjectSchema, fieldSchema, elementType + ".element*");
@@ -825,7 +820,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		getSchemaWriter().defineAlias(EXTERNAL_PROJECT_ID_ELEMENT_NAME + DOT_ELEMENT, ELEMENT_NAME + PREFIX + EXTERNAL_PROJECT_ID_ELEMENT_NAME);
 		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented(createSchemaElement4(EXTERNAL_APP_ELEMENT_NAME, "text"));
+		getSchemaWriter().printlnIndented(writer.createSchemaElement4(EXTERNAL_APP_ELEMENT_NAME, "text"));
 		getSchemaWriter().printlnIndented(createSchemaElement5(PROJECT_ID, "text"));
 		getSchemaWriter().endBlock();
 	}
