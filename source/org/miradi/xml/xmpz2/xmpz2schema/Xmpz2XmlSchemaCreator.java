@@ -317,7 +317,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	public String createDateUnitEffortListSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		return createSchemaElement(baseObjectSchema, fieldSchema, "DateUnit" + getDateUniteTypeName(baseObjectSchema.getType()));
+		return createSchemaElement(baseObjectSchema, fieldSchema, "DateUnit" + getDateUnitTypeName(baseObjectSchema.getType()));
 	}
 	
 	public String createChoiceSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, ChoiceQuestion choiceQuestion)
@@ -982,7 +982,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return true;
 	}
 	
-	private String getDateUniteTypeName(int objectType)
+	private String getDateUnitTypeName(int objectType)
 	{
 		if (ExpenseAssignment.is(objectType))
 			return EXPENSE;
