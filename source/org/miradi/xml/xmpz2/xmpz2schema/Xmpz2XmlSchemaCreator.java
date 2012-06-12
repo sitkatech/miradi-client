@@ -517,20 +517,19 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void defineDashboardStatusesVocabulary()
 	{
-		final String[] allCodesFromDynamicQuestion = new String[]{
-			OpenStandardsProgressStatusQuestion.NOT_SPECIFIED_CODE,
-			OpenStandardsProgressStatusQuestion.NOT_STARTED_CODE,
-			OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE,
-			OpenStandardsProgressStatusQuestion.COMPLETE_CODE,
-			OpenStandardsProgressStatusQuestion.NOT_APPLICABLE_CODE,
-		};
+		CodeList allCodesFromDynamicQuestion = new CodeList();
+		allCodesFromDynamicQuestion.add(OpenStandardsProgressStatusQuestion.NOT_SPECIFIED_CODE);
+		allCodesFromDynamicQuestion.add(OpenStandardsProgressStatusQuestion.NOT_STARTED_CODE);
+		allCodesFromDynamicQuestion.add(OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE);
+		allCodesFromDynamicQuestion.add(OpenStandardsProgressStatusQuestion.COMPLETE_CODE);
+		allCodesFromDynamicQuestion.add(OpenStandardsProgressStatusQuestion.NOT_APPLICABLE_CODE);
 		
 		getSchemaWriter().print(VOCABULARY_DASHBOARD_ROW_PROGRESS + " = ");
-		for(int index = 0; index < allCodesFromDynamicQuestion.length; ++index)
+		for(int index = 0; index < allCodesFromDynamicQuestion.size(); ++index)
 		{
-			String code = allCodesFromDynamicQuestion[index];
+			String code = allCodesFromDynamicQuestion.get(index);
 			getSchemaWriter().write("'" + code + "'");
-			if (index < allCodesFromDynamicQuestion.length - 1)
+			if (index < allCodesFromDynamicQuestion.size() - 1)
 				getSchemaWriter().print("|");
 		}
 		
