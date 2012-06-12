@@ -206,7 +206,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void writeElementContent(BaseObjectSchemaWriter baseObjectSchemaWriter) throws Exception
 	{
 		Vector<String> schemaFieldElements = baseObjectSchemaWriter.createFieldSchemas();
-		getSchemaWriter().defineElements(schemaFieldElements.toArray(new String[0]));
+		getSchemaWriter().defineElements(schemaFieldElements);
 		getSchemaWriter().println();
 	}
 	
@@ -691,35 +691,43 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void defineFullProjectTimeSpanElement(String fullProjectTimeSpanElementName)
 	{
-		String[] subElements = new String[]{"attribute " + FULL_PROJECT_TIMESPAN + " { vocabulary_full_project_timespan }"};
+		Vector<String> subElements = new Vector<String>();
+		subElements.add("attribute " + FULL_PROJECT_TIMESPAN + " { vocabulary_full_project_timespan }");
 		defineElement(fullProjectTimeSpanElementName, subElements);
 	}
 	
 	private void defineYearElement(String yearElementName)
 	{
-		String[] subElements = new String[]{"attribute StartYear {vocabulary_year}", "attribute StartMonth {vocabulary_month}"};
+		Vector<String> subElements = new Vector<String>();
+		subElements.add("attribute StartYear {vocabulary_year}");
+		subElements.add("attribute StartMonth {vocabulary_month}");
 		defineElement(yearElementName, subElements);
 	}
 		
 	private void defineQuarterElement(String quarterElementName)
 	{
-		String[] subElements = new String[]{"attribute Year {vocabulary_year}", "attribute StartMonth {vocabulary_month}"};
+		Vector<String> subElements = new Vector<String>();
+		subElements.add("attribute Year {vocabulary_year}");
+		subElements.add("attribute StartMonth {vocabulary_month}");
 		defineElement(quarterElementName, subElements);
 	}
 	
 	private void defineMonthElement(String monthElementName)
 	{
-		String[] subElements = new String[]{"attribute Year {vocabulary_year}", "attribute Month {vocabulary_month}"};
+		Vector<String> subElements = new Vector<String>();
+		subElements.add("attribute Year {vocabulary_year}");
+		subElements.add("attribute Month {vocabulary_month}");
 		defineElement(monthElementName, subElements);
 	}
 	
 	private void defineDayElement(String dayElementName)
 	{
-		String[] subElements = new String[]{"attribute Date {vocabulary_date}"};
+		Vector<String> subElements = new Vector<String>();
+		subElements.add("attribute Date {vocabulary_date}");
 		defineElement(dayElementName, subElements);
 	}
 	
-	private void defineElement(String elementName, String[] subElements)
+	private void defineElement(String elementName, Vector<String> subElements)
 	{
 		getSchemaWriter().defineAlias(elementName + DOT_ELEMENT, "element miradi:" + elementName);
 		getSchemaWriter().startBlock();

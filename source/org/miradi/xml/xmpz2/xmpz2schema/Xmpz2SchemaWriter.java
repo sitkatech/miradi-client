@@ -62,14 +62,14 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 		println();
 	}
 
-	public void defineElements(String[] elements)
+	public void defineElements(Vector<String> elements)
 	{
-		for (int index = 0; index < elements.length; ++index)
+		for (int index = 0; index < elements.size(); ++index)
 		{
 			if (index > 0)
 				println(" &");
 			
-			printIndented(elements[index]);
+			printIndented(elements.get(index));
 		}
 	}
 }
