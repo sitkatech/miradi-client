@@ -255,12 +255,12 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	public String writeCalculatedCostSchemaElement(BaseObjectSchema baseObjectSchema)
 	{
-		return createSchemaElement(baseObjectSchema.getXmpz2ElementName(), TIME_PERIOD_COSTS, TIME_PERIOD_COSTS + DOT_ELEMENT);
+		return getSchemaWriter().createSchemaElement(baseObjectSchema.getXmpz2ElementName(), TIME_PERIOD_COSTS, TIME_PERIOD_COSTS + DOT_ELEMENT);
 	}
 	
 	public String createThresholdsSchemaElement(BaseObjectSchema baseObjectSchema)
 	{
-		return createSchemaElement(baseObjectSchema.getXmpz2ElementName(), THRESHOLDS, createElementName("IndicatorThreshold") +  "*");
+		return getSchemaWriter().createSchemaElement(baseObjectSchema.getXmpz2ElementName(), THRESHOLDS, createElementName("IndicatorThreshold") +  "*");
 	}
 	
 	public String createStringRefMapSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
@@ -838,17 +838,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		String poolName = baseObjectSchema.getXmpz2ElementName();
 		String elementName = getTagToElementNameMap().findElementName(poolName, fieldSchema.getTag());
-		return createSchemaElement(poolName, elementName, elementType);
-	}
-
-	public String createSchemaElement(String poolName, String elementName, String elementType)
-	{
-		return ELEMENT_NAME + PREFIX + poolName + elementName + " { " + elementType + " }?";
-	}
-	
-	private void writeElement(final String elementName, String elementType)
-	{
-		getSchemaWriter().printIndented(ELEMENT_NAME + PREFIX + elementName + " { xsd:" + elementType + " }");
+		return getSchemaWriter().createSchemaElement(poolName, elementName, elementType);
 	}
 	
 	private void defineElementWithSameType(String parentName, Vector<String> names, String elementType)
@@ -860,7 +850,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 				getSchemaWriter().print(" &\n");
 			
 			final String elementName = names.get(index);
-			writeElement(elementName, elementType);	
+			getSchemaWriter().writeElement(elementName, elementType);	
 		}
 		
 		getSchemaWriter().println();
