@@ -550,10 +550,16 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void writeOredSchemaElements(final String elementName, final String[] elementNames)
 	{
 		getSchemaWriter().startElementDefinition(elementName);
+		Vector<String> elements = new Vector<String>();
 		for (int index = 0; index < elementNames.length; ++index)
 		{
-			getSchemaWriter().printIndented(elementNames[index] + ID + DOT_ELEMENT);
-			if (index < elementNames.length - 1)
+			elements.add(elementNames[index] + ID + DOT_ELEMENT);
+		}
+		
+		for (int index = 0; index < elements.size(); ++index)
+		{
+			getSchemaWriter().printIndented(elements.get(index));
+			if (index < elements.size() - 1)
 				getSchemaWriter().println(" |");
 		}
 		getSchemaWriter().println();
