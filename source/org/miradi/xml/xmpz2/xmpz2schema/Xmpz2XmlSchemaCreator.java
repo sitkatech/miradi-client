@@ -587,14 +587,14 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().writeOredElements(elements);
 		getSchemaWriter().println(")*");
 		
-		getSchemaWriter().printlnIndented("element.br = element br { empty }");
-		getSchemaWriter().printlnIndented("element.b = element b { formatted_text }");
-		getSchemaWriter().printlnIndented("element.i = element i { formatted_text }");
-		getSchemaWriter().printlnIndented("element.u = element u { formatted_text }");
-		getSchemaWriter().printlnIndented("element.strike = element strike { formatted_text }");
-		getSchemaWriter().printlnIndented("element.ul = element ul { element.li* }");
-		getSchemaWriter().printlnIndented("element.ol = element ol { element.li* }");
-		getSchemaWriter().printlnIndented("element.li = element li { formatted_text }");
+		writeSchemaElement("br", "empty");
+		writeSchemaElement("b", "formatted_text");
+		writeSchemaElement("i", "formatted_text");
+		writeSchemaElement("u", "formatted_text");
+		writeSchemaElement("strike", "formatted_text");
+		writeSchemaElement("ul", "element.li*");
+		writeSchemaElement("ol", "element.li*");
+		writeSchemaElement("li", "formatted_text");
 		
 		getSchemaWriter().printlnIndented("element.a = element a ");
 		getSchemaWriter().printlnIndented("{");
@@ -604,6 +604,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().printlnIndented("	attribute target {text}? &");			  
 		getSchemaWriter().printlnIndented(" formatted_text  ");
 		getSchemaWriter().printlnIndented("}");
+	}
+	
+	private void writeSchemaElement(String elementName, String elementType)
+	{
+		getSchemaWriter().printlnIndented("element." + elementName + " = element " + elementName + " { " + elementType + " }");
 	}
 	
 	private void writeGeospacialLocationElement()
