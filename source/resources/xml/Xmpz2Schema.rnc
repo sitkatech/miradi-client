@@ -907,7 +907,7 @@ DiagramPoint.element = element miradi:DiagramPoint
 
 DiagramSize.element = element miradi:DiagramSize
 {
-  element miradi:width { xsd:integer } & 
+  element miradi:width { xsd:integer } &
   element miradi:height { xsd:integer }
 }
 
