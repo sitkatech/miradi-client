@@ -484,34 +484,33 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	private void writeLinkableFactorIds()
 	{
-		final String[] factorNames = new String[]{
-				  BIODIVERSITY_TARGET, 
-				  HUMAN_WELFARE_TARGET, 
-				  CAUSE, 
-				  STRATEGY, 
-				  THREAT_REDUCTION_RESULTS, 
-				  INTERMEDIATE_RESULTS,
-				  GROUP_BOX,
-				};
+		Vector<String> factorNames = new Vector<String>();
+		factorNames.add(BIODIVERSITY_TARGET);
+		factorNames.add(HUMAN_WELFARE_TARGET); 
+		factorNames.add(CAUSE);
+		factorNames.add(STRATEGY);
+		factorNames.add(THREAT_REDUCTION_RESULTS); 
+		factorNames.add(INTERMEDIATE_RESULTS);
+		factorNames.add(GROUP_BOX);
 		
 		writeOredSchemaElements(LINKABLE_FACTOR_ID, factorNames);
 	}
 	
 	private void writeWrappedByDiagramFactorSchemaElement()
 	{
-		final String[] factorNames = new String[]{BIODIVERSITY_TARGET, 
-												  HUMAN_WELFARE_TARGET, 
-												  CAUSE, 
-												  STRATEGY, 
-												  THREAT_REDUCTION_RESULTS, 
-												  INTERMEDIATE_RESULTS,
-												  GROUP_BOX,
-												  TEXT_BOX,
-												  SCOPE_BOX,
-												  ACTIVITY,
-												  STRESS,
-		};
-		
+		Vector<String> factorNames = new Vector<String>();
+		factorNames.add(BIODIVERSITY_TARGET); 
+		factorNames.add(HUMAN_WELFARE_TARGET); 
+		factorNames.add(CAUSE); 
+		factorNames.add(STRATEGY); 
+		factorNames.add(THREAT_REDUCTION_RESULTS); 
+		factorNames.add(INTERMEDIATE_RESULTS);
+		factorNames.add(GROUP_BOX);
+		factorNames.add(TEXT_BOX);
+		factorNames.add(SCOPE_BOX);
+		factorNames.add(ACTIVITY);
+		factorNames.add(STRESS);
+
 		writeOredSchemaElements(WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME, factorNames);
 	}
 	
@@ -547,13 +546,13 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeSeparatedElements(elements, "|");
 	}
 
-	private void writeOredSchemaElements(final String elementName, final String[] elementNames)
+	private void writeOredSchemaElements(final String parentElementName, final Vector<String> elementNames)
 	{
-		getSchemaWriter().startElementDefinition(elementName);
+		getSchemaWriter().startElementDefinition(parentElementName);
 		Vector<String> elements = new Vector<String>();
-		for (int index = 0; index < elementNames.length; ++index)
+		for (String elementName : elementNames)
 		{
-			elements.add(elementNames[index] + ID + DOT_ELEMENT);
+			elements.add(elementName + ID + DOT_ELEMENT);
 		}
 		
 		writeSeparatedElements(elements, " |\n");
