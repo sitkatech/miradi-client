@@ -207,7 +207,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		Vector<String> schemaFieldElements = baseObjectSchemaWriter.createFieldSchemas();
 		getSchemaWriter().defineElements(schemaFieldElements);
-		getSchemaWriter().println();
 	}
 	
 	private String getRelevantTypeName(AbstractFieldSchema fieldSchema)
@@ -735,7 +734,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().defineAlias(elementName + DOT_ELEMENT, "element miradi:" + elementName);
 		getSchemaWriter().startBlock();
 		getSchemaWriter().defineElements(subElements);
-		getSchemaWriter().println();
 		getSchemaWriter().endBlock();
 	}
 	

@@ -83,12 +83,12 @@ public class SchemaWriter extends PrintWriter
 	public void writeContentsList(Vector<String> contents)
 	{
 		defineElements(contents);
-		println();
 	}
 
 	public void defineElements(Vector<String> elements)
 	{
 		writeSeparatedElements(elements, " &\n");
+		println();
 	}
 	
 	public void writeSeparatedElements(final Vector<String> elements, final String separator)
