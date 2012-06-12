@@ -619,27 +619,12 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		defineElementWithSameType(GEOSPATIAL_LOCATION, elementNames, "decimal");
 	}
 	
-	private void defineElementWithSameType(String parentName, Vector<String> names, String elementType)
-	{
-		getSchemaWriter().startElementDefinition(parentName);
-		for (int index = 0; index < names.size(); ++index)
-		{
-			if (index > 0)
-				getSchemaWriter().print(" &\n");
-			
-			getSchemaWriter().printIndented(ELEMENT_NAME + PREFIX + names.get(index) + " { xsd:" + elementType + " }");	
-		}
-		
-		getSchemaWriter().println();
-		getSchemaWriter().endBlock();
-	}
-	
 	private void writeDiagramPointElement()
 	{
-		getSchemaWriter().startElementDefinition(DIAGRAM_POINT_ELEMENT_NAME);
-		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + "x { xsd:integer } & ");
-		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + "y { xsd:integer }"); 
-		getSchemaWriter().endBlock();
+		Vector<String> elementNames = new Vector<String>();
+		elementNames.add("x");
+		elementNames.add("y");
+		defineElementWithSameType(DIAGRAM_POINT_ELEMENT_NAME, elementNames, "integer");
 	}
 	
 	private void writeDiagramSizeElement()
@@ -876,6 +861,21 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	public String createSchemaElement(String poolName, String elementName, String elementType)
 	{
 		return ELEMENT_NAME + PREFIX + poolName + elementName + " { " + elementType + " }?";
+	}
+	
+	private void defineElementWithSameType(String parentName, Vector<String> names, String elementType)
+	{
+		getSchemaWriter().startElementDefinition(parentName);
+		for (int index = 0; index < names.size(); ++index)
+		{
+			if (index > 0)
+				getSchemaWriter().print(" &\n");
+			
+			getSchemaWriter().printIndented(ELEMENT_NAME + PREFIX + names.get(index) + " { xsd:" + elementType + " }");	
+		}
+		
+		getSchemaWriter().println();
+		getSchemaWriter().endBlock();
 	}
 
 	private Vector<BaseObjectSchemaWriter> getTopLevelBaseObjectSchemas()
