@@ -544,8 +544,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			elements.add("'" + code + "'");
 		}
 		
-		final String SEPRATOR = "|";
-		writeSeparatedElements(elements, SEPRATOR);
+		writeSeparatedElements(elements, "|");
 	}
 
 	private void writeOredSchemaElements(final String elementName, final String[] elementNames)
@@ -557,8 +556,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			elements.add(elementNames[index] + ID + DOT_ELEMENT);
 		}
 		
-		final String SEPRATOR = " |\n";
-		writeSeparatedElements(elements, SEPRATOR);
+		writeSeparatedElements(elements, " |\n");
 		getSchemaWriter().endBlock();
 	}
 
@@ -573,8 +571,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		{
 			elements.add("element." + tagNames[index]);
 		}
-		final String SEPRATOR = " | \n";
-		writeSeparatedElements(elements, SEPRATOR);
+		writeSeparatedElements(elements, " | \n");
 		getSchemaWriter().println(")*");
 		
 		getSchemaWriter().printlnIndented("element.br = element br { empty }");
