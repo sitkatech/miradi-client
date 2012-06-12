@@ -656,9 +656,14 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		writer.defineAlias(EXTRA_DATA_ITEM + DOT_ELEMENT, ELEMENT_NAME + PREFIX + EXTRA_DATA_ITEM);
 		writer.startBlock();
-		writer.printlnIndented("attribute " + EXTRA_DATA_ITEM_NAME + " { text } &");
+		writer.printlnIndented(createAttributeSchemaElement(EXTRA_DATA_ITEM_NAME));
 		writer.printlnIndented(getSchemaWriter().createSchemaElement(EXTRA_DATA_ITEM_VALUE));
 		writer.endBlock();
+	}
+
+	public String createAttributeSchemaElement(final String attributeName)
+	{
+		return "attribute " + attributeName + " { text } &";
 	}
 	
 	private void writeDateUnitSchemaElements() 
