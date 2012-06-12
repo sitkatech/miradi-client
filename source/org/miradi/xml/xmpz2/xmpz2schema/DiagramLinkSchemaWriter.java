@@ -33,6 +33,7 @@ public class DiagramLinkSchemaWriter extends BaseObjectSchemaWriter
 	@Override
 	protected boolean hasNoSchema(String tag)
 	{
+		//NOTE: FactorLink does not exist in the XMPZ world, and will be removed from Miradi eventually
 		if (tag.equals(DiagramLink.TAG_WRAPPED_ID))
 			return true;
 		
