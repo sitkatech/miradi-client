@@ -482,7 +482,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void writeIdElement(String baseName)
 	{
-		getSchemaWriter().println(baseName + "Id.element = element " + PREFIX + baseName + "Id { xsd:integer }");
+		final String idName = baseName + ID;
+		getSchemaWriter().println(idName + ".element = element " + PREFIX + idName + " { xsd:integer }");
 	}
 	
 	private void writeBaseObjectSchemaHeader(BaseObjectSchemaWriter baseObjectSchemaWriter)
@@ -587,14 +588,14 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().writeOredElements(elements);
 		getSchemaWriter().println(")*");
 		
-		writeSchemaElement("br", "empty");
-		writeSchemaElement("b", "formatted_text");
-		writeSchemaElement("i", "formatted_text");
-		writeSchemaElement("u", "formatted_text");
-		writeSchemaElement("strike", "formatted_text");
-		writeSchemaElement("ul", "element.li*");
-		writeSchemaElement("ol", "element.li*");
-		writeSchemaElement("li", "formatted_text");
+		getSchemaWriter().writeSchemaElement("br", "empty");
+		getSchemaWriter().writeSchemaElement("b", "formatted_text");
+		getSchemaWriter().writeSchemaElement("i", "formatted_text");
+		getSchemaWriter().writeSchemaElement("u", "formatted_text");
+		getSchemaWriter().writeSchemaElement("strike", "formatted_text");
+		getSchemaWriter().writeSchemaElement("ul", "element.li*");
+		getSchemaWriter().writeSchemaElement("ol", "element.li*");
+		getSchemaWriter().writeSchemaElement("li", "formatted_text");
 		
 		getSchemaWriter().printlnIndented("element.a = element a ");
 		getSchemaWriter().printlnIndented("{");
@@ -604,11 +605,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().printlnIndented("	attribute target {text}? &");			  
 		getSchemaWriter().printlnIndented(" formatted_text  ");
 		getSchemaWriter().printlnIndented("}");
-	}
-	
-	private void writeSchemaElement(String elementName, String elementType)
-	{
-		getSchemaWriter().printlnIndented("element." + elementName + " = element " + elementName + " { " + elementType + " }");
 	}
 	
 	private void writeGeospacialLocationElement()
@@ -710,25 +706,19 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void defineYearElement(String yearElementName)
 	{
-		Vector<String> subElements = new Vector<String>();
-		subElements.add("attribute StartYear {vocabulary_year}");
-		subElements.add("attribute StartMonth {vocabulary_month}");
+		Vector<String> subElements = createVector("attribute StartYear {vocabulary_year}", "attribute StartMonth {vocabulary_month}");
 		defineElement(yearElementName, subElements);
 	}
 		
 	private void defineQuarterElement(String quarterElementName)
 	{
-		Vector<String> subElements = new Vector<String>();
-		subElements.add("attribute Year {vocabulary_year}");
-		subElements.add("attribute StartMonth {vocabulary_month}");
+		Vector<String> subElements = createVector("attribute Year {vocabulary_year}", "attribute StartMonth {vocabulary_month}");
 		defineElement(quarterElementName, subElements);
 	}
 	
 	private void defineMonthElement(String monthElementName)
 	{
-		Vector<String> subElements = new Vector<String>();
-		subElements.add("attribute Year {vocabulary_year}");
-		subElements.add("attribute Month {vocabulary_month}");
+		Vector<String> subElements = createVector("attribute Year {vocabulary_year}", "attribute Month {vocabulary_month}");
 		defineElement(monthElementName, subElements);
 	}
 	
