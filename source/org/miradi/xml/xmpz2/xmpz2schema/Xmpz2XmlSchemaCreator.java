@@ -536,11 +536,18 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void defineVocabulary(final String elementName, final CodeList allCodesFromDynamicQuestion)
 	{
 		getSchemaWriter().print(elementName + " = ");
+		
+		Vector<String> elements = new Vector<String>();
 		for(int index = 0; index < allCodesFromDynamicQuestion.size(); ++index)
 		{
 			String code = allCodesFromDynamicQuestion.get(index);
-			getSchemaWriter().write("'" + code + "'");
-			if (index < allCodesFromDynamicQuestion.size() - 1)
+			elements.add("'" + code + "'");
+		}
+		
+		for(int index = 0; index < elements.size(); ++index)
+		{
+			getSchemaWriter().write(elements.get(index));
+			if (index < elements.size() - 1)
 				getSchemaWriter().print("|");
 		}
 		
@@ -571,10 +578,17 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		String[] tagNames = new String[] {"br", "b", "i", "u", "strike", "a", "ul", "ol",};
 		getSchemaWriter().write("formatted_text = ( text |");
 		getSchemaWriter().println();
+		
+		Vector<String> elements = new Vector<String>();
 		for (int index = 0; index < tagNames.length; ++index)
 		{
-			getSchemaWriter().printIndented("element." + tagNames[index]);
-			if (index < tagNames.length - 1)
+			elements.add("element." + tagNames[index]);
+		}
+		
+		for (int index = 0; index < elements.size(); ++index)
+		{
+			getSchemaWriter().printIndented(elements.get(index));
+			if (index < elements.size() - 1)
 				getSchemaWriter().println(" | ");
 		}
 		getSchemaWriter().println();
