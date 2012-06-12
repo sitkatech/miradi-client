@@ -846,6 +846,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return ELEMENT_NAME + PREFIX + poolName + elementName + " { " + elementType + " }?";
 	}
 	
+	private void writeElement(final String elementName, String elementType)
+	{
+		getSchemaWriter().printIndented(ELEMENT_NAME + PREFIX + elementName + " { xsd:" + elementType + " }");
+	}
+	
 	private void defineElementWithSameType(String parentName, Vector<String> names, String elementType)
 	{
 		getSchemaWriter().startElementDefinition(parentName);
@@ -854,7 +859,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			if (index > 0)
 				getSchemaWriter().print(" &\n");
 			
-			getSchemaWriter().printIndented(ELEMENT_NAME + PREFIX + names.get(index) + " { xsd:" + elementType + " }");	
+			final String elementName = names.get(index);
+			writeElement(elementName, elementType);	
 		}
 		
 		getSchemaWriter().println();
