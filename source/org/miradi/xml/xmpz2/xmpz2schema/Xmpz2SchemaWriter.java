@@ -58,7 +58,7 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 			if (index > 0)
 				print(separator);
 			
-			write(elements.get(index));
+			printIndented(elements.get(index));
 		}
 		println();
 	}
