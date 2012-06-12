@@ -867,28 +867,28 @@ MethodId.element = element miradi:MethodId { xsd:integer }
 SubTaskId.element = element miradi:SubTaskId { xsd:integer }
 WrappedByDiagramFactorId.element = element miradi:WrappedByDiagramFactorId
 {
-BiodiversityTargetId.element |
-HumanWelfareTargetId.element |
-CauseId.element |
-StrategyId.element |
-ThreatReductionResultId.element |
-IntermediateResultId.element |
-GroupBoxId.element |
-TextBoxId.element |
-ScopeBoxId.element |
-ActivityId.element |
-StressId.element
+  BiodiversityTargetId.element |
+  HumanWelfareTargetId.element |
+  CauseId.element |
+  StrategyId.element |
+  ThreatReductionResultId.element |
+  IntermediateResultId.element |
+  GroupBoxId.element |
+  TextBoxId.element |
+  ScopeBoxId.element |
+  ActivityId.element |
+  StressId.element
 }
 
 LinkableFactorId.element = element miradi:LinkableFactorId
 {
-BiodiversityTargetId.element |
-HumanWelfareTargetId.element |
-CauseId.element |
-StrategyId.element |
-ThreatReductionResultId.element |
-IntermediateResultId.element |
-GroupBoxId.element
+  BiodiversityTargetId.element |
+  HumanWelfareTargetId.element |
+  CauseId.element |
+  StrategyId.element |
+  ThreatReductionResultId.element |
+  IntermediateResultId.element |
+  GroupBoxId.element
 }
 
 formatted_text = ( text |
