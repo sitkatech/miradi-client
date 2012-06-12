@@ -60,8 +60,14 @@ import org.miradi.questions.StaticQuestionManager;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.CostAllocationRuleSchema;
+import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.FosProjectDataSchema;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.RareProjectDataSchema;
+import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.TaggedObjectSetSchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.schemas.ValueOptionSchema;
 import org.miradi.schemas.WcpaProjectDataSchema;
@@ -417,28 +423,36 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private String createIdElementName(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String elementName)
 	{
-		if (Task.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(Task.TAG_SUBTASK_IDS))
+		if (isFieldForType(baseObjectSchema, fieldSchema, TaskSchema.getObjectType(), Task.TAG_SUBTASK_IDS))
 			return SUB_TASK + ID;
 		
-		if (Indicator.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(Indicator.TAG_METHOD_IDS))
+		if (isFieldForType(baseObjectSchema, fieldSchema, IndicatorSchema.getObjectType(), Indicator.TAG_METHOD_IDS))
 			return METHOD + ID;
 		
-		if (Strategy.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(Strategy.TAG_ACTIVITY_IDS))
+		if (isFieldForType(baseObjectSchema, fieldSchema, StrategySchema.getObjectType(), Strategy.TAG_ACTIVITY_IDS))
 			return ACTIVITY + ID;
 		
-		if (DiagramLink.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS))
+		if (isFieldForType(baseObjectSchema, fieldSchema, DiagramLinkSchema.getObjectType(), DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS))
 			return DIAGRAM_LINK + ID;
 		
-		if (DiagramFactor.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS))
+		if (isFieldForType(baseObjectSchema, fieldSchema, DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS))
 			return DIAGRAM_FACTOR + ID;
 		
-		if (TaggedObjectSet.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(TaggedObjectSet.TAG_TAGGED_OBJECT_REFS))
+		if (isFieldForType(baseObjectSchema, fieldSchema, TaggedObjectSetSchema.getObjectType(), TaggedObjectSet.TAG_TAGGED_OBJECT_REFS))
 			return WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME;
 		
 		if (DiagramObject.isDiagramObject(baseObjectSchema.getType()) && fieldSchema.getTag().equals(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS))
 			return TAGGED_OBJECT_SET_ELEMENT_NAME + ID;
 				
 		return StringUtilities.removeLastChar(elementName);
+	}
+	
+	private boolean isFieldForType(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, int objectType, String tag)
+	{
+		if (objectType == baseObjectSchema.getType() && fieldSchema.getTag().equals(tag))
+			return true;
+		
+		return false;
 	}
 	
 	private String getIdElementName(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
