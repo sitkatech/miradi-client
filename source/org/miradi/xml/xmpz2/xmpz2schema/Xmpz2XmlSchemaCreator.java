@@ -483,9 +483,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void writeIdElement(String baseName)
 	{
 		final String idName = baseName + ID;
-		getSchemaWriter().println(idName + ".element = element " + PREFIX + idName + " { xsd:integer }");
+		getSchemaWriter().writeElement(idName);
 	}
-	
+
 	private void writeBaseObjectSchemaHeader(BaseObjectSchemaWriter baseObjectSchemaWriter)
 	{
 		String baseObjectName = baseObjectSchemaWriter.getXmpz2ElementName();
