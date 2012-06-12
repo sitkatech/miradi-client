@@ -555,7 +555,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			elements.add(elementName + ID + DOT_ELEMENT);
 		}
 		
-		getSchemaWriter().writeSeparatedElements(elements, " |\n");
+		getSchemaWriter().writeSeparatedElements(elements, " |");
 		getSchemaWriter().println();
 		getSchemaWriter().endBlock();
 	}
@@ -572,7 +572,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			elements.add("element." + tagNames[index]);
 		}
 		
-		getSchemaWriter().writeSeparatedElements(elements, " |\n");
+		getSchemaWriter().writeSeparatedElements(elements, " |");
 		getSchemaWriter().println();
 		getSchemaWriter().println(")*");
 		
