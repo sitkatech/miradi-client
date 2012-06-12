@@ -55,31 +55,6 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 		println(idName + ".element = element " + PREFIX + idName + " { xsd:integer }");
 	}
 	
-	public String createSchemaElement(String poolName, String elementName, String elementType)
-	{
-		return ELEMENT_NAME + PREFIX + poolName + elementName + " { " + elementType + " }?";
-	}
-	
-	public void writeElement(final String elementName, String elementType)
-	{
-		printIndented(ELEMENT_NAME + PREFIX + elementName + " { xsd:" + elementType + " }");
-	}
-	
-	public String createElementName(String parentElementName, final String elementName)
-	{
-		return ELEMENT_NAME + PREFIX + parentElementName + " { " + elementName + ".element* }?";
-	}
-	
-	public String createSchemaElement(String parentElementName, final String elementName)
-	{
-		return ELEMENT_NAME + PREFIX + parentElementName + " { " + elementName + "* }";
-	}
-	
-	public String createSchemaElement(final String extraDataItemValue)
-	{
-		return ELEMENT_NAME + PREFIX + extraDataItemValue + " { text }?";
-	}
-	
 	public String createAttributeSchemaElement(final String attributeName)
 	{
 		return "attribute " + attributeName + " { text } &";
@@ -89,29 +64,54 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 	{
 		return ELEMENT_NAME + PREFIX + elementName + " { " + elementType + " } &";
 	}
-
-	public String createSchemaElement5(final String elementName, final String elementType)
+	
+	public String createSchemaElement10(final String elementName, final String elementType)
 	{
-		return ELEMENT_NAME + PREFIX + elementName + " { " + elementType + " }";
-	}
-
-	public String createSchemaElement8(final String elementName, final String elementType)
-	{
-		return ELEMENT_NAME + PREFIX + elementName + " { " + elementType + " }?";
+		return ELEMENT_NAME + PREFIX + elementName + "{ " + elementType + " } &";
 	}
 
 	public String createSchemaElement9(final String elementName, final String elementType)
 	{
 		return ELEMENT_NAME + PREFIX + elementName + " { " + elementType + " }? &";
 	}
-
-	public String createSchemaElement10(final String elementName, final String elementType)
-	{
-		return ELEMENT_NAME + PREFIX + elementName + "{ " + elementType + " } &";
-	}
 	
 	public String createOptionalSchemaElement(final String elementName, final String elementType)
 	{
 		return ELEMENT_NAME + PREFIX + elementName + "{ " + elementType + " }? &";
-	}			
+	}
+	
+	public String createSchemaElement(String poolName, String elementName, String elementType)
+	{
+		return ELEMENT_NAME + PREFIX + poolName + elementName + " { " + elementType + " }?";
+	}
+	
+	public String createSchemaElement8(final String elementName, final String elementType)
+	{
+		return ELEMENT_NAME + PREFIX + elementName + " { " + elementType + " }?";
+	}
+	
+	public String createSchemaElement(final String extraDataItemValue)
+	{
+		return ELEMENT_NAME + PREFIX + extraDataItemValue + " { text }?";
+	}
+	
+	public String createElementName(String parentElementName, final String elementName)
+	{
+		return ELEMENT_NAME + PREFIX + parentElementName + " { " + elementName + ".element* }?";
+	}
+
+	public String createSchemaElement5(final String elementName, final String elementType)
+	{
+		return ELEMENT_NAME + PREFIX + elementName + " { " + elementType + " }";
+	}
+	
+	public void writeElement(final String elementName, String elementType)
+	{
+		printIndented(ELEMENT_NAME + PREFIX + elementName + " { xsd:" + elementType + " }");
+	}
+		
+	public String createSchemaElement(String parentElementName, final String elementName)
+	{
+		return ELEMENT_NAME + PREFIX + parentElementName + " { " + elementName + "* }";
+	}
 }
