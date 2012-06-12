@@ -542,7 +542,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			elements.add("'" + code + "'");
 		}
 		
-		getSchemaWriter().writeSeparatedElements(elements, "|");
+		getSchemaWriter().writeOredElements(elements);
 		getSchemaWriter().println();
 	}
 
@@ -555,7 +555,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			elements.add(elementName + ID + DOT_ELEMENT);
 		}
 		
-		getSchemaWriter().writeSeparatedElements(elements, "|");
+		getSchemaWriter().writeOredElements(elements);
 		getSchemaWriter().println();
 		getSchemaWriter().endBlock();
 	}
@@ -572,7 +572,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			elements.add("element." + tagNames[index]);
 		}
 		
-		getSchemaWriter().writeSeparatedElements(elements, "|");
+		getSchemaWriter().writeOredElements(elements);
 		getSchemaWriter().println();
 		getSchemaWriter().println(")*");
 		
@@ -594,7 +594,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().printlnIndented(" formatted_text  ");
 		getSchemaWriter().printlnIndented("}");
 	}
-
+	
 	private void writeGeospacialLocationElement()
 	{
 		getSchemaWriter().startElementDefinition(GEOSPATIAL_LOCATION);

@@ -80,6 +80,11 @@ public class SchemaWriter extends PrintWriter
 		endBlock();
 	}
 	
+	public void writeOredElements(Vector<String> elements)
+	{
+		writeSeparatedElements(elements, "|");
+	}
+	
 	public void defineElements(Vector<String> elements)
 	{
 		writeSeparatedElements(elements, " &\n");
