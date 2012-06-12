@@ -55,7 +55,7 @@ public class DiagramFactorSchemaWriter extends BaseObjectSchemaWriter
 	{
 		Vector<String> schemaElements = super.createCustomSchemaFields();
 		
-		schemaElements.add(getXmpz2XmlSchemaCreator().createSchemaElement(getXmpz2ElementName(), STYLING, STYLING + ".element"));
+		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createSchemaElement(getXmpz2ElementName(), STYLING, STYLING + ".element"));
 		
 		return schemaElements;
 	}
