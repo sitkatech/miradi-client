@@ -84,4 +84,9 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 	{
 		return "attribute " + attributeName + " { text } &";
 	}
+
+	public String createSchemaElement4(final String elementName, final String elementType)
+	{
+		return ELEMENT_NAME + PREFIX + elementName + " { " + elementType + " } &";
+	}
 }
