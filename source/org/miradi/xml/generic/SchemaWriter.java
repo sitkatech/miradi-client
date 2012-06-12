@@ -92,7 +92,7 @@ public class SchemaWriter extends PrintWriter
 		println();
 	}
 	
-	public void writeSeparatedElements(final Vector<String> elements, final String separator)
+	private void writeSeparatedElements(final Vector<String> elements, final String separator)
 	{
 		for (int index = 0; index < elements.size(); ++index)
 		{
