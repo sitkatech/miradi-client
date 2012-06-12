@@ -524,27 +524,23 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		allCodesFromDynamicQuestion.add(OpenStandardsProgressStatusQuestion.COMPLETE_CODE);
 		allCodesFromDynamicQuestion.add(OpenStandardsProgressStatusQuestion.NOT_APPLICABLE_CODE);
 		
-		getSchemaWriter().print(VOCABULARY_DASHBOARD_ROW_PROGRESS + " = ");
+		defineVocabulary(VOCABULARY_DASHBOARD_ROW_PROGRESS, allCodesFromDynamicQuestion);
+	}
+
+	private void defineVocabulary(ChoiceQuestion question, String vocabularyName)
+	{
+		CodeList codes = question.getCodesAsReadableCodes();
+		defineVocabulary(vocabularyName, codes);
+	}
+	
+	private void defineVocabulary(final String elementName, final CodeList allCodesFromDynamicQuestion)
+	{
+		getSchemaWriter().print(elementName + " = ");
 		for(int index = 0; index < allCodesFromDynamicQuestion.size(); ++index)
 		{
 			String code = allCodesFromDynamicQuestion.get(index);
 			getSchemaWriter().write("'" + code + "'");
 			if (index < allCodesFromDynamicQuestion.size() - 1)
-				getSchemaWriter().print("|");
-		}
-		
-		getSchemaWriter().println();
-	}
-	
-	private void defineVocabulary(ChoiceQuestion question, String vocabularyName)
-	{
-		CodeList codes = question.getCodesAsReadableCodes();
-		getSchemaWriter().print(vocabularyName + " = ");
-		for(int index = 0; index < codes.size(); ++index)
-		{
-			String code = codes.get(index);
-			getSchemaWriter().write("'" + code + "'");
-			if (index < codes.size() - 1)
 				getSchemaWriter().print("|");
 		}
 		
