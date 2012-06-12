@@ -596,7 +596,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().printlnIndented("}");
 	}
 
-	private void writeSeparatedElements(Vector<String> elements, final String separator)
+	private void writeSeparatedElements(final Vector<String> elements, final String separator)
 	{
 		for (int index = 0; index < elements.size(); ++index)
 		{
