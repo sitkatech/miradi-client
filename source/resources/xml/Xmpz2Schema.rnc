@@ -995,7 +995,7 @@ CalculatedCosts.element = element miradi:CalculatedCosts
   element miradi:CalculatedTotalBudgetCost{ xsd:decimal }? &
   element miradi:CalculatedWho{ ResourceId.element* }? &
   element miradi:CalculatedExpenseEntries{ ExpenseEntry.element* }? &
-  element miradi:CalculatedWorkUnitsEntries{ WorkUnitsEntry.element* }?
+  element miradi:CalculatedWorkUnitsEntries { WorkUnitsEntry.element* }?
 }
 
 ExpenseEntry.element = element miradi:ExpenseEntry
@@ -1004,7 +1004,7 @@ ExpenseEntry.element = element miradi:ExpenseEntry
   element miradi:ExpenseEntryAccountingCodeId{ AccountingCodeId.element }? &
   element miradi:ExpenseEntryBudgetCategoryOneId{ BudgetCategoryOneId.element }? &
   element miradi:ExpenseEntryBudgetCategoryTwoId{ BudgetCategoryTwoId.element }? &
-  element miradi:ExpenseEntryDetails{ DateUnitExpense.element* }?
+  element miradi:ExpenseEntryDetails { DateUnitExpense.element* }?
 }
 
 WorkUnitsEntry.element = element miradi:WorkUnitsEntry
@@ -1020,7 +1020,7 @@ WorkUnitsEntry.element = element miradi:WorkUnitsEntry
 ExternalProjectId.element = element miradi:ExternalProjectId
 {
   element miradi:ExternalApp { text } &
-  element miradi:ProjectId { text } 
+  element miradi:ProjectId { text }
 }
 
 SimpleThreatRating.element = element miradi:SimpleThreatRating
@@ -1037,7 +1037,7 @@ StressBasedThreatRating.element = element miradi:StressBasedThreatRating
   element miradi:StressBasedThreatRatingIrreversibility { vocabulary_irreversibility_code }? &
   element miradi:StressBasedThreatRatingIsActive { xsd:boolean }? &
   element miradi:StressBasedThreatRatingStressRating { vocabulary_threat_rating }? &
-  element miradi:StressBasedThreatRatingThreatStressRating { vocabulary_threat_rating }? 
+  element miradi:StressBasedThreatRatingThreatStressRating { vocabulary_threat_rating }?
 }
 
 Style.element = element miradi:Style
