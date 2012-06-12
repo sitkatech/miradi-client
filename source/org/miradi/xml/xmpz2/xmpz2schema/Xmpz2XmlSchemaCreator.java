@@ -155,7 +155,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		}
 		
 		elementNames.add(ELEMENT_NAME + PREFIX + DELETED_ORPHANS_ELEMENT_NAME +  "{ text }?");
-		getSchemaWriter().writeContentsList(elementNames);
+		getSchemaWriter().defineElements(elementNames);
 		
 		getSchemaWriter().endElementDefinition(CONSERVATION_PROJECT);
 		getSchemaWriter().flush();
