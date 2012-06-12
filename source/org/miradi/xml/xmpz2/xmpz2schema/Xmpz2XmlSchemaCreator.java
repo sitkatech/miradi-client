@@ -613,25 +613,19 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void writeGeospacialLocationElement()
 	{
-		Vector<String> elementNames = new Vector<String>();
-		elementNames.add("latitude");
-		elementNames.add("longitude");
+		Vector<String> elementNames = createVector("latitude", "longitude");
 		defineElementWithSameType(GEOSPATIAL_LOCATION, elementNames, "decimal");
 	}
 	
 	private void writeDiagramPointElement()
 	{
-		Vector<String> elementNames = new Vector<String>();
-		elementNames.add("x");
-		elementNames.add("y");
+		Vector<String> elementNames = createVector("x", "y");
 		defineElementWithSameType(DIAGRAM_POINT_ELEMENT_NAME, elementNames, "integer");
 	}
 	
 	private void writeDiagramSizeElement()
 	{
-		Vector<String> elementNames = new Vector<String>();
-		elementNames.add("width");
-		elementNames.add("height");
+		Vector<String> elementNames = createVector("width", "height");
 		defineElementWithSameType(DIAGRAM_SIZE_ELEMENT_NAME, elementNames, "integer");
 	}
 	
@@ -1006,6 +1000,15 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			return "WorkUnits";
 		
 		throw new RuntimeException("Object type " + objectType + " cannot have a dateunitEffortsList field");
+	}
+	
+	private Vector<String> createVector(String item1, String item2)
+	{
+		Vector<String> items = new Vector<String>();
+		items.add(item1);
+		items.add(item2);
+		
+		return items;
 	}
 	
 	public ChoiceQuestionToSchemaElementNameMap getChoiceQuestionToSchemaElementNameMap()
