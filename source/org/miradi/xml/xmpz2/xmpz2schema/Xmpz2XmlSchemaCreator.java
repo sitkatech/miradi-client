@@ -545,13 +545,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		}
 		
 		final String SEPRATOR = "|";
-		for(int index = 0; index < elements.size(); ++index)
-		{
-			getSchemaWriter().write(elements.get(index));
-			if (index < elements.size() - 1)
-				getSchemaWriter().print(SEPRATOR);
-		}
-		getSchemaWriter().println();
+		writeSeparatedElements(elements, SEPRATOR);
 	}
 
 	private void writeOredSchemaElements(final String elementName, final String[] elementNames)
@@ -564,13 +558,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		}
 		
 		final String SEPRATOR = " |\n";
-		for (int index = 0; index < elements.size(); ++index)
-		{
-			getSchemaWriter().write(elements.get(index));
-			if (index < elements.size() - 1)
-				getSchemaWriter().print(SEPRATOR);
-		}
-		getSchemaWriter().println();
+		writeSeparatedElements(elements, SEPRATOR);
 		getSchemaWriter().endBlock();
 	}
 
@@ -586,13 +574,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			elements.add("element." + tagNames[index]);
 		}
 		final String SEPRATOR = " | \n";
-		for (int index = 0; index < elements.size(); ++index)
-		{
-			getSchemaWriter().write(elements.get(index));
-			if (index < elements.size() - 1)
-				getSchemaWriter().print(SEPRATOR);
-		}
-		getSchemaWriter().println();
+		writeSeparatedElements(elements, SEPRATOR);
 		getSchemaWriter().println(")*");
 		
 		getSchemaWriter().printlnIndented("element.br = element br { empty }");
@@ -612,6 +594,17 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().printlnIndented("	attribute target {text}? &");			  
 		getSchemaWriter().printlnIndented(" formatted_text  ");
 		getSchemaWriter().printlnIndented("}");
+	}
+
+	private void writeSeparatedElements(Vector<String> elements, final String separator)
+	{
+		for (int index = 0; index < elements.size(); ++index)
+		{
+			getSchemaWriter().write(elements.get(index));
+			if (index < elements.size() - 1)
+				getSchemaWriter().print(separator);
+		}
+		getSchemaWriter().println();
 	}
 	
 	private void writeGeospacialLocationElement()
