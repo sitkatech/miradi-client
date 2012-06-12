@@ -628,7 +628,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		getSchemaWriter().defineAlias(DASHBOARD_STATUS_ENTRY + DOT_ELEMENT, ELEMENT_NAME + PREFIX + DASHBOARD_STATUS_ENTRY);
 		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented("attribute " + KEY_ATTRIBUTE_NAME + " { text } &");
+		getSchemaWriter().printlnIndented(getSchemaWriter().createAttributeSchemaElement(KEY_ATTRIBUTE_NAME));
 		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + DASHBOARD_PROGRESS + " { " + VOCABULARY_DASHBOARD_ROW_PROGRESS + " }? &");
 		getSchemaWriter().printlnIndented(DASHBOARD + DASHBOARD_FLAGS + CONTAINER_ELEMENT_TAG + ".element? &");
 		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + DASHBOARD_COMMENTS + " { text }?");
