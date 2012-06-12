@@ -564,12 +564,12 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			elements.add(elementNames[index] + ID + DOT_ELEMENT);
 		}
 		
-		final String SEPRATOR = " |";
+		final String SEPRATOR = " |\n";
 		for (int index = 0; index < elements.size(); ++index)
 		{
 			getSchemaWriter().printIndented(elements.get(index));
 			if (index < elements.size() - 1)
-				getSchemaWriter().println(SEPRATOR);
+				getSchemaWriter().print(SEPRATOR);
 		}
 		getSchemaWriter().println();
 		getSchemaWriter().endBlock();
@@ -586,12 +586,12 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		{
 			elements.add("element." + tagNames[index]);
 		}
-		final String SEPRATOR = " | ";
+		final String SEPRATOR = " | \n";
 		for (int index = 0; index < elements.size(); ++index)
 		{
 			getSchemaWriter().printIndented(elements.get(index));
 			if (index < elements.size() - 1)
-				getSchemaWriter().println(SEPRATOR);
+				getSchemaWriter().print(SEPRATOR);
 		}
 		getSchemaWriter().println();
 		getSchemaWriter().println(")*");
