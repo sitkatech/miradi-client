@@ -563,9 +563,10 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void writeHtmlTagSchemaElements()
 	{
 		String[] tagNames = new String[] {"br", "b", "i", "u", "strike", "a", "ul", "ol",};
-		getSchemaWriter().write("formatted_text = ( text|");
+		getSchemaWriter().write("formatted_text = ( ");
 		
 		Vector<String> elements = new Vector<String>();
+		elements.add("text");
 		for (int index = 0; index < tagNames.length; ++index)
 		{
 			elements.add("element." + tagNames[index]);
