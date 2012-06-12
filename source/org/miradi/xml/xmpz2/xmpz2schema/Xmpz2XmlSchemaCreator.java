@@ -544,6 +544,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		}
 		
 		getSchemaWriter().writeSeparatedElements(elements, "|");
+		getSchemaWriter().println();
 	}
 
 	private void writeOredSchemaElements(final String parentElementName, final Vector<String> elementNames)
@@ -556,6 +557,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		}
 		
 		getSchemaWriter().writeSeparatedElements(elements, " |\n");
+		getSchemaWriter().println();
 		getSchemaWriter().endBlock();
 	}
 
@@ -572,6 +574,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		}
 		
 		getSchemaWriter().writeSeparatedElements(elements, " |\n");
+		getSchemaWriter().println();
 		getSchemaWriter().println(")*");
 		
 		getSchemaWriter().printlnIndented("element.br = element br { empty }");
