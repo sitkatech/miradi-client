@@ -33,6 +33,7 @@ public class ObjectTreeTableConfigurationSchemaWriter extends BaseObjectSchemaWr
 	@Override
 	protected boolean hasNoSchema(String tag)
 	{
+		//NOTE: These were omitted from XMPZ1. See Jira MRD-4920 for status in XMPZ2
 		if (tag.equals(ObjectTreeTableConfiguration.TAG_COL_CONFIGURATION))
 			return true;
 		
