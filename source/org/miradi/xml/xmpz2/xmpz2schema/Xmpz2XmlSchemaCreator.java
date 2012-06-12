@@ -592,17 +592,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().printlnIndented("}");
 	}
 
-	private void writeSeparatedElements(final Vector<String> elements, final String separator)
-	{
-		for (int index = 0; index < elements.size(); ++index)
-		{
-			getSchemaWriter().write(elements.get(index));
-			if (index < elements.size() - 1)
-				getSchemaWriter().print(separator);
-		}
-		getSchemaWriter().println();
-	}
-	
 	private void writeGeospacialLocationElement()
 	{
 		getSchemaWriter().startElementDefinition(GEOSPATIAL_LOCATION);
@@ -736,6 +725,17 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		defineElements(subElements);
 		getSchemaWriter().println();
 		getSchemaWriter().endBlock();
+	}
+	
+	private void writeSeparatedElements(final Vector<String> elements, final String separator)
+	{
+		for (int index = 0; index < elements.size(); ++index)
+		{
+			getSchemaWriter().write(elements.get(index));
+			if (index < elements.size() - 1)
+				getSchemaWriter().print(separator);
+		}
+		getSchemaWriter().println();
 	}
 
 	private void defineElements(String[] elements)
