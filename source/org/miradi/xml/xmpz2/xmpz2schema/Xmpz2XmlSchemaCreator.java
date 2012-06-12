@@ -206,7 +206,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void writeElementContent(BaseObjectSchemaWriter baseObjectSchemaWriter) throws Exception
 	{
 		Vector<String> schemaFieldElements = baseObjectSchemaWriter.createFieldSchemas();
-		defineElements(schemaFieldElements.toArray(new String[0]));
+		getSchemaWriter().defineElements(schemaFieldElements.toArray(new String[0]));
 		getSchemaWriter().println();
 	}
 	
@@ -543,7 +543,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			elements.add("'" + code + "'");
 		}
 		
-		writeSeparatedElements(elements, "|");
+		getSchemaWriter().writeSeparatedElements(elements, "|");
 	}
 
 	private void writeOredSchemaElements(final String parentElementName, final Vector<String> elementNames)
@@ -555,7 +555,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			elements.add(elementName + ID + DOT_ELEMENT);
 		}
 		
-		writeSeparatedElements(elements, " |\n");
+		getSchemaWriter().writeSeparatedElements(elements, " |\n");
 		getSchemaWriter().endBlock();
 	}
 
@@ -570,7 +570,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		{
 			elements.add("element." + tagNames[index]);
 		}
-		writeSeparatedElements(elements, " |\n");
+		
+		getSchemaWriter().writeSeparatedElements(elements, " |\n");
 		getSchemaWriter().println(")*");
 		
 		getSchemaWriter().printlnIndented("element.br = element br { empty }");
@@ -722,31 +723,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		getSchemaWriter().defineAlias(elementName + DOT_ELEMENT, "element miradi:" + elementName);
 		getSchemaWriter().startBlock();
-		defineElements(subElements);
+		getSchemaWriter().defineElements(subElements);
 		getSchemaWriter().println();
 		getSchemaWriter().endBlock();
-	}
-	
-	private void writeSeparatedElements(final Vector<String> elements, final String separator)
-	{
-		for (int index = 0; index < elements.size(); ++index)
-		{
-			getSchemaWriter().write(elements.get(index));
-			if (index < elements.size() - 1)
-				getSchemaWriter().print(separator);
-		}
-		getSchemaWriter().println();
-	}
-
-	private void defineElements(String[] elements)
-	{
-		for (int index = 0; index < elements.length; ++index)
-		{
-			if (index > 0)
-				getSchemaWriter().println(" &");
-			
-			getSchemaWriter().printIndented(elements[index]);
-		}
 	}
 	
 	private void writeThresholdsElement()
