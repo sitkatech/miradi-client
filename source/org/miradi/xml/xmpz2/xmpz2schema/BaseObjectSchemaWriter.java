@@ -50,7 +50,7 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 			if (objectData.isPseudoField())
 				continue;
 			
-			if (hasNoSchema(fieldSchema.getTag()))
+			if (shouldOmitField(fieldSchema.getTag()))
 				continue;
 
 			if (doesFieldRequireSpecialHandling(fieldSchema.getTag()))
@@ -66,7 +66,7 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 		return sortedFieldSchemas;
 	}
 	
-	protected boolean hasNoSchema(String tag)
+	protected boolean shouldOmitField(String tag)
 	{
 		return false;
 	}
