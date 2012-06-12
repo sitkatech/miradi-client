@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2.xmpz2schema;
 
 import java.io.PrintStream;
-import java.util.Vector;
 
 import org.martus.util.UnicodeWriter;
 import org.miradi.xml.generic.SchemaWriter;
