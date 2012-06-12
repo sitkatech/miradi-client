@@ -83,13 +83,11 @@ public class SchemaWriter extends PrintWriter
 	public void writeOredElements(Vector<String> elements)
 	{
 		writeSeparatedElements(elements, "|");
-		println();
 	}
 	
 	public void defineElements(Vector<String> elements)
 	{
 		writeSeparatedElements(elements, " &\n");
-		println();
 	}
 	
 	private void writeSeparatedElements(final Vector<String> elements, final String separator)
@@ -101,6 +99,8 @@ public class SchemaWriter extends PrintWriter
 			
 			printIndented(elements.get(index));
 		}
+		
+		println();
 	}
 
 	private int indentLevel;
