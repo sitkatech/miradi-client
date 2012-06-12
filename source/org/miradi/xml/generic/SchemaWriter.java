@@ -83,6 +83,7 @@ public class SchemaWriter extends PrintWriter
 	public void writeOredElements(Vector<String> elements)
 	{
 		writeSeparatedElements(elements, "|");
+		println();
 	}
 	
 	public void defineElements(Vector<String> elements)
