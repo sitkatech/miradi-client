@@ -571,7 +571,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		{
 			elements.add("element." + tagNames[index]);
 		}
-		writeSeparatedElements(elements, " | \n");
+		writeSeparatedElements(elements, " |\n");
 		getSchemaWriter().println(")*");
 		
 		getSchemaWriter().printlnIndented("element.br = element br { empty }");

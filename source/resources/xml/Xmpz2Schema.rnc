@@ -892,13 +892,13 @@ GroupBoxId.element
 }
 
 formatted_text = ( text |
-element.br | 
-element.b | 
-element.i | 
-element.u | 
-element.strike | 
-element.a | 
-element.ul | 
+element.br |
+element.b |
+element.i |
+element.u |
+element.strike |
+element.a |
+element.ul |
 element.ol
 )*
 element.br = element br { empty }
