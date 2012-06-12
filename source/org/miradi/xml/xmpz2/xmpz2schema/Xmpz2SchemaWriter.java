@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2.xmpz2schema;
 
 import java.io.PrintStream;
+import java.util.Vector;
 
 import org.martus.util.UnicodeWriter;
 import org.miradi.xml.generic.SchemaWriter;
@@ -48,5 +49,27 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 	{
 		println(name + ".element = element " +  PREFIX + name);
 		startBlock();
+	}
+	
+	public void writeSeparatedElements(final Vector<String> elements, final String separator)
+	{
+		for (int index = 0; index < elements.size(); ++index)
+		{
+			write(elements.get(index));
+			if (index < elements.size() - 1)
+				print(separator);
+		}
+		println();
+	}
+
+	public void defineElements(String[] elements)
+	{
+		for (int index = 0; index < elements.length; ++index)
+		{
+			if (index > 0)
+				println(" &");
+			
+			printIndented(elements[index]);
+		}
 	}
 }
