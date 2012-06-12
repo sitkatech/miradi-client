@@ -82,15 +82,8 @@ public class SchemaWriter extends PrintWriter
 	
 	public void writeContentsList(Vector<String> contents)
 	{
-		for(int element = 0; element < contents.size(); ++element)
-		{
-			String item = contents.get(element);
-			printIndented(item);
-			if(element+1 < contents.size())
-				print(" &");
-			println();
-		}
-		
+		defineElements(contents);
+		println();
 	}
 
 	public void defineElements(Vector<String> elements)
