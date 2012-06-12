@@ -629,10 +629,10 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void writeDiagramSizeElement()
 	{
-		getSchemaWriter().startElementDefinition(DIAGRAM_SIZE_ELEMENT_NAME);
-		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + "width { xsd:integer } & ");
-		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + "height { xsd:integer }"); 
-		getSchemaWriter().endBlock();
+		Vector<String> elementNames = new Vector<String>();
+		elementNames.add("width");
+		elementNames.add("height");
+		defineElementWithSameType(DIAGRAM_SIZE_ELEMENT_NAME, elementNames, "integer");
 	}
 	
 	private void writeDashboardUserChoiceMap()
