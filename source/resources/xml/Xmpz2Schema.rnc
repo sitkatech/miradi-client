@@ -896,7 +896,7 @@ element.a = element a
 GeospatialLocation.element = element miradi:GeospatialLocation
 {
   element miradi:latitude { xsd:decimal } &
-  element miradi:longitude { xsd:decimal } 
+  element miradi:longitude { xsd:decimal }
 }
 
 DiagramPoint.element = element miradi:DiagramPoint

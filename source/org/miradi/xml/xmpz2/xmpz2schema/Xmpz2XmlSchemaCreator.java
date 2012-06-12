@@ -613,9 +613,24 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void writeGeospacialLocationElement()
 	{
-		getSchemaWriter().startElementDefinition(GEOSPATIAL_LOCATION);
-		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + "latitude { xsd:decimal } &");
-		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + "longitude { xsd:decimal } ");
+		Vector<String> elementNames = new Vector<String>();
+		elementNames.add("latitude");
+		elementNames.add("longitude");
+		defineElementWithSameType(GEOSPATIAL_LOCATION, elementNames, "decimal");
+	}
+	
+	private void defineElementWithSameType(String parentName, Vector<String> names, String elementType)
+	{
+		getSchemaWriter().startElementDefinition(parentName);
+		for (int index = 0; index < names.size(); ++index)
+		{
+			if (index > 0)
+				getSchemaWriter().print(" &\n");
+			
+			getSchemaWriter().printIndented(ELEMENT_NAME + PREFIX + names.get(index) + " { xsd:" + elementType + " }");	
+		}
+		
+		getSchemaWriter().println();
 		getSchemaWriter().endBlock();
 	}
 	
