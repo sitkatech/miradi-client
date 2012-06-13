@@ -943,7 +943,7 @@ WorkUnitsMonth.element = element miradi:WorkUnitsMonth
 
 WorkUnitsDay.element = element miradi:WorkUnitsDay
 {
-  attribute Date {vocabulary_date}
+  attribute Date { vocabulary_date }
 }
 
 DateUnitExpense.element = element miradi:DateUnitExpense
@@ -978,7 +978,7 @@ ExpensesMonth.element = element miradi:ExpensesMonth
 
 ExpensesDay.element = element miradi:ExpensesDay
 {
-  attribute Date {vocabulary_date}
+  attribute Date { vocabulary_date }
 }
 
 IndicatorThreshold.element = element miradi:IndicatorThreshold
