@@ -46,19 +46,19 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 	
 	public void writeAlias(final String elementName)
 	{
-		defineAlias(elementName + ".element", ELEMENT_NAME + PREFIX + elementName);
+		defineAlias(createDotElement(elementName), ELEMENT_NAME + PREFIX + elementName);
 	}
 
 	@Override	
 	public void startElementDefinition(String name)
 	{
-		println(name + ".element = element " +  PREFIX + name);
+		println(createDotElement(name) + " = element " +  PREFIX + name);
 		startBlock();
 	}
 	
 	public void writeElement(final String elementName)
 	{
-		println(elementName + ".element = element " + PREFIX + elementName + " { xsd:integer }");
+		println(createDotElement(elementName) + " = element " + PREFIX + elementName + " { xsd:integer }");
 	}
 	
 	public void writeElement(final String elementName, String elementType)
