@@ -705,7 +705,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void defineFullProjectTimeSpanElement(String fullProjectTimeSpanElementName)
 	{
 		Vector<String> subElements = new Vector<String>();
-		subElements.add("attribute " + FULL_PROJECT_TIMESPAN + " { vocabulary_full_project_timespan }");
+		subElements.add(getSchemaWriter().createAttributeElement(FULL_PROJECT_TIMESPAN, "vocabulary_full_project_timespan"));
 		defineElement(fullProjectTimeSpanElementName, subElements);
 	}
 	
