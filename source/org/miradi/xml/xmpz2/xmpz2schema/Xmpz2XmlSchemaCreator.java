@@ -679,18 +679,19 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	}
 	
 	private void defineDateUnitEfforts()
-	{
-		getSchemaWriter().writeAlias(DATE_UNIT_WORK_UNITS);
-		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + "WorkUnitsDateUnit{WorkUnitsDay.element | WorkUnitsMonth.element | WorkUnitsQuarter.element | WorkUnitsYear.element | WorkUnitsFullProjectTimespan.element }? &");
-		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + WORK_UNITS + " { " + writer.createDecimalType() +" }?");
-		getSchemaWriter().endBlock();
+	{ 		
+		Vector<String> elementTypes = new Vector<String>();
+		elementTypes.add(createElementName(WORK_UNITS_DAY));
+		elementTypes.add(createElementName(WORK_UNITS_MONTH));
+		elementTypes.add(createElementName(WORK_UNITS_QUARTER));
+		elementTypes.add(createElementName(WORK_UNITS_YEAR));
+		elementTypes.add(createElementName(WORK_UNITS_FULL_PROJECT_TIMESPAN));
+		
+		defineBudgetElements(DATE_UNIT_WORK_UNITS, WORK_UNITS_DATE_UNIT, WORK_UNITS, elementTypes);
 	}
 
 	private void defineDateUnitExpense()
 	{
-		getSchemaWriter().writeAlias(DATE_UNITS_EXPENSE);
-		getSchemaWriter().startBlock();
 		Vector<String> elementTypes = new Vector<String>();
 		elementTypes.add(createElementName(EXPENSES_DAY));
 		elementTypes.add(createElementName(EXPENSES_MONTH));
@@ -698,11 +699,17 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		elementTypes.add(createElementName(EXPENSES_YEAR));
 		elementTypes.add(createElementName(EXPENSES_FULL_PROJECT_TIMESPAN));
 		
-		getSchemaWriter().printIndented(ELEMENT_NAME + PREFIX + EXPENSES_DATE_UNIT + "{"); 
+		defineBudgetElements(DATE_UNITS_EXPENSE, EXPENSES_DATE_UNIT, EXPENSE, elementTypes);
+	}
+	
+	private void defineBudgetElements(final String dateUnitWorkUnits, final String workUnitsDateUnit, final String workUnits, Vector<String> elementTypes)
+	{
+		getSchemaWriter().writeAlias(dateUnitWorkUnits);
+		getSchemaWriter().startBlock();
+		getSchemaWriter().printIndented(ELEMENT_NAME + PREFIX + workUnitsDateUnit + "{");
 		getSchemaWriter().writeOredElements(elementTypes);
 		getSchemaWriter().printlnIndented(" }? &");
-
-		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + EXPENSE + " { " + writer.createDecimalType() +" }?");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + workUnits + " { " + writer.createDecimalType() +" }?");
 		getSchemaWriter().endBlock();
 	}
 	
