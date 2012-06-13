@@ -295,7 +295,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	public String createIntegerSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		return createElementSchema(baseObjectSchema, fieldSchema, getSchemaWriter().createXsdElement("integer"));
+		return createElementSchema(baseObjectSchema, fieldSchema, getSchemaWriter().createIntegerType());
 	}
 	
 	public String createDateSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)

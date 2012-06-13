@@ -156,6 +156,10 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 		return createXsdElement("decimal");
 	}
 	
+	public String createIntegerType()
+	{
+		return createXsdElement("integer");
+	}
 	public void defineBudgetElements(final String parentName, final String containerName, final String elementName, Vector<String> elementTypes)
 	{
 		writeAlias(parentName);
