@@ -490,7 +490,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		String baseObjectName = baseObjectSchemaWriter.getXmpz2ElementName();
 		String baseObjectPoolName = baseObjectSchemaWriter.getPoolName();
 		
-		String result = getSchemaWriter().createSchemaElement(baseObjectPoolName, createElementName(baseObjectName));
+		String result = getSchemaWriter().createRequiredSchemaElement(baseObjectPoolName, createElementName(baseObjectName));
 		getSchemaWriter().defineAlias(createElementName(baseObjectPoolName), result);
 		getSchemaWriter().defineAlias(createElementName(baseObjectName), "element " + PREFIX + baseObjectName);
 	}
