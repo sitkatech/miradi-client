@@ -218,13 +218,13 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private String getRelevantTypeName(AbstractFieldSchema fieldSchema)
 	{
 		if (fieldSchema.getTag().equals(Desire.TAG_RELEVANT_INDICATOR_SET))
-			return "IndicatorId.element*";
+			return INDICATOR;
 		
 		if (fieldSchema.getTag().equals(RELEVANT_STRATEGY_IDS))
-			return "StrategyId.element*";
+			return STRATEGY;
 		
 		if (fieldSchema.getTag().equals(RELEVANT_ACTIVITY_IDS))
-			return "ActivityId.element*";
+			return ACTIVITY;
 		
 		throw new RuntimeException("FieldSchema is not a relevancy field: " + fieldSchema.getTag());
 	}
@@ -362,7 +362,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	public String createRelevantSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		return createElementSchema(baseObjectSchema, fieldSchema, getRelevantTypeName(fieldSchema));
+		final String relevantTypeName = getRelevantTypeName(fieldSchema) + ID;
+		final String elementType = getSchemaWriter().createRequiredDotElement(relevantTypeName);
+		return createElementSchema(baseObjectSchema, fieldSchema, elementType);
 	}
 	
 	private void writeVocabularyDefinitions()
