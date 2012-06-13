@@ -801,7 +801,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().defineAlias(createElementName(EXTERNAL_PROJECT_ID_ELEMENT_NAME), ELEMENT_NAME + PREFIX + EXTERNAL_PROJECT_ID_ELEMENT_NAME);
 		getSchemaWriter().startBlock();
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement4(EXTERNAL_APP_ELEMENT_NAME, "text"));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement5(PROJECT_ID, "text"));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement(PROJECT_ID, "text"));
 		getSchemaWriter().endBlock();
 	}
 
