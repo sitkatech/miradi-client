@@ -280,7 +280,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	public String createUserTextSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		return createElementSchema(baseObjectSchema, fieldSchema, "formatted_text");
+		return createElementSchema(baseObjectSchema, fieldSchema, FORMATTED_TEXT_TYPE);
 	}
 	
 	public String createBooleanSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
@@ -583,7 +583,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void writeHtmlTagSchemaElements()
 	{
 		String[] tagNames = new String[] {"br", "b", "i", "u", "strike", "a", "ul", "ol",};
-		getSchemaWriter().write("formatted_text = ( ");
+		getSchemaWriter().write(FORMATTED_TEXT_TYPE + " = ( ");
 		
 		Vector<String> elements = new Vector<String>();
 		elements.add(TEXT_ELEMENT_TYPE);
@@ -596,13 +596,13 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().println(")*");
 		
 		getSchemaWriter().writeSchemaElement("br", "empty");
-		getSchemaWriter().writeSchemaElement("b", "formatted_text");
-		getSchemaWriter().writeSchemaElement("i", "formatted_text");
-		getSchemaWriter().writeSchemaElement("u", "formatted_text");
-		getSchemaWriter().writeSchemaElement("strike", "formatted_text");
+		getSchemaWriter().writeSchemaElement("b", FORMATTED_TEXT_TYPE);
+		getSchemaWriter().writeSchemaElement("i", FORMATTED_TEXT_TYPE);
+		getSchemaWriter().writeSchemaElement("u", FORMATTED_TEXT_TYPE);
+		getSchemaWriter().writeSchemaElement("strike", FORMATTED_TEXT_TYPE);
 		getSchemaWriter().writeSchemaElement("ul", "element.li*");
 		getSchemaWriter().writeSchemaElement("ol", "element.li*");
-		getSchemaWriter().writeSchemaElement("li", "formatted_text");
+		getSchemaWriter().writeSchemaElement("li", FORMATTED_TEXT_TYPE);
 		
 		getSchemaWriter().printlnIndented("element.a = element a");
 		getSchemaWriter().startBlock();
@@ -610,10 +610,10 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().printlnIndented(getSchemaWriter().createTextAttributeElement("name") + "? &");
 		getSchemaWriter().printlnIndented(getSchemaWriter().createTextAttributeElement("title") + "? &");
 		getSchemaWriter().printlnIndented(getSchemaWriter().createTextAttributeElement("target") + "? &");			  
-		getSchemaWriter().printlnIndented("formatted_text");
+		getSchemaWriter().printlnIndented(FORMATTED_TEXT_TYPE);
 		getSchemaWriter().endBlock();
 	}
-	
+
 	private void writeGeospacialLocationElement()
 	{
 		Vector<String> elementNames = createVector("latitude", "longitude");
