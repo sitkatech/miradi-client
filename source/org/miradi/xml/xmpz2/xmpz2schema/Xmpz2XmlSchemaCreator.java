@@ -285,9 +285,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	public String createBooleanSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		return createElementSchema(baseObjectSchema, fieldSchema, "xsd:boolean");
+		return createElementSchema(baseObjectSchema, fieldSchema, getSchemaWriter().createBooleanType());
 	}
-	
+
 	public String createNumberSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema)
 	{
 		return createElementSchema(baseObjectSchema, fieldSchema, "xsd:decimal");
@@ -822,7 +822,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING + STRESS + ID + "{ StressId.element } &");
 		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd((STRESS_BASED_THREAT_RATING + CONTRIBUTION), VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd((STRESS_BASED_THREAT_RATING + IRREVERSIBILITY), VOCABULARY_THREAT_STRESS_RATING_IRREVERSIBILITY_CODE));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd((STRESS_BASED_THREAT_RATING + IS_ACTIVE), "xsd:boolean"));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd((STRESS_BASED_THREAT_RATING + IS_ACTIVE), getSchemaWriter().createBooleanType()));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd((STRESS_BASED_THREAT_RATING + STRESS_RATING), VOCABULARY_THREAT_RATING));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement((STRESS_BASED_THREAT_RATING + THREAT_STRESS_RATING), VOCABULARY_THREAT_RATING));
 		getSchemaWriter().endBlock();
@@ -852,7 +852,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		Vector<String> elementNames = new Vector<String>();
 		for (int index = 0; index < names.size(); ++index)
 		{
-			final String elementName = getSchemaWriter().createSchemaElement11(names.get(index), elementType);
+			final String elementName = getSchemaWriter().createXsdSchemaElement(names.get(index), elementType);
 			elementNames.add(elementName);	
 		}
 		
