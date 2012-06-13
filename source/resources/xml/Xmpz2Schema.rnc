@@ -1064,7 +1064,7 @@ DashboardFlagsContainer.element = element miradi:DashboardFlagsContainer
 ExtraDataSection.element = element miradi:ExtraDataSection
 {
   attribute owner { text } &
-  ExtraDataItem.element *
+  ExtraDataItem.element*
 }
 
 ExtraDataItem.element = element miradi:ExtraDataItem
