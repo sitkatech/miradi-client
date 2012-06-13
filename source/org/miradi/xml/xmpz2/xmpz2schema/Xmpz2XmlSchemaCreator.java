@@ -680,7 +680,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void defineDateUnitEfforts()
 	{
-		getSchemaWriter().defineAlias("DateUnitWorkUnits.element", ELEMENT_NAME + PREFIX + "DateUnitWorkUnits");
+		getSchemaWriter().writeAlias("DateUnitWorkUnits");
 		getSchemaWriter().startBlock();
 		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + "WorkUnitsDateUnit{WorkUnitsDay.element | WorkUnitsMonth.element | WorkUnitsQuarter.element | WorkUnitsYear.element | WorkUnitsFullProjectTimespan.element }? &");
 		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + "NumberOfUnits { " + writer.createDecimalType() +" }?");
@@ -689,7 +689,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	private void defineDateUnitExpense()
 	{
-		getSchemaWriter().defineAlias("DateUnitExpense.element", ELEMENT_NAME + PREFIX + "DateUnitExpense");
+		getSchemaWriter().writeAlias("DateUnitExpense");
 		getSchemaWriter().startBlock();
 		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + EXPENSES_DATE_UNIT + "{ExpensesDay.element | ExpensesMonth.element | ExpensesQuarter.element | ExpensesYear.element | ExpensesFullProjectTimespan.element }? &");
 		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + EXPENSE + " { " + writer.createDecimalType() +" }?");
