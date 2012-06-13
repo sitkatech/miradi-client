@@ -925,20 +925,20 @@ WorkUnitsFullProjectTimespan.element = element miradi:WorkUnitsFullProjectTimesp
 
 WorkUnitsYear.element = element miradi:WorkUnitsYear
 {
-  attribute StartYear {vocabulary_year} &
-  attribute StartMonth {vocabulary_month}
+  attribute StartYear { vocabulary_year } &
+  attribute StartMonth { vocabulary_month }
 }
 
 WorkUnitsQuarter.element = element miradi:WorkUnitsQuarter
 {
-  attribute Year {vocabulary_year} &
-  attribute StartMonth {vocabulary_month}
+  attribute Year { vocabulary_year } &
+  attribute StartMonth { vocabulary_month }
 }
 
 WorkUnitsMonth.element = element miradi:WorkUnitsMonth
 {
-  attribute Year {vocabulary_year} &
-  attribute Month {vocabulary_month}
+  attribute Year { vocabulary_year } &
+  attribute Month { vocabulary_month }
 }
 
 WorkUnitsDay.element = element miradi:WorkUnitsDay
@@ -960,20 +960,20 @@ ExpensesFullProjectTimespan.element = element miradi:ExpensesFullProjectTimespan
 
 ExpensesYear.element = element miradi:ExpensesYear
 {
-  attribute StartYear {vocabulary_year} &
-  attribute StartMonth {vocabulary_month}
+  attribute StartYear { vocabulary_year } &
+  attribute StartMonth { vocabulary_month }
 }
 
 ExpensesQuarter.element = element miradi:ExpensesQuarter
 {
-  attribute Year {vocabulary_year} &
-  attribute StartMonth {vocabulary_month}
+  attribute Year { vocabulary_year } &
+  attribute StartMonth { vocabulary_month }
 }
 
 ExpensesMonth.element = element miradi:ExpensesMonth
 {
-  attribute Year {vocabulary_year} &
-  attribute Month {vocabulary_month}
+  attribute Year { vocabulary_year } &
+  attribute Month { vocabulary_month }
 }
 
 ExpensesDay.element = element miradi:ExpensesDay

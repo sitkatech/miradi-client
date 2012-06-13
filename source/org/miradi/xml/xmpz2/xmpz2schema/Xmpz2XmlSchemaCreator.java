@@ -719,20 +719,25 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void defineYearElement(String yearElementName)
 	{
-		Vector<String> subElements = createVector("attribute StartYear {vocabulary_year}", "attribute StartMonth {vocabulary_month}");
+		Vector<String> subElements = createVector(createAttribute(START_YEAR, "vocabulary_year"), createAttribute(START_MONTH, "vocabulary_month"));
 		defineElement(yearElementName, subElements);
 	}
-		
+
 	private void defineQuarterElement(String quarterElementName)
 	{
-		Vector<String> subElements = createVector("attribute Year {vocabulary_year}", "attribute StartMonth {vocabulary_month}");
+		Vector<String> subElements = createVector(createAttribute(YEAR, "vocabulary_year"), createAttribute(START_MONTH, "vocabulary_month"));
 		defineElement(quarterElementName, subElements);
 	}
 	
 	private void defineMonthElement(String monthElementName)
 	{
-		Vector<String> subElements = createVector("attribute Year {vocabulary_year}", "attribute Month {vocabulary_month}");
+		Vector<String> subElements = createVector(createAttribute(YEAR, "vocabulary_year"), createAttribute(MONTH, "vocabulary_month"));
 		defineElement(monthElementName, subElements);
+	}
+	
+	private String createAttribute(final String attributeName, final String attributeType)
+	{
+		return getSchemaWriter().createAttributeElement(attributeName, attributeType);
 	}
 	
 	private void defineDayElement(String dayElementName)
