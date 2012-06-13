@@ -664,11 +664,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void writeDateUnitSchemaElements() 
 	{
 		defineDateUnitEfforts();
-		defineFullProjectTimeSpanElement("WorkUnitsFullProjectTimespan");
-		defineYearElement("WorkUnitsYear");
-		defineQuarterElement("WorkUnitsQuarter");
-		defineMonthElement("WorkUnitsMonth");
-		defineDayElement("WorkUnitsDay");
+		defineFullProjectTimeSpanElement(WORK_UNITS_FULL_PROJECT_TIMESPAN);
+		defineYearElement(WORK_UNITS_YEAR);
+		defineQuarterElement(WORK_UNITS_QUARTER);
+		defineMonthElement(WORK_UNITS_MONTH);
+		defineDayElement(WORK_UNITS_DAY);
 		
 		defineDateUnitExpense();
 		defineFullProjectTimeSpanElement(EXPENSES_FULL_PROJECT_TIMESPAN);
