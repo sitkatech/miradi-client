@@ -85,7 +85,7 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 		return createSchemaElement(elementName, elementType) + "?";
 	}
 	
-	public String createElementName(String parentElementName, final String elementName)
+	public String createRequiredElementDefinition(String parentElementName, final String elementName)
 	{
 		return createSchemaElement8(parentElementName, createRequiredDotElement(elementName));
 	}
