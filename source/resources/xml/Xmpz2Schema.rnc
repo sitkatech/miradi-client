@@ -1016,7 +1016,7 @@ WorkUnitsEntry.element = element miradi:WorkUnitsEntry
   element miradi:WorkUnitsEntryAccountingCodeId { AccountingCodeId.element }? &
   element miradi:WorkUnitsEntryBudgetCategoryOneId { BudgetCategoryOneId.element }? &
   element miradi:WorkUnitsEntryBudgetCategoryTwoId { BudgetCategoryTwoId.element }? &
-  element miradi:WorkUnitsEntryDetails{ DateUnitWorkUnits.element* }?
+  element miradi:WorkUnitsEntryDetails { DateUnitWorkUnits.element* }?
 }
 
 ExternalProjectId.element = element miradi:ExternalProjectId
