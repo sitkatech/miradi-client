@@ -55,6 +55,11 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 		println(idName + ".element = element " + PREFIX + idName + " { xsd:integer }");
 	}
 	
+	public void writeElement(final String elementName, String elementType)
+	{
+		printIndented(createSchemaElement11(elementName, elementType));
+	}
+	
 	public String createAttributeSchemaElement(final String attributeName)
 	{
 		return "attribute " + attributeName + " { text } &";
@@ -90,11 +95,6 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 		return ELEMENT_NAME + PREFIX + elementName + " { " + elementType + " }";
 	}
 	
-	public void writeElement(final String elementName, String elementType)
-	{
-		printIndented(createSchemaElement11(elementName, elementType));
-	}
-
 	private String createSchemaElement11(final String elementName, String elementType)
 	{
 		return ELEMENT_NAME + PREFIX + elementName + " { xsd:" + elementType + " }";
