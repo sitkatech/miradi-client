@@ -50,9 +50,9 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 		startBlock();
 	}
 	
-	public void writeElement(final String idName)
+	public void writeElement(final String elementName)
 	{
-		println(idName + ".element = element " + PREFIX + idName + " { xsd:integer }");
+		println(elementName + ".element = element " + PREFIX + elementName + " { xsd:integer }");
 	}
 	
 	public void writeElement(final String elementName, String elementType)
