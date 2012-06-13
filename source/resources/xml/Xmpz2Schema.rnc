@@ -947,7 +947,8 @@ WorkUnitsDay.element = element miradi:WorkUnitsDay
 
 DateUnitExpense.element = element miradi:DateUnitExpense
 {
-  element miradi:ExpensesDateUnit{ExpensesDay.element | ExpensesMonth.element | ExpensesQuarter.element | ExpensesYear.element | ExpensesFullProjectTimespan.element }? &
+  element miradi:ExpensesDateUnit{  ExpensesDay.element|  ExpensesMonth.element|  ExpensesQuarter.element|  ExpensesYear.element|  ExpensesFullProjectTimespan.element
+   }? &
   element miradi:Expense { xsd:decimal }?
 }
 
