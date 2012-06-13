@@ -314,4 +314,6 @@ public interface Xmpz2XmlConstants
 	public static final String VOCABULARY_STATUS = "vocabulary_status";
 	public static final String VOCABULARY_STRATEGY_STATUS = "vocabulary_strategy_status";
 	public static final String VOCABULARY_DATE = "vocabulary_date";
+	public static final String VOCABULARY_MONTH = "vocabulary_month";
+	public static final String VOCABULARY_YEAR = "vocabulary_year";
 }
