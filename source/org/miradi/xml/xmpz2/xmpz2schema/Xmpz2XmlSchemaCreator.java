@@ -671,11 +671,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		defineDayElement("WorkUnitsDay");
 		
 		defineDateUnitExpense();
-		defineFullProjectTimeSpanElement("ExpensesFullProjectTimespan");
-		defineYearElement("ExpensesYear");
-		defineQuarterElement("ExpensesQuarter");
-		defineMonthElement("ExpensesMonth");
-		defineDayElement("ExpensesDay");
+		defineFullProjectTimeSpanElement(EXPENSES_FULL_PROJECT_TIMESPAN);
+		defineYearElement(EXPENSES_YEAR);
+		defineQuarterElement(EXPENSES_QUARTER);
+		defineMonthElement(EXPENSES_MONTH);
+		defineDayElement(EXPENSES_DAY);
 	}
 	
 	private void defineDateUnitEfforts()
