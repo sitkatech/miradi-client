@@ -849,16 +849,14 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void defineElementWithSameType(String parentName, Vector<String> names, String elementType)
 	{
 		getSchemaWriter().startElementDefinition(parentName);
+		Vector<String> elementNames = new Vector<String>();
 		for (int index = 0; index < names.size(); ++index)
 		{
-			if (index > 0)
-				getSchemaWriter().print(" &\n");
-			
-			final String elementName = names.get(index);
-			getSchemaWriter().writeElement(elementName, elementType);	
+			final String elementName = getSchemaWriter().createSchemaElement11(names.get(index), elementType);
+			elementNames.add(elementName);	
 		}
 		
-		getSchemaWriter().println();
+		getSchemaWriter().defineElements(elementNames);
 		getSchemaWriter().endBlock();
 	}
 
