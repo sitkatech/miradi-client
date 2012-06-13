@@ -317,7 +317,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	public String createDateUnitEffortListSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		return createSchemaElement(baseObjectSchema, fieldSchema, "DateUnit" + getDateUnitTypeName(baseObjectSchema.getType()));
+		return createSchemaElement(baseObjectSchema, fieldSchema, DATE_UNIT + getDateUnitTypeName(baseObjectSchema.getType()));
 	}
 	
 	public String createChoiceSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, ChoiceQuestion choiceQuestion)
