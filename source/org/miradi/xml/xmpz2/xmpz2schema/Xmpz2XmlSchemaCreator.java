@@ -750,8 +750,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		getSchemaWriter().defineAlias(createElementName(TIME_PERIOD_COSTS), ELEMENT_NAME + PREFIX + TIME_PERIOD_COSTS);
 		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement4(CALCULATED_START_DATE, "vocabulary_date"));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement4(CALCULATED_END_DATE, "vocabulary_date"));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElementWithAnd(CALCULATED_START_DATE, "vocabulary_date"));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElementWithAnd(CALCULATED_END_DATE, "vocabulary_date"));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_EXPENSE_TOTAL, "xsd:decimal"));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_WORK_UNITS_TOTAL, "xsd:decimal"));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_TOTAL_BUDGET_COST, "xsd:decimal"));
@@ -800,7 +800,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		getSchemaWriter().defineAlias(createElementName(EXTERNAL_PROJECT_ID_ELEMENT_NAME), ELEMENT_NAME + PREFIX + EXTERNAL_PROJECT_ID_ELEMENT_NAME);
 		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement4(EXTERNAL_APP_ELEMENT_NAME, "text"));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElementWithAnd(EXTERNAL_APP_ELEMENT_NAME, "text"));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement(PROJECT_ID, "text"));
 		getSchemaWriter().endBlock();
 	}
