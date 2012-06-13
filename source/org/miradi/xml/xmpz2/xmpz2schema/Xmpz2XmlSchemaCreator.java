@@ -793,7 +793,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().printlnIndented(createBudgetSchemaElement(WORK_UNITS_ENTRY, ACCOUNTING_CODE_ID));
 		getSchemaWriter().printlnIndented(createBudgetSchemaElement(WORK_UNITS_ENTRY, BUDGET_CATEGORY_ONE_ID));
 		getSchemaWriter().printlnIndented(createBudgetSchemaElement(WORK_UNITS_ENTRY, BUDGET_CATEGORY_TWO_ID));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement(WORK_UNITS_ENTRY + DETAILS, getSchemaWriter().createDotElement(DATE_UNIT_WORK_UNITS) + "*"));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement(WORK_UNITS_ENTRY + DETAILS, getSchemaWriter().createRequiredDotElement(DATE_UNIT_WORK_UNITS)));
 		getSchemaWriter().endBlock();
 	}
 
