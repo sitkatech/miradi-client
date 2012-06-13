@@ -913,7 +913,8 @@ DiagramSize.element = element miradi:DiagramSize
 
 DateUnitWorkUnits.element = element miradi:DateUnitWorkUnits
 {
-  element miradi:WorkUnitsDateUnit{WorkUnitsDay.element | WorkUnitsMonth.element | WorkUnitsQuarter.element | WorkUnitsYear.element | WorkUnitsFullProjectTimespan.element }? &
+  element miradi:WorkUnitsDateUnit{  WorkUnitsDay.element|  WorkUnitsMonth.element|  WorkUnitsQuarter.element|  WorkUnitsYear.element|  WorkUnitsFullProjectTimespan.element
+   }? &
   element miradi:NumberOfUnits { xsd:decimal }?
 }
 
