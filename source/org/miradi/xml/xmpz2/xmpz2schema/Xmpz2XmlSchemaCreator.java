@@ -740,19 +740,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	private Vector<String> createYearMonthAttributeDefinitionsVector(final String year, final String month)
 	{
-		return createVector(createYearTypeAttribute(year), createMonthTypeAttribute(month));
+		return createVector(createAttribute(year, VOCABULARY_YEAR), createAttribute(month, VOCABULARY_MONTH));
 	}
 
-	private String createMonthTypeAttribute(final String attributeName)
-	{
-		return createAttribute(attributeName, VOCABULARY_MONTH);
-	}
-
-	private String createYearTypeAttribute(final String attributeName)
-	{
-		return createAttribute(attributeName, VOCABULARY_YEAR);
-	}
-	
 	private String createAttribute(final String attributeName, final String attributeType)
 	{
 		return getSchemaWriter().createAttributeElement(attributeName, attributeType);
