@@ -604,14 +604,14 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().writeSchemaElement("ol", "element.li*");
 		getSchemaWriter().writeSchemaElement("li", "formatted_text");
 		
-		getSchemaWriter().printlnIndented("element.a = element a ");
-		getSchemaWriter().printlnIndented("{");
-		getSchemaWriter().printlnIndented("	attribute href {text} &");
-		getSchemaWriter().printlnIndented("	attribute name {text}? &");
-		getSchemaWriter().printlnIndented("	attribute title {text}? &");
-		getSchemaWriter().printlnIndented("	attribute target {text}? &");			  
-		getSchemaWriter().printlnIndented(" formatted_text  ");
-		getSchemaWriter().printlnIndented("}");
+		getSchemaWriter().printlnIndented("element.a = element a");
+		getSchemaWriter().startBlock();
+		getSchemaWriter().printlnIndented(getSchemaWriter().createTextAttributeElement("href") + " &");
+		getSchemaWriter().printlnIndented(getSchemaWriter().createTextAttributeElement("name") + "? &");
+		getSchemaWriter().printlnIndented(getSchemaWriter().createTextAttributeElement("title") + "? &");
+		getSchemaWriter().printlnIndented(getSchemaWriter().createTextAttributeElement("target") + "? &");			  
+		getSchemaWriter().printlnIndented("formatted_text");
+		getSchemaWriter().endBlock();
 	}
 	
 	private void writeGeospacialLocationElement()
