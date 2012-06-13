@@ -300,7 +300,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	public String createDateSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		return createElementSchema(baseObjectSchema, fieldSchema, "vocabulary_date");
+		return createElementSchema(baseObjectSchema, fieldSchema, VOCABULARY_DATE);
 	}
 	
 	public String createRefSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
@@ -756,8 +756,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		getSchemaWriter().defineAlias(createElementName(TIME_PERIOD_COSTS), ELEMENT_NAME + PREFIX + TIME_PERIOD_COSTS);
 		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElementWithAnd(CALCULATED_START_DATE, "vocabulary_date"));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElementWithAnd(CALCULATED_END_DATE, "vocabulary_date"));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElementWithAnd(CALCULATED_START_DATE, VOCABULARY_DATE));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElementWithAnd(CALCULATED_END_DATE, VOCABULARY_DATE));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_EXPENSE_TOTAL, writer.createDecimalType()));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_WORK_UNITS_TOTAL, writer.createDecimalType()));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_TOTAL_BUDGET_COST, writer.createDecimalType()));
