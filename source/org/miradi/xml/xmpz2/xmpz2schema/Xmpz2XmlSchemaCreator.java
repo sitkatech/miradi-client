@@ -290,12 +290,12 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	public String createNumberSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema)
 	{
-		return createElementSchema(baseObjectSchema, fieldSchema, "xsd:decimal");
+		return createElementSchema(baseObjectSchema, fieldSchema, getSchemaWriter().createXsdElement("decimal"));
 	}
 	
 	public String createIntegerSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		return createElementSchema(baseObjectSchema, fieldSchema, "xsd:integer");
+		return createElementSchema(baseObjectSchema, fieldSchema, getSchemaWriter().createXsdElement("integer"));
 	}
 	
 	public String createDateSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
@@ -683,7 +683,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().defineAlias("DateUnitWorkUnits.element", ELEMENT_NAME + PREFIX + "DateUnitWorkUnits");
 		getSchemaWriter().startBlock();
 		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + "WorkUnitsDateUnit{WorkUnitsDay.element | WorkUnitsMonth.element | WorkUnitsQuarter.element | WorkUnitsYear.element | WorkUnitsFullProjectTimespan.element }? &");
-		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + "NumberOfUnits { xsd:decimal }?");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + "NumberOfUnits { " + getSchemaWriter().createXsdElement("decimal") +" }?");
 		getSchemaWriter().endBlock();
 	}
 
@@ -692,7 +692,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().defineAlias("DateUnitExpense.element", ELEMENT_NAME + PREFIX + "DateUnitExpense");
 		getSchemaWriter().startBlock();
 		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + EXPENSES_DATE_UNIT + "{ExpensesDay.element | ExpensesMonth.element | ExpensesQuarter.element | ExpensesYear.element | ExpensesFullProjectTimespan.element }? &");
-		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + EXPENSE + " { xsd:decimal }?");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + EXPENSE + " { " + getSchemaWriter().createXsdElement("decimal") +" }?");
 		getSchemaWriter().endBlock();
 	}
 	
@@ -752,9 +752,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().startBlock();
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElementWithAnd(CALCULATED_START_DATE, "vocabulary_date"));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElementWithAnd(CALCULATED_END_DATE, "vocabulary_date"));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_EXPENSE_TOTAL, "xsd:decimal"));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_WORK_UNITS_TOTAL, "xsd:decimal"));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_TOTAL_BUDGET_COST, "xsd:decimal"));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_EXPENSE_TOTAL, getSchemaWriter().createXsdElement("decimal")));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_WORK_UNITS_TOTAL, getSchemaWriter().createXsdElement("decimal")));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_TOTAL_BUDGET_COST, getSchemaWriter().createXsdElement("decimal")));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_WHO, "ResourceId.element*"));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_EXPENSE_ENTRIES, getSchemaWriter().createRequiredDotElement(EXPENSE_ENTRY)));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement(CALCULATED_WORK_UNITS_ENTRIES, getSchemaWriter().createRequiredDotElement(WORK_UNITS_ENTRY)));
