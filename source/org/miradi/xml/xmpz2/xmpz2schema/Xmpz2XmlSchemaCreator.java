@@ -312,7 +312,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	public String createBaseIdSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, int objectType)
 	{
 		String objectName = getIdElementName(baseObjectSchema, fieldSchema, objectType);
-		return createSchemaElement(baseObjectSchema, fieldSchema, objectName + ID);
+		return createSchemaElement(baseObjectSchema, fieldSchema, createIdName(objectName));
 	}
 
 	public String createDateUnitEffortListSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
@@ -484,7 +484,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void writeIdElement(String baseName)
 	{
-		getSchemaWriter().writeElement(baseName + ID);
+		getSchemaWriter().writeElement(createIdName(baseName));
 	}
 
 	private void writeBaseObjectSchemaHeader(BaseObjectSchemaWriter baseObjectSchemaWriter)
@@ -567,7 +567,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		Vector<String> elements = new Vector<String>();
 		for (String elementName : elementNames)
 		{
-			elements.add(createElementName(elementName + ID));
+			elements.add(createElementName(createIdName(elementName)));
 		}
 		
 		getSchemaWriter().writeOredElements(elements);
@@ -1005,6 +1005,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		items.add(item2);
 		
 		return items;
+	}
+	
+	private String createIdName(String objectName)
+	{
+		return objectName + ID;
 	}
 	
 	public ChoiceQuestionToSchemaElementNameMap getChoiceQuestionToSchemaElementNameMap()
