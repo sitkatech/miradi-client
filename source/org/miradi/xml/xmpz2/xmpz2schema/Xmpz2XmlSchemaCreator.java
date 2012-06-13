@@ -691,7 +691,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		getSchemaWriter().writeAlias(DATE_UNITS_EXPENSE);
 		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + EXPENSES_DATE_UNIT + "{ExpensesDay.element | ExpensesMonth.element | ExpensesQuarter.element | ExpensesYear.element | ExpensesFullProjectTimespan.element }? &");
+		final String elementType = "ExpensesDay.element | ExpensesMonth.element | ExpensesQuarter.element | ExpensesYear.element | ExpensesFullProjectTimespan.element";
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + EXPENSES_DATE_UNIT + "{" + elementType + " }? &");
 		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + EXPENSE + " { " + writer.createDecimalType() +" }?");
 		getSchemaWriter().endBlock();
 	}
