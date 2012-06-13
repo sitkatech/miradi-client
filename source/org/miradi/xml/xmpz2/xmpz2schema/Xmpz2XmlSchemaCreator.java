@@ -136,7 +136,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void writeHeader()
 	{
 		getSchemaWriter().writeNamespace(NAME_SPACE);
-		getSchemaWriter().defineAlias("start", CONSERVATION_PROJECT + DOT_ELEMENT);
+		getSchemaWriter().defineAlias("start", createElementName(CONSERVATION_PROJECT));
 	}
 
 	private void writeConservationProjectElement()
@@ -255,7 +255,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	public String writeCalculatedCostSchemaElement(BaseObjectSchema baseObjectSchema)
 	{
-		return getSchemaWriter().createSchemaElement8(baseObjectSchema.getXmpz2ElementName() + TIME_PERIOD_COSTS, (TIME_PERIOD_COSTS + DOT_ELEMENT));
+		return getSchemaWriter().createSchemaElement8(baseObjectSchema.getXmpz2ElementName() + TIME_PERIOD_COSTS, (createElementName(TIME_PERIOD_COSTS)));
 	}
 	
 	public String createThresholdsSchemaElement(BaseObjectSchema baseObjectSchema)
@@ -565,7 +565,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		Vector<String> elements = new Vector<String>();
 		for (String elementName : elementNames)
 		{
-			elements.add(elementName + ID + DOT_ELEMENT);
+			elements.add(createElementName(elementName + ID));
 		}
 		
 		getSchemaWriter().writeOredElements(elements);
@@ -626,7 +626,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void writeDashboardUserChoiceMap()
 	{
-		getSchemaWriter().defineAlias(DASHBOARD_STATUS_ENTRY + DOT_ELEMENT, ELEMENT_NAME + PREFIX + DASHBOARD_STATUS_ENTRY);
+		getSchemaWriter().defineAlias(createElementName(DASHBOARD_STATUS_ENTRY), ELEMENT_NAME + PREFIX + DASHBOARD_STATUS_ENTRY);
 		getSchemaWriter().startBlock();
 		getSchemaWriter().printlnIndented(getSchemaWriter().createAttributeSchemaElement(KEY_ATTRIBUTE_NAME));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9(DASHBOARD_PROGRESS, VOCABULARY_DASHBOARD_ROW_PROGRESS));
@@ -643,7 +643,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void writeExtraDataSectionElement()
 	{
-		getSchemaWriter().defineAlias(EXTRA_DATA_SECTION + DOT_ELEMENT, ELEMENT_NAME + PREFIX + EXTRA_DATA_SECTION);
+		getSchemaWriter().defineAlias(createElementName(EXTRA_DATA_SECTION), ELEMENT_NAME + PREFIX + EXTRA_DATA_SECTION);
 		getSchemaWriter().startBlock();
 		getSchemaWriter().printlnIndented(getSchemaWriter().createAttributeSchemaElement(EXTRA_DATA_SECTION_OWNER_ATTRIBUTE));
 		getSchemaWriter().printlnIndented(EXTRA_DATA_ITEM + ".element *");
@@ -654,7 +654,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	private void defineExtraDataItemElement()
 	{
-		getSchemaWriter().defineAlias(EXTRA_DATA_ITEM + DOT_ELEMENT, ELEMENT_NAME + PREFIX + EXTRA_DATA_ITEM);
+		getSchemaWriter().defineAlias(createElementName(EXTRA_DATA_ITEM), ELEMENT_NAME + PREFIX + EXTRA_DATA_ITEM);
 		getSchemaWriter().startBlock();
 		getSchemaWriter().printlnIndented(getSchemaWriter().createAttributeSchemaElement(EXTRA_DATA_ITEM_NAME));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement(EXTRA_DATA_ITEM_VALUE));
@@ -730,7 +730,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void defineElement(String elementName, Vector<String> subElements)
 	{
-		getSchemaWriter().defineAlias(elementName + DOT_ELEMENT, "element miradi:" + elementName);
+		getSchemaWriter().defineAlias(createElementName(elementName), "element miradi:" + elementName);
 		getSchemaWriter().startBlock();
 		getSchemaWriter().defineElements(subElements);
 		getSchemaWriter().endBlock();
@@ -738,7 +738,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void writeThresholdsElement()
 	{
-		getSchemaWriter().defineAlias(THRESHOLD + DOT_ELEMENT, ELEMENT_NAME + PREFIX + THRESHOLD);
+		getSchemaWriter().defineAlias(createElementName(THRESHOLD), ELEMENT_NAME + PREFIX + THRESHOLD);
 		getSchemaWriter().startBlock();
 		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + STATUS_CODE + "{" + VOCABULARY_MEASUREMENT_STATUS + "}? &");
 		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + THRESHOLD_VALUE + " { text }? &");
@@ -748,7 +748,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	private void writeTimePeriodCostsElement()
 	{
-		getSchemaWriter().defineAlias(TIME_PERIOD_COSTS + DOT_ELEMENT, ELEMENT_NAME + PREFIX + TIME_PERIOD_COSTS);
+		getSchemaWriter().defineAlias(createElementName(TIME_PERIOD_COSTS), ELEMENT_NAME + PREFIX + TIME_PERIOD_COSTS);
 		getSchemaWriter().startBlock();
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement4(CALCULATED_START_DATE, "vocabulary_date"));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement4(CALCULATED_END_DATE, "vocabulary_date"));
@@ -768,7 +768,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void writeExpenseEntryElement()
 	{
-		getSchemaWriter().defineAlias(EXPENSE_ENTRY + DOT_ELEMENT, ELEMENT_NAME + PREFIX + EXPENSE_ENTRY);
+		getSchemaWriter().defineAlias(createElementName(EXPENSE_ENTRY), ELEMENT_NAME + PREFIX + EXPENSE_ENTRY);
 		getSchemaWriter().startBlock();
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9((EXPENSE_ENTRY + FUNDING_SOURCE_ID), (FUNDING_SOURCE_ID + ".element")));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9((EXPENSE_ENTRY + ACCOUNTING_CODE_ID), (ACCOUNTING_CODE_ID + ".element")));
@@ -780,7 +780,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void writeWorkUnitsEntryElement()
 	{
-		getSchemaWriter().defineAlias(WORK_UNITS_ENTRY + DOT_ELEMENT, ELEMENT_NAME + PREFIX + WORK_UNITS_ENTRY);
+		getSchemaWriter().defineAlias(createElementName(WORK_UNITS_ENTRY), ELEMENT_NAME + PREFIX + WORK_UNITS_ENTRY);
 		getSchemaWriter().startBlock();
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9((WORK_UNITS_ENTRY + RESOURCE_ID), (RESOURCE_ID + ".element")));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9((WORK_UNITS_ENTRY + FUNDING_SOURCE_ID), (FUNDING_SOURCE_ID + ".element")));
@@ -793,7 +793,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void writeExternaIdSchemaElement()
 	{
-		getSchemaWriter().defineAlias(EXTERNAL_PROJECT_ID_ELEMENT_NAME + DOT_ELEMENT, ELEMENT_NAME + PREFIX + EXTERNAL_PROJECT_ID_ELEMENT_NAME);
+		getSchemaWriter().defineAlias(createElementName(EXTERNAL_PROJECT_ID_ELEMENT_NAME), ELEMENT_NAME + PREFIX + EXTERNAL_PROJECT_ID_ELEMENT_NAME);
 		getSchemaWriter().startBlock();
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement4(EXTERNAL_APP_ELEMENT_NAME, "text"));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement5(PROJECT_ID, "text"));
@@ -802,7 +802,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	private void writeSimpleThreatRatingElement()
 	{
-		getSchemaWriter().defineAlias(SIMPLE_BASED_THREAT_RATING + DOT_ELEMENT	, ELEMENT_NAME + PREFIX + SIMPLE_BASED_THREAT_RATING);
+		getSchemaWriter().defineAlias(createElementName(SIMPLE_BASED_THREAT_RATING)	, ELEMENT_NAME + PREFIX + SIMPLE_BASED_THREAT_RATING);
 		getSchemaWriter().startBlock();
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9((SIMPLE_BASED_THREAT_RATING + SCOPE), VOCABULARY_SIMPLE_THREAT_RATING_SCOPE_CODE));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9((SIMPLE_BASED_THREAT_RATING + SEVERITY), VOCABULARY_SIMPLE_THREAT_RATING_SEVERITY_CODE));
@@ -812,7 +812,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	private void writeStressBasedThreatRatingElement()
 	{
-		getSchemaWriter().defineAlias(STRESS_BASED_THREAT_RATING + DOT_ELEMENT, ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING);
+		getSchemaWriter().defineAlias(createElementName(STRESS_BASED_THREAT_RATING), ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING);
 		getSchemaWriter().startBlock();
 		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING + STRESS + ID + "{ StressId.element } &");
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9((STRESS_BASED_THREAT_RATING + CONTRIBUTION), VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE));
@@ -825,7 +825,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void writeDiagramFactorUiSettings()
 	{
-		getSchemaWriter().defineAlias(STYLING + DOT_ELEMENT	, ELEMENT_NAME + PREFIX + STYLING);
+		getSchemaWriter().defineAlias(createElementName(STYLING), ELEMENT_NAME + PREFIX + STYLING);
 		getSchemaWriter().startBlock();
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9((DIAGRAM_FACTOR + DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME), ChoiceQuestionToSchemaElementNameMap.VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9((DIAGRAM_FACTOR + DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME), ChoiceQuestionToSchemaElementNameMap.VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE));
