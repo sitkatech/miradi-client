@@ -885,14 +885,15 @@ element.strike = element strike { formatted_text }
 element.ul = element ul { element.li* }
 element.ol = element ol { element.li* }
 element.li = element li { formatted_text }
-element.a = element a 
+element.a = element a
 {
-	attribute href {text} &
-	attribute name {text}? &
-	attribute title {text}? &
-	attribute target {text}? &
- formatted_text  
+  attribute href { text } &
+  attribute name { text }? &
+  attribute title { text }? &
+  attribute target { text }? &
+  formatted_text
 }
+
 GeospatialLocation.element = element miradi:GeospatialLocation
 {
   element miradi:latitude { xsd:decimal } &
