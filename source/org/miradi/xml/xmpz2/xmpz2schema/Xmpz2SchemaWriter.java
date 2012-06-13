@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2.xmpz2schema;
 
 import java.io.PrintStream;
+import java.util.Vector;
 
 import org.martus.util.UnicodeWriter;
 import org.miradi.xml.generic.SchemaWriter;
@@ -143,5 +144,16 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 	public String createDecimalType()
 	{
 		return createXsdElement("decimal");
+	}
+	
+	public void defineBudgetElements(final String parentName, final String containerName, final String elementName, Vector<String> elementTypes)
+	{
+		writeAlias(parentName);
+		startBlock();
+		printIndented(ELEMENT_NAME + PREFIX + containerName + "{");
+		writeOredElements(elementTypes);
+		printlnIndented(" }? &");
+		printlnIndented(ELEMENT_NAME + PREFIX + elementName + " { " + createDecimalType() +" }?");
+		endBlock();
 	}
 }

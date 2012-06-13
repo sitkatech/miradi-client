@@ -687,7 +687,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		elementTypes.add(createElementName(WORK_UNITS_YEAR));
 		elementTypes.add(createElementName(WORK_UNITS_FULL_PROJECT_TIMESPAN));
 		
-		defineBudgetElements(DATE_UNIT_WORK_UNITS, WORK_UNITS_DATE_UNIT, WORK_UNITS, elementTypes);
+		getSchemaWriter().defineBudgetElements(DATE_UNIT_WORK_UNITS, WORK_UNITS_DATE_UNIT, WORK_UNITS, elementTypes);
 	}
 
 	private void defineDateUnitExpense()
@@ -699,18 +699,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		elementTypes.add(createElementName(EXPENSES_YEAR));
 		elementTypes.add(createElementName(EXPENSES_FULL_PROJECT_TIMESPAN));
 		
-		defineBudgetElements(DATE_UNITS_EXPENSE, EXPENSES_DATE_UNIT, EXPENSE, elementTypes);
-	}
-	
-	private void defineBudgetElements(final String parentName, final String containerName, final String elementName, Vector<String> elementTypes)
-	{
-		getSchemaWriter().writeAlias(parentName);
-		getSchemaWriter().startBlock();
-		getSchemaWriter().printIndented(ELEMENT_NAME + PREFIX + containerName + "{");
-		getSchemaWriter().writeOredElements(elementTypes);
-		getSchemaWriter().printlnIndented(" }? &");
-		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + elementName + " { " + writer.createDecimalType() +" }?");
-		getSchemaWriter().endBlock();
+		getSchemaWriter().defineBudgetElements(DATE_UNITS_EXPENSE, EXPENSES_DATE_UNIT, EXPENSE, elementTypes);
 	}
 	
 	private void defineFullProjectTimeSpanElement(String fullProjectTimeSpanElementName)
