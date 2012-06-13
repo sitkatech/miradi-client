@@ -346,13 +346,13 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		codelistSchemaElements.add(createCodelistSchemaElement(codelistElementName, question));
 		
-		return codelistElementName + "Container.element ?";
+		return createContainerName(codelistElementName) + ".element ?";
 	}
 	
 	private String createCodelistSchemaElement(String codelistElementName, ChoiceQuestion question)
 	{
 		String vocabularyName = getChoiceQuestionToSchemaElementNameMap().get(question);
-		String containerElement = codelistElementName + "Container.element = element " +  PREFIX + codelistElementName + "Container " + HtmlUtilities.NEW_LINE;
+		String containerElement = createContainerName(codelistElementName) + ".element = element " +  PREFIX + createContainerName(codelistElementName) + HtmlUtilities.NEW_LINE;
 		containerElement += "{" + HtmlUtilities.NEW_LINE;
 		containerElement += getSchemaWriter().createSchemaElement("code", vocabularyName) + " *" + HtmlUtilities.NEW_LINE;
 		containerElement += "}" + HtmlUtilities.NEW_LINE;
@@ -360,6 +360,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return containerElement;
 	}
 	
+	private String createContainerName(String elementName)
+	{
+		return elementName + "Container";
+	}
+
 	public String createRelevantSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
 		final String relevantTypeName = getRelevantTypeName(fieldSchema) + ID;
