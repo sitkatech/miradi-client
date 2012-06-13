@@ -750,8 +750,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		getSchemaWriter().defineAlias(TIME_PERIOD_COSTS + DOT_ELEMENT, ELEMENT_NAME + PREFIX + TIME_PERIOD_COSTS);
 		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement10(CALCULATED_START_DATE, "vocabulary_date"));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement10(CALCULATED_END_DATE, "vocabulary_date"));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement4(CALCULATED_START_DATE, "vocabulary_date"));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement4(CALCULATED_END_DATE, "vocabulary_date"));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9(CALCULATED_EXPENSE_TOTAL, "xsd:decimal"));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9(CALCULATED_WORK_UNITS_TOTAL, "xsd:decimal"));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9(CALCULATED_TOTAL_BUDGET_COST, "xsd:decimal"));
