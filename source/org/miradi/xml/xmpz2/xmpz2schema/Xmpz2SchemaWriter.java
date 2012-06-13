@@ -57,7 +57,7 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 	
 	public void writeElement(final String elementName, String elementType)
 	{
-		printIndented(createSchemaElement11(elementName, elementType));
+		printIndented(createXsdSchemaElement(elementName, elementType));
 	}
 	
 	public String createAttributeSchemaElement(final String attributeName)
@@ -90,11 +90,11 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 		return createOptionalSchemaElement(parentElementName, createRequiredDotElement(elementName));
 	}
 
-	public String createSchemaElement11(final String elementName, String elementType)
+	public String createXsdSchemaElement(final String elementName, String elementType)
 	{
-		return createSchemaElement(elementName, "xsd:" + elementType);
+		return createSchemaElement(elementName, createXsdElement(elementType));
 	}
-		
+
 	public String createRequiredSchemaElement(String parentElementName, final String elementName)
 	{
 		return createSchemaElement(parentElementName, createRequiredElementName(elementName));
@@ -123,5 +123,15 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 	public String createSchemaElementEndingWithAnd(final String element)
 	{
 		return element + " &";
+	}
+	
+	public String createXsdElement(String elementType)
+	{
+		return "xsd:" + elementType;
+	}
+
+	public String createBooleanType()
+	{
+		return createXsdElement("boolean");
 	}
 }
