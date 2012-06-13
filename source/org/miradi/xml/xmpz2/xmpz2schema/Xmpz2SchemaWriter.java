@@ -88,7 +88,7 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 	
 	public String createOptionalSchemaElement(final String elementName, final String elementType)
 	{
-		return createSchemaElement(elementName, elementType) + "?";
+		return createOptionalSchemaElement(createSchemaElement(elementName, elementType));
 	}
 	
 	public String createRequiredElementDefinition(String parentElementName, final String elementName)
@@ -131,6 +131,11 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 		return element + " &";
 	}
 	
+	public String createOptionalSchemaElement(final String createSchemaElement)
+	{
+		return createSchemaElement + "?";
+	}
+	
 	public String createXsdElement(String elementType)
 	{
 		return "xsd:" + elementType;
@@ -153,7 +158,7 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 		printIndented(ELEMENT_NAME + PREFIX + containerName + "{");
 		writeOredElements(elementTypes);
 		printlnIndented(" }? &");
-		printlnIndented(createSchemaElement(elementName, createDecimalType()) + "?");
+		printlnIndented(createOptionalSchemaElement(createSchemaElement(elementName, createDecimalType())));
 		endBlock();
 	}
 }
