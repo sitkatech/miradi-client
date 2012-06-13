@@ -275,7 +275,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	public String createStringSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
-		return createElementSchema(baseObjectSchema, fieldSchema, "text");
+		return createElementSchema(baseObjectSchema, fieldSchema, TEXT_ELEMENT_TYPE);
 	}
 
 	public String createUserTextSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
@@ -586,7 +586,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().write("formatted_text = ( ");
 		
 		Vector<String> elements = new Vector<String>();
-		elements.add("text");
+		elements.add(TEXT_ELEMENT_TYPE);
 		for (int index = 0; index < tagNames.length; ++index)
 		{
 			elements.add("element." + tagNames[index]);
@@ -639,7 +639,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().printlnIndented(getSchemaWriter().createAttributeSchemaElement(KEY_ATTRIBUTE_NAME));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(DASHBOARD_PROGRESS, VOCABULARY_DASHBOARD_ROW_PROGRESS));
 		getSchemaWriter().printlnIndented(DASHBOARD + DASHBOARD_FLAGS + CONTAINER_ELEMENT_TAG + ".element? &");
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement(DASHBOARD_COMMENTS, "text"));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement(DASHBOARD_COMMENTS, TEXT_ELEMENT_TYPE));
 		getSchemaWriter().endBlock();
 	}
 
@@ -763,8 +763,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().defineAlias(createElementName(THRESHOLD), ELEMENT_NAME + PREFIX + THRESHOLD);
 		getSchemaWriter().startBlock();
 		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(STATUS_CODE, VOCABULARY_MEASUREMENT_STATUS));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(THRESHOLD_VALUE, "text"));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement(THRESHOLD_DETAILS, "text"));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(THRESHOLD_VALUE, TEXT_ELEMENT_TYPE));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement(THRESHOLD_DETAILS, TEXT_ELEMENT_TYPE));
 		getSchemaWriter().endBlock();
 	}
 
@@ -822,8 +822,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		getSchemaWriter().defineAlias(createElementName(EXTERNAL_PROJECT_ID_ELEMENT_NAME), ELEMENT_NAME + PREFIX + EXTERNAL_PROJECT_ID_ELEMENT_NAME);
 		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElementWithAnd(EXTERNAL_APP_ELEMENT_NAME, "text"));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement(PROJECT_ID, "text"));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElementWithAnd(EXTERNAL_APP_ELEMENT_NAME, TEXT_ELEMENT_TYPE));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement(PROJECT_ID, TEXT_ELEMENT_TYPE));
 		getSchemaWriter().endBlock();
 	}
 
@@ -1026,6 +1026,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return objectName + ID;
 	}
 	
+
 	public ChoiceQuestionToSchemaElementNameMap getChoiceQuestionToSchemaElementNameMap()
 	{
 		return choiceQuestionToSchemaElementNameMap;

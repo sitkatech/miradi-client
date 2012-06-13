@@ -39,6 +39,7 @@ public interface Xmpz2XmlConstants
 	
 	public static final String CONTAINER_ELEMENT_TAG = "Container";
 	public static final String POOL_ELEMENT_TAG = "Pool";
+	public static final String TEXT_ELEMENT_TYPE = "text";
 	
 	public static final String ID = "Id";
 	public static final String CONSERVATION_PROJECT = "ConservationProject";
