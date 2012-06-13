@@ -747,8 +747,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().defineAlias(createElementName(THRESHOLD), ELEMENT_NAME + PREFIX + THRESHOLD);
 		getSchemaWriter().startBlock();
 		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(STATUS_CODE, VOCABULARY_MEASUREMENT_STATUS));
-		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + THRESHOLD_VALUE + " { text }? &");
-		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + THRESHOLD_DETAILS + " { text }?");
+		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(THRESHOLD_VALUE, "text"));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement(THRESHOLD_DETAILS, "text"));
 		getSchemaWriter().endBlock();
 	}
 
