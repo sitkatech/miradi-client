@@ -134,4 +134,9 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 	{
 		return createXsdElement("boolean");
 	}
+
+	public String createDecimalType()
+	{
+		return createXsdElement("decimal");
+	}
 }
