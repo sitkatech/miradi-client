@@ -756,10 +756,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9(CALCULATED_WORK_UNITS_TOTAL, "xsd:decimal"));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9(CALCULATED_TOTAL_BUDGET_COST, "xsd:decimal"));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9(CALCULATED_WHO, "ResourceId.element*"));
-		final String expenseEntry = EXPENSE_ENTRY;
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9(CALCULATED_EXPENSE_ENTRIES, getSchemaWriter().createRequiredDotElement(expenseEntry)));
-		final String workUnitsEntry = WORK_UNITS_ENTRY;
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement8(CALCULATED_WORK_UNITS_ENTRIES, getSchemaWriter().createRequiredDotElement(workUnitsEntry)));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9(CALCULATED_EXPENSE_ENTRIES, getSchemaWriter().createRequiredDotElement(EXPENSE_ENTRY)));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement8(CALCULATED_WORK_UNITS_ENTRIES, getSchemaWriter().createRequiredDotElement(WORK_UNITS_ENTRY)));
 		getSchemaWriter().endBlock();
 	}
 
