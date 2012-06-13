@@ -146,6 +146,7 @@ public interface Xmpz2XmlConstants
 	public static final String EXPENSES_FULL_PROJECT_TIMESPAN = "ExpensesFullProjectTimespan";
 	public static final String WORK_UNITS_FULL_PROJECT_TIMESPAN = "WorkUnitsFullProjectTimespan";
 	public static final String FULL_PROJECT_TIMESPAN = "FullProjectTimespan";
+	public static final String VOCABULART_FULL_PROJECT_TIMESPAN = "vocabulary_full_project_timespan";
 	public static final String TOTAL = "Total";
 	public static final String EXPENSES_YEAR = "ExpensesYear";
 	public static final String EXPENSES_QUARTER = "ExpensesQuarter";
