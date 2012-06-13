@@ -702,14 +702,14 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		defineBudgetElements(DATE_UNITS_EXPENSE, EXPENSES_DATE_UNIT, EXPENSE, elementTypes);
 	}
 	
-	private void defineBudgetElements(final String dateUnitWorkUnits, final String workUnitsDateUnit, final String workUnits, Vector<String> elementTypes)
+	private void defineBudgetElements(final String parentName, final String containerName, final String elementName, Vector<String> elementTypes)
 	{
-		getSchemaWriter().writeAlias(dateUnitWorkUnits);
+		getSchemaWriter().writeAlias(parentName);
 		getSchemaWriter().startBlock();
-		getSchemaWriter().printIndented(ELEMENT_NAME + PREFIX + workUnitsDateUnit + "{");
+		getSchemaWriter().printIndented(ELEMENT_NAME + PREFIX + containerName + "{");
 		getSchemaWriter().writeOredElements(elementTypes);
 		getSchemaWriter().printlnIndented(" }? &");
-		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + workUnits + " { " + writer.createDecimalType() +" }?");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + elementName + " { " + writer.createDecimalType() +" }?");
 		getSchemaWriter().endBlock();
 	}
 	
