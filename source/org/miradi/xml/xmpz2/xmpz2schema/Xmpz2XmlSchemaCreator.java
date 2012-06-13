@@ -730,7 +730,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void defineDayElement(String dayElementName)
 	{
 		Vector<String> subElements = new Vector<String>();
-		subElements.add("attribute Date {vocabulary_date}");
+		subElements.add(getSchemaWriter().createAttributeElement("Date", VOCABULARY_DATE));
 		defineElement(dayElementName, subElements);
 	}
 	
