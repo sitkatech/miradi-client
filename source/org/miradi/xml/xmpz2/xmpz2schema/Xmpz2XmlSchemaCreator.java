@@ -683,7 +683,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().writeAlias(DATE_UNIT_WORK_UNITS);
 		getSchemaWriter().startBlock();
 		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + "WorkUnitsDateUnit{WorkUnitsDay.element | WorkUnitsMonth.element | WorkUnitsQuarter.element | WorkUnitsYear.element | WorkUnitsFullProjectTimespan.element }? &");
-		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + "NumberOfUnits { " + writer.createDecimalType() +" }?");
+		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + WORK_UNITS + " { " + writer.createDecimalType() +" }?");
 		getSchemaWriter().endBlock();
 	}
 
