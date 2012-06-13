@@ -69,6 +69,7 @@ public interface Xmpz2XmlConstants
 	public static final String SCOPE_BOX = "ScopeBox";
 	public static final String KEY_ECOLOGICAL_ATTRIBUTE = "KeyEcologicalAttribute";
 	public static final String STRESS = "Stress";
+	public static final String STRESS_ID = STRESS + ID;
 	public static final String STRESS_IDS_ELEMENT = "StressIds";
 	public static final String SUB_TARGET = "SubTarget";
 	public static final String SUB_TARGET_IDS_ELEMENT = "SubTargetIds";
