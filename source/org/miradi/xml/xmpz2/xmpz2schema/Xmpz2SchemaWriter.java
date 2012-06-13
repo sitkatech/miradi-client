@@ -42,6 +42,11 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 	{
 		println("namespace " + RAW_PREFIX + " = " + "'" + uri + "'");
 	}
+	
+	public void writeAlias(final String elementName)
+	{
+		defineAlias(elementName + ".element", ELEMENT_NAME + PREFIX + elementName);
+	}
 
 	@Override	
 	public void startElementDefinition(String name)
