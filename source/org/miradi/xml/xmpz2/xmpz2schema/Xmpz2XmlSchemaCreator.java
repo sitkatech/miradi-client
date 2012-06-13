@@ -756,40 +756,47 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9(CALCULATED_WORK_UNITS_TOTAL, "xsd:decimal"));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9(CALCULATED_TOTAL_BUDGET_COST, "xsd:decimal"));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9(CALCULATED_WHO, "ResourceId.element*"));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9(CALCULATED_EXPENSE_ENTRIES, (EXPENSE_ENTRY + ".element*")));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement8(CALCULATED_WORK_UNITS_ENTRIES, (WORK_UNITS_ENTRY + ".element*")));
+		final String expenseEntry = EXPENSE_ENTRY;
+		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9(CALCULATED_EXPENSE_ENTRIES, getSchemaWriter().createRequiredDotElement(expenseEntry)));
+		final String workUnitsEntry = WORK_UNITS_ENTRY;
+		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement8(CALCULATED_WORK_UNITS_ENTRIES, getSchemaWriter().createRequiredDotElement(workUnitsEntry)));
 		getSchemaWriter().endBlock();
 	}
 
 	public String createSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, final String elementType)
 	{
-		return createElementSchema(baseObjectSchema, fieldSchema, elementType + ".element*");
+		return createElementSchema(baseObjectSchema, fieldSchema, getSchemaWriter().createRequiredDotElement(elementType));
 	}
 	
 	private void writeExpenseEntryElement()
 	{
 		getSchemaWriter().defineAlias(createElementName(EXPENSE_ENTRY), ELEMENT_NAME + PREFIX + EXPENSE_ENTRY);
 		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9((EXPENSE_ENTRY + FUNDING_SOURCE_ID), (FUNDING_SOURCE_ID + ".element")));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9((EXPENSE_ENTRY + ACCOUNTING_CODE_ID), (ACCOUNTING_CODE_ID + ".element")));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9((EXPENSE_ENTRY + BUDGET_CATEGORY_ONE_ID), (BUDGET_CATEGORY_ONE_ID + ".element")));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9((EXPENSE_ENTRY + BUDGET_CATEGORY_TWO_ID), (BUDGET_CATEGORY_TWO_ID + ".element")));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement8((EXPENSE_ENTRY + DETAILS), (DATE_UNITS_EXPENSE + ".element*")));
+		getSchemaWriter().printlnIndented(createBudgetSchemaElement(EXPENSE_ENTRY, FUNDING_SOURCE_ID));
+		getSchemaWriter().printlnIndented(createBudgetSchemaElement(EXPENSE_ENTRY, ACCOUNTING_CODE_ID));
+		getSchemaWriter().printlnIndented(createBudgetSchemaElement(EXPENSE_ENTRY, BUDGET_CATEGORY_ONE_ID));
+		getSchemaWriter().printlnIndented(createBudgetSchemaElement(EXPENSE_ENTRY, BUDGET_CATEGORY_TWO_ID));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement8(EXPENSE_ENTRY + DETAILS, getSchemaWriter().createRequiredDotElement(DATE_UNITS_EXPENSE)));
 		getSchemaWriter().endBlock();
 	}
-	
+
 	private void writeWorkUnitsEntryElement()
 	{
 		getSchemaWriter().defineAlias(createElementName(WORK_UNITS_ENTRY), ELEMENT_NAME + PREFIX + WORK_UNITS_ENTRY);
 		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9((WORK_UNITS_ENTRY + RESOURCE_ID), (RESOURCE_ID + ".element")));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9((WORK_UNITS_ENTRY + FUNDING_SOURCE_ID), (FUNDING_SOURCE_ID + ".element")));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9((WORK_UNITS_ENTRY + ACCOUNTING_CODE_ID), (ACCOUNTING_CODE_ID + ".element")));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9((WORK_UNITS_ENTRY + BUDGET_CATEGORY_ONE_ID), (BUDGET_CATEGORY_ONE_ID + ".element")));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9((WORK_UNITS_ENTRY + BUDGET_CATEGORY_TWO_ID), (BUDGET_CATEGORY_TWO_ID + ".element")));
+		getSchemaWriter().printlnIndented(createBudgetSchemaElement(WORK_UNITS_ENTRY, RESOURCE_ID));
+		getSchemaWriter().printlnIndented(createBudgetSchemaElement(WORK_UNITS_ENTRY, FUNDING_SOURCE_ID));
+		getSchemaWriter().printlnIndented(createBudgetSchemaElement(WORK_UNITS_ENTRY, ACCOUNTING_CODE_ID));
+		getSchemaWriter().printlnIndented(createBudgetSchemaElement(WORK_UNITS_ENTRY, BUDGET_CATEGORY_ONE_ID));
+		getSchemaWriter().printlnIndented(createBudgetSchemaElement(WORK_UNITS_ENTRY, BUDGET_CATEGORY_TWO_ID));
 		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + WORK_UNITS_ENTRY + DETAILS + "{ " + DATE_UNIT_WORK_UNITS + ".element* }?");
 		getSchemaWriter().endBlock();
 	}
+
+	public String createBudgetSchemaElement(final String workUnitsEntry, final String elementName)
+	{
+		return getSchemaWriter().createSchemaElement9(workUnitsEntry + elementName, getSchemaWriter().createDotElement(elementName));
+	}	
 	
 	private void writeExternaIdSchemaElement()
 	{

@@ -104,4 +104,14 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 	{
 		return ELEMENT_NAME + PREFIX + elementName + " { " + elementType + " }";
 	}
+	
+	public String createDotElement(final String elementName)
+	{
+		return elementName + ".element";
+	}
+	
+	public String createRequiredDotElement(final String elementName)
+	{
+		return elementName + ".element*";
+	}
 }
