@@ -67,7 +67,7 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 
 	public String createTextSchemaElement(final String extraDataItemValue)
 	{
-		return createSchemaElement8(extraDataItemValue, "text");
+		return createOptionalSchemaElement(extraDataItemValue, "text");
 	}
 
 	public String createSchemaElement4(final String elementName, final String elementType)
@@ -77,17 +77,17 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 	
 	public String createSchemaElement9(final String elementName, final String elementType)
 	{
-		return createSchemaElementEndingWithAnd(createSchemaElement8(elementName, elementType));
+		return createSchemaElementEndingWithAnd(createOptionalSchemaElement(elementName, elementType));
 	}
 	
-	public String createSchemaElement8(final String elementName, final String elementType)
+	public String createOptionalSchemaElement(final String elementName, final String elementType)
 	{
 		return createSchemaElement(elementName, elementType) + "?";
 	}
 	
 	public String createRequiredElementDefinition(String parentElementName, final String elementName)
 	{
-		return createSchemaElement8(parentElementName, createRequiredDotElement(elementName));
+		return createOptionalSchemaElement(parentElementName, createRequiredDotElement(elementName));
 	}
 
 	public String createSchemaElement11(final String elementName, String elementType)

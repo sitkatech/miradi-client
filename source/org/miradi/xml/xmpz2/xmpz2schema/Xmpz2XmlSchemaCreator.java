@@ -255,12 +255,12 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	public String writeCalculatedCostSchemaElement(BaseObjectSchema baseObjectSchema)
 	{
-		return getSchemaWriter().createSchemaElement8(baseObjectSchema.getXmpz2ElementName() + TIME_PERIOD_COSTS, (createElementName(TIME_PERIOD_COSTS)));
+		return getSchemaWriter().createOptionalSchemaElement(baseObjectSchema.getXmpz2ElementName() + TIME_PERIOD_COSTS, (createElementName(TIME_PERIOD_COSTS)));
 	}
 	
 	public String createThresholdsSchemaElement(BaseObjectSchema baseObjectSchema)
 	{
-		return getSchemaWriter().createSchemaElement8(baseObjectSchema.getXmpz2ElementName() + THRESHOLDS, (createElementName("IndicatorThreshold") +  "*"));
+		return getSchemaWriter().createOptionalSchemaElement(baseObjectSchema.getXmpz2ElementName() + THRESHOLDS, (createElementName("IndicatorThreshold") +  "*"));
 	}
 	
 	public String createStringRefMapSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
@@ -631,7 +631,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().printlnIndented(getSchemaWriter().createAttributeSchemaElement(KEY_ATTRIBUTE_NAME));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9(DASHBOARD_PROGRESS, VOCABULARY_DASHBOARD_ROW_PROGRESS));
 		getSchemaWriter().printlnIndented(DASHBOARD + DASHBOARD_FLAGS + CONTAINER_ELEMENT_TAG + ".element? &");
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement8(DASHBOARD_COMMENTS, "text"));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement(DASHBOARD_COMMENTS, "text"));
 		getSchemaWriter().endBlock();
 	}
 
@@ -757,7 +757,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9(CALCULATED_TOTAL_BUDGET_COST, "xsd:decimal"));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9(CALCULATED_WHO, "ResourceId.element*"));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9(CALCULATED_EXPENSE_ENTRIES, getSchemaWriter().createRequiredDotElement(EXPENSE_ENTRY)));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement8(CALCULATED_WORK_UNITS_ENTRIES, getSchemaWriter().createRequiredDotElement(WORK_UNITS_ENTRY)));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement(CALCULATED_WORK_UNITS_ENTRIES, getSchemaWriter().createRequiredDotElement(WORK_UNITS_ENTRY)));
 		getSchemaWriter().endBlock();
 	}
 
@@ -774,7 +774,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().printlnIndented(createBudgetSchemaElement(EXPENSE_ENTRY, ACCOUNTING_CODE_ID));
 		getSchemaWriter().printlnIndented(createBudgetSchemaElement(EXPENSE_ENTRY, BUDGET_CATEGORY_ONE_ID));
 		getSchemaWriter().printlnIndented(createBudgetSchemaElement(EXPENSE_ENTRY, BUDGET_CATEGORY_TWO_ID));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement8(EXPENSE_ENTRY + DETAILS, getSchemaWriter().createRequiredDotElement(DATE_UNITS_EXPENSE)));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement(EXPENSE_ENTRY + DETAILS, getSchemaWriter().createRequiredDotElement(DATE_UNITS_EXPENSE)));
 		getSchemaWriter().endBlock();
 	}
 
@@ -811,7 +811,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().startBlock();
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9((SIMPLE_BASED_THREAT_RATING + SCOPE), VOCABULARY_SIMPLE_THREAT_RATING_SCOPE_CODE));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9((SIMPLE_BASED_THREAT_RATING + SEVERITY), VOCABULARY_SIMPLE_THREAT_RATING_SEVERITY_CODE));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement8((SIMPLE_BASED_THREAT_RATING + IRREVERSIBILITY), VOCABULARY_SIMPLE_THREAT_RATING_IRREVERSIBILITY_CODE));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement((SIMPLE_BASED_THREAT_RATING + IRREVERSIBILITY), VOCABULARY_SIMPLE_THREAT_RATING_IRREVERSIBILITY_CODE));
 		getSchemaWriter().endBlock();
     }
 
@@ -824,7 +824,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9((STRESS_BASED_THREAT_RATING + IRREVERSIBILITY), VOCABULARY_THREAT_STRESS_RATING_IRREVERSIBILITY_CODE));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9((STRESS_BASED_THREAT_RATING + IS_ACTIVE), "xsd:boolean"));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9((STRESS_BASED_THREAT_RATING + STRESS_RATING), VOCABULARY_THREAT_RATING));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement8((STRESS_BASED_THREAT_RATING + THREAT_STRESS_RATING), VOCABULARY_THREAT_RATING));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement((STRESS_BASED_THREAT_RATING + THREAT_STRESS_RATING), VOCABULARY_THREAT_RATING));
 		getSchemaWriter().endBlock();
 	}
 	
@@ -835,7 +835,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9((DIAGRAM_FACTOR + DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME), ChoiceQuestionToSchemaElementNameMap.VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9((DIAGRAM_FACTOR + DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME), ChoiceQuestionToSchemaElementNameMap.VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement9((DIAGRAM_FACTOR + DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME), ChoiceQuestionToSchemaElementNameMap.VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement8((DIAGRAM_FACTOR + DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME), ChoiceQuestionToSchemaElementNameMap.VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement((DIAGRAM_FACTOR + DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME), ChoiceQuestionToSchemaElementNameMap.VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR));
 		getSchemaWriter().endBlock();		
 	}
 
@@ -843,7 +843,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		String poolName = baseObjectSchema.getXmpz2ElementName();
 		String elementName = getTagToElementNameMap().findElementName(poolName, fieldSchema.getTag());
-		return getSchemaWriter().createSchemaElement8(poolName + elementName, elementType);
+		return getSchemaWriter().createOptionalSchemaElement(poolName + elementName, elementType);
 	}
 	
 	private void defineElementWithSameType(String parentName, Vector<String> names, String elementType)
