@@ -255,12 +255,12 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	public String writeCalculatedCostSchemaElement(BaseObjectSchema baseObjectSchema)
 	{
-		return getSchemaWriter().createSchemaElement(baseObjectSchema.getXmpz2ElementName(), TIME_PERIOD_COSTS, TIME_PERIOD_COSTS + DOT_ELEMENT);
+		return getSchemaWriter().createSchemaElement8(baseObjectSchema.getXmpz2ElementName() + TIME_PERIOD_COSTS, (TIME_PERIOD_COSTS + DOT_ELEMENT));
 	}
 	
 	public String createThresholdsSchemaElement(BaseObjectSchema baseObjectSchema)
 	{
-		return getSchemaWriter().createSchemaElement(baseObjectSchema.getXmpz2ElementName(), THRESHOLDS, createElementName("IndicatorThreshold") +  "*");
+		return getSchemaWriter().createSchemaElement8(baseObjectSchema.getXmpz2ElementName() + THRESHOLDS, (createElementName("IndicatorThreshold") +  "*"));
 	}
 	
 	public String createStringRefMapSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
@@ -838,7 +838,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		String poolName = baseObjectSchema.getXmpz2ElementName();
 		String elementName = getTagToElementNameMap().findElementName(poolName, fieldSchema.getTag());
-		return getSchemaWriter().createSchemaElement(poolName, elementName, elementType);
+		return getSchemaWriter().createSchemaElement8(poolName + elementName, elementType);
 	}
 	
 	private void defineElementWithSameType(String parentName, Vector<String> names, String elementType)
