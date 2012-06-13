@@ -153,7 +153,7 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 		printIndented(ELEMENT_NAME + PREFIX + containerName + "{");
 		writeOredElements(elementTypes);
 		printlnIndented(" }? &");
-		printlnIndented(ELEMENT_NAME + PREFIX + elementName + " { " + createDecimalType() +" }?");
+		printlnIndented(createSchemaElement(elementName, createDecimalType()) + "?");
 		endBlock();
 	}
 }
