@@ -52,8 +52,13 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 	@Override	
 	public void startElementDefinition(String name)
 	{
-		println(createDotElement(name) + " = element " +  PREFIX + name);
+		println(createElementDefinition(name));
 		startBlock();
+	}
+
+	public String createElementDefinition(String elementName)
+	{
+		return createDotElement(elementName) + " = element " +  PREFIX + elementName;
 	}
 	
 	public void writeElement(final String elementName)

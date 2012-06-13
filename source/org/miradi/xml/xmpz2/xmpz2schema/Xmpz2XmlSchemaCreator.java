@@ -352,7 +352,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private String createCodelistSchemaElement(String codelistElementName, ChoiceQuestion question)
 	{
 		String vocabularyName = getChoiceQuestionToSchemaElementNameMap().get(question);
-		String containerElement = createContainerName(codelistElementName) + ".element = element " +  PREFIX + createContainerName(codelistElementName) + HtmlUtilities.NEW_LINE;
+		final String createContainerName = createContainerName(codelistElementName);
+		String containerElement = getSchemaWriter().createElementDefinition(createContainerName) + HtmlUtilities.NEW_LINE;
 		containerElement += "{" + HtmlUtilities.NEW_LINE;
 		containerElement += getSchemaWriter().createSchemaElement("code", vocabularyName) + " *" + HtmlUtilities.NEW_LINE;
 		containerElement += "}" + HtmlUtilities.NEW_LINE;
