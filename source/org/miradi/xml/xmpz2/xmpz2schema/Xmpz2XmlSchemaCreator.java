@@ -825,7 +825,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		getSchemaWriter().defineAlias(createElementName(STRESS_BASED_THREAT_RATING), ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING);
 		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented(ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING + STRESS + ID + "{ StressId.element } &");
+		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElementWithAnd(STRESS_BASED_THREAT_RATING + STRESS + ID, "StressId.element"));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd((STRESS_BASED_THREAT_RATING + CONTRIBUTION), VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd((STRESS_BASED_THREAT_RATING + IRREVERSIBILITY), VOCABULARY_THREAT_STRESS_RATING_IRREVERSIBILITY_CODE));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd((STRESS_BASED_THREAT_RATING + IS_ACTIVE), getSchemaWriter().createBooleanType()));

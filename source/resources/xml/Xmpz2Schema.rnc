@@ -1034,7 +1034,7 @@ SimpleThreatRating.element = element miradi:SimpleThreatRating
 
 StressBasedThreatRating.element = element miradi:StressBasedThreatRating
 {
-  element miradi:StressBasedThreatRatingStressId{ StressId.element } &
+  element miradi:StressBasedThreatRatingStressId { StressId.element } &
   element miradi:StressBasedThreatRatingContribution { vocabulary_contribution_code }? &
   element miradi:StressBasedThreatRatingIrreversibility { vocabulary_irreversibility_code }? &
   element miradi:StressBasedThreatRatingIsActive { xsd:boolean }? &
