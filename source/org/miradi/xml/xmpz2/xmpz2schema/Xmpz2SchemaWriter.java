@@ -75,7 +75,7 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 		return createSchemaElementEndingWithAnd(createSchemaElement(elementName, elementType));
 	}
 	
-	public String createSchemaElement9(final String elementName, final String elementType)
+	public String createOptionalSchemaElementWithAnd(final String elementName, final String elementType)
 	{
 		return createSchemaElementEndingWithAnd(createOptionalSchemaElement(elementName, elementType));
 	}
