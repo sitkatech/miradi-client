@@ -983,7 +983,7 @@ ExpensesDay.element = element miradi:ExpensesDay
 
 IndicatorThreshold.element = element miradi:IndicatorThreshold
 {
-  element miradi:StatusCode{vocabulary_measurement_status}? &
+  element miradi:StatusCode { vocabulary_measurement_status }? &
   element miradi:ThresholdValue { text }? &
   element miradi:ThresholdDetails { text }?
 }
