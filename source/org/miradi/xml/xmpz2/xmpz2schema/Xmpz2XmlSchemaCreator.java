@@ -392,42 +392,13 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void writeObjectTypeIdElements()
 	{
-		writeIdElement(CONCEPTUAL_MODEL);
-		writeIdElement(RESULTS_CHAIN);
-		writeIdElement(DIAGRAM_FACTOR);
-		writeIdElement(DIAGRAM_LINK);
-		writeIdElement(BIODIVERSITY_TARGET);
-		writeIdElement(HUMAN_WELFARE_TARGET);
-		writeIdElement(CAUSE);
-		writeIdElement(STRATEGY);
-		writeIdElement(THREAT_REDUCTION_RESULTS);
-		writeIdElement(INTERMEDIATE_RESULTS);
-		writeIdElement(GROUP_BOX);
-		writeIdElement(TEXT_BOX);
-		writeIdElement(SCOPE_BOX);
-		writeIdElement(ACTIVITY);
-		writeIdElement(STRESS);
-		writeIdElement(GOAL);
-		writeIdElement(OBJECTIVE);
-		writeIdElement(INDICATOR);
-		writeIdElement(KEY_ECOLOGICAL_ATTRIBUTE);
-		writeIdElement(TAGGED_OBJECT_SET_ELEMENT_NAME);
-		writeIdElement(SUB_TARGET);
-		writeIdElement(THREAT);
-		writeIdElement(ACCOUNTING_CODE);
-		writeIdElement(FUNDING_SOURCE);
-		writeIdElement(BUDGET_CATEGORY_ONE);
-		writeIdElement(BUDGET_CATEGORY_TWO);
-		writeIdElement(PROGRESS_REPORT);
-		writeIdElement(PROGRESS_PERCENT);
-		writeIdElement(EXPENSE_ASSIGNMENT);
-		writeIdElement(RESOURCE_ASSIGNMENT);
-		writeIdElement(RESOURCE_ID_ELEMENT_NAME);
-		writeIdElement(MEASUREMENT);
-		writeIdElement(METHOD);
-		writeIdElement(SUB_TASK);
+		final Vector<String> objectTypeNames = Xmpz2GroupedConstants.getObjectTypeNamesToCreateIdSchemaElements();
+		for (String objectTypeName : objectTypeNames)
+		{
+			writeIdElement(objectTypeName);
+		}
 	}
-	
+
 	private String createIdElementName(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String elementName)
 	{
 		if (isFieldForType(baseObjectSchema, fieldSchema, TaskSchema.getObjectType(), Task.TAG_SUBTASK_IDS))
