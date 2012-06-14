@@ -20,6 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.xmpz2schema;
 
+import java.util.Vector;
+
+import org.miradi.utils.Utility;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 
 abstract public class Xmpz2GroupedConstants implements Xmpz2XmlConstants
@@ -58,5 +61,47 @@ abstract public class Xmpz2GroupedConstants implements Xmpz2XmlConstants
 	public static String[] getHtmlTagsAsElementNames()
 	{
 		return new String[] {"br", "b", "i", "u", "strike", "a", "ul", "ol",};
+	}
+
+	public static Vector<String> getObjectTypeNamesToCreateIdSchemaElements()
+	{
+		final String[] objectTypeNames = new String[] {
+		CONCEPTUAL_MODEL,
+		RESULTS_CHAIN,
+		DIAGRAM_FACTOR,
+		DIAGRAM_LINK,
+		BIODIVERSITY_TARGET,
+		HUMAN_WELFARE_TARGET,
+		CAUSE,
+		STRATEGY,
+		THREAT_REDUCTION_RESULTS,
+		INTERMEDIATE_RESULTS,
+		GROUP_BOX,
+		TEXT_BOX,
+		SCOPE_BOX,
+		ACTIVITY,
+		STRESS,
+		GOAL,
+		OBJECTIVE,
+		INDICATOR,
+		KEY_ECOLOGICAL_ATTRIBUTE,
+		TAGGED_OBJECT_SET_ELEMENT_NAME,
+		SUB_TARGET,
+		THREAT,
+		ACCOUNTING_CODE,
+		FUNDING_SOURCE,
+		BUDGET_CATEGORY_ONE,
+		BUDGET_CATEGORY_TWO,
+		PROGRESS_REPORT,
+		PROGRESS_PERCENT,
+		EXPENSE_ASSIGNMENT,
+		RESOURCE_ASSIGNMENT,
+		RESOURCE_ID_ELEMENT_NAME,
+		MEASUREMENT,
+		METHOD,
+		SUB_TASK,
+		};
+		
+		return Utility.convertToVector(objectTypeNames);
 	}
 }
