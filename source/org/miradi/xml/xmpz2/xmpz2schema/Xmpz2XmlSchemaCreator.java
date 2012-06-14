@@ -504,32 +504,34 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	private void writeLinkableFactorIds()
 	{
-		Vector<String> factorNames = new Vector<String>();
-		factorNames.add(BIODIVERSITY_TARGET);
-		factorNames.add(HUMAN_WELFARE_TARGET); 
-		factorNames.add(CAUSE);
-		factorNames.add(STRATEGY);
-		factorNames.add(THREAT_REDUCTION_RESULTS); 
-		factorNames.add(INTERMEDIATE_RESULTS);
-		factorNames.add(GROUP_BOX);
+		String[] factorNames = new String[]{
+				BIODIVERSITY_TARGET,
+				HUMAN_WELFARE_TARGET, 
+				CAUSE,
+				STRATEGY,
+				THREAT_REDUCTION_RESULTS, 
+				INTERMEDIATE_RESULTS,
+				GROUP_BOX,
+		};
 		
 		writeOredSchemaElements(LINKABLE_FACTOR_ID, factorNames);
 	}
 	
 	private void writeWrappedByDiagramFactorSchemaElement()
 	{
-		Vector<String> factorNames = new Vector<String>();
-		factorNames.add(BIODIVERSITY_TARGET); 
-		factorNames.add(HUMAN_WELFARE_TARGET); 
-		factorNames.add(CAUSE); 
-		factorNames.add(STRATEGY); 
-		factorNames.add(THREAT_REDUCTION_RESULTS); 
-		factorNames.add(INTERMEDIATE_RESULTS);
-		factorNames.add(GROUP_BOX);
-		factorNames.add(TEXT_BOX);
-		factorNames.add(SCOPE_BOX);
-		factorNames.add(ACTIVITY);
-		factorNames.add(STRESS);
+		String[] factorNames = new String[]{
+				BIODIVERSITY_TARGET, 
+				HUMAN_WELFARE_TARGET, 
+				CAUSE, 
+				STRATEGY, 
+				THREAT_REDUCTION_RESULTS, 
+				INTERMEDIATE_RESULTS,
+				GROUP_BOX,
+				TEXT_BOX,
+				SCOPE_BOX,
+				ACTIVITY,
+				STRESS,
+		};
 
 		writeOredSchemaElements(WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME, factorNames);
 	}
@@ -554,8 +556,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().writeOredElements(elements);
 	}
 
-	private void writeOredSchemaElements(final String parentElementName, final Vector<String> elementNames)
+	private void writeOredSchemaElements(final String parentElementName, final String[] elementNamesAsArray)
 	{
+		Vector<String> elementNames = Utility.convertToVector(elementNamesAsArray);
 		getSchemaWriter().startElementDefinition(parentElementName);
 		Vector<String> elements = new Vector<String>();
 		for (String elementName : elementNames)
