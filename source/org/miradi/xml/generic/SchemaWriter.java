@@ -40,7 +40,12 @@ public class SchemaWriter extends PrintWriter
 
 	public void defineAlias(String alias, String elementName)
 	{
-		println(alias + " = " + elementName);
+		println(createAlias(alias, elementName));
+	}
+
+	public String createAlias(String alias, String elementName)
+	{
+		return alias + " = " + elementName;
 	}
 
 	public void startBlock()
