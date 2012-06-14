@@ -255,12 +255,12 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	public String writeCalculatedCostSchemaElement(BaseObjectSchema baseObjectSchema)
 	{
-		return getSchemaWriter().createOptionalSchemaElement(baseObjectSchema.getXmpz2ElementName() + TIME_PERIOD_COSTS, (createElementName(TIME_PERIOD_COSTS)));
+		return getSchemaWriter().createOptionalSchemaElement(baseObjectSchema.getXmpz2ElementName() + TIME_PERIOD_COSTS, createElementName(TIME_PERIOD_COSTS));
 	}
 	
 	public String createThresholdsSchemaElement(BaseObjectSchema baseObjectSchema)
 	{
-		return getSchemaWriter().createOptionalSchemaElement(baseObjectSchema.getXmpz2ElementName() + THRESHOLDS, (createElementName(THRESHOLD) +  "*"));
+		return getSchemaWriter().createOptionalSchemaElement(baseObjectSchema.getXmpz2ElementName() + THRESHOLDS, createElementName(THRESHOLD) +  "*");
 	}
 	
 	public String createStringRefMapSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
