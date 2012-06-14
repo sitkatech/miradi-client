@@ -500,7 +500,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		String result = getSchemaWriter().createRequiredSchemaElement(baseObjectPoolName, createElementName(baseObjectName));
 		getSchemaWriter().defineAlias(createElementName(baseObjectPoolName), result);
-		getSchemaWriter().defineAlias(createElementName(baseObjectName), "element " + PREFIX + baseObjectName);
+		getSchemaWriter().defineAlias(createElementName(baseObjectName), ELEMENT_NAME + PREFIX + baseObjectName);
 	}
 
 	private void writeLinkableFactorIds()
