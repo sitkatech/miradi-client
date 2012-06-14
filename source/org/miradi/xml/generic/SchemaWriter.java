@@ -74,10 +74,15 @@ public class SchemaWriter extends PrintWriter
 		println(name + ".element = element " + name);
 		startBlock();
 	}
-	
+
 	public void writeSchemaElement(String elementName, String elementType)
 	{
-		printlnIndented("element." + elementName + " = element " + elementName + " { " + elementType + " }");
+		printlnIndented(createSchemaSuffix(elementName) + " { " + elementType + " }");
+	}
+
+	public String createSchemaSuffix(String elementName) 
+	{
+		return "element." + elementName + " = element " + elementName;
 	}
 
 	public void endElementDefinition(String name)

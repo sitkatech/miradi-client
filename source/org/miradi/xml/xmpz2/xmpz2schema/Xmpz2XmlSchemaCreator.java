@@ -604,7 +604,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().writeSchemaElement("ol", "element.li*");
 		getSchemaWriter().writeSchemaElement("li", FORMATTED_TEXT_TYPE);
 		
-		getSchemaWriter().printlnIndented("element.a = element a");
+		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaSuffix("a"));
 		getSchemaWriter().startBlock();
 		getSchemaWriter().printlnIndented(getSchemaWriter().createTextAttributeElement("href") + " &");
 		getSchemaWriter().printlnIndented(getSchemaWriter().createTextAttributeElement("name") + "? &");
