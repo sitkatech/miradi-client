@@ -787,6 +787,7 @@ vocabulary_simple_threat_rating_irreversibility_code = ''|'1'|'2'|'3'|'4'
 vocabulary_key_ecological_attribute_type = ''|'10'|'20'|'30'
 vocabulary_language_code = 'ab'|'aa'|'af'|'ak'|'sq'|'am'|'ar'|'an'|'hy'|'as'|'av'|'ae'|'ay'|'az'|'bm'|'ba'|'eu'|'be'|'bn'|'bh'|'bi'|'nb'|'bs'|'br'|'bg'|'my'|'ca'|'km'|'ch'|'ce'|'ny'|'zh'|'cu'|'cv'|'kw'|'co'|'cr'|'hr'|'cs'|'da'|'dv'|'nl'|'dz'|'en'|'eo'|'et'|'ee'|'fo'|'fj'|'fi'|'fr'|'ff'|'gd'|'gl'|'lg'|'ka'|'de'|'el'|'gn'|'gu'|'ht'|'ha'|'he'|'hz'|'hi'|'ho'|'hu'|'is'|'io'|'ig'|'id'|'ia'|'ie'|'iu'|'ik'|'ga'|'it'|'ja'|'jv'|'kl'|'kn'|'kr'|'ks'|'kk'|'ki'|'rw'|'ky'|'kv'|'kg'|'ko'|'kj'|'ku'|'lo'|'la'|'lv'|'li'|'ln'|'lt'|'lu'|'lb'|'mk'|'mg'|'ms'|'ml'|'mt'|'gv'|'mi'|'mr'|'mh'|'mo'|'mn'|'na'|'nv'|'nd'|'nr'|'ng'|'ne'|'se'|'no'|'nn'|'oc'|'oj'|'or'|'om'|'os'|'pi'|'pa'|'fa'|'pl'|'pt'|'ps'|'qu'|'ro'|'rm'|'rn'|'ru'|'sm'|'sg'|'sa'|'sc'|'sr'|'sn'|'ii'|'sd'|'si'|'sk'|'sl'|'so'|'st'|'es'|'su'|'sw'|'ss'|'sv'|'tl'|'ty'|'tg'|'ta'|'tt'|'te'|'th'|'bo'|'ti'|'to'|'ts'|'tn'|'tr'|'tk'|'tw'|'ug'|'uk'|''|'ur'|'uz'|'ve'|'vi'|'vo'|'wa'|'cy'|'fy'|'wo'|'xh'|'yi'|'yo'|'za'|'zu'
 vocabulary_measurement_status = ''|'1'|'2'|'3'|'4'
+vocabulary_dashboard_row_progress = ''|'1'|'2'|'3'|'4'
 vocabulary_planning_tree_target_node_position = 'TargetNodesChildrenOfDiagramObjects'|'TargetNodesTopOfPlanningTree'
 vocabulary_priority_rating_code = ''|'1'|'2'|'3'|'4'
 vocabulary_progress_report_status = ''|'Planned'|'MajorIssues'|'MinorIssues'|'OnTrack'|'Completed'|'Abandoned'
@@ -830,7 +831,6 @@ vocabulary_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' }
 vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } 
 vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='12' } 
 vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }
-vocabulary_dashboard_row_progress = ''|'1'|'2'|'3'|'4'
 ConceptualModelId.element = element miradi:ConceptualModelId { xsd:integer }
 ResultsChainId.element = element miradi:ResultsChainId { xsd:integer }
 DiagramFactorId.element = element miradi:DiagramFactorId { xsd:integer }
