@@ -290,7 +290,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	public String createNumberSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema)
 	{
-		return createElementSchema(baseObjectSchema, fieldSchema, writer.createDecimalType());
+		return createElementSchema(baseObjectSchema, fieldSchema, getSchemaWriter().createDecimalType());
 	}
 	
 	public String createIntegerSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
@@ -754,9 +754,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().startBlock();
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElementWithAnd(CALCULATED_START_DATE, VOCABULARY_DATE));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElementWithAnd(CALCULATED_END_DATE, VOCABULARY_DATE));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_EXPENSE_TOTAL, writer.createDecimalType()));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_WORK_UNITS_TOTAL, writer.createDecimalType()));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_TOTAL_BUDGET_COST, writer.createDecimalType()));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_EXPENSE_TOTAL, getSchemaWriter().createDecimalType()));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_WORK_UNITS_TOTAL, getSchemaWriter().createDecimalType()));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_TOTAL_BUDGET_COST, getSchemaWriter().createDecimalType()));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_WHO, getSchemaWriter().createRequiredDotElement(RESOURCE_ID)));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_EXPENSE_ENTRIES, getSchemaWriter().createRequiredDotElement(EXPENSE_ENTRY)));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement(CALCULATED_WORK_UNITS_ENTRIES, getSchemaWriter().createRequiredDotElement(WORK_UNITS_ENTRY)));
