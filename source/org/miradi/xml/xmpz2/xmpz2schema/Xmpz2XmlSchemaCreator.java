@@ -337,7 +337,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		String elementName = getTagToElementNameMap().findElementName(baseObjectSchema.getXmpz2ElementName(), fieldSchema.getTag());
 		String reflistElementName = baseObjectSchema.getXmpz2ElementName() + elementName;
 		final String idElementName = createIdElementName(baseObjectSchema, fieldSchema, elementName);
-		return getSchemaWriter().createRequiredElementDefinition(reflistElementName, idElementName);
+		return getSchemaWriter().createZeroOrMoreElementDefinition(reflistElementName, idElementName);
 	}
 
 	public String createCodelistSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ChoiceQuestion question)
@@ -370,7 +370,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	public String createRelevantSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
 		final String relevantTypeName = getRelevantTypeName(fieldSchema) + ID;
-		final String elementType = getSchemaWriter().createRequiredDotElement(relevantTypeName);
+		final String elementType = getSchemaWriter().createZeroOrMoreDotElement(relevantTypeName);
 		return createElementSchema(baseObjectSchema, fieldSchema, elementType);
 	}
 	
@@ -499,7 +499,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		String baseObjectName = baseObjectSchemaWriter.getXmpz2ElementName();
 		String baseObjectPoolName = baseObjectSchemaWriter.getPoolName();
 		
-		String result = getSchemaWriter().createRequiredSchemaElement(baseObjectPoolName, createElementName(baseObjectName));
+		String result = getSchemaWriter().createZeroOrMoreSchemaElement(baseObjectPoolName, createElementName(baseObjectName));
 		getSchemaWriter().defineAlias(createElementName(baseObjectPoolName), result);
 		getSchemaWriter().defineAlias(createElementName(baseObjectName), ELEMENT_NAME + PREFIX + baseObjectName);
 	}
@@ -762,9 +762,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_EXPENSE_TOTAL, getSchemaWriter().createDecimalType()));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_WORK_UNITS_TOTAL, getSchemaWriter().createDecimalType()));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_TOTAL_BUDGET_COST, getSchemaWriter().createDecimalType()));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_WHO, getSchemaWriter().createRequiredDotElement(RESOURCE_ID)));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_EXPENSE_ENTRIES, getSchemaWriter().createRequiredDotElement(EXPENSE_ENTRY)));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement(CALCULATED_WORK_UNITS_ENTRIES, getSchemaWriter().createRequiredDotElement(WORK_UNITS_ENTRY)));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_WHO, getSchemaWriter().createZeroOrMoreDotElement(RESOURCE_ID)));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_EXPENSE_ENTRIES, getSchemaWriter().createZeroOrMoreDotElement(EXPENSE_ENTRY)));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement(CALCULATED_WORK_UNITS_ENTRIES, getSchemaWriter().createZeroOrMoreDotElement(WORK_UNITS_ENTRY)));
 		getSchemaWriter().endBlock();
 	}
 
@@ -776,7 +776,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().printlnIndented(createBudgetSchemaElement(EXPENSE_ENTRY, ACCOUNTING_CODE_ID));
 		getSchemaWriter().printlnIndented(createBudgetSchemaElement(EXPENSE_ENTRY, BUDGET_CATEGORY_ONE_ID));
 		getSchemaWriter().printlnIndented(createBudgetSchemaElement(EXPENSE_ENTRY, BUDGET_CATEGORY_TWO_ID));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement(EXPENSE_ENTRY + DETAILS, getSchemaWriter().createRequiredDotElement(DATE_UNITS_EXPENSE)));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement(EXPENSE_ENTRY + DETAILS, getSchemaWriter().createZeroOrMoreDotElement(DATE_UNITS_EXPENSE)));
 		getSchemaWriter().endBlock();
 	}
 
@@ -789,7 +789,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().printlnIndented(createBudgetSchemaElement(WORK_UNITS_ENTRY, ACCOUNTING_CODE_ID));
 		getSchemaWriter().printlnIndented(createBudgetSchemaElement(WORK_UNITS_ENTRY, BUDGET_CATEGORY_ONE_ID));
 		getSchemaWriter().printlnIndented(createBudgetSchemaElement(WORK_UNITS_ENTRY, BUDGET_CATEGORY_TWO_ID));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement(WORK_UNITS_ENTRY + DETAILS, getSchemaWriter().createRequiredDotElement(DATE_UNIT_WORK_UNITS)));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement(WORK_UNITS_ENTRY + DETAILS, getSchemaWriter().createZeroOrMoreDotElement(DATE_UNIT_WORK_UNITS)));
 		getSchemaWriter().endBlock();
 	}
 
@@ -841,7 +841,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().defineAlias(createElementName(EXTRA_DATA_SECTION), ELEMENT_NAME + PREFIX + EXTRA_DATA_SECTION);
 		getSchemaWriter().startBlock();
 		getSchemaWriter().printlnIndented(getSchemaWriter().createAttributeSchemaElement(EXTRA_DATA_SECTION_OWNER_ATTRIBUTE));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createRequiredDotElement(EXTRA_DATA_ITEM));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createZeroOrMoreDotElement(EXTRA_DATA_ITEM));
 		getSchemaWriter().endBlock();
 		
 		defineExtraDataItemElement();
@@ -858,7 +858,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private String createSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, final String elementType)
 	{
-		return createElementSchema(baseObjectSchema, fieldSchema, getSchemaWriter().createRequiredDotElement(elementType));
+		return createElementSchema(baseObjectSchema, fieldSchema, getSchemaWriter().createZeroOrMoreDotElement(elementType));
 	}
 	
 	private String createBudgetSchemaElement(final String workUnitsEntry, final String elementName)

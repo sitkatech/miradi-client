@@ -106,9 +106,9 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 		return createOptionalSchemaElement(createSchemaElement(elementName, elementType));
 	}
 	
-	public String createRequiredElementDefinition(String parentElementName, final String elementName)
+	public String createZeroOrMoreElementDefinition(String parentElementName, final String elementName)
 	{
-		return createOptionalSchemaElement(parentElementName, createRequiredDotElement(elementName));
+		return createOptionalSchemaElement(parentElementName, createZeroOrMoreDotElement(elementName));
 	}
 
 	public String createXsdSchemaElement(final String elementName, String elementType)
@@ -116,9 +116,9 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 		return createSchemaElement(elementName, createXsdElement(elementType));
 	}
 
-	public String createRequiredSchemaElement(String parentElementName, final String elementName)
+	public String createZeroOrMoreSchemaElement(String parentElementName, final String elementName)
 	{
-		return createSchemaElement(parentElementName, createRequiredElementName(elementName));
+		return createSchemaElement(parentElementName, createZeroOrMoreElementName(elementName));
 	}
 	
 	public String createSchemaElement(final String elementName, final String elementType)
@@ -131,12 +131,12 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 		return elementName + ".element";
 	}
 	
-	public String createRequiredDotElement(final String elementName)
+	public String createZeroOrMoreDotElement(final String elementName)
 	{
-		return createRequiredElementName(createDotElement(elementName));
+		return createZeroOrMoreElementName(createDotElement(elementName));
 	}
 
-	public String createRequiredElementName(final String createDotElement)
+	public String createZeroOrMoreElementName(final String createDotElement)
 	{
 		return createDotElement + "*";
 	}
