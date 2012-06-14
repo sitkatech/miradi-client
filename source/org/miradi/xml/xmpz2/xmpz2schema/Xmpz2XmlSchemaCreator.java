@@ -851,12 +851,12 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().endBlock();
 	}
 	
-	public String createSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, final String elementType)
+	private String createSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, final String elementType)
 	{
 		return createElementSchema(baseObjectSchema, fieldSchema, getSchemaWriter().createRequiredDotElement(elementType));
 	}
 	
-	public String createBudgetSchemaElement(final String workUnitsEntry, final String elementName)
+	private String createBudgetSchemaElement(final String workUnitsEntry, final String elementName)
 	{
 		return getSchemaWriter().createOptionalSchemaElementWithAnd(workUnitsEntry + elementName, getSchemaWriter().createDotElement(elementName));
 	}	
