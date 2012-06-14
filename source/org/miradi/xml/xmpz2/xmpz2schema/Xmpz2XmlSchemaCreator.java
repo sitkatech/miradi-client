@@ -732,7 +732,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void defineElement(String elementName, Vector<String> subElements)
 	{
-		getSchemaWriter().defineAlias(createElementName(elementName), "element " + PREFIX + elementName);
+		getSchemaWriter().defineAlias(createElementName(elementName), ELEMENT_NAME + PREFIX + elementName);
 		getSchemaWriter().startBlock();
 		getSchemaWriter().defineElements(subElements);
 		getSchemaWriter().endBlock();
