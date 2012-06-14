@@ -618,19 +618,19 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void writeGeospacialLocationElement()
 	{
 		String[] elementNames = createVector(LATITUDE, LONGITUDE);
-		defineElementWithSameType(GEOSPATIAL_LOCATION, Utility.convertToVector(elementNames), "decimal");
+		defineElementWithSameType(GEOSPATIAL_LOCATION, elementNames, "decimal");
 	}
 	
 	private void writeDiagramPointElement()
 	{
 		String[] elementNames = createVector(X_ELEMENT_NAME, Y_ELEMENT_NAME);
-		defineElementWithSameType(DIAGRAM_POINT_ELEMENT_NAME, Utility.convertToVector(elementNames), "integer");
+		defineElementWithSameType(DIAGRAM_POINT_ELEMENT_NAME, elementNames, "integer");
 	}
 	
 	private void writeDiagramSizeElement()
 	{
 		String[] elementNames = createVector(WIDTH_ELEMENT_NAME, HEIGHT_ELEMENT_NAME);
-		defineElementWithSameType(DIAGRAM_SIZE_ELEMENT_NAME, Utility.convertToVector(elementNames), "integer");
+		defineElementWithSameType(DIAGRAM_SIZE_ELEMENT_NAME, elementNames, "integer");
 	}
 	
 	private void writeDashboardUserChoiceMap()
@@ -677,7 +677,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 				createElementName(WORK_UNITS_FULL_PROJECT_TIMESPAN),
 				};
 		
-		getSchemaWriter().defineBudgetElements(DATE_UNIT_WORK_UNITS, WORK_UNITS_DATE_UNIT, WORK_UNITS, Utility.convertToVector(elementTypes));
+		getSchemaWriter().defineBudgetElements(DATE_UNIT_WORK_UNITS, WORK_UNITS_DATE_UNIT, WORK_UNITS, elementTypes);
 	}
 
 	private void defineDateUnitExpense()
@@ -690,7 +690,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 				createElementName(EXPENSES_FULL_PROJECT_TIMESPAN),
 		};
 		
-		getSchemaWriter().defineBudgetElements(DATE_UNITS_EXPENSE, EXPENSES_DATE_UNIT, EXPENSE, Utility.convertToVector(elementTypes));
+		getSchemaWriter().defineBudgetElements(DATE_UNITS_EXPENSE, EXPENSES_DATE_UNIT, EXPENSE, elementTypes);
 	}
 	
 	private void defineFullProjectTimeSpanElement(String fullProjectTimeSpanElementName)
@@ -698,7 +698,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		final String[] subElements = new String[]{
 				getSchemaWriter().createAttributeElement(FULL_PROJECT_TIMESPAN, VOCABULART_FULL_PROJECT_TIMESPAN),
 		};
-		defineElement(fullProjectTimeSpanElementName, Utility.convertToVector(subElements));
+		defineElement(fullProjectTimeSpanElementName, subElements);
 	}
 	
 	private void defineYearElement(String yearElementName)
@@ -719,7 +719,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void defineYearMonthElement(String elementName, final String yearElementName, final String monthElementName)
 	{
 		String[] subElements = createVector(createAttribute(yearElementName, VOCABULARY_YEAR), createAttribute(monthElementName, VOCABULARY_MONTH));
-		defineElement(elementName, Utility.convertToVector(subElements));
+		defineElement(elementName, subElements);
 	}
 
 	private String createAttribute(final String attributeName, final String attributeType)
@@ -732,14 +732,14 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		String[] subElements = new String[]{
 				getSchemaWriter().createAttributeElement(DATE, VOCABULARY_DATE),
 		};
-		defineElement(dayElementName, Utility.convertToVector(subElements));
+		defineElement(dayElementName, subElements);
 	}
 	
-	private void defineElement(String elementName, Vector<String> subElements)
+	private void defineElement(String elementName, String[] subElements)
 	{
 		getSchemaWriter().defineAlias(createElementName(elementName), ELEMENT_NAME + PREFIX + elementName);
 		getSchemaWriter().startBlock();
-		getSchemaWriter().defineElements(subElements);
+		getSchemaWriter().defineElements(Utility.convertToVector(subElements));
 		getSchemaWriter().endBlock();
 	}
 	
@@ -873,13 +873,13 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return getSchemaWriter().createOptionalSchemaElement(poolName + elementName, elementType);
 	}
 	
-	private void defineElementWithSameType(String parentName, Vector<String> names, String elementType)
+	private void defineElementWithSameType(String parentName, String[] names, String elementType)
 	{
 		getSchemaWriter().startElementDefinition(parentName);
 		Vector<String> elementNames = new Vector<String>();
-		for (int index = 0; index < names.size(); ++index)
+		for (int index = 0; index < names.length; ++index)
 		{
-			final String elementName = getSchemaWriter().createXsdSchemaElement(names.get(index), elementType);
+			final String elementName = getSchemaWriter().createXsdSchemaElement(names[index], elementType);
 			elementNames.add(elementName);	
 		}
 		
