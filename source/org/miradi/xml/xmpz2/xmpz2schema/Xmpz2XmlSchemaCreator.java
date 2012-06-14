@@ -504,38 +504,18 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	private void writeLinkableFactorIds()
 	{
-		String[] factorNames = new String[]{
-				BIODIVERSITY_TARGET,
-				HUMAN_WELFARE_TARGET, 
-				CAUSE,
-				STRATEGY,
-				THREAT_REDUCTION_RESULTS, 
-				INTERMEDIATE_RESULTS,
-				GROUP_BOX,
-		};
+		String[] factorNames = Xmpz2GroupedConstants.getLinkableFactorNames();
 		
 		writeOredSchemaElements(LINKABLE_FACTOR_ID, factorNames);
 	}
-	
+
 	private void writeWrappedByDiagramFactorSchemaElement()
 	{
-		String[] factorNames = new String[]{
-				BIODIVERSITY_TARGET, 
-				HUMAN_WELFARE_TARGET, 
-				CAUSE, 
-				STRATEGY, 
-				THREAT_REDUCTION_RESULTS, 
-				INTERMEDIATE_RESULTS,
-				GROUP_BOX,
-				TEXT_BOX,
-				SCOPE_BOX,
-				ACTIVITY,
-				STRESS,
-		};
+		String[] factorNames = Xmpz2GroupedConstants.getWrappableFactorNames();
 
 		writeOredSchemaElements(WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME, factorNames);
 	}
-	
+
 	private void defineVocabulary(ChoiceQuestion question, String vocabularyName)
 	{
 		CodeList codes = question.getCodesAsReadableCodes();
