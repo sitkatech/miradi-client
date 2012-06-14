@@ -157,7 +157,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		for(BaseObjectSchemaWriter baseObjectSchemaWriter : baseObjectSchemaWriters)
 		{
 			String poolName = baseObjectSchemaWriter.getPoolName();
-			elementNames.add(createElementName(poolName) + " ?");
+			elementNames.add(getSchemaWriter().createOptionalSchemaElement(createElementName(poolName)));
 		}
 		
 		elementNames.add(ELEMENT_NAME + PREFIX + DELETED_ORPHANS_ELEMENT_NAME +  "{ text }?");

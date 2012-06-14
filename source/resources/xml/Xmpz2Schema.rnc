@@ -12,45 +12,45 @@ ConservationProject.element = element miradi:ConservationProject
   RareProjectData.element &
   FosProjectData.element &
   ExtraData.element &
-  TaskPool.element ? &
-  ProjectResourcePool.element ? &
-  IndicatorPool.element ? &
-  ObjectivePool.element ? &
-  GoalPool.element ? &
-  DiagramLinkPool.element ? &
-  ResourceAssignmentPool.element ? &
-  AccountingCodePool.element ? &
-  FundingSourcePool.element ? &
-  KeyEcologicalAttributePool.element ? &
-  DiagramFactorPool.element ? &
-  ConceptualModelPool.element ? &
-  CausePool.element ? &
-  StrategyPool.element ? &
-  BiodiversityTargetPool.element ? &
-  IntermediateResultPool.element ? &
-  ResultsChainPool.element ? &
-  ThreatReductionResultPool.element ? &
-  TextBoxPool.element ? &
-  PlanningViewConfigurationPool.element ? &
-  MeasurementPool.element ? &
-  StressPool.element ? &
-  GroupBoxPool.element ? &
-  SubTargetPool.element ? &
-  ProgressReportPool.element ? &
-  OrganizationPool.element ? &
-  ProgressPercentPool.element ? &
-  TaggedObjectSetPool.element ? &
-  ScopeBoxPool.element ? &
-  ExpenseAssignmentPool.element ? &
-  HumanWelfareTargetPool.element ? &
-  IUCNRedListSpeciesPool.element ? &
-  OtherNotableSpeciesPool.element ? &
-  AudiencePool.element ? &
-  BudgetCategoryOnePool.element ? &
-  BudgetCategoryTwoPool.element ? &
-  DashboardPool.element ? &
-  ThreatRatingPool.element ? &
-  ExtraDataPool.element ? &
+  TaskPool.element? &
+  ProjectResourcePool.element? &
+  IndicatorPool.element? &
+  ObjectivePool.element? &
+  GoalPool.element? &
+  DiagramLinkPool.element? &
+  ResourceAssignmentPool.element? &
+  AccountingCodePool.element? &
+  FundingSourcePool.element? &
+  KeyEcologicalAttributePool.element? &
+  DiagramFactorPool.element? &
+  ConceptualModelPool.element? &
+  CausePool.element? &
+  StrategyPool.element? &
+  BiodiversityTargetPool.element? &
+  IntermediateResultPool.element? &
+  ResultsChainPool.element? &
+  ThreatReductionResultPool.element? &
+  TextBoxPool.element? &
+  PlanningViewConfigurationPool.element? &
+  MeasurementPool.element? &
+  StressPool.element? &
+  GroupBoxPool.element? &
+  SubTargetPool.element? &
+  ProgressReportPool.element? &
+  OrganizationPool.element? &
+  ProgressPercentPool.element? &
+  TaggedObjectSetPool.element? &
+  ScopeBoxPool.element? &
+  ExpenseAssignmentPool.element? &
+  HumanWelfareTargetPool.element? &
+  IUCNRedListSpeciesPool.element? &
+  OtherNotableSpeciesPool.element? &
+  AudiencePool.element? &
+  BudgetCategoryOnePool.element? &
+  BudgetCategoryTwoPool.element? &
+  DashboardPool.element? &
+  ThreatRatingPool.element? &
+  ExtraDataPool.element? &
   element miradi:DeletedOrphans{ text }?
 }
 
