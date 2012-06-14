@@ -649,26 +649,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().println(falgsContainerSchema);
 	}
 	
-	private void writeExtraDataSectionElement()
-	{
-		getSchemaWriter().defineAlias(createElementName(EXTRA_DATA_SECTION), ELEMENT_NAME + PREFIX + EXTRA_DATA_SECTION);
-		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented(getSchemaWriter().createAttributeSchemaElement(EXTRA_DATA_SECTION_OWNER_ATTRIBUTE));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createRequiredDotElement(EXTRA_DATA_ITEM));
-		getSchemaWriter().endBlock();
-		
-		defineExtraDataItemElement();
-	}
-
-	private void defineExtraDataItemElement()
-	{
-		getSchemaWriter().defineAlias(createElementName(EXTRA_DATA_ITEM), ELEMENT_NAME + PREFIX + EXTRA_DATA_ITEM);
-		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented(getSchemaWriter().createAttributeSchemaElement(EXTRA_DATA_ITEM_NAME));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createTextSchemaElement(EXTRA_DATA_ITEM_VALUE));
-		getSchemaWriter().endBlock();
-	}
-
 	private void writeDateUnitSchemaElements() 
 	{
 		defineDateUnitEfforts();
@@ -849,6 +829,26 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd((DIAGRAM_FACTOR + DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME), ChoiceQuestionToSchemaElementNameMap.VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement((DIAGRAM_FACTOR + DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME), ChoiceQuestionToSchemaElementNameMap.VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR));
 		getSchemaWriter().endBlock();		
+	}
+	
+	private void writeExtraDataSectionElement()
+	{
+		getSchemaWriter().defineAlias(createElementName(EXTRA_DATA_SECTION), ELEMENT_NAME + PREFIX + EXTRA_DATA_SECTION);
+		getSchemaWriter().startBlock();
+		getSchemaWriter().printlnIndented(getSchemaWriter().createAttributeSchemaElement(EXTRA_DATA_SECTION_OWNER_ATTRIBUTE));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createRequiredDotElement(EXTRA_DATA_ITEM));
+		getSchemaWriter().endBlock();
+		
+		defineExtraDataItemElement();
+	}
+
+	private void defineExtraDataItemElement()
+	{
+		getSchemaWriter().defineAlias(createElementName(EXTRA_DATA_ITEM), ELEMENT_NAME + PREFIX + EXTRA_DATA_ITEM);
+		getSchemaWriter().startBlock();
+		getSchemaWriter().printlnIndented(getSchemaWriter().createAttributeSchemaElement(EXTRA_DATA_ITEM_NAME));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createTextSchemaElement(EXTRA_DATA_ITEM_VALUE));
+		getSchemaWriter().endBlock();
 	}
 	
 	public String createSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, final String elementType)
