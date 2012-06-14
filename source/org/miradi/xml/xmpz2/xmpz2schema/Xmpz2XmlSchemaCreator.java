@@ -55,7 +55,6 @@ import org.miradi.objects.XslTemplate;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DashboardFlagsQuestion;
-import org.miradi.questions.OpenStandardsProgressStatusQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
@@ -389,7 +388,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().println("vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } ");
 		getSchemaWriter().println("vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='12' } ");
 		getSchemaWriter().println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
-		defineDashboardStatusesVocabulary();
 	}
 	
 	private void writeObjectTypeIdElements()
@@ -536,18 +534,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeOredSchemaElements(WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME, factorNames);
 	}
 	
-	private void defineDashboardStatusesVocabulary()
-	{
-		CodeList allCodesFromDynamicQuestion = new CodeList();
-		allCodesFromDynamicQuestion.add(OpenStandardsProgressStatusQuestion.NOT_SPECIFIED_CODE);
-		allCodesFromDynamicQuestion.add(OpenStandardsProgressStatusQuestion.NOT_STARTED_CODE);
-		allCodesFromDynamicQuestion.add(OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE);
-		allCodesFromDynamicQuestion.add(OpenStandardsProgressStatusQuestion.COMPLETE_CODE);
-		allCodesFromDynamicQuestion.add(OpenStandardsProgressStatusQuestion.NOT_APPLICABLE_CODE);
-		
-		defineVocabulary(VOCABULARY_DASHBOARD_ROW_PROGRESS, allCodesFromDynamicQuestion);
-	}
-
 	private void defineVocabulary(ChoiceQuestion question, String vocabularyName)
 	{
 		CodeList codes = question.getCodesAsReadableCodes();

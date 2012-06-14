@@ -41,6 +41,7 @@ import org.miradi.questions.IrreversibilityThreatRatingQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.LanguageQuestion;
 import org.miradi.questions.MeasurementStatusQuestion;
+import org.miradi.questions.OpenStandardsProgressStatusQuestion;
 import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
@@ -149,6 +150,7 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(TextBoxZOrderQuestion.class, VOCABULARY_TEXT_BOX_Z_ORDER);
 		addItem(StrategyStatusQuestion.class, VOCABULARY_STRATEGY_STATUS);
 		addItem(StatusQuestion.class, VOCABULARY_STATUS);
+		addItem(OpenStandardsProgressStatusQuestion.class, VOCABULARY_DASHBOARD_ROW_PROGRESS);
 	}
 	
 	private void addItem(Class questionClass, String value)
