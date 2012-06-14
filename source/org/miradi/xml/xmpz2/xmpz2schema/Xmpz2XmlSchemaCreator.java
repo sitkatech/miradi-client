@@ -260,7 +260,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	public String createThresholdsSchemaElement(BaseObjectSchema baseObjectSchema)
 	{
-		return getSchemaWriter().createOptionalSchemaElement(baseObjectSchema.getXmpz2ElementName() + THRESHOLDS, (createElementName("IndicatorThreshold") +  "*"));
+		return getSchemaWriter().createOptionalSchemaElement(baseObjectSchema.getXmpz2ElementName() + THRESHOLDS, (createElementName(THRESHOLD) +  "*"));
 	}
 	
 	public String createStringRefMapSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
