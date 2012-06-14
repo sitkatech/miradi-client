@@ -268,9 +268,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return createSchemaElement(baseObjectSchema, fieldSchema, EXTERNAL_PROJECT_ID_ELEMENT_NAME);
 	}
 	
-	private String createElementName(String elementName)
+	public String createElementName(String elementName)
 	{
-		return elementName + DOT_ELEMENT;
+		return getSchemaWriter().createElementName(elementName);
 	}
 	
 	public String createStringSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
@@ -754,15 +754,15 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	private void writeStressBasedThreatRatingElement()
 	{
-		getSchemaWriter().defineAlias(createElementName(STRESS_BASED_THREAT_RATING), ELEMENT_NAME + PREFIX + STRESS_BASED_THREAT_RATING);
-		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElementWithAnd(STRESS_BASED_THREAT_RATING + STRESS_ID, getSchemaWriter().createDotElement(STRESS_ID)));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd((STRESS_BASED_THREAT_RATING + CONTRIBUTION), VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd((STRESS_BASED_THREAT_RATING + IRREVERSIBILITY), VOCABULARY_THREAT_STRESS_RATING_IRREVERSIBILITY_CODE));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd((STRESS_BASED_THREAT_RATING + IS_ACTIVE), getSchemaWriter().createBooleanType()));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd((STRESS_BASED_THREAT_RATING + STRESS_RATING), VOCABULARY_THREAT_RATING));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement((STRESS_BASED_THREAT_RATING + THREAT_STRESS_RATING), VOCABULARY_THREAT_RATING));
-		getSchemaWriter().endBlock();
+		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), STRESS_BASED_THREAT_RATING);
+		creator.addChildElement(getSchemaWriter().createSchemaElement(STRESS_BASED_THREAT_RATING + STRESS_ID, getSchemaWriter().createDotElement(STRESS_ID)));
+		creator.addChildElement(getSchemaWriter().createOptionalSchemaElement((STRESS_BASED_THREAT_RATING + CONTRIBUTION), VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE));
+		creator.addChildElement(getSchemaWriter().createOptionalSchemaElement((STRESS_BASED_THREAT_RATING + IRREVERSIBILITY), VOCABULARY_THREAT_STRESS_RATING_IRREVERSIBILITY_CODE));
+		creator.addChildElement(getSchemaWriter().createOptionalSchemaElement((STRESS_BASED_THREAT_RATING + IS_ACTIVE), getSchemaWriter().createBooleanType()));
+		creator.addChildElement(getSchemaWriter().createOptionalSchemaElement((STRESS_BASED_THREAT_RATING + STRESS_RATING), VOCABULARY_THREAT_RATING));
+		creator.addChildElement(getSchemaWriter().createOptionalSchemaElement((STRESS_BASED_THREAT_RATING + THREAT_STRESS_RATING), VOCABULARY_THREAT_RATING));
+		
+		getSchemaWriter().write(creator.createSchemaElement());
 	}
 	
 	private void writeDiagramFactorUiSettings()

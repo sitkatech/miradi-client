@@ -180,4 +180,9 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 		printlnIndented(createOptionalSchemaElement(createSchemaElement(elementName, createDecimalType())));
 		endBlock();
 	}
+
+	public String createElementName(String elementName)
+	{
+		return elementName + DOT_ELEMENT;
+	}
 }
