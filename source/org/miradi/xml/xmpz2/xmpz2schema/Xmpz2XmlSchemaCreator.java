@@ -616,19 +616,19 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	private void writeGeospacialLocationElement()
 	{
-		Vector<String> elementNames = createVector("latitude", "longitude");
+		Vector<String> elementNames = createVector(LATITUDE, LONGITUDE);
 		defineElementWithSameType(GEOSPATIAL_LOCATION, elementNames, "decimal");
 	}
 	
 	private void writeDiagramPointElement()
 	{
-		Vector<String> elementNames = createVector("x", "y");
+		Vector<String> elementNames = createVector(X_ELEMENT_NAME, Y_ELEMENT_NAME);
 		defineElementWithSameType(DIAGRAM_POINT_ELEMENT_NAME, elementNames, "integer");
 	}
 	
 	private void writeDiagramSizeElement()
 	{
-		Vector<String> elementNames = createVector("width", "height");
+		Vector<String> elementNames = createVector(WIDTH_ELEMENT_NAME, HEIGHT_ELEMENT_NAME);
 		defineElementWithSameType(DIAGRAM_SIZE_ELEMENT_NAME, elementNames, "integer");
 	}
 	
