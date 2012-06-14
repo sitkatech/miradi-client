@@ -813,11 +813,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().endBlock();
 	}
 
-	public String createBudgetSchemaElement(final String workUnitsEntry, final String elementName)
-	{
-		return getSchemaWriter().createOptionalSchemaElementWithAnd(workUnitsEntry + elementName, getSchemaWriter().createDotElement(elementName));
-	}	
-	
 	private void writeExternaIdSchemaElement()
 	{
 		getSchemaWriter().defineAlias(createElementName(EXTERNAL_PROJECT_ID_ELEMENT_NAME), ELEMENT_NAME + PREFIX + EXTERNAL_PROJECT_ID_ELEMENT_NAME);
@@ -860,6 +855,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement((DIAGRAM_FACTOR + DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME), ChoiceQuestionToSchemaElementNameMap.VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR));
 		getSchemaWriter().endBlock();		
 	}
+	
+	public String createBudgetSchemaElement(final String workUnitsEntry, final String elementName)
+	{
+		return getSchemaWriter().createOptionalSchemaElementWithAnd(workUnitsEntry + elementName, getSchemaWriter().createDotElement(elementName));
+	}	
 
 	private String createElementSchema(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String elementType)
 	{
