@@ -29,6 +29,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Arrays;
 import java.util.Vector;
 
 import org.martus.swing.Utilities;
@@ -110,6 +111,11 @@ public class Utility
 		}
 		
 		return convertedValuesList;
+	}
+	
+	public static Vector<String> convertToVector(String[] values)
+	{
+		return new Vector<String>(Arrays.asList(values));
 	}
 	
 	public static void copyFile(File copyFrom, File copyTo) throws Exception

@@ -77,6 +77,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.StringUtilities;
 import org.miradi.utils.Translation;
+import org.miradi.utils.Utility;
 import org.miradi.xml.xmpz2.Xmpz2TagToElementNameMap;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 
@@ -616,20 +617,20 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	private void writeGeospacialLocationElement()
 	{
-		Vector<String> elementNames = createVector(LATITUDE, LONGITUDE);
-		defineElementWithSameType(GEOSPATIAL_LOCATION, elementNames, "decimal");
+		String[] elementNames = createVector(LATITUDE, LONGITUDE);
+		defineElementWithSameType(GEOSPATIAL_LOCATION, Utility.convertToVector(elementNames), "decimal");
 	}
 	
 	private void writeDiagramPointElement()
 	{
-		Vector<String> elementNames = createVector(X_ELEMENT_NAME, Y_ELEMENT_NAME);
-		defineElementWithSameType(DIAGRAM_POINT_ELEMENT_NAME, elementNames, "integer");
+		String[] elementNames = createVector(X_ELEMENT_NAME, Y_ELEMENT_NAME);
+		defineElementWithSameType(DIAGRAM_POINT_ELEMENT_NAME, Utility.convertToVector(elementNames), "integer");
 	}
 	
 	private void writeDiagramSizeElement()
 	{
-		Vector<String> elementNames = createVector(WIDTH_ELEMENT_NAME, HEIGHT_ELEMENT_NAME);
-		defineElementWithSameType(DIAGRAM_SIZE_ELEMENT_NAME, elementNames, "integer");
+		String[] elementNames = createVector(WIDTH_ELEMENT_NAME, HEIGHT_ELEMENT_NAME);
+		defineElementWithSameType(DIAGRAM_SIZE_ELEMENT_NAME, Utility.convertToVector(elementNames), "integer");
 	}
 	
 	private void writeDashboardUserChoiceMap()
@@ -668,33 +669,36 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void defineDateUnitEfforts()
 	{ 		
-		Vector<String> elementTypes = new Vector<String>();
-		elementTypes.add(createElementName(WORK_UNITS_DAY));
-		elementTypes.add(createElementName(WORK_UNITS_MONTH));
-		elementTypes.add(createElementName(WORK_UNITS_QUARTER));
-		elementTypes.add(createElementName(WORK_UNITS_YEAR));
-		elementTypes.add(createElementName(WORK_UNITS_FULL_PROJECT_TIMESPAN));
+		final String[] elementTypes = new String[]{
+				createElementName(WORK_UNITS_DAY),
+				createElementName(WORK_UNITS_MONTH),
+				createElementName(WORK_UNITS_QUARTER),
+				createElementName(WORK_UNITS_YEAR),
+				createElementName(WORK_UNITS_FULL_PROJECT_TIMESPAN),
+				};
 		
-		getSchemaWriter().defineBudgetElements(DATE_UNIT_WORK_UNITS, WORK_UNITS_DATE_UNIT, WORK_UNITS, elementTypes);
+		getSchemaWriter().defineBudgetElements(DATE_UNIT_WORK_UNITS, WORK_UNITS_DATE_UNIT, WORK_UNITS, Utility.convertToVector(elementTypes));
 	}
 
 	private void defineDateUnitExpense()
 	{
-		Vector<String> elementTypes = new Vector<String>();
-		elementTypes.add(createElementName(EXPENSES_DAY));
-		elementTypes.add(createElementName(EXPENSES_MONTH));
-		elementTypes.add(createElementName(EXPENSES_QUARTER));
-		elementTypes.add(createElementName(EXPENSES_YEAR));
-		elementTypes.add(createElementName(EXPENSES_FULL_PROJECT_TIMESPAN));
+		final String[] elementTypes = new String[]{
+				createElementName(EXPENSES_DAY),
+				createElementName(EXPENSES_MONTH),
+				createElementName(EXPENSES_QUARTER),
+				createElementName(EXPENSES_YEAR),
+				createElementName(EXPENSES_FULL_PROJECT_TIMESPAN),
+		};
 		
-		getSchemaWriter().defineBudgetElements(DATE_UNITS_EXPENSE, EXPENSES_DATE_UNIT, EXPENSE, elementTypes);
+		getSchemaWriter().defineBudgetElements(DATE_UNITS_EXPENSE, EXPENSES_DATE_UNIT, EXPENSE, Utility.convertToVector(elementTypes));
 	}
 	
 	private void defineFullProjectTimeSpanElement(String fullProjectTimeSpanElementName)
 	{
-		Vector<String> subElements = new Vector<String>();
-		subElements.add(getSchemaWriter().createAttributeElement(FULL_PROJECT_TIMESPAN, VOCABULART_FULL_PROJECT_TIMESPAN));
-		defineElement(fullProjectTimeSpanElementName, subElements);
+		final String[] subElements = new String[]{
+				getSchemaWriter().createAttributeElement(FULL_PROJECT_TIMESPAN, VOCABULART_FULL_PROJECT_TIMESPAN),
+		};
+		defineElement(fullProjectTimeSpanElementName, Utility.convertToVector(subElements));
 	}
 	
 	private void defineYearElement(String yearElementName)
@@ -714,8 +718,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	private void defineYearMonthElement(String elementName, final String yearElementName, final String monthElementName)
 	{
-		Vector<String> subElements = createVector(createAttribute(yearElementName, VOCABULARY_YEAR), createAttribute(monthElementName, VOCABULARY_MONTH));
-		defineElement(elementName, subElements);
+		String[] subElements = createVector(createAttribute(yearElementName, VOCABULARY_YEAR), createAttribute(monthElementName, VOCABULARY_MONTH));
+		defineElement(elementName, Utility.convertToVector(subElements));
 	}
 
 	private String createAttribute(final String attributeName, final String attributeType)
@@ -725,9 +729,10 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void defineDayElement(String dayElementName)
 	{
-		Vector<String> subElements = new Vector<String>();
-		subElements.add(getSchemaWriter().createAttributeElement(DATE, VOCABULARY_DATE));
-		defineElement(dayElementName, subElements);
+		String[] subElements = new String[]{
+				getSchemaWriter().createAttributeElement(DATE, VOCABULARY_DATE),
+		};
+		defineElement(dayElementName, Utility.convertToVector(subElements));
 	}
 	
 	private void defineElement(String elementName, Vector<String> subElements)
@@ -1012,12 +1017,13 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		throw new RuntimeException("Object type " + objectType + " cannot have a dateunitEffortsList field");
 	}
 	
-	private Vector<String> createVector(String item1, String item2)
+	private String[] createVector(String item1, String item2)
 	{
-		Vector<String> items = new Vector<String>();
-		items.add(item1);
-		items.add(item2);
-		
+		final String[] items = new String[]{
+				item1,
+				item2,
+		};
+
 		return items;
 	}
 	
