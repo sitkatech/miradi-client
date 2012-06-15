@@ -130,7 +130,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().write(createDiagramFactorUiSettingsSchemaCreator().createSchemaElement());
 		writeDashboardUserChoiceMap();
 		writeDashboardFlagsContainer();
-		writeExtraDataSectionElement();
+		getSchemaWriter().write(writeExtraDataSectionElement().createSchemaElement());
 		defineExtraDataItemElement();
 	}
 
@@ -777,13 +777,13 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return creator;
 	}
 	
-	private void writeExtraDataSectionElement()
+	private Xmpz2CustomSchemaDefinitionCreator writeExtraDataSectionElement()
 	{
-		getSchemaWriter().defineAlias(createElementName(EXTRA_DATA_SECTION), ELEMENT_NAME + PREFIX + EXTRA_DATA_SECTION);
-		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented(getSchemaWriter().createAttributeSchemaElement(EXTRA_DATA_SECTION_OWNER_ATTRIBUTE));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createZeroOrMoreDotElement(EXTRA_DATA_ITEM));
-		getSchemaWriter().endBlock();
+		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), EXTRA_DATA_SECTION);
+		creator.addTextAttributeElement(EXTRA_DATA_SECTION_OWNER_ATTRIBUTE);
+		creator.addZeroOrMoreDotElement(EXTRA_DATA_ITEM);
+		
+		return creator;
 	}
 
 	private void defineExtraDataItemElement()
