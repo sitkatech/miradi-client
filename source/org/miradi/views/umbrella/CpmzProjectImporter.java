@@ -27,8 +27,6 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
-import javax.swing.filechooser.FileFilter;
-
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringReader;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
@@ -51,6 +49,7 @@ import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.utils.ConceptualModelByTargetSplitter;
 import org.miradi.utils.CpmzFileFilterForChooserDialog;
 import org.miradi.utils.FileUtilities;
+import org.miradi.utils.GenericMiradiFileFilter;
 import org.miradi.utils.GroupBoxHelper;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.ProgressInterface;
@@ -283,9 +282,9 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 	}
 	
 	@Override
-	public FileFilter[] getFileFilters()
+	protected GenericMiradiFileFilter createFileFilter()
 	{
-		return new FileFilter[] {new CpmzFileFilterForChooserDialog()};
+		return new CpmzFileFilterForChooserDialog();
 	}
 
 	public static File extractStreamToFile(InputStream mpzInputStream, ProgressInterface progressIndicator) throws Exception
