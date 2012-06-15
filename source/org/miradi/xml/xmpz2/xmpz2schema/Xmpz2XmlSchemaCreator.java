@@ -124,7 +124,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeThresholdsElement();
 		writeTimePeriodCostsElement();
 		writeExpenseEntryElement();
-		writeWorkUnitsEntryElement();
+		creators.add(createWorkUnitsEntryElementSchemaCreator());
 		creators.add(createExternaIdSchemaElementSchemaCreator());
 		creators.add(createSimpleThreatRatingElementSchemaCreator());
 		creators.add(createStressBasedThreatRatingElementSchemaCreator());
@@ -727,17 +727,17 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().endBlock();
 	}
 
-	private void writeWorkUnitsEntryElement()
+	private Xmpz2CustomSchemaDefinitionCreator createWorkUnitsEntryElementSchemaCreator()
 	{
-		getSchemaWriter().defineAlias(createElementName(WORK_UNITS_ENTRY), ELEMENT_NAME + PREFIX + WORK_UNITS_ENTRY);
-		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented(createBudgetSchemaElement(WORK_UNITS_ENTRY, RESOURCE_ID));
-		getSchemaWriter().printlnIndented(createBudgetSchemaElement(WORK_UNITS_ENTRY, FUNDING_SOURCE_ID));
-		getSchemaWriter().printlnIndented(createBudgetSchemaElement(WORK_UNITS_ENTRY, ACCOUNTING_CODE_ID));
-		getSchemaWriter().printlnIndented(createBudgetSchemaElement(WORK_UNITS_ENTRY, BUDGET_CATEGORY_ONE_ID));
-		getSchemaWriter().printlnIndented(createBudgetSchemaElement(WORK_UNITS_ENTRY, BUDGET_CATEGORY_TWO_ID));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement(WORK_UNITS_ENTRY + DETAILS, getSchemaWriter().createZeroOrMoreDotElement(DATE_UNIT_WORK_UNITS)));
-		getSchemaWriter().endBlock();
+		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), WORK_UNITS_ENTRY);
+		creator.addOptionalSchemaElement(RESOURCE_ID);
+		creator.addOptionalSchemaElement(FUNDING_SOURCE_ID);
+		creator.addOptionalSchemaElement(ACCOUNTING_CODE_ID);
+		creator.addOptionalSchemaElement(BUDGET_CATEGORY_ONE_ID);
+		creator.addOptionalSchemaElement(BUDGET_CATEGORY_TWO_ID);
+		creator.addChildElement(getSchemaWriter().createOptionalSchemaElement(WORK_UNITS_ENTRY + DETAILS, getSchemaWriter().createZeroOrMoreDotElement(DATE_UNIT_WORK_UNITS)));
+		
+		return creator;
 	}
 
 	private Xmpz2CustomSchemaDefinitionCreator createExternaIdSchemaElementSchemaCreator()
