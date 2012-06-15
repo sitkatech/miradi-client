@@ -255,8 +255,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 	private void selectFirstDiagramInAlphabeticallySortedList(Project filledProject) throws Exception
 	{
 		ORefList sortedConceptualModelRefs = filledProject.getConceptualModelDiagramPool().getSortedRefList();
-		final int FIRST_REF_INDEX = 0;
-		ORef firstRefInAlphabeticallySortedList = sortedConceptualModelRefs.get(FIRST_REF_INDEX);
+		ORef firstRefInAlphabeticallySortedList = sortedConceptualModelRefs.getFirstElement();
 		ViewData viewData = filledProject.getViewData(DiagramView.getViewName());
 		CommandSetObjectData setCurrentDiagramCommand = new CommandSetObjectData(viewData, ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF, firstRefInAlphabeticallySortedList.toString());
 		filledProject.executeCommand(setCurrentDiagramCommand);
