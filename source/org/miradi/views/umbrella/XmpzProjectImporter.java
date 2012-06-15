@@ -34,9 +34,10 @@ import org.miradi.project.Project;
 import org.miradi.project.ProjectSaver;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.XmpzFileFilter;
+import org.miradi.xml.AbstractXmpzProjectImporter;
 import org.miradi.xml.xmpz.XmpzXmlImporter;
 
-public class XmpzProjectImporter extends AbstractZippedXmlImporter
+public class XmpzProjectImporter extends AbstractXmpzProjectImporter
 {
 	public XmpzProjectImporter(MainWindow mainWindowToUse)
 	{
