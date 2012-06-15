@@ -41,20 +41,30 @@ public class Xmpz2CustomSchemaDefinitionCreator implements Xmpz2XmlConstants
 	public String createSchemaElement()
 	{
 		String schemaElement = getSchemaWriter().createAlias(getSchemaWriter().createElementName(parentName), ELEMENT_NAME + PREFIX + parentName);
-		schemaElement += "\n";
-		schemaElement += "{\n";
+		schemaElement = addNewLine(schemaElement);
+		schemaElement += "{";
+		schemaElement = addNewLine(schemaElement);
 		for (int index = 0; index < childElements.size(); ++index)
 		{
 			if (index > 0)
-				schemaElement += " &\n";
+			{
+				schemaElement += " &";
+				schemaElement = addNewLine(schemaElement);
+			}
 			
 			schemaElement += getSchemaWriter().INDENTATION + childElements.get(index);
 		}
-		schemaElement += "\n";
-		schemaElement += "}\n";
-		schemaElement += "\n";
+		schemaElement = addNewLine(schemaElement);
+		schemaElement += "}";
+		schemaElement = addNewLine(schemaElement);
+		schemaElement = addNewLine(schemaElement);
 		
 		return schemaElement;
+	}
+
+	private String addNewLine(String schemaElement)
+	{
+		return schemaElement += "\n";
 	}
 	
 	private Xmpz2SchemaWriter getSchemaWriter()
