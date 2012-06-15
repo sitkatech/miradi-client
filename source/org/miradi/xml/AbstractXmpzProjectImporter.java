@@ -25,10 +25,14 @@ import java.io.IOException;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
+import javax.swing.filechooser.FileFilter;
+
+import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectSaver;
+import org.miradi.utils.GenericMiradiFileFilter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.views.umbrella.AbstractZippedXmlImporter;
 
@@ -39,6 +43,13 @@ abstract public class AbstractXmpzProjectImporter extends AbstractZippedXmlImpor
 		super(mainWindowToUse);
 	}
 	
+	@Override
+	protected void importProjectXml(Project projectToFill, ZipFile zipFile, InputStreamWithSeek projectAsInputStream, ProgressInterface progressIndicator) throws Exception
+	{
+		AbstractXmlImporter xmpzImporter = createXmpzXmlImporter(projectToFill, progressIndicator);
+		xmpzImporter.importProject(projectAsInputStream);
+	}
+
 	@Override
 	protected void createOrOpenProject(Project projectToFill, File projectFile) throws Exception
 	{
@@ -64,4 +75,14 @@ abstract public class AbstractXmpzProjectImporter extends AbstractZippedXmlImpor
 			zipFile.close();
 		}
 	}
+	
+	@Override
+	public FileFilter[] getFileFilters()
+	{
+		return new FileFilter[] {createFileFilter()};
+	}
+
+	abstract protected GenericMiradiFileFilter createFileFilter();
+	
+	abstract protected AbstractXmlImporter createXmpzXmlImporter(Project projectToFill,	ProgressInterface progressIndicator) throws Exception;
 }
