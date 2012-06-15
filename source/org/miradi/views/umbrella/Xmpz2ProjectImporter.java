@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.umbrella;
 
-import java.io.File;
 import java.util.zip.ZipFile;
 
 import javax.swing.filechooser.FileFilter;
@@ -48,14 +47,13 @@ public class Xmpz2ProjectImporter extends AbstractXmpzProjectImporter
 	}
 
 	@Override
-	protected void createOrOpenProject(Project projectToFill, File projectFile) throws Exception
-	{
-		projectToFill.rawCreateorOpen();
-	}
-		
-	@Override
 	public FileFilter[] getFileFilters()
 	{
-		return new FileFilter[] {new Xmpz2FileFilter()};
+		return new FileFilter[] {createFileFilter()};
+	}
+
+	protected Xmpz2FileFilter createFileFilter()
+	{
+		return new Xmpz2FileFilter();
 	}
 }
