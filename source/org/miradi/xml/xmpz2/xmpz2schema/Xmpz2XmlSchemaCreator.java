@@ -131,6 +131,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeDashboardUserChoiceMap();
 		writeDashboardFlagsContainer();
 		writeExtraDataSectionElement();
+		defineExtraDataItemElement();
 	}
 
 	private void writeHeader()
@@ -783,8 +784,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().printlnIndented(getSchemaWriter().createAttributeSchemaElement(EXTRA_DATA_SECTION_OWNER_ATTRIBUTE));
 		getSchemaWriter().printlnIndented(getSchemaWriter().createZeroOrMoreDotElement(EXTRA_DATA_ITEM));
 		getSchemaWriter().endBlock();
-		
-		defineExtraDataItemElement();
 	}
 
 	private void defineExtraDataItemElement()
