@@ -131,7 +131,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeDashboardUserChoiceMap();
 		writeDashboardFlagsContainer();
 		getSchemaWriter().write(writeExtraDataSectionElement().createSchemaElement());
-		defineExtraDataItemElement();
+		getSchemaWriter().write(defineExtraDataItemElement().createSchemaElement());
 	}
 
 	private void writeHeader()
@@ -786,13 +786,13 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return creator;
 	}
 
-	private void defineExtraDataItemElement()
+	private Xmpz2CustomSchemaDefinitionCreator defineExtraDataItemElement()
 	{
-		getSchemaWriter().defineAlias(createElementName(EXTRA_DATA_ITEM), ELEMENT_NAME + PREFIX + EXTRA_DATA_ITEM);
-		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented(getSchemaWriter().createAttributeSchemaElement(EXTRA_DATA_ITEM_NAME));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createTextSchemaElement(EXTRA_DATA_ITEM_VALUE));
-		getSchemaWriter().endBlock();
+		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), EXTRA_DATA_ITEM);
+		creator.addTextAttributeElement(EXTRA_DATA_ITEM_NAME);
+		creator.addOptionalTextSchemaElement(EXTRA_DATA_ITEM_VALUE);
+		
+		return creator;
 	}
 	
 	private String createSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, final String elementType)
