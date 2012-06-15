@@ -1020,6 +1020,11 @@ WorkUnitsEntry.element = element miradi:WorkUnitsEntry
   element miradi:WorkUnitsEntryDetails { DateUnitWorkUnits.element* }?
 }
 
+DashboardFlagsContainer.element = element miradi:DashboardFlagsContainer
+{
+element miradi:code { vocabulary_dashboard_row_flags } *
+}
+
 ExternalProjectId.element = element miradi:ExternalProjectId
 {
   element miradi:ExternalApp { text } &
@@ -1031,11 +1036,6 @@ SimpleThreatRating.element = element miradi:SimpleThreatRating
   element miradi:SimpleThreatRatingScope { vocabulary_simple_threat_rating_scope_code }? &
   element miradi:SimpleThreatRatingSeverity { vocabulary_simple_threat_rating_severitiy_code }? &
   element miradi:SimpleThreatRatingIrreversibility { vocabulary_simple_threat_rating_irreversibility_code }?
-}
-
-DashboardFlagsContainer.element = element miradi:DashboardFlagsContainer
-{
-element miradi:code { vocabulary_dashboard_row_flags } *
 }
 
 StressBasedThreatRating.element = element miradi:StressBasedThreatRating

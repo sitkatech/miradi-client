@@ -125,8 +125,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeTimePeriodCostsElement();
 		writeExpenseEntryElement();
 		writeWorkUnitsEntryElement();
-		writeExternaIdSchemaElement();
-		writeSimpleThreatRatingElement();
+		creators.add(createExternaIdSchemaElementSchemaCreator());
+		creators.add(createSimpleThreatRatingElementSchemaCreator());
 		creators.add(createStressBasedThreatRatingElementSchemaCreator());
 		creators.add(createDiagramFactorUiSettingsSchemaCreator());
 		creators.add(createDashboardUserChoiceMapSchemaCreator());
@@ -740,23 +740,23 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().endBlock();
 	}
 
-	private void writeExternaIdSchemaElement()
+	private Xmpz2CustomSchemaDefinitionCreator createExternaIdSchemaElementSchemaCreator()
 	{
-		getSchemaWriter().defineAlias(createElementName(EXTERNAL_PROJECT_ID_ELEMENT_NAME), ELEMENT_NAME + PREFIX + EXTERNAL_PROJECT_ID_ELEMENT_NAME);
-		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElementWithAnd(EXTERNAL_APP_ELEMENT_NAME, TEXT_ELEMENT_TYPE));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElement(PROJECT_ID, TEXT_ELEMENT_TYPE));
-		getSchemaWriter().endBlock();
+		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), EXTERNAL_PROJECT_ID_ELEMENT_NAME);
+		creator.addChildElement(EXTERNAL_APP_ELEMENT_NAME, TEXT_ELEMENT_TYPE);
+		creator.addChildElement(PROJECT_ID, TEXT_ELEMENT_TYPE);
+		
+		return creator;
 	}
 
-	private void writeSimpleThreatRatingElement()
+	private Xmpz2CustomSchemaDefinitionCreator createSimpleThreatRatingElementSchemaCreator()
 	{
-		getSchemaWriter().defineAlias(createElementName(SIMPLE_BASED_THREAT_RATING)	, ELEMENT_NAME + PREFIX + SIMPLE_BASED_THREAT_RATING);
-		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd((SIMPLE_BASED_THREAT_RATING + SCOPE), VOCABULARY_SIMPLE_THREAT_RATING_SCOPE_CODE));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd((SIMPLE_BASED_THREAT_RATING + SEVERITY), VOCABULARY_SIMPLE_THREAT_RATING_SEVERITY_CODE));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement((SIMPLE_BASED_THREAT_RATING + IRREVERSIBILITY), VOCABULARY_SIMPLE_THREAT_RATING_IRREVERSIBILITY_CODE));
-		getSchemaWriter().endBlock();
+		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), SIMPLE_BASED_THREAT_RATING);
+		creator.addOptionalChildElement(SIMPLE_BASED_THREAT_RATING + SCOPE, VOCABULARY_SIMPLE_THREAT_RATING_SCOPE_CODE);
+		creator.addOptionalChildElement(SIMPLE_BASED_THREAT_RATING + SEVERITY, VOCABULARY_SIMPLE_THREAT_RATING_SEVERITY_CODE);
+		creator.addOptionalChildElement(SIMPLE_BASED_THREAT_RATING + IRREVERSIBILITY, VOCABULARY_SIMPLE_THREAT_RATING_IRREVERSIBILITY_CODE);
+		
+		return creator;
     }
 
 	private Xmpz2CustomSchemaDefinitionCreator createStressBasedThreatRatingElementSchemaCreator()
