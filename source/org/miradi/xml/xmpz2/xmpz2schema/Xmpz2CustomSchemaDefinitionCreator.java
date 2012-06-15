@@ -42,7 +42,7 @@ public class Xmpz2CustomSchemaDefinitionCreator implements Xmpz2XmlConstants
 	{
 		String schemaElement = getSchemaWriter().createAlias(getSchemaWriter().createElementName(parentName), ELEMENT_NAME + PREFIX + parentName);
 		schemaElement = addNewLine(schemaElement);
-		schemaElement += "{";
+		schemaElement = addStartBlock(schemaElement);
 		schemaElement = addNewLine(schemaElement);
 		for (int index = 0; index < childElements.size(); ++index)
 		{
@@ -55,7 +55,7 @@ public class Xmpz2CustomSchemaDefinitionCreator implements Xmpz2XmlConstants
 			schemaElement += getSchemaWriter().INDENTATION + childElements.get(index);
 		}
 		schemaElement = addNewLine(schemaElement);
-		schemaElement += "}";
+		schemaElement = addEndBlock(schemaElement);
 		schemaElement = addNewLine(schemaElement);
 		schemaElement = addNewLine(schemaElement);
 		
@@ -65,6 +65,16 @@ public class Xmpz2CustomSchemaDefinitionCreator implements Xmpz2XmlConstants
 	private String addNewLine(String schemaElement)
 	{
 		return schemaElement += "\n";
+	}
+	
+	private String addStartBlock(String schemaElement)
+	{
+		return schemaElement += "{";
+	}
+	
+	private String addEndBlock(String schemaElement)
+	{
+		return schemaElement += "}";
 	}
 	
 	private Xmpz2SchemaWriter getSchemaWriter()
