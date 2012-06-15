@@ -50,6 +50,9 @@ abstract public class AbstractAssignmentPoolExporter extends BaseObjectPoolExpor
 	
 	protected void exportDateUnitEfforList(DateUnitEffortList dateUnitEffortList, String dateUnitsElementName) throws Exception
 	{
+		if (dateUnitEffortList.size() == 0)
+			return;
+		
 		getWcsXmlExporter().writeStartElement(getPoolName() + Assignment.TAG_DATEUNIT_EFFORTS);
 		for (int index = 0; index < dateUnitEffortList.size(); ++index)
 		{

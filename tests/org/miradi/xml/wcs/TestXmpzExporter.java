@@ -60,6 +60,7 @@ import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.xml.TestXmpzXmlImporter;
 import org.miradi.xml.generic.XmlSchemaCreator;
@@ -78,6 +79,13 @@ public class TestXmpzExporter extends TestCaseWithProject
 	
 	public void testValidateEmptyProject() throws Exception
 	{
+		validateProject();
+	}
+	
+	public void testImportWithNoBudgetDetailsElement() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		getProject().addExpenseAssignment(strategy, new DateUnitEffortList());
 		validateProject();
 	}
 	
