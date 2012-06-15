@@ -1010,11 +1010,6 @@ ExpenseEntry.element = element miradi:ExpenseEntry
   element miradi:ExpenseEntryDetails { DateUnitExpense.element* }?
 }
 
-DashboardFlagsContainer.element = element miradi:DashboardFlagsContainer
-{
-element miradi:code { vocabulary_dashboard_row_flags } *
-}
-
 WorkUnitsEntry.element = element miradi:WorkUnitsEntry
 {
   element miradi:WorkUnitsEntryResourceId { ResourceId.element }? &
@@ -1074,5 +1069,10 @@ ExtraDataItem.element = element miradi:ExtraDataItem
 {
   attribute ExtraDataItemName { text } &
   element miradi:ExtraDataItemValue { text }?
+}
+
+DashboardFlagsContainer.element = element miradi:DashboardFlagsContainer
+{
+element miradi:code { vocabulary_dashboard_row_flags } *
 }
 
