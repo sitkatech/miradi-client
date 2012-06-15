@@ -130,7 +130,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		creators.add(createStressBasedThreatRatingElementSchemaCreator());
 		creators.add(createDiagramFactorUiSettingsSchemaCreator());
 		creators.add(createDashboardUserChoiceMapSchemaCreator());
-		writeDashboardFlagsContainer();
 		creators.add(writeExtraDataSectionElement());
 		creators.add(defineExtraDataItemElement());
 		
@@ -138,6 +137,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		{
 			getSchemaWriter().write(creator.createSchemaElement());
 		}
+		
+		writeDashboardFlagsContainer();
 	}
 
 	private void writeHeader()
