@@ -1033,6 +1033,19 @@ SimpleThreatRating.element = element miradi:SimpleThreatRating
   element miradi:SimpleThreatRatingIrreversibility { vocabulary_simple_threat_rating_irreversibility_code }?
 }
 
+StatusEntry.element = element miradi:StatusEntry
+{
+  attribute Key { text } &
+  element miradi:Progress { vocabulary_dashboard_row_progress }? &
+  DashboardFlagsContainer.element? &
+  element miradi:Comments { text }?
+}
+
+DashboardFlagsContainer.element = element miradi:DashboardFlagsContainer
+{
+element miradi:code { vocabulary_dashboard_row_flags } *
+}
+
 StressBasedThreatRating.element = element miradi:StressBasedThreatRating
 {
   element miradi:StressBasedThreatRatingStressId { StressId.element } &
@@ -1049,19 +1062,6 @@ Style.element = element miradi:Style
   element miradi:DiagramFactorFontStyle { vocabulary_diagram_factor_font_style }? &
   element miradi:DiagramFactorFontColor { vocabulary_diagram_factor_foreground_color }? &
   element miradi:DiagramFactorBackgroundColor { vocabulary_diagram_factor_background_color }?
-}
-
-StatusEntry.element = element miradi:StatusEntry
-{
-  attribute Key { text } &
-  element miradi:Progress { vocabulary_dashboard_row_progress }? &
-  DashboardFlagsContainer.element? &
-  element miradi:Comments { text }?
-}
-
-DashboardFlagsContainer.element = element miradi:DashboardFlagsContainer
-{
-element miradi:code { vocabulary_dashboard_row_flags } *
 }
 
 ExtraDataSection.element = element miradi:ExtraDataSection
