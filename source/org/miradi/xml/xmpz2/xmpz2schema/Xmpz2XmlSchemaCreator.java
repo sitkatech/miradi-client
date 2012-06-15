@@ -106,6 +106,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	public void writeRncSchema() throws Exception
 	{
+		Vector<Xmpz2CustomSchemaDefinitionCreator> creators = new Vector<Xmpz2CustomSchemaDefinitionCreator>(); 
 		writeHeader();
 		writeConservationProjectElement();
 		writeSingletonElements();
@@ -126,12 +127,17 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeWorkUnitsEntryElement();
 		writeExternaIdSchemaElement();
 		writeSimpleThreatRatingElement();
-		getSchemaWriter().write(createStressBasedThreatRatingElementSchemaCreator().createSchemaElement());
-		getSchemaWriter().write(createDiagramFactorUiSettingsSchemaCreator().createSchemaElement());
+		creators.add(createStressBasedThreatRatingElementSchemaCreator());
+		creators.add(createDiagramFactorUiSettingsSchemaCreator());
 		writeDashboardUserChoiceMap();
 		writeDashboardFlagsContainer();
-		getSchemaWriter().write(writeExtraDataSectionElement().createSchemaElement());
-		getSchemaWriter().write(defineExtraDataItemElement().createSchemaElement());
+		creators.add(writeExtraDataSectionElement());
+		creators.add(defineExtraDataItemElement());
+		
+		for(Xmpz2CustomSchemaDefinitionCreator creator : creators)
+		{
+			getSchemaWriter().write(creator.createSchemaElement());
+		}
 	}
 
 	private void writeHeader()
