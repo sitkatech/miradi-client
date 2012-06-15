@@ -756,11 +756,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), STRESS_BASED_THREAT_RATING);
 		creator.addChildElement(getSchemaWriter().createSchemaElement(STRESS_BASED_THREAT_RATING + STRESS_ID, getSchemaWriter().createDotElement(STRESS_ID)));
-		creator.addChildElement(getSchemaWriter().createOptionalSchemaElement((STRESS_BASED_THREAT_RATING + CONTRIBUTION), VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE));
-		creator.addChildElement(getSchemaWriter().createOptionalSchemaElement((STRESS_BASED_THREAT_RATING + IRREVERSIBILITY), VOCABULARY_THREAT_STRESS_RATING_IRREVERSIBILITY_CODE));
-		creator.addChildElement(getSchemaWriter().createOptionalSchemaElement((STRESS_BASED_THREAT_RATING + IS_ACTIVE), getSchemaWriter().createBooleanType()));
-		creator.addChildElement(getSchemaWriter().createOptionalSchemaElement((STRESS_BASED_THREAT_RATING + STRESS_RATING), VOCABULARY_THREAT_RATING));
-		creator.addChildElement(getSchemaWriter().createOptionalSchemaElement((STRESS_BASED_THREAT_RATING + THREAT_STRESS_RATING), VOCABULARY_THREAT_RATING));
+		creator.addOptionalChildElement(STRESS_BASED_THREAT_RATING + CONTRIBUTION, VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE);
+		creator.addOptionalChildElement(STRESS_BASED_THREAT_RATING + IRREVERSIBILITY, VOCABULARY_THREAT_STRESS_RATING_IRREVERSIBILITY_CODE);
+		creator.addOptionalChildElement(STRESS_BASED_THREAT_RATING + IS_ACTIVE, getSchemaWriter().createBooleanType());
+		creator.addOptionalChildElement(STRESS_BASED_THREAT_RATING + STRESS_RATING, VOCABULARY_THREAT_RATING);
+		creator.addOptionalChildElement(STRESS_BASED_THREAT_RATING + THREAT_STRESS_RATING, VOCABULARY_THREAT_RATING);
 		
 		getSchemaWriter().write(creator.createSchemaElement());
 	}
