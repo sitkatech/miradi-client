@@ -38,6 +38,10 @@ public class Xmpz2CustomSchemaDefinitionCreator implements Xmpz2XmlConstants
 		childElements.add(childElement);
 	}
 	
+	public void addChildElement(String elementName, String elementType)
+	{
+		addChildElement(getSchemaWriter().createSchemaElement(elementName, elementType));
+	}
 	
 	public void addOptionalChildElement(String elementName, String elementType)
 	{
