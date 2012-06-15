@@ -767,13 +767,13 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void writeDiagramFactorUiSettings()
 	{
-		getSchemaWriter().defineAlias(createElementName(STYLING), ELEMENT_NAME + PREFIX + STYLING);
-		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd((DIAGRAM_FACTOR + DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME), VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd((DIAGRAM_FACTOR + DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME), VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd((DIAGRAM_FACTOR + DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME), VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement((DIAGRAM_FACTOR + DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME), VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR));
-		getSchemaWriter().endBlock();		
+		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), STYLING);
+		creator.addOptionalChildElement(DIAGRAM_FACTOR + DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME, VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE);
+		creator.addOptionalChildElement(DIAGRAM_FACTOR + DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME, VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE);
+		creator.addOptionalChildElement(DIAGRAM_FACTOR + DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME, VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR);
+		creator.addOptionalChildElement(DIAGRAM_FACTOR + DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME, VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR);
+		
+		getSchemaWriter().write(creator.createSchemaElement());
 	}
 	
 	private void writeExtraDataSectionElement()
