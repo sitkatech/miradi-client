@@ -23,10 +23,13 @@ package org.miradi.views.umbrella;
 import java.io.File;
 import java.util.zip.ZipFile;
 
+import javax.swing.filechooser.FileFilter;
+
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
+import org.miradi.utils.GenericMiradiFileFilter;
 import org.miradi.utils.ProgressInterface;
 
 abstract public class AbstractZippedXmlImporter extends AbstractProjectImporter
@@ -63,8 +66,15 @@ abstract public class AbstractZippedXmlImporter extends AbstractProjectImporter
 		return projectToFill;
 	}
 	
+	@Override
+	public FileFilter[] getFileFilters()
+	{
+		return new FileFilter[] {createFileFilter()};
+	}
+
+	abstract protected GenericMiradiFileFilter createFileFilter();
+	
 	abstract protected void createOrOpenProject(Project projectToFill, File projectFile) throws Exception;
 
 	abstract protected void importProjectXml(Project projectToFill, ZipFile zipFile, InputStreamWithSeek projectAsInputStream, ProgressInterface progressIndicator) throws Exception;
-
 }
