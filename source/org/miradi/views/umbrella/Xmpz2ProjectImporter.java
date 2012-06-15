@@ -21,17 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
 import javax.swing.filechooser.FileFilter;
 
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
-import org.miradi.exceptions.ValidationException;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
-import org.miradi.project.ProjectSaver;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.Xmpz2FileFilter;
 import org.miradi.xml.AbstractXmpzProjectImporter;
@@ -44,26 +40,6 @@ public class Xmpz2ProjectImporter extends AbstractXmpzProjectImporter
 		super(mainWindowToUse);
 	}
 
-	@Override
-	protected void createProject(File importFile, File homeDirectory, File newProjectFile, ProgressInterface progressIndicator) throws Exception
-	{
-		Project project = importProject(importFile, progressIndicator);
-		ProjectSaver.saveProject(project, newProjectFile);
-	}
-	
-	private Project importProject(File zipFileToImport, ProgressInterface progressIndicator) throws ZipException, IOException, Exception, ValidationException
-	{
-		ZipFile zipFile = new ZipFile(zipFileToImport);
-		try
-		{
-			return importProjectFromXmlEntry(zipFile, progressIndicator);
-		}
-		finally
-		{
-			zipFile.close();
-		}
-	}
-	
 	@Override
 	protected void importProjectXml(Project projectToFill, ZipFile zipFile, InputStreamWithSeek projectAsInputStream, ProgressInterface progressIndicator) throws Exception
 	{
