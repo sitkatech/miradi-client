@@ -122,7 +122,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeDiagramSizeElement();
 		writeDateUnitSchemaElements();
 		writeThresholdsElement();
-		writeTimePeriodCostsElement();
+		creators.add(createTimePeriodCostsElementSchemaCreator());
 		creators.add(createExpenseEntryElementSchemaCreator());
 		creators.add(createWorkUnitsEntryElementSchemaCreator());
 		creators.add(createExternaIdSchemaElementSchemaCreator());
@@ -701,19 +701,19 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().endBlock();
 	}
 
-	private void writeTimePeriodCostsElement()
+	private Xmpz2CustomSchemaDefinitionCreator createTimePeriodCostsElementSchemaCreator()
 	{
-		getSchemaWriter().defineAlias(createElementName(TIME_PERIOD_COSTS), ELEMENT_NAME + PREFIX + TIME_PERIOD_COSTS);
-		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElementWithAnd(CALCULATED_START_DATE, VOCABULARY_DATE));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSchemaElementWithAnd(CALCULATED_END_DATE, VOCABULARY_DATE));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_EXPENSE_TOTAL, getSchemaWriter().createDecimalType()));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_WORK_UNITS_TOTAL, getSchemaWriter().createDecimalType()));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_TOTAL_BUDGET_COST, getSchemaWriter().createDecimalType()));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_WHO, getSchemaWriter().createZeroOrMoreDotElement(RESOURCE_ID)));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(CALCULATED_EXPENSE_ENTRIES, getSchemaWriter().createZeroOrMoreDotElement(EXPENSE_ENTRY)));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement(CALCULATED_WORK_UNITS_ENTRIES, getSchemaWriter().createZeroOrMoreDotElement(WORK_UNITS_ENTRY)));
-		getSchemaWriter().endBlock();
+		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), TIME_PERIOD_COSTS);
+		creator.addChildElement(CALCULATED_START_DATE, VOCABULARY_DATE);
+		creator.addChildElement(CALCULATED_END_DATE, VOCABULARY_DATE);
+		creator.addOptionalChildElement(CALCULATED_EXPENSE_TOTAL, getSchemaWriter().createDecimalType());
+		creator.addOptionalChildElement(CALCULATED_WORK_UNITS_TOTAL, getSchemaWriter().createDecimalType());
+		creator.addOptionalChildElement(CALCULATED_TOTAL_BUDGET_COST, getSchemaWriter().createDecimalType());
+		creator.addOptionalChildElement(CALCULATED_WHO, getSchemaWriter().createZeroOrMoreDotElement(RESOURCE_ID));
+		creator.addOptionalChildElement(CALCULATED_EXPENSE_ENTRIES, getSchemaWriter().createZeroOrMoreDotElement(EXPENSE_ENTRY));
+		creator.addChildElement(getSchemaWriter().createOptionalSchemaElement(CALCULATED_WORK_UNITS_ENTRIES, getSchemaWriter().createZeroOrMoreDotElement(WORK_UNITS_ENTRY)));
+		
+		return creator;
 	}
 
 	private Xmpz2CustomSchemaDefinitionCreator createExpenseEntryElementSchemaCreator()
