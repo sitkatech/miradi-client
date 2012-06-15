@@ -43,7 +43,8 @@ abstract public class AbstractAssignmentExporter extends BaseObjectExporter
 		super.writeFields(baseObject, baseObjectSchema);
 
 		Assignment assignment = (Assignment) baseObject;
-		exportDateUnitEfforList(assignment.getDateUnitEffortList(), getDateUnitsElementName());
+		if (assignment.getDateUnitEffortList().size() > 0)
+			exportDateUnitEfforList(assignment.getDateUnitEffortList(), getDateUnitsElementName());
 	}
 	
 	@Override
