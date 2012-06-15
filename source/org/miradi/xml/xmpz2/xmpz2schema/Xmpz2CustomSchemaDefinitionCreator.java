@@ -78,7 +78,7 @@ public class Xmpz2CustomSchemaDefinitionCreator implements Xmpz2XmlConstants
 		{
 			if (index > 0)
 			{
-				schemaElement += " &";
+				schemaElement = appendAnd(schemaElement);
 				schemaElement = addNewLine(schemaElement);
 			}
 			
@@ -91,20 +91,30 @@ public class Xmpz2CustomSchemaDefinitionCreator implements Xmpz2XmlConstants
 		
 		return schemaElement;
 	}
+	
+	private String appendAnd(String schemaElement)
+	{
+		return append(schemaElement, " &");
+	}
 
 	private String addNewLine(String schemaElement)
 	{
-		return schemaElement += "\n";
+		return append(schemaElement, "\n");
 	}
 	
 	private String addStartBlock(String schemaElement)
 	{
-		return schemaElement += "{";
+		return append(schemaElement, "{");
 	}
-	
+
 	private String addEndBlock(String schemaElement)
 	{
-		return schemaElement += "}";
+		return append(schemaElement, "}");
+	}
+	
+	public String append(String schemaElement, final String string)
+	{
+		return schemaElement += string;
 	}
 	
 	private Xmpz2SchemaWriter getSchemaWriter()
