@@ -29,6 +29,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.XmpzFileFilter;
+import org.miradi.xml.AbstractXmlImporter;
 import org.miradi.xml.AbstractXmpzProjectImporter;
 import org.miradi.xml.xmpz.XmpzXmlImporter;
 
@@ -42,13 +43,23 @@ public class XmpzProjectImporter extends AbstractXmpzProjectImporter
 	@Override
 	protected void importProjectXml(Project projectToFill, ZipFile zipFile, InputStreamWithSeek projectAsInputStream, ProgressInterface progressIndicator) throws Exception
 	{
-		XmpzXmlImporter xmpzImporter = new XmpzXmlImporter(projectToFill, progressIndicator);
+		AbstractXmlImporter xmpzImporter = createXmpzXmlImporter(projectToFill, progressIndicator);
 		xmpzImporter.importProject(projectAsInputStream);
+	}
+
+	protected AbstractXmlImporter createXmpzXmlImporter(Project projectToFill,	ProgressInterface progressIndicator) throws Exception
+	{
+		return new XmpzXmlImporter(projectToFill, progressIndicator);
 	}
 
 	@Override
 	public FileFilter[] getFileFilters()
 	{
-		return new FileFilter[] {new XmpzFileFilter()};
+		return new FileFilter[] {createFileFilter()};
+	}
+
+	protected XmpzFileFilter createFileFilter()
+	{
+		return new XmpzFileFilter();
 	}
 }
