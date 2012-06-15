@@ -126,8 +126,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeWorkUnitsEntryElement();
 		writeExternaIdSchemaElement();
 		writeSimpleThreatRatingElement();
-		writeStressBasedThreatRatingElement();
-		writeDiagramFactorUiSettings();
+		getSchemaWriter().write(createStressBasedThreatRatingElementSchemaCreator().createSchemaElement());
+		getSchemaWriter().write(createDiagramFactorUiSettingsSchemaCreator().createSchemaElement());
 		writeDashboardUserChoiceMap();
 		writeDashboardFlagsContainer();
 		writeExtraDataSectionElement();
@@ -752,7 +752,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().endBlock();
     }
 
-	private void writeStressBasedThreatRatingElement()
+	private Xmpz2CustomSchemaDefinitionCreator createStressBasedThreatRatingElementSchemaCreator()
 	{
 		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), STRESS_BASED_THREAT_RATING);
 		creator.addChildElement(STRESS_BASED_THREAT_RATING + STRESS_ID, getSchemaWriter().createDotElement(STRESS_ID));
@@ -762,10 +762,10 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		creator.addOptionalChildElement(STRESS_BASED_THREAT_RATING + STRESS_RATING, VOCABULARY_THREAT_RATING);
 		creator.addOptionalChildElement(STRESS_BASED_THREAT_RATING + THREAT_STRESS_RATING, VOCABULARY_THREAT_RATING);
 		
-		getSchemaWriter().write(creator.createSchemaElement());
+		return creator;
 	}
 	
-	private void writeDiagramFactorUiSettings()
+	private Xmpz2CustomSchemaDefinitionCreator createDiagramFactorUiSettingsSchemaCreator()
 	{
 		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), STYLING);
 		creator.addOptionalChildElement(DIAGRAM_FACTOR + DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME, VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE);
@@ -773,7 +773,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		creator.addOptionalChildElement(DIAGRAM_FACTOR + DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME, VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR);
 		creator.addOptionalChildElement(DIAGRAM_FACTOR + DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME, VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR);
 		
-		getSchemaWriter().write(creator.createSchemaElement());
+		return creator;
 	}
 	
 	private void writeExtraDataSectionElement()
