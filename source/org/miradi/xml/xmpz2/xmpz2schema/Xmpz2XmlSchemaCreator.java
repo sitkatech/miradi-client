@@ -129,7 +129,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeSimpleThreatRatingElement();
 		creators.add(createStressBasedThreatRatingElementSchemaCreator());
 		creators.add(createDiagramFactorUiSettingsSchemaCreator());
-		writeDashboardUserChoiceMap();
+		creators.add(createDashboardUserChoiceMapSchemaCreator());
 		writeDashboardFlagsContainer();
 		creators.add(writeExtraDataSectionElement());
 		creators.add(defineExtraDataItemElement());
@@ -580,15 +580,15 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		defineElementWithSameType(DIAGRAM_SIZE_ELEMENT_NAME, elementNames, "integer");
 	}
 	
-	private void writeDashboardUserChoiceMap()
+	private Xmpz2CustomSchemaDefinitionCreator createDashboardUserChoiceMapSchemaCreator()
 	{
-		getSchemaWriter().defineAlias(createElementName(DASHBOARD_STATUS_ENTRY), ELEMENT_NAME + PREFIX + DASHBOARD_STATUS_ENTRY);
-		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented(getSchemaWriter().createAttributeSchemaElement(KEY_ATTRIBUTE_NAME));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(DASHBOARD_PROGRESS, VOCABULARY_DASHBOARD_ROW_PROGRESS));
-		getSchemaWriter().printlnIndented(DASHBOARD + DASHBOARD_FLAGS + CONTAINER_ELEMENT_TAG + ".element? &");
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement(DASHBOARD_COMMENTS, TEXT_ELEMENT_TYPE));
-		getSchemaWriter().endBlock();
+		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), DASHBOARD_STATUS_ENTRY);
+		creator.addTextAttributeElement(KEY_ATTRIBUTE_NAME);
+		creator.addOptionalChildElement(DASHBOARD_PROGRESS, VOCABULARY_DASHBOARD_ROW_PROGRESS);
+		creator.addChildElement(DASHBOARD + DASHBOARD_FLAGS + CONTAINER_ELEMENT_TAG + ".element? ");
+		creator.addOptionalChildElement(DASHBOARD_COMMENTS, TEXT_ELEMENT_TYPE);
+		
+		return creator;
 	}
 
 	private void writeDashboardFlagsContainer()
