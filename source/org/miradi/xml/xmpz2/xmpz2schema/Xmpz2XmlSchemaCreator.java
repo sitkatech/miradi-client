@@ -123,7 +123,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeDateUnitSchemaElements();
 		writeThresholdsElement();
 		writeTimePeriodCostsElement();
-		writeExpenseEntryElement();
+		creators.add(createExpenseEntryElementSchemaCreator());
 		creators.add(createWorkUnitsEntryElementSchemaCreator());
 		creators.add(createExternaIdSchemaElementSchemaCreator());
 		creators.add(createSimpleThreatRatingElementSchemaCreator());
@@ -716,16 +716,16 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().endBlock();
 	}
 
-	private void writeExpenseEntryElement()
+	private Xmpz2CustomSchemaDefinitionCreator createExpenseEntryElementSchemaCreator()
 	{
-		getSchemaWriter().defineAlias(createElementName(EXPENSE_ENTRY), ELEMENT_NAME + PREFIX + EXPENSE_ENTRY);
-		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented(createBudgetSchemaElement(EXPENSE_ENTRY, FUNDING_SOURCE_ID));
-		getSchemaWriter().printlnIndented(createBudgetSchemaElement(EXPENSE_ENTRY, ACCOUNTING_CODE_ID));
-		getSchemaWriter().printlnIndented(createBudgetSchemaElement(EXPENSE_ENTRY, BUDGET_CATEGORY_ONE_ID));
-		getSchemaWriter().printlnIndented(createBudgetSchemaElement(EXPENSE_ENTRY, BUDGET_CATEGORY_TWO_ID));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement(EXPENSE_ENTRY + DETAILS, getSchemaWriter().createZeroOrMoreDotElement(DATE_UNITS_EXPENSE)));
-		getSchemaWriter().endBlock();
+		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), EXPENSE_ENTRY);
+		creator.addOptionalSchemaElement(FUNDING_SOURCE_ID);
+		creator.addOptionalSchemaElement(ACCOUNTING_CODE_ID);
+		creator.addOptionalSchemaElement(BUDGET_CATEGORY_ONE_ID);
+		creator.addOptionalSchemaElement(BUDGET_CATEGORY_TWO_ID);
+		creator.addChildElement(getSchemaWriter().createOptionalSchemaElement(EXPENSE_ENTRY + DETAILS, getSchemaWriter().createZeroOrMoreDotElement(DATE_UNITS_EXPENSE)));
+		
+		return creator;
 	}
 
 	private Xmpz2CustomSchemaDefinitionCreator createWorkUnitsEntryElementSchemaCreator()
@@ -806,11 +806,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		return createElementSchema(baseObjectSchema, fieldSchema, getSchemaWriter().createZeroOrMoreDotElement(elementType));
 	}
-	
-	private String createBudgetSchemaElement(final String workUnitsEntry, final String elementName)
-	{
-		return getSchemaWriter().createOptionalSchemaElementWithAnd(workUnitsEntry + elementName, getSchemaWriter().createDotElement(elementName));
-	}	
 
 	private String createElementSchema(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String elementType)
 	{
