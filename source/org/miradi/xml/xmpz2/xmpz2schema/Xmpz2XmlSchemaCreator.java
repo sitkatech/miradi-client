@@ -121,7 +121,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeDiagramPointElement();
 		writeDiagramSizeElement();
 		writeDateUnitSchemaElements();
-		writeThresholdsElement();
+		creators.add(creatorThresholdsElementSchemaCreator());
 		creators.add(createTimePeriodCostsElementSchemaCreator());
 		creators.add(createExpenseEntryElementSchemaCreator());
 		creators.add(createWorkUnitsEntryElementSchemaCreator());
@@ -691,14 +691,14 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().endBlock();
 	}
 	
-	private void writeThresholdsElement()
+	private Xmpz2CustomSchemaDefinitionCreator creatorThresholdsElementSchemaCreator()
 	{
-		getSchemaWriter().defineAlias(createElementName(THRESHOLD), ELEMENT_NAME + PREFIX + THRESHOLD);
-		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(STATUS_CODE, VOCABULARY_MEASUREMENT_STATUS));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElementWithAnd(THRESHOLD_VALUE, TEXT_ELEMENT_TYPE));
-		getSchemaWriter().printlnIndented(getSchemaWriter().createOptionalSchemaElement(THRESHOLD_DETAILS, TEXT_ELEMENT_TYPE));
-		getSchemaWriter().endBlock();
+		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), THRESHOLD);
+		creator.addOptionalChildElement(STATUS_CODE, VOCABULARY_MEASUREMENT_STATUS);
+		creator.addOptionalChildElement(THRESHOLD_VALUE, TEXT_ELEMENT_TYPE);
+		creator.addOptionalChildElement(THRESHOLD_DETAILS, TEXT_ELEMENT_TYPE);
+		
+		return creator;
 	}
 
 	private Xmpz2CustomSchemaDefinitionCreator createTimePeriodCostsElementSchemaCreator()
