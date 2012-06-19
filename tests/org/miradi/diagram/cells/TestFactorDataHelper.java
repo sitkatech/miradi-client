@@ -22,34 +22,22 @@ package org.miradi.diagram.cells;
 
 import java.awt.Point;
 
-import org.miradi.main.MiradiTestCase;
-import org.miradi.project.ProjectForTesting;
+import org.miradi.main.TestCaseWithProject;
+import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.Target;
+import org.miradi.project.FactorDeleteHelper;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.views.diagram.PointManipulater;
 
 //TODO rename and move to correct package (also when moving to new package, update the code inside
 // the main test suite)
-public class TestFactorDataHelper extends MiradiTestCase 
+public class TestFactorDataHelper extends TestCaseWithProject 
 {
 	public TestFactorDataHelper(String name)
 	{
 		super(name);
 	}
 	
-	@Override
-	public void setUp() throws Exception
-	{
-		super.setUp();
-		project = ProjectForTesting.createProjectWithDefaultObjects(getName());
-	}
-
-	@Override
-	public void tearDown() throws Exception
-	{
-		super.tearDown();
-		project.close();
-		project = null;
-	}
-
 	public void testGetNewLocation()
 	{
 		Point insertLocation = new Point(500, 500);
@@ -73,9 +61,23 @@ public class TestFactorDataHelper extends MiradiTestCase
 		Point upperMostLeftMostCorner = new Point(100, 100);
 		
 		PointManipulater helper = new PointManipulater(insertLocation, upperMostLeftMostCorner);
-		Point translatedSnappedOffsettedPoint1 = helper.getSnappedTranslatedPoint(project, diagramFactor1Location, offset);
+		Point translatedSnappedOffsettedPoint1 = helper.getSnappedTranslatedPoint(getProject(), diagramFactor1Location, offset);
 		assertEquals("wrong location for diagram factor 1?", new Point(510, 510), translatedSnappedOffsettedPoint1);
 	}
 	
-	ProjectForTesting project;
+	public void testDeleteTargetIndicatorsWhileInTncMode() throws Exception
+	{
+		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
+		Target target = Target.find(getProject(), targetDiagramFactor.getWrappedORef());
+		getProject().createIndicator(target);
+		getProject().turnOnTncMode(target);
+		
+		FactorDeleteHelper deleteHelper = FactorDeleteHelper.createFactorDeleteHelperForNonSelectedFactors(getProject().getMainDiagramObject());
+		assertEquals("incorrect number of indictors?", 1, getProject().getIndicatorPool().size());
+		
+		deleteHelper.deleteAnnotations(target);
+		assertEquals("indicator was not deleted?", 0, getProject().getIndicatorPool().size());
+		
+		assertEquals("target should not have indictors?", 0, target.getOnlyDirectIndicatorRefs().size());
+	}
 }

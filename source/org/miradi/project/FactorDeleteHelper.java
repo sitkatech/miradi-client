@@ -226,7 +226,7 @@ public class FactorDeleteHelper
 		if (factorToDelete.canHaveObjectives())
 			deleteAnnotationIds(factorToDelete, ObjectType.OBJECTIVE, factorToDelete.TAG_OBJECTIVE_IDS);
 		
-		if (factorToDelete.canHaveIndicators())
+		if (canReferToIndicators(factorToDelete))
 			deleteAnnotationIds(factorToDelete, ObjectType.INDICATOR, factorToDelete.TAG_INDICATOR_IDS);
 		
 		//TODO: there is much common code between DeleteAnnotationDoer and DeleteActivity classes and this class; 
@@ -237,6 +237,19 @@ public class FactorDeleteHelper
 			removeAndDeleteTasksInList(factorToDelete, Strategy.TAG_ACTIVITY_IDS);
 		
 		deleteTargetAnnotations(factorToDelete);
+	}
+
+	private boolean canReferToIndicators(Factor factorToDelete)
+	{
+		if (shouldDeleteTargetIndicatorsRegardlessOfTncMode(factorToDelete))
+			return true;
+		
+		return factorToDelete.canHaveIndicators();
+	}
+
+	public boolean shouldDeleteTargetIndicatorsRegardlessOfTncMode(Factor factorToDelete)
+	{
+		return factorToDelete.isTarget();
 	}
 
 	private void deleteTargetAnnotations(Factor factorToDelete) throws Exception
