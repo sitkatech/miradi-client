@@ -204,12 +204,19 @@ public abstract class AbstractProjectImporter
 		
 		return new ZipEntryInputStreamWithSeek(zipFile, zipEntry);
 	}
+	
+	public void notifyUserOfAutoMigration() throws Exception
+	{
+		EAM.showHtmlInfoMessageOkDialog(AUTO_MIGRATION_MESSAGE_FILE_NAME);
+	}
 
 	protected MainWindow getMainWindow()
 	{
 		return mainWindow;
 	}
 	
+	private static final String AUTO_MIGRATION_MESSAGE_FILE_NAME = "autoMigrationMessageFileName.html";
+
 	private static String currentDirectory = UiFileChooser.getHomeDirectoryFile().getPath();
 	private static final String IMPORT_FAILED_MESSAGE = EAM.text("This file cannot be imported because it is a newer format than this version of Miradi supports. <br>" +
 			  "Please make sure you are running the latest version of Miradi. If you are already <br>" +

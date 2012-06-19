@@ -46,6 +46,7 @@ public class MpzProjectImporter extends AbstractProjectImporter
 	protected void createProject(File importFile, File homeDirectory,
 			File newProjectFile, ProgressInterface progressIndicator) throws Exception
 	{
+		notifyUserOfAutoMigration();
 		ProgressDialog dialog = new ProgressDialog(getMainWindow(), EAM.text("Importing MPZ"));
 		MiradiBackgroundWorkerThread worker = new ImportMpzWorker(importFile, newProjectFile, dialog);
 		dialog.doWorkInBackgroundWhileShowingProgress(worker);
