@@ -71,7 +71,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 	@Override
 	public void createProject(File importFile, File homeDirectory, File newProjectFile, ProgressInterface progressIndicator) throws Exception
 	{
-			
+		notifyUserOfAutoMigration();	
 		Project project = importProject(importFile, progressIndicator);
 		ProjectSaver.saveProject(project, newProjectFile);
 	}
