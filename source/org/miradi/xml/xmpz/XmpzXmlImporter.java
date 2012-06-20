@@ -25,8 +25,10 @@ import java.util.Vector;
 import javax.xml.namespace.NamespaceContext;
 
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.project.Project;
+import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.AbstractXmlImporter;
@@ -129,6 +131,7 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements XmpzXmlConst
 		Node node = getNode(getRootNode(), XmpzXmlConstants.DELETED_ORPHANS_ELEMENT_NAME);
 		String nodeContent = getSafeNodeContent(node);
 		nodeContent = XmlUtilities2.getXmlEncoded(nodeContent);
+		nodeContent = HtmlUtilities.replaceNonHtmlNewlines(nodeContent);
 		getProject().appendToQuarantineFile(nodeContent);
 	}
 
@@ -198,6 +201,12 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements XmpzXmlConst
 	protected String getNamespaceURI()
 	{
 		return getDocument().getDocumentElement().getNamespaceURI();
+	}
+
+	@Override
+	public void setData(ORef ref, String tag, String data) throws Exception
+	{
+		getProject().setObjectData(ref, tag, HtmlUtilities.replaceNonHtmlNewlines(data.trim()));
 	}
 	
 	protected ProgressInterface progressIndicator;
