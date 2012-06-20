@@ -89,7 +89,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 				return;
 
 			final InputStream mpzInputStream = zipFile.getInputStream(mpzEntry);
-			File tempMpzFile = createTempFile(mpzInputStream, "mpzToImport");
+			File tempMpzFile = FileUtilities.createTempFile(mpzInputStream, "mpzToImport");
 			possiblyNotifyUserOfAutoMigration(tempMpzFile);
 		}
 		finally
@@ -324,15 +324,6 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 
 	public static File extractStreamToFile(InputStream mpzInputStream, ProgressInterface progressIndicator) throws Exception
 	{
-		return createTempFile(mpzInputStream, "$$$MpzToMpfConverter");
-	}
-
-	public static File createTempFile(InputStream mpzInputStream, final String fileName) throws IOException
-	{
-		File temporaryFile = File.createTempFile(fileName, null);
-		temporaryFile.deleteOnExit();
-		FileUtilities.copyStreamToFile(mpzInputStream, temporaryFile);
-		
-		return temporaryFile;
+		return FileUtilities.createTempFile(mpzInputStream, "$$$MpzToMpfConverter");
 	}
 }
