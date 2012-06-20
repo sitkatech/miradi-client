@@ -115,11 +115,10 @@ public class MpzToMpfConverter
 		ZipFile originalZipFile = new ZipFile(mpzFile);
 		try
 		{
-			int version = extractVersion(originalZipFile);
-			if(version > REQUIRED_VERSION)
+			if(extractVersion(originalZipFile) > REQUIRED_VERSION)
 				throw new FutureSchemaVersionException();
 			
-			if(version < REQUIRED_VERSION)
+			if(needsMigration(originalZipFile))
 				migratedFile = migrate(mpzFile, progressIndicator);
 		}
 		finally
@@ -149,6 +148,11 @@ public class MpzToMpfConverter
 			zip.close();
 		}
 		
+	}
+
+	public static boolean needsMigration(ZipFile originalZipFile) throws Exception
+	{
+		return extractVersion(originalZipFile) < REQUIRED_VERSION;
 	}
 
 	public static File migrate(File mpzFile, ProgressInterface progressIndicator) throws Exception
