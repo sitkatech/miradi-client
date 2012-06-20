@@ -21,6 +21,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.zip.ZipException;
+import java.util.zip.ZipFile;
 
 import javax.swing.filechooser.FileFilter;
 
@@ -46,11 +49,25 @@ public class MpzProjectImporter extends AbstractProjectImporter
 	protected void createProject(File importFile, File homeDirectory,
 			File newProjectFile, ProgressInterface progressIndicator) throws Exception
 	{
-		notifyUserOfAutoMigration();
+		possiblyNotifyUserOfAutomaticMigration(importFile);
 		ProgressDialog dialog = new ProgressDialog(getMainWindow(), EAM.text("Importing MPZ"));
 		MiradiBackgroundWorkerThread worker = new ImportMpzWorker(importFile, newProjectFile, dialog);
 		dialog.doWorkInBackgroundWhileShowingProgress(worker);
 		worker.cleanup();
+	}
+
+	public void possiblyNotifyUserOfAutomaticMigration(File importFile)	throws Exception, ZipException, IOException
+	{
+		final ZipFile zipFile = new ZipFile(importFile);
+		try
+		{
+			if(MpzToMpfConverter.needsMigration(zipFile))
+				notifyUserOfAutoMigration();
+		}
+		finally
+		{
+			zipFile.close();
+		}
 	}
 	
 	static class ImportMpzWorker extends MiradiBackgroundWorkerThread
