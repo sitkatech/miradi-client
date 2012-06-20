@@ -71,9 +71,45 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 	@Override
 	public void createProject(File importFile, File homeDirectory, File newProjectFile, ProgressInterface progressIndicator) throws Exception
 	{
-		notifyUserOfAutoMigration();	
+		possiblyNotifyUserOfAutomaticMigration(importFile);	
 		Project project = importProject(importFile, progressIndicator);
 		ProjectSaver.saveProject(project, newProjectFile);
+	}
+
+	private void possiblyNotifyUserOfAutomaticMigration(File file) throws Exception
+	{
+		ZipFile zipFile = new ZipFile(file);
+		try
+		{
+			if(!zipContainsMpzProject(zipFile))
+				return;
+			
+			ZipEntry mpzEntry = zipFile.getEntry(ExportCpmzDoer.PROJECT_ZIP_FILE_NAME);
+			if (mpzEntry == null)
+				return;
+
+			final InputStream mpzInputStream = zipFile.getInputStream(mpzEntry);
+			File tempMpzFile = createTempFile(mpzInputStream, "mpzToImport");
+			possiblyNotifyUserOfAutoMigration(tempMpzFile);
+		}
+		finally
+		{
+			zipFile.close();
+		}
+	}
+
+	private void possiblyNotifyUserOfAutoMigration(File mpzFile)	throws Exception
+	{
+		ZipFile mpzZipFile = new ZipFile(mpzFile);
+		try
+		{
+			if(MpzToMpfConverter.needsMigration(mpzZipFile))
+				notifyUserOfAutoMigration();
+		}
+		finally 
+		{
+			mpzZipFile.close();
+		}
 	}
 
 	private Project importProject(File zipFileToImport, ProgressInterface progressIndicator) throws ZipException, IOException, Exception, ValidationException
@@ -288,9 +324,15 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 
 	public static File extractStreamToFile(InputStream mpzInputStream, ProgressInterface progressIndicator) throws Exception
 	{
-		File temporaryFile = File.createTempFile("$$$MpzToMpfConverter", null);
+		return createTempFile(mpzInputStream, "$$$MpzToMpfConverter");
+	}
+
+	public static File createTempFile(InputStream mpzInputStream, final String fileName) throws IOException
+	{
+		File temporaryFile = File.createTempFile(fileName, null);
 		temporaryFile.deleteOnExit();
 		FileUtilities.copyStreamToFile(mpzInputStream, temporaryFile);
+		
 		return temporaryFile;
 	}
 }
