@@ -471,7 +471,7 @@ ThreatReductionResult.element = element miradi:ThreatReductionResult
   element miradi:ThreatReductionResultIndicatorIds { IndicatorId.element* }? &
   element miradi:ThreatReductionResultName { formatted_text }? &
   element miradi:ThreatReductionResultObjectiveIds { ObjectiveId.element* }? &
-  element miradi:ThreatReductionResultRelatedDirectThreatId { ThreatId.element* }?
+  element miradi:ThreatReductionResultRelatedDirectThreatId { ThreatReductionResultThreatId.element* }?
 }
 
 TextBoxPool.element = element miradi:TextBoxPool { TextBox.element* }
@@ -865,6 +865,7 @@ ResourceId.element = element miradi:ResourceId { xsd:integer }
 MeasurementId.element = element miradi:MeasurementId { xsd:integer }
 MethodId.element = element miradi:MethodId { xsd:integer }
 SubTaskId.element = element miradi:SubTaskId { xsd:integer }
+ThreatReductionResultThreatId.element = element miradi:ThreatReductionResultThreatId { xsd:integer }
 WrappedByDiagramFactorId.element = element miradi:WrappedByDiagramFactorId
 {
   BiodiversityTargetId.element|  HumanWelfareTargetId.element|  CauseId.element|  StrategyId.element|  ThreatReductionResultId.element|  IntermediateResultId.element|  GroupBoxId.element|  TextBoxId.element|  ScopeBoxId.element|  ActivityId.element|  StressId.element

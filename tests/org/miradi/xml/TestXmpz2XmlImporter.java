@@ -24,11 +24,13 @@ import org.martus.util.UnicodeStringWriter;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.CodeToUserStringMap;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
+import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.DateUnitEffortList;
@@ -54,6 +56,14 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	{
 		Strategy strategy = getProject().createStrategy();
 		getProject().addExpenseAssignment(strategy, new DateUnitEffortList());
+		validateUsingStringWriter();
+	}
+	
+	public void testThreatReductionResultRelatedThreatImport() throws Exception
+	{
+		ORef threatRef = getProject().createThreat();
+		ThreatReductionResult threatReductionResult = getProject().createThreatReductionResult();
+		getProject().fillObjectUsingCommand(threatReductionResult, ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, threatRef);
 		validateUsingStringWriter();
 	}
 	
