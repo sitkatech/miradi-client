@@ -289,11 +289,9 @@ public class MpzToMpfConverter
 		}
 		
 		project.setLastModified(lastModifiedMillis);
-		
 	}
 
-	private void convertBaseObjects(ProgressInterface progressIndicator)
-			throws Exception, UserCanceledException
+	private void convertBaseObjects(ProgressInterface progressIndicator) throws Exception, UserCanceledException
 	{
 		for(int i = 0; i < ObjectType.OBJECT_TYPE_COUNT; ++i)
 		{
