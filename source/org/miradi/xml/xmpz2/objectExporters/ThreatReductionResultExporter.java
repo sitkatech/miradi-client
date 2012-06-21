@@ -48,6 +48,6 @@ public class ThreatReductionResultExporter extends BaseObjectExporter
 	{
 		super.writeFields(baseObject, baseObjectSchema);
 		
-		getWriter().writeRef(baseObject.getRef(), baseObjectSchema.getXmpz2ElementName() +  RELATED_THREAT_ID, THREAT_ID);
+		getWriter().writeRef(baseObject.getRef(), baseObjectSchema.getXmpz2ElementName() +  RELATED_THREAT_ID, THREAT_REDUCTION_RESULT_THREAT + ID);
 	}	
 }

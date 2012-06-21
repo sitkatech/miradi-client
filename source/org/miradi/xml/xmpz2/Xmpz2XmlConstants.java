@@ -257,6 +257,7 @@ public interface Xmpz2XmlConstants
 	public static final String DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME = DiagramFactor.TAG_FOREGROUND_COLOR;
 	public static final String DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME = DiagramFactor.TAG_FONT_STYLE;
 	public static final String DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME = DiagramFactor.TAG_FONT_SIZE;
+	public static final String THREAT_REDUCTION_RESULT_THREAT = THREAT_REDUCTION_RESULTS + THREAT;
 	public static final String VOCABULARY_LANGUAGE_CODE = "vocabulary_language_code";
 	public static final String VOCABULARY_FISCAL_YEAR_START = "vocabulary_fiscal_year_start_month";
 	public static final String VOCABULARY_PROTECTED_AREA_CATEGORIES = "vocabulary_protected_area_categories";

@@ -2008,12 +2008,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return linkCell;
 	}
 	
-	public FactorId createThreat() throws Exception
+	public ORef createThreat() throws Exception
 	{
 		ORef factorLinkRef = createThreatTargetLink();
 		FactorLink factorLink = FactorLink.find(this, factorLinkRef);
 		
-		return (FactorId) factorLink.getFromFactorRef().getObjectId();
+		return factorLink.getFromFactorRef();
 	}
 	
 	public ORef createThreatTargetLink() throws Exception
