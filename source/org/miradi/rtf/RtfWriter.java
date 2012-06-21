@@ -34,6 +34,7 @@ import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.ColorManager;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.TableExporter;
+import org.miradi.utils.XmlUtilities2;
 import org.miradi.views.umbrella.SaveImageJPEGDoer;
 
 public class RtfWriter
@@ -295,6 +296,7 @@ public class RtfWriter
 		encodedString = encodedString.replaceAll("\\{", "\\\\{");
 		encodedString = HtmlUtilities.replaceHtmlTags(encodedString, "br", "\\\\line ");
 		encodedString = HtmlUtilities.stripAllHtmlTags(encodedString);
+		encodedString = XmlUtilities2.convertXmlTextToPlainText(encodedString);
 		
 		String NEW_LINE_TO_SEPERATE_FROM_NEXT_CHAR = "\\~" + HtmlUtilities.BR_TAG;
 		StringBuffer buffer = new StringBuffer(encodedString);
