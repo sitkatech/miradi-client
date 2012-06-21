@@ -42,10 +42,20 @@ public class XmlUtilities2
 
 	public static String convertXmlTextToHtml(final String value)
 	{
-		String html = XmlUtilities2.convertXmlTextToHtmlWithoutHtmlTags(value);
-		html = HtmlUtilities.wrapInHtmlTags(html);
+		try
+		{
+			String html = XmlUtilities2.convertXmlTextToHtmlWithoutHtmlTags(value);
+			html = HtmlUtilities.wrapInHtmlTags(html);
 
-		return html;
+			return html;
+		}
+		catch (Exception e)
+		{
+			EAM.logError("Invalid XML: " + value);
+			EAM.logException(e);
+			
+			return "ERROR: " + value;
+		}
 	}
 	
 	public static String convertXmlTextToHtmlWithoutHtmlTags(final String value) throws RuntimeException
@@ -54,10 +64,12 @@ public class XmlUtilities2
 		{
 			throwIfInvalidXmlWithHtmlTags(value);
 		}
-		catch(Exception e)
+		catch(RuntimeException e)
 		{
 			EAM.logError("Invalid XML: " + value);
 			EAM.logException(e);
+			
+			throw e;
 		}
 
 		return decodeApostrophes(value);
