@@ -46,8 +46,7 @@ public class MpzProjectImporter extends AbstractProjectImporter
 	}
 
 	@Override
-	protected void createProject(File importFile, File homeDirectory,
-			File newProjectFile, ProgressInterface progressIndicator) throws Exception
+	protected void createProject(File importFile, File homeDirectory, File newProjectFile, ProgressInterface progressIndicator) throws Exception
 	{
 		possiblyNotifyUserOfAutomaticMigration(importFile);
 		ProgressDialog dialog = new ProgressDialog(getMainWindow(), EAM.text("Importing MPZ"));
