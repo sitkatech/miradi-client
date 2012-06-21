@@ -56,7 +56,7 @@ public class MpzProjectImporter extends AbstractProjectImporter
 		worker.cleanup();
 	}
 
-	public void possiblyNotifyUserOfAutomaticMigration(File importFile)	throws Exception, ZipException, IOException
+	private void possiblyNotifyUserOfAutomaticMigration(File importFile)	throws Exception, ZipException, IOException
 	{
 		final ZipFile zipFile = new ZipFile(importFile);
 		try
