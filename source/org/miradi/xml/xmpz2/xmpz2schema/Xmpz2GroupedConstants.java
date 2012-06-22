@@ -22,6 +22,7 @@ package org.miradi.xml.xmpz2.xmpz2schema;
 
 import java.util.Vector;
 
+import org.miradi.utils.StringUtilities;
 import org.miradi.utils.Utility;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 
@@ -35,21 +36,7 @@ abstract public class Xmpz2GroupedConstants implements Xmpz2XmlConstants
 		final String stringToJoinWith = "|";
 		
 		final String[] list = getWrappableFactorNames();
-		return joinListItem(list, prefix, stringToJoinWith, suffix);
-	}
-
-	public static String joinListItem(final String[] list, final String prefix,	final String stringToJoinWith, final String suffix)
-	{
-		String oredList = "";
-		for (int index = 0; index < list.length; ++index)
-		{
-			if (index > 0)
-				oredList += stringToJoinWith;
-			
-			oredList += prefix + list[index] + suffix;
-		}
-		
-		return oredList;
+		return StringUtilities.joinListItem(list, prefix, stringToJoinWith, suffix);
 	}
 
 	public static String[] getLinkableFactorNames()
