@@ -51,7 +51,7 @@ public class TaggedObjectSetPoolImporter extends AbstractBaseObjectPoolImporter
 		for (int index = 0; index < childNodes.getLength(); ++index)
 		{
 			Node factorIdNode = childNodes.item(index);
-			ORef taggedFactorRef = DiagramFactorPoolImporter.getWrappedRef(factorIdNode);
+			ORef taggedFactorRef = DiagramFactorPoolImporter.getWrappedRef(getImporter(), factorIdNode);
 			taggedFactorRefs.add(taggedFactorRef);
 		}
 		
