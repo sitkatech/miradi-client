@@ -20,11 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectImporters;
 
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpression;
+
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
+import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2GroupedConstants;
 import org.w3c.dom.Node;
 
 public class DiagramFactorImporter extends BaseObjectImporter
@@ -64,19 +68,14 @@ public class DiagramFactorImporter extends BaseObjectImporter
 		return getWrappedRef(importer, wrappedByDiagamFactorIdNode);
 	}
 
-	public static ORef getWrappedRef(Xmpz2XmlImporter importer, Node wrappedByDiagamFactorIdNode)
+	public static ORef getWrappedRef(Xmpz2XmlImporter importer, Node wrappedByDiagamFactorIdNode) throws Exception
 	{
-		//TODO Should avoid relying on getFirst()
-		final int ONE_CHILD_NODE_FOR_ELEMENT = 1;
-		final int ONE_CHILD_FOR_TEXT = 1;
-		final int EXPECTED_CHILDREN_COUNT = ONE_CHILD_NODE_FOR_ELEMENT + ONE_CHILD_FOR_TEXT;
-		int childrenNodeCount = wrappedByDiagamFactorIdNode.getChildNodes().getLength();
-		if (childrenNodeCount != EXPECTED_CHILDREN_COUNT)
-			throw new RuntimeException("DiagramFactor wrapped factor id node does not have an id node and a text id. children count= " +  childrenNodeCount);		
-		Node typedIdNode = wrappedByDiagamFactorIdNode.getFirstChild();
+		String oredWrappedFactorNames = Xmpz2GroupedConstants.createOredWrappableFactorNames();
+		XPathExpression expression = importer.getXPath().compile(oredWrappedFactorNames);
+		Node node =  (Node) expression.evaluate(wrappedByDiagamFactorIdNode, XPathConstants.NODE);
+		BaseId wrappedId = new BaseId(node.getTextContent());
+		final int objectTypeOfNode = importer.getObjectTypeOfNode(node);
 		
-		BaseId wrappedId = new BaseId(typedIdNode.getTextContent());
-		return new ORef(importer.getObjectTypeOfNode(typedIdNode), wrappedId);
+		return new ORef(objectTypeOfNode, wrappedId);
 	}
-
 }
