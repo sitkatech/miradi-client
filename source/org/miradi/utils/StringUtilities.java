@@ -54,13 +54,13 @@ public class StringUtilities
 		return joinListItems(list, "", stringToJoinWith, "");
 	}
 	
-	public static String joinListItems(final String[] list, final String prefix, final String stringToJoinWith, final String suffix)
+	public static String joinListItems(final String[] list, final String prefix, final String delimiter, final String suffix)
 	{
 		String joinedItems = "";
 		for (int index = 0; index < list.length; ++index)
 		{
 			if (index > 0)
-				joinedItems += stringToJoinWith;
+				joinedItems += delimiter;
 			
 			joinedItems += prefix + list[index] + suffix;
 		}
