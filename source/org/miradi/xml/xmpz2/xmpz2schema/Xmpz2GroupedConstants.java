@@ -27,6 +27,21 @@ import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 
 abstract public class Xmpz2GroupedConstants implements Xmpz2XmlConstants
 {
+	
+	public static String createOredWrappableFactorNames()
+	{
+		final String[] list = getWrappableFactorNames();
+		String oredList = "";
+		for (int index = 0; index < list.length; ++index)
+		{
+			if (index > 0)
+				oredList += "|";
+			
+			oredList += PREFIX + list[index] + ID;
+		}
+		
+		return oredList;
+	}
 
 	public static String[] getLinkableFactorNames()
 	{
