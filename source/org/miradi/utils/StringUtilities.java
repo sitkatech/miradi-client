@@ -51,16 +51,16 @@ public class StringUtilities
 
 	private static String join(String[] tagsToKeep, final String stringToJoinWith)
 	{
-		String tagsSeperatedByOr = "";
+		String joinedItems = "";
 		for (int index = 0; index < tagsToKeep.length; ++index)
 		{
 			if (index != 0)
-				tagsSeperatedByOr += stringToJoinWith;
+				joinedItems += stringToJoinWith;
 			
-			tagsSeperatedByOr += tagsToKeep[index];
+			joinedItems += tagsToKeep[index];
 		}
 		
-		return tagsSeperatedByOr;
+		return joinedItems;
 	}
 	
 	public static String joinListItems(final String[] list, final String prefix, final String stringToJoinWith, final String suffix)
