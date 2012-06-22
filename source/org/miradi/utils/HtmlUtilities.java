@@ -132,22 +132,32 @@ public class HtmlUtilities
 
 	public static String replaceHtmlTags(String text, String tagToReplace, final String replacement)
 	{
-		final String START = "<" + tagToReplace + "\\s*>";
-		final String START_WITH_ATRIBUTE = "<" + tagToReplace + "\\s+.*?>";
+		final String START = createStartTagRegex(tagToReplace);
+		final String START_WITH_ATRIBUTE = createStartTagWithAttributeRegex(tagToReplace);
 		final String END = createEndTagRegex(tagToReplace);
 		final String EMPTY = createEmptyTagRegex(tagToReplace);
 		final String regex = START + "|" + EMPTY + "|" + END + "|" + START_WITH_ATRIBUTE; 
 		
 		return replaceAll(regex, text, replacement);
 	}
-	
+
 	public static String replaceStartHtmlTags(String text, String tagToReplace, final String replacement)
 	{
-		final String START = "<" + tagToReplace + "\\s*>";
-		final String START_WITH_ATRIBUTE = "<" + tagToReplace + "\\s+.*?>";
+		final String START = createStartTagRegex(tagToReplace);
+		final String START_WITH_ATRIBUTE = createStartTagWithAttributeRegex(tagToReplace);
 		final String regex = START + "|" + START_WITH_ATRIBUTE;
 		
 		return replaceAll(regex, text, replacement);
+	}
+	
+	private static String createStartTagWithAttributeRegex(String tagToReplace)
+	{
+		return "<" + tagToReplace + "\\s+.*?>";
+	}
+
+	private static String createStartTagRegex(String tagToReplace)
+	{
+		return "<" + tagToReplace + "\\s*>";
 	}
 
 	private static String createEmptyTagRegex(String tagToReplace)
