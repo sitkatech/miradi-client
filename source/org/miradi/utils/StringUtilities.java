@@ -46,14 +46,9 @@ public class StringUtilities
 	
 	public static String joinWithOr(String[] tagsToKeep)
 	{
-		return join(tagsToKeep, "|");
+		return joinListItems(tagsToKeep, "", "|", "");
 	}
 
-	private static String join(String[] list, final String stringToJoinWith)
-	{
-		return joinListItems(list, "", stringToJoinWith, "");
-	}
-	
 	public static String joinListItems(final String[] list, final String prefix, final String delimiter, final String suffix)
 	{
 		String joinedItems = "";
