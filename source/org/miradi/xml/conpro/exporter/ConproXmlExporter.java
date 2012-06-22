@@ -82,6 +82,7 @@ import org.miradi.schemas.ValueOptionSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DoubleUtilities;
+import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.MiradiMultiCalendar;
 import org.miradi.utils.OptionalDouble;
 import org.miradi.xml.XmlExporter;
@@ -1097,6 +1098,15 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			label = UNSPECIFIED_LABEL;
 		
 		writeElement(out, elementName, label);
+	}
+	
+	@Override
+	public void writeXmlEncodedData(UnicodeWriter out, String data) throws IOException
+	{
+		data = HtmlUtilities.replaceHtmlBrsWithNewlines(data);
+		data = HtmlUtilities.replaceStartHtmlTags(data, "li", "\n-");
+		data = HtmlUtilities.stripAllHtmlTags(data);
+		out.write(data);
 	}
 
 	private ProjectMetadata getProjectMetadata()
