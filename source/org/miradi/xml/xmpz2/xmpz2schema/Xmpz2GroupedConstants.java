@@ -35,6 +35,11 @@ abstract public class Xmpz2GroupedConstants implements Xmpz2XmlConstants
 		final String stringToJoinWith = "|";
 		
 		final String[] list = getWrappableFactorNames();
+		return joinListItem(list, prefix, stringToJoinWith, suffix);
+	}
+
+	public static String joinListItem(final String[] list, final String prefix,	final String stringToJoinWith, final String suffix)
+	{
 		String oredList = "";
 		for (int index = 0; index < list.length; ++index)
 		{
