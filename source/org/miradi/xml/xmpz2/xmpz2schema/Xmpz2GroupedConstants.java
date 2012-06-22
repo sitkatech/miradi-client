@@ -30,14 +30,18 @@ abstract public class Xmpz2GroupedConstants implements Xmpz2XmlConstants
 	
 	public static String createOredWrappableFactorNames()
 	{
+		final String prefix = PREFIX;
+		final String suffix = ID;
+		final String stringToJoinWith = "|";
+		
 		final String[] list = getWrappableFactorNames();
 		String oredList = "";
 		for (int index = 0; index < list.length; ++index)
 		{
 			if (index > 0)
-				oredList += "|";
+				oredList += stringToJoinWith;
 			
-			oredList += PREFIX + list[index] + ID;
+			oredList += prefix + list[index] + suffix;
 		}
 		
 		return oredList;
