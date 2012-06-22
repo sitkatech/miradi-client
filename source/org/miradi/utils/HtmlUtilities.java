@@ -137,6 +137,16 @@ public class HtmlUtilities
 		final String END = createEndTagRegex(tagToReplace);
 		final String EMPTY = createEmptyTagRegex(tagToReplace);
 		final String regex = START + "|" + EMPTY + "|" + END + "|" + START_WITH_ATRIBUTE; 
+		
+		return replaceAll(regex, text, replacement);
+	}
+	
+	public static String replaceStartHtmlTags(String text, String tagToReplace, final String replacement)
+	{
+		final String START = "<" + tagToReplace + "\\s*>";
+		final String START_WITH_ATRIBUTE = "<" + tagToReplace + "\\s+.*?>";
+		final String regex = START + "|" + START_WITH_ATRIBUTE;
+		
 		return replaceAll(regex, text, replacement);
 	}
 
