@@ -63,5 +63,19 @@ public class StringUtilities
 		return tagsSeperatedByOr;
 	}
 	
+	public static String joinListItem(final String[] list, final String prefix,	final String stringToJoinWith, final String suffix)
+	{
+		String oredList = "";
+		for (int index = 0; index < list.length; ++index)
+		{
+			if (index > 0)
+				oredList += stringToJoinWith;
+			
+			oredList += prefix + list[index] + suffix;
+		}
+		
+		return oredList;
+	}
+	
 	public static final String EMPTY_SPACE= " ";
 }
