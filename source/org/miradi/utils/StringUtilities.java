@@ -63,18 +63,18 @@ public class StringUtilities
 		return tagsSeperatedByOr;
 	}
 	
-	public static String joinListItems(final String[] list, final String prefix,	final String stringToJoinWith, final String suffix)
+	public static String joinListItems(final String[] list, final String prefix, final String stringToJoinWith, final String suffix)
 	{
-		String oredList = "";
+		String joinedItems = "";
 		for (int index = 0; index < list.length; ++index)
 		{
 			if (index > 0)
-				oredList += stringToJoinWith;
+				joinedItems += stringToJoinWith;
 			
-			oredList += prefix + list[index] + suffix;
+			joinedItems += prefix + list[index] + suffix;
 		}
 		
-		return oredList;
+		return joinedItems;
 	}
 	
 	public static final String EMPTY_SPACE= " ";
