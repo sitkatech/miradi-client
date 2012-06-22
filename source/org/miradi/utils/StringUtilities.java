@@ -49,15 +49,15 @@ public class StringUtilities
 		return join(tagsToKeep, "|");
 	}
 
-	private static String join(String[] tagsToKeep, final String stringToJoinWith)
+	private static String join(String[] list, final String stringToJoinWith)
 	{
 		String joinedItems = "";
-		for (int index = 0; index < tagsToKeep.length; ++index)
+		for (int index = 0; index < list.length; ++index)
 		{
 			if (index != 0)
 				joinedItems += stringToJoinWith;
 			
-			joinedItems += tagsToKeep[index];
+			joinedItems += list[index];
 		}
 		
 		return joinedItems;
