@@ -51,16 +51,7 @@ public class StringUtilities
 
 	private static String join(String[] list, final String stringToJoinWith)
 	{
-		String joinedItems = "";
-		for (int index = 0; index < list.length; ++index)
-		{
-			if (index != 0)
-				joinedItems += stringToJoinWith;
-			
-			joinedItems += list[index];
-		}
-		
-		return joinedItems;
+		return joinListItems(list, "", stringToJoinWith, "");
 	}
 	
 	public static String joinListItems(final String[] list, final String prefix, final String stringToJoinWith, final String suffix)
