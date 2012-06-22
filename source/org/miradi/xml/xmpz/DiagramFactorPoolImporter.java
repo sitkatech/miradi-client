@@ -23,6 +23,9 @@ package org.miradi.xml.xmpz;
 import java.awt.Dimension;
 import java.awt.Point;
 
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpression;
+
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -46,6 +49,7 @@ import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.TextBoxSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.StringUtilities;
 import org.miradi.xml.AbstractXmlImporter;
 import org.w3c.dom.Node;
 
@@ -96,22 +100,18 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 	{
 		Node wrappedByDiagamFactorIdNode = importer.getNode(wrappedFactorIdNode, WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
 		
-		return getWrappedRef(wrappedByDiagamFactorIdNode);
+		return getWrappedRef(importer, wrappedByDiagamFactorIdNode);
 	}
 
-	public static ORef getWrappedRef(Node wrappedByDiagamFactorIdNode)
+	public static ORef getWrappedRef(XmpzXmlImporter importer, Node wrappedByDiagamFactorIdNode) throws Exception
 	{
-		//TODO Should avoid relying on getFirst()
-		final int ONE_CHILD_NODE_FOR_ELEMENT = 1;
-		final int ONE_CHILD_FOR_TEXT = 1;
-		final int EXPECTED_CHILDREN_COUNT = ONE_CHILD_NODE_FOR_ELEMENT + ONE_CHILD_FOR_TEXT;
-		int childrenNodeCount = wrappedByDiagamFactorIdNode.getChildNodes().getLength();
-		if (childrenNodeCount != EXPECTED_CHILDREN_COUNT)
-			throw new RuntimeException("DiagramFactor wrapped factor id node does not have an id node and a text id. children count= " +  childrenNodeCount);		
-		Node typedIdNode = wrappedByDiagamFactorIdNode.getFirstChild();
+		String oredWrappedFactorNames = createOredWrappableFactorNames();
+		XPathExpression expression = importer.getXPath().compile(oredWrappedFactorNames);
+		Node node =  (Node) expression.evaluate(wrappedByDiagamFactorIdNode, XPathConstants.NODE);
+		BaseId wrappedId = new BaseId(node.getTextContent());
+		final int objectTypeOfNode = getObjectTypeOfNode(node);
 		
-		BaseId wrappedId = new BaseId(typedIdNode.getTextContent());
-		return new ORef(getObjectTypeOfNode(typedIdNode), wrappedId);
+		return new ORef(objectTypeOfNode, wrappedId);
 	}
 
 	private static int getObjectTypeOfNode(Node typedIdNode)
@@ -180,5 +180,27 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 		Point point = extractPointFromNode(pointNode);
 		String pointAsString = EnhancedJsonObject.convertFromPoint(point);
 		getImporter().setData(destinationRef, DiagramFactor.TAG_LOCATION, pointAsString);
+	}
+	
+	public static String createOredWrappableFactorNames()
+	{
+		return StringUtilities.joinListItems(getWrappableFactorNames(), PREFIX, "|", ID);
+	}
+	
+	public static String[] getWrappableFactorNames()
+	{
+		return new String[]{
+				BIODIVERSITY_TARGET, 
+				HUMAN_WELFARE_TARGET, 
+				CAUSE, 
+				STRATEGY, 
+				THREAT_REDUCTION_RESULTS, 
+				INTERMEDIATE_RESULTS,
+				GROUP_BOX,
+				TEXT_BOX,
+				SCOPE_BOX,
+				ACTIVITY,
+				STRESS,
+		};
 	}
 }
