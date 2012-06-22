@@ -63,7 +63,7 @@ public class StringUtilities
 		return tagsSeperatedByOr;
 	}
 	
-	public static String joinListItem(final String[] list, final String prefix,	final String stringToJoinWith, final String suffix)
+	public static String joinListItems(final String[] list, final String prefix,	final String stringToJoinWith, final String suffix)
 	{
 		String oredList = "";
 		for (int index = 0; index < list.length; ++index)
