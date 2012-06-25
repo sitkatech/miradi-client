@@ -66,7 +66,12 @@ public class RenameProjectDoer
 
 	private static String getLegalProjectNameFromUser(MainWindow mainWindow, File projectFile) throws Exception
 	{
-		String projectName = Utility.getFileNameWithoutExtension(projectFile.getName());
+		return getLegalProjectNameFromUser(mainWindow, projectFile.getName());
+	}
+
+	public static String getLegalProjectNameFromUser(MainWindow mainWindow, final String name) throws Exception
+	{
+		String projectName = Utility.getFileNameWithoutExtension(name);
 		while (true)
 		{
 			projectName = askUserForProjectName(mainWindow, projectName);

@@ -37,7 +37,6 @@ import javax.swing.text.Position;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
 
-
 import org.miradi.dialogs.tablerenderers.BorderlessTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultTableCellRendererWithPreferredHeightFactory;
 import org.miradi.dialogs.treetables.TreeTableWithColumnWidthSaving;
@@ -129,6 +128,13 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 	{
 		if(projectFile == null)
 			return;
+		
+		if (isOldProject(projectFile))
+		{
+			//FIXME urgent - this is still under development
+			//new OldProjectDirToMpfConverter(mainWindow).convert(projectFile);
+			return;
+		}
 		
 		if(!isProject(projectFile))
 			return;
