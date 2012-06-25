@@ -22,6 +22,7 @@ package org.miradi.dialogfields;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -84,6 +85,18 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 	{
 		super.addFocusListener();
 		getTextField().addFocusListener(this);
+	}
+	
+	@Override
+	public void focusLost(FocusEvent e)
+	{
+		super.focusLost(e);
+		if(e.isTemporary())
+			return;
+		
+		// NOTE: Shef returns a value different from what is being shown,
+		// so whenever we lose focus, put the display back in sync.
+		setText(getText());
 	}
 	
 	protected void setTextFromPopup(String textFronPopupEditor)
