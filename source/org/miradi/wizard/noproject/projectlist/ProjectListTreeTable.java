@@ -51,6 +51,7 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.ColumnSortListener;
+import org.miradi.utils.MpfFileFilter;
 import org.miradi.utils.SortableTable;
 import org.miradi.wizard.noproject.FileSystemTreeNode;
 import org.miradi.wizard.noproject.NoProjectWizardStep;
@@ -115,7 +116,8 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 	{
 		if(file == null)
 			return false;
-		return file.getName().endsWith(".Miradi");
+		
+		return file.getName().endsWith(MpfFileFilter.EXTENSION);
 	}
 
 	public static boolean isOldProject(File selectedFile) throws Exception
