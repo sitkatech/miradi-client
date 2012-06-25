@@ -67,7 +67,8 @@ public class ZipUtilities
 		try
 		{
 			ZipOutputStream zipOut = new ZipOutputStream(out);
-			addToZip(zipOut, directoryToZip, directoryToZip.getAbsolutePath());
+			final String parentAbsolutePath = directoryToZip.getParentFile().getAbsolutePath();
+			addToZip(zipOut, directoryToZip, parentAbsolutePath);
 			zipOut.close();
 			return newZipFile;
 		}
