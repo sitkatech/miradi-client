@@ -33,6 +33,10 @@ import java.util.zip.ZipOutputStream;
 
 public class ZipUtilities
 {
+	public static boolean compare(ZipFile zipFile, File directory)
+	{
+		return false;
+	}
 
 	public static void extractAll(ZipFile zipFile, File tempDirectory) throws IOException
 	{
