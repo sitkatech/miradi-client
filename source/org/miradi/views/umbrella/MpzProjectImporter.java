@@ -21,8 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
 import javax.swing.filechooser.FileFilter;
