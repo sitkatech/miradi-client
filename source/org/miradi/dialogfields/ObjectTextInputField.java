@@ -52,8 +52,7 @@ public class ObjectTextInputField extends ObjectDataInputField
 		setEditable(true);
 		field.getDocument().addDocumentListener(new DocumentEventHandler());
 		createRightClickMouseHandler();
-		field.addKeyListener(new UndoRedoKeyHandler(getActions()));
-		
+
 		setDefaultFieldBorder();
 	}
 
@@ -124,6 +123,13 @@ public class ObjectTextInputField extends ObjectDataInputField
 	{
 		field.setSelectionStart(0);
 		field.setSelectionEnd(field.getSize().width);
+	}
+	
+	@Override
+	public void focusGained(FocusEvent e)
+	{
+		super.focusGained(e);
+		UndoRedoKeyHandler.enableUndoAndRedo(EAM.getMainWindow(), field);
 	}
 	
 	@Override
