@@ -26,12 +26,11 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogfields.FieldSaver;
 import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
 import org.miradi.dialogfields.SavableField;
-import org.miradi.dialogfields.UndoRedoKeyHandler;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.project.Project;
 import org.miradi.schemas.CauseSchema;
@@ -54,7 +53,6 @@ public class ThreatRatingCommentsEditorComponent extends SavableField
 		panelTextArea.setBackground(EAM.EDITABLE_BACKGROUND_COLOR);
 		
 		new HtmlEditorRightClickMouseHandler(actions, panelTextArea);
-		panelTextArea.addKeyListener(new UndoRedoKeyHandler(actions));
 		panelTextArea.addFocusListener(this);
 	}
 	
