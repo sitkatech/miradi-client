@@ -89,7 +89,7 @@ public class FileUtilities
 		return new File(currentFile.getAbsolutePath() + suffix);
 	}
 
-	public static File createTempFile(InputStream mpzInputStream, final String fileName) throws IOException
+	public static File createTempFileCopyOf(InputStream mpzInputStream, final String fileName) throws IOException
 	{
 		File temporaryFile = File.createTempFile(fileName, null);
 		temporaryFile.deleteOnExit();
