@@ -104,7 +104,7 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return EAM.text("Error");
+			return EAM.getErrorValue();
 		}
 	}
 	

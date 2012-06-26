@@ -63,7 +63,7 @@ public class TargetSummaryRowTableModel extends AbstractThreatTargetTableModel
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return EAM.text("Error");
+			return EAM.getErrorValue();
 		}
 	}
 
