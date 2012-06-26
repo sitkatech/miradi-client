@@ -19,66 +19,56 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.ActionEvent;
+
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.KeyStroke;
+import javax.swing.text.JTextComponent;
 
 import org.miradi.actions.ActionRedo;
 import org.miradi.actions.ActionUndo;
 import org.miradi.actions.Actions;
-import org.miradi.actions.MiradiAction;
-import org.miradi.main.EAM;
+import org.miradi.actions.MainWindowAction;
+import org.miradi.main.MainWindow;
 
-public class UndoRedoKeyHandler extends KeyAdapter
+public class UndoRedoKeyHandler
 {
-	public UndoRedoKeyHandler(Actions actionsToUse)
+	public static void enableUndoAndRedo(MainWindow mainWindow, JTextComponent field)
 	{
-		actions = actionsToUse;
+		Actions actions = mainWindow.getActions();
+		
+		MainWindowAction undoAction = actions.getMainWindowAction(ActionUndo.class);
+		KeyStroke controlZ = KeyStroke.getKeyStroke("ctrl Z");
+		Action wrappedUndoAction = new WrapperToWorkAroundSwingStrangenessAction(undoAction);
+		field.getInputMap(field.WHEN_FOCUSED).put(controlZ, wrappedUndoAction);
+		
+		MainWindowAction redoAction = actions.getMainWindowAction(ActionRedo.class);
+		KeyStroke controlY = KeyStroke.getKeyStroke("ctrl Y");
+		Action wrappedRedoAction = new WrapperToWorkAroundSwingStrangenessAction(redoAction);
+		field.getInputMap().put(controlY, wrappedRedoAction);
 	}
 	
-	@Override
-	public void keyTyped(KeyEvent event)
+	/*
+	 * NOTE: I'm not sure why this is required, but as of 2012-06-26 it is.
+	 * If we bind Ctrl-Z directly to the ActionUndo, it won't get executed
+	 * when pressed in a text box in a dialog (like Factor Properties).
+	 * My theory is that the menu is somehow blocking it.
+	 */
+	private static class WrapperToWorkAroundSwingStrangenessAction extends AbstractAction
 	{
-		try
+		public WrapperToWorkAroundSwingStrangenessAction(MainWindowAction actionToWrap)
 		{
-			char keyChar = event.getKeyChar();
-			if(keyChar == ctrl('Z'))
-			{
-				FieldSaver.savePendingEdits();
-				getUndoAction().doAction();
-			}
-			if(keyChar == ctrl('Y'))
-			{
-				FieldSaver.savePendingEdits();
-				getRedoAction().doAction();
-			}
+			wrappedAction = actionToWrap;
 		}
-		catch(Exception e)
+		
+		public void actionPerformed(ActionEvent e)
 		{
-			EAM.logException(e);
-			EAM.unexpectedErrorDialog(e);
+			wrappedAction.actionPerformed(e);
+			wrappedAction.getMainWindow().updateActionsAndStatusBar();
 		}
+		
+		private MainWindowAction wrappedAction;
 	}
-
-	private int ctrl(char letter)
-	{
-		return Character.toUpperCase(letter) - '@';
-	}
-	
-	private MiradiAction getUndoAction()
-	{
-		return getActions().get(ActionUndo.class);
-	}
-	
-	private MiradiAction getRedoAction()
-	{
-		return getActions().get(ActionRedo.class);
-	}
-	
-	private Actions getActions()
-	{
-		return actions;
-	}
-	
-	private Actions actions;
 }
 
