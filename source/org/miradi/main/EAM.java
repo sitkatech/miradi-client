@@ -426,7 +426,7 @@ public class EAM
 	{
 		logError("write failure happend for: " + file.getAbsolutePath());
 		logException(e);
-		showSafeHtmlOkMessageDialog(FILEINUSE_ERROR_MESSAGE_FILE_NAME, EAM.text("Error"));
+		showSafeHtmlOkMessageDialog(FILEINUSE_ERROR_MESSAGE_FILE_NAME, EAM.getErrorValue());
 		exitMiradiNowDueToFatalError();
 	}
 	
@@ -655,6 +655,11 @@ public class EAM
 		long maxMemory = Runtime.getRuntime().maxMemory();
 		if (maxMemory < 100000000)
 			logWarning(text("It appears that Miradi was launched without the -Xmx512m switch. As a result, certain operations like Reports may run out of memory."));    
+	}
+	
+	public static String getErrorValue()
+	{
+		return text("Error");
 	}
 
 	public final static String EXTERNAL_RESOURCE_DIRECTORY_NAME = "ExternalResourceDirectory";
