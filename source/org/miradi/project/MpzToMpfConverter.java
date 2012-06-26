@@ -170,7 +170,7 @@ public class MpzToMpfConverter
 			if(versionAfterUpgrading != REQUIRED_VERSION)
 				throw new RuntimeException("Migration failed");
 	
-			File newMpzFile = ZipUtilities.createZipFromDirectory(tempDirectory);
+			File newMpzFile = ZipUtilities.createZipFromDirectory(projectDirectory);
 			newMpzFile.deleteOnExit();
 			DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
 			return newMpzFile;
