@@ -54,7 +54,7 @@ public class XmlUtilities2
 			EAM.logError("Invalid XML: " + value);
 			EAM.logException(e);
 			
-			return "ERROR: " + value;
+			return EAM.getErrorValue();
 		}
 	}
 	
