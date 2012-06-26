@@ -241,15 +241,7 @@ public class FactorDeleteHelper
 
 	private boolean canReferToIndicators(Factor factorToDelete)
 	{
-		if (shouldDeleteTargetIndicatorsRegardlessOfTncMode(factorToDelete))
-			return true;
-		
-		return factorToDelete.canHaveIndicators();
-	}
-
-	public boolean shouldDeleteTargetIndicatorsRegardlessOfTncMode(Factor factorToDelete)
-	{
-		return factorToDelete.isTarget();
+		return factorToDelete.isTarget() || factorToDelete.canHaveIndicators();
 	}
 
 	private void deleteTargetAnnotations(Factor factorToDelete) throws Exception
