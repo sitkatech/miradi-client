@@ -426,7 +426,7 @@ public class EAM
 	{
 		logError("write failure happend for: " + file.getAbsolutePath());
 		logException(e);
-		showSafeHtmlOkMessageDialog(FILEINUSE_ERROR_MESSAGE_FILE_NAME, EAM.getErrorValue());
+		showSafeHtmlOkMessageDialog(FILEINUSE_ERROR_MESSAGE_FILE_NAME, EAM.getCellTextWhenException());
 		exitMiradiNowDueToFatalError();
 	}
 	
@@ -657,7 +657,7 @@ public class EAM
 			logWarning(text("It appears that Miradi was launched without the -Xmx512m switch. As a result, certain operations like Reports may run out of memory."));    
 	}
 	
-	public static String getErrorValue()
+	public static String getCellTextWhenException()
 	{
 		return text("Error");
 	}

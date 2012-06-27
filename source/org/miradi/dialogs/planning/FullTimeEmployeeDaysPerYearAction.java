@@ -109,7 +109,7 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 		catch(Exception e)
 		{
 			EAM.logException(e);
-			return new FlexibleWidthHtmlViewer(getMainWindow(), EAM.getErrorValue());
+			return new FlexibleWidthHtmlViewer(getMainWindow(), EAM.getCellTextWhenException());
 		}
 	}
 	
