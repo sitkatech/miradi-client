@@ -659,7 +659,7 @@ public class EAM
 	
 	public static String getCellTextWhenException()
 	{
-		return text("Error");
+		return EAM.text("Error");
 	}
 
 	public final static String EXTERNAL_RESOURCE_DIRECTORY_NAME = "ExternalResourceDirectory";
