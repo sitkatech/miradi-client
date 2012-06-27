@@ -25,6 +25,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Factor;
 import org.miradi.project.Project;
+import org.miradi.utils.Translation;
 
 public class ThreatSummaryColumnTableModel extends AbstractThreatPerRowTableModel
 {
@@ -77,7 +78,7 @@ public class ThreatSummaryColumnTableModel extends AbstractThreatPerRowTableMode
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return EAM.getCellTextWhenException();
+			return Translation.getCellTextWhenException();
 		}
 	}
 	

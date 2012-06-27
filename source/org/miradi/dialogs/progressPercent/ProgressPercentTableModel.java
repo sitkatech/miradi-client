@@ -32,6 +32,7 @@ import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.schemas.ProgressPercentSchema;
 import org.miradi.utils.DoubleUtilities;
+import org.miradi.utils.Translation;
 import org.miradi.views.diagram.doers.AbstractCreateProgressDoer;
 
 public class ProgressPercentTableModel extends EditableObjectRefsTableModel
@@ -96,7 +97,7 @@ public class ProgressPercentTableModel extends EditableObjectRefsTableModel
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return EAM.getCellTextWhenException();
+			return Translation.getCellTextWhenException();
 		}
 	}
 

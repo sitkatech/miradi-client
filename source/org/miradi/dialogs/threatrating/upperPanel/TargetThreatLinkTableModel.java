@@ -26,6 +26,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.Cause;
 import org.miradi.project.Project;
+import org.miradi.utils.Translation;
 
 public class TargetThreatLinkTableModel extends AbstractThreatPerRowTableModel
 {
@@ -73,7 +74,7 @@ public class TargetThreatLinkTableModel extends AbstractThreatPerRowTableModel
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return EAM.getCellTextWhenException();
+			return Translation.getCellTextWhenException();
 		}
 	}
 

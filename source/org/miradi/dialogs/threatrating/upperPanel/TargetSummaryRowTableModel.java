@@ -23,6 +23,7 @@ import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.project.Project;
+import org.miradi.utils.Translation;
 
 public class TargetSummaryRowTableModel extends AbstractThreatTargetTableModel
 {
@@ -63,7 +64,7 @@ public class TargetSummaryRowTableModel extends AbstractThreatTargetTableModel
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return EAM.getCellTextWhenException();
+			return Translation.getCellTextWhenException();
 		}
 	}
 
