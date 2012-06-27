@@ -206,7 +206,7 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements XmpzXmlConst
 	@Override
 	public void setData(ORef ref, String tag, String data) throws Exception
 	{
-		getProject().setObjectData(ref, tag, HtmlUtilities.replaceNonHtmlNewlines(data.trim()));
+		getProject().setObjectData(ref, tag, HtmlUtilities.replaceNonHtmlNewlines(data));
 	}
 	
 	protected ProgressInterface progressIndicator;
