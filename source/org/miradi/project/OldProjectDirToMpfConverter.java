@@ -30,12 +30,7 @@ import org.miradi.views.umbrella.MpzProjectImporter;
 
 public class OldProjectDirToMpfConverter
 {
-	public OldProjectDirToMpfConverter(MainWindow mainWindowToUse)
-	{
-		mainWindow = mainWindowToUse;
-	}
-	
-	public File convert(File oldProjectDirectory) throws Exception
+	public static File convert(MainWindow mainWindow, File oldProjectDirectory) throws Exception
 	{
 		File oldProjectZipped = ZipUtilities.createZipFromDirectory(oldProjectDirectory);
 		MpzProjectImporter importer = new MpzProjectImporter(mainWindow);
@@ -48,6 +43,4 @@ public class OldProjectDirToMpfConverter
 		
 		return importedFile;
 	}
-
-	private MainWindow mainWindow;
 }
