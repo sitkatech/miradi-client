@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import java.io.File;
+import java.util.zip.ZipFile;
 
 import org.martus.util.DirectoryUtils;
 import org.miradi.main.MainWindow;
@@ -39,9 +40,11 @@ public class OldProjectDirToMpfConverter
 		File oldProjectZipped = ZipUtilities.createZipFromDirectory(oldProjectDirectory);
 		MpzProjectImporter importer = new MpzProjectImporter(mainWindow);
 		importer.importProject(oldProjectZipped, oldProjectDirectory.getName());
-		
-		//FIXME urgent - working on a zip verifier
-		DirectoryUtils.deleteEntireDirectoryTree(oldProjectDirectory);
+
+		if (ZipUtilities.compare(new ZipFile(oldProjectZipped), oldProjectDirectory, oldProjectDirectory.getName()))
+		{
+			DirectoryUtils.deleteEntireDirectoryTree(oldProjectDirectory);
+		}
 	}
 
 	private MainWindow mainWindow;

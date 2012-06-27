@@ -27,15 +27,46 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Enumeration;
+import java.util.HashSet;
+import java.util.Vector;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
+import org.martus.util.DirectoryUtils;
+
 public class ZipUtilities
 {
-	public static boolean compare(ZipFile zipFile, File directory)
+	public static boolean compare(ZipFile zipFile, File directory, String projectName) throws Exception
 	{
-		return false;
+		final File createTempDirectory = FileUtilities.createTempDirectory("unzipDirectory");
+		try
+		{
+			extractAll(zipFile, createTempDirectory);
+			Vector<String> actualFile = extractOnlyProjectPaths(directory, projectName);
+			Vector<String> expectedFiles = extractOnlyProjectPaths(createTempDirectory, projectName);
+			actualFile.removeAll(expectedFiles);
+			
+			return actualFile.size() == 0;
+		}
+		finally 
+		{
+			DirectoryUtils.deleteEntireDirectoryTree(createTempDirectory);
+		}
+	}
+
+	private static Vector<String> extractOnlyProjectPaths(File directory, String projectName)
+	{
+		HashSet<File> allFiles = FileUtilities.getAllFilePaths(directory);
+		Vector<String> projectPaths = new Vector<String>();
+		for (File file : allFiles)
+		{
+			final String absolutePath = file.getAbsolutePath();
+			String projectDirPath = absolutePath.substring(absolutePath.indexOf(projectName));
+			projectPaths.add(projectDirPath);
+		}
+		
+		return projectPaths;
 	}
 
 	public static void extractAll(ZipFile zipFile, File tempDirectory) throws IOException

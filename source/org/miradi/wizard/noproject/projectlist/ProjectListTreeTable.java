@@ -49,6 +49,7 @@ import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.project.OldProjectDirToMpfConverter;
 import org.miradi.utils.ColumnSortListener;
 import org.miradi.utils.MpfFileFilter;
 import org.miradi.utils.SortableTable;
@@ -131,8 +132,7 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 		
 		if (isOldProject(projectFile))
 		{
-			//FIXME urgent - this is still under development
-			//new OldProjectDirToMpfConverter(mainWindow).convert(projectFile);
+			new OldProjectDirToMpfConverter(mainWindow).convert(projectFile);
 			return;
 		}
 		

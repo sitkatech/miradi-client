@@ -149,7 +149,7 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 		assertEquals("Te", safe);
 	}
 
-	private byte[] readSampleMpz(String mpzResourcePath) throws IOException
+	public static byte[] readSampleMpz(String mpzResourcePath) throws IOException
 	{
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		URL url = ResourcesHandler.getResourceURL(mpzResourcePath);
@@ -180,7 +180,7 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 		return project2;
 	}
 
-	private File writeToTemporaryFile(byte[] byteArray) throws Exception
+	public static File writeToTemporaryFile(byte[] byteArray) throws Exception
 	{
 		File tempMpzFile = File.createTempFile("$$$TestMpzToMiradiConverter.mpz", null);
 		tempMpzFile.deleteOnExit();
