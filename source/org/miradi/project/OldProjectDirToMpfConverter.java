@@ -24,6 +24,7 @@ import java.io.File;
 import java.util.zip.ZipFile;
 
 import org.martus.util.DirectoryUtils;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.ZipUtilities;
 import org.miradi.views.umbrella.MpzProjectImporter;
@@ -39,6 +40,12 @@ public class OldProjectDirToMpfConverter
 		if (ZipUtilities.compare(new ZipFile(oldProjectZipped), oldProjectDirectory, oldProjectDirectory.getName()))
 		{
 			DirectoryUtils.deleteEntireDirectoryTree(oldProjectDirectory);
+		}
+		else
+		{
+			final String errorMessage = EAM.text("Mpz to Mpf data conversion failed");
+			EAM.errorDialog(errorMessage);
+			throw new RuntimeException(errorMessage);
 		}
 		
 		return importedFile;
