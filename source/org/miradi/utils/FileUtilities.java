@@ -105,9 +105,9 @@ public class FileUtilities
 		return new File(currentFile.getAbsolutePath() + suffix);
 	}
 
-	public static File createTempFileCopyOf(InputStream mpzInputStream, final String fileName) throws IOException
+	public static File createTempFileCopyOf(InputStream mpzInputStream) throws IOException
 	{
-		File temporaryFile = File.createTempFile(fileName, null);
+		File temporaryFile = File.createTempFile("$$$tempFileCopy", null);
 		temporaryFile.deleteOnExit();
 		copyStreamToFile(mpzInputStream, temporaryFile);
 		
