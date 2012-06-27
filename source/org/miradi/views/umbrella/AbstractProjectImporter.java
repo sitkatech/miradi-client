@@ -108,14 +108,16 @@ public abstract class AbstractProjectImporter
 
 	public void importProject(File fileToImport) throws Exception
 	{
-		importProject(fileToImport, fileToImport.getName());
+		File importedFile = importProject(fileToImport, fileToImport.getName());
+		if (importedFile != null)
+			userConfirmOpenImportedProject(importedFile);
 	}
 
-	public void importProject(File fileToImport, final String name) throws Exception
+	public File importProject(File fileToImport, final String name) throws Exception
 	{
 		String projectName = RenameProjectDoer.getLegalProjectNameFromUser(getMainWindow(), name);
 		if (projectName == null)
-			return;
+			return null;
 		
 		ProgressDialog progressDialog = new ProgressDialog(getMainWindow(), EAM.text("Importing..."));
 		Worker worker = new Worker(progressDialog, fileToImport, projectName);
@@ -123,7 +125,8 @@ public abstract class AbstractProjectImporter
 		
 		refreshNoProjectPanel();
 		currentDirectory = fileToImport.getParent();
-		userConfirmOpenImportedProject(worker.getImportedFile());
+		
+		return worker.getImportedFile();
 	}
 	
 	private class Worker extends MiradiBackgroundWorkerThread

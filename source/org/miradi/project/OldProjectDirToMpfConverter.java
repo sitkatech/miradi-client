@@ -35,16 +35,18 @@ public class OldProjectDirToMpfConverter
 		mainWindow = mainWindowToUse;
 	}
 	
-	public void convert(File oldProjectDirectory) throws Exception
+	public File convert(File oldProjectDirectory) throws Exception
 	{
 		File oldProjectZipped = ZipUtilities.createZipFromDirectory(oldProjectDirectory);
 		MpzProjectImporter importer = new MpzProjectImporter(mainWindow);
-		importer.importProject(oldProjectZipped, oldProjectDirectory.getName());
+		File importedFile = importer.importProject(oldProjectZipped, oldProjectDirectory.getName());
 
 		if (ZipUtilities.compare(new ZipFile(oldProjectZipped), oldProjectDirectory, oldProjectDirectory.getName()))
 		{
 			DirectoryUtils.deleteEntireDirectoryTree(oldProjectDirectory);
 		}
+		
+		return importedFile;
 	}
 
 	private MainWindow mainWindow;

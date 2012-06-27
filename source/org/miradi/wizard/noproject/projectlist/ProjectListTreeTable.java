@@ -132,8 +132,7 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 		
 		if (isOldProject(projectFile))
 		{
-			new OldProjectDirToMpfConverter(mainWindow).convert(projectFile);
-			return;
+			projectFile = new OldProjectDirToMpfConverter(mainWindow).convert(projectFile);
 		}
 		
 		if(!isProject(projectFile))
