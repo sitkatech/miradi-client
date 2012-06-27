@@ -25,10 +25,26 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.HashSet;
 
 public class FileUtilities
 {
-
+	public static HashSet<File> getAllFilePaths(File startDirectory)
+	{
+		HashSet<File> allFilePaths = new HashSet<File>();
+		File[] currentDirChildren = startDirectory.listFiles();
+		for (int index = 0; index < currentDirChildren.length; ++index)
+		{
+			File childFile = currentDirChildren[index];
+			if (childFile.isDirectory())
+				allFilePaths.addAll(getAllFilePaths(childFile));
+			else
+				allFilePaths.add(childFile);
+		}
+		
+		return allFilePaths;
+	}
+	
 	public static void copyStream(InputStream inputStream, OutputStream out) throws IOException
 	{
 		byte[] buffer = new byte[1024];

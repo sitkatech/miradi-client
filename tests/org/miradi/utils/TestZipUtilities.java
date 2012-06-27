@@ -20,7 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import java.io.File;
+import java.util.zip.ZipFile;
+
+import org.martus.util.DirectoryUtils;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.project.TestMpzToMpfConverter;
 
 public class TestZipUtilities extends TestCaseWithProject
 {
@@ -29,8 +34,21 @@ public class TestZipUtilities extends TestCaseWithProject
 		super(name);
 	}
 	
-	public void testCompare()
+	public void testCompareZipToDirectory() throws Exception
 	{
-		//FIXME implement this test. 
+		final File tempDirectory = FileUtilities.createTempDirectory("tempZipComarison");
+		final byte[] mpzBytes = TestMpzToMpfConverter.readSampleMpz("/Sample-v61.mpz");
+		final File mpzFile = TestMpzToMpfConverter.writeToTemporaryFile(mpzBytes);
+		try
+		{
+			final ZipFile mpzZipFile = new ZipFile(mpzFile);
+			ZipUtilities.extractAll(mpzZipFile, tempDirectory);
+			assertTrue("zip file does not match directory content?", ZipUtilities.compare(mpzZipFile, tempDirectory, "Marine Example 3.3.2"));
+		}
+		finally
+		{
+			DirectoryUtils.deleteAllFilesOnlyInDirectory(tempDirectory);
+			mpzFile.delete();
+		}
 	}
 }
