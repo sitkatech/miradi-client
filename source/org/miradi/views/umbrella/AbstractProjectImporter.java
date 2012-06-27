@@ -223,7 +223,7 @@ public abstract class AbstractProjectImporter
 		return mainWindow;
 	}
 	
-	private static final String AUTO_MIGRATION_MESSAGE_FILE_NAME = "autoMigrationMessageFileName.html";
+	private static final String AUTO_MIGRATION_MESSAGE_FILE_NAME = "AutoMigrationMessage.html";
 
 	private static String currentDirectory = UiFileChooser.getHomeDirectoryFile().getPath();
 	private static final String IMPORT_FAILED_MESSAGE = EAM.text("This file cannot be imported because it is a newer format than this version of Miradi supports. <br>" +
