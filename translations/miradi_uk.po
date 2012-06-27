@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-27 12:05-0500\n"
+"POT-Creation-Date: 2012-06-27 14:06-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -2069,7 +2069,7 @@ msgid "An Error Occurred During Sorting."
 msgstr "Під час сортування сталася помилка."
 
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:78
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:119
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:120
 msgid "An error has occured while writing assignment data."
 msgstr "Сталася помилка при запису призначених даних"
 
@@ -3032,7 +3032,7 @@ msgstr ""
 msgid "Cut"
 msgstr "Вирізати"
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:60
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:61
 msgid "Daily Rate"
 msgstr "Денна оцінка"
 
@@ -3477,6 +3477,10 @@ msgstr "Введіть назву тега"
 #: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:47
 msgid "Entire Project Duration"
 msgstr ""
+
+#: Miradi/source/org/miradi/utils/Translation.java:311
+msgid "Error"
+msgstr "Помилка"
 
 #: Miradi/source/org/miradi/dialogs/planning/treenodes/PlanningTreeErrorNode.java:59
 msgid "Error Creating: %s"
@@ -5287,7 +5291,7 @@ msgstr "Не ефективний"
 #: Miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
 #: Miradi/source/org/miradi/questions/TrendQuestion.java:37
 #: Miradi/source/org/miradi/utils/Translation.java:306
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:280
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:281
 #: Miradi/source/org/miradi/dialogs/planning/treenodes/UnspecifiedBaseObject.java:45
 msgid "Not Specified"
 msgstr "Не визначено"
@@ -5922,7 +5926,7 @@ msgstr "Звітуватися робочій групі проекту і за�
 msgid "Resource"
 msgstr "Ресурс"
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:57
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:58
 msgid "Resource (Who)"
 msgstr "Ресурс (хто)"
 
@@ -6544,7 +6548,7 @@ msgstr "Резюме звіту"
 msgid "Summary Target Ratings:"
 msgstr "Підсумкові оцінки цілей:"
 
-#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:56
+#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:57
 msgid "Summary Threat Rating"
 msgstr "Підсумкова оцінка загроз"
 
@@ -8562,7 +8566,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr "Ким було перевищено: %s"
 
-#: Miradi/source/org/miradi/main/EAM.java:681
+#: Miradi/source/org/miradi/main/EAM.java:676
 msgid "Wintitle|Information"
 msgstr "Wintitle|Інформація"
 
@@ -34028,9 +34032,6 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
-
-#~ msgid "Error"
-#~ msgstr "Помилка"
 
 #~ msgid ")"
 #~ msgstr ")"

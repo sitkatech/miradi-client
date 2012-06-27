@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-27 12:05-0500\n"
+"POT-Creation-Date: 2012-06-27 14:06-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -2173,7 +2173,7 @@ msgid "An Error Occurred During Sorting."
 msgstr "Während des Anordnens ist ein Fehler aufgetreten"
 
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:78
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:119
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:120
 msgid "An error has occured while writing assignment data."
 msgstr ""
 
@@ -3156,7 +3156,7 @@ msgstr "Anpassen..."
 msgid "Cut"
 msgstr "Ausschneiden"
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:60
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:61
 msgid "Daily Rate"
 msgstr "Tägliche Rate"
 
@@ -3612,6 +3612,10 @@ msgstr "Tag-Bezeichnung eingeben"
 #: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:47
 msgid "Entire Project Duration"
 msgstr "Gesamtlaufzeit des Projekts"
+
+#: Miradi/source/org/miradi/utils/Translation.java:311
+msgid "Error"
+msgstr "Fehler"
 
 #: Miradi/source/org/miradi/dialogs/planning/treenodes/PlanningTreeErrorNode.java:59
 msgid "Error Creating: %s"
@@ -5459,7 +5463,7 @@ msgstr "Nicht effektiv"
 #: Miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
 #: Miradi/source/org/miradi/questions/TrendQuestion.java:37
 #: Miradi/source/org/miradi/utils/Translation.java:306
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:280
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:281
 #: Miradi/source/org/miradi/dialogs/planning/treenodes/UnspecifiedBaseObject.java:45
 msgid "Not Specified"
 msgstr "nicht spezif."
@@ -6107,7 +6111,7 @@ msgstr "Projektteam und Stakeholder informieren"
 msgid "Resource"
 msgstr "Ressource"
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:57
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:58
 #, fuzzy
 msgid "Resource (Who)"
 msgstr "Ressource (Wer)"
@@ -6755,7 +6759,7 @@ msgstr "Zusammenfassender Bericht"
 msgid "Summary Target Ratings:"
 msgstr "Zusammenfassung Schutzobjektsbewertung"
 
-#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:56
+#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:57
 msgid "Summary Threat Rating"
 msgstr "Zusammenfassung Bedrohungsbewertung"
 
@@ -8828,7 +8832,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:681
+#: Miradi/source/org/miradi/main/EAM.java:676
 msgid "Wintitle|Information"
 msgstr "Information"
 
@@ -30079,9 +30083,6 @@ msgid ""
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
 "Marine___Western Tropical Atlantic___Northeast Brazil Shelf Marine___Brazil"
-
-#~ msgid "Error"
-#~ msgstr "Fehler"
 
 #~ msgid ")"
 #~ msgstr ")"
