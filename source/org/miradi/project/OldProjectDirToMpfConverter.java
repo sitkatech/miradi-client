@@ -37,17 +37,14 @@ public class OldProjectDirToMpfConverter
 		MpzProjectImporter importer = new MpzProjectImporter(mainWindow);
 		File importedFile = importer.importProject(oldProjectZipped, oldProjectDirectory.getName());
 
-		if (ZipUtilities.compare(new ZipFile(oldProjectZipped), oldProjectDirectory, oldProjectDirectory.getName()))
-		{
-			DirectoryUtils.deleteEntireDirectoryTree(oldProjectDirectory);
-		}
-		else
+		if (!ZipUtilities.compare(new ZipFile(oldProjectZipped), oldProjectDirectory, oldProjectDirectory.getName()))
 		{
 			final String errorMessage = EAM.text("Mpz to Mpf data conversion failed");
 			EAM.errorDialog(errorMessage);
 			throw new RuntimeException(errorMessage);
 		}
-		
+
+		DirectoryUtils.deleteEntireDirectoryTree(oldProjectDirectory);
 		return importedFile;
 	}
 }
