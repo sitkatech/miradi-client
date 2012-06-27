@@ -57,7 +57,7 @@ public class ZipUtilities
 
 	private static Vector<String> extractOnlyProjectPaths(File directory, String projectName)
 	{
-		HashSet<File> allFiles = FileUtilities.getAllFilePaths(directory);
+		HashSet<File> allFiles = FileUtilities.getAllRecursiveFilePaths(directory);
 		Vector<String> projectPaths = new Vector<String>();
 		for (File file : allFiles)
 		{
