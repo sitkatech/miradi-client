@@ -241,7 +241,7 @@ public class FactorDeleteHelper
 
 	private boolean canReferToIndicators(Factor factorToDelete)
 	{
-		return factorToDelete.isTarget() || factorToDelete.canHaveIndicators();
+		return factorToDelete.isTarget() || factorToDelete.canDirectlyOwnIndicators();
 	}
 
 	private void deleteTargetAnnotations(Factor factorToDelete) throws Exception

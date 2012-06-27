@@ -145,7 +145,7 @@ public class Task extends Factor
 	}
 	
 	@Override
-	public boolean canHaveIndicators()
+	public boolean canDirectlyOwnIndicators()
 	{
 		return false;
 	}

@@ -105,7 +105,7 @@ abstract public class AbstractTarget extends Factor
 	}
 
 	@Override
-	public boolean canHaveIndicators()
+	public boolean canDirectlyOwnIndicators()
 	{
 		if (isViabilityModeTNC())
 			return false;

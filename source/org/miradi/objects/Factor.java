@@ -280,12 +280,12 @@ abstract public class Factor extends BaseObject
 			return canHaveObjectives();
 		
 		if (Indicator.is(type))
-			return canHaveIndicators();
+			return canDirectlyOwnIndicators();
 		
 		return false;
 	}
 	
-	public boolean canHaveIndicators()
+	public boolean canDirectlyOwnIndicators()
 	{
 		return true;
 	}
