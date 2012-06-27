@@ -101,7 +101,7 @@ public class ThreatTargetVirtualLinkHelper
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return EAM.getErrorValue();
+			return EAM.getCellTextWhenException();
 		}
 	}
 	

@@ -96,7 +96,7 @@ public class ProgressPercentTableModel extends EditableObjectRefsTableModel
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return EAM.getErrorValue();
+			return EAM.getCellTextWhenException();
 		}
 	}
 
