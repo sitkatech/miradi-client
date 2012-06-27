@@ -305,6 +305,11 @@ public class Translation
 	{
 		return EAM.text("Not Specified");
 	}
+	
+	public static String getCellTextWhenException()
+	{
+		return EAM.text("Error");
+	}
 
 	public final static String DEFAULT_LANGUAGE_CODE = "en";
 	public final static String TAB_SUBSTITUTE = "___";

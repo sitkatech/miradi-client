@@ -36,6 +36,7 @@ import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.utils.ThreatStressRatingHelper;
+import org.miradi.utils.Translation;
 import org.miradi.utils.Utility;
 
 public class ThreatTargetVirtualLinkHelper
@@ -101,7 +102,7 @@ public class ThreatTargetVirtualLinkHelper
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return EAM.getCellTextWhenException();
+			return Translation.getCellTextWhenException();
 		}
 	}
 	

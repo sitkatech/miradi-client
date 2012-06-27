@@ -33,6 +33,7 @@ import org.miradi.questions.ChoiceItemBaseObjectWrapper;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
+import org.miradi.utils.Translation;
 
 public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 {
@@ -104,7 +105,7 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return EAM.getCellTextWhenException();
+			return Translation.getCellTextWhenException();
 		}
 	}
 	
