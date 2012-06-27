@@ -29,7 +29,7 @@ import java.util.HashSet;
 
 public class FileUtilities
 {
-	public static HashSet<File> getAllFilePaths(File startDirectory)
+	public static HashSet<File> getAllRecursiveFilePaths(File startDirectory)
 	{
 		HashSet<File> allFilePaths = new HashSet<File>();
 		File[] currentDirChildren = startDirectory.listFiles();
@@ -37,7 +37,7 @@ public class FileUtilities
 		{
 			File childFile = currentDirChildren[index];
 			if (childFile.isDirectory())
-				allFilePaths.addAll(getAllFilePaths(childFile));
+				allFilePaths.addAll(getAllRecursiveFilePaths(childFile));
 			else
 				allFilePaths.add(childFile);
 		}
