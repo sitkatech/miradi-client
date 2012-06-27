@@ -51,7 +51,7 @@ public class ScopeBox extends Factor
 	}
 
 	@Override
-	public boolean canHaveIndicators()
+	public boolean canDirectlyOwnIndicators()
 	{
 		return false;
 	}

@@ -39,7 +39,7 @@ public class TreeNodeCreateIndicatorDoer extends AbstractTreeCreateAnnotationDoe
 	@Override
 	protected boolean isAvailableForFactor(Factor factor)
 	{
-		return factor.canHaveIndicators();
+		return factor.canDirectlyOwnIndicators();
 	}
 
 	@Override

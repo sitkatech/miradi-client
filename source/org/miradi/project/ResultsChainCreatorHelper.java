@@ -331,7 +331,7 @@ public class ResultsChainCreatorHelper
 		getProject().executeCommand(createCommand);
 		
 		ORef newlyCreatedRef = createCommand.getObjectRef();
-		if (factor.canHaveIndicators())
+		if (factor.canDirectlyOwnIndicators())
 			transferAnnotationsToNewFactor(factor.getRef(), newlyCreatedRef, Factor.TAG_INDICATOR_IDS);
 		
 		if (factor.canHaveObjectives())
