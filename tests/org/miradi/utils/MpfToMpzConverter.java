@@ -51,7 +51,6 @@ public class MpfToMpzConverter
 		String contents = UnicodeReader.getFileContents(mpfFile);
 		final UnicodeStringReader reader = new UnicodeStringReader(contents);
 		load(reader);
-	
 		createZipFile(mpzFileToSaveTo);
 	}
 
