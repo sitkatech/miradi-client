@@ -1151,6 +1151,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(kea, KeyEcologicalAttribute.TAG_INDICATOR_IDS, indicatorIds);
 	}
 	
+	public void addThresholdWithXmlEscapedData(Indicator indicator) throws Exception
+	{
+		CodeToUserStringMap threshold = new CodeToUserStringMap();
+		threshold.putUserString(StatusQuestion.POOR, "&gt;50%");
+		fillObjectUsingCommand(indicator, Indicator.TAG_THRESHOLDS_MAP, threshold.toJsonString());
+	}
+	
 	public void populateIndicator(Indicator indicator) throws Exception
 	{
 		fillObjectUsingCommand(indicator, Indicator.TAG_LABEL, "Some Indicator Label");

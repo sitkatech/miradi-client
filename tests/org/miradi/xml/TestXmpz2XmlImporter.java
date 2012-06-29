@@ -23,7 +23,6 @@ package org.miradi.xml;
 import org.martus.util.UnicodeStringWriter;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Goal;
@@ -32,7 +31,6 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.ProjectForTesting;
-import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.PointList;
@@ -74,7 +72,7 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 		AbstractTarget target = getProject().createAndPopulateHumanWelfareTarget();
 		Strategy strategy = getProject().createStrategy();
 		Indicator indicator = getProject().createAndPopulateIndicator(strategy);
-		addThresholdWithXmlEscapedData(indicator);
+		getProject().addThresholdWithXmlEscapedData(indicator);
 		Task task = getProject().createAndPopulateTask(indicator, "TASK");
 		Goal goal = getProject().createAndPopulateGoal(target);
 		getProject().addProgressReport(task);
@@ -91,13 +89,6 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 		validateUsingStringWriter();
 	}
 	
-	private void addThresholdWithXmlEscapedData(Indicator indicator) throws Exception
-	{
-		CodeToUserStringMap threshold = new CodeToUserStringMap();
-		threshold.putUserString(StatusQuestion.POOR, "&gt;50%");
-		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_THRESHOLDS_MAP, threshold.toJsonString());
-	}
-
 	private ProjectForTesting validateUsingStringWriter() throws Exception
 	{
 		UnicodeStringWriter projectWriter = createWriter(getProject());
