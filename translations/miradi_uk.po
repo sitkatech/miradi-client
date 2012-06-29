@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-29 16:12-0500\n"
+"POT-Creation-Date: 2012-06-29 16:56-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -3585,7 +3585,7 @@ msgstr "Спеціальне знання"
 msgid "Export"
 msgstr "Експорт"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:53
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:58
 msgid "Export MPZ"
 msgstr ""
 

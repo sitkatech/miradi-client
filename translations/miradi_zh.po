@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-29 16:12-0500\n"
+"POT-Creation-Date: 2012-06-29 16:56-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -3430,7 +3430,7 @@ msgstr "专家知识"
 msgid "Export"
 msgstr "导出 "
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:53
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:58
 msgid "Export MPZ"
 msgstr ""
 
