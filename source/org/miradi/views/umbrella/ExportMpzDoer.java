@@ -24,17 +24,13 @@ import java.io.File;
 
 import org.miradi.main.EAM;
 import org.miradi.utils.MiradiFileSaveChooser;
+import org.miradi.utils.MpfFileFilter;
+import org.miradi.utils.MpfToMpzConverter;
 import org.miradi.utils.MpzFileChooser;
 import org.miradi.utils.ProgressInterface;
 
 public class ExportMpzDoer extends AbstractFileSaverDoer
 {
-	@Override
-	public boolean isAvailable()
-	{
-		return false;
-	}
-	
 	@Override
 	protected MiradiFileSaveChooser createFileChooser()
 	{
@@ -44,10 +40,9 @@ public class ExportMpzDoer extends AbstractFileSaverDoer
 	@Override
 	protected boolean doWork(File destinationFile, ProgressInterface progressInterface) throws Exception
 	{
-		//FIXME - testing to see if this fixes build
-//		MpfToMpzConverter converter = new MpfToMpzConverter(getProject().getFilename());
-//		File currentMpfFile = new File(EAM.getHomeDirectory(), getProject().getFilename() + MpfFileFilter.EXTENSION);
-//		converter.convert(currentMpfFile, destinationFile);
+		MpfToMpzConverter converter = new MpfToMpzConverter(getProject().getFilename());
+		File currentMpfFile = new File(EAM.getHomeDirectory(), getProject().getFilename() + MpfFileFilter.EXTENSION);
+		converter.convert(currentMpfFile, destinationFile);
 		
 		return true;
 	}
