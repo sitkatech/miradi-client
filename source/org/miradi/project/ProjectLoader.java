@@ -274,11 +274,17 @@ public class ProjectLoader
 
 	private void loadCreateObjectLine(String line) throws Exception
 	{
+		ORef ref = extractRefFromLine(line);
+		getProject().createObject(ref);
+	}
+
+	public static ORef extractRefFromLine(String line)
+	{
 		StringTokenizer tokenizer = new StringTokenizer(line);
 		/*String command =*/ tokenizer.nextToken();
 		String refString = tokenizer.nextToken();
-		ORef ref = extractRef(refString);
-		getProject().createObject(ref);
+		
+		return extractRef(refString);
 	}
 
 	private void loadUpdateObjectline(String line) throws Exception
@@ -296,7 +302,7 @@ public class ProjectLoader
 		}
 	}
 
-	public ORef extractRef(String refString)
+	public static ORef extractRef(String refString)
 	{
 		String[] refParts = refString.split(":");
 		int objectType = Integer.parseInt(refParts[0]);
@@ -362,7 +368,7 @@ public class ProjectLoader
 	private UnicodeReader reader;
 	private Project project;
 	
-	private static final String EQUALS_DELIMITER_TAB_PREFIXED = " \t=";
+	public static final String EQUALS_DELIMITER_TAB_PREFIXED = " \t=";
 	private static final String EQUALS_DELIMITER_NEWLINE_POSTFIXED = "=\n";
-	private static final String EQUALS_DELIMITER = "=";
+	public static final String EQUALS_DELIMITER = "=";
 }

@@ -54,7 +54,7 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		project = projectToUse;
 	}
 	
-	public static void saveProject(Project projectToSave, File fileToSaveTo) throws Exception
+	public static String saveProject(Project projectToSave, File fileToSaveTo) throws Exception
 	{
 		UnicodeStringWriter stringWriter = UnicodeStringWriter.create();
 		saveProject(projectToSave, stringWriter);
@@ -62,6 +62,8 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		String contents = stringWriter.toString();
 		fileWriter.write(contents);
 		fileWriter.close();
+		
+		return stringWriter.toString();
 	}
 
 	public static void saveProject(final Project projectToUse, final UnicodeStringWriter writerToUse) throws Exception

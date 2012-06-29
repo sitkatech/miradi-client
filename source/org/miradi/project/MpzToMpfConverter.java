@@ -553,7 +553,7 @@ public class MpzToMpfConverter
 		return zipFile;
 	}
 	
-	private static int REQUIRED_VERSION = 61;
+	public static int REQUIRED_VERSION = 61;
 	private ZipFile zipFile;
 	private String projectPrefix;
 	private Project project;
