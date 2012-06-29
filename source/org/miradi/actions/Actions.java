@@ -181,6 +181,7 @@ public class Actions
 		registerAction(new ActionSaveProjectAs(mainWindow));
 		registerAction(new ActionHowToSave(mainWindow));
 		registerAction(new ActionImportMpz(mainWindow));
+		registerAction(new ActionExportMpz(mainWindow));
 		registerAction(new ActionImportCpmz(mainWindow));
 		registerAction(new ActionExportCpmz(mainWindow));
 		registerAction(new ActionImportXmpz(mainWindow));
