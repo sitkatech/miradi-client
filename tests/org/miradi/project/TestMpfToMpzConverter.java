@@ -23,8 +23,15 @@ package org.miradi.project;
 import java.io.File;
 
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objects.AbstractTarget;
+import org.miradi.objects.Goal;
+import org.miradi.objects.Indicator;
+import org.miradi.objects.Strategy;
+import org.miradi.objects.Task;
 import org.miradi.utils.MpfToMpzConverter;
 import org.miradi.utils.NullProgressMeter;
+import org.miradi.utils.PointList;
+import org.miradi.views.diagram.TestLinkBendPointsMoveHandler;
 
 public class TestMpfToMpzConverter extends TestCaseWithProject
 {
@@ -41,6 +48,25 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 	public void testConvertingFullProject() throws Exception
 	{
 		getProject().populateEverything();
+		
+		AbstractTarget target = getProject().createAndPopulateHumanWelfareTarget();
+		Strategy strategy = getProject().createStrategy();
+		Indicator indicator = getProject().createAndPopulateIndicator(strategy);
+		getProject().addThresholdWithXmlEscapedData(indicator);
+		Task task = getProject().createAndPopulateTask(indicator, "TASK");
+		Goal goal = getProject().createAndPopulateGoal(target);
+		getProject().addProgressReport(task);
+		getProject().addProgressReport(indicator);
+		getProject().addProgressReport(strategy);
+		getProject().addProgressPercent(goal);
+		getProject().addExpenseWithValue(strategy);
+		getProject().addResourceAssignment(strategy);
+		getProject().createandpopulateThreatReductionResult();
+		
+		PointList bendPointList = TestLinkBendPointsMoveHandler.createBendPointList();
+		getProject().createLinkCellWithBendPoints(bendPointList);
+		getProject().createAndPopulateIndicator(strategy);
+		
 		verifyProject();
 	}
 
