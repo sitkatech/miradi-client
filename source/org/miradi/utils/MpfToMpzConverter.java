@@ -44,7 +44,6 @@ public class MpfToMpzConverter
 {
 	public MpfToMpzConverter()
 	{
-		
 		refToJsonMap = new HashMap<ORef, EnhancedJsonObject>();
 	}
 	
@@ -84,13 +83,10 @@ public class MpfToMpzConverter
 			Collections.sort(sortedKeys);
 			for (ORef refAsKey : sortedKeys)
 			{
-				final String objectDir = projectName + "/json/objects-" + refAsKey.getObjectType() + "/";
+				final String objectDir = "/json/objects-" + refAsKey.getObjectType() + "/";
 				final String zipEntryName = objectDir + refAsKey.getObjectId();
-				ZipEntry entry = new ZipEntry(zipEntryName);
-				zipOutputStream.putNextEntry(entry);
 				EnhancedJsonObject value = refToJsonMap.get(refAsKey);
-				zipOutputStream.write(getUtf8Bytes(value.toString()));
-				zipOutputStream.closeEntry();
+				writeZipEntry(zipOutputStream, zipEntryName, value.toString());
 			}
 			
 			addManifestFiles(zipOutputStream);
