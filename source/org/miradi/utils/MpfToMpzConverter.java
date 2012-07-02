@@ -128,6 +128,7 @@ public class MpfToMpzConverter
 			ZipEntry entry = new ZipEntry(manifestPath);
 			zipOutputStream.putNextEntry(entry);
 			zipOutputStream.write(getUtf8Bytes(objectManifest.toJson().toString()));
+			zipOutputStream.closeEntry();
 		}
 	}
 
