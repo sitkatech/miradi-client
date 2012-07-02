@@ -222,9 +222,9 @@ public class MpfToMpzConverter
 		ORef ref = ProjectLoader.extractRef(refString);
 		String tag = tokenizer.nextToken(ProjectLoader.EQUALS_DELIMITER_TAB_PREFIXED);
 		EnhancedJsonObject jsonObjects = refToJsonMap.get(ref);
-		String value = StringUtilities.substringAfter(line, ProjectLoader.EQUALS_DELIMITER);
-		value = HtmlUtilities.convertHtmlToPlainText(value);
-		jsonObjects.put(tag, value);
+		String json = StringUtilities.substringAfter(line, ProjectLoader.EQUALS_DELIMITER);
+		json = HtmlUtilities.convertHtmlToPlainText(json);
+		jsonObjects.put(tag, json);
 		refToJsonMap.put(ref, jsonObjects);
 	}
 	
