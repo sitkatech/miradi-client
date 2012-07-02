@@ -23,6 +23,7 @@ package org.miradi.utils;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.StringTokenizer;
@@ -80,6 +81,7 @@ public class MpfToMpzConverter
 
 			Set<ORef> keys = refToJsonMap.keySet();
 			Vector<ORef> sortedKeys = new Vector<ORef>(keys);
+			Collections.sort(sortedKeys);
 			for (ORef refAsKey : sortedKeys)
 			{
 				final String objectDir = projectName + "/json/objects-" + refAsKey.getObjectType() + "/";
@@ -115,6 +117,8 @@ public class MpfToMpzConverter
 		}
 		
 		Set<Integer> objectTypes = typeToReflistMap.keySet();
+		Vector<Integer> sortedObjectTypes = new Vector<Integer>(objectTypes);
+		Collections.sort(sortedObjectTypes);
 		for (Integer objectType : objectTypes)
 		{
 			
