@@ -124,11 +124,8 @@ public class MpfToMpzConverter
 			
 			ORefList ids = typeToReflistMap.get(objectType);
 			ObjectManifest objectManifest = createObjectManifest(ids);
-			final String manifestPath = projectName + "/json/objects-" + objectType + "/manifest";
-			ZipEntry entry = new ZipEntry(manifestPath);
-			zipOutputStream.putNextEntry(entry);
-			zipOutputStream.write(getUtf8Bytes(objectManifest.toJson().toString()));
-			zipOutputStream.closeEntry();
+			final String string = objectManifest.toJson().toString();
+			writeZipEntry(zipOutputStream, projectName + "/json/objects-" + objectType + "/manifest", string);
 		}
 	}
 
@@ -145,11 +142,8 @@ public class MpfToMpzConverter
 
 	private void addProjectEntry(ZipOutputStream zipOutputStream) throws Exception
 	{
-		ZipEntry versionEntry = new ZipEntry(projectName + "/json/project");
-		zipOutputStream.putNextEntry(versionEntry);
 		final String zipEntryValue = new String("{\"ProjectMetadataId\":0,\"HighestUsedNodeId\":" + findHighestId() + "}");
-		zipOutputStream.write(getUtf8Bytes(zipEntryValue));
-		zipOutputStream.closeEntry();
+		writeZipEntry(zipOutputStream, projectName + "/json/project", zipEntryValue);
 	}
 
 	private String findHighestId()
@@ -166,10 +160,15 @@ public class MpfToMpzConverter
 
 	private void addVersionEntry(ZipOutputStream zipOutputStream) throws Exception
 	{
-		ZipEntry versionEntry = new ZipEntry(projectName + "/json/version");
-		zipOutputStream.putNextEntry(versionEntry);
 		String versionString = "{\"Version\":" + Integer.toString(MpzToMpfConverter.REQUIRED_VERSION) + "}";
-		zipOutputStream.write(getUtf8Bytes(versionString));
+		writeZipEntry(zipOutputStream, projectName + "/json/version", versionString);
+	}
+
+	private void writeZipEntry(ZipOutputStream zipOutputStream, final String fileName, String zipContent) throws Exception
+	{
+		ZipEntry versionEntry = new ZipEntry(fileName);
+		zipOutputStream.putNextEntry(versionEntry);
+		zipOutputStream.write(getUtf8Bytes(zipContent));
 		zipOutputStream.closeEntry();
 	}
 
