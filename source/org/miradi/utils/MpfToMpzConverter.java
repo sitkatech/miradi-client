@@ -159,7 +159,7 @@ public class MpfToMpzConverter
 		return Integer.toString(highestId);
 	}
 
-	private void addVersionEntry(ZipOutputStream zipOutputStream) throws IOException
+	private void addVersionEntry(ZipOutputStream zipOutputStream) throws Exception
 	{
 		ZipEntry versionEntry = new ZipEntry(projectName + "/json/version");
 		zipOutputStream.putNextEntry(versionEntry);
@@ -223,9 +223,9 @@ public class MpfToMpzConverter
 		refToJsonMap.put(ref, jsonObjects);
 	}
 	
-	private byte[] getUtf8Bytes(final String string)
+	private byte[] getUtf8Bytes(final String string) throws Exception
 	{
-		return string.getBytes();
+		return string.getBytes("UTF-8");
 	}
 	
 	private String projectName;
