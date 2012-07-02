@@ -70,7 +70,7 @@ public class MpfToMpzConverter
 		}
 	}
 
-	public void writeZipStream(final FileOutputStream fileOutputStream) throws Exception
+	private void writeZipStream(final FileOutputStream fileOutputStream) throws Exception
 	{
 		ZipOutputStream zipOutputStream = new ZipOutputStream(fileOutputStream);
 		try
