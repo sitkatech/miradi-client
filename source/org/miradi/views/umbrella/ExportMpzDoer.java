@@ -40,9 +40,9 @@ public class ExportMpzDoer extends AbstractFileSaverDoer
 	@Override
 	protected boolean doWork(File destinationFile, ProgressInterface progressInterface) throws Exception
 	{
-		MpfToMpzConverter converter = new MpfToMpzConverter(getProject().getFilename());
+		MpfToMpzConverter converter = new MpfToMpzConverter();
 		File currentMpfFile = new File(EAM.getHomeDirectory(), getProject().getFilename() + MpfFileFilter.EXTENSION);
-		converter.convert(currentMpfFile, destinationFile);
+		converter.convert(currentMpfFile, destinationFile, getProject().getFilename());
 		
 		return true;
 	}
