@@ -102,23 +102,23 @@ public class MpfToMpzConverter
 	
 	private void addManifestFiles(ZipOutputStream zipOutputStream) throws Exception
 	{
-		HashMap<Integer, ORefList> typeToRefsString = new HashMap<Integer, ORefList>();
+		HashMap<Integer, ORefList> typeToReflistMap = new HashMap<Integer, ORefList>();
 		Set<ORef> refs = refToJsonMap.keySet();
 		for (ORef ref : refs)
 		{
-			ORefList refsForType = typeToRefsString.get(ref.getObjectType());
+			ORefList refsForType = typeToReflistMap.get(ref.getObjectType());
 			if (refsForType == null)
 				refsForType = new ORefList();
 			
 			refsForType.add(ref);
-			typeToRefsString.put(ref.getObjectType(), refsForType);
+			typeToReflistMap.put(ref.getObjectType(), refsForType);
 		}
 		
-		Set<Integer> objectTypes = typeToRefsString.keySet();
+		Set<Integer> objectTypes = typeToReflistMap.keySet();
 		for (Integer objectType : objectTypes)
 		{
 			
-			ORefList ids = typeToRefsString.get(objectType);
+			ORefList ids = typeToReflistMap.get(objectType);
 			ObjectManifest objectManifest = createObjectManifest(ids);
 			final String manifestPath = projectName + "/json/objects-" + objectType + "/manifest";
 			ZipEntry entry = new ZipEntry(manifestPath);
