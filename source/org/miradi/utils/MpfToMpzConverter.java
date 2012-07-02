@@ -87,7 +87,7 @@ public class MpfToMpzConverter
 				ZipEntry entry = new ZipEntry(zipEntryName);
 				zipOutputStream.putNextEntry(entry);
 				EnhancedJsonObject value = refToJsonMap.get(refAsKey);
-				zipOutputStream.write(value.toString().getBytes());
+				zipOutputStream.write(getUtf8Bytes(value.toString()));
 				zipOutputStream.closeEntry();
 			}
 			
@@ -123,7 +123,7 @@ public class MpfToMpzConverter
 			final String manifestPath = projectName + "/json/objects-" + objectType + "/manifest";
 			ZipEntry entry = new ZipEntry(manifestPath);
 			zipOutputStream.putNextEntry(entry);
-			zipOutputStream.write(objectManifest.toJson().toString().getBytes());
+			zipOutputStream.write(getUtf8Bytes(objectManifest.toJson().toString()));
 		}
 	}
 
@@ -143,7 +143,7 @@ public class MpfToMpzConverter
 		ZipEntry versionEntry = new ZipEntry(projectName + "/json/project");
 		zipOutputStream.putNextEntry(versionEntry);
 		final String zipEntryValue = new String("{\"ProjectMetadataId\":0,\"HighestUsedNodeId\":" + findHighestId() + "}");
-		zipOutputStream.write(zipEntryValue.getBytes());
+		zipOutputStream.write(getUtf8Bytes(zipEntryValue));
 		zipOutputStream.closeEntry();
 	}
 
@@ -164,7 +164,7 @@ public class MpfToMpzConverter
 		ZipEntry versionEntry = new ZipEntry(projectName + "/json/version");
 		zipOutputStream.putNextEntry(versionEntry);
 		String versionString = "{\"Version\":" + Integer.toString(MpzToMpfConverter.REQUIRED_VERSION) + "}";
-		zipOutputStream.write(versionString.getBytes());
+		zipOutputStream.write(getUtf8Bytes(versionString));
 		zipOutputStream.closeEntry();
 	}
 
@@ -221,6 +221,11 @@ public class MpfToMpzConverter
 		value = HtmlUtilities.convertHtmlToPlainText(value);
 		jsonObjects.put(tag, value);
 		refToJsonMap.put(ref, jsonObjects);
+	}
+	
+	private byte[] getUtf8Bytes(final String string)
+	{
+		return string.getBytes();
 	}
 	
 	private String projectName;
