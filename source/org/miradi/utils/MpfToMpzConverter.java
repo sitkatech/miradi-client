@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.StringTokenizer;
+import java.util.Vector;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -78,7 +79,8 @@ public class MpfToMpzConverter
 			addProjectEntry(zipOutputStream);
 
 			Set<ORef> keys = refToJsonMap.keySet();
-			for (ORef refAsKey : keys)
+			Vector<ORef> sortedKeys = new Vector<ORef>(keys);
+			for (ORef refAsKey : sortedKeys)
 			{
 				final String objectDir = projectName + "/json/objects-" + refAsKey.getObjectType() + "/";
 				final String zipEntryName = objectDir + refAsKey.getObjectId();
