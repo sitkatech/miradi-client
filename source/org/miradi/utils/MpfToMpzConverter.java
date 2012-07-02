@@ -40,14 +40,15 @@ import org.miradi.project.ProjectLoader;
 
 public class MpfToMpzConverter
 {
-	public MpfToMpzConverter(String projectNameToUse)
+	public MpfToMpzConverter()
 	{
-		projectName = projectNameToUse;
+		
 		refToJsonMap = new HashMap<ORef, EnhancedJsonObject>();
 	}
 	
-	public void convert(File mpfFile, File mpzFileToSaveTo) throws Exception
+	public void convert(File mpfFile, File mpzFileToSaveTo, String projectNameToUse) throws Exception
 	{
+		projectName = projectNameToUse;
 		String contents = UnicodeReader.getFileContents(mpfFile);
 		final UnicodeStringReader reader = new UnicodeStringReader(contents);
 		load(reader);
