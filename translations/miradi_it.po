@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-29 17:02-0500\n"
+"POT-Creation-Date: 2012-07-03 13:26-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -1697,6 +1697,10 @@ msgstr "Rimuovi la Risorsa"
 msgid "Action|Maps"
 msgstr "Mappe"
 
+#: Miradi/source/org/miradi/actions/ActionExportMpz.java:35
+msgid "Action|Miradi 3.3 MPZ Project File"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/views/ActionViewMonitoring.java:35
 msgid "Action|Monitoring Plan"
 msgstr "Piano di Monitoraggio"
@@ -1726,7 +1730,6 @@ msgstr "Sposta punto a destra"
 msgid "Action|Nudge Item Up"
 msgstr "Sposta punto in alto"
 
-#: Miradi/source/org/miradi/actions/ActionExportMpz.java:35
 #: Miradi/source/org/miradi/actions/ActionImportMpz.java:35
 msgid "Action|Old Miradi (MPZ) Project File"
 msgstr ""
