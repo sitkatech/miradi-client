@@ -77,7 +77,7 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 		try
 		{
 			String projectAsString = ProjectSaver.saveProject(getProject(), temporaryMpfFile);
-			new MpfToMpzConverter().convert(temporaryMpfFile, temporaryMpzFile, getProject().getFilename());
+			new MpfToMpzConverter(getProject()).convert(temporaryMpfFile, temporaryMpzFile, getProject().getFilename());
 			String mpf = MpzToMpfConverter.convert(temporaryMpzFile, new NullProgressMeter());
 			mpf = stripTimeStamp(mpf);
 			projectAsString = stripTimeStamp(projectAsString);
