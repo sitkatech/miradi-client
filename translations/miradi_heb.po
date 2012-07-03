@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-29 17:02-0500\n"
+"POT-Creation-Date: 2012-07-03 13:26-0500\n"
 "PO-Revision-Date: 2011-03-17 08:35-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1512,6 +1512,10 @@ msgstr ""
 msgid "Action|Maps"
 msgstr ""
 
+#: Miradi/source/org/miradi/actions/ActionExportMpz.java:35
+msgid "Action|Miradi 3.3 MPZ Project File"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/views/ActionViewMonitoring.java:35
 msgid "Action|Monitoring Plan"
 msgstr ""
@@ -1541,7 +1545,6 @@ msgstr ""
 msgid "Action|Nudge Item Up"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionExportMpz.java:35
 #: Miradi/source/org/miradi/actions/ActionImportMpz.java:35
 msgid "Action|Old Miradi (MPZ) Project File"
 msgstr ""
