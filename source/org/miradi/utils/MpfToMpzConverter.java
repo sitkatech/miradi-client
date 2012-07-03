@@ -38,12 +38,16 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.AbstractMiradiProjectSaver;
 import org.miradi.project.MpzToMpfConverter;
+import org.miradi.project.Project;
 import org.miradi.project.ProjectLoader;
+import org.miradi.schemas.AbstractFieldSchema;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class MpfToMpzConverter
 {
-	public MpfToMpzConverter()
+	public MpfToMpzConverter(Project projectToUse)
 	{
+		project = projectToUse;
 		refToJsonMap = new HashMap<ORef, EnhancedJsonObject>();
 		projectInfoJson = new EnhancedJsonObject();
 	}
@@ -188,9 +192,9 @@ public class MpfToMpzConverter
 		if (line.startsWith(AbstractMiradiProjectSaver.CREATE_OBJECT_CODE))
 		{
 			ORef ref = ProjectLoader.extractRefFromLine(line);
-			EnhancedJsonObject jsonObjects = new EnhancedJsonObject();
-			jsonObjects.putId("Id", ref.getObjectId());
-			refToJsonMap.put(ref, jsonObjects);
+			EnhancedJsonObject jsonObject = createInitializedJson(ref.getObjectType());
+			jsonObject.putId("Id", ref.getObjectId());
+			refToJsonMap.put(ref, jsonObject);
 		}
 		else if (line.startsWith(AbstractMiradiProjectSaver.UPDATE_OBJECT_CODE))
 		{
@@ -202,6 +206,18 @@ public class MpfToMpzConverter
 		}
 	}
 	
+	private EnhancedJsonObject createInitializedJson(int objectType)
+	{
+		EnhancedJsonObject json = new EnhancedJsonObject();
+		BaseObjectSchema schema = getProject().getPool(objectType).createBaseObjectSchema(getProject());
+		for(AbstractFieldSchema fieldSchema : schema)
+		{
+			json.put(fieldSchema.getTag(), "");
+		}
+		
+		return json;
+	}
+
 	private void loadProjectInformation(String line)
 	{
 		String[] splitLine = line.split(AbstractMiradiProjectSaver.TAB);
@@ -229,7 +245,13 @@ public class MpfToMpzConverter
 	{
 		return string.getBytes("UTF-8");
 	}
+
+	private Project getProject()
+	{
+		return project;
+	}
 	
+	private Project project;
 	private String projectName;
 	private HashMap<ORef, EnhancedJsonObject> refToJsonMap;
 	private EnhancedJsonObject projectInfoJson;
