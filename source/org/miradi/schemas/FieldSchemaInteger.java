@@ -36,4 +36,10 @@ public class FieldSchemaInteger extends AbstractFieldSchema
 	{
 		return new IntegerData(getTag());
 	}
+	
+	@Override
+	public boolean isIntegerFieldSchema()
+	{
+		return true;
+	}
 }
