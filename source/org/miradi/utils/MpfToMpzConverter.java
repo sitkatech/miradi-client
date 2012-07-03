@@ -212,7 +212,11 @@ public class MpfToMpzConverter
 		BaseObjectSchema schema = getProject().getPool(objectType).createBaseObjectSchema(getProject());
 		for(AbstractFieldSchema fieldSchema : schema)
 		{
-			json.put(fieldSchema.getTag(), "");
+			String defaultValue = "";
+			if (fieldSchema.isIntegerFieldSchema())
+				defaultValue = Integer.toString(0);
+			
+			json.put(fieldSchema.getTag(), defaultValue);
 		}
 		
 		return json;

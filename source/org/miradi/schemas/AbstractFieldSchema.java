@@ -55,6 +55,11 @@ abstract public class AbstractFieldSchema
 		return getTag();
 	}
 	
+	public boolean isIntegerFieldSchema()
+	{
+		return false;
+	}
+	
 	abstract public ObjectData createField(final BaseObject baseObjectToUse);
 
 	private String tag;
