@@ -59,7 +59,6 @@ import org.miradi.objectpools.ObjectTreeTableConfigurationPool;
 import org.miradi.objectpools.ObjectivePool;
 import org.miradi.objectpools.OrganizationPool;
 import org.miradi.objectpools.OtherNotableSpeciesPool;
-import org.miradi.objectpools.PoolWithIdAssigner;
 import org.miradi.objectpools.ProgressPercentPool;
 import org.miradi.objectpools.ProgressReportPool;
 import org.miradi.objectpools.ProjectMetadataPool;
@@ -217,7 +216,7 @@ public class ObjectManager
 		return diagramChainWalker;
 	}
 
-	private void addNormalPool(PoolWithIdAssigner pool, String objectName)
+	private void addNormalPool(BaseObjectPool pool, String objectName)
 	{
 		BaseObjectInformation baseObjectInformation = new BaseObjectInformation(pool, objectName);
 		pools.put(new Integer(pool.getObjectType()), baseObjectInformation);
@@ -228,7 +227,7 @@ public class ObjectManager
 		return getProject().getNormalIdAssigner();
 	}
 
-	public EAMObjectPool getPool(int objectType)
+	public BaseObjectPool getPool(int objectType)
 	{
 		if (pools.containsKey(objectType))
 		{
@@ -341,7 +340,7 @@ public class ObjectManager
 	public BaseId createObject(int objectType, BaseId objectId) throws Exception
 	{
 		BaseId createdId = BaseId.INVALID;
-		BaseObjectPool pool = (BaseObjectPool)getPool(objectType);
+		BaseObjectPool pool = getPool(objectType);
 		if(pool == null)
 			throw new RuntimeException("No pool for " + objectType);
 		BaseObject created = pool.createObject(this, objectId);
@@ -536,13 +535,13 @@ public class ObjectManager
 
 	private class BaseObjectInformation 
 	{
-		private BaseObjectInformation(PoolWithIdAssigner poolToUse, String objectNameToUse)
+		private BaseObjectInformation(BaseObjectPool poolToUse, String objectNameToUse)
 		{
 			pool = poolToUse;
 			objectName = objectNameToUse;
 		}
 		
-		private PoolWithIdAssigner getPool()
+		private BaseObjectPool getPool()
 		{
 			return pool;
 		}
@@ -552,7 +551,7 @@ public class ObjectManager
 			return objectName;
 		}
 		
-		private PoolWithIdAssigner pool;
+		private BaseObjectPool pool;
 		private String objectName;
 	}
 	

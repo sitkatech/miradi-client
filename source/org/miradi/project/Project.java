@@ -51,6 +51,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.PlanningPreferencesChangeHandler;
 import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.objecthelpers.TimePeriodCostsMapsCache;
+import org.miradi.objectpools.BaseObjectPool;
 import org.miradi.objectpools.ResourceAssignmentPool;
 import org.miradi.objectpools.CausePool;
 import org.miradi.objectpools.ConceptualModelDiagramPool;
@@ -203,7 +204,7 @@ public class Project
 		return objectManager;
 	}
 	
-	public EAMObjectPool getPool(int objectType)
+	public BaseObjectPool getPool(int objectType)
 	{
 		return objectManager.getPool(objectType);
 	}
