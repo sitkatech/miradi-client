@@ -45,6 +45,7 @@ public class MpfToMpzConverter
 	public MpfToMpzConverter()
 	{
 		refToJsonMap = new HashMap<ORef, EnhancedJsonObject>();
+		projectInfoJson = new EnhancedJsonObject();
 	}
 	
 	public void convert(File mpfFile, File mpzFileToSaveTo, String projectNameToUse) throws Exception
@@ -138,20 +139,8 @@ public class MpfToMpzConverter
 
 	private void addProjectEntry(ZipOutputStream zipOutputStream) throws Exception
 	{
-		final String zipEntryValue = new String("{\"ProjectMetadataId\":0,\"HighestUsedNodeId\":" + findHighestId() + "}");
+		final String zipEntryValue = projectInfoJson.toString();
 		writeZipEntry(zipOutputStream, "/json/project", zipEntryValue);
-	}
-
-	private String findHighestId()
-	{
-		int highestId = -1;
-		Set<ORef> refs = refToJsonMap.keySet();
-		for (ORef ref : refs)
-		{
-			highestId = Math.max(highestId, ref.getObjectId().asInt());
-		}
-		
-		return Integer.toString(highestId);
 	}
 
 	private void addVersionEntry(ZipOutputStream zipOutputStream) throws Exception
@@ -207,8 +196,21 @@ public class MpfToMpzConverter
 		{
 			loadUpdateObjectline(line);
 		}
+		else if (line.startsWith(AbstractMiradiProjectSaver.UPDATE_PROJECT_INFO_CODE))
+		{
+			loadProjectInformation(line);
+		}
 	}
 	
+	private void loadProjectInformation(String line)
+	{
+		String[] splitLine = line.split(AbstractMiradiProjectSaver.TAB);
+		String[] tagValue = splitLine[1].split(AbstractMiradiProjectSaver.EQUALS);
+		String tag = tagValue[0];
+		String value = tagValue[1];
+		projectInfoJson.put(tag, value);
+	}
+
 	private void loadUpdateObjectline(String line) throws Exception
 	{
 		StringTokenizer tokenizer = new StringTokenizer(line);
@@ -230,4 +232,5 @@ public class MpfToMpzConverter
 	
 	private String projectName;
 	private HashMap<ORef, EnhancedJsonObject> refToJsonMap;
+	private EnhancedJsonObject projectInfoJson;
 }
