@@ -32,7 +32,7 @@ public class ActionExportMpz extends MainWindowAction
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Old Miradi (MPZ) Project File");
+		return EAM.text("Action|Miradi 3.3 MPZ Project File");
 	}
 
 	@Override
