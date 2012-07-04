@@ -36,4 +36,10 @@ public class FieldSchemaNumber extends AbstractFieldSchema
 	{
 		return new NumberData(getTag());
 	}
+	
+	@Override
+	public boolean isNumberFieldSchema()
+	{
+		return true;
+	}
 }

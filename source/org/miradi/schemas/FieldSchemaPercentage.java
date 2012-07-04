@@ -36,4 +36,10 @@ public class FieldSchemaPercentage extends AbstractFieldSchema
 	{
 		return new PercentageData(getTag());
 	}
+	
+	@Override
+	public boolean isPercentageFieldSchema()
+	{
+		return true;
+	}
 }
