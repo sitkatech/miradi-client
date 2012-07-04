@@ -140,4 +140,9 @@ abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 	{
 		return new WcsMiradiXmlValidator().isValid(inputStream);
 	}
+	
+	protected void notifyUserWhenExportingXmpz1()
+	{
+		EAM.displayHtmlWarningDialog("NOTE: This data format is good for sending to other systems or creating reports. <br/>It cannot be used to transfer data from one copy or version of Miradi to another.");
+	}
 }
