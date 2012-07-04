@@ -25,6 +25,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.Vector;
@@ -36,6 +37,9 @@ import org.martus.util.UnicodeStringReader;
 import org.miradi.legacyprojects.ObjectManifest;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.Cause;
+import org.miradi.objects.Strategy;
+import org.miradi.objects.Target;
 import org.miradi.project.AbstractMiradiProjectSaver;
 import org.miradi.project.MpzToMpfConverter;
 import org.miradi.project.Project;
@@ -210,16 +214,48 @@ public class MpfToMpzConverter
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
 		BaseObjectSchema schema = getProject().getPool(objectType).createBaseObjectSchema(getProject());
+		HashMap<String, String> tagToValueMap = new HashMap<String, String>();
 		for(AbstractFieldSchema fieldSchema : schema)
 		{
 			String defaultValue = "";
 			if (fieldSchema.isIntegerFieldSchema())
 				defaultValue = Integer.toString(0);
 			
-			json.put(fieldSchema.getTag(), defaultValue);
+			final String tag = fieldSchema.getTag();
+			tagToValueMap.put(tag, defaultValue);
+			tagToValueMap.putAll(addCustomTagValues(objectType));
+		}
+		
+		Vector<String> sortedTags = new Vector<String>(tagToValueMap.keySet());
+		Collections.sort(sortedTags);
+		for(String tag : sortedTags)
+		{
+			String value = tagToValueMap.get(tag);
+			json.put(tag, value);
 		}
 		
 		return json;
+	}
+
+	private Map<String, String> addCustomTagValues(int objectType)
+	{
+		HashMap<String, String> tagToValueMap = new HashMap<String, String>();
+		final String FACTOR_TYPE_TAG = "Type";
+		if (Target.is(objectType))
+			tagToValueMap.put(FACTOR_TYPE_TAG, "Target");
+		
+		if (Cause.is(objectType))
+			tagToValueMap.put(FACTOR_TYPE_TAG, "Cause");
+		
+		if (Strategy.is(objectType))
+			tagToValueMap.put(FACTOR_TYPE_TAG, "Strategy");
+		
+		return tagToValueMap;
+	}
+
+	public void putDefaultValue(EnhancedJsonObject json, String defaultValue, final String tag)
+	{
+		json.put(tag, defaultValue);
 	}
 
 	private void loadProjectInformation(String line)
@@ -241,7 +277,7 @@ public class MpfToMpzConverter
 		EnhancedJsonObject jsonObjects = refToJsonMap.get(ref);
 		String json = StringUtilities.substringAfter(line, ProjectLoader.EQUALS_DELIMITER);
 		json = HtmlUtilities.convertHtmlToPlainText(json);
-		jsonObjects.put(tag, json);
+		putDefaultValue(jsonObjects, json, tag);
 		refToJsonMap.put(ref, jsonObjects);
 	}
 	
