@@ -34,6 +34,7 @@ import java.util.zip.ZipOutputStream;
 
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringReader;
+import org.miradi.ids.BaseId;
 import org.miradi.legacyprojects.ObjectManifest;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -220,6 +221,9 @@ public class MpfToMpzConverter
 			String defaultValue = "";
 			if (fieldSchema.isIntegerFieldSchema() || fieldSchema.isFloatFieldSchema() || fieldSchema.isNumberFieldSchema() || fieldSchema.isPercentageFieldSchema())
 				defaultValue = Integer.toString(0);
+			
+			if (fieldSchema.isBaseIdFieldSchema())
+				defaultValue = BaseId.INVALID.toString();
 			
 			final String tag = fieldSchema.getTag();
 			tagToValueMap.put(tag, defaultValue);

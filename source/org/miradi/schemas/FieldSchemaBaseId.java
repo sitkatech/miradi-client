@@ -38,6 +38,12 @@ public class FieldSchemaBaseId extends AbstractFieldSchema
 	{
 		return new BaseIdData(getTag(), objectType);
 	}
+
+	@Override
+	public boolean isBaseIdFieldSchema()
+	{
+		return true;
+	}
 	
 	private int objectType;
 }
