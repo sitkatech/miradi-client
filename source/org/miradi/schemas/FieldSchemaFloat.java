@@ -36,4 +36,10 @@ public class FieldSchemaFloat extends AbstractFieldSchema
 	{
 		return new FloatData(getTag());
 	}
+	
+	@Override
+	public boolean isFloatFieldSchema()
+	{
+		return true;
+	}
 }

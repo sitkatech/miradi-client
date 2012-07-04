@@ -60,6 +60,21 @@ abstract public class AbstractFieldSchema
 		return false;
 	}
 	
+	public boolean isFloatFieldSchema()
+	{
+		return false;
+	}
+	
+	public boolean isNumberFieldSchema()
+	{
+		return false;
+	}
+	
+	public boolean isPercentageFieldSchema()
+	{
+		return false;
+	}
+	
 	abstract public ObjectData createField(final BaseObject baseObjectToUse);
 
 	private String tag;

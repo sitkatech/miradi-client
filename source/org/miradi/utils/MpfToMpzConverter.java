@@ -218,7 +218,7 @@ public class MpfToMpzConverter
 		for(AbstractFieldSchema fieldSchema : schema)
 		{
 			String defaultValue = "";
-			if (fieldSchema.isIntegerFieldSchema())
+			if (fieldSchema.isIntegerFieldSchema() || fieldSchema.isFloatFieldSchema() || fieldSchema.isNumberFieldSchema() || fieldSchema.isPercentageFieldSchema())
 				defaultValue = Integer.toString(0);
 			
 			final String tag = fieldSchema.getTag();
