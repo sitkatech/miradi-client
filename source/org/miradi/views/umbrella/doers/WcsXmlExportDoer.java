@@ -30,4 +30,10 @@ public class WcsXmlExportDoer extends AbstractExportProjectXmlZipDoer
 	{
 		return new WcsZipFileChooser(getMainWindow());
 	}
+	
+	@Override
+	protected void displayUserInfoDialog()
+	{
+		notifyUserWhenExportingXmpz1();
+	}
 }

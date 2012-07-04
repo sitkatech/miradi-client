@@ -29,4 +29,10 @@ public class ExportXmpzDoer extends AbstractExportProjectXmlZipDoer
 	{
 		return new XmpzFileChooser(getMainWindow());
 	}
+
+	@Override
+	protected void displayUserInfoDialog()
+	{
+		notifyUserWhenExportingXmpz1();
+	}
 }
