@@ -20,8 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.project;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.InputStream;
 
+import org.martus.util.UnicodeStringWriter;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Goal;
@@ -76,18 +79,33 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 		File temporaryMpzFile = File.createTempFile("$$$tempMpzFile", ".zip");
 		try
 		{
-			String projectAsString = ProjectSaver.saveProject(getProject(), temporaryMpfFile);
+			ProjectSaver.saveProject(getProject(), temporaryMpfFile);
 			new MpfToMpzConverter(getProject()).convert(temporaryMpfFile, temporaryMpzFile, getProject().getFilename());
-			String mpf = MpzToMpfConverter.convert(temporaryMpzFile, new NullProgressMeter());
-			mpf = stripTimeStamp(mpf);
-			projectAsString = stripTimeStamp(projectAsString);
-			assertEquals("Mpf was not converted to mpz?", projectAsString, mpf);
+			String actualMpf = MpzToMpfConverter.convert(temporaryMpzFile, new NullProgressMeter());
+			
+			String expectedMpfAsString = reloadIntoProjectToRemoveDefaultValues(actualMpf);
+				
+			actualMpf = stripTimeStamp(actualMpf);
+			expectedMpfAsString = stripTimeStamp(expectedMpfAsString);
+			assertEquals("Mpf was not converted to mpz?", expectedMpfAsString, actualMpf);
 		}
 		finally 
 		{
 			temporaryMpfFile.deleteOnExit();
 			temporaryMpzFile.deleteOnExit();
 		}
+	}
+
+	private String reloadIntoProjectToRemoveDefaultValues(String actualMpf) throws Exception
+	{
+		InputStream is = new ByteArrayInputStream(actualMpf.getBytes("UTF-8"));
+		ProjectForTesting projectToFill = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToFillWithMpf");
+		ProjectLoader.loadProject(is, projectToFill);
+		
+		UnicodeStringWriter stringWriter = UnicodeStringWriter.create();
+		ProjectSaver.saveProject(projectToFill, stringWriter);
+		
+		return stringWriter.toString();
 	}
 
 	private String stripTimeStamp(String mpf)
