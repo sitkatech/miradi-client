@@ -162,7 +162,7 @@ public class MpfToMpzConverter
 	{
 		ZipEntry versionEntry = new ZipEntry(projectName + fileName);
 		zipOutputStream.putNextEntry(versionEntry);
-		zipOutputStream.write(getUtf8Bytes(zipContent));
+		zipOutputStream.write(StringUtilities.getUtf8EncodedBytes(zipContent));
 		zipOutputStream.closeEntry();
 	}
 
@@ -285,11 +285,6 @@ public class MpfToMpzConverter
 		refToJsonMap.put(ref, jsonObjects);
 	}
 	
-	private byte[] getUtf8Bytes(final String string) throws Exception
-	{
-		return string.getBytes("UTF-8");
-	}
-
 	private Project getProject()
 	{
 		return project;

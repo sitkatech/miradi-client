@@ -34,6 +34,7 @@ import org.miradi.objects.Task;
 import org.miradi.utils.MpfToMpzConverter;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.PointList;
+import org.miradi.utils.StringUtilities;
 import org.miradi.views.diagram.TestLinkBendPointsMoveHandler;
 
 public class TestMpfToMpzConverter extends TestCaseWithProject
@@ -98,7 +99,7 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 
 	private String reloadIntoProjectToRemoveDefaultValues(String actualMpf) throws Exception
 	{
-		InputStream is = new ByteArrayInputStream(actualMpf.getBytes("UTF-8"));
+		InputStream is = new ByteArrayInputStream(StringUtilities.getUtf8EncodedBytes(actualMpf));
 		ProjectForTesting projectToFill = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToFillWithMpf");
 		ProjectLoader.loadProject(is, projectToFill);
 		
