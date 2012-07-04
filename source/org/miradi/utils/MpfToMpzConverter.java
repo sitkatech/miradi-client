@@ -245,10 +245,10 @@ public class MpfToMpzConverter
 			tagToValueMap.put(FACTOR_TYPE_TAG, "Target");
 		
 		if (Cause.is(objectType))
-			tagToValueMap.put(FACTOR_TYPE_TAG, "Cause");
+			tagToValueMap.put(FACTOR_TYPE_TAG, "Factor");
 		
 		if (Strategy.is(objectType))
-			tagToValueMap.put(FACTOR_TYPE_TAG, "Strategy");
+			tagToValueMap.put(FACTOR_TYPE_TAG, "Intervention");
 		
 		return tagToValueMap;
 	}
