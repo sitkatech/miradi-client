@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-03 15:37-0500\n"
+"POT-Creation-Date: 2012-07-04 15:39-0500\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -3531,7 +3531,7 @@ msgstr "Erreur lors de la création de : %s"
 msgid "Error Occurred During Sorting"
 msgstr "Une erreur s'est produite pendant le tri"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:100
+#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:105
 msgid "Error Occurred please try saving under different name."
 msgstr ""
 "Une erreur s'est produite. Essayer d'enregistrer sous un nom différent."
@@ -3643,7 +3643,7 @@ msgstr ""
 msgid "Export Project (BETA)"
 msgstr "Exporter projet (BETA)"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:95
+#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:100
 msgid "Export complete"
 msgstr "Exportation terminée"
 
@@ -5544,7 +5544,7 @@ msgstr ""
 msgid "OpenStandards"
 msgstr "NormesOuvertes"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:67
+#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:68
 msgid "Operation was canceled!"
 msgstr ""
 
@@ -7810,7 +7810,7 @@ msgstr ""
 "standards et des outils communs tels que Miradi. Pour plus d'informations "
 "visitez le site www.ConservationMeasures.org "
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:71
+#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:72
 msgid ""
 "The image is too large to be exported.\n"
 "Please use the <Zoom Out> feature to make it smaller, and try again."

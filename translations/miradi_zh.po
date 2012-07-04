@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-03 15:37-0500\n"
+"POT-Creation-Date: 2012-07-04 15:39-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -3335,7 +3335,7 @@ msgstr ""
 msgid "Error Occurred During Sorting"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:100
+#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:105
 msgid "Error Occurred please try saving under different name."
 msgstr "出错，请尝试用不同的文件名保存。 \t\t"
 
@@ -3441,7 +3441,7 @@ msgstr ""
 msgid "Export Project (BETA)"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:95
+#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:100
 msgid "Export complete"
 msgstr "导出完成 \t\t"
 
@@ -5259,7 +5259,7 @@ msgstr ""
 msgid "OpenStandards"
 msgstr "开放标准"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:67
+#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:68
 msgid "Operation was canceled!"
 msgstr ""
 
@@ -7429,7 +7429,7 @@ msgstr ""
 "保护监测联盟（CMP）——是世界领先保护组织的联盟。CMP会员共同致力于开发共同的标"
 "准和工具，如Miradi。在此可获得详情www.ConservationMeasures.org "
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:71
+#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:72
 msgid ""
 "The image is too large to be exported.\n"
 "Please use the <Zoom Out> feature to make it smaller, and try again."
