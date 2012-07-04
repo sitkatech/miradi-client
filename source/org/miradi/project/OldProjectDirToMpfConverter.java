@@ -43,7 +43,9 @@ public class OldProjectDirToMpfConverter
 		
 		MpzProjectImporter importer = new MpzProjectImporter(mainWindow);
 		File importedFile = importer.importProject(oldProjectZipped, oldProjectDirectory.getName());
-		DirectoryUtils.deleteEntireDirectoryTree(oldProjectDirectory);
+		if (importedFile != null)
+			DirectoryUtils.deleteEntireDirectoryTree(oldProjectDirectory);
+		
 		return importedFile;
 	}
 }
