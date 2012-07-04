@@ -62,7 +62,7 @@ public class ZipUtilities
 		for (File file : allFiles)
 		{
 			final String absolutePath = file.getAbsolutePath();
-			String projectDirPath = absolutePath.substring(absolutePath.indexOf(projectName));
+			String projectDirPath = absolutePath.substring(absolutePath.indexOf("/" + projectName + "/"));
 			projectPaths.add(projectDirPath);
 		}
 		
