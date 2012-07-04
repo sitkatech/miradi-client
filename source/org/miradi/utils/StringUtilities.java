@@ -63,5 +63,10 @@ public class StringUtilities
 		return joinedItems;
 	}
 	
+	public static byte[] getUtf8EncodedBytes(String actualMpf) throws Exception
+	{
+		return actualMpf.getBytes("UTF-8");
+	}
+	
 	public static final String EMPTY_SPACE= " ";
 }
