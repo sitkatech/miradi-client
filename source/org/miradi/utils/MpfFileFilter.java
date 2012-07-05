@@ -20,10 +20,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import java.io.File;
+
 import org.miradi.main.EAM;
 
 public class MpfFileFilter extends GenericMiradiFileFilter
 {
+	@Override
+	public boolean accept(File pathname)
+	{
+		return doesFileEndWithCorrectExtension(pathname);
+	}
+	
 	@Override
 	public String getDescription()
 	{

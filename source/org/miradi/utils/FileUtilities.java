@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -55,6 +56,19 @@ public class FileUtilities
 		}
 	}
 
+	public static void copyFile(File sourceFile, File destinationFile) throws Exception
+	{
+		FileInputStream fileInputStream = new FileInputStream(sourceFile);
+		try
+		{
+			copyStreamToFile(fileInputStream, destinationFile);
+		}
+		finally
+		{
+			fileInputStream.close();
+		}
+	}
+	
 	public static void copyStreamToFile(InputStream inputStream, File destinationFile) throws IOException
 	{
 		FileOutputStream out = new FileOutputStream(destinationFile);
