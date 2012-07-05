@@ -85,7 +85,7 @@
 	<property name="installer.mac" value="${installer.top}/Mac" />
 	
 	<property name="samples.marine" value="MarineExample-${version.full}"/>
-	<property name="samples.marine.mpf" value="${samples.marine}.mpf"/>
+	<property name="samples.marine.miradi" value="${samples.marine}.miradi"/>
 	
 	<property name="dist.mactree" value="${dist.dir}/MiradiMacInstall" />
 	<property name="mac.app.name" value="Miradi-${version.full}" />
@@ -516,7 +516,7 @@
 		<zipfileset dir="${installer.buildfiles.dir}" includes="LICENSE.txt"/>
 		<zipfileset dir="${installer.buildfiles.dir}" includes="LicenseOverview.txt"/>
     	<zipfileset dir="${dist.dir}" includes="miradi.jar"/>
-		<zipfileset dir="${installer.buildfiles.dir}" includes="${samples.marine.mpf}" />
+		<zipfileset dir="${installer.buildfiles.dir}" includes="${samples.marine.miradi}" />
     	
     	<!-- ThirdParty jars -->
     	<zipfileset dir="${dist.temp.jars}/BrowserLauncher2/" prefix='${JarFolder}' includes="BrowserLauncher*.jar" />
@@ -563,7 +563,7 @@
     	<zipfileset dir="${dist.temp.jars}/shef/0.5/" prefix="source" includes="jtidy-src.zip" />
 	</zip>
 	
-	<copy file="${installer.buildfiles.dir}/${samples.marine.mpf}" todir="${dist.dir}" />
+	<copy file="${installer.buildfiles.dir}/${samples.marine.miradi}" todir="${dist.dir}" />
 	<copy file="${installer.buildfiles.dir}/README.txt" todir="${dist.dir}" />
 	
 </target>
@@ -932,7 +932,7 @@
 	<copy todir="${dmgmount}">
 		<fileset dir="${installer.buildfiles.dir}" includes="README.txt" />
 		<fileset dir="${installer.buildfiles.dir}" includes="LICENSE.txt" />
-		<fileset dir="${installer.buildfiles.dir}" includes="${samples.marine.mpf}" />
+		<fileset dir="${installer.buildfiles.dir}" includes="${samples.marine.miradi}" />
 	</copy>
 
 	<exec os="Linux"  executable="umount" failonerror="true">
