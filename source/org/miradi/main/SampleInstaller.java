@@ -23,12 +23,10 @@ import java.io.File;
 import java.net.URISyntaxException;
 import java.util.Vector;
 
-import org.martus.util.UnicodeWriter;
-import org.miradi.project.MpzToMpfConverter;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.FileUtilities;
 import org.miradi.utils.MpfFileFilter;
-import org.miradi.utils.MpzFileFilter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.wizard.noproject.FileSystemTreeNode;
 
@@ -42,8 +40,8 @@ public class SampleInstaller
 	
 	public void installSampleProjects(ProgressInterface progressIndicator) throws Exception
 	{
-		File[] allMpzFiles = getMpzFilesUnderAppDir();
-		Vector<File> installableSampleProjects = getInstallableSampleProjects(allMpzFiles);
+		File[] allMpfFiles = getMpfFilesUnderAppDir();
+		Vector<File> installableSampleProjects = getInstallableSampleProjects(allMpfFiles);
 		if (userConfirmsSampleProjectsInstall(installableSampleProjects))
 		{
 			installSampleProjects(installableSampleProjects, progressIndicator);
@@ -63,22 +61,8 @@ public class SampleInstaller
 			File destination = new File(homeDir, validatedName + MpfFileFilter.EXTENSION);
 			if(destination.exists())
 				return;
-		
-			convertToMpf(projectFileToImport, destination, progressIndicator);
-		}
-	}
-
-	public void convertToMpf(File projectFileToImport, File destination, ProgressInterface progressIndicator) throws Exception
-	{
-		UnicodeWriter writer = new UnicodeWriter(destination);
-		try
-		{
-			String converted = MpzToMpfConverter.convert(projectFileToImport, progressIndicator);
-			writer.write(converted);
-		}
-		finally
-		{
-			writer.close();
+			
+			FileUtilities.copyFile(projectFileToImport, destination);
 		}
 	}
 
@@ -93,7 +77,7 @@ public class SampleInstaller
 		return EAM.confirmDialog(EAM.text("Install Sample Project"), new String[]{text}, buttonLabels);
 	}
 
-	private Vector<File> getInstallableSampleProjects(File[] allMpzFiles) throws Exception
+	private Vector<File> getInstallableSampleProjects(File[] allMpfFiles) throws Exception
 	{
 		if (installedSampleProjectCodes.contains(getVersionString()))
 			return new Vector<File>();
@@ -101,13 +85,13 @@ public class SampleInstaller
 		installedSampleProjectCodes.add(getVersionString());
 		Vector<File> installableSampleProjects = new Vector<File>(); 
 		File homeDir = EAM.getHomeDirectory();
-		for (int index = 0; index < allMpzFiles.length; ++index)
+		for (int index = 0; index < allMpfFiles.length; ++index)
 		{
-			File mpzFile = allMpzFiles[index];
-			String validatedName = getValidatedProjectNameWithoutExtension(mpzFile);
+			File mpfFile = allMpfFiles[index];
+			String validatedName = getValidatedProjectNameWithoutExtension(mpfFile);
 			File newProjectFile = new File(homeDir, validatedName + MpfFileFilter.EXTENSION);
 			if (FileSystemTreeNode.isProjectFile(newProjectFile) && !newProjectFile.exists())
-				installableSampleProjects.add(mpzFile);
+				installableSampleProjects.add(mpfFile);
 		}
 		
 		return installableSampleProjects;
@@ -116,14 +100,14 @@ public class SampleInstaller
 	private String getValidatedProjectNameWithoutExtension(File mpzFile)
 	{
 		String projectName = mpzFile.getName();
-		String projectNameWithoutExtension = projectName.replaceFirst(MpzFileFilter.EXTENSION, "");
+		String projectNameWithoutExtension = projectName.replaceFirst(MpfFileFilter.EXTENSION, "");
 		return Project.makeProjectFilenameLegal(projectNameWithoutExtension); 
 	}
 
-	private File[] getMpzFilesUnderAppDir() throws URISyntaxException
+	private File[] getMpfFilesUnderAppDir() throws URISyntaxException
 	{
 		File appDir = Miradi.getAppCodeDirectory();
-		File[] files = appDir.listFiles(new MpzFileFilter());
+		File[] files = appDir.listFiles(new MpfFileFilter());
 		if (files == null)
 			return new File[0];
 		
