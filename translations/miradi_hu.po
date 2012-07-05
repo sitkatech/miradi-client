@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-04 15:39-0500\n"
+"POT-Creation-Date: 2012-07-05 13:10-0500\n"
 "PO-Revision-Date: 2011-02-15 16:35-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2352,7 +2352,7 @@ msgstr ""
 msgid "Button|Move"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:91
+#: Miradi/source/org/miradi/main/SampleInstaller.java:75
 msgid "Button|No"
 msgstr ""
 
@@ -2400,7 +2400,7 @@ msgstr ""
 msgid "Button|Save %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:91
+#: Miradi/source/org/miradi/main/SampleInstaller.java:75
 msgid "Button|Yes"
 msgstr ""
 
@@ -3149,7 +3149,7 @@ msgstr ""
 msgid "Do you want to attempt to import %s into Miradi?"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:90
+#: Miradi/source/org/miradi/main/SampleInstaller.java:74
 msgid "Do you want to install the sample project?"
 msgstr ""
 
@@ -3460,7 +3460,7 @@ msgstr ""
 msgid "FileFilter|MTE (*.mte)"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/MpfFileFilter.java:30
+#: Miradi/source/org/miradi/utils/MpfFileFilter.java:38
 msgid "FileFilter|Miradi (*%s)"
 msgstr ""
 
@@ -4058,7 +4058,7 @@ msgstr ""
 msgid "Install Language Pack"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:93
+#: Miradi/source/org/miradi/main/SampleInstaller.java:77
 msgid "Install Sample Project"
 msgstr ""
 
@@ -5739,7 +5739,7 @@ msgstr ""
 msgid "SWOT"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:51
+#: Miradi/source/org/miradi/main/SampleInstaller.java:49
 msgid "Sample Project Installed"
 msgstr ""
 
