@@ -85,7 +85,7 @@
 	<property name="installer.mac" value="${installer.top}/Mac" />
 	
 	<property name="samples.marine" value="MarineExample-${version.full}"/>
-	<property name="samples.marine.miradi" value="${samples.marine}.miradi"/>
+	<property name="samples.marine.miradi" value="${samples.marine}.Miradi"/>
 	
 	<property name="dist.mactree" value="${dist.dir}/MiradiMacInstall" />
 	<property name="mac.app.name" value="Miradi-${version.full}" />
