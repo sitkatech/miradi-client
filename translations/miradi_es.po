@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-05 13:10-0500\n"
+"POT-Creation-Date: 2012-07-05 18:04-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -3548,7 +3548,7 @@ msgstr "Conocimiento experto "
 msgid "Export"
 msgstr "Exportar"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:53
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:60
 msgid "Export MPZ"
 msgstr ""
 
@@ -7759,6 +7759,11 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:68
 msgid "Theory of Change<br/>- Strategy Selection"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:71
+msgid ""
+"These fields contain data, however the data will not appear in version 3.3.2:"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:52
