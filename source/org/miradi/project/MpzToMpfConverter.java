@@ -344,9 +344,9 @@ public class MpzToMpfConverter
 		EnhancedJsonObject json = readJson(manifestEntry);
 		Manifest manifest = new Manifest(json);
 		BaseId[] ids = manifest.getAllKeys();
-		for(int i = 0; i < ids.length; ++i)
+		for(int index = 0; index < ids.length; ++index)
 		{
-			convertObject(new ORef(type, ids[i]));
+			convertObject(new ORef(type, ids[index]));
 		}
 	}
 
