@@ -345,7 +345,9 @@ public class MpzToMpfConverter
 		Manifest manifest = new Manifest(json);
 		BaseId[] ids = manifest.getAllKeys();
 		for(int i = 0; i < ids.length; ++i)
+		{
 			convertObject(new ORef(type, ids[i]));
+		}
 	}
 
 	private void convertObject(ORef ref) throws Exception
