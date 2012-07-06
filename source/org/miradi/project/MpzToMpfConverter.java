@@ -293,9 +293,9 @@ public class MpzToMpfConverter
 
 	private void convertBaseObjects(ProgressInterface progressIndicator) throws Exception, UserCanceledException
 	{
-		for(int i = 0; i < ObjectType.OBJECT_TYPE_COUNT; ++i)
+		for(int index = 0; index < ObjectType.OBJECT_TYPE_COUNT; ++index)
 		{
-			convertObjectsOfType(i);
+			convertObjectsOfType(index);
 			
 			progressIndicator.incrementProgress();
 			if(progressIndicator.shouldExit())
