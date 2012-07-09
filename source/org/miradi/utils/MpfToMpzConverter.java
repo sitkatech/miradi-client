@@ -44,6 +44,7 @@ import org.miradi.objects.Target;
 import org.miradi.project.AbstractMiradiProjectSaver;
 import org.miradi.project.MpzToMpfConverter;
 import org.miradi.project.Project;
+import org.miradi.project.ProjectInfo;
 import org.miradi.project.ProjectLoader;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
@@ -267,8 +268,22 @@ public class MpfToMpzConverter
 		String[] splitLine = line.split(AbstractMiradiProjectSaver.TAB);
 		String[] tagValue = splitLine[1].split(AbstractMiradiProjectSaver.EQUALS);
 		String tag = tagValue[0];
-		String value = tagValue[1];
-		projectInfoJson.put(tag, value);
+		if (isProjectInformationTag(tag))
+		{
+			String value = tagValue[1];
+			projectInfoJson.put(tag, value);
+		}
+	}
+
+	private boolean isProjectInformationTag(String tag)
+	{
+		if (tag.equals(ProjectInfo.TAG_HIGHEST_OBJECT_ID))
+			return true;
+		
+		if (tag.equals(ProjectInfo.TAG_PROJECT_METADATA_ID))
+			return true;
+		
+		throw new RuntimeException("Incorrect tag found for project information, tag:" + tag);
 	}
 
 	private void loadUpdateObjectline(String line) throws Exception
