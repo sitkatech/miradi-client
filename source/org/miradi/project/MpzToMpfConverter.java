@@ -61,7 +61,7 @@ import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.Translation;
 import org.miradi.utils.ZipUtilities;
 
-public class MpzToMpfConverter
+public class MpzToMpfConverter extends AbstractConverter
 {
 	public static void main(String[] args) throws Exception
 	{

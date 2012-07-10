@@ -41,6 +41,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
+import org.miradi.project.AbstractConverter;
 import org.miradi.project.AbstractMiradiProjectSaver;
 import org.miradi.project.MpzToMpfConverter;
 import org.miradi.project.Project;
@@ -49,7 +50,7 @@ import org.miradi.project.ProjectLoader;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 
-public class MpfToMpzConverter
+public class MpfToMpzConverter extends AbstractConverter
 {
 	public MpfToMpzConverter(Project projectToUse)
 	{
