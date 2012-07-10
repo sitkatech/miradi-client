@@ -517,16 +517,12 @@ public class MpzToMpfConverter extends AbstractConverter
 		return getJsonPrefix() + "threatratings/";
 	}
 	
-	private String getProjectPrefix()
+	@Override
+	protected String getProjectPrefix()
 	{
 		return projectPrefix;
 	}
 	
-	private String getJsonPrefix()
-	{
-		return getProjectPrefix() + "json/";
-	}
-
 	private String getObjectEntryPath(ORef ref)
 	{
 		return getObjectsDirectoryPrefix(ref.getObjectType()) + ref.getObjectId().asInt();
@@ -545,11 +541,6 @@ public class MpzToMpfConverter extends AbstractConverter
 		return zipFile.getEntry(manifestEntryName);
 	}
 	
-	private String getObjectsDirectoryPrefix(int objectType)
-	{
-		return getJsonPrefix() + "objects-" + objectType + "/";
-	}
-
 	private ZipFile getZipFile()
 	{
 		return zipFile;
