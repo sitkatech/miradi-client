@@ -603,7 +603,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		if (dateUnit.isYear())
 			return YEAR_PER_YEAR;
 		
-		throw new RuntimeException(EAM.text("Should Now Allow Full Time Employee To Be Calculated For ") + "DateUnit = " + dateUnit);
+		throw new RuntimeException("Should Now Allow Full Time Employee To Be Calculated For DateUnit = " + dateUnit);
 	}
 	
 	private static double getFullTimeEmployeeDaysPerYear(Project project) throws Exception
