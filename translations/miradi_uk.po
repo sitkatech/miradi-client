@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-10 17:59-0500\n"
+"POT-Creation-Date: 2012-07-10 18:45-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -7733,6 +7733,10 @@ msgstr ""
 msgid ""
 "This model is not for a single assignment and has no assignment information"
 msgstr "Ця модель не для окремого призначення і не має призначеної інформації"
+
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:79
+msgid "This person is a coach within the Conservation Coaches Network"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:85
 msgid ""
