@@ -26,11 +26,13 @@ import java.io.InputStream;
 
 import org.martus.util.UnicodeStringWriter;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
+import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.MpfToMpzConverter;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.PointList;
@@ -46,6 +48,16 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 
 	public void testConvertingEmptyProject() throws Exception
 	{
+		verifyProject();
+	}
+	
+	public void testIndicatorThresholdValueWithXmlEscapedChars() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		Indicator indicator = getProject().createAndPopulateIndicator(strategy);
+		CodeToUserStringMap threshold = new CodeToUserStringMap();
+		threshold.putUserString(StatusQuestion.POOR, "&quot; &pos; &gt; &lt; &amp;");
+		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_THRESHOLDS_MAP, threshold.toJsonString());
 		verifyProject();
 	}
 
@@ -78,6 +90,7 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 	{
 		File temporaryMpfFile = File.createTempFile("$$$tempMpfFile", null);
 		File temporaryMpzFile = File.createTempFile("$$$tempMpzFile", ".zip");
+		System.out.println(temporaryMpfFile.getAbsolutePath());
 		try
 		{
 			ProjectSaver.saveProject(getProject(), temporaryMpfFile);
@@ -92,8 +105,8 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 		}
 		finally 
 		{
-			temporaryMpfFile.deleteOnExit();
-			temporaryMpzFile.deleteOnExit();
+			//temporaryMpfFile.deleteOnExit();
+			//temporaryMpzFile.deleteOnExit();
 		}
 	}
 
