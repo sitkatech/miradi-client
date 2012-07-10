@@ -74,25 +74,25 @@ public class FactorTagListEditor extends AbstractQuestionEditorComponent impleme
 	@Override
 	public String getText()
 	{
-		throw new RuntimeException(EAM.text("Unexpected call to getText"));
+		throw new RuntimeException("Unexpected call to getText");
 	}
 
 	@Override
 	public void setText(String codesToUse)
 	{
-		throw new RuntimeException(EAM.text("Unexpected call to setText"));
+		throw new RuntimeException("Unexpected call to setText");
 	}
 	
 	@Override
 	public void addListSelectionListener(ListSelectionListener listener)
 	{
-		throw new RuntimeException(EAM.text("Unexpected call to addListSelectionListener"));
+		throw new RuntimeException("Unexpected call to addListSelectionListener");
 	}
 	
 	@Override
 	public void removeListSelectionListener(ListSelectionListener listener)
 	{
-		throw new RuntimeException(EAM.text("Unexpected call to removeListSelectionListener"));
+		throw new RuntimeException("Unexpected call to removeListSelectionListener");
 	}
 	
 	private JPanel createFactorLabelPanelWithIcon()
