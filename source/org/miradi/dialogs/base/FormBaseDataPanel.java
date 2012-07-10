@@ -31,7 +31,7 @@ import org.miradi.project.Project;
 //FIXME urgent - this class is still under construction
 public class FormBaseDataPanel extends ObjectDataInputPanel
 {
-	public FormBaseDataPanel(Project projectToUse, PropertiesPanelSpec propertiesPanelSpec)
+	public FormBaseDataPanel(Project projectToUse, PropertiesPanelSpec propertiesPanelSpec) throws Exception
 	{
 		super(projectToUse, ORef.INVALID);
 		
@@ -40,7 +40,7 @@ public class FormBaseDataPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
-	private void addSubPanels(PropertiesPanelSpec propertiesPanelSpec)
+	private void addSubPanels(PropertiesPanelSpec propertiesPanelSpec) throws Exception
 	{
 		for (int index = 0; index < propertiesPanelSpec.getPanelCount(); ++index)
 		{
@@ -49,7 +49,7 @@ public class FormBaseDataPanel extends ObjectDataInputPanel
 		}
 	}
 
-	private void addSubPanel(FieldPanelSpec fieldPanelSpec)
+	private void addSubPanel(FieldPanelSpec fieldPanelSpec) throws Exception
 	{
 		for (int index = 0; index < fieldPanelSpec.getPanelCount(); ++index)
 		{
@@ -58,7 +58,7 @@ public class FormBaseDataPanel extends ObjectDataInputPanel
 		}
 	}
 
-	private void addFields(PropertiesPanelSpec fieldPanelSpec)
+	private void addFields(PropertiesPanelSpec fieldPanelSpec) throws Exception
 	{
 		for (int index = 0; index < fieldPanelSpec.getFieldRowCount(); ++index)
 		{

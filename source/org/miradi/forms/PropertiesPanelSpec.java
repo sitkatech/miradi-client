@@ -33,14 +33,14 @@ abstract public class PropertiesPanelSpec
 		return 0;
 	}
 	
-	public FormRow getFormRow(int index)
+	public FormRow getFormRow(int index) throws Exception
 	{
-		throw new RuntimeException(getGenericErrorMessage());
+		throw new Exception(getGenericErrorMessage());
 	}
 
-	public FieldPanelSpec getPanel(int index)
+	public FieldPanelSpec getPanel(int index) throws Exception
 	{
-		throw new RuntimeException(getGenericErrorMessage());
+		throw new Exception(getGenericErrorMessage());
 	}
 	
 	private String getGenericErrorMessage()
