@@ -518,8 +518,7 @@ public class MpzToMpfConverter extends AbstractConverter
 		return getObjectsDirectoryPrefix(ref.getObjectType()) + ref.getObjectId().asInt();
 	}
 
-	private EnhancedJsonObject readJson(ZipEntry entry) throws Exception,
-			UnsupportedEncodingException, ParseException
+	private EnhancedJsonObject readJson(ZipEntry entry) throws Exception
 	{
 		final String fileContent = readIntoString(entry);
 		return new EnhancedJsonObject(fileContent);
