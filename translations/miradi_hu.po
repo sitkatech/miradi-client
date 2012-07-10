@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-05 18:04-0500\n"
+"POT-Creation-Date: 2012-07-10 17:26-0500\n"
 "PO-Revision-Date: 2011-02-15 16:35-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -32,12 +32,6 @@ msgid ""
 "contents of this file: \n"
 "\n"
 "   "
-msgstr ""
-
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:89
-msgid ""
-"\n"
-"  within "
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:59
@@ -330,10 +324,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:86
 msgid "- Other Subterranean Habitats"
-msgstr ""
-
-#: Miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
-msgid "."
 msgstr ""
 
 #: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:49
@@ -2183,22 +2173,10 @@ msgstr ""
 msgid "Attempt to execute command while in side effect mode"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:88
-msgid ""
-"Attempt to execute command while in side effect mode:\n"
-" tried  "
-msgstr ""
-
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:109
 msgid ""
 "Attempt to migrate project to the current data format FAILED\n"
 "The pre-migration project was archived in: "
-msgstr ""
-
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:85
-msgid ""
-"Attempted to execute command as side effect before any command had been "
-"executed "
 msgstr ""
 
 #: Miradi/source/org/miradi/exceptions/UnexpectedSideEffectException.java:29
@@ -2724,10 +2702,6 @@ msgstr ""
 msgid ""
 "Corrupted link(s) have been found on %DiagramType: '%DiagramName'.<br>For "
 "each of the following, please delete the link and re-create it:<br>"
-msgstr ""
-
-#: Miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
-msgid "Could not find tableColumn in map. tableColumn = "
 msgstr ""
 
 #: Miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:41
@@ -6193,10 +6167,6 @@ msgstr ""
 msgid "Strong Increase"
 msgstr ""
 
-#: Miradi/source/org/miradi/forms/PropertiesPanelSpec.java:49
-msgid "Sub classes need to override this method."
-msgstr ""
-
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:67
 #: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:38
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
@@ -7876,10 +7846,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:176
 msgid "Unexpected error prevented the tag operation from succeeding"
-msgstr ""
-
-#: Miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
-msgid "UniqueModelIdentifier="
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:37

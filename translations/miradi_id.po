@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-05 18:04-0500\n"
+"POT-Creation-Date: 2012-07-10 17:26-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -43,14 +43,6 @@ msgstr ""
 "ini: \n"
 "\n"
 " "
-
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:89
-msgid ""
-"\n"
-"  within "
-msgstr ""
-"\n"
-" dalam "
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:59
 msgid ""
@@ -351,10 +343,6 @@ msgstr "- Gua-gua"
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:86
 msgid "- Other Subterranean Habitats"
 msgstr "- Habitat Bawah Tanah Lainnya"
-
-#: Miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
-msgid "."
-msgstr "."
 
 #: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:49
 msgid "1) Activities"
@@ -2292,14 +2280,6 @@ msgstr "Pengalokasian "
 msgid "Attempt to execute command while in side effect mode"
 msgstr "Berusaha mengeksekusi perintah saat berada dalam mode efek samping "
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:88
-msgid ""
-"Attempt to execute command while in side effect mode:\n"
-" tried  "
-msgstr ""
-"Berusaha mengeksekusi perintah saat berada dalam mode efek samping:\n"
-" dicoba "
-
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:109
 msgid ""
 "Attempt to migrate project to the current data format FAILED\n"
@@ -2307,14 +2287,6 @@ msgid ""
 msgstr ""
 "Upaya memindahkan proyek ke format data saat ini GAGAL\n"
 "Proyek prapemindahan diarsipkan dalam: "
-
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:85
-msgid ""
-"Attempted to execute command as side effect before any command had been "
-"executed "
-msgstr ""
-"Berusaha mengeksekusi perintah sebagai efek samping sebelum perintah lain "
-"dieksekusi "
 
 #: Miradi/source/org/miradi/exceptions/UnexpectedSideEffectException.java:29
 msgid "Attempted to execute side effect command while not in side effect mode."
@@ -2863,10 +2835,6 @@ msgid ""
 msgstr ""
 "Tautan rusak ditemukan pada %DiagramType: '%DiagramName'.<br>Untuk masing-"
 "masing dari berikut ini, hapus tautan dan buat lagi: "
-
-#: Miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
-msgid "Could not find tableColumn in map. tableColumn = "
-msgstr "Tidak dapat menemukan tableColumn dalam map. tableColumn = "
 
 #: Miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:41
 msgid "Country"
@@ -6499,10 +6467,6 @@ msgstr "Penurunan Besar"
 msgid "Strong Increase"
 msgstr "Kenaikan Besar"
 
-#: Miradi/source/org/miradi/forms/PropertiesPanelSpec.java:49
-msgid "Sub classes need to override this method."
-msgstr "Subkelas harus menggantikan metode ini. "
-
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:67
 #: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:38
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
@@ -8249,10 +8213,6 @@ msgstr "Kesalahan tak terduga membuat paket bahasa tidak dapat diinstal "
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:176
 msgid "Unexpected error prevented the tag operation from succeeding"
 msgstr "Kesalahan tak terduga telah menghalangi operasi tag tersebut "
-
-#: Miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
-msgid "UniqueModelIdentifier="
-msgstr "UniqueModelIdentifier= "
 
 #: Miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:37
 msgid "University"
@@ -32388,6 +32348,39 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid ""
+#~ "\n"
+#~ "  within "
+#~ msgstr ""
+#~ "\n"
+#~ " dalam "
+
+#~ msgid "."
+#~ msgstr "."
+
+#~ msgid ""
+#~ "Attempt to execute command while in side effect mode:\n"
+#~ " tried  "
+#~ msgstr ""
+#~ "Berusaha mengeksekusi perintah saat berada dalam mode efek samping:\n"
+#~ " dicoba "
+
+#~ msgid ""
+#~ "Attempted to execute command as side effect before any command had been "
+#~ "executed "
+#~ msgstr ""
+#~ "Berusaha mengeksekusi perintah sebagai efek samping sebelum perintah lain "
+#~ "dieksekusi "
+
+#~ msgid "Could not find tableColumn in map. tableColumn = "
+#~ msgstr "Tidak dapat menemukan tableColumn dalam map. tableColumn = "
+
+#~ msgid "Sub classes need to override this method."
+#~ msgstr "Subkelas harus menggantikan metode ini. "
+
+#~ msgid "UniqueModelIdentifier="
+#~ msgstr "UniqueModelIdentifier= "
 
 #~ msgid "Identify \"key factors\" and draft strategies"
 #~ msgstr "Kenali \"faktor kunci\" dan rancangan strategi "

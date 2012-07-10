@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-05 18:04-0500\n"
+"POT-Creation-Date: 2012-07-10 17:26-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -45,14 +45,6 @@ msgstr ""
 "includendo il contenuto di questo file: \n"
 "\n"
 "   "
-
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:89
-msgid ""
-"\n"
-"  within "
-msgstr ""
-"\n"
-"  all'interno "
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:59
 msgid ""
@@ -354,10 +346,6 @@ msgstr "- Grotte"
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:86
 msgid "- Other Subterranean Habitats"
 msgstr "- Altri Habitat Sotterranei"
-
-#: Miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
-msgid "."
-msgstr "."
 
 #: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:49
 msgid "1) Activities"
@@ -2400,14 +2388,6 @@ msgid "Attempt to execute command while in side effect mode"
 msgstr ""
 "Tentativo di eseguire il comando, durante la modalità effetto collaterale"
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:88
-msgid ""
-"Attempt to execute command while in side effect mode:\n"
-" tried  "
-msgstr ""
-"Tentativo di eseguire il comando, durante la modalità effetto collaterale\n"
-" provato "
-
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:109
 msgid ""
 "Attempt to migrate project to the current data format FAILED\n"
@@ -2415,14 +2395,6 @@ msgid ""
 msgstr ""
 "Tentativo di migrare il progetto nel formato dati corrente FALLITO \n"
 "Il progetto è stato archiviato in:"
-
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:85
-msgid ""
-"Attempted to execute command as side effect before any command had been "
-"executed "
-msgstr ""
-"Il tentativo di eseguire il comando come effetto collaterale prima di "
-"qualsiasi comando è stato eseguito"
 
 #: Miradi/source/org/miradi/exceptions/UnexpectedSideEffectException.java:29
 msgid "Attempted to execute side effect command while not in side effect mode."
@@ -2976,10 +2948,6 @@ msgid ""
 msgstr ""
 "Sono stati trovati link danneggiati nel %DiagramType: '%DiagramName'."
 "<br>cancella e ricrea ognuno dei seguenti:<br>"
-
-#: Miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
-msgid "Could not find tableColumn in map. tableColumn = "
-msgstr "non trovo tableColumn in map. tableColumn = "
 
 #: Miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:41
 msgid "Country"
@@ -6640,10 +6608,6 @@ msgstr "Forte Abbassamento"
 msgid "Strong Increase"
 msgstr "Forte Aumento"
 
-#: Miradi/source/org/miradi/forms/PropertiesPanelSpec.java:49
-msgid "Sub classes need to override this method."
-msgstr "Le sotto classi necessitano di non tener conto di questo metodo"
-
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:67
 #: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:38
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
@@ -8401,10 +8365,6 @@ msgid "Unexpected error prevented the tag operation from succeeding"
 msgstr ""
 "Un errore imprevisto ha impedito che l'operazione di etichettatura avesse "
 "successo"
-
-#: Miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
-msgid "UniqueModelIdentifier="
-msgstr "UniqueModelIdentifier="
 
 #: Miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:37
 msgid "University"
@@ -30460,6 +30420,40 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "  within "
+#~ msgstr ""
+#~ "\n"
+#~ "  all'interno "
+
+#~ msgid "."
+#~ msgstr "."
+
+#~ msgid ""
+#~ "Attempt to execute command while in side effect mode:\n"
+#~ " tried  "
+#~ msgstr ""
+#~ "Tentativo di eseguire il comando, durante la modalità effetto "
+#~ "collaterale\n"
+#~ " provato "
+
+#~ msgid ""
+#~ "Attempted to execute command as side effect before any command had been "
+#~ "executed "
+#~ msgstr ""
+#~ "Il tentativo di eseguire il comando come effetto collaterale prima di "
+#~ "qualsiasi comando è stato eseguito"
+
+#~ msgid "Could not find tableColumn in map. tableColumn = "
+#~ msgstr "non trovo tableColumn in map. tableColumn = "
+
+#~ msgid "Sub classes need to override this method."
+#~ msgstr "Le sotto classi necessitano di non tener conto di questo metodo"
+
+#~ msgid "UniqueModelIdentifier="
+#~ msgstr "UniqueModelIdentifier="
 
 #~ msgid ")"
 #~ msgstr ")"

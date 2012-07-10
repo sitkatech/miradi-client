@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-05 18:04-0500\n"
+"POT-Creation-Date: 2012-07-10 17:26-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -46,14 +46,6 @@ msgstr ""
 "Datei: \n"
 "\n"
 "   "
-
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:89
-msgid ""
-"\n"
-"  within "
-msgstr ""
-"\n"
-"  innerhalb "
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:59
 msgid ""
@@ -381,10 +373,6 @@ msgstr "- Höhlen"
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:86
 msgid "- Other Subterranean Habitats"
 msgstr "- andere Subterrane Habitate"
-
-#: Miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
-msgid "."
-msgstr "."
 
 #: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:49
 msgid "1) Activities"
@@ -2458,22 +2446,10 @@ msgstr ""
 msgid "Attempt to execute command while in side effect mode"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:88
-msgid ""
-"Attempt to execute command while in side effect mode:\n"
-" tried  "
-msgstr ""
-
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:109
 msgid ""
 "Attempt to migrate project to the current data format FAILED\n"
 "The pre-migration project was archived in: "
-msgstr ""
-
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:85
-msgid ""
-"Attempted to execute command as side effect before any command had been "
-"executed "
 msgstr ""
 
 #: Miradi/source/org/miradi/exceptions/UnexpectedSideEffectException.java:29
@@ -3039,10 +3015,6 @@ msgstr ""
 "Beschädigte Verbindung(en) wurden gefunden in/im %DiagramType: '%"
 "DiagramName'.<br>Für jede der Folgenden, löschen und erstellen Sie die "
 "Verbindung neu:<br>"
-
-#: Miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
-msgid "Could not find tableColumn in map. tableColumn = "
-msgstr ""
 
 #: Miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:41
 msgid "Country"
@@ -6741,10 +6713,6 @@ msgstr "Starker Rückgang"
 msgid "Strong Increase"
 msgstr "Starker Anstieg"
 
-#: Miradi/source/org/miradi/forms/PropertiesPanelSpec.java:49
-msgid "Sub classes need to override this method."
-msgstr ""
-
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:67
 #: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:38
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
@@ -8551,10 +8519,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:176
 msgid "Unexpected error prevented the tag operation from succeeding"
-msgstr ""
-
-#: Miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
-msgid "UniqueModelIdentifier="
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:37
@@ -30103,6 +30067,16 @@ msgid ""
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
 "Marine___Western Tropical Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid ""
+#~ "\n"
+#~ "  within "
+#~ msgstr ""
+#~ "\n"
+#~ "  innerhalb "
+
+#~ msgid "."
+#~ msgstr "."
 
 #~ msgid ")"
 #~ msgstr ")"
