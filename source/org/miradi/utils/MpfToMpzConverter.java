@@ -95,7 +95,7 @@ public class MpfToMpzConverter extends AbstractConverter
 			Collections.sort(sortedKeys);
 			for (ORef refAsKey : sortedKeys)
 			{
-				final String objectDir = "/json/objects-" + refAsKey.getObjectType() + "/";
+				final String objectDir = "json/objects-" + refAsKey.getObjectType() + "/";
 				final String zipEntryName = objectDir + refAsKey.getObjectId();
 				EnhancedJsonObject value = refToJsonMap.get(refAsKey);
 				writeZipEntry(zipOutputStream, zipEntryName, value.toString());
@@ -133,7 +133,7 @@ public class MpfToMpzConverter extends AbstractConverter
 			ORefList ids = typeToReflistMap.get(objectType);
 			ObjectManifest objectManifest = createObjectManifest(ids);
 			final String string = objectManifest.toJson().toString();
-			writeZipEntry(zipOutputStream, "/json/objects-" + objectType + "/manifest", string);
+			writeZipEntry(zipOutputStream, "json/objects-" + objectType + "/manifest", string);
 		}
 	}
 
@@ -151,18 +151,18 @@ public class MpfToMpzConverter extends AbstractConverter
 	private void addProjectEntry(ZipOutputStream zipOutputStream) throws Exception
 	{
 		final String zipEntryValue = projectInfoJson.toString();
-		writeZipEntry(zipOutputStream, "/json/project", zipEntryValue);
+		writeZipEntry(zipOutputStream, "json/project", zipEntryValue);
 	}
 
 	private void addVersionEntry(ZipOutputStream zipOutputStream) throws Exception
 	{
 		String versionString = "{\"Version\":" + Integer.toString(MpzToMpfConverter.REQUIRED_VERSION) + "}";
-		writeZipEntry(zipOutputStream, "/json/version", versionString);
+		writeZipEntry(zipOutputStream, "json/version", versionString);
 	}
 
 	private void writeZipEntry(ZipOutputStream zipOutputStream, final String fileName, String zipContent) throws Exception
 	{
-		ZipEntry versionEntry = new ZipEntry(projectName + fileName);
+		ZipEntry versionEntry = new ZipEntry(getProjectPrefix() + fileName);
 		zipOutputStream.putNextEntry(versionEntry);
 		zipOutputStream.write(StringUtilities.getUtf8EncodedBytes(zipContent));
 		zipOutputStream.closeEntry();
@@ -310,7 +310,7 @@ public class MpfToMpzConverter extends AbstractConverter
 	@Override
 	protected String getProjectPrefix()
 	{
-		return projectName;
+		return projectName + "/";
 	}
 	
 	private Project project;
