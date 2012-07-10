@@ -295,6 +295,7 @@ public class MpfToMpzConverter
 		String tag = tokenizer.nextToken(ProjectLoader.EQUALS_DELIMITER_TAB_PREFIXED);
 		EnhancedJsonObject jsonObjects = refToJsonMap.get(ref);
 		String json = StringUtilities.substringAfter(line, ProjectLoader.EQUALS_DELIMITER);
+		json = json.replaceAll("&quot;", "\\\\&quot;");
 		json = HtmlUtilities.convertHtmlToPlainText(json);
 		putDefaultValue(jsonObjects, json, tag);
 		refToJsonMap.put(ref, jsonObjects);
