@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-10 17:54-0500\n"
+"POT-Creation-Date: 2012-07-10 17:59-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -2440,10 +2440,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:75
 msgid "Assignments"
-msgstr ""
-
-#: Miradi/source/org/miradi/exceptions/UnexpectedNonSideEffectException.java:28
-msgid "Attempt to execute command while in side effect mode"
 msgstr ""
 
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:109

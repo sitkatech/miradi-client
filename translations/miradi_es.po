@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-10 17:54-0500\n"
+"POT-Creation-Date: 2012-07-10 17:59-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -2285,10 +2285,6 @@ msgstr "Recursos asignados solamente"
 #: Miradi/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:75
 msgid "Assignments"
 msgstr "Asignaciones"
-
-#: Miradi/source/org/miradi/exceptions/UnexpectedNonSideEffectException.java:28
-msgid "Attempt to execute command while in side effect mode"
-msgstr "Intento de ejecutar el comando en el modo de efecto secundario."
 
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:109
 msgid ""
@@ -32570,6 +32566,9 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "Attempt to execute command while in side effect mode"
+#~ msgstr "Intento de ejecutar el comando en el modo de efecto secundario."
 
 #~ msgid "Cannot add a vector to itself."
 #~ msgstr "No se puede agregar un vector a sí mismo. "
