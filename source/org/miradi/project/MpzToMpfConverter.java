@@ -525,9 +525,9 @@ public class MpzToMpfConverter extends AbstractConverter
 		return new EnhancedJsonObject(fileContent);
 	}
 
-	private ZipEntry getManifestEntryIfAny(int i)
+	private ZipEntry getManifestEntryIfAny(int objectType)
 	{
-		String manifestEntryName = getObjectsDirectoryPrefix(i) + "manifest";
+		String manifestEntryName = getObjectsDirectoryPrefix(objectType) + "manifest";
 		return zipFile.getEntry(manifestEntryName);
 	}
 	
