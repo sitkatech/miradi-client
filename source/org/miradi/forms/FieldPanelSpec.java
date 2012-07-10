@@ -42,7 +42,7 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 	}
 	
 	@Override
-	public FieldPanelSpec getPanel(int index)
+	public FieldPanelSpec getPanel(int index) throws Exception
 	{
 		return this;
 	}
@@ -53,7 +53,7 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 	}
 
 	@Override
-	public FormRow getFormRow(int index)
+	public FormRow getFormRow(int index) throws Exception
 	{
 		return rows.get(index);
 	}

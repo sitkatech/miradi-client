@@ -36,7 +36,7 @@ public class PanelHolderSpec extends PropertiesPanelSpec
 	}
 
 	@Override
-	public FieldPanelSpec getPanel(int index)
+	public FieldPanelSpec getPanel(int index) throws Exception
 	{
 		return panels.get(index);
 	}
@@ -46,7 +46,7 @@ public class PanelHolderSpec extends PropertiesPanelSpec
 		panels.add(panelToAdd);
 	}
 
-	public void addAllPanels(PanelHolderSpec panelToAdd)
+	public void addAllPanels(PanelHolderSpec panelToAdd) throws Exception
 	{
 		for (int index = 0; index < panelToAdd.getPanelCount(); ++index)
 		{
