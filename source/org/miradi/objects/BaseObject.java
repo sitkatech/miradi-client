@@ -326,7 +326,7 @@ abstract public class BaseObject
 		return ((RelevancyOverrideSetData)getField(tag)).getRawRelevancyOverrideSet();
 	}
 	
-	public void loadFromJson2(EnhancedJsonObject json) throws Exception
+	public void loadFromJson(EnhancedJsonObject json) throws Exception
 	{
 		Set<String> tags = getTags();
 		for (String tag : tags)

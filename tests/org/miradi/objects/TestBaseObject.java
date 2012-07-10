@@ -54,7 +54,7 @@ public class TestBaseObject extends TestCaseWithProject
 		final String sampleCommentJson = "{\"" + Cause.TAG_COMMENTS + "\":\"A sample comment with \\n a new line.\"}";
 		ORef causeRef = getProject().createObject(ObjectType.CAUSE);
 		BaseObject cause = Cause.find(getProject(), causeRef);
-		cause.loadFromJson2(new EnhancedJsonObject(sampleCommentJson));
+		cause.loadFromJson(new EnhancedJsonObject(sampleCommentJson));
 		String comments = cause.getData(Cause.TAG_COMMENTS);
 		assertContains("does not contain <br>?", HtmlUtilities.BR_TAG, comments);
 		assertNotContains("should not contain non html new line?", "\n", comments);
