@@ -22,16 +22,6 @@ package org.miradi.project;
 
 abstract public class AbstractConverter
 {
-	protected String getObjectsDirectoryPrefix(int objectType)
-	{
-		return getJsonPrefix() + "objects-" + objectType + "/";
-	}
-	
-	protected String getJsonPrefix()
-	{
-		return getProjectPrefix() + "json/";
-	}
-	
 	protected String getVersionEntryPath()
 	{
 		return getJsonPrefix() + "version";
@@ -45,6 +35,16 @@ abstract public class AbstractConverter
 	protected String getManifestFileName(int objectType)
 	{
 		return getObjectsDirectoryPrefix(objectType) + "manifest";
+	}
+	
+	protected String getObjectsDirectoryPrefix(int objectType)
+	{
+		return getJsonPrefix() + "objects-" + objectType + "/";
+	}
+	
+	protected String getJsonPrefix()
+	{
+		return getProjectPrefix() + "json/";
 	}
 
 	abstract protected String getProjectPrefix();
