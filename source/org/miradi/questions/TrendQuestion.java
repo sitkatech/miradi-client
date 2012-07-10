@@ -38,7 +38,7 @@ public class TrendQuestion extends StaticChoiceQuestion
 				new ChoiceItem(UNKNOWN_CODE, EAM.text(UNKNOWN_CODE), new MiradiResourceImageIcon("images/arrows/va_unknown16.png")),
 				new ChoiceItem(STRONG_INCREASE_CODE, EAM.text("Strong Increase"), new MiradiResourceImageIcon("images/arrows/va_strongup16.png")),
 				new ChoiceItem(MILD_INCREASE_CODE, EAM.text("Mild Increase"), new MiradiResourceImageIcon("images/arrows/va_mildup16.png")),
-				new ChoiceItem(FLAT_CODE, EAM.text(FLAT_CODE), new MiradiResourceImageIcon("images/arrows/va_flat16.png")),
+				new ChoiceItem(FLAT_CODE, EAM.text("Flat"), new MiradiResourceImageIcon("images/arrows/va_flat16.png")),
 				new ChoiceItem(MILD_DECREASE_CODE, EAM.text("Mild Decrease"), new MiradiResourceImageIcon("images/arrows/va_milddown16.png")),
 				new ChoiceItem(STRONG_DECREASE_CODE, EAM.text("Strong Decrease"), new MiradiResourceImageIcon("images/arrows/va_strongdown16.png")),
 		};
