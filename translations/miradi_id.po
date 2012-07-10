@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-10 17:26-0500\n"
+"POT-Creation-Date: 2012-07-10 17:54-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -2542,10 +2542,6 @@ msgstr "Batalkan "
 #: Miradi/source/org/miradi/main/MainWindow.java:535
 msgid "Cancelled"
 msgstr ""
-
-#: Miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:77
-msgid "Cannot add a vector to itself."
-msgstr "Tidak dapat menambahkan vektor ke dirinya sendiri. "
 
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:100
 msgid "Cannot import project file %s because it does not exist"
@@ -5238,10 +5234,6 @@ msgstr "Tidak Terspesifikasi "
 msgid "Not Started"
 msgstr "Tidak Dimulai"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:672
-msgid "Not all classification Codes could imported."
-msgstr "Tidak semua Kode klasifikasi dapat diimpor. "
-
 #: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:424
 msgid "Not all factors are being shown because %s tag(s) are checked"
 msgstr ""
@@ -5727,14 +5719,6 @@ msgstr ""
 "Nama berkas proyek tidak boleh mengandung tanda baca selain titik, tanda "
 "sambung, dan spasi; serta tidak boleh lebih dari 32 karakter. "
 
-#: Miradi/source/org/miradi/legacyprojects/migrations/ShareSameLabeledScopeBoxesMigration.java:53
-msgid "Project is missing Conceptual Model Diagram Directory."
-msgstr "Proyek tidak memiliki Direktori Diagram Model Konseptual. "
-
-#: Miradi/source/org/miradi/legacyprojects/migrations/ShareSameLabeledScopeBoxesMigration.java:56
-msgid "Project is missing Conceptual Model Manifest File"
-msgstr "Proyek tidak memiliki File Manifes Model Konseptual. "
-
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:107
 msgid "Project was migrated to the current data format"
 msgstr "Proyek dipindahkan ke format data sekarang "
@@ -6164,10 +6148,6 @@ msgstr "Berikan umpan balik secara formal atau tidak formal "
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:51
 msgid "Share success and failures with other teams"
 msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:606
-msgid "Should Now Allow Full Time Employee To Be Calculated For "
-msgstr "Memungkinkan Kalkulasi Karyawan Purnawaktu Untuk "
 
 #: Miradi/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:36
 msgid "Show All Rows"
@@ -8183,24 +8163,6 @@ msgstr "Tidak terdefinisi"
 #: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:62
 msgid "Underline"
 msgstr "Garis Bawah"
-
-#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:89
-msgid "Unexpected call to addListSelectionListener"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:144
-#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:77
-msgid "Unexpected call to getText"
-msgstr "Panggilan tak terduga ke getText "
-
-#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:95
-msgid "Unexpected call to removeListSelectionListener"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:150
-#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:83
-msgid "Unexpected call to setText"
-msgstr "Panggilan tak terduga ke setText "
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:185
 msgid "Unexpected error"
@@ -32348,6 +32310,27 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Cannot add a vector to itself."
+#~ msgstr "Tidak dapat menambahkan vektor ke dirinya sendiri. "
+
+#~ msgid "Not all classification Codes could imported."
+#~ msgstr "Tidak semua Kode klasifikasi dapat diimpor. "
+
+#~ msgid "Project is missing Conceptual Model Diagram Directory."
+#~ msgstr "Proyek tidak memiliki Direktori Diagram Model Konseptual. "
+
+#~ msgid "Project is missing Conceptual Model Manifest File"
+#~ msgstr "Proyek tidak memiliki File Manifes Model Konseptual. "
+
+#~ msgid "Should Now Allow Full Time Employee To Be Calculated For "
+#~ msgstr "Memungkinkan Kalkulasi Karyawan Purnawaktu Untuk "
+
+#~ msgid "Unexpected call to getText"
+#~ msgstr "Panggilan tak terduga ke getText "
+
+#~ msgid "Unexpected call to setText"
+#~ msgstr "Panggilan tak terduga ke setText "
 
 #~ msgid ""
 #~ "\n"
