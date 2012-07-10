@@ -74,7 +74,7 @@ public class TimePeriodCosts
 	private void addCategorizedQuantity(Vector<CategorizedQuantity> categorizedQuantityToUpdate, Vector<CategorizedQuantity> categorizedQuantitiesToAdd)
 	{
 		if (categorizedQuantityToUpdate == categorizedQuantitiesToAdd)
-			throw new RuntimeException(EAM.text("Cannot add a vector to itself."));
+			throw new RuntimeException("Cannot add a vector to itself.");
 		
 		for(CategorizedQuantity thisCategorizedQuantity : categorizedQuantitiesToAdd)
 		{
