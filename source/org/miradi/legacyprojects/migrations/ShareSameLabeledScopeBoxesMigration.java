@@ -23,13 +23,11 @@ package org.miradi.legacyprojects.migrations;
 import java.io.File;
 import java.util.Vector;
 
-
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.legacyprojects.DataUpgrader;
 import org.miradi.legacyprojects.JSONFile;
 import org.miradi.legacyprojects.ObjectManifest;
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -50,10 +48,10 @@ public class ShareSameLabeledScopeBoxesMigration
 			return;
 		
 		if (!getConceptualModelDir().exists())
-			throw new RuntimeException(EAM.text("Project is missing Conceptual Model Diagram Directory."));
+			throw new RuntimeException("Project is missing Conceptual Model Diagram Directory.");
 		
 		if (!getConceptualModelManifestFile().exists())
-			throw new RuntimeException(EAM.text("Project is missing Conceptual Model Manifest File"));
+			throw new RuntimeException("Project is missing Conceptual Model Manifest File");
 		
 		shareAllMatchingScopeBoxesInAllDiagrams(getConceptualModelDir(), getConceptualModelIds());
 		shareAllMatchingScopeBoxesInAllDiagrams(getResultsChainDir(), getResultsChainIds());
