@@ -526,7 +526,7 @@ public class MpzToMpfConverter extends AbstractConverter
 
 	private ZipEntry getManifestEntryIfAny(int objectType)
 	{
-		String manifestEntryName = getObjectsDirectoryPrefix(objectType) + "manifest";
+		String manifestEntryName = getManifestFileName(objectType);
 		return zipFile.getEntry(manifestEntryName);
 	}
 	

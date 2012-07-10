@@ -133,7 +133,7 @@ public class MpfToMpzConverter extends AbstractConverter
 			ORefList ids = typeToReflistMap.get(objectType);
 			ObjectManifest objectManifest = createObjectManifest(ids);
 			final String string = objectManifest.toJson().toString();
-			writeZipEntry(zipOutputStream, getObjectsDirectoryPrefix(objectType) + "/manifest", string);
+			writeZipEntry(zipOutputStream, getManifestFileName(objectType), string);
 		}
 	}
 

@@ -41,6 +41,11 @@ abstract public class AbstractConverter
 	{
 		return getJsonPrefix() + "project";
 	}
+	
+	protected String getManifestFileName(int objectType)
+	{
+		return getObjectsDirectoryPrefix(objectType) + "manifest";
+	}
 
 	abstract protected String getProjectPrefix();
 }
