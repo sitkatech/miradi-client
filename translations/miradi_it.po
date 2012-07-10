@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-10 17:59-0500\n"
+"POT-Creation-Date: 2012-07-10 18:45-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -7849,6 +7849,10 @@ msgid ""
 msgstr ""
 "Questo modello non è per un'unica missione  e non ha informazioni di "
 "assegnazione"
+
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:79
+msgid "This person is a coach within the Conservation Coaches Network"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:85
 msgid ""

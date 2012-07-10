@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-10 17:59-0500\n"
+"POT-Creation-Date: 2012-07-10 18:45-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -7697,6 +7697,10 @@ msgid ""
 msgstr ""
 "Model ini bukan untuk pengalokasian tunggal dan belum mempunyai informasi "
 "pengalokasian "
+
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:79
+msgid "This person is a coach within the Conservation Coaches Network"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:85
 msgid ""

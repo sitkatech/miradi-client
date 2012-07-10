@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-10 17:59-0500\n"
+"POT-Creation-Date: 2012-07-10 18:45-0500\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -7882,6 +7882,10 @@ msgid ""
 msgstr ""
 "Ce modèle n'est pas pour une attribution simple et il n'a pas d'information "
 "d'attribution"
+
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:79
+msgid "This person is a coach within the Conservation Coaches Network"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:85
 msgid ""
