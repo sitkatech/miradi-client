@@ -24,7 +24,6 @@ import java.util.Set;
 
 import javax.swing.JToggleButton;
 
-import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
@@ -141,13 +140,13 @@ abstract public class AbstractQuestionBasedComponent extends AbstractDataValueLi
 	@Override
 	public String getText()
 	{
-		throw new RuntimeException(EAM.text("Unexpected call to getText"));
+		throw new RuntimeException("Unexpected call to getText");
 	}
 
 	@Override
 	public void setText(String codesToUse)
 	{
-		throw new RuntimeException(EAM.text("Unexpected call to setText"));
+		throw new RuntimeException("Unexpected call to setText");
 	}
 	
 	private CodeList codesToDisable;
