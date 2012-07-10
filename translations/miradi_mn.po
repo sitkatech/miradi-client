@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-10 17:54-0500\n"
+"POT-Creation-Date: 2012-07-10 17:59-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -2350,10 +2350,6 @@ msgstr "Зөвхөн хуваарилсан нөөц"
 #: Miradi/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:75
 msgid "Assignments"
 msgstr "Үүрэг даалгавар"
-
-#: Miradi/source/org/miradi/exceptions/UnexpectedNonSideEffectException.java:28
-msgid "Attempt to execute command while in side effect mode"
-msgstr "\"side effect\" горимд байх зуур командыг гүйцэтгэхээр оролдох"
 
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:109
 msgid ""
@@ -31922,6 +31918,9 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "Attempt to execute command while in side effect mode"
+#~ msgstr "\"side effect\" горимд байх зуур командыг гүйцэтгэхээр оролдох"
 
 #~ msgid "Cannot add a vector to itself."
 #~ msgstr "Өөртөө вектор нэмж болохгүй байна."

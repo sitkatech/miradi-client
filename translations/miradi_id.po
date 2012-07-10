@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-10 17:54-0500\n"
+"POT-Creation-Date: 2012-07-10 17:59-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -2275,10 +2275,6 @@ msgstr "Sumber Daya yang Dialokasikan Saja "
 #: Miradi/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:75
 msgid "Assignments"
 msgstr "Pengalokasian "
-
-#: Miradi/source/org/miradi/exceptions/UnexpectedNonSideEffectException.java:28
-msgid "Attempt to execute command while in side effect mode"
-msgstr "Berusaha mengeksekusi perintah saat berada dalam mode efek samping "
 
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:109
 msgid ""
@@ -32310,6 +32306,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Attempt to execute command while in side effect mode"
+#~ msgstr "Berusaha mengeksekusi perintah saat berada dalam mode efek samping "
 
 #~ msgid "Cannot add a vector to itself."
 #~ msgstr "Tidak dapat menambahkan vektor ke dirinya sendiri. "

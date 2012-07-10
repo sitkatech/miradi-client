@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-10 17:54-0500\n"
+"POT-Creation-Date: 2012-07-10 17:59-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -2337,10 +2337,6 @@ msgstr "Тільки призначені ресурси"
 #: Miradi/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:75
 msgid "Assignments"
 msgstr "Призначення"
-
-#: Miradi/source/org/miradi/exceptions/UnexpectedNonSideEffectException.java:28
-msgid "Attempt to execute command while in side effect mode"
-msgstr "Спроба виконати команду при опції побічного ефекту"
 
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:109
 msgid ""
@@ -33974,6 +33970,9 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "Attempt to execute command while in side effect mode"
+#~ msgstr "Спроба виконати команду при опції побічного ефекту"
 
 #~ msgid "Cannot add a vector to itself."
 #~ msgstr "Неможливо додати вектор до самого себе"

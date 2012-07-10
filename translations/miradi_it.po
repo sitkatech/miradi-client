@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-10 17:54-0500\n"
+"POT-Creation-Date: 2012-07-10 17:59-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -2382,11 +2382,6 @@ msgstr "Solamente le risorse assegnate"
 #: Miradi/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:75
 msgid "Assignments"
 msgstr "Assegnazioni"
-
-#: Miradi/source/org/miradi/exceptions/UnexpectedNonSideEffectException.java:28
-msgid "Attempt to execute command while in side effect mode"
-msgstr ""
-"Tentativo di eseguire il comando, durante la modalità effetto collaterale"
 
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:109
 msgid ""
@@ -30381,6 +30376,10 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid "Attempt to execute command while in side effect mode"
+#~ msgstr ""
+#~ "Tentativo di eseguire il comando, durante la modalità effetto collaterale"
 
 #~ msgid "Cannot add a vector to itself."
 #~ msgstr "Non è possibile aggiungere un vettore a se stesso."
