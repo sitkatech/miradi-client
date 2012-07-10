@@ -487,16 +487,6 @@ public class MpzToMpfConverter extends AbstractConverter
 		return extractVersion(versionAsString);
 	}
 
-	private String getVersionEntryPath()
-	{
-		return getJsonPrefix() + "version";
-	}
-	
-	private String getProjectInfoEntryPath()
-	{
-		return getJsonPrefix() + "project";
-	}
-	
 	private String getLastModifiedEntryPath()
 	{
 		return getProjectPrefix() + "LastModifiedProjectTime.txt";

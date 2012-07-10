@@ -151,13 +151,13 @@ public class MpfToMpzConverter extends AbstractConverter
 	private void addProjectEntry(ZipOutputStream zipOutputStream) throws Exception
 	{
 		final String zipEntryValue = projectInfoJson.toString();
-		writeZipEntry(zipOutputStream, getJsonPrefix() + "project", zipEntryValue);
+		writeZipEntry(zipOutputStream, getProjectInfoEntryPath(), zipEntryValue);
 	}
 
 	private void addVersionEntry(ZipOutputStream zipOutputStream) throws Exception
 	{
 		String versionString = "{\"Version\":" + Integer.toString(MpzToMpfConverter.REQUIRED_VERSION) + "}";
-		writeZipEntry(zipOutputStream, getJsonPrefix() + "version", versionString);
+		writeZipEntry(zipOutputStream, getVersionEntryPath(), versionString);
 	}
 
 	private void writeZipEntry(ZipOutputStream zipOutputStream, final String fileName, String zipContent) throws Exception
