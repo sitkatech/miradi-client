@@ -105,8 +105,8 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 		}
 		finally 
 		{
-			//temporaryMpfFile.deleteOnExit();
-			//temporaryMpzFile.deleteOnExit();
+			temporaryMpfFile.deleteOnExit();
+			temporaryMpzFile.deleteOnExit();
 		}
 	}
 
