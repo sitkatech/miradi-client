@@ -22,7 +22,6 @@ package org.miradi.utils;
 
 import java.util.HashMap;
 
-import org.miradi.main.EAM;
 import org.miradi.project.Project;
 
 public abstract class AbstractSingleTableExporter extends AbstractTableExporter
@@ -43,7 +42,7 @@ public abstract class AbstractSingleTableExporter extends AbstractTableExporter
 			buildTableToModelColumnIndexMap();
 		
 		if (!tableToModelColumnIndexMap.containsKey(tableColumn))
-			throw new RuntimeException(EAM.text("Could not find tableColumn in map. tableColumn = " + tableColumn + ".") + EAM.text("UniqueModelIdentifier=" + uniqueModelIdentifier));
+			throw new RuntimeException("Could not find tableColumn in map. tableColumn = " + tableColumn + ".  UniqueModelIdentifier=" + uniqueModelIdentifier);
 		
 		return tableToModelColumnIndexMap.get(tableColumn);
 	}
