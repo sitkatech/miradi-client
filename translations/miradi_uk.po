@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-05 18:04-0500\n"
+"POT-Creation-Date: 2012-07-10 17:26-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -42,14 +42,6 @@ msgstr ""
 "файлу: \n"
 "\n"
 "   "
-
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:89
-msgid ""
-"\n"
-"  within "
-msgstr ""
-"\n"
-" у межах"
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:59
 msgid ""
@@ -350,10 +342,6 @@ msgstr "- Печери"
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:86
 msgid "- Other Subterranean Habitats"
 msgstr "- Інші підземні оселища"
-
-#: Miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
-msgid "."
-msgstr "."
 
 #: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:49
 msgid "1) Activities"
@@ -2354,14 +2342,6 @@ msgstr "Призначення"
 msgid "Attempt to execute command while in side effect mode"
 msgstr "Спроба виконати команду при опції побічного ефекту"
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:88
-msgid ""
-"Attempt to execute command while in side effect mode:\n"
-" tried  "
-msgstr ""
-"Спробуйте виконати команду в той час як пробується опція побічного ефекту:\n"
-"спробувати  "
-
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:109
 msgid ""
 "Attempt to migrate project to the current data format FAILED\n"
@@ -2369,14 +2349,6 @@ msgid ""
 msgstr ""
 "Спроба перевести проект у поточний формат даних НЕВДАЛА\n"
 "Попередній проект був архівований у:"
-
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:85
-msgid ""
-"Attempted to execute command as side effect before any command had been "
-"executed "
-msgstr ""
-"Була спроба виконати команду як побічний ефект перед якоюсь командою, що "
-"була виконана"
 
 #: Miradi/source/org/miradi/exceptions/UnexpectedSideEffectException.java:29
 msgid "Attempted to execute side effect command while not in side effect mode."
@@ -2924,10 +2896,6 @@ msgstr ""
 "Викривлене(і) з'єднання було знайдене на %DiagramType: '%DiagramName'."
 "<br>Для кожного з них будь ласка видаліть з'днання і створіть його заново:"
 "<br>"
-
-#: Miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
-msgid "Could not find tableColumn in map. tableColumn = "
-msgstr "Неможливо знайти колонку таблиці ="
 
 #: Miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:41
 msgid "Country"
@@ -6534,10 +6502,6 @@ msgstr "Сильне збільшення"
 msgid "Strong Increase"
 msgstr "Сильне збільшення"
 
-#: Miradi/source/org/miradi/forms/PropertiesPanelSpec.java:49
-msgid "Sub classes need to override this method."
-msgstr "Потрібні підкласи, щоб анулювати цей метод"
-
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:67
 #: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:38
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
@@ -8281,10 +8245,6 @@ msgstr "Нечекана помилка перешкодила інсталяц�
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:176
 msgid "Unexpected error prevented the tag operation from succeeding"
 msgstr "Нечекана помилка, через яку тегова операція не встигла здійснитися "
-
-#: Miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
-msgid "UniqueModelIdentifier="
-msgstr "UniqueModelIdentifier="
 
 #: Miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:37
 msgid "University"
@@ -34052,6 +34012,40 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid ""
+#~ "\n"
+#~ "  within "
+#~ msgstr ""
+#~ "\n"
+#~ " у межах"
+
+#~ msgid "."
+#~ msgstr "."
+
+#~ msgid ""
+#~ "Attempt to execute command while in side effect mode:\n"
+#~ " tried  "
+#~ msgstr ""
+#~ "Спробуйте виконати команду в той час як пробується опція побічного "
+#~ "ефекту:\n"
+#~ "спробувати  "
+
+#~ msgid ""
+#~ "Attempted to execute command as side effect before any command had been "
+#~ "executed "
+#~ msgstr ""
+#~ "Була спроба виконати команду як побічний ефект перед якоюсь командою, що "
+#~ "була виконана"
+
+#~ msgid "Could not find tableColumn in map. tableColumn = "
+#~ msgstr "Неможливо знайти колонку таблиці ="
+
+#~ msgid "Sub classes need to override this method."
+#~ msgstr "Потрібні підкласи, щоб анулювати цей метод"
+
+#~ msgid "UniqueModelIdentifier="
+#~ msgstr "UniqueModelIdentifier="
 
 #~ msgid ")"
 #~ msgstr ")"
