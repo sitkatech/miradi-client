@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.forms;
 
-import org.miradi.main.EAM;
 
 
 abstract public class PropertiesPanelSpec
@@ -46,7 +45,7 @@ abstract public class PropertiesPanelSpec
 	
 	private String getGenericErrorMessage()
 	{
-		return EAM.text("Sub classes need to override this method.");
+		return "Sub classes need to override this method.";
 	}
 	
 	public static final int TYPE_VERY_SHORT_STRING = 1;
