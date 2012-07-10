@@ -669,7 +669,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		classificationCodesToImport.subtract(classificationCodesImportedAsProjectPlaceTypes);
 		
 		if (classificationCodesToImport.size() > 0)
-			throw new RuntimeException(EAM.text("Not all classification Codes could imported." + classificationCodesToImport.toString()));
+			throw new RuntimeException("Not all classification Codes could imported." + classificationCodesToImport.toString());
 	}
 
 	private CodeList importProjectPlaceTypes(CodeList allClassificationCodes) throws Exception
