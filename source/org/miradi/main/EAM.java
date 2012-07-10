@@ -162,7 +162,7 @@ public class EAM
 	
 	public static void showHtmlInfoMessageOkDialog(String messageFileName) throws Exception
 	{
-		showHtmlMessageOkDialog(messageFileName, INFORMATION_DIALOG_TITLE);
+		showHtmlMessageOkDialog(messageFileName, getInformationDialogTitle());
 	}
 
 	private static File getPreferredHomeDirectory()
@@ -470,7 +470,7 @@ public class EAM
 	
 	public static void notifyDialog(String text)
 	{
-		JOptionPane.showMessageDialog(getMainWindow(), text, INFORMATION_DIALOG_TITLE, JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(getMainWindow(), text, getInformationDialogTitle(), JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	public static int confirmDialog(String title, String text, String[] buttonLabels)
@@ -657,6 +657,11 @@ public class EAM
 			logWarning(text("It appears that Miradi was launched without the -Xmx512m switch. As a result, certain operations like Reports may run out of memory."));    
 	}
 	
+	private static String getInformationDialogTitle()
+	{
+		return EAM.text("Wintitle|Information");
+	}
+	
 	public final static String EXTERNAL_RESOURCE_DIRECTORY_NAME = "ExternalResourceDirectory";
 	
 	public static int STANDARD_SCROLL_INCREMENT = 12;
@@ -673,7 +678,6 @@ public class EAM
 	public static final String STRING_TO_SUBSTITUTE = "%s";
 	public static final char DASH = '-';
 	public static final String LEGAL_NON_ALPHA_NUMERIC_CHARACTERS = "_. " + DASH;
-	public static final String INFORMATION_DIALOG_TITLE = EAM.text("Wintitle|Information");
 	
 	public static final String EXCEPTIONS_LOG_FILE_NAME = "exceptions.log";
 	private final static String FILEINUSE_ERROR_MESSAGE_FILE_NAME = "FileInUseErrorMessage.html";
