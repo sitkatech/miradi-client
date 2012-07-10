@@ -306,6 +306,12 @@ public class MpfToMpzConverter extends AbstractConverter
 	{
 		return project;
 	}
+
+	@Override
+	protected String getProjectPrefix()
+	{
+		return projectName;
+	}
 	
 	private Project project;
 	private String projectName;

@@ -20,7 +20,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.project;
 
-public class AbstractConverter
+abstract public class AbstractConverter
 {
+	protected String getObjectsDirectoryPrefix(int objectType)
+	{
+		return getJsonPrefix() + "objects-" + objectType + "/";
+	}
+	
+	protected String getJsonPrefix()
+	{
+		return getProjectPrefix() + "json/";
+	}
 
+	abstract protected String getProjectPrefix();
 }
