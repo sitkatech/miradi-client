@@ -357,7 +357,7 @@ public class MpzToMpfConverter
 		EnhancedJsonObject json = readJson(entry);
 		project.createObject(ref);
 		BaseObject object = BaseObject.find(project, ref);
-		object.loadFromJson2(json);
+		object.loadFromJson(json);
 	}
 
 	private String extractProjectPrefix()
