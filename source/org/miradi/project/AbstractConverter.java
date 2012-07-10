@@ -31,6 +31,16 @@ abstract public class AbstractConverter
 	{
 		return getProjectPrefix() + "json/";
 	}
+	
+	protected String getVersionEntryPath()
+	{
+		return getJsonPrefix() + "version";
+	}
+	
+	protected String getProjectInfoEntryPath()
+	{
+		return getJsonPrefix() + "project";
+	}
 
 	abstract protected String getProjectPrefix();
 }
