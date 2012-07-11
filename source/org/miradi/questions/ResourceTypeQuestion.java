@@ -33,7 +33,7 @@ public class ResourceTypeQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 			new ChoiceItem(PERSON_CODE, EAM.text("Person")),
-			new ChoiceItem(GROUP_CODE, EAM.text(GROUP_CODE)),
+			new ChoiceItem(GROUP_CODE, EAM.text("Group")),
 		};
 	}
 	
