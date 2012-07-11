@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-11 13:21-0500\n"
+"POT-Creation-Date: 2012-07-11 15:28-0500\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -953,13 +953,6 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:42
 msgid "<html>Select which column groups to display."
 msgstr "<html>Sélectionner les groupes de colonnes à afficher."
-
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:36
-msgid ""
-"<html>Selecting one or more resources below<br>will filter the display to "
-"only include <br>work unit and budget total values for <br>items that are "
-"assigned to those resources."
-msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:81
 msgid ""
@@ -6216,6 +6209,13 @@ msgstr "Sélectionner ..."
 #: Miradi/source/org/miradi/views/reports/doers/RunReportTemplateDoer.java:72
 msgid "Selected Report Template Was Exported as RTF."
 msgstr "Le modèle de rapport sélectionné a été exporté sous RTF."
+
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:36
+msgid ""
+"Selecting one or more resources below<br>will filter the display to only "
+"include <br>work unit and budget total values for <br>items that are "
+"assigned to those resources."
+msgstr ""
 
 #: Miradi/source/org/miradi/views/planning/doers/AbstractPlanningViewConfigurationCodeListEditorDoer.java:54
 msgid "Selection Dialog"
