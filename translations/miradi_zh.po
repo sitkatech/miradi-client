@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-11 16:43-0500\n"
+"POT-Creation-Date: 2012-07-11 17:16-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -7121,6 +7121,10 @@ msgstr ""
 msgid "Tab|Goals"
 msgstr "总目标组"
 
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityTreeManagementPanel.java:91
+msgid "Tab|Indicators"
+msgstr "指示物 \t\t"
+
 #: Miradi/source/org/miradi/dialogs/activity/MethodListManagementPanel.java:70
 msgid "Tab|Methods"
 msgstr "方法"
@@ -7145,7 +7149,6 @@ msgstr "标签|报告模板"
 msgid "Tab|Stresses"
 msgstr "压力"
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityTreeManagementPanel.java:91
 #: Miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanel.java:70
 #: Miradi/source/org/miradi/dialogs/viability/TargetKeaViabilityTreeManagementPanel.java:75
 msgid "Tab|Viability"
@@ -29198,9 +29201,6 @@ msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
 
 #~ msgid "Custom Reports"
 #~ msgstr "定制报告 \t\t"
-
-#~ msgid "Tab|Indicators"
-#~ msgstr "指示物 \t\t"
 
 #~ msgid " A project by this name already exists: "
 #~ msgstr "已存在使用相同名称的项目: \t\t"
