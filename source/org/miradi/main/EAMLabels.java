@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.main;
 
+import java.util.HashMap;
+
 public class EAMLabels
 {
 	public static String getOverwriteLabel()
@@ -70,5 +72,17 @@ public class EAMLabels
 	public static String getInformationDialogTitle()
 	{
 		return EAM.text("Wintitle|Information");
+	}
+
+	public static String getErrorMessage(Exception e)
+	{
+		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+		tokenReplacementMap.put("%message", e.getMessage());
+		tokenReplacementMap.put("%logPath", EAM.getDefaultExceptionsLogFile().getAbsolutePath());
+		return EAM.substitute("An unexpected error occurred: %message" +
+				"\n\nPlease report this to the Miradi support team, " +
+				"ideally including the contents of this file: " +
+				"\n\n   %logPath" +  
+				"\n\nMiradi has attempted to save your latest changes, and will now exit.", tokenReplacementMap);
 	}
 }
