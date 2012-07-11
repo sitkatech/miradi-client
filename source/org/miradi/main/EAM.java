@@ -212,7 +212,7 @@ public class EAM
 		}
 	}
 
-	private static File getDefaultExceptionsLogFile()
+	static File getDefaultExceptionsLogFile()
 	{
 		return new File(getHomeDirectory(), EXCEPTIONS_LOG_FILE_NAME);
 	}
@@ -413,14 +413,7 @@ public class EAM
 	{
 		logException(e);
 		
-		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
-		tokenReplacementMap.put("%message", e.getMessage());
-		tokenReplacementMap.put("%logPath", getDefaultExceptionsLogFile().getAbsolutePath());
-		errorDialog(EAM.substitute("An unexpected error occurred: %message" +
-				"\n\nPlease report this to the Miradi support team, " +
-				"ideally including the contents of this file: " +
-				"\n\n   %logPath" +  
-				"\n\nMiradi has attempted to save your latest changes, and will now exit.", tokenReplacementMap));
+		errorDialog(EAMLabels.getErrorMessage(e));
 		
 		exitMiradiNowDueToFatalError();
 	}
