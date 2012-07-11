@@ -37,7 +37,7 @@ public class StrategyImpactQuestion extends StaticChoiceQuestionSortableByCode
 			new ChoiceItemWithLongDescriptionProvider("", EAM.text("Not Specified"), Color.WHITE),
 			new ChoiceItemWithLongDescriptionProvider(LOW_CODE, EAM.text("Low"), EAM.text("The strategy will probably not contribute to meaningful threat mitigation or target restoration."), COLOR_ALERT),
 			new ChoiceItemWithLongDescriptionProvider(MEDIUM_CODE, EAM.text("Medium"), EAM.text("The strategy could possibly help mitigate a threat or restore a target."), COLOR_CAUTION),
-			new ChoiceItemWithLongDescriptionProvider(HIGH_CODE, EAM.text("High"), EAM.text("he strategy is likely to help mitigate a threat or restore a target."), COLOR_OK),
+			new ChoiceItemWithLongDescriptionProvider(HIGH_CODE, EAM.text("High"), EAM.text("The strategy is likely to help mitigate a threat or restore a target."), COLOR_OK),
 			new ChoiceItemWithLongDescriptionProvider(VERY_HIGH_CODE, EAM.text("Very High"), EAM.text("The strategy is very likely to completely mitigate a threat or restore a target."), COLOR_GREAT),
 		};
 	}
