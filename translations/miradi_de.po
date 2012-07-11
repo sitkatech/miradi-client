@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-11 11:38-0500\n"
+"POT-Creation-Date: 2012-07-11 13:00-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -1125,6 +1125,7 @@ msgid "Accounting Code"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/workplan/AccountingCodeManagementConfiguration.java:60
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:291
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:189
 msgid "Accounting Codes"
 msgstr ""
@@ -1134,10 +1135,6 @@ msgid ""
 "Accounting Codes - A set of categories developed by an organization to "
 "categorize and track expenses.  They typically include hierarchical strings "
 "of numbers and/or letters (the code) along with a text description."
-msgstr ""
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:291
-msgid "AccountingCodes"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:56
@@ -2073,14 +2070,14 @@ msgid ""
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:285
+msgid "Actual Expenditures"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:285
 msgid ""
 "Actual Expenditures - A backwards looking report on the money you spent for "
 "the activities/methods and tasks you undertook to implement your strategic "
 "and monitoring plans."
-msgstr ""
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:285
-msgid "ActualExpenditures"
 msgstr ""
 
 #: Miradi/source/org/miradi/main/MiradiLogoPanel.java:34
@@ -4272,6 +4269,10 @@ msgstr "Importieren abgeschlossen. Soll %s geöffnet werden?"
 msgid "Import Project"
 msgstr "Projekt importieren"
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:270
+msgid "Import Zip"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/jump/ActionJumpWelcomeImportStep.java:36
 msgid "Import a Miradi Project Zipfile (.mpz)"
 msgstr "Eine Miradi Zip Datei importieren"
@@ -4283,10 +4284,6 @@ msgstr "Importieren wurde abgebrochen!"
 #: Miradi/source/org/miradi/actions/jump/ActionJumpWelcomeImportStep.java:47
 msgid "Import..."
 msgstr "Importieren..."
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:270
-msgid "ImportZip"
-msgstr "ZipImportieren"
 
 #: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:222
 msgid "Importing ConPro Data..."
@@ -4434,6 +4431,7 @@ msgstr "Hilfe"
 msgid "Intensive Assessment"
 msgstr "Intensive Untersuchung/Erhebung"
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:311
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:74
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewIntermediateResultPropertiesPanel.java:33
 msgid "Intermediate Result"
@@ -4449,10 +4447,6 @@ msgid ""
 "outcome that results from implementing one or more conservation strategies. "
 "In Miradi, an intermediate result is represented by a blue rectangle."
 msgstr ""
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:311
-msgid "IntermediateResult"
-msgstr "Zwischenergebnis"
 
 # ?? -felix
 #: Miradi/source/org/miradi/wizard/WizardTitlePanel.java:69
@@ -5246,6 +5240,10 @@ msgid "Minor Issues - Ongoing, has minor issues that need attention"
 msgstr ""
 "Kleine Probleme - Fortlaufend, kleinere Probleme die Zuwendung benötigen"
 
+#: Miradi/source/org/miradi/views/umbrella/PreferencesPopupDoer.java:53
+msgid "Miradi Preferences"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/MainWindowAction.java:141
 msgid ""
 "Miradi could not complete that operation \n"
@@ -5361,6 +5359,7 @@ msgstr "Name"
 msgid "Needs Attention"
 msgstr "Benötigt Zuwendung"
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:314
 #: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:39
 msgid "Nested Target"
 msgstr "Eingebettetes Schutzobjekt"
@@ -5376,10 +5375,6 @@ msgid ""
 msgstr ""
 "Eingebettetes Schutzobjekt - Arten, ökologische Gesellschaften oder "
 "ökologische System Schutzobjekte TODO"
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:314
-msgid "NestedTarget"
-msgstr "EingebettetesSchutzobjekt"
 
 #: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:94
 msgid "New Project Filename:"
@@ -5556,6 +5551,10 @@ msgid "Open Project"
 msgstr "Projekt Öffnen"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
+msgid "Open Standards"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
 msgid ""
 "Open Standards for the Practice of Conservation - A series of best practices "
 "for designing, managing, monitoring, and learning from conservation "
@@ -5573,10 +5572,6 @@ msgstr ""
 #: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:130
 msgid "Open hyperlink"
 msgstr ""
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
-msgid "OpenStandards"
-msgstr "OffeneStandards"
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:68
 msgid "Operation was canceled!"
@@ -6571,6 +6566,10 @@ msgstr "Schritt (not verfügbar)"
 msgid "Stop"
 msgstr "Stop"
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
+msgid "Strategic Plan"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/summary/SummaryPlanningStrategicSubPanel.java:45
 msgid "Strategic Planning"
 msgstr ""
@@ -6579,10 +6578,6 @@ msgstr ""
 msgid ""
 "Strategic plan - An outline of how the project team proposes to change the "
 "world that contains a project's goals, objectives, and strategies."
-msgstr ""
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
-msgid "StrategicPlan"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:50
@@ -7559,14 +7554,14 @@ msgid "TT|Zoom To Fit"
 msgstr "auf Fenstergröße zoomen"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:297
+msgid "Tab Delimited File"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:297
 msgid ""
 "Tab Delimited File - A software file with regular entries spaced by tab "
 "commands.  Most word processors or spreadsheet programs will allow you to "
 "create a table and then export as a tab delimited file."
-msgstr ""
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:297
-msgid "TabDelimitedFile"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:153
@@ -8121,8 +8116,8 @@ msgid "Threat: %s"
 msgstr "Bedrohungen: %s"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:308
-msgid "ThreatReductionResult"
-msgstr "Bedrohungsminderungsergebnis"
+msgid "ThreatReduction Result"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:58
 msgid "Threats"
@@ -8585,6 +8580,7 @@ msgstr "Sehr Klein"
 msgid "Viability Analysis Mode"
 msgstr "Viabilitätsmodus"
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:317
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:99
 msgid "Viability Ratings"
 msgstr ""
@@ -8597,10 +8593,6 @@ msgid ""
 "establishing this rating scale, the project team is specifying its "
 "assumption as to what constitutes a \"conserved\" target versus one that is "
 "in need of management intervention."
-msgstr ""
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:317
-msgid "ViabilityRatings"
 msgstr ""
 
 #: Miradi/source/org/miradi/wizard/noproject/MainNewsPanel.java:131
@@ -30018,6 +30010,21 @@ msgid ""
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
 "Marine___Western Tropical Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "ImportZip"
+#~ msgstr "ZipImportieren"
+
+#~ msgid "IntermediateResult"
+#~ msgstr "Zwischenergebnis"
+
+#~ msgid "NestedTarget"
+#~ msgstr "EingebettetesSchutzobjekt"
+
+#~ msgid "OpenStandards"
+#~ msgstr "OffeneStandards"
+
+#~ msgid "ThreatReductionResult"
+#~ msgstr "Bedrohungsminderungsergebnis"
 
 #~ msgid ""
 #~ "\n"

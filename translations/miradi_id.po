@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-11 11:38-0500\n"
+"POT-Creation-Date: 2012-07-11 13:00-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -984,6 +984,7 @@ msgid "Accounting Code"
 msgstr "Kode Akuntansi "
 
 #: Miradi/source/org/miradi/views/workplan/AccountingCodeManagementConfiguration.java:60
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:291
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:189
 msgid "Accounting Codes"
 msgstr "Kode Akuntansi"
@@ -998,10 +999,6 @@ msgstr ""
 "untuk menggolongkan dan melacak sejumlah pengeluaran. Kode-kode ini biasanya "
 "meliputi deretan hierarkies dari angka-angka dan/atau huruf-huruf (kode) "
 "bersama dengan keterangan teks."
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:291
-msgid "AccountingCodes"
-msgstr "Kode Akuntansi"
 
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:56
 msgid "Acct Code"
@@ -1909,6 +1906,10 @@ msgstr ""
 "kuning."
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:285
+msgid "Actual Expenditures"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:285
 msgid ""
 "Actual Expenditures - A backwards looking report on the money you spent for "
 "the activities/methods and tasks you undertook to implement your strategic "
@@ -1917,10 +1918,6 @@ msgstr ""
 "Pengeluaran Sebenarnya - Laporan yang dibuat untuk meninjau keuangan yang "
 "telah Anda belanjakan untuk aktivitas/metode dan tugas yang dilakukan dalam "
 "melaksanakan rencana strategis dan rencana pemantauan Anda."
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:285
-msgid "ActualExpenditures"
-msgstr "Pengeluaran Sebenarnya"
 
 #: Miradi/source/org/miradi/main/MiradiLogoPanel.java:34
 msgid "Adaptive Management Software for Conservation Projects"
@@ -4058,6 +4055,10 @@ msgstr ""
 msgid "Import Project"
 msgstr "Impor Proyek "
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:270
+msgid "Import Zip"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/jump/ActionJumpWelcomeImportStep.java:36
 msgid "Import a Miradi Project Zipfile (.mpz)"
 msgstr "Impor Berkas Zip Proyek Miradi (.mpz) "
@@ -4069,10 +4070,6 @@ msgstr ""
 #: Miradi/source/org/miradi/actions/jump/ActionJumpWelcomeImportStep.java:47
 msgid "Import..."
 msgstr "Impor… "
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:270
-msgid "ImportZip"
-msgstr "Impor Zip"
 
 #: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:222
 msgid "Importing ConPro Data..."
@@ -4217,6 +4214,7 @@ msgstr "Instruksi "
 msgid "Intensive Assessment"
 msgstr "Penilaian Intensif"
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:311
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:74
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewIntermediateResultPropertiesPanel.java:33
 msgid "Intermediate Result"
@@ -4235,10 +4233,6 @@ msgstr ""
 "Hasil Antara – Suatu faktor dalam rangkaian hasil yang menjabarkan hasil "
 "spesifik dari pelaksanaan satu atau lebih strategi konservasi. Dalam Miradi, "
 "hasil antara diwakili oleh persegi empat warna biru."
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:311
-msgid "IntermediateResult"
-msgstr "Hasil Antara"
 
 #: Miradi/source/org/miradi/wizard/WizardTitlePanel.java:69
 msgid "Intro to View"
@@ -5037,6 +5031,10 @@ msgstr ""
 "Masalah Kecil – Sedang berlangsung, memiliki masalah-masalah kecil yang "
 "memerlukan perhatian"
 
+#: Miradi/source/org/miradi/views/umbrella/PreferencesPopupDoer.java:53
+msgid "Miradi Preferences"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/MainWindowAction.java:141
 msgid ""
 "Miradi could not complete that operation \n"
@@ -5149,6 +5147,7 @@ msgstr "Nama "
 msgid "Needs Attention"
 msgstr ""
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:314
 #: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:39
 msgid "Nested Target"
 msgstr "Target Bersarang "
@@ -5164,10 +5163,6 @@ msgstr ""
 "ekologi yang kebutuhan konservasinya digolongkan bersama dalam satu target "
 "konservasi utama atau lebih. Seringkali mencakup target kawasan ekologi yang "
 "ingin diperhatikan dan/atau dilacak oleh suatu tim."
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:314
-msgid "NestedTarget"
-msgstr "Target Bersarang"
 
 #: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:94
 msgid "New Project Filename:"
@@ -5341,6 +5336,10 @@ msgid "Open Project"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
+msgid "Open Standards"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
 msgid ""
 "Open Standards for the Practice of Conservation - A series of best practices "
 "for designing, managing, monitoring, and learning from conservation "
@@ -5352,10 +5351,6 @@ msgstr ""
 #: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:130
 msgid "Open hyperlink"
 msgstr ""
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
-msgid "OpenStandards"
-msgstr "Standar Terbuka"
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:68
 msgid "Operation was canceled!"
@@ -6311,6 +6306,10 @@ msgstr "Langkah (tidak tersedia)"
 msgid "Stop"
 msgstr ""
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
+msgid "Strategic Plan"
+msgstr "Rencana Strategis "
+
 #: Miradi/source/org/miradi/views/summary/SummaryPlanningStrategicSubPanel.java:45
 msgid "Strategic Planning"
 msgstr ""
@@ -6322,10 +6321,6 @@ msgid ""
 msgstr ""
 "Rencana strategi – Suatu kerangka dari bagaimana cara tim proyek mengusulkan "
 "untuk mengubah dunia, yang berisi sasaran, tujuan dan strategi proyek."
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
-msgid "StrategicPlan"
-msgstr "Rencana Strategis"
 
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:50
 #: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:56
@@ -7271,6 +7266,10 @@ msgid "TT|Zoom To Fit"
 msgstr "Zum sampai Sesuai "
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:297
+msgid "Tab Delimited File"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:297
 msgid ""
 "Tab Delimited File - A software file with regular entries spaced by tab "
 "commands.  Most word processors or spreadsheet programs will allow you to "
@@ -7280,10 +7279,6 @@ msgstr ""
 "biasanya dipisahkan oleh perintah tab. Sebagian besar program pengolah kata "
 "atau lembar bentang akan memungkinkan Anda untuk membuat suatu tabel lalu "
 "mengekspornya sebagai berkas yang dipisahkan tab."
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:297
-msgid "TabDelimitedFile"
-msgstr "Berkas yang Dipisahkan Tab"
 
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:153
 msgid "Table Row Height Mode"
@@ -7815,8 +7810,8 @@ msgid "Threat: %s"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:308
-msgid "ThreatReductionResult"
-msgstr "Hasil Pengurangan Ancaman"
+msgid "ThreatReduction Result"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:58
 msgid "Threats"
@@ -8280,6 +8275,7 @@ msgstr "Sangat Kecil"
 msgid "Viability Analysis Mode"
 msgstr "Mode Analisis Kelangsungan "
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:317
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:99
 msgid "Viability Ratings"
 msgstr "Peringkat Kelangsungan "
@@ -8301,10 +8297,6 @@ msgstr ""
 "secara spesifik asumsi-asumsi mereka tentang apa yang dimaksud dengan target "
 "yang \"dilestarikan\" dibandingkan dengan target yang memerlukan intervensi "
 "manajemen."
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:317
-msgid "ViabilityRatings"
-msgstr "Peringkat Kelangsungan"
 
 #: Miradi/source/org/miradi/wizard/noproject/MainNewsPanel.java:131
 msgid "View News"
@@ -32302,6 +32294,36 @@ msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
 
+#~ msgid "AccountingCodes"
+#~ msgstr "Kode Akuntansi"
+
+#~ msgid "ActualExpenditures"
+#~ msgstr "Pengeluaran Sebenarnya"
+
+#~ msgid "ImportZip"
+#~ msgstr "Impor Zip"
+
+#~ msgid "IntermediateResult"
+#~ msgstr "Hasil Antara"
+
+#~ msgid "NestedTarget"
+#~ msgstr "Target Bersarang"
+
+#~ msgid "OpenStandards"
+#~ msgstr "Standar Terbuka"
+
+#~ msgid "StrategicPlan"
+#~ msgstr "Rencana Strategis"
+
+#~ msgid "TabDelimitedFile"
+#~ msgstr "Berkas yang Dipisahkan Tab"
+
+#~ msgid "ThreatReductionResult"
+#~ msgstr "Hasil Pengurangan Ancaman"
+
+#~ msgid "ViabilityRatings"
+#~ msgstr "Peringkat Kelangsungan"
+
 #~ msgid ""
 #~ "\n"
 #~ "\n"
@@ -33631,9 +33653,6 @@ msgstr ""
 
 #~ msgid "Project Totals"
 #~ msgstr "Total Proyek "
-
-#~ msgid "Strategic Plan"
-#~ msgstr "Rencana Strategis "
 
 #~ msgid ""
 #~ "<HTML>One or more of these factors cannot be pasted as shared into this "

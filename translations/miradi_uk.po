@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-11 11:38-0500\n"
+"POT-Creation-Date: 2012-07-11 13:00-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -1050,6 +1050,7 @@ msgid "Accounting Code"
 msgstr "Розрахунковий код"
 
 #: Miradi/source/org/miradi/views/workplan/AccountingCodeManagementConfiguration.java:60
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:291
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:189
 msgid "Accounting Codes"
 msgstr "Бухгалтерські коди"
@@ -1063,10 +1064,6 @@ msgstr ""
 "Бухгалтерські коди - Низка категорій, розроблених організацією, щоб "
 "категоризувати і прослідковувати витрати. Вони, як правило, включають "
 "ієрархічні послідовності чисел і/або літер (код) разом з текстовим описом. "
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:291
-msgid "AccountingCodes"
-msgstr "Бухгалтерські коди"
 
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:56
 msgid "Acct Code"
@@ -1972,6 +1969,10 @@ msgstr ""
 "проекту. У Міраді  захід показується жовтим сплющеним овалом."
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:285
+msgid "Actual Expenditures"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:285
 msgid ""
 "Actual Expenditures - A backwards looking report on the money you spent for "
 "the activities/methods and tasks you undertook to implement your strategic "
@@ -1979,10 +1980,6 @@ msgid ""
 msgstr ""
 "Поточні витрати - звіт про кошти, витрачені на діяльності, методи і задачі, "
 "які ви виконали, щоб реалізувати ваш стратегічний план і план моніторингу."
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:285
-msgid "ActualExpenditures"
-msgstr "Поточні витрати"
 
 #: Miradi/source/org/miradi/main/MiradiLogoPanel.java:34
 msgid "Adaptive Management Software for Conservation Projects"
@@ -4103,6 +4100,10 @@ msgstr "Імпорт завершено. Чи бажаєте відкрити %s
 msgid "Import Project"
 msgstr "Імпортувати проект"
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:270
+msgid "Import Zip"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/jump/ActionJumpWelcomeImportStep.java:36
 msgid "Import a Miradi Project Zipfile (.mpz)"
 msgstr "Імпортувати Miradi Project Zipfile (.mpz)  "
@@ -4114,10 +4115,6 @@ msgstr ""
 #: Miradi/source/org/miradi/actions/jump/ActionJumpWelcomeImportStep.java:47
 msgid "Import..."
 msgstr "Імпортувати..."
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:270
-msgid "ImportZip"
-msgstr "Імпортувати Zip"
 
 #: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:222
 msgid "Importing ConPro Data..."
@@ -4261,6 +4258,7 @@ msgstr "Інструкції"
 msgid "Intensive Assessment"
 msgstr "Інтенсивна оцінка"
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:311
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:74
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewIntermediateResultPropertiesPanel.java:33
 msgid "Intermediate Result"
@@ -4279,10 +4277,6 @@ msgstr ""
 "Проміжний результат - Фактору ланцюгу результатів, який описує наслідок, що "
 "виник в результаті реалізації однієї або більше природоохоронних стратегій. "
 "У Міраді проміжний результат показується блакитним прямокутником."
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:311
-msgid "IntermediateResult"
-msgstr "ПроміжнийРезультат"
 
 #: Miradi/source/org/miradi/wizard/WizardTitlePanel.java:69
 msgid "Intro to View"
@@ -5077,6 +5071,10 @@ msgstr "Другорядне питання"
 msgid "Minor Issues - Ongoing, has minor issues that need attention"
 msgstr "Незначна справа - Діюча незначна справа, що потребує уваги "
 
+#: Miradi/source/org/miradi/views/umbrella/PreferencesPopupDoer.java:53
+msgid "Miradi Preferences"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/MainWindowAction.java:141
 msgid ""
 "Miradi could not complete that operation \n"
@@ -5188,6 +5186,7 @@ msgstr "Назва"
 msgid "Needs Attention"
 msgstr ""
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:314
 #: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:39
 msgid "Nested Target"
 msgstr "Ущільнені цілі"
@@ -5203,10 +5202,6 @@ msgstr ""
 "цілі), чиї природоохоронні потреби віднесені до однієї або більше фокусних "
 "природоохоронних цілей. Часто включають екорегіональні цілі, які робоча "
 "група хоче відмітити або простежити."
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:314
-msgid "NestedTarget"
-msgstr "Ущільнена ціль"
 
 #: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:94
 msgid "New Project Filename:"
@@ -5380,6 +5375,10 @@ msgid "Open Project"
 msgstr "Відкрити проект"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
+msgid "Open Standards"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
 msgid ""
 "Open Standards for the Practice of Conservation - A series of best practices "
 "for designing, managing, monitoring, and learning from conservation "
@@ -5391,10 +5390,6 @@ msgstr ""
 #: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:130
 msgid "Open hyperlink"
 msgstr ""
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
-msgid "OpenStandards"
-msgstr "Відкриті Стандарти"
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:68
 msgid "Operation was canceled!"
@@ -6349,6 +6344,10 @@ msgstr "Стадія (відсутня)"
 msgid "Stop"
 msgstr ""
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
+msgid "Strategic Plan"
+msgstr "Стратегічний план"
+
 #: Miradi/source/org/miradi/views/summary/SummaryPlanningStrategicSubPanel.java:45
 msgid "Strategic Planning"
 msgstr ""
@@ -6360,10 +6359,6 @@ msgid ""
 msgstr ""
 "Стратегічний план - документ, у якому показано, як робоча група пропонує "
 "змінити світ, що міститьцілі, завдання та стратегії проекту"
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
-msgid "StrategicPlan"
-msgstr "Стратегічний план"
 
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:50
 #: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:56
@@ -7310,6 +7305,10 @@ msgid "TT|Zoom To Fit"
 msgstr "TT|Збільшити до потрібного розміру"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:297
+msgid "Tab Delimited File"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:297
 msgid ""
 "Tab Delimited File - A software file with regular entries spaced by tab "
 "commands.  Most word processors or spreadsheet programs will allow you to "
@@ -7319,10 +7318,6 @@ msgstr ""
 "поділеними tab-командами. Більшість текстових редакторів або табличних "
 "програм дозволить вам створити таблицю і тоді експортувати її як tab "
 "delimited file."
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:297
-msgid "TabDelimitedFile"
-msgstr "TabDelimitedFile"
 
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:153
 msgid "Table Row Height Mode"
@@ -7851,8 +7846,8 @@ msgid "Threat: %s"
 msgstr "Загроза: %s"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:308
-msgid "ThreatReductionResult"
-msgstr "РезультатЗменшенняЗагрози"
+msgid "ThreatReduction Result"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:58
 msgid "Threats"
@@ -8312,6 +8307,7 @@ msgstr "Дуже маленький"
 msgid "Viability Analysis Mode"
 msgstr "Опція аналізу життєздатності"
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:317
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:99
 msgid "Viability Ratings"
 msgstr "Оцінки життєздатності"
@@ -8331,10 +8327,6 @@ msgstr ""
 "встановлюючи цю оціночну градацію робоча група встановлює свої припущення "
 "щодо того, що являє собою збережена ціль проти такої, яка потребує "
 "управлінського втручання."
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:317
-msgid "ViabilityRatings"
-msgstr "ОцінкиЖиттєздатності"
 
 #: Miradi/source/org/miradi/wizard/noproject/MainNewsPanel.java:131
 msgid "View News"
@@ -33967,6 +33959,36 @@ msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 
+#~ msgid "AccountingCodes"
+#~ msgstr "Бухгалтерські коди"
+
+#~ msgid "ActualExpenditures"
+#~ msgstr "Поточні витрати"
+
+#~ msgid "ImportZip"
+#~ msgstr "Імпортувати Zip"
+
+#~ msgid "IntermediateResult"
+#~ msgstr "ПроміжнийРезультат"
+
+#~ msgid "NestedTarget"
+#~ msgstr "Ущільнена ціль"
+
+#~ msgid "OpenStandards"
+#~ msgstr "Відкриті Стандарти"
+
+#~ msgid "StrategicPlan"
+#~ msgstr "Стратегічний план"
+
+#~ msgid "TabDelimitedFile"
+#~ msgstr "TabDelimitedFile"
+
+#~ msgid "ThreatReductionResult"
+#~ msgstr "РезультатЗменшенняЗагрози"
+
+#~ msgid "ViabilityRatings"
+#~ msgstr "ОцінкиЖиттєздатності"
+
 #~ msgid ""
 #~ "\n"
 #~ "\n"
@@ -34560,9 +34582,6 @@ msgstr ""
 
 #~ msgid "3"
 #~ msgstr "3"
-
-#~ msgid "Strategic Plan"
-#~ msgstr "Стратегічний план"
 
 #~ msgid "Green (Biodiversity Target)"
 #~ msgstr "Зелений (ціль біорізноманіття)"

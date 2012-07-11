@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-11 11:38-0500\n"
+"POT-Creation-Date: 2012-07-11 13:00-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -938,6 +938,7 @@ msgid "Accounting Code"
 msgstr "会计编码 \t\t"
 
 #: Miradi/source/org/miradi/views/workplan/AccountingCodeManagementConfiguration.java:60
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:291
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:189
 msgid "Accounting Codes"
 msgstr "会计编码"
@@ -950,10 +951,6 @@ msgid ""
 msgstr ""
 "会计编码——指由某个组织机构开发的一套用于分类和跟踪开支的分类系统。它们通常包"
 "括分梯级的数字串和/或字母（编码）串以及伴随的文字说明。"
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:291
-msgid "AccountingCodes"
-msgstr "会计编码"
 
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:56
 msgid "Acct Code"
@@ -1859,6 +1856,10 @@ msgstr ""
 "形来代表的。"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:285
+msgid "Actual Expenditures"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:285
 msgid ""
 "Actual Expenditures - A backwards looking report on the money you spent for "
 "the activities/methods and tasks you undertook to implement your strategic "
@@ -1866,10 +1867,6 @@ msgid ""
 msgstr ""
 "实际开支——指一份回顾报告，回顾为实施您的策略和监控计划而要展开的活动/方法和任"
 "务所花费的金额。"
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:285
-msgid "ActualExpenditures"
-msgstr "实际开支"
 
 #: Miradi/source/org/miradi/main/MiradiLogoPanel.java:34
 msgid "Adaptive Management Software for Conservation Projects"
@@ -3955,6 +3952,10 @@ msgstr ""
 msgid "Import Project"
 msgstr "导入项目 \t\t"
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:270
+msgid "Import Zip"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/jump/ActionJumpWelcomeImportStep.java:36
 msgid "Import a Miradi Project Zipfile (.mpz)"
 msgstr "导入Miradi项目压缩文件（.mpz） \t\t"
@@ -3966,10 +3967,6 @@ msgstr ""
 #: Miradi/source/org/miradi/actions/jump/ActionJumpWelcomeImportStep.java:47
 msgid "Import..."
 msgstr "导入... \t\t"
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:270
-msgid "ImportZip"
-msgstr "导入Zip"
 
 #: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:222
 msgid "Importing ConPro Data..."
@@ -4111,6 +4108,7 @@ msgstr "说明 \t\t"
 msgid "Intensive Assessment"
 msgstr "周密评估"
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:311
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:74
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewIntermediateResultPropertiesPanel.java:33
 msgid "Intermediate Result"
@@ -4128,10 +4126,6 @@ msgid ""
 msgstr ""
 "中途结果——指结果链中的一个因素，它描述的是由于实施了一个或多个保护策略而产生"
 "的特定结果。在Miradi中，中途结果是以蓝色长方形来代表的。"
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:311
-msgid "IntermediateResult"
-msgstr "中途结果"
 
 #: Miradi/source/org/miradi/wizard/WizardTitlePanel.java:69
 msgid "Intro to View"
@@ -4909,6 +4903,10 @@ msgstr ""
 msgid "Minor Issues - Ongoing, has minor issues that need attention"
 msgstr "次要问题——正在进行、需要注意到的次要问题"
 
+#: Miradi/source/org/miradi/views/umbrella/PreferencesPopupDoer.java:53
+msgid "Miradi Preferences"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/MainWindowAction.java:141
 msgid ""
 "Miradi could not complete that operation \n"
@@ -5016,6 +5014,7 @@ msgstr ""
 msgid "Needs Attention"
 msgstr ""
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:314
 #: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:39
 msgid "Nested Target"
 msgstr "嵌套对象 \t\t"
@@ -5029,10 +5028,6 @@ msgid ""
 msgstr ""
 "嵌套对象——指其保护需要是包含于一个或多个焦点保护对象之中的物种、生态群落或生"
 "态系统对象。通常包括了某个团队要关注和/或跟踪的生态地区对象。"
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:314
-msgid "NestedTarget"
-msgstr "嵌套对象"
 
 #: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:94
 msgid "New Project Filename:"
@@ -5205,6 +5200,10 @@ msgid "Open Project"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
+msgid "Open Standards"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
 msgid ""
 "Open Standards for the Practice of Conservation - A series of best practices "
 "for designing, managing, monitoring, and learning from conservation "
@@ -5216,10 +5215,6 @@ msgstr ""
 #: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:130
 msgid "Open hyperlink"
 msgstr ""
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
-msgid "OpenStandards"
-msgstr "开放标准"
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:68
 msgid "Operation was canceled!"
@@ -6141,6 +6136,10 @@ msgstr "步骤（无）"
 msgid "Stop"
 msgstr ""
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
+msgid "Strategic Plan"
+msgstr "策略计划 \t\t"
+
 #: Miradi/source/org/miradi/views/summary/SummaryPlanningStrategicSubPanel.java:45
 msgid "Strategic Planning"
 msgstr ""
@@ -6152,10 +6151,6 @@ msgid ""
 msgstr ""
 "策略计划——指的是一个大纲，它概括了项目团队如何建议来改造世界，其中包括项目总"
 "目标、分目标和各种策略。 "
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
-msgid "StrategicPlan"
-msgstr "策略计划"
 
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:50
 #: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:56
@@ -7091,6 +7086,10 @@ msgid "TT|Zoom To Fit"
 msgstr "放大到匹配 \t\t"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:297
+msgid "Tab Delimited File"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:297
 msgid ""
 "Tab Delimited File - A software file with regular entries spaced by tab "
 "commands.  Most word processors or spreadsheet programs will allow you to "
@@ -7098,10 +7097,6 @@ msgid ""
 msgstr ""
 "制表符分隔文件——指一份由制表符分隔输入内容的软件文件。大多数文字处理器或数据"
 "表软件允许您创建表格并以制表符分隔文件的格式导出。"
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:297
-msgid "TabDelimitedFile"
-msgstr "制表符分隔文件"
 
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:153
 msgid "Table Row Height Mode"
@@ -7607,8 +7602,8 @@ msgid "Threat: %s"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:308
-msgid "ThreatReductionResult"
-msgstr "威胁因子减少结果"
+msgid "ThreatReduction Result"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:58
 msgid "Threats"
@@ -8068,6 +8063,7 @@ msgstr "非常小"
 msgid "Viability Analysis Mode"
 msgstr "生存力分析模式 \t\t"
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:317
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:99
 msgid "Viability Ratings"
 msgstr "生存力分级 \t\t"
@@ -8085,10 +8081,6 @@ msgstr ""
 "差。生存力评级的定义通常是定量的，但也可以是定性的。通过建立该评级尺度，其效"
 "果是，项目团队对其假说做出了专门的规范，指明了是什么构成了\"已受保护\"对象以"
 "及哪些对象需要管理干预。"
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:317
-msgid "ViabilityRatings"
-msgstr "生存力评级"
 
 #: Miradi/source/org/miradi/wizard/noproject/MainNewsPanel.java:131
 msgid "View News"
@@ -29098,6 +29090,36 @@ msgid ""
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
 
+#~ msgid "AccountingCodes"
+#~ msgstr "会计编码"
+
+#~ msgid "ActualExpenditures"
+#~ msgstr "实际开支"
+
+#~ msgid "ImportZip"
+#~ msgstr "导入Zip"
+
+#~ msgid "IntermediateResult"
+#~ msgstr "中途结果"
+
+#~ msgid "NestedTarget"
+#~ msgstr "嵌套对象"
+
+#~ msgid "OpenStandards"
+#~ msgstr "开放标准"
+
+#~ msgid "StrategicPlan"
+#~ msgstr "策略计划"
+
+#~ msgid "TabDelimitedFile"
+#~ msgstr "制表符分隔文件"
+
+#~ msgid "ThreatReductionResult"
+#~ msgstr "威胁因子减少结果"
+
+#~ msgid "ViabilityRatings"
+#~ msgstr "生存力评级"
+
 #~ msgid "An unexpected error occurred: "
 #~ msgstr "出现意外错误： \t\t"
 
@@ -29504,9 +29526,6 @@ msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
 
 #~ msgid "Action|Delete Custom"
 #~ msgstr "删除定制 \t\t"
-
-#~ msgid "Strategic Plan"
-#~ msgstr "策略计划 \t\t"
 
 #~ msgid ""
 #~ "<HTML>One or more of these factors cannot be pasted as shared into this "
