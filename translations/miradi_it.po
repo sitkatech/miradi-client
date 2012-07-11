@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-11 11:01-0500\n"
+"POT-Creation-Date: 2012-07-11 11:38-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -19,32 +19,6 @@ msgstr ""
 "X-Poedit-Language: Italian\n"
 "X-Poedit-Country: ITALY\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-
-#: Miradi/source/org/miradi/main/EAM.java:420
-msgid ""
-"\n"
-"\n"
-"Miradi has attempted to save your latest changes, and will now exit."
-msgstr ""
-"\n"
-"\n"
-"Miradi ha tentato di salvare le tue modifiche e adesso si chiuderà."
-
-#: Miradi/source/org/miradi/main/EAM.java:417
-msgid ""
-"\n"
-"\n"
-"Please report this to the Miradi support team, ideally including the "
-"contents of this file: \n"
-"\n"
-"   "
-msgstr ""
-"\n"
-"\n"
-"Per favore invia questo report al gruppo di supporto di Miradi possibilmente "
-"includendo il contenuto di questo file: \n"
-"\n"
-"   "
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:59
 msgid ""
@@ -2120,17 +2094,13 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr "Un errore interno ha impedito questa operazione"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:52
+#: Miradi/source/org/miradi/main/EAMLabels.java:54
 msgid "An unexpected error has occurred"
 msgstr "Si è verificato un errore inaspettato"
 
 #: Miradi/source/org/miradi/actions/MainWindowAction.java:103
 msgid "An unexpected error has occurred."
 msgstr "Si è verificato un errore inaspettato."
-
-#: Miradi/source/org/miradi/main/EAM.java:416
-msgid "An unexpected error occurred: "
-msgstr "Si è verificato un errore inaspettato:"
 
 #: Miradi/source/org/miradi/views/workplan/AnalysisManagementConfiguration.java:50
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:184
@@ -2495,7 +2465,7 @@ msgstr "Regole"
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:229
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
-#: Miradi/source/org/miradi/main/EAMLabels.java:32
+#: Miradi/source/org/miradi/main/EAMLabels.java:34
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:127
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:54
@@ -2552,7 +2522,7 @@ msgstr "Sposta"
 msgid "Button|No"
 msgstr "No"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:42
+#: Miradi/source/org/miradi/main/EAMLabels.java:44
 #: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:239
 msgid "Button|OK"
 msgstr "OK"
@@ -2561,12 +2531,12 @@ msgstr "OK"
 msgid "Button|Ok"
 msgstr "Ok"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:37
+#: Miradi/source/org/miradi/main/EAMLabels.java:39
 #: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:44
 msgid "Button|Open"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:27
+#: Miradi/source/org/miradi/main/EAMLabels.java:29
 msgid "Button|Overwrite"
 msgstr ""
 
@@ -3154,7 +3124,7 @@ msgstr "Definisci l'Ambito geografico del Progetto di Conservazione"
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:65
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:75
-#: Miradi/source/org/miradi/main/EAMLabels.java:67
+#: Miradi/source/org/miradi/main/EAMLabels.java:69
 msgid "Delete"
 msgstr "Cancella"
 
@@ -4417,7 +4387,7 @@ msgstr "E' rilevante"
 msgid "Is Tagged"
 msgstr "E' etichettato"
 
-#: Miradi/source/org/miradi/main/EAM.java:642
+#: Miradi/source/org/miradi/main/EAM.java:638
 msgid ""
 "It appears that Miradi was launched without the -Xmx512m switch. As a "
 "result, certain operations like Reports may run out of memory."
@@ -6038,7 +6008,7 @@ msgid "Results Monitoring Plan"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
-#: Miradi/source/org/miradi/main/EAMLabels.java:62
+#: Miradi/source/org/miradi/main/EAMLabels.java:64
 msgid "Retain"
 msgstr "Mantieni"
 
@@ -8067,7 +8037,7 @@ msgstr "Proprietà Diagramma"
 msgid "Title|Direct Threat Properties"
 msgstr "Proprietà della Minaccia Diretta"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:57
+#: Miradi/source/org/miradi/main/EAMLabels.java:59
 msgid "Title|Error"
 msgstr "Errore"
 
@@ -8526,7 +8496,7 @@ msgstr "WCS"
 msgid "WWF"
 msgstr "WWF"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:47
+#: Miradi/source/org/miradi/main/EAMLabels.java:49
 msgid "Warning"
 msgstr "Avvertimento"
 
@@ -8660,7 +8630,7 @@ msgstr "Il Chi ignorato è:"
 msgid "Who Override was: %s"
 msgstr "Il Chi ignorato è: %s"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:72
+#: Miradi/source/org/miradi/main/EAMLabels.java:74
 msgid "Wintitle|Information"
 msgstr "Informazione"
 
@@ -30402,6 +30372,33 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Miradi has attempted to save your latest changes, and will now exit."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "Miradi ha tentato di salvare le tue modifiche e adesso si chiuderà."
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Please report this to the Miradi support team, ideally including the "
+#~ "contents of this file: \n"
+#~ "\n"
+#~ "   "
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "Per favore invia questo report al gruppo di supporto di Miradi "
+#~ "possibilmente includendo il contenuto di questo file: \n"
+#~ "\n"
+#~ "   "
+
+#~ msgid "An unexpected error occurred: "
+#~ msgstr "Si è verificato un errore inaspettato:"
 
 #~ msgid "Manage Tagged Object Sets"
 #~ msgstr "Gestisci l'insieme di oggetti marcati con tag"
