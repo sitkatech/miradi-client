@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-11 11:38-0500\n"
+"POT-Creation-Date: 2012-07-11 13:00-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -1064,6 +1064,7 @@ msgid "Accounting Code"
 msgstr "Тооцооны код"
 
 #: Miradi/source/org/miradi/views/workplan/AccountingCodeManagementConfiguration.java:60
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:291
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:189
 msgid "Accounting Codes"
 msgstr "Тооцооны кодууд"
@@ -1077,10 +1078,6 @@ msgstr ""
 "Тооцооны кодууд гэдэг нь - Хаана ямар зардал гарч буйг тогтоож ангилахаар "
 "байгууллагаас боловсруулсан ангиллын багц юм. Багц ерөнхийдөө бичгийн "
 "тайлбартай тоо ба/эсвэл үсгийн (код) шаталсан цувааг агуулдаг. "
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:291
-msgid "AccountingCodes"
-msgstr "Тооцооны кодууд"
 
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:56
 msgid "Acct Code"
@@ -1990,6 +1987,10 @@ msgstr ""
 "represented by a yellow flattened oval."
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:285
+msgid "Actual Expenditures"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:285
 msgid ""
 "Actual Expenditures - A backwards looking report on the money you spent for "
 "the activities/methods and tasks you undertook to implement your strategic "
@@ -1997,10 +1998,6 @@ msgid ""
 msgstr ""
 "Бодит зардал - Стратеги ба хяналтын төлөвлөгөөг хэрэгжүүлэх үйл ажиллагаа/"
 "арга зүйд зарцуулсан таны мөнгөний тайлан."
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:285
-msgid "ActualExpenditures"
-msgstr "Бодит зардал"
 
 #: Miradi/source/org/miradi/main/MiradiLogoPanel.java:34
 msgid "Adaptive Management Software for Conservation Projects"
@@ -4125,6 +4122,10 @@ msgstr "импорт хийх бүрэн дууссан. Нээж харах у�
 msgid "Import Project"
 msgstr "Төсөлд импорт хийх"
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:270
+msgid "Import Zip"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/jump/ActionJumpWelcomeImportStep.java:36
 msgid "Import a Miradi Project Zipfile (.mpz)"
 msgstr "Миради төслийн Zipfile (.mpz)-д импорт хийх"
@@ -4136,10 +4137,6 @@ msgstr ""
 #: Miradi/source/org/miradi/actions/jump/ActionJumpWelcomeImportStep.java:47
 msgid "Import..."
 msgstr "Импорт хийх..."
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:270
-msgid "ImportZip"
-msgstr "Zip-д импорт хийх"
 
 #: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:222
 msgid "Importing ConPro Data..."
@@ -4283,6 +4280,7 @@ msgstr "Зааварчилга"
 msgid "Intensive Assessment"
 msgstr "Нарийн үнэлгээ"
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:311
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:74
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewIntermediateResultPropertiesPanel.java:33
 msgid "Intermediate Result"
@@ -4301,10 +4299,6 @@ msgstr ""
 "Завсрын үр дүн - Нэг болон түүнээс дээш тооны хамгаалах стратегийг "
 "хэрэгжүүлсэнээр үр дүнгийн гинжин хэлхээнд гарсан тодорхой хүчин зүйл. "
 "Miradi-д завсрын үр дүнг цэнхэр тэгш өнцөгтөөр төлөөлүүлсэн."
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:311
-msgid "IntermediateResult"
-msgstr "Завсрын үр дүн"
 
 #: Miradi/source/org/miradi/wizard/WizardTitlePanel.java:69
 msgid "Intro to View"
@@ -5093,6 +5087,10 @@ msgstr ""
 "Чухал бус асуудлууд - Үргэлжилж байгаа, анхаарал хандуулах шаардлагатай ухал "
 "бус асуудлууд"
 
+#: Miradi/source/org/miradi/views/umbrella/PreferencesPopupDoer.java:53
+msgid "Miradi Preferences"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/MainWindowAction.java:141
 msgid ""
 "Miradi could not complete that operation \n"
@@ -5211,6 +5209,7 @@ msgstr "Нэр"
 msgid "Needs Attention"
 msgstr ""
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:314
 #: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:39
 msgid "Nested Target"
 msgstr "Давхар хамгаалагдах объект"
@@ -5227,10 +5226,6 @@ msgstr ""
 "буюу түүнээс дээш тооны хамгаалах чухал объектд багтаж орсон байдаг. Гол "
 "төлөв багийн анхааралдаа авах бюую/эсвэл ажиглах шаардлагатай гэж үзсэн "
 "экологийн бүсийн объектыг багтаасан байдаг."
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:314
-msgid "NestedTarget"
-msgstr "Давхар хамгаалагдах объект"
 
 #: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:94
 msgid "New Project Filename:"
@@ -5404,6 +5399,10 @@ msgid "Open Project"
 msgstr "Төслийг Нээх"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
+msgid "Open Standards"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
 msgid ""
 "Open Standards for the Practice of Conservation - A series of best practices "
 "for designing, managing, monitoring, and learning from conservation "
@@ -5415,10 +5414,6 @@ msgstr ""
 #: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:130
 msgid "Open hyperlink"
 msgstr ""
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
-msgid "OpenStandards"
-msgstr "Нээлттэй Стандарт"
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:68
 msgid "Operation was canceled!"
@@ -6386,6 +6381,10 @@ msgstr "Үе шат (боломжгүй)"
 msgid "Stop"
 msgstr "Зогсоох"
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
+msgid "Strategic Plan"
+msgstr "Стратеги Төлөвлөгөө"
+
 #: Miradi/source/org/miradi/views/summary/SummaryPlanningStrategicSubPanel.java:45
 msgid "Strategic Planning"
 msgstr "Стратеги Төлөвлөлт"
@@ -6398,10 +6397,6 @@ msgstr ""
 "Стратеги төлөвлөгөө - Төслийн зорилго, зорилтууд болон стратеги зэргийг "
 "агуулсан ертөнцийг төслийн баг хэрхэн яаж өөрчлөхийг төсөөлөж байгааг "
 "тоймлон гаргах."
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
-msgid "StrategicPlan"
-msgstr "Стратеги Төлөвлөгөө"
 
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:50
 #: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:56
@@ -7352,15 +7347,15 @@ msgid "TT|Zoom To Fit"
 msgstr "TT|Тааруулах"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:297
+msgid "Tab Delimited File"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:297
 msgid ""
 "Tab Delimited File - A software file with regular entries spaced by tab "
 "commands.  Most word processors or spreadsheet programs will allow you to "
 "create a table and then export as a tab delimited file."
 msgstr ""
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:297
-msgid "TabDelimitedFile"
-msgstr "Tab-аар тусгаарлагдсан файл"
 
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:153
 msgid "Table Row Height Mode"
@@ -7898,8 +7893,8 @@ msgid "Threat: %s"
 msgstr "Аюул занал: %s"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:308
-msgid "ThreatReductionResult"
-msgstr "Аюул заналыг Бууруулах Үр Дүн"
+msgid "ThreatReduction Result"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:58
 msgid "Threats"
@@ -8362,6 +8357,7 @@ msgstr "Маш Жижиг"
 msgid "Viability Analysis Mode"
 msgstr "Амьдрах чадварын дүн шинжилгээний горим"
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:317
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:99
 msgid "Viability Ratings"
 msgstr "Амьдрах чадварын үнэлгээ"
@@ -8382,10 +8378,6 @@ msgstr ""
 "хэмжүүрийг тогтоохдоо төслийн баг менежментийн оролцоо шаардлагатай байгаа "
 "хамгаалах зүйлийг хэзээ \"хамгаалагдсан\" гэж үзэх тухай өөрийн таамаглалыг "
 "онцгойлон тодорхойлдог. "
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:317
-msgid "ViabilityRatings"
-msgstr "Амьдрах чадварын түвшин"
 
 #: Miradi/source/org/miradi/wizard/noproject/MainNewsPanel.java:131
 msgid "View News"
@@ -31921,6 +31913,36 @@ msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 
+#~ msgid "AccountingCodes"
+#~ msgstr "Тооцооны кодууд"
+
+#~ msgid "ActualExpenditures"
+#~ msgstr "Бодит зардал"
+
+#~ msgid "ImportZip"
+#~ msgstr "Zip-д импорт хийх"
+
+#~ msgid "IntermediateResult"
+#~ msgstr "Завсрын үр дүн"
+
+#~ msgid "NestedTarget"
+#~ msgstr "Давхар хамгаалагдах объект"
+
+#~ msgid "OpenStandards"
+#~ msgstr "Нээлттэй Стандарт"
+
+#~ msgid "StrategicPlan"
+#~ msgstr "Стратеги Төлөвлөгөө"
+
+#~ msgid "TabDelimitedFile"
+#~ msgstr "Tab-аар тусгаарлагдсан файл"
+
+#~ msgid "ThreatReductionResult"
+#~ msgstr "Аюул заналыг Бууруулах Үр Дүн"
+
+#~ msgid "ViabilityRatings"
+#~ msgstr "Амьдрах чадварын түвшин"
+
 #~ msgid ""
 #~ "\n"
 #~ "\n"
@@ -32281,9 +32303,6 @@ msgstr ""
 
 #~ msgid "Spelling Suggestions"
 #~ msgstr "Зөв Бичлэгийн Санал"
-
-#~ msgid "Strategic Plan"
-#~ msgstr "Стратеги Төлөвлөгөө"
 
 #~ msgid "TT|Change which columns are shown"
 #~ msgstr "TT|Харагдаж буй багануудыг өөрлөх"

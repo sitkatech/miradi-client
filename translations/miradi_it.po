@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-11 11:38-0500\n"
+"POT-Creation-Date: 2012-07-11 13:00-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -1082,6 +1082,7 @@ msgid "Accounting Code"
 msgstr "Codice Contabile"
 
 #: Miradi/source/org/miradi/views/workplan/AccountingCodeManagementConfiguration.java:60
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:291
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:189
 msgid "Accounting Codes"
 msgstr "Codici Contabili"
@@ -1095,10 +1096,6 @@ msgstr ""
 "Codici Contabili - Un insieme di categorie sviluppate da un'organizzazione "
 "per ordinare e tracciare le spese. Tipicamente includono stringhe "
 "gerarchiche di numeri e/o lettere (il codice) con una descrizione testuale."
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:291
-msgid "AccountingCodes"
-msgstr "Codici Contabilità"
 
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:56
 msgid "Acct Code"
@@ -2008,6 +2005,10 @@ msgstr ""
 "schiacciato"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:285
+msgid "Actual Expenditures"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:285
 msgid ""
 "Actual Expenditures - A backwards looking report on the money you spent for "
 "the activities/methods and tasks you undertook to implement your strategic "
@@ -2016,10 +2017,6 @@ msgstr ""
 "Spese effettive - una relazione rivolta al passato sui soldi spesi per le "
 "attività / i metodi e le attività messe in campo per attuare i tuoi piani "
 "strategici e di monitoraggio."
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:285
-msgid "ActualExpenditures"
-msgstr "SpeseEffettive"
 
 #: Miradi/source/org/miradi/main/MiradiLogoPanel.java:34
 msgid "Adaptive Management Software for Conservation Projects"
@@ -4172,6 +4169,10 @@ msgstr "Importazione completata. Vuoi aprire %s?"
 msgid "Import Project"
 msgstr "Importa progetto"
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:270
+msgid "Import Zip"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/jump/ActionJumpWelcomeImportStep.java:36
 msgid "Import a Miradi Project Zipfile (.mpz)"
 msgstr "Importa un Miradi Project Zipfile (.mpz)"
@@ -4183,10 +4184,6 @@ msgstr ""
 #: Miradi/source/org/miradi/actions/jump/ActionJumpWelcomeImportStep.java:47
 msgid "Import..."
 msgstr "Importa..."
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:270
-msgid "ImportZip"
-msgstr "ImportZip"
 
 #: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:222
 msgid "Importing ConPro Data..."
@@ -4333,6 +4330,7 @@ msgstr "Istruzioni"
 msgid "Intensive Assessment"
 msgstr "Valutazione intensiva"
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:311
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:74
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewIntermediateResultPropertiesPanel.java:33
 msgid "Intermediate Result"
@@ -4352,10 +4350,6 @@ msgstr ""
 "risultato specifico derivato dalla applicazione di una o più strategie di "
 "conservazione. In Miradi, un risultato intermedio è rappresentato da un "
 "rettangolo blu."
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:311
-msgid "IntermediateResult"
-msgstr "IntermediateResult"
 
 #: Miradi/source/org/miradi/wizard/WizardTitlePanel.java:69
 msgid "Intro to View"
@@ -5151,6 +5145,10 @@ msgstr ""
 "Problemi minori - l'attività in corso ha problemi minori che hanno bisogno "
 "di attenzione"
 
+#: Miradi/source/org/miradi/views/umbrella/PreferencesPopupDoer.java:53
+msgid "Miradi Preferences"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/MainWindowAction.java:141
 msgid ""
 "Miradi could not complete that operation \n"
@@ -5269,6 +5267,7 @@ msgstr "Nome"
 msgid "Needs Attention"
 msgstr ""
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:314
 #: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:39
 msgid "Nested Target"
 msgstr "Target di Conservazione nidificati"
@@ -5284,10 +5283,6 @@ msgstr ""
 "critici di un sistema ecologico le cui esigenze di conservazione sono "
 "inglobati in uno o più Target di Conservazione. Spesso include obiettivi "
 "ecoregionali che un gruppo di lavoro vuole osservare e/o tracciare."
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:314
-msgid "NestedTarget"
-msgstr "Target di Conservazione nidificati"
 
 #: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:94
 msgid "New Project Filename:"
@@ -5464,6 +5459,10 @@ msgid "Open Project"
 msgstr "Apri progetto"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
+msgid "Open Standards"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
 msgid ""
 "Open Standards for the Practice of Conservation - A series of best practices "
 "for designing, managing, monitoring, and learning from conservation "
@@ -5475,10 +5474,6 @@ msgstr ""
 #: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:130
 msgid "Open hyperlink"
 msgstr ""
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
-msgid "OpenStandards"
-msgstr "OpenStandards"
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:68
 msgid "Operation was canceled!"
@@ -6449,6 +6444,10 @@ msgstr "Step(passo) non disponibile"
 msgid "Stop"
 msgstr "Stop"
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
+msgid "Strategic Plan"
+msgstr "Piano Strategico"
+
 #: Miradi/source/org/miradi/views/summary/SummaryPlanningStrategicSubPanel.java:45
 msgid "Strategic Planning"
 msgstr "Pianificazione Strategica"
@@ -6461,10 +6460,6 @@ msgstr ""
 "Piano Strategico - Una descrizione di come il Gruppo di Lavoro si propone di "
 "realizzare il cambiamento. Contiene Obiettivi di Conservazione, Obiettivi  "
 "Gestionali e Strategie di un progetto di conservazione."
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
-msgid "StrategicPlan"
-msgstr "PianoStrategico"
 
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:50
 #: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:56
@@ -7420,6 +7415,10 @@ msgid "TT|Zoom To Fit"
 msgstr "Adatta alla vista"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:297
+msgid "Tab Delimited File"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:297
 msgid ""
 "Tab Delimited File - A software file with regular entries spaced by tab "
 "commands.  Most word processors or spreadsheet programs will allow you to "
@@ -7428,10 +7427,6 @@ msgstr ""
 "File Delimitato da Tabulazioni - Un file con i dati intervallati da "
 "tabulazioni. Molti editor o fogli di calcolo consentono di creare una "
 "tabella ed esportarla come file delimitato da tabulazioni."
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:297
-msgid "TabDelimitedFile"
-msgstr "FileDelimitatodaTab"
 
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:153
 msgid "Table Row Height Mode"
@@ -7970,8 +7965,8 @@ msgid "Threat: %s"
 msgstr "Minaccia: %s"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:308
-msgid "ThreatReductionResult"
-msgstr "RisultatoFinaleperlaMinaccia"
+msgid "ThreatReduction Result"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:58
 msgid "Threats"
@@ -8430,6 +8425,7 @@ msgstr "Molto Piccolo"
 msgid "Viability Analysis Mode"
 msgstr "Modalità Analisi Vitalità"
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:317
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:99
 msgid "Viability Ratings"
 msgstr "Analisi Vitalità"
@@ -8451,10 +8447,6 @@ msgstr ""
 "la propria tesi sul significato attribuito  all'idea di  Target di "
 "Conservazione\"conservato\" rispetto a quello per cui invece è necessario un "
 "intervento gestionale."
-
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:317
-msgid "ViabilityRatings"
-msgstr "Analisi Vitalità"
 
 #: Miradi/source/org/miradi/wizard/noproject/MainNewsPanel.java:131
 msgid "View News"
@@ -30373,6 +30365,36 @@ msgid ""
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
 
+#~ msgid "AccountingCodes"
+#~ msgstr "Codici Contabilità"
+
+#~ msgid "ActualExpenditures"
+#~ msgstr "SpeseEffettive"
+
+#~ msgid "ImportZip"
+#~ msgstr "ImportZip"
+
+#~ msgid "IntermediateResult"
+#~ msgstr "IntermediateResult"
+
+#~ msgid "NestedTarget"
+#~ msgstr "Target di Conservazione nidificati"
+
+#~ msgid "OpenStandards"
+#~ msgstr "OpenStandards"
+
+#~ msgid "StrategicPlan"
+#~ msgstr "PianoStrategico"
+
+#~ msgid "TabDelimitedFile"
+#~ msgstr "FileDelimitatodaTab"
+
+#~ msgid "ThreatReductionResult"
+#~ msgstr "RisultatoFinaleperlaMinaccia"
+
+#~ msgid "ViabilityRatings"
+#~ msgstr "Analisi Vitalità"
+
 #~ msgid ""
 #~ "\n"
 #~ "\n"
@@ -30783,9 +30805,6 @@ msgstr ""
 
 #~ msgid "Show: "
 #~ msgstr "Mostra:"
-
-#~ msgid "Strategic Plan"
-#~ msgstr "Piano Strategico"
 
 #~ msgid "TT|Change which columns are shown"
 #~ msgstr "Cambia le colonne da mostrare"
