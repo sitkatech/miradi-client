@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-10 19:45-0500\n"
+"POT-Creation-Date: 2012-07-11 10:30-0500\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -2108,7 +2108,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr "Une erreur interne a empêché l'opération"
 
-#: Miradi/source/org/miradi/main/EAM.java:463
+#: Miradi/source/org/miradi/main/EAMLabels.java:52
 msgid "An unexpected error has occurred"
 msgstr "Une erreur inattendue s'est produite"
 
@@ -2480,6 +2480,7 @@ msgstr "Règles groupées"
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:229
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
+#: Miradi/source/org/miradi/main/EAMLabels.java:32
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:127
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:54
@@ -2536,6 +2537,7 @@ msgstr "Déplacer"
 msgid "Button|No"
 msgstr "Non"
 
+#: Miradi/source/org/miradi/main/EAMLabels.java:42
 #: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:239
 msgid "Button|OK"
 msgstr "OK"
@@ -2544,8 +2546,13 @@ msgstr "OK"
 msgid "Button|Ok"
 msgstr "Ok"
 
+#: Miradi/source/org/miradi/main/EAMLabels.java:37
 #: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:44
 msgid "Button|Open"
+msgstr ""
+
+#: Miradi/source/org/miradi/main/EAMLabels.java:27
+msgid "Button|Overwrite"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/PasteDoer.java:176
@@ -3128,8 +3135,7 @@ msgstr "Définir portée projet"
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:65
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:75
-#: Miradi/source/org/miradi/main/EAM.java:520
-#: Miradi/source/org/miradi/main/EAM.java:521
+#: Miradi/source/org/miradi/main/EAMLabels.java:67
 msgid "Delete"
 msgstr "Supprimer"
 
@@ -4397,6 +4403,12 @@ msgstr "Pertinent"
 #: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetEditableTableModel.java:90
 msgid "Is Tagged"
 msgstr "Marqué"
+
+#: Miradi/source/org/miradi/main/EAM.java:642
+msgid ""
+"It appears that Miradi was launched without the -Xmx512m switch. As a "
+"result, certain operations like Reports may run out of memory."
+msgstr ""
 
 #: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:61
 msgid "Italic"
@@ -6034,7 +6046,7 @@ msgid "Results Monitoring Plan"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
-#: Miradi/source/org/miradi/main/EAM.java:520
+#: Miradi/source/org/miradi/main/EAMLabels.java:62
 msgid "Retain"
 msgstr "Conserver"
 
@@ -7817,6 +7829,10 @@ msgstr ""
 msgid "The strategy is ethically, technically, AND financially feasible."
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:40
+msgid "The strategy is likely to help mitigate a threat or restore a target."
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/StrategyFeasibilityQuestion.java:38
 msgid "The strategy is not ethically, technically, OR financially feasible."
 msgstr ""
@@ -8084,7 +8100,7 @@ msgstr "Propriétés du diagramme"
 msgid "Title|Direct Threat Properties"
 msgstr "Propriétés de la menace directe"
 
-#: Miradi/source/org/miradi/main/EAM.java:468
+#: Miradi/source/org/miradi/main/EAMLabels.java:57
 msgid "Title|Error"
 msgstr "Erreur"
 
@@ -8546,7 +8562,7 @@ msgstr "WCS"
 msgid "WWF"
 msgstr "WWF"
 
-#: Miradi/source/org/miradi/main/EAM.java:141
+#: Miradi/source/org/miradi/main/EAMLabels.java:47
 msgid "Warning"
 msgstr "Avertissement"
 
@@ -8688,7 +8704,7 @@ msgstr "Le Qui ignoré a été :"
 msgid "Who Override was: %s"
 msgstr "Le Qui ignoré a été : %s"
 
-#: Miradi/source/org/miradi/main/EAM.java:662
+#: Miradi/source/org/miradi/main/EAMLabels.java:72
 msgid "Wintitle|Information"
 msgstr "Informations"
 
@@ -8858,10 +8874,6 @@ msgstr "un nouveau projet du début"
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectOverviewStep.java:95
 msgid "an exported Miradi file (.mpz or .cpmz)"
 msgstr "un fichier Miradi exporté (.mpz ou .cpmz)"
-
-#: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:40
-msgid "he strategy is likely to help mitigate a threat or restore a target."
-msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/NeverShowAgainPanel.java:48
 msgid "it will not be shown. Uncheck it to have Miradi "
