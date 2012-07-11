@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-11 16:43-0500\n"
+"POT-Creation-Date: 2012-07-11 17:16-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -7299,6 +7299,10 @@ msgstr "Khusus "
 msgid "Tab|Goals"
 msgstr "Sasaran-sasaran "
 
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityTreeManagementPanel.java:91
+msgid "Tab|Indicators"
+msgstr "Indikator "
+
 #: Miradi/source/org/miradi/dialogs/activity/MethodListManagementPanel.java:70
 msgid "Tab|Methods"
 msgstr "Metode "
@@ -7323,7 +7327,6 @@ msgstr "Templat-templat Laporan"
 msgid "Tab|Stresses"
 msgstr "Tekanan"
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityTreeManagementPanel.java:91
 #: Miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanel.java:70
 #: Miradi/source/org/miradi/dialogs/viability/TargetKeaViabilityTreeManagementPanel.java:75
 msgid "Tab|Viability"
@@ -32490,9 +32493,6 @@ msgstr ""
 
 #~ msgid "Custom Reports"
 #~ msgstr "Laporan Tersuai "
-
-#~ msgid "Tab|Indicators"
-#~ msgstr "Indikator "
 
 #~ msgid " A project by this name already exists: "
 #~ msgstr "Sudah ada proyek lain yang memakai nama ini: "

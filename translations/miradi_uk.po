@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-11 16:43-0500\n"
+"POT-Creation-Date: 2012-07-11 17:16-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -7338,6 +7338,10 @@ msgstr "Tab|Податок"
 msgid "Tab|Goals"
 msgstr "Tab|Цілі"
 
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityTreeManagementPanel.java:91
+msgid "Tab|Indicators"
+msgstr "Tab|Індикатори"
+
 #: Miradi/source/org/miradi/dialogs/activity/MethodListManagementPanel.java:70
 msgid "Tab|Methods"
 msgstr "Tab|Методи"
@@ -7362,7 +7366,6 @@ msgstr "Tab|Шаблони звітів"
 msgid "Tab|Stresses"
 msgstr "Tab|Стрес"
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityTreeManagementPanel.java:91
 #: Miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanel.java:70
 #: Miradi/source/org/miradi/dialogs/viability/TargetKeaViabilityTreeManagementPanel.java:75
 msgid "Tab|Viability"
@@ -34163,9 +34166,6 @@ msgstr ""
 
 #~ msgid "Custom Reports"
 #~ msgstr "Звичайні звіти"
-
-#~ msgid "Tab|Indicators"
-#~ msgstr "Tab|Індикатори"
 
 #~ msgid " A project by this name already exists: "
 #~ msgstr "Проект з таким іменем уже існує:"
