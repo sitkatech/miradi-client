@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-11 10:30-0500\n"
+"POT-Creation-Date: 2012-07-11 11:01-0500\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -2553,6 +2553,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/main/EAMLabels.java:27
 msgid "Button|Overwrite"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:66
+msgid "Button|Paste"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/PasteDoer.java:176
