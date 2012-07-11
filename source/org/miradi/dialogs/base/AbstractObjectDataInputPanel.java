@@ -98,6 +98,7 @@ import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.FillerLabel;
+import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.TableExporter;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.views.umbrella.ObjectPicker;
@@ -927,7 +928,8 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 
 	public void addLabel(String translatedText)
 	{
-		UiLabel label = new PanelTitleLabel("<html>" + translatedText);
+		translatedText = HtmlUtilities.wrapInHtmlTags(translatedText);
+		UiLabel label = new PanelTitleLabel(translatedText);
 		addTopAlignedLabel(label);
 	}
 
