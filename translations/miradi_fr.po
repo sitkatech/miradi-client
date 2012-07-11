@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-10 19:03-0500\n"
+"POT-Creation-Date: 2012-07-10 19:45-0500\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -4012,6 +4012,10 @@ msgstr "Réalité de terrain et modèle révisé"
 msgid "Ground-truth and revise model"
 msgstr "Réalité de terrain et modèle révisé"
 
+#: Miradi/source/org/miradi/questions/ResourceTypeQuestion.java:36
+msgid "Group"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:82
 msgid "Group Box"
 msgstr "Boîte de regroupement"
@@ -4743,12 +4747,9 @@ msgid "Lists"
 msgstr "Listes"
 
 #: Miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:65
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:69
 msgid "Location"
 msgstr "Lieu"
-
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:69
-msgid "Locaton"
-msgstr ""
 
 #: Miradi/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:37
 #: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:38
@@ -4780,8 +4781,8 @@ msgid "Manage Stresses for "
 msgstr "Gérer les tensions pour"
 
 #: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:411
-msgid "Manage Tagged Object Sets"
-msgstr "Gérer l'ensemble d'objets marqués"
+msgid "Manage Tags"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:137
 msgid "Manage Tags (BETA)..."
@@ -9186,8 +9187,8 @@ msgstr "Commentaires"
 msgid "FieldLabel|9.PseudoRelevantIndicatorRefs|Relevant Indicators"
 msgstr "Indicateurs pertinents"
 
-msgid "FieldLabel|9.ProgressPrecentRefs|Progress Precents"
-msgstr "Pourcentages d'avancement"
+msgid "FieldLabel|9.ProgressPrecentRefs|Progress Percents"
+msgstr ""
 
 msgid "FieldLabel|9.PseudoRelevantStrategyRefs|Relevant Strategies"
 msgstr "Stratégies pertinentes"
@@ -9219,8 +9220,8 @@ msgstr "Commentaires"
 msgid "FieldLabel|10.RelevantIndicatorSet|Relevant Indicators"
 msgstr "Indicateurs pertinents"
 
-msgid "FieldLabel|10.ProgressPrecentRefs|Progress Precents"
-msgstr "Pourcentages d'avancement"
+msgid "FieldLabel|10.ProgressPrecentRefs|Progress Percents"
+msgstr ""
 
 msgid "FieldLabel|10.PseudoRelevantIndicatorRefs|Relevant Indicators"
 msgstr "Indicateurs pertinents"
@@ -33909,6 +33910,15 @@ msgid ""
 msgstr ""
 "Marine___Atlantique tropical occidental___Écorégion marine du versant nord-"
 "est du Brésil___Brésil"
+
+#~ msgid "Manage Tagged Object Sets"
+#~ msgstr "Gérer l'ensemble d'objets marqués"
+
+#~ msgid "FieldLabel|9.ProgressPrecentRefs|Progress Precents"
+#~ msgstr "Pourcentages d'avancement"
+
+#~ msgid "FieldLabel|10.ProgressPrecentRefs|Progress Precents"
+#~ msgstr "Pourcentages d'avancement"
 
 #~ msgid "Attempt to execute command while in side effect mode"
 #~ msgstr "Tentative d'exécution d'une commande pendant mode effet secondaire"

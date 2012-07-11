@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-10 19:03-0500\n"
+"POT-Creation-Date: 2012-07-10 19:45-0500\n"
 "PO-Revision-Date: 2011-03-17 08:35-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3728,6 +3728,10 @@ msgstr ""
 msgid "Ground-truth and revise model"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/ResourceTypeQuestion.java:36
+msgid "Group"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:82
 msgid "Group Box"
 msgstr ""
@@ -4439,11 +4443,8 @@ msgid "Lists"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:65
-msgid "Location"
-msgstr ""
-
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:69
-msgid "Locaton"
+msgid "Location"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:37
@@ -4474,7 +4475,7 @@ msgid "Manage Stresses for "
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:411
-msgid "Manage Tagged Object Sets"
+msgid "Manage Tags"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:137
@@ -8574,7 +8575,7 @@ msgstr ""
 msgid "FieldLabel|9.PseudoRelevantIndicatorRefs|Relevant Indicators"
 msgstr ""
 
-msgid "FieldLabel|9.ProgressPrecentRefs|Progress Precents"
+msgid "FieldLabel|9.ProgressPrecentRefs|Progress Percents"
 msgstr ""
 
 msgid "FieldLabel|9.PseudoRelevantStrategyRefs|Relevant Strategies"
@@ -8607,7 +8608,7 @@ msgstr ""
 msgid "FieldLabel|10.RelevantIndicatorSet|Relevant Indicators"
 msgstr ""
 
-msgid "FieldLabel|10.ProgressPrecentRefs|Progress Precents"
+msgid "FieldLabel|10.ProgressPrecentRefs|Progress Percents"
 msgstr ""
 
 msgid "FieldLabel|10.PseudoRelevantIndicatorRefs|Relevant Indicators"

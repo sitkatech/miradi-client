@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-10 19:03-0500\n"
+"POT-Creation-Date: 2012-07-10 19:45-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -3908,6 +3908,10 @@ msgstr "Periksa Kebenaran di Lapangan dan Revisi Model "
 msgid "Ground-truth and revise model"
 msgstr "Periksa Kebenaran di Lapangan dan Revisi Model "
 
+#: Miradi/source/org/miradi/questions/ResourceTypeQuestion.java:36
+msgid "Group"
+msgstr "Kelompok"
+
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:82
 msgid "Group Box"
 msgstr "Kotak Grup"
@@ -4636,12 +4640,9 @@ msgid "Lists"
 msgstr "Daftar "
 
 #: Miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:65
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:69
 msgid "Location"
 msgstr "Lokasi "
-
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:69
-msgid "Locaton"
-msgstr ""
 
 #: Miradi/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:37
 #: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:38
@@ -4673,8 +4674,8 @@ msgid "Manage Stresses for "
 msgstr "Mengelola Tekanan untuk "
 
 #: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:411
-msgid "Manage Tagged Object Sets"
-msgstr "Mengelola Kumpulan Obyek yang Ditandai"
+msgid "Manage Tags"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:137
 msgid "Manage Tags (BETA)..."
@@ -8987,8 +8988,8 @@ msgstr "Komentar "
 msgid "FieldLabel|9.PseudoRelevantIndicatorRefs|Relevant Indicators"
 msgstr "Indikator yang Relevan"
 
-msgid "FieldLabel|9.ProgressPrecentRefs|Progress Precents"
-msgstr "Persentase Kemajuan"
+msgid "FieldLabel|9.ProgressPrecentRefs|Progress Percents"
+msgstr ""
 
 msgid "FieldLabel|9.PseudoRelevantStrategyRefs|Relevant Strategies"
 msgstr "Strategi Terkait "
@@ -9020,8 +9021,8 @@ msgstr "Komentar "
 msgid "FieldLabel|10.RelevantIndicatorSet|Relevant Indicators"
 msgstr "Indikator Terkait "
 
-msgid "FieldLabel|10.ProgressPrecentRefs|Progress Precents"
-msgstr "Persen Kemajuan "
+msgid "FieldLabel|10.ProgressPrecentRefs|Progress Percents"
+msgstr ""
 
 msgid "FieldLabel|10.PseudoRelevantIndicatorRefs|Relevant Indicators"
 msgstr "Indikator Terkait "
@@ -32316,6 +32317,15 @@ msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
 
+#~ msgid "Manage Tagged Object Sets"
+#~ msgstr "Mengelola Kumpulan Obyek yang Ditandai"
+
+#~ msgid "FieldLabel|9.ProgressPrecentRefs|Progress Precents"
+#~ msgstr "Persentase Kemajuan"
+
+#~ msgid "FieldLabel|10.ProgressPrecentRefs|Progress Precents"
+#~ msgstr "Persen Kemajuan "
+
 #~ msgid "Attempt to execute command while in side effect mode"
 #~ msgstr "Berusaha mengeksekusi perintah saat berada dalam mode efek samping "
 
@@ -36014,9 +36024,6 @@ msgstr ""
 
 #~ msgid "Group Box Link Properties"
 #~ msgstr "Sifat-sifat Tautan Kotak Grup "
-
-#~ msgid "Group"
-#~ msgstr "Kelompok"
 
 #~ msgid "sans-serif"
 #~ msgstr "sans-serif"
