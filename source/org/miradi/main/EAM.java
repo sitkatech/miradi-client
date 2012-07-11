@@ -155,9 +155,9 @@ public class EAM
 		}
 	}
 
-	public static void showHtmlMessageOkDialog(String messageFileName, String title) throws Exception
+	public static void showHtmlMessageOkDialog(String messageFileName, String translatedTitle) throws Exception
 	{
-		HtmlViewPanelWithMargins.createFromHtmlFileName(getMainWindow(), EAM.text(title), messageFileName).showAsOkDialog();
+		HtmlViewPanelWithMargins.createFromHtmlFileName(getMainWindow(), translatedTitle, messageFileName).showAsOkDialog();
 	}
 	
 	public static void showHtmlInfoMessageOkDialog(String messageFileName) throws Exception
