@@ -408,7 +408,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 			{
 				TaggedObjectSetPoolTable poolTable = new TaggedObjectSetPoolTable(getMainWindow(), new TaggedObjectSetPoolTableModel(getProject()));
 				ObjectManagementPanel panel = new TaggedObjectSetManagementPanel(getMainWindow(), poolTable);
-				AbstractPopUpEditDoer.showManagementDialog(mainWindow, panel, EAM.text("Manage Tagged Object Sets"));
+				AbstractPopUpEditDoer.showManagementDialog(mainWindow, panel, EAM.text("Manage Tags"));
 			}
 			catch (Exception e)
 			{
