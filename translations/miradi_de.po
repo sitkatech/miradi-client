@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-10 19:03-0500\n"
+"POT-Creation-Date: 2012-07-10 19:45-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -4111,6 +4111,10 @@ msgstr "Modell vor Ort testen und überarbeiten"
 msgid "Ground-truth and revise model"
 msgstr "Modell vor Ort testen und überarbeiten"
 
+#: Miradi/source/org/miradi/questions/ResourceTypeQuestion.java:36
+msgid "Group"
+msgstr ""
+
 # in diskussion - felix
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:82
 msgid "Group Box"
@@ -4854,12 +4858,9 @@ msgid "Lists"
 msgstr "Listen"
 
 #: Miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:65
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:69
 msgid "Location"
 msgstr "Ort"
-
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:69
-msgid "Locaton"
-msgstr ""
 
 #: Miradi/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:37
 #: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:38
@@ -4889,7 +4890,7 @@ msgid "Manage Stresses for "
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:411
-msgid "Manage Tagged Object Sets"
+msgid "Manage Tags"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:137
@@ -9280,7 +9281,7 @@ msgstr "Kommentare"
 msgid "FieldLabel|9.PseudoRelevantIndicatorRefs|Relevant Indicators"
 msgstr "Relevante(r) Indikator(en)"
 
-msgid "FieldLabel|9.ProgressPrecentRefs|Progress Precents"
+msgid "FieldLabel|9.ProgressPrecentRefs|Progress Percents"
 msgstr ""
 
 msgid "FieldLabel|9.PseudoRelevantStrategyRefs|Relevant Strategies"
@@ -9313,7 +9314,7 @@ msgstr "Kommentare"
 msgid "FieldLabel|10.RelevantIndicatorSet|Relevant Indicators"
 msgstr "Relevante(r) Indikator(en)"
 
-msgid "FieldLabel|10.ProgressPrecentRefs|Progress Precents"
+msgid "FieldLabel|10.ProgressPrecentRefs|Progress Percents"
 msgstr ""
 
 msgid "FieldLabel|10.PseudoRelevantIndicatorRefs|Relevant Indicators"

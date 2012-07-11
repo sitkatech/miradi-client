@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-10 19:03-0500\n"
+"POT-Creation-Date: 2012-07-10 19:45-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -3968,6 +3968,10 @@ msgstr " Бодит байдал ба Хянан засварлах загвар
 msgid "Ground-truth and revise model"
 msgstr "Бодит-байдал ба хянан засварлах загвар"
 
+#: Miradi/source/org/miradi/questions/ResourceTypeQuestion.java:36
+msgid "Group"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:82
 msgid "Group Box"
 msgstr "Бүлгийн хайрцаг"
@@ -4695,12 +4699,9 @@ msgid "Lists"
 msgstr "Жагсаалтууд"
 
 #: Miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:65
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:69
 msgid "Location"
 msgstr "Байршил"
-
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:69
-msgid "Locaton"
-msgstr ""
 
 #: Miradi/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:37
 #: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:38
@@ -4730,8 +4731,8 @@ msgid "Manage Stresses for "
 msgstr ".....ны дарамтыг удирдан зохицуулах "
 
 #: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:411
-msgid "Manage Tagged Object Sets"
-msgstr "Тэмдэглэгдсэн Багц Зорилтыг Удирдах"
+msgid "Manage Tags"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:137
 msgid "Manage Tags (BETA)..."
@@ -9092,8 +9093,8 @@ msgstr ""
 "БаганыХаяг|9.ЗагварчилсанХамааралБүхийШалгуурҮзүүлэлтЛавлагаа|Хамаарал Бүхий "
 "Шалгуур Үзүүлэлтүүд"
 
-msgid "FieldLabel|9.ProgressPrecentRefs|Progress Precents"
-msgstr "БаганыХаяг|9.ХэрэгжилтийнХувьЛавлагаа|Хэрэгжилтийн Хувь"
+msgid "FieldLabel|9.ProgressPrecentRefs|Progress Percents"
+msgstr ""
 
 msgid "FieldLabel|9.PseudoRelevantStrategyRefs|Relevant Strategies"
 msgstr ""
@@ -9131,8 +9132,8 @@ msgstr ""
 "БаганыХаяг|10.ХамааралБүхийБагцШалгуурҮзүүлэлт|Хамаарал Бүхий Шалгуур "
 "Үзүүлэлтүүд"
 
-msgid "FieldLabel|10.ProgressPrecentRefs|Progress Precents"
-msgstr "БаганыХаяг|10.ХэрэгжилтийнХувьЛавлагаа|Хэрэгжилтийн Хувь"
+msgid "FieldLabel|10.ProgressPrecentRefs|Progress Percents"
+msgstr ""
 
 msgid "FieldLabel|10.PseudoRelevantIndicatorRefs|Relevant Indicators"
 msgstr ""
@@ -31927,6 +31928,15 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "Manage Tagged Object Sets"
+#~ msgstr "Тэмдэглэгдсэн Багц Зорилтыг Удирдах"
+
+#~ msgid "FieldLabel|9.ProgressPrecentRefs|Progress Precents"
+#~ msgstr "БаганыХаяг|9.ХэрэгжилтийнХувьЛавлагаа|Хэрэгжилтийн Хувь"
+
+#~ msgid "FieldLabel|10.ProgressPrecentRefs|Progress Precents"
+#~ msgstr "БаганыХаяг|10.ХэрэгжилтийнХувьЛавлагаа|Хэрэгжилтийн Хувь"
 
 #~ msgid "Attempt to execute command while in side effect mode"
 #~ msgstr "\"side effect\" горимд байх зуур командыг гүйцэтгэхээр оролдох"
