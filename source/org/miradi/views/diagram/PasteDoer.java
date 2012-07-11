@@ -63,7 +63,7 @@ public class PasteDoer extends AbstractPasteDoer
 			possiblyNotifyUserIfDataWasLost(diagramPaster);
 			
 			if(!wasAnythingPasted(beforePasteDiagramFactors, beforePasteDiagramLinks))
-				EAM.showHtmlMessageOkDialog(nothingPastedMessageFileName, "Paste");
+				EAM.showHtmlMessageOkDialog(nothingPastedMessageFileName, EAM.text("Button|Paste"));
 			else if(usersChoice.equals(AS_SHARED_BUTTON))
 				NotifyDialog.notify(getMainWindow(), NotifyDialogTemplateFactory.pastedSharedFactors());
 		} 
