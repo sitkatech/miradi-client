@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-10 19:45-0500\n"
+"POT-Creation-Date: 2012-07-11 10:30-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -2019,7 +2019,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr "Kesalahan internal mencegah operasi ini "
 
-#: Miradi/source/org/miradi/main/EAM.java:463
+#: Miradi/source/org/miradi/main/EAMLabels.java:52
 msgid "An unexpected error has occurred"
 msgstr "Kesalahan tak terduga telah terjadi "
 
@@ -2388,6 +2388,7 @@ msgstr "Aturan Bundel"
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:229
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
+#: Miradi/source/org/miradi/main/EAMLabels.java:32
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:127
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:54
@@ -2444,6 +2445,7 @@ msgstr "Pindahkan "
 msgid "Button|No"
 msgstr "Tidak "
 
+#: Miradi/source/org/miradi/main/EAMLabels.java:42
 #: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:239
 msgid "Button|OK"
 msgstr "OK "
@@ -2452,8 +2454,13 @@ msgstr "OK "
 msgid "Button|Ok"
 msgstr "Baik "
 
+#: Miradi/source/org/miradi/main/EAMLabels.java:37
 #: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:44
 msgid "Button|Open"
+msgstr ""
+
+#: Miradi/source/org/miradi/main/EAMLabels.java:27
+msgid "Button|Overwrite"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/PasteDoer.java:176
@@ -3031,8 +3038,7 @@ msgstr "Definisikan cakupan proyek "
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:65
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:75
-#: Miradi/source/org/miradi/main/EAM.java:520
-#: Miradi/source/org/miradi/main/EAM.java:521
+#: Miradi/source/org/miradi/main/EAMLabels.java:67
 msgid "Delete"
 msgstr "Hapus "
 
@@ -4290,6 +4296,12 @@ msgstr "Relevan"
 #: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetEditableTableModel.java:90
 msgid "Is Tagged"
 msgstr "Ditandai"
+
+#: Miradi/source/org/miradi/main/EAM.java:642
+msgid ""
+"It appears that Miradi was launched without the -Xmx512m switch. As a "
+"result, certain operations like Reports may run out of memory."
+msgstr ""
 
 #: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:61
 msgid "Italic"
@@ -5897,7 +5909,7 @@ msgid "Results Monitoring Plan"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
-#: Miradi/source/org/miradi/main/EAM.java:520
+#: Miradi/source/org/miradi/main/EAMLabels.java:62
 msgid "Retain"
 msgstr "Pertahankan "
 
@@ -7636,6 +7648,10 @@ msgstr ""
 msgid "The strategy is ethically, technically, AND financially feasible."
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:40
+msgid "The strategy is likely to help mitigate a threat or restore a target."
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/StrategyFeasibilityQuestion.java:38
 msgid "The strategy is not ethically, technically, OR financially feasible."
 msgstr ""
@@ -7893,7 +7909,7 @@ msgstr "Sifat-sifat Diagram "
 msgid "Title|Direct Threat Properties"
 msgstr "Sifat-sifat Ancaman Langsung"
 
-#: Miradi/source/org/miradi/main/EAM.java:468
+#: Miradi/source/org/miradi/main/EAMLabels.java:57
 msgid "Title|Error"
 msgstr "Kesalahan"
 
@@ -8357,7 +8373,7 @@ msgstr "WCS"
 msgid "WWF"
 msgstr "WWF"
 
-#: Miradi/source/org/miradi/main/EAM.java:141
+#: Miradi/source/org/miradi/main/EAMLabels.java:47
 msgid "Warning"
 msgstr "Peringatan "
 
@@ -8494,7 +8510,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr "Yang Menambah adalah: %s "
 
-#: Miradi/source/org/miradi/main/EAM.java:662
+#: Miradi/source/org/miradi/main/EAMLabels.java:72
 msgid "Wintitle|Information"
 msgstr "Informasi "
 
@@ -8659,10 +8675,6 @@ msgstr "satu proyek baru dari awal"
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectOverviewStep.java:95
 msgid "an exported Miradi file (.mpz or .cpmz)"
 msgstr "Hasil ekspor file Miradi (.mpz atau .cpmz) "
-
-#: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:40
-msgid "he strategy is likely to help mitigate a threat or restore a target."
-msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/NeverShowAgainPanel.java:48
 msgid "it will not be shown. Uncheck it to have Miradi "
