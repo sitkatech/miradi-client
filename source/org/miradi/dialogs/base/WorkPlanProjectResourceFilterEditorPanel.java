@@ -33,9 +33,9 @@ public class WorkPlanProjectResourceFilterEditorPanel extends ObjectDataInputPan
 		super(projectToUse, orefToUse);
 		
 		addLabel("");
-		addLabel(EAM.text("<html>Selecting one or more resources below<br>\n" +
-				"will filter the display to only include <br>\n" +
-				"work unit and budget total values for <br>\n" +
+		addLabel(EAM.text("<html>Selecting one or more resources below<br>" +
+				"will filter the display to only include <br>" +
+				"work unit and budget total values for <br>" +
 				"items that are assigned to those resources."));
 		PanelTitleLabel label = new PanelTitleLabel(EAM.text("Resources:"));
 		addFieldWithCustomLabel(createStringMapProjectResourceFilterCodeListEditor(orefToUse.getObjectType(), tagToUse, question), label);
