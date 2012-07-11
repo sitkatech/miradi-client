@@ -69,7 +69,7 @@ abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends
 		if(formItem.isFormConstant())
 		{
 			FormConstant fc = (FormConstant) formItem;
-			addLabel(fc.getConstant());
+			addHtmlWrappedLabel(fc.getConstant());
 			return;
 		}
 		

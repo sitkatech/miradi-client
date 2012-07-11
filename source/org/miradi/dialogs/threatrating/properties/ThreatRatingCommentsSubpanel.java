@@ -36,7 +36,7 @@ public class ThreatRatingCommentsSubpanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ORef.INVALID);
 		
-		addLabel(EAM.text("Label|Comments"));
+		addHtmlWrappedLabel(EAM.text("Label|Comments"));
 		commentsField = new ThreatRatingCommentsEditorComponent(getProject(), actions);
 		add(commentsField.getComponent());
 		
