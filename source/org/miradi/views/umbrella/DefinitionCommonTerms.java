@@ -171,7 +171,7 @@ public class DefinitionCommonTerms
 		defs.put("Definition:Objective", def);
 		
 		
-		def = Definition.createDefinitionFromTextString(EAM.text("StrategicPlan"), EAM.text("Strategic plan - An outline of how the project team proposes to" +
+		def = Definition.createDefinitionFromTextString(EAM.text("Strategic Plan"), EAM.text("Strategic plan - An outline of how the project team proposes to" +
 		" change the world that contains a project's goals, objectives," +
 		" and strategies."));
 		defs.put("Definition:StrategicPlan", def);
@@ -260,14 +260,14 @@ public class DefinitionCommonTerms
 		defs.put("Definition:CMP", def);
 		
 
-		def = Definition.createDefinitionFromTextString(EAM.text("OpenStandards"), EAM.text("Open Standards for the Practice of Conservation - A series of best practices " +
+		def = Definition.createDefinitionFromTextString(EAM.text("Open Standards"), EAM.text("Open Standards for the Practice of Conservation - A series of best practices " +
 		"for designing, managing, monitoring, and learning from conservation projects. " +
 		"The basis for Miradi. You can download a copy of the Open Standards at <a href='http://www.ConservationMeasures.org'>www.ConservationMeasures.org<a>"));
 		defs.put("Definition:OpenStandards", def);
 
 		
 
-		def = Definition.createDefinitionFromTextString(EAM.text("ImportZip"), EAM.text("Zipped Project - A project folder that has been compressed using the zip format. " +
+		def = Definition.createDefinitionFromTextString(EAM.text("Import Zip"), EAM.text("Zipped Project - A project folder that has been compressed using the zip format. " +
 		"To share files with other Miradi users, you can use the file/export/project " +
 		"zip file menu command to create a zipped folder that can then be imported into " +
 		"Miradi. Note that Miradi will automatically zip and unzip the folders for you if " +
@@ -282,19 +282,19 @@ public class DefinitionCommonTerms
 		defs.put("Definition:Budget", def);
 
 		
-		def = Definition.createDefinitionFromTextString(EAM.text("ActualExpenditures"), EAM.text("Actual Expenditures - A backwards looking " +
+		def = Definition.createDefinitionFromTextString(EAM.text("Actual Expenditures"), EAM.text("Actual Expenditures - A backwards looking " +
 				"report on the money you spent for the activities/methods and tasks you " +
 				"undertook to implement your strategic and monitoring plans."));
 		defs.put("Definition:ActualExpenditures", def);
 		
 		
-		def = Definition.createDefinitionFromTextString(EAM.text("AccountingCodes"), EAM.text("Accounting Codes - A set of categories " +
+		def = Definition.createDefinitionFromTextString(EAM.text("Accounting Codes"), EAM.text("Accounting Codes - A set of categories " +
 				"developed by an organization to categorize and track expenses.  " +
 				"They typically include hierarchical strings of numbers and/or " +
 				"letters (the code) along with a text description."));
 		defs.put("Definition:AccountingCodes", def);
 		
-		def = Definition.createDefinitionFromTextString(EAM.text("TabDelimitedFile"), EAM.text("Tab Delimited File - A software file " +
+		def = Definition.createDefinitionFromTextString(EAM.text("Tab Delimited File"), EAM.text("Tab Delimited File - A software file " +
 				"with regular entries spaced by tab commands.  Most word processors or " +
 				"spreadsheet programs will allow you to create a table and then export " +
 				"as a tab delimited file."));
@@ -305,16 +305,16 @@ public class DefinitionCommonTerms
 		defs.put("Definition:FundingSources", def);
 
 
-		def = Definition.createDefinitionFromTextString(EAM.text("ThreatReductionResult"), EAM.text("Threat Reduction Result - A factor in a results chain that describes the desired change in a direct threat that results from implementing one or more conservation strategies. In Miradi, a threat reduction result is represented by a purple rectangle."));
+		def = Definition.createDefinitionFromTextString(EAM.text("ThreatReduction Result"), EAM.text("Threat Reduction Result - A factor in a results chain that describes the desired change in a direct threat that results from implementing one or more conservation strategies. In Miradi, a threat reduction result is represented by a purple rectangle."));
 		defs.put("Definition:ThreatReductionResult", def);
 
-		def = Definition.createDefinitionFromTextString(EAM.text("IntermediateResult"), EAM.text("Intermediate Result - A factor in a results chain that describes a specific outcome that results from implementing one or more conservation strategies. In Miradi, an intermediate result is represented by a blue rectangle."));
+		def = Definition.createDefinitionFromTextString(EAM.text("Intermediate Result"), EAM.text("Intermediate Result - A factor in a results chain that describes a specific outcome that results from implementing one or more conservation strategies. In Miradi, an intermediate result is represented by a blue rectangle."));
 		defs.put("Definition:IntermediateResult", def);
 
-		def = Definition.createDefinitionFromTextString(EAM.text("NestedTarget"), EAM.text("Nested Target - Species, ecological communities, or ecological system targets whose conservation needs are subsumed in one or more focal conservation targets. Often includes ecoregional targets that a team wants to note and/or track."));
+		def = Definition.createDefinitionFromTextString(EAM.text("Nested Target"), EAM.text("Nested Target - Species, ecological communities, or ecological system targets whose conservation needs are subsumed in one or more focal conservation targets. Often includes ecoregional targets that a team wants to note and/or track."));
 		defs.put("Definition:NestedTargets", def);
 
-		def = Definition.createDefinitionFromTextString(EAM.text("ViabilityRatings"), EAM.text("Viability Ratings - A project's scale of what is very good, good, fair, or poor for a given indicator for a given target. Viability ratings are often quantitatively defined, but they can be qualitative as well.  In effect, by establishing this rating scale, the project team is specifying its assumption as to what constitutes a \"conserved\" target versus one that is in need of management intervention."));
+		def = Definition.createDefinitionFromTextString(EAM.text("Viability Ratings"), EAM.text("Viability Ratings - A project's scale of what is very good, good, fair, or poor for a given indicator for a given target. Viability ratings are often quantitatively defined, but they can be qualitative as well.  In effect, by establishing this rating scale, the project team is specifying its assumption as to what constitutes a \"conserved\" target versus one that is in need of management intervention."));
 		defs.put("Definition:ViabilityRatings", def);
 	
 		def = Definition.createDefinitionFromTextString(EAM.text("Acceptable Range of Variation"), EAM.text("Acceptable Range of Variation - Key ecological attributes of focal targets naturally vary over time. The acceptable range defines the limits of this variation which constitute the minimum conditions for persistence of the target (note that persistence may still require human management interventions).  This concept of an acceptable range of variation establishes the minimum criteria for identifying a conservation target as \"conserved\" or not.  If the attribute lies outside this acceptable range, it is a \"degraded\" attribute."));
