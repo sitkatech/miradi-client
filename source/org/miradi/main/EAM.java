@@ -138,10 +138,10 @@ public class EAM
 
 	public static void displayHtmlWarningDialog(String messageAsHtml)
 	{
-		HtmlViewPanel htmlViwer = new HtmlViewPanel(getMainWindow(), EAM.text("Warning"), messageAsHtml, null);
+		HtmlViewPanel htmlViwer = new HtmlViewPanel(getMainWindow(), EAMLabels.getWraningLabel(), messageAsHtml, null);
 		htmlViwer.showAsOkDialog();
 	}
-	
+
 	public static void showSafeHtmlOkMessageDialog(String messageFileName, String title)
 	{
 		try
@@ -162,7 +162,7 @@ public class EAM
 	
 	public static void showHtmlInfoMessageOkDialog(String messageFileName) throws Exception
 	{
-		showHtmlMessageOkDialog(messageFileName, getInformationDialogTitle());
+		showHtmlMessageOkDialog(messageFileName, EAMLabels.getInformationDialogTitle());
 	}
 
 	private static File getPreferredHomeDirectory()
@@ -451,26 +451,21 @@ public class EAM
 	
 	private static void unexpectedErrorDialog(String extraText)
 	{
-		String errorMessage = getUnexpectedErrorMessage();
+		String errorMessage = EAMLabels.getUnexpectedErrorMessage();
 		if(extraText.length() > 0)
 			errorMessage += "\n" + extraText;
 
 		EAM.errorDialog(errorMessage);
 	}
 
-	private static String getUnexpectedErrorMessage()
-	{
-		return EAM.text("An unexpected error has occurred");
-	}
-	
 	public static void errorDialog(String errorMessage)
 	{
-		JOptionPane.showMessageDialog(getMainWindow(), errorMessage, EAM.text("Title|Error"), JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(getMainWindow(), errorMessage, EAMLabels.getErrorMessage(), JOptionPane.ERROR_MESSAGE);
 	}
-	
+
 	public static void notifyDialog(String text)
 	{
-		JOptionPane.showMessageDialog(getMainWindow(), text, getInformationDialogTitle(), JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(getMainWindow(), text, EAMLabels.getInformationDialogTitle(), JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	public static int confirmDialog(String title, String text, String[] buttonLabels)
@@ -481,29 +476,19 @@ public class EAM
 	
 	public static void okDialog(String title, String[] body)
 	{
-		new UiNotifyDlg(getMainWindow(), title, body, new String[] {getOkButtonText()});
+		new UiNotifyDlg(getMainWindow(), title, body, new String[] {EAMLabels.getOkButtonText()});
 	}
 	
 	public static boolean confirmOpenDialog(String title, String body)
 	{
-		String[] buttons = { text("Button|Open"), getCancelButtonText() };
+		String[] buttons = { EAMLabels.getOpenLabel(), EAMLabels.getCancelButtonText() };
 		return confirmDialog(title, new String[]{body, }, buttons);
 	}
-	
+
 	public static boolean confirmOverwriteDialog(String title, String[] body)
 	{
-		String[] buttons = { text("Button|Overwrite"), getCancelButtonText() };
+		String[] buttons = { EAMLabels.getOverwriteLabel(), EAMLabels.getCancelButtonText() };
 		return confirmDialog(title, body, buttons);
-	}
-
-	public static String getCancelButtonText()
-	{
-		return text("Button|Cancel");
-	}
-	
-	public static String getOkButtonText()
-	{
-		return text("Button|OK");
 	}
 
 	public static boolean confirmDialog(String title, String[] body, String[] buttons)
@@ -517,10 +502,10 @@ public class EAM
 	
 	public static boolean confirmDeletRetainDialog(String[] body)
 	{
-		String[] buttons = {EAM.text("Delete"), EAM.text("Retain"), };
-		return EAM.confirmDialog(EAM.text("Delete"), body, buttons);
+		String[] buttons = {EAMLabels.getDeleteLabel(), EAMLabels.getRetainLabel(), };
+		return EAM.confirmDialog(EAMLabels.getDeleteLabel(), body, buttons);
 	}
-	
+
 	public static String choiceDialog(String title, String[] body, String[] buttons)
 	{
 		UiNotifyDlg dlg = new UiNotifyDlg(getMainWindow(), title, body, buttons);
@@ -654,12 +639,7 @@ public class EAM
 	{
 		long maxMemory = Runtime.getRuntime().maxMemory();
 		if (maxMemory < 100000000)
-			logWarning(text("It appears that Miradi was launched without the -Xmx512m switch. As a result, certain operations like Reports may run out of memory."));    
-	}
-	
-	private static String getInformationDialogTitle()
-	{
-		return EAM.text("Wintitle|Information");
+			logWarning(EAM.text("It appears that Miradi was launched without the -Xmx512m switch. As a result, certain operations like Reports may run out of memory."));    
 	}
 	
 	public final static String EXTERNAL_RESOURCE_DIRECTORY_NAME = "ExternalResourceDirectory";
