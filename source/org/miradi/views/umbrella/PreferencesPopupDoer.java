@@ -23,6 +23,7 @@ import org.martus.swing.Utilities;
 import org.miradi.dialogs.base.PreferencesDialog;
 import org.miradi.dialogs.base.PreferencesPanel;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.main.EAM;
 import org.miradi.views.ViewDoer;
 
 public class PreferencesPopupDoer extends ViewDoer
@@ -49,7 +50,7 @@ public class PreferencesPopupDoer extends ViewDoer
 	private void showPreferencesDialog() throws Exception
 	{
 		PreferencesPanel preferencesPanel = new PreferencesPanel(getMainWindow());
-		PreferencesDialog dlg = new PreferencesDialog(getMainWindow(), preferencesPanel, "Miradi Preferences");
+		PreferencesDialog dlg = new PreferencesDialog(getMainWindow(), preferencesPanel, EAM.text("Miradi Preferences"));
 		dlg.pack();
 		Utilities.centerDlg(dlg);
 		dlg.setVisible(true);
