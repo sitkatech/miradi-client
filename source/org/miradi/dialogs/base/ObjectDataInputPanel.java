@@ -199,7 +199,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 	protected void addFieldsOnOneLine(String translatedLabel, ObjectDataInputField[] fields)
 	{
 		JPanel fieldPanel = createFieldPanel(fields);
-		addLabel(translatedLabel);
+		addHtmlWrappedLabel(translatedLabel);
 		add(fieldPanel);
 	}
 	
@@ -262,7 +262,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		fieldPanel.add(field.getComponent());
 		fieldPanel.add(button);
-		addLabel(translatedLabel);
+		addHtmlWrappedLabel(translatedLabel);
 		add(fieldPanel);
 	}
 	
