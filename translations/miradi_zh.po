@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-10 18:45-0500\n"
+"POT-Creation-Date: 2012-07-10 19:03-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -3570,6 +3570,10 @@ msgstr ""
 #: Miradi/source/org/miradi/project/ProjectCalendar.java:359
 msgid "Fiscal Year|FY"
 msgstr ""
+
+#: Miradi/source/org/miradi/questions/TrendQuestion.java:41
+msgid "Flat"
+msgstr "不变"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:73
 msgid "Focal Species"
@@ -7962,6 +7966,7 @@ msgstr "大学"
 
 #: Miradi/source/org/miradi/wizard/noproject/FileSystemTreeNode.java:92
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:161
+#: Miradi/source/org/miradi/questions/TrendQuestion.java:38
 #: Miradi/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:37
 #: Miradi/source/org/miradi/legacyprojects/LegacyProjectUtilities.java:69
 msgid "Unknown"
@@ -8245,7 +8250,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:676
+#: Miradi/source/org/miradi/main/EAM.java:662
 msgid "Wintitle|Information"
 msgstr "信息 \t\t"
 
@@ -36645,9 +36650,6 @@ msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
 
 #~ msgid "FieldLabel|45.PercentCompleteNotes|Notes"
 #~ msgstr "注解 "
-
-#~ msgid "Flat"
-#~ msgstr "不变"
 
 #~ msgid ""
 #~ "NOTE: The budget total for this task is the sum of the budget totals of "
