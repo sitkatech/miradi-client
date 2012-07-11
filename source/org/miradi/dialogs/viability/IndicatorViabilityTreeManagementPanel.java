@@ -88,5 +88,5 @@ public class IndicatorViabilityTreeManagementPanel extends AbstractViabilityMana
 	};
 
 	private static String VIABILITY_SPLITTER_TAG = "Indicator";
-	private static String PANEL_DESCRIPTION = EAM.text("Tab|Viability"); 
+	private static String PANEL_DESCRIPTION = EAM.text("Tab|Indicators"); 
 }
