@@ -413,11 +413,14 @@ public class EAM
 	{
 		logException(e);
 		
-		errorDialog(EAM.text("An unexpected error occurred: " + e.getMessage() +
+		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+		tokenReplacementMap.put("%message", e.getMessage());
+		tokenReplacementMap.put("%logPath", getDefaultExceptionsLogFile().getAbsolutePath());
+		errorDialog(EAM.substitute("An unexpected error occurred: %message" +
 				"\n\nPlease report this to the Miradi support team, " +
 				"ideally including the contents of this file: " +
-				"\n\n   " + getDefaultExceptionsLogFile().getAbsolutePath() + 
-		"\n\nMiradi has attempted to save your latest changes, and will now exit."));
+				"\n\n   %logPath" +  
+				"\n\nMiradi has attempted to save your latest changes, and will now exit.", tokenReplacementMap));
 		
 		exitMiradiNowDueToFatalError();
 	}
