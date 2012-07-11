@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-11 10:30-0500\n"
+"POT-Creation-Date: 2012-07-11 11:01-0500\n"
 "PO-Revision-Date: 2011-12-14 10:20-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2347,6 +2347,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/main/EAMLabels.java:27
 msgid "Button|Overwrite"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:66
+msgid "Button|Paste"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/PasteDoer.java:176
