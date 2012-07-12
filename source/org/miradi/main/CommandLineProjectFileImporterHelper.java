@@ -76,8 +76,9 @@ public class CommandLineProjectFileImporterHelper
 		}
 
 		AbstractProjectImporter importer = createImporter(projectFileToImport);
-		if (getUserConfirmation(projectFileToImport.getName()))
-			importer.importProject(projectFileToImport);
+		if (!getUserConfirmation(projectFileToImport.getName()))
+			return;
+		importer.importProject(projectFileToImport);
 	}
 	
 	private Vector<File> extractProjectFileToImport(String[] commandLineArgs)
