@@ -43,11 +43,11 @@ public class ZipUtilities
 		try
 		{
 			extractAll(zipFile, createTempDirectory);
-			Vector<String> actualFile = extractOnlyProjectPaths(directory, projectName);
+			Vector<String> actualFiles = extractOnlyProjectPaths(directory, projectName);
 			Vector<String> expectedFiles = extractOnlyProjectPaths(createTempDirectory, projectName);
-			actualFile.removeAll(expectedFiles);
+			actualFiles.removeAll(expectedFiles);
 			
-			return actualFile.size() == 0;
+			return actualFiles.size() == 0;
 		}
 		finally 
 		{
