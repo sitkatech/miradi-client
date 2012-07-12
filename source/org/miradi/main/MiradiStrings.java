@@ -22,7 +22,7 @@ package org.miradi.main;
 
 import java.util.HashMap;
 
-public class EAMLabels
+public class MiradiStrings
 {
 	public static String getOverwriteLabel()
 	{
