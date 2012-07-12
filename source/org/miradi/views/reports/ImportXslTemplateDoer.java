@@ -28,9 +28,9 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objects.XslTemplate;
 import org.miradi.schemas.XslTemplateSchema;
-import org.miradi.utils.GenericFileOpenChooser;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.XmlUtilities2;
+import org.miradi.utils.XslImportFileChooser;
 import org.miradi.views.ObjectsDoer;
 
 public class ImportXslTemplateDoer extends ObjectsDoer
@@ -47,7 +47,7 @@ public class ImportXslTemplateDoer extends ObjectsDoer
 		if (!isAvailable())
 			return;
 		
-		final GenericFileOpenChooser fileChooser = new GenericFileOpenChooser(getMainWindow());
+		final XslImportFileChooser fileChooser = new XslImportFileChooser(getMainWindow());
 		final File userChosenFile = fileChooser.displayChooser();
 		if (userChosenFile == null)
 			return;
