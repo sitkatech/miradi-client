@@ -20,40 +20,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
-import javax.swing.filechooser.FileFilter;
-
 import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
 
-public class XslImportFileChooser extends MiradiFileOpenChooser
+public class XsltFileFilter extends GenericMiradiFileFilter
 {
-	public XslImportFileChooser(MainWindow mainWindow)
+	public String getFileExtension()
 	{
-		super(mainWindow);
+		return EXTENSION;
 	}
 
 	@Override
-	public FileFilter[] getFileFilter()
+	public String getDescription()
 	{
-		return new FileFilter[] {new XslFileFilter(), new XsltFileFilter()};
+		return EAM.text("XSLT File");
 	}
-
-	@Override
-	protected String getApproveButtonText()
-	{
-		return EAM.text("Import");
-	}
-
-	@Override
-	protected String getApproveButtonToolTipText()
-	{
-		return EAM.text("TT|Import Xsl File");
-	}
-
-	@Override
-	protected String getDialogTitleText()
-	{
-		return EAM.text("Select File to Import");
-	}
+	
+	private static final String EXTENSION = ".xslt";
 }
-
