@@ -138,7 +138,7 @@ public class EAM
 
 	public static void displayHtmlWarningDialog(String messageAsHtml)
 	{
-		HtmlViewPanel htmlViwer = new HtmlViewPanel(getMainWindow(), EAMLabels.getWraningLabel(), messageAsHtml, null);
+		HtmlViewPanel htmlViwer = new HtmlViewPanel(getMainWindow(), EAMLabels.getWarningLabel(), messageAsHtml, null);
 		htmlViwer.showAsOkDialog();
 	}
 
