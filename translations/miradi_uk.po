@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-12 17:24-0500\n"
+"POT-Creation-Date: 2012-07-12 17:53-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -894,7 +894,7 @@ msgstr ""
 "громад, що вимірюються як частка місцезнаходження цілі. Для видів, що "
 "вимірюються як частка цільової популяції.</html>"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:191
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:186
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Імпорт не вдався: <br><p> %s </p></html>"
 
@@ -4077,7 +4077,7 @@ msgstr "Імпортувати розрахункові коди"
 msgid "Import Completed"
 msgstr "Імпорт завершений"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:170
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:165
 msgid "Import Completed.  Would you like to open %s?"
 msgstr "Імпорт завершено. Чи бажаєте відкрити %s?"
 
@@ -5354,7 +5354,7 @@ msgstr "Відкрити"
 msgid "Open Anyway"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:171
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:166
 #: Miradi/source/org/miradi/main/MainWindow.java:616
 msgid "Open Project"
 msgstr "Відкрити проект"
@@ -7706,7 +7706,7 @@ msgstr ""
 "але схема XML все ще змінюється. Майбутні версії Міраді будуть експортувати "
 "дані у різних форматах. "
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:234
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:229
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -8196,7 +8196,7 @@ msgstr "Невизначене"
 msgid "Underline"
 msgstr "Підкреслений"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:190
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:185
 msgid "Unexpected error"
 msgstr ""
 
