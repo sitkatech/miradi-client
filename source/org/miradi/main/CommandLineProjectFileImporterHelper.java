@@ -75,9 +75,10 @@ public class CommandLineProjectFileImporterHelper
 			return;
 		}
 
-		AbstractProjectImporter importer = createImporter(projectFileToImport);
 		if (!getUserConfirmation(projectFileToImport.getName()))
 			return;
+		
+		AbstractProjectImporter importer = createImporter(projectFileToImport);
 		importer.importProject(projectFileToImport);
 	}
 	
