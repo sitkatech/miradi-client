@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-12 14:43-0500\n"
+"POT-Creation-Date: 2012-07-12 15:07-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -488,11 +488,11 @@ msgid ""
 "the project again:<BR><BR>"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:105
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:102
 msgid "<br> Please report this problem to the Miradi support team "
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:104
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:101
 msgid ""
 "<br> The operation completed successfully, but Undo/Redo may not work "
 "correctly."
@@ -1916,7 +1916,7 @@ msgstr ""
 "出错，该图表不能正常显示。极有可能该项目已被损坏。请联系Miradi团队以获取帮助"
 "和建议。我们建议您不要对该该项目做任何改动直到此问题解决为止。 \t\t"
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:96
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:93
 msgid "An internal error prevented this operation"
 msgstr "一个内部错误阻止了该操作 \t\t"
 
@@ -1924,7 +1924,7 @@ msgstr "一个内部错误阻止了该操作 \t\t"
 msgid "An unexpected error has occurred"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:103
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:100
 msgid "An unexpected error has occurred."
 msgstr ""
 
@@ -4896,7 +4896,7 @@ msgstr "次要问题——正在进行、需要注意到的次要问题"
 msgid "Miradi Preferences"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:141
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:138
 msgid ""
 "Miradi could not complete that operation \n"
 "because it ran out of memory.\n"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-12 14:43-0500\n"
+"POT-Creation-Date: 2012-07-12 15:07-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -496,11 +496,11 @@ msgid ""
 "the project again:<BR><BR>"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:105
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:102
 msgid "<br> Please report this problem to the Miradi support team "
 msgstr "<br> Будь ласка, повідомте про цю проблему групу підтримки Міраді"
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:104
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:101
 msgid ""
 "<br> The operation completed successfully, but Undo/Redo may not work "
 "correctly."
@@ -2033,7 +2033,7 @@ msgstr ""
 "виробників Міраді.Ми радимо вам не вносити жодних змін у цей проект доки "
 "пролема не буде вирішена. "
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:96
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:93
 msgid "An internal error prevented this operation"
 msgstr "Внутрішня помилка перешкодила цій операції"
 
@@ -2041,7 +2041,7 @@ msgstr "Внутрішня помилка перешкодила цій опер
 msgid "An unexpected error has occurred"
 msgstr "Сталася нечекана помилка"
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:103
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:100
 msgid "An unexpected error has occurred."
 msgstr "Сталася нечекана помилка"
 
@@ -5060,7 +5060,7 @@ msgstr "Незначна справа - Діюча незначна справа
 msgid "Miradi Preferences"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:141
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:138
 msgid ""
 "Miradi could not complete that operation \n"
 "because it ran out of memory.\n"
