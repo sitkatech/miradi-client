@@ -28,10 +28,13 @@ import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
 import org.miradi.exceptions.UnrecognizedFileToImportException;
+import org.miradi.utils.FileUtilities;
+import org.miradi.views.noproject.RenameProjectDoer;
 import org.miradi.views.umbrella.AbstractProjectImporter;
 import org.miradi.views.umbrella.CpmzProjectImporter;
 import org.miradi.views.umbrella.ExportCpmzDoer;
 import org.miradi.views.umbrella.ZippedProjectImporter;
+import org.miradi.wizard.noproject.projectlist.ProjectListTreeTable;
 
 public class CommandLineProjectFileImporterHelper
 {
@@ -78,8 +81,26 @@ public class CommandLineProjectFileImporterHelper
 		if (!getUserConfirmation(projectFileToImport.getName()))
 			return;
 		
-		AbstractProjectImporter importer = createImporter(projectFileToImport);
-		importer.importProject(projectFileToImport);
+		if (ProjectListTreeTable.isProject(projectFileToImport))
+		{
+			importMpfFile(projectFileToImport);
+		}
+		else
+		{
+			AbstractProjectImporter importer = createImporter(projectFileToImport);
+			importer.importProject(projectFileToImport);
+		}
+	}
+
+	private void importMpfFile(File projectFileToImport) throws Exception
+	{
+		String projectName = RenameProjectDoer.getLegalProjectNameFromUser(getMainWindow(), projectFileToImport.getName());
+		if (projectName == null)
+			return;
+
+		File newProjectFile = new File(EAM.getHomeDirectory(), projectName);
+		FileUtilities.copyFile(projectFileToImport, newProjectFile);
+		AbstractProjectImporter.userConfirmOpenImportedProject(getMainWindow(), newProjectFile);
 	}
 	
 	private Vector<File> extractProjectFileToImport(String[] commandLineArgs)
