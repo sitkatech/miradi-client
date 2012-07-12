@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-11 17:16-0500\n"
+"POT-Creation-Date: 2012-07-12 09:46-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -5762,6 +5762,12 @@ msgstr "Төслийг мэдээллийг одоо хэрэглэж буй ф�
 msgid "Projected Expenses"
 msgstr "Төслийн зардал"
 
+#: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:73
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:68
+msgid "Project|Scope"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/summary/ProtectedAreaPanel.java:64
 msgid "Protected Area Information"
 msgstr "Тусгай Хамгаалалттай газрын тухай мэдээлэл"
@@ -6014,13 +6020,6 @@ msgstr "Хуваарьт"
 #: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:60
 msgid "Scheduled for future implementation"
 msgstr "Ирээдүйд хэрэгжүүлэхээр хуваарьт оруулсан"
-
-#: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:73
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:68
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:104
-msgid "Scope"
-msgstr "Цар хүрээ"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:120
 msgid "Scope (Threat Ratings)"
@@ -7901,6 +7900,10 @@ msgstr "Аюул заналууд"
 #: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:50
 msgid "Threats at Site"
 msgstr "Төслийн газар нутаг дахь Аюул Занал"
+
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:104
+msgid "Threat|Scope"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/FontFamiliyQuestion.java:46
 msgid "Times New Roman"
@@ -31871,6 +31874,9 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "Scope"
+#~ msgstr "Цар хүрээ"
 
 #~ msgid ""
 #~ "choice|/resources/fieldoptions/ThreatTaxonomies.tsv|\"Biological Resource "

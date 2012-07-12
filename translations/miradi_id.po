@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-11 17:16-0500\n"
+"POT-Creation-Date: 2012-07-12 09:46-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -5696,6 +5696,12 @@ msgstr "Proyek dipindahkan ke format data sekarang "
 msgid "Projected Expenses"
 msgstr ""
 
+#: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:73
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:68
+msgid "Project|Scope"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/summary/ProtectedAreaPanel.java:64
 msgid "Protected Area Information"
 msgstr "Informasi Area yang Dilindungi "
@@ -5949,13 +5955,6 @@ msgstr "Terjadwal "
 #: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:60
 msgid "Scheduled for future implementation"
 msgstr "Dijadwalkan untuk pelaksanaan di masa datang"
-
-#: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:73
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:68
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:104
-msgid "Scope"
-msgstr "Cakupan "
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:120
 msgid "Scope (Threat Ratings)"
@@ -7818,6 +7817,10 @@ msgstr "Ancaman "
 #: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:50
 msgid "Threats at Site"
 msgstr "Ancaman di Lokasi "
+
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:104
+msgid "Threat|Scope"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/FontFamiliyQuestion.java:46
 msgid "Times New Roman"
@@ -32251,6 +32254,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Scope"
+#~ msgstr "Cakupan "
 
 #~ msgid ""
 #~ "choice|/resources/fieldoptions/ThreatTaxonomies.tsv|\"Biological Resource "

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-11 17:16-0500\n"
+"POT-Creation-Date: 2012-07-12 09:46-0500\n"
 "PO-Revision-Date: 2011-02-15 16:35-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -5467,6 +5467,12 @@ msgstr ""
 msgid "Projected Expenses"
 msgstr ""
 
+#: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:73
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:68
+msgid "Project|Scope"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/summary/ProtectedAreaPanel.java:64
 msgid "Protected Area Information"
 msgstr ""
@@ -5712,13 +5718,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:60
 msgid "Scheduled for future implementation"
-msgstr ""
-
-#: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:73
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:68
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:104
-msgid "Scope"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:120
@@ -7473,6 +7472,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:50
 msgid "Threats at Site"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:104
+msgid "Threat|Scope"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/FontFamiliyQuestion.java:46

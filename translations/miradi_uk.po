@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-11 17:16-0500\n"
+"POT-Creation-Date: 2012-07-12 09:46-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -5739,6 +5739,12 @@ msgstr "Проект був переведений у поточний форм�
 msgid "Projected Expenses"
 msgstr "Ghjtrnjdfys Витрати "
 
+#: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:73
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:68
+msgid "Project|Scope"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/summary/ProtectedAreaPanel.java:64
 msgid "Protected Area Information"
 msgstr "Інформація про заповідну територію"
@@ -5990,13 +5996,6 @@ msgstr "Запланований"
 #: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:60
 msgid "Scheduled for future implementation"
 msgstr "Заплановане для майбутньої реалізації"
-
-#: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:73
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:68
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:104
-msgid "Scope"
-msgstr "Зона діяльності"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:120
 msgid "Scope (Threat Ratings)"
@@ -7854,6 +7853,10 @@ msgstr "Загрози"
 #: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:50
 msgid "Threats at Site"
 msgstr "Загрози на ділянці"
+
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:104
+msgid "Threat|Scope"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/FontFamiliyQuestion.java:46
 msgid "Times New Roman"
@@ -33915,6 +33918,9 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "Scope"
+#~ msgstr "Зона діяльності"
 
 #~ msgid ""
 #~ "choice|/resources/fieldoptions/ThreatTaxonomies.tsv|\"Biological Resource "

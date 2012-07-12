@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-11 17:16-0500\n"
+"POT-Creation-Date: 2012-07-12 09:46-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -5823,6 +5823,12 @@ msgstr "Il progetto è stato migrato al formato attuale dei dati"
 msgid "Projected Expenses"
 msgstr "Spese di progetto"
 
+#: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:73
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:68
+msgid "Project|Scope"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/summary/ProtectedAreaPanel.java:64
 msgid "Protected Area Information"
 msgstr "Informazioni dell'Area Protetta"
@@ -6075,13 +6081,6 @@ msgstr "Pianificato"
 #: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:60
 msgid "Scheduled for future implementation"
 msgstr "Pianificato per future implementazioni"
-
-#: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:73
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:68
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:104
-msgid "Scope"
-msgstr "Ambito geografico"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:120
 msgid "Scope (Threat Ratings)"
@@ -7973,6 +7972,10 @@ msgstr "Minacce"
 #: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:50
 msgid "Threats at Site"
 msgstr "Minacce nel sito"
+
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:104
+msgid "Threat|Scope"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/FontFamiliyQuestion.java:46
 msgid "Times New Roman"
@@ -30361,6 +30364,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid "Scope"
+#~ msgstr "Ambito geografico"
 
 #~ msgid ""
 #~ "<html>Selecting one or more resources below<br>\n"
