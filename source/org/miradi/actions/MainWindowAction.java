@@ -81,8 +81,8 @@ public abstract class MainWindowAction extends MiradiAction
 			Command lastCommand = getProject().getLastExecutedCommand();
 			if(lastCommand == null)
 				EAM.friendlyInternalError("Attempted to execute command as side effect before any command had been executed ");
-
-			EAM.friendlyInternalError("Attempt to execute command while in side effect mode:\n" +
+			else
+				EAM.friendlyInternalError("Attempt to execute command while in side effect mode:\n" +
 									  " tried  " + e.getCommand().toString() + "\n" +
 									  " within " + lastCommand.toString()
 			);
