@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-12 09:46-0500\n"
+"POT-Creation-Date: 2012-07-12 13:58-0500\n"
 "PO-Revision-Date: 2011-02-15 16:35-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3432,10 +3432,6 @@ msgstr ""
 msgid "FileFilter|Tab Delimited (*.txt)"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/XLSFileFilter.java:42
-msgid "FileFilter|XLS (*.xls)"
-msgstr ""
-
 #: Miradi/source/org/miradi/utils/XMLFileFilter.java:42
 msgid "FileFilter|XML (*.xml)"
 msgstr ""
@@ -3446,6 +3442,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/utils/Xmpz2FileFilter.java:30
 msgid "FileFilter|XMPZ2 (*%s)"
+msgstr ""
+
+#: Miradi/source/org/miradi/utils/XslFileFilter.java:42
+msgid "FileFilter|XSL (*.xsl)"
 msgstr ""
 
 #: Miradi/source/org/miradi/utils/ZIPFileFilter.java:47
@@ -3855,6 +3855,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:69
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:118
+#: Miradi/source/org/miradi/utils/XslImportFileChooser.java:44
 msgid "Import"
 msgstr ""
 
@@ -5753,6 +5754,10 @@ msgstr ""
 msgid "Select"
 msgstr ""
 
+#: Miradi/source/org/miradi/utils/XslImportFileChooser.java:56
+msgid "Select File to Import"
+msgstr ""
+
 #: Miradi/source/org/miradi/utils/LanguagePackFileChooser.java:55
 msgid "Select Language Pack to Install"
 msgstr ""
@@ -6696,6 +6701,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionHowToSave.java:40
 msgid "TT|How to save files in Miradi"
+msgstr ""
+
+#: Miradi/source/org/miradi/utils/XslImportFileChooser.java:50
+msgid "TT|Import Xsl File"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionImportCpmz.java:40
@@ -8167,6 +8176,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/reports/DeleteXslTemplateDoer.java:39
 msgid "XSL Template"
+msgstr ""
+
+#: Miradi/source/org/miradi/utils/XsltFileFilter.java:35
+msgid "XSLT File"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/editors/CalendarYearDateUnitStartAndEndCard.java:37
