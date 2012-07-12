@@ -138,7 +138,7 @@ public class EAM
 
 	public static void displayHtmlWarningDialog(String messageAsHtml)
 	{
-		HtmlViewPanel htmlViwer = new HtmlViewPanel(getMainWindow(), EAMLabels.getWarningLabel(), messageAsHtml, null);
+		HtmlViewPanel htmlViwer = new HtmlViewPanel(getMainWindow(), MiradiStrings.getWarningLabel(), messageAsHtml, null);
 		htmlViwer.showAsOkDialog();
 	}
 
@@ -162,7 +162,7 @@ public class EAM
 	
 	public static void showHtmlInfoMessageOkDialog(String messageFileName) throws Exception
 	{
-		showHtmlMessageOkDialog(messageFileName, EAMLabels.getInformationDialogTitle());
+		showHtmlMessageOkDialog(messageFileName, MiradiStrings.getInformationDialogTitle());
 	}
 
 	private static File getPreferredHomeDirectory()
@@ -413,7 +413,7 @@ public class EAM
 	{
 		logException(e);
 		
-		errorDialog(EAMLabels.getErrorMessage(e));
+		errorDialog(MiradiStrings.getErrorMessage(e));
 		
 		exitMiradiNowDueToFatalError();
 	}
@@ -447,7 +447,7 @@ public class EAM
 	
 	private static void unexpectedErrorDialog(String extraText)
 	{
-		String errorMessage = EAMLabels.getUnexpectedErrorMessage();
+		String errorMessage = MiradiStrings.getUnexpectedErrorMessage();
 		if(extraText.length() > 0)
 			errorMessage += "\n" + extraText;
 
@@ -456,12 +456,12 @@ public class EAM
 
 	public static void errorDialog(String errorMessage)
 	{
-		JOptionPane.showMessageDialog(getMainWindow(), errorMessage, EAMLabels.getErrorMessage(), JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(getMainWindow(), errorMessage, MiradiStrings.getErrorMessage(), JOptionPane.ERROR_MESSAGE);
 	}
 
 	public static void notifyDialog(String text)
 	{
-		JOptionPane.showMessageDialog(getMainWindow(), text, EAMLabels.getInformationDialogTitle(), JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(getMainWindow(), text, MiradiStrings.getInformationDialogTitle(), JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	public static int confirmDialog(String title, String text, String[] buttonLabels)
@@ -472,18 +472,18 @@ public class EAM
 	
 	public static void okDialog(String title, String[] body)
 	{
-		new UiNotifyDlg(getMainWindow(), title, body, new String[] {EAMLabels.getOkButtonText()});
+		new UiNotifyDlg(getMainWindow(), title, body, new String[] {MiradiStrings.getOkButtonText()});
 	}
 	
 	public static boolean confirmOpenDialog(String title, String body)
 	{
-		String[] buttons = { EAMLabels.getOpenLabel(), EAMLabels.getCancelButtonText() };
+		String[] buttons = { MiradiStrings.getOpenLabel(), MiradiStrings.getCancelButtonText() };
 		return confirmDialog(title, new String[]{body, }, buttons);
 	}
 
 	public static boolean confirmOverwriteDialog(String title, String[] body)
 	{
-		String[] buttons = { EAMLabels.getOverwriteLabel(), EAMLabels.getCancelButtonText() };
+		String[] buttons = { MiradiStrings.getOverwriteLabel(), MiradiStrings.getCancelButtonText() };
 		return confirmDialog(title, body, buttons);
 	}
 
@@ -498,8 +498,8 @@ public class EAM
 	
 	public static boolean confirmDeletRetainDialog(String[] body)
 	{
-		String[] buttons = {EAMLabels.getDeleteLabel(), EAMLabels.getRetainLabel(), };
-		return EAM.confirmDialog(EAMLabels.getDeleteLabel(), body, buttons);
+		String[] buttons = {MiradiStrings.getDeleteLabel(), MiradiStrings.getRetainLabel(), };
+		return EAM.confirmDialog(MiradiStrings.getDeleteLabel(), body, buttons);
 	}
 
 	public static String choiceDialog(String title, String[] body, String[] buttons)
