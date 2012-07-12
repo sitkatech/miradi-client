@@ -39,7 +39,7 @@ public class XslFileFilter extends FileFilter implements MiradiFileFilter
 	@Override
 	public String getDescription()
 	{
-		return EAM.text("FileFilter|XLS (*.xls)");
+		return EAM.text("FileFilter|XSL (*.xsl)");
 	}
 	
 	public String getFileExtension()
@@ -47,5 +47,5 @@ public class XslFileFilter extends FileFilter implements MiradiFileFilter
 		return EXTENSION;
 	}
 
-	public static final String EXTENSION = ".xls";
+	public static final String EXTENSION = ".xsl";
 }
