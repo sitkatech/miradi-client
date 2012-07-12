@@ -100,7 +100,7 @@ public class CommandLineProjectFileImporterHelper
 
 		File newProjectFile = new File(EAM.getHomeDirectory(), projectName);
 		FileUtilities.copyFile(projectFileToImport, newProjectFile);
-		AbstractProjectImporter.userConfirmOpenImportedProject(getMainWindow(), newProjectFile);
+		ProjectListTreeTable.doProjectOpen(getMainWindow(), newProjectFile);
 	}
 	
 	private Vector<File> extractProjectFileToImport(String[] commandLineArgs)
