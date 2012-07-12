@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-12 09:46-0500\n"
+"POT-Creation-Date: 2012-07-12 13:58-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -3691,10 +3691,6 @@ msgstr "SVG (*.svg)"
 msgid "FileFilter|Tab Delimited (*.txt)"
 msgstr "Tab Delimited (*.txt)"
 
-#: Miradi/source/org/miradi/utils/XLSFileFilter.java:42
-msgid "FileFilter|XLS (*.xls)"
-msgstr "XLS (*.xls)"
-
 #: Miradi/source/org/miradi/utils/XMLFileFilter.java:42
 msgid "FileFilter|XML (*.xml)"
 msgstr "XML (*.xml)"
@@ -3705,6 +3701,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/utils/Xmpz2FileFilter.java:30
 msgid "FileFilter|XMPZ2 (*%s)"
+msgstr ""
+
+#: Miradi/source/org/miradi/utils/XslFileFilter.java:42
+msgid "FileFilter|XSL (*.xsl)"
 msgstr ""
 
 #: Miradi/source/org/miradi/utils/ZIPFileFilter.java:47
@@ -4138,6 +4138,7 @@ msgstr "Sviluppa il piano di lavoro"
 
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:69
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:118
+#: Miradi/source/org/miradi/utils/XslImportFileChooser.java:44
 msgid "Import"
 msgstr "Importa"
 
@@ -6126,6 +6127,10 @@ msgstr "Ambito geografico e Visione"
 msgid "Select"
 msgstr "Seleziona"
 
+#: Miradi/source/org/miradi/utils/XslImportFileChooser.java:56
+msgid "Select File to Import"
+msgstr ""
+
 #: Miradi/source/org/miradi/utils/LanguagePackFileChooser.java:55
 msgid "Select Language Pack to Install"
 msgstr "Seleziona il pacchetto lingua da installare"
@@ -7134,6 +7139,10 @@ msgstr ""
 #: Miradi/source/org/miradi/actions/ActionHowToSave.java:40
 msgid "TT|How to save files in Miradi"
 msgstr "Come salvare i file in Miradi"
+
+#: Miradi/source/org/miradi/utils/XslImportFileChooser.java:50
+msgid "TT|Import Xsl File"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionImportCpmz.java:40
 msgid "TT|Import a .cpmz file that was exported from ConPro"
@@ -8704,6 +8713,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/reports/DeleteXslTemplateDoer.java:39
 msgid "XSL Template"
+msgstr ""
+
+#: Miradi/source/org/miradi/utils/XsltFileFilter.java:35
+msgid "XSLT File"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/editors/CalendarYearDateUnitStartAndEndCard.java:37
@@ -30364,6 +30377,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid "FileFilter|XLS (*.xls)"
+#~ msgstr "XLS (*.xls)"
 
 #~ msgid "Scope"
 #~ msgstr "Ambito geografico"
