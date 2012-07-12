@@ -347,7 +347,7 @@ public class EAM
 		catch (Exception e)
 		{
 			logException(e);
-			notifyDialog(notificationText);
+			unexpectedErrorDialog();
 		}
 	}
 
