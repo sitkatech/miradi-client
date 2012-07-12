@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-12 13:58-0500\n"
+"POT-Creation-Date: 2012-07-12 14:43-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -947,10 +947,6 @@ msgstr ""
 "class='toolbarbutton'>&lt;Edit&gt;/&lt;Preferences&gt;</code> menu, "
 "энгээдтоод хэсэгт хар <code class='toolbarbutton'>&lt;Data Location&gt;</"
 "code> tab."
-
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:42
-msgid "<html>Select which column groups to display."
-msgstr "<html>Аль бүлгийн баганыг харуулахыг сонгох."
 
 #: Miradi/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:81
 msgid ""
@@ -2058,7 +2054,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr "Энэ үйлдлийг хийхэд дотоод алдаа саад болж байна."
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:54
+#: Miradi/source/org/miradi/main/MiradiStrings.java:54
 msgid "An unexpected error has occurred"
 msgstr "Гэнэтийн алдаа гарлаа"
 
@@ -2420,7 +2416,7 @@ msgstr "Багц Дүрэм"
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:229
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
-#: Miradi/source/org/miradi/main/EAMLabels.java:34
+#: Miradi/source/org/miradi/main/MiradiStrings.java:34
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:127
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:54
@@ -2477,7 +2473,7 @@ msgstr "Товч|Байрлал зөөх"
 msgid "Button|No"
 msgstr "Товч|Үгүй"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:44
+#: Miradi/source/org/miradi/main/MiradiStrings.java:44
 #: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:239
 msgid "Button|OK"
 msgstr "Товч|Зөвшөөрөн сонгох"
@@ -2486,12 +2482,12 @@ msgstr "Товч|Зөвшөөрөн сонгох"
 msgid "Button|Ok"
 msgstr "Товч|Зөвшөөрөн сонгох"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:39
+#: Miradi/source/org/miradi/main/MiradiStrings.java:39
 #: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:44
 msgid "Button|Open"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:29
+#: Miradi/source/org/miradi/main/MiradiStrings.java:29
 msgid "Button|Overwrite"
 msgstr ""
 
@@ -3074,7 +3070,7 @@ msgstr "Төслийн цар хүрээг тодорхойлох"
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:65
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:75
-#: Miradi/source/org/miradi/main/EAMLabels.java:69
+#: Miradi/source/org/miradi/main/MiradiStrings.java:69
 msgid "Delete"
 msgstr "Устгах"
 
@@ -5937,7 +5933,7 @@ msgid "Results Monitoring Plan"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
-#: Miradi/source/org/miradi/main/EAMLabels.java:64
+#: Miradi/source/org/miradi/main/MiradiStrings.java:64
 msgid "Retain"
 msgstr "Хэвээр хадгалж үлдэх"
 
@@ -6131,6 +6127,10 @@ msgstr ""
 "хүснэгтийн хэлбэрт оруулан дараах зүйлийг ашигла <code "
 "class='toolbarbutton'>&lt;File/ Export&nbsp;Current&nbsp;Page&nbsp;As.../ "
 "RTF&nbsp;File&gt;</code> орсон view дэх menu комманд.</span>"
+
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:42
+msgid "Select which column groups to display."
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/AbstractEditableCodeListField.java:56
 msgid "Select..."
@@ -7970,7 +7970,7 @@ msgstr "Гарчиг|Диаграммын Properties"
 msgid "Title|Direct Threat Properties"
 msgstr "Гарчиг|Шууд үйлчлэх Аюул Заналын Properties"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:59
+#: Miradi/source/org/miradi/main/MiradiStrings.java:59
 msgid "Title|Error"
 msgstr "Гарчиг|Алдаа"
 
@@ -8429,7 +8429,7 @@ msgstr "Зэрлэг ан амьтан хамгаалах байгууллага
 msgid "WWF"
 msgstr "Дэлхийн байгаль хамгаалах сан"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:49
+#: Miradi/source/org/miradi/main/MiradiStrings.java:49
 msgid "Warning"
 msgstr "САНУУЛГА"
 
@@ -8580,7 +8580,7 @@ msgstr "Хэн зогсоосон: "
 msgid "Who Override was: %s"
 msgstr "Хэн зогсоосон: %s"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:74
+#: Miradi/source/org/miradi/main/MiradiStrings.java:74
 msgid "Wintitle|Information"
 msgstr ""
 
@@ -31887,6 +31887,9 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "<html>Select which column groups to display."
+#~ msgstr "<html>Аль бүлгийн баганыг харуулахыг сонгох."
 
 #~ msgid "FileFilter|XLS (*.xls)"
 #~ msgstr "FileFilter|XLS (*.xls)"
