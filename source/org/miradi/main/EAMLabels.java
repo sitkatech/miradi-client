@@ -44,7 +44,7 @@ public class EAMLabels
 		return EAM.text("Button|OK");
 	}
 
-	public static String getWraningLabel()
+	public static String getWarningLabel()
 	{
 		return EAM.text("Warning");
 	}
