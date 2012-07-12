@@ -39,19 +39,19 @@ public class ZipUtilities
 {
 	public static boolean compare(ZipFile zipFile, File directory, String projectName) throws Exception
 	{
-		final File createTempDirectory = FileUtilities.createTempDirectory("unzipDirectory");
+		final File tempDirectory = FileUtilities.createTempDirectory("unzipDirectory");
 		try
 		{
-			extractAll(zipFile, createTempDirectory);
+			extractAll(zipFile, tempDirectory);
 			Vector<String> actualFiles = extractOnlyProjectPaths(directory, projectName);
-			Vector<String> expectedFiles = extractOnlyProjectPaths(createTempDirectory, projectName);
+			Vector<String> expectedFiles = extractOnlyProjectPaths(tempDirectory, projectName);
 			actualFiles.removeAll(expectedFiles);
 			
 			return actualFiles.size() == 0;
 		}
 		finally 
 		{
-			DirectoryUtils.deleteEntireDirectoryTree(createTempDirectory);
+			DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
 		}
 	}
 
