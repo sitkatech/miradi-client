@@ -25,7 +25,7 @@ import javax.swing.filechooser.FileFilter;
 
 import org.miradi.main.EAM;
 
-public class XLSFileFilter extends FileFilter implements MiradiFileFilter
+public class XslFileFilter extends FileFilter implements MiradiFileFilter
 {
 
 	@Override
