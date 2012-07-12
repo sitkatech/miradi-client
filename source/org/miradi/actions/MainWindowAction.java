@@ -77,9 +77,7 @@ public abstract class MainWindowAction extends MiradiAction
 			displayUndoRedoErrorMessage();
 		}
 		catch (UnexpectedSideEffectException e)
-		{
-			EAM.logException(e);
-			
+		{			
 			Command lastCommand = getProject().getLastExecutedCommand();
 			if(lastCommand == null)
 				EAM.friendlyInternalError("Attempted to execute command as side effect before any command had been executed ");
