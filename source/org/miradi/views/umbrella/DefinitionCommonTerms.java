@@ -110,7 +110,7 @@ public class DefinitionCommonTerms
 		defs.put("Definition:ConceptualModel", def);
 		
 		
-		def = Definition.createDefinitionFromTextString(EAM.text("Scope"), EAM.text("Scope - The broad geographic or thematic focus of a project. In Miradi, a project's scope is represented by a green box around the targets."));
+		def = Definition.createDefinitionFromTextString(EAM.text("Project|Scope"), EAM.text("Scope - The broad geographic or thematic focus of a project. In Miradi, a project's scope is represented by a green box around the targets."));
 		defs.put("Definition:Scope", def);
 		
 		def = Definition.createDefinitionFromTextString(EAM.text("Assigned Resource"), EAM.text("Assigned Resource - A project resource that has been assigned to a specific activity, method, or task."));

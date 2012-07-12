@@ -65,7 +65,7 @@ public class ReportTemplateContentQuestion extends DynamicChoiceQuestion
 		choices.add(new ChoiceItem(SUMMARY_VIEW_PROJECT_TAB_CODE, EAM.text("Project Summary")));
 		choices.add(new ChoiceItem(SUMMARY_VIEW_TEAM_TAB_CODE, getTeamLabel()));
 		choices.add(new ChoiceItem(SUMMARY_VIEW_ORGANIZATION_TAB_CODE, getOraganizationLabel()));
-		choices.add(new ChoiceItem(SUMMARY_VIEW_SCOPE_TAB_CODE, EAM.text("Scope")));
+		choices.add(new ChoiceItem(SUMMARY_VIEW_SCOPE_TAB_CODE, EAM.text("Project|Scope")));
 		choices.add(new ChoiceItem(SUMMARY_VIEW_LOCATION_TAB_CODE, EAM.text("Location")));
 		choices.add(new ChoiceItem(SUMMARY_VIEW_PLANNING_TAB_CODE, EAM.text("Planning Parameters")));
 		choices.add(new ChoiceItem(SUMMARY_VIEW_TNC_TAB_CODE, EAM.text("TNC")));

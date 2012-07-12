@@ -70,7 +70,7 @@ public class SummaryScopeTabPanel extends ObjectDataInputPanelWithSections
 
 	public static String getScopePanelDescription()
 	{
-		return EAM.text("Scope");
+		return EAM.text("Project|Scope");
 	}
 	
 	@Override
