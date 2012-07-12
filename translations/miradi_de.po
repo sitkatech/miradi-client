@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-12 14:43-0500\n"
+"POT-Creation-Date: 2012-07-12 15:07-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -536,11 +536,11 @@ msgstr ""
 "zu importieren.<br>Bitte bearbeiten Sie die untenstehenden Probleme und "
 "versuchen Sie erneut die Datei zu exportieren:<BR><BR>"
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:105
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:102
 msgid "<br> Please report this problem to the Miradi support team "
 msgstr "<br> Bitte melden Sie dieses Problem dem Miradi Support Team "
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:104
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:101
 msgid ""
 "<br> The operation completed successfully, but Undo/Redo may not work "
 "correctly."
@@ -2132,7 +2132,7 @@ msgid ""
 "this problem has been resolved."
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:96
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:93
 msgid "An internal error prevented this operation"
 msgstr "ein interner Fehler hat diesen Befehl verhindert"
 
@@ -2140,7 +2140,7 @@ msgstr "ein interner Fehler hat diesen Befehl verhindert"
 msgid "An unexpected error has occurred"
 msgstr "Ein unerwarteter Fehler ist aufgetreten"
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:103
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:100
 msgid "An unexpected error has occurred."
 msgstr "Ein unerwarteter Fehler ist aufgetreten."
 
@@ -5229,7 +5229,7 @@ msgstr ""
 msgid "Miradi Preferences"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:141
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:138
 msgid ""
 "Miradi could not complete that operation \n"
 "because it ran out of memory.\n"

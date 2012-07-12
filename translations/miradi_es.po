@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-12 14:43-0500\n"
+"POT-Creation-Date: 2012-07-12 15:07-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -499,11 +499,11 @@ msgid ""
 "the project again:<BR><BR>"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:105
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:102
 msgid "<br> Please report this problem to the Miradi support team "
 msgstr "<br> Informe este problema al equipo de soporte técnico de Miradi."
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:104
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:101
 msgid ""
 "<br> The operation completed successfully, but Undo/Redo may not work "
 "correctly."
@@ -1977,7 +1977,7 @@ msgstr ""
 "ayuda y orientación. Se recomienda no realizar cambios en el proyecto hasta "
 "que el problema se haya resuelto."
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:96
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:93
 msgid "An internal error prevented this operation"
 msgstr "Un error interno impidió esta operación."
 
@@ -1985,7 +1985,7 @@ msgstr "Un error interno impidió esta operación."
 msgid "An unexpected error has occurred"
 msgstr "Se ha producido un error inesperado."
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:103
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:100
 msgid "An unexpected error has occurred."
 msgstr "Se ha producido un error inesperado. "
 
@@ -5055,7 +5055,7 @@ msgstr "Problemas menores – Activo, problemas menores que requieren atención 
 msgid "Miradi Preferences"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:141
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:138
 msgid ""
 "Miradi could not complete that operation \n"
 "because it ran out of memory.\n"
