@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-12 17:24-0500\n"
+"POT-Creation-Date: 2012-07-12 17:53-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -809,7 +809,7 @@ msgid ""
 "proportion of the target's population.</html>"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:191
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:186
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>导入失败：<br><p> %s </p></html> \t\t"
 
@@ -3933,7 +3933,7 @@ msgstr "导入会计编码 \t\t"
 msgid "Import Completed"
 msgstr "导入完成 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:170
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:165
 msgid "Import Completed.  Would you like to open %s?"
 msgstr ""
 
@@ -5183,7 +5183,7 @@ msgstr "打开 \t\t"
 msgid "Open Anyway"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:171
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:166
 #: Miradi/source/org/miradi/main/MainWindow.java:616
 msgid "Open Project"
 msgstr ""
@@ -7475,7 +7475,7 @@ msgid ""
 "the data in different formats."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:234
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:229
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -7957,7 +7957,7 @@ msgstr "未定义"
 msgid "Underline"
 msgstr "下划线"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:190
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:185
 msgid "Unexpected error"
 msgstr ""
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-12 17:24-0500\n"
+"POT-Creation-Date: 2012-07-12 17:53-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -831,7 +831,7 @@ msgid ""
 "proportion of the target's population.</html>"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:191
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:186
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Impor gagal: <br><p> %s </p></html> "
 
@@ -4032,7 +4032,7 @@ msgstr "Impor Kode Akuntansi "
 msgid "Import Completed"
 msgstr "Impor Selesai "
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:170
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:165
 msgid "Import Completed.  Would you like to open %s?"
 msgstr ""
 
@@ -5315,7 +5315,7 @@ msgstr "Buka \t"
 msgid "Open Anyway"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:171
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:166
 #: Miradi/source/org/miradi/main/MainWindow.java:616
 msgid "Open Project"
 msgstr ""
@@ -7666,7 +7666,7 @@ msgid ""
 "the data in different formats."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:234
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:229
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -8163,7 +8163,7 @@ msgstr "Tidak terdefinisi"
 msgid "Underline"
 msgstr "Garis Bawah"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:190
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:185
 msgid "Unexpected error"
 msgstr ""
 
