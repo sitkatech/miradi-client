@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-12 13:58-0500\n"
+"POT-Creation-Date: 2012-07-12 14:43-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -960,10 +960,6 @@ msgstr ""
 "class='toolbarbutton'>&lt;Modifica&gt;/&lt;Preferenze&gt;</code> , e guarda "
 "in fondo alla scheda<code class='toolbarbutton'>&lt;Posizione Dati &gt;</"
 "code>."
-
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:42
-msgid "<html>Select which column groups to display."
-msgstr "<html>Seleziona quale colonna dei gruppi mostrare."
 
 #: Miradi/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:81
 msgid ""
@@ -2079,7 +2075,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr "Un errore interno ha impedito questa operazione"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:54
+#: Miradi/source/org/miradi/main/MiradiStrings.java:54
 msgid "An unexpected error has occurred"
 msgstr "Si è verificato un errore inaspettato"
 
@@ -2450,7 +2446,7 @@ msgstr "Regole"
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:229
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
-#: Miradi/source/org/miradi/main/EAMLabels.java:34
+#: Miradi/source/org/miradi/main/MiradiStrings.java:34
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:127
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:54
@@ -2507,7 +2503,7 @@ msgstr "Sposta"
 msgid "Button|No"
 msgstr "No"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:44
+#: Miradi/source/org/miradi/main/MiradiStrings.java:44
 #: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:239
 msgid "Button|OK"
 msgstr "OK"
@@ -2516,12 +2512,12 @@ msgstr "OK"
 msgid "Button|Ok"
 msgstr "Ok"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:39
+#: Miradi/source/org/miradi/main/MiradiStrings.java:39
 #: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:44
 msgid "Button|Open"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:29
+#: Miradi/source/org/miradi/main/MiradiStrings.java:29
 msgid "Button|Overwrite"
 msgstr ""
 
@@ -3109,7 +3105,7 @@ msgstr "Definisci l'Ambito geografico del Progetto di Conservazione"
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:65
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:75
-#: Miradi/source/org/miradi/main/EAMLabels.java:69
+#: Miradi/source/org/miradi/main/MiradiStrings.java:69
 msgid "Delete"
 msgstr "Cancella"
 
@@ -5998,7 +5994,7 @@ msgid "Results Monitoring Plan"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
-#: Miradi/source/org/miradi/main/EAMLabels.java:64
+#: Miradi/source/org/miradi/main/MiradiStrings.java:64
 msgid "Retain"
 msgstr "Mantieni"
 
@@ -6192,6 +6188,10 @@ msgstr ""
 "configura la tabella e usa  la voce di menu <code class='toolbarbutton'>&lt;"
 "File/ Export&nbsp;Current&nbsp;Page&nbsp;As.../ RTF&nbsp;File&gt;</code> da "
 "dentro la schermata stessa.</span>"
+
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:42
+msgid "Select which column groups to display."
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/AbstractEditableCodeListField.java:56
 msgid "Select..."
@@ -8042,7 +8042,7 @@ msgstr "Proprietà Diagramma"
 msgid "Title|Direct Threat Properties"
 msgstr "Proprietà della Minaccia Diretta"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:59
+#: Miradi/source/org/miradi/main/MiradiStrings.java:59
 msgid "Title|Error"
 msgstr "Errore"
 
@@ -8498,7 +8498,7 @@ msgstr "WCS"
 msgid "WWF"
 msgstr "WWF"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:49
+#: Miradi/source/org/miradi/main/MiradiStrings.java:49
 msgid "Warning"
 msgstr "Avvertimento"
 
@@ -8632,7 +8632,7 @@ msgstr "Il Chi ignorato è:"
 msgid "Who Override was: %s"
 msgstr "Il Chi ignorato è: %s"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:74
+#: Miradi/source/org/miradi/main/MiradiStrings.java:74
 msgid "Wintitle|Information"
 msgstr "Informazione"
 
@@ -30377,6 +30377,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid "<html>Select which column groups to display."
+#~ msgstr "<html>Seleziona quale colonna dei gruppi mostrare."
 
 #~ msgid "FileFilter|XLS (*.xls)"
 #~ msgstr "XLS (*.xls)"

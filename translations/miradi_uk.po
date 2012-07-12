@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-12 13:58-0500\n"
+"POT-Creation-Date: 2012-07-12 14:43-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -935,10 +935,6 @@ msgstr ""
 "<p>Щоб побачити, де зберігаються ваші проекти, скористайтеся<code "
 "class='toolbarbutton'>&lt;Edit&gt;/&lt;Preferences&gt;</code> меню і гляньте "
 "на низ <code class='toolbarbutton'>&lt;Data Location&gt;</code> табулятора."
-
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:42
-msgid "<html>Select which column groups to display."
-msgstr "<html>Виберіть, яку групу колонок показати."
 
 #: Miradi/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:81
 msgid ""
@@ -2041,7 +2037,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr "Внутрішня помилка перешкодила цій операції"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:54
+#: Miradi/source/org/miradi/main/MiradiStrings.java:54
 msgid "An unexpected error has occurred"
 msgstr "Сталася нечекана помилка"
 
@@ -2403,7 +2399,7 @@ msgstr "Вузлові правила"
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:229
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
-#: Miradi/source/org/miradi/main/EAMLabels.java:34
+#: Miradi/source/org/miradi/main/MiradiStrings.java:34
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:127
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:54
@@ -2460,7 +2456,7 @@ msgstr "Button|Перемістити"
 msgid "Button|No"
 msgstr "Button|Ні"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:44
+#: Miradi/source/org/miradi/main/MiradiStrings.java:44
 #: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:239
 msgid "Button|OK"
 msgstr "Button|OK"
@@ -2469,12 +2465,12 @@ msgstr "Button|OK"
 msgid "Button|Ok"
 msgstr "Button|Добре"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:39
+#: Miradi/source/org/miradi/main/MiradiStrings.java:39
 #: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:44
 msgid "Button|Open"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:29
+#: Miradi/source/org/miradi/main/MiradiStrings.java:29
 msgid "Button|Overwrite"
 msgstr ""
 
@@ -3059,7 +3055,7 @@ msgstr "Визначити сферу дій проекту"
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:65
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:75
-#: Miradi/source/org/miradi/main/EAMLabels.java:69
+#: Miradi/source/org/miradi/main/MiradiStrings.java:69
 msgid "Delete"
 msgstr "Видалити"
 
@@ -5913,7 +5909,7 @@ msgid "Results Monitoring Plan"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
-#: Miradi/source/org/miradi/main/EAMLabels.java:64
+#: Miradi/source/org/miradi/main/MiradiStrings.java:64
 msgid "Retain"
 msgstr "Утримувати"
 
@@ -6104,6 +6100,10 @@ msgstr ""
 "тоді використовуйте <code class='toolbarbutton'>&lt;Файл/ Експортувати&nbsp;"
 "дану&nbsp;сторінку&nbsp;як.../ RTF&nbsp;файл&gt;</code> командне меню з "
 "цього виду.</span>"
+
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:42
+msgid "Select which column groups to display."
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/AbstractEditableCodeListField.java:56
 msgid "Select..."
@@ -7923,7 +7923,7 @@ msgstr "Title|Складові Діаграми"
 msgid "Title|Direct Threat Properties"
 msgstr "Title|Складові Прямої загрози"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:59
+#: Miradi/source/org/miradi/main/MiradiStrings.java:59
 msgid "Title|Error"
 msgstr "Title|Помилка"
 
@@ -8378,7 +8378,7 @@ msgstr "WCS"
 msgid "WWF"
 msgstr "WWF"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:49
+#: Miradi/source/org/miradi/main/MiradiStrings.java:49
 msgid "Warning"
 msgstr "Застереження"
 
@@ -8503,7 +8503,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr "Ким було перевищено: %s"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:74
+#: Miradi/source/org/miradi/main/MiradiStrings.java:74
 msgid "Wintitle|Information"
 msgstr "Wintitle|Інформація"
 
@@ -33931,6 +33931,9 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "<html>Select which column groups to display."
+#~ msgstr "<html>Виберіть, яку групу колонок показати."
 
 #~ msgid "FileFilter|XLS (*.xls)"
 #~ msgstr "FileFilter|XLS (*.xls)"

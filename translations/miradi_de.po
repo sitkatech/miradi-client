@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-12 13:58-0500\n"
+"POT-Creation-Date: 2012-07-12 14:43-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -1019,10 +1019,6 @@ msgid ""
 "at the bottom of the <code class='toolbarbutton'>&lt;Data Location&gt;</"
 "code> tab."
 msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:42
-msgid "<html>Select which column groups to display."
-msgstr "<html>Wählen Sie welche Spalten angezeigt werden sollen."
 
 #: Miradi/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:81
 msgid ""
@@ -2140,7 +2136,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr "ein interner Fehler hat diesen Befehl verhindert"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:54
+#: Miradi/source/org/miradi/main/MiradiStrings.java:54
 msgid "An unexpected error has occurred"
 msgstr "Ein unerwarteter Fehler ist aufgetreten"
 
@@ -2503,7 +2499,7 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:229
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
-#: Miradi/source/org/miradi/main/EAMLabels.java:34
+#: Miradi/source/org/miradi/main/MiradiStrings.java:34
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:127
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:54
@@ -2562,7 +2558,7 @@ msgstr "Verschieben"
 msgid "Button|No"
 msgstr "Nein"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:44
+#: Miradi/source/org/miradi/main/MiradiStrings.java:44
 #: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:239
 msgid "Button|OK"
 msgstr "OK"
@@ -2571,12 +2567,12 @@ msgstr "OK"
 msgid "Button|Ok"
 msgstr "Ok"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:39
+#: Miradi/source/org/miradi/main/MiradiStrings.java:39
 #: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:44
 msgid "Button|Open"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:29
+#: Miradi/source/org/miradi/main/MiradiStrings.java:29
 msgid "Button|Overwrite"
 msgstr ""
 
@@ -3188,7 +3184,7 @@ msgstr "Planungsraum definieren"
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:65
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:75
-#: Miradi/source/org/miradi/main/EAMLabels.java:69
+#: Miradi/source/org/miradi/main/MiradiStrings.java:69
 msgid "Delete"
 msgstr "Löschen"
 
@@ -6103,7 +6099,7 @@ msgid "Results Monitoring Plan"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
-#: Miradi/source/org/miradi/main/EAMLabels.java:64
+#: Miradi/source/org/miradi/main/MiradiStrings.java:64
 msgid "Retain"
 msgstr "Behalten"
 
@@ -6314,6 +6310,10 @@ msgstr ""
 "sondern wählen stattdessen in der gewünschten Ansicht <br> <code "
 "class='toolbarbutton'>&lt;Datei/ Aktuelle&nbsp;Seite&nbsp;Exportieren&nbsp;"
 "als.../ RTF&nbsp;Datei&gt;</code> .</span>"
+
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:42
+msgid "Select which column groups to display."
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/AbstractEditableCodeListField.java:56
 msgid "Select..."
@@ -8192,7 +8192,7 @@ msgstr "Eigenschaften - Diagramm"
 msgid "Title|Direct Threat Properties"
 msgstr "Direkte Bedrohungen Eigenschaften"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:59
+#: Miradi/source/org/miradi/main/MiradiStrings.java:59
 msgid "Title|Error"
 msgstr "Fehler"
 
@@ -8644,7 +8644,7 @@ msgstr "WCS"
 msgid "WWF"
 msgstr "WWF"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:49
+#: Miradi/source/org/miradi/main/MiradiStrings.java:49
 msgid "Warning"
 msgstr "Warnung"
 
@@ -8771,7 +8771,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:74
+#: Miradi/source/org/miradi/main/MiradiStrings.java:74
 msgid "Wintitle|Information"
 msgstr "Information"
 
@@ -29988,6 +29988,9 @@ msgid ""
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
 "Marine___Western Tropical Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "<html>Select which column groups to display."
+#~ msgstr "<html>Wählen Sie welche Spalten angezeigt werden sollen."
 
 #~ msgid "FileFilter|XLS (*.xls)"
 #~ msgstr "XLS (*.xls)"

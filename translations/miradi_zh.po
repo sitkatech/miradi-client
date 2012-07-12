@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-12 13:58-0500\n"
+"POT-Creation-Date: 2012-07-12 14:43-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -835,10 +835,6 @@ msgid ""
 "class='toolbarbutton'>&lt;Edit&gt;/&lt;Preferences&gt;</code> menu, and look "
 "at the bottom of the <code class='toolbarbutton'>&lt;Data Location&gt;</"
 "code> tab."
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:42
-msgid "<html>Select which column groups to display."
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:81
@@ -1924,7 +1920,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr "一个内部错误阻止了该操作 \t\t"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:54
+#: Miradi/source/org/miradi/main/MiradiStrings.java:54
 msgid "An unexpected error has occurred"
 msgstr ""
 
@@ -2280,7 +2276,7 @@ msgstr "规则集"
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:229
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
-#: Miradi/source/org/miradi/main/EAMLabels.java:34
+#: Miradi/source/org/miradi/main/MiradiStrings.java:34
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:127
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:54
@@ -2337,7 +2333,7 @@ msgstr ""
 msgid "Button|No"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:44
+#: Miradi/source/org/miradi/main/MiradiStrings.java:44
 #: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:239
 msgid "Button|OK"
 msgstr "确定 \t\t"
@@ -2346,12 +2342,12 @@ msgstr "确定 \t\t"
 msgid "Button|Ok"
 msgstr "确定 \t\t"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:39
+#: Miradi/source/org/miradi/main/MiradiStrings.java:39
 #: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:44
 msgid "Button|Open"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:29
+#: Miradi/source/org/miradi/main/MiradiStrings.java:29
 msgid "Button|Overwrite"
 msgstr ""
 
@@ -2927,7 +2923,7 @@ msgstr "规定项目范围 \t\t"
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:65
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:75
-#: Miradi/source/org/miradi/main/EAMLabels.java:69
+#: Miradi/source/org/miradi/main/MiradiStrings.java:69
 msgid "Delete"
 msgstr "删除 \t\t"
 
@@ -5730,7 +5726,7 @@ msgid "Results Monitoring Plan"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
-#: Miradi/source/org/miradi/main/EAMLabels.java:64
+#: Miradi/source/org/miradi/main/MiradiStrings.java:64
 msgid "Retain"
 msgstr "保留 \t\t"
 
@@ -5904,6 +5900,10 @@ msgid ""
 "use report view. Instead, in any view, configure the table and then use the "
 "<code class='toolbarbutton'>&lt;File/ Export&nbsp;Current&nbsp;Page&nbsp;"
 "As.../ RTF&nbsp;File&gt;</code> menu command from within that view.</span>"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:42
+msgid "Select which column groups to display."
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/AbstractEditableCodeListField.java:56
@@ -7683,7 +7683,7 @@ msgstr "图表属性 \t\t"
 msgid "Title|Direct Threat Properties"
 msgstr "标题|直接威胁因子属性"
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:59
+#: Miradi/source/org/miradi/main/MiradiStrings.java:59
 msgid "Title|Error"
 msgstr "错误 "
 
@@ -8136,7 +8136,7 @@ msgstr "WCS "
 msgid "WWF"
 msgstr "WWF "
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:49
+#: Miradi/source/org/miradi/main/MiradiStrings.java:49
 msgid "Warning"
 msgstr "警告 \t\t"
 
@@ -8256,7 +8256,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAMLabels.java:74
+#: Miradi/source/org/miradi/main/MiradiStrings.java:74
 msgid "Wintitle|Information"
 msgstr "信息 \t\t"
 
