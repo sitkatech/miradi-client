@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-12 15:07-0500\n"
+"POT-Creation-Date: 2012-07-12 17:24-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -809,7 +809,7 @@ msgid ""
 "proportion of the target's population.</html>"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:186
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:191
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>导入失败：<br><p> %s </p></html> \t\t"
 
@@ -2301,11 +2301,11 @@ msgstr "继续 \t\t"
 msgid "Button|Delete"
 msgstr "删除 \t\t"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:132
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:155
 msgid "Button|Don't Import"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:133
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:156
 msgid "Button|Exit"
 msgstr ""
 
@@ -2313,7 +2313,7 @@ msgstr ""
 msgid "Button|Export..."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:131
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:154
 msgid "Button|Import"
 msgstr ""
 
@@ -2438,11 +2438,11 @@ msgstr "取消 \t\t"
 msgid "Cancelled"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:100
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:123
 msgid "Cannot import project file %s because it does not exist"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:107
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:130
 msgid "Cannot import project file %s because it is a directory, not a file"
 msgstr ""
 
@@ -2810,7 +2810,7 @@ msgid ""
 msgstr ""
 "当前处于集思广益模式，因此有些因素被隐藏了。要返回正常模式，点击本按钮： "
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:69
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:72
 msgid "Currently, Miradi can only import one project file at a time"
 msgstr ""
 
@@ -3143,7 +3143,7 @@ msgstr ""
 "直接威胁因子的分类可以根据最新的“IUCN-CMP 直接威胁因子统一分类”，该标准可在此"
 "获得：www.conservationmeasures.org。"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:117
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:140
 msgid "Do you want to attempt to import %s into Miradi?"
 msgstr ""
 
@@ -3336,7 +3336,7 @@ msgstr "试图导出到制表符分隔格式文件时出错。 \t\t"
 msgid "Error opening project: "
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:151
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:174
 msgid "Error reading %s. Perhaps it is not a valid zip file."
 msgstr ""
 
@@ -3919,8 +3919,8 @@ msgstr "实施策略及监控计划 \t\t"
 msgid "Implement work plan"
 msgstr "实施工作计划 \t\t"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:69
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:118
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:72
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:141
 #: Miradi/source/org/miradi/utils/XslImportFileChooser.java:44
 msgid "Import"
 msgstr "导入 \t\t"
@@ -3933,7 +3933,7 @@ msgstr "导入会计编码 \t\t"
 msgid "Import Completed"
 msgstr "导入完成 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:165
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:170
 msgid "Import Completed.  Would you like to open %s?"
 msgstr ""
 
@@ -4908,11 +4908,11 @@ msgstr ""
 msgid "Miradi data directory:"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:154
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:177
 msgid "Miradi did not recognize the file: %s as importable."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:74
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:77
 msgid "Miradi does not recognize %s as a project file"
 msgstr ""
 
@@ -5183,7 +5183,7 @@ msgstr "打开 \t\t"
 msgid "Open Anyway"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:166
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:171
 #: Miradi/source/org/miradi/main/MainWindow.java:616
 msgid "Open Project"
 msgstr ""
@@ -7475,7 +7475,7 @@ msgid ""
 "the data in different formats."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:229
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:234
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -7957,7 +7957,7 @@ msgstr "未定义"
 msgid "Underline"
 msgstr "下划线"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:185
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:190
 msgid "Unexpected error"
 msgstr ""
 

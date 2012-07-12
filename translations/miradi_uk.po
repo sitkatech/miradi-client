@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-12 15:07-0500\n"
+"POT-Creation-Date: 2012-07-12 17:24-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -894,7 +894,7 @@ msgstr ""
 "громад, що вимірюються як частка місцезнаходження цілі. Для видів, що "
 "вимірюються як частка цільової популяції.</html>"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:186
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:191
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Імпорт не вдався: <br><p> %s </p></html>"
 
@@ -2424,11 +2424,11 @@ msgstr "Button|Продовжити"
 msgid "Button|Delete"
 msgstr "Button|Видалити"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:132
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:155
 msgid "Button|Don't Import"
 msgstr "Button|Не імпортувати"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:133
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:156
 msgid "Button|Exit"
 msgstr "Button|Вихід"
 
@@ -2436,7 +2436,7 @@ msgstr "Button|Вихід"
 msgid "Button|Export..."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:131
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:154
 msgid "Button|Import"
 msgstr "Button|Імпорт"
 
@@ -2561,11 +2561,11 @@ msgstr "Закрити"
 msgid "Cancelled"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:100
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:123
 msgid "Cannot import project file %s because it does not exist"
 msgstr "Неможливо імпортувати файл проекту %s, тому що він не існує "
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:107
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:130
 msgid "Cannot import project file %s because it is a directory, not a file"
 msgstr ""
 "Неможливо імпортувати файл проекту %s, тому що це директорій, а не файл"
@@ -2941,7 +2941,7 @@ msgstr ""
 "В даний момент в опції мозковий штурм, тому деякі фактори сховані. Щоб "
 "повернутися до нормальної опції, натисніть цю кнопку:"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:69
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:72
 msgid "Currently, Miradi can only import one project file at a time"
 msgstr ""
 "В даний момент Міраді може імпортувати тільки один файл проекту за один раз"
@@ -3280,7 +3280,7 @@ msgstr ""
 "класифікацією прямих загроз IUCN-CMP\", яка знаходиться на веб-сторінці www."
 "conservationmeasures.org."
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:117
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:140
 msgid "Do you want to attempt to import %s into Miradi?"
 msgstr "Ви хочете спробувати імпортувати %s у Міраді?"
 
@@ -3472,7 +3472,7 @@ msgstr "Сталася помилка під час спроби транспо�
 msgid "Error opening project: "
 msgstr "Помилка відкривання проекту:"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:151
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:174
 msgid "Error reading %s. Perhaps it is not a valid zip file."
 msgstr "Помилка читання %s. Можливо це не дійсний zip файл."
 
@@ -4063,8 +4063,8 @@ msgstr "Реалізувати стратегічний план і план м�
 msgid "Implement work plan"
 msgstr "Реалізувати робочий план"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:69
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:118
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:72
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:141
 #: Miradi/source/org/miradi/utils/XslImportFileChooser.java:44
 msgid "Import"
 msgstr "Імпорт"
@@ -4077,7 +4077,7 @@ msgstr "Імпортувати розрахункові коди"
 msgid "Import Completed"
 msgstr "Імпорт завершений"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:165
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:170
 msgid "Import Completed.  Would you like to open %s?"
 msgstr "Імпорт завершено. Чи бажаєте відкрити %s?"
 
@@ -5072,11 +5072,11 @@ msgstr ""
 msgid "Miradi data directory:"
 msgstr "Керівництво по даних Міраді:"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:154
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:177
 msgid "Miradi did not recognize the file: %s as importable."
 msgstr "Міраді не визнає файл %s як такий, що його можна імпортувати"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:74
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:77
 msgid "Miradi does not recognize %s as a project file"
 msgstr "Міраді не визнає %s як файл проекту"
 
@@ -5354,7 +5354,7 @@ msgstr "Відкрити"
 msgid "Open Anyway"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:166
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:171
 #: Miradi/source/org/miradi/main/MainWindow.java:616
 msgid "Open Project"
 msgstr "Відкрити проект"
@@ -7706,7 +7706,7 @@ msgstr ""
 "але схема XML все ще змінюється. Майбутні версії Міраді будуть експортувати "
 "дані у різних форматах. "
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:229
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:234
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -8196,7 +8196,7 @@ msgstr "Невизначене"
 msgid "Underline"
 msgstr "Підкреслений"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:185
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:190
 msgid "Unexpected error"
 msgstr ""
 
