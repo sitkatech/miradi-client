@@ -27,8 +27,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Enumeration;
-import java.util.HashSet;
-import java.util.Vector;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
@@ -43,36 +41,12 @@ public class ZipUtilities
 		try
 		{
 			extractAll(zipFile, tempDirectoryContainingZipContent);
-			return compareDirectories(directory, tempDirectoryContainingZipContent);
+			return FileUtilities.compareDirectories(directory, tempDirectoryContainingZipContent);
 		}
 		finally 
 		{
 			DirectoryUtils.deleteEntireDirectoryTree(tempDirectoryContainingZipContent);
 		}
-	}
-
-	private static boolean compareDirectories(File directory1, final File directory2)
-	{
-		final String projectName = directory1.getName();
-		Vector<String> actualFiles = extractOnlyProjectPaths(directory1, projectName);
-		Vector<String> expectedFiles = extractOnlyProjectPaths(directory2, projectName);
-		actualFiles.removeAll(expectedFiles);
-		
-		return actualFiles.size() == 0;
-	}
-
-	private static Vector<String> extractOnlyProjectPaths(File directory, String projectName)
-	{
-		HashSet<File> allFiles = FileUtilities.getAllRecursiveFilePaths(directory);
-		Vector<String> projectPaths = new Vector<String>();
-		for (File file : allFiles)
-		{
-			final String absolutePath = file.getAbsolutePath();
-			String projectDirPath = absolutePath.substring(absolutePath.indexOf("/" + projectName + "/"));
-			projectPaths.add(projectDirPath);
-		}
-		
-		return projectPaths;
 	}
 
 	public static void extractAll(ZipFile zipFile, File tempDirectory) throws IOException
