@@ -43,12 +43,25 @@ public class TestZipUtilities extends TestCaseWithProject
 		{
 			final ZipFile mpzZipFile = new ZipFile(mpzFile);
 			ZipUtilities.extractAll(mpzZipFile, tempDirectory);
-			assertTrue("zip file does not match directory content?", ZipUtilities.doesProjectZipContainAllProjectFiles(mpzZipFile, tempDirectory, "Marine Example 3.3.2"));
+			File projectDir = getProjectDir(tempDirectory.listFiles());
+			assertTrue("zip file does not match directory content?", ZipUtilities.doesProjectZipContainAllProjectFiles(mpzZipFile, projectDir));
 		}
 		finally
 		{
 			DirectoryUtils.deleteAllFilesOnlyInDirectory(tempDirectory);
 			mpzFile.delete();
 		}
+	}
+	
+	private static File getProjectDir(File[] listFiles) throws Exception
+	{
+		for (int index = 0; index < listFiles.length; ++index)
+		{
+			//NOTE: mac includes "__MACOSX" this file when zipping 
+			if (!listFiles[index].getName().equals("__MACOSX"))
+				return listFiles[index];
+		}
+		
+		throw new Exception("Project not found under directory!");
 	}
 }

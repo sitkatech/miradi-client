@@ -37,12 +37,13 @@ import org.martus.util.DirectoryUtils;
 
 public class ZipUtilities
 {
-	public static boolean doesProjectZipContainAllProjectFiles(ZipFile zipFile, File directory, String projectName) throws Exception
+	public static boolean doesProjectZipContainAllProjectFiles(ZipFile zipFile, File directory) throws Exception
 	{
 		final File tempDirectoryContainingZipContent = FileUtilities.createTempDirectory("unzipDirectory");
 		try
 		{
 			extractAll(zipFile, tempDirectoryContainingZipContent);
+			final String projectName = directory.getName();
 			Vector<String> actualFiles = extractOnlyProjectPaths(directory, projectName);
 			Vector<String> expectedFiles = extractOnlyProjectPaths(tempDirectoryContainingZipContent, projectName);
 			actualFiles.removeAll(expectedFiles);
