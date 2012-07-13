@@ -36,13 +36,12 @@ public class TestZipUtilities extends TestCaseWithProject
 	
 	public void testCompareZipToDirectory() throws Exception
 	{
-		final File tempDirectory = FileUtilities.createTempDirectory("tempZipComarison");
 		final byte[] mpzBytes = TestMpzToMpfConverter.readSampleMpz("/Sample-v61.mpz");
 		final File mpzFile = TestMpzToMpfConverter.writeToTemporaryFile(mpzBytes);
+		final ZipFile mpzZipFile = new ZipFile(mpzFile);
+		File tempDirectory = ZipUtilities.extractAll(mpzZipFile);
 		try
 		{
-			final ZipFile mpzZipFile = new ZipFile(mpzFile);
-			ZipUtilities.extractAll(mpzZipFile, tempDirectory);
 			File projectDir = getProjectDir(tempDirectory.listFiles());
 			assertTrue("zip file does not match directory content?", ZipUtilities.doesProjectZipContainAllProjectFiles(mpzZipFile, projectDir));
 		}

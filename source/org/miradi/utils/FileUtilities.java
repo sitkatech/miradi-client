@@ -27,7 +27,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashSet;
-import java.util.Vector;
 
 public class FileUtilities
 {
@@ -131,25 +130,22 @@ public class FileUtilities
 	
 	public static boolean compareDirectories(File directory1, final File directory2)
 	{
-		final String projectName = directory1.getName();
-		Vector<String> actualFiles = extractOnlyProjectPaths(directory1, projectName);
-		Vector<String> expectedFiles = extractOnlyProjectPaths(directory2, projectName);
+		HashSet<File> actualFiles = extractOnlyProjectPaths(directory1);
+		HashSet<File> expectedFiles = extractOnlyProjectPaths(directory2);
 		actualFiles.removeAll(expectedFiles);
 		
 		return actualFiles.size() == 0;
 	}
 
-	private static Vector<String> extractOnlyProjectPaths(File directory, String projectName)
+	private static HashSet<File> extractOnlyProjectPaths(File directory)
 	{
-		HashSet<File> allFiles = FileUtilities.getAllRecursiveFilePaths(directory);
-		Vector<String> projectPaths = new Vector<String>();
+		HashSet<File> allFiles = getAllRecursiveFilePaths(directory);
+		HashSet<File> projectPathFiles = new HashSet<File>();
 		for (File file : allFiles)
 		{
-			final String absolutePath = file.getAbsolutePath();
-			String projectDirPath = absolutePath.substring(absolutePath.indexOf("/" + projectName + "/"));
-			projectPaths.add(projectDirPath);
+			projectPathFiles.add(file);
 		}
 		
-		return projectPaths;
+		return projectPathFiles;
 	}
 }
