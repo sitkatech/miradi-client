@@ -37,7 +37,7 @@ import org.martus.util.DirectoryUtils;
 
 public class ZipUtilities
 {
-	public static boolean compare(ZipFile zipFile, File directory, String projectName) throws Exception
+	public static boolean doesProjectZipContainAllProjectFiles(ZipFile zipFile, File directory, String projectName) throws Exception
 	{
 		final File tempDirectoryContainingZipContent = FileUtilities.createTempDirectory("unzipDirectory");
 		try

@@ -43,7 +43,7 @@ public class TestZipUtilities extends TestCaseWithProject
 		{
 			final ZipFile mpzZipFile = new ZipFile(mpzFile);
 			ZipUtilities.extractAll(mpzZipFile, tempDirectory);
-			assertTrue("zip file does not match directory content?", ZipUtilities.compare(mpzZipFile, tempDirectory, "Marine Example 3.3.2"));
+			assertTrue("zip file does not match directory content?", ZipUtilities.doesProjectZipContainAllProjectFiles(mpzZipFile, tempDirectory, "Marine Example 3.3.2"));
 		}
 		finally
 		{
