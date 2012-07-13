@@ -130,22 +130,10 @@ public class FileUtilities
 	
 	public static boolean compareDirectories(File directory1, final File directory2)
 	{
-		HashSet<File> actualFiles = extractOnlyProjectPaths(directory1);
-		HashSet<File> expectedFiles = extractOnlyProjectPaths(directory2);
+		HashSet<File> actualFiles = getAllRecursiveFilePaths(directory1);
+		HashSet<File> expectedFiles = getAllRecursiveFilePaths(directory2);
 		actualFiles.removeAll(expectedFiles);
 		
 		return actualFiles.size() == 0;
-	}
-
-	private static HashSet<File> extractOnlyProjectPaths(File directory)
-	{
-		HashSet<File> allFiles = getAllRecursiveFilePaths(directory);
-		HashSet<File> projectPathFiles = new HashSet<File>();
-		for (File file : allFiles)
-		{
-			projectPathFiles.add(file);
-		}
-		
-		return projectPathFiles;
 	}
 }
