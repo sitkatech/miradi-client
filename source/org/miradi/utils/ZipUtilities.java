@@ -37,18 +37,24 @@ public class ZipUtilities
 {
 	public static boolean doesProjectZipContainAllProjectFiles(ZipFile zipFile, File directory) throws Exception
 	{
-		final File tempDirectoryContainingZipContent = FileUtilities.createTempDirectory("unzipDirectory");
+		File extractedFile = extractAll(zipFile);
 		try
 		{
-			extractAll(zipFile, tempDirectoryContainingZipContent);
-			return FileUtilities.compareDirectories(directory, tempDirectoryContainingZipContent);
+			return FileUtilities.compareDirectories(directory, extractedFile);
 		}
 		finally 
 		{
-			DirectoryUtils.deleteEntireDirectoryTree(tempDirectoryContainingZipContent);
+			DirectoryUtils.deleteEntireDirectoryTree(extractedFile);
 		}
 	}
-
+	
+	public static File extractAll(ZipFile zipFile) throws IOException
+	{
+		File file = new File("tempFile");
+		extractAll(zipFile, file);
+		return file;
+	}
+	
 	public static void extractAll(ZipFile zipFile, File tempDirectory) throws IOException
 	{
 		Enumeration<? extends ZipEntry> entries = zipFile.entries();
