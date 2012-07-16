@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-16 14:16-0500\n"
+"POT-Creation-Date: 2012-07-16 15:26-0500\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -497,11 +497,11 @@ msgid ""
 "the project again:<BR><BR>"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:102
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:108
 msgid "<br> Please report this problem to the Miradi support team "
 msgstr "<br> Merci di signaler ce problème au Support Technique Miradi "
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:101
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:107
 msgid ""
 "<br> The operation completed successfully, but Undo/Redo may not work "
 "correctly."
@@ -2058,7 +2058,7 @@ msgstr ""
 "des conseils. Nous vous conseillons de ne pas modifier ce projet tant que ce "
 "problème n'est pas résolu."
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:93
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:88
 msgid "An internal error prevented this operation"
 msgstr "Une erreur interne a empêché l'opération"
 
@@ -2066,7 +2066,7 @@ msgstr "Une erreur interne a empêché l'opération"
 msgid "An unexpected error has occurred"
 msgstr "Une erreur inattendue s'est produite"
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:100
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:106
 msgid "An unexpected error has occurred."
 msgstr "Une erreur inattendue s'est produite."
 
@@ -4358,7 +4358,7 @@ msgstr "Pertinent"
 msgid "Is Tagged"
 msgstr "Marqué"
 
-#: Miradi/source/org/miradi/main/EAM.java:638
+#: Miradi/source/org/miradi/main/EAM.java:624
 msgid ""
 "It appears that Miradi was launched without the -Xmx512m switch. As a "
 "result, certain operations like Reports may run out of memory."
@@ -5132,7 +5132,7 @@ msgstr ""
 msgid "Miradi Preferences"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:138
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:144
 msgid ""
 "Miradi could not complete that operation \n"
 "because it ran out of memory.\n"
