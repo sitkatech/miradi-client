@@ -34,7 +34,7 @@ import org.miradi.views.noproject.RenameProjectDoer;
 import org.miradi.views.umbrella.AbstractProjectImporter;
 import org.miradi.views.umbrella.CpmzProjectImporter;
 import org.miradi.views.umbrella.ExportCpmzDoer;
-import org.miradi.views.umbrella.ZippedProjectImporter;
+import org.miradi.views.umbrella.MpzProjectImporter;
 import org.miradi.wizard.noproject.projectlist.ProjectListTreeTable;
 
 public class CommandLineProjectFileImporterHelper
@@ -185,7 +185,7 @@ public class CommandLineProjectFileImporterHelper
 				return new CpmzProjectImporter(getMainWindow());
 			
 			if (isMpz(zipFile))
-				return new ZippedProjectImporter(getMainWindow());
+				return new MpzProjectImporter(getMainWindow());
 		}
 		catch(ZipException e)
 		{
