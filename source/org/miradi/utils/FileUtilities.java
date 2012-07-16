@@ -139,9 +139,4 @@ public class FileUtilities
 		
 		return actualFiles.size() == 0;
 	}
-	
-	public static String getRelativePathToParent(File file)
-	{
-		return file.getName();
-	}
 }

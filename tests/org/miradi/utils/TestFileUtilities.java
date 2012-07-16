@@ -39,7 +39,7 @@ public class TestFileUtilities extends TestCaseWithProject
 	private void verifyRelativePath(final String pathname, String expectedRelativePath)
 	{
 		File file = new File(pathname);
-		String relativePath = FileUtilities.getRelativePathToParent(file);
+		String relativePath = file.getName();
 		assertEquals("Incorrect relative path?", expectedRelativePath, relativePath);
 	}
 }
