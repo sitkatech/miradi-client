@@ -79,6 +79,14 @@ public class CommandLineProjectFileImporterHelper
 			return;
 		}
 
+		File importedFile = importProject(projectFileToImport);
+		
+		if (importedFile != null)
+			ProjectListTreeTable.doProjectOpen(getMainWindow(), importedFile);
+	}
+
+	private File importProject(File projectFileToImport) throws Exception
+	{
 		File importedFile = projectFileToImport;
 		if (ProjectListTreeTable.isProject(projectFileToImport))
 		{
@@ -91,8 +99,7 @@ public class CommandLineProjectFileImporterHelper
 				importedFile = importMpzFile(projectFileToImport);
 		}
 		
-		if (importedFile != null)
-			ProjectListTreeTable.doProjectOpen(getMainWindow(), importedFile);
+		return importedFile;
 	}
 
 	private File importMpzFile(File projectFileToImport)	throws Exception
