@@ -32,11 +32,11 @@ public class FileUtilities
 {
 	public static HashSet<File> getAllRecursiveChildrenFiles(File startDirectory)
 	{
-		HashSet<File> allFilePaths = new HashSet<File>();
 		File[] currentDirChildren = startDirectory.listFiles();
 		if (currentDirChildren == null)
 			return new HashSet<File>();
-		
+
+		HashSet<File> allFilePaths = new HashSet<File>();
 		for (int index = 0; index < currentDirChildren.length; ++index)
 		{
 			File childFile = currentDirChildren[index];
