@@ -35,12 +35,12 @@ import org.martus.util.DirectoryUtils;
 
 public class ZipUtilities
 {
-	public static boolean doesProjectZipContainAllProjectFiles(ZipFile zipFile, File directory) throws Exception
+	public static boolean doesProjectZipContainAllProjectFiles(ZipFile zipFile, File directoryContainingProject) throws Exception
 	{
 		File dirContainingExtractedFiles = extractAll(zipFile);
 		try
 		{
-			return FileUtilities.compareDirectories(directory, dirContainingExtractedFiles);
+			return FileUtilities.compareDirectories(directoryContainingProject, dirContainingExtractedFiles);
 		}
 		finally 
 		{
