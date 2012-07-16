@@ -34,6 +34,9 @@ public class FileUtilities
 	{
 		HashSet<File> allFilePaths = new HashSet<File>();
 		File[] currentDirChildren = startDirectory.listFiles();
+		if (currentDirChildren == null)
+			return new HashSet<File>();
+		
 		for (int index = 0; index < currentDirChildren.length; ++index)
 		{
 			File childFile = currentDirChildren[index];
@@ -135,5 +138,14 @@ public class FileUtilities
 		actualFiles.removeAll(expectedFiles);
 		
 		return actualFiles.size() == 0;
+	}
+	
+	public static String getRelativePathToParent(File file)
+	{
+		String absolutePath = file.getAbsolutePath();
+		String parentAbsolutePath = file.getParentFile().getAbsoluteFile().getAbsolutePath();
+		String relativePath = absolutePath.substring(parentAbsolutePath.length());
+		
+		return relativePath;
 	}
 }
