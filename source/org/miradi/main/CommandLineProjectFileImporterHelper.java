@@ -87,9 +87,14 @@ public class CommandLineProjectFileImporterHelper
 		}
 		else
 		{
-			AbstractProjectImporter importer = createImporter(projectFileToImport);
-			importer.importProject(projectFileToImport);
+			importAndOpenMpzFile(projectFileToImport);
 		}
+	}
+
+	private void importAndOpenMpzFile(File projectFileToImport)	throws Exception
+	{
+		AbstractProjectImporter importer = createImporter(projectFileToImport);
+		importer.importProject(projectFileToImport);
 	}
 
 	private void importMpfFile(File projectFileToImport) throws Exception
