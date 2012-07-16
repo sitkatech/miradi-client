@@ -54,12 +54,8 @@ public class TestZipUtilities extends TestCaseWithProject
 	
 	private static File getProjectDir(File[] listFiles) throws Exception
 	{
-		for (int index = 0; index < listFiles.length; ++index)
-		{
-			//NOTE: mac includes "__MACOSX" this file when zipping 
-			if (!listFiles[index].getName().equals("__MACOSX"))
-				return listFiles[index];
-		}
+		if (listFiles.length != 1)
+			return listFiles[0];
 		
 		throw new Exception("Project not found under directory!");
 	}
