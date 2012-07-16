@@ -77,21 +77,27 @@ public abstract class MainWindowAction extends MiradiAction
 			displayUndoRedoErrorMessage();
 		}
 		catch (UnexpectedSideEffectException e)
-		{			
-			Command lastCommand = getProject().getLastExecutedCommand();
-			if(lastCommand == null)
-				EAM.friendlyInternalError("Attempted to execute command as side effect before any command had been executed ");
-			else
-				EAM.friendlyInternalError("Attempt to execute command while in side effect mode:\n" +
-									  " tried  " + e.getCommand().toString() + "\n" +
-									  " within " + lastCommand.toString()
-			);
+		{
+			EAM.logError(getErrorMessage(e));
+			EAM.logException(e);
+			EAM.unexpectedErrorDialog(e);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 			EAM.errorDialog(EAM.text("An internal error prevented this operation"));
 		}
+	}
+
+	private String getErrorMessage(UnexpectedSideEffectException e)
+	{
+		Command lastCommand = getProject().getLastExecutedCommand();
+		if (e.getCommand() != null)
+			return "Attempt to execute command while in side effect mode:\n" +
+								  " tried  " + e.getCommand().toString() + "\n" +
+								  " within " + lastCommand.toString();
+		
+		return "Attempted to execute command as side effect before any command had been executed ";
 	}
 
 	private void displayUndoRedoErrorMessage()
