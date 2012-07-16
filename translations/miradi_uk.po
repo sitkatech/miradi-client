@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-12 17:53-0500\n"
+"POT-Creation-Date: 2012-07-16 09:29-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -5126,7 +5126,7 @@ msgstr ""
 msgid "Move To..."
 msgstr "Перемістити до:"
 
-#: Miradi/source/org/miradi/project/OldProjectDirToMpfConverter.java:39
+#: Miradi/source/org/miradi/project/OldProjectDirToMpfConverter.java:41
 msgid "Mpz to Mpf data conversion failed"
 msgstr ""
 
