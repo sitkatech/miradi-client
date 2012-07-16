@@ -80,26 +80,24 @@ public class CommandLineProjectFileImporterHelper
 		}
 
 		File importedFile = importProject(projectFileToImport);
-		
 		if (importedFile != null)
 			ProjectListTreeTable.doProjectOpen(getMainWindow(), importedFile);
 	}
 
 	private File importProject(File projectFileToImport) throws Exception
 	{
-		File importedFile = projectFileToImport;
 		if (ProjectListTreeTable.isProject(projectFileToImport))
 		{
 			if (isOutsideOfHomeDir(projectFileToImport))
-				importedFile = importMpfFile(projectFileToImport);
+				return importMpfFile(projectFileToImport);
 		}
 		else
 		{
 			if (getUserImportConfirmation(projectFileToImport.getName()))
-				importedFile = importMpzFile(projectFileToImport);
+				return importMpzFile(projectFileToImport);
 		}
 		
-		return importedFile;
+		return projectFileToImport;
 	}
 
 	private File importMpzFile(File projectFileToImport)	throws Exception
