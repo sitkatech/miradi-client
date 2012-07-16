@@ -131,12 +131,12 @@ public class FileUtilities
 		return temporaryFile;
 	}
 	
-	public static boolean compareDirectories(File directory1, final File directory2)
+	public static boolean compareDirectories(File directoryOnDisk, final File unzippedDir)
 	{
-		HashSet<File> actualFiles = getAllRecursiveChildrenFiles(directory1);
-		HashSet<File> expectedFiles = getAllRecursiveChildrenFiles(directory2);
-		actualFiles.removeAll(expectedFiles);
+		HashSet<File> filesFromDisk = getAllRecursiveChildrenFiles(directoryOnDisk);
+		HashSet<File> filesFromZip = getAllRecursiveChildrenFiles(unzippedDir);
+		filesFromDisk.removeAll(filesFromZip);
 		
-		return actualFiles.size() == 0;
+		return filesFromDisk.size() == 0;
 	}
 }
