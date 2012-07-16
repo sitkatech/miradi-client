@@ -36,17 +36,17 @@ public class FileUtilities
 		if (currentDirChildren == null)
 			return new HashSet<File>();
 
-		HashSet<File> allFilePaths = new HashSet<File>();
+		HashSet<File> allChildrenFiles = new HashSet<File>();
 		for (int index = 0; index < currentDirChildren.length; ++index)
 		{
 			File childFile = currentDirChildren[index];
 			if (childFile.isDirectory())
-				allFilePaths.addAll(getAllRecursiveChildrenFiles(childFile));
+				allChildrenFiles.addAll(getAllRecursiveChildrenFiles(childFile));
 			else
-				allFilePaths.add(childFile);
+				allChildrenFiles.add(childFile);
 		}
 		
-		return allFilePaths;
+		return allChildrenFiles;
 	}
 	
 	public static void copyStream(InputStream inputStream, OutputStream out) throws IOException
