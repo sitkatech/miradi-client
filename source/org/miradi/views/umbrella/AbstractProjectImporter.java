@@ -68,7 +68,9 @@ public abstract class AbstractProjectImporter
 			File fileToImport = fileChooser.getSelectedFile();
 			fileToImport = MiradiFileSaveChooser.getFileWithExtension(fileChooser, fileToImport);
 			
-			importProject(fileToImport);
+			File importedFile = importProject(fileToImport);
+			if (importedFile != null)
+				userConfirmOpenImportedProject(importedFile);
 		}
 		catch (UserCanceledException e)
 		{
@@ -106,11 +108,9 @@ public abstract class AbstractProjectImporter
 		}
 	}
 
-	public void importProject(File fileToImport) throws Exception
+	public File importProject(File fileToImport) throws Exception
 	{
-		File importedFile = importProject(fileToImport, fileToImport.getName());
-		if (importedFile != null)
-			userConfirmOpenImportedProject(importedFile);
+		return importProject(fileToImport, fileToImport.getName());
 	}
 
 	public File importProject(File fileToImport, final String name) throws Exception
