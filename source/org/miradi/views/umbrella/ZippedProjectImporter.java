@@ -36,11 +36,6 @@ public class ZippedProjectImporter extends AbstractProjectImporter
 		super(mainWindowToUse);
 	}
 
-	public static void doImport(MainWindow mainWindow) throws Exception
-	{
-		new ZippedProjectImporter(mainWindow).importProject();
-	}
-	
 	@Override
 	protected void createProject(File importFile, File homeDirectory, File newProjectFile, ProgressInterface progressIndicator) throws Exception
 	{
