@@ -67,7 +67,7 @@ public class CommandLineProjectFileImporterHelper
 	
 	private File importIfRequested(String[] commandLineArgs) throws Exception
 	{
-		Vector<File> filesToImport = extractProjectFileToImport(commandLineArgs);
+		Vector<File> filesToImport = extractProjectFilesToImport(commandLineArgs);
 		if (filesToImport.isEmpty())
 			return null;
 		
@@ -127,7 +127,7 @@ public class CommandLineProjectFileImporterHelper
 		return !allProjectFiles.contains(projectFileToImport);
 	}
 	
-	private Vector<File> extractProjectFileToImport(String[] commandLineArgs)
+	private Vector<File> extractProjectFilesToImport(String[] commandLineArgs)
 	{
 		Vector<File> filesToImport = new Vector<File>();
 		for (int index = 0; index < commandLineArgs.length; ++index)
