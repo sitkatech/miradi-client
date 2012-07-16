@@ -202,7 +202,6 @@ import org.miradi.utils.TestDiagramCorruptionDetector;
 import org.miradi.utils.TestDoubleUtilities;
 import org.miradi.utils.TestEditableHtmlPane;
 import org.miradi.utils.TestEnhancedJsonObject;
-import org.miradi.utils.TestFileUtilities;
 import org.miradi.utils.TestFloatingPointFormatter;
 import org.miradi.utils.TestHtmlUtilities;
 import org.miradi.utils.TestLogging;
@@ -323,7 +322,6 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestHtmlUtilities.class));
 		addTest(new TestSuite(TestEditableHtmlPane.class));
 		addTest(new TestSuite(TestZipUtilities.class));
-		addTest(new TestSuite(TestFileUtilities.class));
 		
 		// diagram package
 		addTest(new TestSuite(TestDiagramModel.class));
