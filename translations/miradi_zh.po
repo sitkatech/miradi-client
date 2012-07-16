@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-16 12:37-0500\n"
+"POT-Creation-Date: 2012-07-16 13:28-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2301,11 +2301,11 @@ msgstr "继续 \t\t"
 msgid "Button|Delete"
 msgstr "删除 \t\t"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:173
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:179
 msgid "Button|Don't Import"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:174
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:180
 msgid "Button|Exit"
 msgstr ""
 
@@ -2313,7 +2313,7 @@ msgstr ""
 msgid "Button|Export..."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:172
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:178
 msgid "Button|Import"
 msgstr ""
 
@@ -2438,11 +2438,11 @@ msgstr "取消 \t\t"
 msgid "Cancelled"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:141
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:147
 msgid "Cannot import project file %s because it does not exist"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:148
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:154
 msgid "Cannot import project file %s because it is a directory, not a file"
 msgstr ""
 
@@ -2810,7 +2810,7 @@ msgid ""
 msgstr ""
 "当前处于集思广益模式，因此有些因素被隐藏了。要返回正常模式，点击本按钮： "
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:73
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:75
 msgid ""
 "Currently, Miradi can only import one project file at a time.  Importing "
 "first file only."
@@ -3145,7 +3145,7 @@ msgstr ""
 "直接威胁因子的分类可以根据最新的“IUCN-CMP 直接威胁因子统一分类”，该标准可在此"
 "获得：www.conservationmeasures.org。"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:158
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:164
 msgid "Do you want to attempt to import %s into Miradi?"
 msgstr ""
 
@@ -3338,7 +3338,7 @@ msgstr "试图导出到制表符分隔格式文件时出错。 \t\t"
 msgid "Error opening project: "
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:192
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:198
 msgid "Error reading %s. Perhaps it is not a valid zip file."
 msgstr ""
 
@@ -3921,8 +3921,8 @@ msgstr "实施策略及监控计划 \t\t"
 msgid "Implement work plan"
 msgstr "实施工作计划 \t\t"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:73
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:159
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:75
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:165
 #: Miradi/source/org/miradi/utils/XslImportFileChooser.java:44
 msgid "Import"
 msgstr "导入 \t\t"
@@ -3951,7 +3951,7 @@ msgstr ""
 msgid "Import a Miradi Project Zipfile (.mpz)"
 msgstr "导入Miradi项目压缩文件（.mpz） \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:75
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:77
 msgid "Import was canceled!"
 msgstr ""
 
@@ -4910,11 +4910,11 @@ msgstr ""
 msgid "Miradi data directory:"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:195
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:201
 msgid "Miradi did not recognize the file: %s as importable."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:78
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:80
 msgid "Miradi does not recognize %s as a project file"
 msgstr ""
 
@@ -7502,7 +7502,7 @@ msgstr ""
 msgid "This person is a coach within the Conservation Coaches Network"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:85
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:87
 msgid ""
 "This project cannot be imported by this version of Miradi because it \n"
 "is in a newer data format. Please upgrade to the latest version of Miradi."
