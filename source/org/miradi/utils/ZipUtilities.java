@@ -62,6 +62,10 @@ public class ZipUtilities
 		{
 			ZipEntry entry = entries.nextElement();
 			File destination = new File(tempDirectory, entry.getName());
+			//NOTE: mac includes "__MACOSX" this file when zipping 
+			if (destination.getName().equals("__MACOSX"))
+				continue;
+			
 			if(entry.isDirectory())
 			{
 				destination.mkdirs();
