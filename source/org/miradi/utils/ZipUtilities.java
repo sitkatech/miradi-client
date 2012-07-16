@@ -50,7 +50,7 @@ public class ZipUtilities
 	
 	public static File extractAll(ZipFile zipFile) throws IOException
 	{
-		File tempDirectory = new File("tempFile");
+		File tempDirectory = new File("tempDirectory");
 		extractAll(zipFile, tempDirectory);
 		return tempDirectory;
 	}
