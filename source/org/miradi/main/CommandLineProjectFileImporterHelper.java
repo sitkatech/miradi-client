@@ -78,15 +78,18 @@ public class CommandLineProjectFileImporterHelper
 			return;
 		}
 
-		if (!getUserImportConfirmation(projectFileToImport.getName()))
-			return;
-		
 		if (ProjectListTreeTable.isProject(projectFileToImport))
 		{
+			if (!getUserImportConfirmation(projectFileToImport.getName()))
+				return;
+			
 			importMpfFile(projectFileToImport);
 		}
 		else
 		{
+			if (!getUserImportConfirmation(projectFileToImport.getName()))
+				return;
+			
 			importAndOpenMpzFile(projectFileToImport);
 		}
 	}
