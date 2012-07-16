@@ -70,7 +70,7 @@ public class CommandLineProjectFileImporterHelper
 			return;
 		
 		if (filesToImport.size() > 1)
-			EAM.okDialog(EAM.text("Import"), new String[]{EAM.text("Currently, Miradi can only import one project file at a time")});
+			EAM.okDialog(EAM.text("Import"), new String[]{EAM.text("Currently, Miradi can only import one project file at a time.  Importing first file only.")});
 		
 		File projectFileToImport = filesToImport.firstElement();
 		if (!isImportableProjectFile(projectFileToImport))
