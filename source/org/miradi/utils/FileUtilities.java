@@ -30,7 +30,7 @@ import java.util.HashSet;
 
 public class FileUtilities
 {
-	public static HashSet<File> getAllRecursiveFilePaths(File startDirectory)
+	public static HashSet<File> getAllRecursiveChildrenFiles(File startDirectory)
 	{
 		HashSet<File> allFilePaths = new HashSet<File>();
 		File[] currentDirChildren = startDirectory.listFiles();
@@ -41,7 +41,7 @@ public class FileUtilities
 		{
 			File childFile = currentDirChildren[index];
 			if (childFile.isDirectory())
-				allFilePaths.addAll(getAllRecursiveFilePaths(childFile));
+				allFilePaths.addAll(getAllRecursiveChildrenFiles(childFile));
 			else
 				allFilePaths.add(childFile);
 		}
@@ -133,8 +133,8 @@ public class FileUtilities
 	
 	public static boolean compareDirectories(File directory1, final File directory2)
 	{
-		HashSet<File> actualFiles = getAllRecursiveFilePaths(directory1);
-		HashSet<File> expectedFiles = getAllRecursiveFilePaths(directory2);
+		HashSet<File> actualFiles = getAllRecursiveChildrenFiles(directory1);
+		HashSet<File> expectedFiles = getAllRecursiveChildrenFiles(directory2);
 		actualFiles.removeAll(expectedFiles);
 		
 		return actualFiles.size() == 0;
