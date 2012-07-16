@@ -142,10 +142,6 @@ public class FileUtilities
 	
 	public static String getRelativePathToParent(File file)
 	{
-		String absolutePath = file.getAbsolutePath();
-		String parentAbsolutePath = file.getParentFile().getAbsoluteFile().getAbsolutePath();
-		String relativePath = absolutePath.substring(parentAbsolutePath.length());
-		
-		return relativePath;
+		return file.getName();
 	}
 }
