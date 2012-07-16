@@ -39,6 +39,11 @@ import org.miradi.wizard.noproject.projectlist.ProjectListTreeTable;
 
 public class CommandLineProjectFileImporterHelper
 {
+	private CommandLineProjectFileImporterHelper(MainWindow mainWindowToUse)
+	{
+		mainWindow = mainWindowToUse;
+	}
+
 	public static void importIfRequested(MainWindow mainWindowToUse, String[] commandLineArgs) throws Exception
 	{
 		try
@@ -56,11 +61,6 @@ public class CommandLineProjectFileImporterHelper
 			EAM.errorDialog(e.getMessage());
 			EAM.logException(e);
 		}
-	}
-	
-	private CommandLineProjectFileImporterHelper(MainWindow mainWindowToUse)
-	{
-		mainWindow = mainWindowToUse;
 	}
 	
 	private void importIfRequested(String[] commandLineArgs) throws Exception
