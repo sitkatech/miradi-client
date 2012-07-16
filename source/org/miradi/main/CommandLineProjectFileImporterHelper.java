@@ -79,25 +79,26 @@ public class CommandLineProjectFileImporterHelper
 			return;
 		}
 
+		File importedFile = projectFileToImport;
 		if (ProjectListTreeTable.isProject(projectFileToImport))
 		{
 			if (isOutsideOfHomeDir(projectFileToImport))
-				projectFileToImport = importMpfFile(projectFileToImport);
-			
-			if (projectFileToImport != null)
-				ProjectListTreeTable.doProjectOpen(getMainWindow(), projectFileToImport);
+				importedFile = importMpfFile(projectFileToImport);
 		}
 		else
 		{
 			if (getUserImportConfirmation(projectFileToImport.getName()))
-				importAndOpenMpzFile(projectFileToImport);
+				importedFile = importMpzFile(projectFileToImport);
 		}
+		
+		if (importedFile != null)
+			ProjectListTreeTable.doProjectOpen(getMainWindow(), importedFile);
 	}
 
-	private void importAndOpenMpzFile(File projectFileToImport)	throws Exception
+	private File importMpzFile(File projectFileToImport)	throws Exception
 	{
 		AbstractProjectImporter importer = createImporter(projectFileToImport);
-		importer.importProject(projectFileToImport);
+		return importer.importProject(projectFileToImport);
 	}
 
 	private File importMpfFile(File projectFileToImport) throws Exception
