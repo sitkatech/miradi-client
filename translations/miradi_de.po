@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-16 09:29-0500\n"
+"POT-Creation-Date: 2012-07-16 12:37-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -2525,12 +2525,12 @@ msgstr "Weiter"
 msgid "Button|Delete"
 msgstr "Löschen"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:155
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:173
 msgid "Button|Don't Import"
 msgstr "Nicht Importieren"
 
 # es gibt auch den Eintrag "Button/Close" der auch mit Schließen übersetzt wurde -> muss ggf überprüft werden, ob das irreführend ist!!! (Felix)
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:156
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:174
 msgid "Button|Exit"
 msgstr "Schließen"
 
@@ -2538,7 +2538,7 @@ msgstr "Schließen"
 msgid "Button|Export..."
 msgstr "Exportieren..."
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:154
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:172
 msgid "Button|Import"
 msgstr "Importieren"
 
@@ -2670,11 +2670,11 @@ msgstr "Abbrechen"
 msgid "Cancelled"
 msgstr "Abgebrochen"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:123
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:141
 msgid "Cannot import project file %s because it does not exist"
 msgstr "Projektdatei %s kann nicht importiert werden, da sie nicht existiert"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:130
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:148
 msgid "Cannot import project file %s because it is a directory, not a file"
 msgstr ""
 "Projektdatei %s kann nicht importiert werden, da es sich um einen Pfad "
@@ -3067,11 +3067,11 @@ msgstr ""
 "befinden. Um zur normalen Ansicht zurückzukehren, drücken sie diese "
 "Schaltfläche:"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:72
-msgid "Currently, Miradi can only import one project file at a time"
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:73
+msgid ""
+"Currently, Miradi can only import one project file at a time.  Importing "
+"first file only."
 msgstr ""
-"Derzeit kann Miradi nur jeweils eine Projektdatei zur gleichen Zeit "
-"importieren"
 
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:131
 msgid "Custom Table: %s"
@@ -3420,7 +3420,7 @@ msgstr ""
 
 # importieren nach ??
 # -felix
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:140
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:158
 msgid "Do you want to attempt to import %s into Miradi?"
 msgstr "Wollen Sie versuchen %s in Miradi zu importieren?"
 
@@ -3616,7 +3616,7 @@ msgstr ""
 msgid "Error opening project: "
 msgstr "Fehler beim Öffnen des Projekts:"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:174
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:192
 msgid "Error reading %s. Perhaps it is not a valid zip file."
 msgstr "Lesefehler %s. Eventuell ist die Datei keine zulässige Zip-Datei."
 
@@ -4232,8 +4232,8 @@ msgstr "Strategischen Plan und Monitoringplan umsetzen"
 msgid "Implement work plan"
 msgstr "Arbeitsplan umsetzen"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:72
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:141
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:73
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:159
 #: Miradi/source/org/miradi/utils/XslImportFileChooser.java:44
 msgid "Import"
 msgstr "Importieren"
@@ -5242,11 +5242,11 @@ msgid "Miradi data directory:"
 msgstr "Miradi Datenverzeichnis"
 
 # nicht importierbar, aber erkennen... da würde ich mich ja schlapplachen (felix)
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:177
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:195
 msgid "Miradi did not recognize the file: %s as importable."
 msgstr "Miradi hat die Datei: %s als nicht importierbar erkannt"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:77
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:78
 msgid "Miradi does not recognize %s as a project file"
 msgstr "Miradi erkennt %s nicht als Projektdatei"
 
@@ -29988,6 +29988,11 @@ msgid ""
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
 "Marine___Western Tropical Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "Currently, Miradi can only import one project file at a time"
+#~ msgstr ""
+#~ "Derzeit kann Miradi nur jeweils eine Projektdatei zur gleichen Zeit "
+#~ "importieren"
 
 #~ msgid "<html>Select which column groups to display."
 #~ msgstr "<html>Wählen Sie welche Spalten angezeigt werden sollen."
