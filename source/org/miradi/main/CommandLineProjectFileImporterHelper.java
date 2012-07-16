@@ -49,7 +49,9 @@ public class CommandLineProjectFileImporterHelper
 		try
 		{
 			CommandLineProjectFileImporterHelper helper = new CommandLineProjectFileImporterHelper(mainWindowToUse);
-			helper.importIfRequested(commandLineArgs);
+			File importedFile = helper.importIfRequested(commandLineArgs);
+			if (importedFile != null)
+				ProjectListTreeTable.doProjectOpen(mainWindowToUse, importedFile);
 		}
 		catch (ZipException e)
 		{
@@ -63,11 +65,11 @@ public class CommandLineProjectFileImporterHelper
 		}
 	}
 	
-	private void importIfRequested(String[] commandLineArgs) throws Exception
+	private File importIfRequested(String[] commandLineArgs) throws Exception
 	{
 		Vector<File> filesToImport = extractProjectFileToImport(commandLineArgs);
 		if (filesToImport.isEmpty())
-			return;
+			return null;
 		
 		if (filesToImport.size() > 1)
 			EAM.okDialog(EAM.text("Import"), new String[]{EAM.text("Currently, Miradi can only import one project file at a time.  Importing first file only.")});
@@ -76,12 +78,10 @@ public class CommandLineProjectFileImporterHelper
 		if (!isImportableProjectFile(projectFileToImport))
 		{
 			EAM.errorDialog(EAM.substitute(EAM.text("Miradi does not recognize %s as a project file"), projectFileToImport.getName()));
-			return;
+			return null;
 		}
 
-		File importedFile = importProject(projectFileToImport);
-		if (importedFile != null)
-			ProjectListTreeTable.doProjectOpen(getMainWindow(), importedFile);
+		return importProject(projectFileToImport);
 	}
 
 	private File importProject(File projectFileToImport) throws Exception
