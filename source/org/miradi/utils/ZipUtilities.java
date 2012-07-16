@@ -37,14 +37,14 @@ public class ZipUtilities
 {
 	public static boolean doesProjectZipContainAllProjectFiles(ZipFile zipFile, File directory) throws Exception
 	{
-		File extractedFile = extractAll(zipFile);
+		File dirContainingExtractedFiles = extractAll(zipFile);
 		try
 		{
-			return FileUtilities.compareDirectories(directory, extractedFile);
+			return FileUtilities.compareDirectories(directory, dirContainingExtractedFiles);
 		}
 		finally 
 		{
-			DirectoryUtils.deleteEntireDirectoryTree(extractedFile);
+			DirectoryUtils.deleteEntireDirectoryTree(dirContainingExtractedFiles);
 		}
 	}
 	
