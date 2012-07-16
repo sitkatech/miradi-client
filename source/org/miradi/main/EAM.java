@@ -337,20 +337,6 @@ public class EAM
 		logger.logVerbose(text);
 	}
 
-	public static void friendlyInternalError(String notificationText)
-	{
-		try
-		{
-			logError(notificationText);
-			throw new Exception(notificationText);
-		}
-		catch (Exception e)
-		{
-			logException(e);
-			unexpectedErrorDialog();
-		}
-	}
-
 	public static String convertExceptionToString(Exception exceptionToConvert)
 	{
 		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
