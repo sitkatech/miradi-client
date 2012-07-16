@@ -22,6 +22,7 @@ package org.miradi.main;
 
 import java.io.File;
 import java.util.Enumeration;
+import java.util.HashSet;
 import java.util.Vector;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
@@ -80,8 +81,11 @@ public class CommandLineProjectFileImporterHelper
 
 		if (ProjectListTreeTable.isProject(projectFileToImport))
 		{
-			if (getUserImportConfirmation(projectFileToImport.getName()))
-				importMpfFile(projectFileToImport);
+			if (isOutsideOfHomeDir(projectFileToImport))
+				projectFileToImport = importMpfFile(projectFileToImport);
+			
+			if (projectFileToImport != null)
+				ProjectListTreeTable.doProjectOpen(getMainWindow(), projectFileToImport);
 		}
 		else
 		{
@@ -96,15 +100,25 @@ public class CommandLineProjectFileImporterHelper
 		importer.importProject(projectFileToImport);
 	}
 
-	private void importMpfFile(File projectFileToImport) throws Exception
+	private File importMpfFile(File projectFileToImport) throws Exception
 	{
+		if (!getUserImportConfirmation(projectFileToImport.getName()))
+			return null;
+		
 		String projectName = RenameProjectDoer.getLegalProjectNameFromUser(getMainWindow(), projectFileToImport.getName());
 		if (projectName == null)
-			return;
+			return null;
 
 		File newProjectFile = new File(EAM.getHomeDirectory(), projectName);
 		FileUtilities.copyFile(projectFileToImport, newProjectFile);
-		ProjectListTreeTable.doProjectOpen(getMainWindow(), newProjectFile);
+		
+		return newProjectFile;
+	}
+
+	private boolean isOutsideOfHomeDir(File projectFileToImport)
+	{
+		HashSet<File> allProjectFiles = FileUtilities.getAllRecursiveChildrenFiles(EAM.getHomeDirectory());
+		return !allProjectFiles.contains(projectFileToImport);
 	}
 	
 	private Vector<File> extractProjectFileToImport(String[] commandLineArgs)
