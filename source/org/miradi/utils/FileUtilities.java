@@ -141,10 +141,10 @@ public class FileUtilities
 		return temporaryFile;
 	}
 	
-	public static boolean compareDirectoriesBasedOnFileNames(File directoryOnDisk, final File unzippedDir)
+	public static boolean compareDirectoriesBasedOnFileNames(final File dir1, final File dir2)
 	{
-		HashSet<File> filesFromDisk = getAllRecursiveChildrenFiles(directoryOnDisk);
-		HashSet<File> filesFromZip = getAllRecursiveChildrenFiles(unzippedDir);
+		HashSet<File> filesFromDisk = getAllRecursiveChildrenFiles(dir1);
+		HashSet<File> filesFromZip = getAllRecursiveChildrenFiles(dir2);
 		if (!filesFromDisk.containsAll(filesFromZip))
 			return false;
 		
