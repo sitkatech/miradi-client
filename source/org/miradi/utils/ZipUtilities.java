@@ -62,7 +62,7 @@ public class ZipUtilities
 		{
 			ZipEntry entry = entries.nextElement();
 			File destination = new File(tempDirectory, entry.getName());
-			//NOTE: mac includes "__MACOSX" this file when zipping 
+			//NOTE: Omit Mac resource fork "__MACOSX" when zipping 
 			if (destination.getName().equals("__MACOSX"))
 				continue;
 			
