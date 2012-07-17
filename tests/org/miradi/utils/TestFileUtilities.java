@@ -23,6 +23,7 @@ package org.miradi.utils;
 import java.io.File;
 import java.io.IOException;
 
+import org.martus.util.DirectoryUtils;
 import org.miradi.main.MiradiTestCase;
 
 public class TestFileUtilities extends MiradiTestCase
@@ -37,9 +38,17 @@ public class TestFileUtilities extends MiradiTestCase
 		File tempDir1 = createTempParentChildrenDir("temp1");
 		File tempDir2 = createTempParentChildrenDir("temp2");
 		File tempDir3 = createTempDirStructure3();
-		
-		verifySameDirectories(tempDir2, tempDir1);
-		verifyDifferentDirectories(tempDir2, tempDir3);
+		try
+		{
+			verifySameDirectories(tempDir2, tempDir1);
+			verifyDifferentDirectories(tempDir2, tempDir3);
+		}
+		finally
+		{
+			DirectoryUtils.deleteEntireDirectoryTree(tempDir1);
+			DirectoryUtils.deleteEntireDirectoryTree(tempDir2);
+			DirectoryUtils.deleteEntireDirectoryTree(tempDir3);
+		}
 	}
 	
 	private void verifySameDirectories(File dir1, File dir2)
