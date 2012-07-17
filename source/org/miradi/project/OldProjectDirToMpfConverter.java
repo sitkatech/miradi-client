@@ -34,8 +34,7 @@ public class OldProjectDirToMpfConverter
 	public static File convert(MainWindow mainWindow, File oldProjectDirectory) throws Exception
 	{
 		File oldProjectZipped = ZipUtilities.createZipFromDirectory(oldProjectDirectory);
-		File oldProjectRelativeFile = new File(oldProjectDirectory.getName());
-		if (!ZipUtilities.doesProjectZipContainAllProjectFiles(new ZipFile(oldProjectZipped), oldProjectRelativeFile))
+		if (!ZipUtilities.doesProjectZipContainAllProjectFiles(new ZipFile(oldProjectZipped), oldProjectDirectory))
 		{
 			final String errorMessage = EAM.text("Mpz to Mpf data conversion failed");
 			EAM.errorDialog(errorMessage);
