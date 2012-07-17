@@ -54,6 +54,6 @@ public class TestZipUtilities extends TestCaseWithProject
 	
 	private static File getProjectDir(File[] listFiles) throws Exception
 	{
-		return listFiles[0].getParentFile();
+		return listFiles[0];
 	}
 }
