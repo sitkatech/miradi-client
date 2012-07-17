@@ -59,9 +59,9 @@ public class TestFileUtilities extends MiradiTestCase
 		return FileUtilities.compareDirectoriesBasedOnFileNames(dir1, dir2);
 	}
 	
-	private File createTempParentChildrenDir(final String parentName) throws Exception
+	private File createTempParentChildrenDir(final String tempDirName) throws Exception
 	{
-		File tempFile = FileUtilities.createTempDirectory(parentName);
+		File tempFile = FileUtilities.createTempDirectory(tempDirName);
 		File parent = new File(tempFile, "parent1");
 		parent.mkdir();
 		new File(parent, "child1").createNewFile();
