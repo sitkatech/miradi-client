@@ -61,13 +61,8 @@ public class TestFileUtilities extends MiradiTestCase
 	
 	private File createTempParentChildrenDir(final String parentName) throws Exception
 	{
-		return createTempParentChildrenDir("parent1", parentName);
-	}
-
-	private File createTempParentChildrenDir(final String parentName, final String nameHint) throws IOException
-	{
-		File tempFile = FileUtilities.createTempDirectory(nameHint);
-		File parent = new File(tempFile, parentName);
+		File tempFile = FileUtilities.createTempDirectory(parentName);
+		File parent = new File(tempFile, "parent1");
 		parent.mkdir();
 		new File(parent, "child1").createNewFile();
 		new File(parent, "child2").createNewFile();
