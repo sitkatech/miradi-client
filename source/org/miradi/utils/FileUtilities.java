@@ -35,9 +35,9 @@ public class FileUtilities
 		return getAllRecursiveChildrenFiles(startDirectory, startDirectory);
 	}
 	
-	public static HashSet<File> getAllRecursiveChildrenFiles(File parentDir, File startDirectory)
+	public static HashSet<File> getAllRecursiveChildrenFiles(File baseDirectory, File parentDirectory)
 	{
-		File[] currentDirChildren = startDirectory.listFiles();
+		File[] currentDirChildren = parentDirectory.listFiles();
 		if (currentDirChildren == null)
 			return new HashSet<File>();
 
@@ -47,11 +47,11 @@ public class FileUtilities
 			File childFile = currentDirChildren[index];
 			if (childFile.isDirectory())
 			{
-				allChildrenFiles.addAll(getAllRecursiveChildrenFiles(parentDir, childFile));
+				allChildrenFiles.addAll(getAllRecursiveChildrenFiles(baseDirectory, childFile));
 			}
 			else
 			{
-				String relativeName = childFile.getAbsolutePath().substring(parentDir.getAbsolutePath().length());
+				String relativeName = childFile.getAbsolutePath().substring(baseDirectory.getAbsolutePath().length());
 				allChildrenFiles.add(new File(relativeName));
 			}
 		}
