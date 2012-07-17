@@ -54,9 +54,6 @@ public class TestZipUtilities extends TestCaseWithProject
 	
 	private static File getProjectDir(File[] listFiles) throws Exception
 	{
-		if (listFiles.length == 1)
-			return listFiles[0].getParentFile();
-		
-		throw new Exception("Project not found under directory!");
+		return listFiles[0].getParentFile();
 	}
 }
