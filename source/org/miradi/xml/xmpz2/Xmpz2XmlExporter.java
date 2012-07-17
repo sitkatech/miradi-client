@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
-import java.util.HashMap;
-
 import org.martus.util.UnicodeWriter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -29,49 +27,11 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
-import org.miradi.schemas.AccountingCodeSchema;
-import org.miradi.schemas.AudienceSchema;
-import org.miradi.schemas.CauseSchema;
-import org.miradi.schemas.CostAllocationRuleSchema;
-import org.miradi.schemas.FundingSourceSchema;
-import org.miradi.schemas.GroupBoxSchema;
-import org.miradi.schemas.IntermediateResultSchema;
-import org.miradi.schemas.KeyEcologicalAttributeSchema;
-import org.miradi.schemas.MeasurementSchema;
-import org.miradi.schemas.OrganizationSchema;
-import org.miradi.schemas.OtherNotableSpeciesSchema;
-import org.miradi.schemas.ProgressPercentSchema;
-import org.miradi.schemas.ProgressReportSchema;
-import org.miradi.schemas.ScopeBoxSchema;
-import org.miradi.schemas.StressSchema;
-import org.miradi.schemas.SubTargetSchema;
-import org.miradi.schemas.TextBoxSchema;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.XmlExporter;
-import org.miradi.xml.xmpz2.objectExporters.BudgetCategoryOneExporter;
-import org.miradi.xml.xmpz2.objectExporters.BudgetCategoryTwoExporter;
-import org.miradi.xml.xmpz2.objectExporters.ConceptualModelDiagramExporter;
-import org.miradi.xml.xmpz2.objectExporters.DashboardExporter;
-import org.miradi.xml.xmpz2.objectExporters.DiagramFactorExporter;
-import org.miradi.xml.xmpz2.objectExporters.DiagramLinkExporter;
-import org.miradi.xml.xmpz2.objectExporters.ExpenseAssignmentExporter;
 import org.miradi.xml.xmpz2.objectExporters.ExtraDataExporter;
-import org.miradi.xml.xmpz2.objectExporters.GoalExporter;
-import org.miradi.xml.xmpz2.objectExporters.HumanWelfareTargetExporter;
-import org.miradi.xml.xmpz2.objectExporters.IndicatorExporter;
-import org.miradi.xml.xmpz2.objectExporters.IucnRedlistSpeciesExporter;
-import org.miradi.xml.xmpz2.objectExporters.ObjectTreeTableConfigurationExporter;
-import org.miradi.xml.xmpz2.objectExporters.ObjectiveExporter;
 import org.miradi.xml.xmpz2.objectExporters.ProjectMetadataExporter;
-import org.miradi.xml.xmpz2.objectExporters.ProjectResourceExporter;
-import org.miradi.xml.xmpz2.objectExporters.ResourceAssignmentExporter;
-import org.miradi.xml.xmpz2.objectExporters.ResultsChainExporter;
-import org.miradi.xml.xmpz2.objectExporters.StrategyExporter;
-import org.miradi.xml.xmpz2.objectExporters.TaggedObjectSetExporter;
-import org.miradi.xml.xmpz2.objectExporters.TargetExporter;
-import org.miradi.xml.xmpz2.objectExporters.TaskExporter;
 import org.miradi.xml.xmpz2.objectExporters.ThreatRatingExporter;
-import org.miradi.xml.xmpz2.objectExporters.ThreatReductionResultExporter;
 
 public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 {
@@ -79,14 +39,14 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 	{
 		super(projectToExport);
 		
-		objectTypeToExporterMap = new HashMap<Integer, BaseObjectExporter>(); 
+		objectTypeToExporterMap = new ObjectTypeToExporterMap(); 
 	}
 
 	@Override
 	public void exportProject(UnicodeWriter outToUse) throws Exception
 	{
 		out = createWriter(outToUse);
-		fillTypeToExporterMap(getWriter());
+		objectTypeToExporterMap.fillTypeToExporterMap(getWriter());
 		getWriter().writeXmlHeader();
 		getWriter().writeMainElementStart();
 		exportProjectSummary();
@@ -154,60 +114,7 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 		getWriter().writeEndElement(poolName);
 	}
 
-	private void fillTypeToExporterMap(final Xmpz2XmlWriter writerToUse)
-	{
-		addExporterToMap(new DashboardExporter(writerToUse));
-		addExporterToMap(new IndicatorExporter(writerToUse));
-		addExporterToMap(new GoalExporter(writerToUse));
-		addExporterToMap(new ObjectiveExporter(writerToUse));
-		addExporterToMap(new ResourceAssignmentExporter(writerToUse));
-		addExporterToMap(new ExpenseAssignmentExporter(writerToUse));
-		addExporterToMap(new TaskExporter(writerToUse));
-		addExporterToMap(new ProjectResourceExporter(writerToUse));
-		addExporterToMap(new DiagramLinkExporter(writerToUse));
-		addExporterToMap(new ConceptualModelDiagramExporter(writerToUse));
-		addExporterToMap(new ResultsChainExporter(writerToUse));
-		addExporterToMap(new DiagramFactorExporter(writerToUse));
-		addExporterToMap(new StrategyExporter(writerToUse));
-		addExporterToMap(new ThreatReductionResultExporter(writerToUse));
-		addExporterToMap(new TargetExporter(writerToUse));
-		addExporterToMap(new HumanWelfareTargetExporter(writerToUse));
-		addExporterToMap(new TaggedObjectSetExporter(writerToUse));
-		addExporterToMap(new IucnRedlistSpeciesExporter(writerToUse));
-		addExporterToMap(new BudgetCategoryOneExporter(writerToUse));
-		addExporterToMap(new BudgetCategoryTwoExporter(writerToUse));
-		addExporterToMap(new ObjectTreeTableConfigurationExporter(writerToUse));
-		
-		addGenericExporterToMap(AccountingCodeSchema.getObjectType());
-		addGenericExporterToMap(FundingSourceSchema.getObjectType());
-		addGenericExporterToMap(KeyEcologicalAttributeSchema.getObjectType());
-		addGenericExporterToMap(CauseSchema.getObjectType());
-		addGenericExporterToMap(IntermediateResultSchema.getObjectType());
-		addGenericExporterToMap(TextBoxSchema.getObjectType());
-		addGenericExporterToMap(CostAllocationRuleSchema.getObjectType());
-		addGenericExporterToMap(MeasurementSchema.getObjectType());
-		addGenericExporterToMap(StressSchema.getObjectType());
-		addGenericExporterToMap(GroupBoxSchema.getObjectType());
-		addGenericExporterToMap(SubTargetSchema.getObjectType());
-		addGenericExporterToMap(ProgressReportSchema.getObjectType());
-		addGenericExporterToMap(OrganizationSchema.getObjectType());
-		addGenericExporterToMap(ProgressPercentSchema.getObjectType());
-		addGenericExporterToMap(ScopeBoxSchema.getObjectType());
-		addGenericExporterToMap(OtherNotableSpeciesSchema.getObjectType());
-		addGenericExporterToMap(AudienceSchema.getObjectType());
-	}
-	
-	private void addGenericExporterToMap(final int objectType)
-	{
-		addExporterToMap(new BaseObjectExporter(getWriter(), objectType));
-	}
-	
-	private void addExporterToMap(final BaseObjectExporter baseObjectExporter)
-	{
-		getObjectTypeToExporterMap().put(baseObjectExporter.getObjectType(), baseObjectExporter);
-	}
-	
-	private HashMap<Integer, BaseObjectExporter> getObjectTypeToExporterMap()
+	private ObjectTypeToExporterMap getObjectTypeToExporterMap()
 	{
 		return objectTypeToExporterMap;
 	}
@@ -218,5 +125,5 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 	}
 
 	private Xmpz2XmlWriter out;
-	private HashMap<Integer, BaseObjectExporter> objectTypeToExporterMap;
+	private ObjectTypeToExporterMap objectTypeToExporterMap;
 }
