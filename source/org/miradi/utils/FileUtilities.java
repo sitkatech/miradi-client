@@ -30,33 +30,33 @@ import java.util.HashSet;
 
 public class FileUtilities
 {
-	public static HashSet<String> getAllRecursiveChildrenFiles(File startDirectory)
+	public static HashSet<String> getAllRecursiveChildrenPaths(File startDirectory)
 	{
-		return getAllRecursiveChildrenFiles(startDirectory, startDirectory);
+		return getAllRecursiveChildrenPaths(startDirectory, startDirectory);
 	}
 	
-	private static HashSet<String> getAllRecursiveChildrenFiles(File baseDirectory, File topLevelDir)
+	private static HashSet<String> getAllRecursiveChildrenPaths(File baseDirectory, File topLevelDir)
 	{
 		File[] childrenFiles = topLevelDir.listFiles();
 		if (childrenFiles == null)
 			return new HashSet<String>();
 
-		HashSet<String> allChildrenFiles = new HashSet<String>();
+		HashSet<String> allChildrenPaths = new HashSet<String>();
 		for (int index = 0; index < childrenFiles.length; ++index)
 		{
 			File childFile = childrenFiles[index];
 			if (childFile.isDirectory())
 			{
-				allChildrenFiles.addAll(getAllRecursiveChildrenFiles(baseDirectory, childFile));
+				allChildrenPaths.addAll(getAllRecursiveChildrenPaths(baseDirectory, childFile));
 			}
 			else
 			{
-				String relativePath = childFile.getAbsolutePath().substring(baseDirectory.getAbsolutePath().length());
-				allChildrenFiles.add(relativePath);
+				String relativeChildPath = childFile.getAbsolutePath().substring(baseDirectory.getAbsolutePath().length());
+				allChildrenPaths.add(relativeChildPath);
 			}
 		}
 		
-		return allChildrenFiles;
+		return allChildrenPaths;
 	}
 	
 	public static void copyStream(InputStream inputStream, OutputStream out) throws IOException
@@ -143,12 +143,12 @@ public class FileUtilities
 	
 	public static boolean compareDirectoriesBasedOnFileNames(final File dir1, final File dir2)
 	{
-		HashSet<String> childrenFilesFromDir1 = getAllRecursiveChildrenFiles(dir1);
-		HashSet<String> childrenFilesFromDir2 = getAllRecursiveChildrenFiles(dir2);
-		if (!childrenFilesFromDir1.containsAll(childrenFilesFromDir2))
+		HashSet<String> childrenPathsFromDir1 = getAllRecursiveChildrenPaths(dir1);
+		HashSet<String> childrenPathsFromDir2 = getAllRecursiveChildrenPaths(dir2);
+		if (!childrenPathsFromDir1.containsAll(childrenPathsFromDir2))
 			return false;
 		
-		if (!childrenFilesFromDir2.containsAll(childrenFilesFromDir1))
+		if (!childrenPathsFromDir2.containsAll(childrenPathsFromDir1))
 			return false;
 		
 		return true;
