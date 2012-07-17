@@ -51,8 +51,8 @@ public class FileUtilities
 			}
 			else
 			{
-				String relativeName = childFile.getAbsolutePath().substring(baseDirectory.getAbsolutePath().length());
-				allChildrenFiles.add(new File(relativeName));
+				String relativePath = childFile.getAbsolutePath().substring(baseDirectory.getAbsolutePath().length());
+				allChildrenFiles.add(new File(relativePath));
 			}
 		}
 		
