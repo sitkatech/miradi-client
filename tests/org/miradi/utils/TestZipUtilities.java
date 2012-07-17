@@ -42,7 +42,7 @@ public class TestZipUtilities extends TestCaseWithProject
 		File tempDirectory = ZipUtilities.extractAll(mpzZipFile);
 		try
 		{
-			File projectDir = getProjectDir(tempDirectory.listFiles());
+			File projectDir = tempDirectory.listFiles()[0];
 			assertTrue("zip file does not match directory content?", ZipUtilities.doesProjectZipContainAllProjectFiles(mpzZipFile, projectDir));
 		}
 		finally
@@ -50,10 +50,5 @@ public class TestZipUtilities extends TestCaseWithProject
 			DirectoryUtils.deleteAllFilesOnlyInDirectory(tempDirectory);
 			mpzFile.delete();
 		}
-	}
-	
-	private static File getProjectDir(File[] listFiles) throws Exception
-	{
-		return listFiles[0];
 	}
 }
