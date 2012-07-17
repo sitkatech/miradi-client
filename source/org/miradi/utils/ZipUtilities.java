@@ -40,7 +40,7 @@ public class ZipUtilities
 		File dirContainingExtractedFiles = extractAll(zipFile);
 		try
 		{
-			return FileUtilities.compareDirectories(directoryContainingProject, dirContainingExtractedFiles);
+			return FileUtilities.compareDirectoriesBasedOnFileNames(directoryContainingProject, dirContainingExtractedFiles);
 		}
 		finally 
 		{
