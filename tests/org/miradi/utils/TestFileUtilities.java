@@ -77,7 +77,7 @@ public class TestFileUtilities extends MiradiTestCase
 
 	private File createTempDirStructure3() throws IOException
 	{
-		File tempFile2 = FileUtilities.createTempDirectory("temp2");
+		File tempFile2 = FileUtilities.createTempDirectory("temp3");
 		new File(tempFile2, "json").createNewFile();
 		new File(tempFile2, "settings").createNewFile();
 
