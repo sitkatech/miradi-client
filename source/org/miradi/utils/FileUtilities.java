@@ -41,9 +41,14 @@ public class FileUtilities
 		{
 			File childFile = currentDirChildren[index];
 			if (childFile.isDirectory())
+			{
 				allChildrenFiles.addAll(getAllRecursiveChildrenFiles(childFile));
+			}
 			else
-				allChildrenFiles.add(childFile);
+			{
+				String relativeName = childFile.getAbsolutePath().substring(startDirectory.getAbsolutePath().length());
+				allChildrenFiles.add(new File(relativeName));
+			}
 		}
 		
 		return allChildrenFiles;

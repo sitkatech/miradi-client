@@ -50,7 +50,7 @@ public class ZipUtilities
 	
 	public static File extractAll(ZipFile zipFile) throws IOException
 	{
-		File tempDirectory = new File("tempDirectory");
+		File tempDirectory = FileUtilities.createTempDirectory("TempDir");
 		extractAll(zipFile, tempDirectory);
 		return tempDirectory;
 	}
@@ -63,7 +63,7 @@ public class ZipUtilities
 			ZipEntry entry = entries.nextElement();
 			File destination = new File(tempDirectory, entry.getName());
 			//NOTE: Omit Mac resource fork "__MACOSX" when zipping 
-			if (destination.getName().equals("__MACOSX"))
+			if (destination.getAbsolutePath().contains("__MACOSX"))
 				continue;
 			
 			if(entry.isDirectory())
