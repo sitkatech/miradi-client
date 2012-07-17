@@ -70,21 +70,21 @@ public class TestFileUtilities extends MiradiTestCase
 	
 	private File createTempParentChildrenDir(final String tempDirName) throws Exception
 	{
-		File tempFile = FileUtilities.createTempDirectory(tempDirName);
-		File parent = new File(tempFile, "parent");
-		parent.mkdir();
-		new File(parent, "child1").createNewFile();
-		new File(parent, "child2").createNewFile();
+		File tempDir = FileUtilities.createTempDirectory(tempDirName);
+		File parentDir = new File(tempDir, "parent");
+		parentDir.mkdir();
+		new File(parentDir, "child1").createNewFile();
+		new File(parentDir, "child2").createNewFile();
 		
-		return tempFile;
+		return tempDir;
 	}
 
 	private File createTempDirStructure3() throws IOException
 	{
-		File tempFile2 = FileUtilities.createTempDirectory("temp3");
-		new File(tempFile2, "json").createNewFile();
-		new File(tempFile2, "settings").createNewFile();
+		File tempDir = FileUtilities.createTempDirectory("temp3");
+		new File(tempDir, "json").createNewFile();
+		new File(tempDir, "settings").createNewFile();
 
-		return tempFile2;
+		return tempDir;
 	}
 }
