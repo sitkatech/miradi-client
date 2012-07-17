@@ -37,14 +37,14 @@ public class FileUtilities
 	
 	public static HashSet<File> getAllRecursiveChildrenFiles(File baseDirectory, File parentDirectory)
 	{
-		File[] currentDirChildren = parentDirectory.listFiles();
-		if (currentDirChildren == null)
+		File[] childrenFiles = parentDirectory.listFiles();
+		if (childrenFiles == null)
 			return new HashSet<File>();
 
 		HashSet<File> allChildrenFiles = new HashSet<File>();
-		for (int index = 0; index < currentDirChildren.length; ++index)
+		for (int index = 0; index < childrenFiles.length; ++index)
 		{
-			File childFile = currentDirChildren[index];
+			File childFile = childrenFiles[index];
 			if (childFile.isDirectory())
 			{
 				allChildrenFiles.addAll(getAllRecursiveChildrenFiles(baseDirectory, childFile));
