@@ -30,18 +30,18 @@ import java.util.HashSet;
 
 public class FileUtilities
 {
-	public static HashSet<File> getAllRecursiveChildrenFiles(File startDirectory)
+	public static HashSet<String> getAllRecursiveChildrenFiles(File startDirectory)
 	{
 		return getAllRecursiveChildrenFiles(startDirectory, startDirectory);
 	}
 	
-	private static HashSet<File> getAllRecursiveChildrenFiles(File baseDirectory, File topLevelDir)
+	private static HashSet<String> getAllRecursiveChildrenFiles(File baseDirectory, File topLevelDir)
 	{
 		File[] childrenFiles = topLevelDir.listFiles();
 		if (childrenFiles == null)
-			return new HashSet<File>();
+			return new HashSet<String>();
 
-		HashSet<File> allChildrenFiles = new HashSet<File>();
+		HashSet<String> allChildrenFiles = new HashSet<String>();
 		for (int index = 0; index < childrenFiles.length; ++index)
 		{
 			File childFile = childrenFiles[index];
@@ -52,7 +52,7 @@ public class FileUtilities
 			else
 			{
 				String relativePath = childFile.getAbsolutePath().substring(baseDirectory.getAbsolutePath().length());
-				allChildrenFiles.add(new File(relativePath));
+				allChildrenFiles.add(relativePath);
 			}
 		}
 		
@@ -143,8 +143,8 @@ public class FileUtilities
 	
 	public static boolean compareDirectoriesBasedOnFileNames(final File dir1, final File dir2)
 	{
-		HashSet<File> childrenFilesFromDir1 = getAllRecursiveChildrenFiles(dir1);
-		HashSet<File> childrenFilesFromDir2 = getAllRecursiveChildrenFiles(dir2);
+		HashSet<String> childrenFilesFromDir1 = getAllRecursiveChildrenFiles(dir1);
+		HashSet<String> childrenFilesFromDir2 = getAllRecursiveChildrenFiles(dir2);
 		if (!childrenFilesFromDir1.containsAll(childrenFilesFromDir2))
 			return false;
 		
