@@ -143,12 +143,12 @@ public class FileUtilities
 	
 	public static boolean compareDirectoriesBasedOnFileNames(final File dir1, final File dir2)
 	{
-		HashSet<File> filesFromDisk = getAllRecursiveChildrenFiles(dir1);
-		HashSet<File> filesFromZip = getAllRecursiveChildrenFiles(dir2);
-		if (!filesFromDisk.containsAll(filesFromZip))
+		HashSet<File> childrenFilesFromDir1 = getAllRecursiveChildrenFiles(dir1);
+		HashSet<File> childrenFilesFromDir2 = getAllRecursiveChildrenFiles(dir2);
+		if (!childrenFilesFromDir1.containsAll(childrenFilesFromDir2))
 			return false;
 		
-		if (!filesFromZip.containsAll(filesFromDisk))
+		if (!childrenFilesFromDir2.containsAll(childrenFilesFromDir1))
 			return false;
 		
 		return true;
