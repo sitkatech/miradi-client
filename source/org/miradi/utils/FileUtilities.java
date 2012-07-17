@@ -30,6 +30,11 @@ import java.util.HashSet;
 
 public class FileUtilities
 {
+	public static HashSet<File> getAllRecursiveChildrenFiles(File startDirectory)
+	{
+		return getAllRecursiveChildrenFiles(startDirectory, startDirectory);
+	}
+	
 	public static HashSet<File> getAllRecursiveChildrenFiles(File parentDir, File startDirectory)
 	{
 		File[] currentDirChildren = startDirectory.listFiles();
@@ -138,8 +143,8 @@ public class FileUtilities
 	
 	public static boolean compareDirectoriesBasedOnFileNames(File directoryOnDisk, final File unzippedDir)
 	{
-		HashSet<File> filesFromDisk = getAllRecursiveChildrenFiles(directoryOnDisk, directoryOnDisk);
-		HashSet<File> filesFromZip = getAllRecursiveChildrenFiles(unzippedDir, unzippedDir);
+		HashSet<File> filesFromDisk = getAllRecursiveChildrenFiles(directoryOnDisk);
+		HashSet<File> filesFromZip = getAllRecursiveChildrenFiles(unzippedDir);
 		if (!filesFromDisk.containsAll(filesFromZip))
 			return false;
 		
