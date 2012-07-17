@@ -32,6 +32,7 @@ import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
 import org.martus.util.DirectoryUtils;
+import org.miradi.main.EAM;
 
 public class ZipUtilities
 {
@@ -40,12 +41,30 @@ public class ZipUtilities
 		File dirContainingExtractedFiles = extractAll(zipFile);
 		try
 		{
-			return FileUtilities.compareDirectoriesBasedOnFileNames(directoryContainingProject, dirContainingExtractedFiles);
+			File projectDir = extractProjectDir(dirContainingExtractedFiles);
+			if (projectDir == null)
+				return false;
+			
+			return FileUtilities.compareDirectoriesBasedOnFileNames(directoryContainingProject, projectDir);
 		}
 		finally 
 		{
 			DirectoryUtils.deleteEntireDirectoryTree(dirContainingExtractedFiles);
 		}
+	}
+
+	private static File extractProjectDir(File dirContainingExtractedFiles)
+	{
+		File[] childrenFiles = dirContainingExtractedFiles.listFiles();
+		if (childrenFiles.length != 1)
+		{
+			EAM.logError("There should only be a single project dir.  Dir = " + dirContainingExtractedFiles.getAbsolutePath());
+			return null;
+		}
+		
+		File projectDir = childrenFiles[0];
+		
+		return projectDir;
 	}
 	
 	public static File extractAll(ZipFile zipFile) throws IOException
