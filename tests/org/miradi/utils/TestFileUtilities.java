@@ -34,41 +34,48 @@ public class TestFileUtilities extends MiradiTestCase
 	
 	public void testCompareDirectoriesBasedOnFileNames() throws Exception
 	{
-		File tempFile1 = createTempDirStructure1();
-		File tempFile2 = createTempDirStructure2();
+		File tempDir1 = createTempParentChildrenDir("temp1");
+		File tempDir2 = createTempParentChildrenDir("temp2");
+		File tempDir3 = createTempDirStructure3();
 		
-		verifySameDirectories(tempFile1, tempFile1);
-		verifySameDirectories(tempFile2, tempFile2);
-		verifyDifferentDirectories(tempFile1, tempFile2);
+		verifySameDirectories(tempDir2, tempDir1);
+		verifyDifferentDirectories(tempDir2, tempDir3);
 	}
 	
-	private void verifySameDirectories(File file1, File file2)
+	private void verifySameDirectories(File dir1, File dir2)
 	{
-		assertTrue("Files should be the same?", compareDirectories(file1, file2));
-		assertTrue("Files should be the same?", compareDirectories(file2, file1));
+		assertTrue("Files should be the same?", compareDirectories(dir1, dir2));
+		assertTrue("Files should be the same?", compareDirectories(dir2, dir1));
 	}
 
-	private void verifyDifferentDirectories(File file1, File file2)
+	private void verifyDifferentDirectories(File dir1, File dir2)
 	{
-		assertFalse("Files should be different?", compareDirectories(file1, file2));
-		assertFalse("Files should be different?", compareDirectories(file2, file1));
+		assertFalse("Files should be different?", compareDirectories(dir1, dir2));
+		assertFalse("Files should be different?", compareDirectories(dir2, dir1));
 	}
 	
-	private boolean compareDirectories(File file1, File file2)
+	private boolean compareDirectories(File dir1, File dir2)
 	{
-		return FileUtilities.compareDirectoriesBasedOnFileNames(file1, file2);
+		return FileUtilities.compareDirectoriesBasedOnFileNames(dir1, dir2);
 	}
 	
-	private File createTempDirStructure1() throws IOException
+	private File createTempParentChildrenDir(final String parentName) throws Exception
 	{
-		File tempFile = FileUtilities.createTempDirectory("temp1");
-		new File(tempFile, "child1").createNewFile();
-		new File(tempFile, "child2").createNewFile();
+		return createTempParentChildrenDir("parent1", parentName);
+	}
+
+	private File createTempParentChildrenDir(final String parentName, final String nameHint) throws IOException
+	{
+		File tempFile = FileUtilities.createTempDirectory(nameHint);
+		File parent = new File(tempFile, parentName);
+		parent.mkdir();
+		new File(parent, "child1").createNewFile();
+		new File(parent, "child2").createNewFile();
 		
 		return tempFile;
 	}
 
-	private File createTempDirStructure2() throws IOException
+	private File createTempDirStructure3() throws IOException
 	{
 		File tempFile2 = FileUtilities.createTempDirectory("temp2");
 		new File(tempFile2, "json").createNewFile();
