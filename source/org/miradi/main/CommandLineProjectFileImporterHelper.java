@@ -22,7 +22,6 @@ package org.miradi.main;
 
 import java.io.File;
 import java.util.Enumeration;
-import java.util.HashSet;
 import java.util.Vector;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
@@ -123,8 +122,17 @@ public class CommandLineProjectFileImporterHelper
 
 	private boolean isOutsideOfHomeDir(File projectFileToImport)
 	{
-		HashSet<File> allProjectFiles = FileUtilities.getAllRecursiveChildrenFiles(EAM.getHomeDirectory());
-		return !allProjectFiles.contains(projectFileToImport);
+		File projectDirectory = EAM.getHomeDirectory();
+		File parent = projectFileToImport.getParentFile();
+		while (parent != null)
+		{
+			if (projectDirectory.equals(parent))
+				return false;
+			
+			parent = parent.getParentFile();
+		}
+		
+		return true;
 	}
 	
 	private Vector<File> extractProjectFilesToImport(String[] commandLineArgs)
