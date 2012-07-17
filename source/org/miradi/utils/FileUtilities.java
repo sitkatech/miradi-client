@@ -35,7 +35,7 @@ public class FileUtilities
 		return getAllRecursiveChildrenFiles(startDirectory, startDirectory);
 	}
 	
-	public static HashSet<File> getAllRecursiveChildrenFiles(File baseDirectory, File parentDirectory)
+	private static HashSet<File> getAllRecursiveChildrenFiles(File baseDirectory, File parentDirectory)
 	{
 		File[] childrenFiles = parentDirectory.listFiles();
 		if (childrenFiles == null)
