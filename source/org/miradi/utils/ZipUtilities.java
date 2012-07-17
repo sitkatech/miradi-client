@@ -82,7 +82,7 @@ public class ZipUtilities
 			ZipEntry entry = entries.nextElement();
 			File destination = new File(tempDirectory, entry.getName());
 			//NOTE: Omit Mac resource fork "__MACOSX" when zipping 
-			if (destination.getAbsolutePath().contains("/__MACOSX"))
+			if (isMacResourceFork(destination))
 				continue;
 			
 			if(entry.isDirectory())
@@ -102,6 +102,11 @@ public class ZipUtilities
 				in.close();
 			}
 		}
+	}
+
+	private static boolean isMacResourceFork(File destination)
+	{
+		return destination.getAbsolutePath().contains("/__MACOSX");
 	}
 
 	public static File createZipFromDirectory(File directoryToZip) throws IOException
