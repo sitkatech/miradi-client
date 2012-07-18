@@ -23,7 +23,6 @@ import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.views.umbrella.ObjectPicker;
@@ -126,15 +125,9 @@ abstract public class ObjectsDoer extends ViewDoer
 		return objectIds;
 	}
 
-	//TODO low : getSelectedObjectType can call getSelectedRef().getType,  removes duplication.
-	//We didnt do this because we are in freeze mode.  
 	public int getSelectedObjectType() 
 	{
-		BaseObject[] objects = getObjects();
-		if(objects == null || objects.length == 0)
-			return ObjectType.FAKE;
-		
-		return objects[0].getType();
+		return getSelectedRef().getObjectType();
 	}
 	
 	public ORef getSelectedRef()
