@@ -24,8 +24,6 @@ import java.util.LinkedHashSet;
 import java.util.Vector;
 
 import org.martus.util.MultiCalendar;
-import org.miradi.main.CommandExecutedEvent;
-import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objects.ProjectMetadata;
@@ -34,7 +32,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.MonthAbbreviationsQuestion;
 import org.miradi.utils.DateRange;
 
-public class ProjectCalendar implements CommandExecutedListener
+public class ProjectCalendar
 {
 	public ProjectCalendar(Project projectToUse) throws Exception
 	{
@@ -129,10 +127,6 @@ public class ProjectCalendar implements CommandExecutedListener
 		throw new RuntimeException("All candidate strings were blank");
 	}
 	
-	public void commandExecuted(CommandExecutedEvent event)
-	{
-	}
-
 	private Project getProject()
 	{
 		return project;
