@@ -55,7 +55,6 @@ public class ProjectCalendar implements CommandExecutedListener
 	
 	public void clearDateRanges()
 	{
-		dateRanges = null;
 	}
 	
 	public String getLongDateUnitString(DateUnit dateUnit)
@@ -86,14 +85,6 @@ public class ProjectCalendar implements CommandExecutedListener
 	public String getDateRangeName(DateRange dateRange)
 	{
 		return getFullDateRangeString(dateRange, getFiscalYearFirstMonth());
-	}
-	
-	public DateRange combineStartToEndProjectRange() throws Exception
-	{
-		DateRange startDateRange = dateRanges.get(0);
-		DateRange endDateRange = dateRanges.get(dateRanges.size() - 1);
-		
-		return DateRange.combine(startDateRange, endDateRange);
 	}
 	
 	public int getFiscalYearFirstMonth()
@@ -562,7 +553,4 @@ public class ProjectCalendar implements CommandExecutedListener
 	}
 
 	private Project project;
-	
-	//FIXME low - This variable and its methods seem to have no real use.
-	private Vector<DateRange> dateRanges;
 }
