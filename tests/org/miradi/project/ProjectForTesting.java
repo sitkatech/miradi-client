@@ -1700,12 +1700,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(object, Task.TAG_SUBTASK_IDS, refListToBeConvertedToIdList.convertToIdList(type));
 	}
 	
-	//TODO come up with a better name or eventually all creates should return ref
-	public ORef createFactorAndReturnRef(int objectType) throws Exception
-	{
-		return createObject(objectType);
-	}
-	
 	public FactorId createFactorAndReturnId(int objectType) throws Exception
 	{
 		BaseId factorId = createObjectAndReturnId(objectType);

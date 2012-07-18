@@ -57,10 +57,10 @@ public class TestDeleteAnnotationDoer extends MiradiTestCase
 	
 	public void testBuildCommandsToDeleteAnnotation() throws Exception
 	{
-		ORef strategyRef = project.createFactorAndReturnRef(StrategySchema.getObjectType());
-		ORef indicatorRef1 = project.createFactorAndReturnRef(IndicatorSchema.getObjectType());
-		ORef indicatorRef2 = project.createFactorAndReturnRef(IndicatorSchema.getObjectType());
-		ORef methodRef = project.createFactorAndReturnRef(TaskSchema.getObjectType());
+		ORef strategyRef = project.createObject(StrategySchema.getObjectType());
+		ORef indicatorRef1 = project.createObject(IndicatorSchema.getObjectType());
+		ORef indicatorRef2 = project.createObject(IndicatorSchema.getObjectType());
+		ORef methodRef = project.createObject(TaskSchema.getObjectType());
 	
 		Strategy strategy = (Strategy) project.findObject(strategyRef);
 		Indicator indicator1 = (Indicator) project.findObject(indicatorRef1);

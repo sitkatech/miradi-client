@@ -88,10 +88,10 @@ public class TestBaseObject extends TestCaseWithProject
 	
 	public void testGetOwnerRef() throws Exception
 	{
-		ORef taskRef = getProject().createFactorAndReturnRef(TaskSchema.getObjectType());
+		ORef taskRef = getProject().createObject(TaskSchema.getObjectType());
 		Task task = (Task)getProject().findObject(taskRef);
 		
-		ORef parentRef = getProject().createFactorAndReturnRef(TaskSchema.getObjectType());
+		ORef parentRef = getProject().createObject(TaskSchema.getObjectType());
 		Task parent = (Task)getProject().findObject(parentRef);
 		IdList children = new IdList(TaskSchema.getObjectType(), new BaseId[] {task.getId()});
 		parent.setData(Task.TAG_SUBTASK_IDS, children.toString());

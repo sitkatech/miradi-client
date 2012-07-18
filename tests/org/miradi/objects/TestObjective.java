@@ -47,7 +47,7 @@ public class TestObjective extends TestDesire
 	
 	public void testGetRelevantRefList() throws Exception
 	{		
-		ORef causeRef = getProject().createFactorAndReturnRef(CauseSchema.getObjectType());
+		ORef causeRef = getProject().createObject(CauseSchema.getObjectType());
 
 		BaseId objectiveId = getProject().addItemToObjectiveList(causeRef, Cause.TAG_OBJECTIVE_IDS);
 		BaseId indicatorId = getProject().addItemToIndicatorList(causeRef, Cause.TAG_INDICATOR_IDS);
