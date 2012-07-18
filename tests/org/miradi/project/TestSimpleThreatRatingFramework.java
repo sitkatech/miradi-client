@@ -370,15 +370,12 @@ public class TestSimpleThreatRatingFramework extends MiradiTestCase
 		}
 	}
 
-	//TODO see why the code below was commented out and possibly remove.  
 	private static DiagramFactor createTarget(ProjectForTesting projectToUse) throws Exception
 	{
 		DiagramFactor targetDiagramFactor = projectToUse.createDiagramFactorAndAddToDiagram(ObjectType.TARGET);
 		projectToUse.setObjectData(targetDiagramFactor.getWrappedORef(), Target.TAG_LABEL, targetDiagramFactor.getWrappedId().toString());
 		
 		return targetDiagramFactor;
-		//FactorId targetId = (FactorId)projectToUse.createObject(ObjectType.TARGET);
-		//return targetId;
 	}
 
 	private static DiagramFactor createThreat(ProjectForTesting projectToUse) throws Exception
@@ -387,8 +384,6 @@ public class TestSimpleThreatRatingFramework extends MiradiTestCase
 		projectToUse.enableAsThreat(threatDiagramFactor.getWrappedORef());
 		
 		return threatDiagramFactor;
-//		FactorId threatId = (FactorId)projectToUse.createObject(ObjectType.CAUSE);
-//		return threatId;
 	}
 	
 	public static void populateBundle(SimpleThreatRatingFramework frameworkToUse, FactorId threatId, FactorId targetId, ValueOption value) throws Exception
