@@ -53,5 +53,16 @@ public class IntVector
 		return integers.contains(new Integer(item));
 	}
 	
+	public int[] asIntArray()
+	{
+		int[] selection = new int[size()];
+		for (int i = 0; i < size(); ++i)
+		{
+			selection[i] = get(i);
+		}
+	
+		return selection;
+	}
+
 	Vector<Integer> integers;
 }

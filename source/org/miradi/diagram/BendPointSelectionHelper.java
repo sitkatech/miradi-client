@@ -125,16 +125,9 @@ public class BendPointSelectionHelper
 		}
 	}
 	
-	//TODO move this method to IntVector and name it toIntArray
 	public int[] getSelectedIndexes()
 	{
-		int[] selection = new int[selectionIndexes.size()];
-		for (int i = 0; i < selectionIndexes.size(); ++i)
-		{
-			selection[i] = selectionIndexes.get(i);
-		}
-	
-		return selection;
+		return selectionIndexes.asIntArray();
 	}
 	
 	public void selectAll()
