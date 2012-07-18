@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-17 09:42-0500\n"
+"POT-Creation-Date: 2012-07-18 10:19-0500\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -3728,11 +3728,11 @@ msgstr "Démo caractéristiques futures financières"
 msgid "Financial Settings"
 msgstr "Paramètres financiers"
 
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:369
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:317
 msgid "Fiscal Quarter Prefix|FQ"
 msgstr "TF"
 
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:359
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:307
 msgid "Fiscal Year|FY"
 msgstr "EF "
 
@@ -5865,7 +5865,7 @@ msgstr ""
 "trimestre est de avr. à juin, le 3e est de juil. à sept. et le 4e est de "
 "oct. à déc."
 
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:364
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:312
 msgid "Quarter Prefix|Q"
 msgstr "T"
 
@@ -8287,8 +8287,8 @@ msgstr "Afficher ..."
 msgid "Title|XSL Template Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:64
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:203
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:45
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:151
 msgid "Total"
 msgstr "Total"
 
@@ -8836,7 +8836,7 @@ msgstr "[NON SPÉCIFIÉ]"
 msgid "[New Results Chain]"
 msgstr "[Nouvelle chaîne de résultats]"
 
-#: Miradi/source/org/miradi/project/Project.java:959
+#: Miradi/source/org/miradi/project/Project.java:957
 msgid "[No Project]"
 msgstr "[Aucun projet]"
 
