@@ -143,13 +143,6 @@ public class ProjectCalendar implements CommandExecutedListener
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		if(!event.isSetDataCommand())
-			return;
-		
-		CommandSetObjectData cmd = (CommandSetObjectData) event.getCommand();
-		if(cmd.getObjectType() != ProjectMetadataSchema.getObjectType())
-			return;
-		
 	}
 
 	private Project getProject()
