@@ -151,6 +151,9 @@ public class ZipUtilities
 		if(!fullName.startsWith(basePath))
 			throw new RuntimeException("Tried to zip " + fullName + " with basePath of " + basePath);
 		
+		if (isMacResourceFork(fileToZip))
+			return;
+		
 		String relativeName = fullName.substring(basePath.length());
 		ZipEntry fileEntry = new ZipEntry(relativeName);
 		zipOut.putNextEntry(fileEntry);
