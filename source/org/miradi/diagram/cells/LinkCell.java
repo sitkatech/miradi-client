@@ -334,9 +334,9 @@ public class LinkCell extends EAMGraphCell implements Edge
 		EdgeView view = (EdgeView) cache.getMapping(this, false);
 		PointList currentBendPoints = diagramLink.getBendPoints();
 		
-		//TODO getTargetLocation returs the center of the factor box, which
-		//causes the calcuation on the first bendpoint to be wrong.  must get the 
-		//point where the link interestects the factor box.  
+		//TODO getTargetLocation returns the center of the factor box, which
+		//causes the calculation on the first bend point to be wrong.  must get the 
+		//point where the link intersects the factor box.  
 		Point firstBendPoint = getTargetLocation(cache);
 		if (currentBendPoints.size() > 0)
 			firstBendPoint = currentBendPoints.get(0);
