@@ -29,9 +29,6 @@ public class ProjectSummaryLocationSchema extends AbstractProjectSummarySchema
 	protected void fillFieldSchemas()
 	{
 		ProjectMetadataSchema schema = new ProjectMetadataSchema();
-		//FIXME urgent - need to export project location schema element
-		//addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_PROJECT_LANGUAGE));
-		//addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_PROJECT_LONGITUDE));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_COUNTRIES));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_STATE_AND_PROVINCES));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_MUNICIPALITIES));
