@@ -176,7 +176,6 @@ public class Project
 		currentViewName = NO_PROJECT_VIEW_NAME;
 
 		
-		projectCalendar.clearDateRanges();
 		quarantine = new StringBuilder();
 		exceptionLog = new StringBuilder();
 		lastModifiedMillis = System.currentTimeMillis();
