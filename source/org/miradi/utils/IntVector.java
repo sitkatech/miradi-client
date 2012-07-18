@@ -64,5 +64,5 @@ public class IntVector
 		return selection;
 	}
 
-	Vector<Integer> integers;
+	private Vector<Integer> integers;
 }
