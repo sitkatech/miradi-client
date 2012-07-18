@@ -104,7 +104,7 @@ public class ZipUtilities
 		}
 	}
 
-	private static boolean isMacResourceFork(File destination)
+	public static boolean isMacResourceFork(File destination)
 	{
 		return destination.getAbsolutePath().contains("__MACOSX");
 	}

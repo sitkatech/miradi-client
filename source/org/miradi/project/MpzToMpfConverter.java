@@ -187,7 +187,7 @@ public class MpzToMpfConverter extends AbstractConverter
 		File result = null;
 		for(File file : children)
 		{
-			if(file.getName().startsWith("__MACOSX"))
+			if(ZipUtilities.isMacResourceFork(file))
 				continue;
 			
 			if(result != null)
