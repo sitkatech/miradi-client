@@ -370,7 +370,7 @@ public class TestSimpleThreatRatingFramework extends MiradiTestCase
 		}
 	}
 
-	//TODO see why the code below was commentd out and possibly remove.  
+	//TODO see why the code below was commented out and possibly remove.  
 	private static DiagramFactor createTarget(ProjectForTesting projectToUse) throws Exception
 	{
 		DiagramFactor targetDiagramFactor = projectToUse.createDiagramFactorAndAddToDiagram(ObjectType.TARGET);
