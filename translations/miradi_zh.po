@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-17 09:42-0500\n"
+"POT-Creation-Date: 2012-07-18 10:19-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -3539,11 +3539,11 @@ msgstr "财务未来特征演示 \t\t"
 msgid "Financial Settings"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:369
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:317
 msgid "Fiscal Quarter Prefix|FQ"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:359
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:307
 msgid "Fiscal Year|FY"
 msgstr ""
 
@@ -5587,7 +5587,7 @@ msgstr ""
 "月，第二季度是从四月至六月，第三季度是从七月至九月，而第四季度是从十月至十二"
 "月。"
 
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:364
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:312
 msgid "Quarter Prefix|Q"
 msgstr ""
 
@@ -7892,8 +7892,8 @@ msgstr "视图… \t\t"
 msgid "Title|XSL Template Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:64
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:203
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:45
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:151
 msgid "Total"
 msgstr "总计 \t\t"
 
@@ -8402,7 +8402,7 @@ msgstr "[未指定的] \t\t"
 msgid "[New Results Chain]"
 msgstr "[新结果链] \t\t"
 
-#: Miradi/source/org/miradi/project/Project.java:959
+#: Miradi/source/org/miradi/project/Project.java:957
 msgid "[No Project]"
 msgstr "[无项目] \t\t"
 
