@@ -152,12 +152,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		
 		try
 		{
-			if(cmd.getFieldTag().equals(ProjectMetadata.TAG_START_DATE) ||
-					cmd.getFieldTag().equals(ProjectMetadata.TAG_EXPECTED_END_DATE) ||
-					cmd.getFieldTag().equals(ProjectMetadata.TAG_FISCAL_YEAR_START) ||
-					cmd.getFieldTag().equals(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT))
-			{
-			}
+			
 		}
 		catch(Exception e)
 		{
