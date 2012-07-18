@@ -82,7 +82,7 @@ public class ResultsChainCreatorHelper
 			HashMap<DiagramFactor, DiagramFactor> clonedDiagramFactors = cloneDiagramFactors(selectedDiagramFactors);
 			ORefList clonedDiagramFactorRefs = extractClonedObjectRefs(clonedDiagramFactors);
 			IdList idList = clonedDiagramFactorRefs.convertToIdList(DiagramFactorSchema.getObjectType());
-			CommandSetObjectData addFactorsToChain = CommandSetObjectData.createAppendListCommand(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_IDS, idList);
+			CommandSetObjectData addFactorsToChain = CommandSetObjectData.createCommandToAppendList(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_IDS, idList);
 			getProject().executeCommand(addFactorsToChain);
 			
 			updateAllGroupBoxChildren(clonedDiagramFactors);
@@ -90,7 +90,7 @@ public class ResultsChainCreatorHelper
 			HashMap<DiagramLink, DiagramLink> clonedDiagramLinks = cloneDiagramLinks(diagramLinks, clonedDiagramFactors);
 			ORefList clonedDiagramLinkRefs = extractClonedObjectRefs(clonedDiagramLinks);
 			IdList diagramLinkList = clonedDiagramLinkRefs.convertToIdList(DiagramLinkSchema.getObjectType());
-			CommandSetObjectData addLinksToChain = CommandSetObjectData.createAppendListCommand(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkList);
+			CommandSetObjectData addLinksToChain = CommandSetObjectData.createCommandToAppendList(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkList);
 			getProject().executeCommand(addLinksToChain);
 			
 			updateAllGroupBoxLinkChildren(clonedDiagramLinks);
