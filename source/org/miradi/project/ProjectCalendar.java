@@ -53,10 +53,6 @@ public class ProjectCalendar implements CommandExecutedListener
 		getProject().removeCommandExecutedListener(this);
 	}
 	
-	public void clearDateRanges()
-	{
-	}
-	
 	public String getLongDateUnitString(DateUnit dateUnit)
 	{
 		if (dateUnit.isProjectTotal())
@@ -161,7 +157,6 @@ public class ProjectCalendar implements CommandExecutedListener
 					cmd.getFieldTag().equals(ProjectMetadata.TAG_FISCAL_YEAR_START) ||
 					cmd.getFieldTag().equals(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT))
 			{
-				clearDateRanges();
 			}
 		}
 		catch(Exception e)
