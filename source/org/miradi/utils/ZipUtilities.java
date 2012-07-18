@@ -106,7 +106,7 @@ public class ZipUtilities
 
 	private static boolean isMacResourceFork(File destination)
 	{
-		return destination.getAbsolutePath().contains("/__MACOSX");
+		return destination.getAbsolutePath().contains("__MACOSX");
 	}
 
 	public static File createZipFromDirectory(File directoryToZip) throws IOException
