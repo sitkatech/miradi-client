@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-18 10:19-0500\n"
+"POT-Creation-Date: 2012-07-18 11:09-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -6448,10 +6448,6 @@ msgstr "Stop"
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
 msgid "Strategic Plan"
 msgstr "Piano Strategico"
-
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningStrategicSubPanel.java:45
-msgid "Strategic Planning"
-msgstr "Pianificazione Strategica"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
 msgid ""
@@ -30379,6 +30375,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid "Strategic Planning"
+#~ msgstr "Pianificazione Strategica"
 
 #~ msgid "Currently, Miradi can only import one project file at a time"
 #~ msgstr ""

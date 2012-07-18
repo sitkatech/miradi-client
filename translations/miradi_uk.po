@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-18 10:19-0500\n"
+"POT-Creation-Date: 2012-07-18 11:09-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -6347,10 +6347,6 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
 msgid "Strategic Plan"
 msgstr "Стратегічний план"
-
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningStrategicSubPanel.java:45
-msgid "Strategic Planning"
-msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
 msgid ""

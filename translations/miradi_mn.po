@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-18 10:19-0500\n"
+"POT-Creation-Date: 2012-07-18 11:09-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -6385,10 +6385,6 @@ msgstr "Зогсоох"
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
 msgid "Strategic Plan"
 msgstr "Стратеги Төлөвлөгөө"
-
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningStrategicSubPanel.java:45
-msgid "Strategic Planning"
-msgstr "Стратеги Төлөвлөлт"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
 msgid ""
@@ -31889,6 +31885,9 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "Strategic Planning"
+#~ msgstr "Стратеги Төлөвлөлт"
 
 #~ msgid "Currently, Miradi can only import one project file at a time"
 #~ msgstr "Одоогоор, Миради нэг удаа нэг л төслийн файлыг оруулна"
