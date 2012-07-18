@@ -143,9 +143,7 @@ abstract public class ObjectsDoer extends ViewDoer
 		if(objects == null || objects.length == 0)
 			return ORef.INVALID;
 		
-		BaseObject selected = objects[0];
-		
-		return selected.getRef();
+		return objects[0].getRef();
 	}
 	
 	public BaseObject getSelectedParentFactor()
