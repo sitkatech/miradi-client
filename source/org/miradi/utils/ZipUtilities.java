@@ -82,7 +82,7 @@ public class ZipUtilities
 			ZipEntry entry = entries.nextElement();
 			File destination = new File(tempDirectory, entry.getName());
 			//NOTE: Omit Mac resource fork "__MACOSX" when zipping 
-			if (isMacResourceFork(destination))
+			if (isMacResourceForkPath(destination))
 				continue;
 			
 			if(entry.isDirectory())
@@ -104,9 +104,9 @@ public class ZipUtilities
 		}
 	}
 
-	public static boolean isMacResourceFork(File destination)
+	public static boolean isMacResourceForkPath(File destination)
 	{
-		return destination.getAbsolutePath().contains("__MACOSX");
+		return destination.getAbsolutePath().contains("/__MACOSX");
 	}
 
 	public static File createZipFromDirectory(File directoryToZip) throws IOException
@@ -151,7 +151,7 @@ public class ZipUtilities
 		if(!fullName.startsWith(basePath))
 			throw new RuntimeException("Tried to zip " + fullName + " with basePath of " + basePath);
 		
-		if (isMacResourceFork(fileToZip))
+		if (isMacResourceForkPath(fileToZip))
 			return;
 		
 		String relativeName = fullName.substring(basePath.length());
