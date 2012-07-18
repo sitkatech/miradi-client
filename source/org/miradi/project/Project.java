@@ -851,7 +851,6 @@ public class Project
 	
 	protected void enableListeners()
 	{
-		getProjectCalendar().enable();
 		getProjectTotalCalculator().enable();
 		enableThreatStressRatingEnsurer();
 		planningPreferencesChangeHandler.enable();
@@ -975,7 +974,6 @@ public class Project
 
 	protected void disableListeners()
 	{
-		getProjectCalendar().disable();
 		getProjectTotalCalculator().disable();
 		disableThreatStressRatingEnsurer();
 		planningPreferencesChangeHandler.disable();

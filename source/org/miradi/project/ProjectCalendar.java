@@ -41,16 +41,6 @@ public class ProjectCalendar implements CommandExecutedListener
 		project = projectToUse;
 	}
 	
-	public void enable()
-	{
-		getProject().addCommandExecutedListener(this);
-	}
-	
-	public void disable()
-	{
-		getProject().removeCommandExecutedListener(this);
-	}
-	
 	public String getLongDateUnitString(DateUnit dateUnit)
 	{
 		if (dateUnit.isProjectTotal())
