@@ -24,7 +24,6 @@ import java.util.LinkedHashSet;
 import java.util.Vector;
 
 import org.martus.util.MultiCalendar;
-import org.miradi.commands.CommandSetObjectData;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
@@ -33,7 +32,6 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.MonthAbbreviationsQuestion;
-import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.utils.DateRange;
 
 public class ProjectCalendar implements CommandExecutedListener
