@@ -150,7 +150,7 @@ public class TestUndoAndRedo extends MiradiTestCase
 	{
 		project.undo();
 		
-		ORef factorRef = project.createFactorAndReturnRef(ObjectType.CAUSE);
+		ORef factorRef = project.createObject(ObjectType.CAUSE);
 		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR);
 		project.executeCommand(createDiagramFactorCommand);
 		

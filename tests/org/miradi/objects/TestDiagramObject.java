@@ -71,7 +71,7 @@ public class TestDiagramObject extends ObjectTestCase
 	public void testFindReferrersOnSameDiagram() throws Exception
 	{
 		DiagramObject diagramObject = getProject().getTestingDiagramObject();
-		ORef stressRef = getProject().createFactorAndReturnRef(StressSchema.getObjectType());
+		ORef stressRef = getProject().createObject(StressSchema.getObjectType());
 		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		
 		ORefList foundTargetReferrerRefs1 = diagramObject.findReferrersOnSameDiagram(stressRef, TargetSchema.getObjectType());

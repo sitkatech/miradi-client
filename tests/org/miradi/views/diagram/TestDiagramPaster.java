@@ -217,8 +217,8 @@ public class TestDiagramPaster extends TestCaseWithProject
 	public void fixupRefs(int factorType, int annotationType, String annotationFactorTag) throws Exception
 	{
 		DiagramFactor diagramFactor = getProject().createDiagramFactorAndAddToDiagram(factorType);
-		ORef annotationRef1 = getProject().createFactorAndReturnRef(annotationType);
-		ORef annotationRef2 = getProject().createFactorAndReturnRef(annotationType);
+		ORef annotationRef1 = getProject().createObject(annotationType);
+		ORef annotationRef2 = getProject().createObject(annotationType);
 		
 		IdList annotationIds = new IdList(annotationType);
 		annotationIds.addRef(annotationRef1);
