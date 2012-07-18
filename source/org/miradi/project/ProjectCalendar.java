@@ -150,14 +150,6 @@ public class ProjectCalendar implements CommandExecutedListener
 		if(cmd.getObjectType() != ProjectMetadataSchema.getObjectType())
 			return;
 		
-		try
-		{
-			
-		}
-		catch(Exception e)
-		{
-			EAM.panic(e);
-		}
 	}
 
 	private Project getProject()
