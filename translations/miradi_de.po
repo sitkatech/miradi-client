@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-18 10:19-0500\n"
+"POT-Creation-Date: 2012-07-18 11:09-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -6566,10 +6566,6 @@ msgstr "Stop"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
 msgid "Strategic Plan"
-msgstr ""
-
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningStrategicSubPanel.java:45
-msgid "Strategic Planning"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
