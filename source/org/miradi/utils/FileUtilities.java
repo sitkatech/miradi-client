@@ -153,4 +153,14 @@ public class FileUtilities
 		
 		return true;
 	}
+
+	public static String getFileNameWithoutExtension(String name)
+	{
+		String fileName = new File(name).getName();
+		int lastDotAt = fileName.lastIndexOf('.');
+		if(lastDotAt < 0)
+			return fileName;
+		
+		return fileName.substring(0, lastDotAt);
+	}
 }
