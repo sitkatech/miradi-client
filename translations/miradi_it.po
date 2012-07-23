@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-18 11:09-0500\n"
+"POT-Creation-Date: 2012-07-23 13:17-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -2618,7 +2618,7 @@ msgstr ""
 "Non è possibile importare il file di progetto %s perchè è una cartella e non "
 "un file"
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListAction.java:57
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListAction.java:62
 msgid ""
 "Cannot move project to folder because a project with the same name already "
 "exists in the folder."
