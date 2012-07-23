@@ -47,6 +47,11 @@ abstract class ProjectListAction extends AbstractAction
 	
 	public void actionPerformed(ActionEvent event)
 	{
+		actionPerformed();
+	}
+
+	public void actionPerformed()
+	{
 		try
 		{
 			doWork();

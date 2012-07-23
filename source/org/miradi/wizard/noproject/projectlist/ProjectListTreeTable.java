@@ -71,7 +71,7 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 		setRowSelectionAllowed(true);
 		setColumnSelectionAllowed(false);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		addMouseListener(new MouseHandler());
+		addMouseListener(new MouseHandler(this));
 		addColumnSorter();
 		dateRenderer = new BorderlessTableCellRendererFactory();
 	}
@@ -235,8 +235,13 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 		getProjectListTreeTableModel().sort(modelColumn);
 	}
 	
-	class MouseHandler extends MouseAdapter
+	private class MouseHandler extends MouseAdapter
 	{
+		public MouseHandler(ProjectListTreeTable projectListTreeTableToUse)
+		{
+			projectListTreeTable = projectListTreeTableToUse;
+		}
+		
 		@Override
 		public void mousePressed(MouseEvent e)
 		{
@@ -260,13 +265,15 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 			try
 			{
 				if(event.getClickCount() == 2)
-					doProjectOpen(getMainWindow(), getSelectedFile());
+					new ProjectListOpenAction(projectListTreeTable).actionPerformed();
 			}
 			catch(Exception e)
 			{
 				EAM.logException(e);
 			}
 		}
+		
+		private ProjectListTreeTable projectListTreeTable;
 	}
 	
 	private static class ProjectListItemRenderer extends VariableHeightTreeCellRenderer
