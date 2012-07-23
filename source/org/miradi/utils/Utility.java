@@ -92,16 +92,6 @@ public class Utility
 	}
 	
 	
-	static public String getFileNameWithoutExtension(String name)
-	{
-		String fileName = new File(name).getName();
-		int lastDotAt = fileName.lastIndexOf('.');
-		if(lastDotAt < 0)
-			return fileName;
-		
-		return fileName.substring(0, lastDotAt);
-	}
-	
 	public static int[] convertToIntArray(Vector<Integer> values)
 	{
 		int[] convertedValuesList = new int [values.size()];

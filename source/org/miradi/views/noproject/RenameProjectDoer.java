@@ -27,9 +27,9 @@ import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
+import org.miradi.utils.FileUtilities;
 import org.miradi.utils.ModalRenameDialog;
 import org.miradi.utils.MpfFileFilter;
-import org.miradi.utils.Utility;
 import org.miradi.wizard.noproject.WelcomeCreateStep;
 
 public class RenameProjectDoer
@@ -71,7 +71,7 @@ public class RenameProjectDoer
 
 	public static String getLegalProjectNameFromUser(MainWindow mainWindow, final String name) throws Exception
 	{
-		String projectName = Utility.getFileNameWithoutExtension(name);
+		String projectName = FileUtilities.getFileNameWithoutExtension(name);
 		while (true)
 		{
 			projectName = askUserForProjectName(mainWindow, projectName);
