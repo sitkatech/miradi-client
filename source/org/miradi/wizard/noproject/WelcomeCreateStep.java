@@ -35,6 +35,7 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
+import org.miradi.utils.MpfFileFilter;
 import org.miradi.utils.ProjectNameRestrictedTextField;
 import org.miradi.views.umbrella.CreateProjectDialog;
 import org.miradi.wizard.MiradiHtmlViewer;
@@ -148,8 +149,8 @@ public class WelcomeCreateStep extends NoProjectWizardStep
 			return;
 		try 
 		{
-			if(!newName.endsWith(".Miradi"))
-				newName = newName + ".Miradi";
+			if(!newName.endsWith(MpfFileFilter.EXTENSION))
+				newName = newName + MpfFileFilter.EXTENSION;
 			File projectFile = new File(EAM.getHomeDirectory(), newName);
 			if(projectFile.exists())
 			{
