@@ -38,7 +38,7 @@ public class OldProjectDirToMpfConverter
 		{
 			final String errorMessage = EAM.text("Mpz to Mpf data conversion failed");
 			EAM.errorDialog(errorMessage);
-			throw new RuntimeException(errorMessage);
+			throw new Exception(errorMessage);
 		}
 		
 		MpzProjectImporter importer = new MpzProjectImporter(mainWindow);
