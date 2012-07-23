@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-23 15:43-0500\n"
+"POT-Creation-Date: 2012-07-23 18:10-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -568,7 +568,7 @@ msgstr ""
 "progetto esistente, o <strong>sfogliare un esempio</strong>, scegli un "
 "progetto tra quelli sotto:"
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:75
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:76
 msgid ""
 "<div class='WizardText'>To <strong>create a new project</strong>, enter the "
 "filename in the input field below, and press the <code "
@@ -1012,7 +1012,7 @@ msgstr ""
 "continuare, a meno che un precedente tentativo di migrazione non sia "
 "riuscito."
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:156
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:157
 msgid "A file or folder with that name already exists"
 msgstr ""
 
@@ -2915,7 +2915,7 @@ msgstr ""
 msgid "Create"
 msgstr "Crea"
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:171
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:172
 msgid "Create Failed:"
 msgstr "Fallita creazione:"
 
@@ -5222,7 +5222,7 @@ msgid ""
 "performance, <br>select Manual Row Height Mode."
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:111
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:112
 msgid ""
 "NOTE: Project filenames can contain letters, numbers, spaces, periods, "
 "dashes, and underlines."
@@ -5271,7 +5271,7 @@ msgstr ""
 "inglobati in uno o più Target di Conservazione. Spesso include obiettivi "
 "ecoregionali che un gruppo di lavoro vuole osservare e/o tracciare."
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:94
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:95
 msgid "New Project Filename:"
 msgstr "Nuovo nome del file di Progetto:"
 
@@ -8278,7 +8278,7 @@ msgstr "Impossibile lanciare il browser web esterno"
 msgid "Unable to process file: verify file format"
 msgstr "Impossibile processare il file: verifica il formato"
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:140
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:141
 #: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:130
 msgid "Unable to process request: "
 msgstr "Impossibile evadere la richiesta"

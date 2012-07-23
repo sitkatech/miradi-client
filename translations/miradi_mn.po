@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-23 15:43-0500\n"
+"POT-Creation-Date: 2012-07-23 18:10-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -562,7 +562,7 @@ msgstr ""
 "төсөл дээр, эсвэл <strong>жишээ татаж гаргах </strong>, доорхи төслийг "
 "сонгох:"
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:75
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:76
 msgid ""
 "<div class='WizardText'>To <strong>create a new project</strong>, enter the "
 "filename in the input field below, and press the <code "
@@ -994,7 +994,7 @@ msgstr ""
 "backup шинэ хуулбараар солигдоно. Өмнөх шилжилт амжилтгүй болсон бол үүнийг "
 "хийх нь найдвартай байх."
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:156
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:157
 msgid "A file or folder with that name already exists"
 msgstr ""
 
@@ -2882,7 +2882,7 @@ msgstr ""
 msgid "Create"
 msgstr "Шинээр үүсгэх"
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:171
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:172
 msgid "Create Failed:"
 msgstr "Шинээр үүсгэх амжилтгүй болов:"
 
@@ -5164,7 +5164,7 @@ msgid ""
 "performance, <br>select Manual Row Height Mode."
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:111
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:112
 msgid ""
 "NOTE: Project filenames can contain letters, numbers, spaces, periods, "
 "dashes, and underlines."
@@ -5214,7 +5214,7 @@ msgstr ""
 "төлөв багийн анхааралдаа авах бюую/эсвэл ажиглах шаардлагатай гэж үзсэн "
 "экологийн бүсийн объектыг багтаасан байдаг."
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:94
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:95
 msgid "New Project Filename:"
 msgstr "Шинэ төслийн файлын нэр:"
 
@@ -8209,7 +8209,7 @@ msgstr "Вэб хуудас эхлүүлэх боломжгүй байна"
 msgid "Unable to process file: verify file format"
 msgstr "Файлыг боловсруулж чадахгүй байна: файлын форматыг шалгах"
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:140
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:141
 #: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:130
 msgid "Unable to process request: "
 msgstr "Хүсэлтийг боловсруулж чадахгүй байна:"
