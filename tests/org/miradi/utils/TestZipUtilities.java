@@ -51,6 +51,28 @@ public class TestZipUtilities extends TestCaseWithProject
 			mpzFile.delete();
 		}
 	}
+	
+	public void testIsMacResourceForkPath()
+	{
+		verifyIsMacResourceForkPath("__MACOSX");
+		verifyIsMacResourceForkPath("/users/me/__MACOSX/");
+		verifyIsMacResourceForkPath("/users/me/__MACOSX/someDir/file.txt");
+		
+		verifyIsNotMacResourceForkPath("/users/me/MACOSX");
+		verifyIsNotMacResourceForkPath("/users/me/__MACOSX_V2");
+		verifyIsNotMacResourceForkPath("/users/me/__MACOSX_V2/someDir/");
+	}
+
+	private void verifyIsNotMacResourceForkPath(String string)
+	{
+		assertFalse("Path is not Mac OS resource fork path", ZipUtilities.isMacResourceForkPath(new File(string)));
+		
+	}
+
+	private void verifyIsMacResourceForkPath(String string)
+	{
+		assertTrue("Path is not Mac OS resource fork path", ZipUtilities.isMacResourceForkPath(new File(string)));
+	}
 
 	private File getProjectDir(File tempDirectory) throws Exception
 	{
