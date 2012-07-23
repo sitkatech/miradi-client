@@ -91,7 +91,6 @@ public class Utility
 		}
 	}
 	
-	
 	public static int[] convertToIntArray(Vector<Integer> values)
 	{
 		int[] convertedValuesList = new int [values.size()];
