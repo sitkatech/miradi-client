@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-18 11:09-0500\n"
+"POT-Creation-Date: 2012-07-23 13:17-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2446,7 +2446,7 @@ msgstr ""
 msgid "Cannot import project file %s because it is a directory, not a file"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListAction.java:57
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListAction.java:62
 msgid ""
 "Cannot move project to folder because a project with the same name already "
 "exists in the folder."
