@@ -22,6 +22,7 @@ package org.miradi.utils;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -114,15 +115,21 @@ public class ZipUtilities
 
 	public static File createZipFromDirectory(File directoryToZip) throws IOException
 	{
-		File newZipFile = File.createTempFile("$$$CreatedFromDirectory", ".zip");
-		OutputStream out = new FileOutputStream(newZipFile);
+		final File tempFile = File.createTempFile("$$$CreatedFromDirectory", ".zip");
+		createZipFromDirectory(directoryToZip, tempFile);
+		
+		return tempFile;
+	}
+
+	public static void createZipFromDirectory(File directoryToZip, File zipFileToUse) throws FileNotFoundException, IOException
+	{
+		OutputStream out = new FileOutputStream(zipFileToUse);
 		try
 		{
 			ZipOutputStream zipOut = new ZipOutputStream(out);
 			final String parentAbsolutePath = directoryToZip.getParentFile().getAbsolutePath();
 			addToZip(zipOut, directoryToZip, parentAbsolutePath);
 			zipOut.close();
-			return newZipFile;
 		}
 		finally
 		{

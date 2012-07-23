@@ -21,11 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import java.io.File;
+import java.util.Calendar;
 import java.util.zip.ZipFile;
 
 import org.martus.util.DirectoryUtils;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.utils.MpzFileFilter;
 import org.miradi.utils.ZipUtilities;
 import org.miradi.views.umbrella.MpzProjectImporter;
 
@@ -33,7 +35,8 @@ public class OldProjectDirToMpfConverter
 {
 	public static File convert(MainWindow mainWindow, File oldProjectDirectory) throws Exception
 	{
-		File oldProjectZipped = ZipUtilities.createZipFromDirectory(oldProjectDirectory);
+		File oldProjectZipped = new File(EAM.getHomeDirectory(), "Backup-" + oldProjectDirectory.getName() + "-" + Calendar.getInstance().getTimeInMillis() + MpzFileFilter.EXTENSION);
+		ZipUtilities.createZipFromDirectory(oldProjectDirectory, oldProjectZipped);
 		if (!ZipUtilities.doesProjectZipContainAllProjectFiles(new ZipFile(oldProjectZipped), oldProjectDirectory))
 		{
 			final String errorMessage = EAM.text("Mpz to Mpf data conversion failed");
