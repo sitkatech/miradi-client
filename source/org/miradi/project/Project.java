@@ -1002,8 +1002,8 @@ public class Project
 		if(candidate.length() < 1)
 			return Character.toString(EAM.DASH);
 		
-		if(candidate.length() > MAX_PROJECT_FILENAME_LENGTH)
-			candidate = candidate.substring(0, MAX_PROJECT_FILENAME_LENGTH);
+		if(candidate.length() > getMaximumProjectNameLength())
+			candidate = candidate.substring(0, getMaximumProjectNameLength());
 		
 		char[] asArray = candidate.toCharArray();
 		for(int i = 0; i < candidate.length(); ++i)
