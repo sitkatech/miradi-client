@@ -69,6 +69,7 @@ public class RenameProjectDoer
 		return getLegalProjectNameFromUser(mainWindow, projectFile.getName());
 	}
 
+	//FIXME urgent - this method is incorrectly named,  it should either return project name, or be renamed to getLegalProjectFileNameFromUser 
 	public static String getLegalProjectNameFromUser(MainWindow mainWindow, final String projectFileNameToUse) throws Exception
 	{
 		String projectName = projectFileNameToUse;
