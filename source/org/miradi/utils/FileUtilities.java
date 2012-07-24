@@ -156,6 +156,6 @@ public class FileUtilities
 
 	public static String getFileNameWithoutExtension(String name)
 	{
-		return StringUtilities.stripCharsAfterLastDotInclusive(name);
+		return StringUtilities.subStringBeforeLastDot(name);
 	}
 }
