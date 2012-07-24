@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-24 15:26-0500\n"
+"POT-Creation-Date: 2012-07-24 16:11-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -982,16 +982,19 @@ msgstr ""
 "існуючий дублікат новою копією. Таким чином він можливо буде збережений, "
 "якщо попередня спроба переходу зазнала невдачі.   "
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:156
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:155
 msgid "A file or folder with that name already exists"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:48
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:76
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:55
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:86
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:57
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:88
 msgid "A project or file by this name already exists: "
 msgstr "Проект або файл під цим іменем уже існує:"
+
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:76
+msgid "A project or file by this name already exists: %s"
+msgstr ""
 
 #: Miradi/source/org/miradi/main/MainWindow.java:517
 msgid "A project with this name already exists."
@@ -2864,7 +2867,7 @@ msgstr ""
 msgid "Create"
 msgstr "Створити"
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:171
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:170
 msgid "Create Failed:"
 msgstr "Створити не вдалося:"
 
@@ -3392,7 +3395,7 @@ msgid "Enter As: "
 msgstr ""
 
 #: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:107
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:117
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:119
 msgid "Enter New Name"
 msgstr "Уведіть нову назву"
 
@@ -4252,10 +4255,13 @@ msgstr "Інтродукована рослинність"
 msgid "Introduction"
 msgstr "Вступ"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:82
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:92
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:94
 msgid "Invalid project name:"
 msgstr "Не дійсна назва проекту:"
+
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:82
+msgid "Invalid project name: %s"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:223
 #: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:106
@@ -5802,7 +5808,7 @@ msgid "Remove Team Member"
 msgstr "Видалити виконавця"
 
 #: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:58
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:65
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:67
 msgid "Rename Failed"
 msgstr "Не вдалося перейменувати "
 
@@ -8136,7 +8142,7 @@ msgstr "Неможливо опрацювати файл: перевірте ф�
 msgid "Unable to process request: "
 msgstr "Неможливо виконати вимогу:"
 
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:40
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:42
 msgid ""
 "Unable to rename this project because it is in use by another copy of this "
 "application:\n"
