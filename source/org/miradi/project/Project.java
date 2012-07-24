@@ -995,7 +995,7 @@ public class Project
 	
 	public static boolean isValidProjectFilename(String projectFileName)
 	{
-		String projectName = FileUtilities.getFileNameWithoutExtension(projectFileName); 
+		String projectName = FileUtilities.getFileNameBeforeLastDot(projectFileName); 
 		return isValidProjectName(projectName);
 	}
 	

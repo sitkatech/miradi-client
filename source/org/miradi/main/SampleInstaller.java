@@ -100,7 +100,7 @@ public class SampleInstaller
 	private String getValidatedProjectNameWithoutExtension(File mpzFile)
 	{
 		String projectName = mpzFile.getName();
-		String projectNameWithoutExtension = FileUtilities.getFileNameWithoutExtension(projectName);
+		String projectNameWithoutExtension = FileUtilities.getFileNameBeforeLastDot(projectName);
 		return Project.makeProjectNameLegal(projectNameWithoutExtension); 
 	}
 

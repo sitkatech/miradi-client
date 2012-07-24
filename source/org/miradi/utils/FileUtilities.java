@@ -154,7 +154,7 @@ public class FileUtilities
 		return true;
 	}
 
-	public static String getFileNameWithoutExtension(String name)
+	public static String getFileNameBeforeLastDot(String name)
 	{
 		return StringUtilities.subStringBeforeLastDot(name);
 	}
