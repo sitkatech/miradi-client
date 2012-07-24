@@ -80,20 +80,20 @@ public class RenameProjectDoer
 				return null;
 			}
 
-			projectName += MpfFileFilter.EXTENSION;
-			if (projectExists(new File(EAM.getHomeDirectory(), projectName)))
+			String projectFileName =  projectName + MpfFileFilter.EXTENSION;
+			if (projectExists(new File(EAM.getHomeDirectory(), projectFileName)))
 			{
-				EAM.errorDialog(EAM.text("A project or file by this name already exists: ") + projectName);
+				EAM.errorDialog(EAM.text("A project or file by this name already exists: ") + projectFileName);
 				continue;
 			}
 			
-			if (!Project.isValidProjectFilename(projectName))
+			if (!Project.isValidProjectFilename(projectFileName))
 			{
-				EAM.errorDialog(EAM.text("Invalid project name:") + projectName);
+				EAM.errorDialog(EAM.text("Invalid project name:") + projectFileName);
 				continue;
 			}
 			
-			return projectName;
+			return projectFileName;
 		}
 	}
 	
