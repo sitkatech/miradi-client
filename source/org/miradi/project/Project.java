@@ -1002,9 +1002,8 @@ public class Project
 		if(candidate.length() < 1)
 			return Character.toString(EAM.DASH);
 		
-		final int maxFileNameLength = MAX_PROJECT_FILENAME_LENGTH + MpfFileFilter.EXTENSION.length();
-		if(candidate.length() > maxFileNameLength)
-			candidate = candidate.substring(0, maxFileNameLength);
+		if(candidate.length() > MAX_PROJECT_FILENAME_LENGTH)
+			candidate = candidate.substring(0, MAX_PROJECT_FILENAME_LENGTH);
 		
 		char[] asArray = candidate.toCharArray();
 		for(int i = 0; i < candidate.length(); ++i)
@@ -1367,6 +1366,11 @@ public class Project
 	{
 		throw new RuntimeException("setLocalDataLocation not yet supported!");
 	}
+	
+	public static int getMaximumProjectNameLength()
+	{
+		return MAX_PROJECT_FILENAME_LENGTH - MpfFileFilter.EXTENSION.length();
+	}
 
 	public static final String LIBRARY_VIEW_NAME = "Library";
 	public static final String SCHEDULE_VIEW_NAME = "Schedule";
@@ -1386,7 +1390,7 @@ public class Project
 	public static final int DEFAULT_DIAGRAM_FONT_SIZE = 11;
 	
 
-	public static final int MAX_PROJECT_FILENAME_LENGTH = 32;
+	public static final int MAX_PROJECT_FILENAME_LENGTH = 40;
 	
 	private boolean isOpen;
 	private String projectName;

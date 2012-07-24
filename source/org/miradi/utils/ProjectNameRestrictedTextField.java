@@ -32,7 +32,7 @@ public class ProjectNameRestrictedTextField extends PanelTextFieldWithSelectAllO
 
 	public ProjectNameRestrictedTextField(String initialValue)
 	{
-		super(Project.MAX_PROJECT_FILENAME_LENGTH);
+		super(Project.getMaximumProjectNameLength());
 		
 		initialize(initialValue);
 	}
