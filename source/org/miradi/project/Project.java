@@ -993,15 +993,15 @@ public class Project
 		threatStressRatingEnsurer.enable();
 	}
 	
-	public static boolean isValidProjectFilename(String candidate)
+	public static boolean isValidProjectFilename(String projectFileName)
 	{
-		String projectName = FileUtilities.getFileNameWithoutExtension(candidate); 
+		String projectName = FileUtilities.getFileNameWithoutExtension(projectFileName); 
 		return isValidProjectName(projectName);
 	}
 	
-	public static boolean isValidProjectName(String candidate)
+	public static boolean isValidProjectName(String projectName)
 	{
-		return candidate.equals(makeProjectNameLegal(candidate));
+		return projectName.equals(makeProjectNameLegal(projectName));
 	}
 	
 	public static String makeProjectNameLegal(String projectName)
