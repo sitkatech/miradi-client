@@ -36,6 +36,9 @@ public class OldProjectDirToMpfConverter
 	public static File convert(MainWindow mainWindow, File oldProjectDirectory) throws Exception
 	{
 		File oldProjectZippedAsBackup = new File(EAM.getHomeDirectory(), "Backup-" + oldProjectDirectory.getName() + "-" + Calendar.getInstance().getTimeInMillis() + MpzFileFilter.EXTENSION);
+		if (oldProjectZippedAsBackup.exists())
+			throw new Exception("Attempted to override an existing backup file when converting old project dir to new project format:" + oldProjectZippedAsBackup.getAbsolutePath());
+		
 		ZipUtilities.createZipFromDirectory(oldProjectDirectory, oldProjectZippedAsBackup);
 		if (!ZipUtilities.doesProjectZipContainAllProjectFiles(new ZipFile(oldProjectZippedAsBackup), oldProjectDirectory))
 			throw new Exception("Mpz to Mpf data conversion failed");
