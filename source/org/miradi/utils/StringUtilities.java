@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import java.io.File;
+
 public class StringUtilities
 {
 	public static String removeLastChar(String elementName)
@@ -66,6 +68,16 @@ public class StringUtilities
 	public static byte[] getUtf8EncodedBytes(String actualMpf) throws Exception
 	{
 		return actualMpf.getBytes("UTF-8");
+	}
+	
+	static String stripCharsAfterLastDotInclusive(String name)
+	{
+		String fileName = new File(name).getName();
+		int lastDotAt = fileName.lastIndexOf('.');
+		if(lastDotAt < 0)
+			return fileName;
+		
+		return fileName.substring(0, lastDotAt);
 	}
 	
 	public static final String EMPTY_SPACE= " ";
