@@ -135,6 +135,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.HtmlUtilities;
+import org.miradi.utils.MpfFileFilter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.Translation;
 import org.miradi.views.diagram.DiagramClipboard;
@@ -1001,8 +1002,9 @@ public class Project
 		if(candidate.length() < 1)
 			return Character.toString(EAM.DASH);
 		
-		if(candidate.length() > MAX_PROJECT_FILENAME_LENGTH)
-			candidate = candidate.substring(0, MAX_PROJECT_FILENAME_LENGTH);
+		final int maxFileNameLength = MAX_PROJECT_FILENAME_LENGTH + MpfFileFilter.EXTENSION.length();
+		if(candidate.length() > maxFileNameLength)
+			candidate = candidate.substring(0, maxFileNameLength);
 		
 		char[] asArray = candidate.toCharArray();
 		for(int i = 0; i < candidate.length(); ++i)
