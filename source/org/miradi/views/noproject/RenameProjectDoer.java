@@ -75,12 +75,12 @@ public class RenameProjectDoer
 		while (true)
 		{
 			projectName = askUserForProjectName(mainWindow, FileUtilities.getFileNameWithoutExtension(projectName));
-			projectName += MpfFileFilter.EXTENSION;
 			if (projectName == null)
 			{
 				return null;
 			}
-			
+
+			projectName += MpfFileFilter.EXTENSION;
 			File newFile = new File(EAM.getHomeDirectory(), projectName);
 			if (projectExists(newFile))
 			{
