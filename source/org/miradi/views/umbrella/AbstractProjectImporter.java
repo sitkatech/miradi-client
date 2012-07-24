@@ -131,16 +131,16 @@ public abstract class AbstractProjectImporter
 	
 	private class Worker extends MiradiBackgroundWorkerThread
 	{
-		public Worker(ProgressInterface progressInterfaceToUse, File fileToImportToUse, String projectNameToUse) throws Exception
+		public Worker(ProgressInterface progressInterfaceToUse, File fileToImportToUse, String projectFileNameToUse) throws Exception
 		{
 			super(progressInterfaceToUse);
 			
 			fileToImport = fileToImportToUse;
-			projectName = projectNameToUse;
-			newProjectFile = new File(EAM.getHomeDirectory(), projectName);
+			projectFileName = projectFileNameToUse;
+			newProjectFile = new File(EAM.getHomeDirectory(), projectFileName);
 
-			if(!Project.isValidProjectFilename(projectName))
-				throw new Exception("Illegal project name: " + projectName);
+			if(!Project.isValidProjectFilename(projectFileName))
+				throw new Exception("Illegal project name: " + projectFileName);
 		}
 		
 		public File getImportedFile()
@@ -156,7 +156,7 @@ public abstract class AbstractProjectImporter
 		}
 		
 		private File fileToImport;
-		private String projectName;
+		private String projectFileName;
 		private File newProjectFile;
 	}
 
