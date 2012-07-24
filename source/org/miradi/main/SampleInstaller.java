@@ -101,7 +101,7 @@ public class SampleInstaller
 	{
 		String projectName = mpzFile.getName();
 		String projectNameWithoutExtension = FileUtilities.getFileNameWithoutExtension(projectName);
-		return Project.makeProjectFilenameLegal(projectNameWithoutExtension); 
+		return Project.makeProjectNameLegal(projectNameWithoutExtension); 
 	}
 
 	private File[] getMpfFilesUnderAppDir() throws URISyntaxException
