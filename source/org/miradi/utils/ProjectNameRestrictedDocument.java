@@ -35,6 +35,6 @@ public class ProjectNameRestrictedDocument extends AbstractRestrictedDocument
 	@Override
 	protected int getMaxValueLength()
 	{
-		return Project.MAX_PROJECT_FILENAME_LENGTH;
+		return Project.getMaximumProjectNameLength();
 	}
 }
