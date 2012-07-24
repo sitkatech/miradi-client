@@ -992,12 +992,12 @@ public class Project
 		threatStressRatingEnsurer.enable();
 	}
 	
-	static public boolean isValidProjectFilename(String candidate)
+	public static boolean isValidProjectFilename(String candidate)
 	{
 		return candidate.equals(makeProjectNameLegal(candidate));
 	}
 	
-	static public String makeProjectNameLegal(String projectName)
+	public static String makeProjectNameLegal(String projectName)
 	{
 		if(projectName.length() < 1)
 			return Character.toString(EAM.DASH);
