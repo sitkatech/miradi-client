@@ -71,16 +71,17 @@ public class RenameProjectDoer
 
 	public static String getLegalProjectNameFromUser(MainWindow mainWindow, final String name) throws Exception
 	{
-		String projectName = FileUtilities.getFileNameWithoutExtension(name);
+		String projectName = name;
 		while (true)
 		{
-			projectName = askUserForProjectName(mainWindow, projectName);
+			projectName = askUserForProjectName(mainWindow, FileUtilities.getFileNameWithoutExtension(projectName));
+			projectName += MpfFileFilter.EXTENSION;
 			if (projectName == null)
 			{
 				return null;
 			}
 			
-			File newFile = new File(EAM.getHomeDirectory(), projectName + MpfFileFilter.EXTENSION);
+			File newFile = new File(EAM.getHomeDirectory(), projectName);
 			if (projectExists(newFile))
 			{
 				EAM.errorDialog(EAM.text("A project or file by this name already exists: ") + projectName);
@@ -93,7 +94,7 @@ public class RenameProjectDoer
 				continue;
 			}
 			
-			return newFile.getName();
+			return projectName;
 		}
 	}
 	
