@@ -59,11 +59,6 @@ public class RenameProjectDoer
 		}
 	}
 	
-	public static String getValidatedUserProjectName(MainWindow mainWindow, File fileToImport) throws Exception
-	{
-		return getLegalProjectNameFromUser(mainWindow, fileToImport);
-	}
-
 	private static String getLegalProjectNameFromUser(MainWindow mainWindow, File projectFile) throws Exception
 	{
 		return getLegalProjectNameFromUser(mainWindow, projectFile.getName());
