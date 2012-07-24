@@ -38,11 +38,7 @@ public class OldProjectDirToMpfConverter
 		File oldProjectZippedAsBackup = new File(EAM.getHomeDirectory(), "Backup-" + oldProjectDirectory.getName() + "-" + Calendar.getInstance().getTimeInMillis() + MpzFileFilter.EXTENSION);
 		ZipUtilities.createZipFromDirectory(oldProjectDirectory, oldProjectZippedAsBackup);
 		if (!ZipUtilities.doesProjectZipContainAllProjectFiles(new ZipFile(oldProjectZippedAsBackup), oldProjectDirectory))
-		{
-			final String errorMessage = EAM.text("Mpz to Mpf data conversion failed");
-			EAM.errorDialog(errorMessage);
-			throw new Exception(errorMessage);
-		}
+			throw new Exception("Mpz to Mpf data conversion failed");
 		
 		MpzProjectImporter importer = new MpzProjectImporter(mainWindow);
 		File importedFile = importer.importProject(oldProjectZippedAsBackup, oldProjectDirectory.getName());

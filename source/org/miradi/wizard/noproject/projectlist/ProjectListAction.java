@@ -58,13 +58,13 @@ abstract class ProjectListAction extends AbstractAction
 		}
 		catch (ProjectAlreadyExistsException e)
 		{
-			EAM.logException(e);
-			EAM.errorDialog(getErrorMessage() + EAM.text("Cannot move project to folder because a project with the same name already exists in the folder."));
+			EAM.logException(new Exception(getErrorMessage(), e));
+			EAM.errorDialog(EAM.text("Cannot move project to folder because a project with the same name already exists in the folder."));
 		}
 		catch(Exception e)
 		{
-			EAM.logException(e);
-			EAM.errorDialog(getErrorMessage() + e.getMessage());
+			EAM.logException(new Exception(getErrorMessage(), e));
+			EAM.unexpectedErrorDialog();
 		}
 		refresh();
 	}
