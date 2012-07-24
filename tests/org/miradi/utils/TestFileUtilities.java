@@ -44,7 +44,7 @@ public class TestFileUtilities extends MiradiTestCase
 	
 	private void verifyFileExtensionRemoval(String actualValue, String expectedValue)
 	{
-		assertEquals("Incorrect file extension chunk removed?", expectedValue, FileUtilities.getFileNameWithoutExtension(actualValue));
+		assertEquals("Incorrect file extension chunk removed?", expectedValue, FileUtilities.getFileNameBeforeLastDot(actualValue));
 	}
 
 	public void testCompareDirectoriesBasedOnFileNames() throws Exception
