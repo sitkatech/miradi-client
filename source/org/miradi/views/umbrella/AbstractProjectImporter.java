@@ -115,12 +115,12 @@ public abstract class AbstractProjectImporter
 
 	public File importProject(File fileToImport, final String projectFileNameToUse) throws Exception
 	{
-		String projectName = RenameProjectDoer.getLegalProjectFileNameFromUser(getMainWindow(), projectFileNameToUse);
-		if (projectName == null)
+		String projectFileName = RenameProjectDoer.getLegalProjectFileNameFromUser(getMainWindow(), projectFileNameToUse);
+		if (projectFileName == null)
 			return null;
 		
 		ProgressDialog progressDialog = new ProgressDialog(getMainWindow(), EAM.text("Importing..."));
-		Worker worker = new Worker(progressDialog, fileToImport, projectName);
+		Worker worker = new Worker(progressDialog, fileToImport, projectFileName);
 		progressDialog.doWorkInBackgroundWhileShowingProgress(worker);
 		
 		refreshNoProjectPanel();
