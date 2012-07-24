@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-24 10:31-0500\n"
+"POT-Creation-Date: 2012-07-24 10:52-0500\n"
 "PO-Revision-Date: 2011-03-17 08:35-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2871,7 +2871,7 @@ msgstr ""
 #: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:46
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:65
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:75
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:69
 #: Miradi/source/org/miradi/main/MiradiStrings.java:69
 msgid "Delete"
 msgstr ""
@@ -3224,28 +3224,12 @@ msgstr ""
 msgid "Error Retrieving Data"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:42
-msgid "Error copying project: "
-msgstr ""
-
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListCreateDirectoryAction.java:70
-msgid "Error creating folder: "
-msgstr ""
-
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:70
-msgid "Error deleting project: "
-msgstr ""
-
 #: Miradi/source/org/miradi/views/umbrella/RedoDoer.java:55
 msgid "Error during redo"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/UndoDoer.java:58
 msgid "Error during undo"
-msgstr ""
-
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListMoveToDirectoryAction.java:73
-msgid "Error moving project: "
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/base/DataLocationChooserPanel.java:102
@@ -3269,16 +3253,8 @@ msgstr ""
 msgid "Error occurred while trying to export to a tab delimited file."
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:41
-msgid "Error opening project: "
-msgstr ""
-
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:206
 msgid "Error reading %s. Perhaps it is not a valid zip file."
-msgstr ""
-
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:63
-msgid "Error renaming project: "
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/treetables/TreeTablePanel.java:127
@@ -5086,7 +5062,7 @@ msgstr ""
 msgid "Onsite Research"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:46
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:40
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:92
 msgid "Open"
 msgstr ""
@@ -5556,7 +5532,7 @@ msgstr ""
 msgid "Rename Failed"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:68
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:62
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:94
 msgid "Rename..."
 msgstr ""
@@ -5699,7 +5675,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/noproject/CopyProject.java:42
 #: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:45
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:47
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:41
 msgid "Save As..."
 msgstr ""
 

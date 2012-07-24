@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-24 10:31-0500\n"
+"POT-Creation-Date: 2012-07-24 10:52-0500\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -3090,7 +3090,7 @@ msgstr "Définir portée projet"
 #: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:46
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:65
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:75
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:69
 #: Miradi/source/org/miradi/main/MiradiStrings.java:69
 msgid "Delete"
 msgstr "Supprimer"
@@ -3462,18 +3462,6 @@ msgstr ""
 msgid "Error Retrieving Data"
 msgstr "Erreur dans la récupération des données"
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:42
-msgid "Error copying project: "
-msgstr "Erreur lors de la copie du projet :"
-
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListCreateDirectoryAction.java:70
-msgid "Error creating folder: "
-msgstr "Erreur lors de la création du dossier :"
-
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:70
-msgid "Error deleting project: "
-msgstr "Erreur lors de la suppression du projet :"
-
 #: Miradi/source/org/miradi/views/umbrella/RedoDoer.java:55
 msgid "Error during redo"
 msgstr "Erreur lors de la restauration"
@@ -3481,10 +3469,6 @@ msgstr "Erreur lors de la restauration"
 #: Miradi/source/org/miradi/views/umbrella/UndoDoer.java:58
 msgid "Error during undo"
 msgstr "Erreur lors de l'annulation"
-
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListMoveToDirectoryAction.java:73
-msgid "Error moving project: "
-msgstr "Erreur lors du déplacement du projet :"
 
 #: Miradi/source/org/miradi/dialogs/base/DataLocationChooserPanel.java:102
 msgid "Error occured while saving data location"
@@ -3513,19 +3497,11 @@ msgstr ""
 "Une erreur s'est produite en essayant d'exporter à un fichier délimité par "
 "des tabulations."
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:41
-msgid "Error opening project: "
-msgstr "Erreur lors de l'ouverture du projet :"
-
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:206
 msgid "Error reading %s. Perhaps it is not a valid zip file."
 msgstr ""
 "Erreur lors de la lecture de %s.  Peut-être qu'il n'est pas un fichier zip "
 "valide."
-
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:63
-msgid "Error renaming project: "
-msgstr "Erreur lors du changement de nom du projet :"
 
 #: Miradi/source/org/miradi/dialogs/treetables/TreeTablePanel.java:127
 msgid "Error restoring tree state"
@@ -5432,7 +5408,7 @@ msgstr "Uniquement Chaînes de résultats"
 msgid "Onsite Research"
 msgstr "Recherche sur site"
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:46
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:40
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:92
 msgid "Open"
 msgstr "Ouvrir"
@@ -5926,7 +5902,7 @@ msgstr "Supprimer Membre de l'équipe"
 msgid "Rename Failed"
 msgstr "Changement de nom échoué"
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:68
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:62
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:94
 msgid "Rename..."
 msgstr "Changement de nom ..."
@@ -6072,7 +6048,7 @@ msgstr "Savane - Savane humide"
 
 #: Miradi/source/org/miradi/views/noproject/CopyProject.java:42
 #: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:45
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:47
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:41
 msgid "Save As..."
 msgstr "Enregistrer sous ..."
 
@@ -33851,6 +33827,24 @@ msgid ""
 msgstr ""
 "Marine___Atlantique tropical occidental___Écorégion marine du versant nord-"
 "est du Brésil___Brésil"
+
+#~ msgid "Error copying project: "
+#~ msgstr "Erreur lors de la copie du projet :"
+
+#~ msgid "Error creating folder: "
+#~ msgstr "Erreur lors de la création du dossier :"
+
+#~ msgid "Error deleting project: "
+#~ msgstr "Erreur lors de la suppression du projet :"
+
+#~ msgid "Error moving project: "
+#~ msgstr "Erreur lors du déplacement du projet :"
+
+#~ msgid "Error opening project: "
+#~ msgstr "Erreur lors de l'ouverture du projet :"
+
+#~ msgid "Error renaming project: "
+#~ msgstr "Erreur lors du changement de nom du projet :"
 
 #~ msgid "Strategic Planning"
 #~ msgstr "Planification stratégiques"
