@@ -149,15 +149,14 @@ public class WelcomeCreateStep extends NoProjectWizardStep
 			return;
 		try 
 		{
-			newProjectFileName = newProjectFileName + MpfFileFilter.EXTENSION;
-			File projectFile = new File(EAM.getHomeDirectory(), newProjectFileName);
+			File projectFile = new File(EAM.getHomeDirectory(), newProjectFileName + MpfFileFilter.EXTENSION);
 			if(projectFile.exists())
 			{
 				EAM.notifyDialog(EAM.text("A file or folder with that name already exists"));
 				return;
 			}
 
-			if (!Project.isValidProjectFilename(newProjectFileName))
+			if (!Project.isValidProjectName(newProjectFileName))
 			{
 				EAM.notifyDialog(CreateProjectDialog.getInvalidProjectNameMessage());
 				return;
