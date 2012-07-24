@@ -81,8 +81,7 @@ public class RenameProjectDoer
 			}
 
 			projectName += MpfFileFilter.EXTENSION;
-			File newFile = new File(EAM.getHomeDirectory(), projectName);
-			if (projectExists(newFile))
+			if (projectExists(new File(EAM.getHomeDirectory(), projectName)))
 			{
 				EAM.errorDialog(EAM.text("A project or file by this name already exists: ") + projectName);
 				continue;
