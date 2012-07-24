@@ -57,12 +57,6 @@ class ProjectListRenameAction extends ProjectListAction
 			RenameOldProjectDoer.doIt(EAM.getMainWindow(), getSelectedFile());
 	}
 	
-	@Override
-	protected String getErrorMessage()
-	{
-		return EAM.text("Error renaming project: ");
-	}
-	
 	private static String getButtonLabel()
 	{
 		return EAM.text("Rename...");
