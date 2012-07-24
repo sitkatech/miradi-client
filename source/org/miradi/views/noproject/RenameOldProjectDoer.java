@@ -30,6 +30,8 @@ import org.miradi.project.Project;
 import org.miradi.utils.ModalRenameDialog;
 import org.miradi.wizard.noproject.WelcomeCreateStep;
 
+//FIXME low - This class started out as a duplication of RenameProjectDoer and still has many duplicated parts.  
+// Either the class should go away, or a common parent needs to be pulled up. 
 public class RenameOldProjectDoer
 {
 	static public void doIt(MainWindow mainWindow, File directoryToRename) throws Exception 
