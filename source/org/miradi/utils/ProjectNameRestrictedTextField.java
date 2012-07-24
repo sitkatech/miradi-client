@@ -23,6 +23,8 @@ package org.miradi.utils;
 import org.miradi.dialogs.fieldComponents.PanelTextFieldWithSelectAllOnFocusGained;
 import org.miradi.project.Project;
 
+//FIXME medium - Since this text field is already using ProjectNameRestrictedDocument, why is it still
+//passing max value to super.  Seems like duplicate effort. 
 public class ProjectNameRestrictedTextField extends PanelTextFieldWithSelectAllOnFocusGained
 {
 	public ProjectNameRestrictedTextField()
