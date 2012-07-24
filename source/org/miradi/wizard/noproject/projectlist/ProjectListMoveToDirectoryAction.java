@@ -66,10 +66,4 @@ public class ProjectListMoveToDirectoryAction extends ProjectListAction
 		if (!wasMoved)
 			throw new ProjectAlreadyExistsException();
 	}
-
-	@Override
-	protected String getErrorMessage()
-	{
-		return EAM.text("Error moving project: ");
-	}
 }

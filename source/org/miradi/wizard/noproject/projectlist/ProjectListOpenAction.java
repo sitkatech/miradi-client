@@ -35,12 +35,6 @@ class ProjectListOpenAction extends ProjectListAction
 		ProjectListTreeTable.doProjectOpen(getMainWindow(), getSelectedFile());
 	}
 	
-	@Override
-	protected String getErrorMessage()
-	{
-		return EAM.text("Error opening project: ");
-	}
-	
 	private static String getButtonLabel()
 	{
 		return EAM.text("Open");

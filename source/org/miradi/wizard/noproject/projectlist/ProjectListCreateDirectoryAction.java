@@ -63,10 +63,4 @@ public class ProjectListCreateDirectoryAction extends ProjectListAction
 			
 		RenameOldProjectDoer.doIt(EAM.getMainWindow(), newDirToCreate);
 	}
-
-	@Override
-	protected String getErrorMessage()
-	{
-		return EAM.text("Error creating folder: ");
-	}
 }

@@ -132,7 +132,5 @@ abstract class ProjectListAction extends AbstractAction
 	
 	abstract protected void doWork() throws Exception;
 	
-	abstract protected String getErrorMessage();
-	
 	private ProjectListTreeTable table;
 }

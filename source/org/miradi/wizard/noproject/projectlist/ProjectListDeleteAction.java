@@ -64,12 +64,6 @@ class ProjectListDeleteAction extends ProjectListAction
 			DeleteOldProject.doIt(EAM.getMainWindow(), fileOrDirectoryToDelete);
 	}
 	
-	@Override
-	protected String getErrorMessage()
-	{
-		return EAM.text("Error deleting project: ");
-	}
-
 	private static String getButtonLabel()
 	{
 		return EAM.text("Delete");
