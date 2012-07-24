@@ -257,13 +257,13 @@ public class TestProject extends MiradiTestCase
 	
 	public void testMakeProjectFilenameLegal() throws Exception
 	{
-		assertEquals("didn't fix empty?", "-", Project.makeProjectFilenameLegal(""));
+		assertEquals("didn't fix empty?", "-", Project.makeProjectNameLegal(""));
 		String longest = "12345678901234567890123456789012";
-		assertEquals("didn't fix long?", longest, Project.makeProjectFilenameLegal(longest + longest));
+		assertEquals("didn't fix long?", longest, Project.makeProjectNameLegal(longest + longest));
 		String allGood = "abc_123. -";
-		assertEquals("Ruined a good name?", allGood, Project.makeProjectFilenameLegal(allGood));
+		assertEquals("Ruined a good name?", allGood, Project.makeProjectNameLegal(allGood));
 		String bad = "`~!@#$%^&*()=+[]\\{}|;':\',<>/?. -";
-		assertEquals("Didn't fix bad?", "-----------------------------. -", Project.makeProjectFilenameLegal(bad));
+		assertEquals("Didn't fix bad?", "-----------------------------. -", Project.makeProjectNameLegal(bad));
 	}
 	
 	public void testGetAllSelectedCellsWithLinkages() throws Exception

@@ -994,10 +994,10 @@ public class Project
 	
 	static public boolean isValidProjectFilename(String candidate)
 	{
-		return candidate.equals(makeProjectFilenameLegal(candidate));
+		return candidate.equals(makeProjectNameLegal(candidate));
 	}
 	
-	static public String makeProjectFilenameLegal(String candidate)
+	static public String makeProjectNameLegal(String candidate)
 	{
 		if(candidate.length() < 1)
 			return Character.toString(EAM.DASH);

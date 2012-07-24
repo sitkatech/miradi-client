@@ -110,7 +110,7 @@ public class RenameOldProjectDoer
 	
 	private static String askUserForProjectName(MainWindow mainWindow, String projectName) throws Exception
 	{
-		String legalProjectName = Project.makeProjectFilenameLegal(projectName);
+		String legalProjectName = Project.makeProjectNameLegal(projectName);
 		return ModalRenameDialog.showDialog(mainWindow, RenameOldProjectDoer.RENAME_TEXT, legalProjectName);
 	}
 
