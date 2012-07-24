@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-24 09:34-0500\n"
+"POT-Creation-Date: 2012-07-24 10:31-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -5206,10 +5206,6 @@ msgstr ""
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListMoveToDirectoryAction.java:32
 msgid "Move To..."
 msgstr "Sposta in..."
-
-#: Miradi/source/org/miradi/project/OldProjectDirToMpfConverter.java:42
-msgid "Mpz to Mpf data conversion failed"
-msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:226
 msgid "Must be a positive number"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-24 09:34-0500\n"
+"POT-Creation-Date: 2012-07-24 10:31-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -5294,10 +5294,6 @@ msgstr "Mehr Vorschläge"
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListMoveToDirectoryAction.java:32
 msgid "Move To..."
 msgstr "Verschieben..."
-
-#: Miradi/source/org/miradi/project/OldProjectDirToMpfConverter.java:42
-msgid "Mpz to Mpf data conversion failed"
-msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:226
 #, fuzzy
