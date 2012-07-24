@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-24 10:31-0500\n"
+"POT-Creation-Date: 2012-07-24 10:52-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -2993,7 +2993,7 @@ msgstr "Definisikan cakupan proyek "
 #: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:46
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:65
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:75
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:69
 #: Miradi/source/org/miradi/main/MiradiStrings.java:69
 msgid "Delete"
 msgstr "Hapus "
@@ -3363,18 +3363,6 @@ msgstr "Terjadi Kesalahan, harap simpan dengan nama lain. "
 msgid "Error Retrieving Data"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:42
-msgid "Error copying project: "
-msgstr "Kesalahan menyalin proyek: \t\t"
-
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListCreateDirectoryAction.java:70
-msgid "Error creating folder: "
-msgstr "Kesalahan dalam membuat folder: "
-
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:70
-msgid "Error deleting project: "
-msgstr "Kesalahan menghapus proyek: "
-
 #: Miradi/source/org/miradi/views/umbrella/RedoDoer.java:55
 msgid "Error during redo"
 msgstr "Kesalahan selama pengulangan "
@@ -3382,10 +3370,6 @@ msgstr "Kesalahan selama pengulangan "
 #: Miradi/source/org/miradi/views/umbrella/UndoDoer.java:58
 msgid "Error during undo"
 msgstr "Kesalahan selama pembatalan "
-
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListMoveToDirectoryAction.java:73
-msgid "Error moving project: "
-msgstr "Kesalahan dalam memindahkan proyek: "
 
 #: Miradi/source/org/miradi/dialogs/base/DataLocationChooserPanel.java:102
 msgid "Error occured while saving data location"
@@ -3413,17 +3397,9 @@ msgid "Error occurred while trying to export to a tab delimited file."
 msgstr ""
 "Terjadi kesalahan saat mencoba mengekspor ke berkas yang dibatasi tab. "
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:41
-msgid "Error opening project: "
-msgstr "Kesalahan dalam membuka proyek: "
-
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:206
 msgid "Error reading %s. Perhaps it is not a valid zip file."
 msgstr ""
-
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:63
-msgid "Error renaming project: "
-msgstr "Kesalahan mengganti nama proyek: "
 
 #: Miradi/source/org/miradi/dialogs/treetables/TreeTablePanel.java:127
 msgid "Error restoring tree state"
@@ -5304,7 +5280,7 @@ msgstr ""
 msgid "Onsite Research"
 msgstr "Penelitian di Lokasi"
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:46
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:40
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:92
 msgid "Open"
 msgstr "Buka \t"
@@ -5789,7 +5765,7 @@ msgstr "Menghilangkan Anggota Tim "
 msgid "Rename Failed"
 msgstr "Mengganti Nama Tidak Berhasil "
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:68
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:62
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:94
 msgid "Rename..."
 msgstr "Ganti nama… "
@@ -5935,7 +5911,7 @@ msgstr "Savana – Savana Basah"
 
 #: Miradi/source/org/miradi/views/noproject/CopyProject.java:42
 #: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:45
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:47
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:41
 msgid "Save As..."
 msgstr "Simpan Sebagai... "
 
@@ -32261,6 +32237,24 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Error copying project: "
+#~ msgstr "Kesalahan menyalin proyek: \t\t"
+
+#~ msgid "Error creating folder: "
+#~ msgstr "Kesalahan dalam membuat folder: "
+
+#~ msgid "Error deleting project: "
+#~ msgstr "Kesalahan menghapus proyek: "
+
+#~ msgid "Error moving project: "
+#~ msgstr "Kesalahan dalam memindahkan proyek: "
+
+#~ msgid "Error opening project: "
+#~ msgstr "Kesalahan dalam membuka proyek: "
+
+#~ msgid "Error renaming project: "
+#~ msgstr "Kesalahan mengganti nama proyek: "
 
 #~ msgid "<html>Select which column groups to display."
 #~ msgstr "<html>Pilih grup kolom mana yang akan ditampilkan. "
