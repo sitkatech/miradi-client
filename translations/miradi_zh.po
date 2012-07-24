@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-24 11:25-0500\n"
+"POT-Creation-Date: 2012-07-24 14:55-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -881,7 +881,7 @@ msgid "A file or folder with that name already exists"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:48
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:86
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:87
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:55
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:86
 msgid "A project or file by this name already exists: "
@@ -3252,7 +3252,7 @@ msgstr ""
 msgid "Enter As: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:117
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:118
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:117
 msgid "Enter New Name"
 msgstr ""
@@ -4106,7 +4106,7 @@ msgstr "引入的植被"
 msgid "Introduction"
 msgstr "绪论 \t\t"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:92
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:93
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:92
 msgid "Invalid project name:"
 msgstr "无效的项目名称： \t\t"
@@ -8370,7 +8370,7 @@ msgstr "[未指定的] \t\t"
 msgid "[New Results Chain]"
 msgstr "[新结果链] \t\t"
 
-#: Miradi/source/org/miradi/project/Project.java:958
+#: Miradi/source/org/miradi/project/Project.java:959
 msgid "[No Project]"
 msgstr "[无项目] \t\t"
 

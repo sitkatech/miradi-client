@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-24 11:25-0500\n"
+"POT-Creation-Date: 2012-07-24 14:55-0500\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -1005,7 +1005,7 @@ msgid "A file or folder with that name already exists"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:48
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:86
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:87
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:55
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:86
 msgid "A project or file by this name already exists: "
@@ -3428,7 +3428,7 @@ msgstr "Terminer :"
 msgid "Enter As: "
 msgstr "Entrer sous :"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:117
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:118
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:117
 msgid "Enter New Name"
 msgstr "Entrer Nouveau nom"
@@ -4316,7 +4316,7 @@ msgstr "Végétation introduite"
 msgid "Introduction"
 msgstr "Introduction"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:92
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:93
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:92
 msgid "Invalid project name:"
 msgstr "Nom projet non valide :"
@@ -8804,7 +8804,7 @@ msgstr "[NON SPÉCIFIÉ]"
 msgid "[New Results Chain]"
 msgstr "[Nouvelle chaîne de résultats]"
 
-#: Miradi/source/org/miradi/project/Project.java:958
+#: Miradi/source/org/miradi/project/Project.java:959
 msgid "[No Project]"
 msgstr "[Aucun projet]"
 
