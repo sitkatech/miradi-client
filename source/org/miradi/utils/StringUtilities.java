@@ -70,7 +70,7 @@ public class StringUtilities
 		return actualMpf.getBytes("UTF-8");
 	}
 	
-	static String subStringBeforeLastDot(String name)
+	public static String subStringBeforeLastDot(String name)
 	{
 		String fileName = new File(name).getName();
 		int lastDotAt = fileName.lastIndexOf('.');
