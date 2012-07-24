@@ -258,7 +258,7 @@ public class TestProject extends MiradiTestCase
 	public void testMakeProjectFilenameLegal() throws Exception
 	{
 		assertEquals("didn't fix empty?", "-", Project.makeProjectNameLegal(""));
-		String longest = "12345678901234567890123456789012";
+		String longest = "123456789012345678901234567890123";
 		assertEquals("didn't fix long?", longest, Project.makeProjectNameLegal(longest + longest));
 		String allGood = "abc_123. -";
 		assertEquals("Ruined a good name?", allGood, Project.makeProjectNameLegal(allGood));
