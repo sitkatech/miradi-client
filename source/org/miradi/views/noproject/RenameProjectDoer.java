@@ -61,11 +61,11 @@ public class RenameProjectDoer
 	
 	private static String getLegalProjectNameFromUser(MainWindow mainWindow, File projectFile) throws Exception
 	{
-		return getLegalProjectNameFromUser(mainWindow, projectFile.getName());
+		return getLegalProjectFileNameFromUser(mainWindow, projectFile.getName());
 	}
 
 	//FIXME urgent - this method is incorrectly named,  it should either return project name, or be renamed to getLegalProjectFileNameFromUser 
-	public static String getLegalProjectNameFromUser(MainWindow mainWindow, final String projectFileNameToUse) throws Exception
+	public static String getLegalProjectFileNameFromUser(MainWindow mainWindow, final String projectFileNameToUse) throws Exception
 	{
 		String projectName = projectFileNameToUse;
 		while (true)
