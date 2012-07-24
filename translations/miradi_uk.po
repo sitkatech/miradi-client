@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-24 10:52-0500\n"
+"POT-Creation-Date: 2012-07-24 11:25-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -982,7 +982,7 @@ msgstr ""
 "існуючий дублікат новою копією. Таким чином він можливо буде збережений, "
 "якщо попередня спроба переходу зазнала невдачі.   "
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:157
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:156
 msgid "A file or folder with that name already exists"
 msgstr ""
 
@@ -2864,7 +2864,7 @@ msgstr ""
 msgid "Create"
 msgstr "Створити"
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:172
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:171
 msgid "Create Failed:"
 msgstr "Створити не вдалося:"
 
