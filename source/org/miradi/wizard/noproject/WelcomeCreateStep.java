@@ -149,8 +149,7 @@ public class WelcomeCreateStep extends NoProjectWizardStep
 			return;
 		try 
 		{
-			if(!newProjectFileName.endsWith(MpfFileFilter.EXTENSION))
-				newProjectFileName = newProjectFileName + MpfFileFilter.EXTENSION;
+			newProjectFileName = newProjectFileName + MpfFileFilter.EXTENSION;
 			File projectFile = new File(EAM.getHomeDirectory(), newProjectFileName);
 			if(projectFile.exists())
 			{
