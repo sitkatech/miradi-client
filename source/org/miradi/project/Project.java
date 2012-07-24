@@ -134,6 +134,7 @@ import org.miradi.schemas.WwfProjectDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.FileUtilities;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.MpfFileFilter;
 import org.miradi.utils.ProgressInterface;
@@ -993,6 +994,12 @@ public class Project
 	}
 	
 	public static boolean isValidProjectFilename(String candidate)
+	{
+		String projectName = FileUtilities.getFileNameWithoutExtension(candidate); 
+		return isValidProjectName(projectName);
+	}
+	
+	public static boolean isValidProjectName(String candidate)
 	{
 		return candidate.equals(makeProjectNameLegal(candidate));
 	}
