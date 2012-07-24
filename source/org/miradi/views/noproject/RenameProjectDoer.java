@@ -38,7 +38,7 @@ public class RenameProjectDoer
 	{
 		try
 		{
-			String newDirectoryName = getLegalProjectNameFromUser(mainWindow, projectFileToRename);
+			String newDirectoryName = getLegalProjectFileNameFromUser(mainWindow, projectFileToRename.getName());
 			if (newDirectoryName == null)
 				return;
 
@@ -59,11 +59,6 @@ public class RenameProjectDoer
 		}
 	}
 	
-	private static String getLegalProjectNameFromUser(MainWindow mainWindow, File projectFile) throws Exception
-	{
-		return getLegalProjectFileNameFromUser(mainWindow, projectFile.getName());
-	}
-
 	//FIXME urgent - this method is incorrectly named,  it should either return project name, or be renamed to getLegalProjectFileNameFromUser 
 	public static String getLegalProjectFileNameFromUser(MainWindow mainWindow, final String projectFileNameToUse) throws Exception
 	{
