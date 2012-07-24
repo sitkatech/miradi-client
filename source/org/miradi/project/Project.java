@@ -997,16 +997,16 @@ public class Project
 		return candidate.equals(makeProjectNameLegal(candidate));
 	}
 	
-	static public String makeProjectNameLegal(String candidate)
+	static public String makeProjectNameLegal(String projectName)
 	{
-		if(candidate.length() < 1)
+		if(projectName.length() < 1)
 			return Character.toString(EAM.DASH);
 		
-		if(candidate.length() > getMaximumProjectNameLength())
-			candidate = candidate.substring(0, getMaximumProjectNameLength());
+		if(projectName.length() > getMaximumProjectNameLength())
+			projectName = projectName.substring(0, getMaximumProjectNameLength());
 		
-		char[] asArray = candidate.toCharArray();
-		for(int i = 0; i < candidate.length(); ++i)
+		char[] asArray = projectName.toCharArray();
+		for(int i = 0; i < projectName.length(); ++i)
 		{
 			char c = asArray[i];
 			if (EAM.isValidProjectNameCharacter(c))
