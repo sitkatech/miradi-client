@@ -32,7 +32,21 @@ public class TestFileUtilities extends MiradiTestCase
 	{
 		super(name);
 	}
+
+	public void testGetFileNameWithoutExtension()
+	{
+		verifyFileExtensionRemoval("marineExample", "marineExample");
+		verifyFileExtensionRemoval("marineExample.Miradi", "marineExample");
+		verifyFileExtensionRemoval("marineExample.Miradi.Miradi", "marineExample.Miradi");
+		verifyFileExtensionRemoval("marineExample.1.2.Miradi", "marineExample.1.2");
+		verifyFileExtensionRemoval("marineExample.1.2", "marineExample.1");
+	}
 	
+	private void verifyFileExtensionRemoval(String actualValue, String expectedValue)
+	{
+		assertEquals("Incorrect file extension chunk removed?", expectedValue, FileUtilities.getFileNameWithoutExtension(actualValue));
+	}
+
 	public void testCompareDirectoriesBasedOnFileNames() throws Exception
 	{
 		File tempDir1 = createTempParentChildrenDir("temp1");
