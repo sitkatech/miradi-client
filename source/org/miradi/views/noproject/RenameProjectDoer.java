@@ -59,19 +59,19 @@ public class RenameProjectDoer
 		}
 	}
 	
-	public static String getLegalProjectFileNameFromUser(MainWindow mainWindow, final File proposedProjectFile) throws Exception
+	public static String getLegalProjectFileNameFromUser(MainWindow mainWindow, File proposedProjectFile) throws Exception
 	{
-		String projectName = proposedProjectFile.getName();
 		while (true)
 		{
-			projectName = askUserForProjectName(mainWindow, FileUtilities.withoutProjectSuffix(projectName));
+			String projectName = askUserForProjectName(mainWindow, FileUtilities.withoutProjectSuffix(proposedProjectFile.getName()));
 			if (projectName == null)
 			{
 				return null;
 			}
 
 			String projectFileName =  projectName + MpfFileFilter.EXTENSION;
-			if (projectExists(new File(EAM.getHomeDirectory(), projectFileName)))
+			proposedProjectFile = new File(EAM.getHomeDirectory(), projectFileName);
+			if (projectExists(proposedProjectFile))
 			{
 				EAM.errorDialog(EAM.substitute(EAM.text("A project or file by this name already exists: %s"), projectFileName));
 				continue;
