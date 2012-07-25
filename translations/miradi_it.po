@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-25 13:16-0500\n"
+"POT-Creation-Date: 2012-07-25 13:53-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -1016,13 +1016,13 @@ msgstr ""
 msgid "A file or folder with that name already exists"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:48
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:47
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:57
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:88
 msgid "A project or file by this name already exists: "
 msgstr "Esiste un progetto o un file con lo stesso nome:"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:76
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:75
 msgid "A project or file by this name already exists: %s"
 msgstr ""
 
@@ -3447,7 +3447,7 @@ msgstr "Fine:"
 msgid "Enter As: "
 msgstr "Inserisci come:"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:107
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:106
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:119
 msgid "Enter New Name"
 msgstr "Inserisci nuovo nome"
@@ -4333,7 +4333,7 @@ msgstr "Introduzione"
 msgid "Invalid project name:"
 msgstr "Nome di progetto non valido:"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:82
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:81
 msgid "Invalid project name: %s"
 msgstr ""
 
@@ -5892,7 +5892,7 @@ msgstr "Strategie e attività rilevanti"
 msgid "Remove Team Member"
 msgstr "Rimuovi un membro dal team"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:58
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:57
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:67
 msgid "Rename Failed"
 msgstr "Rinomina fallita"

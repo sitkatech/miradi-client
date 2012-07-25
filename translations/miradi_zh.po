@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-25 13:16-0500\n"
+"POT-Creation-Date: 2012-07-25 13:53-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -880,13 +880,13 @@ msgstr ""
 msgid "A file or folder with that name already exists"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:48
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:47
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:57
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:88
 msgid "A project or file by this name already exists: "
 msgstr "使用该名称的项目或文件已存在: \t\t"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:76
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:75
 msgid "A project or file by this name already exists: %s"
 msgstr ""
 
@@ -3255,7 +3255,7 @@ msgstr ""
 msgid "Enter As: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:107
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:106
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:119
 msgid "Enter New Name"
 msgstr ""
@@ -4113,7 +4113,7 @@ msgstr "绪论 \t\t"
 msgid "Invalid project name:"
 msgstr "无效的项目名称： \t\t"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:82
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:81
 msgid "Invalid project name: %s"
 msgstr ""
 
@@ -5625,7 +5625,7 @@ msgstr "相关策略和活动"
 msgid "Remove Team Member"
 msgstr "去除团队成员 \t\t"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:58
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:57
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:67
 msgid "Rename Failed"
 msgstr ""
