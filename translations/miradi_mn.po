@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-24 16:11-0500\n"
+"POT-Creation-Date: 2012-07-25 13:16-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -44,7 +44,7 @@ msgstr ""
 msgid " 2) Connect threat to relevant targets"
 msgstr "Аюул заналыг хамаарал бүхий хамгаалах объекттэй холбож өгөх."
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractZippedXmlImporter.java:48
+#: Miradi/source/org/miradi/views/umbrella/AbstractZippedXmlImporter.java:46
 msgid " was empty"
 msgstr "хоосон байсан"
 
@@ -902,7 +902,7 @@ msgstr ""
 "харьцаагаар хэмжигддэг. Төрөл зүйлийн хувьд бол хамгаалах объектын тоо "
 "толгойн харьцаагаар хэмжигдэнэ. </html>"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:186
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:207
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Import амжилтгүй болсон: <br><p> %s </p></html>"
 
@@ -4080,11 +4080,11 @@ msgstr "Тооцооны код импорт хийх"
 msgid "Import Completed"
 msgstr "Импорт хийх бүрэн дууссан"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:165
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:186
 msgid "Import Completed.  Would you like to open %s?"
 msgstr "импорт хийх бүрэн дууссан. Нээж харах уу%?"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:60
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:62
 msgid "Import Project"
 msgstr "Төсөлд импорт хийх"
 
@@ -4096,7 +4096,7 @@ msgstr ""
 msgid "Import a Miradi Project Zipfile (.mpz)"
 msgstr "Миради төслийн Zipfile (.mpz)-д импорт хийх"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:77
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:81
 msgid "Import was canceled!"
 msgstr ""
 
@@ -4108,7 +4108,7 @@ msgstr "Импорт хийх..."
 msgid "Importing ConPro Data..."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/MpzProjectImporter.java:50
+#: Miradi/source/org/miradi/views/umbrella/MpzProjectImporter.java:49
 msgid "Importing MPZ"
 msgstr ""
 
@@ -4121,7 +4121,7 @@ msgstr ""
 msgid "Importing XML..."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:122
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:143
 msgid "Importing..."
 msgstr ""
 
@@ -5358,7 +5358,7 @@ msgstr "Нээх"
 msgid "Open Anyway"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:166
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:187
 #: Miradi/source/org/miradi/main/MainWindow.java:616
 msgid "Open Project"
 msgstr "Төслийг Нээх"
@@ -7722,7 +7722,7 @@ msgid ""
 "the data in different formats."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:229
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:250
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -7752,7 +7752,7 @@ msgstr ""
 msgid "This person is a coach within the Conservation Coaches Network"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:87
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:91
 msgid ""
 "This project cannot be imported by this version of Miradi because it \n"
 "is in a newer data format. Please upgrade to the latest version of Miradi."
@@ -8222,7 +8222,7 @@ msgstr "Тогтоогдоогүй"
 msgid "Underline"
 msgstr "Доогуур зурах/тодруулах"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:185
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:206
 msgid "Unexpected error"
 msgstr ""
 
@@ -8632,7 +8632,7 @@ msgid ""
 "time, financial, staffing, ethical, and other constraints?"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/MpzProjectImporter.java:87
+#: Miradi/source/org/miradi/views/umbrella/MpzProjectImporter.java:86
 msgid "Writing..."
 msgstr ""
 
