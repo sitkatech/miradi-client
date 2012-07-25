@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-25 13:16-0500\n"
+"POT-Creation-Date: 2012-07-25 13:53-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -918,13 +918,13 @@ msgstr ""
 msgid "A file or folder with that name already exists"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:48
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:47
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:57
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:88
 msgid "A project or file by this name already exists: "
 msgstr "Sudah ada proyek atau berkas lain yang memakai nama ini: "
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:76
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:75
 msgid "A project or file by this name already exists: %s"
 msgstr ""
 
@@ -3333,7 +3333,7 @@ msgstr ""
 msgid "Enter As: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:107
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:106
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:119
 msgid "Enter New Name"
 msgstr "Masukkan Nama Baru "
@@ -4216,7 +4216,7 @@ msgstr "Pendahuluan "
 msgid "Invalid project name:"
 msgstr "Nama proyek tidak valid: "
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:82
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:81
 msgid "Invalid project name: %s"
 msgstr ""
 
@@ -5766,7 +5766,7 @@ msgstr "Strategi dan Aktivitas yang Relevan"
 msgid "Remove Team Member"
 msgstr "Menghilangkan Anggota Tim "
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:58
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:57
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:67
 msgid "Rename Failed"
 msgstr "Mengganti Nama Tidak Berhasil "

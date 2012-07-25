@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-25 13:16-0500\n"
+"POT-Creation-Date: 2012-07-25 13:53-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -986,13 +986,13 @@ msgstr ""
 msgid "A file or folder with that name already exists"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:48
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:47
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:57
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:88
 msgid "A project or file by this name already exists: "
 msgstr "Проект або файл під цим іменем уже існує:"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:76
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:75
 msgid "A project or file by this name already exists: %s"
 msgstr ""
 
@@ -3394,7 +3394,7 @@ msgstr ""
 msgid "Enter As: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:107
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:106
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:119
 msgid "Enter New Name"
 msgstr "Уведіть нову назву"
@@ -4259,7 +4259,7 @@ msgstr "Вступ"
 msgid "Invalid project name:"
 msgstr "Не дійсна назва проекту:"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:82
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:81
 msgid "Invalid project name: %s"
 msgstr ""
 
@@ -5807,7 +5807,7 @@ msgstr "Відповідні Стратегії та Дії"
 msgid "Remove Team Member"
 msgstr "Видалити виконавця"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:58
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:57
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:67
 msgid "Rename Failed"
 msgstr "Не вдалося перейменувати "
