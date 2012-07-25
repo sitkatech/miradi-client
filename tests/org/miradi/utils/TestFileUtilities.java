@@ -25,6 +25,7 @@ import java.io.IOException;
 
 import org.martus.util.DirectoryUtils;
 import org.miradi.main.MiradiTestCase;
+import org.miradi.project.Project;
 
 public class TestFileUtilities extends MiradiTestCase
 {
@@ -51,7 +52,7 @@ public class TestFileUtilities extends MiradiTestCase
 	
 	private void verifyFileExtensionRemoval(String actualValue, String expectedValue) throws Exception
 	{
-		assertEquals("Incorrect file extension chunk removed?", expectedValue, FileUtilities.withoutProjectSuffix(actualValue));
+		assertEquals("Incorrect file extension chunk removed?", expectedValue, Project.withoutProjectSuffix(actualValue));
 	}
 
 	public void testCompareDirectoriesBasedOnFileNames() throws Exception

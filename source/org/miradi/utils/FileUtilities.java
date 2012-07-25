@@ -153,9 +153,4 @@ public class FileUtilities
 		
 		return true;
 	}
-
-	public static String withoutProjectSuffix(String name) throws Exception
-	{
-		return StringUtilities.stripTrailingString(name, MpfFileFilter.EXTENSION);
-	}
 }

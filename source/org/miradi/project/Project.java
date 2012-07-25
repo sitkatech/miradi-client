@@ -134,10 +134,10 @@ import org.miradi.schemas.WwfProjectDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.utils.FileUtilities;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.MpfFileFilter;
 import org.miradi.utils.ProgressInterface;
+import org.miradi.utils.StringUtilities;
 import org.miradi.utils.Translation;
 import org.miradi.views.diagram.DiagramClipboard;
 import org.miradi.views.diagram.DiagramPageList;
@@ -995,7 +995,7 @@ public class Project
 	
 	public static boolean isValidProjectFilename(String projectFileName) throws Exception
 	{
-		String projectName = FileUtilities.withoutProjectSuffix(projectFileName); 
+		String projectName = Project.withoutProjectSuffix(projectFileName); 
 		return isValidProjectName(projectName);
 	}
 	
@@ -1374,6 +1374,11 @@ public class Project
 		throw new RuntimeException("setLocalDataLocation not yet supported!");
 	}
 	
+	public static String withoutProjectSuffix(String name) throws Exception
+	{
+		return StringUtilities.stripTrailingString(name, MpfFileFilter.EXTENSION);
+	}
+
 	public static int getMaximumProjectNameLength()
 	{
 		return MAX_PROJECT_FILENAME_LENGTH - MpfFileFilter.EXTENSION.length();
