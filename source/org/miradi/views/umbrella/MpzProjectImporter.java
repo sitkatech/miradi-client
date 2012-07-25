@@ -23,14 +23,13 @@ package org.miradi.views.umbrella;
 import java.io.File;
 import java.util.zip.ZipFile;
 
-import javax.swing.filechooser.FileFilter;
-
 import org.martus.util.UnicodeWriter;
 import org.miradi.dialogs.base.ProgressDialog;
 import org.miradi.exceptions.UserCanceledException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.MpzToMpfConverter;
+import org.miradi.utils.GenericMiradiFileFilter;
 import org.miradi.utils.MiradiBackgroundWorkerThread;
 import org.miradi.utils.MpzFileFilterForChooserDialog;
 import org.miradi.utils.ProgressInterface;
@@ -101,9 +100,9 @@ public class MpzProjectImporter extends AbstractProjectImporter
 	}
 
 	@Override
-	protected FileFilter[] getFileFilters()
+	protected GenericMiradiFileFilter[] getFileFilters()
 	{
-		return new FileFilter[] {new ZipFileFilterForChooserDialog(), new MpzFileFilterForChooserDialog()};
+		return new GenericMiradiFileFilter[] {new ZipFileFilterForChooserDialog(), new MpzFileFilterForChooserDialog()};
 	}
 
 }

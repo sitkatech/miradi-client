@@ -39,8 +39,10 @@ import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
+import org.miradi.utils.GenericMiradiFileFilter;
 import org.miradi.utils.MiradiBackgroundWorkerThread;
 import org.miradi.utils.MiradiFileSaveChooser;
+import org.miradi.utils.MpfFileFilter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.views.noproject.NoProjectView;
 import org.miradi.views.noproject.RenameProjectDoer;
@@ -68,7 +70,9 @@ public abstract class AbstractProjectImporter
 			File fileToImport = fileChooser.getSelectedFile();
 			fileToImport = MiradiFileSaveChooser.getFileWithExtension(fileChooser, fileToImport);
 			
-			File importedFile = importProject(fileToImport);
+			final String fileNameWithoutExtension = getNameWithoutExtension(fileToImport);
+			final File proposedMpfProjectFile = new File(fileNameWithoutExtension + MpfFileFilter.EXTENSION);
+			File importedFile = importProject(fileToImport, proposedMpfProjectFile);
 			if (importedFile != null)
 				userConfirmOpenImportedProject(importedFile);
 		}
@@ -106,6 +110,23 @@ public abstract class AbstractProjectImporter
 				message = "";
 			showImportFailedErrorDialog(message);
 		}
+	}
+
+	private String getNameWithoutExtension(File fileToImport)
+	{
+		GenericMiradiFileFilter[] fileFilters = getFileFilters();
+		final String fileName = fileToImport.getName();
+		for (int index = 0; index < fileFilters.length; ++index)
+		{
+			final String fileExtension = fileFilters[index].getFileExtension();
+			if (fileName.endsWith(fileExtension))
+			{
+				final int indexOfExtension = fileName.lastIndexOf(fileExtension);
+				return fileName.substring(0, indexOfExtension);
+			}
+		}
+		
+		return fileName;
 	}
 
 	public File importProject(File fileToImport) throws Exception
@@ -233,7 +254,7 @@ public abstract class AbstractProjectImporter
 	
 	protected abstract void createProject(File importFile, File homeDirectory, File newProjectFile, ProgressInterface progressIndicator)  throws Exception;
 	
-	protected abstract FileFilter[] getFileFilters();
+	protected abstract GenericMiradiFileFilter[] getFileFilters();
 	
 	private MainWindow mainWindow;
 }
