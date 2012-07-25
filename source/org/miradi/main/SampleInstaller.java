@@ -58,7 +58,7 @@ public class SampleInstaller
 			File projectFileToImport = installableSampleProjects.get(index);
 			String validatedName = getValidatedProjectNameWithoutExtension(projectFileToImport);
 			
-			File destination = new File(homeDir, validatedName + MpfFileFilter.EXTENSION);
+			File destination = new File(homeDir, MpfFileFilter.createNameWithExtension(validatedName));
 			if(destination.exists())
 				return;
 			
@@ -89,7 +89,7 @@ public class SampleInstaller
 		{
 			File mpfFile = allMpfFiles[index];
 			String validatedName = getValidatedProjectNameWithoutExtension(mpfFile);
-			File newProjectFile = new File(homeDir, validatedName + MpfFileFilter.EXTENSION);
+			File newProjectFile = new File(homeDir, MpfFileFilter.createNameWithExtension(validatedName));
 			if (FileSystemTreeNode.isProjectFile(newProjectFile) && !newProjectFile.exists())
 				installableSampleProjects.add(mpfFile);
 		}

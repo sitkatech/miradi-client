@@ -42,6 +42,11 @@ public class MpfFileFilter extends GenericMiradiFileFilter
 	{
 		return EXTENSION;
 	}
+	
+	public static String createNameWithExtension(String name)
+	{
+		return name + EXTENSION;
+	}
 
 	public static final String EXTENSION = ".Miradi";
 }

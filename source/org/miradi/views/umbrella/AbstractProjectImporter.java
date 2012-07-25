@@ -71,7 +71,7 @@ public abstract class AbstractProjectImporter
 			fileToImport = MiradiFileSaveChooser.getFileWithExtension(fileChooser, fileToImport);
 			
 			final String fileNameWithoutExtension = getNameWithoutExtension(fileToImport);
-			final File proposedMpfProjectFile = new File(fileNameWithoutExtension + MpfFileFilter.EXTENSION);
+			final File proposedMpfProjectFile = new File(MpfFileFilter.createNameWithExtension(fileNameWithoutExtension));
 			File importedFile = importProject(fileToImport, proposedMpfProjectFile);
 			if (importedFile != null)
 				userConfirmOpenImportedProject(importedFile);
