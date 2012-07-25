@@ -247,12 +247,12 @@ public class TestProject extends MiradiTestCase
 
 	public void testIsValidProjectFilename() throws Exception
 	{
-		assertTrue("AlphaNumericDotDashSpace", Project.isValidProjectFilename("AZaz09_"));
-		assertFalse("allowed really long name?", Project.isValidProjectFilename("1234567890123456789012345678901234567890"));
-		assertFalse("Other Punct", Project.isValidProjectFilename("$"));
+		assertTrue("AlphaNumericDotDashSpace", Project.isValidProjectFilename("AZaz09_.Miradi"));
+		assertFalse("allowed really long name?", Project.isValidProjectFilename("1234567890123456789012345678901234567890.Miradi"));
+		assertFalse("Other Punct", Project.isValidProjectFilename("$.Miradi"));
 		final char ACCENT_A_LOWER = 0xE1;
-		assertTrue("Foreign", Project.isValidProjectFilename(new String(new char[] {ACCENT_A_LOWER})));
-		assertFalse("Empty", Project.isValidProjectFilename(""));
+		assertTrue("Foreign", Project.isValidProjectFilename(new String(new char[] {ACCENT_A_LOWER}) + ".Miradi"));
+		assertFalse("Empty", Project.isValidProjectFilename(".Miradi"));
 	}
 	
 	public void testMakeProjectFilenameLegal() throws Exception
