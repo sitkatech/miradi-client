@@ -23,8 +23,6 @@ package org.miradi.views.umbrella;
 import java.io.File;
 import java.util.zip.ZipFile;
 
-import javax.swing.filechooser.FileFilter;
-
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -67,9 +65,9 @@ abstract public class AbstractZippedXmlImporter extends AbstractProjectImporter
 	}
 	
 	@Override
-	public FileFilter[] getFileFilters()
+	public GenericMiradiFileFilter[] getFileFilters()
 	{
-		return new FileFilter[] {createFileFilter()};
+		return new GenericMiradiFileFilter[] {createFileFilter()};
 	}
 
 	abstract protected GenericMiradiFileFilter createFileFilter();
