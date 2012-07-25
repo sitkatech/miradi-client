@@ -214,7 +214,7 @@ public class ExportCpmzDoer extends XmlExporterDoer
 	}
 
 	public static final String PROJECT_ZIP_FILE_NAME = "project" + MpzFileFilterForChooserDialog.EXTENSION;
-	public static final String PROJECT_MPF_NAME = "project" + MpfFileFilter.EXTENSION;
+	public static final String PROJECT_MPF_NAME = MpfFileFilter.createNameWithExtension("project");
 	
 	private static final String VERSION_ENTRY_PATH = "project/json/version";
 	private static final String FUTURE_VERSION = "{\"Version\":99999}";

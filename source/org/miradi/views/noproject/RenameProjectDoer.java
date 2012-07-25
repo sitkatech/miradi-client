@@ -68,7 +68,7 @@ public class RenameProjectDoer
 				return null;
 			}
 
-			String projectFileName =  projectName + MpfFileFilter.EXTENSION;
+			String projectFileName =  MpfFileFilter.createNameWithExtension(projectName);
 			proposedProjectFile = new File(EAM.getHomeDirectory(), projectFileName);
 			if (projectExists(proposedProjectFile))
 			{

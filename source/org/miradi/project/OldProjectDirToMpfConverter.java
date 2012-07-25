@@ -45,7 +45,7 @@ public class OldProjectDirToMpfConverter
 			throw new Exception("Mpz to Mpf data conversion failed");
 		
 		MpzProjectImporter importer = new MpzProjectImporter(mainWindow);
-		File proposedProjectFile = new File(oldProjectDirectory.getName() + MpfFileFilter.EXTENSION);
+		File proposedProjectFile = new File(MpfFileFilter.createNameWithExtension(oldProjectDirectory.getName()));
 		File importedFile = importer.importProject(oldProjectZippedAsBackup, proposedProjectFile);
 		if (importedFile != null)
 			DirectoryUtils.deleteEntireDirectoryTree(oldProjectDirectory);
