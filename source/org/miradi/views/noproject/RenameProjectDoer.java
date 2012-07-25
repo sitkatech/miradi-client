@@ -59,9 +59,9 @@ public class RenameProjectDoer
 		}
 	}
 	
-	public static String getLegalProjectFileNameFromUser(MainWindow mainWindow, final File projectFileNameToUse) throws Exception
+	public static String getLegalProjectFileNameFromUser(MainWindow mainWindow, final File proposedProjectFile) throws Exception
 	{
-		String projectName = projectFileNameToUse.getName();
+		String projectName = proposedProjectFile.getName();
 		while (true)
 		{
 			projectName = askUserForProjectName(mainWindow, FileUtilities.getFileNameBeforeLastDot(projectName));
