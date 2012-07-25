@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
-import java.io.File;
 
 public class StringUtilities
 {
@@ -70,14 +69,13 @@ public class StringUtilities
 		return actualMpf.getBytes("UTF-8");
 	}
 	
-	public static String subStringBeforeLastDot(String name)
+	public static String stripTrailingString(String name, final String suffix) throws Exception
 	{
-		String fileName = new File(name).getName();
-		int lastDotAt = fileName.lastIndexOf('.');
-		if(lastDotAt < 0)
-			return fileName;
+		int lastIndexOfSuffix = name.lastIndexOf(suffix);
+		if(lastIndexOfSuffix < 0)
+			throw new Exception("Suffix " + suffix + " was not found in " + name);
 		
-		return fileName.substring(0, lastDotAt);
+		return name.substring(0, lastIndexOfSuffix);
 	}
 	
 	public static final String EMPTY_SPACE= " ";

@@ -97,10 +97,10 @@ public class SampleInstaller
 		return installableSampleProjects;
 	}
 
-	private String getValidatedProjectNameWithoutExtension(File mpzFile)
+	private String getValidatedProjectNameWithoutExtension(File mpzFile) throws Exception
 	{
 		String projectName = mpzFile.getName();
-		String projectNameWithoutExtension = FileUtilities.getFileNameBeforeLastDot(projectName);
+		String projectNameWithoutExtension = FileUtilities.withoutProjectSuffix(projectName);
 		return Project.makeProjectNameLegal(projectNameWithoutExtension); 
 	}
 

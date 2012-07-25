@@ -64,7 +64,7 @@ public class RenameProjectDoer
 		String projectName = proposedProjectFile.getName();
 		while (true)
 		{
-			projectName = askUserForProjectName(mainWindow, FileUtilities.getFileNameBeforeLastDot(projectName));
+			projectName = askUserForProjectName(mainWindow, FileUtilities.withoutProjectSuffix(projectName));
 			if (projectName == null)
 			{
 				return null;

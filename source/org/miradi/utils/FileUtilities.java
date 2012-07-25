@@ -154,8 +154,8 @@ public class FileUtilities
 		return true;
 	}
 
-	public static String getFileNameBeforeLastDot(String name)
+	public static String withoutProjectSuffix(String name) throws Exception
 	{
-		return StringUtilities.subStringBeforeLastDot(name);
+		return StringUtilities.stripTrailingString(name, MpfFileFilter.EXTENSION);
 	}
 }

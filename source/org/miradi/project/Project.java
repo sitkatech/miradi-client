@@ -993,9 +993,9 @@ public class Project
 		threatStressRatingEnsurer.enable();
 	}
 	
-	public static boolean isValidProjectFilename(String projectFileName)
+	public static boolean isValidProjectFilename(String projectFileName) throws Exception
 	{
-		String projectName = FileUtilities.getFileNameBeforeLastDot(projectFileName); 
+		String projectName = FileUtilities.withoutProjectSuffix(projectFileName); 
 		return isValidProjectName(projectName);
 	}
 	

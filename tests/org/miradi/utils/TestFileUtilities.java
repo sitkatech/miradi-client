@@ -33,18 +33,25 @@ public class TestFileUtilities extends MiradiTestCase
 		super(name);
 	}
 
-	public void testGetFileNameWithoutExtension()
+	public void testWithoutProjectSuffix() throws Exception
 	{
-		verifyFileExtensionRemoval("marineExample", "marineExample");
 		verifyFileExtensionRemoval("marineExample.Miradi", "marineExample");
 		verifyFileExtensionRemoval("marineExample.Miradi.Miradi", "marineExample.Miradi");
 		verifyFileExtensionRemoval("marineExample.1.2.Miradi", "marineExample.1.2");
-		verifyFileExtensionRemoval("marineExample.1.2", "marineExample.1");
+		
+		try
+		{
+			verifyFileExtensionRemoval("marineExample", "marineExample");
+			fail("Project file name should ways have .Miradi extension");
+		}
+		catch (Exception ignoreExpectedException)
+		{
+		}
 	}
 	
-	private void verifyFileExtensionRemoval(String actualValue, String expectedValue)
+	private void verifyFileExtensionRemoval(String actualValue, String expectedValue) throws Exception
 	{
-		assertEquals("Incorrect file extension chunk removed?", expectedValue, FileUtilities.getFileNameBeforeLastDot(actualValue));
+		assertEquals("Incorrect file extension chunk removed?", expectedValue, FileUtilities.withoutProjectSuffix(actualValue));
 	}
 
 	public void testCompareDirectoriesBasedOnFileNames() throws Exception
