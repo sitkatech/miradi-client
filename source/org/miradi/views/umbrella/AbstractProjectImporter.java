@@ -172,7 +172,7 @@ public abstract class AbstractProjectImporter
 		@Override
 		protected void doRealWork() throws Exception
 		{
-			createProject(fileToImport, EAM.getHomeDirectory(), newProjectFile, getProgressIndicator());
+			createProject(fileToImport, newProjectFile, getProgressIndicator());
 			getProgressIndicator().finished();
 		}
 		
@@ -252,7 +252,7 @@ public abstract class AbstractProjectImporter
 			  "running the latest Miradi, either wait for a newer version that supports this format, <br>" +
 			  "or re-export the project to an older (supported) format.");
 	
-	protected abstract void createProject(File importFile, File homeDirectory, File newProjectFile, ProgressInterface progressIndicator)  throws Exception;
+	protected abstract void createProject(File importFile, File newProjectFile, ProgressInterface progressIndicator)  throws Exception;
 	
 	protected abstract GenericMiradiFileFilter[] getFileFilters();
 	

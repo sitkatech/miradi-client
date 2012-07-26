@@ -54,7 +54,7 @@ abstract public class AbstractXmpzProjectImporter extends AbstractZippedXmlImpor
 	}
 	
 	@Override
-	protected void createProject(File importFile, File homeDirectory, File newProjectFile, ProgressInterface progressIndicator) throws Exception
+	protected void createProject(File importFile, File newProjectFile, ProgressInterface progressIndicator) throws Exception
 	{
 		Project project = importProject(importFile, progressIndicator);
 		ProjectSaver.saveProject(project, newProjectFile);
