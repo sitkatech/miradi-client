@@ -368,6 +368,11 @@ public class MpzToMpfConverter extends AbstractConverter
 		
 		ZipEntry entry = enumeration.nextElement();
 		String topLevelDirectoryPath = getNameOfTopLevelDirectory(entry);
+		return ensureEndsWithSlash(topLevelDirectoryPath);
+	}
+
+	private String ensureEndsWithSlash(String topLevelDirectoryPath)
+	{
 		if(!topLevelDirectoryPath.endsWith("/"))
 			topLevelDirectoryPath = topLevelDirectoryPath + "/";
 		
