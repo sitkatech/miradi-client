@@ -373,10 +373,10 @@ public class MpzToMpfConverter extends AbstractConverter
 
 	private String ensureEndsWithSlash(String topLevelDirectoryPath)
 	{
-		if(!topLevelDirectoryPath.endsWith("/"))
-			topLevelDirectoryPath = topLevelDirectoryPath + "/";
+		if(topLevelDirectoryPath.endsWith("/"))
+			return topLevelDirectoryPath;
 		
-		return topLevelDirectoryPath;
+		return topLevelDirectoryPath + "/";
 	}
 
 	private String getNameOfTopLevelDirectory(ZipEntry entry)
