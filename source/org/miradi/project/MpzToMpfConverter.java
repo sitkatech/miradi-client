@@ -482,7 +482,8 @@ public class MpzToMpfConverter extends AbstractConverter
 		String versionEntryPath = getVersionEntryPath();
 		ZipEntry versionEntry = getZipFile().getEntry(versionEntryPath);
 		if(versionEntry == null)
-			throw new RuntimeException("Version not found: " + versionEntryPath);
+			throw new Exception("Version not found: " + versionEntryPath);
+		
 		String versionAsString = readIntoString(versionEntry);
 		return extractVersion(versionAsString);
 	}
