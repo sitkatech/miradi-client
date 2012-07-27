@@ -370,6 +370,7 @@ public class MpzToMpfConverter extends AbstractConverter
 		String topLevelDirectoryPath = getNameOfTopLevelDirectory(entry);
 		if(!topLevelDirectoryPath.endsWith("/"))
 			topLevelDirectoryPath = topLevelDirectoryPath + "/";
+		
 		return topLevelDirectoryPath;
 	}
 
