@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashSet;
+import java.util.regex.Pattern;
 
 public class FileUtilities
 {
@@ -152,5 +153,24 @@ public class FileUtilities
 			return false;
 		
 		return true;
+	}
+	
+	public static String join(String parentPath, String childPath) throws Exception
+	{
+		final File parentFile = new File(normalize(parentPath));
+		final File combinedFile = new File(parentFile, normalize(childPath));
+		
+		return combinedFile.getPath();
+	}
+	
+	private static String normalize(String path)
+	{
+		final Pattern compiledRegex = Pattern.compile("\\", Pattern.LITERAL);
+		return compiledRegex.matcher(path).replaceAll(getSystemSeparator());
+	}
+	
+	public static String getSystemSeparator()
+	{
+		return System.getProperty("file.separator");
 	}
 }

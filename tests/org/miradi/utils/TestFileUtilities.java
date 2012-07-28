@@ -33,6 +33,38 @@ public class TestFileUtilities extends MiradiTestCase
 	{
 		super(name);
 	}
+	
+	public void testGetSystemSeparator()
+	{
+		assertEquals("incorrect system separator?", System.getProperty("file.separator"), FileUtilities.getSystemSeparator());
+	}
+	
+	public void testJoin() throws Exception
+	{
+		final String separator = FileUtilities.getSystemSeparator();
+		verifyJoinedPath(separator, "", "");
+		final String b = "b";
+		final String c = "c";
+		verifyJoinedPath(b + separator + c, b, c);
+		verifyJoinedPath(b + separator + c, b + separator, c);
+		verifyJoinedPath(b + separator + c, b, separator + c);
+		verifyJoinedPath(b + separator + c,  b + separator, separator + c);
+		verifyJoinedPath(separator + b + separator + c, separator + b, c);
+		verifyJoinedPath(b + separator + c, b, separator + c);
+		verifyJoinedPath(separator + b + separator + c, separator + b, separator + c);
+		
+		final String a = "a";
+		verifyJoinedPath(a + separator + b + separator + c, a + separator + b, c);
+		
+		verifyJoinedPath(a + separator + b, "a/", "/b");
+		verifyJoinedPath(a + separator + b, "a\\", "b");
+		verifyJoinedPath(separator + a + separator + b + separator + c, "\\a\\b\\", "c");
+	}
+
+	private void verifyJoinedPath(String expectedJoinedValue, String parentPath, String childPath) throws Exception
+	{
+		assertEquals("incorrect join?", expectedJoinedValue, FileUtilities.join(parentPath, childPath));
+	}
 
 	public void testWithoutProjectSuffix() throws Exception
 	{
