@@ -315,7 +315,7 @@ public class MpzToMpfConverter extends AbstractConverter
 
 	private void convertExceptionLog() throws Exception
 	{
-		String ExceptionsLogEntryName = getProjectPrefix() + EAM.EXCEPTIONS_LOG_FILE_NAME;
+		String ExceptionsLogEntryName = FileUtilities.join(getProjectPrefix(), EAM.EXCEPTIONS_LOG_FILE_NAME);
 		ZipEntry exceptionsEntry = zipFile.getEntry(ExceptionsLogEntryName);
 		if(exceptionsEntry == null)
 			return;
@@ -325,7 +325,7 @@ public class MpzToMpfConverter extends AbstractConverter
 
 	private void convertQuarantine() throws Exception
 	{
-		String quarantineEntryPath = getProjectPrefix() + "DeletedOrphans.txt";
+		String quarantineEntryPath = FileUtilities.join(getProjectPrefix(), "DeletedOrphans.txt");
 		ZipEntry quarantineEntry = zipFile.getEntry(quarantineEntryPath);
 		if(quarantineEntry == null)
 			return;
@@ -373,10 +373,7 @@ public class MpzToMpfConverter extends AbstractConverter
 
 	private String ensureEndsWithSlash(String topLevelDirectoryPath)
 	{
-		if(topLevelDirectoryPath.endsWith("/"))
-			return topLevelDirectoryPath;
-		
-		return topLevelDirectoryPath + "/";
+		return topLevelDirectoryPath;
 	}
 
 	private String getNameOfTopLevelDirectory(ZipEntry entry)
@@ -502,24 +499,24 @@ public class MpzToMpfConverter extends AbstractConverter
 		return extractVersion(versionAsString);
 	}
 
-	private String getLastModifiedEntryPath()
+	private String getLastModifiedEntryPath() throws Exception
 	{
-		return getProjectPrefix() + "LastModifiedProjectTime.txt";
+		return FileUtilities.join(getProjectPrefix(), "LastModifiedProjectTime.txt");
 	}
 	
-	private String getThreatFrameworkEntryPath()
+	private String getThreatFrameworkEntryPath() throws Exception
 	{
-		return getJsonPrefix() + "threatframework";
+		return FileUtilities.join(getJsonPrefix(), "threatframework");
 	}
 	
-	private String getBundleEntryPath(int threatId, int targetId)
+	private String getBundleEntryPath(int threatId, int targetId) throws Exception
 	{
-		return getThreatRatingsDirectoryEntryPath() + threatId + "-" + targetId;
+		return FileUtilities.join(getThreatRatingsDirectoryEntryPath(), threatId + "-" + targetId);
 	}
 	
-	private String getThreatRatingsDirectoryEntryPath()
+	private String getThreatRatingsDirectoryEntryPath() throws Exception
 	{
-		return getJsonPrefix() + "threatratings/";
+		return FileUtilities.join(getJsonPrefix(), "threatratings");
 	}
 	
 	@Override
@@ -528,9 +525,9 @@ public class MpzToMpfConverter extends AbstractConverter
 		return projectPrefix;
 	}
 	
-	private String getObjectEntryPath(ORef ref)
+	private String getObjectEntryPath(ORef ref) throws Exception
 	{
-		return getObjectsDirectoryPrefix(ref.getObjectType()) + ref.getObjectId().asInt();
+		return FileUtilities.join(getObjectsDirectoryPrefix(ref.getObjectType()), ref.getObjectId().toString());
 	}
 
 	private EnhancedJsonObject readJson(ZipEntry entry) throws Exception
@@ -539,7 +536,7 @@ public class MpzToMpfConverter extends AbstractConverter
 		return new EnhancedJsonObject(fileContent);
 	}
 
-	private ZipEntry getManifestEntryIfAny(int objectType)
+	private ZipEntry getManifestEntryIfAny(int objectType) throws Exception
 	{
 		String manifestEntryName = getManifestFileName(objectType);
 		return zipFile.getEntry(manifestEntryName);

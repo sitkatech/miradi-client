@@ -20,31 +20,33 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.project;
 
+import org.miradi.utils.FileUtilities;
+
 abstract public class AbstractConverter
 {
-	protected String getVersionEntryPath()
+	protected String getVersionEntryPath() throws Exception
 	{
-		return getJsonPrefix() + "version";
+		return FileUtilities.join(getJsonPrefix(), "version");
 	}
 	
-	protected String getProjectInfoEntryPath()
+	protected String getProjectInfoEntryPath() throws Exception
 	{
-		return getJsonPrefix() + "project";
+		return FileUtilities.join(getJsonPrefix(), "project");
 	}
 	
-	protected String getManifestFileName(int objectType)
+	protected String getManifestFileName(int objectType) throws Exception
 	{
-		return getObjectsDirectoryPrefix(objectType) + "manifest";
+		return FileUtilities.join(getObjectsDirectoryPrefix(objectType), "manifest");
 	}
 	
-	protected String getObjectsDirectoryPrefix(int objectType)
+	protected String getObjectsDirectoryPrefix(int objectType) throws Exception
 	{
-		return getJsonPrefix() + "objects-" + objectType + "/";
+		return FileUtilities.join(getJsonPrefix(), "objects-" + objectType);
 	}
 	
-	protected String getJsonPrefix()
+	protected String getJsonPrefix() throws Exception
 	{
-		return getProjectPrefix() + "json/";
+		return FileUtilities.join(getProjectPrefix(), "json");
 	}
 
 	abstract protected String getProjectPrefix();
