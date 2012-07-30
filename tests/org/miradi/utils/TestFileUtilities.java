@@ -39,6 +39,17 @@ public class TestFileUtilities extends MiradiTestCase
 		assertEquals("incorrect system separator?", System.getProperty("file.separator"), FileUtilities.getSystemSeparator());
 	}
 	
+	public void testNormalize() throws Exception
+	{
+		verifyNormalizedPath("project" + FileUtilities.getSystemSeparator() + "json", "project\\json");
+		verifyNormalizedPath("project" + FileUtilities.getSystemSeparator() + "json", "project/json");
+	}
+	
+	private void verifyNormalizedPath(String expectedNormalizedPath, String pathToBeNormalized)
+	{
+		assertEquals("Path was not normalized?", expectedNormalizedPath, FileUtilities.normalize(pathToBeNormalized));
+	}
+
 	public void testJoin() throws Exception
 	{
 		final String separator = FileUtilities.getSystemSeparator();
