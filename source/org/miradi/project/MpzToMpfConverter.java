@@ -214,7 +214,7 @@ public class MpzToMpfConverter extends AbstractConverter
 	
 	private Project convert(ProgressInterface progressIndicator) throws Exception
 	{
-		project.clear();
+		getProject().clear();
 		
 		int steps = ObjectType.OBJECT_TYPE_COUNT + 6;
 		progressIndicator.setStatusMessage(EAM.text("Reading..."), steps);
@@ -239,7 +239,7 @@ public class MpzToMpfConverter extends AbstractConverter
 		convertQuarantine();
 		progressIndicator.incrementProgress();
 		
-		return project;
+		return getProject();
 	}
 
 	private void confirmVersion() throws Exception
@@ -263,9 +263,9 @@ public class MpzToMpfConverter extends AbstractConverter
 
 		EnhancedJsonObject json = readJson(projectInfoEntry);
 		BaseId metadataId = new BaseId(json.optString(ProjectInfo.TAG_PROJECT_METADATA_ID));
-		project.getProjectInfo().setMetadataId(metadataId);
+		getProject().getProjectInfo().setMetadataId(metadataId);
 		BaseId highestId = new BaseId(json.optString(ProjectInfo.TAG_HIGHEST_OBJECT_ID));
-		project.getProjectInfo().getNormalIdAssigner().idTaken(highestId);
+		getProject().getProjectInfo().getNormalIdAssigner().idTaken(highestId);
 	}
 
 	private void convertLastModified() throws Exception
@@ -288,7 +288,7 @@ public class MpzToMpfConverter extends AbstractConverter
 			}
 		}
 		
-		project.setLastModified(lastModifiedMillis);
+		getProject().setLastModified(lastModifiedMillis);
 	}
 
 	private void convertBaseObjects(ProgressInterface progressIndicator) throws Exception, UserCanceledException
@@ -332,7 +332,7 @@ public class MpzToMpfConverter extends AbstractConverter
 		
 		String contents = readIntoString(quarantineEntry);
 		contents = HtmlUtilities.convertPlainTextToHtmlText(contents);
-		project.appendToQuarantineFile(contents);
+		getProject().appendToQuarantineFile(contents);
 	}
 
 	private void convertObjectsOfType(int type) throws Exception
@@ -355,8 +355,8 @@ public class MpzToMpfConverter extends AbstractConverter
 		String objectEntryPath = getObjectEntryPath(ref);
 		ZipEntry entry = zipFile.getEntry(objectEntryPath);
 		EnhancedJsonObject json = readJson(entry);
-		project.createObject(ref);
-		BaseObject object = BaseObject.find(project, ref);
+		getProject().createObject(ref);
+		BaseObject object = BaseObject.find(getProject(), ref);
 		object.loadFromJson(json);
 	}
 
@@ -418,7 +418,7 @@ public class MpzToMpfConverter extends AbstractConverter
 		
 		String exceptionLog = safeConvertUtf8BytesToString(exceptionLogBytes);
 		exceptionLog = HtmlUtilities.convertPlainTextToHtmlText(exceptionLog);
-		project.appendToExceptionLog(exceptionLog);
+		getProject().appendToExceptionLog(exceptionLog);
 	}
 
 	public static String safeConvertUtf8BytesToString(byte[] exceptionLogBytes) throws UnsupportedEncodingException
@@ -464,7 +464,7 @@ public class MpzToMpfConverter extends AbstractConverter
 
 	private void writeSimpleThreatRatingBundle(int threatId, int targetId) throws Exception
 	{
-		SimpleThreatRatingFramework framework = project.getSimpleThreatRatingFramework();
+		SimpleThreatRatingFramework framework = getProject().getSimpleThreatRatingFramework();
 		
 		String bundleEntryPath = getBundleEntryPath(threatId, targetId);
 		ZipEntry entry = zipFile.getEntry(bundleEntryPath);
@@ -539,6 +539,11 @@ public class MpzToMpfConverter extends AbstractConverter
 	private ZipFile getZipFile()
 	{
 		return zipFile;
+	}
+	
+	private Project getProject()
+	{
+		return project;
 	}
 	
 	public static int REQUIRED_VERSION = 61;
