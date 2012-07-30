@@ -96,7 +96,7 @@ public class MpfToMpzConverter extends AbstractConverter
 			for (ORef refAsKey : sortedKeys)
 			{
 				final String objectDir = getObjectsDirectoryPrefix(refAsKey.getObjectType());
-				final String zipEntryName = objectDir + refAsKey.getObjectId();
+				final String zipEntryName = FileUtilities.join(objectDir, refAsKey.getObjectId().toString());
 				EnhancedJsonObject value = refToJsonMap.get(refAsKey);
 				writeZipEntry(zipOutputStream, zipEntryName, value.toString());
 			}
@@ -310,7 +310,7 @@ public class MpfToMpzConverter extends AbstractConverter
 	@Override
 	protected String getProjectPrefix()
 	{
-		return projectName + "/";
+		return projectName;
 	}
 	
 	private Project project;
