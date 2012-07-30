@@ -367,13 +367,7 @@ public class MpzToMpfConverter extends AbstractConverter
 			throw new RuntimeException("MPZ file was empty");
 		
 		ZipEntry entry = enumeration.nextElement();
-		String topLevelDirectoryPath = getNameOfTopLevelDirectory(entry);
-		return ensureEndsWithSlash(topLevelDirectoryPath);
-	}
-
-	private String ensureEndsWithSlash(String topLevelDirectoryPath)
-	{
-		return topLevelDirectoryPath;
+		return getNameOfTopLevelDirectory(entry);
 	}
 
 	private String getNameOfTopLevelDirectory(ZipEntry entry)
