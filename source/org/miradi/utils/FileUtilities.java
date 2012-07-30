@@ -163,10 +163,15 @@ public class FileUtilities
 		return combinedFile.getPath();
 	}
 	
-	private static String normalize(String path)
+	public static String normalize(String path)
 	{
-		final Pattern compiledRegex = Pattern.compile("\\", Pattern.LITERAL);
-		return compiledRegex.matcher(path).replaceAll(getSystemSeparator());
+		Pattern compiledRegex = Pattern.compile("\\", Pattern.LITERAL);
+		String normalizedPath = compiledRegex.matcher(path).replaceAll(getSystemSeparator());
+		
+		compiledRegex = Pattern.compile("/", Pattern.LITERAL);
+		normalizedPath = compiledRegex.matcher(normalizedPath).replaceAll(getSystemSeparator());
+		
+		return normalizedPath;
 	}
 	
 	public static String getSystemSeparator()
