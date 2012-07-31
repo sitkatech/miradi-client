@@ -40,13 +40,13 @@ public class MiradiZipFile extends ZipFile
 		if (entry != null)
 			return entry;
 		
-		final ZipEntry attemptAgainWithOtherPossibleLeadingChar = super.getEntry(replaceWithOtherPossibleLeadingChar(name));
-		if (attemptAgainWithOtherPossibleLeadingChar != null)
-			return attemptAgainWithOtherPossibleLeadingChar;
+		final ZipEntry withOtherPossibleLeadingChar = super.getEntry(replaceWithOtherPossibleLeadingChar(name));
+		if (withOtherPossibleLeadingChar != null)
+			return withOtherPossibleLeadingChar;
 		
-		final String attemptUsingReversedPathSeparator = attemptUsingReversedPathSeparator(name);
-		if (attemptUsingReversedPathSeparator != null)
-			return super.getEntry(attemptUsingReversedPathSeparator);
+		final String reversedPathSeparator = attemptUsingReversedPathSeparator(name);
+		if (reversedPathSeparator != null)
+			return super.getEntry(reversedPathSeparator);
 		
 		return null;
 	}
