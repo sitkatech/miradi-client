@@ -42,12 +42,12 @@ public class TestMiradiZipFile extends MiradiTestCase
 
 	public void testReplaceWithOtherPossibleLeadingChar()
 	{
-		verifyReplaceWithOtherPossibleLeadingChar("/", "");
-		verifyReplaceWithOtherPossibleLeadingChar("", "/");
+		verifyReplaceWithOtherPossibleLeadingChar("/", FileUtilities.SEPARATOR, "");
+		verifyReplaceWithOtherPossibleLeadingChar("", FileUtilities.SEPARATOR, "/");
 	}
 
-	private void verifyReplaceWithOtherPossibleLeadingChar(String otherExpectedLeadingChar, String leadingChar)
+	private void verifyReplaceWithOtherPossibleLeadingChar(String otherExpectedLeadingChar, String separatorToReplace, String leadingChar)
 	{
-		assertEquals("leading char was not replaced with other option?", otherExpectedLeadingChar, MiradiZipFile.replaceWithOtherPossibleLeadingChar(leadingChar));
+		assertEquals("leading char was not replaced with other option?", otherExpectedLeadingChar, MiradiZipFile.replaceWithOtherPossibleLeadingChar(leadingChar, separatorToReplace));
 	}
 }
