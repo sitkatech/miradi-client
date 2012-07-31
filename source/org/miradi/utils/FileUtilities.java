@@ -27,7 +27,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashSet;
-import java.util.regex.Pattern;
 
 public class FileUtilities
 {
@@ -163,15 +162,25 @@ public class FileUtilities
 		return combinedFile.getPath();
 	}
 	
-	public static String normalize(String path)
+	public static String normalize(String path) throws Exception
 	{
-		Pattern compiledRegex = Pattern.compile("\\", Pattern.LITERAL);
-		String normalizedPath = compiledRegex.matcher(path).replaceAll(getSystemSeparator());
-		
-		compiledRegex = Pattern.compile("/", Pattern.LITERAL);
-		normalizedPath = compiledRegex.matcher(normalizedPath).replaceAll(getSystemSeparator());
+		final String normalizedSeparator = getNormalizedSeparator();
+		String normalizedPath = path.replaceAll("\\\\", normalizedSeparator);
+		normalizedPath = normalizedPath.replaceAll("/", normalizedSeparator);
 		
 		return normalizedPath;
+	}
+	
+	private static String getNormalizedSeparator() throws Exception
+	{
+		String separator = getSystemSeparator();
+		if (separator.equals("/"))
+			return separator;
+		
+		if (separator.equals("\\"))
+			return "\\\\";
+		
+		throw new Exception("Unknown path separator: " + separator);
 	}
 	
 	public static String getSystemSeparator()

@@ -45,7 +45,7 @@ public class TestFileUtilities extends MiradiTestCase
 		verifyNormalizedPath("project" + FileUtilities.getSystemSeparator() + "json", "project/json");
 	}
 	
-	private void verifyNormalizedPath(String expectedNormalizedPath, String pathToBeNormalized)
+	private void verifyNormalizedPath(String expectedNormalizedPath, String pathToBeNormalized) throws Exception
 	{
 		assertEquals("Path was not normalized?", expectedNormalizedPath, FileUtilities.normalize(pathToBeNormalized));
 	}
