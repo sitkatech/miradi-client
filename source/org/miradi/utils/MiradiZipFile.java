@@ -45,22 +45,21 @@ public class MiradiZipFile extends ZipFile
 			return attemptAgainWithOtherPossibleLeadingChar;
 		
 		final String attemptUsingReversedPathSeparator = attemptUsingReversedPathSeparator(name);
-		return super.getEntry(attemptUsingReversedPathSeparator);
+		if (attemptUsingReversedPathSeparator != null)
+			return super.getEntry(attemptUsingReversedPathSeparator);
+		
+		return null;
 	}
 
 	private String attemptUsingReversedPathSeparator(String name)
 	{
 		if (name.contains(FileUtilities.SEPARATOR))
-		{
 			return name.replaceAll(FileUtilities.SEPARATOR, "\\\\");
-		}
 		
 		if (name.contains("\\"))
-		{
 			return name.replaceAll("\\", FileUtilities.SEPARATOR);
-		}
 		
-		return "";
+		return null;
 	}
 
 	private String replaceWithOtherPossibleLeadingChar(String name)
