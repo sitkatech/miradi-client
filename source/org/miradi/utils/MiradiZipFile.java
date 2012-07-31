@@ -44,7 +44,8 @@ public class MiradiZipFile extends ZipFile
 		if (attemptAgainWithOtherPossibleLeadingChar != null)
 			return attemptAgainWithOtherPossibleLeadingChar;
 		
-		return attemptUsingReversedPathSeparator(name);
+		final ZipEntry attemptUsingReversedPathSeparator = attemptUsingReversedPathSeparator(name);
+		return attemptUsingReversedPathSeparator;
 	}
 
 	private ZipEntry attemptUsingReversedPathSeparator(String name)
