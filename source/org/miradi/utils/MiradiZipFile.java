@@ -64,9 +64,10 @@ public class MiradiZipFile extends ZipFile
 
 	public static String replaceWithOtherPossibleLeadingChar(String name)
 	{
-		if (name.startsWith("/"))
-			return name.replaceFirst("/", "");
+		final String separator = "/";
+		if (name.startsWith(separator))
+			return name.replaceFirst(separator, "");
 		
-		return "/" + name;
+		return separator + name;
 	}
 }
