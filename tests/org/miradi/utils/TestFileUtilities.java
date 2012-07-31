@@ -34,11 +34,6 @@ public class TestFileUtilities extends MiradiTestCase
 		super(name);
 	}
 	
-	public void testGetSystemSeparator()
-	{
-		assertEquals("incorrect system separator?", System.getProperty("file.separator"), FileUtilities.getSystemSeparator());
-	}
-	
 	public void testJoin() throws Exception
 	{
 		final String separator = "/";
