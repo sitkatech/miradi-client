@@ -173,5 +173,5 @@ public class FileUtilities
 		return path;
 	}
 	
-	private static final String SEPARATOR = "/";
+	public static final String SEPARATOR = "/";
 }
