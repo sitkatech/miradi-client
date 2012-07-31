@@ -40,7 +40,7 @@ public class MiradiZipFile extends ZipFile
 		if (entry != null)
 			return entry;
 		
-		final ZipEntry attemptAgainWithOtherPossibleLeadingChar = attemptAgainWithOtherPossibleLeadingChar(name);
+		final ZipEntry attemptAgainWithOtherPossibleLeadingChar = super.getEntry(replaceWithOtherPossibleLeadingChar(name));
 		if (attemptAgainWithOtherPossibleLeadingChar != null)
 			return attemptAgainWithOtherPossibleLeadingChar;
 		
@@ -56,11 +56,6 @@ public class MiradiZipFile extends ZipFile
 			return super.getEntry(name.replaceAll("\\", FileUtilities.SEPARATOR));
 		
 		return null;
-	}
-
-	private ZipEntry attemptAgainWithOtherPossibleLeadingChar(String name)
-	{
-		return super.getEntry(replaceWithOtherPossibleLeadingChar(name));
 	}
 
 	private String replaceWithOtherPossibleLeadingChar(String name)
