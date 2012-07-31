@@ -23,13 +23,13 @@ package org.miradi.xml;
 import java.io.File;
 import java.io.IOException;
 import java.util.zip.ZipException;
-import java.util.zip.ZipFile;
 
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectSaver;
+import org.miradi.utils.MiradiZipFile;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.views.umbrella.AbstractZippedXmlImporter;
 
@@ -41,7 +41,7 @@ abstract public class AbstractXmpzProjectImporter extends AbstractZippedXmlImpor
 	}
 	
 	@Override
-	protected void importProjectXml(Project projectToFill, ZipFile zipFile, InputStreamWithSeek projectAsInputStream, ProgressInterface progressIndicator) throws Exception
+	protected void importProjectXml(Project projectToFill, MiradiZipFile zipFile, InputStreamWithSeek projectAsInputStream, ProgressInterface progressIndicator) throws Exception
 	{
 		AbstractXmlImporter xmpzImporter = createXmpzXmlImporter(projectToFill, progressIndicator);
 		xmpzImporter.importProject(projectAsInputStream);
@@ -62,7 +62,7 @@ abstract public class AbstractXmpzProjectImporter extends AbstractZippedXmlImpor
 	
 	private Project importProject(File zipFileToImport, ProgressInterface progressIndicator) throws ZipException, IOException, Exception, ValidationException
 	{
-		ZipFile zipFile = new ZipFile(zipFileToImport);
+		MiradiZipFile zipFile = new MiradiZipFile(zipFileToImport);
 		try
 		{
 			return importProjectFromXmlEntry(zipFile, progressIndicator);

@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella;
 
 import java.io.File;
-import java.util.zip.ZipFile;
 
 import org.martus.util.UnicodeWriter;
 import org.miradi.dialogs.base.ProgressDialog;
@@ -31,6 +30,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.project.MpzToMpfConverter;
 import org.miradi.utils.GenericMiradiFileFilter;
 import org.miradi.utils.MiradiBackgroundWorkerThread;
+import org.miradi.utils.MiradiZipFile;
 import org.miradi.utils.MpzFileFilterForChooserDialog;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.ZipFileFilterForChooserDialog;
@@ -54,7 +54,7 @@ public class MpzProjectImporter extends AbstractProjectImporter
 
 	private void possiblyNotifyUserOfAutomaticMigration(File importFile) throws Exception
 	{
-		final ZipFile zipFile = new ZipFile(importFile);
+		final MiradiZipFile zipFile = new MiradiZipFile(importFile);
 		try
 		{
 			if(MpzToMpfConverter.needsMigration(zipFile))

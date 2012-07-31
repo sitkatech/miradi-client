@@ -27,7 +27,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Collection;
-import java.util.zip.ZipFile;
 
 import org.martus.util.UnicodeStringReader;
 import org.miradi.ids.BaseId;
@@ -40,6 +39,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.utils.MiradiZipFile;
 import org.miradi.utils.NullProgressMeter;
 
 public class TestMpzToMpfConverter extends TestCaseWithProject
@@ -63,7 +63,7 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 		File mpz = writeToTemporaryFile(mpzBytes);
 		try
 		{
-			ZipFile zipFile = new ZipFile(mpz);
+			MiradiZipFile zipFile = new MiradiZipFile(mpz);
 			int version = MpzToMpfConverter.extractVersion(zipFile);
 			assertEquals(expectedVersion, version);
 		}
@@ -80,7 +80,7 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 		try
 		{
 			File migratedFile = MpzToMpfConverter.migrate(mpz, new NullProgressMeter());
-			ZipFile migratedZipFile = new ZipFile(migratedFile);
+			MiradiZipFile migratedZipFile = new MiradiZipFile(migratedFile);
 			int endingVersion = MpzToMpfConverter.extractVersion(migratedZipFile);
 			assertEquals(61, endingVersion);
 			migratedZipFile.close();
