@@ -170,10 +170,5 @@ public class FileUtilities
 		return path;
 	}
 	
-	public static String getSystemSeparator()
-	{
-		return System.getProperty("file.separator");
-	}
-	
 	private static final String SEPARATOR = "/";
 }
