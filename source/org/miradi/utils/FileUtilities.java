@@ -170,27 +170,6 @@ public class FileUtilities
 		return path;
 	}
 	
-	public static String normalize(String path) throws Exception
-	{
-		final String normalizedSeparator = getNormalizedSeparator();
-		String normalizedPath = path.replaceAll("\\\\", normalizedSeparator);
-		normalizedPath = normalizedPath.replaceAll("/", normalizedSeparator);
-		
-		return normalizedPath;
-	}
-	
-	private static String getNormalizedSeparator() throws Exception
-	{
-		String separator = getSystemSeparator();
-		if (separator.equals("/"))
-			return separator;
-		
-		if (separator.equals("\\"))
-			return "\\\\";
-		
-		throw new Exception("Unknown path separator: " + separator);
-	}
-	
 	public static String getSystemSeparator()
 	{
 		return System.getProperty("file.separator");
