@@ -167,6 +167,9 @@ public class FileUtilities
 		if (path.endsWith(SEPARATOR))
 			return StringUtilities.stripTrailingString(path, SEPARATOR);
 		
+		if (path.startsWith(SEPARATOR))
+			return path.replaceFirst(SEPARATOR, "");
+		
 		return path;
 	}
 	
