@@ -25,10 +25,10 @@ import java.util.Enumeration;
 import java.util.Vector;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
-import java.util.zip.ZipFile;
 
 import org.miradi.exceptions.UnrecognizedFileToImportException;
 import org.miradi.utils.FileUtilities;
+import org.miradi.utils.MiradiZipFile;
 import org.miradi.views.noproject.RenameProjectDoer;
 import org.miradi.views.umbrella.AbstractProjectImporter;
 import org.miradi.views.umbrella.CpmzProjectImporter;
@@ -194,7 +194,7 @@ public class CommandLineProjectFileImporterHelper
 	{
 		try
 		{
-			ZipFile zipFile = new ZipFile(projectFile);
+			MiradiZipFile zipFile = new MiradiZipFile(projectFile);
 			if (CpmzProjectImporter.zipContainsMpfProject(zipFile) || CpmzProjectImporter.containsEntry(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME))
 				return new CpmzProjectImporter(getMainWindow());
 			
@@ -209,7 +209,7 @@ public class CommandLineProjectFileImporterHelper
 		throw new UnrecognizedFileToImportException(EAM.substitute(EAM.text("Miradi did not recognize the file: %s as importable."), projectFile.getName()));
 	}
 	
-	private boolean isMpz(ZipFile zipFile)
+	private boolean isMpz(MiradiZipFile zipFile)
 	{
 		Enumeration<? extends ZipEntry> entries = zipFile.entries();
 		while (entries.hasMoreElements())

@@ -29,7 +29,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Enumeration;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
 import org.martus.util.DirectoryUtils;
@@ -37,7 +36,7 @@ import org.miradi.main.EAM;
 
 public class ZipUtilities
 {
-	public static boolean doesProjectZipContainAllProjectFiles(ZipFile zipFile, File directoryContainingProject) throws Exception
+	public static boolean doesProjectZipContainAllProjectFiles(MiradiZipFile zipFile, File directoryContainingProject) throws Exception
 	{
 		File dirContainingExtractedFiles = extractAll(zipFile);
 		try
@@ -68,14 +67,14 @@ public class ZipUtilities
 		return projectDir;
 	}
 	
-	public static File extractAll(ZipFile zipFile) throws IOException
+	public static File extractAll(MiradiZipFile zipFile) throws IOException
 	{
 		File tempDirectory = FileUtilities.createTempDirectory("TempDir");
 		extractAll(zipFile, tempDirectory);
 		return tempDirectory;
 	}
 	
-	public static void extractAll(ZipFile zipFile, File tempDirectory) throws IOException
+	public static void extractAll(MiradiZipFile zipFile, File tempDirectory) throws IOException
 	{
 		Enumeration<? extends ZipEntry> entries = zipFile.entries();
 		while(entries.hasMoreElements())

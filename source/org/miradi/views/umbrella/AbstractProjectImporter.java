@@ -22,7 +22,6 @@ package org.miradi.views.umbrella;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
@@ -42,6 +41,7 @@ import org.miradi.project.Project;
 import org.miradi.utils.GenericMiradiFileFilter;
 import org.miradi.utils.MiradiBackgroundWorkerThread;
 import org.miradi.utils.MiradiFileSaveChooser;
+import org.miradi.utils.MiradiZipFile;
 import org.miradi.utils.MpfFileFilter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.views.noproject.NoProjectView;
@@ -224,7 +224,7 @@ public abstract class AbstractProjectImporter
 		noProjectView.refreshText();
 	}
 	
-	protected InputStreamWithSeek getProjectAsInputStream(ZipFile zipFile) throws Exception
+	protected InputStreamWithSeek getProjectAsInputStream(MiradiZipFile zipFile) throws Exception
 	{
 		String xmlFileName = ExportCpmzDoer.PROJECT_XML_FILE_NAME;
 		ZipEntry zipEntry = zipFile.getEntry(xmlFileName);

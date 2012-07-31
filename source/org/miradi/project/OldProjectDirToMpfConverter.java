@@ -22,11 +22,11 @@ package org.miradi.project;
 
 import java.io.File;
 import java.util.Calendar;
-import java.util.zip.ZipFile;
 
 import org.martus.util.DirectoryUtils;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.utils.MiradiZipFile;
 import org.miradi.utils.MpfFileFilter;
 import org.miradi.utils.MpzFileFilter;
 import org.miradi.utils.ZipUtilities;
@@ -41,7 +41,7 @@ public class OldProjectDirToMpfConverter
 			throw new Exception("Attempted to override an existing backup file when converting old project dir to new project format:" + oldProjectZippedAsBackup.getAbsolutePath());
 		
 		ZipUtilities.createZipFromDirectory(oldProjectDirectory, oldProjectZippedAsBackup);
-		if (!ZipUtilities.doesProjectZipContainAllProjectFiles(new ZipFile(oldProjectZippedAsBackup), oldProjectDirectory))
+		if (!ZipUtilities.doesProjectZipContainAllProjectFiles(new MiradiZipFile(oldProjectZippedAsBackup), oldProjectDirectory))
 			throw new Exception("Mpz to Mpf data conversion failed");
 		
 		MpzProjectImporter importer = new MpzProjectImporter(mainWindow);

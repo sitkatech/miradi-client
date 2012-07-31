@@ -33,7 +33,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
 
 import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeStringWriter;
@@ -56,6 +55,7 @@ import org.miradi.utils.EnhancedJsonArray;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.FileUtilities;
 import org.miradi.utils.HtmlUtilities;
+import org.miradi.utils.MiradiZipFile;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.Translation;
@@ -112,7 +112,7 @@ public class MpzToMpfConverter extends AbstractConverter
 	public static final String convert(File mpzFile, ProgressInterface progressIndicator) throws Exception
 	{
 		File migratedFile = null;
-		ZipFile originalZipFile = new ZipFile(mpzFile);
+		MiradiZipFile originalZipFile = new MiradiZipFile(mpzFile);
 		try
 		{
 			if(extractVersion(originalZipFile) > REQUIRED_VERSION)
@@ -130,7 +130,7 @@ public class MpzToMpfConverter extends AbstractConverter
 		if(migratedFile != null)
 			mpzToUse = migratedFile;
 		
-		ZipFile zip = new ZipFile(mpzToUse);
+		MiradiZipFile zip = new MiradiZipFile(mpzToUse);
 		try
 		{
 			MpzToMpfConverter converter = new MpzToMpfConverter(zip);
@@ -150,14 +150,14 @@ public class MpzToMpfConverter extends AbstractConverter
 		
 	}
 
-	public static boolean needsMigration(ZipFile originalZipFile) throws Exception
+	public static boolean needsMigration(MiradiZipFile originalZipFile) throws Exception
 	{
 		return extractVersion(originalZipFile) < REQUIRED_VERSION;
 	}
 
 	public static File migrate(File mpzFile, ProgressInterface progressIndicator) throws Exception
 	{
-		ZipFile zipFile = new ZipFile(mpzFile);
+		MiradiZipFile zipFile = new MiradiZipFile(mpzFile);
 		try
 		{
 			File tempDirectory = FileUtilities.createTempDirectory("MigrateMPZ");
@@ -198,13 +198,13 @@ public class MpzToMpfConverter extends AbstractConverter
 		return result;
 	}
 
-	public static int extractVersion(ZipFile mpzFileToUse) throws Exception
+	public static int extractVersion(MiradiZipFile mpzFileToUse) throws Exception
 	{
 		MpzToMpfConverter converter = new MpzToMpfConverter(mpzFileToUse);
 		return converter.extractVersion();
 	}
 	
-	private MpzToMpfConverter(ZipFile mpzFileToUse) throws Exception
+	private MpzToMpfConverter(MiradiZipFile mpzFileToUse) throws Exception
 	{
 		zipFile = mpzFileToUse;
 		projectPrefix = extractProjectPrefix();
@@ -536,7 +536,7 @@ public class MpzToMpfConverter extends AbstractConverter
 		return zipFile.getEntry(manifestEntryName);
 	}
 	
-	private ZipFile getZipFile()
+	private MiradiZipFile getZipFile()
 	{
 		return zipFile;
 	}
@@ -547,7 +547,7 @@ public class MpzToMpfConverter extends AbstractConverter
 	}
 	
 	public static int REQUIRED_VERSION = 61;
-	private ZipFile zipFile;
+	private MiradiZipFile zipFile;
 	private String projectPrefix;
 	private Project project;
 	private int convertedProjectVersion;

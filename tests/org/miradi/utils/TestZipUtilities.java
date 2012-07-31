@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import java.io.File;
-import java.util.zip.ZipFile;
 
 import org.martus.util.DirectoryUtils;
 import org.miradi.main.TestCaseWithProject;
@@ -38,7 +37,7 @@ public class TestZipUtilities extends TestCaseWithProject
 	{
 		final byte[] mpzBytes = TestMpzToMpfConverter.readSampleMpz("/Sample-v61.mpz");
 		final File mpzFile = TestMpzToMpfConverter.writeToTemporaryFile(mpzBytes);
-		final ZipFile mpzZipFile = new ZipFile(mpzFile);
+		final MiradiZipFile mpzZipFile = new MiradiZipFile(mpzFile);
 		File tempDirectory = ZipUtilities.extractAll(mpzZipFile);
 		try
 		{

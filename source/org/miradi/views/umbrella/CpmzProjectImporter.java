@@ -25,7 +25,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
-import java.util.zip.ZipFile;
 
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringReader;
@@ -51,6 +50,7 @@ import org.miradi.utils.CpmzFileFilterForChooserDialog;
 import org.miradi.utils.FileUtilities;
 import org.miradi.utils.GenericMiradiFileFilter;
 import org.miradi.utils.GroupBoxHelper;
+import org.miradi.utils.MiradiZipFile;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.views.diagram.DiagramView;
@@ -78,7 +78,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 
 	private void possiblyNotifyUserOfAutomaticMigration(File file) throws Exception
 	{
-		ZipFile zipFile = new ZipFile(file);
+		MiradiZipFile zipFile = new MiradiZipFile(file);
 		try
 		{
 			if(!zipContainsMpzProject(zipFile))
@@ -100,7 +100,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 
 	private void possiblyNotifyUserOfAutoMigration(File mpzFile)	throws Exception
 	{
-		ZipFile mpzZipFile = new ZipFile(mpzFile);
+		MiradiZipFile mpzZipFile = new MiradiZipFile(mpzFile);
 		try
 		{
 			if(MpzToMpfConverter.needsMigration(mpzZipFile))
@@ -114,7 +114,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 
 	private Project importProject(File zipFileToImport, ProgressInterface progressIndicator) throws ZipException, IOException, Exception, ValidationException
 	{
-		ZipFile zipFile = new ZipFile(zipFileToImport);
+		MiradiZipFile zipFile = new MiradiZipFile(zipFileToImport);
 		try
 		{
 			if (zipContainsMpfProject(zipFile))
@@ -136,7 +136,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 		}
 	}
 
-	private Project importProjectFromMpfEntry(ZipFile zipFile, ProgressInterface progressIndicator) throws Exception
+	private Project importProjectFromMpfEntry(MiradiZipFile zipFile, ProgressInterface progressIndicator) throws Exception
 	{
 		ZipEntry mpfEntry = zipFile.getEntry(ExportCpmzDoer.PROJECT_MPF_NAME);
 		InputStream inputStream = zipFile.getInputStream(mpfEntry);
@@ -159,7 +159,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 		
 	}
 
-	private Project importProjectFromMpzEntry(ZipFile zipFile, ProgressInterface progressIndicator) throws Exception
+	private Project importProjectFromMpzEntry(MiradiZipFile zipFile, ProgressInterface progressIndicator) throws Exception
 	{
 		ZipEntry mpzEntry = zipFile.getEntry(ExportCpmzDoer.PROJECT_ZIP_FILE_NAME);
 		InputStream inputStream = zipFile.getInputStream(mpzEntry);
@@ -197,7 +197,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 		}
 	}
 
-	private void importConproProjectNumbers(ZipFile zipFile, Project projectToFill, ProgressInterface progressIndicator) throws Exception
+	private void importConproProjectNumbers(MiradiZipFile zipFile, Project projectToFill, ProgressInterface progressIndicator) throws Exception
 	{
 		InputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
 		try
@@ -217,7 +217,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 	}
 
 	@Override
-	protected void importProjectXml(Project projectToFill, ZipFile zipFile, InputStreamWithSeek projectAsInputStream, ProgressInterface progressIndicator) throws Exception
+	protected void importProjectXml(Project projectToFill, MiradiZipFile zipFile, InputStreamWithSeek projectAsInputStream, ProgressInterface progressIndicator) throws Exception
 	{
 		progressIndicator.setStatusMessage(EAM.text("Importing ConPro Data..."), 16);
 		ConproXmlImporter conProXmlImporter = new ConproXmlImporter(projectToFill, progressIndicator);
@@ -238,7 +238,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 		return project;
 	}
 	
-	private void importAdditionalFieldsFromTextFiles(Project projectToFill, ZipFile zipFile) throws Exception
+	private void importAdditionalFieldsFromTextFiles(Project projectToFill, MiradiZipFile zipFile) throws Exception
 	{
 		importIfPresent(projectToFill, TncProjectData.TAG_PROJECT_RESOURCES_SCORECARD, zipFile, "ProjectResourcesScorecard.txt");
 		importIfPresent(projectToFill, TncProjectData.TAG_PROJECT_LEVEL_COMMENTS, zipFile, "ProjectLevelComments.txt");
@@ -246,7 +246,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 		importIfPresent(projectToFill, TncProjectData.TAG_CAP_STANDARDS_SCORECARD, zipFile, "ProjectCapStandards.txt");
 	}
 
-	private void importIfPresent(Project projectToFill, String fieldTag, ZipFile zipFile, String entryFilename) throws Exception
+	private void importIfPresent(Project projectToFill, String fieldTag, MiradiZipFile zipFile, String entryFilename) throws Exception
 	{
 		ORef tncDataRef = projectToFill.getSafeSingleObjectRef(TncProjectDataSchema.getObjectType());
 		ZipEntry entry = zipFile.getEntry(entryFilename);
@@ -297,17 +297,17 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 		filledProject.executeCommand(setCurrentDiagramCommand);
 	}
 
-	public static boolean zipContainsMpzProject(ZipFile zipFile)
+	public static boolean zipContainsMpzProject(MiradiZipFile zipFile)
 	{
 		return containsEntry(zipFile, ExportCpmzDoer.PROJECT_ZIP_FILE_NAME);
 	}
 
-	public static boolean zipContainsMpfProject(ZipFile zipFile)
+	public static boolean zipContainsMpfProject(MiradiZipFile zipFile)
 	{
 		return containsEntry(zipFile, ExportCpmzDoer.PROJECT_MPF_NAME);
 	}
 
-	public static boolean containsEntry(ZipFile zipFile, final String entry)
+	public static boolean containsEntry(MiradiZipFile zipFile, final String entry)
 	{
 		ZipEntry zipEntry = zipFile.getEntry(entry);
 		if (zipEntry == null)
