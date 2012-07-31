@@ -378,7 +378,7 @@ public class MpzToMpfConverter extends AbstractConverter
 			file = file.getParentFile();
 		}
 		
-		return file.getPath();
+		return file.getName();
 	}
 
 	private String readIntoString(ZipEntry entry) throws Exception,

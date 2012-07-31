@@ -156,10 +156,18 @@ public class FileUtilities
 	
 	public static String join(String parentPath, String childPath) throws Exception
 	{
-		final File parentFile = new File(normalize(parentPath));
-		final File combinedFile = new File(parentFile, normalize(childPath));
+		final String normalizedParentPath = removeTrailingForwardSlashes(parentPath);
+		final String normalizedChildPath = removeTrailingForwardSlashes(childPath);
+		final String joinedPath = normalizedParentPath + SEPARATOR + normalizedChildPath;
+		return joinedPath;
+	}
+
+	private static String removeTrailingForwardSlashes(String path) throws Exception
+	{
+		if (path.endsWith(SEPARATOR))
+			return StringUtilities.stripTrailingString(path, SEPARATOR);
 		
-		return combinedFile.getPath();
+		return path;
 	}
 	
 	public static String normalize(String path) throws Exception
@@ -187,4 +195,6 @@ public class FileUtilities
 	{
 		return System.getProperty("file.separator");
 	}
+	
+	private static final String SEPARATOR = "/";
 }
