@@ -52,14 +52,12 @@ public class MiradiZipFile extends ZipFile
 	{
 		if (name.contains(FileUtilities.SEPARATOR))
 		{
-			final String replacedAll = name.replaceAll(FileUtilities.SEPARATOR, "\\\\");
-			return replacedAll;
+			return name.replaceAll(FileUtilities.SEPARATOR, "\\\\");
 		}
 		
 		if (name.contains("\\"))
 		{
-			final String replacedAll = name.replaceAll("\\", FileUtilities.SEPARATOR);
-			return replacedAll;
+			return name.replaceAll("\\", FileUtilities.SEPARATOR);
 		}
 		
 		return "";
