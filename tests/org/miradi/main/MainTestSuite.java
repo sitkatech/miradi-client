@@ -206,6 +206,7 @@ import org.miradi.utils.TestFileUtilities;
 import org.miradi.utils.TestFloatingPointFormatter;
 import org.miradi.utils.TestHtmlUtilities;
 import org.miradi.utils.TestLogging;
+import org.miradi.utils.TestMiradiZipFile;
 import org.miradi.utils.TestOptionalDouble;
 import org.miradi.utils.TestPointList;
 import org.miradi.utils.TestRtfWriter;
@@ -324,6 +325,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestEditableHtmlPane.class));
 		addTest(new TestSuite(TestZipUtilities.class));
 		addTest(new TestSuite(TestFileUtilities.class));
+		addTest(new TestSuite(TestMiradiZipFile.class));
 		
 		// diagram package
 		addTest(new TestSuite(TestDiagramModel.class));

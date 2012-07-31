@@ -51,18 +51,18 @@ public class MiradiZipFile extends ZipFile
 		return null;
 	}
 
-	private String attemptUsingReversedPathSeparator(String name)
+	public static String attemptUsingReversedPathSeparator(String name)
 	{
 		if (name.contains(FileUtilities.SEPARATOR))
 			return name.replaceAll(FileUtilities.SEPARATOR, "\\\\");
 		
 		if (name.contains("\\"))
-			return name.replaceAll("\\", FileUtilities.SEPARATOR);
+			return name.replaceAll("\\\\", FileUtilities.SEPARATOR);
 		
 		return null;
 	}
 
-	private String replaceWithOtherPossibleLeadingChar(String name)
+	public static String replaceWithOtherPossibleLeadingChar(String name)
 	{
 		if (name.startsWith("/"))
 			return name.replaceFirst("/", "");
