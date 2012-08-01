@@ -22,6 +22,7 @@ package org.miradi.utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
@@ -53,17 +54,25 @@ public class MiradiZipFile extends ZipFile
 			if (entry != null)
 				return entry;
 			
-			reversedFirstCharName = replaceWithOtherPossibleLeadingChar(reversedPathSeparator, getPathSeparator(name));
+			reversedFirstCharName = replaceWithOtherPossibleLeadingChar(reversedPathSeparator, getPathSeparatorUsedInZipFile());
 			return super.getEntry(reversedFirstCharName);
 		}
 		
 		return null;
 	}
 	
-	public static String getPathSeparator(String name)
+	private String getPathSeparatorUsedInZipFile()
 	{
-		if (name.contains("\\"))
-			return "\\";
+		Enumeration<? extends ZipEntry> entries = entries();
+		while (entries.hasMoreElements())
+		{
+			ZipEntry entry = entries.nextElement();
+			if (entry.getName().contains(FileUtilities.SEPARATOR))
+				return FileUtilities.SEPARATOR;
+			
+			if (entry.getName().contains("\\"))
+				return "\\";
+		}
 		
 		return FileUtilities.SEPARATOR;
 	}
