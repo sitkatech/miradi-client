@@ -103,7 +103,7 @@ public class TestProject extends MiradiTestCase
 	{
 		Project newProject = new Project();
 		long originalLastModifiedMillis = newProject.getLastModifiedTime();
-		assertNotEquals("New project doesn't default to now?", 0, originalLastModifiedMillis);
+		assertNotEquals("New project last modified time didn't get set?", 0, originalLastModifiedMillis);
 
 		newProject.finishOpeningAfterLoad(getName());
 		CommandSetObjectData command = new CommandSetObjectData(newProject.getMetadata(), ProjectMetadata.TAG_PROJECT_NAME, "Whatever");
