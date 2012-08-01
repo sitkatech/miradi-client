@@ -44,10 +44,15 @@ public class TestXmpz2SchemaCreator extends TestCaseWithProject
 	
 	public void testAgainstStaticSchema() throws Exception
 	{
-		String expectedSchema = getExpectedLines();
-		String actualSchema = getActualSchema();
+		String expectedSchema = replaceNewLines(getExpectedLines());
+		String actualSchema = replaceNewLines(getActualSchema());
 		
 		assertEquals("Generated schema doesnt match existing?", expectedSchema, actualSchema);
+	}
+
+	private String replaceNewLines(String expectedLines)
+	{
+		return expectedLines.replaceAll("\n", "").replaceAll("\r", "");
 	}
 
 	public String getExpectedLines() throws Exception
@@ -56,14 +61,15 @@ public class TestXmpz2SchemaCreator extends TestCaseWithProject
 		FileInputStream fileInputStream = new FileInputStream(resourceURL.getFile());
 		DataInputStream in = new DataInputStream(fileInputStream);
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in));
-		String allLines = "";
+		StringBuffer allLines = new StringBuffer();
 		String expectedLine;
 		while ((expectedLine = bufferedReader.readLine()) != null)   
 		{
-			allLines += expectedLine + "\n";
+			allLines.append(expectedLine);
+			allLines.append("\n");
 		}
 
-		return allLines;
+		return allLines.toString();
 	}
 
 	public String getActualSchema() throws Exception, IOException
