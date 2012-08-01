@@ -29,6 +29,20 @@ public class TestMiradiZipFile extends MiradiTestCase
 		super(name);
 	}
 	
+	public void testGetPathSeparator()
+	{
+		verifyGetPathSeparator("/", "project");
+		verifyGetPathSeparator("/", "project/json/");
+		verifyGetPathSeparator("/", "/project");
+		verifyGetPathSeparator("\\", "\\project");
+		verifyGetPathSeparator("\\", "project\\json\\");
+	}
+	
+	private void verifyGetPathSeparator(String expectedPathSeparator, String path)
+	{
+		assertEquals("Incorrect path separator?", expectedPathSeparator, MiradiZipFile.getPathSeparator(path));
+	}
+
 	public void testAttemptUsingReversedPathSeparator()
 	{
 		verifyAttemptUsingReversedPathSeparator("/", "\\");
@@ -40,13 +54,16 @@ public class TestMiradiZipFile extends MiradiTestCase
 		assertEquals("incorrect reversed path seperator", expected, MiradiZipFile.attemptUsingReversedPathSeparator(actual));
 	}
 
-	public void testReplaceWithOtherPossibleLeadingChar()
+	public void testReplaceWithOtherPossibleLeadingChar() throws Exception
 	{
-		verifyReplaceWithOtherPossibleLeadingChar("/", FileUtilities.SEPARATOR, "");
-		verifyReplaceWithOtherPossibleLeadingChar("", FileUtilities.SEPARATOR, "/");
+		verifyReplaceWithOtherPossibleLeadingChar("/", "", FileUtilities.SEPARATOR);
+		verifyReplaceWithOtherPossibleLeadingChar("", "/", FileUtilities.SEPARATOR);
+		
+		verifyReplaceWithOtherPossibleLeadingChar("project", "\\project", "\\");
+		verifyReplaceWithOtherPossibleLeadingChar("\\project", "project", "\\");
 	}
 
-	private void verifyReplaceWithOtherPossibleLeadingChar(String otherExpectedLeadingChar, String separatorToReplace, String leadingChar)
+	private void verifyReplaceWithOtherPossibleLeadingChar(String otherExpectedLeadingChar, String leadingChar, String separatorToReplace) throws Exception
 	{
 		assertEquals("leading char was not replaced with other option?", otherExpectedLeadingChar, MiradiZipFile.replaceWithOtherPossibleLeadingChar(leadingChar, separatorToReplace));
 	}

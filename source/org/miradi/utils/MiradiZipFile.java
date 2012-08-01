@@ -22,6 +22,7 @@ package org.miradi.utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
@@ -40,15 +41,31 @@ public class MiradiZipFile extends ZipFile
 		if (entry != null)
 			return entry;
 		
-		final ZipEntry withOtherPossibleLeadingChar = super.getEntry(replaceWithOtherPossibleLeadingChar(name, FileUtilities.SEPARATOR));
-		if (withOtherPossibleLeadingChar != null)
-			return withOtherPossibleLeadingChar;
+		String reversedFirstCharName = replaceWithOtherPossibleLeadingChar(name, FileUtilities.SEPARATOR);
+		entry = super.getEntry(reversedFirstCharName);
+		if (entry != null)
+			return entry;
 		
-		final String reversedPathSeparator = attemptUsingReversedPathSeparator(name);
+		String reversedPathSeparator = attemptUsingReversedPathSeparator(name);
 		if (reversedPathSeparator != null)
-			return super.getEntry(reversedPathSeparator);
+		{
+			entry = super.getEntry(reversedPathSeparator);
+			if (entry != null)
+				return entry;
+			
+			reversedFirstCharName = replaceWithOtherPossibleLeadingChar(reversedPathSeparator, getPathSeparator(name));
+			return super.getEntry(reversedFirstCharName);
+		}
 		
 		return null;
+	}
+	
+	public static String getPathSeparator(String name)
+	{
+		if (name.contains("\\"))
+			return "\\";
+		
+		return FileUtilities.SEPARATOR;
 	}
 
 	public static String attemptUsingReversedPathSeparator(String name)
@@ -64,9 +81,16 @@ public class MiradiZipFile extends ZipFile
 
 	public static String replaceWithOtherPossibleLeadingChar(String name, final String separator)
 	{
-		if (name.startsWith(separator))
-			return name.replaceFirst(separator, "");
+			if (name.startsWith(separator))
+				return replaceFirst(separator, name, "");
 		
-		return separator + name;
+		return separator + name;		
+	}
+	
+	private static String replaceFirst(String regex, String text, String replacement)
+	{
+		final Pattern compiledRegex = Pattern.compile(regex, Pattern.LITERAL);
+		
+		return compiledRegex.matcher(text).replaceFirst(replacement);
 	}
 }
