@@ -29,20 +29,6 @@ public class TestMiradiZipFile extends MiradiTestCase
 		super(name);
 	}
 	
-	public void testGetPathSeparator()
-	{
-		verifyGetPathSeparator("/", "project");
-		verifyGetPathSeparator("/", "project/json/");
-		verifyGetPathSeparator("/", "/project");
-		verifyGetPathSeparator("\\", "\\project");
-		verifyGetPathSeparator("\\", "project\\json\\");
-	}
-	
-	private void verifyGetPathSeparator(String expectedPathSeparator, String path)
-	{
-		assertEquals("Incorrect path separator?", expectedPathSeparator, MiradiZipFile.getPathSeparator(path));
-	}
-
 	public void testAttemptUsingReversedPathSeparator()
 	{
 		verifyAttemptUsingReversedPathSeparator("/", "\\");
