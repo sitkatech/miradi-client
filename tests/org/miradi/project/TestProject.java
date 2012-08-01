@@ -106,9 +106,16 @@ public class TestProject extends MiradiTestCase
 		assertNotEquals("New project last modified time didn't get set?", 0, originalLastModifiedMillis);
 
 		newProject.finishOpeningAfterLoad(getName());
+		sleepToEnsureDifferentLastSavedTime();
+		
 		CommandSetObjectData command = new CommandSetObjectData(newProject.getMetadata(), ProjectMetadata.TAG_PROJECT_NAME, "Whatever");
 		newProject.executeCommand(command);
 		assertNotEquals("Last modified not updated?", originalLastModifiedMillis, newProject.getLastModifiedTime());
+	}
+
+	private void sleepToEnsureDifferentLastSavedTime() throws Exception
+	{
+		Thread.sleep(10);
 	}
 	
 	public void testForOnlyOneAnnotationIdAssigner() throws Exception
