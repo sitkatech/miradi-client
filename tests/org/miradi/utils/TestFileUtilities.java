@@ -45,6 +45,7 @@ public class TestFileUtilities extends MiradiTestCase
 		verifyJoinedPath(expectedJoinedPath, a + separator, b);
 		verifyJoinedPath(expectedJoinedPath, a,  separator + b);
 		verifyJoinedPath(expectedJoinedPath, a + separator,  separator + b);
+		verifyJoinedPath(separator + a + separator + b + separator, separator + a,  b + separator);
 	}
 
 	private void verifyJoinedPath(String expectedJoinedValue, String parentPath, String childPath) throws Exception
