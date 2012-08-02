@@ -29,28 +29,63 @@ public class TestMiradiZipFile extends MiradiTestCase
 		super(name);
 	}
 	
-	public void testAttemptUsingReversedPathSeparator()
+	public void testNormalizeToForwardSlashes()
 	{
-		verifyAttemptUsingReversedPathSeparator("/", "\\");
-		verifyAttemptUsingReversedPathSeparator("\\", "/");
+		verifyNormalizeToForwardSlashes("project", "project");
+		
+		verifyNormalizeToForwardSlashes("/project", "/project");
+		verifyNormalizeToForwardSlashes("project/", "project/");
+		verifyNormalizeToForwardSlashes("/project/", "/project/");
+		
+		verifyNormalizeToForwardSlashes("/project", "\\project");
+		verifyNormalizeToForwardSlashes("project/", "project\\");
+		verifyNormalizeToForwardSlashes("/project/", "\\project\\");
 	}
 	
-	private void verifyAttemptUsingReversedPathSeparator(String expected, String actual)
+	public void testNormalizeToBackwardSlashes()
 	{
-		assertEquals("incorrect reversed path seperator", expected, MiradiZipFile.attemptUsingReversedPathSeparator(actual));
+		verifyNormalizeToBackwardSlashes("project", "project");
+		verifyNormalizeToBackwardSlashes("\\project", "/project");
+		verifyNormalizeToBackwardSlashes("project\\", "project/");
+		verifyNormalizeToBackwardSlashes("\\project\\", "/project/");
+		verifyNormalizeToBackwardSlashes("\\project", "\\project");
+		verifyNormalizeToBackwardSlashes("project\\", "project\\");
+		verifyNormalizeToBackwardSlashes("\\project\\", "\\project\\");
+	}
+	
+	private void verifyNormalizeToBackwardSlashes(String expected, String actual)
+	{
+		assertEquals("Slashes not normalized to backward slashes?", expected, MiradiZipFile.normalizeToBackwardSlashes(actual));
 	}
 
-	public void testReplaceWithOtherPossibleLeadingChar() throws Exception
+	private void verifyNormalizeToForwardSlashes(String expected, String actual)
 	{
-		verifyReplaceWithOtherPossibleLeadingChar("/", "", FileUtilities.SEPARATOR);
-		verifyReplaceWithOtherPossibleLeadingChar("", "/", FileUtilities.SEPARATOR);
-		
-		verifyReplaceWithOtherPossibleLeadingChar("project", "\\project", "\\");
-		verifyReplaceWithOtherPossibleLeadingChar("\\project", "project", "\\");
+		assertEquals("Slashes were not normalized to forward slashes?", expected, MiradiZipFile.normalizeToForwardSlashes(actual));
+	}
+	
+	public void testRemoveLeadingSlash()
+	{
+		verifyRemoveLeadingSlash("project", "project");
+		verifyRemoveLeadingSlash("project", "/project");
+		verifyRemoveLeadingSlash("project/", "project/");
+		verifyRemoveLeadingSlash("project/", "/project/");
+	}
+	
+	public void testAddLeadingSlash()
+	{
+		verifyAddLeadingSlash("/project", "project");
+		verifyAddLeadingSlash("/project", "/project");
+		verifyAddLeadingSlash("/project/", "/project/");
+		verifyAddLeadingSlash("/project/", "project/");
 	}
 
-	private void verifyReplaceWithOtherPossibleLeadingChar(String otherExpectedLeadingChar, String leadingChar, String separatorToReplace) throws Exception
+	private void verifyAddLeadingSlash(String expected, String actual)
 	{
-		assertEquals("leading char was not replaced with other option?", otherExpectedLeadingChar, MiradiZipFile.replaceWithOtherPossibleLeadingChar(leadingChar, separatorToReplace));
+		assertEquals("Leading slash was not added?", expected, MiradiZipFile.addLeadingSlash(actual, FileUtilities.SEPARATOR));
+	}
+
+	private void verifyRemoveLeadingSlash(String expected, String actual)
+	{
+		assertEquals("leading slash not removed?", expected, MiradiZipFile.removeLeadingSlash(actual, FileUtilities.SEPARATOR));
 	}
 }

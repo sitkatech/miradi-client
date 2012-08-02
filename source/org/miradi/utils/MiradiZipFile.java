@@ -22,7 +22,6 @@ package org.miradi.utils;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Enumeration;
 import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
@@ -42,58 +41,58 @@ public class MiradiZipFile extends ZipFile
 		if (entry != null)
 			return entry;
 		
-		String reversedFirstCharName = replaceWithOtherPossibleLeadingChar(name, FileUtilities.SEPARATOR);
-		entry = super.getEntry(reversedFirstCharName);
+		String nameWithForwardSlashes = normalizeToForwardSlashes(name);
+		entry = attemptGetEntry(nameWithForwardSlashes, FileUtilities.SEPARATOR);
 		if (entry != null)
 			return entry;
 		
-		String reversedPathSeparator = attemptUsingReversedPathSeparator(name);
-		if (reversedPathSeparator != null)
-		{
-			entry = super.getEntry(reversedPathSeparator);
-			if (entry != null)
-				return entry;
-			
-			reversedFirstCharName = replaceWithOtherPossibleLeadingChar(reversedPathSeparator, getPathSeparatorUsedInZipFile());
-			return super.getEntry(reversedFirstCharName);
-		}
+		String nameWithBackwardSlashes = normalizeToBackwardSlashes(name);
+		entry = attemptGetEntry(nameWithBackwardSlashes, FileUtilities.DOUBLE_BACKWARD_SLASH);
+		if (entry != null)
+			return entry;
+		
+		return null;
+	}
+
+	private ZipEntry attemptGetEntry(String name, final String separator)
+	{
+		String nameWithoutLeadingSlash = removeLeadingSlash(name, separator);
+		ZipEntry entry = super.getEntry(nameWithoutLeadingSlash);
+		if (entry != null)
+			return entry;
+		
+		String nameWithLeadingSlash = addLeadingSlash(nameWithoutLeadingSlash, separator);
+		entry = super.getEntry(nameWithLeadingSlash);
+		if (entry != null)
+			return entry;
 		
 		return null;
 	}
 	
-	private String getPathSeparatorUsedInZipFile()
+	public static String normalizeToForwardSlashes(String name)
 	{
-		Enumeration<? extends ZipEntry> entries = entries();
-		while (entries.hasMoreElements())
-		{
-			ZipEntry entry = entries.nextElement();
-			if (entry.getName().contains(FileUtilities.SEPARATOR))
-				return FileUtilities.SEPARATOR;
-			
-			if (entry.getName().contains(FileUtilities.BACKWARD_SLASH))
-				return FileUtilities.BACKWARD_SLASH;
-		}
-		
-		return FileUtilities.SEPARATOR;
+		return name.replaceAll(FileUtilities.DOUBLE_BACKWARD_SLASH, FileUtilities.SEPARATOR);
+	}
+	
+	public static String normalizeToBackwardSlashes(String name)
+	{
+		return name.replaceAll(FileUtilities.SEPARATOR, FileUtilities.DOUBLE_BACKWARD_SLASH);
 	}
 
-	public static String attemptUsingReversedPathSeparator(String name)
+	public static String removeLeadingSlash(String name, final String separator)
 	{
-		if (name.contains(FileUtilities.SEPARATOR))
-			return name.replaceAll(FileUtilities.SEPARATOR, FileUtilities.DOUBLE_BACKWARD_SLASH);
-		
-		if (name.contains(FileUtilities.BACKWARD_SLASH))
-			return name.replaceAll(FileUtilities.DOUBLE_BACKWARD_SLASH, FileUtilities.SEPARATOR);
-		
-		return null;
-	}
+		if (name.startsWith(separator))
+			return replaceFirst(separator, name, "");
 
-	public static String replaceWithOtherPossibleLeadingChar(String name, final String separator)
+		return name;		
+	}
+	
+	public static String addLeadingSlash(String name, final String separator)
 	{
-			if (name.startsWith(separator))
-				return replaceFirst(separator, name, "");
+		if (!name.startsWith(separator))
+			return separator + name;
 		
-		return separator + name;		
+		return name;
 	}
 	
 	private static String replaceFirst(String regex, String text, String replacement)
