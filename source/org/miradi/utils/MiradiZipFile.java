@@ -71,12 +71,12 @@ public class MiradiZipFile extends ZipFile
 	
 	public static String normalizeToForwardSlashes(String name)
 	{
-		return name.replaceAll(FileUtilities.DOUBLE_BACKWARD_SLASH, FileUtilities.SEPARATOR);
+		return name.replaceAll(FileUtilities.REGULAR_EXPRESSION_BACKSLASH, FileUtilities.SEPARATOR);
 	}
 	
 	public static String normalizeToBackwardSlashes(String name)
 	{
-		return name.replaceAll(FileUtilities.SEPARATOR, FileUtilities.DOUBLE_BACKWARD_SLASH);
+		return name.replaceAll(FileUtilities.SEPARATOR, FileUtilities.REGULAR_EXPRESSION_BACKSLASH);
 	}
 
 	public static String removeLeadingSlash(String name, final String separator)
