@@ -52,7 +52,7 @@ public class TestXmpz2SchemaCreator extends TestCaseWithProject
 
 	private String normalizeNewLines(String expectedLines)
 	{
-		return expectedLines.replaceAll("\\r\\n", "\\n");
+		return expectedLines.replaceAll("\r\n", "\n");
 	}
 
 	public String getExpectedLines() throws Exception
