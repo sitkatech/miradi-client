@@ -80,10 +80,10 @@ public class MiradiZipFile extends ZipFile
 	public static String attemptUsingReversedPathSeparator(String name)
 	{
 		if (name.contains(FileUtilities.SEPARATOR))
-			return name.replaceAll(FileUtilities.SEPARATOR, "\\\\");
+			return name.replaceAll(FileUtilities.SEPARATOR, FileUtilities.DOUBLE_BACKWARD_SLASH);
 		
 		if (name.contains(FileUtilities.BACKWARD_SLASH))
-			return name.replaceAll("\\\\", FileUtilities.SEPARATOR);
+			return name.replaceAll(FileUtilities.DOUBLE_BACKWARD_SLASH, FileUtilities.SEPARATOR);
 		
 		return null;
 	}
