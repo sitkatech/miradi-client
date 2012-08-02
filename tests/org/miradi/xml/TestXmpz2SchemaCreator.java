@@ -44,15 +44,15 @@ public class TestXmpz2SchemaCreator extends TestCaseWithProject
 	
 	public void testAgainstStaticSchema() throws Exception
 	{
-		String expectedSchema = replaceNewLines(getExpectedLines());
-		String actualSchema = replaceNewLines(getActualSchema());
+		String expectedSchema = normalizeNewLines(getExpectedLines());
+		String actualSchema = normalizeNewLines(getActualSchema());
 		
 		assertEquals("Generated schema doesnt match existing?", expectedSchema, actualSchema);
 	}
 
-	private String replaceNewLines(String expectedLines)
+	private String normalizeNewLines(String expectedLines)
 	{
-		return expectedLines.replaceAll("\n", "").replaceAll("\r", "");
+		return expectedLines.replaceAll("\\r\\n", "\\n");
 	}
 
 	public String getExpectedLines() throws Exception
