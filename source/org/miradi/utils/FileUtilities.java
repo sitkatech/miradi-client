@@ -157,7 +157,7 @@ public class FileUtilities
 	public static String join(String parentPath, String childPath) throws Exception
 	{
 		final String normalizedParentPath = removeTrailingForwardSlashes(parentPath);
-		final String normalizedChildPath = removeTrailingForwardSlashes(childPath);
+		final String normalizedChildPath = removeLeadingForwardSlashes(childPath);
 		final String joinedPath = normalizedParentPath + SEPARATOR + normalizedChildPath;
 		return joinedPath;
 	}
@@ -167,6 +167,11 @@ public class FileUtilities
 		if (path.endsWith(SEPARATOR))
 			return StringUtilities.stripTrailingString(path, SEPARATOR);
 		
+		return path;
+	}
+	
+	private static String removeLeadingForwardSlashes(String path) throws Exception
+	{
 		if (path.startsWith(SEPARATOR))
 			return path.replaceFirst(SEPARATOR, "");
 		
