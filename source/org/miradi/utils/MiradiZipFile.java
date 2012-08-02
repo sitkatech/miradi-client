@@ -70,8 +70,8 @@ public class MiradiZipFile extends ZipFile
 			if (entry.getName().contains(FileUtilities.SEPARATOR))
 				return FileUtilities.SEPARATOR;
 			
-			if (entry.getName().contains("\\"))
-				return "\\";
+			if (entry.getName().contains(FileUtilities.BACKWARD_SLASH))
+				return FileUtilities.BACKWARD_SLASH;
 		}
 		
 		return FileUtilities.SEPARATOR;
@@ -82,7 +82,7 @@ public class MiradiZipFile extends ZipFile
 		if (name.contains(FileUtilities.SEPARATOR))
 			return name.replaceAll(FileUtilities.SEPARATOR, "\\\\");
 		
-		if (name.contains("\\"))
+		if (name.contains(FileUtilities.BACKWARD_SLASH))
 			return name.replaceAll("\\\\", FileUtilities.SEPARATOR);
 		
 		return null;
