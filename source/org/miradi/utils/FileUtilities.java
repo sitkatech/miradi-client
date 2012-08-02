@@ -179,4 +179,5 @@ public class FileUtilities
 	}
 	
 	public static final String SEPARATOR = "/";
+	public static final String BACKWARD_SLASH = "\\";
 }
