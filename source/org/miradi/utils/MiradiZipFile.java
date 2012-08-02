@@ -55,24 +55,19 @@ public class MiradiZipFile extends ZipFile
 	private ZipEntry attemptGetEntry(String name, final String matchTo,	final String replacement, final String normalizeTo)
 	{
 		String nameWithBackwardSlashes = normalizeSlashes(name, matchTo, replacement);
-		return attemptGetEntry(nameWithBackwardSlashes, normalizeTo);
-	}
-
-	private ZipEntry attemptGetEntry(String name, final String separator)
-	{
-		String nameWithoutLeadingSlash = removeLeadingSlash(name, separator);
+		String nameWithoutLeadingSlash = removeLeadingSlash(nameWithBackwardSlashes, normalizeTo);
 		ZipEntry entry = super.getEntry(nameWithoutLeadingSlash);
 		if (entry != null)
 			return entry;
 		
-		String nameWithLeadingSlash = addLeadingSlash(nameWithoutLeadingSlash, separator);
+		String nameWithLeadingSlash = addLeadingSlash(nameWithoutLeadingSlash, normalizeTo);
 		entry = super.getEntry(nameWithLeadingSlash);
 		if (entry != null)
 			return entry;
 		
 		return null;
 	}
-	
+
 	public static String normalizeSlashes(String name, final String match, final String replacement)
 	{
 		return name.replaceAll(match, replacement);
