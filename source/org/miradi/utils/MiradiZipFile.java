@@ -41,17 +41,27 @@ public class MiradiZipFile extends ZipFile
 		if (entry != null)
 			return entry;
 		
-		String nameWithForwardSlashes = normalizeSlashes(name, FileUtilities.REGULAR_EXPRESSION_BACKSLASH, FileUtilities.SEPARATOR);
-		entry = attemptGetEntry(nameWithForwardSlashes, FileUtilities.SEPARATOR);
+		entry = attemptWithNormalizingForwardSlashes(name);
 		if (entry != null)
-			return entry;
+			return entry; 
 		
-		String nameWithBackwardSlashes = normalizeSlashes(name, FileUtilities.SEPARATOR, FileUtilities.REGULAR_EXPRESSION_BACKSLASH);
-		entry = attemptGetEntry(nameWithBackwardSlashes, FileUtilities.BACKWARD_SLASH);
+		entry = attemptWithNormalizingBackwardSlashes(name);
 		if (entry != null)
 			return entry;
 		
 		return null;
+	}
+
+	private ZipEntry attemptWithNormalizingBackwardSlashes(String name)
+	{
+		String nameWithBackwardSlashes = normalizeSlashes(name, FileUtilities.SEPARATOR, FileUtilities.REGULAR_EXPRESSION_BACKSLASH);
+		return attemptGetEntry(nameWithBackwardSlashes, FileUtilities.BACKWARD_SLASH);
+	}
+
+	private ZipEntry attemptWithNormalizingForwardSlashes(String name)
+	{
+		String nameWithForwardSlashes = normalizeSlashes(name, FileUtilities.REGULAR_EXPRESSION_BACKSLASH, FileUtilities.SEPARATOR);
+		return attemptGetEntry(nameWithForwardSlashes, FileUtilities.SEPARATOR);
 	}
 
 	private ZipEntry attemptGetEntry(String name, final String separator)
