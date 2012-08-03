@@ -55,12 +55,12 @@ public class TestMiradiZipFile extends MiradiTestCase
 	
 	private void verifyNormalizeToBackwardSlashes(String expected, String actual)
 	{
-		assertEquals("Slashes not normalized to backward slashes?", expected, MiradiZipFile.normalizeSlashes(actual, FileUtilities.SEPARATOR, FileUtilities.REGULAR_EXPRESSION_BACKSLASH));
+		assertEquals("Slashes not normalized to backward slashes?", expected, MiradiZipFile.normalizeSlashes(actual, new ToBackslashReplacement()));
 	}
 
 	private void verifyNormalizeToForwardSlashes(String expected, String actual)
 	{
-		assertEquals("Slashes were not normalized to forward slashes?", expected, MiradiZipFile.normalizeSlashes(actual, FileUtilities.REGULAR_EXPRESSION_BACKSLASH, FileUtilities.SEPARATOR));
+		assertEquals("Slashes were not normalized to forward slashes?", expected, MiradiZipFile.normalizeSlashes(actual, new ToForwardSlashReplacement()));
 	}
 	
 	public void testRemoveLeadingSlash()
