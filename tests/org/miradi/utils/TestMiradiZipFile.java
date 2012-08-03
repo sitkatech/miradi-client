@@ -79,13 +79,13 @@ public class TestMiradiZipFile extends MiradiTestCase
 	public void testAddLeadingSlash()
 	{
 		verifyAddLeadingSlash("/project", "project");
-		verifyAddLeadingSlash("/project", "/project");
-		verifyAddLeadingSlash("/project/", "/project/");
+		verifyAddLeadingSlash("//project", "/project");
+		verifyAddLeadingSlash("//project/", "/project/");
 		verifyAddLeadingSlash("/project/", "project/");
 		
 		verifyAddLeadingBackSlash("\\project", "project");
-		verifyAddLeadingBackSlash("\\project", "\\project");
-		verifyAddLeadingBackSlash("\\project\\", "\\project\\");
+		verifyAddLeadingBackSlash("\\\\project", "\\project");
+		verifyAddLeadingBackSlash("\\\\project\\", "\\project\\");
 		verifyAddLeadingBackSlash("\\project\\", "project\\");
 	}
 
@@ -96,7 +96,7 @@ public class TestMiradiZipFile extends MiradiTestCase
 	
 	private void verifyAddLeadingBackSlash(String expected, String actual)
 	{
-		verifyAddLeadingSlash(expected, actual, FileUtilities.BACKWARD_SLASH);
+		verifyAddLeadingSlash(expected, actual, FileUtilities.REGULAR_EXPRESSION_BACKSLASH);
 	}
 
 	private void verifyAddLeadingSlash(String expected, String actual, final String separator)

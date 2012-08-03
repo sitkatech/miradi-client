@@ -79,9 +79,6 @@ public class MiradiZipFile extends ZipFile
 	
 	public static String addLeadingSlash(String name, final String separator)
 	{
-		if (!name.startsWith(separator))
-			return separator + name;
-		
-		return name;
+		return name.replaceFirst("^", separator);	
 	}
 }
