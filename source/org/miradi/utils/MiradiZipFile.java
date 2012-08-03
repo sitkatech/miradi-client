@@ -22,7 +22,6 @@ package org.miradi.utils;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
@@ -45,7 +44,7 @@ public class MiradiZipFile extends ZipFile
 		if (entry != null)
 			return entry;
 
-		entry = attemptGetEntry(name, FileUtilities.SEPARATOR, FileUtilities.REGULAR_EXPRESSION_BACKSLASH, FileUtilities.BACKWARD_SLASH);
+		entry = attemptGetEntry(name, FileUtilities.SEPARATOR, FileUtilities.REGULAR_EXPRESSION_BACKSLASH, FileUtilities.REGULAR_EXPRESSION_BACKSLASH);
 		if (entry != null)
 			return entry;
 		
@@ -75,10 +74,7 @@ public class MiradiZipFile extends ZipFile
 
 	public static String removeLeadingSlash(String name, final String separator)
 	{
-		if (name.startsWith(separator))
-			return replaceFirst(separator, name, "");
-
-		return name;		
+		return name.replaceFirst("^" + separator, "");
 	}
 	
 	public static String addLeadingSlash(String name, final String separator)
@@ -87,12 +83,5 @@ public class MiradiZipFile extends ZipFile
 			return separator + name;
 		
 		return name;
-	}
-	
-	private static String replaceFirst(String regex, String text, String replacement)
-	{
-		final Pattern compiledRegex = Pattern.compile(regex, Pattern.LITERAL);
-		
-		return compiledRegex.matcher(text).replaceFirst(replacement);
 	}
 }
