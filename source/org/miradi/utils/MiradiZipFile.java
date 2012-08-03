@@ -40,26 +40,26 @@ public class MiradiZipFile extends ZipFile
 		if (entry != null)
 			return entry;
 		
-		entry = attemptGetEntry(name, FileUtilities.REGULAR_EXPRESSION_BACKSLASH, FileUtilities.SEPARATOR);
+		entry = attemptGetEntry(name, new ToForwardSlashReplacement());
 		if (entry != null)
 			return entry;
 
-		entry = attemptGetEntry(name, FileUtilities.SEPARATOR, FileUtilities.REGULAR_EXPRESSION_BACKSLASH);
+		entry = attemptGetEntry(name, new ToBackslashReplacement());
 		if (entry != null)
 			return entry;
 		
 		return null;
 	}
 
-	private ZipEntry attemptGetEntry(String name, final String matchTo,	final String normalizeTo)
+	private ZipEntry attemptGetEntry(String name, AbstractSeparatorReplacement replacement)
 	{
-		String nameWithBackwardSlashes = normalizeSlashes(name, matchTo, normalizeTo);
-		String nameWithoutLeadingSlash = removeLeadingSlash(nameWithBackwardSlashes, normalizeTo);
+		String nameWithBackwardSlashes = normalizeSlashes(name, replacement);
+		String nameWithoutLeadingSlash = removeLeadingSlash(nameWithBackwardSlashes, replacement.getReplacementString());
 		ZipEntry entry = super.getEntry(nameWithoutLeadingSlash);
 		if (entry != null)
 			return entry;
 		
-		String nameWithLeadingSlash = addLeadingSlash(nameWithoutLeadingSlash, normalizeTo);
+		String nameWithLeadingSlash = addLeadingSlash(nameWithoutLeadingSlash, replacement.getReplacementString());
 		entry = super.getEntry(nameWithLeadingSlash);
 		if (entry != null)
 			return entry;
@@ -67,9 +67,9 @@ public class MiradiZipFile extends ZipFile
 		return null;
 	}
 
-	public static String normalizeSlashes(String name, final String match, final String replacement)
+	public static String normalizeSlashes(String name, AbstractSeparatorReplacement replacement)
 	{
-		return name.replaceAll(match, replacement);
+		return name.replaceAll(replacement.getStringToReplace(), replacement.getReplacementString());
 	}
 
 	public static String removeLeadingSlash(String name, final String separator)
