@@ -70,10 +70,10 @@ public class TestMiradiZipFile extends MiradiTestCase
 		verifyRemoveLeadingSlash("project/", "project/");
 		verifyRemoveLeadingSlash("project/", "/project/");
 		
-		verifyRemoveLeadingSlash("project", "\\project", "\\\\");
-		verifyRemoveLeadingSlash("project\\", "project\\", "\\\\");
-		verifyRemoveLeadingSlash("project\\", "\\project\\", "\\\\");
-		verifyRemoveLeadingSlash("project\\json", "\\project\\json", "\\\\");
+		verifyRemoveLeadingBackSlash("project", "\\project");
+		verifyRemoveLeadingBackSlash("project\\", "project\\");
+		verifyRemoveLeadingBackSlash("project\\", "\\project\\");
+		verifyRemoveLeadingBackSlash("project\\json", "\\project\\json");
 	}
 	
 	public void testAddLeadingSlash()
@@ -99,8 +99,7 @@ public class TestMiradiZipFile extends MiradiTestCase
 		verifyAddLeadingSlash(expected, actual, FileUtilities.BACKWARD_SLASH);
 	}
 
-	private void verifyAddLeadingSlash(String expected, String actual,
-			final String separator)
+	private void verifyAddLeadingSlash(String expected, String actual, final String separator)
 	{
 		assertEquals("Leading slash was not added?", expected, MiradiZipFile.addLeadingSlash(actual, separator));
 	}
@@ -108,6 +107,11 @@ public class TestMiradiZipFile extends MiradiTestCase
 	private void verifyRemoveLeadingSlash(String expected, String actual)
 	{
 		verifyRemoveLeadingSlash(expected, actual, FileUtilities.SEPARATOR);
+	}
+	
+	private void verifyRemoveLeadingBackSlash(String expected, String actual)
+	{
+		verifyRemoveLeadingSlash(expected, actual, FileUtilities.REGULAR_EXPRESSION_BACKSLASH);
 	}
 
 	private void verifyRemoveLeadingSlash(String expected, String actual, final String separator)
