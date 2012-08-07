@@ -55,7 +55,7 @@ public class ListProjectContents
 	{
 		for(int type = 0; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
 		{
-			BaseObjectPool pool = (BaseObjectPool) project.getPool(type);
+			BaseObjectPool pool = project.getPool(type);
 			if(pool == null)
 				continue;
 			if(pool.size() == 0)
