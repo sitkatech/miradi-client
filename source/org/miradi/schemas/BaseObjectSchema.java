@@ -48,6 +48,12 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 		throw new RuntimeException("Tag is not contained in this schema. Tag = " + tag);
 	}
 	
+	protected AbstractFieldSchema addPseudoFieldSchema(final AbstractFieldSchema fieldSchema)
+	{
+		fieldSchema.setIsPseudoField();
+		return addFieldSchema(fieldSchema);
+	}
+	
 	protected AbstractFieldSchema addFieldSchema(final AbstractFieldSchema fieldSchema)
 	{
 		fieldSchemas.add(fieldSchema);
@@ -206,17 +212,17 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 	
 	public void createPseudoFieldSchemaString(final String fieldTag)
 	{
-		addFieldSchema(new FieldSchemaPseudoStringField(fieldTag));
+		addPseudoFieldSchema(new FieldSchemaPseudoStringField(fieldTag));
 	}
 	
 	public void createPseudoFieldSchemaQuestion(final String fieldTag)
 	{
-		addFieldSchema(new FieldSchemaPseudoQuestionField(fieldTag));
+		addPseudoFieldSchema(new FieldSchemaPseudoQuestionField(fieldTag));
 	}
 	
 	public void createPseudoFieldSchemaRefList(String tag)
 	{
-		addFieldSchema(new FieldSchemaPseudoRefListData(tag));
+		addPseudoFieldSchema(new FieldSchemaPseudoRefListData(tag));
 	}
 	
 	public Vector<ObjectData> createFields(BaseObject baseObjectToUse)

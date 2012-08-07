@@ -45,9 +45,14 @@ abstract public class AbstractFieldSchema
 		return isNavigationField;
 	}
 	
+	public void setIsPseudoField()
+	{
+		isPseudoField = true;
+	}
+	
 	public boolean isPseudoField()
 	{
-		return false;
+		return isPseudoField;
 	}
 	
 	public String getXmpz2ElementName()
@@ -84,4 +89,5 @@ abstract public class AbstractFieldSchema
 
 	private String tag;
 	private boolean isNavigationField;
+	private boolean isPseudoField;
 }
