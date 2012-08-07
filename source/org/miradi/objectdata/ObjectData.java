@@ -36,13 +36,8 @@ abstract public class ObjectData
 {
 	public ObjectData(String tagToUse)
 	{
-		this(tagToUse, new HashSet<String>());
-	}
-	
-	public ObjectData(String tagToUse, HashSet<String> dependencyTagsToUse)
-	{
 		tag = tagToUse;
-		dependencyTags = dependencyTagsToUse;
+		dependencyTags = new HashSet<String>();
 	}
 	
 	abstract public void set(String newValue) throws Exception;
