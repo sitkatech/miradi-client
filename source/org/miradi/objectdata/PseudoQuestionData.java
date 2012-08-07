@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objectdata;
 
-import java.util.HashSet;
-
 import org.miradi.objects.BaseObject;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
@@ -33,15 +31,6 @@ public class PseudoQuestionData  extends ObjectData
 	{
 		super(tagToUse);
 
-		object = owningObject;
-	}
-	
-	// TODO: Do we really need this dependencyTags, and if so can it be simplified?
-	// It seems like the only user passes a single tag
-	public PseudoQuestionData(BaseObject owningObject, String tagToUse, HashSet<String> dependencyTagsToUse)
-	{
-		super(tagToUse, dependencyTagsToUse);
-		
 		object = owningObject;
 	}
 	
