@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectdata;
 
-import java.util.HashSet;
-
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.questions.ChoiceQuestion;
@@ -37,7 +35,6 @@ abstract public class ObjectData
 	public ObjectData(String tagToUse)
 	{
 		tag = tagToUse;
-		dependencyTags = new HashSet<String>();
 	}
 	
 	abstract public void set(String newValue) throws Exception;
@@ -163,11 +160,6 @@ abstract public class ObjectData
 		return tag;
 	}
 	
-	public HashSet<String> getDependencyTags()
-	{
-		return dependencyTags;
-	}
-	
 	public void setNavigationField(final boolean isNavigationFieldToUse)
 	{
 		isNavigationField = isNavigationFieldToUse;
@@ -193,7 +185,6 @@ abstract public class ObjectData
 		throw new RuntimeException("This method should be overriden and must call back into the importer. Type name = " + baseObjectSchema.getObjectName() + ". Tag = " + fieldSchema.getTag() + ". Class needing to override = " +  getClass().getSimpleName());
 	}
 	
-	private HashSet<String> dependencyTags;
 	private String tag;
 	private boolean isNavigationField;
 }
