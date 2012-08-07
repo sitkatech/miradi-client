@@ -666,11 +666,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return TABLE_TAG + objectType + tag;
 	}
 
-	public ObjectDataInputField createReadOnlyObjectListTableField(int objectType, String listFieldTag, int listedType, String[] columnTags)
-	{
-		return new ObjectReadonlyObjectListTableField(getMainWindow(), getRefForType(objectType), listFieldTag, listedType, columnTags); 
-	}
-	
 	public ObjectDataInputField createRadioChoiceField(int objectType, BaseId objectId, String tagToUse, ChoiceQuestion question)
 	{
 		return new ObjectRadioButtonGroupField(project, objectType, objectId, tagToUse, question);
