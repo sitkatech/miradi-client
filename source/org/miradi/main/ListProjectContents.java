@@ -83,13 +83,10 @@ public class ListProjectContents
 	private static void listObjectContents(PrintStream out, BaseObject baseObject)
 	{
 		out.println(baseObject.getSchema().getObjectName() + ": " + baseObject.getId());
-		String[] tags = baseObject.getFieldTags();
+		Vector<String> tags = baseObject.getStoredFieldTags();
 		for(String tag : tags)
 		{
 			ObjectData field = baseObject.getField(tag);
-			if(field.isPseudoField())
-				continue;
-			
 			String value = field.get();
 			if(value.length() == 0)
 				continue;
