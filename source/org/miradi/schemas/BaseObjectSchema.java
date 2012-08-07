@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -213,11 +212,6 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 	public void createPseudoFieldSchemaQuestion(final String fieldTag)
 	{
 		addFieldSchema(new FieldSchemaPseudoQuestionField(fieldTag));
-	}
-	
-	public void createPseudoFieldSchemaQuestion(String tag, HashSet<String> set)
-	{
-		addFieldSchema(new FieldSchemaPseudoQuestionField(tag, set));
 	}
 	
 	public void createPseudoFieldSchemaRefList(String tag)
