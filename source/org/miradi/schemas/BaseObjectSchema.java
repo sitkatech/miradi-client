@@ -264,6 +264,11 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 		createPseudoFieldSchemaString(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 	}
 	
+	public boolean isPseudoField(final String tag)
+	{
+		return getFieldSchema(tag).isPseudoField();
+	}
+	
 	public String getXmpz2ElementName()
 	{
 		return getObjectName();
