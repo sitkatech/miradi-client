@@ -1147,8 +1147,7 @@ abstract public class BaseObject
 		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS))
 			return getLatestProgressReportDetails();
 		
-		ObjectData field = getField(fieldTag);
-		if(field.isPseudoField())
+		if(isPseudoField(fieldTag))
 		{
 			EAM.logError("BaseObject.getPseudoData called for: " + fieldTag);
 			return "";
