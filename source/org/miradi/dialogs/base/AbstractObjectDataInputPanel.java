@@ -48,7 +48,6 @@ import org.miradi.dialogfields.EditableCodeListField;
 import org.miradi.dialogfields.IndicatorRelevancyOverrideListField;
 import org.miradi.dialogfields.ObjectCheckBoxField;
 import org.miradi.dialogfields.ObjectChoiceField;
-import org.miradi.dialogfields.ObjectClassificationChoiceField;
 import org.miradi.dialogfields.ObjectCodeEditorField;
 import org.miradi.dialogfields.ObjectCurrencyInputField;
 import org.miradi.dialogfields.ObjectDataField;
@@ -64,7 +63,6 @@ import org.miradi.dialogfields.ObjectRadioButtonGroupField;
 import org.miradi.dialogfields.ObjectRaitingChoiceField;
 import org.miradi.dialogfields.ObjectReadonlyChoiceField;
 import org.miradi.dialogfields.ObjectReadonlyObjectListField;
-import org.miradi.dialogfields.ObjectReadonlyObjectListTableField;
 import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
 import org.miradi.dialogfields.ObjectStringInputField;
 import org.miradi.dialogfields.ObjectStringMapInputField;
@@ -470,11 +468,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new ObjectFloatingPointRestrictedInputField(getMainWindow(), getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag, column);
 	}
 	
-	public ObjectDataInputField createNumericField(int objectType, String tag, int column)
-	{
-		return new ObjectFloatingPointRestrictedInputField(getMainWindow(), objectType, getObjectIdForType(objectType), tag, column);
-	}
-
 	public ObjectDataInputField createCurrencyField(String tag)
 	{
 		return new ObjectCurrencyInputField(getMainWindow(), getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag, 10);
