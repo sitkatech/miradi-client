@@ -217,7 +217,7 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 	
 	public void createPseudoFieldSchemaQuestion(final String fieldTag)
 	{
-		addPseudoFieldSchema(new FieldSchemaPseudoQuestionField(fieldTag));
+		addPseudoFieldSchema(new FieldSchemaCode(fieldTag));
 	}
 	
 	public void createPseudoFieldSchemaRefList(String tag, final String typeNameToUse)
