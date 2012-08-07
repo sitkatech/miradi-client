@@ -543,7 +543,7 @@ abstract public class BaseObject
 	
 	public boolean isPseudoField(String fieldTag)
 	{
-		return getField(fieldTag).isPseudoField();
+		return getSchema().isPseudoField(fieldTag);
 	}
 	
 	public boolean doesFieldExist(String fieldTag)
