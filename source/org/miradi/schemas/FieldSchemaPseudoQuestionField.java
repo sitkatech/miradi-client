@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
-import java.util.HashSet;
-
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.PseudoQuestionData;
 import org.miradi.objects.BaseObject;
@@ -31,14 +29,12 @@ public class FieldSchemaPseudoQuestionField extends AbstractFieldSchema
 	public FieldSchemaPseudoQuestionField(final String tagToUse)
 	{
 		super(tagToUse);
-		
-		dependencySet = new HashSet<String>();
 	}
 
 	@Override
 	public ObjectData createField(BaseObject baseObjectToUse)
 	{
-		return new PseudoQuestionData(baseObjectToUse, getTag(), dependencySet);
+		return new PseudoQuestionData(baseObjectToUse, getTag());
 	}
 	
 	@Override
@@ -46,6 +42,4 @@ public class FieldSchemaPseudoQuestionField extends AbstractFieldSchema
 	{
 		return true;
 	}
-	
-	private HashSet<String> dependencySet;
 }
