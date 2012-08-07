@@ -274,18 +274,6 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 		return fieldSchemas.iterator();
 	}
 	
-	public int numberOfNonPseudoFields()
-	{
-		int nonPseudoFieldCount = 0;
-		for(AbstractFieldSchema fieldSchema : fieldSchemas)
-		{
-			if (!fieldSchema.isPseudoField())
-				++nonPseudoFieldCount;
-		}
-		
-		return nonPseudoFieldCount;
-	}
-	
 	abstract public int getType();
 	
 	abstract public String getObjectName();
