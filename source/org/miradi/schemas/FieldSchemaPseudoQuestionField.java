@@ -30,14 +30,9 @@ public class FieldSchemaPseudoQuestionField extends AbstractFieldSchema
 {
 	public FieldSchemaPseudoQuestionField(final String tagToUse)
 	{
-		this(tagToUse, new HashSet<String>());
-	}
-
-	public FieldSchemaPseudoQuestionField(final String tagToUse, HashSet<String> dependencySetToUse)
-	{
 		super(tagToUse);
 		
-		dependencySet = dependencySetToUse;
+		dependencySet = new HashSet<String>();
 	}
 
 	@Override
