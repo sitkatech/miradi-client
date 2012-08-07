@@ -220,9 +220,9 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 		addPseudoFieldSchema(new FieldSchemaPseudoQuestionField(fieldTag));
 	}
 	
-	public void createPseudoFieldSchemaRefList(String tag)
+	public void createPseudoFieldSchemaRefList(String tag, final String typeNameToUse)
 	{
-		addPseudoFieldSchema(new FieldSchemaPseudoRefListData(tag));
+		addPseudoFieldSchema(new FieldSchemaReflist(tag, typeNameToUse));
 	}
 	
 	public Vector<ObjectData> createFields(BaseObject baseObjectToUse)
