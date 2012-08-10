@@ -55,6 +55,7 @@ public class Translation
 		currentLanguageCode = DEFAULT_LANGUAGE_CODE;
 		textTranslations = null;
 		fieldLabelTranslations = loadProperties(getEnglishTranslationFileURL("FieldLabels.properties"));
+		StaticQuestionManager.initialize();
 	}
 
 	public static void setLocalization(URL urlOfLocalizationZip, String languageCode) throws Exception
