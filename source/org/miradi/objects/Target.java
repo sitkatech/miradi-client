@@ -71,7 +71,7 @@ public class Target extends AbstractTarget
 				appendedChoiceValues.append(";");
 			
 			ChoiceItem choiceItem = question.findChoiceByCode(habitatCodes.get(index));
-			appendedChoiceValues.append(choiceItem);
+			appendedChoiceValues.append(choiceItem.getLabel());
 		}
 		
 		return appendedChoiceValues.toString();
