@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-10 11:31-0500\n"
+"POT-Creation-Date: 2012-08-10 16:32-0500\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -5414,7 +5414,7 @@ msgstr "Uniquement Chaînes de résultats"
 msgid "Onsite Research"
 msgstr "Recherche sur site"
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:40
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:49
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:92
 msgid "Open"
 msgstr "Ouvrir"

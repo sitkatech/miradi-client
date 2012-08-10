@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-10 11:31-0500\n"
+"POT-Creation-Date: 2012-08-10 16:32-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -5286,7 +5286,7 @@ msgstr ""
 msgid "Onsite Research"
 msgstr "Penelitian di Lokasi"
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:40
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:49
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:92
 msgid "Open"
 msgstr "Buka \t"

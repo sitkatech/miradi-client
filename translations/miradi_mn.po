@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-10 11:31-0500\n"
+"POT-Creation-Date: 2012-08-10 16:32-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -5349,7 +5349,7 @@ msgstr "Зөвхөн Үр Дүнгийн Гинжин холбоосууд"
 msgid "Onsite Research"
 msgstr "Газар дээр нь  очиж судлах"
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:40
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:49
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:92
 msgid "Open"
 msgstr "Нээх"
