@@ -28,6 +28,15 @@ class ProjectListOpenAction extends ProjectListAction
 	{
 		super(tableToUse, getButtonLabel());
 	}
+	
+	@Override
+	protected boolean isProjectSelected() throws Exception
+	{
+		if (isOldProjectSelected())
+			return true;
+		
+		return super.isProjectSelected();
+	}
 
 	@Override
 	protected void doWork() throws Exception
