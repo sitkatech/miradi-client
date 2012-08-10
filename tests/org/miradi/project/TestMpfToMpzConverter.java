@@ -27,12 +27,14 @@ import java.io.InputStream;
 import org.martus.util.UnicodeStringWriter;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.CodeToUserStringMap;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.MpfToMpzConverter;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.PointList;
@@ -60,6 +62,21 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_THRESHOLDS_MAP, threshold.toJsonString());
 		verifyProject();
 	}
+	
+	public void testStrippingHtmlTags() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		final String comment = "<html><b>boldText</b> and <i>italic</i></html>";
+		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_COMMENTS, comment);
+		final String expectedMpfAsString = verifyProject();
+		
+		InputStream is = new ByteArrayInputStream(StringUtilities.getUtf8EncodedBytes(expectedMpfAsString));
+		ProjectForTesting projectToFill = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToFillWithMpf");
+		ProjectLoader.loadProject(is, projectToFill);
+		ORefList strategyRefs = projectToFill.getStrategyPool().getRefList();
+		Strategy loadedStrategy = Strategy.find(projectToFill, strategyRefs.getFirstElement());
+		assertEquals("Comment should not have html tags?", HtmlUtilities.stripAllHtmlTags(comment), loadedStrategy.getComment());
+	}
 
 	public void testConvertingFullProject() throws Exception
 	{
@@ -86,11 +103,10 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 		verifyProject();
 	}
 
-	private void verifyProject() throws Exception
+	private String verifyProject() throws Exception
 	{
 		File temporaryMpfFile = File.createTempFile("$$$tempMpfFile", null);
 		File temporaryMpzFile = File.createTempFile("$$$tempMpzFile", ".zip");
-		System.out.println(temporaryMpfFile.getAbsolutePath());
 		try
 		{
 			ProjectSaver.saveProject(getProject(), temporaryMpfFile);
@@ -100,8 +116,9 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 			String expectedMpfAsString = reloadIntoProjectToRemoveDefaultValues(actualMpf);
 				
 			actualMpf = stripTimeStamp(actualMpf);
-			expectedMpfAsString = stripTimeStamp(expectedMpfAsString);
-			assertEquals("Mpf was not converted to mpz?", expectedMpfAsString, actualMpf);
+			String expectedMpfAsStringWithoutTimeStamp = stripTimeStamp(expectedMpfAsString);
+			assertEquals("Mpf was not converted to mpz?", expectedMpfAsStringWithoutTimeStamp, actualMpf);
+			return expectedMpfAsString;
 		}
 		finally 
 		{
