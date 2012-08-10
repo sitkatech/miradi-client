@@ -57,8 +57,8 @@ public class StrategySchema extends FactorSchema
 		createPseudoFieldSchemaQuestion(Strategy.PSEUDO_TAG_RATING_SUMMARY_VALUE);
 		createPseudoFieldSchemaQuestion(Strategy.PSEUDO_TAG_TAXONOMY_CODE_VALUE);
 		createPseudoFieldSchemaString(Strategy.PSEUDO_TAG_ACTIVITIES);
-		createPseudoFieldSchemaRefList(Strategy.PSEUDO_TAG_RELEVANT_GOAL_REFS, GOAL);
-		createPseudoFieldSchemaRefList(Strategy.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS, OBJECTIVE);
+		createPseudoFieldSchemaRefList(Strategy.PSEUDO_TAG_RELEVANT_GOAL_REFS);
+		createPseudoFieldSchemaRefList(Strategy.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
 	}
 
 	public static int getObjectType()
