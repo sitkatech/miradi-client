@@ -35,12 +35,6 @@ public class PseudoQuestionData  extends ObjectData
 	}
 	
 	@Override
-	public boolean isPseudoField()
-	{
-		return true;
-	}
-	
-	@Override
 	public void set(String newValue) throws Exception
 	{
 	}
