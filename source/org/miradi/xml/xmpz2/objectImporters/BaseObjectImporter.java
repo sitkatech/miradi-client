@@ -44,13 +44,13 @@ public class BaseObjectImporter extends AbstractXmpz2ObjectImporter
 		
 		for(AbstractFieldSchema fieldSchema : getBaseObjectSchema())
 		{
-			ObjectData objectData = fieldSchema.createField(baseObject);
-			if (objectData.isPseudoField())
+			if (fieldSchema.isPseudoField())
 				continue;
 
 			if (isCustomImportField(fieldSchema.getTag()))
 				continue;
-			
+
+			ObjectData objectData = fieldSchema.createField(baseObject);
 			objectData.readAsXmpz2XmlData(getImporter(), baseObjectNode, refToUse, baseObjectSchema, fieldSchema);
 		}
 	}
