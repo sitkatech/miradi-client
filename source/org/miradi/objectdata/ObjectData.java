@@ -60,11 +60,6 @@ abstract public class ObjectData
 		return get().equals(text);
 	}
 
-	public boolean isPseudoField()
-	{
-		return false;
-	}
-	
 	public boolean isUserText()
 	{
 		return false;

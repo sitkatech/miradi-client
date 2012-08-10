@@ -31,12 +31,6 @@ public class PseudoStringData  extends StringData
 	}
 
 	@Override
-	public boolean isPseudoField()
-	{
-		return true;
-	}
-	
-	@Override
 	public void set(String newValue) throws Exception
 	{
 		if (newValue.length()!=0)
