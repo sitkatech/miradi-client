@@ -42,9 +42,9 @@ abstract public class FactorSchema extends BaseObjectSchema
 		createPseudoFieldSchemaString(Factor.PSEUDO_TAG_DIRECT_THREATS);
 		createPseudoFieldSchemaString(Factor.PSEUDO_TAG_TARGETS);
 		createPseudoFieldSchemaString(Factor.PSEUDO_TAG_INDICATORS);
-		createPseudoFieldSchemaRefList(Factor.PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS, CONCEPTUAL_MODEL);
-		createPseudoFieldSchemaRefList(Factor.PSEUDO_TAG_RESULTS_CHAIN_REFS, RESULTS_CHAIN);
-		createPseudoFieldSchemaRefList(Factor.PSEUDO_TAG_REFERRING_TAG_REFS, TAGGED_OBJECT_SET_ELEMENT_NAME);
+		createPseudoFieldSchemaRefList(Factor.PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS);
+		createPseudoFieldSchemaRefList(Factor.PSEUDO_TAG_RESULTS_CHAIN_REFS);
+		createPseudoFieldSchemaRefList(Factor.PSEUDO_TAG_REFERRING_TAG_REFS);
 	}
 
 	protected void addDetailsField()

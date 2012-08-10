@@ -20,46 +20,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
-import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objectdata.ObjectData;
+import org.miradi.objectdata.PseudoRefListData;
+import org.miradi.objects.BaseObject;
 
-public class ConceptualModelDiagramSchema extends DiagramObjectSchema
+public class FieldSchemaPseudoReflistField extends AbstractFieldSchema
 {
-	public ConceptualModelDiagramSchema()
+	public FieldSchemaPseudoReflistField(String tagToUse)
 	{
-		super();
-	}
-	
-	@Override
-	protected void fillFieldSchemas()
-	{
-		super.fillFieldSchemas();
-		
-		createPseudoFieldSchemaRefList(ConceptualModelDiagram.PSEUDO_DRAFT_STRATEGY_REFS);
-	}
-
-	public static int getObjectType()
-	{
-		return ObjectType.CONCEPTUAL_MODEL_DIAGRAM;
-	}
-	
-	@Override
-	public int getType()
-	{
-		return getObjectType();
+		super(tagToUse);
 	}
 
 	@Override
-	public String getObjectName()
+	public ObjectData createField(BaseObject baseObjectToUse)
 	{
-		return OBJECT_NAME;
+		return new PseudoRefListData(baseObjectToUse, getTag());
 	}
-
-	@Override
-	public String getXmpz2ElementName()
-	{
-		return CONCEPTUAL_MODEL;
-	}
-	
-	public static final String OBJECT_NAME = "ConceptualModelDiagram";
 }

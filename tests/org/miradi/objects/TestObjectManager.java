@@ -26,6 +26,7 @@ import org.martus.util.DirectoryUtils;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.ids.KeyEcologicalAttributeId;
+import org.miradi.main.EAM;
 import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -37,11 +38,14 @@ import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.project.ProjectLoader;
 import org.miradi.project.ProjectSaver;
+import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
+import org.miradi.schemas.StrategySchema;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.NullProgressMeter;
 
 
@@ -92,6 +96,25 @@ public class TestObjectManager extends MiradiTestCase
 		{
 			verifyObjectLifecycle(representativeSampleOfTypes[i]);
 		}
+	}
+	
+	public void testPseudoQuestionField() throws Exception
+	{
+		Target target = getProject().createTarget();
+		getProject().fillObjectUsingCommand(target, Target.TAG_HABITAT_ASSOCIATION, new CodeList(new String[]{HabitatAssociationQuestion.SAVANNA_CODE}).toString());
+		final String pseudoValue = target.getSchema().getFieldSchema(Target.PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE).createField(target).get();
+		assertEquals("Habitat code not retrieved from pseudo field?", EAM.text("Savanna"), pseudoValue);
+	}
+	
+	public void testPseudoReflistField() throws Exception
+	{
+		DiagramFactor diagramFactor = getProject().createAndAddFactorToDiagram(StrategySchema.getObjectType());
+		Strategy strategy = Strategy.find(getProject(), diagramFactor.getWrappedORef());
+		getProject().turnOnDraft(strategy);
+		
+		DiagramObject diagramObject = getProject().getTestingDiagramObject();
+		final String pseudoValue = diagramObject.getSchema().getFieldSchema(ConceptualModelDiagram.PSEUDO_DRAFT_STRATEGY_REFS).createField(diagramObject).get();
+		assertEquals("Incorrect pseudo reflist of draft strategy refs?", new ORefList(strategy).toString(), pseudoValue);		
 	}
 
 	public void testPseudoTagTargetViability() throws Exception
@@ -235,6 +258,11 @@ public class TestObjectManager extends MiradiTestCase
 		assertNotNull("Missing pool type " + type, pool);
 		BaseObject created = (BaseObject)pool.getRawObject(createdId);
 		assertNotNull("Pool doesn't have object type " + created);
+	}
+	
+	private ProjectForTesting getProject()
+	{
+		return project;
 	}
 	
 	ProjectForTesting project;

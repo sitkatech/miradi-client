@@ -217,12 +217,12 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 	
 	public void createPseudoFieldSchemaQuestion(final String fieldTag)
 	{
-		addPseudoFieldSchema(new FieldSchemaCode(fieldTag));
+		addPseudoFieldSchema(new FieldSchemaPseudoQuestionField(fieldTag));
 	}
 	
-	public void createPseudoFieldSchemaRefList(String tag, final String typeNameToUse)
+	public void createPseudoFieldSchemaRefList(String tag)
 	{
-		addPseudoFieldSchema(new FieldSchemaReflist(tag, typeNameToUse));
+		addPseudoFieldSchema(new FieldSchemaPseudoReflistField(tag));
 	}
 	
 	public Vector<ObjectData> createFields(BaseObject baseObjectToUse)

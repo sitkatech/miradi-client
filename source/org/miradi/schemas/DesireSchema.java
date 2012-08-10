@@ -44,9 +44,9 @@ abstract public class DesireSchema extends BaseObjectSchema
 		createPseudoFieldSchemaString(Desire.PSEUDO_TAG_TARGETS);
 		createPseudoFieldSchemaString(Desire.PSEUDO_TAG_DIRECT_THREATS);
 		createPseudoFieldSchemaString(Desire.PSEUDO_TAG_FACTOR);
-		createPseudoFieldSchemaRefList(Desire.PSEUDO_TAG_RELEVANT_INDICATOR_REFS, INDICATOR);
-		createPseudoFieldSchemaRefList(Desire.PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS, STRATEGY);
-		createPseudoFieldSchemaRefList(Desire.PSEUDO_TAG_RELEVANT_ACTIVITY_REFS, ACTIVITY);
+		createPseudoFieldSchemaRefList(Desire.PSEUDO_TAG_RELEVANT_INDICATOR_REFS);
+		createPseudoFieldSchemaRefList(Desire.PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS);
+		createPseudoFieldSchemaRefList(Desire.PSEUDO_TAG_RELEVANT_ACTIVITY_REFS);
 		createPseudoFieldSchemaString(Desire.PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE);
 		createPseudoFieldSchemaString(Desire.PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS);
 	}
