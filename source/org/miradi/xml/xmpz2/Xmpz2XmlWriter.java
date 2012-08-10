@@ -404,10 +404,10 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	
 	public void writeFieldElement(final BaseObject baseObject, final AbstractFieldSchema fieldSchema) throws Exception
 	{
-		ObjectData field = baseObject.getField(fieldSchema.getTag());
-		if (field.isPseudoField())
+		if (fieldSchema.isPseudoField())
 			return;
-				
+
+		ObjectData field = baseObject.getField(fieldSchema.getTag());
 		field.writeAsXmpz2XmlData(this, baseObject.getSchema(), fieldSchema);
 	}
 	
