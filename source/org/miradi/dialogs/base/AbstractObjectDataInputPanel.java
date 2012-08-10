@@ -23,7 +23,6 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.util.HashSet;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
@@ -931,26 +930,13 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		Vector<ObjectDataField> thisFields = getFields();
 		for(ObjectDataField field : thisFields)
 		{
-			HashSet<String> tags = getTag(field, tagToUse);
-			if (tags.contains(field.getTag()))
+			if (tagToUse.equals(field.getTag()))
 				return true;
 		}
 		
 		return false;
 	}
 
-	private HashSet<String> getTag(ObjectDataField field, String tagToUse)
-	{
-		BaseObject baseObject = BaseObject.find(getProject(), field.getORef());
-		if (!baseObject.doesFieldExist(tagToUse))
-			return BaseObject.createSet(tagToUse);;
-			
-		if (!baseObject.isPseudoField(tagToUse))
-			return BaseObject.createSet(tagToUse);;
- 
-		return new HashSet<String>();
-	}
-	
 	public static int STD_SHORT = 5;
 	public static final int DEFAULT_TEXT_COLUM_COUNT = 50;
 	
