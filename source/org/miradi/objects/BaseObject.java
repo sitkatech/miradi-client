@@ -770,14 +770,6 @@ abstract public class BaseObject
 		createFieldsFromBaseObjectSchema();
 	}
 	
-	public static HashSet<String> createSet(String parentTagToUse)
-	{
-		HashSet<String> singleItemSet = new HashSet<String>();
-		singleItemSet.add(parentTagToUse);
-		
-		return singleItemSet;
-	}
-	
 	protected static ChoiceQuestion getQuestion(Class questionClass)
 	{
 		return StaticQuestionManager.getQuestion(questionClass);
