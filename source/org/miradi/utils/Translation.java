@@ -52,6 +52,9 @@ public class Translation
 	
 	public static void restoreDefaultLocalization() throws IOException
 	{
+		if (currentLanguageCode == DEFAULT_LANGUAGE_CODE)
+			return;
+
 		currentLanguageCode = DEFAULT_LANGUAGE_CODE;
 		textTranslations = null;
 		fieldLabelTranslations = loadProperties(getEnglishTranslationFileURL("FieldLabels.properties"));
