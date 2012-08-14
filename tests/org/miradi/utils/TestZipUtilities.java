@@ -46,7 +46,7 @@ public class TestZipUtilities extends TestCaseWithProject
 		}
 		finally
 		{
-			DirectoryUtils.deleteAllFilesOnlyInDirectory(tempDirectory);
+			DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
 			mpzFile.delete();
 		}
 	}
