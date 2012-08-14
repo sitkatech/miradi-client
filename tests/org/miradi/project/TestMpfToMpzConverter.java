@@ -24,6 +24,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.InputStream;
 
+import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeStringWriter;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.CodeToUserStringMap;
@@ -122,8 +123,8 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 		}
 		finally 
 		{
-			temporaryMpfFile.deleteOnExit();
-			temporaryMpzFile.deleteOnExit();
+			DirectoryUtils.deleteEntireDirectoryTree(temporaryMpzFile);
+			DirectoryUtils.deleteEntireDirectoryTree(temporaryMpfFile);
 		}
 	}
 
