@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-10 16:32-0500\n"
+"POT-Creation-Date: 2012-08-14 12:31-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -3460,7 +3460,7 @@ msgstr "Inserisci un nome etichetta"
 msgid "Entire Project Duration"
 msgstr "Durata totale del progetto"
 
-#: Miradi/source/org/miradi/utils/Translation.java:312
+#: Miradi/source/org/miradi/utils/Translation.java:315
 msgid "Error"
 msgstr "Errore"
 
@@ -5290,7 +5290,7 @@ msgstr "Non efficace"
 #: Miradi/source/org/miradi/questions/PriorityRatingQuestion.java:36
 #: Miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
 #: Miradi/source/org/miradi/questions/TrendQuestion.java:37
-#: Miradi/source/org/miradi/utils/Translation.java:307
+#: Miradi/source/org/miradi/utils/Translation.java:310
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:281
 #: Miradi/source/org/miradi/dialogs/planning/treenodes/UnspecifiedBaseObject.java:45
 msgid "Not Specified"

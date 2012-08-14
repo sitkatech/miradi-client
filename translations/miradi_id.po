@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-10 16:32-0500\n"
+"POT-Creation-Date: 2012-08-14 12:31-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -3346,7 +3346,7 @@ msgstr "Masukkan Tag Baru "
 msgid "Entire Project Duration"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/Translation.java:312
+#: Miradi/source/org/miradi/utils/Translation.java:315
 msgid "Error"
 msgstr "Kesalahan "
 
@@ -5170,7 +5170,7 @@ msgstr "Tidak Efektif"
 #: Miradi/source/org/miradi/questions/PriorityRatingQuestion.java:36
 #: Miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
 #: Miradi/source/org/miradi/questions/TrendQuestion.java:37
-#: Miradi/source/org/miradi/utils/Translation.java:307
+#: Miradi/source/org/miradi/utils/Translation.java:310
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:281
 #: Miradi/source/org/miradi/dialogs/planning/treenodes/UnspecifiedBaseObject.java:45
 msgid "Not Specified"
