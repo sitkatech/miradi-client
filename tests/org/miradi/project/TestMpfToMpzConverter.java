@@ -64,6 +64,21 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 		verifyProject();
 	}
 	
+	public void testStrippingQuotesTags() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		final String comment = "&quot; inside quotes &quot;";
+		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_COMMENTS, comment);
+		final String expectedMpfAsString = verifyProject();
+		
+		InputStream is = new ByteArrayInputStream(StringUtilities.getUtf8EncodedBytes(expectedMpfAsString));
+		ProjectForTesting projectToFill = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToFillWithMpf");
+		ProjectLoader.loadProject(is, projectToFill);
+		ORefList strategyRefs = projectToFill.getStrategyPool().getRefList();
+		Strategy loadedStrategy = Strategy.find(projectToFill, strategyRefs.getFirstElement());
+		assertEquals("Quotes in comment not restored correctly?", comment, loadedStrategy.getComment());
+	}
+	
 	public void testStrippingHtmlTags() throws Exception
 	{
 		Strategy strategy = getProject().createStrategy();

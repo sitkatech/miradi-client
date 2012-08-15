@@ -36,8 +36,10 @@ import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringReader;
 import org.miradi.ids.BaseId;
 import org.miradi.legacyprojects.ObjectManifest;
+import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
@@ -296,11 +298,22 @@ public class MpfToMpzConverter extends AbstractConverter
 		String tag = tokenizer.nextToken(ProjectLoader.EQUALS_DELIMITER_TAB_PREFIXED);
 		EnhancedJsonObject jsonObjects = refToJsonMap.get(ref);
 		String json = StringUtilities.substringAfter(line, ProjectLoader.EQUALS_DELIMITER);
-		json = json.replaceAll("&quot;", "\\\\&quot;");
+
+		if (isCodeToUserStringMapField(ref, tag))
+			json = json.replaceAll("&quot;", "\\\\&quot;");
+		
 		json = HtmlUtilities.convertHtmlToPlainText(json);
 		json = HtmlUtilities.stripAllHtmlTags(json);
 		putDefaultValue(jsonObjects, json, tag);
 		refToJsonMap.put(ref, jsonObjects);
+	}
+
+	private boolean isCodeToUserStringMapField(ORef ref, String tag)
+	{
+		BaseObject baseObject = BaseObject.find(getProject(), ref);
+		ObjectData field = baseObject.getField(tag);
+		
+		return field.isCodeToUserStringMapData();
 	}
 	
 	private Project getProject()
