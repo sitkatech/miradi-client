@@ -62,6 +62,18 @@ public class TestStringUtilities extends MiradiTestCase
 		verifySubstringAfter("something=somethingelse", "tag=something=somethingelse");
 	}
 	
+	public void testGetLabelLineCount()
+	{
+		verifyLineCount(1, "line");
+		verifyLineCount(2, "line <br/> second line");
+		verifyLineCount(3, "line <br/> second line <br/>");
+	}
+		
+	private void verifyLineCount(int expectedLineCount, String label)
+	{
+		assertEquals("Incorrect line count?", expectedLineCount, StringUtilities.getLabelLineCount(label));
+	}
+	
 	private void verifySubstringAfter(final String expectedValue, final String testString)
 	{
 		assertEquals("did not split correctly?", expectedValue, StringUtilities.substringAfter(testString, "="));
