@@ -64,6 +64,7 @@ public class RenameOldProjectDoer
 		}
 		catch (Exception e)
 		{
+			EAM.logException(e);
 			EAM.notifyDialog(EAM.text("Rename Failed"));
 		}
 		finally
