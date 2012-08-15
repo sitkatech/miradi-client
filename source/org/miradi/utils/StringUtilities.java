@@ -78,5 +78,12 @@ public class StringUtilities
 		return name.substring(0, lastIndexOfSuffix);
 	}
 	
+	public static int getLabelLineCount(String factorlabel)
+	{
+		String label = factorlabel + "AvoidSplitTrimmingTrailingNewlines";
+		String[] lines = label.split(HtmlUtilities.BR_TAG);
+		return lines.length;
+	}
+	
 	public static final String EMPTY_SPACE= " ";
 }

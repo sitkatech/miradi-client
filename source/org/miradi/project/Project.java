@@ -28,7 +28,6 @@ import java.util.Vector;
 
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.diagram.cells.DiagramGroupBoxCell;
 import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.UnexpectedNonSideEffectException;
@@ -786,7 +785,7 @@ public class Project
 		
 		final String diagramInitialHelpTextFileName = "DiagramInitialHelpText.html";
 		String helpText = ResourcesHandler.loadResourceFile(diagramInitialHelpTextFileName);
-		int labelLineCount = DiagramGroupBoxCell.getLabelLineCount(helpText);
+		int labelLineCount = StringUtilities.getLabelLineCount(helpText);
 		final int NUMBER_OF_PIXELS_PER_LINE = 20;
 		int height = labelLineCount * NUMBER_OF_PIXELS_PER_LINE; 
 		
