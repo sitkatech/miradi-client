@@ -42,8 +42,8 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.PointList;
+import org.miradi.utils.StringUtilities;
 
 public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListener
 {
@@ -123,14 +123,7 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 
 	private int getLabelLineCount()
 	{
-		return getLabelLineCount(getWrappedFactor().getLabel());
-	}
-
-	public static int getLabelLineCount(String factorlabel)
-	{
-		String label = factorlabel + "AvoidSplitTrimmingTrailingNewlines";
-		String[] lines = label.split(HtmlUtilities.BR_TAG);
-		return lines.length;
+		return StringUtilities.getLabelLineCount(getWrappedFactor().getLabel());
 	}
 
 	private void saveLocationAndSize(Point location, Dimension size) throws Exception
