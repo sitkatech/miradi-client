@@ -515,11 +515,6 @@ abstract public class BaseObject
 		setData(fieldTag, nonHtmlDataValue);
 	}
 	
-	public String getDataAsNonHtml(String fieldTag)
-	{
-		return  HtmlUtilities.convertHtmlToPlainText(getData(fieldTag));
-	}
-
 	public void setData(String fieldTag, String dataValue) throws Exception
 	{
 		if(TAG_ID.equals(fieldTag))

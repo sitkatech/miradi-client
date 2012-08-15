@@ -44,7 +44,7 @@ public class TestBaseObject extends TestCaseWithProject
 		for (int index = 0; index < allPossibleValuesToConvertToHtml.length; ++index)
 		{
 			cause.setHtmlDataFromNonHtml(Cause.TAG_COMMENTS, allPossibleValuesToConvertToHtml[index]);
-			String data = cause.getDataAsNonHtml(Cause.TAG_COMMENTS);
+			String data = HtmlUtilities.convertHtmlToPlainText(cause.getData(Cause.TAG_COMMENTS));
 			assertEquals("data was not converted?", allPossibleValuesToConvertToHtml[index], data);
 		}
 	}
