@@ -66,32 +66,26 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 	
 	public void testStrippingQuotesTags() throws Exception
 	{
-		Strategy strategy = getProject().createStrategy();
 		final String comment = "&quot; inside quotes &quot;";
-		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_COMMENTS, comment);
-		final String expectedMpfAsString = verifyProject();
-		
-		InputStream is = new ByteArrayInputStream(StringUtilities.getUtf8EncodedBytes(expectedMpfAsString));
-		ProjectForTesting projectToFill = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToFillWithMpf");
-		ProjectLoader.loadProject(is, projectToFill);
-		ORefList strategyRefs = projectToFill.getStrategyPool().getRefList();
-		Strategy loadedStrategy = Strategy.find(projectToFill, strategyRefs.getFirstElement());
-		assertEquals("Quotes in comment not restored correctly?", comment, loadedStrategy.getComment());
+		verifyStrategyComments(comment, comment);
 	}
 	
 	public void testStrippingHtmlTags() throws Exception
 	{
+		verifyStrategyComments(HtmlUtilities.stripAllHtmlTags("<html><b>boldText</b> and <i>italic</i></html>"), "<html><b>boldText</b> and <i>italic</i></html>");
+	}
+
+	private void verifyStrategyComments(final String expectedComments, final String comment) throws Exception
+	{
 		Strategy strategy = getProject().createStrategy();
-		final String comment = "<html><b>boldText</b> and <i>italic</i></html>";
 		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_COMMENTS, comment);
 		final String expectedMpfAsString = verifyProject();
-		
 		InputStream is = new ByteArrayInputStream(StringUtilities.getUtf8EncodedBytes(expectedMpfAsString));
 		ProjectForTesting projectToFill = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToFillWithMpf");
 		ProjectLoader.loadProject(is, projectToFill);
 		ORefList strategyRefs = projectToFill.getStrategyPool().getRefList();
-		Strategy loadedStrategy = Strategy.find(projectToFill, strategyRefs.getFirstElement());
-		assertEquals("Comment should not have html tags?", HtmlUtilities.stripAllHtmlTags(comment), loadedStrategy.getComment());
+		Strategy loadedStrategy = Strategy.find(projectToFill, strategyRefs.getFirstElement());		
+		assertEquals("Comment should not change during conversion?", expectedComments, loadedStrategy.getComment());
 	}
 
 	public void testConvertingFullProject() throws Exception
