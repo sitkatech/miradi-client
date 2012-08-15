@@ -59,7 +59,7 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 		Strategy strategy = getProject().createStrategy();
 		Indicator indicator = getProject().createAndPopulateIndicator(strategy);
 		CodeToUserStringMap threshold = new CodeToUserStringMap();
-		threshold.putUserString(StatusQuestion.POOR, "&quot; &pos; &gt; &lt; &amp;");
+		threshold.putUserString(StatusQuestion.POOR, "&quot; &apos; &gt; &lt; &amp;");
 		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_THRESHOLDS_MAP, threshold.toJsonString());
 		verifyProject();
 	}
