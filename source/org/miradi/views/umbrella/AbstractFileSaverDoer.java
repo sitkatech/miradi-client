@@ -93,7 +93,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 	{
 	}
 
-	private void doWorkWIthProgressDialog(ProgressInterface progressInterface, File chosen) throws Exception
+	private void doWorkWithProgressDialog(ProgressInterface progressInterface, File chosen) throws Exception
 	{
 		boolean workWasCompleted = doWork(chosen, progressInterface);
 		if (workWasCompleted)
@@ -132,7 +132,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 		@Override
 		protected void doRealWork() throws Exception
 		{
-			doWorkWIthProgressDialog(getProgressIndicator(), destinationFile);
+			doWorkWithProgressDialog(getProgressIndicator(), destinationFile);
 		}
 		
 		private File destinationFile;
