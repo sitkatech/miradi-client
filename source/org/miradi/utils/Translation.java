@@ -52,7 +52,7 @@ public class Translation
 	
 	public static void restoreDefaultLocalization() throws IOException
 	{
-		if (currentLanguageCode == DEFAULT_LANGUAGE_CODE)
+		if (DEFAULT_LANGUAGE_CODE.equals(currentLanguageCode))
 			return;
 
 		currentLanguageCode = DEFAULT_LANGUAGE_CODE;
