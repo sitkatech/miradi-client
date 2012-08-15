@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-14 12:31-0500\n"
+"POT-Creation-Date: 2012-08-15 12:46-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -920,11 +920,11 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:47
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:57
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:88
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:89
 msgid "A project or file by this name already exists: "
 msgstr "Sudah ada proyek atau berkas lain yang memakai nama ini: "
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:75
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:76
 msgid "A project or file by this name already exists: %s"
 msgstr ""
 
@@ -3333,8 +3333,8 @@ msgstr ""
 msgid "Enter As: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:106
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:119
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:107
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:120
 msgid "Enter New Name"
 msgstr "Masukkan Nama Baru "
 
@@ -4212,11 +4212,11 @@ msgstr "Vegetasi yang Dikenalkan"
 msgid "Introduction"
 msgstr "Pendahuluan "
 
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:94
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:95
 msgid "Invalid project name:"
 msgstr "Nama proyek tidak valid: "
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:81
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:82
 msgid "Invalid project name: %s"
 msgstr ""
 
@@ -5766,8 +5766,8 @@ msgstr "Strategi dan Aktivitas yang Relevan"
 msgid "Remove Team Member"
 msgstr "Menghilangkan Anggota Tim "
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:57
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:67
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:58
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:68
 msgid "Rename Failed"
 msgstr "Mengganti Nama Tidak Berhasil "
 

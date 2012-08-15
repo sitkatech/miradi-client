@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-14 12:31-0500\n"
+"POT-Creation-Date: 2012-08-15 12:46-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -988,11 +988,11 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:47
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:57
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:88
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:89
 msgid "A project or file by this name already exists: "
 msgstr "Проект або файл під цим іменем уже існує:"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:75
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:76
 msgid "A project or file by this name already exists: %s"
 msgstr ""
 
@@ -3394,8 +3394,8 @@ msgstr ""
 msgid "Enter As: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:106
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:119
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:107
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:120
 msgid "Enter New Name"
 msgstr "Уведіть нову назву"
 
@@ -4255,11 +4255,11 @@ msgstr "Інтродукована рослинність"
 msgid "Introduction"
 msgstr "Вступ"
 
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:94
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:95
 msgid "Invalid project name:"
 msgstr "Не дійсна назва проекту:"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:81
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:82
 msgid "Invalid project name: %s"
 msgstr ""
 
@@ -5807,8 +5807,8 @@ msgstr "Відповідні Стратегії та Дії"
 msgid "Remove Team Member"
 msgstr "Видалити виконавця"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:57
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:67
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:58
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:68
 msgid "Rename Failed"
 msgstr "Не вдалося перейменувати "
 
