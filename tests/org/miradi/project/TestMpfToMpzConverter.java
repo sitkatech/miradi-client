@@ -59,15 +59,14 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 		Strategy strategy = getProject().createStrategy();
 		Indicator indicator = getProject().createAndPopulateIndicator(strategy);
 		CodeToUserStringMap threshold = new CodeToUserStringMap();
-		threshold.putUserString(StatusQuestion.POOR, "&quot; &apos; &gt; &lt; &amp;");
+		threshold.putUserString(StatusQuestion.POOR, commentWithXmlEscapedChars);
 		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_THRESHOLDS_MAP, threshold.toJsonString());
 		verifyProject();
 	}
 	
-	public void testStrippingQuotesTags() throws Exception
+	public void testHandlingOfXmlValuesTags() throws Exception
 	{
-		final String comment = "&quot; inside quotes &quot;";
-		verifyStrategyComments(comment, comment);
+		verifyStrategyComments(commentWithXmlEscapedChars, commentWithXmlEscapedChars);
 	}
 	
 	public void testStrippingHtmlTags() throws Exception
@@ -154,4 +153,6 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 		int indexOfLastLine = mpf.indexOf("--");
 		return mpf.substring(0, indexOfLastLine);
 	}
+	
+	private static final String commentWithXmlEscapedChars = "&quot; &apos; &gt; &lt; &amp;";
 }
