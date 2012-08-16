@@ -65,6 +65,9 @@ public class TestMiradiZipFile extends MiradiTestCase
 	
 	public void testGetFullyNormalized() throws Exception
 	{
+		verifyNormalizedPath("a", "a");
+		verifyNormalizedPath("a", "/a");
+		verifyNormalizedPath("a", "\\a");
 		verifyNormalizedPath("a/b/c", "a\\b/c");
 		verifyNormalizedPath("a/b", "/a/b");
 		verifyNormalizedPath("a/b", "\\a\\b");
