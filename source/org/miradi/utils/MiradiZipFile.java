@@ -41,35 +41,17 @@ public class MiradiZipFile extends ZipFile
 		if (entry != null)
 			return entry;
 
-		String normalizedSearchFor = getFullyNormalized(searchFor);
+		String normalizedSearchFor = ZipUtilities.getFullyNormalized(searchFor);
 		Enumeration<? extends ZipEntry> entries = entries();
 		while(entries.hasMoreElements())
 		{
 			ZipEntry thisEntry = entries.nextElement();
 			String rawEntryName = thisEntry.getName();
-			String normalizedThisName = getFullyNormalized(rawEntryName);
+			String normalizedThisName = ZipUtilities.getFullyNormalized(rawEntryName);
 			if(normalizedThisName.equals(normalizedSearchFor))
 				return thisEntry;
 		}
 		
 		return null;
-	}
-
-	public static String getFullyNormalized(String rawEntryName)
-	{
-		AbstractSeparatorReplacement toForward = new ToForwardSlashReplacement();
-		String entryNameWithForwardSlashes = normalizeSlashes(rawEntryName, toForward);
-		String forwardSlashReplacementString = toForward.getReplacementString();
-		return removeLeadingSlash(entryNameWithForwardSlashes, forwardSlashReplacementString);
-	}
-
-	public static String normalizeSlashes(String name, AbstractSeparatorReplacement replacement)
-	{
-		return name.replaceAll(replacement.getStringToReplace(), replacement.getReplacementString());
-	}
-
-	public static String removeLeadingSlash(String name, final String separator)
-	{
-		return name.replaceFirst("^" + separator, "");
 	}
 }

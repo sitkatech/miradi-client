@@ -180,4 +180,22 @@ public class ZipUtilities
 		}
 		zipOut.closeEntry();
 	}
+
+	public static String getFullyNormalized(String rawEntryName)
+	{
+		AbstractSeparatorReplacement toForward = new ToForwardSlashReplacement();
+		String entryNameWithForwardSlashes = normalizeSlashes(rawEntryName, toForward);
+		String forwardSlashReplacementString = toForward.getReplacementString();
+		return removeLeadingSlash(entryNameWithForwardSlashes, forwardSlashReplacementString);
+	}
+
+	public static String normalizeSlashes(String name, AbstractSeparatorReplacement replacement)
+	{
+		return name.replaceAll(replacement.getStringToReplace(), replacement.getReplacementString());
+	}
+
+	public static String removeLeadingSlash(String name, final String separator)
+	{
+		return name.replaceFirst("^" + separator, "");
+	}
 }
