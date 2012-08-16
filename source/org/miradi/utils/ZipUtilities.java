@@ -166,8 +166,9 @@ public class ZipUtilities
 		if (isMacResourceForkPath(fileToZip))
 			return;
 		
-		String relativeName = fullName.substring(basePath.length());
-		ZipEntry fileEntry = new ZipEntry(relativeName);
+		String rawPath = fullName.substring(basePath.length());
+		String normalizedPath = getFullyNormalized(rawPath);
+		ZipEntry fileEntry = new ZipEntry(normalizedPath);
 		zipOut.putNextEntry(fileEntry);
 		FileInputStream in = new FileInputStream(fileToZip);
 		try
