@@ -22,6 +22,7 @@ package org.miradi.utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
@@ -34,37 +35,32 @@ public class MiradiZipFile extends ZipFile
 	}
 	
 	@Override
-	public ZipEntry getEntry(String name)
+	public ZipEntry getEntry(String searchFor)
 	{
-		ZipEntry entry = super.getEntry(name);
-		if (entry != null)
-			return entry;
-		
-		entry = attemptGetEntry(name, new ToForwardSlashReplacement());
+		ZipEntry entry = super.getEntry(searchFor);
 		if (entry != null)
 			return entry;
 
-		entry = attemptGetEntry(name, new ToBackslashReplacement());
-		if (entry != null)
-			return entry;
+		String normalizedSearchFor = getFullyNormalized(searchFor);
+		Enumeration<? extends ZipEntry> entries = entries();
+		while(entries.hasMoreElements())
+		{
+			ZipEntry thisEntry = entries.nextElement();
+			String rawEntryName = thisEntry.getName();
+			String normalizedThisName = getFullyNormalized(rawEntryName);
+			if(normalizedThisName.equals(normalizedSearchFor))
+				return thisEntry;
+		}
 		
 		return null;
 	}
 
-	private ZipEntry attemptGetEntry(String name, AbstractSeparatorReplacement replacement)
+	public static String getFullyNormalized(String rawEntryName)
 	{
-		String nameWithBackwardSlashes = normalizeSlashes(name, replacement);
-		String nameWithoutLeadingSlash = removeLeadingSlash(nameWithBackwardSlashes, replacement.getReplacementString());
-		ZipEntry entry = super.getEntry(nameWithoutLeadingSlash);
-		if (entry != null)
-			return entry;
-		
-		String nameWithLeadingSlash = addLeadingSlash(nameWithoutLeadingSlash, replacement.getReplacementString());
-		entry = super.getEntry(nameWithLeadingSlash);
-		if (entry != null)
-			return entry;
-		
-		return null;
+		AbstractSeparatorReplacement toForward = new ToForwardSlashReplacement();
+		String entryNameWithForwardSlashes = normalizeSlashes(rawEntryName, toForward);
+		String forwardSlashReplacementString = toForward.getReplacementString();
+		return removeLeadingSlash(entryNameWithForwardSlashes, forwardSlashReplacementString);
 	}
 
 	public static String normalizeSlashes(String name, AbstractSeparatorReplacement replacement)
@@ -75,10 +71,5 @@ public class MiradiZipFile extends ZipFile
 	public static String removeLeadingSlash(String name, final String separator)
 	{
 		return name.replaceFirst("^" + separator, "");
-	}
-	
-	public static String addLeadingSlash(String name, final String separator)
-	{
-		return name.replaceFirst("^", separator);	
 	}
 }
