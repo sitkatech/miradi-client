@@ -51,7 +51,8 @@ import org.miradi.project.ProjectInfo;
 import org.miradi.project.ProjectLoader;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
-
+//FIXME medium: This class needs to use ZipUtilities to eliminate duplication of
+// zipFile and zipEntry creation 
 public class MpfToMpzConverter extends AbstractConverter
 {
 	public MpfToMpzConverter(Project projectToUse)
