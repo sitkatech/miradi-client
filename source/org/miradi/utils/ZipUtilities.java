@@ -141,7 +141,6 @@ public class ZipUtilities
 
 	private static void addToZip(ZipOutputStream zipOut, File directoryOrFileToZip, String basePath) throws IOException
 	{
-		//FIXME medium - Examine these two code paths, and if possible combine them.  
 		if(directoryOrFileToZip.isDirectory())
 			addDirectoryToZip(zipOut, directoryOrFileToZip, basePath);
 		else
