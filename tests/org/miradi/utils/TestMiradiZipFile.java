@@ -65,9 +65,14 @@ public class TestMiradiZipFile extends MiradiTestCase
 	
 	public void testGetFullyNormalized() throws Exception
 	{
-		assertEquals("a/b/c", MiradiZipFile.getFullyNormalized("a\\b/c"));
-		assertEquals("a/b", MiradiZipFile.getFullyNormalized("/a/b"));
-		assertEquals("a/b", MiradiZipFile.getFullyNormalized("\\a\\b"));
+		verifyNormalizedPath("a/b/c", "a\\b/c");
+		verifyNormalizedPath("a/b", "/a/b");
+		verifyNormalizedPath("a/b", "\\a\\b");
+	}
+
+	private void verifyNormalizedPath(final String expected, final String actual)
+	{
+		assertEquals(expected, MiradiZipFile.getFullyNormalized(actual));
 	}
 	
 	public void testRemoveLeadingSlash()
