@@ -45,14 +45,14 @@ public class MpzProjectImporter extends AbstractProjectImporter
 	@Override
 	protected void createProject(File importFile, File newProjectFile, ProgressInterface progressIndicator) throws Exception
 	{
-		possiblyNotifyUserOfAutomaticMigration(importFile);
 		ProgressDialog dialog = new ProgressDialog(getMainWindow(), EAM.text("Importing MPZ"));
 		MiradiBackgroundWorkerThread worker = new ImportMpzWorker(importFile, newProjectFile, dialog);
 		dialog.doWorkInBackgroundWhileShowingProgress(worker);
 		worker.cleanup();
 	}
 
-	private void possiblyNotifyUserOfAutomaticMigration(File importFile) throws Exception
+	@Override
+	protected void possiblyNotifyUserOfAutomaticMigration(File importFile) throws Exception
 	{
 		final MiradiZipFile zipFile = new MiradiZipFile(importFile);
 		try

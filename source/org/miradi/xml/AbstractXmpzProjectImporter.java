@@ -73,5 +73,10 @@ abstract public class AbstractXmpzProjectImporter extends AbstractZippedXmlImpor
 		}
 	}
 	
+	@Override
+	protected void possiblyNotifyUserOfAutomaticMigration(File file) throws Exception
+	{
+	}
+	
 	abstract protected AbstractXmlImporter createXmpzXmlImporter(Project projectToFill,	ProgressInterface progressIndicator) throws Exception;
 }
