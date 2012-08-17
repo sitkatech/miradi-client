@@ -128,7 +128,7 @@ public class TestZipUtilities extends TestCaseWithProject
 
 	private void verifyNormalizedPath(final String expected, final String actual)
 	{
-		assertEquals(expected, ZipUtilities.getFullyNormalized(actual));
+		assertEquals(expected, ZipUtilities.getNormalizedWithoutLeadingSlash(actual));
 	}
 	
 	public void testRemoveLeadingSlash()

@@ -167,7 +167,7 @@ public class ZipUtilities
 			return;
 		
 		String rawPath = fullName.substring(basePath.length());
-		String normalizedPath = getFullyNormalized(rawPath);
+		String normalizedPath = getNormalizedWithoutLeadingSlash(rawPath);
 		ZipEntry fileEntry = new ZipEntry(normalizedPath);
 		zipOut.putNextEntry(fileEntry);
 		FileInputStream in = new FileInputStream(fileToZip);
@@ -182,7 +182,7 @@ public class ZipUtilities
 		zipOut.closeEntry();
 	}
 
-	public static String getFullyNormalized(String rawEntryName)
+	public static String getNormalizedWithoutLeadingSlash(String rawEntryName)
 	{
 		AbstractSeparatorReplacement toForward = new ToForwardSlashReplacement();
 		String entryNameWithForwardSlashes = normalizeSlashes(rawEntryName, toForward);

@@ -41,13 +41,13 @@ public class MiradiZipFile extends ZipFile
 		if (entry != null)
 			return entry;
 
-		String normalizedSearchFor = ZipUtilities.getFullyNormalized(searchFor);
+		String normalizedSearchFor = ZipUtilities.getNormalizedWithoutLeadingSlash(searchFor);
 		Enumeration<? extends ZipEntry> entries = entries();
 		while(entries.hasMoreElements())
 		{
 			ZipEntry thisEntry = entries.nextElement();
 			String rawEntryName = thisEntry.getName();
-			String normalizedThisName = ZipUtilities.getFullyNormalized(rawEntryName);
+			String normalizedThisName = ZipUtilities.getNormalizedWithoutLeadingSlash(rawEntryName);
 			if(normalizedThisName.equals(normalizedSearchFor))
 				return thisEntry;
 		}
