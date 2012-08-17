@@ -140,6 +140,7 @@ public abstract class AbstractProjectImporter
 		if (projectFileName == null)
 			return null;
 		
+		possiblyNotifyUserOfAutomaticMigration(fileToImport);
 		ProgressDialog progressDialog = new ProgressDialog(getMainWindow(), EAM.text("Importing..."));
 		Worker worker = new Worker(progressDialog, fileToImport, projectFileName);
 		progressDialog.doWorkInBackgroundWhileShowingProgress(worker);
@@ -255,6 +256,8 @@ public abstract class AbstractProjectImporter
 	protected abstract void createProject(File importFile, File newProjectFile, ProgressInterface progressIndicator)  throws Exception;
 	
 	protected abstract GenericMiradiFileFilter[] getFileFilters();
+	
+	abstract protected void possiblyNotifyUserOfAutomaticMigration(File file) throws Exception;
 	
 	private MainWindow mainWindow;
 }

@@ -71,12 +71,12 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 	@Override
 	public void createProject(File importFile, File newProjectFile, ProgressInterface progressIndicator) throws Exception
 	{
-		possiblyNotifyUserOfAutomaticMigration(importFile);	
 		Project project = importProject(importFile, progressIndicator);
 		ProjectSaver.saveProject(project, newProjectFile);
 	}
 
-	private void possiblyNotifyUserOfAutomaticMigration(File file) throws Exception
+	@Override
+	protected void possiblyNotifyUserOfAutomaticMigration(File file) throws Exception
 	{
 		MiradiZipFile zipFile = new MiradiZipFile(file);
 		try
