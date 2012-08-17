@@ -373,7 +373,7 @@ public class MpzToMpfConverter extends AbstractConverter
 	private String getNameOfTopLevelDirectory(ZipEntry entry)
 	{
 		String rawEntryName = entry.getName();
-		String normalizedEntryName = ZipUtilities.getFullyNormalized(rawEntryName);
+		String normalizedEntryName = ZipUtilities.getNormalizedWithoutLeadingSlash(rawEntryName);
 		File file = new File(normalizedEntryName);
 		while(file.getParentFile() != null && !file.getParentFile().getName().equals(""))
 		{
@@ -487,7 +487,7 @@ public class MpzToMpfConverter extends AbstractConverter
 	private int extractVersion() throws Exception
 	{
 		String versionEntryPath = getVersionEntryPath();
-		String versionEntryName = ZipUtilities.getFullyNormalized(versionEntryPath);
+		String versionEntryName = ZipUtilities.getNormalizedWithoutLeadingSlash(versionEntryPath);
 		ZipEntry versionEntry = getZipFile().getEntry(versionEntryName);
 		if(versionEntry == null)
 			throw new Exception("Version not found: " + versionEntryPath);
