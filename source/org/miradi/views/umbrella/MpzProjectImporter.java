@@ -30,7 +30,6 @@ import org.miradi.main.MainWindow;
 import org.miradi.project.MpzToMpfConverter;
 import org.miradi.utils.GenericMiradiFileFilter;
 import org.miradi.utils.MiradiBackgroundWorkerThread;
-import org.miradi.utils.MiradiZipFile;
 import org.miradi.utils.MpzFileFilterForChooserDialog;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.ZipFileFilterForChooserDialog;
@@ -54,16 +53,7 @@ public class MpzProjectImporter extends AbstractProjectImporter
 	@Override
 	protected void possiblyNotifyUserOfAutomaticMigration(File importFile) throws Exception
 	{
-		final MiradiZipFile zipFile = new MiradiZipFile(importFile);
-		try
-		{
-			if(MpzToMpfConverter.needsMigration(zipFile))
-				notifyUserOfAutoMigration();
-		}
-		finally
-		{
-			zipFile.close();
-		}
+		CpmzProjectImporter.possiblyNotifyUserOfAutoMigration(importFile);
 	}
 	
 	static class ImportMpzWorker extends MiradiBackgroundWorkerThread

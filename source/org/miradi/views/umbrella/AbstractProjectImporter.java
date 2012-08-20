@@ -235,7 +235,7 @@ public abstract class AbstractProjectImporter
 		return new ZipEntryInputStreamWithSeek(zipFile, zipEntry);
 	}
 	
-	public void notifyUserOfAutoMigration() throws Exception
+	public static void notifyUserOfAutoMigration() throws Exception
 	{
 		EAM.showHtmlInfoMessageOkDialog(AUTO_MIGRATION_MESSAGE_FILE_NAME);
 	}
