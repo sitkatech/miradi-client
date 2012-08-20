@@ -785,7 +785,7 @@ public class Project
 		
 		final String diagramInitialHelpTextFileName = "DiagramInitialHelpText.html";
 		String helpText = ResourcesHandler.loadResourceFile(diagramInitialHelpTextFileName);
-		int labelLineCount = StringUtilities.getLabelLineCount(helpText);
+		int labelLineCount = HtmlUtilities.getLabelLineCount(helpText);
 		final int NUMBER_OF_PIXELS_PER_LINE = 20;
 		int height = labelLineCount * NUMBER_OF_PIXELS_PER_LINE; 
 		
