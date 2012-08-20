@@ -98,9 +98,9 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 		}
 	}
 
-	private void possiblyNotifyUserOfAutoMigration(File mpzFile)	throws Exception
+	public static void possiblyNotifyUserOfAutoMigration(File mpzFile)	throws Exception
 	{
-		MiradiZipFile mpzZipFile = new MiradiZipFile(mpzFile);
+		final MiradiZipFile mpzZipFile = new MiradiZipFile(mpzFile);
 		try
 		{
 			if(MpzToMpfConverter.needsMigration(mpzZipFile))
