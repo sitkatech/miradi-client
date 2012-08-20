@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-17 11:47-0500\n"
+"POT-Creation-Date: 2012-08-20 09:01-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -913,7 +913,7 @@ msgstr ""
 "è misurata come la proporzione della popolazione del Target di "
 "Conservazione</html>"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:207
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:208
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Importazione fallita: <br><p> %s </p></html>"
 
@@ -4127,7 +4127,7 @@ msgstr "Importa Codici di Contabilità"
 msgid "Import Completed"
 msgstr "Importazione completata"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:186
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:187
 msgid "Import Completed.  Would you like to open %s?"
 msgstr "Importazione completata. Vuoi aprire %s?"
 
@@ -4155,7 +4155,7 @@ msgstr "Importa..."
 msgid "Importing ConPro Data..."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/MpzProjectImporter.java:49
+#: Miradi/source/org/miradi/views/umbrella/MpzProjectImporter.java:48
 msgid "Importing MPZ"
 msgstr ""
 
@@ -4168,7 +4168,7 @@ msgstr ""
 msgid "Importing XML..."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:143
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:144
 msgid "Importing..."
 msgstr ""
 
@@ -5418,7 +5418,7 @@ msgstr "Apri"
 msgid "Open Anyway"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:187
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:188
 #: Miradi/source/org/miradi/main/MainWindow.java:616
 msgid "Open Project"
 msgstr "Apri progetto"
@@ -7798,7 +7798,7 @@ msgstr ""
 "dati di progetto ma lo schema XML è in evoluzione. Le prossime versioni "
 "esporteranno i dati in diversi formati."
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:250
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:251
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -8288,7 +8288,7 @@ msgstr "Indefinito"
 msgid "Underline"
 msgstr "Sottolineato"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:206
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:207
 msgid "Unexpected error"
 msgstr ""
 

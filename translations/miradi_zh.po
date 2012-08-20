@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-17 11:47-0500\n"
+"POT-Creation-Date: 2012-08-20 09:01-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -809,7 +809,7 @@ msgid ""
 "proportion of the target's population.</html>"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:207
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:208
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>导入失败：<br><p> %s </p></html> \t\t"
 
@@ -3914,7 +3914,7 @@ msgstr "导入会计编码 \t\t"
 msgid "Import Completed"
 msgstr "导入完成 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:186
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:187
 msgid "Import Completed.  Would you like to open %s?"
 msgstr ""
 
@@ -3942,7 +3942,7 @@ msgstr "导入... \t\t"
 msgid "Importing ConPro Data..."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/MpzProjectImporter.java:49
+#: Miradi/source/org/miradi/views/umbrella/MpzProjectImporter.java:48
 msgid "Importing MPZ"
 msgstr ""
 
@@ -3955,7 +3955,7 @@ msgstr ""
 msgid "Importing XML..."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:143
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:144
 msgid "Importing..."
 msgstr ""
 
@@ -5163,7 +5163,7 @@ msgstr "打开 \t\t"
 msgid "Open Anyway"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:187
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:188
 #: Miradi/source/org/miradi/main/MainWindow.java:616
 msgid "Open Project"
 msgstr ""
@@ -7451,7 +7451,7 @@ msgid ""
 "the data in different formats."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:250
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:251
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -7933,7 +7933,7 @@ msgstr "未定义"
 msgid "Underline"
 msgstr "下划线"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:206
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:207
 msgid "Unexpected error"
 msgstr ""
 
