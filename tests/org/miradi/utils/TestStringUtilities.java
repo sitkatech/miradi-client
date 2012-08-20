@@ -71,7 +71,7 @@ public class TestStringUtilities extends MiradiTestCase
 		
 	private void verifyLineCount(int expectedLineCount, String label)
 	{
-		assertEquals("Incorrect line count?", expectedLineCount, StringUtilities.getLabelLineCount(label));
+		assertEquals("Incorrect line count?", expectedLineCount, HtmlUtilities.getLabelLineCount(label));
 	}
 	
 	private void verifySubstringAfter(final String expectedValue, final String testString)

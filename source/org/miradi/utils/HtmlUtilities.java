@@ -237,6 +237,13 @@ public class HtmlUtilities
 		
 		return trimmedText;
 	}
+	
+	public static int getLabelLineCount(String labelToUse)
+	{
+		String label = labelToUse + "AvoidSplitTrimmingTrailingNewlines";
+		String[] lines = label.split(BR_TAG);
+		return lines.length;
+	}
 
 	public static final String BR_TAG = "<br/>";
 	public static final String NEW_LINE = "\n";
