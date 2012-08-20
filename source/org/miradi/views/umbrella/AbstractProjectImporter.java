@@ -198,6 +198,7 @@ public abstract class AbstractProjectImporter
 		for (int i = 0; i < filters.length; ++i)
 		{
 			fileChooser.addChoosableFileFilter(filters[i]);
+			fileChooser.setFileFilter(filters[i]);
 		}
 	}
 
