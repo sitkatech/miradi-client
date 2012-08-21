@@ -55,6 +55,9 @@ public class FileSystemProjectOrDirectoryNode extends FileSystemTreeNode
 			if (LegacyProjectUtilities.isExistingLocalProject(file))
 				return true;
 			
+			if (isMiradi3BackupsDirectory(file))
+				return false;
+			
 			if (isExternalReportsDirectory(file))
 				return false;
 			
