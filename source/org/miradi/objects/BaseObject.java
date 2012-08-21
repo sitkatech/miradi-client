@@ -963,12 +963,17 @@ abstract public class BaseObject
 		Iterator iter = factors.iterator();
 		while(iter.hasNext())
 		{
-			if(result.length() > 0)
-				result.append("\n");
+			if(result.length() == 0)
+				result.append("<ul>");
 			
 			Factor factor = (Factor)iter.next();
+			result.append("<li>");
 			result.append(factor.getLabel());
+			result.append("</li>");
 		}
+		
+		if(result.length() > 0)
+			result.append("</ul>");
 		
 		return result.toString();
 	}
