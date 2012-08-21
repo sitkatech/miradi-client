@@ -61,7 +61,6 @@ import org.miradi.objectdata.RelevancyOverrideSetData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objectdata.StringRefMapData;
 import org.miradi.objectdata.TagListData;
-import org.miradi.objecthelpers.BaseObjectByNameSorter;
 import org.miradi.objecthelpers.CodeToChoiceMap;
 import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.CodeToCodeMap;
@@ -965,21 +964,25 @@ abstract public class BaseObject
 	
 	public String getLabelsAsMultiline(ORefList refs)
 	{
-		Vector<BaseObject> objects = new Vector<BaseObject>();
+		Vector<String> labels = new Vector<String>();
 		for(int i = 0; i < refs.size(); ++i)
-			objects.add(BaseObject.find(getObjectManager(), refs.get(i)));
+		{
+			ORef ref = refs.get(i);
+			BaseObject baseObject = BaseObject.find(getObjectManager(), ref);
+			labels.add(baseObject.getLabel());
+		}
 		
-		Collections.sort(objects, new BaseObjectByNameSorter());
+		Collections.sort(labels, String.CASE_INSENSITIVE_ORDER);
 
 		StringBuffer result = new StringBuffer();
-		for(int index = 0; index < objects.size(); ++index)
+		for(int index = 0; index < labels.size(); ++index)
 		{
 			if(result.length() == 0)
 				result.append(HtmlUtilities.UL_START_TAG);
 			
-			BaseObject baseObject = objects.get(index);
+			String label = labels.get(index);
 			result.append(HtmlUtilities.LI_START_TAG);
-			result.append(baseObject.getLabel());
+			result.append(label);
 			result.append(HtmlUtilities.LI_END_TAG);
 		}
 		
