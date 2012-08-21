@@ -22,6 +22,7 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -34,6 +35,26 @@ public class TestBaseObject extends TestCaseWithProject
 	public TestBaseObject(String name)
 	{
 		super(name);
+	}
+	
+	public void testGetLabelsAsMultiline() throws Exception
+	{
+		ORef causeRef1 = getProject().createObject(ObjectType.CAUSE);
+		Factor cause1 = Factor.findFactor(getProject(), causeRef1);
+		ORef causeRef2 = getProject().createObject(ObjectType.CAUSE);
+		Factor cause2 = Factor.findFactor(getProject(), causeRef2);
+
+		getProject().setObjectData(cause1, BaseObject.TAG_LABEL, "Label 1");
+		getProject().setObjectData(cause2, BaseObject.TAG_LABEL, "Label 2");
+		
+		FactorSet factors = new FactorSet();
+		factors.attemptToAdd(cause1);
+		factors.attemptToAdd(cause2);
+		String labels = cause1.getLabelsAsMultiline(factors);
+		assertNotContains("Newline in psuedo result?", "\n", labels);
+		assertStartsWith("Didn't start with <ul>?", "<ul>", labels);
+		assertContains("Didn't have cause1?", "<li>" + cause1.getLabel() + "</li>", labels);
+		assertContains("Didn't have cause2?", "<li>" + cause2.getLabel() + "</li>", labels);
 	}
 	
 	public void testSetHtmlDataFromNonHtml() throws Exception
