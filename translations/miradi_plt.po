@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-20 09:16-0500\n"
+"POT-Creation-Date: 2012-08-21 10:01-0500\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -790,7 +790,7 @@ msgid ""
 "proportion of the target's population.</html>"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:208
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:209
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr ""
 
@@ -7321,7 +7321,7 @@ msgid ""
 "the data in different formats."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:251
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:252
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -7787,7 +7787,7 @@ msgstr ""
 msgid "Underline"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:207
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:208
 msgid "Unexpected error"
 msgstr ""
 
