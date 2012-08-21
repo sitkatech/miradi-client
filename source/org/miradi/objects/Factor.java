@@ -402,7 +402,7 @@ abstract public class Factor extends BaseObject
 				return getFactorRelatedTargets();
 			
 			if(fieldTag.equals(PSEUDO_TAG_INDICATORS))
-				return getBaseObjectLabelsOnASingleLine(getDirectOrIndirectIndicatorRefs());
+				return getLabelsAsMultiline(getDirectOrIndirectIndicatorRefs());
 			
 			if(fieldTag.equals(PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS))
 				return DiagramObject.getDiagramRefsContainingFactor(getProject(), ConceptualModelDiagramSchema.getObjectType(), getRef()).toString();
@@ -470,7 +470,7 @@ abstract public class Factor extends BaseObject
 	private String getDesiresAsMultiline(int desireType, IdList desireIds)
 	{
 		ORefList refs = new ORefList(desireType, desireIds);
-		return getBaseObjectLabelsOnASingleLine(refs);
+		return getLabelsAsMultiline(refs);
 	}
 	
 	public static Factor findFactor(ObjectManager objectManager, ORef factorRef)

@@ -581,7 +581,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	
 	private ChoiceItem createLabelsOnSingleLine(Desire desire, ORefList refs)
 	{
-		String labelsOnASingleLine = desire.getBaseObjectLabelsOnASingleLine(refs);
+		String labelsOnASingleLine = desire.getLabelsAsMultiline(refs);
 		
 		return new TaglessChoiceItem(labelsOnASingleLine);
 	}
