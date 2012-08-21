@@ -948,7 +948,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		if (description.length() > 0)
 		{
 			concatenated += fieldLabel;
-			concatenated += "\n";
+			concatenated += HtmlUtilities.NEW_LINE;
 			concatenated +=description;
 		}
 		
