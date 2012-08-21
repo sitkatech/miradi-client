@@ -54,6 +54,7 @@ import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.HtmlUtilities;
 
 public class ProjectRepairer
 {
@@ -95,10 +96,13 @@ public class ProjectRepairer
 	private void addToQuarantine(BaseObject object) throws Exception
 	{
 		String typeName = object.getObjectManager().getInternalObjectTypeName(object.getType());
-		getProject().appendToQuarantineFile("# " + new Date() + ", Version " + Miradi.MAIN_VERSION + "\n");
-		getProject().appendToQuarantineFile("ORef: " + object.getRef() + " # " + typeName + "\n");
-		getProject().appendToQuarantineFile(object.toJson().toString(2));
-		getProject().appendToQuarantineFile("\n");
+		StringBuffer quarantineText = new StringBuffer();
+		quarantineText.append("# " + new Date() + ", Version " + Miradi.MAIN_VERSION + HtmlUtilities.BR_TAG);
+		quarantineText.append("ORef: " + object.getRef() + " # " + typeName + HtmlUtilities.BR_TAG);
+		quarantineText.append(HtmlUtilities.replaceNonHtmlNewlines(object.toJson().toString(2)));
+		quarantineText.append(HtmlUtilities.BR_TAG);
+		
+		getProject().appendToQuarantineFile(quarantineText.toString());
 	}
 
 	public void repairProblemsWherePossible() throws Exception
