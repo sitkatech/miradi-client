@@ -99,7 +99,7 @@ public class TestBaseObject extends TestCaseWithProject
 		refs.add(causeMiddleRef);
 		refs.add(causeLastRef);
 		refs.add(causeFirstRef);
-		String result = doesNotMatterWhichObject.getBaseObjectLabelsOnASingleLine(refs);
+		String result = doesNotMatterWhichObject.getLabelsAsMultiline(refs);
 		int firstAt = result.indexOf(FIRST_STRING);
 		int middleAt = result.indexOf(MIDDLE_STRING);
 		int lastAt = result.indexOf(LAST_STRING);

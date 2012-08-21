@@ -133,7 +133,7 @@ public class Strategy extends Factor
 			return new StrategyClassificationQuestion().findChoiceByCode(getTaxonomyCode()).getLabel();
 		
 		if (fieldTag.equals(PSEUDO_TAG_ACTIVITIES))
-			return getBaseObjectLabelsOnASingleLine(getActivityRefs());
+			return getLabelsAsMultiline(getActivityRefs());
 
 		if (fieldTag.equals(PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS))
 			return getRelevantObjectivesRefsAsString();

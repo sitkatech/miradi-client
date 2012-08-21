@@ -222,7 +222,7 @@ public class Indicator extends BaseObject
 
 	private String getIndicatorMethodsSingleLine()
 	{
-		return getBaseObjectLabelsOnASingleLine(getMethodRefs());
+		return getLabelsAsMultiline(getMethodRefs());
 	}
 
 	@Override

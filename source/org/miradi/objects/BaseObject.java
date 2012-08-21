@@ -957,11 +957,6 @@ abstract public class BaseObject
 		}
 	}
 	
-	public String getBaseObjectLabelsOnASingleLine(ORefList refs)
-	{
-		return getLabelsAsMultiline(refs);
-	}
-	
 	public String getLabelsAsMultiline(FactorSet factors)
 	{
 		ORefList refs = new ORefList(factors.getFactorRefs());
