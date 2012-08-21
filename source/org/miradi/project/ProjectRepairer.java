@@ -381,7 +381,7 @@ public class ProjectRepairer
 		ORefList missingObjectRefs = new ORefList();
 		for (int objectType = 0; objectType < ObjectType.OBJECT_TYPE_COUNT; ++objectType)
 		{
-			PoolWithIdAssigner pool = (PoolWithIdAssigner) project.getPool(objectType);
+			PoolWithIdAssigner pool = project.getPool(objectType);
 			if (pool == null)
 				continue;
 			
