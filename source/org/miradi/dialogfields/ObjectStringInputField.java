@@ -33,6 +33,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.HtmlUtilities;
+import org.miradi.utils.StringUtilities;
 
 public class ObjectStringInputField extends ObjectTextInputField
 {
@@ -64,7 +65,7 @@ public class ObjectStringInputField extends ObjectTextInputField
 	@Override
 	public void setText(String newValue)
 	{
-		newValue.replaceAll("\n", " ");
+		newValue.replaceAll(HtmlUtilities.NEW_LINE, StringUtilities.EMPTY_SPACE);
 		newValue = HtmlUtilities.convertHtmlToPlainText(newValue);
 		
 		super.setText(newValue);
