@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import java.awt.Color;
+import java.util.Collections;
+import java.util.Vector;
 import java.util.regex.Pattern;
 
 import javax.swing.text.html.StyleSheet;
@@ -253,6 +255,28 @@ public class HtmlUtilities
 			firstLine = value.substring(0, newlineAt) + "...";
 		
 		return firstLine;
+	}
+
+	public static String createHtmlBulletList(Vector<String> labels)
+	{
+		Collections.sort(labels, String.CASE_INSENSITIVE_ORDER);
+	
+		StringBuffer result = new StringBuffer();
+		for(int index = 0; index < labels.size(); ++index)
+		{
+			if(result.length() == 0)
+				result.append(UL_START_TAG);
+			
+			String label = labels.get(index);
+			result.append(LI_START_TAG);
+			result.append(label);
+			result.append(LI_END_TAG);
+		}
+		
+		if(result.length() > 0)
+			result.append(UL_END_TAG);
+		
+		return result.toString();
 	}
 
 	public static final String BR_TAG = "<br/>";
