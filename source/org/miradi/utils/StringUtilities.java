@@ -79,14 +79,4 @@ public class StringUtilities
 	}
 	
 	public static final String EMPTY_SPACE= " ";
-
-	public static String getFirstLineWithTruncationIndicated(final String value)
-	{
-		String firstLine = value;
-		int newlineAt = value.indexOf(HtmlUtilities.BR_TAG);
-		if (newlineAt >= 0)
-			firstLine = value.substring(0, newlineAt) + "...";
-		
-		return firstLine;
-	}
 }

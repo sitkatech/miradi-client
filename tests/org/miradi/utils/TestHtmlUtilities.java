@@ -28,6 +28,13 @@ public class TestHtmlUtilities extends MiradiTestCase
 	{
 		super(name);
 	}
+	
+	public void testGetFirstLineWithTruncationIndicated()
+	{
+		verifyGetFirstLineWithTruncationIndicated("", "");
+		verifyGetFirstLineWithTruncationIndicated("single line", "single line");
+		verifyGetFirstLineWithTruncationIndicated("Line 1 ...", "Line 1 <br/> line 2");
+	}
 
 	public void testGetNormalizedAndSanitizedHtmlText()
 	{
@@ -188,5 +195,10 @@ public class TestHtmlUtilities extends MiradiTestCase
 	private void verifyReplacingTags(final String htmlText, final String tagToReplace, final String replacement, final String expectedValue)
 	{
 		assertEquals("html tag was not replaced?", expectedValue, HtmlUtilities.replaceHtmlTags(htmlText, tagToReplace, replacement));
+	}
+	
+	private void verifyGetFirstLineWithTruncationIndicated(String expctedValue,	String actualValue)
+	{
+		assertEquals("Incorrect turncation of lines?", expctedValue, HtmlUtilities.getFirstLineWithTruncationIndicated(actualValue));
 	}
 }
