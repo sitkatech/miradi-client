@@ -41,12 +41,19 @@ public class DashboardCommentsField extends AbstractDashboardClickableField
 	{
 		CodeToUserStringMap map = dashboard.getCommentsMap();
 		String mapValue = map.getUserString(stringMapCode);
-		String firstLine = mapValue;
-		int newlineAt = mapValue.indexOf("\n");
-		if (newlineAt >= 0)
-			firstLine = mapValue.substring(0, newlineAt) + "...";
+		String firstLine = getFirstLineWithTruncationIndicated(mapValue);
 		
 		labelComponentToUse.setText(XmlUtilities2.convertXmlTextToPlainText(firstLine));
+	}
+
+	public static String getFirstLineWithTruncationIndicated(final String value)
+	{
+		String firstLine = value;
+		int newlineAt = value.indexOf("\n");
+		if (newlineAt >= 0)
+			firstLine = value.substring(0, newlineAt) + "...";
+		
+		return firstLine;
 	}
 	
 	public boolean hasComments() throws Exception
