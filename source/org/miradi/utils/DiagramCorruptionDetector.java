@@ -201,7 +201,7 @@ public class DiagramCorruptionDetector
 		}
 		
 		if(body.length() > 0)
-			body.append("\n<hr></hr>\n");
+			body.append("<hr></hr>");
 	
 		return body.toString();
 	}
