@@ -30,6 +30,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
+import org.miradi.utils.HtmlUtilities;
 
 abstract public class AbstractMiradiProjectSaver
 {
@@ -45,7 +46,7 @@ abstract public class AbstractMiradiProjectSaver
 	
 	protected void ensureNoNonHtmlNewlinesExists(String data)
 	{
-		if (data.contains("\n"))
+		if (data.contains(HtmlUtilities.NEW_LINE))
 		{
 			EAM.logError("Non html new lines found in data =" + data);
 			throw new RuntimeException("Non html new lines found in data");
