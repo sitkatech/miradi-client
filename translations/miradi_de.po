@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-21 12:16-0500\n"
+"POT-Creation-Date: 2012-08-21 13:31-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -2501,6 +2501,7 @@ msgstr ""
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:83
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:229
+#: Miradi/source/org/miradi/project/OldProjectDirToMpfConverter.java:57
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
 #: Miradi/source/org/miradi/main/MiradiStrings.java:34
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:127
@@ -2549,6 +2550,7 @@ msgstr "Importieren"
 msgid "Button|Install..."
 msgstr "Installieren"
 
+#: Miradi/source/org/miradi/project/OldProjectDirToMpfConverter.java:57
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:54
 msgid "Button|Migrate"
 msgstr ""
@@ -7876,6 +7878,20 @@ msgstr ""
 msgid "The scope currently consists of %1 words"
 msgstr "Der Planungsraum umfasst momentan %1 Wörter. "
 
+#: Miradi/source/org/miradi/project/OldProjectDirToMpfConverter.java:42
+msgid ""
+"The selected project was created with an older version of Miradi.<br/>In "
+"order to use it with this version of Miradi, the data will have <br/>to be "
+"migrated. This is safe and automatic, but after the conversion <br/>has been "
+"done, Miradi 3.X will no longer be able to use this file.<br/><br/>If you "
+"continue, you will still be able to export the project as <br/>a Miradi "
+"Project Zip (MPZ) file, which can be imported by Miradi 3.3. <br/><br/>In "
+"the unlikely event that you need to revert to Miradi 3.3, a <br/>backup copy "
+"of the project, in MPZ format, will be created in the a <br/>directory "
+"named: %DIRECTORY%<br/><br/>Do you want to go ahead and migrate and open "
+"this project?"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:39
 msgid "The strategy could possibly help mitigate a threat or restore a target."
 msgstr ""
@@ -8239,6 +8255,10 @@ msgstr "Eigenschaften - Messung "
 #: Miradi/source/org/miradi/dialogs/task/MethodPropertiesPanelWithoutBudgetPanels.java:43
 msgid "Title|Method Properties"
 msgstr "Eigenschaften - Methode "
+
+#: Miradi/source/org/miradi/project/OldProjectDirToMpfConverter.java:58
+msgid "Title|Migrate Project"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:49
 msgid "Title|Nested Target Properties"
