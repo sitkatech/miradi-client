@@ -29,6 +29,13 @@ public class TestStringUtilities extends MiradiTestCase
 		super(name);
 	}
 	
+	public void testGetFirstLineWithTruncationIndicated()
+	{
+		verifyGetFirstLineWithTruncationIndicated("", "");
+		verifyGetFirstLineWithTruncationIndicated("single line", "single line");
+		verifyGetFirstLineWithTruncationIndicated("Line 1 ...", "Line 1 <br/> line 2");
+	}
+	
 	public void testEmptySpaceClassMember()
 	{
 		assertEquals("Blank space should never change?", " ", StringUtilities.EMPTY_SPACE);
@@ -82,5 +89,10 @@ public class TestStringUtilities extends MiradiTestCase
 	private void verifySubstringBetween(final String expectedValue, final String testString, final String fromChar, final String toChar)
 	{
 		assertEquals("did not split correctly?", expectedValue, StringUtilities.substringBetween(testString, fromChar, toChar));
+	}
+	
+	private void verifyGetFirstLineWithTruncationIndicated(String expctedValue,	String actualValue)
+	{
+		assertEquals("Incorrect turncation of lines?", expctedValue, StringUtilities.getFirstLineWithTruncationIndicated(actualValue));
 	}
 }
