@@ -916,7 +916,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	{
 		String concatenatedDescriptionAndScope = projectDescriptionToConcatenate;
 		if (concatenatedDescriptionAndScope.length() > 0)
-			concatenatedDescriptionAndScope += "\n\n";
+			concatenatedDescriptionAndScope += HtmlUtilities.NEW_LINE + HtmlUtilities.NEW_LINE;
 			
 		concatenatedDescriptionAndScope +=projectScopeToConcatenate;
 		return concatenatedDescriptionAndScope;
