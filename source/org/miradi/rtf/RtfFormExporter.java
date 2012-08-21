@@ -47,6 +47,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DoubleUtilities;
+import org.miradi.utils.HtmlUtilities;
 
 public class RtfFormExporter
 {
@@ -198,12 +199,12 @@ public class RtfFormExporter
 		ChoiceQuestion question = formFieldCodeListData.getQuestion();
 		CodeList codeList = new CodeList(codeListAsString);
 		String appendedLabels = "";
-		appendedLabels += "Count:" + codeList.size() + "\n";
+		appendedLabels += "Count:" + codeList.size() + HtmlUtilities.NEW_LINE;
 		for (int index = 0; index < codeList.size(); ++index)
 		{
 			ChoiceItem choiceItem = question.findChoiceByCode(codeList.get(index));
 			if (index > 0)
-				appendedLabels += "\n";
+				appendedLabels += HtmlUtilities.NEW_LINE;
 			
 			appendedLabels += choiceItem.getLabel();
 		}
