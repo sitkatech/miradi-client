@@ -975,7 +975,7 @@ abstract public class BaseObject
 		return createHtmlBulletList(labels);
 	}
 
-	private String createHtmlBulletList(Vector<String> labels)
+	public static String createHtmlBulletList(Vector<String> labels)
 	{
 		Collections.sort(labels, String.CASE_INSENSITIVE_ORDER);
 
