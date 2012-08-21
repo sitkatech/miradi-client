@@ -256,6 +256,10 @@ public class HtmlUtilities
 	}
 
 	public static final String BR_TAG = "<br/>";
+	public static final String UL_START_TAG = "<ul>";
+	public static final String UL_END_TAG = "</ul>";
+	public static final String LI_START_TAG = "<li>";
+	public static final String LI_END_TAG = "</li>";
 	public static final String NEW_LINE = "\n";
 	public static final String EMPTY_STRING = "";
 	private static final String DIV_TAG_NAME = "div";
