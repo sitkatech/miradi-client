@@ -31,12 +31,16 @@ import org.miradi.utils.MpfFileFilter;
 import org.miradi.utils.MpzFileFilter;
 import org.miradi.utils.ZipUtilities;
 import org.miradi.views.umbrella.MpzProjectImporter;
+import org.miradi.wizard.noproject.FileSystemTreeNode;
 
 public class OldProjectDirToMpfConverter
 {
 	public static File convert(MainWindow mainWindow, File oldProjectDirectory) throws Exception
 	{
-		File oldProjectZippedAsBackup = new File(EAM.getHomeDirectory(), "Backup-" + oldProjectDirectory.getName() + "-" + Calendar.getInstance().getTimeInMillis() + MpzFileFilter.EXTENSION);
+		File backupFolder = new File(EAM.getHomeDirectory(), FileSystemTreeNode.BACKUP_FOLDER_NAME);
+		backupFolder.mkdirs();
+		
+		File oldProjectZippedAsBackup = new File(backupFolder, "v3-Backup-" + oldProjectDirectory.getName() + "-" + Calendar.getInstance().getTimeInMillis() + MpzFileFilter.EXTENSION);
 		if (oldProjectZippedAsBackup.exists())
 			throw new Exception("Attempted to override an existing backup file when converting old project dir to new project format:" + oldProjectZippedAsBackup.getAbsolutePath());
 		

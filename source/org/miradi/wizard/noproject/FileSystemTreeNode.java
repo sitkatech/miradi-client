@@ -164,6 +164,11 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 		return file.getName().equals(EAM.EXTERNAL_RESOURCE_DIRECTORY_NAME);
 	}
 	
+	protected boolean isMiradi3BackupsDirectory(File file)
+	{
+		return file.getName().equals(BACKUP_FOLDER_NAME);
+	}
+	
 	public boolean isProject() throws Exception
 	{
 		return isProjectFile(thisFile);
@@ -201,6 +206,7 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 	
 	private static final String OLD_JASPER_EXTERNAL_REPORTS_DIR_NAME = "ExternalReports";	
 	private static final String OLD_JASPER_CUSTOM_REPORTS_DIR_NAME = "CustomReports";
+	public static final String BACKUP_FOLDER_NAME = "(" + EAM.text("FolderName|BackupsFromMigrationToMiradi4") + ")";
 	
 	private File thisFile;
 	private Vector<FileSystemTreeNode> children;
