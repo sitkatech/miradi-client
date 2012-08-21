@@ -464,7 +464,7 @@ abstract public class Factor extends BaseObject
 		return getDesiresAsMultiline(ObjectType.OBJECTIVE, theseDesireIds);
 	}
 	
-	protected String getDesiresAsMultiline(int desireType, IdList desireIds)
+	private String getDesiresAsMultiline(int desireType, IdList desireIds)
 	{
 		StringBuffer result = new StringBuffer();
 		for(int i = 0; i < desireIds.size(); ++i)
