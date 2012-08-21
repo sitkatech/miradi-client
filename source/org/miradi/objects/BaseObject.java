@@ -22,7 +22,6 @@ package org.miradi.objects;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.text.ParseException;
-import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -972,31 +971,9 @@ abstract public class BaseObject
 			labels.add(baseObject.getLabel());
 		}
 		
-		return createHtmlBulletList(labels);
+		return HtmlUtilities.createHtmlBulletList(labels);
 	}
 
-	public static String createHtmlBulletList(Vector<String> labels)
-	{
-		Collections.sort(labels, String.CASE_INSENSITIVE_ORDER);
-
-		StringBuffer result = new StringBuffer();
-		for(int index = 0; index < labels.size(); ++index)
-		{
-			if(result.length() == 0)
-				result.append(HtmlUtilities.UL_START_TAG);
-			
-			String label = labels.get(index);
-			result.append(HtmlUtilities.LI_START_TAG);
-			result.append(label);
-			result.append(HtmlUtilities.LI_END_TAG);
-		}
-		
-		if(result.length() > 0)
-			result.append(HtmlUtilities.UL_END_TAG);
-		
-		return result.toString();
-	}
-	
 	public String combineShortLabelAndLabel(String shortLabel, String Longlabel)
 	{
 		if (shortLabel.length() <= 0)
