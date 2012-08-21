@@ -972,6 +972,11 @@ abstract public class BaseObject
 			labels.add(baseObject.getLabel());
 		}
 		
+		return createHtmlBulletList(labels);
+	}
+
+	private String createHtmlBulletList(Vector<String> labels)
+	{
 		Collections.sort(labels, String.CASE_INSENSITIVE_ORDER);
 
 		StringBuffer result = new StringBuffer();
