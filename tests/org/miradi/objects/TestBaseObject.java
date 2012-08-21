@@ -106,7 +106,10 @@ public class TestBaseObject extends TestCaseWithProject
 		assertTrue("First not first in " + result + "?", firstAt < middleAt);
 		assertTrue("Last not last " + result + "?", middleAt < lastAt);
 		assertNotContains("\n", result);
-		assertContains(HtmlUtilities.BR_TAG, result);
+		assertContains(HtmlUtilities.UL_START_TAG, result);
+		assertContains(HtmlUtilities.LI_START_TAG + FIRST_STRING, result);
+		assertContains(HtmlUtilities.LI_START_TAG + MIDDLE_STRING, result);
+		assertContains(HtmlUtilities.LI_START_TAG + LAST_STRING, result);
 	}
 	
 	public void testGetOwnerRef() throws Exception

@@ -959,45 +959,37 @@ abstract public class BaseObject
 	
 	public String getBaseObjectLabelsOnASingleLine(ORefList refs)
 	{
+		return getLabelsAsMultiline(refs);
+	}
+	
+	public String getLabelsAsMultiline(FactorSet factors)
+	{
+		ORefList refs = new ORefList(factors.getFactorRefs());
+		return getLabelsAsMultiline(refs);
+	}
+	
+	public String getLabelsAsMultiline(ORefList refs)
+	{
 		Vector<BaseObject> objects = new Vector<BaseObject>();
 		for(int i = 0; i < refs.size(); ++i)
 			objects.add(BaseObject.find(getObjectManager(), refs.get(i)));
 		
 		Collections.sort(objects, new BaseObjectByNameSorter());
-		
-		final String FAKE_BULLET = "- ";
+
 		StringBuffer result = new StringBuffer();
 		for(int index = 0; index < objects.size(); ++index)
 		{
-			if(objects.size() > 1)
-				result.append(FAKE_BULLET);
-			
-			result.append(objects.get(index).getData(BaseObject.TAG_LABEL));
-
-			if(objects.size() > 1)
-				result.append(HtmlUtilities.BR_TAG);
-		}
-		
-		return result.toString();
-	}
-	
-	public String getLabelsAsMultiline(FactorSet factors)
-	{
-		StringBuffer result = new StringBuffer();
-		Iterator iter = factors.iterator();
-		while(iter.hasNext())
-		{
 			if(result.length() == 0)
-				result.append("<ul>");
+				result.append(HtmlUtilities.UL_START_TAG);
 			
-			Factor factor = (Factor)iter.next();
-			result.append("<li>");
-			result.append(factor.getLabel());
-			result.append("</li>");
+			BaseObject baseObject = objects.get(index);
+			result.append(HtmlUtilities.LI_START_TAG);
+			result.append(baseObject.getLabel());
+			result.append(HtmlUtilities.LI_END_TAG);
 		}
 		
 		if(result.length() > 0)
-			result.append("</ul>");
+			result.append(HtmlUtilities.UL_END_TAG);
 		
 		return result.toString();
 	}
