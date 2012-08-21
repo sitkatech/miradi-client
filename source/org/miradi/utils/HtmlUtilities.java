@@ -244,6 +244,16 @@ public class HtmlUtilities
 		String[] lines = label.split(BR_TAG);
 		return lines.length;
 	}
+	
+	public static String getFirstLineWithTruncationIndicated(final String value)
+	{
+		String firstLine = value;
+		int newlineAt = value.indexOf(BR_TAG);
+		if (newlineAt >= 0)
+			firstLine = value.substring(0, newlineAt) + "...";
+		
+		return firstLine;
+	}
 
 	public static final String BR_TAG = "<br/>";
 	public static final String NEW_LINE = "\n";
