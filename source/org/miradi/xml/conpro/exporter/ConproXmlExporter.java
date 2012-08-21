@@ -1104,7 +1104,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	public void writeXmlEncodedData(UnicodeWriter out, String data) throws IOException
 	{
 		data = HtmlUtilities.replaceHtmlBrsWithNewlines(data);
-		data = HtmlUtilities.replaceStartHtmlTags(data, "li", "\n-");
+		data = HtmlUtilities.replaceStartHtmlTags(data, "li", HtmlUtilities.NEW_LINE + "-");
 		data = HtmlUtilities.stripAllHtmlTags(data);
 		out.write(data);
 	}
