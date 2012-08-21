@@ -1232,7 +1232,6 @@ abstract public class BaseObject
 		Collections.sort(objects, new BaseObjectByNameSorter());
 		
 		final String FAKE_BULLET = "- ";
-		final String NEW_LINE = "\n";
 		StringBuffer result = new StringBuffer();
 		for(int index = 0; index < objects.size(); ++index)
 		{
@@ -1242,7 +1241,7 @@ abstract public class BaseObject
 			result.append(objects.get(index).getData(BaseObject.TAG_LABEL));
 
 			if(objects.size() > 1)
-				result.append(NEW_LINE);
+				result.append(HtmlUtilities.BR_TAG);
 		}
 		
 		return result.toString();
