@@ -391,6 +391,7 @@ abstract public class Factor extends BaseObject
 	{
 		try
 		{
+			// FIXME low: This psuedotag does not seem to be used
 			if(fieldTag.equals(PSEUDO_TAG_OBJECTIVES))
 				return getFactorObjectivesAsMultiline();
 			
@@ -458,24 +459,18 @@ abstract public class Factor extends BaseObject
 		return getLabelsAsMultiline(directThreats);
 	}
 	
+	// FIXME low: This code does not seem to be used
 	private String getFactorObjectivesAsMultiline() throws ParseException
 	{
 		IdList theseDesireIds = new IdList(ObjectiveSchema.getObjectType(), getData(TAG_OBJECTIVE_IDS));
 		return getDesiresAsMultiline(ObjectType.OBJECTIVE, theseDesireIds);
 	}
 	
+	// FIXME low: This code does not seem to be used
 	private String getDesiresAsMultiline(int desireType, IdList desireIds)
 	{
-		StringBuffer result = new StringBuffer();
-		for(int i = 0; i < desireIds.size(); ++i)
-		{
-			if(result.length() > 0)
-				result.append("\n");
-			
-			result.append(objectManager.getObjectData(desireType, desireIds.get(i), Desire.TAG_LABEL));
-		}
-		
-		return result.toString();
+		ORefList refs = new ORefList(desireType, desireIds);
+		return getBaseObjectLabelsOnASingleLine(refs);
 	}
 	
 	public static Factor findFactor(ObjectManager objectManager, ORef factorRef)
@@ -493,7 +488,10 @@ abstract public class Factor extends BaseObject
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_INDICATOR_IDS = "IndicatorIds";
 	public static final String TAG_OBJECTIVE_IDS = "ObjectiveIds";
+	
+	// FIXME low: This code does not seem to be used
 	public static final String PSEUDO_TAG_OBJECTIVES = "PseudoTagObjectives";
+	
 	public static final String PSEUDO_TAG_DIRECT_THREATS = "PseudoTagDirectThreats";
 	public static final String PSEUDO_TAG_TARGETS = "PseudoTagTargets";
 	public static final String PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS = "PseudoTagDiagramRefs";
