@@ -36,55 +36,55 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 	public AutomaticProjectSaver(Project projectToTrack)
 	{
 		project = projectToTrack;
-		project.addCommandExecutedListener(this);
+		getProject().addCommandExecutedListener(this);
 		locker = new FileLocker();
 	}
 	
 	public void dispose()
 	{
-		project.removeCommandExecutedListener(this);
+		getProject().removeCommandExecutedListener(this);
 	}
 	
 	public void startSaving(File projectFileToUse) throws Exception
 	{
 		locker.lock(getLockFile(projectFileToUse));
-		projectFile = projectFileToUse;
+		setProjectFile(projectFileToUse);
 		ensureNewlyCreatedProjectFileExists();
 		ensureSingleSessionProjectFile();
 	}
 	
 	private void ensureSingleSessionProjectFile() throws Exception
 	{
-		File sessionFile = getSessionFile(projectFile);
+		File sessionFile = getSessionFile(getProjectFile());
 		FileUtilities.deleteIfExists(sessionFile);
-		Utility.copyFile(projectFile, sessionFile);
+		Utility.copyFile(getProjectFile(), sessionFile);
 	}
 
 	private void ensureNewlyCreatedProjectFileExists() throws Exception
 	{
-		if (projectFile.exists())
+		if (getProjectFile().exists())
 			return;
 
-		safeSave(projectFile);
+		safeSave();
 	}
 
 	public void stopSaving() throws Exception
 	{
-		projectFile = null;
+		setProjectFile(null);
 		locker.close();
 	}
-	
+
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		if(projectFile == null)
+		if(getProjectFile() == null)
 			return;
 		
-		if(project.isInTransaction())
+		if(getProject().isInTransaction())
 			return;
 		
 		try
 		{
-			safeSave(projectFile);
+			safeSave();
 		}
 		catch(Exception e)
 		{
@@ -92,7 +92,12 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 		}
 	}
 
-	public void safeSave(File currentFile) throws IOException, Exception
+	public void safeSave() throws Exception
+	{
+		internalSafeSave(getProjectFile());
+	}
+
+	public void internalSafeSave(File currentFile) throws IOException, Exception
 	{
 		File oldFile = getOldFile(currentFile);
 		File newFile = getNewFile(currentFile);
@@ -135,13 +140,28 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 	{
 		long startedAt = System.currentTimeMillis();
 		UnicodeStringWriter stringWriter = UnicodeStringWriter.create();
-		ProjectSaver.saveProject(project, stringWriter);
+		ProjectSaver.saveProject(getProject(), stringWriter);
 		
 		UnicodeWriter fileWriter = new UnicodeWriter(file);
 		fileWriter.write(stringWriter.toString());
 		fileWriter.close();
 		long endedAt = System.currentTimeMillis();
 		EAM.logDebug("Saved project: " + (endedAt - startedAt) + "ms");
+	}
+
+	private Project getProject()
+	{
+		return project;
+	}
+	
+	private File getProjectFile()
+	{
+		return projectFile;
+	}
+	
+	private void setProjectFile(final File projectFileToUse)
+	{
+		projectFile = projectFileToUse;
 	}
 	
 	private File projectFile;
