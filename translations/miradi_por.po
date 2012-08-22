@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-21 15:01-0500\n"
+"POT-Creation-Date: 2012-08-22 10:01-0500\n"
 "PO-Revision-Date: 2011-12-14 10:20-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3940,7 +3940,7 @@ msgstr ""
 msgid "Indicator Relevancy Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:159
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:160
 msgid "Indicator does not have a direct/indirect factor parent. "
 msgstr ""
 
@@ -5379,7 +5379,7 @@ msgstr ""
 msgid "Project Corruption Detected"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:927
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:928
 msgid "Project Description:"
 msgstr ""
 
@@ -5921,7 +5921,7 @@ msgstr ""
 msgid "Simple viability"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:932
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:933
 msgid "Site/Scope Description:"
 msgstr ""
 
@@ -7062,7 +7062,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:71
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:358
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:359
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:53
 msgid "Target"
 msgstr ""
@@ -7403,7 +7403,7 @@ msgstr ""
 msgid "This will replace the existing file."
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:383
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:384
 #: Miradi/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:59
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:35
 msgid "Threat"
