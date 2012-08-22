@@ -36,13 +36,13 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 	public AutomaticProjectSaver(Project projectToTrack)
 	{
 		project = projectToTrack;
-		project.addCommandExecutedListener(this);
+		getProject().addCommandExecutedListener(this);
 		locker = new FileLocker();
 	}
 	
 	public void dispose()
 	{
-		project.removeCommandExecutedListener(this);
+		getProject().removeCommandExecutedListener(this);
 	}
 	
 	public void startSaving(File projectFileToUse) throws Exception
@@ -79,7 +79,7 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 		if(getProjectFile() == null)
 			return;
 		
-		if(project.isInTransaction())
+		if(getProject().isInTransaction())
 			return;
 		
 		try
@@ -140,13 +140,18 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 	{
 		long startedAt = System.currentTimeMillis();
 		UnicodeStringWriter stringWriter = UnicodeStringWriter.create();
-		ProjectSaver.saveProject(project, stringWriter);
+		ProjectSaver.saveProject(getProject(), stringWriter);
 		
 		UnicodeWriter fileWriter = new UnicodeWriter(file);
 		fileWriter.write(stringWriter.toString());
 		fileWriter.close();
 		long endedAt = System.currentTimeMillis();
 		EAM.logDebug("Saved project: " + (endedAt - startedAt) + "ms");
+	}
+
+	private Project getProject()
+	{
+		return project;
 	}
 	
 	private File getProjectFile()
