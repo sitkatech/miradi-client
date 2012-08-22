@@ -73,6 +73,7 @@ import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectLoader;
 import org.miradi.project.ProjectRepairer;
+import org.miradi.project.ProjectSaver;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.questions.TableRowHeightModeQuestion;
@@ -665,6 +666,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		if(quarantinedCount == 0)
 			return;
 		
+		projectSaver.safeSave();
 		EAM.notifyDialog(EAM.text("This project has been optimized to remove data that is no longer needed.\n"));
 	}
 
