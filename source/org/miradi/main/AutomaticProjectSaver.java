@@ -65,7 +65,7 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 		if (projectFile.exists())
 			return;
 
-		safeSave(projectFile);
+		safeSave();
 	}
 
 	public void stopSaving() throws Exception
@@ -84,7 +84,7 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 		
 		try
 		{
-			safeSave(projectFile);
+			safeSave();
 		}
 		catch(Exception e)
 		{
@@ -92,6 +92,11 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 		}
 	}
 
+	public void safeSave() throws Exception
+	{
+		safeSave(projectFile);
+	}
+	
 	public void safeSave(File currentFile) throws IOException, Exception
 	{
 		File oldFile = getOldFile(currentFile);
