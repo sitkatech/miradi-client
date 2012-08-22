@@ -38,10 +38,10 @@ import javax.swing.filechooser.FileSystemView;
 import org.martus.swing.UiNotifyDlg;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.project.Project;
-import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.HtmlViewPanel;
 import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.utils.MiradiLogger;
+import org.miradi.utils.StringUtilities;
 import org.miradi.utils.Translation;
 
 public class EAM
@@ -436,7 +436,7 @@ public class EAM
 	{
 		String errorMessage = MiradiStrings.getUnexpectedErrorMessage();
 		if(extraText.length() > 0)
-			errorMessage += HtmlUtilities.NEW_LINE + extraText;
+			errorMessage += StringUtilities.NEW_LINE + extraText;
 
 		EAM.errorDialog(errorMessage);
 	}

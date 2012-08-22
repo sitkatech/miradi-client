@@ -85,6 +85,7 @@ import org.miradi.utils.DoubleUtilities;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.MiradiMultiCalendar;
 import org.miradi.utils.OptionalDouble;
+import org.miradi.utils.StringUtilities;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.conpro.ConProMiradiCodeMapHelper;
 import org.miradi.xml.conpro.ConProMiradiXml;
@@ -916,7 +917,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	{
 		String concatenatedDescriptionAndScope = projectDescriptionToConcatenate;
 		if (concatenatedDescriptionAndScope.length() > 0)
-			concatenatedDescriptionAndScope += HtmlUtilities.NEW_LINE + HtmlUtilities.NEW_LINE;
+			concatenatedDescriptionAndScope += StringUtilities.NEW_LINE + StringUtilities.NEW_LINE;
 			
 		concatenatedDescriptionAndScope +=projectScopeToConcatenate;
 		return concatenatedDescriptionAndScope;
@@ -948,7 +949,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		if (description.length() > 0)
 		{
 			concatenated += fieldLabel;
-			concatenated += HtmlUtilities.NEW_LINE;
+			concatenated += StringUtilities.NEW_LINE;
 			concatenated +=description;
 		}
 		
@@ -1104,7 +1105,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	public void writeXmlEncodedData(UnicodeWriter out, String data) throws IOException
 	{
 		data = HtmlUtilities.replaceHtmlBrsWithNewlines(data);
-		data = HtmlUtilities.replaceStartHtmlTags(data, "li", HtmlUtilities.NEW_LINE + "-");
+		data = HtmlUtilities.replaceStartHtmlTags(data, "li", StringUtilities.NEW_LINE + "-");
 		data = HtmlUtilities.stripAllHtmlTags(data);
 		out.write(data);
 	}

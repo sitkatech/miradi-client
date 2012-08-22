@@ -65,7 +65,7 @@ public class ObjectStringInputField extends ObjectTextInputField
 	@Override
 	public void setText(String newValue)
 	{
-		newValue.replaceAll(HtmlUtilities.NEW_LINE, StringUtilities.EMPTY_SPACE);
+		newValue.replaceAll(StringUtilities.NEW_LINE, StringUtilities.EMPTY_SPACE);
 		newValue = HtmlUtilities.convertHtmlToPlainText(newValue);
 		
 		super.setText(newValue);
