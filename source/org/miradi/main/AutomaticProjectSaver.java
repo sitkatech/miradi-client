@@ -48,7 +48,7 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 	public void startSaving(File projectFileToUse) throws Exception
 	{
 		locker.lock(getLockFile(projectFileToUse));
-		projectFile = projectFileToUse;
+		setProjectFile(projectFileToUse);
 		ensureNewlyCreatedProjectFileExists();
 		ensureSingleSessionProjectFile();
 	}
@@ -70,10 +70,10 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 
 	public void stopSaving() throws Exception
 	{
-		projectFile = null;
+		setProjectFile(null);
 		locker.close();
 	}
-	
+
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		if(getProjectFile() == null)
@@ -157,6 +157,11 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 	private File getProjectFile()
 	{
 		return projectFile;
+	}
+	
+	private void setProjectFile(final File projectFileToUse)
+	{
+		projectFile = projectFileToUse;
 	}
 	
 	private File projectFile;
