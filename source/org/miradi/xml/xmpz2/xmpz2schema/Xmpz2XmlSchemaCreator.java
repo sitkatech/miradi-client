@@ -73,7 +73,6 @@ import org.miradi.schemas.WcpaProjectDataSchema;
 import org.miradi.schemas.WcsProjectDataSchema;
 import org.miradi.schemas.WwfProjectDataSchema;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.StringUtilities;
 import org.miradi.utils.Translation;
 import org.miradi.utils.Utility;
@@ -361,10 +360,10 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		String vocabularyName = getChoiceQuestionToSchemaElementNameMap().get(question);
 		final String createContainerName = createContainerName(codelistElementName);
-		String containerElement = getSchemaWriter().createElementDefinition(createContainerName) + HtmlUtilities.NEW_LINE;
-		containerElement += "{" + HtmlUtilities.NEW_LINE;
-		containerElement += getSchemaWriter().createSchemaElement("code", vocabularyName) + " *" + HtmlUtilities.NEW_LINE;
-		containerElement += "}" + HtmlUtilities.NEW_LINE;
+		String containerElement = getSchemaWriter().createElementDefinition(createContainerName) + StringUtilities.NEW_LINE;
+		containerElement += "{" + StringUtilities.NEW_LINE;
+		containerElement += getSchemaWriter().createSchemaElement("code", vocabularyName) + " *" + StringUtilities.NEW_LINE;
+		containerElement += "}" + StringUtilities.NEW_LINE;
 		
 		return containerElement;
 	}

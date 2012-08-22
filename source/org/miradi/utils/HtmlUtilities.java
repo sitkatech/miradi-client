@@ -113,7 +113,7 @@ public class HtmlUtilities
 	
 	public static String replaceHtmlBrsWithNewlines(String text)
 	{
-		return replaceHtmlTags(text, "br", NEW_LINE);
+		return replaceHtmlTags(text, "br", StringUtilities.NEW_LINE);
 	}
 
 	public static String replaceNonHtmlNewlines(String formatted)
@@ -123,13 +123,13 @@ public class HtmlUtilities
 	
 	public static String removeNonHtmlNewLines(String htmlText)
 	{
-		return htmlText.replaceAll(getNewlineRegex(), EMPTY_STRING);
+		return htmlText.replaceAll(getNewlineRegex(), StringUtilities.EMPTY_STRING);
 	}
 
 	public static String stripAllHtmlTags(String text)
 	{
 		final String ANY = "<.*?>";
-		return replaceAll(ANY, text, EMPTY_STRING);
+		return replaceAll(ANY, text, StringUtilities.EMPTY_STRING);
 	}
 
 	public static String replaceHtmlTags(String text, String tagToReplace, final String replacement)
@@ -182,9 +182,9 @@ public class HtmlUtilities
 	public static String appendNewlineToEndDivTags(String text)
 	{
 		final String END_DIV_REGEX = createEndTagRegex(DIV_TAG_NAME);
-		text = replaceAll(END_DIV_REGEX, text, DIV_CLOSING_TAG + HtmlUtilities.NEW_LINE);
+		text = replaceAll(END_DIV_REGEX, text, DIV_CLOSING_TAG + StringUtilities.NEW_LINE);
 		final String EMPTY_DIV_REGEX = createEmptyTagRegex(DIV_TAG_NAME);
-		text = replaceAll(EMPTY_DIV_REGEX, text, DIV_EMPTY_TAG + HtmlUtilities.NEW_LINE);
+		text = replaceAll(EMPTY_DIV_REGEX, text, DIV_EMPTY_TAG + StringUtilities.NEW_LINE);
 		return text;
 	}
 	
@@ -195,7 +195,7 @@ public class HtmlUtilities
 		String regex = "<\\/*?(?![^>]*?\\b(?:" + tagsSeperatedByOr + ")\\b)[^>]*?>";;
 		final Pattern compiledRegex = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
 		
-		return compiledRegex.matcher(text).replaceAll(EMPTY_STRING);
+		return compiledRegex.matcher(text).replaceAll(StringUtilities.EMPTY_STRING);
 	}
 	
 	public static String getWithoutSpacesAfterXmlElements(final String text)
@@ -284,8 +284,6 @@ public class HtmlUtilities
 	public static final String UL_END_TAG = "</ul>";
 	public static final String LI_START_TAG = "<li>";
 	public static final String LI_END_TAG = "</li>";
-	public static final String NEW_LINE = "\n";
-	public static final String EMPTY_STRING = "";
 	private static final String DIV_TAG_NAME = "div";
 	private static final String DIV_CLOSING_TAG = "</div>";
 	private static final String DIV_EMPTY_TAG = "<div/>";
