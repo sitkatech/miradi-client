@@ -55,14 +55,14 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 	
 	private void ensureSingleSessionProjectFile() throws Exception
 	{
-		File sessionFile = getSessionFile(projectFile);
+		File sessionFile = getSessionFile(getProjectFile());
 		FileUtilities.deleteIfExists(sessionFile);
-		Utility.copyFile(projectFile, sessionFile);
+		Utility.copyFile(getProjectFile(), sessionFile);
 	}
 
 	private void ensureNewlyCreatedProjectFileExists() throws Exception
 	{
-		if (projectFile.exists())
+		if (getProjectFile().exists())
 			return;
 
 		safeSave();
@@ -76,7 +76,7 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		if(projectFile == null)
+		if(getProjectFile() == null)
 			return;
 		
 		if(project.isInTransaction())
@@ -94,9 +94,9 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 
 	public void safeSave() throws Exception
 	{
-		internalSafeSave(projectFile);
+		internalSafeSave(getProjectFile());
 	}
-	
+
 	public void internalSafeSave(File currentFile) throws IOException, Exception
 	{
 		File oldFile = getOldFile(currentFile);
@@ -147,6 +147,11 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 		fileWriter.close();
 		long endedAt = System.currentTimeMillis();
 		EAM.logDebug("Saved project: " + (endedAt - startedAt) + "ms");
+	}
+	
+	private File getProjectFile()
+	{
+		return projectFile;
 	}
 	
 	private File projectFile;
