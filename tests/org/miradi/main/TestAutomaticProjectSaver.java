@@ -68,22 +68,22 @@ public class TestAutomaticProjectSaver extends TestCaseEnhanced
 		assertTrue("project file was not created for the first time?", projectFile.exists());
 	}
 	
-	public void testSafeSave() throws Exception
+	public void testInternalSafeSave() throws Exception
 	{
 		File oldFile = saver.getOldFile(projectFile);
 		File newFile = saver.getNewFile(projectFile);
 
-		saver.safeSave(projectFile);
+		saver.internalSafeSave(projectFile);
 		assertTrue(projectFile.exists());
 		assertFalse(oldFile.exists());
 		assertFalse(newFile.exists());
 
-		saver.safeSave(projectFile);
+		saver.internalSafeSave(projectFile);
 		assertTrue(projectFile.exists());
 		assertTrue(oldFile.exists());
 		assertFalse(newFile.exists());
 
-		saver.safeSave(projectFile);
+		saver.internalSafeSave(projectFile);
 		assertTrue(projectFile.exists());
 		assertTrue(oldFile.exists());
 		assertFalse(newFile.exists());
