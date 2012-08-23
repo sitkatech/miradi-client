@@ -107,6 +107,15 @@ abstract public class AbstractFileChooser
 		return mainWindow;
 	}
 	
+	public static void addFileFilters(JFileChooser fileChooser, FileFilter[] filters)
+	{
+		for (int i = 0; i < filters.length; ++i)
+		{
+			fileChooser.addChoosableFileFilter(filters[i]);
+			fileChooser.setFileFilter(filters[i]);
+		}
+	}
+	
 	abstract protected FileFilter[] getFileFilter();
 	
 	abstract protected String getApproveButtonText();

@@ -38,6 +38,7 @@ import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
+import org.miradi.utils.AbstractFileChooser;
 import org.miradi.utils.GenericMiradiFileFilter;
 import org.miradi.utils.MiradiBackgroundWorkerThread;
 import org.miradi.utils.MiradiFileSaveChooser;
@@ -195,16 +196,7 @@ public abstract class AbstractProjectImporter
 	private void addFileFilters(JFileChooser fileChooser)
 	{
 		FileFilter[] filters = getFileFilters();
-		addFileFilters(fileChooser, filters);
-	}
-
-	public static void addFileFilters(JFileChooser fileChooser, FileFilter[] filters)
-	{
-		for (int i = 0; i < filters.length; ++i)
-		{
-			fileChooser.addChoosableFileFilter(filters[i]);
-			fileChooser.setFileFilter(filters[i]);
-		}
+		AbstractFileChooser.addFileFilters(fileChooser, filters);
 	}
 
 	private void showImportFailedErrorDialog(String message)
