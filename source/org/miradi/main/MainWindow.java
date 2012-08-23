@@ -73,7 +73,6 @@ import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectLoader;
 import org.miradi.project.ProjectRepairer;
-import org.miradi.project.ProjectSaver;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.questions.TableRowHeightModeQuestion;
@@ -699,11 +698,6 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			throw new AlreadyHandledException();
 	}
 
-	private void logExceptionsInsideProjectDir()
-	{
-//		EAM.setExceptionLoggingDestination(new File(projectDir, EAM.EXCEPTIONS_LOG_FILE_NAME));
-	}
-	
 	public DiagramView getDiagramView()
 	{
 		return diagramView;
