@@ -740,6 +740,22 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return Target.find(this, targetRef);
 	}
 	
+	public Target createKeaModeTarget() throws Exception
+	{
+		Target target = createTarget();
+		turnOnTncMode(target);
+		
+		return target;
+	}
+	
+	public HumanWelfareTarget createKeaModeHumanWelfareTarget() throws Exception
+	{
+		HumanWelfareTarget target = createHumanWelfareTarget();
+		turnOnTncMode(target);
+		
+		return target;
+	}
+	
 	public HumanWelfareTarget createHumanWelfareTarget() throws Exception
 	{
 		ORef ref = createObject(HumanWelfareTargetSchema.getObjectType(), new FactorId(takeNextId(HumanWelfareTargetSchema.getObjectType())));
@@ -830,9 +846,15 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public Indicator createIndicator(BaseObject owner) throws Exception
 	{
 		ORef indicatorRef = createObject(IndicatorSchema.getObjectType());
+		return addIndicatorToOwner(owner, indicatorRef);
+	}
+
+	public Indicator addIndicatorToOwner(BaseObject owner, ORef indicatorRef) throws Exception
+	{
 		IdList indicatorIds = new IdList(IndicatorSchema.getObjectType());
 		indicatorIds.addRef(indicatorRef);	
 		fillObjectUsingCommand(owner, Factor.TAG_INDICATOR_IDS, indicatorIds.toString());
+		
 		return Indicator.find(this, indicatorRef);
 	}
 	

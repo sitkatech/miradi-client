@@ -73,6 +73,7 @@ import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectLoader;
 import org.miradi.project.ProjectRepairer;
+import org.miradi.project.ProjectSaver;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.questions.TableRowHeightModeQuestion;
@@ -653,10 +654,16 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 
 	private void repairProject() throws Exception
 	{
+		final String beforeRepairSnapShot = ProjectSaver.createSnapShot(getProject());
 		ProjectRepairer repairer = new ProjectRepairer(project);
 		quarantineOrphans(repairer);
 		repairer.repairProblemsWherePossible();
 		scanForSeriousCorruption(repairer);
+		final String afterRepairSnapShot = ProjectSaver.createSnapShot(getProject());
+		if (!beforeRepairSnapShot.equals(afterRepairSnapShot))
+		{
+			projectSaver.safeSave();
+		}
 	}
 
 	private void quarantineOrphans(ProjectRepairer repairer) throws Exception

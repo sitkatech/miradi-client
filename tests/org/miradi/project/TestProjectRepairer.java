@@ -77,6 +77,74 @@ public class TestProjectRepairer extends TestCaseWithProject
 		repairer = new ProjectRepairer(getProject());
 	}
 	
+	public void testRepairSimpleModeTargetReferringToMissingSimpleIndicator() throws Exception
+	{
+		verifyRepairSimpleModeSimpleReferringToMissingSimpleIndicator(getProject().createTarget());
+		verifyRepairSimpleModeSimpleReferringToMissingSimpleIndicator(getProject().createHumanWelfareTarget());
+	}
+
+	public void testRepairKeaModeTargetReferringToMissingSimpleIndicator() throws Exception
+	{
+		verifyRepairKeaModeTargetReferringToMissingSimpleIndicator(getProject().createKeaModeTarget());
+		verifyRepairKeaModeTargetReferringToMissingSimpleIndicator(getProject().createKeaModeHumanWelfareTarget());
+	}
+	
+	public void testRepairTwoKeaModeTargetsReferringToSameSimpleTarget() throws Exception
+	{
+		verifyRepairTwoKeaModeTargetsReferringToSameSimpleTarget(getProject().createKeaModeTarget(), getProject().createKeaModeTarget());
+		verifyRepairTwoKeaModeTargetsReferringToSameSimpleTarget(getProject().createKeaModeHumanWelfareTarget(), getProject().createKeaModeHumanWelfareTarget());
+	}
+
+	private void verifyRepairTwoKeaModeTargetsReferringToSameSimpleTarget(AbstractTarget targetA, AbstractTarget targetB) throws Exception
+	{
+		Indicator indicator = getProject().createIndicator(targetA);
+		getProject().addIndicatorToOwner(targetB, indicator.getRef());
+
+		verifyTargetOwnsIndicator(targetA, indicator);
+		verifyTargetOwnsIndicator(targetB, indicator);
+		
+		repairer.repairProblemsWherePossible();
+		
+		assertEquals("Indictor should not have been removed?", 1, getIndicatorRefs(targetA).size());
+		assertEquals("Indictor should not have been removed?", 1, getIndicatorRefs(targetB).size());
+		
+		ORef indicatorRefFromTargetA = getIndicatorRefs(targetA).getFirstElement();
+		ORef indicatorRefFromTargetB = getIndicatorRefs(targetB).getFirstElement();
+		assertFalse("indicators should not be the same?", indicatorRefFromTargetA.equals(indicatorRefFromTargetB));
+	}
+	
+	private void verifyRepairSimpleModeSimpleReferringToMissingSimpleIndicator(AbstractTarget target) throws Exception
+	{
+		Indicator indicator = getProject().createIndicator(target);
+		getProject().deleteObject(indicator);
+		verifyTargetOwnsIndicator(target, indicator);
+		
+		repairer.repairProblemsWherePossible();
+		
+		assertEquals("Target indicators list should not have been cleared?", indicator.getRef(), getIndicatorRefs(target).getFirstElement());
+	}
+
+	private void verifyRepairKeaModeTargetReferringToMissingSimpleIndicator(AbstractTarget abstractTarget) throws Exception
+	{
+		Indicator indicator = getProject().createIndicator(abstractTarget);
+		getProject().deleteObject(indicator);
+		verifyTargetOwnsIndicator(abstractTarget, indicator);
+		
+		repairer.repairProblemsWherePossible();
+		
+		assertTrue("Target should not be referring to mising indicator?", getIndicatorRefs(abstractTarget).isEmpty());
+	}
+
+	private void verifyTargetOwnsIndicator(AbstractTarget target, Indicator indicator)
+	{
+		assertEquals("Target should be referring to missing indicator?", indicator.getRef(), getIndicatorRefs(target).getFirstElement());
+	}
+	
+	private ORefList getIndicatorRefs(AbstractTarget abstractTarget)
+	{
+		return abstractTarget.getSafeRefListData(AbstractTarget.TAG_INDICATOR_IDS);
+	}
+	
 	public void testRepaireAssignmentsReferringToMissingObjects() throws Exception
 	{
 		ResourceAssignment resourceAssignment = getProject().createResourceAssignment();
