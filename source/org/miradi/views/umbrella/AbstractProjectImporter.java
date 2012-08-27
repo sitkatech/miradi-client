@@ -89,8 +89,8 @@ public abstract class AbstractProjectImporter
 		catch (CpmzVersionTooOldException e)
 		{
 			EAM.logException(e);
-			EAM.errorDialog(EAM.text("This project cannot be imported by this version of Miradi because it \n" +
-									 "is in a newer data format. Please upgrade to the latest version of Miradi."));
+			EAM.errorDialog(EAM.text("This project cannot be imported because it is in an old data format. \n" +
+									 "Please re-export a new copy from ConPro, and import that instead."));
 		}
 		catch (ValidationException e)
 		{
