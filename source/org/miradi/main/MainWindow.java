@@ -673,7 +673,6 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		if(quarantinedCount == 0)
 			return;
 		
-		projectSaver.safeSave();
 		EAM.notifyDialog(EAM.text("This project has been optimized to remove data that is no longer needed.\n"));
 	}
 
