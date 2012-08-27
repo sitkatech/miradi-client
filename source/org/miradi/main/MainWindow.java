@@ -663,6 +663,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		if (!beforeRepairSnapShot.equals(afterRepairSnapShot))
 		{
 			projectSaver.safeSave();
+			EAM.logDebug("Project was repaired and saved!");
 		}
 	}
 
