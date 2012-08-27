@@ -63,7 +63,7 @@ abstract public class Factor extends BaseObject
 		switch(objectType)
 		{
 			case ObjectType.INDICATOR: 
-				list.addAll(new ORefList(objectType, getOnlyDirectIndicatorIds()));
+				list.addAll(getSafeRefListData(TAG_INDICATOR_IDS));
 				break;
 		}
 		return list;

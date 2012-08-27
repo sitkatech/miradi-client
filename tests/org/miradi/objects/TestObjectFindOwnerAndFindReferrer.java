@@ -126,6 +126,16 @@ public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
 		verifyOwnershipFunctions(1, targetRef, new ORef(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keaId));
 	}
 	
+	public void testTargetInKeaModeWithSimpleIndicatorOwn() throws Exception
+	{
+		Target target = project.createTarget();
+		project.turnOnTncMode(target);
+		ORef targetRef = target.getRef();
+		BaseId indicatorId = project.addItemToFactorList(targetRef, ObjectType.INDICATOR, Factor.TAG_INDICATOR_IDS);
+		
+		verifyOwnershipFunctions(1, targetRef, new ORef(ObjectType.INDICATOR, indicatorId));
+	}
+	
 	public void testTaskOwn() throws Exception
 	{
 		Strategy strategy = project.createStrategy();
