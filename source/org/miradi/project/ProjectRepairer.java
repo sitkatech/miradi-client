@@ -38,6 +38,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.objectpools.ObjectPool;
 import org.miradi.objectpools.PoolWithIdAssigner;
+import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
@@ -45,6 +46,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.GroupBox;
+import org.miradi.objects.Indicator;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.TaggedObjectSet;
@@ -52,7 +54,10 @@ import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.ViewData;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
+import org.miradi.schemas.HumanWelfareTargetSchema;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.HtmlUtilities;
 
@@ -112,8 +117,90 @@ public class ProjectRepairer
 		quarantineGroupBoxFactorLinks();
 		fixAnyProblemsWithThreatStressRatings();
 		fixAssignmentsReferringToMissingObjects();
+		repairKeaModeTargetsReferringToMissingSimpleModeIndicators(TargetSchema.getObjectType());
+		repairKeaModeTargetsReferringToMissingSimpleModeIndicators(HumanWelfareTargetSchema.getObjectType());
+		repairKeaModeTargetsReferringToSameSimpleModeIndicator(TargetSchema.getObjectType());
+		repairKeaModeTargetsReferringToSameSimpleModeIndicator(HumanWelfareTargetSchema.getObjectType());
 	}
 	
+	private void repairKeaModeTargetsReferringToMissingSimpleModeIndicators(final int abstractTargetType) throws Exception
+	{
+		ORefList abstractTargetRefs = getProject().getPool(abstractTargetType).getORefList();
+		for(ORef abstractTargetRef : abstractTargetRefs)
+		{
+			AbstractTarget target = AbstractTarget.findTarget(getProject(), abstractTargetRef);
+			if (target.isViabilityModeTNC())
+			{
+				deleteMissingIndicatorsFromTarget(target);
+			}
+		}
+	}
+
+	private void deleteMissingIndicatorsFromTarget(AbstractTarget target) throws Exception
+	{
+		final ORefSet allIndicators = getProject().getIndicatorPool().getRefSet();
+		ORefList indicatorRefs = target.getSafeRefListData(AbstractTarget.TAG_INDICATOR_IDS);
+		ORefList indicatorsToDelete = new ORefList();
+		for(ORef indicatorRef : indicatorRefs)
+		{
+			if (!allIndicators.contains(indicatorRef))
+			{
+				indicatorsToDelete.add(indicatorRef);
+			}
+		}
+
+		indicatorRefs.removeAll(indicatorsToDelete);
+		setIndicatorRefs(target, indicatorRefs);
+	}
+
+	private void repairKeaModeTargetsReferringToSameSimpleModeIndicator(final int abstractTargetType) throws Exception
+	{
+		final ORefSet allIndicators = getProject().getIndicatorPool().getRefSet();
+		for(ORef indicatorRef : allIndicators)
+		{
+			Indicator indicator = Indicator.find(getProject(), indicatorRef);
+			ORefList abstractTargetReferrerRefs = indicator.findObjectsThatReferToUs(abstractTargetType);
+			if (abstractTargetReferrerRefs.size() == 2)
+			{
+				cloneIndicator(abstractTargetReferrerRefs.getFirstElement(), indicator);
+			}
+		}
+	}
+
+	public void cloneIndicator(ORef abstractTargetRef, Indicator indicator) throws Exception
+	{
+		AbstractTarget abstractTarget = AbstractTarget.findTarget(getProject(), abstractTargetRef);
+		ORefList indicatorRefs = abstractTarget.getSafeRefListData(AbstractTarget.TAG_INDICATOR_IDS);
+		indicatorRefs.remove(indicator.getRef());
+		indicatorRefs.add(cloneIndicator(indicator));
+		setIndicatorRefs(abstractTarget, indicatorRefs);
+	}
+
+	public ORef cloneIndicator(Indicator indicator) throws Exception
+	{
+		ORef newlyCreateIndicatorRef = getProject().createObject(IndicatorSchema.getObjectType());
+		Vector<String> storedTags = indicator.getStoredFieldTags();
+		for (String tag : storedTags)
+		{
+			if(indicator.isPseudoField(tag))
+				continue;
+			if(indicator.isIdListTag(tag))
+				continue;
+			if(indicator.isRefList(tag))
+				continue;
+			
+			getProject().setObjectData(newlyCreateIndicatorRef, tag, indicator.getData(tag));
+		}
+		
+		return newlyCreateIndicatorRef;
+	}
+	
+	private void setIndicatorRefs(AbstractTarget target, ORefList indicatorRefs) throws Exception
+	{
+		final IdList indicatorIds = indicatorRefs.convertToIdList(IndicatorSchema.getObjectType());
+		getProject().setObjectData(target, AbstractTarget.TAG_INDICATOR_IDS, indicatorIds.toString());
+	}
+
 	private void fixAssignmentsReferringToMissingObjects() throws Exception
 	{
 		Vector<String> resourceAssignmentTagsToFix = new Vector<String>();

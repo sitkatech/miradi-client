@@ -65,6 +65,14 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		
 		return stringWriter.toString();
 	}
+	
+	public static String createSnapShot(Project projectToUse) throws Exception
+	{
+		UnicodeStringWriter stringWriter = UnicodeStringWriter.create();
+		saveProject(projectToUse, stringWriter);
+		
+		return stringWriter.toString();
+	}
 
 	public static void saveProject(final Project projectToUse, final UnicodeStringWriter writerToUse) throws Exception
 	{
