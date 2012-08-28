@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import java.awt.Dimension;
+import java.util.Vector;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
@@ -28,6 +29,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Assignment;
@@ -91,26 +93,47 @@ public class TestProjectRepairer extends TestCaseWithProject
 	
 	public void testRepairTwoKeaModeTargetsReferringToSameSimpleTarget() throws Exception
 	{
-		verifyRepairTwoKeaModeTargetsReferringToSameSimpleTarget(getProject().createKeaModeTarget(), getProject().createKeaModeTarget());
-		verifyRepairTwoKeaModeTargetsReferringToSameSimpleTarget(getProject().createKeaModeHumanWelfareTarget(), getProject().createKeaModeHumanWelfareTarget());
+		verifyRepairTargetsReferringToSameSimpleTarget(getProject().createKeaModeTarget(), getProject().createKeaModeTarget());
+		verifyRepairTargetsReferringToSameSimpleTarget(getProject().createKeaModeHumanWelfareTarget(), getProject().createKeaModeHumanWelfareTarget());
+	}
+	
+	public void testRepairTwoSimpleModeTargetsReferringToSameSimpleTarget() throws Exception
+	{
+		verifyRepairTargetsReferringToSameSimpleTarget(getProject().createKeaModeTarget(), getProject().createTarget());
+		verifyRepairTargetsReferringToSameSimpleTarget(getProject().createKeaModeHumanWelfareTarget(), getProject().createHumanWelfareTarget());
+	}
+	
+	private void verifyRepairTargetsReferringToSameSimpleTarget(AbstractTarget target1, AbstractTarget target2) throws Exception
+	{
+		Vector<AbstractTarget> targets = new Vector<AbstractTarget>();
+		targets.add(target1);
+		targets.add(target2);
+		verifyRepairTargetsReferringToSameSimpleTarget(targets);
 	}
 
-	private void verifyRepairTwoKeaModeTargetsReferringToSameSimpleTarget(AbstractTarget targetA, AbstractTarget targetB) throws Exception
+	private void verifyRepairTargetsReferringToSameSimpleTarget(Vector<AbstractTarget> targets) throws Exception
 	{
-		Indicator indicator = getProject().createIndicator(targetA);
-		getProject().addIndicatorToOwner(targetB, indicator.getRef());
-
-		verifyTargetOwnsIndicator(targetA, indicator);
-		verifyTargetOwnsIndicator(targetB, indicator);
+		ORef indicatorRef = getProject().createObject(IndicatorSchema.getObjectType());
+		Indicator indicator = Indicator.find(getProject(), indicatorRef);
+		for (AbstractTarget target : targets)
+		{
+			getProject().addIndicatorToOwner(target, indicatorRef);
+			verifyTargetOwnsIndicator(target, indicator);
+		}
 		
 		repairer.repairProblemsWherePossible();
+
+		for (AbstractTarget target : targets)
+		{	
+			assertEquals("Indictor should not have been removed?", 1, getIndicatorRefs(target).size());
+		}
 		
-		assertEquals("Indictor should not have been removed?", 1, getIndicatorRefs(targetA).size());
-		assertEquals("Indictor should not have been removed?", 1, getIndicatorRefs(targetB).size());
-		
-		ORef indicatorRefFromTargetA = getIndicatorRefs(targetA).getFirstElement();
-		ORef indicatorRefFromTargetB = getIndicatorRefs(targetB).getFirstElement();
-		assertFalse("indicators should not be the same?", indicatorRefFromTargetA.equals(indicatorRefFromTargetB));
+		ORefSet indicatorsFromTargets = new ORefSet();
+		for(AbstractTarget target : targets)
+		{
+			indicatorsFromTargets.add(getIndicatorRefs(target).getFirstElement());
+		}
+		assertEquals("Indicators should not be shared?", targets.size(), indicatorsFromTargets.size());
 	}
 	
 	private void verifyRepairSimpleModeSimpleReferringToMissingSimpleIndicator(AbstractTarget target) throws Exception
