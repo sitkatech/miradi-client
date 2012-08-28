@@ -33,6 +33,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.swing.Box;
@@ -88,6 +89,7 @@ import org.miradi.utils.MiradiResourceImageIcon;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.SplitterPositionSaverAndGetter;
+import org.miradi.utils.StringUtilities;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.views.library.LibraryView;
 import org.miradi.views.map.MapView;
@@ -663,7 +665,23 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		if (!beforeRepairSnapShot.equals(afterRepairSnapShot))
 		{
 			projectSaver.safeSave();
+			showRepairMessagesAsUserDialog(repairer.getMessages());
 			EAM.logDebug("Project was repaired and saved!");
+		}
+	}
+
+	private void showRepairMessagesAsUserDialog(HashSet<String> messages)
+	{
+		StringBuffer appendedMessages = new StringBuffer();
+		for (String message : messages)
+		{
+			appendedMessages.append(message);
+			appendedMessages.append(StringUtilities.NEW_LINE);
+		}
+		
+		if (appendedMessages.length() > 0)
+		{
+			EAM.notifyDialog(appendedMessages.toString());
 		}
 	}
 

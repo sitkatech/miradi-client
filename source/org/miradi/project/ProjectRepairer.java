@@ -24,6 +24,7 @@ import java.awt.Point;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.Vector;
 
@@ -66,6 +67,7 @@ public class ProjectRepairer
 	public ProjectRepairer(Project projectToRepair)
 	{
 		project = projectToRepair;
+		messages = new HashSet<String>();
 	}
 	
 	public int quarantineOrphans() throws Exception
@@ -146,6 +148,7 @@ public class ProjectRepairer
 			if (!allIndicators.contains(indicatorRef))
 			{
 				indicatorsToDelete.add(indicatorRef);
+				messages.add(EAM.text("Missing Indicator(s) was removed!"));
 			}
 		}
 
@@ -526,10 +529,16 @@ public class ProjectRepairer
 		return missingObjectRefs;
 	}
 	
+	public HashSet<String> getMessages()
+	{
+		return messages;
+	}
+	
 	private Project getProject()
 	{
 		return project;
 	}
 
 	private Project project;
+	private HashSet<String> messages;
 }
