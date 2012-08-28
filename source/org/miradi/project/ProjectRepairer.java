@@ -186,8 +186,6 @@ public class ProjectRepairer
 		Vector<String> storedTags = indicator.getStoredFieldTags();
 		for (String tag : storedTags)
 		{
-			if(indicator.isPseudoField(tag))
-				continue;
 			if(indicator.isIdListTag(tag))
 				continue;
 			if(indicator.isRefList(tag))
