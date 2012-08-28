@@ -140,20 +140,20 @@ public class ProjectRepairer
 
 	private void deleteMissingIndicatorsFromTarget(AbstractTarget target) throws Exception
 	{
-		final ORefSet allIndicators = getProject().getIndicatorPool().getRefSet();
-		ORefList indicatorRefs = target.getSafeRefListData(AbstractTarget.TAG_INDICATOR_IDS);
+		final ORefSet allPoolIndicators = getProject().getIndicatorPool().getRefSet();
+		ORefList targetIndicatorRefs = target.getSafeRefListData(AbstractTarget.TAG_INDICATOR_IDS);
 		ORefList indicatorsToDelete = new ORefList();
-		for(ORef indicatorRef : indicatorRefs)
+		for(ORef indicatorRef : targetIndicatorRefs)
 		{
-			if (!allIndicators.contains(indicatorRef))
+			if (!allPoolIndicators.contains(indicatorRef))
 			{
 				indicatorsToDelete.add(indicatorRef);
 				messages.add(EAM.text("Missing Indicator(s) was removed!"));
 			}
 		}
 
-		indicatorRefs.removeAll(indicatorsToDelete);
-		setIndicatorRefs(target, indicatorRefs);
+		targetIndicatorRefs.removeAll(indicatorsToDelete);
+		setIndicatorRefs(target, targetIndicatorRefs);
 	}
 
 	private void repairTargetsReferringToSameSimpleModeIndicator(final int abstractTargetType) throws Exception
