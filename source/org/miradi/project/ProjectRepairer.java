@@ -160,20 +160,21 @@ public class ProjectRepairer
 		{
 			Indicator indicator = Indicator.find(getProject(), indicatorRef);
 			ORefList abstractTargetReferrerRefs = indicator.findObjectsThatReferToUs(abstractTargetType);
-			if (abstractTargetReferrerRefs.size() == 2)
-			{
-				cloneIndicator(abstractTargetReferrerRefs.getFirstElement(), indicator);
-			}
+			cloneIndicator(abstractTargetReferrerRefs, indicator);
 		}
 	}
 
-	public void cloneIndicator(ORef abstractTargetRef, Indicator indicator) throws Exception
+	public void cloneIndicator(ORefList abstractTargetReferrerRefs, Indicator indicator) throws Exception
 	{
-		AbstractTarget abstractTarget = AbstractTarget.findTarget(getProject(), abstractTargetRef);
-		ORefList indicatorRefs = abstractTarget.getSafeRefListData(AbstractTarget.TAG_INDICATOR_IDS);
-		indicatorRefs.remove(indicator.getRef());
-		indicatorRefs.add(cloneIndicator(indicator));
-		setIndicatorRefs(abstractTarget, indicatorRefs);
+		final int IGNORE_FIRST_REFERRER = 1;
+		for (int index = IGNORE_FIRST_REFERRER; index < abstractTargetReferrerRefs.size(); ++index)
+		{
+			AbstractTarget abstractTarget = AbstractTarget.findTarget(getProject(), abstractTargetReferrerRefs.get(index));
+			ORefList indicatorRefs = abstractTarget.getSafeRefListData(AbstractTarget.TAG_INDICATOR_IDS);
+			indicatorRefs.remove(indicator.getRef());
+			indicatorRefs.add(cloneIndicator(indicator));
+			setIndicatorRefs(abstractTarget, indicatorRefs);
+		}
 	}
 
 	public ORef cloneIndicator(Indicator indicator) throws Exception

@@ -91,26 +91,36 @@ public class TestProjectRepairer extends TestCaseWithProject
 		verifyRepairKeaModeTargetReferringToMissingSimpleIndicator(getProject().createKeaModeHumanWelfareTarget());
 	}
 	
-	public void testRepairTwoKeaModeTargetsReferringToSameSimpleTarget() throws Exception
-	{
-		verifyRepairTargetsReferringToSameSimpleTarget(getProject().createKeaModeTarget(), getProject().createKeaModeTarget());
-		verifyRepairTargetsReferringToSameSimpleTarget(getProject().createKeaModeHumanWelfareTarget(), getProject().createKeaModeHumanWelfareTarget());
-	}
-	
 	public void testRepairTwoSimpleModeTargetsReferringToSameSimpleTarget() throws Exception
 	{
-		verifyRepairTargetsReferringToSameSimpleTarget(getProject().createKeaModeTarget(), getProject().createTarget());
-		verifyRepairTargetsReferringToSameSimpleTarget(getProject().createKeaModeHumanWelfareTarget(), getProject().createHumanWelfareTarget());
+		verifyRepairTargetsReferringToSameSimpleTarget(1, TargetSchema.getObjectType(), false);
+		verifyRepairTargetsReferringToSameSimpleTarget(2, TargetSchema.getObjectType(), false);
+		verifyRepairTargetsReferringToSameSimpleTarget(2, TargetSchema.getObjectType(), true);
+		verifyRepairTargetsReferringToSameSimpleTarget(3, TargetSchema.getObjectType(), false);
+		verifyRepairTargetsReferringToSameSimpleTarget(3, TargetSchema.getObjectType(), true);
+		
+		verifyRepairTargetsReferringToSameSimpleTarget(2, HumanWelfareTargetSchema.getObjectType(), false);
+		verifyRepairTargetsReferringToSameSimpleTarget(2, HumanWelfareTargetSchema.getObjectType(), true);
+		verifyRepairTargetsReferringToSameSimpleTarget(3, HumanWelfareTargetSchema.getObjectType(), false);
+		verifyRepairTargetsReferringToSameSimpleTarget(3, HumanWelfareTargetSchema.getObjectType(), true);
 	}
 	
-	private void verifyRepairTargetsReferringToSameSimpleTarget(AbstractTarget target1, AbstractTarget target2) throws Exception
+	private void verifyRepairTargetsReferringToSameSimpleTarget(final int targetCount, final int targetType, boolean isKeaMode) throws Exception
 	{
-		Vector<AbstractTarget> targets = new Vector<AbstractTarget>();
-		targets.add(target1);
-		targets.add(target2);
-		verifyRepairTargetsReferringToSameSimpleTarget(targets);
+		Vector<AbstractTarget> createdTargets = new Vector<AbstractTarget>();
+		for (int index = 0; index < targetCount; ++index)
+		{
+			final ORef abstractTargetRef = getProject().createObject(targetType);
+			final AbstractTarget abstractTarget = AbstractTarget.findTarget(getProject(), abstractTargetRef);
+			if (isKeaMode)
+				getProject().turnOnTncMode(abstractTarget);
+			
+			createdTargets.add(abstractTarget);
+		}
+		
+		verifyRepairTargetsReferringToSameSimpleTarget(createdTargets);
 	}
-
+	
 	private void verifyRepairTargetsReferringToSameSimpleTarget(Vector<AbstractTarget> targets) throws Exception
 	{
 		ORef indicatorRef = getProject().createObject(IndicatorSchema.getObjectType());
