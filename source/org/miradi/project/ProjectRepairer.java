@@ -175,12 +175,12 @@ public class ProjectRepairer
 			AbstractTarget abstractTarget = AbstractTarget.findTarget(getProject(), abstractTargetReferrerRefs.get(index));
 			ORefList indicatorRefs = abstractTarget.getSafeRefListData(AbstractTarget.TAG_INDICATOR_IDS);
 			indicatorRefs.remove(indicator.getRef());
-			indicatorRefs.add(cloneIndicator(indicator));
+			indicatorRefs.add(shallowCloneIndicator(indicator));
 			setIndicatorRefs(abstractTarget, indicatorRefs);
 		}
 	}
 
-	public ORef cloneIndicator(Indicator indicator) throws Exception
+	public ORef shallowCloneIndicator(Indicator indicator) throws Exception
 	{
 		ORef newlyCreateIndicatorRef = getProject().createObject(IndicatorSchema.getObjectType());
 		Vector<String> storedTags = indicator.getStoredFieldTags();
