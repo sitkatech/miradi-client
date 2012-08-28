@@ -119,8 +119,8 @@ public class ProjectRepairer
 		fixAssignmentsReferringToMissingObjects();
 		repairKeaModeTargetsReferringToMissingSimpleModeIndicators(TargetSchema.getObjectType());
 		repairKeaModeTargetsReferringToMissingSimpleModeIndicators(HumanWelfareTargetSchema.getObjectType());
-		repairKeaModeTargetsReferringToSameSimpleModeIndicator(TargetSchema.getObjectType());
-		repairKeaModeTargetsReferringToSameSimpleModeIndicator(HumanWelfareTargetSchema.getObjectType());
+		repairTargetsReferringToSameSimpleModeIndicator(TargetSchema.getObjectType());
+		repairTargetsReferringToSameSimpleModeIndicator(HumanWelfareTargetSchema.getObjectType());
 	}
 	
 	private void repairKeaModeTargetsReferringToMissingSimpleModeIndicators(final int abstractTargetType) throws Exception
@@ -153,7 +153,7 @@ public class ProjectRepairer
 		setIndicatorRefs(target, indicatorRefs);
 	}
 
-	private void repairKeaModeTargetsReferringToSameSimpleModeIndicator(final int abstractTargetType) throws Exception
+	private void repairTargetsReferringToSameSimpleModeIndicator(final int abstractTargetType) throws Exception
 	{
 		final ORefSet allIndicators = getProject().getIndicatorPool().getRefSet();
 		for(ORef indicatorRef : allIndicators)
