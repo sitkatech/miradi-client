@@ -90,7 +90,7 @@ public class RenameOldProjectDoer
 				continue;
 			}
 			
-			if (!Project.isValidProjectFilename(projectName))
+			if (!Project.isValidMpfProjectFilename(projectName))
 			{
 				EAM.errorDialog(EAM.text("Invalid project name:") + projectName);
 				continue;

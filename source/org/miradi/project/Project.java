@@ -992,7 +992,7 @@ public class Project
 		threatStressRatingEnsurer.enable();
 	}
 	
-	public static boolean isValidProjectFilename(String projectFileName) throws Exception
+	public static boolean isValidMpfProjectFilename(String projectFileName) throws Exception
 	{
 		String projectName = Project.withoutMpfProjectSuffix(projectFileName); 
 		return isValidProjectName(projectName);
