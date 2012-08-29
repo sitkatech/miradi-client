@@ -252,7 +252,7 @@ public class TestProject extends MiradiTestCase
 		assertEquals("value was not snapped to even size?", expectedValue, getProject().forceNonZeroEvenSnap(valueToEvenSnap));
 	}
 
-	public void testIsValidProjectFilename() throws Exception
+	public void testIsValidMpfProjectFilename() throws Exception
 	{
 		assertTrue("AlphaNumericDotDashSpace", Project.isValidMpfProjectFilename("AZaz09_.Miradi"));
 		assertFalse("allowed really long name?", Project.isValidMpfProjectFilename("1234567890123456789012345678901234567890.Miradi"));
