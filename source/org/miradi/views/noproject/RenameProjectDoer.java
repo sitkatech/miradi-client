@@ -37,7 +37,7 @@ public class RenameProjectDoer
 	{
 		try
 		{
-			String newDirectoryName = getLegalProjectFileNameFromUser(mainWindow, projectFileToRename);
+			String newDirectoryName = getLegalMpfProjectFileNameFromUser(mainWindow, projectFileToRename);
 			if (newDirectoryName == null)
 				return;
 
@@ -59,7 +59,7 @@ public class RenameProjectDoer
 		}
 	}
 	
-	public static String getLegalProjectFileNameFromUser(MainWindow mainWindow, File proposedProjectFile) throws Exception
+	public static String getLegalMpfProjectFileNameFromUser(MainWindow mainWindow, File proposedProjectFile) throws Exception
 	{
 		while (true)
 		{
