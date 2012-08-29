@@ -63,7 +63,7 @@ public class RenameProjectDoer
 	{
 		while (true)
 		{
-			String projectName = askUserForProjectName(mainWindow, Project.withoutProjectSuffix(proposedProjectFile.getName()));
+			String projectName = askUserForProjectName(mainWindow, Project.withoutMpfProjectSuffix(proposedProjectFile.getName()));
 			if (projectName == null)
 			{
 				return null;

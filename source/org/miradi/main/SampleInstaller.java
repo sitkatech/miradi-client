@@ -100,7 +100,7 @@ public class SampleInstaller
 	private String getValidatedProjectNameWithoutExtension(File mpfProjectFile) throws Exception
 	{
 		String projectName = mpfProjectFile.getName();
-		String projectNameWithoutExtension = Project.withoutProjectSuffix(projectName);
+		String projectNameWithoutExtension = Project.withoutMpfProjectSuffix(projectName);
 		return Project.makeProjectNameLegal(projectNameWithoutExtension); 
 	}
 
