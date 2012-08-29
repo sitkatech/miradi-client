@@ -162,7 +162,7 @@ public abstract class AbstractProjectImporter
 			projectFileName = projectFileNameToUse;
 			newProjectFile = new File(EAM.getHomeDirectory(), projectFileName);
 
-			if(!Project.isValidProjectFilename(projectFileName))
+			if(!Project.isValidMpfProjectFilename(projectFileName))
 				throw new Exception("Illegal project name: " + projectFileName);
 		}
 		
