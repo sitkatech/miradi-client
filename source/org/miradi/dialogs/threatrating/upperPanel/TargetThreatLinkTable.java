@@ -116,6 +116,13 @@ public class TargetThreatLinkTable extends AbstractTableWithChoiceItemRenderer
 		
 		return new ORefList[]{hierarchyRefs};
 	}
+
+	@Override
+	public String getColumnIdentifier(int tableColumn)
+	{
+		final int modelColumn = convertColumnIndexToModel(tableColumn);
+		return getTargetThreatLinkTableModel().getColumnIdentifier(modelColumn);
+	}
 	
 	public static final int PREFERRED_VIEWPORT_WIDTH = 500;
 	public static final int PREFERRED_VIEWPORT_SUMMARY_COLUMN_WIDTH = 130;

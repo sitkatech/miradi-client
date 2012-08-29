@@ -83,6 +83,11 @@ public class TargetThreatLinkTableModel extends AbstractThreatPerRowTableModel
 	{
 		return new TableModelChoiceItemComparator(this, columnToSortOn, getThreatRatingQuestion());
 	}
+	
+	public String getColumnIdentifier(int modelColumn)
+	{
+		return getTarget(modelColumn).getRef().toString();
+	}
 
 	private static final String UNIQUE_IDENTIFIER = "TargetThreatLinkTableModel";
 }
