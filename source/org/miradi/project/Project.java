@@ -994,7 +994,7 @@ public class Project
 	
 	public static boolean isValidProjectFilename(String projectFileName) throws Exception
 	{
-		String projectName = Project.withoutProjectSuffix(projectFileName); 
+		String projectName = Project.withoutMpfProjectSuffix(projectFileName); 
 		return isValidProjectName(projectName);
 	}
 	
@@ -1373,7 +1373,7 @@ public class Project
 		throw new RuntimeException("setLocalDataLocation not yet supported!");
 	}
 	
-	public static String withoutProjectSuffix(String name) throws Exception
+	public static String withoutMpfProjectSuffix(String name) throws Exception
 	{
 		return StringUtilities.stripTrailingString(name, MpfFileFilter.EXTENSION);
 	}
