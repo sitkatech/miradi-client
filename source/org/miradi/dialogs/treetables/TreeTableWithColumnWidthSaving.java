@@ -24,6 +24,7 @@ import org.miradi.utils.ColumnSequenceSaver;
 import org.miradi.utils.ColumnWidthProvider;
 import org.miradi.utils.ColumnWidthSaver;
 import org.miradi.utils.TableWithColumnManagement;
+import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 
 abstract public class TreeTableWithColumnWidthSaving extends TreeTableWithRowHeightSaver implements TableWithColumnManagement, ColumnWidthProvider
 {
@@ -86,6 +87,11 @@ abstract public class TreeTableWithColumnWidthSaving extends TreeTableWithRowHei
 			return ColumnWidthSaver.DEFAULT_NARROW_COLUMN_WIDTH;
 		
 		return columnHeaderWidth;
+	}
+	
+	public String getColumnIdentifier(int tableColumn)
+	{
+		return TableWithColumnWidthAndSequenceSaver.createColumnIdentifier(this, this, tableColumn);
 	}
 		
 	private ColumnWidthSaver columnWidthSaver;

@@ -124,12 +124,7 @@ public class ColumnWidthSaver extends MouseAdapter
 	
 	private String getColumnUniqueCode(int tableColumn)
 	{
-		String columnName = table.getColumnName(tableColumn);
-		String columnGroupCode = columnWidthProvider.getColumnGroupCode(tableColumn);
-		if (columnName.equals(columnGroupCode))
-			return columnName;
-		
-		return columnGroupCode + "." + columnName;
+		return columnWidthProvider.getColumnIdentifier(tableColumn);
 	}
 	
 	private String getUniqueTableIdentifier()
