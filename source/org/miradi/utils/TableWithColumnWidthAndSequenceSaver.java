@@ -22,6 +22,7 @@ package org.miradi.utils;
 import java.util.EventObject;
 import java.util.HashMap;
 
+import javax.swing.JTable;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
@@ -156,6 +157,21 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 	public String getColumnGroupCode(int tableColumn)
 	{
 		return getColumnName(tableColumn);
+	}
+	
+	public String getColumnIdentifier(int tableColumn)
+	{
+		return createColumnIdentifier(this, this, tableColumn);
+	}
+
+	public static String createColumnIdentifier(JTable tableToUse, ColumnWidthProvider provider, int tableColumn)
+	{
+		String columnName = tableToUse.getColumnName(tableColumn);
+		String columnGroupCode = provider.getColumnGroupCode(tableColumn);
+		if (columnName.equals(columnGroupCode))
+			return columnName;
+		
+		return columnGroupCode + "." + columnName;
 	}
 	
 	protected void saveColumnState() throws Exception
