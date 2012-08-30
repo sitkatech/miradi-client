@@ -71,9 +71,7 @@ public abstract class AbstractProjectImporter
 			File fileToImport = fileChooser.getSelectedFile();
 			fileToImport = MiradiFileSaveChooser.getFileWithExtension(fileChooser, fileToImport);
 			
-			final String fileNameWithoutExtension = getNameWithoutExtension(fileToImport);
-			final File proposedMpfProjectFile = new File(MpfFileFilter.createNameWithExtension(fileNameWithoutExtension));
-			File importedFile = importProject(fileToImport, proposedMpfProjectFile);
+			File importedFile = importProject(fileToImport);
 			if (importedFile != null)
 				userConfirmOpenImportedProject(importedFile);
 		}
@@ -136,7 +134,7 @@ public abstract class AbstractProjectImporter
 		final File proposedMpfProjectFile = new File(MpfFileFilter.createNameWithExtension(fileNameWithoutExtension));
 		return importProject(fileToImport, proposedMpfProjectFile);
 	}
-
+	
 	public File importProject(File fileToImport, final File proposedProjectFile) throws Exception
 	{
 		String projectFileName = RenameProjectDoer.getLegalMpfProjectFileNameFromUser(getMainWindow(), proposedProjectFile);
