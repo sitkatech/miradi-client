@@ -132,7 +132,9 @@ public abstract class AbstractProjectImporter
 
 	public File importProject(File fileToImport) throws Exception
 	{
-		return importProject(fileToImport, fileToImport);
+		final String fileNameWithoutExtension = getNameWithoutExtension(fileToImport);
+		final File proposedMpfProjectFile = new File(MpfFileFilter.createNameWithExtension(fileNameWithoutExtension));
+		return importProject(fileToImport, proposedMpfProjectFile);
 	}
 
 	public File importProject(File fileToImport, final File proposedProjectFile) throws Exception
