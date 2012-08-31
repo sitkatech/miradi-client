@@ -54,11 +54,11 @@ abstract public class FactorSchema extends BaseObjectSchema
 
 	protected void writeObjectiveIds()
 	{
-		createFieldSchemaIdList(Factor.TAG_OBJECTIVE_IDS, ObjectiveSchema.getObjectType());
+		createOwnedFieldSchemaIdList(Factor.TAG_OBJECTIVE_IDS, ObjectiveSchema.getObjectType());
 	}
 
 	protected void writeIndicatorIds()
 	{
-		createFieldSchemaIdList(Factor.TAG_INDICATOR_IDS, IndicatorSchema.getObjectType());
+		createOwnedFieldSchemaIdList(Factor.TAG_INDICATOR_IDS, IndicatorSchema.getObjectType());
 	}
 }

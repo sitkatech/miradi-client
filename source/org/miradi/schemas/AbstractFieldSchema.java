@@ -35,6 +35,11 @@ abstract public class AbstractFieldSchema
 		return tag;
 	}
 	
+	protected void setIsOwned()
+	{
+		isOwned = true;
+	}
+	
 	public void setNavigationField()
 	{
 		isNavigationField = true;
@@ -85,9 +90,15 @@ abstract public class AbstractFieldSchema
 		return false;
 	}
 	
+	public boolean isOwned()
+	{
+		return isOwned;
+	}
+	
 	abstract public ObjectData createField(final BaseObject baseObjectToUse);
 
 	private String tag;
 	private boolean isNavigationField;
 	private boolean isPseudoField;
+	private boolean isOwned;
 }

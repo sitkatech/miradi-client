@@ -35,7 +35,7 @@ public class TaskSchema extends FactorSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaIdList(Task.TAG_SUBTASK_IDS, TaskSchema.getObjectType());
+		createOwnedFieldSchemaIdList(Task.TAG_SUBTASK_IDS, TaskSchema.getObjectType());
 		createBudgetSchemas();
 		createProgressReportSchema();
 		
