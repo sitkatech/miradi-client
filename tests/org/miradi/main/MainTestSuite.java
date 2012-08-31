@@ -126,6 +126,7 @@ import org.miradi.objects.TestObjectManager;
 import org.miradi.objects.TestObjective;
 import org.miradi.objects.TestOrganization;
 import org.miradi.objects.TestOtherNotableSpecies;
+import org.miradi.objects.TestOwnedBaseObjects;
 import org.miradi.objects.TestPlanningViewConfiguration;
 import org.miradi.objects.TestProgressPercent;
 import org.miradi.objects.TestProgressReport;
@@ -451,6 +452,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestDashboard.class));
 		addTest(new TestSuite(TestXmlUtilities2.class));
 		addTest(new TestSuite(TestXslTemplate.class));
+		addTest(new TestSuite(TestOwnedBaseObjects.class));
 			
 		// commands package
 		addTest(new TestSuite(TestCommands.class));
