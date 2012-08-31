@@ -35,8 +35,8 @@ abstract public class DiagramObjectSchema extends BaseObjectSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaIdList(DiagramObject.TAG_DIAGRAM_FACTOR_IDS, DiagramFactorSchema.getObjectType());
-		createFieldSchemaIdList(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, DiagramLinkSchema.getObjectType());
+		createOwnedFieldSchemaIdList(DiagramObject.TAG_DIAGRAM_FACTOR_IDS, DiagramFactorSchema.getObjectType());
+		createOwnedFieldSchemaIdList(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, DiagramLinkSchema.getObjectType());
 		createFieldSchemaSingleLineUserText(DiagramObject.TAG_SHORT_LABEL);
 		createFieldSchemaMultiLineUserText(DiagramObject.TAG_DETAIL);
 		createFieldSchemaCodeList(DiagramObject.TAG_HIDDEN_TYPES, getQuestion(DiagramLegendQuestion.class));

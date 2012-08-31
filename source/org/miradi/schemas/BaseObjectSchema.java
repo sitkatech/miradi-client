@@ -54,6 +54,12 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 		return addFieldSchema(fieldSchema);
 	}
 	
+	public AbstractFieldSchema addOwnedFieldSchema(final AbstractFieldSchema fieldSchema)
+	{
+		fieldSchema.setIsOwned();
+		return addFieldSchema(fieldSchema);
+	}
+	
 	protected AbstractFieldSchema addFieldSchema(final AbstractFieldSchema fieldSchema)
 	{
 		fieldSchemas.add(fieldSchema);
@@ -80,6 +86,11 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 		return addFieldSchema(new FieldSchemaIdList(fieldTag, objectType));
 	}
 	
+	public AbstractFieldSchema createOwnedFieldSchemaIdList(final String fieldTag, final int objectType)
+	{
+		return addOwnedFieldSchema(new FieldSchemaIdList(fieldTag, objectType));
+	}
+	
 	public AbstractFieldSchema createFieldSchemaCodeToUserStringMap(final String fieldTag)
 	{
 		return addFieldSchema(new FieldSchemaCodeToUserStringMap(fieldTag));
@@ -95,9 +106,19 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 		return addFieldSchema(new FieldSchemaRef(fieldTag));
 	}
 	
+	public AbstractFieldSchema createOwnedFieldSchemaRef(final String fieldTag)
+	{
+		return addOwnedFieldSchema(new FieldSchemaRef(fieldTag));
+	}
+	
 	public AbstractFieldSchema createFieldSchemaReflist(final String fieldTag, final String typeName)
 	{
 		return addFieldSchema(new FieldSchemaReflist(fieldTag, typeName));
+	}
+	
+	public AbstractFieldSchema createOwnedFieldSchemaReflist(final String fieldTag, final String typeName)
+	{
+		return addOwnedFieldSchema(new FieldSchemaReflist(fieldTag, typeName));
 	}
 	
 	public AbstractFieldSchema createFieldSchemaMultiLineUserText(final String fieldTag)
@@ -250,15 +271,15 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 
 	protected void createBudgetSchemas()
 	{
-		createFieldSchemaIdList(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignmentSchema.getObjectType());
-		createFieldSchemaReflist(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, EXPENSE_ASSIGNMENT);
+		createOwnedFieldSchemaIdList(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignmentSchema.getObjectType());
+		createOwnedFieldSchemaReflist(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, EXPENSE_ASSIGNMENT);
 		
 		createPseudoFieldSchemaString(BaseObject.PSEUDO_TAG_WHEN_TOTAL);
 	}
 
 	protected void createProgressReportSchema()
 	{
-		createFieldSchemaReflist(BaseObject.TAG_PROGRESS_REPORT_REFS, PROGRESS_REPORT);
+		createOwnedFieldSchemaReflist(BaseObject.TAG_PROGRESS_REPORT_REFS, PROGRESS_REPORT);
 		
 		createPseudoFieldSchemaQuestion(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE);
 		createPseudoFieldSchemaString(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);

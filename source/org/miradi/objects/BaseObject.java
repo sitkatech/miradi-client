@@ -69,7 +69,6 @@ import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.StringRefMap;
@@ -1114,10 +1113,13 @@ abstract public class BaseObject
 	public ORefList getAllOwnedObjects()
 	{
 		ORefList allOwnedObjects = new ORefList();
-		for (int objectTypeIndex = 0; objectTypeIndex < ObjectType.OBJECT_TYPE_COUNT; ++objectTypeIndex)
+		Vector<String> tags = getStoredFieldTags();
+		for (String tag : tags)
 		{
-			ORefList ownedObjects = getOwnedObjects(objectTypeIndex);
-			allOwnedObjects.addAll(ownedObjects);
+			if (getSchema().getFieldSchema(tag).isOwned())
+			{
+				allOwnedObjects.addAll(getSafeRefListData(tag));
+			}
 		}
 		
 		return allOwnedObjects;
