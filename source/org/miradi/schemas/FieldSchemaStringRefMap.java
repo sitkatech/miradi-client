@@ -24,7 +24,7 @@ import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.StringRefMapData;
 import org.miradi.objects.BaseObject;
 
-public class FieldSchemaStringRefMap extends AbstractFieldSchema
+public class FieldSchemaStringRefMap extends NonOwnableFieldSchema
 {
 	public FieldSchemaStringRefMap(String tagToUse)
 	{

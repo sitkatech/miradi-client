@@ -24,7 +24,7 @@ import org.miradi.objectdata.ORefData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objects.BaseObject;
 
-public class FieldSchemaRef extends AbstractFieldSchema
+public class FieldSchemaRef extends OwnableFieldSchema
 {
 	public FieldSchemaRef(String tagToUse)
 	{

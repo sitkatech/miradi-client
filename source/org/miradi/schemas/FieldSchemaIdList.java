@@ -24,7 +24,7 @@ import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objects.BaseObject;
 
-public class FieldSchemaIdList extends AbstractFieldSchema
+public class FieldSchemaIdList extends OwnableFieldSchema
 {
 	public FieldSchemaIdList(String tagToUse, final int idListTypeToUse)
 	{

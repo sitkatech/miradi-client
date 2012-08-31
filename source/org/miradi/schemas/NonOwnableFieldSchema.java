@@ -20,20 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
-import org.miradi.objectdata.ObjectData;
-import org.miradi.objectdata.RefListListData;
-import org.miradi.objects.BaseObject;
 
-public class FieldSchemaRefListList extends NonOwnableFieldSchema
+abstract public class NonOwnableFieldSchema extends AbstractFieldSchema
 {
-	public FieldSchemaRefListList(String tagToUse)
+	public NonOwnableFieldSchema(String tagToUse)
 	{
 		super(tagToUse);
-	}
-
-	@Override
-	public ObjectData createField(BaseObject baseObjectToUse)
-	{
-		return new RefListListData(getTag());
 	}
 }

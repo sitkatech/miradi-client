@@ -24,7 +24,7 @@ import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.PseudoRefListData;
 import org.miradi.objects.BaseObject;
 
-public class FieldSchemaPseudoReflistField extends AbstractFieldSchema
+public class FieldSchemaPseudoReflistField extends NonOwnableFieldSchema
 {
 	public FieldSchemaPseudoReflistField(String tagToUse)
 	{

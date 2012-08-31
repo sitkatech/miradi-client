@@ -25,7 +25,7 @@ import org.miradi.objectdata.ObjectData;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceQuestion;
 
-public class FieldSchemaCodeList extends AbstractFieldSchema
+public class FieldSchemaCodeList extends NonOwnableFieldSchema
 {
 	public FieldSchemaCodeList(String tagToUse, ChoiceQuestion questionToUse)
 	{

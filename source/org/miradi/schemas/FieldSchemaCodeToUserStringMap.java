@@ -24,7 +24,7 @@ import org.miradi.objectdata.CodeToUserStringMapData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objects.BaseObject;
 
-public class FieldSchemaCodeToUserStringMap extends AbstractFieldSchema
+public class FieldSchemaCodeToUserStringMap extends NonOwnableFieldSchema
 {
 	public FieldSchemaCodeToUserStringMap(String tagToUse)
 	{

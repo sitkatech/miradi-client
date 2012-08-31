@@ -24,7 +24,7 @@ import org.miradi.objectdata.DimensionData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objects.BaseObject;
 
-public class FieldSchemaDimension extends AbstractFieldSchema
+public class FieldSchemaDimension extends NonOwnableFieldSchema
 {
 	public FieldSchemaDimension(String tagToUse)
 	{
