@@ -24,7 +24,7 @@ import org.miradi.objectdata.CodeToChoiceMapData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objects.BaseObject;
 
-public class FieldSchemaCodeToChoiceMapData extends AbstractFieldSchema
+public class FieldSchemaCodeToChoiceMapData extends NonOwnableFieldSchema
 {
 	public FieldSchemaCodeToChoiceMapData(String tagToUse)
 	{

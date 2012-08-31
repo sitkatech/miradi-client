@@ -24,7 +24,7 @@ import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.PercentageData;
 import org.miradi.objects.BaseObject;
 
-public class FieldSchemaPercentage extends AbstractFieldSchema
+public class FieldSchemaPercentage extends NonOwnableFieldSchema
 {
 	public FieldSchemaPercentage(String tagToUse)
 	{

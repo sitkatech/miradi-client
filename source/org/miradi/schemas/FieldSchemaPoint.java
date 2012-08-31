@@ -24,7 +24,7 @@ import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.DiagramPointData;
 import org.miradi.objects.BaseObject;
 
-public class FieldSchemaPoint extends AbstractFieldSchema
+public class FieldSchemaPoint extends NonOwnableFieldSchema
 {
 	public FieldSchemaPoint(String tagToUse)
 	{

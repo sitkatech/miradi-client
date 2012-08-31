@@ -24,7 +24,7 @@ import org.miradi.objectdata.BaseIdData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objects.BaseObject;
 
-public class FieldSchemaBaseId extends AbstractFieldSchema
+public class FieldSchemaBaseId extends OwnableFieldSchema
 {
 	public FieldSchemaBaseId(String tagToUse, final int objectTypeToUse)
 	{

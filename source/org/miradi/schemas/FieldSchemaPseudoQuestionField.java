@@ -24,7 +24,7 @@ import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.PseudoQuestionData;
 import org.miradi.objects.BaseObject;
 
-public class FieldSchemaPseudoQuestionField extends AbstractFieldSchema
+public class FieldSchemaPseudoQuestionField extends NonOwnableFieldSchema
 {
 	public FieldSchemaPseudoQuestionField(String tagToUse)
 	{

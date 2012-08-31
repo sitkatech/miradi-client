@@ -24,7 +24,7 @@ import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.SingleLineUserTextData;
 import org.miradi.objects.BaseObject;
 
-public class FieldSchemaSingleLineUserText extends AbstractFieldSchema
+public class FieldSchemaSingleLineUserText extends NonOwnableFieldSchema
 {
 	public FieldSchemaSingleLineUserText(final String tagToUse)
 	{
