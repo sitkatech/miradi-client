@@ -74,6 +74,13 @@ public class DiagramLink extends BaseObject
 	}
 	
 	@Override
+	public ORefList getOwnedObjects(int objectType)
+	{
+		//FIXME urgent - FL needs to be included in this list
+		return super.getOwnedObjects(objectType);
+	}
+	
+	@Override
 	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
 	{
 		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy(deepCopiedFactorRefs);
