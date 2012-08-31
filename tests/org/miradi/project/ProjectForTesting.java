@@ -837,6 +837,16 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return SubTarget.find(this, subTargetRef);
 	}
 	
+	public KeyEcologicalAttribute createKea(AbstractTarget target) throws Exception
+	{
+		KeyEcologicalAttribute kea = createKea();
+		IdList keaIds = new IdList(KeyEcologicalAttributeSchema.getObjectType());
+		keaIds.addRef(kea.getRef());
+		fillObjectUsingCommand(target, AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaIds.toString());
+		
+		return kea;
+	}
+	
 	public KeyEcologicalAttribute createKea() throws Exception
 	{
 		ORef keaRef = createObject(KeyEcologicalAttributeSchema.getObjectType());
@@ -1406,11 +1416,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(threatRatingCommentsData, tagStressBasedThreatRatingCommentsMap, map.toJsonString());
 	}
 
-	public void addProgressReport(BaseObject baseObject) throws Exception
+	public ProgressReport addProgressReport(BaseObject baseObject) throws Exception
 	{
 		ProgressReport progressReport = createAndPopulateProgressReport();
 		ORefList progressReportRefs = new ORefList(progressReport.getRef());
 		fillObjectUsingCommand(baseObject, BaseObject.TAG_PROGRESS_REPORT_REFS, progressReportRefs.toString());
+		
+		return progressReport;
 	}
 	
 	public void addProgressPercent(Desire desire) throws Exception
@@ -2112,9 +2124,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return MultiCalendar.createFromIsoDateString(date);
 	}
 	
-	public void addExpenseWithValue(BaseObject baseObject) throws Exception
+	public ExpenseAssignment addExpenseWithValue(BaseObject baseObject) throws Exception
 	{
-		addExpenseAssignment(baseObject, new DateUnit(), 12.0);
+		return addExpenseAssignment(baseObject, new DateUnit(), 12.0);
 	}
 
 	public ExpenseAssignment addExpenseAssignment(BaseObject baseObject,	DateUnit dateUnitToUse, double unitQuantityToUse) throws Exception
@@ -2154,9 +2166,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return addResourceAssignment(parentObject, projectResource, dateUnitEffort);
 	}
 	
-	public void addResourceAssignment(BaseObject object) throws Exception
+	public ResourceAssignment addResourceAssignment(BaseObject object) throws Exception
 	{
-		addResourceAssignment(object, createAndPopulateProjectResource(), 10.0, new DateUnit());
+		return addResourceAssignment(object, createAndPopulateProjectResource(), 10.0, new DateUnit());
 	}
 
 	private ResourceAssignment addResourceAssignment(BaseObject parentObject, ProjectResource projectResource, double units, DateUnit dateUnit) throws Exception
