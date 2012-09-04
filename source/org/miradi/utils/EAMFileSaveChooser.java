@@ -27,6 +27,7 @@ import javax.swing.filechooser.FileFilter;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.views.umbrella.AbstractProjectImporter;
 
 
 public abstract class EAMFileSaveChooser
@@ -46,10 +47,7 @@ public abstract class EAMFileSaveChooser
 
 		dlg.setDialogTitle(getDialogApproveTitleText());
 		FileFilter[] filters = getFileFilter();
-		for (int i=0; i<filters.length; ++i)
-		{
-			dlg.addChoosableFileFilter(filters[i]);
-		}
+		AbstractProjectImporter.addFileFilters(dlg, filters);
 		
 		dlg.setDialogType(JFileChooser.CUSTOM_DIALOG);
 		dlg.setApproveButtonToolTipText(getApproveButtonToolTipText());

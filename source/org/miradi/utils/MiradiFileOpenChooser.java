@@ -26,6 +26,7 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
 import org.miradi.main.MainWindow;
+import org.miradi.views.umbrella.AbstractProjectImporter;
 
 abstract public class MiradiFileOpenChooser
 {
@@ -41,10 +42,7 @@ abstract public class MiradiFileOpenChooser
 
 		dlg.setDialogTitle(getDialogTitleText());
 		FileFilter[] filters = getFileFilter();
-		for (int i=0; i<filters.length; ++i)
-		{
-			dlg.addChoosableFileFilter(filters[i]);
-		}
+		AbstractProjectImporter.addFileFilters(dlg, filters);
 		
 		dlg.setDialogType(JFileChooser.OPEN_DIALOG);
 		dlg.setApproveButtonToolTipText(getApproveButtonToolTipText());
