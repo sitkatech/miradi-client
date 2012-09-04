@@ -173,7 +173,7 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 	public ORefList[] getSelectedHierarchies()
 	{
 		TreePath[] selectionPaths = getTree().getSelectionModel().getSelectionPaths();
-		if (selectionPaths == null)
+		if (selectionPaths == null || selectionPaths.length == 0)
 			return new ORefList[] {new ORefList(getRootNodeRef())};
 		
 		ORefList[] selectionHierarchies = new ORefList[selectionPaths.length];
