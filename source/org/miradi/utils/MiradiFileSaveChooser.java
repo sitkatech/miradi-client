@@ -84,6 +84,12 @@ abstract public class MiradiFileSaveChooser extends AbstractFileChooser
 		return EAM.text("This will replace the existing file.");
 	}
 	
+	@Override
+	public boolean shouldAllowAllFileFilter()
+	{
+		return false;
+	}
+	
 	protected abstract String getFileExtensionLabel();
 	
 	public static final String INVALID_PROJECT_FILE_NAME_MESSAGE = EAM.text("File name must contain only alpha numeric and/or '_' characters.");
