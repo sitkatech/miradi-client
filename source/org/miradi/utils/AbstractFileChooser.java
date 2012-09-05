@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import java.io.File;
+import java.util.Vector;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
@@ -76,22 +77,51 @@ abstract public class AbstractFileChooser
 	
 	public static File getFileWithExtension(JFileChooser fileChooser, File file)
 	{
-		FileFilter rawFileFilter = fileChooser.getFileFilter();
+		Vector<MiradiFileFilter> nonAcceptAllFileFilters = getNonAcceptAllFileFilters(fileChooser);
+		if (endsWithAnyOfExtensions(file, nonAcceptAllFileFilters))
+			return file;
+		
+		final FileFilter rawFileFilter = fileChooser.getFileFilter();
 		if (!fileChooser.getAcceptAllFileFilter().equals(rawFileFilter))
 		{
-			MiradiFileFilter fileFilter = (MiradiFileFilter)rawFileFilter;
-			file = getFileNameWithExtension(file, fileFilter.getFileExtension());
+			final MiradiFileFilter castedFileFilter = (MiradiFileFilter) rawFileFilter;
+			return new File(file.getAbsolutePath() + castedFileFilter.getFileExtension());
 		}
 		
-		return file;
+		return createNewFileWithExtension(file, nonAcceptAllFileFilters);
 	}
 	
-	private static File getFileNameWithExtension(File chosen, String fileExtension)
+	private static File createNewFileWithExtension(File fileWithoutExtension, Vector<MiradiFileFilter> nonAllFileFilters)
 	{
-		if (!chosen.getName().toLowerCase().endsWith(fileExtension.toLowerCase()))
-			chosen = new File(chosen.getAbsolutePath() + fileExtension);
+		if (nonAllFileFilters.size() == 0)
+			return fileWithoutExtension;
 		
-		return chosen;
+		final String fileExtension = nonAllFileFilters.get(0).getFileExtension();
+		return new File(fileWithoutExtension + fileExtension);
+	}
+
+	private static boolean endsWithAnyOfExtensions(File file, Vector<MiradiFileFilter> nonAcceptAllFileFilters)
+	{
+		for (MiradiFileFilter miradiFileFilter : nonAcceptAllFileFilters)
+		{
+			if (file.getName().endsWith(miradiFileFilter.getFileExtension()))
+				return true;
+		}
+		
+		return false;
+	}
+
+	private static Vector<MiradiFileFilter> getNonAcceptAllFileFilters(JFileChooser fileChooser)
+	{
+		final FileFilter[] fileChooserFileFilters = fileChooser.getChoosableFileFilters();
+		Vector<MiradiFileFilter> nonAllFilters = new Vector<MiradiFileFilter>();
+		for(FileFilter fileFilter : fileChooserFileFilters)
+		{
+			if (!fileChooser.getAcceptAllFileFilter().equals(fileFilter))
+				nonAllFilters.add((MiradiFileFilter) fileFilter);
+		}
+		
+		return nonAllFilters;
 	}
 	
 	protected File doCustomWork(final File file)
