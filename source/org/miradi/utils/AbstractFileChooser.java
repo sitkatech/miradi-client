@@ -60,6 +60,7 @@ abstract public class AbstractFileChooser
 	private JFileChooser createFileChooserDialog()
 	{
 		JFileChooser dialog = new JFileChooser(currentDirectory);
+		dialog.setAcceptAllFileFilterUsed(shouldAllowAllFileFilter());
 		dialog.setDialogTitle(getDialogTitleText());
 		addFileFilters(dialog);
 		dialog.setDialogType(getDialogType());
@@ -122,6 +123,8 @@ abstract public class AbstractFileChooser
 	abstract protected String getDialogTitleText();
 	
 	abstract protected int getDialogType();
+	
+	abstract public boolean shouldAllowAllFileFilter();
 
 	private MainWindow mainWindow;
 	

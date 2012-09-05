@@ -36,4 +36,10 @@ abstract public class MiradiFileOpenChooser extends AbstractFileChooser
 	{
 		return JFileChooser.OPEN_DIALOG;
 	}
+	
+	@Override
+	public boolean shouldAllowAllFileFilter()
+	{
+		return true;
+	}
 }
