@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-07 15:32-0500\n"
+"POT-Creation-Date: 2012-09-05 20:59-0500\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -974,7 +974,7 @@ msgstr ""
 "<html>Энэ төслийн операторын баг <br>солигдсон. Дүгнэлтийн хуудсан дахь TNC-"
 "ийн Tab-аас орлуулагчийг сонгон уу.</html>"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:161
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:167
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Import амжилтгүй болсон: <br><p> %s </p></html>"
 
@@ -3694,7 +3694,7 @@ msgstr "Үзэсгэлэн худалдаа"
 msgid "Feb"
 msgstr "2 дугаар сар"
 
-#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:128
+#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:126
 msgid ""
 "File could not be created, this can be due to bad characters in file name."
 msgstr ""
@@ -3705,7 +3705,7 @@ msgstr ""
 msgid "File exists: Cannot overwrite a non project folder"
 msgstr "Файл бий: Төслийн бус фолдэрийг шинэчлэн бичиж болохгүй байна."
 
-#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:127
+#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:125
 msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr "Файлын нэр зөвхөн альфа тоо ба/ '_'тэмдэгтүүдийг агуулах ёстой."
 
@@ -6037,7 +6037,7 @@ msgstr "Саванн - Хуурай Саванн"
 msgid "Savanna - Moist Savana"
 msgstr "Саванн- Чийглэн Саванн"
 
-#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:108
+#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:106
 msgid "Save %s"
 msgstr "Хадгалах %s"
 
@@ -7229,7 +7229,7 @@ msgstr "TT|Энэ Үр Дүнгийн гинжин холбооны нэрийг
 msgid "TT|Run the Selected Report Template"
 msgstr "TT|Тайлангийн сонгосон загварыг гаргах"
 
-#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:103
+#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:101
 msgid "TT|Save %s File"
 msgstr "TT|Файлыг %s хадгалах"
 
@@ -7727,7 +7727,7 @@ msgid ""
 "the data in different formats."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:192
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:198
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -7801,7 +7801,7 @@ msgstr ""
 "зүйлийн агуулгаар солих болно. Үүнийг солих уу?"
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:299
-#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:118
+#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:116
 msgid "This will replace the existing file."
 msgstr "Энэ нь байгаа файлыг солих болно."
 
@@ -8038,7 +8038,7 @@ msgid "Title|Other Orgs"
 msgstr "Гарчиг|Бусад Байгууллагууд"
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:298
-#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:113
+#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:111
 msgid "Title|Overwrite existing file?"
 msgstr "Гарчиг|Одоогийн байгаа файлыг өөрчлөх үү?"
 
@@ -8066,7 +8066,7 @@ msgstr "Гарчиг|Нөөцийн Properties"
 msgid "Title|Results Chain Properties"
 msgstr "Гарчиг|Үр Дүнгийн Гинжин Холбооны Properties"
 
-#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:98
+#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:96
 msgid "Title|Save %s File"
 msgstr "Гарчиг|Файлыг %s Хадгалах"
 

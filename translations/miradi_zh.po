@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-07 15:32-0500\n"
+"POT-Creation-Date: 2012-09-05 20:59-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -869,7 +869,7 @@ msgid ""
 "select its replacement on the TNC Tab of the Summary Page.</html>"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:161
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:167
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>导入失败：<br><p> %s </p></html> \t\t"
 
@@ -3522,7 +3522,7 @@ msgstr "一般"
 msgid "Feb"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:128
+#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:126
 msgid ""
 "File could not be created, this can be due to bad characters in file name."
 msgstr "文件无法创建，这可能由文件名中的坏字符导致的。 \t\t"
@@ -3531,7 +3531,7 @@ msgstr "文件无法创建，这可能由文件名中的坏字符导致的。 \t
 msgid "File exists: Cannot overwrite a non project folder"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:127
+#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:125
 msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr "文件名只能包含文字数字和/或'_'字符。 \t\t"
 
@@ -5811,7 +5811,7 @@ msgstr "稀树草原-干旱稀树草原"
 msgid "Savanna - Moist Savana"
 msgstr "稀树草原-湿润稀树草原"
 
-#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:108
+#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:106
 msgid "Save %s"
 msgstr "保存 %s  \t\t"
 
@@ -6951,7 +6951,7 @@ msgstr "重命名该结果链 \t\t"
 msgid "TT|Run the Selected Report Template"
 msgstr "运行选定的报告模板"
 
-#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:103
+#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:101
 msgid "TT|Save %s File"
 msgstr "保存 %s 文件  \t\t"
 
@@ -7430,7 +7430,7 @@ msgid ""
 "the data in different formats."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:192
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:198
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -7491,7 +7491,7 @@ msgstr ""
 "\t"
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:299
-#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:118
+#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:116
 msgid "This will replace the existing file."
 msgstr "这将会替换现有的文件。 \t\t"
 
@@ -7725,7 +7725,7 @@ msgid "Title|Other Orgs"
 msgstr "其它组织 \t\t"
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:298
-#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:113
+#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:111
 msgid "Title|Overwrite existing file?"
 msgstr "重写存在的文件？ \t\t"
 
@@ -7753,7 +7753,7 @@ msgstr "资源特性"
 msgid "Title|Results Chain Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:98
+#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:96
 msgid "Title|Save %s File"
 msgstr "保存 %s 文件  \t\t"
 

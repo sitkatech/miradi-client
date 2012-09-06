@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-07 15:32-0500\n"
+"POT-Creation-Date: 2012-09-05 20:59-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -919,7 +919,7 @@ msgstr ""
 "<html>Una unidad operativa para este proyecto se ha<br>sustituido. "
 "Seleccione su reemplazo en la ficha TNC de la Página de resumen.</html>"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:161
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:167
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Falló la importación: <br><p> %s </p></html> "
 
@@ -3656,7 +3656,7 @@ msgstr "Regular "
 msgid "Feb"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:128
+#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:126
 msgid ""
 "File could not be created, this can be due to bad characters in file name."
 msgstr ""
@@ -3669,7 +3669,7 @@ msgstr ""
 "Ya existe el archivo: no se puede sobrescribir una carpeta que no pertenezca "
 "al proyecto."
 
-#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:127
+#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:125
 msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr ""
 "El nombre de archivo debe contener sólo caracteres alfanuméricos o '_'."
@@ -6033,7 +6033,7 @@ msgstr "Sabana – Sabana seca"
 msgid "Savanna - Moist Savana"
 msgstr "Sabana - Húmeda"
 
-#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:108
+#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:106
 msgid "Save %s"
 msgstr "Grabar %s"
 
@@ -7212,7 +7212,7 @@ msgstr "Cambiar nombre de esta cadena de resultados"
 msgid "TT|Run the Selected Report Template"
 msgstr "Ejecutar la plantilla de informe seleccionada "
 
-#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:103
+#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:101
 msgid "TT|Save %s File"
 msgstr "Grabar archivo %s"
 
@@ -7709,7 +7709,7 @@ msgid ""
 "the data in different formats."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:192
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:198
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -7781,7 +7781,7 @@ msgstr ""
 "del factor que se cortó/copió antes. ¿Está seguro de que desea hacer esto?"
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:299
-#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:118
+#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:116
 msgid "This will replace the existing file."
 msgstr "Esto reemplazará el archivo existente."
 
@@ -8017,7 +8017,7 @@ msgid "Title|Other Orgs"
 msgstr "Otras organizaciones"
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:298
-#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:113
+#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:111
 msgid "Title|Overwrite existing file?"
 msgstr "¿Desea sobrescribir el archivo existente?"
 
@@ -8045,7 +8045,7 @@ msgstr "Propiedades del recurso"
 msgid "Title|Results Chain Properties"
 msgstr "Propiedades de la cadena de resultados"
 
-#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:98
+#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:96
 msgid "Title|Save %s File"
 msgstr "Grabar archivo %s"
 
