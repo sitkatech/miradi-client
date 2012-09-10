@@ -1,0 +1,10 @@
+Welcome to the Diagram View!
+
+This view enables you to develop a
+Conceptual Model of your project.
+
+To get started, click the <Insert Target>
+button in the Control Bar to the left.
+
+To delete this box, click on it and
+press <delete>.
