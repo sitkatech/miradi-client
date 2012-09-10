@@ -1,10 +1,10 @@
 Miradi (TM)
 
-Copyright 2005-2010, Foundations of Success, Bethesda, Maryland
+Copyright 2005-2012, Foundations of Success, Bethesda, Maryland
      (on behalf of the Conservation Measures Partnership, "CMP") and
      Beneficent Technology, Inc. ("Benetech"), Palo Alto, California.
 
-VERSION 3.3.2
+VERSION 3.3.4
 
 License and Copying
 
@@ -142,6 +142,21 @@ GNU/Linux:
 
 ---------------------
 Changes
+
+Miradi 3.3.4 is a minor fix release for compatiblity with Java 7. 
+Projects are fully compatible between all versions 3.3.X, but 
+we recommend that all users upgrade to the latest version. 
+
+Notable changes in 3.3.4 include:
+
+Appwide:
+- Buttons on Indicator tab were incorrectly disabled under Java 7
+
+Import/Export:
+- Was defaulting to the wrong file filter, which could cause 
+  errors, or exported files to not have file extensions
+
+
 
 Miradi 3.3.2 is a minor fix release. Projects are fully 
 compatible between version 3.3, 3.3.1, and 3.3.2, but we  
