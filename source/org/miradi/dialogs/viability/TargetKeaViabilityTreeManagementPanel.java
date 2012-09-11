@@ -22,12 +22,13 @@ package org.miradi.dialogs.viability;
 import javax.swing.Icon;
 
 import org.miradi.actions.jump.ActionJumpTargetViability3Step;
-import org.miradi.dialogs.planning.treenodes.PlanningTreeBaseObjectNode;
+import org.miradi.dialogs.planning.treenodes.PlanningTreeAlwaysExpandedBaseObjectNode;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.BaseObject;
 
 public class TargetKeaViabilityTreeManagementPanel extends AbstractViabilityManagementPanel
 {
@@ -38,7 +39,8 @@ public class TargetKeaViabilityTreeManagementPanel extends AbstractViabilityMana
 	
 	public static AbstractViabilityManagementPanel createManagementPanel(MainWindow mainWindowToUse, ORef parentRefToUse) throws Exception
 	{
-		PlanningTreeBaseObjectNode rootNode = new PlanningTreeBaseObjectNode(mainWindowToUse.getProject(), null, parentRefToUse);
+		BaseObject parent = BaseObject.find(mainWindowToUse.getProject(), parentRefToUse);
+		PlanningTreeAlwaysExpandedBaseObjectNode rootNode = new PlanningTreeAlwaysExpandedBaseObjectNode(mainWindowToUse.getProject(), null, parent);
 		KeaViabilityRowColumnProvider rowColumnProvider = new KeaViabilityRowColumnProvider(mainWindowToUse.getProject());
 		
 		PlanningTreeTablePanel treeTablePanel = TargetViabilityTreeTablePanel.createTreeTablePanel(mainWindowToUse, rootNode, rowColumnProvider);
