@@ -42,12 +42,6 @@ public class RenameProjectDoer
 				return;
 
 			File newFile = new File(projectFileToRename.getParentFile(), newDirectoryName);
-			if(projectExists(newFile))
-			{
-				EAM.errorDialog(EAM.text("A project or file by this name already exists: ") + newFile.getAbsolutePath());
-				return;
-			}
-				
 			boolean wasRenamed = projectFileToRename.renameTo(newFile);
 			if (!wasRenamed)
 				throw new IOException();
