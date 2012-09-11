@@ -67,7 +67,7 @@ public class RenameProjectDoer
 			proposedProjectFile = new File(EAM.getHomeDirectory(), projectFileName);
 			if (projectExists(proposedProjectFile))
 			{
-				EAM.errorDialog(EAM.substitute(EAM.text("A project or file by this name already exists: %s"), projectFileName));
+				EAM.notifyDialog(EAM.substitute(EAM.text("A project or file by this name already exists: %s"), projectFileName));
 				continue;
 			}
 			
