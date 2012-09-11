@@ -39,6 +39,8 @@ import org.miradi.utils.EditableHtmlPane;
 import org.miradi.utils.HtmlEditorRightClickMouseHandler;
 import org.miradi.utils.MiradiScrollPane;
 
+import com.inet.jortho.SpellChecker;
+
 public class ThreatRatingCommentsEditorComponent extends SavableField
 {
 	public ThreatRatingCommentsEditorComponent(Project projectToUse, Actions actions) throws Exception
@@ -54,6 +56,9 @@ public class ThreatRatingCommentsEditorComponent extends SavableField
 		
 		new HtmlEditorRightClickMouseHandler(actions, panelTextArea);
 		panelTextArea.addFocusListener(this);
+		
+		if(EAM.getMainWindow().isSpellCheckerActive())
+			SpellChecker.register(panelTextArea, false, false, true);
 	}
 	
 	public void setObjectRefs(ORefList selectedHeirearchyToUse)
