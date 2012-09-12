@@ -340,11 +340,27 @@ abstract public class AbstractTreeRebuilder
 			if(refA.isInvalid() && refB.isValid())
 				return 1;
 
-			final int LEAVE_IN_CURRENT_ORDER = -1;			
 			if (!shouldSortChildType(refA) || !shouldSortChildType(refB))
-				return LEAVE_IN_CURRENT_ORDER;
+				return compareTasks(nodeA, nodeB);
 			
 			return compareNodes(nodeA, nodeB);
+		}
+
+		private int compareTasks(AbstractPlanningTreeNode nodeA, AbstractPlanningTreeNode nodeB)
+		{
+			try
+			{
+				Integer indexOfA = nodeA.getParentNode().getIndexofchild(nodeA.getObjectReference());
+				Integer indexOfB = nodeB.getParentNode().getIndexofchild(nodeB.getObjectReference());
+				
+				return indexOfA.compareTo(indexOfB);
+			}
+			catch (Exception e)
+			{
+				EAM.logException(e);
+				EAM.unexpectedErrorDialog();
+				return 0;
+			}
 		}
 
 		public int compareNodes(AbstractPlanningTreeNode nodeA, AbstractPlanningTreeNode nodeB)
