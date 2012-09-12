@@ -350,8 +350,8 @@ abstract public class AbstractTreeRebuilder
 		{
 			try
 			{
-				Integer indexOfA = nodeA.getParentNode().getIndexofChild(nodeA);
-				Integer indexOfB = nodeB.getParentNode().getIndexofChild(nodeB);
+				Integer indexOfA = getIndexofChild(nodeA);
+				Integer indexOfB = getIndexofChild(nodeB);
 				
 				return indexOfA.compareTo(indexOfB);
 			}
@@ -361,6 +361,18 @@ abstract public class AbstractTreeRebuilder
 				EAM.unexpectedErrorDialog();
 				return 0;
 			}
+		}
+		
+		private int getIndexofChild(TreeTableNode childNode) throws Exception
+		{
+			TreeTableNode parentNode = childNode.getParentNode();
+			for (int index = 0; index < parentNode.getChildCount(); ++index)
+			{
+				if (parentNode.getChild(index).equals(childNode))
+					return index;
+			}
+			
+			return -1;
 		}
 
 		public int compareNodes(AbstractPlanningTreeNode nodeA, AbstractPlanningTreeNode nodeB)
