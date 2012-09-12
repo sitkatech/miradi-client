@@ -111,15 +111,4 @@ public abstract class TreeTableNode implements Comparable<TreeTableNode>
 	{
 		return toString().compareTo(otherObject.toString());
 	}
-	
-	public int getIndexofChild(TreeTableNode childNode)
-	{
-		for (int index = 0; index < getChildCount(); ++index)
-		{
-			if (getChild(index).equals(childNode))
-				return index;
-		}
-		
-		return -1;
-	}
 }
