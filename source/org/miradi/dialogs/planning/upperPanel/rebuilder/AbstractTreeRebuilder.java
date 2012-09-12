@@ -350,8 +350,8 @@ abstract public class AbstractTreeRebuilder
 		{
 			try
 			{
-				Integer indexOfA = nodeA.getParentNode().getIndexofchild(nodeA.getObjectReference());
-				Integer indexOfB = nodeB.getParentNode().getIndexofchild(nodeB.getObjectReference());
+				Integer indexOfA = nodeA.getParentNode().getIndexofChild(nodeA);
+				Integer indexOfB = nodeB.getParentNode().getIndexofChild(nodeB);
 				
 				return indexOfA.compareTo(indexOfB);
 			}
