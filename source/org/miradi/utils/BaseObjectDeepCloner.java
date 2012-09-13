@@ -20,12 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import java.util.Vector;
+
+import org.miradi.commands.CommandCreateObject;
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
-//FIXME urgent, this deep cloner class is still incomplete.  We will be
-// fixing the owned object bug before we finish this
 public class BaseObjectDeepCloner
 {
 	public BaseObjectDeepCloner(Project projectToUse)
@@ -33,12 +36,79 @@ public class BaseObjectDeepCloner
 		project = projectToUse;
 	}
 	
-	public ORef createDeepClone(BaseObject baseObejctToClone)
+	public BaseObject createDeepClone(BaseObject baseObejctToClone) throws Exception
 	{
-		
-		return ORef.INVALID;
+		getProject().executeBeginTransaction();
+		try
+		{
+			return createCopy(baseObejctToClone);
+		}
+		finally 
+		{
+			getProject().executeEndTransaction();
+		}
 	}
 	
+	private BaseObject createCopy(BaseObject baseObejctToClone) throws Exception
+	{
+		CommandCreateObject createCommand = new CommandCreateObject(baseObejctToClone.getType());
+		getProject().executeCommand(createCommand);
+
+		BaseObject copiedBaseObject = BaseObject.find(getProject(), createCommand.getObjectRef());
+		copyBaseObject(baseObejctToClone, copiedBaseObject);
+
+		return copiedBaseObject;
+	}
+	
+	private void copyBaseObject(BaseObject baseObejctToClone, BaseObject copiedBaseObjectToFill) throws Exception
+	{	
+		Vector<String> storedTags = baseObejctToClone.getStoredFieldTags();
+		for (String tag : storedTags)
+		{
+			final boolean isOwnedField = baseObejctToClone.isOwnedField(tag);
+			String dataToBeSaved = "";
+			if (baseObejctToClone.isRefList(tag) && isOwnedField)
+			{
+				dataToBeSaved = copyOwnedObjectRefs(baseObejctToClone.getSafeRefListData(tag)).toString();
+			}
+			else if (baseObejctToClone.isIdListTag(tag) && isOwnedField)
+			{
+				dataToBeSaved = copyOwnedObjectIds(baseObejctToClone.getSafeRefListData(tag));
+			}
+			else
+			{
+				dataToBeSaved = baseObejctToClone.getData(tag); 
+			}
+			
+			CommandSetObjectData setCommand = new CommandSetObjectData(copiedBaseObjectToFill, tag, dataToBeSaved);
+			getProject().executeCommand(setCommand);
+		}
+	}
+
+	private String copyOwnedObjectIds(final ORefList baseObjectRefsToCopy) throws Exception
+	{
+		if (baseObjectRefsToCopy.isEmpty())
+			return "";
+		
+		final ORefList copiedReflist = copyOwnedObjectRefs(baseObjectRefsToCopy);
+		final int objectTypeInRefList = copiedReflist.getFirstElement().getObjectType();
+		
+		return copiedReflist.convertToIdList(objectTypeInRefList).toString();
+	}
+
+	private ORefList copyOwnedObjectRefs(ORefList baseObjectRefsToCopy) throws Exception
+	{
+		ORefList copiedRefs = new ORefList();
+		for (ORef ref : baseObjectRefsToCopy)
+		{
+			BaseObject baseObjectToCopy = BaseObject.find(getProject(), ref);
+			BaseObject copiedBaseObject = createCopy(baseObjectToCopy);
+			copiedRefs.add(copiedBaseObject);
+		}
+		
+		return copiedRefs;
+	}
+
 	public Project getProject()
 	{
 		return project;
