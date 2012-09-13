@@ -1116,13 +1116,18 @@ abstract public class BaseObject
 		Vector<String> tags = getStoredFieldTags();
 		for (String tag : tags)
 		{
-			if (getSchema().getFieldSchema(tag).isOwned())
+			if (isOwnedField(tag))
 			{
 				allOwnedObjects.addAll(getSafeRefListData(tag));
 			}
 		}
 		
 		return allOwnedObjects;
+	}
+
+	public boolean isOwnedField(String tag)
+	{
+		return getSchema().getFieldSchema(tag).isOwned();
 	}
 	
 	public String getPseudoData(String fieldTag)
