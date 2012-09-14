@@ -118,10 +118,10 @@ public class TestProjectRepairer extends TestCaseWithProject
 			createdTargets.add(abstractTarget);
 		}
 		
-		verifyRepairTargetsReferringToSameSimpleTarget(createdTargets);
+		verifyRepairTargetsReferringToSameSimpleIndicator(createdTargets);
 	}
 	
-	private void verifyRepairTargetsReferringToSameSimpleTarget(Vector<AbstractTarget> targets) throws Exception
+	private void verifyRepairTargetsReferringToSameSimpleIndicator(Vector<AbstractTarget> targets) throws Exception
 	{
 		ORef indicatorRef = getProject().createObject(IndicatorSchema.getObjectType());
 		Indicator indicator = Indicator.find(getProject(), indicatorRef);
