@@ -150,29 +150,6 @@ public class Task extends Factor
 		return false;
 	}
 	
-	@Override
-	public ORefList getOwnedObjects(int objectType)
-	{
-		ORefList list = super.getOwnedObjects(objectType);
-		
-		switch(objectType)
-		{
-			case ObjectType.TASK: 
-				list.addAll(new ORefList(objectType, getSubtaskIdList()));
-				break;
-			case ObjectType.RESOURCE_ASSIGNMENT: 
-				list.addAll(getResourceAssignmentRefs());
-				break;
-			case ObjectType.EXPENSE_ASSIGNMENT:
-				list.addAll(getExpenseAssignmentRefs());
-				break;
-			case ObjectType.PROGRESS_REPORT:
-				list.addAll(getSafeRefListData(TAG_PROGRESS_REPORT_REFS));
-				break;
-		}
-		return list;
-	}
-	
 	//NOTE: this is not testing if this is a Task object...
 	//but if it is a user level task as opposed to a method or an activity
 	public boolean isTask()

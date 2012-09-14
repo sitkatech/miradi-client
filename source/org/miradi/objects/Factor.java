@@ -55,20 +55,6 @@ abstract public class Factor extends BaseObject
 		return new FactorId(getId().asInt());
 	}
 	
-	@Override
-	public ORefList getOwnedObjects(int objectType)
-	{
-		ORefList list = super.getOwnedObjects(objectType);
-		
-		switch(objectType)
-		{
-			case ObjectType.INDICATOR: 
-				list.addAll(getSafeRefListData(TAG_INDICATOR_IDS));
-				break;
-		}
-		return list;
-	}
-	
 	public ORefSet getDirectOrIndirectIndicatorRefSet()
 	{
 		return new ORefSet(getDirectOrIndirectIndicatorRefs());

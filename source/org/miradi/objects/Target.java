@@ -23,7 +23,6 @@ package org.miradi.objects;
 import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -76,19 +75,6 @@ public class Target extends AbstractTarget
 		}
 		
 		return appendedChoiceValues.toString();
-	}
-	
-	@Override
-	public ORefList getOwnedObjects(int objectType)
-	{
-		ORefList list = super.getOwnedObjects(objectType);
-		switch(objectType)
-		{
-			case ObjectType.STRESS:
-				list.addAll(getStressRefs());
-		}
-		
-		return list;
 	}
 	
 	public ORefList getStressRefs()

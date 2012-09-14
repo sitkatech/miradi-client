@@ -28,7 +28,6 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -239,29 +238,6 @@ public class Strategy extends Factor
 		commandsToDereferences.addAll(buildRemoveFromRelevancyListCommands(getRef()));
 		
 		return commandsToDereferences;
-	}
-	
-	@Override
-	public ORefList getOwnedObjects(int objectType)
-	{
-		ORefList list = super.getOwnedObjects(objectType);
-		
-		switch(objectType)
-		{
-			case ObjectType.OBJECTIVE: 
-				list.addAll(new ORefList(objectType, getObjectiveIds()));
-				break;
-			case ObjectType.RESOURCE_ASSIGNMENT: 
-				list.addAll(getResourceAssignmentRefs());
-				break;
-			case ObjectType.EXPENSE_ASSIGNMENT:
-				list.addAll(getExpenseAssignmentRefs());
-				break;
-			case ObjectType.PROGRESS_REPORT:
-				list.addAll(getSafeRefListData(TAG_PROGRESS_REPORT_REFS));
-				break;
-		}
-		return list;
 	}
 	
 	@Override
