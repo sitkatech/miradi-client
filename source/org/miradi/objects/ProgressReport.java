@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -60,12 +59,6 @@ public class ProgressReport extends BaseObject
 	public String getDateAsString()
 	{
 		return getData(TAG_PROGRESS_DATE);
-	}
-	
-	@Override
-	public ORefList getOwnedObjects(int objectType)
-	{
-		return new ORefList();
 	}
 	
 	@Override

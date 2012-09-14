@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.HumanWelfareTargetSchema;
@@ -54,12 +53,6 @@ public class SubTarget extends BaseObject
 		return false;
 	}
 
-	@Override
-	public ORefList getOwnedObjects(int objectType)
-	{
-		return new ORefList();
-	}
-	
 	@Override
 	public String getShortLabel()
 	{
