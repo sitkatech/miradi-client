@@ -352,7 +352,6 @@ public class Indicator extends BaseObject
 	{
 		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy(deepCopiedFactorRefs);
 		deepObjectRefsToCopy.addAll(getMethodRefs());
-		deepObjectRefsToCopy.addAll(getMeasurementRefs());
 		
 		return deepObjectRefsToCopy;
 	}
