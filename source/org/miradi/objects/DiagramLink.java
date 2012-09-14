@@ -76,7 +76,6 @@ public class DiagramLink extends BaseObject
 	@Override
 	public ORefList getOwnedObjects(int objectType)
 	{
-		//FIXME urgent - FL needs to be included in this list
 		return super.getOwnedObjects(objectType);
 	}
 	

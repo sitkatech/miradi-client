@@ -35,7 +35,8 @@ public class DiagramLinkSchema extends BaseObjectSchema
 	protected void fillFieldSchemas()
 	{
 		super.fillFieldSchemas();
-		
+
+		//FIXME urgent - FL needs to be included in this list
 		createFieldSchemaBaseId(DiagramLink.TAG_WRAPPED_ID, FactorLinkSchema.getObjectType());
 		createFieldSchemaBaseId(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, DiagramFactorSchema.getObjectType());
 		createFieldSchemaBaseId(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, DiagramFactorSchema.getObjectType());
