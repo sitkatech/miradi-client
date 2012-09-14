@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-30 14:01-0500\n"
+"POT-Creation-Date: 2012-09-14 11:20-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -1016,13 +1016,12 @@ msgstr ""
 msgid "A file or folder with that name already exists"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:47
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:57
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:89
 msgid "A project or file by this name already exists: "
 msgstr "Esiste un progetto o un file con lo stesso nome:"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:76
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:70
 msgid "A project or file by this name already exists: %s"
 msgstr ""
 
@@ -3449,7 +3448,7 @@ msgstr "Fine:"
 msgid "Enter As: "
 msgstr "Inserisci come:"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:107
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:101
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:120
 msgid "Enter New Name"
 msgstr "Inserisci nuovo nome"
@@ -3609,7 +3608,7 @@ msgstr "Sufficiente"
 msgid "Feb"
 msgstr "Feb"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:90
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:96
 msgid ""
 "File could not be created, this can be due to bad characters in file name."
 msgstr ""
@@ -3621,7 +3620,7 @@ msgid "File exists: Cannot overwrite a non project folder"
 msgstr ""
 "Il file esiste: non è possibile sovrascrivere una cartella non di progetto"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:89
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:95
 msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr "Il nome del file  deve contenere solo caratteri alfanumerici e/o '_' ."
 
@@ -4339,7 +4338,7 @@ msgstr "Introduzione"
 msgid "Invalid project name:"
 msgstr "Nome di progetto non valido:"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:82
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:76
 msgid "Invalid project name: %s"
 msgstr ""
 
@@ -5902,7 +5901,7 @@ msgstr "Strategie e attività rilevanti"
 msgid "Remove Team Member"
 msgstr "Rimuovi un membro dal team"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:58
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:52
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:68
 msgid "Rename Failed"
 msgstr "Rinomina fallita"
@@ -7470,7 +7469,7 @@ msgid "Tab|Stresses"
 msgstr "Stress"
 
 #: Miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanel.java:70
-#: Miradi/source/org/miradi/dialogs/viability/TargetKeaViabilityTreeManagementPanel.java:75
+#: Miradi/source/org/miradi/dialogs/viability/TargetKeaViabilityTreeManagementPanel.java:77
 msgid "Tab|Viability"
 msgstr "Vitalità(Viability)"
 

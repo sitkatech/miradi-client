@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-30 14:01-0500\n"
+"POT-Creation-Date: 2012-09-14 11:20-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -986,13 +986,12 @@ msgstr ""
 msgid "A file or folder with that name already exists"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:47
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:57
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:89
 msgid "A project or file by this name already exists: "
 msgstr "Проект або файл під цим іменем уже існує:"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:76
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:70
 msgid "A project or file by this name already exists: %s"
 msgstr ""
 
@@ -3396,7 +3395,7 @@ msgstr ""
 msgid "Enter As: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:107
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:101
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:120
 msgid "Enter New Name"
 msgstr "Уведіть нову назву"
@@ -3553,7 +3552,7 @@ msgstr "Задовільний"
 msgid "Feb"
 msgstr "Лютий"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:90
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:96
 msgid ""
 "File could not be created, this can be due to bad characters in file name."
 msgstr ""
@@ -3563,7 +3562,7 @@ msgstr ""
 msgid "File exists: Cannot overwrite a non project folder"
 msgstr "Файли існують: Не можна перезаписати не проектну папку"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:89
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:95
 msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr "Назва файла має містити тільки альфа цифрові і або  '_' символи."
 
@@ -4265,7 +4264,7 @@ msgstr "Вступ"
 msgid "Invalid project name:"
 msgstr "Не дійсна назва проекту:"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:82
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:76
 msgid "Invalid project name: %s"
 msgstr ""
 
@@ -5817,7 +5816,7 @@ msgstr "Відповідні Стратегії та Дії"
 msgid "Remove Team Member"
 msgstr "Видалити виконавця"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:58
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:52
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:68
 msgid "Rename Failed"
 msgstr "Не вдалося перейменувати "
@@ -7360,7 +7359,7 @@ msgid "Tab|Stresses"
 msgstr "Tab|Стрес"
 
 #: Miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanel.java:70
-#: Miradi/source/org/miradi/dialogs/viability/TargetKeaViabilityTreeManagementPanel.java:75
+#: Miradi/source/org/miradi/dialogs/viability/TargetKeaViabilityTreeManagementPanel.java:77
 msgid "Tab|Viability"
 msgstr "Tab|Життездатність"
 
