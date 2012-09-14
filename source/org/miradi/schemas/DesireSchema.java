@@ -39,7 +39,7 @@ abstract public class DesireSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(Desire.TAG_COMMENTS);
 		createFieldSchemaRelevancyOverrideSet(Desire.TAG_RELEVANT_INDICATOR_SET);
 		createFieldSchemaRelevancyOverrideSet(Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
-		createFieldSchemaReflist(Desire.TAG_PROGRESS_PERCENT_REFS, PROGRESS_PERCENT);
+		createOwnedFieldSchemaReflist(Desire.TAG_PROGRESS_PERCENT_REFS, PROGRESS_PERCENT);
 		
 		createPseudoFieldSchemaString(Desire.PSEUDO_TAG_TARGETS);
 		createPseudoFieldSchemaString(Desire.PSEUDO_TAG_DIRECT_THREATS);
