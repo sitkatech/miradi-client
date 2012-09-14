@@ -214,9 +214,9 @@ public class Strategy extends Factor
 	}
 	
 	@Override
-	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
+	protected ORefList getNonOwnedObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
 	{
-		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy(deepCopiedFactorRefs);
+		ORefList deepObjectRefsToCopy = super.getNonOwnedObjectsToDeepCopy(deepCopiedFactorRefs);
 		deepObjectRefsToCopy.addAll(getActivityRefs());
 		
 		return deepObjectRefsToCopy;
