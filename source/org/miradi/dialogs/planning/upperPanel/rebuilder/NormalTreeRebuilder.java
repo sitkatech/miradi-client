@@ -165,7 +165,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		ORefList childRefs = new ORefList();
 		AbstractTarget target = AbstractTarget.findTarget(getProject(), targetRef);
 		childRefs.addAll(target.getSubTargetRefs());
-		childRefs.addAll(target.getOwnedObjects(GoalSchema.getObjectType()));
+		childRefs.addAll(target.getAllOwnedObjects().getFilteredBy(GoalSchema.getObjectType()));
 		childRefs.addAll(new ORefList(IndicatorSchema.getObjectType(), target.getDirectOrIndirectIndicators()));
 		childRefs.addAll(getDirectlyLinkedNonDraftStrategies(target, diagram));
 		
@@ -207,7 +207,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		if (doStrategiesContainObjectives())
 			childRefs.addAll(findRelevantObjectivesAndGoals(parentRef));
 		
-		childRefs.addAll(strategy.getOwnedObjects(IndicatorSchema.getObjectType()));
+		childRefs.addAll(strategy.getAllOwnedObjects().getFilteredBy(IndicatorSchema.getObjectType()));
 		return childRefs;
 	}
 	
