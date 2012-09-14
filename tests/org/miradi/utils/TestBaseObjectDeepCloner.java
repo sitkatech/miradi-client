@@ -42,10 +42,8 @@ public class TestBaseObjectDeepCloner extends TestCaseWithProject
 		Target target = getProject().createTarget();
 		verifyClone(target);
 	
-//FIXME urgent - this test is failing due to stresses not being owned by Target.
-//Fix target and uncomment this test
-//		getProject().populateTarget(target);
-//		verifyClone(target);
+		getProject().populateTarget(target);
+		verifyClone(target);
 	}
 	
 	public void testStrategyCopy() throws Exception
