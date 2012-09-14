@@ -51,9 +51,9 @@ public class Stress extends Factor
 	}
 	
 	@Override
-	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
+	protected ORefList getNonOwnedObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
 	{
-		ORefList objectRefsToDeepCopy = super.getAllObjectsToDeepCopy(deepCopiedFactorRefs);
+		ORefList objectRefsToDeepCopy = super.getNonOwnedObjectsToDeepCopy(deepCopiedFactorRefs);
 		objectRefsToDeepCopy.addAll(getThreatStressRatingsToDeepCopy(deepCopiedFactorRefs));
 		
 		return objectRefsToDeepCopy;

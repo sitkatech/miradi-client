@@ -1107,7 +1107,16 @@ abstract public class BaseObject
 	
 	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
 	{
-		return new ORefList(getAllOwnedObjects());
+		ORefList objectsToDeepCopy = new ORefList();
+		objectsToDeepCopy.addAll(getAllOwnedObjects());
+		objectsToDeepCopy.addAll(getNonOwnedObjectsToDeepCopy(deepCopiedFactorRefs));
+		
+		return objectsToDeepCopy;
+	}
+	
+	protected ORefList getNonOwnedObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
+	{
+		return new ORefList();
 	}
 	
 	public ORefList getAllOwnedObjects()

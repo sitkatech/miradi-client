@@ -88,9 +88,9 @@ public class DiagramFactor extends BaseObject
 	}
 	
 	@Override
-	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
+	protected ORefList getNonOwnedObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
 	{
-		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy(deepCopiedFactorRefs);
+		ORefList deepObjectRefsToCopy = super.getNonOwnedObjectsToDeepCopy(deepCopiedFactorRefs);
 		deepObjectRefsToCopy.addAll(getGroupBoxChildrenRefs());
 		
 		return deepObjectRefsToCopy;
