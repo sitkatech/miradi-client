@@ -24,7 +24,7 @@ import org.miradi.objectdata.DateUnitEffortListData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objects.BaseObject;
 
-public class FieldSchemaDateUnitEffortList extends NonOwnableFieldSchema
+public class FieldSchemaDateUnitEffortList extends AbstractFieldSchema
 {
 	public FieldSchemaDateUnitEffortList(String tagToUse)
 	{

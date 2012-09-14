@@ -24,7 +24,7 @@ import org.miradi.objectdata.ExpandingUserTextData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objects.BaseObject;
 
-public class FieldSchemaExpandingUserText extends NonOwnableFieldSchema
+public class FieldSchemaExpandingUserText extends AbstractFieldSchema
 {
 	public FieldSchemaExpandingUserText(String tagToUse)
 	{

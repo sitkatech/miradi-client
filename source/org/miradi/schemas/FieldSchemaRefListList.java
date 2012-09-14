@@ -24,7 +24,7 @@ import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.RefListListData;
 import org.miradi.objects.BaseObject;
 
-public class FieldSchemaRefListList extends NonOwnableFieldSchema
+public class FieldSchemaRefListList extends AbstractFieldSchema
 {
 	public FieldSchemaRefListList(String tagToUse)
 	{

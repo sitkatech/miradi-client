@@ -24,7 +24,7 @@ import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.RefListData;
 import org.miradi.objects.BaseObject;
 
-public class FieldSchemaReflist extends OwnableFieldSchema
+public class FieldSchemaReflist extends AbstractFieldSchema
 {
 	public FieldSchemaReflist(String tagToUse, final String typeNameToUse)
 	{
