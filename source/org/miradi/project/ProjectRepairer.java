@@ -24,8 +24,8 @@ import java.awt.Point;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.Vector;
 
 import org.miradi.ids.BaseId;
@@ -67,7 +67,7 @@ public class ProjectRepairer
 	public ProjectRepairer(Project projectToRepair)
 	{
 		project = projectToRepair;
-		messages = new HashSet<String>();
+		messages = new TreeSet<String>();
 	}
 	
 	public int quarantineOrphans() throws Exception
@@ -527,7 +527,7 @@ public class ProjectRepairer
 		return missingObjectRefs;
 	}
 	
-	public HashSet<String> getMessages()
+	public TreeSet<String> getMessages()
 	{
 		return messages;
 	}
@@ -538,5 +538,5 @@ public class ProjectRepairer
 	}
 
 	private Project project;
-	private HashSet<String> messages;
+	private TreeSet<String> messages;
 }
