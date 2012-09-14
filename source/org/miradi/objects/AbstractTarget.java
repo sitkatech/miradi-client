@@ -57,25 +57,6 @@ abstract public class AbstractTarget extends Factor
 		return NO_OWNERS;
 	}
 	
-	@Override
-	public ORefList getOwnedObjects(int objectType)
-	{
-		ORefList list = super.getOwnedObjects(objectType);
-		
-		switch(objectType)
-		{
-			case ObjectType.GOAL: 
-				list.addAll(getGoalRefs());
-				break;
-			case ObjectType.KEY_ECOLOGICAL_ATTRIBUTE: 
-				list.addAll(new ORefList(objectType, getKeyEcologicalAttributes()));
-				break;
-			case ObjectType.SUB_TARGET:
-				list.addAll(getSubTargetRefs());
-		}
-		return list;
-	}
-
 	public ORefList getSubTargetRefs()
 	{
 		return getSafeRefListData(TAG_SUB_TARGET_REFS);

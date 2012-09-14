@@ -1090,11 +1090,6 @@ abstract public class BaseObject
 		throw new RuntimeException("List as string is not a known list type: " + unknonwListTypeAsString + " for ref:" + getRef());
 	}
 	
-	public ORefList getOwnedObjects(int objectType)
-	{
-		return new ORefList();
-	}
-
 	public ORefList getExpenseAssignmentRefs()
 	{
 		return getSafeRefListData(TAG_EXPENSE_ASSIGNMENT_REFS);

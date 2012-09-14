@@ -30,7 +30,6 @@ import org.miradi.objecthelpers.NonDraftStrategySet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -78,26 +77,6 @@ public class Indicator extends BaseObject
 	public CodeToUserStringMap getThresholdDetailsMap()
 	{
 		return getCodeToUserStringMapData(TAG_THRESHOLD_DETAILS_MAP);
-	}
-	
-	@Override
-	public ORefList getOwnedObjects(int objectType)
-	{
-		ORefList list = super.getOwnedObjects(objectType);
-		
-		switch(objectType)
-		{
-			case ObjectType.RESOURCE_ASSIGNMENT: 
-				list.addAll(getResourceAssignmentRefs());
-				break;
-			case ObjectType.EXPENSE_ASSIGNMENT:
-				list.addAll(getExpenseAssignmentRefs());
-				break;
-			case ObjectType.PROGRESS_REPORT:
-				list.addAll(getSafeRefListData(TAG_PROGRESS_REPORT_REFS));
-				break;
-		}
-		return list;
 	}
 	
 	@Override

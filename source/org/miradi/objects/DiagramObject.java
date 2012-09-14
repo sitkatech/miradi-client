@@ -399,22 +399,6 @@ abstract public class DiagramObject extends BaseObject
 		return ids.contains(diagramFactorId);
 	}
 	
-	@Override
-	public ORefList getOwnedObjects(int objectType)
-	{
-		ORefList list = super.getOwnedObjects(objectType);
-		switch(objectType)
-		{
-			case ObjectType.DIAGRAM_FACTOR: 
-				list.addAll(new ORefList(DiagramFactorSchema.getObjectType(), getAllDiagramFactorIds()));
-				break;
-			case ObjectType.DIAGRAM_LINK: 
-				list.addAll(new ORefList(DiagramLinkSchema.getObjectType(), getAllDiagramFactorLinkIds()));
-				break;
-		}
-		return list;
-	}
-	
 	public static ORefList getDiagramRefsContainingFactor(Project projectToUse, int parentDiagramType, ORef factorRef)
 	{
 		return findOwnersOfObject(projectToUse, parentDiagramType, factorRef, DiagramFactorSchema.getObjectType());

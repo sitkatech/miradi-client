@@ -23,7 +23,6 @@ import org.miradi.ids.IdList;
 import org.miradi.ids.KeyEcologicalAttributeId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.TNCViabilityFormula;
@@ -70,20 +69,6 @@ public class KeyEcologicalAttribute extends BaseObject
 			TargetSchema.getObjectType(),
 			HumanWelfareTargetSchema.getObjectType(),
 			};
-	}
-	
-	@Override
-	public ORefList getOwnedObjects(int objectType)
-	{
-		ORefList list = super.getOwnedObjects(objectType);
-		
-		switch(objectType)
-		{
-			case ObjectType.INDICATOR: 
-				list.addAll(new ORefList(objectType, getIndicatorIds()));
-				break;
-		}
-		return list;
 	}
 	
 	public ORefList getIndicatorRefs()
