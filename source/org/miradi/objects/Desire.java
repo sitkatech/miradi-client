@@ -76,15 +76,6 @@ abstract public class Desire extends BaseObject
 		return super.isRefList(tag);
 	}
 	
-	@Override
-	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
-	{
-		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy(deepCopiedFactorRefs);
-		deepObjectRefsToCopy.addAll(getProgressPercentRefs());
-		
-		return deepObjectRefsToCopy;
-	}
-
 	public ORefList getProgressPercentRefs()
 	{
 		return getSafeRefListData(TAG_PROGRESS_PERCENT_REFS);
