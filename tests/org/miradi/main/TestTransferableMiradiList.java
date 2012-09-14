@@ -141,7 +141,7 @@ public class TestTransferableMiradiList extends MiradiTestCase
 		assertNotNull(miradiTransferData);
 		
 		Vector<String> factorDeepCopies = miradiTransferData.getFactorDeepCopies();
-		assertEquals(4, factorDeepCopies.size());
+		assertEquals(3, factorDeepCopies.size());
 		
 		EnhancedJsonObject factor1Json = new EnhancedJsonObject(factorDeepCopies.get(0));
 		int factor1Type = factor1Json.getInt(DiagramPaster.FAKE_TAG_TYPE);

@@ -114,15 +114,6 @@ public class Target extends AbstractTarget
 		return super.getAnnotationType(tag);
 	}
 	
-	@Override
-	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
-	{
-		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy(deepCopiedFactorRefs);
-		deepObjectRefsToCopy.addAll(getStressRefs());
-		
-		return deepObjectRefsToCopy;
-	}
-	
 	private ChoiceQuestion getHabitatAssociationQuestion()
 	{
 		return getQuestion(HabitatAssociationQuestion.class);

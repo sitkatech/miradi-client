@@ -76,15 +76,6 @@ abstract public class AbstractTarget extends Factor
 		return list;
 	}
 
-	@Override
-	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
-	{
-		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy(deepCopiedFactorRefs);
-		deepObjectRefsToCopy.addAll(getSubTargetRefs());
-		
-		return deepObjectRefsToCopy;
-	}
-
 	public ORefList getSubTargetRefs()
 	{
 		return getSafeRefListData(TAG_SUB_TARGET_REFS);
