@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.ScopeBoxSchema;
@@ -56,12 +55,6 @@ public class ScopeBox extends Factor
 		return false;
 	}
 
-	@Override
-	public ORefList getOwnedObjects(int objectType)
-	{
-		return new ORefList();
-	}
-	
 	public String getScopeBoxTypeCode()
 	{
 		return getData(TAG_SCOPE_BOX_TYPE_CODE);

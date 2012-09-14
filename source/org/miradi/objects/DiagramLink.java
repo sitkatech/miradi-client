@@ -74,12 +74,6 @@ public class DiagramLink extends BaseObject
 	}
 	
 	@Override
-	public ORefList getOwnedObjects(int objectType)
-	{
-		return super.getOwnedObjects(objectType);
-	}
-	
-	@Override
 	protected ORefList getNonOwnedObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
 	{
 		ORefList deepObjectRefsToCopy = super.getNonOwnedObjectsToDeepCopy(deepCopiedFactorRefs);
