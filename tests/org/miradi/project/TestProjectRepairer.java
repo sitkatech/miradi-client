@@ -93,19 +93,19 @@ public class TestProjectRepairer extends TestCaseWithProject
 	
 	public void testRepairTwoSimpleModeTargetsReferringToSameSimpleIndicator() throws Exception
 	{
-		verifyRepairTargetsReferringToSameSimpleTarget(1, TargetSchema.getObjectType(), false);
-		verifyRepairTargetsReferringToSameSimpleTarget(2, TargetSchema.getObjectType(), false);
-		verifyRepairTargetsReferringToSameSimpleTarget(2, TargetSchema.getObjectType(), true);
-		verifyRepairTargetsReferringToSameSimpleTarget(3, TargetSchema.getObjectType(), false);
-		verifyRepairTargetsReferringToSameSimpleTarget(3, TargetSchema.getObjectType(), true);
+		verifyRepairTargetsReferringToSameSimpleIndicator(1, TargetSchema.getObjectType(), false);
+		verifyRepairTargetsReferringToSameSimpleIndicator(2, TargetSchema.getObjectType(), false);
+		verifyRepairTargetsReferringToSameSimpleIndicator(2, TargetSchema.getObjectType(), true);
+		verifyRepairTargetsReferringToSameSimpleIndicator(3, TargetSchema.getObjectType(), false);
+		verifyRepairTargetsReferringToSameSimpleIndicator(3, TargetSchema.getObjectType(), true);
 		
-		verifyRepairTargetsReferringToSameSimpleTarget(2, HumanWelfareTargetSchema.getObjectType(), false);
-		verifyRepairTargetsReferringToSameSimpleTarget(2, HumanWelfareTargetSchema.getObjectType(), true);
-		verifyRepairTargetsReferringToSameSimpleTarget(3, HumanWelfareTargetSchema.getObjectType(), false);
-		verifyRepairTargetsReferringToSameSimpleTarget(3, HumanWelfareTargetSchema.getObjectType(), true);
+		verifyRepairTargetsReferringToSameSimpleIndicator(2, HumanWelfareTargetSchema.getObjectType(), false);
+		verifyRepairTargetsReferringToSameSimpleIndicator(2, HumanWelfareTargetSchema.getObjectType(), true);
+		verifyRepairTargetsReferringToSameSimpleIndicator(3, HumanWelfareTargetSchema.getObjectType(), false);
+		verifyRepairTargetsReferringToSameSimpleIndicator(3, HumanWelfareTargetSchema.getObjectType(), true);
 	}
 	
-	private void verifyRepairTargetsReferringToSameSimpleTarget(final int targetCount, final int targetType, boolean isKeaMode) throws Exception
+	private void verifyRepairTargetsReferringToSameSimpleIndicator(final int targetCount, final int targetType, boolean isKeaMode) throws Exception
 	{
 		Vector<AbstractTarget> createdTargets = new Vector<AbstractTarget>();
 		for (int index = 0; index < targetCount; ++index)
