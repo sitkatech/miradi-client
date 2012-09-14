@@ -29,9 +29,9 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
-public class BaseObjectDeepCloner
+public class BaseObjectDeepCopier
 {
-	public BaseObjectDeepCloner(Project projectToUse)
+	public BaseObjectDeepCopier(Project projectToUse)
 	{
 		project = projectToUse;
 	}
