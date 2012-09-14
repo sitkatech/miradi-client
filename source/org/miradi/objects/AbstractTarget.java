@@ -70,6 +70,8 @@ abstract public class AbstractTarget extends Factor
 			case ObjectType.KEY_ECOLOGICAL_ATTRIBUTE: 
 				list.addAll(new ORefList(objectType, getKeyEcologicalAttributes()));
 				break;
+			case ObjectType.SUB_TARGET:
+				list.addAll(getSubTargetRefs());
 		}
 		return list;
 	}

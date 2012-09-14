@@ -46,14 +46,19 @@ public class TestOwnedBaseObjects extends TestCaseWithProject
 		verifyOwnedObjects(diagramObject, expectedOwnedObjects);
 	}
 	
-	public void testAbstractTargetOwnedObjects() throws Exception
+	public void testTargetOwnedObjects() throws Exception
 	{
 		Target target = getProject().createTarget();
 		Goal goal = getProject().createGoal(target);
 		KeyEcologicalAttribute kea = getProject().createKea(target);
 		Indicator indicator = getProject().createIndicator(target);
+		Stress stress = getProject().createStress();
+		getProject().fillObjectUsingCommand(target, Target.TAG_STRESS_REFS, new ORefList(stress));
 		
-		ORefList expectedOwnedObjects = new ORefList(new ORef[]{goal.getRef(), kea.getRef(), indicator.getRef()});
+		SubTarget subtarget = getProject().createSubTarget();
+		getProject().fillObjectUsingCommand(target, Target.TAG_SUB_TARGET_REFS, new ORefList(subtarget));
+		
+		ORefList expectedOwnedObjects = new ORefList(new ORef[]{goal.getRef(), kea.getRef(), indicator.getRef(), stress.getRef(), subtarget.getRef()});
 		verifyOwnedObjects(target, expectedOwnedObjects);
 	}
 	

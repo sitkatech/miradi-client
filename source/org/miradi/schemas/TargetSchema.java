@@ -36,7 +36,7 @@ public class TargetSchema extends AbstractTargetSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaReflist(Target.TAG_STRESS_REFS, STRESS);
+		createOwnedFieldSchemaReflist(Target.TAG_STRESS_REFS, STRESS);
 		createFieldSchemaSingleLineUserText(Target.TAG_SPECIES_LATIN_NAME);
 		createFieldSchemaCodeList(Target.TAG_HABITAT_ASSOCIATION, getQuestion(HabitatAssociationQuestion.class));
 		
