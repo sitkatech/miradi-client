@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-30 14:01-0500\n"
+"POT-Creation-Date: 2012-09-14 11:20-0500\n"
 "PO-Revision-Date: 2011-03-17 08:35-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -859,13 +859,12 @@ msgstr ""
 msgid "A file or folder with that name already exists"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:47
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:57
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:89
 msgid "A project or file by this name already exists: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:76
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:70
 msgid "A project or file by this name already exists: %s"
 msgstr ""
 
@@ -3196,7 +3195,7 @@ msgstr ""
 msgid "Enter As: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:107
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:101
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:120
 msgid "Enter New Name"
 msgstr ""
@@ -3353,7 +3352,7 @@ msgstr ""
 msgid "Feb"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:90
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:96
 msgid ""
 "File could not be created, this can be due to bad characters in file name."
 msgstr ""
@@ -3362,7 +3361,7 @@ msgstr ""
 msgid "File exists: Cannot overwrite a non project folder"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:89
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:95
 msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr ""
 
@@ -4044,7 +4043,7 @@ msgstr ""
 msgid "Invalid project name:"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:82
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:76
 msgid "Invalid project name: %s"
 msgstr ""
 
@@ -5543,7 +5542,7 @@ msgstr ""
 msgid "Remove Team Member"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:58
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:52
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:68
 msgid "Rename Failed"
 msgstr ""
@@ -7028,7 +7027,7 @@ msgid "Tab|Stresses"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanel.java:70
-#: Miradi/source/org/miradi/dialogs/viability/TargetKeaViabilityTreeManagementPanel.java:75
+#: Miradi/source/org/miradi/dialogs/viability/TargetKeaViabilityTreeManagementPanel.java:77
 msgid "Tab|Viability"
 msgstr ""
 
