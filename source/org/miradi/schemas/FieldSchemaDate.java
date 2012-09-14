@@ -24,7 +24,7 @@ import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objects.BaseObject;
 
-public class FieldSchemaDate extends NonOwnableFieldSchema
+public class FieldSchemaDate extends AbstractFieldSchema
 {
 	public FieldSchemaDate(final String tagToUse)
 	{

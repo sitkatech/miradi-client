@@ -24,7 +24,7 @@ import org.miradi.objectdata.FloatData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objects.BaseObject;
 
-public class FieldSchemaFloat extends NonOwnableFieldSchema
+public class FieldSchemaFloat extends AbstractFieldSchema
 {
 	public FieldSchemaFloat(String tagToUse)
 	{

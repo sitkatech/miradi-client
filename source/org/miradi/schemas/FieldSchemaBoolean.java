@@ -24,7 +24,7 @@ import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objects.BaseObject;
 
-public class FieldSchemaBoolean extends NonOwnableFieldSchema
+public class FieldSchemaBoolean extends AbstractFieldSchema
 {
 	public FieldSchemaBoolean(String tagToUse)
 	{

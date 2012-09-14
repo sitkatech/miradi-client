@@ -24,7 +24,7 @@ import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.RelevancyOverrideSetData;
 import org.miradi.objects.BaseObject;
 
-public class FieldSchemaRelevancyOverrideSetData extends NonOwnableFieldSchema
+public class FieldSchemaRelevancyOverrideSetData extends AbstractFieldSchema
 {
 	public FieldSchemaRelevancyOverrideSetData(String tagToUse)
 	{

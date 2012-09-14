@@ -24,7 +24,7 @@ import org.miradi.objectdata.IntegerData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objects.BaseObject;
 
-public class FieldSchemaInteger extends NonOwnableFieldSchema
+public class FieldSchemaInteger extends AbstractFieldSchema
 {
 	public FieldSchemaInteger(String tagToUse)
 	{

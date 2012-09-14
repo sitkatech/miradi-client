@@ -23,7 +23,7 @@ package org.miradi.schemas;
 import org.miradi.questions.ChoiceQuestion;
 
 
-abstract public class AbstractQuestionBasedFieldSchema extends NonOwnableFieldSchema
+abstract public class AbstractQuestionBasedFieldSchema extends AbstractFieldSchema
 {
 	public AbstractQuestionBasedFieldSchema(final String tagToUse, final ChoiceQuestion questionToUse)
 	{

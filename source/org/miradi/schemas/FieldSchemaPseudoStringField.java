@@ -24,7 +24,7 @@ import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.PseudoStringData;
 import org.miradi.objects.BaseObject;
 
-public class FieldSchemaPseudoStringField extends NonOwnableFieldSchema
+public class FieldSchemaPseudoStringField extends AbstractFieldSchema
 {
 	public FieldSchemaPseudoStringField(String tagToUse)
 	{

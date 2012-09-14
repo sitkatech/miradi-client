@@ -24,7 +24,7 @@ import org.miradi.objectdata.CodeToCodeListMapData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objects.BaseObject;
 
-public class FieldSchemaCodeToCodeListMap extends NonOwnableFieldSchema
+public class FieldSchemaCodeToCodeListMap extends AbstractFieldSchema
 {
 	public FieldSchemaCodeToCodeListMap(String tagToUse)
 	{
