@@ -91,7 +91,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 		verifyRepairKeaModeTargetReferringToMissingSimpleIndicator(getProject().createKeaModeHumanWelfareTarget());
 	}
 	
-	public void testRepairTwoSimpleModeTargetsReferringToSameSimpleTarget() throws Exception
+	public void testRepairTwoSimpleModeTargetsReferringToSameSimpleIndicator() throws Exception
 	{
 		verifyRepairTargetsReferringToSameSimpleTarget(1, TargetSchema.getObjectType(), false);
 		verifyRepairTargetsReferringToSameSimpleTarget(2, TargetSchema.getObjectType(), false);
