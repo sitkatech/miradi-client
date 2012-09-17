@@ -143,7 +143,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 		{
 			indicatorsFromTargets.add(getIndicatorRefs(target).getFirstElement());
 		}
-		assertEquals("Indicators should not be shared?", targets.size(), indicatorsFromTargets.size());
+		assertEquals("Each Target should refer to its own Indicator, some targets still refer to same indicator?", targets.size(), indicatorsFromTargets.size());
 	}
 	
 	private void verifyRepairSimpleModeSimpleReferringToMissingSimpleIndicator(AbstractTarget target) throws Exception
