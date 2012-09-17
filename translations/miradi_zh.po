@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-17 10:46-0500\n"
+"POT-Creation-Date: 2012-09-17 16:16-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -942,7 +942,7 @@ msgstr ""
 "会计编码——指由某个组织机构开发的一套用于分类和跟踪开支的分类系统。它们通常包"
 "括分梯级的数字串和/或字母（编码）串以及伴随的文字说明。"
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:56
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:58
 msgid "Acct Code"
 msgstr "会计代码 \t\t"
 
@@ -2493,12 +2493,12 @@ msgid "Category Ib: Wilderness area"
 msgstr "种类Ib：野生地区"
 
 #: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryOneDoer.java:34
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:62
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:64
 msgid "Category One"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryTwoDoer.java:34
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:65
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:67
 msgid "Category Two"
 msgstr ""
 
@@ -3663,7 +3663,7 @@ msgstr "完整报告"
 
 #: Miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:34
 #: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:49
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:59
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:61
 msgid "Funding Source"
 msgstr "资金来源 \t\t"
 
