@@ -80,9 +80,9 @@ public abstract class EditableObjectRefsTableModel extends EditableObjectTableMo
 		return true;
 	}
 
-	public String getColumnTag(int column)
+	public String getColumnTag(int modelColumn)
 	{
-		return getColumnTags()[column];
+		return getColumnTags()[modelColumn];
 	}
 
 	public int getColumnCount()

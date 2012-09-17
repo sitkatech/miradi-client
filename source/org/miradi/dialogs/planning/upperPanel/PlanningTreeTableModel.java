@@ -52,9 +52,9 @@ abstract public class PlanningTreeTableModel extends GenericTreeTableModel
 		return EAM.fieldLabel(ObjectType.FAKE, getColumnTag(column));
 	}
 	
-	public String getColumnTag(int column)
+	public String getColumnTag(int modelColumn)
 	{
-		return getColumnTags().get(column);
+		return getColumnTags().get(modelColumn);
 	}
 	
 	public String getColumnTagForNode(int nodeType, int column)

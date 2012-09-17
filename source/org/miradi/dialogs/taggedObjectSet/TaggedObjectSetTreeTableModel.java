@@ -29,7 +29,7 @@ public class TaggedObjectSetTreeTableModel extends GenericTreeTableModel
 		super(root);
 	}
 
-	public String getColumnTag(int column)
+	public String getColumnTag(int modelColumn)
 	{
 		return "";
 	}

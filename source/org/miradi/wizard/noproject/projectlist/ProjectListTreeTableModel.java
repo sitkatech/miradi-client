@@ -55,9 +55,9 @@ public class ProjectListTreeTableModel extends GenericTreeTableModel
 		root.recursivelySort();
 	}
 
-	public String getColumnTag(int column)
+	public String getColumnTag(int modelColumn)
 	{
-		return COLUMN_NAMES[column];
+		return COLUMN_NAMES[modelColumn];
 	}
 
 	public int getColumnCount()

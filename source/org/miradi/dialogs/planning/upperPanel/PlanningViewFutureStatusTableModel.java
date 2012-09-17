@@ -45,9 +45,9 @@ public class PlanningViewFutureStatusTableModel extends PlanningViewAbstractTree
 		return columnTags.length;
 	}
 	
-	public String getColumnTag(int column)
+	public String getColumnTag(int modelColumn)
 	{
-		return columnTags[column];
+		return columnTags[modelColumn];
 	}
 	
 	@Override

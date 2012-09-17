@@ -166,9 +166,9 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		return EAM.fieldLabel(ThreatStressRatingSchema.getObjectType(), getColumnTag(column));
 	}
 	
-	public String getColumnTag(int column)
+	public String getColumnTag(int modelColumn)
 	{
-		return getColumnTags()[column];
+		return getColumnTags()[modelColumn];
 	}
 
 	public int getColumnCount()

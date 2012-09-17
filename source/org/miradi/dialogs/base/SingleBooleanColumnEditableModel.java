@@ -63,7 +63,7 @@ abstract public class SingleBooleanColumnEditableModel extends EditableObjectTab
 		return rowColumnBaseObjectProvider.getRowCount();
 	}
 
-	public String getColumnTag(int column)
+	public String getColumnTag(int modelColumn)
 	{
 		return "";
 	}

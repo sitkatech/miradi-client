@@ -47,7 +47,7 @@ abstract public class AbstractThreatTargetTableModel extends SortableTableModel
 		resetTargetAndThreats();
 	}
 	
-	public String getColumnTag(int column)
+	public String getColumnTag(int modelColumn)
 	{
 		return "";
 	}

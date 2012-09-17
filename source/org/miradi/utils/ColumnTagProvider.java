@@ -21,5 +21,5 @@ package org.miradi.utils;
 
 public interface ColumnTagProvider
 {
-	public String getColumnTag(int column);
+	public String getColumnTag(int modelColumn);
 }
