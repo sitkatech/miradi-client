@@ -58,7 +58,7 @@ public class ObjectDeepCopier
 		if (objectToDeepCopy == null)
 			return;
 		
-		ORefList objectsToDeepCopy = objectToDeepCopy.getAllObjectsToDeepCopy(deepCopiedFactorRefs);		
+		ORefList objectsToDeepCopy = objectToDeepCopy.getOwnedAndRelatedObjectRefs(deepCopiedFactorRefs);		
 		EnhancedJsonObject customJson = getCustomJson(objectToDeepCopy);
 		allOwnedObjects.add(customJson.toString());
 		for (int i = 0; i < objectsToDeepCopy.size(); ++i)

@@ -1100,7 +1100,7 @@ abstract public class BaseObject
 		return new ORefList(ResourceAssignmentSchema.getObjectType(), getSafeIdListData(TAG_RESOURCE_ASSIGNMENT_IDS));
 	}
 	
-	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
+	public ORefList getOwnedAndRelatedObjectRefs(ORefList deepCopiedFactorRefs)
 	{
 		ORefList objectsToDeepCopy = new ORefList();
 		objectsToDeepCopy.addAll(getOwnedObjectRefs());
