@@ -53,7 +53,8 @@ abstract public class TreeTableWithColumnWidthSaving extends TreeTableWithRowHei
 	
 	public String getColumnGroupCode(int tableColumn)
 	{
-		return getColumnName(tableColumn);
+		final int modelColumnIndex = convertColumnIndexToModel(tableColumn);
+		return getTreeTableModel().getColumnTag(modelColumnIndex);
 	}
 	
 	@Override
