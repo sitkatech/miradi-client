@@ -164,17 +164,18 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 	
 	public String getColumnIdentifier(int tableColumn)
 	{
-		return createColumnIdentifier(this, this, tableColumn);
+		return createColumnIdentifier(this, this, columnTagProvider, tableColumn);
 	}
 
-	public static String createColumnIdentifier(JTable tableToUse, ColumnWidthProvider provider, int tableColumn)
+	public static String createColumnIdentifier(JTable tableToUse, ColumnWidthProvider provider, ColumnTagProvider columnTagProvider, int tableColumn)
 	{
-		String columnName = tableToUse.getColumnName(tableColumn);
+		int modelColumn = tableToUse.convertColumnIndexToModel(tableColumn);
+		String columnTag = columnTagProvider.getColumnTag(modelColumn);
 		String columnGroupCode = provider.getColumnGroupCode(tableColumn);
-		if (columnName.equals(columnGroupCode))
-			return columnName;
+		if (columnTag.equals(columnGroupCode))
+			return columnTag;
 		
-		return columnGroupCode + "." + columnName;
+		return columnGroupCode + "." + columnTag;
 	}
 	
 	protected void saveColumnState() throws Exception
