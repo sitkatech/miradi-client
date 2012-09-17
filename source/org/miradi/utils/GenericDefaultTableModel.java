@@ -30,6 +30,6 @@ public class GenericDefaultTableModel extends DefaultTableModel implements Colum
 
 	public String getColumnTag(int column)
 	{
-		return getColumnName(column);
+		return "";
 	}
 }
