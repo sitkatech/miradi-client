@@ -47,7 +47,6 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 		super(mainWindowToUse.getProject(), objectTypeToUse, idToUse, tagToUse);
 		
 		model = new SingleColumnReadonlyGenericDefaultTableModel();
-		model.setColumnCount(1);
 		table = new TableWithHtmlRenderer(mainWindowToUse, model);
 		setDefaultFieldBorder();
 	}

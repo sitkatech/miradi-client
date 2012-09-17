@@ -26,6 +26,8 @@ public class SingleColumnReadonlyGenericDefaultTableModel extends DefaultTableMo
 	public SingleColumnReadonlyGenericDefaultTableModel()
 	{
 		super();
+		
+		setColumnCount(1);
 	}
 
 	public String getColumnTag(int column)
