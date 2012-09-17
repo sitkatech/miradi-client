@@ -26,7 +26,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectDeepCopier;
+import org.miradi.objecthelpers.BaseObjectDeepCopierWithRelatedObjectsToJson;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
@@ -73,7 +73,7 @@ public class TestObjectDeepCopier extends MiradiTestCase
 		
 		strategy.setData(Strategy.TAG_ACTIVITY_IDS, activityIds.toString());
 		assertEquals("wrong number of objects to deep copy?", 1, strategy.getOwnedAndRelatedObjectRefs(new ORefList()).size());
-		ObjectDeepCopier deepCopier = new ObjectDeepCopier(project);
+		BaseObjectDeepCopierWithRelatedObjectsToJson deepCopier = new BaseObjectDeepCopierWithRelatedObjectsToJson(project);
 		Vector deepCopiedNull = deepCopier.createDeepCopy(null);
 		assertEquals("deep copied null?", 0, deepCopiedNull.size());
 		

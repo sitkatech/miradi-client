@@ -29,9 +29,9 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.DiagramPaster;
 
-public class ObjectDeepCopier
+public class BaseObjectDeepCopierWithRelatedObjectsToJson
 {
-	public ObjectDeepCopier(Project projectToUse)
+	public BaseObjectDeepCopierWithRelatedObjectsToJson(Project projectToUse)
 	{
 		project = projectToUse;
 	}

@@ -38,7 +38,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.EAMGraphCellByFactorTypeSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectDeepCopier;
+import org.miradi.objecthelpers.BaseObjectDeepCopierWithRelatedObjectsToJson;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
@@ -105,7 +105,7 @@ public class TransferableMiradiList implements Transferable, Serializable
 	public void storeData(EAMGraphCell[] selectedCellsToCopy) throws Exception
 	{
 		Arrays.sort(selectedCellsToCopy, new EAMGraphCellByFactorTypeSorter());
-		ObjectDeepCopier deepCopier = createObjectDeepCopier();
+		BaseObjectDeepCopierWithRelatedObjectsToJson deepCopier = createObjectDeepCopier();
 		for (int i = 0; i < selectedCellsToCopy.length; i++) 
 		{
 			EAMGraphCell cell = selectedCellsToCopy[i];
@@ -137,7 +137,7 @@ public class TransferableMiradiList implements Transferable, Serializable
 	
 	public void storeData(HashSet<DiagramFactor> diagramFactors, HashSet<DiagramLink> diagramLinks)
 	{	
-		ObjectDeepCopier deepCopier = createObjectDeepCopier();		
+		BaseObjectDeepCopierWithRelatedObjectsToJson deepCopier = createObjectDeepCopier();		
 		for(DiagramFactor diagramFactor : diagramFactors)
 		{
 			addFactorDeepCopies(deepCopier, diagramFactor);
@@ -149,18 +149,18 @@ public class TransferableMiradiList implements Transferable, Serializable
 		}
 	}
 
-	private ObjectDeepCopier createObjectDeepCopier()
+	private BaseObjectDeepCopierWithRelatedObjectsToJson createObjectDeepCopier()
 	{
 		clear();
-		return new ObjectDeepCopier(project);
+		return new BaseObjectDeepCopierWithRelatedObjectsToJson(project);
 	}
 
-	private void addFactorDeepCopies(ObjectDeepCopier deepCopier, DiagramFactor diagramFactor)
+	private void addFactorDeepCopies(BaseObjectDeepCopierWithRelatedObjectsToJson deepCopier, DiagramFactor diagramFactor)
 	{
 		addFactorDeepCopies(new ORefList(), deepCopier, diagramFactor);
 	}
 	
-	private void addFactorDeepCopies(ORefList deepCopiedFactorRefs, ObjectDeepCopier deepCopier, DiagramFactor diagramFactor)
+	private void addFactorDeepCopies(ORefList deepCopiedFactorRefs, BaseObjectDeepCopierWithRelatedObjectsToJson deepCopier, DiagramFactor diagramFactor)
 	{
 		if (shouldDeepCopyFactor(diagramFactor.getWrappedType()))
 		{
@@ -195,7 +195,7 @@ public class TransferableMiradiList implements Transferable, Serializable
 		rectWithUpperMostLeftMostCorner.add(location);
 	}
 
-	private void addFactorLinkDeepCopies(ObjectDeepCopier deepCopier, DiagramLink diagramLink)
+	private void addFactorLinkDeepCopies(BaseObjectDeepCopierWithRelatedObjectsToJson deepCopier, DiagramLink diagramLink)
 	{
 		FactorLink factorLink = diagramLink.getWrappedFactorLink();
 		Vector<String> factorLinkJsonStrings = deepCopier.createDeepCopy(factorLink);
