@@ -174,7 +174,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	public String getColumnTag(int modelColumn)
 	{
-		return getColumnName(modelColumn);
+		return getDateUnit(modelColumn).getDateUnitCode();
 	}
 	
 	@Override
