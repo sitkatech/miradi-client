@@ -30,9 +30,9 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 
-public class TestBaseObjectDeepCloner extends TestCaseWithProject
+public class TestBaseObjectDeepCopier extends TestCaseWithProject
 {
-	public TestBaseObjectDeepCloner(String name)
+	public TestBaseObjectDeepCopier(String name)
 	{
 		super(name);
 	}

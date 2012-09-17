@@ -193,7 +193,7 @@ import org.miradi.ratings.TestRatingQuestion;
 import org.miradi.ratings.TestStrategyRatingSummary;
 import org.miradi.utils.TestAbstractTableExporter;
 import org.miradi.utils.TestBaseObjectDateAndIdComparator;
-import org.miradi.utils.TestBaseObjectDeepCloner;
+import org.miradi.utils.TestBaseObjectDeepCopier;
 import org.miradi.utils.TestBendPointList;
 import org.miradi.utils.TestCodeList;
 import org.miradi.utils.TestColumnSequenceSaver;
@@ -326,7 +326,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestEditableHtmlPane.class));
 		addTest(new TestSuite(TestZipUtilities.class));
 		addTest(new TestSuite(TestFileUtilities.class));
-		addTest(new TestSuite(TestBaseObjectDeepCloner.class));
+		addTest(new TestSuite(TestBaseObjectDeepCopier.class));
 		
 		// diagram package
 		addTest(new TestSuite(TestDiagramModel.class));
