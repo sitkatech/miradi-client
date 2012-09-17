@@ -36,7 +36,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.utils.GenericDefaultTableModel;
+import org.miradi.utils.SingleColumnReadonlyGenericDefaultTableModel;
 import org.miradi.utils.IgnoreCaseStringComparator;
 import org.miradi.utils.XmlUtilities2;
 
@@ -46,7 +46,7 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 	{
 		super(mainWindowToUse.getProject(), objectTypeToUse, idToUse, tagToUse);
 		
-		model = new GenericDefaultTableModel();
+		model = new SingleColumnReadonlyGenericDefaultTableModel();
 		model.setColumnCount(1);
 		table = new TableWithHtmlRenderer(mainWindowToUse, model);
 		setDefaultFieldBorder();
@@ -153,6 +153,6 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 		}
 	}
 	
-	private GenericDefaultTableModel model;
+	private SingleColumnReadonlyGenericDefaultTableModel model;
 	private PanelTable table;
 }
