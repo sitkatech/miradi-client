@@ -40,10 +40,10 @@ public class TestBaseObjectDeepCopier extends TestCaseWithProject
 	public void testTargetCopy() throws Exception
 	{
 		Target target = getProject().createTarget();
-		verifyClone(target);
+		verifyCopy(target);
 	
 		getProject().populateTarget(target);
-		verifyClone(target);
+		verifyCopy(target);
 	}
 	
 	public void testStrategyCopy() throws Exception
@@ -54,33 +54,33 @@ public class TestBaseObjectDeepCopier extends TestCaseWithProject
 		getProject().addResourceAssignment(indicator);
 		getProject().addProgressReport(strategy);
 		getProject().addProgressReport(indicator);
-		verifyClone(indicator);
+		verifyCopy(indicator);
 	}
 	
-	private void verifyClone(BaseObject baseObjectToClone) throws Exception
+	private void verifyCopy(BaseObject baseObjectToCopier) throws Exception
 	{
-		BaseObjectDeepCopier cloner = new BaseObjectDeepCopier(getProject());
-		BaseObject clonedBaseObject = cloner.createDeepClone(baseObjectToClone);
-		assertTrue("Cloned baseObject is not the same as actaul baseObject?", areEquals(baseObjectToClone, clonedBaseObject));
+		BaseObjectDeepCopier copier = new BaseObjectDeepCopier(getProject());
+		BaseObject copiedBaseObject = copier.createDeepCopier(baseObjectToCopier);
+		assertTrue("Cloned baseObject is not the same as actaul baseObject?", areEquals(baseObjectToCopier, copiedBaseObject));
 	}
 
-	private boolean areEquals(BaseObject baseObjectToClone,	BaseObject clonedBaseObject)
+	private boolean areEquals(BaseObject baseObjectToCopy,	BaseObject copiedBaseObject)
 	{
-		Vector<String> storedFieldTags = baseObjectToClone.getStoredFieldTags();
+		Vector<String> storedFieldTags = baseObjectToCopy.getStoredFieldTags();
 		for(String tag : storedFieldTags)
 		{
-			if (baseObjectToClone.isRefList(tag) || baseObjectToClone.isIdListTag(tag))
+			if (baseObjectToCopy.isRefList(tag) || baseObjectToCopy.isIdListTag(tag))
 			{
-				final ORefList refListToBeCloned = baseObjectToClone.getSafeRefListData(tag);
-				final ORefList clonedRefList = clonedBaseObject.getSafeRefListData(tag);
-				if (!haveOwnedObjectsBeenCloned(refListToBeCloned, clonedRefList))
+				final ORefList refListToBeCloned = baseObjectToCopy.getSafeRefListData(tag);
+				final ORefList clonedRefList = copiedBaseObject.getSafeRefListData(tag);
+				if (!haveOwnedObjectsBeenCopied(refListToBeCloned, clonedRefList))
 					return false;
 			}
 			else
 			{
-				String actualData = baseObjectToClone.getData(tag);
-				String clonedData = clonedBaseObject.getData(tag);
-				if (!actualData.equals(clonedData))
+				String actualData = baseObjectToCopy.getData(tag);
+				String copiedData = copiedBaseObject.getData(tag);
+				if (!actualData.equals(copiedData))
 					return false; 
 			}
 		}
@@ -88,7 +88,7 @@ public class TestBaseObjectDeepCopier extends TestCaseWithProject
 		return true;
 	}
 
-	private boolean haveOwnedObjectsBeenCloned(ORefList refListToBeCloned, ORefList clonedRefList)
+	private boolean haveOwnedObjectsBeenCopied(ORefList refListToBeCloned, ORefList clonedRefList)
 	{
 		if (refListToBeCloned.size() != clonedRefList.size())
 			return false;

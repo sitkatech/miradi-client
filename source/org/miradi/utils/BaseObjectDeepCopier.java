@@ -34,7 +34,7 @@ public class BaseObjectDeepCopier
 		project = projectToUse;
 	}
 	
-	public BaseObject createDeepClone(BaseObject baseObejctToClone) throws Exception
+	public BaseObject createDeepCopier(BaseObject baseObejctToClone) throws Exception
 	{
 		return createCopy(baseObejctToClone);
 	}

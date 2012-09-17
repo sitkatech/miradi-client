@@ -184,7 +184,7 @@ public class ProjectRepairer
 	public ORef deepCopyIndicator(Indicator indicator) throws Exception
 	{
 		BaseObjectDeepCopier deepCopier = new BaseObjectDeepCopier(getProject());
-		BaseObject indicatorCopy = deepCopier.createDeepClone(indicator);
+		BaseObject indicatorCopy = deepCopier.createDeepCopier(indicator);
 		
 		return indicatorCopy.getRef();
 	}
