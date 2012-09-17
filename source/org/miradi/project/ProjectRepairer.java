@@ -59,6 +59,7 @@ import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.utils.BaseObjectDeepCopier;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.HtmlUtilities;
 
@@ -163,11 +164,11 @@ public class ProjectRepairer
 		{
 			Indicator indicator = Indicator.find(getProject(), indicatorRef);
 			ORefList abstractTargetReferrerRefs = indicator.findObjectsThatReferToUs(abstractTargetType);
-			cloneIndicator(abstractTargetReferrerRefs, indicator);
+			attachDeepCopiesOfIndicator(abstractTargetReferrerRefs, indicator);
 		}
 	}
 
-	public void cloneIndicator(ORefList abstractTargetReferrerRefs, Indicator indicator) throws Exception
+	private void attachDeepCopiesOfIndicator(ORefList abstractTargetReferrerRefs, Indicator indicator) throws Exception
 	{
 		final int IGNORE_FIRST_REFERRER = 1;
 		for (int index = IGNORE_FIRST_REFERRER; index < abstractTargetReferrerRefs.size(); ++index)
@@ -175,26 +176,17 @@ public class ProjectRepairer
 			AbstractTarget abstractTarget = AbstractTarget.findTarget(getProject(), abstractTargetReferrerRefs.get(index));
 			ORefList indicatorRefs = abstractTarget.getSafeRefListData(AbstractTarget.TAG_INDICATOR_IDS);
 			indicatorRefs.remove(indicator.getRef());
-			indicatorRefs.add(shallowCloneIndicator(indicator));
+			indicatorRefs.add(deepCopyIndicator(indicator));
 			setIndicatorRefs(abstractTarget, indicatorRefs);
 		}
 	}
 
-	public ORef shallowCloneIndicator(Indicator indicator) throws Exception
+	public ORef deepCopyIndicator(Indicator indicator) throws Exception
 	{
-		ORef newlyCreateIndicatorRef = getProject().createObject(IndicatorSchema.getObjectType());
-		Vector<String> storedTags = indicator.getStoredFieldTags();
-		for (String tag : storedTags)
-		{
-			if(indicator.isIdListTag(tag))
-				continue;
-			if(indicator.isRefList(tag))
-				continue;
-			
-			getProject().setObjectData(newlyCreateIndicatorRef, tag, indicator.getData(tag));
-		}
+		BaseObjectDeepCopier deepCopier = new BaseObjectDeepCopier(getProject());
+		BaseObject indicatorCopy = deepCopier.createDeepClone(indicator);
 		
-		return newlyCreateIndicatorRef;
+		return indicatorCopy.getRef();
 	}
 	
 	private void setIndicatorRefs(AbstractTarget target, ORefList indicatorRefs) throws Exception

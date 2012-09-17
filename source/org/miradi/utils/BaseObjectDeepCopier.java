@@ -22,8 +22,6 @@ package org.miradi.utils;
 
 import java.util.Vector;
 
-import org.miradi.commands.CommandCreateObject;
-import org.miradi.commands.CommandSetObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
@@ -38,23 +36,13 @@ public class BaseObjectDeepCopier
 	
 	public BaseObject createDeepClone(BaseObject baseObejctToClone) throws Exception
 	{
-		getProject().executeBeginTransaction();
-		try
-		{
-			return createCopy(baseObejctToClone);
-		}
-		finally 
-		{
-			getProject().executeEndTransaction();
-		}
+		return createCopy(baseObejctToClone);
 	}
 	
 	private BaseObject createCopy(BaseObject baseObejctToClone) throws Exception
 	{
-		CommandCreateObject createCommand = new CommandCreateObject(baseObejctToClone.getType());
-		getProject().executeCommand(createCommand);
-
-		BaseObject copiedBaseObject = BaseObject.find(getProject(), createCommand.getObjectRef());
+		ORef copiedBaseObjectRef = getProject().createObject(baseObejctToClone.getType());
+		BaseObject copiedBaseObject = BaseObject.find(getProject(), copiedBaseObjectRef);
 		copyBaseObject(baseObejctToClone, copiedBaseObject);
 
 		return copiedBaseObject;
@@ -80,8 +68,7 @@ public class BaseObjectDeepCopier
 				dataToBeSaved = baseObejctToClone.getData(tag); 
 			}
 			
-			CommandSetObjectData setCommand = new CommandSetObjectData(copiedBaseObjectToFill, tag, dataToBeSaved);
-			getProject().executeCommand(setCommand);
+			getProject().setObjectData(copiedBaseObjectToFill, tag, dataToBeSaved);
 		}
 	}
 
