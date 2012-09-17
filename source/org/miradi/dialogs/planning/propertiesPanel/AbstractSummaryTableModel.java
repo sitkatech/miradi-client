@@ -32,8 +32,10 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceItemBaseObjectWrapper;
+import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.BudgetCategoryTwoSchema;
+import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.utils.ColumnTagProvider;
 
 abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssignmentTableModel implements ColumnTagProvider
@@ -124,7 +126,19 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 
 	public String getColumnTag(int column)
 	{
-		return getColumnName(column);
+		if (isAccountingCodeColumn(column))
+			return AccountingCodeSchema.OBJECT_NAME;
+		
+		if (isFundingSourceColumn(column))
+			return FundingSourceSchema.OBJECT_NAME;
+		
+		if (isBudgetCategoryOneColumn(column))
+			return BudgetCategoryOneSchema.OBJECT_NAME;
+		
+		if (isBudgetCategoryTwoColumn(column))
+			return BudgetCategoryTwoSchema.OBJECT_NAME;
+		
+		return "";
 	}
 	
 	public static BaseObject createInvalidObject(ObjectManager objectManager, int objectType, String objectTypeName)
