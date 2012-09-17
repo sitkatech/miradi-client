@@ -23,11 +23,6 @@ import javax.swing.table.DefaultTableModel;
 
 public class GenericDefaultTableModel extends DefaultTableModel implements ColumnTagProvider
 {
-	public GenericDefaultTableModel(String[][] data, String[] names)
-	{
-		super(data, names);
-	}
-
 	public GenericDefaultTableModel()
 	{
 		super();
