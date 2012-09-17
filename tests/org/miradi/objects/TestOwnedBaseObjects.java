@@ -139,7 +139,7 @@ public class TestOwnedBaseObjects extends TestCaseWithProject
 
 	private void verifyOwnedObjects(BaseObject baseObject, ORefList expectedOwnedObjects)
 	{
-		ORefList actualOwnedObjects = baseObject.getAllOwnedObjects();
+		ORefList actualOwnedObjects = baseObject.getOwnedObjectRefs();
 		assertEquals("incrrect onwed objects count?", expectedOwnedObjects.size(), actualOwnedObjects.size());
 		expectedOwnedObjects.removeAll(actualOwnedObjects);
 		assertEquals("unexpected owned object found?", 0, expectedOwnedObjects.size());

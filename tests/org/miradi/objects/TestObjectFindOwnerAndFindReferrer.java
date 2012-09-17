@@ -350,7 +350,7 @@ public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
 	private void verifyOwned(int size, ORef owner, ORef ref)
 	{
 		BaseObject ownerObject = project.findObject(owner);
-		ORefList ownedObjects = ownerObject.getAllOwnedObjects().getFilteredBy(ref.getObjectType());
+		ORefList ownedObjects = ownerObject.getOwnedObjectRefs().getFilteredBy(ref.getObjectType());
 		assertEquals(size, ownedObjects.size());
 		assertEquals(true, ownedObjects.contains(ref));
 	}
