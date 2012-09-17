@@ -22,17 +22,15 @@ package org.miradi.utils;
 
 import java.util.Comparator;
 
-import javax.swing.table.TableModel;
-
 import org.miradi.dialogs.base.AbstractObjectTableModel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
 abstract public class SortableRowTable extends TableWithColumnWidthAndSequenceSaver
 {
-	public SortableRowTable(MainWindow mainWindowToUse, TableModel model, String uniqueTableIdentifierToUse)
+	public SortableRowTable(MainWindow mainWindowToUse, SortableTableModel model, String uniqueTableIdentifierToUse)
 	{
-		super(mainWindowToUse, model, uniqueTableIdentifierToUse);
+		super(mainWindowToUse, model, uniqueTableIdentifierToUse, model);
 		
 		addAsSortableTable();
 	}

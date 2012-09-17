@@ -44,10 +44,11 @@ import org.miradi.objects.TableSettings;
 
 abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowHeightSaver implements CommandExecutedListener, TableWithColumnManagement, ColumnWidthProvider
 {
-	public TableWithColumnWidthAndSequenceSaver(MainWindow mainWindowToUse, TableModel model, String uniqueTableIdentifierToUse)
+	public TableWithColumnWidthAndSequenceSaver(MainWindow mainWindowToUse, TableModel model, String uniqueTableIdentifierToUse, ColumnTagProvider columnTagProviderToUse)
 	{
 		super(mainWindowToUse, model, uniqueTableIdentifierToUse);
 	
+		columnTagProvider = columnTagProviderToUse;
 		mainWindowToUse.getProject().addCommandExecutedListener(this);
 		safelyHandleAddingRenderersAndEditors();
 		addColumnWidthSaver();
@@ -156,7 +157,9 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 	
 	public String getColumnGroupCode(int tableColumn)
 	{
-		return getColumnName(tableColumn);
+		final int modelColumn = convertColumnIndexToModel(tableColumn);
+		
+		return columnTagProvider.getColumnTag(modelColumn);
 	}
 	
 	public String getColumnIdentifier(int tableColumn)
@@ -282,4 +285,5 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 	private HashMap<String, Integer> columnTagToDefaultWidthMap;
 	private ColumnWidthSaver columnWidthSaver;
 	private ColumnSequenceSaver columnSequenceSaver;
+	private ColumnTagProvider columnTagProvider;
 }

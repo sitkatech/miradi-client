@@ -22,15 +22,14 @@ package org.miradi.dialogs.threatrating.upperPanel;
 
 import java.awt.Dimension;
 
-import javax.swing.table.TableModel;
-
 import org.miradi.main.MainWindow;
+import org.miradi.utils.SortableTableModel;
 
 abstract public class TableWhoseScrollPaneAlwaysExactlyFits extends
 		AbstractTableWithChoiceItemRenderer
 {
 	public TableWhoseScrollPaneAlwaysExactlyFits(MainWindow mainWindowToUse,
-			TableModel model, String uniqueTableIdentifierToUse)
+			SortableTableModel model, String uniqueTableIdentifierToUse)
 	{
 		super(mainWindowToUse, model, uniqueTableIdentifierToUse);
 	}
