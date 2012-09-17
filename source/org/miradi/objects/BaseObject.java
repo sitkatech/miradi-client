@@ -1103,7 +1103,7 @@ abstract public class BaseObject
 	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
 	{
 		ORefList objectsToDeepCopy = new ORefList();
-		objectsToDeepCopy.addAll(getAllOwnedObjects());
+		objectsToDeepCopy.addAll(getOwnedObjectRefs());
 		objectsToDeepCopy.addAll(getNonOwnedObjectsToDeepCopy(deepCopiedFactorRefs));
 		
 		return objectsToDeepCopy;
@@ -1114,7 +1114,7 @@ abstract public class BaseObject
 		return new ORefList();
 	}
 	
-	public ORefList getAllOwnedObjects()
+	public ORefList getOwnedObjectRefs()
 	{
 		ORefList allOwnedObjects = new ORefList();
 		Vector<String> tags = getStoredFieldTags();

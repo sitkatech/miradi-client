@@ -131,7 +131,7 @@ public class TestBaseObject extends TestCaseWithProject
 		getProject().addItemToFactorList(causeRef, ObjectType.OBJECTIVE, Factor.TAG_OBJECTIVE_IDS);
 		
 	   	BaseObject ownerObject = getProject().findObject(causeRef);	
-	   	ORefList allOwnedObjects = ownerObject.getAllOwnedObjects();
+	   	ORefList allOwnedObjects = ownerObject.getOwnedObjectRefs();
 	   	assertEquals("incorrect owned object count?", 2, allOwnedObjects.size());
 	}
 	

@@ -168,7 +168,7 @@ abstract public class DiagramObject extends BaseObject
 			DiagramFactor diagramFactor = (DiagramFactor) objectManager.findObject(diagramFactorRefs.get(dfr));
 			ORef factorRef = diagramFactor.getWrappedORef();
 			Factor factor = Factor.findFactor(objectManager, factorRef);
-			if(factor.getAllOwnedObjects().contains(annotationRef))
+			if(factor.getOwnedObjectRefs().contains(annotationRef))
 				return true;
 		}
 		
