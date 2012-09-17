@@ -92,7 +92,7 @@ abstract public class TreeTableWithColumnWidthSaving extends TreeTableWithRowHei
 	
 	public String getColumnIdentifier(int tableColumn)
 	{
-		return TableWithColumnWidthAndSequenceSaver.createColumnIdentifier(this, this, tableColumn);
+		return TableWithColumnWidthAndSequenceSaver.createColumnIdentifier(this, this, getTreeTableModel(), tableColumn);
 	}
 		
 	private ColumnWidthSaver columnWidthSaver;
