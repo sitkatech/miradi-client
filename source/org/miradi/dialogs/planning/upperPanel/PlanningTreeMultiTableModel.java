@@ -46,9 +46,9 @@ public class PlanningTreeMultiTableModel extends MultiTableModel implements Colu
 		super.addModel(modelToAdd);
 	}
 	
-	public String getColumnTag(int column)
+	public String getColumnTag(int modelColumn)
 	{
-		return getCastedModel(column).getColumnTag(findColumnWithinSubTable(column));
+		return getCastedModel(modelColumn).getColumnTag(findColumnWithinSubTable(modelColumn));
 	}
 	
 	public Color getCellBackgroundColor(int row, int column)

@@ -89,9 +89,9 @@ public class IndicatorViabilityTableModel extends PlanningViewAbstractTreeTableS
 		return getColumnTags().size();
 	}
 	
-	public String getColumnTag(int column)
+	public String getColumnTag(int modelColumn)
 	{
-		return getColumnTags().get(column);
+		return getColumnTags().get(modelColumn);
 	}
 	
 	@Override

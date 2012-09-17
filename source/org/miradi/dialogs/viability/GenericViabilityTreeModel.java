@@ -44,9 +44,9 @@ abstract public class GenericViabilityTreeModel extends GenericTreeTableModel
 		return getColumnTags().length;
 	}
 
-	public String getColumnTag(int column)
+	public String getColumnTag(int modelColumn)
 	{
-		return getColumnTags()[column];
+		return getColumnTags()[modelColumn];
 	}
 
 	public String getColumnName(int column)

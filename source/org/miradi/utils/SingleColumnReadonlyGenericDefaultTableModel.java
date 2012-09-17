@@ -30,7 +30,7 @@ public class SingleColumnReadonlyGenericDefaultTableModel extends DefaultTableMo
 		setColumnCount(1);
 	}
 
-	public String getColumnTag(int column)
+	public String getColumnTag(int modelColumn)
 	{
 		return "";
 	}

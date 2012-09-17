@@ -124,18 +124,18 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 		setValueUsingCommand(refForRow, destinationTag, ORef.createFromString(choiceItem.getCode()));
 	}
 
-	public String getColumnTag(int column)
+	public String getColumnTag(int modelColumn)
 	{
-		if (isAccountingCodeColumn(column))
+		if (isAccountingCodeColumn(modelColumn))
 			return AccountingCodeSchema.OBJECT_NAME;
 		
-		if (isFundingSourceColumn(column))
+		if (isFundingSourceColumn(modelColumn))
 			return FundingSourceSchema.OBJECT_NAME;
 		
-		if (isBudgetCategoryOneColumn(column))
+		if (isBudgetCategoryOneColumn(modelColumn))
 			return BudgetCategoryOneSchema.OBJECT_NAME;
 		
-		if (isBudgetCategoryTwoColumn(column))
+		if (isBudgetCategoryTwoColumn(modelColumn))
 			return BudgetCategoryTwoSchema.OBJECT_NAME;
 		
 		return "";

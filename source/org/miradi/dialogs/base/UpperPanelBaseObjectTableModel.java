@@ -184,9 +184,9 @@ abstract public class UpperPanelBaseObjectTableModel extends EditableObjectTable
 			fireTableRowsDeleted(deletedRowIndex, deletedRowIndex);
 	}
 
-	public String getColumnTag(int column)
+	public String getColumnTag(int modelColumn)
 	{
-		return columnTags[column];
+		return columnTags[modelColumn];
 	}
 	
 	public int getColumnCount()

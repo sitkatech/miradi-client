@@ -172,9 +172,9 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return dateUnitEffort;
 	}
 	
-	public String getColumnTag(int column)
+	public String getColumnTag(int modelColumn)
 	{
-		return getColumnName(column);
+		return getColumnName(modelColumn);
 	}
 	
 	@Override
