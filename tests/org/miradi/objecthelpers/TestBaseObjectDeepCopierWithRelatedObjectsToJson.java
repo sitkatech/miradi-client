@@ -25,9 +25,6 @@ import org.miradi.commands.TestCommandSetObjectData;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.MiradiTestCase;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.BaseObjectDeepCopierWithRelatedObjectsToJson;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
@@ -35,9 +32,9 @@ import org.miradi.project.ProjectForTesting;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class TestObjectDeepCopier extends MiradiTestCase
+public class TestBaseObjectDeepCopierWithRelatedObjectsToJson extends MiradiTestCase
 {
-	public TestObjectDeepCopier(String name)
+	public TestBaseObjectDeepCopierWithRelatedObjectsToJson(String name)
 	{
 		super(name);
 	}

@@ -82,7 +82,7 @@ import org.miradi.objecthelpers.TestMapList;
 import org.miradi.objecthelpers.TestORef;
 import org.miradi.objecthelpers.TestORefList;
 import org.miradi.objecthelpers.TestORefSet;
-import org.miradi.objecthelpers.TestObjectDeepCopier;
+import org.miradi.objecthelpers.TestBaseObjectDeepCopierWithRelatedObjectsToJson;
 import org.miradi.objecthelpers.TestOldToNewDiagramFactorMap;
 import org.miradi.objecthelpers.TestRelevancyOverride;
 import org.miradi.objecthelpers.TestRelevancyOverrideSet;
@@ -361,7 +361,7 @@ public class MainTestSuite extends TestSuite
 		//objecthelpers package
 		addTest(new TestSuite(TestMapList.class));
 		addTest(new TestSuite(TestORef.class));
-		addTest(new TestSuite(TestObjectDeepCopier.class));
+		addTest(new TestSuite(TestBaseObjectDeepCopierWithRelatedObjectsToJson.class));
 		addTest(new TestSuite(TestORefSet.class));
 		addTest(new TestSuite(TestRelevancyOverride.class));
 		addTest(new TestSuite(TestRelevancyOverrideSet.class));
