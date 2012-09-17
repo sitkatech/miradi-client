@@ -19,18 +19,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.threatrating.upperPanel;
 
-import javax.swing.table.TableModel;
-
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.main.MainWindow;
+import org.miradi.utils.SortableTableModel;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 
 abstract public class AbstractTableWithChoiceItemRenderer extends TableWithColumnWidthAndSequenceSaver
 {
-	public AbstractTableWithChoiceItemRenderer(MainWindow mainWindowToUse, TableModel model, String uniqueTableIdentifierToUse)
+	public AbstractTableWithChoiceItemRenderer(MainWindow mainWindowToUse, SortableTableModel model, String uniqueTableIdentifierToUse)
 	{
-		super(mainWindowToUse, model, uniqueTableIdentifierToUse);
+		super(mainWindowToUse, model, uniqueTableIdentifierToUse, model);
 		
 		setColumnRenderers();
 	}
