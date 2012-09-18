@@ -73,7 +73,6 @@ public class ReadonlyChoiceComponent extends AbstractReadOnlyComponent
 		catch(Exception e)
 		{
 			EAM.unexpectedErrorDialog(e);
-			EAM.logException(e);
 		}
 	}
 

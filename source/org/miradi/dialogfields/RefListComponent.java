@@ -81,7 +81,6 @@ public class RefListComponent extends AbstractDataValueListComponent
 		catch(Exception e)
 		{
 			EAM.unexpectedErrorDialog(e);
-			EAM.logException(e);
 		}
 		finally
 		{

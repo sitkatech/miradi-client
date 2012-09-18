@@ -44,7 +44,6 @@ abstract public class SortableRowTable extends TableWithColumnWidthAndSequenceSa
 		}
 		catch(Exception e)
 		{
-			EAM.logException(e);
 			EAM.unexpectedErrorDialog(e);
 		}
 	}
@@ -57,7 +56,6 @@ abstract public class SortableRowTable extends TableWithColumnWidthAndSequenceSa
 		}
 		catch (Exception e)
 		{
-			EAM.logException(e);
 			EAM.unexpectedErrorDialog(e);
 		}
 	}

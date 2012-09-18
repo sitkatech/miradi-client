@@ -189,7 +189,6 @@ public class DashboardMainPanel extends DisposablePanel
 			}
 			catch (Exception e)
 			{
-				EAM.logException(e);
 				EAM.unexpectedErrorDialog(e);
 			}
 		}

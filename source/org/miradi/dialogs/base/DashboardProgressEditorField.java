@@ -120,7 +120,6 @@ public class DashboardProgressEditorField extends AbstractStringStringMapEditorF
 		}
 		catch(ParseException e)
 		{
-			EAM.logException(e);
 			EAM.unexpectedErrorDialog(e);
 		}
 		
@@ -139,7 +138,6 @@ public class DashboardProgressEditorField extends AbstractStringStringMapEditorF
 		catch(ParseException e)
 		{
 			EAM.unexpectedErrorDialog(e);
-			EAM.logException(e);
 		}
 	}
 }

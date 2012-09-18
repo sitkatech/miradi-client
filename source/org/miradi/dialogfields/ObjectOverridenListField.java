@@ -42,7 +42,6 @@ public class ObjectOverridenListField extends RefListEditorField
 		}
 		catch(Exception e)
 		{
-			EAM.logException(e);
 			EAM.unexpectedErrorDialog(e);
 			return "";
 		}
@@ -60,7 +59,6 @@ public class ObjectOverridenListField extends RefListEditorField
 		catch(Exception e)
 		{
 			EAM.unexpectedErrorDialog(e);
-			EAM.logException(e);
 		}	
 	}
 }

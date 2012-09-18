@@ -63,7 +63,6 @@ abstract public class DynamicChoiceWithRootChoiceItem extends DynamicChoiceQuest
 		}
 		catch (Exception e)
 		{
-			EAM.logException(e);
 			EAM.unexpectedErrorDialog(e);
 			
 			return new ChoiceItem[0];

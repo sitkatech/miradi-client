@@ -53,7 +53,6 @@ abstract public class AbstractCreateTaskNodeDoer extends AbstractTreeNodeDoer
 		}
 		catch (Exception e)
 		{
-			EAM.logException(e);
 			EAM.unexpectedErrorDialog(e);
 			return false;
 		}

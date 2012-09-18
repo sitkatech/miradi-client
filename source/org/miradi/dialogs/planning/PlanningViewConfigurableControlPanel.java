@@ -85,7 +85,6 @@ public class PlanningViewConfigurableControlPanel extends PlanningViewCustomButt
 		}
 		catch(Exception e)
 		{
-			EAM.logException(e);
 			EAM.unexpectedErrorDialog(e);
 		}
 	}

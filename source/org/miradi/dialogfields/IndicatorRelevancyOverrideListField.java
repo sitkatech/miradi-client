@@ -45,7 +45,6 @@ public class IndicatorRelevancyOverrideListField extends RefListEditorField
 		catch(Exception e)
 		{
 			EAM.unexpectedErrorDialog(e);
-			EAM.logException(e);
 		}
 		
 		return "";
@@ -63,7 +62,6 @@ public class IndicatorRelevancyOverrideListField extends RefListEditorField
 		catch(Exception e)
 		{
 			EAM.unexpectedErrorDialog(e);
-			EAM.logException(e);
 		}	
 	}
 }

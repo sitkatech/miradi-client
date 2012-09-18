@@ -49,7 +49,6 @@ public class CodeToUserStringMapMultiLineEditor extends ObjectScrollingMultiline
 		}
 		catch(ParseException e)
 		{
-			EAM.logException(e);
 			EAM.unexpectedErrorDialog(e);
 			return "";
 		}
@@ -79,7 +78,6 @@ public class CodeToUserStringMapMultiLineEditor extends ObjectScrollingMultiline
 		catch (Exception e)
 		{
 			EAM.unexpectedErrorDialog(e);
-			EAM.logException(e);
 		}
 	}
 
@@ -92,7 +90,6 @@ public class CodeToUserStringMapMultiLineEditor extends ObjectScrollingMultiline
 		}
 		catch (Exception e)
 		{
-			EAM.logException(e);
 			EAM.unexpectedErrorDialog(e);
 		}
 	}

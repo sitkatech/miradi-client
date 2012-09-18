@@ -762,7 +762,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		}
 		catch (Exception e)
 		{
-			EAM.logException(e);
 			EAM.unexpectedErrorDialog(e);
 		}
 	}

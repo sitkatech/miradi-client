@@ -94,7 +94,6 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 		}
 		catch (Exception e)
 		{
-			EAM.logException(e);
 			EAM.unexpectedErrorDialog(e);
 		}
 	}
@@ -245,7 +244,6 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 			}
 			catch (Exception exception)
 			{
-				EAM.logException(exception);
 				EAM.unexpectedErrorDialog(exception);
 			}
 		}
