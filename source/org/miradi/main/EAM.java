@@ -425,7 +425,7 @@ public class EAM
 	
 	public static void unexpectedErrorDialog(Exception e)
 	{
-		EAM.logException(e);
+		logException(e);
 		String extraText = "";
 		if(e.getMessage() != null)
 			extraText += (e.getMessage());
