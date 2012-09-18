@@ -49,14 +49,14 @@ import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.ColumnTagProvider;
+import org.miradi.utils.ModelColumnTagProvider;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.DoubleUtilities;
 import org.miradi.utils.FloatingPointFormatter;
 import org.miradi.utils.OptionalDouble;
 
-abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTableModel implements ColumnTagProvider
+abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTableModel implements ModelColumnTagProvider
 {
 	public AssignmentDateUnitsTableModel(Project projectToUse, PlanningTreeRowColumnProvider rowColumnProviderToUse, RowColumnBaseObjectProvider rowColumnBaseObjectProviderToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{

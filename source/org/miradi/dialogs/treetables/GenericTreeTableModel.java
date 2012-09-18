@@ -26,12 +26,12 @@ import javax.swing.tree.TreePath;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.utils.ColumnTagProvider;
+import org.miradi.utils.ModelColumnTagProvider;
 
 import com.java.sun.jtreetable.AbstractTreeTableModel;
 import com.java.sun.jtreetable.TreeTableModel;
 
-public abstract class GenericTreeTableModel extends AbstractTreeTableModel implements ColumnTagProvider
+public abstract class GenericTreeTableModel extends AbstractTreeTableModel implements ModelColumnTagProvider
 {
 	public GenericTreeTableModel(Object root)
 	{

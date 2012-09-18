@@ -44,7 +44,7 @@ import org.miradi.objects.TableSettings;
 
 abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowHeightSaver implements CommandExecutedListener, TableWithColumnManagement, ColumnWidthProvider
 {
-	public TableWithColumnWidthAndSequenceSaver(MainWindow mainWindowToUse, TableModel model, String uniqueTableIdentifierToUse, ColumnTagProvider columnTagProviderToUse)
+	public TableWithColumnWidthAndSequenceSaver(MainWindow mainWindowToUse, TableModel model, String uniqueTableIdentifierToUse, ModelColumnTagProvider columnTagProviderToUse)
 	{
 		super(mainWindowToUse, model, uniqueTableIdentifierToUse);
 	
@@ -166,7 +166,7 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 		return createColumnIdentifier(this, this, columnTagProvider, tableColumn);
 	}
 
-	public static String createColumnIdentifier(JTable tableToUse, ColumnWidthProvider provider, ColumnTagProvider columnTagProvider, int tableColumn)
+	public static String createColumnIdentifier(JTable tableToUse, ColumnWidthProvider provider, ModelColumnTagProvider columnTagProvider, int tableColumn)
 	{
 		int modelColumn = tableToUse.convertColumnIndexToModel(tableColumn);
 		String columnTag = columnTagProvider.getColumnTag(modelColumn);
@@ -238,7 +238,7 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
         	columModel.removeColumn(columModel.getColumn(0));
         }
 
-        ColumnTagProvider provider = (ColumnTagProvider) getModel();
+        ModelColumnTagProvider provider = (ModelColumnTagProvider) getModel();
         for (int column = 0; column < model.getColumnCount(); column++) 
         {
         	final String columnTag = provider.getColumnTag(column);
@@ -285,5 +285,5 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 	private HashMap<String, Integer> columnTagToDefaultWidthMap;
 	private ColumnWidthSaver columnWidthSaver;
 	private ColumnSequenceSaver columnSequenceSaver;
-	private ColumnTagProvider columnTagProvider;
+	private ModelColumnTagProvider columnTagProvider;
 }

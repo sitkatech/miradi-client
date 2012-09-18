@@ -21,7 +21,7 @@ package org.miradi.utils;
 
 import javax.swing.table.DefaultTableModel;
 
-public class SingleColumnReadonlyGenericDefaultTableModel extends DefaultTableModel implements ColumnTagProvider
+public class SingleColumnReadonlyGenericDefaultTableModel extends DefaultTableModel implements ModelColumnTagProvider
 {
 	public SingleColumnReadonlyGenericDefaultTableModel()
 	{
