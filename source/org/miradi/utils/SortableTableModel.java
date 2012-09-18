@@ -33,7 +33,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.questions.SortDirectionQuestion;
 
 
-abstract public class SortableTableModel extends AbstractTableModel implements ColumnTagProvider, RowColumnBaseObjectProvider
+abstract public class SortableTableModel extends AbstractTableModel implements ModelColumnTagProvider, RowColumnBaseObjectProvider
 {
 	protected ORefList getSortedRefs(int sortByTableColumn, String sortDirectionCode)
 	{

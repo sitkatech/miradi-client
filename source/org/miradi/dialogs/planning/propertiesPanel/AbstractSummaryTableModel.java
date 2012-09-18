@@ -36,9 +36,9 @@ import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.BudgetCategoryTwoSchema;
 import org.miradi.schemas.FundingSourceSchema;
-import org.miradi.utils.ColumnTagProvider;
+import org.miradi.utils.ModelColumnTagProvider;
 
-abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssignmentTableModel implements ColumnTagProvider
+abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssignmentTableModel implements ModelColumnTagProvider
 {
 	public AbstractSummaryTableModel(Project projectToUse)
 	{

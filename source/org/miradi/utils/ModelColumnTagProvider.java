@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.utils;
 
-public interface ColumnTagProvider
+public interface ModelColumnTagProvider
 {
 	public String getColumnTag(int modelColumn);
 }

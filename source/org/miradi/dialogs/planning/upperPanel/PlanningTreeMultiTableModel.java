@@ -24,9 +24,9 @@ import java.awt.Color;
 
 import org.miradi.dialogs.base.ChoiceItemTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
-import org.miradi.utils.ColumnTagProvider;
+import org.miradi.utils.ModelColumnTagProvider;
 
-public class PlanningTreeMultiTableModel extends MultiTableModel implements ColumnTagProvider
+public class PlanningTreeMultiTableModel extends MultiTableModel implements ModelColumnTagProvider
 {
 	public PlanningTreeMultiTableModel(String subViewModelIdentifierToUse)
 	{
