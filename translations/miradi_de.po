@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-17 16:16-0500\n"
+"POT-Creation-Date: 2012-09-18 10:46-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -536,11 +536,11 @@ msgstr ""
 "zu importieren.<br>Bitte bearbeiten Sie die untenstehenden Probleme und "
 "versuchen Sie erneut die Datei zu exportieren:<BR><BR>"
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:108
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:107
 msgid "<br> Please report this problem to the Miradi support team "
 msgstr "<br> Bitte melden Sie dieses Problem dem Miradi Support Team "
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:107
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:106
 msgid ""
 "<br> The operation completed successfully, but Undo/Redo may not work "
 "correctly."
@@ -2134,7 +2134,7 @@ msgid ""
 "this problem has been resolved."
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:88
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:87
 msgid "An internal error prevented this operation"
 msgstr "ein interner Fehler hat diesen Befehl verhindert"
 
@@ -2142,7 +2142,7 @@ msgstr "ein interner Fehler hat diesen Befehl verhindert"
 msgid "An unexpected error has occurred"
 msgstr "Ein unerwarteter Fehler ist aufgetreten"
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:106
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:105
 msgid "An unexpected error has occurred."
 msgstr "Ein unerwarteter Fehler ist aufgetreten."
 
@@ -3684,7 +3684,7 @@ msgstr "Andere"
 # http://en.wikipedia.org/wiki/Full-time_equivalent
 # auf Deutsch:
 # Als deutsche Begriffe sind Vollzeitäquivalent (VZÄ), Vollzeit-Arbeitskraft, Vollzeitmitarbeiter, Vollkraft, aber auch Manntag(e) oder geschlechtsneutral Personentag(e) oder auch Mitarbeiterkapazität(en) (MAK) in Gebrauch. Der Begriff Vollzeitäquivalent ist im öffentlichen Dienst vorherrschend, sonst dominiert der Anglizismus FTE.
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:132
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:131
 msgid "FTE Days Per Year:"
 msgstr "VZÄ Tage pro Jahr:"
 
@@ -3943,7 +3943,7 @@ msgstr "Ungültige(n) Diagramm Faktor(en) gefunden. Modell = %s"
 msgid "Fraction of FTE..."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:139
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:138
 msgid "Fraction:"
 msgstr ""
 
@@ -4453,7 +4453,7 @@ msgstr "Ist relevant"
 msgid "Is Tagged"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:625
+#: Miradi/source/org/miradi/main/EAM.java:626
 msgid ""
 "It appears that Miradi was launched without the -Xmx512m switch. As a "
 "result, certain operations like Reports may run out of memory."
@@ -5091,7 +5091,7 @@ msgstr "Bearbeiten"
 msgid "MenuBar|File"
 msgstr "Datei"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:575
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:574
 msgid "MenuBar|Help"
 msgstr "Hilfe"
 
@@ -5216,7 +5216,7 @@ msgstr ""
 msgid "Miradi Preferences"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:144
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:143
 msgid ""
 "Miradi could not complete that operation \n"
 "because it ran out of memory.\n"
@@ -5286,7 +5286,7 @@ msgstr "Mehr Vorschläge"
 msgid "Move To..."
 msgstr "Verschieben..."
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:226
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:225
 #, fuzzy
 msgid "Must be a positive number"
 msgstr "Muss eine positive Zahl sein"
@@ -8197,7 +8197,7 @@ msgstr "Fehler"
 msgid "Title|Export Image Scale"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:977
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:976
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Eigenschaften - Faktor"
@@ -8275,7 +8275,7 @@ msgstr "Eigenschaften - Zwischenziel "
 msgid "Title|Open"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/AbstractDashboardClickableField.java:105
+#: Miradi/source/org/miradi/dialogfields/AbstractDashboardClickableField.java:104
 msgid "Title|Open Standards Status"
 msgstr "Offene Standards Status"
 
@@ -8801,7 +8801,7 @@ msgstr ""
 msgid "Work Plan Column Editor"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:287
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:286
 msgid "Work Plan Settings"
 msgstr "Einstellungen - Arbeitsplan"
 

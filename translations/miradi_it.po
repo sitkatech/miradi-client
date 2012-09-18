@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-17 16:16-0500\n"
+"POT-Creation-Date: 2012-09-18 10:46-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -500,12 +500,12 @@ msgid ""
 "the project again:<BR><BR>"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:108
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:107
 msgid "<br> Please report this problem to the Miradi support team "
 msgstr ""
 "<br> Per favore riferisci di questo problema al team di supporto Miradi"
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:107
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:106
 msgid ""
 "<br> The operation completed successfully, but Undo/Redo may not work "
 "correctly."
@@ -2073,7 +2073,7 @@ msgstr ""
 "modifiche a questo progetto fino a quando questo problema non sia stato "
 "risolto."
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:88
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:87
 msgid "An internal error prevented this operation"
 msgstr "Un errore interno ha impedito questa operazione"
 
@@ -2081,7 +2081,7 @@ msgstr "Un errore interno ha impedito questa operazione"
 msgid "An unexpected error has occurred"
 msgstr "Si è verificato un errore inaspettato"
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:106
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:105
 msgid "An unexpected error has occurred."
 msgstr "Si è verificato un errore inaspettato."
 
@@ -3592,7 +3592,7 @@ msgstr "FOS"
 msgid "FOS Training Type|Other"
 msgstr "FOS Training Type|Altro"
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:132
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:131
 msgid "FTE Days Per Year:"
 msgstr "FTE (Dipendenti a Tempo Pieno) Giorni per Anno:"
 
@@ -3848,7 +3848,7 @@ msgstr "Trovato un Fattore contribuente nullo. Diagramma = %s"
 msgid "Fraction of FTE..."
 msgstr "Frazione di FTE (Dipendenti a Tempo Pieno)..."
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:139
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:138
 msgid "Fraction:"
 msgstr "Frazione:"
 
@@ -4355,7 +4355,7 @@ msgstr "E' rilevante"
 msgid "Is Tagged"
 msgstr "E' etichettato"
 
-#: Miradi/source/org/miradi/main/EAM.java:625
+#: Miradi/source/org/miradi/main/EAM.java:626
 msgid ""
 "It appears that Miradi was launched without the -Xmx512m switch. As a "
 "result, certain operations like Reports may run out of memory."
@@ -4998,7 +4998,7 @@ msgstr "Modifica"
 msgid "MenuBar|File"
 msgstr "File"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:575
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:574
 msgid "MenuBar|Help"
 msgstr "Aiuto"
 
@@ -5123,7 +5123,7 @@ msgstr ""
 msgid "Miradi Preferences"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:144
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:143
 msgid ""
 "Miradi could not complete that operation \n"
 "because it ran out of memory.\n"
@@ -5198,7 +5198,7 @@ msgstr ""
 msgid "Move To..."
 msgstr "Sposta in..."
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:226
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:225
 msgid "Must be a positive number"
 msgstr "Deve essere un numero positivo"
 
@@ -8047,7 +8047,7 @@ msgstr "Errore"
 msgid "Title|Export Image Scale"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:977
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:976
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Proprietà del Fattore"
@@ -8125,7 +8125,7 @@ msgstr "Proprietà dell'Obiettivo gestionale"
 msgid "Title|Open"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/AbstractDashboardClickableField.java:105
+#: Miradi/source/org/miradi/dialogfields/AbstractDashboardClickableField.java:104
 msgid "Title|Open Standards Status"
 msgstr ""
 
@@ -8666,7 +8666,7 @@ msgstr ""
 msgid "Work Plan Column Editor"
 msgstr "Editor di Colonna del Piano di lavoro"
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:287
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:286
 msgid "Work Plan Settings"
 msgstr "Impostazioni del Piano di Lavoro"
 
