@@ -66,7 +66,7 @@ public class RightSideDescriptionPanel extends JPanel implements ListSelectionLi
 		}
 		catch (Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}
 	}
 

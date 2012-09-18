@@ -86,7 +86,7 @@ public class EditableHtmlPane extends MiradiTextPane
 		} 
 		catch (Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}
 	}
 

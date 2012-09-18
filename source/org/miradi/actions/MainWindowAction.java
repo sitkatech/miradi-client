@@ -79,7 +79,7 @@ public abstract class MainWindowAction extends MiradiAction
 		catch (UnexpectedSideEffectException e)
 		{
 			EAM.logError(getErrorMessage(e));
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}
 		catch (Exception e)
 		{

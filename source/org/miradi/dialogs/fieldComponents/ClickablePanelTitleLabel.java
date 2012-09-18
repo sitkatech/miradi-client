@@ -50,7 +50,7 @@ public class ClickablePanelTitleLabel extends PanelTitleLabel
 			}
 			catch (Exception e)
 			{
-				EAM.unexpectedErrorDialog(e);
+				EAM.alertUserOfNonFatalException(e);
 			}
 		}
 	}

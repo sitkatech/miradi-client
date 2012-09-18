@@ -57,7 +57,7 @@ public class ObjectStringMapInputField extends ObjectStringInputField
 		}
 		catch(ParseException e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 			return "";
 		}
 	}
@@ -73,7 +73,7 @@ public class ObjectStringMapInputField extends ObjectStringInputField
 		}
 		catch (Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}
 	}
 	

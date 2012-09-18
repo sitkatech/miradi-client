@@ -114,7 +114,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		}
 		catch(Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}
 	}
 

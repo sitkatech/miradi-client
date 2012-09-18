@@ -63,7 +63,7 @@ abstract class ProjectListAction extends AbstractAction
 		}
 		catch(Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}
 		refresh();
 	}

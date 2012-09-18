@@ -112,7 +112,7 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 			}
 			catch (Exception e)
 			{
-				EAM.unexpectedErrorDialog(e);
+				EAM.alertUserOfNonFatalException(e);
 			}
 		}
 

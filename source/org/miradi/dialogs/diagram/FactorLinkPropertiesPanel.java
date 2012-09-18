@@ -82,7 +82,7 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 		}
 		catch (Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}
 	}
 

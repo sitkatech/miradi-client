@@ -57,7 +57,7 @@ public class QuestionBasedEditorComponent extends AbstractQuestionBasedComponent
 		}
 		catch(ParseException e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 			return new CodeList();
 		}
 	}

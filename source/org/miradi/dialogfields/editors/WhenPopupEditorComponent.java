@@ -55,7 +55,7 @@ public class WhenPopupEditorComponent extends AbstractPopupEditorComponent
 		}
 		catch (Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}
 	}
 	
@@ -71,7 +71,7 @@ public class WhenPopupEditorComponent extends AbstractPopupEditorComponent
 		}
 		catch (Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 			return new CodeList().toString();
 		}
 	}

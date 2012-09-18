@@ -230,7 +230,7 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 			}
 			catch (Exception e)
 			{
-				EAM.unexpectedErrorDialog(e);
+				EAM.alertUserOfNonFatalException(e);
 			}			
 		}
 	}

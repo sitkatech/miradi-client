@@ -120,7 +120,7 @@ public class DashboardProgressEditorField extends AbstractStringStringMapEditorF
 		}
 		catch(ParseException e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}
 		
 		return "";
@@ -137,7 +137,7 @@ public class DashboardProgressEditorField extends AbstractStringStringMapEditorF
 		}
 		catch(ParseException e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}
 	}
 }

@@ -44,7 +44,7 @@ public class IndicatorRelevancyOverrideListField extends RefListEditorField
 		}
 		catch(Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}
 		
 		return "";
@@ -61,7 +61,7 @@ public class IndicatorRelevancyOverrideListField extends RefListEditorField
 		}
 		catch(Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}	
 	}
 }

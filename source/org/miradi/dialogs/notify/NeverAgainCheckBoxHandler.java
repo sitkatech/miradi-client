@@ -57,7 +57,7 @@ public class NeverAgainCheckBoxHandler implements ActionListener
 		}
 		catch(Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}
 	}
 	

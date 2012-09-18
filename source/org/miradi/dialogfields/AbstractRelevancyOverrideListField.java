@@ -82,7 +82,7 @@ abstract public class AbstractRelevancyOverrideListField extends ObjectDataField
 		}
 		catch(Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}
 	}
 
@@ -105,7 +105,7 @@ abstract public class AbstractRelevancyOverrideListField extends ObjectDataField
 		}
 		catch(Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}
 	}
 	

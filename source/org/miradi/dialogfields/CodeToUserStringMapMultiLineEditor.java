@@ -49,7 +49,7 @@ public class CodeToUserStringMapMultiLineEditor extends ObjectScrollingMultiline
 		}
 		catch(ParseException e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 			return "";
 		}
 	}
@@ -77,7 +77,7 @@ public class CodeToUserStringMapMultiLineEditor extends ObjectScrollingMultiline
 		}
 		catch (Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}
 	}
 
@@ -90,7 +90,7 @@ public class CodeToUserStringMapMultiLineEditor extends ObjectScrollingMultiline
 		}
 		catch (Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}
 	}
 	

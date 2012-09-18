@@ -80,7 +80,7 @@ public class PlanningViewObjectsOnlyDropDownPanel extends PlanningViewCustomButt
 		}
 		catch(Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}
 	}
 	
