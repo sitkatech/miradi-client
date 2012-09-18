@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-17 16:16-0500\n"
+"POT-Creation-Date: 2012-09-18 10:46-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -488,11 +488,11 @@ msgid ""
 "the project again:<BR><BR>"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:108
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:107
 msgid "<br> Please report this problem to the Miradi support team "
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:107
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:106
 msgid ""
 "<br> The operation completed successfully, but Undo/Redo may not work "
 "correctly."
@@ -1918,7 +1918,7 @@ msgstr ""
 "出错，该图表不能正常显示。极有可能该项目已被损坏。请联系Miradi团队以获取帮助"
 "和建议。我们建议您不要对该该项目做任何改动直到此问题解决为止。 \t\t"
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:88
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:87
 msgid "An internal error prevented this operation"
 msgstr "一个内部错误阻止了该操作 \t\t"
 
@@ -1926,7 +1926,7 @@ msgstr "一个内部错误阻止了该操作 \t\t"
 msgid "An unexpected error has occurred"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:106
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:105
 msgid "An unexpected error has occurred."
 msgstr ""
 
@@ -3401,7 +3401,7 @@ msgstr "FOS "
 msgid "FOS Training Type|Other"
 msgstr "其它"
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:132
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:131
 msgid "FTE Days Per Year:"
 msgstr ""
 
@@ -3645,7 +3645,7 @@ msgstr "发现无效的潜在因素。图表 = %s  \t\t"
 msgid "Fraction of FTE..."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:139
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:138
 msgid "Fraction:"
 msgstr ""
 
@@ -4135,7 +4135,7 @@ msgstr "相关的"
 msgid "Is Tagged"
 msgstr "加标签的"
 
-#: Miradi/source/org/miradi/main/EAM.java:625
+#: Miradi/source/org/miradi/main/EAM.java:626
 msgid ""
 "It appears that Miradi was launched without the -Xmx512m switch. As a "
 "result, certain operations like Reports may run out of memory."
@@ -4764,7 +4764,7 @@ msgstr "编辑 \t\t"
 msgid "MenuBar|File"
 msgstr "文件 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:575
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:574
 msgid "MenuBar|Help"
 msgstr "帮助 \t\t"
 
@@ -4885,7 +4885,7 @@ msgstr "次要问题——正在进行、需要注意到的次要问题"
 msgid "Miradi Preferences"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/MainWindowAction.java:144
+#: Miradi/source/org/miradi/actions/MainWindowAction.java:143
 msgid ""
 "Miradi could not complete that operation \n"
 "because it ran out of memory.\n"
@@ -4953,7 +4953,7 @@ msgstr ""
 msgid "Move To..."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:226
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:225
 msgid "Must be a positive number"
 msgstr ""
 
@@ -7690,7 +7690,7 @@ msgstr "错误 "
 msgid "Title|Export Image Scale"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:977
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:976
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "因素属性 \t\t"
@@ -7768,7 +7768,7 @@ msgstr "分目标属性 \t\t"
 msgid "Title|Open"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/AbstractDashboardClickableField.java:105
+#: Miradi/source/org/miradi/dialogfields/AbstractDashboardClickableField.java:104
 msgid "Title|Open Standards Status"
 msgstr ""
 
@@ -8290,7 +8290,7 @@ msgstr ""
 msgid "Work Plan Column Editor"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:287
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:286
 msgid "Work Plan Settings"
 msgstr ""
 
