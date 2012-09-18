@@ -56,7 +56,6 @@ public class PlanningPreferencesChangeHandler implements CommandExecutedListener
 		}
 		catch(Exception e)
 		{
-			EAM.logException(e);
 			EAM.unexpectedErrorDialog(e);
 		}
 	}

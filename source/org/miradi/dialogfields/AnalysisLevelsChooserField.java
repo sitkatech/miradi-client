@@ -60,7 +60,6 @@ public class AnalysisLevelsChooserField extends ObjectDataInputField
 		}
 		catch (Exception e)
 		{
-			EAM.logException(e);
 			EAM.unexpectedErrorDialog(e);
 			return "";
 		}
@@ -76,7 +75,6 @@ public class AnalysisLevelsChooserField extends ObjectDataInputField
 		}
 		catch (Exception e)
 		{
-			EAM.logException(e);
 			EAM.unexpectedErrorDialog(e);
 		}
 		finally

@@ -93,7 +93,6 @@ public class ThreatStressRatingTable extends EditableBaseObjectTable
 		}
 		catch(Exception e)
 		{
-			EAM.logException(e);
 			EAM.unexpectedErrorDialog(e);
 		}	
 		

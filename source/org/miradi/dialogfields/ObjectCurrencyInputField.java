@@ -44,7 +44,6 @@ public class ObjectCurrencyInputField extends ObjectFloatingPointRestrictedInput
 		}
 		catch (Exception e)
 		{
-			EAM.logException(e);
 			EAM.unexpectedErrorDialog(e);
 		}
 		

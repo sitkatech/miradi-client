@@ -24,8 +24,8 @@ import java.text.ParseException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.CodeToUserStringMap;
+import org.miradi.objecthelpers.ORef;
 
 public class ObjectStringMapInputField extends ObjectStringInputField
 {
@@ -57,7 +57,6 @@ public class ObjectStringMapInputField extends ObjectStringInputField
 		}
 		catch(ParseException e)
 		{
-			EAM.logException(e);
 			EAM.unexpectedErrorDialog(e);
 			return "";
 		}
@@ -75,7 +74,6 @@ public class ObjectStringMapInputField extends ObjectStringInputField
 		catch (Exception e)
 		{
 			EAM.unexpectedErrorDialog(e);
-			EAM.logException(e);
 		}
 	}
 	

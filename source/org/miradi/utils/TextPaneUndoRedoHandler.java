@@ -85,7 +85,6 @@ public class TextPaneUndoRedoHandler
             } 
             catch (CannotRedoException e) 
             {
-            	EAM.logException(e);
             	EAM.unexpectedErrorDialog(e);
             }
 		}
@@ -109,7 +108,6 @@ public class TextPaneUndoRedoHandler
             } 
             catch (CannotRedoException e) 
             {
-            	EAM.logException(e);
             	EAM.unexpectedErrorDialog(e);
             }
 		}

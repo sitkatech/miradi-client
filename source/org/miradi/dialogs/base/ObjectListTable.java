@@ -95,7 +95,6 @@ public class ObjectListTable extends UpperPanelBaseObjectTable
 		}
 		catch(ParseException nothingWeCanDoAboutIt)
 		{
-			EAM.logException(nothingWeCanDoAboutIt);
 			EAM.unexpectedErrorDialog(nothingWeCanDoAboutIt);
 		}
 

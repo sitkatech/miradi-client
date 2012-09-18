@@ -63,7 +63,6 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 		}
 		catch(Exception e)
 		{
-			EAM.logException(e);
 			EAM.unexpectedErrorDialog(e);
 		}
 	}

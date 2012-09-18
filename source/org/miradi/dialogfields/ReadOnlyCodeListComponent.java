@@ -69,7 +69,6 @@ public class ReadOnlyCodeListComponent extends AbstractReadOnlyComponent
 		catch(Exception e)
 		{
 			EAM.unexpectedErrorDialog(e);
-			EAM.logException(e);
 		}
 		
 		if (getTopLevelAncestor() != null)

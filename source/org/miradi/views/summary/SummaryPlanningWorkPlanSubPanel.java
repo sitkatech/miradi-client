@@ -275,7 +275,6 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		}
 		catch (Exception e)
 		{
-			EAM.logException(e);
 			EAM.unexpectedErrorDialog(e);
 			return false;
 		}

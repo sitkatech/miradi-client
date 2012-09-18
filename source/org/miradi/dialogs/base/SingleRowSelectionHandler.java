@@ -147,7 +147,6 @@ abstract public class SingleRowSelectionHandler
 			}
 			catch(Exception exception)
 			{
-				EAM.logException(exception);
 				EAM.unexpectedErrorDialog(exception);
 			}
 		}
@@ -171,7 +170,6 @@ abstract public class SingleRowSelectionHandler
 	    	}
 	    	catch (Exception e)
 	    	{
-	    		EAM.logException(e);
 	    		EAM.unexpectedErrorDialog(e);
 	    	}
 	    	
