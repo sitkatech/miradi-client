@@ -42,7 +42,7 @@ public class ObjectOverridenListField extends RefListEditorField
 		}
 		catch(Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 			return "";
 		}
 	}
@@ -58,7 +58,7 @@ public class ObjectOverridenListField extends RefListEditorField
 		}
 		catch(Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}	
 	}
 }

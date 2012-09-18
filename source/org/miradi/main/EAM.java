@@ -423,7 +423,7 @@ public class EAM
 		unexpectedErrorDialog("");
 	}
 	
-	public static void unexpectedErrorDialog(Exception e)
+	public static void alertUserOfNonFatalException(Exception e)
 	{
 		logException(e);
 		String extraText = "";

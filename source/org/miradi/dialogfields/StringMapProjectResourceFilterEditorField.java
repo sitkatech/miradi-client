@@ -46,7 +46,7 @@ public class StringMapProjectResourceFilterEditorField extends RefListEditorFiel
 		}
 		catch (Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 			return "";
 		}
 	}
@@ -75,7 +75,7 @@ public class StringMapProjectResourceFilterEditorField extends RefListEditorFiel
 		}
 		catch(ParseException e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 			return new ORefList();
 		}
 	}

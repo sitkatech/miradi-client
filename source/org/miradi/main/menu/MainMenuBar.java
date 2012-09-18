@@ -520,7 +520,7 @@ public class MainMenuBar extends JMenuBar
 		}
 		catch (Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 			
 			return null;
 		}

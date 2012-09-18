@@ -119,11 +119,11 @@ public class NotifyDialog extends DialogWithDisposablePanelAndMainWindowUpdating
 		}
 		catch(InterruptedException e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}
 		catch(InvocationTargetException e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}
 	}
 	

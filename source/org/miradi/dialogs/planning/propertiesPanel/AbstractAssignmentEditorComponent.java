@@ -81,7 +81,7 @@ abstract public class AbstractAssignmentEditorComponent extends MultiTablePanel 
 		}
 		catch(Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}		
 	}
 	

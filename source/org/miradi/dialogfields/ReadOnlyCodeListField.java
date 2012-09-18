@@ -82,7 +82,7 @@ public class ReadOnlyCodeListField extends ObjectDataInputField
 		}
 		catch(Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 			return Translation.getCellTextWhenException();
 		}
 	}

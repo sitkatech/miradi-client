@@ -118,7 +118,7 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 			}
 			catch(Exception e)
 			{
-				EAM.unexpectedErrorDialog(e);
+				EAM.alertUserOfNonFatalException(e);
 			}
 		}
 

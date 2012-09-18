@@ -110,7 +110,7 @@ abstract public class DeletePoolObjectDoer extends ObjectsDoer
 			ORef assignmentRef = expenseAssignmentReferrerRefs.get(index);
 			Assignment assignment = Assignment.findAssignment(getProject(), assignmentRef);
 			if (!assignment.doesFieldExist(referringTag))
-				EAM.unexpectedErrorDialog(new Exception());
+				EAM.alertUserOfNonFatalException(new Exception());
 			
 			CommandSetObjectData clearTag = new CommandSetObjectData(assignmentRef, referringTag, "");
 			getProject().executeCommand(clearTag);

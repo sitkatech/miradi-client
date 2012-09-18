@@ -195,7 +195,7 @@ public class ExportCpmzDoer extends XmlExporterDoer
 		}
 		catch(Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}
 		
 		return false;

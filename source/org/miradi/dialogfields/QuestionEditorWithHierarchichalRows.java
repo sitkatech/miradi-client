@@ -94,7 +94,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		}
 		catch (Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}
 	}
 	

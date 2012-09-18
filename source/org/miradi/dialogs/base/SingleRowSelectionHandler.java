@@ -147,7 +147,7 @@ abstract public class SingleRowSelectionHandler
 			}
 			catch(Exception exception)
 			{
-				EAM.unexpectedErrorDialog(exception);
+				EAM.alertUserOfNonFatalException(exception);
 			}
 		}
 
@@ -170,7 +170,7 @@ abstract public class SingleRowSelectionHandler
 	    	}
 	    	catch (Exception e)
 	    	{
-	    		EAM.unexpectedErrorDialog(e);
+	    		EAM.alertUserOfNonFatalException(e);
 	    	}
 	    	
 	    	//TODO:  is this used and what is the correct value to return

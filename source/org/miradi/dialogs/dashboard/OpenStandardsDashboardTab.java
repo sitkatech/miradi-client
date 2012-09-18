@@ -65,7 +65,7 @@ abstract public class OpenStandardsDashboardTab extends SplitterPanelWithRightSi
 		}
 		catch(Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}
 	}
 	

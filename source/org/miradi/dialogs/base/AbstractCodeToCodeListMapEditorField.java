@@ -51,7 +51,7 @@ abstract public class AbstractCodeToCodeListMapEditorField extends AbstractStrin
 		}
 		catch(Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 			return new CodeList();
 		}
 	}
@@ -70,7 +70,7 @@ abstract public class AbstractCodeToCodeListMapEditorField extends AbstractStrin
 		}
 		catch (Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 			return "";
 		}
 	}

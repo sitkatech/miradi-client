@@ -118,7 +118,7 @@ abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 			}
 			catch(Exception e)
 			{
-				EAM.unexpectedErrorDialog(e);
+				EAM.alertUserOfNonFatalException(e);
 			}
 		}
 		
@@ -130,7 +130,7 @@ abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 			}
 			catch(Exception e)
 			{
-				EAM.unexpectedErrorDialog(e);
+				EAM.alertUserOfNonFatalException(e);
 			}
 		}
 	}

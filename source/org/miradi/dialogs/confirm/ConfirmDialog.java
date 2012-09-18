@@ -133,11 +133,11 @@ public class ConfirmDialog extends DialogWithDisposablePanelAndMainWindowUpdatin
 		}
 		catch(InterruptedException e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}
 		catch(InvocationTargetException e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}
 		return launcher.confirmed();
 	}

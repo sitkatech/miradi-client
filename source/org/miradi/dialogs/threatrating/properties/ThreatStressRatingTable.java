@@ -93,7 +93,7 @@ public class ThreatStressRatingTable extends EditableBaseObjectTable
 		}
 		catch(Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}	
 		
 		return super.getDefaultColumnWidth(tableColumn, columnTag, columnHeaderWidth);

@@ -170,7 +170,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		}
 		catch(Exception e)
 		{
-			EAM.unexpectedErrorDialog(e);
+			EAM.alertUserOfNonFatalException(e);
 		}
 		
 		return blankPropertiesPanel;

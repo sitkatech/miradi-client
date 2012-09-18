@@ -287,7 +287,7 @@ public class Miradi
 			}
 			catch(Exception e)
 			{
-				EAM.unexpectedErrorDialog(e);
+				EAM.alertUserOfNonFatalException(e);
 				System.exit(1);
 			}
 		}
