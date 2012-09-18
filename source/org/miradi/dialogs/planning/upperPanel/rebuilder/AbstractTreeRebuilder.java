@@ -365,12 +365,42 @@ abstract public class AbstractTreeRebuilder
 			if(refA.isInvalid() && refB.isValid())
 				return 1;
 
-			final int LEAVE_IN_CURRENT_ORDER = -1;			
 			if (!shouldSortChildren(parentRef, refA) || !shouldSortChildren(parentRef, refB))
-				return LEAVE_IN_CURRENT_ORDER;
+				return compareTasks(nodeA, nodeB);
 			
 			return compareNodes(nodeA, nodeB);
 		}
+		
+		private int compareTasks(AbstractPlanningTreeNode nodeA, AbstractPlanningTreeNode nodeB)
+		{
+			try
+			{
+				Integer indexOfA = getIndexofChild(nodeA);
+				Integer indexOfB = getIndexofChild(nodeB);
+				
+				return indexOfA.compareTo(indexOfB);
+			}
+			catch (Exception e)
+			{
+				EAM.logException(e);
+				EAM.unexpectedErrorDialog();
+				return 0;
+			}
+		}
+		
+		private int getIndexofChild(TreeTableNode childNode) throws Exception
+		{
+			TreeTableNode parentNode = childNode.getParentNode();
+			for (int index = 0; index < parentNode.getChildCount(); ++index)
+			{
+				if (parentNode.getChild(index).equals(childNode))
+					return index;
+			}
+			
+			return -1;
+		}
+
+
 
 		public int compareNodes(AbstractPlanningTreeNode nodeA, AbstractPlanningTreeNode nodeB)
 		{
