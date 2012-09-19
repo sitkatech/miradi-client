@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-19 18:15-0500\n"
+"POT-Creation-Date: 2012-09-19 18:37-0500\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -3755,7 +3755,7 @@ msgid "FileFilter|Miradi (*%s)"
 msgstr "Miradi (*%s)"
 
 # Please verify I have translated correct items
-#: Miradi/source/org/miradi/utils/LanguagePackFileFilter.java:56
+#: Miradi/source/org/miradi/utils/LanguagePackFileFilter.java:73
 msgid "FileFilter|Miradi Language Pack (%s)"
 msgstr "Miradi Language Pack (%s)"
 
@@ -8593,7 +8593,7 @@ msgstr "Não Programado"
 
 #: Miradi/source/org/miradi/questions/DirectThreatPoolQuestion.java:47
 #: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:46
-#: Miradi/source/org/miradi/questions/LanguageQuestion.java:56
+#: Miradi/source/org/miradi/questions/LanguageQuestion.java:59
 msgid "Unspecified"
 msgstr "Não Especificado"
 
