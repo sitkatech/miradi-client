@@ -4898,32 +4898,32 @@ msgstr "mar"
 # Leo, what is the Technical Term for Supra Tidal? - A Cima do Nivel de Mará?
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:129
 msgid "Marine Coastal/Supratidal"
-msgstr "Marinho Costeiro/\"Supratidal\" "
+msgstr "Marinho Costeiro/&quot;Supratidal&quot; "
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:133
 msgid ""
 "Marine Coastal/Supratidal - Coastal Brackish/Saline Lagoons/Marine Lakes"
 msgstr ""
-"Marinho Costeiro/\"Supratidal\"  - Lagoas Salobras ou Salinas Costeiras/"
+"Marinho Costeiro/&quot;Supratidal&quot;  - Lagoas Salobras ou Salinas Costeiras/"
 "Lagos Marinhos"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:131
 msgid "Marine Coastal/Supratidal - Coastal Caves/Karst"
-msgstr "Marinho Costeiro/\"Supratidal\" - Cavernas Costeiras/Karst"
+msgstr "Marinho Costeiro/&quot;Supratidal&quot; - Cavernas Costeiras/Karst"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:134
 msgid "Marine Coastal/Supratidal - Coastal Freshwater Lakes"
-msgstr "Marinho Costeiro/\"Supratidal\" - Lagos Costeiros de Água Doce"
+msgstr "Marinho Costeiro/&quot;Supratidal&quot; - Lagos Costeiros de Água Doce"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:132
 msgid "Marine Coastal/Supratidal - Coastal Sand Dunes"
-msgstr "Marinho Costeiro/\"Supratidal\" - Dunas Costeiras"
+msgstr "Marinho Costeiro/&quot;Supratidal&quot; - Dunas Costeiras"
 
 # Leo, Please verify these technical terms
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:130
-msgid "Marine Coastal/Supratidal - Sea Cliffs and Rocky Offshore Islands"
+msgid "Marine Coastal/&quot;Supratidal&quot; - Sea Cliffs and Rocky Offshore Islands"
 msgstr ""
-"Marinho Costeiro/\"Supratidal\" - Falésias Marinhas e Ilhas Rochosas de Alto "
+"Marinho Costeiro/&quot;Supratidal&quot; - Falésias Marinhas e Ilhas Rochosas de Alto "
 "Mar"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:112
@@ -4941,29 +4941,29 @@ msgstr "Marinho Bêntico Profundo - Planície Abissal (4.000-6.000 m)"
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:113
 msgid "Marine Deep Benthic - Continental Slope/Bathyl Zone (200-4,000 m)"
 msgstr ""
-"Marinho Bêntico Profundo - Talude Continental/Zona \"Bathyl\" (200-4.000m)"
+"Marinho Bêntico Profundo - Talude Continental/Zona &quot;Bathyl&quot; (200-4.000m)"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:114
 msgid "Marine Deep Benthic - Continental Slope/Bathyl Zone - Hard Substrate"
 msgstr ""
-"Marinho Bêntico Profundo - Talude Continental/Zona \"Bathyl\" - Substrato "
+"Marinho Bêntico Profundo - Talude Continental/Zona &quot;Bathyl&quot; - Substrato "
 "Duro"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:115
 msgid "Marine Deep Benthic - Continental Slope/Bathyl Zone - Soft Substrate"
 msgstr ""
-"Marinho Bêntico Profundo - Talude Continental/Zona \"Bathyl\" - Substrato "
+"Marinho Bêntico Profundo - Talude Continental/Zona &quot;Bathyl&quot; - Substrato "
 "Mole"
 
 # Leo, I couldn't find the technical translation for this.  Do you know?
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:120
 msgid "Marine Deep Benthic - Deep Sea Vents (Rifts/Seeps)"
-msgstr "Marinho Bêntico Profundo - \"Deep Sea Vents (Rifts/Seeps\""
+msgstr "Marinho Bêntico Profundo - &quot;Deep Sea Vents (Rifts/Seeps)&quot;"
 
 # Leo, I couldn't find the technical translation for this.
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:118
 msgid "Marine Deep Benthic - Hadal/Deep Sea Trench (&gt;6,000 m)"
-msgstr "Marinho Bêntico Profundo - \"Hadal/Deep Sea Trench\" (&gt;6.000 m)"
+msgstr "Marinho Bêntico Profundo - &quot;Hadal/Deep Sea Trench&quot; (&gt;6.000 m)"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:119
 msgid "Marine Deep Benthic - Seamount"
@@ -4981,7 +4981,7 @@ msgstr "Marinho Intertidal - Manguezal de Raizes Submersas"
 # Conhece estes termos em português?
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:125
 msgid "Marine Intertidal - Mud Flats and Salt Flats"
-msgstr "Marinho Intertidal - \"Mud Flats\" e \"Salt Flats\" "
+msgstr "Marinho Intertidal - &quot;Mud Flats&quot; e &quot;Salt Flats&quot; "
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:122
 msgid "Marine Intertidal - Rocky Shoreline"
@@ -5004,7 +5004,7 @@ msgstr "Marinho Intertidal - Litoral de Telhas de Pedra e/ou Seixo e/ou Praias"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:127
 msgid "Marine Intertidal - Tidepools"
-msgstr "Marinho Intertidal - \"Tidepools\""
+msgstr "Marinho Intertidal - &quot;Tidepools&quot;"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:91
 msgid ""
@@ -5019,19 +5019,19 @@ msgstr "Marinho Nerítico  - Recife Coral "
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:100
 msgid "Marine Neritic - Coral Reef - Back Slope"
-msgstr "Marinho Nerítico  - Recife Coral - \"Back Slope\""
+msgstr "Marinho Nerítico  - Recife Coral - &quot;Back Slope&quot;"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:101
 msgid "Marine Neritic - Coral Reef - Foreslope (Outer Reef Slope)"
-msgstr "Marinho Nerítico  - Recife Coral - \"Foreslope (Outer Reef Slope)\""
+msgstr "Marinho Nerítico  - Recife Coral - &quot;Foreslope (Outer Reef Slope)&quot;"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:104
 msgid "Marine Neritic - Coral Reef - Inter-Reef Rubble Substrate"
-msgstr "Marinho Nerítico  - Recife Coral - \"Inter-Reef Rubble Substrate\""
+msgstr "Marinho Nerítico  - Recife Coral - &quot;Inter-Reef Rubble Substrate&quot;"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:103
 msgid "Marine Neritic - Coral Reef - Inter-Reef Soft Substrate"
-msgstr "Marinho Nerítico  - Recife Coral - \"Inter-Reef Soft Substrate\""
+msgstr "Marinho Nerítico  - Recife Coral - &quot;Inter-Reef Soft Substrate&quot;"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:102
 msgid "Marine Neritic - Coral Reef - Lagoon"
@@ -5039,7 +5039,7 @@ msgstr "Marinho Nerítico  - Recife Coral - Lagoa"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:99
 msgid "Marine Neritic - Coral Reef - Outer Reef Channel"
-msgstr "Marinho Nerítico  - Recife Coral - \"Outer Reef Channel\""
+msgstr "Marinho Nerítico  - Recife Coral - &quot;Outer Reef Channel&quot;"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:106
 msgid "Marine Neritic - Estuaries"
@@ -5047,7 +5047,7 @@ msgstr "Marinho Nerítico - Estuários"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:97
 msgid "Marine Neritic - Macroalgal/Kelp"
-msgstr "Marinho Nerítico - Macroalgal/Kelp"
+msgstr "Marinho Nerítico - &quot;Macroalgal/Kelp&quot;"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:92
 msgid "Marine Neritic - Pelagic"
