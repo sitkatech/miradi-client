@@ -7,7 +7,7 @@
 #: Miradi/source/org/miradi/questions/DiagramModeQuestion.java:32
 msgid ""
 msgstr ""
-"Project-Id-Version: j 2ee-hudson\n"
+"Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-09-18 10:46-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
@@ -20,14 +20,14 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:59
 msgid ""
 "\n"
-"Are you sure you want to delete the selected %s?"
-msgstr "Сонгосон %s устгах уу?"
+"\nAre you sure you want to delete the selected %s?"
+msgstr "\nСонгосон %s устгах уу?"
 
 #: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
 msgid ""
 "\n"
 "Are you sure you want to delete this resource?"
-msgstr "Энэ нөөцийг устгах уу?"
+msgstr "\nЭнэ нөөцийг устгах уу?"
 
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:110
 msgid ""
@@ -36,7 +36,7 @@ msgid ""
 "may result in losing data. \n"
 "Please seek technical help from the Miradi team."
 msgstr ""
-"Сануулга: Асуудлыг шийдэхээс өмнө төслийг дахин нээх оролдлого хийвээс "
+"\nСануулга: Асуудлыг шийдэхээс өмнө төслийг дахин нээх оролдлого хийвээс "
 "мэдээлэл алдагдах магадлалтай. \n"
 "Миради-н багаас техникийн туслалцаа авна уу."
 
@@ -8222,7 +8222,6 @@ msgid ""
 msgstr ""
 "Программын өөр хуулбарыг ашиглаж байгаа үед энэхүү төслийн нэрийг өөрчилж "
 "болохгүй байна:\n"
-" "
 
 #: Miradi/source/org/miradi/main/MainWindow.java:1045
 msgid "Unable to save preferences"

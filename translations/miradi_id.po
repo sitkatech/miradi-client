@@ -7,7 +7,7 @@
 #: Miradi/source/org/miradi/questions/DiagramModeQuestion.java:32
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-09-18 10:46-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
@@ -8121,7 +8121,6 @@ msgid ""
 msgstr ""
 "Tidak bisa menghapus proyek karena sedang digunakan oleh salinan lain dari "
 "aplikasi ini:\n"
-" "
 
 #: Miradi/source/org/miradi/main/MainWindow.java:1262
 msgid "Unable to launch external web browser"
@@ -8143,7 +8142,6 @@ msgid ""
 msgstr ""
 "Tidak bisa mengganti nama proyek karena sedang digunakan oleh salinan lain "
 "dari aplikasi ini:\n"
-" "
 
 #: Miradi/source/org/miradi/main/MainWindow.java:1045
 msgid "Unable to save preferences"
