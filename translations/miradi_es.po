@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-18 10:46-0500\n"
+"POT-Creation-Date: 2012-09-19 18:37-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -3401,8 +3401,7 @@ msgstr "Se produjo un error al cambiar al modo de calificación de amenazas."
 
 #: Miradi/source/org/miradi/views/umbrella/doers/ExportRtfDoer.java:59
 msgid "Error occurred while trying to export current page as RTF.\n"
-msgstr ""
-"Se produjo un error al intentar exportar la página actual como RTF.\n"
+msgstr "Se produjo un error al intentar exportar la página actual como RTF.\n"
 
 #: Miradi/source/org/miradi/views/reports/doers/RunReportTemplateDoer.java:79
 msgid ""
@@ -3551,7 +3550,7 @@ msgstr "MTE (*.mte)"
 msgid "FileFilter|Miradi (*%s)"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/LanguagePackFileFilter.java:56
+#: Miradi/source/org/miradi/utils/LanguagePackFileFilter.java:73
 msgid "FileFilter|Miradi Language Pack (%s)"
 msgstr "Paquete de idiomas de Miradi (%s)"
 
@@ -8262,7 +8261,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/questions/DirectThreatPoolQuestion.java:47
 #: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:46
-#: Miradi/source/org/miradi/questions/LanguageQuestion.java:56
+#: Miradi/source/org/miradi/questions/LanguageQuestion.java:59
 msgid "Unspecified"
 msgstr ""
 

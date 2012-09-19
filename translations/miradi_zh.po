@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-18 10:46-0500\n"
+"POT-Creation-Date: 2012-09-19 18:37-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -3451,7 +3451,7 @@ msgstr "MTE (*.mte) \t\t"
 msgid "FileFilter|Miradi (*%s)"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/LanguagePackFileFilter.java:56
+#: Miradi/source/org/miradi/utils/LanguagePackFileFilter.java:73
 msgid "FileFilter|Miradi Language Pack (%s)"
 msgstr ""
 
@@ -7914,8 +7914,7 @@ msgstr ""
 msgid ""
 "Unable to delete this project because it is in use by another copy of this "
 "application:\n"
-msgstr ""
-"无法删除该项目，因为它正被该应用程序的另一拷贝所使用:\n"
+msgstr "无法删除该项目，因为它正被该应用程序的另一拷贝所使用:\n"
 
 #: Miradi/source/org/miradi/main/MainWindow.java:1262
 msgid "Unable to launch external web browser"
@@ -7934,8 +7933,7 @@ msgstr "无法处理请求： \t\t"
 msgid ""
 "Unable to rename this project because it is in use by another copy of this "
 "application:\n"
-msgstr ""
-"无法重命名该项目，因为它正被该应用程序的另一拷贝所使用:\n"
+msgstr "无法重命名该项目，因为它正被该应用程序的另一拷贝所使用:\n"
 
 #: Miradi/source/org/miradi/main/MainWindow.java:1045
 msgid "Unable to save preferences"
@@ -8013,7 +8011,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/questions/DirectThreatPoolQuestion.java:47
 #: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:46
-#: Miradi/source/org/miradi/questions/LanguageQuestion.java:56
+#: Miradi/source/org/miradi/questions/LanguageQuestion.java:59
 msgid "Unspecified"
 msgstr ""
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-18 10:46-0500\n"
+"POT-Creation-Date: 2012-09-19 18:37-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -3587,7 +3587,7 @@ msgstr "FileFilter|MTE (*.mte)"
 msgid "FileFilter|Miradi (*%s)"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/LanguagePackFileFilter.java:56
+#: Miradi/source/org/miradi/utils/LanguagePackFileFilter.java:73
 msgid "FileFilter|Miradi Language Pack (%s)"
 msgstr "FileFilter|Мовний пакет Міраді (%s)"
 
@@ -8252,7 +8252,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/questions/DirectThreatPoolQuestion.java:47
 #: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:46
-#: Miradi/source/org/miradi/questions/LanguageQuestion.java:56
+#: Miradi/source/org/miradi/questions/LanguageQuestion.java:59
 msgid "Unspecified"
 msgstr "Невизначений"
 
