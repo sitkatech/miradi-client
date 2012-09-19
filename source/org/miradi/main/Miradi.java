@@ -300,7 +300,7 @@ public class Miradi
 		private String[] commandLineArgs;
 	}
 
-	public static final String MAIN_VERSION = "3.3";
+	public static final String MAIN_VERSION = "4.0";
 	public static final String LANGUAGE_PACK_PREFIX = "MiradiContent-" + MAIN_VERSION + "-";
 	private static final String ALPHA_TESTER_MODE_ON_SWITCH = "--tester";
 	
