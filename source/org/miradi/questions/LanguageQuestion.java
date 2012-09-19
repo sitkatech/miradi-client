@@ -22,6 +22,8 @@ package org.miradi.questions;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Vector;
 
 import org.martus.util.UnicodeReader;
@@ -33,6 +35,7 @@ public class LanguageQuestion extends DynamicChoiceQuestion
 {
 	public LanguageQuestion()
 	{
+		threeLetterCodeToTwoLetterCodes = new HashMap<String, String>();
 		try
 		{
 			loadChoices();
@@ -69,10 +72,14 @@ public class LanguageQuestion extends DynamicChoiceQuestion
 				// separated by vertical bars (|):
 				// 3-letter code | other code | 2-letter code | name (in English) | name (in French)
 				String[] parts = line.split("\\|");
-				String code = parts[2];
+				String threeLetterCode = parts[0];
+				String twoLetterCode = parts[2];
 				String name = parts[3];
-				if(code.length() != 0)
-					loadedChoices.add(new ChoiceItem(code, name));
+				if(twoLetterCode.length() != 0)
+				{
+					loadedChoices.add(new ChoiceItem(twoLetterCode, name));
+					threeLetterCodeToTwoLetterCodes.put(threeLetterCode, twoLetterCode);
+				}
 			}
 		}
 		finally
@@ -84,5 +91,12 @@ public class LanguageQuestion extends DynamicChoiceQuestion
 		Arrays.sort(choices, new IgnoreCaseStringComparator());
 	}
 
+	public String lookupLanguageCode(String threeLetterLanguageCode)
+	{
+		String twoLetterCode = threeLetterCodeToTwoLetterCodes.get(threeLetterLanguageCode);
+		return getValue(twoLetterCode);
+	}
+
 	private ChoiceItem[] choices;
+	private Map<String, String> threeLetterCodeToTwoLetterCodes;
 }
