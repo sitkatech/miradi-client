@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-19 15:32-0500\n"
+"POT-Creation-Date: 2012-09-19 18:15-0500\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -4904,8 +4904,8 @@ msgstr "Marinho Costeiro/&quot;Supratidal&quot; "
 msgid ""
 "Marine Coastal/Supratidal - Coastal Brackish/Saline Lagoons/Marine Lakes"
 msgstr ""
-"Marinho Costeiro/&quot;Supratidal&quot;  - Lagoas Salobras ou Salinas Costeiras/"
-"Lagos Marinhos"
+"Marinho Costeiro/&quot;Supratidal&quot;  - Lagoas Salobras ou Salinas "
+"Costeiras/Lagos Marinhos"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:131
 msgid "Marine Coastal/Supratidal - Coastal Caves/Karst"
@@ -4919,12 +4919,9 @@ msgstr "Marinho Costeiro/&quot;Supratidal&quot; - Lagos Costeiros de Água Doce"
 msgid "Marine Coastal/Supratidal - Coastal Sand Dunes"
 msgstr "Marinho Costeiro/&quot;Supratidal&quot; - Dunas Costeiras"
 
-# Leo, Please verify these technical terms
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:130
-msgid "Marine Coastal/&quot;Supratidal&quot; - Sea Cliffs and Rocky Offshore Islands"
+msgid "Marine Coastal/Supratidal - Sea Cliffs and Rocky Offshore Islands"
 msgstr ""
-"Marinho Costeiro/&quot;Supratidal&quot; - Falésias Marinhas e Ilhas Rochosas de Alto "
-"Mar"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:112
 msgid "Marine Deep Benthic"
@@ -4941,19 +4938,20 @@ msgstr "Marinho Bêntico Profundo - Planície Abissal (4.000-6.000 m)"
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:113
 msgid "Marine Deep Benthic - Continental Slope/Bathyl Zone (200-4,000 m)"
 msgstr ""
-"Marinho Bêntico Profundo - Talude Continental/Zona &quot;Bathyl&quot; (200-4.000m)"
+"Marinho Bêntico Profundo - Talude Continental/Zona &quot;Bathyl&quot; (200-"
+"4.000m)"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:114
 msgid "Marine Deep Benthic - Continental Slope/Bathyl Zone - Hard Substrate"
 msgstr ""
-"Marinho Bêntico Profundo - Talude Continental/Zona &quot;Bathyl&quot; - Substrato "
-"Duro"
+"Marinho Bêntico Profundo - Talude Continental/Zona &quot;Bathyl&quot; - "
+"Substrato Duro"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:115
 msgid "Marine Deep Benthic - Continental Slope/Bathyl Zone - Soft Substrate"
 msgstr ""
-"Marinho Bêntico Profundo - Talude Continental/Zona &quot;Bathyl&quot; - Substrato "
-"Mole"
+"Marinho Bêntico Profundo - Talude Continental/Zona &quot;Bathyl&quot; - "
+"Substrato Mole"
 
 # Leo, I couldn't find the technical translation for this.  Do you know?
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:120
@@ -4963,7 +4961,8 @@ msgstr "Marinho Bêntico Profundo - &quot;Deep Sea Vents (Rifts/Seeps)&quot;"
 # Leo, I couldn't find the technical translation for this.
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:118
 msgid "Marine Deep Benthic - Hadal/Deep Sea Trench (&gt;6,000 m)"
-msgstr "Marinho Bêntico Profundo - &quot;Hadal/Deep Sea Trench&quot; (&gt;6.000 m)"
+msgstr ""
+"Marinho Bêntico Profundo - &quot;Hadal/Deep Sea Trench&quot; (&gt;6.000 m)"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:119
 msgid "Marine Deep Benthic - Seamount"
@@ -5023,15 +5022,18 @@ msgstr "Marinho Nerítico  - Recife Coral - &quot;Back Slope&quot;"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:101
 msgid "Marine Neritic - Coral Reef - Foreslope (Outer Reef Slope)"
-msgstr "Marinho Nerítico  - Recife Coral - &quot;Foreslope (Outer Reef Slope)&quot;"
+msgstr ""
+"Marinho Nerítico  - Recife Coral - &quot;Foreslope (Outer Reef Slope)&quot;"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:104
 msgid "Marine Neritic - Coral Reef - Inter-Reef Rubble Substrate"
-msgstr "Marinho Nerítico  - Recife Coral - &quot;Inter-Reef Rubble Substrate&quot;"
+msgstr ""
+"Marinho Nerítico  - Recife Coral - &quot;Inter-Reef Rubble Substrate&quot;"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:103
 msgid "Marine Neritic - Coral Reef - Inter-Reef Soft Substrate"
-msgstr "Marinho Nerítico  - Recife Coral - &quot;Inter-Reef Soft Substrate&quot;"
+msgstr ""
+"Marinho Nerítico  - Recife Coral - &quot;Inter-Reef Soft Substrate&quot;"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:102
 msgid "Marine Neritic - Coral Reef - Lagoon"
@@ -27430,6 +27432,14 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+# Leo, Please verify these technical terms
+#~ msgid ""
+#~ "Marine Coastal/&quot;Supratidal&quot; - Sea Cliffs and Rocky Offshore "
+#~ "Islands"
+#~ msgstr ""
+#~ "Marinho Costeiro/&quot;Supratidal&quot; - Falésias Marinhas e Ilhas "
+#~ "Rochosas de Alto Mar"
 
 #~ msgid ""
 #~ "This project cannot be imported by this version of Miradi because it \n"
