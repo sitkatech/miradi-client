@@ -7,7 +7,7 @@
 #: Miradi/source/org/miradi/questions/DiagramModeQuestion.java:32
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-09-18 10:46-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
@@ -3403,7 +3403,6 @@ msgstr "Se produjo un error al cambiar al modo de calificación de amenazas."
 msgid "Error occurred while trying to export current page as RTF.\n"
 msgstr ""
 "Se produjo un error al intentar exportar la página actual como RTF.\n"
-" "
 
 #: Miradi/source/org/miradi/views/reports/doers/RunReportTemplateDoer.java:79
 msgid ""
@@ -3411,7 +3410,6 @@ msgid ""
 msgstr ""
 "Se produjo un error al intentar exportar la plantilla del informe "
 "seleccionado como RTF.\n"
-" "
 
 #: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:67
 msgid "Error occurred while trying to export to a tab delimited file."
