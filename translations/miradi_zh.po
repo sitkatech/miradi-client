@@ -7,7 +7,7 @@
 #: Miradi/source/org/miradi/questions/DiagramModeQuestion.java:32
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-09-18 10:46-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
@@ -3309,14 +3309,14 @@ msgstr "切换威胁因子评级模式时出错。 \t\t"
 msgid "Error occurred while trying to export current page as RTF.\n"
 msgstr ""
 "在试图导出当前页面为RTF.\n"
-"时出错"
+"时出错\n"
 
 #: Miradi/source/org/miradi/views/reports/doers/RunReportTemplateDoer.java:79
 msgid ""
 "Error occurred while trying to export selected report template as RTF.\n"
 msgstr ""
 "在试图导出报告模板为RTF.\n"
-"时出错 "
+"时出错\n"
 
 #: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:67
 msgid "Error occurred while trying to export to a tab delimited file."
@@ -7916,7 +7916,6 @@ msgid ""
 "application:\n"
 msgstr ""
 "无法删除该项目，因为它正被该应用程序的另一拷贝所使用:\n"
-" \t\t"
 
 #: Miradi/source/org/miradi/main/MainWindow.java:1262
 msgid "Unable to launch external web browser"
@@ -7937,7 +7936,6 @@ msgid ""
 "application:\n"
 msgstr ""
 "无法重命名该项目，因为它正被该应用程序的另一拷贝所使用:\n"
-" \t\t"
 
 #: Miradi/source/org/miradi/main/MainWindow.java:1045
 msgid "Unable to save preferences"
