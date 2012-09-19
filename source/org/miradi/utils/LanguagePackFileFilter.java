@@ -20,33 +20,50 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import java.io.File;
+import java.io.FilenameFilter;
 
 import javax.swing.filechooser.FileFilter;
 
 import org.miradi.main.EAM;
 import org.miradi.main.Miradi;
 
-public class LanguagePackFileFilter extends FileFilter implements MiradiFileFilter
+public class LanguagePackFileFilter extends FileFilter implements MiradiFileFilter, FilenameFilter
 {
 	public LanguagePackFileFilter() 
 	{
 		super();
 	}
 
+	public boolean accept(File dir, String name)
+	{
+		return acceptMatchingFile(new File(dir, name));
+	}
+
 	@Override
 	public boolean accept(File pathname)
 	{
+		// NOTE: Must accept directories to populate the file open dialog
+		return acceptDirectoryOrMatchingFile(pathname);		
+	}
+
+	private boolean acceptDirectoryOrMatchingFile(File pathname)
+	{
 		if(pathname.isDirectory())
 			return true;
-		if(!pathname.getName().toLowerCase().endsWith(EXTENSION))
+		return acceptMatchingFile(pathname);
+	}
+
+	private boolean acceptMatchingFile(File pathname)
+	{
+		String filename = pathname.getName();
+		if(!filename.toLowerCase().endsWith(EXTENSION))
 			return false;
 		
-		String regexp = Miradi.LANGUAGE_PACK_PREFIX.replaceAll("\\.", "\\\\.") + "..\\.jar";
-		if(pathname.getName().matches(regexp))
+		String regexp = convertLanguagePackPrefixToRegularExpression();
+		if(filename.matches(regexp))
 			return true;
 		
 		return false;
-		
 	}
 
 	@Override
@@ -59,6 +76,15 @@ public class LanguagePackFileFilter extends FileFilter implements MiradiFileFilt
 	public String getFileExtension()
 	{
 		return EXTENSION;
+	}
+
+	public String convertLanguagePackPrefixToRegularExpression()
+	{
+		String regexp = Miradi.LANGUAGE_PACK_PREFIX.replaceAll("\\.", "\\\\.");
+		String JAR_EXTENSION_AS_REGEXP = "\\.jar";
+		String REGEXP_FOR_LANGUAGE_CODE = "[A-Za-z][A-Za-z][A-Za-z]?";
+		regexp += REGEXP_FOR_LANGUAGE_CODE + JAR_EXTENSION_AS_REGEXP;
+		return regexp;
 	}
 
 	public static final String EXTENSION = ".jar";

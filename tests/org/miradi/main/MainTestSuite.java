@@ -70,6 +70,7 @@ import org.miradi.objectdata.TestDateData;
 import org.miradi.objectdata.TestIntegerData;
 import org.miradi.objectdata.TestNumberData;
 import org.miradi.objectdata.TestRefListListData;
+import org.miradi.objecthelpers.TestBaseObjectDeepCopierWithRelatedObjectsToJson;
 import org.miradi.objecthelpers.TestBaseObjectRollupValues;
 import org.miradi.objecthelpers.TestCategorizedQuantity;
 import org.miradi.objecthelpers.TestCodeToChoiceMap;
@@ -82,7 +83,6 @@ import org.miradi.objecthelpers.TestMapList;
 import org.miradi.objecthelpers.TestORef;
 import org.miradi.objecthelpers.TestORefList;
 import org.miradi.objecthelpers.TestORefSet;
-import org.miradi.objecthelpers.TestBaseObjectDeepCopierWithRelatedObjectsToJson;
 import org.miradi.objecthelpers.TestOldToNewDiagramFactorMap;
 import org.miradi.objecthelpers.TestRelevancyOverride;
 import org.miradi.objecthelpers.TestRelevancyOverrideSet;
@@ -207,6 +207,7 @@ import org.miradi.utils.TestEnhancedJsonObject;
 import org.miradi.utils.TestFileUtilities;
 import org.miradi.utils.TestFloatingPointFormatter;
 import org.miradi.utils.TestHtmlUtilities;
+import org.miradi.utils.TestLanguagePackFileFilter;
 import org.miradi.utils.TestLogging;
 import org.miradi.utils.TestOptionalDouble;
 import org.miradi.utils.TestPointList;
@@ -327,6 +328,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestZipUtilities.class));
 		addTest(new TestSuite(TestFileUtilities.class));
 		addTest(new TestSuite(TestBaseObjectDeepCopier.class));
+		addTest(new TestSuite(TestLanguagePackFileFilter.class));
 		
 		// diagram package
 		addTest(new TestSuite(TestDiagramModel.class));

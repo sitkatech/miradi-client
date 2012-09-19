@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.main;
 
 import java.io.File;
-import java.io.FilenameFilter;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Arrays;
@@ -33,9 +32,9 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.LanguageQuestion;
 import org.miradi.questions.StaticQuestionManager;
+import org.miradi.utils.LanguagePackFileFilter;
 import org.miradi.utils.Translation;
 
 
@@ -158,22 +157,11 @@ public class Miradi
 	
 	private static Vector<ChoiceItem> getAvailableLanguageChoices(File directory) throws Exception
 	{
-		class LanguageJarFilter implements FilenameFilter
-		{
-			public boolean accept(File dir, String name)
-			{
-				String regexp = Miradi.LANGUAGE_PACK_PREFIX.replaceAll("\\.", "\\\\.") + "..\\.jar";
-				if(name.matches(regexp))
-					return true;
-				
-				return false;
-			}
-		}
 		EAM.logDebug("Looking for content jars in: " + directory.getAbsolutePath());
 		
-		ChoiceQuestion languages = new LanguageQuestion();
+		LanguageQuestion languages = new LanguageQuestion();
 		Vector<ChoiceItem> results = new Vector<ChoiceItem>();
-		String[] jarNames = directory.list(new LanguageJarFilter());
+		String[] jarNames = directory.list(new LanguagePackFileFilter());
 		if(jarNames == null)
 			return results;
 		
@@ -181,7 +169,7 @@ public class Miradi
 		{
 			String[] parts = jarNames[i].split("-");
 			String languageCode = parts[2].split("\\.")[0];
-			String languageName = languages.getValue(languageCode);
+			String languageName = languages.lookupLanguageCode(languageCode);
 			results.add(new ChoiceItem(languageCode, languageName));
 		}
 		return results;
