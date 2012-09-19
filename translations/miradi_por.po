@@ -5047,7 +5047,7 @@ msgstr "Marinho Nerítico - Estuários"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:97
 msgid "Marine Neritic - Macroalgal/Kelp"
-msgstr "Marinho Nerítico - \"Macroalgal/Kelp\""
+msgstr "Marinho Nerítico - Macroalgal/Kelp"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:92
 msgid "Marine Neritic - Pelagic"
