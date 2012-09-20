@@ -229,7 +229,7 @@ public class TestObjectManager extends MiradiTestCase
 		try
 		{
 			Project projectToWrite = new Project();
-			projectToWrite.createOrOpenWithDefaultObjectsAndDiagramHelp(projectFile, new NullProgressMeter());
+			projectToWrite.createWithDefaultObjectsAndDiagramHelp(projectFile, new NullProgressMeter());
 			BaseId idToReload = projectToWrite.createObjectAndReturnId(type, BaseId.INVALID);
 			ProjectSaver.saveProject(projectToWrite, projectFile);
 			projectToWrite.close();
