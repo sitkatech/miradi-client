@@ -28,6 +28,7 @@ import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
+import org.miradi.project.ProjectLoader;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.DateUnitEffort;
@@ -56,6 +57,7 @@ public class ShiftAssignmentDates
 		Translation.initialize();
 		Project project = new Project();
 		project.createOrOpenWithDefaultObjects(projectFile, new NullProgressMeter());
+		ProjectLoader.loadProject(projectFile, project);
 		showAllAssignmentDates(project, ResourceAssignmentSchema.getObjectType());
 		showAllAssignmentDates(project, ExpenseAssignmentSchema.getObjectType());
 		
@@ -96,7 +98,9 @@ public class ShiftAssignmentDates
 			DateUnitEffort due = duel.getDateUnitEffort(index);
 			DateUnit du = due.getDateUnit();
 			DateUnit shifted = getShifted(du);
-			System.out.println(du.getDateUnitCode() + "->" + shifted.getDateUnitCode());
+			String originalDateUnitCode = du.getDateUnitCode();
+			String shiftedDateUnitCode = shifted.getDateUnitCode();
+			System.out.println(originalDateUnitCode + "->" + shiftedDateUnitCode);
 		}
 	}
 
