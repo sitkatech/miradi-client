@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-19 18:37-0500\n"
+"POT-Creation-Date: 2012-09-20 15:46-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -470,7 +470,7 @@ msgstr "7B. Сурч мэдсэн зүйлээ хуваалцах "
 msgid "7C. Create a Learning Environment"
 msgstr "7C. Суралцах орчинг бүрдүүлэх"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1278
+#: Miradi/source/org/miradi/main/MainWindow.java:1293
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -1010,7 +1010,7 @@ msgstr "Ийм нэр бүхий төсөл эсвэл файл байна:"
 msgid "A project or file by this name already exists: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:520
+#: Miradi/source/org/miradi/main/MainWindow.java:535
 msgid "A project with this name already exists."
 msgstr ""
 
@@ -2001,7 +2001,7 @@ msgstr "Хэрэглэгчийн толь бичигт '%'-ийг нэмж ор�
 msgid "Add Human Welfare Targets If Desired"
 msgstr "Хүсвэл хүний ахуй амьдралыг сайжруулах зорилтыг нэмж оруулах"
 
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:134
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:138
 msgid ""
 "Additional languages are supported by installing Miradi Language Packs,<br> "
 "which are files with a name like: <em>%s</em><br><br>If you already have a "
@@ -2423,8 +2423,8 @@ msgstr "Багц Дүрэм"
 #: Miradi/source/org/miradi/project/OldProjectDirToMpfConverter.java:57
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
 #: Miradi/source/org/miradi/main/MiradiStrings.java:34
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:127
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:131
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:170
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:54
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:66
 #: Miradi/source/org/miradi/dialogs/confirm/ConfirmDialogTemplate.java:51
@@ -2463,7 +2463,7 @@ msgstr ""
 msgid "Button|Import"
 msgstr "Товч|Импорт хийх"
 
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:126
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:130
 msgid "Button|Install..."
 msgstr "Товч|Суулгах..."
 
@@ -2514,7 +2514,7 @@ msgstr "Товч|Өөр газраас хуулсан агуулгыг наах"
 msgid "Button|Paste Shared"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:165
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:169
 msgid "Button|Replace"
 msgstr "Товч|Солих"
 
@@ -2581,7 +2581,7 @@ msgstr "Нэг зүйлийг өөртэй нь холбох боломжгүй 
 msgid "Cancel"
 msgstr "Цуцлах"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:538
+#: Miradi/source/org/miradi/main/MainWindow.java:553
 msgid "Cancelled"
 msgstr ""
 
@@ -2897,7 +2897,7 @@ msgstr "Шинээр үүсгэх амжилтгүй болов:"
 msgid "Create Folder"
 msgstr "Фолдэр үүсгэх"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:617
+#: Miradi/source/org/miradi/main/MainWindow.java:632
 msgid "Create Project"
 msgstr ""
 
@@ -3428,7 +3428,7 @@ msgstr "Хаягийн нэрээр оруулах"
 msgid "Entire Project Duration"
 msgstr "Төсөл үргэлжлэх нийт хугацаа"
 
-#: Miradi/source/org/miradi/utils/Translation.java:315
+#: Miradi/source/org/miradi/utils/Translation.java:335
 msgid "Error"
 msgstr "Алдаа"
 
@@ -3493,7 +3493,7 @@ msgstr "Үйл ажиллагаа ба мониторингийн өртгийн
 msgid "Euro"
 msgstr "Евро"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:856
+#: Miradi/source/org/miradi/main/MainWindow.java:871
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr "Өөр санхүүгийн жилийн байгаа мэдээлэл хасагдаж байна."
 
@@ -4233,7 +4233,7 @@ msgstr ""
 msgid "Install"
 msgstr "Суулгах"
 
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:141
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:145
 msgid "Install Language Pack"
 msgstr "Хэлний багц суулгах"
 
@@ -4241,7 +4241,7 @@ msgstr "Хэлний багц суулгах"
 msgid "Install Sample Project"
 msgstr "Загвар төслийг суулгах"
 
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:186
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:190
 msgid "Installed successfully"
 msgstr "Суурьлуулалт амжилттай болсон "
 
@@ -5092,7 +5092,7 @@ msgstr "Оруулах боломжтой Файл: %s гэж  Миради та
 msgid "Miradi does not recognize %s as a project file"
 msgstr "Миради төслийн файлыг танихгүй байна"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:705
+#: Miradi/source/org/miradi/main/MainWindow.java:720
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5245,7 +5245,7 @@ msgstr "Үр ашиггүй"
 #: Miradi/source/org/miradi/questions/PriorityRatingQuestion.java:36
 #: Miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
 #: Miradi/source/org/miradi/questions/TrendQuestion.java:37
-#: Miradi/source/org/miradi/utils/Translation.java:310
+#: Miradi/source/org/miradi/utils/Translation.java:330
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:281
 #: Miradi/source/org/miradi/dialogs/planning/treenodes/UnspecifiedBaseObject.java:45
 msgid "Not Specified"
@@ -5371,7 +5371,7 @@ msgid "Open Anyway"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:189
-#: Miradi/source/org/miradi/main/MainWindow.java:619
+#: Miradi/source/org/miradi/main/MainWindow.java:634
 msgid "Open Project"
 msgstr "Төслийг Нээх"
 
@@ -5674,7 +5674,7 @@ msgstr "Төсөл"
 msgid "Project Advisor"
 msgstr "Төслийн Зөвлөх"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:703
+#: Miradi/source/org/miradi/main/MainWindow.java:718
 msgid "Project Corruption Detected"
 msgstr ""
 
@@ -5707,7 +5707,7 @@ msgstr "Төслийн нөөц"
 msgid "Project Resource Filter Editor"
 msgstr "Төслийн Нөөцийн Шүүлтүүрийн Хянан Засварлагч"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:854
+#: Miradi/source/org/miradi/main/MainWindow.java:869
 msgid "Project Resource Filter Is On"
 msgstr "Төслийн Нөөцийн Шүүлтүүр ажиллагаатай"
 
@@ -5853,7 +5853,7 @@ msgstr "Нэр солих амжилтгүй болсон"
 msgid "Rename..."
 msgstr "Нэр солих..."
 
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:169
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:173
 msgid "Replace Language Pack"
 msgstr "Хэлний багцыг солих"
 
@@ -6328,7 +6328,7 @@ msgstr "Оролцогч тал"
 msgid "Standard Reports"
 msgstr "Стандарт тайлан"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:888
+#: Miradi/source/org/miradi/main/MainWindow.java:903
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -7580,31 +7580,31 @@ msgstr "Текст|Огноог ЖЖЖЖ-СС-ӨӨ форматаар бичнэ
 msgid "Text|Unknown error prevented saving this data"
 msgstr "Текст|Мэдээллийг хадгалахад үл мэдэгдэх алдаа саад болж байна."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:562
+#: Miradi/source/org/miradi/main/MainWindow.java:577
 msgid "That file is not a valid Miradi project"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:167
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:171
 msgid "That language pack already exists. Replace it?"
 msgstr "Тэр хэлний багцыг хэдийнээ байна.  Түүнийг солих уу?"
 
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:159
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:163
 msgid "That language pack is already installed"
 msgstr "Тэр хэлний багцыг хэдийнээ суулгасан байна."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:570
-#: Miradi/source/org/miradi/main/MainWindow.java:574
+#: Miradi/source/org/miradi/main/MainWindow.java:585
+#: Miradi/source/org/miradi/main/MainWindow.java:589
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "Miradi"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:578
+#: Miradi/source/org/miradi/main/MainWindow.java:593
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr "Тэр төслийг мэдээллийн энэ форматад шилжүүлэхээс нааш нээх боломжгүй."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:558
+#: Miradi/source/org/miradi/main/MainWindow.java:573
 msgid "That project is in use by another copy of this application"
 msgstr "Энэ программын өөр хуулбарт тэр төслийг хэрэглэж байна"
 
@@ -7618,7 +7618,7 @@ msgstr ""
 "Мэдээллийн орчин үеийн хэлбэрт шилжүүлэхийн тулд та  Miradi 1.0-ийг ашиглах "
 "боломжтой ба үүний дараа түүнийг нээж мөн энэ хувилбарт шилжүүлж болно."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:566
+#: Miradi/source/org/miradi/main/MainWindow.java:581
 msgid "That project is too old to be opened with this version of Miradi"
 msgstr ""
 
@@ -7784,7 +7784,7 @@ msgid ""
 "Please re-export a new copy from ConPro, and import that instead."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:694
+#: Miradi/source/org/miradi/main/MainWindow.java:709
 msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
@@ -8205,7 +8205,7 @@ msgstr ""
 "Энэ программын өөр хуулбарт энэ төслийг ашиглаж байгаа учир энэ төслийг "
 "устгах боломжгүй байна:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1262
+#: Miradi/source/org/miradi/main/MainWindow.java:1277
 msgid "Unable to launch external web browser"
 msgstr "Вэб хуудас эхлүүлэх боломжгүй байна"
 
@@ -8226,7 +8226,7 @@ msgstr ""
 "Программын өөр хуулбарыг ашиглаж байгаа үед энэхүү төслийн нэрийг өөрчилж "
 "болохгүй байна:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1045
+#: Miradi/source/org/miradi/main/MainWindow.java:1060
 msgid "Unable to save preferences"
 msgstr "Сонголтуудийг хадгалах боломжгүй байна"
 
@@ -8251,7 +8251,7 @@ msgstr "Доогуур зурах/тодруулах"
 msgid "Unexpected error"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:191
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:195
 msgid "Unexpected error prevented installing that language pack"
 msgstr "Хэлний багцыг суулгахад гэнэтийн алдаа гарлаа"
 
@@ -8271,7 +8271,7 @@ msgstr "Их сургууль"
 msgid "Unknown"
 msgstr "Тодорхой бус"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:553
+#: Miradi/source/org/miradi/main/MainWindow.java:568
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -8289,7 +8289,7 @@ msgstr "Тодорхой бус код: "
 msgid "Unknown error displaying diagram"
 msgstr "Тодорхой бус шалтгаанаар диаграммыг үзүүлэх боломжгүй"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:583
+#: Miradi/source/org/miradi/main/MainWindow.java:598
 msgid "Unknown error prevented opening that project"
 msgstr "Энэ төсөл тодорхой бус алдаанаас болж нээгдэхгүй байна."
 
