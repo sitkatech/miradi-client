@@ -83,7 +83,7 @@ public class TestSimpleThreatRatingFramework extends MiradiTestCase
 		try
 		{
 			Project realProject = new Project();
-			realProject.createOrOpenWithDefaultObjectsAndDiagramHelp(projectFile, new NullProgressMeter());
+			realProject.createWithDefaultObjectsAndDiagramHelp(projectFile, new NullProgressMeter());
 			BaseId createdId = realProject.createObjectAndReturnId(ObjectType.RATING_CRITERION);
 			
 			FactorId threatId = new FactorId(283);

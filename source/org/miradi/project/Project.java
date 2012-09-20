@@ -645,7 +645,7 @@ public class Project
 	/////////////////////////////////////////////////////////////////////////////////
 	// database
 	
-	public void createOrOpenWithDefaultObjectsAndDiagramHelp(File projectFile, ProgressInterface progressMeter) throws Exception
+	public void createWithDefaultObjectsAndDiagramHelp(File projectFile, ProgressInterface progressMeter) throws Exception
 	{
 		boolean didProjectAlreadyExist = projectFile.exists();
 		createOrOpenWithDefaultObjects(projectFile, progressMeter);

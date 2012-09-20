@@ -743,7 +743,7 @@ public class TestProject extends MiradiTestCase
 		Project diskProject = new Project();
 		String savedProject = "";
 
-		diskProject.createOrOpenWithDefaultObjectsAndDiagramHelp(projectFile, new NullProgressMeter());
+		diskProject.createWithDefaultObjectsAndDiagramHelp(projectFile, new NullProgressMeter());
 		
 		ORef conceptualModelRef = diskProject.getConceptualModelDiagramPool().getORefList().getRefForType(ConceptualModelDiagramSchema.getObjectType());
 		ConceptualModelDiagram conceptualModel = ConceptualModelDiagram.find(diskProject, conceptualModelRef);
@@ -820,7 +820,7 @@ public class TestProject extends MiradiTestCase
 		File tempDir = createTempDirectory();
 		File projectFile = new File(tempDir, getName());
 		Project newProject = new Project();
-		newProject.createOrOpenWithDefaultObjectsAndDiagramHelp(projectFile, new NullProgressMeter());
+		newProject.createWithDefaultObjectsAndDiagramHelp(projectFile, new NullProgressMeter());
 		
 		try
 		{

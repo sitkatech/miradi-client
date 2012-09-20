@@ -51,7 +51,7 @@ public class TestRealProject extends MiradiTestCase
 	{
 		Project project = new Project();
 		assertFalse("already open?", project.isOpen());
-		project.createOrOpenWithDefaultObjectsAndDiagramHelp(projectFile, new NullProgressMeter());
+		project.createWithDefaultObjectsAndDiagramHelp(projectFile, new NullProgressMeter());
 		assertTrue("not open?", project.isOpen());
 		project.close();
 		assertFalse("still open?", project.isOpen());
