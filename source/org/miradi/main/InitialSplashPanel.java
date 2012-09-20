@@ -71,7 +71,11 @@ public class InitialSplashPanel extends HelpAboutPanel
 		buttonBar.setBorder(new EmptyBorder(5,5,5,5));
 		buttonBar.setBackground(AppPreferences.getWizardTitleBackground());
 		buttonBar.add(new UiLabel(EAM.text("Language: ")));
-		buttonBar.add(languageDropdown);
+		File poFileIfAny = Miradi.getPoFileIfAny();
+		if(poFileIfAny == null)
+			buttonBar.add(languageDropdown);
+		else
+			buttonBar.add(new UiLabel(poFileIfAny.getAbsolutePath()));
 		buttonBar.add(Box.createHorizontalGlue());
 		buttonBar.add(close);
 

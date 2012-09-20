@@ -179,11 +179,20 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		{
 			InitialSplashPanel splash = new InitialSplashPanel(this);
 			splash.showAsOkDialog();
-			String languageCode = splash.getSelectedLanguageCode();
-			if(languageCode != null && !languageCode.equals("en"))
-				setLanguage(languageCode);
-
-			getAppPreferences().setLanguageCode(languageCode);
+			
+			File poFileIfAny = Miradi.getPoFileIfAny();
+			if(poFileIfAny == null)
+			{
+				String languageCode = splash.getSelectedLanguageCode();
+				if(languageCode != null && !languageCode.equals("en"))
+					setLanguage(languageCode);
+	
+				getAppPreferences().setLanguageCode(languageCode);
+			}
+			else
+			{
+				setLanguageFromPoFile(poFileIfAny);
+			}
 		}
 
 		new SampleInstaller(getAppPreferences()).installSampleProjects(new NullProgressMeter());
@@ -281,6 +290,12 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	private void setLanguage(String languageCode) throws Exception
 	{
 		Miradi.switchToLanguage(languageCode);
+		actions = new Actions(this);
+	}
+
+	private void setLanguageFromPoFile(File poFileIfAny) throws Exception
+	{
+		Miradi.switchToLanguage(poFileIfAny);
 		actions = new Actions(this);
 	}
 
