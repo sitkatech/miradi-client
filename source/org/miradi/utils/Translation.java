@@ -229,7 +229,7 @@ public class Translation
 		}
 	}
 
-	private static HashMap<String, String> loadPO(UnicodeReader reader) throws IOException
+	public static HashMap<String, String> loadPO(UnicodeReader reader) throws IOException
 	{
 		HashMap<String, String> properties = new HashMap<String, String>();
 		StringBuffer id = new StringBuffer();
