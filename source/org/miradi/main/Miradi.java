@@ -22,9 +22,7 @@ package org.miradi.main;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Locale;
 import java.util.Vector;
 
@@ -61,35 +59,25 @@ public class Miradi
 
 		Translation.initialize();
 		
-		List<String> argsAsList = Arrays.asList(args);
-
 		EAM.setLogLevel(EAM.LOG_VERBOSE);
 		EAM.logDebug("Miradi version " + VersionConstants.getVersionAndTimestamp());
 		EAM.logDebug("Java version = " + System.getProperty("java.version"));
 		EAM.logDebug("Locale = " + Locale.getDefault().toString());
 		
 		EAM.setLogLevel(EAM.LOG_DEBUG);
-		for(String arg : argsAsList)
+		for(int i = 0; i < args.length; ++i)
 		{
-			if(arg.equals("--verbose"))
-				EAM.setLogLevel(EAM.LOG_VERBOSE);
+			String arg = args[i];
 			
-			if (arg.equals(ALPHA_TESTER_MODE_ON_SWITCH))
+			if(arg.startsWith("--"))
 			{
-				isAlphaTesterMode = true;
-				EAM.logDebug("Alpha tester mode enabled");
+				processCommandLineSwitch(arg);
 			}
-
-			if(arg.equals("--demo"))
+			else if(arg.endsWith(".po"))
 			{
-				demoMode = true;
-				EAM.logDebug("Demo mode enabled");
-			}
-			
-			if(arg.equals("--developer"))
-			{
-				developerMode = true;
-				EAM.logDebug("Developer mode enabled");
+				poFile = new File(arg);
+				args[i] = "--";
+				EAM.logDebug("Using PO file translations: " + poFile.getAbsolutePath());
 			}
 		}
 
@@ -101,6 +89,33 @@ public class Miradi
 		SpellCheckerManager.initializeSpellChecker();
 
 		Miradi.start(args);
+	}
+
+	private static void processCommandLineSwitch(String arg)
+	{
+		if(arg.equals("--verbose"))
+		{
+			EAM.setLogLevel(EAM.LOG_VERBOSE);
+		}
+		else if (arg.equals(ALPHA_TESTER_MODE_ON_SWITCH))
+		{
+			isAlphaTesterMode = true;
+			EAM.logDebug("Alpha tester mode enabled");
+		}
+		else if(arg.equals("--demo"))
+		{
+			demoMode = true;
+			EAM.logDebug("Demo mode enabled");
+		}
+		else if(arg.equals("--developer"))
+		{
+			developerMode = true;
+			EAM.logDebug("Developer mode enabled");
+		}
+		else
+		{
+			EAM.logDebug("Unrecognized command-line switch: " + arg);
+		}
 	}
 
 	public static boolean isDemoMode()
@@ -120,6 +135,11 @@ public class Miradi
 	
 	///////////////////////////////////////////////////////////////////
 	// Translations
+	
+	public static File getPoFileIfAny()
+	{
+		return poFile;
+	}
 
 	public static void setLocalization(URL urlOfLocalizationZip, String languageCode) throws Exception
 	{
@@ -131,7 +151,6 @@ public class Miradi
 	{
 		Translation.restoreDefaultLocalization();
 		ResourcesHandler.restoreDefaultLocalization();
-
 	}
 
 	public static void switchToLanguage(String languageCode) throws Exception
@@ -145,6 +164,12 @@ public class Miradi
 		String jarName = LANGUAGE_PACK_PREFIX + languageCode + ".jar";
 		File jarFile = findLanguageJar(jarName);
 		Miradi.setLocalization(jarFile.toURI().toURL(), languageCode);
+	}
+	
+	public static void switchToLanguage(File poFileToLoad) throws Exception
+	{
+		Translation.setLocalization(poFileToLoad);
+		ResourcesHandler.restoreDefaultLocalization();
 	}
 
 	public static HashSet<ChoiceItem> getAvailableLanguageChoices() throws Exception
@@ -295,4 +320,5 @@ public class Miradi
 	private static boolean demoMode;
 	private static boolean developerMode;
 	private static boolean isAlphaTesterMode;
+	private static File poFile;
 }

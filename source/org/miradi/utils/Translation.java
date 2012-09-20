@@ -80,7 +80,21 @@ public class Translation
 		}
 	}
 
-	public static void setLocalization(String languageCode, HashMap<String, String> translationStrings)
+	public static void setLocalization(File poFileToLoad) throws Exception
+	{
+		UnicodeReader reader = new UnicodeReader(poFileToLoad);
+		try
+		{
+			HashMap<String, String> translationStrings = loadPO(reader);
+			setLocalization("xx", translationStrings);
+		}
+		finally
+		{
+			reader.close();
+		}
+	}
+
+	private static void setLocalization(String languageCode, HashMap<String, String> translationStrings)
 	{
 		textTranslations = translationStrings;
 		StaticQuestionManager.initialize();
