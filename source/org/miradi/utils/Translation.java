@@ -66,9 +66,8 @@ public class Translation
 		ZipFile zip = new ZipFile(new File(urlOfLocalizationZip.toURI()));
 		try
 		{
-			textTranslations = loadPOFile(zip, "miradi_" + languageCode + ".po");
-			StaticQuestionManager.initialize();
-			currentLanguageCode = languageCode;
+			HashMap<String, String> translationStrings = loadPOFile(zip, "miradi_" + languageCode + ".po");
+			setLocalization(languageCode, translationStrings);
 		}
 		catch(IOException e)
 		{
@@ -79,6 +78,13 @@ public class Translation
 		{
 			zip.close();
 		}
+	}
+
+	public static void setLocalization(String languageCode, HashMap<String, String> translationStrings)
+	{
+		textTranslations = translationStrings;
+		StaticQuestionManager.initialize();
+		currentLanguageCode = languageCode;
 	}
 
 	public static String text(String key)
