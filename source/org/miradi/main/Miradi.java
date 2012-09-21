@@ -163,6 +163,7 @@ public class Miradi
 		
 		String jarName = LANGUAGE_PACK_PREFIX + languageCode + ".jar";
 		File jarFile = findLanguageJar(jarName);
+		EAM.logDebug("Loading language pack: " + jarFile.getAbsolutePath());
 		Miradi.setLocalization(jarFile.toURI().toURL(), languageCode);
 	}
 	
