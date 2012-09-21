@@ -287,6 +287,8 @@ public class Translation
 			}
 		}
 		
+		EAM.logDebug("Loaded " + properties.size() + " entries from PO file");
+		
 		addPoEntryToHash(properties, id, str);
 
 		return properties;
