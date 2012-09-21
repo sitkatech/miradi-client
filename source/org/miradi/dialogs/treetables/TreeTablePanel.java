@@ -174,7 +174,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 			return;
 		
 		TreePath[] treePaths = tree.getTree().getSelectionPaths();
-		if (treePaths==null)
+		if (treePaths==null || treePaths.length == 0)
 			return;
 		
 		Object[] selectedObjects = treePaths[0].getPath();
