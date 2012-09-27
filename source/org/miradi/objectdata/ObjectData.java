@@ -120,6 +120,7 @@ abstract public class ObjectData
 		return false;
 	}
 	
+	//FIXME medium: This should delegate to the field schema
 	public boolean isCodeToUserStringMapData()
 	{
 		return false;
