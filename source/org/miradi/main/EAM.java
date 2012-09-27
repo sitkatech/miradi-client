@@ -278,6 +278,7 @@ public class EAM
 		try
 		{	
 			project.appendToExceptionLog(convertExceptionToString(exceptionToAppend));
+			mainWindow.getProjectSaver().safeSave();
 		}
 		catch (Exception e)
 		{
