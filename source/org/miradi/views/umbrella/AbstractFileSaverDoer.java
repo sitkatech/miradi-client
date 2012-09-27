@@ -62,6 +62,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 			ProgressDialog progressDialog = new ProgressDialog(getMainWindow(), getProgressTitle());
 			ExportWorker worker = new ExportWorker(progressDialog, chosen);
 			progressDialog.doWorkInBackgroundWhileShowingProgress(worker);
+			worker.cleanup();
 		}
 		catch (UserCanceledException e)
 		{
