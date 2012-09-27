@@ -24,6 +24,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Point;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.ClipboardOwner;
 import java.awt.datatransfer.Transferable;
@@ -240,7 +241,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		updateActionStates();
 
 		setSize(getSizeFromPreferences());
-		setLocation(preferences.getMainWindowXPosition(), preferences.getMainWindowYPosition());
+		setLocation(getLocationFromPreferences());
 		setExtendedState(NORMAL);
 		if(preferences.getIsMaximized())
 		{
@@ -281,6 +282,14 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		return new Dimension(width, height);
 	}
 
+	private Point getLocationFromPreferences()
+	{
+		int left = preferences.getMainWindowXPosition();
+		int top = preferences.getMainWindowYPosition();
+		return new Point(left, top);
+	}
+
+	
 	private void ensureFontSizeIsSet()
 	{
 		if(preferences.getPanelFontSize() == 0)
