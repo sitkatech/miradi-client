@@ -312,6 +312,9 @@ public class MpfToMpzConverter extends AbstractConverter
 	private boolean isCodeToUserStringMapField(ORef ref, String tag)
 	{
 		BaseObject baseObject = BaseObject.find(getProject(), ref);
+		if(baseObject == null)
+			throw new RuntimeException("Missing object: " + ref.toString());
+		
 		ObjectData field = baseObject.getField(tag);
 		
 		return field.isCodeToUserStringMapData();
