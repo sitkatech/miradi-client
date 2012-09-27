@@ -243,7 +243,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		setSize(getSizeFromPreferences());
 		setLocation(getLocationFromPreferences());
 		setExtendedState(NORMAL);
-		if(preferences.getIsMaximized())
+		if(preferences.getIsMaximized() && !Miradi.isLinux())
 		{
 			setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
 		}
