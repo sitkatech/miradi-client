@@ -296,6 +296,9 @@ public class MpfToMpzConverter extends AbstractConverter
 		/*String command =*/ tokenizer.nextToken();
 		String refString = tokenizer.nextToken();
 		ORef ref = ProjectLoader.extractRef(refString);
+		if(BaseObject.find(getProject(), ref) == null)
+			throw new RuntimeException("Missing object " + ref.toString() + " from: " + line);
+		
 		String tag = tokenizer.nextToken(ProjectLoader.EQUALS_DELIMITER_TAB_PREFIXED);
 		EnhancedJsonObject jsonObjects = refToJsonMap.get(ref);
 		String json = StringUtilities.substringAfter(line, ProjectLoader.EQUALS_DELIMITER);
