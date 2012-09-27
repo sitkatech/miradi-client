@@ -103,7 +103,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 
 	protected String getIOExceptionErrorMessage()
 	{
-		return EAM.text("Error Occurred please try saving under different name.");
+		return EAM.text("<html>An error occurred<br/><br/>Perhaps the destination is full or readonly.");
 	}
 	
 	protected boolean doesConfirmBetaExport() throws Exception
