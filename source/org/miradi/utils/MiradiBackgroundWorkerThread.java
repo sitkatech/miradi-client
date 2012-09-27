@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import org.miradi.main.EAM;
 
 abstract public class MiradiBackgroundWorkerThread extends Thread
 {
@@ -55,9 +56,19 @@ abstract public class MiradiBackgroundWorkerThread extends Thread
 	{
 		return progress;
 	}
+	
+	@Override
+	protected void finalize() throws Throwable
+	{
+		if(!cleanupWasCalled)
+			EAM.logWarning("Cleanup never called on background worker " + getClass().getName());
+		
+		super.finalize();
+	}
 
 	abstract protected void doRealWork() throws Exception;
 	
 	private ProgressInterface progress;
 	private Exception exception;
+	private boolean cleanupWasCalled;
 }
