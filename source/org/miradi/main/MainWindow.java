@@ -250,6 +250,11 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		
 		safelySavePreferences();
 	}
+	
+	public AutomaticProjectSaver getProjectSaver()
+	{
+		return projectSaver;
+	}
 
 	public boolean isSpellCheckerActive()
 	{
