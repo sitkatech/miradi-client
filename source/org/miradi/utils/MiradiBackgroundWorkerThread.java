@@ -31,6 +31,7 @@ abstract public class MiradiBackgroundWorkerThread extends Thread
 	
 	public void cleanup() throws Exception
 	{
+		cleanupWasCalled = true;
 		if(exception != null)
 			throw exception;
 	}
