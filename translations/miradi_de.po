@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-27 12:31-0500\n"
+"POT-Creation-Date: 2012-10-13 05:32-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -6507,7 +6507,7 @@ msgstr ""
 msgid "Stakeholder"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/ReportsView.java:91
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:92
 msgid "Standard Reports"
 msgstr "Standard Berichte"
 
