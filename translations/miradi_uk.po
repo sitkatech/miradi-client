@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-13 05:32-0500\n"
+"POT-Creation-Date: 2012-10-13 06:02-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -4391,7 +4391,7 @@ msgstr ""
 msgid "Label|Business Planning"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/TncCapLegacySummarySubPanel.java:54
+#: Miradi/source/org/miradi/views/summary/TncCapLegacySummarySubPanel.java:52
 msgid "Label|CAP Legacy"
 msgstr ""
 
@@ -4914,11 +4914,11 @@ msgstr "Середній"
 msgid "Medium (Default)"
 msgstr "Середній (по замовчуванню)"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:243
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:245
 msgid "MenuBar|Actions"
 msgstr "MenuBar|Дії"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:173
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:175
 msgid "MenuBar|Edit"
 msgstr "MenuBar|Редагувати"
 
@@ -4926,15 +4926,15 @@ msgstr "MenuBar|Редагувати"
 msgid "MenuBar|File"
 msgstr "MenuBar|Файл"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:574
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:576
 msgid "MenuBar|Help"
 msgstr "MenuBar|Допомога"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:506
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:508
 msgid "MenuBar|Step-by-Step"
 msgstr "MenuBar|Крок-за-Кроком"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:435
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:437
 msgid "MenuBar|View"
 msgstr "MenuBar|Вид"
 
@@ -4962,7 +4962,7 @@ msgstr "Menu|5. Оволодіння знаннями і їх поширення
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Menu|Додати тег до %n вибраного пункту (ів) "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:141
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:142
 msgid "Menu|Export Current Page as..."
 msgstr "Menu|Експортувати дану сторінку як..."
 
@@ -4971,11 +4971,11 @@ msgid "Menu|Export Current Project as..."
 msgstr "Menu|Експортувати даний проект як..."
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:282
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:423
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:425
 msgid "Menu|Group Box"
 msgstr "Menu|Групова рамка"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:154
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:155
 msgid "Menu|Import"
 msgstr "Menu|Імпорт"
 
