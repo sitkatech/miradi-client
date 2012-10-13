@@ -56,9 +56,9 @@ public class SummaryProjectPanel extends ObjectDataInputPanel
 		addField(createStringField(ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS));
 		addField(createStringField(ProjectMetadata.TAG_PROJECT_URL));
 		addField(createMultilineField(ProjectMetadata.TAG_PROJECT_DESCRIPTION));
-		
 		addField(createMultilineField(ProjectMetadata.TAG_PROJECT_STATUS));
 		addField(createMultilineField(ProjectMetadata.TAG_NEXT_STEPS));
+		addField(createMultilineField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_TNC_LESSONS_LEARNED));
 		
 		setObjectRefs(new ORef[]{refToUse, getProject().getSingletonObjectRef(TncProjectDataSchema.getObjectType()), });
 		updateFieldsFromProject();
