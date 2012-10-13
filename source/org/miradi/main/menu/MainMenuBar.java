@@ -122,7 +122,8 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionExportCpmz.class, KeyEvent.VK_C);
 		addMenuItem(actions, menu, ActionExportXmpz.class, KeyEvent.VK_X);
 		addMenuItem(actions, menu, ActionExportWcsProjectZip.class);
-		addMenuItem(actions, menu, ActionExportXmpz2.class);
+		if (Miradi.isAlphaTesterMode())
+			addMenuItem(actions, menu, ActionExportXmpz2.class);
 		addMenuItem(actions, menu, ActionExportMpz.class);
 		
 		if(Miradi.isDemoMode())
@@ -157,7 +158,8 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionImportMpz.class, KeyEvent.VK_M);
 		addMenuItem(actions, menu, ActionImportCpmz.class, KeyEvent.VK_C);
 		addMenuItem(actions, menu, ActionImportXmpz.class, KeyEvent.VK_X);
-		addMenuItem(actions, menu, ActionImportXmpz2.class);
+		if (Miradi.isAlphaTesterMode())
+			addMenuItem(actions, menu, ActionImportXmpz2.class);
 		
 		if(Miradi.isDemoMode())
 		{
