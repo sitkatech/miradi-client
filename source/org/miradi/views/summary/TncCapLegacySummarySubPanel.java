@@ -26,7 +26,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
 import org.miradi.project.Project;
-import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.schemas.TncProjectDataSchema;
 
 public class TncCapLegacySummarySubPanel extends ObjectDataInputPanel
@@ -36,7 +35,6 @@ public class TncCapLegacySummarySubPanel extends ObjectDataInputPanel
 		super(projectToUse, refs);
 		
 		addField(createStringField(ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS));
-		addField(createMultilineField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_TNC_LESSONS_LEARNED));
 		addField(createMultilineField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_RESOURCES_SCORECARD));
 		addField(createMultilineField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_LEVEL_COMMENTS));
 		addField(createMultilineField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_CITATIONS));
