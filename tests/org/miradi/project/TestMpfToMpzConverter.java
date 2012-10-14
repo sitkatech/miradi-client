@@ -114,12 +114,11 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 
 	private String verifyProject() throws Exception
 	{
-		File temporaryMpfFile = File.createTempFile("$$$tempMpfFile", null);
 		File temporaryMpzFile = File.createTempFile("$$$tempMpzFile", ".zip");
 		try
 		{
-			ProjectSaver.saveProject(getProject(), temporaryMpfFile);
-			new MpfToMpzConverter(getProject()).convert(temporaryMpfFile, temporaryMpzFile, getProject().getFilename());
+			String mpfSnapShot = ProjectSaver.createSnapShot(getProject());
+			new MpfToMpzConverter(getProject()).convert(mpfSnapShot, temporaryMpzFile, getProject().getFilename());
 			String actualMpf = MpzToMpfConverter.convert(temporaryMpzFile, new NullProgressMeter());
 			
 			String expectedMpfAsString = reloadIntoProjectToRemoveDefaultValues(actualMpf);
@@ -132,7 +131,6 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 		finally 
 		{
 			DirectoryUtils.deleteEntireDirectoryTree(temporaryMpzFile);
-			DirectoryUtils.deleteEntireDirectoryTree(temporaryMpfFile);
 		}
 	}
 

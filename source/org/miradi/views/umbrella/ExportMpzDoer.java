@@ -27,10 +27,10 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.TncProjectData;
+import org.miradi.project.ProjectSaver;
 import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.MiradiFileSaveChooser;
-import org.miradi.utils.MpfFileFilter;
 import org.miradi.utils.MpfToMpzConverter;
 import org.miradi.utils.MpzFileChooser;
 import org.miradi.utils.ProgressInterface;
@@ -48,8 +48,8 @@ public class ExportMpzDoer extends AbstractFileSaverDoer
 	protected boolean doWork(File destinationFile, ProgressInterface progressInterface) throws Exception
 	{
 		MpfToMpzConverter converter = new MpfToMpzConverter(getProject());
-		File currentMpfFile = new File(EAM.getHomeDirectory(), MpfFileFilter.createNameWithExtension(getProject().getFilename()));
-		converter.convert(currentMpfFile, destinationFile, getProject().getFilename());
+		String mpfSnapShot = ProjectSaver.createSnapShot(getProject());
+		converter.convert(mpfSnapShot, destinationFile, getProject().getFilename());
 		
 		return true;
 	}
