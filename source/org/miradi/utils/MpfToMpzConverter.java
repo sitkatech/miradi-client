@@ -32,7 +32,6 @@ import java.util.Vector;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringReader;
 import org.miradi.ids.BaseId;
 import org.miradi.legacyprojects.ObjectManifest;
@@ -62,11 +61,10 @@ public class MpfToMpzConverter extends AbstractConverter
 		projectInfoJson = new EnhancedJsonObject();
 	}
 	
-	public void convert(File mpfFile, File mpzFileToSaveTo, String projectNameToUse) throws Exception
+	public void convert(String mpfFileContent, File mpzFileToSaveTo, String projectNameToUse) throws Exception
 	{
 		projectName = projectNameToUse;
-		String contents = UnicodeReader.getFileContents(mpfFile);
-		final UnicodeStringReader reader = new UnicodeStringReader(contents);
+		final UnicodeStringReader reader = new UnicodeStringReader(mpfFileContent);
 		load(reader);
 		createZipFile(mpzFileToSaveTo);
 	}
