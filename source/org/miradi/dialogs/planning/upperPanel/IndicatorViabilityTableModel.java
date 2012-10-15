@@ -26,13 +26,18 @@ import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Goal;
+import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.TaglessChoiceItem;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.MeasurementSchema;
 import org.miradi.utils.CodeList;
 
@@ -54,7 +59,7 @@ public class IndicatorViabilityTableModel extends PlanningViewAbstractTreeTableS
 			if (isStatusConfidenceColumn(column))
 				return true;
 
-			if (getColumnTag(column).equals(Measurement.TAG_SUMMARY))
+			if (isSummaryColumn(column))
 				return true;
 		}
 		
@@ -82,6 +87,11 @@ public class IndicatorViabilityTableModel extends PlanningViewAbstractTreeTableS
 	private boolean isStatusConfidenceColumn(int column)
 	{
 		return getColumnTag(column).equals(Measurement.TAG_STATUS_CONFIDENCE);
+	}
+	
+	private boolean isSummaryColumn(int column)
+	{
+		return getColumnTag(column).equals(Measurement.TAG_SUMMARY);
 	}
 
 	public int getColumnCount()
@@ -116,10 +126,23 @@ public class IndicatorViabilityTableModel extends PlanningViewAbstractTreeTableS
 
 			return new TaglessChoiceItem(baseObject.getData(tag));
 		}
+		if (Goal.is(baseObject) && isSummaryColumn(column))
+		{
+			Indicator indicator = getIndicatorInSelectionHierarchy(row, column);
+			return new TaglessChoiceItem(indicator.getFutureStatusSummary());
+		}
 
 		return new EmptyChoiceItem();
 	}
 	
+	private Indicator getIndicatorInSelectionHierarchy(int row, int column)
+	{
+		ORefList objectHiearchy = getRowColumnObjectProvider().getObjectHiearchy(row, column);
+		final ORef indicatorRef = objectHiearchy.getRefForType(IndicatorSchema.getObjectType());
+		
+		return Indicator.find(getProject(), indicatorRef);
+	}
+
 	@Override
 	public void setValueAt(Object value, int row, int column)
 	{
