@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/73'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/200'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -1076,4 +1076,3 @@ DashboardFlagsContainer.element = element miradi:DashboardFlagsContainer
 {
 element miradi:code { vocabulary_dashboard_row_flags } *
 }
-
