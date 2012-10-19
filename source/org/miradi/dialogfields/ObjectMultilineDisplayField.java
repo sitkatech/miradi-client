@@ -27,8 +27,15 @@ public class ObjectMultilineDisplayField extends ObjectMultilineInputField
 	public ObjectMultilineDisplayField(MainWindow mainWindow, int objectTypeToUse, BaseId objectIdToUse, String tagToUse) throws Exception
 	{
 		super(mainWindow, objectTypeToUse, objectIdToUse, tagToUse, 1, DEFAULT_WIDE_FIELD_CHARACTERS);
+		
 		setEditable(false);
 		getComponent().setFocusable(false);
+	}
+	
+	@Override
+	public boolean needsToBeSaved()
+	{
+		return false;
 	}
 	
 	public static int DEFAULT_WIDE_FIELD_CHARACTERS = 50;
