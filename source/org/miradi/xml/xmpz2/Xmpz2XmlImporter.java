@@ -179,7 +179,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 			if (isCustomImport(objectType))
 				continue;
 			
-			BaseObjectPool pool = (BaseObjectPool) getProject().getPool(objectType);
+			BaseObjectPool pool = getProject().getPool(objectType);
 			if (pool == null)
 				continue;
 			
