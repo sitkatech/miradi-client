@@ -21,6 +21,7 @@ package org.miradi.views.umbrella.doers;
 
 import org.miradi.utils.MiradiFileSaveChooser;
 import org.miradi.utils.XmpzFileChooser;
+import org.miradi.xml.wcs.WcsMiradiXmlValidator;
 
 public class ExportXmpzDoer extends AbstractExportProjectXmlZipDoer
 {
@@ -34,5 +35,11 @@ public class ExportXmpzDoer extends AbstractExportProjectXmlZipDoer
 	protected void displayUserInfoDialog()
 	{
 		notifyUserWhenExportingXmpz1();
+	}
+
+	@Override
+	protected String getSchemaRelativeFilePath()
+	{
+		return WcsMiradiXmlValidator.WCS_MIRADI_SCHEMA_FILE_RELATIVE_PATH;
 	}
 }

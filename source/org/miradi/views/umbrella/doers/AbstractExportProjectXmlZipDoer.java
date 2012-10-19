@@ -108,13 +108,13 @@ abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 
 	private void addSchemaToZip(ZipOutputStream zipOut) throws Exception
 	{
-		URL resourceURL = ResourcesHandler.getEnglishResourceURL(WcsMiradiXmlValidator.WCS_MIRADI_SCHEMA_FILE_RELATIVE_PATH);
+		URL resourceURL = ResourcesHandler.getEnglishResourceURL(getSchemaRelativeFilePath());
 		if(resourceURL == null)
-			throw new Exception("Schema not found: " + WcsMiradiXmlValidator.WCS_MIRADI_SCHEMA_FILE_RELATIVE_PATH);
+			throw new Exception("Schema not found: " + getSchemaRelativeFilePath());
 
 		createZipEntry(zipOut, "schema.rnc", readAll(resourceURL));
 	}
-	
+
 	private byte[] readAll(URL resourceURL) throws IOException
 	{
 		UnicodeReader reader = new UnicodeReader(resourceURL.openStream());
@@ -145,4 +145,6 @@ abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 	{
 		EAM.displayHtmlWarningDialog("NOTE: This data format is good for sending to other systems or creating reports. <br/>It cannot be used to transfer data from one copy or version of Miradi to another.");
 	}
+	
+	abstract protected String getSchemaRelativeFilePath();
 }
