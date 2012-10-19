@@ -47,4 +47,10 @@ public class Xmpz2ProjectExportDoer extends AbstractExportProjectXmlZipDoer
 	{
 		return new Xmpz2XmlValidator().isValid(inputStream);
 	}
+	
+	@Override
+	public String getSchemaRelativeFilePath()
+	{
+		return Xmpz2XmlValidator.XMPZ2_SCHEMA_FILE_RELATIVE_PATH;
+	}
 }
