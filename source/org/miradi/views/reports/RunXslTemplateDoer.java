@@ -61,17 +61,17 @@ public class RunXslTemplateDoer extends ObjectsDoer
 		
 		final String extension = selectedObject.getData(XslTemplate.TAG_FILE_EXTENSION);
 		
-		transform(xlsTemplate, extension);
+		FileSaveChooserWithUserDefinedFileFilter fileChooser = new FileSaveChooserWithUserDefinedFileFilter(getMainWindow(), extension);
+		final File outputFile = fileChooser.displayChooser();
+		transform(xlsTemplate, outputFile);
 	}
 	
-	private void transform(final String xslTemplate, final String extensionToUse) throws Exception 
+	private void transform(final String xslTemplate, final File outputFile) throws Exception 
 	{
 		final StreamSource projectXmlInputSource = getExportedProjectXmlAsString(); 
 		final StreamSource xslStreamSource = new StreamSource(new UnicodeStringReader(xslTemplate));
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		Transformer transformer = transformerFactory.newTransformer(xslStreamSource);
-		FileSaveChooserWithUserDefinedFileFilter fileChooser = new FileSaveChooserWithUserDefinedFileFilter(getMainWindow(), extensionToUse);
-		final File outputFile = fileChooser.displayChooser();
 		if (outputFile != null)
 		{
 			final StreamResult output = new StreamResult(new FileOutputStream(outputFile));
