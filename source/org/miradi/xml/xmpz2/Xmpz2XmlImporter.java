@@ -438,6 +438,9 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		if (objectTypeName.equals(GOAL))
 			return GoalSchema.getObjectType();
 		
+		if (objectTypeName.equals(RELATED_THREAT))
+			return CauseSchema.getObjectType();
+		
 		EAM.logError("Could not find type for node: " + objectTypeName);
 		return ObjectType.FAKE;
 	}

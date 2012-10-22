@@ -24,12 +24,14 @@ import org.martus.util.UnicodeStringWriter;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
+import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.NullProgressMeter;
@@ -72,6 +74,19 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 		ThreatReductionResult threatReductionResult = getProject().createThreatReductionResult();
 		getProject().fillObjectUsingCommand(threatReductionResult, ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, threatRef);
 		validateUsingStringWriter();
+	}
+	
+	public void testThreatReductionResultRelatedThreatId() throws Exception
+	{
+		ThreatReductionResult threatReductionResult = getProject().createThreatReductionResult();
+		final ORef threatRef = getProject().createThreat();
+		getProject().fillObjectUsingCommand(threatReductionResult, ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, threatRef);
+		Project filledProject = validateUsingStringWriter();
+		ORefList allThreatReductionResultRefs = filledProject.getThreatReductionResultPool().getRefList();
+		assertEquals("Threat reduction result was not imported?", 1, allThreatReductionResultRefs.size());
+		ORef threatReductionResultRef = allThreatReductionResultRefs.getFirstElement();
+		ThreatReductionResult importedThreatReductionResult = ThreatReductionResult.find(filledProject, threatReductionResultRef);
+		assertEquals("incorrect related threat ref used?", threatRef, importedThreatReductionResult.getRelatedThreatRef());
 	}
 	
 	public void testImportFilledProject() throws Exception
