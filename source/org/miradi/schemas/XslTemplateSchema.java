@@ -37,6 +37,7 @@ public class XslTemplateSchema extends BaseObjectSchema
 		
 		createFieldSchemaMultiLineUserText(XslTemplate.TAG_TEMPLATE_CONTENTS);
 		createFieldSchemaSingleLineUserText(XslTemplate.TAG_FILE_EXTENSION);
+		createFieldSchemaBoolean(XslTemplate.TAG_INCLUDE_IMAGES);
 	}
 
 	public static int getObjectType()
