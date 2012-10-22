@@ -22,7 +22,6 @@ package org.miradi.xml;
 import java.awt.Point;
 import java.util.Vector;
 
-import javax.xml.namespace.NamespaceContext;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.xpath.XPath;
@@ -386,7 +385,7 @@ abstract public class AbstractXmlImporter
 	
 	abstract protected String getPrefix();
 	
-	abstract protected NamespaceContext getNamespaceContext();
+	abstract public AbstractXmlNamespaceContext getNamespaceContext();
 	
 	abstract protected MiradiXmlValidator createXmlValidator();
 

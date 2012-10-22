@@ -25,7 +25,6 @@ import java.awt.Point;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 
-import javax.xml.namespace.NamespaceContext;
 
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
@@ -84,9 +83,9 @@ import org.miradi.utils.PointList;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.StringUtilities;
 import org.miradi.xml.AbstractXmlImporter;
+import org.miradi.xml.AbstractXmlNamespaceContext;
 import org.miradi.xml.MiradiXmlValidator;
 import org.miradi.xml.wcs.Xmpz2XmlValidator;
-import org.miradi.xml.xmpz.XmpzNameSpaceContext;
 import org.miradi.xml.xmpz2.objectImporters.BaseObjectImporter;
 import org.miradi.xml.xmpz2.objectImporters.ConceptualModelDiagramImporter;
 import org.miradi.xml.xmpz2.objectImporters.DashboardImporter;
@@ -109,6 +108,7 @@ import org.miradi.xml.xmpz2.objectImporters.Xmpz2ProjectLocationImporter;
 import org.miradi.xml.xmpz2.objectImporters.Xmpz2ProjectPlanningImporter;
 import org.miradi.xml.xmpz2.objectImporters.Xmpz2ProjectScopeImporter;
 import org.miradi.xml.xmpz2.objectImporters.Xmpz2ProjectSummaryImporter;
+import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2NameSpaceContext;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -595,9 +595,9 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	}
 	
 	@Override
-	protected NamespaceContext getNamespaceContext()
+	public AbstractXmlNamespaceContext getNamespaceContext()
 	{
-		return new XmpzNameSpaceContext();
+		return new Xmpz2NameSpaceContext();
 	}
 	
 	@Override

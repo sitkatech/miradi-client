@@ -22,7 +22,6 @@ package org.miradi.xml.xmpz;
 
 import java.util.Vector;
 
-import javax.xml.namespace.NamespaceContext;
 
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -32,6 +31,7 @@ import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.AbstractXmlImporter;
+import org.miradi.xml.AbstractXmlNamespaceContext;
 import org.miradi.xml.AbstractXmpzObjectImporter;
 import org.miradi.xml.MiradiXmlValidator;
 import org.miradi.xml.wcs.WcsMiradiXmlValidator;
@@ -186,7 +186,7 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements XmpzXmlConst
 	}
 	
 	@Override
-	protected NamespaceContext getNamespaceContext()
+	public AbstractXmlNamespaceContext getNamespaceContext()
 	{
 		return new XmpzNameSpaceContext();
 	}

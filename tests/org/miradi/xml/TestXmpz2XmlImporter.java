@@ -35,6 +35,7 @@ import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.PointList;
 import org.miradi.views.diagram.TestLinkBendPointsMoveHandler;
+import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 
@@ -43,6 +44,14 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	public TestXmpz2XmlImporter(String name)
 	{
 		super(name);
+	}
+	
+	public void testXmpz2NameSpaceContext() throws Exception
+	{
+		Xmpz2XmlImporter xmlImporter = new Xmpz2XmlImporter(getProject(), new NullProgressMeter());
+		AbstractXmlNamespaceContext namespaceContext = xmlImporter.getNamespaceContext();
+		assertEquals("incorrect namespace?", Xmpz2XmlConstants.NAME_SPACE, namespaceContext.getNameSpace());
+		assertEquals("incorrect prefix?", Xmpz2XmlConstants.RAW_PREFIX, namespaceContext.getPrefix());
 	}
 	
 	public void testImportEmptyProject() throws Exception
