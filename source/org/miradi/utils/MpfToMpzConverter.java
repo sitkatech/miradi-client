@@ -61,9 +61,8 @@ public class MpfToMpzConverter extends AbstractConverter
 		projectInfoJson = new EnhancedJsonObject();
 	}
 	
-	public void convert(String mpfFileContent, File mpzFileToSaveTo, String projectNameToUse) throws Exception
+	public void convert(String mpfFileContent, File mpzFileToSaveTo) throws Exception
 	{
-		projectName = projectNameToUse;
 		final UnicodeStringReader reader = new UnicodeStringReader(mpfFileContent);
 		load(reader);
 		createZipFile(mpzFileToSaveTo);
@@ -329,11 +328,10 @@ public class MpfToMpzConverter extends AbstractConverter
 	@Override
 	protected String getProjectPrefix()
 	{
-		return projectName;
+		return getProject().getFilename();
 	}
 	
 	private Project project;
-	private String projectName;
 	private HashMap<ORef, EnhancedJsonObject> refToJsonMap;
 	private EnhancedJsonObject projectInfoJson;
 }

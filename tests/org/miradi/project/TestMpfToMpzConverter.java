@@ -118,7 +118,7 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 		try
 		{
 			String mpfSnapShot = ProjectSaver.createSnapShot(getProject());
-			new MpfToMpzConverter(getProject()).convert(mpfSnapShot, temporaryMpzFile, getProject().getFilename());
+			new MpfToMpzConverter(getProject()).convert(mpfSnapShot, temporaryMpzFile);
 			String actualMpf = MpzToMpfConverter.convert(temporaryMpzFile, new NullProgressMeter());
 			
 			String expectedMpfAsString = reloadIntoProjectToRemoveDefaultValues(actualMpf);
