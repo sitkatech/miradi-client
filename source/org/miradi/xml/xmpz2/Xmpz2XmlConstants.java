@@ -136,7 +136,8 @@ public interface Xmpz2XmlConstants
 	public static final String BUDGET_CATEGORY_TWO_ID = "BudgetCategoryTwoId";
 	public static final String PROGRESS_REPORT_IDS = "ProgressReportIds";
 	public static final String PROGRESS_PERCENT_IDS = "ProgressPercentIds";
-	public static final String RELATED_THREAT_ID = "RelatedDirectThreatId";
+	public static final String RELATED_THREAT = "RelatedDirectThreat";
+	public static final String RELATED_THREAT_ID = RELATED_THREAT + ID;
 	public static final String THREAT_ID = "ThreatId";
 	public static final String RELEVANT_ACTIVITY_IDS = "RelevantActivityIds";
 	public static final String RELEVANT_STRATEGY_IDS = "RelevantStrategyIds";	
