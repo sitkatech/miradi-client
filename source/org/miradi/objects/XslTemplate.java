@@ -71,4 +71,5 @@ public class XslTemplate extends BaseObject
 	
 	public static final String TAG_TEMPLATE_CONTENTS = "TemplateContents";
 	public static final String TAG_FILE_EXTENSION = "FileExtension";
+	public static final String TAG_INCLUDE_IMAGES = "IncludeImages";
 }

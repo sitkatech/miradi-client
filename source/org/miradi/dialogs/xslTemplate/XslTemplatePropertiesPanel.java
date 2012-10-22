@@ -38,6 +38,8 @@ public class XslTemplatePropertiesPanel extends ObjectDataInputPanel
 		if (Miradi.isAlphaTesterMode())
 			addField(createMultilineField(XslTemplate.TAG_TEMPLATE_CONTENTS));
 		
+		addField(createCheckBoxField(XslTemplate.TAG_INCLUDE_IMAGES));
+		
 		updateFieldsFromProject();
 	}
 	
