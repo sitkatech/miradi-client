@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-22 11:01-0500\n"
+"POT-Creation-Date: 2012-10-22 18:00-0500\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -8281,7 +8281,7 @@ msgstr "Afficher couches"
 msgid "Title|View..."
 msgstr "Afficher ..."
 
-#: Miradi/source/org/miradi/dialogs/xslTemplate/XslTemplatePropertiesPanel.java:47
+#: Miradi/source/org/miradi/dialogs/xslTemplate/XslTemplatePropertiesPanel.java:49
 msgid "Title|XSL Template Properties"
 msgstr ""
 
@@ -10486,6 +10486,9 @@ msgid "FieldLabel|59.FileExtension|Report File Extension"
 msgstr ""
 
 msgid "FieldLabel|59.TemplateContents|Template Contents"
+msgstr ""
+
+msgid "FieldLabel|59.IncludeImages|Include Images"
 msgstr ""
 
 msgid ""
