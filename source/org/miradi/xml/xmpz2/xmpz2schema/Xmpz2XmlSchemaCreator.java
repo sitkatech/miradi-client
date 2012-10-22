@@ -835,7 +835,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			if (!isPoolDirectlyInXmpz2(objectType))
 				continue;
 
-			BaseObjectPool pool = (BaseObjectPool) getProject().getPool(objectType);
+			BaseObjectPool pool = getProject().getPool(objectType);
 			if(pool == null)
 				continue;
 			
