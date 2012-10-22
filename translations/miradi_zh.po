@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-22 11:01-0500\n"
+"POT-Creation-Date: 2012-10-22 18:00-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -7890,7 +7890,7 @@ msgstr "视图层 \t\t"
 msgid "Title|View..."
 msgstr "视图… \t\t"
 
-#: Miradi/source/org/miradi/dialogs/xslTemplate/XslTemplatePropertiesPanel.java:47
+#: Miradi/source/org/miradi/dialogs/xslTemplate/XslTemplatePropertiesPanel.java:49
 msgid "Title|XSL Template Properties"
 msgstr ""
 
@@ -10053,6 +10053,9 @@ msgid "FieldLabel|59.FileExtension|Report File Extension"
 msgstr ""
 
 msgid "FieldLabel|59.TemplateContents|Template Contents"
+msgstr ""
+
+msgid "FieldLabel|59.IncludeImages|Include Images"
 msgstr ""
 
 msgid ""
