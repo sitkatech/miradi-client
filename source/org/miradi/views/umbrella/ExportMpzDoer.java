@@ -49,7 +49,7 @@ public class ExportMpzDoer extends AbstractFileSaverDoer
 	{
 		MpfToMpzConverter converter = new MpfToMpzConverter(getProject());
 		String mpfSnapShot = ProjectSaver.createSnapShot(getProject());
-		converter.convert(mpfSnapShot, destinationFile, getProject().getFilename());
+		converter.convert(mpfSnapShot, destinationFile);
 		
 		return true;
 	}
