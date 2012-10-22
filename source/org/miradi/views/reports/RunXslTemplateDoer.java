@@ -59,11 +59,17 @@ public class RunXslTemplateDoer extends ObjectsDoer
 		String xlsTemplate = selectedObject.getData(XslTemplate.TAG_TEMPLATE_CONTENTS);
 		xlsTemplate = HtmlUtilities.convertHtmlToPlainText(xlsTemplate);
 		
+		final File outputFile = getOutputFile(selectedObject);
+		if (outputFile != null)
+			transform(xlsTemplate, outputFile);
+	}
+
+	public File getOutputFile(BaseObject selectedObject)
+	{
 		final String extension = selectedObject.getData(XslTemplate.TAG_FILE_EXTENSION);
-		
+	
 		FileSaveChooserWithUserDefinedFileFilter fileChooser = new FileSaveChooserWithUserDefinedFileFilter(getMainWindow(), extension);
-		final File outputFile = fileChooser.displayChooser();
-		transform(xlsTemplate, outputFile);
+		return  fileChooser.displayChooser();
 	}
 	
 	private void transform(final String xslTemplate, final File outputFile) throws Exception 
@@ -72,12 +78,9 @@ public class RunXslTemplateDoer extends ObjectsDoer
 		final StreamSource xslStreamSource = new StreamSource(new UnicodeStringReader(xslTemplate));
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		Transformer transformer = transformerFactory.newTransformer(xslStreamSource);
-		if (outputFile != null)
-		{
-			final StreamResult output = new StreamResult(new FileOutputStream(outputFile));
-			transformer.transform(projectXmlInputSource, output);
-			EAM.notifyDialog(EAM.text("Report Completed"));
-		}
+		final StreamResult output = new StreamResult(new FileOutputStream(outputFile));
+		transformer.transform(projectXmlInputSource, output);
+		EAM.notifyDialog(EAM.text("Report Completed"));
 	}
 	
 	private StreamSource getExportedProjectXmlAsString() throws Exception
