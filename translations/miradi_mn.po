@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-23 11:00-0500\n"
+"POT-Creation-Date: 2012-10-23 15:31-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -4059,7 +4059,7 @@ msgstr "Холбоогүй хүчин зүйлүүдийг анхаарахгү�
 msgid "Image Scale %"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:96
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:95
 msgid "Images dir could not be created!"
 msgstr ""
 
@@ -5500,7 +5500,7 @@ msgstr "Өгөгдөхүүнийг төлөвлөх"
 msgid "PlanningSubViewName|Custom"
 msgstr "ТөлөвлөлтДэдХарагдацНэр|Үйлчлүүлэгч"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:89
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:113
 msgid "Please choose a empty directory!"
 msgstr ""
 
@@ -5862,7 +5862,7 @@ msgstr "Нэр солих..."
 msgid "Replace Language Pack"
 msgstr "Хэлний багцыг солих"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:140
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:152
 msgid "Report Completed"
 msgstr ""
 

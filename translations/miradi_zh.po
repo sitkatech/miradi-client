@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-23 11:00-0500\n"
+"POT-Creation-Date: 2012-10-23 15:31-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -3894,7 +3894,7 @@ msgstr ""
 msgid "Image Scale %"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:96
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:95
 msgid "Images dir could not be created!"
 msgstr ""
 
@@ -5306,7 +5306,7 @@ msgstr "计划参数"
 msgid "PlanningSubViewName|Custom"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:89
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:113
 msgid "Please choose a empty directory!"
 msgstr ""
 
@@ -5657,7 +5657,7 @@ msgstr "重命名… \t\t"
 msgid "Replace Language Pack"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:140
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:152
 msgid "Report Completed"
 msgstr ""
 
