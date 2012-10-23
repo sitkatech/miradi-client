@@ -39,7 +39,6 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.ConstantButtonNames;
 import org.miradi.utils.MiradiFileSaveChooser;
-import org.miradi.utils.PNGFileFilter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.xml.XmlExporter;
 
@@ -125,7 +124,7 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 
 	protected String createImageFileName(int index, ORef diagramRef)
 	{
-		return getDiagramPrefix(diagramRef) + index + PNGFileFilter.EXTENSION;
+		return BufferedImageFactory.createImageFileName(index, diagramRef);
 	}
 
 	protected String getDiagramPrefix(ORef diagramObjectRef)

@@ -129,7 +129,6 @@ public  class BufferedImageFactory
 		return namesToDiagramImagesMap;
 	}
 	
-	//FIXME low: the two below methods are duplicated from XmlExporterDoer, have those refer to these. 
 	public static String createImageFileName(int index, ORef diagramRef)
 	{
 		return getDiagramPrefix(diagramRef) + index + PNGFileFilter.EXTENSION;
