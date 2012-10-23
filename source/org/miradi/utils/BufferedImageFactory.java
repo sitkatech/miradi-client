@@ -26,6 +26,7 @@ import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+import java.util.HashMap;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
@@ -35,9 +36,13 @@ import javax.swing.JTable;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.dialogs.treetables.TreeTableWithRowHeightSaver;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
 import org.miradi.views.diagram.DiagramSplitPane;
 import org.miradi.views.diagram.DiagramView;
+import org.miradi.views.umbrella.XmlExporterDoer;
 
 
 public  class BufferedImageFactory
@@ -106,6 +111,36 @@ public  class BufferedImageFactory
 	public static RealizedComponentWrapper realizeComponent(JComponent swingComponent)
 	{
 		return new RealizedComponentWrapper(swingComponent);
+	}
+	
+	public static HashMap<String, BufferedImage> createNamesToImagesMap(MainWindow mainWindowToUse) throws Exception
+	{
+		HashMap<String, BufferedImage> namesToDiagramImagesMap = new HashMap<String, BufferedImage>();
+		ORefList allDiagramObjectRefs = mainWindowToUse.getProject().getAllDiagramObjectRefs();
+		for (int refIndex = 0; refIndex < allDiagramObjectRefs.size(); ++refIndex)
+		{
+			DiagramObject diagramObject = (DiagramObject) mainWindowToUse.getProject().findObject(allDiagramObjectRefs.get(refIndex));
+			ORef diagramRef = diagramObject.getRef();
+			String imageName = createImageFileName(refIndex, diagramRef);
+			BufferedImage diagramImage = createImageFromDiagram(mainWindowToUse, diagramObject);
+			namesToDiagramImagesMap.put(imageName, diagramImage);
+		}
+		
+		return namesToDiagramImagesMap;
+	}
+	
+	//FIXME low: the two below methods are duplicated from XmlExporterDoer, have those refer to these. 
+	public static String createImageFileName(int index, ORef diagramRef)
+	{
+		return getDiagramPrefix(diagramRef) + index + PNGFileFilter.EXTENSION;
+	}
+
+	public static String getDiagramPrefix(ORef diagramObjectRef)
+	{
+		if (ConceptualModelDiagram.is(diagramObjectRef))
+			return XmlExporterDoer.CM_IMAGE_PREFIX;
+		
+		return XmlExporterDoer.RC_IMAGE_PREFIX;
 	}
 	
 	public static BufferedImage createImageFromDiagram(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
