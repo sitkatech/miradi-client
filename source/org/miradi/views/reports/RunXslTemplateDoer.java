@@ -79,6 +79,10 @@ public class RunXslTemplateDoer extends ObjectsDoer
 		{
 			DirectoryChooser chooser = new DirectoryChooser(getMainWindow());
 			File outputDirectory = chooser.displayChooser();
+			if (outputDirectory == null)
+			{
+				return null;
+			}
 			File[] containingFiles = outputDirectory.listFiles();
 			if (containingFiles.length > 0)
 			{
