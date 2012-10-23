@@ -78,6 +78,17 @@ public class StringUtilities
 		return name.substring(0, lastIndexOfSuffix);
 	}
 	
+	public static String escapeQuotes(final String value)
+	{
+		final String replaceAll = value.replaceAll("\\\"", "\\\\\"");
+		return replaceAll;
+	}
+	
+	public static String unescapeQuotes(final String value)
+	{
+		return value.replaceAll("\\\\\"", "\\\"");
+	}
+	
 	public static final String EMPTY_SPACE= " ";
 	public static final String NEW_LINE = "\n";
 	public static final String EMPTY_STRING = "";

@@ -29,6 +29,28 @@ public class TestStringUtilities extends MiradiTestCase
 		super(name);
 	}
 	
+	public void testEscapeQuaotes()
+	{
+		verifyEscapedValue("", "");
+		verifyEscapedValue("\\\"", "\"");
+	}
+	
+	public void testUnescapeQuotes()
+	{
+		verifyUnescapedQuotes("", "");
+		verifyUnescapedQuotes("\\\"", "\\\\\"");
+	}
+	
+	private void verifyEscapedValue(String expectedValue, String valueToEscape)
+	{
+		assertEquals("Incorrectly escaped?", expectedValue, StringUtilities.escapeQuotes(valueToEscape));
+	}
+	
+	private void verifyUnescapedQuotes(String expectedValue, String valueToUnescape)
+	{
+		assertEquals("Incorrectly unescaped?", expectedValue, StringUtilities.unescapeQuotes(valueToUnescape));
+	}
+
 	public void testEmptySpaceClassMember()
 	{
 		assertEquals("Blank space should never change?", " ", StringUtilities.EMPTY_SPACE);
