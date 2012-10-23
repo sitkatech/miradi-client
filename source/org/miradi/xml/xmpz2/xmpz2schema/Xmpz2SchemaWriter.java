@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2.xmpz2schema;
 
 import java.io.PrintStream;
+import java.util.Calendar;
 
 import org.martus.util.UnicodeWriter;
 import org.miradi.utils.Utility;
@@ -37,6 +38,13 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 	public Xmpz2SchemaWriter(PrintStream out)
 	{
 		super(out);
+	}
+	
+	public void writeHeaderComments()
+	{
+		println("# $LastChangedBy: Miradi $");
+		println("# $LastChangedDate: " + Calendar.getInstance().getTime() + " $");
+		println("# $LastChangedRevision: 200 $");
 	}
 	
 	public void writeNamespace(String uri)
