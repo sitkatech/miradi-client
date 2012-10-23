@@ -31,6 +31,7 @@ import org.martus.util.UnicodeStringWriter;
 import org.martus.util.UnicodeWriter;
 import org.miradi.main.ResourcesHandler;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.utils.StringUtilities;
 import org.miradi.xml.wcs.Xmpz2XmlValidator;
 import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2SchemaWriter;
 import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2XmlSchemaCreator;
@@ -44,15 +45,32 @@ public class TestXmpz2SchemaCreator extends TestCaseWithProject
 	
 	public void testAgainstStaticSchema() throws Exception
 	{
-		String expectedSchema = normalizeNewLines(getExpectedLines());
-		String actualSchema = normalizeNewLines(getActualSchema());
+		String expectedSchema = normalizeSchemas(getExpectedLines());
+		String actualSchema = normalizeSchemas(getActualSchema());
 		
 		assertEquals("Generated schema doesnt match existing?", expectedSchema, actualSchema);
 	}
 
-	private String normalizeNewLines(String expectedLines)
+	private String normalizeSchemas(String linesInSchema)
 	{
-		return expectedLines.replaceAll("\\r\\n", "\n");
+		final String normalizedNewLines = linesInSchema.replaceAll("\\r\\n", "\n");
+		return removeHeaderComments(normalizedNewLines);
+	}
+
+	private String removeHeaderComments(final String normalizedNewLines)
+	{
+		String[] lines = normalizedNewLines.split(StringUtilities.NEW_LINE);
+		StringBuffer appendedLines = new StringBuffer();
+		for (String line : lines)
+		{
+			if (!line.startsWith("#"))
+			{
+				appendedLines.append(line);
+				appendedLines.append(StringUtilities.NEW_LINE);
+			}
+		}
+		
+		return appendedLines.toString();
 	}
 
 	public String getExpectedLines() throws Exception
