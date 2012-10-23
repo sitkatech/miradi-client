@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
+import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -140,7 +141,8 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
 		try
 		{
-			new SaveImagePngDoer().saveImage(byteOut, BufferedImageFactory.createImageFromDiagram(getMainWindow(), diagramObject));
+			final BufferedImage diagramImage = BufferedImageFactory.createImageFromDiagram(getMainWindow(), diagramObject);
+			new SaveImagePngDoer().saveImage(byteOut, diagramImage);
 			createZipEntry(zipOut, IMAGES_DIR_NAME_IN_ZIP + imageName, byteOut.toByteArray());
 		}
 		finally
