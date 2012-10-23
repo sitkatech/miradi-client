@@ -25,6 +25,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.schemas.TableSettingsSchema;
 import org.miradi.schemas.ViewDataSchema;
+import org.miradi.utils.StringUtilities;
 import org.miradi.xml.wcs.ExtraDataExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
@@ -65,6 +66,7 @@ public class Xmpz2ExtraDataImporter extends AbstractXmpz2ObjectImporter
 			if (extraDataItemValueNode != null)
 			{
 				String value = extraDataItemValueNode.getTextContent();
+				value = StringUtilities.unescapeQuotes(value);
 				baseObject.setData(tag, value);
 			}
 		}

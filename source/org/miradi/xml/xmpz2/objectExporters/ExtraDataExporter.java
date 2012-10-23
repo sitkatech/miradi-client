@@ -25,6 +25,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.schemas.TableSettingsSchema;
 import org.miradi.schemas.ViewDataSchema;
+import org.miradi.utils.StringUtilities;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
@@ -67,6 +68,7 @@ public class ExtraDataExporter implements Xmpz2XmlConstants
 			if (data.length() > 0)
 			{
 				getWriter().writeStartElementWithAttribute(EXTRA_DATA_ITEM, EXTRA_DATA_ITEM_NAME, extraDataItemName);
+				data = StringUtilities.escapeQuotes(data);
 				getWriter().writeElement(EXTRA_DATA_ITEM_VALUE, data);
 				getWriter().writeEndElement(EXTRA_DATA_ITEM);
 			}
