@@ -20,8 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.reports;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.HashMap;
+import java.util.Set;
 
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
@@ -31,11 +34,15 @@ import javax.xml.transform.stream.StreamSource;
 import org.martus.util.UnicodeStringReader;
 import org.martus.util.UnicodeStringWriter;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.XslTemplate;
+import org.miradi.utils.BufferedImageFactory;
+import org.miradi.utils.DirectoryChooser;
 import org.miradi.utils.FileSaveChooserWithUserDefinedFileFilter;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.views.ObjectsDoer;
+import org.miradi.views.umbrella.SaveImagePngDoer;
 import org.miradi.xml.wcs.XmpzXmlExporter;
 
 public class RunXslTemplateDoer extends ObjectsDoer
@@ -64,14 +71,60 @@ public class RunXslTemplateDoer extends ObjectsDoer
 			transform(xlsTemplate, outputFile);
 	}
 
-	public File getOutputFile(BaseObject selectedObject)
+	public File getOutputFile(BaseObject selectedObject) throws Exception
 	{
 		final String extension = selectedObject.getData(XslTemplate.TAG_FILE_EXTENSION);
-	
+		final boolean includeImages = selectedObject.getBooleanData(XslTemplate.TAG_INCLUDE_IMAGES);
+		if (includeImages)
+		{
+			DirectoryChooser chooser = new DirectoryChooser(getMainWindow());
+			File outputDirectory = chooser.displayChooser();
+			File[] containingFiles = outputDirectory.listFiles();
+			if (containingFiles.length > 0)
+			{
+				EAM.errorDialog(EAM.text("Please choose a empty directory!"));
+				return null;
+			}
+			
+			File imagesDir = new File(outputDirectory, "images");
+			if (!imagesDir.mkdir())
+			{
+				EAM.errorDialog(EAM.text("Images dir could not be created!"));
+				return null;
+			}
+
+			writeImages(getMainWindow(), imagesDir);
+			return new File(outputDirectory, outputDirectory.getName() + extension);
+		}
+
 		FileSaveChooserWithUserDefinedFileFilter fileChooser = new FileSaveChooserWithUserDefinedFileFilter(getMainWindow(), extension);
 		return  fileChooser.displayChooser();
 	}
 	
+	private void writeImages(MainWindow mainWindowToUse, File imagesDir) throws Exception
+	{
+		HashMap<String, BufferedImage> namesToDiagramImagesMap = BufferedImageFactory.createNamesToImagesMap(mainWindowToUse);
+		Set<String> imageNames = namesToDiagramImagesMap.keySet();
+		for(String imageName : imageNames)
+		{
+			writeImage(imagesDir, imageName, namesToDiagramImagesMap.get(imageName));
+		}
+	}
+
+	private void writeImage(File imagesDir, String imageName, BufferedImage bufferedImage) throws Exception
+	{
+		File imageFile = new File(imagesDir, imageName);
+		FileOutputStream out = new FileOutputStream(imageFile);
+		try
+		{
+			new SaveImagePngDoer().saveImage(out, bufferedImage);
+		}
+		finally
+		{
+			out.close();	
+		}
+	}
+
 	private void transform(final String xslTemplate, final File outputFile) throws Exception 
 	{
 		final StreamSource projectXmlInputSource = getExportedProjectXmlAsString(); 

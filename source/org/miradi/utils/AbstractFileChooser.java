@@ -52,12 +52,12 @@ abstract public class AbstractFileChooser
 		return selectedFile;
 	}
 
-	private void storeCurrentDirectoryForNextTime(File selectedFile)
+	protected void storeCurrentDirectoryForNextTime(File selectedFile)
 	{
 		currentDirectory = selectedFile.getParent();
 	}
 
-	private JFileChooser createFileChooserDialog()
+	protected JFileChooser createFileChooserDialog()
 	{
 		JFileChooser dialog = new JFileChooser(currentDirectory);
 		dialog.setAcceptAllFileFilterUsed(shouldAllowAllFileFilter());
@@ -100,7 +100,7 @@ abstract public class AbstractFileChooser
 		return file;
 	}
 	
-	private MainWindow getMainWindow()
+	protected MainWindow getMainWindow()
 	{
 		return mainWindow;
 	}
