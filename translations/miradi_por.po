@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-23 11:00-0500\n"
+"POT-Creation-Date: 2012-10-23 15:31-0500\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -4228,7 +4228,7 @@ msgstr "Ignorando fatores sem ligação"
 msgid "Image Scale %"
 msgstr "Escala de Imagem %"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:96
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:95
 msgid "Images dir could not be created!"
 msgstr ""
 
@@ -5722,7 +5722,7 @@ msgstr "Parâmetros de Planejamento"
 msgid "PlanningSubViewName|Custom"
 msgstr "Personalizado"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:89
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:113
 msgid "Please choose a empty directory!"
 msgstr ""
 
@@ -6088,7 +6088,7 @@ msgstr "Renomear..."
 msgid "Replace Language Pack"
 msgstr "Substituir Pacote de Idioma (Language Pack)"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:140
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:152
 msgid "Report Completed"
 msgstr "Relatório Concluido"
 
