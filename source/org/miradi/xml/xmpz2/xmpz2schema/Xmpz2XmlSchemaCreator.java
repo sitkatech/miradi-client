@@ -142,6 +142,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	private void writeHeader()
 	{
+		getSchemaWriter().writeHeaderComments();
 		getSchemaWriter().writeNamespace(NAME_SPACE);
 		getSchemaWriter().defineAlias("start", createElementName(CONSERVATION_PROJECT));
 	}
