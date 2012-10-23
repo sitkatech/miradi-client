@@ -77,32 +77,44 @@ public class RunXslTemplateDoer extends ObjectsDoer
 		final boolean includeImages = selectedObject.getBooleanData(XslTemplate.TAG_INCLUDE_IMAGES);
 		if (includeImages)
 		{
-			DirectoryChooser chooser = new DirectoryChooser(getMainWindow());
-			File outputDirectory = chooser.displayChooser();
-			if (outputDirectory == null)
-			{
-				return null;
-			}
-			File[] containingFiles = outputDirectory.listFiles();
-			if (containingFiles.length > 0)
-			{
-				EAM.errorDialog(EAM.text("Please choose a empty directory!"));
-				return null;
-			}
+			File outputDirectory = askUserForOutputDir();
+			createAndFillImagesDir(outputDirectory);
 			
-			File imagesDir = new File(outputDirectory, "images");
-			if (!imagesDir.mkdir())
-			{
-				EAM.errorDialog(EAM.text("Images dir could not be created!"));
-				return null;
-			}
-
-			writeImages(getMainWindow(), imagesDir);
 			return new File(outputDirectory, outputDirectory.getName() + extension);
 		}
 
 		FileSaveChooserWithUserDefinedFileFilter fileChooser = new FileSaveChooserWithUserDefinedFileFilter(getMainWindow(), extension);
 		return  fileChooser.displayChooser();
+	}
+
+	private void createAndFillImagesDir(File outputDirectory) throws Exception
+	{
+		File imagesDir = new File(outputDirectory, "images");
+		if (!imagesDir.mkdir())
+		{
+			EAM.errorDialog(EAM.text("Images dir could not be created!"));
+			return;
+		}
+		
+		writeImages(getMainWindow(), imagesDir);
+	}
+
+	private File askUserForOutputDir() throws Exception
+	{
+		DirectoryChooser chooser = new DirectoryChooser(getMainWindow());
+		File outputDirectory = chooser.displayChooser();
+		if (outputDirectory == null)
+		{
+			return null;
+		}
+		File[] containingFiles = outputDirectory.listFiles();
+		if (containingFiles.length > 0)
+		{
+			EAM.errorDialog(EAM.text("Please choose a empty directory!"));
+			return null;
+		}
+
+		return outputDirectory;
 	}
 	
 	private void writeImages(MainWindow mainWindowToUse, File imagesDir) throws Exception
