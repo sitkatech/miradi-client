@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-22 18:00-0500\n"
+"POT-Creation-Date: 2012-10-23 11:00-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -34,18 +34,6 @@ msgid ""
 msgstr ""
 "\n"
 "¿Está seguro de que desea eliminar este recurso? "
-
-#: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:110
-msgid ""
-"\n"
-"WARNING: Attempting to open this project again before repairing the problem "
-"may result in losing data. \n"
-"Please seek technical help from the Miradi team."
-msgstr ""
-"\n"
-"ADVERTENCIA: Si intenta abrir nuevamente este proyecto antes de resolver el "
-"problema, es posible que se pierdan datos. \n"
-"Busque ayuda técnica del equipo de Miradi. "
 
 #: Miradi/source/org/miradi/wizard/diagram/DiagramWizardLinkDirectThreatsToTargetsStep.java:51
 msgid " 2) Connect threat to relevant targets"
@@ -2369,6 +2357,10 @@ msgstr "Reglas del paquete "
 msgid "Button|Cancel"
 msgstr "Cancelar"
 
+#: Miradi/source/org/miradi/utils/DirectoryChooser.java:77
+msgid "Button|Chose"
+msgstr ""
+
 #: Miradi/source/org/miradi/utils/HtmlViewPanel.java:186
 #: Miradi/source/org/miradi/dialogs/base/AbstractDialogWithClose.java:63
 #: Miradi/source/org/miradi/dialogs/notify/NotifyDialogTemplate.java:54
@@ -2468,6 +2460,10 @@ msgstr "Guardar"
 
 #: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:74
 msgid "Button|Save %s"
+msgstr ""
+
+#: Miradi/source/org/miradi/utils/DirectoryChooser.java:83
+msgid "Button|TT|Choose a directory"
 msgstr ""
 
 #: Miradi/source/org/miradi/main/SampleInstaller.java:75
@@ -3466,7 +3462,7 @@ msgstr "Se completó la exportación."
 msgid "Export to Miradi Zip..."
 msgstr "Exportar al zip de Miradi…"
 
-#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:170
+#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:171
 msgid "Export..."
 msgstr "Exportar…"
 
@@ -4009,6 +4005,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:54
 msgid "Image Scale %"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:96
+msgid "Images dir could not be created!"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpPlanningWizardImplementPlans.java:36
@@ -5467,7 +5467,11 @@ msgstr "Parámetros de planificación "
 msgid "PlanningSubViewName|Custom"
 msgstr "Personalizar"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:79
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:89
+msgid "Please choose a empty directory!"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:80
 #: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:100
 msgid ""
 "Please choose a specific IUCN classification (Not a category). Fix needed "
@@ -5825,7 +5829,7 @@ msgstr "Cambiar nombre…"
 msgid "Replace Language Pack"
 msgstr "Reemplazar Paquete de idiomas"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:79
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:140
 msgid "Report Completed"
 msgstr ""
 
@@ -7902,6 +7906,10 @@ msgstr ""
 msgid "Title|Budget Category Two Properties"
 msgstr ""
 
+#: Miradi/source/org/miradi/utils/DirectoryChooser.java:89
+msgid "Title|Choose a directory"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewContributingFactorPropertiesPanel.java:39
 msgid "Title|Contributing Factor Properties"
 msgstr "Propiedades del factor contribuyente"
@@ -8702,7 +8710,7 @@ msgid "label|Error"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:90
-#: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:54
+#: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:55
 #: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:75
 msgid "save..."
 msgstr ""
@@ -32532,6 +32540,17 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid ""
+#~ "\n"
+#~ "WARNING: Attempting to open this project again before repairing the "
+#~ "problem may result in losing data. \n"
+#~ "Please seek technical help from the Miradi team."
+#~ msgstr ""
+#~ "\n"
+#~ "ADVERTENCIA: Si intenta abrir nuevamente este proyecto antes de resolver "
+#~ "el problema, es posible que se pierdan datos. \n"
+#~ "Busque ayuda técnica del equipo de Miradi. "
 
 #~ msgid "Error Occurred please try saving under different name."
 #~ msgstr "Se produjo un error. Intente grabar con un nombre diferente."

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-22 18:00-0500\n"
+"POT-Creation-Date: 2012-10-23 11:00-0500\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -32,18 +32,6 @@ msgid ""
 msgstr ""
 "\n"
 "Êtes-vous sûr de vouloir supprimer cette ressource ?"
-
-#: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:110
-msgid ""
-"\n"
-"WARNING: Attempting to open this project again before repairing the problem "
-"may result in losing data. \n"
-"Please seek technical help from the Miradi team."
-msgstr ""
-"\n"
-"AVERTISSEMENT : Si vous cherchez à ouvrir à nouveau ce projet avant de "
-"résoudre le problème, il peut se produire une perte de données. \n"
-"Veuillez demander une aide au support technique Miradi."
 
 #: Miradi/source/org/miradi/wizard/diagram/DiagramWizardLinkDirectThreatsToTargetsStep.java:51
 msgid " 2) Connect threat to relevant targets"
@@ -2449,6 +2437,10 @@ msgstr "Règles groupées"
 msgid "Button|Cancel"
 msgstr "Annuler"
 
+#: Miradi/source/org/miradi/utils/DirectoryChooser.java:77
+msgid "Button|Chose"
+msgstr ""
+
 #: Miradi/source/org/miradi/utils/HtmlViewPanel.java:186
 #: Miradi/source/org/miradi/dialogs/base/AbstractDialogWithClose.java:63
 #: Miradi/source/org/miradi/dialogs/notify/NotifyDialogTemplate.java:54
@@ -2548,6 +2540,10 @@ msgstr "Sauvegarder"
 
 #: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:74
 msgid "Button|Save %s"
+msgstr ""
+
+#: Miradi/source/org/miradi/utils/DirectoryChooser.java:83
+msgid "Button|TT|Choose a directory"
 msgstr ""
 
 #: Miradi/source/org/miradi/main/SampleInstaller.java:75
@@ -3553,7 +3549,7 @@ msgstr "Exportation terminée"
 msgid "Export to Miradi Zip..."
 msgstr "Exporter à Miradi Zip ..."
 
-#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:170
+#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:171
 msgid "Export..."
 msgstr "Exporter ..."
 
@@ -4095,6 +4091,10 @@ msgstr "Ignorer facteurs non liés..."
 
 #: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:54
 msgid "Image Scale %"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:96
+msgid "Images dir could not be created!"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpPlanningWizardImplementPlans.java:36
@@ -5566,7 +5566,11 @@ msgstr "Planification des paramètres"
 msgid "PlanningSubViewName|Custom"
 msgstr "Personnaliser"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:79
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:89
+msgid "Please choose a empty directory!"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:80
 #: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:100
 msgid ""
 "Please choose a specific IUCN classification (Not a category). Fix needed "
@@ -5926,7 +5930,7 @@ msgstr "Changement de nom ..."
 msgid "Replace Language Pack"
 msgstr "Remplacer Pack de langues"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:79
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:140
 msgid "Report Completed"
 msgstr ""
 
@@ -8050,6 +8054,10 @@ msgstr "Propriétés de la catégorie budget un"
 msgid "Title|Budget Category Two Properties"
 msgstr "Propriétés de la catégorie budget deux"
 
+#: Miradi/source/org/miradi/utils/DirectoryChooser.java:89
+msgid "Title|Choose a directory"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewContributingFactorPropertiesPanel.java:39
 msgid "Title|Contributing Factor Properties"
 msgstr "Propriétés du facteur concourant"
@@ -8863,7 +8871,7 @@ msgid "label|Error"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:90
-#: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:54
+#: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:55
 #: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:75
 msgid "save..."
 msgstr ""
@@ -33859,6 +33867,17 @@ msgid ""
 msgstr ""
 "Marine___Atlantique tropical occidental___Écorégion marine du versant nord-"
 "est du Brésil___Brésil"
+
+#~ msgid ""
+#~ "\n"
+#~ "WARNING: Attempting to open this project again before repairing the "
+#~ "problem may result in losing data. \n"
+#~ "Please seek technical help from the Miradi team."
+#~ msgstr ""
+#~ "\n"
+#~ "AVERTISSEMENT : Si vous cherchez à ouvrir à nouveau ce projet avant de "
+#~ "résoudre le problème, il peut se produire une perte de données. \n"
+#~ "Veuillez demander une aide au support technique Miradi."
 
 #~ msgid "Error Occurred please try saving under different name."
 #~ msgstr ""
