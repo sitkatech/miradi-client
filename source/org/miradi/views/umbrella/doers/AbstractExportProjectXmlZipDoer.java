@@ -33,6 +33,7 @@ import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.ResourcesHandler;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.PNGFileFilter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.views.umbrella.XmlExporterDoer;
@@ -45,7 +46,7 @@ abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 	@Override
 	protected String createImageFileName(int index, ORef diagramRef)
 	{
-		return getDiagramPrefix(diagramRef) + "-" + diagramRef.getObjectId() + PNGFileFilter.EXTENSION;
+		return BufferedImageFactory.getDiagramPrefix(diagramRef) + "-" + diagramRef.getObjectId() + PNGFileFilter.EXTENSION;
 	}
 
 	@Override
