@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel.rebuilder;
 
 import org.miradi.diagram.ChainWalker;
-import org.miradi.dialogs.planning.treenodes.UnspecifiedBaseObject;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
@@ -81,13 +80,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 			return getChildrenOfBasicFactor(parentRef, diagram);
 		
 		if(Desire.isDesire(parentRef))
-		{
-			boolean isActuallyAFutureStatus = parentRef.isInvalid(); 
-			if(isActuallyAFutureStatus)
-				return noChildren;
-				
 			return getChildrenOfDesire(parentRef, diagram);
-		}
 		
 		if(Indicator.is(parentRef))
 			return getChildrenOfIndicator(parentRef, diagram);
@@ -230,7 +223,6 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		if(getRowColumnProvider().getRowCodesToShow().contains(MeasurementSchema.OBJECT_NAME))
 		{
 			childRefs.addAll(getSortedByDateMeasurementRefs(indicator));
-			childRefs.add(new UnspecifiedBaseObject(getProject().getObjectManager(), GoalSchema.getObjectType(), GoalSchema.OBJECT_NAME));
 		}
 		
 		return childRefs;
