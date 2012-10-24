@@ -132,6 +132,7 @@ public class DashboardRowDefinitionManager
 		{
 			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 Strategies Created"), Dashboard.PSEUDO_STRATEGY_COUNT));
 			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 with taxonomy assignments"), Dashboard.PSEUDO_STRATEGY__WITH_TAXONOMY_COUNT));
+			rowDefinitions.add(createTaxonomyRowDefinition(Dashboard.PSEUDO_STRATEGY__WITH_TAXONOMY_COUNT,	Dashboard.PSEUDO_STRATEGY_COUNT));
 			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 Results Chains Created"), Dashboard.PSEUDO_RESULTS_CHAIN_COUNT));
 		}
 		
@@ -229,7 +230,7 @@ public class DashboardRowDefinitionManager
 		if (code.equals(OpenStandardsConceptualizeQuestion.IDENTIFY_DIRECT_THREATS_CODE))
 		{
 			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 Direct Threats created"), Dashboard.PSEUDO_THREAT_COUNT));
-			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%2 of %1 have taxonomy assignments"), Dashboard.PSEUDO_THREAT_WITH_TAXONOMY_COUNT, Dashboard.PSEUDO_THREAT_COUNT));
+			rowDefinitions.add(createTaxonomyRowDefinition(Dashboard.PSEUDO_THREAT_WITH_TAXONOMY_COUNT, Dashboard.PSEUDO_THREAT_COUNT));
 		}
 		
 		if (code.equals(OpenStandardsConceptualizeQuestion.RANK_DIRECT_THREATS_CODE))
@@ -260,6 +261,11 @@ public class DashboardRowDefinitionManager
 		}
 		
 		return rowDefinitions;
+	}
+
+	private DashboardRowDefinition createTaxonomyRowDefinition(final String pseudoWithTaxonomyCount, final String pseudoTaxonomyOwnerCount)
+	{
+		return new DashboardRowDefinition(EAM.text("%1 of %2 have taxonomy assignments"), pseudoWithTaxonomyCount, pseudoTaxonomyOwnerCount);
 	}
 	
 	private Vector<DashboardRowDefinition> addAnalyzeUseAndAdaptDefinitions(String code)
