@@ -294,6 +294,7 @@ public class RtfWriter
 		String encodedString = stringToEncode.replaceAll("\\\\", "\\\\\\\\");
 		encodedString = encodedString.replaceAll("\\}", "\\\\}");
 		encodedString = encodedString.replaceAll("\\{", "\\\\{");
+		encodedString = HtmlUtilities.replaceHtmlBullets(encodedString);
 		encodedString = HtmlUtilities.replaceHtmlTags(encodedString, "br", "\\\\line ");
 		encodedString = HtmlUtilities.stripAllHtmlTags(encodedString);
 		encodedString = XmlUtilities2.convertXmlTextToPlainText(encodedString);

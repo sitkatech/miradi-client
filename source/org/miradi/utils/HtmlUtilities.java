@@ -278,6 +278,15 @@ public class HtmlUtilities
 		
 		return result.toString();
 	}
+	
+	public static String replaceHtmlBullets(String value)
+	{
+		value = value.replaceAll(LI_START_TAG, "- ");
+		value = value.replaceAll(LI_END_TAG, BR_TAG);
+		value = replaceHtmlTags(value, "ul", "");
+		
+		return value;
+	}
 
 	public static final String BR_TAG = "<br/>";
 	public static final String UL_START_TAG = "<ul>";
