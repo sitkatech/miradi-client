@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-24 10:01-0500\n"
+"POT-Creation-Date: 2012-10-25 13:46-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -1785,7 +1785,6 @@ msgid "Action|Show Stress on this page"
 msgstr "Арга хэмжээ|Хуудсан дахь дарамтыг харуулах"
 
 #: Miradi/source/org/miradi/actions/ActionCreateOrShowResultsChain.java:35
-#: Miradi/source/org/miradi/actions/ActionCreateOrShowResultsChain.java:41
 msgid "Action|Show/Create Results Chain"
 msgstr "Арга хэмжээ|Харуулах/Үр дүнгийн хэлхээсийг үүсгэх"
 
@@ -7265,6 +7264,10 @@ msgstr ""
 #: Miradi/source/org/miradi/actions/ActionShowStressBubble.java:40
 msgid "TT|Show this Stress so it appears on this Conceptual Model page"
 msgstr "TT|Энэхүү дарамтыг концепцийн загвар хуудсанд харагдахуйцаар үзүүлэх"
+
+#: Miradi/source/org/miradi/actions/ActionCreateOrShowResultsChain.java:41
+msgid "TT|Show/Create Results Chain"
+msgstr ""
 
 #: Miradi/source/org/miradi/main/ViewSwitcher.java:80
 msgid "TT|Switch to a different view"

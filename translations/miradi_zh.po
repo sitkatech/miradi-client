@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-24 10:01-0500\n"
+"POT-Creation-Date: 2012-10-25 13:46-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -1663,7 +1663,6 @@ msgid "Action|Show Stress on this page"
 msgstr "在本页面显示压力 \t\t"
 
 #: Miradi/source/org/miradi/actions/ActionCreateOrShowResultsChain.java:35
-#: Miradi/source/org/miradi/actions/ActionCreateOrShowResultsChain.java:41
 msgid "Action|Show/Create Results Chain"
 msgstr "显示/创建结果链 \t\t"
 
@@ -7009,6 +7008,10 @@ msgstr "隐藏本活动使之不再出现于该结果链 \t\t"
 #: Miradi/source/org/miradi/actions/ActionShowStressBubble.java:40
 msgid "TT|Show this Stress so it appears on this Conceptual Model page"
 msgstr "显示该压力使之出现于该概念模型页面 \t\t"
+
+#: Miradi/source/org/miradi/actions/ActionCreateOrShowResultsChain.java:41
+msgid "TT|Show/Create Results Chain"
+msgstr ""
 
 #: Miradi/source/org/miradi/main/ViewSwitcher.java:80
 msgid "TT|Switch to a different view"
