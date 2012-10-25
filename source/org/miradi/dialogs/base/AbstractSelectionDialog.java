@@ -44,6 +44,7 @@ abstract public class AbstractSelectionDialog extends DialogWithButtonBar implem
 	public AbstractSelectionDialog(MainWindow mainWindow, String title, ObjectTablePanel poolTable)
 	{
 		super(mainWindow);
+		
 		setTitle(title);
 		list = poolTable;
 		list.getTable().addListSelectionListener(this);
