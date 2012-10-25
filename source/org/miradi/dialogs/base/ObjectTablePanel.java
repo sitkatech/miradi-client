@@ -37,9 +37,9 @@ public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelec
 	public ObjectTablePanel(MainWindow mainWindowToUse, UpperPanelBaseObjectTable tableToUse)
 	{
 		super(mainWindowToUse, tableToUse);
+		
 		table = tableToUse;
 		table.addListSelectionListener(this);
-
 	}
 	
 	@Override
