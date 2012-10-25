@@ -37,7 +37,6 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
-import org.miradi.utils.MiradiScrollPane;
 
 abstract public class AbstractSelectionDialog extends DialogWithButtonBar implements ListSelectionListener
 {
@@ -53,7 +52,7 @@ abstract public class AbstractSelectionDialog extends DialogWithButtonBar implem
 		box.add(list, BorderLayout.AFTER_LAST_LINE);
 
 		Container contents = getContentPane();
-		contents.add(new MiradiScrollPane(box), BorderLayout.CENTER);
+		contents.add(box, BorderLayout.CENTER);
 		setButtons(getButtonComponents());
 		setModal(true);
 		setPreferredSize(new Dimension(900,400));
