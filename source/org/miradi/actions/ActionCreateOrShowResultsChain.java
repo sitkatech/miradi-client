@@ -38,6 +38,6 @@ public class ActionCreateOrShowResultsChain extends ViewAction
 	@Override
 	public String getToolTipText()
 	{
-		return EAM.text("Action|Show/Create Results Chain");
+		return EAM.text("TT|Show/Create Results Chain");
 	}
 }
