@@ -29,6 +29,19 @@ public class TestHtmlUtilities extends MiradiTestCase
 		super(name);
 	}
 	
+	public void testReplaceHtmlBullets() throws Exception
+	{
+		verifyReplaceHtmlBullets("", "");
+		verifyReplaceHtmlBullets("randomText", "randomText");
+		verifyReplaceHtmlBullets("- item<br/>", "<ul><li>item</li></ul>");
+		verifyReplaceHtmlBullets("- item1<br/>- item2<br/>", "<ul><li>item1</li><li>item2</li></ul>");
+	}
+	
+	private void verifyReplaceHtmlBullets(String expected, String actual)
+	{
+		assertEquals("Didnt replace bullets?", expected, HtmlUtilities.replaceHtmlBullets(actual));
+	}
+
 	public void testGetFirstLineWithTruncationIndicated()
 	{
 		verifyGetFirstLineWithTruncationIndicated("", "");
