@@ -193,7 +193,7 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionCreateCustomFromCurrentTreeTableConfiguration.class, new CreateCustomFromCurrentTreeTableConfigurationDoer());
 	}
 	
-	public HashMap<String, PlanningTreeManagementPanel> getManagementPanelMap()
+	private HashMap<String, PlanningTreeManagementPanel> getManagementPanelMap()
 	{
 		return managementPanelMap;
 	}
