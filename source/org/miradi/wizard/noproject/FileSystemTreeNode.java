@@ -80,20 +80,7 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 			}
 			if(column == 1)
 			{
-				if(isLegacyProjectDirectory())
-				{
-					return getLastModifiedDate();
-				}
-				if(isProject())
-				{
-					String contents = UnicodeReader.getFileContents(thisFile);
-					final long loadLastModifiedTime = ProjectLoader.loadLastModifiedTime(new UnicodeStringReader(contents));
-					if (loadLastModifiedTime == 0)
-						return EAM.text("Unknown");
-					return LegacyProjectUtilities.timestampToString(loadLastModifiedTime);
-				}
-				
-				return null;
+				return getLastModifiedDate();
 			}
 		}
 		catch(Exception e)
@@ -108,7 +95,21 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 
 	public String getLastModifiedDate() throws Exception
 	{
-		return LegacyProjectUtilities.readLocalLastModifiedProjectTime(thisFile);
+		if(isLegacyProjectDirectory())
+		{
+			return LegacyProjectUtilities.readLocalLastModifiedProjectTime(thisFile);
+		}
+		
+		if(isProject())
+		{
+			String contents = UnicodeReader.getFileContents(thisFile);
+			final long loadLastModifiedTime = ProjectLoader.loadLastModifiedTime(new UnicodeStringReader(contents));
+			if (loadLastModifiedTime == 0)
+				return EAM.text("Unknown");
+			return LegacyProjectUtilities.timestampToString(loadLastModifiedTime);
+		}
+		
+		return "";
 	}
 
 	@Override
