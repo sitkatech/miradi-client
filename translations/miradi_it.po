@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-25 13:46-0500\n"
+"POT-Creation-Date: 2012-10-26 15:46-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -3745,7 +3745,7 @@ msgstr ""
 msgid "Folder Chooser"
 msgstr "Selettore cartella"
 
-#: Miradi/source/org/miradi/wizard/noproject/FileSystemTreeNode.java:209
+#: Miradi/source/org/miradi/wizard/noproject/FileSystemTreeNode.java:210
 msgid "FolderName|BackupsFromMigrationToMiradi4"
 msgstr ""
 
@@ -8343,7 +8343,7 @@ msgstr ""
 msgid "University"
 msgstr "Università"
 
-#: Miradi/source/org/miradi/wizard/noproject/FileSystemTreeNode.java:92
+#: Miradi/source/org/miradi/wizard/noproject/FileSystemTreeNode.java:108
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:161
 #: Miradi/source/org/miradi/questions/TrendQuestion.java:38
 #: Miradi/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:37
