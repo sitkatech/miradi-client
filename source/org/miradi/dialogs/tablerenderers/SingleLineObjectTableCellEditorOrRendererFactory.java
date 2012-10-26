@@ -76,6 +76,7 @@ public class SingleLineObjectTableCellEditorOrRendererFactory extends ObjectTabl
 		public HtmlEncodedCellEditor()
 		{
 			super(new JTextField());
+			
 			setClickCountToStart(1);
 		}
 
@@ -110,7 +111,9 @@ public class SingleLineObjectTableCellEditorOrRendererFactory extends ObjectTabl
 		@Override
 		public void setText(String text)
 		{
+			text = HtmlUtilities.replaceHtmlBullets(text);
 			text = HtmlUtilities.convertHtmlToPlainText(text);
+
 			super.setText(text);
 		}
 	}
