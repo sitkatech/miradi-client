@@ -29,26 +29,26 @@ public class TestStringUtilities extends MiradiTestCase
 		super(name);
 	}
 	
-	public void testEscapeQuaotes()
+	public void testEscapeQuotesWithBackslash()
 	{
-		verifyEscapedValue("", "");
-		verifyEscapedValue("\\\"", "\"");
+		verifyEscapeQuotesWithBackslash("", "");
+		verifyEscapeQuotesWithBackslash("\\\"", "\"");
 	}
 	
-	public void testUnescapeQuotes()
+	public void testUnescapeQuotesWithBackslash()
 	{
-		verifyUnescapedQuotes("", "");
-		verifyUnescapedQuotes("\\\"", "\\\\\"");
+		verifyUnescapeQuotesWithBackslash("", "");
+		verifyUnescapeQuotesWithBackslash("\\\"", "\\\\\"");
 	}
 	
-	private void verifyEscapedValue(String expectedValue, String valueToEscape)
+	private void verifyEscapeQuotesWithBackslash(String expectedValue, String valueToEscape)
 	{
-		assertEquals("Incorrectly escaped?", expectedValue, StringUtilities.escapeQuotes(valueToEscape));
+		assertEquals("Incorrectly escaped?", expectedValue, StringUtilities.escapeQuotesWithBackslash(valueToEscape));
 	}
 	
-	private void verifyUnescapedQuotes(String expectedValue, String valueToUnescape)
+	private void verifyUnescapeQuotesWithBackslash(String expectedValue, String valueToUnescape)
 	{
-		assertEquals("Incorrectly unescaped?", expectedValue, StringUtilities.unescapeQuotes(valueToUnescape));
+		assertEquals("Incorrectly unescaped?", expectedValue, StringUtilities.unescapeQuotesWithBackslash(valueToUnescape));
 	}
 
 	public void testEmptySpaceClassMember()

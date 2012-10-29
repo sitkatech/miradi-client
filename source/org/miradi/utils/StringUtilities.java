@@ -78,13 +78,13 @@ public class StringUtilities
 		return name.substring(0, lastIndexOfSuffix);
 	}
 	
-	public static String escapeQuotes(final String value)
+	public static String escapeQuotesWithBackslash(final String value)
 	{
 		final String replaceAll = value.replaceAll("\\\"", "\\\\\"");
 		return replaceAll;
 	}
 	
-	public static String unescapeQuotes(final String value)
+	public static String unescapeQuotesWithBackslash(final String value)
 	{
 		return value.replaceAll("\\\\\"", "\\\"");
 	}

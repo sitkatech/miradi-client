@@ -68,7 +68,7 @@ public class ExtraDataExporter implements Xmpz2XmlConstants
 			if (data.length() > 0)
 			{
 				getWriter().writeStartElementWithAttribute(EXTRA_DATA_ITEM, EXTRA_DATA_ITEM_NAME, extraDataItemName);
-				data = StringUtilities.escapeQuotes(data);
+				data = StringUtilities.escapeQuotesWithBackslash(data);
 				getWriter().writeElement(EXTRA_DATA_ITEM_VALUE, data);
 				getWriter().writeEndElement(EXTRA_DATA_ITEM);
 			}
