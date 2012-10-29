@@ -91,6 +91,7 @@ public class HtmlUtilities
 	{
 		htmlDataValue = replaceHtmlBrsWithNewlines(htmlDataValue);
 		htmlDataValue = XmlUtilities2.convertXmlTextToPlainText(htmlDataValue);
+		htmlDataValue = HtmlUtilities.replaceHtmlBullets(htmlDataValue);
 		
 		return htmlDataValue;
 	}
