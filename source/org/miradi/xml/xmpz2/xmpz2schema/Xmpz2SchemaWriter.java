@@ -44,7 +44,7 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 	{
 		println("# $LastChangedBy: Miradi $");
 		println("# $LastChangedDate: " + Calendar.getInstance().getTime() + " $");
-		println("# $LastChangedRevision: 200 $");
+		println("# $LastChangedRevision: " + NAME_SPACE_VERSION + " $");
 	}
 	
 	public void writeNamespace(String uri)
