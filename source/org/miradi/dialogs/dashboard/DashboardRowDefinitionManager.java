@@ -131,7 +131,6 @@ public class DashboardRowDefinitionManager
 		if (code.equals(OpenStandardsPlanActionsAndMonitoringQuestion.CREATE_RESULTS_CHAINS_SHOWING_ASSUMPTIONS_CODE))
 		{
 			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 Strategies Created"), Dashboard.PSEUDO_STRATEGY_COUNT));
-			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 with taxonomy assignments"), Dashboard.PSEUDO_STRATEGY__WITH_TAXONOMY_COUNT));
 			rowDefinitions.add(createTaxonomyRowDefinition(Dashboard.PSEUDO_STRATEGY__WITH_TAXONOMY_COUNT,	Dashboard.PSEUDO_STRATEGY_COUNT));
 			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 Results Chains Created"), Dashboard.PSEUDO_RESULTS_CHAIN_COUNT));
 		}
