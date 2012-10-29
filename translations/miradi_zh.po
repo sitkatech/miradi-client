@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-26 15:46-0500\n"
+"POT-Creation-Date: 2012-10-29 13:46-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -39,44 +39,44 @@ msgstr "2)将威胁因子链接到相关的对象 \t\t"
 msgid " was empty"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:147
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:146
 msgid "%1 % of Objectives associated with 1 or more Strategies"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:148
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:147
 msgid "%1 % of Strategies associated with 1 or more Objectives"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:165
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:164
 msgid "%1 % of indicators linked to objectives"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:166
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:165
 msgid "%1 % of indicators not linked to objectives"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:154
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:153
 msgid "%1 % of indicators with Desired Future Status specified"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:82
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:185
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:184
 msgid "%1 - %2"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:254
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:253
 msgid "%1 Conceptual Model Pages created"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:244
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:243
 msgid "%1 Contributing Factors Created"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:169
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:168
 msgid "%1 Direct Threat Indicators"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:232
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:231
 msgid "%1 Direct Threats created"
 msgstr ""
 
@@ -88,7 +88,7 @@ msgstr ""
 msgid "%1 Draft Strategies Ranked"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:163
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:162
 msgid "%1 Indicators associated to KEA's"
 msgstr ""
 
@@ -96,23 +96,23 @@ msgstr ""
 msgid "%1 Indicators/methods (%2%) have progress reports"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:167
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:166
 msgid "%1 KEA viability indicators associated with %2 targets"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:141
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:140
 msgid "%1 Objectives Created"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:153
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:152
 msgid "%1 Objectives associated to 1 or more Indicators"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:176
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:175
 msgid "%1 Other Organizations"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:136
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:135
 msgid "%1 Results Chains Created"
 msgstr ""
 
@@ -124,11 +124,11 @@ msgstr ""
 msgid "%1 Strategies/activities (%2%) have progress reports"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:175
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:174
 msgid "%1 Team Members"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:170
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:169
 msgid "%1 Threat Reduction Result indicators"
 msgstr ""
 
@@ -140,8 +140,8 @@ msgstr ""
 msgid "%1 Total methods created"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:216
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:221
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:215
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:220
 msgid "%1 created"
 msgstr ""
 
@@ -149,31 +149,31 @@ msgstr ""
 msgid "%1 goals Created"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:164
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:163
 msgid "%1 indicators associate to Factors"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:277
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:276
 msgid "%1 indicators with 1 measurement"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:278
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:277
 msgid "%1 indicators with more than 1 measurement"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:276
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:275
 msgid "%1 indicators with no measurement"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:280
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:279
 msgid "%1 objectives with 1 percent complete record"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:281
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:280
 msgid "%1 objectives with more than 1 percent complete record"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:279
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:278
 msgid "%1 objectives with no percent complete record"
 msgstr ""
 
@@ -193,43 +193,39 @@ msgstr ""
 msgid "%1 of %2 Targets have Goals"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:268
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:267
 msgid "%1 of %2 have taxonomy assignments"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:168
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:167
 msgid "%1 simple viability indicators associated with %2 targets"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:226
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:225
 msgid "%1 targets have KEA"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:227
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:226
 msgid "%1 targets have simple viablity information"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:255
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:254
 msgid "%1 total factors created"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:134
-msgid "%1 with taxonomy assignments"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:70
 msgid "%2 of %1 Activities and tasks have assignments"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:142
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:141
 msgid "%2 of %1 RCs have at least 1 objective"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:238
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:237
 msgid "%2 of %1 threat/target ranks with simple ranking"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:239
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:238
 msgid "%2 of %1 threat/target ranks with stress-based ranking"
 msgstr ""
 
@@ -7302,7 +7298,7 @@ msgstr ""
 msgid "Team Member"
 msgstr "团队成员"
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:196
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:195
 msgid "Team Members: %1"
 msgstr ""
 
@@ -7404,7 +7400,7 @@ msgid ""
 "paste the new copies here."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:206
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:205
 msgid "The scope currently consists of %1 words"
 msgstr ""
 
