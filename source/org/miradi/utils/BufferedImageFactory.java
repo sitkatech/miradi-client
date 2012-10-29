@@ -121,7 +121,7 @@ public  class BufferedImageFactory
 		{
 			DiagramObject diagramObject = (DiagramObject) mainWindowToUse.getProject().findObject(allDiagramObjectRefs.get(refIndex));
 			ORef diagramRef = diagramObject.getRef();
-			String imageName = createImageFileName(refIndex, diagramRef);
+			String imageName = createImageFileName(diagramRef.getObjectId().asInt(), diagramRef);
 			BufferedImage diagramImage = createImageFromDiagram(mainWindowToUse, diagramObject);
 			namesToDiagramImagesMap.put(imageName, diagramImage);
 		}
@@ -129,9 +129,9 @@ public  class BufferedImageFactory
 		return namesToDiagramImagesMap;
 	}
 	
-	public static String createImageFileName(int index, ORef diagramRef)
+	public static String createImageFileName(int uniqueId, ORef diagramRef)
 	{
-		return getDiagramPrefix(diagramRef) + index + PNGFileFilter.EXTENSION;
+		return getDiagramPrefix(diagramRef) + uniqueId + PNGFileFilter.EXTENSION;
 	}
 
 	public static String getDiagramPrefix(ORef diagramObjectRef)
