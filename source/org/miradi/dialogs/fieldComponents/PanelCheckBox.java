@@ -30,12 +30,6 @@ public class PanelCheckBox extends UiCheckBox
 		this(null);
 	}
 
-	public PanelCheckBox(String fieldLabel, boolean selected)
-	{
-		this(fieldLabel);
-		setSelected(selected);
-	}
-	
 	public PanelCheckBox(String fieldLabel)
 	{
 		super(fieldLabel);
