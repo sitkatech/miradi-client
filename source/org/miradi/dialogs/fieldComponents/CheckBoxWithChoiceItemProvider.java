@@ -26,7 +26,7 @@ public class CheckBoxWithChoiceItemProvider extends PanelCheckBox implements Cho
 {
 	public CheckBoxWithChoiceItemProvider(ChoiceItem choiceItemToUse)
 	{
-		super(choiceItemToUse.getXmlLabel());
+		super(choiceItemToUse.getTextAsHtmlWrappedLabel());
 		
 		choiceItem = choiceItemToUse;
 	}

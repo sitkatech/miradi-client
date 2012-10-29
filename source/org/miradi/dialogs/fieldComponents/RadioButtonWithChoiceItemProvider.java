@@ -28,7 +28,7 @@ public class RadioButtonWithChoiceItemProvider extends JRadioButton implements C
 {
 	public RadioButtonWithChoiceItemProvider(ChoiceItem choiceItemToUse)
 	{
-		super(choiceItemToUse.getXmlLabel());
+		super(choiceItemToUse.getTextAsHtmlWrappedLabel());
 		
 		choiceItem = choiceItemToUse;
 	}
