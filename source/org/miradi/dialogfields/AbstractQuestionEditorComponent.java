@@ -95,7 +95,7 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 
 	private JComponent createLeftColumnComponent(ChoiceItem choiceItem)
 	{
-		JToggleButton toggleButton = createToggleButton(choiceItem.getXmlLabel());
+		JToggleButton toggleButton = createToggleButton(choiceItem);
 		toggleButton.setBackground(choiceItem.getColor());
 		toggleButton.addActionListener(new ToggleButtonHandler());
 		choiceItemToToggleButtonMap.put(choiceItem, toggleButton);
@@ -164,9 +164,9 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 		return new PanelTitleLabel(icon);
 	}
 
-	protected JToggleButton createToggleButton(String label)
+	protected JToggleButton createToggleButton(ChoiceItem choiceItem)
 	{
-		return new JCheckBox(label);
+		return new JCheckBox(choiceItem.getXmlLabel());
 	}
 
 	protected void addAdditionalComponent()

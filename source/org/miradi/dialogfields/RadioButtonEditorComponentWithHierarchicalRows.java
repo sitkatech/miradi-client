@@ -63,9 +63,9 @@ public class RadioButtonEditorComponentWithHierarchicalRows extends QuestionEdit
 	}
 	
 	@Override
-	protected JToggleButton createToggleButton(String label)
+	protected JToggleButton createToggleButton(ChoiceItem choiceItem)
 	{
-		JRadioButton radioButton = new JRadioButton(label);
+		JRadioButton radioButton = new JRadioButton(choiceItem.getXmlLabel());
 		groupRadioButton(radioButton);
 		
 		return radioButton;
