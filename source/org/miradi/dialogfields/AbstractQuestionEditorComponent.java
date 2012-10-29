@@ -27,12 +27,13 @@ import java.util.HashMap;
 import java.util.Set;
 
 import javax.swing.Icon;
-import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JToggleButton;
 
 import org.martus.swing.Utilities;
 import org.miradi.dialogs.base.MiradiPanel;
+import org.miradi.dialogs.fieldComponents.CheckBoxWithChoiceItemProvider;
+import org.miradi.dialogs.fieldComponents.ChoiceItemProvider;
 import org.miradi.dialogs.fieldComponents.ControlPanelHtmlFormViewer;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.AppPreferences;
@@ -41,7 +42,6 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.FillerLabel;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
-import org.miradi.utils.XmlUtilities2;
 
 import com.jhlabs.awt.BasicGridLayout;
 import com.jhlabs.awt.GridLayoutPlus;
@@ -166,7 +166,7 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 
 	protected JToggleButton createToggleButton(ChoiceItem choiceItem)
 	{
-		return new JCheckBox(choiceItem.getXmlLabel());
+		return new CheckBoxWithChoiceItemProvider(choiceItem);
 	}
 
 	protected void addAdditionalComponent()
@@ -220,13 +220,9 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 		{
 			try
 			{
-				JToggleButton item = (JToggleButton) event.getSource();
-				final String encodedToMatchValueUsedToConstructChoiceItem = XmlUtilities2.getXmlEncoded(item.getText());
-				//FIXME medium -  Should not be using label to find ChoiceItem.  This broke when it was not encoded and 
-				//can break again if label differs when going in vs coming out.
-				//Should be replaced with a better solution.  
-				ChoiceItem choiceItem = getQuestion().findChoiceByLabel(encodedToMatchValueUsedToConstructChoiceItem);
-				toggleButtonStateChanged(choiceItem, item.isSelected());
+				ChoiceItemProvider choiceItemProvider = (ChoiceItemProvider) event.getSource();
+				ChoiceItem choiceItem = choiceItemProvider.getChoiceItem();
+				toggleButtonStateChanged(choiceItem, choiceItemProvider.isSelected());
 			}
 			catch (Exception e)
 			{
