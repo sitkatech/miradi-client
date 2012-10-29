@@ -57,7 +57,7 @@ public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 	@Override
 	protected JToggleButton createToggleButton(ChoiceItem choiceItem)
 	{
-		JRadioButton radioButton = new RadioButtonWithChoiceItemProvider(choiceItem);
+		JRadioButton radioButton = new RadioButtonWithChoiceItemProvider(EAM.getMainWindow(), choiceItem);
 		groupRadioButton(radioButton);
 		
 		return radioButton;

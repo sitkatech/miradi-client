@@ -20,22 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.fieldComponents;
 
+import org.martus.swing.UiRadioButton;
 import org.miradi.main.MainWindow;
-import org.miradi.questions.ChoiceItem;
 
-public class RadioButtonWithChoiceItemProvider extends PanelRadioButton implements ChoiceItemProvider
+public class PanelRadioButton extends UiRadioButton
 {
-	public RadioButtonWithChoiceItemProvider(MainWindow mainWindowToUse, ChoiceItem choiceItemToUse)
+	public PanelRadioButton(MainWindow mainWindowToUse, String text)
 	{
-		super(mainWindowToUse, choiceItemToUse.getTextAsHtmlWrappedLabel());
+		super(text);
 		
-		choiceItem = choiceItemToUse;
+		setFont(mainWindowToUse.getUserDataPanelFont());
 	}
-
-	public ChoiceItem getChoiceItem()
-	{
-		return choiceItem;
-	}
-	
-	private ChoiceItem choiceItem;
 }
