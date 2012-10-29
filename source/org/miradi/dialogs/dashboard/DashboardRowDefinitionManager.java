@@ -262,9 +262,9 @@ public class DashboardRowDefinitionManager
 		return rowDefinitions;
 	}
 
-	private DashboardRowDefinition createTaxonomyRowDefinition(final String pseudoWithTaxonomyCount, final String pseudoTaxonomyOwnerCount)
+	private DashboardRowDefinition createTaxonomyRowDefinition(final String countWithTaxonomy, final String totalCount)
 	{
-		return new DashboardRowDefinition(EAM.text("%1 of %2 have taxonomy assignments"), pseudoWithTaxonomyCount, pseudoTaxonomyOwnerCount);
+		return new DashboardRowDefinition(EAM.text("%1 of %2 have taxonomy assignments"), countWithTaxonomy, totalCount);
 	}
 	
 	private Vector<DashboardRowDefinition> addAnalyzeUseAndAdaptDefinitions(String code)
