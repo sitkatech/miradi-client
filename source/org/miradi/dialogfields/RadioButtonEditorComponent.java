@@ -25,6 +25,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JToggleButton;
 
 import org.miradi.main.EAM;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.ControlPanelFlexibleWidthHtmlViewer;
@@ -53,9 +54,9 @@ public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 	}
 	
 	@Override
-	protected JToggleButton createToggleButton(String label)
+	protected JToggleButton createToggleButton(ChoiceItem choiceItem)
 	{
-		JRadioButton radioButton = new JRadioButton(label);
+		JRadioButton radioButton = new JRadioButton(choiceItem.getXmlLabel());
 		groupRadioButton(radioButton);
 		
 		return radioButton;
