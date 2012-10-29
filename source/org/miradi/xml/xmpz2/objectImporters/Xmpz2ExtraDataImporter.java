@@ -66,7 +66,7 @@ public class Xmpz2ExtraDataImporter extends AbstractXmpz2ObjectImporter
 			if (extraDataItemValueNode != null)
 			{
 				String value = extraDataItemValueNode.getTextContent();
-				value = StringUtilities.unescapeQuotes(value);
+				value = StringUtilities.unescapeQuotesWithBackslash(value);
 				baseObject.setData(tag, value);
 			}
 		}
