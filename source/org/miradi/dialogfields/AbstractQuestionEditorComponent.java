@@ -210,7 +210,7 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 		return columnCount;
 	}
 	
-	protected class ToggleButtonHandler implements ActionListener
+	private class ToggleButtonHandler implements ActionListener
 	{
 		public ToggleButtonHandler()
 		{
