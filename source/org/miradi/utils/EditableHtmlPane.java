@@ -98,8 +98,18 @@ public class EditableHtmlPane extends MiradiTextPane
 		// NOTE: Shef does not encode/decode apostrophes as we need for proper XML
 		topText = XmlUtilities2.convertXmlTextToHtmlWithoutHtmlTags(topText);
 		super.setText("");
+		clearDocumentToAvoidFormattingLeak();
 		insertHtml(topText, 0);            
 		CompoundUndoManager.discardAllEdits(getDocument());
+	}
+
+	private void clearDocumentToAvoidFormattingLeak()
+	{
+		//NOTE: per java instructions found here:
+		//http://docs.oracle.com/javase/1.5.0/docs/api/javax/swing/JEditorPane.html#setText%28java.lang.String%29
+		//we are creating a new Document to avoid any cross document leaks.
+		HTMLEditorKit htmlEditorKit = (HTMLEditorKit) getEditorKit();
+		setDocument(htmlEditorKit.createDefaultDocument());
 	}
 
 	@Override
