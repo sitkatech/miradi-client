@@ -587,7 +587,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		creator.addTextAttributeElement(KEY_ATTRIBUTE_NAME);
 		creator.addOptionalChildElement(DASHBOARD_PROGRESS, VOCABULARY_DASHBOARD_ROW_PROGRESS);
 		creator.addChildElement(DASHBOARD + DASHBOARD_FLAGS + CONTAINER_ELEMENT_TAG + ".element? ");
-		creator.addOptionalChildElement(DASHBOARD_COMMENTS, TEXT_ELEMENT_TYPE);
+		creator.addOptionalChildElement(DASHBOARD_COMMENTS, FORMATTED_TEXT_TYPE);
 		
 		return creator;
 	}
