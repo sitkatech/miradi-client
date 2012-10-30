@@ -1,7 +1,7 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Tue Oct 23 17:09:20 EDT 2012 $
-# $LastChangedRevision: 200 $
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/200'
+# $LastChangedDate: Tue Oct 30 18:33:34 EDT 2012 $
+# $LastChangedRevision: 201 $
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/201'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -1060,7 +1060,7 @@ StatusEntry.element = element miradi:StatusEntry
   attribute Key { text } &
   element miradi:Progress { vocabulary_dashboard_row_progress }? &
   DashboardFlagsContainer.element?  &
-  element miradi:Comments { text }?
+  element miradi:Comments { formatted_text }?
 }
 
 ExtraDataSection.element = element miradi:ExtraDataSection
