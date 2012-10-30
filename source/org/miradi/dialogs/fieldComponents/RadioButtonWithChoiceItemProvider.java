@@ -20,14 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.fieldComponents;
 
-import org.miradi.main.MainWindow;
+import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
 
 public class RadioButtonWithChoiceItemProvider extends PanelRadioButton implements ChoiceItemProvider
 {
-	public RadioButtonWithChoiceItemProvider(MainWindow mainWindowToUse, ChoiceItem choiceItemToUse)
+	public RadioButtonWithChoiceItemProvider(ChoiceItem choiceItemToUse)
 	{
-		super(mainWindowToUse, choiceItemToUse.getTextAsHtmlWrappedLabel());
+		super(EAM.getMainWindow(), choiceItemToUse.getTextAsHtmlWrappedLabel());
 		
 		choiceItem = choiceItemToUse;
 	}
