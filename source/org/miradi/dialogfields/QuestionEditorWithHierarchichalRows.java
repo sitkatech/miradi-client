@@ -45,7 +45,6 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		super(questionToUse, SINGLE_COLUMN);
 		
 		mainWindow = mainWindowToUse;
-		mainWindow = mainWindowToUse;
 		rowSelectionHandler = getSafeRowSelectionHandler();
 		setBackground(AppPreferences.getDataPanelBackgroundColor());
 	}
