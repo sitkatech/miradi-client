@@ -304,7 +304,6 @@ public class MpfToMpzConverter extends AbstractConverter
 			json = json.replaceAll("&quot;", "\\\\&quot;");
 		
 		json = HtmlUtilities.convertHtmlToPlainText(json);
-		json = HtmlUtilities.stripAllHtmlTags(json);
 		putDefaultValue(jsonObjects, json, tag);
 		refToJsonMap.put(ref, jsonObjects);
 	}
