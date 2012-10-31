@@ -28,7 +28,6 @@ import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 import org.miradi.schemas.DashboardSchema;
 import org.miradi.utils.HtmlUtilities;
-import org.miradi.utils.XmlUtilities2;
 
 public class DashboardCommentsField extends AbstractDashboardClickableField
 {
@@ -44,8 +43,7 @@ public class DashboardCommentsField extends AbstractDashboardClickableField
 		String mapValue = map.getUserString(stringMapCode);
 		String firstLine = HtmlUtilities.getFirstLineWithTruncationIndicated(mapValue);
 		
-		final String unescapedXmlText = XmlUtilities2.convertXmlTextToPlainText(firstLine);
-		final String wrapInHtmlTags = HtmlUtilities.wrapInHtmlTags(unescapedXmlText);
+		final String wrapInHtmlTags = HtmlUtilities.wrapInHtmlTags(firstLine);
 		labelComponentToUse.setText(wrapInHtmlTags);
 	}
 
