@@ -44,7 +44,9 @@ public class DashboardCommentsField extends AbstractDashboardClickableField
 		String mapValue = map.getUserString(stringMapCode);
 		String firstLine = HtmlUtilities.getFirstLineWithTruncationIndicated(mapValue);
 		
-		labelComponentToUse.setText(XmlUtilities2.convertXmlTextToPlainText(firstLine));
+		final String unescapedXmlText = XmlUtilities2.convertXmlTextToPlainText(firstLine);
+		final String wrapInHtmlTags = HtmlUtilities.wrapInHtmlTags(unescapedXmlText);
+		labelComponentToUse.setText(wrapInHtmlTags);
 	}
 
 	public boolean hasComments() throws Exception
