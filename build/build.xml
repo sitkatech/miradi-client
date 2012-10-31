@@ -803,19 +803,27 @@
 <target name="translations" 
 	depends="pot, chinese, french, german, hebrew, hungarian, indonesian, italian, malagasy, mongolian, portuguese, spanish, ukrainian" 
 	description="Create Translatable Content jars/zips">
-	<exec executable="hg" failonerror="false" dir="${translations.dir}">
-		<arg value="status"/>
-	</exec>
-	<exec executable="hg" failonerror="false" dir="${miradi.root.dir}">
+
+	<!-- Add any new translation files -->	
+	<exec executable="hg" failonerror="false" dir="${miradi.root.dir}" >
 		<arg value="add"/>
 		<arg value="${translations.subdir}"/>
 	</exec>
-	<exec executable="hg" failonerror="false" dir="${miradi.root.dir}">
+
+	<!-- See if there is anything to commit -->
+	<exec executable="hg" failonerror="true" dir="${translations.dir}" outputproperty="output">
+		<arg value="status"/>
+	</exec>
+	<condition property="FilesWereModified">
+		<length string="${output}" trim="true" when="greater" length="0" />
+	</condition>
+	
+	<exec if="FilesWereModified" executable="hg" failonerror="true" dir="${miradi.root.dir}">
 		<arg value="commit"/>
 		<arg value="--message"/>
 		<arg value="Updated PO files: ${version.timestamp}"/>
 	</exec>
-	<exec executable="hg" failonerror="true" dir="${miradi.root.dir}">
+	<exec if="FilesWereModified" executable="hg" failonerror="true" dir="${miradi.root.dir}">
 		<arg value="--config"/>
 		<arg value="auth.google.prefix=https://miradi-client.googlecode.com"/>
 		<arg value="--config"/>
