@@ -91,9 +91,20 @@ public class EditableHtmlPane extends MiradiTextPane
 		}
 	}
 	
-	public void setSaverListener(DocumentListener documentListenerTouse)
+	public void initiliazeListener(DocumentListener documentListenerToUse)
 	{
-		documentListener = documentListenerTouse;
+		setSaverListener(documentListenerToUse);
+		addDocumentListener();
+	}
+	
+	private void setSaverListener(DocumentListener documentListenerToUse)
+	{
+		documentListener = documentListenerToUse;
+	}
+	
+	private void addDocumentListener()
+	{
+		getDocument().addDocumentListener(getDocumentListener());
 	}
 	
 	private DocumentListener getDocumentListener()
