@@ -46,6 +46,12 @@ public abstract class ObjectMultilineInputField extends ObjectTextInputField
 	{
 		return new EditableHtmlPane(mainWindow, columnsToUse, initialVisibleRows);
 	}
+	
+	@Override
+	protected void setSaveListener(DocumentEventHandler saveListenerToUse)
+	{
+		((EditableHtmlPane)getTextField()).setSaverListener(saveListenerToUse);
+	}
 
 	@Override
 	protected void createRightClickMouseHandler()
