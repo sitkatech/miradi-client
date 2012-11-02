@@ -29,6 +29,7 @@ import java.io.Writer;
 import java.net.URL;
 
 import javax.swing.JEditorPane;
+import javax.swing.event.DocumentListener;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import javax.swing.text.BadLocationException;
@@ -89,6 +90,16 @@ public class EditableHtmlPane extends MiradiTextPane
 			EAM.alertUserOfNonFatalException(e);
 		}
 	}
+	
+	public void setSaverListener(DocumentListener documentListenerTouse)
+	{
+		documentListener = documentListenerTouse;
+	}
+	
+	private DocumentListener getDocumentListener()
+	{
+		return documentListener;
+	}
 
 	@Override
 	public void setText(String text)
@@ -104,7 +115,16 @@ public class EditableHtmlPane extends MiradiTextPane
 
 	private void clearDocumentToAvoidFormattingLeak()
 	{
-		super.setText("");
+		//NOTE: per java instructions found here:
+		//http://docs.oracle.com/javase/1.5.0/docs/api/javax/swing/JEditorPane.html#setText%28java.lang.String%29
+		//we are creating a new Document to avoid any cross document leaks.
+		HTMLEditorKit htmlEditorKit = (HTMLEditorKit) getEditorKit();
+		final Document replacementDocument = htmlEditorKit.createDefaultDocument();
+		
+		getDocument().removeDocumentListener(getDocumentListener());
+		replacementDocument.addDocumentListener(getDocumentListener());
+		
+		setDocument(replacementDocument);
 	}
 
 	@Override
@@ -234,4 +254,5 @@ public class EditableHtmlPane extends MiradiTextPane
 	 }
 	 
 	 private HyperlinkHandler handler;
+	 private DocumentListener documentListener;
 }

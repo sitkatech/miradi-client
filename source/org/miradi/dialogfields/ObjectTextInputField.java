@@ -50,10 +50,16 @@ abstract public class ObjectTextInputField extends ObjectDataInputField
 		field.setDocument(document);
 		addFocusListener();
 		setEditable(true);
-		field.getDocument().addDocumentListener(new DocumentEventHandler());
+		final DocumentEventHandler saveListener = new DocumentEventHandler();
+		field.getDocument().addDocumentListener(saveListener);
+		setSaveListener(saveListener);
 		createRightClickMouseHandler();
 
 		setDefaultFieldBorder();
+	}
+
+	protected void setSaveListener(DocumentEventHandler saveListener)
+	{
 	}
 
 	protected void createRightClickMouseHandler()
