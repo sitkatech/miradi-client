@@ -56,7 +56,7 @@ public class ObjectStringInputField extends ObjectTextInputField
 	{
 		super(mainWindowToUse, objectTypeToUse, objectIdToUse, tagToUse, componentToUse, document);
 		
-		DocumentEventHandler handler = new DocumentEventHandler();
+		UndoableEditHandler handler = new UndoableEditHandler();
 		((JTextComponent)getComponent()).getDocument().addUndoableEditListener(handler);
 		((UiTextArea)getComponent()).setWrapStyleWord(true);
 		((UiTextArea)getComponent()).setLineWrap(true);		
@@ -91,7 +91,7 @@ public class ObjectStringInputField extends ObjectTextInputField
 
 	//FIXME medium - this handler is here to remove new lines entered by the user.
 	// this mechanism should be replaced with a Document that does not allow new lines.
-	private class DocumentEventHandler implements UndoableEditListener
+	private class UndoableEditHandler implements UndoableEditListener
 	{
 		public void undoableEditHappened(UndoableEditEvent e)
 		{
