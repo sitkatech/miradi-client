@@ -46,12 +46,11 @@ abstract public class ObjectTextInputField extends ObjectDataInputField
 	{
 		super(mainWindowToUse.getProject(), objectType, objectId, tag);
 		
-		final DocumentEventHandler documentListener = new DocumentEventHandler();
 		field = componentToUse;
 		field.setDocument(document);
 		addFocusListener();
 		setEditable(true);
-		field.getDocument().addDocumentListener(documentListener);
+		field.getDocument().addDocumentListener(new DocumentEventHandler());
 		createRightClickMouseHandler();
 
 		setDefaultFieldBorder();
