@@ -34,7 +34,7 @@ import org.miradi.schemas.FosProjectDataSchema;
 
 public class FOSSummaryPanel extends ObjectDataInputPanel
 {
-	public FOSSummaryPanel(Project projectToUse)
+	public FOSSummaryPanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse, projectToUse.getSingletonObjectRef(FosProjectDataSchema.getObjectType()));
 		

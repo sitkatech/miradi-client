@@ -26,7 +26,7 @@ import org.miradi.utils.DoubleUtilities;
 
 public class ObjectCurrencyInputField extends ObjectFloatingPointRestrictedInputField
 {
-	public ObjectCurrencyInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse)
+	public ObjectCurrencyInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse) throws Exception
 	{
 		super(mainWindowToUse, objectTypeToUse, objectIdToUse, tagToUse, columnsToUse);
 	}

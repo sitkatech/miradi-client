@@ -54,7 +54,7 @@ public class IndicatorViabilityRatingsSubPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
-	private void createThreshholdField(ChoiceItem choiceItem)
+	private void createThreshholdField(ChoiceItem choiceItem) throws Exception
 	{
 		PanelTitleLabel label = new PanelTitleLabel(choiceItem.getLabel());
 		Font font = label.getFont();

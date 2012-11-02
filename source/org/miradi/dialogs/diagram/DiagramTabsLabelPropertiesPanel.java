@@ -28,7 +28,7 @@ import org.miradi.project.Project;
 
 public class DiagramTabsLabelPropertiesPanel extends ObjectDataInputPanel
 {
-	public DiagramTabsLabelPropertiesPanel(Project projectToUse, ORef diagramObjectRefToUse)
+	public DiagramTabsLabelPropertiesPanel(Project projectToUse, ORef diagramObjectRefToUse) throws Exception
 	{
 		super(projectToUse, diagramObjectRefToUse);
 		

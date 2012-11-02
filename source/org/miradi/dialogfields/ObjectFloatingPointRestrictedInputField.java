@@ -25,12 +25,12 @@ import org.miradi.utils.FloatingPointRestrictedDocument;
 
 public class ObjectFloatingPointRestrictedInputField extends ObjectStringInputFieldWithLengthLimit
 {
-	public ObjectFloatingPointRestrictedInputField(MainWindow mainWindowToUse, int objectType, BaseId objectId, String tag, int columnCount)
+	public ObjectFloatingPointRestrictedInputField(MainWindow mainWindowToUse, int objectType, BaseId objectId, String tag, int columnCount) throws Exception
 	{
 		super(mainWindowToUse, objectType, objectId, tag, columnCount, new FloatingPointRestrictedDocument());
 	}
 		
-	public ObjectFloatingPointRestrictedInputField(MainWindow mainWindowToUse, int objectType, BaseId objectId, String tag)
+	public ObjectFloatingPointRestrictedInputField(MainWindow mainWindowToUse, int objectType, BaseId objectId, String tag) throws Exception
 	{
 		this(mainWindowToUse, objectType, objectId, tag, 10);
 	}

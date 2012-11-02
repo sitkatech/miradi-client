@@ -24,7 +24,7 @@ import org.miradi.main.MainWindow;
 
 public class ObjectPercentageInputField extends ObjectFloatingPointRestrictedInputField
 {
-	public ObjectPercentageInputField(MainWindow mainWindowToUse, int objectType, BaseId objectIdForType, String tag)
+	public ObjectPercentageInputField(MainWindow mainWindowToUse, int objectType, BaseId objectIdForType, String tag) throws Exception
 	{
 		super(mainWindowToUse, objectType, objectIdForType, tag);
 	}
