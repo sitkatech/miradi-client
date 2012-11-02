@@ -28,7 +28,7 @@ import org.miradi.main.MainWindow;
 
 public class ObjectStringInputFieldWithLengthLimit extends ObjectStringInputField
 {
-	public ObjectStringInputFieldWithLengthLimit(MainWindow mainWindowToUse, int objectType, BaseId objectId, String tag, int columnsToUse, Document document)
+	public ObjectStringInputFieldWithLengthLimit(MainWindow mainWindowToUse, int objectType, BaseId objectId, String tag, int columnsToUse, Document document) throws Exception
 	{
 		super(mainWindowToUse, objectType, objectId, tag, columnsToUse, document);
 		

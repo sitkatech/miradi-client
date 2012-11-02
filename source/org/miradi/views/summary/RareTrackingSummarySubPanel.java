@@ -29,7 +29,7 @@ import org.miradi.schemas.RareProjectDataSchema;
 
 public class RareTrackingSummarySubPanel extends ObjectDataInputPanel
 {
-	public RareTrackingSummarySubPanel(Project projectToUse)
+	public RareTrackingSummarySubPanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse, projectToUse.getSingletonObjectRef(RareProjectDataSchema.getObjectType()));
 		

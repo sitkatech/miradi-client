@@ -35,7 +35,7 @@ import org.miradi.schemas.WcsProjectDataSchema;
 public class WCSSummaryPanel extends ObjectDataInputPanel
 {
 
-	public WCSSummaryPanel(Project projectToUse)
+	public WCSSummaryPanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse, projectToUse.getSingletonObjectRef(WcsProjectDataSchema.getObjectType()));
 

@@ -24,6 +24,7 @@ import java.awt.Color;
 import java.awt.event.FocusEvent;
 
 import javax.swing.JComponent;
+import javax.swing.event.DocumentListener;
 import javax.swing.text.DefaultCaret;
 import javax.swing.text.Document;
 import javax.swing.text.JTextComponent;
@@ -37,12 +38,12 @@ import com.inet.jortho.SpellChecker;
 
 abstract public class ObjectTextInputField extends ObjectDataInputField
 {
-	public ObjectTextInputField(MainWindow mainWindowToUse, int objectType, BaseId objectId, String tag, JTextComponent componentToUse)
+	public ObjectTextInputField(MainWindow mainWindowToUse, int objectType, BaseId objectId, String tag, JTextComponent componentToUse) throws Exception
 	{
 		this(mainWindowToUse, objectType, objectId, tag, componentToUse, componentToUse.getDocument());
 	}
 	
-	public ObjectTextInputField(MainWindow mainWindowToUse, int objectType, BaseId objectId, String tag, JTextComponent componentToUse, Document document)
+	public ObjectTextInputField(MainWindow mainWindowToUse, int objectType, BaseId objectId, String tag, JTextComponent componentToUse, Document document) throws Exception
 	{
 		super(mainWindowToUse.getProject(), objectType, objectId, tag);
 		
@@ -58,8 +59,12 @@ abstract public class ObjectTextInputField extends ObjectDataInputField
 		setDefaultFieldBorder();
 	}
 
-	protected void setSaveListener(DocumentEventHandler saveListener)
+	protected void setSaveListener(DocumentEventHandler saveListenerToUse)  throws Exception
 	{
+		if (saverListener != null)
+			throw new Exception("Saver has been already set, should not be resetting it.");
+		
+		saverListener = saveListenerToUse;
 	}
 
 	protected void createRightClickMouseHandler()
@@ -152,4 +157,5 @@ abstract public class ObjectTextInputField extends ObjectDataInputField
 
 	private boolean isTemporaryFocusLoss;
 	private JTextComponent field;
+	private DocumentListener saverListener;
 }

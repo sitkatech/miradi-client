@@ -37,22 +37,22 @@ import org.miradi.utils.StringUtilities;
 
 public class ObjectStringInputField extends ObjectTextInputField
 {
-	public ObjectStringInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse)
+	public ObjectStringInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse) throws Exception
 	{
 		this(mainWindowToUse, objectTypeToUse, objectIdToUse, tagToUse, new PanelTextArea(0, columnsToUse));		
 	}
 	
-	public ObjectStringInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse, Document document)
+	public ObjectStringInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse, Document document) throws Exception
 	{
 		this(mainWindowToUse, objectTypeToUse, objectIdToUse, tagToUse, new PanelTextArea(0, columnsToUse), document);
 	}
 	
-	private ObjectStringInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, PanelTextArea componentToUse)
+	private ObjectStringInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, PanelTextArea componentToUse) throws Exception
 	{
 		this(mainWindowToUse, objectTypeToUse, objectIdToUse, tagToUse, componentToUse, componentToUse.getDocument());
 	}
 
-	private ObjectStringInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, PanelTextArea componentToUse, Document document)
+	private ObjectStringInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, PanelTextArea componentToUse, Document document) throws Exception
 	{
 		super(mainWindowToUse, objectTypeToUse, objectIdToUse, tagToUse, componentToUse, document);
 		

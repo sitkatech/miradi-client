@@ -29,12 +29,12 @@ import org.miradi.objecthelpers.ORef;
 
 public class ObjectStringMapInputField extends ObjectStringInputField
 {
-	public ObjectStringMapInputField(MainWindow mainWindowToUse, ORef refToUse, String tagToUse, String codeToUse, int columnsToUse)
+	public ObjectStringMapInputField(MainWindow mainWindowToUse, ORef refToUse, String tagToUse, String codeToUse, int columnsToUse) throws Exception
 	{
 		this (mainWindowToUse, refToUse.getObjectType(), refToUse.getObjectId(), tagToUse, codeToUse, columnsToUse);
 	}
 	
-	public ObjectStringMapInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, String codeToUse, int columnsToUse)
+	public ObjectStringMapInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, String codeToUse, int columnsToUse) throws Exception
 	{
 		super(mainWindowToUse, objectTypeToUse, objectIdToUse, tagToUse, columnsToUse);
 		
