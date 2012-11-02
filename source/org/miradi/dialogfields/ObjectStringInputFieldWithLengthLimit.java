@@ -32,14 +32,14 @@ public class ObjectStringInputFieldWithLengthLimit extends ObjectStringInputFiel
 	{
 		super(mainWindowToUse, objectType, objectId, tag, columnsToUse, document);
 		
-		DocumentEventHandler handler = new DocumentEventHandler();
+		UndoableEditHandler handler = new UndoableEditHandler();
 		getTextField().getDocument().addUndoableEditListener(handler);
 		columns = columnsToUse;
 	}
 
 	//FIXME medium - this handler is here to remove characters exceeding column count
 	// this mechanism should be replaced with a Document with a defined length
-	class DocumentEventHandler implements  UndoableEditListener
+	class UndoableEditHandler implements  UndoableEditListener
 	{
 		public void undoableEditHappened(UndoableEditEvent e)
 		{
