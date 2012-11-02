@@ -35,7 +35,7 @@ import org.miradi.main.MainWindow;
 
 import com.inet.jortho.SpellChecker;
 
-abstract public class ObjectTextInputField extends ObjectDataInputField
+public class ObjectTextInputField extends ObjectDataInputField
 {
 	public ObjectTextInputField(MainWindow mainWindowToUse, int objectType, BaseId objectId, String tag, JTextComponent componentToUse)
 	{
