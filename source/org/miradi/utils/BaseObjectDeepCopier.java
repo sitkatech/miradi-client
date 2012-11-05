@@ -41,14 +41,14 @@ abstract public class BaseObjectDeepCopier
 	
 	private BaseObject createCopy(BaseObject baseObejctToClone) throws Exception
 	{
-		ORef copiedBaseObjectRef = getProject().createObject(baseObejctToClone.getType());
+		ORef copiedBaseObjectRef = createBaseObject(baseObejctToClone);
 		BaseObject copiedBaseObject = BaseObject.find(getProject(), copiedBaseObjectRef);
 		copyBaseObject(baseObejctToClone, copiedBaseObject);
 
 		return copiedBaseObject;
 	}
-	
-	private void copyBaseObject(BaseObject baseObejctToClone, BaseObject copiedBaseObjectToFill) throws Exception
+
+	public void copyBaseObject(BaseObject baseObejctToClone, BaseObject copiedBaseObjectToFill) throws Exception
 	{	
 		Vector<String> storedTags = baseObejctToClone.getStoredFieldTags();
 		for (String tag : storedTags)
@@ -68,7 +68,7 @@ abstract public class BaseObjectDeepCopier
 				dataToBeSaved = baseObejctToClone.getData(tag); 
 			}
 			
-			getProject().setObjectData(copiedBaseObjectToFill, tag, dataToBeSaved);
+			setBaseObjectData(copiedBaseObjectToFill, tag, dataToBeSaved);
 		}
 	}
 
@@ -95,8 +95,12 @@ abstract public class BaseObjectDeepCopier
 		
 		return copiedRefs;
 	}
+	
+	abstract protected ORef createBaseObject(BaseObject baseObejctToClone) throws Exception;
+	
+	abstract protected void setBaseObjectData(BaseObject copiedBaseObjectToFill, String tag, String dataToBeSaved) throws Exception;
 
-	public Project getProject()
+	protected Project getProject()
 	{
 		return project;
 	}
