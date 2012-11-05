@@ -153,6 +153,11 @@ abstract public class ObjectTextInputField extends ObjectDataInputField
 	{
 		return isTemporaryFocusLoss;
 	}
+	
+	public DocumentEventHandler createDocumentEventHandler()
+	{
+		return new DocumentEventHandler(this);
+	}
 
 	private boolean isTemporaryFocusLoss;
 	private JTextComponent field;
