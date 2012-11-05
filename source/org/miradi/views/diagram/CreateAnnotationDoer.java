@@ -31,6 +31,7 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
+import org.miradi.utils.BaseObjectDeepCopierUsingCommands;
 import org.miradi.views.ObjectsDoer;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -89,14 +90,15 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 		return CommandSetObjectData.createAppendIdCommand(parent, listTag, refToAppend.getObjectId());
 	}
 
-	protected ORef createObject() throws CommandFailedException
+	protected ORef createObject() throws Exception
 	{
 		CommandCreateObject create = new CommandCreateObject(getAnnotationType());
 		getProject().executeCommand(create);
 		if (objectToClone!=null)
 		{
-			CommandSetObjectData[]  commands = objectToClone.createCommandsToClone(create.getCreatedId());
-			getProject().executeCommands(commands);
+			BaseObject baseObjectToFill = BaseObject.find(getProject(), create.getObjectRef());
+			BaseObjectDeepCopierUsingCommands deepCopier = new BaseObjectDeepCopierUsingCommands(getProject());
+			deepCopier.copyBaseObject(objectToClone, baseObjectToFill);
 		}
 		return create.getObjectRef();
 	}

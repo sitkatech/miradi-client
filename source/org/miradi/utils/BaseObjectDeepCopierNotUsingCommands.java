@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
 public class BaseObjectDeepCopierNotUsingCommands extends BaseObjectDeepCopier
@@ -27,5 +29,17 @@ public class BaseObjectDeepCopierNotUsingCommands extends BaseObjectDeepCopier
 	public BaseObjectDeepCopierNotUsingCommands(Project projectToUse)
 	{
 		super(projectToUse);
+	}
+	
+	@Override
+	protected ORef createBaseObject(BaseObject baseObejctToClone) throws Exception
+	{
+		return getProject().createObject(baseObejctToClone.getType());
+	}
+
+	@Override
+	protected void setBaseObjectData(BaseObject copiedBaseObjectToFill, String tag, String dataToBeSaved) throws Exception
+	{
+		getProject().setObjectData(copiedBaseObjectToFill, tag, dataToBeSaved);
 	}
 }
