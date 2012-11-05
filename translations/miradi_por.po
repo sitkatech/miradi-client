@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-29 13:46-0500\n"
+"POT-Creation-Date: 2012-11-05 10:16-0600\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -7831,11 +7831,11 @@ msgstr "Caixa de Texto"
 msgid "Text Box Properties"
 msgstr "Propriedades da Caixa de Texto"
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:157
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:155
 msgid "Text|Dates must be in YYYY-MM-DD format"
 msgstr "As datas devem ser no formato AAAA-MM-DD"
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:169
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:167
 msgid "Text|Unknown error prevented saving this data"
 msgstr "Um erro desconhecido não permitiu salvar estes dados"
 
@@ -8095,7 +8095,7 @@ msgstr ""
 "de segurança será salvo primeiro, caso que qualquer coisa der errado.  "
 "Realize a migração automática?"
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:175
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:173
 msgid ""
 "This value must be numeric<br><br>Currency symbols and percent signs are not "
 "allowed"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-29 13:46-0500\n"
+"POT-Creation-Date: 2012-11-05 10:16-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -7531,11 +7531,11 @@ msgstr "Рамка для тексту"
 msgid "Text Box Properties"
 msgstr "Складові Текстової рамки"
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:157
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:155
 msgid "Text|Dates must be in YYYY-MM-DD format"
 msgstr "Text|Дані мусять бути у YYYY-MM-DD форматі"
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:169
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:167
 msgid "Text|Unknown error prevented saving this data"
 msgstr "Text|Невідома помилка перешкодила збереженню цих даних"
 
@@ -7762,7 +7762,7 @@ msgstr ""
 "відкривати його треба перевести у поточний формат даних. Спочатку треба "
 "зберегти дублікат на випадок збою. Здійснити автоматичний перехід? "
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:175
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:173
 msgid ""
 "This value must be numeric<br><br>Currency symbols and percent signs are not "
 "allowed"
