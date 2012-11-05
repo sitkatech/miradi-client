@@ -36,6 +36,7 @@ import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
 
 import org.martus.util.MultiCalendar;
+import org.miradi.dialogfields.DocumentEventHandler;
 import org.miradi.dialogfields.FieldSaver;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.main.EAM;
@@ -255,5 +256,5 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 	private static final String DATE_PROPERTY_NAME = "date";
 	
 	private ObjectDataInputField objectDataInputField;
-	private ObjectDataInputField.DocumentEventHandler documentListener;
+	private DocumentEventHandler documentListener;
 }

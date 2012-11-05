@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
@@ -178,27 +176,9 @@ abstract public class ObjectDataInputField extends ObjectDataField
 
 	public DocumentEventHandler createDocumentEventHandler()
 	{
-		return new DocumentEventHandler();
+		return new DocumentEventHandler(this);
 	}
 
-	public class DocumentEventHandler implements DocumentListener
-	{
-		public void changedUpdate(DocumentEvent arg0)
-		{
-			setNeedsSave();
-		}
-
-		public void insertUpdate(DocumentEvent arg0)
-		{
-			setNeedsSave();
-		}
-
-		public void removeUpdate(DocumentEvent arg0)
-		{
-			setNeedsSave();
-		}
-	}
-	
 	abstract public String getText();
 
 	abstract public void setText(String newValue);
