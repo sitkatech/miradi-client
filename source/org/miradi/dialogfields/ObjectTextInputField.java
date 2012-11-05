@@ -24,7 +24,6 @@ import java.awt.Color;
 import java.awt.event.FocusEvent;
 
 import javax.swing.JComponent;
-import javax.swing.event.DocumentListener;
 import javax.swing.text.DefaultCaret;
 import javax.swing.text.Document;
 import javax.swing.text.JTextComponent;
@@ -51,22 +50,21 @@ abstract public class ObjectTextInputField extends ObjectDataInputField
 		field.setDocument(document);
 		addFocusListener();
 		setEditable(true);
-		final DocumentEventHandler saveListener = new DocumentEventHandler();
-		field.getDocument().addDocumentListener(saveListener);
-		setSaveListener(saveListener);
+		initDocumentListener();
 		createRightClickMouseHandler();
-
 		setDefaultFieldBorder();
+	}
+
+	protected void initDocumentListener() throws Exception
+	{
+		setSaveListener(new DocumentEventHandler());
 	}
 
 	protected void setSaveListener(DocumentEventHandler saveListenerToUse)  throws Exception
 	{
-		if (saverListener != null)
-			throw new Exception("Saver has been already set, should not be resetting it.");
-		
-		saverListener = saveListenerToUse;
+		getTextField().getDocument().addDocumentListener(saveListenerToUse);
 	}
-
+	
 	protected void createRightClickMouseHandler()
 	{
 		new TextAreaRightClickMouseHandler(getActions(), field);
@@ -157,5 +155,4 @@ abstract public class ObjectTextInputField extends ObjectDataInputField
 
 	private boolean isTemporaryFocusLoss;
 	private JTextComponent field;
-	private DocumentListener saverListener;
 }
