@@ -154,7 +154,7 @@ abstract public class ObjectTextInputField extends ObjectDataInputField
 		return isTemporaryFocusLoss;
 	}
 	
-	public DocumentEventHandler createDocumentEventHandler()
+	private DocumentEventHandler createDocumentEventHandler()
 	{
 		return new DocumentEventHandler(this);
 	}
