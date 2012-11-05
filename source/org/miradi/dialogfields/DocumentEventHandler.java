@@ -25,30 +25,30 @@ import javax.swing.event.DocumentListener;
 
 public class DocumentEventHandler implements DocumentListener
 {
-	public DocumentEventHandler(ObjectDataInputField objectDataInputFieldToUse)
+	public DocumentEventHandler(ObjectTextInputField objectTextInputFieldToUse)
 	{
-		objectDataInputField = objectDataInputFieldToUse;
+		objectTextInputField = objectTextInputFieldToUse;
 	}
 
 	public void changedUpdate(DocumentEvent arg0)
 	{
-		getObjectDataInputField().setNeedsSave();
+		getObjectTextInputField().setNeedsSave();
 	}
 
 	public void insertUpdate(DocumentEvent arg0)
 	{
-		getObjectDataInputField().setNeedsSave();
+		getObjectTextInputField().setNeedsSave();
 	}
 
 	public void removeUpdate(DocumentEvent arg0)
 	{
-		getObjectDataInputField().setNeedsSave();
+		getObjectTextInputField().setNeedsSave();
 	}
 	
-	private ObjectDataInputField getObjectDataInputField()
+	private ObjectTextInputField getObjectTextInputField()
 	{
-		return objectDataInputField;
+		return objectTextInputField;
 	}
 	
-	private final ObjectDataInputField objectDataInputField;
+	private final ObjectTextInputField objectTextInputField;
 }
