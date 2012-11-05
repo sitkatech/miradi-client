@@ -50,7 +50,8 @@ public abstract class ObjectMultilineInputField extends ObjectTextInputField
 	@Override
 	protected void setSaveListener(DocumentEventHandler saveListenerToUse) throws Exception
 	{
-		((EditableHtmlPane)getTextField()).initiliazeListener(saveListenerToUse);
+		
+		((EditableHtmlPane)getTextField()).initializeListener(saveListenerToUse);
 	}
 
 	@Override
