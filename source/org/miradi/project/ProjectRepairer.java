@@ -60,6 +60,7 @@ import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.BaseObjectDeepCopier;
+import org.miradi.utils.BaseObjectDeepCopierNotUsingCommands;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.HtmlUtilities;
 
@@ -183,7 +184,7 @@ public class ProjectRepairer
 
 	public ORef deepCopyIndicator(Indicator indicator) throws Exception
 	{
-		BaseObjectDeepCopier deepCopier = new BaseObjectDeepCopier(getProject());
+		BaseObjectDeepCopier deepCopier = new BaseObjectDeepCopierNotUsingCommands(getProject());
 		BaseObject indicatorCopy = deepCopier.createDeepCopier(indicator);
 		
 		return indicatorCopy.getRef();

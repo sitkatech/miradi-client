@@ -27,7 +27,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
-public class BaseObjectDeepCopier
+abstract public class BaseObjectDeepCopier
 {
 	public BaseObjectDeepCopier(Project projectToUse)
 	{
