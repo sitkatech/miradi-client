@@ -122,12 +122,11 @@ public class EditableHtmlPane extends MiradiTextPane
 		final Document replacementDocument = htmlEditorKit.createDefaultDocument();
 		
 		if (getSaverListener() != null)
-			getSaverListener().getObjectTextInputField().removeSaveListener(getSaverListener());
+			getSaverListener().stopSaverListener();
 		
 		setDocument(replacementDocument);
 		if (getSaverListener() != null)
-			getSaverListener().getObjectTextInputField().addSaverListener(getSaverListener());
-
+			getSaverListener().startSaverListener();
 	}
 
 	@Override

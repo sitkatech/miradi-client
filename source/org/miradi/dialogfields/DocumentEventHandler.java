@@ -45,7 +45,17 @@ public class DocumentEventHandler implements DocumentListener
 		getObjectTextInputField().setNeedsSave();
 	}
 	
-	public ObjectTextInputField getObjectTextInputField()
+	public void startSaverListener()
+	{
+		getObjectTextInputField().addSaverListener(this);
+	}
+	
+	public void stopSaverListener()
+	{
+		getObjectTextInputField().removeSaveListener(this);
+	}
+	
+	private ObjectTextInputField getObjectTextInputField()
 	{
 		return objectTextInputField;
 	}
