@@ -29,7 +29,6 @@ import java.io.Writer;
 import java.net.URL;
 
 import javax.swing.JEditorPane;
-import javax.swing.event.DocumentListener;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import javax.swing.text.BadLocationException;
@@ -43,6 +42,7 @@ import net.atlanticbb.tantlinger.ui.text.HTMLUtils;
 import net.atlanticbb.tantlinger.ui.text.WysiwygHTMLEditorKit;
 
 import org.gnu.classpath.javax.swing.text.html.GnuHtmlWriter;
+import org.miradi.dialogfields.DocumentEventHandler;
 import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.main.EAM;
@@ -91,14 +91,14 @@ public class EditableHtmlPane extends MiradiTextPane
 		}
 	}
 	
-	public void setSaverListener(DocumentListener documentListenerToUse)
+	public void setSaverListener(DocumentEventHandler saverListenerToUse)
 	{
-		documentListener = documentListenerToUse;
+		saverListener = saverListenerToUse;
 	}
 	
-	private DocumentListener getDocumentListener()
+	private DocumentEventHandler getSaverListener()
 	{
-		return documentListener;
+		return saverListener;
 	}
 
 	@Override
@@ -121,8 +121,8 @@ public class EditableHtmlPane extends MiradiTextPane
 		HTMLEditorKit htmlEditorKit = (HTMLEditorKit) getEditorKit();
 		final Document replacementDocument = htmlEditorKit.createDefaultDocument();
 		
-		getDocument().removeDocumentListener(getDocumentListener());
-		replacementDocument.addDocumentListener(getDocumentListener());
+		getDocument().removeDocumentListener(getSaverListener());
+		replacementDocument.addDocumentListener(getSaverListener());
 		
 		setDocument(replacementDocument);
 	}
@@ -254,5 +254,5 @@ public class EditableHtmlPane extends MiradiTextPane
 	 }
 	 
 	 private HyperlinkHandler handler;
-	 private DocumentListener documentListener;
+	 private DocumentEventHandler saverListener;
 }
