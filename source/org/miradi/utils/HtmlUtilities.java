@@ -229,7 +229,9 @@ public class HtmlUtilities
 		trimmedText = removeAllExcept(trimmedText, allowedHtmlTags);
 		trimmedText = trimmedText.replaceAll("\\t", " ");
 		trimmedText = trimmedText.replaceAll(" +", " ");
-		trimmedText = trimmedText.trim();
+		
+		//Trim everything on the right of text
+		trimmedText = trimmedText.replaceAll("\\s+$", "");		
 		trimmedText = replaceNonHtmlNewlines(trimmedText);
 		//NOTE: Third party library  uses <br> instead of <br/>.  If we don't replace <br> then 
 		//save method thinks there was a change and attempts to save.
