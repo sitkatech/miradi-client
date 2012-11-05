@@ -57,9 +57,14 @@ abstract public class ObjectTextInputField extends ObjectDataInputField
 		setDefaultFieldBorder();
 	}
 
-	private void addSaverListener(final DocumentEventHandler saveListenerToUse)
+	public void addSaverListener(final DocumentEventHandler saveListenerToUse)
 	{
 		getTextField().getDocument().addDocumentListener(saveListenerToUse);
+	}
+	
+	public void removeSaveListener(final DocumentEventHandler saveListener)
+	{
+		getTextField().getDocument().removeDocumentListener(saveListener);
 	}
 
 	protected void setSaveListener(DocumentEventHandler saveListenerToUse)  throws Exception
