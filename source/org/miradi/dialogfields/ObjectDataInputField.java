@@ -174,11 +174,6 @@ abstract public class ObjectDataInputField extends ObjectDataField
 		"Currency symbols and percent signs are not allowed");
 	}
 
-	public DocumentEventHandler createDocumentEventHandler()
-	{
-		return new DocumentEventHandler(this);
-	}
-
 	abstract public String getText();
 
 	abstract public void setText(String newValue);
