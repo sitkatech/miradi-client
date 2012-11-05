@@ -59,7 +59,12 @@ public class TestBaseObjectDeepCopier extends TestCaseWithProject
 	
 	private void verifyCopy(BaseObject baseObjectToCopier) throws Exception
 	{
-		BaseObjectDeepCopier copier = new BaseObjectDeepCopier(getProject());
+		verifyUsingDeepCopier(new BaseObjectDeepCopierNotUsingCommands(getProject()), baseObjectToCopier);
+		verifyUsingDeepCopier(new BaseObjectDeepCopierUsingCommands(getProject()), baseObjectToCopier);
+	}
+
+	public void verifyUsingDeepCopier(BaseObjectDeepCopier copier, BaseObject baseObjectToCopier) throws Exception
+	{
 		BaseObject copiedBaseObject = copier.createDeepCopier(baseObjectToCopier);
 		assertTrue("Cloned baseObject is not the same as actaul baseObject?", areEquals(baseObjectToCopier, copiedBaseObject));
 	}
