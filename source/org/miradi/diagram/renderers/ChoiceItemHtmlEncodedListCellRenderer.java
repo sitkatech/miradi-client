@@ -27,6 +27,6 @@ public class ChoiceItemHtmlEncodedListCellRenderer extends AbstractChoiceItemLis
 	@Override
 	protected String getText(ChoiceItem choiceItem)
 	{
-		return choiceItem.getHtmlLabel();
+		return choiceItem.getTextAsHtmlWrappedLabel();
 	}
 }
