@@ -124,12 +124,12 @@ abstract public class ObjectTextInputField extends ObjectDataInputField
 			disableSpellChecker();
 	}
 
-	public void disableSpellChecker()
+	private void disableSpellChecker()
 	{
 		SpellChecker.unregister(getTextField());
 	}
 
-	public void enableSpellChecker()
+	private void enableSpellChecker()
 	{
 		SpellChecker.register(getTextField(), false, false, true);
 	}
