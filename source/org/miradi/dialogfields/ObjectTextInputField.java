@@ -119,9 +119,19 @@ abstract public class ObjectTextInputField extends ObjectDataInputField
 		field.setBackground(bg);
 
 		if(EAM.getMainWindow().isSpellCheckerActive())
-			SpellChecker.register(getTextField(), false, false, true);
+			enableSpellChecker();
 		else
-			SpellChecker.unregister(getTextField());
+			disableSpellChecker();
+	}
+
+	public void disableSpellChecker()
+	{
+		SpellChecker.unregister(getTextField());
+	}
+
+	public void enableSpellChecker()
+	{
+		SpellChecker.register(getTextField(), false, false, true);
 	}
 
 	protected Actions getActions()
