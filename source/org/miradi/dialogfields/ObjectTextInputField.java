@@ -131,6 +131,7 @@ abstract public class ObjectTextInputField extends ObjectDataInputField
 
 	private void enableSpellChecker()
 	{
+		disableSpellChecker();
 		SpellChecker.register(getTextField(), false, false, true);
 	}
 
