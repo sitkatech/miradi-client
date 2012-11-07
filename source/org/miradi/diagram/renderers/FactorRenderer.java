@@ -192,7 +192,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			String shortLabel = project.getObjectData(annotationRefs.get(0), Desire.TAG_SHORT_LABEL);
 			//NOTE: not formatting as html since the label cannot contain html styling
 			shortLabel = XmlUtilities2.convertXmlTextToPlainText(shortLabel);
-			return annotationPrefix + " " + shortLabel;
+			return shortLabel;
 		}
 		if(annotationRefs.size() > 1)
 		{
