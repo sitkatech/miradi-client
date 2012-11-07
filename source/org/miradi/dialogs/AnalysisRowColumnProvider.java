@@ -60,7 +60,7 @@ public class AnalysisRowColumnProvider extends AbstractBudgetCategoryRowColumnPr
 		});
 	}
 	
-	protected CodeList getBudgetColumnCodesFromTableSettingsMap()
+	private CodeList getBudgetColumnCodesFromTableSettingsMap()
 	{
 		try
 		{
