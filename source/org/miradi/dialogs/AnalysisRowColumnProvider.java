@@ -66,7 +66,7 @@ public class AnalysisRowColumnProvider extends AbstractBudgetCategoryRowColumnPr
 		{
 			TableSettings tableSettings = getWorkPlanTableSettings();
 			CodeToCodeListMap tableSettingsMap = tableSettings.getTableSettingsMap();
-			return tableSettingsMap.getCodeList(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
+			return tableSettingsMap.getCodeList(TableSettings.ANALYSIS_BUDGET_COLUMNS_CODELIST_KEY);
 		}
 		catch (Exception e)
 		{

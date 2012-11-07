@@ -86,7 +86,6 @@ import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.rtf.RtfWriter;
@@ -579,9 +578,9 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new AnalysisLevelsChooserField(getProject(), refToUse, tagToUse, question);
 	}
 	
-	public ObjectDataInputField createWorkPlanBudgetColumnCodeListEditor(int objectType, String tagToUse, ChoiceQuestion question)
+	public ObjectDataInputField createWorkPlanBudgetColumnCodeListEditor(int objectType, String tagToUse, ChoiceQuestion question, String budgetColumnsCodelistKey)
 	{
-		return new CodeToCodeListMapEditorField(getProject(), getRefForType(objectType), tagToUse, question, TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
+		return new CodeToCodeListMapEditorField(getProject(), getRefForType(objectType), tagToUse, question, budgetColumnsCodelistKey);
 	}
 	
 	public ObjectDataInputField createStringMapProjectResourceFilterCodeListEditor(int objectType, String tagToUse, ChoiceQuestion question)
