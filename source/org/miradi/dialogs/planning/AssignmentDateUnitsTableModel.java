@@ -712,6 +712,9 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		try	
 		{
 			BaseObject baseObject = getBaseObjectForRowColumn(row, column);
+			if (baseObject == null)
+				return new OptionalDouble();
+			
 			DateUnit dateUnit = getDateUnit(column);
 			
 			return getOptionalDoubleDataFilteredByResource(baseObject, dateUnit);
