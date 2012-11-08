@@ -26,6 +26,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
@@ -94,6 +95,11 @@ public class StrategyPool extends FactorPool
 				cmNodes.add(cmNode);
 		}
 		return cmNodes.toArray(new Factor[0]);
+	}
+	
+	public ORefSet getDraftStrategyRefs()
+	{
+		return new ORefSet(getDraftStrategies());
 	}
 
 	public ORefList getNonDraftStrategyRefs()

@@ -107,7 +107,7 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 		for (int index = 0; index < diagramRefsToExtractIndicatorsFrom.size(); ++index)
 		{
 			DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), diagramRefsToExtractIndicatorsFrom.get(index));
-			Factor[] allDiagramFactors = diagramObject.getAllWrappedFactors();
+			Factor[] allDiagramFactors = diagramObject.getAllWrappedFactorsExcludingDraftStrategies();
 			indicators.addAll(getAllIndicators(allDiagramFactors));
 		}
 		
