@@ -42,6 +42,9 @@ abstract public class AbstractFileChooser
 			return null;
 
 		File selectedFile = dialog.getSelectedFile();
+		if (selectedFile == null)
+			return null;
+		
 		selectedFile = getFileWithExtension(dialog, selectedFile);
 		selectedFile = doCustomWork(selectedFile);
 		if (selectedFile == null)
