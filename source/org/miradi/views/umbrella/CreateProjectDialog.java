@@ -64,11 +64,12 @@ import com.jhlabs.awt.GridLayoutPlus;
 public class CreateProjectDialog extends DialogWithButtonBar implements ActionListener,
 		ListSelectionListener
 {
-	public CreateProjectDialog(MainWindow parent, String title, String originalProjectName) throws HeadlessException
+	public CreateProjectDialog(MainWindow parent, String title, File projectFileToUse) throws HeadlessException
 	{
 		super(parent);
 		setTitle(title);
-		oldName = originalProjectName;
+		projectFile = projectFileToUse;
+		oldName = projectFile.getName();
 		
 		setModal(true);
 		setResizable(true);
@@ -87,6 +88,11 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 
 		MiradiPanel panel = new MiradiPanel(new GridLayoutPlus(0, 2));
 		panel.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
+		
+		final PanelTextFieldWithSelectAllOnFocusGained projectDirectoryPanel = new PanelTextFieldWithSelectAllOnFocusGained(projectFile.getParent());
+		projectDirectoryPanel.setEditable(false);
+		panel.add(new PanelTitleLabel(EAM.text("Current project directory:")));
+		panel.add(projectDirectoryPanel);
 		
 		panel.add(new PanelTitleLabel(EAM.text("Current project name:")));
 		panel.add(oldNameField);
@@ -129,10 +135,11 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 		String filename = projectFilenameField.getText();
 		if(!filename.endsWith(".Miradi"))
 			filename += ".Miradi";
-		return new File(EAM.getHomeDirectory(), filename);
+		
+		return new File(getProjectFile().getParentFile(), filename);
 	}
 
-	String getSelectedFilename()
+	private String getSelectedFilename()
 	{
 		return projectFilenameField.getText();
 	}
@@ -326,7 +333,13 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 		projectFilenameField.setText((String) existingProjectList
 				.getSelectedValue());
 	}
+	
+	private File getProjectFile()
+	{
+		return projectFile;
+	}
 
+	private File projectFile;
 	private String oldName;
 	private boolean result;
 	private UiList existingProjectList;
