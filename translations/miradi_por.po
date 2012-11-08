@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-05 15:46-0600\n"
+"POT-Creation-Date: 2012-11-08 15:46-0600\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -2503,7 +2503,7 @@ msgstr "Regras de Pacote"
 
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:83
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:229
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:236
 #: Miradi/source/org/miradi/project/OldProjectDirToMpfConverter.java:57
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
 #: Miradi/source/org/miradi/main/MiradiStrings.java:34
@@ -2615,7 +2615,7 @@ msgstr "Substuir Backup"
 msgid "Button|Retain"
 msgstr "Manter"
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:116
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:122
 msgid "Button|Save"
 msgstr "Salvar"
 
@@ -2697,11 +2697,11 @@ msgstr ""
 "Não pode mover o projeto à pasta porque um projeto com o mesmo nome já "
 "existe na pasta."
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:290
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:297
 msgid "Cannot overwrite an open project"
 msgstr "Não pode sobregravar (overwrite) um projeto aberto"
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:274
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:281
 msgid "Cannot save a project back to its existing name"
 msgstr "Não pode salvar um projeto para seu nome existente"
 
@@ -3063,7 +3063,11 @@ msgstr ""
 msgid "Current page was exported as RTF."
 msgstr "A página atual foi exportada como RTF."
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:91
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:94
+msgid "Current project directory:"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:97
 msgid "Current project name:"
 msgstr "Nome atual do projeto :"
 
@@ -3709,7 +3713,7 @@ msgstr ""
 "Arquivo não poderia criar-se, pode ser devido a caracteres inválidos no nome "
 "do arquivo"
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:297
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:304
 msgid "File exists: Cannot overwrite a non project folder"
 msgstr ""
 "O arquivo existe: Não pode gravar em cima (overwrite) de uma pasta não sendo "
@@ -4616,7 +4620,7 @@ msgstr "Comentários"
 msgid "Label|Currency"
 msgstr "Moeda"
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:103
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:109
 msgid "Label|Existing Projects:"
 msgstr "Projetos Existentes"
 
@@ -5278,7 +5282,7 @@ msgstr ""
 "Por favor saia de Miradi e tente novamente. \n"
 "Caso a tentativa não funcionar, contate o Apoio de Miradi."
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:100
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:106
 msgid "Miradi data directory:"
 msgstr "Diretório de Dados de Miradi"
 
@@ -5419,7 +5423,7 @@ msgstr ""
 msgid "New Project Filename:"
 msgstr "Novo Nome de Arquivo de Projeto:"
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:94
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:100
 msgid "New project name: "
 msgstr "Novo nome de projeto"
 
@@ -5959,7 +5963,7 @@ msgstr "Resumo do Projeto"
 msgid "Project does not exist: "
 msgstr "O projeto não existe:"
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:315
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:322
 msgid ""
 "Project filenames cannot contain punctuation other than dots, dashes, and "
 "spaces; and they cannot be longer than 32 characters. "
@@ -8112,7 +8116,7 @@ msgstr ""
 "do fator que foi cortado/copiado anteriormente.  Tem certeza que quer fazê-"
 "lo?"
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:303
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:310
 #: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:84
 msgid "This will replace the existing file."
 msgstr "Esta ação substituirá o arquivo existente."
@@ -8365,7 +8369,7 @@ msgstr "Outras Espécies Notáveis"
 msgid "Title|Other Orgs"
 msgstr "Outras Orgs"
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:302
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:309
 #: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:79
 msgid "Title|Overwrite existing file?"
 msgstr "Sobregravar arquivo existente?"
@@ -9015,7 +9019,7 @@ msgstr "[NÃO ESPECIFICADO]"
 msgid "[New Results Chain]"
 msgstr "[Nova Cadeia de Resultados]"
 
-#: Miradi/source/org/miradi/project/Project.java:958
+#: Miradi/source/org/miradi/project/Project.java:959
 msgid "[No Project]"
 msgstr "[Sem Projeto]"
 
