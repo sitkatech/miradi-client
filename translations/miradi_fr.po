@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-08 15:46-0600\n"
+"POT-Creation-Date: 2012-11-08 16:01-0600\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -894,7 +894,7 @@ msgid ""
 "<html>An error occurred<br/><br/>Perhaps the destination is full or readonly."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:206
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:207
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Échec de l'importation : <br><p> %s </p></html>"
 
@@ -4122,7 +4122,7 @@ msgstr "Importer les Codes de comptabilité"
 msgid "Import Completed"
 msgstr "Importation terminée"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:188
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:189
 msgid "Import Completed.  Would you like to open %s?"
 msgstr "Importation terminée. Souhaitez-vous ouvrir %s ?"
 
@@ -4163,7 +4163,7 @@ msgstr ""
 msgid "Importing XML..."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:145
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:146
 msgid "Importing..."
 msgstr ""
 
@@ -5431,7 +5431,7 @@ msgstr "Ouvrir"
 msgid "Open Anyway"
 msgstr "Ouvrir malgré tout"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:189
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:190
 #: Miradi/source/org/miradi/main/MainWindow.java:648
 msgid "Open Project"
 msgstr "Ouvrir projet"
@@ -7857,7 +7857,7 @@ msgstr ""
 "prochaines versions de Miradi exporteront les données dans des formats "
 "différents."
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:249
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:250
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -8364,7 +8364,7 @@ msgstr "Non défini"
 msgid "Underline"
 msgstr "Souligner"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:205
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:206
 msgid "Unexpected error"
 msgstr ""
 
