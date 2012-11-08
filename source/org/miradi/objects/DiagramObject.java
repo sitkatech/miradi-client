@@ -331,6 +331,21 @@ abstract public class DiagramObject extends BaseObject
 		return getCodeList(TAG_HIDDEN_TYPES);
 	}
 	
+	public Factor[] getAllWrappedFactorsExcludingDraftStrategies()
+	{
+		ORefSet allWrappedFactorRefsORefSet = getAllWrappedFactorRefSet();
+		ORefSet draftStrategyRefs = getProject().getStrategyPool().getDraftStrategyRefs();
+		allWrappedFactorRefsORefSet.removeAll(draftStrategyRefs);
+		
+		Vector<Factor> factors = new Vector<Factor>();
+		for (ORef factorRef : allWrappedFactorRefsORefSet)
+		{
+			factors.add(Factor.findFactor(getProject(), factorRef));
+		}
+		
+		return factors.toArray(new Factor[0]);
+	}
+	
 	public Factor[] getAllWrappedFactors()
 	{
 		return getFactorsExcludingTypes(new Vector<Integer>());

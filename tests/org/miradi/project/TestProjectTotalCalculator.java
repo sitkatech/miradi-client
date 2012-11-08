@@ -107,6 +107,18 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		turnOnDataFromConceptualDiagramOnly();
 		verifyEmptyProjectTotalTimePeriodCostsMap();
 	}
+	
+	public void testProjectTotalWithDraftStrategyIndicator() throws Exception
+	{
+		DiagramFactor diagramFactor = createNonDraftStrategyWithAssignment(getConceptualModelDiagramObject());
+		Strategy strategy = Strategy.find(getProject(), diagramFactor.getWrappedORef());
+		Indicator indicator = getProject().createIndicator(strategy);
+		getProject().addResourceAssignment(indicator, 10.0, new DateUnit());
+		verifyCalculatedValues(20.0, 200.0);
+		
+		getProject().turnOnDraft(strategy);
+		verifyProjectTotalTimePeriodCostsMap(0);
+	}
 
 	public void testResultsChainDraftStrategyProjectTotal() throws Exception
 	{
@@ -233,14 +245,26 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 
 	private void verifyCalculatedValues(final double expectedWorkUnits,	final double expectedTotalBudgetCost) throws Exception
 	{
-		TimePeriodCostsMap projectTotals = calculator.calculateProjectTotals();
-		assertEquals("Project totals time period costs map should not be empty?", 1, projectTotals.size());
+		verifyCalculatedValues(1, expectedWorkUnits, expectedTotalBudgetCost);
+	}
+
+	private void verifyCalculatedValues(final int expectedProjectTotalTimePeriodMapCount, final double expectedWorkUnits, final double expectedTotalBudgetCost) throws Exception
+	{
+		TimePeriodCostsMap projectTotals = verifyProjectTotalTimePeriodCostsMap(expectedProjectTotalTimePeriodMapCount);
 
 		TimePeriodCosts timePeriodCosts = projectTotals.getTimePeriodCostsForSpecificDateUnit(dateUnit);
 		assertEquals("Incorrect total work units?", expectedWorkUnits, timePeriodCosts.getTotalWorkUnits().getValue());
 		
 		OptionalDouble calculateTotalBudgetCost = projectTotals.calculateTotalBudgetCost(getProject());		
 		assertEquals("Incorrect project total", expectedTotalBudgetCost, calculateTotalBudgetCost.getValue());
+	}
+
+	private TimePeriodCostsMap verifyProjectTotalTimePeriodCostsMap(final int expectedProjectTotalTimePeriodMapCount) throws Exception
+	{
+		TimePeriodCostsMap projectTotals = calculator.calculateProjectTotals();
+		assertEquals("Project totals time period costs map should not be empty?", expectedProjectTotalTimePeriodMapCount, projectTotals.size());
+		
+		return projectTotals;
 	}
 	
 	private void turnOnDataFromResultsChainOnly() throws Exception
