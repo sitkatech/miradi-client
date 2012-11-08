@@ -132,10 +132,11 @@ public abstract class AbstractProjectImporter
 	{
 		final String fileNameWithoutExtension = getNameWithoutExtension(fileToImport);
 		final File proposedMpfProjectFile = new File(MpfFileFilter.createNameWithExtension(fileNameWithoutExtension));
-		return importProject(fileToImport, proposedMpfProjectFile);
+		
+		return importProject(EAM.getHomeDirectory(), fileToImport, proposedMpfProjectFile);
 	}
 	
-	public File importProject(File fileToImport, final File proposedProjectFile) throws Exception
+	public File importProject(File projectDirectory, File fileToImport, final File proposedProjectFile) throws Exception
 	{
 		String projectFileName = RenameProjectDoer.getLegalMpfProjectFileNameFromUser(getMainWindow(), proposedProjectFile);
 		if (projectFileName == null)
@@ -143,7 +144,7 @@ public abstract class AbstractProjectImporter
 		
 		possiblyNotifyUserOfAutomaticMigration(fileToImport);
 		ProgressDialog progressDialog = new ProgressDialog(getMainWindow(), EAM.text("Importing..."));
-		Worker worker = new Worker(progressDialog, fileToImport, projectFileName);
+		Worker worker = new Worker(progressDialog, projectDirectory, fileToImport, projectFileName);
 		progressDialog.doWorkInBackgroundWhileShowingProgress(worker);
 		
 		refreshNoProjectPanel();
@@ -154,13 +155,13 @@ public abstract class AbstractProjectImporter
 	
 	private class Worker extends MiradiBackgroundWorkerThread
 	{
-		public Worker(ProgressInterface progressInterfaceToUse, File fileToImportToUse, String projectFileNameToUse) throws Exception
+		public Worker(ProgressInterface progressInterfaceToUse, File projectDirectory, File fileToImportToUse, String projectFileNameToUse) throws Exception
 		{
 			super(progressInterfaceToUse);
 			
 			fileToImport = fileToImportToUse;
 			projectFileName = projectFileNameToUse;
-			newProjectFile = new File(EAM.getHomeDirectory(), projectFileName);
+			newProjectFile = new File(projectDirectory, projectFileName);
 
 			if(!Project.isValidMpfProjectFilename(projectFileName))
 				throw new Exception("Illegal project name: " + projectFileName);
