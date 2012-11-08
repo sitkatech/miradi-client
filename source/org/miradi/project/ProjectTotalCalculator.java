@@ -147,10 +147,10 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 	private Set<BaseObject> getIncludedNonDraftStrategies() throws Exception
 	{
 		Set<BaseObject> nonDraftStrategies = new HashSet<BaseObject>();
-		ORefList diagramRefsToExtractIndicatorsFrom = getIncludedDiagramRefs();
-		for (int index = 0; index < diagramRefsToExtractIndicatorsFrom.size(); ++index)
+		ORefList includedDiagramObjectRefs = getIncludedDiagramRefs();
+		for (ORef diagramObjectRef : includedDiagramObjectRefs)
 		{
-			DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), diagramRefsToExtractIndicatorsFrom.get(index));
+			DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), diagramObjectRef);
 			nonDraftStrategies.addAll(getNonDraftStrategies(diagramObject));
 		}
 		
