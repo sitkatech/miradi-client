@@ -645,25 +645,26 @@ public class Project
 	/////////////////////////////////////////////////////////////////////////////////
 	// database
 	
-	public void createWithDefaultObjectsAndDiagramHelp(File projectFile, ProgressInterface progressMeter) throws Exception
+	public void createWithDefaultObjectsAndDiagramHelp(File projectFileToUse, ProgressInterface progressMeter) throws Exception
 	{
-		boolean didProjectAlreadyExist = projectFile.exists();
-		createOrOpenWithDefaultObjects(projectFile, progressMeter);
+		boolean didProjectAlreadyExist = projectFileToUse.exists();
+		createOrOpenWithDefaultObjects(projectFileToUse, progressMeter);
 		
 		if (!didProjectAlreadyExist)
 			createDefaultHelpTextBoxDiagramFactor();
 	}
 
-	public void createOrOpenWithDefaultObjects(File projectFile, ProgressInterface progressMeter) throws Exception
+	public void createOrOpenWithDefaultObjects(File projectFileToUse, ProgressInterface progressMeter) throws Exception
 	{
 		rawCreateorOpen();
 		createMissingDefaultObjects();
 		applyDefaultBehavior();
-		finishOpeningAfterLoad(projectFile);
+		finishOpeningAfterLoad(projectFileToUse);
 	}
 
-	public void finishOpeningAfterLoad(File projectFile) throws Exception
+	public void finishOpeningAfterLoad(File projectFileToUse) throws Exception
 	{
+		projectFile = projectFileToUse;
 		String openedProjectName = projectFile.getName().replaceAll(".Miradi$", "");
 		finishOpeningAfterLoad(openedProjectName);
 	}
@@ -956,6 +957,11 @@ public class Project
 		if(isOpen())
 			return projectName;
 		return EAM.text("[No Project]");
+	}
+	
+	public File getProjectFile()
+	{
+		return projectFile;
 	}
 
 	public boolean isOpen()
@@ -1405,6 +1411,7 @@ public class Project
 	
 	private boolean isOpen;
 	private String projectName;
+	private File projectFile;
 	private ProjectInfo projectInfo;
 	private ObjectManager objectManager;
 	private long lastModifiedMillis;
