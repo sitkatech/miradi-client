@@ -88,12 +88,12 @@ public class WelcomeImportStep extends NoProjectWizardStep
 
 					"<tr>" +
 					"<td></td>" + 
-					"<td><input type='submit' name='ImportMpz' value='Old Miradi Project (.mpz)'></input></td>" +
+					"<td><input type='submit' name='" + CONTROL_IMPORT_MPZ + "' value='Old Miradi Project (.mpz)'></input></td>" +
 					"</tr>" +
 					
 					"<tr>" +
 					"<td></td>" + 
-					"<td><input type='submit' name='ImportCpmz' value='ConPro/Miradi Exchange File (.cpmz)'></input></td>" +
+					"<td><input type='submit' name='" + CONTROL_IMPORT_CPMZ + "' value='ConPro/Miradi Exchange File (.cpmz)'></input></td>" +
 					"</tr>" +
 					"</table></p><br>") ; 
 
