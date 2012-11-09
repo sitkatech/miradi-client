@@ -47,6 +47,7 @@ public class ShowFullModelModeDoer extends ViewDoer
 		{
 			if(!isInDiagram())
 				return false;
+			
 			ViewData viewData = getProject().getViewData(getView().cardName());
 			String currentViewMode = viewData.getData(ViewData.TAG_CURRENT_MODE);
 			if(DiagramModeQuestion.MODE_DEFAULT.equals(currentViewMode))
