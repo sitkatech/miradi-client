@@ -97,6 +97,7 @@
     <property name="miradi.po.it" value="${translations.dir}/miradi_it.po" />
     <property name="miradi.po.mn" value="${translations.dir}/miradi_mn.po" />
     <property name="miradi.po.plt" value="${translations.dir}/miradi_plt.po" />
+    <property name="miradi.po.por" value="${translations.dir}/miradi_por.po" />
     <property name="miradi.po.uk" value="${translations.dir}/miradi_uk.po" />
     <property name="miradi.po.zh" value="${translations.dir}/miradi_zh.po" />
 
@@ -674,6 +675,16 @@
 
 			
 <!-- ================================================================== -->
+<!-- PORTUGUESE                                                         -->
+<!-- ================================================================== -->
+<target name="portuguese" depends="pot" description="Update Portuguese Content">
+<antcall target="update-po">
+	<param name="po.file" value="${miradi.po.por}"/>
+	<param name="language.code" value="por"/>
+</antcall>
+</target>
+
+<!-- ================================================================== -->
 <!-- S P A N I S H                                            -->
 <!-- ================================================================== -->
 <target name="spanish" depends="pot" description="Update Spanish Content">
@@ -719,30 +730,42 @@
 <!-- T R A N S L A T I O N S                                            -->
 <!-- ================================================================== -->
 <target name="translations" 
-	depends="pot, chinese, french, german, hebrew, hungarian, indonesian, italian, malagasy, mongolian, spanish, ukrainian" 
+	depends="pot, chinese, french, german, hebrew, hungarian, indonesian, italian, malagasy, mongolian, portuguese, spanish, ukrainian" 
 	description="Create Translatable Content jars/zips">
-	<exec executable="hg" failonerror="false" dir="${translations.dir}">
-		<arg value="status"/>
-	</exec>
-	<exec executable="hg" failonerror="false" dir="${miradi.root.dir}">
+
+	<!-- Add any new translation files -->	
+	<exec executable="hg" failonerror="false" dir="${miradi.root.dir}" >
 		<arg value="add"/>
 		<arg value="${translations.subdir}"/>
 	</exec>
-	<exec executable="hg" failonerror="false" dir="${miradi.root.dir}">
-		<arg value="commit"/>
-		<arg value="--message"/>
-		<arg value="Updated PO files: ${version.timestamp}"/>
+
+	<!-- See if there is anything to commit -->
+	<exec executable="hg" failonerror="true" dir="${translations.dir}" outputproperty="output">
+		<arg value="status"/>
+	</exec>
+	<condition property="FilesWereModified">
+		<length string="${output}" trim="true" when="greater" length="0" />
+	</condition>
+	<antcall target="CommitTranslations" />
+</target>
+
+<target name="CommitTranslations" if="FilesWereModified">
+	<echo message="Committing translations" />
+	<exec executable="hg" failonerror="true" dir="${miradi.root.dir}">
+		<arg value="commit" />
+		<arg value="--message" />
+		<arg value="Updated PO files: ${version.timestamp}" />
 	</exec>
 	<exec executable="hg" failonerror="true" dir="${miradi.root.dir}">
-		<arg value="--config"/>
-		<arg value="auth.google.prefix=https://miradi-client.googlecode.com"/>
-		<arg value="--config"/>
+		<arg value="--config" />
+		<arg value="auth.google.prefix=https://miradi-client.googlecode.com" />
+		<arg value="--config" />
 		<arg value="auth.google.username=${hguser}"/>
-		<arg value="--config"/>
-		<arg value="auth.google.password=${hgpassword}"/>
-		<arg value="push"/>
-		<arg value="-r"/>
-		<arg value="."/>
+		<arg value="--config" />
+		<arg value="auth.google.password=${hgpassword}" />
+		<arg value="push" />
+		<arg value="-r" />
+		<arg value="." />
 	</exec>
 </target>
 	
