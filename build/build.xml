@@ -18,7 +18,7 @@
 	
 	<!-- directories -->
 	<echo message="Workspace is ${JOB_NAME}" />
-	<property name="workspace" value="${JOB_NAME} />
+	<property name="workspace" value="Miradi 3.4 Language Packs" />
     <property name="dist.dir" value="${workspace}/dist"/>
 
     <property name="dist.temp" value="${dist.dir}/temp"/>
