@@ -19,6 +19,7 @@
 	<!-- directories -->
 	<property environment="env"/>
 	<property name="workspace" value="${env.WORKSPACE} />
+	<echo message="Workspace is ${workspace}" />
     <property name="dist.dir" value="${workspace}/dist"/>
 
     <property name="dist.temp" value="${dist.dir}/temp"/>
