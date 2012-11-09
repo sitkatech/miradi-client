@@ -17,13 +17,14 @@
     <property name="binaries.cvs.module"  value="Miradi"/>
 	
 	<!-- directories -->
-	<echo message="Workspace is ${JOB_NAME}" />
+	<echo message="Workspace is ${jobname}" />
 	<property name="workspace" value="Miradi 3.4 Language Packs" />
     <property name="dist.dir" value="${workspace}/dist"/>
-
     <property name="dist.temp" value="${dist.dir}/temp"/>
     <property name="dist.temp.jars" value="${dist.temp}/jars"/>
 	
+    <property name="build.dir" value="${workspace}/build"/>
+
 	<property name="translations.subdir" value="translations"/>
     
 	<property name="miradi.root.dir" value="${workspace}" />
