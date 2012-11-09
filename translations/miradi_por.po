@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-08 16:01-0600\n"
+"POT-Creation-Date: 2012-11-08 18:46-0600\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -516,20 +516,11 @@ msgstr ""
 "<div class='DataPanel'><p>Por que que minhas opções são limitadas a uma "
 "família de cores para cada tipo de fator?</p>"
 
-# Nothing should be translated here, correct?
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:80
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:82
 msgid ""
 "<div class='WizardText'><p><table><tr><td><input type='submit' name='Back' "
-"value='&lt; Previous'></input></td><td><input type='submit' name='ImportMpz' "
-"value='Old Miradi Project (.mpz)'></input></td></tr><tr><td></td><td><input "
-"type='submit' name='ImportCpmz' value='ConPro/Miradi Exchange File (."
-"cpmz)'></input></td></tr></table></p><br>"
+"value='&lt; Previous'></input></td><td><input type='submit' name='"
 msgstr ""
-"<div class='WizardText'><p><table><tr><td><input type='submit' name='Back' "
-"value='&lt; Previous'></input></td><td><input type='submit' name='ImportMpz' "
-"value='Old Miradi Project (.mpz)'></input></td></tr><tr><td></td><td><input "
-"type='submit' name='ImportCpmz' value='ConPro/Miradi Exchange File (."
-"cpmz)'></input></td></tr></table></p><br>"
 
 # Nothing to translate here, correct?
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:76
@@ -542,27 +533,17 @@ msgstr ""
 "value='&lt; Previous'></input></td><td><input type='submit' name='Next' "
 "value='Next &gt;'></input></td></tr>"
 
-# Please verify that all the correct information is translated.
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:71
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:72
 msgid ""
-"<div class='WizardText'>Miradi is able to import two different kinds of "
-"project files.<BR>MPZ files are <a href='Definition:ImportZip' "
-"class='definition'>Miradi Project Zip</a> files that were created by "
-"exporting a project from within Miradi. <BR>CPMZ files are used to import "
-"and export project data from ConPro, The Nature Conservancy's online project "
-"database.<BR><BR>To import a MPZ, or CPMZ file, click the button for the "
-"appropriate file type, select the file in the dialog that pops up and then "
-"click <strong>import</strong>."
+"<div class='WizardText'>Miradi is able to import three different kinds of "
+"project files.<BR>Miradi files are new project files <BR>MPZ files are <a "
+"href='Definition:ImportZip' class='definition'>Miradi Project Zip</a> files "
+"that were created by exporting a project from within Miradi. <BR>CPMZ files "
+"are used to import and export project data from ConPro, The Nature "
+"Conservancy's online project database.<BR><BR>To import a Miradi, MPZ, or "
+"CPMZ file, click the button for the appropriate file type, select the file "
+"in the dialog that pops up and then click <strong>import</strong>."
 msgstr ""
-"<div class='WizardText'>Miradi pode importar dois tipos de arquivos de "
-"projeto.<BR>Arquivos MPZ são <a href='Definition:ImportZip' "
-"class='definition'>arquivos Zip</a> de Projetos de Miradi que foram criados "
-"dentro de Miradi pela exportação de um projeto.  <BR>Arquivos de CPMZ são "
-"usados para importar e exportar dados de projetos de ConPro, o banco de "
-"dados on-line de projetos da The Nature Conservancy (TNC).<BR><BR>Para "
-"importar um arquivo MPZ ou CPMZ, clique o botão para o tipo de arquivo "
-"apropriado, selecione o arquivo no dialogo que  aparece e depois clique "
-"<strong>importar</strong>."
 
 # Please check if I have translated all the appropriate items
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/TreeBasedProjectList.java:64
@@ -1695,6 +1676,10 @@ msgstr "Remover Recurso"
 #: Miradi/source/org/miradi/actions/views/ActionViewMap.java:35
 msgid "Action|Maps"
 msgstr "Mapas"
+
+#: Miradi/source/org/miradi/actions/ActionImportMpf.java:35
+msgid "Action|Miradi (.Miradi) Project File"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExportMpz.java:35
 msgid "Action|Miradi 3.3 MPZ Project File"
@@ -5133,11 +5118,11 @@ msgstr "Médio"
 msgid "Medium (Default)"
 msgstr "Médio (Default)"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:245
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:246
 msgid "MenuBar|Actions"
 msgstr "Ações"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:175
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:176
 msgid "MenuBar|Edit"
 msgstr "Editar"
 
@@ -5145,16 +5130,16 @@ msgstr "Editar"
 msgid "MenuBar|File"
 msgstr "Arquivo"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:576
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:577
 msgid "MenuBar|Help"
 msgstr "Ajuda"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:508
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:509
 msgid "MenuBar|Step-by-Step"
 msgstr "Passo a Passo"
 
 # Leo, Should this be "visualização"?
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:437
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:438
 msgid "MenuBar|View"
 msgstr "Visão"
 
@@ -5191,7 +5176,7 @@ msgid "Menu|Export Current Project as..."
 msgstr "Exportar Projeto Atual Como..."
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:282
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:425
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:426
 msgid "Menu|Group Box"
 msgstr "Caixa de Grupo"
 
@@ -7318,6 +7303,10 @@ msgid "TT|Import a .mpz file that was exported by an earlier version of Miradi"
 msgstr ""
 "Importar um arquivo .mpz que foi exportado por uma versão anterior de Miradi"
 
+#: Miradi/source/org/miradi/actions/ActionImportMpf.java:41
+msgid "TT|Import a Miradi file"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionImportAccountingCodes.java:40
 msgid "TT|Import accounting codes"
 msgstr "Importar códigos contabilísticos"
@@ -8512,7 +8501,7 @@ msgid "Unable to process file: verify file format"
 msgstr "Não é possível processar o arquivo: verifique o formato do arquivo"
 
 #: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:141
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:130
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:145
 msgid "Unable to process request: "
 msgstr "Não é possível processar o pedido:"
 
@@ -9036,8 +9025,8 @@ msgid "a new project from scratch"
 msgstr "um novo projeto do nada"
 
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectOverviewStep.java:95
-msgid "an exported Miradi file (.mpz or .cpmz)"
-msgstr "um arquivo de Miradi (.mpz ou .cpmz)"
+msgid "an exported Miradi file (.Miradi, .mpz or .cpmz)"
+msgstr ""
 
 # Unclear English
 #: Miradi/source/org/miradi/dialogs/NeverShowAgainPanel.java:48
@@ -27446,6 +27435,44 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+# Nothing should be translated here, correct?
+#~ msgid ""
+#~ "<div class='WizardText'><p><table><tr><td><input type='submit' "
+#~ "name='Back' value='&lt; Previous'></input></td><td><input type='submit' "
+#~ "name='ImportMpz' value='Old Miradi Project (.mpz)'></input></td></"
+#~ "tr><tr><td></td><td><input type='submit' name='ImportCpmz' value='ConPro/"
+#~ "Miradi Exchange File (.cpmz)'></input></td></tr></table></p><br>"
+#~ msgstr ""
+#~ "<div class='WizardText'><p><table><tr><td><input type='submit' "
+#~ "name='Back' value='&lt; Previous'></input></td><td><input type='submit' "
+#~ "name='ImportMpz' value='Old Miradi Project (.mpz)'></input></td></"
+#~ "tr><tr><td></td><td><input type='submit' name='ImportCpmz' value='ConPro/"
+#~ "Miradi Exchange File (.cpmz)'></input></td></tr></table></p><br>"
+
+# Please verify that all the correct information is translated.
+#~ msgid ""
+#~ "<div class='WizardText'>Miradi is able to import two different kinds of "
+#~ "project files.<BR>MPZ files are <a href='Definition:ImportZip' "
+#~ "class='definition'>Miradi Project Zip</a> files that were created by "
+#~ "exporting a project from within Miradi. <BR>CPMZ files are used to import "
+#~ "and export project data from ConPro, The Nature Conservancy's online "
+#~ "project database.<BR><BR>To import a MPZ, or CPMZ file, click the button "
+#~ "for the appropriate file type, select the file in the dialog that pops up "
+#~ "and then click <strong>import</strong>."
+#~ msgstr ""
+#~ "<div class='WizardText'>Miradi pode importar dois tipos de arquivos de "
+#~ "projeto.<BR>Arquivos MPZ são <a href='Definition:ImportZip' "
+#~ "class='definition'>arquivos Zip</a> de Projetos de Miradi que foram "
+#~ "criados dentro de Miradi pela exportação de um projeto.  <BR>Arquivos de "
+#~ "CPMZ são usados para importar e exportar dados de projetos de ConPro, o "
+#~ "banco de dados on-line de projetos da The Nature Conservancy (TNC)."
+#~ "<BR><BR>Para importar um arquivo MPZ ou CPMZ, clique o botão para o tipo "
+#~ "de arquivo apropriado, selecione o arquivo no dialogo que  aparece e "
+#~ "depois clique <strong>importar</strong>."
+
+#~ msgid "an exported Miradi file (.mpz or .cpmz)"
+#~ msgstr "um arquivo de Miradi (.mpz ou .cpmz)"
 
 # not sure of what this is referring to in English
 #~ msgid "%1 with taxonomy assignments"
