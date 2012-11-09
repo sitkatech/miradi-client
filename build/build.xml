@@ -17,8 +17,8 @@
     <property name="binaries.cvs.module"  value="Miradi"/>
 	
 	<!-- directories -->
-	<echo message="Workspace is ${jobname}" />
-	<property name="workspace" value="Miradi 3.4 Language Packs" />
+	<property name="workspace" value="${WORKSPACE}" />
+	<echo message="Workspace is ${workspace}" />
     <property name="dist.dir" value="${workspace}/dist"/>
     <property name="dist.temp" value="${dist.dir}/temp"/>
     <property name="dist.temp.jars" value="${dist.temp}/jars"/>
