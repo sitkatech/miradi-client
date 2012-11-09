@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-08 16:01-0600\n"
+"POT-Creation-Date: 2012-11-08 18:46-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -493,13 +493,10 @@ msgid ""
 msgstr ""
 "<div class='DataPanel'><p>为何我对每种类型因素的选择被限定为一种颜色族?</p> "
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:80
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:82
 msgid ""
 "<div class='WizardText'><p><table><tr><td><input type='submit' name='Back' "
-"value='&lt; Previous'></input></td><td><input type='submit' name='ImportMpz' "
-"value='Old Miradi Project (.mpz)'></input></td></tr><tr><td></td><td><input "
-"type='submit' name='ImportCpmz' value='ConPro/Miradi Exchange File (."
-"cpmz)'></input></td></tr></table></p><br>"
+"value='&lt; Previous'></input></td><td><input type='submit' name='"
 msgstr ""
 
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:76
@@ -512,16 +509,16 @@ msgstr ""
 "value='&lt; Previous'></input></td><td><input type='submit' name='Next' "
 "value='Next &gt;'></input></td></tr> \t\t"
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:71
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:72
 msgid ""
-"<div class='WizardText'>Miradi is able to import two different kinds of "
-"project files.<BR>MPZ files are <a href='Definition:ImportZip' "
-"class='definition'>Miradi Project Zip</a> files that were created by "
-"exporting a project from within Miradi. <BR>CPMZ files are used to import "
-"and export project data from ConPro, The Nature Conservancy's online project "
-"database.<BR><BR>To import a MPZ, or CPMZ file, click the button for the "
-"appropriate file type, select the file in the dialog that pops up and then "
-"click <strong>import</strong>."
+"<div class='WizardText'>Miradi is able to import three different kinds of "
+"project files.<BR>Miradi files are new project files <BR>MPZ files are <a "
+"href='Definition:ImportZip' class='definition'>Miradi Project Zip</a> files "
+"that were created by exporting a project from within Miradi. <BR>CPMZ files "
+"are used to import and export project data from ConPro, The Nature "
+"Conservancy's online project database.<BR><BR>To import a Miradi, MPZ, or "
+"CPMZ file, click the button for the appropriate file type, select the file "
+"in the dialog that pops up and then click <strong>import</strong>."
 msgstr ""
 
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/TreeBasedProjectList.java:64
@@ -1492,6 +1489,10 @@ msgstr "去除资源 \t\t"
 #: Miradi/source/org/miradi/actions/views/ActionViewMap.java:35
 msgid "Action|Maps"
 msgstr "地图 \t\t"
+
+#: Miradi/source/org/miradi/actions/ActionImportMpf.java:35
+msgid "Action|Miradi (.Miradi) Project File"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExportMpz.java:35
 msgid "Action|Miradi 3.3 MPZ Project File"
@@ -4756,11 +4757,11 @@ msgstr "中"
 msgid "Medium (Default)"
 msgstr "中等（默认）"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:245
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:246
 msgid "MenuBar|Actions"
 msgstr "动作 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:175
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:176
 msgid "MenuBar|Edit"
 msgstr "编辑 \t\t"
 
@@ -4768,15 +4769,15 @@ msgstr "编辑 \t\t"
 msgid "MenuBar|File"
 msgstr "文件 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:576
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:577
 msgid "MenuBar|Help"
 msgstr "帮助 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:508
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:509
 msgid "MenuBar|Step-by-Step"
 msgstr "一步一步 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:437
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:438
 msgid "MenuBar|View"
 msgstr "视图 \t\t"
 
@@ -4813,7 +4814,7 @@ msgid "Menu|Export Current Project as..."
 msgstr "导出当前项目为... "
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:282
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:425
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:426
 msgid "Menu|Group Box"
 msgstr "组合框 \t\t"
 
@@ -6822,6 +6823,10 @@ msgstr "导入一个从ConPro导出的.cpmz文件 \t\t"
 msgid "TT|Import a .mpz file that was exported by an earlier version of Miradi"
 msgstr ""
 
+#: Miradi/source/org/miradi/actions/ActionImportMpf.java:41
+msgid "TT|Import a Miradi file"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionImportAccountingCodes.java:40
 msgid "TT|Import accounting codes"
 msgstr "导入会计编码 \t\t"
@@ -7941,7 +7946,7 @@ msgid "Unable to process file: verify file format"
 msgstr "无法处理文件：确认文件格式 \t\t"
 
 #: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:141
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:130
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:145
 msgid "Unable to process request: "
 msgstr "无法处理请求： \t\t"
 
@@ -8432,7 +8437,7 @@ msgid "a new project from scratch"
 msgstr "重新开始一个新项目"
 
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectOverviewStep.java:95
-msgid "an exported Miradi file (.mpz or .cpmz)"
+msgid "an exported Miradi file (.Miradi, .mpz or .cpmz)"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/NeverShowAgainPanel.java:48
