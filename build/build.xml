@@ -17,7 +17,7 @@
     <property name="binaries.cvs.module"  value="Miradi"/>
 	
 	<!-- directories -->
-	<property name="workspace" value="${WORKSPACE} />
+	<property name="workspace" value="${JOB_NAME} />
 	<echo message="Workspace is ${workspace}" />
     <property name="dist.dir" value="${workspace}/dist"/>
 
