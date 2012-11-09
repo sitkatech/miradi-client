@@ -123,7 +123,6 @@ import org.miradi.actions.ActionTreeCreateRelevancyActivity;
 import org.miradi.actions.ActionZoomIn;
 import org.miradi.actions.ActionZoomOut;
 import org.miradi.actions.ActionZoomToFit;
-import org.miradi.actions.MiradiAction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.ChainWalker;
 import org.miradi.diagram.DiagramComponent;
@@ -166,6 +165,7 @@ import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.utils.CommandVector;
 import org.miradi.utils.DiagramCorruptionDetector;
 import org.miradi.utils.PointList;
 import org.miradi.views.TabbedView;
@@ -426,8 +426,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		if (!isStategyBrainstormMode())
 			return;
 	
-		MiradiAction actionShowFullModelMode = getActions().get(ActionShowFullModelMode.class);
-		actionShowFullModelMode.doAction();
+		CommandVector commands = ShowFullModelModeDoer.createCommandsToSwithToDefaultMode(getViewData().getRef());
+		getProject().executeAsSideEffect(commands);
 	}
 
 	@Override
