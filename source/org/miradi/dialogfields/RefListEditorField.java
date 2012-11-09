@@ -34,12 +34,7 @@ public class RefListEditorField extends ObjectDataInputField implements ListSele
 {
 	public RefListEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		this(projectToUse, new ORef(objectTypeToUse, objectIdToUse), tagToUse, questionToUse);
-	}
-	
-	public RefListEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse)
-	{
-		super(projectToUse, refToUse, tagToUse);
+		super(projectToUse, new ORef(objectTypeToUse, objectIdToUse), tagToUse);
 		
 		refListEditor = new RefListComponent(questionToUse);
 		refListEditor.addListSelectionListener(this);
