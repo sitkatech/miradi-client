@@ -29,9 +29,9 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramObject;
 import org.miradi.project.Project;
 
-public class RootProjectNode extends TreeTableNode
+public class TaggedObjectSetRootProjectNode extends TreeTableNode
 {
-	public RootProjectNode(Project projectToUse) throws Exception
+	public TaggedObjectSetRootProjectNode(Project projectToUse) throws Exception
 	{
 		project = projectToUse;
 		rebuild();
