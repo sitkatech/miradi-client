@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel.rebuilder;
 
-import org.miradi.schemas.CauseSchema;
+import org.miradi.objects.Cause;
 import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IntermediateResultSchema;
@@ -35,20 +35,21 @@ import org.miradi.schemas.ThreatReductionResultSchema;
 public class FactorNoderSorter extends NodeSorter
 {
 	@Override
-	protected int[] getNodeSortOrder()
+	protected String[] getNodeSortOrder()
 	{
-		return new int[] {
-			ScopeBoxSchema.getObjectType(),
-			TargetSchema.getObjectType(),
-			HumanWelfareTargetSchema.getObjectType(),
-			StressSchema.getObjectType(),
-			CauseSchema.getObjectType(),
-			ThreatReductionResultSchema.getObjectType(),
-			IntermediateResultSchema.getObjectType(),
-			StrategySchema.getObjectType(),
-			TaskSchema.getObjectType(),
-			GroupBoxSchema.getObjectType(),
-			TextBoxSchema.getObjectType(),
+		return new String[] {
+			ScopeBoxSchema.OBJECT_NAME,
+			TargetSchema.OBJECT_NAME,
+			HumanWelfareTargetSchema.OBJECT_NAME,
+			StressSchema.OBJECT_NAME,
+			Cause.OBJECT_NAME_THREAT,
+			Cause.OBJECT_NAME_CONTRIBUTING_FACTOR,
+			ThreatReductionResultSchema.OBJECT_NAME,
+			IntermediateResultSchema.OBJECT_NAME,
+			StrategySchema.OBJECT_NAME,
+			TaskSchema.ACTIVITY_NAME,
+			GroupBoxSchema.OBJECT_NAME,
+			TextBoxSchema.OBJECT_NAME,
 		};
 	}
 }

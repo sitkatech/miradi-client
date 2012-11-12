@@ -21,13 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel.rebuilder;
 
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.Cause;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.BudgetCategoryTwoSchema;
-import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FundingSourceSchema;
@@ -69,31 +69,34 @@ public class TreeRebuilderNodeSorter extends NodeSorter
 	}
 	
 	@Override
-	protected int[] getNodeSortOrder()
+	protected String[] getNodeSortOrder()
 	{
-		return new int[] {
-			TargetSchema.getObjectType(),
-			HumanWelfareTargetSchema.getObjectType(),
-			KeyEcologicalAttributeSchema.getObjectType(),
-			ResultsChainDiagramSchema.getObjectType(),
-			ConceptualModelDiagramSchema.getObjectType(),
-			MeasurementSchema.getObjectType(),
-			GoalSchema.getObjectType(),
-			SubTargetSchema.getObjectType(),
-			CauseSchema.getObjectType(),
-			ThreatReductionResultSchema.getObjectType(),
-			IntermediateResultSchema.getObjectType(),
-			ObjectiveSchema.getObjectType(),
-			StrategySchema.getObjectType(),
-			IndicatorSchema.getObjectType(),
-			ProjectResourceSchema.getObjectType(),
-			AccountingCodeSchema.getObjectType(),
-			FundingSourceSchema.getObjectType(),
-			BudgetCategoryOneSchema.getObjectType(),
-			BudgetCategoryTwoSchema.getObjectType(),
-			TaskSchema.getObjectType(),
-			ResourceAssignmentSchema.getObjectType(),
-			ExpenseAssignmentSchema.getObjectType(),
+		return new String[] {
+			TargetSchema.OBJECT_NAME,
+			HumanWelfareTargetSchema.OBJECT_NAME,
+			KeyEcologicalAttributeSchema.OBJECT_NAME,
+			ResultsChainDiagramSchema.OBJECT_NAME,
+			ConceptualModelDiagramSchema.OBJECT_NAME,
+			MeasurementSchema.OBJECT_NAME,
+			GoalSchema.OBJECT_NAME,
+			SubTargetSchema.OBJECT_NAME,
+			Cause.OBJECT_NAME_THREAT,
+			Cause.OBJECT_NAME_CONTRIBUTING_FACTOR,
+			ThreatReductionResultSchema.OBJECT_NAME,
+			IntermediateResultSchema.OBJECT_NAME,
+			ObjectiveSchema.OBJECT_NAME,
+			StrategySchema.OBJECT_NAME,
+			IndicatorSchema.OBJECT_NAME,
+			ProjectResourceSchema.OBJECT_NAME,
+			AccountingCodeSchema.OBJECT_NAME,
+			FundingSourceSchema.OBJECT_NAME,
+			BudgetCategoryOneSchema.OBJECT_NAME,
+			BudgetCategoryTwoSchema.OBJECT_NAME,
+			TaskSchema.ACTIVITY_NAME,
+			TaskSchema.METHOD_NAME,
+			TaskSchema.OBJECT_NAME,
+			ResourceAssignmentSchema.OBJECT_NAME,
+			ExpenseAssignmentSchema.OBJECT_NAME,
 		};
 	}
 	
