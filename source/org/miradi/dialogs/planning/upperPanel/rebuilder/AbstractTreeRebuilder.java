@@ -322,7 +322,7 @@ abstract public class AbstractTreeRebuilder
 
 	private NodeSorter createNodeSorter(ORef parentRefToUse)
 	{
-		return new NodeSorter(parentRefToUse);
+		return new TreeRebuilderNodeSorter(parentRefToUse);
 	}
 
 	protected PlanningTreeRowColumnProvider getRowColumnProvider()
