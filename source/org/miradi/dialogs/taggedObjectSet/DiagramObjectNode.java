@@ -19,6 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.taggedObjectSet;
 
+import java.util.Arrays;
+
+import org.miradi.dialogs.planning.upperPanel.rebuilder.FactorNoderSorter;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
@@ -74,7 +77,7 @@ public class DiagramObjectNode extends TreeTableNode
 			children[index] = factorNode;
 		}
 		
-		sortChildren(children);
+		Arrays.sort(children, new FactorNoderSorter());
 	}
 	
 	@Override
