@@ -27,30 +27,8 @@ import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Measurement;
-import org.miradi.schemas.AccountingCodeSchema;
-import org.miradi.schemas.BudgetCategoryOneSchema;
-import org.miradi.schemas.BudgetCategoryTwoSchema;
-import org.miradi.schemas.CauseSchema;
-import org.miradi.schemas.ConceptualModelDiagramSchema;
-import org.miradi.schemas.ExpenseAssignmentSchema;
-import org.miradi.schemas.FundingSourceSchema;
-import org.miradi.schemas.GoalSchema;
-import org.miradi.schemas.HumanWelfareTargetSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.IntermediateResultSchema;
-import org.miradi.schemas.KeyEcologicalAttributeSchema;
-import org.miradi.schemas.MeasurementSchema;
-import org.miradi.schemas.ObjectiveSchema;
-import org.miradi.schemas.ProjectResourceSchema;
-import org.miradi.schemas.ResourceAssignmentSchema;
-import org.miradi.schemas.ResultsChainDiagramSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.SubTargetSchema;
-import org.miradi.schemas.TargetSchema;
-import org.miradi.schemas.TaskSchema;
-import org.miradi.schemas.ThreatReductionResultSchema;
 
-public class NodeSorter implements Comparator<AbstractPlanningTreeNode>
+abstract public class NodeSorter implements Comparator<AbstractPlanningTreeNode>
 {
 	public NodeSorter()
 	{
@@ -148,31 +126,5 @@ public class NodeSorter implements Comparator<AbstractPlanningTreeNode>
 		return sortOrder.length;
 	}
 	
-	protected int[] getNodeSortOrder()
-	{
-		return new int[] {
-			TargetSchema.getObjectType(),
-			HumanWelfareTargetSchema.getObjectType(),
-			KeyEcologicalAttributeSchema.getObjectType(),
-			ResultsChainDiagramSchema.getObjectType(),
-			ConceptualModelDiagramSchema.getObjectType(),
-			MeasurementSchema.getObjectType(),
-			GoalSchema.getObjectType(),
-			SubTargetSchema.getObjectType(),
-			CauseSchema.getObjectType(),
-			ThreatReductionResultSchema.getObjectType(),
-			IntermediateResultSchema.getObjectType(),
-			ObjectiveSchema.getObjectType(),
-			StrategySchema.getObjectType(),
-			IndicatorSchema.getObjectType(),
-			ProjectResourceSchema.getObjectType(),
-			AccountingCodeSchema.getObjectType(),
-			FundingSourceSchema.getObjectType(),
-			BudgetCategoryOneSchema.getObjectType(),
-			BudgetCategoryTwoSchema.getObjectType(),
-			TaskSchema.getObjectType(),
-			ResourceAssignmentSchema.getObjectType(),
-			ExpenseAssignmentSchema.getObjectType(),
-		};
-	}
+	abstract protected int[] getNodeSortOrder();
 }
