@@ -126,6 +126,12 @@ public class Stress extends Factor
 		StressBasedThreatFormula formula = new StressBasedThreatFormula();
 		return formula.computeSeverityByScope(scopeRating, severityRating);
 	}
+
+	@Override
+	public String getDetails()
+	{
+		return getStringData(TAG_DETAIL);
+	}
 	
 	@Override
 	public String getShortLabel()
