@@ -67,6 +67,7 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 	public CreateProjectDialog(MainWindow parent, String title, File projectFileToUse) throws HeadlessException
 	{
 		super(parent);
+		
 		setTitle(title);
 		projectFile = projectFileToUse;
 		oldName = projectFile.getName();
