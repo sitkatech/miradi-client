@@ -22,19 +22,18 @@ package org.miradi.dialogs.planning.upperPanel.rebuilder;
 
 import java.util.Comparator;
 
-import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Measurement;
 
-abstract public class NodeSorter implements Comparator<AbstractPlanningTreeNode>
+abstract public class NodeSorter implements Comparator<TreeTableNode>
 {
 	public NodeSorter()
 	{
 	}
 	
-	public int compare(AbstractPlanningTreeNode nodeA, AbstractPlanningTreeNode nodeB)
+	public int compare(TreeTableNode nodeA, TreeTableNode nodeB)
 	{
 		int typeSortLocationA = getTypeSortLocation(nodeA.getType());
 		int typeSortLocationB = getTypeSortLocation(nodeB.getType());
@@ -61,7 +60,7 @@ abstract public class NodeSorter implements Comparator<AbstractPlanningTreeNode>
 		return true;
 	}
 	
-	private int compareTasks(AbstractPlanningTreeNode nodeA, AbstractPlanningTreeNode nodeB)
+	private int compareTasks(TreeTableNode nodeA, TreeTableNode nodeB)
 	{
 		try
 		{
@@ -92,7 +91,7 @@ abstract public class NodeSorter implements Comparator<AbstractPlanningTreeNode>
 
 
 
-	public int compareNodes(AbstractPlanningTreeNode nodeA, AbstractPlanningTreeNode nodeB)
+	public int compareNodes(TreeTableNode nodeA, TreeTableNode nodeB)
 	{
 		String labelA = nodeA.toString();
 		String labelB = nodeB.toString();
@@ -103,7 +102,7 @@ abstract public class NodeSorter implements Comparator<AbstractPlanningTreeNode>
 		return comparisonResult;
 	}
 
-	public boolean shouldReverseSort(AbstractPlanningTreeNode nodeA, AbstractPlanningTreeNode nodeB)
+	public boolean shouldReverseSort(TreeTableNode nodeA, TreeTableNode nodeB)
 	{
 		if (Measurement.is(nodeA.getType()) && Measurement.is(nodeB.getType()))
 			return true;
