@@ -26,10 +26,7 @@ import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Task;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.BudgetCategoryTwoSchema;
@@ -55,9 +52,8 @@ import org.miradi.schemas.ThreatReductionResultSchema;
 
 public class NodeSorter implements Comparator<AbstractPlanningTreeNode>
 {
-	public NodeSorter(ORef parentRefToUse)
+	public NodeSorter()
 	{
-		parentRef = parentRefToUse;
 	}
 	
 	public int compare(AbstractPlanningTreeNode nodeA, AbstractPlanningTreeNode nodeB)
@@ -83,13 +79,7 @@ public class NodeSorter implements Comparator<AbstractPlanningTreeNode>
 	}
 	
 	public boolean shouldSortChildren(ORef childRef)
-	{
-		if (!Task.is(childRef))
-			return true;
-
-		if(Task.is(parentRef) || Strategy.is(parentRef) || Indicator.is(parentRef))
-			return false;
-		
+	{		
 		return true;
 	}
 	
@@ -185,6 +175,4 @@ public class NodeSorter implements Comparator<AbstractPlanningTreeNode>
 			ExpenseAssignmentSchema.getObjectType(),
 		};
 	}
-	
-	private ORef parentRef;
 }
