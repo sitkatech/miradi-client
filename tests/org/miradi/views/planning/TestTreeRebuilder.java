@@ -25,6 +25,7 @@ import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNodeAlwaysExpanded;
 import org.miradi.dialogs.planning.upperPanel.rebuilder.NodeSorter;
 import org.miradi.dialogs.planning.upperPanel.rebuilder.NormalTreeRebuilder;
+import org.miradi.dialogs.planning.upperPanel.rebuilder.TreeRebuilderNodeSorter;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
@@ -73,14 +74,14 @@ public class TestTreeRebuilder extends TestCaseWithProject
 
 	private void verifyShouldSort(String string, ORef parentRef, ORef childRef)
 	{
-		NodeSorter rebuilder = new NodeSorter(parentRef);
-		assertTrue(string, rebuilder.shouldSortChildren(parentRef, childRef));
+		NodeSorter rebuilder = new TreeRebuilderNodeSorter(parentRef);
+		assertTrue(string, rebuilder.shouldSortChildren(childRef));
 	}
 	
 	private void verifyShouldNotSort(String string, ORef parentRef, ORef childRef)
 	{
-		NodeSorter rebuilder = new NodeSorter(parentRef);
-		assertFalse(string, rebuilder.shouldSortChildren(parentRef, childRef));
+		NodeSorter rebuilder = new TreeRebuilderNodeSorter(parentRef);
+		assertFalse(string, rebuilder.shouldSortChildren(childRef));
 	}
 	
 // TODO: Should have tests for all the basic "children of" cases
