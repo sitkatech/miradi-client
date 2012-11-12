@@ -21,7 +21,6 @@ package org.miradi.views.umbrella;
 
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -38,7 +37,6 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-
 
 import org.martus.swing.UiButton;
 import org.martus.swing.UiList;
@@ -64,7 +62,7 @@ import com.jhlabs.awt.GridLayoutPlus;
 public class CreateProjectDialog extends DialogWithButtonBar implements ActionListener,
 		ListSelectionListener
 {
-	public CreateProjectDialog(MainWindow parent, String title, File proposedProjectDirToUse, String proposedProjectNameToUse) throws HeadlessException
+	public CreateProjectDialog(MainWindow parent, String title, File proposedProjectDirToUse, String proposedProjectNameToUse) throws Exception
 	{
 		super(parent);
 		
@@ -80,7 +78,7 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 		oldNameField.setEditable(false);
 
 		projectFilenameField = createTextArea();
-		projectFilenameField.setText(oldName);
+		projectFilenameField.setText(Project.withoutMpfProjectSuffix(oldName));
 		
 		existingProjectList = createExistingProjectList();
 		UiScrollPane uiScrollPane = new UiScrollPane(existingProjectList);
