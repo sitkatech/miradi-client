@@ -40,16 +40,11 @@ import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
-import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
-import org.miradi.schemas.AccountingCodeSchema;
-import org.miradi.schemas.BudgetCategoryOneSchema;
-import org.miradi.schemas.BudgetCategoryTwoSchema;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
-import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
@@ -57,7 +52,6 @@ import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ObjectiveSchema;
-import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
@@ -326,147 +320,11 @@ abstract public class AbstractTreeRebuilder
 		}
 	}
 
-	public boolean shouldSortChildren(ORef parentRef, ORef childRef)
-	{
-		if (!Task.is(childRef))
-			return true;
-
-		if(Task.is(parentRef) || Strategy.is(parentRef) || Indicator.is(parentRef))
-			return false;
-		
-		return true;
-	}
-
 	private NodeSorter createNodeSorter(ORef parentRefToUse)
 	{
 		return new NodeSorter(parentRefToUse);
 	}
 
-	private class NodeSorter implements Comparator<AbstractPlanningTreeNode>
-	{
-		public NodeSorter(ORef parentRefToUse)
-		{
-			parentRef = parentRefToUse;
-		}
-		
-		public int compare(AbstractPlanningTreeNode nodeA, AbstractPlanningTreeNode nodeB)
-		{
-			int typeSortLocationA = getTypeSortLocation(nodeA.getType());
-			int typeSortLocationB = getTypeSortLocation(nodeB.getType());
-			int diff = typeSortLocationA - typeSortLocationB;
-			if(diff != 0)
-				return diff;
-
-			ORef refA = nodeA.getObjectReference();
-			ORef refB = nodeB.getObjectReference();
-			if(refA.isValid() && refB.isInvalid())
-				return -1;
-			
-			if(refA.isInvalid() && refB.isValid())
-				return 1;
-
-			if (!shouldSortChildren(parentRef, refA) || !shouldSortChildren(parentRef, refB))
-				return compareTasks(nodeA, nodeB);
-			
-			return compareNodes(nodeA, nodeB);
-		}
-		
-		private int compareTasks(AbstractPlanningTreeNode nodeA, AbstractPlanningTreeNode nodeB)
-		{
-			try
-			{
-				Integer indexOfA = getIndexofChild(nodeA);
-				Integer indexOfB = getIndexofChild(nodeB);
-				
-				return indexOfA.compareTo(indexOfB);
-			}
-			catch (Exception e)
-			{
-				EAM.logException(e);
-				EAM.unexpectedErrorDialog();
-				return 0;
-			}
-		}
-		
-		private int getIndexofChild(TreeTableNode childNode) throws Exception
-		{
-			TreeTableNode parentNode = childNode.getParentNode();
-			for (int index = 0; index < parentNode.getChildCount(); ++index)
-			{
-				if (parentNode.getChild(index).equals(childNode))
-					return index;
-			}
-			
-			return -1;
-		}
-
-
-
-		public int compareNodes(AbstractPlanningTreeNode nodeA, AbstractPlanningTreeNode nodeB)
-		{
-			String labelA = nodeA.toString();
-			String labelB = nodeB.toString();
-			int comparisonResult = labelA.compareToIgnoreCase(labelB);
-			if (shouldReverseSort(nodeA, nodeB))
-				return -comparisonResult;
-			
-			return comparisonResult;
-		}
-
-		public boolean shouldReverseSort(AbstractPlanningTreeNode nodeA, AbstractPlanningTreeNode nodeB)
-		{
-			if (Measurement.is(nodeA.getType()) && Measurement.is(nodeB.getType()))
-				return true;
-			
-			return false;
-		}
-				
-		private int getTypeSortLocation(int type)
-		{
-			int[] sortOrder = getNodeSortOrder();
-			for(int index = 0; index < sortOrder.length; ++index)
-			{
-				if(type == sortOrder[index])
-				{
-					return index;
-				}
-			}
-			
-			EAM.logError("NodeSorter unknown type: " + type);
-			return sortOrder.length;
-		}
-		
-		private ORef parentRef;
-	}
-	
-	private int[] getNodeSortOrder()
-	{
-		return new int[] {
-			TargetSchema.getObjectType(),
-			HumanWelfareTargetSchema.getObjectType(),
-			KeyEcologicalAttributeSchema.getObjectType(),
-			ResultsChainDiagramSchema.getObjectType(),
-			ConceptualModelDiagramSchema.getObjectType(),
-			MeasurementSchema.getObjectType(),
-			GoalSchema.getObjectType(),
-			SubTargetSchema.getObjectType(),
-			CauseSchema.getObjectType(),
-			ThreatReductionResultSchema.getObjectType(),
-			IntermediateResultSchema.getObjectType(),
-			ObjectiveSchema.getObjectType(),
-			StrategySchema.getObjectType(),
-			IndicatorSchema.getObjectType(),
-			ProjectResourceSchema.getObjectType(),
-			AccountingCodeSchema.getObjectType(),
-			FundingSourceSchema.getObjectType(),
-			BudgetCategoryOneSchema.getObjectType(),
-			BudgetCategoryTwoSchema.getObjectType(),
-			TaskSchema.getObjectType(),
-			ResourceAssignmentSchema.getObjectType(),
-			ExpenseAssignmentSchema.getObjectType(),
-		};
-	}
-	
 	protected PlanningTreeRowColumnProvider getRowColumnProvider()
 	{
 		return rowColumnProvider;
