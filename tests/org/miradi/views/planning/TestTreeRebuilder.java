@@ -23,6 +23,7 @@ package org.miradi.views.planning;
 import org.miradi.dialogs.planning.CustomTablePlanningTreeRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNodeAlwaysExpanded;
+import org.miradi.dialogs.planning.upperPanel.rebuilder.NodeSorter;
 import org.miradi.dialogs.planning.upperPanel.rebuilder.NormalTreeRebuilder;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.ids.BaseId;
@@ -72,13 +73,13 @@ public class TestTreeRebuilder extends TestCaseWithProject
 
 	private void verifyShouldSort(String string, ORef parentRef, ORef childRef)
 	{
-		NormalTreeRebuilder rebuilder = new NormalTreeRebuilder(getProject(), null);
+		NodeSorter rebuilder = new NodeSorter(parentRef);
 		assertTrue(string, rebuilder.shouldSortChildren(parentRef, childRef));
 	}
 	
 	private void verifyShouldNotSort(String string, ORef parentRef, ORef childRef)
 	{
-		NormalTreeRebuilder rebuilder = new NormalTreeRebuilder(getProject(), null);
+		NodeSorter rebuilder = new NodeSorter(parentRef);
 		assertFalse(string, rebuilder.shouldSortChildren(parentRef, childRef));
 	}
 	
