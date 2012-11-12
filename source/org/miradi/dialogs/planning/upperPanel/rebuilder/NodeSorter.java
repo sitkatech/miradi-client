@@ -35,8 +35,8 @@ abstract public class NodeSorter implements Comparator<TreeTableNode>
 	
 	public int compare(TreeTableNode nodeA, TreeTableNode nodeB)
 	{
-		int typeSortLocationA = getTypeSortLocation(nodeA.getType());
-		int typeSortLocationB = getTypeSortLocation(nodeB.getType());
+		int typeSortLocationA = getTypeSortLocation(nodeA.getObject().getTypeName());
+		int typeSortLocationB = getTypeSortLocation(nodeB.getObject().getTypeName());
 		int diff = typeSortLocationA - typeSortLocationB;
 		if(diff != 0)
 			return diff;
@@ -110,20 +110,20 @@ abstract public class NodeSorter implements Comparator<TreeTableNode>
 		return false;
 	}
 			
-	private int getTypeSortLocation(int type)
+	private int getTypeSortLocation(final String typeName)
 	{
-		int[] sortOrder = getNodeSortOrder();
+		final String[] sortOrder = getNodeSortOrder();
 		for(int index = 0; index < sortOrder.length; ++index)
 		{
-			if(type == sortOrder[index])
+			if(typeName.equals(sortOrder[index]))
 			{
 				return index;
 			}
 		}
 		
-		EAM.logError("NodeSorter unknown type: " + type);
+		EAM.logError("NodeSorter unknown type: " + typeName);
 		return sortOrder.length;
 	}
 	
-	abstract protected int[] getNodeSortOrder();
+	abstract protected String[] getNodeSortOrder();
 }
