@@ -474,24 +474,6 @@ abstract public class FactorCell extends EAMGraphCell
 		return false;
 	}
 	
-
-	int getAnnotationLeftOffset()
-	{
-		if(getIndicators().size() == 0)
-			return MultilineCellRenderer.INDICATOR_WIDTH / 2;
-		
-		int indicatorOffset = getInsetDimension().width - MultilineCellRenderer.INDICATOR_WIDTH / 2;
-		if(indicatorOffset < 0)
-			indicatorOffset = 0;
-		int annotationOffset = indicatorOffset + MultilineCellRenderer.INDICATOR_WIDTH;
-		return annotationOffset;
-	}
-	
-	int getAnnotationRightInset()
-	{
-		return MultilineCellRenderer.INDICATOR_WIDTH / 2;
-	}
-
 	public Dimension getInsetDimension()
 	{
 		return new Dimension(0, 0);
