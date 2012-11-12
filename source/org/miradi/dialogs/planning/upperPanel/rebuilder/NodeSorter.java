@@ -76,18 +76,18 @@ public class NodeSorter implements Comparator<AbstractPlanningTreeNode>
 		if(refA.isInvalid() && refB.isValid())
 			return 1;
 
-		if (!shouldSortChildren(parentRef, refA) || !shouldSortChildren(parentRef, refB))
+		if (!shouldSortChildren(refA) || !shouldSortChildren(refB))
 			return compareTasks(nodeA, nodeB);
 		
 		return compareNodes(nodeA, nodeB);
 	}
 	
-	public boolean shouldSortChildren(ORef parentRefToUse, ORef childRef)
+	public boolean shouldSortChildren(ORef childRef)
 	{
 		if (!Task.is(childRef))
 			return true;
 
-		if(Task.is(parentRefToUse) || Strategy.is(parentRefToUse) || Indicator.is(parentRefToUse))
+		if(Task.is(parentRef) || Strategy.is(parentRef) || Indicator.is(parentRef))
 			return false;
 		
 		return true;
