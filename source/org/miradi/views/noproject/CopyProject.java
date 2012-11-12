@@ -39,7 +39,7 @@ public class CopyProject
 		
 		try
 		{
-			CreateProjectDialog dlg = new CreateProjectDialog(mainWindow, EAM.text("Save As..."), projectToCopy);
+			CreateProjectDialog dlg = new CreateProjectDialog(mainWindow, EAM.text("Save As..."), projectToCopy.getParentFile(), projectToCopy.getName());
 			if(!dlg.showSaveAsDialog())
 				return;
 
