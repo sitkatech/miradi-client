@@ -64,7 +64,7 @@ import com.jhlabs.awt.GridLayoutPlus;
 public class CreateProjectDialog extends DialogWithButtonBar implements ActionListener,
 		ListSelectionListener
 {
-	public CreateProjectDialog(MainWindow parent, String title, File projectFileToUse) throws HeadlessException
+	public CreateProjectDialog(MainWindow parent, String title, File proposedProjectDirToUse, String proposedProjectNameToUse) throws HeadlessException
 	{
 		super(parent);
 		
@@ -72,8 +72,8 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 		setModal(true);
 		setResizable(true);
 
-		projectFile = projectFileToUse;
-		oldName = projectFile.getName();
+		proposedProjectDir = proposedProjectDirToUse;
+		oldName = proposedProjectNameToUse;
 		
 		final Vector<Component> buttons = createButtonComponents();
 		final PanelTextFieldWithSelectAllOnFocusGained oldNameField = new PanelTextFieldWithSelectAllOnFocusGained(oldName);
@@ -89,7 +89,7 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 		MiradiPanel panel = new MiradiPanel(new GridLayoutPlus(0, 2));
 		panel.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
 		
-		final PanelTextFieldWithSelectAllOnFocusGained projectDirectoryPanel = new PanelTextFieldWithSelectAllOnFocusGained(projectFile.getParent());
+		final PanelTextFieldWithSelectAllOnFocusGained projectDirectoryPanel = new PanelTextFieldWithSelectAllOnFocusGained(proposedProjectDir.getParent());
 		projectDirectoryPanel.setEditable(false);
 		panel.add(new PanelTitleLabel(EAM.text("Current project directory:")));
 		panel.add(projectDirectoryPanel);
@@ -136,7 +136,7 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 		if(!filename.endsWith(".Miradi"))
 			filename += ".Miradi";
 		
-		return new File(getProjectFile().getParentFile(), filename);
+		return new File(getProjectDir(), filename);
 	}
 
 	private String getSelectedFilename()
@@ -334,12 +334,12 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 				.getSelectedValue());
 	}
 	
-	private File getProjectFile()
+	private File getProjectDir()
 	{
-		return projectFile;
+		return proposedProjectDir;
 	}
 
-	private File projectFile;
+	private File proposedProjectDir;
 	private String oldName;
 	private boolean result;
 	private UiList existingProjectList;

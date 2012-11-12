@@ -42,7 +42,8 @@ public class SaveProjectAsDoer extends MainWindowDoer
 		if (!isAvailable())
 			return;
 		
-		CreateProjectDialog saveDialog = new CreateProjectDialog(getMainWindow(), EAM.text("Save As..."), getProject().getProjectFile());
+		final File projectFile = getProject().getProjectFile();
+		CreateProjectDialog saveDialog = new CreateProjectDialog(getMainWindow(), EAM.text("Save As..."), projectFile.getParentFile(), projectFile.getName());
 		if(!saveDialog.showSaveAsDialog())
 			return;
 
