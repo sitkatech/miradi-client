@@ -69,14 +69,13 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 		super(parent);
 		
 		setTitle(title);
-		projectFile = projectFileToUse;
-		oldName = projectFile.getName();
-		
 		setModal(true);
 		setResizable(true);
 
+		projectFile = projectFileToUse;
+		oldName = projectFile.getName();
+		
 		final Vector<Component> buttons = createButtonComponents();
-
 		final PanelTextFieldWithSelectAllOnFocusGained oldNameField = new PanelTextFieldWithSelectAllOnFocusGained(oldName);
 		oldNameField.setEditable(false);
 
