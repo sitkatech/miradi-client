@@ -67,12 +67,6 @@ public class FactorTreeTableNode extends TreeTableNode
 	}
 
 	@Override
-	public int compareTo(TreeTableNode otherNode)
-	{
-		return otherNode.getObjectReference().compareTo(getObjectReference());
-	}
-	
-	@Override
 	public String toRawString()
 	{
 		return factor.toString();
