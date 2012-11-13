@@ -37,7 +37,6 @@ public class TreeNodeCreateObjectiveDoer extends AbstractTreeCreateAnnotationDoe
 		return Factor.TAG_OBJECTIVE_IDS;
 	}
 
-	@Override
 	protected boolean isAvailableForFactor(Factor factor)
 	{
 		return factor.canHaveObjectives();
@@ -46,7 +45,10 @@ public class TreeNodeCreateObjectiveDoer extends AbstractTreeCreateAnnotationDoe
 	@Override
 	protected boolean isCorrectOwner(BaseObject selectedObject)
 	{
-		return Factor.isFactor(selectedObject);
+		if (!Factor.isFactor(selectedObject))
+			return false;
+		
+		return isAvailableForFactor((Factor) selectedObject);
 	}
 
 	@Override
