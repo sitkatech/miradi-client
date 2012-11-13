@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning.doers;
 
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.schemas.IndicatorSchema;
 
@@ -40,6 +41,12 @@ public class TreeNodeCreateIndicatorDoer extends AbstractTreeCreateAnnotationDoe
 	protected boolean isAvailableForFactor(Factor factor)
 	{
 		return factor.canDirectlyOwnIndicators();
+	}
+	
+	@Override
+	protected boolean isCorrectOwner(BaseObject selectedObject)
+	{
+		return Factor.isFactor(selectedObject);
 	}
 
 	@Override
