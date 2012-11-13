@@ -37,18 +37,13 @@ public class TreeNodeCreateIndicatorDoer extends AbstractTreeCreateAnnotationDoe
 		return Factor.TAG_INDICATOR_IDS;
 	}
 
-	private boolean isAvailableForFactor(Factor factor)
-	{
-		return factor.canDirectlyOwnIndicators();
-	}
-	
 	@Override
 	protected boolean isCorrectOwner(BaseObject selectedObject)
 	{
 		if (!Factor.isFactor(selectedObject))
 			return false;
 		
-		return isAvailableForFactor((Factor) selectedObject);
+		return ((Factor) selectedObject).canDirectlyOwnIndicators();
 	}
 
 	@Override
