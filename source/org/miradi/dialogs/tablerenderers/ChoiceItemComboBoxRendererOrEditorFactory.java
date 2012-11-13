@@ -61,8 +61,8 @@ public class ChoiceItemComboBoxRendererOrEditorFactory extends ObjectTableCellEd
 	private void useSwappedBackgroundAndForegroundColors(JTable table)
 	{
 		Color foregroundToBeUsedAsBackground = table.getSelectionForeground();
-		Color backgroundToBeUsedAsForground = table.getSelectionBackground();
-		setBothComponentColors(backgroundToBeUsedAsForground, foregroundToBeUsedAsBackground);
+		Color backgroundToBeUsedAsForeground = table.getSelectionBackground();
+		setBothComponentColors(backgroundToBeUsedAsForeground, foregroundToBeUsedAsBackground);
 	}
 
 	private void setBothComponentColors(Color fg, Color bg)
