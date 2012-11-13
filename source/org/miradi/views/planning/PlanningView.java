@@ -24,6 +24,7 @@ import java.util.HashMap;
 
 import org.miradi.actions.ActionCreateChildTask;
 import org.miradi.actions.ActionCreateCustomFromCurrentTreeTableConfiguration;
+import org.miradi.actions.ActionCreateIndicatorMeasurement;
 import org.miradi.actions.ActionCreatePlanningViewConfigurationMenu;
 import org.miradi.actions.ActionCreatePlanningViewEmptyConfiguration;
 import org.miradi.actions.ActionCreatePlanningViewPrefilledConfiguration;
@@ -191,6 +192,7 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionPlanningColumnsEditor.class, new PlanningColumnsEditorDoer());
 		addDoerToMap(ActionPlanningCustomizeDialogPopup.class, new PlanningCustomizeDialogPopupDoer());
 		addDoerToMap(ActionCreateCustomFromCurrentTreeTableConfiguration.class, new CreateCustomFromCurrentTreeTableConfigurationDoer());
+		addDoerToMap(ActionCreateIndicatorMeasurement.class, new CreateMeasurementDoer());
 	}
 	
 	private HashMap<String, PlanningTreeManagementPanel> getManagementPanelMap()

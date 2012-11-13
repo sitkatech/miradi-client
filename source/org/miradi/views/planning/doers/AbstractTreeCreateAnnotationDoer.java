@@ -42,7 +42,7 @@ abstract public class AbstractTreeCreateAnnotationDoer extends AbstractTreeNodeD
 			if (selectedObject == null)
 				return false;
 
-			if (!Factor.isFactor(selectedObject))
+			if (!isCorrectOwner(selectedObject))
 				return false;
 
 			if(!childWouldBeVisible(getObjectName()))
@@ -55,6 +55,11 @@ abstract public class AbstractTreeCreateAnnotationDoer extends AbstractTreeNodeD
 			EAM.logException(e);
 			return false;
 		}
+	}
+
+	protected boolean isCorrectOwner(BaseObject selectedObject)
+	{
+		return Factor.isFactor(selectedObject);
 	}
 	
 	@Override
