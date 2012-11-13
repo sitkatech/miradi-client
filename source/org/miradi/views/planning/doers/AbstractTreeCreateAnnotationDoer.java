@@ -57,11 +57,6 @@ abstract public class AbstractTreeCreateAnnotationDoer extends AbstractTreeNodeD
 		}
 	}
 
-	protected boolean isCorrectOwner(BaseObject selectedObject)
-	{
-		return Factor.isFactor(selectedObject);
-	}
-	
 	@Override
 	protected void doIt() throws Exception
 	{
@@ -95,6 +90,8 @@ abstract public class AbstractTreeCreateAnnotationDoer extends AbstractTreeNodeD
 	abstract protected String getAnnotationTag();
 	
 	abstract protected boolean isAvailableForFactor(Factor factor);
+	
+	abstract protected boolean isCorrectOwner(BaseObject selectedObject);
 	
 	abstract protected String getObjectName();
 }
