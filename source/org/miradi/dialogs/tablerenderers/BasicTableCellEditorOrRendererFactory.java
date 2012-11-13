@@ -98,7 +98,7 @@ abstract public class BasicTableCellEditorOrRendererFactory extends AbstractCell
 		}
 	}
 
-	private void setColors(JComponent renderer, Color fg, Color bg)
+	protected void setColors(JComponent renderer, Color fg, Color bg)
 	{
 		renderer.setForeground(fg);
 		renderer.setBackground(bg);

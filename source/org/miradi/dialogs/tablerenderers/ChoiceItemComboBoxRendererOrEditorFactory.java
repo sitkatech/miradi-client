@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.tablerenderers;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.util.Vector;
 
@@ -37,6 +38,32 @@ public class ChoiceItemComboBoxRendererOrEditorFactory extends ObjectTableCellEd
 		
 		rendererComponent = new HtmlEncodedCellRenderer(items);
 		editorComponent = new HtmlEncodedCellEditor(items);
+	}
+	
+	@Override
+	protected void updateBorderAndColors(JComponent renderer, JTable table,	int row, int tableColumn, boolean isSelected)
+	{
+		super.updateBorderAndColors(renderer, table, row, tableColumn, isSelected);
+		
+		if(isSelected)
+		{
+			Color fg = table.getSelectionForeground();
+			Color bg = table.getSelectionBackground();
+			setBothComponentColors(bg, fg);
+		}
+		else
+		{
+			Color fg = getCellForegroundColor(table, row, tableColumn);
+			Color bg = getCellBackgroundColor();
+			setBothComponentColors(fg, bg);
+		}
+
+	}
+
+	private void setBothComponentColors(Color fg, Color bg)
+	{
+		setColors(rendererComponent, fg, bg);
+		setColors(editorComponent, fg, bg);
 	}
 	
 	@Override
