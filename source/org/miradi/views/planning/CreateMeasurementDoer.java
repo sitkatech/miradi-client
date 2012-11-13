@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.planning;
 
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
 import org.miradi.schemas.MeasurementSchema;
 import org.miradi.views.planning.doers.AbstractTreeCreateAnnotationDoer;
@@ -44,12 +43,6 @@ public class CreateMeasurementDoer extends AbstractTreeCreateAnnotationDoer
 	protected String getAnnotationTag()
 	{
 		return Indicator.TAG_MEASUREMENT_REFS;
-	}
-
-	@Override
-	protected boolean isAvailableForFactor(Factor factor)
-	{
-		return Indicator.is(factor);
 	}
 
 	@Override
