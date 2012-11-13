@@ -108,7 +108,7 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 		if (choiceItem.isSelectable())
 			return selectableLeftColumnComponent;
 		
-		return new PanelTitleLabel(choiceItem.getLabel());
+		return new PanelTitleLabel(choiceItem.getTextAsHtmlWrappedLabel());
 	}
 
 	protected int calculateColumnCount()
