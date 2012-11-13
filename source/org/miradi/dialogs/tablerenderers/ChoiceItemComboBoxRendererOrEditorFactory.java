@@ -47,9 +47,7 @@ public class ChoiceItemComboBoxRendererOrEditorFactory extends ObjectTableCellEd
 		
 		if(isSelected)
 		{
-			Color fg = table.getSelectionForeground();
-			Color bg = table.getSelectionBackground();
-			setBothComponentColors(bg, fg);
+			swapBackgroundAndForegroundColors(table);
 		}
 		else
 		{
@@ -58,6 +56,13 @@ public class ChoiceItemComboBoxRendererOrEditorFactory extends ObjectTableCellEd
 			setBothComponentColors(fg, bg);
 		}
 
+	}
+
+	private void swapBackgroundAndForegroundColors(JTable table)
+	{
+		Color foregroundToBeUsedAsBackground = table.getSelectionForeground();
+		Color backgroundToBeUsedAsForground = table.getSelectionBackground();
+		setBothComponentColors(backgroundToBeUsedAsForground, foregroundToBeUsedAsBackground);
 	}
 
 	private void setBothComponentColors(Color fg, Color bg)
