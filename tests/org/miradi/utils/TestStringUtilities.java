@@ -29,6 +29,23 @@ public class TestStringUtilities extends MiradiTestCase
 		super(name);
 	}
 	
+	public void testRemoveIllegalCharacters()
+	{
+		verifyRemovalOfIllegalChars("sample", "sample");
+		verifyRemovalOfIllegalChars("1\t2", "1\t2");
+		verifyRemovalOfIllegalChars("1\r2", "1\r2");
+		verifyRemovalOfIllegalChars("1\n2", "1\n2");
+		verifyRemovalOfIllegalChars("1\n2", "1\n2");
+		
+		final String pastedValueContainingIllegalinvisibleChar = "n-1";
+		verifyRemovalOfIllegalChars("n-1", pastedValueContainingIllegalinvisibleChar);
+	}
+	
+	private void verifyRemovalOfIllegalChars(String expectedValue, String actualValue)
+	{
+		assertEquals("Illegal chars were not removed properly?", expectedValue, StringUtilities.removeIllegalCharacters(actualValue));
+	}
+
 	public void testEscapeQuotesWithBackslash()
 	{
 		verifyEscapeQuotesWithBackslash("", "");
