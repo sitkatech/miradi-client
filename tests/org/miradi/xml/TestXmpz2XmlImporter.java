@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml;
 
-import org.martus.util.UnicodeStringWriter;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
@@ -36,6 +35,7 @@ import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.PointList;
+import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.views.diagram.TestLinkBendPointsMoveHandler;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
@@ -115,7 +115,7 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	
 	private ProjectForTesting validateUsingStringWriter() throws Exception
 	{
-		UnicodeStringWriter projectWriter = createWriter(getProject());
+		UnicodeXmlWriter projectWriter = createWriter(getProject());
 		
 		ProjectForTesting projectToImportInto = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToImportInto");
 		Xmpz2XmlImporter xmlImporter = new Xmpz2XmlImporter(projectToImportInto, new NullProgressMeter());
@@ -131,16 +131,16 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 			stringInputputStream.close();	
 		}
 		
-		UnicodeStringWriter secondWriter = createWriter(projectToImportInto);
+		UnicodeXmlWriter secondWriter = createWriter(projectToImportInto);
 		assertEquals("Exports from projects do not match?", exportedProjectXml, secondWriter.toString());
 		
 		return projectToImportInto;
 	}
 
-	private UnicodeStringWriter createWriter(ProjectForTesting projectToUse) throws Exception
+	private UnicodeXmlWriter createWriter(ProjectForTesting projectToUse) throws Exception
 	{
 		Xmpz2XmlExporter exporter = new Xmpz2XmlExporter(projectToUse);
-		UnicodeStringWriter writer = UnicodeStringWriter.create();
+		UnicodeXmlWriter writer = UnicodeXmlWriter.create();
 		exporter.exportProject(writer);
 		writer.flush();
 		

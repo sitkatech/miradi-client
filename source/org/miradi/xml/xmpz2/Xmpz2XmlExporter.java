@@ -27,6 +27,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
+import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.xmpz2.objectExporters.ExtraDataExporter;
@@ -43,7 +44,7 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 	}
 
 	@Override
-	public void exportProject(UnicodeWriter outToUse) throws Exception
+	public void exportProject(UnicodeXmlWriter outToUse) throws Exception
 	{
 		out = createWriter(outToUse);
 		objectTypeToExporterMap.fillTypeToExporterMap(getWriter());

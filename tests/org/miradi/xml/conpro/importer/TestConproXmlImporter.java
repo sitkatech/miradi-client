@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.xml.conpro.importer;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -29,7 +28,6 @@ import java.text.ParseException;
 import java.util.Set;
 
 import org.martus.util.UnicodeReader;
-import org.martus.util.UnicodeWriter;
 import org.martus.util.inputstreamwithseek.FileInputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
@@ -74,6 +72,7 @@ import org.miradi.schemas.XenodataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.NullProgressMeter;
+import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.xml.conpro.ConProMiradiXml;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 
@@ -281,13 +280,11 @@ public class TestConproXmlImporter extends TestCaseWithProject
 
 	private String exportImportInto(ProjectForTesting projectToExport, ProjectForTesting projectToImportInto) throws Exception
 	{
-		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-		UnicodeWriter writer = new UnicodeWriter(bytes);
+		UnicodeXmlWriter writer = UnicodeXmlWriter.create();
 		
 		new ConproXmlExporter(projectToExport).exportProject(writer);
 		writer.flush();
-		bytes.close();
-		String xml = new String(bytes.toByteArray(), "UTF-8");
+		String xml = writer.toString();
 		
 		importXmlStringIntoProject(xml, projectToImportInto);
 		return xml;

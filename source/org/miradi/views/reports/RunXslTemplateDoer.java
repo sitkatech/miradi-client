@@ -32,7 +32,6 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
 import org.martus.util.UnicodeStringReader;
-import org.martus.util.UnicodeStringWriter;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
@@ -41,6 +40,7 @@ import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.DirectoryChooser;
 import org.miradi.utils.FileSaveChooserWithUserDefinedFileFilter;
 import org.miradi.utils.HtmlUtilities;
+import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.views.ObjectsDoer;
 import org.miradi.views.umbrella.SaveImagePngDoer;
 import org.miradi.xml.wcs.XmpzXmlExporter;
@@ -154,7 +154,7 @@ public class RunXslTemplateDoer extends ObjectsDoer
 	
 	private StreamSource getExportedProjectXmlAsString() throws Exception
 	{
-		UnicodeStringWriter projectWriter = UnicodeStringWriter.create();
+		UnicodeXmlWriter projectWriter = UnicodeXmlWriter.create();
 		try
 		{
 			new XmpzXmlExporter(getProject()).exportProject(projectWriter);

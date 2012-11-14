@@ -41,7 +41,7 @@ import org.miradi.schemas.WcsProjectDataSchema;
 import org.miradi.schemas.WwfProjectDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.HtmlUtilities;
-import org.miradi.utils.StringUtilities;
+import org.miradi.utils.UnicodeXmlWriter;
 
 public abstract class XmlExporter
 {
@@ -52,7 +52,7 @@ public abstract class XmlExporter
 	
 	public void export(File destination) throws Exception
 	{
-		UnicodeWriter out = new UnicodeWriter(destination);
+		UnicodeXmlWriter out = new UnicodeXmlWriter(destination);
 		try
 		{
 			exportProject(out);
@@ -138,7 +138,6 @@ public abstract class XmlExporter
 	{
 		data = HtmlUtilities.replaceHtmlBrsWithNewlines(data);
 		data = HtmlUtilities.stripAllHtmlTags(data);
-		data = StringUtilities.removeIllegalCharacters(data);
 		out.write(data);
 	}
 	
@@ -203,7 +202,7 @@ public abstract class XmlExporter
 		return FosProjectData.find(getProject(), fosProjectDataRef);
 	}
 	
-	abstract public void exportProject(UnicodeWriter out) throws Exception;
+	abstract public void exportProject(UnicodeXmlWriter out) throws Exception;
 	
 	private Project project;
 }

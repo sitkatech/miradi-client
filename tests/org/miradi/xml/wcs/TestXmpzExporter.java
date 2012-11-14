@@ -20,15 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
-import java.io.ByteArrayOutputStream;
 import java.util.Vector;
 
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 
-import org.martus.util.UnicodeStringWriter;
-import org.martus.util.UnicodeWriter;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.exceptions.ValidationException;
@@ -36,10 +33,10 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
@@ -63,6 +60,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.TestStringUtilities;
+import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.xml.TestXmpzXmlImporter;
 import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.xmpz.XmpzXmlImporter;
@@ -386,7 +384,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 	
 	private XmpzXmlImporter createProjectImporter(final ProjectForTesting projectToExport) throws Exception
 	{
-		UnicodeStringWriter writer = TestXmpzXmlImporter.createWriter(projectToExport);		
+		UnicodeXmlWriter writer = TestXmpzXmlImporter.createWriter(projectToExport);		
 		ProjectForTesting projectToImportInto = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToImportInto");
 		XmpzXmlImporter xmlImporter = new XmpzXmlImporter(projectToImportInto, new NullProgressMeter());
 		StringInputStreamWithSeek stringInputputStream = new StringInputStreamWithSeek(writer.toString());
@@ -397,11 +395,10 @@ public class TestXmpzExporter extends TestCaseWithProject
 
 	private void validateProject() throws Exception
 	{
-		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-		UnicodeWriter writer = new UnicodeWriter(bytes);
+		UnicodeXmlWriter writer = UnicodeXmlWriter.create();
 		new XmpzXmlExporter(getProject()).exportProject(writer);
 		writer.close();
-		String xml = new String(bytes.toByteArray(), "UTF-8");
+		String xml = writer.toString();
 
 		// NOTE: Uncomment for debugging only
 //		File file = createTempFile();
