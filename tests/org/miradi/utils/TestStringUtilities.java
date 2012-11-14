@@ -37,7 +37,7 @@ public class TestStringUtilities extends MiradiTestCase
 		verifyRemovalOfIllegalChars("1\n2", "1\n2");
 		verifyRemovalOfIllegalChars("1\n2", "1\n2");
 		
-		final String pastedValueContainingIllegalinvisibleChar = "n-1";
+		final String pastedValueContainingIllegalinvisibleChar = getPastedValueContainingIllegalinvisibleChar();
 		verifyRemovalOfIllegalChars("n-1", pastedValueContainingIllegalinvisibleChar);
 	}
 	
@@ -121,5 +121,10 @@ public class TestStringUtilities extends MiradiTestCase
 	private void verifySubstringBetween(final String expectedValue, final String testString, final String fromChar, final String toChar)
 	{
 		assertEquals("did not split correctly?", expectedValue, StringUtilities.substringBetween(testString, fromChar, toChar));
+	}
+	
+	public static String getPastedValueContainingIllegalinvisibleChar()
+	{
+		return "n-1";
 	}
 }

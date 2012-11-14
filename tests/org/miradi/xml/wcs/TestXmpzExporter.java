@@ -62,6 +62,7 @@ import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.NullProgressMeter;
+import org.miradi.utils.TestStringUtilities;
 import org.miradi.xml.TestXmpzXmlImporter;
 import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.xmpz.XmpzXmlImporter;
@@ -75,6 +76,13 @@ public class TestXmpzExporter extends TestCaseWithProject
 	public TestXmpzExporter(String name)
 	{
 		super(name);
+	}
+	
+	public void testProjectWithInvalidChars() throws Exception
+	{
+		String valueWithInvalidChar = TestStringUtilities.getPastedValueContainingIllegalinvisibleChar();
+		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_PROJECT_DESCRIPTION, valueWithInvalidChar);
+		validateProject();
 	}
 	
 	public void testValidateEmptyProject() throws Exception
