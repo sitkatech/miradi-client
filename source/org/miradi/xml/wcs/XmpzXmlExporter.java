@@ -49,6 +49,7 @@ import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.TncOperatingUnitsQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.generic.XmlSchemaCreator;
 
@@ -60,7 +61,7 @@ public class XmpzXmlExporter extends XmlExporter implements XmpzXmlConstants
 	}
 
 	@Override
-	public void exportProject(UnicodeWriter outToUse) throws Exception
+	public void exportProject(UnicodeXmlWriter outToUse) throws Exception
 	{
 		setWriter(outToUse);
 		

@@ -24,16 +24,15 @@ import java.awt.Dimension;
 import java.awt.Point;
 
 import org.martus.util.MultiCalendar;
-import org.martus.util.UnicodeStringWriter;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.ids.IdList;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objecthelpers.CodeToChoiceMap;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
-import org.miradi.objecthelpers.CodeToChoiceMap;
 import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.Cause;
@@ -69,6 +68,7 @@ import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.NullProgressMeter;
+import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.wcs.XmpzXmlExporter;
 import org.miradi.xml.xmpz.XmpzXmlImporter;
@@ -395,7 +395,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 	
 	private ProjectForTesting validateUsingStringWriter() throws Exception
 	{
-		UnicodeStringWriter firstWriter = createWriter(getProject());
+		UnicodeXmlWriter firstWriter = createWriter(getProject());
 		
 		ProjectForTesting projectToImportInto = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToImportInto");
 		XmpzXmlImporter xmlImporter = new XmpzXmlImporter(projectToImportInto, new NullProgressMeter());
@@ -410,16 +410,16 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 			stringInputputStream.close();	
 		}
 		
-		UnicodeStringWriter secondWriter = createWriter(projectToImportInto);
+		UnicodeXmlWriter secondWriter = createWriter(projectToImportInto);
 		assertEquals("Exports from projects do not match?", exportedProjectXml, secondWriter.toString());
 		
 		return projectToImportInto;
 	}
 
-	public static UnicodeStringWriter createWriter(ProjectForTesting project) throws Exception
+	public static UnicodeXmlWriter createWriter(ProjectForTesting project) throws Exception
 	{
 		XmpzXmlExporter exporter = new XmpzXmlExporter(project);
-		UnicodeStringWriter writer = UnicodeStringWriter.create();
+		UnicodeXmlWriter writer = UnicodeXmlWriter.create();
 		exporter.setWriter(writer);
 		exporter.exportProject(writer);
 		writer.flush();

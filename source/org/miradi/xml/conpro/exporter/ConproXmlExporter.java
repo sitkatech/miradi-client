@@ -86,6 +86,7 @@ import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.MiradiMultiCalendar;
 import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.StringUtilities;
+import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.conpro.ConProMiradiCodeMapHelper;
 import org.miradi.xml.conpro.ConProMiradiXml;
@@ -101,7 +102,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	}
 
 	@Override
-	public void exportProject(UnicodeWriter out) throws Exception
+	public void exportProject(UnicodeXmlWriter out) throws Exception
 	{
 		out.writeln("<?xml version='1.0' encoding='UTF-8' ?>");
 		writeStartElementWithAttribute(out, CONSERVATION_PROJECT, XMLNS, NAME_SPACE);

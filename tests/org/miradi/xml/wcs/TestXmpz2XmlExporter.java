@@ -20,9 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
-import java.io.ByteArrayOutputStream;
-
-import org.martus.util.UnicodeWriter;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.exceptions.ValidationException;
@@ -30,6 +27,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
 
 public class TestXmpz2XmlExporter extends TestCaseWithProject
@@ -78,11 +76,10 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 	
 	private void validateProject() throws Exception
 	{
-		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-		final UnicodeWriter writer = new UnicodeWriter(bytes);
+		final UnicodeXmlWriter writer = UnicodeXmlWriter.create();
 		new Xmpz2XmlExporter(getProject()).exportProject(writer);
 		writer.close();
-		String xml = new String(bytes.toByteArray(), "UTF-8");
+		String xml = writer.toString();
 				
 		InputStreamWithSeek inputStream = new StringInputStreamWithSeek(xml);
 		if (!new Xmpz2XmlValidator().isValid(inputStream))

@@ -29,7 +29,6 @@ import java.io.UnsupportedEncodingException;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-import org.martus.util.UnicodeStringWriter;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -40,6 +39,7 @@ import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.ConstantButtonNames;
 import org.miradi.utils.MiradiFileSaveChooser;
 import org.miradi.utils.ProgressInterface;
+import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.xml.XmlExporter;
 
 abstract public class XmlExporterDoer extends AbstractFileSaverDoer
@@ -97,7 +97,7 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 
 	private byte[] exportProjectXmlToBytes() throws IOException, Exception,	UnsupportedEncodingException
 	{
-		UnicodeStringWriter writer = UnicodeStringWriter.create();
+		UnicodeXmlWriter writer = UnicodeXmlWriter.create();
 		try
 		{
 			createExporter().exportProject(writer);
