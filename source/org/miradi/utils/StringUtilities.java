@@ -20,6 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 public class StringUtilities
 {
@@ -87,6 +90,16 @@ public class StringUtilities
 	public static String unescapeQuotesWithBackslash(final String value)
 	{
 		return value.replaceAll("\\\\\"", "\\\"");
+	}
+	
+	public static String removeIllegalCharacters(String value)
+	{
+		Pattern pattern = Pattern.compile("[^\\u0009\\u000A\\u000D\\u0020-\\uFFFF]");
+		Matcher matcher = pattern.matcher(value);
+		if (matcher.find()) 
+		   return matcher.replaceAll("");
+
+		return value;
 	}
 	
 	public static final String EMPTY_SPACE= " ";

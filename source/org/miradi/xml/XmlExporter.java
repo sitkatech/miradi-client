@@ -41,6 +41,7 @@ import org.miradi.schemas.WcsProjectDataSchema;
 import org.miradi.schemas.WwfProjectDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.HtmlUtilities;
+import org.miradi.utils.StringUtilities;
 
 public abstract class XmlExporter
 {
@@ -137,6 +138,7 @@ public abstract class XmlExporter
 	{
 		data = HtmlUtilities.replaceHtmlBrsWithNewlines(data);
 		data = HtmlUtilities.stripAllHtmlTags(data);
+		data = StringUtilities.removeIllegalCharacters(data);
 		out.write(data);
 	}
 	
