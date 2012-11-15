@@ -298,7 +298,12 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	private void ensureFontSizeIsSet()
 	{
 		if(preferences.getPanelFontSize() == 0)
-			setDataPanelFontSize(new JLabel().getFont().getSize());
+			setDataPanelFontSize(getSystemFontSize());
+	}
+
+	public static int getSystemFontSize()
+	{
+		return new JLabel().getFont().getSize();
 	}
 	
 	private void setLanguage(String languageCode) throws Exception
@@ -1140,7 +1145,8 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	{
 		int size = preferences.getPanelFontSize();
 		if (size == 0)
-			return getContentPane().getFont().getSize();
+			return getSystemFontSize();
+		
 		return size;
 	}
 	
