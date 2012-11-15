@@ -94,7 +94,8 @@ public class StringUtilities
 	
 	public static String removeIllegalCharacters(String value)
 	{
-		Pattern pattern = Pattern.compile("[^\\u0009\\u000A\\u000D\\u0020-\\uFFFF]");
+		String regexp = "[^" + REGEXP_TAB + REGEXP_CR + REGEXP_LF + REGEXP_NON_CONTROL_CHARACTERS + "]";
+		Pattern pattern = Pattern.compile(regexp);
 		Matcher matcher = pattern.matcher(value);
 		if (matcher.find()) 
 		   return matcher.replaceAll("");
@@ -105,4 +106,8 @@ public class StringUtilities
 	public static final String EMPTY_SPACE= " ";
 	public static final String NEW_LINE = "\n";
 	public static final String EMPTY_STRING = "";
+	private static final String REGEXP_TAB = "\\u0009";
+	private static final String REGEXP_CR = "\\u000A";
+	private static final String REGEXP_LF = "\\u000D";
+	private static final String REGEXP_NON_CONTROL_CHARACTERS = "\\u0020-\\uFFFF";
 }
