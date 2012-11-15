@@ -145,7 +145,7 @@ public class PropertiesDoer extends LocationDoer
 		if (topCellAtClickPoint.isFactorLink())
 			return topCellAtClickPoint; 
 		
-		return selected;
+		return topCellAtClickPoint;
 	}
 
 	private HashSet<FactorCell> getChildrenIfAny(EAMGraphCell selected) throws Exception
