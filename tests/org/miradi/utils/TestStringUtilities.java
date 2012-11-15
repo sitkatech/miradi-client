@@ -38,7 +38,7 @@ public class TestStringUtilities extends MiradiTestCase
 		verifyRemovalOfIllegalChars("1\n2", "1\n2");
 		
 		final String pastedValueContainingIllegalinvisibleChar = getPastedValueContainingIllegalinvisibleChar();
-		verifyRemovalOfIllegalChars("n-1", pastedValueContainingIllegalinvisibleChar);
+		verifyRemovalOfIllegalChars("", pastedValueContainingIllegalinvisibleChar);
 	}
 	
 	private void verifyRemovalOfIllegalChars(String expectedValue, String actualValue)
@@ -125,6 +125,6 @@ public class TestStringUtilities extends MiradiTestCase
 	
 	public static String getPastedValueContainingIllegalinvisibleChar()
 	{
-		return "n-1";
+		return new String(new char[]{5});
 	}
 }
