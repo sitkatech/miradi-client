@@ -78,7 +78,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 	
 	public void testProjectWithInvalidChars() throws Exception
 	{
-		String valueWithInvalidChar = TestStringUtilities.getPastedValueContainingIllegalinvisibleChar();
+		String valueWithInvalidChar = TestStringUtilities.getIllegalCharAsString();
 		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_PROJECT_DESCRIPTION, valueWithInvalidChar);
 		validateProject();
 	}
