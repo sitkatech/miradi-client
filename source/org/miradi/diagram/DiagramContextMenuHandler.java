@@ -100,7 +100,7 @@ public class DiagramContextMenuHandler
 		actions = actionsToUse;
 	}
 	
-	public UiPopupMenu getPopupMenu(Point menuInvokedAt)
+	public UiPopupMenu createPopupMenu(Point menuInvokedAt)
 	{
 		UiPopupMenu menu = new UiPopupMenu();
 
@@ -325,7 +325,7 @@ public class DiagramContextMenuHandler
 		
 		Point scaledPoint = Utilities.createPointFromPoint2D(scaledPoint2D);
 		
-		JPopupMenu menu = getPopupMenu(scaledPoint);
+		JPopupMenu menu = createPopupMenu(scaledPoint);
 		mainWindow.updateActionsAndStatusBar();
 		menu.show(diagramComponent, e.getX(), e.getY());
 	}
