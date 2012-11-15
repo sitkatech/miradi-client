@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.questions;
 
+import org.miradi.main.EAM;
+
 public class FontSizeQuestion extends StaticChoiceQuestion
 {
 	public FontSizeQuestion()
@@ -29,6 +31,7 @@ public class FontSizeQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getSizeChoices()
 	{
 		return new ChoiceItem[] {
+			new ChoiceItem(DEFAULT_FONT_SIZE_CODE, EAM.text("Default System Size")),
 			new ChoiceItem("6", "6"),
 			new ChoiceItem("8", "8"),
 			new ChoiceItem("10", "10"),
@@ -44,4 +47,6 @@ public class FontSizeQuestion extends StaticChoiceQuestion
 	{
 		return "12";
 	}
+	
+	public static final String DEFAULT_FONT_SIZE_CODE = "";
 }

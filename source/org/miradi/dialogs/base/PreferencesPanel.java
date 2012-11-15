@@ -140,8 +140,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		JPanel htmlTab = new JPanel(new BasicGridLayout(0,2));
 		htmlTab.setBackground(AppPreferences.getDataPanelBackgroundColor());
 
-		int panelFontSize = getMainWindow().getDataPanelFontSize();
-		String panelSizeAsString = Integer.toString(panelFontSize);
+		String panelSizeAsString = getDataPanelFontSizeCode();
 		panelFontSizeCombo = createAndAddLabelAndCombo(htmlTab, EAM.text("Font Size"), new FontSizeQuestion(), panelSizeAsString);
 			
 		String panelFontFamily = getMainWindow().getDataPanelFontFamily();
@@ -172,6 +171,18 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 				"is set to use a language other than English, spell check will not be available. <br>")));
 
 		return htmlTab;
+	}
+
+	private String getDataPanelFontSizeCode()
+	{
+		final int panelFontSize = getMainWindow().getDataPanelFontSize();
+		final ChoiceQuestion choiceQuestion = StaticQuestionManager.getQuestion(FontSizeQuestion.class);
+		final String fontSizeAsCode = Integer.toString(panelFontSize);
+		ChoiceItem choiceItem = choiceQuestion.findChoiceByCode(fontSizeAsCode);
+		if (choiceItem == null)
+			return FontSizeQuestion.DEFAULT_FONT_SIZE_CODE;
+		
+		return fontSizeAsCode;
 	}
 
 	private void createAndAddBlankRow(JPanel htmlTab)
@@ -304,8 +315,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		if(cellRatingsVisibleCheckBox != null)
 			getMainWindow().setBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE, cellRatingsVisibleCheckBox.isSelected());
 
-		String panelFontSizeValue = getSelectedItemQuestionBox(panelFontSizeCombo);
-		getMainWindow().setDataPanelFontSize(Integer.parseInt(panelFontSizeValue));
+		getMainWindow().setDataPanelFontSize(getSelectedFontSize());
 		
 		String panelFontFamilyValue = getSelectedItemQuestionBox(panelFontFamilyCombo);
 		getMainWindow().setDataPanelFontFamily(panelFontFamilyValue);
@@ -316,6 +326,15 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		getMainWindow().setBooleanPreference(AppPreferences.TAG_IS_SPELL_CHECK_ENABLED, enableSpellCheckingCheckBox.isSelected());
 
 		getMainWindow().safelySavePreferences();
+	}
+
+	private int getSelectedFontSize()
+	{
+		String panelFontSizeValue = getSelectedItemQuestionBox(panelFontSizeCombo);
+		if (panelFontSizeValue.equals(FontSizeQuestion.DEFAULT_FONT_SIZE_CODE))
+			return MainWindow.getSystemFontSize();
+		
+		return Integer.parseInt(panelFontSizeValue);
 	}
 
 	private void setColorPreference(UiComboBox colorDropDown, String tagColorStrategy)
