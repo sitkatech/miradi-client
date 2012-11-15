@@ -79,6 +79,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	public DiagramComponent(MainWindow mainWindowToUse, GraphModel diagramModel)
 	{
 		super(diagramModel);
+		
 		mainWindow = mainWindowToUse;
 		setUI(new EAMGraphUI());
 		setAntiAliased(true);
