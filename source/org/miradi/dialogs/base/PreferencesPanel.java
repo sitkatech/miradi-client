@@ -329,9 +329,9 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		ChoiceItem selected = (ChoiceItem)combo.getSelectedItem();
 		if(selected == null)
 			return "";
+		
 		return selected.getCode();
 	}
-	
 
 	static class ColorItemRenderer extends Component implements ListCellRenderer
 	{
