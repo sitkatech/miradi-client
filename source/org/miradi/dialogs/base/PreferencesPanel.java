@@ -141,10 +141,10 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		htmlTab.setBackground(AppPreferences.getDataPanelBackgroundColor());
 
 		String panelSizeAsString = getDataPanelFontSizeCode();
-		panelFontSizeCombo = createAndAddLabelAndCombo(htmlTab, EAM.text("Font Size"), new FontSizeQuestion(), panelSizeAsString);
+		panelFontSizeCombo = createAndAddLabelAndCombo(htmlTab, EAM.text("Font Size"), StaticQuestionManager.getQuestion(FontSizeQuestion.class), panelSizeAsString);
 			
 		String panelFontFamily = getMainWindow().getDataPanelFontFamily();
-		panelFontFamilyCombo = createAndAddLabelAndCombo(htmlTab, EAM.text("Font Family"), new FontFamiliyQuestion(), panelFontFamily);
+		panelFontFamilyCombo = createAndAddLabelAndCombo(htmlTab, EAM.text("Font Family"), StaticQuestionManager.getQuestion(FontFamiliyQuestion.class), panelFontFamily);
 		
 		createAndAddBlankRow(htmlTab);
 		String rowHeightMode = getMainWindow().getRowHeightModeString();
