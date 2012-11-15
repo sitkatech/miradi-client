@@ -1,8 +1,8 @@
 ﻿MiradiProjectFile 3 3
 UV	Version=61
-UP	HighestUsedNodeId=935
+UP	HighestUsedNodeId=1107
 UP	ProjectMetadataId=0
-UL	LastModified=2012-09-20 11:57
+UL	LastModified=2012-11-15 09:19
 CO	1:1
 UO	1:1	Label=Scope
 CO	1:2
@@ -28,6 +28,10 @@ CO	2:8
 UO	2:8	Numeric=1
 UO	2:8	Label=Low
 UO	2:8	Color=-16711936
+CO	3:1000
+UO	3:1000	Details=Download data from teh FAO FishStat database at: http://www.fao.org/fishery/statistics/en
+UO	3:1000	ShortLabel=Shark 2a
+UO	3:1000	Label=FAO data download
 CO	3:163
 UO	3:163	AssignmentIds={"Ids":[539,540]}
 UO	3:163	ExpenseRefs={"References":[{"ObjectType":51,"ObjectId":538}]}
@@ -123,38 +127,36 @@ UO	3:470	AssignmentIds={"Ids":[471]}
 UO	3:470	Details=Talk to crew members of boats visiting the islands
 UO	3:470	Label=Conduct spot checks of tour boats
 CO	5:11
-UO	5:11	SingleLevelChoice=Strategy
 UO	5:11	CustomPlanRef={"ObjectType":29,"ObjectId":10}
+UO	5:11	CurrentTab=3
 UO	5:11	CurrentWizardStep=ThreatMatrixOverviewStep
 UO	5:11	Label=Planning
+UO	5:11	SingleLevelChoice=Strategy
 CO	5:18
 UO	5:18	CurrentConceptualModelRef={"ObjectType":19,"ObjectId":9}
-UO	5:18	CurrentTab=5
-UO	5:18	CurrentResultsChainRef={"ObjectType":24,"ObjectId":181}
-UO	5:18	CurrentWizardStep=WorkPlanOverviewStep
+UO	5:18	CurrentWizardStep=DiagramOverviewStep
 UO	5:18	Label=Summary
+UO	5:18	CurrentResultsChainRef={"ObjectType":24,"ObjectId":181}
 CO	5:231
-UO	5:231	CurrentTab=1
 UO	5:231	CurrentWizardStep=PlanningOverviewStep
 UO	5:231	Label=Reports
 CO	5:29
-UO	5:29	CurrentConceptualModelRef={"ObjectType":19,"ObjectId":9}
-UO	5:29	CurrentResultsChainRef={"ObjectType":24,"ObjectId":255}
+UO	5:29	CurrentConceptualModelRef={"ObjectType":19,"ObjectId":692}
 UO	5:29	CurrentWizardStep=SummaryOverviewStep
 UO	5:29	Label=Diagram
+UO	5:29	CurrentResultsChainRef={"ObjectType":24,"ObjectId":1008}
 CO	5:45
 UO	5:45	CurrentWizardStep=DiagramOverviewStep
 UO	5:45	Label=Target Viability
 CO	5:46
-UO	5:46	CurrentWizardStep=TargetViabilityOverviewStep
+UO	5:46	CurrentWizardStep=DiagramOverviewStep
 UO	5:46	Label=ThreatMatrix
 CO	5:499
 UO	5:499	CurrentWizardStep=ScheduleOverviewStep
 UO	5:499	Label=Map
 CO	5:584
 UO	5:584	BudgetRollupReportTypes={"Codes":["7","16","15","",""]}
-UO	5:584	CurrentTab=6
-UO	5:584	CurrentWizardStep=SummaryOverviewStep
+UO	5:584	CurrentWizardStep=PlanningOverviewStep
 UO	5:584	Label=WorkPlan
 CO	5:750
 UO	5:750	CurrentWizardStep=LibraryOverviewStep
@@ -162,6 +164,18 @@ UO	5:750	Label=Schedule
 CO	5:751
 UO	5:751	CurrentWizardStep=SummaryOverviewStep
 UO	5:751	Label=Library
+CO	6:1004
+UO	6:1004	FromRef={"ObjectType":20,"ObjectId":733}
+UO	6:1004	ToRef={"ObjectType":20,"ObjectId":1002}
+CO	6:1006
+UO	6:1006	FromRef={"ObjectType":20,"ObjectId":1002}
+UO	6:1006	ToRef={"ObjectType":52,"ObjectId":724}
+CO	6:1104
+UO	6:1104	FromRef={"ObjectType":22,"ObjectId":39}
+UO	6:1104	ToRef={"ObjectType":23,"ObjectId":1096}
+CO	6:1106
+UO	6:1106	FromRef={"ObjectType":23,"ObjectId":1096}
+UO	6:1106	ToRef={"ObjectType":52,"ObjectId":1092}
 CO	6:114
 UO	6:114	FromRef={"ObjectType":20,"ObjectId":112}
 UO	6:114	ToRef={"ObjectType":20,"ObjectId":59}
@@ -327,9 +341,6 @@ UO	6:71	ToRef={"ObjectType":22,"ObjectId":30}
 CO	6:731
 UO	6:731	FromRef={"ObjectType":22,"ObjectId":35}
 UO	6:731	ToRef={"ObjectType":20,"ObjectId":729}
-CO	6:735
-UO	6:735	FromRef={"ObjectType":20,"ObjectId":733}
-UO	6:735	ToRef={"ObjectType":52,"ObjectId":724}
 CO	6:737
 UO	6:737	FromRef={"ObjectType":20,"ObjectId":729}
 UO	6:737	ToRef={"ObjectType":52,"ObjectId":722}
@@ -362,8 +373,8 @@ UO	6:99	FromRef={"ObjectType":20,"ObjectId":97}
 UO	6:99	ToRef={"ObjectType":20,"ObjectId":59}
 CO	7:21
 UO	7:21	Comments=Jose is the lead for implementing monitoring work on the project.
-UO	7:21	Organization=Eastern Bay NGO
 UO	7:21	Location=Main Office
+UO	7:21	Organization=Eastern Bay NGO
 UO	7:21	PhoneNumber=555-2374
 UO	7:21	CostPerUnit=100
 UO	7:21	RoleCodes={"Codes":["TeamMember"]}
@@ -376,8 +387,8 @@ UO	7:21	DateUpdated=2012-04-01
 UO	7:21	Position=Monitoring Officer
 CO	7:22
 UO	7:22	Comments=Elena is the primary manager of the project.
-UO	7:22	Organization=Eastern Bay NGO
 UO	7:22	Location=Main Office
+UO	7:22	Organization=Eastern Bay NGO
 UO	7:22	PhoneNumber=555-2374
 UO	7:22	CostPerUnit=150
 UO	7:22	IMAddress=elenamartin
@@ -392,8 +403,8 @@ UO	7:22	Position=Project Manager
 UO	7:22	IMService=Skype
 CO	7:23
 UO	7:23	Comments=George is providing facilitation and training.
-UO	7:23	Organization=Adaptive Management Inc
 UO	7:23	Location=AM Inc Headquarters
+UO	7:23	Organization=Adaptive Management Inc
 UO	7:23	PhoneNumber=555-2372
 UO	7:23	CostPerUnit=100
 UO	7:23	IMAddress=georgeAMI
@@ -408,8 +419,8 @@ UO	7:23	Position=AM Specialist
 UO	7:23	IMService=Skype
 CO	7:24
 UO	7:24	Comments=Anna has been a village leader for many years.
-UO	7:24	Organization=Eastern Bay Village Government
 UO	7:24	Location=Eastern Bay Village
+UO	7:24	Organization=Eastern Bay Village Government
 UO	7:24	PhoneNumber=c/o 555-2374
 UO	7:24	CostPerUnit=50
 UO	7:24	RoleCodes={"Codes":["TeamMember","Stakeholder"]}
@@ -452,26 +463,37 @@ UO	8:160	FutureStatusSummary=minimal
 UO	8:160	ShortLabel=A2
 UO	8:160	Label=Degree of bomb damage of<br/>coral reef sample locations
 CO	8:215
-UO	8:215	MeasurementRefs={"References":[{"ObjectType":32,"ObjectId":782}]}
+UO	8:215	MeasurementRefs={"References":[{"ObjectType":32,"ObjectId":971},{"ObjectType":32,"ObjectId":972}]}
 UO	8:215	Detail=The number of restaurants in Hong Kong actively participating in the Stop Shark Fin Soup Campaign.
-UO	8:215	ProgressReportRefs={"References":[{"ObjectType":37,"ObjectId":219}]}
+UO	8:215	FutureStatusDate=2013-12-31
+UO	8:215	ProgressReportRefs={"References":[{"ObjectType":37,"ObjectId":219},{"ObjectType":37,"ObjectId":973}]}
 UO	8:215	AssignmentIds={"Ids":[541]}
+UO	8:215	FutureStatusSummary=50%
 UO	8:215	ShortLabel=Shark 1a
 UO	8:215	Priority=4
 UO	8:215	TaskIds={"Ids":[221]}
 UO	8:215	Label=% of Restaurants in Campaign
 CO	8:216
+UO	8:216	FutureStatusDetail=70% reduction over 2001 levels
 UO	8:216	ExpenseRefs={"References":[{"ObjectType":51,"ObjectId":542}]}
-UO	8:216	Detail=Download government records of kg of shark fins imported into Hong Kong each year. Current research shows that government records consistently underreport consumption by about 30% so this correction factor can be added.
+UO	8:216	MeasurementRefs={"References":[{"ObjectType":32,"ObjectId":963},{"ObjectType":32,"ObjectId":964},{"ObjectType":32,"ObjectId":965},{"ObjectType":32,"ObjectId":966},{"ObjectType":32,"ObjectId":967},{"ObjectType":32,"ObjectId":969},{"ObjectType":32,"ObjectId":995},{"ObjectType":32,"ObjectId":996},{"ObjectType":32,"ObjectId":997}]}
+UO	8:216	Detail=Download government records of kg of shark fins imported into Hong Kong each year. See: http://www.iccs.org.uk/wp-content/thesis/ClarkeChap%204.pdf for correcting for double-counting and water content.
+UO	8:216	FutureStatusDate=2014-12-31
 UO	8:216	ProgressReportRefs={"References":[{"ObjectType":37,"ObjectId":220}]}
 UO	8:216	AssignmentIds={"Ids":[543]}
+UO	8:216	FutureStatusSummary=70%
 UO	8:216	ShortLabel=Shark 2a
-UO	8:216	Label=Kg of Shark Fins Sold in Hong Kong per Year
+UO	8:216	Priority=3
+UO	8:216	TaskIds={"Ids":[1000]}
+UO	8:216	Label=Metric tons of Shark Fins Sold in Hong Kong per Year
 CO	8:217
 UO	8:217	ExpenseRefs={"References":[{"ObjectType":51,"ObjectId":544}]}
+UO	8:217	MeasurementRefs={"References":[{"ObjectType":32,"ObjectId":958},{"ObjectType":32,"ObjectId":959},{"ObjectType":32,"ObjectId":960},{"ObjectType":32,"ObjectId":961}]}
 UO	8:217	Detail=Numbers of times an illegal fishing boat is spotted in Eastern Bay waters.
+UO	8:217	FutureStatusDate=2017-12-31
 UO	8:217	ProgressReportRefs={"References":[{"ObjectType":37,"ObjectId":233}]}
 UO	8:217	AssignmentIds={"Ids":[592]}
+UO	8:217	FutureStatusSummary=10
 UO	8:217	ShortLabel=Shark 3a
 UO	8:217	TaskIds={"Ids":[232]}
 UO	8:217	Label=Incidents of Illegal Shark Fishing
@@ -496,7 +518,7 @@ UO	8:311	MeasurementRefs={"References":[{"ObjectType":32,"ObjectId":312}]}
 UO	8:311	Detail=The total number of rats caught in traps set out for one week for each island. We assume that we need three weeks of having no rats to have eliminated the population.
 UO	8:311	FutureStatusDate=2013-01-01
 UO	8:311	ProgressReportRefs={"References":[{"ObjectType":37,"ObjectId":314}]}
-UO	8:311	Comments=This is a great measure because it is &quot;automatically&quot; generated from the trapping strategy itself. After the initial trapping, however, we will need to continue to set traps to make sure there are no re-introductions of rats. This will require some additional funds.
+UO	8:311	Comments=This is a great measure because it is \&quot;automatically\&quot; generated from the trapping strategy itself. After the initial trapping, however, we will need to continue to set traps to make sure there are no re-introductions of rats. This will require some additional funds.
 UO	8:311	FutureStatusSummary=0
 UO	8:311	ShortLabel=Rat 2a
 UO	8:311	TaskIds={"Ids":[313]}
@@ -507,7 +529,7 @@ UO	8:315	MeasurementRefs={"References":[{"ObjectType":32,"ObjectId":463}]}
 UO	8:315	Detail=Evidence of seabird nests suffering from rat predation. In particular, egg shells with rat teeth marks.
 UO	8:315	FutureStatusDate=2013-01-01
 UO	8:315	ProgressReportRefs={"References":[{"ObjectType":37,"ObjectId":317}]}
-UO	8:315	FutureStatusSummary=None
+UO	8:315	FutureStatusSummary=0
 UO	8:315	ShortLabel=Rat 1b
 UO	8:315	TaskIds={"Ids":[316]}
 UO	8:315	Label=Evidence of nest predation
@@ -523,7 +545,7 @@ UO	8:395	FutureStatusDetail=We would like to maintain at seagrass bed coverage i
 UO	8:395	Detail=% change in overall area of seagrass beds
 UO	8:395	FutureStatusDate=2017-12-31
 UO	8:395	Comments=test
-UO	8:395	FutureStatusSummary=95% of current levels
+UO	8:395	FutureStatusSummary=95%
 UO	8:395	ShortLabel=C1
 UO	8:395	TaskIds={"Ids":[396]}
 UO	8:395	Label=Area of seagrass beds
@@ -542,6 +564,8 @@ UO	8:400	ShortLabel=Fish 2a
 UO	8:400	Label=Average HH Fishing Income
 CO	8:401
 UO	8:401	Detail=The number of local commercial fishers who have joined the Ocean Fishery venture.
+UO	8:401	FutureStatusDate=2012-12-31
+UO	8:401	FutureStatusSummary=75%
 UO	8:401	ShortLabel=Fish 1a
 UO	8:401	Label=Number of Local Fishers in Ocean Fishery
 CO	8:402
@@ -551,23 +575,29 @@ UO	8:402	FutureStatusSummary=85%
 UO	8:402	ShortLabel=Fish 3a
 UO	8:402	Label=Percent of Ocean Fish Caught that are Sold
 CO	8:421
+UO	8:421	MeasurementRefs={"References":[{"ObjectType":32,"ObjectId":955},{"ObjectType":32,"ObjectId":956},{"ObjectType":32,"ObjectId":957}]}
 UO	8:421	Detail=The size of the shark population in Eastern Bay
+UO	8:421	FutureStatusDate=2024-12-31
 UO	8:421	ProgressReportRefs={"References":[{"ObjectType":37,"ObjectId":466}]}
 UO	8:421	Comments=We very much would like to track this indicator, but we are having a difficult time trying to figure out what would be a feasible and yet sensitive method. We need to spend some time thinking about this.
 UO	8:421	AssignmentIds={"Ids":[773]}
+UO	8:421	FutureStatusSummary=500
 UO	8:421	ShortLabel=B1
+UO	8:421	Priority=3
 UO	8:421	Label=Number of sharks in Bay
 CO	8:422
+UO	8:422	FutureStatusDate=2012-12-31
 UO	8:422	ProgressReportRefs={"References":[{"ObjectType":37,"ObjectId":424}]}
+UO	8:422	FutureStatusSummary=80%
 UO	8:422	ShortLabel=D1
 UO	8:422	Priority=2
 UO	8:422	TaskIds={"Ids":[425]}
 UO	8:422	Label=% of shoreline with healthy mangroves
 CO	9:212
-UO	9:212	FullText=By 2014, demand for shark fin soup has been reduced by 70% in Hong Kong below 2005 levels.
+UO	9:212	FullText=By 2014, demand for shark fin soup has been reduced by 70% in Hong Kong below 2001 levels -- a reduction of 7,300 metric tons if shark fin imports.
 UO	9:212	ShortLabel=Shark 2
 UO	9:212	ProgressPrecentRefs={"References":[{"ObjectType":45,"ObjectId":642}]}
-UO	9:212	RelevantStrategySet={"RelevancyOverrides":[{"Ref":"{\"ObjectType\":21,\"ObjectId\":143}","Flag":false}]}
+UO	9:212	RelevantStrategySet={"RelevancyOverrides":[{"Ref":"{\"ObjectType\":21,\"ObjectId\":143}","Flag":true}]}
 UO	9:212	Label=Reduce Demand for Shark Fins in Hong Kong
 CO	9:213
 UO	9:213	FullText=By 2017, there are no more than 10 incidents per year of shark fishing boats illegally fishing in Eastern Bay.
@@ -576,9 +606,10 @@ UO	9:213	ProgressPrecentRefs={"References":[{"ObjectType":45,"ObjectId":643}]}
 UO	9:213	RelevantStrategySet={"RelevancyOverrides":[{"Ref":"{\"ObjectType\":21,\"ObjectId\":143}","Flag":false}]}
 UO	9:213	Label=Illegal Shark Fishing Curtailed
 CO	9:214
-UO	9:214	FullText=By 2013, more than 50% of the seafood restaurants in Hong Kong are active participants in the &quot;Stop Shark Fin Soup&quot; campaign.
+UO	9:214	FullText=By 2013, more than 50% of the seafood restaurants in Hong Kong are active participants in the \&quot;Stop Shark Fin Soup\&quot; campaign.
 UO	9:214	ShortLabel=Shark 1
 UO	9:214	ProgressPrecentRefs={"References":[{"ObjectType":45,"ObjectId":641}]}
+UO	9:214	RelevantStrategySet={"RelevancyOverrides":[{"Ref":"{\"ObjectType\":3,\"ObjectId\":163}","Flag":true}]}
 UO	9:214	Label=Campaign Reaches Key Restaurants
 CO	9:309
 UO	9:309	FullText=By 2013, rats have been completely eliminated from all breeding islands.
@@ -615,6 +646,10 @@ UO	9:394	ShortLabel=Fish 3
 UO	9:394	ProgressPrecentRefs={"References":[{"ObjectType":45,"ObjectId":637}]}
 UO	9:394	RelevantStrategySet={"RelevancyOverrides":[{"Ref":"{\"ObjectType\":21,\"ObjectId\":131}","Flag":false}]}
 UO	9:394	Label=Markets Developed for Ocean Fish
+CO	10:1091
+UO	10:1091	FullText=By 2024 and thereafter, at least 80% of nature tourism companies indicate there are sufficient seabird viewing opportunities to draw in tourists
+UO	10:1091	ShortLabel=HW3
+UO	10:1091	Label=Tourism livelihoods
 CO	10:151
 UO	10:151	FullText=Healthy mangrove forests covers at least 80% of the shoreline in the project site for the next 50 years.
 UO	10:151	ShortLabel=D
@@ -637,14 +672,15 @@ UO	10:301	ShortLabel=E
 UO	10:301	ProgressPrecentRefs={"References":[{"ObjectType":45,"ObjectId":763}]}
 UO	10:301	Label=Healthy Nesting Seabird Populations
 CO	10:743
-UO	10:743	FullText=By 2024, coral reefs provide flood protection equal to 2010 baseline values.
+UO	10:743	FullText=By 2024, total flood damage to homes due to tidal surges does not exceed inflation-adjusted monetary figures for 2000
 UO	10:743	ShortLabel=HW1
-UO	10:743	Label=Flood Protection
+UO	10:743	Label=Home security
 CO	10:744
-UO	10:744	FullText=By 2024, the human populations of Eastern Bay continue to get at least 75% of their protein needs from marine fisheries.
+UO	10:744	FullText=By 2024, the human populations of Eastern Bay are able to satisfy at least 75% of their protein needs from marine fisheries.
 UO	10:744	ShortLabel=HW2
-UO	10:744	Label=Human Food Security
+UO	10:744	Label=Human Health
 CO	11:0
+UO	11:0	FullTimeEmployeeDaysPerYear=0
 UO	11:0	NextSteps=Need to do the planning for the sustainable ocean fishery strategy. Also, need to continue to implement the rat elimination work.
 UO	11:0	BudgetSecuredPercent=60
 UO	11:0	SiteMapReference=Project map is available at www.ebvmap.ebngo.org
@@ -672,14 +708,15 @@ UO	11:0	OtherOrgProjectNumber=EB 08-2
 UO	11:0	FinancialComments=Funds are in place for this year, need to fund raise for 2nd and 3rd years of this phase of the project.
 UO	11:0	SocialContext=Community members have traditional marine resource management system that they are trying to bring back. Community depends on fishing for most of their protein source and for cash income. Other major sources of income include farming and remittances from people working in other parts of the country.
 UO	11:0	PlanningTreeTargetNodePosition=TargetNodesTopOfPlanningTree
-UO	11:0	CurrentWizardScreenName=WorkPlanOverviewStep
+UO	11:0	CurrentWizardScreenName=SummaryOverviewStep
 UO	11:0	WorkPlanEndDate=2014-12-31
-UO	11:0	ProjectDescription=(All information in this project is fictitious - any resemblance to a real-world project is purely coincidental.)<br/><br/>The Eastern Bay Conservation Project (EBCP) is focused on working with the residents of Eastern Bay Village to help manage and conserve the marine resources of their traditional fishing grounds. Key partners on the project team include the residents of Eastern Bay Village, Eastern Bay NGO, and researchers from the local university. Our conservation targets are coral reefs, sharks, seagrass beds, mangroves, and seabirds. Major threats include unsustainable fishing by local people, invasive rats eating seabird eggs, and commercial shark finning operations. The project is implementing strategies to rid key breeding islets of rats, establish alternative income sources for local fishermen, and to liaise with an international conservation organization to combat the demand for shark fin soup. We are monitoring both the status of our conservation targets and the effectiveness of our conservation strategies. This project is funded by the Adaptive Management Foundation and the Island Development Bank.
+UO	11:0	ProjectLanguage=en
+UO	11:0	ProjectDescription=(All information in this project is fictitious - any resemblance to a real-world project is purely coincidental.)<br/><br/>The Eastern Bay Conservation Project (EBCP) is focused on working with the residents of Eastern Bay Village to help manage and conserve the marine resources of their traditional fishing grounds. Key partners on the project team include the residents of Eastern Bay Village, Eastern Bay NGO, and researchers from the local university. Our conservation targets are coral reefs, sharks, seagrass beds, mangroves, and seabirds. Major threats include unsustainable fishing by local people, invasive rats eating seabird eggs, and commercial shark finning operations. The project is implementing strategies to rid key breeding islets of rats, establish alternative income sources for local fishermen, and to liaise with an international conservation organization to combat the demand for shark fin soup. We are monitoring both the status of our conservation targets and the effectiveness of our conservation strategies. This project is funded by the Adaptive Management Foundation and the Island Development Bank.<br/>
 UO	11:0	PlanningComments=Detailed planning focuses on the next three year phase of the project
 UO	11:0	ProjectURL=www.eastbaymarine.org
 UO	11:0	WorkPlanTimeUnit=YEARLY
 UO	11:0	OtherOrgRelatedProjects=Child project of the Western Island Conservation Area
-UO	11:0	ProjectScope=The marine resources of Eastern Bay Village&apos;s traditional fishing grounds.
+UO	11:0	ProjectScope=The marine resources of Eastern Bay Village&apos;s traditional fishing grounds.<br/>
 UO	11:0	HumanPopulation=573
 UO	11:0	DataEffectiveDate=2012-04-01
 UO	11:0	ProjectVision=Protect and sustainably manage the marine resources of Eastern Bay for the benefit of our grandchildren&apos;s grandchildren.
@@ -689,10 +726,53 @@ UO	11:0	ShortProjectScope=Our Marine Resources
 UO	11:0	HumanPopulationNotes=Latest census shows 573 residents in Eastern Bay Village. Number does not include villagers living in other parts of the country.
 UO	11:0	ProjectAreaNote=This covers all of the marine habitats in Eastern Bay.
 UO	11:0	ProjectArea=40,000
+CO	13:1005
+UO	13:1005	FromDiagramFactorId=734
+UO	13:1005	ToDiagramFactorId=1003
+UO	13:1005	WrappedLinkId=1004
+CO	13:1007
+UO	13:1007	FromDiagramFactorId=1003
+UO	13:1007	ToDiagramFactorId=725
+UO	13:1007	WrappedLinkId=1006
 CO	13:100
 UO	13:100	FromDiagramFactorId=98
 UO	13:100	ToDiagramFactorId=60
 UO	13:100	WrappedLinkId=99
+CO	13:1078
+UO	13:1078	FromDiagramFactorId=1073
+UO	13:1078	ToDiagramFactorId=1068
+UO	13:1078	WrappedLinkId=271
+UO	13:1078	BendPoints={"Points":["{\"Y\":315,\"X\":630}"]}
+CO	13:1079
+UO	13:1079	FromDiagramFactorId=1074
+UO	13:1079	ToDiagramFactorId=1070
+UO	13:1079	WrappedLinkId=307
+UO	13:1079	BendPoints={"Points":["{\"Y\":495,\"X\":285}"]}
+CO	13:1080
+UO	13:1080	FromDiagramFactorId=1070
+UO	13:1080	ToDiagramFactorId=1069
+UO	13:1080	WrappedLinkId=269
+CO	13:1081
+UO	13:1081	FromDiagramFactorId=1069
+UO	13:1081	ToDiagramFactorId=1068
+UO	13:1081	WrappedLinkId=267
+CO	13:1082
+UO	13:1082	FromDiagramFactorId=1068
+UO	13:1082	ToDiagramFactorId=1072
+UO	13:1082	WrappedLinkId=277
+UO	13:1082	BendPoints={"Points":["{\"Y\":195,\"X\":750}","{\"Y\":150,\"X\":750}"]}
+CO	13:1083
+UO	13:1083	FromDiagramFactorId=1071
+UO	13:1083	ToDiagramFactorId=1070
+UO	13:1083	WrappedLinkId=273
+CO	13:1105
+UO	13:1105	FromDiagramFactorId=1072
+UO	13:1105	ToDiagramFactorId=1097
+UO	13:1105	WrappedLinkId=1104
+CO	13:1107
+UO	13:1107	FromDiagramFactorId=1097
+UO	13:1107	ToDiagramFactorId=1094
+UO	13:1107	WrappedLinkId=1106
 CO	13:115
 UO	13:115	FromDiagramFactorId=113
 UO	13:115	ToDiagramFactorId=60
@@ -951,10 +1031,6 @@ CO	13:732
 UO	13:732	FromDiagramFactorId=699
 UO	13:732	ToDiagramFactorId=730
 UO	13:732	WrappedLinkId=731
-CO	13:736
-UO	13:736	FromDiagramFactorId=734
-UO	13:736	ToDiagramFactorId=725
-UO	13:736	WrappedLinkId=735
 CO	13:738
 UO	13:738	FromDiagramFactorId=730
 UO	13:738	ToDiagramFactorId=723
@@ -1174,18 +1250,84 @@ UO	17:297	IndicatorIds={"Ids":[298]}
 UO	17:297	KeyEcologicalAttributeType=10
 UO	17:297	Details=The ruby crested puffin is the rarest and most vulnerable of the three seabird species. If it is doing okay, then we can assume the other species are doing okay too.
 UO	17:297	Label=Population Size of Ruby Crested Puffin
+CO	18:1003
+UO	18:1003	WrappedFactorRef={"ObjectType":20,"ObjectId":1002}
+UO	18:1003	Location={"Y":180,"X":765}
+UO	18:1003	Size={"Height":60,"Width":120}
 CO	18:102
 UO	18:102	WrappedFactorRef={"ObjectType":20,"ObjectId":101}
 UO	18:102	Location={"Y":225,"X":60}
 UO	18:102	Size={"Height":60,"Width":120}
+CO	18:1066
+UO	18:1066	WrappedFactorRef={"ObjectType":50,"ObjectId":1009}
+UO	18:1066	Location={"Y":75,"X":765}
+UO	18:1066	Size={"Height":180,"Width":180}
+CO	18:1067
+UO	18:1067	WrappedFactorRef={"ObjectType":26,"ObjectId":1010}
+UO	18:1067	Location={"Y":15,"X":45}
+UO	18:1067	FontSize=1.25
+UO	18:1067	FontStyle=<B>
+UO	18:1067	Size={"Height":30,"Width":570}
+CO	18:1068
+UO	18:1068	WrappedFactorRef={"ObjectType":25,"ObjectId":257}
+UO	18:1068	Location={"Y":150,"X":570}
+UO	18:1068	Size={"Height":90,"Width":120}
+CO	18:1069
+UO	18:1069	WrappedFactorRef={"ObjectType":23,"ObjectId":260}
+UO	18:1069	Location={"Y":150,"X":405}
+UO	18:1069	Size={"Height":90,"Width":120}
 CO	18:106
 UO	18:106	WrappedFactorRef={"ObjectType":20,"ObjectId":105}
 UO	18:106	Location={"Y":135,"X":60}
 UO	18:106	Size={"Height":60,"Width":120}
+CO	18:1070
+UO	18:1070	WrappedFactorRef={"ObjectType":23,"ObjectId":263}
+UO	18:1070	Location={"Y":150,"X":210}
+UO	18:1070	Size={"Height":90,"Width":150}
+CO	18:1071
+UO	18:1071	WrappedFactorRef={"ObjectType":23,"ObjectId":265}
+UO	18:1071	Location={"Y":150,"X":45}
+UO	18:1071	Size={"Height":90,"Width":120}
+CO	18:1072
+UO	18:1072	WrappedFactorRef={"ObjectType":22,"ObjectId":39}
+UO	18:1072	Location={"Y":120,"X":810}
+UO	18:1072	Size={"Height":60,"Width":120}
+CO	18:1073
+UO	18:1073	WrappedFactorRef={"ObjectType":21,"ObjectId":139}
+UO	18:1073	Location={"Y":285,"X":450}
+UO	18:1073	Size={"Height":60,"Width":150}
+CO	18:1074
+UO	18:1074	WrappedFactorRef={"ObjectType":21,"ObjectId":135}
+UO	18:1074	Location={"Y":465,"X":0}
+UO	18:1074	Size={"Height":60,"Width":180}
+CO	18:1075
+UO	18:1075	WrappedFactorRef={"ObjectType":3,"ObjectId":164}
+UO	18:1075	Location={"Y":360,"X":150}
+UO	18:1075	Size={"Height":30,"Width":270}
+CO	18:1076
+UO	18:1076	WrappedFactorRef={"ObjectType":3,"ObjectId":166}
+UO	18:1076	Location={"Y":315,"X":150}
+UO	18:1076	Size={"Height":30,"Width":270}
+CO	18:1077
+UO	18:1077	WrappedFactorRef={"ObjectType":3,"ObjectId":165}
+UO	18:1077	Location={"Y":405,"X":150}
+UO	18:1077	Size={"Height":30,"Width":270}
+CO	18:1094
+UO	18:1094	WrappedFactorRef={"ObjectType":52,"ObjectId":1092}
+UO	18:1094	Location={"Y":120,"X":1155}
+UO	18:1094	Size={"Height":60,"Width":120}
+CO	18:1095
+UO	18:1095	WrappedFactorRef={"ObjectType":50,"ObjectId":1093}
+UO	18:1095	Location={"Y":75,"X":1125}
+UO	18:1095	Size={"Height":180,"Width":180}
+CO	18:1097
+UO	18:1097	WrappedFactorRef={"ObjectType":23,"ObjectId":1096}
+UO	18:1097	Location={"Y":105,"X":975}
+UO	18:1097	Size={"Height":90,"Width":120}
 CO	18:110
 UO	18:110	WrappedFactorRef={"ObjectType":35,"ObjectId":109}
 UO	18:110	GroupBoxChildrenRefs={"References":[{"ObjectType":18,"ObjectId":102},{"ObjectType":18,"ObjectId":106}]}
-UO	18:110	Location={"Y":90,"X":45}
+UO	18:110	Location={"Y":105,"X":45}
 UO	18:110	Size={"Height":210,"Width":150}
 CO	18:113
 UO	18:113	WrappedFactorRef={"ObjectType":20,"ObjectId":112}
@@ -1526,15 +1668,15 @@ UO	18:715	Location={"Y":240,"X":75}
 UO	18:715	Size={"Height":60,"Width":120}
 CO	18:723
 UO	18:723	WrappedFactorRef={"ObjectType":52,"ObjectId":722}
-UO	18:723	Location={"Y":285,"X":795}
+UO	18:723	Location={"Y":285,"X":930}
 UO	18:723	Size={"Height":60,"Width":120}
 CO	18:725
 UO	18:725	WrappedFactorRef={"ObjectType":52,"ObjectId":724}
-UO	18:725	Location={"Y":180,"X":795}
+UO	18:725	Location={"Y":180,"X":930}
 UO	18:725	Size={"Height":60,"Width":120}
 CO	18:727
 UO	18:727	WrappedFactorRef={"ObjectType":50,"ObjectId":726}
-UO	18:727	Location={"Y":120,"X":765}
+UO	18:727	Location={"Y":120,"X":900}
 UO	18:727	Size={"Height":270,"Width":180}
 CO	18:730
 UO	18:730	WrappedFactorRef={"ObjectType":20,"ObjectId":729}
@@ -1554,7 +1696,7 @@ CO	18:748
 UO	18:748	WrappedFactorRef={"ObjectType":26,"ObjectId":747}
 UO	18:748	Location={"Y":435,"X":585}
 UO	18:748	BackgroundColor=LightBlue
-UO	18:748	Size={"Height":90,"Width":240}
+UO	18:748	Size={"Height":90,"Width":390}
 CO	18:74
 UO	18:74	WrappedFactorRef={"ObjectType":20,"ObjectId":73}
 UO	18:74	Location={"Y":585,"X":420}
@@ -1590,9 +1732,12 @@ UO	19:9	DiagramFactorLinkIds={"Ids":[44,50,52,54,58,62,66,72,76,80,84,88,92,96,1
 UO	19:9	ZoomScale=0.9370319001386962
 UO	19:9	Label=EB Main Model
 CO	19:692
-UO	19:692	DiagramFactorIds={"Ids":[697,698,699,700,712,715,723,725,727,730,734,746,748]}
-UO	19:692	DiagramFactorLinkIds={"Ids":[705,707,719,728,732,736,738,740,742]}
-UO	19:692	Label=Human Welfare Targets
+UO	19:692	DiagramFactorIds={"Ids":[697,698,699,700,712,715,723,725,727,730,734,746,748,1003]}
+UO	19:692	DiagramFactorLinkIds={"Ids":[705,707,719,728,732,738,740,742,1005,1007]}
+UO	19:692	ZoomScale=0
+UO	19:692	Label=Human Wellbeing Targets
+CO	20:1002
+UO	20:1002	Label=Lack of flood protection
 CO	20:101
 UO	20:101	Label=Low Pay for<br/>Law Officers
 CO	20:105
@@ -1684,7 +1829,7 @@ CO	21:143
 UO	21:143	ActivityIds={"Ids":[163,464]}
 UO	21:143	TaxonomyCode=A40.30
 UO	21:143	ShortLabel=Shark 1
-UO	21:143	Text=Work with Conservation Advocacy International. This strategy is a long-shot and will take a long time, but it seems we have no alternative on the &quot;supply&quot; side.
+UO	21:143	Text=Work with Conservation Advocacy International. This strategy is a long-shot and will take a long time, but it seems we have no alternative on the \&quot;supply\&quot; side.
 UO	21:143	Label=Campaign to Stop Shark Fin Soup
 CO	21:279
 UO	21:279	ImpactRating=3
@@ -1726,7 +1871,7 @@ CO	21:331
 UO	21:331	ImpactRating=2
 UO	21:331	FeasibilityRating=1
 UO	21:331	Status=Draft
-UO	21:331	Text=Have the community members surround the illegal boats in canoes and try to do a &quot;Greenpeace&quot; style protest and try to get media attention. Seems difficult to do and potentially too dangerous.
+UO	21:331	Text=Have the community members surround the illegal boats in canoes and try to do a \&quot;Greenpeace\&quot; style protest and try to get media attention. Seems difficult to do and potentially too dangerous.
 UO	21:331	Label=Community Protests to Boats
 CO	21:335
 UO	21:335	ImpactRating=3
@@ -1797,17 +1942,19 @@ UO	22:39	Text=There are three main species of seabirds that breed on the small i
 UO	22:39	HabitatAssociation={"Codes":["13.1"]}
 UO	22:39	KeyEcologicalAttributeIds={"Ids":[297]}
 UO	22:39	Label=Seabirds
+CO	23:1096
+UO	23:1096	Label=Sufficient seabird populations for viewing
 CO	23:197
 UO	23:197	ObjectiveIds={"Ids":[212]}
-UO	23:197	IndicatorIds={"Ids":[216]}
 UO	23:197	Text=Most of the current harvest in Eastern Bay goes to Hong Kong, However, the main problem here is that even if we can reduce demand in Hong Kong, will demand from other markets still cause pressure in Eastern Bay?
+UO	23:197	IndicatorIds={"Ids":[216]}
 UO	23:197	Label=Reduced Demand for Shark Fins in Hong Kong
 CO	23:201
 UO	23:201	Label=Restaurants Do Not Serve Soup
 CO	23:205
 UO	23:205	ObjectiveIds={"Ids":[214]}
-UO	23:205	IndicatorIds={"Ids":[215]}
 UO	23:205	Text=The campaign will target the leading seafood restaurants in Hong Kong. We will encourage restaurants to join the campaign and pledge not to serve Shark Fin Soup. We will also target consumers.
+UO	23:205	IndicatorIds={"Ids":[215]}
 UO	23:205	Label=Campaign Reaches Key Restaurants
 CO	23:260
 UO	23:260	Label=No New Rats Access Islands
@@ -1838,6 +1985,11 @@ CO	23:385
 UO	23:385	ObjectiveIds={"Ids":[394]}
 UO	23:385	IndicatorIds={"Ids":[402]}
 UO	23:385	Label=Markets Developed for Ocean Fish
+CO	24:1008
+UO	24:1008	DiagramFactorIds={"Ids":[1066,1067,1068,1069,1070,1071,1072,1073,1074,1075,1076,1077,1094,1095,1097]}
+UO	24:1008	DiagramFactorLinkIds={"Ids":[1078,1079,1080,1081,1082,1083,1105,1107]}
+UO	24:1008	ZoomScale=0
+UO	24:1008	Label=RC1 with HWT
 CO	24:255
 UO	24:255	Detail=Monitoring by university researchers shows that rats are currently attacking nesting seabirds on key islands in Eastern Bay. The rats seem to have come on birding tour boats that visit the islands. Our strategy is to trap the existing rats on the islands and to mandate rat barriers on visiting tourboats. We assume this will solve the rat problem within 2 years.
 UO	24:255	DiagramFactorIds={"Ids":[262,266,256,259,258,261,264,406,473,474,475,694]}
@@ -1875,6 +2027,8 @@ UO	25:348	ObjectiveIds={"Ids":[392]}
 UO	25:348	RelatedDirectThreatRef={"ObjectType":20,"ObjectId":55}
 UO	25:348	IndicatorIds={"Ids":[397]}
 UO	25:348	Label=Fishers Stop Fishing in Bay
+CO	26:1010
+UO	26:1010	Label=Results Chain for Rat Elimination - with Human Wellbeing Targets
 CO	26:147
 UO	26:147	Label=Conceptual Model for Eastern Bay Site
 CO	26:403
@@ -1894,12 +2048,12 @@ UO	26:415	Label=2014
 CO	26:417
 UO	26:417	Label=2017
 CO	26:745
-UO	26:745	Label=This diagram shows part of a conceptual model using the new Human Welfare Target feature.
+UO	26:745	Label=This diagram shows part of a conceptual model using the new Human Wellbeing Target feature.
 CO	26:747
-UO	26:747	Label=Note that human factors enter the model both on the left side as a &quot;threat&quot; but also on the right side as a &quot;target&quot; for the project.
+UO	26:747	Label=Note that human factors enter the model both on the left side as a \&quot;threat\&quot; but also on the right side as a \&quot;target\&quot; for the project. Human wellbeing targets are directly linked to ecosystem services provided by conservation targets
 CO	29:10
-UO	29:10	TagRowConfiguration={"Codes":["Indicator","Method","Measurement"]}
-UO	29:10	TagColConfiguration={"Codes":["Priority","MetaWhoTotal","FullText"]}
+UO	29:10	TagRowConfiguration={"Codes":["Measurement","Indicator","Method"]}
+UO	29:10	TagColConfiguration={"Codes":["FullText","MetaWhoTotal","Methods","Priority"]}
 UO	29:10	Label=M&amp;E View
 CO	29:767
 UO	29:767	TagRowConfiguration={"Codes":["Indicator","Strategy","ResultsChainDiagram","Objective"]}
@@ -1963,7 +2117,78 @@ CO	32:463
 UO	32:463	Detail=Our pilot study also found lots of evidence of rat predation with hseabird nests.
 UO	32:463	Date=2012-03-01
 UO	32:463	Summary=lots
-CO	32:782
+CO	32:955
+UO	32:955	Date=2008-09-21
+UO	32:955	Summary=200
+CO	32:956
+UO	32:956	Date=2010-09-21
+UO	32:956	Summary=300
+CO	32:957
+UO	32:957	Date=2012-09-21
+UO	32:957	Summary=350
+CO	32:958
+UO	32:958	StatusConfidence=IntensiveAssessment
+UO	32:958	Date=2009-09-21
+UO	32:958	Summary=20
+CO	32:959
+UO	32:959	StatusConfidence=IntensiveAssessment
+UO	32:959	Date=2010-09-21
+UO	32:959	Summary=15
+CO	32:960
+UO	32:960	StatusConfidence=IntensiveAssessment
+UO	32:960	Date=2011-09-21
+UO	32:960	Summary=18
+CO	32:961
+UO	32:961	StatusConfidence=IntensiveAssessment
+UO	32:961	Date=2012-09-21
+UO	32:961	Summary=12
+CO	32:963
+UO	32:963	StatusConfidence=IntensiveAssessment
+UO	32:963	Detail=metric tonsFrom FAO&apos;s FishStat database. The quantities and values in those tables are totals for all dried, dried and salted, fresh, or frozen shark fins.Data downloaded from: http://www.fao.org/fishery/statistics/enSee also: http://www.nmfs.noaa.gov/sfa/domes_fish/ReportsToCongress/SharkFinningReport11.pdf
+UO	32:963	Date=2004-12-31
+UO	32:963	Summary=11,040
+CO	32:964
+UO	32:964	StatusConfidence=IntensiveAssessment
+UO	32:964	Detail=metric tonsFrom FAO&apos;s FishStat database. The quantities and values in those tables are totals for all dried, dried and salted, fresh, or frozen shark fins.Data downloaded from: http://www.fao.org/fishery/statistics/enSee also: http://www.nmfs.noaa.gov/sfa/domes_fish/ReportsToCongress/SharkFinningReport11.pdf
+UO	32:964	Date=2005-12-31
+UO	32:964	Summary=10,348
+CO	32:965
+UO	32:965	StatusConfidence=IntensiveAssessment
+UO	32:965	Detail=metric tonsFrom FAO&apos;s FishStat database. The quantities and values in those tables are totals for all dried, dried and salted, fresh, or frozen shark fins.Data downloaded from: http://www.fao.org/fishery/statistics/enSee also: http://www.nmfs.noaa.gov/sfa/domes_fish/ReportsToCongress/SharkFinningReport11.pdf
+UO	32:965	Date=2006-12-31
+UO	32:965	Summary=9,363
+CO	32:966
+UO	32:966	StatusConfidence=IntensiveAssessment
+UO	32:966	Detail=metric tons<br/>From FAO&apos;s FishStat database. The quantities and values in those tables are totals for all dried, dried and salted, fresh, or frozen shark fins.<br/>Data downloaded from: http://www.fao.org/fishery/statistics/en<br/>See also: http://www.nmfs.noaa.gov/sfa/domes_fish/ReportsToCongress/SharkFinningReport11.pdf
+UO	32:966	Date=2007-12-31
+UO	32:966	Summary=10,183
+CO	32:967
+UO	32:967	StatusConfidence=IntensiveAssessment
+UO	32:967	Detail=metric tons<br/>From FAO&apos;s FishStat database. The quantities and values in those tables are totals for all dried, dried and salted, fresh, or frozen shark fins.<br/>Data downloaded from: http://www.fao.org/fishery/statistics/en<br/>See also: http://www.nmfs.noaa.gov/sfa/domes_fish/ReportsToCongress/SharkFinningReport11.pdf
+UO	32:967	Date=2008-12-31
+UO	32:967	Summary=9,950
+CO	32:969
+UO	32:969	Detail=metric tons<br/>From FAO&apos;s FishStat database. The quantities and values in those tables are totals for all dried, dried and salted, fresh, or frozen shark fins.<br/>Data downloaded from: http://www.fao.org/fishery/statistics/en<br/>See also: http://www.nmfs.noaa.gov/sfa/domes_fish/ReportsToCongress/SharkFinningReport11.pdf
+UO	32:969	Date=2003-12-31
+UO	32:969	Summary=9,358
+CO	32:971
+UO	32:971	Date=2011-12-31
+UO	32:971	Summary=20%
+CO	32:972
+UO	32:972	Date=2010-12-31
+UO	32:972	Summary=15%
+CO	32:995
+UO	32:995	Detail=metric tons<br/>From FAO&apos;s FishStat database. The quantities and values in those tables are totals for all dried, dried and salted, fresh, or frozen shark fins.<br/>Data downloaded from: http://www.fao.org/fishery/statistics/en<br/>See also: http://www.nmfs.noaa.gov/sfa/domes_fish/ReportsToCongress/SharkFinningReport11.pdf
+UO	32:995	Date=2009-12-31
+UO	32:995	Summary=12,352
+CO	32:996
+UO	32:996	Detail=metric tons<br/>From FAO&apos;s FishStat database. The quantities and values in those tables are totals for all dried, dried and salted, fresh, or frozen shark fins.<br/>Data downloaded from: http://www.fao.org/fishery/statistics/en<br/>See also: http://www.nmfs.noaa.gov/sfa/domes_fish/ReportsToCongress/SharkFinningReport11.pdf
+UO	32:996	Date=2002-12-31
+UO	32:996	Summary=10,938
+CO	32:997
+UO	32:997	Detail=metric tonsFrom FAO&apos;s FishStat database. The quantities and values in those tables are totals for all dried, dried and salted, fresh, or frozen shark fins.Data downloaded from: http://www.fao.org/fishery/statistics/enSee also: http://www.nmfs.noaa.gov/sfa/domes_fish/ReportsToCongress/SharkFinningReport11.pdf
+UO	32:997	Date=2001-12-31
+UO	32:997	Summary=10,462
 CO	33:482
 UO	33:482	Detail=Degree of coral bleaching
 UO	33:482	Severity=3
@@ -2113,7 +2338,7 @@ UO	37:169	ProgressDate=2012-03-31
 UO	37:169	ProgressStatus=Planned
 CO	37:219
 UO	37:219	Details=Need to discuss plans with CAI team to collect these data.
-UO	37:219	ProgressDate=2012-03-31
+UO	37:219	ProgressDate=2010-03-31
 UO	37:219	ProgressStatus=MajorIssues
 CO	37:220
 UO	37:220	Details=Last month&apos;s data not yet collected.
@@ -2170,6 +2395,10 @@ UO	37:503	ProgressStatus=Completed
 CO	37:504
 UO	37:504	ProgressDate=2013-02-04
 UO	37:504	ProgressStatus=MinorIssues
+CO	37:973
+UO	37:973	Details=Still having difficulty setting up reliable data collection process
+UO	37:973	ProgressDate=2012-10-31
+UO	37:973	ProgressStatus=MajorIssues
 CO	38:13
 CO	39:14
 CO	40:15
@@ -2249,13 +2478,15 @@ UO	46:933	Label=Sample
 UO	46:933	ShortLabel=1
 CO	47:496
 UO	47:496	Label=Rats
-UO	47:496	TaggedObjectRefs={"References":[{"ObjectType":21,"ObjectId":139},{"ObjectType":20,"ObjectId":116},{"ObjectType":22,"ObjectId":39},{"ObjectType":20,"ObjectId":77},{"ObjectType":20,"ObjectId":41},{"ObjectType":20,"ObjectId":73},{"ObjectType":50,"ObjectId":522},{"ObjectType":21,"ObjectId":135}]}
+UO	47:496	TaggedObjectRefs={"References":[{"ObjectType":21,"ObjectId":139},{"ObjectType":20,"ObjectId":116},{"ObjectType":22,"ObjectId":39},{"ObjectType":20,"ObjectId":77},{"ObjectType":20,"ObjectId":41},{"ObjectType":20,"ObjectId":73},{"ObjectType":50,"ObjectId":522},{"ObjectType":21,"ObjectId":135},{"ObjectType":50,"ObjectId":1009}]}
 CO	47:497
 UO	47:497	Label=Sharks
-UO	47:497	TaggedObjectRefs={"References":[{"ObjectType":20,"ObjectId":101},{"ObjectType":22,"ObjectId":33},{"ObjectType":21,"ObjectId":143},{"ObjectType":20,"ObjectId":97},{"ObjectType":20,"ObjectId":112},{"ObjectType":20,"ObjectId":59},{"ObjectType":35,"ObjectId":109},{"ObjectType":50,"ObjectId":522},{"ObjectType":20,"ObjectId":105}]}
+UO	47:497	TaggedObjectRefs={"References":[{"ObjectType":20,"ObjectId":101},{"ObjectType":22,"ObjectId":33},{"ObjectType":21,"ObjectId":143},{"ObjectType":20,"ObjectId":97},{"ObjectType":20,"ObjectId":112},{"ObjectType":20,"ObjectId":59},{"ObjectType":35,"ObjectId":109},{"ObjectType":50,"ObjectId":522},{"ObjectType":20,"ObjectId":105},{"ObjectType":50,"ObjectId":1009}]}
 CO	47:498
 UO	47:498	Label=Fishery
-UO	47:498	TaggedObjectRefs={"References":[{"ObjectType":22,"ObjectId":35},{"ObjectType":20,"ObjectId":55},{"ObjectType":20,"ObjectId":93},{"ObjectType":21,"ObjectId":131},{"ObjectType":50,"ObjectId":522},{"ObjectType":22,"ObjectId":30}]}
+UO	47:498	TaggedObjectRefs={"References":[{"ObjectType":22,"ObjectId":35},{"ObjectType":20,"ObjectId":55},{"ObjectType":20,"ObjectId":93},{"ObjectType":21,"ObjectId":131},{"ObjectType":50,"ObjectId":522},{"ObjectType":22,"ObjectId":30},{"ObjectType":50,"ObjectId":1009}]}
+CO	48:1001
+UO	48:1001	TableIdentifier=XslTemplatePoolTableModel
 CO	48:500
 UO	48:500	TableIdentifier=OrganizationPoolTable
 UO	48:500	ColumnWidths={"StringMap":{"Name":"185","Phone":"75","Email":"75","Given Name":"96","ID":"75","Role(s)":"146","Surname":"79"}}
@@ -2285,7 +2516,7 @@ UO	48:547	TableIdentifier=WorkPlanTreeTableModelTab_Tag
 UO	48:547	TagTableSettingsMap={"StringCodeListMap":{"WorkPlanBudgetColumnCodeListKey":"{\"Codes\":[\"MetaBudgetDetailColumnCode\",\"MetaWorkUnitColumnCode\",\"MetaExpenseAmountColumnCode\"]}"}}
 CO	48:548
 UO	48:548	TableIdentifier=WorkPlanTreeTableModel
-UO	48:548	TreeExpansionList={"Codes":["{\"References\":[{\"ObjectType\":24,\"ObjectId\":255},{\"ObjectType\":11,\"ObjectId\":0}]}"]}
+UO	48:548	TreeExpansionList={"Codes":["{\"References\":[{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":24,\"ObjectId\":255},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":21,\"ObjectId\":135},{\"ObjectType\":24,\"ObjectId\":255},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":165},{\"ObjectType\":21,\"ObjectId\":135},{\"ObjectType\":24,\"ObjectId\":255},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":164},{\"ObjectType\":21,\"ObjectId\":135},{\"ObjectType\":24,\"ObjectId\":255},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":166},{\"ObjectType\":21,\"ObjectId\":135},{\"ObjectType\":24,\"ObjectId\":255},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":21,\"ObjectId\":139},{\"ObjectType\":24,\"ObjectId\":255},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":440},{\"ObjectType\":21,\"ObjectId\":139},{\"ObjectType\":24,\"ObjectId\":255},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":442},{\"ObjectType\":21,\"ObjectId\":139},{\"ObjectType\":24,\"ObjectId\":255},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":443},{\"ObjectType\":3,\"ObjectId\":442},{\"ObjectType\":21,\"ObjectId\":139},{\"ObjectType\":24,\"ObjectId\":255},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":445},{\"ObjectType\":3,\"ObjectId\":442},{\"ObjectType\":21,\"ObjectId\":139},{\"ObjectType\":24,\"ObjectId\":255},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":447},{\"ObjectType\":3,\"ObjectId\":442},{\"ObjectType\":21,\"ObjectId\":139},{\"ObjectType\":24,\"ObjectId\":255},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":450},{\"ObjectType\":21,\"ObjectId\":139},{\"ObjectType\":24,\"ObjectId\":255},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":451},{\"ObjectType\":3,\"ObjectId\":450},{\"ObjectType\":21,\"ObjectId\":139},{\"ObjectType\":24,\"ObjectId\":255},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":454},{\"ObjectType\":3,\"ObjectId\":450},{\"ObjectType\":21,\"ObjectId\":139},{\"ObjectType\":24,\"ObjectId\":255},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":298},{\"ObjectType\":24,\"ObjectId\":255},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":303},{\"ObjectType\":8,\"ObjectId\":298},{\"ObjectType\":24,\"ObjectId\":255},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":318},{\"ObjectType\":24,\"ObjectId\":255},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":468},{\"ObjectType\":8,\"ObjectId\":318},{\"ObjectType\":24,\"ObjectId\":255},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":470},{\"ObjectType\":8,\"ObjectId\":318},{\"ObjectType\":24,\"ObjectId\":255},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":315},{\"ObjectType\":24,\"ObjectId\":255},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":316},{\"ObjectType\":8,\"ObjectId\":315},{\"ObjectType\":24,\"ObjectId\":255},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":311},{\"ObjectType\":24,\"ObjectId\":255},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":313},{\"ObjectType\":8,\"ObjectId\":311},{\"ObjectType\":24,\"ObjectId\":255},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":24,\"ObjectId\":347},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":21,\"ObjectId\":131},{\"ObjectType\":24,\"ObjectId\":347},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":155},{\"ObjectType\":24,\"ObjectId\":347},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":160},{\"ObjectType\":24,\"ObjectId\":347},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":395},{\"ObjectType\":24,\"ObjectId\":347},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":396},{\"ObjectType\":8,\"ObjectId\":395},{\"ObjectType\":24,\"ObjectId\":347},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":401},{\"ObjectType\":24,\"ObjectId\":347},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":400},{\"ObjectType\":24,\"ObjectId\":347},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":402},{\"ObjectType\":24,\"ObjectId\":347},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":397},{\"ObjectType\":24,\"ObjectId\":347},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":398},{\"ObjectType\":8,\"ObjectId\":397},{\"ObjectType\":24,\"ObjectId\":347},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":24,\"ObjectId\":181},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":21,\"ObjectId\":143},{\"ObjectType\":24,\"ObjectId\":181},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":163},{\"ObjectType\":21,\"ObjectId\":143},{\"ObjectType\":24,\"ObjectId\":181},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":464},{\"ObjectType\":21,\"ObjectId\":143},{\"ObjectType\":24,\"ObjectId\":181},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":421},{\"ObjectType\":24,\"ObjectId\":181},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":215},{\"ObjectType\":24,\"ObjectId\":181},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":221},{\"ObjectType\":8,\"ObjectId\":215},{\"ObjectType\":24,\"ObjectId\":181},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":216},{\"ObjectType\":24,\"ObjectId\":181},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":217},{\"ObjectType\":24,\"ObjectId\":181},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":232},{\"ObjectType\":8,\"ObjectId\":217},{\"ObjectType\":24,\"ObjectId\":181},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":19,\"ObjectId\":9},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":21,\"ObjectId\":131},{\"ObjectType\":19,\"ObjectId\":9},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":21,\"ObjectId\":135},{\"ObjectType\":19,\"ObjectId\":9},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":165},{\"ObjectType\":21,\"ObjectId\":135},{\"ObjectType\":19,\"ObjectId\":9},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":164},{\"ObjectType\":21,\"ObjectId\":135},{\"ObjectType\":19,\"ObjectId\":9},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":166},{\"ObjectType\":21,\"ObjectId\":135},{\"ObjectType\":19,\"ObjectId\":9},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":21,\"ObjectId\":139},{\"ObjectType\":19,\"ObjectId\":9},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":440},{\"ObjectType\":21,\"ObjectId\":139},{\"ObjectType\":19,\"ObjectId\":9},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":442},{\"ObjectType\":21,\"ObjectId\":139},{\"ObjectType\":19,\"ObjectId\":9},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":443},{\"ObjectType\":3,\"ObjectId\":442},{\"ObjectType\":21,\"ObjectId\":139},{\"ObjectType\":19,\"ObjectId\":9},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":445},{\"ObjectType\":3,\"ObjectId\":442},{\"ObjectType\":21,\"ObjectId\":139},{\"ObjectType\":19,\"ObjectId\":9},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":447},{\"ObjectType\":3,\"ObjectId\":442},{\"ObjectType\":21,\"ObjectId\":139},{\"ObjectType\":19,\"ObjectId\":9},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":450},{\"ObjectType\":21,\"ObjectId\":139},{\"ObjectType\":19,\"ObjectId\":9},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":451},{\"ObjectType\":3,\"ObjectId\":450},{\"ObjectType\":21,\"ObjectId\":139},{\"ObjectType\":19,\"ObjectId\":9},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":454},{\"ObjectType\":3,\"ObjectId\":450},{\"ObjectType\":21,\"ObjectId\":139},{\"ObjectType\":19,\"ObjectId\":9},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":21,\"ObjectId\":143},{\"ObjectType\":19,\"ObjectId\":9},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":163},{\"ObjectType\":21,\"ObjectId\":143},{\"ObjectType\":19,\"ObjectId\":9},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":464},{\"ObjectType\":21,\"ObjectId\":143},{\"ObjectType\":19,\"ObjectId\":9},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":155},{\"ObjectType\":19,\"ObjectId\":9},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":160},{\"ObjectType\":19,\"ObjectId\":9},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":421},{\"ObjectType\":19,\"ObjectId\":9},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":395},{\"ObjectType\":19,\"ObjectId\":9},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":396},{\"ObjectType\":8,\"ObjectId\":395},{\"ObjectType\":19,\"ObjectId\":9},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":422},{\"ObjectType\":19,\"ObjectId\":9},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":425},{\"ObjectType\":8,\"ObjectId\":422},{\"ObjectType\":19,\"ObjectId\":9},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":298},{\"ObjectType\":19,\"ObjectId\":9},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":303},{\"ObjectType\":8,\"ObjectId\":298},{\"ObjectType\":19,\"ObjectId\":9},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":19,\"ObjectId\":692},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":21,\"ObjectId\":131},{\"ObjectType\":19,\"ObjectId\":692},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":155},{\"ObjectType\":19,\"ObjectId\":692},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":160},{\"ObjectType\":19,\"ObjectId\":692},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":395},{\"ObjectType\":19,\"ObjectId\":692},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":396},{\"ObjectType\":8,\"ObjectId\":395},{\"ObjectType\":19,\"ObjectId\":692},{\"ObjectType\":11,\"ObjectId\":0}]}"]}
 UO	48:548	ColumnWidths={"StringMap":{"Item":"333"}}
 UO	48:548	RowHeight=26
 UO	48:548	ColumnSequenceCodes={"Codes":["Item"]}
@@ -2490,19 +2721,22 @@ UO	48:648	ColumnWidths={"StringMap":{"Name":"147","Severity":"75","Magnitude":"8
 UO	48:648	ColumnSequenceCodes={"Codes":["ID","Name","Scope","Severity","Magnitude","Details"]}
 CO	48:659
 UO	48:659	TableIdentifier=ThreatNameColumnTableModel
+UO	48:659	ColumnSortDirection=ReversedSortOrderCode
 UO	48:659	ColumnSortTag=Summary Threat Rating
 UO	48:659	ColumnWidths={"StringMap":{"":"32","\u21d3Threats\u21d3 \/ \u21d2Targets\u21d2":"203"}}
 UO	48:659	RowHeight=35
 CO	48:660
 UO	48:660	TableIdentifier=TargetThreatLinkTableModel
+UO	48:660	ColumnSortDirection=ReversedSortOrderCode
 UO	48:660	ColumnSortTag=Summary Threat Rating
 UO	48:660	ColumnWidths={"StringMap":{"Sharks":"75","Coral Reefs":"91","Seagrass Beds":"105","Seabirds":"91","Mangroves":"85"}}
 UO	48:660	RowHeight=35
 UO	48:660	ColumnSequenceCodes={"Codes":["{\"ObjectType\":22,\"ObjectId\":30}","{\"ObjectType\":22,\"ObjectId\":33}","{\"ObjectType\":22,\"ObjectId\":35}","{\"ObjectType\":22,\"ObjectId\":37}","{\"ObjectType\":22,\"ObjectId\":39}"]}
 CO	48:661
 UO	48:661	TableIdentifier=ThreatSummaryColumnTableModel
+UO	48:661	ColumnSortDirection=ReversedSortOrderCode
 UO	48:661	ColumnSortTag=Summary Threat Rating
-UO	48:661	ColumnWidths={"StringMap":{"Summary Threat Rating":"147"}}
+UO	48:661	ColumnWidths={"StringMap":{"":"134"}}
 UO	48:661	RowHeight=35
 CO	48:666
 UO	48:666	TableIdentifier=ThreatStressRatingTable
@@ -2572,8 +2806,8 @@ UO	48:766	TableIdentifier=FundingSourceTreeTableModel.ProjectResourceBudgetDetai
 CO	48:768
 UO	48:768	TableIdentifier=StrategyActivityRelevancyTreeTableModel
 UO	48:768	TreeExpansionList={"Codes":["","{\"References\":[{\"ObjectType\":21,\"ObjectId\":135},{\"ObjectType\":9,\"ObjectId\":310}]}"]}
-UO	48:768	ColumnWidths={"StringMap":{"Item":"365"}}
-UO	48:768	ColumnSequenceCodes={"Codes":["Item"]}
+UO	48:768	ColumnWidths={"StringMap":{"":"355"}}
+UO	48:768	ColumnSequenceCodes={"Codes":[""]}
 CO	48:775
 UO	48:775	TableIdentifier=IucnRedlistSpeciesEditablePoolTableModel
 CO	48:776
@@ -2640,7 +2874,7 @@ CO	48:806
 UO	48:806	TableIdentifier=ObjectsOnlyPlanningTreeTableModel.BudgetCategoryTwoExpenseTableModel
 CO	48:807
 UO	48:807	TableIdentifier=ConfigurableTreeTableModel
-UO	48:807	TreeExpansionList={"Codes":["{\"References\":[{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":155},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":156},{\"ObjectType\":8,\"ObjectId\":155},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":157},{\"ObjectType\":8,\"ObjectId\":155},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":160},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":161},{\"ObjectType\":8,\"ObjectId\":160},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":162},{\"ObjectType\":8,\"ObjectId\":160},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":421},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":395},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":396},{\"ObjectType\":8,\"ObjectId\":395},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":422},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":425},{\"ObjectType\":8,\"ObjectId\":422},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":298},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":299},{\"ObjectType\":8,\"ObjectId\":298},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":300},{\"ObjectType\":8,\"ObjectId\":298},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":303},{\"ObjectType\":8,\"ObjectId\":298},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":401},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":400},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":402},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":397},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":399},{\"ObjectType\":8,\"ObjectId\":397},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":398},{\"ObjectType\":8,\"ObjectId\":397},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":318},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":468},{\"ObjectType\":8,\"ObjectId\":318},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":470},{\"ObjectType\":8,\"ObjectId\":318},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":315},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":463},{\"ObjectType\":8,\"ObjectId\":315},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":316},{\"ObjectType\":8,\"ObjectId\":315},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":311},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":312},{\"ObjectType\":8,\"ObjectId\":311},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":313},{\"ObjectType\":8,\"ObjectId\":311},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":215},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":782},{\"ObjectType\":8,\"ObjectId\":215},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":221},{\"ObjectType\":8,\"ObjectId\":215},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":216},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":217},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":232},{\"ObjectType\":8,\"ObjectId\":217},{\"ObjectType\":11,\"ObjectId\":0}]}"]}
+UO	48:807	TreeExpansionList={"Codes":["{\"References\":[{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":155},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":157},{\"ObjectType\":8,\"ObjectId\":155},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":156},{\"ObjectType\":8,\"ObjectId\":155},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":160},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":162},{\"ObjectType\":8,\"ObjectId\":160},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":161},{\"ObjectType\":8,\"ObjectId\":160},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":421},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":957},{\"ObjectType\":8,\"ObjectId\":421},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":956},{\"ObjectType\":8,\"ObjectId\":421},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":955},{\"ObjectType\":8,\"ObjectId\":421},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":395},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":396},{\"ObjectType\":8,\"ObjectId\":395},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":422},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":425},{\"ObjectType\":8,\"ObjectId\":422},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":298},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":300},{\"ObjectType\":8,\"ObjectId\":298},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":299},{\"ObjectType\":8,\"ObjectId\":298},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":303},{\"ObjectType\":8,\"ObjectId\":298},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":401},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":400},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":402},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":397},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":399},{\"ObjectType\":8,\"ObjectId\":397},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":398},{\"ObjectType\":8,\"ObjectId\":397},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":318},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":468},{\"ObjectType\":8,\"ObjectId\":318},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":470},{\"ObjectType\":8,\"ObjectId\":318},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":315},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":463},{\"ObjectType\":8,\"ObjectId\":315},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":316},{\"ObjectType\":8,\"ObjectId\":315},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":311},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":312},{\"ObjectType\":8,\"ObjectId\":311},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":313},{\"ObjectType\":8,\"ObjectId\":311},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":215},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":971},{\"ObjectType\":8,\"ObjectId\":215},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":972},{\"ObjectType\":8,\"ObjectId\":215},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":221},{\"ObjectType\":8,\"ObjectId\":215},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":216},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":995},{\"ObjectType\":8,\"ObjectId\":216},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":967},{\"ObjectType\":8,\"ObjectId\":216},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":966},{\"ObjectType\":8,\"ObjectId\":216},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":965},{\"ObjectType\":8,\"ObjectId\":216},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":964},{\"ObjectType\":8,\"ObjectId\":216},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":963},{\"ObjectType\":8,\"ObjectId\":216},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":969},{\"ObjectType\":8,\"ObjectId\":216},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":996},{\"ObjectType\":8,\"ObjectId\":216},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":997},{\"ObjectType\":8,\"ObjectId\":216},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":1000},{\"ObjectType\":8,\"ObjectId\":216},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":217},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":961},{\"ObjectType\":8,\"ObjectId\":217},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":960},{\"ObjectType\":8,\"ObjectId\":217},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":959},{\"ObjectType\":8,\"ObjectId\":217},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":958},{\"ObjectType\":8,\"ObjectId\":217},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":3,\"ObjectId\":232},{\"ObjectType\":8,\"ObjectId\":217},{\"ObjectType\":11,\"ObjectId\":0}]}"]}
 UO	48:807	ColumnWidths={"StringMap":{"Item":"366"}}
 UO	48:807	RowHeight=39
 UO	48:807	ColumnSequenceCodes={"Codes":["Item"]}
@@ -2895,14 +3129,74 @@ CO	48:930
 UO	48:930	TableIdentifier=ExpenseAssignmentMainTableModel
 CO	48:931
 UO	48:931	TableIdentifier=MultiTableModelConfigurableTreeTableModel
+UO	48:931	ColumnWidths={"StringMap":{"FullText":"463","MetaWhoTotal":"100","Methods":"163","Priority":"100"}}
 UO	48:931	RowHeight=39
+UO	48:931	ColumnSequenceCodes={"Codes":["FullText","MetaWhoTotal","Methods","Priority"]}
 CO	48:932
 UO	48:932	TableIdentifier=ReportTemplatePoolTableModel
 UO	48:932	ColumnWidths={"StringMap":{"Name":"200","Comments":"460","ID":"50"}}
 UO	48:932	ColumnSequenceCodes={"Codes":["Name","ID","Comments"]}
+CO	48:936
+UO	48:936	TableIdentifier=TargetViabilityTreeTableModel
+UO	48:936	TreeExpansionList={"Codes":["","{\"References\":[{\"ObjectType\":8,\"ObjectId\":215},{\"ObjectType\":23,\"ObjectId\":205}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":421},{\"ObjectType\":22,\"ObjectId\":33}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":955},{\"ObjectType\":8,\"ObjectId\":421},{\"ObjectType\":22,\"ObjectId\":33}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":956},{\"ObjectType\":8,\"ObjectId\":421},{\"ObjectType\":22,\"ObjectId\":33}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":957},{\"ObjectType\":8,\"ObjectId\":421},{\"ObjectType\":22,\"ObjectId\":33}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":217},{\"ObjectType\":25,\"ObjectId\":186}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":958},{\"ObjectType\":8,\"ObjectId\":217},{\"ObjectType\":25,\"ObjectId\":186}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":959},{\"ObjectType\":8,\"ObjectId\":217},{\"ObjectType\":25,\"ObjectId\":186}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":960},{\"ObjectType\":8,\"ObjectId\":217},{\"ObjectType\":25,\"ObjectId\":186}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":961},{\"ObjectType\":8,\"ObjectId\":217},{\"ObjectType\":25,\"ObjectId\":186}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":216},{\"ObjectType\":23,\"ObjectId\":197}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":962},{\"ObjectType\":8,\"ObjectId\":216},{\"ObjectType\":23,\"ObjectId\":197}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":963},{\"ObjectType\":8,\"ObjectId\":216},{\"ObjectType\":23,\"ObjectId\":197}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":964},{\"ObjectType\":8,\"ObjectId\":216},{\"ObjectType\":23,\"ObjectId\":197}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":965},{\"ObjectType\":8,\"ObjectId\":216},{\"ObjectType\":23,\"ObjectId\":197}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":966},{\"ObjectType\":8,\"ObjectId\":216},{\"ObjectType\":23,\"ObjectId\":197}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":967},{\"ObjectType\":8,\"ObjectId\":216},{\"ObjectType\":23,\"ObjectId\":197}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":969},{\"ObjectType\":8,\"ObjectId\":216},{\"ObjectType\":23,\"ObjectId\":197}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":971},{\"ObjectType\":8,\"ObjectId\":215},{\"ObjectType\":23,\"ObjectId\":205}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":972},{\"ObjectType\":8,\"ObjectId\":215},{\"ObjectType\":23,\"ObjectId\":205}]}","{\"References\":[{\"ObjectType\":22,\"ObjectId\":30},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":17,\"ObjectId\":154},{\"ObjectType\":22,\"ObjectId\":30},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":155},{\"ObjectType\":17,\"ObjectId\":154},{\"ObjectType\":22,\"ObjectId\":30},{\"ObjectType\":11,\"ObjectId\":0}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":995},{\"ObjectType\":8,\"ObjectId\":216},{\"ObjectType\":23,\"ObjectId\":197}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":996},{\"ObjectType\":8,\"ObjectId\":216},{\"ObjectType\":23,\"ObjectId\":197}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":997},{\"ObjectType\":8,\"ObjectId\":216},{\"ObjectType\":23,\"ObjectId\":197}]}"]}
+UO	48:936	ColumnWidths={"StringMap":{"Item":"344"}}
+UO	48:936	RowHeight=33
+UO	48:936	ColumnSequenceCodes={"Codes":["Item"]}
+CO	48:937
+UO	48:937	TableIdentifier=TargetViabilityTreeTableModel.PlanningWorkUnitsTableModel
+CO	48:938
+UO	48:938	TableIdentifier=TargetViabilityTreeTableModel.ProjectResourceWorkUnitsTableModel
+CO	48:939
+UO	48:939	TableIdentifier=TargetViabilityTreeTableModel.ProjectResourceBudgetDetailsTableModel
+CO	48:940
+UO	48:940	TableIdentifier=TargetViabilityTreeTableModel.ExpenseAmountsTableModel
+CO	48:941
+UO	48:941	TableIdentifier=TargetViabilityTreeTableModel.BudgetDetailsTableModel
+CO	48:942
+UO	48:942	TableIdentifier=TargetViabilityTreeTableModel.FundingSourceBudgetDetailsTableModel
+CO	48:943
+UO	48:943	TableIdentifier=TargetViabilityTreeTableModel.AccountingCodeBudgetDetailsTableModel
+CO	48:944
+UO	48:944	TableIdentifier=TargetViabilityTreeTableModel.FundingSourceExpenseTableModel
+CO	48:945
+UO	48:945	TableIdentifier=TargetViabilityTreeTableModel.AccountingCodeExpenseTableModel
+CO	48:946
+UO	48:946	TableIdentifier=TargetViabilityTreeTableModel.RollupReportsWorkUnitsModel
+CO	48:947
+UO	48:947	TableIdentifier=TargetViabilityTreeTableModel.RollupReportsExpenseTableMode
+CO	48:948
+UO	48:948	TableIdentifier=TargetViabilityTreeTableModel.RollupReportsBudgetDetailsTableModel
+CO	48:949
+UO	48:949	TableIdentifier=TargetViabilityTreeTableModel.BudgetCategoryOneWorkUnitsTableModel
+CO	48:950
+UO	48:950	TableIdentifier=TargetViabilityTreeTableModel.BudgetCategoryOneExpenseTableModel
+CO	48:951
+UO	48:951	TableIdentifier=TargetViabilityTreeTableModel.BudgetCategoryOneBudgetDetailsTableModel
+CO	48:952
+UO	48:952	TableIdentifier=TargetViabilityTreeTableModel.BudgetCategoryTwoWorkUnitsTableModel
+CO	48:953
+UO	48:953	TableIdentifier=TargetViabilityTreeTableModel.BudgetCategoryTwoExpenseTableModel
+CO	48:968
+UO	48:968	TableIdentifier=MultiTableModelTargetViabilityTreeTableModel
+UO	48:968	ColumnWidths={"StringMap":{"StatusConfidence":"125","Summary":"108"}}
+UO	48:968	RowHeight=33
+UO	48:968	ColumnSequenceCodes={"Codes":["Summary","StatusConfidence"]}
+CO	48:970
+UO	48:970	TableIdentifier=ActivityListTableModel
+CO	48:998
+UO	48:998	TableIdentifier=StrategyActivityRelevancyTableModel
+CO	48:999
+UO	48:999	TableIdentifier=MethodListTableModel
 CO	49:521
 UO	49:521	SimpleThreatRatingCommentsMap={"StringMap":{"{\"ObjectType\":20,\"ObjectId\":59}{\"ObjectType\":22,\"ObjectId\":33}":"Shark boats are affecting all but closest in areas.","{\"ObjectType\":20,\"ObjectId\":47}{\"ObjectType\":22,\"ObjectId\":35}":"","{\"ObjectType\":20,\"ObjectId\":67}{\"ObjectType\":22,\"ObjectId\":30}":"Have not noticed bleaching yet, but we predict it will happen in next 5 years.","{\"ObjectType\":20,\"ObjectId\":55}{\"ObjectType\":22,\"ObjectId\":35}":"Fishing effects might be more recoverable on seagrass bed areas","{\"ObjectType\":20,\"ObjectId\":47}{\"ObjectType\":22,\"ObjectId\":37}":"","{\"ObjectType\":20,\"ObjectId\":55}{\"ObjectType\":22,\"ObjectId\":30}":"Blast fishing is decimating coral reefs","{\"ObjectType\":20,\"ObjectId\":63}{\"ObjectType\":22,\"ObjectId\":30}":"Some damage noticed at heavily visited reefs.","{\"ObjectType\":20,\"ObjectId\":47}{\"ObjectType\":22,\"ObjectId\":39}":"Some evidence of sewage affecting the birds.","{\"ObjectType\":20,\"ObjectId\":41}{\"ObjectType\":22,\"ObjectId\":39}":"Rats are killing seabird eggs and chicks.  Rats have been found on all islands."}}
 UO	49:521	StressBasedThreatRatingCommentsMap={"StringMap":{"{\"ObjectType\":20,\"ObjectId\":59}{\"ObjectType\":22,\"ObjectId\":33}":"","{\"ObjectType\":20,\"ObjectId\":47}{\"ObjectType\":22,\"ObjectId\":35}":"","{\"ObjectType\":20,\"ObjectId\":67}{\"ObjectType\":22,\"ObjectId\":30}":"","{\"ObjectType\":20,\"ObjectId\":55}{\"ObjectType\":22,\"ObjectId\":35}":"","{\"ObjectType\":20,\"ObjectId\":47}{\"ObjectType\":22,\"ObjectId\":37}":"","{\"ObjectType\":20,\"ObjectId\":55}{\"ObjectType\":22,\"ObjectId\":30}":"","{\"ObjectType\":20,\"ObjectId\":63}{\"ObjectType\":22,\"ObjectId\":30}":"","{\"ObjectType\":20,\"ObjectId\":47}{\"ObjectType\":22,\"ObjectId\":39}":"","{\"ObjectType\":20,\"ObjectId\":41}{\"ObjectType\":22,\"ObjectId\":39}":""}}
+CO	50:1009
+UO	50:1009	Text=The marine resources of Eastern Bay Village&apos;s traditional fishing grounds.
+UO	50:1009	Label=Conservation Scope: Marine Resources
+CO	50:1093
+UO	50:1093	Text=The well-being of the human population of the Eastern Bay
+UO	50:1093	Label=Social Scope: Human Population of Eastern Bay
+UO	50:1093	ScopeBoxColorCode=HumanWelfareTargetBrown
 CO	50:522
 UO	50:522	Text=The marine resources of Eastern Bay Village&apos;s traditional fishing grounds.
 UO	50:522	Label=Conservation Scope: Marine Resources
@@ -2935,14 +3229,18 @@ CO	51:589
 UO	51:589	FundingSourceRef={"ObjectType":16,"ObjectId":176}
 UO	51:589	Details={"DateUnitEfforts":[{"NumberOfUnits":1500,"DateUnit":{"DateUnitCode":"2011Q1"}},{"NumberOfUnits":1500,"DateUnit":{"DateUnitCode":"2011Q2"}},{"NumberOfUnits":1500,"DateUnit":{"DateUnitCode":"2011Q3"}},{"NumberOfUnits":1500,"DateUnit":{"DateUnitCode":"2011Q4"}},{"NumberOfUnits":1500,"DateUnit":{"DateUnitCode":"YEARFROM:2012-01"}},{"NumberOfUnits":1500,"DateUnit":{"DateUnitCode":"YEARFROM:2013-01"}}]}
 UO	51:589	Label=boat rentals
+CO	52:1092
+UO	52:1092	ShortLabel=HW3
+UO	52:1092	GoalIds={"Ids":[1091]}
+UO	52:1092	Label=Tourism livelihoods
 CO	52:722
 UO	52:722	ShortLabel=HW2
 UO	52:722	GoalIds={"Ids":[744]}
-UO	52:722	Label=Food Security
+UO	52:722	Label=Human Health
 CO	52:724
 UO	52:724	ShortLabel=HW1
 UO	52:724	GoalIds={"Ids":[743]}
-UO	52:724	Label=Flood Protection
+UO	52:724	Label=Home security
 CO	53:752
 UO	53:752	Label=Ruby-Crested Puffins
 CO	53:757
@@ -2952,99 +3250,6 @@ UO	58:774	CurrentDashboardTab=Conceptualize
 UO	58:774	CommentsMap={"StringMap":{"DocumentKeyResultsAndLessons":"Several lessons learned are already emerging.  Discussing best way to capture and share these","DevelopAndSubmitFundingProposals":"Several proposals submitted.  Final budget will determine scope of work","FinalizeMonitoringPlan":"Under review by outside stakeholders","AddHumanWelfareTargetsIfDesired":"First version is complete but may need to revisit this.","AssessStakeholders":"stakeholder assesment being performed outside of Miradi.","DetailMethodsTasksAndResponsibilities":"Not all Indicators and methods have been finalized.  Final version will be based on available resources.","Share success & failures with practitioners around the world":"Some results being shared already","DefineProjectScope":"","RankDirectThreats":"Needs final review with stakeholders.","ShareFeedbackFormallyOrInformally":"","FinalizeStrategicPlan":"Under review by outside stakeholders","AssessRisks":"Risk analysis being performed outside of Miradi","ImplementWorkPlan":"Several tasks already under way","DevelopSystemsForRecordingStoringProcessingAndBackingUpProjectData":"Investigating use of ConPro and other data management systems.","DevelopObjectives":"","SelectInitialTeamMembers":"Core team is defined, may need to add more resources as project progresses ","RankDraftStrategies":"A more fine grained ranking may need to be developed at a later time.","DetailActivitiesTasksAndResponsibilities":"Final scope of work is to be determined based on available funds\/resources.","DevelopMapOfProjectArea":"Need to investigate GIS tools and other resources for this step.","DefineIndicators":"Some input needed from field experts."}}
 UO	58:774	ProgressChoiceMap={"StringChoiceMap":{"IdentifyIndirectThreatsAndOpportunities":"3","AssessStakeholders":"2","IdentifyDirectThreats":"3","DefineAudiencesAndInformationNeeds":"2","PlanProjectLifespanAndExitStrategy":"3","AssessRisks":"2","DescribeStatusOfTargets":"3","GroundTruthAndReviseModel":"2","ImplementWorkPlan":"2","UseOthersCommunicationProducts":"2","DevelopObjectives":"3","SelectInitialTeamMembers":"3","IdentifyKeyAudiences":"2","DevelopMapOfProjectArea":"1","DemonstrateCommitmentFromLeadersToLearningAndInnovation":"2","DocumentKeyResultsAndLessons":"2","AgreeOnRolesAndResponsibilities":"2","AddHumanWelfareTargetsIfDesired":"3","DocumentDiscussionsAndDecisions":"2","Share success & failures with practitioners around the world":"2","DevelopGoalsGorEachTarget":"3","RankDirectThreats":"2","CreateInitialConceptualModel":"3","DevelopAndShareCommunicationProducts":"2","IdentifyKeyFactorsAndDraftStrategies":"3","AnalyzeProjectResultsSndSssumptions":"2","SelectConservationTargets":"3","ReportToProjectTeamAndStakeholders":"2","CreateResultsChainsShowingAssumptions":"3","RankDraftStrategies":"3","DetailActivitiesTasksAndResponsibilities":"","DevelopProjectTimelineOrCalendar":"","DevelopCommunicationsStrategy":"2"}}
 UO	58:774	FlagsMap={"StringCodeListMap":{"AssessHumanFinacialAndOtherResources":"","DevelopAndSubmitFundingProposals":"{\"Codes\":[\"needsAttention\"]}","AddHumanWelfareTargetsIfDesired":"{\"Codes\":[\"needsAttention\"]}","DetailMethodsTasksAndResponsibilities":"{\"Codes\":[\"needsAttention\"]}","DevelopSystemsForRecordingStoringProcessingAndBackingUpProjectData":"{\"Codes\":[\"needsAttention\"]}","DetailActivitiesTasksAndResponsibilities":"{\"Codes\":[\"needsAttention\"]}","ShareFeedbackFormallyOrInformally":"","DevelopMapOfProjectArea":"{\"Codes\":[\"needsAttention\"]}","RankDirectThreats":"{\"Codes\":[\"needsAttention\"]}","DefineIndicators":"{\"Codes\":[\"needsAttention\"]}"}}
-CT	41-30
-UT	41-30	DefaultValueId=4
-UT	41-30	Values={}
-CT	47-30
-UT	47-30	DefaultValueId=4
-UT	47-30	Values={}
-CT	55-30
-UT	55-30	DefaultValueId=4
-UT	55-30	Values={"3":5,"2":5,"1":5}
-CT	59-30
-UT	59-30	DefaultValueId=4
-UT	59-30	Values={"3":6,"2":6,"1":6}
-CT	63-30
-UT	63-30	DefaultValueId=4
-UT	63-30	Values={"3":7,"2":7,"1":7}
-CT	67-30
-UT	67-30	DefaultValueId=4
-UT	67-30	Values={"3":5,"2":6,"1":5}
-CT	41-33
-UT	41-33	DefaultValueId=4
-UT	41-33	Values={}
-CT	47-33
-UT	47-33	DefaultValueId=4
-UT	47-33	Values={}
-CT	55-33
-UT	55-33	DefaultValueId=4
-UT	55-33	Values={}
-CT	59-33
-UT	59-33	DefaultValueId=4
-UT	59-33	Values={"3":6,"2":5,"1":6}
-CT	63-33
-UT	63-33	DefaultValueId=4
-UT	63-33	Values={}
-CT	67-33
-UT	67-33	DefaultValueId=4
-UT	67-33	Values={}
-CT	41-35
-UT	41-35	DefaultValueId=4
-UT	41-35	Values={}
-CT	47-35
-UT	47-35	DefaultValueId=4
-UT	47-35	Values={"3":8,"2":8,"1":6}
-CT	55-35
-UT	55-35	DefaultValueId=4
-UT	55-35	Values={"3":7,"2":5,"1":5}
-CT	59-35
-UT	59-35	DefaultValueId=4
-UT	59-35	Values={}
-CT	63-35
-UT	63-35	DefaultValueId=4
-UT	63-35	Values={}
-CT	67-35
-UT	67-35	DefaultValueId=4
-UT	67-35	Values={}
-CT	41-37
-UT	41-37	DefaultValueId=4
-UT	41-37	Values={}
-CT	47-37
-UT	47-37	DefaultValueId=4
-UT	47-37	Values={"3":8,"2":7,"1":7}
-CT	55-37
-UT	55-37	DefaultValueId=4
-UT	55-37	Values={}
-CT	59-37
-UT	59-37	DefaultValueId=4
-UT	59-37	Values={}
-CT	63-37
-UT	63-37	DefaultValueId=4
-UT	63-37	Values={}
-CT	67-37
-UT	67-37	DefaultValueId=4
-UT	67-37	Values={}
-CT	41-39
-UT	41-39	DefaultValueId=4
-UT	41-39	Values={"3":6,"2":5,"1":5}
-CT	47-39
-UT	47-39	DefaultValueId=4
-UT	47-39	Values={"3":7,"2":7,"1":7}
-CT	55-39
-UT	55-39	DefaultValueId=4
-UT	55-39	Values={}
-CT	59-39
-UT	59-39	DefaultValueId=4
-UT	59-39	Values={}
-CT	63-39
-UT	63-39	DefaultValueId=4
-UT	63-39	Values={}
-CT	67-39
-UT	67-39	DefaultValueId=4
-UT	67-39	Values={}
-CT	514-39
-UT	514-39	DefaultValueId=4
-UT	514-39	Values={}
 UQ	Data=
 UE	Data=
--- 1348156635480 Sep 20, 2012 11:57:15 AM
+-- 1352989190068 Nov 15, 2012 9:19:50 AM
