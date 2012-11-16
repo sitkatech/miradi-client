@@ -56,19 +56,18 @@ public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 		
 		mainWindow = mainWindowToUse;
 		currentDiagramFactor = diagramFactorToEdit;
-		
-		corePanel = new FactorSummaryCorePanel(getProject(), getActions(), diagramFactorToEdit);
+		corePanel = new FactorSummaryCorePanel(getProject(), getActions(), currentDiagramFactor);
 		addSubPanelWithTitledBorder(corePanel);
 		if(getFactor().isStrategy())
 		{
 			addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow()));
 		}
 		
-		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), getActions(), diagramFactorToEdit.getWrappedType()));
+		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), getActions(), currentDiagramFactor.getWrappedType()));
 		
 		detailIcon = createIcon();
 		
-		setObjectRefs(new ORef[] {diagramFactorToEdit.getWrappedORef(), diagramFactorToEdit.getRef(),});
+		setObjectRefs(new ORef[] {currentDiagramFactor.getWrappedORef(), currentDiagramFactor.getRef(),});
 		updateFieldsFromProject();
 	}
 
