@@ -56,18 +56,18 @@ public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 		
 		mainWindow = mainWindowToUse;
 		currentDiagramFactor = diagramFactorToEdit;
-		corePanel = new FactorSummaryCorePanel(getProject(), getActions(), currentDiagramFactor);
+		corePanel = new FactorSummaryCorePanel(getProject(), getActions(), getCurrentDiagramFactor());
 		addSubPanelWithTitledBorder(corePanel);
 		if(getFactor().isStrategy())
 		{
 			addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow()));
 		}
 		
-		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), getActions(), currentDiagramFactor.getWrappedType()));
+		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), getActions(), getCurrentDiagramFactor().getWrappedType()));
 		
 		detailIcon = createIcon();
 		
-		setObjectRefs(new ORef[] {currentDiagramFactor.getWrappedORef(), currentDiagramFactor.getRef(),});
+		setObjectRefs(new ORef[] {getCurrentDiagramFactor().getWrappedORef(), getCurrentDiagramFactor().getRef(),});
 		updateFieldsFromProject();
 	}
 
@@ -107,7 +107,7 @@ public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 
 	public Factor getFactor()
 	{
-		return (Factor) getProject().findObject(currentDiagramFactor.getWrappedORef());
+		return (Factor) getProject().findObject(getCurrentDiagramFactor().getWrappedORef());
 	}
 
 	@Override
@@ -123,7 +123,7 @@ public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 
 	public DiagramFactorId getCurrentDiagramFactorId()
 	{
-		return currentDiagramFactor.getDiagramFactorId();
+		return getCurrentDiagramFactor().getDiagramFactorId();
 	}
 	
 	@Override
