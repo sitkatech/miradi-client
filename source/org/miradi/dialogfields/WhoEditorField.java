@@ -32,7 +32,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ProjectResourceQuestion;
 import org.miradi.utils.CodeList;
 
-public class WhoEditorField extends ObjectDataField implements ReadonlyAndEditorProvider
+public class WhoEditorField extends ObjectDataField implements ReadonlyPanelAndPopupEditorProvider
 {
 	public WhoEditorField(MainWindow mainWindow, ORef refToUse)
 	{

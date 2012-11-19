@@ -30,7 +30,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.Translation;
 
-abstract public class AbstractEditableCodeListField extends ObjectDataInputField implements ReadonlyAndEditorProvider
+abstract public class AbstractEditableCodeListField extends ObjectDataInputField implements ReadonlyPanelAndPopupEditorProvider
 {
 	public AbstractEditableCodeListField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, int columnCount)
 	{
