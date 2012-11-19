@@ -29,7 +29,7 @@ public class ReadOnlyCodeListComponent extends AbstractReadOnlyComponent
 {
 	public ReadOnlyCodeListComponent(ChoiceItem[] choiceItemsToUse)
 	{
-		this(choiceItemsToUse, 1);
+		this(choiceItemsToUse, SINGLE_COLUMN_COUNT);
 	}
 	
 	public ReadOnlyCodeListComponent(ChoiceItem[] choiceItemsToUse, int columnCount)
