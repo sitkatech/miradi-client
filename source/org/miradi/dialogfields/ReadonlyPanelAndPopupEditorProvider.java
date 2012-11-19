@@ -23,7 +23,7 @@ package org.miradi.dialogfields;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.questions.ChoiceQuestion;
 
-public interface ReadonlyAndEditorProvider
+public interface ReadonlyPanelAndPopupEditorProvider
 {
 	public DisposablePanel createEditorPanel() throws Exception;
 	

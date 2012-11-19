@@ -30,7 +30,7 @@ import javax.swing.BorderFactory;
 import org.martus.swing.Utilities;
 import org.miradi.dialogfields.AbstractReadOnlyComponent;
 import org.miradi.dialogfields.DataField;
-import org.miradi.dialogfields.ReadonlyAndEditorProvider;
+import org.miradi.dialogfields.ReadonlyPanelAndPopupEditorProvider;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.EAM;
@@ -38,7 +38,7 @@ import org.miradi.questions.ChoiceQuestion;
 
 public class ReadonlyPanelWithPopupEditor extends MiradiPanel
 {
-	public ReadonlyPanelWithPopupEditor(ReadonlyAndEditorProvider readonlyAdnEditorProviderToUse, String popupEditorDialogTitleToUse, ChoiceQuestion choiceQuestion, int columnCount)
+	public ReadonlyPanelWithPopupEditor(ReadonlyPanelAndPopupEditorProvider readonlyAdnEditorProviderToUse, String popupEditorDialogTitleToUse, ChoiceQuestion choiceQuestion, int columnCount)
 	{
 		super(new BorderLayout());
 		
@@ -117,6 +117,6 @@ public class ReadonlyPanelWithPopupEditor extends MiradiPanel
 	
 	private PanelButton selectButton;
 	private AbstractReadOnlyComponent readOnlyCodeListComponent;
-	private ReadonlyAndEditorProvider readonlyWithEditorProvider;
+	private ReadonlyPanelAndPopupEditorProvider readonlyWithEditorProvider;
 	private String popupEditorDialogTitle;
 }
