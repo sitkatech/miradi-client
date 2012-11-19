@@ -25,29 +25,32 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.RatingIcon;
 import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 
 import com.jhlabs.awt.BasicGridLayout;
 
 abstract public class AbstractReadOnlyComponent extends MiradiPanel
 {
-	public AbstractReadOnlyComponent()
+	public AbstractReadOnlyComponent(ChoiceQuestion questionToUse)
 	{
-		this(SINGLE_COLUMN_COUNT);
+		this(questionToUse, SINGLE_COLUMN_COUNT);
 	}
 
-	public AbstractReadOnlyComponent(int columnCount)
+	public AbstractReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)
 	{
+		question = questionToUse;
 		setLayout(new BasicGridLayout(0, columnCount));
 		setBackground(EAM.READONLY_BACKGROUND_COLOR);
 		setForeground(EAM.READONLY_FOREGROUND_COLOR);
 	}
 	
-	protected void createAndAddReadonlyLabels(final CodeList codeList, ChoiceItem[] choiceItems)
+	protected void createAndAddReadonlyLabels(final CodeList codeList)
 	{
 		removeAll();
 		try
 		{
+			ChoiceItem[] choiceItems = getQuestion().getChoices();
 			for (int choiceIndex = 0; choiceIndex < choiceItems.length; ++choiceIndex)
 			{
 				ChoiceItem choiceItem = choiceItems[choiceIndex];
@@ -70,9 +73,15 @@ abstract public class AbstractReadOnlyComponent extends MiradiPanel
 			getTopLevelAncestor().validate();
 	}
 	
+	private ChoiceQuestion getQuestion()
+	{
+		return question;
+	}
+	
 	abstract public String getText();
 	
 	abstract public void setText(String text);
 
 	protected static final int SINGLE_COLUMN_COUNT = 1;
+	private ChoiceQuestion question;
 }
