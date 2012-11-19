@@ -21,7 +21,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import org.miradi.dialogs.base.MiradiPanel;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.icons.RatingIcon;
 import org.miradi.main.EAM;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.utils.CodeList;
 
 import com.jhlabs.awt.BasicGridLayout;
 
@@ -37,6 +41,33 @@ abstract public class AbstractReadOnlyComponent extends MiradiPanel
 		setLayout(new BasicGridLayout(0, columnCount));
 		setBackground(EAM.READONLY_BACKGROUND_COLOR);
 		setForeground(EAM.READONLY_FOREGROUND_COLOR);
+	}
+	
+	protected void createAndAddReadonlyLabels(final CodeList codeList, ChoiceItem[] choiceItems)
+	{
+		removeAll();
+		try
+		{
+			for (int choiceIndex = 0; choiceIndex < choiceItems.length; ++choiceIndex)
+			{
+				ChoiceItem choiceItem = choiceItems[choiceIndex];
+				if (codeList.contains(choiceItem.getCode()))
+				{
+					PanelTitleLabel label = new PanelTitleLabel(choiceItem.getTextAsHtmlWrappedLabel());
+					if (choiceItem.getColor() != null)
+						label.setIcon(new RatingIcon(choiceItem));
+					
+					add(label);
+				}
+			}
+		}
+		catch(Exception e)
+		{
+			EAM.alertUserOfNonFatalException(e);
+		}
+		
+		if (getTopLevelAncestor() != null)
+			getTopLevelAncestor().validate();
 	}
 	
 	abstract public String getText();

@@ -20,11 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.icons.RatingIcon;
-import org.miradi.main.EAM;
-import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.utils.CodeList;
 
 public class ReadonlyChoiceComponent extends AbstractReadOnlyComponent
 {
@@ -56,24 +53,8 @@ public class ReadonlyChoiceComponent extends AbstractReadOnlyComponent
 	@Override
 	public void setText(String code)
 	{
-		removeAll();
-		try
-		{
-			currentCode = code;
-			ChoiceItem choiceItem = question.findChoiceByCode(code);
-			PanelTitleLabel label = new PanelTitleLabel(choiceItem.getTextAsHtmlWrappedLabel());
-			if (choiceItem.getColor() != null)
-				label.setIcon(new RatingIcon(choiceItem));
-
-			add(label);
-			
-			if (getTopLevelAncestor() != null)
-				getTopLevelAncestor().validate();
-		}
-		catch(Exception e)
-		{
-			EAM.alertUserOfNonFatalException(e);
-		}
+		currentCode = code;
+		createAndAddReadonlyLabels(new CodeList(new String[]{code,}), question.getChoices());
 	}
 
 	private ChoiceQuestion question;

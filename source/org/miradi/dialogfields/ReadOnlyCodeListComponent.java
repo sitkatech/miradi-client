@@ -19,8 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.icons.RatingIcon;
+import java.text.ParseException;
+
 import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.utils.CodeList;
@@ -49,32 +49,17 @@ public class ReadOnlyCodeListComponent extends AbstractReadOnlyComponent
 	@Override
 	public void setText(String codesToUse)
 	{
-		removeAll();
 		try
 		{
 			codeList = new CodeList(codesToUse);
-			for (int choiceIndex = 0; choiceIndex < choiceItems.length; ++choiceIndex)
-			{
-				ChoiceItem choiceItem = choiceItems[choiceIndex];
-				if (codeList.contains(choiceItem.getCode()))
-				{
-					PanelTitleLabel label = new PanelTitleLabel(choiceItem.getTextAsHtmlWrappedLabel());
-					if (choiceItem.getColor() != null)
-						label.setIcon(new RatingIcon(choiceItem));
-					
-					add(label);
-				}
-			}
+			createAndAddReadonlyLabels(codeList, choiceItems);
 		}
-		catch(Exception e)
+		catch(ParseException e)
 		{
 			EAM.alertUserOfNonFatalException(e);
 		}
-		
-		if (getTopLevelAncestor() != null)
-			getTopLevelAncestor().validate();
 	}
-	
+
 	protected ChoiceItem choiceItems[];
 	private CodeList codeList;
 }
