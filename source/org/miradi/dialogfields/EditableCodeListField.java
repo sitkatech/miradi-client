@@ -33,13 +33,13 @@ public class EditableCodeListField extends AbstractEditableCodeListField
 	}
 	
 	@Override
-	protected DisposablePanel createEditorPanel() throws Exception
+	public DisposablePanel createEditorPanel() throws Exception
 	{
 		return new CodeListEditorPanel(getProject(), getORef(), getTag(), question, 1);
 	}	
 
 	@Override
-	protected AbstractReadOnlyComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)
+	public AbstractReadOnlyComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)
 	{
 		return new ReadOnlyCodeListComponent(questionToUse.getChoices(), columnCount);
 	}

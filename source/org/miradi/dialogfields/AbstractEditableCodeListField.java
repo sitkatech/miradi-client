@@ -20,49 +20,26 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 
-import org.martus.swing.Utilities;
 import org.miradi.dialogs.base.DisposablePanel;
-import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.base.ModalDialogWithClose;
-import org.miradi.dialogs.fieldComponents.PanelButton;
-import org.miradi.layout.OneColumnPanel;
-import org.miradi.main.EAM;
+import org.miradi.dialogs.base.ReadonlyPanelWithPopupEditor;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.Translation;
 
-abstract public class AbstractEditableCodeListField extends ObjectDataInputField
+abstract public class AbstractEditableCodeListField extends ObjectDataInputField implements ReadonlyAndEditorProvider
 {
 	public AbstractEditableCodeListField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, int columnCount)
 	{
 		super(projectToUse, refToUse, tagToUse);
 		
 		question = questionToUse;
-		component = new MiradiPanel(new BorderLayout());
 		
-		readOnlyCodeListComponent = createReadOnlyComponent(questionToUse, columnCount);
-		component.add(readOnlyCodeListComponent, BorderLayout.CENTER);
-		component.setBackground(EAM.READONLY_BACKGROUND_COLOR);
-		
-		selectButton = new PanelButton(EAM.text("Select..."));
-
-		selectButton.addActionListener(new SelectButtonHandler());
-		OneColumnPanel buttonPanel = new OneColumnPanel();
-		buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-		buttonPanel.setBackground(EAM.READONLY_BACKGROUND_COLOR);
-		buttonPanel.setForeground(EAM.READONLY_FOREGROUND_COLOR);
-		buttonPanel.add(selectButton);
-		setDefaultFieldBorder();
-		component.add(buttonPanel, BorderLayout.AFTER_LINE_ENDS);
+		final String dialogTitle = Translation.fieldLabel(getObjectType(), getTag());
+		readonlyPanelPopupEditor = new ReadonlyPanelWithPopupEditor(this, dialogTitle, questionToUse, columnCount);
 	}
 	
 	@Override
@@ -70,25 +47,25 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 	{
 		super.updateEditableState();
 		
-		selectButton.setEnabled(isValidObject());			
+		readonlyPanelPopupEditor.setEnabled(isValidObject());			
 	}
 	
 	@Override
 	public JComponent getComponent()
 	{
-		return component;
+		return readonlyPanelPopupEditor;
 	}
 
 	@Override
 	public String getText()
 	{
-		return readOnlyCodeListComponent.getText();
+		return readonlyPanelPopupEditor.getText();
 	}
 
 	@Override
 	public void setText(String newValue)
 	{
-		readOnlyCodeListComponent.setText(newValue);
+		readonlyPanelPopupEditor.setText(newValue);
 	}
 	
 	protected void addDialogMainPanel(ModalDialogWithClose dialog, DisposablePanel editorPanel)
@@ -96,41 +73,10 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 		dialog.setScrollableMainPanel(editorPanel);
 	}
 	
-	public class SelectButtonHandler implements ActionListener
-	{
-		public void actionPerformed(ActionEvent event)
-		{
-			try
-			{
-				DisposablePanel editorPanel = createEditorPanel();
-				ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), Translation.fieldLabel(getObjectType(), getTag()));
-				addDialogMainPanel(dialog, editorPanel);
-				dialog.becomeActive();
-				Utilities.centerDlg(dialog);
-				setFixedDialogWidth(dialog);
-				dialog.setVisible(true);
-			}
-			catch (Exception e)
-			{
-				EAM.alertUserOfNonFatalException(e);
-			}
-		}
-
-		private void setFixedDialogWidth(ModalDialogWithClose dialog)
-		{
-			final int ARBITRARY_DIALOG_WIDTH = 700;
-			Dimension size = dialog.getSize();
-			size.setSize(ARBITRARY_DIALOG_WIDTH, size.getHeight());
-			dialog.setSize(size);
-		}
-	}
+	abstract public DisposablePanel createEditorPanel() throws Exception;
 	
-	abstract protected DisposablePanel createEditorPanel() throws Exception;
-	
-	abstract protected AbstractReadOnlyComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount);
+	abstract public AbstractReadOnlyComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount);
 	
 	protected ChoiceQuestion question;
-	private MiradiPanel component;
-	private AbstractReadOnlyComponent readOnlyCodeListComponent;
-	private PanelButton selectButton;
+	private ReadonlyPanelWithPopupEditor readonlyPanelPopupEditor;
 }

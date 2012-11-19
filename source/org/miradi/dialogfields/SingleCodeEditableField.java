@@ -42,13 +42,13 @@ public class SingleCodeEditableField extends AbstractEditableCodeListField
 	}
 	
 	@Override
-	protected AbstractReadOnlyComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)
+	public AbstractReadOnlyComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)
 	{
 		return new ReadonlyChoiceComponent(questionToUse, columnCount);
 	}
 
 	@Override
-	protected DisposablePanel createEditorPanel() throws Exception
+	public DisposablePanel createEditorPanel() throws Exception
 	{
 		RadioButtonEditorComponentWithHierarchicalRows editor = new RadioButtonEditorComponentWithHierarchicalRows(mainWindow, question);
 		OneFieldObjectDataInputPanelWithListenerDelegator leftPanel = new OneFieldObjectDataInputPanelWithListenerDelegator(getProject(), getORef(), getTag(), editor);
