@@ -43,8 +43,8 @@ public class ReadonlyPanelWithPopupEditor extends MiradiPanel
 		super(new BorderLayout());
 		
 		popupEditorDialogTitle = popupEditorDialogTitleToUse;
-		readonlyAdnEditorProvider = readonlyAdnEditorProviderToUse;
-		readOnlyCodeListComponent = readonlyAdnEditorProvider.createReadOnlyComponent(choiceQuestion, columnCount);
+		readonlyWithEditorProvider = readonlyAdnEditorProviderToUse;
+		readOnlyCodeListComponent = readonlyWithEditorProvider.createReadOnlyComponent(choiceQuestion, columnCount);
 		add(readOnlyCodeListComponent, BorderLayout.CENTER);
 		setBackground(EAM.READONLY_BACKGROUND_COLOR);
 		selectButton = new PanelButton(EAM.text("Select..."));
@@ -92,7 +92,7 @@ public class ReadonlyPanelWithPopupEditor extends MiradiPanel
 		{
 			try
 			{
-				DisposablePanel editorPanel = readonlyAdnEditorProvider.createEditorPanel();
+				DisposablePanel editorPanel = readonlyWithEditorProvider.createEditorPanel();
 				ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), popupEditorDialogTitle);
 				addDialogMainPanel(dialog, editorPanel);
 				dialog.becomeActive();
@@ -117,6 +117,6 @@ public class ReadonlyPanelWithPopupEditor extends MiradiPanel
 	
 	private PanelButton selectButton;
 	private AbstractReadOnlyComponent readOnlyCodeListComponent;
-	private ReadonlyAndEditorProvider readonlyAdnEditorProvider;
+	private ReadonlyAndEditorProvider readonlyWithEditorProvider;
 	private String popupEditorDialogTitle;
 }
