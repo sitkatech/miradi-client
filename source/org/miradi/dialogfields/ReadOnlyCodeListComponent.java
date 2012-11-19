@@ -23,20 +23,21 @@ import java.text.ParseException;
 
 import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 
 public class ReadOnlyCodeListComponent extends AbstractReadOnlyComponent
 {
-	public ReadOnlyCodeListComponent(ChoiceItem[] choiceItemsToUse)
+	public ReadOnlyCodeListComponent(ChoiceQuestion questionToUse)
 	{
-		this(choiceItemsToUse, SINGLE_COLUMN_COUNT);
+		this(questionToUse, SINGLE_COLUMN_COUNT);
 	}
 	
-	public ReadOnlyCodeListComponent(ChoiceItem[] choiceItemsToUse, int columnCount)
+	public ReadOnlyCodeListComponent(ChoiceQuestion questionToUse, int columnCount)
 	{
 		super(columnCount);
 		
-		choiceItems = choiceItemsToUse;		
+		choiceItems = questionToUse.getChoices();		
 		codeList = new CodeList();
 	}
 
