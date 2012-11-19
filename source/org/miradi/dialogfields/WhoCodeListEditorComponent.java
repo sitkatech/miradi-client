@@ -214,7 +214,7 @@ public class WhoCodeListEditorComponent extends AbstractQuestionBasedComponent
 		return firstResourceAssignment.getDateUnitEffortList();
 	}
 	
-	public CodeList getWhoTotalCodes(BaseObject baseObject)
+	public static CodeList getWhoTotalCodes(BaseObject baseObject)
 	{		
 		try
 		{

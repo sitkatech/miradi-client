@@ -72,6 +72,8 @@ import org.miradi.dialogfields.SingleCodeEditableField;
 import org.miradi.dialogfields.StrategyGoalOverrideListField;
 import org.miradi.dialogfields.StrategyObjectiveOverrideListField;
 import org.miradi.dialogfields.StringMapProjectResourceFilterEditorField;
+import org.miradi.dialogfields.WhenEditorField;
+import org.miradi.dialogfields.WhoEditorField;
 import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitledBorder;
@@ -667,6 +669,16 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public PopupQuestionEditorField createPopupQuestionEditor(JDialog parentDialog, int objectType, String tagToUse, Class questionClass) throws Exception
 	{
 		return new PopupQuestionEditorField(parentDialog, getProject(), getRefForType(objectType), tagToUse, getProject().getQuestion(questionClass));
+	}
+	
+	public WhenEditorField createWhenEditorField(ORef refToUse)
+	{
+		return new WhenEditorField(getMainWindow(), refToUse);
+	}
+	
+	public WhoEditorField createWhoEditorField(ORef refToUse)
+	{
+		return new WhoEditorField(getMainWindow(), refToUse);
 	}
 	
 	public ORef getRefForType(int objectType)

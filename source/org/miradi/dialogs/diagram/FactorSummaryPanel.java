@@ -45,7 +45,9 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
+import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.Task;
 import org.miradi.schemas.DiagramFactorSchema;
 
 public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
@@ -63,12 +65,31 @@ public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 			addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow()));
 		}
 		
+		if (canHaveWorkPlanSideTab())
+		{
+			addSubPanelWithTitledBorder(new FactorSummaryWorkPlanPanel(getProject(), getCurrentDiagramFactor().getWrappedORef()));
+		}
+		
 		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), getActions(), getCurrentDiagramFactor().getWrappedType()));
 		
 		detailIcon = createIcon();
 		
 		setObjectRefs(new ORef[] {getCurrentDiagramFactor().getWrappedORef(), getCurrentDiagramFactor().getRef(),});
 		updateFieldsFromProject();
+	}
+
+	private boolean canHaveWorkPlanSideTab()
+	{
+		if (Strategy.is(getCurrentDiagramFactor().getWrappedORef()))
+			return true;
+			
+		if (Indicator.is(getCurrentDiagramFactor().getWrappedORef()))
+			return true;
+			
+		if (Task.is(getCurrentDiagramFactor().getWrappedORef()))
+			return true;
+			
+		return false;
 	}
 
 	@Override
