@@ -22,7 +22,6 @@ package org.miradi.dialogfields;
 import java.text.ParseException;
 
 import org.miradi.main.EAM;
-import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 
@@ -35,9 +34,8 @@ public class ReadOnlyCodeListComponent extends AbstractReadOnlyComponent
 	
 	public ReadOnlyCodeListComponent(ChoiceQuestion questionToUse, int columnCount)
 	{
-		super(columnCount);
+		super(questionToUse, columnCount);
 		
-		choiceItems = questionToUse.getChoices();		
 		codeList = new CodeList();
 	}
 
@@ -53,7 +51,7 @@ public class ReadOnlyCodeListComponent extends AbstractReadOnlyComponent
 		try
 		{
 			codeList = new CodeList(codesToUse);
-			createAndAddReadonlyLabels(codeList, choiceItems);
+			createAndAddReadonlyLabels(codeList);
 		}
 		catch(ParseException e)
 		{
@@ -61,6 +59,5 @@ public class ReadOnlyCodeListComponent extends AbstractReadOnlyComponent
 		}
 	}
 
-	protected ChoiceItem choiceItems[];
 	private CodeList codeList;
 }

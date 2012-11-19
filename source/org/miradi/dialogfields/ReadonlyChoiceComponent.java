@@ -32,9 +32,8 @@ public class ReadonlyChoiceComponent extends AbstractReadOnlyComponent
 	
 	public ReadonlyChoiceComponent(ChoiceQuestion questionToUse, int columnCount)
 	{
-		super(columnCount);
+		super(questionToUse, columnCount);
 		
-		question = questionToUse;
 		currentCode = "";
 		initliazeRadioButtons();
 	}
@@ -54,9 +53,8 @@ public class ReadonlyChoiceComponent extends AbstractReadOnlyComponent
 	public void setText(String code)
 	{
 		currentCode = code;
-		createAndAddReadonlyLabels(new CodeList(new String[]{code,}), question.getChoices());
+		createAndAddReadonlyLabels(new CodeList(new String[]{code,}));
 	}
 
-	private ChoiceQuestion question;
 	private String currentCode;
 }
