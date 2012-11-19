@@ -37,7 +37,7 @@ public class CodeListPopupWithDescriptionPanelField extends	AbstractEditableCode
 	}
 	
 	@Override
-	protected DisposablePanel createEditorPanel() throws Exception
+	public DisposablePanel createEditorPanel() throws Exception
 	{
 		SingleLevelQuestionEditor leftComponent = new SingleLevelQuestionEditor(mainWindow, question);
 		ComponentWrapperObjectDataInputField field = new ComponentWrapperObjectDataInputField(getProject(), getORef(), getTag(), leftComponent);
@@ -50,7 +50,7 @@ public class CodeListPopupWithDescriptionPanelField extends	AbstractEditableCode
 	}
 
 	@Override
-	protected AbstractReadOnlyComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)
+	public AbstractReadOnlyComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)
 	{
 		return new ReadOnlyCodeListComponent(questionToUse.getChoices(), columnCount);
 	}
