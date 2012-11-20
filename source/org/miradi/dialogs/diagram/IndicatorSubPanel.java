@@ -26,6 +26,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Indicator;
 import org.miradi.project.Project;
+import org.miradi.questions.ProjectResourceQuestion;
 import org.miradi.schemas.IndicatorSchema;
 
 public class IndicatorSubPanel extends ObjectDataInputPanel
@@ -37,7 +38,8 @@ public class IndicatorSubPanel extends ObjectDataInputPanel
 		ObjectDataInputField shortLabelField = createStringField(IndicatorSchema.getObjectType(), Indicator.TAG_SHORT_LABEL,10);
 		ObjectDataInputField labelField = createExpandableField(IndicatorSchema.getObjectType(), Indicator.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Indicator"), IconManager.getIndicatorIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
-
+		addField(createRatingChoiceField(IndicatorSchema.getObjectType(), Indicator.TAG_LEADER_RESOURCE, new ProjectResourceQuestion(getProject())));
+		
 		final int COLUMNS = 75;
 		addField(createMultilineField(IndicatorSchema.getObjectType(), Indicator.TAG_DETAIL, COLUMNS));
 		addField(createMultilineField(IndicatorSchema.getObjectType(), Indicator.TAG_COMMENTS, COLUMNS));
