@@ -34,6 +34,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
+import org.miradi.questions.ProjectResourceQuestion;
 import org.miradi.schemas.TaskSchema;
 
 public class TaskDetailsPanel extends ObjectDataInputPanel
@@ -46,6 +47,7 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 		ObjectDataInputField taskNameField = createExpandableField(ObjectType.TASK, Task.TAG_LABEL);
 		ObjectDataInputField taskIdField = createShortStringField(ObjectType.TASK, Task.TAG_SHORT_LABEL);
 		addFieldsOnOneLine(taskNameLabel, new ObjectDataInputField[] {taskIdField, taskNameField,} );
+		addField(createRatingChoiceField(TaskSchema.getObjectType(), Task.TAG_LEADER_RESOURCE, new ProjectResourceQuestion(getProject())));
 		addField(createMultilineField(TaskSchema.getObjectType(), Task.TAG_DETAILS));
 		
 		addCustomFields(actionsToUse);

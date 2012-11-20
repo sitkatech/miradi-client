@@ -29,6 +29,7 @@ import org.miradi.main.EAM;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
+import org.miradi.questions.ProjectResourceQuestion;
 import org.miradi.questions.StrategyClassificationQuestion;
 import org.miradi.questions.StrategyFeasibilityQuestion;
 import org.miradi.questions.StrategyImpactQuestion;
@@ -53,6 +54,8 @@ public class StrategyCoreSubpanel extends ObjectDataInputPanel
 		ObjectDataInputField feasibilityField = createRadioButtonEditorField(StrategySchema.getObjectType(), Strategy.TAG_FEASIBILITY_RATING, getQuestion(StrategyFeasibilityQuestion.class));
 		ObjectDataInputField prioritySummaryField = createReadOnlyChoiceField(Strategy.PSEUDO_TAG_RATING_SUMMARY, getQuestion(StrategyRatingSummaryQuestion.class));
 		addFieldsOnOneLine(EAM.text("Priority"), new ObjectDataInputField[] {impactField, feasibilityField, prioritySummaryField});
+		
+		addField(createRatingChoiceField(StrategySchema.getObjectType(), Strategy.TAG_LEADER_RESOURCE, new ProjectResourceQuestion(getProject())));
 		
 		addLabeledSubPanelWithoutBorder(new LegacyTncStrategyRankingEditorPropertiesSubPanel(getProject(), getRefForType(StrategySchema.getObjectType()), actions), EAM.text("Legacy TNC Ratings"));
 		
