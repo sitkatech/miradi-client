@@ -30,14 +30,14 @@ import org.miradi.utils.CodeList;
 
 import com.jhlabs.awt.BasicGridLayout;
 
-abstract public class AbstractReadOnlyChoiceComponent extends MiradiPanel
+abstract public class AbstractReadonlyChoiceComponent extends MiradiPanel
 {
-	public AbstractReadOnlyChoiceComponent(ChoiceQuestion questionToUse)
+	public AbstractReadonlyChoiceComponent(ChoiceQuestion questionToUse)
 	{
 		this(questionToUse, SINGLE_COLUMN_COUNT);
 	}
 
-	public AbstractReadOnlyChoiceComponent(ChoiceQuestion questionToUse, int columnCount)
+	public AbstractReadonlyChoiceComponent(ChoiceQuestion questionToUse, int columnCount)
 	{
 		question = questionToUse;
 		setLayout(new BasicGridLayout(0, columnCount));

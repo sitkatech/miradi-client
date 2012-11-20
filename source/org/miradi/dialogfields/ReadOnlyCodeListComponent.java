@@ -25,7 +25,7 @@ import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 
-public class ReadOnlyCodeListComponent extends AbstractReadOnlyChoiceComponent
+public class ReadOnlyCodeListComponent extends AbstractReadonlyChoiceComponent
 {
 	public ReadOnlyCodeListComponent(ChoiceQuestion questionToUse)
 	{
