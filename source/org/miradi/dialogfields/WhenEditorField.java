@@ -58,7 +58,7 @@ public class WhenEditorField extends ObjectDataField implements ReadonlyPanelAnd
 	@Override
 	public void updateFromObject()
 	{
-		readonlyPanelWithPopupEditor.setEnabled(isValidObject());
+		readonlyPanelWithPopupEditor.setEnabled(false);
 		if (!isValidObject())
 			return;
 		
