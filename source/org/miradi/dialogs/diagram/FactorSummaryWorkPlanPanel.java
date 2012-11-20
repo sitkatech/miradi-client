@@ -21,9 +21,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.diagram;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
+import org.miradi.utils.FillerLabel;
 
 public class FactorSummaryWorkPlanPanel extends ObjectDataInputPanel
 {
@@ -31,7 +33,11 @@ public class FactorSummaryWorkPlanPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, orefToUse);
 		
+		addTopAlignedLabel(new PanelTitleLabel(EAM.text("Dates can be set in the Work Plan view")));
+		addTopAlignedLabel(new FillerLabel());
+		
 		addFieldWithDescriptionOnly(createWhenEditorField(orefToUse), EAM.text("When"));
+		addTopAlignedLabel(new FillerLabel());
 		addFieldWithDescriptionOnly(createWhoEditorField(orefToUse), EAM.text("Who"));
 		
 		updateFieldsFromProject();
