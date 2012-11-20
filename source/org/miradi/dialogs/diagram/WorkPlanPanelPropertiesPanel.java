@@ -27,9 +27,9 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.utils.FillerLabel;
 
-public class FactorSummaryWorkPlanPanel extends ObjectDataInputPanel
+public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
 {
-	public FactorSummaryWorkPlanPanel(Project projectToUse, ORef orefToUse)
+	public WorkPlanPanelPropertiesPanel(Project projectToUse, ORef orefToUse)
 	{
 		super(projectToUse, orefToUse);
 		
