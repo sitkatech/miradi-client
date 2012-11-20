@@ -55,9 +55,14 @@ public class WhenEditorField extends ObjectDataField
 	@Override
 	public void updateFromObject()
 	{
+		whenEditor.setEnabled(isValidObject());
+		if (!isValidObject())
+			return;
+		
 		try
 		{
 			BaseObject baseObject = BaseObject.find(getProject(), getORef());
+			whenEditor.setBaseObjectForRowLabel(baseObject);
 			TimePeriodCostsMap totalTimePeriodCostsMap = getProject().getTimePeriodCostsMapsCache().getTotalTimePeriodCostsMap(baseObject);
 			DateRange projectStartEndDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
 			DateRange rolledUpResourceAssignmentsDateRange = totalTimePeriodCostsMap.getRolledUpDateRange(projectStartEndDateRange);

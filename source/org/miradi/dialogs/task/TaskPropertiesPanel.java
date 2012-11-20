@@ -23,10 +23,12 @@ import org.miradi.dialogs.activity.ActivityFactorVisibilityControlPanel;
 import org.miradi.dialogs.assignment.AssignmentsPropertiesPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
+import org.miradi.dialogs.diagram.FactorSummaryWorkPlanPanel;
 import org.miradi.dialogs.expense.ExpensesPropertiesPanel;
 import org.miradi.dialogs.progressReport.ProgressReportSubPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Target;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
@@ -43,6 +45,7 @@ public abstract class TaskPropertiesPanel extends ObjectDataInputPanelWithSectio
 			addSubPanelWithTitledBorder(new ActivityFactorVisibilityControlPanel(mainWindow));
 				
 		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow()));
+		addSubPanelWithTitledBorder(new FactorSummaryWorkPlanPanel(getProject(), ORef.createInvalidWithType(TaskSchema.getObjectType())));
 		addBudgetSubPanels();
 		
 		updateFieldsFromProject();
