@@ -32,7 +32,7 @@ public interface Xmpz2XmlConstants
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
 	public static final String DOT_ELEMENT = ".element";
 	
-	public static final String NAME_SPACE_VERSION = "201";
+	public static final String NAME_SPACE_VERSION = "202";
 	public static final String PARTIAL_NAME_SPACE = "http://xml.miradi.org/schema/ConservationProject/";
 	public static final String NAME_SPACE = PARTIAL_NAME_SPACE + NAME_SPACE_VERSION;
 	public static final String XMLNS = "xmlns";
@@ -101,6 +101,8 @@ public interface Xmpz2XmlConstants
 	public static final String STRESS_BASED_THREAT_RATING = "StressBasedThreatRating";
 	public static final String MEASUREMENT = "Measurement";
 	public static final String MEASUREMENT_IDS = "MeasurementIds";
+	public static final String LEADER_RESOURCE = "LeaderResource";
+	public static final String LEADER_RESOURCE_ID = LEADER_RESOURCE + ID;
 	public static final String ACCOUNTING_CODE = "AccountingCode";
 	public static final String FUNDING_SOURCE = "FundingSource";
 	public static final String BUDGET_CATEGORY_ONE = "BudgetCategoryOne";
