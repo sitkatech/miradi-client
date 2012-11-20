@@ -75,7 +75,7 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 	
 	abstract public DisposablePanel createEditorPanel() throws Exception;
 	
-	abstract public AbstractReadOnlyComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount);
+	abstract public AbstractReadOnlyChoiceComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount);
 	
 	protected ChoiceQuestion question;
 	private ReadonlyPanelWithPopupEditor readonlyPanelPopupEditor;

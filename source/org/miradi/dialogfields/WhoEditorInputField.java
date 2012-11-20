@@ -40,7 +40,7 @@ public class WhoEditorInputField extends AbstractEditableCodeListField
 	}
 
 	@Override
-	public AbstractReadOnlyComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)
+	public AbstractReadOnlyChoiceComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)
 	{
 		return new ReadOnlyCodeListComponent(questionToUse, columnCount);
 	}
