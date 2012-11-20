@@ -22,6 +22,7 @@ package org.miradi.questions;
 import java.util.Arrays;
 import java.util.Vector;
 
+import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 
 abstract public class ObjectQuestion extends DynamicChoiceQuestion
@@ -45,6 +46,15 @@ abstract public class ObjectQuestion extends DynamicChoiceQuestion
 		Arrays.sort(sortedChoiceItems);
 		
 		return sortedChoiceItems;
+	}
+	
+	public ChoiceItem[] createChoiceItemListWithUnspecifiedItem(final ChoiceItem[] choices)
+	{
+		Vector<ChoiceItem> choicesWithUnspecified = new Vector<ChoiceItem>();
+		choicesWithUnspecified.add(new ChoiceItem("", EAM.text("Unspecified")));
+		choicesWithUnspecified.addAll(Arrays.asList(choices));
+		
+		return choicesWithUnspecified.toArray(new ChoiceItem[0]);
 	}
 
 	protected String getStringToDisplay(BaseObject thisObject)
