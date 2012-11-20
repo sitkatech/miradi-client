@@ -44,6 +44,10 @@ public class WhoEditorField extends ObjectDataField implements ReadonlyPanelAndP
 	@Override
 	public void updateFromObject()
 	{
+		getComponent().setEnabled(isValidObject());
+		if (!isValidObject())
+			return;
+
 		BaseObject baseObject = BaseObject.find(getProject(), getORef());
 		CodeList whoTotals = WhoCodeListEditorComponent.getWhoTotalCodes(baseObject);
 		readonlyPanelWithPopupEditor.setText(whoTotals.toString());

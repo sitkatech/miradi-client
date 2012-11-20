@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.viability;
 
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
+import org.miradi.dialogs.diagram.FactorSummaryWorkPlanPanel;
 import org.miradi.dialogs.diagram.IndicatorSubPanel;
 import org.miradi.dialogs.progressReport.ProgressReportSubPanel;
 import org.miradi.ids.BaseId;
@@ -48,6 +49,7 @@ abstract public class AbstractIndicatorPropertiesPanel extends ObjectDataInputPa
 		addSubPanelWithTitledBorder(new IndicatorMonitoringPlanSubPanel(getProject(), getInvalidTargetRef()));
 		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow()));
 		addSubPanelWithTitledBorder(new IndicatorFutureStatusSubPanel(getProject(), getInvalidTargetRef()));
+		addSubPanelWithTitledBorder(new FactorSummaryWorkPlanPanel(getProject(), ORef.createInvalidWithType(IndicatorSchema.getObjectType())));
 		addBudgetSubPanels();
 		
 		updateFieldsFromProject();

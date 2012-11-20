@@ -24,6 +24,7 @@ import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.progressReport.ProgressReportSubPanel;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.schemas.StrategySchema;
 
@@ -39,6 +40,7 @@ abstract public class AbstractStrategyPropertiesPanel extends ObjectDataInputPan
 		addSubPanelWithTitledBorder(new RelatedItemsSubpanel(getProject(), StrategySchema.getObjectType()));
 		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), getMainWindow().getActions(), StrategySchema.getObjectType()));
 		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow()));
+		addSubPanelWithTitledBorder(new FactorSummaryWorkPlanPanel(getProject(), ORef.createInvalidWithType(StrategySchema.getObjectType())));
 		addBudgetSubPanels();
 		
 		updateFieldsFromProject();
