@@ -23,7 +23,7 @@ package org.miradi.dialogfields;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 
-public class ReadonlySingleChoiceComponent extends AbstractReadOnlyChoiceComponent
+public class ReadonlySingleChoiceComponent extends AbstractReadonlyChoiceComponent
 {
 	public ReadonlySingleChoiceComponent(ChoiceQuestion questionToUse)
 	{

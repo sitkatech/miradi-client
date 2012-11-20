@@ -50,7 +50,7 @@ public class CodeListPopupWithDescriptionPanelField extends	AbstractEditableCode
 	}
 
 	@Override
-	public AbstractReadOnlyChoiceComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)
+	public AbstractReadonlyChoiceComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)
 	{
 		return new ReadOnlyCodeListComponent(questionToUse, columnCount);
 	}

@@ -27,5 +27,5 @@ public interface ReadonlyPanelAndPopupEditorProvider
 {
 	public DisposablePanel createEditorPanel() throws Exception;
 	
-	public AbstractReadOnlyChoiceComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount);
+	public AbstractReadonlyChoiceComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount);
 }
