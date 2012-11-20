@@ -22,28 +22,31 @@ package org.miradi.dialogfields;
 
 import javax.swing.JComponent;
 
-import org.miradi.dialogfields.editors.WhenPopupEditorComponent;
+import org.miradi.dialogfields.editors.WhenEditorComponent;
+import org.miradi.dialogs.base.DisposablePanel;
+import org.miradi.dialogs.base.ReadonlyPanelWithPopupEditor;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.ProjectResourceQuestion;
 import org.miradi.utils.DateRange;
 
-public class WhenEditorField extends ObjectDataField
+public class WhenEditorField extends ObjectDataField implements ReadonlyPanelAndPopupEditorProvider
 {
 	public WhenEditorField(MainWindow mainWindowToUse, ORef refToUse)
 	{
 		super(mainWindowToUse.getProject(), refToUse);
 		
-		whenEditor = new WhenPopupEditorComponent(mainWindowToUse);
-		whenEditor.setBaseObjectForRowLabel(BaseObject.find(getProject(), refToUse));
+		readonlyPanelWithPopupEditor = new ReadonlyPanelWithPopupEditor(this, EAM.text("Select Project Resources"), new ProjectResourceQuestion(getProject()), 1);
 	}
 
 	@Override
 	public JComponent getComponent()
 	{
-		return whenEditor;
+		return readonlyPanelWithPopupEditor;
 	}
 	
 	@Override
@@ -55,19 +58,18 @@ public class WhenEditorField extends ObjectDataField
 	@Override
 	public void updateFromObject()
 	{
-		whenEditor.setEnabled(isValidObject());
+		readonlyPanelWithPopupEditor.setEnabled(isValidObject());
 		if (!isValidObject())
 			return;
 		
 		try
 		{
 			BaseObject baseObject = BaseObject.find(getProject(), getORef());
-			whenEditor.setBaseObjectForRowLabel(baseObject);
 			TimePeriodCostsMap totalTimePeriodCostsMap = getProject().getTimePeriodCostsMapsCache().getTotalTimePeriodCostsMap(baseObject);
 			DateRange projectStartEndDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
 			DateRange rolledUpResourceAssignmentsDateRange = totalTimePeriodCostsMap.getRolledUpDateRange(projectStartEndDateRange);
 			String rolledUpResourceAssignmentsWhen = getProject().getProjectCalendar().convertToSafeString(rolledUpResourceAssignmentsDateRange);
-			whenEditor.setText(rolledUpResourceAssignmentsWhen);
+			readonlyPanelWithPopupEditor.setText(rolledUpResourceAssignmentsWhen);
 		}
 		catch (Exception e)
 		{
@@ -79,6 +81,17 @@ public class WhenEditorField extends ObjectDataField
 	public void saveIfNeeded()
 	{
 	}
+
+	public DisposablePanel createEditorPanel() throws Exception
+	{
+		return new WhenEditorComponent(getProject().getProjectCalendar(), BaseObject.find(getProject(), getORef()));
+	}
+
+	public AbstractReadonlyChoiceComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)
+	{
+		//FIXME urgent,  this needs to be a single line readonly component, since the value is a date
+		return new ReadonlySingleChoiceComponent(questionToUse);
+	}
 	
-	private WhenPopupEditorComponent whenEditor;
+	private ReadonlyPanelWithPopupEditor readonlyPanelWithPopupEditor;
 }
