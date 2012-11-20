@@ -74,7 +74,7 @@ public class WhoEditorField extends ObjectDataField implements ReadonlyPanelAndP
 
 	public AbstractReadonlyChoiceComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)
 	{
-		return new ReadOnlyCodeListComponent(questionToUse, columnCount);
+		return new ReadonlyMultiChoiceComponent(questionToUse, columnCount);
 	}
 	
 	private ReadonlyPanelWithPopupEditor readonlyPanelWithPopupEditor;
