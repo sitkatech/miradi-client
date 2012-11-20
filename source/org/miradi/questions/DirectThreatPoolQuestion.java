@@ -20,10 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
-import java.util.Arrays;
-import java.util.Vector;
-
-import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
@@ -42,11 +38,6 @@ public class DirectThreatPoolQuestion extends ObjectQuestion
 	@Override
 	public ChoiceItem[] getChoices()
 	{
-		ChoiceItem[] choices = super.getChoices();
-		Vector<ChoiceItem> choicesWithUnspecified = new Vector<ChoiceItem>();
-		choicesWithUnspecified.add(new ChoiceItem("", EAM.text("Unspecified")));
-		choicesWithUnspecified.addAll(Arrays.asList(choices));
-		
-		return choicesWithUnspecified.toArray(new ChoiceItem[0]);
+		return createChoiceItemListWithUnspecifiedItem(super.getChoices());
 	}
 }
