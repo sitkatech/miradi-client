@@ -42,7 +42,7 @@ public class SingleCodeEditableField extends AbstractEditableCodeListField
 	}
 	
 	@Override
-	public AbstractReadOnlyComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)
+	public AbstractReadOnlyChoiceComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)
 	{
 		return new ReadonlyChoiceComponent(questionToUse, columnCount);
 	}

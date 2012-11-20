@@ -28,7 +28,7 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 
 import org.martus.swing.Utilities;
-import org.miradi.dialogfields.AbstractReadOnlyComponent;
+import org.miradi.dialogfields.AbstractReadOnlyChoiceComponent;
 import org.miradi.dialogfields.DataField;
 import org.miradi.dialogfields.ReadonlyPanelAndPopupEditorProvider;
 import org.miradi.dialogs.fieldComponents.PanelButton;
@@ -116,7 +116,7 @@ public class ReadonlyPanelWithPopupEditor extends MiradiPanel
 	}
 	
 	private PanelButton selectButton;
-	private AbstractReadOnlyComponent readOnlyCodeListComponent;
+	private AbstractReadOnlyChoiceComponent readOnlyCodeListComponent;
 	private ReadonlyPanelAndPopupEditorProvider readonlyWithEditorProvider;
 	private String popupEditorDialogTitle;
 }
