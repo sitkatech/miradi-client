@@ -67,7 +67,7 @@ public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 		
 		if (canHaveWorkPlanSideTab())
 		{
-			addSubPanelWithTitledBorder(new FactorSummaryWorkPlanPanel(getProject(), getCurrentDiagramFactor().getWrappedORef()));
+			addSubPanelWithTitledBorder(new WorkPlanPanelPropertiesPanel(getProject(), getCurrentDiagramFactor().getWrappedORef()));
 		}
 		
 		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), getActions(), getCurrentDiagramFactor().getWrappedType()));
