@@ -106,6 +106,7 @@ abstract public class Xmpz2GroupedConstants implements Xmpz2XmlConstants
 		METHOD,
 		SUB_TASK,
 		RELATED_THREAT,
+		LEADER_RESOURCE,
 		};
 		
 		return Utility.convertToVector(objectTypeNames);
