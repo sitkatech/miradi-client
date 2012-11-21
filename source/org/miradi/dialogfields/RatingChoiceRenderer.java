@@ -39,6 +39,7 @@ public class RatingChoiceRenderer extends AbstractChoiceItemRenderer
 		return cell;
 	}
 
+	@Override
 	public RatingIcon getIcon(ChoiceItem thisOption)
 	{
 		return RatingIcon.createFromChoice(thisOption);

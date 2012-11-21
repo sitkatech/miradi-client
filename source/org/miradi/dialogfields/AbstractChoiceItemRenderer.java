@@ -21,8 +21,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import javax.swing.DefaultListCellRenderer;
+import javax.swing.Icon;
 
-public class AbstractChoiceItemRenderer extends DefaultListCellRenderer
+import org.miradi.questions.ChoiceItem;
+
+abstract public class AbstractChoiceItemRenderer extends DefaultListCellRenderer
 {
-
+	abstract public Icon getIcon(ChoiceItem thisOption);
 }

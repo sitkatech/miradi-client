@@ -39,6 +39,7 @@ public class ChoiceItemWithIconRenderer extends AbstractChoiceItemRenderer
 		return cell;
 	}
 
+	@Override
 	public Icon getIcon(ChoiceItem thisOption)
 	{
 		return thisOption.getIcon();
