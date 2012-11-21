@@ -68,9 +68,6 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		getTree().setCellRenderer(new ObjectTreeCellRenderer(this));
 		getTree().setEditable(false);
 		getColumnModel().getColumn(0).setPreferredWidth(200);
-		if (getRowCount()>0)
-			setRowSelectionInterval(0,0);
-		
 		final int CUSTOM_HEIGHT_TO_AVOID_ICON_CROPPING = getRowHeight() + 1;
 		setRowHeight(CUSTOM_HEIGHT_TO_AVOID_ICON_CROPPING);
 	}
