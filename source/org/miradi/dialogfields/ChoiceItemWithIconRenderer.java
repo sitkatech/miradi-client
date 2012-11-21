@@ -22,6 +22,7 @@ package org.miradi.dialogfields;
 
 import java.awt.Component;
 
+import javax.swing.Icon;
 import javax.swing.JList;
 
 import org.miradi.questions.ChoiceItem;
@@ -34,7 +35,12 @@ public class ChoiceItemWithIconRenderer extends AbstractChoiceItemRenderer
 		Component cell = super.getListCellRendererComponent(list, value, index, isSelected,	cellHasFocus);
 		ChoiceItem thisOption = (ChoiceItem)value;
 		if (value!=null)
-			setIcon(thisOption.getIcon());
+			setIcon(getIcon(thisOption));
 		return cell;
+	}
+
+	public Icon getIcon(ChoiceItem thisOption)
+	{
+		return thisOption.getIcon();
 	}
 }
