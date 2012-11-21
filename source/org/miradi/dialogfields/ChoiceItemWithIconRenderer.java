@@ -27,7 +27,7 @@ import javax.swing.JList;
 
 import org.miradi.questions.ChoiceItem;
 
-public class RatingChoiceRenderer extends DefaultListCellRenderer
+public class ChoiceItemWithIconRenderer extends DefaultListCellRenderer
 {
 	@Override
 	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 
