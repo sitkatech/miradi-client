@@ -46,7 +46,10 @@ public class ORefData extends ObjectData
 	@Override
 	public ORefList getRefList()
 	{
-		return new ORefList(new ORef[] {ref});
+		if (isValid())
+			return new ORefList(new ORef[] {ref});
+		
+		return new ORefList();
 	}
 	
 	public boolean isValid()
