@@ -35,7 +35,12 @@ public class RatingChoiceRenderer extends AbstractChoiceItemRenderer
 		Component cell = super.getListCellRendererComponent(list, value, index, isSelected,	cellHasFocus);
 		ChoiceItem thisOption = (ChoiceItem)value;
 		if (value!=null)
-			setIcon(RatingIcon.createFromChoice(thisOption));
+			setIcon(getIcon(thisOption));
 		return cell;
+	}
+
+	public RatingIcon getIcon(ChoiceItem thisOption)
+	{
+		return RatingIcon.createFromChoice(thisOption);
 	}
 }
