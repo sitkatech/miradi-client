@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2012, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -17,21 +17,26 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
+
 package org.miradi.dialogfields;
 
+import java.awt.Component;
 
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JList;
 
-import org.miradi.ids.BaseId;
-import org.miradi.project.Project;
-import org.miradi.questions.ChoiceQuestion;
+import org.miradi.icons.RatingIcon;
+import org.miradi.questions.ChoiceItem;
 
-public class DropDownChoiceField extends ObjectChoiceField
+public class RatingChoiceRenderer extends DefaultListCellRenderer
 {
-	public DropDownChoiceField(Project projectToUse, int objectType, BaseId objectId, String tagToUse, ChoiceQuestion questionToUse)
+	@Override
+	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 
 	{
-		super(projectToUse, objectType, objectId, tagToUse, questionToUse);
-		
-		combo.setRenderer(new RatingChoiceRenderer(this));
+		Component cell = super.getListCellRendererComponent(list, value, index, isSelected,	cellHasFocus);
+		ChoiceItem thisOption = (ChoiceItem)value;
+		if (value!=null)
+			setIcon(RatingIcon.createFromChoice(thisOption));
+		return cell;
 	}
-
 }
