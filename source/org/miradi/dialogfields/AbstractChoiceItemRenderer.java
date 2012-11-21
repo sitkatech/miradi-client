@@ -20,12 +20,25 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
+import java.awt.Component;
+
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.Icon;
+import javax.swing.JList;
 
 import org.miradi.questions.ChoiceItem;
 
 abstract public class AbstractChoiceItemRenderer extends DefaultListCellRenderer
 {
+	@Override
+	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 
+	{
+		Component cell = super.getListCellRendererComponent(list, value, index, isSelected,	cellHasFocus);
+		ChoiceItem thisOption = (ChoiceItem)value;
+		if (value!=null)
+			setIcon(getIcon(thisOption));
+		return cell;
+	}
+
 	abstract public Icon getIcon(ChoiceItem thisOption);
 }
