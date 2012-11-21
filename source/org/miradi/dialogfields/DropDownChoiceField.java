@@ -35,6 +35,7 @@ public class DropDownChoiceField extends ObjectChoiceField
 	public DropDownChoiceField(Project projectToUse, int objectType, BaseId objectId, String tagToUse, ChoiceQuestion questionToUse)
 	{
 		super(projectToUse, objectType, objectId, tagToUse, questionToUse);
+		
 		combo.setRenderer(new RatingChoiceRenderer());
 	}
 
