@@ -37,6 +37,7 @@ public class ObjectChoiceField extends ObjectDataInputField
 	public ObjectChoiceField(Project projectToUse, int objectType, BaseId objectId, String tagToUse, ChoiceQuestion questionToUse)
 	{
 		super(projectToUse, objectType, objectId, tagToUse);
+		
 		combo = new ChoiceItemComboBox(questionToUse.getChoices());
 		addFocusListener();
 		combo.addActionListener(createActionHandler());
