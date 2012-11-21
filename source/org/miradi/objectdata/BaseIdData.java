@@ -61,10 +61,7 @@ public class BaseIdData extends ObjectData
 	@Override
 	public ORefList getRefList()
 	{
-		if (getRef().isValid())
-			return new ORefList(getRef());
-		
-		return new ORefList();
+		return ORefList.createFilledWithValidRefOnly(getRef());
 	}
 	
 	public BaseId getId()
