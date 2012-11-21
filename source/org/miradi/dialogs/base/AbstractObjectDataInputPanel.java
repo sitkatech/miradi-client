@@ -59,7 +59,7 @@ import org.miradi.dialogfields.ObjectMultilineDisplayField;
 import org.miradi.dialogfields.ObjectOverridenListField;
 import org.miradi.dialogfields.ObjectPercentageInputField;
 import org.miradi.dialogfields.ObjectRadioButtonGroupField;
-import org.miradi.dialogfields.ObjectRaitingChoiceField;
+import org.miradi.dialogfields.DropDownChoiceField;
 import org.miradi.dialogfields.ObjectReadonlyChoiceField;
 import org.miradi.dialogfields.ObjectReadonlyObjectListField;
 import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
@@ -612,7 +612,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createRatingChoiceField(String tagToUse, ChoiceQuestion question)
 	{
-		return new ObjectRaitingChoiceField(project,  getFirstSelectedRef().getObjectType(), getObjectIdForType( getFirstSelectedRef().getObjectType()), tagToUse, question);
+		return new DropDownChoiceField(project,  getFirstSelectedRef().getObjectType(), getObjectIdForType( getFirstSelectedRef().getObjectType()), tagToUse, question);
 	}
 	
 	public ObjectDataInputField createRadioButtonEditorField(int objectType, String tagToUse, ChoiceQuestion question)
@@ -622,7 +622,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createRatingChoiceField(int objectType, String tagToUse, ChoiceQuestion question)
 	{
-		return new ObjectRaitingChoiceField(project, objectType, getObjectIdForType(objectType), tagToUse, question);
+		return new DropDownChoiceField(project, objectType, getObjectIdForType(objectType), tagToUse, question);
 	}
 
 	public ObjectDataInputField createIconChoiceField(int objectType, String tagToUse, ChoiceQuestion question)
