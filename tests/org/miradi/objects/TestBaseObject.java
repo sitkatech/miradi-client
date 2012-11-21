@@ -25,6 +25,7 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.EnhancedJsonObject;
@@ -140,6 +141,10 @@ public class TestBaseObject extends TestCaseWithProject
 		ORef taskRef = getProject().createObject(TaskSchema.getObjectType());
 		Task task = Task.find(getProject(), taskRef);
 		assertEquals("Had referenced objects?", 0, task.getAllReferencedObjects().size());
+		
+		ResourceAssignment resourceAssignment = getProject().createResourceAssignment();
+		final ORefSet allReferencedObjects = resourceAssignment.getAllReferencedObjects();
+		assertEquals("Had referenced objects?", 0, allReferencedObjects.size());
 	}
 	
 	public void testIsNavigationField() throws Exception
