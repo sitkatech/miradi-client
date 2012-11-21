@@ -106,6 +106,15 @@ public class ORefList implements Iterable<ORef>
 	{
 		this(referringObjects.toArray(new ORef[0]));
 	}
+	
+	public static ORefList createFilledWithValidRefOnly(ORef refToUse)
+	{
+		ORefList refList = new ORefList();
+		if (refToUse.isValid())
+			refList.add(refToUse);
+		
+		return refList;
+	}
 
 	public EnhancedJsonObject toJson()
 	{
