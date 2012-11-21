@@ -615,16 +615,16 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new DropDownChoiceField(project,  getFirstSelectedRef().getObjectType(), getObjectIdForType( getFirstSelectedRef().getObjectType()), tagToUse, question);
 	}
 	
+	public ObjectDataInputField createRatingChoiceField(int objectType, String tagToUse, ChoiceQuestion question)
+	{
+		return new DropDownChoiceField(project, objectType, getObjectIdForType(objectType), tagToUse, question);
+	}
+	
 	public ObjectDataInputField createRadioButtonEditorField(int objectType, String tagToUse, ChoiceQuestion question)
 	{
 		return new SingleCodeEditableField(getMainWindow(), getRefForType(objectType), tagToUse, question, 1);
 	}
 	
-	public ObjectDataInputField createRatingChoiceField(int objectType, String tagToUse, ChoiceQuestion question)
-	{
-		return new DropDownChoiceField(project, objectType, getObjectIdForType(objectType), tagToUse, question);
-	}
-
 	public ObjectDataInputField createIconChoiceField(int objectType, String tagToUse, ChoiceQuestion question)
 	{
 		return new ObjectIconChoiceField(project, objectType, getObjectIdForType(objectType), tagToUse, question);
