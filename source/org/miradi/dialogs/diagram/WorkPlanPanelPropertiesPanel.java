@@ -33,12 +33,14 @@ public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, orefToUse);
 		
-		addTopAlignedLabel(new PanelTitleLabel(EAM.text("Dates can be set in the Work Plan view")));
-		addTopAlignedLabel(new FillerLabel());
+		add(new PanelTitleLabel(EAM.text("Dates can be set in the Work Plan view")));
+		add(new FillerLabel());
 		
-		addFieldWithDescriptionOnly(createWhenEditorField(orefToUse), EAM.text("When"));
-		addTopAlignedLabel(new FillerLabel());
-		addFieldWithDescriptionOnly(createWhoEditorField(orefToUse), EAM.text("Who"));
+		add(new PanelTitleLabel(EAM.text("When")));
+		addFieldWithoutLabel(createWhenEditorField(orefToUse));
+		
+		add(new PanelTitleLabel(EAM.text("Who")));
+		addFieldWithoutLabel(createWhoEditorField(orefToUse));
 		
 		updateFieldsFromProject();
 	}
