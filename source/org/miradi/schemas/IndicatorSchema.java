@@ -53,7 +53,7 @@ public class IndicatorSchema extends BaseObjectSchema
 		createFieldSchemaSingleLineUserText(Indicator.TAG_FUTURE_STATUS_SUMMARY);
 		createFieldSchemaMultiLineUserText(Indicator.TAG_FUTURE_STATUS_DETAIL);
 		createFieldSchemaMultiLineUserText(Indicator.TAG_FUTURE_STATUS_COMMENTS);
-		createFieldSchemaRequiredRef(Indicator.TAG_LEADER_RESOURCE);
+		createFieldSchemaOptionalRef(Indicator.TAG_LEADER_RESOURCE);
 		createBudgetSchemas();
 		createProgressReportSchema();
 		

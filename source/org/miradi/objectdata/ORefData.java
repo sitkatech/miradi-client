@@ -22,6 +22,7 @@ package org.miradi.objectdata;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.schemas.AbstractFieldSchema;
+import org.miradi.schemas.AbstractFieldSchemaRef;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
@@ -116,7 +117,10 @@ public class ORefData extends ObjectData
 	@Override
 	public String createXmpz2SchemaElementString(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		return creator.createRefSchemaElement(baseObjectSchema, fieldSchema);
+		if (((AbstractFieldSchemaRef)fieldSchema).isRequired())
+			return creator.createRefSchemaElement(baseObjectSchema, fieldSchema);
+		
+		return creator.createOptionalRefSchemaElement(baseObjectSchema, fieldSchema);
 	}
 
 	ORef ref;
