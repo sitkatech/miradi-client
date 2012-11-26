@@ -37,6 +37,4 @@ abstract public class AbstractFieldSchemaRef extends AbstractFieldSchema
 	{
 		return new ORefData(getTag());
 	}
-	
-	abstract public boolean isRequired();
 }
