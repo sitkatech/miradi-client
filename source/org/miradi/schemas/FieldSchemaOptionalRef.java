@@ -26,10 +26,4 @@ public class FieldSchemaOptionalRef extends AbstractFieldSchemaRef
 	{
 		super(tagToUse);
 	}
-
-	@Override
-	public boolean isRequired()
-	{
-		return false;
-	}
 }
