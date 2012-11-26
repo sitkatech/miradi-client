@@ -1,7 +1,7 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Mon Nov 26 16:03:47 EST 2012 $
-# $LastChangedRevision: 203 $
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/203'
+# $LastChangedDate: Mon Nov 26 16:35:15 EST 2012 $
+# $LastChangedRevision: 204 $
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/204'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -477,7 +477,7 @@ ThreatReductionResult.element = element miradi:ThreatReductionResult
   element miradi:ThreatReductionResultIndicatorIds { IndicatorId.element* }? &
   element miradi:ThreatReductionResultName { formatted_text }? &
   element miradi:ThreatReductionResultObjectiveIds { ObjectiveId.element* }? &
-  element miradi:ThreatReductionResultRelatedDirectThreatId { RelatedDirectThreatId.element* }?
+  element miradi:ThreatReductionResultRelatedDirectThreatId { RelatedDirectThreatId.element? }?
 }
 
 TextBoxPool.element = element miradi:TextBoxPool { TextBox.element* }
