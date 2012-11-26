@@ -115,7 +115,7 @@ public class BaseIdData extends ObjectData
 	public String createXmpz2SchemaElementString(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
 		if (fieldSchema.isRequired())
-			return creator.createBaseIdSchemaElement(baseObjectSchema, fieldSchema, objectType);
+			return creator.createRequiredBaseIdSchemaElement(baseObjectSchema, fieldSchema, objectType);
 		
 		return creator.createOptionalBaseIdSchemaElement(baseObjectSchema, fieldSchema, objectType);
 	}

@@ -323,7 +323,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return createSchemaElement(baseObjectSchema, fieldSchema, fieldName);
 	}
 	
-	public String createBaseIdSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, int objectType)
+	public String createRequiredBaseIdSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, int objectType)
 	{
 		String objectName = getIdElementName(baseObjectSchema, fieldSchema, objectType);
 		return createSchemaElement(baseObjectSchema, fieldSchema, createIdName(objectName));
