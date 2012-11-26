@@ -35,8 +35,8 @@ public class ExpenseAssignmentSchema extends AbstractAssignmentSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaRequiredRef(ExpenseAssignment.TAG_ACCOUNTING_CODE_REF);
-		createFieldSchemaRequiredRef(ExpenseAssignment.TAG_FUNDING_SOURCE_REF);
+		createFieldSchemaOptionalRef(ExpenseAssignment.TAG_ACCOUNTING_CODE_REF);
+		createFieldSchemaOptionalRef(ExpenseAssignment.TAG_FUNDING_SOURCE_REF);
 	}
 
 	public static int getObjectType()
