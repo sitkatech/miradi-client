@@ -20,30 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
-import org.miradi.objectdata.BaseIdData;
-import org.miradi.objectdata.ObjectData;
-import org.miradi.objects.BaseObject;
 
-public class FieldSchemaBaseId extends AbstractFieldSchemaBaseId
+abstract public class AbstractFieldSchemaBaseId extends AbstractFieldSchema
 {
-	public FieldSchemaBaseId(String tagToUse, final int objectTypeToUse)
+	public AbstractFieldSchemaBaseId(String tagToUse)
 	{
 		super(tagToUse);
-		
-		objectType = objectTypeToUse;
 	}
 
-	@Override
-	public ObjectData createField(BaseObject baseObjectToUse)
-	{
-		return new BaseIdData(getTag(), objectType);
-	}
-
-	@Override
-	public boolean isBaseIdFieldSchema()
-	{
-		return true;
-	}
-	
-	private int objectType;
 }
