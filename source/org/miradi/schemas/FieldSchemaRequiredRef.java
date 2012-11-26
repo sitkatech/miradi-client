@@ -20,20 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
-import org.miradi.objectdata.ORefData;
-import org.miradi.objectdata.ObjectData;
-import org.miradi.objects.BaseObject;
 
 public class FieldSchemaRequiredRef extends AbstractFieldSchemaRef
 {
 	public FieldSchemaRequiredRef(String tagToUse)
 	{
 		super(tagToUse);
-	}
-
-	@Override
-	public ObjectData createField(BaseObject baseObjectToUse)
-	{
-		return new ORefData(getTag());
 	}
 }
