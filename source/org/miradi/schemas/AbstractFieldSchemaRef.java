@@ -31,11 +31,12 @@ abstract public class AbstractFieldSchemaRef extends AbstractFieldSchema
 	{
 		super(tagToUse);
 	}
-	
 
 	@Override
 	public ObjectData createField(BaseObject baseObjectToUse)
 	{
 		return new ORefData(getTag());
 	}
+	
+	abstract public boolean isRequired();
 }
