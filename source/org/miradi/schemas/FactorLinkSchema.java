@@ -35,8 +35,8 @@ public class FactorLinkSchema extends BaseObjectSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaRef(FactorLink.TAG_FROM_REF);
-		createFieldSchemaRef(FactorLink.TAG_TO_REF);
+		createFieldSchemaRequiredRef(FactorLink.TAG_FROM_REF);
+		createFieldSchemaRequiredRef(FactorLink.TAG_TO_REF);
 		createFieldSchemaBoolean(FactorLink.TAG_BIDIRECTIONAL_LINK);
 	}
 

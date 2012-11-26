@@ -41,7 +41,7 @@ public class DiagramFactorSchema extends BaseObjectSchema
 		
 		createFieldSchemaDimension(DiagramFactor.TAG_SIZE);
 		createFieldSchemaPoint(DiagramFactor.TAG_LOCATION);
-		createFieldSchemaRef(DiagramFactor.TAG_WRAPPED_REF);
+		createFieldSchemaRequiredRef(DiagramFactor.TAG_WRAPPED_REF);
 		createFieldSchemaChoice(DiagramFactor.TAG_FONT_SIZE, getQuestion(DiagramFactorFontSizeQuestion.class));
 		createFieldSchemaChoice(DiagramFactor.TAG_FOREGROUND_COLOR, getQuestion(DiagramFactorFontColorQuestion.class));
 		createFieldSchemaChoice(DiagramFactor.TAG_FONT_STYLE, getQuestion(DiagramFactorFontStyleQuestion.class));

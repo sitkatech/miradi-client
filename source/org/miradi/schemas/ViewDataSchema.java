@@ -48,14 +48,14 @@ public class ViewDataSchema extends BaseObjectSchema
 		createFieldSchemaCodeList(ViewData.TAG_DIAGRAM_HIDDEN_TYPES, getQuestion(InternalQuestionWithoutValues.class));
 		createFieldSchemaCodeList(ViewData.TAG_BUDGET_ROLLUP_REPORT_TYPES, getQuestion(WorkPlanCategoryTypesQuestion.class));
 		createFieldSchemaChoice(ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE, new PlanningViewSingleLevelQuestion(getProject()));
-		createFieldSchemaRef(ViewData.TAG_TREE_CONFIGURATION_REF);
+		createFieldSchemaRequiredRef(ViewData.TAG_TREE_CONFIGURATION_REF);
 		createFieldSchemaChoice(ViewData.TAG_ACTION_TREE_CONFIGURATION_CHOICE, getQuestion(ActionTreeConfigurationQuestion.class));
 		createFieldSchemaChoice(ViewData.TAG_MONITORING_TREE_CONFIGURATION_CHOICE, getQuestion(MonitoringTreeConfigurationQuestion.class));
 
 		createFieldSchemaCode(ViewData.TAG_CURRENT_WIZARD_STEP).setNavigationField();
 		createFieldSchemaInteger(ViewData.TAG_CURRENT_TAB).setNavigationField();
-		createFieldSchemaRef(ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF).setNavigationField();
-		createFieldSchemaRef(ViewData.TAG_CURRENT_RESULTS_CHAIN_REF).setNavigationField();
+		createFieldSchemaRequiredRef(ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF).setNavigationField();
+		createFieldSchemaRequiredRef(ViewData.TAG_CURRENT_RESULTS_CHAIN_REF).setNavigationField();
 		createFieldSchemaReflist(ViewData.TAG_CHAIN_MODE_FACTOR_REFS, CHAIN_MODE_FACTORS);
 	}
 	
