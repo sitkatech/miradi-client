@@ -27,6 +27,11 @@ public class BaseObjectByFullNameSorter implements Comparator<BaseObject>
 {
 	public int compare(BaseObject o1, BaseObject o2)
 	{
+		return compareBaseObjects(o1, o2);
+	}
+
+	public static int compareBaseObjects(BaseObject o1, BaseObject o2)
+	{
 		if(o1 == null && o2 == null)
 			return 0;
 		if(o1 == null)
