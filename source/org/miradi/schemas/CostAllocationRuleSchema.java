@@ -35,8 +35,8 @@ public class CostAllocationRuleSchema extends BaseObjectSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaRef(CostAllocationRule.TAG_PARENT_REF);
-		createFieldSchemaRef(CostAllocationRule.TAG_CHILD_REF);
+		createFieldSchemaRequiredRef(CostAllocationRule.TAG_PARENT_REF);
+		createFieldSchemaRequiredRef(CostAllocationRule.TAG_CHILD_REF);
 		createFieldSchemaInteger(CostAllocationRule.TAG_COST_PERCENTAGE);
 	}
 

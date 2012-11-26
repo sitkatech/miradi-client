@@ -35,7 +35,7 @@ abstract public class AbstractAssignmentSchema extends BaseObjectSchema
 		super.fillFieldSchemas();
 		
 		createFieldSchemaDateUnitEffortList(Assignment.TAG_DATEUNIT_EFFORTS);
-		createFieldSchemaRef(Assignment.TAG_CATEGORY_ONE_REF);
-		createFieldSchemaRef(Assignment.TAG_CATEGORY_TWO_REF);
+		createFieldSchemaRequiredRef(Assignment.TAG_CATEGORY_ONE_REF);
+		createFieldSchemaRequiredRef(Assignment.TAG_CATEGORY_TWO_REF);
 	}
 }
