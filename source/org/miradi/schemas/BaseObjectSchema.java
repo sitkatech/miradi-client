@@ -98,7 +98,7 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 	
 	public AbstractFieldSchema createFieldSchemaBaseId(final String fieldTag, final int objectType)
 	{
-		return addFieldSchema(new FieldSchemaBaseId(fieldTag, objectType));
+		return addFieldSchema(new FieldSchemaRequiredBaseId(fieldTag, objectType));
 	}
 	
 	public AbstractFieldSchema createFieldSchemaRequiredRef(final String fieldTag)
