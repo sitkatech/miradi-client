@@ -37,6 +37,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.ProjectResourceLeaderAtTopSorter;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.AbstractTarget;
@@ -77,7 +78,6 @@ import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
-import org.miradi.utils.IgnoreCaseStringComparator;
 import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.Translation;
 import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
@@ -641,11 +641,44 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		TimePeriodCosts timePeriodCosts = calculateTimePeriodCosts(baseObject, new DateUnit(), getRowColumnProvider().getWorkPlanBudgetMode());
 		timePeriodCosts.retainWorkUnitDataRelatedToAnyOf(getResourcesFilter());
 		ORefSet filteredResources = new ORefSet(timePeriodCosts.getWorkUnitsRefSetForType(ProjectResourceSchema.getObjectType()));
-		
-		Vector<String> sortedNames = getSortedResourceNames(filteredResources);		
+		ORefSet unspecifiedBaseObjectRefs = getInvalidRefs(filteredResources);
+		filteredResources.removeAll(unspecifiedBaseObjectRefs);
+		Vector<ProjectResource> sortedProjectResources = toProjectResources(filteredResources);
+		if (baseObject.doesFieldExist(BaseObject.TAG_LEADER_RESOURCE))
+		{
+			final ORef leaderResourceRef = baseObject.getRef(BaseObject.TAG_LEADER_RESOURCE);
+			Collections.sort(sortedProjectResources, new ProjectResourceLeaderAtTopSorter(leaderResourceRef));
+		}
+	
+		final ORefList sortedProjectResourceRefs = new ORefList(sortedProjectResources);
+		sortedProjectResourceRefs.addAll(new ORefList(unspecifiedBaseObjectRefs));
+		Vector<String> sortedNames = getResourceNames(sortedProjectResourceRefs);		
 		String appendedResources = createAppendedResourceNames(sortedNames);
 		
 		return new TaglessChoiceItem(appendedResources);
+	}
+
+	public ORefSet getInvalidRefs(ORefSet filteredResources)
+	{
+		ORefSet invalidRefs = new ORefSet();
+		for(ORef ref : filteredResources)
+		{
+			if (ref.isInvalid())
+				invalidRefs.add(ref);
+		}
+		
+		return invalidRefs;
+	}
+	
+	private Vector<ProjectResource> toProjectResources(ORefSet resourcesRefs) throws Exception
+	{
+		Vector<ProjectResource> resources = new Vector<ProjectResource>();
+		for(ORef resourceRef : resourcesRefs)
+		{
+			resources.add(ProjectResource.find(getProject(), resourceRef));
+		}
+		
+		return resources;
 	}
 
 	private String createAppendedResourceNames(Vector<String> sortedNames)
@@ -663,16 +696,15 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		return appendedResources;
 	}
 
-	private Vector<String> getSortedResourceNames(ORefSet filteredResources)
+	private Vector<String> getResourceNames(ORefList filteredResources)
 	{
-		Vector<String> sortedNames = new Vector<String>();
+		Vector<String> names = new Vector<String>();
 		for(ORef resourceRef : filteredResources)
 		{
-			sortedNames.add(getWhoName(resourceRef));
+			names.add(getWhoName(resourceRef));
 		}
 		
-		Collections.sort(sortedNames, new IgnoreCaseStringComparator());
-		return sortedNames;
+		return names;
 	}
 	
 	private String getWhoName(ORef resourceRef)
