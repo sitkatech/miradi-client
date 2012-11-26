@@ -21,10 +21,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.schemas;
 
 
-public class FieldSchemaBaseId extends AbstractFieldSchemaBaseId
+public class FieldSchemaRequiredBaseId extends AbstractFieldSchemaBaseId
 {
-	public FieldSchemaBaseId(String tagToUse, final int objectTypeToUse)
+	public FieldSchemaRequiredBaseId(String tagToUse, final int objectTypeToUse)
 	{
 		super(tagToUse, objectTypeToUse);
+	}
+	
+	@Override
+	public boolean isRequired()
+	{
+		return true;
 	}
 }
