@@ -1,7 +1,7 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Tue Nov 20 18:19:29 EST 2012 $
-# $LastChangedRevision: 202 $
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/202'
+# $LastChangedDate: Mon Nov 26 16:03:47 EST 2012 $
+# $LastChangedRevision: 203 $
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/203'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -208,7 +208,7 @@ Task.element = element miradi:Task
   element miradi:TaskDetails { formatted_text }? &
   element miradi:TaskExpenseAssignmentIds { ExpenseAssignmentId.element* }? &
   element miradi:TaskId { text }? &
-  element miradi:TaskLeaderResourceId { LeaderResourceId.element* }? &
+  element miradi:TaskLeaderResourceId { LeaderResourceId.element? }? &
   element miradi:TaskName { formatted_text }? &
   element miradi:TaskProgressReportIds { ProgressReportId.element* }? &
   element miradi:TaskResourceAssignmentIds { ResourceAssignmentId.element* }? &
@@ -258,7 +258,7 @@ Indicator.element = element miradi:Indicator
   element miradi:IndicatorFutureStatusRating { vocabulary_status }? &
   element miradi:IndicatorFutureStatusSummary { text }? &
   element miradi:IndicatorId { text }? &
-  element miradi:IndicatorLeaderResourceId { LeaderResourceId.element* }? &
+  element miradi:IndicatorLeaderResourceId { LeaderResourceId.element? }? &
   element miradi:IndicatorMeasurementIds { MeasurementId.element* }? &
   element miradi:IndicatorName { formatted_text }? &
   element miradi:IndicatorPriority { vocabulary_priority_rating_code }? &
@@ -407,7 +407,7 @@ Strategy.element = element miradi:Strategy
   element miradi:StrategyId { text }? &
   element miradi:StrategyImpactRating { vocabulary_strategy_impact_rating_code }? &
   element miradi:StrategyIndicatorIds { IndicatorId.element* }? &
-  element miradi:StrategyLeaderResourceId { LeaderResourceId.element* }? &
+  element miradi:StrategyLeaderResourceId { LeaderResourceId.element? }? &
   element miradi:StrategyLegacyTncStrategyRanking { formatted_text }? &
   element miradi:StrategyName { formatted_text }? &
   element miradi:StrategyObjectiveIds { ObjectiveId.element* }? &

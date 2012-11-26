@@ -311,6 +311,12 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return createElementSchema(baseObjectSchema, fieldSchema, VOCABULARY_DATE);
 	}
 	
+	public String createOptionalRefSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	{
+		String fieldName = getIdElementName(baseObjectSchema, fieldSchema);
+		return createOptionalSchemaElement(baseObjectSchema, fieldSchema, fieldName);
+	}
+	
 	public String createRefSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
 		String fieldName = getIdElementName(baseObjectSchema, fieldSchema);
@@ -800,6 +806,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		creator.addOptionalTextSchemaElement(EXTRA_DATA_ITEM_VALUE);
 		
 		return creator;
+	}
+	
+	private String createOptionalSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, final String elementType)
+	{
+		return createElementSchema(baseObjectSchema, fieldSchema, getSchemaWriter().createOptionalSchemaDotElement(elementType));
 	}
 	
 	private String createSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, final String elementType)
