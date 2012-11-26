@@ -90,6 +90,11 @@ abstract public class AbstractFieldSchema
 		return false;
 	}
 	
+	public boolean isRequired()
+	{
+		return false;
+	}
+	
 	public boolean isOwned()
 	{
 		return isOwned;
