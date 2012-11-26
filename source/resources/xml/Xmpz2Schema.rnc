@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Mon Nov 26 16:43:58 EST 2012 $
+# $LastChangedDate: Mon Nov 26 17:25:49 EST 2012 $
 # $LastChangedRevision: 204 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/204'
 start = ConservationProject.element
@@ -316,13 +316,13 @@ ResourceAssignmentPool.element = element miradi:ResourceAssignmentPool { Resourc
 ResourceAssignment.element = element miradi:ResourceAssignment
 {
   attribute Id {xsd:integer} &
-  element miradi:ResourceAssignmentAccountingCodeId { AccountingCodeId.element* }? &
+  element miradi:ResourceAssignmentAccountingCodeId { AccountingCodeId.element? }? &
   element miradi:ResourceAssignmentBudgetCategoryOneId { BudgetCategoryOneId.element? }? &
   element miradi:ResourceAssignmentBudgetCategoryTwoId { BudgetCategoryTwoId.element? }? &
   element miradi:ResourceAssignmentDetails { DateUnitWorkUnits.element* }? &
-  element miradi:ResourceAssignmentFundingSourceId { FundingSourceId.element* }? &
+  element miradi:ResourceAssignmentFundingSourceId { FundingSourceId.element? }? &
   element miradi:ResourceAssignmentName { formatted_text }? &
-  element miradi:ResourceAssignmentResourceId { ResourceId.element* }?
+  element miradi:ResourceAssignmentResourceId { ResourceId.element? }?
 }
 
 AccountingCodePool.element = element miradi:AccountingCodePool { AccountingCode.element* }

@@ -35,9 +35,9 @@ public class ResourceAssignmentSchema extends AbstractAssignmentSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaBaseId(ResourceAssignment.TAG_RESOURCE_ID, ProjectResourceSchema.getObjectType());
-		createFieldSchemaBaseId(ResourceAssignment.TAG_ACCOUNTING_CODE_ID, AccountingCodeSchema.getObjectType());
-		createFieldSchemaBaseId(ResourceAssignment.TAG_FUNDING_SOURCE_ID, FundingSourceSchema.getObjectType());
+		createFieldSchemaOptionalBaseId(ResourceAssignment.TAG_RESOURCE_ID, ProjectResourceSchema.getObjectType());
+		createFieldSchemaOptionalBaseId(ResourceAssignment.TAG_ACCOUNTING_CODE_ID, AccountingCodeSchema.getObjectType());
+		createFieldSchemaOptionalBaseId(ResourceAssignment.TAG_FUNDING_SOURCE_ID, FundingSourceSchema.getObjectType());
 		
 		createPseudoFieldSchemaString(ResourceAssignment.PSEUDO_TAG_PROJECT_RESOURCE_LABEL);
 		createPseudoFieldSchemaString(ResourceAssignment.PSEUDO_TAG_OWNING_FACTOR_NAME);
