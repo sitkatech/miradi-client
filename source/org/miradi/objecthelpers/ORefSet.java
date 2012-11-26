@@ -66,7 +66,7 @@ public class ORefSet extends HashSet<ORef>
 		super(other);
 	}
 
-	public ORefSet(Vector<BaseObject> baseObjects)
+	public ORefSet(Vector<? extends BaseObject> baseObjects)
 	{
 		this(new ORefList(baseObjects));
 	}
