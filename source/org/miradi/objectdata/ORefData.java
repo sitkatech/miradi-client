@@ -117,7 +117,7 @@ public class ORefData extends ObjectData
 	public String createXmpz2SchemaElementString(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
 		if (fieldSchema.isRequired())
-			return creator.createRefSchemaElement(baseObjectSchema, fieldSchema);
+			return creator.createRequiredRefSchemaElement(baseObjectSchema, fieldSchema);
 		
 		return creator.createOptionalRefSchemaElement(baseObjectSchema, fieldSchema);
 	}
