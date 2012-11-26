@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Mon Nov 26 16:35:15 EST 2012 $
+# $LastChangedDate: Mon Nov 26 16:42:39 EST 2012 $
 # $LastChangedRevision: 204 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/204'
 start = ConservationProject.element
@@ -317,8 +317,8 @@ ResourceAssignment.element = element miradi:ResourceAssignment
 {
   attribute Id {xsd:integer} &
   element miradi:ResourceAssignmentAccountingCodeId { AccountingCodeId.element* }? &
-  element miradi:ResourceAssignmentBudgetCategoryOneId { BudgetCategoryOneId.element* }? &
-  element miradi:ResourceAssignmentBudgetCategoryTwoId { BudgetCategoryTwoId.element* }? &
+  element miradi:ResourceAssignmentBudgetCategoryOneId { BudgetCategoryOneId.element? }? &
+  element miradi:ResourceAssignmentBudgetCategoryTwoId { BudgetCategoryTwoId.element? }? &
   element miradi:ResourceAssignmentDetails { DateUnitWorkUnits.element* }? &
   element miradi:ResourceAssignmentFundingSourceId { FundingSourceId.element* }? &
   element miradi:ResourceAssignmentName { formatted_text }? &
@@ -605,8 +605,8 @@ ExpenseAssignment.element = element miradi:ExpenseAssignment
 {
   attribute Id {xsd:integer} &
   element miradi:ExpenseAssignmentAccountingCodeId { AccountingCodeId.element* }? &
-  element miradi:ExpenseAssignmentBudgetCategoryOneId { BudgetCategoryOneId.element* }? &
-  element miradi:ExpenseAssignmentBudgetCategoryTwoId { BudgetCategoryTwoId.element* }? &
+  element miradi:ExpenseAssignmentBudgetCategoryOneId { BudgetCategoryOneId.element? }? &
+  element miradi:ExpenseAssignmentBudgetCategoryTwoId { BudgetCategoryTwoId.element? }? &
   element miradi:ExpenseAssignmentDetails { DateUnitExpense.element* }? &
   element miradi:ExpenseAssignmentFundingSourceId { FundingSourceId.element* }? &
   element miradi:ExpenseAssignmentName { formatted_text }?
