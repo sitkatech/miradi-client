@@ -751,11 +751,6 @@ abstract public class DiagramModel extends DefaultGraphModel
 		return cellInventory.getAllFactorLinks();
 	}
 	
-	public Objective getObjectiveById(BaseId id)
-	{
-		return getObjectivePool().find(id);
-	}
-	
 	public EnhancedJsonObject toJson()
 	{
 		Vector factors = getAllFactorCells();
