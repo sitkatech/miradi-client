@@ -926,9 +926,6 @@ abstract public class DiagramModel extends DefaultGraphModel
 	public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";
 	public static final String TAG_DIAGRAM_FACTOR_LINK_IDS = "DiagramFactorLinkIds";
 	
-	
-	private static final String JSON_TYPE_DIAGRAM = "Diagram";
-	
 	private Project project;
 	private CellInventory cellInventory;
 	protected List<DiagramModelListener> diagramModelListenerList = new ArrayList<DiagramModelListener>();
