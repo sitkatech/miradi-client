@@ -751,22 +751,6 @@ abstract public class DiagramModel extends DefaultGraphModel
 		return cellInventory.getAllFactorLinks();
 	}
 	
-	public EnhancedJsonObject toJson()
-	{
-		Vector factors = getAllFactorCells();
-		IdList diagramFactorIds = new IdList(DiagramFactorSchema.getObjectType());
-		for(int i=0; i < factors.size(); ++i)
-		{
-			FactorCell factorCell = (FactorCell)factors.get(i);
-			diagramFactorIds.add(factorCell.getDiagramFactorId());
-		}
-		EnhancedJsonObject json = new EnhancedJsonObject();
-		json.put(TAG_TYPE, JSON_TYPE_DIAGRAM);
-		json.put(TAG_DIAGRAM_FACTOR_IDS, diagramFactorIds.toJson());
-		
-		return json;
-	}
-	
 	public void fillFrom(DiagramObject diagramContentsToUse) throws Exception
 	{
 		diagramContents = diagramContentsToUse;
