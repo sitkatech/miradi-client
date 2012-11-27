@@ -751,11 +751,6 @@ abstract public class DiagramModel extends DefaultGraphModel
 		return cellInventory.getAllFactorLinks();
 	}
 	
-	public Goal getGoalById(BaseId id)
-	{
-		return getGoalPool().find(id);
-	}
-	
 	public Objective getObjectiveById(BaseId id)
 	{
 		return getObjectivePool().find(id);
