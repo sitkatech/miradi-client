@@ -923,7 +923,6 @@ abstract public class DiagramModel extends DefaultGraphModel
 	
 	abstract public boolean shouldSaveChangesToDisk();
 		
-	private static final String TAG_TYPE = "Type";
 	public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";
 	public static final String TAG_DIAGRAM_FACTOR_LINK_IDS = "DiagramFactorLinkIds";
 	
