@@ -210,8 +210,9 @@ public class HtmlUtilities
 		return result;
 	}
 
-	public static String getNormalizedAndSanitizedHtmlText(final String text, String[] allowedHtmlTags)
+	public static String getNormalizedAndSanitizedHtmlText(String text, String[] allowedHtmlTags)
 	{
+		text = replaceAllEmptyDivsWithBrs(text);
 		String trimmedText = "";
 		final String[] lines = text.split(getNewlineRegex());
 		for (int index = 0; index < lines.length; ++index)
@@ -240,6 +241,12 @@ public class HtmlUtilities
 		ensureNoCloseBrTags(trimmedText);
 		
 		return trimmedText;
+	}
+
+	private static String replaceAllEmptyDivsWithBrs(String text)
+	{
+		text = text.replaceAll("<div>\\s*</div>", "<br/>");
+		return text;
 	}
 	
 	public static int getLabelLineCount(String labelToUse)
