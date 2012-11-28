@@ -26,7 +26,10 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Target;
+import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.TaglessChoiceItem;
 
 abstract public class AbstractThreatRatingDetailsTableExporter extends AbstractSingleTableExporter
 {
@@ -116,6 +119,26 @@ abstract public class AbstractThreatRatingDetailsTableExporter extends AbstractS
 		
 		return rowTypes;
 	}
+	
+	protected boolean isCommentsColumn(int modelColumn)
+	{
+		return getColumnTag(modelColumn).equals(getThreatRatingCommentsTag());
+	}
+	
+	protected ChoiceItem getThreatRatingComments(final ORef threatRef)
+	{
+		ThreatRatingCommentsData threatRatingCommentsData = getProject().getSingletonThreatRatingCommentsData();
+		String threatRatingComments = threatRatingCommentsData.findComment(threatRef, getTargetRef());
+		
+		return new TaglessChoiceItem(threatRatingComments);
+	}
+	
+	protected String getCommentsColumnName()
+	{
+		return EAM.text("Comments");
+	}
+	
+	abstract protected String getThreatRatingCommentsTag();
 
 	private static final int THREAT_NAME_COLUMN_INDEX = 0;
 	private Target target;
