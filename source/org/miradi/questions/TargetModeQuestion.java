@@ -35,7 +35,7 @@ public class TargetModeQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 				new ChoiceItem(DEFAULT_CODE, EAM.text("Default Mode"), new TargetIcon()),
-				new ChoiceItem(HUMAN_WELFARE_TARGET_CODE, EAM.text("Human Welfare Target Mode"), new HumanWelfareTargetIcon()),
+				new ChoiceItem(HUMAN_WELFARE_TARGET_CODE, EAM.text("Human Wellbeing Target Mode"), new HumanWelfareTargetIcon()),
 		};
 	}
 	

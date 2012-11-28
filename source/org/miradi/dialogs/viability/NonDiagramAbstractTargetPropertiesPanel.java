@@ -84,7 +84,7 @@ public class NonDiagramAbstractTargetPropertiesPanel extends ObjectDataInputPane
 	public String getPanelDescription()
 	{
 		if (HumanWelfareTarget.is(targetType))
-			return EAM.text("Title|Human Welfare Target Properties");
+			return EAM.text("Title|Human Wellbeing Target Properties");
 
 		return EAM.text("Title|Target Properties");
 	}

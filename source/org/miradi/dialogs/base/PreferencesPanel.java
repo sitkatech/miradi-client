@@ -248,9 +248,9 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		directThreatDropdown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Direct Threat (Pink)"), DiagramConstants.directThreatColorChoices, AppPreferences.TAG_COLOR_DIRECT_THREAT);
 		indirectFactorDropdown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Contributing Factor (Orange)"), DiagramConstants.contributingFactorColorChoices, AppPreferences.TAG_COLOR_CONTRIBUTING_FACTOR);
 		biodiversityTargetDropdown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Biodiversity Target (Lighter Green)"), DiagramConstants.targetColorChoices, AppPreferences.TAG_COLOR_TARGET);
-		humanWelfareTargetDropdown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Human Welfare Target (Lighter Brown)"), DiagramConstants.humanWelfareTargetColorChoices, AppPreferences.TAG_COLOR_HUMAN_WELFARE_TARGET);
+		humanWelfareTargetDropdown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Human Wellbeing Target (Lighter Brown)"), DiagramConstants.humanWelfareTargetColorChoices, AppPreferences.TAG_COLOR_HUMAN_WELFARE_TARGET);
 		biodiversityTargetScopeDropdown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Biodiversity Target Scope (Darker Green)"), DiagramConstants.biodiversityTargetScopeColorChoices, AppPreferences.TAG_COLOR_SCOPE_BOX);
-		humanWelfareScopeDropDown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Human Welfare Target Scope (Darker Brown)"), DiagramConstants.humanWelfareScopeColorChoices, AppPreferences.TAG_COLOR_HUMAN_WELFARE_SCOPE_BOX);
+		humanWelfareScopeDropDown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Human Wellbeing Target Scope (Darker Brown)"), DiagramConstants.humanWelfareScopeColorChoices, AppPreferences.TAG_COLOR_HUMAN_WELFARE_SCOPE_BOX);
 		intermediateResultDropDown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Intermediate Result (Light Blue)"), DiagramConstants.intermediateResultChoices, AppPreferences.TAG_COLOR_INTERMEDIATE_RESULT);
 		threatReductionResultDropDown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Threat Reduction Result (Light Purple)"), DiagramConstants.threatReductionResultChoices, AppPreferences.TAG_COLOR_THREAT_REDUCTION_RESULT);
 

@@ -33,12 +33,12 @@ public class ActionExpandToHumanWelfareTarget extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Table|Expand To Human Welfare Target");
+		return EAM.text("Action|Table|Expand To Human Wellbeing Target");
 	}
 
 	@Override
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Expand To Human Welfare Target");
+		return EAM.text("TT|Expand To Human Wellbeing Target");
 	}
 }
