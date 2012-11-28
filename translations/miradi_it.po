@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-28 09:36-0600\n"
+"POT-Creation-Date: 2012-11-28 13:01-0600\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -8224,7 +8224,7 @@ msgstr "Proprietà Stress"
 msgid "Title|Stress Visibility"
 msgstr "Visibilità Stress"
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:67
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:69
 msgid "Title|Stress-Based Threat Rating"
 msgstr "Analisi della Minacce basata su Stress"
 
