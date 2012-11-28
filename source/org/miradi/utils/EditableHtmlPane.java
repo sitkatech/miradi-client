@@ -31,8 +31,10 @@ import java.net.URL;
 import javax.swing.JEditorPane;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
+import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
+import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
@@ -223,14 +225,29 @@ public class EditableHtmlPane extends MiradiTextPane
 		public void write(Writer out, Document doc, int pos, int len)
 				throws IOException, BadLocationException
 		{
-		    GnuHtmlWriter w = new HTMLWriterWithoutIndenting(out, (HTMLDocument)doc, pos, len);
+		    GnuHtmlWriter w = new HtmlWriterWithoutIndenting(out, (HTMLDocument)doc, pos, len);
 		    w.write();
 		}
 	 }
 	 
-	 class HTMLWriterWithoutIndenting extends GnuHtmlWriter
+	 class HtmlWriterThatFixesIllegalNesting extends GnuHtmlWriter
 	 {
-		public HTMLWriterWithoutIndenting(Writer out, HTMLDocument doc, int pos, int len)
+		public HtmlWriterThatFixesIllegalNesting(Writer out, HTMLDocument doc, int pos, int len)
+		{
+			super(out, doc, pos, len);
+		}
+			
+		@Override
+		protected void closeOutUnwantedEmbeddedTags(AttributeSet attrSet) throws IOException
+		{
+			AttributeSet forceAllTagsToBeClosed = new SimpleAttributeSet();
+			super.closeOutUnwantedEmbeddedTags(forceAllTagsToBeClosed);
+		}
+	 }
+	 
+	 class HtmlWriterWithoutIndenting extends HtmlWriterThatFixesIllegalNesting
+	 {
+		public HtmlWriterWithoutIndenting(Writer out, HTMLDocument doc, int pos, int len)
 		{
 			super(out, doc, pos, len);
 		}
