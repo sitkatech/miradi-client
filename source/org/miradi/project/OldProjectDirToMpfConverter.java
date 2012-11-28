@@ -48,7 +48,7 @@ public class OldProjectDirToMpfConverter
 			"a Miradi Project Zip (MPZ) file, which can be imported by Miradi 3.3. <br/>" +
 			"<br/>" +
 			"In the unlikely event that you need to revert to Miradi 3.3, a <br/>" +
-			"backup copy of the project, in MPZ format, will be created in the a <br/>" +
+			"backup copy of the project, in MPZ format, will be created in a <br/>" +
 			"directory named: %DIRECTORY%<br/>" +
 			"<br/>" +
 			"Do you want to go ahead and migrate and open this project?"
