@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-28 16:01-0600\n"
+"POT-Creation-Date: 2012-11-28 17:16-0600\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -1375,8 +1375,8 @@ msgid "Action|Insert|Insert Draft Strategy"
 msgstr "Арга хэмжээ|Инсэрт|Стратегийн Төслийг оруулах"
 
 #: Miradi/source/org/miradi/actions/ActionInsertHumanWelfareTarget.java:38
-msgid "Action|Insert|Insert Human Welfare Target"
-msgstr "Арга хэмжээ|Инсэрт|Нийгмийн халамжийн зорилтыг оруулах "
+msgid "Action|Insert|Insert Human Wellbeing Target"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionInsertIntermediateResult.java:35
 msgid "Action|Insert|Insert Intermediate Result"
@@ -1812,7 +1812,7 @@ msgid "Action|Table|Expand To Goal"
 msgstr "Арга хэмжээ|Хүснэгт|Зорилгод хүртэл өргөжүүлэх"
 
 #: Miradi/source/org/miradi/actions/ActionExpandToHumanWelfareTarget.java:36
-msgid "Action|Table|Expand To Human Welfare Target"
+msgid "Action|Table|Expand To Human Wellbeing Target"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExpandToIndicator.java:36
@@ -1979,8 +1979,8 @@ msgid "Add '%s' to User Dictionary"
 msgstr "Хэрэглэгчийн толь бичигт '%'-ийг нэмж оруулах"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:113
-msgid "Add Human Welfare Targets If Desired"
-msgstr "Хүсвэл хүний ахуй амьдралыг сайжруулах зорилтыг нэмж оруулах"
+msgid "Add Human Wellbeing Targets If Desired"
+msgstr ""
 
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:138
 msgid ""
@@ -3979,38 +3979,35 @@ msgstr "Оролцогч Хүмүүс"
 #: Miradi/source/org/miradi/forms/HumanWelfareTargetPropertiesForm.java:34
 #: Miradi/source/org/miradi/questions/ScopeBoxTypeQuestion.java:59
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:51
-msgid "Human Welfare Target"
-msgstr "Нийгмийн халамжийн зорилт"
+msgid "Human Wellbeing Target"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:251
-msgid "Human Welfare Target (Lighter Brown)"
-msgstr "Нийгмийн халамжийн зорилт (Цайвар бор)"
+msgid "Human Wellbeing Target (Lighter Brown)"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/TargetModeQuestion.java:38
-msgid "Human Welfare Target Mode"
-msgstr "Нийгмийн халамжийн зорилтын загвар"
+msgid "Human Wellbeing Target Mode"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:253
-msgid "Human Welfare Target Scope (Darker Brown)"
-msgstr "Нийгмийн халамжийн зорилтын цар хүрээ (Бараан бор)"
+msgid "Human Wellbeing Target Scope (Darker Brown)"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:54
-msgid "Human Welfare Targets"
-msgstr "Нийгмийн халамжийн зорилтууд"
+msgid "Human Wellbeing Targets"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:55
 msgid ""
-"Human Welfare Targets - A limited suite of elements chosen to represent and "
-"encompass the desired human values of the system. In Miradi, represented by "
-"tan ovals."
+"Human Wellbeing Targets - A limited suite of elements chosen to represent "
+"and encompass the desired human values of the system. In Miradi, represented "
+"by tan ovals."
 msgstr ""
-"Нийгмийн Халамжийн Зорилтууд -  Хүний үнэлэмжийг системд хамруулан "
-"төлөөлүүлэхээр сонгогдсон элементүүдийн хязгаарлагдмал цуглуулга. Miradi-д "
-"бор шаргал зуувангаар төлөөлөгдсөн."
 
 #: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:54
-msgid "Human Welfare Targets Only"
-msgstr "Зөвхөн нийгмийн халамжийн зорилтууд"
+msgid "Human Wellbeing Targets Only"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteIucnRedlistSpeciesDoer.java:38
 #: Miradi/source/org/miradi/rtf/viewExporters/SummaryViewRtfExporter.java:117
@@ -4480,8 +4477,8 @@ msgid "Label|New Group Box"
 msgstr "Хаяг|Шинэ бүлгийн хайрцаг"
 
 #: Miradi/source/org/miradi/views/diagram/doers/InsertHumanWelfareTargetDoer.java:38
-msgid "Label|New Human Welfare Target"
-msgstr "Хаяг|Нийгмийн хангамжийн шинэ зорилт"
+msgid "Label|New Human Wellbeing Target"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/InsertIntermediateResultDoer.java:47
 msgid "Label|New Intermediate Result"
@@ -6977,7 +6974,7 @@ msgid "TT|Expand To Goal"
 msgstr "TT|Зорилго болтол өргөжүүлэх"
 
 #: Miradi/source/org/miradi/actions/ActionExpandToHumanWelfareTarget.java:42
-msgid "TT|Expand To Human Welfare Target"
+msgid "TT|Expand To Human Wellbeing Target"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExpandToIndicator.java:42
@@ -7106,8 +7103,8 @@ msgid "TT|Insert a Direct Threat"
 msgstr "TT|Шууд үйлчлэх аюул заналыг оруулах"
 
 #: Miradi/source/org/miradi/actions/ActionInsertHumanWelfareTarget.java:44
-msgid "TT|Insert a Human Welfare Target"
-msgstr "TT|Нийгмийн халамжийн зорилтыг оруулах"
+msgid "TT|Insert a Human Wellbeing Target"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionInsertIntermediateResult.java:41
 msgid "TT|Insert a Intermediate Result"
@@ -8016,8 +8013,8 @@ msgid "Title|Goal Properties"
 msgstr "Гарчиг|Зорилгын Properties"
 
 #: Miradi/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:87
-msgid "Title|Human Welfare Target Properties"
-msgstr "Гарчиг|Нийгмийн Халамжийн Зорилтын Properties"
+msgid "Title|Human Wellbeing Target Properties"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/iucnRedlistSpecies/IucnRedlistSpeciesSubPanel.java:60
 msgid "Title|IUCN Redlist Species"
@@ -10440,8 +10437,8 @@ msgstr "БаганыХаяг|50.ЦарХүрээХайрцагӨнгөнийКо
 msgid "FieldLabel|51.ExpenseAssignment|Expense"
 msgstr "БаганыХаяг|51.ЗардлынХувиарлалт|Зардал"
 
-msgid "FieldLabel|52.HumanWelfareTarget|Human Welfare Target"
-msgstr "БаганыХаяг|52.Нийгмийн Халамжийн Зорилт|Нийгмийн Халамжийн Зорилт"
+msgid "FieldLabel|52.HumanWelfareTarget|Human Wellbeing Target"
+msgstr ""
 
 msgid "FieldLabel|52.ShortLabel|ID"
 msgstr "БаганыХаяг|52.Товч Хаяг|Хувийн Бичиг Баримт"
@@ -14091,35 +14088,36 @@ msgstr ""
 
 msgid ""
 "html|/resources/wizard/DiagramView/DiagramWizardHumanWelfareTargetsStepRight."
-"html|<h3>Using Human Welfare Targets</h3>Some conservaton projects have not "
-"only conservation ends, but also have human welfare ends. Based on user "
-"requests, Miradi now supports <i>Human Welfare Targets</i>. Just as focal "
+"html|<h3>Using Human Wellbeing Targets</h3>Some conservaton projects have "
+"not only conservation ends, but also have human welfare ends. Based on user "
+"requests, Miradi now supports <i>Human Wellbeing Targets</i>. Just as focal "
 "conservation targets represent the overall biodiversity values that a "
-"project is working towards, the human welfare targets can be used to "
-"represent the human welfare values for a project. Examples of human welfare "
-"targets might include:<ul><li>Human population health,</li><li>Human food "
-"security,</li><li>Protection against flooding,</li><li>Recreation "
-"opportunities.</li></ul><p>Miradi places no restrictions on how you choose "
-"to use human welfare targets. However, we <u>strongly recommend</u> that you "
-"do not mix conservation targets and human welfare targets in the same column "
-"as shown in Diagram A below. Instead, the recommended practice is to place "
-"the human welfare targets to the far right and then show the relationship "
-"between the human welfare and conservation targets as shown in Diagram B. In "
-"this example, the project team can show that human health (one component of "
-"human welfare) ultimately depends on having healthy species and habitat and "
-"clean abundant water. As a result, a pollution abatement strategy can be a "
-"conservation action - but also contributes to human welfare. But the project "
-"team can also decide and then show that they are not going to address all "
-"aspects of human health. For example, as shown in the diagram the team will "
-"not tackle smoking or fixing the health care system - these important tasks "
-"are the responsibility of other sectors of society.</p><table "
+"project is working towards, the human wellbeing targets can be used to "
+"represent the human welfare values for a project. Examples of human "
+"wellbeing targets might include:<ul><li>Human population health,</"
+"li><li>Human food security,</li><li>Protection against flooding,</"
+"li><li>Recreation opportunities.</li></ul><p>Miradi places no restrictions "
+"on how you choose to use human wellbeing targets. However, we <u>strongly "
+"recommend</u> that you do not mix conservation targets and human wellbeing "
+"targets in the same column as shown in Diagram A below. Instead, the "
+"recommended practice is to place the human wellbeing targets to the far "
+"right and then show the relationship between the human welfare and "
+"conservation targets as shown in Diagram B. In this example, the project "
+"team can show that human health (one component of human welfare) ultimately "
+"depends on having healthy species and habitat and clean abundant water. As a "
+"result, a pollution abatement strategy can be a conservation action - but "
+"also contributes to human welfare. But the project team can also decide and "
+"then show that they are not going to address all aspects of human health. "
+"For example, as shown in the diagram the team will not tackle smoking or "
+"fixing the health care system - these important tasks are the responsibility "
+"of other sectors of society.</p><table width='100%'><tr><td "
+"align='center'><img src='images/DiagramWizard/HWT-diagramA.png' width='420' "
+"height='345'></img><br><b>Diagram A. Mixing Conservation and Human Wellbeing "
+"Targets Leads to Confusion</b></td></tr></table><p></p><table "
 "width='100%'><tr><td align='center'><img src='images/DiagramWizard/HWT-"
-"diagramA.png' width='420' height='345'></img><br><b>Diagram A. Mixing "
-"Conservation and Human Welfare Targets Leads to Confusion</b></td></tr></"
-"table><p></p><table width='100%'><tr><td align='center'><img src='images/"
-"DiagramWizard/HWT-diagramB.png' width='420' height='280'></"
-"img><br><b>Diagram B. Show the Relationship Between Conservation and Human "
-"Welfare Targets</b></td></tr></table><p></p> "
+"diagramB.png' width='420' height='280'></img><br><b>Diagram B. Show the "
+"Relationship Between Conservation and Human Wellbeing Targets</b></td></tr></"
+"table><p></p> "
 msgstr ""
 
 msgid ""
@@ -14177,14 +14175,15 @@ msgstr ""
 
 msgid ""
 "html|/resources/wizard/DiagramView/DiagramWizardHumanWelfareTargetsStepLeft."
-"html|<p>If you want to use human welfare targets, you must first go to the "
+"html|<p>If you want to use human wellbeing targets, you must first go to the "
 "<code class='toolbarbutton'>&lt;Edit/Preferences/Project Settings&gt;</code> "
-"menu and change the mode from <i>\"Default Mode\"</i> to <i>\"Human Welfare "
-"Target Mode.\"</i> You will now have the ability to enter brown Human "
-"Welfare scope boxes and tan colored human welfare targets.</p><p>Human "
-"welfare targets have all the same properties as conservation targets except "
-"that you cannot assign them a habitat classification or a species Latin "
-"name. They also do not factor into viability roll-up calculations.</p> "
+"menu and change the mode from <i>\"Default Mode\"</i> to <i>\"Human "
+"Wellbeing Target Mode.\"</i> You will now have the ability to enter brown "
+"Human Welfare scope boxes and tan colored human wellbeing targets.</"
+"p><p>Human wellbeing targets have all the same properties as conservation "
+"targets except that you cannot assign them a habitat classification or a "
+"species Latin name. They also do not factor into viability roll-up "
+"calculations.</p> "
 msgstr ""
 
 msgid ""
@@ -15895,7 +15894,7 @@ msgid ""
 "threat</li></ul><p>In the example below, the second row shows the Housing "
 "threat. There are 3 High ratings (which equals 1 Very High) and 1 Very High "
 "rating, so it is treated as if it had two Very High ratings. In the Ione "
-"Chapparal Column, there are 5 Medium ratings (which equals one High), plus "
+"Chapparal Column, there are 4 Medium ratings (which equals one High), plus "
 "one High, for a total equivalent of 2 High ratings.</p> <h4>2-Prime Rule</"
 "h4>After the 3-5-7 rule has been applied, the 2-prime rule is used to "
 "determine the rolled up rating for a target, a threat, or for the whole "
@@ -31926,6 +31925,51 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "Action|Insert|Insert Human Welfare Target"
+#~ msgstr "Арга хэмжээ|Инсэрт|Нийгмийн халамжийн зорилтыг оруулах "
+
+#~ msgid "Add Human Welfare Targets If Desired"
+#~ msgstr "Хүсвэл хүний ахуй амьдралыг сайжруулах зорилтыг нэмж оруулах"
+
+#~ msgid "Human Welfare Target"
+#~ msgstr "Нийгмийн халамжийн зорилт"
+
+#~ msgid "Human Welfare Target (Lighter Brown)"
+#~ msgstr "Нийгмийн халамжийн зорилт (Цайвар бор)"
+
+#~ msgid "Human Welfare Target Mode"
+#~ msgstr "Нийгмийн халамжийн зорилтын загвар"
+
+#~ msgid "Human Welfare Target Scope (Darker Brown)"
+#~ msgstr "Нийгмийн халамжийн зорилтын цар хүрээ (Бараан бор)"
+
+#~ msgid "Human Welfare Targets"
+#~ msgstr "Нийгмийн халамжийн зорилтууд"
+
+#~ msgid ""
+#~ "Human Welfare Targets - A limited suite of elements chosen to represent "
+#~ "and encompass the desired human values of the system. In Miradi, "
+#~ "represented by tan ovals."
+#~ msgstr ""
+#~ "Нийгмийн Халамжийн Зорилтууд -  Хүний үнэлэмжийг системд хамруулан "
+#~ "төлөөлүүлэхээр сонгогдсон элементүүдийн хязгаарлагдмал цуглуулга. Miradi-"
+#~ "д бор шаргал зуувангаар төлөөлөгдсөн."
+
+#~ msgid "Human Welfare Targets Only"
+#~ msgstr "Зөвхөн нийгмийн халамжийн зорилтууд"
+
+#~ msgid "Label|New Human Welfare Target"
+#~ msgstr "Хаяг|Нийгмийн хангамжийн шинэ зорилт"
+
+#~ msgid "TT|Insert a Human Welfare Target"
+#~ msgstr "TT|Нийгмийн халамжийн зорилтыг оруулах"
+
+#~ msgid "Title|Human Welfare Target Properties"
+#~ msgstr "Гарчиг|Нийгмийн Халамжийн Зорилтын Properties"
+
+#~ msgid "FieldLabel|52.HumanWelfareTarget|Human Welfare Target"
+#~ msgstr "БаганыХаяг|52.Нийгмийн Халамжийн Зорилт|Нийгмийн Халамжийн Зорилт"
 
 #~ msgid "Obj"
 #~ msgstr "Зор"
