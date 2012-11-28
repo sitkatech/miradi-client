@@ -29,6 +29,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
+import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
@@ -60,7 +61,10 @@ public class SimpleThreatRatingDetailsTableExporter extends AbstractThreatRating
 			return getThreatColumnName();
 		
 		if (getColumnTag(modelColumn).equals(Stress.PSEUDO_STRESS_RATING))
-			return ThreatSummaryColumnTableModel.getThreatSummartRatingLabel(); 
+			return ThreatSummaryColumnTableModel.getThreatSummartRatingLabel();
+		
+		if (isCommentsColumn(modelColumn))
+			return getCommentsColumnName();
 
 		return EAM.fieldLabel(StressSchema.getObjectType(), getColumnTag(modelColumn));
 	}
@@ -91,6 +95,8 @@ public class SimpleThreatRatingDetailsTableExporter extends AbstractThreatRating
 				String threatRatingBundleValueCode = new ThreatTargetVirtualLinkHelper(getProject()).getCalculatedThreatRatingBundleValue(threatForRow.getRef(), getTargetRef());
 				return simpleThreatRatingFramework.convertToChoiceItem(threatRatingBundleValueCode);
 			}
+			if (isCommentsColumn(modelColumn))
+				return getThreatRatingComments(threatForRow.getRef());
 		}
 		catch (Exception e)
 		{
@@ -98,6 +104,12 @@ public class SimpleThreatRatingDetailsTableExporter extends AbstractThreatRating
 		}
 
 		return new EmptyChoiceItem();
+	}
+	
+	@Override
+	protected String getThreatRatingCommentsTag()
+	{
+		return ThreatRatingCommentsData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP;
 	}
 
 	@Override
@@ -114,5 +126,6 @@ public class SimpleThreatRatingDetailsTableExporter extends AbstractThreatRating
 								Stress.TAG_SEVERITY,
 								ThreatStressRating.TAG_IRREVERSIBILITY,
 								Stress.PSEUDO_STRESS_RATING,
+								ThreatRatingCommentsData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP,
 			};
 }
