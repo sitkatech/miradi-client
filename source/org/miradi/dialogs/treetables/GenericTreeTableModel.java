@@ -201,8 +201,11 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		for(int childIndex = 0; childIndex < node.getChildCount(); ++childIndex)
 		{
 			TreeTableNode childNode = node.getChild(childIndex);
-			TreePath thisTreePath = treePath.pathByAddingChild(childNode);
-			recursivelyGetFullyExpandedTreePaths(fullyExpandedTreePathList, thisTreePath);
+			if (childNode.getChildCount() > 0)
+			{
+				TreePath thisTreePath = treePath.pathByAddingChild(childNode);
+				recursivelyGetFullyExpandedTreePaths(fullyExpandedTreePathList, thisTreePath);
+			}
 		}
 	}
 	
