@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-28 13:01-0600\n"
+"POT-Creation-Date: 2012-11-28 16:01-0600\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -2746,6 +2746,7 @@ msgstr "Сонгосон баганыг нягтруулах"
 msgid "Column groups"
 msgstr ""
 
+#: Miradi/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:138
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCommentsPanel.java:40
 msgid "Comments"
 msgstr "Тайлбар"
@@ -6443,7 +6444,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:60
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:80
-#: Miradi/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:72
+#: Miradi/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:73
 #: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:51
 msgid "Stress"
 msgstr "Дарамт"
@@ -7841,7 +7842,7 @@ msgid "This will replace the existing file."
 msgstr "Энэ нь байгаа файлыг солих болно."
 
 #: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:385
-#: Miradi/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:59
+#: Miradi/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:62
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:35
 msgid "Threat"
 msgstr "Аюул занал"
