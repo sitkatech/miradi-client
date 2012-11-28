@@ -44,6 +44,7 @@ import org.miradi.dialogs.treetables.TreeTableWithRowHeightSaver;
 import org.miradi.dialogs.treetables.VariableHeightTreeCellRenderer;
 import org.miradi.icons.FolderIcon;
 import org.miradi.icons.IconManager;
+import org.miradi.icons.LegacyMiradiApplicationIcon;
 import org.miradi.icons.MiradiApplicationIcon;
 import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.AppPreferences;
@@ -303,9 +304,9 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 			projectRenderer.setLeafIcon(new MiradiApplicationIcon());
 
 			oldProjectRenderer = new ProjectListItemRenderer(treeTable);
-			oldProjectRenderer.setClosedIcon(IconManager.getDocumentIcon());
-			oldProjectRenderer.setOpenIcon(IconManager.getDocumentIcon());
-			oldProjectRenderer.setLeafIcon(IconManager.getDocumentIcon());
+			oldProjectRenderer.setClosedIcon(new LegacyMiradiApplicationIcon());
+			oldProjectRenderer.setOpenIcon(new LegacyMiradiApplicationIcon());
+			oldProjectRenderer.setLeafIcon(new LegacyMiradiApplicationIcon());
 
 			unusableRenderer = new ProjectListItemRenderer(treeTable);
 			unusableRenderer.setClosedIcon(IconManager.getCancelIcon());
