@@ -29,7 +29,9 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Target;
 import org.miradi.schemas.StressSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -90,7 +92,8 @@ public class StressBasedThreatRatingPropertiesPanel extends ObjectDataInputPanel
 			editorComponent.fireTableDataChanged();
 		
 		if (event.isDeleteCommandForThisType(ThreatStressRatingSchema.getObjectType()) ||
-			event.isCreateCommandForThisType(ThreatStressRatingSchema.getObjectType())) 
+			event.isCreateCommandForThisType(ThreatStressRatingSchema.getObjectType()) ||
+			event.isSetDataCommandWithThisTypeAndTag(TargetSchema.getObjectType(), Target.TAG_STRESS_REFS)) 
 			editorComponent.refreshModel();
 	}
 	
