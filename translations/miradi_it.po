@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-28 13:01-0600\n"
+"POT-Creation-Date: 2012-11-28 16:01-0600\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -2775,6 +2775,7 @@ msgstr "Contrai le colonne selezionate"
 msgid "Column groups"
 msgstr ""
 
+#: Miradi/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:138
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCommentsPanel.java:40
 msgid "Comments"
 msgstr "Commenti"
@@ -6503,7 +6504,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:60
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:80
-#: Miradi/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:72
+#: Miradi/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:73
 #: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:51
 msgid "Stress"
 msgstr "Stress"
@@ -7914,7 +7915,7 @@ msgid "This will replace the existing file."
 msgstr "Questo sostituirà il file esistente."
 
 #: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:385
-#: Miradi/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:59
+#: Miradi/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:62
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:35
 msgid "Threat"
 msgstr "Minaccia"
