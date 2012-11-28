@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-28 09:36-0600\n"
+"POT-Creation-Date: 2012-11-28 13:01-0600\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -8109,7 +8109,7 @@ msgstr "Propiedades de la presión"
 msgid "Title|Stress Visibility"
 msgstr "Visibilidad de la presión"
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:67
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:69
 msgid "Title|Stress-Based Threat Rating"
 msgstr "Calificación de amenaza basada en la presión"
 
