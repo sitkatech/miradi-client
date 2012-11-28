@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-08 18:46-0600\n"
+"POT-Creation-Date: 2012-11-28 09:36-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -454,7 +454,7 @@ msgstr "7B. Bagikan Apa yang Anda Pelajari "
 msgid "7C. Create a Learning Environment"
 msgstr "7C. Ciptakan Lingkungan Belajar "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1307
+#: Miradi/source/org/miradi/main/MainWindow.java:1313
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -493,7 +493,7 @@ msgstr ""
 "<br> Operasi ini berhasil dilaksanakan, tetapi fungsi Urung/Ulangi mungkin "
 "tidak berfungsi dengan benar. "
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:253
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:264
 msgid ""
 "<div class='DataPanel'><p>Why are my choices limited to one color family for "
 "each type of factor?</p>"
@@ -905,7 +905,7 @@ msgstr "Sudah ada proyek atau berkas lain yang memakai nama ini: "
 msgid "A project or file by this name already exists: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:549
+#: Miradi/source/org/miradi/main/MainWindow.java:554
 msgid "A project with this name already exists."
 msgstr ""
 
@@ -1859,7 +1859,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:198
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:85
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:86
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:88
 msgid "Activity"
 msgstr "Aktivitas"
 
@@ -1940,7 +1940,7 @@ msgid "An error has occured while writing assignment data."
 msgstr "Terjadi kesalahan saat menulis data alokasi. "
 
 #: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:335
-#: Miradi/source/org/miradi/diagram/DiagramModel.java:790
+#: Miradi/source/org/miradi/diagram/DiagramModel.java:762
 msgid ""
 "An error is preventing this diagram from displaying correctly. Most likely, "
 "the project has gotten corrupted. Please contact the Miradi team for help "
@@ -2253,11 +2253,11 @@ msgstr "Fitur Keanekaragaman Hayati "
 msgid "Biodiversity Target"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:239
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:250
 msgid "Biodiversity Target (Lighter Green)"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:241
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:252
 msgid "Biodiversity Target Scope (Darker Green)"
 msgstr ""
 
@@ -2319,7 +2319,7 @@ msgstr "Aturan Bundel"
 
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:83
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:236
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:234
 #: Miradi/source/org/miradi/project/OldProjectDirToMpfConverter.java:57
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
 #: Miradi/source/org/miradi/main/MiradiStrings.java:34
@@ -2430,7 +2430,7 @@ msgstr "Ganti Cadangan  "
 msgid "Button|Retain"
 msgstr "Pertahankan "
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:122
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:120
 msgid "Button|Save"
 msgstr "Simpan "
 
@@ -2489,7 +2489,7 @@ msgstr "Tidak bisa menautkan butir dengan butir itu sendiri "
 msgid "Cancel"
 msgstr "Batalkan "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:567
+#: Miradi/source/org/miradi/main/MainWindow.java:572
 msgid "Cancelled"
 msgstr ""
 
@@ -2507,11 +2507,11 @@ msgid ""
 "exists in the folder."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:297
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:295
 msgid "Cannot overwrite an open project"
 msgstr "Tidak bisa menulis tindih proyek yang sedang dibuka "
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:281
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:279
 msgid "Cannot save a project back to its existing name"
 msgstr "Tidak dapat menyimpan proyek dengan namanya saat ini "
 
@@ -2633,7 +2633,7 @@ msgstr ""
 msgid "Choose Tags"
 msgstr "Pilih Tag "
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:235
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:246
 msgid "Choose the colors that look best on your system:"
 msgstr "Pilih warna yang tampak paling baik dalam sistem Anda: "
 
@@ -2730,7 +2730,7 @@ msgstr ""
 msgid "Contributing Factor"
 msgstr "Faktor Kontribusi"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:238
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:249
 msgid "Contributing Factor (Orange)"
 msgstr "Faktor Kontribusi (Jingga) "
 
@@ -2803,7 +2803,7 @@ msgstr "Pembuatan gagal: "
 msgid "Create Folder"
 msgstr "Buat Folder "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:646
+#: Miradi/source/org/miradi/main/MainWindow.java:651
 msgid "Create Project"
 msgstr ""
 
@@ -2860,11 +2860,11 @@ msgstr ""
 msgid "Current page was exported as RTF."
 msgstr "Halaman yang tampak saat ini telah diekspor sebagai format RTF."
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:94
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:92
 msgid "Current project directory:"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:97
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:95
 msgid "Current project name:"
 msgstr "Nama proyek kini: "
 
@@ -2960,6 +2960,10 @@ msgstr "Tanggal "
 msgid "Date Chooser"
 msgstr "Pemilih Tanggal "
 
+#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:45
+msgid "Dates can be set in the Work Plan view"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogfields/editors/DayDateUnitStartAndEndCard.java:36
 msgid "Day Selection: "
 msgstr ""
@@ -2971,6 +2975,10 @@ msgstr ""
 #: Miradi/source/org/miradi/questions/TargetModeQuestion.java:37
 msgid "Default Mode"
 msgstr "Mode Default "
+
+#: Miradi/source/org/miradi/questions/FontSizeQuestion.java:34
+msgid "Default System Size"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:109
 msgid "Define audiences and information needs"
@@ -3188,7 +3196,7 @@ msgstr "Ikhtisar diagram "
 msgid "Direct Threat"
 msgstr "Ancaman Langsung"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:237
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:248
 msgid "Direct Threat (Pink)"
 msgstr "Ancaman Langsung (Merah Muda) "
 
@@ -3315,7 +3323,7 @@ msgstr "Efektif"
 msgid "Effectiveness Monitoring Plan"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:161
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:160
 msgid "Enable Spell Checking"
 msgstr ""
 
@@ -3406,7 +3414,7 @@ msgstr "Perkirakan biaya kegiatan dan pemantauan "
 msgid "Euro"
 msgstr "Euro"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:885
+#: Miradi/source/org/miradi/main/MainWindow.java:890
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
@@ -3492,7 +3500,7 @@ msgstr ""
 "Berkas tidak bisa dibuat, mungkin karena nama berkas mengandung karakter "
 "yang salah.  "
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:304
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:302
 msgid "File exists: Cannot overwrite a non project folder"
 msgstr "File yang ada: Tidak dapat menimpa folder nonproyek "
 
@@ -3634,15 +3642,15 @@ msgid "FolderName|BackupsFromMigrationToMiradi4"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:53
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:74
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:75
 msgid "Font"
 msgstr "Fon"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:148
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:147
 msgid "Font Family"
 msgstr "Keluarga Fon "
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:145
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:144
 msgid "Font Size"
 msgstr "Ukuran Fon "
 
@@ -3763,7 +3771,6 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:31
 #: Miradi/source/org/miradi/forms/objects/GoalPropertiesForm.java:32
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:77
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:166
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:42
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:45
 msgid "Goal"
@@ -3786,8 +3793,8 @@ msgstr ""
 
 #: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:166
 #: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:46
-#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:60
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:96
+#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:63
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:98
 msgid "Goals"
 msgstr "Sasaran "
 
@@ -3904,7 +3911,7 @@ msgstr "Manusia Pemilik Kepentingan "
 msgid "Human Welfare Target"
 msgstr "Target Kesejahteraan Manusia "
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:240
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:251
 msgid "Human Welfare Target (Lighter Brown)"
 msgstr ""
 
@@ -3912,7 +3919,7 @@ msgstr ""
 msgid "Human Welfare Target Mode"
 msgstr "Mode Target Kesejahteraan Manusia "
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:242
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:253
 msgid "Human Welfare Target Scope (Darker Brown)"
 msgstr ""
 
@@ -4079,8 +4086,8 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:134
 #: Miradi/source/org/miradi/forms/objects/IndicatorSubForm.java:33
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:79
-#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:39
-#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:51
+#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:40
+#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:53
 msgid "Indicator"
 msgstr "Indikator "
 
@@ -4107,7 +4114,7 @@ msgstr "Pemilik Indikator "
 msgid "Indicator Relevancy Panel"
 msgstr "Panel Relevansi Indikator "
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:160
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:161
 msgid "Indicator does not have a direct/indirect factor parent. "
 msgstr ""
 
@@ -4184,7 +4191,7 @@ msgstr "Penilaian Intensif"
 msgid "Intermediate Result"
 msgstr "Hasil Antara"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:243
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:254
 msgid "Intermediate Result (Light Blue)"
 msgstr "Hasil Antara (Biru Muda) "
 
@@ -4362,7 +4369,7 @@ msgstr "Komentar "
 msgid "Label|Currency"
 msgstr "Mata Uang "
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:109
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:107
 msgid "Label|Existing Projects:"
 msgstr "Proyek yang Ada: \t"
 
@@ -4522,8 +4529,8 @@ msgstr "Lapisan "
 msgid "Leader/Manager"
 msgstr "Pemimpin/Manajer"
 
-#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:57
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:94
+#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:60
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:96
 msgid "Legacy TNC Ratings"
 msgstr "Peringkat TNC versi sebelumnya "
 
@@ -4940,7 +4947,7 @@ msgstr "Hapus Tag dari %n Item yang Dipilih "
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:146
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:84
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:88
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:90
 msgid "Method"
 msgstr "Metode"
 
@@ -5010,7 +5017,7 @@ msgid ""
 "If that does not work, contact Miradi support."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:106
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:104
 msgid "Miradi data directory:"
 msgstr "Direktori data Miradi: "
 
@@ -5022,7 +5029,7 @@ msgstr ""
 msgid "Miradi does not recognize %s as a project file"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:734
+#: Miradi/source/org/miradi/main/MainWindow.java:739
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5077,7 +5084,7 @@ msgstr "Pindahkan Ke... "
 msgid "Must be a positive number"
 msgstr "Harus bilangan positif "
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:155
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:154
 msgid ""
 "NOTE: Automatic Table Row Height Mode may impact the speed of expand and "
 "<br>collapse actions in the tables this setting affects. For better "
@@ -5098,7 +5105,7 @@ msgid ""
 "for some quarters."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:169
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:168
 msgid ""
 "NOTE: Spell checking is currently only available in English. <br>If the "
 "'Primary Project Data Language' in the Project tab of the Summary view "
@@ -5135,7 +5142,7 @@ msgstr ""
 msgid "New Project Filename:"
 msgstr "Nama Berkas Proyek Baru: "
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:100
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:98
 msgid "New project name: "
 msgstr "Nama proyek baru: "
 
@@ -5198,10 +5205,6 @@ msgstr ""
 msgid "Nov"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:173
-msgid "Obj"
-msgstr "Tujuan Instruksional "
-
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:169
 #: Miradi/source/org/miradi/forms/objects/ObjectivePropertiesForm.java:34
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:78
@@ -5229,8 +5232,8 @@ msgid "Objective Relevancy Panel"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:43
-#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:59
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:95
+#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:62
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:97
 #: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:44
 msgid "Objectives"
 msgstr ""
@@ -5298,7 +5301,7 @@ msgid "Open Anyway"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:190
-#: Miradi/source/org/miradi/main/MainWindow.java:648
+#: Miradi/source/org/miradi/main/MainWindow.java:653
 msgid "Open Project"
 msgstr ""
 
@@ -5471,7 +5474,7 @@ msgstr "Jelek"
 msgid "Pound (United Kingdom)"
 msgstr "Ponsterling (Inggris)"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:387
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:406
 msgid "Preferences"
 msgstr "Preferensi "
 
@@ -5480,8 +5483,8 @@ msgid "Preparing groups..."
 msgstr ""
 
 #: Miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:37
-#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:55
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:93
+#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:56
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:94
 msgid "Priority"
 msgstr "Prioritas "
 
@@ -5602,11 +5605,11 @@ msgstr "Proyek "
 msgid "Project Advisor"
 msgstr "Penasihat Proyek"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:732
+#: Miradi/source/org/miradi/main/MainWindow.java:737
 msgid "Project Corruption Detected"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:928
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:929
 msgid "Project Description:"
 msgstr "Keterangan Proyek: "
 
@@ -5635,7 +5638,7 @@ msgstr "Sumber Daya Proyek "
 msgid "Project Resource Filter Editor"
 msgstr "Editor Filter Sumber Daya Proyek "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:883
+#: Miradi/source/org/miradi/main/MainWindow.java:888
 msgid "Project Resource Filter Is On"
 msgstr "Filter Sumber Daya Proyek Adalah Aktif "
 
@@ -5663,7 +5666,7 @@ msgstr "Rangkuman Proyek"
 msgid "Project does not exist: "
 msgstr "Tidak ada proyek: "
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:322
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:320
 msgid ""
 "Project filenames cannot contain punctuation other than dots, dashes, and "
 "spaces; and they cannot be longer than 32 characters. "
@@ -5922,7 +5925,7 @@ msgid "Savanna - Moist Savana"
 msgstr "Savana – Savana Basah"
 
 #: Miradi/source/org/miradi/views/noproject/CopyProject.java:42
-#: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:45
+#: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:46
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:41
 msgid "Save As..."
 msgstr "Simpan Sebagai... "
@@ -5991,6 +5994,11 @@ msgstr "Pilih Paket Bahasa yang akan Diinstal "
 msgid "Select Location..."
 msgstr "Pilih Lokasi… "
 
+#: Miradi/source/org/miradi/dialogfields/WhoEditorField.java:41
+#: Miradi/source/org/miradi/dialogfields/WhenEditorField.java:43
+msgid "Select Project Resources"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/jump/ActionJumpSelectAppropriateMethods.java:35
 msgid "Select appropriate methods"
 msgstr "Pilih cara yang layak "
@@ -6051,7 +6059,7 @@ msgstr ""
 msgid "Select which column groups to display."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/AbstractEditableCodeListField.java:56
+#: Miradi/source/org/miradi/dialogs/base/ReadonlyPanelWithPopupEditor.java:50
 msgid "Select..."
 msgstr "Pilih… "
 
@@ -6119,7 +6127,7 @@ msgstr ""
 msgid "Show All Rows"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:268
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:279
 msgid "Show Diagram Grid"
 msgstr "Tampakkan Kisi-kisi Diagram "
 
@@ -6127,7 +6135,7 @@ msgstr "Tampakkan Kisi-kisi Diagram "
 msgid "Show Quarter Columns"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:213
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:224
 msgid "Show Ratings in Cell"
 msgstr "Tampakkan Peringkat dalam Sel "
 
@@ -6183,7 +6191,7 @@ msgstr "Mode Peringkat Ancaman Sederhana"
 msgid "Simple viability"
 msgstr "Kelangsungan sederhana "
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:933
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:934
 msgid "Site/Scope Description:"
 msgstr "Keterangan Lokasi/Cakupan: "
 
@@ -6247,7 +6255,7 @@ msgstr "Pemilik Kepentingan"
 msgid "Standard Reports"
 msgstr "Laporan Standar "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:917
+#: Miradi/source/org/miradi/main/MainWindow.java:922
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -6320,11 +6328,11 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:180
 #: Miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:34
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:76
-#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:47
+#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:48
 msgid "Strategy"
 msgstr "Strategi "
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:236
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:247
 msgid "Strategy (Yellow)"
 msgstr "Strategi (Kuning) "
 
@@ -6412,10 +6420,10 @@ msgstr "Kenaikan Besar"
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:67
 #: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:38
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:113
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:133
-#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:66
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:137
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:115
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:153
+#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:69
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:139
 msgid "Summary"
 msgstr "Ringkasan "
 
@@ -7273,7 +7281,7 @@ msgstr ""
 "atau lembar bentang akan memungkinkan Anda untuk membuat suatu tabel lalu "
 "mengekspornya sebagai berkas yang dipisahkan tab."
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:153
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:152
 msgid "Table Row Height Mode"
 msgstr "Mode Tinggi Baris Tabel"
 
@@ -7348,7 +7356,7 @@ msgstr "Tag"
 msgid "Tagged Items"
 msgstr "Butir yang Ditandai"
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:116
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:118
 msgid "Tags"
 msgstr "Tag "
 
@@ -7364,7 +7372,7 @@ msgstr "Cokelat Muda"
 
 #: Miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:71
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:359
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:360
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:53
 msgid "Target"
 msgstr "Target"
@@ -7433,7 +7441,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:202
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:83
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:90
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:92
 msgid "Task"
 msgstr "Tugas "
 
@@ -7505,7 +7513,7 @@ msgstr "Tanggal harus dalam format YYYY-MM-DD  "
 msgid "Text|Unknown error prevented saving this data"
 msgstr "Kesalahan tak dikenal mencegah penyimpanan data ini "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:591
+#: Miradi/source/org/miradi/main/MainWindow.java:596
 msgid "That file is not a valid Miradi project"
 msgstr ""
 
@@ -7517,21 +7525,21 @@ msgstr "Paket bahasa ini sudah ada. Ganti? "
 msgid "That language pack is already installed"
 msgstr "Paket bahasa ini sudah diinstal"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:599
-#: Miradi/source/org/miradi/main/MainWindow.java:603
+#: Miradi/source/org/miradi/main/MainWindow.java:604
+#: Miradi/source/org/miradi/main/MainWindow.java:608
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "Miradi"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:607
+#: Miradi/source/org/miradi/main/MainWindow.java:612
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
 "Proyek tersebut tidak bisa dibuka sebelum dipindahkan ke format data saat "
 "ini "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:587
+#: Miradi/source/org/miradi/main/MainWindow.java:592
 msgid "That project is in use by another copy of this application"
 msgstr "Proyek tersebut sedang digunakan oleh salinan lain dari aplikasi ini "
 
@@ -7545,7 +7553,7 @@ msgstr ""
 "menggunakan Miradi 1.0 untuk memindahkannya ke format data modern, dan "
 "sesudahnya bisa dibuka dan dipindahkan dengan versi ini. "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:595
+#: Miradi/source/org/miradi/main/MainWindow.java:600
 msgid "That project is too old to be opened with this version of Miradi"
 msgstr ""
 
@@ -7707,7 +7715,7 @@ msgid ""
 "Please re-export a new copy from ConPro, and import that instead."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:723
+#: Miradi/source/org/miradi/main/MainWindow.java:728
 msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
@@ -7746,12 +7754,12 @@ msgstr ""
 "Ini akan mengganti semua isi faktor terpilih dengan isi faktor yang dipotong/"
 "disalin sebelumnya. Anda yakin ingin melakukan ini?: "
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:310
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:308
 #: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:84
 msgid "This will replace the existing file."
 msgstr "Ini akan mengganti berkas yang ada. "
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:384
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:385
 #: Miradi/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:59
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:35
 msgid "Threat"
@@ -7795,7 +7803,7 @@ msgstr "Peringkat Ancaman - Tabel "
 msgid "Threat Reduction Result"
 msgstr "Hasil Pengurangan Ancaman"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:244
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:255
 msgid "Threat Reduction Result (Light Purple)"
 msgstr "Hasil Pengurangan Ancaman (Ungu Muda) "
 
@@ -7932,7 +7940,7 @@ msgstr "Properti Target Kesejahteraan Manusia "
 msgid "Title|IUCN Redlist Species"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/viability/AbstractIndicatorPropertiesPanel.java:77
+#: Miradi/source/org/miradi/dialogs/viability/AbstractIndicatorPropertiesPanel.java:79
 msgid "Title|Indicator Properties"
 msgstr "Sifat-sifat Indikator "
 
@@ -7997,7 +8005,7 @@ msgstr ""
 msgid "Title|Other Orgs"
 msgstr "Organisasi Lain "
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:309
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:307
 #: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:79
 msgid "Title|Overwrite existing file?"
 msgstr "Tulis tindih berkas yang ada? "
@@ -8042,7 +8050,7 @@ msgstr "Peringkat Ancaman-Target "
 msgid "Title|Simple Viability"
 msgstr "Kelangsungan Sederhana "
 
-#: Miradi/source/org/miradi/dialogs/diagram/AbstractStrategyPropertiesPanel.java:54
+#: Miradi/source/org/miradi/dialogs/diagram/AbstractStrategyPropertiesPanel.java:56
 msgid "Title|Strategy Properties"
 msgstr "Sifat-sifat Strategi "
 
@@ -8131,7 +8139,7 @@ msgstr ""
 "Tidak bisa menghapus proyek karena sedang digunakan oleh salinan lain dari "
 "aplikasi ini:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1291
+#: Miradi/source/org/miradi/main/MainWindow.java:1297
 msgid "Unable to launch external web browser"
 msgstr "Tidak bisa meluncurkan perambah web eksternal "
 
@@ -8152,7 +8160,7 @@ msgstr ""
 "Tidak bisa mengganti nama proyek karena sedang digunakan oleh salinan lain "
 "dari aplikasi ini:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1074
+#: Miradi/source/org/miradi/main/MainWindow.java:1079
 msgid "Unable to save preferences"
 msgstr "Tidak bisa menyimpan preferensi "
 
@@ -8197,7 +8205,7 @@ msgstr "Universitas"
 msgid "Unknown"
 msgstr "Tidak Dikenal"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:582
+#: Miradi/source/org/miradi/main/MainWindow.java:587
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -8215,7 +8223,7 @@ msgstr "Kode tak dikenal: "
 msgid "Unknown error displaying diagram"
 msgstr "Kesalahan tak dikenal saat menampilkan diagram "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:612
+#: Miradi/source/org/miradi/main/MainWindow.java:617
 msgid "Unknown error prevented opening that project"
 msgstr "Kesalahan tak dikenal mencegah dibukanya proyek "
 
@@ -8227,7 +8235,7 @@ msgstr ""
 msgid "Unscheduled"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/DirectThreatPoolQuestion.java:47
+#: Miradi/source/org/miradi/questions/ObjectQuestion.java:54
 #: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:46
 #: Miradi/source/org/miradi/questions/LanguageQuestion.java:59
 msgid "Unspecified"
@@ -8362,7 +8370,7 @@ msgstr "WWF"
 msgid "Warning"
 msgstr "Peringatan "
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:254
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:265
 msgid ""
 "We are trying to create a standard set of symbols that can be recognized "
 "globally. Just like people the world over recognize a red octagon as a stop "
@@ -8469,6 +8477,10 @@ msgstr ""
 "Lahan Basah – Lahan Basah Tundra [termasuk kolam dan air temporer dari "
 "lelehan salju]"
 
+#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:42
+msgid "When"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogfields/editors/WhenPopupEditorComponent.java:47
 msgid "When - %s"
 msgstr ""
@@ -8486,6 +8498,10 @@ msgstr "Waktu Penambahan adalah: %s "
 #: Miradi/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:38
 msgid "White"
 msgstr "Putih"
+
+#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:36
+msgid "Who"
+msgstr ""
 
 #: Miradi/source/org/miradi/legacyprojects/migrations/RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration.java:84
 msgid "Who Override was: "
@@ -8509,6 +8525,7 @@ msgstr "Wizard pengaktifan kontrol gagal: "
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:191
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:199
+#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:54
 msgid "Work Plan"
 msgstr "Rencana Kerja"
 
@@ -8743,6 +8760,9 @@ msgstr "Laporan Kemajuan"
 msgid "FieldLabel|3.Comments|Comments"
 msgstr ""
 
+msgid "FieldLabel|3.LeaderResource|Leader"
+msgstr ""
+
 msgid "FieldLabel|5.BudgetRollupReportTypes|Rollup Types"
 msgstr ""
 
@@ -8946,6 +8966,9 @@ msgstr "Mode Biaya Anggaran"
 
 msgid "FieldLabel|8.ProgressReportRefs|Progress Reports"
 msgstr "Laporan Kemajuan"
+
+msgid "FieldLabel|8.LeaderResource|Leader"
+msgstr ""
 
 msgid "FieldLabel|9.Objective|Objective"
 msgstr "Tujuan Instruksional "
@@ -9632,6 +9655,9 @@ msgstr "Laporan Kemajuan"
 
 msgid "FieldLabel|21.LegacyTncStrategyRanking|Legacy Tnc Strategy Ranking"
 msgstr "Peringkat Strategi TNC Kuno"
+
+msgid "FieldLabel|21.LeaderResource|Leader"
+msgstr ""
 
 msgid "FieldLabel|22.Target|Target"
 msgstr "Target"
@@ -32279,6 +32305,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Obj"
+#~ msgstr "Tujuan Instruksional "
 
 #~ msgid ""
 #~ "<div class='WizardText'>Miradi is able to import two different kinds of "
