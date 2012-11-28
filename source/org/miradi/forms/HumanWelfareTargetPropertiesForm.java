@@ -31,7 +31,7 @@ public class HumanWelfareTargetPropertiesForm extends AbstractTargetPropertiesFo
 	@Override
 	protected String getTargetLabel()
 	{
-		return EAM.text("Human Welfare Target");
+		return EAM.text("Human Wellbeing Target");
 	}
 	
 	@Override

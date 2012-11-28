@@ -35,13 +35,13 @@ public class ActionInsertHumanWelfareTarget extends LocationAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Insert|Insert Human Welfare Target");
+		return EAM.text("Action|Insert|Insert Human Wellbeing Target");
 	}
 
 	@Override
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Insert a Human Welfare Target");
+		return EAM.text("TT|Insert a Human Wellbeing Target");
 	}
 
 	@Override

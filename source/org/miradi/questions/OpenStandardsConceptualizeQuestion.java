@@ -110,7 +110,7 @@ public class OpenStandardsConceptualizeQuestion extends DynamicChoiceWithRootCho
 	
 	public static String getAddHumanWelfareTargetsIfDesiredLabel()
 	{
-		return EAM.text("Add Human Welfare Targets If Desired");
+		return EAM.text("Add Human Wellbeing Targets If Desired");
 	}
 	
 	public static String getDescribeStatusOfTargetsLabel()

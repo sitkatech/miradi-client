@@ -48,7 +48,7 @@ public class TargetCoreSubPanel extends ObjectDataInputPanel
 	private String getAbstractTargetLabel(int targetType)
 	{
 		if (HumanWelfareTarget.is(targetType))		
-			return EAM.text("Human Welfare Target");	
+			return EAM.text("Human Wellbeing Target");	
 		
 		return EAM.text("Target");
 	}

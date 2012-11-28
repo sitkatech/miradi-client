@@ -35,7 +35,7 @@ public class InsertHumanWelfareTargetDoer extends InsertFactorDoer
 	@Override
 	public String getInitialText()
 	{
-		return EAM.text("Label|New Human Welfare Target");
+		return EAM.text("Label|New Human Wellbeing Target");
 	}
 
 	@Override

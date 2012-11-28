@@ -51,7 +51,7 @@ public class PlanningViewSingleLevelQuestion extends DynamicChoiceQuestion
 		choices.add(new ChoiceItem(TargetSchema.OBJECT_NAME, EAM.text("Targets Only")));
 		
 		if (getProject().getMetadata().isHumanWelfareTargetMode())
-			choices.add(new ChoiceItem(HumanWelfareTargetSchema.OBJECT_NAME, EAM.text("Human Welfare Targets Only")));
+			choices.add(new ChoiceItem(HumanWelfareTargetSchema.OBJECT_NAME, EAM.text("Human Wellbeing Targets Only")));
 		
 		choices.add(new ChoiceItem(Cause.OBJECT_NAME_THREAT, EAM.text("Direct Threats Only")));
 		choices.add(new ChoiceItem(StrategySchema.OBJECT_NAME, EAM.text("Strategies Only")));
