@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Nov 29 18:04:29 EST 2012 $
+# $LastChangedDate: Thu Nov 29 18:21:45 EST 2012 $
 # $LastChangedRevision: 206 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/206'
 start = ConservationProject.element
@@ -305,11 +305,11 @@ DiagramLink.element = element miradi:DiagramLink
   attribute Id {xsd:integer} &
   element miradi:DiagramLinkBendPoints { DiagramPoint.element* }? &
   element miradi:DiagramLinkColor { vocabulary_diagram_link_color }? &
-  element miradi:DiagramLinkFromDiagramFactorId { LinkableFactorId.element* }? &
+  element miradi:DiagramLinkFromDiagramFactorId { LinkableFactorId.element } &
   element miradi:DiagramLinkGroupedDiagramLinkIds { DiagramLinkId.element* }? &
   element miradi:DiagramLinkIsBidirectionalLink { xsd:boolean }? &
   element miradi:DiagramLinkName { formatted_text }? &
-  element miradi:DiagramLinkToDiagramFactorId { LinkableFactorId.element* }?
+  element miradi:DiagramLinkToDiagramFactorId { LinkableFactorId.element }
 }
 
 ResourceAssignmentPool.element = element miradi:ResourceAssignmentPool { ResourceAssignment.element* }
@@ -365,7 +365,7 @@ DiagramFactor.element = element miradi:DiagramFactor
   element miradi:DiagramFactorSize { DiagramSize.element* }? &
   element miradi:DiagramFactorStyle { Style.element }? &
   element miradi:DiagramFactorTextBoxZOrderCode { vocabulary_text_box_z_order }? &
-  element miradi:DiagramFactorWrappedFactorId { WrappedByDiagramFactorId.element* }?
+  element miradi:DiagramFactorWrappedFactorId { WrappedByDiagramFactorId.element }
 }
 
 ConceptualModelPool.element = element miradi:ConceptualModelPool { ConceptualModel.element* }
