@@ -1,7 +1,7 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Mon Nov 26 17:25:49 EST 2012 $
-# $LastChangedRevision: 204 $
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/204'
+# $LastChangedDate: Thu Nov 29 14:01:45 EST 2012 $
+# $LastChangedRevision: 205 $
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/205'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -45,7 +45,7 @@ ConservationProject.element = element miradi:ConservationProject
   TaggedObjectSetPool.element? &
   ScopeBoxPool.element? &
   ExpenseAssignmentPool.element? &
-  HumanWelfareTargetPool.element? &
+  HumanWellbeingTargetPool.element? &
   IUCNRedListSpeciesPool.element? &
   OtherNotableSpeciesPool.element? &
   AudiencePool.element? &
@@ -612,23 +612,23 @@ ExpenseAssignment.element = element miradi:ExpenseAssignment
   element miradi:ExpenseAssignmentName { formatted_text }?
 }
 
-HumanWelfareTargetPool.element = element miradi:HumanWelfareTargetPool { HumanWelfareTarget.element* }
-HumanWelfareTarget.element = element miradi:HumanWelfareTarget
+HumanWellbeingTargetPool.element = element miradi:HumanWellbeingTargetPool { HumanWellbeingTarget.element* }
+HumanWellbeingTarget.element = element miradi:HumanWellbeingTarget
 {
   attribute Id {xsd:integer} &
-  element miradi:HumanWelfareTargetComments { formatted_text }? &
-  element miradi:HumanWelfareTargetCurrentStatusJustification { formatted_text }? &
-  element miradi:HumanWelfareTargetDetails { formatted_text }? &
-  element miradi:HumanWelfareTargetGoalIds { GoalId.element* }? &
-  element miradi:HumanWelfareTargetId { text }? &
-  element miradi:HumanWelfareTargetIndicatorIds { IndicatorId.element* }? &
-  element miradi:HumanWelfareTargetKeyEcologicalAttributeIds { KeyEcologicalAttributeId.element* }? &
-  element miradi:HumanWelfareTargetName { formatted_text }? &
-  element miradi:HumanWelfareTargetSubTargetIds { SubTargetId.element* }? &
-  element miradi:HumanWelfareTargetTargetStatus { vocabulary_status }? &
-  element miradi:HumanWelfareTargetViabilityMode { vocabulary_target_viability_mode }? &
-  element miradi:HumanWelfareTargetThreatRating { vocabulary_threat_rating }? &
-  element miradi:HumanWelfareTargetViabilityStatus { vocabulary_target_status }?
+  element miradi:HumanWellbeingTargetComments { formatted_text }? &
+  element miradi:HumanWellbeingTargetCurrentStatusJustification { formatted_text }? &
+  element miradi:HumanWellbeingTargetDetails { formatted_text }? &
+  element miradi:HumanWellbeingTargetGoalIds { GoalId.element* }? &
+  element miradi:HumanWellbeingTargetId { text }? &
+  element miradi:HumanWellbeingTargetIndicatorIds { IndicatorId.element* }? &
+  element miradi:HumanWellbeingTargetKeyEcologicalAttributeIds { KeyEcologicalAttributeId.element* }? &
+  element miradi:HumanWellbeingTargetName { formatted_text }? &
+  element miradi:HumanWellbeingTargetSubTargetIds { SubTargetId.element* }? &
+  element miradi:HumanWellbeingTargetTargetStatus { vocabulary_status }? &
+  element miradi:HumanWellbeingTargetViabilityMode { vocabulary_target_viability_mode }? &
+  element miradi:HumanWellbeingTargetThreatRating { vocabulary_threat_rating }? &
+  element miradi:HumanWellbeingTargetViabilityStatus { vocabulary_target_status }?
 }
 
 IUCNRedListSpeciesPool.element = element miradi:IUCNRedListSpeciesPool { IUCNRedListSpecies.element* }
@@ -783,7 +783,7 @@ vocabulary_diagram_factor_background_color = 'LightGray'|'White'|'Pink'|'Orange'
 vocabulary_diagram_factor_foreground_color = '#000000'|'#4E4848'|'#FF0000'|'#FF6600'|'#FFCC00'|'#007F00'|'#0000CC'|'#9900FF'|'#C85A17'|'#6D7B8D'|'#FFFFFF'|'#FF00FF'|'#FF8040'|'#FFFFCC'|'#5FFB17'|'#00CCFF'|'#CC99FF'|'#EDE275'
 vocabulary_diagram_factor_font_size = '1.0'|'0.5'|'0.75'|'0.9'|'1.25'|'1.75'|'2.5'
 vocabulary_diagram_factor_font_style = ''|'<B>'|'<U>'|'<S>'
-vocabulary_hidden_types = 'Strategy'|'DraftStrategy'|'ContributingFactor'|'DirectThreat'|'Target'|'HumanWelfareTarget'|'Link'|'Goal'|'Objective'|'Indicator'|'TextBox'|'ScopeBox'|'Stress'|'Activity'|'IntermediateResult'|'ThreatReductionResult'|'GroupBox'
+vocabulary_hidden_types = 'Strategy'|'DraftStrategy'|'ContributingFactor'|'DirectThreat'|'Target'|'HumanWellbeingTarget'|'Link'|'Goal'|'Objective'|'Indicator'|'TextBox'|'ScopeBox'|'Stress'|'Activity'|'IntermediateResult'|'ThreatReductionResult'|'GroupBox'
 vocabulary_diagram_link_color = 'black'|'darkGray'|'red'|'DarkOrange'|'DarkYellow'|'darkGreen'|'darkBlue'|'DarkPurple'|'brown'|'lightGray'|'White'|'pink'|'orange'|'yellow'|'lightGreen'|'lightBlue'|'LightPurple'|'tan'
 vocabulary_included_diagram_types = 'AllTypes'|'IncludeConceptualModelData'|'IncludeResultsChainData'
 vocabulary_fiscal_year_start_month = ''|'10'|'7'|'4'
@@ -842,7 +842,7 @@ ResultsChainId.element = element miradi:ResultsChainId { xsd:integer }
 DiagramFactorId.element = element miradi:DiagramFactorId { xsd:integer }
 DiagramLinkId.element = element miradi:DiagramLinkId { xsd:integer }
 BiodiversityTargetId.element = element miradi:BiodiversityTargetId { xsd:integer }
-HumanWelfareTargetId.element = element miradi:HumanWelfareTargetId { xsd:integer }
+HumanWellbeingTargetId.element = element miradi:HumanWellbeingTargetId { xsd:integer }
 CauseId.element = element miradi:CauseId { xsd:integer }
 StrategyId.element = element miradi:StrategyId { xsd:integer }
 ThreatReductionResultId.element = element miradi:ThreatReductionResultId { xsd:integer }
@@ -875,12 +875,12 @@ RelatedDirectThreatId.element = element miradi:RelatedDirectThreatId { xsd:integ
 LeaderResourceId.element = element miradi:LeaderResourceId { xsd:integer }
 WrappedByDiagramFactorId.element = element miradi:WrappedByDiagramFactorId
 {
-  BiodiversityTargetId.element|  HumanWelfareTargetId.element|  CauseId.element|  StrategyId.element|  ThreatReductionResultId.element|  IntermediateResultId.element|  GroupBoxId.element|  TextBoxId.element|  ScopeBoxId.element|  ActivityId.element|  StressId.element
+  BiodiversityTargetId.element|  HumanWellbeingTargetId.element|  CauseId.element|  StrategyId.element|  ThreatReductionResultId.element|  IntermediateResultId.element|  GroupBoxId.element|  TextBoxId.element|  ScopeBoxId.element|  ActivityId.element|  StressId.element
 }
 
 LinkableFactorId.element = element miradi:LinkableFactorId
 {
-  BiodiversityTargetId.element|  HumanWelfareTargetId.element|  CauseId.element|  StrategyId.element|  ThreatReductionResultId.element|  IntermediateResultId.element|  GroupBoxId.element
+  BiodiversityTargetId.element|  HumanWellbeingTargetId.element|  CauseId.element|  StrategyId.element|  ThreatReductionResultId.element|  IntermediateResultId.element|  GroupBoxId.element
 }
 
 formatted_text = ( text|element.br|element.b|element.i|element.u|element.strike|element.a|element.ul|element.ol
