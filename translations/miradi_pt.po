@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-29 13:46-0600\n"
+"POT-Creation-Date: 2012-11-29 17:16-0600\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -2058,7 +2058,7 @@ msgid "Add Human Wellbeing Targets If Desired"
 msgstr ""
 
 # Please check if I have translated the correct items
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:138
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:139
 msgid ""
 "Additional languages are supported by installing Miradi Language Packs,<br> "
 "which are files with a name like: <em>%s</em><br><br>If you already have a "
@@ -2492,8 +2492,8 @@ msgstr "Regras de Pacote"
 #: Miradi/source/org/miradi/project/OldProjectDirToMpfConverter.java:57
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
 #: Miradi/source/org/miradi/main/MiradiStrings.java:34
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:131
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:170
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:132
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:171
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:54
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:66
 #: Miradi/source/org/miradi/dialogs/confirm/ConfirmDialogTemplate.java:51
@@ -2536,7 +2536,7 @@ msgstr "Exportar..."
 msgid "Button|Import"
 msgstr "Importar"
 
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:130
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:131
 msgid "Button|Install..."
 msgstr "Instalar"
 
@@ -2587,7 +2587,7 @@ msgstr "Colar o Conteudo"
 msgid "Button|Paste Shared"
 msgstr "Colar Compartihado"
 
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:169
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:170
 msgid "Button|Replace"
 msgstr "Substituir"
 
@@ -4399,7 +4399,7 @@ msgstr "Inserir Hyperlink"
 msgid "Install"
 msgstr "Instalar"
 
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:145
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:146
 msgid "Install Language Pack"
 msgstr "Instalar \"Language Pack\""
 
@@ -4407,7 +4407,7 @@ msgstr "Instalar \"Language Pack\""
 msgid "Install Sample Project"
 msgstr "Instalar Exemplo de Projeto "
 
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:190
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:191
 msgid "Installed successfully"
 msgstr "Instalação concluida com sucesso"
 
@@ -4747,7 +4747,7 @@ msgstr "Datas do Plano de Trabalho"
 msgid "Label|Workplan Dates"
 msgstr "Datas do Plano de Trabalho"
 
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:73
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:74
 msgid "Language: "
 msgstr "Idioma:"
 
@@ -5875,7 +5875,7 @@ msgstr "Relatório de Progresso"
 msgid "Progress Reports"
 msgstr "Relatórios de Progresso"
 
-#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:98
+#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:99
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:102
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:68
@@ -6068,7 +6068,7 @@ msgstr "Renomear Falhou"
 msgid "Rename..."
 msgstr "Renomear..."
 
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:173
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:174
 msgid "Replace Language Pack"
 msgstr "Substituir Pacote de Idioma (Language Pack)"
 
@@ -7842,11 +7842,11 @@ msgstr "Um erro desconhecido não permitiu salvar estes dados"
 msgid "That file is not a valid Miradi project"
 msgstr "Esse arquivo não é um projeto válido de Miradi "
 
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:171
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:172
 msgid "That language pack already exists. Replace it?"
 msgstr "Esse pacote de idioma (language pack) já existe.  Deseja substuí-lo?"
 
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:163
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:164
 msgid "That language pack is already installed"
 msgstr "Esse pacote de idioma (language pack) já está instalado."
 
@@ -8545,7 +8545,7 @@ msgstr "Sublinhar"
 msgid "Unexpected error"
 msgstr "Erro inesperado"
 
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:195
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:196
 msgid "Unexpected error prevented installing that language pack"
 msgstr ""
 "Um erro inesperado não permitiu a instalação desse pacote de idiome "
@@ -8598,8 +8598,8 @@ msgid "Unscheduled"
 msgstr "Não Programado"
 
 #: Miradi/source/org/miradi/questions/ObjectQuestion.java:54
+#: Miradi/source/org/miradi/questions/AbstractLanguagesQuestion.java:57
 #: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:46
-#: Miradi/source/org/miradi/questions/LanguageQuestion.java:59
 msgid "Unspecified"
 msgstr "Não Especificado"
 
