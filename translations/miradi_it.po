@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-28 19:16-0600\n"
+"POT-Creation-Date: 2012-11-29 09:46-0600\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -5216,7 +5216,7 @@ msgstr ""
 "NOTA: i nomi dei file di progetto possono contenere lettere, numeri, spazi, "
 "punti, trattini, e linea-bassa."
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:117
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:119
 msgid ""
 "NOTE: Quarter columns cannot be hidden because this project already has data "
 "for some quarters."
@@ -6344,7 +6344,7 @@ msgstr ""
 "Alcuni dei dati non possono essere spostati in questo progetto perché si "
 "riferiscono ad altri dati che esistono solo nel vecchio progetto"
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:103
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:105
 msgid ""
 "Some work plan data is currently hidden and not included in calculated "
 "totals. If the data is outside the planning date range, it will be visible "
@@ -8691,7 +8691,7 @@ msgstr ""
 msgid "Work Plan Column Editor"
 msgstr "Editor di Colonna del Piano di lavoro"
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:286
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:288
 msgid "Work Plan Settings"
 msgstr "Impostazioni del Piano di Lavoro"
 
@@ -8706,7 +8706,7 @@ msgstr ""
 msgid "Work Planning"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:91
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:93
 msgid "Work plan data currently exists for %startDate - %endDate"
 msgstr "I dati del Piano i Lavoro esistono dal %startDate - %endDate"
 
@@ -18341,6 +18341,22 @@ msgstr ""
 "usare Miradi devi riguadagnare accesso alla cartella o cambiare il luogo "
 "dove Miradi Conserva i dati su <code class='toolbarbutton'>&lt;Modifica/"
 "Preferenze/Salvataggio&nbsp;Dati&gt;</code>.</p></HTML>"
+
+msgid ""
+"html|/resources/FteFieldDescription.html|    <p>Work units are typically "
+"estimated in number of days - this is the default setting for Miradi. Some "
+"organizations, however, use Full-Time Equivalents (FTEs), which measure an "
+"individual's workload on a project. So, for example, an FTE of 1.0 means "
+"that the individual will work full-time on that project, while an FTE of 0.5 "
+"means the individual will work half-time. If you would prefer to do your "
+"estimates using the concept of FTEs, you can right click in any editable "
+"work units cell (i.e., in blue or blank cell at the strategy level or lower) "
+"and select <Fraction of FTE...> to bring up a calculator that will help you "
+"convert FTE values into days. For example, if you have 240 FTE days in a "
+"year, and a team member will be dedicating 0.5 FTEs to this project, Miradi "
+"will assign 120 days to that person for the year in question. You can "
+"specify how many FTEs are in a year under the Summary View, Planning Tab.</p>"
+msgstr ""
 
 msgid ""
 "html|/resources/FOSPanel.html|  <div class='OrgTopPanel'><table "
