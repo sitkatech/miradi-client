@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-29 13:46-0600\n"
+"POT-Creation-Date: 2012-11-29 17:16-0600\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -1982,7 +1982,7 @@ msgstr "Хэрэглэгчийн толь бичигт '%'-ийг нэмж ор�
 msgid "Add Human Wellbeing Targets If Desired"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:138
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:139
 msgid ""
 "Additional languages are supported by installing Miradi Language Packs,<br> "
 "which are files with a name like: <em>%s</em><br><br>If you already have a "
@@ -2404,8 +2404,8 @@ msgstr "Багц Дүрэм"
 #: Miradi/source/org/miradi/project/OldProjectDirToMpfConverter.java:57
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
 #: Miradi/source/org/miradi/main/MiradiStrings.java:34
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:131
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:170
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:132
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:171
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:54
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:66
 #: Miradi/source/org/miradi/dialogs/confirm/ConfirmDialogTemplate.java:51
@@ -2448,7 +2448,7 @@ msgstr ""
 msgid "Button|Import"
 msgstr "Товч|Импорт хийх"
 
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:130
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:131
 msgid "Button|Install..."
 msgstr "Товч|Суулгах..."
 
@@ -2499,7 +2499,7 @@ msgstr "Товч|Өөр газраас хуулсан агуулгыг наах"
 msgid "Button|Paste Shared"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:169
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:170
 msgid "Button|Replace"
 msgstr "Товч|Солих"
 
@@ -4231,7 +4231,7 @@ msgstr ""
 msgid "Install"
 msgstr "Суулгах"
 
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:145
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:146
 msgid "Install Language Pack"
 msgstr "Хэлний багц суулгах"
 
@@ -4239,7 +4239,7 @@ msgstr "Хэлний багц суулгах"
 msgid "Install Sample Project"
 msgstr "Загвар төслийг суулгах"
 
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:190
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:191
 msgid "Installed successfully"
 msgstr "Суурьлуулалт амжилттай болсон "
 
@@ -4572,7 +4572,7 @@ msgstr "Хаяг|Ажлын төлөвлөгөөний огноо"
 msgid "Label|Workplan Dates"
 msgstr "Хаяг|Ажлын төлөвлөгөөний огноо"
 
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:73
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:74
 msgid "Language: "
 msgstr "Хэл: "
 
@@ -5661,7 +5661,7 @@ msgstr "Хэрэгжилтийн тайлан"
 msgid "Progress Reports"
 msgstr "Хэрэгжилтийн тайлангууд"
 
-#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:98
+#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:99
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:102
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:68
@@ -5851,7 +5851,7 @@ msgstr "Нэр солих амжилтгүй болсон"
 msgid "Rename..."
 msgstr "Нэр солих..."
 
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:173
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:174
 msgid "Replace Language Pack"
 msgstr "Хэлний багцыг солих"
 
@@ -7595,11 +7595,11 @@ msgstr "Текст|Мэдээллийг хадгалахад үл мэдэгдэ
 msgid "That file is not a valid Miradi project"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:171
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:172
 msgid "That language pack already exists. Replace it?"
 msgstr "Тэр хэлний багцыг хэдийнээ байна.  Түүнийг солих уу?"
 
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:163
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:164
 msgid "That language pack is already installed"
 msgstr "Тэр хэлний багцыг хэдийнээ суулгасан байна."
 
@@ -8266,7 +8266,7 @@ msgstr "Доогуур зурах/тодруулах"
 msgid "Unexpected error"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/InitialSplashPanel.java:195
+#: Miradi/source/org/miradi/main/InitialSplashPanel.java:196
 msgid "Unexpected error prevented installing that language pack"
 msgstr "Хэлний багцыг суулгахад гэнэтийн алдаа гарлаа"
 
@@ -8317,8 +8317,8 @@ msgid "Unscheduled"
 msgstr "Цагийн хуваарьгүй"
 
 #: Miradi/source/org/miradi/questions/ObjectQuestion.java:54
+#: Miradi/source/org/miradi/questions/AbstractLanguagesQuestion.java:57
 #: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:46
-#: Miradi/source/org/miradi/questions/LanguageQuestion.java:59
 msgid "Unspecified"
 msgstr "Тодорхой заагаагүй"
 
