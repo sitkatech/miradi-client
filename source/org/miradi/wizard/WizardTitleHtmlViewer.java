@@ -30,5 +30,4 @@ public class WizardTitleHtmlViewer extends MiradiHtmlViewer
 		super(mainWindow, null);
 		setBackground(AppPreferences.getWizardTitleBackground());
 	}
-
 }
