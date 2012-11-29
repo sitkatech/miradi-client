@@ -67,7 +67,6 @@ import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.utils.HtmlFormEventHandler;
 import org.miradi.utils.HtmlUtilities;
-import org.miradi.utils.XmlUtilities2;
 
 
 public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, MouseListener
