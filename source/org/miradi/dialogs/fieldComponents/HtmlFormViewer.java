@@ -106,7 +106,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	public void setText(String text)
 	{
 		updateStyleSheet();
-		text = XmlUtilities2.convertXmlTextToPlainText(text);
+		
 		super.setText(text);
 		setCaretPosition(0);
 	}
