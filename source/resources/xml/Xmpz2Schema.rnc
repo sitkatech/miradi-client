@@ -1,7 +1,7 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Nov 29 14:01:45 EST 2012 $
-# $LastChangedRevision: 205 $
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/205'
+# $LastChangedDate: Thu Nov 29 18:04:29 EST 2012 $
+# $LastChangedRevision: 206 $
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/206'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -208,7 +208,7 @@ Task.element = element miradi:Task
   element miradi:TaskDetails { formatted_text }? &
   element miradi:TaskExpenseAssignmentIds { ExpenseAssignmentId.element* }? &
   element miradi:TaskId { text }? &
-  element miradi:TaskLeaderResourceId { LeaderResourceId.element? }? &
+  element miradi:TaskLeaderResourceId { LeaderResourceId.element }? &
   element miradi:TaskName { formatted_text }? &
   element miradi:TaskProgressReportIds { ProgressReportId.element* }? &
   element miradi:TaskResourceAssignmentIds { ResourceAssignmentId.element* }? &
@@ -258,7 +258,7 @@ Indicator.element = element miradi:Indicator
   element miradi:IndicatorFutureStatusRating { vocabulary_status }? &
   element miradi:IndicatorFutureStatusSummary { text }? &
   element miradi:IndicatorId { text }? &
-  element miradi:IndicatorLeaderResourceId { LeaderResourceId.element? }? &
+  element miradi:IndicatorLeaderResourceId { LeaderResourceId.element }? &
   element miradi:IndicatorMeasurementIds { MeasurementId.element* }? &
   element miradi:IndicatorName { formatted_text }? &
   element miradi:IndicatorPriority { vocabulary_priority_rating_code }? &
@@ -316,13 +316,13 @@ ResourceAssignmentPool.element = element miradi:ResourceAssignmentPool { Resourc
 ResourceAssignment.element = element miradi:ResourceAssignment
 {
   attribute Id {xsd:integer} &
-  element miradi:ResourceAssignmentAccountingCodeId { AccountingCodeId.element? }? &
-  element miradi:ResourceAssignmentBudgetCategoryOneId { BudgetCategoryOneId.element? }? &
-  element miradi:ResourceAssignmentBudgetCategoryTwoId { BudgetCategoryTwoId.element? }? &
+  element miradi:ResourceAssignmentAccountingCodeId { AccountingCodeId.element }? &
+  element miradi:ResourceAssignmentBudgetCategoryOneId { BudgetCategoryOneId.element }? &
+  element miradi:ResourceAssignmentBudgetCategoryTwoId { BudgetCategoryTwoId.element }? &
   element miradi:ResourceAssignmentDetails { DateUnitWorkUnits.element* }? &
-  element miradi:ResourceAssignmentFundingSourceId { FundingSourceId.element? }? &
+  element miradi:ResourceAssignmentFundingSourceId { FundingSourceId.element }? &
   element miradi:ResourceAssignmentName { formatted_text }? &
-  element miradi:ResourceAssignmentResourceId { ResourceId.element? }?
+  element miradi:ResourceAssignmentResourceId { ResourceId.element }?
 }
 
 AccountingCodePool.element = element miradi:AccountingCodePool { AccountingCode.element* }
@@ -407,7 +407,7 @@ Strategy.element = element miradi:Strategy
   element miradi:StrategyId { text }? &
   element miradi:StrategyImpactRating { vocabulary_strategy_impact_rating_code }? &
   element miradi:StrategyIndicatorIds { IndicatorId.element* }? &
-  element miradi:StrategyLeaderResourceId { LeaderResourceId.element? }? &
+  element miradi:StrategyLeaderResourceId { LeaderResourceId.element }? &
   element miradi:StrategyLegacyTncStrategyRanking { formatted_text }? &
   element miradi:StrategyName { formatted_text }? &
   element miradi:StrategyObjectiveIds { ObjectiveId.element* }? &
@@ -477,7 +477,7 @@ ThreatReductionResult.element = element miradi:ThreatReductionResult
   element miradi:ThreatReductionResultIndicatorIds { IndicatorId.element* }? &
   element miradi:ThreatReductionResultName { formatted_text }? &
   element miradi:ThreatReductionResultObjectiveIds { ObjectiveId.element* }? &
-  element miradi:ThreatReductionResultRelatedDirectThreatId { RelatedDirectThreatId.element? }?
+  element miradi:ThreatReductionResultRelatedDirectThreatId { RelatedDirectThreatId.element }?
 }
 
 TextBoxPool.element = element miradi:TextBoxPool { TextBox.element* }
@@ -604,11 +604,11 @@ ExpenseAssignmentPool.element = element miradi:ExpenseAssignmentPool { ExpenseAs
 ExpenseAssignment.element = element miradi:ExpenseAssignment
 {
   attribute Id {xsd:integer} &
-  element miradi:ExpenseAssignmentAccountingCodeId { AccountingCodeId.element? }? &
-  element miradi:ExpenseAssignmentBudgetCategoryOneId { BudgetCategoryOneId.element? }? &
-  element miradi:ExpenseAssignmentBudgetCategoryTwoId { BudgetCategoryTwoId.element? }? &
+  element miradi:ExpenseAssignmentAccountingCodeId { AccountingCodeId.element }? &
+  element miradi:ExpenseAssignmentBudgetCategoryOneId { BudgetCategoryOneId.element }? &
+  element miradi:ExpenseAssignmentBudgetCategoryTwoId { BudgetCategoryTwoId.element }? &
   element miradi:ExpenseAssignmentDetails { DateUnitExpense.element* }? &
-  element miradi:ExpenseAssignmentFundingSourceId { FundingSourceId.element? }? &
+  element miradi:ExpenseAssignmentFundingSourceId { FundingSourceId.element }? &
   element miradi:ExpenseAssignmentName { formatted_text }?
 }
 

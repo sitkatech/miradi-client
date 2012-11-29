@@ -156,7 +156,7 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 
 	public String createOptionalSchemaDotElement(final String elementName)
 	{
-		return createOptionalSchemaElement(createDotElement(elementName));
+		return createDotElement(elementName);
 	}
 	
 	public String createOptionalSchemaElement(final String createSchemaElement)
