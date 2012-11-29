@@ -31,7 +31,6 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.MiradiResourceImageIcon;
-import org.miradi.utils.XmlUtilities2;
 
 import com.jhlabs.awt.BasicGridLayout;
 
@@ -66,15 +65,16 @@ public class WizardTitlePanel extends JPanel
 	
 	public void setStepTitle(String text)
 	{
+		System.out.println(text);
 		String title = EAM.text("Intro to View");
 		if(text.length() > 0)
-			title = EAM.text("Step ") + XmlUtilities2.getXmlEncoded(text);
+			title = EAM.text("Step ") + text;
 		stepTitle.setText("<div class='processsteptitle'>" + title + "</div>");
 	}
 	
 	public void setScreenTitle(String text)
 	{
-		screenTitle.setText("<div class='wizardscreentitle'>" + XmlUtilities2.getXmlEncoded(text) + "</div>");
+		screenTitle.setText("<div class='wizardscreentitle'>" + text + "</div>");
 	}
 	
 	WizardTitleHtmlViewer stepTitle;
