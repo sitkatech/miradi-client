@@ -63,7 +63,8 @@ public class InitialSplashPanel extends HelpAboutPanel
 	{
 		UiButton close = new UiButton(new CloseAction(dlg, EAM.text("Button|Continue")));
 
-		languageDropdown = new ChoiceItemComboBoxWithMaxAsPreferredSize(getAvailableLanguageChoices());
+		ChoiceItem[] availableLanguageChoices = getAvailableLanguageChoices();
+		languageDropdown = new ChoiceItemComboBoxWithMaxAsPreferredSize(availableLanguageChoices);
 		selectLanguage(previousLanguageCode);
 		languageDropdown.addActionListener(new LanguageSelectionListener());
 
@@ -92,19 +93,19 @@ public class InitialSplashPanel extends HelpAboutPanel
 
 	private ChoiceItem[] getAvailableLanguageChoices()
 	{
+		Vector<ChoiceItem> availableLanguageChoices = new Vector<ChoiceItem>();
 		try
 		{
-			Vector<ChoiceItem> availableLanguageChoices = new Vector<ChoiceItem>(Miradi.getAvailableLanguageChoices());
+			availableLanguageChoices.addAll(Miradi.getAvailableLanguageChoices());
 			Collections.sort(availableLanguageChoices);
-			availableLanguageChoices.insertElementAt(new ChoiceItem("en", "English"), 0);
-			availableLanguageChoices.addElement(new ChoiceItem(OTHER_LANGUAGE_CODE, "Other..."));
-			return availableLanguageChoices.toArray(new ChoiceItem[0]);
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
-			return new ChoiceItem[0];
 		}
+		availableLanguageChoices.insertElementAt(new ChoiceItem("en", "English"), 0);
+		availableLanguageChoices.addElement(new ChoiceItem(OTHER_LANGUAGE_CODE, "Other..."));
+		return availableLanguageChoices.toArray(new ChoiceItem[0]);
 	}
 	
 	class LanguageSelectionListener implements ActionListener
