@@ -30,7 +30,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.LanguageQuestion;
+import org.miradi.questions.AllLanguagesQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.utils.LanguagePackFileFilter;
 import org.miradi.utils.Translation;
@@ -185,7 +185,7 @@ public class Miradi
 	{
 		EAM.logDebug("Looking for content jars in: " + directory.getAbsolutePath());
 		
-		LanguageQuestion languages = new LanguageQuestion();
+		AllLanguagesQuestion languages = new AllLanguagesQuestion();
 		Vector<ChoiceItem> results = new Vector<ChoiceItem>();
 		String[] jarNames = directory.list(new LanguagePackFileFilter());
 		if(jarNames == null)
