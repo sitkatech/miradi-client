@@ -22,20 +22,18 @@ package org.miradi.questions;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Vector;
 
 import org.martus.util.UnicodeReader;
 import org.miradi.main.EAM;
 import org.miradi.main.ResourcesHandler;
 import org.miradi.utils.IgnoreCaseStringComparator;
+import org.miradi.utils.XmlUtilities2;
 
 public class LanguageQuestion extends DynamicChoiceQuestion
 {
 	public LanguageQuestion()
 	{
-		threeLetterCodeToTwoLetterCodes = new HashMap<String, String>();
 		try
 		{
 			loadChoices();
@@ -68,18 +66,23 @@ public class LanguageQuestion extends DynamicChoiceQuestion
 				if(line == null)
 					break;
 				
-				// NOTE: File was downloaded directly from ISO, and has these fields,
-				// separated by vertical bars (|):
-				// 3-letter code | other code | 2-letter code | name (in English) | name (in French)
-				String[] parts = line.split("\\|");
+				if(line.indexOf('#') == 0)
+					continue;
+				
+				// NOTE: File is ISO-639-3, with the header row commented out
+				// Fields (delimited by tabs) are:
+				// Id	Part2B	Part2T	Part1	Scope	Language_Type	Ref_Name	Comment
+				line = XmlUtilities2.getXmlEncoded(line);
+				String[] parts = line.split("\t");
 				String threeLetterCode = parts[0];
-				String twoLetterCode = parts[2];
-				String name = parts[3];
-				if(twoLetterCode.length() != 0)
-				{
-					loadedChoices.add(new ChoiceItem(twoLetterCode, name));
-					threeLetterCodeToTwoLetterCodes.put(threeLetterCode, twoLetterCode);
-				}
+				String twoLetterCode = parts[3];
+				String name = parts[6];
+				
+				String code = threeLetterCode;
+				if(twoLetterCode.length() > 0)
+					code = twoLetterCode;
+
+				loadedChoices.add(new ChoiceItem(code, name));
 			}
 		}
 		finally
@@ -91,12 +94,10 @@ public class LanguageQuestion extends DynamicChoiceQuestion
 		Arrays.sort(choices, new IgnoreCaseStringComparator());
 	}
 
-	public String lookupLanguageCode(String threeLetterLanguageCode)
+	public String lookupLanguageCode(String languageCode)
 	{
-		String twoLetterCode = threeLetterCodeToTwoLetterCodes.get(threeLetterLanguageCode);
-		return getValue(twoLetterCode);
+		return getValue(languageCode);
 	}
 
 	private ChoiceItem[] choices;
-	private Map<String, String> threeLetterCodeToTwoLetterCodes;
 }
