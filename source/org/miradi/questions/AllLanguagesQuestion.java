@@ -30,9 +30,9 @@ import org.miradi.main.ResourcesHandler;
 import org.miradi.utils.IgnoreCaseStringComparator;
 import org.miradi.utils.XmlUtilities2;
 
-public class LanguageQuestion extends DynamicChoiceQuestion
+public class AllLanguagesQuestion extends DynamicChoiceQuestion
 {
-	public LanguageQuestion()
+	public AllLanguagesQuestion()
 	{
 		try
 		{
