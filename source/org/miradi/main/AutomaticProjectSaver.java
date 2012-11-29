@@ -99,6 +99,9 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 
 	public void internalSafeSave(File currentFile) throws IOException, Exception
 	{
+		if(currentFile == null)
+			return;
+		
 		File oldFile = getOldFile(currentFile);
 		File newFile = getNewFile(currentFile);
 
