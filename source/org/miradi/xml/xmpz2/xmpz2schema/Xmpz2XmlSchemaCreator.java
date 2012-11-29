@@ -320,13 +320,13 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	public String createRequiredRefSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
 		String fieldName = getIdElementName(baseObjectSchema, fieldSchema);
-		return createSchemaElement(baseObjectSchema, fieldSchema, fieldName);
+		return createRequiredSchemaElement(baseObjectSchema, fieldSchema, fieldName);
 	}
 	
 	public String createRequiredBaseIdSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, int objectType)
 	{
 		String objectName = getIdElementName(baseObjectSchema, fieldSchema, objectType);
-		return createSchemaElement(baseObjectSchema, fieldSchema, createIdName(objectName));
+		return createRequiredSchemaElement(baseObjectSchema, fieldSchema, createIdName(objectName));
 	}
 	
 	public String createOptionalBaseIdSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, int objectType)
@@ -823,12 +823,24 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		return createElementSchema(baseObjectSchema, fieldSchema, getSchemaWriter().createZeroOrMoreDotElement(elementType));
 	}
+	
+	private String createRequiredSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, final String elementType)
+	{
+		return createRequiredElementSchema(baseObjectSchema, fieldSchema, getSchemaWriter().createDotElement(elementType));
+	}
 
 	private String createElementSchema(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String elementType)
 	{
 		String poolName = baseObjectSchema.getXmpz2ElementName();
 		String elementName = getTagToElementNameMap().findElementName(poolName, fieldSchema.getTag());
 		return getSchemaWriter().createOptionalSchemaElement(poolName + elementName, elementType);
+	}
+	
+	private String createRequiredElementSchema(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String elementType)
+	{
+		String poolName = baseObjectSchema.getXmpz2ElementName();
+		String elementName = getTagToElementNameMap().findElementName(poolName, fieldSchema.getTag());
+		return getSchemaWriter().createSchemaElement(poolName + elementName, elementType);
 	}
 	
 	private void defineElementWithSameType(String parentName, String[] names, String elementType)
