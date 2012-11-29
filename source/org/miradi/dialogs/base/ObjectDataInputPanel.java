@@ -43,6 +43,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.FillerLabel;
 
 import com.jhlabs.awt.Alignment;
 import com.jhlabs.awt.GridLayoutPlus;
@@ -118,6 +119,16 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 			radioButtons.add(radioButton);
 		}
 		return radioButtons;
+	}
+	
+	public ObjectDataInputField addFieldWithPopUpInformation(ObjectDataInputField field, String htmlFileName) throws Exception
+	{
+		Vector<JComponent> components = new Vector<JComponent>();
+		components.add(field.getComponent());
+		components.add(new FillerLabel());
+		components.add(createHyperLinkPanel(htmlFileName));
+		
+		return addRadioButtonFieldWithCustomLabel(field, "", components.toArray(new JComponent[0]));
 	}
 	
 	public ObjectDataInputField addRadioButtonFieldWithCustomLabel(ObjectDataInputField field, String customLabel, JComponent[] radioButtons)
