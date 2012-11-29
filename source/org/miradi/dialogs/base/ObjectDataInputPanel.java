@@ -92,7 +92,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 		RadioButtonsField radioButtonField = createRadioButtonsField(objectType, fieldTag, question);
 		Vector<JComponent> radioButtons = createRadioButtons(question, radioButtonField);
 		
-		return addRadioButtonFieldWithCustomLabel(radioButtonField, customLabel, radioButtons.toArray(new JComponent[0]));	
+		return addComponentsFieldWithCustomLabel(radioButtonField, customLabel, radioButtons.toArray(new JComponent[0]));	
 	}
 	
 	public ObjectDataInputField addRadioButtonFieldWithCustomLabelAndLink(int objectType, String fieldTag, ChoiceQuestion question, String customLabel, String htmlFileName) throws Exception
@@ -101,7 +101,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 		Vector<JComponent> components = createRadioButtons(question, radioButtonField);
 		components.add(createHyperLinkPanel(htmlFileName));
 		
-		return addRadioButtonFieldWithCustomLabel(radioButtonField, customLabel, components.toArray(new JComponent[0]));	
+		return addComponentsFieldWithCustomLabel(radioButtonField, customLabel, components.toArray(new JComponent[0]));	
 	}
 
 	private JComponent createHyperLinkPanel(String htmlFileName) throws Exception
@@ -128,10 +128,10 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 		components.add(new FillerLabel());
 		components.add(createHyperLinkPanel(htmlFileName));
 		
-		return addRadioButtonFieldWithCustomLabel(field, "", components.toArray(new JComponent[0]));
+		return addComponentsFieldWithCustomLabel(field, "", components.toArray(new JComponent[0]));
 	}
 	
-	public ObjectDataInputField addRadioButtonFieldWithCustomLabel(ObjectDataInputField field, String customLabel, JComponent[] radioButtons)
+	public ObjectDataInputField addComponentsFieldWithCustomLabel(ObjectDataInputField field, String customLabel, JComponent[] components)
 	{
 		addFieldToList(field);
 		
@@ -139,9 +139,9 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		box.add(Box.createHorizontalStrut(20));
 		box.add(new PanelTitleLabel(customLabel));
-		for(JComponent radioButton : radioButtons)
+		for(JComponent component : components)
 		{
-			box.add(radioButton);	
+			box.add(component);	
 		}
 		
 		addLabel(field.getObjectType(), field.getTag());
