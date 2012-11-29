@@ -55,7 +55,7 @@ public class DefinitionCommonTerms
 				EAM.text("Human Wellbeing Targets - A limited suite of elements " +
 						"chosen to represent and encompass the desired human values of the system. " +
 						"In Miradi, represented by tan ovals."));
-		defs.put("Definition:HumanWelfareTargets", def);
+		defs.put("Definition:HumanBeingTargets", def);
 		
 		def = Definition.createDefinitionFromTextString(EAM.text("Stress"), EAM.text("Stress - An impaired aspect of a conservation target " +
 		"that results directly or indirectly from human activities " +
