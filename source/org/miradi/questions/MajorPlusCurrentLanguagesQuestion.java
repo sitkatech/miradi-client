@@ -1,5 +1,8 @@
+package org.miradi.questions;
+
+import org.miradi.utils.Translation;
 /* 
-Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2012, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -16,15 +19,19 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/ 
-package org.miradi.questions;
+ */
 
-
-public class AllLanguagesQuestion extends AbstractLanguagesQuestion
+public class MajorPlusCurrentLanguagesQuestion extends AbstractLanguagesQuestion
 {
 	@Override
 	protected boolean shouldIncludeLanguage(String threeLetterCode, String oldThreeLetterCode, String twoLetterCode)
 	{
-		return true;
+		if(oldThreeLetterCode.length() > 0)
+			return true;
+		
+		if(threeLetterCode.equals(Translation.getCurrentLanguageCode()))
+			return true;
+		
+		return false;
 	}
 }

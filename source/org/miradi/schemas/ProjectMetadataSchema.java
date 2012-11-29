@@ -30,6 +30,7 @@ import org.miradi.questions.FiscalYearStartQuestion;
 import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.questions.FontSizeQuestion;
 import org.miradi.questions.AllLanguagesQuestion;
+import org.miradi.questions.MajorPlusCurrentLanguagesQuestion;
 import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 import org.miradi.questions.ProtectedAreaCategoryQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
@@ -53,7 +54,7 @@ public class ProjectMetadataSchema extends BaseObjectSchema
 		super.fillFieldSchemas();
 		
 		createFieldSchemaSingleLineUserText(ProjectMetadata.TAG_PROJECT_NAME);
-		createFieldSchemaChoice(ProjectMetadata.TAG_PROJECT_LANGUAGE, new AllLanguagesQuestion());
+		createFieldSchemaChoice(ProjectMetadata.TAG_PROJECT_LANGUAGE, new MajorPlusCurrentLanguagesQuestion());
 		createFieldSchemaMultiLineUserText(ProjectMetadata.TAG_PROJECT_DESCRIPTION);
 		createFieldSchemaSingleLineUserText(ProjectMetadata.TAG_PROJECT_URL);
 		createFieldSchemaMultiLineUserText(ProjectMetadata.TAG_PROJECT_SCOPE);
