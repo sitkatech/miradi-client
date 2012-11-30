@@ -106,7 +106,6 @@ public class StaticQuestionManager
 		addQuestion(new OpenStandardsProgressStatusQuestion());
 		addQuestion(new StrategyStatusQuestion());
 		addQuestion(new DiagramModeQuestion());
-		addQuestion(new MajorPlusCurrentLanguagesQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)
