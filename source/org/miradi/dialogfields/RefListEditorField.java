@@ -80,7 +80,7 @@ public class RefListEditorField extends ObjectDataInputField implements ListSele
 	@Override
 	public void updateEditableState()
 	{
-		refListEditor.setEnabled(isValidObject());
+		updateEditableState(isValidObject());
 	}
 	
 	public void valueChanged(ListSelectionEvent arg0)

@@ -72,7 +72,7 @@ public class PopupQuestionEditorField extends ObjectDataInputField
 	@Override
 	public void updateEditableState()
 	{
-		editorComponent.setEnabled(isValidObject());
+		updateEditableState(isValidObject());
 	}
 	
 	private QuestionPopupEditorComponent editorComponent; 

@@ -81,7 +81,7 @@ public class ObjectChoiceField extends ObjectDataInputField
 	@Override
 	public void updateEditableState()
 	{
-		combo.setEnabled(isValidObject());
+		updateEditableState(isValidObject());
 		if(isValidObject())
 		{
 			combo.setForeground(EAM.EDITABLE_FOREGROUND_COLOR);

@@ -93,7 +93,7 @@ public class ObjectDateChooserInputField extends ObjectDataInputField
 	@Override
 	public void updateEditableState()
 	{
-		dateEditor.setEnabled(isValidObject());
+		updateEditableState(isValidObject());
 	}
 		
 	private DateEditorComponent dateEditor;

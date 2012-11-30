@@ -89,11 +89,6 @@ public class ObjectReadonlyChoiceField extends ObjectDataInputField
 		return currentCode;
 	}
 
-	@Override
-	public void updateEditableState()
-	{
-	}
-
 	String currentCode;
 	ChoiceQuestion question;
 	UiLabel component;
