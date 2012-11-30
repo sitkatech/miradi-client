@@ -194,7 +194,6 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 		if(!isValidObject)
 		{
 			fg = EAM.READONLY_FOREGROUND_COLOR;
-			bg = EAM.READONLY_BACKGROUND_COLOR;
 		}
 		toggleButton.setForeground(fg);
 		toggleButton.setBackground(bg);
