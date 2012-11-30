@@ -107,7 +107,7 @@ abstract public class ObjectTextInputField extends ObjectDataInputField
 	public void updateEditableState()
 	{
 		boolean editable = allowEdits() && isValidObject();
-		field.setEditable(editable);
+		updateEditableState(editable);
 		Color fg = EAM.EDITABLE_FOREGROUND_COLOR;
 		Color bg = EAM.EDITABLE_BACKGROUND_COLOR;
 		if(!editable)

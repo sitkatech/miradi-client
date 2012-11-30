@@ -65,7 +65,7 @@ public class ObjectCheckBoxField extends ObjectDataInputField
 	@Override
 	public void updateEditableState()
 	{
-		checkBox.setEnabled(isValidObject());
+		updateEditableState(isValidObject());
 		if(isValidObject())
 		{
 			checkBox.setForeground(EAM.EDITABLE_FOREGROUND_COLOR);

@@ -55,7 +55,7 @@ abstract public class AbstractDashboardClickableField extends ObjectDataField
 	@Override
 	public void updateEditableState()
 	{
-		labelComponent.setEnabled(true);
+		updateEditableState(true);
 	}
 
 	@Override

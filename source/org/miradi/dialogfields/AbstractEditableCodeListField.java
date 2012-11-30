@@ -45,9 +45,7 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 	@Override
 	public void updateEditableState()
 	{
-		super.updateEditableState();
-		
-		readonlyPanelPopupEditor.setEnabled(isValidObject());			
+		updateEditableState(isValidObject());
 	}
 	
 	@Override
