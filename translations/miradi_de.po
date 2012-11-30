@@ -5106,7 +5106,7 @@ msgstr "1. Projekt konzipieren"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:59
 msgid "Menu|2. Plan Actions and Monitoring"
-msgstr "2. Aktionen & Monitoring planen"
+msgstr "2. Aktionen und Monitoring planen"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:53
 msgid "Menu|3. Implement Actions and Monitoring"
