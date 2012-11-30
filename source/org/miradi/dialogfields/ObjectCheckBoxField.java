@@ -65,7 +65,7 @@ public class ObjectCheckBoxField extends ObjectDataInputField
 	@Override
 	public void updateEditableState()
 	{
-		updateEditableState(isValidObject());
+		super.updateEditableState();
 		if(isValidObject())
 		{
 			checkBox.setForeground(EAM.EDITABLE_FOREGROUND_COLOR);
@@ -74,6 +74,12 @@ public class ObjectCheckBoxField extends ObjectDataInputField
 		{
 			checkBox.setForeground(EAM.READONLY_FOREGROUND_COLOR);
 		}
+	}
+	
+	@Override
+	protected boolean shouldBeEditable()
+	{
+		return isValidObject();
 	}
 	
 	class StatusChangeHandler implements ItemListener

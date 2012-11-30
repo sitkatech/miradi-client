@@ -71,11 +71,16 @@ public class RadioButtonsField extends ObjectDataInputField
 	@Override
 	public void updateEditableState()
 	{
-		boolean editable = allowEdits() && isValidObject();
 		for(JComponent button : buttons)
 		{
-			button.setEnabled(editable);
+			button.setEnabled(shouldBeEditable());
 		}
+	}
+	
+	@Override
+	protected boolean shouldBeEditable()
+	{
+		return allowEdits() && isValidObject();
 	}
 
 	@Override

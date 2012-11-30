@@ -43,9 +43,9 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 	}
 	
 	@Override
-	public void updateEditableState()
+	protected boolean shouldBeEditable()
 	{
-		updateEditableState(isValidObject());
+		return isValidObject();
 	}
 	
 	@Override
