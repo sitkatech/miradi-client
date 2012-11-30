@@ -1,7 +1,7 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Nov 29 20:02:06 EST 2012 $
-# $LastChangedRevision: 206 $
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/206'
+# $LastChangedDate: Thu Nov 29 20:06:12 EST 2012 $
+# $LastChangedRevision: 208 $
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/208'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -66,7 +66,7 @@ ProjectSummary.element = element miradi:ProjectSummary
   element miradi:ProjectSummaryOverallProjectThreatRating { vocabulary_threat_rating }? &
   element miradi:ProjectSummaryOverallProjectViabilityRating { vocabulary_status }? &
   element miradi:ProjectSummaryProjectDescription { formatted_text }? &
-  element miradi:ProjectSummaryProjectId { ExternalProjectId.element* }? &
+  element miradi:ProjectSummaryProjectId { ExternalProjectId.element }? &
   element miradi:ProjectSummaryProjectLanguage { vocabulary_language_code }? &
   element miradi:ProjectSummaryProjectName { text }? &
   element miradi:ProjectSummaryProjectStatus { formatted_text }? &
