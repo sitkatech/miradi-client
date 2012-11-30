@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-29 17:16-0600\n"
+"POT-Creation-Date: 2012-11-30 15:31-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -5634,7 +5634,7 @@ msgstr "Проміжний звіт"
 msgid "Progress Reports"
 msgstr "Проміжні звіти"
 
-#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:99
+#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:98
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:102
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:68
