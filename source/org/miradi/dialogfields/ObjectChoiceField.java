@@ -27,7 +27,6 @@ import javax.swing.JComponent;
 import org.martus.swing.UiComboBox;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.ids.BaseId;
-import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
@@ -76,22 +75,6 @@ public class ObjectChoiceField extends ObjectDataInputField
 			}
 		}
 		combo.setSelectedIndex(-1);
-	}
-
-	@Override
-	public void updateEditableState()
-	{
-		super.updateEditableState();
-		if(isValidObject())
-		{
-			combo.setForeground(EAM.EDITABLE_FOREGROUND_COLOR);
-			combo.setBackground(EAM.EDITABLE_BACKGROUND_COLOR);
-		}
-		else
-		{
-			combo.setForeground(EAM.READONLY_FOREGROUND_COLOR);
-			combo.setBackground(EAM.READONLY_BACKGROUND_COLOR);
-		}
 	}
 
 	@Override

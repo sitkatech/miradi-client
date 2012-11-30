@@ -27,6 +27,7 @@ import javax.swing.JComponent;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 
+import org.miradi.main.EAM;
 import org.miradi.project.Project;
 
 abstract public class DataField extends SavableField
@@ -59,8 +60,24 @@ abstract public class DataField extends SavableField
 	protected void updateEditableState(boolean isEditable)
 	{
 		getComponent().setEnabled(isEditable);
+		Color fg = EAM.READONLY_FOREGROUND_COLOR;
+		Color bg = EAM.READONLY_BACKGROUND_COLOR;
+		if(isEditable)
+		{
+			fg = EAM.EDITABLE_FOREGROUND_COLOR;
+			bg = EAM.EDITABLE_BACKGROUND_COLOR;
+		}
+
+		getComponent().setForeground(fg);
+		if(shouldSetBackground())
+			getComponent().setBackground(bg);
 	}
 	
+	protected boolean shouldSetBackground()
+	{
+		return true;
+	}
+
 	void setDefaultFieldBorder()
 	{
 		getComponent().setBorder(createLineBorderWithMargin());

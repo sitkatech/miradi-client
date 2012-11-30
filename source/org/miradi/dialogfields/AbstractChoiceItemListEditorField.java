@@ -78,6 +78,13 @@ abstract public class AbstractChoiceItemListEditorField extends ObjectDataInputF
 	{
 		return allowEdits() && isValidObject();
 	}
+	
+	@Override
+	protected boolean shouldSetBackground()
+	{
+		// NOTE: Radio buttons and checkboxes are transparent, so never set the background
+		return false;
+	}
 
 	public void valueChanged(ListSelectionEvent arg0)
 	{
