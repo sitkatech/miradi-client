@@ -459,13 +459,6 @@ public class ObjectManager
 		return project;
 	}
 
-	//TODO: there should be a better way to get to the project file name then having to expose it here
-	//Maybe in-line this method?
-	public String getFileName()
-	{
-		return getProject().getFilename();
-	}
-	
 	public Vector<BaseObject> findObjectsAsVector(ORefList refList)
 	{
 		Vector<BaseObject> foundObjects = new Vector<BaseObject>();
