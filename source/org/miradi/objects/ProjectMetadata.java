@@ -61,7 +61,7 @@ public class ProjectMetadata extends BaseObject
 	public String getPseudoData(String fieldTag)
 	{
 		if(fieldTag.equals(PSEUDO_TAG_PROJECT_FILENAME))
-			return objectManager.getFileName();
+			return getProject().getFilename();
 		
 		if(fieldTag.equals(PSEUDO_TAG_ALL_THREAT_CLASSIFICATIONS))
 			return getStandardClassifications();
