@@ -55,8 +55,8 @@ import org.miradi.objects.XslTemplate;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DashboardFlagsQuestion;
-import org.miradi.questions.MajorPlusCurrentLanguagesQuestion;
 import org.miradi.questions.StaticQuestionManager;
+import org.miradi.questions.TwoLetterLanguagesQuestion;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.CostAllocationRuleSchema;
@@ -424,7 +424,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		Vector<String> elements = new Vector<String>();
 		elements.add("'[a-z][a-z][a-z]'");
-		defineVocabulary(new MajorPlusCurrentLanguagesQuestion().getAllCodes(), elements, VOCABULARY_LANGUAGE_CODE);
+		defineVocabulary(new TwoLetterLanguagesQuestion().getAllCodes(), elements, VOCABULARY_LANGUAGE_CODE);
 	}
 
 	private void defineVocabulary(final String elementName, final CodeList allCodesFromDynamicQuestion)
