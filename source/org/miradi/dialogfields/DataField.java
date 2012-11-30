@@ -48,8 +48,12 @@ abstract public class DataField extends SavableField
 
 	public void updateEditableState()
 	{
-		boolean isEditable = false;
-		updateEditableState(isEditable);
+		updateEditableState(shouldBeEditable());
+	}
+
+	protected boolean shouldBeEditable()
+	{
+		return false;
 	}
 
 	protected void updateEditableState(boolean isEditable)
