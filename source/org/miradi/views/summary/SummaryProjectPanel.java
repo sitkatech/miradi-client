@@ -31,7 +31,6 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.AllLanguagesQuestion;
 import org.miradi.questions.MajorPlusCurrentLanguagesQuestion;
 import org.miradi.questions.ProjectSharingQuestion;
 import org.miradi.rtf.RtfFormExporter;
