@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -78,6 +79,25 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 			createTextFieldWithPopupButtonPanel();
 		
 		return mainPanel;
+	}
+	
+	@Override
+	protected void updateEditableState(boolean isEditable)
+	{
+		editButton.setEnabled(isEditable);
+		getTextField().setEnabled(isEditable);
+		
+		Color fg = EAM.READONLY_FOREGROUND_COLOR;
+		Color bg = EAM.READONLY_BACKGROUND_COLOR;
+		if(isEditable)
+		{
+			fg = EAM.EDITABLE_FOREGROUND_COLOR;
+			bg = EAM.EDITABLE_BACKGROUND_COLOR;
+		}
+
+		getTextField().setForeground(fg);
+		if(shouldSetBackground())
+			getTextField().setBackground(bg);
 	}
 
 	@Override
