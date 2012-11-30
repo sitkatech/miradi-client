@@ -412,7 +412,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().println("vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } ");
 		getSchemaWriter().println("vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='12' } ");
 		getSchemaWriter().println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
-		writeLaguageVocabulary();
+		writeLanguageVocabulary();
 	}
 
 	private boolean isCustomWrittenVocabulary(String vocabularyName)
@@ -420,7 +420,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return vocabularyName.equals(VOCABULARY_LANGUAGE_CODE);
 	}
 	
-	private void writeLaguageVocabulary()
+	private void writeLanguageVocabulary()
 	{
 		Vector<String> elements = new Vector<String>();
 		elements.add("'[a-z][a-z][a-z]'");
