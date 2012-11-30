@@ -49,6 +49,11 @@ abstract public class DataField extends SavableField
 	public void updateEditableState()
 	{
 		boolean isEditable = false;
+		updateEditableState(isEditable);
+	}
+
+	private void updateEditableState(boolean isEditable)
+	{
 		getComponent().setEnabled(isEditable);
 	}
 	
