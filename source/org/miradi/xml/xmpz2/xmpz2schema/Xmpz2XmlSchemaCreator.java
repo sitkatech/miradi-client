@@ -55,6 +55,7 @@ import org.miradi.objects.XslTemplate;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DashboardFlagsQuestion;
+import org.miradi.questions.MajorPlusCurrentLanguagesQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
@@ -401,6 +402,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		for(ChoiceQuestion question : sortedQuestions)
 		{
 			String vocabularyName = choiceQuestionToSchemaElementNameMap.get(question);
+			if (isCustomWrittenVocabulary(vocabularyName))
+				continue;
+			
 			defineVocabulary(question, vocabularyName);
 		}
 		
@@ -408,8 +412,38 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().println("vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } ");
 		getSchemaWriter().println("vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='12' } ");
 		getSchemaWriter().println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
+		writeLaguageVocabulary();
+	}
+
+	private boolean isCustomWrittenVocabulary(String vocabularyName)
+	{
+		return vocabularyName.equals(VOCABULARY_LANGUAGE_CODE);
 	}
 	
+	private void writeLaguageVocabulary()
+	{
+		Vector<String> elements = new Vector<String>();
+		elements.add("'[a-z][a-z][a-z]'");
+		defineVocabulary(new MajorPlusCurrentLanguagesQuestion().getAllCodes(), elements, VOCABULARY_LANGUAGE_CODE);
+	}
+
+	private void defineVocabulary(final String elementName, final CodeList allCodesFromDynamicQuestion)
+	{
+		defineVocabulary(allCodesFromDynamicQuestion, new Vector<String>(), elementName);
+	}
+	
+	private void defineVocabulary(CodeList allCodesFromDynamicQuestion, Vector<String> elements, final String elementName)
+	{
+		getSchemaWriter().print(elementName + " = ");
+		for(int index = 0; index < allCodesFromDynamicQuestion.size(); ++index)
+		{
+			String code = allCodesFromDynamicQuestion.get(index);
+			elements.add("'" + code + "'");
+		}
+		
+		getSchemaWriter().writeOredElements(elements);
+	}
+
 	private void writeObjectTypeIdElements()
 	{
 		final Vector<String> objectTypeNames = Xmpz2GroupedConstants.getObjectTypeNamesToCreateIdSchemaElements();
@@ -513,20 +547,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		defineVocabulary(vocabularyName, codes);
 	}
 	
-	private void defineVocabulary(final String elementName, final CodeList allCodesFromDynamicQuestion)
-	{
-		getSchemaWriter().print(elementName + " = ");
-		
-		Vector<String> elements = new Vector<String>();
-		for(int index = 0; index < allCodesFromDynamicQuestion.size(); ++index)
-		{
-			String code = allCodesFromDynamicQuestion.get(index);
-			elements.add("'" + code + "'");
-		}
-		
-		getSchemaWriter().writeOredElements(elements);
-	}
-
 	private void writeOredSchemaElements(final String parentElementName, final String[] elementNamesAsArray)
 	{
 		Vector<String> elementNames = Utility.convertToVector(elementNamesAsArray);
