@@ -27,7 +27,6 @@ import javax.swing.JComponent;
 import org.martus.swing.UiCheckBox;
 import org.miradi.dialogs.fieldComponents.PanelCheckBox;
 import org.miradi.ids.BaseId;
-import org.miradi.main.EAM;
 import org.miradi.project.Project;
 
 public class ObjectCheckBoxField extends ObjectDataInputField
@@ -63,17 +62,10 @@ public class ObjectCheckBoxField extends ObjectDataInputField
 	}
 
 	@Override
-	public void updateEditableState()
+	protected boolean shouldSetBackground()
 	{
-		super.updateEditableState();
-		if(isValidObject())
-		{
-			checkBox.setForeground(EAM.EDITABLE_FOREGROUND_COLOR);
-		}
-		else
-		{
-			checkBox.setForeground(EAM.READONLY_FOREGROUND_COLOR);
-		}
+		// NOTE: Checkbox is transparent so never set background
+		return false;
 	}
 	
 	@Override

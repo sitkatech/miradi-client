@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 
-import java.awt.Color;
 import java.awt.event.FocusEvent;
 
 import javax.swing.JComponent;
@@ -107,15 +106,6 @@ abstract public class ObjectTextInputField extends ObjectDataInputField
 	public void updateEditableState()
 	{
 		super.updateEditableState();
-		Color fg = EAM.EDITABLE_FOREGROUND_COLOR;
-		Color bg = EAM.EDITABLE_BACKGROUND_COLOR;
-		if(!shouldBeEditable())
-		{
-			fg = EAM.READONLY_FOREGROUND_COLOR;
-			bg = EAM.READONLY_BACKGROUND_COLOR;
-		}
-		field.setForeground(fg);
-		field.setBackground(bg);
 
 		if(EAM.getMainWindow().isSpellCheckerActive())
 			enableSpellChecker();
