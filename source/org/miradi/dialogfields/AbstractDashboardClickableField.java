@@ -53,9 +53,9 @@ abstract public class AbstractDashboardClickableField extends ObjectDataField
 	}
 	
 	@Override
-	public void updateEditableState()
+	protected boolean shouldBeEditable()
 	{
-		updateEditableState(true);
+		return true;
 	}
 
 	@Override

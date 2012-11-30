@@ -56,7 +56,13 @@ abstract public class AbstractRelevancyOverrideListField extends ObjectDataField
 	@Override
 	public void updateEditableState()
 	{
-		relevantDesireRefListEditor.setEnabled(true);
+		relevantDesireRefListEditor.setEnabled(shouldBeEditable());
+	}
+	
+	@Override
+	protected boolean shouldBeEditable()
+	{
+		return true;
 	}
 	
 	public void valueChanged(ListSelectionEvent arg0)

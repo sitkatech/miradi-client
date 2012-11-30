@@ -106,11 +106,10 @@ abstract public class ObjectTextInputField extends ObjectDataInputField
 	@Override
 	public void updateEditableState()
 	{
-		boolean editable = allowEdits() && isValidObject();
-		updateEditableState(editable);
+		super.updateEditableState();
 		Color fg = EAM.EDITABLE_FOREGROUND_COLOR;
 		Color bg = EAM.EDITABLE_BACKGROUND_COLOR;
-		if(!editable)
+		if(!shouldBeEditable())
 		{
 			fg = EAM.READONLY_FOREGROUND_COLOR;
 			bg = EAM.READONLY_BACKGROUND_COLOR;
@@ -122,6 +121,12 @@ abstract public class ObjectTextInputField extends ObjectDataInputField
 			enableSpellChecker();
 		else
 			disableSpellChecker();
+	}
+	
+	@Override
+	protected boolean shouldBeEditable()
+	{
+		return allowEdits() && isValidObject();
 	}
 
 	private void disableSpellChecker()

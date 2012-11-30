@@ -61,9 +61,9 @@ public class ComponentWrapperObjectDataInputField extends ObjectDataInputField i
 	}
 	
 	@Override
-	public void updateEditableState()
+	protected boolean shouldBeEditable()
 	{
-		updateEditableState(isValidObject());			
+		return isValidObject();
 	}
 	
 	private SavebleComponent component;

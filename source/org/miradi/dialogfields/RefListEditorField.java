@@ -78,9 +78,9 @@ public class RefListEditorField extends ObjectDataInputField implements ListSele
 	}
 	
 	@Override
-	public void updateEditableState()
+	protected boolean shouldBeEditable()
 	{
-		updateEditableState(isValidObject());
+		return isValidObject();
 	}
 	
 	public void valueChanged(ListSelectionEvent arg0)

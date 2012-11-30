@@ -74,10 +74,9 @@ abstract public class AbstractChoiceItemListEditorField extends ObjectDataInputF
 	}
 
 	@Override
-	public void updateEditableState()
+	protected boolean shouldBeEditable()
 	{
-		boolean editable = allowEdits() && isValidObject();
-		updateEditableState(editable);
+		return allowEdits() && isValidObject();
 	}
 
 	public void valueChanged(ListSelectionEvent arg0)
