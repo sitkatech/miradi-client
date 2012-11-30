@@ -39,7 +39,7 @@ import org.miradi.questions.FosTrainingTypeQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.IrreversibilityThreatRatingQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
-import org.miradi.questions.AllLanguagesQuestion;
+import org.miradi.questions.MajorPlusCurrentLanguagesQuestion;
 import org.miradi.questions.MeasurementStatusQuestion;
 import org.miradi.questions.OpenStandardsProgressStatusQuestion;
 import org.miradi.questions.PlanningTreeTargetPositionQuestion;
@@ -94,7 +94,7 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 	private void fillMap()
 	{
 		addItem(ScopeBoxTypeQuestion.createScopeBoxTypeQuestion(), VOCABULARY_SCOPE_BOX_TYPE);
-		addItem(new AllLanguagesQuestion(), VOCABULARY_LANGUAGE_CODE);
+		addItem(MajorPlusCurrentLanguagesQuestion.class, VOCABULARY_LANGUAGE_CODE);
 		addItem(FiscalYearStartQuestion.class, VOCABULARY_FISCAL_YEAR_START);
 		addItem(ProtectedAreaCategoryQuestion.class, VOCABULARY_PROTECTED_AREA_CATEGORIES);
 		addItem(ResourceTypeQuestion.class, VOCABULARY_RESOURCE_TYPE);
