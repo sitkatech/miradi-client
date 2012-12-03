@@ -4,7 +4,7 @@ Copyright 2005-2010, Foundations of Success, Bethesda, Maryland
      (on behalf of the Conservation Measures Partnership, "CMP") and
      Beneficent Technology, Inc. ("Benetech"), Palo Alto, California.
 
-VERSION 3.3.2
+VERSION 4.0.0
 
 License and Copying
 
@@ -142,6 +142,63 @@ GNU/Linux:
 
 ---------------------
 Changes
+
+Miradi 4.0.0 is a major release, and we recommend that all users 
+upgrade to it. 
+
+Projects from Miradi 3.x can be read by Miradi 4.x, and will be 
+converted to a completely new data format. If you need to move 
+your projects back to Miradi 3.x for some reason, you can do so 
+by exporting them as MPZ files.
+
+Notable changes in 4.0.0 include:
+
+Appwide:
+- New project data format
+  + Avoids conflicts with some anti-virus software
+  + Can be backed up faster
+  + Can be emailed without having to export to MPZ format first
+  + In the future, can be much faster
+- Many fields now allow basic formatting (bold, bullets, etc.)
+- Most tables now allow editing data directly within the table
+- Strategies, Activities, Methods, and Tasks now have a Leader field
+- Many minor text changes and improved translatability
+
+Summary View:
+- "Lessons Learned" field moved from TNC to Summary tab
+- TNC tab now has a Business Planning side-tab
+
+Diagram:
+- Factor Properties now display basic work plan data (Who and When)
+- Behavior of double-clicking on factors inside Group Boxes is improved 
+- Create From... now includes more of the old data in the newly created item
+
+Planning Views:
+- Can now create Measurement rows
+
+Reports:
+- New XSLT-based reporting system (BETA status)
+
+Export:
+- New XMPZ2 data format (BETA status)
+
+
+
+
+Miradi 3.3.4 is a minor fix release for compatiblity with Java 7. 
+Projects are fully compatible between all versions 3.3.X, but 
+we recommend that all users upgrade to the latest version. 
+
+Notable changes in 3.3.4 include:
+
+Appwide:
+- Buttons on Indicator tab were incorrectly disabled under Java 7
+
+Import/Export:
+- Was defaulting to the wrong file filter, which could cause 
+  errors, or exported files to not have file extensions
+
+
 
 Miradi 3.3.2 is a minor fix release. Projects are fully 
 compatible between version 3.3, 3.3.1, and 3.3.2, but we  
