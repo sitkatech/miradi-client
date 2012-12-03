@@ -94,7 +94,7 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 	private void fillMap()
 	{
 		addItem(ScopeBoxTypeQuestion.createScopeBoxTypeQuestion(), VOCABULARY_SCOPE_BOX_TYPE);
-		addItem(MajorPlusCurrentLanguagesQuestion.class, VOCABULARY_LANGUAGE_CODE);
+		addItem(new MajorPlusCurrentLanguagesQuestion(), VOCABULARY_LANGUAGE_CODE);
 		addItem(FiscalYearStartQuestion.class, VOCABULARY_FISCAL_YEAR_START);
 		addItem(ProtectedAreaCategoryQuestion.class, VOCABULARY_PROTECTED_AREA_CATEGORIES);
 		addItem(ResourceTypeQuestion.class, VOCABULARY_RESOURCE_TYPE);
