@@ -258,26 +258,26 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 	
 	private ORefList getFactorsInDiagramObject(DiagramObject diagram, final ORefList factorRefs)
 	{
-		ORefList inDiagramObjectFactorRefs = new ORefList();
+		ORefList factorRefsInDiagram = new ORefList();
 		for(ORef relevantItemRef : factorRefs)
 		{
 			if (diagram.containsWrappedFactorRef(relevantItemRef))
-				inDiagramObjectFactorRefs.add(relevantItemRef);
+				factorRefsInDiagram.add(relevantItemRef);
 		}
 		
-		return inDiagramObjectFactorRefs;
+		return factorRefsInDiagram;
 	}
 
 	private ORefList getAnnotationsInDiagramObject(DiagramObject diagram, final ORefList annotationRefs)
 	{
-		ORefList inDiagramObjectAnnotationRefs = new ORefList();
+		ORefList annotationRefsInDiagram = new ORefList();
 		for(ORef relevantItemRef : annotationRefs)
 		{
 			if (diagram.isAnnotationInThisDiagram(relevantItemRef))
-				inDiagramObjectAnnotationRefs.add(relevantItemRef);
+				annotationRefsInDiagram.add(relevantItemRef);
 		}
 		
-		return inDiagramObjectAnnotationRefs;
+		return annotationRefsInDiagram;
 	}
 	
 	private boolean doObjectivesContainStrategies() throws Exception
