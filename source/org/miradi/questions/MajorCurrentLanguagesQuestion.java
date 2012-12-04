@@ -1,7 +1,7 @@
 package org.miradi.questions;
 
 
-public class MajorPlusCurrentLanguagesQuestion extends AbstractLanguagesQuestion
+public class MajorCurrentLanguagesQuestion extends AbstractLanguagesQuestion
 {
 	@Override
 	protected boolean shouldIncludeLanguage(String threeLetterCode, String oldThreeLetterCode, String twoLetterCode)
