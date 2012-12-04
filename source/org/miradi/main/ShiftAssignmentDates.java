@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.main;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.util.Vector;
 
