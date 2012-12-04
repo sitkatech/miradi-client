@@ -26,6 +26,7 @@ import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AbstractTarget;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Desire;
 import org.miradi.objects.DiagramFactor;
@@ -218,7 +219,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 	private ORefList getRelevantStrategyAndActivityRefsOnDiagram(DiagramObject diagram, Desire desire) throws Exception
 	{
 		final ORefList relevantStrategyAndActivityRefs = desire.getRelevantStrategyAndActivityRefs();
-		return getFactorsInDiagramObject(diagram, relevantStrategyAndActivityRefs);
+		return getBaseObjectsInDiagramObject(diagram, relevantStrategyAndActivityRefs);
 	}
 	
 	private ORefList getChildrenOfIndicator(ORef parentRef, DiagramObject diagram) throws Exception
@@ -253,27 +254,17 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		relevant.addAll(findRelevantObjectives(getProject(), strategyRef));
 		relevant.addAll(findRelevantGoals(getProject(), strategyRef));
 		
-		return getAnnotationsInDiagramObject(diagram, relevant);
+		return getBaseObjectsInDiagramObject(diagram, relevant);
 	}
 	
-	private ORefList getFactorsInDiagramObject(DiagramObject diagram, final ORefList factorRefs)
-	{
-		ORefList factorRefsInDiagram = new ORefList();
-		for(ORef relevantItemRef : factorRefs)
-		{
-			if (diagram.containsWrappedFactorRef(relevantItemRef))
-				factorRefsInDiagram.add(relevantItemRef);
-		}
-		
-		return factorRefsInDiagram;
-	}
-
-	private ORefList getAnnotationsInDiagramObject(DiagramObject diagram, final ORefList annotationRefs)
+	private ORefList getBaseObjectsInDiagramObject(DiagramObject diagram, final ORefList baseObjectRefs)
 	{
 		ORefList annotationRefsInDiagram = new ORefList();
-		for(ORef relevantItemRef : annotationRefs)
+		for(ORef relevantItemRef : baseObjectRefs)
 		{
-			if (diagram.isAnnotationInThisDiagram(relevantItemRef))
+			BaseObject baseObject = BaseObject.find(getProject(), relevantItemRef);
+			Factor factorOwner = baseObject.getDirectOrIndirectOwningFactor();
+			if (diagram.containsWrappedFactorRef(factorOwner.getRef()))
 				annotationRefsInDiagram.add(relevantItemRef);
 		}
 		
