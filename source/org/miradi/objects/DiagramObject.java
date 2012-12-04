@@ -160,7 +160,7 @@ abstract public class DiagramObject extends BaseObject
 	}
 
 	// TODO: This really should have a test
-	private boolean isAnnotationInThisDiagram(ORef annotationRef)
+	public boolean isAnnotationInThisDiagram(ORef annotationRef)
 	{
 		ORefList diagramFactorRefs = getAllDiagramFactorRefs();
 		for(int dfr = 0; dfr < diagramFactorRefs.size(); ++dfr)

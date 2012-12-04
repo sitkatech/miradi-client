@@ -55,7 +55,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 	}
 	
 	@Override
-	protected ORefList getChildRefs(ORef parentRef, DiagramObject diagram) throws Exception
+	public ORefList getChildRefs(ORef parentRef, DiagramObject diagram) throws Exception
 	{
 		final ORefList noChildren = new ORefList();
 		if(ProjectMetadata.is(parentRef))
@@ -198,7 +198,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		Strategy strategy = Strategy.find(getProject(), parentRef);
 		childRefs.addAll(strategy.getActivityRefs());
 		if (doStrategiesContainObjectives())
-			childRefs.addAll(findRelevantObjectivesAndGoals(parentRef));
+			childRefs.addAll(findRelevantObjectivesAndGoals(diagram, parentRef));
 		
 		childRefs.addAll(strategy.getOwnedObjectRefs().getFilteredBy(IndicatorSchema.getObjectType()));
 		return childRefs;
@@ -209,12 +209,18 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		ORefList childRefs = new ORefList();
 		Desire desire = Desire.findDesire(getProject(), parentRef);
 		if (doObjectivesContainStrategies())
-			childRefs.addAll(desire.getRelevantStrategyAndActivityRefs());
+			childRefs.addAll(getRelevantStrategyAndActivityRefsOnDiagram(diagram, desire));
 		
 		childRefs.addAll(desire.getRelevantIndicatorRefList());
 		return childRefs;
 	}
 
+	private ORefList getRelevantStrategyAndActivityRefsOnDiagram(DiagramObject diagram, Desire desire) throws Exception
+	{
+		final ORefList relevantStrategyAndActivityRefs = desire.getRelevantStrategyAndActivityRefs();
+		return getFactorsOnDiagram(diagram, relevantStrategyAndActivityRefs);
+	}
+	
 	private ORefList getChildrenOfIndicator(ORef parentRef, DiagramObject diagram) throws Exception
 	{
 		ORefList childRefs = new ORefList();
@@ -241,12 +247,37 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		return !doObjectivesContainStrategies();
 	}
 
-	private ORefList findRelevantObjectivesAndGoals(ORef strategyRef) throws Exception
+	private ORefList findRelevantObjectivesAndGoals(DiagramObject diagram, ORef strategyRef) throws Exception
 	{
 		ORefList relevant = new ORefList();
 		relevant.addAll(findRelevantObjectives(getProject(), strategyRef));
 		relevant.addAll(findRelevantGoals(getProject(), strategyRef));
-		return relevant;
+		
+		return getOnDiagramAnnotations(diagram, relevant);
+	}
+	
+	private ORefList getFactorsOnDiagram(DiagramObject diagram, final ORefList factorRefs)
+	{
+		ORefList onDigramFactorRefs = new ORefList();
+		for(ORef relevantItemRef : factorRefs)
+		{
+			if (diagram.containsWrappedFactorRef(relevantItemRef))
+				onDigramFactorRefs.add(relevantItemRef);
+		}
+		
+		return onDigramFactorRefs;
+	}
+
+	private ORefList getOnDiagramAnnotations(DiagramObject diagram, final ORefList annotationRefs)
+	{
+		ORefList onDigramAnnotationRefs = new ORefList();
+		for(ORef relevantItemRef : annotationRefs)
+		{
+			if (diagram.isAnnotationInThisDiagram(relevantItemRef))
+				onDigramAnnotationRefs.add(relevantItemRef);
+		}
+		
+		return onDigramAnnotationRefs;
 	}
 	
 	private boolean doObjectivesContainStrategies() throws Exception

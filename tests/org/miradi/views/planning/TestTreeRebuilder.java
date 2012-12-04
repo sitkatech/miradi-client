@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.planning;
 
+import java.util.Vector;
+
 import org.miradi.dialogs.planning.CustomTablePlanningTreeRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNodeAlwaysExpanded;
@@ -31,11 +33,13 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.Objective;
+import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.project.ProjectForTesting;
@@ -43,6 +47,7 @@ import org.miradi.questions.StrategyObjectiveTreeOrderQuestion;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CodeList;
@@ -55,6 +60,63 @@ public class TestTreeRebuilder extends TestCaseWithProject
 		super(name);
 	}
 	
+	public void testObjectiveContainsStrategyNodes() throws Exception
+	{
+		verifyRelevantNodes(StrategyObjectiveTreeOrderQuestion.OBJECTIVE_CONTAINS_STRATEGY_CODE);
+	}
+	
+	public void testStrategyContainsObjectiveNodes() throws Exception
+	{
+		verifyRelevantNodes(StrategyObjectiveTreeOrderQuestion.STRATEGY_CONTAINS_OBJECTIVE_CODE);
+	}
+
+	private void verifyRelevantNodes(final String strategyContainsObjectiveCode)	throws Exception
+	{
+		ResultsChainDiagram resultChainA = ResultsChainDiagram.find(getProject(), getProject().createResultsChainDiagram());
+		Strategy strategyA = getProject().createStrategy();
+		getProject().createAndAddFactorToDiagram(resultChainA, strategyA.getRef());
+		Objective objectiveA = getProject().addObjective(strategyA);
+		
+		ResultsChainDiagram resultChainB = ResultsChainDiagram.find(getProject(), getProject().createResultsChainDiagram());
+		Strategy strategyB = getProject().createStrategy();
+		getProject().createAndAddFactorToDiagram(resultChainB, strategyB.getRef());
+		getProject().addSingleItemRelevantBaseObject(objectiveA, strategyB, Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
+
+		
+		CodeList rowCodes = new CodeList();
+		rowCodes.add(ResultsChainDiagramSchema.OBJECT_NAME);
+		rowCodes.add(StrategySchema.OBJECT_NAME);
+		rowCodes.add(ObjectiveSchema.OBJECT_NAME);
+
+		AbstractPlanningTreeNode rootNode = createAndBuildTree(rowCodes, strategyContainsObjectiveCode);
+		Vector<AbstractPlanningTreeNode> resultsChainNodes = rootNode.getRawChildrenByReference();
+		assertEquals("incorrect children count?", 2, resultsChainNodes.size());
+		ORefList resultsChainNodeRefs = new ORefList();
+		resultsChainNodeRefs.add(resultsChainNodes.get(0).getObjectReference());
+		resultsChainNodeRefs.add(resultsChainNodes.get(1).getObjectReference());
+		assertTrue("Should contain resultsChain?", resultsChainNodeRefs.contains(resultChainA.getRef()));
+		assertTrue("Should contain resultsChain?", resultsChainNodeRefs.contains(resultChainB.getRef()));
+		
+		AbstractPlanningTreeNode resultChainANode = findMatchingNode(resultChainA.getRef(), resultsChainNodes);
+		assertEquals("incorrect child count?", 1, resultChainANode.getChildCount());
+		assertEquals("incorrect child count?", 1, resultChainANode.getChild(0).getChildCount());
+		
+		AbstractPlanningTreeNode resultChainBNode = findMatchingNode(resultChainB.getRef(), resultsChainNodes);
+		assertEquals("incorrect child count?", 1, resultChainBNode.getChildCount());
+		assertEquals("incorrect child count?", 0, resultChainBNode.getChild(0).getChildCount());
+	}
+	
+	private AbstractPlanningTreeNode findMatchingNode(ORef ref, Vector<AbstractPlanningTreeNode> resultsChainNodes) throws Exception
+	{
+		for(AbstractPlanningTreeNode node : resultsChainNodes)
+		{
+			if (ref.equals(node.getObjectReference()))
+				return node;
+		}
+		
+		throw new Exception("Didnt find node for ref: " + ref);
+	}
+
 	public void testShouldSortChildren()
 	{
 		ORef taskRef = ORef.createInvalidWithType(TaskSchema.getObjectType());
@@ -132,13 +194,7 @@ public class TestTreeRebuilder extends TestCaseWithProject
 		project.createDiagramLinkAndAddToDiagram(diagramStrategy1, diagramCause).getObjectId();		
 		objectiveId = project.addItemToObjectiveList(diagramCause.getWrappedORef(), Cause.TAG_OBJECTIVE_IDS);
 		
-		ObjectTreeTableConfiguration configuration = new ObjectTreeTableConfiguration(getObjectManager(), BaseId.INVALID);
-		configuration.setData(ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION, rowCodes.toString());
-		configuration.setData(ObjectTreeTableConfiguration.TAG_STRATEGY_OBJECTIVE_ORDER, StrategyObjectiveTreeOrderQuestion.STRATEGY_CONTAINS_OBJECTIVE_CODE);
-		CustomTablePlanningTreeRowColumnProvider rowColumnProvider = new CustomTablePlanningTreeRowColumnProvider(getProject(), configuration);
-		NormalTreeRebuilder rebuilder = new NormalTreeRebuilder(getProject(), rowColumnProvider);
-		AbstractPlanningTreeNode rootNode = new PlanningTreeRootNodeAlwaysExpanded(getProject());
-		rebuilder.rebuildTree(rootNode);
+		AbstractPlanningTreeNode rootNode = createAndBuildTree(rowCodes);
 
 		assertEquals("Didn't put Strats at top level?", 2, rootNode.getChildCount());
 		TreeTableNode parentOfObjectiveNode = null;
@@ -183,16 +239,21 @@ public class TestTreeRebuilder extends TestCaseWithProject
 
 	private AbstractPlanningTreeNode createAndBuildTree(CodeList rowCodes) throws Exception
 	{
+		return createAndBuildTree(rowCodes, StrategyObjectiveTreeOrderQuestion.STRATEGY_CONTAINS_OBJECTIVE_CODE);
+	}
+
+	private AbstractPlanningTreeNode createAndBuildTree(CodeList rowCodes, final String strategyObjeciveOrder) throws Exception
+	{
+		AbstractPlanningTreeNode rootNode = new PlanningTreeRootNodeAlwaysExpanded(getProject());
 		ObjectTreeTableConfiguration configuration = new ObjectTreeTableConfiguration(getObjectManager(), BaseId.INVALID);
 		configuration.setData(ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION, rowCodes.toString());
-		configuration.setData(ObjectTreeTableConfiguration.TAG_STRATEGY_OBJECTIVE_ORDER, StrategyObjectiveTreeOrderQuestion.STRATEGY_CONTAINS_OBJECTIVE_CODE);
+		configuration.setData(ObjectTreeTableConfiguration.TAG_STRATEGY_OBJECTIVE_ORDER, strategyObjeciveOrder);
 		CustomTablePlanningTreeRowColumnProvider rowColumnProvider = new CustomTablePlanningTreeRowColumnProvider(getProject(), configuration);
 		NormalTreeRebuilder rebuilder = new NormalTreeRebuilder(getProject(), rowColumnProvider);
-		AbstractPlanningTreeNode rootNode = new PlanningTreeRootNodeAlwaysExpanded(getProject());
 		rebuilder.rebuildTree(rootNode);
+		
 		return rootNode;
 	}
-		
 
 	public Strategy getStrategy()
 	{
