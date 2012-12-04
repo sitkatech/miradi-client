@@ -218,7 +218,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 	private ORefList getRelevantStrategyAndActivityRefsOnDiagram(DiagramObject diagram, Desire desire) throws Exception
 	{
 		final ORefList relevantStrategyAndActivityRefs = desire.getRelevantStrategyAndActivityRefs();
-		return getFactorsOnDiagram(diagram, relevantStrategyAndActivityRefs);
+		return getFactorsInDiagramObject(diagram, relevantStrategyAndActivityRefs);
 	}
 	
 	private ORefList getChildrenOfIndicator(ORef parentRef, DiagramObject diagram) throws Exception
@@ -253,10 +253,10 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		relevant.addAll(findRelevantObjectives(getProject(), strategyRef));
 		relevant.addAll(findRelevantGoals(getProject(), strategyRef));
 		
-		return getOnDiagramAnnotations(diagram, relevant);
+		return getAnnotationsInDiagramObject(diagram, relevant);
 	}
 	
-	private ORefList getFactorsOnDiagram(DiagramObject diagram, final ORefList factorRefs)
+	private ORefList getFactorsInDiagramObject(DiagramObject diagram, final ORefList factorRefs)
 	{
 		ORefList inDiagramObjectFactorRefs = new ORefList();
 		for(ORef relevantItemRef : factorRefs)
@@ -268,7 +268,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		return inDiagramObjectFactorRefs;
 	}
 
-	private ORefList getOnDiagramAnnotations(DiagramObject diagram, final ORefList annotationRefs)
+	private ORefList getAnnotationsInDiagramObject(DiagramObject diagram, final ORefList annotationRefs)
 	{
 		ORefList onDiagramAnnotationRefs = new ORefList();
 		for(ORef relevantItemRef : annotationRefs)
