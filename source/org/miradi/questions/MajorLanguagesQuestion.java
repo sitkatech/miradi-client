@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 
 
-public class MajorCurrentLanguagesQuestion extends AbstractLanguagesQuestion
+public class MajorLanguagesQuestion extends AbstractLanguagesQuestion
 {
 	@Override
 	protected boolean shouldIncludeLanguage(String threeLetterCode, String oldThreeLetterCode, String twoLetterCode)
