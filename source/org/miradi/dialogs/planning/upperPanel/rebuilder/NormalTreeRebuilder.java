@@ -270,14 +270,14 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 
 	private ORefList getAnnotationsInDiagramObject(DiagramObject diagram, final ORefList annotationRefs)
 	{
-		ORefList onDiagramAnnotationRefs = new ORefList();
+		ORefList inDiagramObjectAnnotationRefs = new ORefList();
 		for(ORef relevantItemRef : annotationRefs)
 		{
 			if (diagram.isAnnotationInThisDiagram(relevantItemRef))
-				onDiagramAnnotationRefs.add(relevantItemRef);
+				inDiagramObjectAnnotationRefs.add(relevantItemRef);
 		}
 		
-		return onDiagramAnnotationRefs;
+		return inDiagramObjectAnnotationRefs;
 	}
 	
 	private boolean doObjectivesContainStrategies() throws Exception
