@@ -1285,13 +1285,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		Cause threat = createAndPopulateThreat();
 		ORefList relevantIndicatorRefs = threat.getObjectiveRefs();
-		RelevancyOverrideSet relevantIndicators = new RelevancyOverrideSet();
-		for (int index = 0; index < relevantIndicatorRefs.size(); ++index)
-		{
-			relevantIndicators.add(new RelevancyOverride(relevantIndicatorRefs.get(index), true));
-		}
-			
-		fillObjectUsingCommand(objective, Objective.TAG_RELEVANT_INDICATOR_SET, relevantIndicators.toString());
+		addRelevantBaseObjects(objective, relevantIndicatorRefs, Objective.TAG_RELEVANT_INDICATOR_SET);
 		
 		ProgressPercent populatedProgressPercent = createAndPopulateProgressPercent();
 		ProgressPercent emptyProgressPercent = createProgressPercent();
@@ -1344,14 +1338,23 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		Cause cause = createCause();
 		Indicator indicator = createIndicator(cause);
-		ORefList relevantIndicatorRefs = new ORefList(indicator);
-		RelevancyOverrideSet relevantIndicators = new RelevancyOverrideSet();
-		for (int index = 0; index < relevantIndicatorRefs.size(); ++index)
+		addSingleItemRelevantBaseObject(goal, indicator, Goal.TAG_RELEVANT_INDICATOR_SET);
+	}
+
+	public void addSingleItemRelevantBaseObject(Desire desire, BaseObject baseObject, final String relevancyTag) throws Exception
+	{
+		addRelevantBaseObjects(desire, new ORefList(baseObject), relevancyTag);
+	}
+
+	public void addRelevantBaseObjects(Desire desire, ORefList relevantBaseObjectRefs, final String relevancyTag) throws Exception
+	{
+		RelevancyOverrideSet relevantBaseObjects = new RelevancyOverrideSet();
+		for (int index = 0; index < relevantBaseObjectRefs.size(); ++index)
 		{
-			relevantIndicators.add(new RelevancyOverride(relevantIndicatorRefs.get(index), true));
+			relevantBaseObjects.add(new RelevancyOverride(relevantBaseObjectRefs.get(index), true));
 		}
 			
-		fillObjectUsingCommand(goal, Goal.TAG_RELEVANT_INDICATOR_SET, relevantIndicators.toString());
+		fillObjectUsingCommand(desire, relevancyTag, relevantBaseObjects.toString());
 	}
 	
 	public void populateStrategy(Strategy strategy) throws Exception
@@ -1432,11 +1435,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(desire, Desire.TAG_PROGRESS_PERCENT_REFS, progressReportRefs.toString());
 	}
 	
-	public void addObjective(Factor factor) throws Exception
+	public Objective addObjective(Factor factor) throws Exception
 	{
 		IdList objectiveIds = new IdList(ObjectiveSchema.getObjectType());
-		objectiveIds.addRef(createAndPopulateObjective(factor).getRef());
+		final Objective objective = createAndPopulateObjective(factor);
+		objectiveIds.addRef(objective.getRef());
 		fillObjectUsingCommand(factor, Factor.TAG_OBJECTIVE_IDS, objectiveIds.toString());
+		
+		return objective;
 	}
 	
 	public void populateProgressReport(ProgressReport progressReport) throws Exception
@@ -1835,12 +1841,16 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	private DiagramFactor createAndAddFactorToDiagram(DiagramObject diagramObject, int objectType, int id) throws Exception
 	{
-		FactorCommandHelper factorHelper = new FactorCommandHelper(this, getTestingDiagramModel());
 		CommandCreateObject createFactor = new CommandCreateObject(objectType);
 		createFactor.setCreatedId(new BaseId(id));
 		executeCommand(createFactor);
-		ORef factorRef = new ORef(createFactor.getObjectType(), createFactor.getCreatedId());
 		
+		return createAndAddFactorToDiagram(diagramObject, createFactor.getObjectRef());
+	}
+	
+	public DiagramFactor createAndAddFactorToDiagram(DiagramObject diagramObject, ORef factorRef) throws Exception
+	{
+		FactorCommandHelper factorHelper = new FactorCommandHelper(this, getTestingDiagramModel());
 		CommandCreateObject createDiagramFactor = factorHelper.createDiagramFactor(diagramObject, factorRef);
 		
 		return DiagramFactor.find(this, createDiagramFactor.getObjectRef());
