@@ -258,14 +258,14 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 	
 	private ORefList getFactorsOnDiagram(DiagramObject diagram, final ORefList factorRefs)
 	{
-		ORefList onDiagramFactorRefs = new ORefList();
+		ORefList inDiagramObjectFactorRefs = new ORefList();
 		for(ORef relevantItemRef : factorRefs)
 		{
 			if (diagram.containsWrappedFactorRef(relevantItemRef))
-				onDiagramFactorRefs.add(relevantItemRef);
+				inDiagramObjectFactorRefs.add(relevantItemRef);
 		}
 		
-		return onDiagramFactorRefs;
+		return inDiagramObjectFactorRefs;
 	}
 
 	private ORefList getOnDiagramAnnotations(DiagramObject diagram, final ORefList annotationRefs)
