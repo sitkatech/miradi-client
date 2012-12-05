@@ -789,7 +789,6 @@
 	</exec>
 	<echo message="building ${language.code} content jar"/>
 	<zip destfile="${dist.dir}/MiradiContent-${version.langpack}-${language.code}.jar">
-        <fileset dir="${eam.src.root}" includes="**/*.html" />
         <fileset dir="${eam.src.root}" includes="**/*.jpg"/>
         <fileset dir="${eam.src.root}" includes="**/*.png"/>
         <fileset dir="${eam.src.root}" includes="**/*.gif"/>
