@@ -81,15 +81,6 @@ public class ResourcesHandler
 		}
 	}
 
-	public static String loadResourceFile(String resourceFileName) throws Exception
-	{
-		URL url = getResourceURL(resourceFileName);
-		if(url == null)
-			EAM.logError("Unable to find resource: " + ResourcesHandler.class.getPackage().getName() + ":" + resourceFileName);
-		
-		return loadFile(url);
-	}
-
 	public static String loadFile(URL url) throws IOException
 	{
 		InputStream inputStream = url.openStream();
