@@ -23,6 +23,7 @@ package org.miradi.project;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.InputStream;
+import java.util.Collection;
 
 import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeStringWriter;
@@ -34,6 +35,7 @@ import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
+import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.MpfToMpzConverter;
@@ -54,6 +56,15 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 		verifyProject();
 	}
 	
+	public void testSimpleThreatRating() throws Exception
+	{
+		getProject().populateSimpleThreatRatingValues();
+		String loadedProject = verifyProject();
+		ProjectForTesting projectToFill = loadIntoNewProject(loadedProject);	
+		Collection<ThreatRatingBundle> allBundles = projectToFill.getSimpleThreatRatingFramework().getAllBundles();
+		assertTrue("incorret number of bundles after convert?", allBundles.size() > 0);
+	}
+
 	public void testIndicatorThresholdValueWithXmlEscapedChars() throws Exception
 	{
 		Strategy strategy = getProject().createStrategy();
@@ -79,9 +90,7 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 		Strategy strategy = getProject().createStrategy();
 		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_COMMENTS, comment);
 		final String expectedMpfAsString = verifyProject();
-		InputStream is = new ByteArrayInputStream(StringUtilities.getUtf8EncodedBytes(expectedMpfAsString));
-		ProjectForTesting projectToFill = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToFillWithMpf");
-		ProjectLoader.loadProject(is, projectToFill);
+		ProjectForTesting projectToFill = loadIntoNewProject(expectedMpfAsString);
 		ORefList strategyRefs = projectToFill.getStrategyPool().getRefList();
 		Strategy loadedStrategy = Strategy.find(projectToFill, strategyRefs.getFirstElement());		
 		assertEquals("Comment should not change during conversion?", expectedComments, loadedStrategy.getComment());
@@ -136,15 +145,22 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 
 	private String reloadIntoProjectToRemoveDefaultValues(String actualMpf) throws Exception
 	{
-		InputStream is = new ByteArrayInputStream(StringUtilities.getUtf8EncodedBytes(actualMpf));
-		ProjectForTesting projectToFill = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToFillWithMpf");
-		ProjectLoader.loadProject(is, projectToFill);
+		ProjectForTesting projectToFill = loadIntoNewProject(actualMpf);
 		
 		UnicodeStringWriter stringWriter = UnicodeStringWriter.create();
 		ProjectSaver.saveProject(projectToFill, stringWriter);
 		
 		return stringWriter.toString();
 	}
+	
+	public ProjectForTesting loadIntoNewProject(String loadedProject) throws Exception
+	{
+		InputStream is = new ByteArrayInputStream(StringUtilities.getUtf8EncodedBytes(loadedProject));
+		ProjectForTesting projectToFill = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToFillWithMpf");
+		ProjectLoader.loadProject(is, projectToFill);
+		
+		return projectToFill;
+	}		
 
 	private String stripTimeStamp(String mpf)
 	{
