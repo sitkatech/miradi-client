@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-05 16:16-0600\n"
+"POT-Creation-Date: 2012-12-05 16:46-0600\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -892,7 +892,7 @@ msgid ""
 "<html>An error occurred<br/><br/>Perhaps the destination is full or readonly."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:207
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:214
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Importazione fallita: <br><p> %s </p></html>"
 
@@ -4131,11 +4131,11 @@ msgstr "Importa Codici di Contabilità"
 msgid "Import Completed"
 msgstr "Importazione completata"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:189
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:196
 msgid "Import Completed.  Would you like to open %s?"
 msgstr "Importazione completata. Vuoi aprire %s?"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:63
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:64
 msgid "Import Project"
 msgstr "Importa progetto"
 
@@ -4147,7 +4147,7 @@ msgstr ""
 msgid "Import a Miradi Project Zipfile (.mpz)"
 msgstr "Importa un Miradi Project Zipfile (.mpz)"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:80
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:87
 msgid "Import was canceled!"
 msgstr ""
 
@@ -4172,7 +4172,7 @@ msgstr ""
 msgid "Importing XML..."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:146
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:153
 msgid "Importing..."
 msgstr ""
 
@@ -5422,7 +5422,7 @@ msgstr "Apri"
 msgid "Open Anyway"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:190
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:197
 #: Miradi/source/org/miradi/main/MainWindow.java:653
 msgid "Open Project"
 msgstr "Apri progetto"
@@ -7830,7 +7830,7 @@ msgstr ""
 "dati di progetto ma lo schema XML è in evoluzione. Le prossime versioni "
 "esporteranno i dati in diversi formati."
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:250
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:257
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -7858,10 +7858,16 @@ msgstr ""
 msgid "This person is a coach within the Conservation Coaches Network"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:90
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:97
 msgid ""
 "This project cannot be imported because it is in an old data format. \n"
 "Please re-export a new copy from ConPro, and import that instead."
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:82
+msgid ""
+"This project cannot be imported because its Threat Rating data is missing or "
+"damaged. Please contact Miradi support for recovery options."
 msgstr ""
 
 #: Miradi/source/org/miradi/main/MainWindow.java:728
@@ -8326,7 +8332,7 @@ msgstr "Indefinito"
 msgid "Underline"
 msgstr "Sottolineato"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:206
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:213
 msgid "Unexpected error"
 msgstr ""
 
