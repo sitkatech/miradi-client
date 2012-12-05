@@ -210,13 +210,13 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		ORefList childRefs = new ORefList();
 		Desire desire = Desire.findDesire(getProject(), parentRef);
 		if (doObjectivesContainStrategies())
-			childRefs.addAll(getRelevantStrategyAndActivityRefsOnDiagram(diagram, desire));
+			childRefs.addAll(getRelevantStrategyAndActivityRefsInDiagram(diagram, desire));
 		
 		childRefs.addAll(desire.getRelevantIndicatorRefList());
 		return childRefs;
 	}
 
-	private ORefList getRelevantStrategyAndActivityRefsOnDiagram(DiagramObject diagram, Desire desire) throws Exception
+	private ORefList getRelevantStrategyAndActivityRefsInDiagram(DiagramObject diagram, Desire desire) throws Exception
 	{
 		final ORefList relevantStrategyAndActivityRefs = desire.getRelevantStrategyAndActivityRefs();
 		return keepObjectsThatAreInDiagram(diagram, relevantStrategyAndActivityRefs);
