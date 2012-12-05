@@ -50,7 +50,9 @@ import org.miradi.project.threatrating.RatingValueSet;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.schemas.CauseSchema;
+import org.miradi.schemas.RatingCriterionSchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.ValueOptionSchema;
 import org.miradi.utils.EnhancedJsonArray;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.FileUtilities;
@@ -134,6 +136,10 @@ public class MpzToMpfConverter extends AbstractConverter
 		try
 		{
 			MpzToMpfConverter converter = new MpzToMpfConverter(zip);
+			if (converter.missingSimpleThreatRatingFrameworkFile())
+				throw new Exception("This project cannot be imported because its Threat Rating data is missing or damaged. " +
+									"Please contact Miradi support for recovery options.");
+				
 			Project project = converter.convert(progressIndicator);
 			UnicodeStringWriter writer = UnicodeStringWriter.create();
 			ProjectSaver.saveProject(project, writer);
@@ -147,7 +153,6 @@ public class MpzToMpfConverter extends AbstractConverter
 		{
 			zip.close();
 		}
-		
 	}
 
 	public static boolean needsMigration(MiradiZipFile originalZipFile) throws Exception
@@ -311,6 +316,32 @@ public class MpzToMpfConverter extends AbstractConverter
 			EnhancedJsonObject json = readJson(frameworkEntry);
 			writeSimpleThreatFramework(json);
 		}
+	}
+	
+	public boolean missingSimpleThreatRatingFrameworkFile() throws Exception
+	{
+		if (getZipFile().getEntry(getThreatFrameworkEntryPath()) == null)
+			return true;
+		
+		if (hasIncorrectItemCount(RatingCriterionSchema.getObjectType(), 3))
+			return true;
+		
+		if (hasIncorrectItemCount(ValueOptionSchema.getObjectType(), 5))
+			return true;
+		
+		return false;
+	}
+
+	private boolean hasIncorrectItemCount(final int type, final int maxItemCount) throws Exception
+	{
+		ZipEntry manifestEntry = getManifestEntryIfAny(type);
+		if(manifestEntry == null)
+			return true;
+		
+		EnhancedJsonObject json = readJson(manifestEntry);
+		Manifest manifest = new Manifest(json);
+
+		return manifest.getAllKeys().length > maxItemCount;
 	}
 
 	private void convertExceptionLog() throws Exception
