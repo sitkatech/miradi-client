@@ -260,12 +260,12 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 	private ORefList keepObjectsThatAreInDiagram(DiagramObject diagram, final ORefList baseObjectRefs)
 	{
 		ORefList itemRefsInDiagram = new ORefList();
-		for(ORef relevantItemRef : baseObjectRefs)
+		for(ORef candidateRef : baseObjectRefs)
 		{
-			BaseObject baseObject = BaseObject.find(getProject(), relevantItemRef);
+			BaseObject baseObject = BaseObject.find(getProject(), candidateRef);
 			Factor factorOwner = baseObject.getDirectOrIndirectOwningFactor();
 			if (diagram.containsWrappedFactorRef(factorOwner.getRef()))
-				itemRefsInDiagram.add(relevantItemRef);
+				itemRefsInDiagram.add(candidateRef);
 		}
 		
 		return itemRefsInDiagram;
