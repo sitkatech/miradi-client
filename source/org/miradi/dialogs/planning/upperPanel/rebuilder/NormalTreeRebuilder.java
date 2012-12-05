@@ -199,7 +199,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		Strategy strategy = Strategy.find(getProject(), parentRef);
 		childRefs.addAll(strategy.getActivityRefs());
 		if (doStrategiesContainObjectives())
-			childRefs.addAll(getRelevantObjectivesAndGoals(diagram, parentRef));
+			childRefs.addAll(getRelevantObjectivesAndGoalsOnDiagram(diagram, parentRef));
 		
 		childRefs.addAll(strategy.getOwnedObjectRefs().getFilteredBy(IndicatorSchema.getObjectType()));
 		return childRefs;
@@ -248,7 +248,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		return !doObjectivesContainStrategies();
 	}
 
-	private ORefList getRelevantObjectivesAndGoals(DiagramObject diagram, ORef strategyRef) throws Exception
+	private ORefList getRelevantObjectivesAndGoalsOnDiagram(DiagramObject diagram, ORef strategyRef) throws Exception
 	{
 		ORefList relevant = new ORefList();
 		relevant.addAll(findRelevantObjectives(getProject(), strategyRef));
@@ -259,16 +259,16 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 	
 	private ORefList keepObjectsThatAreInDiagram(DiagramObject diagram, final ORefList baseObjectRefs)
 	{
-		ORefList annotationRefsInDiagram = new ORefList();
+		ORefList itemRefsInDiagram = new ORefList();
 		for(ORef relevantItemRef : baseObjectRefs)
 		{
 			BaseObject baseObject = BaseObject.find(getProject(), relevantItemRef);
 			Factor factorOwner = baseObject.getDirectOrIndirectOwningFactor();
 			if (diagram.containsWrappedFactorRef(factorOwner.getRef()))
-				annotationRefsInDiagram.add(relevantItemRef);
+				itemRefsInDiagram.add(relevantItemRef);
 		}
 		
-		return annotationRefsInDiagram;
+		return itemRefsInDiagram;
 	}
 	
 	private boolean doObjectivesContainStrategies() throws Exception
