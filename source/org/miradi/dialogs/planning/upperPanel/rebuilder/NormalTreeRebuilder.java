@@ -47,6 +47,7 @@ import org.miradi.project.Project;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.MeasurementSchema;
+import org.miradi.utils.CodeList;
 
 public class NormalTreeRebuilder extends AbstractTreeRebuilder
 {
@@ -240,12 +241,22 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		return childRefs;
 	}
 
-	private ORefList getChildrenOfTask(ORef parentRef, DiagramObject diagram)
+	private ORefList getChildrenOfTask(ORef parentTaskRef, DiagramObject diagram) throws Exception
 	{
 		ORefList childRefs = new ORefList();
-		Task task = Task.find(getProject(), parentRef);
-		childRefs.addAll(task.getSubTaskRefs());
+
+		Task parentTask = Task.find(getProject(), parentTaskRef);
+		if(willThisTaskEndUpInTheTree(parentTask))
+			childRefs.addAll(parentTask.getSubTaskRefs());
+		
 		return childRefs;
+	}
+
+	private boolean willThisTaskEndUpInTheTree(Task task) throws Exception
+	{
+		String taskTypeCode = task.getTypeName();
+		CodeList visibleRowTypes = getRowColumnProvider().getRowCodesToShow();
+		return visibleRowTypes.contains(taskTypeCode);
 	}
 	
 	private boolean doStrategiesContainObjectives() throws Exception
