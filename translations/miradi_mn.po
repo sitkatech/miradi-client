@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-05 13:46-0600\n"
+"POT-Creation-Date: 2012-12-05 16:16-0600\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -5813,7 +5813,7 @@ msgstr "Шуурхай Үнэлгээ"
 msgid "Ratings"
 msgstr "Үнэлгээ"
 
-#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:220
+#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:225
 msgid "Reading..."
 msgstr ""
 
