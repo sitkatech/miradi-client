@@ -39,7 +39,7 @@ public class ActionViewPlanning extends MainWindowAction
 	@Override
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Switch to the Strategic Planning View");
+		return EAM.text("TT|Switch to the Strategic Plan View");
 	}
 	
 	@Override
