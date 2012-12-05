@@ -30,6 +30,7 @@ import org.martus.swing.UiFileChooser;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.ZipEntryInputStreamWithSeek;
 import org.miradi.dialogs.base.ProgressDialog;
+import org.miradi.exceptions.CorruptSimpleThreatRatingDataException;
 import org.miradi.exceptions.CpmzVersionTooOldException;
 import org.miradi.exceptions.FutureSchemaVersionException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
@@ -74,6 +75,12 @@ public abstract class AbstractProjectImporter
 			File importedFile = importProject(fileToImport);
 			if (importedFile != null)
 				userConfirmOpenImportedProject(importedFile);
+		}
+		catch (CorruptSimpleThreatRatingDataException e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog(EAM.text("This project cannot be imported because its Threat Rating data is missing or damaged. " +
+									  "Please contact Miradi support for recovery options."));
 		}
 		catch (UserCanceledException e)
 		{

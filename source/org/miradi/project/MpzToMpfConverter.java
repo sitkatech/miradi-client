@@ -37,6 +37,7 @@ import java.util.zip.ZipEntry;
 import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeStringWriter;
 import org.martus.util.UnicodeWriter;
+import org.miradi.exceptions.CorruptSimpleThreatRatingDataException;
 import org.miradi.exceptions.FutureSchemaVersionException;
 import org.miradi.exceptions.UserCanceledException;
 import org.miradi.ids.BaseId;
@@ -136,9 +137,8 @@ public class MpzToMpfConverter extends AbstractConverter
 		try
 		{
 			MpzToMpfConverter converter = new MpzToMpfConverter(zip);
-			if (converter.missingSimpleThreatRatingFrameworkFile())
-				throw new Exception("This project cannot be imported because its Threat Rating data is missing or damaged. " +
-									"Please contact Miradi support for recovery options.");
+			if (converter.hasCorruptSimpleThreatRatingData())
+				throw new CorruptSimpleThreatRatingDataException();
 				
 			Project project = converter.convert(progressIndicator);
 			UnicodeStringWriter writer = UnicodeStringWriter.create();
@@ -318,7 +318,7 @@ public class MpzToMpfConverter extends AbstractConverter
 		}
 	}
 	
-	public boolean missingSimpleThreatRatingFrameworkFile() throws Exception
+	public boolean hasCorruptSimpleThreatRatingData() throws Exception
 	{
 		if (getZipFile().getEntry(getThreatFrameworkEntryPath()) == null)
 			return true;
