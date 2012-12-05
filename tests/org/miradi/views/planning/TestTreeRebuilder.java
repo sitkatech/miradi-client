@@ -69,6 +69,28 @@ public class TestTreeRebuilder extends TestCaseWithProject
 	{
 		verifyRelevantNodes(StrategyObjectiveTreeOrderQuestion.STRATEGY_CONTAINS_OBJECTIVE_CODE);
 	}
+	
+	public void testRelvantIndicatorNodes() throws Exception
+	{
+		ResultsChainDiagram resultChainA = ResultsChainDiagram.find(getProject(), getProject().createResultsChainDiagram());
+		Strategy strategyA = getProject().createStrategy();
+		getProject().createAndAddFactorToDiagram(resultChainA, strategyA.getRef());
+		getProject().addObjective(strategyA);
+		Indicator indicator = getProject().createIndicator(strategyA);
+		
+		ResultsChainDiagram resultChainB = ResultsChainDiagram.find(getProject(), getProject().createResultsChainDiagram());
+		Strategy strategyB = getProject().createStrategy();
+		getProject().createAndAddFactorToDiagram(resultChainB, strategyB.getRef());
+		Objective objectiveB = getProject().addObjective(strategyB);
+		getProject().addSingleItemRelevantBaseObject(objectiveB, indicator, Objective.TAG_RELEVANT_INDICATOR_SET);
+		
+		CodeList rowCodes = new CodeList();
+		rowCodes.add(ResultsChainDiagramSchema.OBJECT_NAME);
+		rowCodes.add(ObjectiveSchema.OBJECT_NAME);
+		rowCodes.add(IndicatorSchema.OBJECT_NAME);
+		
+		verifyNodeHierarchy(resultChainA, resultChainB, rowCodes, StrategyObjectiveTreeOrderQuestion.STRATEGY_CONTAINS_OBJECTIVE_CODE);
+	}
 
 	private void verifyRelevantNodes(final String strategyContainsObjectiveCode)	throws Exception
 	{
@@ -81,13 +103,17 @@ public class TestTreeRebuilder extends TestCaseWithProject
 		Strategy strategyB = getProject().createStrategy();
 		getProject().createAndAddFactorToDiagram(resultChainB, strategyB.getRef());
 		getProject().addSingleItemRelevantBaseObject(objectiveA, strategyB, Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
-
 		
 		CodeList rowCodes = new CodeList();
 		rowCodes.add(ResultsChainDiagramSchema.OBJECT_NAME);
 		rowCodes.add(StrategySchema.OBJECT_NAME);
 		rowCodes.add(ObjectiveSchema.OBJECT_NAME);
 
+		verifyNodeHierarchy(resultChainA, resultChainB, rowCodes, strategyContainsObjectiveCode);
+	}
+	
+	public void verifyNodeHierarchy(ResultsChainDiagram resultChainA, ResultsChainDiagram resultChainB, CodeList rowCodes, final String strategyContainsObjectiveCode) throws Exception
+	{
 		AbstractPlanningTreeNode rootNode = createAndBuildTree(rowCodes, strategyContainsObjectiveCode);
 		Vector<AbstractPlanningTreeNode> resultsChainNodes = rootNode.getRawChildrenByReference();
 		assertEquals("incorrect children count?", 2, resultsChainNodes.size());

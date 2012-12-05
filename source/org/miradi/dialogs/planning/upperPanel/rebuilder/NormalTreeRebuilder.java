@@ -212,8 +212,13 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		if (doObjectivesContainStrategies())
 			childRefs.addAll(getRelevantStrategyAndActivityRefsInDiagram(diagram, desire));
 		
-		childRefs.addAll(desire.getRelevantIndicatorRefList());
+		childRefs.addAll(getRelevantIndicatorsInDiagram(diagram, desire));
 		return childRefs;
+	}
+
+	public ORefList getRelevantIndicatorsInDiagram(DiagramObject diagram, Desire desire) throws Exception
+	{
+		return keepObjectsThatAreInDiagram(diagram, desire.getRelevantIndicatorRefList());
 	}
 
 	private ORefList getRelevantStrategyAndActivityRefsInDiagram(DiagramObject diagram, Desire desire) throws Exception
