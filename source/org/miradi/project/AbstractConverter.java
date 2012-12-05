@@ -48,6 +48,16 @@ abstract public class AbstractConverter
 	{
 		return FileUtilities.join(getProjectPrefix(), "json");
 	}
-
+	
+	protected String getThreatFrameworkEntryPath() throws Exception
+	{
+		return FileUtilities.join(getJsonPrefix(), "threatframework");
+	}
+	
+	protected String getThreatRatingsDirectoryEntryPath() throws Exception
+	{
+		return FileUtilities.join(getJsonPrefix(), "threatratings");
+	}
+	
 	abstract protected String getProjectPrefix();
 }

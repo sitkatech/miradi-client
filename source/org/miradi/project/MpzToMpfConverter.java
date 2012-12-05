@@ -501,19 +501,9 @@ public class MpzToMpfConverter extends AbstractConverter
 		return FileUtilities.join(getProjectPrefix(), "LastModifiedProjectTime.txt");
 	}
 	
-	private String getThreatFrameworkEntryPath() throws Exception
-	{
-		return FileUtilities.join(getJsonPrefix(), "threatframework");
-	}
-	
 	private String getBundleEntryPath(int threatId, int targetId) throws Exception
 	{
 		return FileUtilities.join(getThreatRatingsDirectoryEntryPath(), threatId + "-" + targetId);
-	}
-	
-	private String getThreatRatingsDirectoryEntryPath() throws Exception
-	{
-		return FileUtilities.join(getJsonPrefix(), "threatratings");
 	}
 	
 	@Override

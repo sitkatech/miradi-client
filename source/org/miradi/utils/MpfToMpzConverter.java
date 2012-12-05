@@ -23,6 +23,7 @@ package org.miradi.utils;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -38,6 +39,7 @@ import org.miradi.legacyprojects.ObjectManifest;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ThreatRatingBundleSorter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Strategy;
@@ -48,6 +50,8 @@ import org.miradi.project.MpzToMpfConverter;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectInfo;
 import org.miradi.project.ProjectLoader;
+import org.miradi.project.threatrating.SimpleThreatRatingFramework;
+import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 //FIXME medium: This class needs to use ZipUtilities to eliminate duplication of
@@ -102,12 +106,43 @@ public class MpfToMpzConverter extends AbstractConverter
 			}
 			
 			addManifestFiles(zipOutputStream);
+			addSimpleThreatRatingFiles(zipOutputStream);
 		}
 		finally
 		{
 			zipOutputStream.flush();
 			zipOutputStream.close();
 		}
+	}
+	
+	private void addSimpleThreatRatingFiles(ZipOutputStream zipOutputStream) throws Exception
+	{
+		writeSimpleThreatRatingFrameworkFile(zipOutputStream);
+		writeSimpleThreatRatingBundleFiles(zipOutputStream);
+	}
+	
+	private void writeSimpleThreatRatingFrameworkFile(ZipOutputStream zipOutputStream) throws Exception
+	{
+		SimpleThreatRatingFramework simpleThreatRatingFramework = getProject().getSimpleThreatRatingFramework();
+		writeZipEntry(zipOutputStream, getThreatFrameworkEntryPath(), simpleThreatRatingFramework.toJson().toString());
+	}
+
+	private void writeSimpleThreatRatingBundleFiles(ZipOutputStream zipOutputStream) throws Exception
+	{
+		final SimpleThreatRatingFramework simpleThreatRatingFramework = getProject().getSimpleThreatRatingFramework();
+		Collection<ThreatRatingBundle> allBundles = simpleThreatRatingFramework.getAllBundles();
+		Vector<ThreatRatingBundle> sortedBundles = new Vector<ThreatRatingBundle>(allBundles);
+		Collections.sort(sortedBundles, new ThreatRatingBundleSorter());
+		for(ThreatRatingBundle bundle : sortedBundles)
+		{
+			String bundleName = simpleThreatRatingFramework.getBundleKey(bundle.getThreatId(), bundle.getTargetId());
+			writeZipEntry(zipOutputStream, getSimpleThreatRatingBundleEntryPath(bundleName), bundle.toString());
+		}
+	}
+
+	private String getSimpleThreatRatingBundleEntryPath(String bundleName) throws Exception
+	{
+		return FileUtilities.join(getThreatRatingsDirectoryEntryPath(), bundleName);
 	}
 	
 	private void addManifestFiles(ZipOutputStream zipOutputStream) throws Exception
