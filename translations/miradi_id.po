@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-06 10:01-0600\n"
+"POT-Creation-Date: 2012-12-06 10:31-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -235,6 +235,10 @@ msgstr ""
 msgid "%countLabel: %itemCount"
 msgstr ""
 
+#: Miradi/source/org/miradi/wizard/noproject/FileSystemProjectOrDirectoryNode.java:92
+msgid "%s (old project)"
+msgstr ""
+
 #: Miradi/source/org/miradi/utils/DiagramCorruptionDetector.java:222
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br> "
@@ -276,10 +280,6 @@ msgstr "(Penerjemahan: : %code %date) "
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectList.java:70
 msgid "(Unknown)"
 msgstr "(Tidak Dikenal) "
-
-#: Miradi/source/org/miradi/wizard/noproject/FileSystemProjectOrDirectoryNode.java:92
-msgid "(old project)"
-msgstr ""
 
 #: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:51
 msgid "(see Diagram)"
