@@ -47,6 +47,11 @@ public class MpfFileFilter extends GenericMiradiFileFilter
 	{
 		return name + EXTENSION;
 	}
+	
+	public static boolean isMpfFile(File pathname)
+	{
+		return doesFileEndWithCorrectExtension(pathname, EXTENSION);
+	}
 
 	public static final String EXTENSION = ".Miradi";
 }

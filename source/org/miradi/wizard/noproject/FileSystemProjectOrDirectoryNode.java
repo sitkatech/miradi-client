@@ -47,7 +47,7 @@ public class FileSystemProjectOrDirectoryNode extends FileSystemTreeNode
 	{
 		try
 		{
-			if(file.getName().endsWith(MpfFileFilter.EXTENSION))
+			if(MpfFileFilter.isMpfFile(file))
 				return true;
 			
 			if (!file.isDirectory())
@@ -85,7 +85,7 @@ public class FileSystemProjectOrDirectoryNode extends FileSystemTreeNode
 		try
 		{
 			final File possibleProjectFile = getFile();
-			if(possibleProjectFile.getName().endsWith(MpfFileFilter.EXTENSION))
+			if(MpfFileFilter.isMpfFile(possibleProjectFile))
 				return Project.withoutMpfProjectSuffix(possibleProjectFile.getName());
 			
 			if (LegacyProjectUtilities.isExistingLocalProject(possibleProjectFile))

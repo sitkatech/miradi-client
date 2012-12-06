@@ -37,6 +37,11 @@ abstract public class GenericMiradiFileFilter extends FileFilter implements Mira
 
 	protected boolean doesFileEndWithCorrectExtension(File pathname)
 	{
-		return (pathname.getName().toLowerCase().endsWith(getFileExtension().toLowerCase()));
+		return doesFileEndWithCorrectExtension(pathname, getFileExtension());
+	}
+
+	protected static boolean doesFileEndWithCorrectExtension(File pathname, final String fileExtension)
+	{
+		return (pathname.getName().toLowerCase().endsWith(fileExtension.toLowerCase()));
 	}
 }
