@@ -39,6 +39,7 @@ import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.views.diagram.TestLinkBendPointsMoveHandler;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
+import org.miradi.xml.xmpz2.Xmpz2XmlExporterWithoutTimeStampForTesting;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 
 public class TestXmpz2XmlImporter extends TestCaseWithProject
@@ -139,7 +140,7 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 
 	private UnicodeXmlWriter createWriter(ProjectForTesting projectToUse) throws Exception
 	{
-		Xmpz2XmlExporter exporter = new Xmpz2XmlExporter(projectToUse);
+		Xmpz2XmlExporter exporter = new Xmpz2XmlExporterWithoutTimeStampForTesting(projectToUse);
 		UnicodeXmlWriter writer = UnicodeXmlWriter.create();
 		exporter.exportProject(writer);
 		writer.flush();

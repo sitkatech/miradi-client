@@ -1,11 +1,12 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Fri Nov 30 12:11:28 EST 2012 $
+# $LastChangedDate: Thu Dec 06 14:14:22 EST 2012 $
 # $LastChangedRevision: 208 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/208'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
   ProjectSummary.element &
+  ExporterDetails.element &
   ProjectSummaryScope.element &
   ProjectSummaryLocation.element &
   ProjectSummaryPlanning.element &
@@ -988,6 +989,13 @@ ExpensesMonth.element = element miradi:ExpensesMonth
 ExpensesDay.element = element miradi:ExpensesDay
 {
   attribute Date { vocabulary_date }
+}
+
+ExporterDetails.element = element miradi:ExporterDetails
+{
+  element miradi:ExporterName { text } &
+  element miradi:ExporterVersion { text } &
+  element miradi:ExporterDate { text }
 }
 
 IndicatorThreshold.element = element miradi:IndicatorThreshold
