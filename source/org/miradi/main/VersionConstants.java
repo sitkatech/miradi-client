@@ -26,6 +26,11 @@ import org.martus.util.UnicodeReader;
 
 public class VersionConstants
 {
+	public static String getMiradiAppName()
+	{
+		return "Miradi";
+	}
+	
 	public static String getVersionAndTimestamp() throws Exception
 	{
 		return getVersion() + " " + getTimestamp();
