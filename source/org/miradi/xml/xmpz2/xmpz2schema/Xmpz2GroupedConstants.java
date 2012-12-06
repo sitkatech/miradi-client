@@ -105,7 +105,6 @@ abstract public class Xmpz2GroupedConstants implements Xmpz2XmlConstants
 		MEASUREMENT,
 		METHOD,
 		SUB_TASK,
-		RELATED_THREAT,
 		LEADER_RESOURCE,
 		};
 		
