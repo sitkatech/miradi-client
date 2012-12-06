@@ -154,8 +154,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().startElementDefinition(CONSERVATION_PROJECT);
 
 		Vector<String> elementNames = new Vector<String>();
-		elementNames.add(createElementName(PROJECT_SUMMARY));
 		elementNames.add(createElementName(EXPORT_DETAILS));
+		elementNames.add(createElementName(PROJECT_SUMMARY));
 		elementNames.add(createElementName(PROJECT_SUMMARY_SCOPE));
 		elementNames.add(createElementName(PROJECT_SUMMARY_LOCATION));
 		elementNames.add(createElementName(PROJECT_SUMMARY_PLANNING));

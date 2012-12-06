@@ -1,12 +1,12 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Dec 06 17:17:17 EST 2012 $
+# $LastChangedDate: Thu Dec 06 17:25:48 EST 2012 $
 # $LastChangedRevision: 210 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/210'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
-  ProjectSummary.element &
   ExportDetails.element &
+  ProjectSummary.element &
   ProjectSummaryScope.element &
   ProjectSummaryLocation.element &
   ProjectSummaryPlanning.element &
