@@ -25,6 +25,9 @@ import java.io.File;
 import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.FileSystemProjectSorter;
+import org.miradi.project.Project;
+import org.miradi.utils.MpfFileFilter;
+import org.miradi.utils.Translation;
 
 public class FileSystemProjectOrDirectoryNode extends FileSystemTreeNode
 {
@@ -44,7 +47,7 @@ public class FileSystemProjectOrDirectoryNode extends FileSystemTreeNode
 	{
 		try
 		{
-			if(file.getName().endsWith(".Miradi"))
+			if(file.getName().endsWith(MpfFileFilter.EXTENSION))
 				return true;
 			
 			if (!file.isDirectory())
@@ -73,6 +76,28 @@ public class FileSystemProjectOrDirectoryNode extends FileSystemTreeNode
 		{
 			EAM.logException(e);
 			return false;
+		}
+	}
+	
+	@Override
+	public String toRawString()
+	{
+		try
+		{
+			final File possibleProjectFile = getFile();
+			if(possibleProjectFile.getName().endsWith(MpfFileFilter.EXTENSION))
+				return Project.withoutMpfProjectSuffix(possibleProjectFile.getName());
+			
+			if (LegacyProjectUtilities.isExistingLocalProject(possibleProjectFile))
+				return possibleProjectFile.getName() + EAM.text("(old project)");
+			
+			return super.toRawString();
+		}
+		catch (Exception e)
+		{
+			EAM.alertUserOfNonFatalException(e);
+			
+			return Translation.getCellTextWhenException();
 		}
 	}
 }
