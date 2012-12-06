@@ -237,6 +237,7 @@ import org.miradi.xml.conpro.exporter.TestConproXmlExporter;
 import org.miradi.xml.conpro.importer.TestConproXmlImporter;
 import org.miradi.xml.wcs.TestXmpz2XmlExporter;
 import org.miradi.xml.wcs.TestXmpzExporter;
+import org.miradi.xml.wcs.TestXmpzSchemaCreator;
 
 public class MainTestSuite extends TestSuite
 {
@@ -524,6 +525,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestXmpz2XmlImporter.class));
 		
 		addTest(new TestSuite(TestXmpz2SchemaCreator.class));
+		addTest(new TestSuite(TestXmpzSchemaCreator.class));
 	}
 
 	@Override
