@@ -34,7 +34,7 @@ public class ViabilityFutureStatusNode extends UnspecifiedBaseObjectNode
 	}
 	
 	@Override
-	public String toRawString()
+	public String getNodeLabel()
 	{
 		try
 		{

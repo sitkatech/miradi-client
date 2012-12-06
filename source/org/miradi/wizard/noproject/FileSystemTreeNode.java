@@ -186,7 +186,7 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 	}
 
 	@Override
-	public String toRawString()
+	public String getNodeLabel()
 	{
 		return thisFile.getName();
 	}

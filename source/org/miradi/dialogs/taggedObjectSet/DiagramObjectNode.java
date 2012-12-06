@@ -81,7 +81,7 @@ public class DiagramObjectNode extends TreeTableNode
 	}
 	
 	@Override
-	public String toRawString()
+	public String getNodeLabel()
 	{
 		return currentDiagramObject.toString();
 	}

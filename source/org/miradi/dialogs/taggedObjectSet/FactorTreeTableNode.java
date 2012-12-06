@@ -67,7 +67,7 @@ public class FactorTreeTableNode extends TreeTableNode
 	}
 
 	@Override
-	public String toRawString()
+	public String getNodeLabel()
 	{
 		return factor.toString();
 	}
