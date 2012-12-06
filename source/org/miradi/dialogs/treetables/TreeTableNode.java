@@ -46,14 +46,14 @@ public abstract class TreeTableNode implements Comparable<TreeTableNode>
 	@Override
 	public String toString()
 	{
-		final String rawString = toRawString();
+		final String rawString = getNodeLabel();
 		if (rawString == null)
 			return "";
 		
 		return rawString;
 	}
 
-	public String toRawString()
+	public String getNodeLabel()
 	{
 		return null;
 	}

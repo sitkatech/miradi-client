@@ -71,7 +71,7 @@ public class ViabilityIndicatorNode extends TreeTableNode
 	}
 
 	@Override
-	public String toRawString()
+	public String getNodeLabel()
 	{
 		return indicator.toString();
 	}

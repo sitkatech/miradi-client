@@ -121,6 +121,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeDiagramPointElement();
 		writeDiagramSizeElement();
 		writeDateUnitSchemaElements();
+		creators.add(createExporterDetailsElementCreator());
 		creators.add(creatorThresholdsElementSchemaCreator());
 		creators.add(createTimePeriodCostsElementSchemaCreator());
 		creators.add(createExpenseEntryElementSchemaCreator());
@@ -154,6 +155,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 		Vector<String> elementNames = new Vector<String>();
 		elementNames.add(createElementName(PROJECT_SUMMARY));
+		elementNames.add(createElementName(EXPORTER_DETAILS));
 		elementNames.add(createElementName(PROJECT_SUMMARY_SCOPE));
 		elementNames.add(createElementName(PROJECT_SUMMARY_LOCATION));
 		elementNames.add(createElementName(PROJECT_SUMMARY_PLANNING));
@@ -721,6 +723,16 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().startBlock();
 		getSchemaWriter().defineElements(Utility.convertToVector(subElements));
 		getSchemaWriter().endBlock();
+	}
+	
+	private Xmpz2CustomSchemaDefinitionCreator createExporterDetailsElementCreator()
+	{
+		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), EXPORTER_DETAILS);
+		creator.addChildElement(EXPORTER_NAME, TEXT_ELEMENT_TYPE);
+		creator.addChildElement(EXPORTER_VERSION, TEXT_ELEMENT_TYPE);
+		creator.addChildElement(EXPORTER_DATE, TEXT_ELEMENT_TYPE);
+		
+		return creator;
 	}
 	
 	private Xmpz2CustomSchemaDefinitionCreator creatorThresholdsElementSchemaCreator()

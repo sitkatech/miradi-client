@@ -90,7 +90,7 @@ abstract public class AbstractPlanningTreeNode extends TreeTableNode
 	}
 	
 	@Override
-	public String toRawString()
+	public String getNodeLabel()
 	{
 		if (getObject() == null)
 			return "";

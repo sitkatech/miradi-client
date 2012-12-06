@@ -104,7 +104,7 @@ public class TreeTableExporter extends AbstractTreeTableOrModelExporter
 			return baseObjectForRowColumn.toString();
 	
 		TreeTableNode node = getTreeTable().getNodeForRow(row);
-		return node.toRawString();
+		return node.getNodeLabel();
 	}
 
 	public JTree getTree()

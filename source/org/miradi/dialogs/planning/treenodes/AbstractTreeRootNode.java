@@ -49,7 +49,7 @@ abstract public class AbstractTreeRootNode extends AbstractPlanningTreeNode
 	}
 
 	@Override
-	public String toRawString()
+	public String getNodeLabel()
 	{
 		return getProject().getFilename();
 	}	

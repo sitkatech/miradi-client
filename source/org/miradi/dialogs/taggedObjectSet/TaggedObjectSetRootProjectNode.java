@@ -93,7 +93,7 @@ public class TaggedObjectSetRootProjectNode extends TreeTableNode
 	}
 
 	@Override
-	public String toRawString()
+	public String getNodeLabel()
 	{
 		return project.getFilename();
 	}

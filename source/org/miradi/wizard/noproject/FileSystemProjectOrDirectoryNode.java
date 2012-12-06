@@ -80,7 +80,7 @@ public class FileSystemProjectOrDirectoryNode extends FileSystemTreeNode
 	}
 	
 	@Override
-	public String toRawString()
+	public String getNodeLabel()
 	{
 		try
 		{
@@ -91,7 +91,7 @@ public class FileSystemProjectOrDirectoryNode extends FileSystemTreeNode
 			if (LegacyProjectUtilities.isExistingLocalProject(possibleProjectFile))
 				return EAM.substitute(EAM.text("%s (old project)"), possibleProjectFile.getName());
 			
-			return super.toRawString();
+			return super.getNodeLabel();
 		}
 		catch (Exception e)
 		{
