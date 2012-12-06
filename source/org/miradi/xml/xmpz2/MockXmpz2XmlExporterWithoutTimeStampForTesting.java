@@ -22,9 +22,9 @@ package org.miradi.xml.xmpz2;
 
 import org.miradi.project.Project;
 
-public class Xmpz2XmlExporterWithoutTimeStampForTesting extends Xmpz2XmlExporter
+public class MockXmpz2XmlExporterWithoutTimeStampForTesting extends Xmpz2XmlExporter
 {
-	public Xmpz2XmlExporterWithoutTimeStampForTesting(Project projectToExport)
+	public MockXmpz2XmlExporterWithoutTimeStampForTesting(Project projectToExport)
 	{
 		super(projectToExport);
 	}
