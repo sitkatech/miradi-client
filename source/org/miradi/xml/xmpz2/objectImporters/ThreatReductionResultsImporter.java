@@ -47,6 +47,6 @@ public class ThreatReductionResultsImporter extends BaseObjectImporter
 	{
 		super.importFields(baseObjectNode, refToUse);
 		
-		getImporter().importRefField(baseObjectNode, refToUse, getPoolName(), ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF);
+		getImporter().importRefField(baseObjectNode, refToUse, getPoolName(), ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, THREAT_ID);
 	}
 }

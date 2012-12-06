@@ -500,29 +500,44 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		setData(destinationRef, DiagramFactor.TAG_LOCATION, pointAsString);
 	}
 	
+	public void importIdField(Node node, ORef destinationRefToUse, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		String poolName = baseObjectSchema.getXmpz2ElementName();
+		String elementName = findElementName(poolName, fieldSchema.getTag());
+		ORef refToImport = getRefToImport(node, poolName + elementName, elementName);
+		setData(destinationRefToUse, fieldSchema.getTag(), refToImport.getObjectId().toString());
+	}
+	
 	public void importRefField(Node node, ORef destinationRefToUse,	BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		importRefField(node, destinationRefToUse, baseObjectSchema.getXmpz2ElementName(), fieldSchema.getTag());
+		String tag = fieldSchema.getTag();
+		String poolName = baseObjectSchema.getXmpz2ElementName();
+		
+		String elementName = findElementName(poolName, tag);
+		importRef(node, destinationRefToUse, poolName, tag, elementName, elementName);
 	}
 
-	public void importRefField(Node node, ORef destinationRefToUse, final String xmpz2ElementName, final String tag) throws Exception
+	public void importRefField(Node node, ORef destinationRefToUse, final String poolName, final String tag, final String idElementName) throws Exception
 	{
-		ORef refToImport = getRefToImport(node, xmpz2ElementName, tag);
+		String elementName = findElementName(poolName, tag);
+		importRef(node, destinationRefToUse, poolName, tag, elementName, idElementName);
+	}
+
+	private void importRef(Node node, ORef destinationRefToUse, final String poolName, final String tag, String elementName, final String idElementName) throws Exception
+	{
+		importRef(node, destinationRefToUse, tag, poolName + elementName, idElementName);
+	}
+
+	private void importRef(Node node, ORef destinationRefToUse, final String tag, final String parentElementName, final String idElementName) throws Exception
+	{
+		ORef refToImport = getRefToImport(node, parentElementName, idElementName);
 		if (refToImport.isValid())
 			setData(destinationRefToUse, tag, refToImport.toString());
 	}
 	
-	public void importIdField(Node node, ORef destinationRefToUse, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	private ORef getRefToImport(Node node, String parentElementName, String elementName) throws Exception
 	{
-		ORef refToImport = getRefToImport(node, baseObjectSchema.getXmpz2ElementName(), fieldSchema.getTag());
-		setData(destinationRefToUse, fieldSchema.getTag(), refToImport.getObjectId().toString());
-	}
-
-	private ORef getRefToImport(Node node, String poolName, String idElementName) throws Exception
-	{
-		String elementName = findElementName(poolName, idElementName);
-		String idParentElement = poolName + elementName;
-		Node idParentNode = getNode(node, idParentElement);
+		Node idParentNode = getNode(node, parentElementName);
 		if (idParentNode == null)
 			return ORef.INVALID;
 		
