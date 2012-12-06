@@ -96,7 +96,7 @@ public class TargetViabilityNode extends TreeTableNode
 	}
 
 	@Override
-	public String toRawString()
+	public String getNodeLabel()
 	{
 		return target.getLabel();
 	}

@@ -110,7 +110,7 @@ public class TreeTableModelExporter extends AbstractTreeTableOrModelExporter
 	{
 		TreeTableNode node = getTreeTableNodeForRow(row);
 		if (isTreeColumn(modelColumn))
-			return node.toRawString();
+			return node.getNodeLabel();
 		
 		Object value = getModel().getValueAt(node, modelColumn);
 		return getSafeValue(value);

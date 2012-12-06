@@ -70,7 +70,7 @@ public class ActivityRelevancyNode extends AbstractRelevancyNode
 	}
 
 	@Override
-	public String toRawString()
+	public String getNodeLabel()
 	{
 		return activity.combineShortLabelAndLabel();
 	}

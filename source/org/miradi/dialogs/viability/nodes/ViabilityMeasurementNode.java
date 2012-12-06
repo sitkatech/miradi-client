@@ -66,7 +66,7 @@ public class ViabilityMeasurementNode extends TreeTableNode
 	}
 
 	@Override
-	public String toRawString()
+	public String getNodeLabel()
 	{
 		return measurement.toString();
 	}

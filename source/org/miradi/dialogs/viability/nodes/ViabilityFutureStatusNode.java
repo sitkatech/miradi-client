@@ -58,7 +58,7 @@ public class ViabilityFutureStatusNode extends TreeTableNode
 	}
 
 	@Override
-	public String toRawString()
+	public String getNodeLabel()
 	{
 		return parentNode.getObject().getData(Indicator.TAG_FUTURE_STATUS_DATE);
 	}
