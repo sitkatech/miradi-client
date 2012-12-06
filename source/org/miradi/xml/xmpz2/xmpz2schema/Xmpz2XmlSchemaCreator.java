@@ -495,7 +495,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			return WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME;
 		
 		if (ThreatReductionResult.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF))
-			return RELATED_THREAT_ID;
+			return THREAT_ID;
 		
 		return getTagToElementNameMap().findElementName(baseObjectSchema, fieldSchema);
 	}
