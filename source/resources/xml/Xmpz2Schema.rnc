@@ -1,7 +1,7 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Dec 06 16:04:39 EST 2012 $
-# $LastChangedRevision: 209 $
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/209'
+# $LastChangedDate: Thu Dec 06 17:04:05 EST 2012 $
+# $LastChangedRevision: 210 $
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/210'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -1023,7 +1023,7 @@ ExpenseEntry.element = element miradi:ExpenseEntry
   element miradi:ExpenseEntryAccountingCodeId { AccountingCodeId.element }? &
   element miradi:ExpenseEntryBudgetCategoryOneId { BudgetCategoryOneId.element }? &
   element miradi:ExpenseEntryBudgetCategoryTwoId { BudgetCategoryTwoId.element }? &
-  element miradi:ExpenseEntryDetails { DateUnitExpense.element* }?
+  element miradi:ExpenseEntryDetails { DateUnitExpense.element* }
 }
 
 WorkUnitsEntry.element = element miradi:WorkUnitsEntry
@@ -1033,7 +1033,7 @@ WorkUnitsEntry.element = element miradi:WorkUnitsEntry
   element miradi:WorkUnitsEntryAccountingCodeId { AccountingCodeId.element }? &
   element miradi:WorkUnitsEntryBudgetCategoryOneId { BudgetCategoryOneId.element }? &
   element miradi:WorkUnitsEntryBudgetCategoryTwoId { BudgetCategoryTwoId.element }? &
-  element miradi:WorkUnitsEntryDetails { DateUnitWorkUnits.element* }?
+  element miradi:WorkUnitsEntryDetails { DateUnitWorkUnits.element* }
 }
 
 ExternalProjectId.element = element miradi:ExternalProjectId

@@ -767,7 +767,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		creator.addOptionalSchemaElement(ACCOUNTING_CODE_ID);
 		creator.addOptionalSchemaElement(BUDGET_CATEGORY_ONE_ID);
 		creator.addOptionalSchemaElement(BUDGET_CATEGORY_TWO_ID);
-		creator.addChildElement(getSchemaWriter().createOptionalSchemaElement(EXPENSE_ENTRY + DETAILS, getSchemaWriter().createZeroOrMoreDotElement(DATE_UNITS_EXPENSE)));
+		creator.addChildElement(getSchemaWriter().createSchemaElement(EXPENSE_ENTRY + DETAILS, getSchemaWriter().createZeroOrMoreDotElement(DATE_UNITS_EXPENSE)));
 		
 		return creator;
 	}
@@ -780,7 +780,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		creator.addOptionalSchemaElement(ACCOUNTING_CODE_ID);
 		creator.addOptionalSchemaElement(BUDGET_CATEGORY_ONE_ID);
 		creator.addOptionalSchemaElement(BUDGET_CATEGORY_TWO_ID);
-		creator.addChildElement(getSchemaWriter().createOptionalSchemaElement(WORK_UNITS_ENTRY + DETAILS, getSchemaWriter().createZeroOrMoreDotElement(DATE_UNIT_WORK_UNITS)));
+		creator.addChildElement(getSchemaWriter().createSchemaElement(WORK_UNITS_ENTRY + DETAILS, getSchemaWriter().createZeroOrMoreDotElement(DATE_UNIT_WORK_UNITS)));
 		
 		return creator;
 	}
