@@ -730,7 +730,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), EXPORT_DETAILS);
 		creator.addChildElement(EXPORTER_NAME, TEXT_ELEMENT_TYPE);
 		creator.addChildElement(EXPORTER_VERSION, TEXT_ELEMENT_TYPE);
-		creator.addChildElement(EXPORTER_DATE, TEXT_ELEMENT_TYPE);
+		creator.addChildElement(EXPORT_TIME, TEXT_ELEMENT_TYPE);
 		
 		return creator;
 	}

@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Dec 06 17:08:00 EST 2012 $
+# $LastChangedDate: Thu Dec 06 17:17:17 EST 2012 $
 # $LastChangedRevision: 210 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/210'
 start = ConservationProject.element
@@ -995,7 +995,7 @@ ExportDetails.element = element miradi:ExportDetails
 {
   element miradi:ExporterName { text } &
   element miradi:ExporterVersion { text } &
-  element miradi:ExporterDate { text }
+  element miradi:ExportTime { text }
 }
 
 IndicatorThreshold.element = element miradi:IndicatorThreshold

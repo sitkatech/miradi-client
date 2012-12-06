@@ -47,7 +47,7 @@ public interface Xmpz2XmlConstants
 	public static final String EXPORT_DETAILS = "ExportDetails";
 	public static final String EXPORTER_NAME = "ExporterName";
 	public static final String EXPORTER_VERSION = "ExporterVersion";
-	public static final String EXPORTER_DATE = "ExporterDate";
+	public static final String EXPORT_TIME = "ExportTime";
 	public static final String PROJECT_SUMMARY = "ProjectSummary";
 	public static final String PROJECT_RESOURCE = "ProjectResource";
 	public static final String ORGANIZATION = "Organization";
