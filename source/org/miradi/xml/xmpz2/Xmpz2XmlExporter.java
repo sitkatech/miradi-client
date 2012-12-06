@@ -72,7 +72,7 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 		getWriter().writeStartElement(EXPORT_DETAILS);
 		getWriter().writeElement(EXPORTER_NAME, VersionConstants.getMiradiAppName());
 		getWriter().writeElement(EXPORTER_VERSION, VersionConstants.getVersion());
-		getWriter().writeElement(EXPORTER_DATE, getCurrentTime());
+		getWriter().writeElement(EXPORT_TIME, getCurrentTime());
 		getWriter().writeEndElement(EXPORT_DETAILS);
 	}
 
