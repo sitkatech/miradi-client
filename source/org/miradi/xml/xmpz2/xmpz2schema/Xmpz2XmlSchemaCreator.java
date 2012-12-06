@@ -155,7 +155,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 		Vector<String> elementNames = new Vector<String>();
 		elementNames.add(createElementName(PROJECT_SUMMARY));
-		elementNames.add(createElementName(EXPORTER_DETAILS));
+		elementNames.add(createElementName(EXPORT_DETAILS));
 		elementNames.add(createElementName(PROJECT_SUMMARY_SCOPE));
 		elementNames.add(createElementName(PROJECT_SUMMARY_LOCATION));
 		elementNames.add(createElementName(PROJECT_SUMMARY_PLANNING));
@@ -727,7 +727,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private Xmpz2CustomSchemaDefinitionCreator createExporterDetailsElementCreator()
 	{
-		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), EXPORTER_DETAILS);
+		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), EXPORT_DETAILS);
 		creator.addChildElement(EXPORTER_NAME, TEXT_ELEMENT_TYPE);
 		creator.addChildElement(EXPORTER_VERSION, TEXT_ELEMENT_TYPE);
 		creator.addChildElement(EXPORTER_DATE, TEXT_ELEMENT_TYPE);
