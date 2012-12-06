@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
+import java.text.DateFormat;
 import java.util.Calendar;
 
 import org.martus.util.UnicodeWriter;
@@ -78,7 +79,8 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 
 	protected String getCurrentTime()
 	{
-		return Calendar.getInstance().getTime().toString();
+		DateFormat formater = DateFormat.getDateTimeInstance();
+		return formater.format(Calendar.getInstance().getTime());
 	}
 
 	private void exportProjectSummary() throws Exception
