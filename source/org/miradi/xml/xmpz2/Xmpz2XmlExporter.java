@@ -70,7 +70,7 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 	private void exportExporterDetails() throws Exception
 	{
 		getWriter().writeStartElement(EXPORT_DETAILS);
-		getWriter().writeElement(EXPORTER_NAME, RAW_PREFIX);
+		getWriter().writeElement(EXPORTER_NAME, VersionConstants.getMiradiAppName());
 		getWriter().writeElement(EXPORTER_VERSION, VersionConstants.getVersion());
 		getWriter().writeElement(EXPORTER_DATE, getCurrentTime());
 		getWriter().writeEndElement(EXPORT_DETAILS);
