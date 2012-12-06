@@ -54,6 +54,7 @@ import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.TncOperatingUnitsQuestion;
 import org.miradi.schemas.CauseSchema;
+import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
@@ -155,6 +156,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 	public void testValidateFilledProject() throws Exception
 	{
 		getProject().populateEverything();
+		getProject().createAndAddFactorToDiagram(HumanWelfareTargetSchema.getObjectType());
 		DiagramFactor diagramFactor1 = getProject().createAndPopulateDiagramFactor();
 		DiagramFactor diagramFactor2 = getProject().createAndPopulateDiagramFactor();
 		getProject().tagDiagramFactor(diagramFactor2.getWrappedORef());

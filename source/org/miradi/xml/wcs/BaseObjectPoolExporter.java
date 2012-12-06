@@ -30,6 +30,7 @@ import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Target;
 import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.utils.DateRange;
@@ -82,6 +83,9 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 	{
 		if (Target.is(wrappedFactor))
 			return XmpzXmlConstants.BIODIVERSITY_TARGET;
+		
+		if (HumanWelfareTarget.is(wrappedFactor))
+			return XmpzXmlConstants.HUMAN_WELFARE_TARGET;
 		
 		if (Cause.is(wrappedFactor))
 			return XmpzXmlConstants.CAUSE;
