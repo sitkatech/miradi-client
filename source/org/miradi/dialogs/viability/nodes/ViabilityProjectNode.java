@@ -85,7 +85,7 @@ public class ViabilityProjectNode extends TreeTableNode
 	}
 
 	@Override
-	public String toRawString()
+	public String getNodeLabel()
 	{
 		return project.getFilename();	
 	}

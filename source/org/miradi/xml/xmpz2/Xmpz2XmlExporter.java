@@ -20,7 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
+import java.util.Calendar;
+
 import org.martus.util.UnicodeWriter;
+import org.miradi.main.VersionConstants;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -50,6 +53,7 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 		objectTypeToExporterMap.fillTypeToExporterMap(getWriter());
 		getWriter().writeXmlHeader();
 		getWriter().writeMainElementStart();
+		exportExporterDetails();
 		exportProjectSummary();
 		exportThreatRatings();
 		exportPools();
@@ -61,6 +65,20 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 	private Xmpz2XmlWriter createWriter(UnicodeWriter outToUse) throws Exception
 	{
 		return new Xmpz2XmlWriter(getProject(), outToUse);
+	}
+	
+	private void exportExporterDetails() throws Exception
+	{
+		getWriter().writeStartElement(EXPORTER_DETAILS);
+		getWriter().writeElement(EXPORTER_NAME, RAW_PREFIX);
+		getWriter().writeElement(EXPORTER_VERSION, VersionConstants.getVersion());
+		getWriter().writeElement(EXPORTER_DATE, getCurrentTime());
+		getWriter().writeEndElement(EXPORTER_DETAILS);
+	}
+
+	protected String getCurrentTime()
+	{
+		return Calendar.getInstance().getTime().toString();
 	}
 
 	private void exportProjectSummary() throws Exception

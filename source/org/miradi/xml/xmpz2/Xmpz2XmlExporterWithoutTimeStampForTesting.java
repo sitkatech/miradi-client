@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2011, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2012, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -18,32 +18,20 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.dialogs.planning.treenodes;
+package org.miradi.xml.xmpz2;
 
-import org.miradi.dialogs.treetables.TreeTableNode;
-import org.miradi.main.EAM;
-import org.miradi.objects.Indicator;
 import org.miradi.project.Project;
-import org.miradi.schemas.GoalSchema;
 
-public class ViabilityFutureStatusNode extends UnspecifiedBaseObjectNode
+public class Xmpz2XmlExporterWithoutTimeStampForTesting extends Xmpz2XmlExporter
 {
-	public ViabilityFutureStatusNode(Project projectToUse, TreeTableNode parentNodeToUse)
+	public Xmpz2XmlExporterWithoutTimeStampForTesting(Project projectToExport)
 	{
-		super(projectToUse, parentNodeToUse, GoalSchema.getObjectType(), GoalSchema.OBJECT_NAME);
+		super(projectToExport);
 	}
 	
 	@Override
-	public String getNodeLabel()
+	protected String getCurrentTime()
 	{
-		try
-		{
-			return getParentNode().getObject().getData(Indicator.TAG_FUTURE_STATUS_DATE);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			return EAM.text("label|Error");
-		}
+		return "Not using current time for testing";
 	}
 }

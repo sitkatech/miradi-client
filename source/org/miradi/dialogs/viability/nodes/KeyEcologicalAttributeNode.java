@@ -93,7 +93,7 @@ public class KeyEcologicalAttributeNode extends TreeTableNode
 
 
 	@Override
-	public String toRawString()
+	public String getNodeLabel()
 	{
 		return ((ChoiceItem)getValueAt(0)).getLabel();
 	}

@@ -41,7 +41,7 @@ public class ViabilityTreeTableModelExporter extends TreeTableModelExporter
 	{
 		TreeTableNode node = getTreeTableNodeForRow(row);
 		if (isTreeColumn(modelColumn))
-			return new TaglessChoiceItem(node.toRawString(), getNodeIcon(row));
+			return new TaglessChoiceItem(node.getNodeLabel(), getNodeIcon(row));
 
 		return (ChoiceItem) node.getValueAt(modelColumn);
 	}
