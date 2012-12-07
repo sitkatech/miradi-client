@@ -38,7 +38,6 @@ public class ProjectSummaryLocationImporter extends AbstractXmpzObjectImporter
 		Node projectSummaryLocationNode = getImporter().getNode(getImporter().getRootNode(), XmpzXmlConstants.PROJECT_SUMMARY_LOCATION);
 		
 		importGeospatialLocationField(projectSummaryLocationNode);		
-		importField(projectSummaryLocationNode, getMetadataRef(), ProjectMetadata.TAG_SHORT_PROJECT_SCOPE);
 		importCodeListField(projectSummaryLocationNode, getMetadataRef(), ProjectMetadata.TAG_COUNTRIES);
 		importField(projectSummaryLocationNode, getMetadataRef(), ProjectMetadata.TAG_STATE_AND_PROVINCES);
 		importField(projectSummaryLocationNode, getMetadataRef(), ProjectMetadata.TAG_MUNICIPALITIES);
