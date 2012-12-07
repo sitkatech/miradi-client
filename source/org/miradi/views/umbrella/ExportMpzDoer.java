@@ -21,15 +21,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella;
 
 import java.io.File;
-import java.util.HashSet;
 
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.TncProjectData;
 import org.miradi.project.ProjectSaver;
-import org.miradi.schemas.TncProjectDataSchema;
-import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.MiradiFileSaveChooser;
 import org.miradi.utils.MpfToMpzConverter;
 import org.miradi.utils.MpzFileChooser;
@@ -61,39 +55,14 @@ public class ExportMpzDoer extends AbstractFileSaverDoer
 	}
 	
 	@Override
-	protected void displayUserInfoDialog()
+	protected boolean doesUserConfirm() throws Exception
 	{
-		HashSet<String> hasNonBackwardCompatipalFieldsWithValues = hasNonBackwardCompatipalFieldsWithValues();
-		if (hasNonBackwardCompatipalFieldsWithValues.size() == 0)
-			return;
-		
-		StringBuffer stringBuffer = new StringBuffer();
-		stringBuffer.append(EAM.text("These fields contain data, however the data will not appear in version 3.3.2:"));
-		for(String fieldName : hasNonBackwardCompatipalFieldsWithValues)
-		{
-			stringBuffer.append(HtmlUtilities.BR_TAG);
-			stringBuffer.append("- ");
-			stringBuffer.append(fieldName);
-		}
-		
-		EAM.displayHtmlWarningDialog(stringBuffer.toString());	
-	}
-
-	private HashSet<String> hasNonBackwardCompatipalFieldsWithValues()
-	{
-		HashSet<String> fieldNamesWithValues = new HashSet<String>();
-		ORef tncProjectDataRef = getProject().getSingletonObjectRef(TncProjectDataSchema.getObjectType());
-		BaseObject baseObject = BaseObject.find(getProject(), tncProjectDataRef);
-		addInPlaceFieldNamesWithValues(fieldNamesWithValues, baseObject, TncProjectData.TAG_MAKING_THE_CASE);
-		addInPlaceFieldNamesWithValues(fieldNamesWithValues, baseObject, TncProjectData.TAG_RISKS);
-		addInPlaceFieldNamesWithValues(fieldNamesWithValues, baseObject, TncProjectData.TAG_CAPACITY_AND_FUNDING);
-		
-		return fieldNamesWithValues;
-	}
-
-	private void addInPlaceFieldNamesWithValues(HashSet<String> fieldNamesWithValues, BaseObject baseObject, final String tag)
-	{
-		if (baseObject.getData(tag).length() > 0)
-			fieldNamesWithValues.add(Translation.fieldLabel(baseObject.getType(), tag));
+		String title = EAM.text("Title|MPZ Export Warning");
+		String html = Translation.getHtmlContent("ExportMpzWarning.html");
+		String export = EAM.text("Button|Export");
+		String cancel = EAM.text("Button|Cancel");
+		String[] buttonLabels = new String[] {export, cancel};
+		boolean result = EAM.confirmDialog(title, new String[] {html}, buttonLabels);
+		return result;
 	}
 }
