@@ -21,6 +21,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import java.awt.Point;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.io.IOException;
@@ -28,7 +30,11 @@ import java.io.StringReader;
 import java.io.Writer;
 import java.net.URL;
 
+import javax.swing.Action;
+import javax.swing.ActionMap;
+import javax.swing.InputMap;
 import javax.swing.JEditorPane;
+import javax.swing.KeyStroke;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import javax.swing.text.AttributeSet;
@@ -179,7 +185,44 @@ public class EditableHtmlPane extends MiradiTextPane
 		 }
 	 }
 	 
-	 public class HTMLEditorKitWithCustomLinkController extends WysiwygHTMLEditorKit 
+	public class HTMLEditorKitWithCtrlVFixed extends WysiwygHTMLEditorKit
+	{
+		@Override
+		public void install(JEditorPane ed)
+		{
+			super.install(ed);
+			removeCtrlVHandlerThatDoesTheWrongThing();
+		}
+
+		// NOTE: We are not sure why, but Shef installs a Ctrl-V binding 
+		// that maps to its PasteAction class, which throws away any 
+		// formatting on the clipboard and pastes plain text. Our default 
+		// paste handler calls editor.paste which does the right thing
+		private void removeCtrlVHandlerThatDoesTheWrongThing()
+		{
+			InputMap inputMap = getInputMap();
+			if(inputMap == null)
+				return;
+
+			ActionMap actionMap = getActionMap();
+			if(actionMap == null)
+				return;
+
+			KeyStroke ks = KeyStroke.getKeyStroke(KeyEvent.VK_V, InputEvent.CTRL_DOWN_MASK);
+			Object binding = inputMap.get(ks);
+			if(binding == null)
+				return;
+
+			Action action = actionMap.get(binding);
+			if(action == null)
+				return;
+
+			inputMap.put(ks, null);
+			actionMap.put(binding, null);
+		}
+	 }
+	 
+	 public class HTMLEditorKitWithCustomLinkController extends HTMLEditorKitWithCtrlVFixed 
 	 {
 		 @Override
 		 public void install(JEditorPane editorPane) 
