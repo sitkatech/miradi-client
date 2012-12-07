@@ -32,7 +32,7 @@ public interface Xmpz2XmlConstants
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
 	public static final String DOT_ELEMENT = ".element";
 	
-	public static final String NAME_SPACE_VERSION = "211";
+	public static final String NAME_SPACE_VERSION = "212";
 	public static final String PARTIAL_NAME_SPACE = "http://xml.miradi.org/schema/ConservationProject/";
 	public static final String NAME_SPACE = PARTIAL_NAME_SPACE + NAME_SPACE_VERSION;
 	public static final String XMLNS = "xmlns";
@@ -299,7 +299,7 @@ public interface Xmpz2XmlConstants
 	public static final String VOCABULARY_TNC_TERRESTRIAL_ECO_REGION = "vocabulary_tnc_terrestrial_eco_region";
 	public static final String VOCABULARY_TNC_MARINE_ECO_REGION = "vocabulary_tnc_marine_eco_region";
 	public static final String VOCABULARY_TNC_FRESHWATER_ECO_REGION = "vocabulary_tnc_freshwater_eco_region";
-	public static final String VOCABULARY_SHARE_OUTSIDE_TNC = "vocabulary_share_outside_tnc";
+	public static final String VOCABULARY_SHARE_OUTSIDE_ORGANIZATION = "vocabulary_share_outside_organization";
 	public static final String VOCABULARY_WWF_MANAGING_OFFICES = "vocabulary_wwf_managing_offices";
 	public static final String VOCABULARY_WWF_REGIONS = "vocabulary_wwf_regions";
 	public static final String VOCABULARY_WWF_ECOREGIONS = "vocabulary_wwf_ecoregions";

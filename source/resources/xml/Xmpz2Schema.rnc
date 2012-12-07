@@ -1,7 +1,7 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Dec 06 17:28:14 EST 2012 $
-# $LastChangedRevision: 211 $
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/211'
+# $LastChangedDate: Fri Dec 07 18:27:31 EST 2012 $
+# $LastChangedRevision: 212 $
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/212'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -73,7 +73,7 @@ ProjectSummary.element = element miradi:ProjectSummary
   element miradi:ProjectSummaryProjectStatus { formatted_text }? &
   element miradi:ProjectSummaryProjectURL { text }? &
   element miradi:ProjectSummaryQuarterColumnsVisibility { vocabulary_quarter_columns_visibility }? &
-  element miradi:ProjectSummaryShareOutsideOrganization { vocabulary_share_outside_tnc }? &
+  element miradi:ProjectSummaryShareOutsideOrganization { vocabulary_share_outside_organization }? &
   element miradi:ProjectSummaryThreatRatingMode { vocabulary_threat_rating_mode }? &
   element miradi:ProjectSummaryWorkPlanTimeUnit { vocabulary_work_plan_time_unit }?
 }
@@ -797,7 +797,7 @@ vocabulary_dashboard_row_progress = ''|'1'|'2'|'3'|'4'
 vocabulary_planning_tree_target_node_position = 'TargetNodesChildrenOfDiagramObjects'|'TargetNodesTopOfPlanningTree'
 vocabulary_priority_rating_code = ''|'1'|'2'|'3'|'4'
 vocabulary_progress_report_status = ''|'Planned'|'MajorIssues'|'MinorIssues'|'OnTrack'|'Completed'|'Abandoned'
-vocabulary_share_outside_tnc = ''|'ShareWithAnyone'
+vocabulary_share_outside_organization = ''|'ShareWithAnyone'
 vocabulary_protected_area_categories = 'Ia'|'Ib'|'II'|'III'|'IV'|'V'|'VI'
 vocabulary_quarter_columns_visibility = 'ShowQuarterColumns'|'HideQuarterColumns'
 vocabulary_rating_source = ''|'RoughGuess'|'ExpertKnowlege'|'ExternalResearch'|'OnsiteResearch'

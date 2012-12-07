@@ -127,7 +127,7 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(TncTerrestrialEcoRegionQuestion.class, VOCABULARY_TNC_TERRESTRIAL_ECO_REGION);
 		addItem(TncMarineEcoRegionQuestion.class, VOCABULARY_TNC_MARINE_ECO_REGION);
 		addItem(TncFreshwaterEcoRegionQuestion.class, VOCABULARY_TNC_FRESHWATER_ECO_REGION);
-		addItem(ProjectSharingQuestion.class, VOCABULARY_SHARE_OUTSIDE_TNC);
+		addItem(ProjectSharingQuestion.class, VOCABULARY_SHARE_OUTSIDE_ORGANIZATION);
 		addItem(WwfManagingOfficesQuestion.class, VOCABULARY_WWF_MANAGING_OFFICES);
 		addItem(WwfRegionsQuestion.class, VOCABULARY_WWF_REGIONS);
 		addItem(WwfEcoRegionsQuestion.class, VOCABULARY_WWF_ECOREGIONS);
