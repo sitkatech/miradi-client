@@ -49,7 +49,6 @@ import org.miradi.questions.FiscalYearStartQuestion;
 import org.miradi.questions.FosTrainingTypeQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
-import org.miradi.questions.AllLanguagesQuestion;
 import org.miradi.questions.OpenStandardsProgressStatusQuestion;
 import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
@@ -114,7 +113,7 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 		writer.println("vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='12' } ");
 		writer.println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
 		writer.println(VOCABULARY_TEXT_BOX_Z_ORDER + " = '" + Z_ORDER_BACK_CODE + "' | '" + TextBoxZOrderQuestion.FRONT_CODE + "'");
-		defineVocabulary(writer, VOCABULARY_LANGUAGE_CODE, new AllLanguagesQuestion());
+		defineLanguagesVocabulary(writer);
 		defineVocabulary(writer, VOCABULARY_FISCAL_YEAR_START, new FiscalYearStartQuestion());
 		defineVocabulary(writer, VOCABULARY_PROTECTED_AREA_CATEGORIES, new ProtectedAreaCategoryQuestion());
 		defineVocabulary(writer, VOCABULARY_RESOURCE_TYPE, new ResourceTypeQuestion());
@@ -592,6 +591,12 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 				writer.print("|");
 		}
 		
+		writer.println();
+	}
+	
+	private void defineLanguagesVocabulary(SchemaWriter writer)
+	{
+		writer.print(VOCABULARY_LANGUAGE_CODE + " = " + "'ab'|'aa'|'af'|'ak'|'sq'|'am'|'ar'|'an'|'hy'|'as'|'av'|'ae'|'ay'|'az'|'bm'|'ba'|'eu'|'be'|'bn'|'bh'|'bi'|'nb'|'bs'|'br'|'bg'|'my'|'ca'|'km'|'ch'|'ce'|'ny'|'zh'|'cu'|'cv'|'kw'|'co'|'cr'|'hr'|'cs'|'da'|'dv'|'nl'|'dz'|'en'|'eo'|'et'|'ee'|'fo'|'fj'|'fi'|'fr'|'ff'|'gd'|'gl'|'lg'|'ka'|'de'|'el'|'gn'|'gu'|'ht'|'ha'|'he'|'hz'|'hi'|'ho'|'hu'|'is'|'io'|'ig'|'id'|'ia'|'ie'|'iu'|'ik'|'ga'|'it'|'ja'|'jv'|'kl'|'kn'|'kr'|'ks'|'kk'|'ki'|'rw'|'ky'|'kv'|'kg'|'ko'|'kj'|'ku'|'lo'|'la'|'lv'|'li'|'ln'|'lt'|'lu'|'lb'|'mk'|'mg'|'ms'|'ml'|'mt'|'gv'|'mi'|'mr'|'mh'|'mo'|'mn'|'na'|'nv'|'nd'|'nr'|'ng'|'ne'|'se'|'no'|'nn'|'oc'|'oj'|'or'|'om'|'os'|'pi'|'pa'|'fa'|'pl'|'pt'|'ps'|'qu'|'ro'|'rm'|'rn'|'ru'|'sm'|'sg'|'sa'|'sc'|'sr'|'sn'|'ii'|'sd'|'si'|'sk'|'sl'|'so'|'st'|'es'|'su'|'sw'|'ss'|'sv'|'tl'|'ty'|'tg'|'ta'|'tt'|'te'|'th'|'bo'|'ti'|'to'|'ts'|'tn'|'tr'|'tk'|'tw'|'ug'|'uk'|''|'ur'|'uz'|'ve'|'vi'|'vo'|'wa'|'cy'|'fy'|'wo'|'xh'|'yi'|'yo'|'za'|'zu'");
 		writer.println();
 	}
 	
