@@ -1,7 +1,7 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Fri Dec 07 18:34:50 EST 2012 $
-# $LastChangedRevision: 213 $
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/213'
+# $LastChangedDate: Fri Dec 07 18:40:49 EST 2012 $
+# $LastChangedRevision: 214 $
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/214'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -12,7 +12,7 @@ ConservationProject.element = element miradi:ConservationProject
   ProjectSummaryPlanning.element &
   TncProjectData.element &
   WwfProjectData.element &
-  WCSData.element &
+  WCSProjectData.element &
   RareProjectData.element &
   FosProjectData.element &
   ExtraData.element &
@@ -165,15 +165,15 @@ WwfProjectData.element = element miradi:WwfProjectData
   element miradi:WwfProjectDataLabel { formatted_text }?
 }
 
-WCSData.element = element miradi:WCSData
+WCSProjectData.element = element miradi:WCSProjectData
 {
-  element miradi:WCSDataLabel { formatted_text }? &
-  element miradi:WCSDataOrganizationalFocus { text }? &
-  element miradi:WCSDataOrganizationalLevel { text }? &
-  element miradi:WCSDataStepCompleted { xsd:boolean }? &
-  element miradi:WCSDataStepUrl { text }? &
-  element miradi:WCSDataSwotCompleted { xsd:boolean }? &
-  element miradi:WCSDataSwotUrl { text }?
+  element miradi:WCSProjectDataLabel { formatted_text }? &
+  element miradi:WCSProjectDataOrganizationalFocus { text }? &
+  element miradi:WCSProjectDataOrganizationalLevel { text }? &
+  element miradi:WCSProjectDataStepCompleted { xsd:boolean }? &
+  element miradi:WCSProjectDataStepUrl { text }? &
+  element miradi:WCSProjectDataSwotCompleted { xsd:boolean }? &
+  element miradi:WCSProjectDataSwotUrl { text }?
 }
 
 FosProjectData.element = element miradi:FosProjectData
