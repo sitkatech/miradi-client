@@ -20,8 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.viability;
 
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.project.Project;
 import org.miradi.schemas.GoalSchema;
+import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
@@ -41,6 +43,7 @@ public class TargetViabilityRowColumnProvider extends AbstractViabilityRowColumn
 		return new CodeList(new String[] {
 				ProjectMetadataSchema.OBJECT_NAME, 
 				TargetSchema.OBJECT_NAME,
+				HumanWelfareTargetSchema.OBJECT_NAME,
 				KeyEcologicalAttributeSchema.OBJECT_NAME,
 				IndicatorSchema.OBJECT_NAME,
 				MeasurementSchema.OBJECT_NAME,
