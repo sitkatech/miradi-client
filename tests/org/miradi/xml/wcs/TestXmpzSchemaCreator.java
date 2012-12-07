@@ -36,8 +36,8 @@ public class TestXmpzSchemaCreator extends TestAbstractSchemaCreator
 
 	public void testAgainstStaticSchema() throws Exception
 	{
-		String expectedSchema = getExpectedLines();
-		String actualSchema = getActualSchema();
+		String expectedSchema = getExpectedLines().trim();
+		String actualSchema = getActualSchema().trim();
 		
 		assertEquals("Generated schema doesnt match existing?", expectedSchema, actualSchema);
 	}
