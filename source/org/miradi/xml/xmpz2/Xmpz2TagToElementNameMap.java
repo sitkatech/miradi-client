@@ -117,6 +117,8 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(OBJECT_TREE_TABLE_CONFIGURATION, createObjectTreeTableConfigurationMap());
 		map.put(TNC_PROJECT_DATA, createTncProjectDataMap());
 		map.put(TAGGED_OBJECT_SET_ELEMENT_NAME, createTaggedObjectSetMap());
+		map.put(BUDGET_CATEGORY_ONE, createBaseObjectMap());
+		map.put(BUDGET_CATEGORY_TWO, createBaseObjectMap());
 		
 		return map;
 	}
