@@ -26,6 +26,10 @@ import javax.xml.xpath.XPathExpression;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.questions.DiagramFactorBackgroundQuestion;
+import org.miradi.questions.DiagramFactorFontColorQuestion;
+import org.miradi.questions.DiagramFactorFontSizeQuestion;
+import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2GroupedConstants;
@@ -36,6 +40,14 @@ public class DiagramFactorImporter extends BaseObjectImporter
 	public DiagramFactorImporter(Xmpz2XmlImporter importerToUse)
 	{
 		super(importerToUse, new DiagramFactorSchema());
+	}
+	
+	@Override
+	public void importFields(Node baseObjectNode, ORef refToUse) throws Exception
+	{
+		super.importFields(baseObjectNode, refToUse);
+		
+		importFontStylingElements(baseObjectNode, refToUse);
 	}
 	
 	@Override
@@ -52,6 +64,16 @@ public class DiagramFactorImporter extends BaseObjectImporter
 	{
 		ORef wrappedRef = importWrappedRef(getImporter(), getPoolName(),  node);
 		getProject().setObjectData(ref, DiagramFactor.TAG_WRAPPED_REF, wrappedRef.toString());
+	}
+	
+	private void importFontStylingElements(Node node, ORef destinationRef) throws Exception
+	{
+		Node diagramFactorSyleNode = getImporter().getNode(node, getPoolName() + STYLING);
+		Node styleNode = getImporter().getNode(diagramFactorSyleNode, STYLING);
+		getImporter().importCodeField(styleNode, getBaseObjectSchema().getXmpz2ElementName(), destinationRef, DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion());
+		getImporter().importCodeField(styleNode, getBaseObjectSchema().getXmpz2ElementName(), destinationRef, DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion());
+		getImporter().importCodeField(styleNode, getBaseObjectSchema().getXmpz2ElementName(), destinationRef, DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion());
+		getImporter().importCodeField(styleNode, getBaseObjectSchema().getXmpz2ElementName(), destinationRef, DiagramFactor.TAG_BACKGROUND_COLOR, new DiagramFactorBackgroundQuestion());
 	}
 	
 	private  static ORef importWrappedRef(Xmpz2XmlImporter importer, String poolName, Node parentNode) throws Exception
