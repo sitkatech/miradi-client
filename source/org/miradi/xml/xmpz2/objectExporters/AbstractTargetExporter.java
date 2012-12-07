@@ -25,7 +25,6 @@ import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.schemas.BaseObjectSchema;
@@ -46,7 +45,6 @@ abstract public class AbstractTargetExporter extends BaseObjectExporter
 		
 		AbstractTarget abstractTarget = (AbstractTarget) baseObject;
 		exportThreatTargetRating(abstractTarget);
-		writeNonOptionalCodeElement(TARGET_STATUS_ELEMENT_NAME, StatusQuestion.class, abstractTarget.getTargetViability());
 		writeNonOptionalCodeElement(AbstractTarget.TAG_VIABILITY_MODE, ViabilityModeQuestion.class, abstractTarget.getViabilityMode());
 	}
 
@@ -59,9 +57,6 @@ abstract public class AbstractTargetExporter extends BaseObjectExporter
 	@Override
 	protected boolean doesFieldRequireSpecialHandling(String tag)
 	{
-		if (tag.equals(AbstractTarget.TAG_TARGET_STATUS))
-			return true;
-		
 		if (tag.equals(AbstractTarget.TAG_VIABILITY_MODE))
 			return true;
 		

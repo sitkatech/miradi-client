@@ -27,12 +27,15 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Goal;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.PointList;
@@ -48,6 +51,17 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	public TestXmpz2XmlImporter(String name)
 	{
 		super(name);
+	}
+	
+	public void testImportAbsractTargetStatus() throws Exception
+	{
+		HumanWelfareTarget humanWelfareTarget = getProject().createHumanWelfareTarget();
+		getProject().fillObjectUsingCommand(humanWelfareTarget, HumanWelfareTarget.TAG_TARGET_STATUS, StatusQuestion.FAIR);
+		
+		Target target = getProject().createTarget();
+		getProject().fillObjectUsingCommand(target, Target.TAG_TARGET_STATUS, StatusQuestion.GOOD);
+		
+		validateUsingStringWriter();
 	}
 	
 	public void testTaggedObjectSetIdsForDiagrams() throws Exception
