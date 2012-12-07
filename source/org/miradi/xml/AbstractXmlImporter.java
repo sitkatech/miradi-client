@@ -311,11 +311,6 @@ abstract public class AbstractXmlImporter
 		return (NodeList) expression.evaluate(node, XPathConstants.NODESET);
 	}
 	
-	protected NodeList getNodes(Node node, String containerName, String contentName) throws Exception
-	{
-		return getNodes(node, new String[]{containerName, contentName});
-	}
-	
 	public String getPrefixedElement(String elementName)
 	{
 		return getPrefix() + elementName;
