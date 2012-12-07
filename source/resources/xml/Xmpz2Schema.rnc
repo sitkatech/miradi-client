@@ -1,15 +1,15 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Fri Dec 07 18:40:49 EST 2012 $
-# $LastChangedRevision: 214 $
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/214'
+# $LastChangedDate: Fri Dec 07 18:46:27 EST 2012 $
+# $LastChangedRevision: 215 $
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/215'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
   ExportDetails.element &
   ProjectSummary.element &
-  ProjectSummaryScope.element &
-  ProjectSummaryLocation.element &
-  ProjectSummaryPlanning.element &
+  ProjectScope.element &
+  ProjectLocation.element &
+  ProjectPlanning.element &
   TncProjectData.element &
   WwfProjectData.element &
   WCSProjectData.element &
@@ -78,60 +78,60 @@ ProjectSummary.element = element miradi:ProjectSummary
   element miradi:ProjectSummaryWorkPlanTimeUnit { vocabulary_work_plan_time_unit }?
 }
 
-ProjectSummaryScope.element = element miradi:ProjectSummaryScope
+ProjectScope.element = element miradi:ProjectScope
 {
-  ProjectSummaryScopeProtectedAreaCategoriesContainer.element ? &
-  element miradi:ProjectSummaryScopeAccessInformation { formatted_text }? &
-  element miradi:ProjectSummaryScopeBiologicalDescription { formatted_text }? &
-  element miradi:ProjectSummaryScopeCulturalDescription { formatted_text }? &
-  element miradi:ProjectSummaryScopeCurrentLandUses { formatted_text }? &
-  element miradi:ProjectSummaryScopeHistoricalDescription { formatted_text }? &
-  element miradi:ProjectSummaryScopeHumanPopulation { xsd:integer }? &
-  element miradi:ProjectSummaryScopeHumanPopulationNotes { formatted_text }? &
-  element miradi:ProjectSummaryScopeLegalStatus { formatted_text }? &
-  element miradi:ProjectSummaryScopeLegislativeContext { formatted_text }? &
-  element miradi:ProjectSummaryScopeManagementResources { formatted_text }? &
-  element miradi:ProjectSummaryScopePhysicalDescription { formatted_text }? &
-  element miradi:ProjectSummaryScopeProjectArea { text }? &
-  element miradi:ProjectSummaryScopeProjectAreaNote { formatted_text }? &
-  element miradi:ProjectSummaryScopeProjectScope { formatted_text }? &
-  element miradi:ProjectSummaryScopeProjectVision { formatted_text }? &
-  element miradi:ProjectSummaryScopeProtectedAreaCategoryNotes { formatted_text }? &
-  element miradi:ProjectSummaryScopeScopeComments { formatted_text }? &
-  element miradi:ProjectSummaryScopeShortProjectScope { text }? &
-  element miradi:ProjectSummaryScopeSocialContext { formatted_text }? &
-  element miradi:ProjectSummaryScopeSocioEconomicInformation { formatted_text }? &
-  element miradi:ProjectSummaryScopeVisitationInformation { formatted_text }?
+  ProjectScopeProtectedAreaCategoriesContainer.element ? &
+  element miradi:ProjectScopeAccessInformation { formatted_text }? &
+  element miradi:ProjectScopeBiologicalDescription { formatted_text }? &
+  element miradi:ProjectScopeCulturalDescription { formatted_text }? &
+  element miradi:ProjectScopeCurrentLandUses { formatted_text }? &
+  element miradi:ProjectScopeHistoricalDescription { formatted_text }? &
+  element miradi:ProjectScopeHumanPopulation { xsd:integer }? &
+  element miradi:ProjectScopeHumanPopulationNotes { formatted_text }? &
+  element miradi:ProjectScopeLegalStatus { formatted_text }? &
+  element miradi:ProjectScopeLegislativeContext { formatted_text }? &
+  element miradi:ProjectScopeManagementResources { formatted_text }? &
+  element miradi:ProjectScopePhysicalDescription { formatted_text }? &
+  element miradi:ProjectScopeProjectArea { text }? &
+  element miradi:ProjectScopeProjectAreaNote { formatted_text }? &
+  element miradi:ProjectScopeProjectScope { formatted_text }? &
+  element miradi:ProjectScopeProjectVision { formatted_text }? &
+  element miradi:ProjectScopeProtectedAreaCategoryNotes { formatted_text }? &
+  element miradi:ProjectScopeScopeComments { formatted_text }? &
+  element miradi:ProjectScopeShortProjectScope { text }? &
+  element miradi:ProjectScopeSocialContext { formatted_text }? &
+  element miradi:ProjectScopeSocioEconomicInformation { formatted_text }? &
+  element miradi:ProjectScopeVisitationInformation { formatted_text }?
 }
 
-ProjectSummaryLocation.element = element miradi:ProjectSummaryLocation
+ProjectLocation.element = element miradi:ProjectLocation
 {
-  ProjectSummaryLocationCountriesContainer.element ? &
-  element miradi:ProjectSummaryLocationLegislativeDistricts { text }? &
-  element miradi:ProjectSummaryLocationLocationComments { formatted_text }? &
-  element miradi:ProjectSummaryLocationLocationDetail { formatted_text }? &
-  element miradi:ProjectSummaryLocationMunicipalities { text }? &
-  element miradi:ProjectSummaryLocationSiteMapReference { text }? &
-  element miradi:ProjectSummaryLocationStateAndProvinces { text }? &
-  element miradi:ProjectSummaryLocationProjectLocation { GeospatialLocation.element* }?
+  ProjectLocationCountriesContainer.element ? &
+  element miradi:ProjectLocationLegislativeDistricts { text }? &
+  element miradi:ProjectLocationLocationComments { formatted_text }? &
+  element miradi:ProjectLocationLocationDetail { formatted_text }? &
+  element miradi:ProjectLocationMunicipalities { text }? &
+  element miradi:ProjectLocationSiteMapReference { text }? &
+  element miradi:ProjectLocationStateAndProvinces { text }? &
+  element miradi:ProjectLocationProjectLocation { GeospatialLocation.element* }?
 }
 
-ProjectSummaryPlanning.element = element miradi:ProjectSummaryPlanning
+ProjectPlanning.element = element miradi:ProjectPlanning
 {
-  element miradi:ProjectSummaryPlanningBudgetSecuredPercent { xsd:decimal }? &
-  element miradi:ProjectSummaryPlanningCurrencyDecimalPlaces { xsd:integer }? &
-  element miradi:ProjectSummaryPlanningCurrencySymbol { text }? &
-  element miradi:ProjectSummaryPlanningCurrencyType { vocabulary_currency_type }? &
-  element miradi:ProjectSummaryPlanningExpectedEndDate { vocabulary_date }? &
-  element miradi:ProjectSummaryPlanningFinancialComments { formatted_text }? &
-  element miradi:ProjectSummaryPlanningFiscalYearStart { vocabulary_fiscal_year_start_month }? &
-  element miradi:ProjectSummaryPlanningFullTimeEmployeeDaysPerYear { xsd:decimal }? &
-  element miradi:ProjectSummaryPlanningKeyFundingSources { formatted_text }? &
-  element miradi:ProjectSummaryPlanningPlanningComments { formatted_text }? &
-  element miradi:ProjectSummaryPlanningStartDate { vocabulary_date }? &
-  element miradi:ProjectSummaryPlanningTotalBudgetForFunding { xsd:decimal }? &
-  element miradi:ProjectSummaryPlanningWorkPlanEndDate { vocabulary_date }? &
-  element miradi:ProjectSummaryPlanningWorkPlanStartDate { vocabulary_date }?
+  element miradi:ProjectPlanningBudgetSecuredPercent { xsd:decimal }? &
+  element miradi:ProjectPlanningCurrencyDecimalPlaces { xsd:integer }? &
+  element miradi:ProjectPlanningCurrencySymbol { text }? &
+  element miradi:ProjectPlanningCurrencyType { vocabulary_currency_type }? &
+  element miradi:ProjectPlanningExpectedEndDate { vocabulary_date }? &
+  element miradi:ProjectPlanningFinancialComments { formatted_text }? &
+  element miradi:ProjectPlanningFiscalYearStart { vocabulary_fiscal_year_start_month }? &
+  element miradi:ProjectPlanningFullTimeEmployeeDaysPerYear { xsd:decimal }? &
+  element miradi:ProjectPlanningKeyFundingSources { formatted_text }? &
+  element miradi:ProjectPlanningPlanningComments { formatted_text }? &
+  element miradi:ProjectPlanningStartDate { vocabulary_date }? &
+  element miradi:ProjectPlanningTotalBudgetForFunding { xsd:decimal }? &
+  element miradi:ProjectPlanningWorkPlanEndDate { vocabulary_date }? &
+  element miradi:ProjectPlanningWorkPlanStartDate { vocabulary_date }?
 }
 
 TncProjectData.element = element miradi:TncProjectData
@@ -696,12 +696,12 @@ ExtraData.element = element miradi:ExtraData
   ExtraDataSection.element *
 }
 
-ProjectSummaryScopeProtectedAreaCategoriesContainer.element = element miradi:ProjectSummaryScopeProtectedAreaCategoriesContainer
+ProjectScopeProtectedAreaCategoriesContainer.element = element miradi:ProjectScopeProtectedAreaCategoriesContainer
 {
 element miradi:code { vocabulary_protected_area_categories } *
 }
 
-ProjectSummaryLocationCountriesContainer.element = element miradi:ProjectSummaryLocationCountriesContainer
+ProjectLocationCountriesContainer.element = element miradi:ProjectLocationCountriesContainer
 {
 element miradi:code { vocabulary_countries } *
 }

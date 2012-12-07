@@ -32,7 +32,7 @@ public interface Xmpz2XmlConstants
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
 	public static final String DOT_ELEMENT = ".element";
 	
-	public static final String NAME_SPACE_VERSION = "214";
+	public static final String NAME_SPACE_VERSION = "215";
 	public static final String PARTIAL_NAME_SPACE = "http://xml.miradi.org/schema/ConservationProject/";
 	public static final String NAME_SPACE = PARTIAL_NAME_SPACE + NAME_SPACE_VERSION;
 	public static final String XMLNS = "xmlns";
@@ -51,9 +51,9 @@ public interface Xmpz2XmlConstants
 	public static final String PROJECT_SUMMARY = "ProjectSummary";
 	public static final String PROJECT_RESOURCE = "ProjectResource";
 	public static final String ORGANIZATION = "Organization";
-	public static final String PROJECT_SUMMARY_SCOPE = "ProjectSummaryScope";
-	public static final String PROJECT_SUMMARY_LOCATION = "ProjectSummaryLocation";
-	public static final String PROJECT_SUMMARY_PLANNING = "ProjectSummaryPlanning";
+	public static final String PROJECT_SUMMARY_SCOPE = "ProjectScope";
+	public static final String PROJECT_SUMMARY_LOCATION = "ProjectLocation";
+	public static final String PROJECT_SUMMARY_PLANNING = "ProjectPlanning";
 	public static final String TNC_PROJECT_DATA = "TncProjectData";
 	public static final String WWF_PROJECT_DATA = "WwfProjectData";
 	public static final String WCS_PROJECT_DATA = "WCSProjectData";
