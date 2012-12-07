@@ -1,7 +1,7 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Fri Dec 07 18:27:31 EST 2012 $
-# $LastChangedRevision: 212 $
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/212'
+# $LastChangedDate: Fri Dec 07 18:34:50 EST 2012 $
+# $LastChangedRevision: 213 $
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/213'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -661,7 +661,7 @@ BudgetCategoryOne.element = element miradi:BudgetCategoryOne
   attribute Id {xsd:integer} &
   element miradi:BudgetCategoryOneCode { text }? &
   element miradi:BudgetCategoryOneComments { formatted_text }? &
-  element miradi:BudgetCategoryOneLabel { formatted_text }?
+  element miradi:BudgetCategoryOneName { formatted_text }?
 }
 
 BudgetCategoryTwoPool.element = element miradi:BudgetCategoryTwoPool { BudgetCategoryTwo.element* }
@@ -670,7 +670,7 @@ BudgetCategoryTwo.element = element miradi:BudgetCategoryTwo
   attribute Id {xsd:integer} &
   element miradi:BudgetCategoryTwoCode { text }? &
   element miradi:BudgetCategoryTwoComments { formatted_text }? &
-  element miradi:BudgetCategoryTwoLabel { formatted_text }?
+  element miradi:BudgetCategoryTwoName { formatted_text }?
 }
 
 DashboardPool.element = element miradi:DashboardPool { Dashboard.element* }
