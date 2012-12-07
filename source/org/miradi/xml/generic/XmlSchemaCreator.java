@@ -35,6 +35,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.WwfProjectData;
 import org.miradi.questions.BudgetTimePeriodQuestion;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CountriesQuestion;
 import org.miradi.questions.DashboardFlagsQuestion;
@@ -42,7 +43,6 @@ import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.questions.DiagramFactorFontColorQuestion;
 import org.miradi.questions.DiagramFactorFontSizeQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
-import org.miradi.questions.DiagramLegendQuestion;
 import org.miradi.questions.DiagramLinkColorQuestion;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.FiscalYearStartQuestion;
@@ -59,6 +59,7 @@ import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
 import org.miradi.questions.ScopeBoxTypeQuestion;
+import org.miradi.questions.StaticChoiceQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StrategyFeasibilityQuestion;
@@ -118,7 +119,7 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 		defineVocabulary(writer, VOCABULARY_PROTECTED_AREA_CATEGORIES, new ProtectedAreaCategoryQuestion());
 		defineVocabulary(writer, VOCABULARY_RESOURCE_TYPE, new ResourceTypeQuestion());
 		defineVocabulary(writer, VOCABULARY_RESOURCE_ROLE_CODES, new ResourceRoleQuestion());
-		defineVocabulary(writer, VOCABULARY_HIDDEN_TYPES, new DiagramLegendQuestion());
+		defineVocabulary(writer, VOCABULARY_HIDDEN_TYPES, new LegacyDiagramLegendQuestion());
 		defineVocabulary(writer, VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE, new DiagramFactorFontSizeQuestion());
 		defineVocabulary(writer, VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE, new DiagramFactorFontStyleQuestion());
 		defineVocabulary(writer, VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR, new DiagramFactorBackgroundQuestion());
@@ -592,6 +593,37 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 		}
 		
 		writer.println();
+	}
+	
+	private static class LegacyDiagramLegendQuestion extends StaticChoiceQuestion
+	{
+		public LegacyDiagramLegendQuestion()
+		{
+			super(getLegendChoices());
+		}
+
+		private static ChoiceItem[] getLegendChoices()
+		{
+			return  new ChoiceItem[] {
+					new ChoiceItem("Strategy", "Strategy"),
+					new ChoiceItem("Draft" + "Strategy", "Draft" + "Strategy"),
+					new ChoiceItem("ContributingFactor", "ContributingFactor"),
+					new ChoiceItem("DirectThreat", "DirectThreat"),
+					new ChoiceItem("Target", "Target"),
+					new ChoiceItem("HumanWelfareTarget", "HumanWelfareTarget"),
+					new ChoiceItem("Link", "Link"),
+					new ChoiceItem("Goal", "Goal"),
+					new ChoiceItem("Objective", "Objective"),
+					new ChoiceItem("Indicator", "Indicator"),
+					new ChoiceItem("TextBox", "TextBox"),
+					new ChoiceItem("ScopeBox", "ScopeBox"),
+					new ChoiceItem("Stress", "Stress"),
+					new ChoiceItem("Activity", "Activity"),
+					new ChoiceItem("IntermediateResult", "IntermediateResult"),
+					new ChoiceItem("ThreatReductionResult", "ThreatReductionResult"),
+					new ChoiceItem("GroupBox", "GroupBox"),
+			};
+		}
 	}
 	
 	private void defineLanguagesVocabulary(SchemaWriter writer)
