@@ -182,6 +182,10 @@ Reports:
 Export:
 - New XMPZ2 data format (BETA status)
 
+Translations:
+- Several strings that were previously untranslatable are now translatable
+- New feature that allows translators to test their work much more easily
+
 
 
 
