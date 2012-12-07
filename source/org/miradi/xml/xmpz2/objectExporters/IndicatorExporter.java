@@ -46,6 +46,7 @@ public class IndicatorExporter extends BaseObjectExporter
 		final Indicator indicator = (Indicator) baseObject;
 		writeMethodRefs(baseObjectSchema, indicator);
 		writeThreshold(indicator);
+		writeOptionalCalculatedTimePeriodCosts(indicator, baseObjectSchema);
 	}
 
 	private void writeMethodRefs(BaseObjectSchema baseObjectSchema, final Indicator indicator) throws Exception

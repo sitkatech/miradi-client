@@ -40,6 +40,7 @@ public class TaskExporter extends BaseObjectExporter
 		super.writeFields(baseObject, baseObjectSchema);
 
 		writeSubTaskIds((Task)baseObject);
+		writeOptionalCalculatedTimePeriodCosts(baseObject, baseObjectSchema);
 	}
 
 	@Override
