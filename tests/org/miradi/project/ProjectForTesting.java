@@ -233,6 +233,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_LONGITUDE, "30");
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_LATITUDE, "40");
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_SCOPE, "Some project scope");
+		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_SHORT_PROJECT_SCOPE, "Some Short project scope");
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_DESCRIPTION, "Some project description");
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_VISION, encodeXml("Some project \"vision\"" + HtmlUtilities.BR_TAG + HtmlUtilities.BR_TAG + "With multiple lines!"));
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS, encodeXml("TNC planning team comment, mentioning that x > 2 && x < 4"));
