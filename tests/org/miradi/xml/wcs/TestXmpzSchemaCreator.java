@@ -39,8 +39,7 @@ public class TestXmpzSchemaCreator extends TestAbstractSchemaCreator
 		String expectedSchema = getExpectedLines();
 		String actualSchema = getActualSchema();
 		
-		//FIXME urgent - temporarly commented out to fix multiple issues
-		//assertEquals("Generated schema doesnt match existing?", expectedSchema, actualSchema);
+		assertEquals("Generated schema doesnt match existing?", expectedSchema, actualSchema);
 	}
 	
 	public String getActualSchema() throws Exception, IOException
