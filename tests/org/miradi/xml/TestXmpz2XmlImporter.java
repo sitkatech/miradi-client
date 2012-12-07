@@ -25,6 +25,7 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AbstractTarget;
+import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
@@ -37,9 +38,9 @@ import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.PointList;
 import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.views.diagram.TestLinkBendPointsMoveHandler;
+import org.miradi.xml.xmpz2.MockXmpz2XmlExporterWithoutTimeStampForTesting;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
-import org.miradi.xml.xmpz2.MockXmpz2XmlExporterWithoutTimeStampForTesting;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 
 public class TestXmpz2XmlImporter extends TestCaseWithProject
@@ -47,6 +48,13 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	public TestXmpz2XmlImporter(String name)
 	{
 		super(name);
+	}
+	
+	public void testTaggedObjectSetIdsForDiagrams() throws Exception
+	{
+		DiagramFactor diagramFactor = getProject().createAndPopulateDiagramFactor();
+		getProject().tagDiagramFactor(diagramFactor.getWrappedORef());
+		validateUsingStringWriter();
 	}
 	
 	public void testXmpz2NameSpaceContext() throws Exception
@@ -122,6 +130,7 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 		Xmpz2XmlImporter xmlImporter = new Xmpz2XmlImporter(projectToImportInto, new NullProgressMeter());
 		
 		String exportedProjectXml = projectWriter.toString();
+		System.out.println(exportedProjectXml);
 		StringInputStreamWithSeek stringInputputStream = new StringInputStreamWithSeek(exportedProjectXml);
 		try
 		{

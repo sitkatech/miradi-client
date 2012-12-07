@@ -25,7 +25,6 @@ import java.awt.Point;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 
-
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.BooleanData;
@@ -173,6 +172,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		addImporterToMap(typeToImporterMap, new ObjectiveImporter(this));
 		addImporterToMap(typeToImporterMap, new GoalImporter(this));
 		addImporterToMap(typeToImporterMap, new TaskImporter(this));
+		addImporterToMap(typeToImporterMap, new TaggedObjectSetImporter(this));
 		
 		for(int objectType = ObjectType.FIRST_OBJECT_TYPE; objectType < ObjectType.OBJECT_TYPE_COUNT; ++objectType)
 		{
