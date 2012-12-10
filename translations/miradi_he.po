@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-10 14:31-0600\n"
+"POT-Creation-Date: 2012-12-10 15:16-0600\n"
 "PO-Revision-Date: 2011-03-17 08:35-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2250,6 +2250,7 @@ msgid "Bundle Rules"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:83
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:63
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:234
 #: Miradi/source/org/miradi/project/OldProjectDirToMpfConverter.java:57
@@ -2289,6 +2290,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:188
 msgid "Button|Exit"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:62
+msgid "Button|Export"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:78
@@ -3320,7 +3325,7 @@ msgstr ""
 msgid "Export"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:60
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:54
 msgid "Export MPZ"
 msgstr ""
 
@@ -7370,11 +7375,6 @@ msgstr ""
 msgid "Theory of Change<br/>- Strategy Selection"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:71
-msgid ""
-"These fields contain data, however the data will not appear in version 3.3.2:"
-msgstr ""
-
 #: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:52
 msgid ""
 "This feature is not yet fully supported. It exports all the project data, "
@@ -7650,6 +7650,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:65
 msgid "Title|Link Create Dialog"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:60
+msgid "Title|MPZ Export Warning"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:90
@@ -9960,6 +9964,16 @@ msgid "FieldLabel|59.TemplateContents|Template Contents"
 msgstr ""
 
 msgid "FieldLabel|59.IncludeImages|Include Images"
+msgstr ""
+
+msgid ""
+"html|/resources/ExportMpzWarning.html|Warning: The MPZ file format should "
+"only be used to share Miradi projects with users who have not upgraded to "
+"the latest version of Miradi, and are still running Miradi 3.3. Exporting to "
+"the MPZ format will lose all the text formatting, along with data in fields "
+"that have been added to Miradi 4.0 or later.The preferred way to backup or "
+"share your projects now is to export .Miradi files, instead of MPZ files.Do "
+"you wish to export this project as an MPZ file anyway? "
 msgstr ""
 
 msgid ""
