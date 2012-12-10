@@ -1,7 +1,7 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Fri Dec 07 18:46:27 EST 2012 $
-# $LastChangedRevision: 215 $
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/215'
+# $LastChangedDate: Fri Dec 07 18:57:19 EST 2012 $
+# $LastChangedRevision: 216 $
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/216'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -241,8 +241,8 @@ ProjectResource.element = element miradi:ProjectResource
   element miradi:ProjectResourcePhoneNumberMobile { text }? &
   element miradi:ProjectResourcePhoneNumberOther { text }? &
   element miradi:ProjectResourcePosition { text }? &
+  element miradi:ProjectResourceResourceId { text }? &
   element miradi:ProjectResourceResourceType { vocabulary_resource_type }? &
-  element miradi:ProjectResourceResource_Id { text }? &
   element miradi:ProjectResourceSurname { text }?
 }
 
