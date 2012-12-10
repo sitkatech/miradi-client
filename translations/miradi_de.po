@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-07 16:01-0600\n"
+"POT-Creation-Date: 2012-12-10 14:31-0600\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -266,6 +266,14 @@ msgstr "%countLabel: %itemCount"
 msgid "%s (old project)"
 msgstr ""
 
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:214
+msgid "%s Goals"
+msgstr ""
+
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:222
+msgid "%s Objs"
+msgstr ""
+
 #: Miradi/source/org/miradi/utils/DiagramCorruptionDetector.java:222
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%vonName' -> '%nachName'<br>"
@@ -334,6 +342,14 @@ msgstr "- Höhlen"
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:86
 msgid "- Other Subterranean Habitats"
 msgstr "- andere Subterrane Habitate"
+
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:211
+msgid "1 Goal"
+msgstr ""
+
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:219
+msgid "1 Obj"
+msgstr ""
 
 #: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:49
 msgid "1) Activities"
@@ -3993,7 +4009,6 @@ msgstr ""
 msgid "Goal Relevancy Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:166
 #: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:46
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:63
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:98
@@ -5459,10 +5474,6 @@ msgstr "Zwischenziele beinhalten Strategien"
 #: Miradi/source/org/miradi/diagram/cells/FactorCell.java:108
 msgid "Objectives:"
 msgstr "Zwischenziele:"
-
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:173
-msgid "Objs"
-msgstr "Zwischenziele"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:98
 msgid "Obtain financial resources"
@@ -30033,6 +30044,9 @@ msgid ""
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
 "Marine___Western Tropical Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "Objs"
+#~ msgstr "Zwischenziele"
 
 #, fuzzy
 #~ msgid ""

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-07 16:01-0600\n"
+"POT-Creation-Date: 2012-12-10 14:31-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -237,6 +237,14 @@ msgstr ""
 msgid "%s (old project)"
 msgstr ""
 
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:214
+msgid "%s Goals"
+msgstr ""
+
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:222
+msgid "%s Objs"
+msgstr ""
+
 #: Miradi/source/org/miradi/utils/DiagramCorruptionDetector.java:222
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br> \t\t"
@@ -302,6 +310,14 @@ msgstr "-干燥岩洞"
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:86
 msgid "- Other Subterranean Habitats"
 msgstr "-其它地下生境"
+
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:211
+msgid "1 Goal"
+msgstr ""
+
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:219
+msgid "1 Obj"
+msgstr ""
 
 #: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:49
 msgid "1) Activities"
@@ -3712,7 +3728,6 @@ msgstr ""
 msgid "Goal Relevancy Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:166
 #: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:46
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:63
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:98
@@ -5135,10 +5150,6 @@ msgstr ""
 #: Miradi/source/org/miradi/diagram/cells/FactorCell.java:108
 msgid "Objectives:"
 msgstr "分目标组： \t\t"
-
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:173
-msgid "Objs"
-msgstr "分目标组 \t\t"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:98
 msgid "Obtain financial resources"
@@ -29127,6 +29138,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Objs"
+#~ msgstr "分目标组 \t\t"
 
 #~ msgid ""
 #~ "html|/resources/wizard/DiagramView/"
