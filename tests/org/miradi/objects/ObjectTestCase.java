@@ -266,10 +266,6 @@ public class ObjectTestCase extends TestCaseWithProject
 			
 			return map.toJsonString();
 		}
-		else if(field instanceof ChoiceData)
-		{
-			return "3";
-		}
 		else if(field instanceof BaseIdData)
 		{
 			return new BaseId(15).toString();
@@ -288,6 +284,10 @@ public class ObjectTestCase extends TestCaseWithProject
 		else if(field instanceof ChoiceData)
 		{
 			return tag + tag;
+		}
+		else if(field instanceof ChoiceData)
+		{
+			return "3";
 		}
 		else if(field instanceof CodeData)
 		{
