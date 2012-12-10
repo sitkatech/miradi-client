@@ -80,6 +80,8 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Desire;
 import org.miradi.objects.Factor;
+import org.miradi.objects.Goal;
+import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
@@ -163,18 +165,18 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	private void setGoalText(DiagramComponent diagram) throws Exception
 	{
 		ORefList annotationRefs = getFactorCell().getGoalRefs();
-		final String computedText = getAnnotationText(diagram, GoalSchema.getObjectType(), EAM.text("Goals"), annotationRefs);
+		final String computedText = getAnnotationText(diagram, GoalSchema.getObjectType(), annotationRefs);
 		goalsText = computedText;
 	}
 
 	private void setObjectiveText(DiagramComponent diagram) throws Exception
 	{
 		ORefList annotationRefs = getFactorCell().getObjectiveRefs();
-		final String computedText = getAnnotationText(diagram, ObjectiveSchema.getObjectType(), EAM.text("Objs"), annotationRefs);
+		final String computedText = getAnnotationText(diagram, ObjectiveSchema.getObjectType(), annotationRefs);
 		objectivesText = computedText;
 	}
 
-	private String getAnnotationText(final DiagramComponent diagram, int annotationType, final String annotationSuffix, ORefList annotationRefs) throws Exception
+	private String getAnnotationText(final DiagramComponent diagram, int annotationType, ORefList annotationRefs) throws Exception
 	{
 		final Project project = diagram.getProject();
 		final String objectName = project.getObjectManager().getInternalObjectTypeName(annotationType);
@@ -187,18 +189,39 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			return null;
 		}
 		
+		final String annotationName = getAnnotationName(annotationType, annotationRefs.size());
 		if(annotationRefs.size() == 1)
 		{
 			String shortLabel = project.getObjectData(annotationRefs.get(0), Desire.TAG_SHORT_LABEL);
-			//NOTE: not formatting as html since the label cannot contain html styling
-			shortLabel = XmlUtilities2.convertXmlTextToPlainText(shortLabel);
-			return shortLabel;
-		}
-		if(annotationRefs.size() > 1)
-		{
-			return "" + annotationRefs.size() + " " + annotationSuffix;
+			if (shortLabel.length() > 0)
+			{
+				//NOTE: not formatting as html since the label cannot contain html styling
+				return XmlUtilities2.convertXmlTextToPlainText(shortLabel);
+			}
 		}
 		
+		return annotationName;
+	}
+	
+	private String getAnnotationName(int annotationType, int size)
+	{
+		if (Goal.is(annotationType))
+		{
+			if (size == 1)
+				return EAM.text("1 Goal");
+			
+			if (size > 1)
+				return EAM.substitute(EAM.text("%s Goals"), Integer.toString(size));
+		}
+		if (Objective.is(annotationType))
+		{
+			if (size == 1)
+				return EAM.text("1 Obj");
+			
+			if (size > 1)
+				return EAM.substitute(EAM.text("%s Objs"), Integer.toString(size));
+		}
+			
 		return null;
 	}
 	
