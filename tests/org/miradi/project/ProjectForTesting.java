@@ -244,24 +244,21 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, createSampleFreshwaterEcoregionsCodeList().toString());
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, createSampleMarineEcoregionsCodeList().toString());
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, createSampleTerrestrialEcoregionsCodeList().toString());
-		
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, createConproXenodata());
 		
-		ORef tncProjectDataRef = getSingletonObjectRef(TncProjectDataSchema.getObjectType());
+		fillObjectUsingCommand(getTncProjectDataRef(), TncProjectData.TAG_PROJECT_PLACE_TYPES, new TncProjectPlaceTypeQuestion().getAllCodes().toString());
+		fillObjectUsingCommand(getTncProjectDataRef(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, new TncOrganizationalPrioritiesQuestion().getAllCodes().toString());
+		fillObjectUsingCommand(getTncProjectDataRef(), TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT, "Some Parent Child Value");
+		fillObjectUsingCommand(getTncProjectDataRef(), TncProjectData.TAG_PROJECT_RESOURCES_SCORECARD, "Some tnc project resources scorecard");
+		fillObjectUsingCommand(getTncProjectDataRef(), TncProjectData.TAG_PROJECT_LEVEL_COMMENTS, "some tnc project level comments");
+		fillObjectUsingCommand(getTncProjectDataRef(), TncProjectData.TAG_PROJECT_CITATIONS, "some tnc project citations");
+		fillObjectUsingCommand(getTncProjectDataRef(), TncProjectData.TAG_CAP_STANDARDS_SCORECARD, "some tnc cap standards scorecard");
+		fillObjectUsingCommand(getTncProjectDataRef(), TncProjectData.TAG_PROJECT_SHARING_CODE, ProjectSharingQuestion.SHARE_WITH_ANYONE);
+	}
 
-		TncProjectPlaceTypeQuestion projectPlaceTypeQuestion = new TncProjectPlaceTypeQuestion();
-		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_PLACE_TYPES, projectPlaceTypeQuestion.getAllCodes().toString());
-		
-		TncOrganizationalPrioritiesQuestion organiziationalPrioritiesQuestion = new TncOrganizationalPrioritiesQuestion();
-		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, organiziationalPrioritiesQuestion.getAllCodes().toString());
-		
-		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT, "Some Parent Child Value");
-		
-		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_RESOURCES_SCORECARD, "Some tnc project resources scorecard");
-		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_LEVEL_COMMENTS, "some tnc project level comments");
-		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_CITATIONS, "some tnc project citations");
-		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_CAP_STANDARDS_SCORECARD, "some tnc cap standards scorecard");
-		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_SHARING_CODE, ProjectSharingQuestion.SHARE_WITH_ANYONE);
+	private ORef getTncProjectDataRef()
+	{
+		return getSingletonObjectRef(TncProjectDataSchema.getObjectType());
 	}
 	
 	private String encodeXml(String data)
@@ -318,7 +315,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	private void fillTncProjectData() throws Exception
 	{
-		ORef tncProjectDataRef = getSingletonObjectRef(TncProjectDataSchema.getObjectType());
+		ORef tncProjectDataRef = getTncProjectDataRef();
 
 		fillObjectWithSampleStringData(tncProjectDataRef, TncProjectData.TAG_MAKING_THE_CASE);
 		fillObjectWithSampleStringData(tncProjectDataRef, TncProjectData.TAG_RISKS);
