@@ -283,11 +283,8 @@ public class ObjectTestCase extends TestCaseWithProject
 		}
 		else if(field instanceof ChoiceData)
 		{
-			return "3";
-		}
-		else if(field instanceof ChoiceData)
-		{
-			return tag + tag;
+			final CodeList allCodes = field.getChoiceQuestion().getAllCodes();
+			return allCodes.get(allCodes.size() - 1);
 		}
 		else if(field instanceof CodeData)
 		{
