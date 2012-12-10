@@ -283,11 +283,11 @@ public class ObjectTestCase extends TestCaseWithProject
 		}
 		else if(field instanceof ChoiceData)
 		{
-			return tag + tag;
+			return "3";
 		}
 		else if(field instanceof ChoiceData)
 		{
-			return "3";
+			return tag + tag;
 		}
 		else if(field instanceof CodeData)
 		{
