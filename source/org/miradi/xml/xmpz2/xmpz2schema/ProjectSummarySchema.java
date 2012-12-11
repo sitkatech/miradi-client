@@ -52,7 +52,6 @@ public class ProjectSummarySchema extends AbstractProjectSummarySchema
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_NEXT_STEPS));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_THREAT_RATING_MODE));
-		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT));
 		addFieldSchema(new FieldSchemaChoice(OVERALL_PROJECT_THREAT_RATING, getQuestion(ThreatRatingQuestion.class)));
 		addFieldSchema(new FieldSchemaChoice(OVERALL_PROJECT_VIABILITY_RATING, getQuestion(StatusQuestion.class)));
