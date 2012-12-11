@@ -118,7 +118,7 @@ abstract public class AbstractAssignmentImporter extends BaseObjectImporter
 		Node dayNode = getImporter().getNode(dateUnitNode, getDayElementName());
 		if (dayNode != null)
 		{
-			return DateUnit.createDayDateUnit(dayNode.getTextContent());
+			return DateUnit.createDayDateUnit(getImporter().getAttributeValue(dayNode, DATE));
 		}
 		
 		throw new RuntimeException("Could not find a matching Date unit for element content.");

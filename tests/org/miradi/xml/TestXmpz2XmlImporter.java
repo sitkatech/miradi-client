@@ -55,6 +55,12 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 		super(name);
 	}
 	
+	public void testImportWorkUnitDays() throws Exception
+	{	
+		getProject().fillWorkUnitDay();
+		validateUsingStringWriter();
+	}
+	
 	public void testQuarterColumnVisibility() throws Exception
 	{
 		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, QuarterColumnsVisibilityQuestion.HIDE_QUARTER_COLUMNS_CODE);
