@@ -2290,6 +2290,17 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		return assignment;
 	}
+	
+	public void fillWorkUnitDay() throws Exception
+	{
+		DateUnitEffort dateUnitEffort = new DateUnitEffort(new DateUnit("2012-01-01"), 10.0);
+		ResourceAssignment assignment = createResourceAssignment();
+		ProjectResource projectResource = createAndPopulateProjectResource();
+		fillObjectUsingCommand(assignment, ResourceAssignment.TAG_RESOURCE_ID, projectResource.getId().toString());
+		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
+		dateUnitEffortList.add(dateUnitEffort);
+		setObjectData(assignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
+	}
 
 	public static MultiCalendar createStartYear(int startYear)
 	{
