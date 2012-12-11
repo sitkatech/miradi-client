@@ -37,6 +37,12 @@ public class FloatData extends ObjectData
 		
 		value = 0;
 	}
+
+	@Override
+	public boolean isFloatData()
+	{
+		return true;
+	}
 	
 	@Override
 	public void set(String newValue) throws Exception

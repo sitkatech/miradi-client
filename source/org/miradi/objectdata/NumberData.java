@@ -38,6 +38,12 @@ public class NumberData extends ObjectData
 
 		value = Double.NaN;
 	}
+
+	@Override
+	public boolean isNumberData()
+	{
+		return true;
+	}
 	
 	@Override
 	public void set(String newValue) throws Exception

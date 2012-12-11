@@ -136,6 +136,36 @@ abstract public class ObjectData
 		return false;
 	}
 	
+	public boolean isIntegerData()
+	{
+		return false;
+	}
+	
+	public boolean isNumberData()
+	{
+		return false;
+	}
+	
+	public boolean isDateData()
+	{
+		return false;
+	}
+	
+	public boolean isFloatData()
+	{
+		return false;
+	}
+	
+	public boolean isCodeData()
+	{
+		return false;
+	}
+	
+	public boolean isStringRefMapData()
+	{
+		return false;
+	}
+
 	public ChoiceQuestion getChoiceQuestion()
 	{
 		return null;

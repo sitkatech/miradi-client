@@ -40,6 +40,12 @@ public class IntegerData extends ObjectData
 	}
 	
 	@Override
+	public boolean isIntegerData()
+	{
+		return true;
+	}
+	
+	@Override
 	public void set(String newValue) throws Exception
 	{
 		if(newValue.length() == 0)
