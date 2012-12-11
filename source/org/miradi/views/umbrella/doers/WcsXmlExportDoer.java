@@ -33,12 +33,6 @@ public class WcsXmlExportDoer extends AbstractExportProjectXmlZipDoer
 	}
 	
 	@Override
-	protected void displayUserInfoDialog()
-	{
-		notifyUserWhenExportingXmpz1();
-	}
-	
-	@Override
 	protected String getSchemaRelativeFilePath()
 	{
 		return WcsMiradiXmlValidator.WCS_MIRADI_SCHEMA_FILE_RELATIVE_PATH;

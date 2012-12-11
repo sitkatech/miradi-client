@@ -49,7 +49,6 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 		
 		try 
 		{
-			displayUserInfoDialog();
 			//FIXME medium - this needs to be cleaned up.  Push down into sub classes.  
 			if (!doesConfirmBetaExport() ||  !doesUserConfirm())
 				return;
@@ -88,10 +87,6 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 		{
 			throw new CommandFailedException(e);
 		} 
-	}
-
-	protected void displayUserInfoDialog()
-	{
 	}
 
 	private void doWorkWithProgressDialog(ProgressInterface progressInterface, File chosen) throws Exception
