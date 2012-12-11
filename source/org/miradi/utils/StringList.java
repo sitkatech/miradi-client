@@ -88,6 +88,11 @@ public class StringList implements Iterable<String>
 		return get(0);
 	}
 	
+	public String lastElement()
+	{
+		return get(size() - 1);
+	}
+	
 	public String get(int index)
 	{
 		return data.get(index);
