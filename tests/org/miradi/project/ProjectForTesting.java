@@ -1600,7 +1600,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		if (field.isSingleLineUserText())
 		{
-			return "sdf";
+			return "single line sample text";
 		}
 		if (field.isIntegerData())
 		{
@@ -1620,7 +1620,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		}
 		if (field.isExpandingUserText())
 		{
-			return "randome text for:";
+			return "randome text for:" + field.getTag();
 		}
 		if (field.isDateData())
 		{
@@ -1629,13 +1629,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 		if (field.isCodeListData())
 		{
 			CodeList allCodes = field.getChoiceQuestion().getAllCodes();
-			final CodeList oneCodeList = new CodeList(new String[]{allCodes.get(allCodes.size() - 1)});
+			final CodeList oneCodeList = new CodeList(new String[]{allCodes.lastElement()});
 			return oneCodeList.toString();
 		}
 		if (field.isChoiceItemData())
 		{
 			final CodeList allCodes = field.getChoiceQuestion().getAllCodes();
-			return allCodes.get(allCodes.size() - 1);
+			return allCodes.lastElement();
 		}
 		if (field.isCodeData())
 		{
