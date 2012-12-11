@@ -45,7 +45,7 @@ public class Xmpz2ProjectScopeImporter extends AbstractXmpz2ObjectImporter
 		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_HUMAN_POPULATION);
 		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_HUMAN_POPULATION_NOTES);
 		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_SOCIAL_CONTEXT);		
-		getImporter().importCodeListField(projectSummaryNode, ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES, getMetadataRef(), ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES);
+		getImporter().importCodeListField(projectSummaryNode, PROJECT_SUMMARY_SCOPE, getMetadataRef(), ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES);
 		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_PROTECTED_AREA_CATEGORY_NOTES);
 		importWcpaField(projectSummaryNode, WcpaProjectData.TAG_LEGAL_STATUS);
 		importWcpaField(projectSummaryNode, WcpaProjectData.TAG_LEGISLATIVE);
