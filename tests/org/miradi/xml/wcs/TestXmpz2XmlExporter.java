@@ -137,6 +137,7 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 		// It should auto-populate any newly created field so they are immediately 
 		// flagged as needing to be added to the schema.
 		getProject().populateEverything();
+		getProject().populateBaseObjectWithSampleData(getProject().getMetadata());
 		DiagramFactor diagramFactor1 = getProject().createAndPopulateDiagramFactor();
 		DiagramFactor diagramFactor2 = getProject().createAndPopulateDiagramFactor();
 		getProject().tagDiagramFactor(diagramFactor2.getWrappedORef());
