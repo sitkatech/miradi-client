@@ -424,9 +424,12 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void writeLanguageVocabulary()
 	{
-		Vector<String> elements = new Vector<String>();
-		elements.add("'[a-z][a-z][a-z]'");
-		defineVocabulary(new TwoLetterLanguagesQuestion().getAllCodes(), elements, VOCABULARY_LANGUAGE_CODE);
+		getSchemaWriter().println("vocabulary_language_code = xsd:NMTOKEN { pattern = '([a-z][a-z][a-z])|"+ getOredElements(new TwoLetterLanguagesQuestion().getAllCodes())+ "' }");
+	}
+
+	private String getOredElements(CodeList allCodes)
+	{
+		return StringUtilities.joinWithOr(allCodes.toArray());
 	}
 
 	private void defineVocabulary(final String elementName, final CodeList allCodesFromDynamicQuestion)

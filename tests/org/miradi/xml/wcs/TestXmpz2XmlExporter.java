@@ -53,6 +53,19 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 		validateProject();
 	}
 	
+	public void testThreeLanguageVocabularyElement() throws Exception
+	{
+		verifyLanguageCode("zun");
+		verifyLanguageCode("plt");
+		verifyLanguageCode("es");
+	}
+
+	private void verifyLanguageCode(final String languageCode) throws Exception
+	{
+		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_PROJECT_LANGUAGE, languageCode);
+		validateProject();
+	}
+	
 	public void testElementsWithCalculatedCostsElement() throws Exception
 	{
 		getProject().createAndPopulateActivity();
