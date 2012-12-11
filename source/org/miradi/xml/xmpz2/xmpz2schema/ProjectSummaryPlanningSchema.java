@@ -44,6 +44,7 @@ public class ProjectSummaryPlanningSchema extends AbstractProjectSummarySchema
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_BUDGET_SECURED_PERCENT));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_KEY_FUNDING_SOURCES));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_FINANCIAL_COMMENTS));
+		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY));
 	}
 	
 	@Override

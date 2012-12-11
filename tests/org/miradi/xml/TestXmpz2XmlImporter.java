@@ -29,12 +29,14 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Goal;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.NullProgressMeter;
@@ -51,6 +53,12 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	public TestXmpz2XmlImporter(String name)
 	{
 		super(name);
+	}
+	
+	public void testQuarterColumnVisibility() throws Exception
+	{
+		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, QuarterColumnsVisibilityQuestion.HIDE_QUARTER_COLUMNS_CODE);
+		validateUsingStringWriter();
 	}
 	
 	public void testImportAbsractTargetStatus() throws Exception
@@ -115,7 +123,6 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	public void testImportFilledProject() throws Exception
 	{
 		getProject().populateEverything();
-		
 		AbstractTarget target = getProject().createAndPopulateHumanWelfareTarget();
 		Strategy strategy = getProject().createStrategy();
 		Indicator indicator = getProject().createAndPopulateIndicator(strategy);
