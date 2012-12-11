@@ -38,6 +38,12 @@ public class DateData extends ObjectData
 	}
 
 	@Override
+	public boolean isDateData()
+	{
+		return true;
+	}
+
+	@Override
 	public void set(String newValue) throws Exception
 	{
 		if(newValue.length() == 0)

@@ -34,6 +34,12 @@ public class StringRefMapData extends ObjectData
 		super(tagToUse);
 		data = new StringRefMap();
 	}
+	
+	@Override
+	public boolean isStringRefMapData()
+	{
+		return true;
+	}
 
 	@Override
 	public String get()

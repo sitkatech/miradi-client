@@ -26,4 +26,10 @@ public class CodeData extends StringData
 	{
 		super(tagToUse);
 	}
+
+	@Override
+	public boolean isCodeData()
+	{
+		return true;
+	}
 }

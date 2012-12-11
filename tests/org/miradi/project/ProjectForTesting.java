@@ -21,6 +21,7 @@ package org.miradi.project;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.util.Vector;
 
 import org.martus.util.MultiCalendar;
 import org.miradi.commands.CommandCreateObject;
@@ -33,6 +34,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.objectdata.BooleanData;
+import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.CodeToChoiceMap;
 import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.CodeToUserStringMap;
@@ -1581,6 +1583,70 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createAndPopulateCategoryOne();
 		createAndPopulateCategoryTwo();
 		populateDashboard();
+	}
+	
+	public void populateBaseObjectWithSampleData(BaseObject baseObject) throws Exception
+	{
+		Vector<String> fieldTags = baseObject.getStoredFieldTags();
+		for(String tag : fieldTags)
+		{
+			final ObjectData field = baseObject.getField(tag);
+			String sampleData = getSampleData(field);
+			setObjectData(baseObject, tag, sampleData);
+		}
+	}
+
+	private String getSampleData(ObjectData field) throws Exception
+	{
+		if (field.isSingleLineUserText())
+		{
+			return "sdf";
+		}
+		if (field.isIntegerData())
+		{
+			return "45";
+		}
+		if (field.isNumberData())
+		{
+			return "34";
+		}
+		if (field.isFloatData())
+		{
+			return "1.2";
+		}
+		if (field.isMultiLineUserText())
+		{
+			return "line oneline 2";
+		}
+		if (field.isExpandingUserText())
+		{
+			return "randome text for:";
+		}
+		if (field.isDateData())
+		{
+			return "2006-02-01";
+		}
+		if (field.isCodeListData())
+		{
+			CodeList allCodes = field.getChoiceQuestion().getAllCodes();
+			final CodeList oneCodeList = new CodeList(new String[]{allCodes.get(allCodes.size() - 1)});
+			return oneCodeList.toString();
+		}
+		if (field.isChoiceItemData())
+		{
+			final CodeList allCodes = field.getChoiceQuestion().getAllCodes();
+			return allCodes.get(allCodes.size() - 1);
+		}
+		if (field.isCodeData())
+		{
+			return "randomCode";
+		}
+		if (field.isStringRefMapData())
+		{
+			return createConproXenodata();
+		}
+		
+		throw new Exception("no sample data for: " + field.getClass().getSimpleName());
 	}
 
 	private void populateDashboard() throws Exception
