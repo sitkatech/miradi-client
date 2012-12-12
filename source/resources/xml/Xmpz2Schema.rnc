@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Wed Dec 12 09:55:56 EST 2012 $
+# $LastChangedDate: Wed Dec 12 10:21:56 EST 2012 $
 # $LastChangedRevision: 216 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/216'
 start = ConservationProject.element
@@ -394,7 +394,8 @@ Cause.element = element miradi:Cause
   element miradi:CauseIsDirectThreat { xsd:boolean }? &
   element miradi:CauseName { formatted_text }? &
   element miradi:CauseObjectiveIds { ObjectiveId.element* }? &
-  element miradi:CauseStandardClassification { vocabulary_cause_taxonomy_code }?
+  element miradi:CauseStandardClassification { vocabulary_cause_taxonomy_code }? &
+  element miradi:CauseThreatRating { vocabulary_threat_rating }?
 }
 
 StrategyPool.element = element miradi:StrategyPool { Strategy.element* }
