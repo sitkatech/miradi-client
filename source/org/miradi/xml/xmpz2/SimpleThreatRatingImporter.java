@@ -50,15 +50,15 @@ public class SimpleThreatRatingImporter extends	AbstractThreatRatingImporter
 		importThreatRatingsComment(threatRatingNode);
 		ORef threatRef = getThreatRef(threatRatingNode);
 		ORef targetRef = getTargetRef(threatRatingNode);
-		Node scopeNode = getImporter().getNode(threatRatingNode, SCOPE);
+		Node scopeNode = getImporter().getNode(threatRatingNode, getParentElementName() + SCOPE);
 		if (scopeNode != null)
 			getProject().getSimpleThreatRatingFramework().setScope(threatRef, targetRef, extractNodeTextContentAsInt(scopeNode));
 		
-		Node severityNode = getImporter().getNode(threatRatingNode, SEVERITY);
+		Node severityNode = getImporter().getNode(threatRatingNode, getParentElementName() + SEVERITY);
 		if (severityNode != null)
 			getProject().getSimpleThreatRatingFramework().setSeverity(threatRef, targetRef, extractNodeTextContentAsInt(severityNode));
 		
-		Node irreversibilityNode = getImporter().getNode(threatRatingNode, IRREVERSIBILITY);
+		Node irreversibilityNode = getImporter().getNode(threatRatingNode, getParentElementName() + IRREVERSIBILITY);
 		if (irreversibilityNode != null)
 			getProject().getSimpleThreatRatingFramework().setIrreversibility(threatRef, targetRef, extractNodeTextContentAsInt(irreversibilityNode));
 	}
