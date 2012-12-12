@@ -127,7 +127,7 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 		defineVocabulary(writer, VOCABULARY_DIAGRAM_LINK_COLOR, new DiagramLinkColorQuestion());
 		defineVocabulary(writer, VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION, new HabitatAssociationQuestion());
 		defineVocabulary(writer, VOCABULARY_TARGET_STATUS, new StatusQuestion());
-		defineVocabulary(writer, VOCABULARY_TARGET_VIABILITY_MODE, new ViabilityModeQuestion());
+		defineVocabulary(writer, VOCABULARY_TARGET_VIABILITY_MODE, new LegacyViabilityModeQuestion());
 		defineVocabulary(writer, VOCABULARY_THREAT_TAXONOMY_CODE, new ThreatClassificationQuestion());
 		defineVocabulary(writer, VOCABULARY_SCOPE_BOX_TYPE, new ScopeBoxTypeQuestion(null));
 		defineVocabulary(writer, VOCABULARY_STRESS_SEVERITY, new StressSeverityChoiceQuestion());
@@ -593,6 +593,22 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 		}
 		
 		writer.println();
+	}
+	
+	private static class LegacyViabilityModeQuestion extends ViabilityModeQuestion
+	{
+		
+		@Override
+		public String convertToReadableCode(String code)
+		{
+			return code;
+		}
+		
+		@Override
+		protected boolean hasReadableAlternativeDefaultCode()
+		{
+			return false;
+		}
 	}
 	
 	private static class LegacyDiagramLegendQuestion extends StaticChoiceQuestion
