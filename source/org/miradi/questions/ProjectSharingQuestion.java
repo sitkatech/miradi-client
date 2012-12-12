@@ -36,6 +36,18 @@ public class ProjectSharingQuestion extends StaticChoiceQuestion
 		};
 	}
 	
+	@Override
+	public boolean hasReadableAlternativeDefaultCode()
+	{
+		return true;
+	}
+	
+	@Override
+	public String getReadableAlternativeDefaultCode()
+	{
+		return "Private";
+	}
+	
 	public static final String SHARE_ONLY_INSIDE_ORGANIZATION = "";
 	public static final String SHARE_WITH_ANYONE = "ShareWithAnyone";
 }
