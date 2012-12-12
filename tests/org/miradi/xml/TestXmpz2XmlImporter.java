@@ -67,6 +67,20 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 		validateUsingStringWriter();
 	}
 	
+	public void testProjectWithStressBasedThreatRatingData() throws Exception
+	{
+		getProject().populateStressBasedThreatRatingCommentsData();
+		getProject().createThreatTargetDiagramLinkWithRating();
+		validateUsingStringWriter();
+	}
+	
+	public void testProjectWithSimpleThreatRatingData() throws Exception
+	{
+		getProject().populateSimpleThreatRatingCommentsData();
+		getProject().populateSimpleThreatRatingValues();
+		validateUsingStringWriter();
+	}
+	
 	public void testImportAbsractTargetStatus() throws Exception
 	{
 		HumanWelfareTarget humanWelfareTarget = getProject().createHumanWelfareTarget();
