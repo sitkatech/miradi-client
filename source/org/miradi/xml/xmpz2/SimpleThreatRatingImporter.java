@@ -26,9 +26,9 @@ import org.miradi.objects.ThreatRatingCommentsData;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class SimpleThreatTargetThreatRatingImporter extends	AbstractThreatRatingImporter
+public class SimpleThreatRatingImporter extends	AbstractThreatRatingImporter
 {
-	public SimpleThreatTargetThreatRatingImporter(Xmpz2XmlImporter xmpz2XmlImporter)
+	public SimpleThreatRatingImporter(Xmpz2XmlImporter xmpz2XmlImporter)
 	{
 		super(xmpz2XmlImporter);
 	}
