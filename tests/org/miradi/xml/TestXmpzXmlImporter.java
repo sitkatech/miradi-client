@@ -85,6 +85,12 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		validateUsingStringWriter();
 	}
 	
+	public void testImportWorkUnitDays() throws Exception
+	{	
+		getProject().fillWorkUnitDay();
+		validateUsingStringWriter();
+	}
+	
 	private Dashboard getDashboard() throws Exception
 	{
 		ORef dashbaordRef = getProject().getSingletonObjectRef(DashboardSchema.getObjectType());
