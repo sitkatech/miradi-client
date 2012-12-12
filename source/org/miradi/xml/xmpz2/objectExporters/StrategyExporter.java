@@ -71,6 +71,6 @@ public class StrategyExporter extends BaseObjectExporter
 	
 	private void writeMethodRefs(BaseObjectSchema baseObjectSchema, final Strategy strategy) throws Exception
 	{
-		getWriter().writeReflist(baseObjectSchema.getObjectName() + SORTED_ACTIVITY_IDS, ACTIVITY, strategy.getActivityRefs());
+		getWriter().writeReflist(baseObjectSchema.getObjectName() + ORDERED_ACTIVITY_IDS, ACTIVITY, strategy.getActivityRefs());
 	}	
 }

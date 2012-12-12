@@ -260,7 +260,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 	{
 		HashMap<String, String> map = createFactorMap();
 		map.put(Strategy.TAG_TAXONOMY_CODE, STANDARD_CLASSIFICATION);
-		map.put(Strategy.TAG_ACTIVITY_IDS, SORTED_ACTIVITY_IDS);
+		map.put(Strategy.TAG_ACTIVITY_IDS, ORDERED_ACTIVITY_IDS);
 		
 		return map;
 	}
