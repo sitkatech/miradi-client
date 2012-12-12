@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Tue Dec 11 12:31:17 EST 2012 $
+# $LastChangedDate: Tue Dec 11 19:14:48 EST 2012 $
 # $LastChangedRevision: 216 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/216'
 start = ConservationProject.element
@@ -211,9 +211,9 @@ Task.element = element miradi:Task
   element miradi:TaskId { text }? &
   element miradi:TaskLeaderResourceId { LeaderResourceId.element }? &
   element miradi:TaskName { formatted_text }? &
+  element miradi:TaskOrderedSubTaskIds { SubTaskId.element* }? &
   element miradi:TaskProgressReportIds { ProgressReportId.element* }? &
   element miradi:TaskResourceAssignmentIds { ResourceAssignmentId.element* }? &
-  element miradi:TaskSortedSubTaskIds { SubTaskId.element* }? &
   element miradi:TaskCalculatedCosts { CalculatedCosts.element }?
 }
 
@@ -262,11 +262,11 @@ Indicator.element = element miradi:Indicator
   element miradi:IndicatorLeaderResourceId { LeaderResourceId.element }? &
   element miradi:IndicatorMeasurementIds { MeasurementId.element* }? &
   element miradi:IndicatorName { formatted_text }? &
+  element miradi:IndicatorOrderedMethodIds { MethodId.element* }? &
   element miradi:IndicatorPriority { vocabulary_priority_rating_code }? &
   element miradi:IndicatorProgressReportIds { ProgressReportId.element* }? &
   element miradi:IndicatorRatingSource { vocabulary_rating_source }? &
   element miradi:IndicatorResourceAssignmentIds { ResourceAssignmentId.element* }? &
-  element miradi:IndicatorSortedMethodIds { MethodId.element* }? &
   element miradi:IndicatorThresholds { IndicatorThreshold.element* }? &
   element miradi:IndicatorViabilityRatingsComments { formatted_text }? &
   element miradi:IndicatorCalculatedCosts { CalculatedCosts.element }?
@@ -412,9 +412,9 @@ Strategy.element = element miradi:Strategy
   element miradi:StrategyLegacyTncStrategyRanking { formatted_text }? &
   element miradi:StrategyName { formatted_text }? &
   element miradi:StrategyObjectiveIds { ObjectiveId.element* }? &
+  element miradi:StrategyOrderedActivityIds { ActivityId.element* }? &
   element miradi:StrategyProgressReportIds { ProgressReportId.element* }? &
   element miradi:StrategyResourceAssignmentIds { ResourceAssignmentId.element* }? &
-  element miradi:StrategySortedActivityIds { ActivityId.element* }? &
   element miradi:StrategyStandardClassification { vocabulary_strategy_taxonomy_code }? &
   element miradi:StrategyStatus { vocabulary_strategy_status }? &
   element miradi:StrategyCalculatedCosts { CalculatedCosts.element }?

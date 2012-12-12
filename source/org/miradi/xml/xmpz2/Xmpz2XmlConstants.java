@@ -83,7 +83,7 @@ public interface Xmpz2XmlConstants
 	public static final String OBJECTIVE = "Objective";
 	public static final String INDICATOR = "Indicator";
 	public static final String ACTIVITY = "Activity";
-	public static final String SORTED_ACTIVITY_IDS = "SortedActivityIds";
+	public static final String SORTED_ACTIVITY_IDS = "OrderedActivityIds";
 	public static final String METHOD = "Method";
 	public static final String TASK = "Task";
 	public static final String SUB_TASK = "SubTask";
@@ -183,13 +183,13 @@ public interface Xmpz2XmlConstants
 	public static final String OTHER_NOTABLE_SPECIES = "OtherNotableSpecies";
 	public static final String AUDIENCE = "Audience";
 	public static final String OBJECT_TREE_TABLE_CONFIGURATION = "PlanningViewConfiguration";
-	public static final String METHOD_IDS = "SortedMethodIds";
+	public static final String METHOD_IDS = "OrderedMethodIds";
 	public static final String THRESHOLDS = "Thresholds";
 	public static final String THRESHOLD = "IndicatorThreshold";
 	public static final String THRESHOLD_VALUE = "ThresholdValue";
 	public static final String THRESHOLD_DETAILS = "ThresholdDetails";
 	public static final String STATUS_CODE = "StatusCode";
-	public static final String SUB_TASK_IDS = "SortedSubTaskIds";
+	public static final String SUB_TASK_IDS = "OrderedSubTaskIds";
 	public static final String EXTERNAL_APP_ELEMENT_NAME = "ExternalApp";
 	public static final String PROJECT_ID = "ProjectId";
 	public static final String LOCATION = "Location";
