@@ -159,12 +159,12 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 		return createSchemaElement + "?";
 	}
 	
-	public String createXsdElement(String elementType)
+	public static String createXsdElement(String elementType)
 	{
 		return "xsd:" + elementType;
 	}
 
-	public String createBooleanType()
+	public static String createBooleanType()
 	{
 		return createXsdElement("boolean");
 	}

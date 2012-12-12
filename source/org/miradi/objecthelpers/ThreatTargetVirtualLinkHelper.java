@@ -119,7 +119,7 @@ public class ThreatTargetVirtualLinkHelper
 		return calculateSimpleThreatRating(threatRef, targetRef);
 	}
 
-	private int calculateSimpleThreatRating(ORef threatRef, ORef targetRef) throws Exception
+	public int calculateSimpleThreatRating(ORef threatRef, ORef targetRef) throws Exception
 	{
 		SimpleThreatRatingFramework framework = getProject().getSimpleThreatRatingFramework();
 		ThreatRatingBundle bundle = framework.getBundle(threatRef, targetRef);

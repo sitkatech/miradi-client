@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Wed Dec 12 10:21:56 EST 2012 $
+# $LastChangedDate: Wed Dec 12 15:15:03 EST 2012 $
 # $LastChangedRevision: 216 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/216'
 start = ConservationProject.element
@@ -53,7 +53,8 @@ ConservationProject.element = element miradi:ConservationProject
   BudgetCategoryOnePool.element? &
   BudgetCategoryTwoPool.element? &
   DashboardPool.element? &
-  ThreatRatingPool.element? &
+  SimpleThreatRatingPool.element? &
+  StressBasedThreatRatingPool.element? &
   ExtraDataPool.element? &
   element miradi:DeletedOrphans{ text }?
 }
@@ -681,14 +682,29 @@ Dashboard.element = element miradi:Dashboard
   element miradi:DashboardStatusEntries { StatusEntry.element* }?
 }
 
-ThreatRatingPool.element = element miradi:ThreatRatingPool { ThreatRating.element* }
-ThreatRating.element = element miradi:ThreatRating
+SimpleThreatRatingPool.element = element miradi:SimpleThreatRatingPool { SimpleThreatRating.element* }
+SimpleThreatRating.element = element miradi:SimpleThreatRating
 {
-  element miradi:ThreatRatingTargetId { BiodiversityTargetId.element* }? &
-  element miradi:ThreatRatingThreatId { ThreatId.element* }? &
-  element miradi:ThreatRatingThreatTargetRating { vocabulary_threat_rating }? &
-  element miradi:ThreatRatingComments { formatted_text }? &
-  element miradi:ThreatRatingRatings {  SimpleThreatRating.element | StressBasedThreatRating.element*  }?
+  element miradi:SimpleThreatRatingTargetId { BiodiversityTargetId.element* }? &
+  element miradi:SimpleThreatRatingThreatId { ThreatId.element* }? &
+  element miradi:SimpleThreatRatingThreatTargetRating { vocabulary_threat_rating }? &
+  element miradi:SimpleThreatRatingScope { vocabulary_simple_threat_rating_scope_code }? &
+  element miradi:SimpleThreatRatingSeverity { vocabulary_simple_threat_rating_severitiy_code }? &
+  element miradi:SimpleThreatRatingIrreversibility { vocabulary_simple_threat_rating_irreversibility_code }? &
+  element miradi:SimpleThreatRatingComments { formatted_text }?
+}
+
+StressBasedThreatRatingPool.element = element miradi:StressBasedThreatRatingPool { StressBasedThreatRating.element* }
+StressBasedThreatRating.element = element miradi:StressBasedThreatRating
+{
+  element miradi:StressBasedThreatRatingThreatId { ThreatId.element* }? &
+  element miradi:StressBasedThreatRatingStressId { StressId.element* }? &
+  element miradi:StressBasedThreatRatingTargetId { BiodiversityTargetId.element* }? &
+  element miradi:StressBasedThreatRatingThreatTargetRating { vocabulary_threat_rating }? &
+  element miradi:StressBasedThreatRatingContribution { vocabulary_contribution_code }? &
+  element miradi:StressBasedThreatRatingIrreversibility { vocabulary_irreversibility_code }? &
+  element miradi:StressBasedThreatRatingIsActive { xsd:boolean }? &
+  element miradi:StressBasedThreatRatingComments { formatted_text }?
 }
 
 ExtraDataPool.element = element miradi:ExtraDataPool { ExtraData.element* }
@@ -1040,23 +1056,6 @@ ExternalProjectId.element = element miradi:ExternalProjectId
 {
   element miradi:ExternalApp { text } &
   element miradi:ProjectId { text }
-}
-
-SimpleThreatRating.element = element miradi:SimpleThreatRating
-{
-  element miradi:SimpleThreatRatingScope { vocabulary_simple_threat_rating_scope_code }? &
-  element miradi:SimpleThreatRatingSeverity { vocabulary_simple_threat_rating_severitiy_code }? &
-  element miradi:SimpleThreatRatingIrreversibility { vocabulary_simple_threat_rating_irreversibility_code }?
-}
-
-StressBasedThreatRating.element = element miradi:StressBasedThreatRating
-{
-  element miradi:StressBasedThreatRatingStressId { StressId.element } &
-  element miradi:StressBasedThreatRatingContribution { vocabulary_contribution_code }? &
-  element miradi:StressBasedThreatRatingIrreversibility { vocabulary_irreversibility_code }? &
-  element miradi:StressBasedThreatRatingIsActive { xsd:boolean }? &
-  element miradi:StressBasedThreatRatingStressRating { vocabulary_threat_rating }? &
-  element miradi:StressBasedThreatRatingThreatStressRating { vocabulary_threat_rating }?
 }
 
 Style.element = element miradi:Style

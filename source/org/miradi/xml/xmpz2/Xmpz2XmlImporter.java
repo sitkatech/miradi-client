@@ -100,7 +100,6 @@ import org.miradi.xml.xmpz2.objectImporters.SingletonObjectImporter;
 import org.miradi.xml.xmpz2.objectImporters.StrategyImporter;
 import org.miradi.xml.xmpz2.objectImporters.TaskImporter;
 import org.miradi.xml.xmpz2.objectImporters.ThreatReductionResultsImporter;
-import org.miradi.xml.xmpz2.objectImporters.ThreatTargetRatingImporter;
 import org.miradi.xml.xmpz2.objectImporters.TncProjectDataImporter;
 import org.miradi.xml.xmpz2.objectImporters.Xmpz2ExtraDataImporter;
 import org.miradi.xml.xmpz2.objectImporters.Xmpz2ProjectLocationImporter;
@@ -572,7 +571,8 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 
 	private void importThreatTargetRatings() throws Exception
 	{
-		new ThreatTargetRatingImporter(this).importFields();
+		new SimpleThreatTargetThreatRatingImporter(this).importFields();
+		new StressBasedThreatTargetThreatRatingImporter(this).importFields();
 	}
 	
 	private void importDashboardData() throws Exception

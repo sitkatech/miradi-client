@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.xmpz2.objectExporters;
+package org.miradi.xml.xmpz2;
 
 import java.util.Collections;
 import java.util.Vector;
@@ -37,58 +37,24 @@ import org.miradi.objects.Target;
 import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
-import org.miradi.project.threatrating.SimpleThreatRatingFramework;
-import org.miradi.project.threatrating.ThreatRatingBundle;
-import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.StressRatingChoiceQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
-import org.miradi.questions.ThreatStressRatingChoiceQuestion;
 import org.miradi.utils.ThreatStressRatingDetailsTableExporter;
-import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
-import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
-public class ThreatRatingExporter implements Xmpz2XmlConstants
+public class StressBasedThreatRatingExporter implements Xmpz2XmlConstants
 {
-	public ThreatRatingExporter(Xmpz2XmlWriter writerToUse)
+	public StressBasedThreatRatingExporter(Xmpz2XmlWriter writerToUse)
 	{
 		writer = writerToUse;
 	}
 
 	public void writeThreatRatings() throws Exception
 	{
-		getWriter().writeStartPoolElement(THREAT_RATING);
+		getWriter().writeStartPoolElement(getParentElementName());
 		exportStressBasedThreatRating();
-		exportSimpleThreatRating();
-		getWriter().writeEndPoolElement(THREAT_RATING);
-	}
-
-	private void exportSimpleThreatRating() throws Exception
-	{
-		Vector<Target> targets = getSortedTargetsInConceptualModelDiagrams();
-		ThreatTargetChainWalker chain = new ThreatTargetChainWalker(getProject());
-		for(Target target : targets)
-		{
-			ORefSet upstreamThreats = chain.getUpstreamThreatRefsFromTarget(target);
-			ORefList sortedUpStreamThreats = new ORefList(upstreamThreats);
-			sortedUpStreamThreats.sort();
-			for (int index = 0; index < sortedUpStreamThreats.size(); ++index)
-			{
-				ORef threatRef = sortedUpStreamThreats.get(index);
-				getWriter().writeStartElement(THREAT_RATING);
-				
-				ORef targetRef = target.getRef();
-				exportTargetId(targetRef);
-				exportThreatId(threatRef);
-				exportThreatRating(ThreatRatingModeChoiceQuestion.SIMPLE_BASED_CODE, targetRef, threatRef);
-				exportSimpleRatingComment(threatRef, targetRef);				
-				exportSimpleBaseThreatRatingDetails(threatRef, targetRef);
-				
-				getWriter().writeEndElement(THREAT_RATING);
-			}		
-		}
+		getWriter().writeEndPoolElement(getParentElementName());
 	}
 
 	private Vector<Target> getSortedTargetsInConceptualModelDiagrams()
@@ -97,21 +63,6 @@ public class ThreatRatingExporter implements Xmpz2XmlConstants
 		Collections.sort(targets, new BaseObjectByRefSorter());
 
 		return targets;
-	}
-
-	private void exportSimpleBaseThreatRatingDetails(ORef threatRef, ORef targetRef) throws Exception
-	{
-		getWriter().writeStartElement(THREAT_RATING + RATINGS);
-		getWriter().writeStartElement(SIMPLE_BASED_THREAT_RATING);
-		
-		ThreatRatingBundle bundle = getSimpleThreatRatingFramework().getBundle(threatRef, targetRef);
-		
-		getWriter().writeElement(SIMPLE_BASED_THREAT_RATING + SCOPE, getSimpleThreatRatingFramework().getScopeChoiceItem(bundle).getCode());
-		getWriter().writeElement(SIMPLE_BASED_THREAT_RATING + SEVERITY, getSimpleThreatRatingFramework().getSeverityChoiceItem(bundle).getCode());
-		getWriter().writeElement(SIMPLE_BASED_THREAT_RATING + IRREVERSIBILITY, getSimpleThreatRatingFramework().getIrreversibilityChoiceItem(bundle).getCode());
-		
-		getWriter().writeEndElement(SIMPLE_BASED_THREAT_RATING);
-		getWriter().writeEndElement(THREAT_RATING + RATINGS);
 	}
 
 	private void exportStressBasedThreatRating() throws Exception
@@ -137,15 +88,16 @@ public class ThreatRatingExporter implements Xmpz2XmlConstants
 			for(int threatIndex = 0; threatIndex < sortedThreatRefs.size(); ++threatIndex)
 			{
 				Cause threat = Cause.find(getProject(), sortedThreatRefs.get(threatIndex));
-				getWriter().writeStartElement(THREAT_RATING);
+				getWriter().writeStartElement(getParentElementName());
 				ORef targetRef = target.getRef();
 				ORef threatRef = threat.getRef();
-				exportTargetId(targetRef);
 				exportThreatId(threatRef);
+				exportStressId(stress.getRef());
+				exportTargetId(targetRef);
 				exportThreatRating(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE, targetRef, threatRef);
 				exportStressBasedRatingComment(threatRef, targetRef);
 				exportStressBasedThreatRatingDetails(target, stress, threat);
-				getWriter().writeEndElement(THREAT_RATING);
+				getWriter().writeEndElement(getParentElementName());
 			}
 		}
 	}
@@ -156,59 +108,48 @@ public class ThreatRatingExporter implements Xmpz2XmlConstants
 		int calculatedValue = threatTargetVirtualLink.calculateThreatRatingBundleValue(threatRatingMode, threatRef, targetRef);
 		String threatRatingCode = AbstractThreatTargetTableModel.convertIntToString(calculatedValue);
 		final ChoiceQuestion threatRatingQuestion = getProject().getQuestion(ThreatRatingQuestion.class);
-		getWriter().writeNonOptionalCodeElement(THREAT_RATING, THREAT_TARGET_RATING, threatRatingQuestion, threatRatingCode);
+		getWriter().writeNonOptionalCodeElement(getParentElementName(), THREAT_TARGET_RATING, threatRatingQuestion, threatRatingCode);
 	}
 
 	private void exportStressBasedThreatRatingDetails(Target target, Stress stress, Cause threat) throws Exception
 	{
-		getWriter().writeStartElement(THREAT_RATING + RATINGS);
-		getWriter().writeStartElement(STRESS_BASED_THREAT_RATING);
-		
-		exportId(STRESS_BASED_THREAT_RATING + STRESS, STRESS, stress.getRef());
 		ChoiceItem irreversibility = ThreatStressRatingDetailsTableExporter.getIrreversibility(getProject(), target.getRef(), threat.getRef(), stress);
-		getWriter().writeElement(STRESS_BASED_THREAT_RATING + IRREVERSIBILITY, irreversibility.getCode());
+		getWriter().writeElement(getParentElementName() + IRREVERSIBILITY, irreversibility.getCode());
 		
 		ChoiceItem contribution = ThreatStressRatingDetailsTableExporter.getContribution(getProject(), target.getRef(), threat.getRef(), stress);
-		getWriter().writeElement(STRESS_BASED_THREAT_RATING + CONTRIBUTION, contribution.getCode());
+		getWriter().writeElement(getParentElementName() + CONTRIBUTION, contribution.getCode());
 		
 		ThreatStressRating threatStressRating = ThreatStressRatingDetailsTableExporter.findThreatStressRating(getProject(), target.getRef(), threat.getRef(), stress);
 		if (threatStressRating != null)
-			getWriter().writeElement(STRESS_BASED_THREAT_RATING, threatStressRating, ThreatStressRating.TAG_IS_ACTIVE);
+			getWriter().writeElement(getParentElementName(), threatStressRating, ThreatStressRating.TAG_IS_ACTIVE);
 		
-		exportStressBasedStressRating(stress.getCalculatedStressRating());
-		exportStressBasedThreatStressRating(target.getRef(), threat.getRef());
-		
-		getWriter().writeEndElement(STRESS_BASED_THREAT_RATING);
-		getWriter().writeEndElement(THREAT_RATING + RATINGS);
+		//FIXME do we want these two calculated elements exported? if yes, then add to schema
+		//exportStressBasedStressRating(stress.getCalculatedStressRating());
+		//exportStressBasedThreatStressRating(target.getRef(), threat.getRef());
 	}
 	
-	private void exportStressBasedThreatStressRating(ORef targetRef, ORef threatRef) throws Exception
-	{
-		ThreatTargetVirtualLinkHelper virtualLink = new ThreatTargetVirtualLinkHelper(getProject());
-		int rawThreatStressRating = virtualLink.calculateStressBasedThreatRating(threatRef, targetRef);
-		String safeThreatRatingCode = ThreatRatingFramework.getSafeThreatRatingCode(rawThreatStressRating);
-		ChoiceQuestion question = getProject().getQuestion(ThreatStressRatingChoiceQuestion.class);
-		exportStressBasedThreatRatingCode(THREAT_STRESS_RATING, question.findChoiceByCode(safeThreatRatingCode));
-	}
-
-	private void exportStressBasedStressRating(String stressRating) throws Exception
-	{
-		ChoiceQuestion question = getProject().getQuestion(StressRatingChoiceQuestion.class);
-		ChoiceItem stressRatingChoiceItem = question.findChoiceByCode(stressRating);
-		exportStressBasedThreatRatingCode(STRESS_RATING, stressRatingChoiceItem);
-	}
-	
-	private void exportStressBasedThreatRatingCode(String elementName, ChoiceItem rating) throws Exception
-	{
-		getWriter().writeStartElement(STRESS_BASED_THREAT_RATING + elementName);
-		getWriter().writeXmlText(rating.getCode());
-		getWriter().writeEndElement(STRESS_BASED_THREAT_RATING + elementName);
-	}
-
-	private void exportSimpleRatingComment(ORef threatRef, ORef targetRef) throws Exception
-	{
-		exportThreatRatingComment(threatRef, targetRef, ThreatRatingCommentsData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP);
-	}
+//	private void exportStressBasedThreatStressRating(ORef targetRef, ORef threatRef) throws Exception
+//	{
+//		ThreatTargetVirtualLinkHelper virtualLink = new ThreatTargetVirtualLinkHelper(getProject());
+//		int rawThreatStressRating = virtualLink.calculateStressBasedThreatRating(threatRef, targetRef);
+//		String safeThreatRatingCode = ThreatRatingFramework.getSafeThreatRatingCode(rawThreatStressRating);
+//		ChoiceQuestion question = getProject().getQuestion(ThreatStressRatingChoiceQuestion.class);
+//		exportStressBasedThreatRatingCode(THREAT_STRESS_RATING, question.findChoiceByCode(safeThreatRatingCode));
+//	}
+//
+//	private void exportStressBasedStressRating(String stressRating) throws Exception
+//	{
+//		ChoiceQuestion question = getProject().getQuestion(StressRatingChoiceQuestion.class);
+//		ChoiceItem stressRatingChoiceItem = question.findChoiceByCode(stressRating);
+//		exportStressBasedThreatRatingCode(STRESS_RATING, stressRatingChoiceItem);
+//	}
+//	
+//	private void exportStressBasedThreatRatingCode(String elementName, ChoiceItem rating) throws Exception
+//	{
+//		getWriter().writeStartElement(STRESS_BASED_THREAT_RATING + elementName);
+//		getWriter().writeXmlText(rating.getCode());
+//		getWriter().writeEndElement(STRESS_BASED_THREAT_RATING + elementName);
+//	}
 
 	private void exportStressBasedRatingComment(ORef threatRef, ORef targetRef) throws Exception
 	{
@@ -220,17 +161,22 @@ public class ThreatRatingExporter implements Xmpz2XmlConstants
 		ThreatRatingCommentsData threatRatingCommentsData = getProject().getSingletonThreatRatingCommentsData();
 		String threatTargetRefsAsKey = threatRatingCommentsData.createKey(threatRef, targetRef);
 		String threatRatingComments = threatRatingCommentsData.getThreatRatingCommentsMap(threatRatingCommentsMapTag).getUserString(threatTargetRefsAsKey);
-		getWriter().writeElement(THREAT_RATING + COMMENTS, threatRatingComments);
+		getWriter().writeElement(getParentElementName() + COMMENTS, threatRatingComments);
 	}
 	
 	private void exportThreatId(ORef threatRef) throws Exception
 	{
-		exportId(THREAT_RATING + THREAT, THREAT, threatRef);
+		exportId(getParentElementName() + THREAT, THREAT, threatRef);
 	}
 
 	private void exportTargetId(ORef targetRef) throws Exception
 	{
-		exportId(THREAT_RATING + TARGET, BIODIVERSITY_TARGET, targetRef);
+		exportId(getParentElementName() + TARGET, BIODIVERSITY_TARGET, targetRef);
+	}
+	
+	private void exportStressId(ORef stressRef) throws Exception
+	{
+		exportId(getParentElementName() + STRESS, STRESS, stressRef);
 	}
 
 	private void exportId(String parentElementName, String idElementName, ORef ref) throws Exception
@@ -244,9 +190,9 @@ public class ThreatRatingExporter implements Xmpz2XmlConstants
 		getWriter().writeEndElement(parentElementName + ID);
 	}
 	
-	private SimpleThreatRatingFramework getSimpleThreatRatingFramework()
+	private String getParentElementName()
 	{
-		return getProject().getSimpleThreatRatingFramework();
+		return STRESS_BASED_THREAT_RATING;
 	}
 	
 	private Xmpz2XmlWriter getWriter()
