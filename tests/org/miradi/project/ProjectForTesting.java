@@ -1616,7 +1616,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		}
 		if (field.isMultiLineUserText())
 		{
-			return encodeXml("Some \"value\"" + HtmlUtilities.BR_TAG + HtmlUtilities.BR_TAG + "With multiple lines!");
+			return encodeXml("Some <b>BOLD</b>\"value\"" + HtmlUtilities.BR_TAG + HtmlUtilities.BR_TAG + "With multiple lines!");
 		}
 		if (field.isExpandingUserText())
 		{
