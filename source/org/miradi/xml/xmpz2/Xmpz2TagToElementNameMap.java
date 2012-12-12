@@ -286,7 +286,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		HashMap<String, String> map = createBaseObjectMap();
 		map.put(DiagramObject.TAG_DETAIL, DETAILS);
 		map.put(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, DIAGRAM_LINK_IDS);
-		map.put(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, SELECTED_TAGGED_OBJECT_SET_IDS);
+		map.put(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, TAGGED_OBJECT_SET_IDS);
 		
 		return map;
 	}

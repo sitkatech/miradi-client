@@ -44,7 +44,7 @@ abstract public class AbstractDiagramObjectExporter extends BaseObjectExporter
 		final String objectName = baseObjectSchema.getXmpz2ElementName();
 		getWriter().writeNonOptionalReflist(objectName + DiagramObject.TAG_DIAGRAM_FACTOR_IDS, DIAGRAM_FACTOR, conceptualModel.getAllDiagramFactorRefs());
 		getWriter().writeNonOptionalReflist(objectName + DIAGRAM_LINK_IDS, DIAGRAM_LINK, conceptualModel.getAllDiagramLinkRefs());
-		getWriter().writeNonOptionalReflist(objectName + SELECTED_TAGGED_OBJECT_SET_IDS, TAGGED_OBJECT_SET_ELEMENT_NAME, conceptualModel.getSelectedTaggedObjectSetRefs());
+		getWriter().writeNonOptionalReflist(objectName + TAGGED_OBJECT_SET_IDS, TAGGED_OBJECT_SET_ELEMENT_NAME, conceptualModel.getSelectedTaggedObjectSetRefs());
 	}
 	
 	@Override
