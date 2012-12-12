@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Tue Dec 11 19:23:12 EST 2012 $
+# $LastChangedDate: Tue Dec 11 19:27:29 EST 2012 $
 # $LastChangedRevision: 216 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/216'
 start = ConservationProject.element
@@ -379,7 +379,7 @@ ConceptualModel.element = element miradi:ConceptualModel
   element miradi:ConceptualModelDiagramLinkIds { DiagramLinkId.element* }? &
   element miradi:ConceptualModelId { text }? &
   element miradi:ConceptualModelName { formatted_text }? &
-  element miradi:ConceptualModelSelectedTaggedObjectSetIds { TaggedObjectSetId.element* }? &
+  element miradi:ConceptualModelTaggedObjectSetIds { TaggedObjectSetId.element* }? &
   element miradi:ConceptualModelZoomScale { xsd:decimal }?
 }
 
@@ -464,7 +464,7 @@ ResultsChain.element = element miradi:ResultsChain
   element miradi:ResultsChainDiagramLinkIds { DiagramLinkId.element* }? &
   element miradi:ResultsChainId { text }? &
   element miradi:ResultsChainName { formatted_text }? &
-  element miradi:ResultsChainSelectedTaggedObjectSetIds { TaggedObjectSetId.element* }? &
+  element miradi:ResultsChainTaggedObjectSetIds { TaggedObjectSetId.element* }? &
   element miradi:ResultsChainZoomScale { xsd:decimal }?
 }
 
@@ -1090,3 +1090,4 @@ DashboardFlagsContainer.element = element miradi:DashboardFlagsContainer
 {
 element miradi:code { vocabulary_dashboard_row_flags } *
 }
+
