@@ -82,6 +82,7 @@ public class ObjectTypeToExporterMap extends HashMap<Integer, BaseObjectExporter
 		addExporterToMap(new ThreatReductionResultExporter(getWriter()));
 		addExporterToMap(new TargetExporter(getWriter()));
 		addExporterToMap(new HumanWelfareTargetExporter(getWriter()));
+		addExporterToMap(new CauseExporter(getWriter()));
 		addExporterToMap(new TaggedObjectSetExporter(getWriter()));
 		addExporterToMap(new IucnRedlistSpeciesExporter(getWriter()));
 		addExporterToMap(new BudgetCategoryOneExporter(getWriter()));

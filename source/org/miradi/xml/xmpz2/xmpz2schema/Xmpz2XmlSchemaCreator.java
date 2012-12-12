@@ -27,6 +27,7 @@ import java.util.Vector;
 import org.miradi.main.Miradi;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.BaseObjectPool;
+import org.miradi.objects.Cause;
 import org.miradi.objects.Dashboard;
 import org.miradi.objects.Desire;
 import org.miradi.objects.DiagramFactor;
@@ -942,6 +943,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		if (HumanWelfareTarget.is(baseObjectSchema.getType()))
 			return new HumanWelfareTargetSchemaWriter(this, baseObjectSchema);
+		
+		if (Cause.is(baseObjectSchema.getType()))
+			return new CauseSchemaWriter(this, baseObjectSchema);
 		
 		if (Dashboard.is(baseObjectSchema.getType()))
 			return new DashboardSchemaWriter(this, baseObjectSchema);

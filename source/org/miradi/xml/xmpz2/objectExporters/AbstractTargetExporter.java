@@ -20,18 +20,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectExporters;
 
-import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatPerRowTableModel;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Factor;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.xml.xmpz2.BaseObjectExporter;
+import org.miradi.xml.xmpz2.BaseObjectWithThreatRatingExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
-abstract public class AbstractTargetExporter extends BaseObjectExporter
+abstract public class AbstractTargetExporter extends BaseObjectWithThreatRatingExporter
 {
 	public AbstractTargetExporter(final Xmpz2XmlWriter writerToUse, final int objectTypeToUse)
 	{
@@ -44,7 +43,6 @@ abstract public class AbstractTargetExporter extends BaseObjectExporter
 		super.writeFields(baseObject, baseObjectSchema);
 		
 		AbstractTarget abstractTarget = (AbstractTarget) baseObject;
-		exportThreatTargetRating(abstractTarget);
 		writeNonOptionalCodeElement(AbstractTarget.TAG_VIABILITY_MODE, ViabilityModeQuestion.class, abstractTarget.getViabilityMode());
 	}
 
@@ -62,26 +60,17 @@ abstract public class AbstractTargetExporter extends BaseObjectExporter
 		
 		return super.doesFieldRequireSpecialHandling(tag);
 	}
-	
-	private void exportThreatTargetRating(AbstractTarget abstractTarget) throws Exception
-	{
-		if (getProject().isStressBaseMode())
-			exportStressBasedThreatRatingThreatTargetRating(abstractTarget);
-		else
-			exportSimpleThreatRatingThreatTargetRating(abstractTarget);
-	}
-	
-	private void exportStressBasedThreatRatingThreatTargetRating(AbstractTarget target) throws Exception
-	{
-		int rawTargetRatingValue = getProject().getStressBasedThreatRatingFramework().get2PrimeSummaryRatingValue(target);
-		ChoiceItem targetThreatRating = AbstractThreatPerRowTableModel.convertThreatRatingCodeToChoiceItem(rawTargetRatingValue);
-		getWriter().writeNonOptionalCodeElement(getTargetElementName(), TARGET_THREAT_RATING, new ThreatRatingQuestion(), targetThreatRating.getCode());
-	}
 
-	private void exportSimpleThreatRatingThreatTargetRating(AbstractTarget abstractTarget) throws Exception
+	@Override
+	public ChoiceItem getSimpleModeThreatRating(Factor factor) throws Exception
 	{
-		ChoiceItem threatTargetRating = getProject().getSimpleThreatRatingFramework().getTargetThreatRatingValue(abstractTarget.getRef());
-		getWriter().writeNonOptionalCodeElement(getTargetElementName(), TARGET_THREAT_RATING, new ThreatRatingQuestion(), threatTargetRating.getCode());
+		return getProject().getSimpleThreatRatingFramework().getTargetThreatRatingValue(factor.getRef());
+	}
+	
+	@Override
+	protected String getContainerElementName()
+	{
+		return getTargetElementName();
 	}
 	
 	abstract protected String getTargetElementName();
