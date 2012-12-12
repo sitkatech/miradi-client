@@ -32,6 +32,11 @@ import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
 public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 {
+	public BaseObjectSchemaWriter(Xmpz2XmlSchemaCreator creatorToUse)
+	{
+		this(creatorToUse, null);
+	}
+	
 	public BaseObjectSchemaWriter(Xmpz2XmlSchemaCreator creatorToUse, BaseObjectSchema baseObjectSchemaToUse)
 	{
 		creator = creatorToUse;

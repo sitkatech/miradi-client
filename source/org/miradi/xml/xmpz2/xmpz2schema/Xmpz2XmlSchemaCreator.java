@@ -128,8 +128,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		creators.add(createExpenseEntryElementSchemaCreator());
 		creators.add(createWorkUnitsEntryElementSchemaCreator());
 		creators.add(createExternaIdSchemaElementSchemaCreator());
-		creators.add(createSimpleThreatRatingElementSchemaCreator());
-		creators.add(createStressBasedThreatRatingElementSchemaCreator());
 		creators.add(createDiagramFactorUiSettingsSchemaCreator());
 		creators.add(createDashboardUserChoiceMapSchemaCreator());
 		creators.add(writeExtraDataSectionElement());
@@ -798,29 +796,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return creator;
 	}
 
-	private Xmpz2CustomSchemaDefinitionCreator createSimpleThreatRatingElementSchemaCreator()
-	{
-		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), SIMPLE_BASED_THREAT_RATING);
-		creator.addOptionalChildElement(SIMPLE_BASED_THREAT_RATING + SCOPE, VOCABULARY_SIMPLE_THREAT_RATING_SCOPE_CODE);
-		creator.addOptionalChildElement(SIMPLE_BASED_THREAT_RATING + SEVERITY, VOCABULARY_SIMPLE_THREAT_RATING_SEVERITY_CODE);
-		creator.addOptionalChildElement(SIMPLE_BASED_THREAT_RATING + IRREVERSIBILITY, VOCABULARY_SIMPLE_THREAT_RATING_IRREVERSIBILITY_CODE);
-		
-		return creator;
-    }
-
-	private Xmpz2CustomSchemaDefinitionCreator createStressBasedThreatRatingElementSchemaCreator()
-	{
-		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), STRESS_BASED_THREAT_RATING);
-		creator.addChildElement(STRESS_BASED_THREAT_RATING + STRESS_ID, getSchemaWriter().createDotElement(STRESS_ID));
-		creator.addOptionalChildElement(STRESS_BASED_THREAT_RATING + CONTRIBUTION, VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE);
-		creator.addOptionalChildElement(STRESS_BASED_THREAT_RATING + IRREVERSIBILITY, VOCABULARY_THREAT_STRESS_RATING_IRREVERSIBILITY_CODE);
-		creator.addOptionalChildElement(STRESS_BASED_THREAT_RATING + IS_ACTIVE, getSchemaWriter().createBooleanType());
-		creator.addOptionalChildElement(STRESS_BASED_THREAT_RATING + STRESS_RATING, VOCABULARY_THREAT_RATING);
-		creator.addOptionalChildElement(STRESS_BASED_THREAT_RATING + THREAT_STRESS_RATING, VOCABULARY_THREAT_RATING);
-		
-		return creator;
-	}
-	
 	private Xmpz2CustomSchemaDefinitionCreator createDiagramFactorUiSettingsSchemaCreator()
 	{
 		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), STYLING);
@@ -909,7 +884,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			schemaWriters.add(createSchemaWriter(baseObjectSchema));
 		}
 		
-		schemaWriters.add(new ThreatTargetThreatRatingSchemaWriter(this));
+		schemaWriters.add(new SimpleThreatRatingSchemaWriter(this));
+		schemaWriters.add(new StressBasedThreatRatingSchemaWriter(this));
 		schemaWriters.add(new ExtraDataWriter(this));
 		
 		return schemaWriters;

@@ -36,7 +36,6 @@ import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.xmpz2.objectExporters.ExtraDataExporter;
 import org.miradi.xml.xmpz2.objectExporters.ProjectMetadataExporter;
-import org.miradi.xml.xmpz2.objectExporters.ThreatRatingExporter;
 
 public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 {
@@ -90,7 +89,8 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 	
 	private void exportThreatRatings() throws Exception
 	{
-		new ThreatRatingExporter(getWriter()).writeThreatRatings();
+		new SimpleThreatRatingExporter(getWriter()).writeThreatRatings();
+		new StressBasedThreatRatingExporter(getWriter()).writeThreatRatings();
 	}
 	
 	private void exportExtraData() throws Exception
