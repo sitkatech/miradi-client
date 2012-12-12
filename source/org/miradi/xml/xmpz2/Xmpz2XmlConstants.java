@@ -249,6 +249,8 @@ public interface Xmpz2XmlConstants
 	public static final String OFFICE_PHONE_NUMBER = "OfficePhoneNumber";
 	public static final String PROJECT_RESOURCE_ID = "ResourceId";
 	public static final String NAME = "Name";
+	public static final String CUSTOM1 = "Custom1";
+	public static final String CUSTOM2 = "Custom2";
 	public static final String VIABILITY_RATINGS_COMMENTS = "ViabilityRatingsComments";
 	public static final String FUTURE_STATUS_COMMENTS = "FutureStatusComments";
 	public static final String FUTURE_STATUS_DETAILS = "FutureStatusDetails";

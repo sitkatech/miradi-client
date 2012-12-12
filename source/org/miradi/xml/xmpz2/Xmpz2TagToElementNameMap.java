@@ -379,6 +379,8 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(ProjectResource.TAG_SUR_NAME, SURNAME);
 		map.put(ProjectResource.TAG_PHONE_NUMBER, OFFICE_PHONE_NUMBER);
 		map.put(ProjectResource.TAG_COST_PER_UNIT, DAILY_RATE);
+		map.put(ProjectResource.TAG_CUSTOM_FIELD_1, CUSTOM1);
+		map.put(ProjectResource.TAG_CUSTOM_FIELD_2, CUSTOM2);
 		
 		return map;
 	}
