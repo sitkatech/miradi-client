@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Tue Dec 11 19:14:48 EST 2012 $
+# $LastChangedDate: Tue Dec 11 19:23:12 EST 2012 $
 # $LastChangedRevision: 216 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/216'
 start = ConservationProject.element
@@ -224,8 +224,8 @@ ProjectResource.element = element miradi:ProjectResource
   attribute Id {xsd:integer} &
   element miradi:ProjectResourceAlternativeEmail { text }? &
   element miradi:ProjectResourceComments { formatted_text }? &
-  element miradi:ProjectResourceCustom.Custom1 { text }? &
-  element miradi:ProjectResourceCustom.Custom2 { text }? &
+  element miradi:ProjectResourceCustom1 { text }? &
+  element miradi:ProjectResourceCustom2 { text }? &
   element miradi:ProjectResourceDailyRate { xsd:decimal }? &
   element miradi:ProjectResourceDateUpdated { vocabulary_date }? &
   element miradi:ProjectResourceEmail { text }? &
@@ -1090,4 +1090,3 @@ DashboardFlagsContainer.element = element miradi:DashboardFlagsContainer
 {
 element miradi:code { vocabulary_dashboard_row_flags } *
 }
-
