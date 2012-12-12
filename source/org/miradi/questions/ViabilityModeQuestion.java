@@ -38,6 +38,33 @@ public class ViabilityModeQuestion extends StaticChoiceQuestion
 		};
 	}
 	
+	@Override
+	public String convertToReadableCode(String code)
+	{
+		if (code.equals(SIMPLE_MODE_CODE))
+			return READABLE_SIMPLE_CODE; 
+
+		if (code.equals(TNC_STYLE_CODE))
+			return READABLE_KEA_CODE;
+
+		return super.convertToReadableCode(code);
+	}
+	
+	@Override
+	public String convertToInternalCode(String code)
+	{
+		if (code.equals(READABLE_SIMPLE_CODE))
+			return SIMPLE_MODE_CODE;
+		
+		if (code.equals(READABLE_KEA_CODE))
+			return TNC_STYLE_CODE;
+		
+		return code;
+	}
+	
+	public static final String READABLE_SIMPLE_CODE = "Simple";
+	public static final String READABLE_KEA_CODE = "KEA";
+	
 	public static String TNC_STYLE_CODE = "TNC";
 	public static String SIMPLE_MODE_CODE = "";
 }
