@@ -211,8 +211,8 @@ public interface Xmpz2XmlConstants
 	public static final String EXTRA_DATA_ITEM_NAME = "ExtraDataItemName";
 	public static final String EXTRA_DATA_ITEM_VALUE = "ExtraDataItemValue";
 	public static final String TIME_PERIOD_COSTS = "CalculatedCosts";
-	public static final String EXPENSE_ENTRY = "ExpenseEntry";
-	public static final String WORK_UNITS_ENTRY = "WorkUnitsEntry";
+	public static final String EXPENSE_ENTRY = "CalculatedExpenseEntry";
+	public static final String WORK_UNITS_ENTRY = "CalculatedWorkUnitsEntry";
 	public static final String CALCULATED_EXPENSE_TOTAL = "CalculatedExpenseTotal";
 	public static final String CALCULATED_WORK_UNITS_TOTAL = "CalculatedWorkUnitsTotal";
 	public static final String CALCULATED_TOTAL_BUDGET_COST = "CalculatedTotalBudgetCost";

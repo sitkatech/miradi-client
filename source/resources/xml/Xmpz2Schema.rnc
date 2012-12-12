@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Tue Dec 11 19:27:29 EST 2012 $
+# $LastChangedDate: Tue Dec 11 19:35:43 EST 2012 $
 # $LastChangedRevision: 216 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/216'
 start = ConservationProject.element
@@ -1012,27 +1012,27 @@ CalculatedCosts.element = element miradi:CalculatedCosts
   element miradi:CalculatedWorkUnitsTotal { xsd:decimal }? &
   element miradi:CalculatedTotalBudgetCost { xsd:decimal }? &
   element miradi:CalculatedWho { ResourceId.element* }? &
-  element miradi:CalculatedExpenseEntries { ExpenseEntry.element* }? &
-  element miradi:CalculatedWorkUnitsEntries { WorkUnitsEntry.element* }?
+  element miradi:CalculatedExpenseEntries { CalculatedExpenseEntry.element* }? &
+  element miradi:CalculatedWorkUnitsEntries { CalculatedWorkUnitsEntry.element* }?
 }
 
-ExpenseEntry.element = element miradi:ExpenseEntry
+CalculatedExpenseEntry.element = element miradi:CalculatedExpenseEntry
 {
-  element miradi:ExpenseEntryFundingSourceId { FundingSourceId.element }? &
-  element miradi:ExpenseEntryAccountingCodeId { AccountingCodeId.element }? &
-  element miradi:ExpenseEntryBudgetCategoryOneId { BudgetCategoryOneId.element }? &
-  element miradi:ExpenseEntryBudgetCategoryTwoId { BudgetCategoryTwoId.element }? &
-  element miradi:ExpenseEntryDetails { DateUnitExpense.element* }
+  element miradi:CalculatedExpenseEntryFundingSourceId { FundingSourceId.element }? &
+  element miradi:CalculatedExpenseEntryAccountingCodeId { AccountingCodeId.element }? &
+  element miradi:CalculatedExpenseEntryBudgetCategoryOneId { BudgetCategoryOneId.element }? &
+  element miradi:CalculatedExpenseEntryBudgetCategoryTwoId { BudgetCategoryTwoId.element }? &
+  element miradi:CalculatedExpenseEntryDetails { DateUnitExpense.element* }
 }
 
-WorkUnitsEntry.element = element miradi:WorkUnitsEntry
+CalculatedWorkUnitsEntry.element = element miradi:CalculatedWorkUnitsEntry
 {
-  element miradi:WorkUnitsEntryResourceId { ResourceId.element }? &
-  element miradi:WorkUnitsEntryFundingSourceId { FundingSourceId.element }? &
-  element miradi:WorkUnitsEntryAccountingCodeId { AccountingCodeId.element }? &
-  element miradi:WorkUnitsEntryBudgetCategoryOneId { BudgetCategoryOneId.element }? &
-  element miradi:WorkUnitsEntryBudgetCategoryTwoId { BudgetCategoryTwoId.element }? &
-  element miradi:WorkUnitsEntryDetails { DateUnitWorkUnits.element* }
+  element miradi:CalculatedWorkUnitsEntryResourceId { ResourceId.element }? &
+  element miradi:CalculatedWorkUnitsEntryFundingSourceId { FundingSourceId.element }? &
+  element miradi:CalculatedWorkUnitsEntryAccountingCodeId { AccountingCodeId.element }? &
+  element miradi:CalculatedWorkUnitsEntryBudgetCategoryOneId { BudgetCategoryOneId.element }? &
+  element miradi:CalculatedWorkUnitsEntryBudgetCategoryTwoId { BudgetCategoryTwoId.element }? &
+  element miradi:CalculatedWorkUnitsEntryDetails { DateUnitWorkUnits.element* }
 }
 
 ExternalProjectId.element = element miradi:ExternalProjectId
