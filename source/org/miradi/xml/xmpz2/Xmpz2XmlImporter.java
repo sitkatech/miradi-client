@@ -571,7 +571,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 
 	private void importThreatTargetRatings() throws Exception
 	{
-		new SimpleThreatTargetThreatRatingImporter(this).importFields();
+		new SimpleThreatRatingImporter(this).importFields();
 		new StressBasedThreatTargetThreatRatingImporter(this).importFields();
 	}
 	
