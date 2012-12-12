@@ -1620,7 +1620,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		}
 		if (field.isExpandingUserText())
 		{
-			return "randome text for:" + field.getTag();
+			return "random text for:" + field.getTag();
 		}
 		if (field.isDateData())
 		{
@@ -1657,7 +1657,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(dashboardRef, Dashboard.TAG_PROGRESS_CHOICE_MAP, progressChoiceMap.toJsonString());
 		
 		CodeToUserStringMap commentsMap = new CodeToUserStringMap();
-		commentsMap.putUserString(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, "Some randome user comment");
+		commentsMap.putUserString(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, "Some random user comment");
 		fillObjectUsingCommand(dashboardRef, Dashboard.TAG_COMMENTS_MAP, commentsMap.toJsonString());
 
 		CodeToCodeListMap flagsMap = new CodeToCodeListMap();
