@@ -43,7 +43,7 @@ public interface Xmpz2XmlConstants
 	public static final String FORMATTED_TEXT_TYPE = "formatted_text";
 	
 	public static final String ID = "Id";
-	public static final String IDS = "Ids";
+	public static final String IDS = ID + "s";
 	public static final String CONSERVATION_PROJECT = "ConservationProject";
 	public static final String EXPORT_DETAILS = "ExportDetails";
 	public static final String EXPORTER_NAME = "ExporterName";
