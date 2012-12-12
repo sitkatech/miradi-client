@@ -83,7 +83,7 @@ public interface Xmpz2XmlConstants
 	public static final String OBJECTIVE = "Objective";
 	public static final String INDICATOR = "Indicator";
 	public static final String ACTIVITY = "Activity";
-	public static final String SORTED_ACTIVITY_IDS = "OrderedActivityIds";
+	public static final String ORDERED_ACTIVITY_IDS = "OrderedActivityIds";
 	public static final String METHOD = "Method";
 	public static final String TASK = "Task";
 	public static final String SUB_TASK = "SubTask";
