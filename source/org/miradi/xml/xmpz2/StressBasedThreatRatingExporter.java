@@ -108,7 +108,7 @@ public class StressBasedThreatRatingExporter implements Xmpz2XmlConstants
 		int calculatedValue = threatTargetVirtualLink.calculateThreatRatingBundleValue(threatRatingMode, threatRef, targetRef);
 		String threatRatingCode = AbstractThreatTargetTableModel.convertIntToString(calculatedValue);
 		final ChoiceQuestion threatRatingQuestion = getProject().getQuestion(ThreatRatingQuestion.class);
-		getWriter().writeNonOptionalCodeElement(getParentElementName(), THREAT_TARGET_RATING, threatRatingQuestion, threatRatingCode);
+		getWriter().writeNonOptionalCodeElement(getParentElementName(), CALCULATED_RATING, threatRatingQuestion, threatRatingCode);
 	}
 
 	private void exportStressBasedThreatRatingDetails(Target target, Stress stress, Cause threat) throws Exception

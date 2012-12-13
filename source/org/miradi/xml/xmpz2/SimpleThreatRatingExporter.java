@@ -110,7 +110,7 @@ public class SimpleThreatRatingExporter implements Xmpz2XmlConstants
 		String threatRatingCode = AbstractThreatTargetTableModel.convertIntToString(calculatedValue);
 		final ChoiceQuestion threatRatingQuestion = getProject().getQuestion(ThreatRatingQuestion.class);
 		
-		getWriter().writeNonOptionalCodeElement(getParentElementName(), THREAT_TARGET_RATING, threatRatingQuestion, threatRatingCode);
+		getWriter().writeNonOptionalCodeElement(getParentElementName(), CALCULATED_RATING, threatRatingQuestion, threatRatingCode);
 	}
 
 	private void exportSimpleRatingComment(ORef threatRef, ORef targetRef) throws Exception
