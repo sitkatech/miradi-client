@@ -174,8 +174,8 @@ public interface Xmpz2XmlConstants
 	public static final String WORK_UNITS_QUARTER = "WorkUnitsQuarter";
 	public static final String WORK_UNITS_YEAR = "WorkUnitsYear";
 	public static final String STYLING = "Style";
-	public static final String STRESS_RATING = "StressRating";
-	public static final String THREAT_STRESS_RATING = "ThreatStressRating";
+	public static final String CALCULATED_STRESS_RATING = "CalculatedStressRating";
+	public static final String CALCULATED_THREAT_STRESS_RATING = "CalculatedThreatStressRating";
 	public static final String CALCULATED_RATING = "CalculatedRating";
 	public static final String TARGET_THREAT_RATING = "ThreatRating";
 	public static final String OVERALL_PROJECT_THREAT_RATING = "OverallProjectThreatRating";
