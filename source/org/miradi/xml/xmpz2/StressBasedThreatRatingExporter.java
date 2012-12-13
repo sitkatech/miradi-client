@@ -37,10 +37,13 @@ import org.miradi.objects.Target;
 import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
+import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.StressRatingChoiceQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
+import org.miradi.questions.ThreatStressRatingChoiceQuestion;
 import org.miradi.utils.ThreatStressRatingDetailsTableExporter;
 
 public class StressBasedThreatRatingExporter implements Xmpz2XmlConstants
@@ -123,33 +126,32 @@ public class StressBasedThreatRatingExporter implements Xmpz2XmlConstants
 		if (threatStressRating != null)
 			getWriter().writeElement(getParentElementName(), threatStressRating, ThreatStressRating.TAG_IS_ACTIVE);
 		
-		//FIXME do we want these two calculated elements exported? if yes, then add to schema
-		//exportStressBasedStressRating(stress.getCalculatedStressRating());
-		//exportStressBasedThreatStressRating(target.getRef(), threat.getRef());
+		exportStressBasedStressRating(stress.getCalculatedStressRating());
+		exportStressBasedThreatStressRating(target.getRef(), threat.getRef());
 	}
 	
-//	private void exportStressBasedThreatStressRating(ORef targetRef, ORef threatRef) throws Exception
-//	{
-//		ThreatTargetVirtualLinkHelper virtualLink = new ThreatTargetVirtualLinkHelper(getProject());
-//		int rawThreatStressRating = virtualLink.calculateStressBasedThreatRating(threatRef, targetRef);
-//		String safeThreatRatingCode = ThreatRatingFramework.getSafeThreatRatingCode(rawThreatStressRating);
-//		ChoiceQuestion question = getProject().getQuestion(ThreatStressRatingChoiceQuestion.class);
-//		exportStressBasedThreatRatingCode(THREAT_STRESS_RATING, question.findChoiceByCode(safeThreatRatingCode));
-//	}
-//
-//	private void exportStressBasedStressRating(String stressRating) throws Exception
-//	{
-//		ChoiceQuestion question = getProject().getQuestion(StressRatingChoiceQuestion.class);
-//		ChoiceItem stressRatingChoiceItem = question.findChoiceByCode(stressRating);
-//		exportStressBasedThreatRatingCode(STRESS_RATING, stressRatingChoiceItem);
-//	}
-//	
-//	private void exportStressBasedThreatRatingCode(String elementName, ChoiceItem rating) throws Exception
-//	{
-//		getWriter().writeStartElement(STRESS_BASED_THREAT_RATING + elementName);
-//		getWriter().writeXmlText(rating.getCode());
-//		getWriter().writeEndElement(STRESS_BASED_THREAT_RATING + elementName);
-//	}
+	private void exportStressBasedThreatStressRating(ORef targetRef, ORef threatRef) throws Exception
+	{
+		ThreatTargetVirtualLinkHelper virtualLink = new ThreatTargetVirtualLinkHelper(getProject());
+		int rawThreatStressRating = virtualLink.calculateStressBasedThreatRating(threatRef, targetRef);
+		String safeThreatRatingCode = ThreatRatingFramework.getSafeThreatRatingCode(rawThreatStressRating);
+		ChoiceQuestion question = getProject().getQuestion(ThreatStressRatingChoiceQuestion.class);
+		exportStressBasedThreatRatingCode(CALCULATED_THREAT_STRESS_RATING, question.findChoiceByCode(safeThreatRatingCode));
+	}
+
+	private void exportStressBasedStressRating(String stressRating) throws Exception
+	{
+		ChoiceQuestion question = getProject().getQuestion(StressRatingChoiceQuestion.class);
+		ChoiceItem stressRatingChoiceItem = question.findChoiceByCode(stressRating);
+		exportStressBasedThreatRatingCode(CALCULATED_STRESS_RATING, stressRatingChoiceItem);
+	}
+	
+	private void exportStressBasedThreatRatingCode(String elementName, ChoiceItem rating) throws Exception
+	{
+		getWriter().writeStartElement(getParentElementName() + elementName);
+		getWriter().writeXmlText(rating.getCode());
+		getWriter().writeEndElement(getParentElementName() + elementName);
+	}
 
 	private void exportStressBasedRatingComment(ORef threatRef, ORef targetRef) throws Exception
 	{
