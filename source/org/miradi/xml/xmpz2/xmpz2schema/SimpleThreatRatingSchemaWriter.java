@@ -36,8 +36,8 @@ public class SimpleThreatRatingSchemaWriter extends BaseObjectSchemaWriter
 	{
 		Vector<String> schemaElements = new Vector<String>();
 		
-		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(SIMPLE_BASED_THREAT_RATING + TARGET + ID, (BIODIVERSITY_TARGET + ID + ".element*")));
-		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(SIMPLE_BASED_THREAT_RATING + THREAT_ID, (THREAT_ID + ".element*")));
+		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createSchemaElement(SIMPLE_BASED_THREAT_RATING + TARGET + ID, (BIODIVERSITY_TARGET + ID + ".element*")));
+		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createSchemaElement(SIMPLE_BASED_THREAT_RATING + THREAT_ID, (THREAT_ID + ".element*")));
 		String vocabularyName = getXmpz2XmlSchemaCreator().getChoiceQuestionToSchemaElementNameMap().findVocabulary(new ThreatRatingQuestion());
 		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(SIMPLE_BASED_THREAT_RATING + CALCULATED_RATING, vocabularyName));
 		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(SIMPLE_BASED_THREAT_RATING + SCOPE, VOCABULARY_SIMPLE_THREAT_RATING_SCOPE_CODE));

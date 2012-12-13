@@ -36,9 +36,9 @@ public class StressBasedThreatRatingSchemaWriter extends BaseObjectSchemaWriter
 	{
 		Vector<String> schemaElements = new Vector<String>();
 		
-		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(STRESS_BASED_THREAT_RATING + THREAT_ID, (THREAT_ID + ".element*")));
-		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(STRESS_BASED_THREAT_RATING + STRESS + ID, (STRESS + ID + ".element*")));
-		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(STRESS_BASED_THREAT_RATING + TARGET + ID, (BIODIVERSITY_TARGET + ID + ".element*")));
+		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createSchemaElement(STRESS_BASED_THREAT_RATING + THREAT_ID, (THREAT_ID + ".element*")));
+		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createSchemaElement(STRESS_BASED_THREAT_RATING + STRESS + ID, (STRESS + ID + ".element*")));
+		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createSchemaElement(STRESS_BASED_THREAT_RATING + TARGET + ID, (BIODIVERSITY_TARGET + ID + ".element*")));
 		
 		String vocabularyName = getXmpz2XmlSchemaCreator().getChoiceQuestionToSchemaElementNameMap().findVocabulary(new ThreatRatingQuestion());
 		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(STRESS_BASED_THREAT_RATING + CALCULATED_STRESS_RATING, vocabularyName));
