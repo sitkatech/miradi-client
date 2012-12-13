@@ -91,16 +91,13 @@ public class SimpleThreatRatingExporter implements Xmpz2XmlConstants
 	{
 		ThreatRatingBundle bundle = getSimpleThreatRatingFramework().getBundle(threatRef, targetRef);
 		final String scopeCode = getSimpleThreatRatingFramework().getScopeChoiceItem(bundle).getCode();
-		if (scopeCode.length() > 0)
-			getWriter().writeElement(getParentElementName() + SCOPE, scopeCode);
+		getWriter().writeElement(getParentElementName() + SCOPE, scopeCode);
 		
 		final String severityCode = getSimpleThreatRatingFramework().getSeverityChoiceItem(bundle).getCode();
-		if (severityCode.length() > 0)
-			getWriter().writeElement(getParentElementName() + SEVERITY, severityCode);
+		getWriter().writeElement(getParentElementName() + SEVERITY, severityCode);
 		
 		final String irreversibilityCode = getSimpleThreatRatingFramework().getIrreversibilityChoiceItem(bundle).getCode();
-		if (irreversibilityCode.length() > 0)
-			getWriter().writeElement(getParentElementName() + IRREVERSIBILITY, irreversibilityCode);
+		getWriter().writeElement(getParentElementName() + IRREVERSIBILITY, irreversibilityCode);
 	}
 
 	private void exportThreatRating(ORef targetRef, ORef threatRef) throws Exception
