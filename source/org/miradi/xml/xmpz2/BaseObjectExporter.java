@@ -122,10 +122,12 @@ public class BaseObjectExporter implements Xmpz2XmlConstants
 			writeOptionalTotalCost(CALCULATED_WORK_UNITS_TOTAL, totalBudgetCost.getTotalWorkUnits());			
 
 			TimePeriodCostsMap expenseAssignmentTimePeriodCostsMap = baseObject.getExpenseAssignmentsTimePeriodCostsMap();
-			new ExpenseTimePeriodCostsWriter2(getWriter()).writeTimePeriodCosts(expenseAssignmentTimePeriodCostsMap.getDateUnitTimePeriodCostsMap());
+			if (expenseAssignmentTimePeriodCostsMap.calculateTotalBudgetCost(getProject()).hasValue())
+				new ExpenseTimePeriodCostsWriter2(getWriter()).writeTimePeriodCosts(expenseAssignmentTimePeriodCostsMap.getDateUnitTimePeriodCostsMap());
 			
 			TimePeriodCostsMap resourceAssignmentTimePeriodCostsMap = baseObject.getResourceAssignmentsTimePeriodCostsMap();
-			new WorkUnitsTimePeriodCostsWriter2(getWriter()).writeTimePeriodCosts(resourceAssignmentTimePeriodCostsMap.getDateUnitTimePeriodCostsMap());
+			if (resourceAssignmentTimePeriodCostsMap.calculateTotalBudgetCost(getProject()).hasValue())
+				new WorkUnitsTimePeriodCostsWriter2(getWriter()).writeTimePeriodCosts(resourceAssignmentTimePeriodCostsMap.getDateUnitTimePeriodCostsMap());
 
 			getWriter().writeEndElement(TIME_PERIOD_COSTS);
 			getWriter().writeEndElement(baseObjectSchema.getObjectName() + TIME_PERIOD_COSTS);

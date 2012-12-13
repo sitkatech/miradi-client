@@ -30,6 +30,8 @@ import org.miradi.objects.Goal;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.ProjectResource;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
@@ -53,6 +55,24 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	public TestXmpz2XmlImporter(String name)
 	{
 		super(name);
+	}
+	
+	public void testStrategyCalculatedCostElement() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		getProject().addExpenseWithValue(strategy);
+		
+		ResourceAssignment resourceAssignmentWithJustOneResource = getProject().createResourceAssignment();
+		ProjectResource projectResource = getProject().createAndPopulateProjectResource();
+		getProject().fillObjectUsingCommand(resourceAssignmentWithJustOneResource, ResourceAssignment.TAG_RESOURCE_ID, projectResource.getId().toString());
+		addEmptyDateUnitEffortList(strategy, resourceAssignmentWithJustOneResource);
+		
+		validateUsingStringWriter();
+	}
+
+	private void addEmptyDateUnitEffortList(Strategy strategy, ResourceAssignment resourceAssignmentWithJustOneResource)	throws Exception
+	{
+		getProject().addResourceAssignment(strategy, resourceAssignmentWithJustOneResource, new DateUnitEffortList());
 	}
 	
 	public void testImportWorkUnitDays() throws Exception
