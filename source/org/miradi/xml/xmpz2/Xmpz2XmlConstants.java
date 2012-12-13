@@ -176,7 +176,7 @@ public interface Xmpz2XmlConstants
 	public static final String STYLING = "Style";
 	public static final String STRESS_RATING = "StressRating";
 	public static final String THREAT_STRESS_RATING = "ThreatStressRating";
-	public static final String THREAT_TARGET_RATING = "ThreatTargetRating";
+	public static final String THREAT_TARGET_RATING = "CalculatedRating";
 	public static final String TARGET_THREAT_RATING = "ThreatRating";
 	public static final String OVERALL_PROJECT_THREAT_RATING = "OverallProjectThreatRating";
 	public static final String OVERALL_PROJECT_VIABILITY_RATING = "OverallProjectViabilityRating";
