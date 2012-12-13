@@ -2281,7 +2281,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return addResourceAssignment(parentObject, resourceAssignment, dateUnitEffortList);
 	}
 
-	private ResourceAssignment addResourceAssignment(BaseObject parentObject, ResourceAssignment assignment, DateUnitEffortList dateUnitEffortList) throws Exception
+	public ResourceAssignment addResourceAssignment(BaseObject parentObject, ResourceAssignment assignment, DateUnitEffortList dateUnitEffortList) throws Exception
 	{
 		setObjectData(assignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
 		IdList currentAssignmentIdList = parentObject.getSafeIdListData(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
