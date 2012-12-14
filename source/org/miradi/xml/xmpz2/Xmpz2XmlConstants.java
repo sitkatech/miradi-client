@@ -230,6 +230,7 @@ public interface Xmpz2XmlConstants
 	public static final String TNC_OPERATING_UNITS = "TNCOperatingUnits";
 	public static final String TNC_PROJECT_PLACE_TYPES = "TNCProjectPlaceTypes";
 	public static final String TNC_ORGANIZATIONAL_PRIORITIES = "TNCOrganizationalPriorities";
+	public static final String TNC_CAP_STANDARDS_SCORECARD = "CAPStandardsScorecard";
 	public static final String TNC_TERRESTRIAL_ECO_REGION = "TNCTerrestrialEcoRegion";
 	public static final String TNC_MARINE_ECO_REGION = "TNCMarineEcoRegion";
 	public static final String TNC_FRESHWATER_ECO_REGION = "TNCFreshwaterEcoRegion";
