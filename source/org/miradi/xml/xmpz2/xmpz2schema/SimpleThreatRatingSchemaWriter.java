@@ -42,7 +42,7 @@ public class SimpleThreatRatingSchemaWriter extends BaseObjectSchemaWriter
 		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(SIMPLE_BASED_THREAT_RATING + CALCULATED_RATING, vocabularyName));
 		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(SIMPLE_BASED_THREAT_RATING + SCOPE, VOCABULARY_SIMPLE_THREAT_RATING_SCOPE_CODE));
 		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(SIMPLE_BASED_THREAT_RATING + SEVERITY, VOCABULARY_STRESS_SEVERITY));
-		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(SIMPLE_BASED_THREAT_RATING + IRREVERSIBILITY, VOCABULARY_THREAT_STRESS_RATING_IRREVERSIBILITY_CODE));
+		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(SIMPLE_BASED_THREAT_RATING + IRREVERSIBILITY, VOCABULARY_IRREVERSIBILITY_CODE));
 		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(SIMPLE_BASED_THREAT_RATING + COMMENTS, "formatted_text"));
 		
 		return schemaElements;

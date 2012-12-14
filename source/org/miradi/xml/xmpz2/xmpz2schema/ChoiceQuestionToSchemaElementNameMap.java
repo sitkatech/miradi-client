@@ -115,7 +115,7 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(PriorityRatingQuestion.class, VOCABULARY_PRIORITY_RATING_CODE);
 		addItem(KeyEcologicalAttributeTypeQuestion.class, VOCABULARY_KEA_TYPE);
 		addItem(StressContributionQuestion.class, VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE);
-		addItem(StressIrreversibilityQuestion.class, VOCABULARY_THREAT_STRESS_RATING_IRREVERSIBILITY_CODE);
+		addItem(StressIrreversibilityQuestion.class, VOCABULARY_IRREVERSIBILITY_CODE);
 		addItem(ScopeThreatRatingQuestion.class, VOCABULARY_SIMPLE_THREAT_RATING_SCOPE_CODE);
 		addItem(TncProjectPlaceTypeQuestion.class, VOCABULARY_TNC_PROJECT_PLACE_TYPES);
 		addItem(TncOrganizationalPrioritiesQuestion.class, VOCABULARY_TNC_ORGANIZATIONAL_PRIORITIES);
