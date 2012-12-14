@@ -336,6 +336,15 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		return codesToImport;
 	}
 	
+	public void importCodeField(Node node, String containerName, ORef destinationRef, String destinationTag, ChoiceQuestion question) throws Exception
+	{
+		Xmpz2TagToElementNameMap map = new Xmpz2TagToElementNameMap();
+		String elementName = map.findElementName(containerName, destinationTag);
+		String importedReadableCode = getPathData(node, new String[]{containerName  + elementName, });
+		String internalCode = question.convertToInternalCode(importedReadableCode);		
+		importField(destinationRef, destinationTag, internalCode);
+	}
+	
 	public void importDateField(Node node, ORef destinationRefToUse, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
 		importStringField(node, baseObjectSchema.getXmpz2ElementName(), destinationRefToUse, fieldSchema.getTag());

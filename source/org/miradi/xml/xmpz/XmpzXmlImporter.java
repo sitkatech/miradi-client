@@ -27,6 +27,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.XmlUtilities2;
@@ -34,6 +35,7 @@ import org.miradi.xml.AbstractXmlImporter;
 import org.miradi.xml.AbstractXmlNamespaceContext;
 import org.miradi.xml.AbstractXmpzObjectImporter;
 import org.miradi.xml.MiradiXmlValidator;
+import org.miradi.xml.wcs.TagToElementNameMap;
 import org.miradi.xml.wcs.WcsMiradiXmlValidator;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
@@ -149,6 +151,15 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements XmpzXmlConst
 		}
 		
 		new ThreatTargetThreatRatingElementImporter(this).importElement();
+	}
+	
+	public void importCodeField(Node node, String containerName, ORef destinationRef, String destinationTag, ChoiceQuestion question) throws Exception
+	{
+		TagToElementNameMap map = new TagToElementNameMap();
+		String elementName = map.findElementName(containerName, destinationTag);
+		String importedReadableCode = getPathData(node, new String[]{containerName  + elementName, });
+		String internalCode = question.convertToInternalCode(importedReadableCode);		
+		importField(destinationRef, destinationTag, internalCode);
 	}
 
 	private void endUsingCommandsToSetData()
