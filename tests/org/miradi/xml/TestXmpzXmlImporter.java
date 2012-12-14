@@ -80,6 +80,12 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		super(name);
 	}
 	
+	public void test3LetterLanguageCode() throws Exception
+	{
+		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_PROJECT_LANGUAGE, "aaa");
+		validateUsingStringWriter();
+	}
+	
 	public void testValidateEmptyProject() throws Exception
 	{
 		validateUsingStringWriter();
