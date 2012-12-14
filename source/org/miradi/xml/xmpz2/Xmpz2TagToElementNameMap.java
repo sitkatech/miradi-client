@@ -236,6 +236,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, TNC_FRESHWATER_ECO_REGION);
 		map.put(TncProjectData.TAG_PROJECT_PLACE_TYPES, TNC_PROJECT_PLACE_TYPES);
 		map.put(TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, TNC_ORGANIZATIONAL_PRIORITIES);
+		map.put(TncProjectData.TAG_CAP_STANDARDS_SCORECARD, TNC_CAP_STANDARDS_SCORECARD);
 		
 		return map;
 	}
