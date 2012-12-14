@@ -36,7 +36,6 @@ import org.miradi.schemas.OtherNotableSpeciesSchema;
 import org.miradi.schemas.ProgressPercentSchema;
 import org.miradi.schemas.ProgressReportSchema;
 import org.miradi.schemas.ScopeBoxSchema;
-import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.SubTargetSchema;
 import org.miradi.schemas.TextBoxSchema;
 import org.miradi.xml.xmpz2.objectExporters.BudgetCategoryOneExporter;
@@ -88,6 +87,7 @@ public class ObjectTypeToExporterMap extends HashMap<Integer, BaseObjectExporter
 		addExporterToMap(new BudgetCategoryOneExporter(getWriter()));
 		addExporterToMap(new BudgetCategoryTwoExporter(getWriter()));
 		addExporterToMap(new ObjectTreeTableConfigurationExporter(getWriter()));
+		addExporterToMap(new StressExporter(getWriter()));
 		
 		addGenericExporterToMap(AccountingCodeSchema.getObjectType());
 		addGenericExporterToMap(FundingSourceSchema.getObjectType());
@@ -97,7 +97,6 @@ public class ObjectTypeToExporterMap extends HashMap<Integer, BaseObjectExporter
 		addGenericExporterToMap(TextBoxSchema.getObjectType());
 		addGenericExporterToMap(CostAllocationRuleSchema.getObjectType());
 		addGenericExporterToMap(MeasurementSchema.getObjectType());
-		addGenericExporterToMap(StressSchema.getObjectType());
 		addGenericExporterToMap(GroupBoxSchema.getObjectType());
 		addGenericExporterToMap(SubTargetSchema.getObjectType());
 		addGenericExporterToMap(ProgressReportSchema.getObjectType());

@@ -40,7 +40,6 @@ import org.miradi.project.Project;
 import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.StressRatingChoiceQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.questions.ThreatStressRatingChoiceQuestion;
@@ -126,7 +125,6 @@ public class StressBasedThreatRatingExporter implements Xmpz2XmlConstants
 		if (threatStressRating != null)
 			getWriter().writeElement(getParentElementName(), threatStressRating, ThreatStressRating.TAG_IS_ACTIVE);
 		
-		exportStressBasedStressRating(stress.getCalculatedStressRating());
 		exportStressBasedThreatStressRating(target.getRef(), threat.getRef());
 	}
 	
@@ -139,18 +137,9 @@ public class StressBasedThreatRatingExporter implements Xmpz2XmlConstants
 		exportStressBasedThreatRatingCode(CALCULATED_THREAT_STRESS_RATING, question.findChoiceByCode(safeThreatRatingCode));
 	}
 
-	private void exportStressBasedStressRating(String stressRating) throws Exception
-	{
-		ChoiceQuestion question = getProject().getQuestion(StressRatingChoiceQuestion.class);
-		ChoiceItem stressRatingChoiceItem = question.findChoiceByCode(stressRating);
-		exportStressBasedThreatRatingCode(CALCULATED_STRESS_RATING, stressRatingChoiceItem);
-	}
-	
 	private void exportStressBasedThreatRatingCode(String elementName, ChoiceItem rating) throws Exception
 	{
-		getWriter().writeStartElement(getParentElementName() + elementName);
-		getWriter().writeXmlText(rating.getCode());
-		getWriter().writeEndElement(getParentElementName() + elementName);
+		getWriter().writeCodeElement(getParentElementName(), elementName, rating);
 	}
 
 	private void exportStressBasedRatingComment(ORef threatRef, ORef targetRef) throws Exception

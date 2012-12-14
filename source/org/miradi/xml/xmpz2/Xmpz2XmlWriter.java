@@ -38,6 +38,7 @@ import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
@@ -67,6 +68,19 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	public static String createPoolElementName(String startElementName)
 	{
 		return startElementName + POOL_ELEMENT_TAG;
+	}
+	
+	public void writeCodeElement(final String parentElementName, String elementName, ChoiceItem rating) throws Exception
+	{
+		final String code = rating.getCode();
+		writeCodeElement(parentElementName, elementName, code);
+	}
+
+	public void writeCodeElement(final String parentElementName, String elementName, final String code) throws Exception
+	{
+		writeStartElement(parentElementName + elementName);
+		writeXmlText(code);
+		writeEndElement(parentElementName + elementName);
 	}
 	
 	public void writeChoiceData(final BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, final ChoiceData choiceData) throws Exception

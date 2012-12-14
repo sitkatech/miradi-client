@@ -43,6 +43,7 @@ import org.miradi.objects.RatingCriterion;
 import org.miradi.objects.ReportTemplate;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.Stress;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
@@ -925,6 +926,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		if (Dashboard.is(baseObjectSchema.getType()))
 			return new DashboardSchemaWriter(this, baseObjectSchema);
+		
+		if (Stress.is(baseObjectSchema.getType()))
+			return new StressSchemaWriter(this, baseObjectSchema);
 		
 		return new BaseObjectSchemaWriter(this, baseObjectSchema);
 	}
