@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Fri Dec 14 17:51:26 EST 2012 $
+# $LastChangedDate: Fri Dec 14 18:01:57 EST 2012 $
 # $LastChangedRevision: 216 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/216'
 start = ConservationProject.element
@@ -686,8 +686,8 @@ Dashboard.element = element miradi:Dashboard
 SimpleThreatRatingPool.element = element miradi:SimpleThreatRatingPool { SimpleThreatRating.element* }
 SimpleThreatRating.element = element miradi:SimpleThreatRating
 {
-  element miradi:SimpleThreatRatingTargetId { BiodiversityTargetId.element* } &
-  element miradi:SimpleThreatRatingThreatId { ThreatId.element* } &
+  element miradi:SimpleThreatRatingTargetId { BiodiversityTargetId.element } &
+  element miradi:SimpleThreatRatingThreatId { ThreatId.element } &
   element miradi:SimpleThreatRatingCalculatedRating { vocabulary_threat_rating }? &
   element miradi:SimpleThreatRatingScopeRating { vocabulary_simple_threat_rating_scope_code }? &
   element miradi:SimpleThreatRatingSeverityRating { vocabulary_severity_rating }? &
@@ -698,9 +698,9 @@ SimpleThreatRating.element = element miradi:SimpleThreatRating
 StressBasedThreatRatingPool.element = element miradi:StressBasedThreatRatingPool { StressBasedThreatRating.element* }
 StressBasedThreatRating.element = element miradi:StressBasedThreatRating
 {
-  element miradi:StressBasedThreatRatingThreatId { ThreatId.element* } &
-  element miradi:StressBasedThreatRatingStressId { StressId.element* } &
-  element miradi:StressBasedThreatRatingTargetId { BiodiversityTargetId.element* } &
+  element miradi:StressBasedThreatRatingThreatId { ThreatId.element } &
+  element miradi:StressBasedThreatRatingStressId { StressId.element } &
+  element miradi:StressBasedThreatRatingTargetId { BiodiversityTargetId.element } &
   element miradi:StressBasedThreatRatingContributionRating { vocabulary_contribution_rating }? &
   element miradi:StressBasedThreatRatingIrreversibilityRating { vocabulary_irreversibility_rating }? &
   element miradi:StressBasedThreatRatingIsActive { xsd:boolean }? &
