@@ -37,7 +37,6 @@ import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.FiscalYearStartQuestion;
 import org.miradi.questions.FosTrainingTypeQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
-import org.miradi.questions.IrreversibilityThreatRatingQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.MajorLanguagesQuestion;
 import org.miradi.questions.MeasurementStatusQuestion;
@@ -118,7 +117,6 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(StressContributionQuestion.class, VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE);
 		addItem(StressIrreversibilityQuestion.class, VOCABULARY_THREAT_STRESS_RATING_IRREVERSIBILITY_CODE);
 		addItem(ScopeThreatRatingQuestion.class, VOCABULARY_SIMPLE_THREAT_RATING_SCOPE_CODE);
-		addItem(IrreversibilityThreatRatingQuestion.class, VOCABULARY_SIMPLE_THREAT_RATING_IRREVERSIBILITY_CODE);
 		addItem(TncProjectPlaceTypeQuestion.class, VOCABULARY_TNC_PROJECT_PLACE_TYPES);
 		addItem(TncOrganizationalPrioritiesQuestion.class, VOCABULARY_TNC_ORGANIZATIONAL_PRIORITIES);
 		addItem(TncOperatingUnitsQuestion.class, VOCABULARY_TNC_OPERATING_UNTIS);
