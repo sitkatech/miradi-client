@@ -59,5 +59,11 @@ public class FosProjectDataSchema extends BaseObjectSchema
 		return OBJECT_NAME;
 	}
 	
+	@Override
+	public String getXmpz2ElementName()
+	{
+		return FOS_PROJECT_DATA;
+	}
+	
 	public static final String OBJECT_NAME = "FosProjectData";
 }

@@ -59,7 +59,7 @@ public interface Xmpz2XmlConstants
 	public static final String WWF_PROJECT_DATA = "WwfProjectData";
 	public static final String WCS_PROJECT_DATA = "WCSProjectData";
 	public static final String RARE_PROJECT_DATA = "RareProjectData";
-	public static final String FOS_PROJECT_DATA = "FosProjectData";
+	public static final String FOS_PROJECT_DATA = "FOSProjectData";
 	public static final String CONCEPTUAL_MODEL = "ConceptualModel";
 	public static final String RESULTS_CHAIN = "ResultsChain";
 	public static final String DIAGRAM_FACTOR = "DiagramFactor";

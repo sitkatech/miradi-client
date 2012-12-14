@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Dec 13 18:35:26 EST 2012 $
+# $LastChangedDate: Thu Dec 13 19:00:33 EST 2012 $
 # $LastChangedRevision: 216 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/216'
 start = ConservationProject.element
@@ -14,7 +14,7 @@ ConservationProject.element = element miradi:ConservationProject
   WwfProjectData.element &
   WCSProjectData.element &
   RareProjectData.element &
-  FosProjectData.element &
+  FOSProjectData.element &
   ExtraData.element &
   TaskPool.element? &
   ProjectResourcePool.element? &
@@ -177,13 +177,13 @@ WCSProjectData.element = element miradi:WCSProjectData
   element miradi:WCSProjectDataSwotUrl { text }?
 }
 
-FosProjectData.element = element miradi:FosProjectData
+FOSProjectData.element = element miradi:FOSProjectData
 {
-  element miradi:FosProjectDataCoaches { text }? &
-  element miradi:FosProjectDataLabel { formatted_text }? &
-  element miradi:FosProjectDataTrainers { text }? &
-  element miradi:FosProjectDataTrainingDates { text }? &
-  element miradi:FosProjectDataTrainingType { vocabulary_fos_training_type }?
+  element miradi:FOSProjectDataCoaches { text }? &
+  element miradi:FOSProjectDataLabel { formatted_text }? &
+  element miradi:FOSProjectDataTrainers { text }? &
+  element miradi:FOSProjectDataTrainingDates { text }? &
+  element miradi:FOSProjectDataTrainingType { vocabulary_fos_training_type }?
 }
 
 RareProjectData.element = element miradi:RareProjectData
