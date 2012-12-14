@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Fri Dec 14 12:14:48 EST 2012 $
+# $LastChangedDate: Fri Dec 14 12:26:37 EST 2012 $
 # $LastChangedRevision: 216 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/216'
 start = ConservationProject.element
@@ -525,8 +525,8 @@ Stress.element = element miradi:Stress
   element miradi:StressDetails { formatted_text }? &
   element miradi:StressId { text }? &
   element miradi:StressName { formatted_text }? &
-  element miradi:StressScope { vocabulary_stress_scope }? &
-  element miradi:StressSeverity { vocabulary_stress_severity }? &
+  element miradi:StressScopeRating { vocabulary_scope_rating }? &
+  element miradi:StressSeverityRating { vocabulary_severity_rating }? &
   element miradi:StressCalculatedStressRating { vocabulary_threat_rating }?
 }
 
@@ -689,9 +689,9 @@ SimpleThreatRating.element = element miradi:SimpleThreatRating
   element miradi:SimpleThreatRatingTargetId { BiodiversityTargetId.element* } &
   element miradi:SimpleThreatRatingThreatId { ThreatId.element* } &
   element miradi:SimpleThreatRatingCalculatedRating { vocabulary_threat_rating }? &
-  element miradi:SimpleThreatRatingScope { vocabulary_simple_threat_rating_scope_code }? &
-  element miradi:SimpleThreatRatingSeverity { vocabulary_stress_severity }? &
-  element miradi:SimpleThreatRatingIrreversibility { vocabulary_irreversibility_code }? &
+  element miradi:SimpleThreatRatingScopeRating { vocabulary_simple_threat_rating_scope_code }? &
+  element miradi:SimpleThreatRatingSeverityRating { vocabulary_severity_rating }? &
+  element miradi:SimpleThreatRatingIrreversibilityRating { vocabulary_irreversibility_rating }? &
   element miradi:SimpleThreatRatingComments { formatted_text }?
 }
 
@@ -701,8 +701,8 @@ StressBasedThreatRating.element = element miradi:StressBasedThreatRating
   element miradi:StressBasedThreatRatingThreatId { ThreatId.element* } &
   element miradi:StressBasedThreatRatingStressId { StressId.element* } &
   element miradi:StressBasedThreatRatingTargetId { BiodiversityTargetId.element* } &
-  element miradi:StressBasedThreatRatingContribution { vocabulary_contribution_code }? &
-  element miradi:StressBasedThreatRatingIrreversibility { vocabulary_irreversibility_code }? &
+  element miradi:StressBasedThreatRatingContributionRating { vocabulary_contribution_rating }? &
+  element miradi:StressBasedThreatRatingIrreversibilityRating { vocabulary_irreversibility_rating }? &
   element miradi:StressBasedThreatRatingIsActive { xsd:boolean }? &
   element miradi:StressBasedThreatRatingCalculatedThreatStressRating { vocabulary_threat_rating }? &
   element miradi:StressBasedThreatRatingCalculatedRating { vocabulary_threat_rating }? &
@@ -830,10 +830,10 @@ vocabulary_strategy_impact_rating_code = ''|'1'|'2'|'3'|'4'
 vocabulary_planning_tree_objective_strategy_node_order = 'ObjectiveContainsStrategy'|'StrategyContainsObjective'
 vocabulary_strategy_status = 'Real'|'Draft'
 vocabulary_strategy_taxonomy_code = ''|'A10'|'A10.10'|'A10.30'|'A20'|'A20.10'|'A20.20'|'A20.30'|'A30'|'A30.10'|'A30.20'|'A30.30'|'A30.40'|'A40'|'A40.10'|'A40.20'|'A40.30'|'A50'|'A50.10'|'A50.20'|'A50.30'|'A50.40'|'A60'|'A60.10'|'A60.20'|'A60.30'|'A60.40'|'A60.50'|'A70'|'A70.10'|'A70.20'|'A70.30'
-vocabulary_contribution_code = ''|'1'|'2'|'3'|'4'
-vocabulary_irreversibility_code = ''|'1'|'2'|'3'|'4'
-vocabulary_stress_scope = ''|'1'|'2'|'3'|'4'
-vocabulary_stress_severity = ''|'1'|'2'|'3'|'4'
+vocabulary_contribution_rating = ''|'1'|'2'|'3'|'4'
+vocabulary_irreversibility_rating = ''|'1'|'2'|'3'|'4'
+vocabulary_scope_rating = ''|'1'|'2'|'3'|'4'
+vocabulary_severity_rating = ''|'1'|'2'|'3'|'4'
 vocabulary_target_status = ''|'1'|'2'|'3'|'4'
 vocabulary_text_box_z_order = 'Back'|'Front'
 vocabulary_cause_taxonomy_code = ''|'T10'|'T10.10'|'T10.20'|'T10.30'|'T20'|'T20.10'|'T20.30'|'T20.40'|'T20.50'|'T30'|'T30.10'|'T30.20'|'T30.30'|'T40'|'T40.10'|'T40.20'|'T40.30'|'T40.40'|'T50'|'T50.10'|'T50.20'|'T50.30'|'T50.40'|'T60'|'T60.10'|'T60.20'|'T60.30'|'T70'|'T70.10'|'T70.20'|'T70.30'|'T80'|'T80.10'|'T80.20'|'T80.30'|'T91'|'T91.10'|'T91.20'|'T91.30'|'T91.40'|'T91.50'|'T91.60'|'T100'|'T100.10'|'T100.20'|'T100.30'|'T110'|'T110.10'|'T110.20'|'T110.30'|'T110.40'

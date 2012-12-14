@@ -305,6 +305,8 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 	private HashMap<String, String> createStressMap()
 	{
 		HashMap<String, String> map = createFactorMap();
+		map.put(Stress.TAG_SCOPE, SCOPE);
+		map.put(Stress.TAG_SEVERITY, SEVERITY);
 		map.put(Stress.TAG_DETAIL, DETAILS);
 		map.put(Stress.PSEUDO_STRESS_RATING, MAGNITUDE);
 		
