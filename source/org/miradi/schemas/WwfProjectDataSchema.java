@@ -55,6 +55,12 @@ public class WwfProjectDataSchema extends BaseObjectSchema
 	{
 		return getObjectType();
 	}
+	
+	@Override
+	public String getXmpz2ElementName()
+	{
+		return WWF_PROJECT_DATA;
+	}
 
 	@Override
 	public String getObjectName()
