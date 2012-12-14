@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Fri Dec 14 11:36:51 EST 2012 $
+# $LastChangedDate: Fri Dec 14 12:04:49 EST 2012 $
 # $LastChangedRevision: 216 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/216'
 start = ConservationProject.element
@@ -526,7 +526,8 @@ Stress.element = element miradi:Stress
   element miradi:StressId { text }? &
   element miradi:StressName { formatted_text }? &
   element miradi:StressScope { vocabulary_stress_scope }? &
-  element miradi:StressSeverity { vocabulary_stress_severity }?
+  element miradi:StressSeverity { vocabulary_stress_severity }? &
+  element miradi:StressCalculatedStressRating { vocabulary_threat_rating }?
 }
 
 GroupBoxPool.element = element miradi:GroupBoxPool { GroupBox.element* }
@@ -700,7 +701,6 @@ StressBasedThreatRating.element = element miradi:StressBasedThreatRating
   element miradi:StressBasedThreatRatingThreatId { ThreatId.element* } &
   element miradi:StressBasedThreatRatingStressId { StressId.element* } &
   element miradi:StressBasedThreatRatingTargetId { BiodiversityTargetId.element* } &
-  element miradi:StressBasedThreatRatingCalculatedStressRating { vocabulary_threat_rating }? &
   element miradi:StressBasedThreatRatingCalculatedThreatStressRating { vocabulary_threat_rating }? &
   element miradi:StressBasedThreatRatingCalculatedRating { vocabulary_threat_rating }? &
   element miradi:StressBasedThreatRatingContribution { vocabulary_contribution_code }? &
