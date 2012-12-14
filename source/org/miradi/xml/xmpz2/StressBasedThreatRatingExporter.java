@@ -96,9 +96,9 @@ public class StressBasedThreatRatingExporter implements Xmpz2XmlConstants
 				exportThreatId(threatRef);
 				exportStressId(stress.getRef());
 				exportTargetId(targetRef);
-				exportThreatRating(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE, targetRef, threatRef);
 				exportStressBasedRatingComment(threatRef, targetRef);
 				exportStressBasedThreatRatingDetails(target, stress, threat);
+				exportThreatRating(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE, targetRef, threatRef);
 				getWriter().writeEndElement(getParentElementName());
 			}
 		}
