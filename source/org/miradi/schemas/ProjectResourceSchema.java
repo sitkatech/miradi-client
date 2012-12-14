@@ -67,6 +67,12 @@ public class ProjectResourceSchema extends BaseObjectSchema
 	}
 	
 	@Override
+	public String getXmpz2ElementName()
+	{
+		return PROJECT_RESOURCE;
+	}
+	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
