@@ -53,7 +53,6 @@ import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
 import org.miradi.questions.ScopeBoxTypeQuestion;
 import org.miradi.questions.ScopeThreatRatingQuestion;
-import org.miradi.questions.SeverityThreatRatingQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
@@ -119,7 +118,6 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(StressContributionQuestion.class, VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE);
 		addItem(StressIrreversibilityQuestion.class, VOCABULARY_THREAT_STRESS_RATING_IRREVERSIBILITY_CODE);
 		addItem(ScopeThreatRatingQuestion.class, VOCABULARY_SIMPLE_THREAT_RATING_SCOPE_CODE);
-		addItem(SeverityThreatRatingQuestion.class, VOCABULARY_SIMPLE_THREAT_RATING_SEVERITY_CODE);
 		addItem(IrreversibilityThreatRatingQuestion.class, VOCABULARY_SIMPLE_THREAT_RATING_IRREVERSIBILITY_CODE);
 		addItem(TncProjectPlaceTypeQuestion.class, VOCABULARY_TNC_PROJECT_PLACE_TYPES);
 		addItem(TncOrganizationalPrioritiesQuestion.class, VOCABULARY_TNC_ORGANIZATIONAL_PRIORITIES);
