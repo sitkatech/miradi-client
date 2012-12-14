@@ -43,10 +43,8 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceQuestion;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.XmlUtilities2;
-import org.miradi.xml.wcs.TagToElementNameMap;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.w3c.dom.Document;
@@ -157,15 +155,6 @@ abstract public class AbstractXmlImporter
 	public String escapeDueToParserUnescaping(String data)
 	{
 		return XmlUtilities2.getXmlEncoded(data);
-	}
-	
-	public void importCodeField(Node node, String containerName, ORef destinationRef, String destinationTag, ChoiceQuestion question) throws Exception
-	{
-		TagToElementNameMap map = new TagToElementNameMap();
-		String elementName = map.findElementName(containerName, destinationTag);
-		String importedReadableCode = getPathData(node, new String[]{containerName  + elementName, });
-		String internalCode = question.convertToInternalCode(importedReadableCode);		
-		importField(destinationRef, destinationTag, internalCode);
 	}
 	
 	protected Point extractPointFromNode(Node pointNode) throws Exception

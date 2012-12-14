@@ -48,6 +48,7 @@ import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
+import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
@@ -119,10 +120,20 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(TAGGED_OBJECT_SET_ELEMENT_NAME, createTaggedObjectSetMap());
 		map.put(BUDGET_CATEGORY_ONE, createBaseObjectMap());
 		map.put(BUDGET_CATEGORY_TWO, createBaseObjectMap());
+		map.put(STRESS_BASED_THREAT_RATING, createStressBasedThreatRatingMap());
 		
 		return map;
 	}
 	
+	private HashMap<String, String> createStressBasedThreatRatingMap()
+	{
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put(ThreatStressRating.TAG_CONTRIBUTION, CONTRIBUTION);
+		map.put(ThreatStressRating.TAG_IRREVERSIBILITY, IRREVERSIBILITY);
+
+		return map;
+	}
+
 	private HashMap<String, String> createObjectTreeTableConfigurationMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
