@@ -57,6 +57,6 @@ public class ProjectSummaryTncProjectDataSchema extends AbstractProjectSummarySc
 	@Override
 	public String getObjectName()
 	{
-		return TncProjectDataSchema.OBJECT_NAME;
+		return TNC_PROJECT_DATA;
 	}
 }

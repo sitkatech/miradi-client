@@ -25,7 +25,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.xml.wcs.TagToElementNameMap;
+import org.miradi.xml.xmpz2.Xmpz2TagToElementNameMap;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 
@@ -62,7 +62,7 @@ public class BaseObjectImporter extends AbstractXmpz2ObjectImporter
 
 	public void importField(Node node, ORef destinationRef, String destinationTag) throws Exception
 	{
-		TagToElementNameMap map = new TagToElementNameMap();
+		Xmpz2TagToElementNameMap map = new Xmpz2TagToElementNameMap();
 		String elementName = map.findElementName(getBaseObjectSchema().getXmpz2ElementName(), destinationTag);
 		getImporter().importField(node, getBaseObjectSchema().getXmpz2ElementName() + elementName, destinationRef, destinationTag);
 	}

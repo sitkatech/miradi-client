@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Dec 13 19:22:49 EST 2012 $
+# $LastChangedDate: Fri Dec 14 10:25:24 EST 2012 $
 # $LastChangedRevision: 216 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/216'
 start = ConservationProject.element
@@ -10,7 +10,7 @@ ConservationProject.element = element miradi:ConservationProject
   ProjectScope.element &
   ProjectLocation.element &
   ProjectPlanning.element &
-  TncProjectData.element &
+  TNCProjectData.element &
   WWFProjectData.element &
   WCSProjectData.element &
   RareProjectData.element &
@@ -135,26 +135,26 @@ ProjectPlanning.element = element miradi:ProjectPlanning
   element miradi:ProjectPlanningWorkPlanStartDate { vocabulary_date }?
 }
 
-TncProjectData.element = element miradi:TncProjectData
+TNCProjectData.element = element miradi:TNCProjectData
 {
-  TncProjectDataTNCFreshwaterEcoRegionContainer.element ? &
-  TncProjectDataTNCMarineEcoRegionContainer.element ? &
-  TncProjectDataTNCOperatingUnitsContainer.element ? &
-  TncProjectDataTNCOrganizationalPrioritiesContainer.element ? &
-  TncProjectDataTNCProjectPlaceTypesContainer.element ? &
-  TncProjectDataTNCTerrestrialEcoRegionContainer.element ? &
-  element miradi:TncProjectDataCapStandardsScorecard { formatted_text }? &
-  element miradi:TncProjectDataCapacityAndFunding { formatted_text }? &
-  element miradi:TncProjectDataConProParentChildProjectText { formatted_text }? &
-  element miradi:TncProjectDataDatabaseDownloadDate { vocabulary_date }? &
-  element miradi:TncProjectDataLessonsLearned { formatted_text }? &
-  element miradi:TncProjectDataMakingTheCase { formatted_text }? &
-  element miradi:TncProjectDataOtherOrgRelatedProjects { text }? &
-  element miradi:TncProjectDataPlanningTeamComments { formatted_text }? &
-  element miradi:TncProjectDataProjectCitations { formatted_text }? &
-  element miradi:TncProjectDataProjectLevelComments { formatted_text }? &
-  element miradi:TncProjectDataProjectResourcesScorecard { formatted_text }? &
-  element miradi:TncProjectDataRisks { formatted_text }?
+  TNCProjectDataTNCFreshwaterEcoRegionContainer.element ? &
+  TNCProjectDataTNCMarineEcoRegionContainer.element ? &
+  TNCProjectDataTNCOperatingUnitsContainer.element ? &
+  TNCProjectDataTNCOrganizationalPrioritiesContainer.element ? &
+  TNCProjectDataTNCProjectPlaceTypesContainer.element ? &
+  TNCProjectDataTNCTerrestrialEcoRegionContainer.element ? &
+  element miradi:TNCProjectDataCapStandardsScorecard { formatted_text }? &
+  element miradi:TNCProjectDataCapacityAndFunding { formatted_text }? &
+  element miradi:TNCProjectDataConProParentChildProjectText { formatted_text }? &
+  element miradi:TNCProjectDataDatabaseDownloadDate { vocabulary_date }? &
+  element miradi:TNCProjectDataLessonsLearned { formatted_text }? &
+  element miradi:TNCProjectDataMakingTheCase { formatted_text }? &
+  element miradi:TNCProjectDataOtherOrgRelatedProjects { text }? &
+  element miradi:TNCProjectDataPlanningTeamComments { formatted_text }? &
+  element miradi:TNCProjectDataProjectCitations { formatted_text }? &
+  element miradi:TNCProjectDataProjectLevelComments { formatted_text }? &
+  element miradi:TNCProjectDataProjectResourcesScorecard { formatted_text }? &
+  element miradi:TNCProjectDataRisks { formatted_text }?
 }
 
 WWFProjectData.element = element miradi:WWFProjectData
@@ -725,32 +725,32 @@ ProjectLocationCountriesContainer.element = element miradi:ProjectLocationCountr
 element miradi:code { vocabulary_countries } *
 }
 
-TncProjectDataTNCOperatingUnitsContainer.element = element miradi:TncProjectDataTNCOperatingUnitsContainer
+TNCProjectDataTNCOperatingUnitsContainer.element = element miradi:TNCProjectDataTNCOperatingUnitsContainer
 {
 element miradi:code { vocabulary_tnc_operating_units } *
 }
 
-TncProjectDataTNCTerrestrialEcoRegionContainer.element = element miradi:TncProjectDataTNCTerrestrialEcoRegionContainer
+TNCProjectDataTNCTerrestrialEcoRegionContainer.element = element miradi:TNCProjectDataTNCTerrestrialEcoRegionContainer
 {
 element miradi:code { vocabulary_tnc_terrestrial_eco_region } *
 }
 
-TncProjectDataTNCMarineEcoRegionContainer.element = element miradi:TncProjectDataTNCMarineEcoRegionContainer
+TNCProjectDataTNCMarineEcoRegionContainer.element = element miradi:TNCProjectDataTNCMarineEcoRegionContainer
 {
 element miradi:code { vocabulary_tnc_marine_eco_region } *
 }
 
-TncProjectDataTNCFreshwaterEcoRegionContainer.element = element miradi:TncProjectDataTNCFreshwaterEcoRegionContainer
+TNCProjectDataTNCFreshwaterEcoRegionContainer.element = element miradi:TNCProjectDataTNCFreshwaterEcoRegionContainer
 {
 element miradi:code { vocabulary_tnc_freshwater_eco_region } *
 }
 
-TncProjectDataTNCProjectPlaceTypesContainer.element = element miradi:TncProjectDataTNCProjectPlaceTypesContainer
+TNCProjectDataTNCProjectPlaceTypesContainer.element = element miradi:TNCProjectDataTNCProjectPlaceTypesContainer
 {
 element miradi:code { vocabulary_tnc_project_place_types } *
 }
 
-TncProjectDataTNCOrganizationalPrioritiesContainer.element = element miradi:TncProjectDataTNCOrganizationalPrioritiesContainer
+TNCProjectDataTNCOrganizationalPrioritiesContainer.element = element miradi:TNCProjectDataTNCOrganizationalPrioritiesContainer
 {
 element miradi:code { vocabulary_tnc_organizational_priorities } *
 }
