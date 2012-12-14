@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 15:46-0600\n"
+"POT-Creation-Date: 2012-12-14 13:46-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -3589,7 +3589,7 @@ msgstr "Файли існують: Не можна перезаписати не
 msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr "Назва файла має містити тільки альфа цифрові і або  '_' символи."
 
-#: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:98
+#: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:96
 #: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:198
 msgid "File to import does not validate."
 msgstr "Файл для імпорту відсутній"
@@ -4121,7 +4121,7 @@ msgid "Importing Miradi Data..."
 msgstr ""
 
 #: Miradi/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:127
-#: Miradi/source/org/miradi/xml/xmpz/XmpzXmlImporter.java:110
+#: Miradi/source/org/miradi/xml/xmpz/XmpzXmlImporter.java:112
 msgid "Importing XML..."
 msgstr ""
 
