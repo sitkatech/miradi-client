@@ -373,7 +373,7 @@ public class XmpzXmlExporter extends XmlExporter implements XmpzXmlConstants
 		
 		writeOptionalElement(PROJECT_SUMMARY, ProjectMetadata.TAG_PROJECT_NAME, getMetadata(), ProjectMetadata.TAG_PROJECT_NAME);
 		writeShareOutsideOrganizationElement();
-		writeOptionalElement(PROJECT_SUMMARY, ProjectMetadata.TAG_PROJECT_LANGUAGE, getMetadata(), ProjectMetadata.TAG_PROJECT_LANGUAGE);
+		exportOnly2LetterProjectLanguageCodes();
 		writeOptionalElement(PROJECT_SUMMARY, ProjectMetadata.TAG_DATA_EFFECTIVE_DATE, getMetadata(), ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
 		writeOptionalElement(PROJECT_SUMMARY, ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER, getMetadata(), ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER);
 		writeOptionalElement(PROJECT_SUMMARY, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS, getMetadata(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
@@ -393,6 +393,16 @@ public class XmpzXmlExporter extends XmlExporter implements XmpzXmlConstants
 		writeOptionalCodeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, budgetTimePeriodQuestion, getMetadata().getData(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT));
 
 		writeEndElement(out, PROJECT_SUMMARY);
+	}
+
+	private void exportOnly2LetterProjectLanguageCodes() throws Exception
+	{
+		String data = getMetadata().getData(ProjectMetadata.TAG_PROJECT_LANGUAGE);
+		if (data.length() != 2)
+			data = "";
+		
+		String convertedElementName = getConvertedElementName(PROJECT_SUMMARY, ProjectMetadata.TAG_PROJECT_LANGUAGE);
+		writeOptionalElement(getWriter(), PROJECT_SUMMARY + convertedElementName, data);
 	}
 
 	private void writeOptionalOverallProjectThreatRating() throws Exception
