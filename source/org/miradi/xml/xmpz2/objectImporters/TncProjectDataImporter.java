@@ -24,6 +24,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
 import org.miradi.schemas.TncProjectDataSchema;
+import org.miradi.xml.xmpz2.Xmpz2TagToElementNameMap;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 
@@ -82,6 +83,8 @@ public class TncProjectDataImporter extends SingletonObjectImporter
 	
 	private void importProjectMetadataField(Node projectSummaryNode, String tag) throws Exception
 	{
-		importField(projectSummaryNode, getMetadataRef(), tag);
+		Xmpz2TagToElementNameMap map = new Xmpz2TagToElementNameMap();
+		String elementName = map.findElementName(getBaseObjectSchema().getXmpz2ElementName(), tag);
+		getImporter().importField(projectSummaryNode, getBaseObjectSchema().getXmpz2ElementName() + elementName, getMetadataRef(), tag);
 	}
 }
