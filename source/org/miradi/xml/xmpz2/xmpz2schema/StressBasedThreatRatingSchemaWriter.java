@@ -41,11 +41,11 @@ public class StressBasedThreatRatingSchemaWriter extends BaseObjectSchemaWriter
 		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createSchemaElement(STRESS_BASED_THREAT_RATING + TARGET + ID, (BIODIVERSITY_TARGET + ID + ".element*")));
 		
 		String vocabularyName = getXmpz2XmlSchemaCreator().getChoiceQuestionToSchemaElementNameMap().findVocabulary(new ThreatRatingQuestion());
-		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(STRESS_BASED_THREAT_RATING + CALCULATED_THREAT_STRESS_RATING, vocabularyName));
-		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(STRESS_BASED_THREAT_RATING + CALCULATED_RATING, vocabularyName));
 		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(STRESS_BASED_THREAT_RATING + CONTRIBUTION, VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE));
 		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(STRESS_BASED_THREAT_RATING + IRREVERSIBILITY, VOCABULARY_IRREVERSIBILITY_CODE));
 		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(STRESS_BASED_THREAT_RATING + IS_ACTIVE, Xmpz2SchemaWriter.createBooleanType()));
+		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(STRESS_BASED_THREAT_RATING + CALCULATED_THREAT_STRESS_RATING, vocabularyName));
+		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(STRESS_BASED_THREAT_RATING + CALCULATED_RATING, vocabularyName));
 		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(STRESS_BASED_THREAT_RATING + COMMENTS, "formatted_text"));
 		
 		return schemaElements;
