@@ -397,12 +397,18 @@ public class XmpzXmlExporter extends XmlExporter implements XmpzXmlConstants
 
 	private void exportOnly2LetterProjectLanguageCodes() throws Exception
 	{
-		String data = getMetadata().getData(ProjectMetadata.TAG_PROJECT_LANGUAGE);
-		if (data.length() != 2)
-			data = "";
-		
+		String data = getOnly2LetterLanguageCode();
 		String convertedElementName = getConvertedElementName(PROJECT_SUMMARY, ProjectMetadata.TAG_PROJECT_LANGUAGE);
 		writeOptionalElement(getWriter(), PROJECT_SUMMARY + convertedElementName, data);
+	}
+
+	private String getOnly2LetterLanguageCode()
+	{
+		String data = getMetadata().getData(ProjectMetadata.TAG_PROJECT_LANGUAGE);
+		if (data.length() == 2)
+			return data;
+		
+		return "";
 	}
 
 	private void writeOptionalOverallProjectThreatRating() throws Exception
