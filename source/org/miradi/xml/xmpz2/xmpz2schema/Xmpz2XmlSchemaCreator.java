@@ -159,16 +159,16 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		elementNames.add(createElementName(PROJECT_SUMMARY_SCOPE));
 		elementNames.add(createElementName(PROJECT_SUMMARY_LOCATION));
 		elementNames.add(createElementName(PROJECT_SUMMARY_PLANNING));
-		elementNames.add(createElementName(TNC_PROJECT_DATA));
-		elementNames.add(createElementName(WWF_PROJECT_DATA));
-		elementNames.add(createElementName(WCS_PROJECT_DATA));
-		elementNames.add(createElementName(RARE_PROJECT_DATA));
-		elementNames.add(createElementName(FOS_PROJECT_DATA));
+		elementNames.add(createOptionalSchemaElement(TNC_PROJECT_DATA));
+		elementNames.add(createOptionalSchemaElement(WWF_PROJECT_DATA));
+		elementNames.add(createOptionalSchemaElement(WCS_PROJECT_DATA));
+		elementNames.add(createOptionalSchemaElement(RARE_PROJECT_DATA));
+		elementNames.add(createOptionalSchemaElement(FOS_PROJECT_DATA));
 		elementNames.add(createElementName(EXTRA_DATA));
 		for(BaseObjectSchemaWriter baseObjectSchemaWriter : baseObjectSchemaWriters)
 		{
 			String poolName = baseObjectSchemaWriter.getPoolName();
-			elementNames.add(getSchemaWriter().createOptionalSchemaElement(createElementName(poolName)));
+			elementNames.add(createOptionalSchemaElement(poolName));
 		}
 		
 		elementNames.add(ELEMENT_NAME + PREFIX + DELETED_ORPHANS_ELEMENT_NAME +  "{ text }?");
@@ -176,6 +176,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		getSchemaWriter().endElementDefinition(CONSERVATION_PROJECT);
 		getSchemaWriter().flush();
+	}
+
+	private String createOptionalSchemaElement(String poolName)
+	{
+		return getSchemaWriter().createOptionalSchemaElement(createElementName(poolName));
 	}
 	
 	private void writeSingletonElements() throws Exception

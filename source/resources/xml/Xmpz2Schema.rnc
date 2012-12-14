@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Fri Dec 14 14:48:08 EST 2012 $
+# $LastChangedDate: Fri Dec 14 16:32:17 EST 2012 $
 # $LastChangedRevision: 216 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/216'
 start = ConservationProject.element
@@ -10,11 +10,11 @@ ConservationProject.element = element miradi:ConservationProject
   ProjectScope.element &
   ProjectLocation.element &
   ProjectPlanning.element &
-  TNCProjectData.element &
-  WWFProjectData.element &
-  WCSProjectData.element &
-  RareProjectData.element &
-  FOSProjectData.element &
+  TNCProjectData.element? &
+  WWFProjectData.element? &
+  WCSProjectData.element? &
+  RareProjectData.element? &
+  FOSProjectData.element? &
   ExtraData.element &
   TaskPool.element? &
   ResourcePool.element? &
