@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Fri Dec 14 12:26:37 EST 2012 $
+# $LastChangedDate: Fri Dec 14 14:48:08 EST 2012 $
 # $LastChangedRevision: 216 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/216'
 start = ConservationProject.element
@@ -17,7 +17,7 @@ ConservationProject.element = element miradi:ConservationProject
   FOSProjectData.element &
   ExtraData.element &
   TaskPool.element? &
-  ProjectResourcePool.element? &
+  ResourcePool.element? &
   IndicatorPool.element? &
   ObjectivePool.element? &
   GoalPool.element? &
@@ -218,33 +218,33 @@ Task.element = element miradi:Task
   element miradi:TaskCalculatedCosts { CalculatedCosts.element }?
 }
 
-ProjectResourcePool.element = element miradi:ProjectResourcePool { ProjectResource.element* }
-ProjectResource.element = element miradi:ProjectResource
+ResourcePool.element = element miradi:ResourcePool { Resource.element* }
+Resource.element = element miradi:Resource
 {
-  ProjectResourceRoleCodesContainer.element ? &
+  ResourceRoleCodesContainer.element ? &
   attribute Id {xsd:integer} &
-  element miradi:ProjectResourceAlternativeEmail { text }? &
-  element miradi:ProjectResourceComments { formatted_text }? &
-  element miradi:ProjectResourceCustom1 { text }? &
-  element miradi:ProjectResourceCustom2 { text }? &
-  element miradi:ProjectResourceDailyRate { xsd:decimal }? &
-  element miradi:ProjectResourceDateUpdated { vocabulary_date }? &
-  element miradi:ProjectResourceEmail { text }? &
-  element miradi:ProjectResourceGivenName { text }? &
-  element miradi:ProjectResourceIMAddress { text }? &
-  element miradi:ProjectResourceIMService { text }? &
-  element miradi:ProjectResourceIsCcnCoach { xsd:boolean }? &
-  element miradi:ProjectResourceLocation { text }? &
-  element miradi:ProjectResourceName { formatted_text }? &
-  element miradi:ProjectResourceOfficePhoneNumber { text }? &
-  element miradi:ProjectResourceOrganization { text }? &
-  element miradi:ProjectResourcePhoneNumberHome { text }? &
-  element miradi:ProjectResourcePhoneNumberMobile { text }? &
-  element miradi:ProjectResourcePhoneNumberOther { text }? &
-  element miradi:ProjectResourcePosition { text }? &
-  element miradi:ProjectResourceResourceId { text }? &
-  element miradi:ProjectResourceResourceType { vocabulary_resource_type }? &
-  element miradi:ProjectResourceSurname { text }?
+  element miradi:ResourceAlternativeEmail { text }? &
+  element miradi:ResourceComments { formatted_text }? &
+  element miradi:ResourceCustom1 { text }? &
+  element miradi:ResourceCustom2 { text }? &
+  element miradi:ResourceDailyRate { xsd:decimal }? &
+  element miradi:ResourceDateUpdated { vocabulary_date }? &
+  element miradi:ResourceEmail { text }? &
+  element miradi:ResourceGivenName { text }? &
+  element miradi:ResourceIMAddress { text }? &
+  element miradi:ResourceIMService { text }? &
+  element miradi:ResourceIsCcnCoach { xsd:boolean }? &
+  element miradi:ResourceLocation { text }? &
+  element miradi:ResourceName { formatted_text }? &
+  element miradi:ResourceOfficePhoneNumber { text }? &
+  element miradi:ResourceOrganization { text }? &
+  element miradi:ResourcePhoneNumberHome { text }? &
+  element miradi:ResourcePhoneNumberMobile { text }? &
+  element miradi:ResourcePhoneNumberOther { text }? &
+  element miradi:ResourcePosition { text }? &
+  element miradi:ResourceResourceId { text }? &
+  element miradi:ResourceResourceType { vocabulary_resource_type }? &
+  element miradi:ResourceSurname { text }?
 }
 
 IndicatorPool.element = element miradi:IndicatorPool { Indicator.element* }
@@ -775,7 +775,7 @@ WWFProjectDataEcoRegionsContainer.element = element miradi:WWFProjectDataEcoRegi
 element miradi:code { vocabulary_wwf_ecoregions } *
 }
 
-ProjectResourceRoleCodesContainer.element = element miradi:ProjectResourceRoleCodesContainer
+ResourceRoleCodesContainer.element = element miradi:ResourceRoleCodesContainer
 {
 element miradi:code { vocabulary_resource_role_codes } *
 }

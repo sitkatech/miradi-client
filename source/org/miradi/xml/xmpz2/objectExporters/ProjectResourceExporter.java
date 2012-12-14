@@ -43,4 +43,10 @@ public class ProjectResourceExporter extends BaseObjectExporter
 		
 		super.writeField(baseObject, fieldSchema);
 	}
+	
+	@Override
+	public String getExporterContainerName(int objectType)
+	{
+		return PROJECT_RESOURCE;
+	}
 }
