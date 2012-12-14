@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Dec 13 19:00:33 EST 2012 $
+# $LastChangedDate: Thu Dec 13 19:22:49 EST 2012 $
 # $LastChangedRevision: 216 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/216'
 start = ConservationProject.element
@@ -11,7 +11,7 @@ ConservationProject.element = element miradi:ConservationProject
   ProjectLocation.element &
   ProjectPlanning.element &
   TncProjectData.element &
-  WwfProjectData.element &
+  WWFProjectData.element &
   WCSProjectData.element &
   RareProjectData.element &
   FOSProjectData.element &
@@ -157,13 +157,13 @@ TncProjectData.element = element miradi:TncProjectData
   element miradi:TncProjectDataRisks { formatted_text }?
 }
 
-WwfProjectData.element = element miradi:WwfProjectData
+WWFProjectData.element = element miradi:WWFProjectData
 {
-  WwfProjectDataCountriesContainer.element ? &
-  WwfProjectDataEcoRegionsContainer.element ? &
-  WwfProjectDataManagingOfficesContainer.element ? &
-  WwfProjectDataRegionsContainer.element ? &
-  element miradi:WwfProjectDataLabel { formatted_text }?
+  WWFProjectDataCountriesContainer.element ? &
+  WWFProjectDataEcoRegionsContainer.element ? &
+  WWFProjectDataManagingOfficesContainer.element ? &
+  WWFProjectDataRegionsContainer.element ? &
+  element miradi:WWFProjectDataLabel { formatted_text }?
 }
 
 WCSProjectData.element = element miradi:WCSProjectData
@@ -755,22 +755,22 @@ TncProjectDataTNCOrganizationalPrioritiesContainer.element = element miradi:TncP
 element miradi:code { vocabulary_tnc_organizational_priorities } *
 }
 
-WwfProjectDataManagingOfficesContainer.element = element miradi:WwfProjectDataManagingOfficesContainer
+WWFProjectDataManagingOfficesContainer.element = element miradi:WWFProjectDataManagingOfficesContainer
 {
 element miradi:code { vocabulary_wwf_managing_offices } *
 }
 
-WwfProjectDataRegionsContainer.element = element miradi:WwfProjectDataRegionsContainer
+WWFProjectDataRegionsContainer.element = element miradi:WWFProjectDataRegionsContainer
 {
 element miradi:code { vocabulary_wwf_regions } *
 }
 
-WwfProjectDataCountriesContainer.element = element miradi:WwfProjectDataCountriesContainer
+WWFProjectDataCountriesContainer.element = element miradi:WWFProjectDataCountriesContainer
 {
 element miradi:code { vocabulary_countries } *
 }
 
-WwfProjectDataEcoRegionsContainer.element = element miradi:WwfProjectDataEcoRegionsContainer
+WWFProjectDataEcoRegionsContainer.element = element miradi:WWFProjectDataEcoRegionsContainer
 {
 element miradi:code { vocabulary_wwf_ecoregions } *
 }

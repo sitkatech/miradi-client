@@ -56,7 +56,7 @@ public interface Xmpz2XmlConstants
 	public static final String PROJECT_SUMMARY_LOCATION = "ProjectLocation";
 	public static final String PROJECT_SUMMARY_PLANNING = "ProjectPlanning";
 	public static final String TNC_PROJECT_DATA = "TncProjectData";
-	public static final String WWF_PROJECT_DATA = "WwfProjectData";
+	public static final String WWF_PROJECT_DATA = "WWFProjectData";
 	public static final String WCS_PROJECT_DATA = "WCSProjectData";
 	public static final String RARE_PROJECT_DATA = "RareProjectData";
 	public static final String FOS_PROJECT_DATA = "FOSProjectData";
