@@ -275,6 +275,9 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 	
 	private ORefList keepObjectsThatAreInDiagram(DiagramObject diagram, final ORefList baseObjectRefs)
 	{
+		if (diagram == null)
+			return baseObjectRefs;
+		
 		ORefList itemRefsInDiagram = new ORefList();
 		for(ORef candidateRef : baseObjectRefs)
 		{

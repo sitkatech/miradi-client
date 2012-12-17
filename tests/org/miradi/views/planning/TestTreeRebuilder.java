@@ -36,19 +36,23 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 import org.miradi.questions.StrategyObjectiveTreeOrderQuestion;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
@@ -58,6 +62,23 @@ public class TestTreeRebuilder extends TestCaseWithProject
 	public TestTreeRebuilder(String name)
 	{
 		super(name);
+	}
+	
+	public void testTargetsAtTopLevel() throws Exception
+	{
+		Target target = getProject().createTarget();
+		Goal goal = getProject().createGoal(target);
+		DiagramFactor targetDiagramFactor = getProject().createAndAddFactorToDiagram(getProject().getMainDiagramObject(), target.getRef());
+		
+		Strategy strategy = getProject().createStrategy();
+		getProject().executeCommands(goal.createCommandsToEnsureStrategyOrActivityIsRelevant(strategy.getRef()));
+		DiagramFactor strategyDiagramFactor = getProject().createAndAddFactorToDiagram(getProject().getMainDiagramObject(), strategy.getRef());
+		getProject().createDiagramLink(strategyDiagramFactor, targetDiagramFactor);
+		
+		CodeList rowCodes = new CodeList();
+		rowCodes.add(TargetSchema.OBJECT_NAME);
+		
+		createAndBuildTree(rowCodes, StrategyObjectiveTreeOrderQuestion.OBJECTIVE_CONTAINS_STRATEGY_CODE, PlanningTreeTargetPositionQuestion.TARGET_NODES_TOP_OF_PLANNING_TREE_CODE);
 	}
 	
 	public void testObjectiveContainsStrategyNodes() throws Exception
@@ -270,10 +291,16 @@ public class TestTreeRebuilder extends TestCaseWithProject
 
 	private AbstractPlanningTreeNode createAndBuildTree(CodeList rowCodes, final String strategyObjeciveOrder) throws Exception
 	{
+		return createAndBuildTree(rowCodes, strategyObjeciveOrder, PlanningTreeTargetPositionQuestion.TARGET_NODES_CHILDREN_OF_DIAGRAM_OBJECTS_CODE);
+	}
+
+	public AbstractPlanningTreeNode createAndBuildTree(CodeList rowCodes, final String strategyObjeciveOrder, final String targetPositionCode) throws Exception
+	{
 		AbstractPlanningTreeNode rootNode = new PlanningTreeRootNodeAlwaysExpanded(getProject());
 		ObjectTreeTableConfiguration configuration = new ObjectTreeTableConfiguration(getObjectManager(), BaseId.INVALID);
 		configuration.setData(ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION, rowCodes.toString());
 		configuration.setData(ObjectTreeTableConfiguration.TAG_STRATEGY_OBJECTIVE_ORDER, strategyObjeciveOrder);
+		configuration.setData(ObjectTreeTableConfiguration.TAG_TARGET_NODE_POSITION, targetPositionCode);
 		CustomTablePlanningTreeRowColumnProvider rowColumnProvider = new CustomTablePlanningTreeRowColumnProvider(getProject(), configuration);
 		NormalTreeRebuilder rebuilder = new NormalTreeRebuilder(getProject(), rowColumnProvider);
 		rebuilder.rebuildTree(rootNode);
