@@ -54,6 +54,6 @@ public class PlanningTreeTargetPositionQuestion extends StaticChoiceQuestion
 		return code.equals(TARGET_NODES_TOP_OF_PLANNING_TREE_CODE);
 	}
 	
-	private static final String TARGET_NODES_CHILDREN_OF_DIAGRAM_OBJECTS_CODE = "";
+	public static final String TARGET_NODES_CHILDREN_OF_DIAGRAM_OBJECTS_CODE = "";
 	public static final String TARGET_NODES_TOP_OF_PLANNING_TREE_CODE = "TargetNodesTopOfPlanningTree";
 }
