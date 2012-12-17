@@ -31,7 +31,9 @@ import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
+import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2GroupedConstants;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class DiagramLinkImporter extends BaseObjectImporter
 {
@@ -52,16 +54,9 @@ public class DiagramLinkImporter extends BaseObjectImporter
 	@Override
 	public void postCreateFix(ORef ref, Node node) throws Exception
 	{
-		Node fromDiagramFactorIdNode = getImporter().getNode(node, getPoolName() + FROM_DIAGRAM_FACTOR_ID);
-		Node toDiagramFactorIdNode = getImporter().getNode(node, getPoolName() + TO_DIAGRAM_FACTOR_ID);
+		DiagramFactor fromDiagramFactor = getDiagramFactorForLinkEnd(node, FROM_DIAGRAM_FACTOR_ID);
+		DiagramFactor toDiagramFactor = getDiagramFactorForLinkEnd(node, TO_DIAGRAM_FACTOR_ID);
 		
-		DiagramFactorId fromId = new DiagramFactorId(fromDiagramFactorIdNode.getTextContent().trim());
-		DiagramFactorId toId = new DiagramFactorId(toDiagramFactorIdNode.getTextContent().trim());
-		
-		ORef fromDiagramFactorRef = new ORef(DiagramFactorSchema.getObjectType(), fromId);
-		ORef toDiagramFactorRef = new ORef(DiagramFactorSchema.getObjectType(), toId);
-		DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), fromDiagramFactorRef);
-		DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), toDiagramFactorRef);
 		ORef factorLinkRef = new ORef(ObjectType.FAKE, BaseId.INVALID);
 		if (!fromDiagramFactor.isGroupBoxFactor() && !toDiagramFactor.isGroupBoxFactor())
 		{
@@ -71,7 +66,42 @@ public class DiagramLinkImporter extends BaseObjectImporter
 		}
 		
 		getProject().setObjectData(ref, DiagramLink.TAG_WRAPPED_ID, factorLinkRef.getObjectId().toString());
-		getProject().setObjectData(ref, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, fromId.toString());
-		getProject().setObjectData(ref, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, toId.toString());
+		getProject().setObjectData(ref, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, fromDiagramFactor.getId().toString());
+		getProject().setObjectData(ref, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, toDiagramFactor.getId().toString());
+	}
+
+	private DiagramFactor getDiagramFactorForLinkEnd(Node node,	final String diagramFactorIdElementName) throws Exception
+	{
+		Node diagramFactorIdNode = getImporter().getNode(node, getPoolName() + diagramFactorIdElementName);
+		Node linkableNode = getImporter().getNode(diagramFactorIdNode, LINKABLE_FACTOR_ID);
+		Node factorNodeId = getFactorNodeId(linkableNode.getChildNodes());
+		DiagramFactorId diagramFactorId = new DiagramFactorId(factorNodeId.getTextContent().trim());
+		ORef diagramFactorRef = new ORef(DiagramFactorSchema.getObjectType(), diagramFactorId);
+		
+		return DiagramFactor.find(getProject(), diagramFactorRef);
+	}
+
+	private Node getFactorNodeId(NodeList childNodes) throws Exception
+	{
+		for (int index = 0; index < childNodes.getLength(); ++index)
+		{
+			Node node = childNodes.item(index);
+			if (isFactorNode(node))
+				return node;
+		}
+		
+		throw new Exception("Factor node Id not found");
+	}
+
+	private boolean isFactorNode(Node node)
+	{
+		String[] linkableFactorNames = Xmpz2GroupedConstants.getLinkableFactorNames();
+		for(String linkableFactorName : linkableFactorNames)
+		{
+			if (node.getNodeName().equals(PREFIX + linkableFactorName + ID))
+				return true;
+		}
+		
+		return false;
 	}
 }
