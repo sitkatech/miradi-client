@@ -34,7 +34,6 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.questions.DiagramFactorFontColorQuestion;
 import org.miradi.questions.DiagramFactorFontSizeQuestion;
-import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.questions.TextBoxZOrderQuestion;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramFactorSchema;
@@ -51,6 +50,7 @@ import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.StringUtilities;
 import org.miradi.xml.AbstractXmlImporter;
+import org.miradi.xml.generic.LegacyDiagramFactorFontStyleQuestion;
 import org.w3c.dom.Node;
 
 public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
@@ -77,7 +77,7 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 		Node diagramFactorSyleNode = getImporter().getNode(node, getPoolName() + STYLING);
 		Node style = getImporter().getNode(diagramFactorSyleNode, STYLING);
 		importCodeField(style, destinationRef, DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion());
-		importCodeField(style, destinationRef, DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion());
+		importCodeField(style, destinationRef, DiagramFactor.TAG_FONT_STYLE, new LegacyDiagramFactorFontStyleQuestion());
 		importCodeField(style, destinationRef, DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion());
 		importCodeField(style, destinationRef, DiagramFactor.TAG_BACKGROUND_COLOR, new DiagramFactorBackgroundQuestion());
 	}

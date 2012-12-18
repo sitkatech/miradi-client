@@ -29,8 +29,8 @@ import org.miradi.objects.Factor;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.questions.DiagramFactorFontColorQuestion;
 import org.miradi.questions.DiagramFactorFontSizeQuestion;
-import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.xml.generic.LegacyDiagramFactorFontStyleQuestion;
 
 public class DiagramFactorPoolExporter extends BaseObjectPoolExporter
 {
@@ -69,7 +69,7 @@ public class DiagramFactorPoolExporter extends BaseObjectPoolExporter
 		
 		getWcsXmlExporter().writeStartElement(STYLING);
 		writeOptionalCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion());
-		writeOptionalCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion());
+		writeOptionalCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_FONT_STYLE, new LegacyDiagramFactorFontStyleQuestion());
 		writeOptionalCodeElementSameAsTag(diagramFactor, DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion());
 		
 		Factor wrappedFactor = diagramFactor.getWrappedFactor();
