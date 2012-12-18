@@ -119,6 +119,7 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu(EAM.text("Menu|Export Current Project as..."));
 		menu.setMnemonic(KeyEvent.VK_R);
 		
+		addMenuItem(actions, menu, ActionExportMpf.class);
 		if (Miradi.isAlphaTesterMode())
 			addMenuItem(actions, menu, ActionExportXmpz2.class);
 		
