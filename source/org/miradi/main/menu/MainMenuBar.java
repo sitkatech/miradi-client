@@ -119,13 +119,14 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu(EAM.text("Menu|Export Current Project as..."));
 		menu.setMnemonic(KeyEvent.VK_R);
 		
-		addMenuItem(actions, menu, ActionExportCpmz.class, KeyEvent.VK_C);
-		addMenuItem(actions, menu, ActionExportXmpz.class, KeyEvent.VK_X);
-		addMenuItem(actions, menu, ActionExportWcsProjectZip.class);
 		if (Miradi.isAlphaTesterMode())
 			addMenuItem(actions, menu, ActionExportXmpz2.class);
-		addMenuItem(actions, menu, ActionExportMpz.class);
 		
+		menu.addSeparator();
+		addMenuItem(actions, menu, ActionExportCpmz.class, KeyEvent.VK_C);
+		addMenuItem(actions, menu, ActionExportMpz.class);
+		addMenuItem(actions, menu, ActionExportXmpz.class, KeyEvent.VK_X);
+		addMenuItem(actions, menu, ActionExportWcsProjectZip.class);
 		if(Miradi.isDemoMode())
 		{
 			menu.addSeparator();
