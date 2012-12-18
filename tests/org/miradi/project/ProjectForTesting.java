@@ -176,6 +176,7 @@ import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.schemas.WcsProjectDataSchema;
 import org.miradi.schemas.WwfProjectDataSchema;
 import org.miradi.schemas.XenodataSchema;
+import org.miradi.schemas.XslTemplateSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateRange;
@@ -1583,6 +1584,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createAndPopulateCategoryOne();
 		createAndPopulateCategoryTwo();
 		populateDashboard();
+		populateBaseObjectWithSampleData(createBaseObject(XslTemplateSchema.getObjectType()));
 	}
 	
 	public void populateBaseObjectWithSampleData(BaseObject baseObject) throws Exception
@@ -1613,6 +1615,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 		if (field.isFloatData())
 		{
 			return "1.2";
+		}
+		if (field.isBooleanData())
+		{
+			return BooleanData.BOOLEAN_TRUE;
 		}
 		if (field.isMultiLineUserText())
 		{
