@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-18 14:16-0600\n"
+"POT-Creation-Date: 2012-12-18 16:46-0600\n"
 "PO-Revision-Date: 2011-03-17 08:35-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -4719,11 +4719,11 @@ msgstr ""
 msgid "Medium (Default)"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:248
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:246
 msgid "MenuBar|Actions"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:178
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:176
 msgid "MenuBar|Edit"
 msgstr ""
 
@@ -4731,15 +4731,15 @@ msgstr ""
 msgid "MenuBar|File"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:579
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:577
 msgid "MenuBar|Help"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:511
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:509
 msgid "MenuBar|Step-by-Step"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:440
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:438
 msgid "MenuBar|View"
 msgstr ""
 
@@ -4767,7 +4767,7 @@ msgstr ""
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:144
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:142
 msgid "Menu|Export Current Page as..."
 msgstr ""
 
@@ -4776,11 +4776,11 @@ msgid "Menu|Export Current Project as..."
 msgstr ""
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:282
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:428
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:426
 msgid "Menu|Group Box"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:157
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:155
 msgid "Menu|Import"
 msgstr ""
 
