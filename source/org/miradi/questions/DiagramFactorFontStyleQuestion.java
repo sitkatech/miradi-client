@@ -39,8 +39,55 @@ public class DiagramFactorFontStyleQuestion extends StaticChoiceQuestion
 		};
 	}
 	
+	@Override
+	protected boolean hasReadableAlternativeDefaultCode()
+	{
+		return true;
+	}
+	
+	@Override
+	public String convertToReadableCode(String code)
+	{
+		if (code.equals(PLAIN_CODE))
+			return PLAIN_CODE;
+		
+		if (code.equals(BOLD_CODE))
+			return HUMAN_READABLE_BOLD_CODE;
+		
+		if (code.equals(UNDERLINE_CODE))
+			return HUMAN_READABLE_UNDERLINE_CODE;
+		
+		if (code.equals(STRIKE_THROUGH_CODE))
+			return HUMAN_READABLE_STRIKE_THROUGH_CODE;
+		
+		return super.convertToReadableCode(code);
+	}
+	
+	@Override
+	public String convertToInternalCode(String code)
+	{
+		if (code.equals(PLAIN_CODE))
+			return PLAIN_CODE;
+		
+		if (code.equals(HUMAN_READABLE_BOLD_CODE))
+			return BOLD_CODE;
+		
+		if (code.equals(HUMAN_READABLE_UNDERLINE_CODE))
+			return UNDERLINE_CODE;
+		
+		if (code.equals(HUMAN_READABLE_STRIKE_THROUGH_CODE))
+			return STRIKE_THROUGH_CODE;
+
+		return super.convertToInternalCode(code);
+	}
+	
 	public static final String PLAIN_CODE = "";
 	public static final String BOLD_CODE = "<B>";
 	public static final String UNDERLINE_CODE = "<U>";
 	public static final String STRIKE_THROUGH_CODE = "<S>";
+	
+	public static final String HUMAN_READABLE_BOLD_CODE = "Bold";
+	public static final String HUMAN_READABLE_UNDERLINE_CODE = "Underline";
+	public static final String HUMAN_READABLE_STRIKE_THROUGH_CODE = "StrikeThrough";
+
 }

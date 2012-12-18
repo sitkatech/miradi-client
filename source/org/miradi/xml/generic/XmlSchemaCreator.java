@@ -42,7 +42,6 @@ import org.miradi.questions.DashboardFlagsQuestion;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.questions.DiagramFactorFontColorQuestion;
 import org.miradi.questions.DiagramFactorFontSizeQuestion;
-import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.questions.DiagramLinkColorQuestion;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.FiscalYearStartQuestion;
@@ -121,7 +120,7 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 		defineVocabulary(writer, VOCABULARY_RESOURCE_ROLE_CODES, new ResourceRoleQuestion());
 		defineVocabulary(writer, VOCABULARY_HIDDEN_TYPES, new LegacyDiagramLegendQuestion());
 		defineVocabulary(writer, VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE, new DiagramFactorFontSizeQuestion());
-		defineVocabulary(writer, VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE, new DiagramFactorFontStyleQuestion());
+		defineVocabulary(writer, VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE, new LegacyDiagramFactorFontStyleQuestion());
 		defineVocabulary(writer, VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR, new DiagramFactorBackgroundQuestion());
 		defineVocabulary(writer, VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion());
 		defineVocabulary(writer, VOCABULARY_DIAGRAM_LINK_COLOR, new DiagramLinkColorQuestion());
