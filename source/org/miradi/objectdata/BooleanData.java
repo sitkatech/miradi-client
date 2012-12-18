@@ -27,11 +27,17 @@ import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2XmlSchemaCreator;
 import org.w3c.dom.Node;
 
-public class BooleanData extends IntegerData
+public class BooleanData extends AbstractIntegerData
 {
 	public BooleanData(String tagToUse)
 	{
 		super(tagToUse);
+	}
+	
+	@Override
+	public boolean isBooleanData()
+	{
+		return true;
 	}
 	
 	public boolean asBoolean()

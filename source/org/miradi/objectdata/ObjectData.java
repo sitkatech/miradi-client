@@ -156,6 +156,11 @@ abstract public class ObjectData
 		return false;
 	}
 	
+	public boolean isBooleanData()
+	{
+		return false;
+	}
+	
 	public boolean isCodeData()
 	{
 		return false;
