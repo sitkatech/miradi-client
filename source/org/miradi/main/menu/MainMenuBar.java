@@ -120,9 +120,7 @@ public class MainMenuBar extends JMenuBar
 		menu.setMnemonic(KeyEvent.VK_R);
 		
 		addMenuItem(actions, menu, ActionExportMpf.class);
-		if (Miradi.isAlphaTesterMode())
-			addMenuItem(actions, menu, ActionExportXmpz2.class);
-		
+		addMenuItem(actions, menu, ActionExportXmpz2.class);
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionExportCpmz.class, KeyEvent.VK_C);
 		addMenuItem(actions, menu, ActionExportMpz.class);
