@@ -32,12 +32,15 @@ public class DiagramFactorFontStyleQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getStyleChoices()
 	{
 		return new ChoiceItem[] {
-			new ChoiceItem("", EAM.text("Plain (Default)")),
+			new ChoiceItem(PLAIN_CODE, EAM.text("Plain (Default)")),
 			new ChoiceItem(BOLD_CODE, EAM.text("Bold")),
-			new ChoiceItem("<U>", EAM.text("Underline")),
-			new ChoiceItem("<S>", EAM.text("Strike through")),
+			new ChoiceItem(UNDERLINE_CODE, EAM.text("Underline")),
+			new ChoiceItem(STRIKE_THROUGH_CODE, EAM.text("Strike through")),
 		};
 	}
 	
+	public static final String PLAIN_CODE = "";
 	public static final String BOLD_CODE = "<B>";
+	public static final String UNDERLINE_CODE = "<U>";
+	public static final String STRIKE_THROUGH_CODE = "<S>";
 }
