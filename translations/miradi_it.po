@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-14 13:46-0600\n"
+"POT-Creation-Date: 2012-12-17 19:01-0600\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -1647,6 +1647,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExportMpz.java:35
 msgid "Action|Miradi 3.3 MPZ Project File"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionExportMpf.java:35
+msgid "Action|Miradi Project"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/views/ActionViewMonitoring.java:35
@@ -3574,6 +3578,10 @@ msgstr "Esporta"
 msgid "Export MPZ"
 msgstr ""
 
+#: Miradi/source/org/miradi/views/umbrella/ExportMpfDoer.java:50
+msgid "Export Miradi Project"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:50
 msgid "Export Project (BETA)"
 msgstr "Esporta il progetto(BETA)"
@@ -5009,11 +5017,11 @@ msgstr "Medio"
 msgid "Medium (Default)"
 msgstr "Medio(predefinito)"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:246
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:248
 msgid "MenuBar|Actions"
 msgstr "Azioni"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:176
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:178
 msgid "MenuBar|Edit"
 msgstr "Modifica"
 
@@ -5021,15 +5029,15 @@ msgstr "Modifica"
 msgid "MenuBar|File"
 msgstr "File"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:577
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:579
 msgid "MenuBar|Help"
 msgstr "Aiuto"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:509
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:511
 msgid "MenuBar|Step-by-Step"
 msgstr "Passo passo"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:438
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:440
 msgid "MenuBar|View"
 msgstr "Visualizza"
 
@@ -5057,7 +5065,7 @@ msgstr "5. Impara la lezione e condividi"
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Aggiungi Etichetta alla selezione"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:142
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:144
 msgid "Menu|Export Current Page as..."
 msgstr "Esporta la pagina corrente come..."
 
@@ -5066,11 +5074,11 @@ msgid "Menu|Export Current Project as..."
 msgstr "Esporta il progetto come...."
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:282
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:426
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:428
 msgid "Menu|Group Box"
 msgstr "Blocco gruppo"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:155
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:157
 msgid "Menu|Import"
 msgstr "Importa"
 
@@ -7081,6 +7089,10 @@ msgstr "Estendi al Target di Conservazione"
 #: Miradi/source/org/miradi/actions/ActionExpandToMenu.java:41
 msgid "TT|Expand To Type"
 msgstr "Estendi al Tipo"
+
+#: Miradi/source/org/miradi/actions/ActionExportMpf.java:41
+msgid "TT|Export a .Miradi file"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExportMpz.java:41
 msgid "TT|Export a .mpz file"
