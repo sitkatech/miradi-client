@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-17 19:01-0600\n"
+"POT-Creation-Date: 2012-12-18 14:16-0600\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -2462,6 +2462,7 @@ msgid "Black (Default)"
 msgstr "Preto (Default)"
 
 #: Miradi/source/org/miradi/questions/DiagramFactorFontStyleQuestion.java:36
+#: Miradi/source/org/miradi/xml/generic/LegacyDiagramFactorFontStyleQuestion.java:38
 #: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:60
 msgid "Bold"
 msgstr "Negrito"
@@ -5710,6 +5711,7 @@ msgid "Placeholder - From ConPro"
 msgstr "Espaço Reservado - de ConPro"
 
 #: Miradi/source/org/miradi/questions/DiagramFactorFontStyleQuestion.java:35
+#: Miradi/source/org/miradi/xml/generic/LegacyDiagramFactorFontStyleQuestion.java:37
 msgid "Plain (Default)"
 msgstr "Simples (Default)"
 
@@ -6737,6 +6739,7 @@ msgid "Strike"
 msgstr "Pressionar"
 
 #: Miradi/source/org/miradi/questions/DiagramFactorFontStyleQuestion.java:38
+#: Miradi/source/org/miradi/xml/generic/LegacyDiagramFactorFontStyleQuestion.java:40
 msgid "Strike through"
 msgstr "Riscar"
 
@@ -8574,6 +8577,7 @@ msgid "Undefined"
 msgstr "Sem definição"
 
 #: Miradi/source/org/miradi/questions/DiagramFactorFontStyleQuestion.java:37
+#: Miradi/source/org/miradi/xml/generic/LegacyDiagramFactorFontStyleQuestion.java:39
 #: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:62
 msgid "Underline"
 msgstr "Sublinhar"
