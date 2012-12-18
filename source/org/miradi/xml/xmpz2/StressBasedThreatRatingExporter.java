@@ -24,7 +24,6 @@ import java.util.Collections;
 import java.util.Vector;
 
 import org.miradi.diagram.ThreatTargetChainWalker;
-import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatTargetTableModel;
 import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
 import org.miradi.objecthelpers.BaseObjectByRefSorter;
 import org.miradi.objecthelpers.ORef;
@@ -40,8 +39,6 @@ import org.miradi.project.Project;
 import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.ThreatRatingModeChoiceQuestion;
-import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.questions.ThreatStressRatingChoiceQuestion;
 import org.miradi.utils.ThreatStressRatingDetailsTableExporter;
 
@@ -98,19 +95,9 @@ public class StressBasedThreatRatingExporter implements Xmpz2XmlConstants
 				exportTargetId(targetRef);
 				exportStressBasedRatingComment(threatRef, targetRef);
 				exportStressBasedThreatRatingDetails(target, stress, threat);
-				exportThreatRating(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE, targetRef, threatRef);
 				getWriter().writeEndElement(getParentElementName());
 			}
 		}
-	}
-
-	private void exportThreatRating(String threatRatingMode, ORef targetRef, ORef threatRef) throws Exception
-	{
-		ThreatTargetVirtualLinkHelper threatTargetVirtualLink = new ThreatTargetVirtualLinkHelper(getProject());
-		int calculatedValue = threatTargetVirtualLink.calculateThreatRatingBundleValue(threatRatingMode, threatRef, targetRef);
-		String threatRatingCode = AbstractThreatTargetTableModel.convertIntToString(calculatedValue);
-		final ChoiceQuestion threatRatingQuestion = getProject().getQuestion(ThreatRatingQuestion.class);
-		getWriter().writeNonOptionalCodeElement(getParentElementName(), CALCULATED_RATING, threatRatingQuestion, threatRatingCode);
 	}
 
 	private void exportStressBasedThreatRatingDetails(Target target, Stress stress, Cause threat) throws Exception
@@ -134,7 +121,7 @@ public class StressBasedThreatRatingExporter implements Xmpz2XmlConstants
 		int rawThreatStressRating = virtualLink.calculateStressBasedThreatRating(threatRef, targetRef);
 		String safeThreatRatingCode = ThreatRatingFramework.getSafeThreatRatingCode(rawThreatStressRating);
 		ChoiceQuestion question = getProject().getQuestion(ThreatStressRatingChoiceQuestion.class);
-		exportStressBasedThreatRatingCode(CALCULATED_THREAT_STRESS_RATING, question.findChoiceByCode(safeThreatRatingCode));
+		exportStressBasedThreatRatingCode(CALCULATED_RATING, question.findChoiceByCode(safeThreatRatingCode));
 	}
 
 	private void exportStressBasedThreatRatingCode(String elementName, ChoiceItem rating) throws Exception

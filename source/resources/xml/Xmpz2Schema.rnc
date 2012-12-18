@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Fri Dec 14 18:01:57 EST 2012 $
+# $LastChangedDate: Tue Dec 18 09:50:17 EST 2012 $
 # $LastChangedRevision: 216 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/216'
 start = ConservationProject.element
@@ -704,7 +704,6 @@ StressBasedThreatRating.element = element miradi:StressBasedThreatRating
   element miradi:StressBasedThreatRatingContributionRating { vocabulary_contribution_rating }? &
   element miradi:StressBasedThreatRatingIrreversibilityRating { vocabulary_irreversibility_rating }? &
   element miradi:StressBasedThreatRatingIsActive { xsd:boolean }? &
-  element miradi:StressBasedThreatRatingCalculatedThreatStressRating { vocabulary_threat_rating }? &
   element miradi:StressBasedThreatRatingCalculatedRating { vocabulary_threat_rating }? &
   element miradi:StressBasedThreatRatingComments { formatted_text }?
 }
