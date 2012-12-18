@@ -42,8 +42,8 @@ public class ObjectReadonlyChoiceField extends ObjectDataInputField
 	public ObjectReadonlyChoiceField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
-		question = questionToUse;
 		
+		question = questionToUse;
 		component = new PanelTitleLabel("");
 		Border lineBorder = new LineBorder(Color.BLACK);
 		Border emptyBorder = new EmptyBorder(3, 3, 3, 3);
