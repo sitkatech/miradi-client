@@ -36,7 +36,6 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
-import org.miradi.utils.CodeList;
 import org.miradi.utils.LocationHolder;
 import org.miradi.utils.ObjectsActionButton;
 
@@ -86,14 +85,6 @@ abstract public class LegendPanel extends DisposablePanel implements ActionListe
 		return checkBox.isSelected();
 	}
 
-	protected void createCheckboxes(CodeList checkBoxCodes)
-	{
-		for (int i = 0; i < checkBoxCodes.size(); ++i)
-		{
-			createCheckBox(checkBoxCodes.get(i));
-		}
-	}
-	
 	protected void createCheckBox(String objectName)
 	{
 		JCheckBox component = new PanelCheckBox();
