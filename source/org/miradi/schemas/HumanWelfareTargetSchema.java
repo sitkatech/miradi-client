@@ -47,4 +47,5 @@ public class HumanWelfareTargetSchema extends AbstractTargetSchema
 	}
 	
 	public static final String OBJECT_NAME = "HumanWellbeingTarget";
+	public static final String LEGACY_OBJECT_NAME = "HumanWelfareTarget";
 }
