@@ -22,6 +22,7 @@ package org.miradi.xml;
 
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AbstractTarget;
@@ -60,12 +61,13 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	public void testStrategyCalculatedCostElement() throws Exception
 	{
 		Strategy strategy = getProject().createStrategy();
-		getProject().addExpenseWithValue(strategy);
 		
 		ResourceAssignment resourceAssignmentWithJustOneResource = getProject().createResourceAssignment();
 		ProjectResource projectResource = getProject().createAndPopulateProjectResource();
 		getProject().fillObjectUsingCommand(resourceAssignmentWithJustOneResource, ResourceAssignment.TAG_RESOURCE_ID, projectResource.getId().toString());
 		addEmptyDateUnitEffortList(strategy, resourceAssignmentWithJustOneResource);
+		
+		getProject().addResourceAssignment(strategy, 1.0, new DateUnit());
 		
 		validateUsingStringWriter();
 	}
