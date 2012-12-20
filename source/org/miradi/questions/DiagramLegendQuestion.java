@@ -51,7 +51,7 @@ public class DiagramLegendQuestion extends StaticChoiceQuestion
 				new ChoiceItem(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, Cause.OBJECT_NAME_CONTRIBUTING_FACTOR),
 				new ChoiceItem(Cause.OBJECT_NAME_THREAT, Cause.OBJECT_NAME_THREAT),
 				new ChoiceItem(TargetSchema.OBJECT_NAME, TargetSchema.OBJECT_NAME),
-				new ChoiceItem(HumanWelfareTargetSchema.LEGACY_OBJECT_NAME, HumanWelfareTargetSchema.OBJECT_NAME),
+				new ChoiceItem(HumanWelfareTargetSchema.OBJECT_NAME, HumanWelfareTargetSchema.OBJECT_NAME),
 				new ChoiceItem(FactorLinkSchema.OBJECT_NAME, FactorLinkSchema.OBJECT_NAME),
 				new ChoiceItem(GoalSchema.OBJECT_NAME, GoalSchema.OBJECT_NAME),
 				new ChoiceItem(ObjectiveSchema.OBJECT_NAME, ObjectiveSchema.OBJECT_NAME),
@@ -64,6 +64,24 @@ public class DiagramLegendQuestion extends StaticChoiceQuestion
 				new ChoiceItem(ThreatReductionResultSchema.OBJECT_NAME, ThreatReductionResultSchema.OBJECT_NAME),
 				new ChoiceItem(GroupBoxSchema.OBJECT_NAME, GroupBoxSchema.OBJECT_NAME),
 		};
+	}
+	
+	@Override
+	public String convertToReadableCode(String code)
+	{
+		if (code.equals(HumanWelfareTargetSchema.OBJECT_NAME))
+			return HumanWelfareTargetSchema.HUMAN_WELLBEING_TARGET;
+		
+		return super.convertToReadableCode(code);
+	}
+	
+	@Override
+	public String convertToInternalCode(String code)
+	{
+		if (code.equals(HumanWelfareTargetSchema.HUMAN_WELLBEING_TARGET))
+			return HumanWelfareTargetSchema.OBJECT_NAME;
+		
+		return super.convertToInternalCode(code);
 	}
 
 	public static final String STRESS_HIDDEN_TYPE_CODE = StressSchema.OBJECT_NAME;

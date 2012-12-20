@@ -46,6 +46,12 @@ public class HumanWelfareTargetSchema extends AbstractTargetSchema
 		return OBJECT_NAME;
 	}
 	
-	public static final String OBJECT_NAME = "HumanWellbeingTarget";
-	public static final String LEGACY_OBJECT_NAME = "HumanWelfareTarget";
+	@Override
+	public String getXmpz2ElementName()
+	{
+		return HUMAN_WELLBEING_TARGET;
+	}
+	
+	public static final String OBJECT_NAME = "HumanWelfareTarget";
+	public static final String HUMAN_WELLBEING_TARGET = "HumanWellbeingTarget";
 }
