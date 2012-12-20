@@ -23,6 +23,7 @@ package org.miradi.xml.xmpz2.objectImporters;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
+import org.miradi.schemas.ReportTemplateSchema;
 import org.miradi.schemas.TableSettingsSchema;
 import org.miradi.schemas.ViewDataSchema;
 import org.miradi.schemas.XslTemplateSchema;
@@ -96,6 +97,9 @@ public class Xmpz2ExtraDataImporter extends AbstractXmpz2ObjectImporter
 		
 		if (typeName.equals(XslTemplateSchema.OBJECT_NAME))
 			return XslTemplateSchema.getObjectType();
+		
+		if (typeName.equals(ReportTemplateSchema.OBJECT_NAME))
+			return ReportTemplateSchema.getObjectType();
 		
 		throw new RuntimeException("Object type name is not recognized as type, " + typeName);
 	}

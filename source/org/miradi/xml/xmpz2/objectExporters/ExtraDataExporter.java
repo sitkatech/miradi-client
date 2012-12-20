@@ -23,6 +23,7 @@ package org.miradi.xml.xmpz2.objectExporters;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
+import org.miradi.schemas.ReportTemplateSchema;
 import org.miradi.schemas.TableSettingsSchema;
 import org.miradi.schemas.ViewDataSchema;
 import org.miradi.schemas.XslTemplateSchema;
@@ -46,6 +47,7 @@ public class ExtraDataExporter implements Xmpz2XmlConstants
 		exportPool(ViewDataSchema.getObjectType());
 		exportPool(TableSettingsSchema.getObjectType());
 		exportPool(XslTemplateSchema.getObjectType());
+		exportPool(ReportTemplateSchema.getObjectType());
 		getWriter().writeEndElement(EXTRA_DATA_SECTION);
 		getWriter().writeEndElement(EXTRA_DATA);
 	}

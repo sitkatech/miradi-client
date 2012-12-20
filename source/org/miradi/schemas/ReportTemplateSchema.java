@@ -22,17 +22,13 @@ package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ReportTemplate;
-import org.miradi.project.Project;
-import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ReportTemplateContentQuestion;
 
 public class ReportTemplateSchema extends BaseObjectSchema
 {
-	public ReportTemplateSchema(final Project projectToUse)
+	public ReportTemplateSchema()
 	{
 		super();
-		
-		project = projectToUse;
 	}
 	
 	@Override
@@ -41,14 +37,8 @@ public class ReportTemplateSchema extends BaseObjectSchema
 		super.fillFieldSchemas();
 		
 		createFieldSchemaSingleLineUserText(ReportTemplate.TAG_SHORT_LABEL);
-		ChoiceQuestion reportContentsQuestion = new ReportTemplateContentQuestion(getProject());
-		createFieldSchemaCodeList(ReportTemplate.TAG_INCLUDE_SECTION_CODES, reportContentsQuestion);
+		createFieldSchemaCodeList(ReportTemplate.TAG_INCLUDE_SECTION_CODES, new ReportTemplateContentQuestion(null));
 		createFieldSchemaMultiLineUserText(ReportTemplate.TAG_COMMENTS);
-	}
-	
-	private Project getProject()
-	{
-		return project;
 	}
 	
 	public static int getObjectType()
@@ -67,7 +57,6 @@ public class ReportTemplateSchema extends BaseObjectSchema
 	{
 		return OBJECT_NAME;
 	}
-
-	private Project project;
+	
 	public static final String OBJECT_NAME = "ReportTemplate";
 }
