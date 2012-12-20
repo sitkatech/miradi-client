@@ -51,7 +51,7 @@ public class DiagramLegendQuestion extends StaticChoiceQuestion
 				new ChoiceItem(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, Cause.OBJECT_NAME_CONTRIBUTING_FACTOR),
 				new ChoiceItem(Cause.OBJECT_NAME_THREAT, Cause.OBJECT_NAME_THREAT),
 				new ChoiceItem(TargetSchema.OBJECT_NAME, TargetSchema.OBJECT_NAME),
-				new ChoiceItem(HumanWelfareTargetSchema.OBJECT_NAME, HumanWelfareTargetSchema.OBJECT_NAME),
+				new ChoiceItem(HumanWelfareTargetSchema.LEGACY_OBJECT_NAME, HumanWelfareTargetSchema.OBJECT_NAME),
 				new ChoiceItem(FactorLinkSchema.OBJECT_NAME, FactorLinkSchema.OBJECT_NAME),
 				new ChoiceItem(GoalSchema.OBJECT_NAME, GoalSchema.OBJECT_NAME),
 				new ChoiceItem(ObjectiveSchema.OBJECT_NAME, ObjectiveSchema.OBJECT_NAME),

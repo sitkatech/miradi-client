@@ -143,7 +143,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	{
 		createCheckBox(ScopeBoxSchema.OBJECT_NAME);
 		createCheckBox(TargetSchema.OBJECT_NAME);
-		createCheckBox(HumanWelfareTargetSchema.OBJECT_NAME);
+		createCheckBox(HumanWelfareTargetSchema.LEGACY_OBJECT_NAME);
 		
 		createCheckBox(Cause.OBJECT_NAME_THREAT);
 		createCheckBox(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR);
@@ -175,7 +175,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		
 		addButtonLineWithCheckBox(jpanel, TargetSchema.getObjectType(), TargetSchema.OBJECT_NAME, actions.get(ActionInsertTarget.class));
 		if (getProject().getMetadata().isHumanWelfareTargetMode())
-			addButtonLineWithCheckBox(jpanel, HumanWelfareTargetSchema.getObjectType(), HumanWelfareTargetSchema.OBJECT_NAME, actions.get(ActionInsertHumanWelfareTarget.class));
+			addButtonLineWithCheckBox(jpanel, HumanWelfareTargetSchema.getObjectType(), HumanWelfareTargetSchema.LEGACY_OBJECT_NAME, actions.get(ActionInsertHumanWelfareTarget.class));
 		
 		createCustomLegendPanelSection(actions, jpanel);
 		
