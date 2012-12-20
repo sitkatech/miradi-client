@@ -29,7 +29,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 
-public class ReportTemplateContentQuestion extends DynamicChoiceQuestion
+public class ReportTemplateContentQuestion extends ProjectBasedDynamicQuestion
 {
 	public ReportTemplateContentQuestion(Project projectToUse)
 	{

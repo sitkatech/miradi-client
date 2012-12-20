@@ -33,7 +33,7 @@ import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 
-public class PlanningViewSingleLevelQuestion extends DynamicChoiceQuestion
+public class PlanningViewSingleLevelQuestion extends ProjectBasedDynamicQuestion
 {
 	public PlanningViewSingleLevelQuestion(Project projectToUse)
 	{
