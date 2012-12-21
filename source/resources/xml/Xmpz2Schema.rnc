@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Dec 20 18:57:06 EST 2012 $
+# $LastChangedDate: Fri Dec 21 18:10:36 EST 2012 $
 # $LastChangedRevision: 216 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/216'
 start = ConservationProject.element
@@ -688,7 +688,7 @@ SimpleThreatRating.element = element miradi:SimpleThreatRating
 {
   element miradi:SimpleThreatRatingTargetId { BiodiversityTargetId.element } &
   element miradi:SimpleThreatRatingThreatId { ThreatId.element } &
-  element miradi:SimpleThreatRatingCalculatedRating { vocabulary_threat_rating }? &
+  element miradi:SimpleThreatRatingCalculatedThreatTargetRating { vocabulary_threat_rating }? &
   element miradi:SimpleThreatRatingScopeRating { vocabulary_simple_threat_rating_scope_code }? &
   element miradi:SimpleThreatRatingSeverityRating { vocabulary_severity_rating }? &
   element miradi:SimpleThreatRatingIrreversibilityRating { vocabulary_irreversibility_rating }? &
