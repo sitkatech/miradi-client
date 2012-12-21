@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-20 18:31-0600\n"
+"POT-Creation-Date: 2012-12-21 17:31-0600\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -4273,11 +4273,11 @@ msgstr "Implementar o plano de trabalho"
 msgid "Import"
 msgstr "Importar"
 
-#: Miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:59
+#: Miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:60
 msgid "Import Accounting Codes"
 msgstr "Importar Códigos Contabilísticos"
 
-#: Miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:73
+#: Miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:74
 msgid "Import Completed"
 msgstr "Importação concluida"
 
@@ -7944,6 +7944,13 @@ msgid ""
 "Do you want to continue with XMPZ export that may lose data?"
 msgstr ""
 
+#: Miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:58
+msgid ""
+"The file containing Accounting Codes must have each code on a line by "
+"itself,\n"
+" with the code first, and then a description, separated by a TAB character"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:72
 msgid ""
 "The image is too large to be exported.\n"
@@ -8544,7 +8551,7 @@ msgstr ""
 msgid "Unable to launch external web browser"
 msgstr "Não é possível lançar o navegador (web browser) externo"
 
-#: Miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:77
+#: Miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:78
 msgid "Unable to process file: verify file format"
 msgstr "Não é possível processar o arquivo: verifique o formato do arquivo"
 
