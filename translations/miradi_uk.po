@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-20 16:01-0600\n"
+"POT-Creation-Date: 2012-12-20 18:31-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -2335,6 +2335,7 @@ msgid "Biodiversity Features"
 msgstr "Характеристики біорізноманіття"
 
 #: Miradi/source/org/miradi/questions/ScopeBoxTypeQuestion.java:58
+#: Miradi/source/org/miradi/xml/generic/LegacyScopeBoxTypeQuestion.java:60
 msgid "Biodiversity Target"
 msgstr ""
 
@@ -3985,6 +3986,7 @@ msgstr "Зацікавлені сторони"
 
 #: Miradi/source/org/miradi/forms/HumanWelfareTargetPropertiesForm.java:34
 #: Miradi/source/org/miradi/questions/ScopeBoxTypeQuestion.java:59
+#: Miradi/source/org/miradi/xml/generic/LegacyScopeBoxTypeQuestion.java:61
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:51
 msgid "Human Wellbeing Target"
 msgstr ""
@@ -10289,7 +10291,7 @@ msgstr ""
 msgid "FieldLabel|51.ExpenseAssignment|Expense"
 msgstr "FieldLabel|51.ExpenseAssignment|Витрати"
 
-msgid "FieldLabel|52.HumanWellbeingTarget|Human Wellbeing Target"
+msgid "FieldLabel|52.HumanWelfareTarget|Human Wellbeing Target"
 msgstr ""
 
 msgid "FieldLabel|52.ShortLabel|ID"
