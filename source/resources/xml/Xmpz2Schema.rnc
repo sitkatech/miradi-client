@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Tue Dec 18 14:30:18 EST 2012 $
+# $LastChangedDate: Thu Dec 20 18:57:06 EST 2012 $
 # $LastChangedRevision: 216 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/216'
 start = ConservationProject.element
@@ -820,7 +820,7 @@ vocabulary_quarter_columns_visibility = 'ShowQuarterColumns'|'HideQuarterColumns
 vocabulary_rating_source = ''|'RoughGuess'|'ExpertKnowlege'|'ExternalResearch'|'OnsiteResearch'
 vocabulary_resource_role_codes = 'TeamMember'|'Contact'|'Leader'|'Facilitator'|'Advisor'|'Stakeholder'
 vocabulary_resource_type = 'Person'|'Group'
-vocabulary_scope_box_type = 'Biodiversity'|'HumanWelfare'
+vocabulary_scope_box_type = 'Biodiversity'|'HumanWellbeing'
 vocabulary_simple_threat_rating_scope_code = ''|'1'|'2'|'3'|'4'
 vocabulary_measurement_status_confidence = ''|'RoughGuess'|'ExpertKnowledge'|'RapidAssessment'|'IntensiveAssessment'
 vocabulary_status = ''|'1'|'2'|'3'|'4'

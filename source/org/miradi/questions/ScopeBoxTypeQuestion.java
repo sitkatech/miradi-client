@@ -103,6 +103,6 @@ public class ScopeBoxTypeQuestion extends DynamicChoiceQuestion
 	public static final String HUMAN_WELFARE_TARGET_CODE = "HumanWelfareTargetBrown";
 	
 	public static final String READABLE_BIODIVERSITY_CODE = "Biodiversity";
-	public static final String READABLE_HUMAN_WELFARE_CODE = "HumanWelfare";
+	public static final String READABLE_HUMAN_WELFARE_CODE = "HumanWellbeing";
 	
 }
