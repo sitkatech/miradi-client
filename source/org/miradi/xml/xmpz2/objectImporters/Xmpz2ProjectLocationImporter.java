@@ -21,6 +21,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2.objectImporters;
 
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.questions.CountriesQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 
@@ -36,7 +38,7 @@ public class Xmpz2ProjectLocationImporter extends AbstractXmpz2ObjectImporter
 		Node projectSummaryLocationNode = getImporter().getNode(getImporter().getRootNode(), PROJECT_SUMMARY_LOCATION);
 		
 		importGeospatialLocationField(projectSummaryLocationNode);		
-		getImporter().importCodeListField(projectSummaryLocationNode, PROJECT_SUMMARY_LOCATION, getMetadataRef(), ProjectMetadata.TAG_COUNTRIES);
+		getImporter().importCodeListField(projectSummaryLocationNode, PROJECT_SUMMARY_LOCATION, getMetadataRef(), ProjectMetadata.TAG_COUNTRIES, StaticQuestionManager.getQuestion(CountriesQuestion.class));
 		importProjectMetadataField(projectSummaryLocationNode, ProjectMetadata.TAG_STATE_AND_PROVINCES);
 		importProjectMetadataField(projectSummaryLocationNode, ProjectMetadata.TAG_MUNICIPALITIES);
 		importProjectMetadataField(projectSummaryLocationNode, ProjectMetadata.TAG_LEGISLATIVE_DISTRICTS);

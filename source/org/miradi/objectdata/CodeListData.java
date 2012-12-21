@@ -52,13 +52,13 @@ public class CodeListData extends AbstractStringListData
 	@Override
 	public void writeAsXmpz2XmlData(Xmpz2XmlWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		writer.writeCodeListData(baseObjectSchema, fieldSchema, get());
+		writer.writeCodeListData(baseObjectSchema, fieldSchema, getChoiceQuestion(), get());
 	}
 	
 	@Override
 	public void readAsXmpz2XmlData(Xmpz2XmlImporter importer, Node node, ORef destinationRefToUse, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		importer.importCodeListField(node, baseObjectSchema.getXmpz2ElementName(), destinationRefToUse, fieldSchema.getTag());
+		importer.importCodeListField(node, baseObjectSchema.getXmpz2ElementName(), destinationRefToUse, fieldSchema.getTag(), getChoiceQuestion());
 	}
 
 	@Override

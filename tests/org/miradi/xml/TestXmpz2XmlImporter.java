@@ -26,6 +26,7 @@ import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AbstractTarget;
+import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Goal;
 import org.miradi.objects.HumanWelfareTarget;
@@ -33,6 +34,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
+import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
@@ -41,6 +43,9 @@ import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
+import org.miradi.schemas.HumanWelfareTargetSchema;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.PointList;
@@ -56,6 +61,22 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	public TestXmpz2XmlImporter(String name)
 	{
 		super(name);
+	}
+
+	public void testHumanWellbeignTargergetAsHiddenType() throws Exception
+	{
+		CodeList hiddenTypeCodes = new CodeList();
+		hiddenTypeCodes.add(HumanWelfareTargetSchema.OBJECT_NAME);
+		getProject().fillObjectUsingCommand(getProject().getMainDiagramObject().getRef(), ResultsChainDiagram.TAG_HIDDEN_TYPES, hiddenTypeCodes.toString());
+		ProjectForTesting projectForTesting = validateUsingStringWriter();
+		
+		ORefList importedDiagramObjectRefs = projectForTesting.getPool(ConceptualModelDiagramSchema.getObjectType()).getRefList();
+		assertEquals("there should be only one concptual model diagram?", 1, importedDiagramObjectRefs.size());
+		ORef conceptualModelDiagramRef = importedDiagramObjectRefs.getFirstElement();
+		ConceptualModelDiagram conceptualModelDiagram = ConceptualModelDiagram.find(projectForTesting, conceptualModelDiagramRef);
+		CodeList importedHiddenTypeCodes = conceptualModelDiagram.getHiddenTypes();
+		assertEquals("incorrect number of hidden types?", 1, importedHiddenTypeCodes.size());
+		assertEquals("incrrect hidden type?", HumanWelfareTargetSchema.OBJECT_NAME, importedHiddenTypeCodes.firstElement());
 	}
 	
 	public void testStrategyCalculatedCostElement() throws Exception

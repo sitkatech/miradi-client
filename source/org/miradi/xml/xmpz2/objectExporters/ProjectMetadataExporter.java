@@ -34,11 +34,22 @@ import org.miradi.project.Project;
 import org.miradi.questions.BudgetTimePeriodQuestion;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.CountriesQuestion;
 import org.miradi.questions.FosTrainingTypeQuestion;
+import org.miradi.questions.ProtectedAreaCategoryQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
+import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
+import org.miradi.questions.TncMarineEcoRegionQuestion;
 import org.miradi.questions.TncOperatingUnitsQuestion;
+import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
+import org.miradi.questions.TncProjectPlaceTypeQuestion;
+import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
+import org.miradi.questions.WwfEcoRegionsQuestion;
+import org.miradi.questions.WwfManagingOfficesQuestion;
+import org.miradi.questions.WwfRegionsQuestion;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.schemas.RareProjectDataSchema;
@@ -185,7 +196,7 @@ public class ProjectMetadataExporter implements Xmpz2XmlConstants
 		writeProjetScopeElement(ProjectMetadata.TAG_HUMAN_POPULATION);
 		writeProjetScopeElement(ProjectMetadata.TAG_HUMAN_POPULATION_NOTES);
 		writeProjetScopeElement(ProjectMetadata.TAG_SOCIAL_CONTEXT);
-		writeCodeListElement(PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES, getMetadata(), ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES);		
+		writeCodeListElement(PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES, getMetadata(), ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES, ProtectedAreaCategoryQuestion.class);		
 		writeProjetScopeElement(ProjectMetadata.TAG_PROTECTED_AREA_CATEGORY_NOTES);
 		writeWcpaElement(WcpaProjectData.TAG_LEGAL_STATUS);
 		writeWcpaElement(WcpaProjectData.TAG_LEGISLATIVE);
@@ -207,7 +218,7 @@ public class ProjectMetadataExporter implements Xmpz2XmlConstants
 		getWriter().writeStartElement(PROJECT_SUMMARY_LOCATION);
 		
 		createGeospatialLocationField();
-		writeCodeListElement(PROJECT_SUMMARY_LOCATION, ProjectMetadata.TAG_COUNTRIES, getMetadata(), ProjectMetadata.TAG_COUNTRIES);
+		writeCodeListElement(PROJECT_SUMMARY_LOCATION, ProjectMetadata.TAG_COUNTRIES, getMetadata(), ProjectMetadata.TAG_COUNTRIES, CountriesQuestion.class);
 		writeProjectLocationElement(ProjectMetadata.TAG_STATE_AND_PROVINCES);
 		writeProjectLocationElement(ProjectMetadata.TAG_MUNICIPALITIES);
 		writeProjectLocationElement(ProjectMetadata.TAG_LEGISLATIVE_DISTRICTS);
@@ -269,14 +280,14 @@ public class ProjectMetadataExporter implements Xmpz2XmlConstants
 		
 		writeProjectMetadataElement(TNC_PROJECT_DATA, ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
 		writeProjectMetadataElement(TNC_PROJECT_DATA, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
-		writeCodeListElement(TNC_PROJECT_DATA, TNC_PROJECT_PLACE_TYPES, getTncProjectData(), TncProjectData.TAG_PROJECT_PLACE_TYPES);
-		writeCodeListElement(TNC_PROJECT_DATA, TNC_ORGANIZATIONAL_PRIORITIES, getTncProjectData(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES);
+		writeCodeListElement(TNC_PROJECT_DATA, TNC_PROJECT_PLACE_TYPES, getTncProjectData(), TncProjectData.TAG_PROJECT_PLACE_TYPES, TncProjectPlaceTypeQuestion.class);
+		writeCodeListElement(TNC_PROJECT_DATA, TNC_ORGANIZATIONAL_PRIORITIES, getTncProjectData(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, TncOrganizationalPrioritiesQuestion.class);
 		writeProjectMetadataElement(TNC_PROJECT_DATA, ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS);
 		writeElement(TNC_PROJECT_DATA, getTncProjectData(), TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
 		exportTncOperatingUnits();
-		writeCodeListElement(TNC_PROJECT_DATA, TNC_TERRESTRIAL_ECO_REGION, getMetadata(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION);
-		writeCodeListElement(TNC_PROJECT_DATA, TNC_MARINE_ECO_REGION, getMetadata(), ProjectMetadata.TAG_TNC_MARINE_ECO_REGION);
-		writeCodeListElement(TNC_PROJECT_DATA, TNC_FRESHWATER_ECO_REGION, getMetadata(), ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION);
+		writeCodeListElement(TNC_PROJECT_DATA, TNC_TERRESTRIAL_ECO_REGION, getMetadata(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, TncTerrestrialEcoRegionQuestion.class);
+		writeCodeListElement(TNC_PROJECT_DATA, TNC_MARINE_ECO_REGION, getMetadata(), ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, TncMarineEcoRegionQuestion.class);
+		writeCodeListElement(TNC_PROJECT_DATA, TNC_FRESHWATER_ECO_REGION, getMetadata(), ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, TncFreshwaterEcoRegionQuestion.class);
 		writeProjectMetadataElement(TNC_PROJECT_DATA, ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 		
 		writeTncElement(TncProjectData.TAG_PROJECT_RESOURCES_SCORECARD);
@@ -295,16 +306,16 @@ public class ProjectMetadataExporter implements Xmpz2XmlConstants
 	{
 		getWriter().writeStartElement(WWF_PROJECT_DATA);
 		
-		writeWwfCodeListElement(WwfProjectData.TAG_MANAGING_OFFICES);
-		writeWwfCodeListElement(WwfProjectData.TAG_REGIONS);
-		writeWwfCodeListElement(WwfProjectData.TAG_ECOREGIONS);
+		writeWwfCodeListElement(WwfProjectData.TAG_MANAGING_OFFICES, WwfManagingOfficesQuestion.class);
+		writeWwfCodeListElement(WwfProjectData.TAG_REGIONS, WwfRegionsQuestion.class);
+		writeWwfCodeListElement(WwfProjectData.TAG_ECOREGIONS, WwfEcoRegionsQuestion.class);
 		
 		getWriter().writeEndElement(WWF_PROJECT_DATA);
 	}
 
-	private void writeWwfCodeListElement(String tag) throws Exception
+	private void writeWwfCodeListElement(String tag, Class questionClassToUse) throws Exception
 	{
-		writeCodeListElement(WWF_PROJECT_DATA, tag, getWwfProjectData(), tag);
+		writeCodeListElement(WWF_PROJECT_DATA, tag, getWwfProjectData(), tag, questionClassToUse);
 	}
 	
 	private void writeWcsElement() throws Exception
@@ -356,7 +367,7 @@ public class ProjectMetadataExporter implements Xmpz2XmlConstants
 	public void exportTncOperatingUnits() throws Exception
 	{
 		CodeList codes = getOperatingUnitsWithoutLegacyCode(getMetadata());
-		getWriter().writeCodeList(TNC_PROJECT_DATA + TNC_OPERATING_UNITS, codes);
+		getWriter().writeCodeList(TNC_PROJECT_DATA + TNC_OPERATING_UNITS, StaticQuestionManager.getQuestion(TncOperatingUnitsQuestion.class), codes);
 	}
 	
 	public static CodeList getOperatingUnitsWithoutLegacyCode(ProjectMetadata projectMetadata) throws Exception
@@ -379,10 +390,10 @@ public class ProjectMetadataExporter implements Xmpz2XmlConstants
 		getWriter().writeElement(convertedElementName, object.getData(tag));
 	}
 	
-	private void writeCodeListElement(String parentElementName, String poolElementName, BaseObject object, String tag) throws Exception
+	private void writeCodeListElement(String parentElementName, String poolElementName, BaseObject object, String tag, Class questionClassToUse) throws Exception
 	{
 		CodeList codes = object.getCodeList(tag);
-		getWriter().writeCodeList(parentElementName + poolElementName, codes);
+		getWriter().writeCodeList(parentElementName + poolElementName, StaticQuestionManager.getQuestion(questionClassToUse), codes);
 	}
 	
 	private void writeWcpaElement(final String tag) throws Exception
