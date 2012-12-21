@@ -22,8 +22,8 @@ package org.miradi.xml.xmpz;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ScopeBox;
-import org.miradi.questions.ScopeBoxTypeQuestion;
 import org.miradi.schemas.ScopeBoxSchema;
+import org.miradi.xml.generic.LegacyScopeBoxTypeQuestion;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 
@@ -39,6 +39,6 @@ public class ScopeBoxPoolImporter extends FactorPoolImporter
 	{
 		super.importFields(node, destinationRef);
 		
-		importCodeField(node, destinationRef, ScopeBox.TAG_SCOPE_BOX_TYPE_CODE, ScopeBoxTypeQuestion.createScopeBoxTypeQuestion());
+		importCodeField(node, destinationRef, ScopeBox.TAG_SCOPE_BOX_TYPE_CODE, LegacyScopeBoxTypeQuestion.createScopeBoxTypeQuestion());
 	}
 }
