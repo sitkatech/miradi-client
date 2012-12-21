@@ -313,13 +313,25 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		return StringUtilities.removeLastChar(elementName);
 	}
 
-	public void importCodeListField(Node node, String elementContainerName, ORef destinationRef, String destinationTag) throws Exception
+	public void importCodeListField(Node node, String elementContainerName, ORef destinationRef, String destinationTag, ChoiceQuestion question) throws Exception
 	{
 		String elementName = findElementName(elementContainerName, destinationTag);
 		String containerElementName = elementContainerName + elementName + CONTAINER_ELEMENT_TAG;
-		CodeList codesToImport = getCodeList(node, containerElementName);
+		CodeList readableCodesToImport = getCodeList(node, containerElementName);
+		CodeList internalCodes = convertToInternalCodes(question, readableCodesToImport);
 		
-		setData(destinationRef, destinationTag, codesToImport.toString());
+		setData(destinationRef, destinationTag, internalCodes.toString());
+	}
+
+	private CodeList convertToInternalCodes(ChoiceQuestion question, CodeList readableCodesToImport)
+	{
+		CodeList internalCodes = new CodeList();
+		for (String readableCode : readableCodesToImport)
+		{
+			internalCodes.add(question.convertToInternalCode(readableCode));
+		}
+		
+		return internalCodes;
 	}
 
 	public CodeList getCodeList(Node node, String containerElementName) throws Exception

@@ -23,6 +23,12 @@ package org.miradi.xml.xmpz2.objectImporters;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.StaticQuestionManager;
+import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
+import org.miradi.questions.TncMarineEcoRegionQuestion;
+import org.miradi.questions.TncOperatingUnitsQuestion;
+import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.xml.xmpz2.Xmpz2TagToElementNameMap;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
@@ -64,23 +70,17 @@ public class TncProjectDataImporter extends SingletonObjectImporter
 		importProjectMetadataField(tncProjectDataNode, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
 		importProjectMetadataField(tncProjectDataNode, ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 		importProjectMetadataField(tncProjectDataNode, ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS);
-		
-		final String[] codelistTagsToImport = new String[]{ProjectMetadata.TAG_TNC_OPERATING_UNITS, 
-														   ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, 
-														   ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, 
-														   ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION};
-		
-		importCodeListsIntoProjectMetadata(tncProjectDataNode, codelistTagsToImport);
+		getImporter().importCodeListField(tncProjectDataNode, TNC_PROJECT_DATA, getMetadataRef(), ProjectMetadata.TAG_TNC_OPERATING_UNITS, getQuestion(TncOperatingUnitsQuestion.class));
+		getImporter().importCodeListField(tncProjectDataNode, TNC_PROJECT_DATA, getMetadataRef(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, getQuestion(TncTerrestrialEcoRegionQuestion.class));
+		getImporter().importCodeListField(tncProjectDataNode, TNC_PROJECT_DATA, getMetadataRef(), ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, getQuestion(TncMarineEcoRegionQuestion.class));
+		getImporter().importCodeListField(tncProjectDataNode, TNC_PROJECT_DATA, getMetadataRef(), ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, getQuestion(TncFreshwaterEcoRegionQuestion.class));
 	}
 	
-	private void importCodeListsIntoProjectMetadata(Node tncProjectDataNode, String[] codelistfieldTagsToImport) throws Exception
+	private ChoiceQuestion getQuestion(Class questionClass)
 	{
-		for (int index = 0; index < codelistfieldTagsToImport.length; ++index)
-		{
-			getImporter().importCodeListField(tncProjectDataNode, TNC_PROJECT_DATA, getMetadataRef(), codelistfieldTagsToImport[index]);
-		}
+		return StaticQuestionManager.getQuestion(questionClass);
 	}
-	
+
 	private void importProjectMetadataField(Node projectSummaryNode, String tag) throws Exception
 	{
 		Xmpz2TagToElementNameMap map = new Xmpz2TagToElementNameMap();
