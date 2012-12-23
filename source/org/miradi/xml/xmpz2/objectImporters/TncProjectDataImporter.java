@@ -68,7 +68,6 @@ public class TncProjectDataImporter extends SingletonObjectImporter
 		Node tncProjectDataNode = getImporter().getNode(getImporter().getRootNode(), getPoolName());
 		importProjectMetadataField(tncProjectDataNode, ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
 		importProjectMetadataField(tncProjectDataNode, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
-		importProjectMetadataField(tncProjectDataNode, ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 		importProjectMetadataField(tncProjectDataNode, ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS);
 		getImporter().importCodeListField(tncProjectDataNode, TNC_PROJECT_DATA, getMetadataRef(), ProjectMetadata.TAG_TNC_OPERATING_UNITS, getQuestion(TncOperatingUnitsQuestion.class));
 		getImporter().importCodeListField(tncProjectDataNode, TNC_PROJECT_DATA, getMetadataRef(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, getQuestion(TncTerrestrialEcoRegionQuestion.class));

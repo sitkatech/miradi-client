@@ -108,6 +108,7 @@ public class ProjectMetadataExporter implements Xmpz2XmlConstants
 		writeProjectSummaryElement(ProjectMetadata.TAG_PROJECT_DESCRIPTION);
 		writeProjectSummaryElement(ProjectMetadata.TAG_PROJECT_STATUS);
 		writeProjectSummaryElement(ProjectMetadata.TAG_NEXT_STEPS);
+		writeProjectSummaryElement(ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 		writeOverallProjectThreatRating();
 		writeOverallProjectViabilityRating();
 		writeExternalAppIds();
@@ -115,7 +116,8 @@ public class ProjectMetadataExporter implements Xmpz2XmlConstants
 
 		ChoiceQuestion budgetTimePeriodQuestion = getProject().getQuestion(BudgetTimePeriodQuestion.class);
 		getWriter().writeNonOptionalCodeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, budgetTimePeriodQuestion, getMetadata().getData(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT));
-
+		
+		
 		getWriter().writeEndElement(PROJECT_SUMMARY);
 	}
 	
@@ -288,7 +290,6 @@ public class ProjectMetadataExporter implements Xmpz2XmlConstants
 		writeCodeListElement(TNC_PROJECT_DATA, TNC_TERRESTRIAL_ECO_REGION, getMetadata(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, TncTerrestrialEcoRegionQuestion.class);
 		writeCodeListElement(TNC_PROJECT_DATA, TNC_MARINE_ECO_REGION, getMetadata(), ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, TncMarineEcoRegionQuestion.class);
 		writeCodeListElement(TNC_PROJECT_DATA, TNC_FRESHWATER_ECO_REGION, getMetadata(), ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, TncFreshwaterEcoRegionQuestion.class);
-		writeProjectMetadataElement(TNC_PROJECT_DATA, ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 		
 		writeTncElement(TncProjectData.TAG_PROJECT_RESOURCES_SCORECARD);
 		writeTncElement(TncProjectData.TAG_PROJECT_LEVEL_COMMENTS);

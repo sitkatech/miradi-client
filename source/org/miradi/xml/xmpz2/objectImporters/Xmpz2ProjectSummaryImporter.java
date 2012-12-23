@@ -53,6 +53,7 @@ public class Xmpz2ProjectSummaryImporter extends BaseObjectImporter
 		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_DESCRIPTION);
 		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_STATUS);
 		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_NEXT_STEPS);
+		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 		importExternalProjectId(projectSumaryNode);
 		getImporter().importCodeField(projectSumaryNode, ProjectMetadata.TAG_THREAT_RATING_MODE, getMetadataRef(), ProjectMetadata.TAG_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion());
 		getImporter().importCodeField(projectSumaryNode, PROJECT_SUMMARY, getMetadataRef(), ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, getProject().getQuestion(BudgetTimePeriodQuestion.class));
