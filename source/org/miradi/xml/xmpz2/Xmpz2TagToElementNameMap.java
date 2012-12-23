@@ -150,7 +150,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(BaseObject.TAG_PROGRESS_REPORT_REFS, PROGRESS_REPORT_IDS);
 		map.put(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, RESOURCE_ASSIGNMENT + IDS);
 		map.put(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, EXPENSE_ASSIGNMENT + IDS);
-		map.put(BaseObject.TAG_LEADER_RESOURCE, LEADER_RESOURCE_ID);
+		map.put(BaseObject.TAG_LEADER_RESOURCE, RESOURCE_ID);
 
 		return map;
 	}
