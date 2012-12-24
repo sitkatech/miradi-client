@@ -94,20 +94,32 @@ public class StressBasedThreatTargetThreatRatingImporter extends AbstractThreatR
 		return ThreatRatingCommentsData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP;
 	}
 	
-	private void importStressBasedThreatRating(Node threatRatingNode) throws Exception
+	private void importStressBasedThreatRating(Node stressBasedThreatRatingNode) throws Exception
 	{
-		ORef stressRef = getStressRef(threatRatingNode);
-		ORef threatRef = getThreatRef(threatRatingNode);
+		Node stressBasedThreatRatingThreatRatingNode = getImporter().getNode(stressBasedThreatRatingNode, new String[]{STRESS_BASED_THREAT_RATING + THREAT_STRESS_RATING, });
+		NodeList threatStressRatingNodes = getImporter().getNodes(stressBasedThreatRatingThreatRatingNode, new String[]{THREAT_STRESS_RATING, });
+		ORef threatRef = getThreatRef(stressBasedThreatRatingNode);
+		final ORef targetRef = getTargetRef(stressBasedThreatRatingNode);
+		for(int index = 0; index < threatStressRatingNodes.getLength(); ++index)
+		{
+			Node threatStressRatingNode = threatStressRatingNodes.item(index);
+			importThreatStressRating(threatStressRatingNode, threatRef, targetRef);
+		}
+	}
+
+	private void importThreatStressRating(Node threatStressRatingNode, ORef threatRef, ORef targetRef)	throws Exception
+	{
+		ORef stressRef = getStressRef(threatStressRatingNode);
 		ThreatTargetVirtualLinkHelper helper = new ThreatTargetVirtualLinkHelper(getProject());
-		ORef threatStressRatingRef = helper.findThreatStressRatingReferringToStress(threatRef, getTargetRef(threatRatingNode), stressRef);
-		getImporter().importCodeField(threatRatingNode, getParentElementName(), threatStressRatingRef, ThreatStressRating.TAG_CONTRIBUTION, new StressContributionQuestion());
-		getImporter().importCodeField(threatRatingNode, getParentElementName(), threatStressRatingRef, ThreatStressRating.TAG_IRREVERSIBILITY, new StressIrreversibilityQuestion());
-		importIsActive(threatRatingNode, threatStressRatingRef);
+		ORef threatStressRatingRef = helper.findThreatStressRatingReferringToStress(threatRef, targetRef, stressRef);
+		getImporter().importCodeFieldWithoutElementNameSubstitute(threatStressRatingNode, THREAT_STRESS_RATING + CONTRIBUTION, threatStressRatingRef, ThreatStressRating.TAG_CONTRIBUTION, new StressContributionQuestion());
+		getImporter().importCodeFieldWithoutElementNameSubstitute(threatStressRatingNode, THREAT_STRESS_RATING + IRREVERSIBILITY, threatStressRatingRef, ThreatStressRating.TAG_IRREVERSIBILITY, new StressIrreversibilityQuestion());
+		importIsActive(threatStressRatingNode, threatStressRatingRef);
 	}
 	
-	private void importIsActive(Node stressBasedThreatRatingNode, ORef threatStressRatingRef)	throws Exception
+	private void importIsActive(Node threatStressRatingNode, ORef threatStressRatingRef)	throws Exception
 	{
-		Node isActiveNode = getImporter().getNode(stressBasedThreatRatingNode, STRESS_BASED_THREAT_RATING + IS_ACTIVE);
+		Node isActiveNode = getImporter().getNode(threatStressRatingNode, THREAT_STRESS_RATING + IS_ACTIVE);
 		String isActive = BooleanData.BOOLEAN_FALSE;
 		if (isActiveNode != null && getImporter().isTrue(isActiveNode.getTextContent()))
 			isActive = BooleanData.BOOLEAN_TRUE;;
@@ -115,10 +127,10 @@ public class StressBasedThreatTargetThreatRatingImporter extends AbstractThreatR
 		getImporter().setData(threatStressRatingRef, ThreatStressRating.TAG_IS_ACTIVE, isActive);
 	}
 
-	private ORef getStressRef(Node stressBasedThreatRatingNode)	throws Exception
+	private ORef getStressRef(Node threatStressRatingNode)	throws Exception
 	{
-		Node stressIdNode = getImporter().getNode(stressBasedThreatRatingNode, getParentElementName() + STRESS + ID);
-		ORef stressRef = getImporter().getNodeAsRef(stressIdNode,  STRESS + ID, StressSchema.getObjectType());
+		Node stressIdNode = getImporter().getNode(threatStressRatingNode, THREAT_STRESS_RATING + STRESS_ID);
+		ORef stressRef = getImporter().getNodeAsRef(stressIdNode,  STRESS_ID, StressSchema.getObjectType());
 		return stressRef;
 	}
 	

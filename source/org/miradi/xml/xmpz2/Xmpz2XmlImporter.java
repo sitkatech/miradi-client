@@ -25,6 +25,8 @@ import java.awt.Point;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 
+import javax.xml.xpath.XPathExpressionException;
+
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.BooleanData;
@@ -352,7 +354,13 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	{
 		Xmpz2TagToElementNameMap map = new Xmpz2TagToElementNameMap();
 		String elementName = map.findElementName(containerName, destinationTag);
-		String importedReadableCode = getPathData(node, new String[]{containerName  + elementName, });
+		final String containerElementName = containerName  + elementName;
+		importCodeFieldWithoutElementNameSubstitute(node, containerElementName, destinationRef,	destinationTag, question);
+	}
+
+	public void importCodeFieldWithoutElementNameSubstitute(Node node, final String containerElementName, ORef destinationRef, String destinationTag, ChoiceQuestion question) throws XPathExpressionException, Exception
+	{
+		String importedReadableCode = getPathData(node, new String[]{containerElementName, });
 		String internalCode = question.convertToInternalCode(importedReadableCode);		
 		importField(destinationRef, destinationTag, internalCode);
 	}
