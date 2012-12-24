@@ -102,6 +102,7 @@ public interface Xmpz2XmlConstants
 	public static final String CONTRIBUTION = "ContributionRating";
 	public static final String IS_ACTIVE = "IsActive";
 	public static final String COMMENTS = "Comments";
+	public static final String THREAT_STRESS_RATING = "ThreatStressRating";
 	public static final String SIMPLE_BASED_THREAT_RATING = "SimpleThreatRating";
 	public static final String STRESS_BASED_THREAT_RATING = "StressBasedThreatRating";
 	public static final String MEASUREMENT = "Measurement";
@@ -174,7 +175,7 @@ public interface Xmpz2XmlConstants
 	public static final String STYLING = "Style";
 	public static final String CALCULATED_STRESS_RATING = "CalculatedStressRating";
 	public static final String CALCULATED_THREAT_STRESS_RATING = "CalculatedThreatStressRating";
-	public static final String CALCULATED_RATING = "CalculatedRating";
+	public static final String CALCULATED_THREAT_TARGET_RATING = "CalculatedThreatTargetRating";
 	public static final String SIMPLE_THREAT_TARGET_CALCULATED_RATING = "CalculatedThreatTargetRating";
 	public static final String TARGET_THREAT_RATING = "ThreatRating";
 	public static final String OVERALL_PROJECT_THREAT_RATING = "OverallProjectThreatRating";
