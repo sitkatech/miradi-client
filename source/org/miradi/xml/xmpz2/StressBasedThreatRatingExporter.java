@@ -106,14 +106,16 @@ public class StressBasedThreatRatingExporter implements Xmpz2XmlConstants
 		ORefList threatStressRatingRefs = helper.getThreatStressRatingRefs(threat.getRef(), target.getRef());
 		for(ORef threatStressRatingRef : threatStressRatingRefs)
 		{
+			getWriter().writeStartElement(getParentElementName() + THREAT_STRESS_RATING);
+			getWriter().writeStartElement(THREAT_STRESS_RATING);
 			exportThreatStressRating(target, stress, threat, ThreatStressRating.find(getProject(), threatStressRatingRef));
+			getWriter().writeEndElement(getParentElementName() + THREAT_STRESS_RATING);
+			getWriter().writeEndElement(THREAT_STRESS_RATING);
 		}
 	}
 	
 	private void exportThreatStressRating(Target target, Stress stress, Cause threat, ThreatStressRating threatStressRating) throws Exception
 	{
-		getWriter().writeStartElement(getParentElementName() + THREAT_STRESS_RATING);
-		getWriter().writeStartElement(THREAT_STRESS_RATING);
 		exportStressId(stress.getRef());
 
 		ChoiceItem irreversibility = ThreatStressRatingDetailsTableExporter.getIrreversibility(getProject(), target.getRef(), threat.getRef(), stress);
@@ -127,9 +129,6 @@ public class StressBasedThreatRatingExporter implements Xmpz2XmlConstants
 		int calculatedThreatRating = threatStressRating.calculateThreatRating();
 		String safeThreatRatingCode = ThreatRatingFramework.getSafeThreatRatingCode(calculatedThreatRating);
 		getWriter().writeElement(THREAT_STRESS_RATING + CALCULATED_THREAT_STRESS_RATING, safeThreatRatingCode);
-		
-		getWriter().writeEndElement(THREAT_STRESS_RATING);
-		getWriter().writeEndElement(getParentElementName() + THREAT_STRESS_RATING);
 	}
 
 	private void exportStressBasedCalculatedThreatTargetRating(ORef targetRef, ORef threatRef) throws Exception
