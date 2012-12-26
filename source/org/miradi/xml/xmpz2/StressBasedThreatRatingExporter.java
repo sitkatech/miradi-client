@@ -109,8 +109,8 @@ public class StressBasedThreatRatingExporter implements Xmpz2XmlConstants
 			getWriter().writeStartElement(getParentElementName() + THREAT_STRESS_RATING);
 			getWriter().writeStartElement(THREAT_STRESS_RATING);
 			exportThreatStressRating(target, stress, threat, ThreatStressRating.find(getProject(), threatStressRatingRef));
-			getWriter().writeEndElement(getParentElementName() + THREAT_STRESS_RATING);
 			getWriter().writeEndElement(THREAT_STRESS_RATING);
+			getWriter().writeEndElement(getParentElementName() + THREAT_STRESS_RATING);
 		}
 	}
 	
