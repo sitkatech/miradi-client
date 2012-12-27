@@ -76,42 +76,40 @@ public class StressBasedThreatRatingExporter implements Xmpz2XmlConstants
 	
 	private void exportStressBasedThreatRatingDetailsRow(Target target) throws Exception
 	{
-		ORefList stressRefs = target.getStressRefs();
-		for (int index = 0; index < stressRefs.size(); ++index)
+		ThreatTargetChainWalker chainWalker = new ThreatTargetChainWalker(getProject());
+		ORefSet upstreamThreatsFromTarget = chainWalker.getUpstreamThreatRefsFromTarget(target);
+		ORefList sortedThreatRefs = new ORefList(upstreamThreatsFromTarget);
+		sortedThreatRefs.sort();
+		for(int threatIndex = 0; threatIndex < sortedThreatRefs.size(); ++threatIndex)
 		{
-			Stress stress = Stress.find(getProject(), stressRefs.get(index));
-			ThreatTargetChainWalker chainWalker = new ThreatTargetChainWalker(getProject());
-			ORefSet upstreamThreatsFromTarget = chainWalker.getUpstreamThreatRefsFromTarget(target);
-			ORefList sortedThreatRefs = new ORefList(upstreamThreatsFromTarget);
-			sortedThreatRefs.sort();
-			for(int threatIndex = 0; threatIndex < sortedThreatRefs.size(); ++threatIndex)
-			{
-				Cause threat = Cause.find(getProject(), sortedThreatRefs.get(threatIndex));
-				getWriter().writeStartElement(getParentElementName());
-				ORef targetRef = target.getRef();
-				ORef threatRef = threat.getRef();
-				exportThreatId(threatRef);
-				exportTargetId(targetRef);
-				exportStressBasedRatingComment(threatRef, targetRef);
-				exportStressBasedCalculatedThreatTargetRating(target.getRef(), threat.getRef());
-				writeThreatStressRatings(target, stress, threat);
-				getWriter().writeEndElement(getParentElementName());
-			}
+			Cause threat = Cause.find(getProject(), sortedThreatRefs.get(threatIndex));
+			getWriter().writeStartElement(getParentElementName());
+			ORef targetRef = target.getRef();
+			ORef threatRef = threat.getRef();
+			exportThreatId(threatRef);
+			exportTargetId(targetRef);
+			exportStressBasedRatingComment(threatRef, targetRef);
+			exportStressBasedCalculatedThreatTargetRating(target.getRef(), threat.getRef());
+			writeThreatStressRatings(target, threat);
+			getWriter().writeEndElement(getParentElementName());
 		}
 	}
 
-	private void writeThreatStressRatings(Target target, Stress stress, Cause threat) throws Exception
+	private void writeThreatStressRatings(Target target, Cause threat) throws Exception
 	{
 		ThreatTargetVirtualLinkHelper helper = new ThreatTargetVirtualLinkHelper(getProject());
-		ORefList threatStressRatingRefs = helper.getThreatStressRatingRefs(threat.getRef(), target.getRef());
-		for(ORef threatStressRatingRef : threatStressRatingRefs)
+		getWriter().writeStartElement(getParentElementName() + THREAT_STRESS_RATING);
+		ORefList stressRefs = target.getStressRefs();
+		for(ORef stressRef : stressRefs)
 		{
-			getWriter().writeStartElement(getParentElementName() + THREAT_STRESS_RATING);
 			getWriter().writeStartElement(THREAT_STRESS_RATING);
+			Stress stress = Stress.find(getProject(), stressRef);
+			ORef threatStressRatingRef = helper.findThreatStressRatingReferringToStress(threat.getRef(), target.getRef(), stress.getRef());
 			exportThreatStressRating(target, stress, threat, ThreatStressRating.find(getProject(), threatStressRatingRef));
 			getWriter().writeEndElement(THREAT_STRESS_RATING);
-			getWriter().writeEndElement(getParentElementName() + THREAT_STRESS_RATING);
 		}
+		
+		getWriter().writeEndElement(getParentElementName() + THREAT_STRESS_RATING);
 	}
 	
 	private void exportThreatStressRating(Target target, Stress stress, Cause threat, ThreatStressRating threatStressRating) throws Exception

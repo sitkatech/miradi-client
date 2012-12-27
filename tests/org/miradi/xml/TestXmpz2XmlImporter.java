@@ -26,6 +26,7 @@ import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AbstractTarget;
+import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Goal;
@@ -112,9 +113,22 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	
 	public void testProjectWithStressBasedThreatRatingData() throws Exception
 	{
-		getProject().populateStressBasedThreatRatingCommentsData();
-		getProject().createThreatTargetDiagramLinkWithRating();
-		validateUsingStringWriter();
+		Cause threat = getProject().createCause();
+		getProject().populateCause(threat);
+		getProject().enableAsThreat(threat);
+		DiagramFactor threatDiagramFactor = getProject().createAndAddFactorToDiagram(getProject().getMainDiagramObject(), threat.getRef());
+
+		Target target = getProject().createTarget();
+		ORefList stressRefs = target.getStressRefs();
+		stressRefs.add(getProject().createAndPopulateStress());
+		stressRefs.add(getProject().createAndPopulateStress());
+		getProject().fillObjectUsingCommand(target, Target.TAG_STRESS_REFS, stressRefs.toString());
+		DiagramFactor targetDiagramFactor = getProject().createAndAddFactorToDiagram(getProject().getMainDiagramObject(), target.getRef());
+		
+		getProject().createDiagramLinkAndAddToDiagramModel(threatDiagramFactor, targetDiagramFactor);
+		assertEquals("incorrect threat stress ratings created?", 2, getProject().getThreatStressRatingPool().size());
+		ProjectForTesting projectImportedInto = validateUsingStringWriter();
+		assertEquals("incorrect threat stress ratings imported?", 2, projectImportedInto.getThreatStressRatingPool().size());
 	}
 	
 	public void testProjectWithSimpleThreatRatingData() throws Exception
