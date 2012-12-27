@@ -62,7 +62,7 @@ public class StressBasedThreatTargetThreatRatingImporter extends AbstractThreatR
 		for (int index = 0; index < threatRatingNodes.getLength(); ++index)
 		{
 			Node threatRatingNode = threatRatingNodes.item(index);
-			importThreatRatings(threatRatingNode);
+			importStressBasedThreatRatings(threatRatingNode);
 		}		
 	}
 
@@ -76,10 +76,10 @@ public class StressBasedThreatTargetThreatRatingImporter extends AbstractThreatR
 		getProject().beginCommandSideEffectMode();
 	}
 
-	private void importThreatRatings(Node threatRatingNode) throws Exception
+	private void importStressBasedThreatRatings(Node threatRatingNode) throws Exception
 	{
+		importStressBasedThreatRating(threatRatingNode);
 		importThreatRatingsComment(threatRatingNode);
-		importStressBasedThreatRating(threatRatingNode);	
 	}
 	
 	@Override
@@ -96,10 +96,10 @@ public class StressBasedThreatTargetThreatRatingImporter extends AbstractThreatR
 	
 	private void importStressBasedThreatRating(Node stressBasedThreatRatingNode) throws Exception
 	{
-		Node stressBasedThreatRatingThreatRatingNode = getImporter().getNode(stressBasedThreatRatingNode, new String[]{STRESS_BASED_THREAT_RATING + THREAT_STRESS_RATING, });
-		NodeList threatStressRatingNodes = getImporter().getNodes(stressBasedThreatRatingThreatRatingNode, new String[]{THREAT_STRESS_RATING, });
 		ORef threatRef = getThreatRef(stressBasedThreatRatingNode);
 		final ORef targetRef = getTargetRef(stressBasedThreatRatingNode);
+		Node stressBasedThreatRatingThreatRatingNode = getImporter().getNode(stressBasedThreatRatingNode, new String[]{STRESS_BASED_THREAT_RATING + THREAT_STRESS_RATING, });
+		NodeList threatStressRatingNodes = getImporter().getNodes(stressBasedThreatRatingThreatRatingNode, new String[]{THREAT_STRESS_RATING, });
 		for(int index = 0; index < threatStressRatingNodes.getLength(); ++index)
 		{
 			Node threatStressRatingNode = threatStressRatingNodes.item(index);
