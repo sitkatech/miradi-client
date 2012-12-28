@@ -39,7 +39,7 @@ public class KeyEcologicalAttributeSchema extends BaseObjectSchema
 		createOwnedFieldSchemaIdList(KeyEcologicalAttribute.TAG_INDICATOR_IDS, IndicatorSchema.getObjectType());
 		createFieldSchemaMultiLineUserText(KeyEcologicalAttribute.TAG_DESCRIPTION);
 		createFieldSchemaMultiLineUserText(KeyEcologicalAttribute.TAG_DETAILS);
-		createFieldSchemaChoice(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, getQuestion(KeyEcologicalAttributeTypeQuestion.class));
+		createFieldSchemaChoice(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, KeyEcologicalAttributeTypeQuestion.class);
 		createFieldSchemaSingleLineUserText(KeyEcologicalAttribute.TAG_SHORT_LABEL);
 		
 		createPseudoFieldSchemaString(KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS);

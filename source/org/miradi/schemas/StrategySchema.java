@@ -39,12 +39,12 @@ public class StrategySchema extends FactorSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaChoice(Strategy.TAG_STATUS, getQuestion(StrategyStatusQuestion.class));
+		createFieldSchemaChoice(Strategy.TAG_STATUS, StrategyStatusQuestion.class);
 		createFieldSchemaIdList(Strategy.TAG_ACTIVITY_IDS, TaskSchema.getObjectType());
 	
-		createFieldSchemaChoice(Strategy.TAG_TAXONOMY_CODE, getQuestion(StrategyTaxonomyQuestion.class));
-		createFieldSchemaChoice(Strategy.TAG_IMPACT_RATING, getQuestion(StrategyImpactQuestion.class));
-		createFieldSchemaChoice(Strategy.TAG_FEASIBILITY_RATING, getQuestion(StrategyFeasibilityQuestion.class));
+		createFieldSchemaChoice(Strategy.TAG_TAXONOMY_CODE, StrategyTaxonomyQuestion.class);
+		createFieldSchemaChoice(Strategy.TAG_IMPACT_RATING, StrategyImpactQuestion.class);
+		createFieldSchemaChoice(Strategy.TAG_FEASIBILITY_RATING, StrategyFeasibilityQuestion.class);
 		createFieldSchemaMultiLineUserText(Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
 		createFieldSchemaOptionalRef(Strategy.TAG_LEADER_RESOURCE);
 		createBudgetSchemas();
