@@ -85,10 +85,28 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	
 	public void writeChoiceData(final BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, final ChoiceData choiceData) throws Exception
 	{
-		final ChoiceQuestion choiceQuestion = choiceData.getChoiceQuestion();
-		final String code = choiceData.get();
-		String readableCode = choiceQuestion.convertToReadableCode(code);
+		String readableCode = getReadableCode(choiceData);
+		
 		writeField(baseObjectSchema, fieldSchema, readableCode);
+	}
+	
+	public void writeChoiceData(final String elementName, final BaseObject baseObject, final String tag) throws Exception
+	{
+		ObjectData choiceData = baseObject.getField(tag);
+		String readableCode = getReadableCode(choiceData);
+		
+		writeElement(elementName, readableCode);
+	}
+
+	private String getReadableCode(ObjectData choiceData) throws Exception
+	{
+		if (!choiceData.isChoiceItemData())
+			throw new Exception("Expecting a ChoiceData object!");
+		
+		ChoiceQuestion question = choiceData.getChoiceQuestion();
+		String code = choiceData.get();
+		
+		return question.convertToReadableCode(code);
 	}
 
 	public void writeStringData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string) throws Exception
