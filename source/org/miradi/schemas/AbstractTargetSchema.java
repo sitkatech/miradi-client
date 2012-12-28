@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.schemas;
 
 import org.miradi.objects.AbstractTarget;
-import org.miradi.questions.StatusQuestion;
+import org.miradi.questions.TargetStatusQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 
 abstract public class AbstractTargetSchema extends FactorSchema
@@ -36,7 +36,7 @@ abstract public class AbstractTargetSchema extends FactorSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaChoice(AbstractTarget.TAG_TARGET_STATUS, StatusQuestion.class);
+		createFieldSchemaChoice(AbstractTarget.TAG_TARGET_STATUS, TargetStatusQuestion.class);
 		createFieldSchemaChoice(AbstractTarget.TAG_VIABILITY_MODE, ViabilityModeQuestion.class);
 		createFieldSchemaMultiLineUserText(AbstractTarget.TAG_CURRENT_STATUS_JUSTIFICATION);
 		createOwnedFieldSchemaReflist(AbstractTarget.TAG_SUB_TARGET_REFS, SUB_TARGET);

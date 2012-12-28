@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Mon Dec 24 14:33:09 EST 2012 $
+# $LastChangedDate: Fri Dec 28 12:50:43 EST 2012 $
 # $LastChangedRevision: 216 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/216'
 start = ConservationProject.element
@@ -438,10 +438,9 @@ BiodiversityTarget.element = element miradi:BiodiversityTarget
   element miradi:BiodiversityTargetSpeciesLatinName { text }? &
   element miradi:BiodiversityTargetStressIds { StressId.element* }? &
   element miradi:BiodiversityTargetSubTargetIds { SubTargetId.element* }? &
-  element miradi:BiodiversityTargetTargetStatus { vocabulary_status }? &
   element miradi:BiodiversityTargetViabilityMode { vocabulary_target_viability_mode }? &
-  element miradi:BiodiversityTargetThreatRating { vocabulary_threat_rating }? &
-  element miradi:BiodiversityTargetViabilityStatus { vocabulary_target_status }?
+  element miradi:BiodiversityTargetViabilityStatus { vocabulary_target_status }? &
+  element miradi:BiodiversityTargetThreatRating { vocabulary_threat_rating }?
 }
 
 IntermediateResultPool.element = element miradi:IntermediateResultPool { IntermediateResult.element* }
@@ -629,10 +628,9 @@ HumanWellbeingTarget.element = element miradi:HumanWellbeingTarget
   element miradi:HumanWellbeingTargetKeyEcologicalAttributeIds { KeyEcologicalAttributeId.element* }? &
   element miradi:HumanWellbeingTargetName { formatted_text }? &
   element miradi:HumanWellbeingTargetSubTargetIds { SubTargetId.element* }? &
-  element miradi:HumanWellbeingTargetTargetStatus { vocabulary_status }? &
   element miradi:HumanWellbeingTargetViabilityMode { vocabulary_target_viability_mode }? &
-  element miradi:HumanWellbeingTargetThreatRating { vocabulary_threat_rating }? &
-  element miradi:HumanWellbeingTargetViabilityStatus { vocabulary_target_status }?
+  element miradi:HumanWellbeingTargetViabilityStatus { vocabulary_target_status }? &
+  element miradi:HumanWellbeingTargetThreatRating { vocabulary_threat_rating }?
 }
 
 IUCNRedListSpeciesPool.element = element miradi:IUCNRedListSpeciesPool { IUCNRedListSpecies.element* }
