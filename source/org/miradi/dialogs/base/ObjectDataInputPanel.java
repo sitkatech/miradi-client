@@ -187,8 +187,8 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 		add(fieldPanel);
 	}
 	
-	//TODO,  come up with a better solution for this.  the reason this exists is becuase
-	// the label visibilty is changed outside of here.  
+	//TODO,  come up with a better solution for this.  the reason this exists is because
+	// the label visibility is changed outside of here.  
 	protected void addFieldsOnOneLine(PanelTitleLabel label, Object[] labelsAndFields)
 	{
 		OneRowPanel fieldPanel = new OneRowPanel();
