@@ -38,12 +38,12 @@ public class MeasurementSchema extends BaseObjectSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaChoice(Measurement.TAG_TREND, getQuestion(TrendQuestion.class));
-		createFieldSchemaChoice(Measurement.TAG_STATUS, getQuestion(StatusQuestion.class));
+		createFieldSchemaChoice(Measurement.TAG_TREND, TrendQuestion.class);
+		createFieldSchemaChoice(Measurement.TAG_STATUS, StatusQuestion.class);
 		createFieldSchemaDate(Measurement.TAG_DATE);
 		createFieldSchemaSingleLineUserText(Measurement.TAG_SUMMARY);
 		createFieldSchemaMultiLineUserText(Measurement.TAG_DETAIL);
-		createFieldSchemaChoice(Measurement.TAG_STATUS_CONFIDENCE, getQuestion(StatusConfidenceQuestion.class));
+		createFieldSchemaChoice(Measurement.TAG_STATUS_CONFIDENCE, StatusConfidenceQuestion.class);
 		createFieldSchemaMultiLineUserText(Measurement.TAG_COMMENTS);
 	}
 

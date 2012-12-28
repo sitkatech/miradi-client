@@ -36,8 +36,8 @@ abstract public class AbstractTargetSchema extends FactorSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaChoice(AbstractTarget.TAG_TARGET_STATUS, getQuestion(StatusQuestion.class));
-		createFieldSchemaChoice(AbstractTarget.TAG_VIABILITY_MODE, getQuestion(ViabilityModeQuestion.class));
+		createFieldSchemaChoice(AbstractTarget.TAG_TARGET_STATUS, StatusQuestion.class);
+		createFieldSchemaChoice(AbstractTarget.TAG_VIABILITY_MODE, ViabilityModeQuestion.class);
 		createFieldSchemaMultiLineUserText(AbstractTarget.TAG_CURRENT_STATUS_JUSTIFICATION);
 		createOwnedFieldSchemaReflist(AbstractTarget.TAG_SUB_TARGET_REFS, SUB_TARGET);
 		createOwnedFieldSchemaIdList(AbstractTarget.TAG_GOAL_IDS, GoalSchema.getObjectType());

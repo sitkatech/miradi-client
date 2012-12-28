@@ -44,13 +44,13 @@ public class ViewDataSchema extends BaseObjectSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaChoice(ViewData.TAG_CURRENT_MODE, getQuestion(DiagramModeQuestion.class));
+		createFieldSchemaChoice(ViewData.TAG_CURRENT_MODE, DiagramModeQuestion.class);
 		createFieldSchemaCodeList(ViewData.TAG_DIAGRAM_HIDDEN_TYPES, getQuestion(InternalQuestionWithoutValues.class));
 		createFieldSchemaCodeList(ViewData.TAG_BUDGET_ROLLUP_REPORT_TYPES, getQuestion(WorkPlanCategoryTypesQuestion.class));
 		createFieldSchemaChoice(ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE, new PlanningViewSingleLevelQuestion(getProject()));
 		createFieldSchemaOptionalRef(ViewData.TAG_TREE_CONFIGURATION_REF);
-		createFieldSchemaChoice(ViewData.TAG_ACTION_TREE_CONFIGURATION_CHOICE, getQuestion(ActionTreeConfigurationQuestion.class));
-		createFieldSchemaChoice(ViewData.TAG_MONITORING_TREE_CONFIGURATION_CHOICE, getQuestion(MonitoringTreeConfigurationQuestion.class));
+		createFieldSchemaChoice(ViewData.TAG_ACTION_TREE_CONFIGURATION_CHOICE, ActionTreeConfigurationQuestion.class);
+		createFieldSchemaChoice(ViewData.TAG_MONITORING_TREE_CONFIGURATION_CHOICE, MonitoringTreeConfigurationQuestion.class);
 
 		createFieldSchemaCode(ViewData.TAG_CURRENT_WIZARD_STEP).setNavigationField();
 		createFieldSchemaInteger(ViewData.TAG_CURRENT_TAB).setNavigationField();
