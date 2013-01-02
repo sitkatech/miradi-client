@@ -249,7 +249,7 @@ public class DefinitionCommonTerms
 		"\n\n" +
 		"<p>To see where your projects are being stored, " +
 		"use the <code class='toolbarbutton'>&lt;Edit&gt;/&lt;Preferences&gt;</code> menu, " +
-		"and look at the bottom of the <code class='toolbarbutton'>&lt;Data Location&gt;</code> tab."));
+		"and look at the bottom of the <code class='toolbarbutton'>&lt;Data Location&gt;</code> tab.  Note that you can only access these preferences when you do not have a project open."));
 		defs.put("Definition:Project", def);
 		
 		
