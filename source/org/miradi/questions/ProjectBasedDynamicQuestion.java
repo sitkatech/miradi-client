@@ -18,40 +18,13 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.schemas;
+package org.miradi.questions;
 
-import org.miradi.objecthelpers.ObjectType;
-
-public class HumanWelfareTargetSchema extends AbstractTargetSchema
+abstract public class ProjectBasedDynamicQuestion extends DynamicChoiceQuestion
 {
-	public HumanWelfareTargetSchema()
-	{
-		super();
-	}
-
-	public static int getObjectType()
-	{
-		return ObjectType.HUMAN_WELFARE_TARGET;
-	}
-	
 	@Override
-	public int getType()
+	public boolean isProjectBasedDynamicQuestion()
 	{
-		return getObjectType();
+		return true;
 	}
-
-	@Override
-	public String getObjectName()
-	{
-		return OBJECT_NAME;
-	}
-	
-	@Override
-	public String getXmpz2ElementName()
-	{
-		return HUMAN_WELLBEING_TARGET;
-	}
-	
-	public static final String OBJECT_NAME = "HumanWelfareTarget";
-	public static final String HUMAN_WELLBEING_TARGET = "HumanWellbeingTarget";
 }

@@ -34,7 +34,6 @@ public class ProjectSummaryTncProjectDataSchema extends AbstractProjectSummarySc
 		ProjectMetadataSchema schema = new ProjectMetadataSchema();
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS));
-		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_TNC_LESSONS_LEARNED));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_TNC_OPERATING_UNITS)); 
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION)); 

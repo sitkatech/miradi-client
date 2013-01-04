@@ -25,7 +25,7 @@ import java.util.Vector;
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 
-abstract public class ObjectQuestion extends DynamicChoiceQuestion
+abstract public class ObjectQuestion extends ProjectBasedDynamicQuestion
 {
 	public ObjectQuestion(BaseObject[] objectsToUse)
 	{

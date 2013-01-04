@@ -57,7 +57,7 @@ import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
 
-public class CustomPlanningRowsQuestion extends DynamicChoiceQuestion
+public class CustomPlanningRowsQuestion extends ProjectBasedDynamicQuestion
 {
 	public CustomPlanningRowsQuestion(Project projectToUse)
 	{

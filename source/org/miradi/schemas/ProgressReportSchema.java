@@ -36,7 +36,7 @@ public class ProgressReportSchema extends BaseObjectSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaChoice(ProgressReport.TAG_PROGRESS_STATUS, getQuestion(ProgressReportLongStatusQuestion.class));
+		createFieldSchemaChoice(ProgressReport.TAG_PROGRESS_STATUS, ProgressReportLongStatusQuestion.class);
 		createFieldSchemaDate(ProgressReport.TAG_PROGRESS_DATE);
 		createFieldSchemaMultiLineUserText(ProgressReport.TAG_DETAILS);
 	}

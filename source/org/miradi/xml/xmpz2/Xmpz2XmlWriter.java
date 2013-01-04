@@ -85,10 +85,28 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	
 	public void writeChoiceData(final BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, final ChoiceData choiceData) throws Exception
 	{
-		final ChoiceQuestion choiceQuestion = choiceData.getChoiceQuestion();
-		final String code = choiceData.get();
-		String readableCode = choiceQuestion.convertToReadableCode(code);
+		String readableCode = getReadableCode(choiceData);
+		
 		writeField(baseObjectSchema, fieldSchema, readableCode);
+	}
+	
+	public void writeChoiceData(final String elementName, final BaseObject baseObject, final String tag) throws Exception
+	{
+		ObjectData choiceData = baseObject.getField(tag);
+		String readableCode = getReadableCode(choiceData);
+		
+		writeElement(elementName, readableCode);
+	}
+
+	private String getReadableCode(ObjectData choiceData) throws Exception
+	{
+		if (!choiceData.isChoiceItemData())
+			throw new Exception("Expecting a ChoiceData object!");
+		
+		ChoiceQuestion question = choiceData.getChoiceQuestion();
+		String code = choiceData.get();
+		
+		return question.convertToReadableCode(code);
 	}
 
 	public void writeStringData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string) throws Exception
@@ -96,20 +114,26 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 		writeField(baseObjectSchema, fieldSchema, string);
 	}
 
-	public void writeCodeListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String codeListAsString) throws Exception
+	public void writeCodeListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ChoiceQuestion questionToUse, String codeListAsString) throws Exception
 	{
 		CodeList codes = new CodeList(codeListAsString);
 		final String elementName = appendChildNameToParentName(baseObjectSchema, fieldSchema);
-		writeCodeList(elementName, codes);
+		writeCodeList(elementName, questionToUse, codes);
 	}
 
-	public void writeCodeList(final String elementName, CodeList codes)	throws Exception
+	public void writeCodeList(final String elementName, ChoiceQuestion questionToUse, CodeList codes)	throws Exception
 	{
 		if (codes.hasData())
-			writeNonOptionalCodeListElement(elementName, codes);
+			writeNonOptionalCodeListElement(elementName, questionToUse, codes);
 	}
 
-	public void writeNonOptionalCodeListElement(final String elementName, final CodeList codes)	throws Exception
+	public void writeNonOptionalCodeListElement(final String elementName, ChoiceQuestion questionToUse, final CodeList codes)	throws Exception
+	{
+		CodeList readableCodes = convortToReadableCodes(questionToUse, codes);
+		writeNonOptionalCodeListElement(elementName, readableCodes);
+	}
+
+	public void writeNonOptionalCodeListElement(final String elementName, final CodeList codes) throws Exception
 	{
 		final String elementContainerName = createContainerElementName(elementName);
 		writeStartElement(elementContainerName);
@@ -119,6 +143,18 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 		}
 		
 		writeEndElement(elementContainerName);
+	}
+	
+	private CodeList convortToReadableCodes(ChoiceQuestion questionToUse, CodeList internalCodes)
+	{
+		CodeList readableCodes = new CodeList();
+		for (String internalCode : internalCodes)
+		{
+			String readableCode = questionToUse.convertToReadableCode(internalCode);
+			readableCodes.add(readableCode);
+		}
+		
+		return readableCodes;
 	}
 
 	public void writeDateData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String isoDate) throws Exception

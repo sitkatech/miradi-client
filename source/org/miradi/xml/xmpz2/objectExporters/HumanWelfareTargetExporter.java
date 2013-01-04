@@ -35,4 +35,10 @@ public class HumanWelfareTargetExporter extends AbstractTargetExporter
 	{
 		return HUMAN_WELFARE_TARGET;
 	}
+
+	@Override
+	public String getExporterContainerName(final int objectTypeToUse)
+	{
+		return HUMAN_WELFARE_TARGET;
+	}
 }

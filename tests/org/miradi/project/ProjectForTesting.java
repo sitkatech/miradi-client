@@ -160,6 +160,7 @@ import org.miradi.schemas.ProgressPercentSchema;
 import org.miradi.schemas.ProgressReportSchema;
 import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.schemas.RareProjectDataSchema;
+import org.miradi.schemas.ReportTemplateSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.ScopeBoxSchema;
@@ -1585,6 +1586,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createAndPopulateCategoryTwo();
 		populateDashboard();
 		populateBaseObjectWithSampleData(createBaseObject(XslTemplateSchema.getObjectType()));
+		populateBaseObjectWithSampleData(createBaseObject(ReportTemplateSchema.getObjectType()));
 	}
 	
 	public void populateBaseObjectWithSampleData(BaseObject baseObject) throws Exception
@@ -1634,14 +1636,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 		}
 		if (field.isCodeListData())
 		{
-			CodeList allCodes = field.getChoiceQuestion().getAllCodes();
-			final CodeList oneCodeList = new CodeList(new String[]{allCodes.lastElement()});
+			final CodeList oneCodeList = new CodeList(new String[]{getSampleCode(field)});
 			return oneCodeList.toString();
 		}
 		if (field.isChoiceItemData())
 		{
-			final CodeList allCodes = field.getChoiceQuestion().getAllCodes();
-			return allCodes.lastElement();
+			return getSampleCode(field);
 		}
 		if (field.isCodeData())
 		{
@@ -1653,6 +1653,17 @@ public class ProjectForTesting extends ProjectWithHelpers
 		}
 		
 		throw new Exception("no sample data for: " + field.getClass().getSimpleName());
+	}
+
+	public String getSampleCode(ObjectData field)
+	{
+		ChoiceQuestion question = field.getChoiceQuestion();
+		if (question.isProjectBasedDynamicQuestion())
+			return "dyanmicSampleCode";
+			
+		CodeList allCodes = question.getAllCodes();
+		final String lastElement = allCodes.lastElement();
+		return lastElement;
 	}
 
 	private void populateDashboard() throws Exception

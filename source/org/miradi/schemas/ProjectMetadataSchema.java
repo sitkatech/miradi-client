@@ -66,14 +66,14 @@ public class ProjectMetadataSchema extends BaseObjectSchema
 		createFieldSchemaDate(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
 		
 		createFieldSchemaInteger(ProjectMetadata.TAG_CURRENCY_DECIMAL_PLACES);
-		createFieldSchemaChoice(ProjectMetadata.TAG_CURRENCY_TYPE, getQuestion(CurrencyTypeQuestion.class));
+		createFieldSchemaChoice(ProjectMetadata.TAG_CURRENCY_TYPE, CurrencyTypeQuestion.class);
 		createFieldSchemaSingleLineUserText(ProjectMetadata.TAG_CURRENCY_SYMBOL);
 		createFieldSchemaNumber(ProjectMetadata.TAG_TOTAL_BUDGET_FOR_FUNDING);
 		createFieldSchemaPercentage(ProjectMetadata.TAG_BUDGET_SECURED_PERCENT);
-		createFieldSchemaChoice(ProjectMetadata.TAG_FISCAL_YEAR_START, getQuestion(FiscalYearStartQuestion.class));
+		createFieldSchemaChoice(ProjectMetadata.TAG_FISCAL_YEAR_START, FiscalYearStartQuestion.class);
 		createFieldSchemaNumber(ProjectMetadata.TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR);
-		createFieldSchemaChoice(ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, getQuestion(QuarterColumnsVisibilityQuestion.class));
-		createFieldSchemaChoice(ProjectMetadata.TAG_PLANNING_TREE_TARGET_NODE_POSITION, getQuestion(PlanningTreeTargetPositionQuestion.class));
+		createFieldSchemaChoice(ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, QuarterColumnsVisibilityQuestion.class);
+		createFieldSchemaChoice(ProjectMetadata.TAG_PLANNING_TREE_TARGET_NODE_POSITION, PlanningTreeTargetPositionQuestion.class);
 		
 		createFieldSchemaFloat(ProjectMetadata.TAG_PROJECT_LATITUDE);
 		createFieldSchemaFloat(ProjectMetadata.TAG_PROJECT_LONGITUDE);
@@ -92,7 +92,7 @@ public class ProjectMetadataSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(ProjectMetadata.TAG_FINANCIAL_COMMENTS);
 		createFieldSchemaDate(ProjectMetadata.TAG_WORKPLAN_START_DATE);
 		createFieldSchemaDate(ProjectMetadata.TAG_WORKPLAN_END_DATE);
-		createFieldSchemaChoice(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, getQuestion(BudgetTimePeriodQuestion.class));
+		createFieldSchemaChoice(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, BudgetTimePeriodQuestion.class);
 		createFieldSchemaMultiLineUserText(ProjectMetadata.TAG_PLANNING_COMMENTS);
 		
 		createFieldSchemaInteger(ProjectMetadata.TAG_HUMAN_POPULATION);
@@ -121,12 +121,12 @@ public class ProjectMetadataSchema extends BaseObjectSchema
 		createFieldSchemaSingleLineUserText(ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER);
 		createFieldSchemaSingleLineUserText(ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
 		
-		createFieldSchemaChoice(ProjectMetadata.TAG_DIAGRAM_FONT_SIZE, getQuestion(FontSizeQuestion.class));
-		createFieldSchemaChoice(ProjectMetadata.TAG_DIAGRAM_FONT_FAMILY, getQuestion(FontFamiliyQuestion.class));
-		createFieldSchemaChoice(ProjectMetadata.TAG_THREAT_RATING_MODE, getQuestion(ThreatRatingModeChoiceQuestion.class));
+		createFieldSchemaChoice(ProjectMetadata.TAG_DIAGRAM_FONT_SIZE, FontSizeQuestion.class);
+		createFieldSchemaChoice(ProjectMetadata.TAG_DIAGRAM_FONT_FAMILY, FontFamiliyQuestion.class);
+		createFieldSchemaChoice(ProjectMetadata.TAG_THREAT_RATING_MODE, ThreatRatingModeChoiceQuestion.class);
 		createFieldSchemaStringRefMap(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP);
-		createFieldSchemaChoice(ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE, getQuestion(TargetModeQuestion.class));
-		createFieldSchemaChoice(ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION, getQuestion(DiagramObjectDataInclusionQuestion.class));
+		createFieldSchemaChoice(ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE, TargetModeQuestion.class);
+		createFieldSchemaChoice(ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION, DiagramObjectDataInclusionQuestion.class);
 		
 		createPseudoFieldSchemaString(ProjectMetadata.PSEUDO_TAG_PROJECT_FILENAME);
 		createPseudoFieldSchemaString(ProjectMetadata.PSEUDO_TAG_ALL_THREAT_CLASSIFICATIONS);

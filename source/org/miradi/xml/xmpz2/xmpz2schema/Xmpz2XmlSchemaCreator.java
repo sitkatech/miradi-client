@@ -133,6 +133,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		creators.add(createDashboardUserChoiceMapSchemaCreator());
 		creators.add(writeExtraDataSectionElement());
 		creators.add(defineExtraDataItemElement());
+		creators.add(defineThreatStressRatingElement());
 		
 		for(Xmpz2CustomSchemaDefinitionCreator creator : creators)
 		{
@@ -828,6 +829,18 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		creator.addTextAttributeElement(EXTRA_DATA_ITEM_NAME);
 		creator.addOptionalTextSchemaElement(EXTRA_DATA_ITEM_VALUE);
 		
+		return creator;
+	}
+	
+	private Xmpz2CustomSchemaDefinitionCreator defineThreatStressRatingElement()
+	{
+		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), THREAT_STRESS_RATING);
+		creator.addChildElement(THREAT_STRESS_RATING + STRESS_ID, STRESS_ID + DOT_ELEMENT);
+		creator.addOptionalChildElement(THREAT_STRESS_RATING + CONTRIBUTION, VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE);
+		creator.addOptionalChildElement(THREAT_STRESS_RATING + IRREVERSIBILITY, VOCABULARY_IRREVERSIBILITY_CODE);
+		creator.addOptionalChildElement(THREAT_STRESS_RATING + IS_ACTIVE, getSchemaWriter().createBooleanType());
+		creator.addOptionalChildElement(THREAT_STRESS_RATING + CALCULATED_THREAT_STRESS_RATING, VOCABULARY_THREAT_RATING);
+
 		return creator;
 	}
 	

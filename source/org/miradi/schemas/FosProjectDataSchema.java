@@ -36,7 +36,7 @@ public class FosProjectDataSchema extends BaseObjectSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaChoice(FosProjectData.TAG_TRAINING_TYPE, getQuestion(FosTrainingTypeQuestion.class));
+		createFieldSchemaChoice(FosProjectData.TAG_TRAINING_TYPE, FosTrainingTypeQuestion.class);
 		createFieldSchemaSingleLineUserText(FosProjectData.TAG_TRAINING_DATES);
 		createFieldSchemaSingleLineUserText(FosProjectData.TAG_TRAINERS);
 		createFieldSchemaSingleLineUserText(FosProjectData.TAG_COACHES);

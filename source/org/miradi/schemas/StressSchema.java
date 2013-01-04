@@ -37,8 +37,8 @@ public class StressSchema extends FactorSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaChoice(Stress.TAG_SCOPE, getQuestion(StressScopeChoiceQuestion.class));
-		createFieldSchemaChoice(Stress.TAG_SEVERITY, getQuestion(StressSeverityChoiceQuestion.class));
+		createFieldSchemaChoice(Stress.TAG_SCOPE, StressScopeChoiceQuestion.class);
+		createFieldSchemaChoice(Stress.TAG_SEVERITY, StressSeverityChoiceQuestion.class);
 		createPseudoFieldSchemaQuestion(Stress.PSEUDO_STRESS_RATING);
 	}
 	

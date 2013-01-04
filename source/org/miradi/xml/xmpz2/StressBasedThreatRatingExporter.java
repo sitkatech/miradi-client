@@ -76,52 +76,66 @@ public class StressBasedThreatRatingExporter implements Xmpz2XmlConstants
 	
 	private void exportStressBasedThreatRatingDetailsRow(Target target) throws Exception
 	{
-		ORefList stressRefs = target.getStressRefs();
-		for (int index = 0; index < stressRefs.size(); ++index)
+		ThreatTargetChainWalker chainWalker = new ThreatTargetChainWalker(getProject());
+		ORefSet upstreamThreatsFromTarget = chainWalker.getUpstreamThreatRefsFromTarget(target);
+		ORefList sortedThreatRefs = new ORefList(upstreamThreatsFromTarget);
+		sortedThreatRefs.sort();
+		for(int threatIndex = 0; threatIndex < sortedThreatRefs.size(); ++threatIndex)
 		{
-			Stress stress = Stress.find(getProject(), stressRefs.get(index));
-			ThreatTargetChainWalker chainWalker = new ThreatTargetChainWalker(getProject());
-			ORefSet upstreamThreatsFromTarget = chainWalker.getUpstreamThreatRefsFromTarget(target);
-			ORefList sortedThreatRefs = new ORefList(upstreamThreatsFromTarget);
-			sortedThreatRefs.sort();
-			for(int threatIndex = 0; threatIndex < sortedThreatRefs.size(); ++threatIndex)
-			{
-				Cause threat = Cause.find(getProject(), sortedThreatRefs.get(threatIndex));
-				getWriter().writeStartElement(getParentElementName());
-				ORef targetRef = target.getRef();
-				ORef threatRef = threat.getRef();
-				exportThreatId(threatRef);
-				exportStressId(stress.getRef());
-				exportTargetId(targetRef);
-				exportStressBasedRatingComment(threatRef, targetRef);
-				exportStressBasedThreatRatingDetails(target, stress, threat);
-				getWriter().writeEndElement(getParentElementName());
-			}
+			Cause threat = Cause.find(getProject(), sortedThreatRefs.get(threatIndex));
+			getWriter().writeStartElement(getParentElementName());
+			ORef targetRef = target.getRef();
+			ORef threatRef = threat.getRef();
+			exportThreatId(threatRef);
+			exportTargetId(targetRef);
+			exportStressBasedRatingComment(threatRef, targetRef);
+			exportStressBasedCalculatedThreatTargetRating(target.getRef(), threat.getRef());
+			writeThreatStressRatings(target, threat);
+			getWriter().writeEndElement(getParentElementName());
 		}
 	}
 
-	private void exportStressBasedThreatRatingDetails(Target target, Stress stress, Cause threat) throws Exception
+	private void writeThreatStressRatings(Target target, Cause threat) throws Exception
 	{
-		ChoiceItem irreversibility = ThreatStressRatingDetailsTableExporter.getIrreversibility(getProject(), target.getRef(), threat.getRef(), stress);
-		getWriter().writeElement(getParentElementName() + IRREVERSIBILITY, irreversibility.getCode());
+		ThreatTargetVirtualLinkHelper helper = new ThreatTargetVirtualLinkHelper(getProject());
+		getWriter().writeStartElement(getParentElementName() + THREAT_STRESS_RATING);
+		ORefList stressRefs = target.getStressRefs();
+		for(ORef stressRef : stressRefs)
+		{
+			getWriter().writeStartElement(THREAT_STRESS_RATING);
+			Stress stress = Stress.find(getProject(), stressRef);
+			ORef threatStressRatingRef = helper.findThreatStressRatingReferringToStress(threat.getRef(), target.getRef(), stress.getRef());
+			exportThreatStressRating(target, stress, threat, ThreatStressRating.find(getProject(), threatStressRatingRef));
+			getWriter().writeEndElement(THREAT_STRESS_RATING);
+		}
 		
-		ChoiceItem contribution = ThreatStressRatingDetailsTableExporter.getContribution(getProject(), target.getRef(), threat.getRef(), stress);
-		getWriter().writeElement(getParentElementName() + CONTRIBUTION, contribution.getCode());
-		
-		ThreatStressRating threatStressRating = ThreatStressRatingDetailsTableExporter.findThreatStressRating(getProject(), target.getRef(), threat.getRef(), stress);
-		if (threatStressRating != null)
-			getWriter().writeElement(getParentElementName(), threatStressRating, ThreatStressRating.TAG_IS_ACTIVE);
-		
-		exportStressBasedThreatStressRating(target.getRef(), threat.getRef());
+		getWriter().writeEndElement(getParentElementName() + THREAT_STRESS_RATING);
 	}
 	
-	private void exportStressBasedThreatStressRating(ORef targetRef, ORef threatRef) throws Exception
+	private void exportThreatStressRating(Target target, Stress stress, Cause threat, ThreatStressRating threatStressRating) throws Exception
+	{
+		exportStressId(stress.getRef());
+
+		ChoiceItem irreversibility = ThreatStressRatingDetailsTableExporter.getIrreversibility(getProject(), target.getRef(), threat.getRef(), stress);
+		getWriter().writeElement(THREAT_STRESS_RATING + IRREVERSIBILITY, irreversibility.getCode());
+
+		ChoiceItem contribution = ThreatStressRatingDetailsTableExporter.getContribution(getProject(), target.getRef(), threat.getRef(), stress);
+		getWriter().writeElement(THREAT_STRESS_RATING + CONTRIBUTION, contribution.getCode());
+		
+		getWriter().writeElement(THREAT_STRESS_RATING, threatStressRating, ThreatStressRating.TAG_IS_ACTIVE);
+
+		int calculatedThreatRating = threatStressRating.calculateThreatRating();
+		String safeThreatRatingCode = ThreatRatingFramework.getSafeThreatRatingCode(calculatedThreatRating);
+		getWriter().writeElement(THREAT_STRESS_RATING + CALCULATED_THREAT_STRESS_RATING, safeThreatRatingCode);
+	}
+
+	private void exportStressBasedCalculatedThreatTargetRating(ORef targetRef, ORef threatRef) throws Exception
 	{
 		ThreatTargetVirtualLinkHelper virtualLink = new ThreatTargetVirtualLinkHelper(getProject());
 		int rawThreatStressRating = virtualLink.calculateStressBasedThreatRating(threatRef, targetRef);
 		String safeThreatRatingCode = ThreatRatingFramework.getSafeThreatRatingCode(rawThreatStressRating);
 		ChoiceQuestion question = getProject().getQuestion(ThreatStressRatingChoiceQuestion.class);
-		exportStressBasedThreatRatingCode(CALCULATED_RATING, question.findChoiceByCode(safeThreatRatingCode));
+		exportStressBasedThreatRatingCode(CALCULATED_THREAT_TARGET_RATING, question.findChoiceByCode(safeThreatRatingCode));
 	}
 
 	private void exportStressBasedThreatRatingCode(String elementName, ChoiceItem rating) throws Exception
@@ -154,7 +168,7 @@ public class StressBasedThreatRatingExporter implements Xmpz2XmlConstants
 	
 	private void exportStressId(ORef stressRef) throws Exception
 	{
-		exportId(getParentElementName() + STRESS, STRESS, stressRef);
+		exportId(THREAT_STRESS_RATING + STRESS, STRESS, stressRef);
 	}
 
 	private void exportId(String parentElementName, String idElementName, ORef ref) throws Exception

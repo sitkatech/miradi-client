@@ -34,7 +34,7 @@ public class ReportTemplate extends BaseObject
 
 	public static ReportTemplateSchema createSchema(final Project projectToUse)
 	{
-		return new ReportTemplateSchema(projectToUse);
+		return new ReportTemplateSchema();
 	}
 		
 	@Override

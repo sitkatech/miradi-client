@@ -57,18 +57,19 @@ abstract public class AbstractTimePeriodCostsWriter2 implements Xmpz2XmlConstant
 	{
 		for (CategorizedQuantity categorizedQuantity : categorizedQuantaties)
 		{
-			getWriter().writeStartElement(dateUnitsDetailsParentElementName);
-			
-			
-			getWriter().writeRefIfValid(dateUnitsDetailsParentElementName, RESOURCE_ID, categorizedQuantity.getResourceRef());
-			getWriter().writeRefIfValid(dateUnitsDetailsParentElementName, FUNDING_SOURCE_ID, categorizedQuantity.getFundingSourceRef());
-			getWriter().writeRefIfValid(dateUnitsDetailsParentElementName, ACCOUNTING_CODE_ID, categorizedQuantity.getAccountingCodeRef());
-			getWriter().writeRefIfValid(dateUnitsDetailsParentElementName, BUDGET_CATEGORY_ONE_ID, categorizedQuantity.getCategoryOneRef());
-			getWriter().writeRefIfValid(dateUnitsDetailsParentElementName, BUDGET_CATEGORY_TWO_ID, categorizedQuantity.getCategoryTwoRef());
 			if (categorizedQuantity.getQuantity().hasValue())
-				writeEffortDetails(dateUnitsDetailsParentElementName + DETAILS, dateUnit, categorizedQuantity.getQuantity().getValue());
-			
-			getWriter().writeEndElement(dateUnitsDetailsParentElementName);
+			{
+				getWriter().writeStartElement(dateUnitsDetailsParentElementName);
+				getWriter().writeRefIfValid(dateUnitsDetailsParentElementName, RESOURCE_ID, categorizedQuantity.getResourceRef());
+				getWriter().writeRefIfValid(dateUnitsDetailsParentElementName, FUNDING_SOURCE_ID, categorizedQuantity.getFundingSourceRef());
+				getWriter().writeRefIfValid(dateUnitsDetailsParentElementName, ACCOUNTING_CODE_ID, categorizedQuantity.getAccountingCodeRef());
+				getWriter().writeRefIfValid(dateUnitsDetailsParentElementName, BUDGET_CATEGORY_ONE_ID, categorizedQuantity.getCategoryOneRef());
+				getWriter().writeRefIfValid(dateUnitsDetailsParentElementName, BUDGET_CATEGORY_TWO_ID, categorizedQuantity.getCategoryTwoRef());
+				if (categorizedQuantity.getQuantity().hasValue())
+					writeEffortDetails(dateUnitsDetailsParentElementName + DETAILS, dateUnit, categorizedQuantity.getQuantity().getValue());
+
+				getWriter().writeEndElement(dateUnitsDetailsParentElementName);
+			}
 		}
 	}
 	
