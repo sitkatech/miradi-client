@@ -87,7 +87,7 @@ public class RtfWriter
 		getWriter().writeln(jpegHeader);
 		
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		SaveImageJPEGDoer.saveJpeg(baos, bufferedImage);	
+		SaveImageJPEGDoer.saveImage(baos, bufferedImage);	
 		byte[] imageAsBytes = baos.toByteArray();
 		baos.close();
 		final int BYTES_PER_LINE = 32;

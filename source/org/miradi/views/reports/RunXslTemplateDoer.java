@@ -26,6 +26,7 @@ import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.Set;
 
+import javax.imageio.stream.FileImageOutputStream;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
@@ -130,7 +131,7 @@ public class RunXslTemplateDoer extends ObjectsDoer
 	private void writeImage(File imagesDir, String imageName, BufferedImage bufferedImage) throws Exception
 	{
 		File imageFile = new File(imagesDir, imageName);
-		FileOutputStream out = new FileOutputStream(imageFile);
+		FileImageOutputStream out = new FileImageOutputStream(imageFile);
 		try
 		{
 			new SaveImagePngDoer().saveImage(out, bufferedImage);
