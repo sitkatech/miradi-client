@@ -24,10 +24,9 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.TaskSchema;
-import org.miradi.xml.xmpz2.BaseObjectExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
-public class TaskExporter extends BaseObjectExporter
+public class TaskExporter extends BaseObjectWithLeaderResourceFieldExporter
 {
 	public TaskExporter(Xmpz2XmlWriter writerToUse)
 	{

@@ -27,10 +27,9 @@ import org.miradi.questions.StrategyImpactQuestion;
 import org.miradi.questions.StrategyTaxonomyQuestion;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.StrategySchema;
-import org.miradi.xml.xmpz2.BaseObjectExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
-public class StrategyExporter extends BaseObjectExporter
+public class StrategyExporter extends BaseObjectWithLeaderResourceFieldExporter
 {
 	public StrategyExporter(Xmpz2XmlWriter writerToUse)
 	{

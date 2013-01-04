@@ -29,7 +29,7 @@ import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class IndicatorImporter extends BaseObjectImporter
+public class IndicatorImporter extends BaseObjectWithLeaderResourceFieldImporter
 {
 	public IndicatorImporter(Xmpz2XmlImporter importerToUse)
 	{

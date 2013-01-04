@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Fri Jan 04 10:12:14 EST 2013 $
+# $LastChangedDate: Fri Jan 04 10:52:49 EST 2013 $
 # $LastChangedRevision: 216 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/216'
 start = ConservationProject.element
@@ -210,11 +210,11 @@ Task.element = element miradi:Task
   element miradi:TaskDetails { formatted_text }? &
   element miradi:TaskExpenseAssignmentIds { ExpenseAssignmentId.element* }? &
   element miradi:TaskId { text }? &
+  element miradi:TaskLeaderResourceId { ResourceId.element }? &
   element miradi:TaskName { formatted_text }? &
   element miradi:TaskOrderedSubTaskIds { SubTaskId.element* }? &
   element miradi:TaskProgressReportIds { ProgressReportId.element* }? &
   element miradi:TaskResourceAssignmentIds { ResourceAssignmentId.element* }? &
-  element miradi:TaskResourceId { ResourceId.element }? &
   element miradi:TaskCalculatedCosts { CalculatedCosts.element }?
 }
 
@@ -260,6 +260,7 @@ Indicator.element = element miradi:Indicator
   element miradi:IndicatorFutureStatusRating { vocabulary_status }? &
   element miradi:IndicatorFutureStatusSummary { text }? &
   element miradi:IndicatorId { text }? &
+  element miradi:IndicatorLeaderResourceId { ResourceId.element }? &
   element miradi:IndicatorMeasurementIds { MeasurementId.element* }? &
   element miradi:IndicatorName { formatted_text }? &
   element miradi:IndicatorOrderedMethodIds { MethodId.element* }? &
@@ -267,7 +268,6 @@ Indicator.element = element miradi:Indicator
   element miradi:IndicatorProgressReportIds { ProgressReportId.element* }? &
   element miradi:IndicatorRatingSource { vocabulary_rating_source }? &
   element miradi:IndicatorResourceAssignmentIds { ResourceAssignmentId.element* }? &
-  element miradi:IndicatorResourceId { ResourceId.element }? &
   element miradi:IndicatorThresholds { IndicatorThreshold.element* }? &
   element miradi:IndicatorViabilityRatingsComments { formatted_text }? &
   element miradi:IndicatorCalculatedCosts { CalculatedCosts.element }?
@@ -410,13 +410,13 @@ Strategy.element = element miradi:Strategy
   element miradi:StrategyId { text }? &
   element miradi:StrategyImpactRating { vocabulary_strategy_impact_rating_code }? &
   element miradi:StrategyIndicatorIds { IndicatorId.element* }? &
+  element miradi:StrategyLeaderResourceId { ResourceId.element }? &
   element miradi:StrategyLegacyTncStrategyRanking { formatted_text }? &
   element miradi:StrategyName { formatted_text }? &
   element miradi:StrategyObjectiveIds { ObjectiveId.element* }? &
   element miradi:StrategyOrderedActivityIds { ActivityId.element* }? &
   element miradi:StrategyProgressReportIds { ProgressReportId.element* }? &
   element miradi:StrategyResourceAssignmentIds { ResourceAssignmentId.element* }? &
-  element miradi:StrategyResourceId { ResourceId.element }? &
   element miradi:StrategyStandardClassification { vocabulary_strategy_taxonomy_code }? &
   element miradi:StrategyStatus { vocabulary_strategy_status }? &
   element miradi:StrategyCalculatedCosts { CalculatedCosts.element }?

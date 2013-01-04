@@ -28,7 +28,7 @@ import org.miradi.schemas.TaskSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 
-public class TaskImporter extends BaseObjectImporter
+public class TaskImporter extends BaseObjectWithLeaderResourceFieldImporter
 {
 	public TaskImporter(Xmpz2XmlImporter importerToUse)
 	{

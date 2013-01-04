@@ -845,7 +845,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return creator;
 	}
 	
-	private String createOptionalSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, final String elementType)
+	public String createOptionalSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, final String elementType)
 	{
 		return createElementSchema(baseObjectSchema, fieldSchema, getSchemaWriter().createDotElement(elementType));
 	}
