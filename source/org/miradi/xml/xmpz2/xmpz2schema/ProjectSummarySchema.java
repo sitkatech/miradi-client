@@ -22,11 +22,11 @@ package org.miradi.xml.xmpz2.xmpz2schema;
 
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
+import org.miradi.questions.ProjectSharingQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.schemas.FieldSchemaChoice;
 import org.miradi.schemas.ProjectMetadataSchema;
-import org.miradi.schemas.TncProjectDataSchema;
 
 
 public class ProjectSummarySchema extends AbstractProjectSummarySchema
@@ -41,7 +41,7 @@ public class ProjectSummarySchema extends AbstractProjectSummarySchema
 	{
 		ProjectMetadataSchema schema = new ProjectMetadataSchema();
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_PROJECT_NAME));
-		addFieldSchema(new TncProjectDataSchema().getFieldSchema(TncProjectData.TAG_PROJECT_SHARING_CODE));
+		addFieldSchema(createFieldSchemaRequiredChoice(TncProjectData.TAG_PROJECT_SHARING_CODE, ProjectSharingQuestion.class));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_PROJECT_LANGUAGE));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER));
