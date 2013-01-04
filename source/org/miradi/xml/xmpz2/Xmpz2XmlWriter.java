@@ -129,7 +129,7 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 
 	public void writeNonOptionalCodeListElement(final String elementName, ChoiceQuestion questionToUse, final CodeList codes)	throws Exception
 	{
-		CodeList readableCodes = convortToReadableCodes(questionToUse, codes);
+		CodeList readableCodes = convertToReadableCodes(questionToUse, codes);
 		writeNonOptionalCodeListElement(elementName, readableCodes);
 	}
 
@@ -145,7 +145,7 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 		writeEndElement(elementContainerName);
 	}
 	
-	private CodeList convortToReadableCodes(ChoiceQuestion questionToUse, CodeList internalCodes)
+	private CodeList convertToReadableCodes(ChoiceQuestion questionToUse, CodeList internalCodes)
 	{
 		CodeList readableCodes = new CodeList();
 		for (String internalCode : internalCodes)
