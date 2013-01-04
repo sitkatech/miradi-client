@@ -114,6 +114,7 @@ public class StressBasedThreatRatingExporter implements Xmpz2XmlConstants
 	
 	private void exportThreatStressRating(Target target, Stress stress, Cause threat, ThreatStressRating threatStressRating) throws Exception
 	{
+		exportThreatId(THREAT_STRESS_RATING, threat.getRef());
 		exportStressId(stress.getRef());
 
 		ChoiceItem irreversibility = ThreatStressRatingDetailsTableExporter.getIrreversibility(getProject(), target.getRef(), threat.getRef(), stress);
@@ -158,7 +159,12 @@ public class StressBasedThreatRatingExporter implements Xmpz2XmlConstants
 	
 	private void exportThreatId(ORef threatRef) throws Exception
 	{
-		exportId(getParentElementName() + THREAT, THREAT, threatRef);
+		exportThreatId(getParentElementName(), threatRef);
+	}
+
+	private void exportThreatId(final String parentElementName, ORef threatRef)	throws Exception
+	{
+		exportId(parentElementName + THREAT, THREAT, threatRef);
 	}
 
 	private void exportTargetId(ORef targetRef) throws Exception
