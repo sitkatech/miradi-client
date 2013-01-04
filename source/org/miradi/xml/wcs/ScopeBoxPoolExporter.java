@@ -23,8 +23,8 @@ package org.miradi.xml.wcs;
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ScopeBox;
-import org.miradi.questions.ScopeBoxTypeQuestion;
 import org.miradi.schemas.ScopeBoxSchema;
+import org.miradi.xml.generic.LegacyScopeBoxTypeQuestion;
 import org.miradi.xml.generic.XmlSchemaCreator;
 
 public class ScopeBoxPoolExporter extends FactorPoolExporter
@@ -39,6 +39,6 @@ public class ScopeBoxPoolExporter extends FactorPoolExporter
 	{
 		super.exportFields(writer, baseObject);
 		
-		writeCodeElement(XmlSchemaCreator.SCOPE_BOX_COLOR_ELEMENT_NAME, baseObject, ScopeBox.TAG_SCOPE_BOX_TYPE_CODE, ScopeBoxTypeQuestion.createScopeBoxTypeQuestion());
+		writeCodeElement(XmlSchemaCreator.SCOPE_BOX_COLOR_ELEMENT_NAME, baseObject, ScopeBox.TAG_SCOPE_BOX_TYPE_CODE, LegacyScopeBoxTypeQuestion.createScopeBoxTypeQuestion());
 	}
 }

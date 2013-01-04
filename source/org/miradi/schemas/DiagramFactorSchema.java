@@ -42,12 +42,12 @@ public class DiagramFactorSchema extends BaseObjectSchema
 		createFieldSchemaDimension(DiagramFactor.TAG_SIZE);
 		createFieldSchemaPoint(DiagramFactor.TAG_LOCATION);
 		createFieldSchemaRequiredRef(DiagramFactor.TAG_WRAPPED_REF);
-		createFieldSchemaChoice(DiagramFactor.TAG_FONT_SIZE, getQuestion(DiagramFactorFontSizeQuestion.class));
-		createFieldSchemaChoice(DiagramFactor.TAG_FOREGROUND_COLOR, getQuestion(DiagramFactorFontColorQuestion.class));
-		createFieldSchemaChoice(DiagramFactor.TAG_FONT_STYLE, getQuestion(DiagramFactorFontStyleQuestion.class));
+		createFieldSchemaChoice(DiagramFactor.TAG_FONT_SIZE, DiagramFactorFontSizeQuestion.class);
+		createFieldSchemaChoice(DiagramFactor.TAG_FOREGROUND_COLOR, DiagramFactorFontColorQuestion.class);
+		createFieldSchemaChoice(DiagramFactor.TAG_FONT_STYLE, DiagramFactorFontStyleQuestion.class);
 		createFieldSchemaReflist(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, DIAGRAM_FACTOR + ID);
-		createFieldSchemaChoice(DiagramFactor.TAG_BACKGROUND_COLOR, getQuestion(DiagramFactorBackgroundQuestion.class));
-		createFieldSchemaChoice(DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, getQuestion(TextBoxZOrderQuestion.class));
+		createFieldSchemaChoice(DiagramFactor.TAG_BACKGROUND_COLOR, DiagramFactorBackgroundQuestion.class);
+		createFieldSchemaChoice(DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, TextBoxZOrderQuestion.class);
 	}
 
 	public static int getObjectType()

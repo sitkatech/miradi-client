@@ -25,6 +25,8 @@ import java.awt.Point;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 
+import javax.xml.xpath.XPathExpressionException;
+
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.BooleanData;
@@ -313,13 +315,25 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		return StringUtilities.removeLastChar(elementName);
 	}
 
-	public void importCodeListField(Node node, String elementContainerName, ORef destinationRef, String destinationTag) throws Exception
+	public void importCodeListField(Node node, String elementContainerName, ORef destinationRef, String destinationTag, ChoiceQuestion question) throws Exception
 	{
 		String elementName = findElementName(elementContainerName, destinationTag);
 		String containerElementName = elementContainerName + elementName + CONTAINER_ELEMENT_TAG;
-		CodeList codesToImport = getCodeList(node, containerElementName);
+		CodeList readableCodesToImport = getCodeList(node, containerElementName);
+		CodeList internalCodes = convertToInternalCodes(question, readableCodesToImport);
 		
-		setData(destinationRef, destinationTag, codesToImport.toString());
+		setData(destinationRef, destinationTag, internalCodes.toString());
+	}
+
+	private CodeList convertToInternalCodes(ChoiceQuestion question, CodeList readableCodesToImport)
+	{
+		CodeList internalCodes = new CodeList();
+		for (String readableCode : readableCodesToImport)
+		{
+			internalCodes.add(question.convertToInternalCode(readableCode));
+		}
+		
+		return internalCodes;
 	}
 
 	public CodeList getCodeList(Node node, String containerElementName) throws Exception
@@ -340,7 +354,13 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	{
 		Xmpz2TagToElementNameMap map = new Xmpz2TagToElementNameMap();
 		String elementName = map.findElementName(containerName, destinationTag);
-		String importedReadableCode = getPathData(node, new String[]{containerName  + elementName, });
+		final String containerElementName = containerName  + elementName;
+		importCodeFieldWithoutElementNameSubstitute(node, containerElementName, destinationRef,	destinationTag, question);
+	}
+
+	public void importCodeFieldWithoutElementNameSubstitute(Node node, final String containerElementName, ORef destinationRef, String destinationTag, ChoiceQuestion question) throws XPathExpressionException, Exception
+	{
+		String importedReadableCode = getPathData(node, new String[]{containerElementName, });
 		String internalCode = question.convertToInternalCode(importedReadableCode);		
 		importField(destinationRef, destinationTag, internalCode);
 	}

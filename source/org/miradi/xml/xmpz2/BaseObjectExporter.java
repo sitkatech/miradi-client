@@ -28,6 +28,7 @@ import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.schemas.AbstractFieldSchema;
@@ -97,6 +98,9 @@ public class BaseObjectExporter implements Xmpz2XmlConstants
 		
 		if (Cause.is(wrappedFactor))
 			return CAUSE;
+		
+		if (HumanWelfareTarget.is(wrappedFactor))
+			return HUMAN_WELFARE_TARGET;
 		
 		return wrappedFactor.getTypeName();
 	}

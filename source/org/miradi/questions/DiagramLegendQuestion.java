@@ -65,6 +65,24 @@ public class DiagramLegendQuestion extends StaticChoiceQuestion
 				new ChoiceItem(GroupBoxSchema.OBJECT_NAME, GroupBoxSchema.OBJECT_NAME),
 		};
 	}
+	
+	@Override
+	public String convertToReadableCode(String code)
+	{
+		if (code.equals(HumanWelfareTargetSchema.OBJECT_NAME))
+			return HumanWelfareTargetSchema.HUMAN_WELLBEING_TARGET;
+		
+		return super.convertToReadableCode(code);
+	}
+	
+	@Override
+	public String convertToInternalCode(String code)
+	{
+		if (code.equals(HumanWelfareTargetSchema.HUMAN_WELLBEING_TARGET))
+			return HumanWelfareTargetSchema.OBJECT_NAME;
+		
+		return super.convertToInternalCode(code);
+	}
 
 	public static final String STRESS_HIDDEN_TYPE_CODE = StressSchema.OBJECT_NAME;
 }

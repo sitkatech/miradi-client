@@ -38,7 +38,7 @@ public class TncProjectDataSchema extends BaseObjectSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaChoice(TncProjectData.TAG_PROJECT_SHARING_CODE, getQuestion(ProjectSharingQuestion.class));
+		createFieldSchemaChoice(TncProjectData.TAG_PROJECT_SHARING_CODE, ProjectSharingQuestion.class);
 		createFieldSchemaCodeList(TncProjectData.TAG_PROJECT_PLACE_TYPES, getQuestion(TncProjectPlaceTypeQuestion.class));
 		createFieldSchemaCodeList(TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, getQuestion(TncOrganizationalPrioritiesQuestion.class));
 		createFieldSchemaMultiLineUserText(TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);

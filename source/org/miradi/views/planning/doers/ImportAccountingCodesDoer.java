@@ -55,6 +55,7 @@ public class ImportAccountingCodesDoer extends ViewDoer
 		if (!isAvailable())
 			return;
 		
+		EAM.notifyDialog(EAM.text("The file containing Accounting Codes must have each code on a line by itself,\n with the code first, and then a description, separated by a TAB character"));
 		File startingDirectory = UiFileChooser.getHomeDirectoryFile();
 		String windowTitle = EAM.text("Import Accounting Codes");
 		UiFileChooser.FileDialogResults results = UiFileChooser.displayFileOpenDialog(

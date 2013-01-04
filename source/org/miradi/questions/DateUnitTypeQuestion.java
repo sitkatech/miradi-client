@@ -28,7 +28,7 @@ import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectCalendar;
 
-public class DateUnitTypeQuestion extends DynamicChoiceQuestion
+public class DateUnitTypeQuestion extends ProjectBasedDynamicQuestion
 {
 	public DateUnitTypeQuestion(Project projectToUse, ORefList resourceAssignmentRefsToUse)
 	{

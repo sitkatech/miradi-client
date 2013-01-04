@@ -37,8 +37,8 @@ public class ThreatStressRatingSchema extends BaseObjectSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaChoice(ThreatStressRating.TAG_CONTRIBUTION, getQuestion(StressContributionQuestion.class));
-		createFieldSchemaChoice(ThreatStressRating.TAG_IRREVERSIBILITY, getQuestion(StressIrreversibilityQuestion.class));
+		createFieldSchemaChoice(ThreatStressRating.TAG_CONTRIBUTION, StressContributionQuestion.class);
+		createFieldSchemaChoice(ThreatStressRating.TAG_IRREVERSIBILITY, StressIrreversibilityQuestion.class);
 		createFieldSchemaRequiredRef(ThreatStressRating.TAG_STRESS_REF);
 		createFieldSchemaRequiredRef(ThreatStressRating.TAG_THREAT_REF);
 		createFieldSchemaBoolean(ThreatStressRating.TAG_IS_ACTIVE);

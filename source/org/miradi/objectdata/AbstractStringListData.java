@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectdata;
 
-import java.text.ParseException;
-
 import org.miradi.utils.CodeList;
 
 abstract public class AbstractStringListData extends ObjectData
@@ -33,7 +31,7 @@ abstract public class AbstractStringListData extends ObjectData
 	}
 	
 	@Override
-	public void set(String newValue) throws ParseException
+	public void set(String newValue) throws Exception
 	{
 		set(new CodeList(newValue));
 	}

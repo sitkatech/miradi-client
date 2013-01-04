@@ -57,7 +57,6 @@ import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
-import org.miradi.questions.ScopeBoxTypeQuestion;
 import org.miradi.questions.StaticChoiceQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
@@ -128,7 +127,7 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 		defineVocabulary(writer, VOCABULARY_TARGET_STATUS, new StatusQuestion());
 		defineVocabulary(writer, VOCABULARY_TARGET_VIABILITY_MODE, new LegacyViabilityModeQuestion());
 		defineVocabulary(writer, VOCABULARY_THREAT_TAXONOMY_CODE, new ThreatClassificationQuestion());
-		defineVocabulary(writer, VOCABULARY_SCOPE_BOX_TYPE, new ScopeBoxTypeQuestion(null));
+		defineVocabulary(writer, VOCABULARY_SCOPE_BOX_TYPE, new LegacyScopeBoxTypeQuestion(null));
 		defineVocabulary(writer, VOCABULARY_STRESS_SEVERITY, new StressSeverityChoiceQuestion());
 		defineVocabulary(writer, VOCABULARY_STRESS_SCOPE, new StressScopeChoiceQuestion());
 		defineVocabulary(writer, VOCABULARY_STRATEGY_TAXONOMY_CODE, new StrategyTaxonomyQuestion());

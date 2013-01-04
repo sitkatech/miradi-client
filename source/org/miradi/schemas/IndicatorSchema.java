@@ -39,16 +39,16 @@ public class IndicatorSchema extends BaseObjectSchema
 		super.fillFieldSchemas();
 		
 		createFieldSchemaSingleLineUserText(Indicator.TAG_SHORT_LABEL);
-		createFieldSchemaChoice(Indicator.TAG_PRIORITY, getQuestion(PriorityRatingQuestion.class));
+		createFieldSchemaChoice(Indicator.TAG_PRIORITY, PriorityRatingQuestion.class);
 		createFieldSchemaIdList(Indicator.TAG_METHOD_IDS, TaskSchema.getObjectType());
 		createFieldSchemaCodeToUserStringMap(Indicator.TAG_THRESHOLDS_MAP);
 		createFieldSchemaCodeToUserStringMap(Indicator.TAG_THRESHOLD_DETAILS_MAP);
-		createFieldSchemaChoice(Indicator.TAG_RATING_SOURCE, getQuestion(RatingSourceQuestion.class));
+		createFieldSchemaChoice(Indicator.TAG_RATING_SOURCE, RatingSourceQuestion.class);
 		createOwnedFieldSchemaReflist(Indicator.TAG_MEASUREMENT_REFS, MEASUREMENT);
 		createFieldSchemaMultiLineUserText(Indicator.TAG_DETAIL);
 		createFieldSchemaMultiLineUserText(Indicator.TAG_COMMENTS);
 		createFieldSchemaMultiLineUserText(Indicator.TAG_VIABILITY_RATINGS_COMMENTS);
-		createFieldSchemaChoice(Indicator.TAG_FUTURE_STATUS_RATING, getQuestion(StatusQuestion.class));
+		createFieldSchemaChoice(Indicator.TAG_FUTURE_STATUS_RATING, StatusQuestion.class);
 		createFieldSchemaDate(Indicator.TAG_FUTURE_STATUS_DATE);
 		createFieldSchemaSingleLineUserText(Indicator.TAG_FUTURE_STATUS_SUMMARY);
 		createFieldSchemaMultiLineUserText(Indicator.TAG_FUTURE_STATUS_DETAIL);
