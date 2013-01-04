@@ -20,6 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objectdata.ChoiceData;
+import org.miradi.objectdata.ObjectData;
+import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceQuestion;
 
 
@@ -35,6 +38,12 @@ abstract public class AbstractQuestionBasedFieldSchema extends AbstractFieldSche
 	public ChoiceQuestion getQuestion()
 	{
 		return question;
+	}
+	
+	@Override
+	public ObjectData createField(final BaseObject baseObjectToUse)
+	{
+		return new ChoiceData(getTag(), getQuestion());
 	}
 	
 	private ChoiceQuestion question;

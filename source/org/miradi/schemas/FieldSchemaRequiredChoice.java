@@ -22,10 +22,16 @@ package org.miradi.schemas;
 
 import org.miradi.questions.ChoiceQuestion;
 
-public class FieldSchemaChoice extends AbstractQuestionBasedFieldSchema
+public class FieldSchemaRequiredChoice extends AbstractQuestionBasedFieldSchema
 {
-	public FieldSchemaChoice(final String tagToUse, final ChoiceQuestion questionToUse)
+	public FieldSchemaRequiredChoice(String tagToUse, ChoiceQuestion questionToUse)
 	{
 		super(tagToUse, questionToUse);
+	}
+	
+	@Override
+	public boolean isRequired()
+	{
+		return true;
 	}
 }

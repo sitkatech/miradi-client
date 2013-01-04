@@ -352,6 +352,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	public String createChoiceSchemaElement(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, ChoiceQuestion choiceQuestion)
 	{
 		String vocabularyName = getChoiceQuestionToSchemaElementNameMap().findVocabulary(choiceQuestion);
+		if (fieldSchema.isRequired())
+			return createRequiredElementSchema(baseObjectSchema, fieldSchema, vocabularyName);
+		
 		return createElementSchema(baseObjectSchema, fieldSchema, vocabularyName);
 	}
 	
