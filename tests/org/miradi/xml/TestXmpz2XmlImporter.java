@@ -64,7 +64,7 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 		super(name);
 	}
 
-	public void testHumanWellbeignTargergetAsHiddenType() throws Exception
+	public void testHumanWellbeingTargetAsHiddenType() throws Exception
 	{
 		CodeList hiddenTypeCodes = new CodeList();
 		hiddenTypeCodes.add(HumanWelfareTargetSchema.OBJECT_NAME);
