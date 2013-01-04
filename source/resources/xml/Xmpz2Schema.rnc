@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Fri Jan 04 14:45:38 EST 2013 $
+# $LastChangedDate: Fri Jan 04 15:53:56 EST 2013 $
 # $LastChangedRevision: 216 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/216'
 start = ConservationProject.element
@@ -159,7 +159,6 @@ TNCProjectData.element = element miradi:TNCProjectData
 
 WWFProjectData.element = element miradi:WWFProjectData
 {
-  WWFProjectDataCountriesContainer.element ? &
   WWFProjectDataEcoRegionsContainer.element ? &
   WWFProjectDataManagingOfficesContainer.element ? &
   WWFProjectDataRegionsContainer.element ? &
@@ -757,11 +756,6 @@ element miradi:code { vocabulary_wwf_managing_offices } *
 WWFProjectDataRegionsContainer.element = element miradi:WWFProjectDataRegionsContainer
 {
 element miradi:code { vocabulary_wwf_regions } *
-}
-
-WWFProjectDataCountriesContainer.element = element miradi:WWFProjectDataCountriesContainer
-{
-element miradi:code { vocabulary_countries } *
 }
 
 WWFProjectDataEcoRegionsContainer.element = element miradi:WWFProjectDataEcoRegionsContainer

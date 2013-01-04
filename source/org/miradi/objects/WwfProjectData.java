@@ -60,6 +60,5 @@ public class WwfProjectData extends BaseObject
 	
 	public static final String TAG_MANAGING_OFFICES = "ManagingOffices";
 	public static final String TAG_REGIONS = "Regions";
-	public static final String TAG_COUNTRIES = "Countries";
 	public static final String TAG_ECOREGIONS = "EcoRegions";
 }

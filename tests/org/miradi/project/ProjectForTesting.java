@@ -98,7 +98,6 @@ import org.miradi.objects.WwfProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.CountriesQuestion;
 import org.miradi.questions.DashboardFlagsQuestion;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.questions.DiagramFactorFontColorQuestion;
@@ -266,7 +265,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		ORef wwfProjectDataRef = getSingletonObjectRef(WwfProjectDataSchema.getObjectType());
 		fillObjectUsingCommand(wwfProjectDataRef, WwfProjectData.TAG_MANAGING_OFFICES, new WwfManagingOfficesQuestion().getAllCodes().toString());
 		fillObjectUsingCommand(wwfProjectDataRef, WwfProjectData.TAG_REGIONS, new WwfRegionsQuestion().getAllCodes().toString());
-		fillObjectUsingCommand(wwfProjectDataRef, WwfProjectData.TAG_COUNTRIES, new CountriesQuestion().getAllCodes().toString());
 		fillObjectUsingCommand(wwfProjectDataRef, WwfProjectData.TAG_ECOREGIONS, new WwfEcoRegionsQuestion().getAllCodes().toString());
 	}
 	
