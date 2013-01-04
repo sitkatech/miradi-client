@@ -22,7 +22,6 @@ package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.WwfProjectData;
-import org.miradi.questions.CountriesQuestion;
 import org.miradi.questions.WwfEcoRegionsQuestion;
 import org.miradi.questions.WwfManagingOfficesQuestion;
 import org.miradi.questions.WwfRegionsQuestion;
@@ -41,7 +40,6 @@ public class WwfProjectDataSchema extends BaseObjectSchema
 		
 		createFieldSchemaCodeList(WwfProjectData.TAG_MANAGING_OFFICES, getQuestion(WwfManagingOfficesQuestion.class));
 		createFieldSchemaCodeList(WwfProjectData.TAG_REGIONS, getQuestion(WwfRegionsQuestion.class));
-		createFieldSchemaCodeList(WwfProjectData.TAG_COUNTRIES, getQuestion(CountriesQuestion.class));
 		createFieldSchemaCodeList(WwfProjectData.TAG_ECOREGIONS, getQuestion(WwfEcoRegionsQuestion.class));
 	}
 	
