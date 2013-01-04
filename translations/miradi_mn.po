@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-03 18:31-0600\n"
+"POT-Creation-Date: 2013-01-04 13:31-0600\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -4076,7 +4076,7 @@ msgstr "Холбоогүй хүчин зүйлүүдийг анхаарахгү�
 msgid "Image Scale %"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:95
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:96
 msgid "Images dir could not be created!"
 msgstr ""
 
@@ -5510,7 +5510,7 @@ msgstr "Өгөгдөхүүнийг төлөвлөх"
 msgid "PlanningSubViewName|Custom"
 msgstr "ТөлөвлөлтДэдХарагдацНэр|Үйлчлүүлэгч"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:113
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:114
 msgid "Please choose a empty directory!"
 msgstr ""
 
@@ -5872,7 +5872,7 @@ msgstr "Нэр солих..."
 msgid "Replace Language Pack"
 msgstr "Хэлний багцыг солих"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:152
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:153
 msgid "Report Completed"
 msgstr ""
 
@@ -6013,7 +6013,7 @@ msgstr "Саванн- Чийглэг Саванн"
 msgid "Save As..."
 msgstr "Нэр, төрөл, байрлал...сольж хадгалах"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:101
+#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:107
 msgid "Save..."
 msgstr ""
 
@@ -8822,7 +8822,7 @@ msgstr ""
 msgid "label|Error"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:90
+#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:96
 #: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:55
 #: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:75
 msgid "save..."

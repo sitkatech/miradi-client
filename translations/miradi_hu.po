@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-03 18:31-0600\n"
+"POT-Creation-Date: 2013-01-04 13:31-0600\n"
 "PO-Revision-Date: 2011-02-15 16:35-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3868,7 +3868,7 @@ msgstr ""
 msgid "Image Scale %"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:95
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:96
 msgid "Images dir could not be created!"
 msgstr ""
 
@@ -5257,7 +5257,7 @@ msgstr ""
 msgid "PlanningSubViewName|Custom"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:113
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:114
 msgid "Please choose a empty directory!"
 msgstr ""
 
@@ -5602,7 +5602,7 @@ msgstr ""
 msgid "Replace Language Pack"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:152
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:153
 msgid "Report Completed"
 msgstr ""
 
@@ -5740,7 +5740,7 @@ msgstr ""
 msgid "Save As..."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:101
+#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:107
 msgid "Save..."
 msgstr ""
 
@@ -8360,7 +8360,7 @@ msgstr ""
 msgid "label|Error"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:90
+#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:96
 #: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:55
 #: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:75
 msgid "save..."

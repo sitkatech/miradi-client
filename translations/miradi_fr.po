@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-03 18:31-0600\n"
+"POT-Creation-Date: 2013-01-04 13:31-0600\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -4110,7 +4110,7 @@ msgstr "Ignorer facteurs non liés..."
 msgid "Image Scale %"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:95
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:96
 msgid "Images dir could not be created!"
 msgstr ""
 
@@ -5576,7 +5576,7 @@ msgstr "Planification des paramètres"
 msgid "PlanningSubViewName|Custom"
 msgstr "Personnaliser"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:113
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:114
 msgid "Please choose a empty directory!"
 msgstr ""
 
@@ -5940,7 +5940,7 @@ msgstr "Changement de nom ..."
 msgid "Replace Language Pack"
 msgstr "Remplacer Pack de langues"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:152
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:153
 msgid "Report Completed"
 msgstr ""
 
@@ -6081,7 +6081,7 @@ msgstr "Savane - Savane humide"
 msgid "Save As..."
 msgstr "Enregistrer sous ..."
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:101
+#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:107
 msgid "Save..."
 msgstr ""
 
@@ -8919,7 +8919,7 @@ msgstr "ne sera pas affiché. Décochez-le pour avoir Miradi"
 msgid "label|Error"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:90
+#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:96
 #: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:55
 #: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:75
 msgid "save..."
