@@ -226,6 +226,7 @@ public interface Xmpz2XmlConstants
 	public static final String DELETED_ORPHANS_ELEMENT_NAME = "DeletedOrphans";
 	public static final String SCOPE_BOX_COLOR_ELEMENT_NAME = "ScopeBoxTypeCode";
 	public static final String PROJECT_SHARE_OUTSIDE_ORGANIZATION = "ShareOutsideOrganization";
+	public static final String LESSONS_LEARNED = "LessonsLearned";
 	public static final String TARGET_STATUS_ELEMENT_NAME = "ViabilityStatus";
 	public static final String TNC_OPERATING_UNITS = "TNCOperatingUnits";
 	public static final String TNC_PROJECT_PLACE_TYPES = "TNCProjectPlaceTypes";
