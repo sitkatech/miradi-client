@@ -21,9 +21,10 @@ package org.miradi.views.umbrella;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
+
+import javax.imageio.stream.FileImageOutputStream;
+import javax.imageio.stream.ImageOutputStream;
 
 import org.miradi.dialogs.ImageExportScaleDialog;
 import org.miradi.main.AppPreferences;
@@ -45,7 +46,7 @@ abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 	@Override
 	protected boolean doWork(File destinationFile, ProgressInterface progressInterface) throws Exception
 	{
-		FileOutputStream out = new FileOutputStream(destinationFile);
+		ImageOutputStream out = createOutputStream(destinationFile);
 		try
 		{
 			saveImage(out, progressInterface);
@@ -55,6 +56,11 @@ abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 		{
 			out.close();	
 		}
+	}
+
+	protected FileImageOutputStream createOutputStream(File destinationFile) throws IOException
+	{
+		return new FileImageOutputStream(destinationFile);
 	}
 
 	@Override
@@ -85,7 +91,7 @@ abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 		return userChoseOk;
 	}
 	
-	private void saveImage(FileOutputStream out, ProgressInterface progressInterface) throws Exception
+	private void saveImage(ImageOutputStream out, ProgressInterface progressInterface) throws Exception
 	{
 		progressInterface.setStatusMessage(EAM.text("save..."), 2);
 		BufferedImage image = getView().getImage(scalePercent);
@@ -101,7 +107,7 @@ abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 		return EAM.text("Save...");
 	}
 
-	abstract public void saveImage(OutputStream out, BufferedImage image) throws IOException;
+	abstract public void saveImage(ImageOutputStream out, BufferedImage image) throws IOException;
 
 	private int scalePercent;
 }

@@ -20,15 +20,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella;
 
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
+import java.util.Iterator;
 
-import org.miradi.utils.MiradiFileSaveChooser;
+import javax.imageio.ImageIO;
+import javax.imageio.ImageWriter;
+import javax.imageio.stream.ImageOutputStream;
+import javax.imageio.stream.MemoryCacheImageOutputStream;
+
+import org.miradi.utils.JPEGFileFilter;
 import org.miradi.utils.JpgFileChooser;
-
-import com.sun.image.codec.jpeg.JPEGCodec;
-import com.sun.image.codec.jpeg.JPEGEncodeParam;
-import com.sun.image.codec.jpeg.JPEGImageEncoder;
+import org.miradi.utils.MiradiFileSaveChooser;
 
 public class SaveImageJPEGDoer extends AbstractImageSaverDoer
 {
@@ -39,18 +42,23 @@ public class SaveImageJPEGDoer extends AbstractImageSaverDoer
 	}
 	
 	@Override
-	public void saveImage(OutputStream out, BufferedImage image) throws IOException
+	public void saveImage(ImageOutputStream out, BufferedImage image) throws IOException
 	{
 		saveJpeg(out, image);
 	}
-
-	public static void saveJpeg(OutputStream out, BufferedImage image) throws IOException
+	
+	public static void saveImage(ByteArrayOutputStream rawOut, BufferedImage image) throws IOException
 	{
-		JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out); 
-		JPEGEncodeParam jpegParams = encoder.getDefaultJPEGEncodeParam(image);
-		float quality = 1;
-		jpegParams.setQuality(quality, false);
-		encoder.setJPEGEncodeParam(jpegParams);
-		encoder.encode(image);
+		MemoryCacheImageOutputStream out = new MemoryCacheImageOutputStream(rawOut);
+		saveJpeg(out, image);
+	}
+
+	public static void saveJpeg(ImageOutputStream out, BufferedImage image) throws IOException
+	{
+		String extensionWithoutDot = JPEGFileFilter.EXTENSION.replaceAll("\\.", "");
+		Iterator<ImageWriter> writers = ImageIO.getImageWritersBySuffix(extensionWithoutDot);
+		ImageWriter writer = writers.next();
+		writer.setOutput(out);
+		writer.write(image);
 	}
 }
