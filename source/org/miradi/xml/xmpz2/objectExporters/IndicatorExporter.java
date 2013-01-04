@@ -28,10 +28,9 @@ import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
-import org.miradi.xml.xmpz2.BaseObjectExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
-public class IndicatorExporter extends BaseObjectExporter
+public class IndicatorExporter extends BaseObjectWithLeaderResourceFieldExporter
 {
 	public IndicatorExporter(Xmpz2XmlWriter writerToUse)
 	{

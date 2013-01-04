@@ -18,18 +18,18 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.xmpz2.xmpz2schema;
-
-import java.util.Vector;
+package org.miradi.xml.xmpz2.objectExporters;
 
 import org.miradi.objects.BaseObject;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.xml.xmpz2.BaseObjectExporter;
+import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
-abstract public class BaseObjectSchemaWriterWithCalcualtedCostsElement extends BaseObjectSchemaWriter
+abstract public class BaseObjectWithLeaderResourceFieldExporter extends BaseObjectExporter
 {
-	public BaseObjectSchemaWriterWithCalcualtedCostsElement(Xmpz2XmlSchemaCreator creatorToUse,	BaseObjectSchema baseObjectSchemaToUse)
+	public BaseObjectWithLeaderResourceFieldExporter(Xmpz2XmlWriter writerToUse, int objectTypeToUse)
 	{
-		super(creatorToUse, baseObjectSchemaToUse);
+		super(writerToUse, objectTypeToUse);
 	}
 	
 	@Override
@@ -42,23 +42,10 @@ abstract public class BaseObjectSchemaWriterWithCalcualtedCostsElement extends B
 	}
 	
 	@Override
-	protected Vector<String> createCustomSchemaFields()
+	protected void writeFields(BaseObject baseObject, BaseObjectSchema baseObjectSchema) throws Exception
 	{
-		Vector<String> schemaElements = super.createCustomSchemaFields();
+		super.writeFields(baseObject, baseObjectSchema);
 		
-		schemaElements.add(getXmpz2XmlSchemaCreator().createOptionalSchemaElement(getBaseObjectSchema(), getBaseObjectSchema().getFieldSchema(BaseObject.TAG_LEADER_RESOURCE), RESOURCE_ID));
-		
-		return schemaElements;
+		getWriter().writeRef(baseObject.getRef(BaseObject.TAG_LEADER_RESOURCE), baseObjectSchema.getXmpz2ElementName() + LEADER_RESURCE_ID, RESOURCE_ID);
 	}
-
-	
-	@Override
-	public Vector<String> createFieldSchemas() throws Exception
-	{
-		Vector<String> schemaElements = super.createFieldSchemas();
-		
-		schemaElements.add(getXmpz2XmlSchemaCreator().writeCalculatedCostSchemaElement(getBaseObjectSchema()));
-		
-		return schemaElements;
-	}	
 }

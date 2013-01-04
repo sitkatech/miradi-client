@@ -18,38 +18,35 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.xmpz2.xmpz2schema;
+package org.miradi.xml.xmpz2.objectImporters;
 
-import java.util.Vector;
-
-import org.miradi.objects.Indicator;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.BaseObject;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
+import org.w3c.dom.Node;
 
-public class IndicatorSchemaWriter extends BaseObjectSchemaWriterWithCalcualtedCostsElement
+abstract public class BaseObjectWithLeaderResourceFieldImporter extends BaseObjectImporter
 {
-	public IndicatorSchemaWriter(Xmpz2XmlSchemaCreator creatorToUse, BaseObjectSchema baseObjectSchemaToUse)
+	public BaseObjectWithLeaderResourceFieldImporter(Xmpz2XmlImporter importerToUse, BaseObjectSchema baseObjectSchemaToUse)
 	{
-		super(creatorToUse, baseObjectSchemaToUse);
+		super(importerToUse, baseObjectSchemaToUse);
 	}
 	
 	@Override
-	protected Vector<String> createCustomSchemaFields()
+	protected boolean isCustomImportField(String tag)
 	{
-		Vector<String> schemaElements = super.createCustomSchemaFields();
-		schemaElements.add(getXmpz2XmlSchemaCreator().createThresholdsSchemaElement(getBaseObjectSchema()));
+		if (tag.equals(BaseObject.TAG_LEADER_RESOURCE))
+			return true;
 		
-		return schemaElements;
+		return super.isCustomImportField(tag);
 	}
-
+	
 	@Override
-	protected boolean doesFieldRequireSpecialHandling(String tag)
+	public void importFields(Node baseObjectNode, ORef refToUse) throws Exception
 	{
-		if (tag.equals(Indicator.TAG_THRESHOLDS_MAP))
-			return true;
+		super.importFields(baseObjectNode, refToUse);
 		
-		if (tag.equals(Indicator.TAG_THRESHOLD_DETAILS_MAP))
-			return true;
-		
-		return super.doesFieldRequireSpecialHandling(tag);
-	}	
+		getImporter().importRefField(baseObjectNode, refToUse, getPoolName(), BaseObject.TAG_LEADER_RESOURCE, RESOURCE_ID);
+	}
 }
