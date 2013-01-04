@@ -835,6 +835,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private Xmpz2CustomSchemaDefinitionCreator defineThreatStressRatingElement()
 	{
 		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), THREAT_STRESS_RATING);
+		creator.addChildElement(THREAT_STRESS_RATING + THREAT_ID, THREAT_ID + DOT_ELEMENT);
 		creator.addChildElement(THREAT_STRESS_RATING + STRESS_ID, STRESS_ID + DOT_ELEMENT);
 		creator.addOptionalChildElement(THREAT_STRESS_RATING + CONTRIBUTION, VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE);
 		creator.addOptionalChildElement(THREAT_STRESS_RATING + IRREVERSIBILITY, VOCABULARY_IRREVERSIBILITY_CODE);
