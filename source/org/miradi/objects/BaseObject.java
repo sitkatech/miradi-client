@@ -1214,6 +1214,14 @@ abstract public class BaseObject
 		}
 		return null;
 	}
+	
+	public ORef getLeaderResourceRef()
+	{
+		if (getTags().contains(TAG_LEADER_RESOURCE))
+			return getRef(TAG_LEADER_RESOURCE);
+		
+		return ORef.INVALID;
+	}
 
 	public static BaseObject find(ObjectManager objectManager, ORef objectRef)
 	{
