@@ -22,7 +22,7 @@ package org.miradi.dialogs.viability;
 import org.miradi.dialogs.assignment.AssignmentsPropertiesPanel;
 import org.miradi.dialogs.expense.ExpensesPropertiesPanel;
 import org.miradi.main.MainWindow;
-import org.miradi.schemas.TaskSchema;
+import org.miradi.schemas.IndicatorSchema;
 
 public class IndicatorPropertiesPanelWithBudgetPanels extends AbstractIndicatorPropertiesPanel
 {
@@ -34,7 +34,7 @@ public class IndicatorPropertiesPanelWithBudgetPanels extends AbstractIndicatorP
 	@Override
 	protected void addBudgetSubPanels() throws Exception
 	{
-		addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(getMainWindow(), TaskSchema.getObjectType(), getPicker()));
-		addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), TaskSchema.getObjectType(), getPicker()));
+		addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(getMainWindow(), IndicatorSchema.getObjectType(), getPicker()));
+		addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), IndicatorSchema.getObjectType(), getPicker()));
 	}
 }

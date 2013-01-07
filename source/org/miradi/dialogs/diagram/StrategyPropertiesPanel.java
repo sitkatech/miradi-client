@@ -23,7 +23,7 @@ package org.miradi.dialogs.diagram;
 import org.miradi.dialogs.assignment.AssignmentsPropertiesPanel;
 import org.miradi.dialogs.expense.ExpensesPropertiesPanel;
 import org.miradi.main.MainWindow;
-import org.miradi.schemas.TaskSchema;
+import org.miradi.schemas.StrategySchema;
 
 public class StrategyPropertiesPanel extends AbstractStrategyPropertiesPanel
 {
@@ -35,7 +35,7 @@ public class StrategyPropertiesPanel extends AbstractStrategyPropertiesPanel
 	@Override
 	protected void addBudgetSubPanels() throws Exception
 	{
-		addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(getMainWindow(), TaskSchema.getObjectType(), getPicker()));
-		addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), TaskSchema.getObjectType(), getPicker()));
+		addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(getMainWindow(), StrategySchema.getObjectType(), getPicker()));
+		addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), StrategySchema.getObjectType(), getPicker()));
 	}
 }
