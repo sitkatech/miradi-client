@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-04 16:31-0600\n"
+"POT-Creation-Date: 2013-01-07 13:16-0600\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -5930,7 +5930,7 @@ msgid "Project Plan For "
 msgstr "Plano do Projeto para"
 
 #: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:47
-#: Miradi/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:46
+#: Miradi/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:49
 msgid "Project Resource"
 msgstr "Recurso do Projeto"
 
@@ -6300,7 +6300,7 @@ msgstr "Selecionar o Pacote de Idioma (Language Pack) para Instalação"
 msgid "Select Location..."
 msgstr "Selecionar Localização..."
 
-#: Miradi/source/org/miradi/dialogfields/WhoEditorField.java:41
+#: Miradi/source/org/miradi/dialogfields/WhoEditorField.java:43
 #: Miradi/source/org/miradi/dialogfields/WhenEditorField.java:43
 msgid "Select Project Resources"
 msgstr ""
