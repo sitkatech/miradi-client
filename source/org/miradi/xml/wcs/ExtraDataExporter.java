@@ -24,7 +24,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.schemas.TableSettingsSchema;
 import org.miradi.schemas.ViewDataSchema;
-import org.miradi.utils.StringUtilities;
 import org.miradi.utils.XmlUtilities2;
 
 
@@ -68,7 +67,6 @@ public class ExtraDataExporter extends AbstractXmlExporter
 			if (data.length() > 0)
 			{
 				getWcsXmlExporter().writeStartElementWithAttribute(getWcsXmlExporter().getWriter(), EXTRA_DATA_ITEM, EXTRA_DATA_ITEM_NAME, extraDataItemName);
-				data = StringUtilities.escapeQuotesWithBackslash(data);
 				data = XmlUtilities2.getXmlEncoded(data);
 				getWcsXmlExporter().writeOptionalElement(getWcsXmlExporter().getWriter(), EXTRA_DATA_ITEM_VALUE, data);
 				getWcsXmlExporter().writeEndElement(EXTRA_DATA_ITEM);
