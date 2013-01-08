@@ -28,10 +28,8 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
-import org.miradi.questions.BaseObjectQuestionWithExcludedRef;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ProjectResourceQuestion;
-import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.utils.CodeList;
 
 public class WhoEditorField extends ObjectDataField implements ReadonlyPanelAndPopupEditorProvider
@@ -76,7 +74,7 @@ public class WhoEditorField extends ObjectDataField implements ReadonlyPanelAndP
 	{
 
 		BaseObject baseObjectForRow = BaseObject.find(getProject(), getORef());
-		final BaseObjectQuestionWithExcludedRef question = new BaseObjectQuestionWithExcludedRef(getProject(), ProjectResourceSchema.getObjectType(), baseObjectForRow.getLeaderResourceRef());		
+		final ProjectResourceQuestion question = new ProjectResourceQuestion(getProject());		
 		return new WhoCodeListEditorComponent(baseObjectForRow, question);		
 	}
 
