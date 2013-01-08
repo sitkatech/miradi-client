@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-08 11:02-0600\n"
+"POT-Creation-Date: 2013-01-08 14:31-0600\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -5714,7 +5714,7 @@ msgid "Project Plan For "
 msgstr "-д зориулсан төслийн төлөвлөгөө "
 
 #: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:47
-#: Miradi/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:49
+#: Miradi/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:48
 msgid "Project Resource"
 msgstr "Төслийн нөөц"
 
@@ -6079,7 +6079,7 @@ msgstr "Суулгах хэлний багцыг сонгохl"
 msgid "Select Location..."
 msgstr "Байршилыг...сонгох"
 
-#: Miradi/source/org/miradi/dialogfields/WhoEditorField.java:43
+#: Miradi/source/org/miradi/dialogfields/WhoEditorField.java:41
 #: Miradi/source/org/miradi/dialogfields/WhenEditorField.java:43
 msgid "Select Project Resources"
 msgstr ""
