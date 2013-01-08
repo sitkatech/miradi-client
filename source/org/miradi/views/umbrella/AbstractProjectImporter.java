@@ -36,6 +36,7 @@ import org.miradi.exceptions.FutureSchemaVersionException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.exceptions.UserCanceledException;
 import org.miradi.exceptions.ValidationException;
+import org.miradi.files.AbstractMpfFileFilter;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
@@ -44,7 +45,6 @@ import org.miradi.utils.GenericMiradiFileFilter;
 import org.miradi.utils.MiradiBackgroundWorkerThread;
 import org.miradi.utils.MiradiFileSaveChooser;
 import org.miradi.utils.MiradiZipFile;
-import org.miradi.utils.MpfFileFilter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.views.noproject.NoProjectView;
 import org.miradi.views.noproject.RenameProjectDoer;
@@ -138,7 +138,7 @@ public abstract class AbstractProjectImporter
 	public File importProject(File fileToImport) throws Exception
 	{
 		final String fileNameWithoutExtension = getNameWithoutExtension(fileToImport);
-		final File proposedMpfProjectFile = new File(MpfFileFilter.createNameWithExtension(fileNameWithoutExtension));
+		final File proposedMpfProjectFile = new File(AbstractMpfFileFilter.createNameWithExtension(fileNameWithoutExtension));
 		
 		return importProject(EAM.getHomeDirectory(), fileToImport, proposedMpfProjectFile);
 	}

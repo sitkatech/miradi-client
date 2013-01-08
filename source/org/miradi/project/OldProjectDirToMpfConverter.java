@@ -24,10 +24,10 @@ import java.io.File;
 import java.util.Calendar;
 
 import org.martus.util.DirectoryUtils;
+import org.miradi.files.AbstractMpfFileFilter;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.MiradiZipFile;
-import org.miradi.utils.MpfFileFilter;
 import org.miradi.utils.MpzFileFilter;
 import org.miradi.utils.ZipUtilities;
 import org.miradi.views.umbrella.MpzProjectImporter;
@@ -69,7 +69,7 @@ public class OldProjectDirToMpfConverter
 			throw new Exception("Mpz to Mpf data conversion failed");
 		
 		MpzProjectImporter importer = new MpzProjectImporter(mainWindow);
-		File proposedProjectFile = new File(MpfFileFilter.createNameWithExtension(oldProjectDirectory.getName()));
+		File proposedProjectFile = new File(AbstractMpfFileFilter.createNameWithExtension(oldProjectDirectory.getName()));
 		File importedFile = importer.importProject(oldProjectDirectory.getParentFile(), oldProjectZippedAsBackup, proposedProjectFile);
 		if (importedFile != null)
 			DirectoryUtils.deleteEntireDirectoryTree(oldProjectDirectory);

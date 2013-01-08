@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2012, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2011, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -20,28 +20,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
-import javax.swing.filechooser.FileFilter;
+import java.io.File;
 
-import org.miradi.main.MainWindow;
+import org.miradi.files.AbstractMpfFileFilter;
 
-public class MpfFileChooser extends MiradiFileSaveChooser
+public class MpfFileFilterWithDirectories extends AbstractMpfFileFilter
 {
-	public MpfFileChooser(MainWindow mainWindow)
-	{
-		super(mainWindow);
-	}
-
 	@Override
-	public FileFilter[] getFileFilter()
+	public boolean accept(File pathname)
 	{
-		return new FileFilter[] {new MpfFileFilterWithDirectories(), };
+		if (pathname.isDirectory())
+			return true;
+		
+		return doesFileEndWithCorrectExtension(pathname);
 	}
-	
-	@Override
-	protected String getFileExtensionLabel()
-	{
-		return MIRADI_UI_EXTENSION_TAG;
-	}
-	
-	private static final String MIRADI_UI_EXTENSION_TAG = "Miradi";
 }

@@ -32,6 +32,7 @@ import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.UnexpectedNonSideEffectException;
 import org.miradi.exceptions.UnexpectedSideEffectException;
+import org.miradi.files.AbstractMpfFileFilter;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramLinkId;
@@ -133,7 +134,6 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.HtmlUtilities;
-import org.miradi.utils.MpfFileFilter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.StringUtilities;
 import org.miradi.utils.Translation;
@@ -1380,12 +1380,12 @@ public class Project
 	
 	public static String withoutMpfProjectSuffix(String name) throws Exception
 	{
-		return StringUtilities.stripTrailingString(name, MpfFileFilter.EXTENSION);
+		return StringUtilities.stripTrailingString(name, AbstractMpfFileFilter.EXTENSION);
 	}
 
 	public static int getMaximumProjectNameLength()
 	{
-		return MAX_PROJECT_FILENAME_LENGTH - MpfFileFilter.EXTENSION.length();
+		return MAX_PROJECT_FILENAME_LENGTH - AbstractMpfFileFilter.EXTENSION.length();
 	}
 
 	public static final String LIBRARY_VIEW_NAME = "Library";

@@ -29,12 +29,12 @@ import java.util.zip.ZipOutputStream;
 import org.martus.util.UnicodeStringWriter;
 import org.miradi.exceptions.InvalidICUNSelectionException;
 import org.miradi.exceptions.ValidationException;
+import org.miradi.files.AbstractMpfFileFilter;
 import org.miradi.main.EAM;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.ProjectSaver;
 import org.miradi.utils.CpmzFileChooser;
-import org.miradi.utils.MpfFileFilter;
 import org.miradi.utils.MpzFileFilterForChooserDialog;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.xml.XmlExporter;
@@ -214,7 +214,7 @@ public class ExportCpmzDoer extends XmlExporterDoer
 	}
 
 	public static final String PROJECT_ZIP_FILE_NAME = "project" + MpzFileFilterForChooserDialog.EXTENSION;
-	public static final String PROJECT_MPF_NAME = MpfFileFilter.createNameWithExtension("project");
+	public static final String PROJECT_MPF_NAME = AbstractMpfFileFilter.createNameWithExtension("project");
 	
 	private static final String VERSION_ENTRY_PATH = "project/json/version";
 	private static final String FUTURE_VERSION = "{\"Version\":99999}";
