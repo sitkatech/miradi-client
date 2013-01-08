@@ -196,7 +196,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			if (shortLabel.length() > 0)
 			{
 				//NOTE: not formatting as html since the label cannot contain html styling
-				return XmlUtilities2.convertXmlTextToPlainText(shortLabel);
+				return XmlUtilities2.getXmlDecoded(shortLabel);
 			}
 		}
 		

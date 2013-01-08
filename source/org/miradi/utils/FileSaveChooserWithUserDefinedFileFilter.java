@@ -36,7 +36,7 @@ public class FileSaveChooserWithUserDefinedFileFilter extends MiradiFileSaveChoo
 	@Override
 	protected String getFileExtensionLabel()
 	{
-		return XmlUtilities2.convertXmlTextToPlainText(extension);
+		return XmlUtilities2.getXmlDecoded(extension);
 	}
 
 	@Override

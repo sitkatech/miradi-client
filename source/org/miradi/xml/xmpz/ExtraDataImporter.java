@@ -67,7 +67,7 @@ public class ExtraDataImporter extends AbstractXmpzObjectImporter
 			if (extraDataItemValueNode != null)
 			{
 				String value = extraDataItemValueNode.getTextContent();
-				value = XmlUtilities2.convertXmlTextToPlainText(value);
+				value = XmlUtilities2.getXmlDecoded(value);
 				baseObject.setData(tag, value);
 			}
 		}

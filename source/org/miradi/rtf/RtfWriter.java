@@ -297,7 +297,7 @@ public class RtfWriter
 		encodedString = HtmlUtilities.replaceHtmlBullets(encodedString);
 		encodedString = HtmlUtilities.replaceHtmlTags(encodedString, "br", "\\\\line ");
 		encodedString = HtmlUtilities.stripAllHtmlTags(encodedString);
-		encodedString = XmlUtilities2.convertXmlTextToPlainText(encodedString);
+		encodedString = XmlUtilities2.getXmlDecoded(encodedString);
 		
 		String NEW_LINE_TO_SEPERATE_FROM_NEXT_CHAR = "\\~" + HtmlUtilities.BR_TAG;
 		StringBuffer buffer = new StringBuffer(encodedString);

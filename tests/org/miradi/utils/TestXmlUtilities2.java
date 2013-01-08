@@ -106,7 +106,7 @@ public class TestXmlUtilities2 extends MiradiTestCase
 
 	private void verifyDecoding(String expectedValue, String sampleValue)
 	{
-		assertEquals("did not decode?", expectedValue, XmlUtilities2.convertXmlTextToPlainText(sampleValue));
+		assertEquals("did not decode?", expectedValue, XmlUtilities2.getXmlDecoded(sampleValue));
 	}
 	
 	private void verifyEncoding(String expectedValue, String sampleValue)
