@@ -653,7 +653,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	
 		final ORefList sortedProjectResourceRefs = new ORefList(sortedProjectResources);
 		sortedProjectResourceRefs.addAll(new ORefList(unspecifiedBaseObjectRefs));
-		Vector<String> sortedNames = getResourceNames(sortedProjectResourceRefs);		
+		Vector<String> sortedNames = getResourceNames(sortedProjectResourceRefs, baseObject);		
 		String appendedResources = createAppendedResourceNames(sortedNames);
 		
 		return new TaglessChoiceItem(appendedResources);
@@ -697,24 +697,28 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		return appendedResources;
 	}
 
-	private Vector<String> getResourceNames(ORefList filteredResources)
+	private Vector<String> getResourceNames(ORefList filteredResources, BaseObject parentBaseObject)
 	{
 		Vector<String> names = new Vector<String>();
 		for(ORef resourceRef : filteredResources)
 		{
-			names.add(getWhoName(resourceRef));
+			names.add(getWhoName(resourceRef, parentBaseObject));
 		}
 		
 		return names;
 	}
 	
-	private String getWhoName(ORef resourceRef)
+	private String getWhoName(ORef resourceRef, BaseObject parentBaseObject)
 	{
 		if (resourceRef.isInvalid())
 			return Translation.getNotSpecifiedText();
 
 		ProjectResource projectResource = ProjectResource.find(getProject(), resourceRef);
-		return projectResource.getWho();	
+		final String who = projectResource.getWho();
+		if (parentBaseObject.getLeaderResourceRef().equals(resourceRef))
+			return who + "*";
+		
+		return who;	
 	}
 
 	public Object getValueAt(int row, int column)
