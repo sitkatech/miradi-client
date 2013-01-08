@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-07 14:47-0600\n"
+"POT-Creation-Date: 2013-01-08 11:02-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -233,7 +233,7 @@ msgstr ""
 msgid "%countLabel: %itemCount"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/FileSystemProjectOrDirectoryNode.java:92
+#: Miradi/source/org/miradi/wizard/noproject/FileSystemProjectOrDirectoryNode.java:91
 msgid "%s (old project)"
 msgstr ""
 
@@ -896,7 +896,7 @@ msgstr ""
 msgid "A project or file by this name already exists: "
 msgstr "使用该名称的项目或文件已存在: \t\t"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:70
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:69
 msgid "A project or file by this name already exists: %s"
 msgstr ""
 
@@ -2362,7 +2362,7 @@ msgstr "迁移 \t\t"
 msgid "Button|Move"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:75
+#: Miradi/source/org/miradi/main/SampleInstaller.java:76
 msgid "Button|No"
 msgstr ""
 
@@ -2424,7 +2424,7 @@ msgstr ""
 msgid "Button|TT|Choose a directory"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:75
+#: Miradi/source/org/miradi/main/SampleInstaller.java:76
 msgid "Button|Yes"
 msgstr ""
 
@@ -3199,7 +3199,7 @@ msgstr ""
 msgid "Do you want to attempt to import %s into Miradi?"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:74
+#: Miradi/source/org/miradi/main/SampleInstaller.java:75
 msgid "Do you want to install the sample project?"
 msgstr ""
 
@@ -3302,7 +3302,7 @@ msgstr ""
 msgid "Enter As: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:101
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:100
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:120
 msgid "Enter New Name"
 msgstr ""
@@ -3493,7 +3493,7 @@ msgstr "JPEG (*.jpg) \t\t"
 msgid "FileFilter|MTE (*.mte)"
 msgstr "MTE (*.mte) \t\t"
 
-#: Miradi/source/org/miradi/utils/MpfFileFilter.java:38
+#: Miradi/source/org/miradi/files/AbstractMpfFileFilter.java:34
 msgid "FileFilter|Miradi (*%s)"
 msgstr ""
 
@@ -4115,7 +4115,7 @@ msgstr ""
 msgid "Install Language Pack"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:77
+#: Miradi/source/org/miradi/main/SampleInstaller.java:78
 msgid "Install Sample Project"
 msgstr ""
 
@@ -4167,7 +4167,7 @@ msgstr "绪论 \t\t"
 msgid "Invalid project name:"
 msgstr "无效的项目名称： \t\t"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:76
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:75
 msgid "Invalid project name: %s"
 msgstr ""
 
@@ -5680,7 +5680,7 @@ msgstr "相关策略和活动"
 msgid "Remove Team Member"
 msgstr "去除团队成员 \t\t"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:52
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:51
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:68
 msgid "Rename Failed"
 msgstr ""
@@ -5812,7 +5812,7 @@ msgstr "可持续科技教育计划（STEP） \t\t"
 msgid "SWOT"
 msgstr "态势（SWOT） \t\t"
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:49
+#: Miradi/source/org/miradi/main/SampleInstaller.java:50
 msgid "Sample Project Installed"
 msgstr ""
 

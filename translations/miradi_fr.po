@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-07 14:47-0600\n"
+"POT-Creation-Date: 2013-01-08 11:02-0600\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -235,7 +235,7 @@ msgstr "%2 dans %1 menace/cible figure avec un classement basé sur la tension"
 msgid "%countLabel: %itemCount"
 msgstr "%countLabel: %itemCount"
 
-#: Miradi/source/org/miradi/wizard/noproject/FileSystemProjectOrDirectoryNode.java:92
+#: Miradi/source/org/miradi/wizard/noproject/FileSystemProjectOrDirectoryNode.java:91
 msgid "%s (old project)"
 msgstr ""
 
@@ -992,7 +992,7 @@ msgstr ""
 msgid "A project or file by this name already exists: "
 msgstr "Un projet ou un fichier avec ce nom existe déjà :"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:70
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:69
 msgid "A project or file by this name already exists: %s"
 msgstr ""
 
@@ -2488,7 +2488,7 @@ msgstr "Migrer"
 msgid "Button|Move"
 msgstr "Déplacer"
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:75
+#: Miradi/source/org/miradi/main/SampleInstaller.java:76
 msgid "Button|No"
 msgstr "Non"
 
@@ -2550,7 +2550,7 @@ msgstr ""
 msgid "Button|TT|Choose a directory"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:75
+#: Miradi/source/org/miradi/main/SampleInstaller.java:76
 msgid "Button|Yes"
 msgstr "Oui"
 
@@ -3343,7 +3343,7 @@ msgstr ""
 msgid "Do you want to attempt to import %s into Miradi?"
 msgstr "Voulez-vous tenter d'importer %s dans Miradi ?"
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:74
+#: Miradi/source/org/miradi/main/SampleInstaller.java:75
 msgid "Do you want to install the sample project?"
 msgstr "Voulez-vous installer l'exemple de projet ?"
 
@@ -3450,7 +3450,7 @@ msgstr "Terminer :"
 msgid "Enter As: "
 msgstr "Entrer sous :"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:101
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:100
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:120
 msgid "Enter New Name"
 msgstr "Entrer Nouveau nom"
@@ -3653,7 +3653,7 @@ msgstr "JPEG (*.jpg)"
 msgid "FileFilter|MTE (*.mte)"
 msgstr "MTE (*.mte)"
 
-#: Miradi/source/org/miradi/utils/MpfFileFilter.java:38
+#: Miradi/source/org/miradi/files/AbstractMpfFileFilter.java:34
 msgid "FileFilter|Miradi (*%s)"
 msgstr ""
 
@@ -4291,7 +4291,7 @@ msgstr "Installer"
 msgid "Install Language Pack"
 msgstr "Installer pack de langue"
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:77
+#: Miradi/source/org/miradi/main/SampleInstaller.java:78
 msgid "Install Sample Project"
 msgstr "Installer exemple de projet"
 
@@ -4345,7 +4345,7 @@ msgstr "Introduction"
 msgid "Invalid project name:"
 msgstr "Nom projet non valide :"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:76
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:75
 msgid "Invalid project name: %s"
 msgstr ""
 
@@ -5926,7 +5926,7 @@ msgstr "Stratégies et activités correspondantes"
 msgid "Remove Team Member"
 msgstr "Supprimer Membre de l'équipe"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:52
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:51
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:68
 msgid "Rename Failed"
 msgstr "Changement de nom échoué"
@@ -6059,7 +6059,7 @@ msgstr "ÉTAPE"
 msgid "SWOT"
 msgstr "SWOT"
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:49
+#: Miradi/source/org/miradi/main/SampleInstaller.java:50
 msgid "Sample Project Installed"
 msgstr "Projet échantillon installé"
 
