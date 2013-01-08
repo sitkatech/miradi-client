@@ -90,7 +90,7 @@ public class HtmlUtilities
 	public static String convertHtmlToPlainText(String htmlDataValue)
 	{
 		htmlDataValue = replaceHtmlBrsWithNewlines(htmlDataValue);
-		htmlDataValue = XmlUtilities2.convertXmlTextToPlainText(htmlDataValue);
+		htmlDataValue = XmlUtilities2.getXmlDecoded(htmlDataValue);
 		htmlDataValue = HtmlUtilities.replaceHtmlBullets(htmlDataValue);
 		htmlDataValue = stripAllHtmlTags(htmlDataValue);
 		

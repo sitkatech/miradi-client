@@ -25,7 +25,7 @@ import org.miradi.main.EAM;
 
 public class XmlUtilities2
 {
-	public static String convertXmlTextToPlainText(String value)
+	public static String getXmlDecoded(String value)
 	{
 		return StringEscapeUtils.unescapeXml(value);
 	}
@@ -97,7 +97,7 @@ public class XmlUtilities2
 	
 	private static boolean isValidXmlWithNoHtmlTags(final String value)
 	{
-		final String decodedValue = convertXmlTextToPlainText(value);
+		final String decodedValue = getXmlDecoded(value);
 		final String encodedValue = getXmlEncoded(decodedValue);
 		
 		return encodedValue.equals(value);
