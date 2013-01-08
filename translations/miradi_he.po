@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-08 11:02-0600\n"
+"POT-Creation-Date: 2013-01-08 14:31-0600\n"
 "PO-Revision-Date: 2011-03-17 08:35-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -5449,7 +5449,7 @@ msgid "Project Plan For "
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:47
-#: Miradi/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:49
+#: Miradi/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:48
 msgid "Project Resource"
 msgstr ""
 
@@ -5797,7 +5797,7 @@ msgstr ""
 msgid "Select Location..."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/WhoEditorField.java:43
+#: Miradi/source/org/miradi/dialogfields/WhoEditorField.java:41
 #: Miradi/source/org/miradi/dialogfields/WhenEditorField.java:43
 msgid "Select Project Resources"
 msgstr ""
