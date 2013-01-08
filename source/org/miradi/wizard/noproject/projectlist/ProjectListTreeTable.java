@@ -42,6 +42,7 @@ import org.miradi.dialogs.tablerenderers.DefaultTableCellRendererWithPreferredHe
 import org.miradi.dialogs.treetables.TreeTableWithColumnWidthSaving;
 import org.miradi.dialogs.treetables.TreeTableWithRowHeightSaver;
 import org.miradi.dialogs.treetables.VariableHeightTreeCellRenderer;
+import org.miradi.files.AbstractMpfFileFilter;
 import org.miradi.icons.FolderIcon;
 import org.miradi.icons.IconManager;
 import org.miradi.icons.LegacyMiradiApplicationIcon;
@@ -52,7 +53,6 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.OldProjectDirToMpfConverter;
 import org.miradi.utils.ColumnSortListener;
-import org.miradi.utils.MpfFileFilter;
 import org.miradi.utils.SortableTable;
 import org.miradi.wizard.noproject.FileSystemTreeNode;
 import org.miradi.wizard.noproject.NoProjectWizardStep;
@@ -118,7 +118,7 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 		if(file == null)
 			return false;
 		
-		return file.getName().endsWith(MpfFileFilter.EXTENSION);
+		return file.getName().endsWith(AbstractMpfFileFilter.EXTENSION);
 	}
 
 	public static boolean isOldProject(File selectedFile) throws Exception

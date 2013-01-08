@@ -29,13 +29,13 @@ import javax.swing.JPanel;
 
 import org.martus.swing.HyperlinkHandler;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.files.AbstractMpfFileFilter;
 import org.miradi.layout.OneColumnPanel;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
-import org.miradi.utils.MpfFileFilter;
 import org.miradi.utils.ProjectNameRestrictedTextField;
 import org.miradi.views.umbrella.CreateProjectDialog;
 import org.miradi.wizard.MiradiHtmlViewer;
@@ -149,7 +149,7 @@ public class WelcomeCreateStep extends NoProjectWizardStep
 			return;
 		try 
 		{
-			File projectFile = new File(EAM.getHomeDirectory(), MpfFileFilter.createNameWithExtension(newProjectName));
+			File projectFile = new File(EAM.getHomeDirectory(), AbstractMpfFileFilter.createNameWithExtension(newProjectName));
 			if(projectFile.exists())
 			{
 				EAM.notifyDialog(EAM.text("A file or folder with that name already exists"));

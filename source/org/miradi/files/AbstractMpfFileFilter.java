@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2011, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2012, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -18,36 +18,32 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.utils;
+package org.miradi.files;
 
 import java.io.File;
 
 import org.miradi.main.EAM;
+import org.miradi.utils.GenericMiradiFileFilter;
 
-public class MpfFileFilter extends GenericMiradiFileFilter
+abstract public class AbstractMpfFileFilter extends GenericMiradiFileFilter
 {
-	@Override
-	public boolean accept(File pathname)
-	{
-		return doesFileEndWithCorrectExtension(pathname);
-	}
-	
+
 	@Override
 	public String getDescription()
 	{
 		return EAM.substitute(EAM.text("FileFilter|Miradi (*%s)"),getFileExtension());
 	}
-	
+
 	public String getFileExtension()
 	{
 		return EXTENSION;
 	}
-	
+
 	public static String createNameWithExtension(String name)
 	{
 		return name + EXTENSION;
 	}
-	
+
 	public static boolean isMpfFile(File pathname)
 	{
 		return doesFileEndWithCorrectExtension(pathname, EXTENSION);

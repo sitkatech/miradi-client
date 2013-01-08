@@ -25,7 +25,7 @@ import java.io.File;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.FileUtilities;
 import org.miradi.utils.GenericMiradiFileFilter;
-import org.miradi.utils.MpfFileFilter;
+import org.miradi.utils.MpfFileFilterWithDirectories;
 import org.miradi.utils.ProgressInterface;
 
 public class MpfProjectImporter extends AbstractProjectImporter
@@ -44,7 +44,7 @@ public class MpfProjectImporter extends AbstractProjectImporter
 	@Override
 	protected GenericMiradiFileFilter[] getFileFilters()
 	{
-		return new GenericMiradiFileFilter[] {new MpfFileFilter()};
+		return new GenericMiradiFileFilter[] {new MpfFileFilterWithDirectories()};
 	}
 
 	@Override

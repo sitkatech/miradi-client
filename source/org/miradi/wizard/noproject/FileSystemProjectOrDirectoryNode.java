@@ -21,12 +21,11 @@ package org.miradi.wizard.noproject;
 
 import java.io.File;
 
-
+import org.miradi.files.AbstractMpfFileFilter;
 import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.FileSystemProjectSorter;
 import org.miradi.project.Project;
-import org.miradi.utils.MpfFileFilter;
 import org.miradi.utils.Translation;
 
 public class FileSystemProjectOrDirectoryNode extends FileSystemTreeNode
@@ -47,7 +46,7 @@ public class FileSystemProjectOrDirectoryNode extends FileSystemTreeNode
 	{
 		try
 		{
-			if(MpfFileFilter.isMpfFile(file))
+			if(AbstractMpfFileFilter.isMpfFile(file))
 				return true;
 			
 			if (!file.isDirectory())
@@ -85,7 +84,7 @@ public class FileSystemProjectOrDirectoryNode extends FileSystemTreeNode
 		try
 		{
 			final File possibleProjectFile = getFile();
-			if(MpfFileFilter.isMpfFile(possibleProjectFile))
+			if(AbstractMpfFileFilter.isMpfFile(possibleProjectFile))
 				return Project.withoutMpfProjectSuffix(possibleProjectFile.getName());
 			
 			if (LegacyProjectUtilities.isExistingLocalProject(possibleProjectFile))

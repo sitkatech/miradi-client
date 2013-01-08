@@ -22,13 +22,12 @@ package org.miradi.views.noproject;
 import java.io.File;
 import java.io.IOException;
 
-
+import org.miradi.files.AbstractMpfFileFilter;
 import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.utils.ModalRenameDialog;
-import org.miradi.utils.MpfFileFilter;
 import org.miradi.wizard.noproject.WelcomeCreateStep;
 
 public class RenameProjectDoer
@@ -63,7 +62,7 @@ public class RenameProjectDoer
 				return null;
 			}
 
-			String projectFileName =  MpfFileFilter.createNameWithExtension(projectName);
+			String projectFileName =  AbstractMpfFileFilter.createNameWithExtension(projectName);
 			proposedProjectFile = new File(EAM.getHomeDirectory(), projectFileName);
 			if (projectExists(proposedProjectFile))
 			{

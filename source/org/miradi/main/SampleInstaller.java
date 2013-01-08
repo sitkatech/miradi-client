@@ -23,10 +23,11 @@ import java.io.File;
 import java.net.URISyntaxException;
 import java.util.Vector;
 
+import org.miradi.files.AbstractMpfFileFilter;
+import org.miradi.files.MpfFileFilterWithoutDirectories;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.FileUtilities;
-import org.miradi.utils.MpfFileFilter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.wizard.noproject.FileSystemTreeNode;
 
@@ -58,7 +59,7 @@ public class SampleInstaller
 			File projectFileToImport = installableSampleProjects.get(index);
 			String validatedName = getValidatedProjectNameWithoutExtension(projectFileToImport);
 			
-			File destination = new File(homeDir, MpfFileFilter.createNameWithExtension(validatedName));
+			File destination = new File(homeDir, AbstractMpfFileFilter.createNameWithExtension(validatedName));
 			if(destination.exists())
 				return;
 			
@@ -89,7 +90,7 @@ public class SampleInstaller
 		{
 			File mpfFile = allMpfFiles[index];
 			String validatedName = getValidatedProjectNameWithoutExtension(mpfFile);
-			File newProjectFile = new File(homeDir, MpfFileFilter.createNameWithExtension(validatedName));
+			File newProjectFile = new File(homeDir, AbstractMpfFileFilter.createNameWithExtension(validatedName));
 			if (FileSystemTreeNode.isProjectFile(newProjectFile) && !newProjectFile.exists())
 				installableSampleProjects.add(mpfFile);
 		}
@@ -107,7 +108,7 @@ public class SampleInstaller
 	private File[] getMpfFilesUnderAppDir() throws URISyntaxException
 	{
 		File appDir = Miradi.getAppCodeDirectory();
-		File[] files = appDir.listFiles(new MpfFileFilter());
+		File[] files = appDir.listFiles(new MpfFileFilterWithoutDirectories());
 		if (files == null)
 			return new File[0];
 		
