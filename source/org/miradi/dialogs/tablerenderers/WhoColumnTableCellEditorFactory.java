@@ -25,8 +25,7 @@ import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
-import org.miradi.questions.BaseObjectQuestionWithExcludedRef;
-import org.miradi.schemas.ProjectResourceSchema;
+import org.miradi.questions.ProjectResourceQuestion;
 
 public class WhoColumnTableCellEditorFactory extends AbstractPopupTableCellEditorFactory
 {
@@ -38,7 +37,7 @@ public class WhoColumnTableCellEditorFactory extends AbstractPopupTableCellEdito
 	@Override
 	protected DisposablePanel createEditorComponenet(BaseObject baseObjectForRow)
 	{
-		final BaseObjectQuestionWithExcludedRef question = new BaseObjectQuestionWithExcludedRef(getProject(), ProjectResourceSchema.getObjectType(), baseObjectForRow.getLeaderResourceRef());
+		final ProjectResourceQuestion question = new ProjectResourceQuestion(getProject());
 
 		return new WhoCodeListEditorComponent(baseObjectForRow, question);
 	}
