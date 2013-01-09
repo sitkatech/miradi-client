@@ -296,6 +296,18 @@ public class HtmlUtilities
 		
 		return value;
 	}
+	
+	public static String removeStartToEndTagAndItsContent(String value)
+	{
+		String[] tagsToStripWithTheirContent = new String[]{"style", "head"};
+		String newValue = value;
+		for(String tagToStripWithItsContent : tagsToStripWithTheirContent)
+		{
+			newValue = replaceAll(createStartTagRegex(tagToStripWithItsContent) + ".*?" + createEndTagRegex(tagToStripWithItsContent), newValue, "");
+		}
+		
+		return newValue;
+	}
 
 	public static final String BR_TAG = "<br/>";
 	public static final String UL_START_TAG = "<ul>";
@@ -306,3 +318,4 @@ public class HtmlUtilities
 	private static final String DIV_CLOSING_TAG = "</div>";
 	private static final String DIV_EMPTY_TAG = "<div/>";
 }
+
