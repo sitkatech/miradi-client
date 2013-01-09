@@ -29,6 +29,19 @@ public class TestHtmlUtilities extends MiradiTestCase
 		super(name);
 	}
 	
+	public void testRemoveStartToEndTagAndItsContent()
+	{
+		verifyRemoveStartToEndTagAndItsContent("", "<style>some stuff</style>");
+		verifyRemoveStartToEndTagAndItsContent("<style>some stuff", "<style>some stuff");
+		verifyRemoveStartToEndTagAndItsContent("", "<head>some stuff</HEAD>");
+		verifyRemoveStartToEndTagAndItsContent("", "<head><meta name=Random></HEAD>");
+	}
+	
+	private void verifyRemoveStartToEndTagAndItsContent(String expectedValue, String actualValue)
+	{
+		assertEquals("Html tags and content was not removed?", expectedValue, HtmlUtilities.removeStartToEndTagAndItsContent(actualValue));
+	}
+
 	public void testReplaceHtmlBullets() throws Exception
 	{
 		verifyReplaceHtmlBullets("", "");
