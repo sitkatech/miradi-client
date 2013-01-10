@@ -227,6 +227,7 @@ public class HtmlUtilities
 		// (http://java.sun.com/products/jfc/tsc/articles/bookmarks/)
 		trimmedText = removeNonHtmlNewLines(trimmedText);
 		trimmedText = appendNewlineToEndDivTags(trimmedText);
+		trimmedText = removeStartToEndTagAndItsContent(trimmedText);
 		trimmedText = removeAllExcept(trimmedText, allowedHtmlTags);
 		trimmedText = trimmedText.replaceAll("\\t", " ");
 		trimmedText = trimmedText.replaceAll(" +", " ");
@@ -318,4 +319,5 @@ public class HtmlUtilities
 	private static final String DIV_CLOSING_TAG = "</div>";
 	private static final String DIV_EMPTY_TAG = "<div/>";
 }
+
 
