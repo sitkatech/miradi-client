@@ -54,7 +54,7 @@ public class AssignmentsPropertiesPanel extends ObjectDataInputPanelWithSections
 		OneRowPanel box = new OneRowPanel();
 		box.setBackground(AppPreferences.getDataPanelBackgroundColor());	
 		box.setGaps(3);
-		box.add(new PanelFieldLabel(objectType, field.getTag()));
+		box.add(new PanelFieldLabel(field.getObjectType(), field.getTag()));
 		box.add(field.getComponent());
 		add(box);
 		add(new FillerLabel());
