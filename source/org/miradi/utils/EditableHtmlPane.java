@@ -180,7 +180,7 @@ public class EditableHtmlPane extends MiradiTextPane
 		return HtmlUtilities.removeStartToEndTagAndItsContent(htmlText, getUnwantedTagsToStripWithItsContent());
 	}
 
-	public static String[] getUnwantedTagsToStripWithItsContent()
+	private static String[] getUnwantedTagsToStripWithItsContent()
 	{
 		return new String[]{"style", "head"};
 	}
