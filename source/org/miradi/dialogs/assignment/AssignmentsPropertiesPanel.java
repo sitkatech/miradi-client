@@ -51,6 +51,11 @@ public class AssignmentsPropertiesPanel extends ObjectDataInputPanelWithSections
 	{
 		final ObjectDataInputField field = createDropdownWithIconField(objectType, BaseObject.TAG_LEADER_RESOURCE, new ProjectResourceQuestionWithUnspecifiedChoice(getProject()));
 		
+		addFieldToBoxWithLabel(field);
+	}
+
+	public void addFieldToBoxWithLabel(final ObjectDataInputField field)
+	{
 		OneRowPanel box = new OneRowPanel();
 		box.setBackground(AppPreferences.getDataPanelBackgroundColor());	
 		box.setGaps(3);
