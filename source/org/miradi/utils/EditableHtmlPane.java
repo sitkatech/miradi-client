@@ -69,7 +69,7 @@ public class EditableHtmlPane extends MiradiTextPane
 		super(mainWindow, fixedApproximateColumnCount, initialApproximateRowCount);
 		
 		handler = new HyperlinkHandler();
-		final HTMLEditorKitWithCustomLinkController htmlEditorKit = new HTMLEditorKitWithCustomLinkController();
+		final HtmlEditorKitWithNonSharedStyleSheet htmlEditorKit = new HtmlEditorKitWithNonSharedStyleSheet();
 		setEditorKitForContentType(htmlEditorKit.getContentType(), htmlEditorKit);
 		setContentType(htmlEditorKit.getContentType()); 
 		initializeEditorComponent();
@@ -186,7 +186,24 @@ public class EditableHtmlPane extends MiradiTextPane
 		 }
 	 }
 	 
-	public class HTMLEditorKitWithCtrlVFixed extends WysiwygHTMLEditorKit
+	public class HtmlEditorKitWithNonSharedStyleSheet extends WysiwygHTMLEditorKit
+	{	
+		@Override
+		public StyleSheet getStyleSheet()
+		{
+			if (styleSheet == null)
+			{
+				styleSheet = new StyleSheet();
+				styleSheet.addStyleSheet(super.getStyleSheet());
+			}
+			
+			return styleSheet;
+		}
+		
+		private StyleSheet styleSheet;
+	}
+	 
+	public class HTMLEditorKitWithCtrlVFixed extends HtmlEditorKitWithNonSharedStyleSheet
 	{
 		@Override
 		public void install(JEditorPane ed)
