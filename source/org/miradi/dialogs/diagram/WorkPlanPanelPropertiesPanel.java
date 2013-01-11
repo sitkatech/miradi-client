@@ -24,7 +24,9 @@ import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
+import org.miradi.questions.ProjectResourceQuestionWithUnspecifiedChoice;
 import org.miradi.utils.FillerLabel;
 
 public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
@@ -38,7 +40,7 @@ public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
 
 		add(new FillerLabel());
 		add(new FillerLabel());
-		
+		addFieldToBoxWithLabel(createDropdownWithIconField(orefToUse.getObjectType(), BaseObject.TAG_LEADER_RESOURCE, new ProjectResourceQuestionWithUnspecifiedChoice(getProject())));
 		add(new PanelTitleLabel(EAM.text("When")));
 		addFieldWithoutLabel(createWhenEditorField(orefToUse));
 		
