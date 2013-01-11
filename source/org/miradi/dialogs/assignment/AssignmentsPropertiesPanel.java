@@ -24,8 +24,6 @@ import org.miradi.dialogs.planning.propertiesPanel.ResourceAssignmentEditorCompo
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.BaseObject;
-import org.miradi.questions.ProjectResourceQuestionWithUnspecifiedChoice;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -37,7 +35,6 @@ public class AssignmentsPropertiesPanel extends ObjectDataInputPanelWithSections
 
 		assignmentEditor = new ResourceAssignmentEditorComponent(mainWindowToUse, picker);
 		createSingleSection("");
-		addFieldToBoxWithLabel(createDropdownWithIconField(objectType, BaseObject.TAG_LEADER_RESOURCE, new ProjectResourceQuestionWithUnspecifiedChoice(getProject())));
 		add(assignmentEditor);
 		updateFieldsFromProject();
 	}
