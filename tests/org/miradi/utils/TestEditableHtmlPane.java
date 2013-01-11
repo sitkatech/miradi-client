@@ -29,8 +29,10 @@ public class TestEditableHtmlPane extends MiradiTestCase
 		super(name);
 	}
 
-	public void testNothingToAvoidJUnitErrors()
+	public void testGetNormalizedAndSanitizedHtmlText()
 	{
-		
+		String htmlText = "<br/><b></b><i></i><ul></ul><ol></ol><li></li><u></u><strike></strike><a></a>";
+
+		assertEquals("wrong new lines inserted?", htmlText, EditableHtmlPane.getNormalizedAndSanitizedHtmlText(htmlText));
 	}
 }
