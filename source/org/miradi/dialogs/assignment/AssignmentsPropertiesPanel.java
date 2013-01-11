@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.assignment;
 
-import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.planning.propertiesPanel.ResourceAssignmentEditorComponent;
 import org.miradi.main.EAM;
@@ -38,16 +37,9 @@ public class AssignmentsPropertiesPanel extends ObjectDataInputPanelWithSections
 
 		assignmentEditor = new ResourceAssignmentEditorComponent(mainWindowToUse, picker);
 		createSingleSection("");
-		addLeaderResourceBox(objectType);
+		addFieldToBoxWithLabel(createDropdownWithIconField(objectType, BaseObject.TAG_LEADER_RESOURCE, new ProjectResourceQuestionWithUnspecifiedChoice(getProject())));
 		add(assignmentEditor);
 		updateFieldsFromProject();
-	}
-
-	private void addLeaderResourceBox(int objectType)
-	{
-		final ObjectDataInputField field = createDropdownWithIconField(objectType, BaseObject.TAG_LEADER_RESOURCE, new ProjectResourceQuestionWithUnspecifiedChoice(getProject()));
-		
-		addFieldToBoxWithLabel(field);
 	}
 
 	@Override
