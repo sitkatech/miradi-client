@@ -250,7 +250,6 @@ public interface Xmpz2XmlConstants
 	public static final String RATING = "Rating";
 	public static final String MAGNITUDE = "Magnitude";
 	public static final String OFFICE_PHONE_NUMBER = "OfficePhoneNumber";
-	public static final String PROJECT_RESOURCE_ID = "Id";
 	public static final String NAME = "Name";
 	public static final String CUSTOM1 = "Custom1";
 	public static final String CUSTOM2 = "Custom2";
