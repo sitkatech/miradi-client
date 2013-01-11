@@ -74,6 +74,7 @@ public class EditableHtmlPane extends MiradiTextPane
 		setContentType(htmlEditorKit.getContentType()); 
 		initializeEditorComponent();
 		addHyperlinkListener(new HyperlinkOpenHandler());
+		updateStyleSheet();
 	}
 
 	protected void initializeEditorComponent()
@@ -208,6 +209,12 @@ public class EditableHtmlPane extends MiradiTextPane
 			}
 			
 			return styleSheet;
+		}
+		
+		@Override
+		public void setStyleSheet(StyleSheet styleSheetToUse)
+		{
+			styleSheet = styleSheetToUse;
 		}
 		
 		private StyleSheet styleSheet;
