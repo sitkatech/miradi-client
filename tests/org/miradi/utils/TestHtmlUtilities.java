@@ -41,7 +41,7 @@ public class TestHtmlUtilities extends MiradiTestCase
 	
 	private void verifyRemoveStartToEndTagAndItsContent(String expectedValue, String actualValue)
 	{
-		assertEquals("Html tags and content was not removed?", expectedValue, HtmlUtilities.removeStartToEndTagAndItsContent(actualValue));
+		assertEquals("Html tags and content was not removed?", expectedValue, HtmlUtilities.removeStartToEndTagAndItsContent(actualValue, EditableHtmlPane.getUnwantedTagsToStripWithItsContent()));
 	}
 
 	public void testReplaceHtmlBullets() throws Exception
