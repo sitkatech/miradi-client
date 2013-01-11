@@ -143,7 +143,7 @@ public class EditableHtmlPane extends MiradiTextPane
 	{
 		String text = super.getText();
 		
-		String normalizedAndSanitizedHtmlText = EditableHtmlPane.removeStartToEndTagAndItsContent(text);
+		String normalizedAndSanitizedHtmlText = stripEntireHeadAndStyle(text);
 		normalizedAndSanitizedHtmlText = getNormalizedAndSanitizedHtmlText(normalizedAndSanitizedHtmlText);
 		
 		return normalizedAndSanitizedHtmlText;
@@ -175,14 +175,9 @@ public class EditableHtmlPane extends MiradiTextPane
 		handler.activateHyperlink(this, mousePosition);
 	}
 	
-	public static String removeStartToEndTagAndItsContent(String htmlText)
+	public static String stripEntireHeadAndStyle(String htmlText)
 	{
-		return HtmlUtilities.removeStartToEndTagAndItsContent(htmlText, getUnwantedTagsToStripWithItsContent());
-	}
-
-	private static String[] getUnwantedTagsToStripWithItsContent()
-	{
-		return new String[]{"style", "head"};
+		return HtmlUtilities.removeStartToEndTagAndItsContent(htmlText, new String[]{"style", "head"});
 	}
 
 	private class HyperlinkOpenHandler implements HyperlinkListener 
