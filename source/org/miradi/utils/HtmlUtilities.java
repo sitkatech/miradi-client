@@ -227,7 +227,6 @@ public class HtmlUtilities
 		// (http://java.sun.com/products/jfc/tsc/articles/bookmarks/)
 		trimmedText = removeNonHtmlNewLines(trimmedText);
 		trimmedText = appendNewlineToEndDivTags(trimmedText);
-		trimmedText = EditableHtmlPane.removeStartToEndTagAndItsContent(trimmedText);
 		trimmedText = removeAllExcept(trimmedText, allowedHtmlTags);
 		trimmedText = trimmedText.replaceAll("\\t", " ");
 		trimmedText = trimmedText.replaceAll(" +", " ");
