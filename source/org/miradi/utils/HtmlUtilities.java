@@ -227,7 +227,7 @@ public class HtmlUtilities
 		// (http://java.sun.com/products/jfc/tsc/articles/bookmarks/)
 		trimmedText = removeNonHtmlNewLines(trimmedText);
 		trimmedText = appendNewlineToEndDivTags(trimmedText);
-		trimmedText = removeStartToEndTagAndItsContent(trimmedText);
+		trimmedText = EditableHtmlPane.removeStartToEndTagAndItsContent(trimmedText);
 		trimmedText = removeAllExcept(trimmedText, allowedHtmlTags);
 		trimmedText = trimmedText.replaceAll("\\t", " ");
 		trimmedText = trimmedText.replaceAll(" +", " ");
@@ -298,16 +298,20 @@ public class HtmlUtilities
 		return value;
 	}
 	
-	public static String removeStartToEndTagAndItsContent(String value)
+	public static String removeStartToEndTagAndItsContent(String htmlText, String[] tagsToStripWithTheirContent)
 	{
-		String[] tagsToStripWithTheirContent = new String[]{"style", "head"};
-		String newValue = value;
+		String htmlTextWithRemovedTagsAndItsContent = htmlText;
 		for(String tagToStripWithItsContent : tagsToStripWithTheirContent)
 		{
-			newValue = replaceAll(createStartTagRegex(tagToStripWithItsContent) + ".*?" + createEndTagRegex(tagToStripWithItsContent), newValue, "");
+			htmlTextWithRemovedTagsAndItsContent = removeStartToEndTagAndItsContent(htmlTextWithRemovedTagsAndItsContent, tagToStripWithItsContent);
 		}
 		
-		return newValue;
+		return htmlTextWithRemovedTagsAndItsContent;
+	}
+	
+	private static String removeStartToEndTagAndItsContent(String htmlText, String tagToStripWithItsContent)
+	{
+		return replaceAll(createStartTagRegex(tagToStripWithItsContent) + ".*?" + createEndTagRegex(tagToStripWithItsContent), htmlText, "");
 	}
 
 	public static final String BR_TAG = "<br/>";

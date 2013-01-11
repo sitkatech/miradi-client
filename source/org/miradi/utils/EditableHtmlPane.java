@@ -171,7 +171,17 @@ public class EditableHtmlPane extends MiradiTextPane
 		handler.activateHyperlink(this, mousePosition);
 	}
 	
-	 private class HyperlinkOpenHandler implements HyperlinkListener 
+	public static String removeStartToEndTagAndItsContent(String htmlText)
+	{
+		return HtmlUtilities.removeStartToEndTagAndItsContent(htmlText, getUnwantedTagsToStripWithItsContent());
+	}
+
+	public static String[] getUnwantedTagsToStripWithItsContent()
+	{
+		return new String[]{"style", "head"};
+	}
+
+	private class HyperlinkOpenHandler implements HyperlinkListener 
 	 {
 		 public void hyperlinkUpdate(HyperlinkEvent e) 
 		 {
