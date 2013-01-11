@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-08 14:31-0600\n"
+"POT-Creation-Date: 2013-01-11 11:01-0600\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -2394,7 +2394,7 @@ msgstr ""
 msgid "Assigned Resources Only"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:97
+#: Miradi/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:78
 msgid "Assignments"
 msgstr ""
 
@@ -3179,7 +3179,7 @@ msgstr "Datum"
 msgid "Date Chooser"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:45
+#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:47
 msgid "Dates can be set in the Work Plan view"
 msgstr ""
 
@@ -8807,7 +8807,7 @@ msgstr ""
 "Wetlands - Tundra Wetlands [includes pools and temporary waters from "
 "snowmelt]"
 
-#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:42
+#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:44
 msgid "When"
 msgstr ""
 
@@ -8829,7 +8829,7 @@ msgstr ""
 msgid "White"
 msgstr "Weiß"
 
-#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:36
+#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:38
 msgid "Who"
 msgstr ""
 
@@ -8855,7 +8855,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:191
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:199
-#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:54
+#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:56
 msgid "Work Plan"
 msgstr "Arbeitsplan"
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-08 14:31-0600\n"
+"POT-Creation-Date: 2013-01-11 11:01-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2183,7 +2183,7 @@ msgstr ""
 msgid "Assigned Resources Only"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:97
+#: Miradi/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:78
 msgid "Assignments"
 msgstr ""
 
@@ -2936,7 +2936,7 @@ msgstr ""
 msgid "Date Chooser"
 msgstr "日期选择器 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:45
+#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:47
 msgid "Dates can be set in the Work Plan view"
 msgstr ""
 
@@ -8313,7 +8313,7 @@ msgid ""
 "snowmelt]"
 msgstr "湿地-苔原湿地 [包括池塘和来自融雪的临时水源] "
 
-#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:42
+#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:44
 msgid "When"
 msgstr ""
 
@@ -8335,7 +8335,7 @@ msgstr ""
 msgid "White"
 msgstr "白色"
 
-#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:36
+#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:38
 msgid "Who"
 msgstr ""
 
@@ -8361,7 +8361,7 @@ msgstr "控制向导加载失败： \t\t"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:191
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:199
-#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:54
+#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:56
 msgid "Work Plan"
 msgstr "工作计划"
 
