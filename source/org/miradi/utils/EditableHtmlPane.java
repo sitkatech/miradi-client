@@ -143,7 +143,10 @@ public class EditableHtmlPane extends MiradiTextPane
 	{
 		String text = super.getText();
 		
-		return getNormalizedAndSanitizedHtmlText(text);
+		String normalizedAndSanitizedHtmlText = EditableHtmlPane.removeStartToEndTagAndItsContent(text);
+		normalizedAndSanitizedHtmlText = getNormalizedAndSanitizedHtmlText(normalizedAndSanitizedHtmlText);
+		
+		return normalizedAndSanitizedHtmlText;
 	}
 	
 	public static String getNormalizedAndSanitizedHtmlText(final String text)
