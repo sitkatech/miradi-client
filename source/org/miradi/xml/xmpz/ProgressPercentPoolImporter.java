@@ -36,8 +36,6 @@ public class ProgressPercentPoolImporter extends AbstractBaseObjectPoolImporter
 	@Override
 	protected void importFields(Node node, ORef destinationRef)	throws Exception
 	{
-		super.importFields(node, destinationRef);
-		
 		importField(node, destinationRef, ProgressPercent.TAG_DATE);
 		importField(node, destinationRef, ProgressPercent.TAG_PERCENT_COMPLETE);
 		importField(node, destinationRef, ProgressPercent.TAG_PERCENT_COMPLETE_NOTES);

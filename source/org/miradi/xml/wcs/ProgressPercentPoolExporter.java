@@ -35,8 +35,6 @@ public class ProgressPercentPoolExporter extends BaseObjectPoolExporter
 	@Override
 	protected void exportFields(UnicodeWriter writer, BaseObject baseObject) throws Exception
 	{
-		super.exportFields(writer, baseObject);
-		
 		writeOptionalElementWithSameTag(baseObject, ProgressPercent.TAG_DATE);
 		writeOptionalElementWithSameTag(baseObject, ProgressPercent.TAG_PERCENT_COMPLETE);
 		writeOptionalElementWithSameTag(baseObject, ProgressPercent.TAG_PERCENT_COMPLETE_NOTES);

@@ -36,8 +36,6 @@ public class ProgressReportPoolExporter extends BaseObjectPoolExporter
 	@Override
 	protected void exportFields(UnicodeWriter writer, BaseObject baseObject) throws Exception
 	{
-		super.exportFields(writer, baseObject);
-		
 		writeOptionalElementWithSameTag(baseObject, ProgressReport.TAG_PROGRESS_DATE);
 		writeOptionalElementWithSameTag(baseObject, ProgressReport.TAG_DETAILS);
 		writeCodeElementSameAsTag(baseObject, ProgressReport.TAG_PROGRESS_STATUS, new ProgressReportLongStatusQuestion());
