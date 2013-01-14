@@ -200,7 +200,7 @@ public class TestObjectManager extends MiradiTestCase
 		assertNotEquals(type + " Created with invalid id", BaseId.INVALID, createdId);
 		assertNotNull(manager.findObject(type, createdId));
 		
-		String tag = RatingCriterion.TAG_LABEL;
+		String tag = BaseObject.TAG_LABEL;
 		manager.setObjectData(new ORef(type, createdId), tag, "data");
 		BaseObject withData = manager.findObject(type, createdId);
 		assertEquals(type + " didn't write/read data for " + tag + "?", "data", withData.getData(tag));
