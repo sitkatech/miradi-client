@@ -146,7 +146,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 	{
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put(BaseObject.TAG_LABEL, NAME);
-		map.put(Target.TAG_SHORT_LABEL, ID);
+		map.put(Target.TAG_SHORT_LABEL, IDENTIFIER);
 		map.put(BaseObject.TAG_PROGRESS_REPORT_REFS, PROGRESS_REPORT_IDS);
 		map.put(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, RESOURCE_ASSIGNMENT + IDS);
 		map.put(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, EXPENSE_ASSIGNMENT + IDS);
