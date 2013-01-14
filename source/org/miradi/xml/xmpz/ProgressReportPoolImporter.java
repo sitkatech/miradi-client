@@ -37,8 +37,6 @@ public class ProgressReportPoolImporter extends AbstractBaseObjectPoolImporter
 	@Override
 	protected void importFields(Node node, ORef destinationRef)	throws Exception
 	{
-		super.importFields(node, destinationRef);
-		
 		importField(node, destinationRef, ProgressReport.TAG_PROGRESS_DATE);
 		importField(node, destinationRef, ProgressReport.TAG_DETAILS);
 		importCodeField(node, destinationRef, ProgressReport.TAG_PROGRESS_STATUS, new ProgressReportLongStatusQuestion());
