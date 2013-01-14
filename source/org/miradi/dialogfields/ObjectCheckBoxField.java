@@ -34,6 +34,7 @@ public class ObjectCheckBoxField extends ObjectDataInputField
 	public ObjectCheckBoxField(Project projectToUse, int objectType, BaseId objectId, String tag, String valueWhenChecked, String valueWhenUnchecked)
 	{
 		super(projectToUse, objectType, objectId, tag);
+		
 		checkBox = new PanelCheckBox();
 		checkBox.addItemListener(new StatusChangeHandler());
 		addFocusListener();
@@ -52,6 +53,7 @@ public class ObjectCheckBoxField extends ObjectDataInputField
 	{
 		if (checkBox.isSelected())
 			return checkedValue;
+		
 		return uncheckedValue;
 	}
 
