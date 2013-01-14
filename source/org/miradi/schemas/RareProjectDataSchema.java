@@ -47,6 +47,12 @@ public class RareProjectDataSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(RareProjectData.LEGACY_TAG_THREATS_ADDRESSED_NOTES);
 		createFieldSchemaMultiLineUserText(RareProjectData.TAG_MAIN_ACTIVITIES_NOTES);
 	}
+	
+	@Override
+	protected boolean hasLabel()
+	{
+		return false;
+	}
 
 	public static int getObjectType()
 	{

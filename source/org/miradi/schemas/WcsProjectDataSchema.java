@@ -43,6 +43,12 @@ public class WcsProjectDataSchema extends BaseObjectSchema
 		createFieldSchemaSingleLineUserText(WcsProjectData.TAG_STEP_URL);
 	}
 	
+	@Override
+	protected boolean hasLabel()
+	{
+		return false;
+	}
+	
 	public static int getObjectType()
 	{
 		return ObjectType.WCS_PROJECT_DATA;

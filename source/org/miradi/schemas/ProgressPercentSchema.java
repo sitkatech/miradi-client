@@ -39,6 +39,12 @@ public class ProgressPercentSchema extends BaseObjectSchema
 		createFieldSchemaPercentage(ProgressPercent.TAG_PERCENT_COMPLETE);
 		createFieldSchemaMultiLineUserText(ProgressPercent.TAG_PERCENT_COMPLETE_NOTES);
 	}
+	
+	@Override
+	protected boolean hasLabel()
+	{
+		return false;
+	}
 
 	public static int getObjectType()
 	{
