@@ -45,9 +45,9 @@ public class ObjectTreeTableConfigurationSchema extends BaseObjectSchema
 		
 		createFieldSchemaCodeList(ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION, new CustomPlanningRowsQuestion(getProject()));
 		createFieldSchemaCodeList(ObjectTreeTableConfiguration.TAG_COL_CONFIGURATION, getQuestion(CustomPlanningColumnsQuestion.class));
-		createFieldSchemaChoice(ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, DiagramObjectDataInclusionQuestion.class);
-		createFieldSchemaChoice(ObjectTreeTableConfiguration.TAG_STRATEGY_OBJECTIVE_ORDER, StrategyObjectiveTreeOrderQuestion.class);
-		createFieldSchemaChoice(ObjectTreeTableConfiguration.TAG_TARGET_NODE_POSITION, PlanningTreeTargetPositionQuestion.class);
+		createFieldSchemaRequiredChoice(ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, DiagramObjectDataInclusionQuestion.class);
+		createFieldSchemaRequiredChoice(ObjectTreeTableConfiguration.TAG_STRATEGY_OBJECTIVE_ORDER, StrategyObjectiveTreeOrderQuestion.class);
+		createFieldSchemaRequiredChoice(ObjectTreeTableConfiguration.TAG_TARGET_NODE_POSITION, PlanningTreeTargetPositionQuestion.class);
 	}
 	
 	private Project getProject()

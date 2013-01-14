@@ -72,8 +72,8 @@ public class ProjectMetadataSchema extends BaseObjectSchema
 		createFieldSchemaPercentage(ProjectMetadata.TAG_BUDGET_SECURED_PERCENT);
 		createFieldSchemaChoice(ProjectMetadata.TAG_FISCAL_YEAR_START, FiscalYearStartQuestion.class);
 		createFieldSchemaNumber(ProjectMetadata.TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR);
-		createFieldSchemaChoice(ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, QuarterColumnsVisibilityQuestion.class);
-		createFieldSchemaChoice(ProjectMetadata.TAG_PLANNING_TREE_TARGET_NODE_POSITION, PlanningTreeTargetPositionQuestion.class);
+		createFieldSchemaRequiredChoice(ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, QuarterColumnsVisibilityQuestion.class);
+		createFieldSchemaRequiredChoice(ProjectMetadata.TAG_PLANNING_TREE_TARGET_NODE_POSITION, PlanningTreeTargetPositionQuestion.class);
 		
 		createFieldSchemaFloat(ProjectMetadata.TAG_PROJECT_LATITUDE);
 		createFieldSchemaFloat(ProjectMetadata.TAG_PROJECT_LONGITUDE);
@@ -123,7 +123,7 @@ public class ProjectMetadataSchema extends BaseObjectSchema
 		
 		createFieldSchemaChoice(ProjectMetadata.TAG_DIAGRAM_FONT_SIZE, FontSizeQuestion.class);
 		createFieldSchemaChoice(ProjectMetadata.TAG_DIAGRAM_FONT_FAMILY, FontFamiliyQuestion.class);
-		createFieldSchemaChoice(ProjectMetadata.TAG_THREAT_RATING_MODE, ThreatRatingModeChoiceQuestion.class);
+		createFieldSchemaRequiredChoice(ProjectMetadata.TAG_THREAT_RATING_MODE, ThreatRatingModeChoiceQuestion.class);
 		createFieldSchemaStringRefMap(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP);
 		createFieldSchemaChoice(ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE, TargetModeQuestion.class);
 		createFieldSchemaChoice(ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION, DiagramObjectDataInclusionQuestion.class);

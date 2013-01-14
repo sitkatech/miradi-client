@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Mon Jan 14 14:11:27 EST 2013 $
+# $LastChangedDate: Mon Jan 14 16:01:38 EST 2013 $
 # $LastChangedRevision: 216 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/216'
 start = ConservationProject.element
@@ -75,7 +75,7 @@ ProjectSummary.element = element miradi:ProjectSummary
   element miradi:ProjectSummaryProjectStatus { formatted_text }? &
   element miradi:ProjectSummaryProjectURL { text }? &
   element miradi:ProjectSummaryShareOutsideOrganization { vocabulary_share_outside_organization } &
-  element miradi:ProjectSummaryThreatRatingMode { vocabulary_threat_rating_mode }? &
+  element miradi:ProjectSummaryThreatRatingMode { vocabulary_threat_rating_mode } &
   element miradi:ProjectSummaryWorkPlanTimeUnit { vocabulary_work_plan_time_unit }?
 }
 
@@ -129,7 +129,7 @@ ProjectPlanning.element = element miradi:ProjectPlanning
   element miradi:ProjectPlanningFullTimeEmployeeDaysPerYear { xsd:decimal }? &
   element miradi:ProjectPlanningKeyFundingSources { formatted_text }? &
   element miradi:ProjectPlanningPlanningComments { formatted_text }? &
-  element miradi:ProjectPlanningQuarterColumnsVisibility { vocabulary_quarter_columns_visibility }? &
+  element miradi:ProjectPlanningQuarterColumnsVisibility { vocabulary_quarter_columns_visibility } &
   element miradi:ProjectPlanningStartDate { vocabulary_date }? &
   element miradi:ProjectPlanningTotalBudgetForFunding { xsd:decimal }? &
   element miradi:ProjectPlanningWorkPlanEndDate { vocabulary_date }? &
@@ -238,7 +238,7 @@ Resource.element = element miradi:Resource
   element miradi:ResourcePhoneNumberMobile { text }? &
   element miradi:ResourcePhoneNumberOther { text }? &
   element miradi:ResourcePosition { text }? &
-  element miradi:ResourceResourceType { vocabulary_resource_type }? &
+  element miradi:ResourceResourceType { vocabulary_resource_type } &
   element miradi:ResourceSurname { text }?
 }
 
@@ -433,7 +433,7 @@ BiodiversityTarget.element = element miradi:BiodiversityTarget
   element miradi:BiodiversityTargetSpeciesLatinName { text }? &
   element miradi:BiodiversityTargetStressIds { StressId.element* }? &
   element miradi:BiodiversityTargetSubTargetIds { SubTargetId.element* }? &
-  element miradi:BiodiversityTargetViabilityMode { vocabulary_target_viability_mode }? &
+  element miradi:BiodiversityTargetViabilityMode { vocabulary_target_viability_mode } &
   element miradi:BiodiversityTargetViabilityStatus { vocabulary_target_status }? &
   element miradi:BiodiversityTargetThreatRating { vocabulary_threat_rating }?
 }
@@ -491,10 +491,10 @@ PlanningViewConfigurationPool.element = element miradi:PlanningViewConfiguration
 PlanningViewConfiguration.element = element miradi:PlanningViewConfiguration
 {
   attribute Id {xsd:integer} &
-  element miradi:PlanningViewConfigurationDiagramDataInclusion { vocabulary_included_diagram_types }? &
+  element miradi:PlanningViewConfigurationDiagramDataInclusion { vocabulary_included_diagram_types } &
   element miradi:PlanningViewConfigurationName { formatted_text }? &
-  element miradi:PlanningViewConfigurationStrategyObjectiveOrder { vocabulary_planning_tree_objective_strategy_node_order }? &
-  element miradi:PlanningViewConfigurationTargetNodePosition { vocabulary_planning_tree_target_node_position }?
+  element miradi:PlanningViewConfigurationStrategyObjectiveOrder { vocabulary_planning_tree_objective_strategy_node_order } &
+  element miradi:PlanningViewConfigurationTargetNodePosition { vocabulary_planning_tree_target_node_position }
 }
 
 MeasurementPool.element = element miradi:MeasurementPool { Measurement.element* }
@@ -593,7 +593,7 @@ ScopeBox.element = element miradi:ScopeBox
   element miradi:ScopeBoxDetails { formatted_text }? &
   element miradi:ScopeBoxId { text }? &
   element miradi:ScopeBoxName { formatted_text }? &
-  element miradi:ScopeBoxScopeBoxTypeCode { vocabulary_scope_box_type }?
+  element miradi:ScopeBoxScopeBoxTypeCode { vocabulary_scope_box_type }
 }
 
 ExpenseAssignmentPool.element = element miradi:ExpenseAssignmentPool { ExpenseAssignment.element* }
@@ -621,7 +621,7 @@ HumanWellbeingTarget.element = element miradi:HumanWellbeingTarget
   element miradi:HumanWellbeingTargetKeyEcologicalAttributeIds { KeyEcologicalAttributeId.element* }? &
   element miradi:HumanWellbeingTargetName { formatted_text }? &
   element miradi:HumanWellbeingTargetSubTargetIds { SubTargetId.element* }? &
-  element miradi:HumanWellbeingTargetViabilityMode { vocabulary_target_viability_mode }? &
+  element miradi:HumanWellbeingTargetViabilityMode { vocabulary_target_viability_mode } &
   element miradi:HumanWellbeingTargetViabilityStatus { vocabulary_target_status }? &
   element miradi:HumanWellbeingTargetThreatRating { vocabulary_threat_rating }?
 }
@@ -1081,4 +1081,3 @@ DashboardFlagsContainer.element = element miradi:DashboardFlagsContainer
 {
 element miradi:code { vocabulary_dashboard_row_flags } *
 }
-

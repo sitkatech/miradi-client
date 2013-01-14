@@ -37,7 +37,7 @@ public class ProjectResourceSchema extends BaseObjectSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaChoice(ProjectResource.TAG_RESOURCE_TYPE, ResourceTypeQuestion.class);
+		createFieldSchemaRequiredChoice(ProjectResource.TAG_RESOURCE_TYPE, ResourceTypeQuestion.class);
 		createFieldSchemaSingleLineUserText(ProjectResource.TAG_INITIALS);
 		createFieldSchemaSingleLineUserText(ProjectResource.TAG_GIVEN_NAME);
 		createFieldSchemaSingleLineUserText(ProjectResource.TAG_SUR_NAME);
