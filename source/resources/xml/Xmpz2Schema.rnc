@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Wed Jan 09 10:40:32 EST 2013 $
+# $LastChangedDate: Mon Jan 14 14:11:27 EST 2013 $
 # $LastChangedRevision: 216 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/216'
 start = ConservationProject.element
@@ -161,13 +161,11 @@ WWFProjectData.element = element miradi:WWFProjectData
 {
   WWFProjectDataEcoRegionsContainer.element ? &
   WWFProjectDataManagingOfficesContainer.element ? &
-  WWFProjectDataRegionsContainer.element ? &
-  element miradi:WWFProjectDataLabel { formatted_text }?
+  WWFProjectDataRegionsContainer.element ?
 }
 
 WCSProjectData.element = element miradi:WCSProjectData
 {
-  element miradi:WCSProjectDataLabel { formatted_text }? &
   element miradi:WCSProjectDataOrganizationalFocus { text }? &
   element miradi:WCSProjectDataOrganizationalLevel { text }? &
   element miradi:WCSProjectDataStepCompleted { xsd:boolean }? &
@@ -179,7 +177,6 @@ WCSProjectData.element = element miradi:WCSProjectData
 FOSProjectData.element = element miradi:FOSProjectData
 {
   element miradi:FOSProjectDataCoaches { text }? &
-  element miradi:FOSProjectDataLabel { formatted_text }? &
   element miradi:FOSProjectDataTrainers { text }? &
   element miradi:FOSProjectDataTrainingDates { text }? &
   element miradi:FOSProjectDataTrainingType { vocabulary_fos_training_type }?
@@ -194,7 +191,6 @@ RareProjectData.element = element miradi:RareProjectData
   element miradi:RareProjectDataFlagshipSpeciesCommonName { text }? &
   element miradi:RareProjectDataFlagshipSpeciesDetail { formatted_text }? &
   element miradi:RareProjectDataFlagshipSpeciesScientificName { text }? &
-  element miradi:RareProjectDataLabel { formatted_text }? &
   element miradi:RareProjectDataMainActivitiesNotes { formatted_text }? &
   element miradi:RareProjectDataNumberOfCommunitiesInCampaignArea { xsd:integer }? &
   element miradi:RareProjectDataSummaryOfKeyMessages { formatted_text }? &
@@ -552,7 +548,6 @@ ProgressReport.element = element miradi:ProgressReport
 {
   attribute Id {xsd:integer} &
   element miradi:ProgressReportDetails { formatted_text }? &
-  element miradi:ProgressReportLabel { formatted_text }? &
   element miradi:ProgressReportProgressDate { vocabulary_date }? &
   element miradi:ProgressReportProgressStatus { vocabulary_progress_report_status }?
 }
@@ -576,7 +571,6 @@ ProgressPercent.element = element miradi:ProgressPercent
 {
   attribute Id {xsd:integer} &
   element miradi:ProgressPercentDetails { formatted_text }? &
-  element miradi:ProgressPercentLabel { formatted_text }? &
   element miradi:ProgressPercentPercentComplete { xsd:decimal }? &
   element miradi:ProgressPercentPercentDate { vocabulary_date }?
 }

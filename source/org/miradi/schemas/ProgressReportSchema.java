@@ -40,6 +40,12 @@ public class ProgressReportSchema extends BaseObjectSchema
 		createFieldSchemaDate(ProgressReport.TAG_PROGRESS_DATE);
 		createFieldSchemaMultiLineUserText(ProgressReport.TAG_DETAILS);
 	}
+	
+	@Override
+	protected boolean hasLabel()
+	{
+		return false;
+	}
 
 	public static int getObjectType()
 	{

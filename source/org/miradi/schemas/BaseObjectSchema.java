@@ -286,7 +286,13 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 	
 	protected void fillFieldSchemas()
 	{
-		createFieldSchemaExpandingUserText(BaseObject.TAG_LABEL);
+		if (hasLabel())
+			createFieldSchemaExpandingUserText(BaseObject.TAG_LABEL);
+	}
+
+	protected boolean hasLabel()
+	{
+		return true;
 	}
 
 	protected void createBudgetSchemas()

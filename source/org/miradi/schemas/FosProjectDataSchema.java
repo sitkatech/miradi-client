@@ -42,6 +42,12 @@ public class FosProjectDataSchema extends BaseObjectSchema
 		createFieldSchemaSingleLineUserText(FosProjectData.TAG_COACHES);
 	}
 	
+	@Override
+	protected boolean hasLabel()
+	{
+		return false;
+	}
+	
 	public static int getObjectType()
 	{
 		return ObjectType.FOS_PROJECT_DATA;
