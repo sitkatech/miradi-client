@@ -37,6 +37,22 @@ public class StrategyStatusQuestion extends StaticChoiceQuestion
 		};
 	}
 	
+	//FXIME low: over riding the two below methods due to newly created
+	//Strategies having a default value of "". Note when the field is changed from real to draft and back
+	// we store real.  Since the field using this question is required,  we need to map "" to real.
+	//Solutions: migration to change real to "",  rename these two methods to be more generic. 
+	@Override
+	protected boolean hasReadableAlternativeDefaultCode()
+	{
+		return true;
+	}
+	
+	@Override
+	protected String getReadableAlternativeDefaultCode()
+	{
+		return STATUS_REAL_CODE;
+	}
+	
 	public static final String STATUS_REAL_CODE = "Real";
 	public static final String STATUS_DRAFT_CODE = "Draft";
 }
