@@ -39,7 +39,7 @@ public class StrategySchema extends FactorSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaChoice(Strategy.TAG_STATUS, StrategyStatusQuestion.class);
+		createFieldSchemaRequiredChoice(Strategy.TAG_STATUS, StrategyStatusQuestion.class);
 		createFieldSchemaIdList(Strategy.TAG_ACTIVITY_IDS, TaskSchema.getObjectType());
 	
 		createFieldSchemaChoice(Strategy.TAG_TAXONOMY_CODE, StrategyTaxonomyQuestion.class);
