@@ -37,6 +37,6 @@ public class StrategyStatusQuestion extends StaticChoiceQuestion
 		};
 	}
 	
-	public static final String STATUS_DRAFT_CODE = "Draft";
 	public static final String STATUS_REAL_CODE = "Real";
+	public static final String STATUS_DRAFT_CODE = "Draft";
 }
