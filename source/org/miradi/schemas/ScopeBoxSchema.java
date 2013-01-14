@@ -36,7 +36,7 @@ public class ScopeBoxSchema extends FactorSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaChoice(ScopeBox.TAG_SCOPE_BOX_TYPE_CODE, ScopeBoxTypeQuestion.createScopeBoxTypeQuestion());
+		createFieldSchemaRequiredChoice(ScopeBox.TAG_SCOPE_BOX_TYPE_CODE, ScopeBoxTypeQuestion.createScopeBoxTypeQuestion());
 	}
 
 	public static int getObjectType()

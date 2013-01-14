@@ -26,6 +26,7 @@ import java.util.Vector;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.DynamicChoiceQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 
@@ -89,6 +90,11 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 	public AbstractFieldSchema createFieldSchemaRequiredChoice(final String fieldTag, Class questionClass)
 	{
 		return addFieldSchema(new FieldSchemaRequiredChoice(fieldTag, getQuestion(questionClass)));
+	}
+	
+	public AbstractFieldSchema createFieldSchemaRequiredChoice(final String fieldTag, DynamicChoiceQuestion questionToUse)
+	{
+		return addFieldSchema(new FieldSchemaRequiredChoice(fieldTag, questionToUse));
 	}
 	
 	public AbstractFieldSchema createFieldSchemaIdList(final String fieldTag, final int objectType)
