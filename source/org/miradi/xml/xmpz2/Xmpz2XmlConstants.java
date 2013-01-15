@@ -287,8 +287,8 @@ public interface Xmpz2XmlConstants
 	public static final String VOCABULARY_THREAT_TAXONOMY_CODE = "vocabulary_cause_taxonomy_code";
 	public static final String VOCABULARY_STRATEGY_TAXONOMY_CODE = "vocabulary_strategy_taxonomy_code";
 	public static final String VOCABULARY_SCOPE_BOX_TYPE = "vocabulary_scope_box_type";
-	public static final String VOCABULARY_STRESS_SEVERITY = "vocabulary_severity_rating";
-	public static final String VOCABULARY_STRESS_SCOPE = "vocabulary_scope_rating";
+	public static final String VOCABULARY_SEVERITY_RATING = "vocabulary_severity_rating";
+	public static final String VOCABULARY_SCOPE_RATING = "vocabulary_scope_rating";
 	public static final String VOCABULARY_STRATEGY_IMAPACT_RATING_CODE = "vocabulary_strategy_impact_rating_code";
 	public static final String VOCABULARY_STRATEGY_FEASIBILITY_RATING_CODE = "vocabulary_strategy_feasibility_rating_code";
 	public static final String VOCABULARY_PRIORITY_RATING_CODE = "vocabulary_priority_rating_code";
