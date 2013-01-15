@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Mon Jan 14 17:29:32 EST 2013 $
+# $LastChangedDate: Tue Jan 15 17:47:47 EST 2013 $
 # $LastChangedRevision: 216 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/216'
 start = ConservationProject.element
@@ -680,7 +680,7 @@ SimpleThreatRating.element = element miradi:SimpleThreatRating
   element miradi:SimpleThreatRatingTargetId { BiodiversityTargetId.element } &
   element miradi:SimpleThreatRatingThreatId { ThreatId.element } &
   element miradi:SimpleThreatRatingCalculatedThreatTargetRating { vocabulary_threat_rating }? &
-  element miradi:SimpleThreatRatingScopeRating { vocabulary_simple_threat_rating_scope_code }? &
+  element miradi:SimpleThreatRatingScopeRating { vocabulary_scope_rating }? &
   element miradi:SimpleThreatRatingSeverityRating { vocabulary_severity_rating }? &
   element miradi:SimpleThreatRatingIrreversibilityRating { vocabulary_irreversibility_rating }? &
   element miradi:SimpleThreatRatingComments { formatted_text }?
@@ -804,7 +804,6 @@ vocabulary_rating_source = ''|'RoughGuess'|'ExpertKnowlege'|'ExternalResearch'|'
 vocabulary_resource_role_codes = 'TeamMember'|'Contact'|'Leader'|'Facilitator'|'Advisor'|'Stakeholder'
 vocabulary_resource_type = 'Person'|'Group'
 vocabulary_scope_box_type = 'Biodiversity'|'HumanWellbeing'
-vocabulary_simple_threat_rating_scope_code = ''|'1'|'2'|'3'|'4'
 vocabulary_measurement_status_confidence = ''|'RoughGuess'|'ExpertKnowledge'|'RapidAssessment'|'IntensiveAssessment'
 vocabulary_status = ''|'1'|'2'|'3'|'4'
 vocabulary_strategy_feasibility_rating_code = ''|'1'|'2'|'3'|'4'
