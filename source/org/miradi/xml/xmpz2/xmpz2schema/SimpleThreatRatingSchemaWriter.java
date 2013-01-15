@@ -40,8 +40,8 @@ public class SimpleThreatRatingSchemaWriter extends BaseObjectSchemaWriter
 		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createSchemaElement(SIMPLE_BASED_THREAT_RATING + THREAT_ID, (THREAT_ID + ".element")));
 		String vocabularyName = getXmpz2XmlSchemaCreator().getChoiceQuestionToSchemaElementNameMap().findVocabulary(new ThreatRatingQuestion());
 		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(SIMPLE_BASED_THREAT_RATING + SIMPLE_THREAT_TARGET_CALCULATED_RATING, vocabularyName));
-		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(SIMPLE_BASED_THREAT_RATING + SCOPE, VOCABULARY_STRESS_SCOPE));
-		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(SIMPLE_BASED_THREAT_RATING + SEVERITY, VOCABULARY_STRESS_SEVERITY));
+		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(SIMPLE_BASED_THREAT_RATING + SCOPE, VOCABULARY_SCOPE_RATING));
+		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(SIMPLE_BASED_THREAT_RATING + SEVERITY, VOCABULARY_SEVERITY_RATING));
 		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(SIMPLE_BASED_THREAT_RATING + IRREVERSIBILITY, VOCABULARY_IRREVERSIBILITY_CODE));
 		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(SIMPLE_BASED_THREAT_RATING + COMMENTS, "formatted_text"));
 		
