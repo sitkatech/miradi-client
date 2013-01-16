@@ -213,6 +213,11 @@ public class ChoiceItem implements Comparable<Object>
 		return descriptionProvider;
 	}
 
+	public boolean isSameCode(final String codeToCompareTo)
+	{
+		return getCode().equals(codeToCompareTo);
+	}
+	
 	private boolean selectable;
 	private String code;
 	private String label;
