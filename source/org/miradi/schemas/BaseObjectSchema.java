@@ -82,6 +82,9 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 		return addFieldSchema(new FieldSchemaChoice(fieldTag, question));
 	}
 	
+	//FIXME urgent : instead of using createFieldSchemaRequiredChoice() for fields that use a question
+	//that have a readable default choice,  use this method,  but place a condition if none of the choices
+	// are equal to "", then call the createFieldSchemaRequiredChoice;.  Then make createFieldSchemaRequiredChoice private. 
 	public AbstractFieldSchema createFieldSchemaChoice(final String fieldTag, Class questionClass)
 	{
 		return addFieldSchema(new FieldSchemaChoice(fieldTag, getQuestion(questionClass)));
