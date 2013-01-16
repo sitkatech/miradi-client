@@ -57,7 +57,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objectdata.AbstractUserTextDataWithHtmlFormatting;
 
-public class EditableHtmlPane extends MiradiTextPane
+public class EditableHtmlPane extends AbstractHtmlPane
 {
 	public EditableHtmlPane(MainWindow mainWindow)
 	{
