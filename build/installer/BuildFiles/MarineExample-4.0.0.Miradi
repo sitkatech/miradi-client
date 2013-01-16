@@ -3,31 +3,31 @@ UV	Version=61
 UP	HighestUsedNodeId=1119
 UP	ProjectMetadataId=0
 UL	LastModified=2012-12-03 11:15
-CO	1:1108
-UO	1:1108	Label=Scope
-CO	1:1109
-UO	1:1109	Label=Severity
-CO	1:1110
-UO	1:1110	Label=Irreversibility
-CO	2:1111
-UO	2:1111	Label=None
-UO	2:1111	Color=-1
-CO	2:1112
-UO	2:1112	Numeric=4
-UO	2:1112	Label=Very High
-UO	2:1112	Color=-65536
-CO	2:1113
-UO	2:1113	Numeric=3
-UO	2:1113	Label=High
-UO	2:1113	Color=-14336
-CO	2:1114
-UO	2:1114	Numeric=2
-UO	2:1114	Label=Medium
-UO	2:1114	Color=-256
-CO	2:1115
-UO	2:1115	Numeric=1
-UO	2:1115	Label=Low
-UO	2:1115	Color=-16711936
+CO	1:1
+UO	1:1	Label=Scope
+CO	1:2
+UO	1:2	Label=Severity
+CO	1:3
+UO	1:3	Label=Irreversibility
+CO	2:4
+UO	2:4	Label=None
+UO	2:4	Color=-1
+CO	2:5
+UO	2:5	Numeric=4
+UO	2:5	Label=Very High
+UO	2:5	Color=-65536
+CO	2:6
+UO	2:6	Numeric=3
+UO	2:6	Label=High
+UO	2:6	Color=-14336
+CO	2:7
+UO	2:7	Numeric=2
+UO	2:7	Label=Medium
+UO	2:7	Color=-256
+CO	2:8
+UO	2:8	Numeric=1
+UO	2:8	Label=Low
+UO	2:8	Color=-16711936
 CO	3:1000
 UO	3:1000	Details=Download data from teh FAO FishStat database at: http://www.fao.org/fishery/statistics/en
 UO	3:1000	ShortLabel=Shark 2a
@@ -3260,44 +3260,44 @@ UO	58:774	CommentsMap={"StringMap":{"DocumentKeyResultsAndLessons":"Several less
 UO	58:774	ProgressChoiceMap={"StringChoiceMap":{"IdentifyIndirectThreatsAndOpportunities":"3","AssessStakeholders":"2","IdentifyDirectThreats":"3","DefineAudiencesAndInformationNeeds":"2","PlanProjectLifespanAndExitStrategy":"3","AssessRisks":"2","DescribeStatusOfTargets":"3","GroundTruthAndReviseModel":"2","ImplementWorkPlan":"2","UseOthersCommunicationProducts":"2","DevelopObjectives":"3","SelectInitialTeamMembers":"3","IdentifyKeyAudiences":"2","DevelopMapOfProjectArea":"1","DemonstrateCommitmentFromLeadersToLearningAndInnovation":"2","DocumentKeyResultsAndLessons":"2","AgreeOnRolesAndResponsibilities":"2","AddHumanWelfareTargetsIfDesired":"3","DocumentDiscussionsAndDecisions":"2","Share success & failures with practitioners around the world":"2","DevelopGoalsGorEachTarget":"3","RankDirectThreats":"2","CreateInitialConceptualModel":"3","DevelopAndShareCommunicationProducts":"2","IdentifyKeyFactorsAndDraftStrategies":"3","AnalyzeProjectResultsSndSssumptions":"2","SelectConservationTargets":"3","ReportToProjectTeamAndStakeholders":"2","CreateResultsChainsShowingAssumptions":"3","RankDraftStrategies":"3","DetailActivitiesTasksAndResponsibilities":"","DevelopProjectTimelineOrCalendar":"","DevelopCommunicationsStrategy":"2"}}
 UO	58:774	FlagsMap={"StringCodeListMap":{"AssessHumanFinacialAndOtherResources":"","DevelopAndSubmitFundingProposals":"{\"Codes\":[\"needsAttention\"]}","AddHumanWelfareTargetsIfDesired":"{\"Codes\":[\"needsAttention\"]}","DetailMethodsTasksAndResponsibilities":"{\"Codes\":[\"needsAttention\"]}","DevelopSystemsForRecordingStoringProcessingAndBackingUpProjectData":"{\"Codes\":[\"needsAttention\"]}","DetailActivitiesTasksAndResponsibilities":"{\"Codes\":[\"needsAttention\"]}","ShareFeedbackFormallyOrInformally":"","DevelopMapOfProjectArea":"{\"Codes\":[\"needsAttention\"]}","RankDirectThreats":"{\"Codes\":[\"needsAttention\"]}","DefineIndicators":"{\"Codes\":[\"needsAttention\"]}"}}
 CT	55-30
-UT	55-30	DefaultValueId=1111
-UT	55-30	Values={"1110":1112,"1108":1112,"1109":1112}
+UT	55-30	DefaultValueId=4
+UT	55-30	Values={"3":5,"2":5,"1":5}
 CT	63-30
-UT	63-30	DefaultValueId=1111
-UT	63-30	Values={"1110":1114,"1108":1114,"1109":1114}
+UT	63-30	DefaultValueId=4
+UT	63-30	Values={"3":7,"2":7,"1":7}
 CT	67-30
-UT	67-30	DefaultValueId=1111
-UT	67-30	Values={"1110":1112,"1108":1112,"1109":1113}
+UT	67-30	DefaultValueId=4
+UT	67-30	Values={"3":5,"2":6,"1":5}
 CT	55-33
-UT	55-33	DefaultValueId=1111
+UT	55-33	DefaultValueId=4
 UT	55-33	Values={}
 CT	59-33
-UT	59-33	DefaultValueId=1111
-UT	59-33	Values={"1110":1113,"1108":1113,"1109":1112}
+UT	59-33	DefaultValueId=4
+UT	59-33	Values={"3":6,"2":5,"1":6}
 CT	63-33
-UT	63-33	DefaultValueId=1111
+UT	63-33	DefaultValueId=4
 UT	63-33	Values={}
 CT	47-35
-UT	47-35	DefaultValueId=1111
-UT	47-35	Values={"1110":1115,"1108":1113,"1109":1115}
+UT	47-35	DefaultValueId=4
+UT	47-35	Values={"3":8,"2":8,"1":6}
 CT	55-35
-UT	55-35	DefaultValueId=1111
-UT	55-35	Values={"1110":1114,"1108":1112,"1109":1112}
+UT	55-35	DefaultValueId=4
+UT	55-35	Values={"3":7,"2":5,"1":5}
 CT	59-35
-UT	59-35	DefaultValueId=1111
+UT	59-35	DefaultValueId=4
 UT	59-35	Values={}
 CT	47-37
-UT	47-37	DefaultValueId=1111
-UT	47-37	Values={"1110":1115,"1108":1114,"1109":1114}
+UT	47-37	DefaultValueId=4
+UT	47-37	Values={"3":8,"2":7,"1":7}
 CT	55-37
-UT	55-37	DefaultValueId=1111
+UT	55-37	DefaultValueId=4
 UT	55-37	Values={}
 CT	41-39
-UT	41-39	DefaultValueId=1111
-UT	41-39	Values={"1110":1113,"1108":1112,"1109":1112}
+UT	41-39	DefaultValueId=4
+UT	41-39	Values={"3":6,"2":5,"1":5}
 CT	47-39
-UT	47-39	DefaultValueId=1111
-UT	47-39	Values={"1110":1114,"1108":1114,"1109":1114}
+UT	47-39	DefaultValueId=4
+UT	47-39	Values={"3":7,"2":7,"1":7}
 UQ	Data=
 UE	Data=
 -- 1354551300000 Dec 3, 2012 11:15:00 AM
