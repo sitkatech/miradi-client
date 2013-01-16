@@ -21,6 +21,7 @@ package org.miradi.dialogs.taggedObjectSet;
 
 import javax.swing.Icon;
 
+import org.miradi.actions.jump.ActionJumpDiagramWizardReviewModelAndAdjustStep;
 import org.miradi.dialogs.base.ObjectPoolManagementPanel;
 import org.miradi.icons.TaggedObjectSetIcon;
 import org.miradi.main.MainWindow;
@@ -42,6 +43,12 @@ public class TaggedObjectSetManagementPanel extends ObjectPoolManagementPanel
 	public Icon getIcon()
 	{
 		return new TaggedObjectSetIcon();
+	}
+	
+	@Override
+	public Class getJumpActionClass()
+	{
+		return ActionJumpDiagramWizardReviewModelAndAdjustStep.class;
 	}
 	
 	private static String PANEL_DESCRIPTION = "TaggedObjectSet"; 

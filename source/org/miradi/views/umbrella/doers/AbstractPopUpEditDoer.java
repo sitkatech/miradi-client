@@ -20,7 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella.doers;
 
 import org.martus.swing.Utilities;
+import org.miradi.dialogs.base.MiradiDialog;
 import org.miradi.dialogs.base.ModalDialogWithClose;
+import org.miradi.dialogs.base.ModelessDialogWithDirections;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.dialogs.base.ObjectManagementPanel;
 import org.miradi.exceptions.CommandFailedException;
@@ -64,10 +66,19 @@ abstract public class AbstractPopUpEditDoer extends ObjectsDoer
 			throw new CommandFailedException(e);
 		}
 	}
+	
+	public static void showManagementDialogWithInstructionsButton(MainWindow mainWindow, ObjectManagementPanel managementPanel, String dialogTitle) throws Exception
+	{
+		showDialog(new ModelessDialogWithDirections(mainWindow, managementPanel, dialogTitle), managementPanel);
+	}
 
 	public static void showManagementDialog(MainWindow mainWindow, ObjectManagementPanel managementPanel, String dialogTitle) throws Exception
 	{
-		ModalDialogWithClose dialog = new ModalDialogWithClose(mainWindow, managementPanel, dialogTitle);
+		showDialog(new ModalDialogWithClose(mainWindow, managementPanel, dialogTitle), managementPanel);
+	}
+
+	private static void showDialog(MiradiDialog dialog, ObjectManagementPanel managementPanel)
+	{
 		Utilities.centerDlg(dialog);
 
 		managementPanel.becomeActive();
