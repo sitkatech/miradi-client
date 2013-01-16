@@ -25,7 +25,7 @@ import javax.swing.text.html.StyleSheet;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ReadonlyHtmlPane extends EditableHtmlPane
+public class ReadonlyHtmlPane extends AbstractHtmlPane
 {
 	public ReadonlyHtmlPane(MainWindow mainWindow, int fixedApproximateColumnCount, int initialApproximateRowCount)
 	{
