@@ -40,7 +40,7 @@ public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
 
 		add(new FillerLabel());
 		add(new FillerLabel());
-		addFieldToBoxWithLabel(createDropdownWithIconField(orefToUse.getObjectType(), BaseObject.TAG_LEADER_RESOURCE, new ProjectResourceQuestionWithUnspecifiedChoice(getProject())));
+		addField(createDropdownWithIconField(orefToUse.getObjectType(), BaseObject.TAG_LEADER_RESOURCE, new ProjectResourceQuestionWithUnspecifiedChoice(getProject())));
 		add(new PanelTitleLabel(EAM.text("When")));
 		addFieldWithoutLabel(createWhenEditorField(orefToUse));
 		
