@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Tue Jan 15 17:47:47 EST 2013 $
+# $LastChangedDate: Wed Jan 16 10:25:31 EST 2013 $
 # $LastChangedRevision: 216 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/216'
 start = ConservationProject.element
@@ -228,7 +228,7 @@ Resource.element = element miradi:Resource
   element miradi:ResourceGivenName { text }? &
   element miradi:ResourceIMAddress { text }? &
   element miradi:ResourceIMService { text }? &
-  element miradi:ResourceId { text }? &
+  element miradi:ResourceInitials { text }? &
   element miradi:ResourceIsCcnCoach { xsd:boolean }? &
   element miradi:ResourceLocation { text }? &
   element miradi:ResourceName { formatted_text }? &
