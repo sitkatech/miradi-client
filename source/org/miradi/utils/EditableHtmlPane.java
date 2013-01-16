@@ -162,7 +162,7 @@ public class EditableHtmlPane extends MiradiTextPane
 		htmlKit.setStyleSheet(style);
 	}
 
-	private void customizeStyleSheet(StyleSheet style)
+	protected void customizeStyleSheet(StyleSheet style)
 	{
 		final int fontSize = getMainWindow().getWizardFontSize();
 		HtmlUtilities.addRuleFontSize(style, getFont().getSize(), fontSize);

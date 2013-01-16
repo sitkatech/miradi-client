@@ -19,17 +19,32 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
+import javax.swing.text.JTextComponent;
+
 import org.miradi.ids.BaseId;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.utils.ReadonlyHtmlPane;
 
 public class ObjectMultilineDisplayField extends ObjectMultilineInputField
 {
 	public ObjectMultilineDisplayField(MainWindow mainWindow, int objectTypeToUse, BaseId objectIdToUse, String tagToUse) throws Exception
 	{
-		super(mainWindow, objectTypeToUse, objectIdToUse, tagToUse, 1, DEFAULT_WIDE_FIELD_CHARACTERS);
+		super(mainWindow, objectTypeToUse, objectIdToUse, tagToUse, createTextComponent(mainWindow, 1, DEFAULT_WIDE_FIELD_CHARACTERS));
 		
 		setEditable(false);
 		getComponent().setFocusable(false);
+	}
+	
+	private static JTextComponent createTextComponent(MainWindow mainWindow, int initialVisibleRows, int columnsToUse) throws Exception
+	{
+		return new ReadonlyHtmlPane(mainWindow, columnsToUse, initialVisibleRows);
+	}
+	
+	@Override
+	protected void updateEditableState(boolean isEditable)
+	{
+		getComponent().setBackground(EAM.READONLY_BACKGROUND_COLOR);
 	}
 	
 	@Override

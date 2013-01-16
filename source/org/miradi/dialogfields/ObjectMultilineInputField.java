@@ -37,7 +37,12 @@ public abstract class ObjectMultilineInputField extends ObjectTextInputField
 	
 	protected ObjectMultilineInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int initialVisibleRows, int columnsToUse) throws Exception
 	{
-		super(mainWindowToUse, objectTypeToUse, objectIdToUse, tagToUse, createTextComponent(mainWindowToUse, initialVisibleRows, columnsToUse));
+		this(mainWindowToUse, objectTypeToUse, objectIdToUse, tagToUse, createTextComponent(mainWindowToUse, initialVisibleRows, columnsToUse));
+	}
+
+	public ObjectMultilineInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, JTextComponent createTextComponent) throws Exception
+	{
+		super(mainWindowToUse, objectTypeToUse, objectIdToUse, tagToUse, createTextComponent);
 		
 		mainWindow = mainWindowToUse;
 	}
