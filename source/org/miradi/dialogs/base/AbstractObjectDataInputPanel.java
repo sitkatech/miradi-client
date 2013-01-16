@@ -43,6 +43,7 @@ import org.miradi.commands.CommandDeleteObject;
 import org.miradi.dialogfields.AnalysisLevelsChooserField;
 import org.miradi.dialogfields.CodeListPopupWithDescriptionPanelField;
 import org.miradi.dialogfields.CodeToUserStringMapMultiLineEditor;
+import org.miradi.dialogfields.DropDownChoiceField;
 import org.miradi.dialogfields.EditableCodeListField;
 import org.miradi.dialogfields.IndicatorRelevancyOverrideListField;
 import org.miradi.dialogfields.ObjectCheckBoxField;
@@ -59,7 +60,6 @@ import org.miradi.dialogfields.ObjectMultilineDisplayField;
 import org.miradi.dialogfields.ObjectOverridenListField;
 import org.miradi.dialogfields.ObjectPercentageInputField;
 import org.miradi.dialogfields.ObjectRadioButtonGroupField;
-import org.miradi.dialogfields.DropDownChoiceField;
 import org.miradi.dialogfields.ObjectReadonlyChoiceField;
 import org.miradi.dialogfields.ObjectReadonlyObjectListField;
 import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
@@ -79,7 +79,6 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitledBorder;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.ids.BaseId;
-import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
@@ -307,18 +306,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return field;
 	}
 	
-	public void addFieldToBoxWithLabel(final ObjectDataInputField field)
-	{
-		OneRowPanel box = new OneRowPanel();
-		box.setBackground(AppPreferences.getDataPanelBackgroundColor());	
-		box.setGaps(3);
-		box.add(new PanelFieldLabel(field.getObjectType(), field.getTag()));
-		box.add(field.getComponent());
-		add(box);
-		add(new FillerLabel());
-		addFieldToList(field);
-	}
-
 	public void addFieldWithoutLabel(ObjectDataField field)
 	{
 		addFieldToList(field);
