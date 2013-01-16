@@ -380,7 +380,7 @@ return true;
                       </void>
                       <void property="windowsIconFile">
                         <object class="com.install4j.api.beans.ExternalFile">
-                          <string>./installer/BuildFiles/mpz.ico</string>
+                          <string>./installer/BuildFiles/cpmz.ico</string>
                         </object>
                       </void>
                     </object>
