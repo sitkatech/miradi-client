@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-11 13:46-0600\n"
+"POT-Creation-Date: 2013-01-15 18:31-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2936,7 +2936,7 @@ msgstr ""
 msgid "Date Chooser"
 msgstr "日期选择器 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:47
+#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:48
 msgid "Dates can be set in the Work Plan view"
 msgstr ""
 
