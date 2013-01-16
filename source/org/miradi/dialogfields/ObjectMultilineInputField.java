@@ -25,6 +25,7 @@ import javax.swing.text.JTextComponent;
 import org.miradi.ids.BaseId;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.utils.AbstractHtmlPane;
 import org.miradi.utils.EditableHtmlPane;
 import org.miradi.utils.HtmlEditorRightClickMouseHandler;
 
@@ -57,7 +58,7 @@ public abstract class ObjectMultilineInputField extends ObjectTextInputField
 	{
 		super.setSaveListener(saveListenerToUse);
 		
-		((EditableHtmlPane)getTextField()).setSaverListener(saveListenerToUse);
+		((AbstractHtmlPane)getTextField()).setSaverListener(saveListenerToUse);
 	}
 
 	@Override
