@@ -311,8 +311,6 @@ abstract public class TransferableMiradiList implements Transferable, Serializab
 	
 	abstract public DataFlavor[] getTransferDataFlavors();
 		
-	public static DataFlavor miradiListDataFlavor = new DataFlavor(TransferableMiradiList.class, "Miradi Objects");
-
 	private Project project;
 	
 	private ORef diagramObjectRefCopiedFrom;
