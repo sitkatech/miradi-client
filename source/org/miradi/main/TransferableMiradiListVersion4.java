@@ -25,7 +25,7 @@ import java.awt.datatransfer.DataFlavor;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 
-public class TransferableMiradiListVersion4 extends TransferableMiradiList
+public class TransferableMiradiListVersion4 extends AbstractTransferableMiradiList
 {
 	public TransferableMiradiListVersion4(Project projectToUse,	ORef diagramObjectRefCopiedFromToUse)
 	{
