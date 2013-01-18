@@ -36,6 +36,7 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.main.TransferableMiradiList;
+import org.miradi.main.TransferableMiradiListVersion3;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
@@ -247,7 +248,7 @@ public class TestDiagramPaster extends TestCaseWithProject
 	public void testFixTags() throws Exception
 	{
 		DiagramObject diagramObject = getDiagramModel().getDiagramObject();
-		TransferableMiradiList transferableList = new TransferableMiradiList(getProject(), diagramObject.getRef());
+		TransferableMiradiList transferableList = new TransferableMiradiListVersion3(getProject(), diagramObject.getRef());
 		DiagramCopyPaster diagramPaster = new DiagramCopyPaster(null, getDiagramModel(), transferableList);
 		Target target = getProject().createTarget();
 		final String TAG_LABEL = "tagLabel1";
@@ -291,7 +292,7 @@ public class TestDiagramPaster extends TestCaseWithProject
 		EAMGraphCell dataCells[] = {linkCell, threatFactorCell, targetFactorCell};
 		
 		ORef diagramObjectRef = model.getDiagramObject().getRef();
-		TransferableMiradiList transferableList = new TransferableMiradiList(getProject(), diagramObjectRef);
+		TransferableMiradiList transferableList = new TransferableMiradiListVersion3(getProject(), diagramObjectRef);
 		transferableList.storeData(dataCells);
 	
 		getProject().executeCommand(new CommandBeginTransaction());
@@ -342,7 +343,7 @@ public class TestDiagramPaster extends TestCaseWithProject
 	private DiagramPaster paste(ProjectForTesting projectToPasteInto, EAMGraphCell[] dataCells) throws Exception
 	{
 		ORef diagramObjectRef = getDiagramModel().getDiagramObject().getRef();
-		TransferableMiradiList transferableList = new TransferableMiradiList(getProject(), diagramObjectRef);
+		TransferableMiradiList transferableList = new TransferableMiradiListVersion3(getProject(), diagramObjectRef);
 		transferableList.storeData(dataCells);
 		
 		DiagramPaster paster = new DiagramCopyPaster(null, projectToPasteInto.getTestingDiagramModel(), transferableList);

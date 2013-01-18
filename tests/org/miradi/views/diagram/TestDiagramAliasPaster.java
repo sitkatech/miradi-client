@@ -33,6 +33,7 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.main.TransferableMiradiList;
+import org.miradi.main.TransferableMiradiListVersion3;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -495,7 +496,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		}
 		
 		EAMGraphCell[] cellsToCopyAsArray = cellsToCopy.toArray(new EAMGraphCell[0]);
-		TransferableMiradiList transferableList = new TransferableMiradiList(getProject(), diagramModelToCopyFrom.getDiagramObject().getRef());
+		TransferableMiradiList transferableList = new TransferableMiradiListVersion3(getProject(), diagramModelToCopyFrom.getDiagramObject().getRef());
 		transferableList.storeData(cellsToCopyAsArray);
 		
 		return transferableList;

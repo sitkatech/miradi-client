@@ -30,6 +30,7 @@ import org.miradi.diagram.PersistentDiagramModel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.TransferableMiradiList;
+import org.miradi.main.TransferableMiradiListVersion3;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -145,7 +146,7 @@ public class ConceptualModelByTargetSplitter
 	
 	private TransferableMiradiList createTransferable(HashSet<DiagramFactor> diagramFactors, HashSet<DiagramLink> diagramLinks)
 	{
-		TransferableMiradiList miradiList = new TransferableMiradiList(getProject(), getDiagramObjectBeingSplit().getRef());
+		TransferableMiradiList miradiList = new TransferableMiradiListVersion3(getProject(), getDiagramObjectBeingSplit().getRef());
 		miradiList.storeData(diagramFactors, diagramLinks);
 		
 		return miradiList;
