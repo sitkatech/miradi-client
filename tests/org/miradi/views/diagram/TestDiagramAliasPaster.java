@@ -32,8 +32,8 @@ import org.miradi.ids.IdList;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.main.AbstractTransferableMiradiList;
 import org.miradi.main.TransferableMiradiList;
+import org.miradi.main.TransferableMiradiListVersion3;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -87,7 +87,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		ORef activityRef = getProject().addActivityToStratey(strategy.getRef(), Strategy.TAG_ACTIVITY_IDS);
 		Task activity = Task.find(getProject(), activityRef);
 		getProject().addProgressReport(activity);
-		AbstractTransferableMiradiList transferable = createTransferable(getDiagramModel(), getDiagramModel().getAllDiagramFactors(), new Vector<DiagramLink>());
+		TransferableMiradiList transferable = createTransferable(getDiagramModel(), getDiagramModel().getAllDiagramFactors(), new Vector<DiagramLink>());
 		pasteShared(diagramModelToPasteInto, transferable);
 		// There was a bug that would throw a null pointer exception here, 
 		// because we would create new copies of the strat/activity/progress, 
@@ -102,7 +102,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		assertTrue("goal is not orphan?", orphanGoal.findObjectsThatReferToUs().isEmpty());
 		
 		Indicator indicator = getProject().createIndicator(threat);
-		AbstractTransferableMiradiList transferable = createTransferable(getDiagramModel(), getDiagramModel().getAllDiagramFactors(), new Vector<DiagramLink>());
+		TransferableMiradiList transferable = createTransferable(getDiagramModel(), getDiagramModel().getAllDiagramFactors(), new Vector<DiagramLink>());
 		
 		deleteIndicatorBeforePasteAsShared(indicator);
 		assertEquals("Indicator was not deleted?", 0, getProject().getIndicatorPool().size());
@@ -139,7 +139,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		wrapThreatWithGroupBox();
 
 		// Copy/paste-shared grouped threat into other diagram
-		AbstractTransferableMiradiList transferableListBeforeCut = createTransferable(getDiagramModel(), getDiagramModel().getAllDiagramFactors(), new Vector<DiagramLink>());
+		TransferableMiradiList transferableListBeforeCut = createTransferable(getDiagramModel(), getDiagramModel().getAllDiagramFactors(), new Vector<DiagramLink>());
 		pasteShared(diagramModelToPasteInto, transferableListBeforeCut);
 
 		// Copy/paste-shared grouped threat into other diagram a second time
@@ -159,12 +159,12 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		wrapThreatWithGroupBox();
 
 		// Copy/paste-shared grouped threat into other diagram
-		AbstractTransferableMiradiList transferableListBeforeCut = createTransferable(getDiagramModel(), getDiagramModel().getAllDiagramFactors(), new Vector<DiagramLink>());
+		TransferableMiradiList transferableListBeforeCut = createTransferable(getDiagramModel(), getDiagramModel().getAllDiagramFactors(), new Vector<DiagramLink>());
 		pasteShared(diagramModelToPasteInto, transferableListBeforeCut);
 		
 		// Cut from second diagram, then paste-shared back into first diagram
 		// where the threat and group still exist
-		AbstractTransferableMiradiList transferableList = createTransferable(diagramModelToPasteInto, diagramModelToPasteInto.getAllDiagramFactors(), new Vector<DiagramLink>());
+		TransferableMiradiList transferableList = createTransferable(diagramModelToPasteInto, diagramModelToPasteInto.getAllDiagramFactors(), new Vector<DiagramLink>());
 		deleteDiagramFactors(diagramModelToPasteInto.getDiagramObject(), diagramModelToPasteInto.getAllDiagramFactors());
 		pasteShared(getDiagramModel(), transferableList);
 		
@@ -279,7 +279,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 
 		Vector<DiagramFactor> diagramFactorsToCutPaste = createDiagramFactorList();
 		Vector<DiagramLink> diagramLinksToCutPaste = createDiagramLinkList();
-		AbstractTransferableMiradiList transferableList = createTransferable(getDiagramModel(), diagramFactorsToCutPaste, diagramLinksToCutPaste);		
+		TransferableMiradiList transferableList = createTransferable(getDiagramModel(), diagramFactorsToCutPaste, diagramLinksToCutPaste);		
 		pasteShared(diagramModelToPasteInto, transferableList);
 		
 		wrapThreatAndThreatTargetLinkWithGroupBox();
@@ -298,7 +298,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		
 		Vector<DiagramLink> diagramLinksToCutPaste = new Vector<DiagramLink>();
 		diagramLinksToCutPaste.add(threatTargetDiagramLink);
-		AbstractTransferableMiradiList transferableList = createTransferable(getDiagramModel(), diagramFactorsToCutPaste, diagramLinksToCutPaste);
+		TransferableMiradiList transferableList = createTransferable(getDiagramModel(), diagramFactorsToCutPaste, diagramLinksToCutPaste);
 		
 		deleteDiagramLinkAndOrphandFactorLink(threatTargetDiagramLink);
 		deleteDiagramFactors(getDiagramObject(), diagramFactorsToCutPaste);
@@ -400,7 +400,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	{
 		Vector<DiagramFactor> diagramFactorsToCutPaste = createDiagramFactorList();
 		Vector<DiagramLink> diagramLinksToCutPaste = createDiagramLinkList();
-		AbstractTransferableMiradiList transferableList = createTransferable(getDiagramModel(), diagramFactorsToCutPaste, diagramLinksToCutPaste);
+		TransferableMiradiList transferableList = createTransferable(getDiagramModel(), diagramFactorsToCutPaste, diagramLinksToCutPaste);
 		
 		deleteDiagramLinkAndOrphandFactorLink(groupBoxDiagramLink);
 		deleteDiagramFactors(getDiagramObject(), diagramFactorsToCutPaste);
@@ -468,11 +468,11 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	
 	private void pasteShared(DiagramModel diagramModelToCopyFrom, DiagramModel diagramModelToPasteIntoToUse, DiagramFactor diagramFactor) throws Exception
 	{
-		AbstractTransferableMiradiList transferableList = createTransferable(diagramModelToCopyFrom, diagramFactor);
+		TransferableMiradiList transferableList = createTransferable(diagramModelToCopyFrom, diagramFactor);
 		pasteShared(diagramModelToPasteIntoToUse, transferableList);
 	}
 	
-	private AbstractTransferableMiradiList createTransferable(DiagramModel diagramModelToCopyFrom, DiagramFactor diagramFactor) throws Exception
+	private TransferableMiradiList createTransferable(DiagramModel diagramModelToCopyFrom, DiagramFactor diagramFactor) throws Exception
 	{
 		Vector<DiagramFactor> diagramFactors = new Vector<DiagramFactor>();
 		diagramFactors.add(diagramFactor);
@@ -480,7 +480,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		return createTransferable(diagramModelToCopyFrom, diagramFactors, new Vector<DiagramLink>());
 	}
 	
-	private AbstractTransferableMiradiList createTransferable(DiagramModel diagramModelToCopyFrom, Vector<DiagramFactor> diagramFactors, Vector<DiagramLink> diagramLinks) throws Exception
+	private TransferableMiradiList createTransferable(DiagramModel diagramModelToCopyFrom, Vector<DiagramFactor> diagramFactors, Vector<DiagramLink> diagramLinks) throws Exception
 	{
 		Vector<EAMGraphCell> cellsToCopy = new Vector<EAMGraphCell>();
 		for(DiagramLink diagramLink : diagramLinks)
@@ -496,13 +496,13 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		}
 		
 		EAMGraphCell[] cellsToCopyAsArray = cellsToCopy.toArray(new EAMGraphCell[0]);
-		AbstractTransferableMiradiList transferableList = new TransferableMiradiList(getProject(), diagramModelToCopyFrom.getDiagramObject().getRef());
+		TransferableMiradiList transferableList = new TransferableMiradiListVersion3(getProject(), diagramModelToCopyFrom.getDiagramObject().getRef());
 		transferableList.storeData(cellsToCopyAsArray);
 		
 		return transferableList;
 	}
 
-	private void pasteShared(DiagramModel diagramModelToPasteIntoToUse, AbstractTransferableMiradiList transferableList) throws Exception
+	private void pasteShared(DiagramModel diagramModelToPasteIntoToUse, TransferableMiradiList transferableList) throws Exception
 	{
 		DiagramPaster sharedPaster = new DiagramAsSharedPaster(null, diagramModelToPasteIntoToUse, transferableList);
 		sharedPaster.pasteFactorsAndLinks(new Point(0, 0));
