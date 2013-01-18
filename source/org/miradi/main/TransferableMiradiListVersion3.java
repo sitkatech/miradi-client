@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.main;
 
+import java.awt.datatransfer.DataFlavor;
+
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 
@@ -29,4 +31,13 @@ public class TransferableMiradiListVersion3 extends TransferableMiradiList
 	{
 		super(projectToUse, diagramObjectRefCopiedFromToUse);
 	}
+	
+	@Override
+	public DataFlavor[] getTransferDataFlavors()
+	{
+		DataFlavor[] flavorArray = {miradiListDataFlavor };
+		return flavorArray;
+	}
+	
+	public static DataFlavor miradiListDataFlavor = new DataFlavor(TransferableMiradiList.class, "Miradi Objects");
 }
