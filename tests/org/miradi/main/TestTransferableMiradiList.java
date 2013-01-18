@@ -78,7 +78,7 @@ public class TestTransferableMiradiList extends MiradiTestCase
 		miradiList.storeData(emptyCells);
 		DataFlavor flavors[] = miradiList.getTransferDataFlavors();
 		assertEquals("Should only support 1 flavor?", 1, flavors.length);
-		assertEquals("MiradiListDataFlavor not found?", TransferableMiradiList.miradiListDataFlavor, flavors[0]);
+		assertEquals("MiradiListDataFlavor not found?", TransferableMiradiListVersion3.miradiListDataFlavor, flavors[0]);
 	}
 	
 	public void testIsDataFlavorSupported() throws Exception
@@ -87,7 +87,7 @@ public class TestTransferableMiradiList extends MiradiTestCase
 		ORef diagramObjectRef = project.getTestingDiagramObject().getRef();
 		TransferableMiradiList miradiList = new TransferableMiradiListVersion3(project, diagramObjectRef);
 		miradiList.storeData(emptyCells);
-		assertTrue("MiradiListDataFlavor not supported?", miradiList.isDataFlavorSupported(TransferableMiradiList.miradiListDataFlavor));
+		assertTrue("MiradiListDataFlavor not supported?", miradiList.isDataFlavorSupported(TransferableMiradiListVersion3.miradiListDataFlavor));
 	}
 	
 	public void testProjectFileName() throws Exception
@@ -137,7 +137,7 @@ public class TestTransferableMiradiList extends MiradiTestCase
 		ORef diagramObjectRef = testingDiagramObject.getRef();
 		TransferableMiradiList miradiList = new TransferableMiradiListVersion3(project, diagramObjectRef);
 		miradiList.storeData(dataCells);
-		TransferableMiradiList miradiTransferData = (TransferableMiradiList)miradiList.getTransferData(TransferableMiradiList.miradiListDataFlavor);
+		TransferableMiradiList miradiTransferData = (TransferableMiradiList)miradiList.getTransferData(TransferableMiradiListVersion3.miradiListDataFlavor);
 		assertNotNull(miradiTransferData);
 		
 		Vector<String> factorDeepCopies = miradiTransferData.getFactorDeepCopies();
