@@ -38,7 +38,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.main.AbstractTransferableMiradiList;
+import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -85,7 +85,7 @@ import org.miradi.utils.PointList;
 
 abstract public class DiagramPaster
 {
-	public DiagramPaster(DiagramPanel diagramPanelToUse, DiagramModel modelToUse, AbstractTransferableMiradiList transferableListToUse)
+	public DiagramPaster(DiagramPanel diagramPanelToUse, DiagramModel modelToUse, TransferableMiradiList transferableListToUse)
 	{
 		diagramPanel = diagramPanelToUse;
 		currentModel = modelToUse;
@@ -1056,7 +1056,7 @@ abstract public class DiagramPaster
 	
 	protected HashMap<ORef, ORef> oldToNewPastedObjectMap;	
 	protected PointManipulater dataHelper;
-	protected AbstractTransferableMiradiList transferableList;
+	protected TransferableMiradiList transferableList;
 	private Vector<EAMGraphCell> pastedCellsToSelect;
 	
 	public static final String FAKE_TAG_TYPE = "Type";

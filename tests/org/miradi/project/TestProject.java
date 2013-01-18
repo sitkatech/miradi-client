@@ -45,8 +45,8 @@ import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
 import org.miradi.ids.IndicatorId;
 import org.miradi.main.MiradiTestCase;
-import org.miradi.main.AbstractTransferableMiradiList;
 import org.miradi.main.TransferableMiradiList;
+import org.miradi.main.TransferableMiradiListVersion3;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.DirectThreatSet;
 import org.miradi.objecthelpers.FactorSet;
@@ -342,7 +342,7 @@ public class TestProject extends MiradiTestCase
 		HashSet<EAMGraphCell> cellVector = model.getAllSelectedCellsWithRelatedLinkages(new EAMGraphCell[]{node1});
 		EAMGraphCell[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
 		ORef diagramObjectRef = project.getTestingDiagramObject().getRef();
-		AbstractTransferableMiradiList transferableList = new TransferableMiradiList(project, diagramObjectRef);
+		TransferableMiradiList transferableList = new TransferableMiradiListVersion3(project, diagramObjectRef);
 		transferableList.storeData(selectedCells);
 		assertEquals(3, project.getAllDiagramFactorIds().length);
 		assertEquals(2, model.getFactorLinks(node1).size());
@@ -550,7 +550,7 @@ public class TestProject extends MiradiTestCase
 		HashSet<EAMGraphCell> cellVector = model.getAllSelectedCellsWithRelatedLinkages(new EAMGraphCell[]{node1});
 		EAMGraphCell[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
 		ORef diagramObjectRef = project.getTestingDiagramObject().getRef();
-		AbstractTransferableMiradiList transferableList = new TransferableMiradiList(project, diagramObjectRef);
+		TransferableMiradiList transferableList = new TransferableMiradiListVersion3(project, diagramObjectRef);
 		transferableList.storeData(selectedCells);
 		assertEquals(3, project.getAllDiagramFactorIds().length);
 		assertEquals(2, model.getFactorLinks(node1).size());
@@ -573,7 +573,7 @@ public class TestProject extends MiradiTestCase
 		FactorCell node1 = project.createFactorCell(ObjectType.TARGET);
 		EAMGraphCell[] selectedCells = new FactorCell[] {node1};
 		ORef diagramObjectRef = project.getTestingDiagramObject().getRef();
-		AbstractTransferableMiradiList transferableList = new TransferableMiradiList(project, diagramObjectRef);
+		TransferableMiradiList transferableList = new TransferableMiradiListVersion3(project, diagramObjectRef);
 		transferableList.storeData(selectedCells);
 		
 		DiagramFactorId idToDelete = node1.getDiagramFactorId();

@@ -25,19 +25,19 @@ import java.awt.datatransfer.DataFlavor;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 
-public class TransferableMiradiListVersion4 extends TransferableMiradiList
+public class TransferableMiradiListVersion3 extends TransferableMiradiList
 {
-	public TransferableMiradiListVersion4(Project projectToUse,	ORef diagramObjectRefCopiedFromToUse)
+	public TransferableMiradiListVersion3(Project projectToUse,	ORef diagramObjectRefCopiedFromToUse)
 	{
 		super(projectToUse, diagramObjectRefCopiedFromToUse);
 	}
-
+	
 	@Override
 	public DataFlavor[] getTransferDataFlavors()
 	{
-		DataFlavor[] flavorArray = {miradi4ListDataFlavor };
+		DataFlavor[] flavorArray = {miradiListDataFlavor };
 		return flavorArray;
 	}
-
-	public static DataFlavor miradi4ListDataFlavor = new DataFlavor(TransferableMiradiListVersion4.class, "Miradi version 4 Objects");
+	
+	public static DataFlavor miradiListDataFlavor = new DataFlavor(TransferableMiradiList.class, "Miradi Objects");
 }
