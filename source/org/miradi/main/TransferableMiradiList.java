@@ -306,8 +306,6 @@ public class TransferableMiradiList implements Transferable, Serializable
 	}
 
 	// TODO: Is there a way to avoid suppressing warnings here?
-	//try new Vector((Vector<String>) objectIn.readObject());
-	//but it needs testing since it would no longer pass by reference
 	@SuppressWarnings("unchecked")
 	private Vector<String> readStringVector(ObjectInputStream objectIn)
 			throws IOException, ClassNotFoundException
