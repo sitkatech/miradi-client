@@ -1,0 +1,134 @@
+---------------------------------------------
+CHOICES
+
+StatusChoice
+	0, 1, 2, 3, 4
+
+TrendChoice
+	0, 1, 2, 3, 4, 5
+
+VModeChoice
+	Simple, Key Attribute
+	
+Country
+	<list of ISO 3-letter country codes>
+
+---------------------------------------------
+OBJECTS
+
+Factor
+	ShortString		Id
+	String			Label
+	LongString		Comments
+
+Target
+	VModeChoice		ViabilityMode
+	StatusChoice	SimpleStatus
+	String			SimpleStatusJustification
+
+DiagramFactor
+	Point	Location
+	Point	Size
+	
+ConceptualModelDiagram
+	String	Label
+	
+DiagramLink
+	PointList	BendPoints
+	
+Goal
+	ShortString	Id
+	String		Label
+	LongString	Comments
+
+Indicator
+	ShortString	Id
+	String		Label
+	LongString	Comments
+
+Task
+	ShortString	Id
+	String		Label
+	LongString	Comments
+
+Measurement
+	Date		Date
+	Choice		Rating
+	String		Value
+	LongString	Comments
+	Choice		Confidence
+	
+Assignment
+	DateRangeEffortList?
+
+Resource
+	ShortString	Id
+	String		Label
+	Choice		CostingUnit
+	Float		CostPerUnit
+
+	
+---------------------------------------------
+RELATIONSHIPS
+
+ConceptualModelDiagram-DiagramFactor
+	Containas
+	
+ConceptualModelDiagram-DiagramLink
+	Contains
+
+Factor-DiagramFactor
+	Shared
+
+Link-DiagramLink
+	Shared
+	
+Factor-Link-Upstream
+	Associated
+	
+Factor-Link-Downstream
+	Associated
+
+Target-Factor
+	Contains
+	
+Target-Goal
+	Contains
+	
+Factor-Indicator
+	Contains
+
+Indicator-Task
+	Shared
+	UserOrdered
+
+Indicator-Measurement
+	Contains (Later, change to Shared)
+	
+Task-Assignment
+	Contains
+
+Assignment-Resource
+	Associated
+
+Task-Task
+	Contains
+	
+=========================================================
+Relationship Types
+
+Extends
+	Always exactly one member
+	Removing a member automatically deletes it
+	
+Contains
+	Removing a member automatically deletes it
+	
+Shared
+	Removing a last-ref member automatically deletes it
+
+Associated
+	Removing a member has no side-effects
+	
+AtLeastOne
+	Removing the last member deletes the owner
