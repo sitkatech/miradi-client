@@ -51,7 +51,7 @@ import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.DiagramPaster;
 
-public class TransferableMiradiList implements Transferable, Serializable
+abstract public class TransferableMiradiList implements Transferable, Serializable
 {
 	public TransferableMiradiList(Project projectToUse, ORef diagramObjectRefCopiedFromToUse)
 	{
@@ -64,12 +64,6 @@ public class TransferableMiradiList implements Transferable, Serializable
 	public String getProjectFileName()
 	{
 		return projectName;
-	}
-
-	public DataFlavor[] getTransferDataFlavors()
-	{
-		DataFlavor[] flavorArray = {miradiListDataFlavor };
-		return flavorArray;
 	}
 
 	public boolean isDataFlavorSupported(DataFlavor flavor)
@@ -306,15 +300,17 @@ public class TransferableMiradiList implements Transferable, Serializable
 	}
 
 	// TODO: Is there a way to avoid suppressing warnings here?
+	//try new Vector((Vector<String>) objectIn.readObject());
+	//but it needs testing since it would no longer pass by reference
 	@SuppressWarnings("unchecked")
 	private Vector<String> readStringVector(ObjectInputStream objectIn)
 			throws IOException, ClassNotFoundException
 	{
 		return (Vector<String>) objectIn.readObject();
 	}
+	
+	abstract public DataFlavor[] getTransferDataFlavors();
 		
-	public static DataFlavor miradiListDataFlavor = new DataFlavor(TransferableMiradiList.class, "Miradi Objects");
-
 	private Project project;
 	
 	private ORef diagramObjectRefCopiedFrom;
@@ -328,3 +324,4 @@ public class TransferableMiradiList implements Transferable, Serializable
 	
 	static final long serialVersionUID = 1; 
 }
+;
