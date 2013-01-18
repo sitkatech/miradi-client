@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-17 15:16-0600\n"
+"POT-Creation-Date: 2013-01-15 18:31-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -1932,7 +1932,7 @@ msgstr "Sepakati peran dan pertanggungjawaban "
 msgid "Agree upon team roles"
 msgstr "Sepakati peran tim "
 
-#: Miradi/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:57
+#: Miradi/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:56
 msgid "All on One Page"
 msgstr "Semua dalam Satu Halaman"
 
@@ -2329,7 +2329,7 @@ msgstr "Penambahan Anggaran adalah: %s "
 msgid "Bundle Rules"
 msgstr "Aturan Bundel"
 
-#: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:84
+#: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:83
 #: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:63
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:234
