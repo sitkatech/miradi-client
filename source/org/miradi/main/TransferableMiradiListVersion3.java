@@ -38,6 +38,4 @@ public class TransferableMiradiListVersion3 extends TransferableMiradiList
 		DataFlavor[] flavorArray = {miradiListDataFlavor };
 		return flavorArray;
 	}
-	
-	public static DataFlavor miradiListDataFlavor = new DataFlavor(TransferableMiradiList.class, "Miradi Objects");
 }
