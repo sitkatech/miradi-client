@@ -39,5 +39,5 @@ public class TransferableMiradiListVersion4 extends TransferableMiradiList
 		return flavorArray;
 	}
 
-	public static DataFlavor miradi4ListDataFlavor = new DataFlavor(TransferableMiradiListVersion4.class, "Miradi version 4 Objects");
+	public static DataFlavor miradi4ListDataFlavor = new DataFlavor(TransferableMiradiList.class, "Miradi version 4 Objects");
 }
