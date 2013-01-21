@@ -23,7 +23,7 @@ import java.awt.Point;
 
 import org.miradi.diagram.DiagramModel;
 import org.miradi.dialogs.diagram.DiagramPanel;
-import org.miradi.main.AbstractTransferableMiradiList;
+import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Task;
@@ -31,7 +31,7 @@ import org.miradi.utils.EnhancedJsonObject;
 
 public class DiagramCopyPaster extends DiagramPaster
 {
-	public DiagramCopyPaster(DiagramPanel diagramPanelToUse, DiagramModel modelToUse, AbstractTransferableMiradiList transferableListToUse)
+	public DiagramCopyPaster(DiagramPanel diagramPanelToUse, DiagramModel modelToUse, TransferableMiradiList transferableListToUse)
 	{
 		super(diagramPanelToUse, modelToUse, transferableListToUse);
 	}

@@ -25,7 +25,7 @@ import org.miradi.dialogs.notify.NotifyDialog;
 import org.miradi.dialogs.notify.NotifyDialogTemplateFactory;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
-import org.miradi.main.AbstractTransferableMiradiList;
+import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
@@ -40,7 +40,7 @@ public class PasteDoer extends AbstractPasteDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try 
 		{	
-			AbstractTransferableMiradiList list = getTransferableMiradiList();
+			TransferableMiradiList list = getTransferableMiradiList();
 			if (list == null)
 				return;
 		
@@ -83,7 +83,7 @@ public class PasteDoer extends AbstractPasteDoer
 		return getDiagramPanel().getDiagramObject();
 	}
 
-	private String getUsersChoice(AbstractTransferableMiradiList list) throws Exception
+	private String getUsersChoice(TransferableMiradiList list) throws Exception
 	{
 		if (! atLeastOneClipboardMethodExistsInTargetProject(list))
 			return AS_COPY_BUTTON;
@@ -97,7 +97,7 @@ public class PasteDoer extends AbstractPasteDoer
 		return AS_SHARED_BUTTON;
 	}
 
-	private boolean isPastingInSameDiagramAsCopiedFrom(AbstractTransferableMiradiList list)
+	private boolean isPastingInSameDiagramAsCopiedFrom(TransferableMiradiList list)
 	{
 		ORef diagramObjecRefCopiedFrom = list.getDiagramObjectRefCopiedFrom();
 		ORef diagramObjectRefBeingPastedInto = getDiagramObject().getRef();
@@ -106,12 +106,12 @@ public class PasteDoer extends AbstractPasteDoer
 		return pasteInSameDiagram && isPasteInSameProject(list);
 	}
 
-	private boolean isPasteInSameProject(AbstractTransferableMiradiList list)
+	private boolean isPasteInSameProject(TransferableMiradiList list)
 	{
 		return list.getProjectFileName().equals(getProject().getFilename());
 	}
 	
-	private DiagramPaster createDiagramPasterBaseOnUserChoice(AbstractTransferableMiradiList list, String usersChoice) throws Exception
+	private DiagramPaster createDiagramPasterBaseOnUserChoice(TransferableMiradiList list, String usersChoice) throws Exception
 	{		
 		if (usersChoice.equals(AS_SHARED_BUTTON))
 			return new DiagramAsSharedPaster(getDiagramPanel(), getDiagramModel(), list);
@@ -128,7 +128,7 @@ public class PasteDoer extends AbstractPasteDoer
 								  "it refers to other data that only exists in the old project"));
 	}
 	
-	private boolean pastingBetweenProjectsInDifferentDiagramType(AbstractTransferableMiradiList list, DiagramPaster diagramPaster)
+	private boolean pastingBetweenProjectsInDifferentDiagramType(TransferableMiradiList list, DiagramPaster diagramPaster)
 	{
 		if (isPasteInSameProject(list))
 			return false;
@@ -146,7 +146,7 @@ public class PasteDoer extends AbstractPasteDoer
 
 	}
 	
-	public boolean atLeastOneClipboardMethodExistsInTargetProject(AbstractTransferableMiradiList list) throws Exception
+	public boolean atLeastOneClipboardMethodExistsInTargetProject(TransferableMiradiList list) throws Exception
 	{
 		ORefList factorRefs = list.getFactorRefs();
 		for (int i = 0; i < factorRefs.size(); ++i)

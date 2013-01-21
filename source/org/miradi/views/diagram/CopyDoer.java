@@ -22,8 +22,8 @@ package org.miradi.views.diagram;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.main.AbstractTransferableMiradiList;
 import org.miradi.main.TransferableMiradiList;
+import org.miradi.main.TransferableMiradiListVersion3;
 import org.miradi.views.ViewDoer;
 
 public class CopyDoer extends ViewDoer
@@ -61,7 +61,7 @@ public class CopyDoer extends ViewDoer
 	{
 		final DiagramPanel diagramPanel = getDiagramView().getDiagramPanel();
 		EAMGraphCell[] selectedCells = diagramPanel.getSelectedAndRelatedCells();
-		AbstractTransferableMiradiList miradiList = new TransferableMiradiList(getProject(), diagramPanel.getDiagramObject().getRef());
+		TransferableMiradiList miradiList = new TransferableMiradiListVersion3(getProject(), diagramPanel.getDiagramObject().getRef());
 		miradiList.storeData(selectedCells);
 		
 		DiagramClipboard clipboard = getProject().getDiagramClipboard();
