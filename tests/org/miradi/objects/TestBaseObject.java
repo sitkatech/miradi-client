@@ -65,7 +65,8 @@ public class TestBaseObject extends TestCaseWithProject
 		String[] allPossibleValuesToConvertToHtml = new String[]{"\n", "&", "<", ">", "\\", "\""};
 		for (int index = 0; index < allPossibleValuesToConvertToHtml.length; ++index)
 		{
-			cause.setHtmlDataFromNonHtml(Cause.TAG_COMMENTS, allPossibleValuesToConvertToHtml[index]);
+			String value = cause.getHtmlDataFromNonHtml(Cause.TAG_COMMENTS, allPossibleValuesToConvertToHtml[index]);
+			cause.setData(Cause.TAG_COMMENTS, value);
 			String data = HtmlUtilities.convertHtmlToPlainText(cause.getData(Cause.TAG_COMMENTS));
 			assertEquals("data was not converted?", allPossibleValuesToConvertToHtml[index], data);
 		}
