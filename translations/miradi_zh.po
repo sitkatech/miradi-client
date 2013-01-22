@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-21 11:16-0600\n"
+"POT-Creation-Date: 2013-01-22 17:31-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -1908,7 +1908,7 @@ msgstr "同意角色及职责 \t\t"
 msgid "Agree upon team roles"
 msgstr "就团队角色达成一致 \t\t"
 
-#: Miradi/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:56
+#: Miradi/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:57
 msgid "All on One Page"
 msgstr "所有内容在一页显示"
 
@@ -2294,7 +2294,7 @@ msgstr ""
 msgid "Bundle Rules"
 msgstr "规则集"
 
-#: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:83
+#: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:91
 #: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:63
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:234
