@@ -337,15 +337,13 @@ abstract public class BaseObject
 				if (field.isUserText())
 				{
 					value = getHtmlDataFromNonHtml(tag, value);
-					setData(tag, value);
 				}
 				else if(field.isCodeToUserStringMapData())
 				{
 					value = encodeIndividualMapValues(value);
-					setData(tag, value);
 				}
-				else
-					setData(tag, value);
+					
+				setData(tag, value);
 			}
 			catch(InvalidNumberException e)
 			{
