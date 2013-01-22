@@ -335,7 +335,7 @@ abstract public class BaseObject
 			{
 				ObjectData field = getField(tag);
 				if (field.isUserText())
-					setHtmlDataFromNonHtml(tag, value);
+					setData(tag, getHtmlDataFromNonHtml(tag, value));
 				else if(field.isCodeToUserStringMapData())
 					setData(tag, encodeIndividualMapValues(value));
 				else
@@ -503,13 +503,12 @@ abstract public class BaseObject
 		return defaultValue;
 	}
 	
-	public void setHtmlDataFromNonHtml(final String fieldTag, String nonHtmlDataValue) throws Exception
+	public String getHtmlDataFromNonHtml(final String fieldTag, String nonHtmlDataValue) throws Exception
 	{
 		if (isNavigationField(fieldTag))
 			throw new RuntimeException("Cannot convert non user data to html and set. Tag = " + fieldTag);
 		
-		nonHtmlDataValue = HtmlUtilities.convertPlainTextToHtmlText(nonHtmlDataValue);
-		setData(fieldTag, nonHtmlDataValue);
+		return HtmlUtilities.convertPlainTextToHtmlText(nonHtmlDataValue);
 	}
 	
 	public void setData(String fieldTag, String dataValue) throws Exception
