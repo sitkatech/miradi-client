@@ -23,9 +23,9 @@ import java.awt.datatransfer.Transferable;
 
 import org.miradi.diagram.DiagramModel;
 import org.miradi.dialogs.diagram.DiagramPanel;
-import org.miradi.main.EAM;
-import org.miradi.main.TransferableMiradiList;
 import org.miradi.main.AbstractTransferableMiradiList;
+import org.miradi.main.EAM;
+import org.miradi.main.TransferableMiradiListVersion4;
 import org.miradi.views.diagram.DiagramClipboard;
 import org.miradi.views.diagram.LocationDoer;
 
@@ -46,7 +46,7 @@ abstract public class AbstractPasteDoer extends LocationDoer
 			if(contents == null)
 				return false;
 			
-			return contents.isDataFlavorSupported(TransferableMiradiList.miradiListDataFlavor);
+			return contents.isDataFlavorSupported(TransferableMiradiListVersion4.miradiListDataFlavor);
 		}
 		catch (IllegalStateException e)
 		{
@@ -58,10 +58,10 @@ abstract public class AbstractPasteDoer extends LocationDoer
 	protected AbstractTransferableMiradiList getTransferableMiradiList() throws Exception
 	{
 		Transferable contents = getDiagramClipboardContents();
-		if(!contents.isDataFlavorSupported(TransferableMiradiList.miradiListDataFlavor))
+		if(!contents.isDataFlavorSupported(TransferableMiradiListVersion4.miradiListDataFlavor))
 			return null;
 
-		return (AbstractTransferableMiradiList)contents.getTransferData(TransferableMiradiList.miradiListDataFlavor);
+		return (AbstractTransferableMiradiList)contents.getTransferData(TransferableMiradiListVersion4.miradiListDataFlavor);
 	}
 
 	private Transferable getDiagramClipboardContents()

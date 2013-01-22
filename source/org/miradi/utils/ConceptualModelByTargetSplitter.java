@@ -28,9 +28,9 @@ import org.miradi.diagram.ChainWalker;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.PersistentDiagramModel;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.main.EAM;
-import org.miradi.main.TransferableMiradiList;
 import org.miradi.main.AbstractTransferableMiradiList;
+import org.miradi.main.EAM;
+import org.miradi.main.TransferableMiradiListVersion4;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -146,7 +146,7 @@ public class ConceptualModelByTargetSplitter
 	
 	private AbstractTransferableMiradiList createTransferable(HashSet<DiagramFactor> diagramFactors, HashSet<DiagramLink> diagramLinks)
 	{
-		AbstractTransferableMiradiList miradiList = new TransferableMiradiList(getProject(), getDiagramObjectBeingSplit().getRef());
+		AbstractTransferableMiradiList miradiList = new TransferableMiradiListVersion4(getProject(), getDiagramObjectBeingSplit().getRef());
 		miradiList.storeData(diagramFactors, diagramLinks);
 		
 		return miradiList;

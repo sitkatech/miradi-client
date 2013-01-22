@@ -22,7 +22,7 @@ package org.miradi.views.diagram;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.main.TransferableMiradiList;
+import org.miradi.main.TransferableMiradiListVersion4;
 import org.miradi.views.ViewDoer;
 
 public class CopyDoer extends ViewDoer
@@ -60,7 +60,7 @@ public class CopyDoer extends ViewDoer
 	{
 		final DiagramPanel diagramPanel = getDiagramView().getDiagramPanel();
 		EAMGraphCell[] selectedCells = diagramPanel.getSelectedAndRelatedCells();
-		TransferableMiradiList miradiList = new TransferableMiradiList(getProject(), diagramPanel.getDiagramObject().getRef());
+		TransferableMiradiListVersion4 miradiList = new TransferableMiradiListVersion4(getProject(), diagramPanel.getDiagramObject().getRef());
 		miradiList.storeData(selectedCells);
 		
 		DiagramClipboard clipboard = getProject().getDiagramClipboard();

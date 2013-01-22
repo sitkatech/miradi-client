@@ -112,6 +112,12 @@ public class TransferableMiradiList extends AbstractTransferableMiradiList imple
 	{
 		return (Vector<String>) objectIn.readObject();
 	}
+	
+	@Override
+	public boolean isLegacyTransferableMiradiList()
+	{
+		return true;
+	}
 
 	public static DataFlavor miradiListDataFlavor = new DataFlavor(TransferableMiradiList.class, "Miradi Objects");
 

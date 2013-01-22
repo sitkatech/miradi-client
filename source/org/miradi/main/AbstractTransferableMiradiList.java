@@ -317,6 +317,8 @@ abstract public class AbstractTransferableMiradiList implements Transferable, Se
 		return project;
 	}
 	
+	abstract public boolean isLegacyTransferableMiradiList();
+	
 	public Project project;
 	public ORef diagramObjectRefCopiedFrom;
 	public String projectName;

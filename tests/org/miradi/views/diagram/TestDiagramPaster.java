@@ -32,11 +32,11 @@ import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
+import org.miradi.main.AbstractTransferableMiradiList;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.main.TransferableMiradiList;
-import org.miradi.main.AbstractTransferableMiradiList;
+import org.miradi.main.TransferableMiradiListVersion4;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
@@ -248,7 +248,7 @@ public class TestDiagramPaster extends TestCaseWithProject
 	public void testFixTags() throws Exception
 	{
 		DiagramObject diagramObject = getDiagramModel().getDiagramObject();
-		AbstractTransferableMiradiList transferableList = new TransferableMiradiList(getProject(), diagramObject.getRef());
+		AbstractTransferableMiradiList transferableList = new TransferableMiradiListVersion4(getProject(), diagramObject.getRef());
 		DiagramCopyPaster diagramPaster = new DiagramCopyPaster(null, getDiagramModel(), transferableList);
 		Target target = getProject().createTarget();
 		final String TAG_LABEL = "tagLabel1";
@@ -292,7 +292,7 @@ public class TestDiagramPaster extends TestCaseWithProject
 		EAMGraphCell dataCells[] = {linkCell, threatFactorCell, targetFactorCell};
 		
 		ORef diagramObjectRef = model.getDiagramObject().getRef();
-		AbstractTransferableMiradiList transferableList = new TransferableMiradiList(getProject(), diagramObjectRef);
+		AbstractTransferableMiradiList transferableList = new TransferableMiradiListVersion4(getProject(), diagramObjectRef);
 		transferableList.storeData(dataCells);
 	
 		getProject().executeCommand(new CommandBeginTransaction());
@@ -343,7 +343,7 @@ public class TestDiagramPaster extends TestCaseWithProject
 	private DiagramPaster paste(ProjectForTesting projectToPasteInto, EAMGraphCell[] dataCells) throws Exception
 	{
 		ORef diagramObjectRef = getDiagramModel().getDiagramObject().getRef();
-		AbstractTransferableMiradiList transferableList = new TransferableMiradiList(getProject(), diagramObjectRef);
+		AbstractTransferableMiradiList transferableList = new TransferableMiradiListVersion4(getProject(), diagramObjectRef);
 		transferableList.storeData(dataCells);
 		
 		DiagramPaster paster = new DiagramCopyPaster(null, projectToPasteInto.getTestingDiagramModel(), transferableList);
