@@ -331,18 +331,18 @@ abstract public class BaseObject
 				continue;
 			
 			String value = json.optString(tag);
+			ObjectData field = getField(tag);
+			if (field.isUserText())
+			{
+				value = getHtmlDataFromNonHtml(tag, value);
+			}
+			else if(field.isCodeToUserStringMapData())
+			{
+				value = encodeIndividualMapValues(value);
+			}
+			
 			try
 			{
-				ObjectData field = getField(tag);
-				if (field.isUserText())
-				{
-					value = getHtmlDataFromNonHtml(tag, value);
-				}
-				else if(field.isCodeToUserStringMapData())
-				{
-					value = encodeIndividualMapValues(value);
-				}
-					
 				setData(tag, value);
 			}
 			catch(InvalidNumberException e)
