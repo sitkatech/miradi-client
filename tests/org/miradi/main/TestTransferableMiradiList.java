@@ -77,7 +77,7 @@ public class TestTransferableMiradiList extends MiradiTestCase
 		TransferableMiradiListVersion4 miradiList = new TransferableMiradiListVersion4(project, diagramObjectRef);
 		miradiList.storeData(emptyCells);
 		DataFlavor flavors[] = miradiList.getTransferDataFlavors();
-		assertEquals("Should only support 1 flavor?", 1, flavors.length);
+		assertEquals("Should only support 1 flavor?", 2, flavors.length);
 		assertEquals("MiradiListDataFlavor not found?", TransferableMiradiListVersion4.miradiListDataFlavor, flavors[0]);
 	}
 	
