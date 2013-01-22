@@ -992,7 +992,8 @@ abstract public class DiagramPaster
 		Vector<String> tags = getTags(baseObject);
 		for (String tag : tags)
 		{
-			CommandSetObjectData setDataCommand = new CommandSetObjectData(baseObject.getRef(), tag, json.optString(tag));
+			final String value = json.optString(tag);
+			CommandSetObjectData setDataCommand = new CommandSetObjectData(baseObject.getRef(), tag, value);
 			commands.add(setDataCommand);
 		}
 		
