@@ -335,9 +335,15 @@ abstract public class BaseObject
 			{
 				ObjectData field = getField(tag);
 				if (field.isUserText())
-					setData(tag, getHtmlDataFromNonHtml(tag, value));
+				{
+					value = getHtmlDataFromNonHtml(tag, value);
+					setData(tag, value);
+				}
 				else if(field.isCodeToUserStringMapData())
-					setData(tag, encodeIndividualMapValues(value));
+				{
+					value = encodeIndividualMapValues(value);
+					setData(tag, value);
+				}
 				else
 					setData(tag, value);
 			}
