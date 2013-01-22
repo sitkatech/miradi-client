@@ -330,17 +330,8 @@ abstract public class BaseObject
 			if (isPseudoField(tag))
 				continue;
 			
-			String value = json.optString(tag);
-			ObjectData field = getField(tag);
-			if (field.isUserText())
-			{
-				value = getHtmlDataFromNonHtml(tag, value);
-			}
-			else if(field.isCodeToUserStringMapData())
-			{
-				value = encodeIndividualMapValues(value);
-			}
 			
+			final String value = getHtmlEncodedValue(json, tag);
 			try
 			{
 				setData(tag, value);
@@ -352,6 +343,22 @@ abstract public class BaseObject
 				setData(tag, newValue);
 			}
 		}
+	}
+
+	public String getHtmlEncodedValue(EnhancedJsonObject json, String tag) throws Exception
+	{
+		String value = json.optString(tag);
+		ObjectData field = getField(tag);
+		if (field.isUserText())
+		{
+			value = getHtmlDataFromNonHtml(tag, value);
+		}
+		else if(field.isCodeToUserStringMapData())
+		{
+			value = encodeIndividualMapValues(value);
+		}
+		
+		return value;
 	}
 
 	private String encodeIndividualMapValues(String mapAsString) throws ParseException
