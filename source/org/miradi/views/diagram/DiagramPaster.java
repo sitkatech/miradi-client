@@ -992,7 +992,10 @@ abstract public class DiagramPaster
 		Vector<String> tags = getTags(baseObject);
 		for (String tag : tags)
 		{
-			final String value = json.optString(tag);
+			String value = json.optString(tag);
+			if (transferableList.isLegacyTransferableMiradiList())
+				value = baseObject.getHtmlEncodedValue(json, tag);
+			
 			CommandSetObjectData setDataCommand = new CommandSetObjectData(baseObject.getRef(), tag, value);
 			commands.add(setDataCommand);
 		}
