@@ -94,7 +94,7 @@ public class TestTransferableMiradiList extends MiradiTestCase
 	{
 		String projectFileName = project.getFilename();
 		ORef diagramObjectRef = project.getTestingDiagramObject().getRef();
-		TransferableMiradiList miradiList = new TransferableMiradiList(project, diagramObjectRef);
+		AbstractTransferableMiradiList miradiList = new TransferableMiradiList(project, diagramObjectRef);
 		miradiList.storeData(new EAMGraphCell[0]);
 		assertEquals("wrong project filename?", projectFileName, miradiList.getProjectFileName());
 	}
@@ -137,7 +137,7 @@ public class TestTransferableMiradiList extends MiradiTestCase
 		ORef diagramObjectRef = testingDiagramObject.getRef();
 		TransferableMiradiList miradiList = new TransferableMiradiList(project, diagramObjectRef);
 		miradiList.storeData(dataCells);
-		TransferableMiradiList miradiTransferData = (TransferableMiradiList)miradiList.getTransferData(TransferableMiradiList.miradiListDataFlavor);
+		TransferableMiradiList miradiTransferData = (TransferableMiradiList) miradiList.getTransferData(TransferableMiradiList.miradiListDataFlavor);
 		assertNotNull(miradiTransferData);
 		
 		Vector<String> factorDeepCopies = miradiTransferData.getFactorDeepCopies();

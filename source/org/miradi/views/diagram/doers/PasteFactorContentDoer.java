@@ -28,7 +28,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
-import org.miradi.main.TransferableMiradiList;
+import org.miradi.main.AbstractTransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
@@ -185,7 +185,7 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 
 	private Vector getClipboardDiagramFactorJsons() throws Exception
 	{
-		TransferableMiradiList list = getTransferableMiradiList();
+		AbstractTransferableMiradiList list = getTransferableMiradiList();
 		if (list == null)
 			return new Vector();
 		

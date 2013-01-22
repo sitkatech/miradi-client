@@ -31,7 +31,7 @@ import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.ids.BaseId;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
-import org.miradi.main.TransferableMiradiList;
+import org.miradi.main.AbstractTransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -53,7 +53,7 @@ import org.miradi.utils.EnhancedJsonObject;
 
 public class DiagramAsSharedPaster extends DiagramPaster
 {
-	public DiagramAsSharedPaster(DiagramPanel diagramPanelToUse, DiagramModel modelToUse, TransferableMiradiList transferableListToUse)
+	public DiagramAsSharedPaster(DiagramPanel diagramPanelToUse, DiagramModel modelToUse, AbstractTransferableMiradiList transferableListToUse)
 	{
 		super(diagramPanelToUse, modelToUse, transferableListToUse);
 	}

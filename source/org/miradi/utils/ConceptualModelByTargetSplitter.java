@@ -30,6 +30,7 @@ import org.miradi.diagram.PersistentDiagramModel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.TransferableMiradiList;
+import org.miradi.main.AbstractTransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -72,7 +73,7 @@ public class ConceptualModelByTargetSplitter
 		HashSet<DiagramFactor> diagramFactors = chainObject.buildNormalChainAndGetDiagramFactors(targetDiagramFactor);
 		HashSet<DiagramLink> diagramLinks = chainObject.buildNormalChainAndGetDiagramLinks(targetDiagramFactor);
 		
-		TransferableMiradiList miradiList = createTransferable(diagramFactors, diagramLinks);
+		AbstractTransferableMiradiList miradiList = createTransferable(diagramFactors, diagramLinks);
 		ConceptualModelDiagram conceptualModelDiagram = createConceptualModelPage(targetDiagramFactor.getWrappedFactor().toString());
 		DiagramModel toDiagramModel = createDiagramModel(conceptualModelDiagram);
 
@@ -143,9 +144,9 @@ public class ConceptualModelByTargetSplitter
 		getProject().executeCommand(setLegendSettingsCommand);
 	}
 	
-	private TransferableMiradiList createTransferable(HashSet<DiagramFactor> diagramFactors, HashSet<DiagramLink> diagramLinks)
+	private AbstractTransferableMiradiList createTransferable(HashSet<DiagramFactor> diagramFactors, HashSet<DiagramLink> diagramLinks)
 	{
-		TransferableMiradiList miradiList = new TransferableMiradiList(getProject(), getDiagramObjectBeingSplit().getRef());
+		AbstractTransferableMiradiList miradiList = new TransferableMiradiList(getProject(), getDiagramObjectBeingSplit().getRef());
 		miradiList.storeData(diagramFactors, diagramLinks);
 		
 		return miradiList;
