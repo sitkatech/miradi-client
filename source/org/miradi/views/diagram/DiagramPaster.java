@@ -986,7 +986,7 @@ abstract public class DiagramPaster
 		return referrerRefs.size() > 0;
 	}
 	
-	private static Command[] createCommandsToLoadFromJson(EnhancedJsonObject json, BaseObject baseObject) throws Exception
+	private Command[] createCommandsToLoadFromJson(EnhancedJsonObject json, BaseObject baseObject) throws Exception
 	{
 		Vector<CommandSetObjectData> commands = new Vector<CommandSetObjectData>();
 		Vector<String> tags = getTags(baseObject);
