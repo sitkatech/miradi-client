@@ -20,10 +20,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.main;
 
+import java.awt.Rectangle;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.Vector;
+
+import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 
-public class TransferableMiradiListVersion4 extends TransferableMiradiList
+public class TransferableMiradiListVersion4 extends AbstractTransferableMiradiList
 {
 	public TransferableMiradiListVersion4(Project projectToUse,	ORef diagramObjectRefCopiedFromToUse)
 	{
@@ -35,4 +44,82 @@ public class TransferableMiradiListVersion4 extends TransferableMiradiList
 	{
 		return false;
 	}
+	
+	@Override
+	public DataFlavor[] getTransferDataFlavors()
+	{
+		DataFlavor[] flavorArray = {miradiListDataFlavor, TransferableMiradiList.miradiListDataFlavor };
+		return flavorArray;
+	}
+	
+	@Override
+	public boolean isDataFlavorSupported(DataFlavor flavor)
+	{
+		DataFlavor[] flavors = getTransferDataFlavors();
+		for(int i = 0; i < flavors.length; ++i)
+		{
+			if(flavor.equals(flavors[i]))
+				return true;
+		}
+		
+		return false;
+	}
+
+	@Override
+	public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException, IOException
+	{
+		if(isDataFlavorSupported(flavor))
+			return this;
+		
+		throw new UnsupportedFlavorException(flavor);
+	}
+	
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	{
+		ObjectOutputStream objectOut = new ObjectOutputStream(out);
+		
+		objectOut.writeInt(diagramObjectRefCopiedFrom.getObjectType());
+		objectOut.writeInt(diagramObjectRefCopiedFrom.getObjectId().asInt());
+		objectOut.writeObject(projectName);
+		objectOut.writeObject(factorDeepCopies);
+		objectOut.writeObject(diagramFactorDeepCopies);
+		objectOut.writeObject(threatStressRatingCopies);
+		objectOut.writeObject(factorLinkDeepCopies);
+		objectOut.writeObject(diagramLinkDeepCopies);
+		objectOut.writeObject(rectWithUpperMostLeftMostCorner);
+	}
+
+	private void readObject(java.io.ObjectInputStream in) throws IOException,
+			ClassNotFoundException
+	{
+		diagramObjectRefCopiedFrom = ORef.INVALID;
+		project = null;
+		ObjectInputStream objectIn = new ObjectInputStream(in);
+				
+		int diagramType = objectIn.readInt();
+		int diagramId = objectIn.readInt();
+		diagramObjectRefCopiedFrom =  new ORef(diagramType, new BaseId(diagramId)); 
+		
+		projectName = (String) objectIn.readObject();
+		factorDeepCopies = readStringVector(objectIn);
+		diagramFactorDeepCopies = readStringVector(objectIn);
+		threatStressRatingCopies = readStringVector(objectIn);
+		factorLinkDeepCopies = readStringVector(objectIn);
+		diagramLinkDeepCopies = readStringVector(objectIn);
+		rectWithUpperMostLeftMostCorner = (Rectangle) objectIn.readObject();
+	}
+
+	// TODO: Is there a way to avoid suppressing warnings here?
+	//try new Vector((Vector<String>) objectIn.readObject());
+	//but it needs testing since it would no longer pass by reference
+	@SuppressWarnings("unchecked")
+	private Vector<String> readStringVector(ObjectInputStream objectIn) throws IOException,	ClassNotFoundException
+	{
+		return (Vector<String>) objectIn.readObject();
+	}
+	
+	public static DataFlavor miradiListDataFlavor = new DataFlavor(TransferableMiradiListVersion4.class, "Miradi Objects");
+
+	static final long serialVersionUID = 1; 
+
 }
