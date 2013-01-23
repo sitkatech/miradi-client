@@ -30,8 +30,13 @@ public class CountriesQuestion extends TwoLevelQuestion
 	public CountriesQuestion()
 	{
 		super(new WwfCountriesFileLoader(TwoLevelFileLoader.COUNTRIES_FILE));
-		
+	}
+	
+	@Override
+	public ChoiceItem[] getChoices()
+	{
 		sortChoices();
+		return super.getChoices();
 	}
 	
 	@Override
