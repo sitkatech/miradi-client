@@ -119,7 +119,7 @@ public class TransferableMiradiList extends AbstractTransferableMiradiList imple
 		return true;
 	}
 
-	public static DataFlavor miradiListDataFlavor = new DataFlavor(TransferableMiradiList.class, "Miradi Objects");
+	public static final DataFlavor miradiListDataFlavor = new DataFlavor(TransferableMiradiList.class, "Miradi Objects");
 
 	static final long serialVersionUID = 1; 
 }
