@@ -118,7 +118,7 @@ public class TransferableMiradiListVersion4 extends AbstractTransferableMiradiLi
 		return (Vector<String>) objectIn.readObject();
 	}
 	
-	public static DataFlavor miradiListDataFlavor = new DataFlavor(TransferableMiradiListVersion4.class, "Miradi Objects");
+	public static final DataFlavor miradiListDataFlavor = new DataFlavor(TransferableMiradiListVersion4.class, "Miradi Objects");
 
 	static final long serialVersionUID = 1; 
 
