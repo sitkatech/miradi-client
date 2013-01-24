@@ -156,22 +156,22 @@ public class HtmlUtilities
 	
 	private static String createStartTagWithAttributeRegex(String tagToReplace)
 	{
-		return "<" + tagToReplace + "\\s+.*?>";
+		return "<\\s*" + tagToReplace + "\\s+.*?>";
 	}
 
 	private static String createStartTagRegex(String tagToReplace)
 	{
-		return "<" + tagToReplace + "\\s*>";
+		return "<\\s*" + tagToReplace + "\\s*>";
 	}
 
 	private static String createEmptyTagRegex(String tagToReplace)
 	{
-		return "<" + tagToReplace + "\\s*/\\s*>";
+		return "<\\s*" + tagToReplace + "\\s*/\\s*>";
 	}
 
 	private static String createEndTagRegex(String tag)
 	{
-		return "<\\/\\s*" + tag + "\\s*>";
+		return "<\\s*\\/\\s*" + tag + "\\s*>";
 	}
 	
 	private static String replaceAll(final String regex, final String text, final String replacement)
