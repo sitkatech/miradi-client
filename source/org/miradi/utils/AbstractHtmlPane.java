@@ -69,7 +69,7 @@ abstract public class AbstractHtmlPane extends MiradiTextPane
 		super(mainWindow, fixedApproximateColumnCount, initialApproximateRowCount);
 		
 		handler = new HyperlinkHandler();
-		final HtmlEditorKitWithNonSharedStyleSheet htmlEditorKit = new HtmlEditorKitWithNonSharedStyleSheet();
+		final HTMLEditorKitWithCustomLinkController htmlEditorKit = new HTMLEditorKitWithCustomLinkController();
 		setEditorKitForContentType(htmlEditorKit.getContentType(), htmlEditorKit);
 		setContentType(htmlEditorKit.getContentType()); 
 		initializeEditorComponent();
