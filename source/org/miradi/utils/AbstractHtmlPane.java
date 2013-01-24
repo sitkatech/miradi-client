@@ -290,17 +290,16 @@ abstract public class AbstractHtmlPane extends MiradiTextPane
 				 editorPane.addMouseMotionListener(l);
 			 }
 		 }
-		 
+
 		 @Override
-		public void write(Writer out, Document doc, int pos, int len)
-				throws IOException, BadLocationException
-		{
-		    GnuHtmlWriter w = new HtmlWriterWithoutIndenting(out, (HTMLDocument)doc, pos, len);
-		    w.write();
-		}
+		 public void write(Writer out, Document doc, int pos, int len) throws IOException, BadLocationException
+		 {
+			 GnuHtmlWriter w = new HtmlWriterWithoutIndenting(out, (HTMLDocument)doc, pos, len);
+			 w.write();
+		 }
 	 }
 	 
-	 class HtmlWriterThatFixesIllegalNesting extends GnuHtmlWriter
+	 private class HtmlWriterThatFixesIllegalNesting extends GnuHtmlWriter
 	 {
 		public HtmlWriterThatFixesIllegalNesting(Writer out, HTMLDocument doc, int pos, int len)
 		{
@@ -315,7 +314,7 @@ abstract public class AbstractHtmlPane extends MiradiTextPane
 		}
 	 }
 	 
-	 class HtmlWriterWithoutIndenting extends HtmlWriterThatFixesIllegalNesting
+	 private class HtmlWriterWithoutIndenting extends HtmlWriterThatFixesIllegalNesting
 	 {
 		public HtmlWriterWithoutIndenting(Writer out, HTMLDocument doc, int pos, int len)
 		{
