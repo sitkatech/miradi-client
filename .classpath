@@ -15,7 +15,7 @@
 	<classpathentry kind="lib" path="/miradi-thirdparty/shef/0.5/sam.jar" sourcepath="/miradi-thirdparty/shef/0.5/sam-src.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/shef/0.5/shef.jar" sourcepath="/miradi-thirdparty/shef/0.5/shef-src.zip"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/shef/0.5/jtidy-8.0.jar" sourcepath="/miradi-thirdparty/shef/0.5/jtidy-src.zip"/>
-	<classpathentry kind="lib" path="/miradi-thirdparty/commons-lang3/3.1/commons-lang3-3.1.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/commons-lang3/3.1/commons-lang3-3.1.jar" sourcepath="/miradi-thirdparty/commons-lang3/3.1/commons-lang3-3.1-sources.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/jing/bin/saxon.jar"/>
 	<classpathentry kind="output" path="bin"/>
 	<referencedentry kind="lib" path="/miradi-thirdparty/jing/bin/saxon.jar" sourcepath="/miradi-thirdparty/saxon/HE9.4.0.3J/saxon9he.jar"/>
