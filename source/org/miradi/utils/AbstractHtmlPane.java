@@ -16,7 +16,7 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/ 
+ */ 
 
 package org.miradi.utils;
 
@@ -63,11 +63,11 @@ abstract public class AbstractHtmlPane extends MiradiTextPane
 	{
 		this(mainWindow, AbstractObjectDataInputPanel.DEFAULT_TEXT_COLUM_COUNT, ObjectScrollingMultilineInputField.INITIAL_MULTI_LINE_TEXT_AREA_ROW_COUNT);
 	}
-	
+
 	public AbstractHtmlPane(MainWindow mainWindow, int fixedApproximateColumnCount, int initialApproximateRowCount)
 	{
 		super(mainWindow, fixedApproximateColumnCount, initialApproximateRowCount);
-		
+
 		handler = new HyperlinkHandler();
 		final HTMLEditorKitWithCustomLinkController htmlEditorKit = new HTMLEditorKitWithCustomLinkController();
 		setEditorKitForContentType(htmlEditorKit.getContentType(), htmlEditorKit);
@@ -99,12 +99,12 @@ abstract public class AbstractHtmlPane extends MiradiTextPane
 			EAM.alertUserOfNonFatalException(e);
 		}
 	}
-	
+
 	public void setSaverListener(DocumentEventHandler saverListenerToUse)
 	{
 		saverListener = saverListenerToUse;
 	}
-	
+
 	private DocumentEventHandler getSaverListener()
 	{
 		return saverListener;
@@ -129,10 +129,10 @@ abstract public class AbstractHtmlPane extends MiradiTextPane
 		//we are creating a new Document to avoid any cross document leaks.
 		HTMLEditorKit htmlEditorKit = (HTMLEditorKit) getEditorKit();
 		final Document replacementDocument = htmlEditorKit.createDefaultDocument();
-		
+
 		if (getSaverListener() != null)
 			getSaverListener().stopSaverListener();
-		
+
 		setDocument(replacementDocument);
 		if (getSaverListener() != null)
 			getSaverListener().startSaverListener();
@@ -142,13 +142,13 @@ abstract public class AbstractHtmlPane extends MiradiTextPane
 	public String getText()
 	{
 		String text = super.getText();
-		
+
 		String normalizedAndSanitizedHtmlText = stripEntireHeadAndStyle(text);
 		normalizedAndSanitizedHtmlText = getNormalizedAndSanitizedHtmlText(normalizedAndSanitizedHtmlText);
-		
+
 		return normalizedAndSanitizedHtmlText;
 	}
-	
+
 	public static String getNormalizedAndSanitizedHtmlText(final String text)
 	{
 		return HtmlUtilities.getNormalizedAndSanitizedHtmlText(text, AbstractUserTextDataWithHtmlFormatting.getAllowedHtmlTags());
@@ -166,29 +166,29 @@ abstract public class AbstractHtmlPane extends MiradiTextPane
 	{
 		handler.activateHyperlink(this, mousePosition);
 	}
-	
+
 	public static String stripEntireHeadAndStyle(String htmlText)
 	{
 		return HtmlUtilities.removeStartToEndTagAndItsContent(htmlText, new String[]{"style", "head"});
 	}
 
 	abstract protected void customizeStyleSheet(StyleSheet style);
-	
+
 	private class HyperlinkOpenHandler implements HyperlinkListener 
-	 {
-		 public void hyperlinkUpdate(HyperlinkEvent e) 
-		 {
-			 if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) 
-			 {
-				 final URL url = e.getURL();
-				 if (url != null)
-				 {
-					 getMainWindow().mainLinkFunction(url.toString());
-				 }
-			 }
-		 }
-	 }
-	 
+	{
+		public void hyperlinkUpdate(HyperlinkEvent e) 
+		{
+			if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) 
+			{
+				final URL url = e.getURL();
+				if (url != null)
+				{
+					getMainWindow().mainLinkFunction(url.toString());
+				}
+			}
+		}
+	}
+
 	public class HtmlEditorKitWithNonSharedStyleSheet extends WysiwygHTMLEditorKit
 	{	
 		@Override
@@ -199,19 +199,19 @@ abstract public class AbstractHtmlPane extends MiradiTextPane
 				styleSheet = new StyleSheet();
 				styleSheet.addStyleSheet(super.getStyleSheet());
 			}
-			
+
 			return styleSheet;
 		}
-		
+
 		@Override
 		public void setStyleSheet(StyleSheet styleSheetToUse)
 		{
 			styleSheet = styleSheetToUse;
 		}
-		
+
 		private StyleSheet styleSheet;
 	}
-	 
+
 	public class HTMLEditorKitWithCtrlVFixed extends HtmlEditorKitWithNonSharedStyleSheet
 	{
 		@Override
@@ -247,101 +247,101 @@ abstract public class AbstractHtmlPane extends MiradiTextPane
 			inputMap.put(ks, null);
 			actionMap.put(binding, null);
 		}
-	 }
-	 
-	 public class HTMLEditorKitWithCustomLinkController extends HTMLEditorKitWithCtrlVFixed 
-	 {
-		 @Override
-		 public void install(JEditorPane editorPane) 
-		 {
-			 MouseListener[] oldMouseListeners = editorPane.getMouseListeners();
-	         MouseMotionListener[] oldMouseMotionListeners = editorPane.getMouseMotionListeners();
-			 
-	         super.install(editorPane);
-	         removeMouseAndMotionListeners(editorPane);
-			 restoreMouseAndMotionListeners(editorPane, oldMouseListeners,	oldMouseMotionListeners);
+	}
 
-			 editorPane.addMouseListener(handler);
-			 editorPane.addMouseMotionListener(handler);
-		 }
+	public class HTMLEditorKitWithCustomLinkController extends HTMLEditorKitWithCtrlVFixed 
+	{
+		@Override
+		public void install(JEditorPane editorPane) 
+		{
+			MouseListener[] oldMouseListeners = editorPane.getMouseListeners();
+			MouseMotionListener[] oldMouseMotionListeners = editorPane.getMouseMotionListeners();
 
-		 private void removeMouseAndMotionListeners(JEditorPane editorPane)
-		 {
-			 for (MouseListener l: editorPane.getMouseListeners()) 
-			 {
-				 editorPane.removeMouseListener(l);
-			 }
+			super.install(editorPane);
+			removeMouseAndMotionListeners(editorPane);
+			restoreMouseAndMotionListeners(editorPane, oldMouseListeners,	oldMouseMotionListeners);
 
-			 for (MouseMotionListener l: editorPane.getMouseMotionListeners()) 
-			 {
-				 editorPane.removeMouseMotionListener(l);
-			 }
-		 }
+			editorPane.addMouseListener(handler);
+			editorPane.addMouseMotionListener(handler);
+		}
 
-		 private void restoreMouseAndMotionListeners(JEditorPane editorPane, MouseListener[] oldMouseListeners, MouseMotionListener[] oldMouseMotionListeners)
-		 {
-			 for (MouseListener l: oldMouseListeners) 
-			 {
-				 editorPane.addMouseListener(l);
-			 }
+		private void removeMouseAndMotionListeners(JEditorPane editorPane)
+		{
+			for (MouseListener l: editorPane.getMouseListeners()) 
+			{
+				editorPane.removeMouseListener(l);
+			}
 
-			 for (MouseMotionListener l: oldMouseMotionListeners) 
-			 {
-				 editorPane.addMouseMotionListener(l);
-			 }
-		 }
+			for (MouseMotionListener l: editorPane.getMouseMotionListeners()) 
+			{
+				editorPane.removeMouseMotionListener(l);
+			}
+		}
 
-		 @Override
-		 public void write(Writer out, Document doc, int pos, int len) throws IOException, BadLocationException
-		 {
-			 GnuHtmlWriter w = new HtmlWriterWithoutIndenting(out, (HTMLDocument)doc, pos, len);
-			 w.write();
-		 }
-	 }
-	 
-	 private class HtmlWriterThatFixesIllegalNesting extends GnuHtmlWriter
-	 {
+		private void restoreMouseAndMotionListeners(JEditorPane editorPane, MouseListener[] oldMouseListeners, MouseMotionListener[] oldMouseMotionListeners)
+		{
+			for (MouseListener l: oldMouseListeners) 
+			{
+				editorPane.addMouseListener(l);
+			}
+
+			for (MouseMotionListener l: oldMouseMotionListeners) 
+			{
+				editorPane.addMouseMotionListener(l);
+			}
+		}
+
+		@Override
+		public void write(Writer out, Document doc, int pos, int len) throws IOException, BadLocationException
+		{
+			GnuHtmlWriter w = new HtmlWriterWithoutIndenting(out, (HTMLDocument)doc, pos, len);
+			w.write();
+		}
+	}
+
+	private class HtmlWriterThatFixesIllegalNesting extends GnuHtmlWriter
+	{
 		public HtmlWriterThatFixesIllegalNesting(Writer out, HTMLDocument doc, int pos, int len)
 		{
 			super(out, doc, pos, len);
 		}
-			
+
 		@Override
 		protected void closeOutUnwantedEmbeddedTags(AttributeSet attrSet) throws IOException
 		{
 			AttributeSet forceAllTagsToBeClosed = new SimpleAttributeSet();
 			super.closeOutUnwantedEmbeddedTags(forceAllTagsToBeClosed);
 		}
-	 }
-	 
-	 private class HtmlWriterWithoutIndenting extends HtmlWriterThatFixesIllegalNesting
-	 {
+	}
+
+	private class HtmlWriterWithoutIndenting extends HtmlWriterThatFixesIllegalNesting
+	{
 		public HtmlWriterWithoutIndenting(Writer out, HTMLDocument doc, int pos, int len)
 		{
 			super(out, doc, pos, len);
 		}
-		
+
 		@Override
 		protected void indent() throws IOException
 		{
 			// never indent
 		}
-		
+
 		@Override
 		protected void writeLineSeparator() throws IOException
 		{
 			// never write newlines
 		}
-		
+
 		@Override
 		protected void setCanWrapLines(boolean newValue)
 		{
 			// never wrap
 			super.setCanWrapLines(false);
 		}
-	 }
-	 
-	 private HyperlinkHandler handler;
-	 private DocumentEventHandler saverListener;
+	}
+
+	private HyperlinkHandler handler;
+	private DocumentEventHandler saverListener;
 
 }
