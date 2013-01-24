@@ -300,6 +300,7 @@ public class HtmlUtilities
 	public static String removeStartToEndTagAndItsContent(String htmlText, String[] tagsToStripWithTheirContent)
 	{
 		String htmlTextWithRemovedTagsAndItsContent = htmlText;
+		htmlTextWithRemovedTagsAndItsContent = removeNonHtmlNewLines(htmlTextWithRemovedTagsAndItsContent);
 		for(String tagToStripWithItsContent : tagsToStripWithTheirContent)
 		{
 			htmlTextWithRemovedTagsAndItsContent = removeStartToEndTagAndItsContent(htmlTextWithRemovedTagsAndItsContent, tagToStripWithItsContent);
