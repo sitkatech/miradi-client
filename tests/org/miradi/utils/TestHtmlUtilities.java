@@ -39,7 +39,6 @@ public class TestHtmlUtilities extends MiradiTestCase
 		verifyRemoveStartToEndTagAndItsContent("", "<style>this is<b>removed</b> left behind</style>");
 		verifyRemoveStartToEndTagAndItsContent("", "<style>\n</style>");
 		verifyRemoveStartToEndTagAndItsContent("", "< style >ABC< / style >");
-		verifyRemoveStartToEndTagAndItsContent("", "< style / >");
 	}
 	
 	private void verifyRemoveStartToEndTagAndItsContent(String expectedValue, String actualValue)
