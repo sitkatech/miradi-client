@@ -188,67 +188,7 @@ abstract public class AbstractHtmlPane extends MiradiTextPane
 			}
 		}
 	}
-
-	public class HtmlEditorKitWithNonSharedStyleSheet extends WysiwygHTMLEditorKit
-	{	
-		@Override
-		public StyleSheet getStyleSheet()
-		{
-			if (styleSheet == null)
-			{
-				styleSheet = new StyleSheet();
-				styleSheet.addStyleSheet(super.getStyleSheet());
-			}
-
-			return styleSheet;
-		}
-
-		@Override
-		public void setStyleSheet(StyleSheet styleSheetToUse)
-		{
-			styleSheet = styleSheetToUse;
-		}
-
-		private StyleSheet styleSheet;
-	}
-
-	public class HTMLEditorKitWithCtrlVFixed extends HtmlEditorKitWithNonSharedStyleSheet
-	{
-		@Override
-		public void install(JEditorPane ed)
-		{
-			super.install(ed);
-			removeCtrlVHandlerThatDoesTheWrongThing();
-		}
-
-		// NOTE: We are not sure why, but Shef installs a Ctrl-V binding 
-		// that maps to its PasteAction class, which throws away any 
-		// formatting on the clipboard and pastes plain text. Our default 
-		// paste handler calls editor.paste which does the right thing
-		private void removeCtrlVHandlerThatDoesTheWrongThing()
-		{
-			InputMap inputMap = getInputMap();
-			if(inputMap == null)
-				return;
-
-			ActionMap actionMap = getActionMap();
-			if(actionMap == null)
-				return;
-
-			KeyStroke ks = KeyStroke.getKeyStroke(KeyEvent.VK_V, InputEvent.CTRL_DOWN_MASK);
-			Object binding = inputMap.get(ks);
-			if(binding == null)
-				return;
-
-			Action action = actionMap.get(binding);
-			if(action == null)
-				return;
-
-			inputMap.put(ks, null);
-			actionMap.put(binding, null);
-		}
-	}
-
+	
 	public class HTMLEditorKitWithCustomLinkController extends HTMLEditorKitWithCtrlVFixed 
 	{
 		@Override
@@ -297,6 +237,66 @@ abstract public class AbstractHtmlPane extends MiradiTextPane
 			GnuHtmlWriter w = new HtmlWriterWithoutIndenting(out, (HTMLDocument)doc, pos, len);
 			w.write();
 		}
+	}
+
+	public class HTMLEditorKitWithCtrlVFixed extends HtmlEditorKitWithNonSharedStyleSheet
+	{
+		@Override
+		public void install(JEditorPane ed)
+		{
+			super.install(ed);
+			removeCtrlVHandlerThatDoesTheWrongThing();
+		}
+
+		// NOTE: We are not sure why, but Shef installs a Ctrl-V binding 
+		// that maps to its PasteAction class, which throws away any 
+		// formatting on the clipboard and pastes plain text. Our default 
+		// paste handler calls editor.paste which does the right thing
+		private void removeCtrlVHandlerThatDoesTheWrongThing()
+		{
+			InputMap inputMap = getInputMap();
+			if(inputMap == null)
+				return;
+
+			ActionMap actionMap = getActionMap();
+			if(actionMap == null)
+				return;
+
+			KeyStroke ks = KeyStroke.getKeyStroke(KeyEvent.VK_V, InputEvent.CTRL_DOWN_MASK);
+			Object binding = inputMap.get(ks);
+			if(binding == null)
+				return;
+
+			Action action = actionMap.get(binding);
+			if(action == null)
+				return;
+
+			inputMap.put(ks, null);
+			actionMap.put(binding, null);
+		}
+	}
+	
+	public class HtmlEditorKitWithNonSharedStyleSheet extends WysiwygHTMLEditorKit
+	{	
+		@Override
+		public StyleSheet getStyleSheet()
+		{
+			if (styleSheet == null)
+			{
+				styleSheet = new StyleSheet();
+				styleSheet.addStyleSheet(super.getStyleSheet());
+			}
+
+			return styleSheet;
+		}
+
+		@Override
+		public void setStyleSheet(StyleSheet styleSheetToUse)
+		{
+			styleSheet = styleSheetToUse;
+		}
+
+		private StyleSheet styleSheet;
 	}
 
 	private class HtmlWriterThatFixesIllegalNesting extends GnuHtmlWriter
