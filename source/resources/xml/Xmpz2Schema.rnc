@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Fri Jan 25 12:55:11 EST 2013 $
+# $LastChangedDate: Fri Jan 25 14:48:04 EST 2013 $
 # $LastChangedRevision: 216 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/216'
 start = ConservationProject.element
@@ -15,6 +15,7 @@ ConservationProject.element = element miradi:ConservationProject
   WCSProjectData.element? &
   RareProjectData.element? &
   FOSProjectData.element? &
+  ExtraData.element &
   TaskPool.element? &
   ResourcePool.element? &
   IndicatorPool.element? &
@@ -54,7 +55,6 @@ ConservationProject.element = element miradi:ConservationProject
   DashboardPool.element? &
   SimpleThreatRatingPool.element? &
   StressBasedThreatRatingPool.element? &
-  ExtraDataPool.element? &
   element miradi:DeletedOrphans{ text }?
 }
 
@@ -695,12 +695,6 @@ StressBasedThreatRating.element = element miradi:StressBasedThreatRating
   element miradi:StressBasedThreatRatingCalculatedThreatTargetRating { vocabulary_threat_rating }?
 }
 
-ExtraDataPool.element = element miradi:ExtraDataPool { ExtraData.element* }
-ExtraData.element = element miradi:ExtraData
-{
-  ExtraDataSection.element *
-}
-
 ProjectScopeProtectedAreaCategoriesContainer.element = element miradi:ProjectScopeProtectedAreaCategoriesContainer
 {
 element miradi:code { vocabulary_protected_area_categories } *
@@ -1051,6 +1045,11 @@ StatusEntry.element = element miradi:StatusEntry
   element miradi:Progress { vocabulary_dashboard_row_progress }? &
   DashboardFlagsContainer.element?  &
   element miradi:Comments { formatted_text }?
+}
+
+ExtraData.element = element miradi:ExtraData
+{
+  ExtraDataSection.element*
 }
 
 ExtraDataSection.element = element miradi:ExtraDataSection
