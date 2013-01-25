@@ -142,6 +142,7 @@ abstract public class AbstractHtmlPane extends MiradiTextPane
 		String text = super.getText();
 
 		String normalizedAndSanitizedHtmlText = stripEntireHeadAndStyle(text);
+		normalizedAndSanitizedHtmlText = XmlUtilities2.getUnescapedNumericValues(normalizedAndSanitizedHtmlText);
 		normalizedAndSanitizedHtmlText = getNormalizedAndSanitizedHtmlText(normalizedAndSanitizedHtmlText);
 
 		return normalizedAndSanitizedHtmlText;
