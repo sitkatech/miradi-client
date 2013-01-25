@@ -21,10 +21,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import org.apache.commons.lang3.StringEscapeUtils;
+import org.apache.commons.lang3.text.translate.AggregateTranslator;
+import org.apache.commons.lang3.text.translate.NumericEntityUnescaper;
 import org.miradi.main.EAM;
 
 public class XmlUtilities2
 {
+	public static String getUnescapedNumericValues(String value)
+	{
+		AggregateTranslator translator =  new AggregateTranslator(new NumericEntityUnescaper());
+		
+		return translator.translate(value);
+	}
+	
 	public static String getXmlDecoded(String value)
 	{
 		return StringEscapeUtils.unescapeXml(value);

@@ -28,7 +28,17 @@ public class TestXmlUtilities2 extends MiradiTestCase
 	{
 		super(name);
 	}
+	
+	public void testGetUnescapedNumericValues() throws Exception
+	{
+		verifyUnescapedNumericValue("¢", "&#162;");
+	}
 		
+	private void verifyUnescapedNumericValue(String expectedValue, String actualValue) throws Exception
+	{
+		assertEquals("incorrect unespcaping of numeric value?", expectedValue, XmlUtilities2.getUnescapedNumericValues(actualValue));
+	}
+
 	public void testIsValidXml()
 	{
 		verifyValidXml(null);
