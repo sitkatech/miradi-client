@@ -40,8 +40,10 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
+import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.questions.DiagramModeQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
@@ -51,6 +53,7 @@ import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.PointList;
 import org.miradi.utils.UnicodeXmlWriter;
+import org.miradi.views.diagram.DiagramView;
 import org.miradi.views.diagram.TestLinkBendPointsMoveHandler;
 import org.miradi.xml.xmpz2.MockXmpz2XmlExporterWithoutTimeStampForTesting;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
@@ -64,6 +67,12 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 		super(name);
 	}
 
+	public void testExtraData() throws Exception
+	{
+		getProject().fillObjectUsingCommand(getProject().getViewData(DiagramView.getViewName()), ViewData.TAG_CURRENT_MODE, DiagramModeQuestion.MODE_STRATEGY_BRAINSTORM);
+		validateUsingStringWriter();
+	}
+	
 	public void testHumanWellbeingTargetAsHiddenType() throws Exception
 	{
 		CodeList hiddenTypeCodes = new CodeList();

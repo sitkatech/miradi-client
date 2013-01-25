@@ -131,6 +131,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		creators.add(createExternaIdSchemaElementSchemaCreator());
 		creators.add(createDiagramFactorUiSettingsSchemaCreator());
 		creators.add(createDashboardUserChoiceMapSchemaCreator());
+		creators.add(createExtraDataElement());
 		creators.add(writeExtraDataSectionElement());
 		creators.add(defineExtraDataItemElement());
 		creators.add(defineThreatStressRatingElement());
@@ -165,6 +166,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		elementNames.add(createOptionalSchemaElement(WCS_PROJECT_DATA));
 		elementNames.add(createOptionalSchemaElement(RARE_PROJECT_DATA));
 		elementNames.add(createOptionalSchemaElement(FOS_PROJECT_DATA));
+		elementNames.add(createElementName(EXTRA_DATA));
 		for(BaseObjectSchemaWriter baseObjectSchemaWriter : baseObjectSchemaWriters)
 		{
 			String poolName = baseObjectSchemaWriter.getPoolName();
@@ -816,6 +818,15 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return creator;
 	}
 	
+	
+	private Xmpz2CustomSchemaDefinitionCreator createExtraDataElement()
+	{
+		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), EXTRA_DATA);
+		creator.addZeroOrMoreDotElement(EXTRA_DATA_SECTION);
+		
+		return creator;
+	}
+	
 	private Xmpz2CustomSchemaDefinitionCreator writeExtraDataSectionElement()
 	{
 		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), EXTRA_DATA_SECTION);
@@ -908,7 +919,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		schemaWriters.add(new SimpleThreatRatingSchemaWriter(this));
 		schemaWriters.add(new StressBasedThreatRatingSchemaWriter(this));
-		schemaWriters.add(new ExtraDataWriter(this));
 		
 		return schemaWriters;
 	}
