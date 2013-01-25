@@ -37,19 +37,17 @@ import javax.swing.JEditorPane;
 import javax.swing.KeyStroke;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
-import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
-import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.HTMLWriter;
 import javax.swing.text.html.StyleSheet;
 
 import net.atlanticbb.tantlinger.ui.text.CompoundUndoManager;
 import net.atlanticbb.tantlinger.ui.text.HTMLUtils;
 import net.atlanticbb.tantlinger.ui.text.WysiwygHTMLEditorKit;
 
-import org.gnu.classpath.javax.swing.text.html.GnuHtmlWriter;
 import org.miradi.dialogfields.DocumentEventHandler;
 import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
@@ -234,7 +232,7 @@ abstract public class AbstractHtmlPane extends MiradiTextPane
 		@Override
 		public void write(Writer out, Document doc, int pos, int len) throws IOException, BadLocationException
 		{
-			GnuHtmlWriter w = new HtmlWriterWithoutIndenting(out, (HTMLDocument)doc, pos, len);
+			HTMLWriter w = new HtmlWriterWithoutIndenting(out, (HTMLDocument)doc, pos, len);
 			w.write();
 		}
 	}
@@ -299,18 +297,11 @@ abstract public class AbstractHtmlPane extends MiradiTextPane
 		private StyleSheet styleSheet;
 	}
 
-	private class HtmlWriterThatFixesIllegalNesting extends GnuHtmlWriter
+	private class HtmlWriterThatFixesIllegalNesting extends HTMLWriter
 	{
 		public HtmlWriterThatFixesIllegalNesting(Writer out, HTMLDocument doc, int pos, int len)
 		{
 			super(out, doc, pos, len);
-		}
-
-		@Override
-		protected void closeOutUnwantedEmbeddedTags(AttributeSet attrSet) throws IOException
-		{
-			AttributeSet forceAllTagsToBeClosed = new SimpleAttributeSet();
-			super.closeOutUnwantedEmbeddedTags(forceAllTagsToBeClosed);
 		}
 	}
 
