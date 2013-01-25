@@ -165,7 +165,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		elementNames.add(createOptionalSchemaElement(WCS_PROJECT_DATA));
 		elementNames.add(createOptionalSchemaElement(RARE_PROJECT_DATA));
 		elementNames.add(createOptionalSchemaElement(FOS_PROJECT_DATA));
-		elementNames.add(createElementName(EXTRA_DATA));
 		for(BaseObjectSchemaWriter baseObjectSchemaWriter : baseObjectSchemaWriters)
 		{
 			String poolName = baseObjectSchemaWriter.getPoolName();
