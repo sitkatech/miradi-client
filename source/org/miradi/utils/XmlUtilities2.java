@@ -27,7 +27,7 @@ import org.miradi.main.EAM;
 
 public class XmlUtilities2
 {
-	public static String getUnescapedNumericValues(String value)
+	public static String getWithUnescapedNumericEntities(String value)
 	{
 		AggregateTranslator translator =  new AggregateTranslator(new NumericEntityUnescaper());
 		
