@@ -36,7 +36,7 @@ public class TestXmlUtilities2 extends MiradiTestCase
 		
 	private void verifyUnescapedNumericValue(String expectedValue, String actualValue) throws Exception
 	{
-		assertEquals("incorrect unespcaping of numeric value?", expectedValue, XmlUtilities2.getUnescapedNumericValues(actualValue));
+		assertEquals("incorrect unespcaping of numeric value?", expectedValue, XmlUtilities2.getWithUnescapedNumericEntities(actualValue));
 	}
 
 	public void testIsValidXml()
