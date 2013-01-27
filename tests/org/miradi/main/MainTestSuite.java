@@ -188,6 +188,7 @@ import org.miradi.project.TestTextBoxPool;
 import org.miradi.project.TestThreatReductionResultPool;
 import org.miradi.questions.TestChoiceItem;
 import org.miradi.questions.TestChoiceQuestion;
+import org.miradi.questions.TestCountriesSorter;
 import org.miradi.ratings.TestRatingChoice;
 import org.miradi.ratings.TestRatingQuestion;
 import org.miradi.ratings.TestStrategyRatingSummary;
@@ -305,6 +306,7 @@ public class MainTestSuite extends TestSuite
 		//questions package
 		addTest(new TestSuite(TestChoiceItem.class));
 		addTest(new TestSuite(TestChoiceQuestion.class));
+		addTest(new TestSuite(TestCountriesSorter.class));
 		
 		// utils package
 		addTest(new TestSuite(TestEnhancedJsonObject.class));
