@@ -53,6 +53,6 @@ public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Work Plan");
+		return EAM.text("Who and When");
 	}
 }
