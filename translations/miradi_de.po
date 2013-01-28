@@ -30531,7 +30531,7 @@ msgstr ""
 #~ msgstr "Marine Deep Benthic - Hadal/Deep Sea Trench (>6,000 m)"
 
 #~ msgid "Menu|3. Implement Actions &  Monitoring"
-#~ msgstr "3. Aktionen & Monitoring umsetzen"
+#~ msgstr "3. Aktionen &amp; Monitoring umsetzen"
 
 #~ msgid "Share success & failures with other teams"
 #~ msgstr "Erfolge und Misserfolge mit anderen Teams teilen"
