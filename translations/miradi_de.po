@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-22 17:31-0600\n"
+"POT-Creation-Date: 2013-01-27 18:02-0600\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -8841,6 +8841,10 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:56
+msgid "Who and When"
+msgstr ""
+
 #: Miradi/source/org/miradi/main/MiradiStrings.java:74
 msgid "Wintitle|Information"
 msgstr "Information"
@@ -8855,7 +8859,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:191
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:199
-#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:56
 msgid "Work Plan"
 msgstr "Arbeitsplan"
 

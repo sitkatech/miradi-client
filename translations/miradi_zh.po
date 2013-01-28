@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-22 17:31-0600\n"
+"POT-Creation-Date: 2013-01-27 18:02-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -8347,6 +8347,10 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:56
+msgid "Who and When"
+msgstr ""
+
 #: Miradi/source/org/miradi/main/MiradiStrings.java:74
 msgid "Wintitle|Information"
 msgstr "信息 \t\t"
@@ -8361,7 +8365,6 @@ msgstr "控制向导加载失败： \t\t"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:191
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:199
-#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:56
 msgid "Work Plan"
 msgstr "工作计划"
 

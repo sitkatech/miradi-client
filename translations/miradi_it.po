@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-22 17:31-0600\n"
+"POT-Creation-Date: 2013-01-27 18:02-0600\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -8691,6 +8691,10 @@ msgstr "Il Chi ignorato è:"
 msgid "Who Override was: %s"
 msgstr "Il Chi ignorato è: %s"
 
+#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:56
+msgid "Who and When"
+msgstr ""
+
 #: Miradi/source/org/miradi/main/MiradiStrings.java:74
 msgid "Wintitle|Information"
 msgstr "Informazione"
@@ -8705,7 +8709,6 @@ msgstr "Caricamento del controllo non riuscito:"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:191
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:199
-#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:56
 msgid "Work Plan"
 msgstr "Piano di lavoro"
 
