@@ -187,28 +187,9 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 	
 	public Vector<TreePath> getFullyExpandedTreePathListExludingLeafNodes() throws Exception
 	{
-		TreePath pathToRoot = getPathToRoot();
-		Vector<TreePath> fullyExpandedTreePathList = new Vector<TreePath>();
-		recursivelyGetFullyExpandedTreePaths(fullyExpandedTreePathList, pathToRoot);
-		
-		return fullyExpandedTreePathList;
+		return new ExpandedNodeListExcludingLeafNodes().getFullyExpandedTreePathList(getPathToRoot());
 	}
-	
-	private void recursivelyGetFullyExpandedTreePaths(Vector<TreePath> fullyExpandedTreePathList, TreePath treePath)
-	{
-		fullyExpandedTreePathList.add(treePath);
-		TreeTableNode node = (TreeTableNode) treePath.getLastPathComponent();
-		for(int childIndex = 0; childIndex < node.getChildCount(); ++childIndex)
-		{
-			TreeTableNode childNode = node.getChild(childIndex);
-			if (childNode.getChildCount() > 0)
-			{
-				TreePath thisTreePath = treePath.pathByAddingChild(childNode);
-				recursivelyGetFullyExpandedTreePaths(fullyExpandedTreePathList, thisTreePath);
-			}
-		}
-	}
-	
+
 	abstract public String getUniqueTreeTableModelIdentifier();
 
 	public static final String DEFAULT_COLUMN = "Item";
