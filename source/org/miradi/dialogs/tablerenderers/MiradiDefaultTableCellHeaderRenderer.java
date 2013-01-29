@@ -22,15 +22,14 @@ package org.miradi.dialogs.tablerenderers;
 
 import java.awt.Component;
 
+import javax.swing.JLabel;
 import javax.swing.JTable;
-import javax.swing.UIManager;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableCellRenderer;
 
-public class MiradiDefaultTableCellHeaderRenderer extends DefaultTableCellRenderer
+public class MiradiDefaultTableCellHeaderRenderer extends JLabel implements TableCellRenderer
 {
 	//TODO this code should be replaced with java 1.6's DefaultTableCellHeaderRenderer when we start supporting 1.6
-	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) 
 	{
 		if (table != null) 
@@ -42,10 +41,10 @@ public class MiradiDefaultTableCellHeaderRenderer extends DefaultTableCellRender
 				setFont(header.getFont());
 			}
 		}
-
-		setText((value == null) ? "" : value.toString());
-		setBorder(UIManager.getBorder("TableHeader.cellBorder"));
 		
-		return this;
+		JLabel label = (JLabel) table.getTableHeader().getDefaultRenderer().getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+		label.setText((value == null) ? "" : value.toString());
+		
+		return label;
 	}
 }
