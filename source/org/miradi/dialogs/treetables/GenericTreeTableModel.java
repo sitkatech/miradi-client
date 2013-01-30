@@ -147,7 +147,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		return node.getChildCount();
 	}
 	
-	public ORefList getFullyExpandedRefList() throws Exception
+	public ORefList getFullyExpandedRefListExcludingLeafNodes() throws Exception
 	{
 		ORefList fullyExpandedObjectRefs = new ORefList();
 		Vector<TreePath> fullExpandedNodeList = getFullyExpandedTreePathListExludingLeafNodes();

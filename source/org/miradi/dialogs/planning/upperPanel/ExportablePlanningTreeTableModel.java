@@ -42,7 +42,7 @@ public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel imp
 	
 	private void setRowObjectRefs() throws Exception
 	{
-		rowObjectRefs = getFullyExpandedRefList();
+		rowObjectRefs = getFullyExpandedRefListExcludingLeafNodes();
 		removeRootNode();
 	}
 	
