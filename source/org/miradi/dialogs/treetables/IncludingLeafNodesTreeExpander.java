@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.treetables;
 
-public class ExpandedNodeListIncludingLeafNodes extends AbstractExpandedNodeListHelper
+public class IncludingLeafNodesTreeExpander extends AbstractExpandedNodeListHelper
 {
 	@Override
 	public boolean includeChildNode(TreeTableNode childNode)
