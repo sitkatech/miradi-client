@@ -24,7 +24,7 @@ import java.util.Vector;
 
 import javax.swing.tree.TreePath;
 
-abstract public class AbstractExpandedNodeListHelper
+abstract public class AbstractTreeExpander
 {
 	public Vector<TreePath> getFullyExpandedTreePathList(TreePath pathToRoot) throws Exception
 	{
