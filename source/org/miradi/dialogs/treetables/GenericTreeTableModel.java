@@ -187,15 +187,15 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 	
 	public Vector<TreePath> getFullyExpandedTreePathListExcludingLeafNodes() throws Exception
 	{
-		return getExpanedTreePathList(new ExcludingLeafNodesTreeExpander());
+		return getExpandedTreePathList(new ExcludingLeafNodesTreeExpander());
 	}
 
 	private Vector<TreePath> getFullyExpandedTreePathListIncludingLeafNodes() throws Exception
 	{
-		return getExpanedTreePathList(new IncludingLeafNodesTreeExpander());
+		return getExpandedTreePathList(new IncludingLeafNodesTreeExpander());
 	}
 	
-	private Vector<TreePath> getExpanedTreePathList(final AbstractTreeExpander abstractTreeExpander) throws Exception
+	private Vector<TreePath> getExpandedTreePathList(final AbstractTreeExpander abstractTreeExpander) throws Exception
 	{
 		return abstractTreeExpander.getFullyExpandedTreePathList(getPathToRoot());
 	}
