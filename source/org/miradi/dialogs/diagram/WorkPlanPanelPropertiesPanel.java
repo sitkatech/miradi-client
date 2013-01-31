@@ -31,7 +31,7 @@ import org.miradi.utils.FillerLabel;
 
 public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
 {
-	public WorkPlanPanelPropertiesPanel(Project projectToUse, ORef orefToUse)
+	public WorkPlanPanelPropertiesPanel(Project projectToUse, ORef orefToUse) throws Exception
 	{
 		super(projectToUse, orefToUse);
 		
@@ -41,7 +41,9 @@ public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
 		add(new FillerLabel());
 		add(new FillerLabel());
 		addField(createDropdownWithIconField(orefToUse.getObjectType(), BaseObject.TAG_LEADER_RESOURCE, new ProjectResourceQuestionWithUnspecifiedChoice(getProject())));
-		add(new PanelTitleLabel(EAM.text("When")));
+		addField(createReadonlyTextField(BaseObject.PSEUDO_TAG_WHEN_TOTAL));
+		
+		add(new FillerLabel());
 		add(new PanelTitleLabel(EAM.text("Dates can be set in the Work Plan view")));
 		
 		updateFieldsFromProject();
