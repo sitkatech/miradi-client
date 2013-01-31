@@ -88,7 +88,7 @@ public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel imp
 		
 		try
 		{
-			TreePath path = getFullyExpandedTreePathListExludingLeafNodes().get(row);
+			TreePath path = getFullyExpandedTreePathListExcludingLeafNodes().get(row);
 			
 			return (TreeTableNode) path.getLastPathComponent();
 		}

@@ -37,7 +37,7 @@ public class TreeTableModelExporter extends AbstractTreeTableOrModelExporter
 		super(projectToUse, modelToUse.getUniqueTreeTableModelIdentifier());
 		
 		model = modelToUse;
-		fullyExpandedTreePaths = model.getFullyExpandedTreePathListExludingLeafNodes();
+		fullyExpandedTreePaths = model.getFullyExpandedTreePathListExcludingLeafNodes();
 		removeRootNode();
 	}
 
