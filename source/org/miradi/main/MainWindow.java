@@ -33,9 +33,11 @@ import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.TreeSet;
+import java.util.Vector;
 
 import javax.swing.Box;
 import javax.swing.JComponent;
@@ -745,12 +747,19 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 				"We recommend that you close this project and contact the " +
 				"Miradi support team so they can safely repair this project.");
 
-		String listOfProblems = "";
+		Vector<String> problems = new Vector<String>();
 		for(ORef missingRef : rawProblems.keySet())
 		{
 			ORefSet referrers = rawProblems.get(missingRef);
 			String typeName = ObjectType.getUserFriendlyObjectTypeName(getProject(), missingRef.getObjectType());
-			listOfProblems += "Missing " + typeName + " " + missingRef + " referred to by " + referrers.toString() + "\n";
+			problems.add("Missing " + typeName + " " + missingRef + " referred to by " + referrers.toString());
+		}
+		Collections.sort(problems);
+		
+		String listOfProblems = "";
+		for(String problem : problems)
+		{
+			listOfProblems += problem + "\n";
 		}
 		
 		if(!ProjectCorruptionDialog.askUserWhetherToOpen(this, title, bodyText, listOfProblems))
