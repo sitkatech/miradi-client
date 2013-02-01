@@ -996,6 +996,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 	private void importThreatRatingCommentsField(Node node, String path, ThreatRatingCommentsData threatRatingCommentsData, String threatTargetKey) throws Exception
 	{
 		String threatRatingComments = getPathData(node, new String[]{path,});
+		threatRatingComments = XmlUtilities2.getXmlEncoded(threatRatingComments);
 		
 		CodeToUserStringMap threatRatingCommentsMap = threatRatingCommentsData.getThreatRatingCommentsMap();
 		threatRatingCommentsMap.putUserString(threatTargetKey, threatRatingComments);
