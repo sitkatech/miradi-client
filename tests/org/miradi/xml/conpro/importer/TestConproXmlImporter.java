@@ -35,6 +35,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -56,6 +57,7 @@ import org.miradi.objects.Xenodata;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.questions.ProjectSharingQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
+import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TrendQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.schemas.CauseSchema;
@@ -81,6 +83,41 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	public TestConproXmlImporter(String name)
 	{
 		super(name);
+	}
+	
+	public void testIndicatorThresholdWithDecodedValues() throws Exception
+	{
+		Target target = getProject().createTarget();
+		getProject().turnOnTncMode(target);
+		
+		KeyEcologicalAttribute kea = getProject().createKea();
+		getProject().fillObjectUsingCommand(target, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, new IdList(kea).toString());
+
+		Indicator keaIndicator = getProject().createIndicator(kea);
+		getProject().fillObjectUsingCommand(kea, KeyEcologicalAttribute.TAG_INDICATOR_IDS, new IdList(keaIndicator));
+		
+		CodeToUserStringMap thresholdMap = new CodeToUserStringMap();
+		thresholdMap.putUserString(StatusQuestion.GOOD, "a&amp;b");
+		getProject().fillObjectUsingCommand(keaIndicator, Indicator.TAG_THRESHOLDS_MAP, thresholdMap.toJsonString());
+		
+		File firstExportedXmlFile = createTempFileFromName("$$$exportOnlyActiveIndictorsTest.xml");
+		ProjectForTesting projectAfterImport = ProjectForTesting.createProjectWithDefaultObjects("ProjectToFill");
+		try
+		{
+			exportProject(firstExportedXmlFile, getProject());
+			importProject(firstExportedXmlFile, projectAfterImport);
+			
+			ORefList indicatorRefs = projectAfterImport.getIndicatorPool().getRefList();
+			assertEquals("incorrect indicator count?", 1, indicatorRefs.size());
+			Indicator importedIndicator = Indicator.find(projectAfterImport, indicatorRefs.getFirstElement());
+			System.out.println( importedIndicator.getThresholdsMap().getCodeToUserStringMap().toJsonString());
+			assertEquals("threshold should be encoded?", "a&amp;b", importedIndicator.getThresholdsMap().getCodeToUserStringMap().toHashMap().get("3"));
+		}
+		finally
+		{
+			firstExportedXmlFile.delete();
+			projectAfterImport.close();
+		}
 	}
 	
 	public void testThreatRatingCommentsWithDecodedValues() throws Exception
