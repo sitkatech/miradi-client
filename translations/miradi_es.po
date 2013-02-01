@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-31 14:31-0600\n"
+"POT-Creation-Date: 2013-02-01 10:47-0600\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -4493,7 +4493,7 @@ msgstr "Números de teléfono"
 msgid "Label|Project Dates"
 msgstr "Fechas de proyectos"
 
-#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:70
+#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:68
 msgid "Label|Project Info"
 msgstr ""
 
@@ -5642,7 +5642,7 @@ msgstr "Informe de progreso "
 msgid "Progress Reports"
 msgstr "Informes de progreso"
 
-#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:98
+#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:100
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:102
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:68
