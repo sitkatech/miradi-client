@@ -32,11 +32,17 @@ import org.miradi.dialogs.fieldComponents.PanelTextArea;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.StringUtilities;
 
 public class ObjectStringInputField extends ObjectTextInputField
 {
+	public ObjectStringInputField(MainWindow mainWindowToUse, ORef refToUse, String tagToUse, int columnCount) throws Exception
+	{
+		this(mainWindowToUse, refToUse.getObjectType(), refToUse.getObjectId(), tagToUse, columnCount);
+	}
+
 	public ObjectStringInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse) throws Exception
 	{
 		this(mainWindowToUse, objectTypeToUse, objectIdToUse, tagToUse, new PanelTextArea(0, columnsToUse));		

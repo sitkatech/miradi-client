@@ -25,7 +25,6 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
-import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
 import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
 import org.miradi.questions.TncMarineEcoRegionQuestion;
@@ -35,7 +34,7 @@ import org.miradi.questions.TncProjectPlaceTypeQuestion;
 import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.schemas.TncProjectDataSchema;
-import org.miradi.schemas.XenodataSchema;
+import org.miradi.xml.conpro.ConProMiradiXml;
 
 public class TncProjectSummarySubPanel extends ObjectDataInputPanel
 {
@@ -44,8 +43,7 @@ public class TncProjectSummarySubPanel extends ObjectDataInputPanel
 		super(projectToUse, refs);
 		
 		addField(createReadonlyTextField(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE));
-		addField(createReadonlyTextField(XenodataSchema.getObjectType(), Xenodata.TAG_PROJECT_ID));
-		
+		addField(createStringToRefField(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, ConProMiradiXml.CONPRO_CONTEXT));		
 		addField(createStringField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS));
 		addField(createSingleColumnCodeListField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_PLACE_TYPES, getProject().getQuestion(TncProjectPlaceTypeQuestion.class)));
 		addField(createSingleColumnCodeListField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, getProject().getQuestion(TncOrganizationalPrioritiesQuestion.class)));
