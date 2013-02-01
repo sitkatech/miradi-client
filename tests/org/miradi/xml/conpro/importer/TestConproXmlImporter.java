@@ -35,6 +35,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -42,6 +43,8 @@ import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramLink;
+import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
@@ -51,6 +54,7 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
+import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.ProjectForTesting;
@@ -82,6 +86,37 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	{
 		super(name);
 	}
+	
+	public void testThreatRatingCommentsWithDecodedValues() throws Exception
+	{
+		populateSimpleThreatRatingCommentsData();
+		populateStressBasedThreatRatingCommentsData();
+		verifyffImport();
+	}
+	
+	public void populateStressBasedThreatRatingCommentsData() throws Exception
+	{
+		populateThreatTargetCommentsData(ThreatRatingCommentsData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP);
+	}
+	
+	public void populateSimpleThreatRatingCommentsData() throws Exception
+	{
+		populateThreatTargetCommentsData(ThreatRatingCommentsData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP);
+	}
+
+	private void populateThreatTargetCommentsData(String tagStressBasedThreatRatingCommentsMap) throws Exception
+	{
+		ThreatRatingCommentsData threatRatingCommentsData = getProject().getSingletonThreatRatingCommentsData();
+		DiagramLink diagramLink = getProject().createThreatTargetDiagramLink();
+		FactorLink factorLink = diagramLink.getWrappedFactorLink();
+		String commentsKey = ThreatRatingCommentsData.createKey(factorLink.getFromFactorRef(), factorLink.getToFactorRef());
+		String comment = "Comment with &amp;";
+		CodeToUserStringMap map = new CodeToUserStringMap();
+		map.putUserString(commentsKey, comment);
+		
+		getProject().fillObjectUsingCommand(threatRatingCommentsData, tagStressBasedThreatRatingCommentsMap, map.toJsonString());
+	}
+
 	
 	public void testDataWithHtmlTags() throws Exception
 	{
@@ -338,6 +373,30 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	
 			workAroundCpmzMissingEndDateField(projectAfterImport);
 			
+			exportProject(afterXmlOutFile, projectAfterImport);
+			String secondExport = convertFileContentToString(afterXmlOutFile);
+			assertEquals("incorrect project values after first import?", firstExport, secondExport);
+		}
+		finally
+		{
+			firstExportedXmlFile.delete();
+			afterXmlOutFile.delete();
+			projectAfterImport.close();
+		}
+	}
+	
+	private void verifyffImport() throws IOException, Exception
+	{
+		File firstExportedXmlFile = createTempFileFromName("conproVersion2BeforeImport.xml");
+		
+		File afterXmlOutFile = createTempFileFromName("conproVersion2AfterFirstImport.xml");
+		ProjectForTesting projectAfterImport = ProjectForTesting.createProjectWithDefaultObjects("ProjectToFill");
+		try
+		{
+			exportProject(firstExportedXmlFile, getProject());
+			String firstExport = convertFileContentToString(firstExportedXmlFile);
+			System.out.println(firstExport);
+			importProject(firstExportedXmlFile, projectAfterImport);
 			exportProject(afterXmlOutFile, projectAfterImport);
 			String secondExport = convertFileContentToString(afterXmlOutFile);
 			assertEquals("incorrect project values after first import?", firstExport, secondExport);
