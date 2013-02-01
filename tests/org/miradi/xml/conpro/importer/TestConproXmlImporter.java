@@ -346,13 +346,13 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		ORef tncProjectDataRef = getProject().getSingletonObjectRef(TncProjectDataSchema.getObjectType());
 		
 		getProject().fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_SHARING_CODE, ProjectSharingQuestion.SHARE_WITH_ANYONE);
-		verifyImport();
+		verifyObjectsAfterImport();
 		
 		getProject().fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_SHARING_CODE, ProjectSharingQuestion.SHARE_ONLY_INSIDE_ORGANIZATION);
-		verifyImport();
+		verifyObjectsAfterImport();
 	}
 
-	private void verifyImport() throws IOException, Exception
+	private void verifyObjectsAfterImport() throws IOException, Exception
 	{
 		File firstExportedXmlFile = createTempFileFromName("conproVersion2BeforeImport.xml");
 		
