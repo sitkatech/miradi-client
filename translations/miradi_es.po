@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-01 10:47-0600\n"
+"POT-Creation-Date: 2013-02-01 14:46-0600\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -3925,7 +3925,7 @@ msgstr ""
 msgid "High"
 msgstr "Alto "
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1419
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1420
 msgid "High/Very-High Threat Chains"
 msgstr "Cadenas de amenazas altas/muy altas"
 
@@ -4139,7 +4139,7 @@ msgstr ""
 "criterios: mensurable, preciso, consistente y sensible. en Miradi, un "
 "indicador está representado por un triángulo violeta."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1317
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1318
 msgid "Indicator Holder"
 msgstr "Marcador de indicadores"
 
@@ -4643,7 +4643,7 @@ msgstr "Localización"
 msgid "Low"
 msgstr "Bajo "
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1420
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1421
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Cadenas de amenazas bajas/medias/sin clasificación"
 
@@ -5272,7 +5272,7 @@ msgstr ""
 "como la reducción de una amenaza crítica. En Miradi, una meta está "
 "representado por un pequeño rectángulo azul."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1311
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1312
 msgid "Objective Holder"
 msgstr "Marcador de metas"
 
@@ -5445,7 +5445,7 @@ msgstr "Rosa "
 msgid "Place scope on diagram"
 msgstr "Ubicar el alcance en el diagrama"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1307
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1308
 msgid "Placeholder - From ConPro"
 msgstr "Marcador de posición: de ConPro"
 

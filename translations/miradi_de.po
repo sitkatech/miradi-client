@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-01 10:47-0600\n"
+"POT-Creation-Date: 2013-02-01 14:46-0600\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -4123,7 +4123,7 @@ msgstr "Quartalsspalte(n) verbergen"
 msgid "High"
 msgstr "Hoch"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1419
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1420
 msgid "High/Very-High Threat Chains"
 msgstr ""
 
@@ -4350,7 +4350,7 @@ msgid ""
 "by a purple triangle."
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1317
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1318
 msgid "Indicator Holder"
 msgstr ""
 
@@ -4855,7 +4855,7 @@ msgstr "Ort"
 msgid "Low"
 msgstr "Niedrig"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1420
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1421
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
@@ -5464,7 +5464,7 @@ msgid ""
 "by a small blue rectangle."
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1311
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1312
 msgid "Objective Holder"
 msgstr ""
 
@@ -5647,7 +5647,7 @@ msgstr "Rosa"
 msgid "Place scope on diagram"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1307
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1308
 msgid "Placeholder - From ConPro"
 msgstr ""
 
