@@ -91,7 +91,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	{
 		populateSimpleThreatRatingCommentsData();
 		populateStressBasedThreatRatingCommentsData();
-		verifyffImport();
+		verifyImport();
 	}
 	
 	public void populateStressBasedThreatRatingCommentsData() throws Exception
@@ -385,7 +385,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		}
 	}
 	
-	private void verifyffImport() throws IOException, Exception
+	private void verifyImport() throws IOException, Exception
 	{
 		File firstExportedXmlFile = createTempFileFromName("conproVersion2BeforeImport.xml");
 		
