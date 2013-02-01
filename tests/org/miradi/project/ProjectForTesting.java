@@ -1393,21 +1393,30 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void populateStressBasedThreatRatingCommentsData() throws Exception
 	{
-		populateThreatTargetCommentsData(ThreatRatingCommentsData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP);
+		populateStressBasedThreatRatingCommentsData("Some Comment for Threat and Target");
+	}
+
+	public void populateStressBasedThreatRatingCommentsData(String comment)	throws Exception
+	{
+		populateThreatTargetCommentsData(ThreatRatingCommentsData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP,	comment);
 	}
 	
 	public void populateSimpleThreatRatingCommentsData() throws Exception
 	{
-		populateThreatTargetCommentsData(ThreatRatingCommentsData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP);
+		populateSimpleThreatRatingCommentsData("Some Comment for Threat and Target");
 	}
 
-	private void populateThreatTargetCommentsData(String tagStressBasedThreatRatingCommentsMap) throws Exception
+	public void populateSimpleThreatRatingCommentsData(String comment)	throws Exception
+	{
+		populateThreatTargetCommentsData(ThreatRatingCommentsData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP,	comment);
+	}
+
+	private void populateThreatTargetCommentsData(String tagStressBasedThreatRatingCommentsMap, String comment) throws Exception
 	{
 		ThreatRatingCommentsData threatRatingCommentsData = getSingletonThreatRatingCommentsData();
 		DiagramLink diagramLink = createThreatTargetDiagramLink();
 		FactorLink factorLink = diagramLink.getWrappedFactorLink();
 		String commentsKey = ThreatRatingCommentsData.createKey(factorLink.getFromFactorRef(), factorLink.getToFactorRef());
-		String comment = "Some Comment for Threat and Target";
 		CodeToUserStringMap map = new CodeToUserStringMap();
 		map.putUserString(commentsKey, comment);
 		
