@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.base;
 
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.TableSettings;
@@ -41,9 +40,8 @@ public class WorkPlanColumnConfigurationEditorPanel extends ObjectDataInputPanel
 		addHtmlWrappedLabel("");
 		addHtmlWrappedLabel(EAM.text("Select which column groups to display."));
 		
-		PanelTitleLabel label = new PanelTitleLabel(EAM.text("Column groups"));
 		ChoiceQuestion columnConfigurationQuestion = getProject().getQuestion(WorkPlanColumnConfigurationQuestion.class);
-		addFieldWithCustomLabel(createWorkPlanBudgetColumnCodeListEditor(orefToUse.getObjectType(), TableSettings.TAG_TABLE_SETTINGS_MAP, columnConfigurationQuestion, TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY), label);
+		addFieldWithCustomLabel(createWorkPlanBudgetColumnCodeListEditor(orefToUse.getObjectType(), TableSettings.TAG_TABLE_SETTINGS_MAP, columnConfigurationQuestion, TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY), EAM.text("Column groups"));
 		
 		updateFieldsFromProject();
 	}

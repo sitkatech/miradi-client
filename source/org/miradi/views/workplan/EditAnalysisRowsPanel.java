@@ -47,9 +47,8 @@ public class EditAnalysisRowsPanel extends ObjectDataInputPanel
 		addFieldWithoutLabel(createConfigureAnalysisRowsField(getProject().getCurrentViewData().getRef(), ViewData.TAG_BUDGET_ROLLUP_REPORT_TYPES, getProject().getQuestion(WorkPlanCategoryTypesQuestion.class)));
 		
 		TableSettings workPlanTableSettings = TableSettings.findOrCreate(getProject(), AbstractWorkPlanStringMapEditorDoer.getTabSpecificModelIdentifier());
-		PanelTitleLabel label = new PanelTitleLabel(EAM.text("Column groups"));
 		ChoiceQuestion columnConfigurationQuestion = getProject().getQuestion(WorkPlanAnalysisConfigurationQuestion.class);
-		addFieldWithCustomLabel(createWorkPlanBudgetColumnCodeListEditor(TableSettingsSchema.getObjectType(), TableSettings.TAG_TABLE_SETTINGS_MAP, columnConfigurationQuestion, TableSettings.ANALYSIS_BUDGET_COLUMNS_CODELIST_KEY), label);
+		addFieldWithCustomLabel(createWorkPlanBudgetColumnCodeListEditor(TableSettingsSchema.getObjectType(), TableSettings.TAG_TABLE_SETTINGS_MAP, columnConfigurationQuestion, TableSettings.ANALYSIS_BUDGET_COLUMNS_CODELIST_KEY), EAM.text("Column groups"));
 
 		setObjectRefs(new ORef[]{getProject().getCurrentViewData().getRef(), workPlanTableSettings.getRef(), });
 		updateFieldsFromProject();
