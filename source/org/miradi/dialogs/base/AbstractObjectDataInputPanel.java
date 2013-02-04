@@ -663,9 +663,9 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return TABLE_TAG + objectType + tag;
 	}
 
-	public ObjectDataInputField createRadioChoiceField(int objectType, BaseId objectId, String tagToUse, ChoiceQuestion question)
+	public ObjectDataInputField createRadioChoiceField(ORef refToUse, String tagToUse, ChoiceQuestion question)
 	{
-		return new ObjectRadioButtonGroupField(project, objectType, objectId, tagToUse, question);
+		return new ObjectRadioButtonGroupField(project, refToUse, tagToUse, question);
 	}
 	
 	public RadioButtonsField createRadioButtonsField(int objectType, String tagToUse, ChoiceQuestion question)

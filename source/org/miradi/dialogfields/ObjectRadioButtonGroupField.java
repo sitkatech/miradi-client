@@ -28,19 +28,19 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-import org.miradi.ids.BaseId;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
 public class ObjectRadioButtonGroupField extends ObjectDataInputField
 {
-	public ObjectRadioButtonGroupField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
+	public ObjectRadioButtonGroupField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
+		super(projectToUse, refToUse, tagToUse);
 		group = new ButtonGroup();
 		panel = new OneRowPanel();
 		panel.setBackground(AppPreferences.getDataPanelBackgroundColor());
