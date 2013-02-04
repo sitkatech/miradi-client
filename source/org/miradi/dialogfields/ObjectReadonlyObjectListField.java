@@ -30,21 +30,20 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 
 import org.miradi.dialogs.fieldComponents.PanelTable;
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.utils.SingleColumnReadonlyGenericDefaultTableModel;
 import org.miradi.utils.IgnoreCaseStringComparator;
+import org.miradi.utils.SingleColumnReadonlyGenericDefaultTableModel;
 import org.miradi.utils.XmlUtilities2;
 
 public class ObjectReadonlyObjectListField extends ObjectDataInputField
 {
-	public ObjectReadonlyObjectListField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId idToUse, String tagToUse, String uniqueIdentifier)
+	public ObjectReadonlyObjectListField(MainWindow mainWindowToUse, ORef refToUse, String tagToUse, String uniqueIdentifier)
 	{
-		super(mainWindowToUse.getProject(), objectTypeToUse, idToUse, tagToUse);
+		super(mainWindowToUse.getProject(), refToUse, tagToUse);
 		
 		model = new SingleColumnReadonlyGenericDefaultTableModel();
 		table = new TableWithHtmlRenderer(mainWindowToUse, model);
