@@ -255,7 +255,7 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 		return addFieldSchema(new FieldSchemaFloat(tag));
 	}
 	
-	private AbstractFieldSchema createFieldSchemaExpandingUserText(String tag)
+	public AbstractFieldSchema createFieldSchemaExpandingUserText(String tag)
 	{
 		return addFieldSchema(new FieldSchemaExpandingUserText(tag));
 	}
