@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-04 15:16-0600\n"
+"POT-Creation-Date: 2013-02-04 16:02-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -2738,7 +2738,7 @@ msgstr ""
 msgid "Collapse Selected Column"
 msgstr "Видалити вибрану колонку"
 
-#: Miradi/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:50
+#: Miradi/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:51
 #: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:44
 msgid "Column groups"
 msgstr ""
@@ -2759,6 +2759,10 @@ msgstr "Завершений"
 #: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:36
 msgid "Completed - Successfully accomplished"
 msgstr "Завершений - Успішно закінчений"
+
+#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:46
+msgid "ConPro Project Number"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:107
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:69
@@ -3560,7 +3564,7 @@ msgstr "FOS Training Type|Інший"
 msgid "FTE Days Per Year:"
 msgstr "FTE днів на рік"
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:430
+#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:429
 msgid "Factor Properties"
 msgstr "Фактори"
 
@@ -4446,7 +4450,7 @@ msgstr "Label|Кількість осіб зацікавлених сторін"
 
 #: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:39
 #: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:73
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:77
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:76
 msgid "Label|IM Address"
 msgstr "Label|IM адреса"
 
@@ -4511,7 +4515,7 @@ msgstr "Label|Організація"
 
 #: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:35
 #: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:62
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:66
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:65
 msgid "Label|Phone Numbers"
 msgstr "Label|Номер телефону"
 
@@ -4538,12 +4542,12 @@ msgid "Label|Rare Tracking"
 msgstr "Label|Рідкий трекінг"
 
 #: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:33
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:56
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:55
 msgid "Label|Resource"
 msgstr "Label|Ресурс"
 
 #: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:34
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:59
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:58
 msgid "Label|Roles (people only)"
 msgstr "Label|Ролі (тільки люди)"
 
@@ -5693,7 +5697,7 @@ msgstr "Для плану проекту "
 msgid "Project Resource"
 msgstr "Ресурс проекту"
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:49
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:47
 msgid "Project Resource Filter Editor"
 msgstr "Редактор фільтра ресурсів проекту"
 
@@ -5829,7 +5833,7 @@ msgstr "Суміжний проект"
 msgid "Relevant Strategies and Activities"
 msgstr "Відповідні Стратегії та Дії"
 
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:145
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:144
 msgid "Remove Team Member"
 msgstr "Видалити виконавця"
 
@@ -5881,7 +5885,7 @@ msgstr ""
 msgid "Resources"
 msgstr "Ресурси"
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:40
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:39
 msgid "Resources:"
 msgstr "Ресурси:"
 
@@ -6111,7 +6115,7 @@ msgstr ""
 "дану&nbsp;сторінку&nbsp;як.../ RTF&nbsp;файл&gt;</code> командне меню з "
 "цього виду.</span>"
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:42
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:41
 msgid "Select which column groups to display."
 msgstr ""
 
@@ -6123,7 +6127,7 @@ msgstr "Вибрати..."
 msgid "Selected Report Template Was Exported as RTF."
 msgstr "Вибраний шаблон звіту був експортований як RTF."
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:36
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:35
 msgid ""
 "Selecting one or more resources below<br>will filter the display to only "
 "include <br>work unit and budget total values for <br>items that are "
@@ -8093,7 +8097,7 @@ msgstr "Title|Назва файлу проекту"
 msgid "Title|Report Template Properties"
 msgstr "Title|Складові шаблонів звітів"
 
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:94
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:93
 msgid "Title|Resource Properties"
 msgstr "Title|Складові Ресурсу"
 
@@ -8365,7 +8369,7 @@ msgstr "Дуже великий"
 msgid "Very Small"
 msgstr "Дуже маленький"
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:365
+#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:366
 msgid "Viability Analysis Mode"
 msgstr "Опція аналізу життєздатності"
 
@@ -8590,7 +8594,7 @@ msgstr ""
 "Робочий план - опис спеціальних дій, методів і задач, які ви повинні "
 "здійснити згідно з вашими стратегічним планом і планом моніторингу"
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:54
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:52
 msgid "Work Plan Column Editor"
 msgstr "Редактор колонок робочого плану"
 
@@ -8664,7 +8668,7 @@ msgstr "Єна (Японія)"
 msgid "Yes"
 msgstr "Так"
 
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:146
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:145
 msgid ""
 "You are removing this resource from the project team, so he/she will no "
 "longer appear in the list of Team Members in the Summary View. "
@@ -9304,8 +9308,8 @@ msgstr "FieldLabel|11.Countries|Країни"
 msgid "FieldLabel|11.Municipalities|Municipalities"
 msgstr "FieldLabel|11.Municipalities|Муніципалітет"
 
-msgid "FieldLabel|11.XenodataRefs|ConPro Project Number"
-msgstr "FieldLabel|11.XenodataRefs|Номер проекту ConPro"
+msgid "FieldLabel|11.XenodataRefs|Project Number(s)"
+msgstr ""
 
 msgid "FieldLabel|11.TargetMode|Target Mode"
 msgstr "FieldLabel|11.TargetMode|Опція Ціль"
@@ -33682,6 +33686,9 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "FieldLabel|11.XenodataRefs|ConPro Project Number"
+#~ msgstr "FieldLabel|11.XenodataRefs|Номер проекту ConPro"
 
 #~ msgid ""
 #~ "html|/resources/wizard/SummaryView/"
