@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-04 15:16-0600\n"
+"POT-Creation-Date: 2013-02-04 16:02-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2637,7 +2637,7 @@ msgstr ""
 msgid "Collapse Selected Column"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:50
+#: Miradi/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:51
 #: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:44
 msgid "Column groups"
 msgstr ""
@@ -2658,6 +2658,10 @@ msgstr ""
 #: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:36
 msgid "Completed - Successfully accomplished"
 msgstr "已完成——成功地完成"
+
+#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:46
+msgid "ConPro Project Number"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:107
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:69
@@ -3451,7 +3455,7 @@ msgstr "其它"
 msgid "FTE Days Per Year:"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:430
+#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:429
 msgid "Factor Properties"
 msgstr "因素属性 \t\t"
 
@@ -4328,7 +4332,7 @@ msgstr "人力利益相关者的群体规模 \t\t"
 
 #: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:39
 #: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:73
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:77
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:76
 msgid "Label|IM Address"
 msgstr "IM地址 \t\t"
 
@@ -4393,7 +4397,7 @@ msgstr "组织 \t\t"
 
 #: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:35
 #: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:62
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:66
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:65
 msgid "Label|Phone Numbers"
 msgstr "电话号码 \t\t"
 
@@ -4420,12 +4424,12 @@ msgid "Label|Rare Tracking"
 msgstr "Rare跟踪\t\t"
 
 #: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:33
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:56
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:55
 msgid "Label|Resource"
 msgstr "资源 "
 
 #: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:34
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:59
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:58
 msgid "Label|Roles (people only)"
 msgstr "角色（仅限于人） \t\t"
 
@@ -5541,7 +5545,7 @@ msgstr "为…制定计划"
 msgid "Project Resource"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:49
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:47
 msgid "Project Resource Filter Editor"
 msgstr ""
 
@@ -5676,7 +5680,7 @@ msgstr "相关的项目 \t\t"
 msgid "Relevant Strategies and Activities"
 msgstr "相关策略和活动"
 
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:145
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:144
 msgid "Remove Team Member"
 msgstr "去除团队成员 \t\t"
 
@@ -5728,7 +5732,7 @@ msgstr ""
 msgid "Resources"
 msgstr "资源"
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:40
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:39
 msgid "Resources:"
 msgstr ""
 
@@ -5942,7 +5946,7 @@ msgid ""
 "As.../ RTF&nbsp;File&gt;</code> menu command from within that view.</span>"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:42
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:41
 msgid "Select which column groups to display."
 msgstr ""
 
@@ -5954,7 +5958,7 @@ msgstr "选择… \t\t"
 msgid "Selected Report Template Was Exported as RTF."
 msgstr "导出选定报告模板为RTF。"
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:36
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:35
 msgid ""
 "Selecting one or more resources below<br>will filter the display to only "
 "include <br>work unit and budget total values for <br>items that are "
@@ -7888,7 +7892,7 @@ msgstr "项目文件名 \t\t"
 msgid "Title|Report Template Properties"
 msgstr "标题|报告模板属性"
 
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:94
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:93
 msgid "Title|Resource Properties"
 msgstr "资源特性"
 
@@ -8156,7 +8160,7 @@ msgstr "非常大"
 msgid "Very Small"
 msgstr "非常小"
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:365
+#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:366
 msgid "Viability Analysis Mode"
 msgstr "生存力分析模式 \t\t"
 
@@ -8374,7 +8378,7 @@ msgstr ""
 "工作计划——描述了为实施您的策略和监控计划所需的专门活动/方法和任务。良好的工作"
 "计划显示了各个任务的时间表及执行顺序，以及执行各任务所需的特定资源。"
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:54
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:52
 msgid "Work Plan Column Editor"
 msgstr ""
 
@@ -8448,7 +8452,7 @@ msgstr "日元（日本）"
 msgid "Yes"
 msgstr "是"
 
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:146
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:145
 msgid ""
 "You are removing this resource from the project team, so he/she will no "
 "longer appear in the list of Team Members in the Summary View. "
@@ -9081,8 +9085,8 @@ msgstr "国家 \t\t"
 msgid "FieldLabel|11.Municipalities|Municipalities"
 msgstr "城市 \t\t"
 
-msgid "FieldLabel|11.XenodataRefs|ConPro Project Number"
-msgstr "ConPro项目编号 \t\t"
+msgid "FieldLabel|11.XenodataRefs|Project Number(s)"
+msgstr ""
 
 msgid "FieldLabel|11.TargetMode|Target Mode"
 msgstr ""
@@ -29127,6 +29131,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "FieldLabel|11.XenodataRefs|ConPro Project Number"
+#~ msgstr "ConPro项目编号 \t\t"
 
 #~ msgid ""
 #~ "html|/resources/wizard/SummaryView/SummaryOverviewStepLeft.html|"

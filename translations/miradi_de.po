@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-04 15:16-0600\n"
+"POT-Creation-Date: 2013-02-04 16:02-0600\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -2871,7 +2871,7 @@ msgstr "Ausgewählte Spalte minimieren"
 # gine so!
 # -Felix
 # (in Arbeitsplan/1.Tab/Tabelle Anpassen)
-#: Miradi/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:50
+#: Miradi/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:51
 #: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:44
 msgid "Column groups"
 msgstr "Weitere Spalten"
@@ -2893,6 +2893,10 @@ msgstr "Abgeschlossen"
 #: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:36
 msgid "Completed - Successfully accomplished"
 msgstr "Abgeschlossen - erfolgreich beendet"
+
+#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:46
+msgid "ConPro Project Number"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:107
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:69
@@ -3720,7 +3724,7 @@ msgstr "VZÄ Tage pro Jahr:"
 
 # Factor Properties gibt es mehrmahls, es muss unbedingt herausgefunden werden welcher Eintrag wofür eingesetzt wird.
 # -Felix
-#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:430
+#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:429
 #, fuzzy
 msgid "Factor Properties"
 msgstr "Eigenschaften - Faktor/TEST(in po.Datei überprüfen!!)"
@@ -4627,7 +4631,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:39
 #: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:73
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:77
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:76
 msgid "Label|IM Address"
 msgstr "IM Adresse"
 
@@ -4692,7 +4696,7 @@ msgstr "Organisation"
 
 #: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:35
 #: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:62
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:66
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:65
 msgid "Label|Phone Numbers"
 msgstr "Telefonnummern"
 
@@ -4719,12 +4723,12 @@ msgid "Label|Rare Tracking"
 msgstr "Rare Tracking"
 
 #: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:33
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:56
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:55
 msgid "Label|Resource"
 msgstr "Ressource"
 
 #: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:34
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:59
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:58
 msgid "Label|Roles (people only)"
 msgstr "Rollen (Nur Personen)"
 
@@ -5888,7 +5892,7 @@ msgstr ""
 msgid "Project Resource"
 msgstr "Projektressource"
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:49
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:47
 msgid "Project Resource Filter Editor"
 msgstr ""
 
@@ -6025,7 +6029,7 @@ msgstr "Zugehörige(s) Projekt(e)"
 msgid "Relevant Strategies and Activities"
 msgstr "Relevante Strategien und Aktivitäten"
 
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:145
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:144
 msgid "Remove Team Member"
 msgstr "Teammitglied entfernen"
 
@@ -6081,7 +6085,7 @@ msgstr ""
 msgid "Resources"
 msgstr "Ressourcen"
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:40
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:39
 msgid "Resources:"
 msgstr "Ressourcen:"
 
@@ -6331,7 +6335,7 @@ msgstr ""
 "class='toolbarbutton'>&lt;Datei/ Aktuelle&nbsp;Seite&nbsp;Exportieren&nbsp;"
 "als.../ RTF&nbsp;Datei&gt;</code> .</span>"
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:42
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:41
 msgid "Select which column groups to display."
 msgstr ""
 
@@ -6343,7 +6347,7 @@ msgstr "Wählen..."
 msgid "Selected Report Template Was Exported as RTF."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:36
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:35
 msgid ""
 "Selecting one or more resources below<br>will filter the display to only "
 "include <br>work unit and budget total values for <br>items that are "
@@ -8372,7 +8376,7 @@ msgstr "Projektdateiname"
 msgid "Title|Report Template Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:94
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:93
 msgid "Title|Resource Properties"
 msgstr "Eigenschaften - Ressource"
 
@@ -8647,7 +8651,7 @@ msgid "Very Small"
 msgstr "Sehr Klein"
 
 # Lebensfähigkeitsanalysemodus ??? (Felix)
-#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:365
+#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:366
 msgid "Viability Analysis Mode"
 msgstr "Viabilitätsmodus"
 
@@ -8866,7 +8870,7 @@ msgid ""
 "required to carry it out."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:54
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:52
 msgid "Work Plan Column Editor"
 msgstr ""
 
@@ -8947,7 +8951,7 @@ msgstr "Yen (Japan)"
 msgid "Yes"
 msgstr "Ja"
 
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:146
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:145
 msgid ""
 "You are removing this resource from the project team, so he/she will no "
 "longer appear in the list of Team Members in the Summary View. "
@@ -9589,8 +9593,8 @@ msgstr "Länder"
 msgid "FieldLabel|11.Municipalities|Municipalities"
 msgstr "Landkreis(e)"
 
-msgid "FieldLabel|11.XenodataRefs|ConPro Project Number"
-msgstr "ConPro Projektnummer"
+msgid "FieldLabel|11.XenodataRefs|Project Number(s)"
+msgstr ""
 
 msgid "FieldLabel|11.TargetMode|Target Mode"
 msgstr "Schutzobjektmodus"
@@ -30034,6 +30038,9 @@ msgid ""
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
 "Marine___Western Tropical Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "FieldLabel|11.XenodataRefs|ConPro Project Number"
+#~ msgstr "ConPro Projektnummer"
 
 #, fuzzy
 #~ msgid ""
