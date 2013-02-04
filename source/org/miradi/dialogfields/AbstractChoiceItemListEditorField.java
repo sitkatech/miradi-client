@@ -24,7 +24,6 @@ import javax.swing.JComponent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
@@ -32,19 +31,14 @@ import org.miradi.utils.CodeList;
 
 abstract public class AbstractChoiceItemListEditorField extends ObjectDataInputField implements ListSelectionListener
 {
-	public AbstractChoiceItemListEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
+	public AbstractChoiceItemListEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		this(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse, 3);
+		this(projectToUse, refToUse, tagToUse, questionToUse, 3);
 	}
 	
 	public AbstractChoiceItemListEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, int columnCount)
 	{
-		this(projectToUse, refToUse.getObjectType(), refToUse.getObjectId(), tagToUse, questionToUse, columnCount);
-	}
-	
-	public AbstractChoiceItemListEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse, int columnCount)
-	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
+		super(projectToUse, refToUse, tagToUse);
 
 		codeListEditor = createCodeListEditor(questionToUse, columnCount);
 		codeListEditor.addListSelectionListener(this);
