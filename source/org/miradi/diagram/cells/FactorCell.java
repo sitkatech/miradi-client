@@ -116,7 +116,7 @@ abstract public class FactorCell extends EAMGraphCell
 		}
 		
 		if(bullets.size() == 0)
-			return XmlUtilities2.convertXmlTextToHtmlWithoutHtmlTags(tip);
+			return XmlUtilities2.convertXmlTextToHtmlWithoutSurroundingHtmlTags(tip);
 		
 		tip += "<BR>" + header + "<UL>";
 		
@@ -129,7 +129,7 @@ abstract public class FactorCell extends EAMGraphCell
 		tip += "</UL>";
 		
 		tip += "</TD></TR></TABLE>";
-		return XmlUtilities2.convertXmlTextToHtmlWithoutHtmlTags(tip);
+		return XmlUtilities2.convertXmlTextToHtmlWithoutSurroundingHtmlTags(tip);
 	}
 
 	private Vector<BaseObject> getSortedBullets(ORefList refsAsbullets)

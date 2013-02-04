@@ -108,7 +108,7 @@ public class ChoiceItem implements Comparable<Object>
 	
 	public String getHtmlLabel()
 	{
-		return XmlUtilities2.convertXmlTextToHtmlWithoutHtmlTags(getLabel());
+		return XmlUtilities2.convertXmlTextToHtmlWithoutSurroundingHtmlTags(getLabel());
 	}
 	
 	public String getTextAsHtmlWrappedLabel()

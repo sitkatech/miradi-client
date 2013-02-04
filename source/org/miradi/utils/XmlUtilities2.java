@@ -53,7 +53,7 @@ public class XmlUtilities2
 	{
 		try
 		{
-			String html = convertXmlTextToHtmlWithoutHtmlTags(value);
+			String html = convertXmlTextToHtmlWithoutSurroundingHtmlTags(value);
 			html = HtmlUtilities.wrapInHtmlTags(html);
 
 			return html;
@@ -67,7 +67,7 @@ public class XmlUtilities2
 		}
 	}
 	
-	public static String convertXmlTextToHtmlWithoutHtmlTags(final String value) throws RuntimeException
+	public static String convertXmlTextToHtmlWithoutSurroundingHtmlTags(final String value) throws RuntimeException
 	{
 		try
 		{
