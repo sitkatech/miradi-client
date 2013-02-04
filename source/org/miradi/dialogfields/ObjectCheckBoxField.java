@@ -26,14 +26,14 @@ import javax.swing.JComponent;
 
 import org.martus.swing.UiCheckBox;
 import org.miradi.dialogs.fieldComponents.PanelCheckBox;
-import org.miradi.ids.BaseId;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 
 public class ObjectCheckBoxField extends ObjectDataInputField
 {
-	public ObjectCheckBoxField(Project projectToUse, int objectType, BaseId objectId, String tag, String valueWhenChecked, String valueWhenUnchecked)
+	public ObjectCheckBoxField(Project projectToUse, ORef refToUse, String tag, String valueWhenChecked, String valueWhenUnchecked)
 	{
-		super(projectToUse, objectType, objectId, tag);
+		super(projectToUse, refToUse, tag);
 		
 		checkBox = new PanelCheckBox();
 		checkBox.addItemListener(new StatusChangeHandler());
