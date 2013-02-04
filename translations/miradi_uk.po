@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-01 14:46-0600\n"
+"POT-Creation-Date: 2013-02-04 14:01-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -3955,7 +3955,7 @@ msgstr ""
 msgid "High"
 msgstr "Високий"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1420
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1428
 msgid "High/Very-High Threat Chains"
 msgstr "Ланцюги високої або дуже високої загрози"
 
@@ -4169,7 +4169,7 @@ msgstr ""
 "несуперечливий і чутливий.У Міраді індикатор представляється фіолетовим "
 "трикутником."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1318
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1326
 msgid "Indicator Holder"
 msgstr "Тримач Індикатора"
 
@@ -4670,7 +4670,7 @@ msgstr "Місцезнаходження"
 msgid "Low"
 msgstr "Низький"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1421
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1429
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Ланцюги низьких/середніх/неоцінених загроз"
 
@@ -5281,7 +5281,7 @@ msgstr ""
 "як зменшення критичної загрози. У Міраді завдання представляєтьсяється малим "
 "блакитним прямокутником. "
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1312
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1320
 msgid "Objective Holder"
 msgstr "Тримач Завдання"
 
@@ -5454,7 +5454,7 @@ msgstr "Рожевий"
 msgid "Place scope on diagram"
 msgstr "Встановити сферу дій на діаграмі"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1308
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1316
 msgid "Placeholder - From ConPro"
 msgstr "Заповнювач - від ConPro"
 

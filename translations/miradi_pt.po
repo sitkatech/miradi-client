@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-01 14:46-0600\n"
+"POT-Creation-Date: 2013-02-04 14:01-0600\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -4136,7 +4136,7 @@ msgstr "Esconder Colunas de Trimestre"
 msgid "High"
 msgstr "Alto"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1420
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1428
 msgid "High/Very-High Threat Chains"
 msgstr "Cadeias de Ameaças Altos/Muito Altos"
 
@@ -4358,7 +4358,7 @@ msgstr ""
 "representado por um triângulo roxo."
 
 # I don't understand the use of "holder" here thus I left it in English.
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1318
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1326
 msgid "Indicator Holder"
 msgstr "\"Holder\" de indicador"
 
@@ -4871,7 +4871,7 @@ msgstr "Localização"
 msgid "Low"
 msgstr "Baixo"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1421
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1429
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Cadeias de Ameaça Baixo/Médio/Sem classificação"
 
@@ -5515,7 +5515,7 @@ msgstr ""
 "representado por um retângulo pequeno azul."
 
 # I don't understand Holder here  in English.  Please clarify.
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1312
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1320
 msgid "Objective Holder"
 msgstr "\"Holder\" de Meta"
 
@@ -5693,7 +5693,7 @@ msgstr "Rosa"
 msgid "Place scope on diagram"
 msgstr "Posicionar Escopo no Diagrama"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1308
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1316
 msgid "Placeholder - From ConPro"
 msgstr "Espaço Reservado - de ConPro"
 
