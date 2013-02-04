@@ -29,9 +29,9 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.Xenodata;
 
-public class StringToRefMapReadonlyField extends ObjectStringInputField
+public class SingleStringToRefMapReadonlyField extends ObjectStringInputField
 {
-	public StringToRefMapReadonlyField(MainWindow mainWindowToUse, ORef refToUse, String tagToUse, String mapKeyToUse) throws Exception
+	public SingleStringToRefMapReadonlyField(MainWindow mainWindowToUse, ORef refToUse, String tagToUse, String mapKeyToUse) throws Exception
 	{
 		super(mainWindowToUse, refToUse, tagToUse, 30);
 		
