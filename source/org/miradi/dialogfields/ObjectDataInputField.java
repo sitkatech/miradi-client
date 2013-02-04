@@ -22,7 +22,6 @@ package org.miradi.dialogfields;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
@@ -33,11 +32,6 @@ import org.miradi.utils.InvalidNumberException;
 
 abstract public class ObjectDataInputField extends ObjectDataField
 {
-	public ObjectDataInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse)
-	{
-		this(projectToUse, new ORef(objectTypeToUse, objectIdToUse), tagToUse);
-	}
-
 	public ObjectDataInputField(Project projectToUse, ORef refToUse, String tagToUse)
 	{
 		super(projectToUse, refToUse);
