@@ -33,7 +33,7 @@ public class StringToRefMapDisplayField extends ObjectMultilineDisplayField
 {
 	public StringToRefMapDisplayField(MainWindow mainWindow, ORef refToUse, String tag) throws Exception
 	{
-		super(mainWindow, refToUse.getObjectType(), refToUse.getObjectId(), tag);
+		super(mainWindow, refToUse, tag);
 	}
 
 	@Override

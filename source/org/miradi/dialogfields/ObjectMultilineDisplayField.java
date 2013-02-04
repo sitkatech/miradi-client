@@ -21,16 +21,16 @@ package org.miradi.dialogfields;
 
 import javax.swing.text.JTextComponent;
 
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.utils.ReadonlyHtmlPane;
 
 public class ObjectMultilineDisplayField extends ObjectMultilineInputField
 {
-	public ObjectMultilineDisplayField(MainWindow mainWindow, int objectTypeToUse, BaseId objectIdToUse, String tagToUse) throws Exception
+	public ObjectMultilineDisplayField(MainWindow mainWindow, ORef refToUse, String tagToUse) throws Exception
 	{
-		super(mainWindow, objectTypeToUse, objectIdToUse, tagToUse, createTextComponent(mainWindow, 1, DEFAULT_WIDE_FIELD_CHARACTERS));
+		super(mainWindow, refToUse, tagToUse, createTextComponent(mainWindow, 1, DEFAULT_WIDE_FIELD_CHARACTERS));
 		
 		setEditable(false);
 		getComponent().setFocusable(false);

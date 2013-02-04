@@ -22,7 +22,6 @@ package org.miradi.dialogfields;
 
 import javax.swing.text.JTextComponent;
 
-import org.miradi.ids.BaseId;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.utils.AbstractHtmlPane;
@@ -33,17 +32,12 @@ public abstract class ObjectMultilineInputField extends ObjectTextInputField
 {
 	protected ObjectMultilineInputField(MainWindow mainWindowToUse, ORef refToUse, String tagToUse, int initialVisibleRows, int columnsToUse) throws Exception
 	{
-		this(mainWindowToUse, refToUse.getObjectType(), refToUse.getObjectId(), tagToUse, initialVisibleRows, columnsToUse);
-	}
-	
-	protected ObjectMultilineInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int initialVisibleRows, int columnsToUse) throws Exception
-	{
-		this(mainWindowToUse, objectTypeToUse, objectIdToUse, tagToUse, createTextComponent(mainWindowToUse, initialVisibleRows, columnsToUse));
+		this(mainWindowToUse, refToUse, tagToUse, createTextComponent(mainWindowToUse, initialVisibleRows, columnsToUse));
 	}
 
-	public ObjectMultilineInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, JTextComponent createTextComponent) throws Exception
+	public ObjectMultilineInputField(MainWindow mainWindowToUse, ORef refToUse, String tagToUse, JTextComponent createTextComponent) throws Exception
 	{
-		super(mainWindowToUse, objectTypeToUse, objectIdToUse, tagToUse, createTextComponent);
+		super(mainWindowToUse, refToUse, tagToUse, createTextComponent);
 		
 		mainWindow = mainWindowToUse;
 	}

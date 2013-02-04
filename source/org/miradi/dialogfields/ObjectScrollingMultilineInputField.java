@@ -32,7 +32,6 @@ import javax.swing.JComponent;
 import org.martus.swing.Utilities;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.fieldComponents.PanelButton;
-import org.miradi.ids.BaseId;
 import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
@@ -47,11 +46,6 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 	public ObjectScrollingMultilineInputField(MainWindow mainWindow, ORef refToUse, String tagToUse, int columnsToUse) throws Exception
 	{
 		super(mainWindow, refToUse, tagToUse, INITIAL_MULTI_LINE_TEXT_AREA_ROW_COUNT, columnsToUse);
-	}
-	
-	public ObjectScrollingMultilineInputField(MainWindow mainWindow, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse) throws Exception
-	{
-		super(mainWindow, objectTypeToUse, objectIdToUse, tagToUse, INITIAL_MULTI_LINE_TEXT_AREA_ROW_COUNT, columnsToUse);
 	}
 
 	private void createTextFieldWithPopupButtonPanel()

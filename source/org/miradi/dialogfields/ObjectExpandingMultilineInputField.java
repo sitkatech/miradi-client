@@ -21,14 +21,14 @@ package org.miradi.dialogfields;
 
 import java.awt.event.FocusEvent;
 
-import org.miradi.ids.BaseId;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
 
 public class ObjectExpandingMultilineInputField extends ObjectMultilineInputField
 {
-	public ObjectExpandingMultilineInputField(MainWindow mainWindow, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse) throws Exception
+	public ObjectExpandingMultilineInputField(MainWindow mainWindow, ORef refToUse, String tagToUse, int columnsToUse) throws Exception
 	{
-		super(mainWindow, objectTypeToUse, objectIdToUse, tagToUse, 1, columnsToUse);
+		super(mainWindow, refToUse, tagToUse, 1, columnsToUse);
 	}
 
 	@Override

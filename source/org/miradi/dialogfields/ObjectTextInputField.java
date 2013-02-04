@@ -28,22 +28,22 @@ import javax.swing.text.Document;
 import javax.swing.text.JTextComponent;
 
 import org.miradi.actions.Actions;
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
 
 import com.inet.jortho.SpellChecker;
 
 abstract public class ObjectTextInputField extends ObjectDataInputField
 {
-	public ObjectTextInputField(MainWindow mainWindowToUse, int objectType, BaseId objectId, String tag, JTextComponent componentToUse) throws Exception
+	public ObjectTextInputField(MainWindow mainWindowToUse, ORef refToUse, String tag, JTextComponent componentToUse) throws Exception
 	{
-		this(mainWindowToUse, objectType, objectId, tag, componentToUse, componentToUse.getDocument());
+		this(mainWindowToUse, refToUse, tag, componentToUse, componentToUse.getDocument());
 	}
 	
-	public ObjectTextInputField(MainWindow mainWindowToUse, int objectType, BaseId objectId, String tag, JTextComponent componentToUse, Document document) throws Exception
+	public ObjectTextInputField(MainWindow mainWindowToUse, ORef refToUse, String tag, JTextComponent componentToUse, Document document) throws Exception
 	{
-		super(mainWindowToUse.getProject(), objectType, objectId, tag);
+		super(mainWindowToUse.getProject(), refToUse, tag);
 		
 		field = componentToUse;
 		field.setDocument(document);

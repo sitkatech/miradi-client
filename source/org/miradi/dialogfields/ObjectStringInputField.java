@@ -29,7 +29,6 @@ import javax.swing.text.JTextComponent;
 
 import org.martus.swing.UiTextArea;
 import org.miradi.dialogs.fieldComponents.PanelTextArea;
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -38,29 +37,24 @@ import org.miradi.utils.StringUtilities;
 
 public class ObjectStringInputField extends ObjectTextInputField
 {
-	public ObjectStringInputField(MainWindow mainWindowToUse, ORef refToUse, String tagToUse, int columnCount) throws Exception
+	public ObjectStringInputField(MainWindow mainWindowToUse, ORef refToUse, String tagToUse, int columnsToUse) throws Exception
 	{
-		this(mainWindowToUse, refToUse.getObjectType(), refToUse.getObjectId(), tagToUse, columnCount);
-	}
-
-	public ObjectStringInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse) throws Exception
-	{
-		this(mainWindowToUse, objectTypeToUse, objectIdToUse, tagToUse, new PanelTextArea(0, columnsToUse));		
+		this(mainWindowToUse, refToUse, tagToUse, new PanelTextArea(0, columnsToUse));		
 	}
 	
-	public ObjectStringInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse, Document document) throws Exception
+	public ObjectStringInputField(MainWindow mainWindowToUse, ORef refToUse, String tagToUse, int columnsToUse, Document document) throws Exception
 	{
-		this(mainWindowToUse, objectTypeToUse, objectIdToUse, tagToUse, new PanelTextArea(0, columnsToUse), document);
+		this(mainWindowToUse, refToUse, tagToUse, new PanelTextArea(0, columnsToUse), document);
 	}
 	
-	private ObjectStringInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, PanelTextArea componentToUse) throws Exception
+	private ObjectStringInputField(MainWindow mainWindowToUse, ORef refToUse, String tagToUse, PanelTextArea componentToUse) throws Exception
 	{
-		this(mainWindowToUse, objectTypeToUse, objectIdToUse, tagToUse, componentToUse, componentToUse.getDocument());
+		this(mainWindowToUse, refToUse, tagToUse, componentToUse, componentToUse.getDocument());
 	}
 
-	private ObjectStringInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, PanelTextArea componentToUse, Document document) throws Exception
+	private ObjectStringInputField(MainWindow mainWindowToUse, ORef refToUse, String tagToUse, PanelTextArea componentToUse, Document document) throws Exception
 	{
-		super(mainWindowToUse, objectTypeToUse, objectIdToUse, tagToUse, componentToUse, document);
+		super(mainWindowToUse, refToUse, tagToUse, componentToUse, document);
 		
 		UndoableEditHandler handler = new UndoableEditHandler();
 		((JTextComponent)getComponent()).getDocument().addUndoableEditListener(handler);
