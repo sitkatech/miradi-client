@@ -21,16 +21,16 @@ package org.miradi.dialogfields;
 
 import javax.swing.JComponent;
 
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.utils.DateEditorComponent;
 
 public class ObjectDateChooserInputField extends ObjectDataInputField
 {
-	public ObjectDateChooserInputField(Project projectToUse, int type, BaseId id, String tag)
+	public ObjectDateChooserInputField(Project projectToUse, ORef refToUse, String tag)
 	{
-		super(projectToUse, type, id, tag);
+		super(projectToUse, refToUse, tag);
 		
 		dateEditor = new DateEditorComponent();
 		dateEditor.addFocusListener(this);

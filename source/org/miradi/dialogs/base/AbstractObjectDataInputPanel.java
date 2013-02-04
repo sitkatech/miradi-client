@@ -466,12 +466,12 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createDateChooserField(String tag)
 	{
-		return new ObjectDateChooserInputField(project,  getFirstSelectedRef().getObjectType(), getObjectIdForType( getFirstSelectedRef().getObjectType()), tag);
+		return new ObjectDateChooserInputField(project,  getFirstSelectedRef(), tag);
 	}
 	
 	public ObjectDataInputField createDateChooserField(int objectType, String tag)
 	{
-		return new ObjectDateChooserInputField(project, objectType, getObjectIdForType(objectType), tag);
+		return new ObjectDateChooserInputField(project, getRefForType(objectType), tag);
 	}
 	
 	public ObjectDataInputField createNumericField(String tag, int column) throws Exception
