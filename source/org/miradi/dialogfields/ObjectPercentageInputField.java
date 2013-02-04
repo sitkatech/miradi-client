@@ -19,14 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
-import org.miradi.ids.BaseId;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
 
 public class ObjectPercentageInputField extends ObjectFloatingPointRestrictedInputField
 {
-	public ObjectPercentageInputField(MainWindow mainWindowToUse, int objectType, BaseId objectIdForType, String tag) throws Exception
+	public ObjectPercentageInputField(MainWindow mainWindowToUse, ORef refToUse, String tag) throws Exception
 	{
-		super(mainWindowToUse, objectType, objectIdForType, tag);
+		super(mainWindowToUse, refToUse, tag);
 	}
-
 }

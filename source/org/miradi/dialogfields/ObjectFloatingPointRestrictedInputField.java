@@ -19,19 +19,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
-import org.miradi.ids.BaseId;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.utils.FloatingPointRestrictedDocument;
 
 public class ObjectFloatingPointRestrictedInputField extends ObjectStringInputFieldWithLengthLimit
 {
-	public ObjectFloatingPointRestrictedInputField(MainWindow mainWindowToUse, int objectType, BaseId objectId, String tag, int columnCount) throws Exception
+	public ObjectFloatingPointRestrictedInputField(MainWindow mainWindowToUse, ORef refToUse, String tag, int columnCount) throws Exception
 	{
-		super(mainWindowToUse, objectType, objectId, tag, columnCount, new FloatingPointRestrictedDocument());
+		super(mainWindowToUse, refToUse, tag, columnCount, new FloatingPointRestrictedDocument());
 	}
 		
-	public ObjectFloatingPointRestrictedInputField(MainWindow mainWindowToUse, int objectType, BaseId objectId, String tag) throws Exception
+	public ObjectFloatingPointRestrictedInputField(MainWindow mainWindowToUse, ORef refToUse, String tag) throws Exception
 	{
-		this(mainWindowToUse, objectType, objectId, tag, 10);
+		this(mainWindowToUse, refToUse, tag, 10);
 	}
 }

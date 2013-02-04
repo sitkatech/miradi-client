@@ -19,16 +19,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.utils.DoubleUtilities;
 
 public class ObjectCurrencyInputField extends ObjectFloatingPointRestrictedInputField
 {
-	public ObjectCurrencyInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse) throws Exception
+	public ObjectCurrencyInputField(MainWindow mainWindowToUse, ORef refToUse, String tagToUse, int columnsToUse) throws Exception
 	{
-		super(mainWindowToUse, objectTypeToUse, objectIdToUse, tagToUse, columnsToUse);
+		super(mainWindowToUse, refToUse, tagToUse, columnsToUse);
 	}
 	
 	@Override

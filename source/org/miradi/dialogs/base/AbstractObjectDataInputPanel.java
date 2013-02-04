@@ -401,12 +401,12 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createStringField(String tag) throws Exception
 	{
-		return new ObjectStringInputField(getMainWindow(), getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag, 50);
+		return new ObjectStringInputField(getMainWindow(), getFirstSelectedRef(), tag, 50);
 	}
 	
 	public ObjectDataInputField createStringField(int objectType, String tag) throws Exception
 	{
-		return new ObjectStringInputField(getMainWindow(), objectType, getObjectIdForType(objectType), tag, 50);
+		return new ObjectStringInputField(getMainWindow(), getRefForType(objectType), tag, 50);
 	}
 	
 	public ObjectDataInputField createShortStringField(int objectType, String tag) throws Exception
@@ -441,17 +441,17 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createStringField(String tag, int column) throws Exception
 	{
-		return new ObjectStringInputField(getMainWindow(), getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag, column);
+		return new ObjectStringInputField(getMainWindow(), getFirstSelectedRef(), tag, column);
 	}
 	
 	public ObjectDataInputField createStringField(int objectType, String tag, int column) throws Exception
 	{
-		return new ObjectStringInputField(getMainWindow(), objectType, getObjectIdForType(objectType), tag, column);
+		return new ObjectStringInputField(getMainWindow(), getRefForType(objectType), tag, column);
 	}
 
 	public ObjectDataInputField createStringMapField(int objectType, String tag, String code, int length) throws Exception
 	{
-		return new ObjectStringMapInputField(getMainWindow(), objectType, getObjectIdForType(objectType), tag, code, length);
+		return new ObjectStringMapInputField(getMainWindow(), getRefForType(objectType), tag, code, length);
 	}
 	
 	public ObjectDataInputField createStringMapField(ORef refToUse, String tag, String code) throws Exception
@@ -476,27 +476,27 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createNumericField(String tag, int column) throws Exception
 	{
-		return new ObjectFloatingPointRestrictedInputField(getMainWindow(), getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag, column);
+		return new ObjectFloatingPointRestrictedInputField(getMainWindow(), getFirstSelectedRef(), tag, column);
 	}
 	
 	public ObjectDataInputField createCurrencyField(String tag) throws Exception
 	{
-		return new ObjectCurrencyInputField(getMainWindow(), getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag, 10);
+		return new ObjectCurrencyInputField(getMainWindow(), getFirstSelectedRef(), tag, 10);
 	}
 
 	public ObjectDataInputField createNumericField(String tag) throws Exception
 	{
-		return new ObjectFloatingPointRestrictedInputField(getMainWindow(), getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag);
+		return new ObjectFloatingPointRestrictedInputField(getMainWindow(), getFirstSelectedRef(), tag);
 	}
 	
 	public ObjectDataInputField createNumericField(int objectType, String tag) throws Exception
 	{
-		return new ObjectFloatingPointRestrictedInputField(getMainWindow(), objectType, getObjectIdForType(objectType), tag);
+		return new ObjectFloatingPointRestrictedInputField(getMainWindow(), getRefForType(objectType), tag);
 	}
 
 	public ObjectDataInputField createPercentageField(String tag) throws Exception
 	{
-		return new ObjectPercentageInputField(getMainWindow(), getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag);
+		return new ObjectPercentageInputField(getMainWindow(), getFirstSelectedRef(), tag);
 	}
 	
 	public ObjectDataInputField createMultilineField(String tag) throws Exception
@@ -511,7 +511,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createMultilineField(int objectType, String tag, int columns) throws Exception
 	{
-		return new ObjectScrollingMultilineInputField(getMainWindow(), objectType, getObjectIdForType(objectType), tag, columns);
+		return new ObjectScrollingMultilineInputField(getMainWindow(), getRefForType(objectType), tag, columns);
 	}
 	
 	public ObjectDataInputField createExpandableField(String tag) throws Exception
@@ -526,7 +526,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createExpandableField(int objectType, String tag, int columns)  throws Exception
 	{
-		return new ObjectExpandingMultilineInputField(getMainWindow(), objectType, getObjectIdForType(objectType), tag, columns);
+		return new ObjectExpandingMultilineInputField(getMainWindow(), getRefForType(objectType), tag, columns);
 	}
 
 	public ObjectOverridenListField createOverridenObjectListField(String tag, ChoiceQuestion question)
@@ -604,12 +604,12 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createReadonlyTextField(String tag) throws Exception
 	{
-		return new ObjectMultilineDisplayField(getMainWindow(), getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tag);
+		return new ObjectMultilineDisplayField(getMainWindow(), getFirstSelectedRef(), tag);
 	}
 	
 	public ObjectDataInputField createReadonlyTextField(int objectType, String tag) throws Exception
 	{
-		return new ObjectMultilineDisplayField(getMainWindow(), objectType, getObjectIdForType(objectType), tag);
+		return new ObjectMultilineDisplayField(getMainWindow(), getRefForType(objectType), tag);
 	}
 	
 	public ObjectDataInputField createChoiceField(int objectType, String tagToUse, ChoiceQuestion question)
