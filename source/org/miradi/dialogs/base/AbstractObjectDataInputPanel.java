@@ -644,12 +644,12 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createReadOnlyChoiceField(String tagToUse, ChoiceQuestion question)
 	{
-		return new ObjectReadonlyChoiceField(project,  getFirstSelectedRef().getObjectType(), getObjectIdForType( getFirstSelectedRef().getObjectType()), tagToUse, question);
+		return new ObjectReadonlyChoiceField(project,  getFirstSelectedRef(), tagToUse, question);
 	}
 	
 	public ObjectDataInputField createReadOnlyChoiceField(int objectType, String tagToUse, ChoiceQuestion question)
 	{
-		return new ObjectReadonlyChoiceField(project, objectType, getObjectIdForType(objectType), tagToUse, question);
+		return new ObjectReadonlyChoiceField(project, getRefForType(objectType), tagToUse, question);
 	}
 	
 	public ObjectDataInputField createReadOnlyObjectList(int objectType, String tag)

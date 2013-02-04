@@ -31,17 +31,17 @@ import javax.swing.border.LineBorder;
 import org.martus.swing.UiLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.RatingIcon;
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
 public class ObjectReadonlyChoiceField extends ObjectDataInputField
 {
-	public ObjectReadonlyChoiceField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
+	public ObjectReadonlyChoiceField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
+		super(projectToUse, refToUse, tagToUse);
 		
 		question = questionToUse;
 		component = new PanelTitleLabel("");
