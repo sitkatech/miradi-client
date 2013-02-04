@@ -37,7 +37,6 @@ import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.schemas.TncProjectDataSchema;
-import org.miradi.tanager.TanagerConstants;
 
 public class SummaryProjectPanel extends ObjectDataInputPanel
 {
@@ -51,7 +50,7 @@ public class SummaryProjectPanel extends ObjectDataInputPanel
 		addField(createChoiceField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_PROJECT_LANGUAGE, new MajorLanguagesQuestion()));
 		addField(createDateChooserField(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE));
 		addField(createReadonlyTextField(ProjectMetadata.PSEUDO_TAG_PROJECT_FILENAME));
-		addField(createStringToRefField(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, TanagerConstants.TANAGER_MAP_KEY));
+		addField(createStringToRefMapDisplayField(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP));
 		addBlankHorizontalLine();
 		
 		addField(createShortStringField(ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER));
