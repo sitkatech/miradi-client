@@ -101,7 +101,7 @@ public class XmlUtilities2
 		String valueWithoutHtmlTags = HtmlUtilities.stripAllHtmlTags(value);
 		//NOTE: this safety mechanism might be a speed concern
 		if (!isValidXmlWithNoHtmlTags(valueWithoutHtmlTags))
-			throw new RuntimeException("Invalid xml value =" + valueWithoutHtmlTags);
+			EAM.logWarning("Invalid xml value =" + valueWithoutHtmlTags);
 	}
 	
 	private static boolean isValidXmlWithNoHtmlTags(final String value)
