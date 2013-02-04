@@ -48,7 +48,7 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 		teamMemberCheckBoxHandler = new TeamMemberHandler();
 		
 		ResourceTypeQuestion resourceTypeQuestion = new ResourceTypeQuestion();
-		addField(createRadioChoiceField(ProjectResourceSchema.getObjectType(), idToEdit, ProjectResource.TAG_RESOURCE_TYPE, resourceTypeQuestion));
+		addField(createRadioChoiceField(new ORef(ProjectResourceSchema.getObjectType(), idToEdit), ProjectResource.TAG_RESOURCE_TYPE, resourceTypeQuestion));
 
 		ObjectDataInputField givenNameField = createMediumStringField(ProjectResource.TAG_GIVEN_NAME);
 		ObjectDataInputField surNameField = createMediumStringField(ProjectResource.TAG_SUR_NAME);
