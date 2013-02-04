@@ -614,7 +614,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createChoiceField(int objectType, String tagToUse, ChoiceQuestion question)
 	{
-		return new ObjectChoiceField(project, objectType, getObjectIdForType(objectType), tagToUse, question);
+		return new ObjectChoiceField(project, getRefForType(objectType), tagToUse, question);
 	}
 	
 	public ObjectDataInputField createQuestionFieldWithDescriptionPanel(int objectType, String tagToUse, ChoiceQuestion question) throws Exception
@@ -624,17 +624,17 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createRatingChoiceField(String tagToUse, ChoiceQuestion question)
 	{
-		return new DropDownChoiceField(project,  getFirstSelectedRef().getObjectType(), getObjectIdForType( getFirstSelectedRef().getObjectType()), tagToUse, question);
+		return new DropDownChoiceField(project,  getFirstSelectedRef(), tagToUse, question);
 	}
 	
 	public ObjectDataInputField createRatingChoiceField(int objectType, String tagToUse, ChoiceQuestion question)
 	{
-		return new DropDownChoiceField(project, objectType, getObjectIdForType(objectType), tagToUse, question);
+		return new DropDownChoiceField(project, getRefForType(objectType), tagToUse, question);
 	}
 	
 	public ObjectDataInputField createDropdownWithIconField(int objectType, String tagToUse, ChoiceQuestion question)
 	{
-		return new ObjectIconChoiceField(project, objectType, getObjectIdForType(objectType), tagToUse, question);
+		return new ObjectIconChoiceField(project, getRefForType(objectType), tagToUse, question);
 	}
 	
 	public ObjectDataInputField createRadioButtonEditorField(int objectType, String tagToUse, ChoiceQuestion question)

@@ -26,16 +26,16 @@ import javax.swing.JComponent;
 
 import org.martus.swing.UiComboBox;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
-import org.miradi.ids.BaseId;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
 public class ObjectChoiceField extends ObjectDataInputField
 {
-	public ObjectChoiceField(Project projectToUse, int objectType, BaseId objectId, String tagToUse, ChoiceQuestion questionToUse)
+	public ObjectChoiceField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, objectType, objectId, tagToUse);
+		super(projectToUse, refToUse, tagToUse);
 		
 		combo = new ChoiceItemComboBox(questionToUse.getChoices());
 		addFocusListener();

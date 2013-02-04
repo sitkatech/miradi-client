@@ -21,15 +21,15 @@ package org.miradi.dialogfields;
 
 
 
-import org.miradi.ids.BaseId;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 
 public class DropDownChoiceField extends ObjectChoiceField
 {
-	public DropDownChoiceField(Project projectToUse, int objectType, BaseId objectId, String tagToUse, ChoiceQuestion questionToUse)
+	public DropDownChoiceField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, objectType, objectId, tagToUse, questionToUse);
+		super(projectToUse, refToUse, tagToUse, questionToUse);
 		
 		combo.setRenderer(new RatingChoiceRenderer());
 	}
