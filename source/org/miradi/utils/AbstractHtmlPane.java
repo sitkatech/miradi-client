@@ -115,7 +115,7 @@ abstract public class AbstractHtmlPane extends MiradiTextPane
 		updateStyleSheet();
 		String topText = HtmlUtilities.removeAllExcept(text, AbstractUserTextDataWithHtmlFormatting.getAllowedHtmlTags());
 		// NOTE: Shef does not encode/decode apostrophes as we need for proper XML
-		topText = XmlUtilities2.convertXmlTextToHtmlWithoutHtmlTags(topText);
+		topText = XmlUtilities2.convertXmlTextToHtmlWithoutSurroundingHtmlTags(topText);
 		insertHtml(topText, 0);            
 		CompoundUndoManager.discardAllEdits(getDocument());
 	}
