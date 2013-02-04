@@ -33,7 +33,7 @@ public class ObjectReadonlyObjectListTableField extends ObjectDataInputField
 {
 	public ObjectReadonlyObjectListTableField(MainWindow mainWindowToUse, ORef refToUse, String listFieldTag, int listedType, String[] columnTags)
 	{
-		super(mainWindowToUse.getProject(), refToUse.getObjectType(), refToUse.getObjectId(), listFieldTag);
+		super(mainWindowToUse.getProject(), refToUse, listFieldTag);
 		
 		model = new ObjectReadOnlyListTableModel(mainWindowToUse.getProject(), refToUse, listFieldTag, listedType, columnTags);
 	    table = new ObjectListTable(mainWindowToUse, model);
