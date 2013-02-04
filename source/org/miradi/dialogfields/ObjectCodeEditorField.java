@@ -19,14 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
-import org.miradi.ids.BaseId;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 
 public class ObjectCodeEditorField extends AbstractChoiceItemListEditorField
 {
-	public ObjectCodeEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse, int columnCount)
+	public ObjectCodeEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, int columnCount)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse, columnCount);
+		super(projectToUse, refToUse, tagToUse, questionToUse, columnCount);
 	}
 }

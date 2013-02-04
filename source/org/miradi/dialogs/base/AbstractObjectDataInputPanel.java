@@ -571,12 +571,12 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectCodeEditorField createMultiCodeField(String tagToUse, ChoiceQuestion question, int columnCount)
 	{
-		return new ObjectCodeEditorField(project, getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tagToUse, question, columnCount);
+		return new ObjectCodeEditorField(project, getFirstSelectedRef(), tagToUse, question, columnCount);
 	}
 	
 	public ObjectDataInputField createMultiCodeEditorField(int objectType, String tagToUse, ChoiceQuestion question, int columnCount)
 	{
-		return new ObjectCodeEditorField(project, objectType, getObjectIdForType(objectType), tagToUse, question, columnCount);
+		return new ObjectCodeEditorField(project, getRefForType(objectType), tagToUse, question, columnCount);
 	}
 
 	public ObjectDataInputField createMultiCodeEditorField(String tagToUse, ChoiceQuestion question, CodeList disabledChoices, int columnCount)
