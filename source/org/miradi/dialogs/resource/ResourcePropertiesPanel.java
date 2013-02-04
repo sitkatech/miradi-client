@@ -26,7 +26,6 @@ import org.miradi.dialogfields.ChoiceItemListSelectionEvent;
 import org.miradi.dialogfields.ObjectCodeEditorField;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.ids.BaseId;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
@@ -56,7 +55,7 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 		addFieldsOnOneLine(EAM.text("Label|Resource"), new ObjectDataInputField[]{givenNameField, surNameField, initialField});
 
 		roleCodeField = createMultiCodeField(ProjectResource.TAG_ROLE_CODES, new ResourceRoleQuestion(), 3);
-		addFieldWithCustomLabel(roleCodeField, new PanelTitleLabel(EAM.text("Label|Roles (people only)")));
+		addFieldWithCustomLabel(roleCodeField, EAM.text("Label|Roles (people only)"));
 		addField(createStringField(ProjectResource.TAG_ORGANIZATION));
 		addField(createStringField(ProjectResource.TAG_POSITION));
 		addField(createStringField(ProjectResource.TAG_LOCATION));
