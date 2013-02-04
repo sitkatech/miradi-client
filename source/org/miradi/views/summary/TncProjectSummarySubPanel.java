@@ -43,7 +43,7 @@ public class TncProjectSummarySubPanel extends ObjectDataInputPanel
 		super(projectToUse, refs);
 		
 		addField(createReadonlyTextField(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE));
-		addField(createSingleStringToRefField(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, ConProMiradiXml.CONPRO_CONTEXT));		
+		addFieldWithCustomLabel(createSingleStringToRefField(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, ConProMiradiXml.CONPRO_CONTEXT), EAM.text("ConPro Project Number"));		
 		addField(createStringField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS));
 		addField(createSingleColumnCodeListField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_PLACE_TYPES, getProject().getQuestion(TncProjectPlaceTypeQuestion.class)));
 		addField(createSingleColumnCodeListField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, getProject().getQuestion(TncOrganizationalPrioritiesQuestion.class)));
