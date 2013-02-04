@@ -73,6 +73,7 @@ import org.miradi.dialogfields.StrategyGoalOverrideListField;
 import org.miradi.dialogfields.StrategyObjectiveOverrideListField;
 import org.miradi.dialogfields.StringMapProjectResourceFilterEditorField;
 import org.miradi.dialogfields.SingleStringToRefMapReadonlyField;
+import org.miradi.dialogfields.StringToRefMapDisplayField;
 import org.miradi.dialogfields.WhenEditorField;
 import org.miradi.dialogfields.WhoEditorField;
 import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
@@ -428,9 +429,14 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return createMediumStringField(getFirstSelectedRef().getObjectType(), tag);
 	}
 	
-	public ObjectDataInputField createStringToRefField(String tag, String mapKeyToUse) throws Exception
+	public ObjectDataInputField createSingleStringToRefField(String tag, String mapKeyToUse) throws Exception
 	{
 		return new SingleStringToRefMapReadonlyField(getMainWindow(), getFirstSelectedRef(), tag, mapKeyToUse);
+	}
+	
+	public ObjectDataInputField createStringToRefMapDisplayField(String tag) throws Exception
+	{
+		return new StringToRefMapDisplayField(getMainWindow(), getFirstSelectedRef(), tag);
 	}
 	
 	public ObjectDataInputField createStringField(String tag, int column) throws Exception
