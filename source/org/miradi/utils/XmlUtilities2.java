@@ -53,7 +53,7 @@ public class XmlUtilities2
 	{
 		try
 		{
-			String html = XmlUtilities2.convertXmlTextToHtmlWithoutHtmlTags(value);
+			String html = convertXmlTextToHtmlWithoutHtmlTags(value);
 			html = HtmlUtilities.wrapInHtmlTags(html);
 
 			return html;
