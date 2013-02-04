@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Fri Jan 25 14:48:04 EST 2013 $
+# $LastChangedDate: Mon Feb 04 12:24:53 EST 2013 $
 # $LastChangedRevision: 216 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/216'
 start = ConservationProject.element
@@ -503,7 +503,7 @@ Measurement.element = element miradi:Measurement
   element miradi:MeasurementComments { formatted_text }? &
   element miradi:MeasurementDate { vocabulary_date }? &
   element miradi:MeasurementDetail { formatted_text }? &
-  element miradi:MeasurementMeasurementValue { text }? &
+  element miradi:MeasurementMeasurementValue { formatted_text }? &
   element miradi:MeasurementName { formatted_text }? &
   element miradi:MeasurementRating { vocabulary_status }? &
   element miradi:MeasurementSource { vocabulary_measurement_status_confidence }? &

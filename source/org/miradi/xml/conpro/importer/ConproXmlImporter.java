@@ -563,10 +563,10 @@ public class ConproXmlImporter implements ConProMiradiXml
 	private void importIndicatorThresholds(Node viabilityAssessmentNode, ORef indicatorRef) throws Exception
 	{
 		CodeToUserStringMap thresholds = new CodeToUserStringMap();
-		String poorThreshold = getNodeContent(viabilityAssessmentNode, INDICATOR_DESCRIPTION_POOR);
-		String fairThreshold = getNodeContent(viabilityAssessmentNode, INDICATOR_DESCRIPTION_FAIR);
-		String goodThreshold = getNodeContent(viabilityAssessmentNode, INDICATOR_DESCRIPTION_GOOD);
-		String veryGoodThreshold = getNodeContent(viabilityAssessmentNode, INDICATOR_DESCRIPTION_VERY_GOOD);
+		String poorThreshold = getEncodedNodeContent(viabilityAssessmentNode, INDICATOR_DESCRIPTION_POOR);
+		String fairThreshold = getEncodedNodeContent(viabilityAssessmentNode, INDICATOR_DESCRIPTION_FAIR);
+		String goodThreshold = getEncodedNodeContent(viabilityAssessmentNode, INDICATOR_DESCRIPTION_GOOD);
+		String veryGoodThreshold = getEncodedNodeContent(viabilityAssessmentNode, INDICATOR_DESCRIPTION_VERY_GOOD);
 		thresholds.putUserString(StatusQuestion.POOR, poorThreshold);
 		thresholds.putUserString(StatusQuestion.FAIR, fairThreshold);
 		thresholds.putUserString(StatusQuestion.GOOD, goodThreshold);
@@ -1137,6 +1137,14 @@ public class ConproXmlImporter implements ConProMiradiXml
 	{
 		XPathExpression expression = getXPath().compile(path);
 		return (Node) expression.evaluate(getDocument(), XPathConstants.NODE);
+	}
+	
+	private String getEncodedNodeContent(Node node, String element) throws Exception
+	{
+		String nodeConent = getNodeContent(node, element);
+		nodeConent = XmlUtilities2.getXmlEncoded(nodeConent);
+		
+		return nodeConent;
 	}
 	
 	private String getNodeContent(Node node, String element) throws Exception
