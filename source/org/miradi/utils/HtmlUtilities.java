@@ -210,6 +210,7 @@ public class HtmlUtilities
 		return result;
 	}
 
+	//NOTE: This method does not attempt to normalize encoding of numeric/named entities like &#160; and &nbsp;
 	public static String getNormalizedAndSanitizedHtmlText(String text, String[] allowedHtmlTags)
 	{
 		text = replaceAllEmptyDivsWithBrs(text);
