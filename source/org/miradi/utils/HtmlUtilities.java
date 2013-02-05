@@ -214,16 +214,18 @@ public class HtmlUtilities
 	public static String getNormalizedAndSanitizedHtmlText(String text, String[] allowedHtmlTags)
 	{
 		text = replaceAllEmptyDivsWithBrs(text);
-		String trimmedText = "";
+		
+		StringBuffer stringBuffer = new StringBuffer();
 		final String[] lines = text.split(getNewlineRegex());
 		for (int index = 0; index < lines.length; ++index)
 		{
 			//NOTE: Shef editor never splits text between lines, so we can safely ignore the text\ntext case
 			String line = lines[index];
 			String leadingSpacesRemoved = line.replaceAll("^[ \\t]+", "");
-			trimmedText += leadingSpacesRemoved;
+			stringBuffer.append(leadingSpacesRemoved);
 		}
 		
+		String trimmedText = stringBuffer.toString();
 		// NOTE: The Java HTML parser compresses all whitespace to a single space
 		// (http://java.sun.com/products/jfc/tsc/articles/bookmarks/)
 		trimmedText = removeNonHtmlNewLines(trimmedText);
