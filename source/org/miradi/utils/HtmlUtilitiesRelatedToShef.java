@@ -22,6 +22,7 @@ package org.miradi.utils;
 
 public class HtmlUtilitiesRelatedToShef
 {
+	//TODO medium : this method should be split into two: sanitize and normalize
 	//NOTE: This method does not attempt to normalize encoding of numeric/named entities like &#160; and &nbsp;
 	public static String getNormalizedAndSanitizedHtmlText(String text, String[] allowedHtmlTags)
 	{
