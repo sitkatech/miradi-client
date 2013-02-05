@@ -41,7 +41,6 @@ public class TestXmlUtilities2 extends MiradiTestCase
 
 	public void testIsValidXml()
 	{
-		verifyValidXml(null);
 		verifyValidXml("AB");
 		verifyValidXml("A&amp;B");
 		verifyValidXml("A&lt;B");
@@ -58,26 +57,12 @@ public class TestXmlUtilities2 extends MiradiTestCase
 
 	private void verifyValidXml(final String value)
 	{
-		try
-		{
-			XmlUtilities2.throwIfInvalidXmlWithHtmlTags(value);
-		}
-		catch (Exception e)
-		{
-			fail("Value should have been a valid xml: " + value);
-		}
+		assertTrue(XmlUtilities2.isValidXmlWithNoHtmlTags(value));
 	}
 
 	private void verifyInvalidXml(final String value)
 	{
-		try
-		{
-			XmlUtilities2.throwIfInvalidXmlWithHtmlTags(value);
-			fail("Value is not a valid xml: " + value);
-		}
-		catch (Exception ignoreException)
-		{
-		}
+		assertFalse(XmlUtilities2.isValidXmlWithNoHtmlTags(value));
 	}
 
 	public void testGetXmlDecoded()
