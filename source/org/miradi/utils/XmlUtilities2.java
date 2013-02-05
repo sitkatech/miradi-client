@@ -71,7 +71,7 @@ public class XmlUtilities2
 	{
 		try
 		{
-			throwIfInvalidXmlWithoutHtmlTags(value);
+			reportErrorIfInvalidXmlWithoutHtmlTags(value);
 		}
 		catch(RuntimeException e)
 		{
@@ -93,7 +93,7 @@ public class XmlUtilities2
 		return value;
 	}
 	
-	public static void throwIfInvalidXmlWithoutHtmlTags(final String value)
+	public static void reportErrorIfInvalidXmlWithoutHtmlTags(final String value)
 	{
 		if (value == null)
 			return;
