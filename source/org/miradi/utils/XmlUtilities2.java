@@ -104,7 +104,7 @@ public class XmlUtilities2
 			EAM.logWarning("Invalid xml value =" + valueWithoutHtmlTags);
 	}
 	
-	private static boolean isValidXmlWithNoHtmlTags(final String value)
+	public static boolean isValidXmlWithNoHtmlTags(final String value)
 	{
 		final String decodedValue = getXmlDecoded(value);
 		final String encodedValue = getXmlEncoded(decodedValue);
