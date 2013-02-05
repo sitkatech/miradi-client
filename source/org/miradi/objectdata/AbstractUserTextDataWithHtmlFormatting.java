@@ -22,7 +22,7 @@ package org.miradi.objectdata;
 
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.utils.HtmlUtilities;
+import org.miradi.utils.HtmlUtilitiesRelatedToShef;
 import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2XmlSchemaCreator;
 
 public class AbstractUserTextDataWithHtmlFormatting extends UserTextData
@@ -41,14 +41,14 @@ public class AbstractUserTextDataWithHtmlFormatting extends UserTextData
 	@Override
 	public void set(String newValue) throws Exception
 	{
-		super.set(HtmlUtilities.getNormalizedAndSanitizedHtmlText(newValue, getAllowedHtmlTags()));
+		super.set(HtmlUtilitiesRelatedToShef.getNormalizedAndSanitizedHtmlText(newValue, getAllowedHtmlTags()));
 	}
 	
 	@Override
 	public boolean isCurrentValue(String text)
 	{
-		String currentValue = HtmlUtilities.getNormalizedAndSanitizedHtmlText(get(), getAllowedHtmlTags());
-		String otherValue = HtmlUtilities.getNormalizedAndSanitizedHtmlText(text, getAllowedHtmlTags());
+		String currentValue = HtmlUtilitiesRelatedToShef.getNormalizedAndSanitizedHtmlText(get(), getAllowedHtmlTags());
+		String otherValue = HtmlUtilitiesRelatedToShef.getNormalizedAndSanitizedHtmlText(text, getAllowedHtmlTags());
 		return currentValue.equals(otherValue);
 	}
 

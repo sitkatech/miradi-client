@@ -83,13 +83,13 @@ public class TestHtmlUtilities extends MiradiTestCase
 		  "\t</body>\n" +
 		  "	</html>\n";
 
-		assertEquals("wrong new lines inserted?", "text on line 1 text on line 2<br/>text on line 3", HtmlUtilities.getNormalizedAndSanitizedHtmlText(htmlText, getAllowedHtmlTags()));
+		assertEquals("wrong new lines inserted?", "text on line 1 text on line 2<br/>text on line 3", HtmlUtilitiesRelatedToShef.getNormalizedAndSanitizedHtmlText(htmlText, getAllowedHtmlTags()));
 	}
 	
 	public void testIncorrectEncodingOfApostrophe()
 	{
 		String htmlText = "we'll";
-		assertEquals("wrong new lines inserted?", "we&apos;ll", HtmlUtilities.getNormalizedAndSanitizedHtmlText(htmlText, getAllowedHtmlTags()));
+		assertEquals("wrong new lines inserted?", "we&apos;ll", HtmlUtilitiesRelatedToShef.getNormalizedAndSanitizedHtmlText(htmlText, getAllowedHtmlTags()));
 	}
 	
 	public void testSpacesAroundElementShouldNotBeCompletelyRemoved()
@@ -108,7 +108,7 @@ public class TestHtmlUtilities extends MiradiTestCase
 
 	private void verifySpaceRemovalAroundElement(final String expectedValue, final String htmlText)
 	{
-		assertEquals("incorrect spacing around element?", expectedValue, HtmlUtilities.getNormalizedAndSanitizedHtmlText(htmlText, getAllowedHtmlTags()));
+		assertEquals("incorrect spacing around element?", expectedValue, HtmlUtilitiesRelatedToShef.getNormalizedAndSanitizedHtmlText(htmlText, getAllowedHtmlTags()));
 	}
 	
 	public void testGetWithoutSpacesAfterXmlElements()
