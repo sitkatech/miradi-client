@@ -150,7 +150,7 @@ abstract public class AbstractHtmlPane extends MiradiTextPane
 
 	public static String getNormalizedAndSanitizedHtmlText(final String text)
 	{
-		return HtmlUtilities.getNormalizedAndSanitizedHtmlText(text, AbstractUserTextDataWithHtmlFormatting.getAllowedHtmlTags());
+		return HtmlUtilitiesRelatedToShef.getNormalizedAndSanitizedHtmlText(text, AbstractUserTextDataWithHtmlFormatting.getAllowedHtmlTags());
 	}
 
 	private void updateStyleSheet()
