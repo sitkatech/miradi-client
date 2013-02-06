@@ -164,7 +164,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 	public Vector<ORefList> getFullyExpandedHierarchyRefListList() throws Exception
 	{
 		Vector<ORefList> fullyExpandedObjectRefs = new Vector<ORefList>();
-		Vector<TreePath> fullExpandedNodeList = getFullyExpandedTreePathListIncludingLeafNodes();
+		Vector<TreePath> fullExpandedNodeList = getFullyExpandedTreePathListExcludingLeafNodes();
 		for(TreePath treePath : fullExpandedNodeList)
 		{
 			fullyExpandedObjectRefs.add(convertTreePathToRefList(treePath));
@@ -190,11 +190,6 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		return getExpandedTreePathList(new ExcludingLeafNodesTreeExpander());
 	}
 
-	private Vector<TreePath> getFullyExpandedTreePathListIncludingLeafNodes() throws Exception
-	{
-		return getExpandedTreePathList(new IncludingLeafNodesTreeExpander());
-	}
-	
 	private Vector<TreePath> getExpandedTreePathList(final AbstractTreeExpander abstractTreeExpander) throws Exception
 	{
 		return abstractTreeExpander.getFullyExpandedTreePathList(getPathToRoot());
