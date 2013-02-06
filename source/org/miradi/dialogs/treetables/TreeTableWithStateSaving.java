@@ -165,7 +165,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 	public void expandTo(int typeToExpandTo) throws Exception
 	{
 		HashSet<ORefList> hierarchiesToExpand = new HashSet<ORefList>();
-		Vector<ORefList> fullyExpandedRefs = getTreeTableModel().getFullyExpandedHierarchyRefListListExcludingLeafNodes();
+		Vector<ORefList> fullyExpandedRefs = getTreeTableModel().getFullyExpandedHierarchyRefListListIncludingLeafNodes();
 		for(ORefList hierarchy : fullyExpandedRefs)
 		{
 		    if (hierarchy.getFirstElement().getObjectType() == typeToExpandTo)
