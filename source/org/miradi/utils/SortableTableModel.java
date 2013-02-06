@@ -46,7 +46,7 @@ abstract public class SortableTableModel extends AbstractTableModel implements M
 		return new ORefList(sortedRefs);
 	}
 
-	public Vector<ORef> getCurrentSortedRefs()
+	private Vector<ORef> getCurrentSortedRefs()
 	{
 		Vector<ORef> sortedRefs = new Vector<ORef>();
 		for(int row = 0; row < getRowCount(); ++row)
