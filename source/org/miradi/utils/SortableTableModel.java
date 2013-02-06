@@ -37,7 +37,7 @@ abstract public class SortableTableModel extends AbstractTableModel implements M
 {
 	protected ORefList getSortedRefs(int sortByTableColumn, String sortDirectionCode)
 	{
-		Vector<ORef> sortedRefs = getCurrentSortedRefs();
+		Vector<ORef> sortedRefs = getCurrentRowRefs();
 		
 		Collections.sort(sortedRefs, createComparator(sortByTableColumn));
 		if (sortDirectionCode.equals(SortDirectionQuestion.REVERSED_SORT_ORDER_CODE))
@@ -46,7 +46,7 @@ abstract public class SortableTableModel extends AbstractTableModel implements M
 		return new ORefList(sortedRefs);
 	}
 
-	private Vector<ORef> getCurrentSortedRefs()
+	private Vector<ORef> getCurrentRowRefs()
 	{
 		Vector<ORef> sortedRefs = new Vector<ORef>();
 		for(int row = 0; row < getRowCount(); ++row)
