@@ -8,12 +8,13 @@ msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-11-09 15:34-0600\n"
-"PO-Revision-Date: 2011-04-05 11:46+0100\n"
+"PO-Revision-Date: 2012-12-23 16:52+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:59
@@ -112,7 +113,7 @@ msgstr "%1 stratégies ébauchées classées"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:162
 msgid "%1 Indicators associated to KEA's"
-msgstr "%1 indicateur associés aux KEA (Attributs Écologiques Importants)"
+msgstr "%1 indicateur associés aux AEC (Attributs Écologiques Clés)"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:100
@@ -122,7 +123,7 @@ msgstr "%1 Les indicateurs/méthodes (%2%) ont des rapports d'avancement"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:166
 msgid "%1 KEA viability indicators associated with %2 targets"
-msgstr "%1 Indicateurs de viabilité du KEA associés avec %2 cibles"
+msgstr "%1 Indicateurs de viabilité du AEC associés avec %2 cibles"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:140
@@ -248,7 +249,7 @@ msgstr "%1 indicateurs de viabilité simple associés avec %2 cibles"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:225
 msgid "%1 targets have KEA"
-msgstr "%1 cibles ont des KEA"
+msgstr "%1 cibles ont des AEC"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:226
@@ -273,7 +274,7 @@ msgstr "%2 dans %1 activités et tâches ont des attributions"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:141
 msgid "%2 of %1 RCs have at least 1 objective"
-msgstr "%2 dans %1 RC ont au moins 1 objectif"
+msgstr "%2 dans %1 CR ont au moins 1 objectif"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:232
@@ -288,7 +289,7 @@ msgstr "%2 dans %1 menace/cible figure avec un classement simple"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:238
 msgid "%2 of %1 threat/target ranks with stress-based ranking"
-msgstr "%2 dans %1 menace/cible figure avec un classement basé sur la tension"
+msgstr "%2 dans %1 menace/cible figure avec un classement basé sur le stress"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogfields/ReadOnlyCodeListField.java:81
@@ -303,7 +304,7 @@ msgstr "'%FromName' -> '%ToName'<br>"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingEditorComponent.java:67
 msgid "(Create, manage, and rate the stresses for this target)"
-msgstr "(Créer, gérer et évaluer les tensions pour cette cible)"
+msgstr "(Créer, gérer et évaluer les stress pour cette cible)"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/views/umbrella/Definition.java:59
@@ -384,7 +385,7 @@ msgstr "1) Activités"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/wizard/targetviability/TargetViabilityDetermineKeyAttributesStep.java:50
 msgid "1) Determine key ecological attributes"
-msgstr "1) Déterminer les attributs écologiques importants"
+msgstr "1) Déterminer les attributs écologiques clés"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/wizard/diagram/DiagramWizardDefineTargetsStep.java:51
@@ -445,7 +446,7 @@ msgstr "2) Méthodes"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/wizard/threatmatrix/ThreatStressRateScopeAndSeverityStep.java:51
 msgid "2) Rate scope and severity of stress"
-msgstr "2) Classer la portée et la sévérité de la tension"
+msgstr "2) Classer la portée et la gravité du stress"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardScopeStep.java:55
@@ -475,7 +476,7 @@ msgstr "3) Classer la contribution et l'irréversibilité de la menace"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardSeverityStep.java:55
 msgid "3) Rate the severity of the threat"
-msgstr "3) Classer la sévérité de la menace"
+msgstr "3) Classer la gravité de la menace"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/wizard/planning/BudgetWizardReconcileActualExpendituresStep.java:51
@@ -628,7 +629,7 @@ msgstr ""
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/MainWindowAction.java:105
 msgid "<br> Please report this problem to the Miradi support team "
-msgstr "<br> Merci di signaler ce problème au Support Technique Miradi "
+msgstr "<br> Merci de signaler ce problème au Support Technique Miradi "
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/MainWindowAction.java:104
@@ -645,7 +646,7 @@ msgid ""
 "<div class='DataPanel'><p>Why are my choices limited to one color family for "
 "each type of factor?</p>"
 msgstr ""
-"<div class='DataPanel'><p>Pourquoi mes choix sont limitées à une famille de "
+"<div class='DataPanel'><p>Pourquoi mes choix sont limités à une famille de "
 "couleur pour chaque type de facteur ?</p>"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
@@ -756,8 +757,8 @@ msgid ""
 "<html><b>High:</b> The source is a <b>large contributor</b> of the "
 "particular stress.</html>"
 msgstr ""
-"<html><b>Élevé:</b> la source est un <b>donateur important</b> de cette "
-"tension.</html>"
+"<html><b>Élevé:</b> la source est un <b>donateur important</b> de ce stress."
+"</html>"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/questions/ScopeStressBasedThreatRatingQuestion.java:47
@@ -816,8 +817,8 @@ msgid ""
 "<html><b>Low:</b> The source is a <b>low contributor</b> of the particular "
 "stress.</html>"
 msgstr ""
-"<html><b>Bas:</b> la source est un <b>donateur peu important</b> de cette "
-"tension.</html>"
+"<html><b>Bas:</b> la source est un <b>donateur peu important</b> de ce "
+"stress.</html>"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/questions/ScopeStressBasedThreatRatingQuestion.java:35
@@ -886,8 +887,8 @@ msgid ""
 "<html><b>Medium:</b> The source is a <b>moderate contributor</b> of the "
 "particular stress.</html>"
 msgstr ""
-"<html><b>Moyen:</b> la source est un <b>donateur modéré</b> de cette tension."
-"</html>"
+"<html><b>Moyen:</b> la source est un <b>donateur modéré</b> de ce stress.</"
+"html>"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/questions/ScopeStressBasedThreatRatingQuestion.java:41
@@ -966,7 +967,7 @@ msgid ""
 "particular stress.</html>"
 msgstr ""
 "<html><b>Très Élevé:</b> la source est un <b>donateur très important</b> de "
-"cette tension.</html>"
+"ce stress.</html>"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/questions/ScopeStressBasedThreatRatingQuestion.java:53
@@ -1003,8 +1004,8 @@ msgid ""
 "within ten years or three generations.</html>"
 msgstr ""
 "<html><b>Très Élevé:</b> au sein de la portée, la menace risque de "
-"<b>détruire ou d'éliminer</b> la cible ou de réduire sa population de <b>71-"
-"100%</b> dans dix ans ou trois générations.</html>"
+"<b>détruire ou d'éliminer</b> la cible ou de réduire sa population de "
+"<b>71-100%</b> dans dix ans ou trois générations.</html>"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:108
@@ -1029,10 +1030,9 @@ msgid ""
 "continuation of the existing management/conservation situation).</html>"
 msgstr ""
 "<html><strong>Contribution - </strong>La contribution attendue de la source, "
-"en agissant seule, à l'expression maximale d'une tension (comme déterminé "
-"dans l'évaluation de la tension) dans les circonstances actuelles (c'est-à-"
-"dire vue la continuation de la situation de gestion/protection existante.</"
-"html>"
+"en agissant seule, à l'expression maximale d'un stress (comme déterminé dans "
+"l'évaluation du stress) dans les circonstances actuelles (c'est-à-dire vue "
+"la continuation de la situation de gestion/protection existante.</html>"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/questions/IrreversibilityThreatRatingQuestion.java:58
@@ -1357,7 +1357,7 @@ msgstr ""
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:291
 msgid "AccountingCodes"
-msgstr "AccountingCodes"
+msgstr "Codes comptabilité"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:52
@@ -1426,7 +1426,7 @@ msgstr "Diagramme réorganisation automatique (BETA)"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionShowSelectedChainMode.java:39
 msgid "Action|Brainstorm Mode"
-msgstr "Mode remue-méninges"
+msgstr "Mode Brainstorm"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/views/umbrella/HelpButtonData.java:62
@@ -1522,7 +1522,7 @@ msgstr "Créer cible imbriquée"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionCreateNamedTaggedObjectSet.java:35
 msgid "Action|Create New Tag..."
-msgstr "Créer nouvelle balise..."
+msgstr "Créer nouvelle borne..."
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionCreateOutgoingJunction.java:34
@@ -1542,12 +1542,12 @@ msgstr "Créer chaîne de résultats"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionCreateStress.java:35
 msgid "Action|Create Stress"
-msgstr "Créer tension"
+msgstr "Créer un stress"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionCreateStressFromKea.java:35
 msgid "Action|Create Stress from KEA"
-msgstr "Créer tension depuis KEA"
+msgstr "Créer un stress depuis un AEC"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionCreatePlanningViewConfigurationMenu.java:34
@@ -1634,7 +1634,7 @@ msgstr "Supprimer la chaîne de résultats"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionDeleteStress.java:35
 msgid "Action|Delete Stress"
-msgstr "Supprimer la tension"
+msgstr "Supprimer le stress"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionDeletePlanningViewConfiguration.java:35
@@ -1715,7 +1715,7 @@ msgstr "Masquer les classements dans la cellule"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionHideStressBubble.java:34
 msgid "Action|Hide Stress on this page"
-msgstr "Masquer la tension dans cette page"
+msgstr "Masquer le stress dans cette page"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionHowToSave.java:34
@@ -1805,7 +1805,7 @@ msgstr "Bibliothèque"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionManageStresses.java:35
 msgid "Action|Manage Stresses..."
-msgstr "Gérer les Tensions..."
+msgstr "Gérer les Stress..."
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionResourceListAdd.java:34
@@ -1872,7 +1872,7 @@ msgstr "Créer indicateur"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionCreateKeyEcologicalAttribute.java:35
 msgid "Action|Manage|Create KEA"
-msgstr "Créer KEA"
+msgstr "Créer AEC"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionCreateKeyEcologicalAttributeMeasurement.java:35
@@ -1982,7 +1982,7 @@ msgstr "Supprimer Indicateur"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionDeleteKeyEcologicalAttribute.java:35
 msgid "Action|Manage|Delete KEA"
-msgstr "Supprimer KEA"
+msgstr "Supprimer AEC"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionDeleteKeyEcologicalAttributeMeasurement.java:35
@@ -2230,7 +2230,7 @@ msgstr "Afficher Chaîne de résultats"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionShowStressBubble.java:34
 msgid "Action|Show Stress on this page"
-msgstr "Afficher Tension dans cette page"
+msgstr "Afficher Stress dans cette page"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionCreateOrShowResultsChain.java:35
@@ -2293,7 +2293,7 @@ msgstr "Développer à l'Indicateur"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionExpandToKeyEcologicalAttribute.java:36
 msgid "Action|Table|Expand To Key Ecological Attribute"
-msgstr "Développer à l'Attribut écologique important (KEA)"
+msgstr "Développer à l'Attribut écologique clé (AEC)"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionExpandToMeasurement.java:36
@@ -2333,7 +2333,7 @@ msgstr "Afficher Lignes..."
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionManageFactorTagsFromMenu.java:35
 msgid "Action|Tag/Untag..."
-msgstr "Balise/Suppr Bal..."
+msgstr "Borne/Suppr Borne..."
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/views/ActionViewTargetViability.java:36
@@ -2469,8 +2469,7 @@ msgstr "ActualExpenditures"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/main/MiradiLogoPanel.java:34
 msgid "Adaptive Management Software for Conservation Projects"
-msgstr ""
-"Logiciel de gestion adaptive pour les projets de protection de la nature."
+msgstr "Logiciel de gestion adaptive pour les projets de conservation."
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:144
@@ -2628,7 +2627,7 @@ msgstr "Êtes-vous sûr de vouloir supprimer cet Indicateur ?"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/views/diagram/DeleteKeyEcologicalAttributeDoer.java:46
 msgid "Are you sure you want to delete this Key Ecological Attribute?"
-msgstr "Êtes-vous sûr de vouloir supprimer cet Attribut écologique important ?"
+msgstr "Êtes-vous sûr de vouloir supprimer cet Attribut écologique clé ?"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/views/diagram/DeleteSubTargetDoer.java:50
@@ -2654,7 +2653,7 @@ msgstr "Êtes-vous sûr de vouloir supprimer ce Rapport d'avancement ?"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/views/diagram/doers/DeleteStressDoer.java:51
 msgid "Are you sure you want to delete this Stress?"
-msgstr "Êtes-vous sûr de vouloir supprimer cette Tension ?"
+msgstr "Êtes-vous sûr de vouloir supprimer ce Stress ?"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/views/noproject/DeleteProject.java:61
@@ -2915,7 +2914,7 @@ msgstr "Public"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/questions/MonthAbbreviationsQuestion.java:42
 msgid "Aug"
-msgstr "Aoû"
+msgstr "Août"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/questions/TableRowHeightModeQuestion.java:38
@@ -3344,7 +3343,7 @@ msgstr "Choisir Indicateur à créer de"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/views/diagram/doers/CreateStressFromKeaDoer.java:60
 msgid "Choose Key Ecological Attribute to Create from"
-msgstr "Choisir Attributs écologique important à créer de"
+msgstr "Choisir Attributs écologique clé à créer de"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/views/diagram/CloneObjectiveDoer.java:33
@@ -3371,12 +3370,12 @@ msgstr "Choisir Objectif(s) pertinent(s)"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/views/diagram/doers/CloneStressDoer.java:33
 msgid "Choose Stress to Create from"
-msgstr "Choisir Tension à créer de"
+msgstr "Choisir Stress à créer de"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/views/diagram/doers/AbstractManageFactorTagDoer.java:55
 msgid "Choose Tags"
-msgstr "Choisir Balises"
+msgstr "Choisir Bornes"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/base/PreferencesPanel.java:240
@@ -3459,8 +3458,8 @@ msgid ""
 "factors that are believed to impact or lead to a conservation target."
 msgstr ""
 "Modèle conceptuel - Un diagramme d'un ensemble de relations entre certains "
-"facteurs qu'on estime avoir un impact sur ou entraînant une cible de la "
-"protection de la nature."
+"facteurs qu'on estime avoir un impact sur ou entraînant une cible de "
+"conservation."
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:48
@@ -3475,7 +3474,7 @@ msgstr "Configurer une Analyse du plan de travail"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:45
 msgid "Conservation Targets"
-msgstr "Cibles de la Protection de la Nature"
+msgstr "Cibles de la Conservation"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:101
@@ -3662,7 +3661,7 @@ msgid ""
 "Currently in brainstorm mode, so some factors are hidden. To return to "
 "normal mode, press this button: "
 msgstr ""
-"Actuellement en mode remue-méninges. Certains facteurs sont masqués. Pour "
+"Actuellement en mode brainstorm. Certains facteurs sont masqués. Pour "
 "revenir au mode normal, appuyer sur ce bouton :"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
@@ -4194,7 +4193,7 @@ msgstr "Entrer Nouveau nom"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/views/diagram/doers/CreateNamedTaggedObjectSetDoer.java:47
 msgid "Enter Tag Name"
-msgstr "Entrer Nom balise"
+msgstr "Entrer Nom borne"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/questions/DateUnitTypeQuestion.java:47
@@ -4434,7 +4433,7 @@ msgstr "Propriétés facteur"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/questions/StatusQuestion.java:38
 msgid "Fair"
-msgstr "Équitable"
+msgstr "Moyen"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/questions/MonthAbbreviationsQuestion.java:36
@@ -4675,8 +4674,8 @@ msgstr "Données endommagées trouvées :"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/utils/DiagramCorruptionDetector.java:143
 msgid ""
-"Found non activity factor that is a task. label = %FactorName.  Diagram = %"
-"DiagramName"
+"Found non activity factor that is a task. label = %FactorName.  Diagram = "
+"%DiagramName"
 msgstr ""
 "Facteur non activité qui est une tâche trouvé. étiquette = %FactorName. "
 "Diagramme = %DiagramName"
@@ -4894,12 +4893,12 @@ msgstr "Masquer colonnes trimestre"
 #: Packs/source/org/miradi/questions/StressSeverityChoiceQuestion.java:39
 #: Packs/source/org/miradi/questions/PriorityRatingQuestion.java:39
 msgid "High"
-msgstr "Haut"
+msgstr "Elevé"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1385
 msgid "High/Very-High Threat Chains"
-msgstr "Chaînes de menace haute/très haute"
+msgstr "Chaînes de menace élevée/très élevée"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:102
@@ -4978,7 +4977,7 @@ msgstr "Identifier les menaces directes"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:133
 msgid "Identify indirect threats and opportunities"
-msgstr "Identifier les menaces indirectes et les occasions"
+msgstr "Identifier les menaces indirectes et les opportunités"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:39
@@ -4993,7 +4992,7 @@ msgstr "Identifier les compétences clés"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/jump/ActionJumpTargetStressesStep.java:35
 msgid "Identify stresses (optional)"
-msgstr "Identifier les tensions (optionnel)"
+msgstr "Identifier les stress (optionnel)"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/NeverShowAgainPanel.java:47
@@ -5333,7 +5332,7 @@ msgstr "Juin"
 #: Packs/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:141
 #: Packs/source/org/miradi/forms/objects/KeyEcologicalAttributePropertiesForm.java:32
 msgid "KEA"
-msgstr "KEA"
+msgstr "AEC"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:141
@@ -5343,10 +5342,10 @@ msgid ""
 "lead to the outright loss or extreme degradation of that target over time. "
 "In Miradi, a KEA is represented by a green key symbol."
 msgstr ""
-"KEA (Attribut écologique important) - Un aspect d'une biologie ou écologie "
-"de la cible que si présent, définit une cible saine tandis que si manquant "
-"ou altéré pourrait mener à une perte absolue ou à une dégradation extrême de "
-"cette cible avec le temps. Dans Miradi, un KEA est représenté par une clé "
+"AEC (Attribut écologique clé) - Un aspect d'une biologie ou écologie de la "
+"cible que si présent, définit une cible saine tandis que si manquant ou "
+"altéré pourrait mener à une perte absolue ou à une dégradation extrême de "
+"cette cible avec le temps. Dans Miradi, un AEC est représenté par une clé "
 "verte."
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
@@ -5377,7 +5376,7 @@ msgstr "Attribut clé"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:41
 msgid "Key Ecological Attribute (KEA)"
-msgstr "Attribut écologique important (KEA)"
+msgstr "Attribut écologique clé (AEC)"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/objects/AccountingCode.java:71
@@ -5707,7 +5706,7 @@ msgstr "Listes"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/views/summary/SummaryLocationPanel.java:64
 msgid "Location"
-msgstr "Lieu"
+msgstr "Emplacement"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/questions/ReportTemplateContentQuestion.java:69
@@ -5724,12 +5723,12 @@ msgstr ""
 #: Packs/source/org/miradi/questions/StressSeverityChoiceQuestion.java:37
 #: Packs/source/org/miradi/questions/PriorityRatingQuestion.java:37
 msgid "Low"
-msgstr "Bas"
+msgstr "Faible"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1386
 msgid "Low/Medium/Unrated Threat Chains"
-msgstr "Chaînes de menace Basses/Moyennes/Non évaluées"
+msgstr "Chaînes de menace Faibles/Moyennes/Non évaluées"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:54
@@ -5746,7 +5745,7 @@ msgstr ""
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/stress/ManageStressesDialog.java:36
 msgid "Manage Stresses for "
-msgstr "Gérer les tensions pour"
+msgstr "Gérer les stress pour"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/views/diagram/DiagramLegendPanel.java:399
@@ -6096,7 +6095,7 @@ msgstr "3. Mettre en œuvre les actions et le suivi"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:53
 msgid "Menu|4. Analyze, Use, Adapt"
-msgstr "4. Anlyser, utiliser, adapter"
+msgstr "4. Analyser, utiliser, adapter"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:58
@@ -6106,7 +6105,7 @@ msgstr "5. Considérer et partager l'apprentissage"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/diagram/DiagramContextMenuHandler.java:244
 msgid "Menu|Add Tag to %n Selected Item(s)"
-msgstr "Ajouter baliser à %n élément(s) sélectionné(s)"
+msgstr "Ajouter borne à %n élément(s) sélectionné(s)"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/main/menu/MainMenuBar.java:140
@@ -6137,7 +6136,7 @@ msgstr "Insérer"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/diagram/DiagramContextMenuHandler.java:250
 msgid "Menu|Remove Tag from %n Selected Item(s)"
-msgstr "Supprimer la balise de%n élément(s) sélectionné(s)"
+msgstr "Supprimer la borne de%n élément(s) sélectionné(s)"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:146
@@ -7432,7 +7431,7 @@ msgstr "Sélectionner les méthodes appropriées"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:108
 msgid "Select conservation targets"
-msgstr "Sélectionner les cibles de la protection de la nature"
+msgstr "Sélectionner les cibles de conservation"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:88
@@ -7513,7 +7512,7 @@ msgstr "Sept"
 #: Packs/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:227
 #: Packs/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:104
 msgid "Severity"
-msgstr "Sévérité"
+msgstr "Gravité"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:227
@@ -7525,7 +7524,7 @@ msgid ""
 "within the scope. For species, usually measured as the degree of reduction "
 "of the target population within the scope."
 msgstr ""
-"Sévérité - Dans la portée, le niveau des dégâts causés à la cible par la "
+"Gravité - Dans la portée, le niveau des dégâts causés à la cible par la "
 "menace qu'on peut s'attendre vue la poursuite des circonstances et des "
 "tendances actuelles. Pour les écosystèmes et les communautés écologiques, "
 "typiquement mesuré comme le degré de destruction ou de dégradation de la "
@@ -7733,8 +7732,8 @@ msgstr "Rapports standards"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/main/MainWindow.java:850
 msgid ""
-"Start date (currently %startDate) must be earlier than end date (currently %"
-"endDate)"
+"Start date (currently %startDate) must be earlier than end date (currently "
+"%endDate)"
 msgstr ""
 "La Date de début (actuellement %startDate) doit être antérieure à la date de "
 "fin (actuellement %endDate) "
@@ -7868,7 +7867,7 @@ msgstr ""
 #: Packs/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:71
 #: Packs/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:50
 msgid "Stress"
-msgstr "Tension"
+msgstr "Stress"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:60
@@ -7889,25 +7888,25 @@ msgstr ""
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/questions/ThreatRatingModeChoiceQuestion.java:37
 msgid "Stress Based Threat Rating Mode"
-msgstr "Mode évaluation de la menace basé sur la tension"
+msgstr "Mode évaluation de la menace basé sur le stress"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingTableModel.java:159
 msgid "Stress Name"
-msgstr "Nom de la tension"
+msgstr "Nom du stress"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/utils/StressBasedThreatRatingQuestionPopupEditorComponent.java:61
 msgid "Stress: %s"
-msgstr "Tension : %s"
+msgstr "Stress : %s"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/stress/StressFactorVisibilityControlPanel.java:45
 msgid ""
 "Stresses can only be shown on Conceptual Model pages, not Results Chains"
 msgstr ""
-"Les tensions peuvent être affichées dans les pages du modèle conceptuel, "
-"mais pas dans les chaînes des résultats"
+"Les stresss peuvent être affichés dans les pages du modèle conceptuel, mais "
+"pas dans les chaînes des résultats"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/questions/DiagramFactorFontStyleQuestion.java:38
@@ -8135,7 +8134,7 @@ msgstr "Créer une Liste rouge des espèces UICN"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionCreateKeyEcologicalAttribute.java:41
 msgid "TT|Create a Key Ecological Attribute"
-msgstr "Créer un Attribut écologique important"
+msgstr "Créer un Attribut écologique clé"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionTreeCreateMethod.java:46
@@ -8165,17 +8164,17 @@ msgstr "Créer une Ressource (personne, équipe, etc.)"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionCreateStress.java:41
 msgid "TT|Create a Stress"
-msgstr "Créer une Tension"
+msgstr "Créer un Stress"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionCreateStressFromKea.java:41
 msgid "TT|Create a Stress from a Key Ecological Attribute"
-msgstr "Créer une Tension depuis l'attribut écologique important"
+msgstr "Créer un Stress depuis l'attribut écologique clé"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionCreateTaggedObjectSet.java:41
 msgid "TT|Create a Tag"
-msgstr "Créer une Balise"
+msgstr "Créer une Borne"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionCreateChildTask.java:46
@@ -8297,27 +8296,27 @@ msgstr "Créer un Point de courbe jontion sortante"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionCloneGoal.java:41
 msgid "TT|Create from an Existing Goal"
-msgstr "Créer d'un But existant"
+msgstr "Créer depuis un But existant"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionCloneIndicator.java:41
 msgid "TT|Create from an Existing Indicator"
-msgstr "Créer d'un Indicateur existant"
+msgstr "Créer depuis un Indicateur existant"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionCloneObjective.java:41
 msgid "TT|Create from an Existing Objective"
-msgstr "Créer d'un Objectif existant"
+msgstr "Créer depuis un Objectif existant"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionCloneStress.java:41
 msgid "TT|Create from an Existing Stress"
-msgstr "Créer d'une Tension existante"
+msgstr "Créer depuis un Stress existant"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionManageStresses.java:41
 msgid "TT|Create, Delete, or Edit Stresses"
-msgstr "Créer, supprimer ou modifier les Tensions"
+msgstr "Créer, supprimer ou modifier les Stress"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionPlanningCustomizeDialogPopup.java:41
@@ -8389,7 +8388,7 @@ msgstr "Supprimer un Modèle de rapport"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionDeleteTaggedObjectSet.java:41
 msgid "TT|Delete a Tag"
-msgstr "Supprimer une Balise"
+msgstr "Supprimer une Borne"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionDeleteExpense.java:41
@@ -8454,7 +8453,7 @@ msgstr "Supprimer l'Indicateur sélectionné"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionDeleteKeyEcologicalAttribute.java:41
 msgid "TT|Delete the selected Key Ecological Attribute"
-msgstr "Supprimer l'Attribut écologique important sélectionné"
+msgstr "Supprimer l'Attribut écologique clé sélectionné"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionDeleteMethod.java:41
@@ -8474,7 +8473,7 @@ msgstr "Supprimer la Ressource sélectionnée (personne, équipe, etc.)"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionDeleteStress.java:41
 msgid "TT|Delete the selected Stress"
-msgstr "Supprimer la Tension sélectionnée"
+msgstr "Supprimer le Stress sélectionné"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionDeleteWorkPlanNode.java:40
@@ -8525,7 +8524,7 @@ msgstr "Développer vers Indicateur"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionExpandToKeyEcologicalAttribute.java:42
 msgid "TT|Expand To Key Ecological Attribute"
-msgstr "Développer vers Attribut écologique important"
+msgstr "Développer vers Attribut écologique clé"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionExpandToMeasurement.java:42
@@ -8612,8 +8611,8 @@ msgstr ""
 msgid ""
 "TT|Hide this Stress so it no longer appears on this Conceptual Model page"
 msgstr ""
-"Masquer cette tension pour qu'elle ne s'affiche plus dans cette page de "
-"modèle conceptuel"
+"Masquer ce stress pour qu'il ne s'affiche plus dans cette page de modèle "
+"conceptuel"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionHowToSave.java:40
@@ -8698,7 +8697,7 @@ msgstr "Installer le pack de langues sélectionné"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionShowSelectedChainMode.java:45
 msgid "TT|Isolate the selected factor chain in Brainstorm Mode"
-msgstr "Isoler la chaîne de facteur sélectionnée dans le mode remue-méninges"
+msgstr "Isoler la chaîne de facteur sélectionnée dans le mode brainstorm"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/ActionResourceListModify.java:40
@@ -8847,8 +8846,8 @@ msgstr ""
 #: Packs/source/org/miradi/actions/ActionShowStressBubble.java:40
 msgid "TT|Show this Stress so it appears on this Conceptual Model page"
 msgstr ""
-"Afficher cette tension de façon à ce qu'elle apparaisse dans cette page du "
-"modèle conceptuel"
+"Afficher ce stress de façon à ce qu'il apparaisse dans cette page du modèle "
+"conceptuel"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/main/ViewSwitcher.java:80
@@ -9026,7 +9025,7 @@ msgstr "Modèles de rapport"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/stress/StressListManagementPanel.java:77
 msgid "Tab|Stresses"
-msgstr "Tensions"
+msgstr "Stress"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/viability/TargetPropertiesKeaViabilityTreeManagementPanel.java:51
@@ -9044,7 +9043,7 @@ msgstr "Plan de travail"
 #: Packs/source/org/miradi/views/diagram/doers/DeleteTaggedObjectSetDoer.java:37
 #: Packs/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:40
 msgid "Tag"
-msgstr "Balise"
+msgstr "Borne"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/views/diagram/doers/EditTaggedObjectSetDoer.java:54
@@ -9055,7 +9054,7 @@ msgstr "Éléments balisés"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:110
 msgid "Tags"
-msgstr "Balises"
+msgstr "Bornes"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/questions/FontFamiliyQuestion.java:43
@@ -9731,7 +9730,7 @@ msgstr "Propriétés du résultat intermédiaire"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:53
 msgid "Title|Key Ecological Attribute Properties"
-msgstr "Propriétés de l'attribut écologique important"
+msgstr "Propriétés de l'attribut écologique clé"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/diagram/LegacyTncStrategyRankingEditorPropertiesSubPanel.java:92
@@ -9847,27 +9846,27 @@ msgstr "Propriétés de la stratégie"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/stress/StressCommentsSubPanel.java:42
 msgid "Title|Stress Comments"
-msgstr "Commentaires de la tension"
+msgstr "Commentaires du stress"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:75
 msgid "Title|Stress Details"
-msgstr "Détails de la tension"
+msgstr "Détails du stress"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/stress/StressPropertiesPanel.java:60
 msgid "Title|Stress Properties"
-msgstr "Propriétés de la tension"
+msgstr "Propriétés du stress"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/stress/StressFactorVisibilityControlPanel.java:39
 msgid "Title|Stress Visibility"
-msgstr "Visibilité de la tension"
+msgstr "Visibilité du stress"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:67
 msgid "Title|Stress-Based Threat Rating"
-msgstr "Évaluation de la menace basée sur la tension"
+msgstr "Évaluation de la menace basée sur le stress"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:51
@@ -10458,8 +10457,8 @@ msgstr "Configuration plan de travail"
 #: Packs/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:90
 msgid "Work plan data currently exists for %startDate - %endDate"
 msgstr ""
-"Les données du plan de travail existent actuellement pour %startDate - %"
-"endDate"
+"Les données du plan de travail existent actuellement pour %startDate - "
+"%endDate"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 3.4 Language
 #: Packs/source/org/miradi/actions/jump/ActionJumpWorkPlanOverviewStep.java:35
@@ -11390,7 +11389,7 @@ msgid "FieldLabel|16.Comments|Comments"
 msgstr "Commentaires"
 
 msgid "FieldLabel|17.KeyEcologicalAttribute|Key Ecological Attribute"
-msgstr "Attribut écologique important"
+msgstr "Attribut écologique clé"
 
 msgid "FieldLabel|17.Label|Name"
 msgstr "Nom"
@@ -11759,7 +11758,7 @@ msgid "FieldLabel|32.Trend|Trend"
 msgstr "Tendance"
 
 msgid "FieldLabel|33.Stress|Stress"
-msgstr "Tension"
+msgstr "Stress"
 
 msgid "FieldLabel|33.ShortLabel|ID"
 msgstr "ID"
@@ -11777,7 +11776,7 @@ msgid "FieldLabel|33.Scope|Scope"
 msgstr "Portée"
 
 msgid "FieldLabel|33.Severity|Severity"
-msgstr "Sévérité"
+msgstr "Gravité"
 
 msgid "FieldLabel|33.Comments|Comments"
 msgstr "Commentaires"
@@ -11789,7 +11788,7 @@ msgid "FieldLabel|33.Irreversibility|Irreversibility"
 msgstr "Irréversibilité"
 
 msgid "FieldLabel|34.ThreatStressRating|Threat-Stress Rating"
-msgstr "Évaluation de la menace-tension"
+msgstr "Évaluation de la menace-stress"
 
 msgid "FieldLabel|34.PseudoThreatRating|Summary Rating"
 msgstr "Sommaire évaluation"
@@ -12543,36 +12542,36 @@ msgid ""
 "the next time you generate a report. As a result, try to make the changes in "
 "the appropriate Miradi fields where possible.</p>"
 msgstr ""
-"<p><table>\t<tr>\t\t<td><IMG height=48 alt=\"\" hspace=20 src=\"icons/info-"
-"48.png\" width=48 align=absMiddle border=0>\t\t</td>\t\t<td width='20'></td>"
-"\t\t<td>\t\t\t<FONT face=Tahoma color=#000000 size=5 name=\"Tahoma\">\t\t\t"
-"\t<STRONG>En savoir plus à propos des rapports</STRONG>\t\t\t</FONT>\t\t"
-"\t&nbsp;\t\t</td>\t\t\t</tr></table></p><br><hr><H3>Une vue d'ensemble des "
-"rapports dans Miradi</H3>Cette vue vous permet de produire de nombreux "
-"rapports à propos de votre projet. Les rapports représentent seulement une "
-"des modalités pour exporter vos informations de Miradi à d'autres "
-"applications.<br><p>Miradi support actuellement deux types de rapports :"
-"<ul><li><b>Rapports standards - </b>Il s'agit de rapports prédéfinis qui "
-"produisent des documents conformément aux normes ouvertes CMP. Utilisez le "
-"bouton <code class='toolbarbutton'>&lt;Full&nbsp;Project&nbsp;Report&gt;</"
-"code> pour créer un document affichant toutes les informations de votre "
-"projet ; utilisez les autres boutons pour créer un document affichant une "
-"section de votre plan.</li><br><li><b>Rapports personnalisés - </b>Il s'agit "
-"de rapports prédéfinis qui reproduisent des documents conformément aux "
-"besoins d'une organisation en particulier. Utilisez le bouton approprié pour "
-"générer le rapport que vous souhaitez. Contactez-nous à l'adresse e-mail <A "
-"href=\"mailto:support@miradi.org\">support@miradi.org</A> si vous souhaitez "
-"élaborer votre rapport personnalisé.</li></ul><p>Une fois que vous avez "
-"sélectionné l'un des rapports, Miradi vous demandera de spécifier où "
-"enregistrer le fichier RTF. Les fichiers RTF (Rich Text Files) sont "
-"compatibles avec la plupart des programmes de traitement de texte y compris "
-"Microsoft Word. Cependant si vous ouvrez ce fichier dans Microsoft Word vous "
-"devrez l'enregistrer sous un fichier .doc au lieu de RTF. L'enregistrement "
-"sous RTF peut engendrer un fichier volumineux.</p><p "
-"class='hint'><b>Conseil :</b> Les modifications faites aux rapports en "
-"dehors de Miradi ne seront pas gardées la prochaine fois que vous allez "
-"générer un rapport. Par conséquent essayez d'effectuer les modifications "
-"dans les champs Miradi appropriés où possible.</p>"
+"<p><table>\t<tr>\t\t<td><IMG height=48 alt=\"\" hspace=20 src=\"icons/"
+"info-48.png\" width=48 align=absMiddle border=0>\t\t</td>\t\t<td "
+"width='20'></td>\t\t<td>\t\t\t<FONT face=Tahoma color=#000000 size=5 name="
+"\"Tahoma\">\t\t\t\t<STRONG>En savoir plus à propos des rapports</STRONG>\t\t"
+"\t</FONT>\t\t\t&nbsp;\t\t</td>\t\t\t</tr></table></p><br><hr><H3>Une vue "
+"d'ensemble des rapports dans Miradi</H3>Cette vue vous permet de produire de "
+"nombreux rapports à propos de votre projet. Les rapports représentent "
+"seulement une des modalités pour exporter vos informations de Miradi à "
+"d'autres applications.<br><p>Miradi support actuellement deux types de "
+"rapports :<ul><li><b>Rapports standards - </b>Il s'agit de rapports "
+"prédéfinis qui produisent des documents conformément aux normes ouvertes "
+"CMP. Utilisez le bouton <code class='toolbarbutton'>&lt;Full&nbsp;"
+"Project&nbsp;Report&gt;</code> pour créer un document affichant toutes les "
+"informations de votre projet ; utilisez les autres boutons pour créer un "
+"document affichant une section de votre plan.</li><br><li><b>Rapports "
+"personnalisés - </b>Il s'agit de rapports prédéfinis qui reproduisent des "
+"documents conformément aux besoins d'une organisation en particulier. "
+"Utilisez le bouton approprié pour générer le rapport que vous souhaitez. "
+"Contactez-nous à l'adresse e-mail <A href=\"mailto:support@miradi.org"
+"\">support@miradi.org</A> si vous souhaitez élaborer votre rapport "
+"personnalisé.</li></ul><p>Une fois que vous avez sélectionné l'un des "
+"rapports, Miradi vous demandera de spécifier où enregistrer le fichier RTF. "
+"Les fichiers RTF (Rich Text Files) sont compatibles avec la plupart des "
+"programmes de traitement de texte y compris Microsoft Word. Cependant si "
+"vous ouvrez ce fichier dans Microsoft Word vous devrez l'enregistrer sous un "
+"fichier .doc au lieu de RTF. L'enregistrement sous RTF peut engendrer un "
+"fichier volumineux.</p><p class='hint'><b>Conseil :</b> Les modifications "
+"faites aux rapports en dehors de Miradi ne seront pas gardées la prochaine "
+"fois que vous allez générer un rapport. Par conséquent essayez d'effectuer "
+"les modifications dans les champs Miradi appropriés où possible.</p>"
 
 msgid ""
 "html|/resources/views/ReportsView/Workshop.html|<p><table>\t<tr>\t\t<td><IMG "
@@ -12843,17 +12842,17 @@ msgid ""
 "practices/bp_6\">http://conserveonline.org/workspaces/cbdgateway/cap/"
 "practices/bp_6</A></P> <P>TNC. 2007. <EM>Conservation Action Planning "
 "Toolbox. 7. Establish Measures.<BR></EM>&nbsp;&nbsp;&nbsp;&nbsp;<A href="
-"\"http://conserveonline.org/workspaces/cbdgateway/cap/practices/bp_7"
-"\">http://conserveonline.org/workspaces/cbdgateway/cap/practices/bp_7</A></"
-"P> <P>TNC. 2007. <EM>Conservation Action Planning Toolbox. 8. Develop "
+"\"http://conserveonline.org/workspaces/cbdgateway/cap/practices/"
+"bp_7\">http://conserveonline.org/workspaces/cbdgateway/cap/practices/bp_7</"
+"A></P> <P>TNC. 2007. <EM>Conservation Action Planning Toolbox. 8. Develop "
 "Workplan.<BR></EM>&nbsp;&nbsp;&nbsp;&nbsp;<A href=\"http://conserveonline."
 "org/workspaces/cbdgateway/cap/practices/bp_8\">http://conserveonline.org/"
 "workspaces/cbdgateway/cap/practices/bp_8</A></P></BLOCKQUOTE>"
 msgstr ""
-"<p><table>\t<tr>\t\t<td><IMG height=48 alt=\"\" hspace=20 src=\"icons/info-"
-"48.png\" width=48 align=absMiddle border=0></td>\t\t\t<td width='20'>\t\t</"
-"td>\t\t<td>\t\t\t<FONT face=Tahoma color=#000000 size=5 name=\"Tahoma\">\t\t"
-"\t<STRONG>En savoir plus à propos de l'affichage planification</STRONG></"
+"<p><table>\t<tr>\t\t<td><IMG height=48 alt=\"\" hspace=20 src=\"icons/"
+"info-48.png\" width=48 align=absMiddle border=0></td>\t\t\t<td width='20'>\t"
+"\t</td>\t\t<td>\t\t\t<FONT face=Tahoma color=#000000 size=5 name=\"Tahoma\">"
+"\t\t\t<STRONG>En savoir plus à propos de l'affichage planification</STRONG></"
 "FONT>&nbsp;\t\t</td>\t</tr></table></p><br><HR><H3>Une vue d'ensemble de "
 "l'affichage planification</H3>L'affichage planification vous permet de tirer "
 "des informations de vos modèles conceptuels et de vos chaînes de résultats "
@@ -12927,9 +12926,9 @@ msgstr ""
 "cbdgateway/cap/practices/bp_7\">http://conserveonline.org/workspaces/"
 "cbdgateway/cap/practices/bp_7</A></P> <P>TNC. 2007. <EM>Conservation Action "
 "Planning Toolbox. 8. Develop Workplan.<BR></EM>&nbsp;&nbsp;&nbsp;&nbsp;<A "
-"href=\"http://conserveonline.org/workspaces/cbdgateway/cap/practices/bp_8"
-"\">http://conserveonline.org/workspaces/cbdgateway/cap/practices/bp_8</A></"
-"P></BLOCKQUOTE>"
+"href=\"http://conserveonline.org/workspaces/cbdgateway/cap/practices/"
+"bp_8\">http://conserveonline.org/workspaces/cbdgateway/cap/practices/bp_8</"
+"A></P></BLOCKQUOTE>"
 
 msgid ""
 "html|/resources/views/PlanningView/Workshop.html|<p><table>\t<tr>\t"
@@ -13030,9 +13029,9 @@ msgid ""
 "available in the resources&nbsp;section   of:<BR>&nbsp;&nbsp;&nbsp;&nbsp; "
 "<A   href=\"http://fosonline.org\">http://fosonline.org</A></P></BLOCKQUOTE>"
 msgstr ""
-"<p><table>\t<tr>\t\t<td><IMG height=48 alt=\"\" hspace=20 src=\"icons/info-"
-"48.png\" width=48 align=absMiddle border=0></td>\t\t<td width='20'></td>\t"
-"\t<td>\t\t\t<FONT face=Tahoma color=#000000 size=5 name=\"Tahoma\">\t\t\t"
+"<p><table>\t<tr>\t\t<td><IMG height=48 alt=\"\" hspace=20 src=\"icons/"
+"info-48.png\" width=48 align=absMiddle border=0></td>\t\t<td width='20'></td>"
+"\t\t<td>\t\t\t<FONT face=Tahoma color=#000000 size=5 name=\"Tahoma\">\t\t\t"
 "\t<STRONG>En savoir plus</STRONG>\t\t\t</FONT>\t\t\t&nbsp;\t\t</td>\t\t\t</"
 "tr></table></p><br><HR><H3>A propos des pages en savoir plus</H3>Les pages "
 "en savoir plus sont contextuelles pour voire que vous êtes effectivement "
@@ -13347,9 +13346,9 @@ msgid ""
 "best basic guide is:</P><BLOCKQUOTE dir=ltr style=\"MARGIN-RIGHT: 0px\">  "
 "<P>TNC. 2007. <EM>Conservation Action Planning Toolbox. 3. Assess Viability "
 "of   Focal Conservation Targets.<BR></EM>&nbsp;&nbsp;&nbsp;&nbsp;<A   href="
-"\"http://conserveonline.org/workspaces/cbdgateway/cap/practices/bp_3"
-"\">http://conserveonline.org/workspaces/cbdgateway/cap/practices/bp_3</A></"
-"P></BLOCKQUOTE><P>More detailed guidance is available in:</P><BLOCKQUOTE "
+"\"http://conserveonline.org/workspaces/cbdgateway/cap/practices/"
+"bp_3\">http://conserveonline.org/workspaces/cbdgateway/cap/practices/bp_3</"
+"A></P></BLOCKQUOTE><P>More detailed guidance is available in:</P><BLOCKQUOTE "
 "dir=ltr style=\"MARGIN-RIGHT: 0px\">  <P>Parrish, J.D., D.P. Braun, and R.S. "
 "Unnasch. 2003. Are we conserving what   we say we are? Measuring ecological "
 "integrity within protected areas.   <EM>Bioscience</EM> 53: 851-860.</P>  "
@@ -13357,42 +13356,43 @@ msgid ""
 "Viability   of the Focal Conservation Targets.</EM> The Nature Conservancy.</"
 "P></BLOCKQUOTE></BODY></HTML>"
 msgstr ""
-"<p><table>\t<tr>\t\t<td><IMG height=48 alt=\"\" hspace=20 src=\"icons/info-"
-"48.png\" width=48 align=absMiddle border=0>\t\t</td>\t\t<td width='20'></td>"
-"\t\t<td>\t\t\t<FONT face=Tahoma color=#000000 size=5 name=\"Tahoma\">\t\t\t"
-"\t<STRONG>En savoir plus à propos de l'analyse viabilité  </STRONG>\t\t\t</"
-"FONT>\t\t\t&nbsp;\t\t</td>\t\t\t</tr></table></p><br><hr><H3>Vue d'ensemble "
-"de l'analyse de viabilité</H3>Une étape importante dans la gestion de tout "
-"système est le développement d'une bonne compréhension de ce que vous êtes "
-"en train de mettre en œuvre. En particulier vous devez être en mesure de "
-"définir les buts spécifiques futures, évaluer l'état actuel du système et "
-"mesurer vos avancements au fur et à mesure que vous allez vers ces buts. Par "
-"exemple les médecins considèrent un individu en bonne santé s'il a, entre "
-"autre, une fréquence cardiaque et une tension artérielle comprise dans des "
-"valeurs correspondantes à son âge et condition. Si un patient est en déhors "
-"des valeurs normales, alors le médecin peut prescrire une thérapie et "
-"ensuire suivre les conditions du patient dans le temps au fur et à mesure "
-"que les valeurs rentrent dans la normalité.<br><P>Ce processus de définir "
-"des buts mesurables est particulièrement stimulant pour les cibles de "
-"protection de la nature focales utilisées dans les projets de la "
-"biodiversité. La plupart des cibles de protection de la nature focales sont "
-"des systèmes très complexe qui varient dans le temps. Il n'est donc pas "
-"facile de définir ou mesurer la \"santé\" d'un ours ou d'une population de "
-"poissons migrateurs, une forêt, ou un récif corallien dans une manière "
-"systématique et reproductible. L'analyse de viabilité de la cible est une "
-"méthode flexible et puissante qui a été développée pour résoudre ce problème "
-"sur la base des principes écologiques. Elle fournit un cadre régulier pour "
-"définir l'état actuel et la condition future souhaitée des cibles de "
-"protection de la nature focales. </P><P>L'analyse de la viabilité a été tout "
-"d'abord développée par The Nature Conservancy.&nbsp;The Conservancy a publié "
-"de nombreuses guides différentes pour effectuer l'analyse de la viabilité. "
-"La meilleure guide de base est :</P><BLOCKQUOTE dir=ltr style=\"MARGIN-"
-"RIGHT: 0px\">  <P>TNC. 2007. <EM>Conservation Action Planning Toolbox. 3. "
-"Assess Viability of   Focal Conservation Targets.<BR></EM>&nbsp;&nbsp;&nbsp;"
-"&nbsp;<A   href=\"http://conserveonline.org/workspaces/cbdgateway/cap/"
-"practices/bp_3\">http://conserveonline.org/workspaces/cbdgateway/cap/"
-"practices/bp_3</A></P></BLOCKQUOTE><P>Des lignes directrices plus détaillées "
-"sont disponibles dans :</P><BLOCKQUOTE dir=ltr style=\"MARGIN-RIGHT: 0px\">  "
+"<p><table>\t<tr>\t\t<td><IMG height=48 alt=\"\" hspace=20 src=\"icons/"
+"info-48.png\" width=48 align=absMiddle border=0>\t\t</td>\t\t<td "
+"width='20'></td>\t\t<td>\t\t\t<FONT face=Tahoma color=#000000 size=5 name="
+"\"Tahoma\">\t\t\t\t<STRONG>En savoir plus à propos de l'analyse viabilité  </"
+"STRONG>\t\t\t</FONT>\t\t\t&nbsp;\t\t</td>\t\t\t</tr></table></"
+"p><br><hr><H3>Vue d'ensemble de l'analyse de viabilité</H3>Une étape "
+"importante dans la gestion de tout système est le développement d'une bonne "
+"compréhension de ce que vous êtes en train de mettre en œuvre. En "
+"particulier vous devez être en mesure de définir les buts spécifiques "
+"futures, évaluer l'état actuel du système et mesurer vos avancements au fur "
+"et à mesure que vous allez vers ces buts. Par exemple les médecins "
+"considèrent un individu en bonne santé s'il a, entre autre, une fréquence "
+"cardiaque et une tension artérielle comprise dans des valeurs "
+"correspondantes à son âge et condition. Si un patient est en déhors des "
+"valeurs normales, alors le médecin peut prescrire une thérapie et ensuire "
+"suivre les conditions du patient dans le temps au fur et à mesure que les "
+"valeurs rentrent dans la normalité.<br><P>Ce processus de définir des buts "
+"mesurables est particulièrement stimulant pour les cibles de protection de "
+"la nature focales utilisées dans les projets de la biodiversité. La plupart "
+"des cibles de protection de la nature focales sont des systèmes très "
+"complexe qui varient dans le temps. Il n'est donc pas facile de définir ou "
+"mesurer la \"santé\" d'un ours ou d'une population de poissons migrateurs, "
+"une forêt, ou un récif corallien dans une manière systématique et "
+"reproductible. L'analyse de viabilité de la cible est une méthode flexible "
+"et puissante qui a été développée pour résoudre ce problème sur la base des "
+"principes écologiques. Elle fournit un cadre régulier pour définir l'état "
+"actuel et la condition future souhaitée des cibles de protection de la "
+"nature focales. </P><P>L'analyse de la viabilité a été tout d'abord "
+"développée par The Nature Conservancy.&nbsp;The Conservancy a publié de "
+"nombreuses guides différentes pour effectuer l'analyse de la viabilité. La "
+"meilleure guide de base est :</P><BLOCKQUOTE dir=ltr style=\"MARGIN-RIGHT: "
+"0px\">  <P>TNC. 2007. <EM>Conservation Action Planning Toolbox. 3. Assess "
+"Viability of   Focal Conservation Targets.<BR></EM>&nbsp;&nbsp;&nbsp;&nbsp;"
+"<A   href=\"http://conserveonline.org/workspaces/cbdgateway/cap/practices/"
+"bp_3\">http://conserveonline.org/workspaces/cbdgateway/cap/practices/bp_3</"
+"A></P></BLOCKQUOTE><P>Des lignes directrices plus détaillées sont "
+"disponibles dans :</P><BLOCKQUOTE dir=ltr style=\"MARGIN-RIGHT: 0px\">  "
 "<P>Parrish, J.D., D.P. Braun, and R.S. Unnasch. 2003. Are we conserving "
 "what   we say we are? Measuring ecological integrity within protected "
 "areas.   <EM>Bioscience</EM> 53: 851-860.</P>  <P>Braun, D.P. 2007. "
@@ -14076,26 +14076,26 @@ msgstr ""
 "sein de la portée, la menace risque de dégrader/réduire sérieusement la "
 "cible ou de réduire sa population de 31-70% dans dix ans ou trois "
 "générations.</li><li><b>Moyen :</b> Au sein de la portée, la menace risque "
-"de dégrader/réduire moyennement la cible ou de réduire sa population de 11-"
-"30% dans dix ans ou trois générations.</li><li><b>Faible :</b> Au sein de la "
-"portée, la menace risque seulement de dégrader/réduire légèrement la cible "
-"ou de réduire sa population de 1-10% dans dix ans ou trois générations.</"
-"li></ul><p><strong>Irréversibilité (Permanence) -  </strong>Le niveau auquel "
-"les effets de la menace peut être inversé et la cible affectée par la menace "
-"rétablie.</p><ul><li><b>Très élevé:</b> Les effets de la menace ne peuvent "
-"pas être inversés et la cible est improbable qui puisse être rétablie et/ou "
-"il faudrait plus de 100 ans pour atteindre cet objectif (par ex., zone "
-"humide transformée en centre commercial).</li><li><b>Élevé :</b> Les effets "
-"de la menace peuvent être techniquement inversés et la cible rétablie, mais "
-"cela est pratiquement inaccessible et/ou il faudrait 21-100 années pour "
-"atteindre cet objectif (par ex., zone humide transformée en terre agricole)."
-"</li><li><b>Moyen :</b>Les effets de la menace peuvent être inversés et la "
-"cible rétablies avec un engagement raisonnable des ressources et/ou dans 6-"
-"20 ans (par ex. par le creusement de fossés et le drainage de zones humides)"
-"</li><li><b>Faible :</b>Les effets de la menace sont facilement réversibles "
-"et la cible peut être facilement rétablie à un prix relativement raisonnable "
-"e/ou dans 0-5 ans (par ex., véhicules tout terrain qui s'introduisent "
-"illégalement dans la zone humide).</li></ul>"
+"de dégrader/réduire moyennement la cible ou de réduire sa population de "
+"11-30% dans dix ans ou trois générations.</li><li><b>Faible :</b> Au sein de "
+"la portée, la menace risque seulement de dégrader/réduire légèrement la "
+"cible ou de réduire sa population de 1-10% dans dix ans ou trois générations."
+"</li></ul><p><strong>Irréversibilité (Permanence) -  </strong>Le niveau "
+"auquel les effets de la menace peut être inversé et la cible affectée par la "
+"menace rétablie.</p><ul><li><b>Très élevé:</b> Les effets de la menace ne "
+"peuvent pas être inversés et la cible est improbable qui puisse être "
+"rétablie et/ou il faudrait plus de 100 ans pour atteindre cet objectif (par "
+"ex., zone humide transformée en centre commercial).</li><li><b>Élevé :</b> "
+"Les effets de la menace peuvent être techniquement inversés et la cible "
+"rétablie, mais cela est pratiquement inaccessible et/ou il faudrait 21-100 "
+"années pour atteindre cet objectif (par ex., zone humide transformée en "
+"terre agricole).</li><li><b>Moyen :</b>Les effets de la menace peuvent être "
+"inversés et la cible rétablies avec un engagement raisonnable des ressources "
+"et/ou dans 6-20 ans (par ex. par le creusement de fossés et le drainage de "
+"zones humides)</li><li><b>Faible :</b>Les effets de la menace sont "
+"facilement réversibles et la cible peut être facilement rétablie à un prix "
+"relativement raisonnable e/ou dans 0-5 ans (par ex., véhicules tout terrain "
+"qui s'introduisent illégalement dans la zone humide).</li></ul>"
 
 msgid ""
 "html|/resources/views/ThreatMatrixView/Examples.html|<p><table>\t<tr>\t"
@@ -14221,9 +14221,9 @@ msgid ""
 "available in the resources&nbsp;section   of:<BR>&nbsp;&nbsp;&nbsp;&nbsp; "
 "<A   href=\"http://fosonline.org\">http://fosonline.org</A></P></BLOCKQUOTE>"
 msgstr ""
-" <p><table>\t<tr>\t\t<td><IMG height=48 alt=\"\" hspace=20 src=\"icons/info-"
-"48.png\" width=48 align=absMiddle border=0></td>\t\t<td width='20'></td>\t"
-"\t<td>\t\t\t<FONT face=Tahoma color=#000000 size=5 name=\"Tahoma\">\t\t\t"
+" <p><table>\t<tr>\t\t<td><IMG height=48 alt=\"\" hspace=20 src=\"icons/"
+"info-48.png\" width=48 align=absMiddle border=0></td>\t\t<td width='20'></td>"
+"\t\t<td>\t\t\t<FONT face=Tahoma color=#000000 size=5 name=\"Tahoma\">\t\t\t"
 "\t<STRONG>En savoir plus</STRONG>\t\t\t</FONT>\t\t\t&nbsp;\t\t</td>\t\t\t</"
 "tr></table></p><br><HR><H3>A propos des pages en savoir plus</H3>Les pages "
 "en savoir plus sont contextuelles pour voir que vous êtes effectivement dans "
@@ -14396,9 +14396,9 @@ msgid ""
 "specific&nbsp;examples for each step in the <EM>CMP Open Standards.</EM> "
 "More examples will be forthcoming in future versions of Miradi."
 msgstr ""
-" <p><table>\t<tr>\t\t<td><IMG height=48 alt=\"\" hspace=20 src=\"icons/eg2-"
-"48.png\" width=48 align=absMiddle border=0></td>\t\t<td width='20'></td>\t"
-"\t<td>\t\t\t<FONT face=Tahoma color=#000000 size=5 name=\"Tahoma\">\t\t\t"
+" <p><table>\t<tr>\t\t<td><IMG height=48 alt=\"\" hspace=20 src=\"icons/"
+"eg2-48.png\" width=48 align=absMiddle border=0></td>\t\t<td width='20'></td>"
+"\t\t<td>\t\t\t<FONT face=Tahoma color=#000000 size=5 name=\"Tahoma\">\t\t\t"
 "\t<STRONG>Exemples</STRONG>\t\t\t</FONT>\t\t\t&nbsp;\t\t</td>\t\t\t</tr></"
 "table></p><br><HR><H3>A propos des pages d'exemple</H3>Ces pages fourniront "
 "des exemples contextuels pour chaque étape décrite dans les <EM>Normes "
@@ -16016,8 +16016,8 @@ msgid ""
 "The desired&nbsp;future status is a <a href='Definition:Goal' "
 "class='definition'>goal</a> (or at least a sub-goal) for your project.&nbsp;"
 "You should consider the appropriate spatial extent and time frame for "
-"achieving the desired status; some changes may require long time periods (50-"
-"100 years).\t\t\t\t<p>If you are using the Simple Viability assessment "
+"achieving the desired status; some changes may require long time periods "
+"(50-100 years).\t\t\t\t<p>If you are using the Simple Viability assessment "
 "method, then it will be necessary later on in the process to craft a goal "
 "for each target. If you are using the Key Attribute viability assessment "
 "method, however, then technically all of your Future Status measurements for "
@@ -22034,8 +22034,8 @@ msgid ""
 "development must be \"extreme\". XP can work well, but it is very difficult "
 "to implement successfully, and is not appropriate for all teams or projects."
 "For Miradi, we used a subset of XP that is also a variant of the<a "
-"href='http://en.wikipedia.org/wiki/Crystal_Clear_%28software_development%"
-"29'>Crystal Clear</a> methodology.</p><p>For us, the benefits of Agile "
+"href='http://en.wikipedia.org/wiki/Crystal_Clear_%28software_development"
+"%29'>Crystal Clear</a> methodology.</p><p>For us, the benefits of Agile "
 "Programming include:<ul><li>Early delivery of working software</"
 "li><li>Responsiveness to changing requirements</li><li>Low defect counts</"
 "li><li>Efficient use of funds</li><li>Avoiding end-of-cycle \"death marches"
@@ -31521,6 +31521,7 @@ msgstr ""
 "subtropicales humides caducifoliées___NT0155"
 
 msgid ""
+
 "choice|/resources/fieldoptions/TncTerrestrialEcoRegions.tsv|Purus "
 "Varzeá___NT___Neotropic___1___Tropical and Subtropical Moist Broadleaf "
 "Forests___NT0156"
@@ -36706,16 +36707,17 @@ msgstr ""
 #~ "AdaptiveManagementTool.pdf</A> (1.8 mb)</P><P>Salafsky, N., R. Margoluis, "
 #~ "K.H. Redford, and J.G. Robinson. 2002, Improving the Practice of "
 #~ "Conservation: A Conceptual Framework and Research Agenda for Conservation "
-#~ "Science. <EM>Conservation Biology</EM> <STRONG>16</STRONG>: 1469-"
-#~ "1479. Disponible à l'adresse : <A href=\"http://www.fosonline.org/images/"
-#~ "Documents/Improving_the_Practice.pdf\">http://www.fosonline.org/images/"
-#~ "Documents/Improving_the_Practice.pdf</A> (400 kb)</P><P>Schon, D. 1983. "
-#~ "<EM>The Reflective Practitioner: How Professionals Think in Action.</EM> "
-#~ "Basic Books, New York.</P><P>TNC ENY. 2006. <EM>Conservation Measures: "
-#~ "Lessons from Corporate Blackbelts.</EM> The Nature Conservancy, Eastern "
-#~ "New York Chapter. Disponible à l'adresse : <A href=\"http://www.fosonline."
-#~ "org/Site_Documents/Grouped/Six_Sigma_CAP.pdf\">http://www.fosonline.org/"
-#~ "Site_Documents/Grouped/Six_Sigma_CAP.pdf</A> (381 kb)</P></BODY></HTML>"
+#~ "Science. <EM>Conservation Biology</EM> <STRONG>16</STRONG>: "
+#~ "1469-1479. Disponible à l'adresse : <A href=\"http://www.fosonline.org/"
+#~ "images/Documents/Improving_the_Practice.pdf\">http://www.fosonline.org/"
+#~ "images/Documents/Improving_the_Practice.pdf</A> (400 kb)</P><P>Schon, D. "
+#~ "1983. <EM>The Reflective Practitioner: How Professionals Think in Action."
+#~ "</EM> Basic Books, New York.</P><P>TNC ENY. 2006. <EM>Conservation "
+#~ "Measures: Lessons from Corporate Blackbelts.</EM> The Nature Conservancy, "
+#~ "Eastern New York Chapter. Disponible à l'adresse : <A href=\"http://www."
+#~ "fosonline.org/Site_Documents/Grouped/Six_Sigma_CAP.pdf\">http://www."
+#~ "fosonline.org/Site_Documents/Grouped/Six_Sigma_CAP.pdf</A> (381 kb)</P></"
+#~ "BODY></HTML>"
 
 #~ msgid ""
 #~ "html|/resources/dashboard/4C.html|<h1>4C. Adapt your strategic plan</"
