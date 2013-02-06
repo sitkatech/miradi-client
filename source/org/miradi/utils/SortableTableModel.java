@@ -38,12 +38,19 @@ abstract public class SortableTableModel extends AbstractTableModel implements M
 	protected ORefList getSortedRefs(int sortByTableColumn, String sortDirectionCode)
 	{
 		Vector<ORef> sortedRefs = getCurrentSortedRefs();
+		if (!shouldSortRows())
+			return new ORefList(sortedRefs);
 		
 		Collections.sort(sortedRefs, createComparator(sortByTableColumn));
 		if (sortDirectionCode.equals(SortDirectionQuestion.REVERSED_SORT_ORDER_CODE))
 			Collections.reverse(sortedRefs);
 		
 		return new ORefList(sortedRefs);
+	}
+
+	protected boolean shouldSortRows()
+	{
+		return true;
 	}
 
 	private Vector<ORef> getCurrentSortedRefs()
