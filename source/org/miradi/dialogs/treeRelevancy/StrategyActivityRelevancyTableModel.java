@@ -80,6 +80,12 @@ public class StrategyActivityRelevancyTableModel extends SingleBooleanColumnEdit
 	{
 		return UNIQUE_MODEL_IDENTIFIER;
 	}
+
+	@Override
+	protected boolean shouldSortRows()
+	{
+		return false;
+	}
 				
 	private static final String UNIQUE_MODEL_IDENTIFIER = "StrategyActivityRelevancyTableModel";
 	
