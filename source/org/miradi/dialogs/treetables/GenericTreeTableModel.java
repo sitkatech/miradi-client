@@ -161,7 +161,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		return fullyExpandedObjectRefs;
 	}
 	
-	public Vector<ORefList> getFullyExpandedHierarchyRefListList() throws Exception
+	public Vector<ORefList> getFullyExpandedHierarchyRefListListExcludingLeafNodes() throws Exception
 	{
 		Vector<ORefList> fullyExpandedObjectRefs = new Vector<ORefList>();
 		Vector<TreePath> fullExpandedNodeList = getFullyExpandedTreePathListExcludingLeafNodes();
