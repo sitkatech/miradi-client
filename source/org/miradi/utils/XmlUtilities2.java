@@ -99,6 +99,8 @@ public class XmlUtilities2
 			return;
 		
 		String valueWithoutHtmlTags = HtmlUtilities.stripAllHtmlTags(value);
+		//NOTE: The test method is not totally accurate because it
+		//does not handle all characters, like non breaking space  &nbsp;
 		//NOTE: this safety mechanism might be a speed concern
 		if (!isValidXmlWithNoHtmlTags(valueWithoutHtmlTags))
 			EAM.logWarning("Invalid xml value =" + valueWithoutHtmlTags);
