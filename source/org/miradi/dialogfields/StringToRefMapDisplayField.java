@@ -58,8 +58,6 @@ public class StringToRefMapDisplayField extends ObjectMultilineDisplayField
 				projectIds += key + " - " + projectId + "<br/>";
 			}
 			
-			System.out.println("BOOOM = " + projectIds);
-			
 			super.setText(projectIds);
 		}
 		catch (Exception e)
