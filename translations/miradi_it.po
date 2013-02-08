@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-04 16:02-0600\n"
+"POT-Creation-Date: 2013-02-08 11:46-0600\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -2034,7 +2034,7 @@ msgstr "Approva i ruoli nel team"
 msgid "All on One Page"
 msgstr "Tutto in una pagina"
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:81
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:82
 msgid "All subtasks within this item will be removed as well."
 msgstr ""
 "Tutte le sotto-attività all'interno di questo oggetto verranno rimosse."
@@ -2467,7 +2467,7 @@ msgstr "Chiudi"
 msgid "Button|Continue"
 msgstr "Continua"
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:82
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:83
 msgid "Button|Delete"
 msgstr "Elimina"
 
@@ -2550,7 +2550,7 @@ msgstr "Sostituisci"
 msgid "Button|Replace Backup"
 msgstr "Sostituisci backup"
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:82
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:83
 msgid "Button|Retain"
 msgstr "Mantieni"
 
@@ -5008,11 +5008,11 @@ msgstr "Medio"
 msgid "Medium (Default)"
 msgstr "Medio(predefinito)"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:246
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:245
 msgid "MenuBar|Actions"
 msgstr "Azioni"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:176
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:175
 msgid "MenuBar|Edit"
 msgstr "Modifica"
 
@@ -5020,15 +5020,15 @@ msgstr "Modifica"
 msgid "MenuBar|File"
 msgstr "File"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:577
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:576
 msgid "MenuBar|Help"
 msgstr "Aiuto"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:509
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:508
 msgid "MenuBar|Step-by-Step"
 msgstr "Passo passo"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:438
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:437
 msgid "MenuBar|View"
 msgstr "Visualizza"
 
@@ -5065,7 +5065,7 @@ msgid "Menu|Export Current Project as..."
 msgstr "Esporta il progetto come...."
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:282
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:426
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:425
 msgid "Menu|Group Box"
 msgstr "Blocco gruppo"
 
@@ -7873,7 +7873,7 @@ msgstr ""
 "l'ultimo  Miradi, aspetta una nuova versione che supporti questo formato, "
 "<br>o ri-esporta in un formato più vecchio e supportato."
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:79
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:80
 msgid "This item is shared, so will be deleted from multiple places."
 msgstr "Questo elemento è condiviso, quindi verrà eliminato da più posti."
 
@@ -8072,7 +8072,7 @@ msgstr "Proprietà del Fattore Contribuente"
 msgid "Title|Customize Table"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:83
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:84
 msgid "Title|Delete"
 msgstr "Elimina"
 
