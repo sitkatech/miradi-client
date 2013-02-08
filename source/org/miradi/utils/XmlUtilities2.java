@@ -71,7 +71,7 @@ public class XmlUtilities2
 	{
 		try
 		{
-			logWarningIfNotValidXmlWithoutSurroundingHtmlTags(value);
+			logWarningIfNotValidHtml(value);
 		}
 		catch(RuntimeException e)
 		{
@@ -92,7 +92,7 @@ public class XmlUtilities2
 		
 		return value;
 	}
-	public static void logWarningIfNotValidXmlWithoutSurroundingHtmlTags(final String value)
+	public static void logWarningIfNotValidHtml(final String value)
 	{
 		if (value == null)
 			return;
