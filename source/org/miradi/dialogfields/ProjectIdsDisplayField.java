@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import java.awt.Color;
+import java.util.HashMap;
 import java.util.Set;
 
 import org.miradi.main.EAM;
@@ -50,12 +51,17 @@ public class ProjectIdsDisplayField extends ObjectMultilineDisplayField
 			StringRefMap stringMap = new StringRefMap(newValue);
 			Set<String> projectIdsAsKeys = stringMap.getKeys();
 			String projectIds = "";
-			for(String key : projectIdsAsKeys)
+			for(String externalContextCode : projectIdsAsKeys)
 			{
-				ORef xenodataRefForKey = stringMap.getValue(key);
+				ORef xenodataRefForKey = stringMap.getValue(externalContextCode);
 				Xenodata xenodata = Xenodata.find(getProject(), xenodataRefForKey);
-				final String projectId = xenodata.getData(Xenodata.TAG_PROJECT_ID);
-				projectIds += key + " - " + projectId + "<br/>";
+				final String projectCodeWithinExternalContext = xenodata.getData(Xenodata.TAG_PROJECT_ID);
+				
+				HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+				tokenReplacementMap.put("%externalContextCode", externalContextCode);
+				tokenReplacementMap.put("%projectCodeWithinExternalContext", projectCodeWithinExternalContext);
+				
+				projectIds += EAM.substitute(EAM.text("%externalContextCode - %projectCodeWithinExternalContext  <br/>"), tokenReplacementMap);
 			}
 			
 			super.setText(projectIds);
