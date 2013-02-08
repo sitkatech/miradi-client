@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-08 12:16-0600\n"
+"POT-Creation-Date: 2013-02-08 15:31-0600\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -229,6 +229,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListField.java:81
 msgid "%countLabel: %itemCount"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogfields/ExternalProjectsDisplayField.java:64
+msgid "%externalContextCode - %projectCodeWithinExternalContext  <br/>"
 msgstr ""
 
 #: Miradi/source/org/miradi/wizard/noproject/FileSystemProjectOrDirectoryNode.java:91
