@@ -30,9 +30,9 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.Xenodata;
 
-public class ProjectIdsDisplayField extends ObjectMultilineDisplayField
+public class ExternalProjectsDisplayField extends ObjectMultilineDisplayField
 {
-	public ProjectIdsDisplayField(MainWindow mainWindow, ORef refToUse, String tag) throws Exception
+	public ExternalProjectsDisplayField(MainWindow mainWindow, ORef refToUse, String tag) throws Exception
 	{
 		super(mainWindow, refToUse, tag);
 	}

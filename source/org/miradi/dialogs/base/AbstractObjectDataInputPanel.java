@@ -73,7 +73,7 @@ import org.miradi.dialogfields.StrategyGoalOverrideListField;
 import org.miradi.dialogfields.StrategyObjectiveOverrideListField;
 import org.miradi.dialogfields.StringMapProjectResourceFilterEditorField;
 import org.miradi.dialogfields.SingleStringToRefMapReadonlyField;
-import org.miradi.dialogfields.ProjectIdsDisplayField;
+import org.miradi.dialogfields.ExternalProjectsDisplayField;
 import org.miradi.dialogfields.WhenEditorField;
 import org.miradi.dialogfields.WhoEditorField;
 import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
@@ -436,7 +436,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createProjectIdsDisplayField(String tag) throws Exception
 	{
-		return new ProjectIdsDisplayField(getMainWindow(), getFirstSelectedRef(), tag);
+		return new ExternalProjectsDisplayField(getMainWindow(), getFirstSelectedRef(), tag);
 	}
 	
 	public ObjectDataInputField createStringField(String tag, int column) throws Exception
