@@ -49,9 +49,9 @@ public class ExternalProjectsDisplayField extends ObjectMultilineDisplayField
 		try
 		{
 			StringRefMap stringMap = new StringRefMap(newValue);
-			Set<String> projectIdsAsKeys = stringMap.getKeys();
+			Set<String> externalContextCodes = stringMap.getKeys();
 			String projectIds = "";
-			for(String externalContextCode : projectIdsAsKeys)
+			for(String externalContextCode : externalContextCodes)
 			{
 				ORef xenodataRefForKey = stringMap.getValue(externalContextCode);
 				Xenodata xenodata = Xenodata.find(getProject(), xenodataRefForKey);
