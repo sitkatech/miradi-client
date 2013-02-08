@@ -50,7 +50,7 @@ public class SummaryProjectPanel extends ObjectDataInputPanel
 		addField(createChoiceField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_PROJECT_LANGUAGE, new MajorLanguagesQuestion()));
 		addField(createDateChooserField(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE));
 		addField(createReadonlyTextField(ProjectMetadata.PSEUDO_TAG_PROJECT_FILENAME));
-		addField(createProjectIdsDisplayField(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP));
+		addField(createExternalProjectIdsDisplayField(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP));
 		addBlankHorizontalLine();
 		
 		addField(createShortStringField(ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER));

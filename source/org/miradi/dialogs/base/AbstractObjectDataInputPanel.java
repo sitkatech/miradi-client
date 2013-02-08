@@ -434,7 +434,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new SingleStringToRefMapReadonlyField(getMainWindow(), getFirstSelectedRef(), tag, mapKeyToUse);
 	}
 	
-	public ObjectDataInputField createProjectIdsDisplayField(String tag) throws Exception
+	public ObjectDataInputField createExternalProjectIdsDisplayField(String tag) throws Exception
 	{
 		return new ExternalProjectsDisplayField(getMainWindow(), getFirstSelectedRef(), tag);
 	}
