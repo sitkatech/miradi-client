@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-08 15:31-0600\n"
+"POT-Creation-Date: 2013-02-11 17:16-0600\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -5353,6 +5353,10 @@ msgstr ""
 "que vai rastrear durante um período de tempo, bem como os métodos que vai "
 "usar."
 
+#: Miradi/source/org/miradi/questions/MonitoringTreeConfigurationQuestion.java:36
+msgid "Monitoring Results"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:38
 msgid "Monitoring-Related"
 msgstr "Relacionado ao Monitoramento"
@@ -6165,10 +6169,6 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/diagram/ResultsChainDiagramPanel.java:50
 msgid "Results Chains"
 msgstr "Cadeias de Resultados"
-
-#: Miradi/source/org/miradi/questions/MonitoringTreeConfigurationQuestion.java:36
-msgid "Results Monitoring Plan"
-msgstr "Plano de Monitoramento de Resultos"
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/main/MiradiStrings.java:64
@@ -27556,6 +27556,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid "Results Monitoring Plan"
+#~ msgstr "Plano de Monitoramento de Resultos"
 
 #~ msgid "FieldLabel|11.XenodataRefs|ConPro Project Number"
 #~ msgstr "Número de Projeto de ConPro"

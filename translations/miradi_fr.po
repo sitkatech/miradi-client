@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-08 15:31-0600\n"
+"POT-Creation-Date: 2013-02-11 17:16-0600\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -5209,6 +5209,10 @@ msgstr ""
 "comprend des indcateurs que vous suivrez dans le temps ainsi que des "
 "méthodes que vous utiliserez."
 
+#: Miradi/source/org/miradi/questions/MonitoringTreeConfigurationQuestion.java:36
+msgid "Monitoring Results"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:38
 msgid "Monitoring-Related"
 msgstr ""
@@ -6010,10 +6014,6 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/diagram/ResultsChainDiagramPanel.java:50
 msgid "Results Chains"
 msgstr "Chaînes de résultats"
-
-#: Miradi/source/org/miradi/questions/MonitoringTreeConfigurationQuestion.java:36
-msgid "Results Monitoring Plan"
-msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/main/MiradiStrings.java:64
