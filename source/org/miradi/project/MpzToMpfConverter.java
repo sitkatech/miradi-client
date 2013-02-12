@@ -448,7 +448,7 @@ public class MpzToMpfConverter extends AbstractConverter
 		{
 			in.skip(totalSize - availableUpTo20k);
 			int got = in.read(exceptionLogBytes);
-			if(got != availableUpTo20k)
+			if(got > availableUpTo20k)
 				throw new IOException("convertExceptionLog Tried to read " + availableUpTo20k + " but got " + got);
 		}
 		finally
