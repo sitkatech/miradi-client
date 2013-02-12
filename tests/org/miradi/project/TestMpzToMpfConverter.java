@@ -76,7 +76,9 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 		
 		MiradiZipFile miradiZipFile = new MiradiZipFile(file);
 		ZipEntry exceptionsLogEntry = miradiZipFile.getEntry("Exceptions.log");
+
 		assertNotEquals("File is not compressed?", exceptionsLogEntry.getSize(), exceptionsLogEntry.getCompressedSize());
+		assertTrue("compressed file zise should be larger than uncompressed?", exceptionsLogEntry.getCompressedSize() > exceptionsLogEntry.getSize());
 		String exceptionsFromZip = MpzToMpfConverter.getExceptionsLog(miradiZipFile, exceptionsLogEntry);
 		assertEquals("incorrect unzipped exceptions lenth?", expectedExceptionsLength, exceptionsFromZip.getBytes("UTF-8").length);
 	}
