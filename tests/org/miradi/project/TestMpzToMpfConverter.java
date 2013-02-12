@@ -27,6 +27,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Collection;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 import org.martus.util.UnicodeStringReader;
 import org.miradi.ids.BaseId;
@@ -40,6 +42,7 @@ import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.MiradiZipFile;
+import org.miradi.utils.MpfToMpzConverter;
 import org.miradi.utils.NullProgressMeter;
 
 public class TestMpzToMpfConverter extends TestCaseWithProject
@@ -47,6 +50,69 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 	public TestMpzToMpfConverter(String name)
 	{
 		super(name);
+	}
+	
+	public void testGetExceptionsLog() throws Exception
+	{
+		verifyExceptionsLog(20000, 40000);
+		verifyExceptionsLog(20000, 20000);
+		verifyExceptionsLog(10000, 10000);
+	}
+
+	private void verifyExceptionsLog(final int expectedExceptionsLength, final int exceptionsLenthToCreate) throws Exception
+	{
+		String sampleException = createSampleExceptionsLogUpToLenth(exceptionsLenthToCreate);
+		final File file = File.createTempFile("$$$tempExceptionsLogZipFile", null);
+		final FileOutputStream fileOutputStream = new FileOutputStream(file);
+		try
+		{
+			writeZipStream(fileOutputStream, sampleException.toString());
+		}
+		finally
+		{
+			fileOutputStream.flush();
+			fileOutputStream.close();
+		}
+		
+		MiradiZipFile miradiZipFile = new MiradiZipFile(file);
+		ZipEntry exceptionsLogEntry = miradiZipFile.getEntry("Exceptions.log");
+		assertNotEquals("File is not compressed?", exceptionsLogEntry.getSize(), exceptionsLogEntry.getCompressedSize());
+		String exceptionsFromZip = MpzToMpfConverter.getExceptionsLog(miradiZipFile, exceptionsLogEntry);
+		assertEquals("incorrect unzipped exceptions lenth?", expectedExceptionsLength, exceptionsFromZip.getBytes("UTF-8").length);
+	}
+
+	private String createSampleExceptionsLogUpToLenth(final int maxExceptionsLenth) throws Exception
+	{
+		StackTraceElement[] element = new RuntimeException().getStackTrace();
+		String sampleException = "";
+		for (int stackCount = 0; stackCount < element.length; ++stackCount)
+		{
+			sampleException += "\t" + element[stackCount] + "\n";
+		}
+		
+		String sampleExceptionUpToMaxLength = "";
+		while (sampleExceptionUpToMaxLength.length() < maxExceptionsLenth)
+		{
+			sampleExceptionUpToMaxLength += sampleException;
+		}
+		
+		return sampleExceptionUpToMaxLength.substring(sampleExceptionUpToMaxLength.length() - maxExceptionsLenth);
+	}
+		
+	
+	private void writeZipStream(final FileOutputStream fileOutputStream, String sampleValue) throws Exception
+	{
+		ZipOutputStream zipOutputStream = new ZipOutputStream(fileOutputStream);
+		zipOutputStream.setLevel(ZipOutputStream.STORED);
+		try
+		{
+			MpfToMpzConverter.writeZipEntry(zipOutputStream, "Exceptions.log", sampleValue);
+		}
+		finally
+		{
+			zipOutputStream.flush();
+			zipOutputStream.close();
+		}
 	}
 	
 	public void testExtractVersion() throws Exception
