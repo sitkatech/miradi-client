@@ -197,8 +197,8 @@ public class MpfToMpzConverter extends AbstractConverter
 
 	public static void writeZipEntry(ZipOutputStream zipOutputStream, final String fileName, String zipContent) throws Exception
 	{
-		ZipEntry versionEntry = new ZipEntry(fileName);
-		zipOutputStream.putNextEntry(versionEntry);
+		ZipEntry zipEntry = new ZipEntry(fileName);
+		zipOutputStream.putNextEntry(zipEntry);
 		zipOutputStream.write(StringUtilities.getUtf8EncodedBytes(zipContent));
 		zipOutputStream.closeEntry();
 	}
