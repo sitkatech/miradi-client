@@ -401,7 +401,7 @@ public class MpzToMpfConverter extends AbstractConverter
 		return getNameOfTopLevelDirectory(entry);
 	}
 
-	private String getNameOfTopLevelDirectory(ZipEntry entry)
+	public static String getNameOfTopLevelDirectory(ZipEntry entry)
 	{
 		String rawEntryName = entry.getName();
 		String normalizedEntryName = ZipUtilities.getNormalizedWithoutLeadingSlash(rawEntryName);
@@ -431,17 +431,24 @@ public class MpzToMpfConverter extends AbstractConverter
 
 	private void convertExceptionLog(ZipEntry entry) throws Exception
 	{
+		String exceptionLog = getExceptionsLog(getZipFile(), entry);
+		exceptionLog = HtmlUtilities.convertPlainTextToHtmlText(exceptionLog);
+		getProject().appendToExceptionLog(exceptionLog);
+	}
+
+	public static String getExceptionsLog(MiradiZipFile miradiZipFile, ZipEntry entry) throws Exception
+	{
 		long totalSize = entry.getSize();
 		final int MAX_EXCEPTION_LOG_SIZE = 20000;
 		long availableUpTo20k = Math.min(totalSize, MAX_EXCEPTION_LOG_SIZE);
 		byte[] exceptionLogBytes = new byte[(int)availableUpTo20k];
 
-		InputStream in = getZipFile().getInputStream(entry);
+		InputStream in = miradiZipFile.getInputStream(entry);
 		try
 		{
 			in.skip(totalSize - availableUpTo20k);
 			int got = in.read(exceptionLogBytes);
-			if(got != availableUpTo20k)
+			if(got > availableUpTo20k)
 				throw new IOException("convertExceptionLog Tried to read " + availableUpTo20k + " but got " + got);
 		}
 		finally
@@ -450,8 +457,7 @@ public class MpzToMpfConverter extends AbstractConverter
 		}
 		
 		String exceptionLog = safeConvertUtf8BytesToString(exceptionLogBytes);
-		exceptionLog = HtmlUtilities.convertPlainTextToHtmlText(exceptionLog);
-		getProject().appendToExceptionLog(exceptionLog);
+		return exceptionLog;
 	}
 
 	public static String safeConvertUtf8BytesToString(byte[] exceptionLogBytes) throws UnsupportedEncodingException
