@@ -712,9 +712,6 @@
 <!-- SWAHILI                                                            -->
 <!-- ================================================================== -->
 <target name="swahili" depends="pot" description="Update Swahili Content">
-	<property name="po.locale" value="SW" />
-	<property name="po.file" value="${miradi.po.sw}" />
-	<antcall target="create-new-po"/>
 	<antcall target="update-po">
 		<param name="po.file" value="${miradi.po.sw}"/>
 		<param name="language.code" value="sw"/>
