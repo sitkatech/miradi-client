@@ -760,7 +760,7 @@
 <!-- T R A N S L A T I O N S                                            -->
 <!-- ================================================================== -->
 <target name="translations" 
-	depends="init, pot, chinese, french, german, hebrew, hungarian, indonesian, italian, malagasy, mongolian, portuguese, spanish, ukrainian" 
+	depends="init, pot, bulgarian, chinese, french, german, hebrew, hungarian, indonesian, italian, malagasy, mongolian, portuguese, spanish, swahili, ukrainian" 
 	description="Create Translatable Content jars/zips">
 
 	<!-- Add any new translation files -->	
