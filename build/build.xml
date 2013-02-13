@@ -591,9 +591,6 @@
 <!-- BULGARIAN                                                          -->
 <!-- ================================================================== -->
 <target name="bulgarian" depends="pot" description="Update Bulgarian Content">
-	<property name="po.locale" value="BG" />
-	<property name="po.file" value="${miradi.po.bg}" />
-	<antcall target="create-new-po"/>
 	<antcall target="update-po">
 		<param name="po.file" value="${miradi.po.bg}"/>
 		<param name="language.code" value="bg"/>
