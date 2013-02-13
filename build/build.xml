@@ -90,6 +90,7 @@
 
 	<!-- translations -->
 	<property name="miradi.pot" value="${dist.temp}/miradi.pot" />
+    <property name="miradi.po.bg" value="${translations.dir}/miradi_bg.po" />
     <property name="miradi.po.de" value="${translations.dir}/miradi_de.po" />
     <property name="miradi.po.es" value="${translations.dir}/miradi_es.po" />
     <property name="miradi.po.fr" value="${translations.dir}/miradi_fr.po" />
@@ -100,6 +101,7 @@
     <property name="miradi.po.mn" value="${translations.dir}/miradi_mn.po" />
     <property name="miradi.po.plt" value="${translations.dir}/miradi_plt.po" />
     <property name="miradi.po.por" value="${translations.dir}/miradi_por.po" />
+    <property name="miradi.po.sw" value="${translations.dir}/miradi_sw.po" />
     <property name="miradi.po.uk" value="${translations.dir}/miradi_uk.po" />
     <property name="miradi.po.zh" value="${translations.dir}/miradi_zh.po" />
 
@@ -586,6 +588,19 @@
 </target>
 
 <!-- ================================================================== -->
+<!-- BULGARIAN                                                          -->
+<!-- ================================================================== -->
+<target name="bulgarian" depends="pot" description="Update Bulgarian Content">
+	<property name="po.locale" value="BG" />
+	<property name="po.file" value="${miradi.po.bg}" />
+	<antcall target="create-new-po"/>
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.bg}"/>
+		<param name="language.code" value="bg"/>
+	</antcall>
+</target>
+			
+<!-- ================================================================== -->
 <!-- C H I N E S E                   -->
 <!-- ================================================================== -->
 <target name="chinese" depends="pot" description="Update Chinese Content">
@@ -696,6 +711,19 @@
 	</antcall>
 </target>
 	
+<!-- ================================================================== -->
+<!-- SWAHILI                                                            -->
+<!-- ================================================================== -->
+<target name="swahili" depends="pot" description="Update Swahili Content">
+	<property name="po.locale" value="SW" />
+	<property name="po.file" value="${miradi.po.sw}" />
+	<antcall target="create-new-po"/>
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.sw}"/>
+		<param name="language.code" value="sw"/>
+	</antcall>
+</target>
+			
 <!-- ================================================================== -->
 <!-- UKRAINIAN                   -->
 <!-- ================================================================== -->
