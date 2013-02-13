@@ -54,19 +54,19 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 	
 	public void testGetExceptionsLog() throws Exception
 	{
-		verifyExceptionsLog(20000, 40000);
-		verifyExceptionsLog(20000, 20000);
-		verifyExceptionsLog(10000, 10000);
+		verifyExceptionsLog(20000, 40000, ZipOutputStream.STORED);
+		verifyExceptionsLog(20000, 20000, ZipOutputStream.STORED);
+		verifyExceptionsLog(10000, 10000, ZipOutputStream.STORED);
 	}
 
-	private void verifyExceptionsLog(final int expectedExceptionsLength, final int exceptionsLenthToCreate) throws Exception
+	private void verifyExceptionsLog(final int expectedExceptionsLength, final int exceptionsLenthToCreate, final int zipMethod) throws Exception
 	{
 		String sampleException = createSampleExceptionsLogUpToLenth(exceptionsLenthToCreate);
 		final File file = File.createTempFile("$$$tempExceptionsLogZipFile", null);
 		final FileOutputStream fileOutputStream = new FileOutputStream(file);
 		try
 		{
-			writeZipStream(fileOutputStream, sampleException.toString());
+			writeZipStream(fileOutputStream, sampleException.toString(), zipMethod);
 		}
 		finally
 		{
@@ -104,10 +104,10 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 	}
 		
 	
-	private void writeZipStream(final FileOutputStream fileOutputStream, String sampleValue) throws Exception
+	private void writeZipStream(final FileOutputStream fileOutputStream, String sampleValue, final int zipMethod) throws Exception
 	{
 		ZipOutputStream zipOutputStream = new ZipOutputStream(fileOutputStream);
-		zipOutputStream.setLevel(ZipOutputStream.STORED);
+		zipOutputStream.setLevel(zipMethod);
 		try
 		{
 			MpfToMpzConverter.writeZipEntry(zipOutputStream, "Exceptions.log", sampleValue);
