@@ -124,7 +124,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	{
 		mainModel = createMainTableModel(rowColumnProvider);
 		multiTableModel = new PlanningTreeMultiTableModel(getTree().getUniqueTableIdentifier());
-		measurementModel = new PlanningViewMeasurementTableModel(getProject(), getTree());
+		measurementModel = new PlanningViewMeasurementTableModel(getProject(), getTree(), getRowColumnProvider());
 		futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), getTree());
 		workUnitsTableModel = new WorkPlanWorkUnitsTableModel(getProject(), getRowColumnProvider(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		resourceWorkUnitsTableModel = new ProjectResourceWorkUnitsTableModel(getProject(), getRowColumnProvider(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
