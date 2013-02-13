@@ -29,6 +29,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
@@ -41,9 +42,11 @@ import org.miradi.utils.CodeList;
 
 public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeTableSyncedTableModel
 {
-	public PlanningViewMeasurementTableModel(Project projectToUse, RowColumnBaseObjectProvider adapterToUse) throws Exception
+	public PlanningViewMeasurementTableModel(Project projectToUse, RowColumnBaseObjectProvider adapterToUse, PlanningTreeRowColumnProvider rowColumnProviderToUse) throws Exception
 	{
 		super(projectToUse, adapterToUse);
+		
+		rowColumnProvider = rowColumnProviderToUse;
 	}
 
 	public int getColumnCount()
@@ -122,10 +125,9 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 
 	private CodeList getVisibleRowCodes() throws Exception
 	{
-		CodeList visibleRows = ConfigurablePlanningTreeTableModel.getVisibleRowCodes(getProject());
-		return visibleRows;
+		return getRowColumnProvider().getRowCodesToShow();
 	}
-	
+
 	@Override
 	public ChoiceQuestion getColumnQuestion(int column)
 	{
@@ -155,6 +157,11 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 	{
 		return UNIQUE_MODEL_IDENTIFIER;
 	}
+	
+	private PlanningTreeRowColumnProvider getRowColumnProvider()
+	{
+		return rowColumnProvider;
+	}
 				
 	private static final String UNIQUE_MODEL_IDENTIFIER = "PlanningViewMeasurementTableModel";
 
@@ -164,4 +171,6 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 		Measurement.TAG_TREND, 
 		Measurement.TAG_STATUS_CONFIDENCE
 		};
+	
+	private PlanningTreeRowColumnProvider rowColumnProvider;
 }

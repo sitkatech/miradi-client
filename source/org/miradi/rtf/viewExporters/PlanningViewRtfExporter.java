@@ -177,7 +177,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		CodeList columnsToShow = rowColumnProvider.getColumnCodesToShow();
 		if (columnsToShow.contains(Measurement.META_COLUMN_TAG))
 		{
-			PlanningViewMeasurementTableModel measurementModel = new PlanningViewMeasurementTableModel(project, model);
+			PlanningViewMeasurementTableModel measurementModel = new PlanningViewMeasurementTableModel(project, model, rowColumnProvider);
 			multiModelExporter.addExportable(new PlanningViewMainModelExporter(project, measurementModel, model, measurementModel.getUniqueTableModelIdentifier()));
 		}
 		if (columnsToShow.contains(Indicator.META_COLUMN_TAG))
