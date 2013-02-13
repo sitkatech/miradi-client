@@ -86,16 +86,18 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 	private String createSampleExceptionsLogUpToLenth(final int maxExceptionsLenth) throws Exception
 	{
 		StackTraceElement[] element = new RuntimeException().getStackTrace();
-		String sampleException = "";
+		StringBuffer sampleException = new StringBuffer();
 		for (int stackCount = 0; stackCount < element.length; ++stackCount)
 		{
-			sampleException += "\t" + element[stackCount] + "\n";
+			sampleException.append("\t");
+			sampleException.append(element[stackCount]);
+			sampleException.append("\n");
 		}
 		
-		String sampleExceptionUpToMaxLength = "";
+		StringBuffer sampleExceptionUpToMaxLength = new StringBuffer();
 		while (sampleExceptionUpToMaxLength.length() < maxExceptionsLenth)
 		{
-			sampleExceptionUpToMaxLength += sampleException;
+			sampleExceptionUpToMaxLength.append(sampleException);
 		}
 		
 		return sampleExceptionUpToMaxLength.substring(sampleExceptionUpToMaxLength.length() - maxExceptionsLenth);
