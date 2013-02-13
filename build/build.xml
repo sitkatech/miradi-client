@@ -591,6 +591,9 @@
 <!-- BULGARIAN                                                          -->
 <!-- ================================================================== -->
 <target name="bulgarian" depends="pot" description="Update Bulgarian Content">
+	<property name="po.locale" value="BG" />
+	<property name="po.file" value="${miradi.po.bg}" />
+	<antcall target="create-new-po"/>
 	<antcall target="update-po">
 		<param name="po.file" value="${miradi.po.bg}"/>
 		<param name="language.code" value="bg"/>
@@ -757,7 +760,7 @@
 <!-- T R A N S L A T I O N S                                            -->
 <!-- ================================================================== -->
 <target name="translations" 
-	depends="init, pot, bulgarian, chinese, french, german, hebrew, hungarian, indonesian, italian, malagasy, mongolian, portuguese, spanish, swahili, ukrainian" 
+	depends="init, pot, bulgarian, chinese, french, german, hebrew, hungarian, indonesian, italian, malagasy, mongolian, portuguese, spanish, ukrainian" 
 	description="Create Translatable Content jars/zips">
 
 	<!-- Add any new translation files -->	
