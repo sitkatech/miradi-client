@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Collection;
+import java.util.zip.Deflater;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -54,19 +55,25 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 	
 	public void testGetExceptionsLog() throws Exception
 	{
-		verifyExceptionsLog(20000, 40000, ZipOutputStream.STORED);
-		verifyExceptionsLog(20000, 20000, ZipOutputStream.STORED);
-		verifyExceptionsLog(10000, 10000, ZipOutputStream.STORED);
+		verifyExceptionsLog(Deflater.DEFAULT_COMPRESSION);
+		verifyExceptionsLog(Deflater.NO_COMPRESSION);
 	}
 
-	private void verifyExceptionsLog(final int expectedExceptionsLength, final int exceptionsLenthToCreate, final int zipMethod) throws Exception
+	private void verifyExceptionsLog(final int compressionMethod) throws Exception
 	{
-		String sampleException = createSampleExceptionsLogUpToLenth(exceptionsLenthToCreate);
+		verifyExceptionsLog(20000, 40000, compressionMethod);
+		verifyExceptionsLog(20000, 20000, compressionMethod);
+		verifyExceptionsLog(10000, 10000, compressionMethod);
+	}
+
+	private void verifyExceptionsLog(final int expectedExceptionsLength, final int exceptionsLenthToCreate, final int compressionMethod) throws Exception
+	{
 		final File file = File.createTempFile("$$$tempExceptionsLogZipFile", null);
 		final FileOutputStream fileOutputStream = new FileOutputStream(file);
 		try
 		{
-			writeZipStream(fileOutputStream, sampleException.toString(), zipMethod);
+			String sampleException = createSampleExceptionsLogUpToLenth(exceptionsLenthToCreate);
+			writeZipStream(fileOutputStream, sampleException.toString(), compressionMethod);
 		}
 		finally
 		{
@@ -76,9 +83,6 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 		
 		MiradiZipFile miradiZipFile = new MiradiZipFile(file);
 		ZipEntry exceptionsLogEntry = miradiZipFile.getEntry("Exceptions.log");
-
-		assertNotEquals("File is not compressed?", exceptionsLogEntry.getSize(), exceptionsLogEntry.getCompressedSize());
-		assertTrue("compressed file zise should be larger than uncompressed?", exceptionsLogEntry.getCompressedSize() > exceptionsLogEntry.getSize());
 		String exceptionsFromZip = MpzToMpfConverter.getExceptionsLog(miradiZipFile, exceptionsLogEntry);
 		assertEquals("incorrect unzipped exceptions lenth?", expectedExceptionsLength, exceptionsFromZip.getBytes("UTF-8").length);
 	}
@@ -104,10 +108,10 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 	}
 		
 	
-	private void writeZipStream(final FileOutputStream fileOutputStream, String sampleValue, final int zipMethod) throws Exception
+	private void writeZipStream(final FileOutputStream fileOutputStream, String sampleValue, final int compressionMethod) throws Exception
 	{
 		ZipOutputStream zipOutputStream = new ZipOutputStream(fileOutputStream);
-		zipOutputStream.setLevel(zipMethod);
+		zipOutputStream.setLevel(compressionMethod);
 		try
 		{
 			MpfToMpzConverter.writeZipEntry(zipOutputStream, "Exceptions.log", sampleValue);
