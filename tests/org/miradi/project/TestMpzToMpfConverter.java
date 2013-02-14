@@ -42,6 +42,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.utils.FileUtilities;
 import org.miradi.utils.MiradiZipFile;
 import org.miradi.utils.MpfToMpzConverter;
 import org.miradi.utils.NullProgressMeter;
@@ -74,17 +75,17 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 		{
 			String sampleException = createSampleExceptionsLogUpToLenth(exceptionsLenthToCreate);
 			writeZipStream(fileOutputStream, sampleException.toString(), compressionMethod);
+			MiradiZipFile miradiZipFile = new MiradiZipFile(file);
+			ZipEntry exceptionsLogEntry = miradiZipFile.getEntry("Exceptions.log");
+			String exceptionsFromZip = MpzToMpfConverter.getExceptionsLog(miradiZipFile, exceptionsLogEntry);
+			assertEquals("incorrect unzipped exceptions lenth?", expectedExceptionsLength, exceptionsFromZip.getBytes("UTF-8").length);
 		}
 		finally
 		{
 			fileOutputStream.flush();
 			fileOutputStream.close();
+			FileUtilities.deleteIfExists(file);
 		}
-		
-		MiradiZipFile miradiZipFile = new MiradiZipFile(file);
-		ZipEntry exceptionsLogEntry = miradiZipFile.getEntry("Exceptions.log");
-		String exceptionsFromZip = MpzToMpfConverter.getExceptionsLog(miradiZipFile, exceptionsLogEntry);
-		assertEquals("incorrect unzipped exceptions lenth?", expectedExceptionsLength, exceptionsFromZip.getBytes("UTF-8").length);
 	}
 
 	private String createSampleExceptionsLogUpToLenth(final int maxExceptionsLenth) throws Exception
