@@ -110,7 +110,6 @@ public class TestConproXmlImporter extends TestCaseWithProject
 			ORefList indicatorRefs = projectAfterImport.getIndicatorPool().getRefList();
 			assertEquals("incorrect indicator count?", 1, indicatorRefs.size());
 			Indicator importedIndicator = Indicator.find(projectAfterImport, indicatorRefs.getFirstElement());
-			System.out.println( importedIndicator.getThresholdsMap().getCodeToUserStringMap().toJsonString());
 			assertEquals("threshold should be encoded?", "a&amp;b", importedIndicator.getThresholdsMap().getCodeToUserStringMap().toHashMap().get("3"));
 		}
 		finally
@@ -405,7 +404,6 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		{
 			exportProject(firstExportedXmlFile, getProject());
 			String firstExport = convertFileContentToString(firstExportedXmlFile);
-			System.out.println(firstExport);
 			importProject(firstExportedXmlFile, projectAfterImport);
 			exportProject(afterXmlOutFile, projectAfterImport);
 			String secondExport = convertFileContentToString(afterXmlOutFile);
