@@ -30,6 +30,8 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramObject;
+import org.miradi.utils.HtmlViewPanel;
+import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.views.diagram.doers.AbstractPasteDoer;
 
 public class PasteDoer extends AbstractPasteDoer
@@ -124,8 +126,13 @@ public class PasteDoer extends AbstractPasteDoer
 		if (!diagramPaster.wasAnyDataLost())
 			return;
 		
-		EAM.notifyDialog(EAM.text("Some of the data could not be moved to this project because " +
-								  "it refers to other data that only exists in the old project"));
+		final String dialogTitle = EAM.text("Data lost during paste");
+		final String message = "Some work planning data cannot be copied between projects because it refers to other" +
+		  						"data that only exists in the old project. This would include include work or expense" +
+		  						"assignments to project resources, accounting codes, funding sources, and budget codes.";
+		
+		HtmlViewPanel htmlViewPanel = HtmlViewPanelWithMargins.createFromTextString(getMainWindow(), dialogTitle, message);
+		htmlViewPanel.showAsOkDialog();
 	}
 	
 	private boolean pastingBetweenProjectsInDifferentDiagramType(AbstractTransferableMiradiList list, DiagramPaster diagramPaster)
