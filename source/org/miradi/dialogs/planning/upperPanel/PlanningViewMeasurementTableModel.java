@@ -38,15 +38,12 @@ import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.questions.TrendQuestion;
 import org.miradi.schemas.MeasurementSchema;
-import org.miradi.utils.CodeList;
 
 public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeTableSyncedTableModel
 {
 	public PlanningViewMeasurementTableModel(Project projectToUse, RowColumnBaseObjectProvider adapterToUse, PlanningTreeRowColumnProvider rowColumnProviderToUse) throws Exception
 	{
 		super(projectToUse, adapterToUse);
-		
-		rowColumnProvider = rowColumnProviderToUse;
 	}
 
 	public int getColumnCount()
@@ -95,9 +92,6 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 		if (!Indicator.is(rawObjectForRow))
 			return null;
 		
-		if (areMeasurementRowsVisible())
-			return null;
-		
 		return getLatestIndicatorMeasurement(rawObjectForRow);
 	}
 
@@ -108,24 +102,6 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 				return null;
 		
 		return Measurement.find(getProject(), latestMeasurementRef);
-	}
-
-	private boolean areMeasurementRowsVisible()
-	{
-		try
-		{
-			return getVisibleRowCodes().contains(MeasurementSchema.OBJECT_NAME);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return false;
-		}
-	}
-
-	private CodeList getVisibleRowCodes() throws Exception
-	{
-		return getRowColumnProvider().getRowCodesToShow();
 	}
 
 	@Override
@@ -158,11 +134,6 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 		return UNIQUE_MODEL_IDENTIFIER;
 	}
 	
-	private PlanningTreeRowColumnProvider getRowColumnProvider()
-	{
-		return rowColumnProvider;
-	}
-				
 	private static final String UNIQUE_MODEL_IDENTIFIER = "PlanningViewMeasurementTableModel";
 
 	public final static String[] columnTags = {
@@ -171,6 +142,4 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 		Measurement.TAG_TREND, 
 		Measurement.TAG_STATUS_CONFIDENCE
 		};
-	
-	private PlanningTreeRowColumnProvider rowColumnProvider;
 }
