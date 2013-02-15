@@ -447,13 +447,7 @@ public class MpzToMpfConverter extends AbstractConverter
 		try
 		{
 			in.skip(totalSize - availableUpTo20k);
-			int totalReadCount = 0;
-			byte byteRead = 0;
-			while ((byteRead = (byte)in.read()) > -1)
-			{				
-				exceptionLogBytes[totalReadCount] = byteRead;
-				++totalReadCount;
-			}
+			int totalReadCount = readBytesInPlace(exceptionLogBytes, in);
 			
 			if(totalReadCount != availableUpTo20k)
 				throw new IOException("convertExceptionLog Tried to read " + availableUpTo20k + " but got " + totalReadCount);
@@ -464,6 +458,18 @@ public class MpzToMpfConverter extends AbstractConverter
 		}
 		
 		return safeConvertUtf8BytesToString(exceptionLogBytes);
+	}
+
+	private static int readBytesInPlace(byte[] exceptionLogBytes, InputStream in) throws Exception
+	{
+		int totalReadCount = 0;
+		byte byteRead = 0;
+		while ((byteRead = (byte)in.read()) > -1)
+		{				
+			exceptionLogBytes[totalReadCount] = byteRead;
+			++totalReadCount;
+		}
+		return totalReadCount;
 	}
 
 	public static String safeConvertUtf8BytesToString(byte[] exceptionLogBytes) throws UnsupportedEncodingException
