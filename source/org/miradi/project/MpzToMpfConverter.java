@@ -447,9 +447,16 @@ public class MpzToMpfConverter extends AbstractConverter
 		try
 		{
 			in.skip(totalSize - availableUpTo20k);
-			int got = in.read(exceptionLogBytes);
-			if(got != availableUpTo20k && isCompressed(entry))
-				throw new IOException("convertExceptionLog Tried to read " + availableUpTo20k + " but got " + got);
+			int totalReadCount = 0;
+			byte byteRead = 0;
+			while ((byteRead = (byte)in.read()) > -1)
+			{				
+				exceptionLogBytes[totalReadCount] = byteRead;
+				++totalReadCount;
+			}
+			
+			if(totalReadCount != availableUpTo20k)
+				throw new IOException("convertExceptionLog Tried to read " + availableUpTo20k + " but got " + totalReadCount);
 		}
 		finally
 		{
@@ -458,11 +465,6 @@ public class MpzToMpfConverter extends AbstractConverter
 		
 		String exceptionLog = safeConvertUtf8BytesToString(exceptionLogBytes);
 		return exceptionLog;
-	}
-
-	private static boolean isCompressed(ZipEntry entry)
-	{
-		return entry.getCompressedSize() < entry.getSize();
 	}
 
 	public static String safeConvertUtf8BytesToString(byte[] exceptionLogBytes) throws UnsupportedEncodingException
