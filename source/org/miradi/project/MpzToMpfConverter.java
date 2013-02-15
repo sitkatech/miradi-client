@@ -463,8 +463,7 @@ public class MpzToMpfConverter extends AbstractConverter
 			in.close();
 		}
 		
-		String exceptionLog = safeConvertUtf8BytesToString(exceptionLogBytes);
-		return exceptionLog;
+		return safeConvertUtf8BytesToString(exceptionLogBytes);
 	}
 
 	public static String safeConvertUtf8BytesToString(byte[] exceptionLogBytes) throws UnsupportedEncodingException
