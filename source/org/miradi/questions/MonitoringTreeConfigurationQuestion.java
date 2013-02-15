@@ -32,8 +32,8 @@ public class MonitoringTreeConfigurationQuestion extends StaticChoiceQuestion
 	private static ChoiceItem[] getStaticChoices()
 	{
 		return new ChoiceItem[] {
-			new ChoiceItem(EFFECTIVE_MONITORING_PLAN_CODE, EAM.text("Effectiveness Monitoring Plan")),
-			new ChoiceItem(RESULTS_MONITORING_PLAN_CODE, EAM.text("Monitoring Results")),
+			new ChoiceItem(EFFECTIVE_MONITORING_PLAN_CODE, EAM.text("Monitoring Plan")),
+			new ChoiceItem(RESULTS_MONITORING_PLAN_CODE, EAM.text("Monitoring Data")),
 		};
 	}
 	
