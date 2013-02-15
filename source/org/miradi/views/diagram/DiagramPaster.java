@@ -68,6 +68,7 @@ import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.IntermediateResultSchema;
@@ -853,6 +854,9 @@ abstract public class DiagramPaster
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			int type = getTypeFromJson(json);
 			if (ResourceAssignmentSchema.getObjectType() == type)
+				return true;
+			
+			if (ExpenseAssignmentSchema.getObjectType() == type)
 				return true;
 		}
 		
