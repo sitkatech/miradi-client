@@ -58,6 +58,7 @@ import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
+import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.BaseObjectDeepCopier;
 import org.miradi.utils.BaseObjectDeepCopierNotUsingCommands;
@@ -77,6 +78,7 @@ public class ProjectRepairer
 		int quarantinedCount = 0;
 		while(true)
 		{
+			untagOrphans();
 			Vector<ORef> orphanRefs = findOrphans();
 			if(orphanRefs.size() == 0)
 				break;
@@ -287,7 +289,6 @@ public class ProjectRepairer
 	private Vector<ORef> findOrphans()
 	{
 		Vector<ORef> orphanRefs = new Vector<ORef>();
-		
 		Set<Integer> topLevelTypes = ObjectType.getTopLevelObjectTypes();
 		for(int objectType = ObjectType.FIRST_OBJECT_TYPE; objectType < ObjectType.OBJECT_TYPE_COUNT; ++objectType)
 		{
@@ -316,6 +317,53 @@ public class ProjectRepairer
 		}
 		
 		return orphanRefs;
+	}
+	
+	private void untagOrphans() throws Exception
+	{
+		ORefList taggedObjectSetRefs = getProject().getPool(TaggedObjectSetSchema.getObjectType()).getORefList();
+		for(ORef taggedObjectSetRef : taggedObjectSetRefs)
+		{
+			TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), taggedObjectSetRef);
+			ORefList taggedObjectRefs = taggedObjectSet.getTaggedObjectRefs();
+			ORefList taggedOrphanRefs = findTaggedOrphans(taggedObjectSetRefs, taggedObjectRefs);
+			untagOrphans(taggedOrphanRefs);
+		}
+	}
+
+	private void untagOrphans(ORefList taggedObjectRefs) throws Exception
+	{
+		for(ORef refToUntag : taggedObjectRefs)
+		{
+			untagOrphan(refToUntag);
+		}
+	}
+
+	private void untagOrphan(ORef refToUntag) throws Exception
+	{
+		Vector<TaggedObjectSet> taggedObjectSetsWithFactor = getProject().getTaggedObjectSetPool().findTaggedObjectSetsWithFactor(refToUntag);
+		for (int index = 0; index < taggedObjectSetsWithFactor.size(); ++index)
+		{
+			TaggedObjectSet taggedObjectSet = taggedObjectSetsWithFactor.get(index);
+			ORefList currentTaggedObjectRefs = taggedObjectSet.getTaggedObjectRefs();
+			currentTaggedObjectRefs.remove(refToUntag);
+			getProject().setObjectData(taggedObjectSet, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, currentTaggedObjectRefs.toString());
+		}
+	}
+
+	private ORefList findTaggedOrphans(ORefList allTaggedObjectSetRefs, ORefList taggedObjectRefs)
+	{
+		ORefList orphandRefsToUntag = new ORefList();
+		for(ORef ref : taggedObjectRefs)
+		{
+			BaseObject baseObject = BaseObject.find(getProject(), ref);
+			ORefList allReferrers = baseObject.findObjectsThatReferToUs();
+			allReferrers.removeAll(allTaggedObjectSetRefs);
+			if (allReferrers.isEmpty())
+				orphandRefsToUntag.add(ref);
+		}
+		
+		return orphandRefsToUntag;
 	}
 
 	public ORefSet getFactorsWithoutDiagramFactors(int factorType)

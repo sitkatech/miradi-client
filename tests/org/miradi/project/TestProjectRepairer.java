@@ -45,6 +45,7 @@ import org.miradi.objects.GroupBox;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.schemas.AccountingCodeSchema;
@@ -77,6 +78,18 @@ public class TestProjectRepairer extends TestCaseWithProject
 	{
 		super.setUp();
 		repairer = new ProjectRepairer(getProject());
+	}
+	
+	public void testDetectOrphansRefferedToByTaggedObjectSet() throws Exception
+	{
+		Target target = getProject().createTarget();
+		TaggedObjectSet taggedObjectSet = getProject().createTaggedObjectSet();
+		getProject().setObjectData(taggedObjectSet.getRef(), TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, new ORefList(target.getRef()).toString());
+		
+		assertEquals("Target was not added correctly?", 1, getProject().getTargetPool().size());
+		repairer.quarantineOrphans();
+		assertEquals("Orphand target should have been deleted?", 0, getProject().getTargetPool().size());
+		assertEquals("Deleted object was not removed from taggedObjectSet?", 0, taggedObjectSet.getTaggedObjectRefsSet().size());
 	}
 	
 	public void testRepairSimpleModeTargetReferringToMissingSimpleIndicator() throws Exception
