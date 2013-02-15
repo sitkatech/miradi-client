@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-13 16:16-0600\n"
+"POT-Creation-Date: 2013-02-15 13:31-0600\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -490,7 +490,7 @@ msgstr ""
 "dans la prochaine version de Miradi. <BR>Pour toute questions contactez "
 "support@miradi.org.</HTML>"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:56
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:58
 msgid ""
 "<HTML>When pasting between projects, can't paste from CM to RC or vice "
 "versa</HTML>"
@@ -2514,11 +2514,11 @@ msgstr ""
 msgid "Button|Overwrite"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:66
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:68
 msgid "Button|Paste"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:176
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:183
 msgid "Button|Paste As Copies"
 msgstr "Coller sous Copies"
 
@@ -2526,7 +2526,7 @@ msgstr "Coller sous Copies"
 msgid "Button|Paste Contents"
 msgstr "Coller Contenus"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:177
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:184
 msgid "Button|Paste Shared"
 msgstr "Coller partagé"
 
@@ -3068,6 +3068,10 @@ msgstr "Tableau de bord"
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:119
 msgid "Data Location"
 msgstr "Emplacement de données"
+
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:129
+msgid "Data lost during paste"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:62
 msgid "Data was exported as tab delimited."
@@ -6369,15 +6373,6 @@ msgstr "Petit"
 #: Miradi/source/org/miradi/questions/DiagramFactorFontSizeQuestion.java:36
 msgid "Smallest"
 msgstr "Très petit"
-
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:127
-msgid ""
-"Some of the data could not be moved to this project because it refers to "
-"other data that only exists in the old project"
-msgstr ""
-"Certaines données n'ont pas pu être déplacées dans ce projet parce qu'elles "
-"font référence à d'autres données qui existent uniquement dans le vieux "
-"projet"
 
 #: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:105
 msgid ""
@@ -33296,6 +33291,14 @@ msgid ""
 msgstr ""
 "Marine___Atlantique tropical occidental___Écorégion marine du versant nord-"
 "est du Brésil___Brésil"
+
+#~ msgid ""
+#~ "Some of the data could not be moved to this project because it refers to "
+#~ "other data that only exists in the old project"
+#~ msgstr ""
+#~ "Certaines données n'ont pas pu être déplacées dans ce projet parce "
+#~ "qu'elles font référence à d'autres données qui existent uniquement dans "
+#~ "le vieux projet"
 
 #~ msgid "FieldLabel|11.XenodataRefs|ConPro Project Number"
 #~ msgstr "Numéro du projet ConPro"

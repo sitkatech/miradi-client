@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-13 16:16-0600\n"
+"POT-Creation-Date: 2013-02-15 13:31-0600\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -501,7 +501,7 @@ msgstr ""
 "na próxima versão de Miradi. <BR>Se tiver dúvidas, entre em contato pelo "
 "email support@miradi.org.</HTML>"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:56
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:58
 msgid ""
 "<HTML>When pasting between projects, can't paste from CM to RC or vice "
 "versa</HTML>"
@@ -2591,11 +2591,11 @@ msgstr "Abrir"
 msgid "Button|Overwrite"
 msgstr "Sobregravar (Overwrite) "
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:66
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:68
 msgid "Button|Paste"
 msgstr "Colar"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:176
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:183
 msgid "Button|Paste As Copies"
 msgstr "Colar Como Cópias"
 
@@ -2603,7 +2603,7 @@ msgstr "Colar Como Cópias"
 msgid "Button|Paste Contents"
 msgstr "Colar o Conteudo"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:177
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:184
 msgid "Button|Paste Shared"
 msgstr "Colar Compartihado"
 
@@ -3161,6 +3161,10 @@ msgstr "Painel de Instumentos"
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:119
 msgid "Data Location"
 msgstr "Localização dos dados"
+
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:129
+msgid "Data lost during paste"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:62
 msgid "Data was exported as tab delimited."
@@ -6523,14 +6527,6 @@ msgstr "Pequeno"
 #: Miradi/source/org/miradi/questions/DiagramFactorFontSizeQuestion.java:36
 msgid "Smallest"
 msgstr "O menor"
-
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:127
-msgid ""
-"Some of the data could not be moved to this project because it refers to "
-"other data that only exists in the old project"
-msgstr ""
-"Não foi possível transferir todos os dados para este projeto porque refere a "
-"outros dados que somente existem no projeto antigo"
 
 #: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:105
 msgid ""
@@ -27556,6 +27552,13 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid ""
+#~ "Some of the data could not be moved to this project because it refers to "
+#~ "other data that only exists in the old project"
+#~ msgstr ""
+#~ "Não foi possível transferir todos os dados para este projeto porque "
+#~ "refere a outros dados que somente existem no projeto antigo"
 
 #~ msgid "Results Monitoring Plan"
 #~ msgstr "Plano de Monitoramento de Resultos"
