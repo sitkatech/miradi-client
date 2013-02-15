@@ -29,7 +29,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
-import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
@@ -41,7 +40,7 @@ import org.miradi.schemas.MeasurementSchema;
 
 public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeTableSyncedTableModel
 {
-	public PlanningViewMeasurementTableModel(Project projectToUse, RowColumnBaseObjectProvider adapterToUse, PlanningTreeRowColumnProvider rowColumnProviderToUse) throws Exception
+	public PlanningViewMeasurementTableModel(Project projectToUse, RowColumnBaseObjectProvider adapterToUse) throws Exception
 	{
 		super(projectToUse, adapterToUse);
 	}
