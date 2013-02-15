@@ -25,6 +25,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.utils.CodeList;
 
@@ -49,6 +50,7 @@ public class MonitoringPlanSubViewResultsRowColumnProvider extends AbstractPlann
 				ObjectiveSchema.OBJECT_NAME,
 				GoalSchema.OBJECT_NAME,
 				IndicatorSchema.OBJECT_NAME,
+				MeasurementSchema.OBJECT_NAME,
 				});
 	}
 
