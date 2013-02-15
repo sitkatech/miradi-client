@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-13 16:16-0600\n"
+"POT-Creation-Date: 2013-02-15 13:31-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -490,7 +490,7 @@ msgstr ""
 "tersedia di Miradi versi berikutnya. <BR>Jika ada pertanyaan, hubungi "
 "support@miradi.org.</HTML> "
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:56
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:58
 msgid ""
 "<HTML>When pasting between projects, can't paste from CM to RC or vice "
 "versa</HTML>"
@@ -2423,11 +2423,11 @@ msgstr ""
 msgid "Button|Overwrite"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:66
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:68
 msgid "Button|Paste"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:176
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:183
 msgid "Button|Paste As Copies"
 msgstr ""
 
@@ -2435,7 +2435,7 @@ msgstr ""
 msgid "Button|Paste Contents"
 msgstr "Tempelkan Isi… "
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:177
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:184
 msgid "Button|Paste Shared"
 msgstr ""
 
@@ -2972,6 +2972,10 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:119
 msgid "Data Location"
 msgstr "Lokasi Data"
+
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:129
+msgid "Data lost during paste"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:62
 msgid "Data was exported as tab delimited."
@@ -6230,14 +6234,6 @@ msgstr "Kecil"
 #: Miradi/source/org/miradi/questions/DiagramFactorFontSizeQuestion.java:36
 msgid "Smallest"
 msgstr "Paling Kecil"
-
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:127
-msgid ""
-"Some of the data could not be moved to this project because it refers to "
-"other data that only exists in the old project"
-msgstr ""
-"Beberapa data tidak bisa dipindahkan ke proyek ini karena merujuk ke data "
-"lain yang hanya ada dalam proyek lama"
 
 #: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:105
 msgid ""
@@ -32033,6 +32029,13 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid ""
+#~ "Some of the data could not be moved to this project because it refers to "
+#~ "other data that only exists in the old project"
+#~ msgstr ""
+#~ "Beberapa data tidak bisa dipindahkan ke proyek ini karena merujuk ke data "
+#~ "lain yang hanya ada dalam proyek lama"
 
 #~ msgid "FieldLabel|11.XenodataRefs|ConPro Project Number"
 #~ msgstr "Nomor Proyek ConPro "

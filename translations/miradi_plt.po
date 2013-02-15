@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-13 16:16-0600\n"
+"POT-Creation-Date: 2013-02-15 13:31-0600\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -482,7 +482,7 @@ msgid ""
 "support@miradi.org.</HTML>"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:56
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:58
 msgid ""
 "<HTML>When pasting between projects, can't paste from CM to RC or vice "
 "versa</HTML>"
@@ -2350,11 +2350,11 @@ msgstr ""
 msgid "Button|Overwrite"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:66
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:68
 msgid "Button|Paste"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:176
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:183
 msgid "Button|Paste As Copies"
 msgstr ""
 
@@ -2362,7 +2362,7 @@ msgstr ""
 msgid "Button|Paste Contents"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:177
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:184
 msgid "Button|Paste Shared"
 msgstr ""
 
@@ -2876,6 +2876,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:119
 msgid "Data Location"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:129
+msgid "Data lost during paste"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:62
@@ -5997,12 +6001,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/questions/DiagramFactorFontSizeQuestion.java:36
 msgid "Smallest"
-msgstr ""
-
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:127
-msgid ""
-"Some of the data could not be moved to this project because it refers to "
-"other data that only exists in the old project"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:105

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-13 16:16-0600\n"
+"POT-Creation-Date: 2013-02-15 13:31-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -487,7 +487,7 @@ msgstr ""
 "在下一个版本的Miradi中应当能够被实现。<BR>如果您有问题，请联系support@miradi."
 "org。</HTML> \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:56
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:58
 msgid ""
 "<HTML>When pasting between projects, can't paste from CM to RC or vice "
 "versa</HTML>"
@@ -2388,11 +2388,11 @@ msgstr ""
 msgid "Button|Overwrite"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:66
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:68
 msgid "Button|Paste"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:176
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:183
 msgid "Button|Paste As Copies"
 msgstr ""
 
@@ -2400,7 +2400,7 @@ msgstr ""
 msgid "Button|Paste Contents"
 msgstr "粘贴内容 \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:177
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:184
 msgid "Button|Paste Shared"
 msgstr ""
 
@@ -2930,6 +2930,10 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:119
 msgid "Data Location"
 msgstr "数据位置"
+
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:129
+msgid "Data lost during paste"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:62
 msgid "Data was exported as tab delimited."
@@ -6098,13 +6102,6 @@ msgstr "小"
 #: Miradi/source/org/miradi/questions/DiagramFactorFontSizeQuestion.java:36
 msgid "Smallest"
 msgstr "最小"
-
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:127
-msgid ""
-"Some of the data could not be moved to this project because it refers to "
-"other data that only exists in the old project"
-msgstr ""
-"有些数据不能被转移到本项目中，因为其指向那些仅存在于旧项目中的其它数据。 \t\t"
 
 #: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:105
 msgid ""
@@ -29135,6 +29132,13 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid ""
+#~ "Some of the data could not be moved to this project because it refers to "
+#~ "other data that only exists in the old project"
+#~ msgstr ""
+#~ "有些数据不能被转移到本项目中，因为其指向那些仅存在于旧项目中的其它数据。 "
+#~ "\t\t"
 
 #~ msgid "FieldLabel|11.XenodataRefs|ConPro Project Number"
 #~ msgstr "ConPro项目编号 \t\t"
