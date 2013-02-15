@@ -464,7 +464,7 @@ public class MpzToMpfConverter extends AbstractConverter
 	{
 		int totalReadCount = 0;
 		byte byteRead = 0;
-		while ((byteRead = (byte)in.read()) > -1)
+		while ((byteRead = (byte)in.read()) > -1 || totalReadCount > exceptionLogBytes.length)
 		{				
 			exceptionLogBytes[totalReadCount] = byteRead;
 			++totalReadCount;
