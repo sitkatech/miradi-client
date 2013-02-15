@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-15 13:31-0600\n"
+"POT-Creation-Date: 2013-02-15 13:46-0600\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -3559,10 +3559,6 @@ msgstr "Editor"
 msgid "Effective"
 msgstr "Effektiv"
 
-#: Miradi/source/org/miradi/questions/MonitoringTreeConfigurationQuestion.java:35
-msgid "Effectiveness Monitoring Plan"
-msgstr ""
-
 # ?felix
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:160
 msgid "Enable Spell Checking"
@@ -5294,11 +5290,16 @@ msgstr ""
 msgid "Missing Indicator(s) was removed!"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/MonitoringTreeConfigurationQuestion.java:36
+msgid "Monitoring Data"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/jump/ActionJumpMonitoringPlanOverviewStep.java:35
 msgid "Monitoring Overview"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:151
+#: Miradi/source/org/miradi/questions/MonitoringTreeConfigurationQuestion.java:35
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:204
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:69
 msgid "Monitoring Plan"
@@ -5309,10 +5310,6 @@ msgid ""
 "Monitoring Plan - A plan for collecting information that you and others need "
 "to know about your project. A good plan includes the indicators that you "
 "will track over time as well as the methods that you will use."
-msgstr ""
-
-#: Miradi/source/org/miradi/questions/MonitoringTreeConfigurationQuestion.java:36
-msgid "Monitoring Results"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:38
