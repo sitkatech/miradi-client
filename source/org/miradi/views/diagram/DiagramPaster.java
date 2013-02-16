@@ -221,6 +221,11 @@ abstract public class DiagramPaster
 			if (ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF.equals(tag))
 				return getCommandToFixRef(pastedObjectMap, newObject, tag);
 		}
+		
+		if (tag.equals(BaseObject.TAG_LEADER_RESOURCE))
+		{
+			return getCommandToFixRef(pastedObjectMap, newObject, tag);
+		}
 					
 		return new Command[0];
 	}
