@@ -126,7 +126,7 @@ public class PasteDoer extends AbstractPasteDoer
 		if (!diagramPaster.wasAnyDataLost())
 			return;
 		
-		final String dialogTitle = EAM.text("Data lost during paste");
+		final String dialogTitle = EAM.text("Paste Between Projects");
 		final String message = "Some work planning data cannot be copied between projects because it refers to other data " +
 							   "that only exists in the old project. This would include work or expense assignments to Project Resources, " +
 							   "Accounting Codes, Funding Sources, and items in Category #1 or Category #2 lists.";
