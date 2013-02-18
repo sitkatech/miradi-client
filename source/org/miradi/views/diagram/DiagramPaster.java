@@ -37,8 +37,8 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.IdList;
-import org.miradi.main.EAM;
 import org.miradi.main.AbstractTransferableMiradiList;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -858,6 +858,9 @@ abstract public class DiagramPaster
 			String jsonAsString = factorDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			int type = getTypeFromJson(json);
+			final ORef optRef = json.optRef(BaseObject.TAG_LEADER_RESOURCE);
+			if (optRef.isValid())
+				return true;
 			if (ResourceAssignmentSchema.getObjectType() == type)
 				return true;
 			
