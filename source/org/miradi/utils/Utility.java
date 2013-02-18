@@ -37,7 +37,7 @@ import org.miradi.main.EAM;
 
 public class Utility
 {
-	public static int readAsMuchAsPossible(byte[] exceptionLogBytes, InputStream in) throws Exception
+	public static int readAsMuchAsPossible(InputStream in, byte[] exceptionLogBytes) throws Exception
 	{
 		int totalReadCount = 0;
 		byte byteRead = 0;
