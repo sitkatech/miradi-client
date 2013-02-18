@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-18 12:31-0600\n"
+"POT-Creation-Date: 2013-02-18 12:46-0600\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -2518,7 +2518,7 @@ msgstr ""
 msgid "Button|Paste"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:183
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:184
 msgid "Button|Paste As Copies"
 msgstr "Coller sous Copies"
 
@@ -2526,7 +2526,7 @@ msgstr "Coller sous Copies"
 msgid "Button|Paste Contents"
 msgstr "Coller Contenus"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:184
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:185
 msgid "Button|Paste Shared"
 msgstr "Coller partagé"
 
@@ -3068,10 +3068,6 @@ msgstr "Tableau de bord"
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:119
 msgid "Data Location"
 msgstr "Emplacement de données"
-
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:129
-msgid "Data lost during paste"
-msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:62
 msgid "Data was exported as tab delimited."
@@ -5527,6 +5523,10 @@ msgstr "Page :"
 #: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:108
 msgid "Paste"
 msgstr "Copier"
+
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:129
+msgid "Paste Between Projects"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:103
 msgid "Paste Content..."

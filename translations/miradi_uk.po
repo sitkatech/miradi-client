@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-18 12:31-0600\n"
+"POT-Creation-Date: 2013-02-18 12:46-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -2489,7 +2489,7 @@ msgstr ""
 msgid "Button|Paste"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:183
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:184
 msgid "Button|Paste As Copies"
 msgstr ""
 
@@ -2497,7 +2497,7 @@ msgstr ""
 msgid "Button|Paste Contents"
 msgstr "Button|Вставити вміст"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:184
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:185
 msgid "Button|Paste Shared"
 msgstr ""
 
@@ -3035,10 +3035,6 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:119
 msgid "Data Location"
 msgstr "Розміщення даних"
-
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:129
-msgid "Data lost during paste"
-msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:62
 msgid "Data was exported as tab delimited."
@@ -5435,6 +5431,10 @@ msgstr "Сторінка:"
 #: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:108
 msgid "Paste"
 msgstr "Вставити"
+
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:129
+msgid "Paste Between Projects"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:103
 msgid "Paste Content..."
