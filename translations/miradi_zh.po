@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-18 12:31-0600\n"
+"POT-Creation-Date: 2013-02-18 12:46-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2392,7 +2392,7 @@ msgstr ""
 msgid "Button|Paste"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:183
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:184
 msgid "Button|Paste As Copies"
 msgstr ""
 
@@ -2400,7 +2400,7 @@ msgstr ""
 msgid "Button|Paste Contents"
 msgstr "粘贴内容 \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:184
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:185
 msgid "Button|Paste Shared"
 msgstr ""
 
@@ -2930,10 +2930,6 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:119
 msgid "Data Location"
 msgstr "数据位置"
-
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:129
-msgid "Data lost during paste"
-msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:62
 msgid "Data was exported as tab delimited."
@@ -5294,6 +5290,10 @@ msgstr "页： \t\t"
 #: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:108
 msgid "Paste"
 msgstr "粘贴 \t\t"
+
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:129
+msgid "Paste Between Projects"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:103
 msgid "Paste Content..."
