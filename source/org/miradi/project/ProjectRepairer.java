@@ -357,8 +357,8 @@ public class ProjectRepairer
 		ORefList orphandRefsToUntag = new ORefList();
 		for(ORef ref : taggedObjectRefs)
 		{
-			BaseObject baseObject = BaseObject.find(getProject(), ref);
-			ORefList allReferrers = baseObject.findObjectsThatReferToUs();
+			BaseObject taggedBaseObject = BaseObject.find(getProject(), ref);
+			ORefList allReferrers = taggedBaseObject.findObjectsThatReferToUs();
 			allReferrers.removeAll(allTaggedObjectSetRefs);
 			if (allReferrers.isEmpty())
 				orphandRefsToUntag.add(ref);
