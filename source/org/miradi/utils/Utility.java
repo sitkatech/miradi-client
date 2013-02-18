@@ -37,6 +37,18 @@ import org.miradi.main.EAM;
 
 public class Utility
 {
+	public static int readBytesInPlace(byte[] exceptionLogBytes, InputStream in) throws Exception
+	{
+		int totalReadCount = 0;
+		byte byteRead = 0;
+		while ((byteRead = (byte)in.read()) > -1 || totalReadCount > exceptionLogBytes.length)
+		{				
+			exceptionLogBytes[totalReadCount] = byteRead;
+			++totalReadCount;
+		}
+		return totalReadCount;
+	}
+	
 	public static Point convertPoint2DToPoint(Point2D point2d)
 	{
 		int x = (int) point2d.getX();
