@@ -355,13 +355,13 @@ public class ProjectRepairer
 	{
 		ORefList allTaggedObjectSetRefs = getProject().getPool(TaggedObjectSetSchema.getObjectType()).getORefList();
 		ORefList orphandRefsToUntag = new ORefList();
-		for(ORef ref : taggedObjectRefs)
+		for(ORef taggedBaseObjectRef : taggedObjectRefs)
 		{
-			BaseObject taggedBaseObject = BaseObject.find(getProject(), ref);
+			BaseObject taggedBaseObject = BaseObject.find(getProject(), taggedBaseObjectRef);
 			ORefList allReferrers = taggedBaseObject.findObjectsThatReferToUs();
 			allReferrers.removeAll(allTaggedObjectSetRefs);
 			if (allReferrers.isEmpty())
-				orphandRefsToUntag.add(ref);
+				orphandRefsToUntag.add(taggedBaseObjectRef);
 		}
 		
 		return orphandRefsToUntag;
