@@ -41,7 +41,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.AbstractTarget;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
@@ -78,6 +78,7 @@ public class TestDiagramPaster extends TestCaseWithProject
 	{
 		DiagramFactor strategyDiagramFactor = getProject().createAndAddFactorToDiagram(StrategySchema.getObjectType());
 		Task activity = getProject().createTask(strategyDiagramFactor.getWrappedFactor());
+		getProject().fillObjectUsingCommand(activity, Task.TAG_LEADER_RESOURCE, getProject().createProjectResource().getRef());
 		
 		ResourceAssignment resourceAssignment = getProject().createAndPopulateResourceAssignment();
 		ExpenseAssignment expenseAssignment = getProject().createExpenseAssignment();
@@ -89,6 +90,11 @@ public class TestDiagramPaster extends TestCaseWithProject
 		
 		ProjectForTesting projectToPasteInto = createNewProject();
 		paste(projectToPasteInto, diagramFactorsToPaste, new Vector<DiagramLink>());
+		
+		Vector<Task> activities = projectToPasteInto.getTaskPool().getAllActivities();
+		assertEquals("Incorrect activity count?", 1, activities.size());
+		Task pastedActitivy = activities.get(0);
+		verifyEmptyTag(pastedActitivy, BaseObject.TAG_LEADER_RESOURCE);
 		
 		ORefList resourceAssignmentRefs = projectToPasteInto.getAssignmentPool().getRefList();
 		assertEquals("ResourceAssignment was not pasted?", 1, resourceAssignmentRefs.size());
@@ -108,9 +114,9 @@ public class TestDiagramPaster extends TestCaseWithProject
 		verifyEmptyTag(pastedExpenseAssignment, ExpenseAssignment.TAG_CATEGORY_TWO_REF);
 	}
 	
-	private void verifyEmptyTag(Assignment assignment, String tag)
+	private void verifyEmptyTag(BaseObject baseObject, String tag)
 	{
-		assertEquals("tag was not cleared?", "", assignment.getData(tag));
+		assertEquals("tag was not cleared?", "", baseObject.getData(tag));
 	}
 
 	public void testThreatStressRatingPasteIntoDiffererentProject() throws Exception
