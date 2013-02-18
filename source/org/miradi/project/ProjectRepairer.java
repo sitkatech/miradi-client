@@ -326,7 +326,7 @@ public class ProjectRepairer
 		{
 			TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), taggedObjectSetRef);
 			ORefList taggedObjectRefs = taggedObjectSet.getTaggedObjectRefs();
-			ORefList taggedOrphanRefs = findTaggedOrphans(taggedObjectRefs);
+			ORefList taggedOrphanRefs = findTaggedOrphans(taggedObjectSet.getRef(), taggedObjectRefs);
 			untagOrphans(taggedOrphanRefs);
 		}
 	}
@@ -351,16 +351,14 @@ public class ProjectRepairer
 		}
 	}
 
-	private ORefList findTaggedOrphans(ORefList taggedObjectRefs)
+	private ORefList findTaggedOrphans(ORef taggedObjectSetRef, ORefList taggedObjectRefs)
 	{
-		ORefList allTaggedObjectSetRefs = getProject().getPool(TaggedObjectSetSchema.getObjectType()).getORefList();
 		ORefList orphandRefsToUntag = new ORefList();
 		for(ORef taggedBaseObjectRef : taggedObjectRefs)
 		{
 			BaseObject taggedBaseObject = BaseObject.find(getProject(), taggedBaseObjectRef);
 			ORefList allReferrers = taggedBaseObject.findObjectsThatReferToUs();
-			allReferrers.removeAll(allTaggedObjectSetRefs);
-			if (allReferrers.isEmpty())
+			if (allReferrers.contains(taggedObjectSetRef))
 				orphandRefsToUntag.add(taggedBaseObjectRef);
 		}
 		
