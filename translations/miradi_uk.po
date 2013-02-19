@@ -2179,7 +2179,7 @@ msgstr "Штучна - Канали і дренажні системи, кана
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:147
 msgid "Artificial - Excavations (open)"
-msgstr "Штучна - Кар'єри (відкриті)"
+msgstr "Штучна - Кар&apos;єри (відкриті)"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:149
 msgid "Artificial - Irrigated Land [includes irrigation channels]"
@@ -2613,7 +2613,7 @@ msgstr "Категорія ІІ: Національний парк"
 
 #: Miradi/source/org/miradi/questions/ProtectedAreaCategoryQuestion.java:38
 msgid "Category III: Natural monument"
-msgstr "Категорія ІІІ: Пам'ятка природи"
+msgstr "Категорія ІІІ: Пам&apos;ятка природи"
 
 #: Miradi/source/org/miradi/questions/ProtectedAreaCategoryQuestion.java:39
 msgid "Category IV: Habitat/Species Management Area"
@@ -4759,7 +4759,7 @@ msgstr ""
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:115
 msgid "Marine Deep Benthic - Continental Slope/Bathyl Zone - Soft Substrate"
 msgstr ""
-"Морська Глибинна Бентична - Континентальний Схил/Батична Зона - М'який "
+"Морська Глибинна Бентична - Континентальний Схил/Батична Зона - М&apos;який "
 "Субстрат"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:120
@@ -9330,7 +9330,7 @@ msgid "FieldLabel|12.PseudoTagMethods|Methods"
 msgstr "FieldLabel|12.PseudoTagMethods|Методи"
 
 msgid "FieldLabel|12.PseudoTagFactor|Associated Factor"
-msgstr "FieldLabel|12.PseudoTagFactor|Зв'язаний фактор"
+msgstr "FieldLabel|12.PseudoTagFactor|Зв&apos;язаний фактор"
 
 msgid "FieldLabel|12.RatingSummary|Strategy Priority"
 msgstr "FieldLabel|12.RatingSummary|Стратегічний пріоритет "
