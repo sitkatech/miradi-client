@@ -594,7 +594,7 @@ msgstr ""
 "<html><b>Alto:</b> Gli effetti della Minaccia <b>possono essere tecnicamente "
 "invertiti</b> e il Target di Conservazione ripristinato, ma  non "
 "è<b>praticamente conveniente</b> e/o potrebbero volerci <b>21-100 anni</b> "
-"per ottenere il risultato (i.e., zone umide convertite all'agricoltura).</"
+"per ottenere il risultato (i.e., zone umide convertite all&apos;agricoltura).</"
 "html>"
 
 #: Miradi/source/org/miradi/questions/StressIrreversibilityQuestion.java:46
@@ -629,7 +629,7 @@ msgid ""
 "population.</html>"
 msgstr ""
 "<html><b>Alto:</b> La Minaccia sembra essere largamente <b>diffusa</b> nel "
-"suo ambito d'influenza, influendo sul Target di Conservazione attraverso "
+"suo ambito d&apos;influenza, influendo sul Target di Conservazione attraverso "
 "<b>più (31-70%)</b> della sua presenza/popolazione.</html>"
 
 #: Miradi/source/org/miradi/questions/SeverityStressBasedThreatRatingQuestion.java:47
@@ -645,7 +645,7 @@ msgid ""
 "degrade/reduce</b> the target or reduce its population by <b>31-70%</b> "
 "within ten years or three generations.</html>"
 msgstr ""
-"<html><b>Alto:</b> All'interno il suo ambito d'influenza la Minaccia sembra "
+"<html><b>Alto:</b> All&apos;interno il suo ambito d&apos;influenza la Minaccia sembra "
 "che <b>degradi/riduca seriamente</b> il Target di Conservazione o ne riduca "
 "la popolazione per il <b>31-70%</b> nei 10 anni o in tre generazioni.</html>"
 
@@ -699,7 +699,7 @@ msgid ""
 "degrade/reduce</b> the target or reduce its population by <b>1-10%</b> "
 "within ten years or three generations.</html>"
 msgstr ""
-"<html><b>Basso:</b> All'interno del suo ambito di influenza, la Minaccia "
+"<html><b>Basso:</b> All&apos;interno del suo ambito di influenza, la Minaccia "
 "appare <b>degradare/ridurre leggermente</b> il Target di Conservazione o "
 "ridurre la sua popolazione del <b>1-10%</b> in 10 anni o tre generazioni.</"
 "html>"
@@ -763,9 +763,9 @@ msgid ""
 "degrade/reduce</b> the target or reduce its population by <b>11-30%</b> "
 "within ten years or three generations.</html>"
 msgstr ""
-"<html><b>Medio:</b> All'interno dell'ambito d'influenza, verosimilmente la "
+"<html><b>Medio:</b> All&apos;interno dell&apos;ambito d&apos;influenza, verosimilmente la "
 "Minaccia <b>degrada/riduce moderatamente</b> il Target di Conservazione o "
-"riduce la sua popolazione dell' <b>11-30%</b> nei 10 anni o in tre "
+"riduce la sua popolazione dell&apos; <b>11-30%</b> nei 10 anni o in tre "
 "generazioni.</html>"
 
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:422
@@ -818,7 +818,7 @@ msgid ""
 "occurrence/population.</html>"
 msgstr ""
 "<html><b>Molto Alto:</b> Verosimilmente la Minaccia è <b>pervasiva</b> nel "
-"suo ambito d'influenza, influenzando il Target di "
+"suo ambito d&apos;influenza, influenzando il Target di "
 "Conservazione<b>completamente o in gran parte(71-100%)</b> della sua "
 "presenza/popolazione.</html>"
 
@@ -835,7 +835,7 @@ msgid ""
 "or eliminate</b> the target, or reduce its population by <b>71-100%</b> "
 "within ten years or three generations.</html>"
 msgstr ""
-"<html><b>Molto Alto:</b> All'interno dell'ambito d'influenza, verosimilmente "
+"<html><b>Molto Alto:</b> All&apos;interno dell&apos;ambito d&apos;influenza, verosimilmente "
 "la Minaccia  <b>distrugge o elimina</b> il Target di Conservazione, o ne "
 "riduce la popolazione del <b>71-100%</b> nei 10 anni o in 3 generazioni.</"
 "html>"
@@ -2206,7 +2206,7 @@ msgstr "Precisa le ipotesi di base (Core Assumptions)"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:145
 msgid "Artificial - Aquaculture Ponds"
-msgstr "Artificiale - vasche per l'acquacoltura"
+msgstr "Artificiale - vasche per l&apos;acquacoltura"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:142
 msgid "Artificial - Aquatic"
@@ -2232,7 +2232,7 @@ msgstr "Artificiale - Terre irrigue [comprende canali di irrigazione]"
 msgid ""
 "Artificial - Karst and Other Subterranean Hydrological Systems [human-made]"
 msgstr ""
-"Artificiale - Carso e altri sistemi  idrologici sotterranei [fatti dall'uomo]"
+"Artificiale - Carso e altri sistemi  idrologici sotterranei [fatti dall&apos;uomo]"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:155
 msgid "Artificial - Mari/Brackish-culture Ponds"
@@ -3970,7 +3970,7 @@ msgstr "Praterie - Subtropicali/Grandi altitudini Tropicali"
 msgid "Grassland - Subtropical/Tropical Seasonally Wet/Flooded Lowland"
 msgstr ""
 "Praterie - Subtropicali/Tropicali Bagnate stagionalmente/Pianure "
-"d'inondazione"
+"d&apos;inondazione"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:60
 msgid "Grassland - Temperate"
@@ -4798,7 +4798,7 @@ msgstr "Marino Costiera/Supratidale - Grotte costiere/Carso"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:134
 msgid "Marine Coastal/Supratidal - Coastal Freshwater Lakes"
-msgstr "Marino Costiera/Supratidale - Laghi d'acqua dolce costieri"
+msgstr "Marino Costiera/Supratidale - Laghi d&apos;acqua dolce costieri"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:132
 msgid "Marine Coastal/Supratidal - Coastal Sand Dunes"
@@ -5138,7 +5138,7 @@ msgstr "Problemi minori"
 #: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:48
 msgid "Minor Issues - Ongoing, has minor issues that need attention"
 msgstr ""
-"Problemi minori - l'attività in corso ha problemi minori che hanno bisogno "
+"Problemi minori - l&apos;attività in corso ha problemi minori che hanno bisogno "
 "di attenzione"
 
 #: Miradi/source/org/miradi/views/umbrella/PreferencesPopupDoer.java:53
@@ -6029,11 +6029,11 @@ msgstr "Aree rivierasche"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:157
 msgid "Rivers, Creeks and Streams"
-msgstr "Fiumi, torrenti e corsi d'acqua"
+msgstr "Fiumi, torrenti e corsi d&apos;acqua"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:83
 msgid "Rocky Areas [e.g. inland cliffs, mountain peaks]"
-msgstr "Zone rocciose [le forre nell'entroterra, montagne]"
+msgstr "Zone rocciose [le forre nell&apos;entroterra, montagne]"
 
 #: Miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:36
 #: Miradi/source/org/miradi/questions/RatingSourceQuestion.java:36
@@ -8600,7 +8600,7 @@ msgstr "Zone umide - Laghi permenanti di acque dolci [oltre 8ha]"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:71
 msgid "Wetlands - Permanent Freshwater Marshes/Pools [under 8 ha]"
-msgstr "Zone umide - Paludi/Stagni permanenti d'acqua dolce [sotto 8 ha]"
+msgstr "Zone umide - Paludi/Stagni permanenti d&apos;acqua dolce [sotto 8 ha]"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:77
 msgid "Wetlands - Permanent Inland Deltas"
@@ -8620,12 +8620,12 @@ msgstr "Zone umide - Saline, salmastre o paludi/stagni alcalini permanenti"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:70
 msgid "Wetlands - Seasonal/Intermittent Freshwater Lakes [over 8 ha]"
-msgstr "Zone umide - Laghi d'acqua dolce Stagionali/Intermittenti [oltre 8ha]"
+msgstr "Zone umide - Laghi d&apos;acqua dolce Stagionali/Intermittenti [oltre 8ha]"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:72
 msgid "Wetlands - Seasonal/Intermittent Freshwater Marshes/Pools [under 8 ha]"
 msgstr ""
-"Zone umide - Paludi/stagni d'acqua dolce Stagionali/Intermittenti [meno di "
+"Zone umide - Paludi/stagni d&apos;acqua dolce Stagionali/Intermittenti [meno di "
 "8ha]"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:79
