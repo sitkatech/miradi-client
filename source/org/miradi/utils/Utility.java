@@ -37,13 +37,13 @@ import org.miradi.main.EAM;
 
 public class Utility
 {
-	public static int readAsMuchAsPossible(InputStream in, byte[] exceptionLogBytes) throws Exception
+	public static int readAsMuchAsPossible(InputStream in, byte[] maximumBytesToRead) throws Exception
 	{
 		int totalReadCount = 0;
 		byte byteRead = 0;
-		while ((byteRead = (byte)in.read()) > -1 || totalReadCount > exceptionLogBytes.length)
+		while ((byteRead = (byte)in.read()) > -1 || totalReadCount > maximumBytesToRead.length)
 		{				
-			exceptionLogBytes[totalReadCount] = byteRead;
+			maximumBytesToRead[totalReadCount] = byteRead;
 			++totalReadCount;
 		}
 		return totalReadCount;
