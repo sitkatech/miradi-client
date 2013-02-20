@@ -109,7 +109,7 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 		save(newFile);
 
 		FileUtilities.deleteIfExistsWithRetries(oldFile);
-		FileUtilities.renameIfExists(currentFile, oldFile);
+		FileUtilities.renameIfExistsWithRetries(currentFile, oldFile);
 
 		FileUtilities.renameExistingWithRetries(newFile, currentFile);
 		
