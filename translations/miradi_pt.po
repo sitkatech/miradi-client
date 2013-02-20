@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-20 14:46-0600\n"
+"POT-Creation-Date: 2013-02-20 15:31-0600\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -1046,12 +1046,12 @@ msgstr "Um arquivo ou pasta com aquele nome já existe"
 
 # I changed "by this name" to "with this name"
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:57
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:89
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:87
 msgid "A project or file by this name already exists: "
 msgstr "Um projeto ou arquivo com este nome já existe: "
 
 # I changed "by this name" to "with this name"
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:69
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:67
 msgid "A project or file by this name already exists: %s"
 msgstr "Um projeto ou arquivo com este nome ja existe:: %s"
 
@@ -3559,8 +3559,8 @@ msgstr "Terminar"
 msgid "Enter As: "
 msgstr "Entrar Como:"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:100
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:120
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:98
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:118
 msgid "Enter New Name"
 msgstr "Entrar Novo Nome"
 
@@ -4479,11 +4479,11 @@ msgstr "Vegetação Introduzida"
 msgid "Introduction"
 msgstr "Introdução"
 
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:95
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:93
 msgid "Invalid project name:"
 msgstr "Nome de Projeto Inválido:"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:75
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:73
 msgid "Invalid project name: %s"
 msgstr "Nome de Projeto Inválido: %s"
 
@@ -4500,7 +4500,7 @@ msgstr "É relevante"
 msgid "Is Tagged"
 msgstr "É macado com \"tag\""
 
-#: Miradi/source/org/miradi/main/EAM.java:627
+#: Miradi/source/org/miradi/main/EAM.java:636
 msgid ""
 "It appears that Miradi was launched without the -Xmx512m switch. As a "
 "result, certain operations like Reports may run out of memory."
@@ -6088,8 +6088,8 @@ msgstr "Estratégias e Atividades Relevantes"
 msgid "Remove Team Member"
 msgstr "Remover Membreo da Equipe"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:51
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:68
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:49
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:66
 msgid "Rename Failed"
 msgstr "Renomear Falhou"
 

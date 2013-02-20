@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-20 14:46-0600\n"
+"POT-Creation-Date: 2013-02-20 15:31-0600\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -875,11 +875,11 @@ msgid "A file or folder with that name already exists"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:57
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:89
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:87
 msgid "A project or file by this name already exists: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:69
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:67
 msgid "A project or file by this name already exists: %s"
 msgstr ""
 
@@ -3245,8 +3245,8 @@ msgstr ""
 msgid "Enter As: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:100
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:120
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:98
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:118
 msgid "Enter New Name"
 msgstr ""
 
@@ -4092,11 +4092,11 @@ msgstr ""
 msgid "Introduction"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:95
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:93
 msgid "Invalid project name:"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:75
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:73
 msgid "Invalid project name: %s"
 msgstr ""
 
@@ -4113,7 +4113,7 @@ msgstr ""
 msgid "Is Tagged"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:627
+#: Miradi/source/org/miradi/main/EAM.java:636
 msgid ""
 "It appears that Miradi was launched without the -Xmx512m switch. As a "
 "result, certain operations like Reports may run out of memory."
@@ -5601,8 +5601,8 @@ msgstr ""
 msgid "Remove Team Member"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:51
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:68
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:49
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:66
 msgid "Rename Failed"
 msgstr ""
 
