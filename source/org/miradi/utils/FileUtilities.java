@@ -127,7 +127,7 @@ public class FileUtilities
 			throw new IOException("Rename failed: " + fromFile.getAbsolutePath() + "->" + toFile.getAbsolutePath());
 	}
 
-	public static File getFileWithSuffix(File currentFile, String suffix)
+	public static File createFileWithSuffix(File currentFile, String suffix)
 	{
 		return new File(currentFile.getAbsolutePath() + suffix);
 	}
