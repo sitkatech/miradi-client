@@ -109,6 +109,11 @@ public class FileUtilities
 		if(fileDoesNotExist(fileToDelete))
 			return;
 
+		deleteExistingWithRetries(fileToDelete);
+	}
+
+	public static void deleteExistingWithRetries(final File fileToDelete) throws Exception
+	{
 		final int MAX_TRIES = 4;
 		final int SLEEP_PER_TRY_MILLIS = 250;
 		deleteExistingWithRetries(fileToDelete, MAX_TRIES, SLEEP_PER_TRY_MILLIS);
