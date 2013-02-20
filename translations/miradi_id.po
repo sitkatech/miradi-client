@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-20 14:46-0600\n"
+"POT-Creation-Date: 2013-02-20 15:31-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -907,11 +907,11 @@ msgid "A file or folder with that name already exists"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:57
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:89
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:87
 msgid "A project or file by this name already exists: "
 msgstr "Sudah ada proyek atau berkas lain yang memakai nama ini: "
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:69
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:67
 msgid "A project or file by this name already exists: %s"
 msgstr ""
 
@@ -3357,8 +3357,8 @@ msgstr ""
 msgid "Enter As: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:100
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:120
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:98
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:118
 msgid "Enter New Name"
 msgstr "Masukkan Nama Baru "
 
@@ -4240,11 +4240,11 @@ msgstr "Vegetasi yang Dikenalkan"
 msgid "Introduction"
 msgstr "Pendahuluan "
 
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:95
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:93
 msgid "Invalid project name:"
 msgstr "Nama proyek tidak valid: "
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:75
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:73
 msgid "Invalid project name: %s"
 msgstr ""
 
@@ -4261,7 +4261,7 @@ msgstr "Relevan"
 msgid "Is Tagged"
 msgstr "Ditandai"
 
-#: Miradi/source/org/miradi/main/EAM.java:627
+#: Miradi/source/org/miradi/main/EAM.java:636
 msgid ""
 "It appears that Miradi was launched without the -Xmx512m switch. As a "
 "result, certain operations like Reports may run out of memory."
@@ -5804,8 +5804,8 @@ msgstr "Strategi dan Aktivitas yang Relevan"
 msgid "Remove Team Member"
 msgstr "Menghilangkan Anggota Tim "
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:51
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:68
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:49
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:66
 msgid "Rename Failed"
 msgstr "Mengganti Nama Tidak Berhasil "
 
