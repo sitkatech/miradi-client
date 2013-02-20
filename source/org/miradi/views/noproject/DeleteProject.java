@@ -42,7 +42,7 @@ public class DeleteProject
 	private static void deleteRelatedProjectFiles(File projectFileToDelete) throws Exception
 	{
 		FileUtilities.deleteIfExists(AutomaticProjectSaver.getSessionFile(projectFileToDelete));
-		FileUtilities.deleteIfExists(AutomaticProjectSaver.getOldFile(projectFileToDelete));
+		FileUtilities.deleteIfExists(AutomaticProjectSaver.createOldFile(projectFileToDelete));
 		FileUtilities.deleteIfExists(AutomaticProjectSaver.getLockFile(projectFileToDelete));
 		FileUtilities.deleteIfExists(AutomaticProjectSaver.getNewFile(projectFileToDelete));
 	}

@@ -102,7 +102,7 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 		if(currentFile == null)
 			return;
 		
-		File oldFile = getOldFile(currentFile);
+		File oldFile = createOldFile(currentFile);
 		File newFile = getNewFile(currentFile);
 
 		FileUtilities.deleteIfExists(newFile);
@@ -124,7 +124,7 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 		return FileUtilities.getFileWithSuffix(currentFile, SESSION_EXTENSION);
 	}
 
-	public static File getOldFile(File currentFile)
+	public static File createOldFile(File currentFile)
 	{
 		return FileUtilities.getFileWithSuffix(currentFile, OLD_EXTENSION);
 	}
