@@ -111,10 +111,10 @@ public class FileUtilities
 
 		final int MAX_TRIES = 4;
 		final int SLEEP_PER_TRY_MILLIS = 250;
-		deleteWithRetries(fileToDelete, MAX_TRIES, SLEEP_PER_TRY_MILLIS);
+		deleteExistingWithRetries(fileToDelete, MAX_TRIES, SLEEP_PER_TRY_MILLIS);
 	}
 
-	private static void deleteWithRetries(final File fileToDelete, final int maxTries, final int sleepPerTryMillis) throws Exception
+	private static void deleteExistingWithRetries(final File fileToDelete, final int maxTries, final int sleepPerTryMillis) throws Exception
 	{
 		if (fileDoesNotExist(fileToDelete))
 			throw new IOException("Must pass in a file that exists, file:" + fileToDelete.getAbsolutePath());
