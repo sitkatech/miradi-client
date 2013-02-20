@@ -135,6 +135,37 @@ public class FileUtilities
 		
 		throw new IOException("Delete failed for file:" + fileToDelete.getAbsolutePath());
 	}
+	
+	public static void renameIfExistsWithRetries(final File fromFile, final File toFile)	throws Exception
+	{
+		if(fileDoesNotExist(fromFile))
+			return;
+
+		renameExistingWithRetries(fromFile, toFile);
+	}
+
+	public static void renameExistingWithRetries(final File fromFile, final File toFile) throws Exception
+	{
+		final int MAX_TRIES = 4;
+		final int SLEEP_PER_TRY_MILLIS = 250;
+		renameExistingWithRetries(fromFile, toFile, MAX_TRIES, SLEEP_PER_TRY_MILLIS);
+	}
+
+	private static void renameExistingWithRetries(final File fromFile, final File toFile, final int maxTries, final int sleepPerTryMillis) throws Exception
+	{
+		if (fileDoesNotExist(fromFile))
+			throw new IOException("Must pass in a file that exists, file:" + fromFile.getAbsolutePath());
+
+		for (int retryCount = 0; retryCount < maxTries; ++retryCount)
+		{
+			if (fromFile.renameTo(toFile))
+				return;
+
+			Thread.currentThread().sleep(sleepPerTryMillis);
+		}
+		
+		throw new IOException("Rename failed for file:" + fromFile.getAbsolutePath());
+	}
 
 	public static boolean fileDoesNotExist(final File fileToDelete)
 	{
