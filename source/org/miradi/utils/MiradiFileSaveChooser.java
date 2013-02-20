@@ -44,7 +44,14 @@ abstract public class MiradiFileSaveChooser extends AbstractFileChooser
 			if (!EAM.confirmOverwriteDialog(title, body))
 				return null;
 		
-			file.delete();
+			try
+			{
+				FileUtilities.deleteExistingWithRetries(file);
+			}
+			catch (Exception e)
+			{
+				EAM.alertUserOfNonFatalException(e);
+			}
 		}
 		
 		return file;

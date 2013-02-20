@@ -24,6 +24,7 @@ import java.io.File;
 
 import org.miradi.icons.DeleteIcon;
 import org.miradi.main.EAM;
+import org.miradi.utils.FileUtilities;
 import org.miradi.views.noproject.DeleteOldProject;
 import org.miradi.views.noproject.DeleteProject;
 
@@ -57,7 +58,7 @@ class ProjectListDeleteAction extends ProjectListAction
 		File fileOrDirectoryToDelete = getSelectedFile();
 		
 		if(isEmptyDirectorySelected())
-			fileOrDirectoryToDelete.delete();
+			FileUtilities.deleteExistingWithRetries(fileOrDirectoryToDelete);
 		else if(isProjectSelected())
 			DeleteProject.doIt(getMainWindow(), fileOrDirectoryToDelete);
 		else if(isOldProjectSelected())

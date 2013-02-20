@@ -146,7 +146,7 @@ public class MpzToMpfConverter extends AbstractConverter
 			ProjectSaver.saveProject(project, writer);
 
 			if(migratedFile != null)
-				migratedFile.delete();
+				FileUtilities.deleteExistingWithRetries(migratedFile);
 
 			return writer.toString();
 		}
