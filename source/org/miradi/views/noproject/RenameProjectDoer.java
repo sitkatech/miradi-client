@@ -20,13 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.noproject;
 
 import java.io.File;
-import java.io.IOException;
 
 import org.miradi.files.AbstractMpfFileFilter;
 import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
+import org.miradi.utils.FileUtilities;
 import org.miradi.utils.ModalRenameDialog;
 import org.miradi.wizard.noproject.WelcomeCreateStep;
 
@@ -41,9 +41,7 @@ public class RenameProjectDoer
 				return;
 
 			File newFile = new File(projectFileToRename.getParentFile(), newDirectoryName);
-			boolean wasRenamed = projectFileToRename.renameTo(newFile);
-			if (!wasRenamed)
-				throw new IOException();
+			FileUtilities.renameExistingWithRetries(projectFileToRename, newFile);
 		}
 		catch (Exception e)
 		{

@@ -38,6 +38,7 @@ import javax.swing.filechooser.FileSystemView;
 import org.martus.swing.UiNotifyDlg;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.project.Project;
+import org.miradi.utils.FileUtilities;
 import org.miradi.utils.HtmlViewPanel;
 import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.utils.MiradiLogger;
@@ -601,7 +602,15 @@ public class EAM
 		if(!confirmDialog("e-Adaptive Management Data Import", miradiMigrationText, new String[] {"Import", "Exit"}))
 			return false;
 		
-		oldEamDirectory.renameTo(miradiDirectory);
+		try
+		{
+			FileUtilities.renameExistingWithRetries(oldEamDirectory, miradiDirectory);
+		}
+		catch (Exception e)
+		{
+			alertUserOfNonFatalException(e);
+		}
+		
 		if(oldEamDirectory.exists() || !miradiDirectory.exists())
 		{
 			errorDialog("Import failed. Be sure no projects are open, and that you " +
