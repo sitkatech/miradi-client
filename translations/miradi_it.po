@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-18 12:46-0600\n"
+"POT-Creation-Date: 2013-02-20 14:46-0600\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -594,8 +594,8 @@ msgstr ""
 "<html><b>Alto:</b> Gli effetti della Minaccia <b>possono essere tecnicamente "
 "invertiti</b> e il Target di Conservazione ripristinato, ma  non "
 "è<b>praticamente conveniente</b> e/o potrebbero volerci <b>21-100 anni</b> "
-"per ottenere il risultato (i.e., zone umide convertite all&apos;agricoltura).</"
-"html>"
+"per ottenere il risultato (i.e., zone umide convertite all&apos;agricoltura)."
+"</html>"
 
 #: Miradi/source/org/miradi/questions/StressIrreversibilityQuestion.java:46
 msgid ""
@@ -629,8 +629,8 @@ msgid ""
 "population.</html>"
 msgstr ""
 "<html><b>Alto:</b> La Minaccia sembra essere largamente <b>diffusa</b> nel "
-"suo ambito d&apos;influenza, influendo sul Target di Conservazione attraverso "
-"<b>più (31-70%)</b> della sua presenza/popolazione.</html>"
+"suo ambito d&apos;influenza, influendo sul Target di Conservazione "
+"attraverso <b>più (31-70%)</b> della sua presenza/popolazione.</html>"
 
 #: Miradi/source/org/miradi/questions/SeverityStressBasedThreatRatingQuestion.java:47
 msgid ""
@@ -645,9 +645,10 @@ msgid ""
 "degrade/reduce</b> the target or reduce its population by <b>31-70%</b> "
 "within ten years or three generations.</html>"
 msgstr ""
-"<html><b>Alto:</b> All&apos;interno il suo ambito d&apos;influenza la Minaccia sembra "
-"che <b>degradi/riduca seriamente</b> il Target di Conservazione o ne riduca "
-"la popolazione per il <b>31-70%</b> nei 10 anni o in tre generazioni.</html>"
+"<html><b>Alto:</b> All&apos;interno il suo ambito d&apos;influenza la "
+"Minaccia sembra che <b>degradi/riduca seriamente</b> il Target di "
+"Conservazione o ne riduca la popolazione per il <b>31-70%</b> nei 10 anni o "
+"in tre generazioni.</html>"
 
 #: Miradi/source/org/miradi/questions/IrreversibilityThreatRatingQuestion.java:35
 msgid ""
@@ -699,10 +700,10 @@ msgid ""
 "degrade/reduce</b> the target or reduce its population by <b>1-10%</b> "
 "within ten years or three generations.</html>"
 msgstr ""
-"<html><b>Basso:</b> All&apos;interno del suo ambito di influenza, la Minaccia "
-"appare <b>degradare/ridurre leggermente</b> il Target di Conservazione o "
-"ridurre la sua popolazione del <b>1-10%</b> in 10 anni o tre generazioni.</"
-"html>"
+"<html><b>Basso:</b> All&apos;interno del suo ambito di influenza, la "
+"Minaccia appare <b>degradare/ridurre leggermente</b> il Target di "
+"Conservazione o ridurre la sua popolazione del <b>1-10%</b> in 10 anni o tre "
+"generazioni.</html>"
 
 #: Miradi/source/org/miradi/questions/IrreversibilityThreatRatingQuestion.java:41
 msgid ""
@@ -763,10 +764,10 @@ msgid ""
 "degrade/reduce</b> the target or reduce its population by <b>11-30%</b> "
 "within ten years or three generations.</html>"
 msgstr ""
-"<html><b>Medio:</b> All&apos;interno dell&apos;ambito d&apos;influenza, verosimilmente la "
-"Minaccia <b>degrada/riduce moderatamente</b> il Target di Conservazione o "
-"riduce la sua popolazione dell&apos; <b>11-30%</b> nei 10 anni o in tre "
-"generazioni.</html>"
+"<html><b>Medio:</b> All&apos;interno dell&apos;ambito d&apos;influenza, "
+"verosimilmente la Minaccia <b>degrada/riduce moderatamente</b> il Target di "
+"Conservazione o riduce la sua popolazione dell&apos; <b>11-30%</b> nei 10 "
+"anni o in tre generazioni.</html>"
 
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:422
 msgid "<html><b>Overall<br>Project<br>Rating</b></html>"
@@ -835,10 +836,10 @@ msgid ""
 "or eliminate</b> the target, or reduce its population by <b>71-100%</b> "
 "within ten years or three generations.</html>"
 msgstr ""
-"<html><b>Molto Alto:</b> All&apos;interno dell&apos;ambito d&apos;influenza, verosimilmente "
-"la Minaccia  <b>distrugge o elimina</b> il Target di Conservazione, o ne "
-"riduce la popolazione del <b>71-100%</b> nei 10 anni o in 3 generazioni.</"
-"html>"
+"<html><b>Molto Alto:</b> All&apos;interno dell&apos;ambito d&apos;influenza, "
+"verosimilmente la Minaccia  <b>distrugge o elimina</b> il Target di "
+"Conservazione, o ne riduce la popolazione del <b>71-100%</b> nei 10 anni o "
+"in 3 generazioni.</html>"
 
 #: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:109
 msgid ""
@@ -2232,7 +2233,8 @@ msgstr "Artificiale - Terre irrigue [comprende canali di irrigazione]"
 msgid ""
 "Artificial - Karst and Other Subterranean Hydrological Systems [human-made]"
 msgstr ""
-"Artificiale - Carso e altri sistemi  idrologici sotterranei [fatti dall&apos;uomo]"
+"Artificiale - Carso e altri sistemi  idrologici sotterranei [fatti dall&apos;"
+"uomo]"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:155
 msgid "Artificial - Mari/Brackish-culture Ponds"
@@ -2562,7 +2564,7 @@ msgstr "Mantieni"
 msgid "Button|Save"
 msgstr "Salva"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:74
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:81
 msgid "Button|Save %s"
 msgstr ""
 
@@ -3136,7 +3138,7 @@ msgstr "Definisci l'Ambito geografico del Progetto di Conservazione"
 #: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:46
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:65
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:69
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:70
 #: Miradi/source/org/miradi/main/MiradiStrings.java:69
 msgid "Delete"
 msgstr "Cancella"
@@ -3630,7 +3632,7 @@ msgstr "Sufficiente"
 msgid "Feb"
 msgstr "Feb"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:96
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:103
 msgid ""
 "File could not be created, this can be due to bad characters in file name."
 msgstr ""
@@ -3642,7 +3644,7 @@ msgid "File exists: Cannot overwrite a non project folder"
 msgstr ""
 "Il file esiste: non è possibile sovrascrivere una cartella non di progetto"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:95
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:102
 msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr "Il nome del file  deve contenere solo caratteri alfanumerici e/o '_' ."
 
@@ -3969,8 +3971,8 @@ msgstr "Praterie - Subtropicali/Grandi altitudini Tropicali"
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:62
 msgid "Grassland - Subtropical/Tropical Seasonally Wet/Flooded Lowland"
 msgstr ""
-"Praterie - Subtropicali/Tropicali Bagnate stagionalmente/Pianure "
-"d&apos;inondazione"
+"Praterie - Subtropicali/Tropicali Bagnate stagionalmente/Pianure d&apos;"
+"inondazione"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:60
 msgid "Grassland - Temperate"
@@ -5138,8 +5140,8 @@ msgstr "Problemi minori"
 #: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:48
 msgid "Minor Issues - Ongoing, has minor issues that need attention"
 msgstr ""
-"Problemi minori - l&apos;attività in corso ha problemi minori che hanno bisogno "
-"di attenzione"
+"Problemi minori - l&apos;attività in corso ha problemi minori che hanno "
+"bisogno di attenzione"
 
 #: Miradi/source/org/miradi/views/umbrella/PreferencesPopupDoer.java:53
 msgid "Miradi Preferences"
@@ -7309,7 +7311,7 @@ msgstr ""
 msgid "TT|Run the Selected Report Template"
 msgstr "Esegui il Modello di Report Selezionato"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:68
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:75
 msgid "TT|Save %s File"
 msgstr "Salva %s File"
 
@@ -7937,7 +7939,7 @@ msgstr ""
 "fattore copiato/tagliato precedentemente. Sei sicuro di volerlo fare?"
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:308
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:84
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:91
 msgid "This will replace the existing file."
 msgstr "Questo sostituirà il file esistente."
 
@@ -8192,7 +8194,7 @@ msgid "Title|Other Orgs"
 msgstr "Altre Organizzazioni"
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:307
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:79
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:86
 msgid "Title|Overwrite existing file?"
 msgstr "Sovrascrivo il file esistente?"
 
@@ -8220,7 +8222,7 @@ msgstr "Proprietà della Risorsa"
 msgid "Title|Results Chain Properties"
 msgstr "Proprietà della Catena dei Risultati"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:62
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:69
 msgid "Title|Save %s File"
 msgstr "Salva %s File"
 
@@ -8620,13 +8622,14 @@ msgstr "Zone umide - Saline, salmastre o paludi/stagni alcalini permanenti"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:70
 msgid "Wetlands - Seasonal/Intermittent Freshwater Lakes [over 8 ha]"
-msgstr "Zone umide - Laghi d&apos;acqua dolce Stagionali/Intermittenti [oltre 8ha]"
+msgstr ""
+"Zone umide - Laghi d&apos;acqua dolce Stagionali/Intermittenti [oltre 8ha]"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:72
 msgid "Wetlands - Seasonal/Intermittent Freshwater Marshes/Pools [under 8 ha]"
 msgstr ""
-"Zone umide - Paludi/stagni d&apos;acqua dolce Stagionali/Intermittenti [meno di "
-"8ha]"
+"Zone umide - Paludi/stagni d&apos;acqua dolce Stagionali/Intermittenti [meno "
+"di 8ha]"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:79
 msgid ""

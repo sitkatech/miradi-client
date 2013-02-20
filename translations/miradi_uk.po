@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-18 12:46-0600\n"
+"POT-Creation-Date: 2013-02-20 14:46-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -2517,7 +2517,7 @@ msgstr "Button|Утримувати"
 msgid "Button|Save"
 msgstr "Button|Зберегти"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:74
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:81
 msgid "Button|Save %s"
 msgstr ""
 
@@ -3087,7 +3087,7 @@ msgstr "Визначити сферу дій проекту"
 #: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:46
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:65
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:69
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:70
 #: Miradi/source/org/miradi/main/MiradiStrings.java:69
 msgid "Delete"
 msgstr "Видалити"
@@ -3576,7 +3576,7 @@ msgstr "Задовільний"
 msgid "Feb"
 msgstr "Лютий"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:96
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:103
 msgid ""
 "File could not be created, this can be due to bad characters in file name."
 msgstr ""
@@ -3586,7 +3586,7 @@ msgstr ""
 msgid "File exists: Cannot overwrite a non project folder"
 msgstr "Файли існують: Не можна перезаписати не проектну папку"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:95
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:102
 msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr "Назва файла має містити тільки альфа цифрові і або  '_' символи."
 
@@ -7199,7 +7199,7 @@ msgstr ""
 msgid "TT|Run the Selected Report Template"
 msgstr "TT|Запустити вибраний шаблон звіту"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:68
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:75
 msgid "TT|Save %s File"
 msgstr "TT|Зберегти %s файл"
 
@@ -7819,7 +7819,7 @@ msgstr ""
 "вирізані або копійовані раніше. Ви впевнені, що хочете зробити це?"
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:308
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:84
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:91
 msgid "This will replace the existing file."
 msgstr "Це замінить існуючий файл."
 
@@ -8074,7 +8074,7 @@ msgid "Title|Other Orgs"
 msgstr "Title|Інші організації"
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:307
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:79
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:86
 msgid "Title|Overwrite existing file?"
 msgstr "Title|Перезаписати існуючий файл?"
 
@@ -8102,7 +8102,7 @@ msgstr "Title|Складові Ресурсу"
 msgid "Title|Results Chain Properties"
 msgstr "Title|Складові ланцюга результатів"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:62
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:69
 msgid "Title|Save %s File"
 msgstr "Title|Зберегти %s файл"
 
