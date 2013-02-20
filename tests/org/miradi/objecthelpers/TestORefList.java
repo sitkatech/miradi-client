@@ -23,7 +23,9 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.MiradiTestCase;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
+import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.EnhancedJsonObject;
@@ -33,6 +35,28 @@ public class TestORefList extends MiradiTestCase
 	public TestORefList(String name)
 	{
 		super(name);
+	}
+	
+	public void testAllTypes()
+	{
+		ORefList refList = new ORefList();
+		refList.removeAllTypes(TargetSchema.getObjectType());
+		verifyRefListSize(refList, 0);
+		
+		refList.add(ORef.createInvalidWithType(GoalSchema.getObjectType()));
+		refList.add(ORef.createInvalidWithType(GoalSchema.getObjectType()));
+		refList.add(ORef.createInvalidWithType(ObjectiveSchema.getObjectType()));
+		verifyRefListSize(refList, 3);
+		refList.removeAllTypes(GoalSchema.getObjectType());
+		verifyRefListSize(refList, 1);
+		assertEquals("Object should have not been removed?", ObjectiveSchema.getObjectType(), refList.getFirstElement().getObjectType());
+		refList.removeAllTypes(ObjectiveSchema.getObjectType());
+		verifyRefListSize(refList, 0);
+	}
+
+	private void verifyRefListSize(ORefList refList, final int expectedListSize)
+	{
+		assertEquals("incorrect reflist size?", expectedListSize, refList.size());
 	}
 
 	public void testORefList()

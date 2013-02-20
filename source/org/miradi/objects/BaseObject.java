@@ -83,6 +83,7 @@ import org.miradi.questions.StaticQuestionManager;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.ProgressReportSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
+import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateRange;
@@ -1023,6 +1024,14 @@ abstract public class BaseObject
 	
 	abstract public int[] getTypesThatCanOwnUs();
 
+	public ORefList findStrongObjectsThatReferToUs()
+	{
+		ORefList allReferrers = findObjectsThatReferToUs();
+		allReferrers.removeAllTypes(TaggedObjectSetSchema.getObjectType());
+		
+		return allReferrers;
+	}
+	
 	public ORefList findObjectsThatReferToUs()
 	{
 		return new ORefList(getObjectManager().getReferringObjects(getRef()));

@@ -310,6 +310,12 @@ public class ORefList implements Iterable<ORef>
 		return newList;
 	}
 	
+	public void removeAllTypes(int typeToRemove)
+	{
+		ORefList refsToRemove = getFilteredBy(typeToRemove);
+		removeAll(refsToRemove);
+	}
+	
 	public ORef getRefForTypes(int[] objectTypes)
 	{
 		for (int dataIndex = 0; dataIndex < data.size(); ++dataIndex)
