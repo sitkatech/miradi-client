@@ -644,7 +644,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		if (newProjectFile.exists())
 			return false;
 		
-		final File oldProjectFile = AutomaticProjectSaver.getOldFile(projectFile);
+		final File oldProjectFile = AutomaticProjectSaver.createOldFile(projectFile);
 		return !oldProjectFile.exists();
 	}
 
