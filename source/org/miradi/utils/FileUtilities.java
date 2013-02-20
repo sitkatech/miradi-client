@@ -104,9 +104,46 @@ public class FileUtilities
 		return tempDirectory;
 	}
 	
+	public static void deleteIfExistsWithRetries(final File fileToDelete, final int MAX_TRIES, final int SLEEP_PER_TRY_MILLIS)	throws Exception
+	{
+		for (int retryCount = 0; retryCount < MAX_TRIES; ++retryCount)
+		{
+			if(fileDoesNotExist(fileToDelete))
+				return;
+
+			if (deleteExistingFile(fileToDelete))
+				return;
+
+			Thread.currentThread().sleep(SLEEP_PER_TRY_MILLIS);
+		}
+
+		throw new IOException("Delete failed for file:" + fileToDelete.getAbsolutePath());
+	}
+
+	private static boolean deleteExistingFile(final File fileToDelete) throws IOException
+	{
+		if (fileDoesNotExist(fileToDelete))
+			throw new IOException("Must pass in a file that exists, file:" + fileToDelete.getAbsolutePath());
+		
+		if (fileToDelete.delete())
+		{
+			if (fileDoesNotExist(fileToDelete))
+				return true;
+			
+			throw new IOException("File was not deleted:" + fileToDelete.getAbsolutePath());
+		}
+		
+		return false;
+	}
+
+	public static boolean fileDoesNotExist(final File fileToDelete)
+	{
+		return !fileToDelete.exists();
+	}
+	
 	public static void deleteIfExists(File file) throws IOException
 	{
-		if(!file.exists())
+		if(fileDoesNotExist(file))
 			return;
 		
 		if(!file.delete())
@@ -115,7 +152,7 @@ public class FileUtilities
 	
 	public static void renameIfExists(File fromFile, File toFile) throws IOException
 	{
-		if(!fromFile.exists())
+		if(fileDoesNotExist(fromFile))
 			return;
 		
 		rename(fromFile, toFile);
