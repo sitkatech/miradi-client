@@ -442,13 +442,13 @@ public class MpzToMpfConverter extends AbstractConverter
 		long totalSize = entry.getSize();
 		final int MAX_EXCEPTION_LOG_SIZE = 20000;
 		long availableUpTo20k = Math.min(totalSize, MAX_EXCEPTION_LOG_SIZE);
-		byte[] exceptionLogBytes = new byte[(int)availableUpTo20k];
+		byte[] maximumBytesToRead = new byte[(int)availableUpTo20k];
 
 		InputStream in = miradiZipFile.getInputStream(entry);
 		try
 		{
 			in.skip(totalSize - availableUpTo20k);
-			int totalReadCount = Utility.readAsMuchAsPossible(in, exceptionLogBytes);
+			int totalReadCount = Utility.readAsMuchAsPossible(in, maximumBytesToRead);
 			
 			if(totalReadCount != availableUpTo20k)
 				throw new IOException("convertExceptionLog Tried to read " + availableUpTo20k + " but got " + totalReadCount);
@@ -458,7 +458,7 @@ public class MpzToMpfConverter extends AbstractConverter
 			in.close();
 		}
 		
-		return safeConvertUtf8BytesToString(exceptionLogBytes);
+		return safeConvertUtf8BytesToString(maximumBytesToRead);
 	}
 
 	public static String safeConvertUtf8BytesToString(byte[] exceptionLogBytes) throws UnsupportedEncodingException
