@@ -75,7 +75,7 @@ public class DeleteActivityDoer extends ObjectsDoer
 	public static void deleteTaskWithUserConfirmation(Project project, ORefList selectionHierachy, Task selectedTask) throws CommandFailedException
 	{
 		Vector<String> dialogText = new Vector<String>();
-		boolean containsMoreThanOneParent = selectionHierachy.getOverlappingRefs(selectedTask.findObjectsThatReferToUs()).size() > 1;
+		boolean containsMoreThanOneParent = selectionHierachy.getOverlappingRefs(selectedTask.findAllObjectsThatReferToUs()).size() > 1;
 		if (containsMoreThanOneParent)
 			dialogText.add(EAM.text("This item is shared, so will be deleted from multiple places."));
 		

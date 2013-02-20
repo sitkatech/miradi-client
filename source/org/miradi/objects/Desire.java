@@ -143,7 +143,7 @@ abstract public class Desire extends BaseObject
 	{
 		ORefList indicatorRefs = new ORefList();
 		
-		ORefList referrers = findObjectsThatReferToUs();
+		ORefList referrers = findAllObjectsThatReferToUs();
 		for(int i = 0; i < referrers.size(); ++i)
 		{
 			ORef thisRef = referrers.get(i);

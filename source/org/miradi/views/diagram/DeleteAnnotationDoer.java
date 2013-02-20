@@ -87,7 +87,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	
 	protected BaseObject getReferrerParent(BaseObject annotationToDelete)
 	{
-		ORefList referrerRefs = annotationToDelete.findObjectsThatReferToUs();
+		ORefList referrerRefs = annotationToDelete.findAllObjectsThatReferToUs();
 		if (referrerRefs.isEmpty())
 			return null;
 			

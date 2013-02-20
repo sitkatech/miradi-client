@@ -334,7 +334,7 @@ public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
 		assertEquals(referrer.getObjectId(), foundReferrers1.get(0).getObjectId());
 
 		BaseObject referredObject =  project.getObjectManager().findObject(referred);
-		ORefList foundReferrers2 = referredObject.findObjectsThatReferToUs();
+		ORefList foundReferrers2 = referredObject.findAllObjectsThatReferToUs();
 		assertContains(referrer, foundReferrers2.toArray());
 	}	
 	

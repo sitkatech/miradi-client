@@ -120,7 +120,7 @@ public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 	public static CommandVector buildCommandsToDeleteAnnotation(Project project, BaseObject objectToRemove, String annotationListTag) throws Exception
 	{
 		CommandVector commands = new CommandVector();
-		ORefList ownerRefs = objectToRemove.findObjectsThatReferToUs();
+		ORefList ownerRefs = objectToRemove.findAllObjectsThatReferToUs();
 		for (int refIndex = 0; refIndex < ownerRefs.size(); ++refIndex)
 		{
 			ORef ownerRef = ownerRefs.get(refIndex);
@@ -166,12 +166,12 @@ public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 		if (shouldDeleteFromParentOnly(selectedTaskToDelete))
 			DeleteActivityDoer.deleteTaskWithUserConfirmation(getProject(), getSelectionHierarchy(), selectedTaskToDelete);
 		else
-			DeleteActivityDoer.deleteTaskWithUserConfirmation(getProject(), selectedTaskToDelete.findObjectsThatReferToUs(), selectedTaskToDelete);
+			DeleteActivityDoer.deleteTaskWithUserConfirmation(getProject(), selectedTaskToDelete.findAllObjectsThatReferToUs(), selectedTaskToDelete);
 	}
 	
 	private boolean shouldDeleteFromParentOnly(Task selectedTaskToDelete)
 	{
-		ORefList referrers = selectedTaskToDelete.findObjectsThatReferToUs();
+		ORefList referrers = selectedTaskToDelete.findAllObjectsThatReferToUs();
 		ORefList selectionHierarchy = getSelectionHierarchy();
 		
 		return selectionHierarchy.containsAnyOf(referrers);

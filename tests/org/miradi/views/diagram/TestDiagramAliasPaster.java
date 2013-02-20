@@ -99,7 +99,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	public void testPasteSharedDeletingOrphanedIndicatorAfterCopy() throws Exception
 	{
 		Goal orphanGoal = createOrphanGoal();
-		assertTrue("goal is not orphan?", orphanGoal.findObjectsThatReferToUs().isEmpty());
+		assertTrue("goal is not orphan?", orphanGoal.findAllObjectsThatReferToUs().isEmpty());
 		
 		Indicator indicator = getProject().createIndicator(threat);
 		AbstractTransferableMiradiList transferable = createTransferable(getDiagramModel(), getDiagramModel().getAllDiagramFactors(), new Vector<DiagramLink>());
@@ -330,7 +330,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		DiagramFactor tdf = DiagramFactor.find(getProject(), targetDiagramFactorRef);
 		assertTrue("No group-target link?", diagramModel.getDiagramObject().areDiagramFactorsLinkedFromToNonBidirectional(gdf.getRef(), tdf.getRef()));
 		
-		DiagramLink gdl = DiagramLink.find(getProject(), gdf.findObjectsThatReferToUs().getRefForType(DiagramLinkSchema.getObjectType()));
+		DiagramLink gdl = DiagramLink.find(getProject(), gdf.findAllObjectsThatReferToUs().getRefForType(DiagramLinkSchema.getObjectType()));
 		assertTrue("Isn't a group link?", gdl.isGroupBoxLink());
 		assertNull("Group link has an FL?", gdl.getWrappedFactorLink());
 		assertEquals("Group link not from group?", GroupBoxSchema.getObjectType(), gdl.getFromDiagramFactor().getWrappedType());

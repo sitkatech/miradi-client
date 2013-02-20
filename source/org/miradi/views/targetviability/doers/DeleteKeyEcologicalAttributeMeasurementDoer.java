@@ -72,7 +72,7 @@ public class DeleteKeyEcologicalAttributeMeasurementDoer extends AbstractKeyEcol
 			CommandSetObjectData removeMeasurement = CommandSetObjectData.createRemoveORefCommand(indicator, Indicator.TAG_MEASUREMENT_REFS, measurementNode.getObjectReference());
 			getProject().executeCommand(removeMeasurement);
 			
-			ORefList referrerRefs = measurement.findObjectsThatReferToUs();
+			ORefList referrerRefs = measurement.findAllObjectsThatReferToUs();
 			if (referrerRefs.size() > 0)
 				return;
 			

@@ -60,7 +60,7 @@ public class DeleteResourceDoer extends ObjectsDoer
 		
 		ProjectResource resource = (ProjectResource)getObjects()[0];
 		Vector<String> dialogText = new Vector<String>();
-		ORefList allThatUseThisResource = resource.findObjectsThatReferToUs();
+		ORefList allThatUseThisResource = resource.findAllObjectsThatReferToUs();
 
 		//TODO fix dialog text
 		if (allThatUseThisResource.size() > 0)
