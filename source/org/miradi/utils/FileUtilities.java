@@ -172,18 +172,14 @@ public class FileUtilities
 		return !fileToDelete.exists();
 	}
 	
-	public static void renameIfExists(File fromFile, File toFile) throws IOException
+	public static void renameIfExists(File fromFile, File toFile) throws Exception
 	{
-		if(fileDoesNotExist(fromFile))
-			return;
-		
-		rename(fromFile, toFile);
+		renameIfExistsWithRetries(fromFile, toFile);
 	}
 
-	public static void rename(File fromFile, File toFile) throws IOException
+	public static void rename(File fromFile, File toFile) throws Exception
 	{
-		if(!fromFile.renameTo(toFile))
-			throw new IOException("Rename failed: " + fromFile.getAbsolutePath() + "->" + toFile.getAbsolutePath());
+		renameExistingWithRetries(fromFile, toFile);
 	}
 
 	public static File createFileWithSuffix(File fromFile, String withSuffix)
