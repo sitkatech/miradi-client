@@ -193,7 +193,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 		}
 		finally
 		{
-			mpzFile.delete();
+			FileUtilities.deleteExistingWithRetries(mpzFile);
 		}
 	}
 

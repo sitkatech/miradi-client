@@ -35,7 +35,7 @@ public class DeleteProject
 		if(!EAM.confirmDialog(EAM.text("Delete"), body, buttons))
 			return;
 		
-		projectFileToDelete.delete();
+		FileUtilities.deleteExistingWithRetries(projectFileToDelete);
 		deleteRelatedProjectFiles(projectFileToDelete);
 	}
 

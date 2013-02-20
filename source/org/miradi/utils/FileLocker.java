@@ -37,7 +37,7 @@ public class FileLocker
 		lockedStream = tempLockStream;
 	}
 	
-	public void close() throws IOException
+	public void close() throws Exception
 	{
 		if(lockedStream == null)
 			return;
@@ -45,7 +45,7 @@ public class FileLocker
 		FileOutputStream tempLockStream = lockedStream;
 		lockedStream = null;
 		tempLockStream.close();
-		lockedFile.delete();
+		FileUtilities.deleteExistingWithRetries(lockedFile);
 	}
 	
 	public boolean isLockActive()
