@@ -127,9 +127,9 @@ public class FileUtilities
 			throw new IOException("Rename failed: " + fromFile.getAbsolutePath() + "->" + toFile.getAbsolutePath());
 	}
 
-	public static File createFileWithSuffix(File currentFile, String suffix)
+	public static File createFileWithSuffix(File fromFile, String withSuffix)
 	{
-		return new File(currentFile.getAbsolutePath() + suffix);
+		return new File(fromFile.getAbsolutePath() + withSuffix);
 	}
 
 	public static File createTempFileCopyOf(InputStream mpzInputStream) throws IOException
