@@ -71,7 +71,7 @@ public class TestAutomaticProjectSaver extends TestCaseEnhanced
 	public void testInternalSafeSave() throws Exception
 	{
 		File oldFile = saver.createOldFile(projectFile);
-		File newFile = saver.getNewFile(projectFile);
+		File newFile = saver.createNewFile(projectFile);
 
 		saver.internalSafeSave(projectFile);
 		assertTrue(projectFile.exists());

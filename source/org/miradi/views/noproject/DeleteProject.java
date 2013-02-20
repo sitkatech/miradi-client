@@ -44,7 +44,7 @@ public class DeleteProject
 		FileUtilities.deleteIfExists(AutomaticProjectSaver.getSessionFile(projectFileToDelete));
 		FileUtilities.deleteIfExists(AutomaticProjectSaver.createOldFile(projectFileToDelete));
 		FileUtilities.deleteIfExists(AutomaticProjectSaver.getLockFile(projectFileToDelete));
-		FileUtilities.deleteIfExists(AutomaticProjectSaver.getNewFile(projectFileToDelete));
+		FileUtilities.deleteIfExists(AutomaticProjectSaver.createNewFile(projectFileToDelete));
 	}
 
 	private static String getDeleteMessage(File projectFileToDelete)
