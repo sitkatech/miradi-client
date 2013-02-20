@@ -56,7 +56,7 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 	private void ensureSingleSessionProjectFile() throws Exception
 	{
 		File sessionFile = createSessionFile(getProjectFile());
-		FileUtilities.deleteIfExists(sessionFile);
+		FileUtilities.deleteIfExistsWithRetries(sessionFile);
 		Utility.copyFile(getProjectFile(), sessionFile);
 	}
 
@@ -105,10 +105,10 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 		File oldFile = createOldFile(currentFile);
 		File newFile = createNewFile(currentFile);
 
-		FileUtilities.deleteIfExists(newFile);
+		FileUtilities.deleteIfExistsWithRetries(newFile);
 		save(newFile);
 
-		FileUtilities.deleteIfExists(oldFile);
+		FileUtilities.deleteIfExistsWithRetries(oldFile);
 		FileUtilities.renameIfExists(currentFile, oldFile);
 
 		FileUtilities.rename(newFile, currentFile);

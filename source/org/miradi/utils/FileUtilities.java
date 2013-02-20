@@ -136,11 +136,6 @@ public class FileUtilities
 		return !fileToDelete.exists();
 	}
 	
-	public static void deleteIfExists(File file) throws Exception
-	{
-		deleteIfExistsWithRetries(file);
-	}
-	
 	public static void renameIfExists(File fromFile, File toFile) throws IOException
 	{
 		if(fileDoesNotExist(fromFile))
