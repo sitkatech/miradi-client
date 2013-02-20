@@ -1014,7 +1014,7 @@ abstract public class BaseObject
 		if(possibleOwningTypes.length == 0)
 			return ORef.INVALID;
 		
-		ORefList possibleOwners = findObjectsThatReferToUs();
+		ORefList possibleOwners = findAllObjectsThatReferToUs();
 		ORef ownerRef = possibleOwners.getRefForTypes(possibleOwningTypes);
 		if(ownerRef.isInvalid())
 			EAM.logVerbose("getOwnerRef didn't find owner for: " + getRef());
@@ -1026,13 +1026,13 @@ abstract public class BaseObject
 
 	public ORefList findStrongObjectsThatReferToUs()
 	{
-		ORefList allReferrers = findObjectsThatReferToUs();
+		ORefList allReferrers = findAllObjectsThatReferToUs();
 		allReferrers.removeAllTypes(TaggedObjectSetSchema.getObjectType());
 		
 		return allReferrers;
 	}
 	
-	public ORefList findObjectsThatReferToUs()
+	public ORefList findAllObjectsThatReferToUs()
 	{
 		return new ORefList(getObjectManager().getReferringObjects(getRef()));
 	}
@@ -1050,7 +1050,7 @@ abstract public class BaseObject
 	
 	public ORefList findObjectsThatReferToUs(int objectType)
 	{
-		return findObjectsThatReferToUs().getFilteredBy(objectType);
+		return findAllObjectsThatReferToUs().getFilteredBy(objectType);
 	}
 	
 	static public ORefList findObjectsThatReferToUs(ObjectManager objectManager, int objectType, ORef oref)
@@ -1061,7 +1061,7 @@ abstract public class BaseObject
 	
 	public boolean hasReferrers()
 	{
-		ORefList referrers = findObjectsThatReferToUs();
+		ORefList referrers = findAllObjectsThatReferToUs();
 		if (referrers.size() > 0)
 			return true;
 

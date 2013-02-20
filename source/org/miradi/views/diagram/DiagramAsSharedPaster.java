@@ -86,7 +86,7 @@ public class DiagramAsSharedPaster extends DiagramPaster
 					continue;
 				
 				BaseObject baseObject = BaseObject.find(getProject(), newRef);
-				ORefList allReferrers = baseObject.findObjectsThatReferToUs();
+				ORefList allReferrers = baseObject.findAllObjectsThatReferToUs();
 				if (allReferrers.isEmpty())
 				{
 					CommandVector commandsToDeleteOrphan = baseObject.createCommandsToDeleteChildrenAndObject();
