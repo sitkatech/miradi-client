@@ -47,7 +47,7 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 	
 	public void startSaving(File projectFileToUse) throws Exception
 	{
-		locker.lock(getLockFile(projectFileToUse));
+		locker.lock(createLockFile(projectFileToUse));
 		setProjectFile(projectFileToUse);
 		ensureNewlyCreatedProjectFileExists();
 		ensureSingleSessionProjectFile();
@@ -134,7 +134,7 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 		return FileUtilities.createFileWithSuffix(currentFile, NEW_EXTENSION);
 	}
 
-	public static File getLockFile(File currentFile)
+	public static File createLockFile(File currentFile)
 	{
 		return FileUtilities.createFileWithSuffix(currentFile, ".lock");
 	}
