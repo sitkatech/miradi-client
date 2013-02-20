@@ -31,7 +31,7 @@ public class TestXmlUtilities2 extends MiradiTestCase
 	
 	public void testGetUnescapedNumericValues() throws Exception
 	{
-		verifyUnescapedNumericValue("¢", "&#162;");
+		verifyUnescapedNumericValue(new String(new char[] {162}), "&#162;");
 	}
 		
 	private void verifyUnescapedNumericValue(String expectedValue, String actualValue) throws Exception
