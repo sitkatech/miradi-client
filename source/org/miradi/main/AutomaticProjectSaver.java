@@ -47,7 +47,7 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 	
 	public void startSaving(File projectFileToUse) throws Exception
 	{
-		locker.lock(createLockFile(projectFileToUse));
+		locker.lock(getLockFile(projectFileToUse));
 		setProjectFile(projectFileToUse);
 		ensureNewlyCreatedProjectFileExists();
 		ensureSingleSessionProjectFile();
@@ -55,7 +55,7 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 	
 	private void ensureSingleSessionProjectFile() throws Exception
 	{
-		File sessionFile = createSessionFile(getProjectFile());
+		File sessionFile = getSessionFile(getProjectFile());
 		FileUtilities.deleteIfExistsWithRetries(sessionFile);
 		Utility.copyFile(getProjectFile(), sessionFile);
 	}
@@ -102,8 +102,8 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 		if(currentFile == null)
 			return;
 		
-		File oldFile = createOldFile(currentFile);
-		File newFile = createNewFile(currentFile);
+		File oldFile = getOldFile(currentFile);
+		File newFile = getNewFile(currentFile);
 
 		FileUtilities.deleteIfExistsWithRetries(newFile);
 		save(newFile);
@@ -119,24 +119,24 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 		// 3. if valid old file exists, use it
 	}
 	
-	public static File createSessionFile(final File currentFile)
+	public static File getSessionFile(final File currentFile)
 	{
-		return FileUtilities.createFileWithSuffix(currentFile, SESSION_EXTENSION);
+		return FileUtilities.getFileWithSuffix(currentFile, SESSION_EXTENSION);
 	}
 
-	public static File createOldFile(File currentFile)
+	public static File getOldFile(File currentFile)
 	{
-		return FileUtilities.createFileWithSuffix(currentFile, OLD_EXTENSION);
+		return FileUtilities.getFileWithSuffix(currentFile, OLD_EXTENSION);
 	}
 
-	public static File createNewFile(File currentFile)
+	public static File getNewFile(File currentFile)
 	{
-		return FileUtilities.createFileWithSuffix(currentFile, NEW_EXTENSION);
+		return FileUtilities.getFileWithSuffix(currentFile, NEW_EXTENSION);
 	}
 
-	public static File createLockFile(File currentFile)
+	public static File getLockFile(File currentFile)
 	{
-		return FileUtilities.createFileWithSuffix(currentFile, ".lock");
+		return FileUtilities.getFileWithSuffix(currentFile, ".lock");
 	}
 
 	private void save(File file) throws Exception

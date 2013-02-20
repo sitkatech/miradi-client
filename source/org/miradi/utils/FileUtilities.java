@@ -172,7 +172,7 @@ public class FileUtilities
 		return !fileToDelete.exists();
 	}
 	
-	public static File createFileWithSuffix(File fromFile, String withSuffix)
+	public static File getFileWithSuffix(File fromFile, String withSuffix)
 	{
 		return new File(fromFile.getAbsolutePath() + withSuffix);
 	}
