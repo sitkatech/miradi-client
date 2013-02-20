@@ -177,11 +177,6 @@ public class FileUtilities
 		renameIfExistsWithRetries(fromFile, toFile);
 	}
 
-	public static void rename(File fromFile, File toFile) throws Exception
-	{
-		renameExistingWithRetries(fromFile, toFile);
-	}
-
 	public static File createFileWithSuffix(File fromFile, String withSuffix)
 	{
 		return new File(fromFile.getAbsolutePath() + withSuffix);

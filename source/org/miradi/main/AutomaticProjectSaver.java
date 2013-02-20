@@ -111,7 +111,7 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 		FileUtilities.deleteIfExistsWithRetries(oldFile);
 		FileUtilities.renameIfExists(currentFile, oldFile);
 
-		FileUtilities.rename(newFile, currentFile);
+		FileUtilities.renameExistingWithRetries(newFile, currentFile);
 		
 		// NOTE: recovery steps:
 		// 1. if valid new file exists, use it, else
