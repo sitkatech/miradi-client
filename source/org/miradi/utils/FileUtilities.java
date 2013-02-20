@@ -104,36 +104,31 @@ public class FileUtilities
 		return tempDirectory;
 	}
 	
-	public static void deleteIfExistsWithRetries(final File fileToDelete, final int MAX_TRIES, final int SLEEP_PER_TRY_MILLIS)	throws Exception
+	public static void deleteIfExistsWithRetries(final File fileToDelete)	throws Exception
 	{
-		for (int retryCount = 0; retryCount < MAX_TRIES; ++retryCount)
-		{
-			if(fileDoesNotExist(fileToDelete))
-				return;
+		if(fileDoesNotExist(fileToDelete))
+			return;
 
-			if (deleteExistingFile(fileToDelete))
-				return;
-
-			Thread.currentThread().sleep(SLEEP_PER_TRY_MILLIS);
-		}
-
-		throw new IOException("Delete failed for file:" + fileToDelete.getAbsolutePath());
+		final int MAX_TRIES = 4;
+		final int SLEEP_PER_TRY_MILLIS = 250;
+		deleteWithRetries(fileToDelete, MAX_TRIES, SLEEP_PER_TRY_MILLIS);
 	}
 
-	private static boolean deleteExistingFile(final File fileToDelete) throws IOException
+	private static void deleteWithRetries(final File fileToDelete, final int maxTries, final int sleepPerTryMillis) throws Exception
 	{
 		if (fileDoesNotExist(fileToDelete))
 			throw new IOException("Must pass in a file that exists, file:" + fileToDelete.getAbsolutePath());
-		
-		if (fileToDelete.delete())
+
+		for (int retryCount = 0; retryCount < maxTries; ++retryCount)
 		{
+			fileToDelete.delete();
 			if (fileDoesNotExist(fileToDelete))
-				return true;
-			
-			throw new IOException("File was not deleted:" + fileToDelete.getAbsolutePath());
+				return;
+
+			Thread.currentThread().sleep(sleepPerTryMillis);
 		}
 		
-		return false;
+		throw new IOException("Delete failed for file:" + fileToDelete.getAbsolutePath());
 	}
 
 	public static boolean fileDoesNotExist(final File fileToDelete)
