@@ -41,10 +41,10 @@ public class DeleteProject
 
 	private static void deleteRelatedProjectFiles(File projectFileToDelete) throws Exception
 	{
-		FileUtilities.deleteIfExists(AutomaticProjectSaver.createSessionFile(projectFileToDelete));
-		FileUtilities.deleteIfExists(AutomaticProjectSaver.createOldFile(projectFileToDelete));
-		FileUtilities.deleteIfExists(AutomaticProjectSaver.createLockFile(projectFileToDelete));
-		FileUtilities.deleteIfExists(AutomaticProjectSaver.createNewFile(projectFileToDelete));
+		FileUtilities.deleteIfExistsWithRetries(AutomaticProjectSaver.createSessionFile(projectFileToDelete));
+		FileUtilities.deleteIfExistsWithRetries(AutomaticProjectSaver.createOldFile(projectFileToDelete));
+		FileUtilities.deleteIfExistsWithRetries(AutomaticProjectSaver.createLockFile(projectFileToDelete));
+		FileUtilities.deleteIfExistsWithRetries(AutomaticProjectSaver.createNewFile(projectFileToDelete));
 	}
 
 	private static String getDeleteMessage(File projectFileToDelete)

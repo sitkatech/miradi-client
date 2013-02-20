@@ -84,7 +84,7 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 		{
 			fileOutputStream.flush();
 			fileOutputStream.close();
-			FileUtilities.deleteIfExists(file);
+			FileUtilities.deleteIfExistsWithRetries(file);
 		}
 	}
 
