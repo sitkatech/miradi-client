@@ -357,8 +357,8 @@ public class ProjectRepairer
 		for(ORef taggedBaseObjectRef : taggedObjectRefs)
 		{
 			BaseObject taggedBaseObject = BaseObject.find(getProject(), taggedBaseObjectRef);
-			ORefList allReferrers = taggedBaseObject.findAllObjectsThatReferToUs();
-			if (allReferrers.contains(taggedObjectSetRef))
+			ORefList allStrongReferrers = taggedBaseObject.findStrongObjectsThatReferToUs();
+			if (allStrongReferrers.isEmpty())
 				orphandRefsToUntag.add(taggedBaseObjectRef);
 		}
 		

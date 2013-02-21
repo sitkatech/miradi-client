@@ -80,16 +80,30 @@ public class TestProjectRepairer extends TestCaseWithProject
 		repairer = new ProjectRepairer(getProject());
 	}
 	
+	public void testToMakeSureNonOrphansAreNotUntagged() throws Exception
+	{
+		DiagramFactor diagramFactor = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
+		Target target = Target.find(getProject(), diagramFactor.getWrappedORef());
+		
+		verifyUntaggingOfObject(target, 1, 1);
+	}
+	
 	public void testDetectOrphansRefferedToByTaggedObjectSet() throws Exception
 	{
 		Target target = getProject().createTarget();
+		
+		verifyUntaggingOfObject(target, 0, 0);
+	}
+
+	public void verifyUntaggingOfObject(Target target, int expectedObjectCountAfterRepair, int expectedTaggedObjectSetSize) throws Exception
+	{
 		TaggedObjectSet taggedObjectSet = getProject().createTaggedObjectSet();
 		getProject().setObjectData(taggedObjectSet.getRef(), TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, new ORefList(target.getRef()).toString());
-		
 		assertEquals("Target was not added correctly?", 1, getProject().getTargetPool().size());
+		
 		repairer.quarantineOrphans();
-		assertEquals("Orphand target should have been deleted?", 0, getProject().getTargetPool().size());
-		assertEquals("Deleted object was not removed from taggedObjectSet?", 0, taggedObjectSet.getTaggedObjectRefsSet().size());
+		assertEquals("Orphand target should have been deleted?", expectedObjectCountAfterRepair, getProject().getTargetPool().size());
+		assertEquals("Deleted object was not removed from taggedObjectSet?", expectedTaggedObjectSetSize, taggedObjectSet.getTaggedObjectRefsSet().size());
 	}
 	
 	public void testRepairSimpleModeTargetReferringToMissingSimpleIndicator() throws Exception
