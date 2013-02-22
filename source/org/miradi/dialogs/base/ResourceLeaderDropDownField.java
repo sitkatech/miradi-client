@@ -90,14 +90,11 @@ public class ResourceLeaderDropDownField extends ObjectChoiceField
 	
 	private final int getComponentIndex(Component component) 
 	{
-		if (component.getParent() != null) 
+		Container container = component.getParent();
+		for (int index = 0; index < container.getComponentCount(); index++) 
 		{
-			Container container = component.getParent();
-			for (int index = 0; index < container.getComponentCount(); index++) 
-			{
-				if (container.getComponent(index) == component)
-					return index;
-			}
+			if (container.getComponent(index) == component)
+				return index;
 		}
 
 		return -1;
