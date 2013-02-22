@@ -41,7 +41,7 @@ public class Utility
 	{
 		int totalReadCount = 0;
 		byte byteRead = 0;
-		while (-1 < (byteRead = (byte)in.read()) && totalReadCount < maximumBytesToRead.length)
+		while (totalReadCount < maximumBytesToRead.length && -1 < (byteRead = (byte)in.read()))
 		{				
 			maximumBytesToRead[totalReadCount] = byteRead;
 			++totalReadCount;
