@@ -60,12 +60,12 @@ public class LeaderEnsurer implements CommandExecutedListener
 				if (previousDataValue.length() == 0)
 					return;
 				
+				ORef resourceRef = new ORef(ProjectResourceSchema.getObjectType(), new BaseId(previousDataValue));
 				ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), setCommand.getObjectORef());
 				ORefList referrers = resourceAssignment.findAllObjectsThatReferToUs();
 				for(ORef referrerRef : referrers)
 				{
 					BaseObject referrer = BaseObject.find(getProject(), referrerRef);
-					ORef resourceRef = new ORef(ProjectResourceSchema.getObjectType(), new BaseId(previousDataValue));
 					if (referrer.getLeaderResourceRef().equals(resourceRef))
 						clearLeaderResourceRef(referrer);
 				}
