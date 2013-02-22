@@ -39,7 +39,7 @@ public class LeaderResourceQuestionWithUnspecifiedChoice extends ObjectQuestion
 		leaderReferrerRef = ORef.INVALID;
 	}
 	
-	public void setLeaderReferrerRef(ORef refToUse)
+	public void setObjectContainingLeaderRef(ORef refToUse)
 	{
 		leaderReferrerRef = refToUse;
 	}
