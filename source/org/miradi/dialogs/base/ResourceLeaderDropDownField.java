@@ -54,18 +54,18 @@ public class ResourceLeaderDropDownField extends ObjectChoiceField
 	private void replaceExistingComboBoxWithNewToAvoidSwingReselectAfterOurSelection()
 	{
 		JComponent parent = (JComponent) getComponent().getParent();
-		if (parent != null)
-		{
-			ChoiceItemComboBox newCombo = new ChoiceItemComboBox(question.getChoices());
-			transferFocusListeners(newCombo);
-			transferActionListeners(newCombo);
-			
-			int currentComboIndex = getComponentIndex(combo);
-			parent.add(newCombo, currentComboIndex + 1);
-			parent.remove(combo);
-			combo = newCombo;
-			parent.revalidate();
-		}
+		if (parent == null)
+			return;
+
+		ChoiceItemComboBox newCombo = new ChoiceItemComboBox(question.getChoices());
+		transferFocusListeners(newCombo);
+		transferActionListeners(newCombo);
+
+		int currentComboIndex = getComponentIndex(combo);
+		parent.add(newCombo, currentComboIndex + 1);
+		parent.remove(combo);
+		combo = newCombo;
+		parent.revalidate();
 	}
 
 	private void transferActionListeners(ChoiceItemComboBox newCombo)
