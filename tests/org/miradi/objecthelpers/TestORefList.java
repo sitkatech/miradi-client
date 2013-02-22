@@ -40,17 +40,17 @@ public class TestORefList extends MiradiTestCase
 	public void testAllTypes()
 	{
 		ORefList refList = new ORefList();
-		refList.removeAllTypes(TargetSchema.getObjectType());
+		refList.removeAllRefsOfType(TargetSchema.getObjectType());
 		verifyRefListSize(refList, 0);
 		
 		refList.add(ORef.createInvalidWithType(GoalSchema.getObjectType()));
 		refList.add(ORef.createInvalidWithType(GoalSchema.getObjectType()));
 		refList.add(ORef.createInvalidWithType(ObjectiveSchema.getObjectType()));
 		verifyRefListSize(refList, 3);
-		refList.removeAllTypes(GoalSchema.getObjectType());
+		refList.removeAllRefsOfType(GoalSchema.getObjectType());
 		verifyRefListSize(refList, 1);
 		assertEquals("Object should have not been removed?", ObjectiveSchema.getObjectType(), refList.getFirstElement().getObjectType());
-		refList.removeAllTypes(ObjectiveSchema.getObjectType());
+		refList.removeAllRefsOfType(ObjectiveSchema.getObjectType());
 		verifyRefListSize(refList, 0);
 	}
 

@@ -1027,7 +1027,7 @@ abstract public class BaseObject
 	public ORefList findStrongObjectsThatReferToUs()
 	{
 		ORefList allReferrers = findAllObjectsThatReferToUs();
-		allReferrers.removeAllTypes(TaggedObjectSetSchema.getObjectType());
+		allReferrers.removeAllRefsOfType(TaggedObjectSetSchema.getObjectType());
 		
 		return allReferrers;
 	}
