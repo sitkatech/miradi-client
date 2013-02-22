@@ -29,13 +29,13 @@ import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
-//FIXME medium, need to make this class a sibling of ObjectPoolChoiceQuestion instead of its grandchild
-public class ProjectResourceQuestionWithUnspecifiedChoice extends ProjectResourceQuestion
+public class ProjectResourceQuestionWithUnspecifiedChoice extends ObjectQuestion
 {
 	public ProjectResourceQuestionWithUnspecifiedChoice(Project projectToUse)
 	{
-		super(projectToUse);
+		super(new BaseObject[0]);
 		
+		project = projectToUse;
 		leaderReferrerRef = ORef.INVALID;
 	}
 	
@@ -79,6 +79,12 @@ public class ProjectResourceQuestionWithUnspecifiedChoice extends ProjectResourc
 		
 		return baseObjects.toArray(new BaseObject[0]);
 	}
+	
+	private Project getProject()
+	{
+		return project;
+	}
 
+	private Project project;
 	private ORef leaderReferrerRef;
 }
