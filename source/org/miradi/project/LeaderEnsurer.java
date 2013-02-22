@@ -91,10 +91,10 @@ public class LeaderEnsurer implements CommandExecutedListener
 		if (previousDataValue.length() == 0)
 			return;
 		
-		ORef resourceRef = new ORef(ProjectResourceSchema.getObjectType(), new BaseId(previousDataValue));
+		ORef oldResourceRef = new ORef(ProjectResourceSchema.getObjectType(), new BaseId(previousDataValue));
 		ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), setCommand.getObjectORef());
 		ORefList referrers = resourceAssignment.findAllObjectsThatReferToUs();
-		clearLeaderFromReferrers(referrers, resourceRef);
+		clearLeaderFromReferrers(referrers, oldResourceRef);
 	}
 
 	private void clearLeaderFromReferrers(ORefList referrers, ORef resourceRef) throws Exception
