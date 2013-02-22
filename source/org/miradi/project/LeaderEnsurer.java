@@ -55,40 +55,46 @@ public class LeaderEnsurer implements CommandExecutedListener
 		try
 		{
 			if (event.isSetDataCommandWithThisTypeAndTag(ResourceAssignmentSchema.getObjectType(), ResourceAssignment.TAG_RESOURCE_ID))
-			{
-				CommandSetObjectData setCommand = event.getSetCommand();
-				final String previousDataValue = setCommand.getPreviousDataValue();
-				if (previousDataValue.length() == 0)
-					return;
-				
-				ORef resourceRef = new ORef(ProjectResourceSchema.getObjectType(), new BaseId(previousDataValue));
-				ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), setCommand.getObjectORef());
-				ORefList referrers = resourceAssignment.findAllObjectsThatReferToUs();
-				clearLeaderFromReferrers(referrers, resourceRef);
-			}
+				possiblyClearResourceLeaderDueToResourceAssignmentResourceUpdate(event);
 			
 			if (event.isSetDataCommandWithThisTag(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS))
-			{
-				CommandSetObjectData setCommand = event.getSetCommand();
-				ORef referrerRef = setCommand.getObjectORef();
-				ORefList currentList = new ORefList(new IdList(ResourceAssignmentSchema.getObjectType(), setCommand.getDataValue()));
-				ORefList previousList = new ORefList(new IdList(ResourceAssignmentSchema.getObjectType(), setCommand.getPreviousDataValue()));
-				if (previousList.size() <= currentList.size())
-					return;
-				
-				ORefList changedRefList = ORefList.subtract(previousList, currentList);
-				if (changedRefList.size() != 1)
-					return;
-				
-				ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), previousList.getFirstElement());
-				clearLeaderFromReferrers(new ORefList(referrerRef), resourceAssignment.getResourceRef());
-			}
+				possiblyClearResourceLeaderDueToResourceAssignmentDeletion(event);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 			throw new RuntimeException(e);
 		}
+	}
+
+	private void possiblyClearResourceLeaderDueToResourceAssignmentDeletion(CommandExecutedEvent event) throws Exception
+	{
+		CommandSetObjectData setCommand = event.getSetCommand();
+		ORef referrerRef = setCommand.getObjectORef();
+		ORefList currentList = new ORefList(new IdList(ResourceAssignmentSchema.getObjectType(), setCommand.getDataValue()));
+		ORefList previousList = new ORefList(new IdList(ResourceAssignmentSchema.getObjectType(), setCommand.getPreviousDataValue()));
+		if (previousList.size() <= currentList.size())
+			return;
+		
+		ORefList changedRefList = ORefList.subtract(previousList, currentList);
+		if (changedRefList.size() != 1)
+			return;
+		
+		ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), previousList.getFirstElement());
+		clearLeaderFromReferrers(new ORefList(referrerRef), resourceAssignment.getResourceRef());
+	}
+
+	private void possiblyClearResourceLeaderDueToResourceAssignmentResourceUpdate(CommandExecutedEvent event) throws Exception
+	{
+		CommandSetObjectData setCommand = event.getSetCommand();
+		final String previousDataValue = setCommand.getPreviousDataValue();
+		if (previousDataValue.length() == 0)
+			return;
+		
+		ORef resourceRef = new ORef(ProjectResourceSchema.getObjectType(), new BaseId(previousDataValue));
+		ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), setCommand.getObjectORef());
+		ORefList referrers = resourceAssignment.findAllObjectsThatReferToUs();
+		clearLeaderFromReferrers(referrers, resourceRef);
 	}
 
 	private void clearLeaderFromReferrers(ORefList referrers, ORef resourceRef) throws Exception
