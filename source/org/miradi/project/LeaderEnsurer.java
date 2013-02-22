@@ -22,6 +22,7 @@ package org.miradi.project;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
+import org.miradi.ids.IdList;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
@@ -63,18 +64,40 @@ public class LeaderEnsurer implements CommandExecutedListener
 				ORef resourceRef = new ORef(ProjectResourceSchema.getObjectType(), new BaseId(previousDataValue));
 				ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), setCommand.getObjectORef());
 				ORefList referrers = resourceAssignment.findAllObjectsThatReferToUs();
-				for(ORef referrerRef : referrers)
-				{
-					BaseObject referrer = BaseObject.find(getProject(), referrerRef);
-					if (referrer.getLeaderResourceRef().equals(resourceRef))
-						clearLeaderResourceRef(referrer);
-				}
+				clearLeaderFromReferrers(referrers, resourceRef);
+			}
+			
+			if (event.isSetDataCommandWithThisTag(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS))
+			{
+				CommandSetObjectData setCommand = event.getSetCommand();
+				ORef referrerRef = setCommand.getObjectORef();
+				ORefList currentList = new ORefList(new IdList(ResourceAssignmentSchema.getObjectType(), setCommand.getDataValue()));
+				ORefList previousList = new ORefList(new IdList(ResourceAssignmentSchema.getObjectType(), setCommand.getPreviousDataValue()));
+				if (previousList.size() <= currentList.size())
+					return;
+				
+				ORefList changedRefList = ORefList.subtract(previousList, currentList);
+				if (changedRefList.size() != 1)
+					return;
+				
+				ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), previousList.getFirstElement());
+				clearLeaderFromReferrers(new ORefList(referrerRef), resourceAssignment.getResourceRef());
 			}
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 			throw new RuntimeException(e);
+		}
+	}
+
+	private void clearLeaderFromReferrers(ORefList referrers, ORef resourceRef) throws Exception
+	{
+		for(ORef referrerRef : referrers)
+		{
+			BaseObject referrer = BaseObject.find(getProject(), referrerRef);
+			if (referrer.getLeaderResourceRef().equals(resourceRef))
+				clearLeaderResourceRef(referrer);
 		}
 	}
 

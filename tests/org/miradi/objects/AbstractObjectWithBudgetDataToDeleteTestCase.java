@@ -30,6 +30,14 @@ abstract public class AbstractObjectWithBudgetDataToDeleteTestCase extends Objec
 	{
 		super(name);
 	}
+	
+	@Override
+	public void setUp() throws Exception
+	{
+		super.setUp();
+		
+		getProject().disableLeaderEnsurer();
+	}
 
 	public void testDeletChildren() throws Exception
 	{
