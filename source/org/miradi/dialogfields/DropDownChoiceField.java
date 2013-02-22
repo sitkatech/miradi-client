@@ -31,7 +31,7 @@ public class DropDownChoiceField extends ObjectChoiceField
 	{
 		super(projectToUse, refToUse, tagToUse, questionToUse);
 		
-		combo.setRenderer(new RatingChoiceRenderer());
+		getComboBox().setRenderer(new RatingChoiceRenderer());
 	}
 
 }
