@@ -45,12 +45,9 @@ public class ResourceLeaderDropDownField extends ObjectChoiceField
 	@Override
 	public void updateFromObject()
 	{
-		if (getORef().isValid())
-		{
-			question.setLeaderReferrerRef(getORef());
-		}
-		
+		question.setLeaderReferrerRef(getORef());
 		replaceExistingComboBoxWithNewToAvoidSwingReselectAfterOurSelection();
+		
 		super.updateFromObject();
 	}
 
