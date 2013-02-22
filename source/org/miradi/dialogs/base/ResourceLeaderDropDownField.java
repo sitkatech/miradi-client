@@ -33,9 +33,9 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ProjectResourceQuestionWithUnspecifiedChoice;
 
-public class LeaderDropDownField extends ObjectChoiceField
+public class ResourceLeaderDropDownField extends ObjectChoiceField
 {
-	public LeaderDropDownField(Project projectToUse, ORef refToUse, String tagToUse, ProjectResourceQuestionWithUnspecifiedChoice questionToUse)
+	public ResourceLeaderDropDownField(Project projectToUse, ORef refToUse, String tagToUse, ProjectResourceQuestionWithUnspecifiedChoice questionToUse)
 	{
 		super(projectToUse, refToUse, tagToUse, questionToUse);
 		
