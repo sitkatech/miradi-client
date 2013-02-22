@@ -92,7 +92,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.ProjectResourceQuestionWithUnspecifiedChoice;
+import org.miradi.questions.LeaderResourceQuestionWithUnspecifiedChoice;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.ObjectiveSchema;
@@ -635,7 +635,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createLeaderDropDownField(int objectType, String tagToUse)
 	{
-		return new ResourceLeaderDropDownField(getProject(), getRefForType(objectType), tagToUse, new ProjectResourceQuestionWithUnspecifiedChoice(getProject()));
+		return new ResourceLeaderDropDownField(getProject(), getRefForType(objectType), tagToUse, new LeaderResourceQuestionWithUnspecifiedChoice(getProject()));
 	}
 	
 	public ObjectDataInputField createDropdownWithIconField(int objectType, String tagToUse, ChoiceQuestion question)
