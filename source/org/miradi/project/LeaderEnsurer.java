@@ -101,9 +101,9 @@ public class LeaderEnsurer implements CommandExecutedListener
 	{
 		for(ORef referrerRef : referrers)
 		{
-			BaseObject referrer = BaseObject.find(getProject(), referrerRef);
-			if (referrer.getLeaderResourceRef().equals(resourceRef))
-				clearLeaderResourceRef(referrer);
+			BaseObject objectContainingLeader = BaseObject.find(getProject(), referrerRef);
+			if (objectContainingLeader.getLeaderResourceRef().equals(resourceRef))
+				clearLeaderResourceRef(objectContainingLeader);
 		}
 	}
 
