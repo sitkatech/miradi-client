@@ -31,11 +31,11 @@ import org.miradi.dialogfields.ObjectChoiceField;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
-import org.miradi.questions.LeaderResourceQuestionWithUnspecifiedChoice;
+import org.miradi.questions.ResourceLeaderQuestionWithUnspecifiedChoice;
 
 public class ResourceLeaderDropDownField extends ObjectChoiceField
 {
-	public ResourceLeaderDropDownField(Project projectToUse, ORef refToUse, String tagToUse, LeaderResourceQuestionWithUnspecifiedChoice questionToUse)
+	public ResourceLeaderDropDownField(Project projectToUse, ORef refToUse, String tagToUse, ResourceLeaderQuestionWithUnspecifiedChoice questionToUse)
 	{
 		super(projectToUse, refToUse, tagToUse, questionToUse);
 		
@@ -100,5 +100,5 @@ public class ResourceLeaderDropDownField extends ObjectChoiceField
 		return -1;
 	}
 
-	private LeaderResourceQuestionWithUnspecifiedChoice question;
+	private ResourceLeaderQuestionWithUnspecifiedChoice question;
 }
