@@ -34,14 +34,14 @@ public class ObjectClassificationChoiceField extends ObjectChoiceField
 	public ObjectClassificationChoiceField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
 		super(projectToUse, refToUse, tagToUse, questionToUse);
-		combo.addFocusListener(new ClassificationFocusHandler());
+		getComboBox().addFocusListener(new ClassificationFocusHandler());
 	}
 
 	
 	@Override
 	public void saveSelection()
 	{
-		ChoiceItem taxonomyItem = getTaxonomyItem(combo);
+		ChoiceItem taxonomyItem = getTaxonomyItem(getComboBox());
 		if(taxonomyItem != null)
 		{
 			super.saveSelection();

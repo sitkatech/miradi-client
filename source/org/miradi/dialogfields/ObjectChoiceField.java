@@ -87,6 +87,11 @@ public class ObjectChoiceField extends ObjectDataInputField
 		forceSave();
 	}
 	
+	protected void setComboBox(ChoiceItemComboBox comboBoxToUse)
+	{
+		combo = comboBoxToUse;
+	}
+	
 	protected ChoiceItemComboBox getComboBox()
 	{
 		return combo;
@@ -100,5 +105,5 @@ public class ObjectChoiceField extends ObjectDataInputField
 		}
 	}
 	
-	protected ChoiceItemComboBox combo;
+	private ChoiceItemComboBox combo;
 }

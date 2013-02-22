@@ -31,6 +31,6 @@ public class ObjectIconChoiceField extends ObjectChoiceField
 	{
 		super(projectToUse, refToUse, tagToUse, questionToUse);
 		
-		combo.setRenderer(new ChoiceItemWithIconRenderer());
+		getComboBox().setRenderer(new ChoiceItemWithIconRenderer());
 	}
 }
