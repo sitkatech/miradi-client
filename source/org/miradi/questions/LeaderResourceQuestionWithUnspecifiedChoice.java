@@ -62,6 +62,10 @@ public class LeaderResourceQuestionWithUnspecifiedChoice extends ObjectQuestion
 				ORefSet projectResourceRefs = timePeriodCostsMap.getAllProjectResourceRefs();
 				setObjects(getBaseObjects(projectResourceRefs));
 			}
+			else
+			{
+				setObjects(new BaseObject[0]);
+			}
 		}
 		catch(Exception e)
 		{
