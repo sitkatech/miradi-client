@@ -29,9 +29,9 @@ import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
-public class ProjectResourceQuestionWithUnspecifiedChoice extends ObjectQuestion
+public class LeaderResourceQuestionWithUnspecifiedChoice extends ObjectQuestion
 {
-	public ProjectResourceQuestionWithUnspecifiedChoice(Project projectToUse)
+	public LeaderResourceQuestionWithUnspecifiedChoice(Project projectToUse)
 	{
 		super(new BaseObject[0]);
 		
