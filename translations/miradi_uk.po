@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-20 15:31-0600\n"
+"POT-Creation-Date: 2013-02-22 13:16-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -3049,7 +3049,7 @@ msgstr "Дата"
 msgid "Date Chooser"
 msgstr "Вибирач даних"
 
-#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:47
+#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:46
 msgid "Dates can be set in the Work Plan view"
 msgstr ""
 
@@ -5247,7 +5247,7 @@ msgstr "Не ефективний"
 #: Miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
 #: Miradi/source/org/miradi/questions/TrendQuestion.java:37
 #: Miradi/source/org/miradi/utils/Translation.java:332
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:281
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:285
 #: Miradi/source/org/miradi/dialogs/planning/treenodes/UnspecifiedBaseObject.java:45
 msgid "Not Specified"
 msgstr "Не визначено"
@@ -8548,7 +8548,7 @@ msgstr "Коли було перевищення: %s"
 msgid "White"
 msgstr "Білий"
 
-#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:38
+#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:37
 msgid "Who"
 msgstr ""
 
@@ -8560,7 +8560,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr "Ким було перевищено: %s"
 
-#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:55
+#: Miradi/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:54
 msgid "Who and When"
 msgstr ""
 
@@ -8711,7 +8711,7 @@ msgstr "[НЕ ВКАЗАНИЙ]"
 msgid "[New Results Chain]"
 msgstr "[Новий ланцюг результатів]"
 
-#: Miradi/source/org/miradi/project/Project.java:958
+#: Miradi/source/org/miradi/project/Project.java:960
 msgid "[No Project]"
 msgstr "[Проект не вибраний]"
 
