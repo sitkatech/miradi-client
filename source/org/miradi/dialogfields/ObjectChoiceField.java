@@ -24,7 +24,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JComponent;
 
-import org.martus.swing.UiComboBox;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
@@ -88,6 +87,11 @@ public class ObjectChoiceField extends ObjectDataInputField
 		forceSave();
 	}
 	
+	protected ChoiceItemComboBox getComboBox()
+	{
+		return combo;
+	}
+	
 	class ComboChangeHandler implements ActionListener
 	{
 		public void actionPerformed(ActionEvent event)
@@ -96,5 +100,5 @@ public class ObjectChoiceField extends ObjectDataInputField
 		}
 	}
 	
-	UiComboBox combo;
+	protected ChoiceItemComboBox combo;
 }

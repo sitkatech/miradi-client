@@ -79,6 +79,7 @@ import org.miradi.objecthelpers.TestCodeToCodeMap;
 import org.miradi.objecthelpers.TestCodeToUserStringMap;
 import org.miradi.objecthelpers.TestDateUnitEffort;
 import org.miradi.objecthelpers.TestDateUnitEffortList;
+import org.miradi.objecthelpers.TestLeaderEnsurer;
 import org.miradi.objecthelpers.TestMapList;
 import org.miradi.objecthelpers.TestORef;
 import org.miradi.objecthelpers.TestORefList;
@@ -372,6 +373,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestRelevancyOverrideSet.class));
 		addTest(new TestSuite(TestStringRefMap.class));
 		addTest(new TestSuite(TestThreatStressRatingEnsurer.class));
+		addTest(new TestSuite(TestLeaderEnsurer.class));
 		addTest(new TestSuite(TestTimePeriodCosts.class));
 		addTest(new TestSuite(TestTimePeriodCostsMap.class));
 		addTest(new TestSuite(TestDateUnitEffort.class));

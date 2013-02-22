@@ -153,6 +153,7 @@ public class Project
 		projectCalendar = new ProjectCalendar(this);
 		projectTotalCalculator = new ProjectTotalCalculator(this);
 		threatStressRatingEnsurer = new ThreatStressRatingEnsurer(this);
+		leaderEnsurer = new LeaderEnsurer(this);
 		planningPreferencesChangeHandler = new PlanningPreferencesChangeHandler(this);
 		dashboardStatusMapsCache = new DashboardStatusMapsCache(this);
 		timePeriodCostsMapsCache = new TimePeriodCostsMapsCache(this);
@@ -854,6 +855,7 @@ public class Project
 	{
 		getProjectTotalCalculator().enable();
 		enableThreatStressRatingEnsurer();
+		enableLeaderEnsurer();
 		planningPreferencesChangeHandler.enable();
 		dashboardStatusMapsCache.enable();
 		timePeriodCostsMapsCache.enable();
@@ -982,6 +984,7 @@ public class Project
 	{
 		getProjectTotalCalculator().disable();
 		disableThreatStressRatingEnsurer();
+		disableLeaderEnsurer();
 		planningPreferencesChangeHandler.disable();
 		dashboardStatusMapsCache.disable();
 		timePeriodCostsMapsCache.disable();
@@ -995,6 +998,16 @@ public class Project
 	public void enableThreatStressRatingEnsurer()
 	{
 		threatStressRatingEnsurer.enable();
+	}
+	
+	public void disableLeaderEnsurer()
+	{
+		leaderEnsurer.disable();
+	}
+	
+	public void enableLeaderEnsurer()
+	{
+		leaderEnsurer.enable();
 	}
 	
 	public static boolean isValidMpfProjectFilename(String projectFileName) throws Exception
@@ -1424,6 +1437,7 @@ public class Project
 	private DiagramClipboard diagramClipboard;
 	private ProjectCalendar projectCalendar;
 	private ThreatStressRatingEnsurer threatStressRatingEnsurer;
+	private LeaderEnsurer leaderEnsurer;
 	private ProjectTotalCalculator projectTotalCalculator;
 	private PlanningPreferencesChangeHandler planningPreferencesChangeHandler;
 	private DashboardStatusMapsCache dashboardStatusMapsCache;

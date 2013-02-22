@@ -26,7 +26,6 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
-import org.miradi.questions.ProjectResourceQuestionWithUnspecifiedChoice;
 import org.miradi.utils.FillerLabel;
 
 public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
@@ -40,7 +39,7 @@ public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
 
 		add(new FillerLabel());
 		add(new FillerLabel());
-		addField(createDropdownWithIconField(orefToUse.getObjectType(), BaseObject.TAG_LEADER_RESOURCE, new ProjectResourceQuestionWithUnspecifiedChoice(getProject())));
+		addField(createLeaderDropDownField(orefToUse.getObjectType(), BaseObject.TAG_LEADER_RESOURCE));
 		addField(createReadonlyTextField(BaseObject.PSEUDO_TAG_WHEN_TOTAL));
 		
 		add(new FillerLabel());

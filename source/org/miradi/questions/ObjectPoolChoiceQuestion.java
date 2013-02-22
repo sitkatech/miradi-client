@@ -53,6 +53,11 @@ public class ObjectPoolChoiceQuestion extends ObjectQuestion
 		setObjects(getAllObjects(project, type));
 	}
 	
+	protected Project getProject()
+	{
+		return project;
+	}
+	
 	private Project project;
 	private int type;
 }
