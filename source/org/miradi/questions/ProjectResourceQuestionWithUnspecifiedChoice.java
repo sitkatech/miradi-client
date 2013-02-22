@@ -20,18 +20,65 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
+import java.util.Vector;
+
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objecthelpers.TimePeriodCostsMap;
+import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
+//FIXME medium, need to make this class a sibling of ObjectPoolChoiceQuestion instead of its grandchild
 public class ProjectResourceQuestionWithUnspecifiedChoice extends ProjectResourceQuestion
 {
 	public ProjectResourceQuestionWithUnspecifiedChoice(Project projectToUse)
 	{
 		super(projectToUse);
+		
+		leaderReferrerRef = ORef.INVALID;
+	}
+	
+	public void setLeaderReferrerRef(ORef refToUse)
+	{
+		leaderReferrerRef = refToUse;
 	}
 	
 	@Override
 	public ChoiceItem[] getChoices()
 	{
+		reloadObjects();
 		return createChoiceItemListWithUnspecifiedItem(super.getChoices());
+	}
+	
+	private void reloadObjects()
+	{
+		try
+		{
+			if (leaderReferrerRef.isValid())
+			{			
+				BaseObject baseObject = BaseObject.find(getProject(), leaderReferrerRef);
+				TimePeriodCostsMap timePeriodCostsMap = baseObject.getTotalTimePeriodCostsMap();
+				ORefSet projectResourceRefs = timePeriodCostsMap.getAllProjectResourceRefs();
+				setObjects(getBaseObjects(projectResourceRefs));
+			}
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
 	}		
+
+	private BaseObject[] getBaseObjects(ORefSet projectResourceRefs)
+	{
+		Vector<BaseObject> baseObjects = new Vector<BaseObject>();
+		for (ORef ref : projectResourceRefs)
+		{
+			baseObjects.add(BaseObject.find(getProject(), ref));
+		}
+		
+		return baseObjects.toArray(new BaseObject[0]);
+	}
+
+	private ORef leaderReferrerRef;
 }

@@ -135,7 +135,11 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 
 		ProjectResource projectResource = (ProjectResource) ((ChoiceItemBaseObjectWrapper)value).getBaseObject();
 		BaseId resourceId = projectResource.getId();
-		setValueUsingCommand(resourceAssignmentRefForRow, ResourceAssignment.TAG_RESOURCE_ID, resourceId);
+		String idAsString = resourceId.toString();
+		if (resourceId.isInvalid())
+			idAsString = "";
+		
+		setValueUsingCommand(resourceAssignmentRefForRow, ResourceAssignment.TAG_RESOURCE_ID, idAsString);
 	}
 	
 	private ProjectResource findProjectResource(ResourceAssignment resourceAssignment)
