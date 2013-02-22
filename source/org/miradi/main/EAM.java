@@ -608,7 +608,7 @@ public class EAM
 		}
 		catch (Exception e)
 		{
-			alertUserOfNonFatalException(e);
+			panic(e);
 		}
 		
 		if(oldEamDirectory.exists() || !miradiDirectory.exists())
