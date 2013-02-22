@@ -62,7 +62,7 @@ public class ResourceLeaderDropDownField extends ObjectChoiceField
 		transferActionListeners(newCombo);
 
 		int currentComboIndex = getComponentIndex(combo);
-		parent.add(newCombo, currentComboIndex + 1);
+		parent.add(newCombo, currentComboIndex);
 		parent.remove(combo);
 		combo = newCombo;
 		parent.revalidate();
