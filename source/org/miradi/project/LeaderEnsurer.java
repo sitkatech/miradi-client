@@ -99,13 +99,13 @@ public class LeaderEnsurer implements CommandExecutedListener
 		clearResourceLeader(referrers.getFirstElement());
 	}
 
-	public void clearResourceLeader(ORef leaderOwnerRef) throws Exception
+	public void clearResourceLeader(ORef objectContainingLeaderRef) throws Exception
 	{
-		BaseObject leaderOwner = BaseObject.find(getProject(), leaderOwnerRef);
-		ORef currentLeaderRef = leaderOwner.getLeaderResourceRef();
-		ORefSet resourceRefs = leaderOwner.getTotalTimePeriodCostsMap().getAllProjectResourceRefs();
+		BaseObject objectContainingLeader = BaseObject.find(getProject(), objectContainingLeaderRef);
+		ORef currentLeaderRef = objectContainingLeader.getLeaderResourceRef();
+		ORefSet resourceRefs = objectContainingLeader.getTotalTimePeriodCostsMap().getAllProjectResourceRefs();
 		if (!resourceRefs.contains(currentLeaderRef))
-			clearLeaderResourceRef(leaderOwner);
+			clearLeaderResourceRef(objectContainingLeader);
 	}
 
 	private void clearLeaderResourceRef(BaseObject objectToClearLeaderFrom) throws Exception
