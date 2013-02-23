@@ -21,16 +21,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ResourceAssignment;
-import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 
 public class LeaderEnsurer implements CommandExecutedListener
@@ -70,7 +69,6 @@ public class LeaderEnsurer implements CommandExecutedListener
 	private void possiblyClearResourceLeaderDueToResourceAssignmentDeletion(CommandExecutedEvent event) throws Exception
 	{
 		CommandSetObjectData setCommand = event.getSetCommand();
-		ORef referrerRef = setCommand.getObjectORef();
 		ORefList currentList = new ORefList(new IdList(ResourceAssignmentSchema.getObjectType(), setCommand.getDataValue()));
 		ORefList previousList = new ORefList(new IdList(ResourceAssignmentSchema.getObjectType(), setCommand.getPreviousDataValue()));
 		if (previousList.size() <= currentList.size())
@@ -80,8 +78,7 @@ public class LeaderEnsurer implements CommandExecutedListener
 		if (changedRefList.size() != 1)
 			return;
 		
-		ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), previousList.getFirstElement());
-		clearLeaderFromReferrers(new ORefList(referrerRef), resourceAssignment.getResourceRef());
+		clearResourceLeader(setCommand.getObjectORef());
 	}
 
 	private void possiblyClearResourceLeaderDueToResourceAssignmentResourceUpdate(CommandExecutedEvent event) throws Exception
@@ -91,20 +88,24 @@ public class LeaderEnsurer implements CommandExecutedListener
 		if (previousDataValue.length() == 0)
 			return;
 		
-		ORef oldResourceRef = new ORef(ProjectResourceSchema.getObjectType(), new BaseId(previousDataValue));
 		ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), setCommand.getObjectORef());
 		ORefList referrers = resourceAssignment.findAllObjectsThatReferToUs();
-		clearLeaderFromReferrers(referrers, oldResourceRef);
+		if (referrers.isEmpty())
+			return;
+		
+		if (referrers.size() > 1)
+			throw new Exception("ResourceAssignments cannot be shared");
+		
+		clearResourceLeader(referrers.getFirstElement());
 	}
 
-	private void clearLeaderFromReferrers(ORefList referrers, ORef resourceRef) throws Exception
+	public void clearResourceLeader(ORef leaderOwnerRef) throws Exception
 	{
-		for(ORef referrerRef : referrers)
-		{
-			BaseObject objectContainingLeader = BaseObject.find(getProject(), referrerRef);
-			if (objectContainingLeader.getLeaderResourceRef().equals(resourceRef))
-				clearLeaderResourceRef(objectContainingLeader);
-		}
+		BaseObject leaderOwner = BaseObject.find(getProject(), leaderOwnerRef);
+		ORef currentLeaderRef = leaderOwner.getLeaderResourceRef();
+		ORefSet resourceRefs = leaderOwner.getTotalTimePeriodCostsMap().getAllProjectResourceRefs();
+		if (!resourceRefs.contains(currentLeaderRef))
+			clearLeaderResourceRef(leaderOwner);
 	}
 
 	private void clearLeaderResourceRef(BaseObject objectToClearLeaderFrom) throws Exception
