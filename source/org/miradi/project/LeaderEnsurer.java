@@ -78,7 +78,7 @@ public class LeaderEnsurer implements CommandExecutedListener
 		if (changedRefList.size() != 1)
 			return;
 		
-		clearResourceLeader(setCommand.getObjectORef());
+		ensureLeaderIsLegal(setCommand.getObjectORef());
 	}
 
 	private void possiblyClearResourceLeaderDueToResourceAssignmentResourceUpdate(CommandExecutedEvent event) throws Exception
@@ -96,10 +96,10 @@ public class LeaderEnsurer implements CommandExecutedListener
 		if (referrers.size() > 1)
 			throw new Exception("ResourceAssignments cannot be shared");
 		
-		clearResourceLeader(referrers.getFirstElement());
+		ensureLeaderIsLegal(referrers.getFirstElement());
 	}
 
-	public void clearResourceLeader(ORef objectContainingLeaderRef) throws Exception
+	private void ensureLeaderIsLegal(ORef objectContainingLeaderRef) throws Exception
 	{
 		BaseObject objectContainingLeader = BaseObject.find(getProject(), objectContainingLeaderRef);
 		ORef currentLeaderRef = objectContainingLeader.getLeaderResourceRef();
