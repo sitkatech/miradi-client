@@ -40,10 +40,11 @@ public class Utility
 	public static int readAsMuchAsPossible(InputStream in, byte[] maximumBytesToRead) throws Exception
 	{
 		int totalReadCount = 0;
-		byte byteRead = 0;
-		while (((byteRead = (byte)in.read()) >= 0) && totalReadCount < maximumBytesToRead.length)
-		{				
-			maximumBytesToRead[totalReadCount] = byteRead;
+		int got = 0;
+		while (((got = in.read()) >= 0) && totalReadCount < maximumBytesToRead.length)
+		{	
+			byte gotByte = (byte) got;
+			maximumBytesToRead[totalReadCount] = gotByte;
 			++totalReadCount;
 		}
 		return totalReadCount;
