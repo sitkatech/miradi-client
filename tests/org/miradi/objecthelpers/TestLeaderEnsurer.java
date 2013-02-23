@@ -37,9 +37,9 @@ public class TestLeaderEnsurer extends TestCaseWithProject
 		Strategy strategy = getProject().createStrategy();
 		ResourceAssignment resourceAssignment = getProject().addResourceAssignment(strategy);
 		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_LEADER_RESOURCE, resourceAssignment.getResourceRef());
-		assertEquals("leader not set?", resourceAssignment.getResourceRef(), strategy.getLeaderResourceRef());
+		verifyLeaderIsSet(strategy, resourceAssignment);
 		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_RESOURCE_ID, "");
-		assertEquals("leader not removed", ORef.INVALID, strategy.getLeaderResourceRef());
+		verifyLeader(strategy);
 	}
 	
 	public void testResourceLeaderIsUpdatedWhenResourceAssignmentIsDeleted() throws Exception
@@ -47,8 +47,48 @@ public class TestLeaderEnsurer extends TestCaseWithProject
 		Strategy strategy = getProject().createStrategy();
 		ResourceAssignment resourceAssignment = getProject().addResourceAssignment(strategy);
 		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_LEADER_RESOURCE, resourceAssignment.getResourceRef());
-		assertEquals("leader not set?", resourceAssignment.getResourceRef(), strategy.getLeaderResourceRef());
+		verifyLeaderIsSet(strategy, resourceAssignment);
 		getProject().executeCommand(CommandSetObjectData.createRemoveIdCommand(strategy, Strategy.TAG_RESOURCE_ASSIGNMENT_IDS, resourceAssignment.getId()));
-		assertEquals("leader not removed", ORef.INVALID, strategy.getLeaderResourceRef());
+		verifyLeader(strategy);
+	}
+
+	public void testResourceLeaderIsNotChangedWithMultpleResourceAssignemntReferrersAndOneIsUpdated() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		ResourceAssignment resourceAssignmentWithSameResource1 = getProject().addResourceAssignment(strategy);
+		ResourceAssignment resourceAssignmentWithSameResource2 = getProject().addResourceAssignment(strategy);
+		getProject().fillObjectUsingCommand(resourceAssignmentWithSameResource2, ResourceAssignment.TAG_RESOURCE_ID, resourceAssignmentWithSameResource1.getId());
+		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_LEADER_RESOURCE, resourceAssignmentWithSameResource1.getResourceRef());
+		verifyLeaderIsSet(strategy, resourceAssignmentWithSameResource1);
+		getProject().fillObjectUsingCommand(resourceAssignmentWithSameResource2, ResourceAssignment.TAG_RESOURCE_ID, "");
+		verifyCorrectLeader(strategy, resourceAssignmentWithSameResource1);
+	}
+
+	public void testResourceLeaderIsNotChangedWithMultipleResourceAssignemntReferrersAndOneIsDeleted() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		ResourceAssignment resourceAssignmentWithSameResource1 = getProject().addResourceAssignment(strategy);
+		ResourceAssignment resourceAssignmentWithSameResource2 = getProject().addResourceAssignment(strategy);
+		getProject().fillObjectUsingCommand(resourceAssignmentWithSameResource2, ResourceAssignment.TAG_RESOURCE_ID, resourceAssignmentWithSameResource1.getId());
+		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_LEADER_RESOURCE, resourceAssignmentWithSameResource1.getResourceRef());
+		verifyLeaderIsSet(strategy, resourceAssignmentWithSameResource1);
+		getProject().executeCommand(CommandSetObjectData.createRemoveIdCommand(strategy, Strategy.TAG_RESOURCE_ASSIGNMENT_IDS, resourceAssignmentWithSameResource2.getId()));
+		verifyCorrectLeader(strategy, resourceAssignmentWithSameResource1);
+	}
+
+	private void verifyLeaderIsSet(Strategy strategy, ResourceAssignment resourceAssignment)
+	{
+		assertEquals("leader not set?", resourceAssignment.getResourceRef(), strategy.getLeaderResourceRef());
+	}
+	
+	private void verifyCorrectLeader(Strategy strategy, ResourceAssignment resourceAssignment)
+	{
+		assertTrue("leader should not be invalid?", strategy.getLeaderResourceRef().isValid());
+		assertEquals("leader removed?", resourceAssignment.getResourceRef(), strategy.getLeaderResourceRef());
+	}
+	
+	public void verifyLeader(Strategy strategy)
+	{
+		assertEquals("leader not removed?", ORef.INVALID, strategy.getLeaderResourceRef());
 	}
 }
