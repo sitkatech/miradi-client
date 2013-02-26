@@ -47,7 +47,7 @@ public class TeamMemberPropertiesPanel extends ObjectDataInputPanel
 		String[] nameLabelTexts = new String[] {
 				EAM.fieldLabel(ProjectResourceSchema.getObjectType(), ProjectResource.TAG_GIVEN_NAME),
 				EAM.fieldLabel(ProjectResourceSchema.getObjectType(), ProjectResource.TAG_SUR_NAME),
-				EAM.text("Label|Initials"),
+				EAM.fieldLabel(ProjectResourceSchema.getObjectType(), ProjectResource.TAG_INITIALS),
 				};
 		addFieldsOnOneLine(EAM.text("Label|Team Member"), new ProjectResourceIcon(), nameLabelTexts, nameFields);
 		
