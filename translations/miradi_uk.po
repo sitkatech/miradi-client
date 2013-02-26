@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-22 13:16-0600\n"
+"POT-Creation-Date: 2013-02-26 17:46-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -4453,10 +4453,6 @@ msgstr "Label|Кількість осіб зацікавлених сторін"
 #: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:76
 msgid "Label|IM Address"
 msgstr "Label|IM адреса"
-
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:50
-msgid "Label|Initials"
-msgstr "Label|Ініціали"
 
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:43
 msgid "Label|Methods"
@@ -33683,6 +33679,9 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "Label|Initials"
+#~ msgstr "Label|Ініціали"
 
 #~ msgid ""
 #~ "Some of the data could not be moved to this project because it refers to "

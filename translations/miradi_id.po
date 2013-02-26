@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-22 13:16-0600\n"
+"POT-Creation-Date: 2013-02-26 17:46-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -4410,10 +4410,6 @@ msgstr "Ukuran Populasi Manusia Pemilik Kepentingan "
 #: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:76
 msgid "Label|IM Address"
 msgstr "Alamat IM "
-
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:50
-msgid "Label|Initials"
-msgstr "Inisial "
 
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:43
 msgid "Label|Methods"
@@ -32026,6 +32022,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Label|Initials"
+#~ msgstr "Inisial "
 
 #~ msgid ""
 #~ "Some of the data could not be moved to this project because it refers to "

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-22 13:16-0600\n"
+"POT-Creation-Date: 2013-02-26 17:46-0600\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -4634,10 +4634,6 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:76
 msgid "Label|IM Address"
 msgstr "IM Adresse"
-
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:50
-msgid "Label|Initials"
-msgstr "Initialien"
 
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:43
 msgid "Label|Methods"
@@ -30033,6 +30029,9 @@ msgid ""
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
 "Marine___Western Tropical Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "Label|Initials"
+#~ msgstr "Initialien"
 
 # ...alten version exisiterten... gefällt mir nicht (Felix)
 #, fuzzy

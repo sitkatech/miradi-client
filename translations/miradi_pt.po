@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-22 13:16-0600\n"
+"POT-Creation-Date: 2013-02-26 17:46-0600\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -4653,10 +4653,6 @@ msgstr "Tam da População de Atores"
 #: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:76
 msgid "Label|IM Address"
 msgstr "Endereço IM"
-
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:50
-msgid "Label|Initials"
-msgstr "Iniciais"
 
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:43
 msgid "Label|Methods"
@@ -27549,6 +27545,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid "Label|Initials"
+#~ msgstr "Iniciais"
 
 #~ msgid "Effectiveness Monitoring Plan"
 #~ msgstr "Plano de Monitoramento da Efetividade"

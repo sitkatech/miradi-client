@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-22 13:16-0600\n"
+"POT-Creation-Date: 2013-02-26 17:46-0600\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -4528,10 +4528,6 @@ msgstr "Dimensione della popolazione di portatori di interesse "
 #: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:76
 msgid "Label|IM Address"
 msgstr "Indirizzo IM"
-
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:50
-msgid "Label|Initials"
-msgstr "Iniziali"
 
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:43
 msgid "Label|Methods"
@@ -30044,6 +30040,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid "Label|Initials"
+#~ msgstr "Iniziali"
 
 #~ msgid ""
 #~ "Some of the data could not be moved to this project because it refers to "
