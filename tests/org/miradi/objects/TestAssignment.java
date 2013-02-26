@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
@@ -45,6 +46,22 @@ public class TestAssignment extends ObjectTestCase
 	public void testFields() throws Exception
 	{
 		verifyFields(ObjectType.RESOURCE_ASSIGNMENT);
+	}
+	
+	public void testRolledUpResources() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		Task activity = getProject().createTask(strategy);
+		ResourceAssignment resourceAssignment = getProject().addResourceAssignment(activity);
+		ResourceAssignment resourceAssignmentWithoutResource = getProject().addResourceAssignment(activity);
+		getProject().fillObjectUsingCommand(resourceAssignmentWithoutResource, ResourceAssignment.TAG_RESOURCE_ID, "");
+		
+		ORef resourceRef = resourceAssignment.getResourceRef();
+		ORefSet rolledUpResourceRefs = strategy.getTotalTimePeriodCostsMap().getAllProjectResourceRefs();
+		assertEquals("Incorrect activity resource assignments count?", 2, activity.getResourceAssignmentRefs().size());
+		assertEquals("Incorrect rolled up resources count?", 2, rolledUpResourceRefs.size());
+		assertTrue("Resource should be in rolled up resources list?", rolledUpResourceRefs.contains(resourceRef));
+		assertTrue("Resource assignment without resource didnt have its invalid resource rolled up?", rolledUpResourceRefs.contains(ORef.createInvalidWithType(ProjectResourceSchema.getObjectType())));
 	}
 	
 	public void testGetTagForCategoryType() throws Exception
