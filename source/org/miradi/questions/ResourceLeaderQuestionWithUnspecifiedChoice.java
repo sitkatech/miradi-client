@@ -78,7 +78,7 @@ public class ResourceLeaderQuestionWithUnspecifiedChoice extends ObjectQuestion
 		Vector<BaseObject> baseObjects = new Vector<BaseObject>();
 		for (ORef ref : projectResourceRefs)
 		{
-			//if (ref.isValid())
+			if (ref.isValid())
 				baseObjects.add(BaseObject.find(getProject(), ref));
 		}
 		
