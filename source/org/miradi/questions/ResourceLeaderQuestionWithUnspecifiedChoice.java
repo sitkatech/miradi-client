@@ -58,7 +58,7 @@ public class ResourceLeaderQuestionWithUnspecifiedChoice extends ObjectQuestion
 			if (leaderReferrerRef.isValid())
 			{			
 				BaseObject baseObject = BaseObject.find(getProject(), leaderReferrerRef);
-				TimePeriodCostsMap timePeriodCostsMap = baseObject.getTotalTimePeriodCostsMap();
+				TimePeriodCostsMap timePeriodCostsMap = baseObject.getTotalTimePeriodCostsWithoutRollup();
 				ORefSet projectResourceRefs = timePeriodCostsMap.getAllProjectResourceRefs();
 				setObjects(getBaseObjects(projectResourceRefs));
 			}
@@ -78,7 +78,8 @@ public class ResourceLeaderQuestionWithUnspecifiedChoice extends ObjectQuestion
 		Vector<BaseObject> baseObjects = new Vector<BaseObject>();
 		for (ORef ref : projectResourceRefs)
 		{
-			baseObjects.add(BaseObject.find(getProject(), ref));
+			//if (ref.isValid())
+				baseObjects.add(BaseObject.find(getProject(), ref));
 		}
 		
 		return baseObjects.toArray(new BaseObject[0]);
