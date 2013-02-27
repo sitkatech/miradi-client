@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-26 17:46-0600\n"
+"POT-Creation-Date: 2013-02-27 10:46-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -23,7 +23,7 @@ msgid ""
 "Are you sure you want to delete the selected %s?"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:68
 msgid ""
 "\n"
 "Are you sure you want to delete this resource?"
@@ -2991,7 +2991,7 @@ msgstr "删除 \t\t"
 msgid "Delete %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:71
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:70
 msgid "Delete Resource"
 msgstr "删除资源"
 
@@ -5070,7 +5070,7 @@ msgid "New project name: "
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:57
-#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:70
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
 msgid "No"
 msgstr "否"
 
@@ -7583,11 +7583,6 @@ msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:67
-msgid ""
-"This project resource is being used in the Work Plan and Financial Budget."
-msgstr "该项目资源正用于工作计划和财务预算。"
-
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:49
 msgid ""
 "This project was created with an older version of Miradi, so it needs to be "
@@ -7596,6 +7591,10 @@ msgid ""
 msgstr ""
 "本项目是用旧版Miradi创建的，因此需要迁移到当前的数据格式才能打开。首先要保存"
 "一个备份以防万一出错。要执行自动迁移吗？"
+
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:66
+msgid "This resource has been assigned work in the Work Plan"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:167
 msgid ""
@@ -8442,7 +8441,7 @@ msgid "Yen (Japan)"
 msgstr "日元（日本）"
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:57
-#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:70
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
 msgid "Yes"
 msgstr "是"
 
@@ -29125,6 +29124,10 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid ""
+#~ "This project resource is being used in the Work Plan and Financial Budget."
+#~ msgstr "该项目资源正用于工作计划和财务预算。"
 
 #~ msgid "Label|Initials"
 #~ msgstr "缩写名 \t\t"

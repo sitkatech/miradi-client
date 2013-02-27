@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-26 17:46-0600\n"
+"POT-Creation-Date: 2013-02-27 10:46-0600\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -23,7 +23,7 @@ msgid ""
 "Are you sure you want to delete the selected %s?"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:68
 msgid ""
 "\n"
 "Are you sure you want to delete this resource?"
@@ -3113,7 +3113,7 @@ msgstr "Устгах"
 msgid "Delete %s"
 msgstr "Устгах %s"
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:71
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:70
 msgid "Delete Resource"
 msgstr "Нөөцийг устгах"
 
@@ -5236,7 +5236,7 @@ msgid "New project name: "
 msgstr "Шинэ төслийн нэр: "
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:57
-#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:70
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
 msgid "No"
 msgstr "Үгүй"
 
@@ -7830,13 +7830,6 @@ msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:67
-msgid ""
-"This project resource is being used in the Work Plan and Financial Budget."
-msgstr ""
-"Төслийн энэхүү нөөцийг Ажлын Төлөвлөгөө болон Санхүүгийн Төсөвт ашиглаж "
-"байна."
-
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:49
 msgid ""
 "This project was created with an older version of Miradi, so it needs to be "
@@ -7846,6 +7839,10 @@ msgstr ""
 "Энэ төсөл Miradi-ийн хуучин хувилбарт үүсгэгдсэн байсан тул төслийг нээхээс "
 "өмнө мэдээллийн одоогийн форматад шижлүүлэх шаардлагатай. Ямар нэгэн зүйл "
 "буруу болох тохиолдолд эхлээд backup хийгдэнэ. Шилжилтийг автоматаар хийх үү?"
+
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:66
+msgid "This resource has been assigned work in the Work Plan"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:167
 msgid ""
@@ -8740,7 +8737,7 @@ msgid "Yen (Japan)"
 msgstr "Иен (Япон)"
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:57
-#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:70
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
 msgid "Yes"
 msgstr "Тийм"
 
@@ -32001,6 +31998,12 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid ""
+#~ "This project resource is being used in the Work Plan and Financial Budget."
+#~ msgstr ""
+#~ "Төслийн энэхүү нөөцийг Ажлын Төлөвлөгөө болон Санхүүгийн Төсөвт ашиглаж "
+#~ "байна."
 
 #~ msgid "Label|Initials"
 #~ msgstr "Хаяг|Нэрийн эхний үсгүүд"

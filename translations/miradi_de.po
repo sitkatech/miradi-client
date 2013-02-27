@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-26 17:46-0600\n"
+"POT-Creation-Date: 2013-02-27 10:46-0600\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -28,7 +28,7 @@ msgstr ""
 "\n"
 "Sind Sie sicher, dass Sie die ausgewählte %s löschen möchten?"
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:68
 msgid ""
 "\n"
 "Are you sure you want to delete this resource?"
@@ -3237,7 +3237,7 @@ msgstr "Löschen"
 msgid "Delete %s"
 msgstr "Lösche %s"
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:71
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:70
 msgid "Delete Resource"
 msgstr "Ressource löschen"
 
@@ -5393,7 +5393,7 @@ msgid "New project name: "
 msgstr "Neuer Projektname:"
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:57
-#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:70
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
 msgid "No"
 msgstr "Nein"
 
@@ -8059,11 +8059,6 @@ msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:67
-msgid ""
-"This project resource is being used in the Work Plan and Financial Budget."
-msgstr ""
-
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:49
 msgid ""
 "This project was created with an older version of Miradi, so it needs to be "
@@ -8074,6 +8069,10 @@ msgstr ""
 "geöffnet werden kann, müssen die Daten in das aktuelle Format umgewandelt "
 "werden. Es wird eine Sicherheitskopie gespeichert, um Datenverlust zu "
 "verhindern. Wollen Sie die automatische Umwandlung der Daten durchführen?"
+
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:66
+msgid "This resource has been assigned work in the Work Plan"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:167
 msgid ""
@@ -8938,7 +8937,7 @@ msgid "Yen (Japan)"
 msgstr "Yen (Japan)"
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:57
-#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:70
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
 msgid "Yes"
 msgstr "Ja"
 
