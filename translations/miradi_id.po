@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-26 17:46-0600\n"
+"POT-Creation-Date: 2013-02-27 10:46-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -25,7 +25,7 @@ msgstr ""
 "\n"
 "Anda yakin ingin menghapus %s yang dipilih? "
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:68
 msgid ""
 "\n"
 "Are you sure you want to delete this resource?"
@@ -3033,7 +3033,7 @@ msgstr "Hapus "
 msgid "Delete %s"
 msgstr "Hapus %s "
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:71
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:70
 msgid "Delete Resource"
 msgstr "Hapus Sumber Daya"
 
@@ -5171,7 +5171,7 @@ msgid "New project name: "
 msgstr "Nama proyek baru: "
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:57
-#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:70
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
 msgid "No"
 msgstr "Tidak"
 
@@ -7749,13 +7749,6 @@ msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:67
-msgid ""
-"This project resource is being used in the Work Plan and Financial Budget."
-msgstr ""
-"Sumber daya proyek ini sedang digunakan dalam Rencana Kerja dan Anggaran "
-"Keuangan"
-
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:49
 msgid ""
 "This project was created with an older version of Miradi, so it needs to be "
@@ -7766,6 +7759,10 @@ msgstr ""
 "dipindahkan ke format data saat ini sebelum bisa dibuka. Satu cadangan "
 "berkas akan disimpan terlebih dahulu untuk berjaga-jaga apabila terjadi "
 "kesalahan. Lakukan migrasi secara otomatis?"
+
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:66
+msgid "This resource has been assigned work in the Work Plan"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:167
 msgid ""
@@ -8644,7 +8641,7 @@ msgid "Yen (Japan)"
 msgstr "Yen (Jepang)"
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:57
-#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:70
+#: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
 msgid "Yes"
 msgstr "Ya"
 
@@ -32022,6 +32019,12 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid ""
+#~ "This project resource is being used in the Work Plan and Financial Budget."
+#~ msgstr ""
+#~ "Sumber daya proyek ini sedang digunakan dalam Rencana Kerja dan Anggaran "
+#~ "Keuangan"
 
 #~ msgid "Label|Initials"
 #~ msgstr "Inisial "
