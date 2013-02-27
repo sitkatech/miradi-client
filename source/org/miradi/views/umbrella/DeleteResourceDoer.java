@@ -62,9 +62,8 @@ public class DeleteResourceDoer extends ObjectsDoer
 		Vector<String> dialogText = new Vector<String>();
 		ORefList allThatUseThisResource = resource.findAllObjectsThatReferToUs();
 
-		//TODO fix dialog text
 		if (allThatUseThisResource.size() > 0)
-			dialogText.add(EAM.text("This project resource is being used in the Work Plan and Financial Budget."));
+			dialogText.add(EAM.text("This resource has been assigned work in the Work Plan"));
 		
 		dialogText.add(EAM.text("\nAre you sure you want to delete this resource?"));
 		String[] buttons = {EAM.text("Yes"), EAM.text("No"), };
