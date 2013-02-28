@@ -40,6 +40,7 @@ import org.miradi.objects.XslTemplate;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.DirectoryChooser;
 import org.miradi.utils.FileSaveChooserWithUserDefinedFileFilter;
+import org.miradi.utils.FileUtilities;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.utils.XmlUtilities2;
@@ -83,7 +84,7 @@ public class RunXslTemplateDoer extends ObjectsDoer
 			File outputDirectory = askUserForOutputDir();
 			createAndFillImagesDir(outputDirectory);
 			
-			return new File(outputDirectory, outputDirectory.getName() + extension);
+			return new File(outputDirectory, FileUtilities.createFileNameWithExtension(outputDirectory.getName(), extension));
 		}
 
 		FileSaveChooserWithUserDefinedFileFilter fileChooser = new FileSaveChooserWithUserDefinedFileFilter(getMainWindow(), extension);
