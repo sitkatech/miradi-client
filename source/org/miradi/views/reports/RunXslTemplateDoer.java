@@ -42,9 +42,10 @@ import org.miradi.utils.DirectoryChooser;
 import org.miradi.utils.FileSaveChooserWithUserDefinedFileFilter;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.UnicodeXmlWriter;
+import org.miradi.utils.XmlUtilities2;
 import org.miradi.views.ObjectsDoer;
 import org.miradi.views.umbrella.SaveImagePngDoer;
-import org.miradi.xml.wcs.XmpzXmlExporter;
+import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
 
 public class RunXslTemplateDoer extends ObjectsDoer
 {
@@ -65,7 +66,8 @@ public class RunXslTemplateDoer extends ObjectsDoer
 		
 		BaseObject selectedObject = getSingleSelectedObject();
 		String xlsTemplate = selectedObject.getData(XslTemplate.TAG_TEMPLATE_CONTENTS);
-		xlsTemplate = HtmlUtilities.convertHtmlToPlainText(xlsTemplate);
+		xlsTemplate = HtmlUtilities.replaceHtmlBrsWithNewlines(xlsTemplate);
+		xlsTemplate = XmlUtilities2.getXmlDecoded(xlsTemplate);
 		
 		final File outputFile = getOutputFile(selectedObject);
 		if (outputFile != null)
@@ -158,7 +160,7 @@ public class RunXslTemplateDoer extends ObjectsDoer
 		UnicodeXmlWriter projectWriter = UnicodeXmlWriter.create();
 		try
 		{
-			new XmpzXmlExporter(getProject()).exportProject(projectWriter);
+			new Xmpz2XmlExporter(getProject()).exportProject(projectWriter);
 			projectWriter.flush();
 			final String projectXmlAsString = projectWriter.toString();
 			UnicodeStringReader reader = new UnicodeStringReader(projectXmlAsString);
