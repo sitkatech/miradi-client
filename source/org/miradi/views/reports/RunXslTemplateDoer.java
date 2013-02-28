@@ -114,7 +114,7 @@ public class RunXslTemplateDoer extends ObjectsDoer
 		File[] containingFiles = outputDirectory.listFiles();
 		if (containingFiles.length > 0)
 		{
-			EAM.errorDialog(EAM.text("Please choose a empty directory!"));
+			EAM.errorDialog(EAM.text("Please choose an empty directory!"));
 			return null;
 		}
 
