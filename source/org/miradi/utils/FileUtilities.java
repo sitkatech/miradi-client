@@ -223,6 +223,14 @@ public class FileUtilities
 		return path;
 	}
 	
+	public static String createFileNameWithExtension(String name, String extension)
+	{
+		if (extension.startsWith("."))
+			return name + extension;
+		
+		return name + "." + extension;
+	}
+	
 	public static final String SEPARATOR = "/";
 	public static final String REGULAR_EXPRESSION_BACKSLASH = "\\\\";
 }

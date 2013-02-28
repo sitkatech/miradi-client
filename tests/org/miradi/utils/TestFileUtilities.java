@@ -34,6 +34,17 @@ public class TestFileUtilities extends MiradiTestCase
 		super(name);
 	}
 	
+	public void testCreateFileNameWithExtension()
+	{
+		verifyExtension("filename.html", "filename", "html");
+		verifyExtension("filename.html", "filename", ".html");
+	}
+	
+	private void verifyExtension(String expectedValue, String fileName, String extension)
+	{
+		assertEquals("Incorrect extension appended?", expectedValue, FileUtilities.createFileNameWithExtension(fileName, extension));
+	}
+
 	public void testJoin() throws Exception
 	{
 		final String separator = "/";
