@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-27 13:46-0600\n"
+"POT-Creation-Date: 2013-02-28 12:46-0600\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -4026,7 +4026,7 @@ msgstr ""
 msgid "Image Scale %"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:96
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:98
 msgid "Images dir could not be created!"
 msgstr ""
 
@@ -5484,7 +5484,7 @@ msgstr "Parámetros de planificación "
 msgid "PlanningSubViewName|Custom"
 msgstr "Personalizar"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:114
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:116
 msgid "Please choose a empty directory!"
 msgstr ""
 
@@ -5846,7 +5846,7 @@ msgstr "Cambiar nombre…"
 msgid "Replace Language Pack"
 msgstr "Reemplazar Paquete de idiomas"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:153
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:155
 msgid "Report Completed"
 msgstr ""
 
@@ -8323,7 +8323,7 @@ msgstr ""
 msgid "Use other&apos;s communication products"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/UserDefinedFileFilter.java:49
+#: Miradi/source/org/miradi/utils/UserDefinedFileFilter.java:54
 msgid "User Defined Extension"
 msgstr ""
 
