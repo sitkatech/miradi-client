@@ -35,7 +35,7 @@ public class XslImportFileChooser extends MiradiFileOpenChooser
 	@Override
 	public FileFilter[] getFileFilter()
 	{
-		return new FileFilter[] {new XslFileFilter(), new XsltFileFilter()};
+		return new FileFilter[] {new XsltFileFilter(), new XslFileFilter(), };
 	}
 
 	@Override
