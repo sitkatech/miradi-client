@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-28 12:46-0600\n"
+"POT-Creation-Date: 2013-03-01 10:01-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -3942,7 +3942,7 @@ msgstr ""
 msgid "Image Scale %"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:98
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:99
 msgid "Images dir could not be created!"
 msgstr ""
 
@@ -5352,10 +5352,6 @@ msgstr "计划参数"
 msgid "PlanningSubViewName|Custom"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:116
-msgid "Please choose a empty directory!"
-msgstr ""
-
 #: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:80
 #: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:100
 msgid ""
@@ -5371,6 +5367,10 @@ msgid ""
 msgstr ""
 "请选择特定的类别，而不是种类如：\n"
 "'%s' \t\t"
+
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:117
+msgid "Please choose an empty directory!"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/AnnotationSelectionDlg.java:43
 msgid ""
@@ -5703,7 +5703,7 @@ msgstr "重命名… \t\t"
 msgid "Replace Language Pack"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:155
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:156
 msgid "Report Completed"
 msgstr ""
 
