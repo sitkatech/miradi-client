@@ -156,10 +156,11 @@ public class MainMenuBar extends JMenuBar
 		menu.setMnemonic(KeyEvent.VK_I);
 		
 		addMenuItem(actions, menu, ActionImportMpf.class, KeyEvent.VK_F);
-		addMenuItem(actions, menu, ActionImportMpz.class, KeyEvent.VK_M);
-		addMenuItem(actions, menu, ActionImportCpmz.class, KeyEvent.VK_C);
-		addMenuItem(actions, menu, ActionImportXmpz.class, KeyEvent.VK_X);
 		addMenuItem(actions, menu, ActionImportXmpz2.class);
+		menu.addSeparator();
+		addMenuItem(actions, menu, ActionImportCpmz.class, KeyEvent.VK_C);
+		addMenuItem(actions, menu, ActionImportMpz.class, KeyEvent.VK_M);
+		addMenuItem(actions, menu, ActionImportXmpz.class, KeyEvent.VK_X);
 		
 		if(Miradi.isDemoMode())
 		{
