@@ -82,6 +82,12 @@ public class RunXslTemplateDoer extends ObjectsDoer
 		if (includeImages)
 		{
 			File outputDirectory = askUserForOutputDir();
+			if (outputDirectory == null)
+			{
+				EAM.notifyDialog(EAM.text("Please choose an output directory."));
+				return null;
+			}
+			
 			createAndFillImagesDir(outputDirectory);
 			
 			return new File(outputDirectory, FileUtilities.createFileNameWithExtension(outputDirectory.getName(), extension));
