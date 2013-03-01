@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-01 10:01-0600\n"
+"POT-Creation-Date: 2013-03-01 10:31-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -3942,7 +3942,7 @@ msgstr ""
 msgid "Image Scale %"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:99
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:105
 msgid "Images dir could not be created!"
 msgstr ""
 
@@ -5368,8 +5368,12 @@ msgstr ""
 "请选择特定的类别，而不是种类如：\n"
 "'%s' \t\t"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:117
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:123
 msgid "Please choose an empty directory!"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:87
+msgid "Please choose an output directory."
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/AnnotationSelectionDlg.java:43
@@ -5703,7 +5707,7 @@ msgstr "重命名… \t\t"
 msgid "Replace Language Pack"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:156
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:162
 msgid "Report Completed"
 msgstr ""
 
