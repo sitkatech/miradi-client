@@ -59,6 +59,8 @@ import org.miradi.dialogfields.AbstractWorkPlanStringMapEditorDoer;
 import org.miradi.dialogfields.FieldSaver;
 import org.miradi.dialogs.ProjectCorruptionDialog;
 import org.miradi.dialogs.base.ProgressDialog;
+import org.miradi.dialogs.notify.NotifyDialog;
+import org.miradi.dialogs.notify.NotifyDialogTemplateFactory;
 import org.miradi.exceptions.FutureSchemaVersionException;
 import org.miradi.exceptions.OldSchemaVersionException;
 import org.miradi.exceptions.UnknownCommandException;
@@ -200,6 +202,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 
 		new SampleInstaller(getAppPreferences()).installSampleProjects(new NullProgressMeter());
 
+	
 		setIconImage(new MiradiResourceImageIcon("images/appIcon.png").getImage());
 		EAM.logDebug("\n\n\n");
 
@@ -250,6 +253,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
 		}
 		
+		NotifyDialog.notify(this, NotifyDialogTemplateFactory.notifyUserOfNewFileStructure());
 		safelySavePreferences();
 	}
 	
