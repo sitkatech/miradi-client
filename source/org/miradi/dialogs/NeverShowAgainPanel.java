@@ -53,6 +53,7 @@ public class NeverShowAgainPanel extends DisposablePanelWithDescription
 		// and loop through them creating checkboxes
 		NotifyDialogTemplate template = NotifyDialogTemplateFactory.pastedSharedFactors();
 		addCheckBox(template);
+		addCheckBox(NotifyDialogTemplateFactory.notifyUserOfNewFileStructure());
 	}
 
 	private void addCheckBox(NotifyDialogTemplate template)
