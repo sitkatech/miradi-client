@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-28 12:46-0600\n"
+"POT-Creation-Date: 2013-03-01 10:01-0600\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -4114,7 +4114,7 @@ msgstr "Ignorer facteurs non liés..."
 msgid "Image Scale %"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:98
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:99
 msgid "Images dir could not be created!"
 msgstr ""
 
@@ -5585,10 +5585,6 @@ msgstr "Planification des paramètres"
 msgid "PlanningSubViewName|Custom"
 msgstr "Personnaliser"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:116
-msgid "Please choose a empty directory!"
-msgstr ""
-
 #: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:80
 #: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:100
 msgid ""
@@ -5608,6 +5604,10 @@ msgstr ""
 "Veuillez choisir une classification spécifique, au lieu d'une catégorie "
 "telle que :\n"
 "'%s'"
+
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:117
+msgid "Please choose an empty directory!"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/AnnotationSelectionDlg.java:43
 msgid ""
@@ -5949,7 +5949,7 @@ msgstr "Changement de nom ..."
 msgid "Replace Language Pack"
 msgstr "Remplacer Pack de langues"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:155
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:156
 msgid "Report Completed"
 msgstr ""
 
