@@ -31,7 +31,7 @@ public class ActionImportCpmz extends MainWindowAction
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|ConPro (CPMZ) File");
+		return EAM.text("Action|ConPro File (.cpmz)");
 	}
 
 	@Override
