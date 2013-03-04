@@ -46,6 +46,7 @@ import org.miradi.project.ProjectForTesting;
 import org.miradi.questions.DiagramModeQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.questions.TargetModeQuestion;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.utils.CodeList;
@@ -65,6 +66,12 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	public TestXmpz2XmlImporter(String name)
 	{
 		super(name);
+	}
+	
+	public void testHumanWelfareTargetMode() throws Exception
+	{
+		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE, TargetModeQuestion.HUMAN_WELFARE_TARGET_CODE);
+		validateUsingStringWriter();
 	}
 
 	public void testExtraData() throws Exception

@@ -1,7 +1,7 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Tue Feb 26 18:49:23 EST 2013 $
-# $LastChangedRevision: 217 $
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/217'
+# $LastChangedDate: Mon Mar 04 16:51:29 EST 2013 $
+# $LastChangedRevision: 218 $
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/218'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -74,6 +74,7 @@ ProjectSummary.element = element miradi:ProjectSummary
   element miradi:ProjectSummaryProjectStatus { formatted_text }? &
   element miradi:ProjectSummaryProjectURL { text }? &
   element miradi:ProjectSummaryShareOutsideOrganization { vocabulary_share_outside_organization } &
+  element miradi:ProjectSummaryTargetMode { vocabulary_target_mode }? &
   element miradi:ProjectSummaryThreatRatingMode { vocabulary_threat_rating_mode } &
   element miradi:ProjectSummaryWorkPlanTimeUnit { vocabulary_work_plan_time_unit }?
 }
@@ -808,6 +809,7 @@ vocabulary_contribution_rating = ''|'1'|'2'|'3'|'4'
 vocabulary_irreversibility_rating = ''|'1'|'2'|'3'|'4'
 vocabulary_scope_rating = ''|'1'|'2'|'3'|'4'
 vocabulary_severity_rating = ''|'1'|'2'|'3'|'4'
+vocabulary_target_mode = 'BiologicalTargetsOnly'|'BiologicalAndHumanWelfareTargets'
 vocabulary_target_status = ''|'1'|'2'|'3'|'4'
 vocabulary_text_box_z_order = 'Back'|'Front'
 vocabulary_cause_taxonomy_code = ''|'T10'|'T10.10'|'T10.20'|'T10.30'|'T20'|'T20.10'|'T20.30'|'T20.40'|'T20.50'|'T30'|'T30.10'|'T30.20'|'T30.30'|'T40'|'T40.10'|'T40.20'|'T40.30'|'T40.40'|'T50'|'T50.10'|'T50.20'|'T50.30'|'T50.40'|'T60'|'T60.10'|'T60.20'|'T60.30'|'T70'|'T70.10'|'T70.20'|'T70.30'|'T80'|'T80.10'|'T80.20'|'T80.30'|'T91'|'T91.10'|'T91.20'|'T91.30'|'T91.40'|'T91.50'|'T91.60'|'T100'|'T100.10'|'T100.20'|'T100.30'|'T110'|'T110.10'|'T110.20'|'T110.30'|'T110.40'

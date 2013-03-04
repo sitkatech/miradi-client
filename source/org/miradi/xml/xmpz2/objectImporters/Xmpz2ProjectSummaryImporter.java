@@ -26,6 +26,7 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.questions.BudgetTimePeriodQuestion;
+import org.miradi.questions.TargetModeQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.schemas.XenodataSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
@@ -56,6 +57,7 @@ public class Xmpz2ProjectSummaryImporter extends BaseObjectImporter
 		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 		importExternalProjectId(projectSumaryNode);
 		getImporter().importCodeField(projectSumaryNode, ProjectMetadata.TAG_THREAT_RATING_MODE, getMetadataRef(), ProjectMetadata.TAG_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion());
+		getImporter().importCodeField(projectSumaryNode, PROJECT_SUMMARY, getMetadataRef(), ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE, new TargetModeQuestion());
 		getImporter().importCodeField(projectSumaryNode, PROJECT_SUMMARY, getMetadataRef(), ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, getProject().getQuestion(BudgetTimePeriodQuestion.class));
 		getImporter().importCodeField(projectSumaryNode, PROJECT_SUMMARY, getMetadataRef(), ProjectMetadata.TAG_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion());
 	}

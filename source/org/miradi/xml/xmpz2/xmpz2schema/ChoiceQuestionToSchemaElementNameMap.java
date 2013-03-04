@@ -63,6 +63,7 @@ import org.miradi.questions.StressContributionQuestion;
 import org.miradi.questions.StressIrreversibilityQuestion;
 import org.miradi.questions.StressScopeChoiceQuestion;
 import org.miradi.questions.StressSeverityChoiceQuestion;
+import org.miradi.questions.TargetModeQuestion;
 import org.miradi.questions.TargetStatusQuestion;
 import org.miradi.questions.TextBoxZOrderQuestion;
 import org.miradi.questions.ThreatClassificationQuestion;
@@ -145,6 +146,7 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(StrategyStatusQuestion.class, VOCABULARY_STRATEGY_STATUS);
 		addItem(StatusQuestion.class, VOCABULARY_STATUS);
 		addItem(OpenStandardsProgressStatusQuestion.class, VOCABULARY_DASHBOARD_ROW_PROGRESS);
+		addItem(TargetModeQuestion.class, VOCABULARY_TARGET_MODE);
 	}
 	
 	private void addItem(Class questionClass, String value)
