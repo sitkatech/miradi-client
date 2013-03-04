@@ -32,7 +32,7 @@ public class ActionExportWcsProjectZip extends MainWindowAction
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|WCS Miradi Project ZIP (BETA)");
+		return EAM.text("Action|WCS Miradi Project ZIP (.xmpz)");
 	}
 
 	@Override
