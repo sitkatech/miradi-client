@@ -47,6 +47,7 @@ import org.miradi.questions.DiagramModeQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TargetModeQuestion;
+import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.utils.CodeList;
@@ -66,6 +67,12 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	public TestXmpz2XmlImporter(String name)
 	{
 		super(name);
+	}
+	
+	public void testThreatRatingMode() throws Exception
+	{
+		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_THREAT_RATING_MODE, ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE);
+		validateUsingStringWriter();
 	}
 	
 	public void testHumanWelfareTargetMode() throws Exception
