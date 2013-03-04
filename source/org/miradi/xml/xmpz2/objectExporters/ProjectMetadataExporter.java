@@ -40,6 +40,7 @@ import org.miradi.questions.ProtectedAreaCategoryQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.questions.TargetModeQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
 import org.miradi.questions.TncMarineEcoRegionQuestion;
@@ -113,6 +114,7 @@ public class ProjectMetadataExporter implements Xmpz2XmlConstants
 		writeOverallProjectViabilityRating();
 		writeExternalAppIds();
 		getWriter().writeNonOptionalCodeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion(), getMetadata().getThreatRatingMode());
+		getWriter().writeNonOptionalCodeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE, new TargetModeQuestion(), getMetadata().getData(ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE));
 
 		ChoiceQuestion budgetTimePeriodQuestion = getProject().getQuestion(BudgetTimePeriodQuestion.class);
 		getWriter().writeNonOptionalCodeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, budgetTimePeriodQuestion, getMetadata().getData(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT));

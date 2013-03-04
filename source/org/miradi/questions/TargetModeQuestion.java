@@ -39,6 +39,46 @@ public class TargetModeQuestion extends StaticChoiceQuestion
 		};
 	}
 	
+	@Override
+	protected boolean hasReadableAlternativeDefaultCode()
+	{
+		return true;
+	}
+	
+	@Override
+	protected String getReadableAlternativeDefaultCode()
+	{
+		return READBLE_DEFAULT_CODE;
+	}
+	
+	@Override
+	public String convertToReadableCode(String code)
+	{
+		if (code.equals(DEFAULT_CODE))
+			return READBLE_DEFAULT_CODE;
+		
+		if (code.equals(HUMAN_WELFARE_TARGET_CODE))
+			return READABLE_HUMAN_WELFARE_CODE;
+		
+		return getReadableAlternativeDefaultCode();
+	}
+	
+	@Override
+	public String convertToInternalCode(String code)
+	{
+		if (code.equals(READBLE_DEFAULT_CODE))
+			return DEFAULT_CODE;
+		
+		if (code.equals(READABLE_HUMAN_WELFARE_CODE))
+			return HUMAN_WELFARE_TARGET_CODE;
+		
+		return code;
+	}
+
+	
 	public static final String DEFAULT_CODE = "";
 	public static final String HUMAN_WELFARE_TARGET_CODE = "HumanWelfareTargetMode";
+	
+	public static final String READBLE_DEFAULT_CODE = "BiologicalTargetsOnly";
+	public static final String READABLE_HUMAN_WELFARE_CODE = "BiologicalAndHumanWelfareTargets";
 }
