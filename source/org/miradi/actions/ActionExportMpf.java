@@ -32,7 +32,7 @@ public class ActionExportMpf extends MainWindowAction
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Miradi Project");
+		return EAM.text("Action|Miradi (.Miradi) Project File");
 	}
 
 	@Override
