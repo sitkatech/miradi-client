@@ -27,12 +27,7 @@ public class ActionImportMpf extends MainWindowAction
 {
 	public ActionImportMpf(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
-	}
-
-	public static String getLabel()
-	{
-		return EAM.text("Action|Miradi Project File (.Miradi)");
+		super(mainWindowToUse, ActionExportMpf.getLabel());
 	}
 
 	@Override
