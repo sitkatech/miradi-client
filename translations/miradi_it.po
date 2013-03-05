@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-05 16:16-0600\n"
+"POT-Creation-Date: 2013-03-05 17:31-0600\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -6554,6 +6554,10 @@ msgstr ""
 msgid "Stress Based Threat Rating Mode"
 msgstr "Modalità di Analisi delle Minacce basata sugli Stress"
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:343
+msgid "Stress Calculation Rules"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingTableModel.java:162
 msgid "Stress Name"
 msgstr "Nome dello Stress"
@@ -8363,7 +8367,7 @@ msgstr ""
 "Impossibile scrivere XML. Forse il disco è pieno o non hai i diritti in "
 "scrittura o stai usando qualche carattere non valido nel nome file"
 
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:350
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:353
 msgid "Undefined"
 msgstr "Indefinito"
 

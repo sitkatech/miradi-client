@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-05 16:16-0600\n"
+"POT-Creation-Date: 2013-03-05 17:31-0600\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -6666,6 +6666,10 @@ msgstr ""
 msgid "Stress Based Threat Rating Mode"
 msgstr "Stressbasierte Bedrohungsbewertung"
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:343
+msgid "Stress Calculation Rules"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingTableModel.java:162
 msgid "Stress Name"
 msgstr "Stressbezeichnung"
@@ -8529,7 +8533,7 @@ msgid ""
 "to write to it, or you are using invalid characters in the file name."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:350
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:353
 msgid "Undefined"
 msgstr "Nicht definiert"
 

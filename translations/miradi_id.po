@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-05 16:16-0600\n"
+"POT-Creation-Date: 2013-03-05 17:31-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -6415,6 +6415,10 @@ msgstr ""
 msgid "Stress Based Threat Rating Mode"
 msgstr "Mode Peringkat Ancaman Berdasarkan Tekanan"
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:343
+msgid "Stress Calculation Rules"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingTableModel.java:162
 msgid "Stress Name"
 msgstr "Nama Tekanan "
@@ -8216,7 +8220,7 @@ msgstr ""
 "Tidak bisa menulis XML. Mungkin disk penuh, atau Anda tidak punya izin untuk "
 "menulis ke disk, atau nama berkas mengandung karakter yang tidak valid. "
 
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:350
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:353
 msgid "Undefined"
 msgstr "Tidak terdefinisi"
 
