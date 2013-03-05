@@ -32,7 +32,7 @@ public class UserDefinedFileFilter extends GenericMiradiFileFilter
 	
 	private void possiblyPrefixDot()
 	{
-		if (!extension.startsWith(".") && hasExtension())
+		if (hasExtension() && !extension.startsWith("."))
 		{
 			extension = "." + extension;
 		}
