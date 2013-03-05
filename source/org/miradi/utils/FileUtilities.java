@@ -225,10 +225,10 @@ public class FileUtilities
 	
 	public static String createFileNameWithExtension(String name, String extension)
 	{
-		if (extension.startsWith("."))
-			return name + extension;
-		
-		return name + "." + extension;
+		if (!extension.startsWith("."))
+			 extension = "." + extension;
+
+		return name + extension;
 	}
 	
 	public static final String SEPARATOR = "/";
