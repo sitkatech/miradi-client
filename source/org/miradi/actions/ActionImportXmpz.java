@@ -27,12 +27,7 @@ public class ActionImportXmpz extends MainWindowAction
 {
 	public ActionImportXmpz(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
-	}
-
-	public static String getLabel()
-	{
-		return EAM.text("Action|XML Miradi Project ZIP v1 [Deprecated] (.xmpz)");
+		super(mainWindowToUse, ActionExportXmpz.getLabel());
 	}
 
 	@Override
