@@ -26,12 +26,7 @@ public class ActionImportCpmz extends MainWindowAction
 {
 	public ActionImportCpmz(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
-	}
-
-	public static String getLabel()
-	{
-		return EAM.text("Action|ConPro File (.cpmz)");
+		super(mainWindowToUse, ActionExportCpmz.getLabel());
 	}
 
 	@Override
