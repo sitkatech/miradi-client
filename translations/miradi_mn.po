@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-05 12:46-0600\n"
+"POT-Creation-Date: 2013-03-05 13:16-0600\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -516,8 +516,8 @@ msgid ""
 "addition, writing and backing up of files will be quicker.  The main "
 "implications are:<ul><li>You can share Miradi 4.0 (and beyond) files "
 "directly without zipping them</li><li>You can import or export to older "
-"versions of Miradi using the mpz format - thus, you can share data and "
-"projects with those running older versions of Miradi</li><li>There are new "
+"versions of Miradi using the mpz format, and thus you can share data and "
+"projects with people running older versions of Miradi</li><li>There are new "
 "icons to denote a Miradi 4.0 (and beyond) file, an mpz file, and a 3.x (and "
 "earlier) file </li></ul><br/><br/><b><u>Please do not contact Miradi Support "
 "with questions unless you have read through the full instructions and are "
@@ -1164,7 +1164,7 @@ msgstr "Арга хэмжээ|Бүх мөрийг нягтруулах"
 msgid "Action|Coming Attractions"
 msgstr "Арга хэмжээ|Ирж буй зүйлүүд"
 
-#: Miradi/source/org/miradi/actions/ActionImportCpmz.java:34
+#: Miradi/source/org/miradi/actions/ActionExportCpmz.java:34
 msgid "Action|ConPro File (.cpmz)"
 msgstr ""
 
@@ -1345,10 +1345,6 @@ msgstr ""
 #: Miradi/source/org/miradi/actions/ActionExportBudgetTableTree.java:34
 msgid "Action|Export finance tree"
 msgstr "Арга хэмжээ|Санхүүгийн бүтцийг экспортлох"
-
-#: Miradi/source/org/miradi/actions/ActionExportCpmz.java:34
-msgid "Action|Export|ConPro File (.cpmz)"
-msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionFilterWorkPlanByProjectResource.java:35
 msgid "Action|Filter by Resource..."
@@ -1636,7 +1632,6 @@ msgstr "Арга хэмжээ|Газрын зурагнууд"
 msgid "Action|Miradi 3.3 Project File (.mpz)"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionImportMpf.java:35
 #: Miradi/source/org/miradi/actions/ActionExportMpf.java:35
 msgid "Action|Miradi Project File (.Miradi)"
 msgstr ""
@@ -1921,7 +1916,7 @@ msgid "Action|View|Layer..."
 msgstr "Арга хэмжээ|Харагдац|Давхарга..."
 
 #: Miradi/source/org/miradi/actions/ActionExportWcsProjectZip.java:35
-msgid "Action|WCS Miradi Project ZIP (.xmpz)"
+msgid "Action|WCS Miradi Project ZIP"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/views/ActionViewWorkPlan.java:36
@@ -1933,12 +1928,10 @@ msgstr "Арга хэмжээ|Ажлын Төлөвлөгөө"
 msgid "Action|Workshop"
 msgstr "Арга хэмжээ|Зөвлөгөөн"
 
-#: Miradi/source/org/miradi/actions/ActionImportXmpz.java:35
 #: Miradi/source/org/miradi/actions/ActionExportXmpz.java:34
 msgid "Action|XML Miradi Project ZIP v1 [Deprecated] (.xmpz)"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionImportXmpz2.java:35
 #: Miradi/source/org/miradi/actions/ActionExportXmpz2.java:35
 msgid "Action|XML Miradi Project ZIP v2 [BETA] (.xmpz2)"
 msgstr ""
@@ -7106,7 +7099,7 @@ msgstr "TT|Файлуудыг Миради-д хэрхэн хадгалах вэ
 msgid "TT|Import Xsl File"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionImportCpmz.java:40
+#: Miradi/source/org/miradi/actions/ActionImportCpmz.java:35
 msgid "TT|Import a .cpmz file that was exported from ConPro"
 msgstr "TT|ConPro-гоос гаргасан.cpmz файлыг импортлох "
 
@@ -7114,7 +7107,7 @@ msgstr "TT|ConPro-гоос гаргасан.cpmz файлыг импортлох
 msgid "TT|Import a .mpz file that was exported by an earlier version of Miradi"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionImportMpf.java:41
+#: Miradi/source/org/miradi/actions/ActionImportMpf.java:36
 msgid "TT|Import a Miradi file"
 msgstr ""
 
@@ -7126,11 +7119,11 @@ msgstr "TT|Тооцооны кодуудыг импортлох"
 msgid "TT|Import an XSL Template"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionImportXmpz.java:41
+#: Miradi/source/org/miradi/actions/ActionImportXmpz.java:36
 msgid "TT|Import entire project from a XML file"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionImportXmpz2.java:41
+#: Miradi/source/org/miradi/actions/ActionImportXmpz2.java:36
 msgid "TT|Import entire project from an XML file"
 msgstr ""
 

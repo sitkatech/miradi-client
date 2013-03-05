@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-05 12:46-0600\n"
+"POT-Creation-Date: 2013-03-05 13:16-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -511,8 +511,8 @@ msgid ""
 "addition, writing and backing up of files will be quicker.  The main "
 "implications are:<ul><li>You can share Miradi 4.0 (and beyond) files "
 "directly without zipping them</li><li>You can import or export to older "
-"versions of Miradi using the mpz format - thus, you can share data and "
-"projects with those running older versions of Miradi</li><li>There are new "
+"versions of Miradi using the mpz format, and thus you can share data and "
+"projects with people running older versions of Miradi</li><li>There are new "
 "icons to denote a Miradi 4.0 (and beyond) file, an mpz file, and a 3.x (and "
 "earlier) file </li></ul><br/><br/><b><u>Please do not contact Miradi Support "
 "with questions unless you have read through the full instructions and are "
@@ -1066,7 +1066,7 @@ msgstr ""
 msgid "Action|Coming Attractions"
 msgstr "即将增添的新功能 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionImportCpmz.java:34
+#: Miradi/source/org/miradi/actions/ActionExportCpmz.java:34
 msgid "Action|ConPro File (.cpmz)"
 msgstr ""
 
@@ -1247,10 +1247,6 @@ msgstr ""
 #: Miradi/source/org/miradi/actions/ActionExportBudgetTableTree.java:34
 msgid "Action|Export finance tree"
 msgstr "导出金融树 \t\t"
-
-#: Miradi/source/org/miradi/actions/ActionExportCpmz.java:34
-msgid "Action|Export|ConPro File (.cpmz)"
-msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionFilterWorkPlanByProjectResource.java:35
 msgid "Action|Filter by Resource..."
@@ -1538,7 +1534,6 @@ msgstr "地图 \t\t"
 msgid "Action|Miradi 3.3 Project File (.mpz)"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionImportMpf.java:35
 #: Miradi/source/org/miradi/actions/ActionExportMpf.java:35
 msgid "Action|Miradi Project File (.Miradi)"
 msgstr ""
@@ -1823,7 +1818,7 @@ msgid "Action|View|Layer..."
 msgstr "层… \t\t"
 
 #: Miradi/source/org/miradi/actions/ActionExportWcsProjectZip.java:35
-msgid "Action|WCS Miradi Project ZIP (.xmpz)"
+msgid "Action|WCS Miradi Project ZIP"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/views/ActionViewWorkPlan.java:36
@@ -1835,12 +1830,10 @@ msgstr ""
 msgid "Action|Workshop"
 msgstr "学习班 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionImportXmpz.java:35
 #: Miradi/source/org/miradi/actions/ActionExportXmpz.java:34
 msgid "Action|XML Miradi Project ZIP v1 [Deprecated] (.xmpz)"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionImportXmpz2.java:35
 #: Miradi/source/org/miradi/actions/ActionExportXmpz2.java:35
 msgid "Action|XML Miradi Project ZIP v2 [BETA] (.xmpz2)"
 msgstr ""
@@ -6881,7 +6874,7 @@ msgstr "如何在Miradi中保存文件 \t\t"
 msgid "TT|Import Xsl File"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionImportCpmz.java:40
+#: Miradi/source/org/miradi/actions/ActionImportCpmz.java:35
 msgid "TT|Import a .cpmz file that was exported from ConPro"
 msgstr "导入一个从ConPro导出的.cpmz文件 \t\t"
 
@@ -6889,7 +6882,7 @@ msgstr "导入一个从ConPro导出的.cpmz文件 \t\t"
 msgid "TT|Import a .mpz file that was exported by an earlier version of Miradi"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionImportMpf.java:41
+#: Miradi/source/org/miradi/actions/ActionImportMpf.java:36
 msgid "TT|Import a Miradi file"
 msgstr ""
 
@@ -6901,11 +6894,11 @@ msgstr "导入会计编码 \t\t"
 msgid "TT|Import an XSL Template"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionImportXmpz.java:41
+#: Miradi/source/org/miradi/actions/ActionImportXmpz.java:36
 msgid "TT|Import entire project from a XML file"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionImportXmpz2.java:41
+#: Miradi/source/org/miradi/actions/ActionImportXmpz2.java:36
 msgid "TT|Import entire project from an XML file"
 msgstr ""
 
