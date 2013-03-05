@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-05 16:16-0600\n"
+"POT-Creation-Date: 2013-03-05 17:31-0600\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -6492,6 +6492,10 @@ msgstr ""
 msgid "Stress Based Threat Rating Mode"
 msgstr "Дарамтыг харгалзаж аюул заналыг үнэлэх загвар"
 
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:343
+msgid "Stress Calculation Rules"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingTableModel.java:162
 msgid "Stress Name"
 msgstr "Дарамтын Нэр"
@@ -8298,7 +8302,7 @@ msgstr ""
 "XML бичих боломжгүй. Диск дүүрсэн байх магдлалтай, эсвэл та түүн дээр бичлэг "
 "хийх зөвшөөрөлгүй, эсвэл файлын нэрэнд хүчингүй тэмдэг ашиглаж байна."
 
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:350
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:353
 msgid "Undefined"
 msgstr "Тогтоогдоогүй"
 
