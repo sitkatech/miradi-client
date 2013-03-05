@@ -340,6 +340,9 @@ public class DefinitionCommonTerms
 		def = Definition.createDefinitionFromHtmlFilename(EAM.text("Bundle Rules"), "ThreatRatingBundleRules.html");
 		defs.put("Definition:ShowRulesBundles", def);
 		
+		def = Definition.createDefinitionFromHtmlFilename(EAM.text("Stress Calculation Rules"), "ThreatRatingExplanationOfStressBasedCalculation.html");
+		defs.put("Definition:ShowRulesStressCalculations", def);
+		
 		definitions = defs;
     }
 	
