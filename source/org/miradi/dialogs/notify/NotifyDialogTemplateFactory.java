@@ -52,7 +52,7 @@ public class NotifyDialogTemplateFactory
 									   "For Miradi 4.0 and beyond, we will be using a new file structure which is designed to decrease the size of Miradi projects and make the sharing of projects more straightforward.  In addition, writing and backing up of files will be quicker.  The main implications are:" +
 									   "<ul>" +
 									   "<li>You can share Miradi 4.0 (and beyond) files directly without zipping them</li>" +
-									   "<li>You can import or export to older versions of Miradi using the mpz format - thus, you can share data and projects with those running older versions of Miradi</li>" +
+									   "<li>You can import or export to older versions of Miradi using the mpz format, and thus you can share data and projects with people running older versions of Miradi</li>" +
 									   "<li>There are new icons to denote a Miradi 4.0 (and beyond) file, an mpz file, and a 3.x (and earlier) file </li>" +
 									   "</ul><br/><br/>" +
 									   "<b><u>Please do not contact Miradi Support with questions unless you have read through the full instructions and are still experiencing problems.</b></u><br/><br/>");
