@@ -87,6 +87,14 @@ public class HtmlUtilities
 		return nonHtmlText;
 	}
 	
+	public static String prepareXslForTransformation(String xlsTemplate)
+	{
+		xlsTemplate = HtmlUtilities.replaceHtmlBrsWithNewlines(xlsTemplate);
+		xlsTemplate = XmlUtilities2.getXmlDecoded(xlsTemplate);
+		
+		return xlsTemplate;
+	}
+	
 	public static String convertHtmlToPlainText(String htmlDataValue)
 	{
 		htmlDataValue = replaceHtmlBrsWithNewlines(htmlDataValue);

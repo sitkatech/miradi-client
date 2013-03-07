@@ -49,14 +49,6 @@ public class XmlUtilities2
 		return value.replaceAll("'", "&apos;");
 	}
 	
-	public static String prepareXslForTransformation(String xlsTemplate)
-	{
-		xlsTemplate = HtmlUtilities.replaceHtmlBrsWithNewlines(xlsTemplate);
-		xlsTemplate = XmlUtilities2.getXmlDecoded(xlsTemplate);
-		
-		return xlsTemplate;
-	}
-
 	public static String convertXmlTextToHtml(final String value)
 	{
 		try

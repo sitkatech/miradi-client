@@ -41,8 +41,8 @@ import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.DirectoryChooser;
 import org.miradi.utils.FileSaveChooserWithUserDefinedFileFilter;
 import org.miradi.utils.FileUtilities;
+import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.UnicodeXmlWriter;
-import org.miradi.utils.XmlUtilities2;
 import org.miradi.views.ObjectsDoer;
 import org.miradi.views.umbrella.SaveImagePngDoer;
 import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
@@ -66,7 +66,7 @@ public class RunXslTemplateDoer extends ObjectsDoer
 		
 		BaseObject selectedObject = getSingleSelectedObject();
 		String xlsTemplate = selectedObject.getData(XslTemplate.TAG_TEMPLATE_CONTENTS);
-		xlsTemplate = XmlUtilities2.prepareXslForTransformation(xlsTemplate);
+		xlsTemplate = HtmlUtilities.prepareXslForTransformation(xlsTemplate);
 		
 		final File outputFile = getOutputFile(selectedObject);
 		if (outputFile != null)
