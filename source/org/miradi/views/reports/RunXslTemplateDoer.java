@@ -66,7 +66,7 @@ public class RunXslTemplateDoer extends ObjectsDoer
 		
 		BaseObject selectedObject = getSingleSelectedObject();
 		String xlsTemplate = selectedObject.getData(XslTemplate.TAG_TEMPLATE_CONTENTS);
-		xlsTemplate = HtmlUtilities.prepareXslForTransformation(xlsTemplate);
+		xlsTemplate = HtmlUtilities.convertStoredXslToNative(xlsTemplate);
 		
 		final File outputFile = getOutputFile(selectedObject);
 		if (outputFile != null)

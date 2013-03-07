@@ -79,7 +79,7 @@ public class HtmlUtilities
 		return rule;
 	}
 	
-	public static String prepareXslForTransformation(String xlsTemplate)
+	public static String convertStoredXslToNative(String xlsTemplate)
 	{
 		xlsTemplate = HtmlUtilities.replaceHtmlBrsWithNewlines(xlsTemplate);
 		xlsTemplate = XmlUtilities2.getXmlDecoded(xlsTemplate);
