@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-05 17:31-0600\n"
+"POT-Creation-Date: 2013-03-07 15:31-0600\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -4120,7 +4120,7 @@ msgstr "Ignorer facteurs non liés..."
 msgid "Image Scale %"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:105
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:103
 msgid "Images dir could not be created!"
 msgstr ""
 
@@ -5615,11 +5615,11 @@ msgstr ""
 "telle que :\n"
 "'%s'"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:123
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:121
 msgid "Please choose an empty directory!"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:87
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:85
 msgid "Please choose an output directory."
 msgstr ""
 
@@ -5963,7 +5963,7 @@ msgstr "Changement de nom ..."
 msgid "Replace Language Pack"
 msgstr "Remplacer Pack de langues"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:162
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:160
 msgid "Report Completed"
 msgstr ""
 
