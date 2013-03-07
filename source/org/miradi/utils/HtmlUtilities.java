@@ -79,13 +79,14 @@ public class HtmlUtilities
 		return rule;
 	}
 	
-	public static String convertStoredXslToNative(String xlsTemplate)
+	public static String convertStoredXslToNative(String storedXslTemplate)
 	{
-		xlsTemplate = HtmlUtilities.replaceHtmlBrsWithNewlines(xlsTemplate);
-		xlsTemplate = XmlUtilities2.getXmlDecoded(xlsTemplate);
+		storedXslTemplate = HtmlUtilities.replaceHtmlBrsWithNewlines(storedXslTemplate);
+		storedXslTemplate = XmlUtilities2.getXmlDecoded(storedXslTemplate);
 		
-		return xlsTemplate;
+		return storedXslTemplate;
 	}
+	
 
 	public static String convertPlainTextToHtmlText(String nonHtmlText)
 	{
