@@ -81,18 +81,18 @@ public class HtmlUtilities
 	
 	public static String convertStoredXslToNative(String storedXslTemplate)
 	{
-		storedXslTemplate = HtmlUtilities.replaceHtmlBrsWithNewlines(storedXslTemplate);
-		storedXslTemplate = XmlUtilities2.getXmlDecoded(storedXslTemplate);
+		String nativeXslTemplate = HtmlUtilities.replaceHtmlBrsWithNewlines(storedXslTemplate);
+		nativeXslTemplate = XmlUtilities2.getXmlDecoded(nativeXslTemplate);
 		
-		return storedXslTemplate;
+		return nativeXslTemplate;
 	}
 	
 	public static String convertNativeXslToStored(String nativeXslTemplate)
 	{
-		nativeXslTemplate = XmlUtilities2.getXmlEncoded(nativeXslTemplate);
-		nativeXslTemplate = replaceNonHtmlNewlines(nativeXslTemplate);
+		String storedXslTemplate = XmlUtilities2.getXmlEncoded(nativeXslTemplate);
+		storedXslTemplate = replaceNonHtmlNewlines(storedXslTemplate);
 		
-		return nativeXslTemplate;
+		return storedXslTemplate;
 	}
 
 	public static String convertPlainTextToHtmlText(String nonHtmlText)
