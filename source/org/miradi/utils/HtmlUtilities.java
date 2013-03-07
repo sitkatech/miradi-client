@@ -87,6 +87,13 @@ public class HtmlUtilities
 		return storedXslTemplate;
 	}
 	
+	public static String convertNativeXslToStored(String nativeXslTemplate)
+	{
+		nativeXslTemplate = XmlUtilities2.getXmlEncoded(nativeXslTemplate);
+		nativeXslTemplate = replaceNonHtmlNewlines(nativeXslTemplate);
+		
+		return nativeXslTemplate;
+	}
 
 	public static String convertPlainTextToHtmlText(String nonHtmlText)
 	{
