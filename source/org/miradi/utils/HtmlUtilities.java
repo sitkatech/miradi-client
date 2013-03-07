@@ -78,14 +78,6 @@ public class HtmlUtilities
 
 		return rule;
 	}
-
-	public static String convertPlainTextToHtmlText(String nonHtmlText)
-	{
-		nonHtmlText = XmlUtilities2.getXmlEncoded(nonHtmlText);
-		nonHtmlText = replaceNonHtmlNewlines(nonHtmlText);
-		
-		return nonHtmlText;
-	}
 	
 	public static String prepareXslForTransformation(String xlsTemplate)
 	{
@@ -93,6 +85,14 @@ public class HtmlUtilities
 		xlsTemplate = XmlUtilities2.getXmlDecoded(xlsTemplate);
 		
 		return xlsTemplate;
+	}
+
+	public static String convertPlainTextToHtmlText(String nonHtmlText)
+	{
+		nonHtmlText = XmlUtilities2.getXmlEncoded(nonHtmlText);
+		nonHtmlText = replaceNonHtmlNewlines(nonHtmlText);
+		
+		return nonHtmlText;
 	}
 	
 	public static String convertHtmlToPlainText(String htmlDataValue)
