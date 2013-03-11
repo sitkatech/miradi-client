@@ -50,6 +50,7 @@ abstract public class AbstractReadonlyChoiceComponent extends MiradiPanel
 		removeAll();
 		try
 		{
+			getQuestion().reloadQuestion();
 			ChoiceItem[] choiceItems = getQuestion().getChoices();
 			for (int choiceIndex = 0; choiceIndex < choiceItems.length; ++choiceIndex)
 			{
