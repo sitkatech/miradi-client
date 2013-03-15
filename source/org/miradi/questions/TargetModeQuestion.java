@@ -80,5 +80,5 @@ public class TargetModeQuestion extends StaticChoiceQuestion
 	public static final String HUMAN_WELFARE_TARGET_CODE = "HumanWelfareTargetMode";
 	
 	public static final String READBLE_DEFAULT_CODE = "BiologicalTargetsOnly";
-	public static final String READABLE_HUMAN_WELFARE_CODE = "BiologicalAndHumanWelfareTargets";
+	public static final String READABLE_HUMAN_WELFARE_CODE = "BiologicalAndHumanWellbeingTargets";
 }
