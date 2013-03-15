@@ -33544,16 +33544,16 @@ msgstr ""
 #~ "el modelo.</p> "
 
 #~ msgid "Action|Insert|Insert Human Welfare Target"
-#~ msgstr "Insertar objetivo de bienestar humano"
+#~ msgstr "Insertar objeto de bienestar humano"
 
 #~ msgid "Add Human Welfare Targets If Desired"
 #~ msgstr "Agregue objetivos de bienestar humano, si lo desea."
 
 #~ msgid "Human Welfare Target"
-#~ msgstr "Objetivo de bienestar humano"
+#~ msgstr "Objeto de bienestar humano"
 
 #~ msgid "Human Welfare Target Mode"
-#~ msgstr "Modo de objetivo de bienestar humano"
+#~ msgstr "Modo de objeto de bienestar humano"
 
 #~ msgid "Human Welfare Targets"
 #~ msgstr "Objetivos de bienestar humano"
@@ -33571,16 +33571,16 @@ msgstr ""
 #~ msgstr "Objetivos de bienestar humano solamente"
 
 #~ msgid "Label|New Human Welfare Target"
-#~ msgstr "Nuevo objetivo de bienestar humano"
+#~ msgstr "Nuevo objeto de bienestar humano"
 
 #~ msgid "TT|Insert a Human Welfare Target"
-#~ msgstr "Insertar un objetivo de bienestar humano"
+#~ msgstr "Insertar un objeto de bienestar humano"
 
 #~ msgid "Title|Human Welfare Target Properties"
-#~ msgstr "Propiedades del objetivo de bienestar humano"
+#~ msgstr "Propiedades del objeto de bienestar humano"
 
 #~ msgid "FieldLabel|52.HumanWelfareTarget|Human Welfare Target"
-#~ msgstr "Objetivo de bienestar humano"
+#~ msgstr "Objeto de bienestar humano"
 
 #~ msgid ""
 #~ "html|/resources/ThreatRatingBundleRules.html|  <html>  <head>      </"
@@ -37619,7 +37619,7 @@ msgstr ""
 #~ msgstr "Verde"
 
 #~ msgid "Brown (Human Welfare Target)"
-#~ msgstr "Marrón (Objetivo de bienestar humano)"
+#~ msgstr "Marrón (Objeto de bienestar humano)"
 
 #~ msgid "FieldLabel|9.FullText|Text"
 #~ msgstr "Texto"
