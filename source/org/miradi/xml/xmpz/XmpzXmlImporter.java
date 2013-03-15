@@ -158,7 +158,8 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements XmpzXmlConst
 		TagToElementNameMap map = new TagToElementNameMap();
 		String elementName = map.findElementName(containerName, destinationTag);
 		String importedReadableCode = getPathData(node, new String[]{containerName  + elementName, });
-		String internalCode = question.convertToInternalCode(importedReadableCode);		
+		String trimmedImportedReadbleCode = importedReadableCode.trim();
+		String internalCode = question.convertToInternalCode(trimmedImportedReadbleCode);		
 		importField(destinationRef, destinationTag, internalCode);
 	}
 
