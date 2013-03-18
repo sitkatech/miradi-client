@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-18 13:46-0500\n"
+"POT-Creation-Date: 2013-03-18 14:31-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -1020,6 +1020,16 @@ msgstr ""
 "<html>Unumkehrbarkeit - Der Grad zu dem die Effekte einer direkten Bedrohung "
 "umkehrbar/reversibel sind und das Schutzobjekt sich wieder vollständig "
 "erholen kann."
+
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:130
+msgid ""
+"<html>Note that certain project data cannot be copied between projects. This "
+"includes:<br/><br/>1. Simple Threat Ratings <br/>2. Work planning data that "
+"refers to other data which only exists in the old project. This would "
+"include work or expense assignments to Project Resources, Accounting Codes, "
+"Funding Sources, and items in Category #1 or Category #2 lists. The Leader "
+"attribute is also not copied.</html>"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
 msgid ""
@@ -2611,7 +2621,7 @@ msgstr ""
 msgid "Button|Paste"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:184
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:186
 msgid "Button|Paste As Copies"
 msgstr "Als Kopie einfügen"
 
@@ -2619,7 +2629,7 @@ msgstr "Als Kopie einfügen"
 msgid "Button|Paste Contents"
 msgstr "Inhalt einfügen"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:185
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:187
 msgid "Button|Paste Shared"
 msgstr ""
 
