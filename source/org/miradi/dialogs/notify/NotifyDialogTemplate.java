@@ -21,9 +21,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.notify;
 
 import org.miradi.main.EAM;
+import org.miradi.utils.Translation;
 
 public class NotifyDialogTemplate
 {
+	public static NotifyDialogTemplate createNotifyDialogTemplate(String dialogCodeToUse, String titleToUse, String htmlFileName) throws Exception
+	{
+		String html = Translation.getHtmlContent(htmlFileName);
+		
+		return new NotifyDialogTemplate(dialogCodeToUse, titleToUse, html);
+	}
+	
 	public NotifyDialogTemplate(String dialogCodeToUse, String titleToUse, String notificationTextToUse)
 	{
 		dialogCode = dialogCodeToUse;

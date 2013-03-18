@@ -59,4 +59,11 @@ public class NotifyDialogTemplateFactory
 		
 		return new NotifyDialogTemplate("NewFileStructure", title, notificationTextToUse);
 	}
+	
+	public static NotifyDialogTemplate notifyUserOfNewMiradi4Features() throws Exception
+	{
+		String title = EAM.text("Miradi 4.0 Features");
+		
+		return NotifyDialogTemplate.createNotifyDialogTemplate("NewMiradi40Features", title, "Miradi40NewFeatures.html");
+	}
 }
