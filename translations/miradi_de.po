@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-07 16:46-0600\n"
+"POT-Creation-Date: 2013-03-18 13:31-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -517,7 +517,7 @@ msgstr "7B. Teilen Sie Ihre Erfahrungen"
 msgid "7C. Create a Learning Environment"
 msgstr "7C. Schaffen Sie eine Lernumgebung"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1326
+#: Miradi/source/org/miradi/main/MainWindow.java:1327
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -1097,7 +1097,7 @@ msgstr "Ein Projekt oder eine Projektdatei existiert schon unter diesem Namen:"
 msgid "A project or file by this name already exists: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:560
+#: Miradi/source/org/miradi/main/MainWindow.java:561
 msgid "A project with this name already exists."
 msgstr ""
 
@@ -2516,6 +2516,7 @@ msgstr ""
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:91
 #: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:63
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
+#: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:49
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:234
 #: Miradi/source/org/miradi/project/OldProjectDirToMpfConverter.java:57
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
@@ -2537,10 +2538,11 @@ msgstr ""
 # es gibt auch den Eintrag "Button/Exit" der auch mit Schließen übersetzt wurde -> muss ggf überprüft werden, ob das irreführend ist!!! (Felix)
 #: Miradi/source/org/miradi/utils/HtmlViewPanel.java:186
 #: Miradi/source/org/miradi/dialogs/base/AbstractDialogWithClose.java:63
-#: Miradi/source/org/miradi/dialogs/notify/NotifyDialogTemplate.java:54
+#: Miradi/source/org/miradi/dialogs/notify/NotifyDialogTemplate.java:62
 msgid "Button|Close"
 msgstr "Schließen"
 
+#: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:50
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:64
 msgid "Button|Continue"
 msgstr "Weiter"
@@ -2699,7 +2701,7 @@ msgstr "Element kann nicht mit sich selbst verbunden werden"
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:578
+#: Miradi/source/org/miradi/main/MainWindow.java:579
 msgid "Cancelled"
 msgstr "Abgebrochen"
 
@@ -2944,6 +2946,10 @@ msgstr "Auswertung und/oder Überprüfung durchführen"
 msgid "Configure Work Plan Analysis"
 msgstr "Arbeitsplananalyse anpassen"
 
+#: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:59
+msgid "Confirmation"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:45
 msgid "Conservation Targets"
 msgstr "Schutzobjekt"
@@ -3030,7 +3036,7 @@ msgstr "Erstellen fehlgeschlagen:"
 msgid "Create Folder"
 msgstr "Ordner erstellen"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:657
+#: Miradi/source/org/miradi/main/MainWindow.java:658
 msgid "Create Project"
 msgstr "Projekt erstellen"
 
@@ -3652,7 +3658,7 @@ msgstr "Geschätze Kosten für Aktivitäten und Monitoring"
 msgid "Euro"
 msgstr "Euro"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:903
+#: Miradi/source/org/miradi/main/MainWindow.java:904
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 "Bereits vorhandene Daten eines anderen Haushaltsjahres werden ausgeschlossen"
@@ -5249,6 +5255,10 @@ msgid "Minor Issues - Ongoing, has minor issues that need attention"
 msgstr ""
 "Kleine Probleme - Fortlaufend, kleinere Probleme die Zuwendung benötigen"
 
+#: Miradi/source/org/miradi/dialogs/notify/NotifyDialogTemplateFactory.java:65
+msgid "Miradi 4.0 Features"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/umbrella/PreferencesPopupDoer.java:53
 msgid "Miradi Preferences"
 msgstr ""
@@ -5274,7 +5284,7 @@ msgstr "Miradi hat die Datei: %s als nicht importierbar erkannt"
 msgid "Miradi does not recognize %s as a project file"
 msgstr "Miradi erkennt %s nicht als Projektdatei"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:745
+#: Miradi/source/org/miradi/main/MainWindow.java:746
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5556,7 +5566,7 @@ msgid "Open Anyway"
 msgstr "Trotzdem Öffnen"
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:197
-#: Miradi/source/org/miradi/main/MainWindow.java:659
+#: Miradi/source/org/miradi/main/MainWindow.java:660
 msgid "Open Project"
 msgstr "Projekt Öffnen"
 
@@ -5880,7 +5890,7 @@ msgstr "Projekt"
 msgid "Project Advisor"
 msgstr "ProjektberaterIn"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:743
+#: Miradi/source/org/miradi/main/MainWindow.java:744
 msgid "Project Corruption Detected"
 msgstr ""
 
@@ -5915,7 +5925,7 @@ msgstr "Projektressource"
 msgid "Project Resource Filter Editor"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:901
+#: Miradi/source/org/miradi/main/MainWindow.java:902
 msgid "Project Resource Filter Is On"
 msgstr ""
 
@@ -6202,7 +6212,7 @@ msgid "Savanna - Moist Savana"
 msgstr "Savanna - Moist Savana"
 
 #: Miradi/source/org/miradi/views/noproject/CopyProject.java:42
-#: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:46
+#: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:64
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:41
 msgid "Save As..."
 msgstr "Speichern als..."
@@ -6554,7 +6564,7 @@ msgstr ""
 msgid "Standard Reports"
 msgstr "Standard Berichte"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:935
+#: Miradi/source/org/miradi/main/MainWindow.java:936
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -7846,7 +7856,7 @@ msgstr "Datum muss in folgendem Format vorliegen: JJJJ-MM-TT"
 msgid "Text|Unknown error prevented saving this data"
 msgstr "Ein unbekannter Fehler verhinderte das Speichern der Daten. "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:602
+#: Miradi/source/org/miradi/main/MainWindow.java:603
 msgid "That file is not a valid Miradi project"
 msgstr ""
 
@@ -7858,20 +7868,20 @@ msgstr "Das Sprachpacket ist bereits vorhanden. Möchten Sie es ersetzen?"
 msgid "That language pack is already installed"
 msgstr "Das Sprachpacket ist bereits installiert"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:610
-#: Miradi/source/org/miradi/main/MainWindow.java:614
+#: Miradi/source/org/miradi/main/MainWindow.java:611
+#: Miradi/source/org/miradi/main/MainWindow.java:615
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "Miradi"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:618
+#: Miradi/source/org/miradi/main/MainWindow.java:619
 #, fuzzy
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr "Das Projekt kann nicht geöffnet werden bis "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:598
+#: Miradi/source/org/miradi/main/MainWindow.java:599
 #, fuzzy
 msgid "That project is in use by another copy of this application"
 msgstr "Das Projekt wird von einer anderen Kopie dieser Anwendung benutzt. "
@@ -7887,7 +7897,7 @@ msgstr ""
 "Datenformat umzuwandeln. Anschließend kann es mit dieser Version geöffnet "
 "und bearbeitet werden. "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:606
+#: Miradi/source/org/miradi/main/MainWindow.java:607
 msgid "That project is too old to be opened with this version of Miradi"
 msgstr ""
 
@@ -8072,7 +8082,7 @@ msgid ""
 "damaged. Please contact Miradi support for recovery options."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:734
+#: Miradi/source/org/miradi/main/MainWindow.java:735
 msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
@@ -8501,7 +8511,7 @@ msgstr ""
 "Löschen nicht möglich, da das Projekt von einer anderen Kopie dieser "
 "Anwendung benutzt wird:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1310
+#: Miradi/source/org/miradi/main/MainWindow.java:1311
 msgid "Unable to launch external web browser"
 msgstr ""
 
@@ -8523,7 +8533,7 @@ msgstr ""
 "Projekt konnte nicht umbenannt werden, da dieses noch in Miradi geöffnet "
 "ist:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1092
+#: Miradi/source/org/miradi/main/MainWindow.java:1093
 msgid "Unable to save preferences"
 msgstr "Einstellung konnten nicht gespeichert werden"
 
@@ -8567,7 +8577,7 @@ msgstr "Universität"
 msgid "Unknown"
 msgstr "Unbekannt"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:593
+#: Miradi/source/org/miradi/main/MainWindow.java:594
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -8583,7 +8593,7 @@ msgstr "Unbekannter Code:"
 msgid "Unknown error displaying diagram"
 msgstr "Unbekannter Fehler beim Anzeigen des Konzeptionellen Modells"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:623
+#: Miradi/source/org/miradi/main/MainWindow.java:624
 msgid "Unknown error prevented opening that project"
 msgstr "Ein unbekannter Fehler verhinderte das Öffnen des Projekts"
 
@@ -8709,6 +8719,19 @@ msgstr ""
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:67
 msgid "WARNING"
 msgstr "WARNUNG"
+
+#: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:52
+msgid ""
+"WARNING: The changes caused by the most recent Undo commands have already "
+"been saved. \n"
+"If you go ahead with Save As right now, both the existing project and the "
+"new project \n"
+"will contain identical data, and those recent Undo commands will not be able "
+"to be reverted \n"
+"using Redo. This is different behavior from most applications.\n"
+"\n"
+"Continue with Save As?"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:73
 msgid "WCS"
@@ -10704,6 +10727,36 @@ msgid ""
 "that have been added to Miradi 4.0 or later.The preferred way to backup or "
 "share your projects now is to export .Miradi files, instead of MPZ files.Do "
 "you wish to export this project as an MPZ file anyway? "
+msgstr ""
+
+msgid ""
+"html|/resources/Miradi40NewFeatures.html|  <HTML><BODY><table><tr><td><IMG "
+"height=30 alt=\"\" hspace=20 src=\"images/Umbrella/thanks64.png\" width=87 "
+"align=absMiddle border=0></img></td><td><H2>What's New in Miradi 4.0</H2></"
+"td></tr></table><P>Miradi 4.0 contains many improvements and enhacements.  "
+"In addition to lots of \"behind the scenes\" technical improvements, some "
+"major highlights include:<UL>  <LI><B>New Integrated .Miradi File Format</B> "
+"- Miradi 3.x stored data in sub-folders in the Miradi directory on your "
+"computer. If you wanted to transfer the file, you had to export an .mpz "
+"file. Now, project data are stored in your Miradi directory in one file that "
+"uses the .Miradi extension. You can treat these .Miradi files as you would "
+"any other file (e.g. .doc or .pdf) on your computer. Click <A href=\"https://"
+"miradi.org/files/Instructions_for_New_Miradi_File_Structure.pdf \"><U><FONT "
+"color=#0000ff>here</U></FONT></A> for more details.</LI>  <LI><B>Ability to "
+"Edit Directly in Upper Tables</B> - You can now edit any blue text that you "
+"see in tables without having to click on the lower panel.</LI>    "
+"<LI><B>Support for Text Formatting</B> - You can now use the right (alt) "
+"mouse button to add text formatting (e.g. bold, italic) and hyperlinks to "
+"any multi-line text field.</LI><LI><B>Designate Task Leader</B> - You can "
+"now assign responsibility for leading an activity or task in work planning "
+"mode. You can also make work assignments from diagram view.</"
+"LI><LI><B>Support for XSLT Report Generation</B> - Miradi now supports the "
+"generation of custom reports using the XSLT language.</LI><LI><B>Support for "
+"Miradi Dashboard and Miradi Share Online Systems</B> - Miradi Desktop "
+"software is now designed to readily export information to the Miradi "
+"Dashboard application and the Miradi Share online system for managing "
+"conservation programs. See the <A href=\"http://www.Miradi.org\"><U><FONT "
+"color=#0000ff>miradi.org</U></FONT></A> website for more details.</LI></UL>"
 msgstr ""
 
 msgid ""
