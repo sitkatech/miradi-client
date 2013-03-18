@@ -127,12 +127,12 @@ public class PasteDoer extends AbstractPasteDoer
 			return;
 		
 	final String dialogTitle = EAM.text("Paste Between Projects");
-	final String message = "<html>Note that certain project data cannot be copied between projects. This includes:<br/><br/>" +
+	final String message = EAM.text("<html>Note that certain project data cannot be copied between projects. This includes:<br/><br/>" +
 							"1. Simple Threat Ratings <br/>" +
 							"2. Work planning data that refers to other data which only exists in the old project. " +
 							"This would include work or expense assignments to Project Resources, Accounting Codes, " +
 							"Funding Sources, and items in Category #1 or Category #2 lists. The Leader attribute " +
-							"is also not copied.</html>";
+							"is also not copied.</html>");
 		
 		HtmlViewPanel htmlViewPanel = HtmlViewPanelWithMargins.createFromTextString(getMainWindow(), dialogTitle, message);
 		htmlViewPanel.showAsOkDialog();
