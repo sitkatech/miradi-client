@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-18 14:31-0500\n"
+"POT-Creation-Date: 2013-03-19 12:16-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -6298,7 +6298,7 @@ msgstr ""
 msgid "Stakeholder"
 msgstr "Pemilik Kepentingan"
 
-#: Miradi/source/org/miradi/views/reports/ReportsView.java:92
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:91
 msgid "Standard Reports"
 msgstr "Laporan Standar "
 

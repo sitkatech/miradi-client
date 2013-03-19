@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-18 14:31-0500\n"
+"POT-Creation-Date: 2013-03-19 12:16-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -6375,7 +6375,7 @@ msgstr ""
 msgid "Stakeholder"
 msgstr "Оролцогч тал"
 
-#: Miradi/source/org/miradi/views/reports/ReportsView.java:92
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:91
 msgid "Standard Reports"
 msgstr "Стандарт тайлан"
 
