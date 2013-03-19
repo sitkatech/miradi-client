@@ -29,6 +29,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.io.Writer;
 import java.net.URL;
+import java.util.HashMap;
 
 import javax.swing.Action;
 import javax.swing.ActionMap;
@@ -47,6 +48,7 @@ import javax.swing.text.html.StyleSheet;
 import net.atlanticbb.tantlinger.ui.text.CompoundUndoManager;
 import net.atlanticbb.tantlinger.ui.text.HTMLUtils;
 import net.atlanticbb.tantlinger.ui.text.WysiwygHTMLEditorKit;
+import net.atlanticbb.tantlinger.ui.text.actions.HTMLTextEditAction;
 
 import org.miradi.dialogfields.DocumentEventHandler;
 import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
@@ -237,14 +239,40 @@ abstract public class AbstractHtmlPane extends MiradiTextPane
 			w.write();
 		}
 	}
-
+	
 	public class HTMLEditorKitWithCtrlVFixed extends HtmlEditorKitWithNonSharedStyleSheet
 	{
 		@Override
 		public void install(JEditorPane ed)
 		{
 			super.install(ed);
+			
+			ActionMap actionMap = ed.getActionMap();
+			HashMap<String, Action> actions = new HashMap<String, Action>();
+			Action delegate = actionMap.get("insert-break");
+			delegate = actionMap.get(PASTE_FROM_CLIPBOARD_ACTION_TAG);
+	        HTMLTextEditAction htmlTextEditAction = new PasteSanitizedTextAction();
+	        htmlTextEditAction.putContextValue(HTMLTextEditAction.EDITOR, ed);
+	        actions.put(PASTE_FROM_CLIPBOARD_ACTION_TAG, delegate);
+	        actionMap.put(PASTE_FROM_CLIPBOARD_ACTION_TAG, htmlTextEditAction);
+	        editorToActionsMap.put(ed, actions);
+			
 			removeCtrlVHandlerThatDoesTheWrongThing();
+		}
+		
+		@Override
+		public void deinstall(JEditorPane editorPane)
+		{
+	        ActionMap actionMap = editorPane.getActionMap();
+	        HashMap actions = editorToActionsMap.get(editorPane);
+	        Action currentAction = actionMap.get("insert-break");
+	        currentAction = actionMap.get(PASTE_FROM_CLIPBOARD_ACTION_TAG);
+	        if(currentAction instanceof PasteSanitizedTextAction)
+	            actionMap.put(PASTE_FROM_CLIPBOARD_ACTION_TAG, (Action)actions.get(PASTE_FROM_CLIPBOARD_ACTION_TAG));
+	        
+	        editorToActionsMap.remove(editorPane);
+			
+			super.deinstall(editorPane);
 		}
 
 		// NOTE: We are not sure why, but Shef installs a Ctrl-V binding 
@@ -273,6 +301,9 @@ abstract public class AbstractHtmlPane extends MiradiTextPane
 			inputMap.put(ks, null);
 			actionMap.put(binding, null);
 		}
+		
+		private HashMap<JEditorPane, HashMap<String, Action>> editorToActionsMap = new HashMap<JEditorPane, HashMap<String, Action>>();
+		private static final String PASTE_FROM_CLIPBOARD_ACTION_TAG = "paste-from-clipboard";
 	}
 	
 	public class HtmlEditorKitWithNonSharedStyleSheet extends WysiwygHTMLEditorKit
