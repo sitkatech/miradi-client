@@ -44,6 +44,7 @@ public class HtmlUtilitiesRelatedToShef
 		trimmedText = HtmlUtilities.removeNonHtmlNewLines(trimmedText);
 		trimmedText = HtmlUtilities.appendNewlineToEndDivTags(trimmedText);
 		trimmedText = HtmlUtilities.removeAllExcept(trimmedText, allowedHtmlTags);
+		trimmedText = HtmlUtilities.stripAttributesFromNonAnchorElements(trimmedText);
 		trimmedText = trimmedText.replaceAll("\\t", " ");
 		trimmedText = trimmedText.replaceAll(" +", " ");
 		trimmedText = trimmedText.trim();		

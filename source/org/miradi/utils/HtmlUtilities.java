@@ -296,7 +296,22 @@ public class HtmlUtilities
 	{
 		return replaceAll(createStartTagRegex(tagToStripWithItsContent) + ".*?" + createEndTagRegex(tagToStripWithItsContent), htmlText, "");
 	}
+	
+	public static String stripAttributesFromNonAnchorElements(String htmlText)
+	{
+		// NOTE: This regexp says:
+		// < - Starts with an angle bracket
+		// (?!a ) - Can't match if the element name is a
+		// (?!A ) - Can't match if the element name is A
+		// (\w*?) - Matches any other element name and captures it as $1
+		//  .*? - Matches any attributes
+		// > - Ends with an angle bracket
+		final String regexToMatchEntityWithAttributes = "<(?!a )(?!A )(\\w*?) .*?>";
+		
+		return replaceAll(regexToMatchEntityWithAttributes, htmlText, "<$1>");
+	}
 
+	
 	public static final String BR_TAG = "<br/>";
 	public static final String UL_START_TAG = "<ul>";
 	public static final String UL_END_TAG = "</ul>";
