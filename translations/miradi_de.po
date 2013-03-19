@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 12:16-0500\n"
+"POT-Creation-Date: 2013-03-19 14:46-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -2095,7 +2095,7 @@ msgid "Adaptive Management Software for Conservation Projects"
 msgstr ""
 "Software zur Anwendung von Adaptivem Management in der Naturschutzpraxis"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:144
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:148
 msgid "Add '%s' to User Dictionary"
 msgstr ""
 
@@ -3004,7 +3004,7 @@ msgstr ""
 msgid "Control Bar"
 msgstr "Übersicht"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:102
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:104
 msgid "Copy"
 msgstr "Kopieren"
 
@@ -3139,7 +3139,7 @@ msgstr "Benutzerdefinierte Tabelle: %s"
 msgid "Customize..."
 msgstr "Anpassen..."
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:97
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:99
 msgid "Cut"
 msgstr "Ausschneiden"
 
@@ -5340,7 +5340,7 @@ msgstr ""
 msgid "Month Selection: "
 msgstr "Auswahl Monat:"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:116
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:120
 msgid "More Suggestions"
 msgstr "Mehr Vorschläge"
 
@@ -5647,7 +5647,7 @@ msgstr ""
 msgid "Page:"
 msgstr "Seite:"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:108
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:112
 msgid "Paste"
 msgstr "Einfügen"
 
