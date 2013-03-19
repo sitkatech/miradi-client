@@ -34,7 +34,6 @@ import org.miradi.dialogs.reportTemplate.StandardReportPanel;
 import org.miradi.dialogs.xslTemplate.XslTemplateManagmentPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.main.Miradi;
 import org.miradi.main.MiradiToolBar;
 import org.miradi.project.Project;
 import org.miradi.utils.MiradiScrollPane;
@@ -91,8 +90,7 @@ public class ReportsView extends TabbedView
 
 		addTab(EAM.text("Standard Reports"), new MiradiScrollPane(standardReportPanel));
 		addNonScrollingTab(reportTemplateManagementPanel);
-		if (Miradi.isAlphaTesterMode())
-			addNonScrollingTab(xslTemplateManagmentPanel); 
+		addNonScrollingTab(xslTemplateManagmentPanel); 
 	}
 	
 	@Override
