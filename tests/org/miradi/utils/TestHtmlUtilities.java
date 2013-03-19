@@ -29,6 +29,24 @@ public class TestHtmlUtilities extends MiradiTestCase
 		super(name);
 	}
 	
+	public void testStripAttributesFromNonAnchorElements()
+	{
+		verifyStrippingOfAttribute("sampleData", "sampleData");
+		verifyStrippingOfAttribute("<style>sampleData", "<style>sampleData");
+		verifyStrippingOfAttribute("sampleData</style>", "sampleData</style>");
+		verifyStrippingOfAttribute("<style>sampleData</style>", "<style>sampleData</style>");
+		verifyStrippingOfAttribute("<style>sampleData</style>", "<style size=3>sampleData</style>");
+		verifyStrippingOfAttribute("<style>sampleData</style>", "<style size=3 color=\"blue\" width=40>sampleData</style>");
+		
+		verifyStrippingOfAttribute("<a href=\"www.miradi.org\">miradi</a>", "<a href=\"www.miradi.org\">miradi</a>");
+		verifyStrippingOfAttribute("<A href=\"www.miradi.org\">miradi</a>", "<A href=\"www.miradi.org\">miradi</a>");
+	}
+	
+	private void verifyStrippingOfAttribute(String expectedValue, String actualValue)
+	{
+		assertEquals("Html tag attirbutes not removed?", expectedValue, HtmlUtilities.stripAttributesFromNonAnchorElements(actualValue));
+	}
+
 	public void testRemoveStartToEndTagAndItsContent()
 	{
 		verifyRemoveStartToEndTagAndItsContent("", "<style>some stuff</style>");
