@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 12:16-0500\n"
+"POT-Creation-Date: 2013-03-19 14:46-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -1985,7 +1985,7 @@ msgstr ""
 "Програмне забезпечення з адаптивного менеджменту для природоохоронних "
 "проектів."
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:144
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:148
 msgid "Add '%s' to User Dictionary"
 msgstr ""
 
@@ -2876,7 +2876,7 @@ msgstr ""
 msgid "Control Bar"
 msgstr "Контрольна панель"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:102
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:104
 msgid "Copy"
 msgstr "Копіювати"
 
@@ -3001,7 +3001,7 @@ msgstr ""
 msgid "Customize..."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:97
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:99
 msgid "Cut"
 msgstr "Вирізати"
 
@@ -5161,7 +5161,7 @@ msgstr ""
 msgid "Month Selection: "
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:116
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:120
 msgid "More Suggestions"
 msgstr ""
 
@@ -5454,7 +5454,7 @@ msgstr "Сумарна оцінка загроз"
 msgid "Page:"
 msgstr "Сторінка:"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:108
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:112
 msgid "Paste"
 msgstr "Вставити"
 
