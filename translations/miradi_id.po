@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 12:16-0500\n"
+"POT-Creation-Date: 2013-03-20 13:01-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -865,11 +865,11 @@ msgstr ""
 #: Miradi/source/org/miradi/views/diagram/PasteDoer.java:130
 msgid ""
 "<html>Note that certain project data cannot be copied between projects. This "
-"includes:<br/><br/>1. Simple Threat Ratings <br/>2. Work planning data that "
-"refers to other data which only exists in the old project. This would "
-"include work or expense assignments to Project Resources, Accounting Codes, "
-"Funding Sources, and items in Category #1 or Category #2 lists. The Leader "
-"attribute is also not copied.</html>"
+"includes:<ol><li>Simple Threat Ratings </li><li>Work planning data that "
+"refers to other data which only exists in the old project.This would include "
+"work or expense assignments to Project Resources, Accounting Codes, Funding "
+"Sources, and items in Category #1 or Category #2 lists. The Leader attribute "
+"is also not copied.</li></ol></html>"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
@@ -1920,7 +1920,7 @@ msgstr ""
 msgid "Adaptive Management Software for Conservation Projects"
 msgstr "Perangkat Lunak Manajemen Adaptif untuk Proyek Konservasi "
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:144
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:148
 msgid "Add '%s' to User Dictionary"
 msgstr ""
 
@@ -2445,7 +2445,7 @@ msgstr ""
 msgid "Button|Paste"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:186
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:188
 msgid "Button|Paste As Copies"
 msgstr ""
 
@@ -2453,7 +2453,7 @@ msgstr ""
 msgid "Button|Paste Contents"
 msgstr "Tempelkan Isi… "
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:187
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:189
 msgid "Button|Paste Shared"
 msgstr ""
 
@@ -2814,7 +2814,7 @@ msgstr ""
 msgid "Control Bar"
 msgstr "Balok Kontrol "
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:102
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:104
 msgid "Copy"
 msgstr "Salin "
 
@@ -2938,7 +2938,7 @@ msgstr ""
 msgid "Customize..."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:97
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:99
 msgid "Cut"
 msgstr "Potong "
 
@@ -5122,7 +5122,7 @@ msgstr ""
 msgid "Month Selection: "
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:116
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:120
 msgid "More Suggestions"
 msgstr ""
 
@@ -5415,7 +5415,7 @@ msgstr "Keseluruhan Peringkat Ancaman"
 msgid "Page:"
 msgstr "Halaman: "
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:108
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:112
 msgid "Paste"
 msgstr "Tempel "
 
