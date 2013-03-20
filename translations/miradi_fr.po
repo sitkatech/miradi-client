@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 14:46-0500\n"
+"POT-Creation-Date: 2013-03-20 13:01-0500\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -940,11 +940,11 @@ msgstr ""
 #: Miradi/source/org/miradi/views/diagram/PasteDoer.java:130
 msgid ""
 "<html>Note that certain project data cannot be copied between projects. This "
-"includes:<br/><br/>1. Simple Threat Ratings <br/>2. Work planning data that "
-"refers to other data which only exists in the old project. This would "
-"include work or expense assignments to Project Resources, Accounting Codes, "
-"Funding Sources, and items in Category #1 or Category #2 lists. The Leader "
-"attribute is also not copied.</html>"
+"includes:<ol><li>Simple Threat Ratings </li><li>Work planning data that "
+"refers to other data which only exists in the old project.This would include "
+"work or expense assignments to Project Resources, Accounting Codes, Funding "
+"Sources, and items in Category #1 or Category #2 lists. The Leader attribute "
+"is also not copied.</li></ol></html>"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
@@ -2536,7 +2536,7 @@ msgstr ""
 msgid "Button|Paste"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:186
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:188
 msgid "Button|Paste As Copies"
 msgstr "Coller sous Copies"
 
@@ -2544,7 +2544,7 @@ msgstr "Coller sous Copies"
 msgid "Button|Paste Contents"
 msgstr "Coller Contenus"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:187
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:189
 msgid "Button|Paste Shared"
 msgstr "Coller partagé"
 
