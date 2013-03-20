@@ -29,6 +29,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.io.Writer;
 import java.net.URL;
+import java.util.HashMap;
 
 import javax.swing.Action;
 import javax.swing.ActionMap;
@@ -47,6 +48,7 @@ import javax.swing.text.html.StyleSheet;
 import net.atlanticbb.tantlinger.ui.text.CompoundUndoManager;
 import net.atlanticbb.tantlinger.ui.text.HTMLUtils;
 import net.atlanticbb.tantlinger.ui.text.WysiwygHTMLEditorKit;
+import net.atlanticbb.tantlinger.ui.text.actions.HTMLTextEditAction;
 
 import org.miradi.dialogfields.DocumentEventHandler;
 import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
@@ -237,16 +239,17 @@ abstract public class AbstractHtmlPane extends MiradiTextPane
 			w.write();
 		}
 	}
-
+	
 	public class HTMLEditorKitWithCtrlVFixed extends HtmlEditorKitWithNonSharedStyleSheet
 	{
 		@Override
 		public void install(JEditorPane ed)
 		{
 			super.install(ed);
+			
 			removeCtrlVHandlerThatDoesTheWrongThing();
 		}
-
+		
 		// NOTE: We are not sure why, but Shef installs a Ctrl-V binding 
 		// that maps to its PasteAction class, which throws away any 
 		// formatting on the clipboard and pastes plain text. Our default 
