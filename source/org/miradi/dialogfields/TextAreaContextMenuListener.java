@@ -32,8 +32,6 @@ import javax.swing.KeyStroke;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.text.JTextComponent;
 
-import net.atlanticbb.tantlinger.ui.text.actions.HTMLTextEditAction;
-
 import org.miradi.actions.ActionRedo;
 import org.miradi.actions.ActionUndo;
 import org.miradi.actions.Actions;
@@ -41,9 +39,9 @@ import org.miradi.actions.MiradiAction;
 import org.miradi.main.EAM;
 import org.miradi.utils.MenuItemWithoutLocation;
 import org.miradi.utils.MiradiResourceImageIcon;
-import org.miradi.utils.PasteSanitizedTextAction;
 import org.miradi.views.umbrella.CopyTextAction;
 import org.miradi.views.umbrella.CutTextAction;
+import org.miradi.views.umbrella.PasteTextAction;
 
 import com.inet.jortho.AddWordAction;
 import com.inet.jortho.MiradiCheckerListener;
@@ -105,9 +103,7 @@ class TextAreaContextMenuListener extends MiradiCheckerListener
 		menuItemCopy.setAccelerator(KeyStroke.getKeyStroke('C', KeyEvent.CTRL_DOWN_MASK));
 		menu.add(menuItemCopy);
 	
-		final PasteSanitizedTextAction pasteAction = new PasteSanitizedTextAction();
-		pasteAction.putContextValue(HTMLTextEditAction.EDITOR, getTextField());
-		JMenuItem menuItemPaste = createMenuItem(pasteAction, "icons/paste.gif");
+		JMenuItem menuItemPaste = createMenuItem(new PasteTextAction(getTextField()), "icons/paste.gif");
 		menuItemPaste.setEnabled(getTextField().isEditable());
 		menuItemPaste.setText(EAM.text("Paste"));
 		menuItemPaste.setAccelerator(KeyStroke.getKeyStroke('V', KeyEvent.CTRL_DOWN_MASK));
