@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-20 13:01-0500\n"
+"POT-Creation-Date: 2013-03-20 16:16-0500\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -2006,7 +2006,7 @@ msgid "Adaptive Management Software for Conservation Projects"
 msgstr ""
 "Logiciel de gestion adaptive pour les projets de protection de la nature."
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:148
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:144
 msgid "Add '%s' to User Dictionary"
 msgstr "Ajouter '%s' au Dictionnaire utilisateur"
 
@@ -2909,7 +2909,7 @@ msgstr ""
 msgid "Control Bar"
 msgstr "Barre de contrôle"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:104
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:102
 msgid "Copy"
 msgstr "Copier"
 
@@ -3034,7 +3034,7 @@ msgstr ""
 msgid "Customize..."
 msgstr "Personnaliser ..."
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:99
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:97
 msgid "Cut"
 msgstr "Couper"
 
@@ -5240,7 +5240,7 @@ msgstr ""
 msgid "Month Selection: "
 msgstr "Sélection du mois :"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:120
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:116
 msgid "More Suggestions"
 msgstr "Plusieurs Suggestions"
 
@@ -5546,7 +5546,7 @@ msgstr "Classement menace général"
 msgid "Page:"
 msgstr "Page :"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:112
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:108
 msgid "Paste"
 msgstr "Copier"
 
