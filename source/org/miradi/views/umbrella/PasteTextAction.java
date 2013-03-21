@@ -79,11 +79,32 @@ public class PasteTextAction extends AbstractAction
 			return null;                
 
 		final DataFlavor[] transferDataFlavors = contents.getTransferDataFlavors();
-		DataFlavor dataFlavor = DataFlavor.selectBestTextFlavor(transferDataFlavors);        
-		if(dataFlavor.getMimeType().startsWith("text/html"))
-			return read(dataFlavor.getReaderForText(contents));
-		
-		 return contents.getTransferData(new DataFlavor(String.class, "String")).toString();
+		DataFlavor dataFlavor = selectBestDataFlavor(transferDataFlavors);        
+
+		return read(dataFlavor.getReaderForText(contents));
+	}
+	
+	private DataFlavor selectBestDataFlavor(final DataFlavor[] transferDataFlavors)
+	{
+		DataFlavor dataFlavor = findDataFlavor(transferDataFlavors, "text/html");
+		if (dataFlavor != null)
+			return dataFlavor;
+
+		dataFlavor = findDataFlavor(transferDataFlavors, "text/plain");
+		if (dataFlavor != null)
+			return dataFlavor;
+
+		return DataFlavor.selectBestTextFlavor(transferDataFlavors);		
+	}
+
+	private DataFlavor findDataFlavor(final DataFlavor[] transferDataFlavors, String mimeType)
+	{
+		for (DataFlavor dataFlavor : transferDataFlavors)
+		{		
+			if (dataFlavor.getMimeType().startsWith(mimeType))
+				return dataFlavor;
+		}
+		return null;
 	} 
 
 	private String read(Reader inputReader) throws Exception
