@@ -38,7 +38,7 @@ public class TestHtmlUtilities extends MiradiTestCase
 		verifyStrippingComments(" with comments", "<!-- comment --> with comments");
 		verifyStrippingComments("with  comments", "with <!-- comment --> comments");
 		verifyStrippingComments("with comments ", "with comments <!-- comment -->");
-		
+		verifyStrippingComments("", "<!--line1 \n line2-->");
 	}
 	
 	private void verifyStrippingComments(String expectedValue, String actualValue)

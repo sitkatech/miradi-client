@@ -313,7 +313,7 @@ public class HtmlUtilities
 
 	public static String stripHtmlComments(String htmlText)
 	{
-		String regex = "<!--.*?-->";
+		String regex = "<!--[\\s\\S]*?-->";
 		final Pattern compiledRegex = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
 		
 		return compiledRegex.matcher(htmlText).replaceAll(StringUtilities.EMPTY_STRING);
