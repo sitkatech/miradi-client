@@ -29,6 +29,23 @@ public class TestHtmlUtilities extends MiradiTestCase
 		super(name);
 	}
 	
+	public void testStripHtmlComments()
+	{
+		verifyStrippingComments("without comments", "without comments");
+		verifyStrippingComments("", "<!---->");
+		verifyStrippingComments("", "<!--some Random comment-->");
+		verifyStrippingComments("", "<!-- some random comment -->");
+		verifyStrippingComments(" with comments", "<!-- comment --> with comments");
+		verifyStrippingComments("with  comments", "with <!-- comment --> comments");
+		verifyStrippingComments("with comments ", "with comments <!-- comment -->");
+		
+	}
+	
+	private void verifyStrippingComments(String expectedValue, String actualValue)
+	{
+		assertEquals("Comments were not stripped?", expectedValue, HtmlUtilities.stripHtmlComments(actualValue));
+	}
+
 	public void testStripAttributesFromNonAnchorElements()
 	{
 		verifyStrippingOfAttribute("sampleData", "sampleData");

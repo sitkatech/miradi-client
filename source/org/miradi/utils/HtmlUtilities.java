@@ -311,6 +311,13 @@ public class HtmlUtilities
 		return replaceAll(regexToMatchEntityWithAttributes, htmlText, "<$1>");
 	}
 
+	public static String stripHtmlComments(String htmlText)
+	{
+		String regex = "<!--.*?-->";
+		final Pattern compiledRegex = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+		
+		return compiledRegex.matcher(htmlText).replaceAll(StringUtilities.EMPTY_STRING);
+	}
 	
 	public static final String BR_TAG = "<br/>";
 	public static final String UL_START_TAG = "<ul>";
