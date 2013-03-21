@@ -21,8 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import java.awt.Point;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.io.IOException;
@@ -30,14 +28,13 @@ import java.io.StringReader;
 import java.io.Writer;
 import java.net.URL;
 
-import javax.swing.Action;
 import javax.swing.ActionMap;
 import javax.swing.InputMap;
 import javax.swing.JEditorPane;
-import javax.swing.KeyStroke;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultEditorKit;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
@@ -54,6 +51,7 @@ import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objectdata.AbstractUserTextDataWithHtmlFormatting;
+import org.miradi.views.umbrella.PasteTextAction;
 
 abstract public class AbstractHtmlPane extends MiradiTextPane
 {
@@ -245,14 +243,14 @@ abstract public class AbstractHtmlPane extends MiradiTextPane
 		{
 			super.install(ed);
 			
-			removeCtrlVHandlerThatDoesTheWrongThing();
+			removeCtrlVHandlerThatDoesTheWrongThing(ed);
 		}
 		
 		// NOTE: We are not sure why, but Shef installs a Ctrl-V binding 
 		// that maps to its PasteAction class, which throws away any 
 		// formatting on the clipboard and pastes plain text. Our default 
 		// paste handler calls editor.paste which does the right thing
-		private void removeCtrlVHandlerThatDoesTheWrongThing()
+		private void removeCtrlVHandlerThatDoesTheWrongThing(JEditorPane ed)
 		{
 			InputMap inputMap = getInputMap();
 			if(inputMap == null)
@@ -262,17 +260,8 @@ abstract public class AbstractHtmlPane extends MiradiTextPane
 			if(actionMap == null)
 				return;
 
-			KeyStroke ks = KeyStroke.getKeyStroke(KeyEvent.VK_V, InputEvent.CTRL_DOWN_MASK);
-			Object binding = inputMap.get(ks);
-			if(binding == null)
-				return;
-
-			Action action = actionMap.get(binding);
-			if(action == null)
-				return;
-
-			inputMap.put(ks, null);
-			actionMap.put(binding, null);
+			actionMap.remove(DefaultEditorKit.pasteAction);
+			actionMap.put(DefaultEditorKit.pasteAction, new PasteTextAction(ed));
 		}
 	}
 	
