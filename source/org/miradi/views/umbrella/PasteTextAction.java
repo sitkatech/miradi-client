@@ -16,25 +16,101 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/ 
+ */ 
 package org.miradi.views.umbrella;
 
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
 import java.awt.event.ActionEvent;
+import java.io.BufferedReader;
+import java.io.Reader;
 
 import javax.swing.AbstractAction;
+import javax.swing.text.Element;
 import javax.swing.text.JTextComponent;
+import javax.swing.text.html.HTMLDocument;
+
+import net.atlanticbb.tantlinger.ui.text.CompoundUndoManager;
+
+import org.miradi.main.EAM;
+import org.miradi.utils.AbstractHtmlPane;
 
 public class PasteTextAction extends AbstractAction
 {
 	public PasteTextAction(JTextComponent fieldToUse)
 	{
-		field = fieldToUse;
+		textField = fieldToUse;
 	}
 
 	public void actionPerformed(ActionEvent e)
 	{
-		field.paste();
+		try
+		{
+			String clipboardValue = getClipboardContent();
+			if(clipboardValue == null)
+				return;
+
+			CompoundUndoManager.beginCompoundEdit(getEditorField().getDocument());
+			insertHtmlAfterElementFoundtAtCaretPosition(clipboardValue);
+			CompoundUndoManager.endCompoundEdit(getEditorField().getDocument());
+		}
+		catch(Exception exception)
+		{
+			EAM.alertUserOfNonFatalException(exception);
+		}
+	}
+
+	private void insertHtmlAfterElementFoundtAtCaretPosition(String html) throws Exception
+	{
+		HTMLDocument document = (HTMLDocument)getEditorField().getDocument();
+		html = AbstractHtmlPane.getNormalizedAndSanitizedHtmlText(html);
+		final int caretPostion = getEditorField().getCaretPosition();
+		Element elementAtCaretPosition = document.getCharacterElement(caretPostion);
+		document.insertAfterEnd(elementAtCaretPosition, html);
+	}
+
+	private String getClipboardContent() throws Exception
+	{
+		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+		Transferable contents = clipboard.getContents(null);
+		if(contents == null)
+			return null;                
+
+		final DataFlavor[] transferDataFlavors = contents.getTransferDataFlavors();
+		DataFlavor dataFlavor = DataFlavor.selectBestTextFlavor(transferDataFlavors);        
+		if(dataFlavor.getMimeType().startsWith("text/html"))
+			return read(dataFlavor.getReaderForText(contents));
+		
+		 return contents.getTransferData(new DataFlavor(String.class, "String")).toString();
+	} 
+
+	private String read(Reader inputReader) throws Exception
+	{
+		BufferedReader bufferedReader = new BufferedReader(inputReader);
+		StringBuffer stringBuffer = new StringBuffer();
+
+		try
+		{
+			int characterRead;
+			while((characterRead = bufferedReader.read()) != -1)
+			{
+				stringBuffer.append((char)characterRead);
+			}
+		}
+		finally
+		{
+			bufferedReader.close();
+		}
+
+		return stringBuffer.toString();
 	}
 	
-	private JTextComponent field;
+	private JTextComponent getEditorField()
+	{
+		return textField;
+	}
+	
+	private JTextComponent textField;
 }
