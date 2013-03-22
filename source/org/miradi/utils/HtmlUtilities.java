@@ -315,7 +315,7 @@ public class HtmlUtilities
 	{
 		String regex = "<!--[\\s\\S]*?-->";
 
-		return replaceAll(regex, htmlText, StringUtilities.EMPTY_STRING);
+		return htmlText.replaceAll(regex, StringUtilities.EMPTY_STRING);
 	}
 	
 	public static final String BR_TAG = "<br/>";
