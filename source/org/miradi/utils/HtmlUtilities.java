@@ -314,9 +314,8 @@ public class HtmlUtilities
 	public static String stripHtmlComments(String htmlText)
 	{
 		String regex = "<!--[\\s\\S]*?-->";
-		final Pattern compiledRegex = Pattern.compile(regex);
-		
-		return compiledRegex.matcher(htmlText).replaceAll(StringUtilities.EMPTY_STRING);
+
+		return replaceAll(regex, htmlText, StringUtilities.EMPTY_STRING);
 	}
 	
 	public static final String BR_TAG = "<br/>";
