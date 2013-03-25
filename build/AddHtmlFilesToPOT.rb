@@ -31,8 +31,10 @@ def ends_with_tag_or_space(line)
 end
 
 def process_html_file(output, root_directory, relative_file)
-	if relative_file.index("Examples.html")
+	debug = false
+	if relative_file.index("SummaryView/Examples.html")
 		puts "Processing #{relative_file}"
+		debug = true
 	end
 	
 	file = File.join(root_directory, relative_file)
@@ -43,7 +45,7 @@ def process_html_file(output, root_directory, relative_file)
 			if(!ends_with_tag_or_space(line))
 				line += " "
 			end
-			if(lines.index("mesoamericanreef"))
+			if(debug)
 				puts line
 			end
 		end
