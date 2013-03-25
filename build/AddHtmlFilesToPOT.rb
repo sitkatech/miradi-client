@@ -43,7 +43,7 @@ def process_html_file(output, root_directory, relative_file)
 		lines = lines.each do | line |
 			line.chomp!
 			# NOTE: Regexp means: ends with anything other than space or >
-			if(line =~ /.*?[^\s\s>>]$/
+			if(line =~ /.*?[^\s\s>>]$/)
 				line.gsub!(/$/, " ")
 			end
 		end
