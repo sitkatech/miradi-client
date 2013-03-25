@@ -31,6 +31,10 @@ def ends_with_tag_or_space(line)
 end
 
 def process_html_file(output, root_directory, relative_file)
+	if relative_file.index("Examples.html")
+		puts "Processing #{relative_file}"
+	end
+	
 	file = File.join(root_directory, relative_file)
 	begin
 		lines = File.readlines(file)
