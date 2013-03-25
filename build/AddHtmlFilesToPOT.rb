@@ -43,13 +43,13 @@ def process_html_file(output, root_directory, relative_file)
 		lines = lines.each do | line |
 			line.chomp!
 			if(!ends_with_tag_or_space(line))
-				line += " "
-			end
-			if(debug)
-				puts line
+				line.gsub!(/$/, " ")
 			end
 		end
 		full_text = lines.join.gsub(/<!--.*?-->/, '')
+		if(debug)
+			puts full_text
+		end
 		append_entry_to_pot(output, "html|#{relative_file}|#{full_text}")
 	rescue Exception
 		puts "Exception while processing #{file}"
