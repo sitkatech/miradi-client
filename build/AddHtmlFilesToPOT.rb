@@ -43,7 +43,7 @@ def process_html_file(output, root_directory, relative_file)
 			if(!ends_with_tag_or_space(line))
 				line += " "
 			end
-			if(lines =~ "mesoamericanreef")
+			if(lines.index("mesoamericanreef"))
 				puts line
 			end
 		end
