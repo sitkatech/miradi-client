@@ -31,12 +31,6 @@ def ends_with_tag_or_space(line)
 end
 
 def process_html_file(output, root_directory, relative_file)
-	debug = false
-	if relative_file.index("SummaryView/Examples.html")
-		puts "Processing #{relative_file}"
-		debug = true
-	end
-	
 	file = File.join(root_directory, relative_file)
 	begin
 		lines = File.readlines(file)
@@ -48,9 +42,6 @@ def process_html_file(output, root_directory, relative_file)
 			end
 		end
 		full_text = lines.join.gsub(/<!--.*?-->/, '')
-		if(debug)
-			puts full_text
-		end
 		append_entry_to_pot(output, "html|#{relative_file}|#{full_text}")
 	rescue Exception
 		puts "Exception while processing #{file}"
