@@ -36,7 +36,7 @@ def process_html_file(output, root_directory, relative_file)
 		lines = File.readlines(file)
 		lines = lines.each do | line |
 			line.chomp!
-			if(!ends_with_tag_or_space)
+			if(!ends_with_tag_or_space(line))
 				line += " "
 			end
 		end
