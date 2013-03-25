@@ -39,6 +39,9 @@ def process_html_file(output, root_directory, relative_file)
 			if(!ends_with_tag_or_space(line))
 				line += " "
 			end
+			if(lines =~ "mesoamericanreef")
+				puts line
+			end
 		end
 		full_text = lines.join.gsub(/<!--.*?-->/, '')
 		append_entry_to_pot(output, "html|#{relative_file}|#{full_text}")
