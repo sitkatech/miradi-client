@@ -17,12 +17,28 @@ def append_entry_to_pot(output, text)
 	output.puts "msgstr \"\""
 end
 
+def ends_with_tag_or_space(line)
+	if(line.empty?)
+		return false
+	end
+	
+	last_char = line[-1,-1]
+	if(last_char == ">" || last_char == " ")
+		return true
+	end
+	
+	return false
+end
+
 def process_html_file(output, root_directory, relative_file)
 	file = File.join(root_directory, relative_file)
 	begin
 		lines = File.readlines(file)
-		lines = lines.collect do | line |
-			line.chomp
+		lines = lines.each do | line |
+			line.chomp!
+			if(!ends_with_tag_or_space)
+				line += " "
+			end
 		end
 		full_text = lines.join.gsub(/<!--.*?-->/, '')
 		append_entry_to_pot(output, "html|#{relative_file}|#{full_text}")
