@@ -59,7 +59,7 @@ public class DataUpgrader
 		if(zipFile.exists())
 		{
 			String[] backupExistsText = {
-					EAM.text("A backup archive for this project already exists." +
+					EAM.text("A backup archive for this project already exists. " +
 					"Continuing with this migration will replace the existing backup with a new copy." +
 					"It is probably safe to do this, unless an earlier migration attempt failed.")
 					};
