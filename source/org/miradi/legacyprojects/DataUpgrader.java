@@ -60,7 +60,7 @@ public class DataUpgrader
 		{
 			String[] backupExistsText = {
 					EAM.text("A backup archive for this project already exists. " +
-					"Continuing with this migration will replace the existing backup with a new copy." +
+					"Continuing with this migration will replace the existing backup with a new copy. " +
 					"It is probably safe to do this, unless an earlier migration attempt failed.")
 					};
 			String[] replaceButtons = {EAM.text("Button|Replace Backup"), EAM.text("Button|Cancel"), };
