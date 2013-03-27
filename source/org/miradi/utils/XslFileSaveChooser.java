@@ -24,9 +24,9 @@ import javax.swing.filechooser.FileFilter;
 
 import org.miradi.main.MainWindow;
 
-public class GenericFileSaveChooser extends MiradiFileSaveChooser
+public class XslFileSaveChooser extends MiradiFileSaveChooser
 {
-	public GenericFileSaveChooser(MainWindow mainWindowToUse)
+	public XslFileSaveChooser(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
 	}
@@ -34,12 +34,12 @@ public class GenericFileSaveChooser extends MiradiFileSaveChooser
 	@Override
 	protected String getFileExtensionLabel()
 	{
-		return "";
+		return XslFileFilter.EXTENSION;
 	}
 
 	@Override
 	protected FileFilter[] getFileFilter()
 	{
-		return new FileFilter[0];
+		return new FileFilter[]{new XsltFileFilter(), new XslFileFilter(), };
 	}
 }

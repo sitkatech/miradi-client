@@ -24,7 +24,7 @@ import java.io.File;
 
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.XslTemplate;
-import org.miradi.utils.GenericFileSaveChooser;
+import org.miradi.utils.XslFileSaveChooser;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.views.ObjectsDoer;
 
@@ -45,7 +45,7 @@ public class ExportXslTemplateDoer extends ObjectsDoer
 		if (!isAvailable())
 			return;
 		
-		final GenericFileSaveChooser fileChooser = new GenericFileSaveChooser(getMainWindow());
+		final XslFileSaveChooser fileChooser = new XslFileSaveChooser(getMainWindow());
 		final File userChosenFile = fileChooser.displayChooser();
 		if (userChosenFile == null)
 			return;
