@@ -254,7 +254,6 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		}
 		
 		NotifyDialog.notify(this, NotifyDialogTemplateFactory.notifyUserOfNewFileStructure());
-		NotifyDialog.notify(this, NotifyDialogTemplateFactory.notifyUserOfNewMiradi4Features());
 		safelySavePreferences();
 	}
 	
