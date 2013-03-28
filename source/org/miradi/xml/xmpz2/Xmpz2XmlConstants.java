@@ -32,7 +32,7 @@ public interface Xmpz2XmlConstants
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
 	public static final String DOT_ELEMENT = ".element";
 	
-	public static final String NAME_SPACE_VERSION = "219";
+	public static final String NAME_SPACE_VERSION = "220";
 	public static final String PARTIAL_NAME_SPACE = "http://xml.miradi.org/schema/ConservationProject/";
 	public static final String NAME_SPACE = PARTIAL_NAME_SPACE + NAME_SPACE_VERSION;
 	public static final String XMLNS = "xmlns";
@@ -229,7 +229,7 @@ public interface Xmpz2XmlConstants
 	public static final String SCOPE_BOX_COLOR_ELEMENT_NAME = "ScopeBoxTypeCode";
 	public static final String PROJECT_SHARE_OUTSIDE_ORGANIZATION = "ShareOutsideOrganization";
 	public static final String LESSONS_LEARNED = "LessonsLearned";
-	public static final String TARGET_STATUS_ELEMENT_NAME = "ViabilityStatus";
+	public static final String TARGET_STATUS_ELEMENT_NAME = "SimpleViabilityStatus";
 	public static final String TNC_OPERATING_UNITS = "TNCOperatingUnits";
 	public static final String TNC_PROJECT_PLACE_TYPES = "TNCProjectPlaceTypes";
 	public static final String TNC_ORGANIZATIONAL_PRIORITIES = "TNCOrganizationalPriorities";

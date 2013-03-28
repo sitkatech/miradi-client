@@ -1,7 +1,7 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Fri Mar 15 12:16:32 EDT 2013 $
-# $LastChangedRevision: 219 $
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/219'
+# $LastChangedDate: Thu Mar 28 15:52:02 EDT 2013 $
+# $LastChangedRevision: 220 $
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/220'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -430,11 +430,11 @@ BiodiversityTarget.element = element miradi:BiodiversityTarget
   element miradi:BiodiversityTargetIndicatorIds { IndicatorId.element* }? &
   element miradi:BiodiversityTargetKeyEcologicalAttributeIds { KeyEcologicalAttributeId.element* }? &
   element miradi:BiodiversityTargetName { formatted_text }? &
+  element miradi:BiodiversityTargetSimpleViabilityStatus { vocabulary_target_status }? &
   element miradi:BiodiversityTargetSpeciesLatinName { text }? &
   element miradi:BiodiversityTargetStressIds { StressId.element* }? &
   element miradi:BiodiversityTargetSubTargetIds { SubTargetId.element* }? &
   element miradi:BiodiversityTargetViabilityMode { vocabulary_target_viability_mode } &
-  element miradi:BiodiversityTargetViabilityStatus { vocabulary_target_status }? &
   element miradi:BiodiversityTargetThreatRating { vocabulary_threat_rating }?
 }
 
@@ -620,9 +620,9 @@ HumanWellbeingTarget.element = element miradi:HumanWellbeingTarget
   element miradi:HumanWellbeingTargetIndicatorIds { IndicatorId.element* }? &
   element miradi:HumanWellbeingTargetKeyEcologicalAttributeIds { KeyEcologicalAttributeId.element* }? &
   element miradi:HumanWellbeingTargetName { formatted_text }? &
+  element miradi:HumanWellbeingTargetSimpleViabilityStatus { vocabulary_target_status }? &
   element miradi:HumanWellbeingTargetSubTargetIds { SubTargetId.element* }? &
   element miradi:HumanWellbeingTargetViabilityMode { vocabulary_target_viability_mode } &
-  element miradi:HumanWellbeingTargetViabilityStatus { vocabulary_target_status }? &
   element miradi:HumanWellbeingTargetThreatRating { vocabulary_threat_rating }?
 }
 
