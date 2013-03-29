@@ -658,7 +658,7 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 	public static final String VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR = "vocabulary_diagram_factor_foreground_color";
 	public static final String VOCABULARY_DIAGRAM_LINK_COLOR = "vocabulary_diagram_link_color";
 	private static final String VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION = "vocabulary_biodiversity_target_habitat_association";
-	static final String VOCABULARY_TARGET_STATUS = "vocabulary_target_status";
+	public static final String VOCABULARY_TARGET_STATUS = "vocabulary_target_status";
 	static final String VOCABULARY_TARGET_VIABILITY_MODE = "vocabulary_target_viability_mode";
 	public static final String VOCABULARY_THREAT_TAXONOMY_CODE = "vocabulary_cause_taxonomy_code";
 	public static final String VOCABULARY_STRATEGY_TAXONOMY_CODE = "vocabulary_strategy_taxonomy_code";

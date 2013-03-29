@@ -76,6 +76,14 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 		writeCodeElement(parentElementName, elementName, code);
 	}
 
+	public void writeOptionalCodeElement(final String parentElementName, String elementName, final String code) throws Exception
+	{
+		if (code.length() == 0)
+			return;
+		
+		writeCodeElement(parentElementName, elementName, code);
+	}
+	
 	public void writeCodeElement(final String parentElementName, String elementName, final String code) throws Exception
 	{
 		writeStartElement(parentElementName + elementName);

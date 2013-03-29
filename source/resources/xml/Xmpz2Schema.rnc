@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Mar 28 15:52:02 EDT 2013 $
+# $LastChangedDate: Fri Mar 29 16:34:05 EDT 2013 $
 # $LastChangedRevision: 220 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/220'
 start = ConservationProject.element
@@ -435,6 +435,7 @@ BiodiversityTarget.element = element miradi:BiodiversityTarget
   element miradi:BiodiversityTargetStressIds { StressId.element* }? &
   element miradi:BiodiversityTargetSubTargetIds { SubTargetId.element* }? &
   element miradi:BiodiversityTargetViabilityMode { vocabulary_target_viability_mode } &
+  element miradi:BiodiversityTargetCalculatedViabilityStatus { vocabulary_target_status }? &
   element miradi:BiodiversityTargetThreatRating { vocabulary_threat_rating }?
 }
 
@@ -623,6 +624,7 @@ HumanWellbeingTarget.element = element miradi:HumanWellbeingTarget
   element miradi:HumanWellbeingTargetSimpleViabilityStatus { vocabulary_target_status }? &
   element miradi:HumanWellbeingTargetSubTargetIds { SubTargetId.element* }? &
   element miradi:HumanWellbeingTargetViabilityMode { vocabulary_target_viability_mode } &
+  element miradi:HumanWellbeingTargetCalculatedViabilityStatus { vocabulary_target_status }? &
   element miradi:HumanWellbeingTargetThreatRating { vocabulary_threat_rating }?
 }
 
