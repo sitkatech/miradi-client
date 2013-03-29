@@ -312,7 +312,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if (ProjectMetadata.is(baseObject))
 			return getValueForProject((ProjectMetadata) baseObject, row, column);
 		
-		if (Target.is(baseObject))
+		if (AbstractTarget.isAbstractTarget(baseObject))
 			return getValueForTarget(baseObject, row, column);
 		
 		if (KeyEcologicalAttribute.is(baseObject))
@@ -391,7 +391,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		String tag = COLUMN_TAGS_FOR_TARGETS[column];
 		String rawValue = baseObject.getData(tag);
 
-		if(tag.equals(Target.TAG_VIABILITY_MODE))
+		if(tag.equals(AbstractTarget.TAG_VIABILITY_MODE))
 			return StaticQuestionManager.getQuestion(ViabilityModeQuestion.class).findChoiceByCode(rawValue);
 		
 		if (tag.equals(AbstractTarget.PSEUDO_TAG_TARGET_VIABILITY))
