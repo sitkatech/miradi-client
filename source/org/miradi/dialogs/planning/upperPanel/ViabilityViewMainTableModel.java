@@ -25,9 +25,9 @@ import javax.swing.Icon;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Goal;
@@ -35,6 +35,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -308,6 +309,9 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
 		BaseObject baseObject = getBaseObjectForRow(row);
+		if (ProjectMetadata.is(baseObject))
+			return getValueForProject((ProjectMetadata) baseObject, row, column);
+		
 		if (Target.is(baseObject))
 			return getValueForTarget(baseObject, row, column);
 		
@@ -326,6 +330,15 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		return super.getChoiceItemAt(row, column);
 	}
 	
+	private ChoiceItem getValueForProject(ProjectMetadata projectMetadata, int row, int column)
+	{
+		String tag = COLUMN_TAGS_FOR_PROJECT[column];
+		if (tag.equals(AbstractTarget.PSEUDO_TAG_TARGET_VIABILITY))
+			return getStatusQuestion().findChoiceByCode(AbstractTarget.computeTNCViability(getProject()));
+				
+		return new EmptyChoiceItem();
+	}
+
 	private ChoiceItem getValueForKea(KeyEcologicalAttribute kea, int row, int column)
 	{
 		String tag = COLUMN_TAGS_KEAS[column];
@@ -567,6 +580,18 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	private static final String FAIR = StatusQuestion.FAIR;
 	private static final String GOOD = StatusQuestion.GOOD;
 	private static final String VERY_GOOD = StatusQuestion.VERY_GOOD;
+	
+	private static final String[] COLUMN_TAGS_FOR_PROJECT = {
+		BaseObject.TAG_EMPTY, 
+		AbstractTarget.PSEUDO_TAG_TARGET_VIABILITY,
+		BaseObject.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
+		};
 	
 	private static final String[] COLUMN_TAGS_FOR_INDICATORS = {
 		BaseObject.TAG_EMPTY,
