@@ -102,10 +102,10 @@ public class PasteTextAction extends AbstractAction
 		Caret caret = getEditorField().getCaret();
 		int start = Math.min(caret.getDot(), caret.getMark());
         int end = Math.max(caret.getDot(), caret.getMark());
-        int endPosition = end - start;
+        int length = end - start;
         
         HTMLDocument document = (HTMLDocument)getEditorField().getDocument();
-		document.remove(start, endPosition);
+		document.remove(start, length);
 	}
 
 	private String getClipboardContent() throws Exception
