@@ -44,6 +44,7 @@ abstract public class AbstractTargetExporter extends BaseObjectWithThreatRatingE
 		
 		AbstractTarget abstractTarget = (AbstractTarget) baseObject;
 		writeNonOptionalCodeElement(AbstractTarget.TAG_VIABILITY_MODE, ViabilityModeQuestion.class, abstractTarget.getViabilityMode());
+		getWriter().writeOptionalCodeElement(getContainerElementName(), TARGET_CALCULATED_STATUS_ELEMENT_NAME, abstractTarget.getTargetViability());
 	}
 
 	private void writeNonOptionalCodeElement(final String elementName, final Class questionClass, final String code) throws Exception
