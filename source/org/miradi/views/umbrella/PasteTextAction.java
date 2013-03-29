@@ -26,8 +26,11 @@ import java.awt.datatransfer.Transferable;
 import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
 import java.io.Reader;
+import java.io.StringReader;
 
 import javax.swing.AbstractAction;
+import javax.swing.JEditorPane;
+import javax.swing.text.Caret;
 import javax.swing.text.Element;
 import javax.swing.text.JTextComponent;
 import javax.swing.text.html.HTMLDocument;
@@ -36,6 +39,7 @@ import net.atlanticbb.tantlinger.ui.text.CompoundUndoManager;
 
 import org.miradi.main.EAM;
 import org.miradi.utils.AbstractHtmlPane;
+import org.miradi.utils.AbstractHtmlPane.HtmlEditorKitWithNonSharedStyleSheet;
 
 public class PasteTextAction extends AbstractAction
 {
@@ -53,7 +57,7 @@ public class PasteTextAction extends AbstractAction
 				return;
 
 			CompoundUndoManager.beginCompoundEdit(getEditorField().getDocument());
-			insertHtmlAfterElementFoundtAtCaretPosition(clipboardValue);
+			replaceNormalizedHtmlAtCaretPosition(clipboardValue);
 			CompoundUndoManager.endCompoundEdit(getEditorField().getDocument());
 		}
 		catch(Exception exception)
@@ -62,13 +66,46 @@ public class PasteTextAction extends AbstractAction
 		}
 	}
 
-	private void insertHtmlAfterElementFoundtAtCaretPosition(String html) throws Exception
+	private void replaceNormalizedHtmlAtCaretPosition(String html) throws Exception
+    {
+		removeSelectedText();
+        JEditorPane editor = (JEditorPane) getEditorField();
+        HTMLDocument document = (HTMLDocument)editor.getDocument();
+        html = AbstractHtmlPane.getNormalizedAndSanitizedHtmlText(html);
+        final int insertAtCaretPostion = editor.getCaretPosition();
+        Element elementAtCaretPosition = document.getCharacterElement(insertAtCaretPostion);
+        int elementStartsAt = elementAtCaretPosition.getStartOffset();
+
+        HtmlEditorKitWithNonSharedStyleSheet kit = (HtmlEditorKitWithNonSharedStyleSheet) editor.getEditorKit();
+        kit.read(new StringReader(html), document, insertAtCaretPostion);
+        int endingCaretPostion = editor.getCaretPosition();
+        
+        // NOTE: Reload text to merge the pasted implied-p into the surrounding implied-p
+        // to avoid showing newlines in the editor panel
+        String result = editor.getText();
+        editor.setText(result);
+        
+        // NOTE: Reset the cursor position, but account for the newline(s) that were removed
+        if(elementStartsAt == insertAtCaretPostion)
+            endingCaretPostion -= 1;
+        else 
+            endingCaretPostion -= 2;
+        
+        if(endingCaretPostion >= document.getLength() - 1)
+            endingCaretPostion = document.getLength() - 2;
+        
+        editor.setCaretPosition(endingCaretPostion);
+    }
+	
+	private void removeSelectedText() throws Exception
 	{
-		HTMLDocument document = (HTMLDocument)getEditorField().getDocument();
-		html = AbstractHtmlPane.getNormalizedAndSanitizedHtmlText(html);
-		final int caretPostion = getEditorField().getCaretPosition();
-		Element elementAtCaretPosition = document.getCharacterElement(caretPostion);
-		document.insertAfterEnd(elementAtCaretPosition, html);
+		Caret caret = getEditorField().getCaret();
+		int start = Math.min(caret.getDot(), caret.getMark());
+        int end = Math.max(caret.getDot(), caret.getMark());
+        int endPosition = end - start;
+        
+        HTMLDocument document = (HTMLDocument)getEditorField().getDocument();
+		document.remove(start, endPosition);
 	}
 
 	private String getClipboardContent() throws Exception
