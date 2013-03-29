@@ -78,7 +78,7 @@ public class PasteTextAction extends AbstractAction
 
         HtmlEditorKitWithNonSharedStyleSheet kit = (HtmlEditorKitWithNonSharedStyleSheet) editor.getEditorKit();
         kit.read(new StringReader(html), document, insertAtCaretPostion);
-        int length = editor.getCaretPosition();
+        int endingCaretPosition = editor.getCaretPosition();
         
         // NOTE: Reload text to merge the pasted implied-p into the surrounding implied-p
         // to avoid showing newlines in the editor panel
@@ -87,14 +87,14 @@ public class PasteTextAction extends AbstractAction
         
         // NOTE: Reset the cursor position, but account for the newline(s) that were removed
         if(elementStartsAt == insertAtCaretPostion)
-            length -= 1;
+            endingCaretPosition -= 1;
         else 
-            length -= 2;
+            endingCaretPosition -= 2;
         
-        if(length >= document.getLength() - 1)
-            length = document.getLength() - 2;
+        if(endingCaretPosition >= document.getLength() - 1)
+            endingCaretPosition = document.getLength() - 2;
         
-        editor.setCaretPosition(length);
+        editor.setCaretPosition(endingCaretPosition);
     }
 	
 	private void removeSelectedText() throws Exception
