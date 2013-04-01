@@ -38,7 +38,7 @@ public class AbstractTargetSchemaWriter extends BaseObjectSchemaWriter
 		Vector<String> schemaElements = super.createFieldSchemas();
 		
 		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(getXmpz2ElementName() + TARGET_CALCULATED_STATUS_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_TARGET_STATUS));
-		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(getXmpz2ElementName() + TARGET_THREAT_RATING, XmlSchemaCreator.VOCABULARY_THREAT_RATING));
+		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(getXmpz2ElementName() + CALCULATED_THREAT_RATING, XmlSchemaCreator.VOCABULARY_THREAT_RATING));
 		
 		return schemaElements;
 	}	

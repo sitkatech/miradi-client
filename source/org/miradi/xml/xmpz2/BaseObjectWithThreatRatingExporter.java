@@ -54,13 +54,13 @@ abstract public class BaseObjectWithThreatRatingExporter extends BaseObjectExpor
 	{
 		int rawTargetRatingValue = getProject().getStressBasedThreatRatingFramework().get2PrimeSummaryRatingValue(factor);
 		ChoiceItem targetThreatRating = AbstractThreatPerRowTableModel.convertThreatRatingCodeToChoiceItem(rawTargetRatingValue);
-		getWriter().writeNonOptionalCodeElement(getContainerElementName(), TARGET_THREAT_RATING, new ThreatRatingQuestion(), targetThreatRating.getCode());
+		getWriter().writeNonOptionalCodeElement(getContainerElementName(), CALCULATED_THREAT_RATING, new ThreatRatingQuestion(), targetThreatRating.getCode());
 	}
 
 	private void exportSimpleThreatRatingThreatTargetRating(Factor factor) throws Exception
 	{
 		ChoiceItem threatTargetRating = getSimpleModeThreatRating(factor);
-		getWriter().writeNonOptionalCodeElement(getContainerElementName(), TARGET_THREAT_RATING, new ThreatRatingQuestion(), threatTargetRating.getCode());
+		getWriter().writeNonOptionalCodeElement(getContainerElementName(), CALCULATED_THREAT_RATING, new ThreatRatingQuestion(), threatTargetRating.getCode());
 	}
 
 	abstract protected ChoiceItem getSimpleModeThreatRating(Factor factor) throws Exception;

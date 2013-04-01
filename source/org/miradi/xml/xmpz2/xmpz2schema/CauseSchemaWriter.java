@@ -37,7 +37,7 @@ public class CauseSchemaWriter extends BaseObjectSchemaWriter
 	{
 		Vector<String> schemaElements = super.createFieldSchemas();
 		
-		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(getXmpz2ElementName() + TARGET_THREAT_RATING, XmlSchemaCreator.VOCABULARY_THREAT_RATING));
+		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(getXmpz2ElementName() + CALCULATED_THREAT_RATING, XmlSchemaCreator.VOCABULARY_THREAT_RATING));
 		
 		return schemaElements;
 	}	
