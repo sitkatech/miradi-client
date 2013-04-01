@@ -94,7 +94,6 @@ public interface Xmpz2XmlConstants
 	public static final String EXPENSE_ASSIGNMENT = "ExpenseAssignment";
 	public static final String PROGRESS_REPORT = "ProgressReport";
 	public static final String PROGRESS_PERCENT = "ProgressPercent";
-	public static final String THREAT_RATING = "ThreatRating";
 	public static final String THREAT = "Threat";
 	public static final String TARGET = "Target";
 	public static final String RATINGS = "Ratings";
@@ -179,9 +178,9 @@ public interface Xmpz2XmlConstants
 	public static final String CALCULATED_THREAT_STRESS_RATING = "CalculatedThreatStressRating";
 	public static final String CALCULATED_THREAT_TARGET_RATING = "CalculatedThreatTargetRating";
 	public static final String SIMPLE_THREAT_TARGET_CALCULATED_RATING = "CalculatedThreatTargetRating";
-	public static final String TARGET_THREAT_RATING = "ThreatRating";
-	public static final String OVERALL_PROJECT_THREAT_RATING = "OverallProjectThreatRating";
-	public static final String OVERALL_PROJECT_VIABILITY_RATING = "OverallProjectViabilityRating";
+	public static final String TARGET_THREAT_RATING = "CalculatedThreatRating";
+	public static final String OVERALL_PROJECT_THREAT_RATING = "CalculatedOverallProjectThreatRating";
+	public static final String OVERALL_PROJECT_VIABILITY_RATING = "CalculatedOverallProjectViabilityRating";
 	public static final String IUCN_REDLIST_SPECIES = "IUCNRedListSpecies";
 	public static final String OTHER_NOTABLE_SPECIES = "OtherNotableSpecies";
 	public static final String AUDIENCE = "Audience";

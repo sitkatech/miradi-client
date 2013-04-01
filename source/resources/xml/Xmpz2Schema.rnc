@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Fri Mar 29 16:34:05 EDT 2013 $
+# $LastChangedDate: Mon Apr 01 12:46:36 EDT 2013 $
 # $LastChangedRevision: 220 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/220'
 start = ConservationProject.element
@@ -60,13 +60,13 @@ ConservationProject.element = element miradi:ConservationProject
 
 ProjectSummary.element = element miradi:ProjectSummary
 {
+  element miradi:ProjectSummaryCalculatedOverallProjectThreatRating { vocabulary_threat_rating }? &
+  element miradi:ProjectSummaryCalculatedOverallProjectViabilityRating { vocabulary_status }? &
   element miradi:ProjectSummaryDataEffectiveDate { vocabulary_date }? &
   element miradi:ProjectSummaryLessonsLearned { formatted_text }? &
   element miradi:ProjectSummaryNextSteps { formatted_text }? &
   element miradi:ProjectSummaryOtherOrgProjectNumber { text }? &
   element miradi:ProjectSummaryOtherOrgRelatedProjects { text }? &
-  element miradi:ProjectSummaryOverallProjectThreatRating { vocabulary_threat_rating }? &
-  element miradi:ProjectSummaryOverallProjectViabilityRating { vocabulary_status }? &
   element miradi:ProjectSummaryProjectDescription { formatted_text }? &
   element miradi:ProjectSummaryProjectId { ExternalProjectId.element* }? &
   element miradi:ProjectSummaryProjectLanguage { vocabulary_language_code }? &
@@ -391,7 +391,7 @@ Cause.element = element miradi:Cause
   element miradi:CauseName { formatted_text }? &
   element miradi:CauseObjectiveIds { ObjectiveId.element* }? &
   element miradi:CauseStandardClassification { vocabulary_cause_taxonomy_code }? &
-  element miradi:CauseThreatRating { vocabulary_threat_rating }?
+  element miradi:CauseCalculatedThreatRating { vocabulary_threat_rating }?
 }
 
 StrategyPool.element = element miradi:StrategyPool { Strategy.element* }
@@ -436,7 +436,7 @@ BiodiversityTarget.element = element miradi:BiodiversityTarget
   element miradi:BiodiversityTargetSubTargetIds { SubTargetId.element* }? &
   element miradi:BiodiversityTargetViabilityMode { vocabulary_target_viability_mode } &
   element miradi:BiodiversityTargetCalculatedViabilityStatus { vocabulary_target_status }? &
-  element miradi:BiodiversityTargetThreatRating { vocabulary_threat_rating }?
+  element miradi:BiodiversityTargetCalculatedThreatRating { vocabulary_threat_rating }?
 }
 
 IntermediateResultPool.element = element miradi:IntermediateResultPool { IntermediateResult.element* }
@@ -625,7 +625,7 @@ HumanWellbeingTarget.element = element miradi:HumanWellbeingTarget
   element miradi:HumanWellbeingTargetSubTargetIds { SubTargetId.element* }? &
   element miradi:HumanWellbeingTargetViabilityMode { vocabulary_target_viability_mode } &
   element miradi:HumanWellbeingTargetCalculatedViabilityStatus { vocabulary_target_status }? &
-  element miradi:HumanWellbeingTargetThreatRating { vocabulary_threat_rating }?
+  element miradi:HumanWellbeingTargetCalculatedThreatRating { vocabulary_threat_rating }?
 }
 
 IUCNRedListSpeciesPool.element = element miradi:IUCNRedListSpeciesPool { IUCNRedListSpecies.element* }
