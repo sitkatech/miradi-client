@@ -24,6 +24,7 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
 
+import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -41,7 +42,7 @@ import org.miradi.utils.MenuItemWithoutLocation;
 import org.miradi.utils.MiradiResourceImageIcon;
 import org.miradi.views.umbrella.CopyTextAction;
 import org.miradi.views.umbrella.CutTextAction;
-import org.miradi.views.umbrella.PasteTextAction;
+import org.miradi.views.umbrella.PastePlainTextAction;
 
 import com.inet.jortho.AddWordAction;
 import com.inet.jortho.MiradiCheckerListener;
@@ -103,12 +104,17 @@ class TextAreaContextMenuListener extends MiradiCheckerListener
 		menuItemCopy.setAccelerator(KeyStroke.getKeyStroke('C', KeyEvent.CTRL_DOWN_MASK));
 		menu.add(menuItemCopy);
 	
-		JMenuItem menuItemPaste = createMenuItem(new PasteTextAction(getTextField()), "icons/paste.gif");
+		JMenuItem menuItemPaste = createMenuItem(createPasteAction(), "icons/paste.gif");
 		menuItemPaste.setEnabled(getTextField().isEditable());
 		menuItemPaste.setText(EAM.text("Paste"));
 		menuItemPaste.setAccelerator(KeyStroke.getKeyStroke('V', KeyEvent.CTRL_DOWN_MASK));
 		menu.add(menuItemPaste);
 		
+	}
+
+	protected AbstractAction createPasteAction()
+	{
+		return new PastePlainTextAction(getTextField());
 	}
 
 	private void extractMoreSuggestionsSubmenu(Component[] menuItems)
@@ -170,7 +176,7 @@ class TextAreaContextMenuListener extends MiradiCheckerListener
 		return actions;
 	}
 	
-	private JTextComponent getTextField()
+	protected JTextComponent getTextField()
 	{
 		return textField;
 	}
