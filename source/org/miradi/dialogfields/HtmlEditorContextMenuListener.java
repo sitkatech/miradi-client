@@ -28,7 +28,7 @@ import javax.swing.text.JTextComponent;
 
 import org.bushe.swing.action.ActionList;
 import org.miradi.actions.Actions;
-import org.miradi.views.umbrella.PasteTextAction;
+import org.miradi.views.umbrella.PasteHtmlTextAction;
 
 public class HtmlEditorContextMenuListener extends TextAreaContextMenuListener
 {
@@ -61,9 +61,9 @@ public class HtmlEditorContextMenuListener extends TextAreaContextMenuListener
 	}
 	
 	@Override
-	protected PasteTextAction createPasteAction()
+	protected PasteHtmlTextAction createPasteAction()
 	{
-		return new PasteTextAction(getTextField());
+		return new PasteHtmlTextAction(getTextField());
 	}
 	
 	private ActionList actionList;
