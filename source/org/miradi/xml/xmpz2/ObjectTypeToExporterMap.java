@@ -24,7 +24,6 @@ import java.util.HashMap;
 
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.AudienceSchema;
-import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.CostAllocationRuleSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.GroupBoxSchema;
@@ -62,7 +61,7 @@ import org.miradi.xml.xmpz2.objectExporters.ThreatReductionResultExporter;
 
 public class ObjectTypeToExporterMap extends HashMap<Integer, BaseObjectExporter>
 {
-	public void fillTypeToExporterMap(Xmpz2XmlWriter writerToUse)
+	public void fillTypeToExporterMap(Xmpz2XmlWriter writerToUse) throws Exception
 	{
 		writer = writerToUse;
 		addExporterToMap(new DashboardExporter(getWriter()));
@@ -92,7 +91,6 @@ public class ObjectTypeToExporterMap extends HashMap<Integer, BaseObjectExporter
 		addGenericExporterToMap(AccountingCodeSchema.getObjectType());
 		addGenericExporterToMap(FundingSourceSchema.getObjectType());
 		addGenericExporterToMap(KeyEcologicalAttributeSchema.getObjectType());
-		addGenericExporterToMap(CauseSchema.getObjectType());
 		addGenericExporterToMap(IntermediateResultSchema.getObjectType());
 		addGenericExporterToMap(TextBoxSchema.getObjectType());
 		addGenericExporterToMap(CostAllocationRuleSchema.getObjectType());
@@ -107,13 +105,16 @@ public class ObjectTypeToExporterMap extends HashMap<Integer, BaseObjectExporter
 		addGenericExporterToMap(AudienceSchema.getObjectType());
 	}
 	
-	private void addGenericExporterToMap(final int objectType)
+	private void addGenericExporterToMap(final int objectType) throws Exception
 	{
 		addExporterToMap(new BaseObjectExporter(getWriter(), objectType));
 	}
 	
-	private void addExporterToMap(final BaseObjectExporter baseObjectExporter)
+	private void addExporterToMap(final BaseObjectExporter baseObjectExporter) throws Exception
 	{
+		if (containsKey(baseObjectExporter.getObjectType()))
+			throw new Exception("Attempting to override existing baseObject exporter for type:" + baseObjectExporter.getObjectType());
+		
 		put(baseObjectExporter.getObjectType(), baseObjectExporter);
 	}
 	
