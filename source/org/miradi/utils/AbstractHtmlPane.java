@@ -51,7 +51,7 @@ import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objectdata.AbstractUserTextDataWithHtmlFormatting;
-import org.miradi.views.umbrella.PasteTextAction;
+import org.miradi.views.umbrella.PasteHtmlTextAction;
 
 abstract public class AbstractHtmlPane extends MiradiTextPane
 {
@@ -261,7 +261,7 @@ abstract public class AbstractHtmlPane extends MiradiTextPane
 				return;
 
 			actionMap.remove(DefaultEditorKit.pasteAction);
-			actionMap.put(DefaultEditorKit.pasteAction, new PasteTextAction(ed));
+			actionMap.put(DefaultEditorKit.pasteAction, new PasteHtmlTextAction(ed));
 		}
 	}
 	

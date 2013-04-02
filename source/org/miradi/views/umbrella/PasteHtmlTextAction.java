@@ -41,9 +41,9 @@ import org.miradi.main.EAM;
 import org.miradi.utils.AbstractHtmlPane;
 import org.miradi.utils.AbstractHtmlPane.HtmlEditorKitWithNonSharedStyleSheet;
 
-public class PasteTextAction extends AbstractAction
+public class PasteHtmlTextAction extends AbstractAction
 {
-	public PasteTextAction(JTextComponent fieldToUse)
+	public PasteHtmlTextAction(JTextComponent fieldToUse)
 	{
 		textField = fieldToUse;
 	}
