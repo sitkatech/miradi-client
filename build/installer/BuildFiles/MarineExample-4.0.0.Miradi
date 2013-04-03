@@ -518,7 +518,7 @@ UO	8:311	MeasurementRefs={"References":[{"ObjectType":32,"ObjectId":312}]}
 UO	8:311	Detail=The total number of rats caught in traps set out for one week for each island. We assume that we need three weeks of having no rats to have eliminated the population.
 UO	8:311	FutureStatusDate=2013-01-01
 UO	8:311	ProgressReportRefs={"References":[{"ObjectType":37,"ObjectId":314}]}
-UO	8:311	Comments=This is a great measure because it is \&quot;automatically\&quot; generated from the trapping strategy itself. After the initial trapping, however, we will need to continue to set traps to make sure there are no re-introductions of rats. This will require some additional funds.
+UO	8:311	Comments=This is a great measure because it is &quot;automatically&quot; generated from the trapping strategy itself. After the initial trapping, however, we will need to continue to set traps to make sure there are no re-introductions of rats. This will require some additional funds.
 UO	8:311	FutureStatusSummary=0
 UO	8:311	ShortLabel=Rat 2a
 UO	8:311	TaskIds={"Ids":[313]}
@@ -606,7 +606,7 @@ UO	9:213	ProgressPrecentRefs={"References":[{"ObjectType":45,"ObjectId":643}]}
 UO	9:213	RelevantStrategySet={"RelevancyOverrides":[{"Ref":"{\"ObjectType\":21,\"ObjectId\":143}","Flag":false}]}
 UO	9:213	Label=Illegal Shark Fishing Curtailed
 CO	9:214
-UO	9:214	FullText=By 2013, more than 50% of the seafood restaurants in Hong Kong are active participants in the \&quot;Stop Shark Fin Soup\&quot; campaign.
+UO	9:214	FullText=By 2013, more than 50% of the seafood restaurants in Hong Kong are active participants in the &quot;Stop Shark Fin Soup&quot; campaign.
 UO	9:214	ShortLabel=Shark 1
 UO	9:214	ProgressPrecentRefs={"References":[{"ObjectType":45,"ObjectId":641}]}
 UO	9:214	RelevantStrategySet={"RelevancyOverrides":[{"Ref":"{\"ObjectType\":3,\"ObjectId\":163}","Flag":true}]}
@@ -1829,7 +1829,7 @@ UO	21:143	ActivityIds={"Ids":[163,464]}
 UO	21:143	ProgressReportRefs={"References":[{"ObjectType":37,"ObjectId":1117}]}
 UO	21:143	TaxonomyCode=A40.30
 UO	21:143	ShortLabel=Shark 1
-UO	21:143	Text=Work with Conservation Advocacy International. This strategy is a long-shot and will take a long time, but it seems we have no alternative on the \&quot;supply\&quot; side.
+UO	21:143	Text=Work with Conservation Advocacy International. This strategy is a long-shot and will take a long time, but it seems we have no alternative on the &quot;supply&quot; side.
 UO	21:143	Label=Campaign to Stop Shark Fin Soup
 CO	21:279
 UO	21:279	ImpactRating=3
@@ -1871,7 +1871,7 @@ CO	21:331
 UO	21:331	ImpactRating=2
 UO	21:331	FeasibilityRating=1
 UO	21:331	Status=Draft
-UO	21:331	Text=Have the community members surround the illegal boats in canoes and try to do a \&quot;Greenpeace\&quot; style protest and try to get media attention. Seems difficult to do and potentially too dangerous.
+UO	21:331	Text=Have the community members surround the illegal boats in canoes and try to do a &quot;Greenpeace&quot; style protest and try to get media attention. Seems difficult to do and potentially too dangerous.
 UO	21:331	Label=Community Protests to Boats
 CO	21:335
 UO	21:335	ImpactRating=3
@@ -2050,7 +2050,7 @@ UO	26:417	Label=2017
 CO	26:745
 UO	26:745	Label=This diagram shows part of a conceptual model using the new Human Wellbeing Target feature.
 CO	26:747
-UO	26:747	Label=Note that human factors enter the model both on the left side as a \&quot;threat\&quot; but also on the right side as a \&quot;target\&quot; for the project. Human wellbeing targets are directly linked to ecosystem services provided by conservation targets
+UO	26:747	Label=Note that human factors enter the model both on the left side as a &quot;threat&quot; but also on the right side as a &quot;target&quot; for the project. Human wellbeing targets are directly linked to ecosystem services provided by conservation targets
 CO	29:10
 UO	29:10	TagRowConfiguration={"Codes":["Measurement","Indicator","Method"]}
 UO	29:10	TagColConfiguration={"Codes":["FullText","MetaWhoTotal","Methods","Priority"]}
