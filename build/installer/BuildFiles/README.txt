@@ -51,7 +51,7 @@ jtreetable, jarbuilder, install4j, jortho.
 PREREQUISITES
 
 For MS Windows:
-- Windows XP or Vista
+- Windows XP or later
 - 1 GB RAM recommended
 - 80 MB available disk space
 
