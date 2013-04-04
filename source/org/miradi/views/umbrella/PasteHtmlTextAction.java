@@ -133,10 +133,15 @@ public class PasteHtmlTextAction extends AbstractAction
 	{
 		for (DataFlavor dataFlavor : transferDataFlavors)
 		{		
-			if (dataFlavor.getMimeType().startsWith(mimeType))
+			if (isMimeType(dataFlavor, mimeType))
 				return dataFlavor;
 		}
 		return null;
+	}
+
+	private boolean isMimeType(DataFlavor dataFlavor, String mimeType)
+	{
+		return dataFlavor.getMimeType().startsWith(mimeType);
 	} 
 
 	private String read(Reader inputReader) throws Exception
