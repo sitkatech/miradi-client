@@ -118,11 +118,11 @@ public class PasteHtmlTextAction extends AbstractAction
 
 	private DataFlavor selectBestDataFlavor(final DataFlavor[] transferDataFlavors)
 	{
-		DataFlavor dataFlavor = findDataFlavor(transferDataFlavors, "text/html");
+		DataFlavor dataFlavor = findDataFlavor(transferDataFlavors, HTML_MIME_TYPE);
 		if (dataFlavor != null)
 			return dataFlavor;
 
-		dataFlavor = findDataFlavor(transferDataFlavors, "text/plain");
+		dataFlavor = findDataFlavor(transferDataFlavors, PLAIN_TEXT_MIME_TYPE);
 		if (dataFlavor != null)
 			return dataFlavor;
 
@@ -171,4 +171,6 @@ public class PasteHtmlTextAction extends AbstractAction
 	}
 	
 	private JTextComponent textField;
+	private static final String HTML_MIME_TYPE = "text/html";
+	private static final String PLAIN_TEXT_MIME_TYPE = "text/plain";
 }
