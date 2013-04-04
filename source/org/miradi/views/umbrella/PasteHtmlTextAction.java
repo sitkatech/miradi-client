@@ -88,10 +88,15 @@ public class PasteHtmlTextAction extends AbstractAction
 
 	private void replaceNormalizedHtmlAtCaretPosition(String html) throws Exception
     {
+		html = AbstractHtmlPane.getNormalizedAndSanitizedHtmlText(html);
+		replaceTextAtCaretPosition(html);
+    }
+
+	private void replaceTextAtCaretPosition(String html) throws Exception
+	{
 		removeSelectedText();
         JEditorPane editor = (JEditorPane) getEditorField();
         HTMLDocument document = (HTMLDocument)editor.getDocument();
-        html = AbstractHtmlPane.getNormalizedAndSanitizedHtmlText(html);
         final int insertAtCaretPostion = editor.getCaretPosition();
         Element elementAtCaretPosition = document.getCharacterElement(insertAtCaretPostion);
         int elementStartsAt = elementAtCaretPosition.getStartOffset();
@@ -115,7 +120,7 @@ public class PasteHtmlTextAction extends AbstractAction
             endingCaretPosition = document.getLength() - 2;
         
         editor.setCaretPosition(endingCaretPosition);
-    }
+	}
 	
 	private void removeSelectedText() throws Exception
 	{
