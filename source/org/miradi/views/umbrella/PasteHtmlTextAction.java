@@ -92,7 +92,7 @@ public class PasteHtmlTextAction extends AbstractAction
 		replaceTextAtCaretPosition(html);
     }
 
-	private void replaceTextAtCaretPosition(String html) throws Exception
+	private void replaceTextAtCaretPosition(String textToInsert) throws Exception
 	{
 		removeSelectedText();
         JEditorPane editor = (JEditorPane) getEditorField();
@@ -102,7 +102,7 @@ public class PasteHtmlTextAction extends AbstractAction
         int elementStartsAt = elementAtCaretPosition.getStartOffset();
 
         HtmlEditorKitWithNonSharedStyleSheet kit = (HtmlEditorKitWithNonSharedStyleSheet) editor.getEditorKit();
-        kit.read(new StringReader(html), document, insertAtCaretPostion);
+        kit.read(new StringReader(textToInsert), document, insertAtCaretPostion);
         int endingCaretPosition = editor.getCaretPosition();
         
         // NOTE: Reload text to merge the pasted implied-p into the surrounding implied-p
