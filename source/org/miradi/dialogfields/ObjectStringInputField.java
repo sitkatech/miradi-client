@@ -65,6 +65,7 @@ public class ObjectStringInputField extends ObjectTextInputField
 	@Override
 	public void setText(String newValue)
 	{
+		//FIXME - medium - the line below is not doing anything, since its not setting newValue
 		newValue.replaceAll(StringUtilities.NEW_LINE, StringUtilities.EMPTY_SPACE);
 		newValue = XmlUtilities2.getXmlDecoded(newValue);
 		
