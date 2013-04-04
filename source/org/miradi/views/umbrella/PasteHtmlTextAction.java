@@ -52,7 +52,15 @@ public class PasteHtmlTextAction extends AbstractAction
 	{
 		try
 		{
-			String clipboardValue = getClipboardContent();
+			Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+			Transferable contents = clipboard.getContents(null);
+			if(contents == null)
+				return;                
+
+			final DataFlavor[] transferDataFlavors = contents.getTransferDataFlavors();
+			DataFlavor dataFlavor = selectBestDataFlavor(transferDataFlavors);        
+
+			String clipboardValue = read(dataFlavor.getReaderForText(contents));
 			if(clipboardValue == null)
 				return;
 
@@ -108,19 +116,6 @@ public class PasteHtmlTextAction extends AbstractAction
 		document.remove(start, length);
 	}
 
-	private String getClipboardContent() throws Exception
-	{
-		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-		Transferable contents = clipboard.getContents(null);
-		if(contents == null)
-			return null;                
-
-		final DataFlavor[] transferDataFlavors = contents.getTransferDataFlavors();
-		DataFlavor dataFlavor = selectBestDataFlavor(transferDataFlavors);        
-
-		return read(dataFlavor.getReaderForText(contents));
-	}
-	
 	private DataFlavor selectBestDataFlavor(final DataFlavor[] transferDataFlavors)
 	{
 		DataFlavor dataFlavor = findDataFlavor(transferDataFlavors, "text/html");
