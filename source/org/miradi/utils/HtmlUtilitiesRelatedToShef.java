@@ -35,6 +35,7 @@ public class HtmlUtilitiesRelatedToShef
 		{
 			//NOTE: Shef editor never splits text between lines, so we can safely ignore the text\ntext case
 			String line = lines[index];
+			//FIXME - medium - Write a failing test for the line below, it might not be doing anything. 
 			String leadingSpacesRemoved = line.replaceAll("^[ \\t]+", "");
 			stringBuffer.append(leadingSpacesRemoved);
 		}
