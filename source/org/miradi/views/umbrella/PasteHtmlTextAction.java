@@ -65,12 +65,24 @@ public class PasteHtmlTextAction extends AbstractAction
 				return;
 
 			CompoundUndoManager.beginCompoundEdit(getEditorField().getDocument());
-			replaceNormalizedHtmlAtCaretPosition(clipboardValue);
+			pasteText(dataFlavor, clipboardValue);
 			CompoundUndoManager.endCompoundEdit(getEditorField().getDocument());
 		}
 		catch(Exception exception)
 		{
 			EAM.alertUserOfNonFatalException(exception);
+		}
+	}
+
+	private void pasteText(DataFlavor dataFlavor, String clipboardValue) throws Exception
+	{
+		if (isMimeType(dataFlavor, HTML_MIME_TYPE))
+		{
+			replaceNormalizedHtmlAtCaretPosition(clipboardValue);
+		}//FIXME urgent - need to handle plain text
+		else
+		{
+			replaceNormalizedHtmlAtCaretPosition(clipboardValue);
 		}
 	}
 
