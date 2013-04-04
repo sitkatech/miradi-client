@@ -232,6 +232,11 @@ public class HtmlUtilities
 		return text;
 	}
 	
+	public static String replaceEndParagraphTagsWithBrs(String html)
+	{
+		return replaceAll(createEndTagRegex("p"), html, BR_TAG);
+	}
+	
 	public static int getLabelLineCount(String labelToUse)
 	{
 		String label = labelToUse + "AvoidSplitTrimmingTrailingNewlines";
