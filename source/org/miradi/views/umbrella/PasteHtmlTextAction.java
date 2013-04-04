@@ -40,6 +40,7 @@ import net.atlanticbb.tantlinger.ui.text.CompoundUndoManager;
 import org.miradi.main.EAM;
 import org.miradi.utils.AbstractHtmlPane;
 import org.miradi.utils.AbstractHtmlPane.HtmlEditorKitWithNonSharedStyleSheet;
+import org.miradi.utils.XmlUtilities2;
 
 public class PasteHtmlTextAction extends AbstractAction
 {
@@ -79,10 +80,11 @@ public class PasteHtmlTextAction extends AbstractAction
 		if (isMimeType(dataFlavor, HTML_MIME_TYPE))
 		{
 			replaceNormalizedHtmlAtCaretPosition(clipboardValue);
-		}//FIXME urgent - need to handle plain text
+		}
 		else
 		{
-			replaceNormalizedHtmlAtCaretPosition(clipboardValue);
+			clipboardValue = XmlUtilities2.getXmlEncoded(clipboardValue);
+			replaceTextAtCaretPosition(clipboardValue);
 		}
 	}
 
