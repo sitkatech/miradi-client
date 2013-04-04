@@ -32,8 +32,8 @@ import org.miradi.dialogs.fieldComponents.PanelTextArea;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.StringUtilities;
+import org.miradi.utils.XmlUtilities2;
 
 public class ObjectStringInputField extends ObjectTextInputField
 {
@@ -66,7 +66,7 @@ public class ObjectStringInputField extends ObjectTextInputField
 	public void setText(String newValue)
 	{
 		newValue.replaceAll(StringUtilities.NEW_LINE, StringUtilities.EMPTY_SPACE);
-		newValue = HtmlUtilities.convertHtmlToPlainText(newValue);
+		newValue = XmlUtilities2.getXmlDecoded(newValue);
 		
 		super.setText(newValue);
 	}
@@ -75,7 +75,7 @@ public class ObjectStringInputField extends ObjectTextInputField
 	public String getText()
 	{
 		String text = super.getText();
-		text = HtmlUtilities.convertPlainTextToHtmlText(text);
+		text = XmlUtilities2.getXmlEncoded(text);
 		
 		return text;
 	}
