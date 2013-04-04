@@ -28,6 +28,7 @@ public class HtmlUtilitiesRelatedToShef
 	{
 		text = HtmlUtilities.stripHtmlComments(text);
 		text = HtmlUtilities.replaceAllEmptyDivsWithBrs(text);
+		text = HtmlUtilities.replaceEndParagraphTagsWithBrs(text);
 		
 		StringBuffer stringBuffer = new StringBuffer();
 		final String[] lines = text.split(HtmlUtilities.getNewlineRegex());
@@ -61,4 +62,6 @@ public class HtmlUtilitiesRelatedToShef
 		
 		return trimmedText;
 	}
+	
+	
 }
