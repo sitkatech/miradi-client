@@ -39,6 +39,7 @@ public class HtmlUtilitiesRelatedToShef
 			//FIXME - medium - Write a failing test for the line below, it might not be doing anything. 
 			String leadingSpacesRemoved = line.replaceAll("^[ \\t]+", "");
 			stringBuffer.append(leadingSpacesRemoved);
+			stringBuffer.append(StringUtilities.EMPTY_SPACE);
 		}
 		
 		String trimmedText = stringBuffer.toString();
