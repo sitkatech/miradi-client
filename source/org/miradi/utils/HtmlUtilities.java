@@ -228,7 +228,9 @@ public class HtmlUtilities
 
 	static String replaceAllEmptyDivsWithBrs(String text)
 	{
-		text = text.replaceAll("<div>\\s*</div>", "<br/>");
+		final String START_DIV_REGEX = createStartTagRegex(DIV_TAG_NAME);
+		final String END_DIV_REGEX = createEndTagRegex(DIV_TAG_NAME);
+		text = text.replaceAll(START_DIV_REGEX + "\\s*" + END_DIV_REGEX, BR_TAG);
 		return text;
 	}
 	
