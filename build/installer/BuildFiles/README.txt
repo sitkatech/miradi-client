@@ -160,6 +160,8 @@ Appwide:
   + Can be emailed without having to export to MPZ format first
   + In the future, can be much faster
 - Many fields now allow basic formatting (bold, bullets, etc.)
+  + NOTE: After pasting formatted text, the cursor will always be positioned 
+    at the end of the field (rather than at the end of whatever was pasted)
   + NOTE: Under Mac OSX, paste from other apps will lose any formatting 
 - Most tables now allow editing data directly within the table
 - Strategies, Activities, Methods, and Tasks now have a Leader field
