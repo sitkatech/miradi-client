@@ -89,8 +89,17 @@ public class PasteHtmlTextAction extends AbstractAction
 	private void replaceNormalizedHtmlAtCaretPosition(String html) throws Exception
     {
 		html = AbstractHtmlPane.getNormalizedAndSanitizedHtmlText(html);
+		//NOTE: We are right before release 4.0 and instead of splitting HtmlUtilitiesRelatedToShef
+		//into xml and hmtl, we chose a safe fix: undo the apostrophe encoding done by the normalizer. 
+		html = getXmlDecodedApostrophes(html);
+		
 		replaceTextAtCaretPosition(html);
     }
+	
+	private String getXmlDecodedApostrophes(String value)
+	{
+		return value.replaceAll("&apos;", "'");
+	}
 
 	private void replaceTextAtCaretPosition(String textToInsert) throws Exception
 	{
