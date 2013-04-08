@@ -31,7 +31,6 @@ import java.io.StringReader;
 import javax.swing.AbstractAction;
 import javax.swing.JEditorPane;
 import javax.swing.text.Caret;
-import javax.swing.text.Element;
 import javax.swing.text.JTextComponent;
 import javax.swing.text.html.HTMLDocument;
 
@@ -107,28 +106,17 @@ public class PasteHtmlTextAction extends AbstractAction
         JEditorPane editor = (JEditorPane) getEditorField();
         HTMLDocument document = (HTMLDocument)editor.getDocument();
         final int insertAtCaretPostion = editor.getCaretPosition();
-        Element elementAtCaretPosition = document.getCharacterElement(insertAtCaretPostion);
-        int elementStartsAt = elementAtCaretPosition.getStartOffset();
 
         HtmlEditorKitWithNonSharedStyleSheet kit = (HtmlEditorKitWithNonSharedStyleSheet) editor.getEditorKit();
         kit.read(new StringReader(textToInsert), document, insertAtCaretPostion);
-        int endingCaretPosition = editor.getCaretPosition();
         
         // NOTE: Reload text to merge the pasted implied-p into the surrounding implied-p
         // to avoid showing newlines in the editor panel
         String result = editor.getText();
         editor.setText(result);
         
-        // NOTE: Reset the cursor position, but account for the newline(s) that were removed
-        if(elementStartsAt == insertAtCaretPostion)
-            endingCaretPosition -= 1;
-        else 
-            endingCaretPosition -= 2;
-        
-        if(endingCaretPosition >= document.getLength() - 1)
-            endingCaretPosition = document.getLength() - 2;
-        
-        editor.setCaretPosition(endingCaretPosition);
+        // NOTE: Always Reset the cursor position to the end
+        editor.setCaretPosition(getEditorField().getDocument().getLength());
 	}
 	
 	private void removeSelectedText() throws Exception
