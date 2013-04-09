@@ -160,7 +160,7 @@ Appwide:
   + Can be emailed without having to export to MPZ format first
   + In the future, can be much faster
 - Many fields now allow basic formatting (bold, bullets, etc.)
-  + NOTE: Pasting formatted text may result in temporary extra newlines.
+  + NOTE: Pasting formatted text may result in temporary extra newlines
   + NOTE: Under Mac OSX, paste from other apps will lose any formatting 
 - Most tables now allow editing data directly within the table
 - Strategies, Activities, Methods, and Tasks now have a Leader field
