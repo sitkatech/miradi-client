@@ -120,7 +120,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	{
 		String columnTag = getColumnTag(modelColumn);
 		if (isWhoColumn(columnTag))
-			return isWhoCellEditable(row, modelColumn);
+			return new WhoStateLogic(getProject()).isWhoCellEditable(getBaseObjectForRowColumn(row, modelColumn));
 		
 		if (isWhenColumn(columnTag))
 			return isWhenCellEditable(row, modelColumn);
@@ -358,54 +358,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		return dateUnitEffortList;
 	}
 
-	private boolean isWhoCellEditable(int row, int modelColumn)
-	{
-		try
-		{
-			BaseObject baseObjectForRow = getBaseObjectForRowColumn(row, modelColumn);
-			if (!AssignmentDateUnitsTableModel.canOwnAssignments(baseObjectForRow.getRef()))
-				return false;
-
-			if (doAnySubtasksHaveAnyWorkUnitData(baseObjectForRow))
-				return false;
-
-			return doAllResourceAssignmentsHaveIdenticalWorkUnits(row, modelColumn);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return false;		
-		}
-	}
-
-	private boolean doAnySubtasksHaveAnyWorkUnitData(BaseObject baseObjectForRow) throws Exception
-	{
-		TimePeriodCostsMap timePeriodCostsMap = baseObjectForRow.getTotalTimePeriodCostsMapForSubTasks(baseObjectForRow.getSubTaskRefs(), BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
-		TimePeriodCosts wholeProjectTimePeriodCosts = timePeriodCostsMap.calculateTimePeriodCosts(new DateUnit());
-		OptionalDouble totalSubtaskWorkUnitsForAllTimePeriods = wholeProjectTimePeriodCosts.getTotalWorkUnits();
-
-		return totalSubtaskWorkUnitsForAllTimePeriods.hasValue();
-	}
-	
-	private boolean doAllResourceAssignmentsHaveIdenticalWorkUnits(int row, int modelColumn) throws Exception
-	{
-			BaseObject baseObjectForRow = getBaseObjectForRowColumn(row, modelColumn);
-			ORefList resourceAssignments = baseObjectForRow.getResourceAssignmentRefs();
-			DateUnitEffortList expectedDateUnitEffortList = null;
-			for (int index = 0; index < resourceAssignments.size(); ++index)
-			{
-				ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignments.get(index));
-				DateUnitEffortList thisDateUnitEffortList = resourceAssignment.getDateUnitEffortList();
-				if (expectedDateUnitEffortList == null)
-					expectedDateUnitEffortList = thisDateUnitEffortList;
-				
-				if (!expectedDateUnitEffortList.equals(thisDateUnitEffortList))
-					return false;
-			}
-			
-			return true;
-	}
-	
 	@Override
 	public Class getCellQuestion(int row, int modelColumn)
 	{
