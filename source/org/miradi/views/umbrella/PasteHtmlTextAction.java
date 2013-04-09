@@ -109,15 +109,7 @@ public class PasteHtmlTextAction extends AbstractAction
 
         HtmlEditorKitWithNonSharedStyleSheet kit = (HtmlEditorKitWithNonSharedStyleSheet) editor.getEditorKit();
         kit.read(new StringReader(textToInsert), document, insertAtCaretPostion);
-        
-        // NOTE: Reload text to merge the pasted implied-p into the surrounding implied-p
-        // to avoid showing newlines in the editor panel
-        String result = editor.getText();
-        editor.setText(result);
-        
-        // NOTE: Always Reset the cursor position to the end
-        editor.setCaretPosition(getEditorField().getDocument().getLength());
-	}
+   	}
 	
 	private void removeSelectedText() throws Exception
 	{
