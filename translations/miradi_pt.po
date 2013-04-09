@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-02 13:31-0500\n"
+"POT-Creation-Date: 2013-04-09 13:31-0500\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -6335,7 +6335,7 @@ msgstr "Selecionar o Pacote de Idioma (Language Pack) para Instalação"
 msgid "Select Location..."
 msgstr "Selecionar Localização..."
 
-#: Miradi/source/org/miradi/dialogfields/WhoEditorField.java:41
+#: Miradi/source/org/miradi/dialogfields/WhoEditorField.java:42
 #: Miradi/source/org/miradi/dialogfields/WhenEditorField.java:43
 msgid "Select Project Resources"
 msgstr ""
@@ -9082,7 +9082,7 @@ msgstr ""
 "as comandas exportar e importar.  Miradi também  criará arquivos de zip para "
 "'backups' de projetos que são crados durante migrações de formatos. "
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:568
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:520
 msgid "[Error]"
 msgstr "[Erro]"
 

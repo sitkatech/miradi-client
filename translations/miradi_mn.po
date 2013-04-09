@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-02 13:31-0500\n"
+"POT-Creation-Date: 2013-04-09 13:31-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -6111,7 +6111,7 @@ msgstr "Суулгах хэлний багцыг сонгохl"
 msgid "Select Location..."
 msgstr "Байршилыг...сонгох"
 
-#: Miradi/source/org/miradi/dialogfields/WhoEditorField.java:41
+#: Miradi/source/org/miradi/dialogfields/WhoEditorField.java:42
 #: Miradi/source/org/miradi/dialogfields/WhenEditorField.java:43
 msgid "Select Project Resources"
 msgstr ""
@@ -8815,7 +8815,7 @@ msgstr ""
 "уу. Форматыг шилжүүлж байхад үүссэн төслийн нөөц хувийг ч Миради мөн адил  "
 "zip файл үүсгэнэ.  "
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:568
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:520
 msgid "[Error]"
 msgstr "[Алдаа]"
 
