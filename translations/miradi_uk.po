@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-02 13:31-0500\n"
+"POT-Creation-Date: 2013-04-09 13:31-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -6084,7 +6084,7 @@ msgstr "Вибрати мовний пакет для інсталяції"
 msgid "Select Location..."
 msgstr "Вибрати Розміщення..."
 
-#: Miradi/source/org/miradi/dialogfields/WhoEditorField.java:41
+#: Miradi/source/org/miradi/dialogfields/WhoEditorField.java:42
 #: Miradi/source/org/miradi/dialogfields/WhenEditorField.java:43
 msgid "Select Project Resources"
 msgstr ""
@@ -8734,7 +8734,7 @@ msgstr ""
 "команди експорту та  імпорту. Міраді також створить зіп-файли для дублікатів "
 "проекту, що були створені протягом форматувальних переходів."
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:568
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:520
 msgid "[Error]"
 msgstr "[Помилка]"
 

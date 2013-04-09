@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-02 13:31-0500\n"
+"POT-Creation-Date: 2013-04-09 13:31-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -6172,7 +6172,7 @@ msgstr "Seleziona il pacchetto lingua da installare"
 msgid "Select Location..."
 msgstr "Seleziona luogo..."
 
-#: Miradi/source/org/miradi/dialogfields/WhoEditorField.java:41
+#: Miradi/source/org/miradi/dialogfields/WhoEditorField.java:42
 #: Miradi/source/org/miradi/dialogfields/WhenEditorField.java:43
 msgid "Select Project Resources"
 msgstr ""
@@ -8865,7 +8865,7 @@ msgstr ""
 "Miradi creerà file compressi per i backup di progetto creati durante le "
 "migrazioni di formato."
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:568
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:520
 msgid "[Error]"
 msgstr "[Errore]"
 
