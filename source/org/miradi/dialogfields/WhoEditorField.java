@@ -24,6 +24,7 @@ import javax.swing.JComponent;
 
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.ReadonlyPanelWithPopupEditor;
+import org.miradi.dialogs.planning.upperPanel.WhoStateLogic;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -51,6 +52,18 @@ public class WhoEditorField extends ObjectDataField implements ReadonlyPanelAndP
 		BaseObject baseObject = BaseObject.find(getProject(), getORef());
 		CodeList whoTotals = WhoCodeListEditorComponent.getWhoTotalCodes(baseObject);
 		readonlyPanelWithPopupEditor.setText(whoTotals.toString());
+	}
+	
+	
+	@Override
+	public boolean isValidObject()
+	{
+		if (!super.isValidObject())
+			return false;
+			
+		BaseObject baseObject = BaseObject.find(getProject(), getORef());
+		
+		return new WhoStateLogic(getProject()).isWhoCellEditable(baseObject);
 	}
 
 	@Override
