@@ -145,14 +145,13 @@ public class MpzToMpfConverter extends AbstractConverter
 			UnicodeStringWriter writer = UnicodeStringWriter.create();
 			ProjectSaver.saveProject(project, writer);
 
-			if(migratedFile != null)
-				FileUtilities.deleteExistingWithRetries(migratedFile);
-
 			return writer.toString();
 		}
 		finally
 		{
 			zip.close();
+			if(migratedFile != null)
+				FileUtilities.deleteExistingWithRetries(migratedFile);
 		}
 	}
 
