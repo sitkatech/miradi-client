@@ -115,7 +115,7 @@ public class MpzToMpfConverter extends AbstractConverter
 	
 	public static final String convert(File mpzFile, ProgressInterface progressIndicator) throws Exception
 	{
-		File migratedFile = null;
+		File migratedTempFile = null;
 		MiradiZipFile originalZipFile = new MiradiZipFile(mpzFile);
 		try
 		{
@@ -123,7 +123,7 @@ public class MpzToMpfConverter extends AbstractConverter
 				throw new FutureSchemaVersionException();
 			
 			if(needsMigration(originalZipFile))
-				migratedFile = migrate(mpzFile, progressIndicator);
+				migratedTempFile = migrate(mpzFile, progressIndicator);
 		}
 		finally
 		{
@@ -131,8 +131,8 @@ public class MpzToMpfConverter extends AbstractConverter
 		}
 
 		File mpzToUse = mpzFile;
-		if(migratedFile != null)
-			mpzToUse = migratedFile;
+		if(migratedTempFile != null)
+			mpzToUse = migratedTempFile;
 		
 		MiradiZipFile zip = new MiradiZipFile(mpzToUse);
 		try
@@ -150,8 +150,8 @@ public class MpzToMpfConverter extends AbstractConverter
 		finally
 		{
 			zip.close();
-			if(migratedFile != null)
-				FileUtilities.deleteExistingWithRetries(migratedFile);
+			if(migratedTempFile != null)
+				FileUtilities.deleteExistingWithRetries(migratedTempFile);
 		}
 	}
 
