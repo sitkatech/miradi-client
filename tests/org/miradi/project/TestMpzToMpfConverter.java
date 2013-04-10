@@ -71,17 +71,18 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 	{
 		final File file = File.createTempFile("$$$tempExceptionsLogZipFile", null);
 		final FileOutputStream fileOutputStream = new FileOutputStream(file);
+		String sampleException = createSampleExceptionsLogUpToLenth(exceptionsLenthToCreate);
+		writeZipStream(fileOutputStream, sampleException.toString(), compressionMethod);
+		MiradiZipFile miradiZipFile = new MiradiZipFile(file);
 		try
 		{
-			String sampleException = createSampleExceptionsLogUpToLenth(exceptionsLenthToCreate);
-			writeZipStream(fileOutputStream, sampleException.toString(), compressionMethod);
-			MiradiZipFile miradiZipFile = new MiradiZipFile(file);
 			ZipEntry exceptionsLogEntry = miradiZipFile.getEntry("Exceptions.log");
 			String exceptionsFromZip = MpzToMpfConverter.getExceptionsLog(miradiZipFile, exceptionsLogEntry);
 			assertEquals("incorrect unzipped exceptions lenth?", expectedExceptionsLength, exceptionsFromZip.getBytes("UTF-8").length);
 		}
 		finally
 		{
+			miradiZipFile.close();
 			fileOutputStream.flush();
 			fileOutputStream.close();
 			FileUtilities.deleteIfExistsWithRetries(file);
