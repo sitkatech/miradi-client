@@ -52,8 +52,9 @@ public class SingleStringToRefMapReadonlyField extends ObjectStringInputField
 			StringRefMap stringMap = new StringRefMap(newValue);
 			ORef xenodataRefForKey = stringMap.getValue(mapKey);
 			Xenodata xenodata = Xenodata.find(getProject(), xenodataRefForKey);
+			final String projectId = xenodata.getData(Xenodata.TAG_PROJECT_ID);
 			
-			super.setText(xenodata.getData(Xenodata.TAG_PROJECT_ID));
+			super.setText(projectId);
 		}
 		catch (Exception e)
 		{
