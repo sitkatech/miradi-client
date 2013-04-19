@@ -32,11 +32,11 @@ import org.miradi.objects.Xenodata;
 
 public class SingleStringToRefMapReadonlyField extends ObjectStringInputField
 {
-	public SingleStringToRefMapReadonlyField(MainWindow mainWindowToUse, ORef refToUse, String tagToUse, String keyWithinMapToUse) throws Exception
+	public SingleStringToRefMapReadonlyField(MainWindow mainWindowToUse, ORef refToUse, String tagToUse, String xenodataKeyToUse) throws Exception
 	{
 		super(mainWindowToUse, refToUse, tagToUse, 30);
 		
-		keyWithinMap = keyWithinMapToUse;
+		xenodataKey = xenodataKeyToUse;
 	}
 	
 	@Override
@@ -65,7 +65,7 @@ public class SingleStringToRefMapReadonlyField extends ObjectStringInputField
 	private String extractProjectId(String stringRefMapAsString) throws ParseException
 	{
 		StringRefMap stringRefMap = new StringRefMap(stringRefMapAsString);
-		ORef xenodataRefForKey = stringRefMap.getValue(keyWithinMap);
+		ORef xenodataRefForKey = stringRefMap.getValue(xenodataKey);
 		if (xenodataRefForKey.isInvalid())
 			return "";
 		
@@ -88,5 +88,5 @@ public class SingleStringToRefMapReadonlyField extends ObjectStringInputField
 		return false;
 	}
 	
-	private String keyWithinMap;
+	private String xenodataKey;
 }
