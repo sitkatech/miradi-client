@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import java.awt.Color;
+import java.text.ParseException;
 
 import org.miradi.dialogs.fieldComponents.PanelTextArea;
 import org.miradi.main.EAM;
@@ -49,10 +50,7 @@ public class SingleStringToRefMapReadonlyField extends ObjectStringInputField
 	{
 		try
 		{
-			StringRefMap stringMap = new StringRefMap(newValue);
-			ORef xenodataRefForKey = stringMap.getValue(mapKey);
-			Xenodata xenodata = Xenodata.find(getProject(), xenodataRefForKey);
-			final String projectId = xenodata.getData(Xenodata.TAG_PROJECT_ID);
+			final String projectId = getProjectId(newValue);
 			
 			super.setText(projectId);
 		}
@@ -62,6 +60,15 @@ public class SingleStringToRefMapReadonlyField extends ObjectStringInputField
 		}
 		
 		getComponent().setForeground(Color.black);
+	}
+
+	private String getProjectId(String newValue) throws ParseException
+	{
+		StringRefMap stringMap = new StringRefMap(newValue);
+		ORef xenodataRefForKey = stringMap.getValue(mapKey);
+		Xenodata xenodata = Xenodata.find(getProject(), xenodataRefForKey);
+		final String projectId = xenodata.getData(Xenodata.TAG_PROJECT_ID);
+		return projectId;
 	}
 	
 	@Override
