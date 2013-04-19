@@ -50,7 +50,7 @@ public class SingleStringToRefMapReadonlyField extends ObjectStringInputField
 	{
 		try
 		{
-			final String projectId = getProjectId(newValue);
+			final String projectId = extractProjectId(newValue);
 			
 			super.setText(projectId);
 		}
@@ -62,10 +62,10 @@ public class SingleStringToRefMapReadonlyField extends ObjectStringInputField
 		getComponent().setForeground(Color.black);
 	}
 
-	private String getProjectId(String newValue) throws ParseException
+	private String extractProjectId(String stringRefMapAsString) throws ParseException
 	{
-		StringRefMap stringMap = new StringRefMap(newValue);
-		ORef xenodataRefForKey = stringMap.getValue(mapKey);
+		StringRefMap stringRefMap = new StringRefMap(stringRefMapAsString);
+		ORef xenodataRefForKey = stringRefMap.getValue(mapKey);
 		if (xenodataRefForKey.isInvalid())
 			return "";
 		
