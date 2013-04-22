@@ -25,7 +25,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.MiradiShareProjectDataSchema;
-import org.miradi.schemas.RatingCriterionSchema;
 
 public class MiradiShareProjectData extends BaseObject
 {
