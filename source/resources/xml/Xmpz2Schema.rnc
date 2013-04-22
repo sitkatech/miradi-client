@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Mon Apr 01 12:46:36 EDT 2013 $
+# $LastChangedDate: Mon Apr 22 16:43:19 EDT 2013 $
 # $LastChangedRevision: 220 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/220'
 start = ConservationProject.element
@@ -195,6 +195,21 @@ RareProjectData.element = element miradi:RareProjectData
   element miradi:RareProjectDataNumberOfCommunitiesInCampaignArea { xsd:integer }? &
   element miradi:RareProjectDataSummaryOfKeyMessages { formatted_text }? &
   element miradi:RareProjectDataThreatsAddressedNotes { formatted_text }?
+}
+
+MiradiShareProjectData.element = element miradi:MiradiShareProjectData
+{
+  element miradi:MiradiShareProjectDataProgramId { text }? &
+  element miradi:MiradiShareProjectDataProgramName { text }? &
+  element miradi:MiradiShareProjectDataProgramTaxonomySetId { text }? &
+  element miradi:MiradiShareProjectDataProgramTaxonomySetName { text }? &
+  element miradi:MiradiShareProjectDataProgramTaxonomySetVersion { text }? &
+  element miradi:MiradiShareProjectDataProgramTaxonomySetVersionId { text }? &
+  element miradi:MiradiShareProjectDataProgramUrl { text }? &
+  element miradi:MiradiShareProjectDataProjectId { text }? &
+  element miradi:MiradiShareProjectDataProjectTemplateId { text }? &
+  element miradi:MiradiShareProjectDataProjectTemplateName { text }? &
+  element miradi:MiradiShareProjectDataProjectUrl { text }?
 }
 
 TaskPool.element = element miradi:TaskPool { Task.element* }
