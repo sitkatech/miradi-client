@@ -37,6 +37,7 @@ import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.MiradiShareProjectData;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.RatingCriterion;
@@ -66,6 +67,7 @@ import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.MiradiShareProjectDataSchema;
 import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaggedObjectSetSchema;
@@ -196,6 +198,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeSingletonObjectSchema(new WcsProjectDataSchema());
 		writeSingletonObjectSchema(new FosProjectDataSchema());
 		writeSingletonObjectSchema(new RareProjectDataSchema());
+		writeSingletonObjectSchema(new MiradiShareProjectDataSchema());
 	}
 	
 	private void writeSingletonObjectSchema(BaseObjectSchema baseObjectSchema) throws Exception
@@ -1021,6 +1024,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			return false;
 
 		if (XslTemplate.is(objectType))
+			return false;
+		
+		if (MiradiShareProjectData.is(objectType))
 			return false;
 
 		return true;
