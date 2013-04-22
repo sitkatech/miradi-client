@@ -125,6 +125,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeDiagramPointElement();
 		writeDiagramSizeElement();
 		writeDateUnitSchemaElements();
+		writeMiradiShareTaxonomyAssociationsPools();
 		creators.add(createExporterDetailsElementCreator());
 		creators.add(creatorThresholdsElementSchemaCreator());
 		creators.add(createTimePeriodCostsElementSchemaCreator());
@@ -144,6 +145,25 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		}
 		
 		writeDashboardFlagsContainer();
+	}
+
+	private void writeMiradiShareTaxonomyAssociationsPools()
+	{
+		getSchemaWriter().writeElement(MIRADI_SHARE__PROJECT_DATA_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
+		getSchemaWriter().writeElement(BIODIVERSITY_TARGET_TAXONOMY_ASSOCIATIONP_OOL, TAXONOMY_ASSOCIATION);
+		getSchemaWriter().writeElement(HUMAN_WELLBEING_TARGET_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
+		getSchemaWriter().writeElement(CAUSE_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
+		getSchemaWriter().writeElement(STRATEGY_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
+		getSchemaWriter().writeElement(RESULTS_CHAIN_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
+		getSchemaWriter().writeElement(THREAT_REDUCTION_RESULT_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
+		getSchemaWriter().writeElement(GOAL_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
+		getSchemaWriter().writeElement(KEY_ECOLOGICAL_ATTRIBUTE_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
+		getSchemaWriter().writeElement(INDICATOR_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
+		getSchemaWriter().writeElement(OBJECTIVE_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
+		getSchemaWriter().writeElement(STRESS_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
+		getSchemaWriter().writeElement(TASK_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
+		getSchemaWriter().writeElement(TAXONOMY_POOL, TAXONOMY_ASSOCIATION);
+		getSchemaWriter().println();
 	}
 
 	private void writeHeader()
@@ -176,6 +196,20 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			elementNames.add(createOptionalSchemaElement(poolName));
 		}
 		
+		elementNames.add(createOptionalSchemaElement(MIRADI_SHARE__PROJECT_DATA_TAXONOMY_ASSOCIATION_POOL));
+		elementNames.add(createOptionalSchemaElement(BIODIVERSITY_TARGET_TAXONOMY_ASSOCIATIONP_OOL));
+		elementNames.add(createOptionalSchemaElement(HUMAN_WELLBEING_TARGET_TAXONOMY_ASSOCIATION_POOL));
+		elementNames.add(createOptionalSchemaElement(CAUSE_TAXONOMY_ASSOCIATION_POOL));
+		elementNames.add(createOptionalSchemaElement(STRATEGY_TAXONOMY_ASSOCIATION_POOL));
+		elementNames.add(createOptionalSchemaElement(RESULTS_CHAIN_TAXONOMY_ASSOCIATION_POOL));
+		elementNames.add(createOptionalSchemaElement(THREAT_REDUCTION_RESULT_TAXONOMY_ASSOCIATION_POOL));
+		elementNames.add(createOptionalSchemaElement(GOAL_TAXONOMY_ASSOCIATION_POOL));
+		elementNames.add(createOptionalSchemaElement(KEY_ECOLOGICAL_ATTRIBUTE_TAXONOMY_ASSOCIATION_POOL));
+		elementNames.add(createOptionalSchemaElement(INDICATOR_TAXONOMY_ASSOCIATION_POOL));
+		elementNames.add(createOptionalSchemaElement(OBJECTIVE_TAXONOMY_ASSOCIATION_POOL));
+		elementNames.add(createOptionalSchemaElement(STRESS_TAXONOMY_ASSOCIATION_POOL));
+		elementNames.add(createOptionalSchemaElement(TASK_TAXONOMY_ASSOCIATION_POOL));
+		elementNames.add(createOptionalSchemaElement(TAXONOMY_POOL));
 		elementNames.add(ELEMENT_NAME + PREFIX + DELETED_ORPHANS_ELEMENT_NAME +  "{ text }?");
 		getSchemaWriter().defineElements(elementNames);
 		
