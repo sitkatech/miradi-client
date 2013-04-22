@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Mon Apr 22 18:01:23 EDT 2013 $
+# $LastChangedDate: Mon Apr 22 18:27:01 EDT 2013 $
 # $LastChangedRevision: 220 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/220'
 start = ConservationProject.element
@@ -843,6 +843,8 @@ vocabulary_scope_rating = ''|'1'|'2'|'3'|'4'
 vocabulary_severity_rating = ''|'1'|'2'|'3'|'4'
 vocabulary_target_mode = 'BiologicalTargetsOnly'|'BiologicalAndHumanWellbeingTargets'
 vocabulary_target_status = ''|'1'|'2'|'3'|'4'
+vocabulary_taxonomy_classification_selection_mode = 'LeafOnly'|'AnyNode'
+vocabulary_taxonomy_classification_multiselect_mode = 'SingleSelect'|'MultiSelect'
 vocabulary_text_box_z_order = 'Back'|'Front'
 vocabulary_cause_taxonomy_code = ''|'T10'|'T10.10'|'T10.20'|'T10.30'|'T20'|'T20.10'|'T20.30'|'T20.40'|'T20.50'|'T30'|'T30.10'|'T30.20'|'T30.30'|'T40'|'T40.10'|'T40.20'|'T40.30'|'T40.40'|'T50'|'T50.10'|'T50.20'|'T50.30'|'T50.40'|'T60'|'T60.10'|'T60.20'|'T60.30'|'T70'|'T70.10'|'T70.20'|'T70.30'|'T80'|'T80.10'|'T80.20'|'T80.30'|'T91'|'T91.10'|'T91.20'|'T91.30'|'T91.40'|'T91.50'|'T91.60'|'T100'|'T100.10'|'T100.20'|'T100.30'|'T110'|'T110.10'|'T110.20'|'T110.30'|'T110.40'
 vocabulary_threat_rating_mode = 'Simple'|'StressBased'
@@ -1121,6 +1123,16 @@ ThreatStressRating.element = element miradi:ThreatStressRating
   element miradi:ThreatStressRatingIrreversibilityRating { vocabulary_irreversibility_rating }? &
   element miradi:ThreatStressRatingIsActive { xsd:boolean }? &
   element miradi:ThreatStressRatingCalculatedThreatStressRating { vocabulary_threat_rating }?
+}
+
+TaxonomyAssociation.element = element miradi:TaxonomyAssociation
+{
+  attribute TaxonomyAssociationCode { text } &
+  element miradi:TaxonomyAssociationMultiSelect { vocabulary_taxonomy_classification_multiselect_mode } &
+  element miradi:TaxonomyAssociationSelectionType { vocabulary_taxonomy_classification_selection_mode } &
+  attribute TaxonomyAssociationLabel { text } &
+  element miradi:ExtraDataItemValue { text }? &
+  attribute TaxonomyAssociationTaxonomyCode { text }
 }
 
 DashboardFlagsContainer.element = element miradi:DashboardFlagsContainer

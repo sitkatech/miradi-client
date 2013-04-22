@@ -285,7 +285,16 @@ public interface Xmpz2XmlConstants
 	public static final String TASK_TAXONOMY_ASSOCIATION_POOL = "TaskTaxonomyAssociationPool";
 	public static final String TAXONOMY_POOL = "TaxonomyPool";
 	public static final String TAXONOMY_ASSOCIATION = "TaxonomyAssociation";
+	public static final String CODE = "Code";
 	
+	public static final String TAXONOMY_ASSOCIATION_MULTI_SELECT = "TaxonomyAssociationMultiSelect";
+	public static final String TAXONOMY_ASSOCIATION_SELECTION_TYPE= "TaxonomyAssociationSelectionType";
+	public static final String TAXONOMY_ASSOCIATION_LABEL = "TaxonomyAssociationLabel";
+	public static final String TAXONOMY_ASSOCIATION_DESCRIPTION = "TaxonomyAssociationDescription";
+	public static final String TAXONOMY_ASSOCIATION_TAXONOMY_CODE = "TaxonomyAssociationTaxonomyCode";
+	
+	public static final String VOCABULARY_TAXONOMY_CLASSIFICATION_MULTISELECT_MODE = "vocabulary_taxonomy_classification_multiselect_mode";
+	public static final String VOCABULARY_TAXONOMY_CLASSIFICATION_SELECTION_MODE = "vocabulary_taxonomy_classification_selection_mode";
 	public static final String VOCABULARY_LANGUAGE_CODE = "vocabulary_language_code";
 	public static final String VOCABULARY_FISCAL_YEAR_START = "vocabulary_fiscal_year_start_month";
 	public static final String VOCABULARY_PROTECTED_AREA_CATEGORIES = "vocabulary_protected_area_categories";

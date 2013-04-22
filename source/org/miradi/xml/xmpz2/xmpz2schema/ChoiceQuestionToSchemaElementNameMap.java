@@ -65,6 +65,8 @@ import org.miradi.questions.StressScopeChoiceQuestion;
 import org.miradi.questions.StressSeverityChoiceQuestion;
 import org.miradi.questions.TargetModeQuestion;
 import org.miradi.questions.TargetStatusQuestion;
+import org.miradi.questions.TaxonomyClassificationSelectionMode;
+import org.miradi.questions.TaxonomyMultiSelectModeQuestion;
 import org.miradi.questions.TextBoxZOrderQuestion;
 import org.miradi.questions.ThreatClassificationQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
@@ -147,6 +149,8 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(StatusQuestion.class, VOCABULARY_STATUS);
 		addItem(OpenStandardsProgressStatusQuestion.class, VOCABULARY_DASHBOARD_ROW_PROGRESS);
 		addItem(TargetModeQuestion.class, VOCABULARY_TARGET_MODE);
+		addItem(TaxonomyMultiSelectModeQuestion.class, VOCABULARY_TAXONOMY_CLASSIFICATION_MULTISELECT_MODE);
+		addItem(TaxonomyClassificationSelectionMode.class, VOCABULARY_TAXONOMY_CLASSIFICATION_SELECTION_MODE);
 	}
 	
 	private void addItem(Class questionClass, String value)
