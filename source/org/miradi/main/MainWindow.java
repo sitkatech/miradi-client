@@ -36,6 +36,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 import java.util.TreeSet;
 import java.util.Vector;
 
@@ -145,7 +146,8 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	
 	public void start(String[] args) throws Exception
 	{
-		List<String> commandLineArguments = Arrays.asList(args);
+		Vector<String> commandLineArgumentsToUse = new Vector<String>(Arrays.asList(args));
+		setCommandLineArguments(commandLineArgumentsToUse);
 		
 		if(ResourcesHandler.isRunningFromInsideJar())
 		{
@@ -257,6 +259,11 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		safelySavePreferences();
 	}
 	
+	private void setCommandLineArguments(Vector<String> commandLineArgumentsToUse)
+	{
+		commandLineArguments = commandLineArgumentsToUse;
+	}
+
 	public AutomaticProjectSaver getProjectSaver()
 	{
 		return projectSaver;
@@ -698,6 +705,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	{
 		final String beforeRepairSnapShot = ProjectSaver.createSnapShot(getProject());
 		ProjectRepairer repairer = new ProjectRepairer(project);
+		repairMissingObjects(repairer);
 		quarantineOrphans(repairer);
 		repairer.repairProblemsWherePossible();
 		scanForSeriousCorruption(repairer);
@@ -768,6 +776,23 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		
 		if(!ProjectCorruptionDialog.askUserWhetherToOpen(this, title, bodyText, listOfProblems))
 			throw new AlreadyHandledException();
+	}
+
+	private void repairMissingObjects(ProjectRepairer repairer) throws Exception
+	{
+		HashMap<ORef, ORefSet> rawProblems = repairer.getListOfMissingObjects();
+		if (commandLineArguments.contains(Miradi.REPAIR_PROJECT_ON_SWITCH))
+			repairMissingObjects(rawProblems.keySet());
+	}
+
+	private void repairMissingObjects(Set<ORef> missingObjectRefs) throws Exception
+	{
+		
+		for(ORef missingObjectRef : missingObjectRefs)
+		{
+			getProject().createObject(missingObjectRef);
+			EAM.logWarning("Missing object recreated:" + missingObjectRef);
+		}
 	}
 
 	public DiagramView getDiagramView()
@@ -1360,5 +1385,5 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	private HumanWelfareTargetModeChangeHandler humanWelfareModeHandler;
 	private WarnLowMemoryHandler lowMemoryHandler;
 	private RefreshWizardHandler refreshWizardHandler;
-	
+	private List<String> commandLineArguments;	
 }
