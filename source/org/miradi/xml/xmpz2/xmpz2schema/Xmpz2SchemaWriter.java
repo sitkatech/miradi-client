@@ -76,7 +76,7 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 	
 	public void writeElement(final String elementName, String elementType)
 	{
-		printIndented(createXsdSchemaElement(elementName, elementType));
+		println(createDotElement(elementName) + " = element " + PREFIX + elementName + " { " + createZeroOrMoreDotElement(elementType) + " }");
 	}
 	
 	public String createAttributeSchemaElement(final String attributeName)

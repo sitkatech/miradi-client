@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Mon Apr 22 17:16:50 EDT 2013 $
+# $LastChangedDate: Mon Apr 22 18:01:23 EDT 2013 $
 # $LastChangedRevision: 220 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/220'
 start = ConservationProject.element
@@ -56,6 +56,20 @@ ConservationProject.element = element miradi:ConservationProject
   DashboardPool.element? &
   SimpleThreatRatingPool.element? &
   StressBasedThreatRatingPool.element? &
+  MiradiShareProjectDataTaxonomyAssociationPool.element? &
+  BiodiversityTargetTaxonomyAssociationPool.element? &
+  HumanWellbeingTargetTaxonomyAssociationPool.element? &
+  CauseTaxonomyAssociationPool.element? &
+  StrategyTaxonomyAssociationPool.element? &
+  ResultsChainTaxonomyAssociationPool.element? &
+  ThreatReductionResultTaxonomyAssociationPool.element? &
+  GoalTaxonomyAssociationPool.element? &
+  KeyEcologicalAttributeTaxonomyAssociationPool.element? &
+  IndicatorTaxonomyAssociationPool.element? &
+  ObjectiveTaxonomyAssociationPool.element? &
+  StressTaxonomyAssociationPool.element? &
+  TaskTaxonomyAssociationPool.element? &
+  TaxonomyPool.element? &
   element miradi:DeletedOrphans{ text }?
 }
 
@@ -999,6 +1013,21 @@ ExpensesDay.element = element miradi:ExpensesDay
 {
   attribute Date { vocabulary_date }
 }
+
+MiradiShareProjectDataTaxonomyAssociationPool.element = element miradi:MiradiShareProjectDataTaxonomyAssociationPool { TaxonomyAssociation.element* }
+BiodiversityTargetTaxonomyAssociationPool.element = element miradi:BiodiversityTargetTaxonomyAssociationPool { TaxonomyAssociation.element* }
+HumanWellbeingTargetTaxonomyAssociationPool.element = element miradi:HumanWellbeingTargetTaxonomyAssociationPool { TaxonomyAssociation.element* }
+CauseTaxonomyAssociationPool.element = element miradi:CauseTaxonomyAssociationPool { TaxonomyAssociation.element* }
+StrategyTaxonomyAssociationPool.element = element miradi:StrategyTaxonomyAssociationPool { TaxonomyAssociation.element* }
+ResultsChainTaxonomyAssociationPool.element = element miradi:ResultsChainTaxonomyAssociationPool { TaxonomyAssociation.element* }
+ThreatReductionResultTaxonomyAssociationPool.element = element miradi:ThreatReductionResultTaxonomyAssociationPool { TaxonomyAssociation.element* }
+GoalTaxonomyAssociationPool.element = element miradi:GoalTaxonomyAssociationPool { TaxonomyAssociation.element* }
+KeyEcologicalAttributeTaxonomyAssociationPool.element = element miradi:KeyEcologicalAttributeTaxonomyAssociationPool { TaxonomyAssociation.element* }
+IndicatorTaxonomyAssociationPool.element = element miradi:IndicatorTaxonomyAssociationPool { TaxonomyAssociation.element* }
+ObjectiveTaxonomyAssociationPool.element = element miradi:ObjectiveTaxonomyAssociationPool { TaxonomyAssociation.element* }
+StressTaxonomyAssociationPool.element = element miradi:StressTaxonomyAssociationPool { TaxonomyAssociation.element* }
+TaskTaxonomyAssociationPool.element = element miradi:TaskTaxonomyAssociationPool { TaxonomyAssociation.element* }
+TaxonomyPool.element = element miradi:TaxonomyPool { TaxonomyAssociation.element* }
 
 ExportDetails.element = element miradi:ExportDetails
 {

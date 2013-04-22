@@ -270,6 +270,22 @@ public interface Xmpz2XmlConstants
 	public static final String DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME = DiagramFactor.TAG_FONT_STYLE;
 	public static final String DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME = DiagramFactor.TAG_FONT_SIZE;
 	public static final String THREAT_REDUCTION_RESULT_THREAT = THREAT_REDUCTION_RESULTS + THREAT;
+	public static final String MIRADI_SHARE__PROJECT_DATA_TAXONOMY_ASSOCIATION_POOL = "MiradiShareProjectDataTaxonomyAssociationPool";
+	public static final String BIODIVERSITY_TARGET_TAXONOMY_ASSOCIATIONP_OOL = "BiodiversityTargetTaxonomyAssociationPool";
+	public static final String HUMAN_WELLBEING_TARGET_TAXONOMY_ASSOCIATION_POOL = "HumanWellbeingTargetTaxonomyAssociationPool";
+	public static final String CAUSE_TAXONOMY_ASSOCIATION_POOL = "CauseTaxonomyAssociationPool";
+	public static final String STRATEGY_TAXONOMY_ASSOCIATION_POOL = "StrategyTaxonomyAssociationPool";
+	public static final String RESULTS_CHAIN_TAXONOMY_ASSOCIATION_POOL = "ResultsChainTaxonomyAssociationPool";
+	public static final String THREAT_REDUCTION_RESULT_TAXONOMY_ASSOCIATION_POOL = "ThreatReductionResultTaxonomyAssociationPool";
+	public static final String GOAL_TAXONOMY_ASSOCIATION_POOL = "GoalTaxonomyAssociationPool";
+	public static final String KEY_ECOLOGICAL_ATTRIBUTE_TAXONOMY_ASSOCIATION_POOL = "KeyEcologicalAttributeTaxonomyAssociationPool";
+	public static final String INDICATOR_TAXONOMY_ASSOCIATION_POOL = "IndicatorTaxonomyAssociationPool";
+	public static final String OBJECTIVE_TAXONOMY_ASSOCIATION_POOL = "ObjectiveTaxonomyAssociationPool";
+	public static final String STRESS_TAXONOMY_ASSOCIATION_POOL = "StressTaxonomyAssociationPool";
+	public static final String TASK_TAXONOMY_ASSOCIATION_POOL = "TaskTaxonomyAssociationPool";
+	public static final String TAXONOMY_POOL = "TaxonomyPool";
+	public static final String TAXONOMY_ASSOCIATION = "TaxonomyAssociation";
+	
 	public static final String VOCABULARY_LANGUAGE_CODE = "vocabulary_language_code";
 	public static final String VOCABULARY_FISCAL_YEAR_START = "vocabulary_fiscal_year_start_month";
 	public static final String VOCABULARY_PROTECTED_AREA_CATEGORIES = "vocabulary_protected_area_categories";
