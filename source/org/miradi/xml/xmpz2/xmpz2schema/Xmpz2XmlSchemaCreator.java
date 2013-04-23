@@ -139,6 +139,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		creators.add(defineExtraDataItemElement());
 		creators.add(defineThreatStressRatingElement());
 		creators.add(defineTaxnomyAssociationsElement());
+		creators.add(defineTaxonomyClassificationContainerElement());
 		
 		for(Xmpz2CustomSchemaDefinitionCreator creator : creators)
 		{
@@ -164,6 +165,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().writeElement(STRESS_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElement(TASK_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElement(TAXONOMY_POOL, TAXONOMY_ASSOCIATION);
+		getSchemaWriter().writeElement(TAXONOMY_CLASSIFICATION_CONTAINER, TAXONOMY_CLASSIFICATION);
 		getSchemaWriter().println();
 	}
 
@@ -884,6 +886,15 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		creator.addTextAttributeElement(TAXONOMY_ASSOCIATION_LABEL);
 		creator.addOptionalTextSchemaElement(TAXONOMY_ASSOCIATION_DESCRIPTION);
 		creator.addTextAttributeElement(TAXONOMY_ASSOCIATION_TAXONOMY_CODE);
+		
+		return creator;
+	}
+	
+	private Xmpz2CustomSchemaDefinitionCreator defineTaxonomyClassificationContainerElement()
+	{
+		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), TAXONOMY_CLASSIFICATION);
+		creator.addChildElement("TaxonomyClassificationTaxonomyCode", TEXT_ELEMENT_TYPE);
+		creator.addZeroOrMoreChildElement("TaxonomyClassificationTaxonomyElementCodes", TEXT_ELEMENT_TYPE);
 		
 		return creator;
 	}

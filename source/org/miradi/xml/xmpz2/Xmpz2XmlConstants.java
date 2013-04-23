@@ -285,6 +285,9 @@ public interface Xmpz2XmlConstants
 	public static final String TASK_TAXONOMY_ASSOCIATION_POOL = "TaskTaxonomyAssociationPool";
 	public static final String TAXONOMY_POOL = "TaxonomyPool";
 	public static final String TAXONOMY_ASSOCIATION = "TaxonomyAssociation";
+	public static final String TAXONOMY_CLASSIFICATION = "TaxonomyClassification";
+	public static final String TAXONOMY_CLASSIFICATION_CONTAINER = TAXONOMY_CLASSIFICATION + "Container";
+	
 	public static final String CODE = "Code";
 	
 	public static final String TAXONOMY_ASSOCIATION_MULTI_SELECT = "TaxonomyAssociationMultiSelect";
