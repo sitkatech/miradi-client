@@ -154,7 +154,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void writeMiradiShareTaxonomyAssociationsPools()
 	{
 		getSchemaWriter().writeElement(MIRADI_SHARE__PROJECT_DATA_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
-		getSchemaWriter().writeElement(BIODIVERSITY_TARGET_TAXONOMY_ASSOCIATIONP_OOL, TAXONOMY_ASSOCIATION);
+		getSchemaWriter().writeElement(BIODIVERSITY_TARGET_TAXONOMY_ASSOCIATIONP_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElement(HUMAN_WELLBEING_TARGET_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElement(CAUSE_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElement(STRATEGY_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
@@ -202,7 +202,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		}
 		
 		elementNames.add(createOptionalSchemaElement(MIRADI_SHARE__PROJECT_DATA_TAXONOMY_ASSOCIATION_POOL));
-		elementNames.add(createOptionalSchemaElement(BIODIVERSITY_TARGET_TAXONOMY_ASSOCIATIONP_OOL));
+		elementNames.add(createOptionalSchemaElement(BIODIVERSITY_TARGET_TAXONOMY_ASSOCIATIONP_POOL));
 		elementNames.add(createOptionalSchemaElement(HUMAN_WELLBEING_TARGET_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(CAUSE_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(STRATEGY_TAXONOMY_ASSOCIATION_POOL));

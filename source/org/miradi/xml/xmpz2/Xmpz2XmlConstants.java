@@ -271,7 +271,7 @@ public interface Xmpz2XmlConstants
 	public static final String DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME = DiagramFactor.TAG_FONT_SIZE;
 	public static final String THREAT_REDUCTION_RESULT_THREAT = THREAT_REDUCTION_RESULTS + THREAT;
 	public static final String MIRADI_SHARE__PROJECT_DATA_TAXONOMY_ASSOCIATION_POOL = "MiradiShareProjectDataTaxonomyAssociationPool";
-	public static final String BIODIVERSITY_TARGET_TAXONOMY_ASSOCIATIONP_OOL = "BiodiversityTargetTaxonomyAssociationPool";
+	public static final String BIODIVERSITY_TARGET_TAXONOMY_ASSOCIATIONP_POOL = "BiodiversityTargetTaxonomyAssociationPool";
 	public static final String HUMAN_WELLBEING_TARGET_TAXONOMY_ASSOCIATION_POOL = "HumanWellbeingTargetTaxonomyAssociationPool";
 	public static final String CAUSE_TAXONOMY_ASSOCIATION_POOL = "CauseTaxonomyAssociationPool";
 	public static final String STRATEGY_TAXONOMY_ASSOCIATION_POOL = "StrategyTaxonomyAssociationPool";
