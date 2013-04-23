@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-22 17:31-0500\n"
+"POT-Creation-Date: 2013-04-23 11:31-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -478,7 +478,7 @@ msgstr "7B. Bagikan Apa yang Anda Pelajari "
 msgid "7C. Create a Learning Environment"
 msgstr "7C. Ciptakan Lingkungan Belajar "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1351
+#: Miradi/source/org/miradi/main/MainWindow.java:1352
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -3459,7 +3459,7 @@ msgstr "Perkirakan biaya kegiatan dan pemantauan "
 msgid "Euro"
 msgstr "Euro"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:928
+#: Miradi/source/org/miradi/main/MainWindow.java:929
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
@@ -5075,7 +5075,7 @@ msgstr ""
 msgid "Miradi does not recognize %s as a project file"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:753
+#: Miradi/source/org/miradi/main/MainWindow.java:755
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5669,7 +5669,7 @@ msgstr "Proyek "
 msgid "Project Advisor"
 msgstr "Penasihat Proyek"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:751
+#: Miradi/source/org/miradi/main/MainWindow.java:753
 msgid "Project Corruption Detected"
 msgstr ""
 
@@ -5702,7 +5702,7 @@ msgstr "Sumber Daya Proyek "
 msgid "Project Resource Filter Editor"
 msgstr "Editor Filter Sumber Daya Proyek "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:926
+#: Miradi/source/org/miradi/main/MainWindow.java:927
 msgid "Project Resource Filter Is On"
 msgstr "Filter Sumber Daya Proyek Adalah Aktif "
 
@@ -6311,7 +6311,7 @@ msgstr "Pemilik Kepentingan"
 msgid "Standard Reports"
 msgstr "Laporan Standar "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:960
+#: Miradi/source/org/miradi/main/MainWindow.java:961
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -7791,7 +7791,7 @@ msgid ""
 "damaged. Please contact Miradi support for recovery options."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:742
+#: Miradi/source/org/miradi/main/MainWindow.java:744
 msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
@@ -8216,7 +8216,7 @@ msgstr ""
 "Tidak bisa menghapus proyek karena sedang digunakan oleh salinan lain dari "
 "aplikasi ini:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1335
+#: Miradi/source/org/miradi/main/MainWindow.java:1336
 msgid "Unable to launch external web browser"
 msgstr "Tidak bisa meluncurkan perambah web eksternal "
 
@@ -8237,7 +8237,7 @@ msgstr ""
 "Tidak bisa mengganti nama proyek karena sedang digunakan oleh salinan lain "
 "dari aplikasi ini:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1117
+#: Miradi/source/org/miradi/main/MainWindow.java:1118
 msgid "Unable to save preferences"
 msgstr "Tidak bisa menyimpan preferensi "
 
