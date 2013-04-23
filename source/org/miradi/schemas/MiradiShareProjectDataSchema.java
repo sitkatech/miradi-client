@@ -71,11 +71,5 @@ public class MiradiShareProjectDataSchema extends BaseObjectSchema
 		return OBJECT_NAME;
 	}
 	
-	@Override
-	public String getXmpz2ElementName()
-	{
-		return MIRADI_SHARE_PROJET_DATA;
-	}
-	
 	public static final String OBJECT_NAME = "MiradiShareProjectData";
 }
