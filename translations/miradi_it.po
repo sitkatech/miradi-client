@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-22 14:46-0500\n"
+"POT-Creation-Date: 2013-04-22 17:31-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -2124,6 +2124,10 @@ msgstr ""
 "Fattori Concorrenti o a Minacce \n"
 " sono stati spostati al corrispettivo Risultato di Contenimento della "
 "Minaccia  o Risultato Intermedio "
+
+#: Miradi/source/org/miradi/questions/TaxonomyClassificationSelectionMode.java:36
+msgid "Any Node"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/MonthAbbreviationsQuestion.java:38
 msgid "Apr"
@@ -4684,6 +4688,10 @@ msgstr "Layers"
 msgid "Leader/Manager"
 msgstr "Leader/Manager"
 
+#: Miradi/source/org/miradi/questions/TaxonomyClassificationSelectionMode.java:35
+msgid "Leaf Only"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:57
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:94
 msgid "Legacy TNC Ratings"
@@ -5240,6 +5248,10 @@ msgstr ""
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListMoveToDirectoryAction.java:32
 msgid "Move To..."
 msgstr "Sposta in..."
+
+#: Miradi/source/org/miradi/questions/TaxonomyMultiSelectModeQuestion.java:36
+msgid "Multi Selection"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:225
 msgid "Must be a positive number"
@@ -6368,6 +6380,10 @@ msgstr "Modalità di Analisi semplice delle Minacce"
 #: Miradi/source/org/miradi/wizard/diagram/DescribeTargetStatusStep.java:50
 msgid "Simple viability"
 msgstr "Vitalità semplificata"
+
+#: Miradi/source/org/miradi/questions/TaxonomyMultiSelectModeQuestion.java:35
+msgid "Single Selection"
+msgstr ""
 
 #: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:934
 msgid "Site/Scope Description:"

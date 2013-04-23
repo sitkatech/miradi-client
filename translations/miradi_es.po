@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-22 14:46-0500\n"
+"POT-Creation-Date: 2013-04-22 17:31-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -2022,6 +2022,10 @@ msgid ""
 "Threats \n"
 "have been moved to the corresponding Threat Reduction Result or Intermediate "
 "Result"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/TaxonomyClassificationSelectionMode.java:36
+msgid "Any Node"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/MonthAbbreviationsQuestion.java:38
@@ -4582,6 +4586,10 @@ msgstr "Capas"
 msgid "Leader/Manager"
 msgstr "Líder/coordinador"
 
+#: Miradi/source/org/miradi/questions/TaxonomyClassificationSelectionMode.java:35
+msgid "Leaf Only"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:57
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:94
 msgid "Legacy TNC Ratings"
@@ -5149,6 +5157,10 @@ msgstr ""
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListMoveToDirectoryAction.java:32
 msgid "Move To..."
 msgstr "Mover a... "
+
+#: Miradi/source/org/miradi/questions/TaxonomyMultiSelectModeQuestion.java:36
+msgid "Multi Selection"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:225
 msgid "Must be a positive number"
@@ -6272,6 +6284,10 @@ msgstr "Modo de calificación simple de amenazas "
 #: Miradi/source/org/miradi/wizard/diagram/DescribeTargetStatusStep.java:50
 msgid "Simple viability"
 msgstr "Viabilidad simple"
+
+#: Miradi/source/org/miradi/questions/TaxonomyMultiSelectModeQuestion.java:35
+msgid "Single Selection"
+msgstr ""
 
 #: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:934
 msgid "Site/Scope Description:"
