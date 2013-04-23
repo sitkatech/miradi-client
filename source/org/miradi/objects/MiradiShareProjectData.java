@@ -74,8 +74,8 @@ public class MiradiShareProjectData extends BaseObject
 	public static final String TAG_PROGRAM_ID = "ProgramId";
 	public static final String TAG_PROGRAM_NAME = "ProgramName";
 	public static final String TAG_PROGRAM_URL = "ProgramUrl";
-	public static final String TAG_PROJET_TEMPLATE_ID = "ProjectTemplateId";
-	public static final String TAG_PROJET_TEMPLATE_NAME = "ProjectTemplateName";
+	public static final String TAG_PROJECT_TEMPLATE_ID = "ProjectTemplateId";
+	public static final String TAG_PROJECT_TEMPLATE_NAME = "ProjectTemplateName";
 	public static final String TAG_PROGRAM_TAXONOMY_SET_ID = "ProgramTaxonomySetId";
 	public static final String TAG_PROGRAM_TAXONOMY_SET_NAME = "ProgramTaxonomySetName";
 	public static final String TAG_PROGRAM_TAXONOMY_SET_VERSION_ID = "ProgramTaxonomySetVersionId";

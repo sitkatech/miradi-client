@@ -40,8 +40,8 @@ public class MiradiShareProjectDataSchema extends BaseObjectSchema
 		createFieldSchemaSingleLineUserText(MiradiShareProjectData.TAG_PROGRAM_ID);
 		createFieldSchemaSingleLineUserText(MiradiShareProjectData.TAG_PROGRAM_NAME);
 		createFieldSchemaSingleLineUserText(MiradiShareProjectData.TAG_PROGRAM_URL);
-		createFieldSchemaSingleLineUserText(MiradiShareProjectData.TAG_PROJET_TEMPLATE_ID);
-		createFieldSchemaSingleLineUserText(MiradiShareProjectData.TAG_PROJET_TEMPLATE_NAME);
+		createFieldSchemaSingleLineUserText(MiradiShareProjectData.TAG_PROJECT_TEMPLATE_ID);
+		createFieldSchemaSingleLineUserText(MiradiShareProjectData.TAG_PROJECT_TEMPLATE_NAME);
 		createFieldSchemaSingleLineUserText(MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_ID);
 		createFieldSchemaSingleLineUserText(MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_NAME);
 		createFieldSchemaSingleLineUserText(MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_VERSION_ID);
