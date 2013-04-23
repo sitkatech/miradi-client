@@ -121,12 +121,13 @@ public class ObjectType
 	public static final int DASHBOARD = 58;
 	public static final int XSL_TEMPLATE = 59;
 	public static final int MIRADI_SHARE_PROJECT_DATA = 60;
+	public static final int MIRADI_SHARE_TAXONOMY = 61;
 	// When you add a new type, be sure to:
 	// - increment OBJECT_TYPE_COUNT
 	// - IF it is a user-visible object, add a case to getUserFriendlyObjectTypeName below
 	// - IF it is a top-level object, add it to getTopLevelObjectTypes below
 	
-	public static final int OBJECT_TYPE_COUNT = 61;
+	public static final int OBJECT_TYPE_COUNT = 62;
 
 	public static String getUserFriendlyObjectTypeName(Project project, int objectType)
 	{
