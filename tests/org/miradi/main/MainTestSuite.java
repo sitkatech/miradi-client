@@ -122,6 +122,8 @@ import org.miradi.objects.TestIntermediateResult;
 import org.miradi.objects.TestIucnRedlistSpecies;
 import org.miradi.objects.TestKeyEcologicalAttribute;
 import org.miradi.objects.TestMeasurement;
+import org.miradi.objects.TestMiradiShareProjectData;
+import org.miradi.objects.TestMiradiShareTaxonomy;
 import org.miradi.objects.TestObjectFindOwnerAndFindReferrer;
 import org.miradi.objects.TestObjectManager;
 import org.miradi.objects.TestObjective;
@@ -462,6 +464,8 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestXmlUtilities2.class));
 		addTest(new TestSuite(TestXslTemplate.class));
 		addTest(new TestSuite(TestOwnedBaseObjects.class));
+		addTest(new TestSuite(TestMiradiShareProjectData.class));
+		addTest(new TestSuite(TestMiradiShareTaxonomy.class));
 			
 		// commands package
 		addTest(new TestSuite(TestCommands.class));
