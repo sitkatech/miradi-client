@@ -51,6 +51,7 @@ public class StrategySchema extends FactorSchema
 		createProgressReportSchema();
 	    writeIndicatorIds();
 		writeObjectiveIds();
+		createTaxonomyClassificationSchemaField();
 	
 		createPseudoFieldSchemaString(Strategy.PSEUDO_TAG_RATING_SUMMARY);
 		createPseudoFieldSchemaQuestion(Strategy.PSEUDO_TAG_IMPACT_RATING_VALUE);

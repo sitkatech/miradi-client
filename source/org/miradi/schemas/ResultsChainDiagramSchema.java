@@ -28,6 +28,14 @@ public class ResultsChainDiagramSchema extends DiagramObjectSchema
 	{
 		super();
 	}
+	
+	@Override
+	protected void fillFieldSchemas()
+	{
+		super.fillFieldSchemas();
+		
+		createTaxonomyClassificationSchemaField();
+	}
 
 	public static int getObjectType()
 	{

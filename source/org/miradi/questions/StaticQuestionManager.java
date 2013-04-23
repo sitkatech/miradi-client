@@ -108,6 +108,7 @@ public class StaticQuestionManager
 		addQuestion(new DiagramModeQuestion());
 		addQuestion(new TaxonomyMultiSelectModeQuestion());
 		addQuestion(new TaxonomyClassificationSelectionMode());
+		addQuestion(new MiradiShareTaxonomyQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)

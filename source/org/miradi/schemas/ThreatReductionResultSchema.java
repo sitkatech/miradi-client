@@ -38,6 +38,7 @@ public class ThreatReductionResultSchema extends FactorSchema
 		createFieldSchemaOptionalRef(ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF);
 	    writeIndicatorIds();
 		writeObjectiveIds();
+		createTaxonomyClassificationSchemaField();
 	}
 
 	public static int getObjectType()

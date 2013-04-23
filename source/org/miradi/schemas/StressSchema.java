@@ -40,6 +40,7 @@ public class StressSchema extends FactorSchema
 		createFieldSchemaChoice(Stress.TAG_SCOPE, StressScopeChoiceQuestion.class);
 		createFieldSchemaChoice(Stress.TAG_SEVERITY, StressSeverityChoiceQuestion.class);
 		createPseudoFieldSchemaQuestion(Stress.PSEUDO_STRESS_RATING);
+		createTaxonomyClassificationSchemaField();
 	}
 	
 	@Override
