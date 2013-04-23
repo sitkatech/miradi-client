@@ -20,27 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.xmpz2schema;
 
-import java.util.Vector;
-
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.xml.generic.XmlSchemaCreator;
 
-public class CauseSchemaWriter extends BaseObjectSchemaWriterWithTaxonomyClassificationContainer
+public class MiradiShareProjectDataSchemaWriter extends SingletonSchemaWriter
 {
-	public CauseSchemaWriter(Xmpz2XmlSchemaCreator creatorToUse, BaseObjectSchema baseObjectSchemaToUse)
+	public MiradiShareProjectDataSchemaWriter(Xmpz2XmlSchemaCreator creatorToUse, BaseObjectSchema baseObjectSchemaToUse)
 	{
 		super(creatorToUse, baseObjectSchemaToUse);
 	}
-	
-	@Override
-	public Vector<String> createFieldSchemas() throws Exception
-	{
-		Vector<String> schemaElements = super.createFieldSchemas();
-		
-		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(getXmpz2ElementName() + CALCULATED_THREAT_RATING, XmlSchemaCreator.VOCABULARY_THREAT_RATING));
-		
-		return schemaElements;
-	}	
 
 	@Override
 	protected boolean shouldIncludeTaxonomyClassificationContainerElement()

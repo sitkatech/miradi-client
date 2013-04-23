@@ -25,7 +25,7 @@ import java.util.Vector;
 import org.miradi.objects.BaseObject;
 import org.miradi.schemas.BaseObjectSchema;
 
-abstract public class BaseObjectSchemaWriterWithCalcualtedCostsElement extends BaseObjectSchemaWriter
+abstract public class BaseObjectSchemaWriterWithCalcualtedCostsElement extends BaseObjectSchemaWriterWithTaxonomyClassificationContainer
 {
 	public BaseObjectSchemaWriterWithCalcualtedCostsElement(Xmpz2XmlSchemaCreator creatorToUse,	BaseObjectSchema baseObjectSchemaToUse)
 	{

@@ -37,12 +37,14 @@ import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.MiradiShareProjectData;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.RatingCriterion;
 import org.miradi.objects.ReportTemplate;
 import org.miradi.objects.ResourceAssignment;
+import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.TableSettings;
@@ -236,7 +238,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeSingletonObjectSchema(new WcsProjectDataSchema());
 		writeSingletonObjectSchema(new FosProjectDataSchema());
 		writeSingletonObjectSchema(new RareProjectDataSchema());
-		writeSingletonObjectSchema(new MiradiShareProjectDataSchema());
+		writeSingletonObjectSchema(new MiradiShareProjectDataSchemaWriter(this, new MiradiShareProjectDataSchema()));
 	}
 	
 	private void writeSingletonObjectSchema(BaseObjectSchema baseObjectSchema) throws Exception
@@ -1023,6 +1025,15 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		if (Stress.is(baseObjectSchema.getType()))
 			return new StressSchemaWriter(this, baseObjectSchema);
+		
+		if (KeyEcologicalAttribute.is(baseObjectSchema.getType()))
+			return new KeyEcologicalAttributeSchemaWriter(this, baseObjectSchema);
+		
+		if (ResultsChainDiagram.is(baseObjectSchema.getType()))
+			return new ResultsChainSchemaWriter(this, baseObjectSchema);
+		
+		if (ThreatReductionResult.is(baseObjectSchema.getType()))
+			return new ThreatReductionResultSchemaWriter(this, baseObjectSchema);
 		
 		return new BaseObjectSchemaWriter(this, baseObjectSchema);
 	}

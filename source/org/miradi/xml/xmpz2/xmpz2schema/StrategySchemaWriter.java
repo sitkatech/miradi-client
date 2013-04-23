@@ -28,4 +28,10 @@ public class StrategySchemaWriter extends BaseObjectSchemaWriterWithCalcualtedCo
 	{
 		super(creatorToUse, baseObjectSchemaToUse);
 	}
+	
+	@Override
+	protected boolean shouldIncludeTaxonomyClassificationContainerElement()
+	{
+		return true;
+	}
 }

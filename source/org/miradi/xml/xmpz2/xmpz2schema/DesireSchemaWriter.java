@@ -26,7 +26,7 @@ import org.miradi.objects.Desire;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.FieldSchemaRelevancyOverrideSetData;
 
-public class DesireSchemaWriter extends BaseObjectSchemaWriter
+public class DesireSchemaWriter extends BaseObjectSchemaWriterWithTaxonomyClassificationContainer
 {
 	public DesireSchemaWriter(Xmpz2XmlSchemaCreator creatorToUse, BaseObjectSchema baseObjectSchemaToUse)
 	{
