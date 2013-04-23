@@ -705,7 +705,9 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	{
 		final String beforeRepairSnapShot = ProjectSaver.createSnapShot(getProject());
 		ProjectRepairer repairer = new ProjectRepairer(project);
-		repairMissingObjects(repairer);
+		if (commandLineArguments.contains(Miradi.REPAIR_PROJECT_ON_SWITCH))
+			repairMissingObjects(repairer);
+		
 		quarantineOrphans(repairer);
 		repairer.repairProblemsWherePossible();
 		scanForSeriousCorruption(repairer);
@@ -781,8 +783,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	private void repairMissingObjects(ProjectRepairer repairer) throws Exception
 	{
 		HashMap<ORef, ORefSet> rawProblems = repairer.getListOfMissingObjects();
-		if (commandLineArguments.contains(Miradi.REPAIR_PROJECT_ON_SWITCH))
-			repairMissingObjects(rawProblems.keySet());
+		repairMissingObjects(rawProblems.keySet());
 	}
 
 	private void repairMissingObjects(Set<ORef> missingObjectRefs) throws Exception
