@@ -32,6 +32,7 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.AccountingCodePool;
 import org.miradi.objectpools.MiradiShareProjectDataPool;
+import org.miradi.objectpools.MiradiShareTaxonomyAssociationPool;
 import org.miradi.objectpools.MiradiShareTaxonomyPool;
 import org.miradi.objectpools.ResourceAssignmentPool;
 import org.miradi.objectpools.AudiencePool;
@@ -113,6 +114,7 @@ import org.miradi.schemas.IucnRedlistSpeciesSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.MiradiShareProjectDataSchema;
+import org.miradi.schemas.MiradiShareTaxonomyAssociationSchema;
 import org.miradi.schemas.MiradiShareTaxonomySchema;
 import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 import org.miradi.schemas.ObjectiveSchema;
@@ -215,6 +217,7 @@ public class ObjectManager
 		addNormalPool(new XslTemplatePool(ida), XslTemplateSchema.OBJECT_NAME);
 		addNormalPool(new MiradiShareProjectDataPool(ida), MiradiShareProjectDataSchema.OBJECT_NAME);
 		addNormalPool(new MiradiShareTaxonomyPool(ida), MiradiShareTaxonomySchema.OBJECT_NAME);
+		addNormalPool(new MiradiShareTaxonomyAssociationPool(ida), MiradiShareTaxonomyAssociationSchema.OBJECT_NAME);
 	}
 	
 	public ChainWalker getDiagramChainWalker()

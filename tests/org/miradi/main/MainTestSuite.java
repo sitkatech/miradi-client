@@ -124,6 +124,7 @@ import org.miradi.objects.TestKeyEcologicalAttribute;
 import org.miradi.objects.TestMeasurement;
 import org.miradi.objects.TestMiradiShareProjectData;
 import org.miradi.objects.TestMiradiShareTaxonomy;
+import org.miradi.objects.TestMiradiShareTaxonomyAssociation;
 import org.miradi.objects.TestObjectFindOwnerAndFindReferrer;
 import org.miradi.objects.TestObjectManager;
 import org.miradi.objects.TestObjective;
@@ -466,6 +467,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestOwnedBaseObjects.class));
 		addTest(new TestSuite(TestMiradiShareProjectData.class));
 		addTest(new TestSuite(TestMiradiShareTaxonomy.class));
+		addTest(new TestSuite(TestMiradiShareTaxonomyAssociation.class));
 			
 		// commands package
 		addTest(new TestSuite(TestCommands.class));
