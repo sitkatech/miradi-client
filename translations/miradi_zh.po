@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-22 14:46-0500\n"
+"POT-Creation-Date: 2013-04-22 17:31-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -1993,6 +1993,10 @@ msgid ""
 "Threats \n"
 "have been moved to the corresponding Threat Reduction Result or Intermediate "
 "Result"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/TaxonomyClassificationSelectionMode.java:36
+msgid "Any Node"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/MonthAbbreviationsQuestion.java:38
@@ -4493,6 +4497,10 @@ msgstr "层 \t\t"
 msgid "Leader/Manager"
 msgstr "领导/管理人"
 
+#: Miradi/source/org/miradi/questions/TaxonomyClassificationSelectionMode.java:35
+msgid "Leaf Only"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:57
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:94
 msgid "Legacy TNC Ratings"
@@ -5025,6 +5033,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListMoveToDirectoryAction.java:32
 msgid "Move To..."
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/TaxonomyMultiSelectModeQuestion.java:36
+msgid "Multi Selection"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:225
@@ -6107,6 +6119,10 @@ msgstr "简单威胁因子评级模式"
 #: Miradi/source/org/miradi/wizard/diagram/DescribeTargetStatusStep.java:50
 msgid "Simple viability"
 msgstr "简单生存力 \t\t"
+
+#: Miradi/source/org/miradi/questions/TaxonomyMultiSelectModeQuestion.java:35
+msgid "Single Selection"
+msgstr ""
 
 #: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:934
 msgid "Site/Scope Description:"
