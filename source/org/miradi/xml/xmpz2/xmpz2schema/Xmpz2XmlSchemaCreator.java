@@ -885,9 +885,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		creator.addTextAttributeElement(TAXONOMY_ASSOCIATION + CODE);
 		creator.addChildElement(TAXONOMY_ASSOCIATION_MULTI_SELECT, VOCABULARY_TAXONOMY_CLASSIFICATION_MULTISELECT_MODE);
 		creator.addChildElement(TAXONOMY_ASSOCIATION_SELECTION_TYPE, VOCABULARY_TAXONOMY_CLASSIFICATION_SELECTION_MODE);
-		creator.addTextAttributeElement(TAXONOMY_ASSOCIATION_LABEL);
+		creator.addTextSchemaElement(TAXONOMY_ASSOCIATION_LABEL);
 		creator.addOptionalTextSchemaElement(TAXONOMY_ASSOCIATION_DESCRIPTION);
-		creator.addTextAttributeElement(TAXONOMY_ASSOCIATION_TAXONOMY_CODE);
+		creator.addTextSchemaElement(TAXONOMY_ASSOCIATION_TAXONOMY_CODE);
 		
 		return creator;
 	}
