@@ -49,5 +49,6 @@ abstract public class DesireSchema extends BaseObjectSchema
 		createPseudoFieldSchemaRefList(Desire.PSEUDO_TAG_RELEVANT_ACTIVITY_REFS);
 		createPseudoFieldSchemaString(Desire.PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE);
 		createPseudoFieldSchemaString(Desire.PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS);
+		createTaxonomyClassificationSchemaField();
 	}
 }

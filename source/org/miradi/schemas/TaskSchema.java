@@ -39,6 +39,7 @@ public class TaskSchema extends FactorSchema
 		createFieldSchemaOptionalRef(Task.TAG_LEADER_RESOURCE);
 		createBudgetSchemas();
 		createProgressReportSchema();
+		createTaxonomyClassificationSchemaField();
 		
 		createPseudoFieldSchemaString(Task.PSEUDO_TAG_STRATEGY_LABEL);
 		createPseudoFieldSchemaString(Task.PSEUDO_TAG_INDICATOR_LABEL);
