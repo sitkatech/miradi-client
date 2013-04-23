@@ -28,4 +28,10 @@ public class TaskSchemaWriter extends BaseObjectSchemaWriterWithCalcualtedCostsE
 	{
 		super(creatorToUse, baseObjectSchemaToUse);
 	}
+	
+	@Override
+	protected boolean shouldIncludeTaxonomyClassificationContainerElement()
+	{
+		return true;
+	}
 }

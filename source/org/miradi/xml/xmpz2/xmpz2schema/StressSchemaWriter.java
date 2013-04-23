@@ -25,7 +25,7 @@ import java.util.Vector;
 import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.schemas.BaseObjectSchema;
 
-public class StressSchemaWriter extends BaseObjectSchemaWriter
+public class StressSchemaWriter extends BaseObjectSchemaWriterWithTaxonomyClassificationContainer
 {
 	public StressSchemaWriter(Xmpz2XmlSchemaCreator creatorToUse, BaseObjectSchema baseObjectSchemaToUse)
 	{

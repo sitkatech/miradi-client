@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Tue Apr 23 10:44:18 EDT 2013 $
+# $LastChangedDate: Tue Apr 23 11:31:44 EDT 2013 $
 # $LastChangedRevision: 220 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/220'
 start = ConservationProject.element
@@ -224,7 +224,8 @@ MiradiShareProjectData.element = element miradi:MiradiShareProjectData
   element miradi:MiradiShareProjectDataProjectId { text }? &
   element miradi:MiradiShareProjectDataProjectTemplateId { text }? &
   element miradi:MiradiShareProjectDataProjectTemplateName { text }? &
-  element miradi:MiradiShareProjectDataProjectUrl { text }?
+  element miradi:MiradiShareProjectDataProjectUrl { text }? &
+  TaxonomyClassificationContainer.element ?
 }
 
 TaskPool.element = element miradi:TaskPool { Task.element* }
@@ -240,6 +241,7 @@ Task.element = element miradi:Task
   element miradi:TaskOrderedSubTaskIds { SubTaskId.element* }? &
   element miradi:TaskProgressReportIds { ProgressReportId.element* }? &
   element miradi:TaskResourceAssignmentIds { ResourceAssignmentId.element* }? &
+  TaxonomyClassificationContainer.element ? &
   element miradi:TaskCalculatedCosts { CalculatedCosts.element }?
 }
 
@@ -295,6 +297,7 @@ Indicator.element = element miradi:Indicator
   element miradi:IndicatorResourceAssignmentIds { ResourceAssignmentId.element* }? &
   element miradi:IndicatorThresholds { IndicatorThreshold.element* }? &
   element miradi:IndicatorViabilityRatingsComments { formatted_text }? &
+  TaxonomyClassificationContainer.element ? &
   element miradi:IndicatorCalculatedCosts { CalculatedCosts.element }?
 }
 
@@ -309,7 +312,8 @@ Objective.element = element miradi:Objective
   element miradi:ObjectiveProgressPercentIds { ProgressPercentId.element* }? &
   element miradi:ObjectiveRelevantActivityIds { ActivityId.element* }? &
   element miradi:ObjectiveRelevantIndicatorIds { IndicatorId.element* }? &
-  element miradi:ObjectiveRelevantStrategyIds { StrategyId.element* }?
+  element miradi:ObjectiveRelevantStrategyIds { StrategyId.element* }? &
+  TaxonomyClassificationContainer.element ?
 }
 
 GoalPool.element = element miradi:GoalPool { Goal.element* }
@@ -323,7 +327,8 @@ Goal.element = element miradi:Goal
   element miradi:GoalProgressPercentIds { ProgressPercentId.element* }? &
   element miradi:GoalRelevantActivityIds { ActivityId.element* }? &
   element miradi:GoalRelevantIndicatorIds { IndicatorId.element* }? &
-  element miradi:GoalRelevantStrategyIds { StrategyId.element* }?
+  element miradi:GoalRelevantStrategyIds { StrategyId.element* }? &
+  TaxonomyClassificationContainer.element ?
 }
 
 DiagramLinkPool.element = element miradi:DiagramLinkPool { DiagramLink.element* }
@@ -379,7 +384,8 @@ KeyEcologicalAttribute.element = element miradi:KeyEcologicalAttribute
   element miradi:KeyEcologicalAttributeIdentifier { text }? &
   element miradi:KeyEcologicalAttributeIndicatorIds { IndicatorId.element* }? &
   element miradi:KeyEcologicalAttributeKeyEcologicalAttributeType { vocabulary_key_ecological_attribute_type }? &
-  element miradi:KeyEcologicalAttributeName { formatted_text }?
+  element miradi:KeyEcologicalAttributeName { formatted_text }? &
+  TaxonomyClassificationContainer.element ?
 }
 
 DiagramFactorPool.element = element miradi:DiagramFactorPool { DiagramFactor.element* }
@@ -421,6 +427,7 @@ Cause.element = element miradi:Cause
   element miradi:CauseName { formatted_text }? &
   element miradi:CauseObjectiveIds { ObjectiveId.element* }? &
   element miradi:CauseStandardClassification { vocabulary_cause_taxonomy_code }? &
+  TaxonomyClassificationContainer.element ? &
   element miradi:CauseCalculatedThreatRating { vocabulary_threat_rating }?
 }
 
@@ -444,6 +451,7 @@ Strategy.element = element miradi:Strategy
   element miradi:StrategyResourceAssignmentIds { ResourceAssignmentId.element* }? &
   element miradi:StrategyStandardClassification { vocabulary_strategy_taxonomy_code }? &
   element miradi:StrategyStatus { vocabulary_strategy_status } &
+  TaxonomyClassificationContainer.element ? &
   element miradi:StrategyCalculatedCosts { CalculatedCosts.element }?
 }
 
@@ -465,6 +473,7 @@ BiodiversityTarget.element = element miradi:BiodiversityTarget
   element miradi:BiodiversityTargetStressIds { StressId.element* }? &
   element miradi:BiodiversityTargetSubTargetIds { SubTargetId.element* }? &
   element miradi:BiodiversityTargetViabilityMode { vocabulary_target_viability_mode } &
+  TaxonomyClassificationContainer.element ? &
   element miradi:BiodiversityTargetCalculatedViabilityStatus { vocabulary_target_status }? &
   element miradi:BiodiversityTargetCalculatedThreatRating { vocabulary_threat_rating }?
 }
@@ -492,7 +501,8 @@ ResultsChain.element = element miradi:ResultsChain
   element miradi:ResultsChainIdentifier { text }? &
   element miradi:ResultsChainName { formatted_text }? &
   element miradi:ResultsChainSelectedTaggedObjectSetIds { TaggedObjectSetId.element* }? &
-  element miradi:ResultsChainZoomScale { xsd:decimal }?
+  element miradi:ResultsChainZoomScale { xsd:decimal }? &
+  TaxonomyClassificationContainer.element ?
 }
 
 ThreatReductionResultPool.element = element miradi:ThreatReductionResultPool { ThreatReductionResult.element* }
@@ -505,7 +515,8 @@ ThreatReductionResult.element = element miradi:ThreatReductionResult
   element miradi:ThreatReductionResultIndicatorIds { IndicatorId.element* }? &
   element miradi:ThreatReductionResultName { formatted_text }? &
   element miradi:ThreatReductionResultObjectiveIds { ObjectiveId.element* }? &
-  element miradi:ThreatReductionResultRelatedDirectThreatId { ThreatId.element }?
+  element miradi:ThreatReductionResultRelatedDirectThreatId { ThreatId.element }? &
+  TaxonomyClassificationContainer.element ?
 }
 
 TextBoxPool.element = element miradi:TextBoxPool { TextBox.element* }
@@ -552,6 +563,7 @@ Stress.element = element miradi:Stress
   element miradi:StressName { formatted_text }? &
   element miradi:StressScopeRating { vocabulary_scope_rating }? &
   element miradi:StressSeverityRating { vocabulary_severity_rating }? &
+  TaxonomyClassificationContainer.element ? &
   element miradi:StressCalculatedStressRating { vocabulary_threat_rating }?
 }
 
@@ -654,6 +666,7 @@ HumanWellbeingTarget.element = element miradi:HumanWellbeingTarget
   element miradi:HumanWellbeingTargetSimpleViabilityStatus { vocabulary_target_status }? &
   element miradi:HumanWellbeingTargetSubTargetIds { SubTargetId.element* }? &
   element miradi:HumanWellbeingTargetViabilityMode { vocabulary_target_viability_mode } &
+  TaxonomyClassificationContainer.element ? &
   element miradi:HumanWellbeingTargetCalculatedViabilityStatus { vocabulary_target_status }? &
   element miradi:HumanWellbeingTargetCalculatedThreatRating { vocabulary_threat_rating }?
 }

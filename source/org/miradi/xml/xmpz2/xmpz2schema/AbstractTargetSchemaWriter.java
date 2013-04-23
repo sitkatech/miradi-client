@@ -25,7 +25,7 @@ import java.util.Vector;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.generic.XmlSchemaCreator;
 
-public class AbstractTargetSchemaWriter extends BaseObjectSchemaWriter
+public class AbstractTargetSchemaWriter extends BaseObjectSchemaWriterWithTaxonomyClassificationContainer
 {
 	public AbstractTargetSchemaWriter(Xmpz2XmlSchemaCreator creatorToUse, BaseObjectSchema baseObjectSchemaToUse)
 	{
@@ -42,4 +42,10 @@ public class AbstractTargetSchemaWriter extends BaseObjectSchemaWriter
 		
 		return schemaElements;
 	}	
+	
+	@Override
+	protected boolean shouldIncludeTaxonomyClassificationContainerElement()
+	{
+		return true;
+	}
 }

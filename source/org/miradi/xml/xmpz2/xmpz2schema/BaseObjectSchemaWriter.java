@@ -67,10 +67,17 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 		fieldSchemasAsString.addAll(createCustomSchemaFields());
 		final Vector<String> sortedFieldSchemas = new Vector<String>(fieldSchemasAsString);
 		Collections.sort(sortedFieldSchemas);
+		if (shouldIncludeTaxonomyClassificationContainerElement())
+			sortedFieldSchemas.add("TaxonomyClassificationContainer.element ?");
 		
 		return sortedFieldSchemas;
 	}
 	
+	protected boolean shouldIncludeTaxonomyClassificationContainerElement()
+	{
+		return false;
+	}
+
 	protected boolean shouldOmitField(String tag)
 	{
 		return false;
