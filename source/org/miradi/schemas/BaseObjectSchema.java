@@ -27,6 +27,7 @@ import org.miradi.objectdata.ObjectData;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DynamicChoiceQuestion;
+import org.miradi.questions.MiradiShareTaxonomyQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 
@@ -322,8 +323,7 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 	
 	protected void createTaxonomyClassificationSchemaField()
 	{
-		//FIXME urgent - uncomment this and fix failing test
-		//createFieldSchemaCodeList(BaseObject.TAG_MIRADI_SHARE_TAXONOMIES, StaticQuestionManager.getQuestion(MiradiShareTaxonomyQuestion.class));
+		createFieldSchemaCodeList(BaseObject.TAG_MIRADI_SHARE_TAXONOMIES, StaticQuestionManager.getQuestion(MiradiShareTaxonomyQuestion.class));
 	}
 	
 	public boolean isPseudoField(final String tag)
