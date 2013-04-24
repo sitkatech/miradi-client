@@ -288,8 +288,12 @@ public interface Xmpz2XmlConstants
 	public static final String TAXONOMY_ASSOCIATION = "TaxonomyAssociation";
 	public static final String TAXONOMY_CLASSIFICATION = "TaxonomyClassification";
 	public static final String TAXONOMY_CLASSIFICATION_CONTAINER = TAXONOMY_CLASSIFICATION + "Container";
+	public static final String TAXONOMY_ELEMENT = TAXONOMY + "Element";
 	public static final String TAXONOMY_VERSION = "Version";
-	
+	public static final String TAXONOMY_ELEMENT_CODE = TAXONOMY_ELEMENT + "Code";
+	public static final String TAXONOMY_ELEMENT_PARENT_CODE = TAXONOMY_ELEMENT + "ParentCode";
+	public static final String TAXONOMY_ELEMENT_LABEL = TAXONOMY_ELEMENT + "Label";
+	public static final String TAXONOMY_ELEMENT_DESCRIPTION = TAXONOMY_ELEMENT + "Description";
 	public static final String CODE = "Code";
 	
 	public static final String TAXONOMY_ASSOCIATION_MULTI_SELECT = "TaxonomyAssociationMultiSelect";

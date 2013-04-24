@@ -144,6 +144,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		creators.add(defineThreatStressRatingElement());
 		creators.add(defineTaxnomyAssociationsElement());
 		creators.add(defineTaxonomyClassificationContainerElement());
+		creators.add(defineTaxonomyElement());
 		
 		for(Xmpz2CustomSchemaDefinitionCreator creator : creators)
 		{
@@ -891,6 +892,19 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		return creator;
 	}
+	
+	private Xmpz2CustomSchemaDefinitionCreator defineTaxonomyElement()
+	{
+		
+		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), TAXONOMY_ELEMENT);
+		creator.addTextAttributeElement(TAXONOMY_ELEMENT_CODE);
+		creator.addOptionalTextSchemaElement(TAXONOMY_ELEMENT_PARENT_CODE);
+		creator.addTextSchemaElement(TAXONOMY_ELEMENT_LABEL);
+		creator.addTextSchemaElement(TAXONOMY_ELEMENT_DESCRIPTION);
+		
+		return creator;
+	}
+
 	
 	private Xmpz2CustomSchemaDefinitionCreator defineTaxonomyClassificationContainerElement()
 	{

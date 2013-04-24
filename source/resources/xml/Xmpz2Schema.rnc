@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Wed Apr 24 16:36:23 EDT 2013 $
+# $LastChangedDate: Wed Apr 24 16:56:24 EDT 2013 $
 # $LastChangedRevision: 221 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/221'
 start = ConservationProject.element
@@ -723,7 +723,7 @@ TaxonomyPool.element = element miradi:TaxonomyPool { Taxonomy.element* }
 Taxonomy.element = element miradi:Taxonomy
 {
   element miradi:TaxonomyVersion { text }? &
-  attribute TaxonomyCode { text } & &
+  attribute TaxonomyCode { text } &
   element miradi:TaxonomyElements { TaxonomyElement.element* }
 }
 
@@ -1160,6 +1160,14 @@ TaxonomyClassification.element = element miradi:TaxonomyClassification
 {
   element miradi:TaxonomyClassificationTaxonomyCode { text } &
   element miradi:TaxonomyClassificationTaxonomyElementCodes { text }*
+}
+
+TaxonomyElement.element = element miradi:TaxonomyElement
+{
+  attribute TaxonomyElementCode { text } &
+  element miradi:TaxonomyElementParentCode { text }? &
+  element miradi:TaxonomyElementLabel { text } &
+  element miradi:TaxonomyElementDescription { text }
 }
 
 DashboardFlagsContainer.element = element miradi:DashboardFlagsContainer
