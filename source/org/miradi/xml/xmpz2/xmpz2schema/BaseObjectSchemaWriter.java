@@ -25,6 +25,7 @@ import java.util.HashSet;
 import java.util.Vector;
 
 import org.miradi.objectdata.ObjectData;
+import org.miradi.objects.BaseObject;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
@@ -85,6 +86,9 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 	
 	protected boolean doesFieldRequireSpecialHandling(String tag)
 	{
+		if (tag.equals(BaseObject.TAG_MIRADI_SHARE_TAXONOMIES))
+			return true;
+		
 		return false;
 	}
 
