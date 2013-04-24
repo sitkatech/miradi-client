@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-23 11:31-0500\n"
+"POT-Creation-Date: 2013-04-23 17:01-0500\n"
 "PO-Revision-Date: 2013-04-02 10:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -10693,6 +10693,12 @@ msgid "FieldLabel|59.TemplateContents|Template Contents"
 msgstr ""
 
 msgid "FieldLabel|59.IncludeImages|Include Images"
+msgstr ""
+
+msgid "FieldLabel|60.MiradiShareProjectData|Miradi Share Project Data"
+msgstr ""
+
+msgid "FieldLabel|61.MiradiShareTaxonomy|Miradi Share Taxonomy"
 msgstr ""
 
 msgid ""
