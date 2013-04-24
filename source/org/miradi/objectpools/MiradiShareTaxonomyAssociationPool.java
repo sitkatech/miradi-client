@@ -27,13 +27,13 @@ import org.miradi.objects.MiradiShareTaxonomyAssociation;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.schemas.MiradiShareProjectDataSchema;
+import org.miradi.schemas.MiradiShareTaxonomyAssociationSchema;
 
 public class MiradiShareTaxonomyAssociationPool extends BaseObjectPool
 {
 	public MiradiShareTaxonomyAssociationPool(IdAssigner idAssignerToUse)
 	{
-		super(idAssignerToUse, MiradiShareProjectDataSchema.getObjectType());
+		super(idAssignerToUse, MiradiShareTaxonomyAssociationSchema.getObjectType());
 	}
 	
 	public void put(MiradiShareTaxonomyAssociation miradiShareTaxonomyAssociation) throws Exception
