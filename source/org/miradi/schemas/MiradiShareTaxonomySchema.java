@@ -38,6 +38,7 @@ public class MiradiShareTaxonomySchema extends BaseObjectSchema
 		createFieldSchemaCode(TAG_TAXONOMY_CODE);
 		createFieldSchemaSingleLineUserText(TAG_TAXONOMY_VERSION);
 		createFieldSchemaCodeList(TAG_TAXONOMY_ELEMENTS, new MiradiShareTaxonomyQuestion());
+		createFieldSchemaCodeList(TAG_TAXONOMY_TOP_LEVEL_ELEMENT_CODES, new MiradiShareTaxonomyQuestion());
 	}
 	
 	@Override
@@ -68,4 +69,5 @@ public class MiradiShareTaxonomySchema extends BaseObjectSchema
 	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
 	public static final String TAG_TAXONOMY_VERSION = "TaxonomyVersion";
 	public static final String TAG_TAXONOMY_ELEMENTS = "TaxonomyElements";
+	public static final String TAG_TAXONOMY_TOP_LEVEL_ELEMENT_CODES = "TaxonomyTopLevelElementCodes";
 }

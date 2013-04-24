@@ -291,7 +291,7 @@ public interface Xmpz2XmlConstants
 	public static final String TAXONOMY_ELEMENT = TAXONOMY + "Element";
 	public static final String TAXONOMY_VERSION = "Version";
 	public static final String TAXONOMY_ELEMENT_CODE = TAXONOMY_ELEMENT + "Code";
-	public static final String TAXONOMY_ELEMENT_PARENT_CODE = TAXONOMY_ELEMENT + "ParentCode";
+	public static final String TAXONOMY_ELEMENT_PARENT_CODE = TAXONOMY_ELEMENT + "ChildCodes";
 	public static final String TAXONOMY_ELEMENT_LABEL = TAXONOMY_ELEMENT + "Label";
 	public static final String TAXONOMY_ELEMENT_DESCRIPTION = TAXONOMY_ELEMENT + "Description";
 	public static final String CODE = "Code";
