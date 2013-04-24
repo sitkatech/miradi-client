@@ -52,5 +52,5 @@ public class MiradiShareTaxonomySchema extends BaseObjectSchema
 		return OBJECT_NAME;
 	}
 	
-	public static final String OBJECT_NAME = "MiradiShareTaxonomy";
+	public static final String OBJECT_NAME = "Taxonomy";
 }

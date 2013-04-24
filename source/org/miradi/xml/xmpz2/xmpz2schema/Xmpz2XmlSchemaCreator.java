@@ -39,6 +39,7 @@ import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.MiradiShareProjectData;
+import org.miradi.objects.MiradiShareTaxonomyAssociation;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.RatingCriterion;
@@ -166,7 +167,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().writeElement(OBJECTIVE_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElement(STRESS_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElement(TASK_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
-		getSchemaWriter().writeElement(TAXONOMY_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElement(TAXONOMY_CLASSIFICATION_CONTAINER, TAXONOMY_CLASSIFICATION);
 		getSchemaWriter().println();
 	}
@@ -214,7 +214,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		elementNames.add(createOptionalSchemaElement(OBJECTIVE_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(STRESS_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(TASK_TAXONOMY_ASSOCIATION_POOL));
-		elementNames.add(createOptionalSchemaElement(TAXONOMY_POOL));
 		elementNames.add(ELEMENT_NAME + PREFIX + DELETED_ORPHANS_ELEMENT_NAME +  "{ text }?");
 		getSchemaWriter().defineElements(elementNames);
 		
@@ -1100,6 +1099,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		if (MiradiShareProjectData.is(objectType))
 			return false;
 
+		if (MiradiShareTaxonomyAssociation.is(objectType))
+			return false;
+		
 		return true;
 	}
 	

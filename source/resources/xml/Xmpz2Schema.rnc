@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Tue Apr 23 14:16:32 EDT 2013 $
+# $LastChangedDate: Wed Apr 24 15:30:24 EDT 2013 $
 # $LastChangedRevision: 221 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/221'
 start = ConservationProject.element
@@ -54,6 +54,7 @@ ConservationProject.element = element miradi:ConservationProject
   BudgetCategoryOnePool.element? &
   BudgetCategoryTwoPool.element? &
   DashboardPool.element? &
+  TaxonomyPool.element? &
   SimpleThreatRatingPool.element? &
   StressBasedThreatRatingPool.element? &
   MiradiShareProjectDataTaxonomyAssociationPool.element? &
@@ -69,7 +70,6 @@ ConservationProject.element = element miradi:ConservationProject
   ObjectiveTaxonomyAssociationPool.element? &
   StressTaxonomyAssociationPool.element? &
   TaskTaxonomyAssociationPool.element? &
-  TaxonomyPool.element? &
   element miradi:DeletedOrphans{ text }?
 }
 
@@ -719,6 +719,13 @@ Dashboard.element = element miradi:Dashboard
   element miradi:DashboardStatusEntries { StatusEntry.element* }?
 }
 
+TaxonomyPool.element = element miradi:TaxonomyPool { Taxonomy.element* }
+Taxonomy.element = element miradi:Taxonomy
+{
+  attribute Id {xsd:integer} &
+  element miradi:TaxonomyLabel { formatted_text }?
+}
+
 SimpleThreatRatingPool.element = element miradi:SimpleThreatRatingPool { SimpleThreatRating.element* }
 SimpleThreatRating.element = element miradi:SimpleThreatRating
 {
@@ -1042,7 +1049,6 @@ IndicatorTaxonomyAssociationPool.element = element miradi:IndicatorTaxonomyAssoc
 ObjectiveTaxonomyAssociationPool.element = element miradi:ObjectiveTaxonomyAssociationPool { TaxonomyAssociation.element* }
 StressTaxonomyAssociationPool.element = element miradi:StressTaxonomyAssociationPool { TaxonomyAssociation.element* }
 TaskTaxonomyAssociationPool.element = element miradi:TaskTaxonomyAssociationPool { TaxonomyAssociation.element* }
-TaxonomyPool.element = element miradi:TaxonomyPool { TaxonomyAssociation.element* }
 TaxonomyClassificationContainer.element = element miradi:TaxonomyClassificationContainer { TaxonomyClassification.element* }
 
 ExportDetails.element = element miradi:ExportDetails
