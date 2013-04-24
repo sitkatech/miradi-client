@@ -38,6 +38,7 @@ public class MiradiShareTaxonomySchemaWriter extends BaseObjectSchemaWriter
 		final Vector<String> fieldSchemasAsString = super.createFieldSchemas();
 		fieldSchemasAsString.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createTextAttributeElement(MiradiShareTaxonomySchema.TAG_TAXONOMY_CODE));
 		fieldSchemasAsString.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createRequiredParentAndZeroOrMoreElementDefinition(MiradiShareTaxonomySchema.TAG_TAXONOMY_ELEMENTS, "TaxonomyElement"));
+		fieldSchemasAsString.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createZeroOrMoreSchemaElement(MiradiShareTaxonomySchema.TAG_TAXONOMY_TOP_LEVEL_ELEMENT_CODES, TEXT_ELEMENT_TYPE));
 		
 		return fieldSchemasAsString;
 	}
@@ -46,6 +47,9 @@ public class MiradiShareTaxonomySchemaWriter extends BaseObjectSchemaWriter
 	protected boolean doesFieldRequireSpecialHandling(String tag)
 	{
 		if (tag.equals(MiradiShareTaxonomySchema.TAG_TAXONOMY_ELEMENTS))
+			return true;
+		
+		if (tag.equals(MiradiShareTaxonomySchema.TAG_TAXONOMY_TOP_LEVEL_ELEMENT_CODES))
 			return true;
 		
 		return super.doesFieldRequireSpecialHandling(tag);

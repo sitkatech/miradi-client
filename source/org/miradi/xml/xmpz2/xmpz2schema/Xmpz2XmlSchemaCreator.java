@@ -898,7 +898,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), TAXONOMY_ELEMENT);
 		creator.addTextAttributeElement(TAXONOMY_ELEMENT_CODE);
-		creator.addOptionalTextSchemaElement(TAXONOMY_ELEMENT_PARENT_CODE);
+		creator.addZeroOrMoreChildElement(TAXONOMY_ELEMENT_PARENT_CODE, TEXT_ELEMENT_TYPE);
 		creator.addTextSchemaElement(TAXONOMY_ELEMENT_LABEL);
 		creator.addTextSchemaElement(TAXONOMY_ELEMENT_DESCRIPTION);
 		
