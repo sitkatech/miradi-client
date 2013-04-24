@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.questions.MiradiShareTaxonomyQuestion;
 
 public class MiradiShareTaxonomySchema extends BaseObjectSchema
 {
@@ -32,7 +33,17 @@ public class MiradiShareTaxonomySchema extends BaseObjectSchema
 	@Override
 	protected void fillFieldSchemas()
 	{
-		super.fillFieldSchemas();		
+		super.fillFieldSchemas();
+		
+		createFieldSchemaCode(TAG_TAXONOMY_CODE);
+		createFieldSchemaSingleLineUserText(TAG_TAXONOMY_VERSION);
+		createFieldSchemaCodeList(TAG_TAXONOMY_ELEMENTS, new MiradiShareTaxonomyQuestion());
+	}
+	
+	@Override
+	protected boolean hasLabel()
+	{
+		return false;
 	}
 
 	public static int getObjectType()
@@ -53,4 +64,8 @@ public class MiradiShareTaxonomySchema extends BaseObjectSchema
 	}
 	
 	public static final String OBJECT_NAME = "Taxonomy";
+	
+	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
+	public static final String TAG_TAXONOMY_VERSION = "TaxonomyVersion";
+	public static final String TAG_TAXONOMY_ELEMENTS = "TaxonomyElements";
 }

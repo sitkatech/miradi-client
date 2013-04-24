@@ -39,6 +39,7 @@ import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.MiradiShareProjectData;
+import org.miradi.objects.MiradiShareTaxonomy;
 import org.miradi.objects.MiradiShareTaxonomyAssociation;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.ProjectMetadata;
@@ -411,7 +412,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		String elementName = getTagToElementNameMap().findElementName(baseObjectSchema.getXmpz2ElementName(), fieldSchema.getTag());
 		String reflistElementName = baseObjectSchema.getXmpz2ElementName() + elementName;
 		final String idElementName = createIdElementName(baseObjectSchema, fieldSchema, elementName);
-		return getSchemaWriter().createZeroOrMoreElementDefinition(reflistElementName, idElementName);
+		return getSchemaWriter().createOptionalParentAndZeroOrMoreElementDefinition(reflistElementName, idElementName);
 	}
 
 	public String createCodelistSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ChoiceQuestion question)
@@ -1033,6 +1034,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		if (ThreatReductionResult.is(baseObjectSchema.getType()))
 			return new ThreatReductionResultSchemaWriter(this, baseObjectSchema);
+		
+		if (MiradiShareTaxonomy.is(baseObjectSchema.getType()))
+			return new MiradiShareTaxonomySchemaWriter(this, baseObjectSchema);
 		
 		return new BaseObjectSchemaWriter(this, baseObjectSchema);
 	}

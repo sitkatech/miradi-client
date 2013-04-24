@@ -283,10 +283,12 @@ public interface Xmpz2XmlConstants
 	public static final String OBJECTIVE_TAXONOMY_ASSOCIATION_POOL = "ObjectiveTaxonomyAssociationPool";
 	public static final String STRESS_TAXONOMY_ASSOCIATION_POOL = "StressTaxonomyAssociationPool";
 	public static final String TASK_TAXONOMY_ASSOCIATION_POOL = "TaskTaxonomyAssociationPool";
+	public static final String TAXONOMY = "Taxonomy";
 	public static final String TAXONOMY_POOL = "TaxonomyPool";
 	public static final String TAXONOMY_ASSOCIATION = "TaxonomyAssociation";
 	public static final String TAXONOMY_CLASSIFICATION = "TaxonomyClassification";
 	public static final String TAXONOMY_CLASSIFICATION_CONTAINER = TAXONOMY_CLASSIFICATION + "Container";
+	public static final String TAXONOMY_VERSION = "Version";
 	
 	public static final String CODE = "Code";
 	

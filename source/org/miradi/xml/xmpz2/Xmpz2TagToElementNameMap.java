@@ -52,6 +52,7 @@ import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.MiradiShareTaxonomySchema;
 
 public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 {
@@ -121,7 +122,16 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(BUDGET_CATEGORY_ONE, createBaseObjectMap());
 		map.put(BUDGET_CATEGORY_TWO, createBaseObjectMap());
 		map.put(STRESS_BASED_THREAT_RATING, createStressBasedThreatRatingMap());
+		map.put(TAXONOMY, createTaxonomyMap());
 		
+		return map;
+	}
+	
+	private HashMap<String, String> createTaxonomyMap()
+	{
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put(MiradiShareTaxonomySchema.TAG_TAXONOMY_VERSION, TAXONOMY_VERSION);
+
 		return map;
 	}
 	

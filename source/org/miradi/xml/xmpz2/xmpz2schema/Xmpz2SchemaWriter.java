@@ -119,9 +119,14 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 		return createOptionalSchemaElement(createSchemaElement(elementName, elementType));
 	}
 	
-	public String createZeroOrMoreElementDefinition(String parentElementName, final String elementName)
+	public String createOptionalParentAndZeroOrMoreElementDefinition(String parentElementName, final String elementName)
 	{
 		return createOptionalSchemaElement(parentElementName, createZeroOrMoreDotElement(elementName));
+	}
+	
+	public String createRequiredParentAndZeroOrMoreElementDefinition(String parentElementName, final String elementName)
+	{
+		return createSchemaElement(parentElementName, createZeroOrMoreDotElement(elementName));
 	}
 
 	public String createXsdSchemaElement(final String elementName, String elementType)
