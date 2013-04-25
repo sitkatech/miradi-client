@@ -71,6 +71,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.IucnRedlistSpecies;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
+import org.miradi.objects.MiradiShareProjectData;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Organization;
 import org.miradi.objects.OtherNotableSpecies;
@@ -152,6 +153,7 @@ import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.IucnRedlistSpeciesSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
+import org.miradi.schemas.MiradiShareProjectDataSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.OrganizationSchema;
 import org.miradi.schemas.OtherNotableSpeciesSchema;
@@ -371,6 +373,20 @@ public class ProjectForTesting extends ProjectWithHelpers
 			dateAsString = projectDate.toString();  
 			
 		fillObjectUsingCommand(getMetadata().getRef(), tag, dateAsString);
+	}
+	
+	public MiradiShareProjectData createMiradiShareProjectData() throws Exception
+	{
+		ORef miradiShareProjectDataRef = createObject(MiradiShareProjectDataSchema.getObjectType());
+		return MiradiShareProjectData.find(this, miradiShareProjectDataRef);
+	}
+	
+	public MiradiShareProjectData createAndPopulateMiradiShareProjectData() throws Exception
+	{
+		MiradiShareProjectData miradiShareProjectData = createMiradiShareProjectData();
+		populateMiradiShareProjectData(miradiShareProjectData);
+		
+		return miradiShareProjectData;
 	}
 	
 	public ORef createResultsChainDiagram() throws Exception
@@ -766,6 +782,31 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ORef threatRef = createObject(CauseSchema.getObjectType());
 		return Cause.find(this, threatRef);
+	}
+	
+	public MiradiShareProjectData populateMiradiShareProjectData(MiradiShareProjectData miradiShareProjectData) throws Exception
+	{
+		populateBaseObject(miradiShareProjectData);
+		fillObjectWithSampleStringData(miradiShareProjectData, MiradiShareProjectData.TAG_PROGRAM_ID);
+		fillObjectWithSampleStringData(miradiShareProjectData, MiradiShareProjectData.TAG_PROJECT_ID);
+		fillObjectWithSampleStringData(miradiShareProjectData, MiradiShareProjectData.TAG_PROJECT_URL);
+		fillObjectWithSampleStringData(miradiShareProjectData, MiradiShareProjectData.TAG_PROGRAM_ID);
+		fillObjectWithSampleStringData(miradiShareProjectData, MiradiShareProjectData.TAG_PROGRAM_NAME);
+		fillObjectWithSampleStringData(miradiShareProjectData, MiradiShareProjectData.TAG_PROGRAM_URL);
+		fillObjectWithSampleStringData(miradiShareProjectData, MiradiShareProjectData.TAG_PROJECT_TEMPLATE_ID);
+		fillObjectWithSampleStringData(miradiShareProjectData, MiradiShareProjectData.TAG_PROJECT_TEMPLATE_NAME);
+		fillObjectWithSampleStringData(miradiShareProjectData, MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_ID);
+		fillObjectWithSampleStringData(miradiShareProjectData, MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_NAME);
+		fillObjectWithSampleStringData(miradiShareProjectData, MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_VERSION_ID);
+		fillObjectWithSampleStringData(miradiShareProjectData, MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_VERSION);
+		
+		return miradiShareProjectData;
+
+	}
+	
+	public void populateBaseObject(BaseObject baseObject)
+	{
+		//FIXME low - move fields to be filled for baseObject here. 
 	}
 	
 	public ORef populateSimpleThreatRatingValues() throws Exception

@@ -69,6 +69,12 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 		super(name);
 	}
 	
+	public void testMiradiShareProjectData() throws Exception
+	{
+		getProject().createAndPopulateMiradiShareProjectData();
+		validateUsingStringWriter();
+	}
+	
 	public void testThreatRatingMode() throws Exception
 	{
 		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_THREAT_RATING_MODE, ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE);
