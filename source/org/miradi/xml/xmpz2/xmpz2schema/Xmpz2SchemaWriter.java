@@ -56,6 +56,11 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 	{
 		defineAlias(createDotElement(elementName), ELEMENT_NAME + PREFIX + elementName);
 	}
+	
+	public String createTaxonomyElementCode(final String elementName)
+	{
+		return createOptionalSchemaElement(elementName, createZeroOrMoreDotElement(TAXONOMY_ELEMENT_CODE));
+	}
 
 	@Override	
 	public void startElementDefinition(String name)

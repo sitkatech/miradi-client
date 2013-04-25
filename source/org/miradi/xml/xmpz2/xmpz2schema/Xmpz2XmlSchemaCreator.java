@@ -145,6 +145,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		creators.add(defineTaxnomyAssociationsElement());
 		creators.add(defineTaxonomyClassificationContainerElement());
 		creators.add(defineTaxonomyElement());
+		creators.add(defineTaxonomyElementCode());
 		
 		for(Xmpz2CustomSchemaDefinitionCreator creator : creators)
 		{
@@ -898,23 +899,30 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), TAXONOMY_ELEMENT);
 		creator.addTextAttributeElement(TAXONOMY_ELEMENT_CODE);
-		creator.addZeroOrMoreChildElement(TAXONOMY_ELEMENT_PARENT_CODE, TEXT_ELEMENT_TYPE);
+		creator.addChildElement(getSchemaWriter().createTaxonomyElementCode(TAXONOMY_ELEMENT_CHILD_CODES));
 		creator.addTextSchemaElement(TAXONOMY_ELEMENT_LABEL);
 		creator.addTextSchemaElement(TAXONOMY_ELEMENT_DESCRIPTION);
 		
 		return creator;
 	}
 
-	
 	private Xmpz2CustomSchemaDefinitionCreator defineTaxonomyClassificationContainerElement()
 	{
 		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), TAXONOMY_CLASSIFICATION);
-		creator.addChildElement("TaxonomyClassificationTaxonomyCode", TEXT_ELEMENT_TYPE);
-		creator.addZeroOrMoreChildElement("TaxonomyClassificationTaxonomyElementCodes", TEXT_ELEMENT_TYPE);
+		creator.addChildElement(TAXONOMY_CLASSIFICATION_TAXONOMY_CODE, TEXT_ELEMENT_TYPE);
+		creator.addChildElement(getSchemaWriter().createTaxonomyElementCode(TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODES));
 		
 		return creator;
 	}
-
+	
+	private Xmpz2CustomSchemaDefinitionCreator defineTaxonomyElementCode()
+	{
+		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), TAXONOMY_ELEMENT_CODE);
+		creator.addZeroOrMoreChildElement(CODE_ELEMENT_NAME, TEXT_ELEMENT_TYPE);
+		
+		return creator;
+	}
+	
 	private Xmpz2CustomSchemaDefinitionCreator defineExtraDataItemElement()
 	{
 		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), EXTRA_DATA_ITEM);
