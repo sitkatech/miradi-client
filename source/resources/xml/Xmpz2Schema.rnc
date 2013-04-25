@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Wed Apr 24 18:10:37 EDT 2013 $
+# $LastChangedDate: Thu Apr 25 13:56:09 EDT 2013 $
 # $LastChangedRevision: 221 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/221'
 start = ConservationProject.element
@@ -725,7 +725,7 @@ Taxonomy.element = element miradi:Taxonomy
   element miradi:TaxonomyVersion { text }? &
   attribute TaxonomyCode { text } &
   element miradi:TaxonomyElements { TaxonomyElement.element* } &
-  element miradi:TaxonomyTopLevelElementCodes { text* }
+  element miradi:TaxonomyTopLevelElementCodes { TaxonomyElementCode.element* }?
 }
 
 SimpleThreatRatingPool.element = element miradi:SimpleThreatRatingPool { SimpleThreatRating.element* }
@@ -1160,15 +1160,20 @@ TaxonomyAssociation.element = element miradi:TaxonomyAssociation
 TaxonomyClassification.element = element miradi:TaxonomyClassification
 {
   element miradi:TaxonomyClassificationTaxonomyCode { text } &
-  element miradi:TaxonomyClassificationTaxonomyElementCodes { text }*
+  element miradi:TaxonomyClassificationTaxonomyElementCodes { TaxonomyElementCode.element* }?
 }
 
 TaxonomyElement.element = element miradi:TaxonomyElement
 {
   attribute TaxonomyElementCode { text } &
-  element miradi:TaxonomyElementChildCodes { text }* &
+  element miradi:TaxonomyElementChildCodes { TaxonomyElementCode.element* }? &
   element miradi:TaxonomyElementLabel { text } &
   element miradi:TaxonomyElementDescription { text }
+}
+
+TaxonomyElementCode.element = element miradi:TaxonomyElementCode
+{
+  element miradi:code { text }*
 }
 
 DashboardFlagsContainer.element = element miradi:DashboardFlagsContainer
