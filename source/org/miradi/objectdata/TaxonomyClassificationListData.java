@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objectdata;
 
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.TaxonomyClassifications;
+import org.miradi.objecthelpers.TaxonomyClassificationList;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
@@ -29,13 +29,13 @@ import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2XmlSchemaCreator;
 import org.w3c.dom.Node;
 
-public class TaxonomyClassificationsData extends ObjectData
+public class TaxonomyClassificationListData extends ObjectData
 {
-	public TaxonomyClassificationsData(String tagToUse)
+	public TaxonomyClassificationListData(String tagToUse)
 	{
 		super(tagToUse);
 		
-		data = new TaxonomyClassifications();
+		data = new TaxonomyClassificationList();
 	}
 
 	@Override
@@ -44,7 +44,7 @@ public class TaxonomyClassificationsData extends ObjectData
 		return getTaxonomyClassifications().toJsonString();
 	}
 	
-	public TaxonomyClassifications getTaxonomyClassifications()
+	public TaxonomyClassificationList getTaxonomyClassifications()
 	{
 		return data;
 	}
@@ -52,16 +52,16 @@ public class TaxonomyClassificationsData extends ObjectData
 	@Override
 	public void set(String newValue) throws Exception
 	{
-		data = new TaxonomyClassifications(newValue);
+		data = new TaxonomyClassificationList(newValue);
 	}
 
 	@Override
 	public boolean equals(Object rawOther)
 	{
-		if(!(rawOther instanceof TaxonomyClassificationsData))
+		if(!(rawOther instanceof TaxonomyClassificationListData))
 			return false;
 
-		TaxonomyClassificationsData other = (TaxonomyClassificationsData) rawOther;
+		TaxonomyClassificationListData other = (TaxonomyClassificationListData) rawOther;
 		return other.data.equals(data);
 	}
 
@@ -74,7 +74,7 @@ public class TaxonomyClassificationsData extends ObjectData
 	@Override
 	public void writeAsXmpz2XmlData(Xmpz2XmlWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		//FIXME urgent - must implement
+		writer.writeTaxonomyClassifications(baseObjectSchema, fieldSchema, data);
 	}
 	
 	@Override
@@ -90,5 +90,5 @@ public class TaxonomyClassificationsData extends ObjectData
 		return "";
 	}
 	
-	private TaxonomyClassifications data;
+	private TaxonomyClassificationList data;
 }
