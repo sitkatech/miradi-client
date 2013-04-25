@@ -20,26 +20,71 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objecthelpers;
 
-import org.miradi.utils.CodeList;
+import java.util.Vector;
+
+import org.miradi.utils.EnhancedJsonArray;
+import org.miradi.utils.EnhancedJsonObject;
 
 public class TaxonomyClassification
 {
-	public TaxonomyClassification(String taxonomyCodeToUse, CodeList taxonomyElementCodesToUse)
+	public TaxonomyClassification()
 	{
-		taxonomyCode = taxonomyCodeToUse;
-		taxonomyElementCodes = taxonomyElementCodesToUse;
+		taxonomyCode = "";
+		taxonomyElementCodes = new Vector<String>();
 	}
 	
-	public String getTaxonomyCode()
+	public TaxonomyClassification(EnhancedJsonObject json) throws Exception
+	{
+		this();
+		EnhancedJsonArray array = json.optJsonArray(TAG_ELEMENTS_CODES);
+		for(int index = 0; index < array.length(); ++index)
+		{
+			taxonomyElementCodes.add(array.getString(index));
+		}
+		
+		taxonomyCode = json.optString(TAG_TAXONOMY_CLASSIFICATION_CODE);
+	}
+
+	public EnhancedJsonObject toJson()
+	{
+		EnhancedJsonArray array = new EnhancedJsonArray();
+		for(String elementCode : taxonomyElementCodes)
+		{
+			array.put(elementCode);
+		}
+		
+		EnhancedJsonObject json = new EnhancedJsonObject();
+		json.put(TAG_ELEMENTS_CODES, array);
+		json.put(TAG_TAXONOMY_CLASSIFICATION_CODE, getTaxonomyClassificationCode());
+		
+		return json;
+	}
+	
+	public String toJsonString()
+	{
+		if (taxonomyElementCodes.size() == 0)
+			return "";
+		
+		return toJson().toString();
+	}
+
+	public void addElementCode(String elementCodeToAdd)
+	{
+		taxonomyElementCodes.add(elementCodeToAdd);
+	}
+	
+	public void setTaxonomyClassificationCode(String taxonomyCodeToUse)
+	{
+		taxonomyCode = taxonomyCodeToUse;
+	}
+	
+	public String getTaxonomyClassificationCode()
 	{
 		return taxonomyCode;
 	}
 	
-	public CodeList getTaxonomyElementCodes()
-	{
-		return taxonomyElementCodes;
-	}
-
 	private String taxonomyCode;
-	private CodeList taxonomyElementCodes;
+	private Vector<String> taxonomyElementCodes;
+	private String TAG_ELEMENTS_CODES = "ElementCodes";
+	private String TAG_TAXONOMY_CLASSIFICATION_CODE = "TaxonomyClassificationTaxonomyCode";
 }

@@ -26,70 +26,49 @@ import org.json.JSONArray;
 import org.miradi.utils.EnhancedJsonArray;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class TaxonomyClassifications
+public class TaxonomyClassificationList extends Vector<TaxonomyClassification>
 {
-	public TaxonomyClassifications()
+	public TaxonomyClassificationList()
 	{
-		taxonomyElementCodes = new Vector<String>();
+		super();
 	}
 
-	public TaxonomyClassifications(String taxonomyClassificationsAsJsonString) throws Exception
+	public TaxonomyClassificationList(String taxonomyClassificationsAsJsonString) throws Exception
 	{
 		this(new EnhancedJsonObject(taxonomyClassificationsAsJsonString));
 	}
 	
-	public TaxonomyClassifications(EnhancedJsonObject json) throws Exception
+	public TaxonomyClassificationList(EnhancedJsonObject json) throws Exception
 	{
 		this();
-		EnhancedJsonArray array = json.optJsonArray(TAG_ELEMENTS_CODES);
+		EnhancedJsonArray array = json.optJsonArray(TAG_TAXONOMY_CLASSIFICATION_LIST);
 		for(int index = 0; index < array.length(); ++index)
 		{
-			taxonomyElementCodes.add(array.getString(index));
+			add(new TaxonomyClassification(array.getJson(index)));
 		}
-		
-		code = json.optString(TAG_TAXONOMY_CLASSIFICATION_TAXONOMY_CODE);
 	}
 
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
 		JSONArray array = new JSONArray();
-		for(String elementCode : taxonomyElementCodes)
+		for(TaxonomyClassification taxonomyClassification : this)
 		{
-			array.put(elementCode);
+			array.put(taxonomyClassification.toJson());
 		}
 		
-		json.put(TAG_ELEMENTS_CODES, array);
-		json.put(TAG_TAXONOMY_CLASSIFICATION_TAXONOMY_CODE, getTaxonomyClassificationCode());
-		
+		json.put(TAG_TAXONOMY_CLASSIFICATION_LIST, array);
+
 		return json;
 	}
 	
 	public String toJsonString()
 	{
-		if (taxonomyElementCodes.size() == 0)
+		if (isEmpty())
 			return "";
 		
 		return toJson().toString();
 	}
 	
-	public void addElementCode(String elementCodeToAdd)
-	{
-		taxonomyElementCodes.add(elementCodeToAdd);
-	}
-	
-	public void setTaxonomyClassificationCode(String codeToUse)
-	{
-		code = codeToUse;
-	}
-	
-	public String getTaxonomyClassificationCode()
-	{
-		return code;
-	}
-	
-	private Vector<String> taxonomyElementCodes;
-	private String code;
-	private String TAG_ELEMENTS_CODES = "ElementCodes";
-	private String TAG_TAXONOMY_CLASSIFICATION_TAXONOMY_CODE = "TaxonomyClassificationTaxonomyCode";
+	public static final String TAG_TAXONOMY_CLASSIFICATION_LIST = "TaxonomyClassificationList";
 }
