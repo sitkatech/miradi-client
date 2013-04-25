@@ -24,6 +24,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.io.IOException;
 import java.util.Set;
+import java.util.Vector;
 
 import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeWriter;
@@ -35,6 +36,8 @@ import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.StringRefMap;
+import org.miradi.objecthelpers.TaxonomyClassification;
+import org.miradi.objecthelpers.TaxonomyClassificationList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
@@ -358,6 +361,36 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 		}
 		
 		writeEndElement(appendChildNameToParentName(PROJECT_SUMMARY, Xenodata.TAG_PROJECT_ID));
+	}
+	
+	public void writeTaxonomyClassifications(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, TaxonomyClassificationList taxonomyClassificationData) throws Exception
+	{
+		writeStartElement(TAXONOMY_CLASSIFICATION_CONTAINER);
+		
+		for(TaxonomyClassification taxonomyClassification : taxonomyClassificationData)
+		{
+			writeTaxonomyClassification(taxonomyClassification);
+		}
+		
+		writeEndElement(TAXONOMY_CLASSIFICATION_CONTAINER);
+	}
+
+	private void writeTaxonomyClassification(TaxonomyClassification taxonomyClassification) throws Exception
+	{
+		writeStartElement(TAXONOMY_CLASSIFICATION);
+		writeElement(TAXONOMY_ASSOCIATION_TAXONOMY_CODE, taxonomyClassification.getTaxonomyClassificationCode());
+		writeTaxonomyElements(taxonomyClassification.getTaxonomyElementCodes());
+		writeEndElement(TAXONOMY_CLASSIFICATION);
+	}
+
+	private void writeTaxonomyElements(Vector<String> taxonomyElementCodes) throws Exception
+	{
+		writeStartElement(TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODES);
+		for(String taxonomyElementCode : taxonomyElementCodes)
+		{
+			writeElement(TAXONOMY_ELEMENT_CODE, taxonomyElementCode);	
+		}
+		writeEndElement(TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODES);
 	}
 
 	private void writeField(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String data) throws Exception

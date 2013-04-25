@@ -83,6 +83,11 @@ public class TaxonomyClassification
 		return taxonomyCode;
 	}
 	
+	public Vector<String> getTaxonomyElementCodes()
+	{
+		return new Vector<String>(taxonomyElementCodes);
+	}
+	
 	private String taxonomyCode;
 	private Vector<String> taxonomyElementCodes;
 	private String TAG_ELEMENTS_CODES = "ElementCodes";

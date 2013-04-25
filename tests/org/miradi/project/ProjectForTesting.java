@@ -801,12 +801,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectWithSampleStringData(miradiShareProjectData, MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_VERSION);
 		
 		return miradiShareProjectData;
-
 	}
 	
-	public void populateBaseObject(BaseObject baseObject)
+	public void populateBaseObject(BaseObject baseObject) throws Exception
 	{
-		//FIXME low - move fields to be filled for baseObject here. 
+		fillObjectUsingCommand(baseObject, BaseObject.TAG_MIRADI_SHARE_TAXONOMIES, createSampleCodeList().toString());
 	}
 	
 	public ORef populateSimpleThreatRatingValues() throws Exception
@@ -1755,6 +1754,16 @@ public class ProjectForTesting extends ProjectWithHelpers
 		ORef threatRef = getUpstreamThreatRef(diagramLink);
 		Strategy strategy = createAndPopulateStrategy();
 		createFactorLink(threatRef, strategy.getRef());
+	}
+	
+	private CodeList createSampleCodeList()
+	{
+		CodeList sampleCodeList = new CodeList();
+		sampleCodeList.add("1");
+		sampleCodeList.add("2");
+		sampleCodeList.add("3");
+		
+		return sampleCodeList;
 	}
 	
 	private CodeList createSampleTerrestrialEcoregionsCodeList()
