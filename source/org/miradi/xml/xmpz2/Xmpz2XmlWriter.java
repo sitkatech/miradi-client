@@ -378,7 +378,7 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	private void writeTaxonomyClassification(TaxonomyClassification taxonomyClassification) throws Exception
 	{
 		writeStartElement(TAXONOMY_CLASSIFICATION);
-		writeElement(TAXONOMY_ASSOCIATION_TAXONOMY_CODE, taxonomyClassification.getTaxonomyClassificationCode());
+		writeElement(TAXONOMY_CLASSIFICATION_TAXONOMY_CODE, taxonomyClassification.getTaxonomyClassificationCode());
 		writeTaxonomyElements(taxonomyClassification.getTaxonomyElementCodes());
 		writeEndElement(TAXONOMY_CLASSIFICATION);
 	}
@@ -486,6 +486,12 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	{
 		BaseObjectSchema baseObjectSchema = baseObject.getSchema();
 		writeStartElementWithAttribute(baseObjectSchema.getXmpz2ElementName(), ID, baseObject.getId().toString());
+	}
+	
+	public void writeObjectElementStartWithoutAttribute(final BaseObject baseObject) throws Exception
+	{
+		BaseObjectSchema baseObjectSchema = baseObject.getSchema();
+		writeStartElement(baseObjectSchema.getXmpz2ElementName());
 	}
 
 	public void writeObjectElementEnd(final BaseObjectSchema baseObjectSchema) throws Exception

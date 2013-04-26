@@ -73,6 +73,11 @@ public class TaxonomyClassification
 		taxonomyElementCodes.add(elementCodeToAdd);
 	}
 	
+	public void addAllElementCodes(Vector<String> taxonomyClassificationElementCodes)
+	{
+		taxonomyElementCodes.addAll(taxonomyClassificationElementCodes);
+	}
+	
 	public void setTaxonomyClassificationCode(String taxonomyCodeToUse)
 	{
 		taxonomyCode = taxonomyCodeToUse;

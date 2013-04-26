@@ -24,6 +24,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.util.Collection;
 import java.util.LinkedHashMap;
+import java.util.Vector;
 
 import javax.xml.xpath.XPathExpressionException;
 
@@ -33,7 +34,10 @@ import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.TaxonomyClassification;
+import org.miradi.objecthelpers.TaxonomyClassificationList;
 import org.miradi.objectpools.BaseObjectPool;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Dashboard;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
@@ -60,6 +64,7 @@ import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
+import org.miradi.schemas.MiradiShareProjectDataSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ProgressPercentSchema;
 import org.miradi.schemas.ProgressReportSchema;
@@ -144,6 +149,9 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		incrementProgress();
 		
 		importSingletonObject(new RareProjectDataSchema());
+		incrementProgress();
+		
+		importSingletonObject(new MiradiShareProjectDataSchema());
 		incrementProgress();
 		
 		importPools(typeToImporterMap);
@@ -612,6 +620,38 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	private void importExtraData() throws Exception
 	{
 		new Xmpz2ExtraDataImporter(this).importFields();
+	}
+	
+	public void importTaxonomyClassificationList(Node node, ORef destinationRef, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		Node taxonomyClassifcationContainerNode = getNode(node, TAXONOMY_CLASSIFICATION_CONTAINER);
+		NodeList taxonomyClassificationNodeList = getNodes(taxonomyClassifcationContainerNode, new String[]{TAXONOMY_CLASSIFICATION, });
+		TaxonomyClassificationList taxonomyClassificationsList = new TaxonomyClassificationList();
+		for (int index = 0; index < taxonomyClassificationNodeList.getLength(); ++index)
+		{
+			Node taxonomyClassificationNode = taxonomyClassificationNodeList.item(index);
+			TaxonomyClassification taxonomyClassification = new TaxonomyClassification();
+			Node taxononomyClassificationCodeNode = getNode(taxonomyClassificationNode, TAXONOMY_CLASSIFICATION_TAXONOMY_CODE);
+			taxonomyClassification.setTaxonomyClassificationCode(taxononomyClassificationCodeNode.getTextContent());
+			taxonomyClassification.addAllElementCodes(getTaxonomyClassificationElementCodes(taxonomyClassificationNode));
+			
+			taxonomyClassificationsList.add(taxonomyClassification);
+		}
+
+		setData(destinationRef, BaseObject.TAG_MIRADI_SHARE_TAXONOMIES, taxonomyClassificationsList.toJsonString());
+	}
+
+	private Vector<String> getTaxonomyClassificationElementCodes(Node taxonomyClassificationNode) throws Exception
+	{
+		NodeList taxonomyClassificationList = getNodes(taxonomyClassificationNode, new String[]{TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODES, TAXONOMY_ELEMENT_CODE, });
+		Vector<String> taxonomyClassificationElementCodes = new Vector<String>();
+		for (int index = 0; index < taxonomyClassificationList.getLength(); ++index)
+		{
+			Node taxonomyClassificationElementCodeNode = taxonomyClassificationList.item(index);
+			taxonomyClassificationElementCodes.add(taxonomyClassificationElementCodeNode.getTextContent());
+		}
+		
+		return taxonomyClassificationElementCodes;
 	}
 
 	@Override
