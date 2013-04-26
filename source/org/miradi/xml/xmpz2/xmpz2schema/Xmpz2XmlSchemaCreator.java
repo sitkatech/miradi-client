@@ -25,6 +25,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.miradi.main.Miradi;
+import org.miradi.objecthelpers.CaseInsensitiveStringSorter;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.BaseObjectPool;
 import org.miradi.objects.Cause;
@@ -274,6 +275,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void writeElementContent(BaseObjectSchemaWriter baseObjectSchemaWriter) throws Exception
 	{
 		Vector<String> schemaFieldElements = baseObjectSchemaWriter.createFieldSchemas();
+		Collections.sort(schemaFieldElements, new CaseInsensitiveStringSorter());
 		getSchemaWriter().defineElements(schemaFieldElements);
 	}
 	

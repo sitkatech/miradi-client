@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.xmpz2schema;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Vector;
 
@@ -66,7 +65,6 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 		
 		fieldSchemasAsString.addAll(createCustomSchemaFields());
 		final Vector<String> sortedFieldSchemas = new Vector<String>(fieldSchemasAsString);
-		Collections.sort(sortedFieldSchemas);
 		
 		return sortedFieldSchemas;
 	}
