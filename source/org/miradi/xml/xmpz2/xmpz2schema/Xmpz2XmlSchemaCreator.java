@@ -41,7 +41,6 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.MiradiShareProjectData;
 import org.miradi.objects.MiradiShareTaxonomy;
-import org.miradi.objects.MiradiShareTaxonomyAssociation;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.RatingCriterion;
@@ -54,6 +53,7 @@ import org.miradi.objects.TableSettings;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
+import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
@@ -1124,7 +1124,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		if (MiradiShareProjectData.is(objectType))
 			return false;
 
-		if (MiradiShareTaxonomyAssociation.is(objectType))
+		if (TaxonomyAssociation.is(objectType))
 			return false;
 		
 		return true;
