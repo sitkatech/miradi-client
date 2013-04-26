@@ -114,7 +114,7 @@ import org.miradi.schemas.IucnRedlistSpeciesSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.MiradiShareProjectDataSchema;
-import org.miradi.schemas.MiradiShareTaxonomyAssociationSchema;
+import org.miradi.schemas.TaxonomyAssociationSchema;
 import org.miradi.schemas.MiradiShareTaxonomySchema;
 import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 import org.miradi.schemas.ObjectiveSchema;
@@ -217,7 +217,7 @@ public class ObjectManager
 		addNormalPool(new XslTemplatePool(ida), XslTemplateSchema.OBJECT_NAME);
 		addNormalPool(new MiradiShareProjectDataPool(ida), MiradiShareProjectDataSchema.OBJECT_NAME);
 		addNormalPool(new MiradiShareTaxonomyPool(ida), MiradiShareTaxonomySchema.OBJECT_NAME);
-		addNormalPool(new TaxonomyAssociationPool(ida), MiradiShareTaxonomyAssociationSchema.OBJECT_NAME);
+		addNormalPool(new TaxonomyAssociationPool(ida), TaxonomyAssociationSchema.OBJECT_NAME);
 	}
 	
 	public ChainWalker getDiagramChainWalker()

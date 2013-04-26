@@ -22,9 +22,9 @@ package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
 
-public class MiradiShareTaxonomyAssociationSchema extends BaseObjectSchema
+public class TaxonomyAssociationSchema extends BaseObjectSchema
 {
-	public MiradiShareTaxonomyAssociationSchema()
+	public TaxonomyAssociationSchema()
 	{
 		super();
 	}

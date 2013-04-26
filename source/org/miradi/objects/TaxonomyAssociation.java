@@ -24,7 +24,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.schemas.MiradiShareTaxonomyAssociationSchema;
+import org.miradi.schemas.TaxonomyAssociationSchema;
 
 public class TaxonomyAssociation extends BaseObject
 {
@@ -33,9 +33,9 @@ public class TaxonomyAssociation extends BaseObject
 		super(objectManager, id, createSchema());
 	}
 
-	public static MiradiShareTaxonomyAssociationSchema createSchema()
+	public static TaxonomyAssociationSchema createSchema()
 	{
-		return new MiradiShareTaxonomyAssociationSchema();
+		return new TaxonomyAssociationSchema();
 	}
 	
 	@Override
@@ -56,7 +56,7 @@ public class TaxonomyAssociation extends BaseObject
 	
 	public static boolean is(final int onbjectType)
 	{
-		return MiradiShareTaxonomyAssociationSchema.getObjectType() == onbjectType;
+		return TaxonomyAssociationSchema.getObjectType() == onbjectType;
 	}
 	
 	public static TaxonomyAssociation find(ObjectManager objectManager, ORef miradiSharfeTaxonomyAssociationRe)
