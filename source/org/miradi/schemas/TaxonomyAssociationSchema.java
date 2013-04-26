@@ -21,6 +21,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.questions.TaxonomyClassificationSelectionMode;
+import org.miradi.questions.TaxonomyMultiSelectModeQuestion;
 
 public class TaxonomyAssociationSchema extends BaseObjectSchema
 {
@@ -32,7 +34,14 @@ public class TaxonomyAssociationSchema extends BaseObjectSchema
 	@Override
 	protected void fillFieldSchemas()
 	{
-		super.fillFieldSchemas();		
+		super.fillFieldSchemas();	
+		
+		createFieldSchemaSingleLineUserText(TAG_TAXONOMY_ASSOCIATION_CODE);
+		createFieldSchemaChoice(TAG_MULTI_SELECT, TaxonomyMultiSelectModeQuestion.class);
+		createFieldSchemaChoice(TAG_SELECTION_TYPE, TaxonomyClassificationSelectionMode.class);
+		createFieldSchemaSingleLineUserText(TAG_DESCRIPTION);
+		createFieldSchemaSingleLineUserText(TAG_TAXONOMY_CODE);
+		createFieldSchemaSingleLineUserText(TAG_PARENT_OBJECT_TYPE);
 	}
 
 	public static int getObjectType()
@@ -53,4 +62,11 @@ public class TaxonomyAssociationSchema extends BaseObjectSchema
 	}
 	
 	public static final String OBJECT_NAME = "TaxonomyAssociation";
+	
+	public static final String TAG_TAXONOMY_ASSOCIATION_CODE = "TaxonomyAssociationCode";
+	public static final String TAG_MULTI_SELECT = "MultiSelect";
+	public static final String TAG_SELECTION_TYPE = "SelectionType";
+	public static final String TAG_DESCRIPTION  = "Description";
+	public static final String TAG_TAXONOMY_CODE  = "TaxonomyCode";
+	public static final String TAG_PARENT_OBJECT_TYPE = "ParentObjectType";
 }
