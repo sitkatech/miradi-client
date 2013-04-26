@@ -807,7 +807,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void populateBaseObject(BaseObject baseObject) throws Exception
 	{
-		fillObjectUsingCommand(baseObject, BaseObject.TAG_MIRADI_SHARE_TAXONOMIES, createSampleTaxonomyClassificationsList());
+		fillObjectUsingCommand(baseObject, BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER, createSampleTaxonomyClassificationsList());
 	}
 	
 	public ORef populateSimpleThreatRatingValues() throws Exception
