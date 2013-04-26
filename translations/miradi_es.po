@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-24 14:46-0500\n"
+"POT-Creation-Date: 2013-04-26 13:01-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -4114,7 +4114,7 @@ msgstr ""
 msgid "Importing Miradi Data..."
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:129
+#: Miradi/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:134
 #: Miradi/source/org/miradi/xml/xmpz/XmpzXmlImporter.java:112
 msgid "Importing XML..."
 msgstr ""
@@ -8784,7 +8784,7 @@ msgstr "[NO ESPECIFICADO]"
 msgid "[New Results Chain]"
 msgstr "[Nueva cadena de resultados]"
 
-#: Miradi/source/org/miradi/project/Project.java:960
+#: Miradi/source/org/miradi/project/Project.java:962
 msgid "[No Project]"
 msgstr "[Sin proyecto]"
 
