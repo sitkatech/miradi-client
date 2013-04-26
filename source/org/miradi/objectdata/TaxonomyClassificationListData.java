@@ -80,7 +80,7 @@ public class TaxonomyClassificationListData extends ObjectData
 	@Override
 	public void readAsXmpz2XmlData(Xmpz2XmlImporter importer, Node node, ORef destinationRefToUse, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		//FIXME urgent - must implement
+		importer.importTaxonomyClassificationList(node, destinationRefToUse, baseObjectSchema, fieldSchema);
 	}
 	
 	@Override

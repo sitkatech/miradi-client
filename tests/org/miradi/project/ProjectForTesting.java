@@ -45,6 +45,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.StringRefMap;
+import org.miradi.objecthelpers.TaxonomyClassification;
+import org.miradi.objecthelpers.TaxonomyClassificationList;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objects.AbstractBudgetCategoryObject;
 import org.miradi.objects.AbstractTarget;
@@ -383,7 +385,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public MiradiShareProjectData createAndPopulateMiradiShareProjectData() throws Exception
 	{
-		MiradiShareProjectData miradiShareProjectData = createMiradiShareProjectData();
+		MiradiShareProjectData miradiShareProjectData = MiradiShareProjectData.find(this, getSingletonObjectRef(MiradiShareProjectDataSchema.getObjectType()));
 		populateMiradiShareProjectData(miradiShareProjectData);
 		
 		return miradiShareProjectData;
@@ -805,7 +807,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void populateBaseObject(BaseObject baseObject) throws Exception
 	{
-		fillObjectUsingCommand(baseObject, BaseObject.TAG_MIRADI_SHARE_TAXONOMIES, createSampleCodeList().toString());
+		fillObjectUsingCommand(baseObject, BaseObject.TAG_MIRADI_SHARE_TAXONOMIES, createSampleTaxonomyClassificationsList());
 	}
 	
 	public ORef populateSimpleThreatRatingValues() throws Exception
@@ -1756,14 +1758,22 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createFactorLink(threatRef, strategy.getRef());
 	}
 	
-	private CodeList createSampleCodeList()
+	private String createSampleTaxonomyClassificationsList()
 	{
-		CodeList sampleCodeList = new CodeList();
-		sampleCodeList.add("1");
-		sampleCodeList.add("2");
-		sampleCodeList.add("3");
+		TaxonomyClassificationList taxonomyClassificationList = new TaxonomyClassificationList();
+		TaxonomyClassification taxonomyClassification1 = new TaxonomyClassification();
+		taxonomyClassification1.setTaxonomyClassificationCode("randomCode1");
+		taxonomyClassification1.addElementCode("randomElementCode1");
+		taxonomyClassification1.addElementCode("randomElementCode2");
+		taxonomyClassificationList.add(taxonomyClassification1);
 		
-		return sampleCodeList;
+		TaxonomyClassification taxonomyClassification2 = new TaxonomyClassification();
+		taxonomyClassification2.setTaxonomyClassificationCode("randomCode2");
+		taxonomyClassification2.addElementCode("randomElementCode1");
+		taxonomyClassification2.addElementCode("randomElementCode2");
+		taxonomyClassificationList.add(taxonomyClassification2);
+		
+		return taxonomyClassificationList.toJsonString();
 	}
 	
 	private CodeList createSampleTerrestrialEcoregionsCodeList()

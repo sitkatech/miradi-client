@@ -23,6 +23,7 @@ package org.miradi.xml.xmpz2.objectExporters;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.FosProjectData;
+import org.miradi.objects.MiradiShareProjectData;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.RareProjectData;
 import org.miradi.objects.Target;
@@ -53,12 +54,14 @@ import org.miradi.questions.WwfManagingOfficesQuestion;
 import org.miradi.questions.WwfRegionsQuestion;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.FosProjectDataSchema;
+import org.miradi.schemas.MiradiShareProjectDataSchema;
 import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.schemas.WcpaProjectDataSchema;
 import org.miradi.schemas.WcsProjectDataSchema;
 import org.miradi.schemas.WwfProjectDataSchema;
 import org.miradi.utils.CodeList;
+import org.miradi.xml.xmpz2.SingletonBaseObjectExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
@@ -77,6 +80,7 @@ public class ProjectMetadataExporter implements Xmpz2XmlConstants
 		writeWcsElement();
 		writeRareElement();
 		writeFosElement();
+		writeMiradiShareProjectDataElement();
 	}
 
 	private void writeProjectMetadata() throws Exception
@@ -185,6 +189,12 @@ public class ProjectMetadataExporter implements Xmpz2XmlConstants
 	{
 		ORef fosProjectDataRef = getProject().getSingletonObjectRef(FosProjectDataSchema.getObjectType());
 		return FosProjectData.find(getProject(), fosProjectDataRef);
+	}
+	
+	private MiradiShareProjectData getMiradiShareProjectData()
+	{
+		ORef miradiShareProjectDataRef = getProject().getSingletonObjectRef(MiradiShareProjectDataSchema.getObjectType());
+		return MiradiShareProjectData.find(getProject(), miradiShareProjectDataRef);
 	}
 	
 	private void writeProjectSummaryScopeSchemaElement() throws Exception
@@ -365,6 +375,12 @@ public class ProjectMetadataExporter implements Xmpz2XmlConstants
 		writeFosElement(FosProjectData.TAG_COACHES);
 		
 		getWriter().writeEndElement(FOS_PROJECT_DATA);
+	}
+	
+	private void writeMiradiShareProjectDataElement() throws Exception
+	{
+		SingletonBaseObjectExporter exporter = new SingletonBaseObjectExporter(getWriter(), MiradiShareProjectDataSchema.getObjectType());
+		exporter.writeBaseObjectDataSchemaElement(getMiradiShareProjectData());
 	}
 	
 	public void exportTncOperatingUnits() throws Exception

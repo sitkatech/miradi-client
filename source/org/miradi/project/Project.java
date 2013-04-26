@@ -117,6 +117,7 @@ import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DashboardSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.FosProjectDataSchema;
+import org.miradi.schemas.MiradiShareProjectDataSchema;
 import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.schemas.RatingCriterionSchema;
@@ -894,6 +895,7 @@ public class Project
 		createDefaultProjectDataObject(WcpaProjectDataSchema.getObjectType());
 		createDefaultProjectDataObject(ThreatRatingCommentsDataSchema.getObjectType());
 		createDefaultProjectDataObject(DashboardSchema.getObjectType());
+		createDefaultProjectDataObject(MiradiShareProjectDataSchema.getObjectType());
 	}
 
 	private void createMissingSimpleThreatRatingCriteria() throws Exception
