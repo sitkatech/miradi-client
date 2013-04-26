@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objects;
 
-import org.miradi.schemas.MiradiShareTaxonomyAssociationSchema;
+import org.miradi.schemas.TaxonomyAssociationSchema;
 
 public class TestMiradiShareTaxonomyAssociation extends ObjectTestCase
 {
@@ -31,6 +31,6 @@ public class TestMiradiShareTaxonomyAssociation extends ObjectTestCase
 	
 	public void testFields() throws Exception
 	{
-		verifyFields(MiradiShareTaxonomyAssociationSchema.getObjectType());
+		verifyFields(TaxonomyAssociationSchema.getObjectType());
 	}
 }
