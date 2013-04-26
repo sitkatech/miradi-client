@@ -56,6 +56,7 @@ public class IndicatorSchema extends BaseObjectSchema
 		createFieldSchemaOptionalRef(Indicator.TAG_LEADER_RESOURCE);
 		createBudgetSchemas();
 		createProgressReportSchema();
+		createTaxonomyClassificationSchemaField();
 		
 		createPseudoFieldSchemaString(Indicator.PSEUDO_TAG_TARGETS);
 		createPseudoFieldSchemaString(Indicator.PSEUDO_TAG_DIRECT_THREATS);

@@ -25,7 +25,6 @@ import java.util.HashSet;
 import java.util.Vector;
 
 import org.miradi.objectdata.ObjectData;
-import org.miradi.objects.BaseObject;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
@@ -68,17 +67,10 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 		fieldSchemasAsString.addAll(createCustomSchemaFields());
 		final Vector<String> sortedFieldSchemas = new Vector<String>(fieldSchemasAsString);
 		Collections.sort(sortedFieldSchemas);
-		if (shouldIncludeTaxonomyClassificationContainerElement())
-			sortedFieldSchemas.add("TaxonomyClassificationContainer.element ?");
 		
 		return sortedFieldSchemas;
 	}
 	
-	protected boolean shouldIncludeTaxonomyClassificationContainerElement()
-	{
-		return false;
-	}
-
 	protected boolean shouldOmitField(String tag)
 	{
 		return false;
@@ -86,9 +78,6 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 	
 	protected boolean doesFieldRequireSpecialHandling(String tag)
 	{
-		if (tag.equals(BaseObject.TAG_MIRADI_SHARE_TAXONOMIES))
-			return true;
-		
 		return false;
 	}
 

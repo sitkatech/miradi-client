@@ -41,10 +41,4 @@ public class CauseSchemaWriter extends BaseObjectSchemaWriterWithTaxonomyClassif
 		
 		return schemaElements;
 	}	
-
-	@Override
-	protected boolean shouldIncludeTaxonomyClassificationContainerElement()
-	{
-		return true;
-	}
 }

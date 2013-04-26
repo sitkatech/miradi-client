@@ -42,10 +42,4 @@ public class AbstractTargetSchemaWriter extends BaseObjectSchemaWriterWithTaxono
 		
 		return schemaElements;
 	}	
-	
-	@Override
-	protected boolean shouldIncludeTaxonomyClassificationContainerElement()
-	{
-		return true;
-	}
 }
