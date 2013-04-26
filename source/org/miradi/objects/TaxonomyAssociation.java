@@ -26,9 +26,9 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.MiradiShareTaxonomyAssociationSchema;
 
-public class MiradiShareTaxonomyAssociation extends BaseObject
+public class TaxonomyAssociation extends BaseObject
 {
-	public MiradiShareTaxonomyAssociation(ObjectManager objectManager, BaseId id)
+	public TaxonomyAssociation(ObjectManager objectManager, BaseId id)
 	{
 		super(objectManager, id, createSchema());
 	}
@@ -59,12 +59,12 @@ public class MiradiShareTaxonomyAssociation extends BaseObject
 		return MiradiShareTaxonomyAssociationSchema.getObjectType() == onbjectType;
 	}
 	
-	public static MiradiShareTaxonomyAssociation find(ObjectManager objectManager, ORef miradiSharfeTaxonomyAssociationRe)
+	public static TaxonomyAssociation find(ObjectManager objectManager, ORef miradiSharfeTaxonomyAssociationRe)
 	{
-		return (MiradiShareTaxonomyAssociation) objectManager.findObject(miradiSharfeTaxonomyAssociationRe);
+		return (TaxonomyAssociation) objectManager.findObject(miradiSharfeTaxonomyAssociationRe);
 	}
 	
-	public static MiradiShareTaxonomyAssociation find(Project project, ORef miradiShareTaxonomyAssociationRef)
+	public static TaxonomyAssociation find(Project project, ORef miradiShareTaxonomyAssociationRef)
 	{
 		return find(project.getObjectManager(), miradiShareTaxonomyAssociationRef);
 	}

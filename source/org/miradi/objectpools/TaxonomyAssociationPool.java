@@ -23,7 +23,7 @@ package org.miradi.objectpools;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.MiradiShareTaxonomyAssociation;
+import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.BaseObjectSchema;
@@ -36,25 +36,25 @@ public class TaxonomyAssociationPool extends BaseObjectPool
 		super(idAssignerToUse, MiradiShareTaxonomyAssociationSchema.getObjectType());
 	}
 	
-	public void put(MiradiShareTaxonomyAssociation miradiShareTaxonomyAssociation) throws Exception
+	public void put(TaxonomyAssociation miradiShareTaxonomyAssociation) throws Exception
 	{
 		put(miradiShareTaxonomyAssociation.getId(), miradiShareTaxonomyAssociation);
 	}
 	
-	public MiradiShareTaxonomyAssociation find(BaseId id)
+	public TaxonomyAssociation find(BaseId id)
 	{
-		return (MiradiShareTaxonomyAssociation) getRawObject(id);
+		return (TaxonomyAssociation) getRawObject(id);
 	}
 
 	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId)
 	{
-		return new MiradiShareTaxonomyAssociation(objectManager, new BaseId(actualId.asInt()));
+		return new TaxonomyAssociation(objectManager, new BaseId(actualId.asInt()));
 	}
 	
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return MiradiShareTaxonomyAssociation.createSchema();
+		return TaxonomyAssociation.createSchema();
 	}
 }
