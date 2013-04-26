@@ -327,7 +327,7 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 	
 	protected void createTaxonomyClassificationSchemaField()
 	{
-		createTaxonomyClassifications(BaseObject.TAG_MIRADI_SHARE_TAXONOMIES);
+		createTaxonomyClassifications(BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
 	}
 	
 	public boolean isPseudoField(final String tag)

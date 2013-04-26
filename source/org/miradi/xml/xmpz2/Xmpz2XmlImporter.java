@@ -638,7 +638,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 			taxonomyClassificationsList.add(taxonomyClassification);
 		}
 
-		setData(destinationRef, BaseObject.TAG_MIRADI_SHARE_TAXONOMIES, taxonomyClassificationsList.toJsonString());
+		setData(destinationRef, BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER, taxonomyClassificationsList.toJsonString());
 	}
 
 	private Vector<String> getTaxonomyClassificationElementCodes(Node taxonomyClassificationNode) throws Exception
