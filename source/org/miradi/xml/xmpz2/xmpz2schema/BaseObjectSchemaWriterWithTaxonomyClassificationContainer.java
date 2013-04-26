@@ -33,10 +33,4 @@ public class BaseObjectSchemaWriterWithTaxonomyClassificationContainer extends	B
 	{
 		super(creatorToUse, baseObjectSchemaToUse);
 	}
-
-	@Override
-	protected boolean shouldIncludeTaxonomyClassificationContainerElement()
-	{
-		return true;
-	}
 }

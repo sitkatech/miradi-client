@@ -86,8 +86,7 @@ public class TaxonomyClassificationListData extends ObjectData
 	@Override
 	public String createXmpz2SchemaElementString(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		//FIXME urgent - must implement
-		return "";
+		return creator.getSchemaWriter().createOptionalDotElement("TaxonomyClassificationContainer");
 	}
 	
 	private TaxonomyClassificationList data;

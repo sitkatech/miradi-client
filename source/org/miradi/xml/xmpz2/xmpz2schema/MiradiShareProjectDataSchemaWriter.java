@@ -28,10 +28,4 @@ public class MiradiShareProjectDataSchemaWriter extends SingletonSchemaWriter
 	{
 		super(creatorToUse, baseObjectSchemaToUse);
 	}
-
-	@Override
-	protected boolean shouldIncludeTaxonomyClassificationContainerElement()
-	{
-		return true;
-	}
 }
