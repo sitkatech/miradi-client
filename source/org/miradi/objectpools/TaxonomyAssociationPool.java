@@ -29,9 +29,9 @@ import org.miradi.project.Project;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.MiradiShareTaxonomyAssociationSchema;
 
-public class MiradiShareTaxonomyAssociationPool extends BaseObjectPool
+public class TaxonomyAssociationPool extends BaseObjectPool
 {
-	public MiradiShareTaxonomyAssociationPool(IdAssigner idAssignerToUse)
+	public TaxonomyAssociationPool(IdAssigner idAssignerToUse)
 	{
 		super(idAssignerToUse, MiradiShareTaxonomyAssociationSchema.getObjectType());
 	}
