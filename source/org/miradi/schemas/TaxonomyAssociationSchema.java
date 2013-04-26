@@ -37,7 +37,7 @@ public class TaxonomyAssociationSchema extends BaseObjectSchema
 
 	public static int getObjectType()
 	{
-		return ObjectType.MIRADI_SHARE_TAXONOMY_ASSOCIATION;
+		return ObjectType.TAXONOMY_ASSOCIATION;
 	}
 	
 	@Override
