@@ -35,7 +35,7 @@ import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.xmpz2.objectExporters.ExtraDataExporter;
-import org.miradi.xml.xmpz2.objectExporters.ProjectMetadataExporter;
+import org.miradi.xml.xmpz2.objectExporters.SingletonObjectExporter;
 
 public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 {
@@ -85,7 +85,7 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 
 	private void exportProjectSummary() throws Exception
 	{
-		new ProjectMetadataExporter(getWriter()).writeBaseObjectDataSchemaElement();
+		new SingletonObjectExporter(getWriter()).writeBaseObjectDataSchemaElement();
 	}
 	
 	private void exportMiradiShareProjectData()
