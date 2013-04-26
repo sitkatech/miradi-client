@@ -65,9 +65,9 @@ import org.miradi.xml.xmpz2.SingletonBaseObjectExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
-public class ProjectMetadataExporter implements Xmpz2XmlConstants
+public class SingletonObjectExporter implements Xmpz2XmlConstants
 {
-	public ProjectMetadataExporter(Xmpz2XmlWriter writerToUse)
+	public SingletonObjectExporter(Xmpz2XmlWriter writerToUse)
 	{
 		writer = writerToUse;
 	}
