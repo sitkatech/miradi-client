@@ -52,5 +52,5 @@ public class TaxonomyAssociationSchema extends BaseObjectSchema
 		return OBJECT_NAME;
 	}
 	
-	public static final String OBJECT_NAME = "MiradiShareTaxonomyAssociation";
+	public static final String OBJECT_NAME = "TaxonomyAssociation";
 }
