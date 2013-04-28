@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-26 13:01-0500\n"
+"POT-Creation-Date: 2013-04-28 18:16-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -4327,7 +4327,7 @@ msgstr ""
 msgid "Importing Miradi Data..."
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:134
+#: Miradi/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:135
 #: Miradi/source/org/miradi/xml/xmpz/XmpzXmlImporter.java:112
 msgid "Importing XML..."
 msgstr ""
@@ -10750,9 +10750,7 @@ msgstr ""
 msgid "FieldLabel|61.Taxonomy|Miradi Share Taxonomy"
 msgstr ""
 
-msgid ""
-"FieldLabel|62.MiradiShareTaxonomyAssociation|Miradi Share Taxonomy "
-"Association"
+msgid "FieldLabel|62.TaxonomyAssociation|Taxonomy Association"
 msgstr ""
 
 msgid ""
