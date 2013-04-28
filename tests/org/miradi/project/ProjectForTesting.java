@@ -91,6 +91,7 @@ import org.miradi.objects.SubTarget;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
+import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ThreatReductionResult;
@@ -127,6 +128,8 @@ import org.miradi.questions.StrategyStatusQuestion;
 import org.miradi.questions.StrategyTaxonomyQuestion;
 import org.miradi.questions.StressContributionQuestion;
 import org.miradi.questions.StressIrreversibilityQuestion;
+import org.miradi.questions.TaxonomyClassificationSelectionMode;
+import org.miradi.questions.TaxonomyMultiSelectModeQuestion;
 import org.miradi.questions.TextBoxZOrderQuestion;
 import org.miradi.questions.ThreatClassificationQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
@@ -173,6 +176,7 @@ import org.miradi.schemas.SubTargetSchema;
 import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
+import org.miradi.schemas.TaxonomyAssociationSchema;
 import org.miradi.schemas.TextBoxSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.schemas.ThreatStressRatingSchema;
@@ -389,6 +393,19 @@ public class ProjectForTesting extends ProjectWithHelpers
 		populateMiradiShareProjectData(miradiShareProjectData);
 		
 		return miradiShareProjectData;
+	}
+	
+	public void populateTaxonomyAssociationsForCause() throws Exception
+	{
+		ORef taxonomyAssociationRef = createObject(TaxonomyAssociationSchema.getObjectType());
+		TaxonomyAssociation taxonomyAssociation = TaxonomyAssociation.find(this, taxonomyAssociationRef);
+		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_PARENT_OBJECT_TYPE, CauseSchema.getObjectType());
+		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_CODE, "RandomAssociationCode");
+		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_MULTI_SELECT, TaxonomyMultiSelectModeQuestion.MULTI_SELECT_CODE);
+		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_SELECTION_TYPE, TaxonomyClassificationSelectionMode.ANY_NODE_CODE);
+		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_DESCRIPTION, "Some random description");
+		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_TAXONOMY_CODE, "RandomTaxonomyCode");
+		fillObjectUsingCommand(taxonomyAssociation, BaseObject.TAG_LABEL, "RandomLabel");
 	}
 	
 	public ORef createResultsChainDiagram() throws Exception
@@ -1846,6 +1863,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		CommandSetObjectData setData = new CommandSetObjectData(objectRef, fieldTag, data);
 		executeCommand(setData);
+	}
+
+	public void fillObjectUsingCommand(BaseObject object, String fieldTag, int data) throws Exception
+	{
+		fillObjectUsingCommand(object.getRef(), fieldTag, Integer.toString(data));
 	}
 
 	public void fillObjectUsingCommand(BaseObject object, String fieldTag, String data) throws Exception

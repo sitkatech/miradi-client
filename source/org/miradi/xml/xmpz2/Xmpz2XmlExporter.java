@@ -22,6 +22,7 @@ package org.miradi.xml.xmpz2;
 
 import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.Vector;
 
 import org.martus.util.UnicodeWriter;
 import org.miradi.main.VersionConstants;
@@ -29,8 +30,13 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.EAMObjectPool;
+import org.miradi.objectpools.TaxonomyAssociationPool;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Cause;
+import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.project.Project;
+import org.miradi.schemas.CauseSchema;
+import org.miradi.schemas.TaxonomyAssociationSchema;
 import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.XmlExporter;
@@ -58,6 +64,7 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 		exportMiradiShareProjectData();
 		exportThreatRatings();
 		exportPools();
+		exportTaxonomyAssociations();
 		exportExtraData();
 		exportQuarantinedFileContents();
 		getWriter().writeMainElementEnd();
@@ -139,6 +146,33 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 			baseObjectExporter.writeBaseObjectDataSchemaElement(baseObject);
 		}
 		getWriter().writeEndElement(poolName);
+	}
+	
+	private void exportTaxonomyAssociations() throws Exception
+	{
+		exportTaxonomyAssociationsForType(CauseSchema.getObjectType());
+	}
+
+	private void exportTaxonomyAssociationsForType(int taxonomyAssociationParentType) throws Exception
+	{
+		TaxonomyAssociationExporter baseObjectExporter = new TaxonomyAssociationExporter(getWriter(), TaxonomyAssociationSchema.getObjectType());
+		TaxonomyAssociationPool pool = (TaxonomyAssociationPool) getProject().getPool(TaxonomyAssociationSchema.getObjectType());
+		Vector<TaxonomyAssociation> taxonomyAssociations = pool.findTaxonomyAssociationsForType(taxonomyAssociationParentType);
+		final String poolName = getTaxonomyAssociationPoolName(taxonomyAssociationParentType);
+		getWriter().writeStartElement(poolName);
+		for(TaxonomyAssociation taxonomyAssociation : taxonomyAssociations)
+		{
+			baseObjectExporter.writeBaseObjectDataSchemaElement(taxonomyAssociation);
+		}
+		getWriter().writeEndElement(poolName);
+	}
+
+	public static String getTaxonomyAssociationPoolName(int taxonomyAssociationParentType) throws Exception
+	{
+		if (Cause.is(taxonomyAssociationParentType))
+			return CAUSE_TAXONOMY_ASSOCIATION_POOL;
+		
+		throw new Exception("No pool name for taxonomy association parent type: " + taxonomyAssociationParentType);
 	}
 
 	private ObjectTypeToExporterMap getObjectTypeToExporterMap()

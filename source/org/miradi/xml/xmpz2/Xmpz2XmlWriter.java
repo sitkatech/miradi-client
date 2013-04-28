@@ -484,8 +484,13 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	
 	public void writeObjectElementStart(final BaseObject baseObject) throws Exception
 	{
+		writeObjectStartElementWithAttribute(baseObject, ID, baseObject.getId().toString());
+	}
+
+	public void writeObjectStartElementWithAttribute(final BaseObject baseObject, final String attributeName, final String attributeValue) throws Exception
+	{
 		BaseObjectSchema baseObjectSchema = baseObject.getSchema();
-		writeStartElementWithAttribute(baseObjectSchema.getXmpz2ElementName(), ID, baseObject.getId().toString());
+		writeStartElementWithAttribute(baseObjectSchema.getXmpz2ElementName(), attributeName, attributeValue);
 	}
 	
 	public void writeObjectElementStartWithoutAttribute(final BaseObject baseObject) throws Exception

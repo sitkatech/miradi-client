@@ -106,6 +106,7 @@ import org.miradi.xml.xmpz2.objectImporters.ResultsChainDiagramImporter;
 import org.miradi.xml.xmpz2.objectImporters.SingletonObjectImporter;
 import org.miradi.xml.xmpz2.objectImporters.StrategyImporter;
 import org.miradi.xml.xmpz2.objectImporters.TaskImporter;
+import org.miradi.xml.xmpz2.objectImporters.TaxonomyAssociationImporter;
 import org.miradi.xml.xmpz2.objectImporters.ThreatReductionResultsImporter;
 import org.miradi.xml.xmpz2.objectImporters.TncProjectDataImporter;
 import org.miradi.xml.xmpz2.objectImporters.Xmpz2ExtraDataImporter;
@@ -182,6 +183,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		addImporterToMap(typeToImporterMap, new GoalImporter(this));
 		addImporterToMap(typeToImporterMap, new TaskImporter(this));
 		addImporterToMap(typeToImporterMap, new TaggedObjectSetImporter(this));
+		addImporterToMap(typeToImporterMap, new TaxonomyAssociationImporter(this, CauseSchema.getObjectType()));
 		
 		for(int objectType = ObjectType.FIRST_OBJECT_TYPE; objectType < ObjectType.OBJECT_TYPE_COUNT; ++objectType)
 		{
@@ -240,20 +242,18 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	private void importBaseObjects(final BaseObjectImporter importer) throws Exception
 	{
 		final String elementObjectName = importer.getBaseObjectSchema().getXmpz2ElementName();
-		final String containerElementName = Xmpz2XmlWriter.createPoolElementName(elementObjectName);
+		final String containerElementName = importer.createPoolElementName();
 		final Node rootNode = getRootNode();
 		final NodeList baseObjectNodes = getNodes(rootNode, new String[]{containerElementName, elementObjectName, });
 		for (int index = 0; index < baseObjectNodes.getLength(); ++index)
 		{
 			Node baseObjectNode = baseObjectNodes.item(index);
-			String intIdAsString = getAttributeValue(baseObjectNode, ID);
-			ORef ref = getProject().createObject(importer.getBaseObjectSchema().getType(), new BaseId(intIdAsString));
-			
+			ORef ref = importer.createBaseObject(importer, baseObjectNode);
 			importer.importFields(baseObjectNode, ref);
 			importer.postCreateFix(ref, baseObjectNode);
 		}
 	}
-	
+
 	private void importTncProjectData() throws Exception
 	{
 		final Node singletonNode = getNode(getRootNode(), new TncProjectDataSchema().getXmpz2ElementName());

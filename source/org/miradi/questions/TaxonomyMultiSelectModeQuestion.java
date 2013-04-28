@@ -32,8 +32,11 @@ public class TaxonomyMultiSelectModeQuestion extends StaticChoiceQuestion
 	private static ChoiceItem[] getChoiceItems()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("SingleSelect", EAM.text("Single Selection")),
-				new ChoiceItem("MultiSelect", EAM.text("Multi Selection")),
+				new ChoiceItem(SINGLE_SELECT_CODE, EAM.text("Single Selection")),
+				new ChoiceItem(MULTI_SELECT_CODE, EAM.text("Multi Selection")),
 		};
 	}
+	
+	public static final String SINGLE_SELECT_CODE = "SingleSelect";
+	public static final String MULTI_SELECT_CODE = "MultiSelect";
 }
