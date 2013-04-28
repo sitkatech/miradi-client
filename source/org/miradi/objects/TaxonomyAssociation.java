@@ -38,6 +38,11 @@ public class TaxonomyAssociation extends BaseObject
 		return new TaxonomyAssociationSchema();
 	}
 	
+	public int getParentType()
+	{
+		return getIntegerData(TaxonomyAssociationSchema.TAG_PARENT_OBJECT_TYPE);
+	}
+	
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

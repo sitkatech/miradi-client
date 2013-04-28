@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objectpools;
 
+import java.util.Vector;
+
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.objects.BaseObject;
@@ -56,5 +58,19 @@ public class TaxonomyAssociationPool extends BaseObjectPool
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
 		return TaxonomyAssociation.createSchema();
+	}
+	
+	public Vector<TaxonomyAssociation> findTaxonomyAssociationsForType(final int type)
+	{
+		Vector<TaxonomyAssociation> taxonomyAssociationsForType = new Vector<TaxonomyAssociation>();
+		Vector<BaseObject> taxonomyAssociations = getAllObjects();
+		for(BaseObject baseObject : taxonomyAssociations)
+		{
+			TaxonomyAssociation taxonomyAssociation = (TaxonomyAssociation) baseObject;
+			if (taxonomyAssociation.getParentType() == type)
+				taxonomyAssociationsForType.add(taxonomyAssociation);
+		}
+		
+		return taxonomyAssociationsForType;
 	}
 }

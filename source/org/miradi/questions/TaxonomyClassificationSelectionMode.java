@@ -32,8 +32,11 @@ public class TaxonomyClassificationSelectionMode extends StaticChoiceQuestion
 	private static ChoiceItem[] getChoiceItems()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("LeafOnly", EAM.text("Leaf Only")),
-				new ChoiceItem("AnyNode", EAM.text("Any Node")),
+				new ChoiceItem(LEAF_ONLY_CODE, EAM.text("Leaf Only")),
+				new ChoiceItem(ANY_NODE_CODE, EAM.text("Any Node")),
 		};
 	}
+	
+	public static final String LEAF_ONLY_CODE = "LeafOnly";
+	public static final String ANY_NODE_CODE = "AnyNode";
 }

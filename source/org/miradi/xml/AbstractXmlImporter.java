@@ -193,6 +193,11 @@ abstract public class AbstractXmlImporter
 	{
 		setData(baseObject.getRef(), tag, data);
 	}
+	
+	public void setData(ORef ref, String tag, int data) throws Exception
+	{
+		setData(ref, tag, Integer.toString(data));
+	}
 		
 	public void setData(ORef ref, String tag, String data) throws Exception
 	{

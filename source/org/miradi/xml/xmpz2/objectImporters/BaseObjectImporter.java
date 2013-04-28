@@ -20,12 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectImporters;
 
+import org.miradi.ids.BaseId;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
+import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 import org.w3c.dom.Node;
 
 public class BaseObjectImporter extends AbstractXmpz2ObjectImporter
@@ -58,19 +60,31 @@ public class BaseObjectImporter extends AbstractXmpz2ObjectImporter
 	{
 		return false;
 	}
-
+	
 	public void postCreateFix(ORef ref, Node baseObjectNode) throws Exception
 	{
 	}
 	
-	protected String getPoolName()
+	protected String getPoolName() throws Exception
 	{
 		return getBaseObjectSchema().getXmpz2ElementName();
+	}
+	
+	public String createPoolElementName() throws Exception
+	{
+		return Xmpz2XmlWriter.createPoolElementName(getBaseObjectSchema().getXmpz2ElementName());
 	}
 
 	public BaseObjectSchema getBaseObjectSchema()
 	{
 		return baseObjectSchema;
+	}
+	
+	public ORef createBaseObject(final BaseObjectImporter importer,	Node baseObjectNode) throws Exception
+	{
+		String intIdAsString = getImporter().getAttributeValue(baseObjectNode, ID);
+		
+		return getProject().createObject(importer.getBaseObjectSchema().getType(), new BaseId(intIdAsString));
 	}
 	
 	private BaseObjectSchema baseObjectSchema;
