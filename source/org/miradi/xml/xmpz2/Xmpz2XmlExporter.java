@@ -161,7 +161,7 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 		getWriter().writeEndElement(poolName);
 	}
 	
-	public static HashMap<Integer,String> createTaxonomyAssociationTypeToPoolNameMap()
+	public static HashMap<Integer,String> createTaxonomyAssociationBaseObjectTypeToPoolNameMap()
 	{
 		HashMap<Integer, String> typeToPoolNameMap = new HashMap<Integer, String>();
 		typeToPoolNameMap.put(MiradiShareProjectDataSchema.getObjectType(), MIRADI_SHARE__PROJECT_DATA_TAXONOMY_ASSOCIATION_POOL);
@@ -183,12 +183,12 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 	
 	public static String getTaxonomyAssociationPoolNameForType(int type)
 	{
-		return createTaxonomyAssociationTypeToPoolNameMap().get(type);
+		return createTaxonomyAssociationBaseObjectTypeToPoolNameMap().get(type);
 	}
 	
 	private void exportTaxonomyAssociations() throws Exception
 	{
-		HashMap<Integer, String> taxonomyAssociationTypeToPoolMap = createTaxonomyAssociationTypeToPoolNameMap();
+		HashMap<Integer, String> taxonomyAssociationTypeToPoolMap = createTaxonomyAssociationBaseObjectTypeToPoolNameMap();
 		Set<Integer> types = taxonomyAssociationTypeToPoolMap.keySet();
 		for(Integer taxonomyAssociationBaseObjectType : types)
 		{

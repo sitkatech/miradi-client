@@ -400,7 +400,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void populateTaxonomyAssociationsForAllTypes() throws Exception
 	{
-		HashMap<Integer, String> taxonomyAssociationTypeToPoolMap = Xmpz2XmlExporter.createTaxonomyAssociationTypeToPoolNameMap();
+		HashMap<Integer, String> taxonomyAssociationTypeToPoolMap = Xmpz2XmlExporter.createTaxonomyAssociationBaseObjectTypeToPoolNameMap();
 		Set<Integer> types = taxonomyAssociationTypeToPoolMap.keySet();
 		for(Integer taxonomyAssociationParentType : types)
 		{
