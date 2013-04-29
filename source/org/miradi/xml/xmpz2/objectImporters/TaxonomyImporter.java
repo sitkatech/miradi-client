@@ -45,7 +45,7 @@ public class TaxonomyImporter extends BaseObjectImporter
 	public ORef createBaseObject(final BaseObjectImporter importer,	Node baseObjectNode) throws Exception
 	{
 		ORef newTaxonomyRef = getProject().createObject(MiradiShareTaxonomySchema.getObjectType());
-		String taxonomyCode = getImporter().getAttributeValue(baseObjectNode, MiradiShareTaxonomySchema.TAG_TAXONOMY_CODE);
+		String taxonomyCode = getImporter().getAttributeValue(baseObjectNode, TAXONOMY_CODE);
 		getImporter().setData(newTaxonomyRef, MiradiShareTaxonomySchema.TAG_TAXONOMY_CODE, taxonomyCode);
 		
 		return newTaxonomyRef;

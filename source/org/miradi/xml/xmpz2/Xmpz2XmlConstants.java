@@ -289,6 +289,7 @@ public interface Xmpz2XmlConstants
 	public static final String TAXONOMY_CLASSIFICATION = "TaxonomyClassification";
 	public static final String TAXONOMY_CLASSIFICATION_CONTAINER = TAXONOMY_CLASSIFICATION + "Container";
 	public static final String TAXONOMY_ELEMENT = TAXONOMY + "Element";
+	public static final String TAXONOMY_ELEMENTS = TAXONOMY_ELEMENT + "s";
 	public static final String TAXONOMY_VERSION = "Version";
 	public static final String TAXONOMY_ELEMENT_CODE = TAXONOMY_ELEMENT + "Code";
 	public static final String TAXONOMY_ELEMENT_CHILD_CODES = TAXONOMY_ELEMENT + "ChildCodes";
@@ -296,7 +297,9 @@ public interface Xmpz2XmlConstants
 	public static final String TAXONOMY_ELEMENT_DESCRIPTION = TAXONOMY_ELEMENT + "Description";
 	public static final String TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODES = TAXONOMY_CLASSIFICATION + TAXONOMY_ELEMENT_CODE + "s";
 	public static final String CODE = "Code";
+	public static final String TAXONOMY_CODE = TAXONOMY + CODE;
 	public static final String TAXONOMY_CLASSIFICATION_TAXONOMY_CODE = TAXONOMY_CLASSIFICATION + TAXONOMY + CODE;
+	public static final String TAXONOMY_TOP_LEVEL_ELEMENT_CODES = TAXONOMY + "TopLevelElementCodes";
 	
 	public static final String TAXONOMY_ASSOCIATION_MULTI_SELECT = "TaxonomyAssociationMultiSelect";
 	public static final String TAXONOMY_ASSOCIATION_SELECTION_TYPE= "TaxonomyAssociationSelectionType";
