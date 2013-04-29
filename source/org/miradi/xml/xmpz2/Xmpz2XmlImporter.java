@@ -109,6 +109,7 @@ import org.miradi.xml.xmpz2.objectImporters.SingletonObjectImporter;
 import org.miradi.xml.xmpz2.objectImporters.StrategyImporter;
 import org.miradi.xml.xmpz2.objectImporters.TaskImporter;
 import org.miradi.xml.xmpz2.objectImporters.TaxonomyAssociationImporter;
+import org.miradi.xml.xmpz2.objectImporters.TaxonomyImporter;
 import org.miradi.xml.xmpz2.objectImporters.ThreatReductionResultsImporter;
 import org.miradi.xml.xmpz2.objectImporters.TncProjectDataImporter;
 import org.miradi.xml.xmpz2.objectImporters.Xmpz2ExtraDataImporter;
@@ -134,7 +135,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	protected void importXml() throws Exception
 	{
 		LinkedHashMap<Integer, BaseObjectImporter> typeToImporterMap = fillTypeToImporterMap();
-		progressIndicator.setStatusMessage(EAM.text("Importing XML..."),  9 + typeToImporterMap.size());
+		progressIndicator.setStatusMessage(EAM.text("Importing XML..."),  12 + typeToImporterMap.size());
 		
 		importSummaryData();
 		incrementProgress();
@@ -161,6 +162,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		incrementProgress();
 		
 		importTaxonomyAssociationPools();
+		incrementProgress();
 		
 		importThreatTargetRatings();
 		incrementProgress();
@@ -188,6 +190,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		addImporterToMap(typeToImporterMap, new GoalImporter(this));
 		addImporterToMap(typeToImporterMap, new TaskImporter(this));
 		addImporterToMap(typeToImporterMap, new TaggedObjectSetImporter(this));
+		addImporterToMap(typeToImporterMap, new TaxonomyImporter(this));
 		
 		for(int objectType = ObjectType.FIRST_OBJECT_TYPE; objectType < ObjectType.OBJECT_TYPE_COUNT; ++objectType)
 		{
