@@ -499,7 +499,8 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	
 	private String removeNamepsacePrefix(String objectTypeNameWithNamespace)
 	{
-		return objectTypeNameWithNamespace.replaceFirst(getPrefix(), "");
+		int indexOfPrefix = objectTypeNameWithNamespace.indexOf(":");
+		return objectTypeNameWithNamespace.substring(indexOfPrefix + 1, objectTypeNameWithNamespace.length());
 	}
 
 	private static String removeAppendedId(String nodeName)
