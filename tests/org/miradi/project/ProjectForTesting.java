@@ -406,7 +406,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		{
 			ORef taxonomyAssociationRef = createObject(TaxonomyAssociationSchema.getObjectType());
 			TaxonomyAssociation taxonomyAssociation = TaxonomyAssociation.find(this, taxonomyAssociationRef);
-			fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_PARENT_OBJECT_TYPE, taxonomyAssociationParentType);
+			fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_BASE_OBJECT_TYPE, taxonomyAssociationParentType);
 			fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_CODE, "RandomAssociationCode");
 			fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_MULTI_SELECT, TaxonomyMultiSelectModeQuestion.MULTI_SELECT_CODE);
 			fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_SELECTION_TYPE, TaxonomyClassificationSelectionMode.ANY_NODE_CODE);

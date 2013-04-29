@@ -42,13 +42,13 @@ public class TaxonomyAssociationImporter extends BaseObjectImporter
 	{
 		super.importFields(baseObjectNode, refToUse);
 		
-		getImporter().setData(refToUse, TaxonomyAssociationSchema.TAG_PARENT_OBJECT_TYPE, parentType);
+		getImporter().setData(refToUse, TaxonomyAssociationSchema.TAG_BASE_OBJECT_TYPE, parentType);
 	}
 
 	@Override
 	protected boolean isCustomImportField(String tag)
 	{
-		if (tag.equals(TaxonomyAssociationSchema.TAG_PARENT_OBJECT_TYPE))
+		if (tag.equals(TaxonomyAssociationSchema.TAG_BASE_OBJECT_TYPE))
 			return true;
 		
 		if (tag.equals(TaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_CODE))

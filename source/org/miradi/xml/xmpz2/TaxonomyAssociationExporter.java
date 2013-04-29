@@ -49,7 +49,7 @@ public class TaxonomyAssociationExporter extends BaseObjectExporter
 	@Override
 	protected boolean shouldOmitField(String tag)
 	{
-		if (tag.equals(TaxonomyAssociationSchema.TAG_PARENT_OBJECT_TYPE))
+		if (tag.equals(TaxonomyAssociationSchema.TAG_BASE_OBJECT_TYPE))
 			return true;
 		
 		return false;
