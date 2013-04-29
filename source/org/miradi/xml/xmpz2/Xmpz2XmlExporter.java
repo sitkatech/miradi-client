@@ -190,10 +190,10 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 	{
 		HashMap<Integer, String> taxonomyAssociationTypeToPoolMap = createTaxonomyAssociationTypeToPoolNameMap();
 		Set<Integer> types = taxonomyAssociationTypeToPoolMap.keySet();
-		for(Integer taxonomyAssociationParentType : types)
+		for(Integer taxonomyAssociationBaseObjectType : types)
 		{
-			String poolName = taxonomyAssociationTypeToPoolMap.get(taxonomyAssociationParentType);
-			exportTaxonomyAssociationsForBaseObjectType(taxonomyAssociationParentType, poolName);
+			String poolName = taxonomyAssociationTypeToPoolMap.get(taxonomyAssociationBaseObjectType);
+			exportTaxonomyAssociationsForBaseObjectType(taxonomyAssociationBaseObjectType, poolName);
 		}
 	}
 
