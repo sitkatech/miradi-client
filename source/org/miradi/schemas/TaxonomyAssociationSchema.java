@@ -41,7 +41,7 @@ public class TaxonomyAssociationSchema extends BaseObjectSchema
 		createFieldSchemaChoice(TAG_SELECTION_TYPE, TaxonomyClassificationSelectionMode.class);
 		createFieldSchemaMultiLineUserText(TAG_DESCRIPTION);
 		createFieldSchemaSingleLineUserText(TAG_TAXONOMY_CODE);
-		createFieldSchemaInteger(TAG_PARENT_OBJECT_TYPE);
+		createFieldSchemaInteger(TAG_BASE_OBJECT_TYPE);
 	}
 	
 	public static int getObjectType()
@@ -68,5 +68,5 @@ public class TaxonomyAssociationSchema extends BaseObjectSchema
 	public static final String TAG_SELECTION_TYPE = "SelectionType";
 	public static final String TAG_DESCRIPTION  = "Description";
 	public static final String TAG_TAXONOMY_CODE  = "TaxonomyCode";
-	public static final String TAG_PARENT_OBJECT_TYPE = "ParentObjectType";
+	public static final String TAG_BASE_OBJECT_TYPE = "BaseObjectType";
 }
