@@ -193,11 +193,11 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 		for(Integer taxonomyAssociationParentType : types)
 		{
 			String poolName = taxonomyAssociationTypeToPoolMap.get(taxonomyAssociationParentType);
-			exportTaxonomyAssociationsForType(taxonomyAssociationParentType, poolName);
+			exportTaxonomyAssociationsForBaseObjectType(taxonomyAssociationParentType, poolName);
 		}
 	}
 
-	private void exportTaxonomyAssociationsForType(int taxonomyAssociationBaseObjectType, String poolName) throws Exception
+	private void exportTaxonomyAssociationsForBaseObjectType(int taxonomyAssociationBaseObjectType, String poolName) throws Exception
 	{
 		TaxonomyAssociationExporter baseObjectExporter = new TaxonomyAssociationExporter(getWriter(), TaxonomyAssociationSchema.getObjectType());
 		TaxonomyAssociationPool pool = (TaxonomyAssociationPool) getProject().getPool(TaxonomyAssociationSchema.getObjectType());
