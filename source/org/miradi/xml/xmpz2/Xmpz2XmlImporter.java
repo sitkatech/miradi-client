@@ -228,12 +228,12 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	
 	private void importTaxonomyAssociationPools() throws Exception
 	{
-		HashMap<Integer, String> taxonomyAssociationTypeToPoolMap = Xmpz2XmlExporter.createTaxonomyAssociationBaseObjectTypeToPoolNameMap();
-		Set<Integer> types = taxonomyAssociationTypeToPoolMap.keySet();
-		for(Integer taxonomyAssociationParentType : types)
+		HashMap<Integer, String> taxonomyAssociationBaseObjectTypeToPoolMap = Xmpz2XmlExporter.createTaxonomyAssociationBaseObjectTypeToPoolNameMap();
+		Set<Integer> BaseObjectTypes = taxonomyAssociationBaseObjectTypeToPoolMap.keySet();
+		for(Integer taxonomyAssociationParentType : BaseObjectTypes)
 		{
 			TaxonomyAssociationImporter importer = new TaxonomyAssociationImporter(this, taxonomyAssociationParentType);
-			importBaseObjects(importer, taxonomyAssociationTypeToPoolMap.get(taxonomyAssociationParentType));
+			importBaseObjects(importer, taxonomyAssociationBaseObjectTypeToPoolMap.get(taxonomyAssociationParentType));
 		}
 	}
 
