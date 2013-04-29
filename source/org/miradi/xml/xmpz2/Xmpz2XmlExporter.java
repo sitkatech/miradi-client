@@ -189,8 +189,8 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 	private void exportTaxonomyAssociations() throws Exception
 	{
 		HashMap<Integer, String> taxonomyAssociationTypeToPoolMap = createTaxonomyAssociationBaseObjectTypeToPoolNameMap();
-		Set<Integer> types = taxonomyAssociationTypeToPoolMap.keySet();
-		for(Integer taxonomyAssociationBaseObjectType : types)
+		Set<Integer> baseObjectTypes = taxonomyAssociationTypeToPoolMap.keySet();
+		for(Integer taxonomyAssociationBaseObjectType : baseObjectTypes)
 		{
 			String poolName = taxonomyAssociationTypeToPoolMap.get(taxonomyAssociationBaseObjectType);
 			exportTaxonomyAssociationsForBaseObjectType(taxonomyAssociationBaseObjectType, poolName);
