@@ -74,7 +74,7 @@ public class TaxonomyAssociationImporter extends BaseObjectImporter
 	}
 	
 	@Override
-	protected String getPoolName() throws Exception 
+	public String getPoolName() throws Exception 
 	{
 		return taxonomyAssociationPoolName;
 	}
