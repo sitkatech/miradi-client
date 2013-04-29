@@ -163,22 +163,22 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 	
 	public static HashMap<Integer,String> createTaxonomyAssociationBaseObjectTypeToPoolNameMap()
 	{
-		HashMap<Integer, String> typeToPoolNameMap = new HashMap<Integer, String>();
-		typeToPoolNameMap.put(MiradiShareProjectDataSchema.getObjectType(), MIRADI_SHARE__PROJECT_DATA_TAXONOMY_ASSOCIATION_POOL);
-		typeToPoolNameMap.put(TargetSchema.getObjectType(), BIODIVERSITY_TARGET_TAXONOMY_ASSOCIATION_POOL);
-		typeToPoolNameMap.put(HumanWelfareTargetSchema.getObjectType(), HUMAN_WELLBEING_TARGET_TAXONOMY_ASSOCIATION_POOL);
-		typeToPoolNameMap.put(CauseSchema.getObjectType(), CAUSE_TAXONOMY_ASSOCIATION_POOL);
-		typeToPoolNameMap.put(StrategySchema.getObjectType(), STRATEGY_TAXONOMY_ASSOCIATION_POOL);
-		typeToPoolNameMap.put(ResultsChainDiagramSchema.getObjectType(), RESULTS_CHAIN_TAXONOMY_ASSOCIATION_POOL);
-		typeToPoolNameMap.put(ThreatReductionResultSchema.getObjectType(), THREAT_REDUCTION_RESULT_TAXONOMY_ASSOCIATION_POOL);
-		typeToPoolNameMap.put(GoalSchema.getObjectType(), GOAL_TAXONOMY_ASSOCIATION_POOL);
-		typeToPoolNameMap.put(KeyEcologicalAttributeSchema.getObjectType(), KEY_ECOLOGICAL_ATTRIBUTE_TAXONOMY_ASSOCIATION_POOL);
-		typeToPoolNameMap.put(IndicatorSchema.getObjectType(), INDICATOR_TAXONOMY_ASSOCIATION_POOL);
-		typeToPoolNameMap.put(ObjectiveSchema.getObjectType(), OBJECTIVE_TAXONOMY_ASSOCIATION_POOL);
-		typeToPoolNameMap.put(StressSchema.getObjectType(), STRESS_TAXONOMY_ASSOCIATION_POOL);
-		typeToPoolNameMap.put(TaskSchema.getObjectType(), TASK_TAXONOMY_ASSOCIATION_POOL);
+		HashMap<Integer, String> baseObjectTypeToPoolNameMap = new HashMap<Integer, String>();
+		baseObjectTypeToPoolNameMap.put(MiradiShareProjectDataSchema.getObjectType(), MIRADI_SHARE__PROJECT_DATA_TAXONOMY_ASSOCIATION_POOL);
+		baseObjectTypeToPoolNameMap.put(TargetSchema.getObjectType(), BIODIVERSITY_TARGET_TAXONOMY_ASSOCIATION_POOL);
+		baseObjectTypeToPoolNameMap.put(HumanWelfareTargetSchema.getObjectType(), HUMAN_WELLBEING_TARGET_TAXONOMY_ASSOCIATION_POOL);
+		baseObjectTypeToPoolNameMap.put(CauseSchema.getObjectType(), CAUSE_TAXONOMY_ASSOCIATION_POOL);
+		baseObjectTypeToPoolNameMap.put(StrategySchema.getObjectType(), STRATEGY_TAXONOMY_ASSOCIATION_POOL);
+		baseObjectTypeToPoolNameMap.put(ResultsChainDiagramSchema.getObjectType(), RESULTS_CHAIN_TAXONOMY_ASSOCIATION_POOL);
+		baseObjectTypeToPoolNameMap.put(ThreatReductionResultSchema.getObjectType(), THREAT_REDUCTION_RESULT_TAXONOMY_ASSOCIATION_POOL);
+		baseObjectTypeToPoolNameMap.put(GoalSchema.getObjectType(), GOAL_TAXONOMY_ASSOCIATION_POOL);
+		baseObjectTypeToPoolNameMap.put(KeyEcologicalAttributeSchema.getObjectType(), KEY_ECOLOGICAL_ATTRIBUTE_TAXONOMY_ASSOCIATION_POOL);
+		baseObjectTypeToPoolNameMap.put(IndicatorSchema.getObjectType(), INDICATOR_TAXONOMY_ASSOCIATION_POOL);
+		baseObjectTypeToPoolNameMap.put(ObjectiveSchema.getObjectType(), OBJECTIVE_TAXONOMY_ASSOCIATION_POOL);
+		baseObjectTypeToPoolNameMap.put(StressSchema.getObjectType(), STRESS_TAXONOMY_ASSOCIATION_POOL);
+		baseObjectTypeToPoolNameMap.put(TaskSchema.getObjectType(), TASK_TAXONOMY_ASSOCIATION_POOL);
 		
-		return typeToPoolNameMap;
+		return baseObjectTypeToPoolNameMap;
 	}
 	
 	public static String getTaxonomyAssociationPoolNameForType(int type)
