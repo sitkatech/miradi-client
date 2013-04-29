@@ -21,6 +21,8 @@ package org.miradi.project;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.util.HashMap;
+import java.util.Set;
 import java.util.Vector;
 
 import org.martus.util.MultiCalendar;
@@ -199,6 +201,7 @@ import org.miradi.utils.Translation;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.views.diagram.LinkCreator;
 import org.miradi.xml.conpro.ConProMiradiXml;
+import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
 
 
 
@@ -395,17 +398,22 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return miradiShareProjectData;
 	}
 	
-	public void populateTaxonomyAssociationsForCause() throws Exception
+	public void populateTaxonomyAssociationsForAllTypes() throws Exception
 	{
-		ORef taxonomyAssociationRef = createObject(TaxonomyAssociationSchema.getObjectType());
-		TaxonomyAssociation taxonomyAssociation = TaxonomyAssociation.find(this, taxonomyAssociationRef);
-		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_PARENT_OBJECT_TYPE, CauseSchema.getObjectType());
-		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_CODE, "RandomAssociationCode");
-		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_MULTI_SELECT, TaxonomyMultiSelectModeQuestion.MULTI_SELECT_CODE);
-		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_SELECTION_TYPE, TaxonomyClassificationSelectionMode.ANY_NODE_CODE);
-		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_DESCRIPTION, "Some random description");
-		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_TAXONOMY_CODE, "RandomTaxonomyCode");
-		fillObjectUsingCommand(taxonomyAssociation, BaseObject.TAG_LABEL, "RandomLabel");
+		HashMap<Integer, String> taxonomyAssociationTypeToPoolMap = Xmpz2XmlExporter.createTaxonomyAssociationTypeToPoolNameMap();
+		Set<Integer> types = taxonomyAssociationTypeToPoolMap.keySet();
+		for(Integer taxonomyAssociationParentType : types)
+		{
+			ORef taxonomyAssociationRef = createObject(TaxonomyAssociationSchema.getObjectType());
+			TaxonomyAssociation taxonomyAssociation = TaxonomyAssociation.find(this, taxonomyAssociationRef);
+			fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_PARENT_OBJECT_TYPE, taxonomyAssociationParentType);
+			fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_CODE, "RandomAssociationCode");
+			fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_MULTI_SELECT, TaxonomyMultiSelectModeQuestion.MULTI_SELECT_CODE);
+			fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_SELECTION_TYPE, TaxonomyClassificationSelectionMode.ANY_NODE_CODE);
+			fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_DESCRIPTION, "Some random description");
+			fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_TAXONOMY_CODE, "RandomTaxonomyCode");
+			fillObjectUsingCommand(taxonomyAssociation, BaseObject.TAG_LABEL, "RandomLabel");
+		}
 	}
 	
 	public ORef createResultsChainDiagram() throws Exception
