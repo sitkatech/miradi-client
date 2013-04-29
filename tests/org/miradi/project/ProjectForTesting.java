@@ -401,8 +401,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void populateTaxonomyAssociationsForBaseObjectTypes() throws Exception
 	{
 		HashMap<Integer, String> taxonomyAssociationBaseObjectTypeToPoolMap = Xmpz2XmlExporter.createTaxonomyAssociationBaseObjectTypeToPoolNameMap();
-		Set<Integer> types = taxonomyAssociationBaseObjectTypeToPoolMap.keySet();
-		for(Integer taxonomyAssociationParentType : types)
+		Set<Integer> baseObjectTypes = taxonomyAssociationBaseObjectTypeToPoolMap.keySet();
+		for(Integer taxonomyAssociationParentType : baseObjectTypes)
 		{
 			ORef taxonomyAssociationRef = createObject(TaxonomyAssociationSchema.getObjectType());
 			TaxonomyAssociation taxonomyAssociation = TaxonomyAssociation.find(this, taxonomyAssociationRef);
