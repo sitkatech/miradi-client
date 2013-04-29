@@ -42,7 +42,7 @@ public class TaxonomyClassification
 			taxonomyElementCodes.add(array.getString(index));
 		}
 		
-		taxonomyCode = json.optString(TAG_TAXONOMY_CLASSIFICATION_CODE);
+		taxonomyCode = json.optString(TAG_CLASSIFICATION_TAXONOMY_CODE);
 	}
 
 	public EnhancedJsonObject toJson()
@@ -55,7 +55,7 @@ public class TaxonomyClassification
 		
 		EnhancedJsonObject json = new EnhancedJsonObject();
 		json.put(TAG_ELEMENTS_CODES, array);
-		json.put(TAG_TAXONOMY_CLASSIFICATION_CODE, getTaxonomyClassificationCode());
+		json.put(TAG_CLASSIFICATION_TAXONOMY_CODE, getTaxonomyClassificationCode());
 		
 		return json;
 	}
@@ -96,5 +96,5 @@ public class TaxonomyClassification
 	private String taxonomyCode;
 	private Vector<String> taxonomyElementCodes;
 	private String TAG_ELEMENTS_CODES = "ElementCodes";
-	private String TAG_TAXONOMY_CLASSIFICATION_CODE = "TaxonomyClassificationTaxonomyCode";
+	private String TAG_CLASSIFICATION_TAXONOMY_CODE = "ClassificationTaxonomyCode";
 }
