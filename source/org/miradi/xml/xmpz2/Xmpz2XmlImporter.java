@@ -709,12 +709,6 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		return new Xmpz2XmlValidator();
 	}
 
-	@Override
-	protected String getNamespaceURI()
-	{
-		return getDocument().lookupNamespaceURI("miradi");
-	}
-	
 	private String findElementName(String poolName, String destinationTag)
 	{
 		return getTagToElementNameMap().findElementName(poolName, destinationTag);

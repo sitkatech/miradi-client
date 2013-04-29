@@ -210,12 +210,6 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements XmpzXmlConst
 	}
 
 	@Override
-	protected String getNamespaceURI()
-	{
-		return getDocument().getDocumentElement().getNamespaceURI();
-	}
-
-	@Override
 	public void setData(ORef ref, String tag, String data) throws Exception
 	{
 		getProject().setObjectData(ref, tag, HtmlUtilities.replaceNonHtmlNewlines(data));

@@ -349,6 +349,11 @@ abstract public class AbstractXmlImporter
 		return getProject().getMetadata().getRef();
 	}
 	
+	private String getNamespaceURI()
+	{
+		return getDocument().getDocumentElement().getNamespaceURI();
+	}
+	
 	public Document getDocument()
 	{
 		return document;
@@ -377,8 +382,6 @@ abstract public class AbstractXmlImporter
 	abstract public AbstractXmlNamespaceContext getNamespaceContext();
 	
 	abstract protected MiradiXmlValidator createXmlValidator();
-
-	abstract protected String getNamespaceURI();
 
 	private Project project;
 	private XPath xPath;
