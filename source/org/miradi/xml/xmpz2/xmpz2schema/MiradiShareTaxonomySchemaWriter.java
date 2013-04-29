@@ -36,9 +36,9 @@ public class MiradiShareTaxonomySchemaWriter extends BaseObjectSchemaWriter
 	public Vector<String> createFieldSchemas() throws Exception
 	{
 		final Vector<String> fieldSchemasAsString = super.createFieldSchemas();
-		fieldSchemasAsString.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createTextAttributeElement(MiradiShareTaxonomySchema.TAG_TAXONOMY_CODE));
-		fieldSchemasAsString.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createRequiredParentAndZeroOrMoreElementDefinition(MiradiShareTaxonomySchema.TAG_TAXONOMY_ELEMENTS, TAXONOMY_ELEMENT));
-		fieldSchemasAsString.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createTaxonomyElementCode(MiradiShareTaxonomySchema.TAG_TAXONOMY_TOP_LEVEL_ELEMENT_CODES));
+		fieldSchemasAsString.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createTextAttributeElement(TAXONOMY_CODE));
+		fieldSchemasAsString.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createRequiredParentAndZeroOrMoreElementDefinition(TAXONOMY_ELEMENTS, TAXONOMY_ELEMENT));
+		fieldSchemasAsString.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createTaxonomyElementCode(TAXONOMY_TOP_LEVEL_ELEMENT_CODES));
 		
 		return fieldSchemasAsString;
 	}

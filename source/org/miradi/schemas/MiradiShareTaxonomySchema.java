@@ -66,8 +66,8 @@ public class MiradiShareTaxonomySchema extends BaseObjectSchema
 	
 	public static final String OBJECT_NAME = "Taxonomy";
 	
-	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
-	public static final String TAG_TAXONOMY_VERSION = "TaxonomyVersion";
-	public static final String TAG_TAXONOMY_ELEMENTS = "TaxonomyElements";
-	public static final String TAG_TAXONOMY_TOP_LEVEL_ELEMENT_CODES = "TaxonomyTopLevelElementCodes";
+	public static final String TAG_TAXONOMY_CODE = "Code";
+	public static final String TAG_TAXONOMY_VERSION = "Version";
+	public static final String TAG_TAXONOMY_ELEMENTS = "Elements";
+	public static final String TAG_TAXONOMY_TOP_LEVEL_ELEMENT_CODES = "TopLevelElementCodes";
 }
