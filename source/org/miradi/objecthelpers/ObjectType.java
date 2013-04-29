@@ -35,6 +35,7 @@ import org.miradi.schemas.DashboardSchema;
 import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.IucnRedlistSpeciesSchema;
+import org.miradi.schemas.MiradiShareProjectDataSchema;
 import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 import org.miradi.schemas.OrganizationSchema;
 import org.miradi.schemas.OtherNotableSpeciesSchema;
@@ -169,6 +170,7 @@ public class ObjectType
 			BudgetCategoryTwoSchema.getObjectType(),
 			DashboardSchema.getObjectType(),
 			XslTemplateSchema.getObjectType(),
+			MiradiShareProjectDataSchema.getObjectType(),
 		};
 		
 		return new HashSet<Integer>(Arrays.asList(types));
