@@ -356,7 +356,7 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 			String projectId = xenodata.getData(Xenodata.TAG_PROJECT_ID);
 			writeStartElement(EXTERNAL_PROJECT_ID_ELEMENT_NAME);
 			writeElement(EXTERNAL_APP_ELEMENT_NAME, key);
-			writeElement(PROJECT_ID, projectId);
+			writeRequiredElement(PROJECT_ID, projectId);
 			writeEndElement(EXTERNAL_PROJECT_ID_ELEMENT_NAME);
 		}
 		
@@ -542,9 +542,22 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	
 	public void writeElement(String elementName, String data) throws Exception
 	{
-		if (data == null || data.length() == 0)
+		if (data.length() == 0)
 			return;
 		
+		writeRequiredElement(elementName, data);
+	}
+	
+	private void writeRequiredElement(String elementName, String data) throws Exception
+	{
+		if (data == null)
+			return;
+		
+		writeRawElement(elementName, data);
+	}
+
+	private void writeRawElement(String elementName, String data) throws Exception
+	{
 		writeStartElement(elementName);
 		writeXmlText(data);
 		writeEndElement(elementName);
