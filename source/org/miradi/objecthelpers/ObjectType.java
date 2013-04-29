@@ -36,6 +36,7 @@ import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.IucnRedlistSpeciesSchema;
 import org.miradi.schemas.MiradiShareProjectDataSchema;
+import org.miradi.schemas.MiradiShareTaxonomySchema;
 import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 import org.miradi.schemas.OrganizationSchema;
 import org.miradi.schemas.OtherNotableSpeciesSchema;
@@ -47,6 +48,7 @@ import org.miradi.schemas.ReportTemplateSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.TableSettingsSchema;
 import org.miradi.schemas.TaggedObjectSetSchema;
+import org.miradi.schemas.TaxonomyAssociationSchema;
 import org.miradi.schemas.ThreatRatingCommentsDataSchema;
 import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.schemas.TncProjectDataSchema;
@@ -171,6 +173,8 @@ public class ObjectType
 			DashboardSchema.getObjectType(),
 			XslTemplateSchema.getObjectType(),
 			MiradiShareProjectDataSchema.getObjectType(),
+			MiradiShareTaxonomySchema.getObjectType(),
+			TaxonomyAssociationSchema.getObjectType(),
 		};
 		
 		return new HashSet<Integer>(Arrays.asList(types));
