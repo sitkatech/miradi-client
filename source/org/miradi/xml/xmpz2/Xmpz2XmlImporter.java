@@ -23,7 +23,9 @@ package org.miradi.xml.xmpz2;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Set;
 import java.util.Vector;
 
 import javax.xml.xpath.XPathExpressionException;
@@ -156,6 +158,9 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		incrementProgress();
 		
 		importPools(typeToImporterMap);
+		incrementProgress();
+		
+		importTaxonomyAssociationPools();
 		
 		importThreatTargetRatings();
 		incrementProgress();
@@ -183,7 +188,6 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		addImporterToMap(typeToImporterMap, new GoalImporter(this));
 		addImporterToMap(typeToImporterMap, new TaskImporter(this));
 		addImporterToMap(typeToImporterMap, new TaggedObjectSetImporter(this));
-		addImporterToMap(typeToImporterMap, new TaxonomyAssociationImporter(this, CauseSchema.getObjectType()));
 		
 		for(int objectType = ObjectType.FIRST_OBJECT_TYPE; objectType < ObjectType.OBJECT_TYPE_COUNT; ++objectType)
 		{
@@ -218,6 +222,17 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 			incrementProgress();
 		}
 	}
+	
+	private void importTaxonomyAssociationPools() throws Exception
+	{
+		HashMap<Integer, String> taxonomyAssociationTypeToPoolMap = Xmpz2XmlExporter.createTaxonomyAssociationTypeToPoolNameMap();
+		Set<Integer> types = taxonomyAssociationTypeToPoolMap.keySet();
+		for(Integer taxonomyAssociationParentType : types)
+		{
+			TaxonomyAssociationImporter importer = new TaxonomyAssociationImporter(this, taxonomyAssociationParentType);
+			importBaseObjects(importer, taxonomyAssociationTypeToPoolMap.get(taxonomyAssociationParentType));
+		}
+	}
 
 	public static boolean isCustomImport(int objectType)
 	{
@@ -241,8 +256,12 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 
 	private void importBaseObjects(final BaseObjectImporter importer) throws Exception
 	{
+		importBaseObjects(importer, importer.createPoolElementName());
+	}
+
+	private void importBaseObjects(final BaseObjectImporter importer, final String containerElementName) throws Exception
+	{
 		final String elementObjectName = importer.getBaseObjectSchema().getXmpz2ElementName();
-		final String containerElementName = importer.createPoolElementName();
 		final Node rootNode = getRootNode();
 		final NodeList baseObjectNodes = getNodes(rootNode, new String[]{containerElementName, elementObjectName, });
 		for (int index = 0; index < baseObjectNodes.getLength(); ++index)

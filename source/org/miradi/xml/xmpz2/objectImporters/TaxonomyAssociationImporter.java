@@ -34,6 +34,7 @@ public class TaxonomyAssociationImporter extends BaseObjectImporter
 		super(importerToUse, new TaxonomyAssociationSchema());
 		
 		parentType = parentTypeToUse;
+		taxonomyAssociationPoolName = Xmpz2XmlExporter.getTaxonomyAssociationPoolNameForType(parentType);
 	}
 	
 	@Override
@@ -69,14 +70,15 @@ public class TaxonomyAssociationImporter extends BaseObjectImporter
 	@Override
 	public String createPoolElementName() throws Exception
 	{
-		return Xmpz2XmlExporter.getTaxonomyAssociationPoolName(parentType);
+		return taxonomyAssociationPoolName;
 	}
 	
 	@Override
 	protected String getPoolName() throws Exception 
 	{
-		return Xmpz2XmlExporter.getTaxonomyAssociationPoolName(parentType);
+		return taxonomyAssociationPoolName;
 	}
 	
 	private int parentType;
+	private String taxonomyAssociationPoolName;
 }

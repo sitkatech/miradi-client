@@ -71,7 +71,7 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	
 	public void testTaxonomyAssociations() throws Exception
 	{
-		getProject().populateTaxonomyAssociationsForCause();
+		getProject().populateTaxonomyAssociationsForAllTypes();
 		validateUsingStringWriter();
 	}
 	

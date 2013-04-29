@@ -22,6 +22,8 @@ package org.miradi.xml.xmpz2;
 
 import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Set;
 import java.util.Vector;
 
 import org.martus.util.UnicodeWriter;
@@ -32,11 +34,22 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objectpools.TaxonomyAssociationPool;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Cause;
 import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.project.Project;
 import org.miradi.schemas.CauseSchema;
+import org.miradi.schemas.GoalSchema;
+import org.miradi.schemas.HumanWelfareTargetSchema;
+import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
+import org.miradi.schemas.MiradiShareProjectDataSchema;
+import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.StressSchema;
+import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.TaxonomyAssociationSchema;
+import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.XmlExporter;
@@ -148,31 +161,53 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 		getWriter().writeEndElement(poolName);
 	}
 	
+	public static HashMap<Integer,String> createTaxonomyAssociationTypeToPoolNameMap()
+	{
+		HashMap<Integer, String> typeToPoolNameMap = new HashMap<Integer, String>();
+		typeToPoolNameMap.put(MiradiShareProjectDataSchema.getObjectType(), MIRADI_SHARE__PROJECT_DATA_TAXONOMY_ASSOCIATION_POOL);
+		typeToPoolNameMap.put(TargetSchema.getObjectType(), BIODIVERSITY_TARGET_TAXONOMY_ASSOCIATION_POOL);
+		typeToPoolNameMap.put(HumanWelfareTargetSchema.getObjectType(), HUMAN_WELLBEING_TARGET_TAXONOMY_ASSOCIATION_POOL);
+		typeToPoolNameMap.put(CauseSchema.getObjectType(), CAUSE_TAXONOMY_ASSOCIATION_POOL);
+		typeToPoolNameMap.put(StrategySchema.getObjectType(), STRATEGY_TAXONOMY_ASSOCIATION_POOL);
+		typeToPoolNameMap.put(ResultsChainDiagramSchema.getObjectType(), RESULTS_CHAIN_TAXONOMY_ASSOCIATION_POOL);
+		typeToPoolNameMap.put(ThreatReductionResultSchema.getObjectType(), THREAT_REDUCTION_RESULT_TAXONOMY_ASSOCIATION_POOL);
+		typeToPoolNameMap.put(GoalSchema.getObjectType(), GOAL_TAXONOMY_ASSOCIATION_POOL);
+		typeToPoolNameMap.put(KeyEcologicalAttributeSchema.getObjectType(), KEY_ECOLOGICAL_ATTRIBUTE_TAXONOMY_ASSOCIATION_POOL);
+		typeToPoolNameMap.put(IndicatorSchema.getObjectType(), INDICATOR_TAXONOMY_ASSOCIATION_POOL);
+		typeToPoolNameMap.put(ObjectiveSchema.getObjectType(), OBJECTIVE_TAXONOMY_ASSOCIATION_POOL);
+		typeToPoolNameMap.put(StressSchema.getObjectType(), STRESS_TAXONOMY_ASSOCIATION_POOL);
+		typeToPoolNameMap.put(TaskSchema.getObjectType(), TASK_TAXONOMY_ASSOCIATION_POOL);
+		
+		return typeToPoolNameMap;
+	}
+	
+	public static String getTaxonomyAssociationPoolNameForType(int type)
+	{
+		return createTaxonomyAssociationTypeToPoolNameMap().get(type);
+	}
+	
 	private void exportTaxonomyAssociations() throws Exception
 	{
-		exportTaxonomyAssociationsForType(CauseSchema.getObjectType());
+		HashMap<Integer, String> taxonomyAssociationTypeToPoolMap = createTaxonomyAssociationTypeToPoolNameMap();
+		Set<Integer> types = taxonomyAssociationTypeToPoolMap.keySet();
+		for(Integer taxonomyAssociationParentType : types)
+		{
+			String poolName = taxonomyAssociationTypeToPoolMap.get(taxonomyAssociationParentType);
+			exportTaxonomyAssociationsForType(taxonomyAssociationParentType, poolName);
+		}
 	}
 
-	private void exportTaxonomyAssociationsForType(int taxonomyAssociationParentType) throws Exception
+	private void exportTaxonomyAssociationsForType(int taxonomyAssociationParentType, String poolName) throws Exception
 	{
 		TaxonomyAssociationExporter baseObjectExporter = new TaxonomyAssociationExporter(getWriter(), TaxonomyAssociationSchema.getObjectType());
 		TaxonomyAssociationPool pool = (TaxonomyAssociationPool) getProject().getPool(TaxonomyAssociationSchema.getObjectType());
 		Vector<TaxonomyAssociation> taxonomyAssociations = pool.findTaxonomyAssociationsForType(taxonomyAssociationParentType);
-		final String poolName = getTaxonomyAssociationPoolName(taxonomyAssociationParentType);
 		getWriter().writeStartElement(poolName);
 		for(TaxonomyAssociation taxonomyAssociation : taxonomyAssociations)
 		{
 			baseObjectExporter.writeBaseObjectDataSchemaElement(taxonomyAssociation);
 		}
 		getWriter().writeEndElement(poolName);
-	}
-
-	public static String getTaxonomyAssociationPoolName(int taxonomyAssociationParentType) throws Exception
-	{
-		if (Cause.is(taxonomyAssociationParentType))
-			return CAUSE_TAXONOMY_ASSOCIATION_POOL;
-		
-		throw new Exception("No pool name for taxonomy association parent type: " + taxonomyAssociationParentType);
 	}
 
 	private ObjectTypeToExporterMap getObjectTypeToExporterMap()
