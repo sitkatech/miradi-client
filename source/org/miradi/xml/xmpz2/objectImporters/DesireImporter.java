@@ -59,7 +59,7 @@ abstract public class DesireImporter extends BaseObjectImporter
 	
 	private void importRelevantIndicatorIds(Node node, ORef destinationDesireRef) throws Exception
 	{
-		ORefList importedRelevantRefs = getImporter().extractRefs(node, getPoolName(), RELEVANT_INDICATOR_IDS, INDICATOR);
+		ORefList importedRelevantRefs = getImporter().extractRefs(node, getXmpz2ElementName(), RELEVANT_INDICATOR_IDS, INDICATOR);
 		Desire desire = Desire.findDesire(getProject(), destinationDesireRef);
 		RelevancyOverrideSet set = desire.getCalculatedRelevantIndicatorOverrides(importedRelevantRefs);		
 		getImporter().setData(destinationDesireRef, Desire.TAG_RELEVANT_INDICATOR_SET, set.toString());
@@ -68,8 +68,8 @@ abstract public class DesireImporter extends BaseObjectImporter
 	private void importRelevantStrategyAndActivityIds(Node node, ORef destinationDesireRef) throws Exception
 	{
 		ORefList importedStrategyAndActivityRefs = new ORefList();
-		importedStrategyAndActivityRefs.addAll(getImporter().extractRefs(node, getPoolName(), RELEVANT_STRATEGY_IDS, STRATEGY));
-		importedStrategyAndActivityRefs.addAll(getImporter().extractRefs(node, getPoolName(), RELEVANT_ACTIVITY_IDS, ACTIVITY));
+		importedStrategyAndActivityRefs.addAll(getImporter().extractRefs(node, getXmpz2ElementName(), RELEVANT_STRATEGY_IDS, STRATEGY));
+		importedStrategyAndActivityRefs.addAll(getImporter().extractRefs(node, getXmpz2ElementName(), RELEVANT_ACTIVITY_IDS, ACTIVITY));
 		
 		Desire desire = Desire.findDesire(getProject(), destinationDesireRef);
 		RelevancyOverrideSet set = desire.getCalculatedRelevantStrategyActivityOverrides(importedStrategyAndActivityRefs);

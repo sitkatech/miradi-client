@@ -65,7 +65,7 @@ public class BaseObjectImporter extends AbstractXmpz2ObjectImporter
 	{
 	}
 	
-	protected String getPoolName() throws Exception
+	protected String getXmpz2ElementName() throws Exception
 	{
 		return getBaseObjectSchema().getXmpz2ElementName();
 	}

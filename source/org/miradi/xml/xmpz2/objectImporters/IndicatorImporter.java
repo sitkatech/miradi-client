@@ -62,7 +62,7 @@ public class IndicatorImporter extends BaseObjectWithLeaderResourceFieldImporter
 	
 	private void importThresholds(Node indicatorNode, ORef destinationRef) throws Exception
 	{
-		NodeList thresholdNodes = getImporter().getNodes(indicatorNode, new String[]{getPoolName() + THRESHOLDS, THRESHOLD});
+		NodeList thresholdNodes = getImporter().getNodes(indicatorNode, new String[]{getXmpz2ElementName() + THRESHOLDS, THRESHOLD});
 		CodeToUserStringMap thresholdValuesMap = new CodeToUserStringMap();
 		CodeToUserStringMap thresholdDetailsMap = new CodeToUserStringMap();
 		for (int index = 0; index < thresholdNodes.getLength(); ++index)
