@@ -74,7 +74,7 @@ public class TaxonomyAssociationImporter extends BaseObjectImporter
 	}
 	
 	@Override
-	protected String getPoolName() throws Exception 
+	protected String getXmpz2ElementName() throws Exception 
 	{
 		return taxonomyAssociationPoolName;
 	}

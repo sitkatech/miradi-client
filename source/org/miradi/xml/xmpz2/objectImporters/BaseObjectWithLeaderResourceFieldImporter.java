@@ -47,6 +47,6 @@ abstract public class BaseObjectWithLeaderResourceFieldImporter extends BaseObje
 	{
 		super.importFields(baseObjectNode, refToUse);
 		
-		getImporter().importRefField(baseObjectNode, refToUse, getPoolName(), BaseObject.TAG_LEADER_RESOURCE, RESOURCE_ID);
+		getImporter().importRefField(baseObjectNode, refToUse, getXmpz2ElementName(), BaseObject.TAG_LEADER_RESOURCE, RESOURCE_ID);
 	}
 }

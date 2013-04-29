@@ -62,13 +62,13 @@ public class DiagramFactorImporter extends BaseObjectImporter
 	@Override
 	public void postCreateFix(ORef ref, Node node) throws Exception
 	{
-		ORef wrappedRef = importWrappedRef(getImporter(), getPoolName(),  node);
+		ORef wrappedRef = importWrappedRef(getImporter(), getXmpz2ElementName(),  node);
 		getProject().setObjectData(ref, DiagramFactor.TAG_WRAPPED_REF, wrappedRef.toString());
 	}
 	
 	private void importFontStylingElements(Node node, ORef destinationRef) throws Exception
 	{
-		Node diagramFactorSyleNode = getImporter().getNode(node, getPoolName() + STYLING);
+		Node diagramFactorSyleNode = getImporter().getNode(node, getXmpz2ElementName() + STYLING);
 		Node styleNode = getImporter().getNode(diagramFactorSyleNode, STYLING);
 		getImporter().importCodeField(styleNode, getBaseObjectSchema().getXmpz2ElementName(), destinationRef, DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion());
 		getImporter().importCodeField(styleNode, getBaseObjectSchema().getXmpz2ElementName(), destinationRef, DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion());
