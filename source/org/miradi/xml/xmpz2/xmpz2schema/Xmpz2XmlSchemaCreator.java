@@ -25,7 +25,6 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.miradi.main.Miradi;
-import org.miradi.objecthelpers.CaseInsensitiveStringSorter;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.BaseObjectPool;
 import org.miradi.objects.Cause;
@@ -83,6 +82,7 @@ import org.miradi.schemas.WcpaProjectDataSchema;
 import org.miradi.schemas.WcsProjectDataSchema;
 import org.miradi.schemas.WwfProjectDataSchema;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.IgnoreCaseStringComparator;
 import org.miradi.utils.StringUtilities;
 import org.miradi.utils.Translation;
 import org.miradi.utils.Utility;
@@ -275,7 +275,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void writeElementContent(BaseObjectSchemaWriter baseObjectSchemaWriter) throws Exception
 	{
 		Vector<String> schemaFieldElements = baseObjectSchemaWriter.createFieldSchemas();
-		Collections.sort(schemaFieldElements, new CaseInsensitiveStringSorter());
+		Collections.sort(schemaFieldElements, new IgnoreCaseStringComparator());
 		getSchemaWriter().defineElements(schemaFieldElements);
 	}
 	
