@@ -398,7 +398,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return miradiShareProjectData;
 	}
 	
-	public void populateTaxonomyAssociationsForAllTypes() throws Exception
+	public void populateTaxonomyAssociationsForBaseObjectTypes() throws Exception
 	{
 		HashMap<Integer, String> taxonomyAssociationTypeToPoolMap = Xmpz2XmlExporter.createTaxonomyAssociationBaseObjectTypeToPoolNameMap();
 		Set<Integer> types = taxonomyAssociationTypeToPoolMap.keySet();
