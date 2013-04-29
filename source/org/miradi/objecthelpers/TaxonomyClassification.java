@@ -96,5 +96,5 @@ public class TaxonomyClassification
 	private String taxonomyCode;
 	private Vector<String> taxonomyElementCodes;
 	private String TAG_ELEMENTS_CODES = "ElementCodes";
-	private String TAG_TAXONOMY_CODE = "ClassificationTaxonomyCode";
+	private String TAG_TAXONOMY_CODE = "TaxonomyCode";
 }
