@@ -27,4 +27,10 @@ public class MiradiShareTaxonomyQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[0];
 	}
+	
+	@Override
+	public boolean canSelectMultiple()
+	{
+		return true;
+	}
 }

@@ -64,6 +64,12 @@ public class CustomPlanningColumnsQuestion extends StaticChoiceQuestion
 		return new ChoiceItem(tag, EAM.fieldLabel(ObjectType.FAKE, tag));
 	}
 	
+	@Override
+	public boolean canSelectMultiple()
+	{
+		return true;
+	}
+	
 	public final static String META_WHO_TOTAL = "MetaWhoTotal";
 	public final static String META_WHEN_TOTAL = BaseObject.PSEUDO_TAG_WHEN_TOTAL;
 	public final static String META_CURRENT_RATING = "ThreatRating";

@@ -39,6 +39,12 @@ public class TncOrganizationalPrioritiesQuestion extends StaticChoiceQuestion
 		};
 	}
 	
+	@Override
+	public boolean canSelectMultiple()
+	{
+		return true;
+	}
+	
 	public static final String CAPITAL_CAMPAIGN_CODE = "CapitalCampaign";
 	public static final String REGIONAL_PRIORITY_CODE = "RegionalPriority";
 	public static final String FOCAL_AREA_CLIMATE_CODE = "FocalAreaClimate";
