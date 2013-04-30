@@ -109,6 +109,12 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 		return columnGroups;
 	}
 	
+	@Override
+	public boolean canSelectMultiple()
+	{
+		return true;
+	}
+	
 	public static final String META_ANALYSIS_WORK_UNITS_COLUMN_CODE = "MetaAnalysisWorkUnitsColumnCode";
 	public static final String META_ANALYSIS_EXPENSES_CODE = "MetaAnalysisExpensesColumnCode";
 	public static final String META_ANALYSIS_BUDGET_DETAILS_COLUMN_CODE = "MetaAnalysisBudgetDetailsColumnCode";

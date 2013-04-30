@@ -41,4 +41,10 @@ public class ProtectedAreaCategoryQuestion extends StaticChoiceQuestion
 				new ChoiceItem("VI", EAM.text("Category VI: Managed Resource Protected Area")),
 		};
 	}
+	
+	@Override
+	public boolean canSelectMultiple()
+	{
+		return true;
+	}
 }

@@ -86,4 +86,10 @@ public class RtfLegendObjectsQuestion extends StaticChoiceQuestion
 				new ChoiceItem(MeasurementSchema.OBJECT_NAME, EAM.text("Measurement"), new MeasurementIcon()),
 		};
 	}
+	
+	@Override
+	public boolean canSelectMultiple()
+	{
+		return true;
+	}
 }

@@ -83,6 +83,12 @@ public class DiagramLegendQuestion extends StaticChoiceQuestion
 		
 		return super.convertToInternalCode(code);
 	}
+	
+	@Override
+	public boolean canSelectMultiple()
+	{
+		return true;
+	}
 
 	public static final String STRESS_HIDDEN_TYPE_CODE = StressSchema.OBJECT_NAME;
 }

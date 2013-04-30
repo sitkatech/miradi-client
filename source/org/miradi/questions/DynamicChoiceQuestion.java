@@ -25,4 +25,10 @@ public abstract class DynamicChoiceQuestion extends ChoiceQuestion
 	{
 		super();
 	}
+	
+	@Override
+	public boolean canSelectMultiple()
+	{
+		return true;
+	}
 }

@@ -37,5 +37,11 @@ public class DashboardFlagsQuestion extends StaticChoiceQuestion
 		};
 	}
 	
+	@Override
+	public boolean canSelectMultiple()
+	{
+		return true;
+	}
+	
 	public static final String NEEDS_ATTENTION_CODE = "needsAttention";
 }

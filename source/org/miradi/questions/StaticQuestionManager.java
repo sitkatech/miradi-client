@@ -21,6 +21,9 @@ package org.miradi.questions;
 
 import java.util.HashMap;
 
+import org.miradi.main.EAM;
+import org.miradi.utils.CodeList;
+
 public class StaticQuestionManager
 {
 	public static void initialize()
@@ -113,9 +116,29 @@ public class StaticQuestionManager
 	
 	private static void addQuestion(ChoiceQuestion question)
 	{
+		validateSingleSelectionQuestion(question);
 		questions.put(question.getClass().getSimpleName(), question);
 	}
 	
+	private static void validateSingleSelectionQuestion(ChoiceQuestion question)
+	{
+		CodeList allCodes = question.getAllCodes();
+		final boolean containDefaultEmpyChoice = allCodes.contains("");
+		if (isSingleSelectQuestion(question) && !containDefaultEmpyChoice)
+			EAM.logError("Single selection question does not contain default \"\" value.  Question class:" + question.getClass().getSimpleName());
+	}
+
+	private static boolean isMultipleSelectQuestion(ChoiceQuestion question)
+	{
+		return question.canSelectMultiple();
+	}
+	
+
+	private static boolean isSingleSelectQuestion(ChoiceQuestion question)
+	{
+		return !isMultipleSelectQuestion(question);
+	}
+
 	public static ChoiceQuestion getQuestion(Class questionClass)
 	{
 		return getQuestion(questionClass.getSimpleName());

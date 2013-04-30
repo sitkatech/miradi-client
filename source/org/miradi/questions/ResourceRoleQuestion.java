@@ -58,6 +58,12 @@ public class ResourceRoleQuestion extends StaticChoiceQuestion
 		return choiceItems;
 	}
 	
+	@Override
+	public boolean canSelectMultiple()
+	{
+		return true;
+	}
+	
 	public static final String TEAM_MEMBER_ROLE_CODE = "TeamMember";
 	
 	public static final String CONTACT_CODE = "Contact";

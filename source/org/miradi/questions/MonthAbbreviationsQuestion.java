@@ -46,4 +46,10 @@ public class MonthAbbreviationsQuestion extends StaticChoiceQuestion
 				new ChoiceItem("12", EAM.text("Dec")),
 		};
 	}
+	
+	@Override
+	public boolean canSelectMultiple()
+	{
+		return true;
+	}
 }

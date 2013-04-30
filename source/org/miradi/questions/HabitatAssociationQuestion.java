@@ -162,6 +162,12 @@ public class HabitatAssociationQuestion extends StaticChoiceQuestion
 		};
 	}
 	
+	@Override
+	public boolean canSelectMultiple()
+	{
+		return true;
+	}
+	
 	public static final String FOREST_CODE = "1";
 	public static final String SAVANNA_CODE = "2";
 }
