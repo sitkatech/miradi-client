@@ -37,6 +37,18 @@ public class TaxonomyMultiSelectModeQuestion extends StaticChoiceQuestion
 		};
 	}
 	
-	public static final String SINGLE_SELECT_CODE = "SingleSelect";
+	@Override
+	protected boolean hasReadableAlternativeDefaultCode()
+	{
+		return true;
+	}
+	
+	@Override
+	protected String getReadableAlternativeDefaultCode()
+	{
+		return "SingleSelect";
+	}
+	
+	public static final String SINGLE_SELECT_CODE = "";
 	public static final String MULTI_SELECT_CODE = "MultiSelect";
 }

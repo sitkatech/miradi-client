@@ -37,6 +37,18 @@ public class TaxonomyClassificationSelectionMode extends StaticChoiceQuestion
 		};
 	}
 	
-	public static final String LEAF_ONLY_CODE = "LeafOnly";
+	@Override
+	protected boolean hasReadableAlternativeDefaultCode()
+	{
+		return true;
+	}
+	
+	@Override
+	protected String getReadableAlternativeDefaultCode()
+	{
+		return "LeafOnly";
+	}
+	
+	public static final String LEAF_ONLY_CODE = "";
 	public static final String ANY_NODE_CODE = "AnyNode";
 }
