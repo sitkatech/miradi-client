@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.questions.TaxonomyClassificationSelectionMode;
+import org.miradi.questions.TaxonomyClassificationSelectionModeQuestion;
 import org.miradi.questions.TaxonomyMultiSelectModeQuestion;
 
 public class TaxonomyAssociationSchema extends BaseObjectSchema
@@ -38,7 +38,7 @@ public class TaxonomyAssociationSchema extends BaseObjectSchema
 		
 		createFieldSchemaSingleLineUserText(TAG_TAXONOMY_ASSOCIATION_CODE);
 		createFieldSchemaChoice(TAG_MULTI_SELECT, TaxonomyMultiSelectModeQuestion.class);
-		createFieldSchemaChoice(TAG_SELECTION_TYPE, TaxonomyClassificationSelectionMode.class);
+		createFieldSchemaChoice(TAG_SELECTION_TYPE, TaxonomyClassificationSelectionModeQuestion.class);
 		createFieldSchemaMultiLineUserText(TAG_DESCRIPTION);
 		createFieldSchemaSingleLineUserText(TAG_TAXONOMY_CODE);
 		createFieldSchemaInteger(TAG_BASE_OBJECT_TYPE);
