@@ -22,9 +22,9 @@ package org.miradi.questions;
 
 import org.miradi.main.EAM;
 
-public class TaxonomyClassificationSelectionMode extends StaticChoiceQuestion
+public class TaxonomyClassificationSelectionModeQuestion extends StaticChoiceQuestion
 {
-	public TaxonomyClassificationSelectionMode()
+	public TaxonomyClassificationSelectionModeQuestion()
 	{
 		super(getChoiceItems());
 	}

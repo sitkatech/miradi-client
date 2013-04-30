@@ -110,7 +110,7 @@ public class StaticQuestionManager
 		addQuestion(new StrategyStatusQuestion());
 		addQuestion(new DiagramModeQuestion());
 		addQuestion(new TaxonomyMultiSelectModeQuestion());
-		addQuestion(new TaxonomyClassificationSelectionMode());
+		addQuestion(new TaxonomyClassificationSelectionModeQuestion());
 		addQuestion(new MiradiShareTaxonomyQuestion());
 	}
 	
