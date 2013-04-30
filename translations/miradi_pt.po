@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-29 14:47-0500\n"
+"POT-Creation-Date: 2013-04-30 13:01-0500\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -2186,7 +2186,7 @@ msgstr ""
 " foram movidos ao Resultado de Redução de Ameaça ou Resultado Imetermediário "
 "correspondente."
 
-#: Miradi/source/org/miradi/questions/TaxonomyClassificationSelectionMode.java:36
+#: Miradi/source/org/miradi/questions/TaxonomyClassificationSelectionModeQuestion.java:36
 msgid "Any Node"
 msgstr ""
 
@@ -4817,7 +4817,7 @@ msgstr "Camadas"
 msgid "Leader/Manager"
 msgstr "Lider/Gerente"
 
-#: Miradi/source/org/miradi/questions/TaxonomyClassificationSelectionMode.java:35
+#: Miradi/source/org/miradi/questions/TaxonomyClassificationSelectionModeQuestion.java:35
 msgid "Leaf Only"
 msgstr ""
 
