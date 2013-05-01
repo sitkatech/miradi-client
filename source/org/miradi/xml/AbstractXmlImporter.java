@@ -271,7 +271,7 @@ abstract public class AbstractXmlImporter
 		return getNode(generatePath(new String[]{getRootNodeName()}));
 	}
 	
-	public String getPathData(Node node, String xpathExpression) throws XPathExpressionException
+	public String getPathData(Node node, String xpathExpression) throws Exception
 	{
 		return getPathData(node, new String[]{xpathExpression, });
 	}
@@ -299,10 +299,19 @@ abstract public class AbstractXmlImporter
 		return expression.evaluate(node, qName);
 	}
 	
-	public String getPathData(Node node, String[] xpathExpressions) throws XPathExpressionException
+	public String getPathData(Node node, String[] xpathExpressions) throws Exception
 	{
-		String generatedPath = generatePath(xpathExpressions);
-		return getXPath().evaluate(generatedPath, node);
+		String generatedPath = "";
+		try
+		{
+			generatedPath = generatePath(xpathExpressions);
+			return getXPath().evaluate(generatedPath, node);
+		}
+		catch (Exception e)
+		{
+			final String errorMessage = "Exception thrown trying to evalulate path:" + generatedPath;
+			throw new Exception(errorMessage, e);
+		}
 	}
 	
 	public String getPrefixedElement(String elementName)
