@@ -172,18 +172,6 @@ abstract public class AbstractXmlImporter
 		return Integer.parseInt(node.getTextContent());
 	}
 
-	public String getPathData(Node node, String element) throws XPathExpressionException
-	{
-		String generatedPath = generatePath(new String[]{element, });
-		return getXPath().evaluate(generatedPath, node);
-	}
-
-	public String getPathData(Node node, String[] elements) throws XPathExpressionException
-	{
-		String generatedPath = generatePath(elements);
-		return getXPath().evaluate(generatedPath, node);
-	}
-
 	public void importField(ORef ref, String destinationTag, String data)	throws Exception
 	{
 		setData(ref, destinationTag, data);
@@ -257,18 +245,6 @@ abstract public class AbstractXmlImporter
 		return new ORef(type, new BaseId(trimmedIdAsString));
 	}
 	
-	public Node getNode(Node node, String element) throws Exception
-	{
-		String path = generatePath(new String[]{element});
-		XPathExpression expression = getXPath().compile(path);
-		return (Node) expression.evaluate(node, XPathConstants.NODE);
-	}
-	
-	public Node getRootNode() throws Exception
-	{
-		return getNode(generatePath(new String[]{getRootNodeName()}));
-	}
-	
 	public Node getNode(String path) throws Exception
 	{
 		XPathExpression expression = getXPath().compile(path);
@@ -287,6 +263,30 @@ abstract public class AbstractXmlImporter
 			return "";
 		
 		return foundNode.getTextContent();
+	}
+	
+	public Node getRootNode() throws Exception
+	{
+		return getNode(generatePath(new String[]{getRootNodeName()}));
+	}
+	
+	public String getPathData(Node node, String element) throws XPathExpressionException
+	{
+		String generatedPath = generatePath(new String[]{element, });
+		return getXPath().evaluate(generatedPath, node);
+	}
+
+	public String getPathData(Node node, String[] elements) throws XPathExpressionException
+	{
+		String generatedPath = generatePath(elements);
+		return getXPath().evaluate(generatedPath, node);
+	}
+	
+	public Node getNode(Node node, String element) throws Exception
+	{
+		String path = generatePath(new String[]{element});
+		XPathExpression expression = getXPath().compile(path);
+		return (Node) expression.evaluate(node, XPathConstants.NODE);
 	}
 	
 	public Node getNode(Node node, String[] pathElements) throws Exception
