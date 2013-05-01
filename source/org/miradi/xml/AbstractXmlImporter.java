@@ -28,7 +28,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
-import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
 import org.martus.util.UnicodeReader;
@@ -291,12 +290,21 @@ abstract public class AbstractXmlImporter
 		return (NodeList) evaluate(node, xpathExpressions, XPathConstants.NODESET);
 	}
 
-	public Object evaluate(Node node, String[] xpathExpressions, final QName qName) throws XPathExpressionException
+	public Object evaluate(Node node, String[] xpathExpressions, final QName qName) throws Exception
 	{
-		String path = generatePath(xpathExpressions);
-		XPathExpression expression = getXPath().compile(path);
-		
-		return expression.evaluate(node, qName);
+		String generatedPath = "";
+		try
+		{
+			generatedPath = generatePath(xpathExpressions);
+			XPathExpression expression = getXPath().compile(generatedPath);
+
+			return expression.evaluate(node, qName);
+		}
+		catch (Exception e)
+		{
+			final String errorMessage = createErrorMessage(generatedPath);
+			throw new Exception(errorMessage, e);
+		}
 	}
 	
 	public String getPathData(Node node, String[] xpathExpressions) throws Exception
@@ -309,9 +317,14 @@ abstract public class AbstractXmlImporter
 		}
 		catch (Exception e)
 		{
-			final String errorMessage = "Exception thrown trying to evalulate path:" + generatedPath;
+			final String errorMessage = createErrorMessage(generatedPath);
 			throw new Exception(errorMessage, e);
 		}
+	}
+
+	private String createErrorMessage(String generatedPath)
+	{
+		return "Exception thrown trying to evalulate path:" + generatedPath;
 	}
 	
 	public String getPrefixedElement(String elementName)
