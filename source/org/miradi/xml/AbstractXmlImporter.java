@@ -270,35 +270,35 @@ abstract public class AbstractXmlImporter
 		return getNode(generatePath(new String[]{getRootNodeName()}));
 	}
 	
-	public String getPathData(Node node, String element) throws XPathExpressionException
+	public String getPathData(Node node, String xpathExpression) throws XPathExpressionException
 	{
-		return getPathData(node, new String[]{element, });
+		return getPathData(node, new String[]{xpathExpression, });
 	}
 
-	public String getPathData(Node node, String[] elements) throws XPathExpressionException
+	public String getPathData(Node node, String[] xpathExpressions) throws XPathExpressionException
 	{
-		String generatedPath = generatePath(elements);
+		String generatedPath = generatePath(xpathExpressions);
 		return getXPath().evaluate(generatedPath, node);
 	}
 	
-	public Node getNode(Node node, String element) throws Exception
+	public Node getNode(Node node, String xpathExpression) throws Exception
 	{
-		String path = generatePath(new String[]{element});
+		String path = generatePath(new String[]{xpathExpression});
 		XPathExpression expression = getXPath().compile(path);
 		return (Node) expression.evaluate(node, XPathConstants.NODE);
 	}
 	
-	public Node getNode(Node node, String[] pathElements) throws Exception
+	public Node getNode(Node node, String[] xpathExpressions) throws Exception
 	{
-		String path = generatePath(pathElements);
+		String path = generatePath(xpathExpressions);
 		XPathExpression expression = getXPath().compile(path);
 		
 		return (Node) expression.evaluate(node, XPathConstants.NODE);
 	}
 	
-	public NodeList getNodes(Node node, String[] pathElements) throws Exception
+	public NodeList getNodes(Node node, String[] xpathExpressions) throws Exception
 	{
-		String path = generatePath(pathElements);
+		String path = generatePath(xpathExpressions);
 		XPathExpression expression = getXPath().compile(path);
 		
 		return (NodeList) expression.evaluate(node, XPathConstants.NODESET);
