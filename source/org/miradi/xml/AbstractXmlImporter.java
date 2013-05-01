@@ -283,9 +283,7 @@ abstract public class AbstractXmlImporter
 	
 	public Node getNode(Node node, String xpathExpression) throws Exception
 	{
-		String path = generatePath(new String[]{xpathExpression});
-		XPathExpression expression = getXPath().compile(path);
-		return (Node) expression.evaluate(node, XPathConstants.NODE);
+		return getNode(node, new String[]{xpathExpression});
 	}
 	
 	public Node getNode(Node node, String[] xpathExpressions) throws Exception
