@@ -289,6 +289,9 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	private void importSingletonObject(final SingletonObjectImporter importer, final BaseObjectSchema baseObjectSchema) throws Exception
 	{
 		final Node singletonNode = getNode(getRootNode(), baseObjectSchema.getXmpz2ElementName());
+		if (singletonNode == null)
+			return;
+		
 		importer.importFields(singletonNode, getSingletonObjectRef(baseObjectSchema.getType()));
 	}
 	
@@ -652,6 +655,9 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	public void importTaxonomyClassificationList(Node node, ORef destinationRef, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
 		Node taxonomyClassifcationContainerNode = getNode(node, TAXONOMY_CLASSIFICATION_CONTAINER);
+		if (taxonomyClassifcationContainerNode == null)
+			return;
+		
 		NodeList taxonomyClassificationNodeList = getNodes(taxonomyClassifcationContainerNode, new String[]{TAXONOMY_CLASSIFICATION, });
 		TaxonomyClassificationList taxonomyClassificationsList = new TaxonomyClassificationList();
 		for (int index = 0; index < taxonomyClassificationNodeList.getLength(); ++index)
