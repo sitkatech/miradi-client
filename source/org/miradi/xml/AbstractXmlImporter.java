@@ -22,6 +22,7 @@ package org.miradi.xml;
 import java.awt.Point;
 import java.util.Vector;
 
+import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.xpath.XPath;
@@ -288,18 +289,20 @@ abstract public class AbstractXmlImporter
 	
 	public Node getNode(Node node, String[] xpathExpressions) throws Exception
 	{
-		String path = generatePath(xpathExpressions);
-		XPathExpression expression = getXPath().compile(path);
-		
-		return (Node) expression.evaluate(node, XPathConstants.NODE);
+		return (Node) evaluate(node, xpathExpressions, XPathConstants.NODE);
 	}
 	
 	public NodeList getNodes(Node node, String[] xpathExpressions) throws Exception
 	{
+		return (NodeList) evaluate(node, xpathExpressions, XPathConstants.NODESET);
+	}
+
+	public Object evaluate(Node node, String[] xpathExpressions, final QName qName) throws XPathExpressionException
+	{
 		String path = generatePath(xpathExpressions);
 		XPathExpression expression = getXPath().compile(path);
 		
-		return (NodeList) expression.evaluate(node, XPathConstants.NODESET);
+		return expression.evaluate(node, qName);
 	}
 	
 	public String getPrefixedElement(String elementName)
