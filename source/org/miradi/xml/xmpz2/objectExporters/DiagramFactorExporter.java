@@ -102,10 +102,10 @@ public class DiagramFactorExporter extends BaseObjectExporter
 	
 	private void exportFontStylingElements(DiagramFactor diagramFactor) throws Exception
 	{
-		final String STYLING_ELEMENT_NAME = DIAGRAM_FACTOR + STYLING;
+		final String STYLING_ELEMENT_NAME = DIAGRAM_FACTOR + STYLE;
 		getWriter().writeStartElement(STYLING_ELEMENT_NAME);
 		
-		getWriter().writeStartElement(STYLING);
+		getWriter().writeStartElement(STYLE);
 		getWriter().writeNonOptionalCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion(), diagramFactor.getFontSize());
 		getWriter().writeNonOptionalCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion(), XmlUtilities2.convertXmlTextToHtml(diagramFactor.getFontStyle()));
 		getWriter().writeNonOptionalCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion(), diagramFactor.getFontColor());
@@ -114,7 +114,7 @@ public class DiagramFactorExporter extends BaseObjectExporter
 		if (wrappedFactor.isGroupBox() || wrappedFactor.isTextBox())
 			getWriter().writeNonOptionalCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_BACKGROUND_COLOR, new DiagramFactorBackgroundQuestion(), diagramFactor.getBackgroundColor());
 		
-		getWriter().writeEndElement(STYLING);
+		getWriter().writeEndElement(STYLE);
 		
 		getWriter().writeEndElement(STYLING_ELEMENT_NAME);
 	}

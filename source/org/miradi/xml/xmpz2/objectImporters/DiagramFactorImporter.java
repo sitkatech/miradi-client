@@ -68,8 +68,11 @@ public class DiagramFactorImporter extends BaseObjectImporter
 	
 	private void importFontStylingElements(Node node, ORef destinationRef) throws Exception
 	{
-		Node diagramFactorSyleNode = getImporter().getNode(node, getXmpz2ElementName() + STYLING);
-		Node styleNode = getImporter().getNode(diagramFactorSyleNode, STYLING);
+		Node diagramFactorSyleNode = getImporter().getNode(node, getXmpz2ElementName() + STYLE);
+		if (diagramFactorSyleNode == null)
+			return;
+		
+		Node styleNode = getImporter().getNode(diagramFactorSyleNode, STYLE);
 		getImporter().importCodeField(styleNode, getBaseObjectSchema().getXmpz2ElementName(), destinationRef, DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion());
 		getImporter().importCodeField(styleNode, getBaseObjectSchema().getXmpz2ElementName(), destinationRef, DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion());
 		getImporter().importCodeField(styleNode, getBaseObjectSchema().getXmpz2ElementName(), destinationRef, DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion());
