@@ -302,11 +302,10 @@ abstract public class AbstractXmlImporter
 		}
 		catch (Exception e)
 		{
-			final String errorMessage = createErrorMessage(generatedPath);
-			throw new Exception(errorMessage, e);
+			throw createNewExceptionWithPathData(e, generatedPath);
 		}
 	}
-	
+
 	public String getPathData(Node node, String[] xpathExpressions) throws Exception
 	{
 		String generatedPath = "";
@@ -317,9 +316,13 @@ abstract public class AbstractXmlImporter
 		}
 		catch (Exception e)
 		{
-			final String errorMessage = createErrorMessage(generatedPath);
-			throw new Exception(errorMessage, e);
+			throw createNewExceptionWithPathData(e, generatedPath);
 		}
+	}
+	
+	private Exception createNewExceptionWithPathData(Exception exception, String generatedPath)
+	{
+		return new Exception(createErrorMessage(generatedPath), exception);
 	}
 
 	private String createErrorMessage(String generatedPath)
