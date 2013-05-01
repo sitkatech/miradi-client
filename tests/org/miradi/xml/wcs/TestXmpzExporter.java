@@ -24,7 +24,6 @@ import java.util.Vector;
 
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
-import javax.xml.xpath.XPathExpressionException;
 
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
@@ -379,7 +378,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 		return xmlImporter.getNode(pathElements);
 	}
 
-	private void verifyNodeValue(final XmpzXmlImporter importer, final Node node, final String elementName, final String expectedValue) throws XPathExpressionException
+	private void verifyNodeValue(final XmpzXmlImporter importer, final Node node, final String elementName, final String expectedValue) throws Exception
 	{
 		assertEquals("Wrong node value for element " + elementName + "?", expectedValue, importer.getPathData(node, elementName));
 	}
