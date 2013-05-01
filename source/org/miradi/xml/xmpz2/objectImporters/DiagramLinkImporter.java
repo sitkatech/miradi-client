@@ -87,6 +87,9 @@ public class DiagramLinkImporter extends BaseObjectImporter
 		for (int index = 0; index < childNodes.getLength(); ++index)
 		{
 			Node node = childNodes.item(index);
+			if (!node.getNodeName().endsWith(ID))
+				continue;
+			
 			if (isFactorNode(node))
 				return node;
 		}
@@ -99,7 +102,7 @@ public class DiagramLinkImporter extends BaseObjectImporter
 		String[] linkableFactorNames = Xmpz2GroupedConstants.getLinkableFactorNames();
 		for(String linkableFactorName : linkableFactorNames)
 		{
-			if (node.getNodeName().equals(PREFIX + linkableFactorName + ID))
+			if (node.getNodeName().endsWith(linkableFactorName + ID))
 				return true;
 		}
 		
