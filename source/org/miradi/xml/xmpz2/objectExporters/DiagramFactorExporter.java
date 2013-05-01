@@ -48,7 +48,7 @@ public class DiagramFactorExporter extends BaseObjectExporter
 		DiagramFactor diagramFactor = (DiagramFactor) baseObject;
 		writeWrappedFactorId(diagramFactor.getWrappedFactor());
 		exportFontStylingElements(diagramFactor);
-		getWriter().writeNonOptionalReflist(DIAGRAM_FACTOR + GROUP_BOX_CHILDREN_IDS, DIAGRAM_FACTOR, diagramFactor.getGroupBoxChildrenRefs());
+		getWriter().writeReflist(DIAGRAM_FACTOR + GROUP_BOX_CHILDREN_IDS, DIAGRAM_FACTOR, diagramFactor.getGroupBoxChildrenRefs());
 	}
 	
 	@Override
