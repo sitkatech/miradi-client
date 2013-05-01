@@ -102,6 +102,7 @@ public class SummaryView extends TabbedView
 		addSummaryTab(new SummaryScopeTabPanel(getProject(), allRelatedRefs));
 		addSummaryTab(new SummaryLocationPanel(getProject(), metadata.getRef()));
 		addSummaryTab(new SummaryPlanningPanel(getMainWindow(), metadata.getRef()));
+		addSummaryTab(new SummaryMiradiSharePanel(getProject()));
 		addMemberOrgTab("TNCPanel.html", new TNCSummaryPanel(getProject(), metadata));
 		addMemberOrgTab("WWFPanel.html", new WWFSummaryPanel(getProject(), metadata));
 		addMemberOrgTab("WCSPanel.html", new WCSSummaryPanel(getProject()));
