@@ -36,6 +36,7 @@ import org.miradi.exceptions.FutureSchemaVersionException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.exceptions.UserCanceledException;
 import org.miradi.exceptions.ValidationException;
+import org.miradi.exceptions.XmpzVersionTooOldException;
 import org.miradi.files.AbstractMpfFileFilter;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -96,6 +97,10 @@ public abstract class AbstractProjectImporter
 			EAM.logException(e);
 			EAM.errorDialog(EAM.text("This project cannot be imported because it is in an old data format. \n" +
 									 "Please re-export a new copy from ConPro, and import that instead."));
+		}
+		catch (XmpzVersionTooOldException e)
+		{
+			EAM.alertUserOfNonFatalException(e);
 		}
 		catch (ValidationException e)
 		{

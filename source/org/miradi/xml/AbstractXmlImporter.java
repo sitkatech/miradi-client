@@ -32,9 +32,9 @@ import javax.xml.xpath.XPathFactory;
 
 import org.martus.util.UnicodeReader;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
-import org.miradi.exceptions.CpmzVersionTooOldException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.exceptions.ValidationException;
+import org.miradi.exceptions.XmpzVersionTooOldException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
@@ -84,7 +84,7 @@ abstract public class AbstractXmlImporter
 		
 		if (isUnsupportedOldVersion(nameSpaceUri))
 		{
-			throw new CpmzVersionTooOldException();
+			throw new XmpzVersionTooOldException();
 		}
 		
 		projectAsInputStream.seek(0);
