@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-30 13:01-0500\n"
+"POT-Creation-Date: 2013-05-01 14:16-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -926,7 +926,7 @@ msgid ""
 "<html>An error occurred<br/><br/>Perhaps the destination is full or readonly."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:214
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:219
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Import амжилтгүй болсон: <br><p> %s </p></html>"
 
@@ -4133,11 +4133,11 @@ msgstr "Тооцооны код импорт хийх"
 msgid "Import Completed"
 msgstr "Импорт хийх бүрэн дууссан"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:196
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:201
 msgid "Import Completed.  Would you like to open %s?"
 msgstr "импорт хийх бүрэн дууссан. Нээж харах уу%?"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:64
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:65
 msgid "Import Project"
 msgstr "Төсөлд импорт хийх"
 
@@ -4149,7 +4149,7 @@ msgstr ""
 msgid "Import a Miradi Project Zipfile (.mpz)"
 msgstr "Миради төслийн Zipfile (.mpz)-д импорт хийх"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:87
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:88
 msgid "Import was canceled!"
 msgstr ""
 
@@ -4174,7 +4174,7 @@ msgstr ""
 msgid "Importing XML..."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:153
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:158
 msgid "Importing..."
 msgstr ""
 
@@ -5420,7 +5420,7 @@ msgstr "Нээх"
 msgid "Open Anyway"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:197
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:202
 #: Miradi/source/org/miradi/main/MainWindow.java:666
 msgid "Open Project"
 msgstr "Төслийг Нээх"
@@ -7830,7 +7830,7 @@ msgstr ""
 msgid "Theory of Change<br/>- Strategy Selection"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:257
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:262
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -7860,13 +7860,17 @@ msgstr ""
 msgid "This person is a coach within the Conservation Coaches Network"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:97
+#: Miradi/source/org/miradi/exceptions/XmpzVersionTooOldException.java:30
+msgid "This project cannot be imported because it is in an old data format."
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:98
 msgid ""
 "This project cannot be imported because it is in an old data format. \n"
 "Please re-export a new copy from ConPro, and import that instead."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:82
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:83
 msgid ""
 "This project cannot be imported because its Threat Rating data is missing or "
 "damaged. Please contact Miradi support for recovery options."
@@ -8341,7 +8345,7 @@ msgstr "Тогтоогдоогүй"
 msgid "Underline"
 msgstr "Доогуур зурах/тодруулах"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:213
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:218
 msgid "Unexpected error"
 msgstr ""
 
