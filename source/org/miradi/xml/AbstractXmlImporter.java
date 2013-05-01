@@ -290,7 +290,7 @@ abstract public class AbstractXmlImporter
 		return (NodeList) evaluate(node, xpathExpressions, XPathConstants.NODESET);
 	}
 
-	public Object evaluate(Node node, String[] xpathExpressions, final QName qName) throws Exception
+	private Object evaluate(Node node, String[] xpathExpressions, final QName qName) throws Exception
 	{
 		String generatedPath = "";
 		try
