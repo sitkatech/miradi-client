@@ -855,7 +855,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	private Xmpz2CustomSchemaDefinitionCreator createDiagramFactorUiSettingsSchemaCreator()
 	{
-		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), STYLING);
+		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), STYLE);
 		creator.addOptionalChildElement(DIAGRAM_FACTOR + DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME, VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE);
 		creator.addOptionalChildElement(DIAGRAM_FACTOR + DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME, VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE);
 		creator.addOptionalChildElement(DIAGRAM_FACTOR + DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME, VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR);
