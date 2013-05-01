@@ -276,12 +276,6 @@ abstract public class AbstractXmlImporter
 		return getPathData(node, new String[]{xpathExpression, });
 	}
 
-	public String getPathData(Node node, String[] xpathExpressions) throws XPathExpressionException
-	{
-		String generatedPath = generatePath(xpathExpressions);
-		return getXPath().evaluate(generatedPath, node);
-	}
-	
 	public Node getNode(Node node, String xpathExpression) throws Exception
 	{
 		return getNode(node, new String[]{xpathExpression});
@@ -303,6 +297,12 @@ abstract public class AbstractXmlImporter
 		XPathExpression expression = getXPath().compile(path);
 		
 		return expression.evaluate(node, qName);
+	}
+	
+	public String getPathData(Node node, String[] xpathExpressions) throws XPathExpressionException
+	{
+		String generatedPath = generatePath(xpathExpressions);
+		return getXPath().evaluate(generatedPath, node);
 	}
 	
 	public String getPrefixedElement(String elementName)
