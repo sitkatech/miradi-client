@@ -278,14 +278,18 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 
 	private void importTncProjectData() throws Exception
 	{
-		final Node singletonNode = getNode(getRootNode(), new TncProjectDataSchema().getXmpz2ElementName());
-		new TncProjectDataImporter(this).importFields(singletonNode, getSingletonObject(new TncProjectDataSchema().getType()));
+		importSingletonObject(new TncProjectDataImporter(this), new TncProjectDataSchema());
 	}
-	
+
 	private void importSingletonObject(BaseObjectSchema baseObjectSchema) throws Exception
 	{
+		importSingletonObject(new SingletonObjectImporter(this, baseObjectSchema), baseObjectSchema);
+	}
+	
+	private void importSingletonObject(final SingletonObjectImporter importer, final BaseObjectSchema baseObjectSchema) throws Exception
+	{
 		final Node singletonNode = getNode(getRootNode(), baseObjectSchema.getXmpz2ElementName());
-		new SingletonObjectImporter(this, baseObjectSchema).importFields(singletonNode, getSingletonObject(baseObjectSchema.getType()));
+		importer.importFields(singletonNode, getSingletonObject(baseObjectSchema.getType()));
 	}
 	
 	private ORef getSingletonObject(int objectType)
