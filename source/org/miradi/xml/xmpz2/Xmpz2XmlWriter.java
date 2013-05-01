@@ -256,7 +256,7 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 		writeBendPointList(baseObjectSchema.getObjectName(), points);
 	}
 
-	public void writeBendPointList(final String objectTypeName, PointList points) throws Exception
+	private void writeBendPointList(final String objectTypeName, PointList points) throws Exception
 	{
 		final String elemnentName = objectTypeName + BEND_POINTS_ELEMENT_NAME;
 		writeStartElement(elemnentName);
