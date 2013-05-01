@@ -45,7 +45,7 @@ public class DiagramLinkExporter extends BaseObjectExporter
 		writeToDiagramFactorId(diagramLink);
 		
 		final String objectName = diagramLink.getSchema().getObjectName();
-		getWriter().writeNonOptionalReflist(objectName + GROUP_BOX_DIAGRAM_LINK_CHILDREN_ID, DIAGRAM_LINK, diagramLink.getGroupedDiagramLinkRefs());
+		getWriter().writeReflist(objectName + GROUP_BOX_DIAGRAM_LINK_CHILDREN_ID, DIAGRAM_LINK, diagramLink.getGroupedDiagramLinkRefs());
 		writeBidirectionalCode(objectName, diagramLink);
 	}
 
