@@ -103,9 +103,9 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 		addField(objectType, fieldTag, new FormFieldData(objectType, fieldTag, TYPE_SINGLE_LINE_READONLY_STRING));
 	}
 	
-	protected void addLabelAndExternalProjectIdField(int objectType, String fieldTag, String externalProjectIdCode)
+	protected void addLabelAndExternalProjectIdField(int objectType, String fieldTag, String externalProjectIdCode, String translatedLabelToUse)
 	{
-		addField(objectType, fieldTag, new FormFieldExternalProjectIdData(objectType, fieldTag, externalProjectIdCode));
+		addFieldWithCustomLabel(objectType, fieldTag, new FormFieldExternalProjectIdData(objectType, fieldTag, externalProjectIdCode), translatedLabelToUse);
 	}
 
 	protected void addLabelAndField(int type, String fieldTag)
@@ -116,6 +116,17 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 	private void addField(int type, String fieldTag, FieldRelatedFormItem formFieldData)
 	{
 		FormFieldLabel label = new FormFieldLabel(type, fieldTag);
+		addFormRow(label, formFieldData);
+	}
+	
+	private void addFieldWithCustomLabel(int type, String fieldTag, FieldRelatedFormItem formFieldData, String translatedLabelToUse)
+	{
+		FormConstant label = new FormConstant(translatedLabelToUse);
+		addFormRow(label, formFieldData);
+	}
+
+	public void addFormRow(FormItem label, FieldRelatedFormItem formFieldData)
+	{
 		addFormRow(new FormRow(label, formFieldData));
 	}
 

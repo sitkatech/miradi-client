@@ -36,11 +36,7 @@ public class SummaryMiradiSharePanel extends ObjectDataInputPanel
 {
 	public SummaryMiradiSharePanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, getSingletonRefs(projectToUse));
-		
-		createFieldsFromForm(new MiradiShareProjectDataForm());
-
-		updateFieldsFromProject();
+		super(projectToUse, getSingletonRefs(projectToUse), createMiradiShareProjectDataForm());
 	}
 
 	private static ORef[] getSingletonRefs(Project projectToUse)
@@ -78,6 +74,11 @@ public class SummaryMiradiSharePanel extends ObjectDataInputPanel
 	public void exportRtf(RtfWriter writer) throws Exception
 	{
 		RtfFormExporter rtfFormExporter = new RtfFormExporter(getProject(), writer, getSelectedRefs());
-		rtfFormExporter.exportForm(new MiradiShareProjectDataForm());
+		rtfFormExporter.exportForm(createMiradiShareProjectDataForm());
+	}
+	
+	private static MiradiShareProjectDataForm createMiradiShareProjectDataForm()
+	{
+		return new MiradiShareProjectDataForm();
 	}
 }
