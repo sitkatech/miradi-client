@@ -25,7 +25,7 @@ import java.util.Vector;
 import org.miradi.main.EAM;
 import org.miradi.utils.CodeList;
 
-abstract public class DynamicChoiceWithRootChoiceItem extends DynamicChoiceQuestion
+abstract public class DynamicChoiceWithRootChoiceItem extends MultiSelectDynamicChoiceQuestion
 {
 	@Override
 	public CodeList getAllCodes()
