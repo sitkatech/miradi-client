@@ -33,17 +33,14 @@ import org.miradi.project.Project;
 import org.miradi.utils.DataPanelFlexibleWidthHtmlViewer;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
 
-abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends
-		AbstractObjectDataInputPanelWithActivation
+abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends	AbstractObjectDataInputPanelWithActivation
 {
-	public AbstractObjectDataInputPanelWithCreationFromForms(
-			Project projectToUse, ORef[] orefsToUse)
+	public AbstractObjectDataInputPanelWithCreationFromForms(Project projectToUse, ORef[] orefsToUse)
 	{
 		super(projectToUse, orefsToUse);
 	}
 
-	protected void createFieldsFromForm(FieldPanelSpec form)
-			throws Exception
+	protected void createFieldsFromForm(FieldPanelSpec form) throws Exception
 	{
 		for(int row = 0; row < form.getFieldRowCount(); ++row)
 		{
@@ -62,8 +59,7 @@ abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends
 	protected void addLabelFromForm(FormRow formRow)
 	{
 		if(formRow.getLeftFormItemsCount() != 1)
-			throw new RuntimeException(getClass().getName()
-					+ ": Don't know how to add multiple labels");
+			throw new RuntimeException(getClass().getName()	+ ": Don't know how to add multiple labels");
 
 		FormItem formItem = formRow.getLeftFormItem(0);
 		if(formItem.isFormConstant())
@@ -74,8 +70,8 @@ abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends
 		}
 		
 		if(!formItem.isFormFieldLabel())
-			throw new RuntimeException(getClass().getName()
-					+ ": Don't know how to add non-label " + formItem);
+			throw new RuntimeException(getClass().getName()	+ ": Don't know how to add non-label " + formItem);
+		
 		FormFieldLabel label = (FormFieldLabel) formItem;
 		int objectType = label.getObjectType();
 		String fieldTag = label.getObjectTag();
@@ -85,8 +81,7 @@ abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends
 	protected void addFieldFromForm(FormRow formRow) throws Exception
 	{
 		if(formRow.getRightFormItemsCount() != 1)
-			throw new RuntimeException(getClass().getName()
-					+ ": Don't know how to add multiple fields");
+			throw new RuntimeException(getClass().getName()	+ ": Don't know how to add multiple fields");
 
 		FormItem formItem = formRow.getRightFormItem(0);
 		if(formItem.isFormConstant())
@@ -99,8 +94,8 @@ abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends
 		}
 		
 		if(!formItem.isFormFieldData())
-			throw new RuntimeException(getClass().getName()
-					+ ": Don't know how to add non-field " + formItem);
+			throw new RuntimeException(getClass().getName()	+ ": Don't know how to add non-field " + formItem);
+		
 		FormFieldData data = (FormFieldData) formItem;
 		int objectType = data.getObjectType();
 		String fieldTag = data.getObjectTag();
@@ -108,25 +103,26 @@ abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends
 		addFieldWithoutLabel(createDataField(objectType, fieldTag, dataEntryType));
 	}
 
-	private ObjectDataInputField createDataField(int objectType,
-			String fieldTag, int dataEntryType) throws Exception
+	private ObjectDataInputField createDataField(int objectType, String fieldTag, int dataEntryType) throws Exception
 	{
 		if(dataEntryType == PropertiesPanelSpec.TYPE_VERY_SHORT_STRING)
 			return createShortStringField(objectType, fieldTag);
+		
 		if(dataEntryType == PropertiesPanelSpec.TYPE_FAIRLY_SHORT_STRING)
 			return createMediumStringField(objectType, fieldTag);
+		
 		if(dataEntryType == PropertiesPanelSpec.TYPE_SINGLE_LINE_STRING)
 			return createStringField(objectType, fieldTag);
+		
 		if(dataEntryType == PropertiesPanelSpec.TYPE_EXPANDING_STRING)
 			return createExpandableField(objectType, fieldTag);
+		
 		if(dataEntryType == PropertiesPanelSpec.TYPE_MULTILINE_STRING)
 			return createMultilineField(objectType, fieldTag);
+
 		if(dataEntryType == PropertiesPanelSpec.TYPE_SINGLE_LINE_READONLY_STRING)
 			return createReadonlyTextField(objectType, fieldTag);
 
-		throw new RuntimeException(getClass().getName()
-				+ ": Cannot yet create data entry field of type: "
-				+ dataEntryType);
+		throw new RuntimeException(getClass().getName()	+ ": Cannot yet create data entry field of type: " + dataEntryType);
 	}
-
 }
