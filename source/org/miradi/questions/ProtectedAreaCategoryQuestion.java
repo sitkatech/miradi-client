@@ -22,7 +22,7 @@ package org.miradi.questions;
 import org.miradi.main.EAM;
 
 
-public class ProtectedAreaCategoryQuestion extends StaticChoiceQuestion
+public class ProtectedAreaCategoryQuestion extends MultipleSelectStaticChoiceQuestion
 {
 	public ProtectedAreaCategoryQuestion()
 	{
@@ -40,11 +40,5 @@ public class ProtectedAreaCategoryQuestion extends StaticChoiceQuestion
 				new ChoiceItem("V", EAM.text("Category V: Protected Landscape/Seascape")),
 				new ChoiceItem("VI", EAM.text("Category VI: Managed Resource Protected Area")),
 		};
-	}
-	
-	@Override
-	public boolean canSelectMultiple()
-	{
-		return true;
 	}
 }

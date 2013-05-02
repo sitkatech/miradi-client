@@ -21,7 +21,7 @@ package org.miradi.questions;
 
 import org.miradi.main.EAM;
 
-public class HabitatAssociationQuestion extends StaticChoiceQuestion
+public class HabitatAssociationQuestion extends MultipleSelectStaticChoiceQuestion
 {
 	public HabitatAssociationQuestion()
 	{
@@ -160,12 +160,6 @@ public class HabitatAssociationQuestion extends StaticChoiceQuestion
 				new ChoiceItemWithLongDescriptionProvider("17", EAM.text("Other")),
 				new ChoiceItemWithLongDescriptionProvider("18", EAM.text("Unknown")),
 		};
-	}
-	
-	@Override
-	public boolean canSelectMultiple()
-	{
-		return true;
 	}
 	
 	public static final String FOREST_CODE = "1";

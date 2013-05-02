@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
-public class TncOrganizationalPrioritiesQuestion extends StaticChoiceQuestion
+public class TncOrganizationalPrioritiesQuestion extends MultipleSelectStaticChoiceQuestion
 {
 	public TncOrganizationalPrioritiesQuestion()
 	{
@@ -37,12 +37,6 @@ public class TncOrganizationalPrioritiesQuestion extends StaticChoiceQuestion
 				new ChoiceItem(FOCAL_AREA_FRESHWATER_CODE, "Focal Area - Freshwater"),
 				new ChoiceItem(FOCAL_AREA_PROTECTED_AREAS_CODE, "Focal Area - Protected Areas"),
 		};
-	}
-	
-	@Override
-	public boolean canSelectMultiple()
-	{
-		return true;
 	}
 	
 	public static final String CAPITAL_CAMPAIGN_CODE = "CapitalCampaign";
