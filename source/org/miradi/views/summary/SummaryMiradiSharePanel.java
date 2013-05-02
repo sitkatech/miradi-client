@@ -25,7 +25,9 @@ import javax.swing.Icon;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.icons.MiradiShareIcon;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.MiradiShareProjectData;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.schemas.MiradiShareProjectDataSchema;
 
@@ -33,21 +35,30 @@ public class SummaryMiradiSharePanel extends ObjectDataInputPanel
 {
 	public SummaryMiradiSharePanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, projectToUse.getSingletonObjectRef(MiradiShareProjectDataSchema.getObjectType()));
+		super(projectToUse, getSingletonRefs(projectToUse));
 		
-		addField(createReadonlyTextField(MiradiShareProjectData.TAG_PROJECT_ID));
-		addField(createReadonlyTextField(MiradiShareProjectData.TAG_PROJECT_URL));
-		addField(createReadonlyTextField(MiradiShareProjectData.TAG_PROGRAM_ID));
-		addField(createReadonlyTextField(MiradiShareProjectData.TAG_PROGRAM_NAME));
-		addField(createReadonlyTextField(MiradiShareProjectData.TAG_PROGRAM_URL));
-		addField(createReadonlyTextField(MiradiShareProjectData.TAG_PROJECT_TEMPLATE_ID));
-		addField(createReadonlyTextField(MiradiShareProjectData.TAG_PROJECT_TEMPLATE_NAME));
-		addField(createReadonlyTextField(MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_ID));
-		addField(createReadonlyTextField(MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_NAME));
-		addField(createReadonlyTextField(MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_VERSION_ID));
-		addField(createReadonlyTextField(MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_VERSION));
+		addField(createReadonlyTextField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROJECT_ID));
+		addField(createReadonlyTextField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROJECT_URL));
+		addField(createReadonlyTextField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_ID));
+		addField(createReadonlyTextField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_NAME));
+		addField(createReadonlyTextField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_URL));
+		addField(createReadonlyTextField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROJECT_TEMPLATE_ID));
+		addField(createReadonlyTextField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROJECT_TEMPLATE_NAME));
+		addField(createReadonlyTextField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_ID));
+		addField(createReadonlyTextField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_NAME));
+		addField(createReadonlyTextField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_VERSION_ID));
+		addField(createReadonlyTextField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_VERSION));
+		addFieldWithCustomLabel(createSingleStringToRefField(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, "Tanager"), EAM.text("External Project Id"));
 
 		updateFieldsFromProject();
+	}
+
+	private static ORef[] getSingletonRefs(Project projectToUse)
+	{
+		ORef miradiShareProjectDataRef = projectToUse.getSafeSingleObjectRef(MiradiShareProjectDataSchema.getObjectType());
+		ORef metadataRef = projectToUse.getMetadata().getRef();
+		
+		return new ORef[]{metadataRef, miradiShareProjectDataRef, };
 	}
 
 	@Override
@@ -58,7 +69,7 @@ public class SummaryMiradiSharePanel extends ObjectDataInputPanel
 
 	public static String getPlanningPanelDescription()
 	{
-		return EAM.text("Miradi Share");
+		return EAM.text("Label|Miradi Share");
 	}
 	
 	@Override
