@@ -22,7 +22,9 @@ package org.miradi.forms.objects;
 
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.objects.MiradiShareProjectData;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.schemas.MiradiShareProjectDataSchema;
+import org.miradi.schemas.ProjectMetadataSchema;
 
 public class MiradiShareProjectDataForm extends FieldPanelSpec
 {
@@ -39,5 +41,6 @@ public class MiradiShareProjectDataForm extends FieldPanelSpec
 		addLabelAndReadOnlySingeLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_NAME);
 		addLabelAndReadOnlySingeLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_VERSION_ID);
 		addLabelAndReadOnlySingeLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_VERSION);
+		addLabelAndExternalProjectIdField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, "Tanager");
 	}
 }

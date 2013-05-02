@@ -27,7 +27,6 @@ import org.miradi.forms.objects.MiradiShareProjectDataForm;
 import org.miradi.icons.MiradiShareIcon;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
@@ -40,7 +39,6 @@ public class SummaryMiradiSharePanel extends ObjectDataInputPanel
 		super(projectToUse, getSingletonRefs(projectToUse));
 		
 		createFieldsFromForm(new MiradiShareProjectDataForm());
-		addFieldWithCustomLabel(createSingleStringToRefField(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, "Tanager"), EAM.text("External Project Id"));
 
 		updateFieldsFromProject();
 	}
