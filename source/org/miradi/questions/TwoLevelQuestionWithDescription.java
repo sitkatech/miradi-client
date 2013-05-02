@@ -23,7 +23,7 @@ package org.miradi.questions;
 import org.miradi.dialogs.dashboard.StaticLongDescriptionProvider;
 import org.miradi.objecthelpers.TwoLevelFileLoader;
 
-public class TwoLevelQuestionWithDescription extends TwoLevelQuestion
+public class TwoLevelQuestionWithDescription extends MultiSelectTwoLevelQuestion
 {
 	public TwoLevelQuestionWithDescription(TwoLevelFileLoader twoLevelFileLoaderToUse)
 	{

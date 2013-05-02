@@ -23,7 +23,7 @@ import org.miradi.objecthelpers.ManagingOfficeFileLoader;
 import org.miradi.objecthelpers.TwoLevelFileLoader;
 
 
-public class WwfManagingOfficesQuestion extends TwoLevelQuestion
+public class WwfManagingOfficesQuestion extends MultiSelectTwoLevelQuestion
 {
 	public WwfManagingOfficesQuestion()
 	{

@@ -22,7 +22,7 @@ package org.miradi.questions;
 import org.miradi.objecthelpers.TncMarineEcoRegionFileLoader;
 import org.miradi.objecthelpers.TwoLevelFileLoader;
 
-public class TncMarineEcoRegionQuestion extends TwoLevelQuestion
+public class TncMarineEcoRegionQuestion extends MultiSelectTwoLevelQuestion
 {
 	public TncMarineEcoRegionQuestion()
 	{

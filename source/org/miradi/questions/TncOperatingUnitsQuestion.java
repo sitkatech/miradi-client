@@ -24,7 +24,7 @@ import java.util.Vector;
 import org.miradi.objecthelpers.TncOperatingUnitsFileLoader;
 import org.miradi.objecthelpers.TwoLevelFileLoader;
 
-public class TncOperatingUnitsQuestion extends TwoLevelQuestion
+public class TncOperatingUnitsQuestion extends MultiSelectTwoLevelQuestion
 {
 	public TncOperatingUnitsQuestion()
 	{

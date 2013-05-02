@@ -23,7 +23,7 @@ import org.miradi.dialogs.dashboard.StaticLongDescriptionProvider;
 import org.miradi.objecthelpers.TaxonomyFileLoader;
 
 
-public abstract class TaxonomyClassificationQuestion extends TwoLevelQuestion
+public abstract class TaxonomyClassificationQuestion extends SingleSelectTwoLevelQuestion
 {
 	public TaxonomyClassificationQuestion(String fileName)
 	{
@@ -40,11 +40,5 @@ public abstract class TaxonomyClassificationQuestion extends TwoLevelQuestion
 	public boolean hasLongDescriptionProvider()
 	{
 		return true;
-	}
-	
-	@Override
-	public boolean canSelectMultiple()
-	{
-		return false;
 	}
 }
