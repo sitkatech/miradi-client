@@ -53,6 +53,7 @@ abstract public class PropertiesPanelSpec
 	public static final int TYPE_SINGLE_LINE_STRING = 3;
 	public static final int TYPE_EXPANDING_STRING = 4;
 	public static final int TYPE_MULTILINE_STRING = 5;
+	public static final int TYPE_SINGLE_LINE_READONLY_STRING = 6;
 
 	public static final int TYPE_INTEGER = 11;
 	public static final int TYPE_FLOAT = 12;

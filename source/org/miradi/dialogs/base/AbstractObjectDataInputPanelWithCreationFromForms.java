@@ -21,13 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.base;
 
 import org.miradi.dialogfields.ObjectDataInputField;
+import org.miradi.forms.FieldPanelSpec;
 import org.miradi.forms.FormConstant;
 import org.miradi.forms.FormFieldData;
 import org.miradi.forms.FormFieldLabel;
 import org.miradi.forms.FormItem;
 import org.miradi.forms.FormRow;
 import org.miradi.forms.PropertiesPanelSpec;
-import org.miradi.forms.objects.BudgetCategoryPropertiesForm;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.utils.DataPanelFlexibleWidthHtmlViewer;
@@ -42,7 +42,7 @@ abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends
 		super(projectToUse, orefsToUse);
 	}
 
-	protected void createFieldsFromForm(BudgetCategoryPropertiesForm form)
+	protected void createFieldsFromForm(FieldPanelSpec form)
 			throws Exception
 	{
 		for(int row = 0; row < form.getFieldRowCount(); ++row)
@@ -121,6 +121,8 @@ abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends
 			return createExpandableField(objectType, fieldTag);
 		if(dataEntryType == PropertiesPanelSpec.TYPE_MULTILINE_STRING)
 			return createMultilineField(objectType, fieldTag);
+		if(dataEntryType == PropertiesPanelSpec.TYPE_SINGLE_LINE_READONLY_STRING)
+			return createReadonlyTextField(objectType, fieldTag);
 
 		throw new RuntimeException(getClass().getName()
 				+ ": Cannot yet create data entry field of type: "
