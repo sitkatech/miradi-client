@@ -709,12 +709,6 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	}
 	
 	@Override
-	protected String getPrefix()
-	{
-		return PREFIX;
-	}
-	
-	@Override
 	public AbstractXmlNamespaceContext getNamespaceContext()
 	{
 		return new Xmpz2NameSpaceContext();

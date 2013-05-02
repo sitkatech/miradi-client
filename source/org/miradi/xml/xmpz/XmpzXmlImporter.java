@@ -192,12 +192,6 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements XmpzXmlConst
 	}
 	
 	@Override
-	protected String getPrefix()
-	{
-		return PREFIX;
-	}
-	
-	@Override
 	public AbstractXmlNamespaceContext getNamespaceContext()
 	{
 		return new XmpzNameSpaceContext();

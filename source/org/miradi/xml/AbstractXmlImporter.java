@@ -207,9 +207,9 @@ abstract public class AbstractXmlImporter
 		StringBuffer path = new StringBuffer();
 		for (int index = 0; index < pathElements.length; ++index)
 		{
-			String elementName = pathElements[index];			
-			String prefixedElement = getPrefixedElement(elementName);
-			path.append(prefixedElement);
+			String elementName = pathElements[index];
+			String localName = "*[local-name()='" + elementName + "']";
+			path.append(localName);
 			if ((index + 1) < pathElements.length)
 				path.append("/");
 		}
@@ -330,11 +330,6 @@ abstract public class AbstractXmlImporter
 		return "Exception thrown trying to evalulate path:" + generatedPath;
 	}
 	
-	public String getPrefixedElement(String elementName)
-	{
-		return getPrefix() + elementName;
-	}
-	
 	private boolean isUnsupportedNewVersion(String nameSpaceUri) throws Exception
 	{
 		return getSchemaVersionToImport(nameSpaceUri).compareTo(getNameSpaceVersion()) > 0;
@@ -401,8 +396,6 @@ abstract public class AbstractXmlImporter
 	abstract protected String getNameSpaceVersion();
 	
 	abstract protected String getPartialNameSpace();
-	
-	abstract protected String getPrefix();
 	
 	abstract public AbstractXmlNamespaceContext getNamespaceContext();
 	
