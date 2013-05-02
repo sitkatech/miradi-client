@@ -68,5 +68,11 @@ public class StaticChoiceQuestion extends ChoiceQuestion
 		throw new RuntimeException("The overriding class calling StaticChoiceQuestion() needs to override this method.");
 	}
 	
+	@Override
+	public boolean canSelectMultiple()
+	{
+		return false;
+	}
+	
 	private ChoiceItem[] choices;
 }
