@@ -29,6 +29,8 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
+import org.miradi.rtf.RtfFormExporter;
+import org.miradi.rtf.RtfWriter;
 import org.miradi.schemas.MiradiShareProjectDataSchema;
 
 public class SummaryMiradiSharePanel extends ObjectDataInputPanel
@@ -66,5 +68,18 @@ public class SummaryMiradiSharePanel extends ObjectDataInputPanel
 	public Icon getIcon()
 	{
 		return new MiradiShareIcon();
-	}	
+	}
+	
+	@Override
+	public boolean isRtfExportable()
+	{
+		return true;
+	}
+	
+	@Override
+	public void exportRtf(RtfWriter writer) throws Exception
+	{
+		RtfFormExporter rtfFormExporter = new RtfFormExporter(getProject(), writer, getSelectedRefs());
+		rtfFormExporter.exportForm(new MiradiShareProjectDataForm());
+	}
 }
