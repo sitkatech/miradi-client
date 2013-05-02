@@ -97,6 +97,11 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 	{
 		addField(objectType, fieldTag, new FormFieldData(objectType, fieldTag, dataEntryType));
 	}
+	
+	protected void addLabelAndReadOnlySingeLineField(int objectType, String fieldTag)
+	{
+		addField(objectType, fieldTag, new FormFieldData(objectType, fieldTag, TYPE_SINGLE_LINE_READONLY_STRING));
+	}
 
 	protected void addLabelAndField(int type, String fieldTag)
 	{
