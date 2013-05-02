@@ -44,7 +44,7 @@ public class SummaryMiradiSharePanel extends ObjectDataInputPanel
 		addField(createReadonlyTextField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_URL));
 		addField(createReadonlyTextField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROJECT_TEMPLATE_ID));
 		addField(createReadonlyTextField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROJECT_TEMPLATE_NAME));
-		addField(createReadonlyTextField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_ID));
+		addField(createReadonlyTextField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROJECT_VERSION));
 		addField(createReadonlyTextField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_NAME));
 		addField(createReadonlyTextField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_VERSION_ID));
 		addField(createReadonlyTextField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_VERSION));
