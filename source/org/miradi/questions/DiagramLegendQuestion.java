@@ -36,7 +36,7 @@ import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.TextBoxSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
 
-public class DiagramLegendQuestion extends StaticChoiceQuestion
+public class DiagramLegendQuestion extends MultipleSelectStaticChoiceQuestion
 {
 	public DiagramLegendQuestion()
 	{
@@ -84,11 +84,5 @@ public class DiagramLegendQuestion extends StaticChoiceQuestion
 		return super.convertToInternalCode(code);
 	}
 	
-	@Override
-	public boolean canSelectMultiple()
-	{
-		return true;
-	}
-
 	public static final String STRESS_HIDDEN_TYPE_CODE = StressSchema.OBJECT_NAME;
 }

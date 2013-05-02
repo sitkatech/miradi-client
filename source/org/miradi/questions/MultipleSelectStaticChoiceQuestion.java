@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2010, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2013, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -20,22 +20,28 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
-import org.miradi.icons.IconManager;
-import org.miradi.main.EAM;
+import java.util.Vector;
 
-public class DashboardFlagsQuestion extends MultipleSelectStaticChoiceQuestion
+public class MultipleSelectStaticChoiceQuestion extends StaticChoiceQuestion
 {
-	public DashboardFlagsQuestion()
+	public MultipleSelectStaticChoiceQuestion(ChoiceItem[] choiceItemsToUse)
 	{
-		super(getChoiceItems());
+		super(choiceItemsToUse);
 	}
 
-	private static ChoiceItem[] getChoiceItems()
+	public MultipleSelectStaticChoiceQuestion(Vector<ChoiceItem> choiceItemsToUse, String descriptionToUse)
 	{
-		return new ChoiceItem[]{
-				new ChoiceItem(NEEDS_ATTENTION_CODE, EAM.text("Needs Attention"), IconManager.getNeedsAttentionIcon()),
-		};
+		super(choiceItemsToUse, descriptionToUse);
+	}
+
+	public MultipleSelectStaticChoiceQuestion()
+	{
+		super();
 	}
 	
-	public static final String NEEDS_ATTENTION_CODE = "needsAttention";
+	@Override
+	public boolean canSelectMultiple()
+	{
+		return true;
+	}
 }
