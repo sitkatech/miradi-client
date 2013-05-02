@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2012, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2013, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -20,10 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
-abstract public class ProjectBasedDynamicQuestion extends MultiSelectDynamicChoiceQuestion
+abstract public class MultiSelectDynamicChoiceQuestion extends DynamicChoiceQuestion
 {
 	@Override
-	public boolean isProjectBasedDynamicQuestion()
+	public boolean canSelectMultiple()
 	{
 		return true;
 	}

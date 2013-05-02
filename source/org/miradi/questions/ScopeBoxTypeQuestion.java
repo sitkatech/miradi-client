@@ -24,7 +24,7 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 
 //TODO: Superclass really should not have color data members
-public class ScopeBoxTypeQuestion extends DynamicChoiceQuestion
+public class ScopeBoxTypeQuestion extends MultiSelectDynamicChoiceQuestion
 {
 	public static ScopeBoxTypeQuestion createScopeBoxTypeQuestion()
 	{

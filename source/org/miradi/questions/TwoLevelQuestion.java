@@ -93,6 +93,12 @@ public class TwoLevelQuestion extends DynamicChoiceQuestion
 		return choices;
 	}
 	
+	@Override
+	public boolean canSelectMultiple()
+	{
+		return true;
+	}
+	
 	private Vector<ChoiceItem> choices;
 	private TwoLevelFileLoader twoLevelFileLoader;
 }

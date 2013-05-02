@@ -24,9 +24,9 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceItemWithDynamicColor;
-import org.miradi.questions.DynamicChoiceQuestion;
+import org.miradi.questions.MultiSelectDynamicChoiceQuestion;
 
-public class LegacyScopeBoxTypeQuestion extends DynamicChoiceQuestion
+public class LegacyScopeBoxTypeQuestion extends MultiSelectDynamicChoiceQuestion
 {
 	public static LegacyScopeBoxTypeQuestion createScopeBoxTypeQuestion()
 	{
