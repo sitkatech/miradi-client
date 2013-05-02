@@ -23,7 +23,7 @@ package org.miradi.questions;
 import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 
-public class DashboardFlagsQuestion extends StaticChoiceQuestion
+public class DashboardFlagsQuestion extends MultipleSelectStaticChoiceQuestion
 {
 	public DashboardFlagsQuestion()
 	{
@@ -35,12 +35,6 @@ public class DashboardFlagsQuestion extends StaticChoiceQuestion
 		return new ChoiceItem[]{
 				new ChoiceItem(NEEDS_ATTENTION_CODE, EAM.text("Needs Attention"), IconManager.getNeedsAttentionIcon()),
 		};
-	}
-	
-	@Override
-	public boolean canSelectMultiple()
-	{
-		return true;
 	}
 	
 	public static final String NEEDS_ATTENTION_CODE = "needsAttention";

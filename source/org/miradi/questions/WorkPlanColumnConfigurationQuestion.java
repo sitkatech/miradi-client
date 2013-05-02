@@ -22,7 +22,7 @@ package org.miradi.questions;
 
 import java.util.Vector;
 
-public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
+public class WorkPlanColumnConfigurationQuestion extends MultipleSelectStaticChoiceQuestion
 {
 	public WorkPlanColumnConfigurationQuestion()
 	{
@@ -107,12 +107,6 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 		columnGroups.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_BUDGET_DETAILS_COLUMN_CODE);
 		
 		return columnGroups;
-	}
-	
-	@Override
-	public boolean canSelectMultiple()
-	{
-		return true;
 	}
 	
 	public static final String META_ANALYSIS_WORK_UNITS_COLUMN_CODE = "MetaAnalysisWorkUnitsColumnCode";

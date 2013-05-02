@@ -55,7 +55,7 @@ import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.TextBoxSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
 
-public class RtfLegendObjectsQuestion extends StaticChoiceQuestion
+public class RtfLegendObjectsQuestion extends MultipleSelectStaticChoiceQuestion
 {
 	public RtfLegendObjectsQuestion()
 	{
@@ -85,11 +85,5 @@ public class RtfLegendObjectsQuestion extends StaticChoiceQuestion
 				new ChoiceItem(TaskSchema.ACTIVITY_NAME, EAM.text("Activity"), new ActivityIcon()),
 				new ChoiceItem(MeasurementSchema.OBJECT_NAME, EAM.text("Measurement"), new MeasurementIcon()),
 		};
-	}
-	
-	@Override
-	public boolean canSelectMultiple()
-	{
-		return true;
 	}
 }

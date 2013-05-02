@@ -25,7 +25,7 @@ import org.miradi.main.EAM;
 
 
 
-public class ResourceRoleQuestion extends StaticChoiceQuestion
+public class ResourceRoleQuestion extends MultipleSelectStaticChoiceQuestion
 {
 	public ResourceRoleQuestion()
 	{
@@ -56,12 +56,6 @@ public class ResourceRoleQuestion extends StaticChoiceQuestion
 		choiceItems.add(new ChoiceItem(STAKEHOLDER_CODE, EAM.text("Stakeholder")));
 		
 		return choiceItems;
-	}
-	
-	@Override
-	public boolean canSelectMultiple()
-	{
-		return true;
 	}
 	
 	public static final String TEAM_MEMBER_ROLE_CODE = "TeamMember";

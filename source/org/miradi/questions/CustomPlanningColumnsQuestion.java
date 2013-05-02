@@ -29,7 +29,7 @@ import org.miradi.objects.Measurement;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 
-public class CustomPlanningColumnsQuestion extends StaticChoiceQuestion
+public class CustomPlanningColumnsQuestion extends MultipleSelectStaticChoiceQuestion
 {
 	public CustomPlanningColumnsQuestion()
 	{
@@ -62,12 +62,6 @@ public class CustomPlanningColumnsQuestion extends StaticChoiceQuestion
 	public static ChoiceItem createChoiceItem(String tag)
 	{
 		return new ChoiceItem(tag, EAM.fieldLabel(ObjectType.FAKE, tag));
-	}
-	
-	@Override
-	public boolean canSelectMultiple()
-	{
-		return true;
 	}
 	
 	public final static String META_WHO_TOTAL = "MetaWhoTotal";
