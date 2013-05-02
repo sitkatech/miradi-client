@@ -35,6 +35,7 @@ import org.miradi.dialogs.fieldComponents.ClickablePanelTitleLabel;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.forms.FieldPanelSpec;
 import org.miradi.icons.QuestionMarkIcon;
 import org.miradi.ids.BaseId;
 import org.miradi.layout.OneRowPanel;
@@ -66,6 +67,14 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 		this(projectToUse, new ORef[] {orefToUse});
 	}
 	
+	public ObjectDataInputPanel(Project projectToUse, ORef[] orefsToUse, FieldPanelSpec formToUse) throws Exception
+	{
+		this(projectToUse, orefsToUse);
+		
+		createFieldsFromForm(formToUse);
+
+		updateFieldsFromProject();
+	}
 	
 	public ObjectDataInputPanel(Project projectToUse, ORef[] orefsToUse)
 	{
