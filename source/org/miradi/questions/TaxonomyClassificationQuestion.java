@@ -41,4 +41,10 @@ public abstract class TaxonomyClassificationQuestion extends TwoLevelQuestion
 	{
 		return true;
 	}
+	
+	@Override
+	public boolean canSelectMultiple()
+	{
+		return false;
+	}
 }

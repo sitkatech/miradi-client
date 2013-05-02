@@ -224,6 +224,11 @@ public abstract class ChoiceQuestion implements Comparable<ChoiceQuestion>
 		return false;
 	}
 	
+	public boolean canSelectSingleOnly()
+	{
+		return !canSelectMultiple();
+	}
+	
 	public static final Color COLOR_ALERT = Color.RED;
 	public static final Color COLOR_CAUTION = ColorManager.DARK_YELLOW;
 	public static final Color COLOR_OK = ColorManager.LIGHT_GREEN;

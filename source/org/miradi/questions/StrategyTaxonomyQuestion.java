@@ -28,4 +28,10 @@ public class StrategyTaxonomyQuestion extends TwoLevelQuestion
 	{
 		super(new TaxonomyFileLoader(TwoLevelFileLoader.STRATEGY_TAXONOMIES_FILE));
 	}
+	
+	@Override
+	public boolean canSelectMultiple()
+	{
+		return false;
+	}
 }
