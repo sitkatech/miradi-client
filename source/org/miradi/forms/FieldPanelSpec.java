@@ -102,6 +102,11 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 	{
 		addField(objectType, fieldTag, new FormFieldData(objectType, fieldTag, TYPE_SINGLE_LINE_READONLY_STRING));
 	}
+	
+	protected void addLabelAndExternalProjectIdField(int objectType, String fieldTag, String externalProjectIdCode)
+	{
+		addField(objectType, fieldTag, new FormFieldExternalProjectIdData(objectType, fieldTag, externalProjectIdCode));
+	}
 
 	protected void addLabelAndField(int type, String fieldTag)
 	{

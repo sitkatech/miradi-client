@@ -24,6 +24,7 @@ import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.forms.FormConstant;
 import org.miradi.forms.FormFieldData;
+import org.miradi.forms.FormFieldExternalProjectIdData;
 import org.miradi.forms.FormFieldLabel;
 import org.miradi.forms.FormItem;
 import org.miradi.forms.FormRow;
@@ -90,6 +91,16 @@ abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends	
 			String text = fc.getConstant();
 			FlexibleWidthHtmlViewer viewer = new DataPanelFlexibleWidthHtmlViewer(getMainWindow(), text);
 			addFieldComponent(viewer);
+			return;
+		}
+		
+		if(formItem.isExternaProjectIdFieldData())
+		{
+			FormFieldExternalProjectIdData data = (FormFieldExternalProjectIdData) formItem;
+			String fieldTag = data.getObjectTag();
+			String externalProjectIdCode = data.getExternalProjectIdCode();
+			addFieldWithoutLabel(createSingleStringToRefField(fieldTag, externalProjectIdCode));
+			
 			return;
 		}
 		
