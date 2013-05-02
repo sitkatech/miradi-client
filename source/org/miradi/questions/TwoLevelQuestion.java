@@ -28,7 +28,7 @@ import org.miradi.objecthelpers.TwoLevelEntry;
 import org.miradi.objecthelpers.TwoLevelFileLoader;
 import org.miradi.utils.XmlUtilities2;
 
-public class TwoLevelQuestion extends DynamicChoiceQuestion
+abstract public class TwoLevelQuestion extends DynamicChoiceQuestion
 {
 	public TwoLevelQuestion(TwoLevelFileLoader twoLevelFileLoaderToUse)
 	{
