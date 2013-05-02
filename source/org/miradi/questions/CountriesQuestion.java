@@ -24,7 +24,7 @@ import java.util.Collections;
 import org.miradi.objecthelpers.TwoLevelFileLoader;
 import org.miradi.objecthelpers.WwfCountriesFileLoader;
 
-public class CountriesQuestion extends TwoLevelQuestion
+public class CountriesQuestion extends MultiSelectTwoLevelQuestion
 {
 	public CountriesQuestion()
 	{

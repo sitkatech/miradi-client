@@ -22,7 +22,7 @@ package org.miradi.questions;
 import org.miradi.objecthelpers.RegionsFileLoader;
 import org.miradi.objecthelpers.TwoLevelFileLoader;
 
-public class WwfRegionsQuestion extends TwoLevelQuestion
+public class WwfRegionsQuestion extends MultiSelectTwoLevelQuestion
 {
 	public WwfRegionsQuestion()
 	{

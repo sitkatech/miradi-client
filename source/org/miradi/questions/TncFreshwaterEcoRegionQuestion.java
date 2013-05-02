@@ -22,7 +22,7 @@ package org.miradi.questions;
 import org.miradi.objecthelpers.TncFreshwaterEcoRegionFileLoader;
 import org.miradi.objecthelpers.TwoLevelFileLoader;
 
-public class TncFreshwaterEcoRegionQuestion extends TwoLevelQuestion
+public class TncFreshwaterEcoRegionQuestion extends MultiSelectTwoLevelQuestion
 {
 	public TncFreshwaterEcoRegionQuestion()
 	{

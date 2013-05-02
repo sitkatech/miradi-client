@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2013, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -17,15 +17,21 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
+
 package org.miradi.questions;
 
-import org.miradi.objecthelpers.TaxonomyFileLoader;
 import org.miradi.objecthelpers.TwoLevelFileLoader;
 
-public class StrategyTaxonomyQuestion extends SingleSelectTwoLevelQuestion
+public class MultiSelectTwoLevelQuestion extends TwoLevelQuestion
 {
-	public StrategyTaxonomyQuestion()
+	public MultiSelectTwoLevelQuestion(TwoLevelFileLoader twoLevelFileLoaderToUse)
 	{
-		super(new TaxonomyFileLoader(TwoLevelFileLoader.STRATEGY_TAXONOMIES_FILE));
+		super(twoLevelFileLoaderToUse);
+	}
+	
+	@Override
+	public boolean canSelectMultiple()
+	{
+		return true;
 	}
 }
