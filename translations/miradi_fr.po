@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-01 16:16-0500\n"
+"POT-Creation-Date: 2013-05-02 11:16-0500\n"
 "PO-Revision-Date: 2013-04-02 10:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -3653,6 +3653,10 @@ msgstr "Exporter ..."
 msgid "Exported file does not validate."
 msgstr "Impossible de valider le fichier exporté."
 
+#: Miradi/source/org/miradi/views/summary/SummaryMiradiSharePanel.java:51
+msgid "External Project Id"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/RatingSourceQuestion.java:38
 msgid "External Research"
 msgstr "Recherche externe"
@@ -4599,6 +4603,10 @@ msgstr "Adresse IM"
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:43
 msgid "Label|Methods"
 msgstr "Méthodes"
+
+#: Miradi/source/org/miradi/views/summary/SummaryMiradiSharePanel.java:72
+msgid "Label|Miradi Share"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/InsertDraftStrategyDoer.java:65
 msgid "Label|New Draft Strategy"
@@ -8930,7 +8938,7 @@ msgstr ""
 msgid "Work plan overview"
 msgstr "Vue d'ensemble du plan de travail"
 
-#: Miradi/source/org/miradi/views/summary/SummaryView.java:170
+#: Miradi/source/org/miradi/views/summary/SummaryView.java:171
 msgid "Work plan start date is before project start date"
 msgstr ""
 "La date de début du plan de travail est antérieure à la date de début du "
@@ -10700,6 +10708,40 @@ msgid "FieldLabel|59.IncludeImages|Include Images"
 msgstr ""
 
 msgid "FieldLabel|60.MiradiShareProjectData|Miradi Share Project Data"
+msgstr ""
+
+msgid "FieldLabel|60.ProjectId|Project Id"
+msgstr ""
+
+msgid "FieldLabel|60.ProjectUrl|Project URL"
+msgstr ""
+
+msgid "FieldLabel|60.ProgramId|Prgram Id"
+msgstr ""
+
+msgid "FieldLabel|60.ProgramName|Program Name"
+msgstr ""
+
+msgid "FieldLabel|60.ProgramUrl|Program URL"
+msgstr ""
+
+msgid "FieldLabel|60.ProjectTemplateId|Project Template Id"
+msgstr ""
+
+msgid "FieldLabel|60.ProjectTemplateName|Projet Template Name"
+msgstr ""
+
+msgid "FieldLabel|60.ProjectVersion|Project Version"
+msgstr ""
+
+msgid "FieldLabel|60.ProgramTaxonomySetName|Program Taxonomy Set Name"
+msgstr ""
+
+msgid ""
+"FieldLabel|60.ProgramTaxonomySetVersionId|Program Taxonomy Set Version Id"
+msgstr ""
+
+msgid "FieldLabel|60.ProgramTaxonomySetVersion|Program Taxonomy Set Version"
 msgstr ""
 
 msgid "FieldLabel|61.Taxonomy|Miradi Share Taxonomy"
