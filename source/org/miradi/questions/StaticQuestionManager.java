@@ -123,11 +123,11 @@ public class StaticQuestionManager
 	private static void validateSingleSelectionQuestion(ChoiceQuestion question)
 	{
 		CodeList allCodes = question.getAllCodes();
-		final boolean containDefaultEmpyChoice = allCodes.contains("");
-		if (isSingleSelectQuestion(question) && !containDefaultEmpyChoice)
+		final boolean containsDefaultEmpyChoice = allCodes.contains("");
+		if (isSingleSelectQuestion(question) && !containsDefaultEmpyChoice)
 			EAM.logError("Single selection question does not contain default \"\" value.  Question class:" + question.getClass().getSimpleName());
 		
-		if (isMultipleSelectQuestion(question) && containDefaultEmpyChoice)
+		if (isMultipleSelectQuestion(question) && containsDefaultEmpyChoice)
 			EAM.logError("Multi selection question can not contain default \"\" value.  Question class:" + question.getClass().getSimpleName());
 	}
 
