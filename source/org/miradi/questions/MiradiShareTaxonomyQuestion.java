@@ -20,17 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
-public class MiradiShareTaxonomyQuestion extends StaticChoiceQuestion
+public class MiradiShareTaxonomyQuestion extends MultipleSelectStaticChoiceQuestion
 {
 	@Override
 	protected ChoiceItem[] createChoices()
 	{
 		return new ChoiceItem[0];
-	}
-	
-	@Override
-	public boolean canSelectMultiple()
-	{
-		return true;
 	}
 }

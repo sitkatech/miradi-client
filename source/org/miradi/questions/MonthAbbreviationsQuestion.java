@@ -22,7 +22,7 @@ package org.miradi.questions;
 
 import org.miradi.main.EAM;
 
-public class MonthAbbreviationsQuestion extends StaticChoiceQuestion
+public class MonthAbbreviationsQuestion extends MultipleSelectStaticChoiceQuestion
 {
 	public MonthAbbreviationsQuestion()
 	{
@@ -45,11 +45,5 @@ public class MonthAbbreviationsQuestion extends StaticChoiceQuestion
 				new ChoiceItem("11", EAM.text("Nov")),
 				new ChoiceItem("12", EAM.text("Dec")),
 		};
-	}
-	
-	@Override
-	public boolean canSelectMultiple()
-	{
-		return true;
 	}
 }

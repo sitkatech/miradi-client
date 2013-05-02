@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
-public class TncProjectPlaceTypeQuestion extends StaticChoiceQuestion
+public class TncProjectPlaceTypeQuestion extends MultipleSelectStaticChoiceQuestion
 {
 	public TncProjectPlaceTypeQuestion()
 	{
@@ -35,12 +35,6 @@ public class TncProjectPlaceTypeQuestion extends StaticChoiceQuestion
 		};
 	}
 	
-	@Override
-	public boolean canSelectMultiple()
-	{
-		return true;
-	}
-
 	public static final String SINGLE_PLACE_BASED_PROJECT_CODE = "SinglePlaceBasedProject";
 	public static final String MULTI_PLACE_BASED_PROJECT_CODE = "MultiPlaceBasedProject";
 	public static final String NON_PLACE_BASED_PROJECT_CODE = "NonPlaceBasedProject";
