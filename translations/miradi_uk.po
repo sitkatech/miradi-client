@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-02 15:01-0500\n"
+"POT-Creation-Date: 2013-05-02 15:31-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -3561,10 +3561,6 @@ msgstr "Експортувати..."
 msgid "Exported file does not validate."
 msgstr "Експортований файл не дійсний."
 
-#: Miradi/source/org/miradi/views/summary/SummaryMiradiSharePanel.java:43
-msgid "External Project Id"
-msgstr ""
-
 #: Miradi/source/org/miradi/questions/RatingSourceQuestion.java:38
 msgid "External Research"
 msgstr "Зовнішні дослідження"
@@ -4485,7 +4481,7 @@ msgstr "Label|IM адреса"
 msgid "Label|Methods"
 msgstr "Label|Методи"
 
-#: Miradi/source/org/miradi/views/summary/SummaryMiradiSharePanel.java:64
+#: Miradi/source/org/miradi/views/summary/SummaryMiradiSharePanel.java:62
 msgid "Label|Miradi Share"
 msgstr ""
 

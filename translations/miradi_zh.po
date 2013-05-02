@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-02 15:01-0500\n"
+"POT-Creation-Date: 2013-05-02 15:31-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -3453,10 +3453,6 @@ msgstr "导出… \t\t"
 msgid "Exported file does not validate."
 msgstr "导出的文件不正确。 \t\t"
 
-#: Miradi/source/org/miradi/views/summary/SummaryMiradiSharePanel.java:43
-msgid "External Project Id"
-msgstr ""
-
 #: Miradi/source/org/miradi/questions/RatingSourceQuestion.java:38
 msgid "External Research"
 msgstr "外部研究"
@@ -4368,7 +4364,7 @@ msgstr "IM地址 \t\t"
 msgid "Label|Methods"
 msgstr "方法 \t\t"
 
-#: Miradi/source/org/miradi/views/summary/SummaryMiradiSharePanel.java:64
+#: Miradi/source/org/miradi/views/summary/SummaryMiradiSharePanel.java:62
 msgid "Label|Miradi Share"
 msgstr ""
 
