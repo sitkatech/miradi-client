@@ -126,6 +126,9 @@ public class StaticQuestionManager
 		final boolean containDefaultEmpyChoice = allCodes.contains("");
 		if (isSingleSelectQuestion(question) && !containDefaultEmpyChoice)
 			EAM.logError("Single selection question does not contain default \"\" value.  Question class:" + question.getClass().getSimpleName());
+		
+		if (isMultipleSelectQuestion(question) && containDefaultEmpyChoice)
+			EAM.logError("Multi selection question can not contain default \"\" value.  Question class:" + question.getClass().getSimpleName());
 	}
 
 	private static boolean isMultipleSelectQuestion(ChoiceQuestion question)
@@ -133,10 +136,9 @@ public class StaticQuestionManager
 		return question.canSelectMultiple();
 	}
 	
-
 	private static boolean isSingleSelectQuestion(ChoiceQuestion question)
 	{
-		return !isMultipleSelectQuestion(question);
+		return question.canSelectSingleOnly();
 	}
 
 	public static ChoiceQuestion getQuestion(Class questionClass)
