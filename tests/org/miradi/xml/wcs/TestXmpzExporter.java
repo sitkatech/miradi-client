@@ -259,7 +259,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 	
 	private void verifyResourceIds(XmpzXmlImporter xmlImporter, Node timePeriodCostsNode, String calculatedWho, ORefList resourceRefs) throws Exception
 	{
-		XPathExpression expression = xmlImporter.getXPath().compile(xmlImporter.getPrefixedElement(XmpzXmlConstants.CALCULATED_WHO));
+		XPathExpression expression = xmlImporter.getXPath().compile(xmlImporter.generatePath(new String[]{XmpzXmlConstants.CALCULATED_WHO,}));
 		Node whoNode = (Node) expression.evaluate(timePeriodCostsNode, XPathConstants.NODE);
 		String elementNameToMatch = XmpzXmlConstants.RESOURCE_ID;
 
