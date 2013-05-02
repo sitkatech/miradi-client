@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-02 11:16-0500\n"
+"POT-Creation-Date: 2013-05-02 15:01-0500\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -3708,7 +3708,7 @@ msgstr "Exportar..."
 msgid "Exported file does not validate."
 msgstr "Arquivo exportado não valida"
 
-#: Miradi/source/org/miradi/views/summary/SummaryMiradiSharePanel.java:51
+#: Miradi/source/org/miradi/views/summary/SummaryMiradiSharePanel.java:43
 msgid "External Project Id"
 msgstr ""
 
@@ -4688,7 +4688,7 @@ msgstr "Endereço IM"
 msgid "Label|Methods"
 msgstr "Métodos"
 
-#: Miradi/source/org/miradi/views/summary/SummaryMiradiSharePanel.java:72
+#: Miradi/source/org/miradi/views/summary/SummaryMiradiSharePanel.java:64
 msgid "Label|Miradi Share"
 msgstr ""
 
