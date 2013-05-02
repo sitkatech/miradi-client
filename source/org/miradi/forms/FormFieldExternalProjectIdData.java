@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2013, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -17,47 +17,28 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
+
 package org.miradi.forms;
 
-abstract public class FormItem
+public class FormFieldExternalProjectIdData extends FieldRelatedFormItem
 {
-	public boolean isFormConstant()
+	public FormFieldExternalProjectIdData(int objectTypeToUse, String objectTagToUse, String externalProjectIdCodeToUse)
 	{
-		return false;
+		super(objectTypeToUse, objectTagToUse);
+		
+		externalProjectIdCode = externalProjectIdCodeToUse;
 	}
 	
-	public boolean isFormFieldLabel()
-	{
-		return false;
-	}
-	
-	public boolean isFormFieldData()
-	{
-		return false;
-	}
-	
-	public boolean isFormFieldImage()
-	{
-		return false;
-	}
-	
-	public boolean isFormQuestionFieldData()
-	{
-		return false;
-	}
-	
-	public boolean isFormCurrencyFieldData()
-	{
-		return false;
-	}
-	
-	public boolean isCodeListFormFieldData()
-	{
-		return false;
-	}
-	
+	@Override
 	public boolean isExternaProjectIdFieldData()
 	{
-		return false;
+		return true;
 	}
+
+	public String getExternalProjectIdCode()
+	{
+		return externalProjectIdCode;
+	}
+	
+	private String externalProjectIdCode;
 }
