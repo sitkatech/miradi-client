@@ -67,6 +67,11 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 		this(projectToUse, new ORef[] {orefToUse});
 	}
 	
+	public ObjectDataInputPanel(Project projectToUse, int objectType, FieldPanelSpec formToUse) throws Exception
+	{
+		this(projectToUse, new ORef[]{ORef.createInvalidWithType(objectType)}, formToUse);
+	}
+	
 	public ObjectDataInputPanel(Project projectToUse, ORef[] orefsToUse, FieldPanelSpec formToUse) throws Exception
 	{
 		this(projectToUse, orefsToUse);
