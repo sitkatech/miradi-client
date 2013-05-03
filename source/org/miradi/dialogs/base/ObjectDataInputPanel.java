@@ -50,7 +50,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 {
 	public ObjectDataInputPanel(Project projectToUse, int objectType)
 	{
-		this(projectToUse, objectType, BaseId.INVALID);
+		this(projectToUse, ORef.createInvalidWithType(objectType));
 	}
 	
 	public ObjectDataInputPanel(Project projectToUse, int objectType, BaseId idToUse)
