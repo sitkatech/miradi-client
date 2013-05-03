@@ -71,6 +71,11 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 		dialog.setScrollableMainPanel(editorPanel);
 	}
 	
+	protected ChoiceQuestion getQuestion()
+	{
+		return question;
+	}
+	
 	abstract public DisposablePanel createEditorPanel() throws Exception;
 	
 	abstract public AbstractReadonlyChoiceComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount);
