@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.stress;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Stress;
@@ -30,7 +29,7 @@ public class StressCommentsSubPanel extends ObjectDataInputPanel
 {
 	public StressCommentsSubPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, ObjectType.STRESS, BaseId.INVALID);
+		super(projectToUse, ObjectType.STRESS);
 		
 		addField(createMultilineField(Stress.TAG_COMMENTS));
 		updateFieldsFromProject();

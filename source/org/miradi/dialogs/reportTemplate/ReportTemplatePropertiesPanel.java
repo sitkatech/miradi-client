@@ -22,7 +22,6 @@ package org.miradi.dialogs.reportTemplate;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.icons.ReportTemplateIcon;
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objects.ReportTemplate;
 import org.miradi.project.Project;
@@ -34,7 +33,7 @@ public class ReportTemplatePropertiesPanel extends ObjectDataInputPanel
 {
 	public ReportTemplatePropertiesPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, ReportTemplateSchema.getObjectType(), BaseId.INVALID);
+		super(projectToUse, ReportTemplateSchema.getObjectType());
 			
 		ObjectDataInputField shortLabelField = createStringField(ReportTemplate.TAG_SHORT_LABEL, 10);
 		ObjectDataInputField labelField = createExpandableField(ReportTemplate.TAG_LABEL);

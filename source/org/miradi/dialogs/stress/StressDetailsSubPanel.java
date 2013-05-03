@@ -26,7 +26,6 @@ import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.diagram.FactorSummaryCorePanel;
 import org.miradi.icons.StressIcon;
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Factor;
@@ -42,7 +41,7 @@ public class StressDetailsSubPanel extends ObjectDataInputPanel
 {
 	public StressDetailsSubPanel(JDialog parentDialogToUse, Project projectToUse) throws Exception
 	{
-		super(projectToUse, ObjectType.STRESS, BaseId.INVALID);
+		super(projectToUse, ObjectType.STRESS);
 	
 		parentDialog = parentDialogToUse;
 		
