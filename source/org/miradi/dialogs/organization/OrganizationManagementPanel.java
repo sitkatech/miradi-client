@@ -27,7 +27,6 @@ import javax.swing.JComponent;
 import org.miradi.actions.jump.ActionJumpSummaryWizardRolesAndResponsibilities;
 import org.miradi.dialogs.base.ObjectPoolManagementPanel;
 import org.miradi.icons.OrganizationIcon;
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.BufferedImageFactory;
@@ -40,7 +39,7 @@ public class OrganizationManagementPanel extends ObjectPoolManagementPanel
 	public OrganizationManagementPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		super(mainWindowToUse, new OrganizationPoolTablePanel(mainWindowToUse),
-				new OrganizationPropertiesPanel(mainWindowToUse.getProject(), BaseId.INVALID));
+				new OrganizationPropertiesPanel(mainWindowToUse.getProject()));
 
 	}
 

@@ -22,7 +22,6 @@ package org.miradi.dialogs.organization;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.icons.OrganizationIcon;
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Organization;
@@ -30,9 +29,9 @@ import org.miradi.project.Project;
 
 public class OrganizationPropertiesPanel extends ObjectDataInputPanel
 {
-	public OrganizationPropertiesPanel(Project projectToUse, BaseId idToEdit) throws Exception
+	public OrganizationPropertiesPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, ObjectType.ORGANIZATION, idToEdit);
+		super(projectToUse, ObjectType.ORGANIZATION);
 
 		ObjectDataInputField labelField = createStringField(Organization.TAG_LABEL, 30);
 		ObjectDataInputField shortLabelField = createShortStringField(Organization.TAG_SHORT_LABEL);
