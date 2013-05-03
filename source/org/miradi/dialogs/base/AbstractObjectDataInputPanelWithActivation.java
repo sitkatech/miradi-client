@@ -20,18 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.base;
 
-import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 
 
 abstract public class AbstractObjectDataInputPanelWithActivation extends AbstractObjectDataInputPanel
 {
-	public AbstractObjectDataInputPanelWithActivation(Project projectToUse, int objectType, BaseId idToUse)
-	{
-		this(projectToUse,new ORef(objectType, idToUse));
-	}
-	
 	public AbstractObjectDataInputPanelWithActivation(Project projectToUse,	ORef refToUse)
 	{
 		this(projectToUse, new ORef[] {refToUse});
