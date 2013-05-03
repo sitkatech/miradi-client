@@ -46,9 +46,6 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.FillerLabel;
 
-import com.jhlabs.awt.Alignment;
-import com.jhlabs.awt.GridLayoutPlus;
-
 abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelWithCreationFromForms
 {
 	public ObjectDataInputPanel(Project projectToUse, int objectType)
@@ -60,7 +57,6 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 	{
 		this(projectToUse, new ORef[] {new ORef(objectType, idToUse)});
 	}
-	
 	
 	public ObjectDataInputPanel(Project projectToUse, ORef orefToUse)
 	{
@@ -84,10 +80,6 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 	public ObjectDataInputPanel(Project projectToUse, ORef[] orefsToUse)
 	{
 		super(projectToUse, orefsToUse);
-		
-		GridLayoutPlus layout = new GridLayoutPlus(0, 2, HGAP, VGAP);
-		layout.setColAlignment(0, Alignment.NORTHEAST);
-		setLayout(layout);
 	}
 	
 	public void addBlankHorizontalLine()
@@ -307,7 +299,4 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 		
 		return false;
 	}
-
-	static final int HGAP = 6;
-	static final int VGAP = 6;
 }

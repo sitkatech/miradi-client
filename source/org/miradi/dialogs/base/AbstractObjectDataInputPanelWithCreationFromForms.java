@@ -34,11 +34,18 @@ import org.miradi.project.Project;
 import org.miradi.utils.DataPanelFlexibleWidthHtmlViewer;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
 
+import com.jhlabs.awt.Alignment;
+import com.jhlabs.awt.GridLayoutPlus;
+
 abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends	AbstractObjectDataInputPanelWithActivation
 {
 	public AbstractObjectDataInputPanelWithCreationFromForms(Project projectToUse, ORef[] orefsToUse)
 	{
 		super(projectToUse, orefsToUse);
+		
+		GridLayoutPlus layout = new GridLayoutPlus(0, 2, HGAP, VGAP);
+		layout.setColAlignment(0, Alignment.NORTHEAST);
+		setLayout(layout);
 	}
 
 	protected void createFieldsFromForm(FieldPanelSpec form) throws Exception
@@ -136,4 +143,7 @@ abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends	
 
 		throw new RuntimeException(getClass().getName()	+ ": Cannot yet create data entry field of type: " + dataEntryType);
 	}
+	
+	static final int HGAP = 6;
+	static final int VGAP = 6;
 }
