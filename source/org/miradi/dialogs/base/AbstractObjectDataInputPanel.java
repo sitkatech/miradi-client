@@ -74,6 +74,7 @@ import org.miradi.dialogfields.StrategyObjectiveOverrideListField;
 import org.miradi.dialogfields.StringMapProjectResourceFilterEditorField;
 import org.miradi.dialogfields.SingleXenodataProjectIdReadonlyField;
 import org.miradi.dialogfields.ExternalProjectsDisplayField;
+import org.miradi.dialogfields.TaxonomyEditorField;
 import org.miradi.dialogfields.WhenEditorField;
 import org.miradi.dialogfields.WhoEditorField;
 import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
@@ -92,6 +93,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.MiradiShareTaxonomyQuestion;
 import org.miradi.questions.ResourceLeaderQuestionWithUnspecifiedChoice;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.schemas.GoalSchema;
@@ -646,6 +648,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public ObjectDataInputField createRadioButtonEditorField(int objectType, String tagToUse, ChoiceQuestion question)
 	{
 		return new SingleCodeEditableField(getMainWindow(), getRefForType(objectType), tagToUse, question, 1);
+	}
+	
+	public ObjectDataInputField createTaxonomyEditorField(int objectType)
+	{
+		return new TaxonomyEditorField(getProject(), getRefForType(objectType), new MiradiShareTaxonomyQuestion(), 1);
 	}
 	
 	public ObjectDataInputField createReadOnlyChoiceField(String tagToUse, ChoiceQuestion question)
