@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-02 16:16-0500\n"
+"POT-Creation-Date: 2013-05-03 10:01-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -3690,7 +3690,7 @@ msgstr "Pemilih Folder "
 msgid "FolderName|BackupsFromMigrationToMiradi4"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:53
+#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:52
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:74
 msgid "Font"
 msgstr "Fon"
@@ -3906,7 +3906,7 @@ msgstr "Kelompok"
 msgid "Group Box"
 msgstr "Kotak Grup"
 
-#: Miradi/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:55
+#: Miradi/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:54
 msgid "Group Box Properties"
 msgstr "Sifat-sifat Kotak Grup "
 
@@ -4429,7 +4429,7 @@ msgid "Label|Human Stakeholder Pop Size"
 msgstr "Ukuran Populasi Manusia Pemilik Kepentingan "
 
 #: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:39
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:73
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:72
 #: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:76
 msgid "Label|IM Address"
 msgstr "Alamat IM "
@@ -4484,17 +4484,17 @@ msgid "Label|New Threat Reduction Result"
 msgstr "Hasil Pengurangan Ancaman Baru "
 
 #: Miradi/source/org/miradi/forms/objects/OrganizationPropertiesForm.java:34
-#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:45
+#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:44
 msgid "Label|Org Contact"
 msgstr "Kontak Org "
 
 #: Miradi/source/org/miradi/forms/objects/OrganizationPropertiesForm.java:32
-#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:39
+#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:38
 msgid "Label|Organization"
 msgstr "Organisasi "
 
 #: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:35
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:62
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:61
 #: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:65
 msgid "Label|Phone Numbers"
 msgstr "Nomor Telepon "
@@ -4531,7 +4531,7 @@ msgstr "Sumber daya "
 msgid "Label|Roles (people only)"
 msgstr "Peran (orang saja) "
 
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:52
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:51
 msgid "Label|Team Member"
 msgstr "Anggota Tim "
 
@@ -5185,7 +5185,7 @@ msgid "Needs Attention"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:314
-#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:39
+#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:38
 msgid "Nested Target"
 msgstr "Target Bersarang "
 
@@ -5815,7 +5815,7 @@ msgstr "Buat peringkat rancangan strategi \t"
 msgid "Rapid Assessment"
 msgstr "Penilaian Cepat"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:68
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:67
 msgid "Ratings"
 msgstr "Peringkat "
 
@@ -5866,7 +5866,7 @@ msgid "Report Completed"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/reports/doers/DeleteReportTemplateDoer.java:32
-#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:41
+#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:40
 msgid "Report Template"
 msgstr "Templat Laporan"
 
@@ -6429,7 +6429,7 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:60
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:80
 #: Miradi/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:73
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:51
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:50
 msgid "Stress"
 msgstr "Tekanan "
 
@@ -7417,12 +7417,12 @@ msgid "Tab|XSL Templates"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/DeleteTaggedObjectSetDoer.java:37
-#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:41
+#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:40
 msgid "Tag"
 msgstr "Tag"
 
 #: Miradi/source/org/miradi/views/diagram/doers/EditTaggedObjectSetDoer.java:55
-#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:43
+#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:42
 msgid "Tagged Items"
 msgstr "Butir yang Ditandai"
 
@@ -7783,7 +7783,7 @@ msgstr ""
 "Model ini bukan untuk pengalokasian tunggal dan belum mempunyai informasi "
 "pengalokasian "
 
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:79
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:78
 msgid "This person is a coach within the Conservation Coaches Network"
 msgstr ""
 
@@ -8066,7 +8066,7 @@ msgstr "Properti Metode "
 msgid "Title|Migrate Project"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:49
+#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:48
 msgid "Title|Nested Target Properties"
 msgstr "Sifat-sifat Target Bersarang \t"
 
@@ -8082,7 +8082,7 @@ msgstr ""
 msgid "Title|Open Standards Status"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:57
+#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:56
 msgid "Title|Organization Properties"
 msgstr "Sifat-sifat Organisasi "
 
@@ -8090,7 +8090,7 @@ msgstr "Sifat-sifat Organisasi "
 msgid "Title|Other Notable Species"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/organization/OrganizationManagementPanel.java:50
+#: Miradi/source/org/miradi/dialogs/organization/OrganizationManagementPanel.java:49
 msgid "Title|Other Orgs"
 msgstr "Organisasi Lain "
 
@@ -8111,7 +8111,7 @@ msgstr ""
 msgid "Title|Project Filename"
 msgstr "Nama berkas proyek "
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:52
+#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:51
 msgid "Title|Report Template Properties"
 msgstr "Sifat-sifat Templat Laporan"
 
@@ -8127,11 +8127,11 @@ msgstr "Properti Rangkaian Hasil "
 msgid "Title|Save %s File"
 msgstr "Simpan %s Berkas "
 
-#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:61
+#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:60
 msgid "Title|Scope Box Properties"
 msgstr "Properti Kotak Cakupan "
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingPropertiesPanel.java:63
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingPropertiesPanel.java:62
 msgid "Title|Simple Threat Rating"
 msgstr "Peringkat Ancaman-Target "
 
@@ -8143,11 +8143,11 @@ msgstr "Kelangsungan Sederhana "
 msgid "Title|Strategy Properties"
 msgstr "Sifat-sifat Strategi "
 
-#: Miradi/source/org/miradi/dialogs/stress/StressCommentsSubPanel.java:42
+#: Miradi/source/org/miradi/dialogs/stress/StressCommentsSubPanel.java:41
 msgid "Title|Stress Comments"
 msgstr "Komentar Tekanan "
 
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:76
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:75
 msgid "Title|Stress Details"
 msgstr "Rincian Tekanan "
 
@@ -8159,11 +8159,11 @@ msgstr "Sifat-sifat Tekanan "
 msgid "Title|Stress Visibility"
 msgstr "Ketampakan Tekanan "
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:69
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:68
 msgid "Title|Stress-Based Threat Rating"
 msgstr "Peringkat Ancaman Berdasarkan Tekanan "
 
-#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:52
+#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:51
 msgid "Title|Tag Properties Panel"
 msgstr "Panel Sifat-sifat Tag"
 
@@ -8183,7 +8183,7 @@ msgstr "Sifat-sifat Tugas "
 msgid "Title|Team"
 msgstr "Tim "
 
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:90
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:89
 msgid "Title|Team Properties"
 msgstr "Sifat-sifat Tim "
 

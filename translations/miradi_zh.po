@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-02 16:16-0500\n"
+"POT-Creation-Date: 2013-05-03 10:01-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -3630,7 +3630,7 @@ msgstr ""
 msgid "FolderName|BackupsFromMigrationToMiradi4"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:53
+#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:52
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:74
 msgid "Font"
 msgstr "字体 \t\t"
@@ -3838,7 +3838,7 @@ msgstr "小组"
 msgid "Group Box"
 msgstr "组合框"
 
-#: Miradi/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:55
+#: Miradi/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:54
 msgid "Group Box Properties"
 msgstr "组合框属性 \t\t"
 
@@ -4355,7 +4355,7 @@ msgid "Label|Human Stakeholder Pop Size"
 msgstr "人力利益相关者的群体规模 \t\t"
 
 #: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:39
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:73
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:72
 #: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:76
 msgid "Label|IM Address"
 msgstr "IM地址 \t\t"
@@ -4410,17 +4410,17 @@ msgid "Label|New Threat Reduction Result"
 msgstr "新的减少威胁因子的结果 \t\t"
 
 #: Miradi/source/org/miradi/forms/objects/OrganizationPropertiesForm.java:34
-#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:45
+#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:44
 msgid "Label|Org Contact"
 msgstr "组织联系方式 \t\t"
 
 #: Miradi/source/org/miradi/forms/objects/OrganizationPropertiesForm.java:32
-#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:39
+#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:38
 msgid "Label|Organization"
 msgstr "组织 \t\t"
 
 #: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:35
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:62
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:61
 #: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:65
 msgid "Label|Phone Numbers"
 msgstr "电话号码 \t\t"
@@ -4457,7 +4457,7 @@ msgstr "资源 "
 msgid "Label|Roles (people only)"
 msgstr "角色（仅限于人） \t\t"
 
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:52
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:51
 msgid "Label|Team Member"
 msgstr "团队成员 \t\t"
 
@@ -5087,7 +5087,7 @@ msgid "Needs Attention"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:314
-#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:39
+#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:38
 msgid "Nested Target"
 msgstr "嵌套对象 \t\t"
 
@@ -5705,7 +5705,7 @@ msgstr "评定策略草案 \t\t"
 msgid "Rapid Assessment"
 msgstr "快速评估"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:68
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:67
 msgid "Ratings"
 msgstr "分级 "
 
@@ -5756,7 +5756,7 @@ msgid "Report Completed"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/reports/doers/DeleteReportTemplateDoer.java:32
-#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:41
+#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:40
 msgid "Report Template"
 msgstr "报告模板"
 
@@ -6292,7 +6292,7 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:60
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:80
 #: Miradi/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:73
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:51
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:50
 msgid "Stress"
 msgstr "压力"
 
@@ -7271,12 +7271,12 @@ msgid "Tab|XSL Templates"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/DeleteTaggedObjectSetDoer.java:37
-#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:41
+#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:40
 msgid "Tag"
 msgstr "标签"
 
 #: Miradi/source/org/miradi/views/diagram/doers/EditTaggedObjectSetDoer.java:55
-#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:43
+#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:42
 msgid "Tagged Items"
 msgstr "加标签的条目"
 
@@ -7618,7 +7618,7 @@ msgid ""
 "This model is not for a single assignment and has no assignment information"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:79
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:78
 msgid "This person is a coach within the Conservation Coaches Network"
 msgstr ""
 
@@ -7896,7 +7896,7 @@ msgstr ""
 msgid "Title|Migrate Project"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:49
+#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:48
 msgid "Title|Nested Target Properties"
 msgstr "嵌套对象属性 \t\t"
 
@@ -7912,7 +7912,7 @@ msgstr ""
 msgid "Title|Open Standards Status"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:57
+#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:56
 msgid "Title|Organization Properties"
 msgstr "组织属性 \t\t"
 
@@ -7920,7 +7920,7 @@ msgstr "组织属性 \t\t"
 msgid "Title|Other Notable Species"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/organization/OrganizationManagementPanel.java:50
+#: Miradi/source/org/miradi/dialogs/organization/OrganizationManagementPanel.java:49
 msgid "Title|Other Orgs"
 msgstr "其它组织 \t\t"
 
@@ -7941,7 +7941,7 @@ msgstr ""
 msgid "Title|Project Filename"
 msgstr "项目文件名 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:52
+#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:51
 msgid "Title|Report Template Properties"
 msgstr "标题|报告模板属性"
 
@@ -7957,11 +7957,11 @@ msgstr ""
 msgid "Title|Save %s File"
 msgstr "保存 %s 文件  \t\t"
 
-#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:61
+#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:60
 msgid "Title|Scope Box Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingPropertiesPanel.java:63
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingPropertiesPanel.java:62
 msgid "Title|Simple Threat Rating"
 msgstr ""
 
@@ -7973,11 +7973,11 @@ msgstr "简单生存力 \t\t"
 msgid "Title|Strategy Properties"
 msgstr "策略属性 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressCommentsSubPanel.java:42
+#: Miradi/source/org/miradi/dialogs/stress/StressCommentsSubPanel.java:41
 msgid "Title|Stress Comments"
 msgstr "压力诠释"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:76
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:75
 msgid "Title|Stress Details"
 msgstr "压力详情"
 
@@ -7989,11 +7989,11 @@ msgstr "压力属性"
 msgid "Title|Stress Visibility"
 msgstr "压力可见度"
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:69
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:68
 msgid "Title|Stress-Based Threat Rating"
 msgstr "基于压力的威胁因子分级 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:52
+#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:51
 msgid "Title|Tag Properties Panel"
 msgstr "标题|标签属性面板"
 
@@ -8013,7 +8013,7 @@ msgstr "任务属性 \t\t"
 msgid "Title|Team"
 msgstr "团队 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:90
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:89
 msgid "Title|Team Properties"
 msgstr "团队属性 \t\t"
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-02 16:16-0500\n"
+"POT-Creation-Date: 2013-05-03 10:01-0500\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -3916,7 +3916,7 @@ msgstr "Selecionador de Pasta"
 msgid "FolderName|BackupsFromMigrationToMiradi4"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:53
+#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:52
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:74
 msgid "Font"
 msgstr "Fonte Tipográfica"
@@ -4135,7 +4135,7 @@ msgstr "Grupar"
 msgid "Group Box"
 msgstr "Caixa de Grupo"
 
-#: Miradi/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:55
+#: Miradi/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:54
 msgid "Group Box Properties"
 msgstr "Propriedades da Caixa de Grupo"
 
@@ -4675,7 +4675,7 @@ msgstr "Tam da População de Atores"
 
 # Leo, OK to keep "IM" em Portugês?
 #: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:39
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:73
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:72
 #: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:76
 msgid "Label|IM Address"
 msgstr "Endereço IM"
@@ -4730,17 +4730,17 @@ msgid "Label|New Threat Reduction Result"
 msgstr "Novo Resultado de Redução de Ameaça"
 
 #: Miradi/source/org/miradi/forms/objects/OrganizationPropertiesForm.java:34
-#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:45
+#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:44
 msgid "Label|Org Contact"
 msgstr "Contato Org"
 
 #: Miradi/source/org/miradi/forms/objects/OrganizationPropertiesForm.java:32
-#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:39
+#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:38
 msgid "Label|Organization"
 msgstr "Organização"
 
 #: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:35
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:62
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:61
 #: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:65
 msgid "Label|Phone Numbers"
 msgstr "Números de Telefone"
@@ -4777,7 +4777,7 @@ msgstr "Recurso"
 msgid "Label|Roles (people only)"
 msgstr "Papeis (somente pessoas)"
 
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:52
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:51
 msgid "Label|Team Member"
 msgstr "Membros da Equipe"
 
@@ -5460,7 +5460,7 @@ msgid "Needs Attention"
 msgstr "Demanda Atenção"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:314
-#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:39
+#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:38
 msgid "Nested Target"
 msgstr "Alvo Ninhado"
 
@@ -6102,7 +6102,7 @@ msgstr "Classificar os rascunhos de estratégias"
 msgid "Rapid Assessment"
 msgstr "Levantamento Rápido"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:68
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:67
 msgid "Ratings"
 msgstr "Classificações"
 
@@ -6153,7 +6153,7 @@ msgid "Report Completed"
 msgstr "Relatório Concluido"
 
 #: Miradi/source/org/miradi/views/reports/doers/DeleteReportTemplateDoer.java:32
-#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:41
+#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:40
 msgid "Report Template"
 msgstr "Modelo de Relatório"
 
@@ -6734,7 +6734,7 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:60
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:80
 #: Miradi/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:73
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:51
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:50
 msgid "Stress"
 msgstr "Estresse"
 
@@ -7741,12 +7741,12 @@ msgid "Tab|XSL Templates"
 msgstr "Modelos XSL"
 
 #: Miradi/source/org/miradi/views/diagram/doers/DeleteTaggedObjectSetDoer.java:37
-#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:41
+#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:40
 msgid "Tag"
 msgstr "'Tag'"
 
 #: Miradi/source/org/miradi/views/diagram/doers/EditTaggedObjectSetDoer.java:55
-#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:43
+#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:42
 msgid "Tagged Items"
 msgstr "Itens marcados com 'Tag'"
 
@@ -8138,7 +8138,7 @@ msgstr ""
 "Este modelo não é para uma única designação e não tem informações de "
 "designação"
 
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:79
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:78
 msgid "This person is a coach within the Conservation Coaches Network"
 msgstr "Esta pessoa é um treinador ('coach') do Conservation Coaches Network"
 
@@ -8426,7 +8426,7 @@ msgstr "Propriedades de Métodos"
 msgid "Title|Migrate Project"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:49
+#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:48
 msgid "Title|Nested Target Properties"
 msgstr "Propriedades de Alvos Aninhados"
 
@@ -8442,7 +8442,7 @@ msgstr "Abrir"
 msgid "Title|Open Standards Status"
 msgstr "Abrir o Estado dos Padrões"
 
-#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:57
+#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:56
 msgid "Title|Organization Properties"
 msgstr "Propriedades de Organizações"
 
@@ -8450,7 +8450,7 @@ msgstr "Propriedades de Organizações"
 msgid "Title|Other Notable Species"
 msgstr "Outras Espécies Notáveis"
 
-#: Miradi/source/org/miradi/dialogs/organization/OrganizationManagementPanel.java:50
+#: Miradi/source/org/miradi/dialogs/organization/OrganizationManagementPanel.java:49
 msgid "Title|Other Orgs"
 msgstr "Outras Orgs"
 
@@ -8471,7 +8471,7 @@ msgstr "Relatório de Progresso"
 msgid "Title|Project Filename"
 msgstr "Nome do Arquivo do Projeto"
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:52
+#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:51
 msgid "Title|Report Template Properties"
 msgstr "Relatar Propriedades do Modelo"
 
@@ -8487,11 +8487,11 @@ msgstr "Propriedades de Cadeias de Resultados"
 msgid "Title|Save %s File"
 msgstr "Salvar %s File"
 
-#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:61
+#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:60
 msgid "Title|Scope Box Properties"
 msgstr "Propriedades de Caixa de Escopo"
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingPropertiesPanel.java:63
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingPropertiesPanel.java:62
 msgid "Title|Simple Threat Rating"
 msgstr "Classificação Simples de Ameaças"
 
@@ -8503,11 +8503,11 @@ msgstr "Viabilidade Simples"
 msgid "Title|Strategy Properties"
 msgstr "Propriedades de Estratégias"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressCommentsSubPanel.java:42
+#: Miradi/source/org/miradi/dialogs/stress/StressCommentsSubPanel.java:41
 msgid "Title|Stress Comments"
 msgstr "Comentários de Estresse"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:76
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:75
 msgid "Title|Stress Details"
 msgstr "Detalhes de Estresse"
 
@@ -8519,11 +8519,11 @@ msgstr "Propriedades de Estresse"
 msgid "Title|Stress Visibility"
 msgstr "Visibilidade de Estresse"
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:69
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:68
 msgid "Title|Stress-Based Threat Rating"
 msgstr "Classificação de Alvo Baseada em Estresse"
 
-#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:52
+#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:51
 msgid "Title|Tag Properties Panel"
 msgstr "Painel de Propriedades de Tag"
 
@@ -8543,7 +8543,7 @@ msgstr "Propriedades de Tarefa"
 msgid "Title|Team"
 msgstr "Equipe"
 
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:90
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:89
 msgid "Title|Team Properties"
 msgstr "Propriedades de Equipe"
 

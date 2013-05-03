@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-02 16:16-0500\n"
+"POT-Creation-Date: 2013-05-03 10:01-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -3738,7 +3738,7 @@ msgstr "Вибирач папки"
 msgid "FolderName|BackupsFromMigrationToMiradi4"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:53
+#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:52
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:74
 msgid "Font"
 msgstr "Шрифт"
@@ -3951,7 +3951,7 @@ msgstr ""
 msgid "Group Box"
 msgstr "Групова рамка"
 
-#: Miradi/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:55
+#: Miradi/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:54
 msgid "Group Box Properties"
 msgstr "Складові Групової рамки"
 
@@ -4472,7 +4472,7 @@ msgid "Label|Human Stakeholder Pop Size"
 msgstr "Label|Кількість осіб зацікавлених сторін"
 
 #: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:39
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:73
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:72
 #: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:76
 msgid "Label|IM Address"
 msgstr "Label|IM адреса"
@@ -4527,17 +4527,17 @@ msgid "Label|New Threat Reduction Result"
 msgstr "Label|Новий результат Зменшення загрози"
 
 #: Miradi/source/org/miradi/forms/objects/OrganizationPropertiesForm.java:34
-#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:45
+#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:44
 msgid "Label|Org Contact"
 msgstr "Label|Контактна особа"
 
 #: Miradi/source/org/miradi/forms/objects/OrganizationPropertiesForm.java:32
-#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:39
+#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:38
 msgid "Label|Organization"
 msgstr "Label|Організація"
 
 #: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:35
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:62
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:61
 #: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:65
 msgid "Label|Phone Numbers"
 msgstr "Label|Номер телефону"
@@ -4574,7 +4574,7 @@ msgstr "Label|Ресурс"
 msgid "Label|Roles (people only)"
 msgstr "Label|Ролі (тільки люди)"
 
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:52
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:51
 msgid "Label|Team Member"
 msgstr "Label|Виконавець"
 
@@ -5224,7 +5224,7 @@ msgid "Needs Attention"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:314
-#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:39
+#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:38
 msgid "Nested Target"
 msgstr "Ущільнені цілі"
 
@@ -5857,7 +5857,7 @@ msgstr "Ранжирувати проекти стратегій"
 msgid "Rapid Assessment"
 msgstr "Швидка оцінка"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:68
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:67
 msgid "Ratings"
 msgstr "Оцінки"
 
@@ -5908,7 +5908,7 @@ msgid "Report Completed"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/reports/doers/DeleteReportTemplateDoer.java:32
-#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:41
+#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:40
 msgid "Report Template"
 msgstr "Шаблон звіту"
 
@@ -6466,7 +6466,7 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:60
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:80
 #: Miradi/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:73
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:51
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:50
 msgid "Stress"
 msgstr "Стрес"
 
@@ -7456,12 +7456,12 @@ msgid "Tab|XSL Templates"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/DeleteTaggedObjectSetDoer.java:37
-#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:41
+#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:40
 msgid "Tag"
 msgstr "Тег"
 
 #: Miradi/source/org/miradi/views/diagram/doers/EditTaggedObjectSetDoer.java:55
-#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:43
+#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:42
 msgid "Tagged Items"
 msgstr "Мічені пункти"
 
@@ -7817,7 +7817,7 @@ msgid ""
 "This model is not for a single assignment and has no assignment information"
 msgstr "Ця модель не для окремого призначення і не має призначеної інформації"
 
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:79
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:78
 msgid "This person is a coach within the Conservation Coaches Network"
 msgstr ""
 
@@ -8099,7 +8099,7 @@ msgstr "Title|Складові Методу"
 msgid "Title|Migrate Project"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:49
+#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:48
 msgid "Title|Nested Target Properties"
 msgstr "Title|Складові ущільнених цілей"
 
@@ -8115,7 +8115,7 @@ msgstr ""
 msgid "Title|Open Standards Status"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:57
+#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:56
 msgid "Title|Organization Properties"
 msgstr "Title|Власність організації"
 
@@ -8123,7 +8123,7 @@ msgstr "Title|Власність організації"
 msgid "Title|Other Notable Species"
 msgstr "Title|Інші важливі види"
 
-#: Miradi/source/org/miradi/dialogs/organization/OrganizationManagementPanel.java:50
+#: Miradi/source/org/miradi/dialogs/organization/OrganizationManagementPanel.java:49
 msgid "Title|Other Orgs"
 msgstr "Title|Інші організації"
 
@@ -8144,7 +8144,7 @@ msgstr "Title|Проміжний звіт"
 msgid "Title|Project Filename"
 msgstr "Title|Назва файлу проекту"
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:52
+#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:51
 msgid "Title|Report Template Properties"
 msgstr "Title|Складові шаблонів звітів"
 
@@ -8160,11 +8160,11 @@ msgstr "Title|Складові ланцюга результатів"
 msgid "Title|Save %s File"
 msgstr "Title|Зберегти %s файл"
 
-#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:61
+#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:60
 msgid "Title|Scope Box Properties"
 msgstr "Title|Рамка цілей"
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingPropertiesPanel.java:63
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingPropertiesPanel.java:62
 msgid "Title|Simple Threat Rating"
 msgstr "Title|Проста оцінка загроз"
 
@@ -8176,11 +8176,11 @@ msgstr "Title|Проста життєздатність"
 msgid "Title|Strategy Properties"
 msgstr "Title|Складові Стратегії"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressCommentsSubPanel.java:42
+#: Miradi/source/org/miradi/dialogs/stress/StressCommentsSubPanel.java:41
 msgid "Title|Stress Comments"
 msgstr "Title|Особливі коментарі"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:76
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:75
 msgid "Title|Stress Details"
 msgstr "Title|Деталі стресу"
 
@@ -8192,11 +8192,11 @@ msgstr "Title|Складові стресу"
 msgid "Title|Stress Visibility"
 msgstr "Title|Видимість стресу"
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:69
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:68
 msgid "Title|Stress-Based Threat Rating"
 msgstr "Title|Оцінка загроз на основі стресу"
 
-#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:52
+#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:51
 msgid "Title|Tag Properties Panel"
 msgstr "Title|Панель складових тегів"
 
@@ -8216,7 +8216,7 @@ msgstr "Title|Складові задачі"
 msgid "Title|Team"
 msgstr "Title|Виконавець"
 
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:90
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:89
 msgid "Title|Team Properties"
 msgstr "Title|Складові робочої групи"
 

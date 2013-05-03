@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-02 16:16-0500\n"
+"POT-Creation-Date: 2013-05-03 10:01-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -3761,7 +3761,7 @@ msgstr "Фолдэр Сонгогч"
 msgid "FolderName|BackupsFromMigrationToMiradi4"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:53
+#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:52
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:74
 msgid "Font"
 msgstr "Үсгийн фонт"
@@ -3975,7 +3975,7 @@ msgstr ""
 msgid "Group Box"
 msgstr "Бүлгийн хайрцаг"
 
-#: Miradi/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:55
+#: Miradi/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:54
 msgid "Group Box Properties"
 msgstr "Бүлгийн хайрцгийн Properties"
 
@@ -4497,7 +4497,7 @@ msgid "Label|Human Stakeholder Pop Size"
 msgstr "Хаяг|Оролцогч Хүн Амын Тоо"
 
 #: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:39
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:73
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:72
 #: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:76
 msgid "Label|IM Address"
 msgstr "Хаяг|IM хаяг"
@@ -4552,17 +4552,17 @@ msgid "Label|New Threat Reduction Result"
 msgstr "Хаяг|Аюул заналыг бууруулах шинэ үр дүн"
 
 #: Miradi/source/org/miradi/forms/objects/OrganizationPropertiesForm.java:34
-#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:45
+#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:44
 msgid "Label|Org Contact"
 msgstr "Хаяг|Байгууллагуудтай харьцах"
 
 #: Miradi/source/org/miradi/forms/objects/OrganizationPropertiesForm.java:32
-#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:39
+#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:38
 msgid "Label|Organization"
 msgstr "Хаяг|Байгууллага"
 
 #: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:35
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:62
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:61
 #: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:65
 msgid "Label|Phone Numbers"
 msgstr "Хаяг|Утасны дугаарууд"
@@ -4599,7 +4599,7 @@ msgstr "Хаяг|Нөөц"
 msgid "Label|Roles (people only)"
 msgstr "Хаяг|Үүрэг роль (зөвхөн хүмүүс)"
 
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:52
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:51
 msgid "Label|Team Member"
 msgstr "Хаяг|Багийн гишүүн"
 
@@ -5249,7 +5249,7 @@ msgid "Needs Attention"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:314
-#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:39
+#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:38
 msgid "Nested Target"
 msgstr "Давхар хамгаалагдах объект"
 
@@ -5882,7 +5882,7 @@ msgstr "Стратегийн төслийг зэрэглэх"
 msgid "Rapid Assessment"
 msgstr "Шуурхай Үнэлгээ"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:68
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:67
 msgid "Ratings"
 msgstr "Үнэлгээ"
 
@@ -5933,7 +5933,7 @@ msgid "Report Completed"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/reports/doers/DeleteReportTemplateDoer.java:32
-#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:41
+#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:40
 msgid "Report Template"
 msgstr "Тайлангийн Загвар"
 
@@ -6507,7 +6507,7 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:60
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:80
 #: Miradi/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:73
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:51
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:50
 msgid "Stress"
 msgstr "Дарамт"
 
@@ -7496,12 +7496,12 @@ msgid "Tab|XSL Templates"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/DeleteTaggedObjectSetDoer.java:37
-#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:41
+#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:40
 msgid "Tag"
 msgstr "Тэмдэглэгээ"
 
 #: Miradi/source/org/miradi/views/diagram/doers/EditTaggedObjectSetDoer.java:55
-#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:43
+#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:42
 msgid "Tagged Items"
 msgstr "Тэмдэглэгээ хийсэн зүйлс"
 
@@ -7864,7 +7864,7 @@ msgstr ""
 "Энэхүү загвар нь ганц нэг даалгаварт зориуулагдаагүй ба даалгаварын мэдээлэл "
 "байхгүй байна."
 
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:79
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:78
 msgid "This person is a coach within the Conservation Coaches Network"
 msgstr ""
 
@@ -8148,7 +8148,7 @@ msgstr "гарчиг|Арга Зүйн Properties"
 msgid "Title|Migrate Project"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:49
+#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:48
 msgid "Title|Nested Target Properties"
 msgstr "Гарчиг|Давхар хамгаалагдах зүйлийн Properties"
 
@@ -8164,7 +8164,7 @@ msgstr ""
 msgid "Title|Open Standards Status"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:57
+#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:56
 msgid "Title|Organization Properties"
 msgstr "Гарчиг|Байгууллагын Properties"
 
@@ -8172,7 +8172,7 @@ msgstr "Гарчиг|Байгууллагын Properties"
 msgid "Title|Other Notable Species"
 msgstr "Гарчиг|Бусад онцгой төрөл зүйлүүд"
 
-#: Miradi/source/org/miradi/dialogs/organization/OrganizationManagementPanel.java:50
+#: Miradi/source/org/miradi/dialogs/organization/OrganizationManagementPanel.java:49
 msgid "Title|Other Orgs"
 msgstr "Гарчиг|Бусад Байгууллагууд"
 
@@ -8193,7 +8193,7 @@ msgstr "Гарчиг|Явцын Тайлан"
 msgid "Title|Project Filename"
 msgstr "Гарчиг|Төслийн Файлын Нэр"
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:52
+#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:51
 msgid "Title|Report Template Properties"
 msgstr "Гарчиг|Тайлангийн загварын шинж чанарууд"
 
@@ -8209,11 +8209,11 @@ msgstr "Гарчиг|Үр дүнгийн гинжин холбооны шинж 
 msgid "Title|Save %s File"
 msgstr "Гарчиг|Файлыг %s Хадгалах"
 
-#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:61
+#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:60
 msgid "Title|Scope Box Properties"
 msgstr "Гарчиг|Цар хүрээний хайрцгийн шинж чанарууд"
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingPropertiesPanel.java:63
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingPropertiesPanel.java:62
 msgid "Title|Simple Threat Rating"
 msgstr "Гарчиг|Аюул Заналын энгийн Үнэлгээ"
 
@@ -8225,11 +8225,11 @@ msgstr "Гарчиг|Энгийн амьдрах чадвар"
 msgid "Title|Strategy Properties"
 msgstr "Гарчиг|Стратегийн шинж чанарууд"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressCommentsSubPanel.java:42
+#: Miradi/source/org/miradi/dialogs/stress/StressCommentsSubPanel.java:41
 msgid "Title|Stress Comments"
 msgstr "Гарчиг|Дарамтын тайлбар"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:76
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:75
 msgid "Title|Stress Details"
 msgstr "Гарчиг|Дарамтын дэлгэрэнгүй тайлбарууд"
 
@@ -8241,11 +8241,11 @@ msgstr "Гарчиг|Дарамтын шинж чанарууд"
 msgid "Title|Stress Visibility"
 msgstr "Гарчиг|Дарамтын илрэх байдал"
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:69
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:68
 msgid "Title|Stress-Based Threat Rating"
 msgstr "Гарчиг|Дарамтад суурилсан аюул заналын түвшин"
 
-#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:52
+#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:51
 msgid "Title|Tag Properties Panel"
 msgstr "Гарчиг|Тэмдэглэгээний шинж чанарууд"
 
@@ -8265,7 +8265,7 @@ msgstr "Гарчиг|Даалгаврын шинж чанарууд"
 msgid "Title|Team"
 msgstr "Гарчиг|Баг"
 
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:90
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:89
 msgid "Title|Team Properties"
 msgstr "Гарчиг|Багийн шинж чанарууд"
 
