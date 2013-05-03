@@ -1,0 +1,87 @@
+CMP Build Instructions
+January 10, 2007 (kbs)
+
+The following describes how do do a CMP build from within Eclipse.
+The build can be run on either a Windows or Linux computer, and will 
+make not only the client JAR but also the MiradiSetup.exe installer for 
+Windows.
+
+
+PREREQUISITES:
+
+NSIS installer
+ - MS Windows:
+     You can download the latest NSIS from http://nsis.sourceforge.net/Download
+     Current version we are using is 2.17
+
+ - Ubuntu/Debian Linux: 
+     Install the "nsis" package (which is 2.06 in Breezy)
+     
+After you install NSIS, make sure it is in your PATH environment variable. 
+Try running the command 'makensis' from the command line to test this.
+
+The JAVA_HOME environment variable must point to your java JDK.
+
+You will need to restart Eclipse after changing any environment variables.
+
+
+
+BUILDING THE CMP APP:
+
+Open cmp-eam/build/build.xml and then click on External Tools dropdown.
+RunAs 1.Ant Build.
+
+This should build the miradi.jar under the cmp-eam/build/dist directory.
+
+During the build if you have NSIS installed the "check_nsis" will pass
+and it will try to build the windows installer "MiradiSetup.exe".  If you 
+don't have NSIS installed it will skip building the windows installer.
+
+It will also create the following under cmp-eam/build/dist
+    miradi-(date)-(time).jar (e.g. miradi-20060619-0857.jar)
+    miradi.jar (another copy of the jar)
+    MiradiSetup.exe (Windows installer created by NSIS)
+    
+To alert eclipse that these files have changed, do a right-click on the 
+top-level cmp-eam folder and choose "Refresh". The files in the dist folder 
+should now be marked as modified.
+    
+If the build fails, a date/time stamped jar may be left behind in the dist
+directory. Delete it. Diagnostic output may be available in the file
+cmp-eam/build/installer/BuildFiles/bin/output.txt which should never be 
+checked into CVS.
+
+Then check in these two files miradi.jar and MiradiSetup.jar with the comment 
+from the end of the build Console log (e.g.: 2006-06-19 08:57:32).
+
+Note, when you try to check in these files you may get a warning that there is a 
+merging conflict, select the two files and choose "Mark as merged" and then proceed
+with the checkin as normal.
+
+Next you need to highlight all packages in the package Explorer
+I.e. cmp-eam, martus-swing, martus-thirdparty, martus-utils
+and then right click and select Team -> Tag as version
+
+The template for the cmp tag names is
+cmp_DATE_TIME, You can not have spaces or :'s in tag names so I usually do the following
+
+cmp_ (type "cmp_")
+then paste in the date/time stamp from the console output.
+cmp_2006-06-19 08:57:32
+then change the space to a _ and :'s to -'s
+cmp_2006-06-19_08-57-32
+
+and check that in as the Tag for this CMP internal release.
+
+
+PUSHING TO MIRADI.ORG
+
+There is a script to do this from Linux. Bring up a command line console, 
+change to the binaries-miradi/build directory, and give the command:
+
+  sh push.sh
+  
+This will only work if you have rights to login to miradi.org via ssh, and 
+have permission to write files to the testing section of the miradi.org 
+directory. It uses rsync so it is reasonably fast.
+
