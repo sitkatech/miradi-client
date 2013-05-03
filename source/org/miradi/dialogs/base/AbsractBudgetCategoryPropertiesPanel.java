@@ -28,7 +28,5 @@ abstract public class AbsractBudgetCategoryPropertiesPanel extends ObjectDataInp
 	public AbsractBudgetCategoryPropertiesPanel(Project projectToUse, int objectType) throws Exception
 	{
 		super(projectToUse, objectType, new BudgetCategoryPropertiesForm(objectType));
-		
-		updateFieldsFromProject();
 	}
 }
