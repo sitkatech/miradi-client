@@ -22,7 +22,6 @@ package org.miradi.dialogs.subTarget;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.icons.SubTargetIcon;
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objects.SubTarget;
 import org.miradi.project.Project;
@@ -32,7 +31,7 @@ public class SubTargetPropertiesPanel extends ObjectDataInputPanel
 {
 	public SubTargetPropertiesPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, SubTargetSchema.getObjectType(), BaseId.INVALID);
+		super(projectToUse, SubTargetSchema.getObjectType());
 			
 		ObjectDataInputField shortLabelField = createShortStringField(SubTarget.TAG_SHORT_LABEL);
 		ObjectDataInputField labelField = createExpandableField(SubTarget.TAG_LABEL);
