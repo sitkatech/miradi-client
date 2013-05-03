@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-02 15:31-0500\n"
+"POT-Creation-Date: 2013-05-02 16:16-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -4665,7 +4665,7 @@ msgstr "IM Adresse"
 msgid "Label|Methods"
 msgstr "Methoden"
 
-#: Miradi/source/org/miradi/views/summary/SummaryMiradiSharePanel.java:62
+#: Miradi/source/org/miradi/views/summary/SummaryMiradiSharePanel.java:58
 msgid "Label|Miradi Share"
 msgstr ""
 
@@ -5279,6 +5279,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/PreferencesPopupDoer.java:53
 msgid "Miradi Preferences"
+msgstr ""
+
+#: Miradi/source/org/miradi/forms/objects/MiradiShareProjectDataForm.java:45
+msgid "Miradi Share Project Id"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/MainWindowAction.java:143

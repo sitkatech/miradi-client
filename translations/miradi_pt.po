@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-02 15:31-0500\n"
+"POT-Creation-Date: 2013-05-02 16:16-0500\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -4684,7 +4684,7 @@ msgstr "Endereço IM"
 msgid "Label|Methods"
 msgstr "Métodos"
 
-#: Miradi/source/org/miradi/views/summary/SummaryMiradiSharePanel.java:62
+#: Miradi/source/org/miradi/views/summary/SummaryMiradiSharePanel.java:58
 msgid "Label|Miradi Share"
 msgstr ""
 
@@ -5313,6 +5313,10 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/PreferencesPopupDoer.java:53
 msgid "Miradi Preferences"
 msgstr "Preferências de Miradi"
+
+#: Miradi/source/org/miradi/forms/objects/MiradiShareProjectDataForm.java:45
+msgid "Miradi Share Project Id"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/MainWindowAction.java:143
 msgid ""
