@@ -24,7 +24,6 @@ import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.ScopeBox;
 import org.miradi.project.Project;
@@ -39,7 +38,7 @@ public class ScopeBoxPropertiesPanel extends ObjectDataInputPanel
 {
 	public ScopeBoxPropertiesPanel(Project projectToUse, DiagramFactor diagramFactor) throws Exception
 	{
-		super(projectToUse, ObjectType.SCOPE_BOX, diagramFactor.getWrappedId());
+		super(projectToUse, diagramFactor.getWrappedORef());
 
 		setObjectRefs(new ORef[] {diagramFactor.getWrappedORef(), diagramFactor.getRef()});
 
