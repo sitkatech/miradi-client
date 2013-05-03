@@ -28,7 +28,6 @@ import org.miradi.dialogfields.ObjectDataField;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.fieldComponents.PanelTabbedPane;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.utils.ObjectsActionButton;
@@ -37,9 +36,8 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 {
 	public ObjectDataInputPanelWithSections(Project projectToUse, int objectTypeToUse)
 	{
-		this(projectToUse, new ORef(objectTypeToUse, BaseId.INVALID));
+		this(projectToUse, ORef.createInvalidWithType(objectTypeToUse));
 	}
-	
 	
 	public ObjectDataInputPanelWithSections(Project projectToUse, ORef refToUse)
 	{
