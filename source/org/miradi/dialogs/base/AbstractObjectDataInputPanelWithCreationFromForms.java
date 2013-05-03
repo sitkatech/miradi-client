@@ -48,7 +48,16 @@ abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends	
 		setLayout(layout);
 	}
 
-	protected void createFieldsFromForm(FieldPanelSpec form) throws Exception
+	public AbstractObjectDataInputPanelWithCreationFromForms(Project projectToUse, ORef[] orefsToUse, FieldPanelSpec formToUse) throws Exception
+	{
+		this(projectToUse, orefsToUse);
+		
+		createFieldsFromForm(formToUse);
+
+		updateFieldsFromProject();
+	}
+
+	private void createFieldsFromForm(FieldPanelSpec form) throws Exception
 	{
 		for(int row = 0; row < form.getFieldRowCount(); ++row)
 		{
