@@ -22,7 +22,6 @@ package org.miradi.dialogs.summary;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.icons.ProjectResourceIcon;
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
@@ -34,7 +33,7 @@ public class TeamMemberPropertiesPanel extends ObjectDataInputPanel
 {
 	public TeamMemberPropertiesPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, ProjectResourceSchema.getObjectType(), BaseId.INVALID);
+		super(projectToUse, ProjectResourceSchema.getObjectType());
 
 		ObjectDataInputField givenNameField = createMediumStringField(ProjectResource.TAG_GIVEN_NAME);
 		ObjectDataInputField surNameField = createMediumStringField(ProjectResource.TAG_SUR_NAME);

@@ -22,7 +22,6 @@ package org.miradi.dialogs.threatrating.properties;
 import java.awt.Component;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.ids.BaseId;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
@@ -39,7 +38,7 @@ public class StressBasedThreatRatingPropertiesPanel extends ObjectDataInputPanel
 {
 	public StressBasedThreatRatingPropertiesPanel(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
-		super(mainWindowToUse.getProject(), ObjectType.THREAT_STRESS_RATING, BaseId.INVALID);
+		super(mainWindowToUse.getProject(), ObjectType.THREAT_STRESS_RATING);
 		
 		setLayout(new OneColumnGridLayout());
 		

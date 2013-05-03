@@ -23,7 +23,6 @@ import org.miradi.actions.ActionEditTaggedObjectSet;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.icons.TaggedObjectSetIcon;
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.TaggedObjectSet;
@@ -34,7 +33,7 @@ public class TaggedObjectSetPropertiesPanel extends ObjectDataInputPanel
 {
 	public TaggedObjectSetPropertiesPanel(MainWindow mainWindowToUse, ObjectPicker picker) throws Exception
 	{
-		super(mainWindowToUse.getProject(), TaggedObjectSetSchema.getObjectType(), BaseId.INVALID);
+		super(mainWindowToUse.getProject(), TaggedObjectSetSchema.getObjectType());
 			
 		ObjectDataInputField shortLabelField = createStringField(TaggedObjectSet.TAG_SHORT_LABEL, 10);
 		ObjectDataInputField labelField = createExpandableField(TaggedObjectSet.TAG_LABEL);

@@ -159,7 +159,7 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 	{
 		public SimpleObjectDataInputPanel(Project projectToUse, int objectTypeToUse, String titleToUse)
 		{
-			super(projectToUse, objectTypeToUse, BaseId.INVALID);
+			super(projectToUse, objectTypeToUse);
 			title = titleToUse;
 		}
 		
