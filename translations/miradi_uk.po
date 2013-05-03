@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-02 15:31-0500\n"
+"POT-Creation-Date: 2013-05-02 16:16-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -4481,7 +4481,7 @@ msgstr "Label|IM адреса"
 msgid "Label|Methods"
 msgstr "Label|Методи"
 
-#: Miradi/source/org/miradi/views/summary/SummaryMiradiSharePanel.java:62
+#: Miradi/source/org/miradi/views/summary/SummaryMiradiSharePanel.java:58
 msgid "Label|Miradi Share"
 msgstr ""
 
@@ -5097,6 +5097,10 @@ msgstr "Незначна справа - Діюча незначна справа
 
 #: Miradi/source/org/miradi/views/umbrella/PreferencesPopupDoer.java:53
 msgid "Miradi Preferences"
+msgstr ""
+
+#: Miradi/source/org/miradi/forms/objects/MiradiShareProjectDataForm.java:45
+msgid "Miradi Share Project Id"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/MainWindowAction.java:143
