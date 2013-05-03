@@ -70,11 +70,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 	
 	public ObjectDataInputPanel(Project projectToUse, ORef[] orefsToUse, FieldPanelSpec formToUse) throws Exception
 	{
-		this(projectToUse, orefsToUse);
-		
-		createFieldsFromForm(formToUse);
-
-		updateFieldsFromProject();
+		super(projectToUse, orefsToUse, formToUse);
 	}
 	
 	public ObjectDataInputPanel(Project projectToUse, ORef[] orefsToUse)
