@@ -22,7 +22,6 @@ package org.miradi.dialogs.diagram;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.GroupBox;
 import org.miradi.project.Project;
@@ -36,7 +35,7 @@ public class GroupBoxPropertiesPanel extends ObjectDataInputPanel
 {
 	public GroupBoxPropertiesPanel(Project projectToUse, DiagramFactor diagramFactor) throws Exception
 	{
-		super(projectToUse, ObjectType.GROUP_BOX, diagramFactor.getWrappedId());
+		super(projectToUse, diagramFactor.getWrappedORef());
 
 		setObjectRefs(new ORef[] {diagramFactor.getWrappedORef(), diagramFactor.getRef()});
 		
