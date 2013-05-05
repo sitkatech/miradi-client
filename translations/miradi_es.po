@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-03 10:01-0500\n"
+"POT-Creation-Date: 2013-05-03 15:31-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -3371,6 +3371,7 @@ msgstr ""
 msgid "Edit.."
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogfields/TaxonomyEditorPanel.java:43
 #: Miradi/source/org/miradi/dialogs/base/ObjectRefListEditorPanel.java:51
 #: Miradi/source/org/miradi/dialogs/base/CodeListEditorPanel.java:46
 msgid "Editor"
@@ -9796,6 +9797,9 @@ msgid "FieldLabel|21.LegacyTncStrategyRanking|Legacy Tnc Strategy Ranking"
 msgstr "Jerarquización de estrategias de TNC heredadas "
 
 msgid "FieldLabel|21.LeaderResource|Leader"
+msgstr ""
+
+msgid "FieldLabel|21.TaxonomyClassificationContainer|Taxonomies"
 msgstr ""
 
 msgid "FieldLabel|22.Target|Target"
