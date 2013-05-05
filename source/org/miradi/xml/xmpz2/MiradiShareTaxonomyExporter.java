@@ -18,28 +18,32 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.xmpz2.xmpz2schema;
+package org.miradi.xml.xmpz2;
 
-import java.util.Vector;
-
+import org.miradi.objects.BaseObject;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.MiradiShareTaxonomySchema;
 
-public class MiradiShareTaxonomySchemaWriter extends BaseObjectSchemaWriter
+public class MiradiShareTaxonomyExporter extends BaseObjectExporter
 {
-	public MiradiShareTaxonomySchemaWriter(Xmpz2XmlSchemaCreator creatorToUse, BaseObjectSchema baseObjectSchemaToUse)
+	public MiradiShareTaxonomyExporter(Xmpz2XmlWriter writerToUse)
 	{
-		super(creatorToUse, baseObjectSchemaToUse);
+		super(writerToUse, MiradiShareTaxonomySchema.getObjectType());
 	}
 	
 	@Override
-	public Vector<String> createFieldSchemas() throws Exception
+	protected void writeStartElement(BaseObject baseObject) throws Exception
 	{
-		final Vector<String> fieldSchemasAsString = super.createFieldSchemas();
-		fieldSchemasAsString.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createTextAttributeElement(TAXONOMY_CODE));
-		fieldSchemasAsString.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createTaxonomyElementCode(TAXONOMY_TOP_LEVEL_ELEMENT_CODES));
+		String taxonomyCode = baseObject.getData(MiradiShareTaxonomySchema.TAG_TAXONOMY_CODE);
+		getWriter().writeObjectStartElementWithAttribute(baseObject, TAXONOMY_CODE, taxonomyCode);
+	}
+	
+	@Override
+	protected void writeFields(BaseObject baseObject, BaseObjectSchema baseObjectSchema) throws Exception
+	{
+		super.writeFields(baseObject, baseObjectSchema);
 		
-		return fieldSchemasAsString;
+		getWriter().writeTaxonomyElementCodes(TAXONOMY_TOP_LEVEL_ELEMENT_CODES, baseObject.getCodeList(MiradiShareTaxonomySchema.TAG_TAXONOMY_TOP_LEVEL_ELEMENT_CODES));
 	}
 	
 	@Override
@@ -58,11 +62,5 @@ public class MiradiShareTaxonomySchemaWriter extends BaseObjectSchemaWriter
 			return true;
 		
 		return super.shouldOmitField(tag);
-	}
-	
-	@Override
-	protected boolean hasIdAttributeElement()
-	{
-		return false;
 	}
 }

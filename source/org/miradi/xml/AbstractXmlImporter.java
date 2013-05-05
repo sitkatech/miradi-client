@@ -44,6 +44,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.schemas.TaskSchema;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
@@ -201,6 +202,11 @@ abstract public class AbstractXmlImporter
 	{
 		getProject().setObjectData(ref, tag, idList.toString());
 	}
+	
+	public void setData(ORef ref, String tag, CodeList codes) throws Exception
+	{
+		getProject().setObjectData(ref, tag, codes.toString());
+	}
 
 	public String generatePath(String[] pathElements)
 	{
@@ -256,7 +262,7 @@ abstract public class AbstractXmlImporter
 		Node foundNode = getNode(node, element);
 		return getSafeNodeContent(foundNode);
 	}
-
+	
 	public String getSafeNodeContent(Node foundNode)
 	{
 		if (foundNode == null)
@@ -283,6 +289,11 @@ abstract public class AbstractXmlImporter
 	public Node getNode(Node node, String[] xpathExpressions) throws Exception
 	{
 		return (Node) evaluate(node, xpathExpressions, XPathConstants.NODE);
+	}
+	
+	public NodeList getNodes(Node node, String xpathExpression) throws Exception
+	{
+		return getNodes(node, new String[]{xpathExpression, });
 	}
 	
 	public NodeList getNodes(Node node, String[] xpathExpressions) throws Exception

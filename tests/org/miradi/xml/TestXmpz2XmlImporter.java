@@ -69,6 +69,12 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 		super(name);
 	}
 	
+	public void testTaxonomies() throws Exception
+	{
+		getProject().createAndPopulateMiradiShareTaxonomy();
+		validateUsingStringWriter();
+	}
+	
 	public void testTaxonomyAssociations() throws Exception
 	{
 		getProject().populateTaxonomyAssociationsForBaseObjectTypes();

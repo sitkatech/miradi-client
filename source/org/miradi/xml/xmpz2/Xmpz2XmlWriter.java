@@ -38,6 +38,8 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objecthelpers.TaxonomyClassification;
 import org.miradi.objecthelpers.TaxonomyClassificationList;
+import org.miradi.objecthelpers.TaxonomyElement;
+import org.miradi.objecthelpers.TaxonomyElementList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
@@ -364,6 +366,36 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 		writeEndElement(appendChildNameToParentName(PROJECT_SUMMARY, Xenodata.TAG_PROJECT_ID));
 	}
 	
+	public void writeTaxonomyElementList(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, TaxonomyElementList taxonomyElementList) throws Exception
+	{
+		writeStartElement(TAXONOMY_ELEMENTS);
+		for(TaxonomyElement taxonomyElement : taxonomyElementList)
+		{
+			writeTaxonomyElement(taxonomyElement);
+		}
+		writeEndElement(TAXONOMY_ELEMENTS);
+	}
+	
+	private void writeTaxonomyElement(TaxonomyElement taxonomyElement) throws Exception
+	{
+		writeStartElementWithAttribute(TAXONOMY_ELEMENT, TAXONOMY_ELEMENT_CODE, taxonomyElement.getCode());
+		writeElement(TAXONOMY_ELEMENT_LABEL, taxonomyElement.getLabel());
+		writeElement(TAXONOMY_ELEMENT_DESCRIPTION, taxonomyElement.getDescription());
+		writeTaxonomyElementCodes(TAXONOMY_ELEMENT_CHILD_CODES, taxonomyElement.getChildCodes());
+		
+		writeEndElement(TAXONOMY_ELEMENT);
+	}
+	
+	public void writeTaxonomyElementCodes(final String containerElementName, Iterable<String> taxonomyElementCodes) throws Exception
+	{
+		writeStartElement(containerElementName);
+		for(String taxonomyElementCode : taxonomyElementCodes)
+		{
+			writeElement(TAXONOMY_ELEMENT_CODE, taxonomyElementCode);	
+		}
+		writeEndElement(containerElementName);
+	}
+
 	public void writeTaxonomyClassifications(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, TaxonomyClassificationList taxonomyClassificationData) throws Exception
 	{
 		writeStartElement(TAXONOMY_CLASSIFICATION_CONTAINER);

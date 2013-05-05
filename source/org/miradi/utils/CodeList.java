@@ -53,7 +53,12 @@ public class CodeList extends StringList
 	{
 		super(dataToUse);
 	}
-								
+	
+	public static CodeList createWithSingleCode(String code)
+	{
+		return new CodeList(new String[]{code,});
+	}
+
 	public CodeList withoutDuplicates()
 	{
 		CodeList withoutDuplicates = new CodeList();

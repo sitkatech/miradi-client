@@ -58,6 +58,7 @@ import org.miradi.objectdata.RelevancyOverrideSetData;
 import org.miradi.objectdata.SingleLineUserTextData;
 import org.miradi.objectdata.TagListData;
 import org.miradi.objectdata.TaxonomyClassificationListData;
+import org.miradi.objectdata.TaxonomyElementListData;
 import org.miradi.objecthelpers.CodeToChoiceMap;
 import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.CodeToCodeMap;
@@ -68,8 +69,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
-import org.miradi.objecthelpers.TaxonomyClassification;
-import org.miradi.objecthelpers.TaxonomyClassificationList;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.project.ProjectLoader;
@@ -384,14 +383,11 @@ public class ObjectTestCase extends TestCaseWithProject
 		}
 		else if (field instanceof TaxonomyClassificationListData)
 		{
-			TaxonomyClassificationList taxonomyClassificationList = new TaxonomyClassificationList();
-			TaxonomyClassification taxonomyClassification = new TaxonomyClassification();
-			taxonomyClassification.setTaxonomyClassificationCode("RandomCode");
-			taxonomyClassification.addElementCode("elementCode1");
-			taxonomyClassification.addElementCode("elementCode2");
-			taxonomyClassificationList.add(taxonomyClassification);
-			
-			return taxonomyClassificationList.toJsonString();
+			return getProject().createSampleTaxonomyClassificationsList();
+		}
+		else if (field instanceof TaxonomyElementListData)
+		{
+			return getProject().createSampleTaxonomyElementListAsJsonString();
 		}
 		else
 		{

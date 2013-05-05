@@ -49,6 +49,8 @@ import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objecthelpers.TaxonomyClassification;
 import org.miradi.objecthelpers.TaxonomyClassificationList;
+import org.miradi.objecthelpers.TaxonomyElement;
+import org.miradi.objecthelpers.TaxonomyElementList;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objects.AbstractBudgetCategoryObject;
 import org.miradi.objects.AbstractTarget;
@@ -76,6 +78,7 @@ import org.miradi.objects.IucnRedlistSpecies;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.MiradiShareProjectData;
+import org.miradi.objects.MiradiShareTaxonomy;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Organization;
 import org.miradi.objects.OtherNotableSpecies;
@@ -161,6 +164,7 @@ import org.miradi.schemas.IucnRedlistSpeciesSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.MiradiShareProjectDataSchema;
+import org.miradi.schemas.MiradiShareTaxonomySchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.OrganizationSchema;
 import org.miradi.schemas.OtherNotableSpeciesSchema;
@@ -390,6 +394,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return MiradiShareProjectData.find(this, miradiShareProjectDataRef);
 	}
 	
+	public MiradiShareTaxonomy createMiradiShareTaxonomy() throws Exception
+	{
+		ORef miradiShareTaxonomyRef = createObject(MiradiShareTaxonomySchema.getObjectType());
+		return MiradiShareTaxonomy.find(this, miradiShareTaxonomyRef);
+	}
+	
 	public MiradiShareProjectData createAndPopulateMiradiShareProjectData() throws Exception
 	{
 		MiradiShareProjectData miradiShareProjectData = MiradiShareProjectData.find(this, getSingletonObjectRef(MiradiShareProjectDataSchema.getObjectType()));
@@ -398,6 +408,28 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return miradiShareProjectData;
 	}
 	
+	public MiradiShareTaxonomy createAndPopulateMiradiShareTaxonomy() throws Exception
+	{
+		MiradiShareTaxonomy taxonomy = createMiradiShareTaxonomy();
+		taxonomy.setData(MiradiShareTaxonomySchema.TAG_TAXONOMY_CODE, "randomCode");
+		taxonomy.setData(MiradiShareTaxonomySchema.TAG_TAXONOMY_VERSION, "VersionXxx");
+		taxonomy.setData(MiradiShareTaxonomySchema.TAG_TAXONOMY_ELEMENTS, createSampleTaxonomyElementListAsJsonString());
+		taxonomy.setData(MiradiShareTaxonomySchema.TAG_TAXONOMY_TOP_LEVEL_ELEMENT_CODES, CodeList.createWithSingleCode("RandomCodeXxx").toString());
+		
+		return taxonomy;
+	}
+	
+	public String createSampleTaxonomyElementListAsJsonString()
+	{
+		TaxonomyElementList taxonomyElementList = new TaxonomyElementList();
+		TaxonomyElement taxonomyElement1 = new TaxonomyElement("randomCode", new CodeList(new String[]{"1,"}), "Sample Label", "Sample Description");
+		taxonomyElementList.add(taxonomyElement1);
+		TaxonomyElement taxonomyElement2 = new TaxonomyElement("randomCodeX", new CodeList(new String[]{"4,"}), "Random Label", "Random Description");
+		taxonomyElementList.add(taxonomyElement2);
+		
+		return taxonomyElementList.toJsonString();
+	}
+
 	public void populateTaxonomyAssociationsForBaseObjectTypes() throws Exception
 	{
 		HashMap<Integer, String> taxonomyAssociationBaseObjectTypeToPoolMap = Xmpz2XmlExporter.createTaxonomyAssociationBaseObjectTypeToPoolNameMap();
@@ -1783,7 +1815,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createFactorLink(threatRef, strategy.getRef());
 	}
 	
-	private String createSampleTaxonomyClassificationsList()
+	public String createSampleTaxonomyClassificationsList()
 	{
 		TaxonomyClassificationList taxonomyClassificationList = new TaxonomyClassificationList();
 		TaxonomyClassification taxonomyClassification1 = new TaxonomyClassification();

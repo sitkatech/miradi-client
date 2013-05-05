@@ -265,6 +265,11 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 		return addFieldSchema(new FieldSchemaTaxonomyClassifications(tag));
 	}
 	
+	public AbstractFieldSchema createTaxonomyElementList(String tag)
+	{
+		return addFieldSchema(new FieldSchemaTaxonomyElementList(tag));
+	}
+	
 	public void createPseudoFieldSchemaString(final String fieldTag)
 	{
 		addPseudoFieldSchema(new FieldSchemaPseudoStringField(fieldTag));
