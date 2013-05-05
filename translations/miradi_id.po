@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-03 10:01-0500\n"
+"POT-Creation-Date: 2013-05-03 15:31-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -3359,6 +3359,7 @@ msgstr ""
 msgid "Edit.."
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogfields/TaxonomyEditorPanel.java:43
 #: Miradi/source/org/miradi/dialogs/base/ObjectRefListEditorPanel.java:51
 #: Miradi/source/org/miradi/dialogs/base/CodeListEditorPanel.java:46
 msgid "Editor"
@@ -9762,6 +9763,9 @@ msgid "FieldLabel|21.LegacyTncStrategyRanking|Legacy Tnc Strategy Ranking"
 msgstr "Peringkat Strategi TNC Kuno"
 
 msgid "FieldLabel|21.LeaderResource|Leader"
+msgstr ""
+
+msgid "FieldLabel|21.TaxonomyClassificationContainer|Taxonomies"
 msgstr ""
 
 msgid "FieldLabel|22.Target|Target"
