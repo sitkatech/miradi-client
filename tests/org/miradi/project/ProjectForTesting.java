@@ -426,14 +426,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		taxonomyElement1.setCode("randomCode");
 		taxonomyElement1.setChildCodes(new CodeList(new String[]{"1,"}));
 		taxonomyElement1.setLabel("Sample & Label");
-		taxonomyElement1.setDescription("Sample Description");
+		taxonomyElement1.setDescription("Sample >< Description");
 		taxonomyElementList.add(taxonomyElement1);
 		
 		TaxonomyElement taxonomyElement2 = new TaxonomyElement();
 		taxonomyElement2.setCode("randomCodeX");
 		taxonomyElement2.setChildCodes(new CodeList(new String[]{"4,"}));
 		taxonomyElement2.setLabel("Random & Label");
-		taxonomyElement2.setDescription("Random Description");
+		taxonomyElement2.setDescription("Random ><Description");
 		taxonomyElementList.add(taxonomyElement2);
 		
 		return taxonomyElementList.toJsonString();
