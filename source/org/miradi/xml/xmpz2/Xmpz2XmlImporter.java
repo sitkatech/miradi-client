@@ -701,30 +701,27 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		setData(destinationRef, BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER, taxonomyClassificationsList.toJsonString());
 	}
 
-	private Vector<String> getTaxonomyClassificationElementCodes(Node taxonomyClassificationNode) throws Exception
+	private Vector<String> getTaxonomyClassificationElementCodes(Node parentElement) throws Exception
 	{
-		NodeList taxonomyClassificationList = getNodes(taxonomyClassificationNode, new String[]{TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODES, TAXONOMY_ELEMENT_CODE, });
-		Vector<String> taxonomyClassificationElementCodes = new Vector<String>();
-		for (int index = 0; index < taxonomyClassificationList.getLength(); ++index)
-		{
-			Node taxonomyClassificationElementCodeNode = taxonomyClassificationList.item(index);
-			taxonomyClassificationElementCodes.add(taxonomyClassificationElementCodeNode.getTextContent());
-		}
-		
-		return taxonomyClassificationElementCodes;
+		return getTaxonomyElementCodes(parentElement, TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODES);
 	}
-	
+
 	public CodeList importTaxonomyElementCodes(Node parentElement, String containerElementName) throws Exception
 	{
-		CodeList codes = new CodeList();
-		NodeList taxonomyElementNodes = getNodes(parentElement, new String[]{containerElementName, TAXONOMY_ELEMENT_CODE, });
-		for (int index = 0; index < taxonomyElementNodes.getLength(); ++index)
+		return new CodeList(getTaxonomyElementCodes(parentElement, containerElementName));
+	}
+	
+	private Vector<String> getTaxonomyElementCodes(Node parentElement, final String containerElementName) throws Exception
+	{
+		NodeList nodes = getNodes(parentElement, new String[]{containerElementName, TAXONOMY_ELEMENT_CODE, });
+		Vector<String> taxonomyElementCodes = new Vector<String>();
+		for (int index = 0; index < nodes.getLength(); ++index)
 		{
-			Node taxonomyElementCodeNode = taxonomyElementNodes.item(index);
-			codes.add(taxonomyElementCodeNode.getTextContent());
+			Node taxonomyElementCodeNode = nodes.item(index);
+			taxonomyElementCodes.add(taxonomyElementCodeNode.getTextContent());
 		}
 		
-		return codes;
+		return taxonomyElementCodes;
 	}
 
 	@Override
