@@ -28,15 +28,10 @@ public class TaxonomyElement
 {
 	public TaxonomyElement()
 	{
-		this("", new CodeList(), "", "");
-	}
-	
-	public TaxonomyElement(String codeToUse, CodeList childCodesToUse, String labelToUse, String descriptionToUse)
-	{
-		setCode(codeToUse);
-		setChildCodes(childCodesToUse);
-		setLabel(labelToUse);
-		setDescription(descriptionToUse);
+		setCode("");
+		setChildCodes(new CodeList());
+		setLabel("");
+		setDescription("");
 	}
 	
 	public TaxonomyElement(EnhancedJsonObject json) throws Exception
