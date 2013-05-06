@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-06 08:46-0500\n"
+"POT-Creation-Date: 2013-05-06 11:16-0500\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -8144,7 +8144,9 @@ msgid "This person is a coach within the Conservation Coaches Network"
 msgstr "Esta pessoa é um treinador ('coach') do Conservation Coaches Network"
 
 #: Miradi/source/org/miradi/exceptions/XmpzVersionTooOldException.java:30
-msgid "This project cannot be imported because it is in an old data format."
+msgid ""
+"This project cannot be imported because it is in an old data format.\n"
+"Expected schema version: "
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:98
