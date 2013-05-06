@@ -439,7 +439,7 @@ public class EAM
 	{
 		String errorMessage = MiradiStrings.getUnexpectedErrorMessage();
 		if(extraText.length() > 0)
-			errorMessage += StringUtilities.NEW_LINE + extraText;
+			errorMessage += ":" + StringUtilities.NEW_LINE + extraText;
 
 		EAM.errorDialog(errorMessage);
 	}

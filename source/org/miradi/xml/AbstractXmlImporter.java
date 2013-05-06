@@ -85,7 +85,7 @@ abstract public class AbstractXmlImporter
 		
 		if (isUnsupportedOldVersion(nameSpaceUri))
 		{
-			throw new XmpzVersionTooOldException();
+			throw new XmpzVersionTooOldException(getNameSpaceVersion(), getSchemaVersionToImport(nameSpaceUri));
 		}
 		
 		projectAsInputStream.seek(0);

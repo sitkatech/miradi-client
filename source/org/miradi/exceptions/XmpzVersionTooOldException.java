@@ -25,8 +25,10 @@ import org.miradi.main.EAM;
 
 public class XmpzVersionTooOldException extends Exception
 {
-	public XmpzVersionTooOldException()
+	public XmpzVersionTooOldException(String expectedSchemaVersion, String actualSchemaVersion)
 	{
-		super(EAM.text("This project cannot be imported because it is in an old data format."));
+		super(EAM.text("This project cannot be imported because it is in an old data format." +
+					   "\nExpected schema version: " + expectedSchemaVersion + 
+					   "\nVersion being imported:" + actualSchemaVersion));
 	}
 }
