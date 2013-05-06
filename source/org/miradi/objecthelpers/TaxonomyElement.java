@@ -22,6 +22,7 @@ package org.miradi.objecthelpers;
 
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.XmlUtilities2;
 
 public class TaxonomyElement
 {
@@ -32,10 +33,10 @@ public class TaxonomyElement
 	
 	public TaxonomyElement(String codeToUse, CodeList childCodesToUse, String labelToUse, String descriptionToUse)
 	{
-		code = codeToUse;
-		childCodes = childCodesToUse;
-		label = labelToUse;
-		description = descriptionToUse;
+		setCode(codeToUse);
+		setChildCodes(childCodesToUse);
+		setLabel(labelToUse);
+		setDescription(descriptionToUse);
 	}
 	
 	public TaxonomyElement(EnhancedJsonObject json) throws Exception
@@ -91,12 +92,12 @@ public class TaxonomyElement
 	
 	public void setLabel(String labelToUse)
 	{
-		label = labelToUse;
+		label = XmlUtilities2.getXmlEncoded(labelToUse);
 	}
 	
 	public void setDescription(String descriptionToUse)
 	{
-		description = descriptionToUse;
+		description = XmlUtilities2.getXmlEncoded(descriptionToUse);
 	}
 	
 	public void setChildCodes(CodeList childCodesToUse)
