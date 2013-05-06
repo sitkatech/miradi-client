@@ -68,7 +68,7 @@ public class TaxonomyClassificationListData extends ObjectData
 	@Override
 	public int hashCode()
 	{
-		return toString().hashCode();
+		return data.hashCode();
 	}
 	
 	@Override
