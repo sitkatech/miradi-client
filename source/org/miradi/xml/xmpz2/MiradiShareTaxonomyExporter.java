@@ -23,6 +23,7 @@ package org.miradi.xml.xmpz2;
 import org.miradi.objects.BaseObject;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.MiradiShareTaxonomySchema;
+import org.miradi.utils.CodeList;
 
 public class MiradiShareTaxonomyExporter extends BaseObjectExporter
 {
@@ -43,7 +44,8 @@ public class MiradiShareTaxonomyExporter extends BaseObjectExporter
 	{
 		super.writeFields(baseObject, baseObjectSchema);
 		
-		getWriter().writeTaxonomyElementCodes(TAXONOMY_TOP_LEVEL_ELEMENT_CODES, baseObject.getCodeList(MiradiShareTaxonomySchema.TAG_TAXONOMY_TOP_LEVEL_ELEMENT_CODES));
+		final CodeList taxonomyTopLevelElementCodes = baseObject.getCodeList(MiradiShareTaxonomySchema.TAG_TAXONOMY_TOP_LEVEL_ELEMENT_CODES);
+		getWriter().writeTaxonomyElementCodes(TAXONOMY_TOP_LEVEL_ELEMENT_CODES, taxonomyTopLevelElementCodes);
 	}
 	
 	@Override
