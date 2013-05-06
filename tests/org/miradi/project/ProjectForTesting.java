@@ -422,9 +422,18 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public String createSampleTaxonomyElementListAsJsonString()
 	{
 		TaxonomyElementList taxonomyElementList = new TaxonomyElementList();
-		TaxonomyElement taxonomyElement1 = new TaxonomyElement("randomCode", new CodeList(new String[]{"1,"}), "Sample & Label", "Sample Description");
+		TaxonomyElement taxonomyElement1 = new TaxonomyElement();
+		taxonomyElement1.setCode("randomCode");
+		taxonomyElement1.setChildCodes(new CodeList(new String[]{"1,"}));
+		taxonomyElement1.setLabel("Sample & Label");
+		taxonomyElement1.setDescription("Sample Description");
 		taxonomyElementList.add(taxonomyElement1);
-		TaxonomyElement taxonomyElement2 = new TaxonomyElement("randomCodeX", new CodeList(new String[]{"4,"}), "Random & Label", "Random Description");
+		
+		TaxonomyElement taxonomyElement2 = new TaxonomyElement();
+		taxonomyElement2.setCode("randomCodeX");
+		taxonomyElement2.setChildCodes(new CodeList(new String[]{"4,"}));
+		taxonomyElement2.setLabel("Random & Label");
+		taxonomyElement1.setDescription("Random Description");
 		taxonomyElementList.add(taxonomyElement2);
 		
 		return taxonomyElementList.toJsonString();
