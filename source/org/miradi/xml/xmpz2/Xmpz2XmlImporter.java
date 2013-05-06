@@ -717,11 +717,11 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	public CodeList importTaxonomyElementCodes(Node parentElement, String containerElementName) throws Exception
 	{
 		CodeList codes = new CodeList();
-		NodeList taxonomyClassificationList = getNodes(parentElement, new String[]{containerElementName, TAXONOMY_ELEMENT_CODE, });
-		for (int index = 0; index < taxonomyClassificationList.getLength(); ++index)
+		NodeList taxonomyElementNodes = getNodes(parentElement, new String[]{containerElementName, TAXONOMY_ELEMENT_CODE, });
+		for (int index = 0; index < taxonomyElementNodes.getLength(); ++index)
 		{
-			Node taxonomyClassificationElementCodeNode = taxonomyClassificationList.item(index);
-			codes.add(taxonomyClassificationElementCodeNode.getTextContent());
+			Node taxonomyElementCodeNode = taxonomyElementNodes.item(index);
+			codes.add(taxonomyElementCodeNode.getTextContent());
 		}
 		
 		return codes;
