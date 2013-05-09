@@ -20,17 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import java.util.Vector;
-
 import javax.swing.JComponent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.TaxonomyClassification;
 import org.miradi.objecthelpers.TaxonomyClassificationList;
 import org.miradi.objecthelpers.TaxonomyHelper;
+import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
@@ -46,16 +44,15 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 		component.addListSelectionListener(this);
 	}
 	
-
-	//FIXME urgent, getText and setText are still under construction
 	@Override
 	public String getText()
 	{
 		try
 		{
-			final String text = component.getText();
-			CodeList selectedTaxonomyCodes = new CodeList(text);
-			TaxonomyClassificationList taxonomyClassificationList = TaxonomyHelper.createTaxonomyClassificationList(getProject(), getObjectType(), taxonomyAssociationCode, selectedTaxonomyCodes);
+			TaxonomyClassificationList taxonomyClassificationList = new TaxonomyClassificationList();
+			TaxonomyAssociation taxonomyAssociation = TaxonomyHelper.findTaxonomyAssociation(getProject(), taxonomyAssociationCode);
+			CodeList selectedTaxonomyElementCodes = new CodeList(component.getText());
+			taxonomyClassificationList.put(taxonomyAssociation.getTaxonomyCode(), selectedTaxonomyElementCodes);
 
 			return taxonomyClassificationList.toJsonString();
 		}
@@ -71,15 +68,12 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 	{
 		try
 		{
-			CodeList taxonomyCodes = new CodeList();
 			TaxonomyClassificationList taxononyClassificationList = new TaxonomyClassificationList(newValue);
-			for(TaxonomyClassification taxonomyClassification : taxononyClassificationList)
-			{
-				final Vector<String> taxonomyElementCodes = taxonomyClassification.getTaxonomyElementCodes();
-				taxonomyCodes.addAll(new CodeList(taxonomyElementCodes));
-			}
+			TaxonomyAssociation taxonomyAssociation = TaxonomyHelper.findTaxonomyAssociation(getProject(), taxonomyAssociationCode);
+			String taxonomyCode = taxonomyAssociation.getTaxonomyCode();
+			CodeList taxonomyElementCodes = taxononyClassificationList.get(taxonomyCode);
 			
-			component.setText(taxonomyCodes.toString());
+			component.setText(taxonomyElementCodes.toString());
 		}
 		catch (Exception e)
 		{

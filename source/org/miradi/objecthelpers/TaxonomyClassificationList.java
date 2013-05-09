@@ -20,45 +20,54 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objecthelpers;
 
-import java.util.Vector;
+import java.util.HashMap;
+import java.util.Iterator;
 
-import org.json.JSONArray;
-import org.miradi.utils.EnhancedJsonArray;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class TaxonomyClassificationList extends Vector<TaxonomyClassification>
+public class TaxonomyClassificationList extends HashMap<String, CodeList>
 {
 	public TaxonomyClassificationList()
 	{
 		super();
 	}
 
-	public TaxonomyClassificationList(String taxonomyClassificationsAsJsonString) throws Exception
+	public TaxonomyClassificationList(String taxonomyCodeToTaxonomyElementCodesMap) throws Exception
 	{
-		this(new EnhancedJsonObject(taxonomyClassificationsAsJsonString));
+		this(new EnhancedJsonObject(taxonomyCodeToTaxonomyElementCodesMap));
 	}
 	
 	public TaxonomyClassificationList(EnhancedJsonObject json) throws Exception
 	{
-		this();
-		EnhancedJsonArray array = json.optJsonArray(TAG_TAXONOMY_CLASSIFICATION_LIST);
-		for(int index = 0; index < array.length(); ++index)
+		clear();
+		EnhancedJsonObject jsonArray = json.optJson(TAG_TAXONOMY_CODE_TO_TAXONOMY_ELEMENT_CODES_MAP);
+		if(jsonArray == null)
+			jsonArray = new EnhancedJsonObject();
+		
+		Iterator iterator = jsonArray.keys();
+		while (iterator.hasNext())
 		{
-			add(new TaxonomyClassification(array.getJson(index)));
+			String taxonomyCodeAsKey = (String)iterator.next();
+			CodeList taxonomyElementCodes = jsonArray.getCodeList(taxonomyCodeAsKey);
+			put(taxonomyCodeAsKey, taxonomyElementCodes);
 		}
 	}
-
+	
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
-		JSONArray array = new JSONArray();
-		for(TaxonomyClassification taxonomyClassification : this)
+		EnhancedJsonObject jsonArray = new EnhancedJsonObject();
+		
+		Iterator iterator = keySet().iterator();
+		while (iterator.hasNext())
 		{
-			array.put(taxonomyClassification.toJson());
+			String taxonomyCodeAsKey = (String) iterator.next();
+			CodeList taxonomyElementCodes = get(taxonomyCodeAsKey);
+			jsonArray.put(taxonomyCodeAsKey, taxonomyElementCodes.toString());
 		}
 		
-		json.put(TAG_TAXONOMY_CLASSIFICATION_LIST, array);
-
+		json.put(TAG_TAXONOMY_CODE_TO_TAXONOMY_ELEMENT_CODES_MAP, jsonArray);
 		return json;
 	}
 	
@@ -70,5 +79,5 @@ public class TaxonomyClassificationList extends Vector<TaxonomyClassification>
 		return toJson().toString();
 	}
 	
-	public static final String TAG_TAXONOMY_CLASSIFICATION_LIST = "TaxonomyClassificationList";
+	private static final String TAG_TAXONOMY_CODE_TO_TAXONOMY_ELEMENT_CODES_MAP = "TaxonomyCodeToTaxonomyElementCodesMap";
 }
