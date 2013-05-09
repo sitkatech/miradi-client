@@ -20,11 +20,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml;
 
+import java.util.HashMap;
+import java.util.Set;
+import java.util.Vector;
+
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objectpools.TaxonomyAssociationPool;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -39,6 +44,7 @@ import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
+import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
@@ -78,7 +84,15 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	public void testTaxonomyAssociations() throws Exception
 	{
 		getProject().populateTaxonomyAssociationsForBaseObjectTypes();
-		validateUsingStringWriter();
+		ProjectForTesting project = validateUsingStringWriter();
+		HashMap<Integer, String> taxonomyAssociationBaseObjectTypeToPoolMap = Xmpz2XmlExporter.createTaxonomyAssociationBaseObjectTypeToPoolNameMap();
+		Set<Integer> baseObjectTypes = taxonomyAssociationBaseObjectTypeToPoolMap.keySet();
+		for(Integer taxonomyAssociationParentType : baseObjectTypes)
+		{
+			final TaxonomyAssociationPool taxonomyAssociationPool = project.getTaxonomyAssociationPool();
+			Vector<TaxonomyAssociation> taxonomyAssociationsForType = taxonomyAssociationPool.findTaxonomyAssociationsForBaseObjectType(taxonomyAssociationParentType);
+			assertEquals("Incorrect taxonomy associations imported?", 1, taxonomyAssociationsForType.size());
+		}
 	}
 	
 	public void testMiradiShareProjectData() throws Exception

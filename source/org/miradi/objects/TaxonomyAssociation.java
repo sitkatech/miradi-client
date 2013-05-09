@@ -43,6 +43,16 @@ public class TaxonomyAssociation extends BaseObject
 		return getIntegerData(TaxonomyAssociationSchema.TAG_BASE_OBJECT_TYPE);
 	}
 	
+	public String getTaxonomyAssociationCode()
+	{
+		return getData(TaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_CODE);
+	}
+	
+	public String getTaxonomyCode()
+	{
+		return getData(TaxonomyAssociationSchema.TAG_TAXONOMY_CODE);
+	}
+	
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

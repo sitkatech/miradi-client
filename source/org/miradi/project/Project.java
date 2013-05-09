@@ -78,6 +78,7 @@ import org.miradi.objectpools.TableSettingsPool;
 import org.miradi.objectpools.TaggedObjectSetPool;
 import org.miradi.objectpools.TargetPool;
 import org.miradi.objectpools.TaskPool;
+import org.miradi.objectpools.TaxonomyAssociationPool;
 import org.miradi.objectpools.TextBoxPool;
 import org.miradi.objectpools.ThreatReductionResultPool;
 import org.miradi.objectpools.ThreatStressRatingPool;
@@ -123,6 +124,7 @@ import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.schemas.RatingCriterionSchema;
 import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.TaggedObjectSetSchema;
+import org.miradi.schemas.TaxonomyAssociationSchema;
 import org.miradi.schemas.TextBoxSchema;
 import org.miradi.schemas.ThreatRatingCommentsDataSchema;
 import org.miradi.schemas.ThreatStressRatingSchema;
@@ -215,6 +217,11 @@ public class Project
 		return objectManager.getAllDiagramObjectRefs();
 	}
 
+	public TaxonomyAssociationPool getTaxonomyAssociationPool()
+	{
+		return (TaxonomyAssociationPool) getPool(TaxonomyAssociationSchema.getObjectType());
+	}
+	
 	public TaggedObjectSetPool getTaggedObjectSetPool()
 	{
 		return (TaggedObjectSetPool) getPool(TaggedObjectSetSchema.getObjectType());

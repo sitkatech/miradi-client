@@ -20,11 +20,42 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
+import java.util.Vector;
+
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.TaxonomyElement;
+import org.miradi.objecthelpers.TaxonomyElementList;
+
 public class MiradiShareTaxonomyQuestion extends MultipleSelectStaticChoiceQuestion
 {
-	@Override
-	protected ChoiceItem[] createChoices()
+	public MiradiShareTaxonomyQuestion(TaxonomyElementList taxonomyElementListToUse)
 	{
+		super(createTaxonomyChoices(taxonomyElementListToUse));
+	}
+	
+	private static ChoiceItem[] createTaxonomyChoices(TaxonomyElementList taxonomyElementListToUse)
+	{
+		try
+		{
+			return createChoiceItems(taxonomyElementListToUse);
+		}
+		catch (Exception e)
+		{
+			EAM.alertUserOfNonFatalException(e);
+		}
+		
 		return new ChoiceItem[0];
+	}
+
+	private static ChoiceItem[] createChoiceItems(TaxonomyElementList taxonomyElements)
+	{
+		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
+		for (TaxonomyElement taxonomyElement : taxonomyElements)
+		{
+			ChoiceItem choiceItem = new ChoiceItem(taxonomyElement.getCode(), taxonomyElement.getLabel(), taxonomyElement.getDescription());
+			choices.add(choiceItem);
+		}
+		
+		return choices.toArray(new ChoiceItem[0]);
 	}
 }

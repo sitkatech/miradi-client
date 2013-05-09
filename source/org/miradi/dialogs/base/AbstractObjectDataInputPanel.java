@@ -23,6 +23,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.util.HashMap;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
@@ -45,6 +46,7 @@ import org.miradi.dialogfields.CodeListPopupWithDescriptionPanelField;
 import org.miradi.dialogfields.CodeToUserStringMapMultiLineEditor;
 import org.miradi.dialogfields.DropDownChoiceField;
 import org.miradi.dialogfields.EditableCodeListField;
+import org.miradi.dialogfields.ExternalProjectsDisplayField;
 import org.miradi.dialogfields.IndicatorRelevancyOverrideListField;
 import org.miradi.dialogfields.ObjectCheckBoxField;
 import org.miradi.dialogfields.ObjectChoiceField;
@@ -69,12 +71,12 @@ import org.miradi.dialogfields.PopupQuestionEditorField;
 import org.miradi.dialogfields.RadioButtonsField;
 import org.miradi.dialogfields.ReadOnlyCodeListField;
 import org.miradi.dialogfields.SingleCodeEditableField;
+import org.miradi.dialogfields.SingleXenodataProjectIdReadonlyField;
 import org.miradi.dialogfields.StrategyGoalOverrideListField;
 import org.miradi.dialogfields.StrategyObjectiveOverrideListField;
 import org.miradi.dialogfields.StringMapProjectResourceFilterEditorField;
-import org.miradi.dialogfields.SingleXenodataProjectIdReadonlyField;
-import org.miradi.dialogfields.ExternalProjectsDisplayField;
 import org.miradi.dialogfields.TaxonomyEditorField;
+import org.miradi.dialogfields.TaxonomyEditorFieldWithReadonlyChoiceList;
 import org.miradi.dialogfields.WhenEditorField;
 import org.miradi.dialogfields.WhoEditorField;
 import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
@@ -90,7 +92,11 @@ import org.miradi.main.MainWindow;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.TaxonomyElementList;
+import org.miradi.objecthelpers.TaxonomyHelper;
+import org.miradi.objectpools.TaxonomyAssociationPool;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.MiradiShareTaxonomyQuestion;
@@ -650,9 +656,26 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new SingleCodeEditableField(getMainWindow(), getRefForType(objectType), tagToUse, question, 1);
 	}
 	
-	public ObjectDataInputField createTaxonomyEditorField(int objectType)
+	public ObjectDataInputField createTaxonomyEditorField(ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, String taxonomyAssociationCodeToUse)
 	{
-		return new TaxonomyEditorField(getProject(), getRefForType(objectType), new MiradiShareTaxonomyQuestion(), 1);
+		return new TaxonomyEditorField(getProject(), refToUse, tagToUse, questionToUse, taxonomyAssociationCodeToUse);
+	}
+	
+	public HashMap<ObjectDataInputField, String> createTaxonomyEditorFieldsWithReadonlyLists(int objectType) throws Exception
+	{
+		HashMap<ObjectDataInputField, String> fieldsToLabelMapForType = new HashMap<ObjectDataInputField, String>();
+		TaxonomyAssociationPool taxonomyAssociationPool = getProject().getTaxonomyAssociationPool();
+		Vector<TaxonomyAssociation> taxonomyAssociationsForType = taxonomyAssociationPool.findTaxonomyAssociationsForBaseObjectType(objectType);
+		for(TaxonomyAssociation taxonomyAssociation : taxonomyAssociationsForType)
+		{
+			TaxonomyElementList taxonomyElementList = TaxonomyHelper.getTaxonomyElementList(getProject(), taxonomyAssociation);
+			final MiradiShareTaxonomyQuestion miradiShareTaxonomyQuestion = new MiradiShareTaxonomyQuestion(taxonomyElementList);
+			final String taxonomyAssociationCode = taxonomyAssociation.getTaxonomyAssociationCode();
+			final TaxonomyEditorFieldWithReadonlyChoiceList taxonomyEditorField = new TaxonomyEditorFieldWithReadonlyChoiceList(getProject(), getRefForType(objectType), miradiShareTaxonomyQuestion, taxonomyAssociationCode);
+			fieldsToLabelMapForType.put(taxonomyEditorField, taxonomyAssociation.getLabel());
+		}
+		
+		return fieldsToLabelMapForType;
 	}
 	
 	public ObjectDataInputField createReadOnlyChoiceField(String tagToUse, ChoiceQuestion question)

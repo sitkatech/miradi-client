@@ -20,26 +20,32 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.main.EAM;
+import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 
-public class TaxonomyEditorPanel extends ObjectDataInputPanel
+public class TaxonomyEditorFieldWithReadonlyChoiceList extends AbstractEditableCodeListField
 {
-	public TaxonomyEditorPanel(Project projectToUse, ORef orefToUse, String tagToUse, ChoiceQuestion question, String taxonomyAssociationCodeToUse)
+	public TaxonomyEditorFieldWithReadonlyChoiceList(Project projectToUse, ORef refToUse, ChoiceQuestion questionToUse, String taxonomyAssociationCodeToUse)
 	{
-		super(projectToUse, orefToUse);
+		super(projectToUse, refToUse, BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER, questionToUse, 1);
 		
-		addField(createTaxonomyEditorField(orefToUse, tagToUse, question, taxonomyAssociationCodeToUse));
-		
-		updateFieldsFromProject();
+		taxonomyAssociationCode = taxonomyAssociationCodeToUse;
 	}
 
 	@Override
-	public String getPanelDescription()
+	public DisposablePanel createEditorPanel() throws Exception
 	{
-		return EAM.text("Editor");
+		return new TaxonomyEditorPanel(getProject(), getORef(), getTag(), getQuestion(), taxonomyAssociationCode);
 	}
+
+	@Override
+	public AbstractReadonlyChoiceComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)
+	{
+		return new ReadonlyMultiChoiceComponent(questionToUse, columnCount);
+	}
+	
+	private String taxonomyAssociationCode;
 }
