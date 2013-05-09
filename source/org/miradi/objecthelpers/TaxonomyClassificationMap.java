@@ -26,19 +26,19 @@ import java.util.Iterator;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class TaxonomyClassificationList extends HashMap<String, CodeList>
+public class TaxonomyClassificationMap extends HashMap<String, CodeList>
 {
-	public TaxonomyClassificationList()
+	public TaxonomyClassificationMap()
 	{
 		super();
 	}
 
-	public TaxonomyClassificationList(String taxonomyCodeToTaxonomyElementCodesMap) throws Exception
+	public TaxonomyClassificationMap(String taxonomyCodeToTaxonomyElementCodesMap) throws Exception
 	{
 		this(new EnhancedJsonObject(taxonomyCodeToTaxonomyElementCodesMap));
 	}
 	
-	public TaxonomyClassificationList(EnhancedJsonObject json) throws Exception
+	public TaxonomyClassificationMap(EnhancedJsonObject json) throws Exception
 	{
 		clear();
 		EnhancedJsonObject jsonArray = json.optJson(TAG_TAXONOMY_CODE_TO_TAXONOMY_ELEMENT_CODES_MAP);

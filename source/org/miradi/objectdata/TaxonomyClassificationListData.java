@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objectdata;
 
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.TaxonomyClassificationList;
+import org.miradi.objecthelpers.TaxonomyClassificationMap;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
@@ -35,7 +35,7 @@ public class TaxonomyClassificationListData extends ObjectData
 	{
 		super(tagToUse);
 		
-		data = new TaxonomyClassificationList();
+		data = new TaxonomyClassificationMap();
 	}
 
 	@Override
@@ -44,7 +44,7 @@ public class TaxonomyClassificationListData extends ObjectData
 		return getTaxonomyClassifications().toJsonString();
 	}
 	
-	public TaxonomyClassificationList getTaxonomyClassifications()
+	public TaxonomyClassificationMap getTaxonomyClassifications()
 	{
 		return data;
 	}
@@ -52,7 +52,7 @@ public class TaxonomyClassificationListData extends ObjectData
 	@Override
 	public void set(String newValue) throws Exception
 	{
-		data = new TaxonomyClassificationList(newValue);
+		data = new TaxonomyClassificationMap(newValue);
 	}
 
 	@Override
@@ -89,5 +89,5 @@ public class TaxonomyClassificationListData extends ObjectData
 		return creator.getSchemaWriter().createOptionalDotElement(fieldSchema.getXmpz2ElementName());
 	}
 	
-	private TaxonomyClassificationList data;
+	private TaxonomyClassificationMap data;
 }

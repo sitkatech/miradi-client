@@ -36,7 +36,7 @@ import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.TaxonomyClassificationList;
+import org.miradi.objecthelpers.TaxonomyClassificationMap;
 import org.miradi.objecthelpers.TaxonomyElement;
 import org.miradi.objecthelpers.TaxonomyElementList;
 import org.miradi.objectpools.BaseObjectPool;
@@ -685,7 +685,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 			return;
 		
 		NodeList taxonomyClassificationNodeList = getNodes(taxonomyClassifcationContainerNode, new String[]{TAXONOMY_CLASSIFICATION, });
-		TaxonomyClassificationList taxonomyClassificationsList = new TaxonomyClassificationList();
+		TaxonomyClassificationMap taxonomyClassificationsList = new TaxonomyClassificationMap();
 		for (int index = 0; index < taxonomyClassificationNodeList.getLength(); ++index)
 		{
 			Node taxonomyClassificationNode = taxonomyClassificationNodeList.item(index);
