@@ -36,7 +36,6 @@ import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.TaxonomyClassification;
 import org.miradi.objecthelpers.TaxonomyClassificationList;
 import org.miradi.objecthelpers.TaxonomyElement;
 import org.miradi.objecthelpers.TaxonomyElementList;
@@ -690,12 +689,10 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		for (int index = 0; index < taxonomyClassificationNodeList.getLength(); ++index)
 		{
 			Node taxonomyClassificationNode = taxonomyClassificationNodeList.item(index);
-			TaxonomyClassification taxonomyClassification = new TaxonomyClassification();
-			Node taxononomyClassificationCodeNode = getNode(taxonomyClassificationNode, TAXONOMY_CLASSIFICATION_TAXONOMY_CODE);
-			taxonomyClassification.setTaxonomyClassificationCode(taxononomyClassificationCodeNode.getTextContent());
-			taxonomyClassification.addAllElementCodes(getTaxonomyElementCodes(taxonomyClassificationNode, TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODES));
-			
-			taxonomyClassificationsList.add(taxonomyClassification);
+			Node taxononomyClassificationTaxonomyCodeNode = getNode(taxonomyClassificationNode, TAXONOMY_CLASSIFICATION_TAXONOMY_CODE);
+			final String taxonomyCode = taxononomyClassificationTaxonomyCodeNode.getTextContent();
+			final Vector<String> taxonomyElementCodes = getTaxonomyElementCodes(taxonomyClassificationNode, TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODES);
+			taxonomyClassificationsList.put(taxonomyCode, new CodeList(taxonomyElementCodes));
 		}
 
 		setData(destinationRef, BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER, taxonomyClassificationsList.toJsonString());

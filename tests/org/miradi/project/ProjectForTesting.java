@@ -47,7 +47,6 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.StringRefMap;
-import org.miradi.objecthelpers.TaxonomyClassification;
 import org.miradi.objecthelpers.TaxonomyClassificationList;
 import org.miradi.objecthelpers.TaxonomyElement;
 import org.miradi.objecthelpers.TaxonomyElementList;
@@ -1827,17 +1826,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public String createSampleTaxonomyClassificationsList()
 	{
 		TaxonomyClassificationList taxonomyClassificationList = new TaxonomyClassificationList();
-		TaxonomyClassification taxonomyClassification1 = new TaxonomyClassification();
-		taxonomyClassification1.setTaxonomyClassificationCode("randomCode1");
-		taxonomyClassification1.addElementCode("randomElementCode1");
-		taxonomyClassification1.addElementCode("randomElementCode2");
-		taxonomyClassificationList.add(taxonomyClassification1);
-		
-		TaxonomyClassification taxonomyClassification2 = new TaxonomyClassification();
-		taxonomyClassification2.setTaxonomyClassificationCode("randomCode2");
-		taxonomyClassification2.addElementCode("randomElementCode1");
-		taxonomyClassification2.addElementCode("randomElementCode2");
-		taxonomyClassificationList.add(taxonomyClassification2);
+		taxonomyClassificationList.put("randomTaxonomyCode1", createSampleFreshwaterEcoregionsCodeList());
+		taxonomyClassificationList.put("randomTaxonomyCode2", createSampleMarineEcoregionsCodeList());
 		
 		return taxonomyClassificationList.toJsonString();
 	}

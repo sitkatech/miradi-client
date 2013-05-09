@@ -26,22 +26,9 @@ import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.project.Project;
 import org.miradi.schemas.MiradiShareTaxonomySchema;
 import org.miradi.schemas.TaxonomyAssociationSchema;
-import org.miradi.utils.CodeList;
 
 public class TaxonomyHelper
 {
-	public static TaxonomyClassificationList createTaxonomyClassificationList(Project project, int objectType, String taxonomyAssociationCode, CodeList taxonomyElementCodes)
-	{
-		TaxonomyClassificationList taxonomyClassificationList = new TaxonomyClassificationList();
-		TaxonomyClassification taxonomyClassification = new TaxonomyClassification();
-		TaxonomyAssociation taxonomyAssociation = findTaxonomyAssociation(project, taxonomyAssociationCode);
-		taxonomyClassification.setTaxonomyClassificationCode(taxonomyAssociation.getTaxonomyCode());
-		taxonomyClassification.addAllElementCodes(taxonomyElementCodes.toVector());
-		taxonomyClassificationList.add(taxonomyClassification);
-
-		return taxonomyClassificationList;
-	}
-	
 	public static TaxonomyAssociation findTaxonomyAssociation(Project project, String taxonomyAssociationCode)
 	{
 		TaxonomyAssociationPool taxonomyAssociationPool = project.getTaxonomyAssociationPool();
@@ -54,20 +41,6 @@ public class TaxonomyHelper
 		}
 
 		return null;
-	}
-	
-	public static TaxonomyClassificationList convertToTaxonomyClassificationList(TaxonomyElementList taxonomyElementList)
-	{
-		TaxonomyClassificationList taxonomyClassificationList = new TaxonomyClassificationList();
-		for (TaxonomyElement taxonomyElement : taxonomyElementList)
-		{
-			TaxonomyClassification taxonomyClassification = new TaxonomyClassification();
-			taxonomyClassification.addElementCode(taxonomyElement.getCode());
-			
-			taxonomyClassificationList.add(taxonomyClassification);
-		}
-		
-		return taxonomyClassificationList;
 	}
 	
 	public static TaxonomyElementList getTaxonomyElementList(Project projectToUse, final TaxonomyAssociation taxonomyAssociation) throws Exception

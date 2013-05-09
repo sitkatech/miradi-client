@@ -36,7 +36,6 @@ import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.StringRefMap;
-import org.miradi.objecthelpers.TaxonomyClassification;
 import org.miradi.objecthelpers.TaxonomyClassificationList;
 import org.miradi.objecthelpers.TaxonomyElement;
 import org.miradi.objecthelpers.TaxonomyElementList;
@@ -399,20 +398,21 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	public void writeTaxonomyClassifications(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, TaxonomyClassificationList taxonomyClassificationData) throws Exception
 	{
 		writeStartElement(TAXONOMY_CLASSIFICATION_CONTAINER);
-		
-		for(TaxonomyClassification taxonomyClassification : taxonomyClassificationData)
+		Set<String> taxonomyCodes = taxonomyClassificationData.keySet();
+		for(String taxonomyCode : taxonomyCodes)
 		{
-			writeTaxonomyClassification(taxonomyClassification);
+			CodeList taxonomyElementCodes = taxonomyClassificationData.get(taxonomyCode);
+			writeTaxonomyClassification(taxonomyCode, taxonomyElementCodes.toVector());
 		}
 		
 		writeEndElement(TAXONOMY_CLASSIFICATION_CONTAINER);
 	}
 
-	private void writeTaxonomyClassification(TaxonomyClassification taxonomyClassification) throws Exception
+	private void writeTaxonomyClassification(String taxonomyCode, Vector<String> taxonomyElementCodes) throws Exception
 	{
 		writeStartElement(TAXONOMY_CLASSIFICATION);
-		writeElement(TAXONOMY_CLASSIFICATION_TAXONOMY_CODE, taxonomyClassification.getTaxonomyClassificationCode());
-		writeTaxonomyElements(taxonomyClassification.getTaxonomyElementCodes());
+		writeElement(TAXONOMY_CLASSIFICATION_TAXONOMY_CODE, taxonomyCode);
+		writeTaxonomyElements(taxonomyElementCodes);
 		writeEndElement(TAXONOMY_CLASSIFICATION);
 	}
 
