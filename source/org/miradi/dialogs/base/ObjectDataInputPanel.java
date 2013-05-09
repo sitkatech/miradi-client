@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base;
 
+import java.util.HashMap;
+import java.util.Set;
 import java.util.Vector;
 
 import javax.swing.Box;
@@ -37,6 +39,7 @@ import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.icons.QuestionMarkIcon;
+import org.miradi.layout.OneColumnPanel;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.objecthelpers.ORef;
@@ -172,6 +175,23 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 		return field;
 	}
 	
+	protected void addFields(HashMap<ObjectDataInputField, String> fieldsToLabelMap)
+	{
+		JPanel fieldPanel = new OneColumnPanel();
+		Set<ObjectDataInputField> fields = fieldsToLabelMap.keySet();
+		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		for(ObjectDataInputField field : fields)
+		{
+			addFieldToList(field);
+			fieldPanel.add(new PanelTitleLabel(fieldsToLabelMap.get(field)));
+			fieldPanel.add(field.getComponent());
+			fieldPanel.add(new JLabel(" "));
+		}
+		
+		add(fieldPanel);
+		add(new FillerLabel());
+	}
+	
 	protected void addFieldsOnOneLine(String translatedString, Icon icon, ObjectDataInputField[] fields)
 	{
 		JPanel fieldPanel = createFieldPanel(fields);		
@@ -224,8 +244,14 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 	
 	private JPanel createFieldPanel(ObjectDataInputField[] fields)
 	{
-		OneRowPanel fieldPanel = new OneRowPanel();
+		final OneRowPanel fieldPanel = new OneRowPanel();
 		fieldPanel.setGaps(3);
+		
+		return createFieldPanel(fieldPanel, fields);
+	}
+
+	private JPanel createFieldPanel(JPanel fieldPanel, ObjectDataInputField[] fields)
+	{
 		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		for(int i = 0; i < fields.length; ++i)
 		{

@@ -22,6 +22,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.TaxonomyElementList;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.MiradiShareTaxonomySchema;
@@ -36,6 +37,11 @@ public class MiradiShareTaxonomy extends BaseObject
 	public static MiradiShareTaxonomySchema createSchema()
 	{
 		return new MiradiShareTaxonomySchema();
+	}
+	
+	public TaxonomyElementList getTaxonomyElements() throws Exception
+	{
+		return new TaxonomyElementList(getData(MiradiShareTaxonomySchema.TAG_TAXONOMY_ELEMENTS));
 	}
 	
 	@Override

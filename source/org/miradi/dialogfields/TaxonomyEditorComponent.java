@@ -20,28 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import org.miradi.dialogs.base.DisposablePanel;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.BaseObject;
-import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 
-public class TaxonomyEditorField extends AbstractEditableCodeListField
+public class TaxonomyEditorComponent extends QuestionBasedEditorComponent
 {
-	public TaxonomyEditorField(Project projectToUse, ORef refToUse,	ChoiceQuestion questionToUse, int columnCount)
+	public TaxonomyEditorComponent(ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, refToUse, BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER, questionToUse, columnCount);
-	}
-
-	@Override
-	public DisposablePanel createEditorPanel() throws Exception
-	{
-		return new TaxonomyEditorPanel(getProject(), getORef(), getTag(), getQuestion());
-	}
-
-	@Override
-	public AbstractReadonlyChoiceComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)
-	{
-		return new ReadonlyMultiChoiceComponent(questionToUse, columnCount);
+		super(questionToUse, 1);
 	}
 }
