@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-06 11:16-0500\n"
+"POT-Creation-Date: 2013-05-09 15:31-0500\n"
 "PO-Revision-Date: 2013-04-02 10:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -4256,7 +4256,7 @@ msgstr ""
 msgid "Importing Miradi Data..."
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:141
+#: Miradi/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:140
 #: Miradi/source/org/miradi/xml/xmpz/XmpzXmlImporter.java:112
 msgid "Importing XML..."
 msgstr ""
@@ -6706,7 +6706,7 @@ msgstr "Forte augmentation"
 #: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:113
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:153
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:66
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:137
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:139
 msgid "Summary"
 msgstr "Résumé"
 
@@ -7652,7 +7652,7 @@ msgstr "Etiquette"
 msgid "Tagged Items"
 msgstr "Éléments étiquettés"
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:116
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:118
 msgid "Tags"
 msgstr "Etiquettes"
 
@@ -9041,7 +9041,7 @@ msgstr "[NON SPÉCIFIÉ]"
 msgid "[New Results Chain]"
 msgstr "[Nouvelle chaîne de résultats]"
 
-#: Miradi/source/org/miradi/project/Project.java:962
+#: Miradi/source/org/miradi/project/Project.java:969
 msgid "[No Project]"
 msgstr "[Aucun projet]"
 
