@@ -36,7 +36,7 @@ import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.StringRefMap;
-import org.miradi.objecthelpers.TaxonomyClassificationList;
+import org.miradi.objecthelpers.TaxonomyClassificationMap;
 import org.miradi.objecthelpers.TaxonomyElement;
 import org.miradi.objecthelpers.TaxonomyElementList;
 import org.miradi.objects.BaseObject;
@@ -395,7 +395,7 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 		writeEndElement(containerElementName);
 	}
 
-	public void writeTaxonomyClassifications(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, TaxonomyClassificationList taxonomyClassificationData) throws Exception
+	public void writeTaxonomyClassifications(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, TaxonomyClassificationMap taxonomyClassificationData) throws Exception
 	{
 		writeStartElement(TAXONOMY_CLASSIFICATION_CONTAINER);
 		Set<String> taxonomyCodes = taxonomyClassificationData.keySet();

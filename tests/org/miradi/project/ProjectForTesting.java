@@ -47,7 +47,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.StringRefMap;
-import org.miradi.objecthelpers.TaxonomyClassificationList;
+import org.miradi.objecthelpers.TaxonomyClassificationMap;
 import org.miradi.objecthelpers.TaxonomyElement;
 import org.miradi.objecthelpers.TaxonomyElementList;
 import org.miradi.objecthelpers.TimePeriodCosts;
@@ -1825,7 +1825,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public String createSampleTaxonomyClassificationsList()
 	{
-		TaxonomyClassificationList taxonomyClassificationList = new TaxonomyClassificationList();
+		TaxonomyClassificationMap taxonomyClassificationList = new TaxonomyClassificationMap();
 		taxonomyClassificationList.put("randomTaxonomyCode1", createSampleFreshwaterEcoregionsCodeList());
 		taxonomyClassificationList.put("randomTaxonomyCode2", createSampleMarineEcoregionsCodeList());
 		

@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.schemas;
 
 import org.miradi.objectdata.ObjectData;
-import org.miradi.objectdata.TaxonomyClassificationListData;
+import org.miradi.objectdata.TaxonomyClassificationMapData;
 import org.miradi.objects.BaseObject;
 
 public class FieldSchemaTaxonomyClassifications extends AbstractFieldSchema
@@ -34,6 +34,6 @@ public class FieldSchemaTaxonomyClassifications extends AbstractFieldSchema
 	@Override
 	public ObjectData createField(BaseObject baseObjectToUse)
 	{
-		return new TaxonomyClassificationListData(getTag());
+		return new TaxonomyClassificationMapData(getTag());
 	}
 }

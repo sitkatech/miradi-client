@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objectdata;
 
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.TaxonomyClassificationList;
+import org.miradi.objecthelpers.TaxonomyClassificationMap;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
@@ -29,13 +29,13 @@ import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2XmlSchemaCreator;
 import org.w3c.dom.Node;
 
-public class TaxonomyClassificationListData extends ObjectData
+public class TaxonomyClassificationMapData extends ObjectData
 {
-	public TaxonomyClassificationListData(String tagToUse)
+	public TaxonomyClassificationMapData(String tagToUse)
 	{
 		super(tagToUse);
 		
-		data = new TaxonomyClassificationList();
+		data = new TaxonomyClassificationMap();
 	}
 
 	@Override
@@ -44,7 +44,7 @@ public class TaxonomyClassificationListData extends ObjectData
 		return getTaxonomyClassifications().toJsonString();
 	}
 	
-	public TaxonomyClassificationList getTaxonomyClassifications()
+	public TaxonomyClassificationMap getTaxonomyClassifications()
 	{
 		return data;
 	}
@@ -52,16 +52,16 @@ public class TaxonomyClassificationListData extends ObjectData
 	@Override
 	public void set(String newValue) throws Exception
 	{
-		data = new TaxonomyClassificationList(newValue);
+		data = new TaxonomyClassificationMap(newValue);
 	}
 
 	@Override
 	public boolean equals(Object rawOther)
 	{
-		if(!(rawOther instanceof TaxonomyClassificationListData))
+		if(!(rawOther instanceof TaxonomyClassificationMapData))
 			return false;
 
-		TaxonomyClassificationListData other = (TaxonomyClassificationListData) rawOther;
+		TaxonomyClassificationMapData other = (TaxonomyClassificationMapData) rawOther;
 		return other.data.equals(data);
 	}
 
@@ -89,5 +89,5 @@ public class TaxonomyClassificationListData extends ObjectData
 		return creator.getSchemaWriter().createOptionalDotElement(fieldSchema.getXmpz2ElementName());
 	}
 	
-	private TaxonomyClassificationList data;
+	private TaxonomyClassificationMap data;
 }
