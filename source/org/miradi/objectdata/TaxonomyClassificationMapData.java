@@ -29,9 +29,9 @@ import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2XmlSchemaCreator;
 import org.w3c.dom.Node;
 
-public class TaxonomyClassificationListData extends ObjectData
+public class TaxonomyClassificationMapData extends ObjectData
 {
-	public TaxonomyClassificationListData(String tagToUse)
+	public TaxonomyClassificationMapData(String tagToUse)
 	{
 		super(tagToUse);
 		
@@ -58,10 +58,10 @@ public class TaxonomyClassificationListData extends ObjectData
 	@Override
 	public boolean equals(Object rawOther)
 	{
-		if(!(rawOther instanceof TaxonomyClassificationListData))
+		if(!(rawOther instanceof TaxonomyClassificationMapData))
 			return false;
 
-		TaxonomyClassificationListData other = (TaxonomyClassificationListData) rawOther;
+		TaxonomyClassificationMapData other = (TaxonomyClassificationMapData) rawOther;
 		return other.data.equals(data);
 	}
 
