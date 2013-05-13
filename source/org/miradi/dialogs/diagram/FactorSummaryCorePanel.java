@@ -94,8 +94,7 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 			addLabeledSubPanelWithoutBorder(new LegacyTncStrategyRankingEditorPropertiesSubPanel(getProject(), factorToEdit.getRef(), actions), EAM.text("Legacy TNC Ratings"));
 			addFieldWithEditButton(EAM.text("Objectives"), createReadOnlyObjectList(StrategySchema.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyObjectiveRelevancyList.class), getPicker()));
 			addFieldWithEditButton(EAM.text("Goals"), createReadOnlyObjectList(StrategySchema.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_GOAL_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyGoalRelevancyList.class), getPicker()));
-			//FIXME urgent - uncomment when taxonomy fields are working
-			//addFields(createTaxonomyEditorFieldsWithReadonlyLists(StrategySchema.getObjectType()));
+			addFields(createTaxonomyEditorFieldsWithReadonlyLists(StrategySchema.getObjectType()));
 		}
 
 		if(factorToEdit.isTarget())

@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Set;
 import java.util.Vector;
 
@@ -175,7 +175,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 		return field;
 	}
 	
-	protected void addFields(HashMap<ObjectDataInputField, String> fieldsToLabelMap)
+	protected void addFields(LinkedHashMap<ObjectDataInputField, String> fieldsToLabelMap)
 	{
 		JPanel fieldPanel = new OneColumnPanel();
 		Set<ObjectDataInputField> fields = fieldsToLabelMap.keySet();

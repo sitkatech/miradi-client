@@ -28,6 +28,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.TaxonomyClassificationMap;
 import org.miradi.objecthelpers.TaxonomyHelper;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
@@ -49,7 +50,8 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 	{
 		try
 		{
-			TaxonomyClassificationMap taxonomyClassificationList = new TaxonomyClassificationMap();
+			BaseObject baseObject = BaseObject.find(getProject(), getORef());
+			TaxonomyClassificationMap taxonomyClassificationList = new TaxonomyClassificationMap(baseObject.getData(BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER));
 			TaxonomyAssociation taxonomyAssociation = TaxonomyHelper.findTaxonomyAssociation(getProject(), taxonomyAssociationCode);
 			CodeList selectedTaxonomyElementCodes = new CodeList(component.getText());
 			taxonomyClassificationList.put(taxonomyAssociation.getTaxonomyCode(), selectedTaxonomyElementCodes);
@@ -66,13 +68,10 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 	@Override
 	public void setText(String newValue)
 	{
+		System.out.println("herererer setText");
 		try
 		{
-			TaxonomyClassificationMap taxononyClassificationList = new TaxonomyClassificationMap(newValue);
-			TaxonomyAssociation taxonomyAssociation = TaxonomyHelper.findTaxonomyAssociation(getProject(), taxonomyAssociationCode);
-			String taxonomyCode = taxonomyAssociation.getTaxonomyCode();
-			CodeList taxonomyElementCodes = taxononyClassificationList.get(taxonomyCode);
-			
+			CodeList taxonomyElementCodes = TaxonomyHelper.getTaxonomyElementCodes(getProject(), new TaxonomyClassificationMap(newValue), taxonomyAssociationCode);
 			component.setText(taxonomyElementCodes.toString());
 		}
 		catch (Exception e)

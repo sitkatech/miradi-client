@@ -153,6 +153,11 @@ public class StringList implements Iterable<String>
 	@Override
 	public String toString()
 	{
+		return toJsonString();
+	}
+
+	public String toJsonString()
+	{
 		if(size() == 0)
 			return "";
 		return toJson().toString();
