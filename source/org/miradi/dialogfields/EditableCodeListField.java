@@ -27,9 +27,9 @@ import org.miradi.questions.ChoiceQuestion;
 
 public class EditableCodeListField extends AbstractEditableCodeListField
 {
-	public EditableCodeListField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, int columnCount)
+	public EditableCodeListField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, refToUse, tagToUse, questionToUse, columnCount);		
+		super(projectToUse, refToUse, tagToUse, questionToUse);		
 	}
 	
 	@Override

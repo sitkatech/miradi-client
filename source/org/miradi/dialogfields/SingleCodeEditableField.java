@@ -34,9 +34,9 @@ import org.miradi.questions.ChoiceQuestion;
 
 public class SingleCodeEditableField extends AbstractEditableCodeListField
 {
-	public SingleCodeEditableField(MainWindow mainWindowToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, int columnCount)
+	public SingleCodeEditableField(MainWindow mainWindowToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		super(mainWindowToUse.getProject(), refToUse, tagToUse, questionToUse, columnCount);
+		super(mainWindowToUse.getProject(), refToUse, tagToUse, questionToUse);
 		
 		mainWindow = mainWindowToUse;
 	}

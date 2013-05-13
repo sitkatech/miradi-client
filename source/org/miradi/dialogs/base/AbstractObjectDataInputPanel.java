@@ -562,17 +562,17 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 
 	public ObjectDataInputField createSingleColumnCodeListField(int objectType, String tagToUse, ChoiceQuestion question)
 	{
-		return createEditableCodeListField(objectType, tagToUse, question, 1);
+		return createEditableCodeListField(objectType, tagToUse, question);
 	}
 	
-	public ObjectDataInputField createEditableCodeListField(int objectType, String tagToUse, ChoiceQuestion question, int columnCount)
+	public ObjectDataInputField createEditableCodeListField(int objectType, String tagToUse, ChoiceQuestion question)
 	{
-		return new EditableCodeListField(project, getRefForType(objectType), tagToUse, question, columnCount);
+		return new EditableCodeListField(project, getRefForType(objectType), tagToUse, question);
 	}
 	
-	public ObjectDataInputField createEditableCodeListField(String tagToUse, ChoiceQuestion question, int columnCount)
+	public ObjectDataInputField createEditableCodeListField(String tagToUse, ChoiceQuestion question)
 	{
-		return new EditableCodeListField(project, getFirstSelectedRef(), tagToUse, question, columnCount);
+		return new EditableCodeListField(project, getFirstSelectedRef(), tagToUse, question);
 	}
 	
 	public ObjectDataInputField createReadOnlyCodeListField(int objctType, String tagToUse, ChoiceQuestion question)
@@ -655,7 +655,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createRadioButtonEditorField(int objectType, String tagToUse, ChoiceQuestion question)
 	{
-		return new SingleCodeEditableField(getMainWindow(), getRefForType(objectType), tagToUse, question, 1);
+		return new SingleCodeEditableField(getMainWindow(), getRefForType(objectType), tagToUse, question);
 	}
 	
 	public ObjectDataInputField createTaxonomyEditorField(ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, String taxonomyAssociationCodeToUse)

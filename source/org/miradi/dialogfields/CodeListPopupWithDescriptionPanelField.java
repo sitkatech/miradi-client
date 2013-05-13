@@ -31,7 +31,7 @@ public class CodeListPopupWithDescriptionPanelField extends	AbstractEditableCode
 {
 	public CodeListPopupWithDescriptionPanelField(MainWindow mainWindowToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		super(mainWindowToUse.getProject(), refToUse, tagToUse, questionToUse, 1);
+		super(mainWindowToUse.getProject(), refToUse, tagToUse, questionToUse);
 		
 		mainWindow = mainWindowToUse;
 	}
