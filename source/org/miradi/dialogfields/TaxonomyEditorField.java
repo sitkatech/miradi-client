@@ -68,7 +68,6 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 	@Override
 	public void setText(String newValue)
 	{
-		System.out.println("herererer setText");
 		try
 		{
 			CodeList taxonomyElementCodes = TaxonomyHelper.getTaxonomyElementCodes(getProject(), new TaxonomyClassificationMap(newValue), taxonomyAssociationCode);
