@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 15:31-0500\n"
+"POT-Creation-Date: 2013-05-13 11:01-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -6749,7 +6749,7 @@ msgstr "Starker Anstieg"
 #: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:113
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:153
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:66
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:139
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:138
 msgid "Summary"
 msgstr "Zusammenfassung"
 
@@ -7724,7 +7724,7 @@ msgid "Tagged Items"
 msgstr ""
 
 # würde vorschalgen Tag bleibt Tag (Felix)
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:118
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:117
 msgid "Tags"
 msgstr "Tags"
 
