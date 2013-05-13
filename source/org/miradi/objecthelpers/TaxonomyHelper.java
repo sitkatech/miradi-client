@@ -20,15 +20,39 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objecthelpers;
 
+import org.miradi.main.EAM;
 import org.miradi.objectpools.TaxonomyAssociationPool;
 import org.miradi.objects.MiradiShareTaxonomy;
 import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.project.Project;
 import org.miradi.schemas.MiradiShareTaxonomySchema;
 import org.miradi.schemas.TaxonomyAssociationSchema;
+import org.miradi.utils.CodeList;
 
 public class TaxonomyHelper
 {
+	public static CodeList getTaxonomyElementCodes(Project projectToUse, TaxonomyClassificationMap taxononyClassificationList, String taxonomyAssociationCode)
+	{
+		try
+		{
+			TaxonomyAssociation taxonomyAssociation = findTaxonomyAssociation(projectToUse, taxonomyAssociationCode);
+			if (taxonomyAssociation == null)
+				return new CodeList();
+			
+			String taxonomyCode = taxonomyAssociation.getTaxonomyCode();
+			if (taxononyClassificationList.containsKey(taxonomyCode))
+			{
+				return taxononyClassificationList.get(taxonomyCode);
+			}
+		}
+		catch(Exception e)
+		{
+			EAM.alertUserOfNonFatalException(e);
+		}
+		
+		return new CodeList();
+	}
+	
 	public static TaxonomyAssociation findTaxonomyAssociation(Project project, String taxonomyAssociationCode)
 	{
 		TaxonomyAssociationPool taxonomyAssociationPool = project.getTaxonomyAssociationPool();

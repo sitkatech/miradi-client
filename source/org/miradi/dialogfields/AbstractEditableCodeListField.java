@@ -37,9 +37,6 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 		super(projectToUse, refToUse, tagToUse);
 		
 		question = questionToUse;
-		
-		final String dialogTitle = Translation.fieldLabel(getObjectType(), getTag());
-		readonlyPanelPopupEditor = new ReadonlyPanelWithPopupEditor(this, dialogTitle, questionToUse, columnCount);
 	}
 	
 	@Override
@@ -51,6 +48,12 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 	@Override
 	public JComponent getComponent()
 	{
+		if (readonlyPanelPopupEditor == null)
+		{
+			final String dialogTitle = Translation.fieldLabel(getObjectType(), getTag());
+			readonlyPanelPopupEditor = new ReadonlyPanelWithPopupEditor(this, dialogTitle, question, 1);
+		}
+		
 		return readonlyPanelPopupEditor;
 	}
 

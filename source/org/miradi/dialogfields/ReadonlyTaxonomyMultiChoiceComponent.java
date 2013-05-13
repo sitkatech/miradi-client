@@ -20,32 +20,50 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import org.miradi.dialogs.base.DisposablePanel;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.BaseObject;
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.TaxonomyClassificationMap;
+import org.miradi.objecthelpers.TaxonomyHelper;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.utils.CodeList;
 
-public class TaxonomyEditorFieldWithReadonlyChoiceList extends AbstractEditableCodeListField
+public class ReadonlyTaxonomyMultiChoiceComponent extends AbstractReadonlyChoiceComponent
 {
-	public TaxonomyEditorFieldWithReadonlyChoiceList(Project projectToUse, ORef refToUse, ChoiceQuestion questionToUse, String taxonomyAssociationCodeToUse)
+	public ReadonlyTaxonomyMultiChoiceComponent(Project projectToUse, ChoiceQuestion questionToUse, String taxonomyAssociationCodeToUse)
 	{
-		super(projectToUse, refToUse, BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER, questionToUse, 1);
+		super(questionToUse, SINGLE_COLUMN_COUNT);
 		
+		project = projectToUse;
 		taxonomyAssociationCode = taxonomyAssociationCodeToUse;
+		taxonomyElementCodes = new CodeList();
 	}
 
 	@Override
-	public DisposablePanel createEditorPanel() throws Exception
+	public String getText()
 	{
-		return new TaxonomyEditorPanel(getProject(), getORef(), getTag(), getQuestion(), taxonomyAssociationCode);
-	}
-
-	@Override
-	public AbstractReadonlyChoiceComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)
-	{
-		return new ReadonlyTaxonomyMultiChoiceComponent(getProject(), questionToUse, taxonomyAssociationCode);
+		return taxonomyElementCodes.toJsonString();
 	}
 	
+	@Override
+	public void setText(String newValue)
+	{
+		try
+		{
+			taxonomyElementCodes = TaxonomyHelper.getTaxonomyElementCodes(getProject(), new TaxonomyClassificationMap(newValue), taxonomyAssociationCode);
+			createAndAddReadonlyLabels(taxonomyElementCodes);
+		}
+		catch(Exception e)
+		{
+			EAM.alertUserOfNonFatalException(e);
+		}
+	}
+
+	private Project getProject()
+	{
+		return project;
+	}
+	
+	private Project project;
+	private CodeList taxonomyElementCodes;
 	private String taxonomyAssociationCode;
 }

@@ -23,7 +23,8 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.util.HashMap;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
@@ -92,6 +93,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.TaxonomyAssociationSorter;
 import org.miradi.objecthelpers.TaxonomyElementList;
 import org.miradi.objecthelpers.TaxonomyHelper;
 import org.miradi.objectpools.TaxonomyAssociationPool;
@@ -661,18 +663,19 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new TaxonomyEditorField(getProject(), refToUse, tagToUse, questionToUse, taxonomyAssociationCodeToUse);
 	}
 	
-	public HashMap<ObjectDataInputField, String> createTaxonomyEditorFieldsWithReadonlyLists(int objectType) throws Exception
+	public LinkedHashMap<ObjectDataInputField, String> createTaxonomyEditorFieldsWithReadonlyLists(int objectType) throws Exception
 	{
-		HashMap<ObjectDataInputField, String> fieldsToLabelMapForType = new HashMap<ObjectDataInputField, String>();
+		LinkedHashMap<ObjectDataInputField, String> fieldsToLabelMapForType = new LinkedHashMap<ObjectDataInputField, String>();
 		TaxonomyAssociationPool taxonomyAssociationPool = getProject().getTaxonomyAssociationPool();
 		Vector<TaxonomyAssociation> taxonomyAssociationsForType = taxonomyAssociationPool.findTaxonomyAssociationsForBaseObjectType(objectType);
+		Collections.sort(taxonomyAssociationsForType, new TaxonomyAssociationSorter());
 		for(TaxonomyAssociation taxonomyAssociation : taxonomyAssociationsForType)
 		{
 			TaxonomyElementList taxonomyElementList = TaxonomyHelper.getTaxonomyElementList(getProject(), taxonomyAssociation);
 			final MiradiShareTaxonomyQuestion miradiShareTaxonomyQuestion = new MiradiShareTaxonomyQuestion(taxonomyElementList);
 			final String taxonomyAssociationCode = taxonomyAssociation.getTaxonomyAssociationCode();
 			final TaxonomyEditorFieldWithReadonlyChoiceList taxonomyEditorField = new TaxonomyEditorFieldWithReadonlyChoiceList(getProject(), getRefForType(objectType), miradiShareTaxonomyQuestion, taxonomyAssociationCode);
-			fieldsToLabelMapForType.put(taxonomyEditorField, taxonomyAssociation.getLabel());
+			fieldsToLabelMapForType.put(taxonomyEditorField, taxonomyAssociation.getLabel() + " " + taxonomyAssociation.getTaxonomyCode());
 		}
 		
 		return fieldsToLabelMapForType;
