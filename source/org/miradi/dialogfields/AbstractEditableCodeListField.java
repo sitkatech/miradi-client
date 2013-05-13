@@ -51,7 +51,7 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 		if (readonlyPanelPopupEditor == null)
 		{
 			final String dialogTitle = Translation.fieldLabel(getObjectType(), getTag());
-			readonlyPanelPopupEditor = new ReadonlyPanelWithPopupEditor(this, dialogTitle, question, 1);
+			readonlyPanelPopupEditor = new ReadonlyPanelWithPopupEditor(this, dialogTitle, question);
 		}
 		
 		return readonlyPanelPopupEditor;

@@ -38,13 +38,13 @@ import org.miradi.questions.ChoiceQuestion;
 
 public class ReadonlyPanelWithPopupEditor extends MiradiPanel
 {
-	public ReadonlyPanelWithPopupEditor(ReadonlyPanelAndPopupEditorProvider readonlyAndEditorProviderToUse, String popupEditorDialogTitleToUse, ChoiceQuestion choiceQuestion, int columnCount)
+	public ReadonlyPanelWithPopupEditor(ReadonlyPanelAndPopupEditorProvider readonlyAndEditorProviderToUse, String popupEditorDialogTitleToUse, ChoiceQuestion choiceQuestion)
 	{
 		super(new BorderLayout());
 		
 		popupEditorDialogTitle = popupEditorDialogTitleToUse;
 		readonlyWithEditorProvider = readonlyAndEditorProviderToUse;
-		readOnlyCodeListComponent = readonlyWithEditorProvider.createReadOnlyComponent(choiceQuestion, columnCount);
+		readOnlyCodeListComponent = readonlyWithEditorProvider.createReadOnlyComponent(choiceQuestion, 1);
 		add(readOnlyCodeListComponent, BorderLayout.CENTER);
 		setBackground(EAM.READONLY_BACKGROUND_COLOR);
 		selectButton = new PanelButton(EAM.text("Select..."));

@@ -39,7 +39,7 @@ public class WhoEditorField extends ObjectDataField implements ReadonlyPanelAndP
 	{
 		super(mainWindow.getProject(), refToUse);
 
-		readonlyPanelWithPopupEditor = new ReadonlyPanelWithPopupEditor(this, EAM.text("Select Project Resources"), new ProjectResourceQuestion(getProject()), 1);		
+		readonlyPanelWithPopupEditor = new ReadonlyPanelWithPopupEditor(this, EAM.text("Select Project Resources"), new ProjectResourceQuestion(getProject()));		
 	}
 	
 	@Override
