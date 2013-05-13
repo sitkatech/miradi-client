@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 15:31-0500\n"
+"POT-Creation-Date: 2013-05-13 11:01-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -6529,7 +6529,7 @@ msgstr "Сильне збільшення"
 #: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:113
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:153
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:66
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:139
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:138
 msgid "Summary"
 msgstr "Резюме"
 
@@ -7466,7 +7466,7 @@ msgstr "Тег"
 msgid "Tagged Items"
 msgstr "Мічені пункти"
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:118
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:117
 msgid "Tags"
 msgstr "Ярлички"
 
