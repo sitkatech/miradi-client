@@ -45,8 +45,8 @@ public class WWFSummaryPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ORef.INVALID);
 
-		addField(createEditableCodeListField(WwfProjectDataSchema.getObjectType(), WwfProjectData.TAG_MANAGING_OFFICES, new WwfManagingOfficesQuestion(), 1));
-		addField(createEditableCodeListField(WwfProjectDataSchema.getObjectType(), WwfProjectData.TAG_REGIONS, new WwfRegionsQuestion(), 1));
+		addField(createEditableCodeListField(WwfProjectDataSchema.getObjectType(), WwfProjectData.TAG_MANAGING_OFFICES, new WwfManagingOfficesQuestion()));
+		addField(createEditableCodeListField(WwfProjectDataSchema.getObjectType(), WwfProjectData.TAG_REGIONS, new WwfRegionsQuestion()));
 		addField(createQuestionFieldWithDescriptionPanel(WwfProjectDataSchema.getObjectType(), WwfProjectData.TAG_ECOREGIONS, new WwfEcoRegionsQuestion()));
 		
 		setObjectRefs(new ORef[] {metaDataToUse.getRef(), getWwfProjectDataRef()});

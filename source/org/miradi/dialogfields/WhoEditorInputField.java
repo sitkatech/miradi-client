@@ -28,9 +28,9 @@ import org.miradi.questions.ChoiceQuestion;
 
 public class WhoEditorInputField extends AbstractEditableCodeListField
 {
-	public WhoEditorInputField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, int columnCount)
+	public WhoEditorInputField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, refToUse, tagToUse, questionToUse, columnCount);
+		super(projectToUse, refToUse, tagToUse, questionToUse);
 	}
 
 	@Override

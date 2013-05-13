@@ -36,7 +36,7 @@ public class ProtectedAreaPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, orefsToUse);
 		
-		ObjectDataInputField protectedAreaStatusField = createEditableCodeListField(ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES, new ProtectedAreaCategoryQuestion(), 1);
+		ObjectDataInputField protectedAreaStatusField = createEditableCodeListField(ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES, new ProtectedAreaCategoryQuestion());
 		ObjectDataInputField protectedAreaStatusNotesField = createMultilineField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_PROTECTED_AREA_CATEGORY_NOTES, 25);
 		addFieldsOnOneLine(EAM.text("Label|Protected Area Categories"), new ObjectDataInputField[]{protectedAreaStatusField, protectedAreaStatusNotesField});
 		

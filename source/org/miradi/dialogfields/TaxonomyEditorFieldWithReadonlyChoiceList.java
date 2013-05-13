@@ -30,7 +30,7 @@ public class TaxonomyEditorFieldWithReadonlyChoiceList extends AbstractEditableC
 {
 	public TaxonomyEditorFieldWithReadonlyChoiceList(Project projectToUse, ORef refToUse, ChoiceQuestion questionToUse, String taxonomyAssociationCodeToUse)
 	{
-		super(projectToUse, refToUse, BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER, questionToUse, 1);
+		super(projectToUse, refToUse, BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER, questionToUse);
 		
 		taxonomyAssociationCode = taxonomyAssociationCodeToUse;
 	}
