@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-13 11:01-0500\n"
+"POT-Creation-Date: 2013-05-14 10:46-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -8133,7 +8133,7 @@ msgstr ""
 "未知的命令\n"
 "您可能正在尝试加载一个旧项目，它包含已不被支持的陈旧命令 \t\t"
 
-#: Miradi/source/org/miradi/questions/ChoiceQuestion.java:127
+#: Miradi/source/org/miradi/questions/ChoiceQuestion.java:134
 msgid "Unknown code: "
 msgstr "未知代码： \t\t"
 

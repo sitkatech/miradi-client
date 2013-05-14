@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-13 11:01-0500\n"
+"POT-Creation-Date: 2013-05-14 10:46-0500\n"
 "PO-Revision-Date: 2013-04-02 10:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -8572,7 +8572,7 @@ msgstr ""
 "Vous êtes probablement en train de charger un vieux projet contenant des "
 "commandes obsolètes qui ne sont plus utilisées"
 
-#: Miradi/source/org/miradi/questions/ChoiceQuestion.java:127
+#: Miradi/source/org/miradi/questions/ChoiceQuestion.java:134
 msgid "Unknown code: "
 msgstr "Code inconnu :"
 
