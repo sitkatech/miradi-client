@@ -23,6 +23,8 @@ package org.miradi.questions;
 import java.util.Vector;
 
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
+import org.miradi.dialogs.dashboard.StaticLongDescriptionProvider;
+import org.miradi.main.EAM;
 
 public class ChoiceItemWithChildren extends ChoiceItemWithLongDescriptionProvider
 {
@@ -34,6 +36,11 @@ public class ChoiceItemWithChildren extends ChoiceItemWithLongDescriptionProvide
 	public ChoiceItemWithChildren(String codeToUse, String additionalTextToUse, AbstractLongDescriptionProvider providerToUse)
 	{
 		this(codeToUse, additionalTextToUse, "", providerToUse);
+	}
+	
+	public ChoiceItemWithChildren(String codeToUse, String labelToUse, String descriptionToUse)
+	{
+		this(codeToUse, labelToUse, EAM.emptyText(), new StaticLongDescriptionProvider(descriptionToUse));
 	}
 	
 	public ChoiceItemWithChildren(String codeToUse, String labelToUse, String additionalTextToUse, AbstractLongDescriptionProvider providerToUse)

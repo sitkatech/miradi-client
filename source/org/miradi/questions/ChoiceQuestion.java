@@ -19,7 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.*/
 package org.miradi.questions;
 
 import java.awt.Color;
+import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Vector;
 
 import org.miradi.main.EAM;
 import org.miradi.utils.CodeList;
@@ -70,6 +72,11 @@ public abstract class ChoiceQuestion implements Comparable<ChoiceQuestion>
 		}
 		
 		return convertedToReadableCodes;
+	}
+	
+	public Vector<ChoiceItem> getChoicesAsVector()
+	{
+		return new Vector<ChoiceItem>(Arrays.asList(getChoices()));
 	}
 	
 	abstract public ChoiceItem[] getChoices();

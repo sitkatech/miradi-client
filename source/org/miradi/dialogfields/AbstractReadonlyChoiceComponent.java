@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
+import java.util.Vector;
+
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.RatingIcon;
@@ -47,15 +49,19 @@ abstract public class AbstractReadonlyChoiceComponent extends MiradiPanel
 	
 	protected void createAndAddReadonlyLabels(final CodeList codeList)
 	{
+		getQuestion().reloadQuestion();
+		Vector<ChoiceItem> choiceItems = getQuestion().getChoicesAsVector();
+		createAndAddReadonlyLabels(choiceItems, codeList);
+	}
+
+	protected void createAndAddReadonlyLabels(Vector<ChoiceItem> allChoiceItems, final CodeList selectedCodes)
+	{
 		removeAll();
 		try
 		{
-			getQuestion().reloadQuestion();
-			ChoiceItem[] choiceItems = getQuestion().getChoices();
-			for (int choiceIndex = 0; choiceIndex < choiceItems.length; ++choiceIndex)
+			for (ChoiceItem choiceItem : allChoiceItems)
 			{
-				ChoiceItem choiceItem = choiceItems[choiceIndex];
-				if (codeList.contains(choiceItem.getCode()))
+				if (selectedCodes.contains(choiceItem.getCode()))
 				{
 					PanelTitleLabel label = new PanelTitleLabel(choiceItem.getTextAsHtmlWrappedLabel());
 					if (choiceItem.getColor() != null)
@@ -74,7 +80,7 @@ abstract public class AbstractReadonlyChoiceComponent extends MiradiPanel
 			getTopLevelAncestor().validate();
 	}
 	
-	private ChoiceQuestion getQuestion()
+	protected ChoiceQuestion getQuestion()
 	{
 		return question;
 	}

@@ -20,42 +20,43 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
-import java.util.Vector;
-
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.TaxonomyElement;
-import org.miradi.objecthelpers.TaxonomyElementList;
+import org.miradi.objects.MiradiShareTaxonomy;
+import org.miradi.utils.CodeList;
 
-public class MiradiShareTaxonomyQuestion extends MultipleSelectStaticChoiceQuestion
+public class MiradiShareTaxonomyQuestion extends DynamicChoiceWithRootChoiceItem
 {
-	public MiradiShareTaxonomyQuestion(TaxonomyElementList taxonomyElementListToUse)
+	public MiradiShareTaxonomyQuestion(MiradiShareTaxonomy miradiShareTaxonomyToUse)
 	{
-		super(createTaxonomyChoices(taxonomyElementListToUse));
+		miradiShareTaxonomy = miradiShareTaxonomyToUse;
 	}
 	
-	private static ChoiceItem[] createTaxonomyChoices(TaxonomyElementList taxonomyElementListToUse)
+	@Override
+	protected ChoiceItemWithChildren createHeaderChoiceItem() throws Exception
 	{
-		try
-		{
-			return createChoiceItems(taxonomyElementListToUse);
-		}
-		catch (Exception e)
-		{
-			EAM.alertUserOfNonFatalException(e);
-		}
-		
-		return new ChoiceItem[0];
+		return createChoiceItems(miradiShareTaxonomy);
+	}
+	
+	private static ChoiceItemWithChildren createChoiceItems(MiradiShareTaxonomy miradiShareTaxonomyToUse) throws Exception
+	{
+		CodeList topLevelTaxonomyElementCodes = miradiShareTaxonomyToUse.getTopLevelTaxonomyElementCodes();
+		ChoiceItemWithChildren rootChoiceItem = new ChoiceItemWithChildren("", "", "");
+		addChildrenChoices(miradiShareTaxonomyToUse, rootChoiceItem, topLevelTaxonomyElementCodes);
+
+		return rootChoiceItem;
 	}
 
-	private static ChoiceItem[] createChoiceItems(TaxonomyElementList taxonomyElements)
+	private static void addChildrenChoices(MiradiShareTaxonomy miradiShareTaxonomyToUse, ChoiceItemWithChildren parentChoiceItem, CodeList childCodes) throws Exception
 	{
-		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
-		for (TaxonomyElement taxonomyElement : taxonomyElements)
+		for (String taxonomyElementCode : childCodes)
 		{
-			ChoiceItem choiceItem = new ChoiceItem(taxonomyElement.getCode(), taxonomyElement.getLabel(), taxonomyElement.getDescription());
-			choices.add(choiceItem);
+			TaxonomyElement taxonomyElement = miradiShareTaxonomyToUse.findTaxonomyElement(taxonomyElementCode);
+			ChoiceItemWithChildren childChoiceItem = new ChoiceItemWithChildren(taxonomyElement.getCode(), taxonomyElement.getLabel(), taxonomyElement.getDescription());
+			childChoiceItem.setSelectable(true);
+			parentChoiceItem.addChild(childChoiceItem);
+			addChildrenChoices(miradiShareTaxonomyToUse, childChoiceItem, taxonomyElement.getChildCodes());
 		}
-		
-		return choices.toArray(new ChoiceItem[0]);
 	}
+	
+	private MiradiShareTaxonomy miradiShareTaxonomy;
 }
