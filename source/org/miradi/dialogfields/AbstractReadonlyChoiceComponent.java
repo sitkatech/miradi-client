@@ -51,12 +51,15 @@ abstract public class AbstractReadonlyChoiceComponent extends MiradiPanel
 	{
 		getQuestion().reloadQuestion();
 		Vector<ChoiceItem> choiceItems = getQuestion().getChoicesAsVector();
+		removeAll();
 		createAndAddReadonlyLabels(choiceItems, codeList);
+		if (getTopLevelAncestor() != null)
+			getTopLevelAncestor().validate();
+
 	}
 
 	protected void createAndAddReadonlyLabels(Vector<ChoiceItem> allChoiceItems, final CodeList selectedCodes)
 	{
-		removeAll();
 		try
 		{
 			for (ChoiceItem choiceItem : allChoiceItems)
@@ -69,15 +72,14 @@ abstract public class AbstractReadonlyChoiceComponent extends MiradiPanel
 					
 					add(label);
 				}
+				
+				createAndAddReadonlyLabels(choiceItem.getChildren(), selectedCodes);
 			}
 		}
 		catch(Exception e)
 		{
 			EAM.alertUserOfNonFatalException(e);
 		}
-		
-		if (getTopLevelAncestor() != null)
-			getTopLevelAncestor().validate();
 	}
 	
 	protected ChoiceQuestion getQuestion()
