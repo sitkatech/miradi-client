@@ -20,15 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import java.util.Vector;
-
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.TaxonomyClassificationMap;
 import org.miradi.objecthelpers.TaxonomyHelper;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.DynamicChoiceWithRootChoiceItem;
 import org.miradi.utils.CodeList;
 
 public class ReadonlyTaxonomyMultiChoiceComponent extends AbstractReadonlyChoiceComponent
@@ -62,21 +58,6 @@ public class ReadonlyTaxonomyMultiChoiceComponent extends AbstractReadonlyChoice
 		}
 	}
 	
-	@Override
-	protected void createAndAddReadonlyLabels(final CodeList codeList)
-	{
-		try
-		{
-			ChoiceItem headerChoiceItem = ((DynamicChoiceWithRootChoiceItem)getQuestion()).getHeaderChoiceItem();
-			Vector<ChoiceItem> childrenChoices = headerChoiceItem.getChildren();
-			createAndAddReadonlyLabels(childrenChoices, codeList);
-		}
-		catch (Exception e)
-		{
-			EAM.alertUserOfNonFatalException(e);
-		}
-	}
-
 	private Project getProject()
 	{
 		return project;
