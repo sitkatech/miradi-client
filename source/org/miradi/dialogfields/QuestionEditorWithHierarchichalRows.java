@@ -210,11 +210,6 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		return new PanelTitleLabel().getFont();
 	}
 	
-	protected String getMainDescriptionFileName()
-	{
-		return "dashboard/1.html";
-	}
-	
 	public MainWindow getMainWindow()
 	{
 		return mainWindow;
