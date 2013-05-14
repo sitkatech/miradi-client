@@ -67,7 +67,7 @@ public class TaxonomyHelper
 		return null;
 	}
 	
-	public static TaxonomyElementList getTaxonomyElementList(Project projectToUse, final TaxonomyAssociation taxonomyAssociation) throws Exception
+	public static MiradiShareTaxonomy getTaxonomyElementList(Project projectToUse, final TaxonomyAssociation taxonomyAssociation) throws Exception
 	{
 		String taxonomyCode = taxonomyAssociation.getData(TaxonomyAssociationSchema.TAG_TAXONOMY_CODE);
 		ORefList miradiShareTaxonomyRefs = projectToUse.getPool(MiradiShareTaxonomySchema.getObjectType()).getORefList();
@@ -76,7 +76,7 @@ public class TaxonomyHelper
 			MiradiShareTaxonomy miradiShareTaxonomy = MiradiShareTaxonomy.find(projectToUse, miradiShareTaxonomyRef);
 			final String thisTaxonomyCode = miradiShareTaxonomy.getData(MiradiShareTaxonomySchema.TAG_TAXONOMY_CODE);
 			if (thisTaxonomyCode.equals(taxonomyCode))
-				return miradiShareTaxonomy.getTaxonomyElements();
+				return miradiShareTaxonomy;
 		}
 		
 		throw new Exception("Taxonomy object could not be found for code:" + taxonomyCode);

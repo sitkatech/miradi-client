@@ -94,10 +94,10 @@ import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.TaxonomyAssociationSorter;
-import org.miradi.objecthelpers.TaxonomyElementList;
 import org.miradi.objecthelpers.TaxonomyHelper;
 import org.miradi.objectpools.TaxonomyAssociationPool;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.MiradiShareTaxonomy;
 import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
@@ -671,8 +671,8 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		Collections.sort(taxonomyAssociationsForType, new TaxonomyAssociationSorter());
 		for(TaxonomyAssociation taxonomyAssociation : taxonomyAssociationsForType)
 		{
-			TaxonomyElementList taxonomyElementList = TaxonomyHelper.getTaxonomyElementList(getProject(), taxonomyAssociation);
-			final MiradiShareTaxonomyQuestion miradiShareTaxonomyQuestion = new MiradiShareTaxonomyQuestion(taxonomyElementList);
+			MiradiShareTaxonomy miradiShareTaxonomy = TaxonomyHelper.getTaxonomyElementList(getProject(), taxonomyAssociation);
+			final MiradiShareTaxonomyQuestion miradiShareTaxonomyQuestion = new MiradiShareTaxonomyQuestion(miradiShareTaxonomy);
 			final String taxonomyAssociationCode = taxonomyAssociation.getTaxonomyAssociationCode();
 			final TaxonomyEditorFieldWithReadonlyChoiceList taxonomyEditorField = new TaxonomyEditorFieldWithReadonlyChoiceList(getProject(), getRefForType(objectType), miradiShareTaxonomyQuestion, taxonomyAssociationCode);
 			fieldsToLabelMapForType.put(taxonomyEditorField, taxonomyAssociation.getLabel() + " " + taxonomyAssociation.getTaxonomyCode());

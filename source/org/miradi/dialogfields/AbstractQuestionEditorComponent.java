@@ -93,7 +93,7 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 		repaint();
 	}
 
-	private JComponent createLeftColumnComponent(ChoiceItem choiceItem)
+	protected JComponent createLeftColumnComponent(ChoiceItem choiceItem)
 	{
 		JToggleButton toggleButton = createToggleButton(choiceItem);
 		toggleButton.setBackground(choiceItem.getColor());
