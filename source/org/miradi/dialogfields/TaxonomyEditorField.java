@@ -70,7 +70,7 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 	{
 		try
 		{
-			CodeList taxonomyElementCodes = TaxonomyHelper.getTaxonomyElementCodes(getProject(), new TaxonomyClassificationMap(newValue), taxonomyAssociationCode);
+			CodeList taxonomyElementCodes = new TaxonomyClassificationMap(newValue).getTaxonomyElementCodes(getProject(), taxonomyAssociationCode);
 			component.setText(taxonomyElementCodes.toString());
 		}
 		catch (Exception e)

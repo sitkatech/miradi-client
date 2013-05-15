@@ -22,7 +22,6 @@ package org.miradi.dialogfields;
 
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.TaxonomyClassificationMap;
-import org.miradi.objecthelpers.TaxonomyHelper;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
@@ -49,7 +48,7 @@ public class ReadonlyTaxonomyMultiChoiceComponent extends AbstractReadonlyChoice
 	{
 		try
 		{
-			taxonomyElementCodes = TaxonomyHelper.getTaxonomyElementCodes(getProject(), new TaxonomyClassificationMap(newValue), taxonomyAssociationCode);
+			taxonomyElementCodes = new TaxonomyClassificationMap(newValue).getTaxonomyElementCodes(getProject(), taxonomyAssociationCode);
 			createAndAddReadonlyLabels(taxonomyElementCodes);
 		}
 		catch(Exception e)
