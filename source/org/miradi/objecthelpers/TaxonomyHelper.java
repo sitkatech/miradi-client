@@ -26,7 +26,6 @@ import org.miradi.objects.MiradiShareTaxonomy;
 import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.project.Project;
 import org.miradi.schemas.MiradiShareTaxonomySchema;
-import org.miradi.schemas.TaxonomyAssociationSchema;
 import org.miradi.utils.CodeList;
 
 public class TaxonomyHelper
@@ -69,7 +68,7 @@ public class TaxonomyHelper
 	
 	public static MiradiShareTaxonomy getTaxonomyElementList(Project projectToUse, final TaxonomyAssociation taxonomyAssociation) throws Exception
 	{
-		String taxonomyCode = taxonomyAssociation.getData(TaxonomyAssociationSchema.TAG_TAXONOMY_CODE);
+		String taxonomyCode = taxonomyAssociation.getTaxonomyCode();
 		ORefList miradiShareTaxonomyRefs = projectToUse.getPool(MiradiShareTaxonomySchema.getObjectType()).getORefList();
 		for(ORef miradiShareTaxonomyRef : miradiShareTaxonomyRefs)
 		{
