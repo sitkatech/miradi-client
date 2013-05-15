@@ -48,7 +48,7 @@ public class ReadonlyTaxonomyMultiChoiceComponent extends AbstractReadonlyChoice
 	{
 		try
 		{
-			taxonomyElementCodes = new TaxonomyClassificationMap(newValue).getTaxonomyElementCodes(getProject(), taxonomyAssociationCode);
+			taxonomyElementCodes = TaxonomyClassificationMap.getTaxonomyElementCodes(getProject(), newValue, taxonomyAssociationCode);
 			createAndAddReadonlyLabels(taxonomyElementCodes);
 		}
 		catch(Exception e)
