@@ -54,7 +54,7 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 			TaxonomyClassificationMap taxonomyClassificationList = new TaxonomyClassificationMap(baseObject.getData(BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER));
 			TaxonomyAssociation taxonomyAssociation = TaxonomyHelper.findTaxonomyAssociation(getProject(), taxonomyAssociationCode);
 			CodeList selectedTaxonomyElementCodes = new CodeList(component.getText());
-			taxonomyClassificationList.put(taxonomyAssociation.getTaxonomyCode(), selectedTaxonomyElementCodes);
+			taxonomyClassificationList.putCodeList(taxonomyAssociation.getTaxonomyCode(), selectedTaxonomyElementCodes);
 
 			return taxonomyClassificationList.toJsonString();
 		}
