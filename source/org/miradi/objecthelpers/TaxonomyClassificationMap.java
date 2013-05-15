@@ -23,6 +23,9 @@ package org.miradi.objecthelpers;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import org.miradi.main.EAM;
+import org.miradi.objects.TaxonomyAssociation;
+import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -76,6 +79,28 @@ public class TaxonomyClassificationMap extends HashMap<String, CodeList>
 			return "";
 		
 		return toJson().toString();
+	}
+	
+	public CodeList getTaxonomyElementCodes(Project projectToUse, String taxonomyAssociationCode)
+	{
+		try
+		{
+			TaxonomyAssociation taxonomyAssociation = TaxonomyHelper.findTaxonomyAssociation(projectToUse, taxonomyAssociationCode);
+			if (taxonomyAssociation == null)
+				return new CodeList();
+			
+			String taxonomyCode = taxonomyAssociation.getTaxonomyCode();
+			if (containsKey(taxonomyCode))
+			{
+				return get(taxonomyCode);
+			}
+		}
+		catch(Exception e)
+		{
+			EAM.alertUserOfNonFatalException(e);
+		}
+		
+		return new CodeList();
 	}
 	
 	private static final String TAG_TAXONOMY_CODE_TO_TAXONOMY_ELEMENT_CODES_MAP = "TaxonomyCodeToTaxonomyElementCodesMap";
