@@ -1826,8 +1826,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public String createSampleTaxonomyClassificationsList()
 	{
 		TaxonomyClassificationMap taxonomyClassificationList = new TaxonomyClassificationMap();
-		taxonomyClassificationList.put("randomTaxonomyCode1", createSampleFreshwaterEcoregionsCodeList());
-		taxonomyClassificationList.put("randomTaxonomyCode2", createSampleMarineEcoregionsCodeList());
+		taxonomyClassificationList.putCodeList("randomTaxonomyCode1", createSampleFreshwaterEcoregionsCodeList());
+		taxonomyClassificationList.putCodeList("randomTaxonomyCode2", createSampleMarineEcoregionsCodeList());
 		
 		return taxonomyClassificationList.toJsonString();
 	}

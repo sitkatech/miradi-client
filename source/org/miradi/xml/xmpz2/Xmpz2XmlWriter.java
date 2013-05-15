@@ -398,10 +398,10 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	public void writeTaxonomyClassifications(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, TaxonomyClassificationMap taxonomyClassificationData) throws Exception
 	{
 		writeStartElement(TAXONOMY_CLASSIFICATION_CONTAINER);
-		Set<String> taxonomyCodes = taxonomyClassificationData.keySet();
+		Set<String> taxonomyCodes = taxonomyClassificationData.toHashMap().keySet();
 		for(String taxonomyCode : taxonomyCodes)
 		{
-			CodeList taxonomyElementCodes = taxonomyClassificationData.get(taxonomyCode);
+			CodeList taxonomyElementCodes = taxonomyClassificationData.getCodeList(taxonomyCode);
 			writeTaxonomyClassification(taxonomyCode, taxonomyElementCodes.toVector());
 		}
 		
