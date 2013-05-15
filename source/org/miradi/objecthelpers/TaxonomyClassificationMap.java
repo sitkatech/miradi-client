@@ -81,6 +81,11 @@ public class TaxonomyClassificationMap extends HashMap<String, CodeList>
 		return toJson().toString();
 	}
 	
+	public static CodeList getTaxonomyElementCodes(Project projectTouse, String taxonomyClassificationMapAsString, String taxonomyAssociationCode) throws Exception
+	{
+		return  new TaxonomyClassificationMap(taxonomyClassificationMapAsString).getTaxonomyElementCodes(projectTouse, taxonomyAssociationCode);
+	}
+	
 	public CodeList getTaxonomyElementCodes(Project projectToUse, String taxonomyAssociationCode)
 	{
 		try
