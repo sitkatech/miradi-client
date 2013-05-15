@@ -25,15 +25,9 @@ import org.miradi.objects.MiradiShareTaxonomy;
 import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.project.Project;
 import org.miradi.schemas.MiradiShareTaxonomySchema;
-import org.miradi.utils.CodeList;
 
 public class TaxonomyHelper
 {
-	public static CodeList getTaxonomyElementCodes(Project projectToUse, TaxonomyClassificationMap taxononyClassificationList, String taxonomyAssociationCode)
-	{
-		return taxononyClassificationList.getTaxonomyElementCodes(projectToUse, taxonomyAssociationCode);
-	}
-	
 	public static TaxonomyAssociation findTaxonomyAssociation(Project project, String taxonomyAssociationCode)
 	{
 		TaxonomyAssociationPool taxonomyAssociationPool = project.getTaxonomyAssociationPool();
