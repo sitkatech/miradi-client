@@ -38,18 +38,18 @@ public class TaxonomyClassificationMap extends HashMap<String, CodeList>
 		this(new EnhancedJsonObject(taxonomyCodeToTaxonomyElementCodesMap));
 	}
 	
-	public TaxonomyClassificationMap(EnhancedJsonObject json) throws Exception
+	public TaxonomyClassificationMap(EnhancedJsonObject jsonToUse) throws Exception
 	{
 		clear();
-		EnhancedJsonObject jsonArray = json.optJson(TAG_TAXONOMY_CODE_TO_TAXONOMY_ELEMENT_CODES_MAP);
-		if(jsonArray == null)
-			jsonArray = new EnhancedJsonObject();
+		EnhancedJsonObject json = jsonToUse.optJson(TAG_TAXONOMY_CODE_TO_TAXONOMY_ELEMENT_CODES_MAP);
+		if(json == null)
+			json = new EnhancedJsonObject();
 		
-		Iterator iterator = jsonArray.keys();
+		Iterator iterator = json.keys();
 		while (iterator.hasNext())
 		{
 			String taxonomyCodeAsKey = (String)iterator.next();
-			CodeList taxonomyElementCodes = jsonArray.getCodeList(taxonomyCodeAsKey);
+			CodeList taxonomyElementCodes = json.getCodeList(taxonomyCodeAsKey);
 			put(taxonomyCodeAsKey, taxonomyElementCodes);
 		}
 	}
