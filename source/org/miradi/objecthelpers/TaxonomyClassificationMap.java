@@ -56,18 +56,17 @@ public class TaxonomyClassificationMap extends HashMap<String, CodeList>
 	
 	public EnhancedJsonObject toJson()
 	{
-		EnhancedJsonObject json = new EnhancedJsonObject();
-		EnhancedJsonObject jsonArray = new EnhancedJsonObject();
-		
+		EnhancedJsonObject mapAsJson = new EnhancedJsonObject();
 		Iterator iterator = keySet().iterator();
 		while (iterator.hasNext())
 		{
 			String taxonomyCodeAsKey = (String) iterator.next();
 			CodeList taxonomyElementCodes = get(taxonomyCodeAsKey);
-			jsonArray.put(taxonomyCodeAsKey, taxonomyElementCodes.toString());
+			mapAsJson.put(taxonomyCodeAsKey, taxonomyElementCodes.toString());
 		}
 		
-		json.put(TAG_TAXONOMY_CODE_TO_TAXONOMY_ELEMENT_CODES_MAP, jsonArray);
+		EnhancedJsonObject json = new EnhancedJsonObject();
+		json.put(TAG_TAXONOMY_CODE_TO_TAXONOMY_ELEMENT_CODES_MAP, mapAsJson);
 		return json;
 	}
 	
