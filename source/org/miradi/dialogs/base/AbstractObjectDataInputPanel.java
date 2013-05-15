@@ -663,7 +663,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new TaxonomyEditorField(getProject(), refToUse, tagToUse, questionToUse, taxonomyAssociationCodeToUse);
 	}
 	
-	public LinkedHashMap<ObjectDataInputField, String> createTaxonomyEditorFieldsWithReadonlyLists(int objectType) throws Exception
+	public LinkedHashMap<ObjectDataInputField, String> createMultipleTaxonomyWithSelectButtonFields(int objectType) throws Exception
 	{
 		LinkedHashMap<ObjectDataInputField, String> fieldsToLabelMapForType = new LinkedHashMap<ObjectDataInputField, String>();
 		TaxonomyAssociationPool taxonomyAssociationPool = getProject().getTaxonomyAssociationPool();
