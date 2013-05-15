@@ -32,7 +32,7 @@ public class TaxonomyEditorPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, orefToUse);
 		
-		addField(createTaxonomyEditorField(orefToUse, tagToUse, question, taxonomyAssociationCodeToUse));
+		addField(createSingleTaxonomyEditorField(orefToUse, tagToUse, question, taxonomyAssociationCodeToUse));
 		
 		updateFieldsFromProject();
 	}
