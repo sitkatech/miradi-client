@@ -183,14 +183,10 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 		for(ObjectDataInputField field : fields)
 		{
 			addFieldToList(field);
-			fieldPanel.add(new PanelTitleLabel(fieldsToLabelMap.get(field)));
-			fieldPanel.add(field.getComponent());
-			fieldPanel.add(new JLabel(" "));
+			add(new PanelTitleLabel(fieldsToLabelMap.get(field)));
+			add(field.getComponent());
 		}
-		
-		add(fieldPanel);
-		add(new FillerLabel());
-	}
+	}		
 	
 	protected void addFieldsOnOneLine(String translatedString, Icon icon, ObjectDataInputField[] fields)
 	{
