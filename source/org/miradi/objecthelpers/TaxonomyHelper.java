@@ -60,7 +60,7 @@ public class TaxonomyHelper
 		for(ORef taxonomyAssociationRef : taxonomyAssociationsForType)
 		{
 			TaxonomyAssociation taxonomyAssociation = TaxonomyAssociation.find(project, taxonomyAssociationRef);
-			if (taxonomyAssociation.getData(TaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_CODE).equals(taxonomyAssociationCode))
+			if (taxonomyAssociation.getTaxonomyAssociationCode().equals(taxonomyAssociationCode))
 				return taxonomyAssociation;
 		}
 
