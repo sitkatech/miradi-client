@@ -22,59 +22,45 @@ package org.miradi.questions;
 
 import org.miradi.objecthelpers.TaxonomyElement;
 import org.miradi.objects.MiradiShareTaxonomy;
+import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.utils.CodeList;
 
 public class MiradiShareTaxonomyQuestion extends DynamicChoiceWithRootChoiceItem
 {
-	public MiradiShareTaxonomyQuestion(MiradiShareTaxonomy miradiShareTaxonomyToUse, String selectionTypeCodeToUse)
+	public MiradiShareTaxonomyQuestion(MiradiShareTaxonomy miradiShareTaxonomyToUse, TaxonomyAssociation taxonomyAssociationToUse)
 	{
 		miradiShareTaxonomy = miradiShareTaxonomyToUse;
-		selectionTypeCode = selectionTypeCodeToUse;
+		taxonomyAssociation = taxonomyAssociationToUse;
 	}
 	
 	@Override
 	protected ChoiceItemWithChildren createHeaderChoiceItem() throws Exception
 	{
-		return createChoiceItems(miradiShareTaxonomy, selectionTypeCode);
+		return createChoiceItems(miradiShareTaxonomy, taxonomyAssociation);
 	}
 	
-	private static ChoiceItemWithChildren createChoiceItems(MiradiShareTaxonomy miradiShareTaxonomyToUse, String selectionTypeCodeToUse) throws Exception
+	private static ChoiceItemWithChildren createChoiceItems(MiradiShareTaxonomy miradiShareTaxonomyToUse, TaxonomyAssociation taxonomyAssociationToUse) throws Exception
 	{
 		CodeList topLevelTaxonomyElementCodes = miradiShareTaxonomyToUse.getTopLevelTaxonomyElementCodes();
 		ChoiceItemWithChildren rootChoiceItem = new ChoiceItemWithChildren("", "", "");
-		addChildrenChoices(miradiShareTaxonomyToUse, rootChoiceItem, topLevelTaxonomyElementCodes, selectionTypeCodeToUse);
+		addChildrenChoices(miradiShareTaxonomyToUse, rootChoiceItem, topLevelTaxonomyElementCodes, taxonomyAssociationToUse);
 
 		return rootChoiceItem;
 	}
 
-	private static void addChildrenChoices(MiradiShareTaxonomy miradiShareTaxonomyToUse, ChoiceItemWithChildren parentChoiceItem, CodeList childCodes, String selectionTypeCodeToUse) throws Exception
+	private static void addChildrenChoices(MiradiShareTaxonomy miradiShareTaxonomyToUse, ChoiceItemWithChildren parentChoiceItem, CodeList childCodes, TaxonomyAssociation taxonomyAssociationToUse) throws Exception
 	{
 		for (String taxonomyElementCode : childCodes)
 		{
 			TaxonomyElement taxonomyElement = miradiShareTaxonomyToUse.findTaxonomyElement(taxonomyElementCode);
 			ChoiceItemWithChildren childChoiceItem = new ChoiceItemWithChildren(taxonomyElement.getCode(), taxonomyElement.getLabel(), taxonomyElement.getDescription());
-			final boolean isSelectable = isSelectable(taxonomyElement.getChildCodes(), selectionTypeCodeToUse);
+			final boolean isSelectable = taxonomyAssociationToUse.isSelectable(taxonomyElement);
 			childChoiceItem.setSelectable(isSelectable);
 			parentChoiceItem.addChild(childChoiceItem);
-			addChildrenChoices(miradiShareTaxonomyToUse, childChoiceItem, taxonomyElement.getChildCodes(), selectionTypeCodeToUse);
+			addChildrenChoices(miradiShareTaxonomyToUse, childChoiceItem, taxonomyElement.getChildCodes(), taxonomyAssociationToUse);
 		}
-	}
-
-	private static boolean isSelectable(CodeList childrenTaxonomyCodes, String selectionTypeCodeToUse)
-	{
-		final boolean isParent = childrenTaxonomyCodes.hasData();
-		final boolean leafOnlySelectionType = leafOnlySelection(selectionTypeCodeToUse);
-		if (leafOnlySelectionType && isParent)
-			return false;
-		
-		return true;
-	}
-	
-	private static boolean leafOnlySelection(String selectionTypeCodeToUse)
-	{
-		return selectionTypeCodeToUse.equals(TaxonomyClassificationSelectionModeQuestion.LEAF_ONLY_CODE);
 	}
 	
 	private MiradiShareTaxonomy miradiShareTaxonomy;
-	private String selectionTypeCode;
+	private TaxonomyAssociation taxonomyAssociation;
 }
