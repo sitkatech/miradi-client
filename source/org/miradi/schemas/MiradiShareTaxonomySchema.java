@@ -38,7 +38,6 @@ public class MiradiShareTaxonomySchema extends BaseObjectSchema
 		createFieldSchemaCode(TAG_TAXONOMY_CODE);
 		createFieldSchemaSingleLineUserText(TAG_TAXONOMY_VERSION);
 		createTaxonomyElementList(TAG_TAXONOMY_ELEMENTS);
-		//FIXME urgent - Question below needs to be take better args. 
 		createFieldSchemaCodeList(TAG_TAXONOMY_TOP_LEVEL_ELEMENT_CODES, new MiradiShareTaxonomyQuestion(null, null));
 	}
 	
