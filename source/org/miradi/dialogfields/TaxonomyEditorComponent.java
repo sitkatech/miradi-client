@@ -39,18 +39,6 @@ public class TaxonomyEditorComponent extends QuestionBasedEditorComponent
 	}
 	
 	@Override
-	public String getText()
-	{
-		return super.getText();
-	}
-	
-	@Override
-	public void setText(String codesToUse)
-	{
-		super.setText(codesToUse);
-	}
-	
-	@Override
 	protected void addComponentToRowPanel(MiradiPanel mainRowsPanel, JComponent leftColumnComponent, ChoiceItem choiceItem)
 	{
 		mainRowsPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
