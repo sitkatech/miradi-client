@@ -42,9 +42,10 @@ public class TaxonomyHelper
 		return null;
 	}
 	
-	public static MiradiShareTaxonomy getTaxonomyElementList(Project projectToUse, final TaxonomyAssociation taxonomyAssociation) throws Exception
+	public static MiradiShareTaxonomy getTaxonomyElementList(final TaxonomyAssociation taxonomyAssociation) throws Exception
 	{
 		String taxonomyCode = taxonomyAssociation.getTaxonomyCode();
+		final Project projectToUse = taxonomyAssociation.getProject();
 		ORefList miradiShareTaxonomyRefs = projectToUse.getPool(MiradiShareTaxonomySchema.getObjectType()).getORefList();
 		for(ORef miradiShareTaxonomyRef : miradiShareTaxonomyRefs)
 		{
