@@ -31,9 +31,9 @@ import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
-public class TaxonomyEditorComponent extends QuestionBasedEditorComponent
+public class MultiSelectionEditorComponentWithHierarchies extends QuestionBasedEditorComponent
 {
-	public TaxonomyEditorComponent(ChoiceQuestion questionToUse)
+	public MultiSelectionEditorComponentWithHierarchies(ChoiceQuestion questionToUse)
 	{
 		super(questionToUse);
 	}

@@ -41,7 +41,7 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 		super(projectToUse, refToUse, tagToUse);
 		
 		taxonomyAssociationCode = taxonomyAssociationCodeToUse;
-		component = new TaxonomyEditorComponent(questionToUse);
+		component = new MultiSelectionEditorComponentWithHierarchies(questionToUse);
 		component.addListSelectionListener(this);
 	}
 	
@@ -97,5 +97,5 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 	}
 	
 	private String taxonomyAssociationCode;
-	private TaxonomyEditorComponent component;
+	private MultiSelectionEditorComponentWithHierarchies component;
 }
