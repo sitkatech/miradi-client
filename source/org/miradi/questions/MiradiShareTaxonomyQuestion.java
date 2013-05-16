@@ -26,37 +26,55 @@ import org.miradi.utils.CodeList;
 
 public class MiradiShareTaxonomyQuestion extends DynamicChoiceWithRootChoiceItem
 {
-	public MiradiShareTaxonomyQuestion(MiradiShareTaxonomy miradiShareTaxonomyToUse)
+	public MiradiShareTaxonomyQuestion(MiradiShareTaxonomy miradiShareTaxonomyToUse, String selectionTypeCodeToUse)
 	{
 		miradiShareTaxonomy = miradiShareTaxonomyToUse;
+		selectionTypeCode = selectionTypeCodeToUse;
 	}
 	
 	@Override
 	protected ChoiceItemWithChildren createHeaderChoiceItem() throws Exception
 	{
-		return createChoiceItems(miradiShareTaxonomy);
+		return createChoiceItems(miradiShareTaxonomy, selectionTypeCode);
 	}
 	
-	private static ChoiceItemWithChildren createChoiceItems(MiradiShareTaxonomy miradiShareTaxonomyToUse) throws Exception
+	private static ChoiceItemWithChildren createChoiceItems(MiradiShareTaxonomy miradiShareTaxonomyToUse, String selectionTypeCodeToUse) throws Exception
 	{
 		CodeList topLevelTaxonomyElementCodes = miradiShareTaxonomyToUse.getTopLevelTaxonomyElementCodes();
 		ChoiceItemWithChildren rootChoiceItem = new ChoiceItemWithChildren("", "", "");
-		addChildrenChoices(miradiShareTaxonomyToUse, rootChoiceItem, topLevelTaxonomyElementCodes);
+		addChildrenChoices(miradiShareTaxonomyToUse, rootChoiceItem, topLevelTaxonomyElementCodes, selectionTypeCodeToUse);
 
 		return rootChoiceItem;
 	}
 
-	private static void addChildrenChoices(MiradiShareTaxonomy miradiShareTaxonomyToUse, ChoiceItemWithChildren parentChoiceItem, CodeList childCodes) throws Exception
+	private static void addChildrenChoices(MiradiShareTaxonomy miradiShareTaxonomyToUse, ChoiceItemWithChildren parentChoiceItem, CodeList childCodes, String selectionTypeCodeToUse) throws Exception
 	{
 		for (String taxonomyElementCode : childCodes)
 		{
 			TaxonomyElement taxonomyElement = miradiShareTaxonomyToUse.findTaxonomyElement(taxonomyElementCode);
 			ChoiceItemWithChildren childChoiceItem = new ChoiceItemWithChildren(taxonomyElement.getCode(), taxonomyElement.getLabel(), taxonomyElement.getDescription());
-			childChoiceItem.setSelectable(true);
+			final boolean isSelectable = isSelectable(taxonomyElement.getChildCodes(), selectionTypeCodeToUse);
+			childChoiceItem.setSelectable(isSelectable);
 			parentChoiceItem.addChild(childChoiceItem);
-			addChildrenChoices(miradiShareTaxonomyToUse, childChoiceItem, taxonomyElement.getChildCodes());
+			addChildrenChoices(miradiShareTaxonomyToUse, childChoiceItem, taxonomyElement.getChildCodes(), selectionTypeCodeToUse);
 		}
+	}
+
+	private static boolean isSelectable(CodeList childrenTaxonomyCodes, String selectionTypeCodeToUse)
+	{
+		final boolean isParent = childrenTaxonomyCodes.hasData();
+		final boolean leafOnlySelectionType = leafOnlySelection(selectionTypeCodeToUse);
+		if (leafOnlySelectionType && isParent)
+			return false;
+		
+		return true;
+	}
+	
+	private static boolean leafOnlySelection(String selectionTypeCodeToUse)
+	{
+		return selectionTypeCodeToUse.equals(TaxonomyClassificationSelectionModeQuestion.LEAF_ONLY_CODE);
 	}
 	
 	private MiradiShareTaxonomy miradiShareTaxonomy;
+	private String selectionTypeCode;
 }
