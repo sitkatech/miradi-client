@@ -43,5 +43,6 @@ public class MiradiShareProjectDataForm extends FieldPanelSpec
 		addLabelAndReadOnlySingeLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_VERSION_ID);
 		addLabelAndReadOnlySingeLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_VERSION);
 		addLabelAndExternalProjectIdField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, "Tanager", EAM.text("Miradi Share Project Id"));
+		addMultipleTaxonomyWithEditButtonFields(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
 	}
 }

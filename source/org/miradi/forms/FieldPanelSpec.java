@@ -107,6 +107,11 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 	{
 		addFieldWithCustomLabel(objectType, fieldTag, new FormFieldExternalProjectIdData(objectType, fieldTag, externalProjectIdCode), translatedLabelToUse);
 	}
+	
+	protected void addMultipleTaxonomyWithEditButtonFields(int objectType, String fieldTag)
+	{
+		addFieldWithCustomLabel(objectType, fieldTag, new FormFieldMultipleTaxonomyWithEditButtonFields(objectType, fieldTag), "");
+	}
 
 	protected void addLabelAndField(int type, String fieldTag)
 	{

@@ -22,6 +22,7 @@ package org.miradi.dialogs.base;
 
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.forms.FieldPanelSpec;
+import org.miradi.forms.FieldRelatedFormItem;
 import org.miradi.forms.FormConstant;
 import org.miradi.forms.FormFieldData;
 import org.miradi.forms.FormFieldExternalProjectIdData;
@@ -32,6 +33,7 @@ import org.miradi.forms.PropertiesPanelSpec;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.utils.DataPanelFlexibleWidthHtmlViewer;
+import org.miradi.utils.FillerLabel;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
 
 import com.jhlabs.awt.Alignment;
@@ -119,6 +121,15 @@ abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends	
 			
 			return;
 		}
+		if (formItem.isMultipleTaxonomyWithEditButtonFields())
+		{
+			FieldRelatedFormItem data = (FieldRelatedFormItem) formItem;
+			int objectType = data.getObjectType();
+
+			add(new FillerLabel());
+			addFields(createMultipleTaxonomyWithEditButtonFields(objectType));
+			return;
+		}
 		
 		if(!formItem.isFormFieldData())
 			throw new RuntimeException(getClass().getName()	+ ": Don't know how to add non-field " + formItem);
@@ -149,7 +160,7 @@ abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends	
 
 		if(dataEntryType == PropertiesPanelSpec.TYPE_SINGLE_LINE_READONLY_STRING)
 			return createReadonlyTextField(objectType, fieldTag);
-
+		
 		throw new RuntimeException(getClass().getName()	+ ": Cannot yet create data entry field of type: " + dataEntryType);
 	}
 	
