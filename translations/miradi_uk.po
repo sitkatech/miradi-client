@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-14 10:46-0500\n"
+"POT-Creation-Date: 2013-05-16 12:31-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -1951,7 +1951,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:198
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:85
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:86
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:87
 msgid "Activity"
 msgstr "Діяльність"
 
@@ -3740,7 +3740,7 @@ msgid "FolderName|BackupsFromMigrationToMiradi4"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:52
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:74
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:75
 msgid "Font"
 msgstr "Шрифт"
 
@@ -3888,7 +3888,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:46
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:60
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:96
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:99
 msgid "Goals"
 msgstr "Мета"
 
@@ -4179,7 +4179,7 @@ msgstr ""
 #: Miradi/source/org/miradi/forms/objects/IndicatorSubForm.java:33
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:79
 #: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:39
-#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:51
+#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:52
 msgid "Indicator"
 msgstr "Індикатор"
 
@@ -4624,7 +4624,7 @@ msgid "Leaf Only"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:57
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:94
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:97
 msgid "Legacy TNC Ratings"
 msgstr "Оцінки функції TNC"
 
@@ -5040,7 +5040,7 @@ msgstr "Menu|Забрати тег з %n вибраного пункту (ів)"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:146
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:84
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:88
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:89
 msgid "Method"
 msgstr "Метод"
 
@@ -5340,7 +5340,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:43
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:59
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:95
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:98
 #: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:44
 msgid "Objectives"
 msgstr ""
@@ -5598,7 +5598,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:37
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:55
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:93
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:96
 msgid "Priority"
 msgstr "Пріоритети"
 
@@ -5858,7 +5858,7 @@ msgstr "Ранжирувати проекти стратегій"
 msgid "Rapid Assessment"
 msgstr "Швидка оцінка"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:67
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:68
 msgid "Ratings"
 msgstr "Оцінки"
 
@@ -6526,10 +6526,10 @@ msgstr "Сильне збільшення"
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:67
 #: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:38
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:113
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:114
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:153
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:66
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:138
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:146
 msgid "Summary"
 msgstr "Резюме"
 
@@ -7466,7 +7466,7 @@ msgstr "Тег"
 msgid "Tagged Items"
 msgstr "Мічені пункти"
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:117
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:125
 msgid "Tags"
 msgstr "Ярлички"
 
@@ -7549,7 +7549,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:202
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:83
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:90
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:91
 msgid "Task"
 msgstr "Задача"
 
@@ -8049,7 +8049,7 @@ msgstr "Title|Знайти неправильні з'єднання"
 msgid "Title|Funding Source Properties"
 msgstr "Title|Складові Джерела фінансування"
 
-#: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:60
+#: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:61
 msgid "Title|Goal Properties"
 msgstr "Title|Складові Мети"
 
@@ -8074,7 +8074,7 @@ msgstr "Title|Інформація"
 msgid "Title|Intermediate Result Properties"
 msgstr "Title|Складові проміжного результату"
 
-#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:54
+#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:55
 msgid "Title|Key Ecological Attribute Properties"
 msgstr "Title|Складові екологічної характеристики"
 
@@ -8106,7 +8106,7 @@ msgstr ""
 msgid "Title|Nested Target Properties"
 msgstr "Title|Складові ущільнених цілей"
 
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:68
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:69
 msgid "Title|Objective Properties"
 msgstr "Title|Складові завдань"
 
@@ -8155,7 +8155,7 @@ msgstr "Title|Складові шаблонів звітів"
 msgid "Title|Resource Properties"
 msgstr "Title|Складові Ресурсу"
 
-#: Miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:49
+#: Miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:50
 msgid "Title|Results Chain Properties"
 msgstr "Title|Складові ланцюга результатів"
 
@@ -8183,7 +8183,7 @@ msgstr "Title|Складові Стратегії"
 msgid "Title|Stress Comments"
 msgstr "Title|Особливі коментарі"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:75
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:76
 msgid "Title|Stress Details"
 msgstr "Title|Деталі стресу"
 
