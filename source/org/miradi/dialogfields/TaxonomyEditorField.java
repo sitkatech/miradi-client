@@ -40,14 +40,13 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 	{
 		super(projectToUse, refToUse, tagToUse);
 		
-		taxonomyAssociationCode = taxonomyAssociationCodeToUse;
+		taxonomyAssociation = TaxonomyHelper.findTaxonomyAssociation(getProject(), taxonomyAssociationCodeToUse);
 		component = createEditorComponent(questionToUse);
 		component.addListSelectionListener(this);
 	}
 
 	private AbstractEditorComponentWithHiearchies createEditorComponent(ChoiceQuestion questionToUse)
 	{
-		TaxonomyAssociation taxonomyAssociation = TaxonomyHelper.findTaxonomyAssociation(getProject(), taxonomyAssociationCode);
 		if (taxonomyAssociation.isMultiSelectionTaxonomy())
 			return new MultiSelectionEditorComponentWithHierarchies(questionToUse);
 		
@@ -61,7 +60,6 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 		{
 			BaseObject baseObject = BaseObject.find(getProject(), getORef());
 			TaxonomyClassificationMap taxonomyClassificationList = new TaxonomyClassificationMap(baseObject.getData(BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER));
-			TaxonomyAssociation taxonomyAssociation = TaxonomyHelper.findTaxonomyAssociation(getProject(), taxonomyAssociationCode);
 			CodeList selectedTaxonomyElementCodes = new CodeList(component.getText());
 			taxonomyClassificationList.putCodeList(taxonomyAssociation.getTaxonomyCode(), selectedTaxonomyElementCodes);
 
@@ -79,7 +77,7 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 	{
 		try
 		{
-			CodeList taxonomyElementCodes = TaxonomyClassificationMap.getTaxonomyElementCodes(getProject(), newValue, taxonomyAssociationCode);
+			CodeList taxonomyElementCodes = TaxonomyClassificationMap.getTaxonomyElementCodes(getProject(), newValue, taxonomyAssociation.getTaxonomyAssociationCode());
 			component.setText(taxonomyElementCodes.toString());
 		}
 		catch (Exception e)
@@ -105,6 +103,6 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 		forceSave();
 	}
 	
-	private String taxonomyAssociationCode;
+	private TaxonomyAssociation taxonomyAssociation;
 	private AbstractEditorComponentWithHiearchies component;
 }
