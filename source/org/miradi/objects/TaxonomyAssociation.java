@@ -22,8 +22,10 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.TaxonomyElement;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.questions.TaxonomyClassificationSelectionModeQuestion;
 import org.miradi.questions.TaxonomyMultiSelectModeQuestion;
 import org.miradi.schemas.TaxonomyAssociationSchema;
 
@@ -64,6 +66,21 @@ public class TaxonomyAssociation extends BaseObject
 		String multiSelectCode = getData(TaxonomyAssociationSchema.TAG_MULTI_SELECT);
 		
 		return multiSelectCode.equals(TaxonomyMultiSelectModeQuestion.MULTI_SELECT_CODE);
+	}
+	
+	public  boolean isSelectable(TaxonomyElement taxonomyElementToUse)
+	{
+		final boolean isParent = taxonomyElementToUse.getChildCodes().hasData();
+		final boolean leafOnlySelectionType = leafOnlySelection();
+		if (leafOnlySelectionType && isParent)
+			return false;
+		
+		return true;
+	}
+	
+	private boolean leafOnlySelection()
+	{
+		return getTaxonomyClassificationSelectionTypeCode().equals(TaxonomyClassificationSelectionModeQuestion.LEAF_ONLY_CODE);
 	}
 	
 	@Override
