@@ -41,7 +41,7 @@ public class MiradiShareTaxonomyQuestion extends DynamicChoiceWithRootChoiceItem
 	
 	private ChoiceItemWithChildren createChoiceItems() throws Exception
 	{
-		CodeList topLevelTaxonomyElementCodes = miradiShareTaxonomy.getTopLevelTaxonomyElementCodes();
+		CodeList topLevelTaxonomyElementCodes = getMiradiShareTaxonomy().getTopLevelTaxonomyElementCodes();
 		ChoiceItemWithChildren rootChoiceItem = new ChoiceItemWithChildren("", "", "");
 		addChildrenChoices(rootChoiceItem, topLevelTaxonomyElementCodes);
 
@@ -52,13 +52,23 @@ public class MiradiShareTaxonomyQuestion extends DynamicChoiceWithRootChoiceItem
 	{
 		for (String taxonomyElementCode : childCodes)
 		{
-			TaxonomyElement taxonomyElement = miradiShareTaxonomy.findTaxonomyElement(taxonomyElementCode);
+			TaxonomyElement taxonomyElement = getMiradiShareTaxonomy().findTaxonomyElement(taxonomyElementCode);
 			ChoiceItemWithChildren childChoiceItem = new ChoiceItemWithChildren(taxonomyElement.getCode(), taxonomyElement.getLabel(), taxonomyElement.getDescription());
-			final boolean isSelectable = taxonomyAssociation.isSelectable(taxonomyElement);
+			final boolean isSelectable = getTaxonomyAssociation().isSelectable(taxonomyElement);
 			childChoiceItem.setSelectable(isSelectable);
 			parentChoiceItem.addChild(childChoiceItem);
 			addChildrenChoices(childChoiceItem, taxonomyElement.getChildCodes());
 		}
+	}
+
+	private TaxonomyAssociation getTaxonomyAssociation()
+	{
+		return taxonomyAssociation;
+	}
+
+	private MiradiShareTaxonomy getMiradiShareTaxonomy()
+	{
+		return miradiShareTaxonomy;
 	}
 	
 	private MiradiShareTaxonomy miradiShareTaxonomy;
