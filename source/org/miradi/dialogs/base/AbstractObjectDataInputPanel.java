@@ -25,6 +25,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.Set;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
@@ -85,6 +86,7 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitledBorder;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.ids.BaseId;
+import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
@@ -380,6 +382,19 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		
 		return BorderFactory.createCompoundBorder(cushion, titledBorder);
 	}
+	
+	protected void addFields(LinkedHashMap<ObjectDataInputField, String> fieldsToLabelMap)
+	{
+		JPanel fieldPanel = new OneColumnPanel();
+		Set<ObjectDataInputField> fieldsToAdd = fieldsToLabelMap.keySet();
+		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		for(ObjectDataInputField field : fieldsToAdd)
+		{
+			addFieldToList(field);
+			add(new PanelTitleLabel(fieldsToLabelMap.get(field)));
+			add(field.getComponent());
+		}
+	}		
 	
 	private void addSubPanelWithBorder(AbstractObjectDataInputPanel subPanel, AbstractBorder border)
 	{

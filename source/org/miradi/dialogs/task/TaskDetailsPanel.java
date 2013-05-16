@@ -47,6 +47,7 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 		ObjectDataInputField taskIdField = createShortStringField(ObjectType.TASK, Task.TAG_SHORT_LABEL);
 		addFieldsOnOneLine(taskNameLabel, new ObjectDataInputField[] {taskIdField, taskNameField,} );
 		addField(createMultilineField(TaskSchema.getObjectType(), Task.TAG_DETAILS));
+		addFields(createMultipleTaxonomyWithEditButtonFields(TaskSchema.getObjectType()));
 		
 		addCustomFields(actionsToUse);
 		
