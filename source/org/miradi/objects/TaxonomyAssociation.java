@@ -61,6 +61,11 @@ public class TaxonomyAssociation extends BaseObject
 		return getData(TaxonomyAssociationSchema.TAG_SELECTION_TYPE);
 	}
 	
+	public boolean isSingleSelectionTaxonomy()
+	{
+		return !isMultiSelectionTaxonomy();
+	}
+	
 	public boolean isMultiSelectionTaxonomy()
 	{
 		String multiSelectCode = getData(TaxonomyAssociationSchema.TAG_MULTI_SELECT);
