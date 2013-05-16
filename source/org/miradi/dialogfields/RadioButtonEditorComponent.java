@@ -20,22 +20,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JRadioButton;
-import javax.swing.JToggleButton;
-
-import org.miradi.dialogs.fieldComponents.RadioButtonWithChoiceItemProvider;
 import org.miradi.main.EAM;
-import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.ControlPanelFlexibleWidthHtmlViewer;
 
-public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
+public class RadioButtonEditorComponent extends SingleSelectionEditorComponentWithHierarchies
 {
 	public RadioButtonEditorComponent(ChoiceQuestion questionToUse)
 	{
-		super(questionToUse, SINGLE_COLUMN);
+		super(questionToUse);
 		
 		initializeRadioButtons();
 	}
@@ -43,6 +37,12 @@ public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 	private void initializeRadioButtons()
 	{
 		setText("");
+	}
+
+	@Override
+	protected int calculateColumnCount()
+	{
+		return getColumnCount() * getNumberOfComponentsPerChoice();
 	}
 
 	@Override
@@ -55,28 +55,9 @@ public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 	}
 	
 	@Override
-	protected JToggleButton createToggleButton(ChoiceItem choiceItem)
-	{
-		JRadioButton radioButton = new RadioButtonWithChoiceItemProvider(choiceItem);
-		groupRadioButton(radioButton);
-		
-		return radioButton;
-	}
-	
-	@Override
 	public void setText(String codeToUse)
 	{
 		CodeList codeList = new CodeList(new String[]{codeToUse, });
 		updateToggleButtonSelections(codeList);
 	}
-
-	private void groupRadioButton(JRadioButton radioButton)
-	{
-		if (group == null)
-			group = new ButtonGroup();
-	
-		group.add(radioButton);
-	}
-
-	private ButtonGroup group; 
 }

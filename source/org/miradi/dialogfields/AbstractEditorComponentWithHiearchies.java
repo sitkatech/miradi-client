@@ -26,7 +26,6 @@ import javax.swing.Box;
 import javax.swing.JComponent;
 
 import org.miradi.dialogs.base.MiradiPanel;
-import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
@@ -41,7 +40,8 @@ abstract public class AbstractEditorComponentWithHiearchies extends QuestionBase
 	@Override
 	protected void addComponentToRowPanel(MiradiPanel mainRowsPanel, JComponent leftColumnComponent, ChoiceItem choiceItem)
 	{
-		mainRowsPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		mainRowsPanel.add(getSafeIconLabel(choiceItem.getIcon()));
+		mainRowsPanel.add(leftColumnComponent);
 		try
 		{
 			final int horizontalIndent = 0;
@@ -51,6 +51,8 @@ abstract public class AbstractEditorComponentWithHiearchies extends QuestionBase
 		{
 			EAM.alertUserOfNonFatalException(e);
 		}
+		
+		mainRowsPanel.add(createDescriptionComponent(choiceItem));
 	}
 	
 	private void addRowComponents(MiradiPanel mainRowsPanel, JComponent leftColumnComponent, ChoiceItem parentChoiceItem, int horizontalIndent) throws Exception
