@@ -36,28 +36,28 @@ public class MiradiShareTaxonomyQuestion extends DynamicChoiceWithRootChoiceItem
 	@Override
 	protected ChoiceItemWithChildren createHeaderChoiceItem() throws Exception
 	{
-		return createChoiceItems(miradiShareTaxonomy, taxonomyAssociation);
+		return createChoiceItems();
 	}
 	
-	private static ChoiceItemWithChildren createChoiceItems(MiradiShareTaxonomy miradiShareTaxonomyToUse, TaxonomyAssociation taxonomyAssociationToUse) throws Exception
+	private ChoiceItemWithChildren createChoiceItems() throws Exception
 	{
-		CodeList topLevelTaxonomyElementCodes = miradiShareTaxonomyToUse.getTopLevelTaxonomyElementCodes();
+		CodeList topLevelTaxonomyElementCodes = miradiShareTaxonomy.getTopLevelTaxonomyElementCodes();
 		ChoiceItemWithChildren rootChoiceItem = new ChoiceItemWithChildren("", "", "");
-		addChildrenChoices(miradiShareTaxonomyToUse, rootChoiceItem, topLevelTaxonomyElementCodes, taxonomyAssociationToUse);
+		addChildrenChoices(rootChoiceItem, topLevelTaxonomyElementCodes);
 
 		return rootChoiceItem;
 	}
 
-	private static void addChildrenChoices(MiradiShareTaxonomy miradiShareTaxonomyToUse, ChoiceItemWithChildren parentChoiceItem, CodeList childCodes, TaxonomyAssociation taxonomyAssociationToUse) throws Exception
+	private void addChildrenChoices(ChoiceItemWithChildren parentChoiceItem, CodeList childCodes) throws Exception
 	{
 		for (String taxonomyElementCode : childCodes)
 		{
-			TaxonomyElement taxonomyElement = miradiShareTaxonomyToUse.findTaxonomyElement(taxonomyElementCode);
+			TaxonomyElement taxonomyElement = miradiShareTaxonomy.findTaxonomyElement(taxonomyElementCode);
 			ChoiceItemWithChildren childChoiceItem = new ChoiceItemWithChildren(taxonomyElement.getCode(), taxonomyElement.getLabel(), taxonomyElement.getDescription());
-			final boolean isSelectable = taxonomyAssociationToUse.isSelectable(taxonomyElement);
+			final boolean isSelectable = taxonomyAssociation.isSelectable(taxonomyElement);
 			childChoiceItem.setSelectable(isSelectable);
 			parentChoiceItem.addChild(childChoiceItem);
-			addChildrenChoices(miradiShareTaxonomyToUse, childChoiceItem, taxonomyElement.getChildCodes(), taxonomyAssociationToUse);
+			addChildrenChoices(childChoiceItem, taxonomyElement.getChildCodes());
 		}
 	}
 	
