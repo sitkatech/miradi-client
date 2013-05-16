@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base;
 
-import java.util.LinkedHashMap;
-import java.util.Set;
 import java.util.Vector;
 
 import javax.swing.Box;
@@ -39,7 +37,6 @@ import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.icons.QuestionMarkIcon;
-import org.miradi.layout.OneColumnPanel;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.objecthelpers.ORef;
@@ -174,19 +171,6 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 		addFieldComponent(box);
 		return field;
 	}
-	
-	protected void addFields(LinkedHashMap<ObjectDataInputField, String> fieldsToLabelMap)
-	{
-		JPanel fieldPanel = new OneColumnPanel();
-		Set<ObjectDataInputField> fields = fieldsToLabelMap.keySet();
-		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		for(ObjectDataInputField field : fields)
-		{
-			addFieldToList(field);
-			add(new PanelTitleLabel(fieldsToLabelMap.get(field)));
-			add(field.getComponent());
-		}
-	}		
 	
 	protected void addFieldsOnOneLine(String translatedString, Icon icon, ObjectDataInputField[] fields)
 	{

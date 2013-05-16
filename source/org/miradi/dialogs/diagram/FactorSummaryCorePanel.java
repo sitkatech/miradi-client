@@ -49,6 +49,7 @@ import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.utils.ObjectsActionButton;
 
 public class FactorSummaryCorePanel extends ObjectDataInputPanel
@@ -76,10 +77,12 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		if (factorToEdit.isCause())
 		{
 			addField(createCheckBoxField(CauseSchema.getObjectType(), Cause.TAG_IS_DIRECT_THREAT, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE));
+			addFields(createMultipleTaxonomyWithEditButtonFields(CauseSchema.getObjectType()));
 		}
 		if (factorToEdit.isDirectThreat())
 		{
 			addField(createRadioButtonEditorField(CauseSchema.getObjectType(), Cause.TAG_TAXONOMY_CODE, new ThreatClassificationQuestion()));
+			addFields(createMultipleTaxonomyWithEditButtonFields(CauseSchema.getObjectType()));
 		}
 		
 		if(factorToEdit.isStrategy())
@@ -102,6 +105,11 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 			addField(createMultilineField(Target.TAG_CURRENT_STATUS_JUSTIFICATION));
 			addField(createStringField(Target.TAG_SPECIES_LATIN_NAME));
 			addField(createQuestionFieldWithDescriptionPanel(TargetSchema.getObjectType(), Target.TAG_HABITAT_ASSOCIATION, new HabitatAssociationQuestion()));
+			addFields(createMultipleTaxonomyWithEditButtonFields(TargetSchema.getObjectType()));
+		}
+		if (factorToEdit.isThreatReductionResult())
+		{
+			addFields(createMultipleTaxonomyWithEditButtonFields(ThreatReductionResultSchema.getObjectType()));
 		}
 		
 		addField(createReadOnlyObjectList(factorToEdit.getType(), Factor.PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS));
