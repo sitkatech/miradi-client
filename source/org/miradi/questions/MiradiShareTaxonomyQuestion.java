@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.TaxonomyElement;
 import org.miradi.objects.MiradiShareTaxonomy;
 import org.miradi.objects.TaxonomyAssociation;
@@ -42,9 +43,21 @@ public class MiradiShareTaxonomyQuestion extends DynamicChoiceWithRootChoiceItem
 	private ChoiceItemWithChildren createChoiceItems() throws Exception
 	{
 		CodeList topLevelTaxonomyElementCodes = getMiradiShareTaxonomy().getTopLevelTaxonomyElementCodes();
-		ChoiceItemWithChildren rootChoiceItem = new ChoiceItemWithChildren("", "", "");
+		ChoiceItemWithChildren rootChoiceItem = createRootChoiceItem();
 		addChildrenChoices(rootChoiceItem, topLevelTaxonomyElementCodes);
 
+		return rootChoiceItem;
+	}
+
+	private ChoiceItemWithChildren createRootChoiceItem()
+	{
+		String rootChoiceItemLabel = "";
+		if (getTaxonomyAssociation().isSingleSelectionTaxonomy())
+			rootChoiceItemLabel = EAM.text("Not Specified");
+		
+		ChoiceItemWithChildren rootChoiceItem = new ChoiceItemWithChildren("", rootChoiceItemLabel, "");
+		rootChoiceItem.setSelectable(getTaxonomyAssociation().isSingleSelectionTaxonomy());
+		
 		return rootChoiceItem;
 	}
 
