@@ -123,7 +123,7 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 		mainRowsPanel.add(createDescriptionComponent(choiceItem));
 	}
 
-	private int getNumberOfComponentsPerChoice()
+	protected int getNumberOfComponentsPerChoice()
 	{
 		final int ICON_COMPONENT_COUNT = 1;
 		final int TOGGLE_BUTTON_COMPONENT_COUNT = 1;
@@ -132,7 +132,7 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 		return TOTAL_COMPONENT_COUNT_PER_CHOICE;
 	}
 	
-	private Component createDescriptionComponent(ChoiceItem choiceItem)
+	protected Component createDescriptionComponent(ChoiceItem choiceItem)
 	{
 		String description = choiceItem.getDescription();
 		if (description.length() == 0)
@@ -156,7 +156,7 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 		return AppPreferences.getDataPanelBackgroundColor();
 	}
 
-	private PanelTitleLabel getSafeIconLabel(Icon icon)
+	protected PanelTitleLabel getSafeIconLabel(Icon icon)
 	{
 		if (icon == null)
 			return new PanelTitleLabel();
