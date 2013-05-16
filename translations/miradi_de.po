@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-14 10:46-0500\n"
+"POT-Creation-Date: 2013-05-16 12:31-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -2069,7 +2069,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:198
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:85
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:86
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:87
 msgid "Activity"
 msgstr "Aktivität"
 
@@ -3913,7 +3913,7 @@ msgid "FolderName|BackupsFromMigrationToMiradi4"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:52
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:74
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:75
 msgid "Font"
 msgstr "Schriftart"
 
@@ -4058,7 +4058,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:46
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:60
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:96
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:99
 msgid "Goals"
 msgstr "Schutzziele"
 
@@ -4368,7 +4368,7 @@ msgstr ""
 #: Miradi/source/org/miradi/forms/objects/IndicatorSubForm.java:33
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:79
 #: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:39
-#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:51
+#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:52
 msgid "Indicator"
 msgstr "Indikator"
 
@@ -4808,7 +4808,7 @@ msgid "Leaf Only"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:57
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:94
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:97
 msgid "Legacy TNC Ratings"
 msgstr ""
 
@@ -5225,7 +5225,7 @@ msgstr "Tag von %n ausgewählten Element(en) entfernen"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:146
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:84
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:88
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:89
 msgid "Method"
 msgstr ""
 
@@ -5526,7 +5526,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:43
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:59
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:95
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:98
 #: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:44
 msgid "Objectives"
 msgstr "Zwischenziele"
@@ -5787,7 +5787,7 @@ msgstr "Bereite Gruppen vor..."
 
 #: Miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:37
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:55
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:93
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:96
 msgid "Priority"
 msgstr "Priorität"
 
@@ -6057,7 +6057,7 @@ msgstr "Strategieentwürfe gliedern"
 msgid "Rapid Assessment"
 msgstr "Oberflächliche Erfassung"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:67
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:68
 msgid "Ratings"
 msgstr "Bewertungen"
 
@@ -6746,10 +6746,10 @@ msgstr "Starker Anstieg"
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:67
 #: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:38
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:113
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:114
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:153
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:66
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:138
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:146
 msgid "Summary"
 msgstr "Zusammenfassung"
 
@@ -7724,7 +7724,7 @@ msgid "Tagged Items"
 msgstr ""
 
 # würde vorschalgen Tag bleibt Tag (Felix)
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:117
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:125
 msgid "Tags"
 msgstr "Tags"
 
@@ -7815,7 +7815,7 @@ msgstr "Schutzobjekte mit Diagrammen"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:202
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:83
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:90
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:91
 msgid "Task"
 msgstr "Aufgabe"
 
@@ -8329,7 +8329,7 @@ msgstr ""
 msgid "Title|Funding Source Properties"
 msgstr "Eigenschaften - Finazierungsquelle"
 
-#: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:60
+#: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:61
 msgid "Title|Goal Properties"
 msgstr "Eigenschaften - Schutzziel "
 
@@ -8354,7 +8354,7 @@ msgstr "Information"
 msgid "Title|Intermediate Result Properties"
 msgstr "Eigenschaften - Zwischenergebnis"
 
-#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:54
+#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:55
 msgid "Title|Key Ecological Attribute Properties"
 msgstr "Eigenschaften - Ökologisches Schlüsselattribut "
 
@@ -8386,7 +8386,7 @@ msgstr ""
 msgid "Title|Nested Target Properties"
 msgstr "Eigenschaften - Eingebettetes Schutzobjekt "
 
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:68
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:69
 msgid "Title|Objective Properties"
 msgstr "Eigenschaften - Zwischenziel "
 
@@ -8435,7 +8435,7 @@ msgstr ""
 msgid "Title|Resource Properties"
 msgstr "Eigenschaften - Ressource"
 
-#: Miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:49
+#: Miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:50
 msgid "Title|Results Chain Properties"
 msgstr "Eigenschaften - Ergebniswirkungskette "
 
@@ -8465,7 +8465,7 @@ msgstr "Strategie Eigenschaften"
 msgid "Title|Stress Comments"
 msgstr "Stress Kommentare"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:75
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:76
 msgid "Title|Stress Details"
 msgstr "Stress Details"
 
