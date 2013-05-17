@@ -442,7 +442,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private String createContainerName(String elementName)
 	{
-		return elementName + "Container";
+		return elementName + CONTAINER_ELEMENT_TAG;
 	}
 
 	public String createRelevantSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
