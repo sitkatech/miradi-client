@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-16 17:16-0500\n"
+"POT-Creation-Date: 2013-05-17 11:01-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -5298,7 +5298,7 @@ msgstr "Үр ашиггүй"
 
 #: Miradi/source/org/miradi/objecthelpers/TaxonomyFileLoader.java:38
 #: Miradi/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:36
-#: Miradi/source/org/miradi/questions/MiradiShareTaxonomyQuestion.java:56
+#: Miradi/source/org/miradi/questions/MiradiShareTaxonomyQuestion.java:55
 #: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:37
 #: Miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:35
 #: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:42
