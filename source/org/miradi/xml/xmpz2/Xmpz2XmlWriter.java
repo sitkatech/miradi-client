@@ -378,9 +378,9 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	private void writeTaxonomyElement(TaxonomyElement taxonomyElement) throws Exception
 	{
 		writeStartElementWithAttribute(TAXONOMY_ELEMENT, TAXONOMY_ELEMENT_CODE, taxonomyElement.getCode());
-		writeElement(TAXONOMY_ELEMENT_USER_CODE, taxonomyElement.getUserCode());
-		writeElement(TAXONOMY_ELEMENT_LABEL, taxonomyElement.getLabel());
-		writeElement(TAXONOMY_ELEMENT_DESCRIPTION, taxonomyElement.getDescription());
+		writeRequiredElement(TAXONOMY_ELEMENT_USER_CODE, taxonomyElement.getUserCode());
+		writeRequiredElement(TAXONOMY_ELEMENT_LABEL, taxonomyElement.getLabel());
+		writeRequiredElement(TAXONOMY_ELEMENT_DESCRIPTION, taxonomyElement.getDescription());
 		writeTaxonomyElementCodes(TAXONOMY_ELEMENT_CHILD_CODES, taxonomyElement.getChildCodes());
 		
 		writeEndElement(TAXONOMY_ELEMENT);
