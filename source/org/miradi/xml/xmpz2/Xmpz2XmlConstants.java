@@ -300,7 +300,7 @@ public interface Xmpz2XmlConstants
 	public static final String CODE = "Code";
 	public static final String TAXONOMY_CODE = TAXONOMY + CODE;
 	public static final String TAXONOMY_CLASSIFICATION_TAXONOMY_CODE = TAXONOMY_CLASSIFICATION + TAXONOMY + CODE;
-	public static final String TAXONOMY_TOP_LEVEL_ELEMENT_CODES = TAXONOMY + "TopLevelElementCodes";
+	public static final String TAXONOMY_TOP_LEVEL_ELEMENT_CODE = "TopLevelElementCode";
 	
 	public static final String TAXONOMY_ASSOCIATION_MULTI_SELECT = "TaxonomyAssociationMultiSelect";
 	public static final String TAXONOMY_ASSOCIATION_SELECTION_TYPE= "TaxonomyAssociationSelectionType";

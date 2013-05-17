@@ -22,7 +22,6 @@ package org.miradi.xml.xmpz2.objectImporters;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.schemas.MiradiShareTaxonomySchema;
-import org.miradi.utils.CodeList;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 
@@ -39,21 +38,9 @@ public class TaxonomyImporter extends BaseObjectImporter
 		if (tag.equals(MiradiShareTaxonomySchema.TAG_TAXONOMY_CODE))
 			return true;
 		
-		if (tag.equals(MiradiShareTaxonomySchema.TAG_TAXONOMY_TOP_LEVEL_ELEMENT_CODES))
-			return true;
-		
 		return false;
 	}
 	
-	@Override
-	public void importFields(Node baseObjectNode, ORef refToUse) throws Exception
-	{
-		super.importFields(baseObjectNode, refToUse);
-		
-		CodeList taxonomyElementCodes = getImporter().importTaxonomyElementCodes(baseObjectNode, TAXONOMY_TOP_LEVEL_ELEMENT_CODES);
-		getImporter().setData(refToUse, MiradiShareTaxonomySchema.TAG_TAXONOMY_TOP_LEVEL_ELEMENT_CODES, taxonomyElementCodes);
-	}
-
 	@Override
 	public ORef createBaseObject(final BaseObjectImporter importer,	Node baseObjectNode) throws Exception
 	{

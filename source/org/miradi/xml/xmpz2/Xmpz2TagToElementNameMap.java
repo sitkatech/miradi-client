@@ -131,6 +131,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 	{
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put(MiradiShareTaxonomySchema.TAG_TAXONOMY_VERSION, TAXONOMY_VERSION);
+		map.put(MiradiShareTaxonomySchema.TAG_TAXONOMY_TOP_LEVEL_ELEMENT_CODES, TAXONOMY_TOP_LEVEL_ELEMENT_CODE);
 
 		return map;
 	}

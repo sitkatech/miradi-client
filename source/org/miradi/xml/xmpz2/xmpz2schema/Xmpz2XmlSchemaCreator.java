@@ -430,7 +430,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private String createCodelistSchemaElement(String codelistElementName, ChoiceQuestion question)
 	{
-		String vocabularyName = getChoiceQuestionToSchemaElementNameMap().get(question);
+		final String vocabularyName = getVocabularyName(question);
 		final String createContainerName = createContainerName(codelistElementName);
 		String containerElement = getSchemaWriter().createElementDefinition(createContainerName) + StringUtilities.NEW_LINE;
 		containerElement += "{" + StringUtilities.NEW_LINE;
@@ -438,6 +438,15 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		containerElement += "}" + StringUtilities.NEW_LINE;
 		
 		return containerElement;
+	}
+
+	private String getVocabularyName(ChoiceQuestion question)
+	{
+		String vocabularyName = getChoiceQuestionToSchemaElementNameMap().get(question);
+		if (vocabularyName == null)
+			return TEXT_ELEMENT_TYPE;
+		
+		return vocabularyName;
 	}
 	
 	private String createContainerName(String elementName)
