@@ -669,6 +669,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 			taxonomyElement.setCode(getAttributeValue(taxonomyElementNode, TAXONOMY_ELEMENT_CODE));
 			taxonomyElement.setLabel(getNodeContent(taxonomyElementNode, TAXONOMY_ELEMENT_LABEL));
 			taxonomyElement.setDescription(getNodeContent(taxonomyElementNode, TAXONOMY_ELEMENT_DESCRIPTION));
+			taxonomyElement.setUserCode(getNodeContent(taxonomyElementNode, TAXONOMY_ELEMENT_USER_CODE));
 			CodeList childCodes = importTaxonomyElementCodes(taxonomyElementNode, TAXONOMY_ELEMENT_CHILD_CODES);
 			taxonomyElement.setChildCodes(childCodes);
 			

@@ -32,7 +32,7 @@ public interface Xmpz2XmlConstants
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
 	public static final String DOT_ELEMENT = ".element";
 	
-	public static final String NAME_SPACE_VERSION = "222";
+	public static final String NAME_SPACE_VERSION = "223";
 	public static final String PARTIAL_NAME_SPACE = "http://xml.miradi.org/schema/ConservationProject/";
 	public static final String NAME_SPACE = PARTIAL_NAME_SPACE + NAME_SPACE_VERSION;
 	public static final String XMLNS = "xmlns";
@@ -294,6 +294,7 @@ public interface Xmpz2XmlConstants
 	public static final String TAXONOMY_ELEMENT_CODE = TAXONOMY_ELEMENT + "Code";
 	public static final String TAXONOMY_ELEMENT_CHILD_CODES = TAXONOMY_ELEMENT + "ChildCodes";
 	public static final String TAXONOMY_ELEMENT_LABEL = TAXONOMY_ELEMENT + "Label";
+	public static final String TAXONOMY_ELEMENT_USER_CODE = TAXONOMY_ELEMENT + "UserCode";
 	public static final String TAXONOMY_ELEMENT_DESCRIPTION = TAXONOMY_ELEMENT + "Description";
 	public static final String TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODES = TAXONOMY_CLASSIFICATION + TAXONOMY_ELEMENT_CODE + "s";
 	public static final String CODE = "Code";

@@ -903,6 +903,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		creator.addChildElement(getSchemaWriter().createTaxonomyElementCode(TAXONOMY_ELEMENT_CHILD_CODES));
 		creator.addTextSchemaElement(TAXONOMY_ELEMENT_LABEL);
 		creator.addTextSchemaElement(TAXONOMY_ELEMENT_DESCRIPTION);
+		creator.addTextSchemaElement(TAXONOMY_ELEMENT_USER_CODE);
 		
 		return creator;
 	}

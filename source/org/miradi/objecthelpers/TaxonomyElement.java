@@ -32,6 +32,7 @@ public class TaxonomyElement
 		setChildCodes(new CodeList());
 		setLabel("");
 		setDescription("");
+		setUserCode("");
 	}
 	
 	public TaxonomyElement(EnhancedJsonObject json) throws Exception
@@ -42,6 +43,7 @@ public class TaxonomyElement
 		childCodes = json.optCodeList(TAG_CHILD_CODES);
 		label = json.optString(TAG_LABEL);
 		description = json.optString(TAG_DESCRIPTION);
+		userCode = json.optString(TAG_USER_CODE);
 	}
 
 	public EnhancedJsonObject toJson()
@@ -51,6 +53,7 @@ public class TaxonomyElement
 		json.put(TAG_CHILD_CODES, getChildCodes().toJson());
 		json.put(TAG_LABEL, getLabel());
 		json.put(TAG_DESCRIPTION, getDescription());
+		json.put(TAG_USER_CODE, getUserCode());
 		
 		return json;
 	}
@@ -80,6 +83,11 @@ public class TaxonomyElement
 		return description;
 	}
 	
+	public String getUserCode()
+	{
+		return userCode;
+	}
+	
 	public void setCode(String codeToUse)
 	{
 		code = codeToUse;
@@ -100,13 +108,20 @@ public class TaxonomyElement
 		childCodes = childCodesToUse;
 	}
 	
+	public void setUserCode(String userCodeToUse)
+	{
+		userCode = XmlUtilities2.getXmlEncoded(userCodeToUse);
+	}
+	
 	private String code;
 	private CodeList childCodes;
 	private String label;
 	private String description;
+	private String userCode;
 	
 	private static final String TAG_CODE = "Code";
 	private static final String TAG_CHILD_CODES = "ChildCodes";
 	private static final String TAG_LABEL = "Label";
 	private static final String TAG_DESCRIPTION = "Description";
+	private static final String TAG_USER_CODE = "UserCode";
 }
