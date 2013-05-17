@@ -38,21 +38,21 @@ abstract public class AbstractEditorComponentWithHiearchies extends QuestionBase
 	}
 	
 	@Override
-	protected void addComponentToRowPanel(MiradiPanel mainRowsPanel, JComponent leftColumnComponent, ChoiceItem choiceItem)
+	protected void addComponentToRowPanel(MiradiPanel mainRowsPanel, JComponent leftColumnComponent, ChoiceItem rootChoiceItem)
 	{
-		mainRowsPanel.add(getSafeIconLabel(choiceItem.getIcon()));
+		mainRowsPanel.add(getSafeIconLabel(rootChoiceItem.getIcon()));
 		mainRowsPanel.add(leftColumnComponent);
 		try
 		{
 			final int horizontalIndent = 0;
-			addRowComponents(mainRowsPanel, leftColumnComponent, choiceItem, horizontalIndent);
+			addRowComponents(mainRowsPanel, leftColumnComponent, rootChoiceItem, horizontalIndent);
 		}
 		catch (Exception e)
 		{
 			EAM.alertUserOfNonFatalException(e);
 		}
 		
-		mainRowsPanel.add(createDescriptionComponent(choiceItem));
+		mainRowsPanel.add(createDescriptionComponent(rootChoiceItem));
 	}
 	
 	private void addRowComponents(MiradiPanel mainRowsPanel, JComponent leftColumnComponent, ChoiceItem parentChoiceItem, int horizontalIndent) throws Exception
