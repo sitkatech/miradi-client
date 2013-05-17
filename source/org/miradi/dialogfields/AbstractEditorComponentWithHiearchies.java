@@ -41,7 +41,8 @@ abstract public class AbstractEditorComponentWithHiearchies extends QuestionBase
 	protected void addComponentToRowPanel(MiradiPanel mainRowsPanel, JComponent leftColumnComponent, ChoiceItem rootChoiceItem)
 	{
 		mainRowsPanel.add(getSafeIconLabel(rootChoiceItem.getIcon()));
-		mainRowsPanel.add(leftColumnComponent);
+		rootChoiceItem.setSelectable(isRootChoiceItemSelectable());
+		mainRowsPanel.add(createLeftColumnComponent(rootChoiceItem));
 		try
 		{
 			final int horizontalIndent = 0;
@@ -84,6 +85,8 @@ abstract public class AbstractEditorComponentWithHiearchies extends QuestionBase
 		
 		return box;
 	}
+	
+	abstract protected boolean isRootChoiceItemSelectable();
 	
 	private static final int INDENT_PER_LEVEL = 5;
 }
