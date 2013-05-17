@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Fri May 17 13:57:03 EDT 2013 $
+# $LastChangedDate: Fri May 17 15:03:41 EDT 2013 $
 # $LastChangedRevision: 223 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/223'
 start = ConservationProject.element
@@ -724,8 +724,8 @@ Taxonomy.element = element miradi:Taxonomy
 {
   attribute TaxonomyCode { text } &
   element miradi:TaxonomyElements { TaxonomyElement.element* } &
-  element miradi:TaxonomyTopLevelElementCodes { TaxonomyElementCode.element* }? &
-  element miradi:TaxonomyVersion { text }?
+  element miradi:TaxonomyVersion { text }? &
+  TaxonomyTopLevelElementCodeContainer.element ?
 }
 
 SimpleThreatRatingPool.element = element miradi:SimpleThreatRatingPool { SimpleThreatRating.element* }
@@ -823,6 +823,11 @@ element miradi:code { vocabulary_biodiversity_target_habitat_association } *
 ResultsChainHiddenTypesContainer.element = element miradi:ResultsChainHiddenTypesContainer
 {
 element miradi:code { vocabulary_hidden_types } *
+}
+
+TaxonomyTopLevelElementCodeContainer.element = element miradi:TaxonomyTopLevelElementCodeContainer
+{
+element miradi:code { text } *
 }
 
 vocabulary_work_plan_time_unit = 'QUARTERLY'|'YEARLY'

@@ -21,9 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2;
 
 import org.miradi.objects.BaseObject;
-import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.MiradiShareTaxonomySchema;
-import org.miradi.utils.CodeList;
 
 public class MiradiShareTaxonomyExporter extends BaseObjectExporter
 {
@@ -37,24 +35,6 @@ public class MiradiShareTaxonomyExporter extends BaseObjectExporter
 	{
 		String taxonomyCode = baseObject.getData(MiradiShareTaxonomySchema.TAG_TAXONOMY_CODE);
 		getWriter().writeObjectStartElementWithAttribute(baseObject, TAXONOMY_CODE, taxonomyCode);
-	}
-	
-	@Override
-	protected void writeFields(BaseObject baseObject, BaseObjectSchema baseObjectSchema) throws Exception
-	{
-		super.writeFields(baseObject, baseObjectSchema);
-		
-		final CodeList taxonomyTopLevelElementCodes = baseObject.getCodeList(MiradiShareTaxonomySchema.TAG_TAXONOMY_TOP_LEVEL_ELEMENT_CODES);
-		getWriter().writeTaxonomyElementCodes(TAXONOMY_TOP_LEVEL_ELEMENT_CODES, taxonomyTopLevelElementCodes);
-	}
-	
-	@Override
-	protected boolean doesFieldRequireSpecialHandling(String tag)
-	{
-		if (tag.equals(MiradiShareTaxonomySchema.TAG_TAXONOMY_TOP_LEVEL_ELEMENT_CODES))
-			return true;
-		
-		return super.doesFieldRequireSpecialHandling(tag);
 	}
 	
 	@Override
