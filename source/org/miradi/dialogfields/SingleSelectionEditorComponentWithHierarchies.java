@@ -50,6 +50,12 @@ public class SingleSelectionEditorComponentWithHierarchies extends AbstractEdito
 	
 		group.add(radioButton);
 	}
+	
+	@Override
+	protected boolean isRootChoiceItemSelectable()
+	{
+		return true;
+	}
 
 	private ButtonGroup group; 
 }

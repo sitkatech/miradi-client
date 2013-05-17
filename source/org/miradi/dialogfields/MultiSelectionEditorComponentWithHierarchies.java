@@ -28,4 +28,10 @@ public class MultiSelectionEditorComponentWithHierarchies extends AbstractEditor
 	{
 		super(questionToUse);
 	}
+
+	@Override
+	protected boolean isRootChoiceItemSelectable()
+	{
+		return false;
+	}
 }

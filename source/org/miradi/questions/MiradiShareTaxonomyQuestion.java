@@ -52,16 +52,9 @@ public class MiradiShareTaxonomyQuestion extends DynamicChoiceWithRootChoiceItem
 	private ChoiceItemWithChildren createRootChoiceItem()
 	{
 		if (getTaxonomyAssociation().isSingleSelectionTaxonomy())
-		{
-			final ChoiceItemWithChildren choiceItemWithChildren = new ChoiceItemWithChildren("", EAM.text("Not Specified"), "");
-			choiceItemWithChildren.setSelectable(true);
-			return choiceItemWithChildren;
-		}
+			return new ChoiceItemWithChildren("", EAM.text("Not Specified"), "");
 		
-		ChoiceItemWithChildren rootChoiceItem = new ChoiceItemWithChildren("", "", "");
-		rootChoiceItem.setSelectable(false);
-		
-		return rootChoiceItem;
+		return new ChoiceItemWithChildren("", "", "");
 	}
 
 	private void addChildrenChoices(ChoiceItemWithChildren parentChoiceItem, CodeList childCodes) throws Exception
