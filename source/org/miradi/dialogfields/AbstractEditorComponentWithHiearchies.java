@@ -46,7 +46,7 @@ abstract public class AbstractEditorComponentWithHiearchies extends QuestionBase
 		try
 		{
 			final int horizontalIndent = 0;
-			addRowComponents(mainRowsPanel, leftColumnComponent, rootChoiceItem, horizontalIndent);
+			addRowComponents(mainRowsPanel, rootChoiceItem, horizontalIndent);
 		}
 		catch (Exception e)
 		{
@@ -56,7 +56,7 @@ abstract public class AbstractEditorComponentWithHiearchies extends QuestionBase
 		mainRowsPanel.add(createDescriptionComponent(rootChoiceItem));
 	}
 	
-	private void addRowComponents(MiradiPanel mainRowsPanel, JComponent leftColumnComponent, ChoiceItem parentChoiceItem, int horizontalIndent) throws Exception
+	private void addRowComponents(MiradiPanel mainRowsPanel, ChoiceItem parentChoiceItem, int horizontalIndent) throws Exception
 	{
 		horizontalIndent += INDENT_PER_LEVEL;
 		Vector<ChoiceItem> children = parentChoiceItem.getChildren();
@@ -65,7 +65,7 @@ abstract public class AbstractEditorComponentWithHiearchies extends QuestionBase
 			Box box = createHorizontalBoxWithIndents(horizontalIndent);
 			box.add(createLeftColumnComponent(childChoiceItem));
 			mainRowsPanel.add(box);
-			addRowComponents(mainRowsPanel, leftColumnComponent, childChoiceItem, horizontalIndent);
+			addRowComponents(mainRowsPanel, childChoiceItem, horizontalIndent);
 		}
 	}
 	
