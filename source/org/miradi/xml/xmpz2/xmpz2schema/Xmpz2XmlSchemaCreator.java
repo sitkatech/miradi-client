@@ -62,6 +62,7 @@ import org.miradi.objects.XslTemplate;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DashboardFlagsQuestion;
+import org.miradi.questions.InternalQuestionWithoutValues;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.TwoLetterLanguagesQuestion;
 import org.miradi.schemas.AbstractFieldSchema;
@@ -450,11 +451,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	private String getVocabularyName(ChoiceQuestion question)
 	{
-		String vocabularyName = getChoiceQuestionToSchemaElementNameMap().get(question);
-		if (vocabularyName == null)
-			return TEXT_ELEMENT_TYPE;
-		
-		return vocabularyName;
+		return getChoiceQuestionToSchemaElementNameMap().findVocabulary(question);
 	}
 	
 	private String createContainerName(String elementName)
@@ -477,6 +474,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		for(ChoiceQuestion question : sortedQuestions)
 		{
 			String vocabularyName = choiceQuestionToSchemaElementNameMap.get(question);
+			if (shouldOmitQuestion(question.getClass()))
+				continue;
+				
 			if (isCustomWrittenVocabulary(vocabularyName))
 				continue;
 			
@@ -488,6 +488,14 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().println("vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='12' } ");
 		getSchemaWriter().println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
 		writeLanguageVocabulary();
+	}
+
+	private boolean shouldOmitQuestion(Class<? extends ChoiceQuestion> questionClass)
+	{
+		if (questionClass.equals(InternalQuestionWithoutValues.class))
+			return true;
+		
+		return false;
 	}
 
 	private boolean isCustomWrittenVocabulary(String vocabularyName)
@@ -936,13 +944,13 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void writeTaxonomyClassicationTaxonomyElementCodeContainer()
 	{
-		String containerDefinition = createCodelistSchemaElement(TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODE, null);
+		String containerDefinition = createCodelistSchemaElement(TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODE, new InternalQuestionWithoutValues());
 		getSchemaWriter().println(containerDefinition);
 	}
 	
 	private void writeTaxonomyElementChildElementCodeContainer()
 	{
-		String containerDefinition = createCodelistSchemaElement(TAXONOMY_ELEMENT_CHILD_CODE, null);
+		String containerDefinition = createCodelistSchemaElement(TAXONOMY_ELEMENT_CHILD_CODE, new InternalQuestionWithoutValues());
 		getSchemaWriter().println(containerDefinition);
 	}
 
