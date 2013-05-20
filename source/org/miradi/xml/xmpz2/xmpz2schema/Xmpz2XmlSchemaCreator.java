@@ -124,6 +124,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeBaseObjectSchemaElements();
 		writeCodelistSchemaElements();
 		writeVocabularyDefinitions();
+		writeUriRestrictedSchemaElement();
 		writeObjectTypeIdElements();
 		writeWrappedByDiagramFactorSchemaElement();
 		writeLinkableFactorIds();
@@ -680,6 +681,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().printlnIndented(FORMATTED_TEXT_TYPE);
 		getSchemaWriter().endBlock();
 	}
+	
+	private void writeUriRestrictedSchemaElement()
+	{
+		getSchemaWriter().println("uri_restricted_text = [^/]+(/(\\?.*|index\\.php(\\?.*)?)?)?$ ");
+	}
 
 	private void writeGeospacialLocationElement()
 	{
@@ -922,9 +928,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private Xmpz2CustomSchemaDefinitionCreator defineTaxonomyElement()
 	{
-		
 		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), TAXONOMY_ELEMENT);
-		creator.addTextAttributeElement(TAXONOMY_ELEMENT_CODE);
+		creator.addUriRestrictedAttributeElement(TAXONOMY_ELEMENT_CODE);
 		creator.addChildElement(createContainerElement(TAXONOMY_ELEMENT_CHILD_CODE));
 		creator.addTextSchemaElement(TAXONOMY_ELEMENT_LABEL);
 		creator.addTextSchemaElement(TAXONOMY_ELEMENT_DESCRIPTION);
@@ -936,7 +941,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private Xmpz2CustomSchemaDefinitionCreator defineTaxonomyClassificationContainerElement()
 	{
 		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), TAXONOMY_CLASSIFICATION);
-		creator.addChildElement(TAXONOMY_CLASSIFICATION_TAXONOMY_CODE, TEXT_ELEMENT_TYPE);
+		creator.addChildElement(TAXONOMY_CLASSIFICATION_TAXONOMY_CODE, URI_RESTRICTED_TEXT);
 		creator.addChildElement(createContainerElement(TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODE));
 		
 		return creator;

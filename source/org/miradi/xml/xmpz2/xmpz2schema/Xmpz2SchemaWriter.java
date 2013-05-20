@@ -103,6 +103,11 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 	{
 		return createAttributeElement(attributeName, TEXT_ELEMENT_TYPE);
 	}
+	
+	public String createUriRestrictedAttributeElement(final String attributeName)
+	{
+		return createAttributeElement(attributeName, URI_RESTRICTED_TEXT);
+	}
 
 	public String createAttributeElement(final String attributeName, final String attributeType)
 	{
