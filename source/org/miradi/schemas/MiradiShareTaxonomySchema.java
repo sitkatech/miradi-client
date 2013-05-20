@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.questions.MiradiShareTaxonomyQuestion;
+import org.miradi.questions.InternalQuestionWithoutValues;
 
 public class MiradiShareTaxonomySchema extends BaseObjectSchema
 {
@@ -38,7 +38,7 @@ public class MiradiShareTaxonomySchema extends BaseObjectSchema
 		createFieldSchemaCode(TAG_TAXONOMY_CODE);
 		createFieldSchemaSingleLineUserText(TAG_TAXONOMY_VERSION);
 		createTaxonomyElementList(TAG_TAXONOMY_ELEMENTS);
-		createFieldSchemaCodeList(TAG_TAXONOMY_TOP_LEVEL_ELEMENT_CODES, new MiradiShareTaxonomyQuestion(null, null));
+		createFieldSchemaCodeList(TAG_TAXONOMY_TOP_LEVEL_ELEMENT_CODES, getQuestion(InternalQuestionWithoutValues.class));
 	}
 	
 	@Override

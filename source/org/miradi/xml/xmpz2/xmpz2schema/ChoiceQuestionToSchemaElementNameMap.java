@@ -37,6 +37,7 @@ import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.FiscalYearStartQuestion;
 import org.miradi.questions.FosTrainingTypeQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
+import org.miradi.questions.InternalQuestionWithoutValues;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.MajorLanguagesQuestion;
 import org.miradi.questions.MeasurementStatusQuestion;
@@ -151,6 +152,7 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(TargetModeQuestion.class, VOCABULARY_TARGET_MODE);
 		addItem(TaxonomyMultiSelectModeQuestion.class, VOCABULARY_TAXONOMY_CLASSIFICATION_MULTISELECT_MODE);
 		addItem(TaxonomyClassificationSelectionModeQuestion.class, VOCABULARY_TAXONOMY_CLASSIFICATION_SELECTION_MODE);
+		addItem(InternalQuestionWithoutValues.class, TEXT_ELEMENT_TYPE);
 	}
 	
 	private void addItem(Class questionClass, String value)
