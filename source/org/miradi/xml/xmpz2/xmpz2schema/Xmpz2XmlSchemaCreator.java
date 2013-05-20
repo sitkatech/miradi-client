@@ -154,6 +154,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		}
 		
 		writeDashboardFlagsContainer();
+		writeTaxonomyClassicationTaxonomyElementCodeContainer();
 	}
 
 	private void writeMiradiShareTaxonomyAssociationsPools()
@@ -425,6 +426,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		codelistSchemaElements.add(createCodelistSchemaElement(codelistElementName, question));
 		
+		return createContainerElement(codelistElementName);
+	}
+
+	private String createContainerElement(String codelistElementName)
+	{
 		return createContainerName(codelistElementName) + ".element ?";
 	}
 	
@@ -921,9 +927,15 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), TAXONOMY_CLASSIFICATION);
 		creator.addChildElement(TAXONOMY_CLASSIFICATION_TAXONOMY_CODE, TEXT_ELEMENT_TYPE);
-		creator.addChildElement(getSchemaWriter().createTaxonomyElementCode(TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODES));
+		creator.addChildElement(createContainerElement(TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODE));
 		
 		return creator;
+	}
+	
+	private void writeTaxonomyClassicationTaxonomyElementCodeContainer()
+	{
+		String containerDefinition = createCodelistSchemaElement(TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODE, null);
+		getSchemaWriter().println(containerDefinition);
 	}
 	
 	private void writeTaxonomyElementCode()

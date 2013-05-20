@@ -24,7 +24,6 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.io.IOException;
 import java.util.Set;
-import java.util.Vector;
 
 import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeWriter;
@@ -44,6 +43,7 @@ import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.InternalQuestionWithoutValues;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.FieldSchemaIdList;
@@ -403,28 +403,18 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 		for(String taxonomyCode : taxonomyCodes)
 		{
 			CodeList taxonomyElementCodes = taxonomyClassificationData.getCodeList(taxonomyCode);
-			writeTaxonomyClassification(taxonomyCode, taxonomyElementCodes.toVector());
+			writeTaxonomyClassification(taxonomyCode, taxonomyElementCodes);
 		}
 		
 		writeEndElement(TAXONOMY_CLASSIFICATION_CONTAINER);
 	}
 
-	private void writeTaxonomyClassification(String taxonomyCode, Vector<String> taxonomyElementCodes) throws Exception
+	private void writeTaxonomyClassification(String taxonomyCode, CodeList taxonomyElementCodes) throws Exception
 	{
 		writeStartElement(TAXONOMY_CLASSIFICATION);
 		writeElement(TAXONOMY_CLASSIFICATION_TAXONOMY_CODE, taxonomyCode);
-		writeTaxonomyElements(taxonomyElementCodes);
+		writeCodeList(TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODE, new InternalQuestionWithoutValues(), taxonomyElementCodes);
 		writeEndElement(TAXONOMY_CLASSIFICATION);
-	}
-
-	private void writeTaxonomyElements(Vector<String> taxonomyElementCodes) throws Exception
-	{
-		writeStartElement(TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODES);
-		for(String taxonomyElementCode : taxonomyElementCodes)
-		{
-			writeElement(TAXONOMY_ELEMENT_CODE, taxonomyElementCode);	
-		}
-		writeEndElement(TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODES);
 	}
 
 	private void writeField(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String data) throws Exception
