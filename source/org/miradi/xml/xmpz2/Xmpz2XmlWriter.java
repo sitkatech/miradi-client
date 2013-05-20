@@ -430,9 +430,9 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 		return parentElementName + getConvertedElementName(parentElementName, childElementName);
 	}
 	
-	public static String createContainerElementName(String startElementName)
+	public static String createContainerElementName(String elementName)
 	{
-		return startElementName + CONTAINER_ELEMENT_TAG;
+		return elementName + CONTAINER_ELEMENT_TAG;
 	}
 	
 	public void writeXmlHeader() throws Exception
