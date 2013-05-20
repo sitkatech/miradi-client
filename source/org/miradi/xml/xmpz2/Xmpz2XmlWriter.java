@@ -381,21 +381,11 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 		writeRequiredElement(TAXONOMY_ELEMENT_USER_CODE, taxonomyElement.getUserCode());
 		writeRequiredElement(TAXONOMY_ELEMENT_LABEL, taxonomyElement.getLabel());
 		writeRequiredElement(TAXONOMY_ELEMENT_DESCRIPTION, taxonomyElement.getDescription());
-		writeTaxonomyElementCodes(TAXONOMY_ELEMENT_CHILD_CODES, taxonomyElement.getChildCodes());
+		writeCodeList(TAXONOMY_ELEMENT_CHILD_CODE, new InternalQuestionWithoutValues(), taxonomyElement.getChildCodes());
 		
 		writeEndElement(TAXONOMY_ELEMENT);
 	}
 	
-	public void writeTaxonomyElementCodes(final String containerElementName, Iterable<String> taxonomyElementCodes) throws Exception
-	{
-		writeStartElement(containerElementName);
-		for(String taxonomyElementCode : taxonomyElementCodes)
-		{
-			writeElement(TAXONOMY_ELEMENT_CODE, taxonomyElementCode);	
-		}
-		writeEndElement(containerElementName);
-	}
-
 	public void writeTaxonomyClassifications(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, TaxonomyClassificationMap taxonomyClassificationData) throws Exception
 	{
 		writeStartElement(TAXONOMY_CLASSIFICATION_CONTAINER);

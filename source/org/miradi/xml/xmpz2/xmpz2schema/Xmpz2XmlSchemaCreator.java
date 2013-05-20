@@ -155,6 +155,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		writeDashboardFlagsContainer();
 		writeTaxonomyClassicationTaxonomyElementCodeContainer();
+		writeTaxonomyElementChildElementCodeContainer();
 	}
 
 	private void writeMiradiShareTaxonomyAssociationsPools()
@@ -915,7 +916,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), TAXONOMY_ELEMENT);
 		creator.addTextAttributeElement(TAXONOMY_ELEMENT_CODE);
-		creator.addChildElement(getSchemaWriter().createTaxonomyElementCode(TAXONOMY_ELEMENT_CHILD_CODES));
+		creator.addChildElement(createContainerElement(TAXONOMY_ELEMENT_CHILD_CODE));
 		creator.addTextSchemaElement(TAXONOMY_ELEMENT_LABEL);
 		creator.addTextSchemaElement(TAXONOMY_ELEMENT_DESCRIPTION);
 		creator.addTextSchemaElement(TAXONOMY_ELEMENT_USER_CODE);
@@ -938,6 +939,12 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().println(containerDefinition);
 	}
 	
+	private void writeTaxonomyElementChildElementCodeContainer()
+	{
+		String containerDefinition = createCodelistSchemaElement(TAXONOMY_ELEMENT_CHILD_CODE, null);
+		getSchemaWriter().println(containerDefinition);
+	}
+
 	private void writeTaxonomyElementCode()
 	{
 		getSchemaWriter().writeTextElement(TAXONOMY_ELEMENT_CODE);
