@@ -89,6 +89,6 @@ public class DashboardImporter extends AbstractXmpz2ObjectImporter
 
 	private CodeList getFlagsCodeList(Node flagsNode) throws Exception
 	{
-		return getImporter().getCodeList(flagsNode, DASHBOARD + DASHBOARD_FLAGS + CONTAINER_ELEMENT_TAG);
+		return getImporter().getCodeList(flagsNode, Xmpz2XmlWriter.createContainerElementName(DASHBOARD + DASHBOARD_FLAGS));
 	}
 }
