@@ -356,7 +356,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	public void importCodeListField(Node node, String elementContainerName, ORef destinationRef, String destinationTag, ChoiceQuestion question) throws Exception
 	{
 		String elementName = findElementName(elementContainerName, destinationTag);
-		String containerElementName = elementContainerName + elementName + CONTAINER_ELEMENT_TAG;
+		String containerElementName = Xmpz2XmlWriter.createContainerElementName(elementContainerName + elementName);
 		CodeList readableCodesToImport = getCodeList(node, containerElementName);
 		CodeList internalCodes = convertToInternalCodes(question, readableCodesToImport);
 		
@@ -669,7 +669,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 			taxonomyElement.setLabel(getNodeContent(taxonomyElementNode, TAXONOMY_ELEMENT_LABEL));
 			taxonomyElement.setDescription(getNodeContent(taxonomyElementNode, TAXONOMY_ELEMENT_DESCRIPTION));
 			taxonomyElement.setUserCode(getNodeContent(taxonomyElementNode, TAXONOMY_ELEMENT_USER_CODE));
-			final CodeList childCodes = getCodeList(taxonomyElementNode, TAXONOMY_ELEMENT_CHILD_CODE + CONTAINER_ELEMENT_TAG);
+			final CodeList childCodes = getCodeList(taxonomyElementNode, Xmpz2XmlWriter.createContainerElementName(TAXONOMY_ELEMENT_CHILD_CODE));
 			taxonomyElement.setChildCodes(childCodes);
 			
 			taxonomyElements.add(taxonomyElement);
@@ -691,7 +691,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 			Node taxonomyClassificationNode = taxonomyClassificationNodeList.item(index);
 			Node taxononomyClassificationTaxonomyCodeNode = getNode(taxonomyClassificationNode, TAXONOMY_CLASSIFICATION_TAXONOMY_CODE);
 			final String taxonomyCode = taxononomyClassificationTaxonomyCodeNode.getTextContent();
-			String containerElementName = TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODE + CONTAINER_ELEMENT_TAG;
+			String containerElementName = Xmpz2XmlWriter.createContainerElementName(TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODE);
 			final CodeList taxonomyElementCodes = getCodeList(taxonomyClassificationNode, containerElementName);
 			taxonomyClassificationsList.putCodeList(taxonomyCode, taxonomyElementCodes);
 		}

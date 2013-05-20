@@ -88,6 +88,7 @@ import org.miradi.utils.Translation;
 import org.miradi.utils.Utility;
 import org.miradi.xml.xmpz2.Xmpz2TagToElementNameMap;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
+import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
 public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 {
@@ -458,7 +459,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private String createContainerName(String elementName)
 	{
-		return elementName + CONTAINER_ELEMENT_TAG;
+		return Xmpz2XmlWriter.createContainerElementName(elementName);
 	}
 
 	public String createRelevantSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
@@ -695,7 +696,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), DASHBOARD_STATUS_ENTRY);
 		creator.addTextAttributeElement(KEY_ATTRIBUTE_NAME);
 		creator.addOptionalChildElement(DASHBOARD_PROGRESS, VOCABULARY_DASHBOARD_ROW_PROGRESS);
-		creator.addChildElement(DASHBOARD + DASHBOARD_FLAGS + CONTAINER_ELEMENT_TAG + ".element? ");
+		creator.addChildElement(Xmpz2XmlWriter.createContainerElementName(DASHBOARD + DASHBOARD_FLAGS) + ".element? ");
 		creator.addOptionalChildElement(DASHBOARD_COMMENTS, FORMATTED_TEXT_TYPE);
 		
 		return creator;
