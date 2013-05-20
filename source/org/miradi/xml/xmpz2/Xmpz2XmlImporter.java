@@ -26,7 +26,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Set;
-import java.util.Vector;
 
 import javax.xml.xpath.XPathExpressionException;
 
@@ -670,7 +669,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 			taxonomyElement.setLabel(getNodeContent(taxonomyElementNode, TAXONOMY_ELEMENT_LABEL));
 			taxonomyElement.setDescription(getNodeContent(taxonomyElementNode, TAXONOMY_ELEMENT_DESCRIPTION));
 			taxonomyElement.setUserCode(getNodeContent(taxonomyElementNode, TAXONOMY_ELEMENT_USER_CODE));
-			CodeList childCodes = importTaxonomyElementCodes(taxonomyElementNode, TAXONOMY_ELEMENT_CHILD_CODES);
+			final CodeList childCodes = getCodeList(taxonomyElementNode, TAXONOMY_ELEMENT_CHILD_CODE + CONTAINER_ELEMENT_TAG);
 			taxonomyElement.setChildCodes(childCodes);
 			
 			taxonomyElements.add(taxonomyElement);
@@ -698,24 +697,6 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		}
 
 		setData(destinationRef, BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER, taxonomyClassificationsList.toJsonString());
-	}
-
-	public CodeList importTaxonomyElementCodes(Node parentElement, String containerElementName) throws Exception
-	{
-		return new CodeList(getTaxonomyElementCodes(parentElement, containerElementName));
-	}
-	
-	private Vector<String> getTaxonomyElementCodes(Node parentElement, final String containerElementName) throws Exception
-	{
-		NodeList nodes = getNodes(parentElement, new String[]{containerElementName, TAXONOMY_ELEMENT_CODE, });
-		Vector<String> taxonomyElementCodes = new Vector<String>();
-		for (int index = 0; index < nodes.getLength(); ++index)
-		{
-			Node taxonomyElementCodeNode = nodes.item(index);
-			taxonomyElementCodes.add(taxonomyElementCodeNode.getTextContent());
-		}
-		
-		return taxonomyElementCodes;
 	}
 
 	@Override
