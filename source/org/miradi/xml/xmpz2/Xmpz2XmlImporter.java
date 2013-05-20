@@ -692,8 +692,9 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 			Node taxonomyClassificationNode = taxonomyClassificationNodeList.item(index);
 			Node taxononomyClassificationTaxonomyCodeNode = getNode(taxonomyClassificationNode, TAXONOMY_CLASSIFICATION_TAXONOMY_CODE);
 			final String taxonomyCode = taxononomyClassificationTaxonomyCodeNode.getTextContent();
-			final Vector<String> taxonomyElementCodes = getTaxonomyElementCodes(taxonomyClassificationNode, TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODES);
-			taxonomyClassificationsList.putCodeList(taxonomyCode, new CodeList(taxonomyElementCodes));
+			String containerElementName = TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODE + CONTAINER_ELEMENT_TAG;
+			final CodeList taxonomyElementCodes = getCodeList(taxonomyClassificationNode, containerElementName);
+			taxonomyClassificationsList.putCodeList(taxonomyCode, taxonomyElementCodes);
 		}
 
 		setData(destinationRef, BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER, taxonomyClassificationsList.toJsonString());
