@@ -133,6 +133,11 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 		writeCodeList(elementName, questionToUse, codes);
 	}
 
+	private void writeCodeList(final String elementName, CodeList codes)	throws Exception
+	{
+		writeCodeList(elementName, new InternalQuestionWithoutValues(), codes);
+	}
+	
 	public void writeCodeList(final String elementName, ChoiceQuestion questionToUse, CodeList codes)	throws Exception
 	{
 		if (codes.hasData())
@@ -381,7 +386,7 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 		writeRequiredElement(TAXONOMY_ELEMENT_USER_CODE, taxonomyElement.getUserCode());
 		writeRequiredElement(TAXONOMY_ELEMENT_LABEL, taxonomyElement.getLabel());
 		writeRequiredElement(TAXONOMY_ELEMENT_DESCRIPTION, taxonomyElement.getDescription());
-		writeCodeList(TAXONOMY_ELEMENT_CHILD_CODE, new InternalQuestionWithoutValues(), taxonomyElement.getChildCodes());
+		writeCodeList(TAXONOMY_ELEMENT_CHILD_CODE, taxonomyElement.getChildCodes());
 		
 		writeEndElement(TAXONOMY_ELEMENT);
 	}
@@ -403,7 +408,7 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	{
 		writeStartElement(TAXONOMY_CLASSIFICATION);
 		writeElement(TAXONOMY_CLASSIFICATION_TAXONOMY_CODE, taxonomyCode);
-		writeCodeList(TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODE, new InternalQuestionWithoutValues(), taxonomyElementCodes);
+		writeCodeList(TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODE, taxonomyElementCodes);
 		writeEndElement(TAXONOMY_CLASSIFICATION);
 	}
 
