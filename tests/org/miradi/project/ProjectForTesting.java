@@ -422,7 +422,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		TaxonomyElementList taxonomyElementList = new TaxonomyElementList();
 		TaxonomyElement taxonomyElement1 = new TaxonomyElement();
-		final String URI_ONLY_CHARS = "random?.-#";
+		final String URI_ONLY_CHARS = "random?.-#@:+/";
 		taxonomyElement1.setCode(URI_ONLY_CHARS);
 		taxonomyElement1.setChildCodes(new CodeList(new String[]{"1,"}));
 		taxonomyElement1.setLabel("Sample & Label");
