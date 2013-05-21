@@ -684,7 +684,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void writeUriRestrictedSchemaElement()
 	{
-		getSchemaWriter().println("uri_restricted_text = xsd:string { pattern = '([a-zA-Z0-9]|\\?\\.-#@:\\+/)*' }");
+		getSchemaWriter().println("uri_restricted_text = xsd:string { pattern = '([a-zA-Z0-9]|\\?\\.-#@:\\+/|&)*' }");
 	}
 
 	private void writeGeospacialLocationElement()
