@@ -84,6 +84,11 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 		writeElementWithType(elementName, TEXT_ELEMENT_TYPE);
 	}
 	
+	public void writeAlphaNumericElement(final String elementName)
+	{
+		writeElementWithType(elementName, ALPHA_NUMERIC_ELEMENT);
+	}
+	
 	public void writeElementWithZeroOrMoreDotElementType(final String elementName, String elementType)
 	{
 		writeElementWithType(elementName, createZeroOrMoreDotElement(elementType));
