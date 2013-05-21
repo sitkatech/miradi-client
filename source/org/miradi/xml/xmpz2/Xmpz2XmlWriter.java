@@ -50,6 +50,7 @@ import org.miradi.schemas.FieldSchemaIdList;
 import org.miradi.schemas.FieldSchemaReflist;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.PointList;
+import org.miradi.utils.XmlUtilities2;
 
 public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 {
@@ -488,6 +489,7 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	
 	public void writeStartElementWithAttribute(String startElementName, String attributeName, String attributeValue) throws Exception
 	{
+		attributeValue = XmlUtilities2.getXmlEncoded(attributeValue);
 		write("<" + PREFIX + startElementName + " " + attributeName + "=\"" + attributeValue + "\">");
 	}
 	
