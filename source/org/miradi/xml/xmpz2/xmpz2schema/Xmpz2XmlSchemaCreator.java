@@ -125,6 +125,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeCodelistSchemaElements();
 		writeVocabularyDefinitions();
 		writeUriRestrictedSchemaElement();
+		writeAlphaNumericSchemaElement();
 		writeObjectTypeIdElements();
 		writeWrappedByDiagramFactorSchemaElement();
 		writeLinkableFactorIds();
@@ -684,7 +685,12 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void writeUriRestrictedSchemaElement()
 	{
-		getSchemaWriter().println("uri_restricted_text = xsd:string { pattern = '([a-zA-Z0-9]|\\?\\.-#@:\\+/|&)*' }");
+		getSchemaWriter().println(URI_RESTRICTED_TEXT + " = xsd:string { pattern = '([a-zA-Z0-9]|\\?\\.-#@:\\+/|&)*' }");
+	}
+	
+	private void writeAlphaNumericSchemaElement()
+	{
+		getSchemaWriter().println(ALPHA_NUMERIC_ELEMENT + " = xsd:string { pattern = '([a-zA-Z0-9])*' }");
 	}
 
 	private void writeGeospacialLocationElement()
