@@ -47,7 +47,7 @@ public class DiagramFactorSchema extends BaseObjectSchema
 		createFieldSchemaChoice(DiagramFactor.TAG_FONT_STYLE, DiagramFactorFontStyleQuestion.class);
 		createFieldSchemaReflist(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, DIAGRAM_FACTOR + ID);
 		createFieldSchemaChoice(DiagramFactor.TAG_BACKGROUND_COLOR, DiagramFactorBackgroundQuestion.class);
-		createFieldSchemaChoice(DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, TextBoxZOrderQuestion.class);
+		createFieldSchemaRequiredChoice(DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, TextBoxZOrderQuestion.class);
 	}
 
 	public static int getObjectType()

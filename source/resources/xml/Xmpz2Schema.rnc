@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Wed May 22 11:29:48 EDT 2013 $
+# $LastChangedDate: Wed May 22 13:11:47 EDT 2013 $
 # $LastChangedRevision: 223 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/223'
 start = ConservationProject.element
@@ -397,7 +397,7 @@ DiagramFactor.element = element miradi:DiagramFactor
   element miradi:DiagramFactorName { formatted_text }? &
   element miradi:DiagramFactorSize { DiagramSize.element* }? &
   element miradi:DiagramFactorStyle { Style.element }? &
-  element miradi:DiagramFactorTextBoxZOrderCode { vocabulary_text_box_z_order }? &
+  element miradi:DiagramFactorTextBoxZOrderCode { vocabulary_text_box_z_order } &
   element miradi:DiagramFactorWrappedFactorId { WrappedByDiagramFactorId.element }
 }
 
