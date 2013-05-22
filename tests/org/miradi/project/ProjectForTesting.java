@@ -480,6 +480,15 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return refMap.toJsonString();
 	}
 	
+	public String createConproXenodata(String externalAppCope, String xenoDataProjectId) throws Exception
+	{
+		ORef xenodataRef = createAndPopulateXenodata(xenoDataProjectId).getRef();
+		StringRefMap refMap = new StringRefMap();
+		refMap.add(externalAppCope, xenodataRef);
+		
+		return refMap.toJsonString();
+	}
+	
 	public void createConproXenodataReferredToByMetadata(final String conproProjectId) throws Exception
 	{
 		if (getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP).length() > 0)
