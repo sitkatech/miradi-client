@@ -126,6 +126,9 @@ public class ObjectType
 	public static final int MIRADI_SHARE_PROJECT_DATA = 60;
 	public static final int MIRADI_SHARE_TAXONOMY = 61;
 	public static final int TAXONOMY_ASSOCIATION = 62;
+	//NOTE: 63 is currently reserved for image type.
+	//public static final int IMAGE = 63;
+	
 	// When you add a new type, be sure to:
 	// - increment OBJECT_TYPE_COUNT
 	// - IF it is a user-visible object, add a case to getUserFriendlyObjectTypeName below
