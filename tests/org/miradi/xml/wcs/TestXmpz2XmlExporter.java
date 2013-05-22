@@ -48,6 +48,40 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 		super(name);
 	}
 	
+	public void testNonBlankEmptyExternalProjectData() throws Exception
+	{
+		verifyEmptyValues("", "");
+		verifyEmptyValues("randomCode", "");
+		verifyEmptyValues("", "randomProjectId");
+		
+		verifyNonEmptyValues("randomCode", "randomProjectId");
+	}
+	
+	private void verifyNonEmptyValues(final String externalAppCope,	String xenoDataProjectId) throws Exception
+	{
+		create(externalAppCope, xenoDataProjectId);
+		validateProject();
+	}
+
+	private void verifyEmptyValues(final String externalAppCope, String xenoDataProjectId)
+	{
+		try
+		{
+			create(externalAppCope, xenoDataProjectId);
+			validateProject();
+			fail("empty values should have caused xml to fail validation?");
+		}
+		catch (Exception expectedExceptionToIgnore)
+		{
+		}
+	}
+	
+	private void create(final String externalAppCope, String xenoDataProjectId) throws Exception
+	{
+		final String xenodataAsString = getProject().createConproXenodata(externalAppCope, xenoDataProjectId);
+		getProject().fillObjectUsingCommand(getProject().getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, xenodataAsString);
+	}
+	
 	public void testValidateEmptyProject() throws Exception
 	{
 		validateProject();
