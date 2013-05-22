@@ -126,6 +126,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeVocabularyDefinitions();
 		writeUriRestrictedSchemaElement();
 		writeAlphaNumericSchemaElement();
+		writeNonEmptyStringSchemaElement();
 		writeObjectTypeIdElements();
 		writeWrappedByDiagramFactorSchemaElement();
 		writeLinkableFactorIds();
@@ -692,6 +693,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		getSchemaWriter().println(ALPHA_NUMERIC_ELEMENT + " = xsd:string { pattern = '([a-zA-Z0-9])*' }");
 	}
+	
+	private void writeNonEmptyStringSchemaElement()
+	{
+		getSchemaWriter().println(NON_EMPTY_STRING + " = xsd:string { pattern = '\\S+' }");
+	}
 
 	private void writeGeospacialLocationElement()
 	{
@@ -884,8 +890,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private Xmpz2CustomSchemaDefinitionCreator createExternaIdSchemaElementSchemaCreator()
 	{
 		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), EXTERNAL_PROJECT_ID_ELEMENT_NAME);
-		creator.addChildElement(EXTERNAL_APP_ELEMENT_NAME, TEXT_ELEMENT_TYPE);
-		creator.addChildElement(PROJECT_ID, TEXT_ELEMENT_TYPE);
+		creator.addChildElement(EXTERNAL_APP_ELEMENT_NAME, NON_EMPTY_STRING);
+		creator.addChildElement(PROJECT_ID, NON_EMPTY_STRING);
 		
 		return creator;
 	}
