@@ -127,7 +127,7 @@
     	<mkdir dir='${binaries.cvs.module}' />
     	<mkdir dir='${dist.dir}' />
     	<mkdir dir='${dist.temp.jars}' />
-    	<fail unless="${dist.dir}"/>    		
+    	<fail unless="/home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 4.0 Language Packs/dist"/>    		
     	<echo message="Created ${dist.dir}"/>
     	
 	    <echo file="${version.file}" append="false" message="${version.prefix}${version.full}"/>
