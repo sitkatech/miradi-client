@@ -127,6 +127,7 @@
     	<mkdir dir='${binaries.cvs.module}' />
     	<mkdir dir='${dist.dir}' />
     	<mkdir dir='${dist.temp.jars}' />
+    	<fail unless="${dist.dir}"/>    		
     	<echo message="Created ${dist.dir}"/>
     	
 	    <echo file="${version.file}" append="false" message="${version.prefix}${version.full}"/>
@@ -795,6 +796,7 @@
         <fileset dir="${eam.src.root}" includes="**/*.gif"/>
 		<fileset dir="${translations.dir}" includes="miradi_${language.code}.po"/>
 	</zip>
+	<fail unless="${dist.dir}"/>
 </target>
 
 <!-- ================================================================== -->
@@ -818,6 +820,7 @@
 		<length string="${output}" trim="true" when="greater" length="0" />
 	</condition>
 	<antcall target="CommitTranslations" />
+	<fail/>
 </target>
 
 <target name="CommitTranslations" if="FilesWereModified">
