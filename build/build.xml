@@ -127,6 +127,7 @@
     	<mkdir dir='${binaries.cvs.module}' />
     	<mkdir dir='${dist.dir}' />
     	<mkdir dir='${dist.temp.jars}' />
+    	<echo message="Created ${dist.dir}"/>
     	
 	    <echo file="${version.file}" append="false" message="${version.prefix}${version.full}"/>
 	    <echo file="${timestamp.file}" append="false" message="${version.timestamp}"/>
@@ -137,9 +138,9 @@
     <!-- C L E A N                                                          -->
     <!-- ================================================================== -->
 
-  <target name="clean" description="Remove all class files and jars">
+	<!--<target name="clean" description="Remove all class files and jars">
     <delete dir="${dist.dir}"/>
-  </target>
+  </target>-->
 
     <!-- ================================================================== -->
     <!-- CLEANUP                                                          -->
