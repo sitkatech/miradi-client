@@ -13,8 +13,8 @@
 	<property name="version.langpack" value="${version.main}" />
   
 	<!-- module name  -->
-    <property name="source.cvs.module"  value="Miradi"/>
-    <property name="binaries.cvs.module"  value="Miradi"/>
+	<property name="source.cvs.module"  value="Miradi 4.0 Language Packs"/>
+	<property name="binaries.cvs.module"  value="Miradi 4.0 Language Packs"/>
 	
 	<!-- directories -->
 	<property name="build.dir" value="${source.cvs.module}/build"/>
