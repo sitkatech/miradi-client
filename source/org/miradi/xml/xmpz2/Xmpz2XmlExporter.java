@@ -160,7 +160,7 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 	{
 		TaxonomyAssociationExporter baseObjectExporter = new TaxonomyAssociationExporter(getWriter(), TaxonomyAssociationSchema.getObjectType());
 		TaxonomyAssociationPool pool = (TaxonomyAssociationPool) getProject().getPool(TaxonomyAssociationSchema.getObjectType());
-		Vector<TaxonomyAssociation> taxonomyAssociations = pool.findTaxonomyAssociationsForBaseObjectType(poolName);
+		Vector<TaxonomyAssociation> taxonomyAssociations = pool.findTaxonomyAssociationsForPoolName(poolName);
 		getWriter().writeStartElement(poolName);
 		for(TaxonomyAssociation taxonomyAssociation : taxonomyAssociations)
 		{
