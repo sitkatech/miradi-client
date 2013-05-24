@@ -42,6 +42,7 @@ public class TaxonomyAssociationSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(TAG_DESCRIPTION);
 		createFieldSchemaSingleLineUserText(TAG_TAXONOMY_CODE);
 		createFieldSchemaInteger(TAG_BASE_OBJECT_TYPE);
+		createFieldSchemaCode(TAG_TAXONOMY_ASSOCIATION_POOL_NAME);
 	}
 	
 	public static int getObjectType()
@@ -69,4 +70,5 @@ public class TaxonomyAssociationSchema extends BaseObjectSchema
 	public static final String TAG_DESCRIPTION  = "Description";
 	public static final String TAG_TAXONOMY_CODE  = "TaxonomyCode";
 	public static final String TAG_BASE_OBJECT_TYPE = "BaseObjectType";
+	public static final String TAG_TAXONOMY_ASSOCIATION_POOL_NAME = "TaxonomyAssociationPoolName";
 }

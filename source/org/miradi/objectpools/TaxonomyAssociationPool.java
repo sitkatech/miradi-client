@@ -60,14 +60,28 @@ public class TaxonomyAssociationPool extends BaseObjectPool
 		return TaxonomyAssociation.createSchema();
 	}
 	
-	public Vector<TaxonomyAssociation> findTaxonomyAssociationsForBaseObjectType(final int type)
+	public Vector<TaxonomyAssociation> findTaxonomyAssociationsForBaseObjectType(final BaseObject baseObjectToFindTaxonomyAssociationsFor)
 	{
 		Vector<TaxonomyAssociation> taxonomyAssociationsForType = new Vector<TaxonomyAssociation>();
 		Vector<BaseObject> taxonomyAssociations = getAllObjects();
 		for(BaseObject baseObject : taxonomyAssociations)
 		{
 			TaxonomyAssociation taxonomyAssociation = (TaxonomyAssociation) baseObject;
-			if (taxonomyAssociation.getBaseObjectType() == type)
+			if (taxonomyAssociation.isTaxonomyFor(baseObjectToFindTaxonomyAssociationsFor))
+				taxonomyAssociationsForType.add(taxonomyAssociation);
+		}
+		
+		return taxonomyAssociationsForType;
+	}
+	
+	public Vector<TaxonomyAssociation> findTaxonomyAssociationsForBaseObjectType(final String taxonomyAssociationPoolName)
+	{
+		Vector<TaxonomyAssociation> taxonomyAssociationsForType = new Vector<TaxonomyAssociation>();
+		Vector<BaseObject> taxonomyAssociations = getAllObjects();
+		for(BaseObject baseObject : taxonomyAssociations)
+		{
+			TaxonomyAssociation taxonomyAssociation = (TaxonomyAssociation) baseObject;
+			if (taxonomyAssociation.isTaxonomyAssociationFor(taxonomyAssociationPoolName))
 				taxonomyAssociationsForType.add(taxonomyAssociation);
 		}
 		

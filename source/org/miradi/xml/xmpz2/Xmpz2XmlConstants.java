@@ -276,7 +276,8 @@ public interface Xmpz2XmlConstants
 	public static final String MIRADI_SHARE__PROJECT_DATA_TAXONOMY_ASSOCIATION_POOL = "MiradiShareProjectDataTaxonomyAssociationPool";
 	public static final String BIODIVERSITY_TARGET_TAXONOMY_ASSOCIATION_POOL = "BiodiversityTargetTaxonomyAssociationPool";
 	public static final String HUMAN_WELLBEING_TARGET_TAXONOMY_ASSOCIATION_POOL = "HumanWellbeingTargetTaxonomyAssociationPool";
-	public static final String CAUSE_TAXONOMY_ASSOCIATION_POOL = "CauseTaxonomyAssociationPool";
+	public static final String CONTRIBUTING_FACTOR_TAXONOMY_ASSOCIATION_POOL = "ContributingFactorTaxonomyAssociationPool";
+	public static final String DIRECT_THREAT_TAXONOMY_ASSOCIATION_POOL = "DirectThreatTaxonomyAssociationPool";
 	public static final String STRATEGY_TAXONOMY_ASSOCIATION_POOL = "StrategyTaxonomyAssociationPool";
 	public static final String RESULTS_CHAIN_TAXONOMY_ASSOCIATION_POOL = "ResultsChainTaxonomyAssociationPool";
 	public static final String THREAT_REDUCTION_RESULT_TAXONOMY_ASSOCIATION_POOL = "ThreatReductionResultTaxonomyAssociationPool";

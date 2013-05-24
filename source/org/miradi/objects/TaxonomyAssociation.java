@@ -23,6 +23,7 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.TaxonomyElement;
+import org.miradi.objecthelpers.TaxonomyHelper;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.TaxonomyClassificationSelectionModeQuestion;
@@ -46,6 +47,11 @@ public class TaxonomyAssociation extends BaseObject
 		return getIntegerData(TaxonomyAssociationSchema.TAG_BASE_OBJECT_TYPE);
 	}
 	
+	public String getTaxonomyAssociationPoolName()
+	{
+		return getStringData(TaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_POOL_NAME);
+	}
+	
 	public String getTaxonomyAssociationCode()
 	{
 		return getData(TaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_CODE);
@@ -59,6 +65,19 @@ public class TaxonomyAssociation extends BaseObject
 	public String getTaxonomyClassificationSelectionTypeCode()
 	{
 		return getData(TaxonomyAssociationSchema.TAG_SELECTION_TYPE);
+	}
+	
+	public boolean isTaxonomyAssociationFor(final String poolName)
+	{
+		return getTaxonomyAssociationPoolName().equals(poolName);
+	}
+	
+	public boolean isTaxonomyFor(BaseObject baseObjectToFindTaxonomyAssociationsFor)
+	{
+		if (Cause.is(baseObjectToFindTaxonomyAssociationsFor))
+			return TaxonomyHelper.isTaxonomyAssociationForCause(getTaxonomyAssociationPoolName(), (Cause)baseObjectToFindTaxonomyAssociationsFor); 
+			
+		return getBaseObjectType() ==  baseObjectToFindTaxonomyAssociationsFor.getType();
 	}
 	
 	public boolean isSingleSelectionTaxonomy()

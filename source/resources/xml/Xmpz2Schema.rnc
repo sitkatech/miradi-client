@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Wed May 22 13:11:47 EDT 2013 $
+# $LastChangedDate: Thu May 23 18:05:17 EDT 2013 $
 # $LastChangedRevision: 223 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/223'
 start = ConservationProject.element
@@ -60,7 +60,8 @@ ConservationProject.element = element miradi:ConservationProject
   MiradiShareProjectDataTaxonomyAssociationPool.element? &
   BiodiversityTargetTaxonomyAssociationPool.element? &
   HumanWellbeingTargetTaxonomyAssociationPool.element? &
-  CauseTaxonomyAssociationPool.element? &
+  ContributingFactorTaxonomyAssociationPool.element? &
+  DirectThreatTaxonomyAssociationPool.element? &
   StrategyTaxonomyAssociationPool.element? &
   ResultsChainTaxonomyAssociationPool.element? &
   ThreatReductionResultTaxonomyAssociationPool.element? &
@@ -1049,7 +1050,8 @@ ExpensesDay.element = element miradi:ExpensesDay
 MiradiShareProjectDataTaxonomyAssociationPool.element = element miradi:MiradiShareProjectDataTaxonomyAssociationPool { TaxonomyAssociation.element* }
 BiodiversityTargetTaxonomyAssociationPool.element = element miradi:BiodiversityTargetTaxonomyAssociationPool { TaxonomyAssociation.element* }
 HumanWellbeingTargetTaxonomyAssociationPool.element = element miradi:HumanWellbeingTargetTaxonomyAssociationPool { TaxonomyAssociation.element* }
-CauseTaxonomyAssociationPool.element = element miradi:CauseTaxonomyAssociationPool { TaxonomyAssociation.element* }
+ContributingFactorTaxonomyAssociationPool.element = element miradi:ContributingFactorTaxonomyAssociationPool { TaxonomyAssociation.element* }
+DirectThreatTaxonomyAssociationPool.element = element miradi:DirectThreatTaxonomyAssociationPool { TaxonomyAssociation.element* }
 StrategyTaxonomyAssociationPool.element = element miradi:StrategyTaxonomyAssociationPool { TaxonomyAssociation.element* }
 ResultsChainTaxonomyAssociationPool.element = element miradi:ResultsChainTaxonomyAssociationPool { TaxonomyAssociation.element* }
 ThreatReductionResultTaxonomyAssociationPool.element = element miradi:ThreatReductionResultTaxonomyAssociationPool { TaxonomyAssociation.element* }

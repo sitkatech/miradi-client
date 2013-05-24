@@ -680,9 +680,14 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public LinkedHashMap<ObjectDataInputField, String> createMultipleTaxonomyWithEditButtonFields(int objectType) throws Exception
 	{
+		ORef refForType = getRefForType(objectType);
+		if (refForType.isInvalid())
+			return new LinkedHashMap<ObjectDataInputField, String>();
+
 		LinkedHashMap<ObjectDataInputField, String> fieldsToLabelMapForType = new LinkedHashMap<ObjectDataInputField, String>();
 		TaxonomyAssociationPool taxonomyAssociationPool = getProject().getTaxonomyAssociationPool();
-		Vector<TaxonomyAssociation> taxonomyAssociationsForType = taxonomyAssociationPool.findTaxonomyAssociationsForBaseObjectType(objectType);
+		BaseObject baseObject = BaseObject.find(getProject(), refForType);
+		Vector<TaxonomyAssociation> taxonomyAssociationsForType = taxonomyAssociationPool.findTaxonomyAssociationsForBaseObjectType(baseObject);
 		Collections.sort(taxonomyAssociationsForType, new TaxonomyAssociationSorter());
 		for(TaxonomyAssociation taxonomyAssociation : taxonomyAssociationsForType)
 		{

@@ -115,6 +115,11 @@ public class Utility
 		return convertedValuesList;
 	}
 	
+	public static Vector<String> convertToVector(String value)
+	{
+		return convertToVector(new String[]{value, });
+	}
+	
 	public static Vector<String> convertToVector(String[] values)
 	{
 		return new Vector<String>(Arrays.asList(values));
