@@ -67,7 +67,7 @@ public class TaxonomyAssociationPool extends BaseObjectPool
 		for(BaseObject baseObject : taxonomyAssociations)
 		{
 			TaxonomyAssociation taxonomyAssociation = (TaxonomyAssociation) baseObject;
-			if (taxonomyAssociation.isTaxonomyFor(baseObjectToFindTaxonomyAssociationsFor))
+			if (taxonomyAssociation.isTaxonomyAssociationFor(baseObjectToFindTaxonomyAssociationsFor))
 				taxonomyAssociationsForType.add(taxonomyAssociation);
 		}
 		

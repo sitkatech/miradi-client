@@ -72,7 +72,7 @@ public class TaxonomyAssociation extends BaseObject
 		return getTaxonomyAssociationPoolName().equals(poolName);
 	}
 	
-	public boolean isTaxonomyFor(BaseObject baseObjectToFindTaxonomyAssociationsFor)
+	public boolean isTaxonomyAssociationFor(BaseObject baseObjectToFindTaxonomyAssociationsFor)
 	{
 		if (Cause.is(baseObjectToFindTaxonomyAssociationsFor))
 			return TaxonomyHelper.isTaxonomyAssociationForCause(getTaxonomyAssociationPoolName(), (Cause)baseObjectToFindTaxonomyAssociationsFor); 
