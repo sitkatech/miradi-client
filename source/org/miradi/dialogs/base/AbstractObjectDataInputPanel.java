@@ -686,10 +686,10 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 
 		TaxonomyAssociationPool taxonomyAssociationPool = getProject().getTaxonomyAssociationPool();
 		BaseObject baseObject = BaseObject.find(getProject(), refForType);
-		Vector<TaxonomyAssociation> taxonomyAssociationsForType = taxonomyAssociationPool.findTaxonomyAssociationsForBaseObject(baseObject);
-		Collections.sort(taxonomyAssociationsForType, new TaxonomyAssociationSorter());
+		Vector<TaxonomyAssociation> sortedTaxonomyAssociationsForType = taxonomyAssociationPool.findTaxonomyAssociationsForBaseObject(baseObject);
+		Collections.sort(sortedTaxonomyAssociationsForType, new TaxonomyAssociationSorter());
 		LinkedHashMap<ObjectDataInputField, String> fieldsToLabelMapForType = new LinkedHashMap<ObjectDataInputField, String>();
-		for(TaxonomyAssociation taxonomyAssociation : taxonomyAssociationsForType)
+		for(TaxonomyAssociation taxonomyAssociation : sortedTaxonomyAssociationsForType)
 		{
 			MiradiShareTaxonomy miradiShareTaxonomy = TaxonomyHelper.getTaxonomyElementList(taxonomyAssociation);
 			final MiradiShareTaxonomyQuestion miradiShareTaxonomyQuestion = new MiradiShareTaxonomyQuestion(miradiShareTaxonomy, taxonomyAssociation);
