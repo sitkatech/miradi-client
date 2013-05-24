@@ -24,7 +24,7 @@ import java.util.Comparator;
 
 import org.miradi.objects.TaxonomyAssociation;
 
-public class TaxonomyAssociationSorter implements Comparator<TaxonomyAssociation>
+public class TaxonomyAssociationByTaxomomyCodeSorter implements Comparator<TaxonomyAssociation>
 {
 	public int compare(TaxonomyAssociation taxonomyAssociation1, TaxonomyAssociation taxonomyAssociation2)
 	{
