@@ -60,7 +60,7 @@ public class TaxonomyAssociationPool extends BaseObjectPool
 		return TaxonomyAssociation.createSchema();
 	}
 	
-	public Vector<TaxonomyAssociation> findTaxonomyAssociationsForBaseObjectType(final BaseObject baseObjectToFindTaxonomyAssociationsFor)
+	public Vector<TaxonomyAssociation> findTaxonomyAssociationsForBaseObject(final BaseObject baseObjectToFindTaxonomyAssociationsFor)
 	{
 		Vector<TaxonomyAssociation> taxonomyAssociationsForType = new Vector<TaxonomyAssociation>();
 		Vector<BaseObject> taxonomyAssociations = getAllObjects();

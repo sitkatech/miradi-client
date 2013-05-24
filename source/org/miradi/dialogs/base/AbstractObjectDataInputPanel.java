@@ -687,7 +687,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		LinkedHashMap<ObjectDataInputField, String> fieldsToLabelMapForType = new LinkedHashMap<ObjectDataInputField, String>();
 		TaxonomyAssociationPool taxonomyAssociationPool = getProject().getTaxonomyAssociationPool();
 		BaseObject baseObject = BaseObject.find(getProject(), refForType);
-		Vector<TaxonomyAssociation> taxonomyAssociationsForType = taxonomyAssociationPool.findTaxonomyAssociationsForBaseObjectType(baseObject);
+		Vector<TaxonomyAssociation> taxonomyAssociationsForType = taxonomyAssociationPool.findTaxonomyAssociationsForBaseObject(baseObject);
 		Collections.sort(taxonomyAssociationsForType, new TaxonomyAssociationSorter());
 		for(TaxonomyAssociation taxonomyAssociation : taxonomyAssociationsForType)
 		{
