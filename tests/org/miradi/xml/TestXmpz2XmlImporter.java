@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml;
 
-import java.util.HashMap;
-import java.util.Set;
 import java.util.Vector;
 
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
@@ -29,6 +27,7 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.TaxonomyHelper;
 import org.miradi.objectpools.TaxonomyAssociationPool;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Cause;
@@ -85,13 +84,21 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	{
 		getProject().populateTaxonomyAssociationsForBaseObjectTypes();
 		ProjectForTesting project = validateUsingStringWriter();
-		HashMap<Integer, String> taxonomyAssociationBaseObjectTypeToPoolMap = Xmpz2XmlExporter.createTaxonomyAssociationBaseObjectTypeToPoolNameMap();
-		Set<Integer> baseObjectTypes = taxonomyAssociationBaseObjectTypeToPoolMap.keySet();
-		for(Integer taxonomyAssociationParentType : baseObjectTypes)
+		Vector<Integer> objectTypesWithTaxonomyAssociationPool = getProject().getTypesWithTaxonomyAssociationPools();
+		for(Integer taxonomyAssociationParentType : objectTypesWithTaxonomyAssociationPool)
+		{
+			verifyTaxonomyAssociationsForType(project, taxonomyAssociationParentType);
+		}
+	}
+
+	private void verifyTaxonomyAssociationsForType(ProjectForTesting project, Integer taxonomyAssociationParentType)
+	{
+		Vector<String> taxonomyAssociationPoolNamesForType = TaxonomyHelper.getTaxonomyAssociationPoolNamesForType(taxonomyAssociationParentType);
+		for(String taxonomyPoolNameForType : taxonomyAssociationPoolNamesForType)
 		{
 			final TaxonomyAssociationPool taxonomyAssociationPool = project.getTaxonomyAssociationPool();
-			Vector<TaxonomyAssociation> taxonomyAssociationsForType = taxonomyAssociationPool.findTaxonomyAssociationsForBaseObjectType(taxonomyAssociationParentType);
-			assertEquals("Incorrect taxonomy associations imported?", 1, taxonomyAssociationsForType.size());
+			Vector<TaxonomyAssociation> taxonomyAssociationsForType = taxonomyAssociationPool.findTaxonomyAssociationsForBaseObjectType(taxonomyPoolNameForType);
+			assertEquals("Incorrect taxonomy associations imported for type:"+ taxonomyPoolNameForType + "?", 1, taxonomyAssociationsForType.size());
 		}
 	}
 	

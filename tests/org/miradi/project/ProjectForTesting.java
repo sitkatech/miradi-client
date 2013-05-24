@@ -21,8 +21,6 @@ package org.miradi.project;
 
 import java.awt.Dimension;
 import java.awt.Point;
-import java.util.HashMap;
-import java.util.Set;
 import java.util.Vector;
 
 import org.martus.util.MultiCalendar;
@@ -50,6 +48,7 @@ import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objecthelpers.TaxonomyClassificationMap;
 import org.miradi.objecthelpers.TaxonomyElement;
 import org.miradi.objecthelpers.TaxonomyElementList;
+import org.miradi.objecthelpers.TaxonomyHelper;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objects.AbstractBudgetCategoryObject;
 import org.miradi.objects.AbstractTarget;
@@ -204,7 +203,6 @@ import org.miradi.utils.Translation;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.views.diagram.LinkCreator;
 import org.miradi.xml.conpro.ConProMiradiXml;
-import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
 
 
 
@@ -443,20 +441,49 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	public void populateTaxonomyAssociationsForBaseObjectTypes() throws Exception
 	{
-		HashMap<Integer, String> taxonomyAssociationBaseObjectTypeToPoolMap = Xmpz2XmlExporter.createTaxonomyAssociationBaseObjectTypeToPoolNameMap();
-		Set<Integer> baseObjectTypes = taxonomyAssociationBaseObjectTypeToPoolMap.keySet();
-		for(Integer taxonomyAssociationParentType : baseObjectTypes)
+		Vector<Integer> objectTypesWithTaxonomyAssociationPool = getTypesWithTaxonomyAssociationPools();
+		for(Integer taxonomyAssociationParentType : objectTypesWithTaxonomyAssociationPool)
 		{
-			ORef taxonomyAssociationRef = createObject(TaxonomyAssociationSchema.getObjectType());
-			TaxonomyAssociation taxonomyAssociation = TaxonomyAssociation.find(this, taxonomyAssociationRef);
-			fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_BASE_OBJECT_TYPE, taxonomyAssociationParentType);
-			fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_CODE, "RandomAssociationCode");
-			fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_MULTI_SELECT, TaxonomyMultiSelectModeQuestion.MULTI_SELECT_CODE);
-			fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_SELECTION_TYPE, TaxonomyClassificationSelectionModeQuestion.ANY_NODE_CODE);
-			fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_DESCRIPTION, "Some random description");
-			fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_TAXONOMY_CODE, "RandomTaxonomyCode");
-			fillObjectUsingCommand(taxonomyAssociation, BaseObject.TAG_LABEL, "RandomLabel");
+			Vector<String> poolNamesForType = TaxonomyHelper.getTaxonomyAssociationPoolNamesForType(taxonomyAssociationParentType);
+			for(String taxonomyAssociationPoolName : poolNamesForType)
+			{
+				createAndPopulateTaxonomyAssociation(taxonomyAssociationParentType, taxonomyAssociationPoolName);
+			}
 		}
+	}
+
+	private void createAndPopulateTaxonomyAssociation(Integer taxonomyAssociationParentType, final String  taxonomyAssociationPoolName) throws Exception
+	{
+		ORef taxonomyAssociationRef = createObject(TaxonomyAssociationSchema.getObjectType());
+		TaxonomyAssociation taxonomyAssociation = TaxonomyAssociation.find(this, taxonomyAssociationRef);
+		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_POOL_NAME, taxonomyAssociationPoolName);
+		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_BASE_OBJECT_TYPE, taxonomyAssociationParentType);
+		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_CODE, "RandomAssociationCodeFor:" + taxonomyAssociationPoolName);
+		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_MULTI_SELECT, TaxonomyMultiSelectModeQuestion.MULTI_SELECT_CODE);
+		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_SELECTION_TYPE, TaxonomyClassificationSelectionModeQuestion.ANY_NODE_CODE);
+		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_DESCRIPTION, "Some random description");
+		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_TAXONOMY_CODE, "RandomTaxonomyCode");			
+		fillObjectUsingCommand(taxonomyAssociation, BaseObject.TAG_LABEL, "RandomLabel");
+	}
+	
+	public Vector<Integer> getTypesWithTaxonomyAssociationPools()
+	{
+		Vector<Integer> typesWithTaxonomyAssociationPools = new Vector<Integer>();
+		typesWithTaxonomyAssociationPools.add(MiradiShareProjectDataSchema.getObjectType());
+		typesWithTaxonomyAssociationPools.add(TargetSchema.getObjectType());
+		typesWithTaxonomyAssociationPools.add(HumanWelfareTargetSchema.getObjectType());
+		typesWithTaxonomyAssociationPools.add(CauseSchema.getObjectType());
+		typesWithTaxonomyAssociationPools.add(StrategySchema.getObjectType());
+		typesWithTaxonomyAssociationPools.add(ResultsChainDiagramSchema.getObjectType());
+		typesWithTaxonomyAssociationPools.add(ThreatReductionResultSchema.getObjectType());
+		typesWithTaxonomyAssociationPools.add(GoalSchema.getObjectType());
+		typesWithTaxonomyAssociationPools.add(KeyEcologicalAttributeSchema.getObjectType());
+		typesWithTaxonomyAssociationPools.add(IndicatorSchema.getObjectType());
+		typesWithTaxonomyAssociationPools.add(ObjectiveSchema.getObjectType());
+		typesWithTaxonomyAssociationPools.add(StressSchema.getObjectType());
+		typesWithTaxonomyAssociationPools.add(TaskSchema.getObjectType());
+		
+		return typesWithTaxonomyAssociationPools;
 	}
 	
 	public ORef createResultsChainDiagram() throws Exception

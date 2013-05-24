@@ -168,7 +168,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(MIRADI_SHARE__PROJECT_DATA_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(BIODIVERSITY_TARGET_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(HUMAN_WELLBEING_TARGET_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
-		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(CAUSE_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
+		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(CONTRIBUTING_FACTOR_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
+		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(DIRECT_THREAT_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(STRATEGY_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(RESULTS_CHAIN_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(THREAT_REDUCTION_RESULT_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
@@ -214,7 +215,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		elementNames.add(createOptionalSchemaElement(MIRADI_SHARE__PROJECT_DATA_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(BIODIVERSITY_TARGET_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(HUMAN_WELLBEING_TARGET_TAXONOMY_ASSOCIATION_POOL));
-		elementNames.add(createOptionalSchemaElement(CAUSE_TAXONOMY_ASSOCIATION_POOL));
+		elementNames.add(createOptionalSchemaElement(CONTRIBUTING_FACTOR_TAXONOMY_ASSOCIATION_POOL));
+		elementNames.add(createOptionalSchemaElement(DIRECT_THREAT_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(STRATEGY_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(RESULTS_CHAIN_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(THREAT_REDUCTION_RESULT_TAXONOMY_ASSOCIATION_POOL));

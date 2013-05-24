@@ -22,26 +22,26 @@ package org.miradi.xml.xmpz2.objectImporters;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.schemas.TaxonomyAssociationSchema;
-import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 
 
 public class TaxonomyAssociationImporter extends BaseObjectImporter
 {
-	public TaxonomyAssociationImporter(Xmpz2XmlImporter importerToUse, int parentTypeToUse)
+	public TaxonomyAssociationImporter(Xmpz2XmlImporter importerToUse, String poolNameForTypeToUse, int parentTypeToUse)
 	{
 		super(importerToUse, new TaxonomyAssociationSchema());
 		
+		taxonomyAssociationPoolName = poolNameForTypeToUse;
 		parentType = parentTypeToUse;
-		taxonomyAssociationPoolName = Xmpz2XmlExporter.getTaxonomyAssociationPoolNameForType(parentType);
 	}
 	
 	@Override
 	public void importFields(Node baseObjectNode, ORef refToUse) throws Exception
 	{
 		super.importFields(baseObjectNode, refToUse);
-		
+
+		getImporter().setData(refToUse, TaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_POOL_NAME, taxonomyAssociationPoolName);
 		getImporter().setData(refToUse, TaxonomyAssociationSchema.TAG_BASE_OBJECT_TYPE, parentType);
 	}
 
@@ -52,6 +52,9 @@ public class TaxonomyAssociationImporter extends BaseObjectImporter
 			return true;
 		
 		if (tag.equals(TaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_CODE))
+			return true;
+		
+		if (tag.equals(TaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_POOL_NAME))
 			return true;
 		
 		return false;
@@ -78,7 +81,7 @@ public class TaxonomyAssociationImporter extends BaseObjectImporter
 	{
 		return taxonomyAssociationPoolName;
 	}
-	
-	private int parentType;
+
 	private String taxonomyAssociationPoolName;
+	private int parentType;
 }

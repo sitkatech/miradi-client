@@ -22,8 +22,6 @@ package org.miradi.xml.xmpz2;
 
 import java.text.DateFormat;
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Set;
 import java.util.Vector;
 
 import org.martus.util.UnicodeWriter;
@@ -31,25 +29,13 @@ import org.miradi.main.VersionConstants;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.TaxonomyHelper;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objectpools.TaxonomyAssociationPool;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.project.Project;
-import org.miradi.schemas.CauseSchema;
-import org.miradi.schemas.GoalSchema;
-import org.miradi.schemas.HumanWelfareTargetSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.KeyEcologicalAttributeSchema;
-import org.miradi.schemas.MiradiShareProjectDataSchema;
-import org.miradi.schemas.ObjectiveSchema;
-import org.miradi.schemas.ResultsChainDiagramSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.StressSchema;
-import org.miradi.schemas.TargetSchema;
-import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.TaxonomyAssociationSchema;
-import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.XmlExporter;
@@ -77,7 +63,6 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 		exportMiradiShareProjectData();
 		exportThreatRatings();
 		exportPools();
-		exportTaxonomyAssociations();
 		exportExtraData();
 		exportQuarantinedFileContents();
 		getWriter().writeMainElementEnd();
@@ -135,6 +120,7 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 	{
 		for(int objectType = ObjectType.FIRST_OBJECT_TYPE; objectType < ObjectType.OBJECT_TYPE_COUNT; ++objectType)
 		{
+			exportTaxonomyAssociations(objectType);
 			if (!getObjectTypeToExporterMap().containsKey(objectType))
 				continue;
 
@@ -161,47 +147,20 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 		getWriter().writeEndElement(poolName);
 	}
 	
-	public static HashMap<Integer,String> createTaxonomyAssociationBaseObjectTypeToPoolNameMap()
+	private void exportTaxonomyAssociations(int objectType) throws Exception
 	{
-		HashMap<Integer, String> baseObjectTypeToPoolNameMap = new HashMap<Integer, String>();
-		baseObjectTypeToPoolNameMap.put(MiradiShareProjectDataSchema.getObjectType(), MIRADI_SHARE__PROJECT_DATA_TAXONOMY_ASSOCIATION_POOL);
-		baseObjectTypeToPoolNameMap.put(TargetSchema.getObjectType(), BIODIVERSITY_TARGET_TAXONOMY_ASSOCIATION_POOL);
-		baseObjectTypeToPoolNameMap.put(HumanWelfareTargetSchema.getObjectType(), HUMAN_WELLBEING_TARGET_TAXONOMY_ASSOCIATION_POOL);
-		baseObjectTypeToPoolNameMap.put(CauseSchema.getObjectType(), CAUSE_TAXONOMY_ASSOCIATION_POOL);
-		baseObjectTypeToPoolNameMap.put(StrategySchema.getObjectType(), STRATEGY_TAXONOMY_ASSOCIATION_POOL);
-		baseObjectTypeToPoolNameMap.put(ResultsChainDiagramSchema.getObjectType(), RESULTS_CHAIN_TAXONOMY_ASSOCIATION_POOL);
-		baseObjectTypeToPoolNameMap.put(ThreatReductionResultSchema.getObjectType(), THREAT_REDUCTION_RESULT_TAXONOMY_ASSOCIATION_POOL);
-		baseObjectTypeToPoolNameMap.put(GoalSchema.getObjectType(), GOAL_TAXONOMY_ASSOCIATION_POOL);
-		baseObjectTypeToPoolNameMap.put(KeyEcologicalAttributeSchema.getObjectType(), KEY_ECOLOGICAL_ATTRIBUTE_TAXONOMY_ASSOCIATION_POOL);
-		baseObjectTypeToPoolNameMap.put(IndicatorSchema.getObjectType(), INDICATOR_TAXONOMY_ASSOCIATION_POOL);
-		baseObjectTypeToPoolNameMap.put(ObjectiveSchema.getObjectType(), OBJECTIVE_TAXONOMY_ASSOCIATION_POOL);
-		baseObjectTypeToPoolNameMap.put(StressSchema.getObjectType(), STRESS_TAXONOMY_ASSOCIATION_POOL);
-		baseObjectTypeToPoolNameMap.put(TaskSchema.getObjectType(), TASK_TAXONOMY_ASSOCIATION_POOL);
-		
-		return baseObjectTypeToPoolNameMap;
-	}
-	
-	public static String getTaxonomyAssociationPoolNameForType(int type)
-	{
-		return createTaxonomyAssociationBaseObjectTypeToPoolNameMap().get(type);
-	}
-	
-	private void exportTaxonomyAssociations() throws Exception
-	{
-		HashMap<Integer, String> taxonomyAssociationTypeToPoolMap = createTaxonomyAssociationBaseObjectTypeToPoolNameMap();
-		Set<Integer> baseObjectTypes = taxonomyAssociationTypeToPoolMap.keySet();
-		for(Integer taxonomyAssociationBaseObjectType : baseObjectTypes)
+		Vector<String> poolNamesForType = TaxonomyHelper.getTaxonomyAssociationPoolNamesForType(objectType);
+		for(String poolName : poolNamesForType)
 		{
-			String poolName = taxonomyAssociationTypeToPoolMap.get(taxonomyAssociationBaseObjectType);
-			exportTaxonomyAssociationsForBaseObjectType(taxonomyAssociationBaseObjectType, poolName);
+			exportTaxonomyAssociationsForBaseObjectType(poolName);
 		}
 	}
 
-	private void exportTaxonomyAssociationsForBaseObjectType(int taxonomyAssociationBaseObjectType, String poolName) throws Exception
+	private void exportTaxonomyAssociationsForBaseObjectType(String poolName) throws Exception
 	{
 		TaxonomyAssociationExporter baseObjectExporter = new TaxonomyAssociationExporter(getWriter(), TaxonomyAssociationSchema.getObjectType());
 		TaxonomyAssociationPool pool = (TaxonomyAssociationPool) getProject().getPool(TaxonomyAssociationSchema.getObjectType());
-		Vector<TaxonomyAssociation> taxonomyAssociations = pool.findTaxonomyAssociationsForBaseObjectType(taxonomyAssociationBaseObjectType);
+		Vector<TaxonomyAssociation> taxonomyAssociations = pool.findTaxonomyAssociationsForBaseObjectType(poolName);
 		getWriter().writeStartElement(poolName);
 		for(TaxonomyAssociation taxonomyAssociation : taxonomyAssociations)
 		{

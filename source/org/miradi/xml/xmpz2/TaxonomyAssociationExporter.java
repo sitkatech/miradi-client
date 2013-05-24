@@ -52,6 +52,9 @@ public class TaxonomyAssociationExporter extends BaseObjectExporter
 		if (tag.equals(TaxonomyAssociationSchema.TAG_BASE_OBJECT_TYPE))
 			return true;
 		
+		if (tag.equals(TaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_POOL_NAME))
+			return true;
+		
 		return false;
 	}
 }

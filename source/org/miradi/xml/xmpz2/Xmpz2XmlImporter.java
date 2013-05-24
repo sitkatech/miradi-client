@@ -22,10 +22,9 @@ package org.miradi.xml.xmpz2;
 
 import java.awt.Dimension;
 import java.awt.Point;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Set;
+import java.util.Vector;
 
 import javax.xml.xpath.XPathExpressionException;
 
@@ -38,6 +37,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TaxonomyClassificationMap;
 import org.miradi.objecthelpers.TaxonomyElement;
 import org.miradi.objecthelpers.TaxonomyElementList;
+import org.miradi.objecthelpers.TaxonomyHelper;
 import org.miradi.objectpools.BaseObjectPool;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Dashboard;
@@ -162,9 +162,6 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		importPools(typeToImporterMap);
 		incrementProgress();
 		
-		importTaxonomyAssociationPools();
-		incrementProgress();
-		
 		importThreatTargetRatings();
 		incrementProgress();
 		
@@ -219,22 +216,23 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 
 	private void importPools(LinkedHashMap<Integer, BaseObjectImporter> typeToImporterMap) throws Exception
 	{
-		Collection<BaseObjectImporter> importers = typeToImporterMap.values();
-		for(BaseObjectImporter importer : importers)
+		Set<Integer> objectTypesAsKeys = typeToImporterMap.keySet();
+		for(Integer objectType : objectTypesAsKeys)
 		{
+			BaseObjectImporter importer = typeToImporterMap.get(objectType);
 			importBaseObjects(importer);
+			importTaxonomyAssociationsForType(objectType);
 			incrementProgress();
 		}
 	}
 	
-	private void importTaxonomyAssociationPools() throws Exception
+	private void importTaxonomyAssociationsForType(final int objectType) throws Exception
 	{
-		HashMap<Integer, String> taxonomyAssociationBaseObjectTypeToPoolMap = Xmpz2XmlExporter.createTaxonomyAssociationBaseObjectTypeToPoolNameMap();
-		Set<Integer> baseObjectTypes = taxonomyAssociationBaseObjectTypeToPoolMap.keySet();
-		for(Integer taxonomyAssociationParentType : baseObjectTypes)
+		Vector<String> poolNamesForType = TaxonomyHelper.getTaxonomyAssociationPoolNamesForType(objectType);
+		for (String poolNameForType : poolNamesForType)
 		{
-			TaxonomyAssociationImporter importer = new TaxonomyAssociationImporter(this, taxonomyAssociationParentType);
-			importBaseObjects(importer, taxonomyAssociationBaseObjectTypeToPoolMap.get(taxonomyAssociationParentType));
+			TaxonomyAssociationImporter importer = new TaxonomyAssociationImporter(this, poolNameForType, objectType);
+			importBaseObjects(importer, poolNameForType);
 		}
 	}
 
