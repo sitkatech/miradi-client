@@ -97,7 +97,7 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 		for(String taxonomyPoolNameForType : taxonomyAssociationPoolNamesForType)
 		{
 			final TaxonomyAssociationPool taxonomyAssociationPool = project.getTaxonomyAssociationPool();
-			Vector<TaxonomyAssociation> taxonomyAssociationsForType = taxonomyAssociationPool.findTaxonomyAssociationsForBaseObjectType(taxonomyPoolNameForType);
+			Vector<TaxonomyAssociation> taxonomyAssociationsForType = taxonomyAssociationPool.findTaxonomyAssociationsForPoolName(taxonomyPoolNameForType);
 			assertEquals("Incorrect taxonomy associations imported for type:"+ taxonomyPoolNameForType + "?", 1, taxonomyAssociationsForType.size());
 		}
 	}
