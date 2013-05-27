@@ -81,6 +81,6 @@ public class TncProjectDataImporter extends SingletonObjectImporter
 
 	private void importProjectMetadataField(Node projectSummaryNode, String tag) throws Exception
 	{
-		importFieldSchema(projectSummaryNode, getBaseObjectSchema(), getMetadataRef(), tag);
+		importField(projectSummaryNode, getBaseObjectSchema(), getMetadataRef(), tag);
 	}
 }

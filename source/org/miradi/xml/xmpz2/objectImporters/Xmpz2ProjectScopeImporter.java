@@ -75,6 +75,6 @@ public class Xmpz2ProjectScopeImporter extends AbstractXmpz2ObjectImporter
 
 	private void importFieldSchema(Node projectSummaryNode, String tag, final ORef ref) throws Exception
 	{
-		importFieldSchema(projectSummaryNode, PROJECT_SUMMARY_SCOPE, ref, tag);
+		importField(projectSummaryNode, PROJECT_SUMMARY_SCOPE, ref, tag);
 	}
 }

@@ -61,13 +61,13 @@ public class AbstractXmpz2ObjectImporter  implements Xmpz2XmlConstants
 		return getProject().getSingletonObjectRef(objectType);
 	}
 	
-	protected void importFieldSchema(Node node, String singletonName, ORef refToUse, String destinationTag) throws Exception
+	protected void importField(Node node, String singletonName, ORef refToUse, String destinationTag) throws Exception
 	{
 		BaseObjectSchema baseObjectSchema = new UnspecifiedBaseObjectSchema(ObjectType.FAKE, singletonName);
-		importFieldSchema(node, baseObjectSchema, refToUse, destinationTag);
+		importField(node, baseObjectSchema, refToUse, destinationTag);
 	}
 	
-	protected void importFieldSchema(Node node, BaseObjectSchema baseObjectSchemaToUse, ORef destinationRef, String destinationTag) throws Exception
+	protected void importField(Node node, BaseObjectSchema baseObjectSchemaToUse, ORef destinationRef, String destinationTag) throws Exception
 	{
 		BaseObject baseObject = BaseObject.find(getProject(), destinationRef);
 		AbstractFieldSchema fieldSchema = baseObject.getSchema().getFieldSchema(destinationTag);

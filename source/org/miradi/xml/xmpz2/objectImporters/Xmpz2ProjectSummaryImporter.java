@@ -71,7 +71,7 @@ public class Xmpz2ProjectSummaryImporter extends BaseObjectImporter
 
 	private void importProjectMetadataField(Node projectSummaryNode, String tag) throws Exception
 	{
-		importFieldSchema(projectSummaryNode, PROJECT_SUMMARY, getMetadataRef(), tag);
+		importField(projectSummaryNode, PROJECT_SUMMARY, getMetadataRef(), tag);
 	}
 	
 	private void importExternalProjectId(Node projectSumaryNode) throws Exception
