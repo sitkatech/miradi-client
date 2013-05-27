@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectImporters;
 
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.WcpaProjectData;
 import org.miradi.questions.ProtectedAreaCategoryQuestion;
@@ -64,11 +65,16 @@ public class Xmpz2ProjectScopeImporter extends AbstractXmpz2ObjectImporter
 	
 	private void importProjectMetadataField(Node projectSummaryNode, String tag) throws Exception
 	{
-		getImporter().importFieldSchema(projectSummaryNode, PROJECT_SUMMARY_SCOPE, getMetadataRef(), tag);
+		importFieldSchema(projectSummaryNode, tag, getMetadataRef());
 	}
 	
 	private void importWcpaField(Node projectSummaryNode, String tag) throws Exception
 	{
-		getImporter().importFieldSchema(projectSummaryNode, PROJECT_SUMMARY_SCOPE, getWcpaProjectDataRef(), tag);
+		importFieldSchema(projectSummaryNode, tag, getWcpaProjectDataRef());
+	}
+
+	private void importFieldSchema(Node projectSummaryNode, String tag, final ORef ref) throws Exception
+	{
+		getImporter().importFieldSchema(projectSummaryNode, PROJECT_SUMMARY_SCOPE, ref, tag);
 	}
 }
