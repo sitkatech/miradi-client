@@ -140,19 +140,7 @@ abstract public class AbstractXmlImporter
 		
 		return thisXPath;
 	}
-
-	public void importField(Node node, String path, ORef ref, String destinationTag) throws Exception
-	{
-		importField(node, new String[]{path,}, ref, destinationTag);
-	}
 	
-	private void importField(Node node, String[] elements, ORef ref, String destinationTag) throws Exception 
-	{
-		String data = getPathData(node, elements);
-		data = escapeDueToParserUnescaping(data);
-		importField(ref, destinationTag, data);
-	}
-
 	public String escapeDueToParserUnescaping(String data)
 	{
 		return XmlUtilities2.getXmlEncoded(data);
@@ -171,6 +159,18 @@ abstract public class AbstractXmlImporter
 	protected int extractNodeTextContentAsInt(Node node) throws Exception
 	{
 		return Integer.parseInt(node.getTextContent());
+	}
+
+	public void importField(Node node, String path, ORef ref, String destinationTag) throws Exception
+	{
+		importField(node, new String[]{path,}, ref, destinationTag);
+	}
+	
+	private void importField(Node node, String[] elements, ORef ref, String destinationTag) throws Exception 
+	{
+		String data = getPathData(node, elements);
+		data = escapeDueToParserUnescaping(data);
+		importField(ref, destinationTag, data);
 	}
 
 	protected void importField(ORef ref, String destinationTag, String data)	throws Exception
