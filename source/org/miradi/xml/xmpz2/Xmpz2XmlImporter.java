@@ -22,15 +22,25 @@ package org.miradi.xml.xmpz2;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.io.StringWriter;
 import java.util.LinkedHashMap;
 import java.util.Set;
 import java.util.Vector;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import javax.xml.xpath.XPathExpressionException;
 
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
+import org.miradi.objectdata.AbstractUserTextDataWithHtmlFormatting;
 import org.miradi.objectdata.BooleanData;
+import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -83,14 +93,17 @@ import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.TextBoxSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.schemas.TncProjectDataSchema;
+import org.miradi.schemas.UnspecifiedBaseObjectSchema;
 import org.miradi.schemas.ValueOptionSchema;
 import org.miradi.schemas.WcsProjectDataSchema;
 import org.miradi.schemas.WwfProjectDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.HtmlUtilitiesRelatedToShef;
 import org.miradi.utils.PointList;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.StringUtilities;
+import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.AbstractXmlImporter;
 import org.miradi.xml.AbstractXmlNamespaceContext;
 import org.miradi.xml.MiradiXmlValidator;
@@ -119,6 +132,7 @@ import org.miradi.xml.xmpz2.objectImporters.Xmpz2ProjectPlanningImporter;
 import org.miradi.xml.xmpz2.objectImporters.Xmpz2ProjectScopeImporter;
 import org.miradi.xml.xmpz2.objectImporters.Xmpz2ProjectSummaryImporter;
 import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2NameSpaceContext;
+import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -534,11 +548,67 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		String internalCode = question.convertToInternalCode(importedReadableCode);
 		importField(destinationRefToUse, tag, internalCode);
 	}
-
+	
+	public void importFieldSchema(Node node, String singletonName, ORef destinationRef, String destinationTag) throws Exception
+	{
+		BaseObjectSchema baseObjectSchema = new UnspecifiedBaseObjectSchema(ObjectType.FAKE, singletonName);
+		importFieldSchema(node, baseObjectSchema, destinationRef, destinationTag);
+	}
+	
+	public void importFieldSchema(Node node, BaseObjectSchema baseObjectSchemaToUse, ORef destinationRef, String destinationTag) throws Exception
+	{
+		BaseObject baseObject = BaseObject.find(getProject(), destinationRef);
+		AbstractFieldSchema fieldSchema = baseObject.getSchema().getFieldSchema(destinationTag);
+		ObjectData objectData = fieldSchema.createField(baseObject);
+		objectData.readAsXmpz2XmlData(this, node, baseObject.getRef(), baseObjectSchemaToUse, fieldSchema);
+	}
+	
 	public void importStringField(Node node, String poolName, ORef destinationRef, String destinationTag) throws Exception
 	{
 		String elementName = findElementName(poolName, destinationTag);
 		importField(node, poolName + elementName, destinationRef, destinationTag);
+	}
+	
+	public void importFormattedStringField(Node node, String poolName, ORef destinationRef, String destinationTag) throws Exception
+	{
+		String elementName = findElementName(poolName, destinationTag);
+		importFormattedField(node, poolName + elementName, destinationRef, destinationTag);
+	}
+	
+	private void importFormattedField(Node parentNode, String path, ORef ref, String destinationTag) throws Exception
+	{
+		Node node = getNode(parentNode, path);
+		if (node == null)
+			return;
+		
+		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+		Document documentToUse = documentBuilder.newDocument();
+		final Node clonedNode = node.cloneNode(true);
+		Node adoptedNode = documentToUse.adoptNode(clonedNode);
+		Node appendedNode = documentToUse.appendChild(adoptedNode);
+		String nodeTreeAsString = nodeToString(appendedNode);
+		nodeTreeAsString = XmlUtilities2.getXmlDecoded(nodeTreeAsString);
+		nodeTreeAsString = HtmlUtilitiesRelatedToShef.getNormalizedAndSanitizedHtmlText(nodeTreeAsString, AbstractUserTextDataWithHtmlFormatting.getAllowedHtmlTags());
+		
+		importField(ref, destinationTag, nodeTreeAsString);
+	}
+	
+	private String nodeToString(Node node) 
+	{
+		StringWriter writer = new StringWriter();
+		try 
+		{
+			TransformerFactory factory = TransformerFactory.newInstance();
+	        Transformer transformer = factory.newTransformer();
+			transformer.transform(new DOMSource(node), new StreamResult(writer));
+		} 
+		catch (TransformerException e) 
+		{
+			EAM.alertUserOfNonFatalException(e);
+		}
+		
+		return writer.toString();
 	}
 	
 	public void importDimensionField(Node node, ORef destinationRef, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception

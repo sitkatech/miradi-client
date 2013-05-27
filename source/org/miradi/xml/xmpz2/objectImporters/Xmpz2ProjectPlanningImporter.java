@@ -56,6 +56,6 @@ public class Xmpz2ProjectPlanningImporter extends AbstractXmpz2ObjectImporter
 	
 	private void importProjectMetadataField(Node projectSummaryNode, String tag) throws Exception
 	{
-		getImporter().importStringField(projectSummaryNode, PROJECT_SUMMARY_PLANNING, getMetadataRef(), tag);
+		getImporter().importFieldSchema(projectSummaryNode, PROJECT_SUMMARY_PLANNING, getMetadataRef(), tag);
 	}
 }
