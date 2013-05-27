@@ -40,7 +40,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.AbstractUserTextDataWithHtmlFormatting;
 import org.miradi.objectdata.BooleanData;
-import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -93,7 +92,6 @@ import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.TextBoxSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.schemas.TncProjectDataSchema;
-import org.miradi.schemas.UnspecifiedBaseObjectSchema;
 import org.miradi.schemas.ValueOptionSchema;
 import org.miradi.schemas.WcsProjectDataSchema;
 import org.miradi.schemas.WwfProjectDataSchema;
@@ -547,20 +545,6 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		String importedReadableCode = getPathData(node, new String[]{parentElementName + choiceElementName, });
 		String internalCode = question.convertToInternalCode(importedReadableCode);
 		importField(destinationRefToUse, tag, internalCode);
-	}
-	
-	public void importFieldSchema(Node node, String singletonName, ORef destinationRef, String destinationTag) throws Exception
-	{
-		BaseObjectSchema baseObjectSchema = new UnspecifiedBaseObjectSchema(ObjectType.FAKE, singletonName);
-		importFieldSchema(node, baseObjectSchema, destinationRef, destinationTag);
-	}
-	
-	public void importFieldSchema(Node node, BaseObjectSchema baseObjectSchemaToUse, ORef destinationRef, String destinationTag) throws Exception
-	{
-		BaseObject baseObject = BaseObject.find(getProject(), destinationRef);
-		AbstractFieldSchema fieldSchema = baseObject.getSchema().getFieldSchema(destinationTag);
-		ObjectData objectData = fieldSchema.createField(baseObject);
-		objectData.readAsXmpz2XmlData(this, node, baseObject.getRef(), baseObjectSchemaToUse, fieldSchema);
 	}
 	
 	public void importStringField(Node node, String poolName, ORef destinationRef, String destinationTag) throws Exception

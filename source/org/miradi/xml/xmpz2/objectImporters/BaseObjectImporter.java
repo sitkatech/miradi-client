@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2.objectImporters;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.schemas.AbstractFieldSchema;
@@ -51,11 +50,10 @@ public class BaseObjectImporter extends AbstractXmpz2ObjectImporter
 			if (isCustomImportField(fieldSchema.getTag()))
 				continue;
 
-			ObjectData objectData = fieldSchema.createField(baseObject);
-			objectData.readAsXmpz2XmlData(getImporter(), baseObjectNode, refToUse, baseObjectSchema, fieldSchema);
+			importField(baseObjectNode, baseObjectSchema, baseObject, fieldSchema);
 		}
 	}
-	
+
 	protected boolean isCustomImportField(String tag)
 	{
 		return false;
