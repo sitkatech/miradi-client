@@ -100,7 +100,7 @@ public class DateData extends ObjectData
 	@Override
 	public void readAsXmpz2XmlData(Xmpz2XmlImporter importer, Node node, ORef destinationRefToUse, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		importer.importDateField(node, destinationRefToUse, baseObjectSchema, fieldSchema);
+		importer.importStringField(node, baseObjectSchema.getXmpz2ElementName(), destinationRefToUse, fieldSchema.getTag());
 	}
 	
 	@Override
