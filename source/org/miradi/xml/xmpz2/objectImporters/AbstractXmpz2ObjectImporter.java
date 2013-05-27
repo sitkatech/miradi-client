@@ -22,7 +22,6 @@ package org.miradi.xml.xmpz2.objectImporters;
 
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.schemas.AbstractFieldSchema;
@@ -63,7 +62,7 @@ public class AbstractXmpz2ObjectImporter  implements Xmpz2XmlConstants
 	
 	protected void importField(Node node, String singletonName, ORef refToUse, String destinationTag) throws Exception
 	{
-		BaseObjectSchema baseObjectSchema = new UnspecifiedBaseObjectSchema(ObjectType.FAKE, singletonName);
+		BaseObjectSchema baseObjectSchema = new UnspecifiedBaseObjectSchema(singletonName);
 		importField(node, baseObjectSchema, refToUse, destinationTag);
 	}
 	
