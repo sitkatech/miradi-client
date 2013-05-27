@@ -173,7 +173,7 @@ abstract public class AbstractXmlImporter
 		return Integer.parseInt(node.getTextContent());
 	}
 
-	public void importField(ORef ref, String destinationTag, String data)	throws Exception
+	protected void importField(ORef ref, String destinationTag, String data)	throws Exception
 	{
 		setData(ref, destinationTag, data);
 	}
