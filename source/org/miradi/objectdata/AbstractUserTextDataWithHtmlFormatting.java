@@ -20,10 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objectdata;
 
+import org.miradi.objecthelpers.ORef;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.HtmlUtilitiesRelatedToShef;
+import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2XmlSchemaCreator;
+import org.w3c.dom.Node;
 
 public class AbstractUserTextDataWithHtmlFormatting extends UserTextData
 {
@@ -61,5 +64,11 @@ public class AbstractUserTextDataWithHtmlFormatting extends UserTextData
 	public String createXmpz2SchemaElementString(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
 		return creator.createUserTextSchemaElement(baseObjectSchema, fieldSchema);
+	}
+	
+	@Override
+	public void readAsXmpz2XmlData(Xmpz2XmlImporter importer, Node node, ORef destinationRefToUse, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		importer.importFormattedStringField(node, baseObjectSchema.getXmpz2ElementName(), destinationRefToUse, fieldSchema.getTag());
 	}
 }

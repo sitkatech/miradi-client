@@ -1778,7 +1778,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		}
 		if (field.isMultiLineUserText())
 		{
-			return encodeXml("Some <b>BOLD</b>\"value\"" + HtmlUtilities.BR_TAG + HtmlUtilities.BR_TAG + "With multiple lines!");
+			return "Some <b>BOLD</b>\"value\"" + HtmlUtilities.BR_TAG + HtmlUtilities.BR_TAG + "With multiple lines!";
 		}
 		if (field.isExpandingUserText())
 		{
@@ -2610,6 +2610,18 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public static OptionalDouble calculateRawTimePeriodCosts(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
 		return baseObject.calculateTimePeriodCosts(dateUnit).getTotalWorkUnits();
+	}
+	
+	public String createSampleFormattedData()
+	{
+		String[] allowdFormattingTags = new String[] {"b", "i", "strike", "u", };
+		String sampleData = "";
+		for(String formatting : allowdFormattingTags)
+		{
+			sampleData += "<" + formatting + ">sample formatted text</" + formatting + ">";
+		}
+		
+		return sampleData;
 	}
 			
 	private static int nextTargetId;

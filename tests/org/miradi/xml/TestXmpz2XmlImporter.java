@@ -73,6 +73,13 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	{
 		super(name);
 	}
+	
+	public void testFormattedText() throws Exception
+	{
+		String sampleData = getProject().createSampleFormattedData();
+		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_PROJECT_DESCRIPTION, sampleData);
+		validateUsingStringWriter();
+	}
 
 	public void testTaxonomies() throws Exception
 	{
@@ -301,6 +308,7 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 		{
 			stringInputputStream.close();	
 		}
+		
 		
 		UnicodeXmlWriter secondWriter = createWriter(projectToImportInto);
 		assertEquals("Exports from projects do not match?", exportedProjectXml, secondWriter.toString());
