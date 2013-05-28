@@ -458,7 +458,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		TaxonomyAssociation taxonomyAssociation = TaxonomyAssociation.find(this, taxonomyAssociationRef);
 		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_POOL_NAME, taxonomyAssociationPoolName);
 		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_BASE_OBJECT_TYPE, taxonomyAssociationParentType);
-		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_CODE, "RandomAssociationCodeFor:" + taxonomyAssociationPoolName);
+		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_CODE, "RandomAssociationCodeFor-" + taxonomyAssociationPoolName);
 		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_MULTI_SELECT, TaxonomyMultiSelectModeQuestion.MULTI_SELECT_CODE);
 		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_SELECTION_TYPE, TaxonomyClassificationSelectionModeQuestion.ANY_NODE_CODE);
 		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_DESCRIPTION, "Some random description");
