@@ -688,17 +688,22 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void writeUriRestrictedSchemaElement()
 	{
-		getSchemaWriter().println(URI_RESTRICTED_TEXT + " = xsd:string { pattern = '([a-zA-Z0-9]|\\?\\.-#@:\\+/|&)*' }");
+		writeRegexRestrictedElement(URI_RESTRICTED_TEXT, "'([a-zA-Z0-9]|\\?\\.-#@:\\+/|&)*'");
 	}
 	
 	private void writeAlphaNumericSchemaElement()
 	{
-		getSchemaWriter().println(ALPHA_NUMERIC_ELEMENT + " = xsd:string { pattern = '([a-zA-Z0-9])*' }");
+		writeRegexRestrictedElement(ALPHA_NUMERIC_ELEMENT, "'([a-zA-Z0-9])*'");
 	}
 	
 	private void writeNonEmptyStringSchemaElement()
 	{
-		getSchemaWriter().println(NON_EMPTY_STRING + " = xsd:string { pattern = '\\S+' }");
+		writeRegexRestrictedElement(NON_EMPTY_STRING, "'\\S+'");
+	}
+
+	private void writeRegexRestrictedElement(final String elementName, final String regex)
+	{
+		getSchemaWriter().println(elementName + " = xsd:string { pattern = " + regex + " }");
 	}
 
 	private void writeGeospacialLocationElement()
