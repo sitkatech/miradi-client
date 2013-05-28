@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu May 23 18:05:17 EDT 2013 $
+# $LastChangedDate: Tue May 28 10:21:58 EDT 2013 $
 # $LastChangedRevision: 223 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/223'
 start = ConservationProject.element
@@ -723,7 +723,7 @@ Dashboard.element = element miradi:Dashboard
 TaxonomyPool.element = element miradi:TaxonomyPool { Taxonomy.element* }
 Taxonomy.element = element miradi:Taxonomy
 {
-  attribute TaxonomyCode { text } &
+  attribute TaxonomyCode { uri_restricted_text } &
   element miradi:TaxonomyElements { TaxonomyElement.element* } &
   element miradi:TaxonomyVersion { text }? &
   TaxonomyTopLevelElementCodeContainer.element ?
