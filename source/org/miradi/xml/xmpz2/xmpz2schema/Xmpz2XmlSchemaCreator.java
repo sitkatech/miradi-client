@@ -125,7 +125,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeCodelistSchemaElements();
 		writeVocabularyDefinitions();
 		writeUriRestrictedSchemaElement();
-		writeAlphaNumericSchemaElement();
 		writeNonEmptyStringSchemaElement();
 		writeObjectTypeIdElements();
 		writeWrappedByDiagramFactorSchemaElement();
@@ -689,11 +688,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void writeUriRestrictedSchemaElement()
 	{
 		writeRegexRestrictedElement(URI_RESTRICTED_TEXT, "'([a-zA-Z0-9]|\\?\\.-#@:\\+/|&)*'");
-	}
-	
-	private void writeAlphaNumericSchemaElement()
-	{
-		writeRegexRestrictedElement(ALPHA_NUMERIC_ELEMENT, "'([a-zA-Z0-9])*'");
 	}
 	
 	private void writeNonEmptyStringSchemaElement()

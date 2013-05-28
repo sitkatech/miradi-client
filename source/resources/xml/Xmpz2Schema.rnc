@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Tue May 28 10:42:54 EDT 2013 $
+# $LastChangedDate: Tue May 28 11:03:09 EDT 2013 $
 # $LastChangedRevision: 223 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/223'
 start = ConservationProject.element
@@ -828,7 +828,7 @@ element miradi:code { vocabulary_hidden_types } *
 
 TaxonomyTopLevelElementCodeContainer.element = element miradi:TaxonomyTopLevelElementCodeContainer
 {
-element miradi:code { alpha_numeric_string } *
+element miradi:code { uri_restricted_text } *
 }
 
 vocabulary_work_plan_time_unit = 'QUARTERLY'|'YEARLY'
@@ -1190,11 +1190,11 @@ element miradi:code { vocabulary_dashboard_row_flags } *
 
 TaxonomyClassificationTaxonomyElementCodeContainer.element = element miradi:TaxonomyClassificationTaxonomyElementCodeContainer
 {
-element miradi:code { alpha_numeric_string } *
+element miradi:code { uri_restricted_text } *
 }
 
 TaxonomyElementChildCodeContainer.element = element miradi:TaxonomyElementChildCodeContainer
 {
-element miradi:code { alpha_numeric_string } *
+element miradi:code { uri_restricted_text } *
 }
 

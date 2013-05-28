@@ -152,7 +152,7 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(TargetModeQuestion.class, VOCABULARY_TARGET_MODE);
 		addItem(TaxonomyMultiSelectModeQuestion.class, VOCABULARY_TAXONOMY_CLASSIFICATION_MULTISELECT_MODE);
 		addItem(TaxonomyClassificationSelectionModeQuestion.class, VOCABULARY_TAXONOMY_CLASSIFICATION_SELECTION_MODE);
-		addItem(InternalQuestionWithoutValues.class, ALPHA_NUMERIC_ELEMENT);
+		addItem(InternalQuestionWithoutValues.class, URI_RESTRICTED_TEXT);
 	}
 	
 	private void addItem(Class questionClass, String value)
