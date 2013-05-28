@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Tue May 28 10:39:29 EDT 2013 $
+# $LastChangedDate: Tue May 28 10:42:54 EDT 2013 $
 # $LastChangedRevision: 223 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/223'
 start = ConservationProject.element
@@ -1165,7 +1165,7 @@ TaxonomyAssociation.element = element miradi:TaxonomyAssociation
   element miradi:TaxonomyAssociationSelectionType { vocabulary_taxonomy_classification_selection_mode } &
   element miradi:TaxonomyAssociationLabel { text } &
   element miradi:TaxonomyAssociationDescription { text }? &
-  element miradi:TaxonomyAssociationTaxonomyCode { text }
+  element miradi:TaxonomyAssociationTaxonomyCode { uri_restricted_text }
 }
 
 TaxonomyClassification.element = element miradi:TaxonomyClassification

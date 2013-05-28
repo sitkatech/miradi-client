@@ -128,6 +128,11 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 	{
 		return createSchemaElement(elementName, TEXT_ELEMENT_TYPE);
 	}
+	
+	public String createUriSchemaElement(final String elementName)
+	{
+		return createSchemaElement(elementName, URI_RESTRICTED_TEXT);
+	}
 
 	public String createSchemaElementWithAnd(final String elementName, final String elementType)
 	{
