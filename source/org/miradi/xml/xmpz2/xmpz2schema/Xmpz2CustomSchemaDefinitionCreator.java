@@ -78,6 +78,11 @@ public class Xmpz2CustomSchemaDefinitionCreator implements Xmpz2XmlConstants
 		addChildElement(getSchemaWriter().createTextSchemaElement(elementName));
 	}
 	
+	public void addUriTextSchemaElement(String elementName)
+	{
+		addChildElement(getSchemaWriter().createUriSchemaElement(elementName));
+	}
+	
 	public void addZeroOrMoreDotElement(String elementName)
 	{
 		addChildElement(getSchemaWriter().createZeroOrMoreDotElement(elementName));
