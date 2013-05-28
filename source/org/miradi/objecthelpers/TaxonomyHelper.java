@@ -78,7 +78,7 @@ public class TaxonomyHelper implements Xmpz2XmlConstants
 	public static Vector<String> getTaxonomyAssociationPoolNamesForType(final int objectType)
 	{
 		if (MiradiShareProjectData.is(objectType))
-			return convertToSingleItemVector(MIRADI_SHARE__PROJECT_DATA_TAXONOMY_ASSOCIATION_POOL);
+			return convertToSingleItemVector(MIRADI_SHARE_PROJECT_DATA_TAXONOMY_ASSOCIATION_POOL);
 		
 		if (Target.is(objectType))
 			return convertToSingleItemVector(BIODIVERSITY_TARGET_TAXONOMY_ASSOCIATION_POOL);
