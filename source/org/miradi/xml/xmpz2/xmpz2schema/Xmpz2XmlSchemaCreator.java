@@ -930,7 +930,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private Xmpz2CustomSchemaDefinitionCreator defineTaxnomyAssociationsElement()
 	{
 		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), TAXONOMY_ASSOCIATION);
-		creator.addTextAttributeElement(TAXONOMY_ASSOCIATION + CODE);
+		creator.addUriRestrictedAttributeElement(TAXONOMY_ASSOCIATION + CODE);
 		creator.addChildElement(TAXONOMY_ASSOCIATION_MULTI_SELECT, VOCABULARY_TAXONOMY_CLASSIFICATION_MULTISELECT_MODE);
 		creator.addChildElement(TAXONOMY_ASSOCIATION_SELECTION_TYPE, VOCABULARY_TAXONOMY_CLASSIFICATION_SELECTION_MODE);
 		creator.addTextSchemaElement(TAXONOMY_ASSOCIATION_LABEL);
