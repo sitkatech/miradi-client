@@ -65,15 +65,15 @@ public class Xmpz2ProjectScopeImporter extends AbstractXmpz2ObjectImporter
 	
 	private void importProjectMetadataField(Node projectSummaryNode, String tag) throws Exception
 	{
-		importFieldSchema(projectSummaryNode, tag, getMetadataRef());
+		importField(projectSummaryNode, tag, getMetadataRef());
 	}
 	
 	private void importWcpaField(Node projectSummaryNode, String tag) throws Exception
 	{
-		importFieldSchema(projectSummaryNode, tag, getWcpaProjectDataRef());
+		importField(projectSummaryNode, tag, getWcpaProjectDataRef());
 	}
 
-	private void importFieldSchema(Node projectSummaryNode, String tag, final ORef ref) throws Exception
+	private void importField(Node projectSummaryNode, String tag, final ORef ref) throws Exception
 	{
 		importField(projectSummaryNode, PROJECT_SUMMARY_SCOPE, ref, tag);
 	}
