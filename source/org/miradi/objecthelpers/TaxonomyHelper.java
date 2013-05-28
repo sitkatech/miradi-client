@@ -78,7 +78,7 @@ public class TaxonomyHelper implements Xmpz2XmlConstants
 	public static Vector<String> getTaxonomyAssociationPoolNamesForType(final int objectType)
 	{
 		if (Cause.is(objectType))
-			return convertToSingleItemVector(CONTRIBUTING_FACTOR_TAXONOMY_ASSOCIATION_POOL, DIRECT_THREAT_TAXONOMY_ASSOCIATION_POOL);
+			return convertToVector(CONTRIBUTING_FACTOR_TAXONOMY_ASSOCIATION_POOL, DIRECT_THREAT_TAXONOMY_ASSOCIATION_POOL);
 		
 		String singleItemPoolName = getSingleItemPoolName(objectType);
 		if (singleItemPoolName != null)
@@ -133,7 +133,7 @@ public class TaxonomyHelper implements Xmpz2XmlConstants
 		return Utility.convertToVector(item);
 	}
 	
-	private static Vector<String> convertToSingleItemVector(String item1, String item2)
+	private static Vector<String> convertToVector(String item1, String item2)
 	{
 		return Utility.convertToVector(new String[]{item1, item2, });
 	}
