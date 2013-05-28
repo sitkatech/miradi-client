@@ -77,46 +77,55 @@ public class TaxonomyHelper implements Xmpz2XmlConstants
 	
 	public static Vector<String> getTaxonomyAssociationPoolNamesForType(final int objectType)
 	{
-		if (MiradiShareProjectData.is(objectType))
-			return convertToSingleItemVector(MIRADI_SHARE_PROJECT_DATA_TAXONOMY_ASSOCIATION_POOL);
-		
-		if (Target.is(objectType))
-			return convertToSingleItemVector(BIODIVERSITY_TARGET_TAXONOMY_ASSOCIATION_POOL);
-		
-		if (HumanWelfareTarget.is(objectType))
-			return convertToSingleItemVector(HUMAN_WELLBEING_TARGET_TAXONOMY_ASSOCIATION_POOL);
-		
 		if (Cause.is(objectType))
 			return convertToSingleItemVector(CONTRIBUTING_FACTOR_TAXONOMY_ASSOCIATION_POOL, DIRECT_THREAT_TAXONOMY_ASSOCIATION_POOL);
 		
-		if (Strategy.is(objectType))
-			return convertToSingleItemVector(STRATEGY_TAXONOMY_ASSOCIATION_POOL);
-		
-		if (ResultsChainDiagram.is(objectType))
-			return convertToSingleItemVector(RESULTS_CHAIN_TAXONOMY_ASSOCIATION_POOL);
-		
-		if (ThreatReductionResult.is(objectType))
-			return convertToSingleItemVector(THREAT_REDUCTION_RESULT_TAXONOMY_ASSOCIATION_POOL);
-		
-		if (Goal.is(objectType))
-			return convertToSingleItemVector(GOAL_TAXONOMY_ASSOCIATION_POOL);
-		
-		if (KeyEcologicalAttribute.is(objectType))
-			return convertToSingleItemVector(KEY_ECOLOGICAL_ATTRIBUTE_TAXONOMY_ASSOCIATION_POOL);
-		
-		if (Indicator.is(objectType))
-			return convertToSingleItemVector(INDICATOR_TAXONOMY_ASSOCIATION_POOL);
-		
-		if (Objective.is(objectType))
-			return convertToSingleItemVector(OBJECTIVE_TAXONOMY_ASSOCIATION_POOL);
-		
-		if (Stress.is(objectType))
-			return convertToSingleItemVector(STRESS_TAXONOMY_ASSOCIATION_POOL);
-		
-		if (Task.is(objectType))
-			return convertToSingleItemVector(TASK_TAXONOMY_ASSOCIATION_POOL);
+		String singleItemPoolName = getSingleItemPoolName(objectType);
+		if (singleItemPoolName != null)
+			return convertToSingleItemVector(singleItemPoolName);
 
 		return new Vector<String>();
+	}
+
+	private static String getSingleItemPoolName(final int objectType)
+	{
+		if (MiradiShareProjectData.is(objectType))
+			return MIRADI_SHARE_PROJECT_DATA_TAXONOMY_ASSOCIATION_POOL;
+		
+		if (Target.is(objectType))
+			return BIODIVERSITY_TARGET_TAXONOMY_ASSOCIATION_POOL;
+		
+		if (HumanWelfareTarget.is(objectType))
+			return HUMAN_WELLBEING_TARGET_TAXONOMY_ASSOCIATION_POOL;
+		
+		if (Strategy.is(objectType))
+			return STRATEGY_TAXONOMY_ASSOCIATION_POOL;
+		
+		if (ResultsChainDiagram.is(objectType))
+			return RESULTS_CHAIN_TAXONOMY_ASSOCIATION_POOL;
+		
+		if (ThreatReductionResult.is(objectType))
+			return THREAT_REDUCTION_RESULT_TAXONOMY_ASSOCIATION_POOL;
+		
+		if (Goal.is(objectType))
+			return GOAL_TAXONOMY_ASSOCIATION_POOL;
+		
+		if (KeyEcologicalAttribute.is(objectType))
+			return KEY_ECOLOGICAL_ATTRIBUTE_TAXONOMY_ASSOCIATION_POOL;
+		
+		if (Indicator.is(objectType))
+			return INDICATOR_TAXONOMY_ASSOCIATION_POOL;
+		
+		if (Objective.is(objectType))
+			return OBJECTIVE_TAXONOMY_ASSOCIATION_POOL;
+		
+		if (Stress.is(objectType))
+			return STRESS_TAXONOMY_ASSOCIATION_POOL;
+		
+		if (Task.is(objectType))
+			return TASK_TAXONOMY_ASSOCIATION_POOL;
+		
+		return null;
 	}
 
 	private static Vector<String> convertToSingleItemVector(String item)
