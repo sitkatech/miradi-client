@@ -138,9 +138,9 @@
     <!-- C L E A N                                                          -->
     <!-- ================================================================== -->
 
-	<!--<target name="clean" description="Remove all class files and jars">
-    <delete dir="${dist.dir}"/>
-  </target>-->
+	<target name="clean" description="Remove all class files and jars">
+    	<delete dir="${dist.dir}"/>
+  	</target>
 
     <!-- ================================================================== -->
     <!-- CLEANUP                                                          -->
