@@ -60,7 +60,6 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 		getWriter().writeMainElementStart();
 		exportExporterDetails();
 		exportProjectSummary();
-		exportMiradiShareProjectData();
 		exportThreatRatings();
 		exportPools();
 		exportExtraData();
@@ -91,11 +90,6 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 	private void exportProjectSummary() throws Exception
 	{
 		new SingletonObjectExporter(getWriter()).writeBaseObjectDataSchemaElement();
-	}
-	
-	private void exportMiradiShareProjectData()
-	{
-		
 	}
 	
 	private void exportThreatRatings() throws Exception
