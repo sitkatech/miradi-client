@@ -22,6 +22,8 @@ package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Measurement;
+import org.miradi.questions.PercisionTypeQuestion;
+import org.miradi.questions.SamplingBasedQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TrendQuestion;
@@ -45,6 +47,10 @@ public class MeasurementSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(Measurement.TAG_DETAIL);
 		createFieldSchemaChoice(Measurement.TAG_STATUS_CONFIDENCE, StatusConfidenceQuestion.class);
 		createFieldSchemaMultiLineUserText(Measurement.TAG_COMMENTS);
+		createFieldSchemaChoice(Measurement.TAG_SAMPLING_BASED_CODE, SamplingBasedQuestion.class);
+		createFieldSchemaInteger(Measurement.TAG_SAMPLE_SIZE);
+		createFieldSchemaNumber(Measurement.TAG_SAMPLE_PRECISION);
+		createFieldSchemaChoice(Measurement.TAG_SAMPLE_PRECISION_TYPE_CODE, PercisionTypeQuestion.class);
 	}
 
 	public static int getObjectType()

@@ -32,7 +32,7 @@ public interface Xmpz2XmlConstants
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
 	public static final String DOT_ELEMENT = ".element";
 	
-	public static final String NAME_SPACE_VERSION = "223";
+	public static final String NAME_SPACE_VERSION = "224";
 	public static final String PARTIAL_NAME_SPACE = "http://xml.miradi.org/schema/ConservationProject/";
 	public static final String NAME_SPACE = PARTIAL_NAME_SPACE + NAME_SPACE_VERSION;
 	public static final String XMLNS = "xmlns";
@@ -374,4 +374,6 @@ public interface Xmpz2XmlConstants
 	public static final String VOCABULARY_MONTH = "vocabulary_month";
 	public static final String VOCABULARY_YEAR = "vocabulary_year";
 	public static final String VOCABULARY_TARGET_MODE = "vocabulary_target_mode";
+	public static final String VOCABULARY_SAMPLE_BASED_MODE = "vocabulary_sample_based_mode";
+	public static final String VOCABULARY_PERCISIOUN_TYPE = "vocabulary_percision_type";
 }
