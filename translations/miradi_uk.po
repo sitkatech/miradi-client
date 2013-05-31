@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-27 14:31-0500\n"
+"POT-Creation-Date: 2013-05-31 14:01-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -477,6 +477,10 @@ msgstr "7B.Розподілити те, чого ви навчаєтесь"
 #: Miradi/source/org/miradi/actions/jump/ActionJumpCreate.java:35
 msgid "7C. Create a Learning Environment"
 msgstr "7С. Створити навчальне середовище"
+
+#: Miradi/source/org/miradi/questions/PercisionTypeQuestion.java:38
+msgid "95% C.I. (confidence interval)"
+msgstr ""
 
 #: Miradi/source/org/miradi/main/MainWindow.java:1352
 msgid ""
@@ -2956,7 +2960,7 @@ msgid "Currency|Other"
 msgstr "Currency|Інший"
 
 #: Miradi/source/org/miradi/forms/objects/MeasurementPropertiesForm.java:36
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:55
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:58
 msgid "Current Status"
 msgstr "Поточний стан"
 
@@ -3064,7 +3068,7 @@ msgid "Data was exported as tab delimited."
 msgstr "Дані були експортовані як tab delimited."
 
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:53
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:47
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:50
 msgid "Date"
 msgstr "Дата"
 
@@ -4933,8 +4937,8 @@ msgstr "Травень"
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:323
 #: Miradi/source/org/miradi/forms/objects/MeasurementPropertiesForm.java:33
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:86
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:45
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:46
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:48
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:49
 msgid "Measurement"
 msgstr "Вимірювання"
 
@@ -5313,6 +5317,14 @@ msgstr ""
 msgid "Nov"
 msgstr "Листопад"
 
+#: Miradi/source/org/miradi/questions/SamplingBasedQuestion.java:35
+msgid "OFF"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/SamplingBasedQuestion.java:36
+msgid "ON"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:169
 #: Miradi/source/org/miradi/forms/objects/ObjectivePropertiesForm.java:34
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:78
@@ -5455,6 +5467,10 @@ msgstr "Інші важливі види"
 #: Miradi/source/org/miradi/wizard/summary/SummaryWizardRolesAndResponsibilities.java:50
 msgid "Other Orgs"
 msgstr "Інші організації"
+
+#: Miradi/source/org/miradi/questions/PercisionTypeQuestion.java:39
+msgid "Other confidence interval"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:64
 msgid "Outcomes"
@@ -6009,6 +6025,14 @@ msgstr "Рубль (Росія)"
 msgid "Run..."
 msgstr "Запустити..."
 
+#: Miradi/source/org/miradi/questions/PercisionTypeQuestion.java:36
+msgid "SD (standard deviation)"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/PercisionTypeQuestion.java:37
+msgid "SE (standard error)"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/summary/WCSSummaryPanel.java:51
 #: Miradi/source/org/miradi/forms/summary/WcsTabForm.java:51
 msgid "STEP"
@@ -6018,6 +6042,10 @@ msgstr "STEP"
 #: Miradi/source/org/miradi/forms/summary/WcsTabForm.java:42
 msgid "SWOT"
 msgstr "SWOT-аналіз"
+
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:70
+msgid "Sample"
+msgstr ""
 
 #: Miradi/source/org/miradi/main/SampleInstaller.java:50
 msgid "Sample Project Installed"
@@ -8091,7 +8119,7 @@ msgstr "Title|З'єднати Створити діалог"
 msgid "Title|MPZ Export Warning"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:90
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:125
 msgid "Title|Measurement Properties"
 msgstr "Title|Складові вимірювання"
 
@@ -8364,6 +8392,7 @@ msgstr ""
 #: Miradi/source/org/miradi/questions/ObjectQuestion.java:54
 #: Miradi/source/org/miradi/questions/AbstractLanguagesQuestion.java:57
 #: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:46
+#: Miradi/source/org/miradi/questions/PercisionTypeQuestion.java:35
 msgid "Unspecified"
 msgstr "Невизначений"
 
@@ -8385,7 +8414,7 @@ msgid "User Defined Extension"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:55
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:49
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:52
 msgid "Value"
 msgstr "Цінність"
 
@@ -9988,6 +10017,15 @@ msgstr ""
 
 msgid "FieldLabel|32.Trend|Trend"
 msgstr "FieldLabel|32.Trend|Тенденція"
+
+msgid "FieldLabel|32.SampleSize|Size"
+msgstr ""
+
+msgid "FieldLabel|32.SamplePrecision|Percision"
+msgstr ""
+
+msgid "FieldLabel|32.SamplePrecisionTypeCode|Percision Type"
+msgstr ""
 
 msgid "FieldLabel|33.Stress|Stress"
 msgstr ""
