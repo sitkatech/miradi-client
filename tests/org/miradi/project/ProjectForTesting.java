@@ -115,6 +115,7 @@ import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 import org.miradi.questions.OpenStandardsProgressStatusQuestion;
+import org.miradi.questions.PercisionTypeQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
 import org.miradi.questions.ProjectSharingQuestion;
@@ -122,6 +123,7 @@ import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
+import org.miradi.questions.SamplingBasedQuestion;
 import org.miradi.questions.ScopeBoxTypeQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
@@ -1387,6 +1389,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(measurement, Measurement.TAG_STATUS_CONFIDENCE, StatusConfidenceQuestion.ROUGH_GUESS_CODE);
 		fillObjectUsingCommand(measurement, Measurement.TAG_TREND, TrendQuestion.STRONG_DECREASE_CODE);
 		fillObjectUsingCommand(measurement, Measurement.TAG_COMMENTS, "Some Measurement comment");
+		fillObjectUsingCommand(measurement, Measurement.TAG_SAMPLE_PRECISION, "3");
+		fillObjectUsingCommand(measurement, Measurement.TAG_SAMPLE_PRECISION_TYPE_CODE, PercisionTypeQuestion.SD_CODE);
+		fillObjectUsingCommand(measurement, Measurement.TAG_SAMPLE_SIZE, "10");
+		fillObjectUsingCommand(measurement, Measurement.TAG_SAMPLING_BASED_CODE, SamplingBasedQuestion.ON_CODE);
 	}
 	
 	public void populateTextBox(TextBox textBox) throws Exception
