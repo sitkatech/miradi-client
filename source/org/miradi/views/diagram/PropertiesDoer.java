@@ -23,7 +23,6 @@ import java.awt.Point;
 import java.util.HashSet;
 
 import org.miradi.diagram.DiagramComponent;
-import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
@@ -134,8 +133,6 @@ public class PropertiesDoer extends LocationDoer
 			return null;
 		
 		EAMGraphCell selected = selectedCells[0];
-		HashSet<FactorCell> children = getChildrenIfAny(selected);
-
 		EAMGraphCell topCellAtClickPoint = (EAMGraphCell) getDiagramComponent().getFirstCellForLocation(getLocation().x, getLocation().y);
 		if(topCellAtClickPoint == null)
 			return selected;
@@ -143,21 +140,6 @@ public class PropertiesDoer extends LocationDoer
 		return topCellAtClickPoint;
 	}
 
-	private HashSet<FactorCell> getChildrenIfAny(EAMGraphCell selected) throws Exception
-	{
-		if(selected.isFactorLink())
-			return new HashSet<FactorCell>();
-		
-		DiagramModel model = getDiagramView().getDiagramPanel().getDiagramModel();
-		if (selected.isScopeBox())
-			return new HashSet<FactorCell>(model.getAllDiagramTargets());
-		
-		if (selected.getDiagramFactor().isGroupBoxFactor())
-			return  model.getGroupBoxFactorChildren(selected);			
-		
-		return new HashSet<FactorCell>();
-	}
-	
 	class ScopeBoxPropertiesDialog extends ModelessDialogWithDirections
 	{
 		public ScopeBoxPropertiesDialog(MainWindow parent, ScopeBoxPropertiesPanel panel)
