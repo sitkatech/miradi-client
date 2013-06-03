@@ -1,7 +1,7 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Fri May 31 10:45:02 EDT 2013 $
-# $LastChangedRevision: 224 $
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/224'
+# $LastChangedDate: Mon Jun 03 10:53:46 EDT 2013 $
+# $LastChangedRevision: 225 $
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/225'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -298,6 +298,7 @@ Indicator.element = element miradi:Indicator
   element miradi:IndicatorRatingSource { vocabulary_rating_source }? &
   element miradi:IndicatorResourceAssignmentIds { ResourceAssignmentId.element* }? &
   element miradi:IndicatorThresholds { IndicatorThreshold.element* }? &
+  element miradi:IndicatorUnit { text }? &
   element miradi:IndicatorViabilityRatingsComments { formatted_text }? &
   TaxonomyClassificationContainer.element?
 }

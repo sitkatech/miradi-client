@@ -1335,6 +1335,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void populateIndicator(Indicator indicator) throws Exception
 	{
 		fillObjectUsingCommand(indicator, Indicator.TAG_LABEL, "Some Indicator Label");
+		fillObjectUsingCommand(indicator, Indicator.TAG_UNIT, "km/hr");
 		fillObjectUsingCommand(indicator, Indicator.TAG_PRIORITY, PriorityRatingQuestion.HIGH_CODE);
 		fillObjectUsingCommand(indicator, Indicator.TAG_DETAIL, "Some Indicator detail");
 		fillObjectUsingCommand(indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENTS, "Some Indicator viability ratings comment");

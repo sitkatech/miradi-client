@@ -54,9 +54,11 @@ public class IndicatorSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(Indicator.TAG_FUTURE_STATUS_DETAIL);
 		createFieldSchemaMultiLineUserText(Indicator.TAG_FUTURE_STATUS_COMMENTS);
 		createFieldSchemaOptionalRef(Indicator.TAG_LEADER_RESOURCE);
+		createFieldSchemaSingleLineUserText(Indicator.TAG_UNIT);
 		createBudgetSchemas();
 		createProgressReportSchema();
 		createTaxonomyClassificationSchemaField();
+		
 		
 		createPseudoFieldSchemaString(Indicator.PSEUDO_TAG_TARGETS);
 		createPseudoFieldSchemaString(Indicator.PSEUDO_TAG_DIRECT_THREATS);
