@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-27 14:31-0500\n"
+"POT-Creation-Date: 2013-05-31 14:01-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -477,6 +477,10 @@ msgstr "7B. Сурч мэдсэн зүйлээ хуваалцах "
 #: Miradi/source/org/miradi/actions/jump/ActionJumpCreate.java:35
 msgid "7C. Create a Learning Environment"
 msgstr "7C. Суралцах орчинг бүрдүүлэх"
+
+#: Miradi/source/org/miradi/questions/PercisionTypeQuestion.java:38
+msgid "95% C.I. (confidence interval)"
+msgstr ""
 
 #: Miradi/source/org/miradi/main/MainWindow.java:1352
 msgid ""
@@ -2975,7 +2979,7 @@ msgid "Currency|Other"
 msgstr "Мөнгөн тэмдэгт|Бусад"
 
 #: Miradi/source/org/miradi/forms/objects/MeasurementPropertiesForm.java:36
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:55
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:58
 msgid "Current Status"
 msgstr "Одоогийн статус"
 
@@ -3081,7 +3085,7 @@ msgid "Data was exported as tab delimited."
 msgstr "Мэдээлэл таб-тай экспортлогдсон"
 
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:53
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:47
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:50
 msgid "Date"
 msgstr "Огноо"
 
@@ -4949,8 +4953,8 @@ msgstr "Таван сар"
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:323
 #: Miradi/source/org/miradi/forms/objects/MeasurementPropertiesForm.java:33
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:86
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:45
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:46
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:48
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:49
 msgid "Measurement"
 msgstr "Хэмжилт"
 
@@ -5339,6 +5343,14 @@ msgstr ""
 msgid "Nov"
 msgstr "Арван нэгдүгээр сар"
 
+#: Miradi/source/org/miradi/questions/SamplingBasedQuestion.java:35
+msgid "OFF"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/SamplingBasedQuestion.java:36
+msgid "ON"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:169
 #: Miradi/source/org/miradi/forms/objects/ObjectivePropertiesForm.java:34
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:78
@@ -5481,6 +5493,10 @@ msgstr "Өөр бусад онцгой төрөл зүйлүүд"
 #: Miradi/source/org/miradi/wizard/summary/SummaryWizardRolesAndResponsibilities.java:50
 msgid "Other Orgs"
 msgstr "Бусад байг-гууд"
+
+#: Miradi/source/org/miradi/questions/PercisionTypeQuestion.java:39
+msgid "Other confidence interval"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:64
 msgid "Outcomes"
@@ -6035,6 +6051,14 @@ msgstr "Рубль (Орос улс)"
 msgid "Run..."
 msgstr "...Эхлүүлэх"
 
+#: Miradi/source/org/miradi/questions/PercisionTypeQuestion.java:36
+msgid "SD (standard deviation)"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/PercisionTypeQuestion.java:37
+msgid "SE (standard error)"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/summary/WCSSummaryPanel.java:51
 #: Miradi/source/org/miradi/forms/summary/WcsTabForm.java:51
 msgid "STEP"
@@ -6044,6 +6068,10 @@ msgstr "Үе шат"
 #: Miradi/source/org/miradi/forms/summary/WcsTabForm.java:42
 msgid "SWOT"
 msgstr "SWOT"
+
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:70
+msgid "Sample"
+msgstr ""
 
 #: Miradi/source/org/miradi/main/SampleInstaller.java:50
 msgid "Sample Project Installed"
@@ -8140,7 +8168,7 @@ msgstr "Гарчиг|Харилцан ярилах цонх үүсгэх лин�
 msgid "Title|MPZ Export Warning"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:90
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:125
 msgid "Title|Measurement Properties"
 msgstr "Гарчиг|Хэмжигдэхүүний Properties"
 
@@ -8414,6 +8442,7 @@ msgstr "Цагийн хуваарьгүй"
 #: Miradi/source/org/miradi/questions/ObjectQuestion.java:54
 #: Miradi/source/org/miradi/questions/AbstractLanguagesQuestion.java:57
 #: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:46
+#: Miradi/source/org/miradi/questions/PercisionTypeQuestion.java:35
 msgid "Unspecified"
 msgstr "Тодорхой заагаагүй"
 
@@ -8435,7 +8464,7 @@ msgid "User Defined Extension"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:55
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:49
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:52
 msgid "Value"
 msgstr "Үнэ цэнэ"
 
@@ -10159,6 +10188,15 @@ msgstr "БаганыХаяг|32.ДэлгэрэнгүйБайдал|Дэлгэр�
 
 msgid "FieldLabel|32.Trend|Trend"
 msgstr "БаганыХаяг|32.ЧигХандлага|Чиг Хандлага"
+
+msgid "FieldLabel|32.SampleSize|Size"
+msgstr ""
+
+msgid "FieldLabel|32.SamplePrecision|Percision"
+msgstr ""
+
+msgid "FieldLabel|32.SamplePrecisionTypeCode|Percision Type"
+msgstr ""
 
 msgid "FieldLabel|33.Stress|Stress"
 msgstr ""
