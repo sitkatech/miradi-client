@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-27 14:31-0500\n"
+"POT-Creation-Date: 2013-05-31 14:01-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -475,6 +475,10 @@ msgstr "7B.共享您的所学 \t\t"
 #: Miradi/source/org/miradi/actions/jump/ActionJumpCreate.java:35
 msgid "7C. Create a Learning Environment"
 msgstr "7C.创造学习环境 \t\t"
+
+#: Miradi/source/org/miradi/questions/PercisionTypeQuestion.java:38
+msgid "95% C.I. (confidence interval)"
+msgstr ""
 
 #: Miradi/source/org/miradi/main/MainWindow.java:1352
 msgid ""
@@ -2853,7 +2857,7 @@ msgid "Currency|Other"
 msgstr "其它"
 
 #: Miradi/source/org/miradi/forms/objects/MeasurementPropertiesForm.java:36
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:55
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:58
 msgid "Current Status"
 msgstr "当前状况 \t\t"
 
@@ -2960,7 +2964,7 @@ msgid "Data was exported as tab delimited."
 msgstr "数据以制表符分隔格式导出 \t\t"
 
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:53
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:47
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:50
 msgid "Date"
 msgstr ""
 
@@ -4803,8 +4807,8 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:323
 #: Miradi/source/org/miradi/forms/objects/MeasurementPropertiesForm.java:33
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:86
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:45
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:46
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:48
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:49
 msgid "Measurement"
 msgstr "测量 \t\t"
 
@@ -5174,6 +5178,14 @@ msgstr ""
 msgid "Nov"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/SamplingBasedQuestion.java:35
+msgid "OFF"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/SamplingBasedQuestion.java:36
+msgid "ON"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:169
 #: Miradi/source/org/miradi/forms/objects/ObjectivePropertiesForm.java:34
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:78
@@ -5315,6 +5327,10 @@ msgstr ""
 #: Miradi/source/org/miradi/wizard/summary/SummaryWizardRolesAndResponsibilities.java:50
 msgid "Other Orgs"
 msgstr "其它组织 \t\t"
+
+#: Miradi/source/org/miradi/questions/PercisionTypeQuestion.java:39
+msgid "Other confidence interval"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:64
 msgid "Outcomes"
@@ -5857,6 +5873,14 @@ msgstr "卢布（俄罗斯）"
 msgid "Run..."
 msgstr "运行... "
 
+#: Miradi/source/org/miradi/questions/PercisionTypeQuestion.java:36
+msgid "SD (standard deviation)"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/PercisionTypeQuestion.java:37
+msgid "SE (standard error)"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/summary/WCSSummaryPanel.java:51
 #: Miradi/source/org/miradi/forms/summary/WcsTabForm.java:51
 msgid "STEP"
@@ -5866,6 +5890,10 @@ msgstr "可持续科技教育计划（STEP） \t\t"
 #: Miradi/source/org/miradi/forms/summary/WcsTabForm.java:42
 msgid "SWOT"
 msgstr "态势（SWOT） \t\t"
+
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:70
+msgid "Sample"
+msgstr ""
 
 #: Miradi/source/org/miradi/main/SampleInstaller.java:50
 msgid "Sample Project Installed"
@@ -7888,7 +7916,7 @@ msgstr "链接创建对话框 \t\t"
 msgid "Title|MPZ Export Warning"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:90
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:125
 msgid "Title|Measurement Properties"
 msgstr "测量属性 \t\t"
 
@@ -8157,6 +8185,7 @@ msgstr ""
 #: Miradi/source/org/miradi/questions/ObjectQuestion.java:54
 #: Miradi/source/org/miradi/questions/AbstractLanguagesQuestion.java:57
 #: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:46
+#: Miradi/source/org/miradi/questions/PercisionTypeQuestion.java:35
 msgid "Unspecified"
 msgstr ""
 
@@ -8178,7 +8207,7 @@ msgid "User Defined Extension"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:55
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:49
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:52
 msgid "Value"
 msgstr ""
 
@@ -9762,6 +9791,15 @@ msgstr ""
 
 msgid "FieldLabel|32.Trend|Trend"
 msgstr "趋势 \t\t"
+
+msgid "FieldLabel|32.SampleSize|Size"
+msgstr ""
+
+msgid "FieldLabel|32.SamplePrecision|Percision"
+msgstr ""
+
+msgid "FieldLabel|32.SamplePrecisionTypeCode|Percision Type"
+msgstr ""
 
 msgid "FieldLabel|33.Stress|Stress"
 msgstr ""
