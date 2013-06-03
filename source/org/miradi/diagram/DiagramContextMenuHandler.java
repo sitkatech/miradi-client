@@ -23,7 +23,6 @@ import java.awt.Font;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
-import java.awt.geom.Point2D;
 import java.util.Collections;
 import java.util.Vector;
 
@@ -50,10 +49,10 @@ import org.miradi.actions.ActionGroupBoxRemoveFactor;
 import org.miradi.actions.ActionInsertContributingFactor;
 import org.miradi.actions.ActionInsertDirectThreat;
 import org.miradi.actions.ActionInsertDraftStrategy;
-import org.miradi.actions.ActionInsertLink;
 import org.miradi.actions.ActionInsertGroupBox;
 import org.miradi.actions.ActionInsertHumanWelfareTarget;
 import org.miradi.actions.ActionInsertIntermediateResult;
+import org.miradi.actions.ActionInsertLink;
 import org.miradi.actions.ActionInsertScopeBox;
 import org.miradi.actions.ActionInsertStrategy;
 import org.miradi.actions.ActionInsertTarget;
@@ -73,9 +72,9 @@ import org.miradi.actions.ActionShowResultsChain;
 import org.miradi.actions.ActionShowSelectedChainMode;
 import org.miradi.actions.ActionUndo;
 import org.miradi.actions.Actions;
-import org.miradi.actions.MiradiAction;
 import org.miradi.actions.LocationAction;
 import org.miradi.actions.MainWindowAction;
+import org.miradi.actions.MiradiAction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.icons.TaggedObjectSetIcon;
 import org.miradi.main.EAM;
@@ -321,9 +320,8 @@ public class DiagramContextMenuHandler
 	public void showContextMenu(MouseEvent e)
 	{
 		Point pointWithinDiagram = e.getPoint();
-		Point2D scaledPoint2D = diagramComponent.fromScreen(pointWithinDiagram);
 		
-		Point scaledPoint = Utilities.createPointFromPoint2D(scaledPoint2D);
+		Point scaledPoint = Utilities.createPointFromPoint2D(pointWithinDiagram);
 		
 		JPopupMenu menu = createPopupMenu(scaledPoint);
 		mainWindow.updateActionsAndStatusBar();
