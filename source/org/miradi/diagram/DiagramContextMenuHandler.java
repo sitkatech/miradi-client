@@ -320,8 +320,8 @@ public class DiagramContextMenuHandler
 
 	public void showContextMenu(MouseEvent e)
 	{
-		Point screenPoint = e.getPoint();
-		Point2D scaledPoint2D = diagramComponent.fromScreen(screenPoint);
+		Point pointWithinDiagram = e.getPoint();
+		Point2D scaledPoint2D = diagramComponent.fromScreen(pointWithinDiagram);
 		
 		Point scaledPoint = Utilities.createPointFromPoint2D(scaledPoint2D);
 		
