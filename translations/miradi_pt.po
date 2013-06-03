@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-31 14:01-0500\n"
+"POT-Creation-Date: 2013-06-03 10:16-0500\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -4373,8 +4373,8 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:134
 #: Miradi/source/org/miradi/forms/objects/IndicatorSubForm.java:33
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:79
-#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:39
-#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:52
+#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:40
+#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:53
 msgid "Indicator"
 msgstr "Indicador"
 
@@ -9470,6 +9470,9 @@ msgid "FieldLabel|8.ProgressReportRefs|Progress Reports"
 msgstr "Relatórios de Progresso"
 
 msgid "FieldLabel|8.LeaderResource|Leader"
+msgstr ""
+
+msgid "FieldLabel|8.Unit|Unit"
 msgstr ""
 
 msgid "FieldLabel|9.Objective|Objective"
