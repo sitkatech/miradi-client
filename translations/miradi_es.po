@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-03 10:16-0500\n"
+"POT-Creation-Date: 2013-06-03 16:31-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -5002,7 +5002,7 @@ msgstr "4. Analizar, usar, adaptar"
 msgid "Menu|5. Capture and Share Learning"
 msgstr "5. Capturar y compartir el aprendizaje"
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:244
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:242
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Agregar etiqueta a los elementos seleccionados de %n"
 
@@ -5014,7 +5014,7 @@ msgstr "Exportar página actual como..."
 msgid "Menu|Export Current Project as..."
 msgstr "Exportar proyecto actual como..."
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:282
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:280
 #: Miradi/source/org/miradi/main/menu/MainMenuBar.java:426
 msgid "Menu|Group Box"
 msgstr "Cuadro de grupo"
@@ -5023,11 +5023,11 @@ msgstr "Cuadro de grupo"
 msgid "Menu|Import"
 msgstr "Importar"
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:293
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:291
 msgid "Menu|Insert"
 msgstr "Insertar"
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:250
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:248
 msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr "Quitar etiqueta de los elementos seleccionados de %n"
 
@@ -8348,7 +8348,7 @@ msgstr ""
 msgid "Unexpected error prevented installing that language pack"
 msgstr "Un error inesperado impidió la instalación del paquete de idiomas."
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:176
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:174
 msgid "Unexpected error prevented the tag operation from succeeding"
 msgstr "Un error inesperado impidió el funcionamiento exitoso de la etiqueta."
 
