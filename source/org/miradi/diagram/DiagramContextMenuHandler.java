@@ -33,7 +33,6 @@ import javax.swing.JPopupMenu;
 
 import org.martus.swing.UiMenu;
 import org.martus.swing.UiPopupMenu;
-import org.martus.swing.Utilities;
 import org.miradi.actions.ActionCopy;
 import org.miradi.actions.ActionCreateBendPoint;
 import org.miradi.actions.ActionCreateIncomingJunction;
@@ -320,10 +319,7 @@ public class DiagramContextMenuHandler
 	public void showContextMenu(MouseEvent e)
 	{
 		Point pointWithinDiagram = e.getPoint();
-		
-		Point scaledPoint = Utilities.createPointFromPoint2D(pointWithinDiagram);
-		
-		JPopupMenu menu = createPopupMenu(scaledPoint);
+		JPopupMenu menu = createPopupMenu(pointWithinDiagram);
 		mainWindow.updateActionsAndStatusBar();
 		menu.show(diagramComponent, e.getX(), e.getY());
 	}
