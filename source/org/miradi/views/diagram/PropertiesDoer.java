@@ -140,11 +140,6 @@ public class PropertiesDoer extends LocationDoer
 		if(topCellAtClickPoint == null)
 			return selected;
 		
-		if (children.contains(topCellAtClickPoint))
-			return topCellAtClickPoint;
-		if (topCellAtClickPoint.isFactorLink())
-			return topCellAtClickPoint; 
-		
 		return topCellAtClickPoint;
 	}
 
