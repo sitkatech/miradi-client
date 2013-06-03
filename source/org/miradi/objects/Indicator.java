@@ -399,6 +399,7 @@ public class Indicator extends BaseObject
 	public static final String TAG_FUTURE_STATUS_SUMMARY = "FutureStatusSummary";
 	public static final String TAG_FUTURE_STATUS_DETAIL = "FutureStatusDetail";
 	public static final String TAG_FUTURE_STATUS_COMMENTS = "FutureStatusComment";
+	public static final String TAG_UNIT = "Unit";
 
 	public static final String PSEUDO_TAG_FACTOR = "PseudoTagFactor";
 	

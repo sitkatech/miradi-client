@@ -36,7 +36,8 @@ public class IndicatorSubPanel extends ObjectDataInputPanel
 
 		ObjectDataInputField shortLabelField = createStringField(IndicatorSchema.getObjectType(), Indicator.TAG_SHORT_LABEL,10);
 		ObjectDataInputField labelField = createExpandableField(IndicatorSchema.getObjectType(), Indicator.TAG_LABEL);
-		addFieldsOnOneLine(EAM.text("Indicator"), IconManager.getIndicatorIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
+		ObjectDataInputField unitField = createStringField(IndicatorSchema.getObjectType(), Indicator.TAG_UNIT, 10);
+		addFieldsOnOneLine(EAM.text("Indicator"), IconManager.getIndicatorIcon(), new ObjectDataInputField[]{shortLabelField, labelField, unitField,});
 		
 		final int COLUMNS = 75;
 		addField(createMultilineField(IndicatorSchema.getObjectType(), Indicator.TAG_DETAIL, COLUMNS));
