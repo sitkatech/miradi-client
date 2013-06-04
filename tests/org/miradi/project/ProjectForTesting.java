@@ -1820,19 +1820,15 @@ public class ProjectForTesting extends ProjectWithHelpers
 		String userText = "";
 		if (field.isSingleLineUserText())
 		{
-			userText += "single line sample text";
+			userText += "Sample text with encoded values: &amp; &lt; &gt; &quot;";
 		}
 		if (field.isUserTextWithHtmlFormatting())
 		{
 			userText += createSampleFormattedData();
 		}
-		if (field.isExpandingUserText())
-		{
-			userText += "random text for:" + field.getTag();
-		}
 		if (field.isMultiLineUserText())
 		{
-			userText += "Some &amp; <b>BOLD</b>\"value\"" + HtmlUtilities.BR_TAG + HtmlUtilities.BR_TAG + "With multiple lines!";
+			userText += "Value "+ HtmlUtilities.BR_TAG + HtmlUtilities.BR_TAG + "With multiple lines!";
 		}
 		
 		return userText;
