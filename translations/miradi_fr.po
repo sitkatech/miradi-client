@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-03 10:16-0500\n"
+"POT-Creation-Date: 2013-06-03 16:31-0500\n"
 "PO-Revision-Date: 2013-04-02 10:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -5133,7 +5133,7 @@ msgstr "4. Analyser, utiliser, adapter"
 msgid "Menu|5. Capture and Share Learning"
 msgstr "5. Considérer et partager l'apprentissage"
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:244
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:242
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Ajouter une étiquette à %n élément(s) sélectionné(s)"
 
@@ -5145,7 +5145,7 @@ msgstr "Exporter la page actuelle sous..."
 msgid "Menu|Export Current Project as..."
 msgstr "Exporter le projet actuel sous..."
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:282
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:280
 #: Miradi/source/org/miradi/main/menu/MainMenuBar.java:426
 msgid "Menu|Group Box"
 msgstr "Boîte de regroupement"
@@ -5154,11 +5154,11 @@ msgstr "Boîte de regroupement"
 msgid "Menu|Import"
 msgstr "Importer"
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:293
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:291
 msgid "Menu|Insert"
 msgstr "Insérer"
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:250
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:248
 msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr "Supprimer l'étiquette de %n élément(s) sélectionné(s)"
 
@@ -8574,7 +8574,7 @@ msgstr ""
 msgid "Unexpected error prevented installing that language pack"
 msgstr "Une erreur inattendue a empêché d'installer le pack de langues"
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:176
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:174
 msgid "Unexpected error prevented the tag operation from succeeding"
 msgstr ""
 "Une erreur inattendue a empêché la bonne réussite de l'opération d'étiquette"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-03 10:16-0500\n"
+"POT-Creation-Date: 2013-06-03 16:31-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -5029,7 +5029,7 @@ msgstr "Цэс|4. Дүн шинжилгээ хийх, Хэрэглэх, Тохи
 msgid "Menu|5. Capture and Share Learning"
 msgstr "Цэс|5. Дүрслэн гаргах ба Сургамжтай зүйлсийг хуваалцах"
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:244
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:242
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Цэс|Сонгосон зүйлд(үүдэд) Тэмдэглэл нэмэх"
 
@@ -5041,7 +5041,7 @@ msgstr "Цэс|Идэвхитэй хуудсанд экспорт хийх (Expo
 msgid "Menu|Export Current Project as..."
 msgstr "Цэс|Одоогийн төсөлд экспорт хийх (Export)"
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:282
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:280
 #: Miradi/source/org/miradi/main/menu/MainMenuBar.java:426
 msgid "Menu|Group Box"
 msgstr "Цэс|Бүлгийн хайрцаг"
@@ -5050,11 +5050,11 @@ msgstr "Цэс|Бүлгийн хайрцаг"
 msgid "Menu|Import"
 msgstr "Цэс|Импорт хийх"
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:293
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:291
 msgid "Menu|Insert"
 msgstr "Цэс|Оруулах"
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:250
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:248
 msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr "Цэс|Сонгосон Зүйлээс(үүдээс) Тэмдэглэгээг арилгах"
 
@@ -8393,7 +8393,7 @@ msgstr ""
 msgid "Unexpected error prevented installing that language pack"
 msgstr "Хэлний багцыг суулгахад гэнэтийн алдаа гарлаа"
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:176
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:174
 msgid "Unexpected error prevented the tag operation from succeeding"
 msgstr ""
 

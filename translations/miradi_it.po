@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-03 10:16-0500\n"
+"POT-Creation-Date: 2013-06-03 16:31-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -5085,7 +5085,7 @@ msgstr "4. Analizza, Usa, Adatta"
 msgid "Menu|5. Capture and Share Learning"
 msgstr "5. Impara la lezione e condividi"
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:244
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:242
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Aggiungi Etichetta alla selezione"
 
@@ -5097,7 +5097,7 @@ msgstr "Esporta la pagina corrente come..."
 msgid "Menu|Export Current Project as..."
 msgstr "Esporta il progetto come...."
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:282
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:280
 #: Miradi/source/org/miradi/main/menu/MainMenuBar.java:426
 msgid "Menu|Group Box"
 msgstr "Blocco gruppo"
@@ -5106,11 +5106,11 @@ msgstr "Blocco gruppo"
 msgid "Menu|Import"
 msgstr "Importa"
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:293
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:291
 msgid "Menu|Insert"
 msgstr "Inserisci"
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:250
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:248
 msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr "Rimuovi l'etichetta dalla selezione"
 
@@ -8457,7 +8457,7 @@ msgstr ""
 msgid "Unexpected error prevented installing that language pack"
 msgstr "Un errore inatteso ha impedito l'istallazione del pacchetto lingua"
 
-#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:176
+#: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:174
 msgid "Unexpected error prevented the tag operation from succeeding"
 msgstr ""
 "Un errore imprevisto ha impedito che l'operazione di etichettatura avesse "
