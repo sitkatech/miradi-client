@@ -1820,7 +1820,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		String userText = "";
 		if (field.isSingleLineUserText())
 		{
-			userText += "Sample text with encoded values: &amp; &lt; &gt; &quot;";
+			userText += "Sample text with encoded values: &amp; &lt; &gt; &quot; &apos;";
 		}
 		if (field.isUserTextWithHtmlFormatting())
 		{
