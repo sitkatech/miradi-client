@@ -101,7 +101,6 @@ import org.miradi.utils.HtmlUtilitiesRelatedToShef;
 import org.miradi.utils.PointList;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.StringUtilities;
-import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.AbstractXmlImporter;
 import org.miradi.xml.AbstractXmlNamespaceContext;
 import org.miradi.xml.MiradiXmlValidator;
@@ -213,6 +212,8 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 			
 			if (typeToImporterMap.containsKey(objectType))
 				continue;
+			
+			
 			
 			BaseObjectSchema baseObjectSchema = pool.createBaseObjectSchema(getProject());
 			addImporterToMap(typeToImporterMap, new BaseObjectImporter(this, baseObjectSchema));
@@ -567,7 +568,6 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		Node adoptedNode = documentToUse.adoptNode(clonedNode);
 		Node appendedNode = documentToUse.appendChild(adoptedNode);
 		String nodeTreeAsString = nodeToString(appendedNode);
-		nodeTreeAsString = XmlUtilities2.getXmlDecoded(nodeTreeAsString);
 		nodeTreeAsString = HtmlUtilitiesRelatedToShef.getNormalizedAndSanitizedHtmlText(nodeTreeAsString, AbstractUserTextDataWithHtmlFormatting.getAllowedHtmlTags());
 		
 		importField(ref, destinationTag, nodeTreeAsString);
