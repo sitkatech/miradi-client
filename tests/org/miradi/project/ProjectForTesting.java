@@ -1763,10 +1763,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	private String getSampleData(ObjectData field) throws Exception
 	{
-		if (field.isSingleLineUserText())
-		{
-			return "single line sample text";
-		}
 		if (field.isIntegerData())
 		{
 			return "45";
@@ -1783,13 +1779,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 		{
 			return BooleanData.BOOLEAN_TRUE;
 		}
-		if (field.isMultiLineUserText())
+		if (field.isUserText())
 		{
-			return "Some <b>BOLD</b>\"value\"" + HtmlUtilities.BR_TAG + HtmlUtilities.BR_TAG + "With multiple lines!";
-		}
-		if (field.isExpandingUserText())
-		{
-			return "random text for:" + field.getTag();
+			return getSampleUserText(field);
 		}
 		if (field.isDateData())
 		{
@@ -1814,6 +1806,36 @@ public class ProjectForTesting extends ProjectWithHelpers
 		}
 		
 		throw new Exception("no sample data for: " + field.getClass().getSimpleName());
+	}
+
+	public String getSampleUserText(BaseObject baseObject, String tag)
+	{
+		ObjectData objectData = baseObject.getField(tag);
+		
+		return getSampleUserText(objectData);
+	}
+	
+	public String getSampleUserText(ObjectData field)
+	{
+		String userText = "";
+		if (field.isSingleLineUserText())
+		{
+			userText += "single line sample text";
+		}
+		if (field.isUserTextWithHtmlFormatting())
+		{
+			userText += createSampleFormattedData();
+		}
+		if (field.isExpandingUserText())
+		{
+			userText += "random text for:" + field.getTag();
+		}
+		if (field.isMultiLineUserText())
+		{
+			userText += "Some &amp; <b>BOLD</b>\"value\"" + HtmlUtilities.BR_TAG + HtmlUtilities.BR_TAG + "With multiple lines!";
+		}
+		
+		return userText;
 	}
 
 	public String getSampleCode(ObjectData field)

@@ -76,7 +76,7 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	
 	public void testFormattedText() throws Exception
 	{
-		String sampleData = getProject().createSampleFormattedData();
+		String sampleData = getProject().getSampleUserText(getProject().getMetadata(), ProjectMetadata.TAG_PROJECT_DESCRIPTION);
 		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_PROJECT_DESCRIPTION, sampleData);
 		validateUsingStringWriter();
 	}
