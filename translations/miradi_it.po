@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-06 17:16-0500\n"
+"POT-Creation-Date: 2013-06-06 18:31-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -3010,7 +3010,7 @@ msgid "Currency|Other"
 msgstr "Valùta/Altro"
 
 #: Miradi/source/org/miradi/forms/objects/MeasurementPropertiesForm.java:36
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:58
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:61
 msgid "Current Status"
 msgstr "Stato attuale"
 
@@ -3118,7 +3118,7 @@ msgid "Data was exported as tab delimited."
 msgstr "I dati sono stati esportati delimitati da tabulazioni"
 
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:53
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:50
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:51
 msgid "Date"
 msgstr "data"
 
@@ -3211,7 +3211,7 @@ msgid "Desert - Temperate"
 msgstr "Deserto - Temperato"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:329
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:81
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:84
 msgid "Desired Future Status"
 msgstr "Stato futuro desiderato"
 
@@ -3226,11 +3226,11 @@ msgstr ""
 "in un prefissato futuro momento. Equivale generalmente e a un sub-Obiettivo "
 "di Conservazione"
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:88
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:91
 msgid "Desired Future Value"
 msgstr "Valore futuro desiderato"
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:114
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:117
 msgid "Desired Value/Status"
 msgstr "Valore/Status desiderato"
 
@@ -3586,6 +3586,7 @@ msgstr "Espandi la colonna selezionata"
 
 #: Miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:37
 #: Miradi/source/org/miradi/questions/RatingSourceQuestion.java:37
+#: Miradi/source/org/miradi/xml/generic/XmlSchemaCreator.java:656
 msgid "Expert Knowledge"
 msgstr "Conoscenza specialistica (Expert Knowledge)"
 
@@ -4349,6 +4350,7 @@ msgid "Instructions"
 msgstr "Istruzioni"
 
 #: Miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:39
+#: Miradi/source/org/miradi/xml/generic/XmlSchemaCreator.java:658
 msgid "Intensive Assessment"
 msgstr "Valutazione intensiva"
 
@@ -5009,8 +5011,8 @@ msgstr "Mag"
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:323
 #: Miradi/source/org/miradi/forms/objects/MeasurementPropertiesForm.java:33
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:86
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:48
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:49
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:50
 msgid "Measurement"
 msgstr "Misurazione"
 
@@ -5372,6 +5374,7 @@ msgstr "Non efficace"
 #: Miradi/source/org/miradi/questions/PriorityRatingQuestion.java:36
 #: Miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
 #: Miradi/source/org/miradi/questions/TrendQuestion.java:37
+#: Miradi/source/org/miradi/xml/generic/XmlSchemaCreator.java:654
 #: Miradi/source/org/miradi/utils/Translation.java:332
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:285
 #: Miradi/source/org/miradi/dialogs/planning/treenodes/UnspecifiedBaseObject.java:45
@@ -5399,14 +5402,6 @@ msgstr ""
 #: Miradi/source/org/miradi/questions/MonthAbbreviationsQuestion.java:45
 msgid "Nov"
 msgstr "Nov"
-
-#: Miradi/source/org/miradi/questions/SamplingEnabledQuestion.java:35
-msgid "OFF"
-msgstr ""
-
-#: Miradi/source/org/miradi/questions/SamplingEnabledQuestion.java:36
-msgid "ON"
-msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:169
 #: Miradi/source/org/miradi/forms/objects/ObjectivePropertiesForm.java:34
@@ -5956,6 +5951,7 @@ msgid "Rank draft strategies"
 msgstr "Ordina le strategie"
 
 #: Miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:38
+#: Miradi/source/org/miradi/xml/generic/XmlSchemaCreator.java:657
 msgid "Rapid Assessment"
 msgstr "Valutazione Rapida"
 
@@ -6099,6 +6095,7 @@ msgstr "Zone rocciose [le forre nell&apos;entroterra, montagne]"
 
 #: Miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:36
 #: Miradi/source/org/miradi/questions/RatingSourceQuestion.java:36
+#: Miradi/source/org/miradi/xml/generic/XmlSchemaCreator.java:655
 msgid "Rough Guess"
 msgstr "Stima approssimativa"
 
@@ -6128,13 +6125,17 @@ msgstr "STEP"
 msgid "SWOT"
 msgstr "SWOT"
 
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:70
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:72
 msgid "Sample"
 msgstr ""
 
 #: Miradi/source/org/miradi/main/SampleInstaller.java:50
 msgid "Sample Project Installed"
 msgstr "Esempio di progetto installato"
+
+#: Miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:40
+msgid "Sampling Based"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:44
 msgid "Savanna"
@@ -8236,7 +8237,7 @@ msgstr "Link Crea Dialogo "
 msgid "Title|MPZ Export Warning"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:125
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:128
 msgid "Title|Measurement Properties"
 msgstr "Proprietà della misurazione"
 
@@ -8463,6 +8464,11 @@ msgstr ""
 "Un errore imprevisto ha impedito che l'operazione di etichettatura avesse "
 "successo"
 
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:57
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:55
+msgid "Unit"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:37
 msgid "University"
 msgstr "Università"
@@ -8530,7 +8536,7 @@ msgid "User Defined Extension"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:55
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:52
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:53
 msgid "Value"
 msgstr "Valore"
 
@@ -10149,7 +10155,10 @@ msgstr ""
 msgid "FieldLabel|32.SamplePrecision|Precision"
 msgstr ""
 
-msgid "FieldLabel|32.SamplePrecisionTypeCode|Precision Type"
+msgid "FieldLabel|32.SamplePrecisionType|Precision Type"
+msgstr ""
+
+msgid "FieldLabel|32.SamplingBasedEnabled|Sampling Based Enabled"
 msgstr ""
 
 msgid "FieldLabel|33.Stress|Stress"
