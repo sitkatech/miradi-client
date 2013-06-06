@@ -111,7 +111,7 @@ public class StaticQuestionManager
 		addQuestion(new DiagramModeQuestion());
 		addQuestion(new TaxonomyMultiSelectModeQuestion());
 		addQuestion(new TaxonomyClassificationSelectionModeQuestion());
-		addQuestion(new SamplingBasedModeQuestion());
+		addQuestion(new SamplingEnabledQuestion());
 		addQuestion(new PrecisionTypeQuestion());
 	}
 	

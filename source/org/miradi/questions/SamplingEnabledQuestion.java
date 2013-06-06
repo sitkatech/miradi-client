@@ -22,9 +22,9 @@ package org.miradi.questions;
 
 import org.miradi.main.EAM;
 
-public class SamplingBasedModeQuestion extends StaticChoiceQuestion
+public class SamplingEnabledQuestion extends StaticChoiceQuestion
 {
-	public SamplingBasedModeQuestion()
+	public SamplingEnabledQuestion()
 	{
 		super(getChoiceItems());
 	}
