@@ -51,6 +51,7 @@ public class HtmlUtilitiesRelatedToShef
 		trimmedText = HtmlUtilities.stripAttributesFromNonAnchorElements(trimmedText);
 		trimmedText = trimmedText.replaceAll("\\t", " ");
 		trimmedText = trimmedText.replaceAll(" +", " ");
+		trimmedText = HtmlUtilities.fixAnchorElementsSaftley(trimmedText);
 		trimmedText = trimmedText.trim();		
 		trimmedText = HtmlUtilities.replaceNonHtmlNewlines(trimmedText);
 		//NOTE: Third party library  uses <br> instead of <br/>.  If we don't replace <br> then 

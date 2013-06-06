@@ -83,6 +83,7 @@ import org.miradi.schemas.WcpaProjectDataSchema;
 import org.miradi.schemas.WcsProjectDataSchema;
 import org.miradi.schemas.WwfProjectDataSchema;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.IgnoreCaseStringComparator;
 import org.miradi.utils.StringUtilities;
 import org.miradi.utils.Translation;
@@ -675,12 +676,12 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().writeSchemaElement("ol", "element.li*");
 		getSchemaWriter().writeSchemaElement("li", FORMATTED_TEXT_TYPE);
 		
-		getSchemaWriter().printlnIndented(getSchemaWriter().createSelfNamedElement("a"));
+		getSchemaWriter().printlnIndented(getSchemaWriter().createSelfNamedElement(HtmlUtilities.ANCHOR_ELEMENT_NAME));
 		getSchemaWriter().startBlock();
-		getSchemaWriter().printlnIndented(getSchemaWriter().createTextAttributeElement("href") + " &");
-		getSchemaWriter().printlnIndented(getSchemaWriter().createTextAttributeElement("name") + "? &");
-		getSchemaWriter().printlnIndented(getSchemaWriter().createTextAttributeElement("title") + "? &");
-		getSchemaWriter().printlnIndented(getSchemaWriter().createTextAttributeElement("target") + "? &");			  
+		getSchemaWriter().printlnIndented(getSchemaWriter().createTextAttributeElement(HtmlUtilities.HREF_ATTRIBUTE_NAME) + " &");
+		getSchemaWriter().printlnIndented(getSchemaWriter().createTextAttributeElement(HtmlUtilities.NAME_ATTRIBUTE_NAME) + "? &");
+		getSchemaWriter().printlnIndented(getSchemaWriter().createTextAttributeElement(HtmlUtilities.TITLE_ATTRIBUTE_NAME) + "? &");
+		getSchemaWriter().printlnIndented(getSchemaWriter().createTextAttributeElement(HtmlUtilities.TARGET_ATTRIBUTE_NAME) + "? &");			  
 		getSchemaWriter().printlnIndented(FORMATTED_TEXT_TYPE);
 		getSchemaWriter().endBlock();
 	}

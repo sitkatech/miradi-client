@@ -29,6 +29,21 @@ public class TestHtmlUtilities extends MiradiTestCase
 		super(name);
 	}
 	
+	public void testIllegaleAnchorElements() throws Exception
+	{
+		verifyAnchoElements("a b c  ", "a b c  ");
+		verifyAnchoElements("<a href=\"http://www.miradi.org\">miradi</a>", "<a href=\"http://www.miradi.org\">miradi</a>");
+		verifyAnchoElements("<a href=\"\" target=\"noTarget\">miradi</a>", "<a target=\"noTarget\">miradi</a>");
+		verifyAnchoElements("<a href=\"\">miradi</a>", "<a>miradi</a>");
+		verifyAnchoElements("<a href=\"http://www.miradi.org\">miradi</a>", "<a href=\"http://www.miradi.org\" language=\"DE\">miradi</a>");
+		verifyAnchoElements("<i>sample with space<a href=\"\" name=\"_msocom_1\">x</a> </i>", "<i>sample with space<a href=\"\" name=\"_msocom_1\">x</a> </i>");
+	}
+	
+	private void verifyAnchoElements(String expectedValue, String actualValue) throws Exception
+	{
+		assertEquals("Anchor element was not fixed?", expectedValue, HtmlUtilities.fixAnchorElementsSaftley(actualValue));
+	}
+	
 	public void testStripHtmlComments()
 	{
 		verifyStrippingComments("without comments", "without comments");
@@ -129,14 +144,14 @@ public class TestHtmlUtilities extends MiradiTestCase
 	
 	public void testSpacesAroundElementShouldNotBeCompletelyRemoved()
 	{
-		verifySpaceRemovalAroundElement("X</b>Y", "X</b>Y");
-		verifySpaceRemovalAroundElement("X</b> Y", "X</b> Y");
-		verifySpaceRemovalAroundElement("X</b> Y", "X</b>   Y");
-		verifySpaceRemovalAroundElement("X </b>Y", "X    </b>Y");
-		verifySpaceRemovalAroundElement("X </b> Y", "X    </b>   Y");
-		verifySpaceRemovalAroundElement("X</b>", "X</b>");
-		verifySpaceRemovalAroundElement("X</b>", "X</b>   ");
-		verifySpaceRemovalAroundElement("X </b>", "X    </b>   ");
+		verifySpaceRemovalAroundElement("X<b/>Y", "X<b/>Y");
+		verifySpaceRemovalAroundElement("X<b/> Y", "X<b/> Y");
+		verifySpaceRemovalAroundElement("X<b/> Y", "X<b/>   Y");
+		verifySpaceRemovalAroundElement("X <b/>Y", "X    <b/>Y");
+		verifySpaceRemovalAroundElement("X <b/> Y", "X    <b/>   Y");
+		verifySpaceRemovalAroundElement("X<b/>", "X<b/>");
+		verifySpaceRemovalAroundElement("X<b/>", "X<b/>   ");
+		verifySpaceRemovalAroundElement("X <b/>", "X    <b/>   ");
 		verifySpaceRemovalAroundElement("X<br/>Y", "X <br/>Y");
 		verifySpaceRemovalAroundElement("X<br/>Y", "X <br/> Y");
 	}

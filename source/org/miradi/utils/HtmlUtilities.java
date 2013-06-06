@@ -25,9 +25,23 @@ import java.util.Vector;
 import java.util.regex.Pattern;
 
 import javax.swing.text.html.StyleSheet;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
+import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 
 public class HtmlUtilities
 {
@@ -325,6 +339,105 @@ public class HtmlUtilities
 		return htmlText.replaceAll(regex, StringUtilities.EMPTY_STRING);
 	}
 	
+	public static String fixAnchorElementsSaftley(String htmlText)
+	{
+		try
+		{
+			if(htmlText.indexOf("<") < 0)
+				return htmlText;
+			
+			if (!htmlText.startsWith("<?xml") && !htmlText.startsWith("<html>"))
+				htmlText = HtmlUtilities.wrapInHtmlTags(htmlText);
+			
+			String fixAnchorElements = fixAnchorElements(htmlText);
+			fixAnchorElements = fixAnchorElements.replaceAll("<html>", "");
+			fixAnchorElements = fixAnchorElements.replaceAll("</html>", "");
+			
+			return fixAnchorElements;
+		}
+		catch (Exception e)
+		{
+			EAM.alertUserOfNonFatalException(e);
+			return htmlText;	
+		}
+	}
+	
+	private static String fixAnchorElements(String htmlText) throws Exception
+	{
+		Document document = createDomDocument(htmlText);
+		NodeList anchorElements = document.getElementsByTagName(ANCHOR_ELEMENT_NAME);
+		for (int index = 0; index < anchorElements.getLength(); ++index)
+		{
+			Element anchorNode = (Element) anchorElements.item(index);
+			NamedNodeMap attributes = anchorNode.getAttributes();
+			fixAnchorAttributesInPlace(document, attributes);	
+		}
+		
+		return toString(document);
+	}
+
+	private static void fixAnchorAttributesInPlace(Document document, NamedNodeMap attributes)
+	{
+		removeIllegalAnchorAttributesInPlace(attributes);
+		ensureHrefAttributeExists(document, attributes);
+	}
+
+	private static void removeIllegalAnchorAttributesInPlace(NamedNodeMap attributes)
+	{
+		for(int index = 0; index < attributes.getLength(); ++index)
+		{
+			Node attribute = attributes.item(index);
+			final String attributeName = attribute.getNodeName();
+			if (!isLegalAnchorAttribute(attributeName))
+				attributes.removeNamedItem(attributeName);
+		}
+	}
+	
+	private static void ensureHrefAttributeExists(Document document, NamedNodeMap attributes)
+	{
+		if (attributes.getNamedItem(HREF_ATTRIBUTE_NAME) != null)
+			return;
+		
+		Node emptyHrefAttribute = document.createAttribute(HREF_ATTRIBUTE_NAME);	
+		attributes.setNamedItem(emptyHrefAttribute);
+	}
+	
+	private static boolean isLegalAnchorAttribute(String attributeName)
+	{
+		Vector<String> legalAnchorAttributeNames = new Vector<String>();
+		legalAnchorAttributeNames.add(HREF_ATTRIBUTE_NAME);
+		legalAnchorAttributeNames.add(NAME_ATTRIBUTE_NAME);
+		legalAnchorAttributeNames.add(TARGET_ATTRIBUTE_NAME);
+		legalAnchorAttributeNames.add(TITLE_ATTRIBUTE_NAME);
+
+		return legalAnchorAttributeNames.contains(attributeName);
+	}
+	
+	private static Document createDomDocument(String htmlText) throws Exception
+	{
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		factory.setNamespaceAware(true);
+		DocumentBuilder documentBuilder = factory.newDocumentBuilder();
+		StringInputStreamWithSeek stringInputputStream = new StringInputStreamWithSeek(htmlText);
+		InputSource inputSource = new InputSource(stringInputputStream);
+		
+		return documentBuilder.parse(inputSource);
+	}
+	
+	private static String toString(Document document) throws Exception
+	{
+		DOMSource domSource = new DOMSource(document);
+		Transformer transformer = TransformerFactory.newInstance().newTransformer();
+		transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+		transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+		transformer.setOutputProperty(OutputKeys.INDENT, "no");
+		final UnicodeXmlWriter writer = UnicodeXmlWriter.create();
+		StreamResult result = new StreamResult(writer);
+		transformer.transform(domSource, result);
+		
+		return  result.getWriter().toString();
+	}
+	
 	public static final String BR_TAG = "<br/>";
 	public static final String UL_START_TAG = "<ul>";
 	public static final String UL_END_TAG = "</ul>";
@@ -333,6 +446,11 @@ public class HtmlUtilities
 	private static final String DIV_TAG_NAME = "div";
 	private static final String DIV_CLOSING_TAG = "</div>";
 	private static final String DIV_EMPTY_TAG = "<div/>";
+	public static final String ANCHOR_ELEMENT_NAME = "a";
+	public static final String HREF_ATTRIBUTE_NAME = "href";
+	public static final String NAME_ATTRIBUTE_NAME = "name";
+	public static final String TITLE_ATTRIBUTE_NAME = "title";
+	public static final String TARGET_ATTRIBUTE_NAME = "target";
 }
 
 
