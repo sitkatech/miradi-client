@@ -65,9 +65,9 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 		addField(createChoiceField(ObjectType.MEASUREMENT, Measurement.TAG_STATUS_CONFIDENCE, new StatusConfidenceQuestion()));
 		addField(createRadioChoiceField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLING_ENABLED, SamplingBasedQuestion.class));
 		sampleSizeField = createNumericField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLE_SIZE);
-		samplePercisionField = createNumericField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLE_PRECISION);
-		samplePercisionTypeField = createChoiceField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLE_PRECISION_TYPE, getQuestion(PrecisionTypeQuestion.class));
-		addFieldsOnOneLine(EAM.text("Sample"), new ObjectDataInputField[]{sampleSizeField, samplePercisionField, samplePercisionTypeField, });
+		samplePrecisionField = createNumericField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLE_PRECISION);
+		samplePrecisionTypeField = createChoiceField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLE_PRECISION_TYPE, getQuestion(PrecisionTypeQuestion.class));
+		addFieldsOnOneLine(EAM.text("Sample"), new ObjectDataInputField[]{sampleSizeField, samplePrecisionField, samplePrecisionTypeField, });
 		addField(createMultilineField(ObjectType.MEASUREMENT, Measurement.TAG_COMMENTS));
 
 		updateFieldsFromProject();
@@ -105,8 +105,8 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 	{
 		final boolean shouldShowSampleBasedFields = areSampleBasedFieldsVisible();
 		sampleSizeField.setVisible(shouldShowSampleBasedFields);
-		samplePercisionField.setVisible(shouldShowSampleBasedFields);
-		samplePercisionTypeField.setVisible(shouldShowSampleBasedFields);
+		samplePrecisionField.setVisible(shouldShowSampleBasedFields);
+		samplePrecisionTypeField.setVisible(shouldShowSampleBasedFields);
 	}
 
 	public boolean areSampleBasedFieldsVisible()
@@ -128,6 +128,6 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 	private ObjectDataInputField statusField;
 	private PanelFieldLabel statusLabelField;
 	private ObjectDataInputField sampleSizeField;
-	private ObjectDataInputField samplePercisionField;
-	private ObjectDataInputField samplePercisionTypeField;
+	private ObjectDataInputField samplePrecisionField;
+	private ObjectDataInputField samplePrecisionTypeField;
 }
