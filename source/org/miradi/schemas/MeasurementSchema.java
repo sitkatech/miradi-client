@@ -47,7 +47,7 @@ public class MeasurementSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(Measurement.TAG_DETAIL);
 		createFieldSchemaChoice(Measurement.TAG_STATUS_CONFIDENCE, StatusConfidenceQuestion.class);
 		createFieldSchemaMultiLineUserText(Measurement.TAG_COMMENTS);
-		createFieldSchemaChoice(Measurement.TAG_SAMPLING_BASED_CODE, SamplingBasedQuestion.class);
+		createFieldSchemaChoice(Measurement.TAG_SAMPLING_ENABLED, SamplingBasedQuestion.class);
 		createFieldSchemaInteger(Measurement.TAG_SAMPLE_SIZE);
 		createFieldSchemaNumber(Measurement.TAG_SAMPLE_PRECISION);
 		createFieldSchemaChoice(Measurement.TAG_SAMPLE_PRECISION_TYPE_CODE, PrecisionTypeQuestion.class);
