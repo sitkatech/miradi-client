@@ -115,7 +115,7 @@ import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 import org.miradi.questions.OpenStandardsProgressStatusQuestion;
-import org.miradi.questions.PercisionTypeQuestion;
+import org.miradi.questions.PrecisionTypeQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
 import org.miradi.questions.ProjectSharingQuestion;
@@ -1391,7 +1391,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(measurement, Measurement.TAG_TREND, TrendQuestion.STRONG_DECREASE_CODE);
 		fillObjectUsingCommand(measurement, Measurement.TAG_COMMENTS, "Some Measurement comment");
 		fillObjectUsingCommand(measurement, Measurement.TAG_SAMPLE_PRECISION, "3");
-		fillObjectUsingCommand(measurement, Measurement.TAG_SAMPLE_PRECISION_TYPE_CODE, PercisionTypeQuestion.SD_CODE);
+		fillObjectUsingCommand(measurement, Measurement.TAG_SAMPLE_PRECISION_TYPE_CODE, PrecisionTypeQuestion.SD_CODE);
 		fillObjectUsingCommand(measurement, Measurement.TAG_SAMPLE_SIZE, "10");
 		fillObjectUsingCommand(measurement, Measurement.TAG_SAMPLING_BASED_CODE, SamplingBasedQuestion.ON_CODE);
 	}
