@@ -66,7 +66,7 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 		addField(createRadioChoiceField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLING_ENABLED, SamplingBasedQuestion.class));
 		sampleSizeField = createNumericField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLE_SIZE);
 		samplePercisionField = createNumericField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLE_PRECISION);
-		samplePercisionTypeField = createChoiceField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLE_PRECISION_TYPE_CODE, getQuestion(PrecisionTypeQuestion.class));
+		samplePercisionTypeField = createChoiceField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLE_PRECISION_TYPE, getQuestion(PrecisionTypeQuestion.class));
 		addFieldsOnOneLine(EAM.text("Sample"), new ObjectDataInputField[]{sampleSizeField, samplePercisionField, samplePercisionTypeField, });
 		addField(createMultilineField(ObjectType.MEASUREMENT, Measurement.TAG_COMMENTS));
 

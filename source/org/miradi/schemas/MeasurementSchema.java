@@ -50,7 +50,7 @@ public class MeasurementSchema extends BaseObjectSchema
 		createFieldSchemaChoice(Measurement.TAG_SAMPLING_ENABLED, SamplingBasedQuestion.class);
 		createFieldSchemaInteger(Measurement.TAG_SAMPLE_SIZE);
 		createFieldSchemaNumber(Measurement.TAG_SAMPLE_PRECISION);
-		createFieldSchemaChoice(Measurement.TAG_SAMPLE_PRECISION_TYPE_CODE, PrecisionTypeQuestion.class);
+		createFieldSchemaChoice(Measurement.TAG_SAMPLE_PRECISION_TYPE, PrecisionTypeQuestion.class);
 	}
 
 	public static int getObjectType()
