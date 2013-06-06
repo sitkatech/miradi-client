@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-06 17:01-0500\n"
+"POT-Creation-Date: 2013-06-06 17:16-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -5506,11 +5506,11 @@ msgstr "Benachrichtigungen"
 msgid "Nov"
 msgstr "Nov"
 
-#: Miradi/source/org/miradi/questions/SamplingBasedQuestion.java:35
+#: Miradi/source/org/miradi/questions/SamplingEnabledQuestion.java:35
 msgid "OFF"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/SamplingBasedQuestion.java:36
+#: Miradi/source/org/miradi/questions/SamplingEnabledQuestion.java:36
 msgid "ON"
 msgstr ""
 
@@ -10313,10 +10313,10 @@ msgstr "Trend"
 msgid "FieldLabel|32.SampleSize|Size"
 msgstr ""
 
-msgid "FieldLabel|32.SamplePrecision|Percision"
+msgid "FieldLabel|32.SamplePrecision|Precision"
 msgstr ""
 
-msgid "FieldLabel|32.SamplePrecisionTypeCode|Percision Type"
+msgid "FieldLabel|32.SamplePrecisionTypeCode|Precision Type"
 msgstr ""
 
 msgid "FieldLabel|33.Stress|Stress"
