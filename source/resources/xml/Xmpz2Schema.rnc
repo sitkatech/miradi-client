@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Jun 06 18:10:42 EDT 2013 $
+# $LastChangedDate: Thu Jun 06 18:46:25 EDT 2013 $
 # $LastChangedRevision: 225 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/225'
 start = ConservationProject.element
@@ -554,7 +554,6 @@ Measurement.element = element miradi:Measurement
   element miradi:MeasurementSamplePrecision { xsd:decimal }? &
   element miradi:MeasurementSamplePrecisionType { vocabulary_precision_type }? &
   element miradi:MeasurementSampleSize { xsd:integer }? &
-  element miradi:MeasurementSamplingBasedEnabled { vocabulary_sample_based_enabled }? &
   element miradi:MeasurementSource { vocabulary_measurement_status_confidence }? &
   element miradi:MeasurementTrend { vocabulary_measurement_trend }?
 }
@@ -863,9 +862,8 @@ vocabulary_quarter_columns_visibility = 'ShowQuarterColumns'|'HideQuarterColumns
 vocabulary_rating_source = ''|'RoughGuess'|'ExpertKnowlege'|'ExternalResearch'|'OnsiteResearch'
 vocabulary_resource_role_codes = 'TeamMember'|'Contact'|'Leader'|'Facilitator'|'Advisor'|'Stakeholder'
 vocabulary_resource_type = 'Person'|'Group'
-vocabulary_sample_based_enabled = 'off'|'on'
 vocabulary_scope_box_type = 'Biodiversity'|'HumanWellbeing'
-vocabulary_measurement_status_confidence = ''|'RoughGuess'|'ExpertKnowledge'|'RapidAssessment'|'IntensiveAssessment'
+vocabulary_measurement_status_confidence = ''|'RoughGuess'|'ExpertKnowledge'|'RapidAssessment'|'IntensiveAssessment'|'SamplingBased'
 vocabulary_status = ''|'1'|'2'|'3'|'4'
 vocabulary_strategy_feasibility_rating_code = ''|'1'|'2'|'3'|'4'
 vocabulary_strategy_impact_rating_code = ''|'1'|'2'|'3'|'4'

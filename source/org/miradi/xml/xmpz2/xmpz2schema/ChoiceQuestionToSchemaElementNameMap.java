@@ -42,8 +42,8 @@ import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.MajorLanguagesQuestion;
 import org.miradi.questions.MeasurementStatusQuestion;
 import org.miradi.questions.OpenStandardsProgressStatusQuestion;
-import org.miradi.questions.PrecisionTypeQuestion;
 import org.miradi.questions.PlanningTreeTargetPositionQuestion;
+import org.miradi.questions.PrecisionTypeQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
 import org.miradi.questions.ProjectSharingQuestion;
@@ -52,7 +52,6 @@ import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
-import org.miradi.questions.SamplingEnabledQuestion;
 import org.miradi.questions.ScopeBoxTypeQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StatusConfidenceQuestion;
@@ -154,7 +153,6 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(TargetModeQuestion.class, VOCABULARY_TARGET_MODE);
 		addItem(TaxonomyMultiSelectModeQuestion.class, VOCABULARY_TAXONOMY_CLASSIFICATION_MULTISELECT_MODE);
 		addItem(TaxonomyClassificationSelectionModeQuestion.class, VOCABULARY_TAXONOMY_CLASSIFICATION_SELECTION_MODE);
-		addItem(SamplingEnabledQuestion.class, VOCABULARY_SAMPLE_BASED_ENABLED);
 		addItem(PrecisionTypeQuestion.class, VOCABULARY_PRECISION_TYPE);
 		addItem(InternalQuestionWithoutValues.class, URI_RESTRICTED_TEXT);
 	}

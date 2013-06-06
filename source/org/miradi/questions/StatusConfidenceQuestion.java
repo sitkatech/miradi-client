@@ -36,7 +36,8 @@ public class StatusConfidenceQuestion extends StaticChoiceQuestion
 			new ChoiceItem(ROUGH_GUESS_CODE, EAM.text("Rough Guess")),
 			new ChoiceItem(EXPERT_KNOWLEDGE_CODE, EAM.text("Expert Knowledge")),
 			new ChoiceItem(RAPID_ASSESSMENT_CODE, EAM.text("Rapid Assessment")),
-			new ChoiceItem(INTENSIVE_ASSESSMENT_CODE, EAM.text("Intensive Assessment"))
+			new ChoiceItem(INTENSIVE_ASSESSMENT_CODE, EAM.text("Intensive Assessment")),
+			new ChoiceItem(SAMPLING_BASED, EAM.text("Sampling Based")),
 		};
 	}
 	
@@ -45,4 +46,5 @@ public class StatusConfidenceQuestion extends StaticChoiceQuestion
 	public static final String EXPERT_KNOWLEDGE_CODE = "ExpertKnowledge";
 	public static final String RAPID_ASSESSMENT_CODE = "RapidAssessment";
 	public static final String INTENSIVE_ASSESSMENT_CODE = "IntensiveAssessment";
+	public static final String SAMPLING_BASED = "SamplingBased";
 }

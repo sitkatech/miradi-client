@@ -23,7 +23,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.SamplingEnabledQuestion;
+import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.MeasurementSchema;
 
@@ -52,7 +52,7 @@ public class Measurement extends BaseObject
 	
 	public boolean isSampleBased()
 	{
-		return getData(TAG_SAMPLING_ENABLED).equals(SamplingEnabledQuestion.ON_CODE);
+		return getChoiceItemData(TAG_STATUS_CONFIDENCE).isSameCode(StatusConfidenceQuestion.SAMPLING_BASED);
 	}
 	
 	public String getStatus()
@@ -111,7 +111,6 @@ public class Measurement extends BaseObject
 	public static final String TAG_DETAIL = "Detail";
 	public static final String TAG_STATUS_CONFIDENCE = "StatusConfidence";
 	public static final String TAG_COMMENTS = "Comments";
-	public static final String TAG_SAMPLING_ENABLED = "SamplingBasedEnabled";
 	public static final String TAG_SAMPLE_SIZE ="SampleSize";
 	public static final String TAG_SAMPLE_PRECISION ="SamplePrecision";
 	public static final String TAG_SAMPLE_PRECISION_TYPE ="SamplePrecisionType";
