@@ -375,5 +375,5 @@ public interface Xmpz2XmlConstants
 	public static final String VOCABULARY_YEAR = "vocabulary_year";
 	public static final String VOCABULARY_TARGET_MODE = "vocabulary_target_mode";
 	public static final String VOCABULARY_SAMPLE_BASED_MODE = "vocabulary_sample_based_mode";
-	public static final String VOCABULARY_PERCISIOUN_TYPE = "vocabulary_percision_type";
+	public static final String VOCABULARY_PERCISIOUN_TYPE = "vocabulary_precision_type";
 }
