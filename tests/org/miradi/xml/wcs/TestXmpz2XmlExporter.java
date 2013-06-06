@@ -33,6 +33,7 @@ import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
+import org.miradi.xml.xmpz2.Xmpz2XmlSilentValidatorForTesting;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 import org.miradi.xml.xmpz2.objectImporters.BaseObjectImporter;
 import org.miradi.xml.xmpz2.objectImporters.IndicatorImporter;
@@ -68,7 +69,7 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 		try
 		{
 			create(externalAppCope, xenoDataProjectId);
-			validateProject();
+			validateProjetSilently();
 			fail("empty values should have caused xml to fail validation?");
 		}
 		catch (Exception expectedExceptionToIgnore)
@@ -182,13 +183,23 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 	
 	private String validateProject() throws Exception
 	{
+		return validateProject(new Xmpz2XmlValidator());
+	}
+	
+	private String validateProjetSilently() throws Exception
+	{
+		return validateProject(new Xmpz2XmlSilentValidatorForTesting());
+	}
+
+	private String validateProject(final Xmpz2XmlValidator xmpz2XmlValidator) throws Exception
+	{
 		final UnicodeXmlWriter writer = UnicodeXmlWriter.create();
 		new Xmpz2XmlExporter(getProject()).exportProject(writer);
 		writer.close();
 		String xml = writer.toString();
 				
 		InputStreamWithSeek inputStream = new StringInputStreamWithSeek(xml);
-		if (!new Xmpz2XmlValidator().isValid(inputStream))
+		if (!xmpz2XmlValidator.isValid(inputStream))
 		{
 			throw new ValidationException(EAM.text("File to import does not validate."));
 		}
