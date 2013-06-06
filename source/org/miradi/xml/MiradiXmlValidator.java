@@ -57,11 +57,7 @@ abstract public class MiradiXmlValidator
 			}
 			catch(SAXParseException e)
 			{
-				String error = "XML Parse error line " + e.getLineNumber() + ", column " + e.getColumnNumber() + "\n";
-				error += " Public Id: " + e.getPublicId() + "\n";
-				error += " System Id: " + e.getSystemId();
-				EAM.logError(error);
-				EAM.logException(e);
+				logException(e);
 				return false;
 			}
 			catch(Exception e)
@@ -72,6 +68,15 @@ abstract public class MiradiXmlValidator
 		}
 		
 		throw new Exception("XML file is invalid (does not conform to the schema)");
+	}
+
+	protected void logException(SAXParseException e)
+	{
+		String error = "XML Parse error line " + e.getLineNumber() + ", column " + e.getColumnNumber() + "\n";
+		error += " Public Id: " + e.getPublicId() + "\n";
+		error += " System Id: " + e.getSystemId();
+		EAM.logError(error);
+		EAM.logException(e);
 	}
 
 	private PropertyMapBuilder getValidatorProperties()
