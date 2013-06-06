@@ -155,7 +155,7 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(TaxonomyMultiSelectModeQuestion.class, VOCABULARY_TAXONOMY_CLASSIFICATION_MULTISELECT_MODE);
 		addItem(TaxonomyClassificationSelectionModeQuestion.class, VOCABULARY_TAXONOMY_CLASSIFICATION_SELECTION_MODE);
 		addItem(SamplingEnabledQuestion.class, VOCABULARY_SAMPLE_BASED_ENABLED);
-		addItem(PrecisionTypeQuestion.class, VOCABULARY_PERCISIOUN_TYPE);
+		addItem(PrecisionTypeQuestion.class, VOCABULARY_PRECISION_TYPE);
 		addItem(InternalQuestionWithoutValues.class, URI_RESTRICTED_TEXT);
 	}
 	
