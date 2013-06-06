@@ -22,9 +22,9 @@ package org.miradi.questions;
 
 import org.miradi.main.EAM;
 
-public class PercisionTypeQuestion extends StaticChoiceQuestion
+public class PrecisionTypeQuestion extends StaticChoiceQuestion
 {
-	public PercisionTypeQuestion()
+	public PrecisionTypeQuestion()
 	{
 		super(getChoiceItems());
 	}

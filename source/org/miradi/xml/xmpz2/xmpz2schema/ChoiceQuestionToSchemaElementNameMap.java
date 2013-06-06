@@ -42,7 +42,7 @@ import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.MajorLanguagesQuestion;
 import org.miradi.questions.MeasurementStatusQuestion;
 import org.miradi.questions.OpenStandardsProgressStatusQuestion;
-import org.miradi.questions.PercisionTypeQuestion;
+import org.miradi.questions.PrecisionTypeQuestion;
 import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
@@ -155,7 +155,7 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(TaxonomyMultiSelectModeQuestion.class, VOCABULARY_TAXONOMY_CLASSIFICATION_MULTISELECT_MODE);
 		addItem(TaxonomyClassificationSelectionModeQuestion.class, VOCABULARY_TAXONOMY_CLASSIFICATION_SELECTION_MODE);
 		addItem(SamplingBasedQuestion.class, VOCABULARY_SAMPLE_BASED_MODE);
-		addItem(PercisionTypeQuestion.class, VOCABULARY_PERCISIOUN_TYPE);
+		addItem(PrecisionTypeQuestion.class, VOCABULARY_PERCISIOUN_TYPE);
 		addItem(InternalQuestionWithoutValues.class, URI_RESTRICTED_TEXT);
 	}
 	

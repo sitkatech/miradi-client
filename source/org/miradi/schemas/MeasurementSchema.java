@@ -22,7 +22,7 @@ package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Measurement;
-import org.miradi.questions.PercisionTypeQuestion;
+import org.miradi.questions.PrecisionTypeQuestion;
 import org.miradi.questions.SamplingBasedQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
@@ -50,7 +50,7 @@ public class MeasurementSchema extends BaseObjectSchema
 		createFieldSchemaChoice(Measurement.TAG_SAMPLING_BASED_CODE, SamplingBasedQuestion.class);
 		createFieldSchemaInteger(Measurement.TAG_SAMPLE_SIZE);
 		createFieldSchemaNumber(Measurement.TAG_SAMPLE_PRECISION);
-		createFieldSchemaChoice(Measurement.TAG_SAMPLE_PRECISION_TYPE_CODE, PercisionTypeQuestion.class);
+		createFieldSchemaChoice(Measurement.TAG_SAMPLE_PRECISION_TYPE_CODE, PrecisionTypeQuestion.class);
 	}
 
 	public static int getObjectType()
