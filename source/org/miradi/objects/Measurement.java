@@ -52,7 +52,7 @@ public class Measurement extends BaseObject
 	
 	public boolean isSampleBased()
 	{
-		return getData(TAG_SAMPLING_BASED_CODE).equals(SamplingBasedQuestion.ON_CODE);
+		return getData(TAG_SAMPLING_ENABLED).equals(SamplingBasedQuestion.ON_CODE);
 	}
 	
 	public String getStatus()
@@ -111,7 +111,7 @@ public class Measurement extends BaseObject
 	public static final String TAG_DETAIL = "Detail";
 	public static final String TAG_STATUS_CONFIDENCE = "StatusConfidence";
 	public static final String TAG_COMMENTS = "Comments";
-	public static final String TAG_SAMPLING_BASED_CODE = "SamplingBasedCode";
+	public static final String TAG_SAMPLING_ENABLED = "SamplingBasedCode";
 	public static final String TAG_SAMPLE_SIZE ="SampleSize";
 	public static final String TAG_SAMPLE_PRECISION ="SamplePrecision";
 	public static final String TAG_SAMPLE_PRECISION_TYPE_CODE ="SamplePrecisionTypeCode";
