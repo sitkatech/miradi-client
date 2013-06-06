@@ -23,7 +23,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.SamplingBasedQuestion;
+import org.miradi.questions.SamplingBasedModeQuestion;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.MeasurementSchema;
 
@@ -52,7 +52,7 @@ public class Measurement extends BaseObject
 	
 	public boolean isSampleBased()
 	{
-		return getData(TAG_SAMPLING_ENABLED).equals(SamplingBasedQuestion.ON_CODE);
+		return getData(TAG_SAMPLING_ENABLED).equals(SamplingBasedModeQuestion.ON_CODE);
 	}
 	
 	public String getStatus()

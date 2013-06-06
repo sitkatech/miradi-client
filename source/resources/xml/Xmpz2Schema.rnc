@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Mon Jun 03 10:53:46 EDT 2013 $
+# $LastChangedDate: Thu Jun 06 18:01:25 EDT 2013 $
 # $LastChangedRevision: 225 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/225'
 start = ConservationProject.element
@@ -552,7 +552,7 @@ Measurement.element = element miradi:Measurement
   element miradi:MeasurementName { formatted_text }? &
   element miradi:MeasurementRating { vocabulary_status }? &
   element miradi:MeasurementSamplePrecision { xsd:decimal }? &
-  element miradi:MeasurementSamplePrecisionTypeCode { vocabulary_percision_type }? &
+  element miradi:MeasurementSamplePrecisionTypeCode { vocabulary_precision_type }? &
   element miradi:MeasurementSampleSize { xsd:integer }? &
   element miradi:MeasurementSamplingBasedCode { vocabulary_sample_based_mode }? &
   element miradi:MeasurementSource { vocabulary_measurement_status_confidence }? &
@@ -853,8 +853,8 @@ vocabulary_biodiversity_target_habitat_association = '1'|'1.1'|'1.2'|'1.3'|'1.4'
 vocabulary_key_ecological_attribute_type = ''|'10'|'20'|'30'
 vocabulary_measurement_status = ''|'1'|'2'|'3'|'4'
 vocabulary_dashboard_row_progress = ''|'1'|'2'|'3'|'4'
-vocabulary_percision_type = ''|'StandardDeviation'|'StandardError'|'ConfidenceInterval95Percent'|'ConfidenceIntervalOther'
 vocabulary_planning_tree_target_node_position = 'TargetNodesChildrenOfDiagramObjects'|'TargetNodesTopOfPlanningTree'
+vocabulary_precision_type = ''|'StandardDeviation'|'StandardError'|'ConfidenceInterval95Percent'|'ConfidenceIntervalOther'
 vocabulary_priority_rating_code = ''|'1'|'2'|'3'|'4'
 vocabulary_progress_report_status = ''|'Planned'|'MajorIssues'|'MinorIssues'|'OnTrack'|'Completed'|'Abandoned'
 vocabulary_share_outside_organization = 'Private'|'ShareWithAnyone'
