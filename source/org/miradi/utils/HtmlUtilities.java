@@ -373,7 +373,7 @@ public class HtmlUtilities
 			fixAnchorAttributesInPlace(document, attributes);	
 		}
 		
-		return toString(document);
+		return toXmlString(document);
 	}
 
 	private static void fixAnchorAttributesInPlace(Document document, NamedNodeMap attributes)
@@ -424,7 +424,7 @@ public class HtmlUtilities
 		return documentBuilder.parse(inputSource);
 	}
 	
-	private static String toString(Document document) throws Exception
+	private static String toXmlString(Document document) throws Exception
 	{
 		DOMSource domSource = new DOMSource(document);
 		Transformer transformer = TransformerFactory.newInstance().newTransformer();
