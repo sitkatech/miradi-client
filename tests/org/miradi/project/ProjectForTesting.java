@@ -123,7 +123,6 @@ import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
-import org.miradi.questions.SamplingEnabledQuestion;
 import org.miradi.questions.ScopeBoxTypeQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
@@ -1393,7 +1392,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(measurement, Measurement.TAG_SAMPLE_PRECISION, "3");
 		fillObjectUsingCommand(measurement, Measurement.TAG_SAMPLE_PRECISION_TYPE, PrecisionTypeQuestion.SD_CODE);
 		fillObjectUsingCommand(measurement, Measurement.TAG_SAMPLE_SIZE, "10");
-		fillObjectUsingCommand(measurement, Measurement.TAG_SAMPLING_ENABLED, SamplingEnabledQuestion.ON_CODE);
 	}
 	
 	public void populateTextBox(TextBox textBox) throws Exception

@@ -32,7 +32,6 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Measurement;
 import org.miradi.project.Project;
 import org.miradi.questions.PrecisionTypeQuestion;
-import org.miradi.questions.SamplingEnabledQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TrendQuestion;
@@ -63,7 +62,6 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 		addFieldsOnOneLine(statusLabel, new Object[]{statusLabelField, statusField, trendLabelField, trendField});
 
 		addField(createChoiceField(ObjectType.MEASUREMENT, Measurement.TAG_STATUS_CONFIDENCE, new StatusConfidenceQuestion()));
-		addField(createRadioChoiceField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLING_ENABLED, SamplingEnabledQuestion.class));
 		sampleSizeField = createNumericField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLE_SIZE);
 		samplePrecisionField = createNumericField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLE_PRECISION);
 		samplePrecisionTypeField = createChoiceField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLE_PRECISION_TYPE, getQuestion(PrecisionTypeQuestion.class));
@@ -84,6 +82,7 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 			isVisible = false;
 			
 		setVisibilityOfRatingField(isVisible);
+		setVisibilityOfSampleBasedFields();
 	}
 
 	private void setVisibilityOfRatingField(boolean isVisible)
@@ -97,7 +96,7 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 	{
 		super.commandExecuted(event);
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLING_ENABLED))
+		if (event.isSetDataCommandWithThisTypeAndTag(MeasurementSchema.getObjectType(), Measurement.TAG_STATUS_CONFIDENCE))
 			setVisibilityOfSampleBasedFields();
 	}
 	
