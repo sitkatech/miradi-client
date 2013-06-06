@@ -111,10 +111,10 @@ public class Measurement extends BaseObject
 	public static final String TAG_DETAIL = "Detail";
 	public static final String TAG_STATUS_CONFIDENCE = "StatusConfidence";
 	public static final String TAG_COMMENTS = "Comments";
-	public static final String TAG_SAMPLING_ENABLED = "SamplingBasedCode";
+	public static final String TAG_SAMPLING_ENABLED = "SamplingBasedEnabled";
 	public static final String TAG_SAMPLE_SIZE ="SampleSize";
 	public static final String TAG_SAMPLE_PRECISION ="SamplePrecision";
-	public static final String TAG_SAMPLE_PRECISION_TYPE ="SamplePrecisionTypeCode";
+	public static final String TAG_SAMPLE_PRECISION_TYPE ="SamplePrecisionType";
 
 	public static final String META_COLUMN_TAG = "MeasurementMetaColumnTag";
 }
