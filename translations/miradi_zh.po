@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-06 16:16-0500\n"
+"POT-Creation-Date: 2013-06-06 17:01-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -476,7 +476,7 @@ msgstr "7B.共享您的所学 \t\t"
 msgid "7C. Create a Learning Environment"
 msgstr "7C.创造学习环境 \t\t"
 
-#: Miradi/source/org/miradi/questions/PercisionTypeQuestion.java:38
+#: Miradi/source/org/miradi/questions/PrecisionTypeQuestion.java:38
 msgid "95% C.I. (confidence interval)"
 msgstr ""
 
@@ -5328,7 +5328,7 @@ msgstr ""
 msgid "Other Orgs"
 msgstr "其它组织 \t\t"
 
-#: Miradi/source/org/miradi/questions/PercisionTypeQuestion.java:39
+#: Miradi/source/org/miradi/questions/PrecisionTypeQuestion.java:39
 msgid "Other confidence interval"
 msgstr ""
 
@@ -5873,11 +5873,11 @@ msgstr "卢布（俄罗斯）"
 msgid "Run..."
 msgstr "运行... "
 
-#: Miradi/source/org/miradi/questions/PercisionTypeQuestion.java:36
+#: Miradi/source/org/miradi/questions/PrecisionTypeQuestion.java:36
 msgid "SD (standard deviation)"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/PercisionTypeQuestion.java:37
+#: Miradi/source/org/miradi/questions/PrecisionTypeQuestion.java:37
 msgid "SE (standard error)"
 msgstr ""
 
@@ -8185,7 +8185,7 @@ msgstr ""
 #: Miradi/source/org/miradi/questions/ObjectQuestion.java:54
 #: Miradi/source/org/miradi/questions/AbstractLanguagesQuestion.java:57
 #: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:46
-#: Miradi/source/org/miradi/questions/PercisionTypeQuestion.java:35
+#: Miradi/source/org/miradi/questions/PrecisionTypeQuestion.java:35
 msgid "Unspecified"
 msgstr ""
 
