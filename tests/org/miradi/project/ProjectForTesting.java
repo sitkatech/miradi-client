@@ -1391,7 +1391,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(measurement, Measurement.TAG_TREND, TrendQuestion.STRONG_DECREASE_CODE);
 		fillObjectUsingCommand(measurement, Measurement.TAG_COMMENTS, "Some Measurement comment");
 		fillObjectUsingCommand(measurement, Measurement.TAG_SAMPLE_PRECISION, "3");
-		fillObjectUsingCommand(measurement, Measurement.TAG_SAMPLE_PRECISION_TYPE_CODE, PrecisionTypeQuestion.SD_CODE);
+		fillObjectUsingCommand(measurement, Measurement.TAG_SAMPLE_PRECISION_TYPE, PrecisionTypeQuestion.SD_CODE);
 		fillObjectUsingCommand(measurement, Measurement.TAG_SAMPLE_SIZE, "10");
 		fillObjectUsingCommand(measurement, Measurement.TAG_SAMPLING_ENABLED, SamplingBasedQuestion.ON_CODE);
 	}

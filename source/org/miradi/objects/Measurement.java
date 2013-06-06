@@ -114,7 +114,7 @@ public class Measurement extends BaseObject
 	public static final String TAG_SAMPLING_ENABLED = "SamplingBasedCode";
 	public static final String TAG_SAMPLE_SIZE ="SampleSize";
 	public static final String TAG_SAMPLE_PRECISION ="SamplePrecision";
-	public static final String TAG_SAMPLE_PRECISION_TYPE_CODE ="SamplePrecisionTypeCode";
+	public static final String TAG_SAMPLE_PRECISION_TYPE ="SamplePrecisionTypeCode";
 
 	public static final String META_COLUMN_TAG = "MeasurementMetaColumnTag";
 }
