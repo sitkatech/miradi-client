@@ -52,7 +52,7 @@ import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
-import org.miradi.questions.SamplingBasedQuestion;
+import org.miradi.questions.SamplingBasedModeQuestion;
 import org.miradi.questions.ScopeBoxTypeQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StatusConfidenceQuestion;
@@ -154,7 +154,7 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(TargetModeQuestion.class, VOCABULARY_TARGET_MODE);
 		addItem(TaxonomyMultiSelectModeQuestion.class, VOCABULARY_TAXONOMY_CLASSIFICATION_MULTISELECT_MODE);
 		addItem(TaxonomyClassificationSelectionModeQuestion.class, VOCABULARY_TAXONOMY_CLASSIFICATION_SELECTION_MODE);
-		addItem(SamplingBasedQuestion.class, VOCABULARY_SAMPLE_BASED_MODE);
+		addItem(SamplingBasedModeQuestion.class, VOCABULARY_SAMPLE_BASED_MODE);
 		addItem(PrecisionTypeQuestion.class, VOCABULARY_PERCISIOUN_TYPE);
 		addItem(InternalQuestionWithoutValues.class, URI_RESTRICTED_TEXT);
 	}
