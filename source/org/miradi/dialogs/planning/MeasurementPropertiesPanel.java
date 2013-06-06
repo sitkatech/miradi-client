@@ -32,7 +32,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Measurement;
 import org.miradi.project.Project;
 import org.miradi.questions.PrecisionTypeQuestion;
-import org.miradi.questions.SamplingBasedQuestion;
+import org.miradi.questions.SamplingBasedModeQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TrendQuestion;
@@ -63,7 +63,7 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 		addFieldsOnOneLine(statusLabel, new Object[]{statusLabelField, statusField, trendLabelField, trendField});
 
 		addField(createChoiceField(ObjectType.MEASUREMENT, Measurement.TAG_STATUS_CONFIDENCE, new StatusConfidenceQuestion()));
-		addField(createRadioChoiceField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLING_ENABLED, SamplingBasedQuestion.class));
+		addField(createRadioChoiceField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLING_ENABLED, SamplingBasedModeQuestion.class));
 		sampleSizeField = createNumericField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLE_SIZE);
 		samplePercisionField = createNumericField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLE_PRECISION);
 		samplePercisionTypeField = createChoiceField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLE_PRECISION_TYPE, getQuestion(PrecisionTypeQuestion.class));
