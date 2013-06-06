@@ -346,7 +346,7 @@ public class HtmlUtilities
 			if(htmlText.indexOf("<") < 0)
 				return htmlText;
 			
-			if (!htmlText.startsWith("<?xml") && !htmlText.startsWith("<html>"))
+			if (!htmlText.startsWith("<html>"))
 				htmlText = HtmlUtilities.wrapInHtmlTags(htmlText);
 			
 			String fixAnchorElements = fixAnchorElements(htmlText);
