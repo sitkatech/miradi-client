@@ -29,6 +29,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.project.Project;
 import org.miradi.questions.PrecisionTypeQuestion;
@@ -36,6 +37,7 @@ import org.miradi.questions.SamplingEnabledQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TrendQuestion;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
 
@@ -51,7 +53,9 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 		ObjectDataInputField dateField = createDateChooserField(ObjectType.MEASUREMENT, Measurement.TAG_DATE);
 		PanelTitleLabel valueLabel = new PanelTitleLabel(EAM.text("Value"));
 		ObjectDataInputField summaryField = createExpandableField(Measurement.TAG_SUMMARY);
-		addFieldsOnOneLine(measurementLabel, new Object[]{dateLabel, dateField, valueLabel, summaryField,});
+		PanelTitleLabel unitLabel = new PanelTitleLabel(EAM.text("Unit"));
+		ObjectDataInputField readonlyUnitField = createReadonlyTextField(IndicatorSchema.getObjectType(), Indicator.TAG_UNIT);
+		addFieldsOnOneLine(measurementLabel, new Object[]{dateLabel, dateField, valueLabel, summaryField, unitLabel, readonlyUnitField,});
 
 		addField(createMultilineField(Measurement.TAG_DETAIL));		
 		
