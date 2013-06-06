@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import org.miradi.main.EAM;
 import org.miradi.main.Miradi;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.DiagramFactor;
@@ -153,7 +154,7 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 		defineVocabulary(writer, VOCABULARY_PROGRESS_REPORT_STATUS, new ProgressReportLongStatusQuestion());
 		defineVocabulary(writer, VOCABULARY_MEASUREMENT_TREND, new TrendQuestion());
 		defineVocabulary(writer, VOCABULARY_MEASUREMENT_STATUS, new StatusQuestion());
-		defineVocabulary(writer, VOCABULARY_MEASUREMENT_STATUS_CONFIDENCE, new StatusConfidenceQuestion());
+		defineVocabulary(writer, VOCABULARY_MEASUREMENT_STATUS_CONFIDENCE, new LegacyStatusConfidenceQuestion());
 		defineVocabulary(writer, VOCABULARY_COUNTRIES, new CountriesQuestion());
 		defineVocabulary(writer, VOCABULARY_THREAT_RATING, new ThreatRatingQuestion());
 		defineVocabulary(writer, VOCABULARY_DIAGRAM_OBJECT_DATA_INCLUSION, new DiagramObjectDataInclusionQuestion());
@@ -636,6 +637,25 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 					new ChoiceItem("IntermediateResult", "IntermediateResult"),
 					new ChoiceItem("ThreatReductionResult", "ThreatReductionResult"),
 					new ChoiceItem("GroupBox", "GroupBox"),
+			};
+		}
+	}
+	
+	private static class LegacyStatusConfidenceQuestion extends StaticChoiceQuestion
+	{
+		public LegacyStatusConfidenceQuestion()
+		{
+			super(getStatusConfidences());
+		}
+		
+		private static ChoiceItem[] getStatusConfidences()
+		{
+			return new ChoiceItem[] {
+				new ChoiceItem(StatusConfidenceQuestion.NOT_SPECIFIED, EAM.text("Not Specified")),
+				new ChoiceItem(StatusConfidenceQuestion.ROUGH_GUESS_CODE, EAM.text("Rough Guess")),
+				new ChoiceItem(StatusConfidenceQuestion.EXPERT_KNOWLEDGE_CODE, EAM.text("Expert Knowledge")),
+				new ChoiceItem(StatusConfidenceQuestion.RAPID_ASSESSMENT_CODE, EAM.text("Rapid Assessment")),
+				new ChoiceItem(StatusConfidenceQuestion.INTENSIVE_ASSESSMENT_CODE, EAM.text("Intensive Assessment")),
 			};
 		}
 	}
