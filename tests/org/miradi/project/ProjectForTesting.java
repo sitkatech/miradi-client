@@ -1777,9 +1777,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 		{
 			return BooleanData.BOOLEAN_TRUE;
 		}
-		if (field.isUserText())
+		if (field.isUserTextWithHtmlFormatting())
 		{
 			return getSampleUserText(field);
+		}
+		if (field.isSingleLineUserText())
+		{
+			return getSingleLineSampleData();
 		}
 		if (field.isDateData())
 		{
@@ -1806,19 +1810,15 @@ public class ProjectForTesting extends ProjectWithHelpers
 		throw new Exception("no sample data for: " + field.getClass().getSimpleName());
 	}
 
-	public String getSampleUserText(BaseObject baseObject, String tag)
+	public String getSampleUserText(BaseObject baseObject, String tag) throws Exception
 	{
 		ObjectData objectData = baseObject.getField(tag);
-		
-		return getSampleUserText(objectData);
+		return getSampleData(objectData);
 	}
 	
 	public String getSampleUserText(ObjectData field)
 	{
 		String userText = getSingleLineSampleData();
-		if (field.isSingleLineUserText())
-			return userText;
-
 		userText = getSingleLineFormattedHtmlTextSample(userText);
 		userText = getMultilineSampleData(userText);
 		
