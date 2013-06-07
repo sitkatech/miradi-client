@@ -1815,13 +1815,32 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public String getSampleUserText(ObjectData field)
 	{
-		String userText = "Sample text with encoded values: &amp; &lt; &gt; &quot; &apos;";
+		String userText = getSingleLineSampleData();
 		if (field.isSingleLineUserText())
 			return userText;
 
+		userText = getSingleLineFormattedHtmlTextSample(userText);
+		userText = getMultilineSampleData(userText);
+		
+		return userText;
+	}
+
+	private String getMultilineSampleData(String userText)
+	{
+		userText += "Value "+ HtmlUtilities.BR_TAG + HtmlUtilities.BR_TAG + "With multiple lines!";
+		
+		return userText;
+	}
+
+	private String getSingleLineSampleData()
+	{
+		return "Sample text with encoded values: &amp; &lt; &gt; &quot; &apos;";
+	}
+
+	private String getSingleLineFormattedHtmlTextSample(String userText)
+	{
 		userText += createSampleFormattedData(userText);
 		userText += createWithAllowedHtmlTags(userText);
-		userText += "Value "+ HtmlUtilities.BR_TAG + HtmlUtilities.BR_TAG + "With multiple lines!";
 		
 		return userText;
 	}
