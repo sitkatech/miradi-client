@@ -2628,7 +2628,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return baseObject.calculateTimePeriodCosts(dateUnit).getTotalWorkUnits();
 	}
 	
-	public String createSampleFormattedData()
+	private String createSampleFormattedData()
 	{
 		String[] allowdFormattingTags = new String[] {"b", "i", "strike", "u", };
 		String sampleData = "";
