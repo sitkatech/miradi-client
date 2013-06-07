@@ -47,6 +47,7 @@ public class HtmlUtilitiesRelatedToShef
 		// (http://java.sun.com/products/jfc/tsc/articles/bookmarks/)
 		trimmedText = HtmlUtilities.removeNonHtmlNewLines(trimmedText);
 		trimmedText = HtmlUtilities.appendNewlineToEndDivTags(trimmedText);
+		trimmedText = HtmlUtilities.removeAllExcept(trimmedText, allowedHtmlTags);
 		trimmedText = HtmlUtilities.fixAnchorElementsSaftley(trimmedText);
 		trimmedText = HtmlUtilities.removeAllExcept(trimmedText, allowedHtmlTags);
 		trimmedText = HtmlUtilities.stripAttributesFromNonAnchorElements(trimmedText);

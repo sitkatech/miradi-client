@@ -351,7 +351,7 @@ public class HtmlUtilities
 			if(hasNoTags(htmlText))
 				return htmlText;
 			
-			htmlText = wrapWithTag(htmlText, "p");
+			htmlText = wrapWithTag(htmlText, "xml");
 			
 			return fixAnchorElements(htmlText);
 		}
