@@ -357,8 +357,8 @@ public class HtmlUtilities
 		}
 		catch (Exception e)
 		{
-			EAM.alertUserOfNonFatalException(e);
-			return htmlText;	
+			EAM.panic(e);
+			return "";
 		}
 	}
 	
