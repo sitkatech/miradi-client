@@ -344,7 +344,7 @@ public class HtmlUtilities
 		return htmlText.replaceAll(regex, StringUtilities.EMPTY_STRING);
 	}
 	
-	public static String fixAnchorElementsSaftley(String htmlText, String[] allowedHtmlTags)
+	public static String fixAnchorElementsSafely(String htmlText, String[] allowedHtmlTags)
 	{
 		try
 		{
