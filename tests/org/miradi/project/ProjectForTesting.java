@@ -1819,10 +1819,18 @@ public class ProjectForTesting extends ProjectWithHelpers
 		if (field.isSingleLineUserText())
 			return userText;
 
-		userText += createSampleFormattedData();
+		userText += createSampleFormattedData(userText);
+		userText += createWithAllowedHtmlTags(userText);
 		userText += "Value "+ HtmlUtilities.BR_TAG + HtmlUtilities.BR_TAG + "With multiple lines!";
 		
 		return userText;
+	}
+
+	private String createWithAllowedHtmlTags(String userText)
+	{
+		userText += "<ul><li>" + userText +  "</li></ul>";
+		userText += "<ol><li>" + userText +  "</li></ol>";
+		return null;
 	}
 
 	public String getSampleCode(ObjectData field)
@@ -2628,16 +2636,15 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return baseObject.calculateTimePeriodCosts(dateUnit).getTotalWorkUnits();
 	}
 	
-	private String createSampleFormattedData()
+	private String createSampleFormattedData(String value)
 	{
 		String[] allowdFormattingTags = new String[] {"b", "i", "strike", "u", };
-		String sampleData = "";
 		for(String formatting : allowdFormattingTags)
 		{
-			sampleData += "<" + formatting + ">sample formatted text</" + formatting + ">";
+			value += "<" + formatting + ">sample formatted text</" + formatting + ">";
 		}
 		
-		return sampleData;
+		return value;
 	}
 			
 	private static int nextTargetId;
