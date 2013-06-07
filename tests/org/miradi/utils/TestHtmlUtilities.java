@@ -31,17 +31,17 @@ public class TestHtmlUtilities extends MiradiTestCase
 	
 	public void testIllegaleAnchorElements() throws Exception
 	{
-		verifyAnchoElements("a b c  ", "a b c  ");
-		verifyAnchoElements("<a href=\"http://www.miradi.org\">miradi</a>", "<a href=\"http://www.miradi.org\">miradi</a>");
-		verifyAnchoElements("<a href=\"\" target=\"noTarget\">miradi</a>", "<a target=\"noTarget\">miradi</a>");
-		verifyAnchoElements("<a href=\"\">miradi</a>", "<a>miradi</a>");
-		verifyAnchoElements("<a href=\"http://www.miradi.org\">miradi</a>", "<a href=\"http://www.miradi.org\" language=\"DE\">miradi</a>");
-		verifyAnchoElements("<i>sample with space<a href=\"\" name=\"_msocom_1\">x</a> </i>", "<i>sample with space<a href=\"\" name=\"_msocom_1\">x</a> </i>");
+		verifyAnchorElements("a b c", "a b c");
+		verifyAnchorElements("<a href=\"http://www.miradi.org\">miradi</a>", "<a href=\"http://www.miradi.org\">miradi</a>");
+		verifyAnchorElements("<a href=\"\" target=\"noTarget\">miradi</a>", "<a target=\"noTarget\">miradi</a>");
+		verifyAnchorElements("<a href=\"\">miradi</a>", "<a>miradi</a>");
+		verifyAnchorElements("<a href=\"http://www.miradi.org\">miradi</a>", "<a href=\"http://www.miradi.org\" language=\"DE\">miradi</a>");
+		verifyAnchorElements("<i>sample with space<a href=\"\" name=\"_msocom_1\">x</a> </i>", "<i>sample with space<a href=\"\" name=\"_msocom_1\">x</a> </i>");
 	}
 	
-	private void verifyAnchoElements(String expectedValue, String actualValue) throws Exception
+	private void verifyAnchorElements(String expectedValue, String actualValue) throws Exception
 	{
-		assertEquals("Anchor element was not fixed?", expectedValue, HtmlUtilities.fixAnchorElementsSaftley(actualValue));
+		assertEquals("Anchor element was not fixed?", expectedValue, HtmlUtilitiesRelatedToShef.getNormalizedAndSanitizedHtmlText(actualValue, getAllowedHtmlTags()));
 	}
 	
 	public void testStripHtmlComments()

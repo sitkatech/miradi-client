@@ -47,11 +47,11 @@ public class HtmlUtilitiesRelatedToShef
 		// (http://java.sun.com/products/jfc/tsc/articles/bookmarks/)
 		trimmedText = HtmlUtilities.removeNonHtmlNewLines(trimmedText);
 		trimmedText = HtmlUtilities.appendNewlineToEndDivTags(trimmedText);
+		trimmedText = HtmlUtilities.fixAnchorElementsSaftley(trimmedText);
 		trimmedText = HtmlUtilities.removeAllExcept(trimmedText, allowedHtmlTags);
 		trimmedText = HtmlUtilities.stripAttributesFromNonAnchorElements(trimmedText);
 		trimmedText = trimmedText.replaceAll("\\t", " ");
 		trimmedText = trimmedText.replaceAll(" +", " ");
-		trimmedText = HtmlUtilities.fixAnchorElementsSaftley(trimmedText);
 		trimmedText = trimmedText.trim();		
 		trimmedText = HtmlUtilities.replaceNonHtmlNewlines(trimmedText);
 		//NOTE: Third party library  uses <br> instead of <br/>.  If we don't replace <br> then 

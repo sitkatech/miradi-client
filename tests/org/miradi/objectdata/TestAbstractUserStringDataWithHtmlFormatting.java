@@ -31,26 +31,26 @@ public class TestAbstractUserStringDataWithHtmlFormatting extends TestCaseEnhanc
 	
 	public void testSet() throws Exception
 	{
-		String legalHtml = "Testing<br/>More";
-		String illegalHtml = "<html>" + legalHtml + "\n\n";
+		String withLegalTag = "Testing<br/>More";
+		String withIllegalTags = "<html>" + withLegalTag + "\n\n</html>";
 		MultiLineUserTextData data = new MultiLineUserTextData("tag");
-		data.set(illegalHtml);
-		assertEquals("Didn't strip out illegal stuff?", legalHtml, data.get());
+		data.set(withIllegalTags);
+		assertEquals("Didn't strip out illegal stuff?", withLegalTag, data.get());
 	}
 
 	public void testIsCurrentValue() throws Exception
 	{
 		MultiLineUserTextData data = new MultiLineUserTextData("tag");
-		String legalHtml = "Testing<br/>";
-		data.set(legalHtml);
-		assertTrue("Identical compare failed?", data.isCurrentValue(legalHtml));
+		String withLegalTag = "Testing<br/>";
+		data.set(withLegalTag);
+		assertTrue("Identical compare failed?", data.isCurrentValue(withLegalTag));
 		
-		String disallowedHtml = "<html>" + legalHtml;
-		data.set(disallowedHtml);
-		assertTrue("Didn't strip tags?", data.isCurrentValue(legalHtml));
+		String withIllegalTags = "<html>" + withLegalTag + "</html>";
+		data.set(withIllegalTags);
+		assertTrue("Didn't strip tags?", data.isCurrentValue(withLegalTag));
 		
-		String htmlWithNewline = legalHtml + "\n";
+		String htmlWithNewline = withLegalTag + "\n";
 		data.set(htmlWithNewline);
-		assertTrue("Didn't strip newline?", data.isCurrentValue(legalHtml));
+		assertTrue("Didn't strip newline?", data.isCurrentValue(withLegalTag));
 	}
 }
