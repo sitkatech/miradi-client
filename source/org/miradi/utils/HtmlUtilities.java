@@ -344,7 +344,7 @@ public class HtmlUtilities
 		return htmlText.replaceAll(regex, StringUtilities.EMPTY_STRING);
 	}
 	
-	public static String fixAnchorElementsSaftley(String htmlText)
+	public static String fixAnchorElementsSaftley(String htmlText, String[] allowedHtmlTags)
 	{
 		try
 		{
@@ -353,7 +353,9 @@ public class HtmlUtilities
 			
 			htmlText = wrapWithTag(htmlText, "xml");
 			
-			return fixAnchorElements(htmlText);
+			final String fixAnchorElements = fixAnchorElements(htmlText);
+			
+			return HtmlUtilities.removeAllExcept(fixAnchorElements, allowedHtmlTags);
 		}
 		catch (Exception e)
 		{
