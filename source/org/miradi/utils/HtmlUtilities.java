@@ -47,7 +47,12 @@ public class HtmlUtilities
 {
 	public static String wrapInHtmlTags(String value)
 	{
-		return "<html>" + value + "</html>";
+		return wrapWithTag(value, "html");
+	}
+
+	public static String wrapWithTag(String value, String tagName)
+	{
+		return "<" + tagName + ">" + value + "</" + tagName + ">";
 	}
 	
 	public static void addRuleFontSize(StyleSheet style, final int defaultFontSize, final int fontSize)
@@ -343,23 +348,23 @@ public class HtmlUtilities
 	{
 		try
 		{
-			if(htmlText.indexOf("<") < 0)
+			if(hasNoTags(htmlText))
 				return htmlText;
 			
-			if (!htmlText.startsWith("<html>"))
-				htmlText = HtmlUtilities.wrapInHtmlTags(htmlText);
+			htmlText = wrapWithTag(htmlText, "p");
 			
-			String fixAnchorElements = fixAnchorElements(htmlText);
-			fixAnchorElements = fixAnchorElements.replaceAll("<html>", "");
-			fixAnchorElements = fixAnchorElements.replaceAll("</html>", "");
-			
-			return fixAnchorElements;
+			return fixAnchorElements(htmlText);
 		}
 		catch (Exception e)
 		{
 			EAM.panic(e);
 			return "";
 		}
+	}
+
+	private static boolean hasNoTags(String htmlText)
+	{
+		return htmlText.indexOf("<") < 0;
 	}
 	
 	private static String fixAnchorElements(String htmlText) throws Exception
@@ -420,7 +425,7 @@ public class HtmlUtilities
 		DocumentBuilder documentBuilder = factory.newDocumentBuilder();
 		StringInputStreamWithSeek stringInputputStream = new StringInputStreamWithSeek(htmlText);
 		InputSource inputSource = new InputSource(stringInputputStream);
-		
+
 		return documentBuilder.parse(inputSource);
 	}
 	
