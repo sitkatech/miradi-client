@@ -37,6 +37,7 @@ public class TestHtmlUtilities extends MiradiTestCase
 		verifyAnchorElements("<a href=\"\">miradi</a>", "<a>miradi</a>");
 		verifyAnchorElements("<a href=\"http://www.miradi.org\">miradi</a>", "<a href=\"http://www.miradi.org\" language=\"DE\">miradi</a>");
 		verifyAnchorElements("<i>sample with space<a href=\"\" name=\"_msocom_1\">x</a> </i>", "<i>sample with space<a href=\"\" name=\"_msocom_1\">x</a> </i>");
+		verifyAnchorElements("with multiple anchors <a href=\"\">anchor 1</a><a href=\"miradi.org\" name=\"sampleAnchor\">.</a>", "with multiple anchors <a>anchor 1</a><a language=\"JavaScript\" id=\"_anchor_1\" class=\"msocomanchor\" onmouseout=\"msoCommentHide(&apos;_com_1&apos;)\" name=\"sampleAnchor\" href=\"miradi.org\" onmouseover=\"msoCommentShow(&apos;_anchor_1&apos;,&apos;_com_1&apos;)\">.</a>");
 	}
 	
 	private void verifyAnchorElements(String expectedValue, String actualValue) throws Exception

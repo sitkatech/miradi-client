@@ -374,30 +374,47 @@ public class HtmlUtilities
 		for (int index = 0; index < anchorElements.getLength(); ++index)
 		{
 			Element anchorNode = (Element) anchorElements.item(index);
-			NamedNodeMap attributes = anchorNode.getAttributes();
-			fixAnchorAttributesInPlace(document, attributes);	
+			fixAnchorAttributesInPlace(document, anchorNode);	
 		}
 		
 		return toXmlString(document);
 	}
 
-	private static void fixAnchorAttributesInPlace(Document document, NamedNodeMap attributes)
+	private static void fixAnchorAttributesInPlace(Document document, Element anchorNode)
 	{
-		removeIllegalAnchorAttributesInPlace(attributes);
-		ensureHrefAttributeExists(document, attributes);
+		removeIllegalAnchorAttributesInPlace(anchorNode);
+		ensureHrefAttributeExists(document, anchorNode.getAttributes());
 	}
 
-	private static void removeIllegalAnchorAttributesInPlace(NamedNodeMap attributes)
+	private static void removeIllegalAnchorAttributesInPlace(Element anchorNode)
 	{
+		Vector<String> attributeNamesToRemove = getIllegalAttributeNames(anchorNode);
+		removeIllegalAttributes(anchorNode, attributeNamesToRemove);
+	}
+
+	private static Vector<String> getIllegalAttributeNames(Element anchorNode)
+	{
+		Vector<String> attributeNamesToRemove = new Vector<String>();
+		NamedNodeMap attributes = anchorNode.getAttributes();
 		for(int index = 0; index < attributes.getLength(); ++index)
 		{
 			Node attribute = attributes.item(index);
 			final String attributeName = attribute.getNodeName();
 			if (!isLegalAnchorAttribute(attributeName))
-				attributes.removeNamedItem(attributeName);
+				attributeNamesToRemove.add(attributeName);
 		}
+		
+		return attributeNamesToRemove;
 	}
 	
+	private static void removeIllegalAttributes(Element anchorNode, Vector<String> attributeNamesToRemove)
+	{
+		for(String attributeNameToRemove : attributeNamesToRemove)
+		{
+			anchorNode.removeAttribute(attributeNameToRemove);
+		}
+	}
+
 	private static void ensureHrefAttributeExists(Document document, NamedNodeMap attributes)
 	{
 		if (attributes.getNamedItem(HREF_ATTRIBUTE_NAME) != null)
