@@ -107,9 +107,9 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 	private void setVisibilityOfSampleBasedFields()
 	{
 		final boolean shouldShowSampleBasedFields = areSampleBasedFieldsVisible();
-		sampleSizeField.setEditable(shouldShowSampleBasedFields);
-		samplePrecisionField.setEditable(shouldShowSampleBasedFields);
-		samplePrecisionTypeField.setEditable(shouldShowSampleBasedFields);
+		sampleSizeField.setVisible(shouldShowSampleBasedFields);
+		samplePrecisionField.setVisible(shouldShowSampleBasedFields);
+		samplePrecisionTypeField.setVisible(shouldShowSampleBasedFields);
 	}
 
 	public boolean areSampleBasedFieldsVisible()
