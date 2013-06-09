@@ -48,7 +48,6 @@ public class HtmlUtilitiesRelatedToShef
 		trimmedText = HtmlUtilities.removeNonHtmlNewLines(trimmedText);
 		trimmedText = HtmlUtilities.appendNewlineToEndDivTags(trimmedText);
 		trimmedText = HtmlUtilities.removeAllExcept(trimmedText, allowedHtmlTags);
-		trimmedText = HtmlUtilities.fixAnchorElementsSafely(trimmedText, allowedHtmlTags);
 		trimmedText = HtmlUtilities.stripAttributesFromNonAnchorElements(trimmedText);
 		trimmedText = trimmedText.replaceAll("\\t", " ");
 		trimmedText = trimmedText.replaceAll(" +", " ");
@@ -61,6 +60,7 @@ public class HtmlUtilitiesRelatedToShef
 		// NOTE: Shef does not encode/decode apostrophes as we need for proper XML
 		trimmedText = XmlUtilities2.getXmlEncodedApostrophes(trimmedText);
 		HtmlUtilities.ensureNoCloseBrTags(trimmedText);
+		trimmedText = HtmlUtilities.fixAnchorElementsSafely(trimmedText, allowedHtmlTags);
 		
 		return trimmedText;
 	}
