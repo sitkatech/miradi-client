@@ -18,33 +18,22 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.views.umbrella;
+package org.miradi.xml.xmpz1;
 
-import org.miradi.main.MainWindow;
-import org.miradi.project.Project;
-import org.miradi.utils.GenericMiradiFileFilter;
-import org.miradi.utils.ProgressInterface;
-import org.miradi.utils.XmpzFileFilter;
-import org.miradi.xml.AbstractXmlImporter;
-import org.miradi.xml.AbstractXmpzProjectImporter;
-import org.miradi.xml.xmpz1.XmpzXmlImporter;
+import org.miradi.xml.AbstractXmlNamespaceContext;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
-public class XmpzProjectImporter extends AbstractXmpzProjectImporter
+public class XmpzNameSpaceContext extends AbstractXmlNamespaceContext
 {
-	public XmpzProjectImporter(MainWindow mainWindowToUse)
-	{
-		super(mainWindowToUse);
-	}
-	
 	@Override
-	protected AbstractXmlImporter createXmpzXmlImporter(Project projectToFill,	ProgressInterface progressIndicator) throws Exception
+	protected String getNameSpace()
 	{
-		return new XmpzXmlImporter(projectToFill, progressIndicator);
+		return XmpzXmlConstants.NAME_SPACE;
 	}
 
 	@Override
-	protected GenericMiradiFileFilter createFileFilter()
+	protected String getPrefix()
 	{
-		return new XmpzFileFilter();
+		return XmpzXmlConstants.RAW_PREFIX;
 	}
 }

@@ -71,7 +71,7 @@ import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.wcs.Xmpz1XmlExporter;
-import org.miradi.xml.xmpz.XmpzXmlImporter;
+import org.miradi.xml.xmpz1.XmpzXmlImporter;
 
 public class TestXmpzXmlImporter extends TestCaseWithProject
 {

@@ -63,7 +63,7 @@ import org.miradi.utils.TestStringUtilities;
 import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.xml.TestXmpzXmlImporter;
 import org.miradi.xml.generic.XmlSchemaCreator;
-import org.miradi.xml.xmpz.XmpzXmlImporter;
+import org.miradi.xml.xmpz1.XmpzXmlImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
