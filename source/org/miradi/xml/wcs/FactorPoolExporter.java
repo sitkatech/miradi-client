@@ -29,7 +29,7 @@ import org.miradi.schemas.DiagramFactorSchema;
 
 public abstract class FactorPoolExporter extends BaseObjectPoolExporter
 {
-	public FactorPoolExporter(XmpzXmlExporter wcsXmlExporterToUse, String containerNameToUse, int objectTypeToUse)
+	public FactorPoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse, String containerNameToUse, int objectTypeToUse)
 	{
 		super(wcsXmlExporterToUse, containerNameToUse, objectTypeToUse);
 	}

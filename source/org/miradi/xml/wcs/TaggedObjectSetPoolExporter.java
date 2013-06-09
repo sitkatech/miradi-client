@@ -27,7 +27,7 @@ import org.miradi.schemas.TaggedObjectSetSchema;
 
 public class TaggedObjectSetPoolExporter extends BaseObjectPoolExporter
 {
-	public TaggedObjectSetPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
+	public TaggedObjectSetPoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, TAGGED_OBJECT_SET_ELEMENT_NAME, TaggedObjectSetSchema.getObjectType());
 	}

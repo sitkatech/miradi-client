@@ -28,7 +28,7 @@ import org.miradi.schemas.ThreatReductionResultSchema;
 
 public class ThreatReductionResultsPoolExporter extends FactorPoolExporter
 {
-	public ThreatReductionResultsPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
+	public ThreatReductionResultsPoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, THREAT_REDUCTION_RESULTS, ThreatReductionResultSchema.getObjectType());
 	}

@@ -27,7 +27,7 @@ import org.miradi.objecthelpers.TimePeriodCosts;
 
 public class ExpenseTimePeriodCostsWriter extends AbstractTimePeriodCostsWriter
 {
-	public ExpenseTimePeriodCostsWriter(XmpzXmlExporter wcsXmlExporterToUse)
+	public ExpenseTimePeriodCostsWriter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse);
 	}

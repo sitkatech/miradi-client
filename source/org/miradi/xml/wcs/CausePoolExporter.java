@@ -31,7 +31,7 @@ import org.miradi.schemas.CauseSchema;
 
 public class CausePoolExporter extends FactorPoolExporter
 {	
-	public CausePoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
+	public CausePoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, CAUSE, CauseSchema.getObjectType());
 	}

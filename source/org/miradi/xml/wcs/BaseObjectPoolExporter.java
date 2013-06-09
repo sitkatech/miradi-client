@@ -38,7 +38,7 @@ import org.miradi.utils.OptionalDouble;
 
 abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 {
-	public BaseObjectPoolExporter(XmpzXmlExporter wcsXmlExporterToUse, String containerNameToUse, int objectTypeToUse)
+	public BaseObjectPoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse, String containerNameToUse, int objectTypeToUse)
 	{
 		super(wcsXmlExporterToUse, containerNameToUse, objectTypeToUse);
 	}

@@ -28,7 +28,7 @@ import org.miradi.schemas.ProgressReportSchema;
 
 public class ProgressReportPoolExporter extends BaseObjectPoolExporter
 {
-	public ProgressReportPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
+	public ProgressReportPoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, PROGRESS_REPORT, ProgressReportSchema.getObjectType());
 	}

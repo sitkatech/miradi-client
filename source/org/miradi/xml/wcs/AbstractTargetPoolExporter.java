@@ -33,7 +33,7 @@ import org.miradi.xml.generic.XmlSchemaCreator;
 
 public abstract class AbstractTargetPoolExporter extends FactorPoolExporter
 {
-	public AbstractTargetPoolExporter(XmpzXmlExporter wcsXmlExporterToUse, String containerNameToUse, int objectTypeToUse)
+	public AbstractTargetPoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse, String containerNameToUse, int objectTypeToUse)
 	{
 		super(wcsXmlExporterToUse, containerNameToUse, objectTypeToUse);
 	}

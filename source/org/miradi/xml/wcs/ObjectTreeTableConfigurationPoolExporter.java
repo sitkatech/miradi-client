@@ -30,7 +30,7 @@ import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 
 public class ObjectTreeTableConfigurationPoolExporter extends	BaseObjectPoolExporter
 {
-	public ObjectTreeTableConfigurationPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
+	public ObjectTreeTableConfigurationPoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, OBJECT_TREE_TABLE_CONFIGURATION, ObjectTreeTableConfigurationSchema.getObjectType());
 	}

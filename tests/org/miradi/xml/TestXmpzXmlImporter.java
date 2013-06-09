@@ -70,7 +70,7 @@ import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.utils.XmlUtilities2;
-import org.miradi.xml.wcs.XmpzXmlExporter;
+import org.miradi.xml.wcs.Xmpz1XmlExporter;
 import org.miradi.xml.xmpz.XmpzXmlImporter;
 
 public class TestXmpzXmlImporter extends TestCaseWithProject
@@ -430,7 +430,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 
 	public static UnicodeXmlWriter createWriter(ProjectForTesting project) throws Exception
 	{
-		XmpzXmlExporter exporter = new XmpzXmlExporter(project);
+		Xmpz1XmlExporter exporter = new Xmpz1XmlExporter(project);
 		UnicodeXmlWriter writer = UnicodeXmlWriter.create();
 		exporter.setWriter(writer);
 		exporter.exportProject(writer);

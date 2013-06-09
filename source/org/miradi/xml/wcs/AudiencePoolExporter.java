@@ -27,7 +27,7 @@ import org.miradi.schemas.AudienceSchema;
 
 public class AudiencePoolExporter extends BaseObjectPoolExporter
 {
-	public AudiencePoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
+	public AudiencePoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, AUDIENCE, AudienceSchema.getObjectType());
 	}

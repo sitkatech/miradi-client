@@ -28,7 +28,7 @@ import org.miradi.xml.generic.XmlSchemaCreator;
 
 public class BiodiversityTargetPoolExporter extends AbstractTargetPoolExporter
 {
-	public BiodiversityTargetPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
+	public BiodiversityTargetPoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, BIODIVERSITY_TARGET, TargetSchema.getObjectType());
 	}

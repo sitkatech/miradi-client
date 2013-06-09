@@ -28,7 +28,7 @@ import org.miradi.schemas.ProjectResourceSchema;
 
 public class ProjectResourcePoolExporter extends BaseObjectPoolExporter
 {
-	public ProjectResourcePoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
+	public ProjectResourcePoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, PROJECT_RESOURCE, ProjectResourceSchema.getObjectType());
 	}

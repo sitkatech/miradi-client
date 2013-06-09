@@ -24,7 +24,7 @@ import org.miradi.schemas.IucnRedlistSpeciesSchema;
 
 public class IucnRedListspeciesPoolExporter extends BaseObjectPoolExporter
 {
-	public IucnRedListspeciesPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
+	public IucnRedListspeciesPoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, IUCN_REDLIST_SPECIES, IucnRedlistSpeciesSchema.getObjectType());
 	}

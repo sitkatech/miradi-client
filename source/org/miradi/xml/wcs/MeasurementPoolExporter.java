@@ -30,7 +30,7 @@ import org.miradi.schemas.MeasurementSchema;
 
 public class MeasurementPoolExporter extends BaseObjectPoolExporter
 {
-	public MeasurementPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
+	public MeasurementPoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, MEASUREMENT, MeasurementSchema.getObjectType());
 	}
