@@ -194,7 +194,7 @@ public class Xmpz1XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 	@Override
 	public AbstractXmlNamespaceContext getNamespaceContext()
 	{
-		return new XmpzNameSpaceContext();
+		return new Xmpz1NameSpaceContext();
 	}
 	
 	@Override

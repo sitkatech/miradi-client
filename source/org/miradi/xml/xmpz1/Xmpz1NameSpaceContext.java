@@ -23,7 +23,7 @@ package org.miradi.xml.xmpz1;
 import org.miradi.xml.AbstractXmlNamespaceContext;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 
-public class XmpzNameSpaceContext extends AbstractXmlNamespaceContext
+public class Xmpz1NameSpaceContext extends AbstractXmlNamespaceContext
 {
 	@Override
 	protected String getNameSpace()
