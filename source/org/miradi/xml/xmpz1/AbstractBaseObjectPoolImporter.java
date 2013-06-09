@@ -33,7 +33,7 @@ import org.miradi.schemas.ProgressPercentSchema;
 import org.miradi.schemas.ProgressReportSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.xml.AbstractXmpzObjectImporter;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -54,11 +54,11 @@ abstract public class AbstractBaseObjectPoolImporter extends AbstractXmpzObjectI
 	
 	private void importObjects() throws Exception
 	{
-		NodeList nodes = getImporter().getNodes(getImporter().getRootNode(), new String[]{getPoolName() + XmpzXmlConstants.POOL_ELEMENT_TAG, getPoolName(), });
+		NodeList nodes = getImporter().getNodes(getImporter().getRootNode(), new String[]{getPoolName() + Xmpz1XmlConstants.POOL_ELEMENT_TAG, getPoolName(), });
 		for (int index = 0; index < nodes.getLength(); ++index)
 		{
 			Node node = nodes.item(index);
-			String intIdAsString = getImporter().getAttributeValue(node, XmpzXmlConstants.ID);
+			String intIdAsString = getImporter().getAttributeValue(node, Xmpz1XmlConstants.ID);
 			ORef ref = getProject().createObject(getObjectTypeToImport(), new BaseId(intIdAsString));
 			postCreateFix(ref, node);
 			
@@ -82,33 +82,33 @@ abstract public class AbstractBaseObjectPoolImporter extends AbstractXmpzObjectI
 	
 	protected void importProgressReportRefs(Node node, ORef destinationRef) throws Exception
 	{
-		importRefs(node, XmpzXmlConstants.PROGRESS_REPORT_IDS, destinationRef, BaseObject.TAG_PROGRESS_REPORT_REFS, ProgressReportSchema.getObjectType(), XmpzXmlConstants.PROGRESS_REPORT);
+		importRefs(node, Xmpz1XmlConstants.PROGRESS_REPORT_IDS, destinationRef, BaseObject.TAG_PROGRESS_REPORT_REFS, ProgressReportSchema.getObjectType(), Xmpz1XmlConstants.PROGRESS_REPORT);
 	}
 	
 	protected void importProgressPercentRefs(Node node, ORef destinationRef) throws Exception
 	{
-		importRefs(node, XmpzXmlConstants.PROGRESS_PERCENT_IDS, destinationRef, Desire.TAG_PROGRESS_PERCENT_REFS, ProgressPercentSchema.getObjectType(), XmpzXmlConstants.PROGRESS_PERCENT );
+		importRefs(node, Xmpz1XmlConstants.PROGRESS_PERCENT_IDS, destinationRef, Desire.TAG_PROGRESS_PERCENT_REFS, ProgressPercentSchema.getObjectType(), Xmpz1XmlConstants.PROGRESS_PERCENT );
 	}
 	
 	protected void importExpenseAssignmentRefs(Node node, ORef destinationRef) throws Exception
 	{
-		importRefs(node, XmpzXmlConstants.EXPENSE_IDS, destinationRef, BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, ExpenseAssignmentSchema.getObjectType(), XmpzXmlConstants.EXPENSE_ASSIGNMENT);
+		importRefs(node, Xmpz1XmlConstants.EXPENSE_IDS, destinationRef, BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, ExpenseAssignmentSchema.getObjectType(), Xmpz1XmlConstants.EXPENSE_ASSIGNMENT);
 	}
 
 	protected void importResourceAssignmentIds(Node node, ORef destinationRef) throws Exception
 	{
-		importIds(node, destinationRef, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignmentSchema.getObjectType(), XmpzXmlConstants.RESOURCE_ASSIGNMENT);
+		importIds(node, destinationRef, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignmentSchema.getObjectType(), Xmpz1XmlConstants.RESOURCE_ASSIGNMENT);
 	}
 	
 	protected void importIndicatorIds(Node node, ORef destinationRef) throws Exception
 	{
-		importIds(node, destinationRef, Factor.TAG_INDICATOR_IDS, IndicatorSchema.getObjectType(), XmpzXmlConstants.INDICATOR);
+		importIds(node, destinationRef, Factor.TAG_INDICATOR_IDS, IndicatorSchema.getObjectType(), Xmpz1XmlConstants.INDICATOR);
 	}
 	
 	protected Point extractPointFromNode(Node pointNode) throws Exception
 	{
-		Node xNode = getImporter().getNode(pointNode, XmpzXmlConstants.X_ELEMENT_NAME);
-		Node yNode = getImporter().getNode(pointNode, XmpzXmlConstants.Y_ELEMENT_NAME);
+		Node xNode = getImporter().getNode(pointNode, Xmpz1XmlConstants.X_ELEMENT_NAME);
+		Node yNode = getImporter().getNode(pointNode, Xmpz1XmlConstants.Y_ELEMENT_NAME);
 		int x = extractNodeTextContentAsInt(xNode);
 		int y = extractNodeTextContentAsInt(yNode);
 		

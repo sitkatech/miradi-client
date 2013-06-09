@@ -29,7 +29,7 @@ import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.TaskSchema;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -37,7 +37,7 @@ public class IndicatorPoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public IndicatorPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.INDICATOR, IndicatorSchema.getObjectType());
+		super(importerToUse, Xmpz1XmlConstants.INDICATOR, IndicatorSchema.getObjectType());
 	}
 	
 	@Override
@@ -57,8 +57,8 @@ public class IndicatorPoolImporter extends AbstractBaseObjectPoolImporter
 		importProgressReportRefs(node, destinationRef);
 		importExpenseAssignmentRefs(node, destinationRef);
 		importResourceAssignmentIds(node, destinationRef);
-		importIds(node, destinationRef, Indicator.TAG_METHOD_IDS, TaskSchema.getObjectType(), XmpzXmlConstants.METHOD);
-		importRefs(node, XmpzXmlConstants.MEASUREMENT_IDS, destinationRef, Indicator.TAG_MEASUREMENT_REFS, MeasurementSchema.getObjectType(), XmpzXmlConstants.MEASUREMENT);
+		importIds(node, destinationRef, Indicator.TAG_METHOD_IDS, TaskSchema.getObjectType(), Xmpz1XmlConstants.METHOD);
+		importRefs(node, Xmpz1XmlConstants.MEASUREMENT_IDS, destinationRef, Indicator.TAG_MEASUREMENT_REFS, MeasurementSchema.getObjectType(), Xmpz1XmlConstants.MEASUREMENT);
 		importThresholds(node, destinationRef);
 		importCodeField(node, destinationRef, Indicator.TAG_RATING_SOURCE, getProject().getQuestion(RatingSourceQuestion.class));
 		importField(node, destinationRef, Indicator.TAG_VIABILITY_RATINGS_COMMENTS);

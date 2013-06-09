@@ -21,13 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.Indicator;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 
 public class IndicatorObjectSchemaElement extends BaseObjectSchemaElementWithLabel
 {
 	public IndicatorObjectSchemaElement()
 	{
-		super(XmpzXmlConstants.INDICATOR);
+		super(Xmpz1XmlConstants.INDICATOR);
 		
 		createOptionalTextField(Indicator.TAG_SHORT_LABEL);
 		createOptionalTextField(Indicator.TAG_DETAIL);
@@ -38,11 +38,11 @@ public class IndicatorObjectSchemaElement extends BaseObjectSchemaElementWithLab
 		createCodeField(Indicator.TAG_FUTURE_STATUS_RATING, XmlSchemaCreator.VOCABULARY_MEASUREMENT_STATUS);
 		createOptionalTextField(Indicator.TAG_FUTURE_STATUS_DETAIL);
 		createOptionalTextField(Indicator.TAG_FUTURE_STATUS_COMMENTS);	
-		createOptionalIdListField(XmpzXmlConstants.PROGRESS_REPORT_IDS, XmlSchemaCreator.PROGRESS_REPORT_ID_ELEMENT_NAME);
-		createOptionalIdListField(XmpzXmlConstants.EXPENSE_IDS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
+		createOptionalIdListField(Xmpz1XmlConstants.PROGRESS_REPORT_IDS, XmlSchemaCreator.PROGRESS_REPORT_ID_ELEMENT_NAME);
+		createOptionalIdListField(Xmpz1XmlConstants.EXPENSE_IDS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
 		createOptionalIdListField(Indicator.TAG_RESOURCE_ASSIGNMENT_IDS, XmlSchemaCreator.RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
-		createOptionalIdListField(XmpzXmlConstants.MEASUREMENT_IDS, XmlSchemaCreator.MEASUREMENT_ID_ELEMENT_NAME);
-		createOptionalIdListField(XmpzXmlConstants.METHOD_IDS, XmlSchemaCreator.METHOD);
+		createOptionalIdListField(Xmpz1XmlConstants.MEASUREMENT_IDS, XmlSchemaCreator.MEASUREMENT_ID_ELEMENT_NAME);
+		createOptionalIdListField(Xmpz1XmlConstants.METHOD_IDS, XmlSchemaCreator.METHOD);
 		createOptionalThresholdsField();
 		createOptionalCodeField(Indicator.TAG_RATING_SOURCE, XmlSchemaCreator.VOCABULARY_RATING_SOURCE);
 		createOptionalTextField(Indicator.TAG_VIABILITY_RATINGS_COMMENTS);

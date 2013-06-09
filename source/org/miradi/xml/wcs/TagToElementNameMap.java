@@ -52,7 +52,7 @@ import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.TncProjectData;
 import org.miradi.xml.generic.XmlSchemaCreator;
 
-public class TagToElementNameMap implements XmpzXmlConstants
+public class TagToElementNameMap implements Xmpz1XmlConstants
 {
 	public TagToElementNameMap()
 	{
@@ -142,7 +142,7 @@ public class TagToElementNameMap implements XmpzXmlConstants
 		HashMap<String, String> taskMap = new HashMap<String, String>();
 		taskMap.put(Task.TAG_LABEL, "Name");
 		taskMap.put(Task.TAG_SHORT_LABEL, "Id");
-		taskMap.put(Task.TAG_SUBTASK_IDS, XmpzXmlConstants.SUB_TASK_IDS);
+		taskMap.put(Task.TAG_SUBTASK_IDS, Xmpz1XmlConstants.SUB_TASK_IDS);
 		return taskMap;
 	}
 
@@ -154,7 +154,7 @@ public class TagToElementNameMap implements XmpzXmlConstants
 		indicatorMap.put(Indicator.TAG_SHORT_LABEL, "Id");
 		indicatorMap.put(Indicator.TAG_DETAIL, DETAILS);
 		indicatorMap.put(Indicator.TAG_FUTURE_STATUS_DETAIL, "FutureStatusDetails");
-		indicatorMap.put(Indicator.TAG_METHOD_IDS, XmpzXmlConstants.METHOD_IDS);
+		indicatorMap.put(Indicator.TAG_METHOD_IDS, Xmpz1XmlConstants.METHOD_IDS);
 		indicatorMap.put(Indicator.TAG_FUTURE_STATUS_COMMENTS, "FutureStatusComments");
 		indicatorMap.put(Indicator.TAG_VIABILITY_RATINGS_COMMENTS, "ViabilityRatingsComments");
 		

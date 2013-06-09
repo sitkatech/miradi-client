@@ -20,12 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 
 public class ConceptualModelSchemaElement extends DiagramSchemaElement
 {
 	public ConceptualModelSchemaElement()
 	{
-		super(XmpzXmlConstants.CONCEPTUAL_MODEL);
+		super(Xmpz1XmlConstants.CONCEPTUAL_MODEL);
 	}
 }

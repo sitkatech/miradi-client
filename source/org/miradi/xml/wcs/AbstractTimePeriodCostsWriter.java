@@ -30,7 +30,7 @@ import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.utils.DoubleUtilities;
 
-abstract public class AbstractTimePeriodCostsWriter implements XmpzXmlConstants
+abstract public class AbstractTimePeriodCostsWriter implements Xmpz1XmlConstants
 {
 	public AbstractTimePeriodCostsWriter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{

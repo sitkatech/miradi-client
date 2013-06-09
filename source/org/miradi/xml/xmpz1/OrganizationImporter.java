@@ -23,14 +23,14 @@ package org.miradi.xml.xmpz1;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Organization;
 import org.miradi.schemas.OrganizationSchema;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 import org.w3c.dom.Node;
 
 public class OrganizationImporter extends AbstractBaseObjectPoolImporter
 {
 	public OrganizationImporter(Xmpz1XmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.ORGANIZATION, OrganizationSchema.getObjectType());
+		super(importerToUse, Xmpz1XmlConstants.ORGANIZATION, OrganizationSchema.getObjectType());
 	}
 
 	@Override

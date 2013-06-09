@@ -40,6 +40,6 @@ public class TaggedObjectSetPoolExporter extends BaseObjectPoolExporter
 		TaggedObjectSet taggedObjectSet = (TaggedObjectSet) baseObject;
 		writeOptionalElementWithSameTag(taggedObjectSet, TaggedObjectSet.TAG_SHORT_LABEL);
 		writeOptionalElementWithSameTag(taggedObjectSet, TaggedObjectSet.TAG_COMMENTS);
-		writeFactorIds(XmpzXmlConstants.TAGGED_FACTOR_IDS, taggedObjectSet.getTaggedObjectRefs());
+		writeFactorIds(Xmpz1XmlConstants.TAGGED_FACTOR_IDS, taggedObjectSet.getTaggedObjectRefs());
 	}
 }

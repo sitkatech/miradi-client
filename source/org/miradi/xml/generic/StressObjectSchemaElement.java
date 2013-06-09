@@ -21,13 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.Stress;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 
 public class StressObjectSchemaElement extends FactorObjectSchemaElement
 {
 	public StressObjectSchemaElement()
 	{
-		super(XmpzXmlConstants.STRESS);
+		super(Xmpz1XmlConstants.STRESS);
 		
 		createCodeField(XmlSchemaCreator.STRESS_SEVERITY_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_STRESS_SEVERITY);
 		createCodeField(XmlSchemaCreator.STRESS_SCOPE_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_STRESS_SCOPE);

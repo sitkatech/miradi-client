@@ -20,13 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 
 public class ScopeBoxObjectSchemaElement extends FactorObjectSchemaElement
 {
 	public ScopeBoxObjectSchemaElement()
 	{
-		super(XmpzXmlConstants.SCOPE_BOX);
+		super(Xmpz1XmlConstants.SCOPE_BOX);
 		
 		createCodeField(XmlSchemaCreator.SCOPE_BOX_COLOR_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_SCOPE_BOX_TYPE);
 	}

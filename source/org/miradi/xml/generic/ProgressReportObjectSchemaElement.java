@@ -21,13 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.ProgressReport;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 
 public class ProgressReportObjectSchemaElement extends AbstractBaseObjectSchemaElement
 {
 	public ProgressReportObjectSchemaElement()
 	{
-		super(XmpzXmlConstants.PROGRESS_REPORT);
+		super(Xmpz1XmlConstants.PROGRESS_REPORT);
 		
 		createOptionalDateField(ProgressReport.TAG_PROGRESS_DATE);
 		createOptionalTextField(ProgressReport.TAG_DETAILS);

@@ -27,14 +27,14 @@ import org.miradi.questions.StrategyImpactQuestion;
 import org.miradi.questions.StrategyTaxonomyQuestion;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaskSchema;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 import org.w3c.dom.Node;
 
 public class StrategyPoolImporter extends FactorPoolImporter
 {
 	public StrategyPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.STRATEGY, StrategySchema.getObjectType());
+		super(importerToUse, Xmpz1XmlConstants.STRATEGY, StrategySchema.getObjectType());
 	}
 	
 	@Override
@@ -44,7 +44,7 @@ public class StrategyPoolImporter extends FactorPoolImporter
 
 		importObjectiveIds(node, destinationRef);
 		
-		importIds(node, destinationRef, Strategy.TAG_ACTIVITY_IDS, TaskSchema.getObjectType(), XmpzXmlConstants.ACTIVITY);
+		importIds(node, destinationRef, Strategy.TAG_ACTIVITY_IDS, TaskSchema.getObjectType(), Xmpz1XmlConstants.ACTIVITY);
 		importField(node, destinationRef, Strategy.TAG_STATUS);
 		importCodeField(node, destinationRef, Strategy.TAG_TAXONOMY_CODE, new StrategyTaxonomyQuestion());
 		importCodeField(node, destinationRef, Strategy.TAG_IMPACT_RATING, new StrategyImpactQuestion());

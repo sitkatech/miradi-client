@@ -27,7 +27,7 @@ import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.xml.generic.XmlSchemaCreator;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 import org.w3c.dom.Node;
 
 public class ResourceAssignmentPoolImporter extends	AbstractAssignmentPoolImporter
@@ -50,13 +50,13 @@ public class ResourceAssignmentPoolImporter extends	AbstractAssignmentPoolImport
 	@Override
 	protected String getDateUnitsElementName()
 	{
-		return XmpzXmlConstants.DATE_UNIT_WORK_UNITS;
+		return Xmpz1XmlConstants.DATE_UNIT_WORK_UNITS;
 	}
 	
 	@Override
 	protected String getDateUnitElementName()
 	{
-		return XmpzXmlConstants.WORK_UNITS_DATE_UNIT;
+		return Xmpz1XmlConstants.WORK_UNITS_DATE_UNIT;
 	}
 	
 	@Override
@@ -92,6 +92,6 @@ public class ResourceAssignmentPoolImporter extends	AbstractAssignmentPoolImport
 	@Override
 	protected String getQuantatityElementName()
 	{
-		return XmpzXmlConstants.WORK_UNITS;
+		return Xmpz1XmlConstants.WORK_UNITS;
 	}
 }

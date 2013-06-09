@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.Task;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 
 abstract public class AbstractTaskObjectSchemaElement extends FactorObjectSchemaElement
 {
@@ -29,10 +29,10 @@ abstract public class AbstractTaskObjectSchemaElement extends FactorObjectSchema
 	{
 		super(objectTypeName);
 		
-		createOptionalIdListField(XmpzXmlConstants.EXPENSE_IDS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
+		createOptionalIdListField(Xmpz1XmlConstants.EXPENSE_IDS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
 		createOptionalIdListField(Task.TAG_RESOURCE_ASSIGNMENT_IDS, XmlSchemaCreator.RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
-		createOptionalIdListField(XmpzXmlConstants.PROGRESS_REPORT_IDS, XmlSchemaCreator.PROGRESS_REPORT_ID_ELEMENT_NAME);
-		createOptionalIdListField(XmpzXmlConstants.SUB_TASK_IDS, XmlSchemaCreator.SUB_TASK);
+		createOptionalIdListField(Xmpz1XmlConstants.PROGRESS_REPORT_IDS, XmlSchemaCreator.PROGRESS_REPORT_ID_ELEMENT_NAME);
+		createOptionalIdListField(Xmpz1XmlConstants.SUB_TASK_IDS, XmlSchemaCreator.SUB_TASK);
 		createOptionalCalculatedTimePeriodCosts();
 	}
 	

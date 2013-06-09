@@ -116,9 +116,9 @@ public class TestXmpzExporter extends TestCaseWithProject
 		
 		Xmpz1XmlImporter xmlImporter = createProjectImporter(getProject());
 		String pathElements = xmlImporter.generatePath(new String[]                      		                                                            {
-				XmpzXmlConstants.CONSERVATION_PROJECT,
-				XmpzXmlConstants.TNC_PROJECT_DATA, 
-				XmpzXmlConstants.TNC_PROJECT_DATA + XmlSchemaCreator.TNC_OPERATING_UNITS + XmpzXmlConstants.CONTAINER_ELEMENT_TAG,
+				Xmpz1XmlConstants.CONSERVATION_PROJECT,
+				Xmpz1XmlConstants.TNC_PROJECT_DATA, 
+				Xmpz1XmlConstants.TNC_PROJECT_DATA + XmlSchemaCreator.TNC_OPERATING_UNITS + Xmpz1XmlConstants.CONTAINER_ELEMENT_TAG,
 				XmlSchemaCreator.CODE_ELEMENT_NAME,
 			   });
 			
@@ -145,7 +145,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 	
 	public void testIfWeDoBigSchemaChangesWeShouldIncludeMinorChangesToo() throws Exception
 	{
-		if("73".equals(XmpzXmlConstants.NAME_SPACE_VERSION))
+		if("73".equals(Xmpz1XmlConstants.NAME_SPACE_VERSION))
 			return;
 
 		fail("If the schema version number changes, make sure we also do all the\n" +
@@ -197,17 +197,17 @@ public class TestXmpzExporter extends TestCaseWithProject
 		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_EXPENSE_ASSIGNMENT_REFS, new ORefList(expense));
 		Xmpz1XmlImporter xmlImporter = createProjectImporter(getProject());
 		Node timePeriodCostsNode = getTimePeriodCostsNode(xmlImporter); 
-		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_START_DATE, "2008-01-01");
-		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_END_DATE, "2008-12-31");
-		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_TOTAL_BUDGET_COST, "10");
-		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_EXPENSE_TOTAL, "10");
-		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_WORK_UNITS_TOTAL, "");
+		verifyNodeValue(xmlImporter, timePeriodCostsNode, Xmpz1XmlConstants.CALCULATED_START_DATE, "2008-01-01");
+		verifyNodeValue(xmlImporter, timePeriodCostsNode, Xmpz1XmlConstants.CALCULATED_END_DATE, "2008-12-31");
+		verifyNodeValue(xmlImporter, timePeriodCostsNode, Xmpz1XmlConstants.CALCULATED_TOTAL_BUDGET_COST, "10");
+		verifyNodeValue(xmlImporter, timePeriodCostsNode, Xmpz1XmlConstants.CALCULATED_EXPENSE_TOTAL, "10");
+		verifyNodeValue(xmlImporter, timePeriodCostsNode, Xmpz1XmlConstants.CALCULATED_WORK_UNITS_TOTAL, "");
 		verifyExpensesEntriesNode(xmlImporter, timePeriodCostsNode);
 		verifyExpenseEntryDateUnitNode(xmlImporter, timePeriodCostsNode);
-		verifyExpenseCategoryValue(xmlImporter, expense, timePeriodCostsNode, ExpenseAssignment.TAG_FUNDING_SOURCE_REF, XmpzXmlConstants.FUNDING_SOURCE_ID);
-		verifyExpenseCategoryValue(xmlImporter, expense, timePeriodCostsNode, ExpenseAssignment.TAG_ACCOUNTING_CODE_REF, XmpzXmlConstants.ACCOUNTING_CODE_ID);
-		verifyExpenseCategoryValue(xmlImporter, expense, timePeriodCostsNode, ExpenseAssignment.TAG_CATEGORY_ONE_REF, XmpzXmlConstants.BUDGET_CATEGORY_ONE_ID);
-		verifyExpenseCategoryValue(xmlImporter, expense, timePeriodCostsNode, ExpenseAssignment.TAG_CATEGORY_TWO_REF, XmpzXmlConstants.BUDGET_CATEGORY_TWO_ID);
+		verifyExpenseCategoryValue(xmlImporter, expense, timePeriodCostsNode, ExpenseAssignment.TAG_FUNDING_SOURCE_REF, Xmpz1XmlConstants.FUNDING_SOURCE_ID);
+		verifyExpenseCategoryValue(xmlImporter, expense, timePeriodCostsNode, ExpenseAssignment.TAG_ACCOUNTING_CODE_REF, Xmpz1XmlConstants.ACCOUNTING_CODE_ID);
+		verifyExpenseCategoryValue(xmlImporter, expense, timePeriodCostsNode, ExpenseAssignment.TAG_CATEGORY_ONE_REF, Xmpz1XmlConstants.BUDGET_CATEGORY_ONE_ID);
+		verifyExpenseCategoryValue(xmlImporter, expense, timePeriodCostsNode, ExpenseAssignment.TAG_CATEGORY_TWO_REF, Xmpz1XmlConstants.BUDGET_CATEGORY_TWO_ID);
 	}
 	
 	public void testWorkUnitsTimePeriodCost() throws Exception
@@ -219,17 +219,17 @@ public class TestXmpzExporter extends TestCaseWithProject
 		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_RESOURCE_ASSIGNMENT_IDS, new IdList(assignment));
 		Xmpz1XmlImporter xmlImporter = createProjectImporter(getProject());
 		Node timePeriodCostsNode = getTimePeriodCostsNode(xmlImporter); 
-		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_START_DATE, "2007-01-01");
-		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_END_DATE, "2008-01-01");
-		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_TOTAL_BUDGET_COST, "110");
-		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_EXPENSE_TOTAL, "");
-		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_WORK_UNITS_TOTAL, "11");
+		verifyNodeValue(xmlImporter, timePeriodCostsNode, Xmpz1XmlConstants.CALCULATED_START_DATE, "2007-01-01");
+		verifyNodeValue(xmlImporter, timePeriodCostsNode, Xmpz1XmlConstants.CALCULATED_END_DATE, "2008-01-01");
+		verifyNodeValue(xmlImporter, timePeriodCostsNode, Xmpz1XmlConstants.CALCULATED_TOTAL_BUDGET_COST, "110");
+		verifyNodeValue(xmlImporter, timePeriodCostsNode, Xmpz1XmlConstants.CALCULATED_EXPENSE_TOTAL, "");
+		verifyNodeValue(xmlImporter, timePeriodCostsNode, Xmpz1XmlConstants.CALCULATED_WORK_UNITS_TOTAL, "11");
 		verifyWorkUnitEntriesNode(xmlImporter, timePeriodCostsNode);
 		verifyWorkUnitEntryDateUnitNode(xmlImporter, timePeriodCostsNode);
-		verifyWorkUnitCategoryValue(xmlImporter, assignment, timePeriodCostsNode, ResourceAssignment.TAG_FUNDING_SOURCE_ID, XmpzXmlConstants.FUNDING_SOURCE_ID);
-		verifyWorkUnitCategoryValue(xmlImporter, assignment, timePeriodCostsNode, ResourceAssignment.TAG_ACCOUNTING_CODE_ID, XmpzXmlConstants.ACCOUNTING_CODE_ID);
-		verifyWorkUnitCategoryValue(xmlImporter, assignment, timePeriodCostsNode, ResourceAssignment.TAG_CATEGORY_ONE_REF, XmpzXmlConstants.BUDGET_CATEGORY_ONE_ID);
-		verifyWorkUnitCategoryValue(xmlImporter, assignment, timePeriodCostsNode, ResourceAssignment.TAG_CATEGORY_TWO_REF, XmpzXmlConstants.BUDGET_CATEGORY_TWO_ID);
+		verifyWorkUnitCategoryValue(xmlImporter, assignment, timePeriodCostsNode, ResourceAssignment.TAG_FUNDING_SOURCE_ID, Xmpz1XmlConstants.FUNDING_SOURCE_ID);
+		verifyWorkUnitCategoryValue(xmlImporter, assignment, timePeriodCostsNode, ResourceAssignment.TAG_ACCOUNTING_CODE_ID, Xmpz1XmlConstants.ACCOUNTING_CODE_ID);
+		verifyWorkUnitCategoryValue(xmlImporter, assignment, timePeriodCostsNode, ResourceAssignment.TAG_CATEGORY_ONE_REF, Xmpz1XmlConstants.BUDGET_CATEGORY_ONE_ID);
+		verifyWorkUnitCategoryValue(xmlImporter, assignment, timePeriodCostsNode, ResourceAssignment.TAG_CATEGORY_TWO_REF, Xmpz1XmlConstants.BUDGET_CATEGORY_TWO_ID);
 	}
 	
 	public void testWorkUnitsTimePeriodCostWithoutProjectResourceUnitCost() throws Exception
@@ -243,25 +243,25 @@ public class TestXmpzExporter extends TestCaseWithProject
 		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_RESOURCE_ASSIGNMENT_IDS, new IdList(assignment));
 		Xmpz1XmlImporter xmlImporter = createProjectImporter(getProject());
 		Node timePeriodCostsNode = getTimePeriodCostsNode(xmlImporter); 
-		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_START_DATE, "2007-01-01");
-		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_END_DATE, "2008-01-01");
-		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_TOTAL_BUDGET_COST, "0");
-		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_EXPENSE_TOTAL, "");
-		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_WORK_UNITS_TOTAL, "11");
-		verifyResourceIds(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_WHO, new ORefList(resourceRef));
+		verifyNodeValue(xmlImporter, timePeriodCostsNode, Xmpz1XmlConstants.CALCULATED_START_DATE, "2007-01-01");
+		verifyNodeValue(xmlImporter, timePeriodCostsNode, Xmpz1XmlConstants.CALCULATED_END_DATE, "2008-01-01");
+		verifyNodeValue(xmlImporter, timePeriodCostsNode, Xmpz1XmlConstants.CALCULATED_TOTAL_BUDGET_COST, "0");
+		verifyNodeValue(xmlImporter, timePeriodCostsNode, Xmpz1XmlConstants.CALCULATED_EXPENSE_TOTAL, "");
+		verifyNodeValue(xmlImporter, timePeriodCostsNode, Xmpz1XmlConstants.CALCULATED_WORK_UNITS_TOTAL, "11");
+		verifyResourceIds(xmlImporter, timePeriodCostsNode, Xmpz1XmlConstants.CALCULATED_WHO, new ORefList(resourceRef));
 		verifyWorkUnitEntriesNode(xmlImporter, timePeriodCostsNode);
 		verifyWorkUnitEntryDateUnitNode(xmlImporter, timePeriodCostsNode);
-		verifyWorkUnitCategoryValue(xmlImporter, assignment, timePeriodCostsNode, ResourceAssignment.TAG_FUNDING_SOURCE_ID, XmpzXmlConstants.FUNDING_SOURCE_ID);
-		verifyWorkUnitCategoryValue(xmlImporter, assignment, timePeriodCostsNode, ResourceAssignment.TAG_ACCOUNTING_CODE_ID, XmpzXmlConstants.ACCOUNTING_CODE_ID);
-		verifyWorkUnitCategoryValue(xmlImporter, assignment, timePeriodCostsNode, ResourceAssignment.TAG_CATEGORY_ONE_REF, XmpzXmlConstants.BUDGET_CATEGORY_ONE_ID);
-		verifyWorkUnitCategoryValue(xmlImporter, assignment, timePeriodCostsNode, ResourceAssignment.TAG_CATEGORY_TWO_REF, XmpzXmlConstants.BUDGET_CATEGORY_TWO_ID);
+		verifyWorkUnitCategoryValue(xmlImporter, assignment, timePeriodCostsNode, ResourceAssignment.TAG_FUNDING_SOURCE_ID, Xmpz1XmlConstants.FUNDING_SOURCE_ID);
+		verifyWorkUnitCategoryValue(xmlImporter, assignment, timePeriodCostsNode, ResourceAssignment.TAG_ACCOUNTING_CODE_ID, Xmpz1XmlConstants.ACCOUNTING_CODE_ID);
+		verifyWorkUnitCategoryValue(xmlImporter, assignment, timePeriodCostsNode, ResourceAssignment.TAG_CATEGORY_ONE_REF, Xmpz1XmlConstants.BUDGET_CATEGORY_ONE_ID);
+		verifyWorkUnitCategoryValue(xmlImporter, assignment, timePeriodCostsNode, ResourceAssignment.TAG_CATEGORY_TWO_REF, Xmpz1XmlConstants.BUDGET_CATEGORY_TWO_ID);
 	}
 	
 	private void verifyResourceIds(Xmpz1XmlImporter xmlImporter, Node timePeriodCostsNode, String calculatedWho, ORefList resourceRefs) throws Exception
 	{
-		XPathExpression expression = xmlImporter.getXPath().compile(xmlImporter.generatePath(new String[]{XmpzXmlConstants.CALCULATED_WHO,}));
+		XPathExpression expression = xmlImporter.getXPath().compile(xmlImporter.generatePath(new String[]{Xmpz1XmlConstants.CALCULATED_WHO,}));
 		Node whoNode = (Node) expression.evaluate(timePeriodCostsNode, XPathConstants.NODE);
-		String elementNameToMatch = XmpzXmlConstants.RESOURCE_ID;
+		String elementNameToMatch = Xmpz1XmlConstants.RESOURCE_ID;
 
 		Vector<Node> matchingNodes = getMatchingChildElementNodes(whoNode, elementNameToMatch);
 		
@@ -290,11 +290,11 @@ public class TestXmpzExporter extends TestCaseWithProject
 	private void verifyWorkUnitEntriesNode(Xmpz1XmlImporter xmlImporter, Node timePeriodCostsNode) throws Exception
 	{
 		String value = xmlImporter.getPathData(timePeriodCostsNode, new String[] {
-				XmpzXmlConstants.CALCULATED_WORK_UNITS_ENTRIES, 
-				XmpzXmlConstants.WORK_UNITS_ENTRY,  
-				XmpzXmlConstants.WORK_UNITS_ENTRY + XmpzXmlConstants.DETAILS, 
-				XmpzXmlConstants.DATE_UNIT_WORK_UNITS, 
-				XmpzXmlConstants.WORK_UNITS, });
+				Xmpz1XmlConstants.CALCULATED_WORK_UNITS_ENTRIES, 
+				Xmpz1XmlConstants.WORK_UNITS_ENTRY,  
+				Xmpz1XmlConstants.WORK_UNITS_ENTRY + Xmpz1XmlConstants.DETAILS, 
+				Xmpz1XmlConstants.DATE_UNIT_WORK_UNITS, 
+				Xmpz1XmlConstants.WORK_UNITS, });
 		
 		assertEquals("Incorrect work units?", "11", value);		
 	}
@@ -302,25 +302,25 @@ public class TestXmpzExporter extends TestCaseWithProject
 	private void verifyWorkUnitEntryDateUnitNode(Xmpz1XmlImporter xmlImporter, Node timePeriodCostsNode) throws Exception
 	{
 		Node dateUnitNode = xmlImporter.getNode(timePeriodCostsNode, new String[] {
-				XmpzXmlConstants.CALCULATED_WORK_UNITS_ENTRIES, 
-				XmpzXmlConstants.WORK_UNITS_ENTRY,  
-				XmpzXmlConstants.WORK_UNITS_ENTRY + XmpzXmlConstants.DETAILS, 
-				XmpzXmlConstants.DATE_UNIT_WORK_UNITS, 
-				XmpzXmlConstants.WORK_UNITS_DATE_UNIT, 
-				XmpzXmlConstants.WORK_UNITS_FULL_PROJECT_TIMESPAN});
+				Xmpz1XmlConstants.CALCULATED_WORK_UNITS_ENTRIES, 
+				Xmpz1XmlConstants.WORK_UNITS_ENTRY,  
+				Xmpz1XmlConstants.WORK_UNITS_ENTRY + Xmpz1XmlConstants.DETAILS, 
+				Xmpz1XmlConstants.DATE_UNIT_WORK_UNITS, 
+				Xmpz1XmlConstants.WORK_UNITS_DATE_UNIT, 
+				Xmpz1XmlConstants.WORK_UNITS_FULL_PROJECT_TIMESPAN});
 		
-		assertEquals("Incorrect work units?", "Total", xmlImporter.getAttributeValue(dateUnitNode, XmpzXmlConstants.FULL_PROJECT_TIMESPAN));		
+		assertEquals("Incorrect work units?", "Total", xmlImporter.getAttributeValue(dateUnitNode, Xmpz1XmlConstants.FULL_PROJECT_TIMESPAN));		
 	}
 
 	private void verifyExpenseEntryDateUnitNode(Xmpz1XmlImporter xmlImporter, Node timePeriodCostsNode) throws Exception
 	{
 		Node dateUnitNode = xmlImporter.getNode(timePeriodCostsNode, new String[] {
-				XmpzXmlConstants.CALCULATED_EXPENSE_ENTRIES, 
-				XmpzXmlConstants.EXPENSE_ENTRY,  
-				XmpzXmlConstants.EXPENSE_ENTRY + XmpzXmlConstants.DETAILS, 
-				XmpzXmlConstants.DATE_UNITS_EXPENSE, 
-				XmpzXmlConstants.EXPENSES_DATE_UNIT, 
-				XmpzXmlConstants.EXPENSES_YEAR,
+				Xmpz1XmlConstants.CALCULATED_EXPENSE_ENTRIES, 
+				Xmpz1XmlConstants.EXPENSE_ENTRY,  
+				Xmpz1XmlConstants.EXPENSE_ENTRY + Xmpz1XmlConstants.DETAILS, 
+				Xmpz1XmlConstants.DATE_UNITS_EXPENSE, 
+				Xmpz1XmlConstants.EXPENSES_DATE_UNIT, 
+				Xmpz1XmlConstants.EXPENSES_YEAR,
 				});
 		
 		assertEquals("Incorrect work units?", "2008", xmlImporter.getAttributeValue(dateUnitNode, "StartYear"));
@@ -331,9 +331,9 @@ public class TestXmpzExporter extends TestCaseWithProject
 	private void verifyWorkUnitCategoryValue(Xmpz1XmlImporter xmlImporter, Assignment assignment, Node timePeriodCostsNode, final String categoryRefTag, final String categoryElementName) throws Exception
 	{
 		String value = xmlImporter.getPathData(timePeriodCostsNode, new String[] {
-				XmpzXmlConstants.CALCULATED_WORK_UNITS_ENTRIES, 
-				XmpzXmlConstants.WORK_UNITS_ENTRY,  
-				XmpzXmlConstants.WORK_UNITS_ENTRY + categoryElementName,
+				Xmpz1XmlConstants.CALCULATED_WORK_UNITS_ENTRIES, 
+				Xmpz1XmlConstants.WORK_UNITS_ENTRY,  
+				Xmpz1XmlConstants.WORK_UNITS_ENTRY + categoryElementName,
 				categoryElementName,
 				});
 		
@@ -343,9 +343,9 @@ public class TestXmpzExporter extends TestCaseWithProject
 	private void verifyExpenseCategoryValue(Xmpz1XmlImporter xmlImporter, Assignment assignment, Node timePeriodCostsNode, final String categoryRefTag, final String categoryElementName) throws Exception
 	{
 		String value = xmlImporter.getPathData(timePeriodCostsNode, new String[] {
-				XmpzXmlConstants.CALCULATED_EXPENSE_ENTRIES, 
-				XmpzXmlConstants.EXPENSE_ENTRY,  
-				XmpzXmlConstants.EXPENSE_ENTRY + categoryElementName,
+				Xmpz1XmlConstants.CALCULATED_EXPENSE_ENTRIES, 
+				Xmpz1XmlConstants.EXPENSE_ENTRY,  
+				Xmpz1XmlConstants.EXPENSE_ENTRY + categoryElementName,
 				categoryElementName,
 				});
 		
@@ -355,11 +355,11 @@ public class TestXmpzExporter extends TestCaseWithProject
 	private void verifyExpensesEntriesNode(Xmpz1XmlImporter xmlImporter, Node timePeriodCostsNode) throws Exception
 	{
 		String value = xmlImporter.getPathData(timePeriodCostsNode, new String[] {
-				XmpzXmlConstants.CALCULATED_EXPENSE_ENTRIES, 
-				XmpzXmlConstants.EXPENSE_ENTRY,  
-				XmpzXmlConstants.EXPENSE_ENTRY + XmpzXmlConstants.DETAILS, 
-				XmpzXmlConstants.DATE_UNITS_EXPENSE, 
-				XmpzXmlConstants.EXPENSE, });
+				Xmpz1XmlConstants.CALCULATED_EXPENSE_ENTRIES, 
+				Xmpz1XmlConstants.EXPENSE_ENTRY,  
+				Xmpz1XmlConstants.EXPENSE_ENTRY + Xmpz1XmlConstants.DETAILS, 
+				Xmpz1XmlConstants.DATE_UNITS_EXPENSE, 
+				Xmpz1XmlConstants.EXPENSE, });
 		
 		assertEquals("Incorrect expense?", "10", value);		
 	}
@@ -368,11 +368,11 @@ public class TestXmpzExporter extends TestCaseWithProject
 	{
 		String pathElements = xmlImporter.generatePath(new String[]
 		                                                            {
-			XmpzXmlConstants.CONSERVATION_PROJECT, 
-			XmpzXmlConstants.STRATEGY + XmpzXmlConstants.POOL_ELEMENT_TAG, 
-			XmpzXmlConstants.STRATEGY, 
-			XmpzXmlConstants.STRATEGY + XmpzXmlConstants.TIME_PERIOD_COSTS, 
-			XmpzXmlConstants.TIME_PERIOD_COSTS, 
+			Xmpz1XmlConstants.CONSERVATION_PROJECT, 
+			Xmpz1XmlConstants.STRATEGY + Xmpz1XmlConstants.POOL_ELEMENT_TAG, 
+			Xmpz1XmlConstants.STRATEGY, 
+			Xmpz1XmlConstants.STRATEGY + Xmpz1XmlConstants.TIME_PERIOD_COSTS, 
+			Xmpz1XmlConstants.TIME_PERIOD_COSTS, 
 		   });
 		
 		return xmlImporter.getNode(pathElements);

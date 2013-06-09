@@ -24,7 +24,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectResource;
 import org.miradi.questions.ResourceTypeQuestion;
 import org.miradi.schemas.ProjectResourceSchema;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 import org.w3c.dom.Node;
 
 
@@ -32,7 +32,7 @@ public class ProjectResourceImporter extends AbstractBaseObjectPoolImporter
 {
 	public ProjectResourceImporter(Xmpz1XmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.PROJECT_RESOURCE, ProjectResourceSchema.getObjectType());
+		super(importerToUse, Xmpz1XmlConstants.PROJECT_RESOURCE, ProjectResourceSchema.getObjectType());
 	}
 	
 	@Override

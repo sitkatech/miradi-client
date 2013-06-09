@@ -21,13 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.ExpenseAssignment;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 
 public class ExpenseAssignmentObjectSchemaElement extends AbstractAssignmentObjectSchemaElement
 {
 	public ExpenseAssignmentObjectSchemaElement()
 	{
-		super(XmpzXmlConstants.EXPENSE_ASSIGNMENT);
+		super(Xmpz1XmlConstants.EXPENSE_ASSIGNMENT);
 		
 		createDateUnitExpenseField(ExpenseAssignment.TAG_DATEUNIT_EFFORTS);
 	}

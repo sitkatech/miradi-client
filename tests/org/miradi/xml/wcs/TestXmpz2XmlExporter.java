@@ -144,7 +144,7 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 		Node calculatedCostsNode = xmlImporter.getNode(baseObjectCalculatedCostsNode, Xmpz2XmlConstants.TIME_PERIOD_COSTS);
 		assertNotNull("should have calcualted costs element?", calculatedCostsNode);
 		
-		Node calculatedTotalBudgetCostNode = xmlImporter.getNode(calculatedCostsNode, XmpzXmlConstants.CALCULATED_TOTAL_BUDGET_COST);
+		Node calculatedTotalBudgetCostNode = xmlImporter.getNode(calculatedCostsNode, Xmpz1XmlConstants.CALCULATED_TOTAL_BUDGET_COST);
 		assertEquals("incorrect total budget value for object?", "112", xmlImporter.getSafeNodeContent(calculatedTotalBudgetCostNode));
 	}
 	

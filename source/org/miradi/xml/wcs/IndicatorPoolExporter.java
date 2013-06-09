@@ -58,7 +58,7 @@ public class IndicatorPoolExporter extends BaseObjectPoolExporter
 		writeExpenseAssignmentIds(indicator);
 		writeResourceAssignmentIds(indicator);
 		writeMeasurementIds(indicator.getMeasurementRefs());
-		writeOptionalIds(XmpzXmlConstants.METHOD_IDS, XmpzXmlConstants.METHOD, indicator.getMethodRefs());
+		writeOptionalIds(Xmpz1XmlConstants.METHOD_IDS, Xmpz1XmlConstants.METHOD, indicator.getMethodRefs());
 		writeOptionalThreshold(indicator);
 		writeCodeElementSameAsTag(indicator, Indicator.TAG_RATING_SOURCE, getProject().getQuestion(RatingSourceQuestion.class));
 		writeOptionalElementWithSameTag(indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENTS);
@@ -93,6 +93,6 @@ public class IndicatorPoolExporter extends BaseObjectPoolExporter
 
 	private void writeMeasurementIds(ORefList measurementRefs) throws Exception
 	{
-		writeOptionalIds(XmpzXmlConstants.MEASUREMENT_IDS, XmpzXmlConstants.MEASUREMENT, measurementRefs);
+		writeOptionalIds(Xmpz1XmlConstants.MEASUREMENT_IDS, Xmpz1XmlConstants.MEASUREMENT, measurementRefs);
 	}
 }

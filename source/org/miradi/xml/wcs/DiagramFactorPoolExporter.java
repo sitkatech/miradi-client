@@ -48,7 +48,7 @@ public class DiagramFactorPoolExporter extends BaseObjectPoolExporter
 		writeWrappedFactorId(diagramFactor.getWrappedFactor());
 		writeDiagramFactorLocation(diagramFactor);
 		writeDiagramFactorSize(diagramFactor);
-		getWcsXmlExporter().writeIds(DIAGRAM_FACTOR, GROUP_BOX_CHILDREN_IDS, XmpzXmlConstants.DIAGRAM_FACTOR + ID, diagramFactor.getGroupBoxChildrenRefs());
+		getWcsXmlExporter().writeIds(DIAGRAM_FACTOR, GROUP_BOX_CHILDREN_IDS, Xmpz1XmlConstants.DIAGRAM_FACTOR + ID, diagramFactor.getGroupBoxChildrenRefs());
 		exportTextBoxZOrder(diagramFactor);
 		exportFontStylingElements(diagramFactor);
 	}
@@ -83,7 +83,7 @@ public class DiagramFactorPoolExporter extends BaseObjectPoolExporter
 
 	private void writeDiagramFactorLocation(DiagramFactor diagramFactor) throws Exception
 	{
-		String locationElementName = getWcsXmlExporter().createParentAndChildElementName(DIAGRAM_FACTOR, XmpzXmlConstants.LOCATION);
+		String locationElementName = getWcsXmlExporter().createParentAndChildElementName(DIAGRAM_FACTOR, Xmpz1XmlConstants.LOCATION);
 		getWcsXmlExporter().writeStartElement(locationElementName);
 		Point location = diagramFactor.getLocation();
 		writeDiagramPoint(location);
@@ -92,7 +92,7 @@ public class DiagramFactorPoolExporter extends BaseObjectPoolExporter
 	
 	private void writeDiagramFactorSize(DiagramFactor diagramFactor) throws Exception
 	{
-		String sizeElementName = getWcsXmlExporter().createParentAndChildElementName(DIAGRAM_FACTOR, XmpzXmlConstants.SIZE);
+		String sizeElementName = getWcsXmlExporter().createParentAndChildElementName(DIAGRAM_FACTOR, Xmpz1XmlConstants.SIZE);
 		getWcsXmlExporter().writeStartElement(sizeElementName);
 		getWcsXmlExporter().writeStartElement(DIAGRAM_SIZE_ELEMENT_NAME);
 		getWcsXmlExporter().writeElement(getWriter(), WIDTH_ELEMENT_NAME, diagramFactor.getSize().width);		

@@ -32,7 +32,7 @@ import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.schemas.XenodataSchema;
 import org.miradi.xml.AbstractXmpzObjectImporter;
 import org.miradi.xml.generic.XmlSchemaCreator;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -40,13 +40,13 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 {
 	public ProjectSummaryImporter(Xmpz1XmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.PROJECT_SUMMARY);
+		super(importerToUse, Xmpz1XmlConstants.PROJECT_SUMMARY);
 	}
 	
 	@Override
 	public void importElement() throws Exception
 	{
-		Node projectSumaryNode = getImporter().getNode(getImporter().getRootNode(), XmpzXmlConstants.PROJECT_SUMMARY);
+		Node projectSumaryNode = getImporter().getNode(getImporter().getRootNode(), Xmpz1XmlConstants.PROJECT_SUMMARY);
 				
 		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_NAME);
 		writeShareOutsideOrganizationElement(projectSumaryNode);
@@ -91,7 +91,7 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 			Node externalAppNode = getImporter().getNode(node, EXTERNAL_APP_ELEMENT_NAME);
 			String externalAppThatAssignedId = externalAppNode.getTextContent();
 			
-			Node externalProjectIdNode = getImporter().getNode(node, XmpzXmlConstants.PROJECT_ID);
+			Node externalProjectIdNode = getImporter().getNode(node, Xmpz1XmlConstants.PROJECT_ID);
 			String externalProjectId = externalProjectIdNode.getTextContent();
 			
 			ORef xenodataRef = getProject().createObject(XenodataSchema.getObjectType());

@@ -21,14 +21,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.WwfProjectData;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 
 
 public class WwfProjectDataSchemaElement extends ObjectSchemaElement
 {
 	public WwfProjectDataSchemaElement()
 	{
-		super(XmpzXmlConstants.WWF_PROJECT_DATA);
+		super(Xmpz1XmlConstants.WWF_PROJECT_DATA);
 		
 		createOptionalCodeListField(WwfProjectData.TAG_MANAGING_OFFICES);
 		createOptionalCodeListField(WwfProjectData.TAG_REGIONS);

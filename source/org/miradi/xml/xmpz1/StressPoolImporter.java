@@ -25,14 +25,14 @@ import org.miradi.objects.Stress;
 import org.miradi.questions.StressScopeChoiceQuestion;
 import org.miradi.questions.StressSeverityChoiceQuestion;
 import org.miradi.schemas.StressSchema;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 import org.w3c.dom.Node;
 
 public class StressPoolImporter extends FactorPoolImporter
 {
 	public StressPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.STRESS, StressSchema.getObjectType());
+		super(importerToUse, Xmpz1XmlConstants.STRESS, StressSchema.getObjectType());
 	}
 	
 	@Override

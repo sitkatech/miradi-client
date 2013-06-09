@@ -25,14 +25,14 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Cause;
 import org.miradi.questions.ThreatClassificationQuestion;
 import org.miradi.schemas.CauseSchema;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 import org.w3c.dom.Node;
 
 public class CausePoolImporter extends FactorPoolImporter
 {
 	public CausePoolImporter(Xmpz1XmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.CAUSE, CauseSchema.getObjectType());
+		super(importerToUse, Xmpz1XmlConstants.CAUSE, CauseSchema.getObjectType());
 	}
 	
 	@Override

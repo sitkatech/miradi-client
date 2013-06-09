@@ -47,9 +47,9 @@ public abstract class AbstractTargetPoolExporter extends FactorPoolExporter
 		writeCodeElement(XmlSchemaCreator.TARGET_STATUS_ELEMENT_NAME, getProject().getQuestion(StatusQuestion.class), abstractTarget.getTargetViability());
 		writeElementWithSameTag(baseObject, AbstractTarget.TAG_VIABILITY_MODE);
 		writeOptionalElementWithSameTag(baseObject, AbstractTarget.TAG_CURRENT_STATUS_JUSTIFICATION);
-		writeOptionalIds(XmpzXmlConstants.SUB_TARGET_IDS_ELEMENT, XmpzXmlConstants.SUB_TARGET, abstractTarget.getSubTargetRefs());
-		writeOptionalIds(AbstractTarget.TAG_GOAL_IDS, XmpzXmlConstants.GOAL, abstractTarget.getGoalRefs());
-		writeOptionalIds(AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, XmpzXmlConstants.KEY_ECOLOGICAL_ATTRIBUTE, abstractTarget.getKeyEcologicalAttributeRefs());
+		writeOptionalIds(Xmpz1XmlConstants.SUB_TARGET_IDS_ELEMENT, Xmpz1XmlConstants.SUB_TARGET, abstractTarget.getSubTargetRefs());
+		writeOptionalIds(AbstractTarget.TAG_GOAL_IDS, Xmpz1XmlConstants.GOAL, abstractTarget.getGoalRefs());
+		writeOptionalIds(AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, Xmpz1XmlConstants.KEY_ECOLOGICAL_ATTRIBUTE, abstractTarget.getKeyEcologicalAttributeRefs());
 		writeIndicatorIds(abstractTarget);
 		exportThreatRatingThreatTargetRating(abstractTarget);
 	}

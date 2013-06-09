@@ -21,18 +21,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.DiagramLink;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 
 public class DiagramLinkSchemaElement extends BaseObjectSchemaElementWithLabel
 {
 	public DiagramLinkSchemaElement()
 	{
-		super(XmpzXmlConstants.DIAGRAM_LINK);
+		super(Xmpz1XmlConstants.DIAGRAM_LINK);
 
 		createLinkableFactorIdField(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
 		createLinkableFactorIdField(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
 		createDiagramPointListField(DiagramLink.TAG_BEND_POINTS);
-		createIdListField(XmpzXmlConstants.GROUP_BOX_DIAGRAM_LINK_CHILDREN_ID, XmpzXmlConstants.DIAGRAM_LINK);
+		createIdListField(Xmpz1XmlConstants.GROUP_BOX_DIAGRAM_LINK_CHILDREN_ID, Xmpz1XmlConstants.DIAGRAM_LINK);
 		createCodeField(XmlSchemaCreator.DIAGRAM_LINK_COLOR_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_DIAGRAM_LINK_COLOR);
 		createOptionalBooleanField(DiagramLink.TAG_IS_BIDIRECTIONAL_LINK);
 	}

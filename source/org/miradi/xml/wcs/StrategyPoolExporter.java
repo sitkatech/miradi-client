@@ -43,7 +43,7 @@ public class StrategyPoolExporter extends FactorPoolExporter
 		Strategy strategy = (Strategy) baseObject;
 		
 		writeObjectiveIds(strategy);
-		writeOptionalIds(SORTED_ACTIVITY_IDS, XmpzXmlConstants.ACTIVITY, strategy.getActivityRefs());
+		writeOptionalIds(SORTED_ACTIVITY_IDS, Xmpz1XmlConstants.ACTIVITY, strategy.getActivityRefs());
 		writeOptionalElementWithSameTag(strategy, Strategy.TAG_STATUS);
 		writeCodeElementSameAsTag(strategy, Strategy.TAG_TAXONOMY_CODE, new StrategyTaxonomyQuestion());		
 		writeCodeElementSameAsTag(strategy, Strategy.TAG_IMPACT_RATING, new StrategyImpactQuestion());

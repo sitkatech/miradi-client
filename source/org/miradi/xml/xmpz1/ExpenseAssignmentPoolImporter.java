@@ -25,14 +25,14 @@ import org.miradi.objects.ExpenseAssignment;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FundingSourceSchema;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 import org.w3c.dom.Node;
 
 public class ExpenseAssignmentPoolImporter extends AbstractAssignmentPoolImporter
 {
 	public ExpenseAssignmentPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.EXPENSE_ASSIGNMENT, ExpenseAssignmentSchema.getObjectType());
+		super(importerToUse, Xmpz1XmlConstants.EXPENSE_ASSIGNMENT, ExpenseAssignmentSchema.getObjectType());
 	}
 	
 	@Override
@@ -40,55 +40,55 @@ public class ExpenseAssignmentPoolImporter extends AbstractAssignmentPoolImporte
 	{
 		super.importFields(node, destinationRef);
 		
-		importOptionalRef(node, destinationRef, ExpenseAssignment.TAG_FUNDING_SOURCE_REF, XmpzXmlConstants.FUNDING_SOURCE, FundingSourceSchema.getObjectType());
-		importOptionalRef(node, destinationRef, ExpenseAssignment.TAG_ACCOUNTING_CODE_REF, XmpzXmlConstants.ACCOUNTING_CODE, AccountingCodeSchema.getObjectType());
+		importOptionalRef(node, destinationRef, ExpenseAssignment.TAG_FUNDING_SOURCE_REF, Xmpz1XmlConstants.FUNDING_SOURCE, FundingSourceSchema.getObjectType());
+		importOptionalRef(node, destinationRef, ExpenseAssignment.TAG_ACCOUNTING_CODE_REF, Xmpz1XmlConstants.ACCOUNTING_CODE, AccountingCodeSchema.getObjectType());
 	}
 	
 	@Override
 	protected String getDateUnitsElementName()
 	{
-		return XmpzXmlConstants.DATE_UNITS_EXPENSE;
+		return Xmpz1XmlConstants.DATE_UNITS_EXPENSE;
 	}
 	
 	@Override
 	protected String getDayElementName()
 	{
-		return XmpzXmlConstants.EXPENSES_DAY;
+		return Xmpz1XmlConstants.EXPENSES_DAY;
 	}
 	
 	@Override
 	protected String getMonthElementName()
 	{
-		return XmpzXmlConstants.EXPENSES_MONTH;
+		return Xmpz1XmlConstants.EXPENSES_MONTH;
 	}
 	
 	@Override
 	protected String getQuarterElementName()
 	{
-		return XmpzXmlConstants.EXPENSES_QUARTER;
+		return Xmpz1XmlConstants.EXPENSES_QUARTER;
 	}
 	
 	@Override
 	protected String getYearElementName()
 	{
-		return XmpzXmlConstants.EXPENSES_YEAR;
+		return Xmpz1XmlConstants.EXPENSES_YEAR;
 	}
 	
 	@Override
 	protected String getFullProjectTimespanElementName()
 	{
-		return XmpzXmlConstants.EXPENSES_FULL_PROJECT_TIMESPAN;
+		return Xmpz1XmlConstants.EXPENSES_FULL_PROJECT_TIMESPAN;
 	}
 	
 	@Override
 	protected String getQuantatityElementName()
 	{
-		return XmpzXmlConstants.EXPENSE;
+		return Xmpz1XmlConstants.EXPENSE;
 	}
 
 	@Override
 	protected String getDateUnitElementName()
 	{
-		return XmpzXmlConstants.EXPENSES_DATE_UNIT;
+		return Xmpz1XmlConstants.EXPENSES_DATE_UNIT;
 	}
 }

@@ -23,14 +23,14 @@ package org.miradi.xml.xmpz1;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProgressPercent;
 import org.miradi.schemas.ProgressPercentSchema;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 import org.w3c.dom.Node;
 
 public class ProgressPercentPoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public ProgressPercentPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.PROGRESS_PERCENT, ProgressPercentSchema.getObjectType());
+		super(importerToUse, Xmpz1XmlConstants.PROGRESS_PERCENT, ProgressPercentSchema.getObjectType());
 	}
 	
 	@Override
