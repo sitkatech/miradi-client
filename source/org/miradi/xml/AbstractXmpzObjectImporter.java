@@ -37,19 +37,19 @@ import org.miradi.utils.CodeList;
 import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.wcs.TagToElementNameMap;
 import org.miradi.xml.wcs.XmpzXmlConstants;
-import org.miradi.xml.xmpz1.XmpzXmlImporter;
+import org.miradi.xml.xmpz1.Xmpz1XmlImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 abstract public class AbstractXmpzObjectImporter implements XmpzXmlConstants
 {
-	public AbstractXmpzObjectImporter(XmpzXmlImporter importerToUse, String poolNameToUse)
+	public AbstractXmpzObjectImporter(Xmpz1XmlImporter importerToUse, String poolNameToUse)
 	{
 		importer = importerToUse;
 		poolName = poolNameToUse;
 	}
 	
-	protected XmpzXmlImporter getImporter()
+	protected Xmpz1XmlImporter getImporter()
 	{
 		return importer;
 	}
@@ -235,6 +235,6 @@ abstract public class AbstractXmpzObjectImporter implements XmpzXmlConstants
 	
 	abstract public void importElement() throws Exception;
 	
-	private XmpzXmlImporter importer;
+	private Xmpz1XmlImporter importer;
 	private String poolName;
 }

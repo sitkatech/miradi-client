@@ -28,7 +28,7 @@ import org.w3c.dom.Node;
 
 public class TaskPoolImporter extends FactorPoolImporter
 {
-	public TaskPoolImporter(XmpzXmlImporter importerToUse)
+	public TaskPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.TASK, TaskSchema.getObjectType());
 	}

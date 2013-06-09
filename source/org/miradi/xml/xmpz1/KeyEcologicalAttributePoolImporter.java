@@ -29,7 +29,7 @@ import org.w3c.dom.Node;
 
 public class KeyEcologicalAttributePoolImporter extends	AbstractBaseObjectPoolImporter
 {
-	public KeyEcologicalAttributePoolImporter(XmpzXmlImporter importerToUse)
+	public KeyEcologicalAttributePoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttributeSchema.getObjectType());
 	}

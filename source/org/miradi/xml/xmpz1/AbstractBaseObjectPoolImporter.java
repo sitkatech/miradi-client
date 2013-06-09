@@ -39,7 +39,7 @@ import org.w3c.dom.NodeList;
 
 abstract public class AbstractBaseObjectPoolImporter extends AbstractXmpzObjectImporter
 {
-	public AbstractBaseObjectPoolImporter(XmpzXmlImporter importerToUse, String poolNameToUse, int objectTypeToImportToUse)
+	public AbstractBaseObjectPoolImporter(Xmpz1XmlImporter importerToUse, String poolNameToUse, int objectTypeToImportToUse)
 	{
 		super(importerToUse, poolNameToUse);
 		

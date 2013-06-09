@@ -25,7 +25,7 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class GroupBoxPoolImporter extends FactorPoolImporter
 {
-	public GroupBoxPoolImporter(XmpzXmlImporter importerToUse)
+	public GroupBoxPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.GROUP_BOX, GroupBoxSchema.getObjectType());
 	}

@@ -26,7 +26,7 @@ import org.w3c.dom.Node;
 
 public class AbstractBudgetCategoryPoolImporter extends	AbstractBaseObjectPoolImporter
 {
-	public AbstractBudgetCategoryPoolImporter(XmpzXmlImporter importerToUse, String poolNameToUse, int objectTypeToImportToUse)
+	public AbstractBudgetCategoryPoolImporter(Xmpz1XmlImporter importerToUse, String poolNameToUse, int objectTypeToImportToUse)
 	{
 		super(importerToUse, poolNameToUse, objectTypeToImportToUse);
 	}

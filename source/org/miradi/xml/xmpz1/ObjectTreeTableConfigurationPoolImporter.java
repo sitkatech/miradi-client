@@ -31,7 +31,7 @@ import org.w3c.dom.Node;
 
 public class ObjectTreeTableConfigurationPoolImporter extends AbstractBaseObjectPoolImporter
 {
-	public ObjectTreeTableConfigurationPoolImporter(XmpzXmlImporter importerToUse)
+	public ObjectTreeTableConfigurationPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.OBJECT_TREE_TABLE_CONFIGURATION, ObjectTreeTableConfigurationSchema.getObjectType());
 	}

@@ -31,7 +31,7 @@ import org.w3c.dom.Node;
 
 public class MeasurementPoolImporter extends AbstractBaseObjectPoolImporter
 {
-	public MeasurementPoolImporter(XmpzXmlImporter importerToUse)
+	public MeasurementPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.MEASUREMENT, MeasurementSchema.getObjectType());
 	}

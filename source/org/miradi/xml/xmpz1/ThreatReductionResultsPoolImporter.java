@@ -30,7 +30,7 @@ import org.w3c.dom.Node;
 
 public class ThreatReductionResultsPoolImporter extends FactorPoolImporter
 {
-	public ThreatReductionResultsPoolImporter(XmpzXmlImporter importerToUse)
+	public ThreatReductionResultsPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.THREAT_REDUCTION_RESULTS, ThreatReductionResultSchema.getObjectType());
 	}

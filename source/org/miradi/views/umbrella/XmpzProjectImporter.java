@@ -27,7 +27,7 @@ import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.XmpzFileFilter;
 import org.miradi.xml.AbstractXmlImporter;
 import org.miradi.xml.AbstractXmpzProjectImporter;
-import org.miradi.xml.xmpz1.XmpzXmlImporter;
+import org.miradi.xml.xmpz1.Xmpz1XmlImporter;
 
 public class XmpzProjectImporter extends AbstractXmpzProjectImporter
 {
@@ -39,7 +39,7 @@ public class XmpzProjectImporter extends AbstractXmpzProjectImporter
 	@Override
 	protected AbstractXmlImporter createXmpzXmlImporter(Project projectToFill,	ProgressInterface progressIndicator) throws Exception
 	{
-		return new XmpzXmlImporter(projectToFill, progressIndicator);
+		return new Xmpz1XmlImporter(projectToFill, progressIndicator);
 	}
 
 	@Override

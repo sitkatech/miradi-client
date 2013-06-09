@@ -30,7 +30,7 @@ import org.w3c.dom.Node;
 
 public class StressPoolImporter extends FactorPoolImporter
 {
-	public StressPoolImporter(XmpzXmlImporter importerToUse)
+	public StressPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.STRESS, StressSchema.getObjectType());
 	}

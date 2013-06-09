@@ -32,7 +32,7 @@ import org.w3c.dom.Node;
 
 public class StrategyPoolImporter extends FactorPoolImporter
 {
-	public StrategyPoolImporter(XmpzXmlImporter importerToUse)
+	public StrategyPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.STRATEGY, StrategySchema.getObjectType());
 	}

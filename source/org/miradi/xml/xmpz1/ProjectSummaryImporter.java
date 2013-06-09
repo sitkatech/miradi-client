@@ -38,7 +38,7 @@ import org.w3c.dom.NodeList;
 
 public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 {
-	public ProjectSummaryImporter(XmpzXmlImporter importerToUse)
+	public ProjectSummaryImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.PROJECT_SUMMARY);
 	}

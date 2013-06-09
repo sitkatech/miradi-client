@@ -29,7 +29,7 @@ import org.w3c.dom.Node;
 
 public class ScopeBoxPoolImporter extends FactorPoolImporter
 {
-	public ScopeBoxPoolImporter(XmpzXmlImporter importerToUse)
+	public ScopeBoxPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.SCOPE_BOX, ScopeBoxSchema.getObjectType());
 	}

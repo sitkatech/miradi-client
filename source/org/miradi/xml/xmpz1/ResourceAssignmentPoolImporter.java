@@ -32,7 +32,7 @@ import org.w3c.dom.Node;
 
 public class ResourceAssignmentPoolImporter extends	AbstractAssignmentPoolImporter
 {
-	public ResourceAssignmentPoolImporter(XmpzXmlImporter importerToUse)
+	public ResourceAssignmentPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, RESOURCE_ASSIGNMENT, ResourceAssignmentSchema.getObjectType());
 	}

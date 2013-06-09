@@ -71,7 +71,7 @@ import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.wcs.Xmpz1XmlExporter;
-import org.miradi.xml.xmpz1.XmpzXmlImporter;
+import org.miradi.xml.xmpz1.Xmpz1XmlImporter;
 
 public class TestXmpzXmlImporter extends TestCaseWithProject
 {
@@ -410,7 +410,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		UnicodeXmlWriter firstWriter = createWriter(getProject());
 		
 		ProjectForTesting projectToImportInto = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToImportInto");
-		XmpzXmlImporter xmlImporter = new XmpzXmlImporter(projectToImportInto, new NullProgressMeter());
+		Xmpz1XmlImporter xmlImporter = new Xmpz1XmlImporter(projectToImportInto, new NullProgressMeter());
 		String exportedProjectXml = firstWriter.toString();
 		StringInputStreamWithSeek stringInputputStream = new StringInputStreamWithSeek(exportedProjectXml);
 		try

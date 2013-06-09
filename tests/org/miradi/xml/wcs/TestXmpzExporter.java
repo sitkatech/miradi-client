@@ -63,7 +63,7 @@ import org.miradi.utils.TestStringUtilities;
 import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.xml.TestXmpzXmlImporter;
 import org.miradi.xml.generic.XmlSchemaCreator;
-import org.miradi.xml.xmpz1.XmpzXmlImporter;
+import org.miradi.xml.xmpz1.Xmpz1XmlImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -114,7 +114,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 		
 		validateProject();
 		
-		XmpzXmlImporter xmlImporter = createProjectImporter(getProject());
+		Xmpz1XmlImporter xmlImporter = createProjectImporter(getProject());
 		String pathElements = xmlImporter.generatePath(new String[]                      		                                                            {
 				XmpzXmlConstants.CONSERVATION_PROJECT,
 				XmpzXmlConstants.TNC_PROJECT_DATA, 
@@ -195,7 +195,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 		getProject().setProjectStartDate(2008);
 		ExpenseAssignment expense = getProject().createAndPopulateExpenseAssignment();
 		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_EXPENSE_ASSIGNMENT_REFS, new ORefList(expense));
-		XmpzXmlImporter xmlImporter = createProjectImporter(getProject());
+		Xmpz1XmlImporter xmlImporter = createProjectImporter(getProject());
 		Node timePeriodCostsNode = getTimePeriodCostsNode(xmlImporter); 
 		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_START_DATE, "2008-01-01");
 		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_END_DATE, "2008-12-31");
@@ -217,7 +217,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 		getProject().setProjectEndDate(2008);
 		ResourceAssignment assignment = getProject().createAndPopulateResourceAssignment();
 		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_RESOURCE_ASSIGNMENT_IDS, new IdList(assignment));
-		XmpzXmlImporter xmlImporter = createProjectImporter(getProject());
+		Xmpz1XmlImporter xmlImporter = createProjectImporter(getProject());
 		Node timePeriodCostsNode = getTimePeriodCostsNode(xmlImporter); 
 		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_START_DATE, "2007-01-01");
 		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_END_DATE, "2008-01-01");
@@ -241,7 +241,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 		ORef resourceRef = assignment.getResourceRef();
 		getProject().fillObjectUsingCommand(resourceRef, ProjectResource.TAG_COST_PER_UNIT, "");
 		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_RESOURCE_ASSIGNMENT_IDS, new IdList(assignment));
-		XmpzXmlImporter xmlImporter = createProjectImporter(getProject());
+		Xmpz1XmlImporter xmlImporter = createProjectImporter(getProject());
 		Node timePeriodCostsNode = getTimePeriodCostsNode(xmlImporter); 
 		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_START_DATE, "2007-01-01");
 		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_END_DATE, "2008-01-01");
@@ -257,7 +257,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 		verifyWorkUnitCategoryValue(xmlImporter, assignment, timePeriodCostsNode, ResourceAssignment.TAG_CATEGORY_TWO_REF, XmpzXmlConstants.BUDGET_CATEGORY_TWO_ID);
 	}
 	
-	private void verifyResourceIds(XmpzXmlImporter xmlImporter, Node timePeriodCostsNode, String calculatedWho, ORefList resourceRefs) throws Exception
+	private void verifyResourceIds(Xmpz1XmlImporter xmlImporter, Node timePeriodCostsNode, String calculatedWho, ORefList resourceRefs) throws Exception
 	{
 		XPathExpression expression = xmlImporter.getXPath().compile(xmlImporter.generatePath(new String[]{XmpzXmlConstants.CALCULATED_WHO,}));
 		Node whoNode = (Node) expression.evaluate(timePeriodCostsNode, XPathConstants.NODE);
@@ -287,7 +287,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 		return matchingNodes;
 	}
 
-	private void verifyWorkUnitEntriesNode(XmpzXmlImporter xmlImporter, Node timePeriodCostsNode) throws Exception
+	private void verifyWorkUnitEntriesNode(Xmpz1XmlImporter xmlImporter, Node timePeriodCostsNode) throws Exception
 	{
 		String value = xmlImporter.getPathData(timePeriodCostsNode, new String[] {
 				XmpzXmlConstants.CALCULATED_WORK_UNITS_ENTRIES, 
@@ -299,7 +299,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 		assertEquals("Incorrect work units?", "11", value);		
 	}
 	
-	private void verifyWorkUnitEntryDateUnitNode(XmpzXmlImporter xmlImporter, Node timePeriodCostsNode) throws Exception
+	private void verifyWorkUnitEntryDateUnitNode(Xmpz1XmlImporter xmlImporter, Node timePeriodCostsNode) throws Exception
 	{
 		Node dateUnitNode = xmlImporter.getNode(timePeriodCostsNode, new String[] {
 				XmpzXmlConstants.CALCULATED_WORK_UNITS_ENTRIES, 
@@ -312,7 +312,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 		assertEquals("Incorrect work units?", "Total", xmlImporter.getAttributeValue(dateUnitNode, XmpzXmlConstants.FULL_PROJECT_TIMESPAN));		
 	}
 
-	private void verifyExpenseEntryDateUnitNode(XmpzXmlImporter xmlImporter, Node timePeriodCostsNode) throws Exception
+	private void verifyExpenseEntryDateUnitNode(Xmpz1XmlImporter xmlImporter, Node timePeriodCostsNode) throws Exception
 	{
 		Node dateUnitNode = xmlImporter.getNode(timePeriodCostsNode, new String[] {
 				XmpzXmlConstants.CALCULATED_EXPENSE_ENTRIES, 
@@ -328,7 +328,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 		
 	}
 	
-	private void verifyWorkUnitCategoryValue(XmpzXmlImporter xmlImporter, Assignment assignment, Node timePeriodCostsNode, final String categoryRefTag, final String categoryElementName) throws Exception
+	private void verifyWorkUnitCategoryValue(Xmpz1XmlImporter xmlImporter, Assignment assignment, Node timePeriodCostsNode, final String categoryRefTag, final String categoryElementName) throws Exception
 	{
 		String value = xmlImporter.getPathData(timePeriodCostsNode, new String[] {
 				XmpzXmlConstants.CALCULATED_WORK_UNITS_ENTRIES, 
@@ -340,7 +340,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 		assertEquals("Incorrect category id?", assignment.getRef(categoryRefTag).getObjectId().toString(), value);
 	}
 	
-	private void verifyExpenseCategoryValue(XmpzXmlImporter xmlImporter, Assignment assignment, Node timePeriodCostsNode, final String categoryRefTag, final String categoryElementName) throws Exception
+	private void verifyExpenseCategoryValue(Xmpz1XmlImporter xmlImporter, Assignment assignment, Node timePeriodCostsNode, final String categoryRefTag, final String categoryElementName) throws Exception
 	{
 		String value = xmlImporter.getPathData(timePeriodCostsNode, new String[] {
 				XmpzXmlConstants.CALCULATED_EXPENSE_ENTRIES, 
@@ -352,7 +352,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 		assertEquals("Incorrect category id?", assignment.getRef(categoryRefTag).getObjectId().toString(), value);
 	}
 	
-	private void verifyExpensesEntriesNode(XmpzXmlImporter xmlImporter, Node timePeriodCostsNode) throws Exception
+	private void verifyExpensesEntriesNode(Xmpz1XmlImporter xmlImporter, Node timePeriodCostsNode) throws Exception
 	{
 		String value = xmlImporter.getPathData(timePeriodCostsNode, new String[] {
 				XmpzXmlConstants.CALCULATED_EXPENSE_ENTRIES, 
@@ -364,7 +364,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 		assertEquals("Incorrect expense?", "10", value);		
 	}
 
-	private Node getTimePeriodCostsNode(XmpzXmlImporter xmlImporter)	throws Exception
+	private Node getTimePeriodCostsNode(Xmpz1XmlImporter xmlImporter)	throws Exception
 	{
 		String pathElements = xmlImporter.generatePath(new String[]
 		                                                            {
@@ -378,16 +378,16 @@ public class TestXmpzExporter extends TestCaseWithProject
 		return xmlImporter.getNode(pathElements);
 	}
 
-	private void verifyNodeValue(final XmpzXmlImporter importer, final Node node, final String elementName, final String expectedValue) throws Exception
+	private void verifyNodeValue(final Xmpz1XmlImporter importer, final Node node, final String elementName, final String expectedValue) throws Exception
 	{
 		assertEquals("Wrong node value for element " + elementName + "?", expectedValue, importer.getPathData(node, elementName));
 	}
 	
-	private XmpzXmlImporter createProjectImporter(final ProjectForTesting projectToExport) throws Exception
+	private Xmpz1XmlImporter createProjectImporter(final ProjectForTesting projectToExport) throws Exception
 	{
 		UnicodeXmlWriter writer = TestXmpzXmlImporter.createWriter(projectToExport);		
 		ProjectForTesting projectToImportInto = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToImportInto");
-		XmpzXmlImporter xmlImporter = new XmpzXmlImporter(projectToImportInto, new NullProgressMeter());
+		Xmpz1XmlImporter xmlImporter = new Xmpz1XmlImporter(projectToImportInto, new NullProgressMeter());
 		StringInputStreamWithSeek stringInputputStream = new StringInputStreamWithSeek(writer.toString());
 		xmlImporter.importProject(stringInputputStream);
 		

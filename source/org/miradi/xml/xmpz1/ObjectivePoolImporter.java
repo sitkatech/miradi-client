@@ -25,7 +25,7 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class ObjectivePoolImporter extends DesirePoolImporter
 {
-	public ObjectivePoolImporter(XmpzXmlImporter importerToUse)
+	public ObjectivePoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.OBJECTIVE, ObjectiveSchema.getObjectType());
 	}

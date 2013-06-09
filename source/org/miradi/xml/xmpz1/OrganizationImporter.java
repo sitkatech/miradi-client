@@ -28,7 +28,7 @@ import org.w3c.dom.Node;
 
 public class OrganizationImporter extends AbstractBaseObjectPoolImporter
 {
-	public OrganizationImporter(XmpzXmlImporter importerToUse)
+	public OrganizationImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.ORGANIZATION, OrganizationSchema.getObjectType());
 	}

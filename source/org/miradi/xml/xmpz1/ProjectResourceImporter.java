@@ -30,7 +30,7 @@ import org.w3c.dom.Node;
 
 public class ProjectResourceImporter extends AbstractBaseObjectPoolImporter
 {
-	public ProjectResourceImporter(XmpzXmlImporter importerToUse)
+	public ProjectResourceImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.PROJECT_RESOURCE, ProjectResourceSchema.getObjectType());
 	}

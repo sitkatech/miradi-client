@@ -28,7 +28,7 @@ import org.w3c.dom.Node;
 
 public class FosProjectDataImporter extends AbstractXmpzObjectImporter
 {
-	public FosProjectDataImporter(XmpzXmlImporter importerToUse)
+	public FosProjectDataImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.FOS_PROJECT_DATA);
 	}

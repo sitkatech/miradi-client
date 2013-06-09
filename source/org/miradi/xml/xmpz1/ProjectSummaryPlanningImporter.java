@@ -27,7 +27,7 @@ import org.w3c.dom.Node;
 
 public class ProjectSummaryPlanningImporter extends AbstractXmpzObjectImporter
 {
-	public ProjectSummaryPlanningImporter(XmpzXmlImporter importerToUse)
+	public ProjectSummaryPlanningImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.PROJECT_SUMMARY_PLANNING);
 	}

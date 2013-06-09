@@ -27,7 +27,7 @@ import org.w3c.dom.Node;
 
 public class IntermediateResultPoolImporter extends FactorPoolImporter
 {
-	public IntermediateResultPoolImporter(XmpzXmlImporter importerToUse)
+	public IntermediateResultPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.INTERMEDIATE_RESULTS, IntermediateResultSchema.getObjectType());
 	}

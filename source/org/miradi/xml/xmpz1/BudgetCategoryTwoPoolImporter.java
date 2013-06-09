@@ -24,7 +24,7 @@ import org.miradi.schemas.BudgetCategoryTwoSchema;
 
 public class BudgetCategoryTwoPoolImporter extends AbstractBudgetCategoryPoolImporter
 {
-	public BudgetCategoryTwoPoolImporter(XmpzXmlImporter importerToUse)
+	public BudgetCategoryTwoPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, BUDGET_CATEGORY_TWO, BudgetCategoryTwoSchema.getObjectType());
 	}

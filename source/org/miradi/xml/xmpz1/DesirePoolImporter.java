@@ -32,7 +32,7 @@ import org.w3c.dom.Node;
 
 abstract public class DesirePoolImporter extends AbstractBaseObjectPoolImporter
 {
-	public DesirePoolImporter(XmpzXmlImporter importerToUse, String poolNameToUse, int objectTypeToImportToUse)
+	public DesirePoolImporter(Xmpz1XmlImporter importerToUse, String poolNameToUse, int objectTypeToImportToUse)
 	{
 		super(importerToUse, poolNameToUse, objectTypeToImportToUse);
 	}

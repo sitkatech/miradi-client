@@ -30,7 +30,7 @@ import org.w3c.dom.Node;
 
 public class CausePoolImporter extends FactorPoolImporter
 {
-	public CausePoolImporter(XmpzXmlImporter importerToUse)
+	public CausePoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.CAUSE, CauseSchema.getObjectType());
 	}
