@@ -37,7 +37,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.wcs.TagToElementNameMap;
 import org.miradi.xml.wcs.XmpzXmlConstants;
-import org.miradi.xml.xmpz.XmpzXmlImporter;
+import org.miradi.xml.xmpz1.XmpzXmlImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
