@@ -344,16 +344,16 @@ public class HtmlUtilities
 		return htmlText.replaceAll(regex, StringUtilities.EMPTY_STRING);
 	}
 	
-	public static String fixAnchorElementsSafely(String htmlText, String[] allowedHtmlTags)
+	public static String fixAnchorElementsSafely(String xmlText, String[] allowedHtmlTags)
 	{
 		try
 		{
-			if(hasNoTags(htmlText))
-				return htmlText;
+			if(hasNoTags(xmlText))
+				return xmlText;
 			
-			htmlText = wrapWithTag(htmlText, "xml");
+			xmlText = wrapWithTag(xmlText, "xml");
 			
-			final String fixAnchorElements = fixAnchorElements(htmlText);
+			final String fixAnchorElements = fixAnchorElements(xmlText);
 			
 			return HtmlUtilities.removeAllExcept(fixAnchorElements, allowedHtmlTags);
 		}
