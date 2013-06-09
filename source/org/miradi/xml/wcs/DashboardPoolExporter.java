@@ -32,7 +32,7 @@ import org.miradi.utils.CodeList;
 
 public class DashboardPoolExporter extends BaseObjectPoolExporter
 {
-	public DashboardPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
+	public DashboardPoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, DASHBOARD, DashboardSchema.getObjectType());
 	}

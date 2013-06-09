@@ -24,7 +24,7 @@ import org.miradi.schemas.ObjectiveSchema;
 
 public class ObjectivePoolExporter extends DesirePoolExporter
 {
-	public ObjectivePoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
+	public ObjectivePoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, OBJECTIVE, ObjectiveSchema.getObjectType());
 	}

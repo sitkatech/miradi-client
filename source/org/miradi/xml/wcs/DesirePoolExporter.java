@@ -29,7 +29,7 @@ import org.miradi.schemas.TaskSchema;
 
 abstract public class DesirePoolExporter extends BaseObjectPoolExporter
 {
-	public DesirePoolExporter(XmpzXmlExporter wcsXmlExporterToUse, String containerNameToUse, int objectTypeToUse)
+	public DesirePoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse, String containerNameToUse, int objectTypeToUse)
 	{
 		super(wcsXmlExporterToUse, containerNameToUse, objectTypeToUse);
 	}

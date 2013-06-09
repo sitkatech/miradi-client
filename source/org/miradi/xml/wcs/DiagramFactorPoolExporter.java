@@ -34,7 +34,7 @@ import org.miradi.xml.generic.LegacyDiagramFactorFontStyleQuestion;
 
 public class DiagramFactorPoolExporter extends BaseObjectPoolExporter
 {
-	public DiagramFactorPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
+	public DiagramFactorPoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, DIAGRAM_FACTOR, DiagramFactorSchema.getObjectType());
 	}

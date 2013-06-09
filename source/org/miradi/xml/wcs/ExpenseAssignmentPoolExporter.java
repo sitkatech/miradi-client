@@ -27,7 +27,7 @@ import org.miradi.schemas.ExpenseAssignmentSchema;
 
 public class ExpenseAssignmentPoolExporter extends AbstractAssignmentPoolExporter
 {
-	public ExpenseAssignmentPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
+	public ExpenseAssignmentPoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, EXPENSE_ASSIGNMENT, ExpenseAssignmentSchema.getObjectType());
 	}

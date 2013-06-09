@@ -28,7 +28,7 @@ import org.miradi.xml.generic.XmlSchemaCreator;
 
 public class ResourceAssignmentPoolExporter extends AbstractAssignmentPoolExporter
 {
-	public ResourceAssignmentPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
+	public ResourceAssignmentPoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, RESOURCE_ASSIGNMENT, ResourceAssignmentSchema.getObjectType());
 	}

@@ -24,7 +24,7 @@ import org.miradi.schemas.GoalSchema;
 
 public class GoalPoolExporter extends DesirePoolExporter
 {
-	public GoalPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
+	public GoalPoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, GOAL, GoalSchema.getObjectType());
 	}	

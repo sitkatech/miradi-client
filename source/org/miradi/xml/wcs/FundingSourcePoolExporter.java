@@ -24,7 +24,7 @@ import org.miradi.schemas.FundingSourceSchema;
 
 public class FundingSourcePoolExporter extends AbstractBudgetCategoryPoolExporter
 {
-	public FundingSourcePoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
+	public FundingSourcePoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, FUNDING_SOURCE, FundingSourceSchema.getObjectType());
 	}

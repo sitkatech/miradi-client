@@ -24,7 +24,7 @@ import org.miradi.schemas.ResultsChainDiagramSchema;
 
 public class ResultsChainPoolExporter extends DiagramObjectPoolExporter
 {
-	public ResultsChainPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
+	public ResultsChainPoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, RESULTS_CHAIN, ResultsChainDiagramSchema.getObjectType());
 	}

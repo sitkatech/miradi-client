@@ -30,7 +30,7 @@ import org.miradi.schemas.StrategySchema;
 
 public class StrategyPoolExporter extends FactorPoolExporter
 {
-	public StrategyPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
+	public StrategyPoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, STRATEGY, StrategySchema.getObjectType());
 	}

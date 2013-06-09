@@ -53,9 +53,9 @@ import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.generic.XmlSchemaCreator;
 
-public class XmpzXmlExporter extends XmlExporter implements XmpzXmlConstants
+public class Xmpz1XmlExporter extends XmlExporter implements XmpzXmlConstants
 {
-	public XmpzXmlExporter(Project projectToUse)
+	public Xmpz1XmlExporter(Project projectToUse)
 	{
 		super(projectToUse);
 	}

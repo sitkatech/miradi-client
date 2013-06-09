@@ -24,7 +24,7 @@ import org.miradi.schemas.OtherNotableSpeciesSchema;
 
 public class OtherNotableSpeciesPoolExporter extends BaseObjectPoolExporter
 {
-	public OtherNotableSpeciesPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
+	public OtherNotableSpeciesPoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, OTHER_NOTABLE_SPECIES, OtherNotableSpeciesSchema.getObjectType());
 	}

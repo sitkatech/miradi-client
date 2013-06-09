@@ -24,7 +24,7 @@ import org.miradi.schemas.AccountingCodeSchema;
 
 public class AccountingCodePoolExporter extends AbstractBudgetCategoryPoolExporter
 {
-	public AccountingCodePoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
+	public AccountingCodePoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, ACCOUNTING_CODE, AccountingCodeSchema.getObjectType());
 	}

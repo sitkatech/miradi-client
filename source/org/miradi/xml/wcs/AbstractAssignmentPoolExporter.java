@@ -31,7 +31,7 @@ import org.miradi.utils.DoubleUtilities;
 
 abstract public class AbstractAssignmentPoolExporter extends BaseObjectPoolExporter
 {
-	public AbstractAssignmentPoolExporter(XmpzXmlExporter wcsXmlExporterToUse, String containerNameToUse, int objectTypeToUse)
+	public AbstractAssignmentPoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse, String containerNameToUse, int objectTypeToUse)
 	{
 		super(wcsXmlExporterToUse, containerNameToUse, objectTypeToUse);
 	}

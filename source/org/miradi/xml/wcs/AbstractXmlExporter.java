@@ -24,7 +24,7 @@ import org.miradi.project.Project;
 
 abstract public class AbstractXmlExporter implements XmpzXmlConstants
 {
-	public AbstractXmlExporter(XmpzXmlExporter wcsXmlExporterToUse)
+	public AbstractXmlExporter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		wcsXmlExporter = wcsXmlExporterToUse;
 	}
@@ -34,12 +34,12 @@ abstract public class AbstractXmlExporter implements XmpzXmlConstants
 		return wcsXmlExporter.getProject();
 	}
 	
-	protected XmpzXmlExporter getWcsXmlExporter()
+	protected Xmpz1XmlExporter getWcsXmlExporter()
 	{
 		return wcsXmlExporter;
 	}
 	
 	abstract public void exportXml() throws Exception;
 	
-	private XmpzXmlExporter wcsXmlExporter;
+	private Xmpz1XmlExporter wcsXmlExporter;
 }

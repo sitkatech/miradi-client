@@ -29,7 +29,7 @@ import org.miradi.xml.generic.XmlSchemaCreator;
 
 public class ScopeBoxPoolExporter extends FactorPoolExporter
 {
-	public ScopeBoxPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
+	public ScopeBoxPoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, SCOPE_BOX, ScopeBoxSchema.getObjectType());
 	}

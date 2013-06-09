@@ -29,7 +29,7 @@ import org.miradi.schemas.StressSchema;
 
 public class StressPoolExporter extends FactorPoolExporter
 {
-	public StressPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
+	public StressPoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, STRESS, StressSchema.getObjectType());
 	}

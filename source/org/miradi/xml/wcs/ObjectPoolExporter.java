@@ -30,7 +30,7 @@ import org.miradi.questions.ChoiceQuestion;
 
 abstract public class ObjectPoolExporter extends AbstractXmlExporter
 {
-	public ObjectPoolExporter(XmpzXmlExporter wcsXmlExporterToUse, String poolNameToUse, int objectTypeToUse)
+	public ObjectPoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse, String poolNameToUse, int objectTypeToUse)
 	{
 		super(wcsXmlExporterToUse);
 		

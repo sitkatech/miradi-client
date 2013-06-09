@@ -29,7 +29,7 @@ import org.miradi.utils.XmlUtilities2;
 
 public class ExtraDataExporter extends AbstractXmlExporter
 {
-	public ExtraDataExporter(XmpzXmlExporter wcsXmlExporterToUse)
+	public ExtraDataExporter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse);
 	}

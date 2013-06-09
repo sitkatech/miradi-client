@@ -27,7 +27,7 @@ import org.miradi.schemas.SubTargetSchema;
 
 public class SubTargetPoolExporter extends BaseObjectPoolExporter
 {
-	public SubTargetPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
+	public SubTargetPoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, SUB_TARGET, SubTargetSchema.getObjectType());
 	}

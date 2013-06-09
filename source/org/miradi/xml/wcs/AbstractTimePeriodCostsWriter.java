@@ -32,7 +32,7 @@ import org.miradi.utils.DoubleUtilities;
 
 abstract public class AbstractTimePeriodCostsWriter implements XmpzXmlConstants
 {
-	public AbstractTimePeriodCostsWriter(XmpzXmlExporter wcsXmlExporterToUse)
+	public AbstractTimePeriodCostsWriter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		wcsXmlExporter = wcsXmlExporterToUse;
 	}
@@ -42,7 +42,7 @@ abstract public class AbstractTimePeriodCostsWriter implements XmpzXmlConstants
 		return getWcsXmlExporter().getWriter();
 	}
 	
-	protected XmpzXmlExporter getWcsXmlExporter()
+	protected Xmpz1XmlExporter getWcsXmlExporter()
 	{
 		return wcsXmlExporter;
 	}
@@ -176,5 +176,5 @@ abstract public class AbstractTimePeriodCostsWriter implements XmpzXmlConstants
 
 	abstract protected String getEntryElementName();
 	
-	private XmpzXmlExporter wcsXmlExporter;
+	private Xmpz1XmlExporter wcsXmlExporter;
 }

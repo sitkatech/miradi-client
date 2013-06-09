@@ -27,7 +27,7 @@ import org.miradi.schemas.TaskSchema;
 
 abstract public class AbstractTaskPoolExporter extends FactorPoolExporter
 {
-	public AbstractTaskPoolExporter(XmpzXmlExporter wcsXmlExporterToUse, String containerNameToUse)
+	public AbstractTaskPoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse, String containerNameToUse)
 	{
 		super(wcsXmlExporterToUse, containerNameToUse, TaskSchema.getObjectType());
 	}

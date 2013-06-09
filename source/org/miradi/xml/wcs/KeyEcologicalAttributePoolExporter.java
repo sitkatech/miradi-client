@@ -28,7 +28,7 @@ import org.miradi.schemas.KeyEcologicalAttributeSchema;
 
 public class KeyEcologicalAttributePoolExporter extends BaseObjectPoolExporter
 {
-	public KeyEcologicalAttributePoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
+	public KeyEcologicalAttributePoolExporter(Xmpz1XmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttributeSchema.getObjectType());
 	}
