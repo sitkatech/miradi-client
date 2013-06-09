@@ -24,14 +24,14 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Target;
 import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 import org.w3c.dom.Node;
 
 public class BiodiversityTargetPoolImporter extends AbstractTargetPoolImporter
 {
 	public BiodiversityTargetPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.BIODIVERSITY_TARGET, TargetSchema.getObjectType());
+		super(importerToUse, Xmpz1XmlConstants.BIODIVERSITY_TARGET, TargetSchema.getObjectType());
 	}
 	
 	@Override
@@ -39,7 +39,7 @@ public class BiodiversityTargetPoolImporter extends AbstractTargetPoolImporter
 	{
 		super.importFields(node, destinationRef);
 		
-		importRefs(node, XmpzXmlConstants.STRESS_IDS_ELEMENT, destinationRef, Target.TAG_STRESS_REFS, StressSchema.getObjectType(), XmpzXmlConstants.STRESS);
+		importRefs(node, Xmpz1XmlConstants.STRESS_IDS_ELEMENT, destinationRef, Target.TAG_STRESS_REFS, StressSchema.getObjectType(), Xmpz1XmlConstants.STRESS);
 		importCodeListField(node, destinationRef, Target.TAG_HABITAT_ASSOCIATION);
 		importField(node, destinationRef, Target.TAG_SPECIES_LATIN_NAME);
 	}

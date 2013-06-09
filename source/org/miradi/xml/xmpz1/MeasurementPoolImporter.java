@@ -26,14 +26,14 @@ import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TrendQuestion;
 import org.miradi.schemas.MeasurementSchema;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 import org.w3c.dom.Node;
 
 public class MeasurementPoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public MeasurementPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.MEASUREMENT, MeasurementSchema.getObjectType());
+		super(importerToUse, Xmpz1XmlConstants.MEASUREMENT, MeasurementSchema.getObjectType());
 	}
 	
 	@Override

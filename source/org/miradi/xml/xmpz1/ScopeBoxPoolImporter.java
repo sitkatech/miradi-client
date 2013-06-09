@@ -24,14 +24,14 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ScopeBox;
 import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.xml.generic.LegacyScopeBoxTypeQuestion;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 import org.w3c.dom.Node;
 
 public class ScopeBoxPoolImporter extends FactorPoolImporter
 {
 	public ScopeBoxPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.SCOPE_BOX, ScopeBoxSchema.getObjectType());
+		super(importerToUse, Xmpz1XmlConstants.SCOPE_BOX, ScopeBoxSchema.getObjectType());
 	}
 	
 	@Override

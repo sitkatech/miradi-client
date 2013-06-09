@@ -37,10 +37,10 @@ import org.miradi.xml.AbstractXmpzObjectImporter;
 import org.miradi.xml.MiradiXmlValidator;
 import org.miradi.xml.wcs.TagToElementNameMap;
 import org.miradi.xml.wcs.WcsMiradiXmlValidator;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 import org.w3c.dom.Node;
 
-public class Xmpz1XmlImporter extends AbstractXmlImporter implements XmpzXmlConstants
+public class Xmpz1XmlImporter extends AbstractXmlImporter implements Xmpz1XmlConstants
 {
 	public Xmpz1XmlImporter(Project projectToFill, ProgressInterface progressIndicatorToUse) throws Exception
 	{
@@ -130,7 +130,7 @@ public class Xmpz1XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 
 	private void importDeletedOrphanText() throws Exception
 	{
-		Node node = getNode(getRootNode(), XmpzXmlConstants.DELETED_ORPHANS_ELEMENT_NAME);
+		Node node = getNode(getRootNode(), Xmpz1XmlConstants.DELETED_ORPHANS_ELEMENT_NAME);
 		String nodeContent = getSafeNodeContent(node);
 		nodeContent = XmlUtilities2.getXmlEncoded(nodeContent);
 		nodeContent = HtmlUtilities.replaceNonHtmlNewlines(nodeContent);

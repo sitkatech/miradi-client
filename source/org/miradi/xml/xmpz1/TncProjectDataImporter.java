@@ -23,14 +23,14 @@ package org.miradi.xml.xmpz1;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
 import org.miradi.xml.AbstractXmpzObjectImporter;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 import org.w3c.dom.Node;
 
 public class TncProjectDataImporter extends AbstractXmpzObjectImporter
 {
 	public TncProjectDataImporter(Xmpz1XmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.TNC_PROJECT_DATA);
+		super(importerToUse, Xmpz1XmlConstants.TNC_PROJECT_DATA);
 	}
 
 	@Override

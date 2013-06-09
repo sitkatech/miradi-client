@@ -46,7 +46,7 @@ import org.miradi.project.Project;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.XmlUtilities2;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
@@ -148,8 +148,8 @@ abstract public class AbstractXmlImporter
 	
 	protected Point extractPointFromNode(Node pointNode) throws Exception
 	{
-		Node xNode = getNode(pointNode, XmpzXmlConstants.X_ELEMENT_NAME);
-		Node yNode = getNode(pointNode, XmpzXmlConstants.Y_ELEMENT_NAME);
+		Node xNode = getNode(pointNode, Xmpz1XmlConstants.X_ELEMENT_NAME);
+		Node yNode = getNode(pointNode, Xmpz1XmlConstants.Y_ELEMENT_NAME);
 		int x = extractNodeTextContentAsInt(xNode);
 		int y = extractNodeTextContentAsInt(yNode);
 		

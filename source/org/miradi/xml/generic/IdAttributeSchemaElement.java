@@ -22,13 +22,13 @@ package org.miradi.xml.generic;
 
 import java.io.IOException;
 
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 
 public class IdAttributeSchemaElement extends AttributeSchemaElement
 {
 	public IdAttributeSchemaElement()
 	{
-		super(XmpzXmlConstants.ID);
+		super(Xmpz1XmlConstants.ID);
 	}
 
 	@Override

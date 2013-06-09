@@ -26,7 +26,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.TaggedObjectSetSchema;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 import org.w3c.dom.Node;
 
 abstract public class AbstractDiagramPoolImporter extends AbstractBaseObjectPoolImporter
@@ -45,8 +45,8 @@ abstract public class AbstractDiagramPoolImporter extends AbstractBaseObjectPool
 		importField(node, destinationRef, ConceptualModelDiagram.TAG_DETAIL);
 		importField(node, destinationRef, ConceptualModelDiagram.TAG_ZOOM_SCALE);
 		importCodeListField(node, destinationRef, DiagramObject.TAG_HIDDEN_TYPES);
-		importIds(node, destinationRef, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, DiagramFactorSchema.getObjectType(), XmpzXmlConstants.DIAGRAM_FACTOR);
-		importIds(node, destinationRef, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, DiagramLinkSchema.getObjectType(), XmpzXmlConstants.DIAGRAM_LINK);		
-		importRefs(node, XmpzXmlConstants.SELECTED_TAGGED_OBJECT_SET_IDS, destinationRef, DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, TaggedObjectSetSchema.getObjectType(), XmpzXmlConstants.TAGGED_OBJECT_SET_ELEMENT_NAME);
+		importIds(node, destinationRef, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, DiagramFactorSchema.getObjectType(), Xmpz1XmlConstants.DIAGRAM_FACTOR);
+		importIds(node, destinationRef, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, DiagramLinkSchema.getObjectType(), Xmpz1XmlConstants.DIAGRAM_LINK);		
+		importRefs(node, Xmpz1XmlConstants.SELECTED_TAGGED_OBJECT_SET_IDS, destinationRef, DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, TaggedObjectSetSchema.getObjectType(), Xmpz1XmlConstants.TAGGED_OBJECT_SET_ELEMENT_NAME);
 	}
 }

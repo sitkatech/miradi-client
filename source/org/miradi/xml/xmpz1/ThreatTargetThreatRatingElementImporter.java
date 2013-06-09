@@ -32,7 +32,7 @@ import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.xml.AbstractXmpzObjectImporter;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -40,13 +40,13 @@ public class ThreatTargetThreatRatingElementImporter extends AbstractXmpzObjectI
 {
 	public ThreatTargetThreatRatingElementImporter(Xmpz1XmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.THREAT_RATING);
+		super(importerToUse, Xmpz1XmlConstants.THREAT_RATING);
 	}
 
 	@Override
 	public void importElement() throws Exception
 	{
-		Node threatRatingPoolNode = getImporter().getNode(getImporter().getRootNode(), getPoolName() + XmpzXmlConstants.POOL_ELEMENT_TAG);
+		Node threatRatingPoolNode = getImporter().getNode(getImporter().getRootNode(), getPoolName() + Xmpz1XmlConstants.POOL_ELEMENT_TAG);
 		NodeList threatRatingNodes = getImporter().getNodes(threatRatingPoolNode, new String[]{THREAT_RATING, });
 		for (int index = 0; index < threatRatingNodes.getLength(); ++index)
 		{

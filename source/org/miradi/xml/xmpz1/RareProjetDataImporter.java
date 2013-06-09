@@ -22,14 +22,14 @@ package org.miradi.xml.xmpz1;
 
 import org.miradi.objects.RareProjectData;
 import org.miradi.xml.AbstractXmpzObjectImporter;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 import org.w3c.dom.Node;
 
 public class RareProjetDataImporter extends AbstractXmpzObjectImporter
 {
 	public RareProjetDataImporter(Xmpz1XmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.RARE_PROJECT_DATA);
+		super(importerToUse, Xmpz1XmlConstants.RARE_PROJECT_DATA);
 	}
 
 	@Override

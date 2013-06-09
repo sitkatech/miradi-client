@@ -23,14 +23,14 @@ package org.miradi.xml.xmpz1;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.SubTarget;
 import org.miradi.schemas.SubTargetSchema;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 import org.w3c.dom.Node;
 
 public class SubTargetPoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public SubTargetPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.SUB_TARGET, SubTargetSchema.getObjectType());
+		super(importerToUse, Xmpz1XmlConstants.SUB_TARGET, SubTargetSchema.getObjectType());
 	}
 	
 	@Override

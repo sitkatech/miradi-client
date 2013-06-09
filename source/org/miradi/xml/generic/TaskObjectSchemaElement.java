@@ -20,13 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 
 
 public class TaskObjectSchemaElement extends AbstractTaskObjectSchemaElement
 {
 	public TaskObjectSchemaElement()
 	{
-		super(XmpzXmlConstants.TASK);
+		super(Xmpz1XmlConstants.TASK);
 	}
 }

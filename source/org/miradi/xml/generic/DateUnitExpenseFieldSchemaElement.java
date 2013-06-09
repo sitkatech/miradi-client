@@ -22,7 +22,7 @@ package org.miradi.xml.generic;
 
 import java.io.IOException;
 
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 
 public class DateUnitExpenseFieldSchemaElement extends FieldSchemaElement
 {
@@ -36,6 +36,6 @@ public class DateUnitExpenseFieldSchemaElement extends FieldSchemaElement
 	{
 		super.output(writer);
 		
-		writer.write("{ " + XmpzXmlConstants.DATE_UNITS_EXPENSE + ".element* }?");
+		writer.write("{ " + Xmpz1XmlConstants.DATE_UNITS_EXPENSE + ".element* }?");
 	}
 }

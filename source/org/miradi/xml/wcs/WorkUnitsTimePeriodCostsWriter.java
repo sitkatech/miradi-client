@@ -41,13 +41,13 @@ public class WorkUnitsTimePeriodCostsWriter extends AbstractTimePeriodCostsWrite
 	@Override
 	protected String getDateUnitElementName()
 	{
-		return XmpzXmlConstants.WORK_UNITS_DATE_UNIT;
+		return Xmpz1XmlConstants.WORK_UNITS_DATE_UNIT;
 	}
 
 	@Override
 	protected String getQuantityDateUnitElementName()
 	{
-		return XmpzXmlConstants.DATE_UNIT_WORK_UNITS;
+		return Xmpz1XmlConstants.DATE_UNIT_WORK_UNITS;
 	}
 	
 	@Override
@@ -83,7 +83,7 @@ public class WorkUnitsTimePeriodCostsWriter extends AbstractTimePeriodCostsWrite
 	@Override
 	protected String getQuantatityElementName()
 	{
-		return XmpzXmlConstants.WORK_UNITS;
+		return Xmpz1XmlConstants.WORK_UNITS;
 	}
 
 	@Override

@@ -21,12 +21,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz1;
 
 import org.miradi.schemas.ResultsChainDiagramSchema;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 
 public class ResultsChainDiagramPoolImporter extends AbstractDiagramPoolImporter
 {
 	public ResultsChainDiagramPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.RESULTS_CHAIN, ResultsChainDiagramSchema.getObjectType());
+		super(importerToUse, Xmpz1XmlConstants.RESULTS_CHAIN, ResultsChainDiagramSchema.getObjectType());
 	}
 }

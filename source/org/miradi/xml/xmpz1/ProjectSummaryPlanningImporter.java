@@ -22,20 +22,20 @@ package org.miradi.xml.xmpz1;
 
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.xml.AbstractXmpzObjectImporter;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 import org.w3c.dom.Node;
 
 public class ProjectSummaryPlanningImporter extends AbstractXmpzObjectImporter
 {
 	public ProjectSummaryPlanningImporter(Xmpz1XmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.PROJECT_SUMMARY_PLANNING);
+		super(importerToUse, Xmpz1XmlConstants.PROJECT_SUMMARY_PLANNING);
 	}
 
 	@Override
 	public void importElement() throws Exception
 	{
-		Node projectSummaryPlanningNode = getImporter().getNode(getImporter().getRootNode(), XmpzXmlConstants.PROJECT_SUMMARY_PLANNING);
+		Node projectSummaryPlanningNode = getImporter().getNode(getImporter().getRootNode(), Xmpz1XmlConstants.PROJECT_SUMMARY_PLANNING);
 		
 		importField(projectSummaryPlanningNode, getMetadataRef(), ProjectMetadata.TAG_START_DATE);
 		importField(projectSummaryPlanningNode, getMetadataRef(), ProjectMetadata.TAG_EXPECTED_END_DATE);

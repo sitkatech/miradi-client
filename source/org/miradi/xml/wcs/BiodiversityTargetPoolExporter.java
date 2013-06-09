@@ -39,7 +39,7 @@ public class BiodiversityTargetPoolExporter extends AbstractTargetPoolExporter
 		super.exportFields(writer, baseObject);
 		
 		Target target = (Target) baseObject;
-		writeOptionalIds(STRESS_IDS_ELEMENT, XmpzXmlConstants.STRESS, target.getStressRefs());
+		writeOptionalIds(STRESS_IDS_ELEMENT, Xmpz1XmlConstants.STRESS, target.getStressRefs());
 		writeOptionalCodeListElement(XmlSchemaCreator.BIODIVERSITY_TARGET_HABITAT_ASSOCIATION_ELEMENT_NAME, baseObject, Target.TAG_HABITAT_ASSOCIATION);
 		writeOptionalElementWithSameTag(baseObject, Target.TAG_SPECIES_LATIN_NAME);
 	}

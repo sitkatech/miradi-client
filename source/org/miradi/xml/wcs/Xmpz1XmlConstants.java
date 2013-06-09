@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
-public interface XmpzXmlConstants
+public interface Xmpz1XmlConstants
 {
 	public static final String RAW_PREFIX = "miradi";
 	public static final String PREFIX = RAW_PREFIX + ":";

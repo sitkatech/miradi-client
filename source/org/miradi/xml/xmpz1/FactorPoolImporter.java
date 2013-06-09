@@ -23,7 +23,7 @@ package org.miradi.xml.xmpz1;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Factor;
 import org.miradi.schemas.ObjectiveSchema;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 import org.w3c.dom.Node;
 
 abstract public class FactorPoolImporter extends AbstractBaseObjectPoolImporter
@@ -50,6 +50,6 @@ abstract public class FactorPoolImporter extends AbstractBaseObjectPoolImporter
 	
 	protected void importObjectiveIds(Node node, ORef destinationRef)	throws Exception
 	{
-		importIds(node, destinationRef, Factor.TAG_OBJECTIVE_IDS, ObjectiveSchema.getObjectType(), XmpzXmlConstants.OBJECTIVE);
+		importIds(node, destinationRef, Factor.TAG_OBJECTIVE_IDS, ObjectiveSchema.getObjectType(), Xmpz1XmlConstants.OBJECTIVE);
 	}
 }

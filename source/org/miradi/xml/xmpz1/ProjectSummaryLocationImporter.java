@@ -22,20 +22,20 @@ package org.miradi.xml.xmpz1;
 
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.xml.AbstractXmpzObjectImporter;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 import org.w3c.dom.Node;
 
 public class ProjectSummaryLocationImporter extends AbstractXmpzObjectImporter
 {
 	public ProjectSummaryLocationImporter(Xmpz1XmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.PROJECT_SUMMARY_LOCATION);
+		super(importerToUse, Xmpz1XmlConstants.PROJECT_SUMMARY_LOCATION);
 	}
 
 	@Override
 	public void importElement() throws Exception
 	{
-		Node projectSummaryLocationNode = getImporter().getNode(getImporter().getRootNode(), XmpzXmlConstants.PROJECT_SUMMARY_LOCATION);
+		Node projectSummaryLocationNode = getImporter().getNode(getImporter().getRootNode(), Xmpz1XmlConstants.PROJECT_SUMMARY_LOCATION);
 		
 		importGeospatialLocationField(projectSummaryLocationNode);		
 		importCodeListField(projectSummaryLocationNode, getMetadataRef(), ProjectMetadata.TAG_COUNTRIES);
@@ -49,15 +49,15 @@ public class ProjectSummaryLocationImporter extends AbstractXmpzObjectImporter
 	
 	private void importGeospatialLocationField(Node projectSummaryLocationNode) throws Exception
 	{
-		Node locationNode = getImporter().getNode(projectSummaryLocationNode, XmpzXmlConstants.PROJECT_SUMMARY_LOCATION + XmpzXmlConstants.PROJECT_LOCATION);
+		Node locationNode = getImporter().getNode(projectSummaryLocationNode, Xmpz1XmlConstants.PROJECT_SUMMARY_LOCATION + Xmpz1XmlConstants.PROJECT_LOCATION);
 		if(locationNode == null)
 			return;
 		
-		Node gespatialLocationNode = getImporter().getNode(locationNode, XmpzXmlConstants.GEOSPATIAL_LOCATION);
+		Node gespatialLocationNode = getImporter().getNode(locationNode, Xmpz1XmlConstants.GEOSPATIAL_LOCATION);
 		if(gespatialLocationNode == null)
 			return;
 		
-		importField(gespatialLocationNode, XmpzXmlConstants.LATITUDE, getMetadataRef(), ProjectMetadata.TAG_PROJECT_LATITUDE);
-		importField(gespatialLocationNode, XmpzXmlConstants.LONGITUDE, getMetadataRef(), ProjectMetadata.TAG_PROJECT_LONGITUDE);
+		importField(gespatialLocationNode, Xmpz1XmlConstants.LATITUDE, getMetadataRef(), ProjectMetadata.TAG_PROJECT_LATITUDE);
+		importField(gespatialLocationNode, Xmpz1XmlConstants.LONGITUDE, getMetadataRef(), ProjectMetadata.TAG_PROJECT_LONGITUDE);
 	}
 }

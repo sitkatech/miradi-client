@@ -36,12 +36,12 @@ import org.miradi.schemas.WwfProjectDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.wcs.TagToElementNameMap;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 import org.miradi.xml.xmpz1.Xmpz1XmlImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-abstract public class AbstractXmpzObjectImporter implements XmpzXmlConstants
+abstract public class AbstractXmpzObjectImporter implements Xmpz1XmlConstants
 {
 	public AbstractXmpzObjectImporter(Xmpz1XmlImporter importerToUse, String poolNameToUse)
 	{
@@ -123,7 +123,7 @@ abstract public class AbstractXmpzObjectImporter implements XmpzXmlConstants
 	{
 		TagToElementNameMap map = new TagToElementNameMap();
 		String elementName = map.findElementName(elementContainerName, destinationTag);
-		String containerElementName = elementContainerName + elementName + XmpzXmlConstants.CONTAINER_ELEMENT_TAG;
+		String containerElementName = elementContainerName + elementName + Xmpz1XmlConstants.CONTAINER_ELEMENT_TAG;
 		CodeList codesToImport = getCodeList(node, containerElementName);
 		
 		getImporter().setData(destinationRef, destinationTag, codesToImport.toString());
@@ -157,7 +157,7 @@ abstract public class AbstractXmpzObjectImporter implements XmpzXmlConstants
 
 	private ORef getRefToImport(Node node, String idElementName, int objectType) throws Exception
 	{
-		String element = getPoolName() + idElementName + XmpzXmlConstants.ID;
+		String element = getPoolName() + idElementName + Xmpz1XmlConstants.ID;
 		Node idNode = getImporter().getNode(node, element);
 		if (idNode == null)
 			return ORef.INVALID;

@@ -22,13 +22,13 @@ package org.miradi.xml.generic;
 
 import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
-import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
 
 public class CauseObjectSchemaElement extends FactorObjectSchemaElement
 {
 	public CauseObjectSchemaElement()
 	{
-		super(XmpzXmlConstants.CAUSE);
+		super(Xmpz1XmlConstants.CAUSE);
 
 		createOptionalBooleanField(Cause.TAG_IS_DIRECT_THREAT);
 		createOptionalCodeField(Cause.TAG_TAXONOMY_CODE, XmlSchemaCreator.VOCABULARY_THREAT_TAXONOMY_CODE);

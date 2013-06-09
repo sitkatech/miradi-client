@@ -38,13 +38,13 @@ public class ExpenseAssignmentPoolExporter extends AbstractAssignmentPoolExporte
 		super.exportFields(writer, baseObject);
 		
 		ExpenseAssignment expenseAssignment = (ExpenseAssignment) baseObject;
-		exportDateUnitEfforList(expenseAssignment.getDateUnitEffortList(), XmpzXmlConstants.DATE_UNITS_EXPENSE);
+		exportDateUnitEfforList(expenseAssignment.getDateUnitEffortList(), Xmpz1XmlConstants.DATE_UNITS_EXPENSE);
 	}
 	
 	@Override
 	protected String getDateUnitElementName()
 	{
-		return XmpzXmlConstants.EXPENSES_DATE_UNIT;
+		return Xmpz1XmlConstants.EXPENSES_DATE_UNIT;
 	}
 	
 	@Override
@@ -80,6 +80,6 @@ public class ExpenseAssignmentPoolExporter extends AbstractAssignmentPoolExporte
 	@Override
 	protected String getQuantatityElementName()
 	{
-		return XmpzXmlConstants.EXPENSE;
+		return Xmpz1XmlConstants.EXPENSE;
 	}
 }
