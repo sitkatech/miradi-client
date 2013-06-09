@@ -33,7 +33,7 @@ import org.w3c.dom.NodeList;
 
 public class ExtraDataImporter extends AbstractXmpzObjectImporter
 {
-	public ExtraDataImporter(XmpzXmlImporter importerToUse)
+	public ExtraDataImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, EXTRA_DATA);
 	}

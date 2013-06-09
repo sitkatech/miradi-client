@@ -31,7 +31,7 @@ import org.w3c.dom.Node;
 
 abstract public class AbstractDiagramPoolImporter extends AbstractBaseObjectPoolImporter
 {
-	public AbstractDiagramPoolImporter(XmpzXmlImporter importerToUse, String poolNameToUse, int diagramTypeToImport)
+	public AbstractDiagramPoolImporter(Xmpz1XmlImporter importerToUse, String poolNameToUse, int diagramTypeToImport)
 	{
 		super(importerToUse, poolNameToUse, diagramTypeToImport);
 	}

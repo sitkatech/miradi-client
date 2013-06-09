@@ -29,7 +29,7 @@ import org.w3c.dom.Node;
 
 public class ProgressReportPoolImporter extends AbstractBaseObjectPoolImporter
 {
-	public ProgressReportPoolImporter(XmpzXmlImporter importerToUse)
+	public ProgressReportPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.PROGRESS_REPORT, ProgressReportSchema.getObjectType());
 	}

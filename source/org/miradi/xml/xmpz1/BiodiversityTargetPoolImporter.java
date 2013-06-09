@@ -29,7 +29,7 @@ import org.w3c.dom.Node;
 
 public class BiodiversityTargetPoolImporter extends AbstractTargetPoolImporter
 {
-	public BiodiversityTargetPoolImporter(XmpzXmlImporter importerToUse)
+	public BiodiversityTargetPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.BIODIVERSITY_TARGET, TargetSchema.getObjectType());
 	}

@@ -35,7 +35,7 @@ import org.w3c.dom.NodeList;
 
 abstract public class AbstractAssignmentPoolImporter extends AbstractBaseObjectPoolImporter
 {
-	public AbstractAssignmentPoolImporter(XmpzXmlImporter importerToUse, String poolNameToUse, int objectTypeToImportToUse)
+	public AbstractAssignmentPoolImporter(Xmpz1XmlImporter importerToUse, String poolNameToUse, int objectTypeToImportToUse)
 	{
 		super(importerToUse, poolNameToUse, objectTypeToImportToUse);
 	}

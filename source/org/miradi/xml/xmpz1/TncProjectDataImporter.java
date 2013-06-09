@@ -28,7 +28,7 @@ import org.w3c.dom.Node;
 
 public class TncProjectDataImporter extends AbstractXmpzObjectImporter
 {
-	public TncProjectDataImporter(XmpzXmlImporter importerToUse)
+	public TncProjectDataImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.TNC_PROJECT_DATA);
 	}

@@ -39,7 +39,7 @@ import org.w3c.dom.NodeList;
 
 public class DiagramLinkPoolImporter extends AbstractBaseObjectPoolImporter
 {
-	public DiagramLinkPoolImporter(XmpzXmlImporter importerToUse)
+	public DiagramLinkPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, DIAGRAM_LINK, DiagramLinkSchema.getObjectType());
 	}

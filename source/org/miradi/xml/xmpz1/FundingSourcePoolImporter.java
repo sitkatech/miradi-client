@@ -25,7 +25,7 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class FundingSourcePoolImporter extends AbstractBudgetCategoryPoolImporter
 {
-	public FundingSourcePoolImporter(XmpzXmlImporter importerToUse)
+	public FundingSourcePoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.FUNDING_SOURCE, FundingSourceSchema.getObjectType());
 	}

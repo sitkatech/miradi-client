@@ -28,7 +28,7 @@ import org.w3c.dom.Node;
 
 abstract public class FactorPoolImporter extends AbstractBaseObjectPoolImporter
 {
-	public FactorPoolImporter(XmpzXmlImporter importerToUse, String poolNameToUse, int objectTypeToImportToUse)
+	public FactorPoolImporter(Xmpz1XmlImporter importerToUse, String poolNameToUse, int objectTypeToImportToUse)
 	{
 		super(importerToUse, poolNameToUse, objectTypeToImportToUse);
 	}

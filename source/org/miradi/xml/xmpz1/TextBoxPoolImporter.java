@@ -25,7 +25,7 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class TextBoxPoolImporter extends FactorPoolImporter
 {
-	public TextBoxPoolImporter(XmpzXmlImporter importerToUse)
+	public TextBoxPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.TEXT_BOX, TextBoxSchema.getObjectType());
 	}	

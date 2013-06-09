@@ -28,7 +28,7 @@ import org.w3c.dom.Node;
 
 public class AudiencePoolImporter extends AbstractBaseObjectPoolImporter
 {
-	public AudiencePoolImporter(XmpzXmlImporter importerToUse)
+	public AudiencePoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.AUDIENCE, AudienceSchema.getObjectType());
 	}

@@ -27,7 +27,7 @@ import org.w3c.dom.Node;
 
 public class WwfProjectDataImporter extends AbstractXmpzObjectImporter
 {
-	public WwfProjectDataImporter(XmpzXmlImporter importerToUse)
+	public WwfProjectDataImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.WWF_PROJECT_DATA);
 	}

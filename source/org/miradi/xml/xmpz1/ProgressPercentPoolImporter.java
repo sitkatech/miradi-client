@@ -28,7 +28,7 @@ import org.w3c.dom.Node;
 
 public class ProgressPercentPoolImporter extends AbstractBaseObjectPoolImporter
 {
-	public ProgressPercentPoolImporter(XmpzXmlImporter importerToUse)
+	public ProgressPercentPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.PROGRESS_PERCENT, ProgressPercentSchema.getObjectType());
 	}

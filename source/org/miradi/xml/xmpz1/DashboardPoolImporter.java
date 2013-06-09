@@ -31,7 +31,7 @@ import org.w3c.dom.NodeList;
 
 public class DashboardPoolImporter extends AbstractXmpzObjectImporter
 {
-	public DashboardPoolImporter(XmpzXmlImporter importerToUse)
+	public DashboardPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, DASHBOARD);
 	}

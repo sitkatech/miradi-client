@@ -32,7 +32,7 @@ import org.w3c.dom.Node;
 
 abstract public class AbstractTargetPoolImporter extends FactorPoolImporter
 {
-	public AbstractTargetPoolImporter(XmpzXmlImporter importerToUse, String poolNameToUse, int objectTypeToImportToUse)
+	public AbstractTargetPoolImporter(Xmpz1XmlImporter importerToUse, String poolNameToUse, int objectTypeToImportToUse)
 	{
 		super(importerToUse, poolNameToUse, objectTypeToImportToUse);
 	}

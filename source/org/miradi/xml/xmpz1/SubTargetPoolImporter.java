@@ -28,7 +28,7 @@ import org.w3c.dom.Node;
 
 public class SubTargetPoolImporter extends AbstractBaseObjectPoolImporter
 {
-	public SubTargetPoolImporter(XmpzXmlImporter importerToUse)
+	public SubTargetPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.SUB_TARGET, SubTargetSchema.getObjectType());
 	}

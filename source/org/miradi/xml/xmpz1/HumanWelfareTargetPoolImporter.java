@@ -25,7 +25,7 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class HumanWelfareTargetPoolImporter extends AbstractTargetPoolImporter
 {
-	public HumanWelfareTargetPoolImporter(XmpzXmlImporter importerToUse)
+	public HumanWelfareTargetPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.HUMAN_WELFARE_TARGET, HumanWelfareTargetSchema.getObjectType());
 	}

@@ -25,7 +25,7 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class OtherNotableSpeciesPoolImporter extends AbstractBaseObjectPoolImporter
 {
-	public OtherNotableSpeciesPoolImporter(XmpzXmlImporter importerToUse)
+	public OtherNotableSpeciesPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.OTHER_NOTABLE_SPECIES, OtherNotableSpeciesSchema.getObjectType());
 	}

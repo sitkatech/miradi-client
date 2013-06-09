@@ -55,7 +55,7 @@ import org.w3c.dom.Node;
 
 public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 {
-	public DiagramFactorPoolImporter(XmpzXmlImporter importerToUse)
+	public DiagramFactorPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, DIAGRAM_FACTOR, DiagramFactorSchema.getObjectType());
 	}
@@ -89,21 +89,21 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 		getProject().setObjectData(ref, DiagramFactor.TAG_WRAPPED_REF, wrappedRef.toString());
 	}
 
-	private  static ORef importWrappedRef(XmpzXmlImporter importer, String poolName, Node parentNode) throws Exception
+	private  static ORef importWrappedRef(Xmpz1XmlImporter importer, String poolName, Node parentNode) throws Exception
 	{
 		Node wrappedFactorIdNode = importer.getNode(parentNode, poolName + WRAPPED_FACTOR_ID_ELEMENT_NAME);
 
 		return importWrappedRef(importer, wrappedFactorIdNode);
 	}
 
-	public static ORef importWrappedRef(XmpzXmlImporter importer, Node wrappedFactorIdNode) throws Exception
+	public static ORef importWrappedRef(Xmpz1XmlImporter importer, Node wrappedFactorIdNode) throws Exception
 	{
 		Node wrappedByDiagamFactorIdNode = importer.getNode(wrappedFactorIdNode, WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
 		
 		return getWrappedRef(importer, wrappedByDiagamFactorIdNode);
 	}
 
-	public static ORef getWrappedRef(XmpzXmlImporter importer, Node wrappedByDiagamFactorIdNode) throws Exception
+	public static ORef getWrappedRef(Xmpz1XmlImporter importer, Node wrappedByDiagamFactorIdNode) throws Exception
 	{
 		String oredWrappedFactorNames = createOredWrappableFactorNames();
 		XPathExpression expression = importer.getXPath().compile(oredWrappedFactorNames);

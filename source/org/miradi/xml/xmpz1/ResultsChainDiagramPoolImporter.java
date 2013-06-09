@@ -25,7 +25,7 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class ResultsChainDiagramPoolImporter extends AbstractDiagramPoolImporter
 {
-	public ResultsChainDiagramPoolImporter(XmpzXmlImporter importerToUse)
+	public ResultsChainDiagramPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.RESULTS_CHAIN, ResultsChainDiagramSchema.getObjectType());
 	}

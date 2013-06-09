@@ -40,9 +40,9 @@ import org.miradi.xml.wcs.WcsMiradiXmlValidator;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 
-public class XmpzXmlImporter extends AbstractXmlImporter implements XmpzXmlConstants
+public class Xmpz1XmlImporter extends AbstractXmlImporter implements XmpzXmlConstants
 {
-	public XmpzXmlImporter(Project projectToFill, ProgressInterface progressIndicatorToUse) throws Exception
+	public Xmpz1XmlImporter(Project projectToFill, ProgressInterface progressIndicatorToUse) throws Exception
 	{
 		super(projectToFill);
 		

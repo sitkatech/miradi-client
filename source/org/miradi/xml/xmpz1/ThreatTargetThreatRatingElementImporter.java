@@ -38,7 +38,7 @@ import org.w3c.dom.NodeList;
 
 public class ThreatTargetThreatRatingElementImporter extends AbstractXmpzObjectImporter
 {
-	public ThreatTargetThreatRatingElementImporter(XmpzXmlImporter importerToUse)
+	public ThreatTargetThreatRatingElementImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.THREAT_RATING);
 	}

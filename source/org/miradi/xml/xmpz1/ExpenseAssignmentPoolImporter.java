@@ -30,7 +30,7 @@ import org.w3c.dom.Node;
 
 public class ExpenseAssignmentPoolImporter extends AbstractAssignmentPoolImporter
 {
-	public ExpenseAssignmentPoolImporter(XmpzXmlImporter importerToUse)
+	public ExpenseAssignmentPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.EXPENSE_ASSIGNMENT, ExpenseAssignmentSchema.getObjectType());
 	}

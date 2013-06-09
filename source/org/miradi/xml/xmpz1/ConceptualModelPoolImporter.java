@@ -25,7 +25,7 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class ConceptualModelPoolImporter extends AbstractDiagramPoolImporter
 {
-	public ConceptualModelPoolImporter(XmpzXmlImporter importerToUse)
+	public ConceptualModelPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.CONCEPTUAL_MODEL, ConceptualModelDiagramSchema.getObjectType());
 	}

@@ -29,7 +29,7 @@ import org.w3c.dom.NodeList;
 
 public class TaggedObjectSetPoolImporter extends AbstractBaseObjectPoolImporter
 {
-	public TaggedObjectSetPoolImporter(XmpzXmlImporter importerToUse)
+	public TaggedObjectSetPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, TAGGED_OBJECT_SET_ELEMENT_NAME, TaggedObjectSetSchema.getObjectType());
 	}

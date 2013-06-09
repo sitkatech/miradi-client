@@ -25,7 +25,7 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class IucnRedListspeciesPoolImporter extends AbstractBaseObjectPoolImporter
 {
-	public IucnRedListspeciesPoolImporter(XmpzXmlImporter importerToUse)
+	public IucnRedListspeciesPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.IUCN_REDLIST_SPECIES, IucnRedlistSpeciesSchema.getObjectType());
 	}

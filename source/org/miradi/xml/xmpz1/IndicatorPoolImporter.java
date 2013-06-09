@@ -35,7 +35,7 @@ import org.w3c.dom.NodeList;
 
 public class IndicatorPoolImporter extends AbstractBaseObjectPoolImporter
 {
-	public IndicatorPoolImporter(XmpzXmlImporter importerToUse)
+	public IndicatorPoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.INDICATOR, IndicatorSchema.getObjectType());
 	}

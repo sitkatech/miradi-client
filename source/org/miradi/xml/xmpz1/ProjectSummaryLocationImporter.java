@@ -27,7 +27,7 @@ import org.w3c.dom.Node;
 
 public class ProjectSummaryLocationImporter extends AbstractXmpzObjectImporter
 {
-	public ProjectSummaryLocationImporter(XmpzXmlImporter importerToUse)
+	public ProjectSummaryLocationImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.PROJECT_SUMMARY_LOCATION);
 	}

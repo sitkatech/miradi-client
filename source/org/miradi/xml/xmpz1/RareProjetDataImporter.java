@@ -27,7 +27,7 @@ import org.w3c.dom.Node;
 
 public class RareProjetDataImporter extends AbstractXmpzObjectImporter
 {
-	public RareProjetDataImporter(XmpzXmlImporter importerToUse)
+	public RareProjetDataImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.RARE_PROJECT_DATA);
 	}

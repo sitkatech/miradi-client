@@ -28,7 +28,7 @@ import org.w3c.dom.Node;
 
 public class ProjectSummaryScopeImporter extends AbstractXmpzObjectImporter
 {
-	public ProjectSummaryScopeImporter(XmpzXmlImporter importerToUse)
+	public ProjectSummaryScopeImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.PROJECT_SUMMARY_SCOPE);
 	}

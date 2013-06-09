@@ -25,7 +25,7 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class AccountingCodePoolImporter extends AbstractBudgetCategoryPoolImporter
 {
-	public AccountingCodePoolImporter(XmpzXmlImporter importerToUse)
+	public AccountingCodePoolImporter(Xmpz1XmlImporter importerToUse)
 	{
 		super(importerToUse, XmpzXmlConstants.ACCOUNTING_CODE, AccountingCodeSchema.getObjectType());
 	}	
