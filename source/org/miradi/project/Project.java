@@ -1428,7 +1428,7 @@ public class Project
 	public static final int DEFAULT_DIAGRAM_FONT_SIZE = 11;
 	
 
-	public static final int MAX_PROJECT_FILENAME_LENGTH = 40;
+	public static final int MAX_PROJECT_FILENAME_LENGTH = 255;
 	
 	private boolean isOpen;
 	private String projectName;

@@ -20,8 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 
+import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTextFieldWithSelectAllOnFocusGained;
-import org.miradi.project.Project;
 
 //FIXME medium - Since this text field is already using ProjectNameRestrictedDocument, why is it still
 //passing max value to super.  Seems like duplicate effort. 
@@ -34,7 +34,7 @@ public class ProjectNameRestrictedTextField extends PanelTextFieldWithSelectAllO
 
 	public ProjectNameRestrictedTextField(String initialValue)
 	{
-		super(Project.getMaximumProjectNameLength());
+		super(AbstractObjectDataInputPanel.DEFAULT_TEXT_COLUM_COUNT);
 		
 		initialize(initialValue);
 	}
