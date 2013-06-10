@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-09 14:16-0500\n"
+"POT-Creation-Date: 2013-06-10 15:01-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -548,7 +548,7 @@ msgstr ""
 "<div class='DataPanel'><p>нэг өнгийн зүйл бүрт нөлөөлөх хүчин зүйл тус "
 "бүрээр миний сонголт яагаад хязгаарлагдаж байна вэ?</p>"
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:82
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:83
 msgid ""
 "<div class='WizardText'><p><table><tr><td><input type='submit' name='Back' "
 "value='&lt; Previous'></input></td><td><input type='submit' name='"
@@ -564,16 +564,16 @@ msgstr ""
 "value='&lt; Previous'></input></td><td><input type='submit' name='Next' "
 "value='Next &gt;'></input></td></tr>"
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:72
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:73
 msgid ""
 "<div class='WizardText'>Miradi is able to import three different kinds of "
 "project files.<BR>Miradi files are new project files <BR>MPZ files are <a "
 "href='Definition:ImportZip' class='definition'>Miradi Project Zip</a> files "
 "that were created by exporting a project from within Miradi. <BR>CPMZ files "
 "are used to import and export project data from ConPro, The Nature "
-"Conservancy's online project database.<BR><BR>To import a Miradi, MPZ, or "
-"CPMZ file, click the button for the appropriate file type, select the file "
-"in the dialog that pops up and then click <strong>import</strong>."
+"Conservancy's online project database.<BR><BR>To import a Miradi, XMPZ2, "
+"MPZ, or CPMZ file, click the button for the appropriate file type, select "
+"the file in the dialog that pops up and then click <strong>import</strong>."
 msgstr ""
 
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/TreeBasedProjectList.java:64
@@ -8352,7 +8352,7 @@ msgid "Unable to process file: verify file format"
 msgstr "Файлыг боловсруулж чадахгүй байна: файлын форматыг шалгах"
 
 #: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:141
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:145
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:159
 msgid "Unable to process request: "
 msgstr "Хүсэлтийг боловсруулж чадахгүй байна:"
 
@@ -8915,7 +8915,7 @@ msgid "a new project from scratch"
 msgstr "оргүй хоосноос эхэлсэн шинэ төсөл"
 
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectOverviewStep.java:95
-msgid "an exported Miradi file (.Miradi, .mpz or .cpmz)"
+msgid "an exported Miradi file (.Miradi, .xmpz2, .mpz or .cpmz)"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/NeverShowAgainPanel.java:48
