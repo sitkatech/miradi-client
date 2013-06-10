@@ -71,6 +71,7 @@ import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.MpfFileFilterWithDirectories;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.views.diagram.DiagramCopyPaster;
 import org.miradi.views.diagram.DiagramPaster;
@@ -256,7 +257,7 @@ public class TestProject extends MiradiTestCase
 	public void testIsValidMpfProjectFilename() throws Exception
 	{
 		assertTrue("AlphaNumericDotDashSpace", Project.isValidMpfProjectFilename("AZaz09_.Miradi"));
-		assertFalse("allowed really long name?", Project.isValidMpfProjectFilename("1234567890123456789012345678901234567890.Miradi"));
+		assertFalse("allowed really long name?", Project.isValidMpfProjectFilename(createLargerThanAllowedProjectName() + MpfFileFilterWithDirectories.EXTENSION));
 		assertFalse("Other Punct", Project.isValidMpfProjectFilename("$.Miradi"));
 		final char ACCENT_A_LOWER = 0xE1;
 		assertTrue("Foreign", Project.isValidMpfProjectFilename(new String(new char[] {ACCENT_A_LOWER}) + ".Miradi"));
@@ -266,12 +267,24 @@ public class TestProject extends MiradiTestCase
 	public void testMakeProjectFilenameLegal() throws Exception
 	{
 		assertEquals("didn't fix empty?", "-", Project.makeProjectNameLegal(""));
-		String longest = "123456789012345678901234567890123";
-		assertEquals("didn't fix long?", longest, Project.makeProjectNameLegal(longest + longest));
+		String longest = createLargerThanAllowedProjectName();
+		final String legalExpectedProjectName = longest.substring(0, getProject().getMaximumProjectNameLength());
+		assertEquals("didn't fix long?", legalExpectedProjectName, Project.makeProjectNameLegal(longest));
 		String allGood = "abc_123. -";
 		assertEquals("Ruined a good name?", allGood, Project.makeProjectNameLegal(allGood));
 		String bad = "`~!@#$%^&*()=+[]\\{}|;':\',<>/?. -";
 		assertEquals("Didn't fix bad?", "-----------------------------. -", Project.makeProjectNameLegal(bad));
+	}
+
+	private String createLargerThanAllowedProjectName()
+	{
+		String projectName = "123456789012345678901234567890123";
+		while (projectName.length() < Project.MAX_PROJECT_FILENAME_LENGTH)
+		{
+			projectName += projectName;
+		}
+		
+		return projectName;
 	}
 	
 	public void testGetAllSelectedCellsWithLinkages() throws Exception
