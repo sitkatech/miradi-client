@@ -216,6 +216,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(Indicator.TAG_FUTURE_STATUS_COMMENTS, FUTURE_STATUS_COMMENTS);
 		map.put(Indicator.TAG_VIABILITY_RATINGS_COMMENTS, VIABILITY_RATINGS_COMMENTS);
 		map.put(Indicator.TAG_MEASUREMENT_REFS, MEASUREMENT_IDS);
+		map.put(Indicator.TAG_FUTURE_STATUS_REFS, FUTURE_STATUS_IDS);
 		
 		return map;
 	}

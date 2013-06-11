@@ -1,7 +1,7 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Jun 06 18:46:25 EDT 2013 $
-# $LastChangedRevision: 225 $
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/225'
+# $LastChangedDate: Tue Jun 11 11:16:33 EDT 2013 $
+# $LastChangedRevision: 226 $
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/226'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -55,6 +55,7 @@ ConservationProject.element = element miradi:ConservationProject
   BudgetCategoryTwoPool.element? &
   DashboardPool.element? &
   TaxonomyPool.element? &
+  FutureStatusPool.element? &
   SimpleThreatRatingPool.element? &
   StressBasedThreatRatingPool.element? &
   MiradiShareProjectDataTaxonomyAssociationPool.element? &
@@ -286,6 +287,7 @@ Indicator.element = element miradi:Indicator
   element miradi:IndicatorFutureStatusComments { formatted_text }? &
   element miradi:IndicatorFutureStatusDate { vocabulary_date }? &
   element miradi:IndicatorFutureStatusDetails { formatted_text }? &
+  element miradi:IndicatorFutureStatusIds { FutureStatusId.element* }? &
   element miradi:IndicatorFutureStatusRating { vocabulary_status }? &
   element miradi:IndicatorFutureStatusSummary { text }? &
   element miradi:IndicatorIdentifier { text }? &
@@ -733,6 +735,18 @@ Taxonomy.element = element miradi:Taxonomy
   TaxonomyTopLevelElementCodeContainer.element ?
 }
 
+FutureStatusPool.element = element miradi:FutureStatusPool { FutureStatus.element* }
+FutureStatus.element = element miradi:FutureStatus
+{
+  attribute Id {xsd:integer} &
+  element miradi:FutureStatusFutureStatusComment { formatted_text }? &
+  element miradi:FutureStatusFutureStatusDate { vocabulary_date }? &
+  element miradi:FutureStatusFutureStatusDetail { formatted_text }? &
+  element miradi:FutureStatusFutureStatusRating { vocabulary_status }? &
+  element miradi:FutureStatusFutureStatusSummary { text }? &
+  element miradi:FutureStatusLabel { formatted_text }?
+}
+
 SimpleThreatRatingPool.element = element miradi:SimpleThreatRatingPool { SimpleThreatRating.element* }
 SimpleThreatRating.element = element miradi:SimpleThreatRating
 {
@@ -934,6 +948,7 @@ ResourceId.element = element miradi:ResourceId { xsd:integer }
 MeasurementId.element = element miradi:MeasurementId { xsd:integer }
 MethodId.element = element miradi:MethodId { xsd:integer }
 SubTaskId.element = element miradi:SubTaskId { xsd:integer }
+FutureStatusId.element = element miradi:FutureStatusId { xsd:integer }
 WrappedByDiagramFactorId.element = element miradi:WrappedByDiagramFactorId
 {
   BiodiversityTargetId.element|  HumanWellbeingTargetId.element|  CauseId.element|  StrategyId.element|  ThreatReductionResultId.element|  IntermediateResultId.element|  GroupBoxId.element|  TextBoxId.element|  ScopeBoxId.element|  ActivityId.element|  StressId.element
