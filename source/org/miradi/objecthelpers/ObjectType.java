@@ -128,13 +128,14 @@ public class ObjectType
 	public static final int TAXONOMY_ASSOCIATION = 62;
 	//NOTE: 63 is currently reserved for image type.
 	//public static final int IMAGE = 63;
+	public static final int FUTURE_STATUS = 64;
 	
 	// When you add a new type, be sure to:
 	// - increment OBJECT_TYPE_COUNT
 	// - IF it is a user-visible object, add a case to getUserFriendlyObjectTypeName below
 	// - IF it is a top-level object, add it to getTopLevelObjectTypes below
 	
-	public static final int OBJECT_TYPE_COUNT = 63;
+	public static final int OBJECT_TYPE_COUNT = 65;
 
 	public static String getUserFriendlyObjectTypeName(Project project, int objectType)
 	{

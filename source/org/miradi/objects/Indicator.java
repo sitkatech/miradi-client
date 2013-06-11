@@ -34,6 +34,7 @@ import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.CauseSchema;
+import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
@@ -105,10 +106,16 @@ public class Indicator extends BaseObject
 		commandsToDeleteChildren.addAll(createCommandsToDeleteBudgetChildren());
 		commandsToDeleteChildren.addAll(createCommandsToDeleteMethods());
 		commandsToDeleteChildren.addAll(createCommandsToDeleteMeasurements());
+		commandsToDeleteChildren.addAll(createCommandsToDeleteFutureStatuses());
 		
 		return commandsToDeleteChildren;
 	}
 
+	private CommandVector createCommandsToDeleteFutureStatuses() throws Exception
+	{
+		return createCommandsToDeleteAnnotation(getFutureStatusRefs());
+	}
+	
 	private CommandVector createCommandsToDeleteMeasurements() throws Exception
 	{
 		return createCommandsToDeleteAnnotation(getMeasurementRefs());
@@ -242,6 +249,11 @@ public class Indicator extends BaseObject
 		return getSafeRefListData(TAG_MEASUREMENT_REFS);
 	}
 	
+	public ORefList getFutureStatusRefs()
+	{
+		return getSafeRefListData(TAG_FUTURE_STATUS_REFS);
+	}
+	
 	@Override
 	public int getAnnotationType(String tag)
 	{
@@ -250,6 +262,9 @@ public class Indicator extends BaseObject
 		
 		if (tag.equals(TAG_MEASUREMENT_REFS))
 			return MeasurementSchema.getObjectType();
+		
+		if (tag.equals(TAG_FUTURE_STATUS_REFS))
+			return FutureStatusSchema.getObjectType();
 		
 		return super.getAnnotationType(tag);
 	}
@@ -276,6 +291,9 @@ public class Indicator extends BaseObject
 			return true;
 		
 		if (tag.equals(TAG_PROGRESS_REPORT_REFS))
+			return true;
+		
+		if (tag.equals(TAG_FUTURE_STATUS_REFS))
 			return true;
 		
 		return super.isRefList(tag);
@@ -393,6 +411,7 @@ public class Indicator extends BaseObject
 	public static final String TAG_DETAIL = "Detail";
 	public static final String TAG_COMMENTS = "Comments";
 	public static final String TAG_VIABILITY_RATINGS_COMMENTS = "ViabilityRatingsComment";
+	public static final String TAG_FUTURE_STATUS_REFS = "FutureStatusRefs";
 
 	public static final String TAG_FUTURE_STATUS_RATING  = "FutureStatusRating";
 	public static final String TAG_FUTURE_STATUS_DATE = "FutureStatusDate";

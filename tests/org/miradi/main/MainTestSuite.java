@@ -94,6 +94,7 @@ import org.miradi.objecthelpers.TestThreatTargetVirtualLinkHelper;
 import org.miradi.objecthelpers.TestTimePeriodCosts;
 import org.miradi.objecthelpers.TestTimePeriodCostsMap;
 import org.miradi.objects.TestAccountingCode;
+import org.miradi.objects.TestFutureStatus;
 import org.miradi.objects.TestAssignment;
 import org.miradi.objects.TestAudience;
 import org.miradi.objects.TestBaseObject;
@@ -468,6 +469,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestMiradiShareProjectData.class));
 		addTest(new TestSuite(TestMiradiShareTaxonomy.class));
 		addTest(new TestSuite(TestMiradiShareTaxonomyAssociation.class));
+		addTest(new TestSuite(TestFutureStatus.class));
 			
 		// commands package
 		addTest(new TestSuite(TestCommands.class));

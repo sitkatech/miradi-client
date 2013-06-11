@@ -18,16 +18,19 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.objecthelpers;
+package org.miradi.objects;
 
-import java.util.Comparator;
+import org.miradi.schemas.FutureStatusSchema;
 
-import org.miradi.objects.TaxonomyAssociation;
-
-public class TaxonomyAssociationByTaxomomyCodeSorter implements Comparator<TaxonomyAssociation>
+public class TestFutureStatus extends ObjectTestCase
 {
-	public int compare(TaxonomyAssociation taxonomyAssociation1, TaxonomyAssociation taxonomyAssociation2)
+	public TestFutureStatus(String name)
 	{
-		return taxonomyAssociation1.getTaxonomyCode().compareTo(taxonomyAssociation2.getTaxonomyCode());
+		super(name);
+	}
+
+	public void testFields() throws Exception
+	{
+		verifyFields(FutureStatusSchema.getObjectType());
 	}
 }
