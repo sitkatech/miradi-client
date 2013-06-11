@@ -352,7 +352,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionDeleteKeyEcologicalAttributeMeasurement.class, new DeleteKeyEcologicalAttributeMeasurementDoer());
 		
 		addDoerToMap(ActionCreateIndicatorMeasurement.class, new CreateKeyEcologicalAttributeMeasurementDoer());
-		addDoerToMap(ActionDeleteIndicatorMeasurement.class, new DeleteKeyEcologicalAttributeMeasurementDoer());
 		addDoerToMap(ActionCreateFutureStatus.class, new CreateFutureStatusDoer());
 		
 		addDoerToMap(ActionExpandToMenu.class, new ExpandToMenuDoer());
