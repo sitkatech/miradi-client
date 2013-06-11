@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-11 14:31-0500\n"
+"POT-Creation-Date: 2013-06-11 15:01-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -3805,7 +3805,7 @@ msgstr "Ліс - субтропічний/тропічні болота"
 msgid "Forest - Temperate"
 msgstr "Ліс - помірний"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:494
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:490
 msgid "Found Corrupted Data:"
 msgstr "Знайдені неправильні дані:"
 
@@ -7465,7 +7465,7 @@ msgstr "Tab|Податок"
 msgid "Tab|Goals"
 msgstr "Tab|Цілі"
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityTreeManagementPanel.java:93
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityTreeManagementPanel.java:91
 msgid "Tab|Indicators"
 msgstr "Tab|Індикатори"
 
@@ -8082,7 +8082,7 @@ msgstr "Title|Помилка"
 msgid "Title|Export Image Scale"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:982
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:978
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Title|Фактори"
@@ -8399,7 +8399,7 @@ msgstr ""
 msgid "Unknown code: "
 msgstr "Невідомий код:"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:421
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:417
 msgid "Unknown error displaying diagram"
 msgstr "Невідома помилка у показі діаграми"
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-11 14:31-0500\n"
+"POT-Creation-Date: 2013-06-11 15:01-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -3868,7 +3868,7 @@ msgstr "Foresta - Subtropicale/Palude Tropicale"
 msgid "Forest - Temperate"
 msgstr "Foresta - Temperata"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:494
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:490
 msgid "Found Corrupted Data:"
 msgstr "Trovati dati corrotti:"
 
@@ -7574,7 +7574,7 @@ msgstr "Personalizzato"
 msgid "Tab|Goals"
 msgstr "Obiettivi di Conservazione"
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityTreeManagementPanel.java:93
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityTreeManagementPanel.java:91
 msgid "Tab|Indicators"
 msgstr "Indicatori"
 
@@ -8199,7 +8199,7 @@ msgstr "Errore"
 msgid "Title|Export Image Scale"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:982
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:978
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Proprietà del Fattore"
@@ -8515,7 +8515,7 @@ msgstr ""
 msgid "Unknown code: "
 msgstr "Codice sconosciuto:"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:421
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:417
 msgid "Unknown error displaying diagram"
 msgstr "Errore sconosciuto nel mostrare il Diagramma"
 
