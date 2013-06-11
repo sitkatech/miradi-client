@@ -24,8 +24,7 @@ import org.miradi.actions.ActionCreateKeyEcologicalAttribute;
 import org.miradi.actions.ActionCreateKeyEcologicalAttributeIndicator;
 import org.miradi.actions.ActionCreateKeyEcologicalAttributeMeasurement;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttribute;
-import org.miradi.actions.ActionDeleteKeyEcologicalAttributeIndicator;
-import org.miradi.actions.ActionDeleteKeyEcologicalAttributeMeasurement;
+import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionExpandToMenu;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNodeAlwaysExpanded;
@@ -105,8 +104,7 @@ public class TargetViabilityTreeTablePanel extends PlanningTreeTablePanel
 				ActionExpandToMenu.class,
 				
 				ActionDeleteKeyEcologicalAttribute.class,
-				ActionDeleteKeyEcologicalAttributeIndicator.class,
-				ActionDeleteKeyEcologicalAttributeMeasurement.class,
+				ActionDeletePlanningViewTreeNode.class,
 		};
 	}
 }

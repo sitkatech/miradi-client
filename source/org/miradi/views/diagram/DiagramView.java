@@ -67,7 +67,6 @@ import org.miradi.actions.ActionDeleteGoal;
 import org.miradi.actions.ActionDeleteGroupBox;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttribute;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttributeIndicator;
-import org.miradi.actions.ActionDeleteKeyEcologicalAttributeMeasurement;
 import org.miradi.actions.ActionDeleteObjective;
 import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionDeleteResultsChain;
@@ -204,7 +203,6 @@ import org.miradi.views.diagram.doers.ZoomToFitDoer;
 import org.miradi.views.planning.doers.CreateRelevancyActivityDoer;
 import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
 import org.miradi.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
-import org.miradi.views.targetviability.doers.DeleteKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.targetviability.doers.ExpandToGoalDoer;
 import org.miradi.views.targetviability.doers.ExpandToIndicatorDoer;
 import org.miradi.views.targetviability.doers.ExpandToMeasurementDoer;
@@ -346,7 +344,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionCreateKeyEcologicalAttributeIndicator.class, new CreateViabilityIndicatorDoer());
 		addDoerToMap(ActionDeleteKeyEcologicalAttributeIndicator.class, new DeleteViabilityIndicatorDoer());
 		addDoerToMap(ActionCreateKeyEcologicalAttributeMeasurement.class, new CreateKeyEcologicalAttributeMeasurementDoer());
-		addDoerToMap(ActionDeleteKeyEcologicalAttributeMeasurement.class, new DeleteKeyEcologicalAttributeMeasurementDoer());
 		
 		addDoerToMap(ActionCreateIndicatorMeasurement.class, new CreateKeyEcologicalAttributeMeasurementDoer());
 		addDoerToMap(ActionCreateFutureStatus.class, new CreateFutureStatusDoer());

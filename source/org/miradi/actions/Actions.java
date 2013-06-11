@@ -282,7 +282,6 @@ public class Actions
 		registerAction(new ActionCreateKeyEcologicalAttributeIndicator(mainWindow));
 		registerAction(new ActionDeleteKeyEcologicalAttributeIndicator(mainWindow));
 		registerAction(new ActionCreateKeyEcologicalAttributeMeasurement(mainWindow));
-		registerAction(new ActionDeleteKeyEcologicalAttributeMeasurement(mainWindow));
 		registerAction(new ActionCreateIndicatorMeasurement(mainWindow));
 		
 		registerAction(new ActionTeamCreateMember(mainWindow));
