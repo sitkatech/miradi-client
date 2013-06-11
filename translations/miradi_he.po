@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-11 15:01-0500\n"
+"POT-Creation-Date: 2013-06-11 16:01-0500\n"
 "PO-Revision-Date: 2011-03-17 08:35-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1476,10 +1476,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionDeleteKeyEcologicalAttribute.java:35
 msgid "Action|Manage|Delete KEA"
-msgstr ""
-
-#: Miradi/source/org/miradi/actions/ActionDeleteKeyEcologicalAttributeMeasurement.java:35
-msgid "Action|Manage|Delete Measurement"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionDeleteTeamMember.java:35
@@ -3631,7 +3627,7 @@ msgstr ""
 msgid "Forest - Temperate"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:490
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:487
 msgid "Found Corrupted Data:"
 msgstr ""
 
@@ -4775,7 +4771,7 @@ msgstr ""
 msgid "Medium (Default)"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:246
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:245
 msgid "MenuBar|Actions"
 msgstr ""
 
@@ -4787,15 +4783,15 @@ msgstr ""
 msgid "MenuBar|File"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:578
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:577
 msgid "MenuBar|Help"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:510
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:509
 msgid "MenuBar|Step-by-Step"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:438
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:437
 msgid "MenuBar|View"
 msgstr ""
 
@@ -4832,7 +4828,7 @@ msgid "Menu|Export Current Project as..."
 msgstr ""
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:280
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:426
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:425
 msgid "Menu|Group Box"
 msgstr ""
 
@@ -6645,10 +6641,6 @@ msgstr ""
 msgid "TT|Delete a Bend Point"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionDeleteKeyEcologicalAttributeMeasurement.java:41
-msgid "TT|Delete a Measurement"
-msgstr ""
-
 #: Miradi/source/org/miradi/actions/ActionDeleteReportTemplate.java:41
 msgid "TT|Delete a Report Template"
 msgstr ""
@@ -7742,7 +7734,7 @@ msgstr ""
 msgid "Title|Export Image Scale"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:978
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:975
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr ""
@@ -8051,7 +8043,7 @@ msgstr ""
 msgid "Unknown code: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:417
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:414
 msgid "Unknown error displaying diagram"
 msgstr ""
 
