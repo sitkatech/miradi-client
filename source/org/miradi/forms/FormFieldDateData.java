@@ -18,21 +18,18 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.forms.objects;
+package org.miradi.forms;
 
-import org.miradi.forms.FieldPanelSpec;
-import org.miradi.questions.StatusQuestion;
-import org.miradi.schemas.FutureStatusSchema;
-
-public class FutureStatusPropertiesForm extends FieldPanelSpec
+public class FormFieldDateData extends FieldRelatedFormItem
 {
-	public FutureStatusPropertiesForm()
+	public FormFieldDateData(int objectTypeToUse, String objectTagToUse)
 	{
-		final int type = FutureStatusSchema.getObjectType();
-		addChoiceField(type, FutureStatusSchema.TAG_FUTURE_STATUS_RATING, StatusQuestion.class);
-		addDateField(type, FutureStatusSchema.TAG_FUTURE_STATUS_DATE);
-		addLabelAndField(type, FutureStatusSchema.TAG_FUTURE_STATUS_SUMMARY, TYPE_SINGLE_LINE_STRING);
-		addLabelAndField(type, FutureStatusSchema.TAG_FUTURE_STATUS_DETAIL, TYPE_SINGLE_LINE_STRING);
-		addLabelAndField(type, FutureStatusSchema.TAG_FUTURE_STATUS_COMMENTS, TYPE_SINGLE_LINE_STRING);
+		super(objectTypeToUse, objectTagToUse);
+	}
+
+	@Override
+	public boolean isDateFieldData()
+	{
+		return true;
 	}
 }

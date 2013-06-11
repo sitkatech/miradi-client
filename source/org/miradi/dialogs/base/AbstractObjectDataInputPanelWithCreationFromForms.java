@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.base;
 
 import org.miradi.dialogfields.ObjectDataInputField;
+import org.miradi.forms.AbstractFormFieldQuestionData;
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.forms.FieldRelatedFormItem;
 import org.miradi.forms.FormConstant;
@@ -128,6 +129,20 @@ abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends	
 
 			add(new FillerLabel());
 			addFields(createMultipleTaxonomyWithEditButtonFields(objectType));
+			return;
+		}
+		if (formItem.isFormQuestionFieldData())
+		{
+			AbstractFormFieldQuestionData data = (AbstractFormFieldQuestionData) formItem;
+			addFieldWithoutLabel(createChoiceField(data.getObjectType(), data.getObjectTag(), data.getQuestion()));
+			
+			return;
+		}
+		if (formItem.isDateFieldData())
+		{
+			FieldRelatedFormItem data = (FieldRelatedFormItem) formItem;
+			addFieldWithoutLabel(createDateChooserField(data.getObjectType(), data.getObjectTag()));
+			
 			return;
 		}
 		

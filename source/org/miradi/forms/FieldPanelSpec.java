@@ -25,6 +25,7 @@ import javax.swing.Icon;
 
 import org.miradi.forms.objects.FormFieldCodeListData;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.utils.BufferedImageFactory;
 
 public class FieldPanelSpec extends PropertiesPanelSpec
@@ -88,6 +89,16 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 		addField(type, fieldTag, new FormCurrencyFieldData(type, fieldTag));
 	}
 	
+	protected void addDateField(int type, String fieldTag)
+	{
+		addField(type, fieldTag, new FormFieldDateData(type, fieldTag));
+	}
+
+	protected void addChoiceField(int type, String fieldTag, Class questionClass)
+	{
+		addChoiceField(type, fieldTag, StaticQuestionManager.getQuestion(questionClass));
+	}
+
 	protected void addChoiceField(int type, String fieldTag, ChoiceQuestion question)
 	{
 		addField(type, fieldTag, new FormFieldQuestionData(type, fieldTag, question));

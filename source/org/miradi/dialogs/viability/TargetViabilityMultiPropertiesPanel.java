@@ -31,9 +31,9 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.FutureStatus;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Target;
-import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
@@ -52,7 +52,6 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		targetViabilityKeaPropertiesPanel = new TargetViabilityKeaPropertiesPanel(getProject(), mainWindow.getActions());
 		targetViabilityIndicatorPropertiesPanel = new IndicatorPropertiesPanelWithoutBudgetPanels(getProject());
 		targetViabilityMeasurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
-		futureStatusPropertiesPanel = new FutureStatusPropertiesPanel(getProject());
 		
 		addPanel(blankPropertiesPanel);
 		addPanel(targetPropertiesPanel);
@@ -60,7 +59,6 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		addPanel(targetViabilityKeaPropertiesPanel);
 		addPanel(targetViabilityIndicatorPropertiesPanel);
 		addPanel(targetViabilityMeasurementPropertiesPanel);
-		addPanel(futureStatusPropertiesPanel);
 
 		updateFieldsFromProject();
 	}
@@ -74,24 +72,41 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 	@Override
 	protected AbstractObjectDataInputPanel findPanel(ORef[] orefsToUse)
 	{
-		if(orefsToUse.length == 0)
-			return blankPropertiesPanel;
-		
-		int objectType = orefsToUse[0].getObjectType();
-		if(Target.is(objectType))
-			return targetPropertiesPanel;
-		if(HumanWelfareTarget.is(objectType))
-			return humanWelfareTargetPropertiesPanel;
-		if(objectType == KeyEcologicalAttributeSchema.getObjectType())
-			return targetViabilityKeaPropertiesPanel;
-		if(objectType == IndicatorSchema.getObjectType())
-			return targetViabilityIndicatorPropertiesPanel;
-		if(objectType == MeasurementSchema.getObjectType())
-			return targetViabilityMeasurementPropertiesPanel;
-		if(objectType == GoalSchema.getObjectType())
-			return futureStatusPropertiesPanel;
+		try
+		{
+			if(orefsToUse.length == 0)
+				return blankPropertiesPanel;
 
+			int objectType = orefsToUse[0].getObjectType();
+			if(Target.is(objectType))
+				return targetPropertiesPanel;
+			if(HumanWelfareTarget.is(objectType))
+				return humanWelfareTargetPropertiesPanel;
+			if(objectType == KeyEcologicalAttributeSchema.getObjectType())
+				return targetViabilityKeaPropertiesPanel;
+			if(objectType == IndicatorSchema.getObjectType())
+				return targetViabilityIndicatorPropertiesPanel;
+			if(objectType == MeasurementSchema.getObjectType())
+				return targetViabilityMeasurementPropertiesPanel;
+			if(FutureStatus.is(objectType))
+				return getFutureStatusPanel();
+		}
+		catch (Exception e)
+		{
+			EAM.alertUserOfNonFatalException(e);
+		}
 		return blankPropertiesPanel;
+	}
+
+	private AbstractObjectDataInputPanel getFutureStatusPanel() throws Exception
+	{
+		if (futureStatusPropertiesPanel == null)
+		{
+			futureStatusPropertiesPanel = new FutureStatusPropertiesPanel(getProject());
+			addPanel(futureStatusPropertiesPanel);
+		}
+		
+		return futureStatusPropertiesPanel;
 	}
 	
 	@Override

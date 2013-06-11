@@ -65,4 +65,9 @@ abstract public class FormItem
 	{
 		return false;
 	}
+	
+	public boolean isDateFieldData()
+	{
+		return false;
+	}
 }
