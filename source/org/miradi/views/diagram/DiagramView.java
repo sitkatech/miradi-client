@@ -65,8 +65,6 @@ import org.miradi.actions.ActionDeleteBendPoint;
 import org.miradi.actions.ActionDeleteConceptualModel;
 import org.miradi.actions.ActionDeleteGoal;
 import org.miradi.actions.ActionDeleteGroupBox;
-import org.miradi.actions.ActionDeleteIndicator;
-import org.miradi.actions.ActionDeleteIndicatorMeasurement;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttribute;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttributeIndicator;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttributeMeasurement;
@@ -333,7 +331,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 		addDoerToMap(ActionCreateIndicator.class, new CreateIndicator());
 		addDoerToMap(ActionCloneIndicator.class, new CloneIndicatorDoer());
-		addDoerToMap(ActionDeleteIndicator.class, new DeleteIndicator());
 		
 		addDoerToMap(ActionCreateGoal.class, new CreateGoal());
 		addDoerToMap(ActionCloneGoal.class, new CloneGoalDoer());
@@ -352,7 +349,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionDeleteKeyEcologicalAttributeMeasurement.class, new DeleteKeyEcologicalAttributeMeasurementDoer());
 		
 		addDoerToMap(ActionCreateIndicatorMeasurement.class, new CreateKeyEcologicalAttributeMeasurementDoer());
-		addDoerToMap(ActionDeleteIndicatorMeasurement.class, new DeleteKeyEcologicalAttributeMeasurementDoer());
 		addDoerToMap(ActionCreateFutureStatus.class, new CreateFutureStatusDoer());
 		
 		addDoerToMap(ActionExpandToMenu.class, new ExpandToMenuDoer());
