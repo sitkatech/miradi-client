@@ -262,7 +262,6 @@ public class Actions
 		
 		registerAction(new ActionCreateIndicator(mainWindow));
 		registerAction(new ActionCloneIndicator(mainWindow));
-		registerAction(new ActionDeleteIndicator(mainWindow));
 		
 		registerAction(new ActionCreateObjective(mainWindow));
 		registerAction(new ActionCloneObjective(mainWindow));
