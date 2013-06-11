@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-11 11:01-0500\n"
+"POT-Creation-Date: 2013-06-11 14:31-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -1313,6 +1313,10 @@ msgstr ""
 msgid "Action|Insert|Add Factor(s) to Group Box"
 msgstr "Tambahkan Faktor(-faktor) ke Kotak Grup "
 
+#: Miradi/source/org/miradi/actions/ActionCreateFutureStatus.java:36
+msgid "Action|Insert|Create Future Status"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionInsertGroupBox.java:35
 msgid "Action|Insert|Create Group Box"
 msgstr "Buat Kotak Grup "
@@ -1761,6 +1765,10 @@ msgstr "Tabel Berbatas Tab "
 #: Miradi/source/org/miradi/actions/ActionPlanningCreationMenu.java:34
 msgid "Action|Table|Create..."
 msgstr "Buat... "
+
+#: Miradi/source/org/miradi/actions/ActionExpandToFutureStatus.java:36
+msgid "Action|Table|Expand To Future Status"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExpandToGoal.java:36
 msgid "Action|Table|Expand To Goal"
@@ -3750,7 +3758,7 @@ msgstr "Hutan – Rawa-rawa Tropis/Subtropis"
 msgid "Forest - Temperate"
 msgstr "Hutan - Temperat"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:488
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:494
 msgid "Found Corrupted Data:"
 msgstr "Data yang Rusak Ditemukan: "
 
@@ -3822,6 +3830,10 @@ msgstr "Sumber Pendanaan"
 msgid "Funding Sources - The sources of money available to your project."
 msgstr ""
 "Sumber-sumber Dana – Sumber-sumber keuangan yang tersedia untuk proyek Anda."
+
+#: Miradi/source/org/miradi/dialogs/viability/FutureStatusPropertiesPanel.java:39
+msgid "Future Statuss"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:31
 #: Miradi/source/org/miradi/forms/objects/GoalPropertiesForm.java:32
@@ -4941,11 +4953,11 @@ msgstr "Edit "
 msgid "MenuBar|File"
 msgstr "Berkas "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:577
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:578
 msgid "MenuBar|Help"
 msgstr "Bantuan "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:509
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:510
 msgid "MenuBar|Step-by-Step"
 msgstr "Langkah demi Langkah "
 
@@ -6673,6 +6685,10 @@ msgstr ""
 msgid "TT|Create a Funding Source"
 msgstr "Buat satu Sumber Dana "
 
+#: Miradi/source/org/miradi/actions/ActionCreateFutureStatus.java:42
+msgid "TT|Create a Future status"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionCreateGoal.java:41
 msgid "TT|Create a Goal"
 msgstr "Buat satu Sasaran "
@@ -6989,6 +7005,10 @@ msgstr "Edit metode untuk indikator ini "
 #: Miradi/source/org/miradi/actions/ActionExpandAllRows.java:41
 msgid "TT|Expand All Tree Rows"
 msgstr "Perluas Semua Baris Pohon "
+
+#: Miradi/source/org/miradi/actions/ActionExpandToFutureStatus.java:42
+msgid "TT|Expand To Future Status"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExpandToGoal.java:42
 msgid "TT|Expand To Goal"
@@ -7406,7 +7426,7 @@ msgstr "Khusus "
 msgid "Tab|Goals"
 msgstr "Sasaran-sasaran "
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityTreeManagementPanel.java:91
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityTreeManagementPanel.java:93
 msgid "Tab|Indicators"
 msgstr "Indikator "
 
@@ -8029,7 +8049,7 @@ msgstr "Kesalahan"
 msgid "Title|Export Image Scale"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:976
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:982
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Sifat-sifat Faktor "
@@ -8347,7 +8367,7 @@ msgstr ""
 msgid "Unknown code: "
 msgstr "Kode tak dikenal: "
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:415
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:421
 msgid "Unknown error displaying diagram"
 msgstr "Kesalahan tak dikenal saat menampilkan diagram "
 

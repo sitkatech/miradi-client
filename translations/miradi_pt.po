@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-11 11:01-0500\n"
+"POT-Creation-Date: 2013-06-11 14:31-0500\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -1466,6 +1466,10 @@ msgstr "Importar Modelo XSL"
 msgid "Action|Insert|Add Factor(s) to Group Box"
 msgstr "Adicionar Fator(es) à Caixa de Agrupamento"
 
+#: Miradi/source/org/miradi/actions/ActionCreateFutureStatus.java:36
+msgid "Action|Insert|Create Future Status"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionInsertGroupBox.java:35
 msgid "Action|Insert|Create Group Box"
 msgstr "Criar Caixa de Agrupamento"
@@ -1919,6 +1923,10 @@ msgstr "Tabela Delimitada por Aba"
 #: Miradi/source/org/miradi/actions/ActionPlanningCreationMenu.java:34
 msgid "Action|Table|Create..."
 msgstr "Criar..."
+
+#: Miradi/source/org/miradi/actions/ActionExpandToFutureStatus.java:36
+msgid "Action|Table|Expand To Future Status"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExpandToGoal.java:36
 msgid "Action|Table|Expand To Goal"
@@ -3977,7 +3985,7 @@ msgstr "Floresta - Subtropical/Tropical Pântano"
 msgid "Forest - Temperate"
 msgstr "Floresta - Temperada"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:488
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:494
 msgid "Found Corrupted Data:"
 msgstr "Dados Corrompidos Encontrados:"
 
@@ -4051,6 +4059,10 @@ msgstr "Fontes de Recursos"
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:304
 msgid "Funding Sources - The sources of money available to your project."
 msgstr "Fontes de Recursos - As fontes de dinheiro disponível para seu projeto"
+
+#: Miradi/source/org/miradi/dialogs/viability/FutureStatusPropertiesPanel.java:39
+msgid "Future Statuss"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:31
 #: Miradi/source/org/miradi/forms/objects/GoalPropertiesForm.java:32
@@ -5196,11 +5208,11 @@ msgstr "Editar"
 msgid "MenuBar|File"
 msgstr "Arquivo"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:577
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:578
 msgid "MenuBar|Help"
 msgstr "Ajuda"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:509
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:510
 msgid "MenuBar|Step-by-Step"
 msgstr "Passo a Passo"
 
@@ -6985,6 +6997,10 @@ msgstr "Criar uma Tarefa no Mesmo Nível"
 msgid "TT|Create a Funding Source"
 msgstr "Criar uma Fonte de Financiamento"
 
+#: Miradi/source/org/miradi/actions/ActionCreateFutureStatus.java:42
+msgid "TT|Create a Future status"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionCreateGoal.java:41
 msgid "TT|Create a Goal"
 msgstr "Criar um Objetivo"
@@ -7301,6 +7317,10 @@ msgstr "Editar os métodos para este indicador"
 #: Miradi/source/org/miradi/actions/ActionExpandAllRows.java:41
 msgid "TT|Expand All Tree Rows"
 msgstr "Expandir Todas as Linhas de Arvore de Componentes ('Tree')"
+
+#: Miradi/source/org/miradi/actions/ActionExpandToFutureStatus.java:42
+msgid "TT|Expand To Future Status"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExpandToGoal.java:42
 msgid "TT|Expand To Goal"
@@ -7730,7 +7750,7 @@ msgstr "Personalizado"
 msgid "Tab|Goals"
 msgstr "Objetivos"
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityTreeManagementPanel.java:91
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityTreeManagementPanel.java:93
 msgid "Tab|Indicators"
 msgstr "Indicadores"
 
@@ -8388,7 +8408,7 @@ msgstr "Erro"
 msgid "Title|Export Image Scale"
 msgstr "Exportar Escala de Imagem"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:976
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:982
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Propriedades de Fatores"
@@ -8710,7 +8730,7 @@ msgstr ""
 msgid "Unknown code: "
 msgstr "Código Desconhecido"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:415
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:421
 msgid "Unknown error displaying diagram"
 msgstr "Erro desconhecido exibindo o diagrama"
 

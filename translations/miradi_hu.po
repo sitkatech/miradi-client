@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-11 11:01-0500\n"
+"POT-Creation-Date: 2013-06-11 14:31-0500\n"
 "PO-Revision-Date: 2011-02-15 16:35-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1270,6 +1270,10 @@ msgstr ""
 msgid "Action|Insert|Add Factor(s) to Group Box"
 msgstr ""
 
+#: Miradi/source/org/miradi/actions/ActionCreateFutureStatus.java:36
+msgid "Action|Insert|Create Future Status"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionInsertGroupBox.java:35
 msgid "Action|Insert|Create Group Box"
 msgstr ""
@@ -1717,6 +1721,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionPlanningCreationMenu.java:34
 msgid "Action|Table|Create..."
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionExpandToFutureStatus.java:36
+msgid "Action|Table|Expand To Future Status"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExpandToGoal.java:36
@@ -3623,7 +3631,7 @@ msgstr ""
 msgid "Forest - Temperate"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:488
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:494
 msgid "Found Corrupted Data:"
 msgstr ""
 
@@ -3689,6 +3697,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:304
 msgid "Funding Sources - The sources of money available to your project."
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/viability/FutureStatusPropertiesPanel.java:39
+msgid "Future Statuss"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:31
@@ -4775,11 +4787,11 @@ msgstr ""
 msgid "MenuBar|File"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:577
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:578
 msgid "MenuBar|Help"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:509
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:510
 msgid "MenuBar|Step-by-Step"
 msgstr ""
 
@@ -6421,6 +6433,10 @@ msgstr ""
 msgid "TT|Create a Funding Source"
 msgstr ""
 
+#: Miradi/source/org/miradi/actions/ActionCreateFutureStatus.java:42
+msgid "TT|Create a Future status"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionCreateGoal.java:41
 msgid "TT|Create a Goal"
 msgstr ""
@@ -6736,6 +6752,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExpandAllRows.java:41
 msgid "TT|Expand All Tree Rows"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionExpandToFutureStatus.java:42
+msgid "TT|Expand To Future Status"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExpandToGoal.java:42
@@ -7147,7 +7167,7 @@ msgstr ""
 msgid "Tab|Goals"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityTreeManagementPanel.java:91
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityTreeManagementPanel.java:93
 msgid "Tab|Indicators"
 msgstr ""
 
@@ -7722,7 +7742,7 @@ msgstr ""
 msgid "Title|Export Image Scale"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:976
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:982
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr ""
@@ -8031,7 +8051,7 @@ msgstr ""
 msgid "Unknown code: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:415
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:421
 msgid "Unknown error displaying diagram"
 msgstr ""
 

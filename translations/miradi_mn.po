@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-11 11:01-0500\n"
+"POT-Creation-Date: 2013-06-11 14:31-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -1393,6 +1393,10 @@ msgstr ""
 msgid "Action|Insert|Add Factor(s) to Group Box"
 msgstr "Арга хэмжээ|Инсэрт|Бүлгийн хайрцагт хүчин зүйл(с) нэмэх"
 
+#: Miradi/source/org/miradi/actions/ActionCreateFutureStatus.java:36
+msgid "Action|Insert|Create Future Status"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionInsertGroupBox.java:35
 msgid "Action|Insert|Create Group Box"
 msgstr "Арга хэмжээ|Инсэрт|Бүлгийн хайрцаг үүсгэх"
@@ -1841,6 +1845,10 @@ msgstr "Арга хэмжээ|Tab-аар тусгаарлагдсан Хүснэ
 #: Miradi/source/org/miradi/actions/ActionPlanningCreationMenu.java:34
 msgid "Action|Table|Create..."
 msgstr "Арга хэмжээ|Хүснэгт|Үүсгэх..."
+
+#: Miradi/source/org/miradi/actions/ActionExpandToFutureStatus.java:36
+msgid "Action|Table|Expand To Future Status"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExpandToGoal.java:36
 msgid "Action|Table|Expand To Goal"
@@ -3822,7 +3830,7 @@ msgstr "Ой - Субтропикийн/Тропикийн Намаг"
 msgid "Forest - Temperate"
 msgstr "Ой- Сэрүүн бүсийн"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:488
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:494
 msgid "Found Corrupted Data:"
 msgstr "Эвдэрсэн мэдээлэл олдсон:"
 
@@ -3889,6 +3897,10 @@ msgstr "Санхүүжилтийн эх үүсвэрүүд"
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:304
 msgid "Funding Sources - The sources of money available to your project."
 msgstr "Санхүүжилтийн эх үүсвэрүүд - Таны төслийн мөнгөний эх үүсвэрүүд."
+
+#: Miradi/source/org/miradi/dialogs/viability/FutureStatusPropertiesPanel.java:39
+msgid "Future Statuss"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:31
 #: Miradi/source/org/miradi/forms/objects/GoalPropertiesForm.java:32
@@ -4999,11 +5011,11 @@ msgstr "Цэсийн системийн команд|Засах"
 msgid "MenuBar|File"
 msgstr "Цэсийн системийн команд|Файл"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:577
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:578
 msgid "MenuBar|Help"
 msgstr "Цэсийн системийн команд|Тусламж"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:509
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:510
 msgid "MenuBar|Step-by-Step"
 msgstr "Цэсийн системийн команд|Алхам алхамаар"
 
@@ -6753,6 +6765,10 @@ msgstr "TT|Адил түвшний даалгавар үүсгэх"
 msgid "TT|Create a Funding Source"
 msgstr "TT|Санхүүжилтийн эх үүсвэрийг үүсгэх"
 
+#: Miradi/source/org/miradi/actions/ActionCreateFutureStatus.java:42
+msgid "TT|Create a Future status"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionCreateGoal.java:41
 msgid "TT|Create a Goal"
 msgstr "TT|Зорилгыг үүсгэх"
@@ -7069,6 +7085,10 @@ msgstr "TT|Энэ шалгуур үзүүлэлтийн арга зүйг хян
 #: Miradi/source/org/miradi/actions/ActionExpandAllRows.java:41
 msgid "TT|Expand All Tree Rows"
 msgstr "TT|Бүх тулгуур эгнээнүүдийг өргөжүүлэх"
+
+#: Miradi/source/org/miradi/actions/ActionExpandToFutureStatus.java:42
+msgid "TT|Expand To Future Status"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExpandToGoal.java:42
 msgid "TT|Expand To Goal"
@@ -7485,7 +7505,7 @@ msgstr "Tab|Үйлчлүүлэгч"
 msgid "Tab|Goals"
 msgstr "Tab|Зорилгууд"
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityTreeManagementPanel.java:91
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityTreeManagementPanel.java:93
 msgid "Tab|Indicators"
 msgstr "Tab|Шалгуур үзүүлэлтүүд"
 
@@ -8110,7 +8130,7 @@ msgstr "Гарчиг|Алдаа"
 msgid "Title|Export Image Scale"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:976
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:982
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Гарчиг|Хүчин зүйлийн Properties"
@@ -8429,7 +8449,7 @@ msgstr ""
 msgid "Unknown code: "
 msgstr "Тодорхой бус код: "
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:415
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:421
 msgid "Unknown error displaying diagram"
 msgstr "Тодорхой бус шалтгаанаар диаграммыг үзүүлэх боломжгүй"
 
