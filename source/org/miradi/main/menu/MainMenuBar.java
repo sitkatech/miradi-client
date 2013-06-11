@@ -206,8 +206,7 @@ public class MainMenuBar extends JMenuBar
 		if(isViabilityView())
 		{
 			addMenuItem(actions, menu, ActionDeleteKeyEcologicalAttribute.class);
-			addMenuItem(actions, menu, ActionDeleteKeyEcologicalAttributeIndicator.class);
-			addMenuItem(actions, menu, ActionDeleteKeyEcologicalAttributeMeasurement.class);
+			addMenuItem(actions, menu, ActionDeletePlanningViewTreeNode.class);
 		}
 		menu.addSeparator();
 		
