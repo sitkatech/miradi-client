@@ -20,11 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.targetviability;
 
 
+import org.miradi.actions.ActionCreateFutureStatus;
 import org.miradi.actions.ActionCreateKeyEcologicalAttribute;
 import org.miradi.actions.ActionCreateKeyEcologicalAttributeIndicator;
 import org.miradi.actions.ActionCreateKeyEcologicalAttributeMeasurement;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttribute;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttributeIndicator;
+import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionExpandToGoal;
 import org.miradi.actions.ActionExpandToHumanWelfareTarget;
 import org.miradi.actions.ActionExpandToIndicator;
@@ -42,6 +44,8 @@ import org.miradi.views.diagram.CreateViabilityIndicatorDoer;
 import org.miradi.views.diagram.CreateViabilityKeyEcologicalAttributeDoer;
 import org.miradi.views.diagram.DeleteKeyEcologicalAttributeDoer;
 import org.miradi.views.diagram.DeleteViabilityIndicatorDoer;
+import org.miradi.views.diagram.doers.CreateFutureStatusDoer;
+import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
 import org.miradi.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.targetviability.doers.ExpandToGoalDoer;
 import org.miradi.views.targetviability.doers.ExpandToHumanWelfareTargetDoer;
@@ -108,6 +112,8 @@ public class TargetViabilityView extends TabbedView
 		addDoerToMap(ActionExpandToIndicator.class, new ExpandToIndicatorDoer());
 		addDoerToMap(ActionExpandToGoal.class, new ExpandToGoalDoer());
 		addDoerToMap(ActionExpandToMeasurement.class, new ExpandToMeasurementDoer());
+		addDoerToMap(ActionDeletePlanningViewTreeNode.class, new TreeNodeDeleteDoer());
+		addDoerToMap(ActionCreateFutureStatus.class, new CreateFutureStatusDoer());
 	}
 	
 	

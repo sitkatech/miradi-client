@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.viability;
 
+import org.miradi.actions.ActionCreateFutureStatus;
 import org.miradi.actions.ActionCreateKeyEcologicalAttribute;
 import org.miradi.actions.ActionCreateKeyEcologicalAttributeIndicator;
 import org.miradi.actions.ActionCreateKeyEcologicalAttributeMeasurement;
@@ -101,6 +102,7 @@ public class TargetViabilityTreeTablePanel extends PlanningTreeTablePanel
 				ActionCreateKeyEcologicalAttribute.class, 
 				ActionCreateKeyEcologicalAttributeIndicator.class,
 				ActionCreateKeyEcologicalAttributeMeasurement.class,
+				ActionCreateFutureStatus.class,
 				ActionExpandToMenu.class,
 				
 				ActionDeleteKeyEcologicalAttribute.class,
