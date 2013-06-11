@@ -31,6 +31,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.AccountingCodePool;
+import org.miradi.objectpools.FutureStatusPool;
 import org.miradi.objectpools.MiradiShareProjectDataPool;
 import org.miradi.objectpools.TaxonomyAssociationPool;
 import org.miradi.objectpools.MiradiShareTaxonomyPool;
@@ -105,6 +106,7 @@ import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.schemas.FundingSourceSchema;
+import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
@@ -218,6 +220,7 @@ public class ObjectManager
 		addNormalPool(new MiradiShareProjectDataPool(ida), MiradiShareProjectDataSchema.OBJECT_NAME);
 		addNormalPool(new MiradiShareTaxonomyPool(ida), MiradiShareTaxonomySchema.OBJECT_NAME);
 		addNormalPool(new TaxonomyAssociationPool(ida), TaxonomyAssociationSchema.OBJECT_NAME);
+		addNormalPool(new FutureStatusPool(ida), FutureStatusSchema.OBJECT_NAME);
 	}
 	
 	public ChainWalker getDiagramChainWalker()
