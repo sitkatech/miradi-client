@@ -93,9 +93,9 @@ import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objectdata.BooleanData;
+import org.miradi.objecthelpers.BaseObjectByNameSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.TaxonomyAssociationByTaxomomyCodeSorter;
 import org.miradi.objecthelpers.TaxonomyHelper;
 import org.miradi.objectpools.TaxonomyAssociationPool;
 import org.miradi.objects.BaseObject;
@@ -687,7 +687,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		TaxonomyAssociationPool taxonomyAssociationPool = getProject().getTaxonomyAssociationPool();
 		BaseObject baseObject = BaseObject.find(getProject(), refForType);
 		Vector<TaxonomyAssociation> sortedTaxonomyAssociationsForType = taxonomyAssociationPool.findTaxonomyAssociationsForBaseObject(baseObject);
-		Collections.sort(sortedTaxonomyAssociationsForType, new TaxonomyAssociationByTaxomomyCodeSorter());
+		Collections.sort(sortedTaxonomyAssociationsForType, new BaseObjectByNameSorter());
 		LinkedHashMap<ObjectDataInputField, String> fieldsToLabelMapForType = new LinkedHashMap<ObjectDataInputField, String>();
 		for(TaxonomyAssociation taxonomyAssociation : sortedTaxonomyAssociationsForType)
 		{

@@ -105,6 +105,7 @@ abstract public class Xmpz2GroupedConstants implements Xmpz2XmlConstants
 		MEASUREMENT,
 		METHOD,
 		SUB_TASK,
+		FUTURE_STATUS,
 		};
 		
 		return Utility.convertToVector(objectTypeNames);

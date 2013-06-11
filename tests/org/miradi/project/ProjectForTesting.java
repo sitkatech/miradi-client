@@ -68,6 +68,7 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.FosProjectData;
 import org.miradi.objects.FundingSource;
+import org.miradi.objects.FutureStatus;
 import org.miradi.objects.Goal;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.HumanWelfareTarget;
@@ -155,6 +156,7 @@ import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.schemas.FundingSourceSchema;
+import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
@@ -666,6 +668,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return indicator;
 	}
 	
+	public FutureStatus createAndPopulateFutureStatus(Indicator owner) throws Exception
+	{
+		FutureStatus indicator = createFutureStatus(owner);
+		populateBaseObjectWithSampleData(indicator);
+		
+		return indicator;
+	}
+	
 	public Task createAndPopulateTask(BaseObject owner, String customTaskLabel) throws Exception
 	{
 		Task task  = createTask(owner);
@@ -1013,6 +1023,17 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		Cause cause = createCause();
 		return createIndicator(cause);
+	}
+	
+	public FutureStatus createFutureStatus(Indicator owner) throws Exception
+	{
+		ORef futureStatusRef = createObject(FutureStatusSchema.getObjectType());
+		FutureStatus futureStatus = FutureStatus.find(this, futureStatusRef);
+		ORefList futureStatusRefs = new ORefList(owner.getFutureStatusRefs());
+		futureStatusRefs.add(futureStatusRef);
+		fillObjectUsingCommand(owner, Indicator.TAG_FUTURE_STATUS_REFS, futureStatusRefs);
+		
+		return futureStatus;
 	}
 	
 	public BaseObject createBaseObject(int objectType) throws Exception
@@ -1371,6 +1392,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(indicator, Indicator.TAG_COMMENTS, "Some indicator Comment");
 		addExpenseWithValue(indicator);
 		addResourceAssignment(indicator);
+		createAndPopulateFutureStatus(indicator);
 	}
 	
 	public void populateTask(Task task, String customLabel) throws Exception
@@ -2103,7 +2125,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 		return baseId;
 	}
-
+	
 	public FactorId createTaskAndReturnId() throws Exception
 	{
 		return (FactorId)createObjectAndReturnId(ObjectType.TASK, BaseId.INVALID);
