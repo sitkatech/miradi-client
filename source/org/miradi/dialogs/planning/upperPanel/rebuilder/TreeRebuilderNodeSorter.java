@@ -31,6 +31,7 @@ import org.miradi.schemas.BudgetCategoryTwoSchema;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FundingSourceSchema;
+import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
@@ -78,6 +79,7 @@ public class TreeRebuilderNodeSorter extends NodeSorter
 			ResultsChainDiagramSchema.OBJECT_NAME,
 			ConceptualModelDiagramSchema.OBJECT_NAME,
 			MeasurementSchema.OBJECT_NAME,
+			FutureStatusSchema.OBJECT_NAME,
 			GoalSchema.OBJECT_NAME,
 			SubTargetSchema.OBJECT_NAME,
 			Cause.OBJECT_NAME_THREAT,

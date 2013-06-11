@@ -23,6 +23,7 @@ package org.miradi.dialogs.planning.upperPanel;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.miradi.actions.ActionExpandToFutureStatus;
 import org.miradi.actions.ActionExpandToGoal;
 import org.miradi.actions.ActionExpandToHumanWelfareTarget;
 import org.miradi.actions.ActionExpandToIndicator;
@@ -52,6 +53,7 @@ public class ViabilityTreeTable extends PlanningTreeTable
 		relevantActions.add(ActionExpandToIndicator.class);
 		relevantActions.add(ActionExpandToGoal.class);
 		relevantActions.add(ActionExpandToMeasurement.class);
+		relevantActions.add(ActionExpandToFutureStatus.class);
 		
 		return relevantActions;
 	}

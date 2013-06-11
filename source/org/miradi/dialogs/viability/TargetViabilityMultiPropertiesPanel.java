@@ -52,7 +52,7 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		targetViabilityKeaPropertiesPanel = new TargetViabilityKeaPropertiesPanel(getProject(), mainWindow.getActions());
 		targetViabilityIndicatorPropertiesPanel = new IndicatorPropertiesPanelWithoutBudgetPanels(getProject());
 		targetViabilityMeasurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
-		futureStatusPropertiesPanel = new IndicatorFutureStatusSubPanel(getProject());
+		futureStatusPropertiesPanel = new FutureStatusPropertiesPanel(getProject());
 		
 		addPanel(blankPropertiesPanel);
 		addPanel(targetPropertiesPanel);
@@ -108,5 +108,5 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 	private TargetViabilityKeaPropertiesPanel targetViabilityKeaPropertiesPanel;
 	private AbstractIndicatorPropertiesPanel targetViabilityIndicatorPropertiesPanel;
 	private MeasurementPropertiesPanel targetViabilityMeasurementPropertiesPanel;
-	private IndicatorFutureStatusSubPanel futureStatusPropertiesPanel;
+	private FutureStatusPropertiesPanel futureStatusPropertiesPanel;
 }

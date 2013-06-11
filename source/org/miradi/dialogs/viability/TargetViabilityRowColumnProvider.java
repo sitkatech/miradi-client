@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.viability;
 
 import org.miradi.project.Project;
+import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
@@ -47,6 +48,7 @@ public class TargetViabilityRowColumnProvider extends AbstractViabilityRowColumn
 				IndicatorSchema.OBJECT_NAME,
 				MeasurementSchema.OBJECT_NAME,
 				GoalSchema.OBJECT_NAME,
+				FutureStatusSchema.OBJECT_NAME,
 		});
 	}
 }

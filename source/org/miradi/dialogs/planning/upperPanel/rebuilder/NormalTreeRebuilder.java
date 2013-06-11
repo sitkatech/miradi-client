@@ -33,6 +33,7 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
+import org.miradi.objects.FutureStatus;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
@@ -100,6 +101,9 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 			return noChildren;
 		
 		if(SubTarget.is(parentRef))
+			return noChildren;
+		
+		if (FutureStatus.is(parentRef))
 			return noChildren;
 
 		if(parentRef.isInvalid())
@@ -233,6 +237,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		ORefList childRefs = new ORefList();
 		Indicator indicator = Indicator.find(getProject(), parentRef);
 		childRefs.addAll(indicator.getMethodRefs());
+		childRefs.addAll(indicator.getFutureStatusRefs());
 		if(getRowColumnProvider().getRowCodesToShow().contains(MeasurementSchema.OBJECT_NAME))
 		{
 			childRefs.addAll(getSortedByDateMeasurementRefs(indicator));

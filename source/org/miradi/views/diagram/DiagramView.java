@@ -41,6 +41,7 @@ import org.miradi.actions.ActionCreateActivity;
 import org.miradi.actions.ActionCreateBendPoint;
 import org.miradi.actions.ActionCreateConceptualModel;
 import org.miradi.actions.ActionCreateDiagramMargin;
+import org.miradi.actions.ActionCreateFutureStatus;
 import org.miradi.actions.ActionCreateGoal;
 import org.miradi.actions.ActionCreateIncomingJunction;
 import org.miradi.actions.ActionCreateIndicator;
@@ -77,6 +78,7 @@ import org.miradi.actions.ActionDeleteSubTarget;
 import org.miradi.actions.ActionDeleteTaggedObjectSet;
 import org.miradi.actions.ActionDiagramProperties;
 import org.miradi.actions.ActionEditTaggedObjectSet;
+import org.miradi.actions.ActionExpandToFutureStatus;
 import org.miradi.actions.ActionExpandToGoal;
 import org.miradi.actions.ActionExpandToIndicator;
 import org.miradi.actions.ActionExpandToMeasurement;
@@ -171,6 +173,7 @@ import org.miradi.utils.PointList;
 import org.miradi.views.TabbedView;
 import org.miradi.views.diagram.doers.ArrangeConceptualModelDoer;
 import org.miradi.views.diagram.doers.CloneStressDoer;
+import org.miradi.views.diagram.doers.CreateFutureStatusDoer;
 import org.miradi.views.diagram.doers.CreateIncomingJunctionDoer;
 import org.miradi.views.diagram.doers.CreateMarginDoer;
 import org.miradi.views.diagram.doers.CreateNamedTaggedObjectSetDoer;
@@ -183,6 +186,7 @@ import org.miradi.views.diagram.doers.DeleteStressDoer;
 import org.miradi.views.diagram.doers.DeleteTaggedObjectSetDoer;
 import org.miradi.views.diagram.doers.DiagramPropertiesShowDoer;
 import org.miradi.views.diagram.doers.EditTaggedObjectSetDoer;
+import org.miradi.views.diagram.doers.ExpandToFutureStatusDoer;
 import org.miradi.views.diagram.doers.GroupBoxAddDiagramFactorDoer;
 import org.miradi.views.diagram.doers.GroupBoxRemoveDiagramFactorDoer;
 import org.miradi.views.diagram.doers.HideActivityBubbleDoer;
@@ -349,11 +353,13 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 		addDoerToMap(ActionCreateIndicatorMeasurement.class, new CreateKeyEcologicalAttributeMeasurementDoer());
 		addDoerToMap(ActionDeleteIndicatorMeasurement.class, new DeleteKeyEcologicalAttributeMeasurementDoer());
+		addDoerToMap(ActionCreateFutureStatus.class, new CreateFutureStatusDoer());
 		
 		addDoerToMap(ActionExpandToMenu.class, new ExpandToMenuDoer());
 		addDoerToMap(ActionExpandToIndicator.class, new ExpandToIndicatorDoer());
 		addDoerToMap(ActionExpandToGoal.class, new ExpandToGoalDoer());
 		addDoerToMap(ActionExpandToMeasurement.class, new ExpandToMeasurementDoer());
+		addDoerToMap(ActionExpandToFutureStatus.class, new ExpandToFutureStatusDoer());
 		
 		addDoerToMap(ActionCreateResultsChain.class, new CreateResultsChainDoer());
 		addDoerToMap(ActionShowResultsChain.class, new ShowResultsChainDoer());

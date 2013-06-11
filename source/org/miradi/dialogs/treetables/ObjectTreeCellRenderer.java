@@ -65,6 +65,7 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FundingSource;
+import org.miradi.objects.FutureStatus;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ScopeBox;
@@ -111,6 +112,9 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		
 		goalRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(goalRenderer, new GoalIcon(), getBoldFont());
+		
+		futureStatusRenderer = createRenderer(treeTableToUse);
+		setRendererDefaults(futureStatusRenderer, new GoalIcon(), getPlainFont());
 		
 		activityRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(activityRenderer, new ActivityIcon(), getPlainFont());
@@ -254,6 +258,8 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 			renderer = categoryTwoRenderer;
 		else if (ScopeBox.is(node.getType()))
 			renderer = scopeBoxRenderer;
+		else if (FutureStatus.is(node.getType()))
+			renderer = futureStatusRenderer;
 		
 		Component rendererComponent = renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocusToUse);
 		return rendererComponent;
@@ -337,5 +343,6 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 	private VariableHeightTreeCellRenderer categoryOneRenderer;
 	private VariableHeightTreeCellRenderer categoryTwoRenderer;
 	private	VariableHeightTreeCellRenderer scopeBoxRenderer;
+	private VariableHeightTreeCellRenderer futureStatusRenderer;
 	
 }

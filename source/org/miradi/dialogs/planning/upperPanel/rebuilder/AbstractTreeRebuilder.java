@@ -45,6 +45,7 @@ import org.miradi.project.Project;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
+import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
@@ -178,6 +179,7 @@ abstract public class AbstractTreeRebuilder
 			MeasurementSchema.getObjectType(),
 			ResourceAssignmentSchema.getObjectType(),
 			ExpenseAssignmentSchema.getObjectType(),
+			FutureStatusSchema.getObjectType(),
 		};
 		
 		try

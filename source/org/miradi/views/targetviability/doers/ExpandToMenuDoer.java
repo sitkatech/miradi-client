@@ -22,6 +22,7 @@ package org.miradi.views.targetviability.doers;
 
 import org.miradi.actions.ActionCollapseAllRows;
 import org.miradi.actions.ActionExpandAllRows;
+import org.miradi.actions.ActionExpandToFutureStatus;
 import org.miradi.actions.ActionExpandToGoal;
 import org.miradi.actions.ActionExpandToHumanWelfareTarget;
 import org.miradi.actions.ActionExpandToIndicator;
@@ -44,6 +45,7 @@ public class ExpandToMenuDoer extends AbstractPopDownMenuDoer
 				ActionExpandToIndicator.class,
 				ActionExpandToGoal.class,
 				ActionExpandToMeasurement.class,
+				ActionExpandToFutureStatus.class,
 			};
 	}
 }

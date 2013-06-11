@@ -33,6 +33,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
+import org.miradi.objects.FutureStatus;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
@@ -73,6 +74,9 @@ public class ViabilityTreeRebuilder extends AbstractTreeRebuilder
 		if(Measurement.is(parentRef))
 			return noChildren;
 		
+		if (FutureStatus.is(parentRef))
+			return noChildren;
+		
 		if(Goal.is(parentRef))
 			return noChildren;
 		
@@ -104,6 +108,7 @@ public class ViabilityTreeRebuilder extends AbstractTreeRebuilder
 		ORefList childRefs = new ORefList();
 		Indicator indicator = Indicator.find(getProject(), parentRef);
 		childRefs.addAll(getSortedByDateMeasurementRefs(indicator));
+		childRefs.addAll(indicator.getFutureStatusRefs());
 		childRefs.add(new UnspecifiedBaseObject(getProject().getObjectManager(), GoalSchema.getObjectType(), GoalSchema.OBJECT_NAME));
 		
 		return childRefs;

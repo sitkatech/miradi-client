@@ -23,14 +23,15 @@ import java.awt.Rectangle;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.miradi.actions.ActionCreateChildTask;
+import org.miradi.actions.ActionCreateFutureStatus;
 import org.miradi.actions.ActionCreateIndicatorMeasurement;
+import org.miradi.actions.ActionCreateSameLevelTask;
 import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionTreeCreateActivity;
 import org.miradi.actions.ActionTreeCreateIndicator;
 import org.miradi.actions.ActionTreeCreateMethod;
 import org.miradi.actions.ActionTreeCreateObjective;
-import org.miradi.actions.ActionCreateSameLevelTask;
-import org.miradi.actions.ActionCreateChildTask;
 import org.miradi.actions.ActionTreeShareActivity;
 import org.miradi.actions.ActionTreeShareMethod;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
@@ -74,6 +75,7 @@ public class PlanningTreeTable extends TreeTableWithPreferredScrollableViewportS
 		actions.add(ActionCreateSameLevelTask.class);
 		actions.add(ActionDeletePlanningViewTreeNode.class);
 		actions.add(ActionCreateIndicatorMeasurement.class);
+		actions.add(ActionCreateFutureStatus.class);
 		return actions;
 	}
 }

@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Indicator;
 import org.miradi.questions.StatusQuestion;
 
 public class FutureStatusSchema extends BaseObjectSchema
@@ -36,11 +35,11 @@ public class FutureStatusSchema extends BaseObjectSchema
 	{
 		super.fillFieldSchemas();	
 		
-		createFieldSchemaChoice(Indicator.TAG_FUTURE_STATUS_RATING, StatusQuestion.class);
-		createFieldSchemaDate(Indicator.TAG_FUTURE_STATUS_DATE);
-		createFieldSchemaSingleLineUserText(Indicator.TAG_FUTURE_STATUS_SUMMARY);
-		createFieldSchemaMultiLineUserText(Indicator.TAG_FUTURE_STATUS_DETAIL);
-		createFieldSchemaMultiLineUserText(Indicator.TAG_FUTURE_STATUS_COMMENTS);
+		createFieldSchemaChoice(TAG_FUTURE_STATUS_RATING, StatusQuestion.class);
+		createFieldSchemaDate(TAG_FUTURE_STATUS_DATE);
+		createFieldSchemaSingleLineUserText(TAG_FUTURE_STATUS_SUMMARY);
+		createFieldSchemaMultiLineUserText(TAG_FUTURE_STATUS_DETAIL);
+		createFieldSchemaMultiLineUserText(TAG_FUTURE_STATUS_COMMENTS);
 	}
 	
 	public static int getObjectType()

@@ -30,6 +30,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
+import org.miradi.objects.FutureStatus;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
@@ -70,6 +71,9 @@ public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 		if (ResourceAssignment.is(selected))
 			return true;
 		
+		if (FutureStatus.is(selected))
+			return true;
+		
 		return Task.is(selected.getType());
 	}
 
@@ -105,6 +109,9 @@ public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 			
 			if (ResourceAssignment.is(selected))
 				deleteAnnotation(selected, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
+			
+			if (FutureStatus.is(selected))
+				deleteAnnotation(selected, Indicator.TAG_FUTURE_STATUS_REFS);
 		}
 		catch (Exception e)
 		{

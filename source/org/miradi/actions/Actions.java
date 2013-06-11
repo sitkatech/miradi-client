@@ -256,6 +256,7 @@ public class Actions
 		registerAction(new ActionExpandToIndicator(mainWindow));
 		registerAction(new ActionExpandToMeasurement(mainWindow));
 		registerAction(new ActionExpandToGoal(mainWindow));
+		registerAction(new ActionExpandToFutureStatus(mainWindow));
 		registerAction(new ActionPlanningCustomizeDialogPopup(mainWindow));
 		registerAction(new ActionCreateCustomFromCurrentTreeTableConfiguration(mainWindow));
 		
@@ -524,6 +525,7 @@ public class Actions
 		registerAction(new ActionShowCurrentWizardFileName(mainWindow));
 		registerAction(new ActionExpandAllRows(mainWindow));
 		registerAction(new ActionCollapseAllRows(mainWindow));
+		registerAction(new ActionCreateFutureStatus(mainWindow));
 	}
 	
 	public MiradiAction get(Class c)

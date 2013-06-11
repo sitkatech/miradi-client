@@ -54,6 +54,16 @@ public class FutureStatus extends BaseObject
 		return false;
 	}
 	
+	public static boolean is(BaseObject baseObject)
+	{
+		return is(baseObject.getType());
+	}
+	
+	public static boolean is(ORef parentRef)
+	{
+		return is(parentRef.getObjectType());
+	}
+	
 	public static boolean is(final int onbjectType)
 	{
 		return FutureStatusSchema.getObjectType() == onbjectType;

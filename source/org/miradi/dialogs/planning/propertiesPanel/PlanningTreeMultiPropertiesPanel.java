@@ -36,6 +36,7 @@ import org.miradi.dialogs.resource.ResourcePropertiesPanel;
 import org.miradi.dialogs.subTarget.SubTargetPropertiesPanel;
 import org.miradi.dialogs.task.WorkPlanActivityPropertiesPanel;
 import org.miradi.dialogs.viability.AbstractIndicatorPropertiesPanel;
+import org.miradi.dialogs.viability.FutureStatusPropertiesPanel;
 import org.miradi.dialogs.viability.IndicatorPropertiesPanelWithBudgetPanels;
 import org.miradi.dialogs.viability.NonDiagramAbstractTargetPropertiesPanel;
 import org.miradi.ids.BaseId;
@@ -49,6 +50,7 @@ import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.FundingSource;
+import org.miradi.objects.FutureStatus;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResultsChainDiagram;
@@ -128,6 +130,9 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 			
 			if (MeasurementSchema.getObjectType() == objectType)
 				return getMeasurementPropertiesPanel();
+			
+			if (FutureStatus.is(objectType))
+				return getFutureStatusPropertiesPanel();
 			
 			if (TargetSchema.getObjectType() == objectType)
 				return getBiodiversityTargetPropertiesPanel();
@@ -245,6 +250,17 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 			addPanel(measurementPropertiesPanel);
 		}
 		return measurementPropertiesPanel;
+	}
+	
+	private AbstractObjectDataInputPanel getFutureStatusPropertiesPanel() throws Exception
+	{
+		if (futureStatusPropertiesPanel == null)
+		{
+			futureStatusPropertiesPanel = new FutureStatusPropertiesPanel(getProject());
+			addPanel(futureStatusPropertiesPanel);
+		}
+			
+		return futureStatusPropertiesPanel;	
 	}
 
 	private AbstractObjectDataInputPanel getBiodiversityTargetPropertiesPanel() throws Exception
@@ -431,4 +447,5 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	private BudgetCategoryTwoPropertiesPanel categoryTwoPropertiesPanel;
 	private SubTargetPropertiesPanel subTargetPropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;
+	private AbstractObjectDataInputPanel futureStatusPropertiesPanel;
 }

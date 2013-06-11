@@ -22,6 +22,7 @@ package org.miradi.dialogs.viability;
 import javax.swing.Icon;
 
 import org.miradi.actions.ActionCloneIndicator;
+import org.miradi.actions.ActionCreateFutureStatus;
 import org.miradi.actions.ActionCreateIndicator;
 import org.miradi.actions.ActionCreateIndicatorMeasurement;
 import org.miradi.actions.ActionDeleteIndicator;
@@ -84,7 +85,8 @@ public class IndicatorViabilityTreeManagementPanel extends AbstractViabilityMana
 		ActionCreateIndicatorMeasurement.class,
 		ActionCloneIndicator.class,
 		ActionDeleteIndicator.class,
-		ActionDeleteIndicatorMeasurement.class, 
+		ActionDeleteIndicatorMeasurement.class,
+		ActionCreateFutureStatus.class,
 	};
 
 	private static String VIABILITY_SPLITTER_TAG = "Indicator";

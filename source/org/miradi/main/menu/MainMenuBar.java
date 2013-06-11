@@ -488,6 +488,7 @@ public class MainMenuBar extends JMenuBar
 			addMenuItem(actions, menu, ActionExpandToIndicator.class);
 			addMenuItem(actions, menu, ActionExpandToGoal.class);
 			addMenuItem(actions, menu, ActionExpandToMeasurement.class);
+			addMenuItem(actions, menu, ActionExpandToFutureStatus.class);
 		}
 		
 		if(isThreatView())

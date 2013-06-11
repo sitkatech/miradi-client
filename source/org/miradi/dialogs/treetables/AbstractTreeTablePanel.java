@@ -226,6 +226,9 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		if(didAffectMeasurementInTree(event))
 			return true;
 		
+		if(didAffectFutureStatus(event))
+			return true;
+		
 		if(didAffectTableSettingsMapForBudgetColumns(event))
 			return true;
 		
@@ -353,6 +356,14 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 			return true;
 		
 		if (event.isSetDataCommandWithThisTypeAndTag(MeasurementSchema.getObjectType(), Measurement.TAG_DATE))
+			return true;
+		
+		return false;
+	}
+	
+	private boolean didAffectFutureStatus(CommandExecutedEvent event)
+	{
+		if (event.isSetDataCommandWithThisTypeAndTag(IndicatorSchema.getObjectType(), Indicator.TAG_FUTURE_STATUS_REFS))
 			return true;
 		
 		return false;
