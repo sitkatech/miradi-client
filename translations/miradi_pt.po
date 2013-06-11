@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-10 15:01-0500\n"
+"POT-Creation-Date: 2013-06-11 11:01-0500\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -10899,6 +10899,9 @@ msgid "FieldLabel|61.Taxonomy|Miradi Share Taxonomy"
 msgstr ""
 
 msgid "FieldLabel|62.TaxonomyAssociation|Taxonomy Association"
+msgstr ""
+
+msgid "FieldLabel|64.FutureStatus|Future Status"
 msgstr ""
 
 msgid ""
