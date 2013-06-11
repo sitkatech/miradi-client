@@ -25,8 +25,7 @@ import org.miradi.actions.ActionCloneIndicator;
 import org.miradi.actions.ActionCreateFutureStatus;
 import org.miradi.actions.ActionCreateIndicator;
 import org.miradi.actions.ActionCreateIndicatorMeasurement;
-import org.miradi.actions.ActionDeleteIndicator;
-import org.miradi.actions.ActionDeleteIndicatorMeasurement;
+import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.jump.ActionJumpMonitoringWizardDefineIndicatorsStep;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeBaseObjectNode;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
@@ -84,9 +83,8 @@ public class IndicatorViabilityTreeManagementPanel extends AbstractViabilityMana
 		ActionCreateIndicator.class,
 		ActionCreateIndicatorMeasurement.class,
 		ActionCloneIndicator.class,
-		ActionDeleteIndicator.class,
-		ActionDeleteIndicatorMeasurement.class,
 		ActionCreateFutureStatus.class,
+		ActionDeletePlanningViewTreeNode.class,
 	};
 
 	private static String VIABILITY_SPLITTER_TAG = "Indicator";
