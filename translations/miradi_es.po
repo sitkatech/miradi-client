@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-11 15:01-0500\n"
+"POT-Creation-Date: 2013-06-11 16:01-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -1524,10 +1524,6 @@ msgstr "Eliminar indicador"
 #: Miradi/source/org/miradi/actions/ActionDeleteKeyEcologicalAttribute.java:35
 msgid "Action|Manage|Delete KEA"
 msgstr "Eliminar AEC"
-
-#: Miradi/source/org/miradi/actions/ActionDeleteKeyEcologicalAttributeMeasurement.java:35
-msgid "Action|Manage|Delete Measurement"
-msgstr "Eliminar medición"
 
 #: Miradi/source/org/miradi/actions/ActionDeleteTeamMember.java:35
 msgid "Action|Manage|Delete Member"
@@ -3769,7 +3765,7 @@ msgstr "Bosque - Pantanoso tropical/subtropical"
 msgid "Forest - Temperate"
 msgstr "Bosque - Templado "
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:490
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:487
 msgid "Found Corrupted Data:"
 msgstr "Se encontraron datos dañados."
 
@@ -4972,7 +4968,7 @@ msgstr "Medio "
 msgid "Medium (Default)"
 msgstr "Medio (Predeterminado) "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:246
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:245
 msgid "MenuBar|Actions"
 msgstr "Acciones"
 
@@ -4984,15 +4980,15 @@ msgstr "Editar"
 msgid "MenuBar|File"
 msgstr "Archivo"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:578
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:577
 msgid "MenuBar|Help"
 msgstr "Ayuda"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:510
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:509
 msgid "MenuBar|Step-by-Step"
 msgstr "Paso a paso"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:438
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:437
 msgid "MenuBar|View"
 msgstr "Ver"
 
@@ -5029,7 +5025,7 @@ msgid "Menu|Export Current Project as..."
 msgstr "Exportar proyecto actual como..."
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:280
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:426
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:425
 msgid "Menu|Group Box"
 msgstr "Cuadro de grupo"
 
@@ -6931,10 +6927,6 @@ msgstr "Eliminar informe de progreso"
 msgid "TT|Delete a Bend Point"
 msgstr "Eliminar un punto de curvatura"
 
-#: Miradi/source/org/miradi/actions/ActionDeleteKeyEcologicalAttributeMeasurement.java:41
-msgid "TT|Delete a Measurement"
-msgstr "Eliminar una medición"
-
 #: Miradi/source/org/miradi/actions/ActionDeleteReportTemplate.java:41
 msgid "TT|Delete a Report Template"
 msgstr "Eliminar una plantilla de informe "
@@ -8084,7 +8076,7 @@ msgstr "|Error "
 msgid "Title|Export Image Scale"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:978
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:975
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Propiedades del factor"
@@ -8404,7 +8396,7 @@ msgstr ""
 msgid "Unknown code: "
 msgstr "Código desconocido:"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:417
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:414
 msgid "Unknown error displaying diagram"
 msgstr "Error desconocido al mostrar el diagrama"
 
@@ -30116,6 +30108,12 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "Action|Manage|Delete Measurement"
+#~ msgstr "Eliminar medición"
+
+#~ msgid "TT|Delete a Measurement"
+#~ msgstr "Eliminar una medición"
 
 #~ msgid ""
 #~ "A backup archive for this project already exists.Continuing with this "
