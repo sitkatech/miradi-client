@@ -29,9 +29,9 @@ public class FutureStatusPropertiesForm extends FieldPanelSpec
 	public FutureStatusPropertiesForm()
 	{
 		final int type = FutureStatusSchema.getObjectType();
+		addLabelAndField(type, FutureStatusSchema.TAG_FUTURE_STATUS_SUMMARY, TYPE_SINGLE_LINE_STRING);
 		addChoiceField(type, FutureStatusSchema.TAG_FUTURE_STATUS_RATING, StatusQuestion.class);
 		addDateField(type, FutureStatusSchema.TAG_FUTURE_STATUS_DATE);
-		addLabelAndField(type, FutureStatusSchema.TAG_FUTURE_STATUS_SUMMARY, TYPE_SINGLE_LINE_STRING);
 		addLabelAndField(type, FutureStatusSchema.TAG_FUTURE_STATUS_DETAIL, TYPE_SINGLE_LINE_STRING);
 		addLabelAndField(type, FutureStatusSchema.TAG_FUTURE_STATUS_COMMENTS, TYPE_SINGLE_LINE_STRING);
 	}
