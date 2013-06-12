@@ -39,6 +39,12 @@ public class FutureStatus extends BaseObject
 	}
 	
 	@Override
+	public String getFullName()
+	{
+		return getData(FutureStatusSchema.TAG_FUTURE_STATUS_DATE);
+	}
+	
+	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
