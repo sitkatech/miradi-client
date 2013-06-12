@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-11 16:01-0500\n"
+"POT-Creation-Date: 2013-06-12 09:01-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -8252,7 +8252,7 @@ msgstr "Panel de propiedades de etiqueta "
 msgid "Title|Target Properties"
 msgstr "Propiedades del objeto"
 
-#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityMultiPropertiesPanel.java:71
+#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityMultiPropertiesPanel.java:69
 msgid "Title|Target Viability Properties"
 msgstr "Propiedades de viabilidad del objeto"
 
@@ -10580,6 +10580,21 @@ msgid "FieldLabel|62.TaxonomyAssociation|Taxonomy Association"
 msgstr ""
 
 msgid "FieldLabel|64.FutureStatus|Future Status"
+msgstr ""
+
+msgid "FieldLabel|64.FutureStatusDetail|Details"
+msgstr ""
+
+msgid "FieldLabel|64.FutureStatusSummary|Future Value"
+msgstr ""
+
+msgid "FieldLabel|64.FutureStatusDate|Future Date"
+msgstr ""
+
+msgid "FieldLabel|64.FutureStatusRating|Rating"
+msgstr ""
+
+msgid "FieldLabel|64.FutureStatusComment|Comments"
 msgstr ""
 
 msgid ""
