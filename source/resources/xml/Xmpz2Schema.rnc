@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Tue Jun 11 11:16:33 EDT 2013 $
+# $LastChangedDate: Thu Jun 13 12:02:29 EDT 2013 $
 # $LastChangedRevision: 226 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/226'
 start = ConservationProject.element
@@ -739,12 +739,12 @@ FutureStatusPool.element = element miradi:FutureStatusPool { FutureStatus.elemen
 FutureStatus.element = element miradi:FutureStatus
 {
   attribute Id {xsd:integer} &
-  element miradi:FutureStatusFutureStatusComment { formatted_text }? &
-  element miradi:FutureStatusFutureStatusDate { vocabulary_date }? &
-  element miradi:FutureStatusFutureStatusDetail { formatted_text }? &
-  element miradi:FutureStatusFutureStatusRating { vocabulary_status }? &
-  element miradi:FutureStatusFutureStatusSummary { text }? &
-  element miradi:FutureStatusLabel { formatted_text }?
+  element miradi:FutureStatusComment { formatted_text }? &
+  element miradi:FutureStatusDate { vocabulary_date }? &
+  element miradi:FutureStatusDetail { formatted_text }? &
+  element miradi:FutureStatusLabel { formatted_text }? &
+  element miradi:FutureStatusRating { vocabulary_status }? &
+  element miradi:FutureStatusSummary { text }?
 }
 
 SimpleThreatRatingPool.element = element miradi:SimpleThreatRatingPool { SimpleThreatRating.element* }

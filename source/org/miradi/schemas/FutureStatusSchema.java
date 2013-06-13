@@ -61,9 +61,9 @@ public class FutureStatusSchema extends BaseObjectSchema
 	
 	public static final String OBJECT_NAME = "FutureStatus";
 	
-	public static final String TAG_FUTURE_STATUS_RATING  = "FutureStatusRating";
-	public static final String TAG_FUTURE_STATUS_DATE = "FutureStatusDate";
-	public static final String TAG_FUTURE_STATUS_SUMMARY = "FutureStatusSummary";
-	public static final String TAG_FUTURE_STATUS_DETAIL = "FutureStatusDetail";
-	public static final String TAG_FUTURE_STATUS_COMMENTS = "FutureStatusComment";
+	public static final String TAG_FUTURE_STATUS_RATING  = "Rating";
+	public static final String TAG_FUTURE_STATUS_DATE = "Date";
+	public static final String TAG_FUTURE_STATUS_SUMMARY = "Summary";
+	public static final String TAG_FUTURE_STATUS_DETAIL = "Detail";
+	public static final String TAG_FUTURE_STATUS_COMMENTS = "Comment";
 }	
