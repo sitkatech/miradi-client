@@ -31,6 +31,7 @@ import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FundingSource;
+import org.miradi.objects.FutureStatus;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
@@ -195,6 +196,9 @@ public class IconManager
 		
 		if (SubTarget.is(type))
 			return getSubTargetIcon();
+		
+		if (FutureStatus.is(type))
+			return getGoalIcon();
 		
 		throw new RuntimeException("Could not find icon for type:" + type);
 	}
