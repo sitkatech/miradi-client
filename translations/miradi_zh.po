@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-13 11:16-0500\n"
+"POT-Creation-Date: 2013-06-13 13:31-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4305,6 +4305,10 @@ msgstr "关键属性"
 #: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:42
 msgid "Key Ecological Attribute (KEA)"
 msgstr "关键生态学属性(KEA) \t\t"
+
+#: Miradi/source/org/miradi/objects/FutureStatus.java:92
+msgid "Label|(Future Statu)"
+msgstr ""
 
 #: Miradi/source/org/miradi/objects/AccountingCode.java:50
 msgid "Label|(Undefined Accounting Code)"
