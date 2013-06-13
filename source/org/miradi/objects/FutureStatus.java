@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -83,5 +84,11 @@ public class FutureStatus extends BaseObject
 	public static FutureStatus find(Project project, ORef futureStatusRef)
 	{
 		return find(project.getObjectManager(), futureStatusRef);
+	}
+	
+	@Override
+	public String toString()
+	{
+		return toString(EAM.text("Label|(Future Statu)"));
 	}
 }
