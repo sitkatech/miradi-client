@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-13 10:01-0500\n"
+"POT-Creation-Date: 2013-06-13 11:16-0500\n"
 "PO-Revision-Date: 2011-02-15 16:35-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -9240,10 +9240,7 @@ msgstr ""
 msgid "FieldLabel|12.DetailsColumnCode|Details"
 msgstr ""
 
-msgid "FieldLabel|12.FutureStatusSummary|Future Value"
-msgstr ""
-
-msgid "FieldLabel|12.FutureStatusDate|Future Date"
+msgid "FieldLabel|12.Summary|Future Value"
 msgstr ""
 
 msgid "FieldLabel|13.DiagramLink|Diagram Link"
@@ -10198,19 +10195,19 @@ msgstr ""
 msgid "FieldLabel|64.FutureStatus|Future Status"
 msgstr ""
 
-msgid "FieldLabel|64.FutureStatusDetail|Details"
+msgid "FieldLabel|64.Detail|Details"
 msgstr ""
 
-msgid "FieldLabel|64.FutureStatusSummary|Future Value"
+msgid "FieldLabel|64.Summary|Future Value"
 msgstr ""
 
-msgid "FieldLabel|64.FutureStatusDate|Future Date"
+msgid "FieldLabel|64.Date|Future Date"
 msgstr ""
 
-msgid "FieldLabel|64.FutureStatusRating|Rating"
+msgid "FieldLabel|64.Rating|Rating"
 msgstr ""
 
-msgid "FieldLabel|64.FutureStatusComment|Comments"
+msgid "FieldLabel|64.Comment|Comments"
 msgstr ""
 
 msgid ""
