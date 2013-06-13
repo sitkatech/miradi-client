@@ -24,6 +24,7 @@ import java.util.Vector;
 import org.miradi.main.EAM;
 import org.miradi.objects.Cause;
 import org.miradi.project.Project;
+import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
@@ -59,6 +60,7 @@ public class PlanningViewSingleLevelQuestion extends ProjectBasedDynamicQuestion
 		choices.add(new ChoiceItem(IndicatorSchema.OBJECT_NAME, EAM.text("Indicators Only")));
 		choices.add(new ChoiceItem(TaskSchema.METHOD_NAME, EAM.text("Methods Only")));
 		choices.add(new ChoiceItem(ResourceAssignmentSchema.OBJECT_NAME, EAM.text("Assigned Resources Only")));
+		choices.add(new ChoiceItem(FutureStatusSchema.OBJECT_NAME, EAM.text("Future Status")));
 	
 		return choices;
 	}
