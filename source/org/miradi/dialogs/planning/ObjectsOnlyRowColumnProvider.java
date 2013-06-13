@@ -33,6 +33,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
@@ -120,6 +121,9 @@ public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnP
 		
 		if (propertyName.equals(ResourceAssignmentSchema.OBJECT_NAME))
 			return ObjectsOnlyRowColumnProvider.getAssignmentColumns();
+		
+		if (propertyName.equals(FutureStatusSchema.OBJECT_NAME))
+			return ObjectsOnlyRowColumnProvider.getFutureStatusColumns();
 		
 		EAM.logError("getVisibleColumnsForSingleType unknown choice: " + propertyName);
 		return new CodeList();
@@ -237,6 +241,16 @@ public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnP
 				CustomPlanningColumnsQuestion.META_WHO_TOTAL,
 				ResourceAssignment.PSEUDO_TAG_WHEN_TOTAL,
 				Indicator.PSEUDO_TAG_FACTOR,
+				};
+		return new CodeList(list);
+	}
+	
+	private static CodeList getFutureStatusColumns()
+	{
+		String[] list = {
+				FutureStatusSchema.TAG_FUTURE_STATUS_DATE,
+				FutureStatusSchema.TAG_FUTURE_STATUS_SUMMARY,
+				FutureStatusSchema.TAG_FUTURE_STATUS_RATING,
 				};
 		return new CodeList(list);
 	}
