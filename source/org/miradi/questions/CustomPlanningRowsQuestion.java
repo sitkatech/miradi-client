@@ -44,6 +44,7 @@ import org.miradi.objects.Cause;
 import org.miradi.project.Project;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
+import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
@@ -96,6 +97,7 @@ public class CustomPlanningRowsQuestion extends ProjectBasedDynamicQuestion
 		choiceItems.add(createChoiceItem(TaskSchema.getObjectType(), TaskSchema.METHOD_NAME, new MethodIcon()));
 		choiceItems.add(createChoiceItem(TaskSchema.getObjectType(), TaskSchema.OBJECT_NAME, new TaskIcon()));
 		choiceItems.add(createChoiceItem(MeasurementSchema.getObjectType(), MeasurementSchema.OBJECT_NAME, new MeasurementIcon()));
+		choiceItems.add(createChoiceItem(FutureStatusSchema.getObjectType(), FutureStatusSchema.OBJECT_NAME, new GoalIcon()));
 		
 		return choiceItems;
 	}
