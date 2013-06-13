@@ -30,6 +30,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.FutureStatus;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
@@ -51,6 +52,7 @@ import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.questions.TextAndIconChoiceItem;
 import org.miradi.questions.TrendQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
+import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
@@ -153,11 +155,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 
 	public boolean isFutureStatusThresholdCell(int row, int column)
 	{
-		Indicator indicator = getIndicatorInSelectionHierarchy(row, column);
-		if (!indicator.isViabilityIndicator())
-			return false;
-		
-		return Goal.is(getBaseObjectForRow(row)) && isThresholdColumn(column);
+		return FutureStatus.is(getBaseObjectForRow(row)) && isThresholdColumn(column);
 	}
 
 	private boolean isMeasurementCellEditable(int row, int column)
@@ -324,7 +322,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if (Measurement.is(baseObject))
 			return getValueForMeasurement(baseObject, row, column);
 		
-		if (Goal.is(baseObject))
+		if (FutureStatus.is(baseObject))
 			return getValueForFutureResultAsGoal(baseObject, row, column);
 		
 		return super.getChoiceItemAt(row, column);
@@ -412,16 +410,8 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	private ChoiceItem getValueForFutureResultAsGoal(BaseObject baseObject, int row, int column)
 	{
 		String tag = COLUMN_TAGS_FOR_FUTURE_RESULTS[column];
-		Indicator indicatorAsParent = getIndicatorInSelectionHierarchy(row, column);
 		
-		return getStatusColumnChoiceItem(tag, indicatorAsParent, Indicator.TAG_FUTURE_STATUS_SUMMARY, Indicator.TAG_FUTURE_STATUS_RATING, IconManager.getGoalIcon());
-	}
-
-	private Indicator getIndicatorInSelectionHierarchy(int row, int column)
-	{
-		ORef indicatorRef = getIndicatorRefInSelectionHierarchy(row, column);
-		Indicator indicatorAsParent = Indicator.find(getProject(), indicatorRef);
-		return indicatorAsParent;
+		return getStatusColumnChoiceItem(tag, baseObject, FutureStatusSchema.TAG_FUTURE_STATUS_SUMMARY, FutureStatusSchema.TAG_FUTURE_STATUS_RATING, IconManager.getGoalIcon());
 	}
 
 	private ORef getIndicatorRefInSelectionHierarchy(int row, int column)
