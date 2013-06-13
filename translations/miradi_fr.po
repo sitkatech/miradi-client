@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-12 09:01-0500\n"
+"POT-Creation-Date: 2013-06-13 10:01-0500\n"
 "PO-Revision-Date: 2013-04-02 10:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -2006,7 +2006,7 @@ msgstr "Zoom arrière"
 msgid "Action|Zoom To Fit"
 msgstr "Zoom d'ajustement"
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:58
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:59
 msgid "Activities Only"
 msgstr "Activités Seulement "
 
@@ -2372,7 +2372,7 @@ msgstr ""
 "Ressource affectée - Une ressource du projet qui a été affectée à une "
 "activité, méthode ou tâche spécifiques."
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:61
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:62
 msgid "Assigned Resources Only"
 msgstr "Ressources affectées seulement "
 
@@ -3397,7 +3397,7 @@ msgstr "Menace directe"
 msgid "Direct Threat (Pink)"
 msgstr "Menace directe (Rose)"
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:56
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:57
 msgid "Direct Threats Only"
 msgstr "Menaces directes seulement"
 
@@ -3981,6 +3981,10 @@ msgid "Funding Sources - The sources of money available to your project."
 msgstr ""
 "Sources de financement - Les sources d'argent disponibles pour votre projet."
 
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:63
+msgid "Future Status"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/viability/FutureStatusPropertiesPanel.java:39
 msgid "Future Statuss"
 msgstr ""
@@ -4013,7 +4017,7 @@ msgstr "Panneau de pertinence du but"
 msgid "Goals"
 msgstr "Buts"
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:49
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:50
 msgid "Goals Only"
 msgstr "Buts seulement"
 
@@ -4150,7 +4154,7 @@ msgid ""
 "by tan ovals."
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:54
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:55
 msgid "Human Wellbeing Targets Only"
 msgstr ""
 
@@ -4342,7 +4346,7 @@ msgstr "L'indicateur n'a pas un facteur parent direct/indirect."
 msgid "Indicators"
 msgstr "Indicateurs"
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:59
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:60
 msgid "Indicators Only"
 msgstr "Indicateurs seulement"
 
@@ -5193,7 +5197,7 @@ msgstr ""
 msgid "Method selection"
 msgstr "Sélection méthode"
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:60
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:61
 msgid "Methods Only"
 msgstr "Méthode seulement"
 
@@ -5505,7 +5509,7 @@ msgstr "Panneau de pertinence de l'objectif"
 msgid "Objectives"
 msgstr "Objectifs"
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:50
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:51
 msgid "Objectives Only"
 msgstr "Uniquement objectifs"
 
@@ -6630,7 +6634,7 @@ msgstr ""
 msgid "Strategies And Activities"
 msgstr "Stratégies et activités"
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:57
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:58
 msgid "Strategies Only"
 msgstr "Uniquement stratégies"
 
@@ -7766,7 +7770,7 @@ msgstr ""
 "sein des paysages fonctionelles. Dans Miradi, une cible est représentée par "
 "un grand ovale vert."
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:51
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:52
 msgid "Targets Only"
 msgstr "Uniquement cibles"
 
@@ -9869,6 +9873,12 @@ msgstr "Commentaires"
 
 msgid "FieldLabel|12.DetailsColumnCode|Details"
 msgstr "Détails"
+
+msgid "FieldLabel|12.FutureStatusSummary|Future Value"
+msgstr ""
+
+msgid "FieldLabel|12.FutureStatusDate|Future Date"
+msgstr ""
 
 msgid "FieldLabel|13.DiagramLink|Diagram Link"
 msgstr "Lien du diagramme"
