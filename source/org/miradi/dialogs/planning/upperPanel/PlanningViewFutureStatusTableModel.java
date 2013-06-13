@@ -26,12 +26,10 @@ import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTable
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Indicator;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
-import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.FutureStatusSchema;
 
 public class PlanningViewFutureStatusTableModel extends PlanningViewAbstractTreeTableSyncedTableModel
 {
@@ -53,7 +51,7 @@ public class PlanningViewFutureStatusTableModel extends PlanningViewAbstractTree
 	@Override
 	public String getColumnName(int column)
 	{
-		return EAM.fieldLabel(IndicatorSchema.getObjectType(), getColumnTag(column));
+		return EAM.fieldLabel(FutureStatusSchema.getObjectType(), getColumnTag(column));
 	}
 	
 	public Object getValueAt(int row, int column)
@@ -64,9 +62,6 @@ public class PlanningViewFutureStatusTableModel extends PlanningViewAbstractTree
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
 		BaseObject objectForRow = getBaseObjectForRowColumn(row, column);
-		if (!Indicator.is(objectForRow))
-			return new EmptyChoiceItem();
-		
 		return new TaglessChoiceItem(objectForRow.getData(getColumnTag(column)));
 	}
 	
@@ -89,5 +84,5 @@ public class PlanningViewFutureStatusTableModel extends PlanningViewAbstractTree
 				
 	private static final String UNIQUE_MODEL_IDENTIFIER = "PlanningViewFutureStatusTableModel";
 	
-	public final static String[] columnTags = {Indicator.TAG_FUTURE_STATUS_DATE, Indicator.TAG_FUTURE_STATUS_SUMMARY};
+	public final static String[] columnTags = {FutureStatusSchema.TAG_FUTURE_STATUS_DATE, FutureStatusSchema.TAG_FUTURE_STATUS_SUMMARY};
 }
