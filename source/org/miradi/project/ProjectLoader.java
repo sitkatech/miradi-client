@@ -109,4 +109,16 @@ public class ProjectLoader extends AbstractProjectLoader
 	{
 		getProject().getProjectInfo().setMetadataId(new BaseId(value));
 	}
+
+	@Override
+	protected void updateExceptionLog(String value) throws Exception
+	{
+		getProject().appendToExceptionLog(value);
+	}	
+
+	@Override
+	protected void updateQuarantineFile(String value) throws Exception
+	{
+		getProject().appendToQuarantineFile(value);
+	}
 }

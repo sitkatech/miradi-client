@@ -163,9 +163,9 @@ abstract public class AbstractProjectLoader
 		if(!tag.equals(AbstractMiradiProjectSaver.EXCEPTIONS_DATA_TAG))
 			throw new Exception("Unknown Exceptions field: " + tag);
 
-		getProject().appendToExceptionLog(value);
+		updateExceptionLog(value);
 	}
-	
+
 	private void loadQuarantine(String line) throws Exception
 	{
 		String[] tagValue = parseTagValueLine(line);
@@ -174,7 +174,7 @@ abstract public class AbstractProjectLoader
 		if(!tag.equals(AbstractMiradiProjectSaver.QUARANTINE_DATA_TAG))
 			throw new Exception("Unknown Quarantine field: " + tag);
 
-		getProject().appendToQuarantineFile(value);
+		updateQuarantineFile(value);
 	}
 
 	private String[] parseTagValueLine(String line) throws Exception
@@ -343,6 +343,14 @@ abstract public class AbstractProjectLoader
 	}
 
 	protected void updateProjectMetadataId(String value)
+	{
+	}
+	
+	protected void updateExceptionLog(String value) throws Exception
+	{
+	}	
+
+	protected void updateQuarantineFile(String value) throws Exception
 	{
 	}
 
