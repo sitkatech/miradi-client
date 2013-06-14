@@ -95,7 +95,7 @@ public class TestProjectSaver extends TestCaseWithProject
 			ProjectLoader.loadProject(new UnicodeStringReader(tooOld), getProject());
 			fail("Should have thrown for project too old");
 		}
-		catch(ProjectLoader.ProjectFileTooOldException ignoreExpected)
+		catch(AbstractProjectLoader.ProjectFileTooOldException ignoreExpected)
 		{
 		}
 	}
@@ -109,7 +109,7 @@ public class TestProjectSaver extends TestCaseWithProject
 			ProjectLoader.loadProject(new UnicodeStringReader(tooNew), getProject());
 			fail("Should have thrown for project too new");
 		}
-		catch(ProjectLoader.ProjectFileTooNewException ignoreExpected)
+		catch(AbstractProjectLoader.ProjectFileTooNewException ignoreExpected)
 		{
 		}
 	}

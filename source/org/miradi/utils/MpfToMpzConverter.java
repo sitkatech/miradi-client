@@ -46,6 +46,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.project.AbstractConverter;
 import org.miradi.project.AbstractMiradiProjectSaver;
+import org.miradi.project.AbstractProjectLoader;
 import org.miradi.project.MpzToMpfConverter;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectInfo;
@@ -233,7 +234,7 @@ public class MpfToMpzConverter extends AbstractConverter
 	{
 		if (line.startsWith(AbstractMiradiProjectSaver.CREATE_OBJECT_CODE))
 		{
-			ORef ref = ProjectLoader.extractRefFromLine(line);
+			ORef ref = AbstractProjectLoader.extractRefFromLine(line);
 			EnhancedJsonObject jsonObject = createInitializedJson(ref.getObjectType());
 			jsonObject.putId("Id", ref.getObjectId());
 			refToJsonMap.put(ref, jsonObject);
@@ -327,7 +328,7 @@ public class MpfToMpzConverter extends AbstractConverter
 		StringTokenizer tokenizer = new StringTokenizer(line);
 		/*String command =*/ tokenizer.nextToken();
 		String refString = tokenizer.nextToken();
-		ORef ref = ProjectLoader.extractRef(refString);
+		ORef ref = AbstractProjectLoader.extractRef(refString);
 		if(BaseObject.find(getProject(), ref) == null)
 			throw new RuntimeException("Missing object " + ref.toString() + " from: " + line);
 		

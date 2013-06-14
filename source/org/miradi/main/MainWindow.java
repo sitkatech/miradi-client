@@ -77,6 +77,7 @@ import org.miradi.objecthelpers.TwoLevelEntry;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TableSettings;
+import org.miradi.project.AbstractProjectLoader;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectLoader;
 import org.miradi.project.ProjectRepairer;
@@ -604,15 +605,15 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		{
 			EAM.errorDialog(EAM.text("That project is in use by another copy of this application"));
 		}
-		catch(ProjectLoader.NotMiradiProjectFileException e)
+		catch(AbstractProjectLoader.NotMiradiProjectFileException e)
 		{
 			EAM.errorDialog(EAM.text("That file is not a valid Miradi project"));
 		}
-		catch(ProjectLoader.ProjectFileTooOldException e)
+		catch(AbstractProjectLoader.ProjectFileTooOldException e)
 		{
 			EAM.errorDialog(EAM.text("That project is too old to be opened with this version of Miradi"));
 		}
-		catch(ProjectLoader.ProjectFileTooNewException e)
+		catch(AbstractProjectLoader.ProjectFileTooNewException e)
 		{
 			EAM.errorDialog(EAM.text("That project cannot be opened because it was created by a newer version of Miradi"));
 		}
