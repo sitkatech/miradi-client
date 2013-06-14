@@ -69,6 +69,7 @@ import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.schemas.FundingSourceSchema;
+import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
@@ -510,6 +511,9 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		
 		if (objectTypeName.equals(GOAL))
 			return GoalSchema.getObjectType();
+		
+		if (objectTypeName.equals(FUTURE_STATUS))
+			return FutureStatusSchema.getObjectType();
 		
 		EAM.logError("Could not find type for node: " + objectTypeName);
 		return ObjectType.FAKE;
