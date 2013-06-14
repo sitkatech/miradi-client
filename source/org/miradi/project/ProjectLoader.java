@@ -26,6 +26,7 @@ import java.io.InputStream;
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringReader;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.project.threatrating.ThreatRatingBundle;
 
 public class ProjectLoader extends AbstractProjectLoader
 {
@@ -88,5 +89,11 @@ public class ProjectLoader extends AbstractProjectLoader
 	protected void setLastModifiedTime(long lastModified)
 	{
 		getProject().setLastModified(lastModified);
+	}
+
+	@Override
+	protected void saveSimpleThreatRatingBundle(ThreatRatingBundle bundle) throws Exception
+	{
+		getProject().getSimpleThreatRatingFramework().saveBundle(bundle);
 	}
 }

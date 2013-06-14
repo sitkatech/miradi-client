@@ -215,7 +215,7 @@ abstract public class AbstractProjectLoader
 		FactorId targetId = new FactorId(Integer.parseInt(threatIdTargetIdParts[1]));
 		ThreatRatingBundle bundle = new ThreatRatingBundle(threatId, targetId, BaseId.INVALID);
 		bundleNameToBundleMap.put(threatIdTargetIdString, bundle);
-		getProject().getSimpleThreatRatingFramework().saveBundle(bundle);
+		saveSimpleThreatRatingBundle(bundle);
 	}
 
 	private void loadUpdateSimpleThreatRatingLine(String line) throws Exception
@@ -331,6 +331,10 @@ abstract public class AbstractProjectLoader
 	}
 	
 	protected void setLastModifiedTime(long lastModified)
+	{
+	}
+	
+	protected void saveSimpleThreatRatingBundle(ThreatRatingBundle bundle) throws Exception
 	{
 	}
 	
