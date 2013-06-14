@@ -25,6 +25,7 @@ import java.io.InputStream;
 
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringReader;
+import org.miradi.objecthelpers.ORef;
 
 public class ProjectLoader extends AbstractProjectLoader
 {
@@ -62,5 +63,12 @@ public class ProjectLoader extends AbstractProjectLoader
 	{
 		final ProjectLoader loader = new ProjectLoader(reader, null);
 		return loader.getLastModified();
+	}
+
+	@Override
+	protected void updateObjectWithData(ORef ref, String tag, String value)	throws Exception
+	{
+		if (getProject().doesBaseObjectContainField(ref, tag))
+			getProject().setObjectData(ref, tag, value);
 	}
 }
