@@ -25,13 +25,17 @@ import java.io.InputStream;
 
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringReader;
+import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.project.threatrating.ThreatRatingBundle;
 
 public class ProjectLoader extends AbstractProjectLoader
 {
 	private ProjectLoader(final UnicodeReader readerToUse, Project projectToUse) throws Exception
 	{
-		super(readerToUse, projectToUse);
+		super(readerToUse);
+		
+		project = projectToUse;
 	}
 	
 	public static void loadProject(File projectFile, Project projectToLoad) throws Exception
@@ -71,4 +75,59 @@ public class ProjectLoader extends AbstractProjectLoader
 		if (getProject().doesBaseObjectContainField(ref, tag))
 			getProject().setObjectData(ref, tag, value);
 	}
+
+	@Override
+	protected void createObject(ORef ref) throws Exception
+	{
+		getProject().createObject(ref);
+	}
+	
+	@Override
+	protected void prepareToLoad() throws Exception
+	{
+		getProject().clear();
+	}
+	
+	@Override
+	protected void setLastModifiedTime(long lastModified)
+	{
+		getProject().setLastModified(lastModified);
+	}
+
+	@Override
+	protected void saveSimpleThreatRatingBundle(ThreatRatingBundle bundle) throws Exception
+	{
+		getProject().getSimpleThreatRatingFramework().saveBundle(bundle);
+	}
+
+	@Override
+	protected void updateHighestId(String value)
+	{
+		getProject().getProjectInfo().getNormalIdAssigner().idTaken(new BaseId(value));
+	}
+
+	@Override
+	protected void updateProjectMetadataId(String value)
+	{
+		getProject().getProjectInfo().setMetadataId(new BaseId(value));
+	}
+
+	@Override
+	protected void updateExceptionLog(String value) throws Exception
+	{
+		getProject().appendToExceptionLog(value);
+	}	
+
+	@Override
+	protected void updateQuarantineFile(String value) throws Exception
+	{
+		getProject().appendToQuarantineFile(value);
+	}
+	
+	private Project getProject()
+	{
+		return project;
+	}
+	
+	private Project project;
 }
