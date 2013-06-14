@@ -70,24 +70,24 @@ public class ProjectLoader extends AbstractProjectLoader
 	}
 
 	@Override
+	protected void prepareToLoad() throws Exception
+	{
+		getProject().clear();
+	}
+	
+	@Override
+	protected void createObject(ORef ref) throws Exception
+	{
+		getProject().createObject(ref);
+	}
+
+	@Override
 	protected void updateObjectWithData(ORef ref, String tag, String value)	throws Exception
 	{
 		if (getProject().doesBaseObjectContainField(ref, tag))
 			getProject().setObjectData(ref, tag, value);
 	}
 
-	@Override
-	protected void createObject(ORef ref) throws Exception
-	{
-		getProject().createObject(ref);
-	}
-	
-	@Override
-	protected void prepareToLoad() throws Exception
-	{
-		getProject().clear();
-	}
-	
 	@Override
 	protected void setLastModifiedTime(long lastModified)
 	{
