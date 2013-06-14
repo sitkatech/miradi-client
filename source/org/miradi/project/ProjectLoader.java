@@ -83,4 +83,10 @@ public class ProjectLoader extends AbstractProjectLoader
 	{
 		getProject().clear();
 	}
+	
+	@Override
+	protected void setLastModifiedTime(long lastModified)
+	{
+		getProject().setLastModified(lastModified);
+	}
 }
