@@ -65,6 +65,8 @@ import org.miradi.ids.TestBaseId;
 import org.miradi.ids.TestIdList;
 import org.miradi.legacyprojects.TestDataUpgrader;
 import org.miradi.legacyprojects.TestDataUpgraderForMiradi3;
+import org.miradi.mpfMigrations.TestMigrationManager;
+import org.miradi.mpfMigrations.TestVersionRange;
 import org.miradi.objectdata.TestAbstractUserStringDataWithHtmlFormatting;
 import org.miradi.objectdata.TestDateData;
 import org.miradi.objectdata.TestIntegerData;
@@ -94,7 +96,6 @@ import org.miradi.objecthelpers.TestThreatTargetVirtualLinkHelper;
 import org.miradi.objecthelpers.TestTimePeriodCosts;
 import org.miradi.objecthelpers.TestTimePeriodCostsMap;
 import org.miradi.objects.TestAccountingCode;
-import org.miradi.objects.TestFutureStatus;
 import org.miradi.objects.TestAssignment;
 import org.miradi.objects.TestAudience;
 import org.miradi.objects.TestBaseObject;
@@ -116,6 +117,7 @@ import org.miradi.objects.TestFactor;
 import org.miradi.objects.TestFactorLink;
 import org.miradi.objects.TestFosProjectData;
 import org.miradi.objects.TestFundingSource;
+import org.miradi.objects.TestFutureStatus;
 import org.miradi.objects.TestGoal;
 import org.miradi.objects.TestHumanWelfareTarget;
 import org.miradi.objects.TestIndicator;
@@ -538,6 +540,10 @@ public class MainTestSuite extends TestSuite
 		
 		addTest(new TestSuite(TestXmpz2SchemaCreator.class));
 		addTest(new TestSuite(TestXmpzSchemaCreator.class));
+		
+		//mpf migrations
+		addTest(new TestSuite(TestMigrationManager.class));
+		addTest(new TestSuite(TestVersionRange.class));
 	}
 
 	@Override
