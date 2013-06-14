@@ -241,7 +241,7 @@ abstract public class AbstractProjectLoader
 	private void loadCreateObjectLine(String line) throws Exception
 	{
 		ORef ref = extractRefFromLine(line);
-		getProject().createObject(ref);
+		createObject(ref);
 	}
 
 	public static ORef extractRefFromLine(String line)
@@ -331,6 +331,8 @@ abstract public class AbstractProjectLoader
 	}
 	
 	abstract protected void updateObjectWithData(ORef ref, String tag, String value)	throws Exception;
+	
+	abstract protected void createObject(ORef ref) throws Exception;
 
 	private HashMap<String, ThreatRatingBundle> bundleNameToBundleMap;
 	private UnicodeReader reader;

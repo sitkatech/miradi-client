@@ -71,4 +71,10 @@ public class ProjectLoader extends AbstractProjectLoader
 		if (getProject().doesBaseObjectContainField(ref, tag))
 			getProject().setObjectData(ref, tag, value);
 	}
+
+	@Override
+	protected void createObject(ORef ref) throws Exception
+	{
+		getProject().createObject(ref);
+	}
 }
