@@ -348,11 +348,11 @@ abstract public class AbstractProjectLoader
 	{
 	}
 
-	abstract protected void updateObjectWithData(ORef ref, String tag, String value)	throws Exception;
-	
+	abstract protected void prepareToLoad() throws Exception;
+
 	abstract protected void createObject(ORef ref) throws Exception;
 	
-	abstract protected void prepareToLoad() throws Exception;
+	abstract protected void updateObjectWithData(ORef ref, String tag, String value)	throws Exception;
 
 	private HashMap<String, ThreatRatingBundle> bundleNameToBundleMap;
 	private UnicodeReader reader;
