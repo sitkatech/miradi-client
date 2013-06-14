@@ -34,17 +34,16 @@ import org.miradi.utils.StringUtilities;
 
 abstract public class AbstractProjectLoader 
 {
-	protected AbstractProjectLoader(final UnicodeReader readerToUse, Project projectToUse) throws Exception
+	protected AbstractProjectLoader(final UnicodeReader readerToUse) throws Exception
 	{
 		reader = readerToUse;
-		project = projectToUse;
 		
 		bundleNameToBundleMap = new HashMap<String, ThreatRatingBundle>();
 	}
 
 	protected void load() throws Exception
 	{
-		project.clear();
+		prepareToLoad();
 		
 		boolean foundEnd = false;
 		
@@ -61,7 +60,7 @@ abstract public class AbstractProjectLoader
 			{
 				foundEnd = true;
 				long lastModified = processStopLine(line);
-				getProject().setLastModified(lastModified);
+				setLastModifiedTime(lastModified);
 				continue;
 			}
 			else if(foundEnd)
@@ -75,7 +74,7 @@ abstract public class AbstractProjectLoader
 		if(!foundEnd)
 			throw new IOException("Project file is corrupted (no end marker found)");
 	}
-	
+
 	protected long getLastModified() throws Exception
 	{
 		while(true)
@@ -163,9 +162,9 @@ abstract public class AbstractProjectLoader
 		if(!tag.equals(AbstractMiradiProjectSaver.EXCEPTIONS_DATA_TAG))
 			throw new Exception("Unknown Exceptions field: " + tag);
 
-		getProject().appendToExceptionLog(value);
+		updateExceptionLog(value);
 	}
-	
+
 	private void loadQuarantine(String line) throws Exception
 	{
 		String[] tagValue = parseTagValueLine(line);
@@ -174,7 +173,7 @@ abstract public class AbstractProjectLoader
 		if(!tag.equals(AbstractMiradiProjectSaver.QUARANTINE_DATA_TAG))
 			throw new Exception("Unknown Quarantine field: " + tag);
 
-		getProject().appendToQuarantineFile(value);
+		updateQuarantineFile(value);
 	}
 
 	private String[] parseTagValueLine(String line) throws Exception
@@ -196,9 +195,9 @@ abstract public class AbstractProjectLoader
 		String tag = tagValue[0];
 		String value = tagValue[1];
 		if (tag.equals(ProjectInfo.TAG_PROJECT_METADATA_ID))
-			getProject().getProjectInfo().setMetadataId(new BaseId(value));
+			updateProjectMetadataId(value);
 		if (tag.equals(ProjectInfo.TAG_HIGHEST_OBJECT_ID))
-			getProject().getProjectInfo().getNormalIdAssigner().idTaken(new BaseId(value));
+			updateHighestId(value);
 	}
 
 	private void loadLastModified(String line)
@@ -215,7 +214,7 @@ abstract public class AbstractProjectLoader
 		FactorId targetId = new FactorId(Integer.parseInt(threatIdTargetIdParts[1]));
 		ThreatRatingBundle bundle = new ThreatRatingBundle(threatId, targetId, BaseId.INVALID);
 		bundleNameToBundleMap.put(threatIdTargetIdString, bundle);
-		getProject().getSimpleThreatRatingFramework().saveBundle(bundle);
+		saveSimpleThreatRatingBundle(bundle);
 	}
 
 	private void loadUpdateSimpleThreatRatingLine(String line) throws Exception
@@ -241,7 +240,7 @@ abstract public class AbstractProjectLoader
 	private void loadCreateObjectLine(String line) throws Exception
 	{
 		ORef ref = extractRefFromLine(line);
-		getProject().createObject(ref);
+		createObject(ref);
 	}
 
 	public static ORef extractRefFromLine(String line)
@@ -277,11 +276,6 @@ abstract public class AbstractProjectLoader
 		return new ORef(objectType, objectId);
 	}
 
-	protected Project getProject()
-	{
-		return project;
-	}
-	
 	public static class NotMiradiProjectFileException extends Exception
 	{
 	}
@@ -330,11 +324,38 @@ abstract public class AbstractProjectLoader
 		private int lowestAllowedVersion;
 	}
 	
+	protected void setLastModifiedTime(long lastModified)
+	{
+	}
+	
+	protected void saveSimpleThreatRatingBundle(ThreatRatingBundle bundle) throws Exception
+	{
+	}
+	
+	protected void updateHighestId(String value)
+	{
+	}
+
+	protected void updateProjectMetadataId(String value)
+	{
+	}
+	
+	protected void updateExceptionLog(String value) throws Exception
+	{
+	}	
+
+	protected void updateQuarantineFile(String value) throws Exception
+	{
+	}
+
 	abstract protected void updateObjectWithData(ORef ref, String tag, String value)	throws Exception;
+	
+	abstract protected void createObject(ORef ref) throws Exception;
+	
+	abstract protected void prepareToLoad() throws Exception;
 
 	private HashMap<String, ThreatRatingBundle> bundleNameToBundleMap;
 	private UnicodeReader reader;
-	private Project project;
 	
 	public static final String EQUALS_DELIMITER_TAB_PREFIXED = " \t=";
 	private static final String EQUALS_DELIMITER_NEWLINE_POSTFIXED = "=\n";
