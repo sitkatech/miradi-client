@@ -34,10 +34,9 @@ import org.miradi.utils.StringUtilities;
 
 abstract public class AbstractProjectLoader 
 {
-	protected AbstractProjectLoader(final UnicodeReader readerToUse, Project projectToUse) throws Exception
+	protected AbstractProjectLoader(final UnicodeReader readerToUse) throws Exception
 	{
 		reader = readerToUse;
-		project = projectToUse;
 		
 		bundleNameToBundleMap = new HashMap<String, ThreatRatingBundle>();
 	}
@@ -277,11 +276,6 @@ abstract public class AbstractProjectLoader
 		return new ORef(objectType, objectId);
 	}
 
-	protected Project getProject()
-	{
-		return project;
-	}
-	
 	public static class NotMiradiProjectFileException extends Exception
 	{
 	}
@@ -362,7 +356,6 @@ abstract public class AbstractProjectLoader
 
 	private HashMap<String, ThreatRatingBundle> bundleNameToBundleMap;
 	private UnicodeReader reader;
-	private Project project;
 	
 	public static final String EQUALS_DELIMITER_TAB_PREFIXED = " \t=";
 	private static final String EQUALS_DELIMITER_NEWLINE_POSTFIXED = "=\n";

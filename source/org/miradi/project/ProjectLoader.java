@@ -33,7 +33,9 @@ public class ProjectLoader extends AbstractProjectLoader
 {
 	private ProjectLoader(final UnicodeReader readerToUse, Project projectToUse) throws Exception
 	{
-		super(readerToUse, projectToUse);
+		super(readerToUse);
+		
+		project = projectToUse;
 	}
 	
 	public static void loadProject(File projectFile, Project projectToLoad) throws Exception
@@ -121,4 +123,11 @@ public class ProjectLoader extends AbstractProjectLoader
 	{
 		getProject().appendToQuarantineFile(value);
 	}
+	
+	private Project getProject()
+	{
+		return project;
+	}
+	
+	private Project project;
 }
