@@ -44,7 +44,7 @@ abstract public class AbstractProjectLoader
 
 	protected void load() throws Exception
 	{
-		project.clear();
+		prepareToLoad();
 		
 		boolean foundEnd = false;
 		
@@ -75,7 +75,7 @@ abstract public class AbstractProjectLoader
 		if(!foundEnd)
 			throw new IOException("Project file is corrupted (no end marker found)");
 	}
-	
+
 	protected long getLastModified() throws Exception
 	{
 		while(true)
@@ -333,6 +333,8 @@ abstract public class AbstractProjectLoader
 	abstract protected void updateObjectWithData(ORef ref, String tag, String value)	throws Exception;
 	
 	abstract protected void createObject(ORef ref) throws Exception;
+	
+	abstract protected void prepareToLoad() throws Exception;
 
 	private HashMap<String, ThreatRatingBundle> bundleNameToBundleMap;
 	private UnicodeReader reader;

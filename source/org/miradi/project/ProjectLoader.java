@@ -77,4 +77,10 @@ public class ProjectLoader extends AbstractProjectLoader
 	{
 		getProject().createObject(ref);
 	}
+	
+	@Override
+	protected void prepareToLoad() throws Exception
+	{
+		getProject().clear();
+	}
 }
