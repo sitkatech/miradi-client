@@ -61,7 +61,7 @@ abstract public class AbstractProjectLoader
 			{
 				foundEnd = true;
 				long lastModified = processStopLine(line);
-				getProject().setLastModified(lastModified);
+				setLastModifiedTime(lastModified);
 				continue;
 			}
 			else if(foundEnd)
@@ -328,6 +328,10 @@ abstract public class AbstractProjectLoader
 
 		private int thisVersion;
 		private int lowestAllowedVersion;
+	}
+	
+	protected void setLastModifiedTime(long lastModified)
+	{
 	}
 	
 	abstract protected void updateObjectWithData(ORef ref, String tag, String value)	throws Exception;
