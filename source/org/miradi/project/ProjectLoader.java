@@ -298,7 +298,8 @@ public class ProjectLoader
 		if (hasData)
 		{
 			String value = StringUtilities.substringAfter(line, EQUALS_DELIMITER);
-			getProject().setObjectData(ref, tag, value);
+			if (getProject().doesBaseObjectContainField(ref, tag))
+				getProject().setObjectData(ref, tag, value);
 		}
 	}
 
