@@ -372,6 +372,12 @@ public class ObjectManager
 		pool.remove(objectId);
 	}
 	
+	public boolean doesBaseObjectContainField(ORef objectRef, String fieldTag) throws Exception
+	{
+		BaseObject object = findObject(objectRef);
+		return object.doesFieldExist(fieldTag);
+	}
+	
 	public void setObjectData(ORef objectRef, String fieldTag, String dataValue) throws Exception
 	{
 		BaseObject object = findObject(objectRef);
