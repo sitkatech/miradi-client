@@ -32,7 +32,7 @@ import org.miradi.project.threatrating.RatingValueSet;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.utils.StringUtilities;
 
-public class AbstractProjectLoader 
+abstract public class AbstractProjectLoader 
 {
 	protected AbstractProjectLoader(final UnicodeReader readerToUse, Project projectToUse) throws Exception
 	{
@@ -264,8 +264,7 @@ public class AbstractProjectLoader
 		if (hasData)
 		{
 			String value = StringUtilities.substringAfter(line, EQUALS_DELIMITER);
-			if (getProject().doesBaseObjectContainField(ref, tag))
-				getProject().setObjectData(ref, tag, value);
+			updateObjectWithData(ref, tag, value);
 		}
 	}
 
@@ -278,7 +277,7 @@ public class AbstractProjectLoader
 		return new ORef(objectType, objectId);
 	}
 
-	private Project getProject()
+	protected Project getProject()
 	{
 		return project;
 	}
@@ -330,6 +329,8 @@ public class AbstractProjectLoader
 		private int thisVersion;
 		private int lowestAllowedVersion;
 	}
+	
+	abstract protected void updateObjectWithData(ORef ref, String tag, String value)	throws Exception;
 
 	private HashMap<String, ThreatRatingBundle> bundleNameToBundleMap;
 	private UnicodeReader reader;
