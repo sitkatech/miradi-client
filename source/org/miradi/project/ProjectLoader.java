@@ -25,6 +25,7 @@ import java.io.InputStream;
 
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringReader;
+import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 
@@ -95,5 +96,17 @@ public class ProjectLoader extends AbstractProjectLoader
 	protected void saveSimpleThreatRatingBundle(ThreatRatingBundle bundle) throws Exception
 	{
 		getProject().getSimpleThreatRatingFramework().saveBundle(bundle);
+	}
+
+	@Override
+	protected void updateHighestId(String value)
+	{
+		getProject().getProjectInfo().getNormalIdAssigner().idTaken(new BaseId(value));
+	}
+
+	@Override
+	protected void updateProjectMetadataId(String value)
+	{
+		getProject().getProjectInfo().setMetadataId(new BaseId(value));
 	}
 }
