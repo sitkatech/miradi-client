@@ -196,9 +196,9 @@ abstract public class AbstractProjectLoader
 		String tag = tagValue[0];
 		String value = tagValue[1];
 		if (tag.equals(ProjectInfo.TAG_PROJECT_METADATA_ID))
-			getProject().getProjectInfo().setMetadataId(new BaseId(value));
+			updateProjectMetadataId(value);
 		if (tag.equals(ProjectInfo.TAG_HIGHEST_OBJECT_ID))
-			getProject().getProjectInfo().getNormalIdAssigner().idTaken(new BaseId(value));
+			updateHighestId(value);
 	}
 
 	private void loadLastModified(String line)
@@ -338,6 +338,14 @@ abstract public class AbstractProjectLoader
 	{
 	}
 	
+	protected void updateHighestId(String value)
+	{
+	}
+
+	protected void updateProjectMetadataId(String value)
+	{
+	}
+
 	abstract protected void updateObjectWithData(ORef ref, String tag, String value)	throws Exception;
 	
 	abstract protected void createObject(ORef ref) throws Exception;
