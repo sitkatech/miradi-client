@@ -131,7 +131,7 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 	private void writeObject(ORef ref) throws Exception
 	{
 		BaseObject baseObject = getProject().findObject(ref);
-		writeValue(CREATE_OBJECT_CODE, createSimpleRefString(ref));
+		createNewObjectEntry(ref);
 		Vector<String> fieldTags = baseObject.getStoredFieldTags();
 		for(int field = 0; field < fieldTags.size(); ++field)
 		{
@@ -147,6 +147,11 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 				writeRefTagValue(UPDATE_OBJECT_CODE, ref, tag, data);
 			}
 		}
+	}
+
+	public void createNewObjectEntry(ORef ref) throws Exception
+	{
+		writeValue(CREATE_OBJECT_CODE, createSimpleRefString(ref));
 	}
 
 	private boolean needsEncoding(ObjectData dataField)
