@@ -124,7 +124,7 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		for (int index = 0; index < sortedObjectRefs.size(); ++index)
 		{
 			final ORef ref = sortedObjectRefs.get(index);
-			createNewObject(ref);
+			writeNewObjectEntry(ref);
 			updateObject(ref);
 		}
 	}
@@ -149,7 +149,7 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		}
 	}
 
-	public void createNewObject(ORef ref) throws Exception
+	public void writeNewObjectEntry(ORef ref) throws Exception
 	{
 		writeValue(CREATE_OBJECT_CODE, createSimpleRefString(ref));
 	}
