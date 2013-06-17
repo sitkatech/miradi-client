@@ -23,6 +23,7 @@ package org.miradi.mpfMigrations;
 import org.martus.util.UnicodeReader;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.AbstractProjectLoader;
+import org.miradi.project.threatrating.ThreatRatingBundle;
 
 public class RawProjectLoader extends AbstractProjectLoader
 {
@@ -31,7 +32,7 @@ public class RawProjectLoader extends AbstractProjectLoader
 		final RawProjectLoader projectLoader = new RawProjectLoader(reader);
 		projectLoader.load();
 		
-		return projectLoader.getTypeToRawPoolMap();
+		return projectLoader.getRawProject();
 	}
 	
 	private RawProjectLoader(UnicodeReader readerToUse) throws Exception
@@ -63,14 +64,50 @@ public class RawProjectLoader extends AbstractProjectLoader
 	private RawPool getRawPool(ORef ref)
 	{
 		if (!rawProject.containType(ref.getObjectType()))
-			getTypeToRawPoolMap().putTypeToNewPoolEntry(ref.getObjectType(), new RawPool());
+			getRawProject().putTypeToNewPoolEntry(ref.getObjectType(), new RawPool());
 		
-		return getTypeToRawPoolMap().getRawPoolForType(ref.getObjectType());
+		return getRawProject().getRawPoolForType(ref.getObjectType());
 	}
 	
-	private RawProject getTypeToRawPoolMap()
+	private RawProject getRawProject()
 	{
 		return rawProject;
+	}
+
+	@Override
+	protected void setLastModifiedTime(long lastModified)
+	{
+		getRawProject().setLastModifiedTime(lastModified);
+	}
+
+	@Override
+	protected void saveSimpleThreatRatingBundle(ThreatRatingBundle bundle) throws Exception
+	{
+		getRawProject().addThreatRatingBundle(bundle);
+	}
+
+	@Override
+	protected void updateHighestId(String value)
+	{
+		getRawProject().setHighestAssignedId(Integer.parseInt(value));
+	}
+
+	@Override
+	protected void updateProjectMetadataId(String value)
+	{
+		getRawProject().setProjectMetadataId(value);
+	}
+
+	@Override
+	protected void updateExceptionLog(String value) throws Exception
+	{
+		getRawProject().setExceptionLog(value);
+	}
+
+	@Override
+	protected void updateQuarantineFile(String value) throws Exception
+	{
+		getRawProject().setQuarantineValue(value);
 	}
 
 	private RawProject rawProject;
