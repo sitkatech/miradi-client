@@ -95,11 +95,6 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		return getProject().getLastModifiedTime();
 	}
 
-	public void flushWriter() throws IOException
-	{
-		getWriter().flush();
-	}
-
 	private void writeLastModified() throws Exception
 	{
 		writeTagValue(UPDATE_LAST_MODIFIED_TIME_CODE, LAST_MODIFIED_TAG, LegacyProjectUtilities.timestampToString(getLastModifiedTime()));
