@@ -283,6 +283,10 @@ public class ObjectManager
 		return (AccountingCodePool)getPool(ObjectType.ACCOUNTING_CODE);
 	}
 
+	public FutureStatusPool getFutureStatusPool()
+	{
+		return (FutureStatusPool) getPool(ObjectType.FUTURE_STATUS);
+	}
 	
 	public FundingSourcePool getFundingSourcePool()
 	{

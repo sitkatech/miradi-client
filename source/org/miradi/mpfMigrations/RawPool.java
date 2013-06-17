@@ -20,32 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.mpfMigrations;
 
-public class MigrationManager
+import java.util.HashMap;
+
+import org.miradi.objecthelpers.ORef;
+
+public class RawPool extends HashMap<ORef, RawObject>
 {
-	public MigrationManager()
-	{
-	}
-	
-	public String migrate(String mpfAsString) throws Exception
-	{
-		final RawProject migratedPools = IndicatorFutureStatusDataToNewFutureStatusTypeMigration.migrate(mpfAsString);
-		
-		return convertToMpfString(migratedPools);
-	}
-	
-	public static String getMigrationType(VersionRange miradiVersionRange, VersionRange mpfVersionRange) throws Exception
-	{
-		if (mpfVersionRange.upperOverlaps(miradiVersionRange))
-			return MIGRATION;
-		
-		return NO_MIGRATION;
-	}
-	
-	private String convertToMpfString(RawProject migratedPools)
-	{
-		return null;
-	}
-	
-	public static final String NO_MIGRATION = "NoMigration";
-	public static final String MIGRATION = "Migration";
 }
