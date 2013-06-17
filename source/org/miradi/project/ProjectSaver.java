@@ -23,7 +23,6 @@ package org.miradi.project;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Vector;
 
 import org.martus.util.UnicodeStringWriter;
@@ -32,11 +31,9 @@ import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.ThreatRatingBundleSorter;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.threatrating.ThreatRatingBundle;
-import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.HtmlUtilities;
 
 public class ProjectSaver extends AbstractMiradiProjectSaver
@@ -171,25 +168,10 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		return dataField.isUserText();
 	}
 
-	private void writeAllSimpleThreatRatings() throws Exception
+	@Override
+	protected Collection<ThreatRatingBundle> getSimpleThreatRatingBundles()
 	{
-		Collection<ThreatRatingBundle> allBundles = getProject().getSimpleThreatRatingFramework().getAllBundles();
-		Vector<ThreatRatingBundle> sortedBundles = new Vector<ThreatRatingBundle>(allBundles);
-		Collections.sort(sortedBundles, new ThreatRatingBundleSorter());
-		for(ThreatRatingBundle bundle : sortedBundles)
-		{
-			if(bundle.getThreatId().isInvalid())
-				continue;
-			if(bundle.getTargetId().isInvalid())
-				continue;
-			EnhancedJsonObject json = bundle.toJson();
-			int threatId = bundle.getThreatId().asInt();
-			int targetId = bundle.getTargetId().asInt();
-			int defaultValueId = json.getInt(ThreatRatingBundle.TAG_DEFAULT_VALUE_ID);
-			String ratings = json.getString(ThreatRatingBundle.TAG_VALUES);
-
-			writeSimpleThreatRatingBundle(threatId, targetId, defaultValueId, ratings);
-		}
+		return getProject().getSimpleThreatRatingFramework().getAllBundles();
 	}
 
 	public void writelnRaw(String data) throws IOException
