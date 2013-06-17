@@ -124,6 +124,7 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		for (int index = 0; index < sortedObjectRefs.size(); ++index)
 		{
 			final ORef ref = sortedObjectRefs.get(index);
+			createNewObjectEntry(ref);
 			writeObject(ref);
 		}
 	}
@@ -131,7 +132,6 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 	private void writeObject(ORef ref) throws Exception
 	{
 		BaseObject baseObject = getProject().findObject(ref);
-		createNewObjectEntry(ref);
 		Vector<String> fieldTags = baseObject.getStoredFieldTags();
 		for(int field = 0; field < fieldTags.size(); ++field)
 		{
