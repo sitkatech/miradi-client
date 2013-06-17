@@ -104,12 +104,18 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 	{
 		for (int type = ObjectType.FIRST_OBJECT_TYPE; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
 		{
-			EAMObjectPool pool = getProject().getPool(type);
-			if (pool != null)
-			{
-				ORefList sortedObjectRefs = pool.getSortedRefList();
-				writeObjects(sortedObjectRefs);
-			}
+			writePoolForType(type);
+		}
+	}
+
+	@Override
+	protected void writePoolForType(int type) throws Exception
+	{
+		EAMObjectPool pool = getProject().getPool(type);
+		if (pool != null)
+		{
+			ORefList sortedObjectRefs = pool.getSortedRefList();
+			writeObjects(sortedObjectRefs);
 		}
 	}
 

@@ -32,6 +32,7 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.ThreatRatingBundleSorter;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
@@ -219,6 +220,16 @@ abstract public class AbstractMiradiProjectSaver
 		return fileContent.substring(startOfPortionToKeep, fileContentLength);
 	}
 	
+	protected void writeAllObjectTypes() throws Exception
+	{
+		for (int type = ObjectType.FIRST_OBJECT_TYPE; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
+		{
+			writePoolForType(type);
+		}
+	}
+
+	abstract protected void writePoolForType(int type) throws Exception;
+	
 	abstract protected String getExceptionLog() throws Exception;
 
 	abstract protected String getQuarantineData() throws Exception;
@@ -231,8 +242,6 @@ abstract public class AbstractMiradiProjectSaver
 	
 	abstract protected long getLastModifiedTime();
 	
-	abstract protected void writeAllObjectTypes() throws Exception;
-
 	public static final String TAB = "\t";
 	public static final String EQUALS = "=";
 
