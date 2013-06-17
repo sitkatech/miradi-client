@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-14 16:46-0500\n"
+"POT-Creation-Date: 2013-06-17 10:46-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -8968,7 +8968,7 @@ msgstr "[NON SPECIFICATO]"
 msgid "[New Results Chain]"
 msgstr "[Nuova catena dei risultati]"
 
-#: Miradi/source/org/miradi/project/Project.java:974
+#: Miradi/source/org/miradi/project/Project.java:980
 msgid "[No Project]"
 msgstr "[Nessun Progetto]"
 
