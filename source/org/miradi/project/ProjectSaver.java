@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Collection;
 import java.util.Vector;
 
@@ -169,11 +168,6 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		return getProject().getSimpleThreatRatingFramework().getAllBundles();
 	}
 
-	public void writelnRaw(String data) throws IOException
-	{
-		getWriter().writeln(data);
-	}
-	
 	private Project getProject()
 	{
 		return project;
