@@ -137,15 +137,20 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		{
 			String tag = fieldTags.get(field);
 			String data = baseObject.getData(tag);
-			if (data.length() > 0)
+			wirteDataEntry(ref, baseObject, tag, data);
+		}
+	}
+
+	protected void wirteDataEntry(ORef ref, BaseObject baseObject, String tag,	String data) throws Exception
+	{
+		if (data.length() > 0)
+		{
+			ObjectData dataField = baseObject.getField(tag);
+			if(needsEncoding(dataField))
 			{
-				ObjectData dataField = baseObject.getField(tag);
-				if(needsEncoding(dataField))
-				{
-					ensureNoNonHtmlNewlinesExists(data);
-				}
-				writeRefTagValue(UPDATE_OBJECT_CODE, ref, tag, data);
+				ensureNoNonHtmlNewlinesExists(data);
 			}
+			writeRefTagValue(UPDATE_OBJECT_CODE, ref, tag, data);
 		}
 	}
 
