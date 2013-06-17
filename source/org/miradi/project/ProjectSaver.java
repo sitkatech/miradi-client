@@ -26,10 +26,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Vector;
 
-
 import org.martus.util.UnicodeStringWriter;
 import org.martus.util.UnicodeWriter;
-import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -90,6 +88,7 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		flushWriter();
 	}
 
+	@Override
 	protected long getLastModifiedTime()
 	{
 		return getProject().getLastModifiedTime();
@@ -105,11 +104,6 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 	protected int getHighestAssignedId()
 	{
 		return getProject().getProjectInfo().getNormalIdAssigner().getHighestAssignedId();
-	}
-
-	private void writeLastModified() throws Exception
-	{
-		writeTagValue(UPDATE_LAST_MODIFIED_TIME_CODE, LAST_MODIFIED_TAG, LegacyProjectUtilities.timestampToString(getLastModifiedTime()));
 	}
 
 	private void writeAllQuarantinedData() throws Exception
