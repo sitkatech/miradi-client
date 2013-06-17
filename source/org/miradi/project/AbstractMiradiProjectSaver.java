@@ -26,6 +26,7 @@ import java.util.Date;
 
 import org.martus.util.UnicodeStringWriter;
 import org.martus.util.UnicodeWriter;
+import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
@@ -126,6 +127,11 @@ abstract public class AbstractMiradiProjectSaver
 	protected void flushWriter() throws IOException
 	{
 		getWriter().flush();
+	}
+
+	protected void writeSchemaVersion() throws Exception
+	{
+		writeTagValue(UPDATE_PROJECT_VERSION_CODE, "Version", Integer.toString(LegacyProjectUtilities.DATA_VERSION));
 	}
 
 	public static String getBasicFileHeader()
