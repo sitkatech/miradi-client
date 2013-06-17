@@ -34,7 +34,6 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.threatrating.ThreatRatingBundle;
-import org.miradi.utils.HtmlUtilities;
 
 public class ProjectSaver extends AbstractMiradiProjectSaver
 {
@@ -109,13 +108,10 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		return getProject().getQuarantineFileContents();
 	}
 
-	private void writeExceptionsLog() throws Exception
+	@Override
+	protected String getExceptionLog() throws Exception
 	{
-		String exceptions = getProject().getExceptionLog();
-		exceptions = HtmlUtilities.replaceNonHtmlNewlines(exceptions);
-		ensureNoNonHtmlNewlinesExists(exceptions);
-		exceptions = truncate(exceptions);
-		writeTagValue(UPDATE_EXCEPTIONS_CODE, EXCEPTIONS_DATA_TAG, exceptions);
+		return getProject().getExceptionLog();
 	}
 
 	@Override
@@ -176,17 +172,6 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 	public void writelnRaw(String data) throws IOException
 	{
 		getWriter().writeln(data);
-	}
-	
-	private String truncate(String fileContent)
-	{
-		final int LIMIT_20K_CHARACTERS = 20000;
-		final int fileContentLength = fileContent.length();
-		final int startOfPortionToKeep = fileContentLength - LIMIT_20K_CHARACTERS;
-		if (startOfPortionToKeep <= 0)
-			return fileContent;
-		
-		return fileContent.substring(startOfPortionToKeep, fileContentLength);
 	}
 	
 	private Project getProject()

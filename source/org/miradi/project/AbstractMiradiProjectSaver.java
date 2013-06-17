@@ -36,6 +36,7 @@ import org.miradi.objecthelpers.ThreatRatingBundleSorter;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.StringUtilities;
 
 abstract public class AbstractMiradiProjectSaver
@@ -183,6 +184,28 @@ abstract public class AbstractMiradiProjectSaver
 		ensureNoNonHtmlNewlinesExists(quarantineFileContents);
 		writeTagValue(UPDATE_QUARANTINE_CODE, QUARANTINE_DATA_TAG, quarantineFileContents);
 	}
+	
+	protected void writeExceptionsLog() throws Exception
+	{
+		String exceptions = getExceptionLog();
+		exceptions = HtmlUtilities.replaceNonHtmlNewlines(exceptions);
+		ensureNoNonHtmlNewlinesExists(exceptions);
+		exceptions = truncate(exceptions);
+		writeTagValue(UPDATE_EXCEPTIONS_CODE, EXCEPTIONS_DATA_TAG, exceptions);
+	}
+	
+	private String truncate(String fileContent)
+	{
+		final int LIMIT_20K_CHARACTERS = 20000;
+		final int fileContentLength = fileContent.length();
+		final int startOfPortionToKeep = fileContentLength - LIMIT_20K_CHARACTERS;
+		if (startOfPortionToKeep <= 0)
+			return fileContent;
+		
+		return fileContent.substring(startOfPortionToKeep, fileContentLength);
+	}
+	
+	abstract protected String getExceptionLog() throws Exception;
 
 	abstract protected String getQuarantineData() throws Exception;
 	
