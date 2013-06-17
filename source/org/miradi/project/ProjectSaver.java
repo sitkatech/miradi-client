@@ -95,15 +95,21 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		return getProject().getLastModifiedTime();
 	}
 
+	@Override
+	protected String getProjectMetadataId()
+	{
+		return getProject().getProjectInfo().getMetadataId().toString();
+	}
+
+	@Override
+	protected int getHighestAssignedId()
+	{
+		return getProject().getProjectInfo().getNormalIdAssigner().getHighestAssignedId();
+	}
+
 	private void writeLastModified() throws Exception
 	{
 		writeTagValue(UPDATE_LAST_MODIFIED_TIME_CODE, LAST_MODIFIED_TAG, LegacyProjectUtilities.timestampToString(getLastModifiedTime()));
-	}
-
-	private void writeProjectInfo() throws Exception
-	{
-		writeTagValue(UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_HIGHEST_OBJECT_ID, Integer.toString(getProject().getProjectInfo().getNormalIdAssigner().getHighestAssignedId()));
-		writeTagValue(UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_PROJECT_METADATA_ID, getProject().getProjectInfo().getMetadataId().toString());
 	}
 
 	private void writeAllQuarantinedData() throws Exception

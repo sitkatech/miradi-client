@@ -140,6 +140,16 @@ abstract public class AbstractMiradiProjectSaver
 		return BOM_STRING + "MiradiProjectFile";		
 	}
 	
+	protected void writeProjectInfo() throws Exception
+	{
+		writeTagValue(UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_HIGHEST_OBJECT_ID, Integer.toString(getHighestAssignedId()));
+		writeTagValue(UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_PROJECT_METADATA_ID, getProjectMetadataId());
+	}
+
+	abstract protected String getProjectMetadataId();
+
+	abstract protected int getHighestAssignedId();
+	
 	public static final String TAB = "\t";
 	public static final String EQUALS = "=";
 
