@@ -20,8 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.mpfMigrations;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
-public class RawObject extends HashMap<String, String>
+public class RawObject extends LinkedHashMap<String, String>
 {
 }

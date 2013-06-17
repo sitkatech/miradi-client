@@ -324,29 +324,17 @@ abstract public class AbstractProjectLoader
 		private int lowestAllowedVersion;
 	}
 	
-	protected void setLastModifiedTime(long lastModified)
-	{
-	}
+	abstract protected void setLastModifiedTime(long lastModified);
 	
-	protected void saveSimpleThreatRatingBundle(ThreatRatingBundle bundle) throws Exception
-	{
-	}
+	abstract protected void saveSimpleThreatRatingBundle(ThreatRatingBundle bundle) throws Exception;
 	
-	protected void updateHighestId(String value)
-	{
-	}
+	abstract protected void updateHighestId(String value);
 
-	protected void updateProjectMetadataId(String value)
-	{
-	}
+	abstract protected void updateProjectMetadataId(String value);
 	
-	protected void updateExceptionLog(String value) throws Exception
-	{
-	}	
+	abstract protected void updateExceptionLog(String value) throws Exception;
 
-	protected void updateQuarantineFile(String value) throws Exception
-	{
-	}
+	abstract protected void updateQuarantineFile(String value) throws Exception;
 
 	abstract protected void prepareToLoad() throws Exception;
 
