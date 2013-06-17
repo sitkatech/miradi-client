@@ -123,6 +123,11 @@ abstract public class AbstractMiradiProjectSaver
 		getWriter().writeln(STOP_MARKER + " " + lastModifiedForComputers + " " + lastModifiedForHumans);
 	}
 	
+	protected void flushWriter() throws IOException
+	{
+		getWriter().flush();
+	}
+
 	public static String getBasicFileHeader()
 	{
 		String BOM_STRING = new String(new char[] {UnicodeWriter.BOM_UTF8});
