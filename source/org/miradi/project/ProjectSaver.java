@@ -69,20 +69,6 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		project = projectToUse;
 	}
 	
-	private void saveProject() throws Exception
-	{
-		writeFileHeader();
-		writeSchemaVersion();
-		writeProjectInfo();
-		writeLastModified();
-		writeAllObjectTypes();
-		writeAllSimpleThreatRatings();
-		writeAllQuarantinedData();
-		writeExceptionsLog();
-		writeStopMarker(getLastModifiedTime());
-		flushWriter();
-	}
-
 	@Override
 	protected long getLastModifiedTime()
 	{
