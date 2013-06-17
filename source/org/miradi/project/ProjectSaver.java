@@ -125,11 +125,11 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		{
 			final ORef ref = sortedObjectRefs.get(index);
 			createNewObjectEntry(ref);
-			writeObject(ref);
+			updateObject(ref);
 		}
 	}
 
-	private void writeObject(ORef ref) throws Exception
+	private void updateObject(ORef ref) throws Exception
 	{
 		BaseObject baseObject = getProject().findObject(ref);
 		Vector<String> fieldTags = baseObject.getStoredFieldTags();
