@@ -43,17 +43,6 @@ import org.miradi.utils.HtmlUtilities;
 
 public class ProjectSaver extends AbstractMiradiProjectSaver
 {
-	protected ProjectSaver(final UnicodeStringWriter writerToUse) throws Exception
-	{
-		super(writerToUse);
-	}
-	
-	private ProjectSaver(final Project projectToUse, final UnicodeStringWriter writerToUse) throws Exception
-	{
-		super(writerToUse);
-		project = projectToUse;
-	}
-	
 	public static String saveProject(Project projectToSave, File fileToSaveTo) throws Exception
 	{
 		UnicodeStringWriter stringWriter = UnicodeStringWriter.create();
@@ -78,6 +67,12 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 	{
 		final ProjectSaver projectSaver = new ProjectSaver(projectToUse, writerToUse);
 		projectSaver.saveProject();
+	}
+	
+	private ProjectSaver(final Project projectToUse, final UnicodeStringWriter writerToUse) throws Exception
+	{
+		super(writerToUse);
+		project = projectToUse;
 	}
 	
 	private void saveProject() throws Exception
