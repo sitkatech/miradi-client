@@ -103,11 +103,10 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		return getProject().getProjectInfo().getNormalIdAssigner().getHighestAssignedId();
 	}
 
-	private void writeAllQuarantinedData() throws Exception
+	@Override
+	protected String getQuarantineData() throws Exception
 	{
-		String quarantineFileContents = getProject().getQuarantineFileContents();
-		ensureNoNonHtmlNewlinesExists(quarantineFileContents);
-		writeTagValue(UPDATE_QUARANTINE_CODE, QUARANTINE_DATA_TAG, quarantineFileContents);
+		return getProject().getQuarantineFileContents();
 	}
 
 	private void writeExceptionsLog() throws Exception

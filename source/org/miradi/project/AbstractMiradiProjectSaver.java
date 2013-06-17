@@ -177,6 +177,15 @@ abstract public class AbstractMiradiProjectSaver
 		}
 	}
 	
+	protected void writeAllQuarantinedData() throws Exception
+	{
+		String quarantineFileContents = getQuarantineData();
+		ensureNoNonHtmlNewlinesExists(quarantineFileContents);
+		writeTagValue(UPDATE_QUARANTINE_CODE, QUARANTINE_DATA_TAG, quarantineFileContents);
+	}
+
+	abstract protected String getQuarantineData() throws Exception;
+	
 	abstract protected Collection<ThreatRatingBundle> getSimpleThreatRatingBundles();
 	
 	abstract protected String getProjectMetadataId();
