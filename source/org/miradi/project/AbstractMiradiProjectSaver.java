@@ -156,6 +156,8 @@ abstract public class AbstractMiradiProjectSaver
 	abstract protected int getHighestAssignedId();
 	
 	abstract protected long getLastModifiedTime();
+	
+	abstract protected void writeAllObjectTypes() throws Exception;
 
 	public static final String TAB = "\t";
 	public static final String EQUALS = "=";

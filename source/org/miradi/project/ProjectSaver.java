@@ -122,7 +122,8 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		writeTagValue(UPDATE_EXCEPTIONS_CODE, EXCEPTIONS_DATA_TAG, exceptions);
 	}
 
-	private void writeAllObjectTypes() throws Exception
+	@Override
+	protected void writeAllObjectTypes() throws Exception
 	{
 		for (int type = ObjectType.FIRST_OBJECT_TYPE; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
 		{
