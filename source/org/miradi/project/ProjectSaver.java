@@ -106,11 +106,6 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		writeTagValue(UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_PROJECT_METADATA_ID, getProject().getProjectInfo().getMetadataId().toString());
 	}
 
-	private void writeSchemaVersion() throws Exception
-	{
-		writeTagValue(UPDATE_PROJECT_VERSION_CODE, "Version", Integer.toString(LegacyProjectUtilities.DATA_VERSION));
-	}
-
 	private void writeAllQuarantinedData() throws Exception
 	{
 		String quarantineFileContents = getProject().getQuarantineFileContents();
