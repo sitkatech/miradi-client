@@ -72,6 +72,7 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 	private ProjectSaver(final Project projectToUse, final UnicodeStringWriter writerToUse) throws Exception
 	{
 		super(writerToUse);
+		
 		project = projectToUse;
 	}
 	
@@ -85,8 +86,13 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		writeAllSimpleThreatRatings();
 		writeAllQuarantinedData();
 		writeExceptionsLog();
-		writeStopMarker(getProject().getLastModifiedTime());
+		writeStopMarker(getLastModifiedTime());
 		flushWriter();
+	}
+
+	protected long getLastModifiedTime()
+	{
+		return getProject().getLastModifiedTime();
 	}
 
 	public void flushWriter() throws IOException
@@ -96,7 +102,7 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 
 	private void writeLastModified() throws Exception
 	{
-		writeTagValue(UPDATE_LAST_MODIFIED_TIME_CODE, LAST_MODIFIED_TAG, LegacyProjectUtilities.timestampToString(getProject().getLastModifiedTime()));
+		writeTagValue(UPDATE_LAST_MODIFIED_TIME_CODE, LAST_MODIFIED_TAG, LegacyProjectUtilities.timestampToString(getLastModifiedTime()));
 	}
 
 	private void writeProjectInfo() throws Exception
