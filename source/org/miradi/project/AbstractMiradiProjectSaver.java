@@ -59,6 +59,20 @@ abstract public class AbstractMiradiProjectSaver
 			throw new RuntimeException("Non html new lines found in data");
 		}
 	}
+	
+	protected void saveProject() throws Exception
+	{
+		writeFileHeader();
+		writeSchemaVersion();
+		writeProjectInfo();
+		writeLastModified();
+		writeAllObjectTypes();
+		writeAllSimpleThreatRatings();
+		writeAllQuarantinedData();
+		writeExceptionsLog();
+		writeStopMarker(getLastModifiedTime());
+		flushWriter();
+	}
 
 	protected String createSimpleRefString(final ORef ref)
 	{
