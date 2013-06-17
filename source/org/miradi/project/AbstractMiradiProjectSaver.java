@@ -146,10 +146,17 @@ abstract public class AbstractMiradiProjectSaver
 		writeTagValue(UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_PROJECT_METADATA_ID, getProjectMetadataId());
 	}
 
+	protected void writeLastModified() throws Exception
+	{
+		writeTagValue(UPDATE_LAST_MODIFIED_TIME_CODE, LAST_MODIFIED_TAG, LegacyProjectUtilities.timestampToString(getLastModifiedTime()));
+	}
+	
 	abstract protected String getProjectMetadataId();
 
 	abstract protected int getHighestAssignedId();
 	
+	abstract protected long getLastModifiedTime();
+
 	public static final String TAB = "\t";
 	public static final String EQUALS = "=";
 
