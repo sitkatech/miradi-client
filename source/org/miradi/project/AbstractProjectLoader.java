@@ -104,6 +104,7 @@ abstract public class AbstractProjectLoader
 		int lowVersion = Integer.parseInt(parts[1]);
 		if(lowVersion > AbstractMiradiProjectSaver.VERSION_HIGH)
 			throw new ProjectFileTooNewException(lowVersion, AbstractMiradiProjectSaver.VERSION_HIGH);
+		
 		int highVersion = Integer.parseInt(parts[1]);
 		if(highVersion < AbstractMiradiProjectSaver.VERSION_LOW)
 			throw new ProjectFileTooOldException(highVersion, AbstractMiradiProjectSaver.VERSION_LOW);
