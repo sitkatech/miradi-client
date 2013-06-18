@@ -20,6 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.mpfMigrations;
 
+import org.martus.util.UnicodeStringWriter;
+import org.miradi.project.RawProjectSaver;
+
 public class MigrationManager
 {
 	public MigrationManager()
@@ -41,9 +44,12 @@ public class MigrationManager
 		return NO_MIGRATION;
 	}
 	
-	private String convertToMpfString(RawProject migratedPools)
+	private String convertToMpfString(RawProject migratedPools) throws Exception
 	{
-		return null;
+		UnicodeStringWriter stringWriter = UnicodeStringWriter.create();
+		RawProjectSaver.saveProject(migratedPools, stringWriter);
+		
+		return stringWriter.toString();
 	}
 	
 	public static final String NO_MIGRATION = "NoMigration";

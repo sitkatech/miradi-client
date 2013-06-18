@@ -20,12 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.mpfMigrations;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Set;
 
 import org.martus.util.UnicodeStringReader;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objectpools.BaseObjectPool;
 import org.miradi.objectpools.FutureStatusPool;
 import org.miradi.objectpools.IndicatorPool;
 import org.miradi.objects.FutureStatus;
@@ -41,27 +43,35 @@ public class TestMigrationManager extends TestCaseWithProject
 		super(name);
 	}
 	
-	public void testMigrateIndicatorFutureStatuses() throws Exception
+	public void testMigrateIndicatorWithoutFutureStatusValues() throws Exception
+	{
+		getProject().createIndicatorWithCauseParent();
+		ProjectForTesting migratedProject = migrateProject();
+		final BaseObjectPool futureStatusPool = migratedProject.getFutureStatusPool();
+		assertEquals("Future status should be empty?", 0, futureStatusPool.size());
+	}
+	
+	public void testMigrateIndicatorWithFutureStatuses() throws Exception
 	{
 		Indicator indicator = getProject().createIndicatorWithCauseParent();
-		MigrationManager migrationManager = new MigrationManager();
-		String migratedMpfFile = migrationManager.migrate(ProjectSaver.createSnapShot(getProject()));
-		
-		ProjectForTesting migratedProject = ProjectForTesting.createProjectWithoutDefaultObjects("MigratedProject");
-		ProjectLoader.loadProject(new UnicodeStringReader(migratedMpfFile), migratedProject);
+		getProject().populateIndicator(indicator);
+		ProjectForTesting migratedProject = migrateProject();
 		final IndicatorPool indicatorPool = migratedProject.getIndicatorPool();
 		assertEquals("Incorrect indictor count?", 1, indicatorPool.size());
+		
 		ORef migratedIndicatorRef =  indicatorPool.getRefList().getFirstElement();
 		Indicator migratedIndicator = Indicator.find(migratedProject, migratedIndicatorRef);
 		HashMap<String,String> indicatorFutureStatusTagsToFutureStatusTagMap = new IndicatorFutureStatusTagsToFutureStatusTagsMap();
 		Set<String> indicatorFutureStatusTags = indicatorFutureStatusTagsToFutureStatusTagMap.keySet();
-		for(String futureStatusTag : indicatorFutureStatusTags)
+		for(String indicatorFutureStatusTag : indicatorFutureStatusTags)
 		{
-			assertTrue("Field should have been removed by migration?", migratedIndicator.doesFieldExist(futureStatusTag));
+			String indicatorFutureStatusData = migratedIndicator.getData(indicatorFutureStatusTag);
+			assertEquals("Field with value should have been cleared by migration?", 0, indicatorFutureStatusData.length());
 		}
 		
 		final FutureStatusPool futureStatusPool = migratedProject.getFutureStatusPool();
 		assertEquals("Incorrect FutureStatus count?", 1, futureStatusPool.size());
+		
 		ORef futureStatusRef = futureStatusPool.getORefList().getFirstElement();
 		FutureStatus futureStatus = FutureStatus.find(migratedProject, futureStatusRef);
 		for(String indicatorFutureStatusTag : indicatorFutureStatusTags)
@@ -72,7 +82,7 @@ public class TestMigrationManager extends TestCaseWithProject
 			assertEquals("Future status data was no migrated correctly?", expectedData, actualData);
 		}
 	}
-	
+
 	public void testGetMigrationType() throws Exception
 	{
 		verifyType(MigrationManager.NO_MIGRATION, 10, 10, 5, 5);
@@ -88,5 +98,16 @@ public class TestMigrationManager extends TestCaseWithProject
 		VersionRange miradiVersionRange = new VersionRange(miradiLowVersion, miradiHighVersion);
 		VersionRange mpfVersionRange = new VersionRange(mpfLowVersion, mpfHighVersion);
 		assertEquals("incorrect migration type?", expectedMigrationType, MigrationManager.getMigrationType(miradiVersionRange, mpfVersionRange));
+	}
+	
+	private ProjectForTesting migrateProject() throws Exception, IOException
+	{
+		MigrationManager migrationManager = new MigrationManager();
+		String migratedMpfFile = migrationManager.migrate(ProjectSaver.createSnapShot(getProject()));
+		
+		ProjectForTesting migratedProject = ProjectForTesting.createProjectWithoutDefaultObjects("MigratedProject");
+		ProjectLoader.loadProject(new UnicodeStringReader(migratedMpfFile), migratedProject);
+		
+		return migratedProject;
 	}
 }

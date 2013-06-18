@@ -89,7 +89,7 @@ public class RawProjectLoader extends AbstractProjectLoader
 	@Override
 	protected void updateHighestId(String value)
 	{
-		getRawProject().setHighestAssignedId(Integer.parseInt(value));
+		getRawProject().setHighestAssignedId(value);
 	}
 
 	@Override
