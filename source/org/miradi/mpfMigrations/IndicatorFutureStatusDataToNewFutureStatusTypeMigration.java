@@ -20,9 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.mpfMigrations;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import org.martus.util.UnicodeStringReader;
+import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 
@@ -44,9 +46,13 @@ public class IndicatorFutureStatusDataToNewFutureStatusTypeMigration
 		for(ORef indicatorRef : indicatorRefs)
 		{
 			RawObject indicator = indicatorRawPool.get(indicatorRef);
-			RawObject newFutureStatus = moveFutureStatusFields(indicator);
-			//FIXME urgent - needs to have a valid ref here. 
-			futureStatusPool.put(ORef.INVALID, newFutureStatus);
+			if (hasAnyFutureStatusData(indicator))
+			{
+				RawObject newFutureStatus = new RawObject();
+				moveFutureStatusFields(indicator, newFutureStatus);
+				final BaseId nextHighestId = rawProject.getNextHighestId();
+				futureStatusPool.put(new ORef(ObjectType.FUTURE_STATUS, nextHighestId), newFutureStatus);
+			}
 		}
 		
 		if (futureStatusPool.size() > 0)
@@ -55,15 +61,12 @@ public class IndicatorFutureStatusDataToNewFutureStatusTypeMigration
 		return rawProject;
 	}
 
-	private static RawObject moveFutureStatusFields(RawObject indicator)
+	private static void moveFutureStatusFields(RawObject indicator, RawObject futurStatus)
 	{
-		if (!hasAnyFutureStatusData(indicator))
-			return null;
-		
 		IndicatorFutureStatusTagsToFutureStatusTagsMap indicatorFutureStatusTagsToFutureStatusTagMap = new IndicatorFutureStatusTagsToFutureStatusTagsMap();
 		Set<String> indicatorFutureStatusTags = indicatorFutureStatusTagsToFutureStatusTagMap.getIndicatorFutureStatusTags();
-		RawObject futurStatus = new RawObject();
 		Set<String> fieldTags = indicator.keySet();
+		Set<String> futureStatusFieldsToRemoveFromIndicator = new HashSet<String>();
 		for(String indicatorFutureStatusTag : indicatorFutureStatusTags)
 		{
 			if (fieldTags.contains(indicatorFutureStatusTag))
@@ -72,10 +75,14 @@ public class IndicatorFutureStatusDataToNewFutureStatusTypeMigration
 				String futureStatusTag = indicatorFutureStatusTagsToFutureStatusTagMap.get(indicatorFutureStatusTag);
 				
 				futurStatus.put(futureStatusTag, data);
+				futureStatusFieldsToRemoveFromIndicator.add(indicatorFutureStatusTag);
 			}
 		}
-		
-		return futurStatus;
+
+		for(String futureStatusTagToRemove : futureStatusFieldsToRemoveFromIndicator)
+		{
+			indicator.remove(futureStatusTagToRemove);
+		}
 	}
 
 	private static boolean hasAnyFutureStatusData(RawObject indicator)

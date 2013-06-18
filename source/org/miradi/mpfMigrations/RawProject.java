@@ -23,6 +23,8 @@ package org.miradi.mpfMigrations;
 import java.util.Collection;
 import java.util.HashMap;
 
+import org.miradi.ids.BaseId;
+import org.miradi.ids.IdAssigner;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 
@@ -32,6 +34,7 @@ public class RawProject
 	{
 		typeToRawPoolMap = new HashMap<Integer, RawPool>();
 		threatRatingBundles = new HashMap<String, ThreatRatingBundle>();
+		idAssigner = new IdAssigner();
 	}
 	
 	public boolean containType(int type)
@@ -81,7 +84,7 @@ public class RawProject
 
 	public int getHighestAssignedId()
 	{
-		return highestAssignedId;
+		return idAssigner.getHighestAssignedId();
 	}
 
 	public long getLastModifiedTime()
@@ -100,14 +103,19 @@ public class RawProject
 		projectMetadataId = projectMetadataIdToUse;
 	}
 	
-	public void setHighestAssignedId(int highestAssignedIdToUse)
+	public void setHighestAssignedId(String highestAssignedIdToUse)
 	{
-		highestAssignedId = highestAssignedIdToUse;
+		idAssigner.idTaken(new BaseId(highestAssignedIdToUse));
 	}
 	
 	public void setLastModifiedTime(long lastModifiedTimeToUse)
 	{
 		lastModifiedTime = lastModifiedTimeToUse;
+	}
+	
+	public BaseId getNextHighestId()
+	{
+		return idAssigner.takeNextId();
 	}
 
 	private HashMap<Integer, RawPool> typeToRawPoolMap;
@@ -115,6 +123,6 @@ public class RawProject
 	private String quarantineData;
 	private HashMap<String, ThreatRatingBundle> threatRatingBundles;
 	private String projectMetadataId;
-	private int highestAssignedId;
 	private long lastModifiedTime;
+	private IdAssigner idAssigner;
 }

@@ -65,6 +65,7 @@ import org.miradi.ids.TestBaseId;
 import org.miradi.ids.TestIdList;
 import org.miradi.legacyprojects.TestDataUpgrader;
 import org.miradi.legacyprojects.TestDataUpgraderForMiradi3;
+import org.miradi.mpfMigrations.TestMigrationManager;
 import org.miradi.mpfMigrations.TestRawProject;
 import org.miradi.mpfMigrations.TestVersionRange;
 import org.miradi.objectdata.TestAbstractUserStringDataWithHtmlFormatting;
@@ -542,8 +543,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestXmpzSchemaCreator.class));
 		
 		//mpf migrations
-		//FIXME urgent, uncomment and run tests when Migrations is done. 
-		//addTest(new TestSuite(TestMigrationManager.class));
+		addTest(new TestSuite(TestMigrationManager.class));
 		addTest(new TestSuite(TestVersionRange.class));
 		addTest(new TestSuite(TestRawProject.class));
 	}
