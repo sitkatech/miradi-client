@@ -54,15 +54,6 @@ public class KeyEcologicalAttribute extends BaseObject
 	}
 
 	@Override
-	public boolean isIdListTag(String tag)
-	{
-		if (tag.equals(TAG_INDICATOR_IDS))
-			return true;
-		
-		return super.isIdListTag(tag);
-	}
-	
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return new int[] {

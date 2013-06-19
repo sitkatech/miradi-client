@@ -361,18 +361,6 @@ abstract public class Factor extends BaseObject
 	}
 
 	@Override
-	public boolean isIdListTag(String tag)
-	{
-		if (tag.equals(TAG_INDICATOR_IDS))
-			return true;
-		
-		if (tag.equals(TAG_OBJECTIVE_IDS))
-			return true;
-		
-		return super.isIdListTag(tag);
-	}
-
-	@Override
 	public String getPseudoData(String fieldTag)
 	{
 		try

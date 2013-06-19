@@ -250,18 +250,6 @@ public class Strategy extends Factor
 	}
 
 	@Override
-	public boolean isIdListTag(String tag)
-	{
-		if (tag.equals(TAG_ACTIVITY_IDS))
-			return true;
-		
-		if (tag.equals(TAG_RESOURCE_ASSIGNMENT_IDS))
-			return true;
-		
-		return super.isIdListTag(tag);
-	}
-	
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

@@ -109,18 +109,6 @@ abstract public class AbstractTarget extends Factor
 	}
 
 	@Override
-	public boolean isIdListTag(String tag)
-	{
-		if (tag.equals(TAG_GOAL_IDS))
-			return true;
-		
-		if (tag.equals(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS))
-			return true;
-		
-		return super.isIdListTag(tag);
-	}
-
-	@Override
 	public String getPseudoData(String fieldTag)
 	{
 		try

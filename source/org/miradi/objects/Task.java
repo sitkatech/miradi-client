@@ -98,18 +98,6 @@ public class Task extends Factor
 	}
 
 	@Override
-	public boolean isIdListTag(String tag)
-	{
-		if (tag.equals(TAG_SUBTASK_IDS))
-			return true;
-		
-		if (tag.equals(TAG_RESOURCE_ASSIGNMENT_IDS))
-			return true;
-		
-		return super.isIdListTag(tag);
-	}
-
-	@Override
 	public String getTypeName()
 	{
 		ensureCachedTypeStringIsValid();

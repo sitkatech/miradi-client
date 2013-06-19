@@ -402,7 +402,7 @@ abstract public class BaseObject
 	
 	public boolean isIdListTag(String tag)
 	{
-		return false;
+		return getField(tag).isIdListData();
 	}
 	
 	public boolean isRefList(String tag)
