@@ -20,7 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.mpfMigrations;
 
+import org.martus.util.UnicodeStringReader;
 import org.martus.util.UnicodeStringWriter;
+import org.miradi.project.AbstractMiradiProjectSaver;
 import org.miradi.project.RawProjectSaver;
 
 public class MigrationManager
@@ -31,14 +33,25 @@ public class MigrationManager
 	
 	public String migrate(String mpfAsString) throws Exception
 	{
-		final RawProject migratedPools = IndicatorFutureStatusDataToNewFutureStatusTypeMigration.migrate(mpfAsString);
-		
-		return convertToMpfString(migratedPools);
+		VersionRange mpfVersionRange = RawProjectLoader.loadVersionRange(new UnicodeStringReader(mpfAsString));
+		final String migrationType = getMigrationType(AbstractMiradiProjectSaver.getMiradiVersionRange(), mpfVersionRange);
+		if (migrationType.equals(MIGRATION))
+		{
+			RawProject rawProject = RawProjectLoader.loadProject(new UnicodeStringReader(mpfAsString));
+
+			final RawProject migratedPools = IndicatorFutureStatusDataToNewFutureStatusTypeMigration.migrate(rawProject);
+			return convertToMpfString(migratedPools);
+		}
+
+		return mpfAsString;
 	}
 	
 	public static String getMigrationType(VersionRange miradiVersionRange, VersionRange mpfVersionRange) throws Exception
 	{
 		if (mpfVersionRange.upperOverlaps(miradiVersionRange))
+			return MIGRATION;
+		
+		if (mpfVersionRange.getHighVersion() < miradiVersionRange.getLowVersion())
 			return MIGRATION;
 		
 		return NO_MIGRATION;

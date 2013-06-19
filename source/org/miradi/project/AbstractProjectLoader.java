@@ -27,6 +27,7 @@ import java.util.StringTokenizer;
 import org.martus.util.UnicodeReader;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
+import org.miradi.mpfMigrations.VersionRange;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.threatrating.RatingValueSet;
 import org.miradi.project.threatrating.ThreatRatingBundle;
@@ -40,7 +41,7 @@ abstract public class AbstractProjectLoader
 		
 		bundleNameToBundleMap = new HashMap<String, ThreatRatingBundle>();
 	}
-
+	
 	protected void load() throws Exception
 	{
 		prepareToLoad();
@@ -93,7 +94,21 @@ abstract public class AbstractProjectLoader
 		return 0;
 	}
 
-	private void validateHeaderLine(String fileHeaderLine) throws Exception
+	protected VersionRange validateHeaderLine(String fileHeaderLine) throws Exception
+	{
+		VersionRange versionRange = loadVersionRange(fileHeaderLine);
+		int lowVersion = versionRange.getLowVersion();
+		if(lowVersion > AbstractMiradiProjectSaver.VERSION_HIGH)
+			throw new ProjectFileTooNewException(lowVersion, AbstractMiradiProjectSaver.VERSION_HIGH);
+		
+		int highVersion = versionRange.getHighVersion();
+		if(highVersion < AbstractMiradiProjectSaver.VERSION_LOW)
+			throw new ProjectFileTooOldException(highVersion, AbstractMiradiProjectSaver.VERSION_LOW);
+		
+		return versionRange;
+	}
+	
+	protected VersionRange loadVersionRange(String fileHeaderLine) throws Exception
 	{
 		if(fileHeaderLine == null || !fileHeaderLine.startsWith(AbstractMiradiProjectSaver.getBasicFileHeader()))
 			throw new NotMiradiProjectFileException();
@@ -102,12 +117,11 @@ abstract public class AbstractProjectLoader
 		String[] parts = fileHeaderLine.split(WHITESPACE_REGEXP);
 		/*String baseFileHeader = parts[0];*/
 		int lowVersion = Integer.parseInt(parts[1]);
-		if(lowVersion > AbstractMiradiProjectSaver.VERSION_HIGH)
-			throw new ProjectFileTooNewException(lowVersion, AbstractMiradiProjectSaver.VERSION_HIGH);
-		
+		//FIXME urgent - after method extracted,  this became obvious that high is not being read. 
+		//Write failing test and fix it.  This has not been an issue since high and low have always been the same
 		int highVersion = Integer.parseInt(parts[1]);
-		if(highVersion < AbstractMiradiProjectSaver.VERSION_LOW)
-			throw new ProjectFileTooOldException(highVersion, AbstractMiradiProjectSaver.VERSION_LOW);
+		
+		return new VersionRange(lowVersion, highVersion);
 	}
 
 	private void processLine(String line) throws Exception
@@ -276,6 +290,11 @@ abstract public class AbstractProjectLoader
 		
 		return new ORef(objectType, objectId);
 	}
+	
+	protected UnicodeReader getStringReader()
+	{
+		return reader;
+	}
 
 	public static class NotMiradiProjectFileException extends Exception
 	{
@@ -342,7 +361,7 @@ abstract public class AbstractProjectLoader
 	abstract protected void createObject(ORef ref) throws Exception;
 	
 	abstract protected void updateObjectWithData(ORef ref, String tag, String value)	throws Exception;
-
+	
 	private HashMap<String, ThreatRatingBundle> bundleNameToBundleMap;
 	private UnicodeReader reader;
 	

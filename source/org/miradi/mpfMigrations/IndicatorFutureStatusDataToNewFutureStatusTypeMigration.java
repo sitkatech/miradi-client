@@ -23,18 +23,14 @@ package org.miradi.mpfMigrations;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.martus.util.UnicodeStringReader;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 
 public class IndicatorFutureStatusDataToNewFutureStatusTypeMigration
 {
-	public static RawProject migrate(String mpfAsString) throws Exception
+	public static RawProject migrate(RawProject rawProject) throws Exception
 	{
-		UnicodeStringReader reader  = new UnicodeStringReader(mpfAsString);
-		RawProject rawProject = RawProjectLoader.loadProject(reader);
-		
 		return moveIndicatorFutureStatuses(rawProject);
 	}
 

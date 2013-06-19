@@ -31,6 +31,7 @@ import org.martus.util.UnicodeStringWriter;
 import org.martus.util.UnicodeWriter;
 import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.EAM;
+import org.miradi.mpfMigrations.VersionRange;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.ThreatRatingBundleSorter;
@@ -134,7 +135,17 @@ abstract public class AbstractMiradiProjectSaver
 	
 	protected void writeFileHeader() throws Exception
 	{
-		getWriter().writeln(getBasicFileHeader() + " " + VERSION_LOW + " " + VERSION_HIGH);
+		getWriter().writeln(getBasicFileHeader() + " " + getLowVersion() + " " + getHighVersion());
+	}
+
+	protected int getHighVersion()
+	{
+		return VERSION_HIGH;
+	}
+
+	protected int getLowVersion()
+	{
+		return VERSION_LOW;
 	}
 	
 	public void writeStopMarker(long lastModifiedMillis) throws Exception
@@ -227,6 +238,11 @@ abstract public class AbstractMiradiProjectSaver
 			writePoolForType(type);
 		}
 	}
+	
+	public static VersionRange getMiradiVersionRange() throws Exception
+	{
+		return new VersionRange(VERSION_LOW, VERSION_HIGH);
+	}
 
 	abstract protected void writePoolForType(int type) throws Exception;
 	
@@ -245,8 +261,8 @@ abstract public class AbstractMiradiProjectSaver
 	public static final String TAB = "\t";
 	public static final String EQUALS = "=";
 
-	public static final int VERSION_LOW = 3;
-	public static final int VERSION_HIGH = 3;
+	public static final int VERSION_LOW = 4;
+	public static final int VERSION_HIGH = 4;
 	
 	public static final String UPDATE_LAST_MODIFIED_TIME_CODE = "UL";
 	public static final String UPDATE_PROJECT_INFO_CODE = "UP";

@@ -34,7 +34,7 @@ import org.miradi.objects.FutureStatus;
 import org.miradi.objects.Indicator;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.project.ProjectLoader;
-import org.miradi.project.ProjectSaver;
+import org.miradi.project.ProjectSaverForTesting;
 
 public class TestMigrationManager extends TestCaseWithProject
 {
@@ -66,7 +66,7 @@ public class TestMigrationManager extends TestCaseWithProject
 		for(String indicatorFutureStatusTag : indicatorFutureStatusTags)
 		{
 			String indicatorFutureStatusData = migratedIndicator.getData(indicatorFutureStatusTag);
-			assertEquals("Field with value should have been cleared by migration?", 0, indicatorFutureStatusData.length());
+			assertEquals("Field with value should have been cleared by migration, tag=" + indicatorFutureStatusTag + "?", 0, indicatorFutureStatusData.length());
 		}
 		
 		final FutureStatusPool futureStatusPool = migratedProject.getFutureStatusPool();
@@ -85,7 +85,7 @@ public class TestMigrationManager extends TestCaseWithProject
 
 	public void testGetMigrationType() throws Exception
 	{
-		verifyType(MigrationManager.NO_MIGRATION, 10, 10, 5, 5);
+		verifyType(MigrationManager.MIGRATION, 10, 10, 5, 5);
 		verifyType(MigrationManager.NO_MIGRATION, 10, 20, 15, 15);
 		verifyType(MigrationManager.NO_MIGRATION, 10, 20, 20, 40);
 		verifyType(MigrationManager.NO_MIGRATION, 10, 20, 40, 40);
@@ -103,7 +103,8 @@ public class TestMigrationManager extends TestCaseWithProject
 	private ProjectForTesting migrateProject() throws Exception, IOException
 	{
 		MigrationManager migrationManager = new MigrationManager();
-		String migratedMpfFile = migrationManager.migrate(ProjectSaver.createSnapShot(getProject()));
+		String projectAsString = ProjectSaverForTesting.createSnapShot(getProject(), new VersionRange(3, 3));
+		String migratedMpfFile = migrationManager.migrate(projectAsString);
 		
 		ProjectForTesting migratedProject = ProjectForTesting.createProjectWithoutDefaultObjects("MigratedProject");
 		ProjectLoader.loadProject(new UnicodeStringReader(migratedMpfFile), migratedProject);
