@@ -94,7 +94,7 @@ abstract public class AbstractProjectLoader
 		return 0;
 	}
 
-	protected VersionRange validateHeaderLine(String fileHeaderLine) throws Exception
+	protected void validateHeaderLine(String fileHeaderLine) throws Exception
 	{
 		VersionRange versionRange = loadVersionRange(fileHeaderLine);
 		int lowVersion = versionRange.getLowVersion();
@@ -104,8 +104,6 @@ abstract public class AbstractProjectLoader
 		int highVersion = versionRange.getHighVersion();
 		if(highVersion < AbstractMiradiProjectSaver.VERSION_LOW)
 			throw new ProjectFileTooOldException(highVersion, AbstractMiradiProjectSaver.VERSION_LOW);
-		
-		return versionRange;
 	}
 	
 	protected VersionRange loadVersionRange(String fileHeaderLine) throws Exception
