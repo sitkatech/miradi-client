@@ -48,15 +48,15 @@ public class MigrationManager
 	
 	public static String getMigrationType(VersionRange miradiVersionRange, VersionRange mpfVersionRange) throws Exception
 	{
-		if (mpfVersionRange.upperOverlaps(miradiVersionRange))
+		if (mpfVersionRange.doesRangeOverlap(miradiVersionRange))
 			return MIGRATION;
 		
-		if (mpfVersionRange.getHighVersion() < miradiVersionRange.getLowVersion())
+		if (miradiVersionRange.isEntirelyOlderThan(mpfVersionRange))
 			return MIGRATION;
 		
 		return NO_MIGRATION;
 	}
-	
+
 	private String convertToMpfString(RawProject migratedPools) throws Exception
 	{
 		UnicodeStringWriter stringWriter = UnicodeStringWriter.create();
