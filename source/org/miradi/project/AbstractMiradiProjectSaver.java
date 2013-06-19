@@ -232,7 +232,7 @@ abstract public class AbstractMiradiProjectSaver
 		return fileContent.substring(startOfPortionToKeep, fileContentLength);
 	}
 	
-	protected void writeAllObjectTypes() throws Exception
+	private void writeAllObjectTypes() throws Exception
 	{
 		for (int type = ObjectType.FIRST_OBJECT_TYPE; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
 		{
