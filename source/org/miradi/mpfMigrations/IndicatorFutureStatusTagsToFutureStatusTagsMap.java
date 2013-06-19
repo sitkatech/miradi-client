@@ -23,9 +23,6 @@ package org.miradi.mpfMigrations;
 import java.util.HashMap;
 import java.util.Set;
 
-import org.miradi.objects.Indicator;
-import org.miradi.schemas.FutureStatusSchema;
-
 public class IndicatorFutureStatusTagsToFutureStatusTagsMap extends HashMap<String, String>
 {
 	public IndicatorFutureStatusTagsToFutureStatusTagsMap()
@@ -35,15 +32,28 @@ public class IndicatorFutureStatusTagsToFutureStatusTagsMap extends HashMap<Stri
 
 	private void fillMap()
 	{
-		put(Indicator.TAG_FUTURE_STATUS_COMMENTS, FutureStatusSchema.TAG_FUTURE_STATUS_COMMENTS);
-		put(Indicator.TAG_FUTURE_STATUS_DATE, FutureStatusSchema.TAG_FUTURE_STATUS_DATE);
-		put(Indicator.TAG_FUTURE_STATUS_DETAIL, FutureStatusSchema.TAG_FUTURE_STATUS_DETAIL);
-		put(Indicator.TAG_FUTURE_STATUS_RATING, FutureStatusSchema.TAG_FUTURE_STATUS_RATING);
-		put(Indicator.TAG_FUTURE_STATUS_SUMMARY, FutureStatusSchema.TAG_FUTURE_STATUS_SUMMARY);
+		put(TAG_INDICATOR_FUTURE_STATUS_COMMENTS, TAG_FUTURE_STATUS_COMMENTS);
+		put(TAG_INDICATOR_FUTURE_STATUS_DATE, TAG_FUTURE_STATUS_DATE);
+		put(TAG_INDICATOR_FUTURE_STATUS_DETAIL, TAG_FUTURE_STATUS_DETAIL);
+		put(TAG_INDICATOR_FUTURE_STATUS_RATING, TAG_FUTURE_STATUS_RATING);
+		put(TAG_INDICATOR_FUTURE_STATUS_SUMMARY, TAG_FUTURE_STATUS_SUMMARY);
 	}
 	
 	public Set<String> getIndicatorFutureStatusTags()
 	{
 		return keySet();
 	}
+	
+	private static final String TAG_INDICATOR_FUTURE_STATUS_RATING  = "FutureStatusRating";
+	private static final String TAG_INDICATOR_FUTURE_STATUS_DATE = "FutureStatusDate";
+	private static final String TAG_INDICATOR_FUTURE_STATUS_SUMMARY = "FutureStatusSummary";
+	private static final String TAG_INDICATOR_FUTURE_STATUS_DETAIL = "FutureStatusDetail";
+	private static final String TAG_INDICATOR_FUTURE_STATUS_COMMENTS = "FutureStatusComment";
+	
+	private static final String TAG_FUTURE_STATUS_RATING  = "Rating";
+	private static final String TAG_FUTURE_STATUS_DATE = "Date";
+	private static final String TAG_FUTURE_STATUS_SUMMARY = "Summary";
+	private static final String TAG_FUTURE_STATUS_DETAIL = "Detail";
+	private static final String TAG_FUTURE_STATUS_COMMENTS = "Comment";
+
 }
