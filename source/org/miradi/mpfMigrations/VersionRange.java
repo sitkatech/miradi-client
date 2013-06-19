@@ -26,10 +26,10 @@ public class VersionRange
 	{
 		lowVersion = lowVersionToUse;
 		highVersion = highVersionToUse;
-		ensureLowIsLessThanHigh();
+		ensureLegalLowHighSequence();
 	}
 	
-	private void ensureLowIsLessThanHigh() throws Exception
+	private void ensureLegalLowHighSequence() throws Exception
 	{
 		if (getLowVersion() > getHighVersion())
 			throw new Exception("Low version must be less than high version!");
