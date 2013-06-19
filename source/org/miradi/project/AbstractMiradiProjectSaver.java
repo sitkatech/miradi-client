@@ -33,6 +33,7 @@ import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.EAM;
 import org.miradi.mpfMigrations.VersionRange;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.ThreatRatingBundleSorter;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
@@ -244,6 +245,16 @@ abstract public class AbstractMiradiProjectSaver
 		return new VersionRange(VERSION_LOW, VERSION_HIGH);
 	}
 	
+	protected void writeObjects(ORefList sortedObjectRefs) throws Exception
+	{
+		for (int index = 0; index < sortedObjectRefs.size(); ++index)
+		{
+			final ORef ref = sortedObjectRefs.get(index);
+			writeNewObjectEntry(ref);
+			writeObjectUpdateEntries(ref);
+		}
+	}
+	
 	protected void writeNewObjectEntry(ORef ref) throws Exception
 	{
 		writeValue(CREATE_OBJECT_CODE, createSimpleRefString(ref));
@@ -267,6 +278,8 @@ abstract public class AbstractMiradiProjectSaver
 	abstract protected int getHighestAssignedId();
 	
 	abstract protected long getLastModifiedTime();
+	
+	abstract protected void writeObjectUpdateEntries(ORef ref) throws Exception;
 	
 	public static final String TAB = "\t";
 	public static final String EQUALS = "=";
