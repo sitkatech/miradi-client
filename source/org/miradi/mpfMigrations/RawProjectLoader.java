@@ -35,6 +35,14 @@ public class RawProjectLoader extends AbstractProjectLoader
 		return projectLoader.getRawProject();
 	}
 	
+	public static VersionRange loadVersionRange(final UnicodeReader reader) throws Exception
+	{
+		RawProjectLoader projectLoader = new RawProjectLoader(reader);
+		String fileHeaderLine = projectLoader.getStringReader().readLine();
+		
+		return projectLoader.loadVersionRange(fileHeaderLine);
+	}
+	
 	private RawProjectLoader(UnicodeReader readerToUse) throws Exception
 	{
 		super(readerToUse);
@@ -109,6 +117,12 @@ public class RawProjectLoader extends AbstractProjectLoader
 	{
 		getRawProject().setQuarantineValue(value);
 	}
-
+	
+	@Override
+	protected VersionRange validateHeaderLine(String fileHeaderLine) throws Exception
+	{
+		return null;
+	}
+	
 	private RawProject rawProject;
 }

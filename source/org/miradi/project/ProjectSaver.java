@@ -62,7 +62,7 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		projectSaver.saveProject();
 	}
 	
-	private ProjectSaver(final Project projectToUse, final UnicodeStringWriter writerToUse) throws Exception
+	protected ProjectSaver(final Project projectToUse, final UnicodeStringWriter writerToUse) throws Exception
 	{
 		super(writerToUse);
 		

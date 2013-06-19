@@ -82,6 +82,18 @@ public class RawProjectSaver extends AbstractMiradiProjectSaver
 			}
 		}
 	}
+	
+	@Override
+	protected int getHighVersion()
+	{
+		return VERSION_HIGH;
+	}
+
+	@Override
+	protected int getLowVersion()
+	{
+		return VERSION_LOW;
+	}
 
 	private void writeNewObjectEntry(ORef ref) throws Exception
 	{
