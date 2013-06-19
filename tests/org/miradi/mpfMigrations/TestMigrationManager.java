@@ -86,17 +86,17 @@ public class TestMigrationManager extends TestCaseWithProject
 	public void testGetMigrationType() throws Exception
 	{
 		VersionRange tenTwentyRange = new VersionRange(10, 20);
-		VersionRange FifteenFifteenRange = new VersionRange(15);
 		VersionRange twentyFourtyRange = new VersionRange(20, 40);
 		VersionRange fourtyFourtyRange = new VersionRange(40);
-		verifyType(MigrationManager.NO_MIGRATION, tenTwentyRange, FifteenFifteenRange);
+		VersionRange fifteenFourtyRange = new VersionRange(15, 40);
 		verifyType(MigrationManager.NO_MIGRATION, tenTwentyRange, twentyFourtyRange);
 		verifyType(MigrationManager.NO_MIGRATION, tenTwentyRange, fourtyFourtyRange);
-
+		verifyType(MigrationManager.NO_MIGRATION, tenTwentyRange, fifteenFourtyRange);
+		
 		VersionRange tenTenRange = new VersionRange(10);
 		VersionRange fiveFiveRange = new VersionRange(5);
-		VersionRange fifteenFourtyRange = new VersionRange(15, 40);
-		verifyType(MigrationManager.MIGRATION, tenTwentyRange, fifteenFourtyRange);
+		VersionRange FifteenFifteenRange = new VersionRange(15);
+		verifyType(MigrationManager.MIGRATION, tenTwentyRange, FifteenFifteenRange);
 		verifyType(MigrationManager.MIGRATION, tenTenRange, fiveFiveRange);
 	}
 
