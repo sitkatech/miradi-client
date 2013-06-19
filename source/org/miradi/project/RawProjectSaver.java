@@ -59,17 +59,8 @@ public class RawProjectSaver extends AbstractMiradiProjectSaver
 		writeObjects(refList);
 	}
 	
-	private void writeObjects(ORefList sortedObjectRefs) throws Exception
-	{
-		for (int index = 0; index < sortedObjectRefs.size(); ++index)
-		{
-			final ORef ref = sortedObjectRefs.get(index);
-			writeNewObjectEntry(ref);
-			writeObjectUpdateEntries(ref);
-		}
-	}
-
-	private void writeObjectUpdateEntries(ORef ref) throws Exception
+	@Override
+	protected void writeObjectUpdateEntries(ORef ref) throws Exception
 	{
 		RawObject rawObject = getRawProject().findObject(ref);
 		Vector<String> fieldTags = new Vector<String>(rawObject.keySet());

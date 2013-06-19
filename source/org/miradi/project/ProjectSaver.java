@@ -119,17 +119,8 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		}
 	}
 
-	private void writeObjects(ORefList sortedObjectRefs) throws Exception
-	{
-		for (int index = 0; index < sortedObjectRefs.size(); ++index)
-		{
-			final ORef ref = sortedObjectRefs.get(index);
-			writeNewObjectEntry(ref);
-			writeObjectUpdateEntries(ref);
-		}
-	}
-
-	private void writeObjectUpdateEntries(ORef ref) throws Exception
+	@Override
+	protected void writeObjectUpdateEntries(ORef ref) throws Exception
 	{
 		BaseObject baseObject = getProject().findObject(ref);
 		Vector<String> fieldTags = baseObject.getStoredFieldTags();
