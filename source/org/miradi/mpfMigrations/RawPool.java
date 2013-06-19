@@ -23,7 +23,16 @@ package org.miradi.mpfMigrations;
 import java.util.HashMap;
 
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 
 public class RawPool extends HashMap<ORef, RawObject>
 {
+	public ORefList getSortedReflist()
+	{
+		ORefList refList = new ORefSet(keySet()).toRefList();
+		refList.sort();
+		
+		return refList;
+	}
 }
