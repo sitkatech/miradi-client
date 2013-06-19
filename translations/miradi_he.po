@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-17 10:46-0500\n"
+"POT-Creation-Date: 2013-06-19 14:46-0500\n"
 "PO-Revision-Date: 2011-03-17 08:35-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -4230,7 +4230,7 @@ msgstr ""
 msgid "Key Ecological Attribute (KEA)"
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/FutureStatus.java:92
+#: Miradi/source/org/miradi/objects/FutureStatus.java:95
 msgid "Label|(Future Statu)"
 msgstr ""
 
@@ -7302,7 +7302,7 @@ msgid ""
 "task is represented by a grey flattened oval."
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/Task.java:355
+#: Miradi/source/org/miradi/objects/Task.java:331
 msgid "Task does not have a parent"
 msgstr ""
 
