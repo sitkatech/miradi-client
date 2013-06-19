@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-17 10:46-0500\n"
+"POT-Creation-Date: 2013-06-19 14:46-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -4423,7 +4423,7 @@ msgstr "Ключова властивість"
 msgid "Key Ecological Attribute (KEA)"
 msgstr "Ключова екологічна характеристика"
 
-#: Miradi/source/org/miradi/objects/FutureStatus.java:92
+#: Miradi/source/org/miradi/objects/FutureStatus.java:95
 msgid "Label|(Future Statu)"
 msgstr ""
 
@@ -7613,7 +7613,7 @@ msgstr ""
 "задача при потребі може бути розбита на підзадачі. У Міраді задача "
 "показується сірим сплющеним овалом."
 
-#: Miradi/source/org/miradi/objects/Task.java:355
+#: Miradi/source/org/miradi/objects/Task.java:331
 msgid "Task does not have a parent"
 msgstr "Задача не має автора"
 

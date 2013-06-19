@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-17 10:46-0500\n"
+"POT-Creation-Date: 2013-06-19 14:46-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -4448,7 +4448,7 @@ msgstr "Чухал Хүчин Зүйл"
 msgid "Key Ecological Attribute (KEA)"
 msgstr "Экологийн Чухал Хүчин Зүйл (ЭЧХЗ)"
 
-#: Miradi/source/org/miradi/objects/FutureStatus.java:92
+#: Miradi/source/org/miradi/objects/FutureStatus.java:95
 msgid "Label|(Future Statu)"
 msgstr ""
 
@@ -7656,7 +7656,7 @@ msgstr ""
 "хуваагдаж болно. Даалгаварыг Miradi-д хавтгай саарал зууван дүрсээр "
 "төлөөлүүлсэн."
 
-#: Miradi/source/org/miradi/objects/Task.java:355
+#: Miradi/source/org/miradi/objects/Task.java:331
 msgid "Task does not have a parent"
 msgstr "Даалгавар гарал үүсэлгүй байна."
 
