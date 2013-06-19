@@ -29,7 +29,6 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.threatrating.ThreatRatingBundle;
@@ -97,15 +96,6 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 	protected String getExceptionLog() throws Exception
 	{
 		return getProject().getExceptionLog();
-	}
-
-	@Override
-	protected void writeAllObjectTypes() throws Exception
-	{
-		for (int type = ObjectType.FIRST_OBJECT_TYPE; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
-		{
-			writePoolForType(type);
-		}
 	}
 
 	@Override
