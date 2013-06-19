@@ -48,10 +48,10 @@ public class MigrationManager
 	
 	public static int getMigrationType(VersionRange miradiVersionRange, VersionRange mpfVersionRange) throws Exception
 	{
-		if (mpfVersionRange.doesRangeOverlap(miradiVersionRange))
+		if (miradiVersionRange.doesRangeOverlap(mpfVersionRange))
 			return MIGRATION;
 		
-		if (miradiVersionRange.isEntirelyOlderThan(mpfVersionRange))
+		if (mpfVersionRange.isEntirelyOlderThan(miradiVersionRange))
 			return MIGRATION;
 		
 		return NO_MIGRATION;
