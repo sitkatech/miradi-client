@@ -92,6 +92,6 @@ public class FutureStatus extends BaseObject
 	@Override
 	public String toString()
 	{
-		return toString(EAM.text("Label|(Future Statu)"));
+		return toString(EAM.text("Label|(Future Status)"));
 	}
 }
