@@ -85,18 +85,23 @@ public class TestMigrationManager extends TestCaseWithProject
 
 	public void testGetMigrationType() throws Exception
 	{
-		verifyType(MigrationManager.MIGRATION, 10, 10, 5, 5);
-		verifyType(MigrationManager.NO_MIGRATION, 10, 20, 15, 15);
-		verifyType(MigrationManager.NO_MIGRATION, 10, 20, 20, 40);
-		verifyType(MigrationManager.NO_MIGRATION, 10, 20, 40, 40);
-
-		verifyType(MigrationManager.MIGRATION, 10, 20, 15, 40);
+		VersionRange tenTwentyRange = new VersionRange(10, 20);
+		VersionRange twentyFourtyRange = new VersionRange(20, 40);
+		VersionRange fourtyFourtyRange = new VersionRange(40);
+		VersionRange fifteenFourtyRange = new VersionRange(15, 40);
+		verifyType(MigrationManager.NO_MIGRATION, tenTwentyRange, twentyFourtyRange);
+		verifyType(MigrationManager.NO_MIGRATION, tenTwentyRange, fourtyFourtyRange);
+		verifyType(MigrationManager.NO_MIGRATION, tenTwentyRange, fifteenFourtyRange);
+		
+		VersionRange tenTenRange = new VersionRange(10);
+		VersionRange fiveFiveRange = new VersionRange(5);
+		VersionRange FifteenFifteenRange = new VersionRange(15);
+		verifyType(MigrationManager.MIGRATION, tenTwentyRange, FifteenFifteenRange);
+		verifyType(MigrationManager.MIGRATION, tenTenRange, fiveFiveRange);
 	}
 
-	private void verifyType(int expectedMigrationType, int miradiLowVersion, int miradiHighVersion, int mpfLowVersion, int mpfHighVersion) throws Exception
+	private void verifyType(int expectedMigrationType, VersionRange miradiVersionRange, VersionRange mpfVersionRange) throws Exception
 	{
-		VersionRange miradiVersionRange = new VersionRange(miradiLowVersion, miradiHighVersion);
-		VersionRange mpfVersionRange = new VersionRange(mpfLowVersion, mpfHighVersion);
 		assertEquals("incorrect migration type?", expectedMigrationType, MigrationManager.getMigrationType(miradiVersionRange, mpfVersionRange));
 	}
 	

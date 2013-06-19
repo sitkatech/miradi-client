@@ -119,9 +119,8 @@ public class RawProjectLoader extends AbstractProjectLoader
 	}
 	
 	@Override
-	protected VersionRange validateHeaderLine(String fileHeaderLine) throws Exception
+	protected void validateHeaderLine(String fileHeaderLine) throws Exception
 	{
-		return null;
 	}
 	
 	private RawProject rawProject;
