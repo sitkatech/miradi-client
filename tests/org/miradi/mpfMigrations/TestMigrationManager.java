@@ -93,7 +93,7 @@ public class TestMigrationManager extends TestCaseWithProject
 		verifyType(MigrationManager.MIGRATION, 10, 20, 15, 40);
 	}
 
-	private void verifyType(String expectedMigrationType, int miradiLowVersion, int miradiHighVersion, int mpfLowVersion, int mpfHighVersion) throws Exception
+	private void verifyType(int expectedMigrationType, int miradiLowVersion, int miradiHighVersion, int mpfLowVersion, int mpfHighVersion) throws Exception
 	{
 		VersionRange miradiVersionRange = new VersionRange(miradiLowVersion, miradiHighVersion);
 		VersionRange mpfVersionRange = new VersionRange(mpfLowVersion, mpfHighVersion);
