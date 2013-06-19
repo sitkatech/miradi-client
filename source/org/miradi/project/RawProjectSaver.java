@@ -29,7 +29,6 @@ import org.miradi.mpfMigrations.RawPool;
 import org.miradi.mpfMigrations.RawProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ORefSet;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 
 public class RawProjectSaver extends AbstractMiradiProjectSaver
@@ -54,11 +53,10 @@ public class RawProjectSaver extends AbstractMiradiProjectSaver
 		if (rawPool == null)
 			return;
 		
-		ORefList refList = new ORefSet(rawPool.keySet()).toRefList();
-		refList.sort();
-		writeObjects(refList);
+		ORefList sortedObjectRefs = rawPool.getSortedReflist();
+		writeObjects(sortedObjectRefs);
 	}
-	
+
 	@Override
 	protected void writeObjectUpdateEntries(ORef ref) throws Exception
 	{
