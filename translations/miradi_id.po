@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-19 14:46-0500\n"
+"POT-Creation-Date: 2013-06-19 16:01-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -4381,7 +4381,7 @@ msgid "Key Ecological Attribute (KEA)"
 msgstr "Atribut Ekologi Kunci (AEK) "
 
 #: Miradi/source/org/miradi/objects/FutureStatus.java:95
-msgid "Label|(Future Statu)"
+msgid "Label|(Future Status)"
 msgstr ""
 
 #: Miradi/source/org/miradi/objects/AccountingCode.java:50
