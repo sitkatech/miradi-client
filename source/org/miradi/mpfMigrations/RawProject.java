@@ -25,6 +25,7 @@ import java.util.HashMap;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 
@@ -50,6 +51,11 @@ public class RawProject
 	public RawPool getRawPoolForType(int type)	
 	{		
 		return typeToRawPoolMap.get(type);
+	}
+	
+	public RawObject findObject(ORef ref)
+	{
+		return getRawPoolForType(ref.getObjectType()).get(ref);
 	}
 
 	public void setExceptionLog(final String exceptionLogToUse)
