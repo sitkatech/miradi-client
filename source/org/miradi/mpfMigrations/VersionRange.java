@@ -22,6 +22,11 @@ package org.miradi.mpfMigrations;
 
 public class VersionRange
 {
+	public VersionRange(final int sameLowAsHighVersion) throws Exception
+	{
+		this(sameLowAsHighVersion, sameLowAsHighVersion);
+	}
+	
 	public VersionRange(final int lowVersionToUse, final int highVersionToUse) throws Exception
 	{
 		lowVersion = lowVersionToUse;
