@@ -67,15 +67,6 @@ abstract public class Desire extends BaseObject
 		return super.getAnnotationType(tag);
 	}
 	
-	@Override
-	public boolean isRefList(String tag)
-	{
-		if (tag.equals(TAG_PROGRESS_PERCENT_REFS))
-			return true;
-				
-		return super.isRefList(tag);
-	}
-	
 	public ORefList getProgressPercentRefs()
 	{
 		return getSafeRefListData(TAG_PROGRESS_PERCENT_REFS);

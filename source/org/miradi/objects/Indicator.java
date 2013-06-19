@@ -282,24 +282,6 @@ public class Indicator extends BaseObject
 	}
 	
 	@Override
-	public boolean isRefList(String tag)
-	{
-		if (tag.equals(TAG_MEASUREMENT_REFS))
-			return true;
-		
-		if (tag.equals(TAG_EXPENSE_ASSIGNMENT_REFS))
-			return true;
-		
-		if (tag.equals(TAG_PROGRESS_REPORT_REFS))
-			return true;
-		
-		if (tag.equals(TAG_FUTURE_STATUS_REFS))
-			return true;
-		
-		return super.isRefList(tag);
-	}
-	
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return new int[] {

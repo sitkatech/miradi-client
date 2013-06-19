@@ -235,15 +235,6 @@ public class DiagramFactor extends BaseObject
 		return super.getAnnotationType(tag);
 	}
 	
-	@Override
-	public boolean isRefList(String tag)
-	{
-		if (tag.equals(TAG_GROUP_BOX_CHILDREN_REFS))
-			return true;
-		
-		return super.isRefList(tag);
-	}
-	
 	public Command[] createCommandsToMirror(DiagramFactorId newlyCreatedId)
 	{
 		Vector<CommandSetObjectData> commands = new Vector<CommandSetObjectData>();

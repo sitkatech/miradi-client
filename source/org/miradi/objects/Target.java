@@ -83,15 +83,6 @@ public class Target extends AbstractTarget
 	}
 	
 	@Override
-	public boolean isRefList(String tag)
-	{
-		if (tag.equals(TAG_STRESS_REFS))
-			return true;
-		
-		return super.isRefList(tag);
-	}
-
-	@Override
 	public int getAnnotationType(String tag)
 	{
 		if (tag.equals(TAG_STRESS_REFS))

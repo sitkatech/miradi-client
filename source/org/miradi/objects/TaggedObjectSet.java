@@ -51,15 +51,6 @@ public class TaggedObjectSet extends BaseObject
 		return getData(TAG_SHORT_LABEL);
 	}
 	
-	@Override
-	public boolean isRefList(String tag)
-	{
-		if (tag.equals(TAG_TAGGED_OBJECT_REFS))
-			return true;
-		
-		return super.isRefList(tag);
-	}
-	
 	public ORefList getTaggedObjectRefs()
 	{
 		return getSafeRefListData(TAG_TAGGED_OBJECT_REFS);

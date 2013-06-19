@@ -26,6 +26,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.FutureStatusSchema;
+import org.miradi.schemas.IndicatorSchema;
 
 public class FutureStatus extends BaseObject
 {
@@ -48,7 +49,9 @@ public class FutureStatus extends BaseObject
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
-		return NO_OWNERS;
+		return new int[] {
+				IndicatorSchema.getObjectType(),
+				};
 	}
 	
 	public static boolean canOwnThisType(int type)

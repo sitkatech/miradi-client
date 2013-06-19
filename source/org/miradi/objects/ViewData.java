@@ -66,15 +66,6 @@ public class ViewData extends BaseObject
 		return new Command[] {cmd};
 	}
 	
-	@Override
-	public boolean isRefList(String tag)
-	{
-		if (tag.equals(TAG_CHAIN_MODE_FACTOR_REFS))
-			return true;
-		
-		return super.isRefList(tag);
-	}
-	
 	public String getTreeConfigurationChoice()
 	{
 		return getData(TAG_TREE_CONFIGURATION_REF);
