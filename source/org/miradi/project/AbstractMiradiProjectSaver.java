@@ -243,6 +243,11 @@ abstract public class AbstractMiradiProjectSaver
 	{
 		return new VersionRange(VERSION_LOW, VERSION_HIGH);
 	}
+	
+	protected void writeNewObjectEntry(ORef ref) throws Exception
+	{
+		writeValue(CREATE_OBJECT_CODE, createSimpleRefString(ref));
+	}
 
 	abstract protected void writePoolForType(int type) throws Exception;
 	

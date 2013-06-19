@@ -149,11 +149,6 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		}
 	}
 
-	private void writeNewObjectEntry(ORef ref) throws Exception
-	{
-		writeValue(CREATE_OBJECT_CODE, createSimpleRefString(ref));
-	}
-
 	private boolean needsEncoding(ObjectData dataField)
 	{
 		return dataField.isUserText();

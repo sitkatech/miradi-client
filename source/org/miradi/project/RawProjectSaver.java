@@ -95,11 +95,6 @@ public class RawProjectSaver extends AbstractMiradiProjectSaver
 		return VERSION_LOW;
 	}
 
-	private void writeNewObjectEntry(ORef ref) throws Exception
-	{
-		writeValue(CREATE_OBJECT_CODE, createSimpleRefString(ref));
-	}
-
 	@Override
 	protected String getExceptionLog() throws Exception
 	{
