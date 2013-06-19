@@ -57,6 +57,7 @@ public class TestVersionRange extends TestCaseWithProject
 		VersionRange versionRange1 = createVersionRange(15, 25);
 		VersionRange versionRange2 = createVersionRange(10, 20);
 		assertTrue("Version range1 overlaps version rang2's high end?", versionRange1.doesRangeOverlap(versionRange2));
+		assertFalse("Version range2 overlaps version rang1's high end?", versionRange2.doesRangeOverlap(versionRange1));
 	}
 
 	private void verifyLegalVersionRange(int lowVersion, int highVersion) throws Exception
