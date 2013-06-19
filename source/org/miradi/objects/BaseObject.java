@@ -407,7 +407,7 @@ abstract public class BaseObject
 	
 	public boolean isRefList(String tag)
 	{
-		return false;
+		return getField(tag).isRefListData();
 	}
 	
 	public ORef getRef(String tag)

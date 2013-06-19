@@ -94,15 +94,6 @@ abstract public class AbstractTarget extends Factor
 	}
 
 	@Override
-	public boolean isRefList(String tag)
-	{
-		if (tag.equals(TAG_SUB_TARGET_REFS))
-			return true;
-		
-		return super.isRefList(tag);
-	}
-
-	@Override
 	public int getAnnotationType(String tag)
 	{
 		if (tag.equals(TAG_SUB_TARGET_REFS))

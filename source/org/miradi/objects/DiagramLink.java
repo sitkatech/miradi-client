@@ -203,15 +203,6 @@ public class DiagramLink extends BaseObject
 		return super.getAnnotationType(tag);
 	}
 	
-	@Override
-	public boolean isRefList(String tag)
-	{
-		if (tag.equals(TAG_GROUPED_DIAGRAM_LINK_REFS))
-			return true;
-		
-		return super.isRefList(tag);
-	}
-	
 	public boolean alsoLinksOurFromOrTo(DiagramLink otherDiagramLink)
 	{
 		if (isToOrFrom(otherDiagramLink.getFromDiagramFactorRef()))

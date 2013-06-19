@@ -110,18 +110,6 @@ public class Task extends Factor
 	}
 
 	@Override
-	public boolean isRefList(String tag)
-	{
-		if (tag.equals(TAG_EXPENSE_ASSIGNMENT_REFS))
-			return true;
-		
-		if (tag.equals(TAG_PROGRESS_REPORT_REFS))
-			return true;
-
-		return super.isRefList(tag);
-	}
-
-	@Override
 	public String getTypeName()
 	{
 		ensureCachedTypeStringIsValid();
