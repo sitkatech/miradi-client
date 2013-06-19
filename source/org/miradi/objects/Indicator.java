@@ -270,18 +270,6 @@ public class Indicator extends BaseObject
 	}
 
 	@Override
-	public boolean isIdListTag(String tag)
-	{
-		if (tag.equals(TAG_METHOD_IDS))
-			return true;
-		
-		if (tag.equals(TAG_RESOURCE_ASSIGNMENT_IDS))
-			return true;
-		
-		return super.isIdListTag(tag);
-	}
-	
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return new int[] {
