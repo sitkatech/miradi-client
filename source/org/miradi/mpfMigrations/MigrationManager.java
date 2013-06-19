@@ -34,8 +34,8 @@ public class MigrationManager
 	public String migrate(String mpfAsString) throws Exception
 	{
 		VersionRange mpfVersionRange = RawProjectLoader.loadVersionRange(new UnicodeStringReader(mpfAsString));
-		final String migrationType = getMigrationType(AbstractMiradiProjectSaver.getMiradiVersionRange(), mpfVersionRange);
-		if (migrationType.equals(MIGRATION))
+		final int migrationType = getMigrationType(AbstractMiradiProjectSaver.getMiradiVersionRange(), mpfVersionRange);
+		if (migrationType == MIGRATION)
 		{
 			RawProject rawProject = RawProjectLoader.loadProject(new UnicodeStringReader(mpfAsString));
 
@@ -46,7 +46,7 @@ public class MigrationManager
 		return mpfAsString;
 	}
 	
-	public static String getMigrationType(VersionRange miradiVersionRange, VersionRange mpfVersionRange) throws Exception
+	public static int getMigrationType(VersionRange miradiVersionRange, VersionRange mpfVersionRange) throws Exception
 	{
 		if (mpfVersionRange.doesRangeOverlap(miradiVersionRange))
 			return MIGRATION;
@@ -65,6 +65,6 @@ public class MigrationManager
 		return stringWriter.toString();
 	}
 	
-	public static final String NO_MIGRATION = "NoMigration";
-	public static final String MIGRATION = "Migration";
+	public static final int NO_MIGRATION = 0;
+	public static final int MIGRATION = 1;
 }
