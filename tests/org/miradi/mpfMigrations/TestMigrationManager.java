@@ -85,12 +85,12 @@ public class TestMigrationManager extends TestCaseWithProject
 
 	public void testGetMigrationType() throws Exception
 	{
-		verifyType(MigrationManager.MIGRATION, 10, 10, 5, 5);
 		verifyType(MigrationManager.NO_MIGRATION, 10, 20, 15, 15);
 		verifyType(MigrationManager.NO_MIGRATION, 10, 20, 20, 40);
 		verifyType(MigrationManager.NO_MIGRATION, 10, 20, 40, 40);
 
 		verifyType(MigrationManager.MIGRATION, 10, 20, 15, 40);
+		verifyType(MigrationManager.MIGRATION, 10, 10, 5, 5);
 	}
 
 	private void verifyType(int expectedMigrationType, int miradiLowVersion, int miradiHighVersion, int mpfLowVersion, int mpfHighVersion) throws Exception
