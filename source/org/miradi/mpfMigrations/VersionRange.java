@@ -35,7 +35,7 @@ public class VersionRange
 			throw new Exception("Low version must be less than high version!");
 	}
 	
-	public boolean isLessThan(VersionRange otherVersionRange)
+	public boolean isEntirelyOlderThan(VersionRange otherVersionRange)
 	{
 		if (getHighVersion() < otherVersionRange.getLowVersion())
 			return true;
@@ -43,7 +43,7 @@ public class VersionRange
 		return false;
 	}
 	
-	public boolean isGreaterThan(VersionRange otherVersionRange)
+	public boolean isEntirelyNewerThan(VersionRange otherVersionRange)
 	{
 		if (getLowVersion() > otherVersionRange.getHighVersion())
 			return true;
@@ -51,7 +51,7 @@ public class VersionRange
 		return false;
 	}
 	
-	public boolean upperOverlaps(VersionRange versionRange)
+	public boolean doesRangeOverlap(VersionRange versionRange)
 	{
 		if (getHighVersion() > versionRange.getHighVersion() && getLowVersion() < versionRange.getHighVersion())
 			return true;
