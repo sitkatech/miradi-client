@@ -27,6 +27,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 
+//FIXME medium - refactor this class to work at a higher level before creating any other migrations.
 public class IndicatorFutureStatusDataToNewFutureStatusTypeMigration
 {
 	public static RawProject migrate(RawProject rawProject) throws Exception
