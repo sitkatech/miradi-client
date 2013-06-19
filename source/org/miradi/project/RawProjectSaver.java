@@ -78,11 +78,11 @@ public class RawProjectSaver extends AbstractMiradiProjectSaver
 			String data = rawObject.get(tag);
 			if (data.length() > 0)
 			{
-				writeRefTagValue(UPDATE_OBJECT_CODE, ref, tag, data);
+				writeUdpateObjectLine(ref, tag, data);
 			}
 		}
 	}
-	
+
 	@Override
 	protected int getHighVersion()
 	{
