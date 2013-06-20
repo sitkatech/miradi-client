@@ -595,6 +595,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		ORefSet filteredResources = new ORefSet(timePeriodCosts.getWorkUnitsRefSetForType(ProjectResourceSchema.getObjectType()));
 		if (baseObject.getLeaderResourceRef().isValid())
 			filteredResources.add(baseObject.getLeaderResourceRef());
+		
 		ORefSet unspecifiedBaseObjectRefs = getInvalidRefs(filteredResources);
 		filteredResources.removeAll(unspecifiedBaseObjectRefs);
 		Vector<ProjectResource> sortedProjectResources = toProjectResources(filteredResources);
