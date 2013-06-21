@@ -115,11 +115,11 @@ public class TestMigrationManager extends TestCaseWithProject
 		for (int index = 0; index < numberOfIndicatorsToCreateAndPopulate; ++index)
 		{
 			Indicator indicator = getProject().createIndicatorWithCauseParent();
-			getProject().fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_RATING, new StatusQuestion().getCode(index));
-			getProject().fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_DATE, "2020-01-23" + index);
-			getProject().fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_COMMENTS, "Some Indicator future status comment" + index);
-			getProject().fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_DETAIL, "random Details" + index);
-			getProject().fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_SUMMARY, "FS random summary" + index);
+			getProject().fillObjectUsingCommand(indicator, IndicatorFutureStatusTagsToFutureStatusTagsMap.TAG_INDICATOR_FUTURE_STATUS_RATING, new StatusQuestion().getCode(index));
+			getProject().fillObjectUsingCommand(indicator, IndicatorFutureStatusTagsToFutureStatusTagsMap.TAG_INDICATOR_FUTURE_STATUS_DATE, "2020-01-23" + index);
+			getProject().fillObjectUsingCommand(indicator, IndicatorFutureStatusTagsToFutureStatusTagsMap.TAG_INDICATOR_FUTURE_STATUS_COMMENTS, "Some Indicator future status comment" + index);
+			getProject().fillObjectUsingCommand(indicator, IndicatorFutureStatusTagsToFutureStatusTagsMap.TAG_INDICATOR_FUTURE_STATUS_DETAIL, "random Details" + index);
+			getProject().fillObjectUsingCommand(indicator, IndicatorFutureStatusTagsToFutureStatusTagsMap.TAG_INDICATOR_FUTURE_STATUS_SUMMARY, "FS random summary" + index);
 			
 			indicators.add(indicator);
 		}

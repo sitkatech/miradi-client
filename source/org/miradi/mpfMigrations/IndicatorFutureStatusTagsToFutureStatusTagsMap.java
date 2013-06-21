@@ -44,11 +44,11 @@ public class IndicatorFutureStatusTagsToFutureStatusTagsMap extends HashMap<Stri
 		return keySet();
 	}
 	
-	private static final String TAG_INDICATOR_FUTURE_STATUS_RATING  = "FutureStatusRating";
-	private static final String TAG_INDICATOR_FUTURE_STATUS_DATE = "FutureStatusDate";
-	private static final String TAG_INDICATOR_FUTURE_STATUS_SUMMARY = "FutureStatusSummary";
-	private static final String TAG_INDICATOR_FUTURE_STATUS_DETAIL = "FutureStatusDetail";
-	private static final String TAG_INDICATOR_FUTURE_STATUS_COMMENTS = "FutureStatusComment";
+	public static final String TAG_INDICATOR_FUTURE_STATUS_RATING  = "FutureStatusRating";
+	public static final String TAG_INDICATOR_FUTURE_STATUS_DATE = "FutureStatusDate";
+	public static final String TAG_INDICATOR_FUTURE_STATUS_SUMMARY = "FutureStatusSummary";
+	public static final String TAG_INDICATOR_FUTURE_STATUS_DETAIL = "FutureStatusDetail";
+	public static final String TAG_INDICATOR_FUTURE_STATUS_COMMENTS = "FutureStatusComment";
 	
 	private static final String TAG_FUTURE_STATUS_RATING  = "Rating";
 	private static final String TAG_FUTURE_STATUS_DATE = "Date";

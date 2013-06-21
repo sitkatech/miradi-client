@@ -1386,11 +1386,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		thresholdDetails.putUserString(StatusQuestion.VERY_GOOD, "very good details");
 		fillObjectUsingCommand(indicator, Indicator.TAG_THRESHOLD_DETAILS_MAP, thresholdDetails.toJsonString());
 		
-		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_RATING, StatusQuestion.GOOD);
-		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_DATE, "2020-01-23");
-		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_COMMENTS, "Some Indicator future status comment");
-		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_DETAIL, "random Details");
-		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_SUMMARY, "FS random summary");
 		fillObjectUsingCommand(indicator, Indicator.TAG_COMMENTS, "Some indicator Comment");
 		
 		addExpenseWithValue(indicator);
