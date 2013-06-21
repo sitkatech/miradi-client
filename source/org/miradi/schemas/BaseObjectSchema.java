@@ -345,6 +345,16 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 		return getObjectName();
 	}
 	
+	public boolean containsField(String tag)
+	{
+		for(AbstractFieldSchema fieldSchema : this)
+		{
+			if (fieldSchema.getTag().equals(tag))
+				return true;
+		}
+		return false;
+	}
+	
 	public Iterator<AbstractFieldSchema> iterator()
 	{
 		return fieldSchemas.iterator();

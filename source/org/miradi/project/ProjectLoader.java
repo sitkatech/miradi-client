@@ -27,7 +27,9 @@ import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringReader;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objectpools.BaseObjectPool;
 import org.miradi.project.threatrating.ThreatRatingBundle;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class ProjectLoader extends AbstractProjectLoader
 {
@@ -84,7 +86,12 @@ public class ProjectLoader extends AbstractProjectLoader
 	@Override
 	protected void updateObjectWithData(ORef ref, String tag, String value)	throws Exception
 	{
-		if (getProject().doesBaseObjectContainField(ref, tag))
+		final BaseObjectPool pool = getProject().getPool(ref.getObjectType());
+		if (pool == null)
+			return;
+		
+		BaseObjectSchema schema = pool.createBaseObjectSchema(getProject());
+		if (schema.containsField(tag))
 			getProject().setObjectData(ref, tag, value);
 	}
 

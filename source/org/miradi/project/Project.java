@@ -656,11 +656,6 @@ public class Project
 		return objectManager.getObjectData(ref.getObjectType(), ref.getObjectId(), fieldTag);
 	}
 	
-	public boolean doesBaseObjectContainField(ORef objectRef, String fieldTag) throws Exception
-	{
-		return objectManager.doesBaseObjectContainField(objectRef, fieldTag);
-	}
-	
 	/////////////////////////////////////////////////////////////////////////////////
 	// database
 	
