@@ -27,6 +27,7 @@ import java.util.Vector;
 
 import org.martus.util.UnicodeStringReader;
 import org.martus.util.UnicodeStringWriter;
+import org.miradi.exceptions.ProjectFileTooOldException;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.mpfMigrations.RawProjectLoader;
 import org.miradi.mpfMigrations.VersionRange;
@@ -105,7 +106,7 @@ public class TestProjectSaver extends TestCaseWithProject
 			ProjectLoader.loadProject(new UnicodeStringReader(tooOld), getProject());
 			fail("Should have thrown for project too old");
 		}
-		catch(AbstractProjectLoader.ProjectFileTooOldException ignoreExpected)
+		catch(ProjectFileTooOldException ignoreExpected)
 		{
 		}
 	}
