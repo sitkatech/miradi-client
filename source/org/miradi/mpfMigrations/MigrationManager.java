@@ -68,12 +68,7 @@ public class MigrationManager
 	public boolean needsMigration(final File projectFile) throws Exception
 	{
 		String contents = UnicodeReader.getFileContents(projectFile);
-		return needsMigration(contents);
-	}
-	
-	public boolean needsMigration(String mpfAsString) throws Exception
-	{
-		VersionRange mpfVersionRange = RawProjectLoader.loadVersionRange(new UnicodeStringReader(mpfAsString));
+		VersionRange mpfVersionRange = RawProjectLoader.loadVersionRange(new UnicodeStringReader(contents));
 		final int migrationType = getMigrationType(AbstractMiradiProjectSaver.getMiradiVersionRange(), mpfVersionRange);
 		
 		return migrationType == MIGRATION;
