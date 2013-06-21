@@ -33,7 +33,6 @@ import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FutureStatus;
-import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
@@ -41,7 +40,6 @@ import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.schemas.IndicatorSchema;
-import org.miradi.utils.CodeList;
 
 public class ViabilityTreeRebuilder extends AbstractTreeRebuilder
 {
@@ -149,20 +147,6 @@ public class ViabilityTreeRebuilder extends AbstractTreeRebuilder
 	@Override
 	protected void addChildrenOfNodeToList(Vector<AbstractPlanningTreeNode> destination, AbstractPlanningTreeNode otherNode)
 	{
-	}
-	
-	@Override
-	protected boolean isVisible(CodeList objectTypesToShow, AbstractPlanningTreeNode child)
-	{
-		if (isFutureStatusNode(child))
-			return true;
-		
-		return objectTypesToShow.contains(child.getObjectTypeName());
-	}
-
-	public boolean isFutureStatusNode(AbstractPlanningTreeNode child)
-	{
-		return child.getObjectReference().isInvalid() && Goal.is(child.getType());
 	}
 	
 	private class KeaComparator implements Comparator<KeyEcologicalAttribute>
