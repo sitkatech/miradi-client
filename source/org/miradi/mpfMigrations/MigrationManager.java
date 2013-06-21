@@ -20,10 +20,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.mpfMigrations;
 
+import java.io.File;
+
+import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringReader;
 import org.martus.util.UnicodeStringWriter;
+import org.martus.util.UnicodeWriter;
+import org.miradi.files.AbstractMpfFileFilter;
 import org.miradi.project.AbstractMiradiProjectSaver;
 import org.miradi.project.RawProjectSaver;
+import org.miradi.utils.FileUtilities;
 
 public class MigrationManager
 {
@@ -31,11 +37,29 @@ public class MigrationManager
 	{
 	}
 	
+	public void safelyMigrate(File projectFile) throws Exception
+	{
+		createBackup(projectFile);
+		String contents = UnicodeReader.getFileContents(projectFile);
+		contents = migrate(contents);
+		UnicodeWriter fileWriter = new UnicodeWriter(projectFile);
+		fileWriter.write(contents);
+		fileWriter.close();
+	}
+	
+	private void createBackup(File projectFile) throws Exception
+	{
+		long timeOfBackup = System.currentTimeMillis();
+		File backup = new File("backup-" + projectFile.getName() + "-" + timeOfBackup + AbstractMpfFileFilter.EXTENSION);
+		if (backup.exists())
+			throw new Exception("Overriding older backup");
+		
+		FileUtilities.copyFile(projectFile, backup);
+	}
+
 	public String migrate(String mpfAsString) throws Exception
 	{
-		VersionRange mpfVersionRange = RawProjectLoader.loadVersionRange(new UnicodeStringReader(mpfAsString));
-		final int migrationType = getMigrationType(AbstractMiradiProjectSaver.getMiradiVersionRange(), mpfVersionRange);
-		if (migrationType == MIGRATION)
+		if (needsMigration(mpfAsString))
 		{
 			RawProject rawProject = RawProjectLoader.loadProject(new UnicodeStringReader(mpfAsString));
 
@@ -44,6 +68,20 @@ public class MigrationManager
 		}
 
 		return mpfAsString;
+	}
+	
+	public boolean needsMigration(final File projectFile) throws Exception
+	{
+		String contents = UnicodeReader.getFileContents(projectFile);
+		return needsMigration(contents);
+	}
+	
+	public boolean needsMigration(String mpfAsString) throws Exception
+	{
+		VersionRange mpfVersionRange = RawProjectLoader.loadVersionRange(new UnicodeStringReader(mpfAsString));
+		final int migrationType = getMigrationType(AbstractMiradiProjectSaver.getMiradiVersionRange(), mpfVersionRange);
+		
+		return migrationType == MIGRATION;
 	}
 	
 	public static int getMigrationType(VersionRange miradiVersionRange, VersionRange mpfVersionRange) throws Exception

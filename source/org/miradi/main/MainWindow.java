@@ -67,6 +67,7 @@ import org.miradi.exceptions.OldSchemaVersionException;
 import org.miradi.exceptions.UnknownCommandException;
 import org.miradi.exceptions.UserCanceledException;
 import org.miradi.main.menu.MainMenuBar;
+import org.miradi.mpfMigrations.MigrationManager;
 import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.ColorsFileLoader;
 import org.miradi.objecthelpers.ORef;
@@ -662,6 +663,18 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 
 	private void createOrOpenProjectInBackground(File projectFile) throws Exception
 	{
+		MigrationManager migrationManager = new MigrationManager();
+		if (migrationManager.needsMigration(projectFile))
+		{
+			final String[] buttonLabels = new String[]{EAM.text("Ok"), EAM.text("Cancel")};
+			final String message = EAM.text("Project needs migration, do you want to continue?");
+			final int result = EAM.confirmDialog(EAM.text("Migration"), message, buttonLabels);
+			if (result != 0)
+				return;
+			
+			migrationManager.safelyMigrate(projectFile);
+		}
+		
 		String title = EAM.text("Create Project");
 		if(projectFile.exists())
 			title = EAM.text("Open Project");
@@ -670,7 +683,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		progressDialog.doWorkInBackgroundWhileShowingProgress(worker);
 
 	}
-
+	
 	private static class ProjectOpenWorker extends MiradiBackgroundWorkerThread
 	{
 		public ProjectOpenWorker(ProgressInterface progressInterfaceToUse, Project projectToUse, File projectFileToUse)
@@ -697,7 +710,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			
 			getProgressIndicator().finished();
 		}
-		
+
 		private Project project;
 		private File projectFile;
 	}
