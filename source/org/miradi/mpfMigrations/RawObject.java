@@ -22,6 +22,12 @@ package org.miradi.mpfMigrations;
 
 import java.util.LinkedHashMap;
 
+import org.miradi.objecthelpers.ORefList;
+
 public class RawObject extends LinkedHashMap<String, String>
 {
+	public void put(String tagFutureStatusRefs, ORefList refList)
+	{
+		put(tagFutureStatusRefs, refList.toString());
+	}
 }

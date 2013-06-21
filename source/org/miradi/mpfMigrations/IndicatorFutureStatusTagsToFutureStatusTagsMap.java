@@ -55,5 +55,4 @@ public class IndicatorFutureStatusTagsToFutureStatusTagsMap extends HashMap<Stri
 	private static final String TAG_FUTURE_STATUS_SUMMARY = "Summary";
 	private static final String TAG_FUTURE_STATUS_DETAIL = "Detail";
 	private static final String TAG_FUTURE_STATUS_COMMENTS = "Comment";
-
 }

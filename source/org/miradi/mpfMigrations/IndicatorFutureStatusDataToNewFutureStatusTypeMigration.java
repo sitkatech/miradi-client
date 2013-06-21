@@ -25,7 +25,9 @@ import java.util.Set;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Indicator;
 
 //FIXME medium - refactor this class to work at a higher level before creating any other migrations.
 public class IndicatorFutureStatusDataToNewFutureStatusTypeMigration
@@ -37,6 +39,9 @@ public class IndicatorFutureStatusDataToNewFutureStatusTypeMigration
 
 	private static RawProject moveIndicatorFutureStatuses(RawProject rawProject)
 	{
+		if (!rawProject.containType(ObjectType.INDICATOR))
+			return rawProject;
+		
 		RawPool indicatorRawPool = rawProject.getRawPoolForType(ObjectType.INDICATOR);
 		Set<ORef> indicatorRefs = indicatorRawPool.keySet();
 		RawPool futureStatusPool = new RawPool();
@@ -48,7 +53,9 @@ public class IndicatorFutureStatusDataToNewFutureStatusTypeMigration
 				RawObject newFutureStatus = new RawObject();
 				moveFutureStatusFields(indicator, newFutureStatus);
 				final BaseId nextHighestId = rawProject.getNextHighestId();
-				futureStatusPool.put(new ORef(ObjectType.FUTURE_STATUS, nextHighestId), newFutureStatus);
+				final ORef newFutureStatusRef = new ORef(ObjectType.FUTURE_STATUS, nextHighestId);
+				futureStatusPool.put(newFutureStatusRef, newFutureStatus);
+				indicator.put(Indicator.TAG_FUTURE_STATUS_REFS, new ORefList(newFutureStatusRef));
 			}
 		}
 		
