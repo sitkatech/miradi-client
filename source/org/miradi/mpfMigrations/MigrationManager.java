@@ -59,15 +59,10 @@ public class MigrationManager
 
 	public String migrate(String mpfAsString) throws Exception
 	{
-		if (needsMigration(mpfAsString))
-		{
-			RawProject rawProject = RawProjectLoader.loadProject(new UnicodeStringReader(mpfAsString));
+		RawProject rawProject = RawProjectLoader.loadProject(new UnicodeStringReader(mpfAsString));
+		final RawProject migratedPools = IndicatorFutureStatusDataToNewFutureStatusTypeMigration.migrate(rawProject);
 
-			final RawProject migratedPools = IndicatorFutureStatusDataToNewFutureStatusTypeMigration.migrate(rawProject);
-			return convertToMpfString(migratedPools);
-		}
-
-		return mpfAsString;
+		return convertToMpfString(migratedPools);
 	}
 	
 	public boolean needsMigration(final File projectFile) throws Exception
