@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-21 17:46-0500\n"
+"POT-Creation-Date: 2013-06-21 18:16-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -482,7 +482,7 @@ msgstr "7C. Ciptakan Lingkungan Belajar "
 msgid "95% C.I. (confidence interval)"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1368
+#: Miradi/source/org/miradi/main/MainWindow.java:1369
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -2531,7 +2531,7 @@ msgstr "Tidak bisa menautkan grup ke butir yang dikandungnya "
 msgid "Can't link an item to itself"
 msgstr "Tidak bisa menautkan butir dengan butir itu sendiri "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:671
+#: Miradi/source/org/miradi/main/MainWindow.java:672
 #: Miradi/source/org/miradi/utils/ConstantButtonNames.java:28
 #: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:73
 #: Miradi/source/org/miradi/dialogs/base/AbstractSelectionDialog.java:90
@@ -2861,7 +2861,7 @@ msgstr "Pembuatan gagal: "
 msgid "Create Folder"
 msgstr "Buat Folder "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:680
+#: Miradi/source/org/miradi/main/MainWindow.java:681
 msgid "Create Project"
 msgstr ""
 
@@ -3469,7 +3469,7 @@ msgstr "Perkirakan biaya kegiatan dan pemantauan "
 msgid "Euro"
 msgstr "Euro"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:945
+#: Miradi/source/org/miradi/main/MainWindow.java:946
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
@@ -5057,7 +5057,7 @@ msgstr ""
 msgid "Migrating..."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:673
+#: Miradi/source/org/miradi/main/MainWindow.java:674
 msgid "Migration"
 msgstr ""
 
@@ -5111,7 +5111,7 @@ msgstr ""
 msgid "Miradi does not recognize %s as a project file"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:771
+#: Miradi/source/org/miradi/main/MainWindow.java:772
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5360,7 +5360,7 @@ msgstr ""
 msgid "October to September"
 msgstr "Oktober sampai September "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:671
+#: Miradi/source/org/miradi/main/MainWindow.java:672
 msgid "Ok"
 msgstr ""
 
@@ -5398,7 +5398,7 @@ msgid "Open Anyway"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:202
-#: Miradi/source/org/miradi/main/MainWindow.java:682
+#: Miradi/source/org/miradi/main/MainWindow.java:683
 msgid "Open Project"
 msgstr ""
 
@@ -5715,7 +5715,7 @@ msgstr "Proyek "
 msgid "Project Advisor"
 msgstr "Penasihat Proyek"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:769
+#: Miradi/source/org/miradi/main/MainWindow.java:770
 msgid "Project Corruption Detected"
 msgstr ""
 
@@ -5748,7 +5748,7 @@ msgstr "Sumber Daya Proyek "
 msgid "Project Resource Filter Editor"
 msgstr "Editor Filter Sumber Daya Proyek "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:943
+#: Miradi/source/org/miradi/main/MainWindow.java:944
 msgid "Project Resource Filter Is On"
 msgstr "Filter Sumber Daya Proyek Adalah Aktif "
 
@@ -5784,7 +5784,7 @@ msgstr ""
 "Nama berkas proyek tidak boleh mengandung tanda baca selain titik, tanda "
 "sambung, dan spasi; serta tidak boleh lebih dari 32 karakter. "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:672
+#: Miradi/source/org/miradi/main/MainWindow.java:673
 msgid "Project needs migration, do you want to continue?"
 msgstr ""
 
@@ -6379,7 +6379,7 @@ msgstr "Pemilik Kepentingan"
 msgid "Standard Reports"
 msgstr "Laporan Standar "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:977
+#: Miradi/source/org/miradi/main/MainWindow.java:978
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -7869,7 +7869,7 @@ msgid ""
 "damaged. Please contact Miradi support for recovery options."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:760
+#: Miradi/source/org/miradi/main/MainWindow.java:761
 msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
@@ -8294,7 +8294,7 @@ msgstr ""
 "Tidak bisa menghapus proyek karena sedang digunakan oleh salinan lain dari "
 "aplikasi ini:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1352
+#: Miradi/source/org/miradi/main/MainWindow.java:1353
 msgid "Unable to launch external web browser"
 msgstr "Tidak bisa meluncurkan perambah web eksternal "
 
@@ -8315,7 +8315,7 @@ msgstr ""
 "Tidak bisa mengganti nama proyek karena sedang digunakan oleh salinan lain "
 "dari aplikasi ini:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1134
+#: Miradi/source/org/miradi/main/MainWindow.java:1135
 msgid "Unable to save preferences"
 msgstr "Tidak bisa menyimpan preferensi "
 
