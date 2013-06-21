@@ -92,6 +92,9 @@ public class MigrationManager
 		if (mpfVersionRange.isEntirelyOlderThan(miradiVersionRange))
 			return MIGRATION;
 		
+		if (mpfVersionRange.isEntirelyNewerThan(miradiVersionRange))
+			return TOO_NEW_TO_MIGRATE;
+		
 		return NO_MIGRATION;
 	}
 
@@ -105,4 +108,5 @@ public class MigrationManager
 	
 	public static final int NO_MIGRATION = 0;
 	public static final int MIGRATION = 1;
+	public static final int TOO_NEW_TO_MIGRATE = 2;
 }
