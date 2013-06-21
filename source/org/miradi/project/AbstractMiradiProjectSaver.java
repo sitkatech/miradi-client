@@ -260,7 +260,7 @@ abstract public class AbstractMiradiProjectSaver
 		writeValue(CREATE_OBJECT_CODE, createSimpleRefString(ref));
 	}
 	
-	protected void writeUdpateObjectLine(ORef ref, String tag, String data) throws Exception
+	protected void writeUpdateObjectLine(ORef ref, String tag, String data) throws Exception
 	{
 		writeRefTagValue(UPDATE_OBJECT_CODE, ref, tag, data);
 	}
