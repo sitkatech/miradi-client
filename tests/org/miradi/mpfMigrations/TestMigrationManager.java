@@ -141,7 +141,7 @@ public class TestMigrationManager extends TestCaseWithProject
 		verifyType(MigrationManager.NO_MIGRATION, tenTwentyRange, tenTwentyRange);
 		
 		VersionRange FifteenFifteenRange = new VersionRange(15);
-		verifyType(MigrationManager.MIGRATION, tenTwentyRange, FifteenFifteenRange);
+		verifyType(MigrationManager.NO_MIGRATION, tenTwentyRange, FifteenFifteenRange);
 		verifyType(MigrationManager.MIGRATION, fourtyFourtyRange, FifteenFifteenRange);
 	}
 
