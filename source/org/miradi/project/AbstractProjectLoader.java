@@ -96,6 +96,9 @@ abstract public class AbstractProjectLoader
 
 	protected void validateHeaderLine(String fileHeaderLine) throws Exception
 	{
+		if(fileHeaderLine == null || !fileHeaderLine.startsWith(AbstractMiradiProjectSaver.getBasicFileHeader()))
+			throw new NotMiradiProjectFileException();
+		
 		VersionRange versionRange = loadVersionRange(fileHeaderLine);
 		int lowVersion = versionRange.getLowVersion();
 		if(lowVersion > AbstractMiradiProjectSaver.VERSION_HIGH)
@@ -108,9 +111,6 @@ abstract public class AbstractProjectLoader
 	
 	protected VersionRange loadVersionRange(String fileHeaderLine) throws Exception
 	{
-		if(fileHeaderLine == null || !fileHeaderLine.startsWith(AbstractMiradiProjectSaver.getBasicFileHeader()))
-			throw new NotMiradiProjectFileException();
-		
 		final String WHITESPACE_REGEXP = "\\s+";
 		String[] parts = fileHeaderLine.split(WHITESPACE_REGEXP);
 		/*String baseFileHeader = parts[0];*/
