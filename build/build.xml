@@ -105,6 +105,7 @@
     <property name="miradi.po.mn" value="${translations.dir}/miradi_mn.po" />
     <property name="miradi.po.plt" value="${translations.dir}/miradi_plt.po" />
     <property name="miradi.po.pt" value="${translations.dir}/miradi_pt.po" />
+    <property name="miradi.po.psp" value="${translations.dir}/miradi_psp.po" />
     <property name="miradi.po.uk" value="${translations.dir}/miradi_uk.po" />
     <property name="miradi.po.zh" value="${translations.dir}/miradi_zh.po" />
 
@@ -752,6 +753,19 @@
 <antcall target="update-po">
 	<param name="po.file" value="${miradi.po.pt}"/>
 	<param name="language.code" value="pt"/>
+</antcall>
+</target>
+
+<!-- ================================================================== -->
+<!-- PSP (English, but with some terms substituted                      -->
+<!-- ================================================================== -->
+<target name="psp-langpack" depends="pot" description="Update PSP Language Pack Content">
+	<property name="po.locale" value="PSP" />
+	<property name="po.file" value="${miradi.po.psp}" />
+	<antcall target="create-new-po"/>
+<antcall target="update-po">
+	<param name="po.file" value="${miradi.po.psp}"/>
+	<param name="language.code" value="psp"/>
 </antcall>
 </target>
 
