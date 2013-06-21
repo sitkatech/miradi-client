@@ -95,9 +95,6 @@ public class MigrationManager
 		if (mpfVersionRange.getHighVersion() < OLDEST_VERSION_TO_HANDLE)
 			return TOO_OLD_TO_MIGRATE;
 		
-		if (miradiVersionRange.doesRangeOverlap(mpfVersionRange))
-			return MIGRATION;
-		
 		if (mpfVersionRange.isEntirelyOlderThan(miradiVersionRange))
 			return MIGRATION;
 		
