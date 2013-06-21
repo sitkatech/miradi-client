@@ -105,6 +105,7 @@
     <property name="miradi.po.mn" value="${translations.dir}/miradi_mn.po" />
     <property name="miradi.po.plt" value="${translations.dir}/miradi_plt.po" />
     <property name="miradi.po.pt" value="${translations.dir}/miradi_pt.po" />
+    <property name="miradi.po.psp" value="${translations.dir}/miradi_psp.po" />
     <property name="miradi.po.uk" value="${translations.dir}/miradi_uk.po" />
     <property name="miradi.po.zh" value="${translations.dir}/miradi_zh.po" />
 
@@ -756,6 +757,16 @@
 </target>
 
 <!-- ================================================================== -->
+<!-- PSP (English, but with some terms substituted                      -->
+<!-- ================================================================== -->
+<target name="psp-langpack" depends="pot" description="Update PSP Language Pack Content">
+<antcall target="update-po">
+	<param name="po.file" value="${miradi.po.psp}"/>
+	<param name="language.code" value="psp"/>
+</antcall>
+</target>
+
+<!-- ================================================================== -->
 <!-- S P A N I S H                                            -->
 <!-- ================================================================== -->
 <target name="spanish" depends="pot" description="Update Spanish Content">
@@ -800,7 +811,7 @@
 <!-- T R A N S L A T I O N S                                            -->
 <!-- ================================================================== -->
 <target name="translations" 
-	depends="pot, chinese, french, german, hebrew, hungarian, indonesian, italian, malagasy, mongolian, portuguese, spanish, ukrainian" 
+	depends="pot, chinese, french, german, hebrew, hungarian, indonesian, italian, malagasy, mongolian, portuguese, psp-langpack, spanish, ukrainian" 
 	description="Create Translatable Content jars/zips">
 
 	<!-- Add any new translation files -->	
