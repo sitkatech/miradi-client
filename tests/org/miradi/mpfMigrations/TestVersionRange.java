@@ -40,16 +40,16 @@ public class TestVersionRange extends TestCaseWithProject
 	{
 		VersionRange versionRange1 = createVersionRange(0, 0);
 		VersionRange versionRange2 = createVersionRange(1, 1);
-		assertTrue("Version range1 is entirely oder than range2?", versionRange1.isEntirelyOlderThan(versionRange2));
-		assertFalse("Version range2 is entirely older than range1?", versionRange2.isEntirelyOlderThan(versionRange1));
+		assertTrue("Version range1 is not entirely older than range2?", versionRange1.isEntirelyOlderThan(versionRange2));
+		assertFalse("Version range2 is not entirely older than range1?", versionRange2.isEntirelyOlderThan(versionRange1));
 	}
 	
 	public void testIsGreaterThan() throws Exception
 	{
 		VersionRange versionRange1 = createVersionRange(10, 10);
 		VersionRange versionRange2 = createVersionRange(1, 1);
-		assertTrue("Version range1 is entirely newer version range2?", versionRange1.isEntirelyNewerThan(versionRange2));
-		assertFalse("Version range2 is entirely newer version range1?", versionRange2.isEntirelyNewerThan(versionRange1));
+		assertTrue("Version range1 is not entirely newer version range2?", versionRange1.isEntirelyNewerThan(versionRange2));
+		assertFalse("Version range2 is not entirely newer version range1?", versionRange2.isEntirelyNewerThan(versionRange1));
 	}
 	
 	public void testUpperOverlap() throws Exception
