@@ -115,9 +115,7 @@ abstract public class AbstractProjectLoader
 		String[] parts = fileHeaderLine.split(WHITESPACE_REGEXP);
 		/*String baseFileHeader = parts[0];*/
 		int lowVersion = Integer.parseInt(parts[1]);
-		//FIXME urgent - after method extracted,  this became obvious that high is not being read. 
-		//Write failing test and fix it.  This has not been an issue since high and low have always been the same
-		int highVersion = Integer.parseInt(parts[1]);
+		int highVersion = Integer.parseInt(parts[2]);
 		
 		return new VersionRange(lowVersion, highVersion);
 	}

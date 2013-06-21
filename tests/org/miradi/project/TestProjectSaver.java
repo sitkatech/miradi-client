@@ -28,6 +28,8 @@ import java.util.Vector;
 import org.martus.util.UnicodeStringReader;
 import org.martus.util.UnicodeStringWriter;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.mpfMigrations.RawProjectLoader;
+import org.miradi.mpfMigrations.VersionRange;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -44,6 +46,14 @@ public class TestProjectSaver extends TestCaseWithProject
 	public TestProjectSaver(String name)
 	{
 		super(name);
+	}
+	
+	public void testLowHighReadCorrectly() throws Exception
+	{
+		String projectAsString = ProjectSaverForTesting.createSnapShot(getProject(), new VersionRange(1, 3));
+		VersionRange versionRange = RawProjectLoader.loadVersionRange(new UnicodeStringReader(projectAsString));
+		assertEquals("Incorrect low version?", 1, versionRange.getLowVersion());
+		assertEquals("Incorrect high version?", 3, versionRange.getHighVersion());
 	}
 	
 	@Override
