@@ -76,6 +76,9 @@ public class MigrationManager
 	
 	public static int getMigrationType(VersionRange miradiVersionRange, VersionRange mpfVersionRange) throws Exception
 	{
+		if (mpfVersionRange.getHighVersion() < OLDEST_VERSION_TO_HANDLE)
+			return TOO_OLD_TO_MIGRATE;
+		
 		if (miradiVersionRange.doesRangeOverlap(mpfVersionRange))
 			return MIGRATION;
 		
@@ -99,4 +102,7 @@ public class MigrationManager
 	public static final int NO_MIGRATION = 0;
 	public static final int MIGRATION = 1;
 	public static final int TOO_NEW_TO_MIGRATE = 2;
+	public static final int TOO_OLD_TO_MIGRATE = 3;
+	
+	private static final int OLDEST_VERSION_TO_HANDLE = 3;
 }
