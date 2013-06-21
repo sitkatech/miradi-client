@@ -47,6 +47,14 @@ public class MigrationManager
 		fileWriter.close();
 	}
 	
+	public String migrate(String mpfAsString) throws Exception
+	{
+		RawProject rawProject = RawProjectLoader.loadProject(new UnicodeStringReader(mpfAsString));
+		final RawProject migratedPools = IndicatorFutureStatusDataToNewFutureStatusTypeMigration.migrate(rawProject);
+
+		return convertToMpfString(migratedPools);
+	}
+	
 	private void createBackup(File projectFile) throws Exception
 	{
 		long timeOfBackup = System.currentTimeMillis();
@@ -57,14 +65,6 @@ public class MigrationManager
 		FileUtilities.copyFile(projectFile, backup);
 	}
 
-	public String migrate(String mpfAsString) throws Exception
-	{
-		RawProject rawProject = RawProjectLoader.loadProject(new UnicodeStringReader(mpfAsString));
-		final RawProject migratedPools = IndicatorFutureStatusDataToNewFutureStatusTypeMigration.migrate(rawProject);
-
-		return convertToMpfString(migratedPools);
-	}
-	
 	public boolean needsMigration(final File projectFile) throws Exception
 	{
 		String contents = UnicodeReader.getFileContents(projectFile);
