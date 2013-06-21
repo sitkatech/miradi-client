@@ -760,9 +760,6 @@
 <!-- PSP (English, but with some terms substituted                      -->
 <!-- ================================================================== -->
 <target name="psp-langpack" depends="pot" description="Update PSP Language Pack Content">
-	<property name="po.locale" value="PSP" />
-	<property name="po.file" value="${miradi.po.psp}" />
-	<antcall target="create-new-po"/>
 <antcall target="update-po">
 	<param name="po.file" value="${miradi.po.psp}"/>
 	<param name="language.code" value="psp"/>
