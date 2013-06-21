@@ -666,6 +666,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	private void createOrOpenProjectInBackground(File projectFile) throws Exception
 	{
 		MigrationManager migrationManager = new MigrationManager();
+		migrationManager.validateProjectVersion(projectFile);
 		if (migrationManager.needsMigration(projectFile))
 		{
 			final String[] buttonLabels = new String[]{EAM.text("Ok"), EAM.text("Cancel")};

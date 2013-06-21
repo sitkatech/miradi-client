@@ -26,6 +26,8 @@ import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringReader;
 import org.martus.util.UnicodeStringWriter;
 import org.martus.util.UnicodeWriter;
+import org.miradi.exceptions.ProjectFileTooNewException;
+import org.miradi.exceptions.ProjectFileTooOldException;
 import org.miradi.files.AbstractMpfFileFilter;
 import org.miradi.project.AbstractMiradiProjectSaver;
 import org.miradi.project.RawProjectSaver;
@@ -72,6 +74,20 @@ public class MigrationManager
 		final int migrationType = getMigrationType(AbstractMiradiProjectSaver.getMiradiVersionRange(), mpfVersionRange);
 		
 		return migrationType == MIGRATION;
+	}
+	
+	public void validateProjectVersion(final File projectFile) throws Exception
+	{
+		String contents = UnicodeReader.getFileContents(projectFile);
+		VersionRange mpfVersionRange = RawProjectLoader.loadVersionRange(new UnicodeStringReader(contents));
+		final VersionRange miradiVersionRange = AbstractMiradiProjectSaver.getMiradiVersionRange();
+		final int migrationType = getMigrationType(miradiVersionRange, mpfVersionRange);
+
+		if (migrationType == TOO_OLD_TO_MIGRATE)
+			throw new ProjectFileTooOldException(mpfVersionRange.getHighVersion(), miradiVersionRange.getLowVersion());
+		
+		if (migrationType == TOO_NEW_TO_MIGRATE)
+			throw new ProjectFileTooNewException(mpfVersionRange.getLowVersion(), miradiVersionRange.getHighVersion());
 	}
 	
 	public static int getMigrationType(VersionRange miradiVersionRange, VersionRange mpfVersionRange) throws Exception
