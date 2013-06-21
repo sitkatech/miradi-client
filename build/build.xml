@@ -814,7 +814,7 @@
 <!-- T R A N S L A T I O N S                                            -->
 <!-- ================================================================== -->
 <target name="translations" 
-	depends="pot, chinese, french, german, hebrew, hungarian, indonesian, italian, malagasy, mongolian, portuguese, spanish, ukrainian" 
+	depends="pot, chinese, french, german, hebrew, hungarian, indonesian, italian, malagasy, mongolian, portuguese, psp-langpack, spanish, ukrainian" 
 	description="Create Translatable Content jars/zips">
 
 	<!-- Add any new translation files -->	
