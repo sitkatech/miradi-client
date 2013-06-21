@@ -28,7 +28,6 @@ import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
 import org.miradi.dialogs.planning.treenodes.PlanningTaskNode;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeBaseObjectNode;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeErrorNode;
-import org.miradi.dialogs.planning.treenodes.ViabilityFutureStatusNode;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -36,7 +35,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Desire;
 import org.miradi.objects.DiagramObject;
-import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
@@ -186,9 +184,6 @@ abstract public class AbstractTreeRebuilder
 		{
 			if(Task.is(refToAdd))
 				return new PlanningTaskNode(getProject(), parentNode.getContextRef(), parentNode, refToAdd);
-			
-			if(Goal.is(refToAdd) && refToAdd.isInvalid())
-				return new ViabilityFutureStatusNode(getProject(), parentNode);
 			
 			int type = refToAdd.getObjectType();
 			for(int i = 0; i < supportedTypes.length; ++i)
