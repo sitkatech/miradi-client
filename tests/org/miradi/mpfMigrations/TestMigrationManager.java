@@ -140,11 +140,9 @@ public class TestMigrationManager extends TestCaseWithProject
 		verifyType(MigrationManager.NO_MIGRATION, tenTwentyRange, fifteenFourtyRange);
 		verifyType(MigrationManager.NO_MIGRATION, tenTwentyRange, tenTwentyRange);
 		
-		VersionRange tenTenRange = new VersionRange(10);
-		VersionRange fiveFiveRange = new VersionRange(5);
 		VersionRange FifteenFifteenRange = new VersionRange(15);
 		verifyType(MigrationManager.MIGRATION, tenTwentyRange, FifteenFifteenRange);
-		verifyType(MigrationManager.MIGRATION, tenTenRange, fiveFiveRange);
+		verifyType(MigrationManager.MIGRATION, fourtyFourtyRange, FifteenFifteenRange);
 	}
 
 	private void verifyType(int expectedMigrationType, VersionRange miradiVersionRange, VersionRange mpfVersionRange) throws Exception
