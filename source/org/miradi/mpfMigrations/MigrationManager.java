@@ -50,7 +50,7 @@ public class MigrationManager
 	private void createBackup(File projectFile) throws Exception
 	{
 		long timeOfBackup = System.currentTimeMillis();
-		File backup = new File("backup-" + projectFile.getName() + "-" + timeOfBackup + AbstractMpfFileFilter.EXTENSION);
+		File backup = new File(projectFile.getParentFile(), "backup-" + projectFile.getName() + "-" + timeOfBackup + AbstractMpfFileFilter.EXTENSION);
 		if (backup.exists())
 			throw new Exception("Overriding older backup");
 		
