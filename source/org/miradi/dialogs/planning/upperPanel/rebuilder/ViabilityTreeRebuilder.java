@@ -157,15 +157,7 @@ public class ViabilityTreeRebuilder extends AbstractTreeRebuilder
 		if (isFutureStatusNode(child))
 			return true;
 		
-		if (isNonFutureStatusGoal(child))
-			return false;
-		
 		return objectTypesToShow.contains(child.getObjectTypeName());
-	}
-
-	public boolean isNonFutureStatusGoal(AbstractPlanningTreeNode child)
-	{
-		return Goal.is(child.getObject());
 	}
 
 	public boolean isFutureStatusNode(AbstractPlanningTreeNode child)
