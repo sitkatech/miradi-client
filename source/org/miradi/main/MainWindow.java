@@ -64,6 +64,7 @@ import org.miradi.dialogs.notify.NotifyDialog;
 import org.miradi.dialogs.notify.NotifyDialogTemplateFactory;
 import org.miradi.exceptions.FutureSchemaVersionException;
 import org.miradi.exceptions.OldSchemaVersionException;
+import org.miradi.exceptions.ProjectFileTooNewException;
 import org.miradi.exceptions.ProjectFileTooOldException;
 import org.miradi.exceptions.UnknownCommandException;
 import org.miradi.exceptions.UserCanceledException;
@@ -615,7 +616,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		{
 			EAM.errorDialog(EAM.text("That project is too old to be opened with this version of Miradi"));
 		}
-		catch(AbstractProjectLoader.ProjectFileTooNewException e)
+		catch(ProjectFileTooNewException e)
 		{
 			EAM.errorDialog(EAM.text("That project cannot be opened because it was created by a newer version of Miradi"));
 		}

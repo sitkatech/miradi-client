@@ -25,6 +25,7 @@ import java.util.HashMap;
 import java.util.StringTokenizer;
 
 import org.martus.util.UnicodeReader;
+import org.miradi.exceptions.ProjectFileTooNewException;
 import org.miradi.exceptions.ProjectFileTooOldException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
@@ -295,28 +296,6 @@ abstract public class AbstractProjectLoader
 
 	public static class NotMiradiProjectFileException extends Exception
 	{
-	}
-	
-	public static class ProjectFileTooNewException extends Exception
-	{
-		public ProjectFileTooNewException(int thisVersionToUse, int highestAllowedVersionToUse)
-		{
-			thisVersion = thisVersionToUse;
-			highestAllowedVersion = highestAllowedVersionToUse;
-		}
-		
-		public int getThisVersion()
-		{
-			return thisVersion;
-		}
-		
-		public int highestMaxAllowedVersion()
-		{
-			return highestAllowedVersion;
-		}
-
-		private int thisVersion;
-		private int highestAllowedVersion;
 	}
 	
 	abstract protected void setLastModifiedTime(long lastModified);
