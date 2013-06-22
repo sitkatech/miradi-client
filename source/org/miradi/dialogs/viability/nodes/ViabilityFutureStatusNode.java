@@ -21,46 +21,40 @@ package org.miradi.dialogs.viability.nodes;
 
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.icons.GoalIcon;
-import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Goal;
-import org.miradi.objects.Indicator;
+import org.miradi.objects.FutureStatus;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TextAndIconChoiceItem;
-import org.miradi.schemas.GoalSchema;
+import org.miradi.schemas.FutureStatusSchema;
 
 public class ViabilityFutureStatusNode extends TreeTableNode
 {
-	public ViabilityFutureStatusNode(TreeTableNode parentNodeToUse) throws Exception
+	public ViabilityFutureStatusNode(TreeTableNode parentNodeToUse, FutureStatus futureStatusToUse) throws Exception
 	{
 		parentNode = parentNodeToUse;
+		
+		futureStatus = futureStatusToUse;
 		rebuild();
 	}
 	
 	@Override
 	public BaseObject getObject()
 	{
-		return null;
+		return futureStatus;
 	}
 
 	@Override
 	public ORef getObjectReference()
 	{
-		return new ORef(GoalSchema.getObjectType(), BaseId.INVALID);
+		return getObject().getRef();
 	}
 	
 	@Override
 	public int getType()
 	{
-		return GoalSchema.getObjectType();
-	}
-
-	@Override
-	public String getNodeLabel()
-	{
-		return parentNode.getObject().getData(Indicator.TAG_FUTURE_STATUS_DATE);
+		return FutureStatusSchema.getObjectType();
 	}
 
 	@Override
@@ -85,8 +79,8 @@ public class ViabilityFutureStatusNode extends TreeTableNode
 	public Object getValueAt(int column)
 	{
 		String tag = COLUMN_TAGS[column];
-		String summaryData = parentNode.getObject().getData(Indicator.TAG_FUTURE_STATUS_SUMMARY);
-		String statusData = parentNode.getObject().getData(Indicator.TAG_FUTURE_STATUS_RATING);
+		String summaryData = getObject().getData(FutureStatusSchema.TAG_FUTURE_STATUS_SUMMARY);
+		String statusData = getObject().getData(FutureStatusSchema.TAG_FUTURE_STATUS_RATING);
 		TextAndIconChoiceItem textAndIconChoiceItem = new TextAndIconChoiceItem(summaryData, new GoalIcon());		
 		if (tag.equals(StatusQuestion.POOR) && StatusQuestion.POOR.equals(statusData))
 			return textAndIconChoiceItem;
@@ -109,19 +103,20 @@ public class ViabilityFutureStatusNode extends TreeTableNode
 	}
 	
 	public static final String[] COLUMN_TAGS = {
-		Goal.TAG_EMPTY,
-		Goal.TAG_EMPTY,
-		Goal.TAG_EMPTY,
-		Goal.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
 		
 		StatusQuestion.POOR,
 		StatusQuestion.FAIR,
 		StatusQuestion.GOOD,
 	    StatusQuestion.VERY_GOOD,
 
-		Goal.TAG_EMPTY,
-		Goal.TAG_EMPTY,
+	    BaseObject.TAG_EMPTY,
+	    BaseObject.TAG_EMPTY,
 	};
 	
 	private TreeTableNode parentNode;
+	private FutureStatus futureStatus;
 }
