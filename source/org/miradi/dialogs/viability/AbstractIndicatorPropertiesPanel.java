@@ -48,7 +48,6 @@ abstract public class AbstractIndicatorPropertiesPanel extends ObjectDataInputPa
 		addSubPanelWithTitledBorder(viabilityRatingsSubPanel);
 		addSubPanelWithTitledBorder(new IndicatorMonitoringPlanSubPanel(getProject(), getInvalidTargetRef()));
 		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow()));
-		addSubPanelWithTitledBorder(new IndicatorFutureStatusSubPanel(getProject(), getInvalidTargetRef()));
 		addSubPanelWithTitledBorder(new WorkPlanPanelPropertiesPanel(getProject(), ORef.createInvalidWithType(IndicatorSchema.getObjectType())));
 		addBudgetSubPanels();
 		
