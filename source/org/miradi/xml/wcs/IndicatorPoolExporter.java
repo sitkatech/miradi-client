@@ -21,14 +21,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.wcs;
 
 import org.martus.util.UnicodeWriter;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.CodeToUserStringMap;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.FutureStatus;
 import org.miradi.objects.Indicator;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
 
@@ -49,11 +53,7 @@ public class IndicatorPoolExporter extends BaseObjectPoolExporter
 		writeOptionalElementWithSameTag(baseObject, Indicator.TAG_DETAIL);
 		writeOptionalElementWithSameTag(baseObject, Indicator.TAG_COMMENTS);
 		writeCodeElementSameAsTag(indicator, Indicator.TAG_PRIORITY, new PriorityRatingQuestion());
-		writeOptionalElementWithSameTag(baseObject, Indicator.TAG_FUTURE_STATUS_DATE);
-		writeOptionalElementWithSameTag(baseObject, Indicator.TAG_FUTURE_STATUS_SUMMARY);
-		writeCodeElementSameAsTag(indicator, Indicator.TAG_FUTURE_STATUS_RATING, new StatusQuestion());
-		writeOptionalElementWithSameTag(baseObject, Indicator.TAG_FUTURE_STATUS_DETAIL);
-		writeOptionalElementWithSameTag(baseObject, Indicator.TAG_FUTURE_STATUS_COMMENTS);	
+		exportLastestFutureStatus(indicator);	
 		writeProgressReportIds(indicator);
 		writeExpenseAssignmentIds(indicator);
 		writeResourceAssignmentIds(indicator);
@@ -63,6 +63,26 @@ public class IndicatorPoolExporter extends BaseObjectPoolExporter
 		writeCodeElementSameAsTag(indicator, Indicator.TAG_RATING_SOURCE, getProject().getQuestion(RatingSourceQuestion.class));
 		writeOptionalElementWithSameTag(indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENTS);
 		writeOptionalCalculatedTimePeriodCosts(indicator);
+	}
+
+	private void exportLastestFutureStatus(Indicator indicator) throws Exception
+	{
+		ORef futureStatusRef = indicator.getLatestFutureStatusRef();
+		if (futureStatusRef.isInvalid())
+		{
+			writeCodeElement("FutureStatusRating", new StatusQuestion(), StatusQuestion.UNSPECIFIED);
+			return;
+		}
+		FutureStatus futureStatus = FutureStatus.find(getProject(), futureStatusRef);
+		getWcsXmlExporter().writeOptionalElement(getWriter(), "IndicatorFutureStatusDate", futureStatus.getData(FutureStatusSchema.TAG_FUTURE_STATUS_DATE));
+		getWcsXmlExporter().writeOptionalElement(getWriter(), "IndicatorFutureStatusSummary", futureStatus.getData(FutureStatusSchema.TAG_FUTURE_STATUS_SUMMARY));
+		
+		ChoiceItem ratingChoice = futureStatus.getChoiceItemData(FutureStatusSchema.TAG_FUTURE_STATUS_RATING);
+		StatusQuestion question = new StatusQuestion();
+		getWcsXmlExporter().writeElement(getWriter(), "IndicatorFutureStatusRating", question.convertToReadableCode(ratingChoice.getCode()));
+		
+		getWcsXmlExporter().writeOptionalElement(getWriter(), "IndicatorFutureStatusDetails", futureStatus.getData(FutureStatusSchema.TAG_FUTURE_STATUS_DETAIL));
+		getWcsXmlExporter().writeOptionalElement(getWriter(), "IndicatorFutureStatusComments", futureStatus.getData(FutureStatusSchema.TAG_FUTURE_STATUS_COMMENTS));
 	}
 	
 	private void writeOptionalThreshold(Indicator indicator) throws Exception
