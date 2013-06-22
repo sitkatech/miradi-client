@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-21 18:16-0500\n"
+"POT-Creation-Date: 2013-06-21 19:21-0500\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -9198,7 +9198,7 @@ msgstr "[NÃO ESPECIFICADO]"
 msgid "[New Results Chain]"
 msgstr "[Nova Cadeia de Resultados]"
 
-#: Miradi/source/org/miradi/project/Project.java:980
+#: Miradi/source/org/miradi/project/Project.java:975
 msgid "[No Project]"
 msgstr "[Sem Projeto]"
 
@@ -9222,10 +9222,6 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/NeverShowAgainPanel.java:48
 msgid "it will not be shown. Uncheck it to have Miradi "
 msgstr "Não será exibido.  Desmarcar para ter Miradi"
-
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/ViabilityFutureStatusNode.java:46
-msgid "label|Error"
-msgstr "Erro"
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:96
 #: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:55
@@ -27741,6 +27737,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid "label|Error"
+#~ msgstr "Erro"
 
 #~ msgid "Action|Manage|Delete Measurement"
 #~ msgstr "apagar Medida"
