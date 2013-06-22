@@ -298,11 +298,6 @@ public class Indicator extends BaseObject
 		return getData(TAG_FUTURE_STATUS_RATING);
 	}
 	
-	public String getFutureStatusSummary()
-	{
-		return getStringData(TAG_FUTURE_STATUS_SUMMARY);
-	}
-		
 	public ORefList getRelevantDesireRefs() throws Exception
 	{
 		ORefList relevantDesireRefs = new ORefList();
