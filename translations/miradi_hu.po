@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-21 19:21-0500\n"
+"POT-Creation-Date: 2013-06-22 07:01-0500\n"
 "PO-Revision-Date: 2011-02-15 16:35-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2917,7 +2917,6 @@ msgstr ""
 msgid "Data was exported as tab delimited."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:53
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:51
 msgid "Date"
 msgstr ""
@@ -3011,7 +3010,6 @@ msgid "Desert - Temperate"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:329
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:84
 msgid "Desired Future Status"
 msgstr ""
 
@@ -3020,14 +3018,6 @@ msgid ""
 "Desired Future Status - A measurement or rating value for an indicator for a "
 "key ecological attribute that the project intends to achieve at a specified "
 "time in the future. Generally equivalent to a project sub-goal."
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:91
-msgid "Desired Future Value"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:117
-msgid "Desired Value/Status"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:73
@@ -3306,7 +3296,7 @@ msgstr ""
 msgid "Error Occurred During Sorting"
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:289
+#: Miradi/source/org/miradi/objects/Dashboard.java:290
 msgid "Error Retrieving Data"
 msgstr ""
 
@@ -7784,7 +7774,7 @@ msgstr ""
 msgid "Title|IUCN Redlist Species"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/viability/AbstractIndicatorPropertiesPanel.java:79
+#: Miradi/source/org/miradi/dialogs/viability/AbstractIndicatorPropertiesPanel.java:78
 msgid "Title|Indicator Properties"
 msgstr ""
 
@@ -8036,7 +8026,6 @@ msgstr ""
 msgid "Unexpected error prevented the tag operation from succeeding"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:57
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:55
 msgid "Unit"
 msgstr ""
@@ -8104,7 +8093,6 @@ msgstr ""
 msgid "User Defined Extension"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:55
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:53
 msgid "Value"
 msgstr ""

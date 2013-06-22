@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-21 19:21-0500\n"
+"POT-Creation-Date: 2013-06-22 07:01-0500\n"
 "PO-Revision-Date: 2013-04-02 10:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -3150,7 +3150,6 @@ msgstr "Emplacement des données"
 msgid "Data was exported as tab delimited."
 msgstr "Les données ont été exportées comme tabulations séparées."
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:53
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:51
 msgid "Date"
 msgstr "Date"
@@ -3244,7 +3243,6 @@ msgid "Desert - Temperate"
 msgstr "Désert - Tempéré"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:329
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:84
 msgid "Desired Future Status"
 msgstr "État futur recherché"
 
@@ -3257,14 +3255,6 @@ msgstr ""
 "État futur recherché - Une mesure ou une valeur de classement d'un "
 "indicateur de l'Attribut Ecologique Clé que le projet veut atteindre à une "
 "date spécifique dans le futur. En général équivalent à un sous-but du projet."
-
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:91
-msgid "Desired Future Value"
-msgstr "Valeur future souhaitée"
-
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:117
-msgid "Desired Value/Status"
-msgstr "Valeur/État souhaité"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:73
 msgid "Detail activities, tasks, and responsibilities"
@@ -3557,7 +3547,7 @@ msgstr "Erreur lors de la création de : %s"
 msgid "Error Occurred During Sorting"
 msgstr "Une erreur s'est produite pendant le tri"
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:289
+#: Miradi/source/org/miradi/objects/Dashboard.java:290
 msgid "Error Retrieving Data"
 msgstr "Erreur dans la récupération des données"
 
@@ -8353,7 +8343,7 @@ msgstr ""
 msgid "Title|IUCN Redlist Species"
 msgstr "Liste rouge des espèces UICN"
 
-#: Miradi/source/org/miradi/dialogs/viability/AbstractIndicatorPropertiesPanel.java:79
+#: Miradi/source/org/miradi/dialogs/viability/AbstractIndicatorPropertiesPanel.java:78
 msgid "Title|Indicator Properties"
 msgstr "Propriétés de l'indicateur"
 
@@ -8613,7 +8603,6 @@ msgid "Unexpected error prevented the tag operation from succeeding"
 msgstr ""
 "Une erreur inattendue a empêché la bonne réussite de l'opération d'étiquette"
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:57
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:55
 msgid "Unit"
 msgstr ""
@@ -8684,7 +8673,6 @@ msgstr ""
 msgid "User Defined Extension"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:55
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:53
 msgid "Value"
 msgstr "Valeur"
@@ -30529,6 +30517,12 @@ msgid ""
 msgstr ""
 "Marin___Atlantique tropical occidental___Écorégion marine du versant nord-"
 "est du Brésil___Brésil"
+
+#~ msgid "Desired Future Value"
+#~ msgstr "Valeur future souhaitée"
+
+#~ msgid "Desired Value/Status"
+#~ msgstr "Valeur/État souhaité"
 
 #~ msgid "Action|Manage|Delete Measurement"
 #~ msgstr "Supprimer Mesure"

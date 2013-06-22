@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-21 19:21-0500\n"
+"POT-Creation-Date: 2013-06-22 07:01-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -3089,7 +3089,6 @@ msgstr "Мэдээллийн байршил"
 msgid "Data was exported as tab delimited."
 msgstr "Мэдээлэл таб-тай экспортлогдсон"
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:53
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:51
 msgid "Date"
 msgstr "Огноо"
@@ -3183,7 +3182,6 @@ msgid "Desert - Temperate"
 msgstr "Цөл - Сэрүүн"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:329
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:84
 msgid "Desired Future Status"
 msgstr "Хүсэж буй ирээдүйн статус"
 
@@ -3197,14 +3195,6 @@ msgstr ""
 "хүрэхээр төлөвлөсөн экологийн гол шинж чанаруудыг тогтоох шалгуур "
 "үзүүлэлтийн ач холбогдлын хэмжээ эсвэл үнэлгээ. Ерөнхийдөө төслийн дэд "
 "зорилготой адил."
-
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:91
-msgid "Desired Future Value"
-msgstr "Хүсэж буй ирээдүйн үнэлэмж"
-
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:117
-msgid "Desired Value/Status"
-msgstr "Хүсэж буй Үнэлэмж/Статус"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:73
 msgid "Detail activities, tasks, and responsibilities"
@@ -3495,7 +3485,7 @@ msgstr "Алдаа үүсгэх: %s"
 msgid "Error Occurred During Sorting"
 msgstr "Ангилахад алдаа гарлаа"
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:289
+#: Miradi/source/org/miradi/objects/Dashboard.java:290
 msgid "Error Retrieving Data"
 msgstr ""
 
@@ -8172,7 +8162,7 @@ msgstr ""
 msgid "Title|IUCN Redlist Species"
 msgstr "Гарчиг|IUCN-ны Улаан Жагсаалтанд орсон Төрөл Зүйлүүд "
 
-#: Miradi/source/org/miradi/dialogs/viability/AbstractIndicatorPropertiesPanel.java:79
+#: Miradi/source/org/miradi/dialogs/viability/AbstractIndicatorPropertiesPanel.java:78
 msgid "Title|Indicator Properties"
 msgstr "Гарчиг|Шалгуур үзүүлэлтийн Properties"
 
@@ -8431,7 +8421,6 @@ msgstr "Хэлний багцыг суулгахад гэнэтийн алдаа
 msgid "Unexpected error prevented the tag operation from succeeding"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:57
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:55
 msgid "Unit"
 msgstr ""
@@ -8502,7 +8491,6 @@ msgstr ""
 msgid "User Defined Extension"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:55
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:53
 msgid "Value"
 msgstr "Үнэ цэнэ"
@@ -31715,6 +31703,12 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "Desired Future Value"
+#~ msgstr "Хүсэж буй ирээдүйн үнэлэмж"
+
+#~ msgid "Desired Value/Status"
+#~ msgstr "Хүсэж буй Үнэлэмж/Статус"
 
 #~ msgid "Action|Manage|Delete Measurement"
 #~ msgstr "Арга хэмжээ|Удирдах|Авах арга хэмжээг устгах"
