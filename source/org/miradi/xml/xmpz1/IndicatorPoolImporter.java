@@ -20,12 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz1;
 
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.CodeToUserStringMap;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Indicator;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.TaskSchema;
@@ -49,11 +51,7 @@ public class IndicatorPoolImporter extends AbstractBaseObjectPoolImporter
 		importField(node, destinationRef, Indicator.TAG_DETAIL);
 		importField(node, destinationRef, Indicator.TAG_COMMENTS);
 		importCodeField(node, destinationRef, Indicator.TAG_PRIORITY, new PriorityRatingQuestion());
-		importField(node, destinationRef, Indicator.TAG_FUTURE_STATUS_DATE);
-		importField(node, destinationRef, Indicator.TAG_FUTURE_STATUS_SUMMARY);
-		importCodeField(node, destinationRef, Indicator.TAG_FUTURE_STATUS_RATING, new StatusQuestion());
-		importField(node, destinationRef, Indicator.TAG_FUTURE_STATUS_DETAIL);
-		importField(node, destinationRef, Indicator.TAG_FUTURE_STATUS_COMMENTS);
+		importFutureStatusData(node, destinationRef);
 		importProgressReportRefs(node, destinationRef);
 		importExpenseAssignmentRefs(node, destinationRef);
 		importResourceAssignmentIds(node, destinationRef);
@@ -62,6 +60,23 @@ public class IndicatorPoolImporter extends AbstractBaseObjectPoolImporter
 		importThresholds(node, destinationRef);
 		importCodeField(node, destinationRef, Indicator.TAG_RATING_SOURCE, getProject().getQuestion(RatingSourceQuestion.class));
 		importField(node, destinationRef, Indicator.TAG_VIABILITY_RATINGS_COMMENTS);
+	}
+
+	private void importFutureStatusData(Node node, ORef destinationRef) throws Exception
+	{
+		ORef newFutureStatusRef = getProject().createObject(FutureStatusSchema.getObjectType(), getProject().getNormalIdAssigner().takeNextId());
+		getProject().setObjectData(destinationRef, Indicator.TAG_FUTURE_STATUS_REFS, new ORefList(newFutureStatusRef).toString());
+		
+		getImporter().importField(node, "IndicatorFutureStatusDate", newFutureStatusRef, FutureStatusSchema.TAG_FUTURE_STATUS_DATE);
+		getImporter().importField(node, "IndicatorFutureStatusSummary", newFutureStatusRef, FutureStatusSchema.TAG_FUTURE_STATUS_SUMMARY);
+		getImporter().importField(node, "IndicatorFutureStatusComments", newFutureStatusRef, FutureStatusSchema.TAG_FUTURE_STATUS_COMMENTS);
+		getImporter().importField(node, "IndicatorFutureStatusDetails", newFutureStatusRef, FutureStatusSchema.TAG_FUTURE_STATUS_DETAIL);
+		
+		final StatusQuestion question = new StatusQuestion();
+		String importedReadableCode = getImporter().getPathData(node, new String[]{"IndicatorFutureStatusRating", });
+		String trimmedImportedReadbleCode = importedReadableCode.trim();
+		String internalCode = question.convertToInternalCode(trimmedImportedReadbleCode);		
+		getImporter().setData(newFutureStatusRef, FutureStatusSchema.TAG_FUTURE_STATUS_RATING, internalCode);
 	}
 
 	private void importThresholds(Node indicatorNode, ORef destinationRef) throws Exception

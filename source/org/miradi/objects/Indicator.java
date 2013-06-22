@@ -237,7 +237,17 @@ public class Indicator extends BaseObject
 	
 	public ORef getLatestMeasurementRef()
 	{
-		BaseObject latestObject = getLatestObject(getObjectManager(), getMeasurementRefs(), Measurement.TAG_DATE);
+		return getSafeLatestObject(getMeasurementRefs(), Measurement.TAG_DATE);
+	}
+
+	public ORef getLatestFutureStatusRef()
+	{
+		return getSafeLatestObject(getFutureStatusRefs(), FutureStatusSchema.TAG_FUTURE_STATUS_DATE);
+	}
+	
+	private ORef getSafeLatestObject(final ORefList refs, final String dateTag)
+	{
+		BaseObject latestObject = getLatestObject(getObjectManager(), refs, dateTag);
 		if (latestObject == null)
 			return ORef.INVALID;
 		

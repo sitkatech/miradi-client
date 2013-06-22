@@ -22,6 +22,7 @@ package org.miradi.xml.wcs;
 
 import java.util.HashMap;
 
+import org.miradi.mpfMigrations.IndicatorFutureStatusTagsToFutureStatusTagsMap;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
@@ -153,14 +154,14 @@ public class TagToElementNameMap implements Xmpz1XmlConstants
 		indicatorMap.put(Indicator.TAG_LABEL, "Name");
 		indicatorMap.put(Indicator.TAG_SHORT_LABEL, "Id");
 		indicatorMap.put(Indicator.TAG_DETAIL, DETAILS);
-		indicatorMap.put(Indicator.TAG_FUTURE_STATUS_DETAIL, "FutureStatusDetails");
+		indicatorMap.put(IndicatorFutureStatusTagsToFutureStatusTagsMap.TAG_INDICATOR_FUTURE_STATUS_DETAIL, "FutureStatusDetails");
 		indicatorMap.put(Indicator.TAG_METHOD_IDS, Xmpz1XmlConstants.METHOD_IDS);
-		indicatorMap.put(Indicator.TAG_FUTURE_STATUS_COMMENTS, "FutureStatusComments");
+		indicatorMap.put(IndicatorFutureStatusTagsToFutureStatusTagsMap.TAG_INDICATOR_FUTURE_STATUS_COMMENTS, "FutureStatusComments");
 		indicatorMap.put(Indicator.TAG_VIABILITY_RATINGS_COMMENTS, "ViabilityRatingsComments");
 		
 		return indicatorMap;
 	}
-
+	
 	private HashMap<String, String> createObjectiveMap()
 	{
 		HashMap<String, String> objectiveMap = new HashMap<String, String>();
