@@ -26,7 +26,6 @@ import java.util.Comparator;
 import java.util.Vector;
 
 import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
-import org.miradi.dialogs.planning.treenodes.UnspecifiedBaseObject;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -34,16 +33,13 @@ import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FutureStatus;
-import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
-import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
-import org.miradi.utils.CodeList;
 
 public class ViabilityTreeRebuilder extends AbstractTreeRebuilder
 {
@@ -77,9 +73,6 @@ public class ViabilityTreeRebuilder extends AbstractTreeRebuilder
 		if (FutureStatus.is(parentRef))
 			return noChildren;
 		
-		if(Goal.is(parentRef))
-			return noChildren;
-		
 		if(parentRef.isInvalid())
 			throw new RuntimeException("Attempted to getChildRefs for null parent: " + parentRef.getObjectType());
 		
@@ -109,7 +102,6 @@ public class ViabilityTreeRebuilder extends AbstractTreeRebuilder
 		Indicator indicator = Indicator.find(getProject(), parentRef);
 		childRefs.addAll(getSortedByDateMeasurementRefs(indicator));
 		childRefs.addAll(indicator.getFutureStatusRefs());
-		childRefs.add(new UnspecifiedBaseObject(getProject().getObjectManager(), GoalSchema.getObjectType(), GoalSchema.OBJECT_NAME));
 		
 		return childRefs;
 	}
@@ -155,28 +147,6 @@ public class ViabilityTreeRebuilder extends AbstractTreeRebuilder
 	@Override
 	protected void addChildrenOfNodeToList(Vector<AbstractPlanningTreeNode> destination, AbstractPlanningTreeNode otherNode)
 	{
-	}
-	
-	@Override
-	protected boolean isVisible(CodeList objectTypesToShow, AbstractPlanningTreeNode child)
-	{
-		if (isFutureStatusNode(child))
-			return true;
-		
-		if (isNonFutureStatusGoal(child))
-			return false;
-		
-		return objectTypesToShow.contains(child.getObjectTypeName());
-	}
-
-	public boolean isNonFutureStatusGoal(AbstractPlanningTreeNode child)
-	{
-		return Goal.is(child.getObject());
-	}
-
-	public boolean isFutureStatusNode(AbstractPlanningTreeNode child)
-	{
-		return child.getObjectReference().isInvalid() && Goal.is(child.getType());
 	}
 	
 	private class KeaComparator implements Comparator<KeyEcologicalAttribute>
