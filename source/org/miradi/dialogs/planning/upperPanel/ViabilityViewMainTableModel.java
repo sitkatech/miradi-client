@@ -26,12 +26,9 @@ import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.CodeToUserStringMap;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.FutureStatus;
-import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
@@ -84,7 +81,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if (Measurement.is(baseObject))
 			return isMeasurementCellEditable(row, column);
 		
-		if (Goal.is(baseObject))
+		if (FutureStatus.is(baseObject))
 			return isFutureStatusCellEditable(row, column);
 		
 		return false;
@@ -250,7 +247,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		{
 			setMeasurementValue(baseObject, value, row, column);
 		}
-		if (Goal.is(baseObject))
+		if (FutureStatus.is(baseObject))
 		{
 			setFutureStatusValue(baseObject, value, row, column);
 		}
@@ -280,10 +277,10 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	{
 		if (isThresholdColumn(column))
 		{
-			ORef indicatorRef = getIndicatorRefInSelectionHierarchy(row, column);
-			setValueUsingCommand(indicatorRef, Indicator.TAG_FUTURE_STATUS_SUMMARY, value.toString());
+			setValueUsingCommand(baseObject.getRef(), FutureStatusSchema.TAG_FUTURE_STATUS_SUMMARY, value.toString());
+			
 			final String columnTag = COLUMN_TAGS_FOR_FUTURE_RESULTS[column];
-			setValueUsingCommand(indicatorRef, Indicator.TAG_FUTURE_STATUS_RATING, columnTag);
+			setValueUsingCommand(baseObject.getRef(), FutureStatusSchema.TAG_FUTURE_STATUS_RATING, columnTag);
 		}
 	}
 	
@@ -412,13 +409,6 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		String tag = COLUMN_TAGS_FOR_FUTURE_RESULTS[column];
 		
 		return getStatusColumnChoiceItem(tag, baseObject, FutureStatusSchema.TAG_FUTURE_STATUS_SUMMARY, FutureStatusSchema.TAG_FUTURE_STATUS_RATING, IconManager.getGoalIcon());
-	}
-
-	private ORef getIndicatorRefInSelectionHierarchy(int row, int column)
-	{
-		ORefList objectHiearchy = getRowColumnObjectProvider().getObjectHiearchy(row, column);
-		
-		return objectHiearchy.getRefForType(IndicatorSchema.getObjectType());
 	}
 
 	private ChoiceItem getStatusColumnChoiceItem(String tag, BaseObject baseObject, final String summaryTag, final String statusTag, final Icon icon)
