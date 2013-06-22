@@ -44,6 +44,7 @@ import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DashboardSchema;
+import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
@@ -456,16 +457,30 @@ public class Dashboard extends BaseObject
 
 	private boolean hasAnyFutureStatusInformation(Indicator indicator)
 	{
+		ORefList futureStatusRefs = indicator.getFutureStatusRefs();
+		for(ORef futureStatusRef : futureStatusRefs)
+		{
+			FutureStatus futureStatus = FutureStatus.find(getProject(), futureStatusRef);
+			if (doesFutureStatusHaveData(futureStatus))
+				return true;
+		}
+		
+		return false;
+	}
+
+	private boolean doesFutureStatusHaveData(FutureStatus futureStatus)
+	{
 		String[] futureStatusTags = {
-			Indicator.TAG_FUTURE_STATUS_COMMENTS,
-			Indicator.TAG_FUTURE_STATUS_DATE,
-			Indicator.TAG_FUTURE_STATUS_DETAIL,
-			Indicator.TAG_FUTURE_STATUS_RATING,
-			Indicator.TAG_FUTURE_STATUS_SUMMARY,
+			FutureStatusSchema.TAG_FUTURE_STATUS_COMMENTS,
+			FutureStatusSchema.TAG_FUTURE_STATUS_DATE,
+			FutureStatusSchema.TAG_FUTURE_STATUS_DETAIL,
+			FutureStatusSchema.TAG_FUTURE_STATUS_RATING,
+			FutureStatusSchema.TAG_FUTURE_STATUS_SUMMARY,
 		};
+		
 		for(String tag : futureStatusTags)
 		{
-			if(!indicator.getField(tag).isEmpty())
+			if(!futureStatus.getField(tag).isEmpty())
 				return true;
 		}
 		
