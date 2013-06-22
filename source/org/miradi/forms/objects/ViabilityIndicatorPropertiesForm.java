@@ -27,7 +27,6 @@ public class ViabilityIndicatorPropertiesForm extends PanelHolderSpec
 	{
 		addPanel(new IndicatorSubForm());
 		addPanel(new IndicatorViabilityRatingsSubForm());
-		addPanel(new IndicatorFutureStatusSubForm());
 		addPanel(new IndicatorMonitoringPlanSubForm());
 		//TODO need to put this back in some day
 		//addAllPanels(new ForecastSubForm(Indicator.getObjectType()));
