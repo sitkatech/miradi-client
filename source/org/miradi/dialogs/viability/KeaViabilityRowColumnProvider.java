@@ -22,7 +22,6 @@ package org.miradi.dialogs.viability;
 
 import org.miradi.project.Project;
 import org.miradi.schemas.FutureStatusSchema;
-import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
@@ -45,7 +44,6 @@ public class KeaViabilityRowColumnProvider extends AbstractViabilityRowColumnPro
 				KeyEcologicalAttributeSchema.OBJECT_NAME,
 				IndicatorSchema.OBJECT_NAME,
 				MeasurementSchema.OBJECT_NAME,
-				GoalSchema.OBJECT_NAME,
 				FutureStatusSchema.OBJECT_NAME,
 		});
 	}
