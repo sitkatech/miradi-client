@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-21 18:16-0500\n"
+"POT-Creation-Date: 2013-06-21 19:21-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -8850,7 +8850,7 @@ msgstr "[НЕ ВКАЗАНИЙ]"
 msgid "[New Results Chain]"
 msgstr "[Новий ланцюг результатів]"
 
-#: Miradi/source/org/miradi/project/Project.java:980
+#: Miradi/source/org/miradi/project/Project.java:975
 msgid "[No Project]"
 msgstr "[Проект не вибраний]"
 
@@ -8872,10 +8872,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/NeverShowAgainPanel.java:48
 msgid "it will not be shown. Uncheck it to have Miradi "
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/ViabilityFutureStatusNode.java:46
-msgid "label|Error"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:96
