@@ -27,6 +27,7 @@ import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.FutureStatus;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.project.Project;
@@ -150,8 +151,14 @@ public class ViabilityIndicatorNode extends TreeTableNode
 			measurementAndFutureStatusObjects.add(new ViabilityMeasurementNode(this, measurement));
 		}
 
-		Collections.sort(measurementAndFutureStatusObjects, new MeasurementNodeDateComparator());		
-		measurementAndFutureStatusObjects.add(new ViabilityFutureStatusNode(this));
+		Collections.sort(measurementAndFutureStatusObjects, new MeasurementNodeDateComparator());
+		ORefList futureStatusRefs = indicator.getFutureStatusRefs();
+		for(ORef futureStatusRef : futureStatusRefs)
+		{
+			FutureStatus futureStatus = FutureStatus.find(project, futureStatusRef);
+			measurementAndFutureStatusObjects.add(new ViabilityFutureStatusNode(this, futureStatus));	
+		}
+		
 		measurements = measurementAndFutureStatusObjects.toArray(new TreeTableNode[0]);
 	}
 	
