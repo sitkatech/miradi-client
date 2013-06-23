@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-22 07:01-0500\n"
+"POT-Creation-Date: 2013-06-23 16:16-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -3672,7 +3672,7 @@ msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr "Il nome del file  deve contenere solo caratteri alfanumerici e/o '_' ."
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:97
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:198
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:199
 msgid "File to import does not validate."
 msgstr "Il file da importare non è valido."
 
@@ -4060,7 +4060,7 @@ msgstr "Nascondi le colonne trimestre"
 msgid "High"
 msgstr "Alto"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1428
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1439
 msgid "High/Very-High Threat Chains"
 msgstr "Alta/molto-alta Catene di Minacce"
 
@@ -4275,7 +4275,7 @@ msgstr ""
 "coerente e sensibile. In Miradi, un Indicatore è rappresentato da un "
 "triangolo viola."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1326
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1337
 msgid "Indicator Holder"
 msgstr "Indicatore (Indicator holder)"
 
@@ -4283,7 +4283,7 @@ msgstr "Indicatore (Indicator holder)"
 msgid "Indicator Relevancy Panel"
 msgstr "Pannello della pertinenza degli Indicatori"
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:161
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:163
 msgid "Indicator does not have a direct/indirect factor parent. "
 msgstr "L'indicatore non ha un fattore precursore diretto/indiretto."
 
@@ -4789,7 +4789,7 @@ msgstr "Localizzazione"
 msgid "Low"
 msgstr "Basso"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1429
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1440
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Catene della Minaccia Bassa/Media/Non Valutata"
 
@@ -5433,7 +5433,7 @@ msgstr ""
 "Minaccia critica. In Miradi, un Obiettivo Gestionale è rappresentato da un "
 "piccolo rettangolo blu."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1320
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1331
 msgid "Objective Holder"
 msgstr "Obiettivo Gestionale (Objective Holder)"
 
@@ -5618,7 +5618,7 @@ msgstr "Rosa"
 msgid "Place scope on diagram"
 msgstr "Inserisci l'Ambito geografico nel diagramma"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1316
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1327
 msgid "Placeholder - From ConPro"
 msgstr "Segnaposto - Da ConPro"
 
@@ -5835,7 +5835,7 @@ msgstr "Consulente di progetto"
 msgid "Project Corruption Detected"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:929
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:933
 msgid "Project Description:"
 msgstr "Descrizione del Progetto:"
 
@@ -6443,7 +6443,7 @@ msgstr "Vitalità semplificata"
 msgid "Single Selection"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:934
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:938
 msgid "Site/Scope Description:"
 msgstr "Descrizione del Sito/Ambito geografico:"
 
@@ -7644,7 +7644,7 @@ msgstr "Tan"
 
 #: Miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:71
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:360
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:362
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:53
 msgid "Target"
 msgstr "Target di Conservazione"
@@ -8050,7 +8050,7 @@ msgstr ""
 msgid "This will replace the existing file."
 msgstr "Questo sostituirà il file esistente."
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:385
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:387
 #: Miradi/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:62
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:35
 msgid "Threat"
