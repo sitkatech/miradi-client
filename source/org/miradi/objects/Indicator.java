@@ -33,6 +33,7 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.GoalSchema;
@@ -295,7 +296,13 @@ public class Indicator extends BaseObject
 	
 	public String getFutureStatusRating()
 	{
-		return getData(TAG_FUTURE_STATUS_RATING);
+		final ORef latestFutureStatusRef = getLatestFutureStatusRef();
+		if (latestFutureStatusRef.isInvalid())
+			return StatusQuestion.UNSPECIFIED;
+		
+		FutureStatus futureStatus = FutureStatus.find(getProject(), latestFutureStatusRef);
+		
+		return futureStatus.getData(FutureStatusSchema.TAG_FUTURE_STATUS_RATING);
 	}
 	
 	public ORefList getRelevantDesireRefs() throws Exception

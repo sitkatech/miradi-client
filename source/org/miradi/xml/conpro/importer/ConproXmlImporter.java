@@ -48,6 +48,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.BooleanData;
+import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -55,7 +56,6 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.StringRefMap;
-import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
@@ -105,6 +105,7 @@ import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FactorLinkSchema;
+import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
@@ -556,10 +557,18 @@ public class ConproXmlImporter implements ConProMiradiXml
 			importField(viabilityAssessmentNode, KEA_AND_INDICATOR_COMMENT, indicatorRef, Indicator.TAG_DETAIL);
 			importField(viabilityAssessmentNode, INDICATOR_RATING_COMMENT, indicatorRef, Indicator.TAG_VIABILITY_RATINGS_COMMENTS);
 			
-			importCodeField(viabilityAssessmentNode, DESIRED_VIABILITY_RATING, indicatorRef, Indicator.TAG_FUTURE_STATUS_RATING, getCodeMapHelper().getConProToMiradiRankingMap());
-			importField(viabilityAssessmentNode, DESIRED_RATING_DATE, indicatorRef, Indicator.TAG_FUTURE_STATUS_DATE);
-			importField(viabilityAssessmentNode, DESIRED_RATING_COMMENT, indicatorRef, Indicator.TAG_FUTURE_STATUS_COMMENTS);
+			importFutureStatusValues(viabilityAssessmentNode, indicatorRef);
 		}
+	}
+
+	private void importFutureStatusValues(Node viabilityAssessmentNode, ORef indicatorRef) throws Exception
+	{
+		ORef futureStatusRef = getProject().createObject(FutureStatusSchema.getObjectType());
+		setData(indicatorRef, Indicator.TAG_FUTURE_STATUS_REFS, new ORefList(futureStatusRef));
+		
+		importCodeField(viabilityAssessmentNode, DESIRED_VIABILITY_RATING, futureStatusRef, FutureStatusSchema.TAG_FUTURE_STATUS_RATING, getCodeMapHelper().getConProToMiradiRankingMap());
+		importField(viabilityAssessmentNode, DESIRED_RATING_DATE, futureStatusRef, FutureStatusSchema.TAG_FUTURE_STATUS_DATE);
+		importField(viabilityAssessmentNode, DESIRED_RATING_COMMENT, futureStatusRef, FutureStatusSchema.TAG_FUTURE_STATUS_COMMENTS);
 	}
 
 	private void importIndicatorThresholds(Node viabilityAssessmentNode, ORef indicatorRef) throws Exception
