@@ -47,6 +47,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Desire;
 import org.miradi.objects.Factor;
+import org.miradi.objects.FutureStatus;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
@@ -76,6 +77,7 @@ import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StrategyClassificationQuestion;
 import org.miradi.questions.TncOperatingUnitsQuestion;
+import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.schemas.ValueOptionSchema;
@@ -573,10 +575,12 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		
 		writeOptionalRankingCodeElement(out, DESIRED_VIABILITY_RATING, indicator.getFutureStatusRating());
 		writeCodeElement(out, SOURCE_INDICATOR_RATINGS, indicator.getData(Indicator.TAG_RATING_SOURCE), getCodeMapHelper().getMiradiToConProIndicatorRatingSourceMap());
-		writeOptionalElement(out, DESIRED_RATING_DATE,  indicator, Indicator.TAG_FUTURE_STATUS_DATE);
+		ORef latestFutureStatuRef = indicator.getLatestFutureStatusRef();
+		FutureStatus latestFutureStatus = FutureStatus.find(getProject(), latestFutureStatuRef);
+		writeOptionalElement(out, DESIRED_RATING_DATE,  latestFutureStatus, FutureStatusSchema.TAG_FUTURE_STATUS_DATE);
 		writeOptionalElement(out, KEA_AND_INDICATOR_COMMENT, indicator, Indicator.TAG_DETAIL);
 		writeOptionalElement(out, INDICATOR_RATING_COMMENT, indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENTS);
-		writeOptionalElement(out, DESIRED_RATING_COMMENT, indicator, Indicator.TAG_FUTURE_STATUS_COMMENTS);
+		writeOptionalElement(out, DESIRED_RATING_COMMENT, latestFutureStatus, FutureStatusSchema.TAG_FUTURE_STATUS_COMMENTS);
 			
 		writeEndElement(out, VIABILITY_ASSESSMENT);
 	}
