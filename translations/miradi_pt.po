@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-24 11:46-0500\n"
+"POT-Creation-Date: 2013-06-24 15:01-0500\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -1923,10 +1923,6 @@ msgstr "Criar..."
 #: Miradi/source/org/miradi/actions/ActionExpandToFutureStatus.java:36
 msgid "Action|Table|Expand To Future Status"
 msgstr ""
-
-#: Miradi/source/org/miradi/actions/ActionExpandToGoal.java:36
-msgid "Action|Table|Expand To Goal"
-msgstr "Expandir ao Objetivo"
 
 #: Miradi/source/org/miradi/actions/ActionExpandToHumanWelfareTarget.java:36
 msgid "Action|Table|Expand To Human Wellbeing Target"
@@ -3971,7 +3967,7 @@ msgstr "Floresta - Subtropical/Tropical Pântano"
 msgid "Forest - Temperate"
 msgstr "Floresta - Temperada"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:487
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:484
 msgid "Found Corrupted Data:"
 msgstr "Dados Corrompidos Encontrados:"
 
@@ -5202,11 +5198,11 @@ msgstr "Editar"
 msgid "MenuBar|File"
 msgstr "Arquivo"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:577
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:576
 msgid "MenuBar|Help"
 msgstr "Ajuda"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:509
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:508
 msgid "MenuBar|Step-by-Step"
 msgstr "Passo a Passo"
 
@@ -7321,10 +7317,6 @@ msgstr "Expandir Todas as Linhas de Arvore de Componentes ('Tree')"
 msgid "TT|Expand To Future Status"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionExpandToGoal.java:42
-msgid "TT|Expand To Goal"
-msgstr "Expandir ao Objetivo"
-
 #: Miradi/source/org/miradi/actions/ActionExpandToHumanWelfareTarget.java:42
 msgid "TT|Expand To Human Wellbeing Target"
 msgstr ""
@@ -8407,7 +8399,7 @@ msgstr "Erro"
 msgid "Title|Export Image Scale"
 msgstr "Exportar Escala de Imagem"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:975
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:972
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Propriedades de Fatores"
@@ -8728,7 +8720,7 @@ msgstr ""
 msgid "Unknown code: "
 msgstr "Código Desconhecido"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:414
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:411
 msgid "Unknown error displaying diagram"
 msgstr "Erro desconhecido exibindo o diagrama"
 
@@ -27707,6 +27699,12 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid "Action|Table|Expand To Goal"
+#~ msgstr "Expandir ao Objetivo"
+
+#~ msgid "TT|Expand To Goal"
+#~ msgstr "Expandir ao Objetivo"
 
 #~ msgid "FieldLabel|8.FutureStatusDetail|Details"
 #~ msgstr "Detalhes"
