@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-24 11:46-0500\n"
+"POT-Creation-Date: 2013-06-24 15:01-0500\n"
 "PO-Revision-Date: 2011-02-15 16:35-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1721,10 +1721,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExpandToFutureStatus.java:36
 msgid "Action|Table|Expand To Future Status"
-msgstr ""
-
-#: Miradi/source/org/miradi/actions/ActionExpandToGoal.java:36
-msgid "Action|Table|Expand To Goal"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExpandToHumanWelfareTarget.java:36
@@ -3617,7 +3613,7 @@ msgstr ""
 msgid "Forest - Temperate"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:487
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:484
 msgid "Found Corrupted Data:"
 msgstr ""
 
@@ -4781,11 +4777,11 @@ msgstr ""
 msgid "MenuBar|File"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:577
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:576
 msgid "MenuBar|Help"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:509
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:508
 msgid "MenuBar|Step-by-Step"
 msgstr ""
 
@@ -6757,10 +6753,6 @@ msgstr ""
 msgid "TT|Expand To Future Status"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionExpandToGoal.java:42
-msgid "TT|Expand To Goal"
-msgstr ""
-
 #: Miradi/source/org/miradi/actions/ActionExpandToHumanWelfareTarget.java:42
 msgid "TT|Expand To Human Wellbeing Target"
 msgstr ""
@@ -7741,7 +7733,7 @@ msgstr ""
 msgid "Title|Export Image Scale"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:975
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:972
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr ""
@@ -8049,7 +8041,7 @@ msgstr ""
 msgid "Unknown code: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:414
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:411
 msgid "Unknown error displaying diagram"
 msgstr ""
 
