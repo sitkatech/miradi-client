@@ -63,6 +63,7 @@ import org.miradi.dialogs.base.ProgressDialog;
 import org.miradi.dialogs.notify.NotifyDialog;
 import org.miradi.dialogs.notify.NotifyDialogTemplateFactory;
 import org.miradi.exceptions.FutureSchemaVersionException;
+import org.miradi.exceptions.NotMiradiProjectFileException;
 import org.miradi.exceptions.OldSchemaVersionException;
 import org.miradi.exceptions.ProjectFileTooNewException;
 import org.miradi.exceptions.ProjectFileTooOldException;
@@ -80,7 +81,6 @@ import org.miradi.objecthelpers.TwoLevelEntry;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TableSettings;
-import org.miradi.project.AbstractProjectLoader;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectLoader;
 import org.miradi.project.ProjectRepairer;
@@ -608,7 +608,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		{
 			EAM.errorDialog(EAM.text("That project is in use by another copy of this application"));
 		}
-		catch(AbstractProjectLoader.NotMiradiProjectFileException e)
+		catch(NotMiradiProjectFileException e)
 		{
 			EAM.errorDialog(EAM.text("That file is not a valid Miradi project"));
 		}

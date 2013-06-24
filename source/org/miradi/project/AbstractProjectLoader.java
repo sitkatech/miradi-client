@@ -25,6 +25,7 @@ import java.util.HashMap;
 import java.util.StringTokenizer;
 
 import org.martus.util.UnicodeReader;
+import org.miradi.exceptions.NotMiradiProjectFileException;
 import org.miradi.exceptions.ProjectFileTooNewException;
 import org.miradi.exceptions.ProjectFileTooOldException;
 import org.miradi.ids.BaseId;
@@ -294,10 +295,6 @@ abstract public class AbstractProjectLoader
 		return reader;
 	}
 
-	public static class NotMiradiProjectFileException extends Exception
-	{
-	}
-	
 	abstract protected void setLastModifiedTime(long lastModified);
 	
 	abstract protected void saveSimpleThreatRatingBundle(ThreatRatingBundle bundle) throws Exception;
