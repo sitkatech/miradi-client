@@ -572,6 +572,8 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 				return;
 			}
 
+			validateProjectVersion(projectFile);
+			possiblyMigrate(projectFile);
 			createOrOpenProjectInBackground(projectFile);
 			projectSaver.startSaving(projectFile);
 			
@@ -685,9 +687,6 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 
 	private void createOrOpenProjectInBackground(File projectFile) throws Exception
 	{
-		validateProjectVersion(projectFile);
-		possiblyMigrate(projectFile);
-		
 		String title = EAM.text("Create Project");
 		if(projectFile.exists())
 			title = EAM.text("Open Project");
