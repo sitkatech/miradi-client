@@ -573,16 +573,25 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeThreshold(out, INDICATOR_DESCRIPTION_GOOD, indicator, StatusQuestion.GOOD);
 		writeThreshold(out, INDICATOR_DESCRIPTION_VERY_GOOD, indicator, StatusQuestion.VERY_GOOD);
 		
-		writeOptionalRankingCodeElement(out, DESIRED_VIABILITY_RATING, indicator.getFutureStatusRating());
+		
 		writeCodeElement(out, SOURCE_INDICATOR_RATINGS, indicator.getData(Indicator.TAG_RATING_SOURCE), getCodeMapHelper().getMiradiToConProIndicatorRatingSourceMap());
-		ORef latestFutureStatuRef = indicator.getLatestFutureStatusRef();
-		FutureStatus latestFutureStatus = FutureStatus.find(getProject(), latestFutureStatuRef);
-		writeOptionalElement(out, DESIRED_RATING_DATE,  latestFutureStatus, FutureStatusSchema.TAG_FUTURE_STATUS_DATE);
+		exportFutureStatusValues(out, indicator);
 		writeOptionalElement(out, KEA_AND_INDICATOR_COMMENT, indicator, Indicator.TAG_DETAIL);
 		writeOptionalElement(out, INDICATOR_RATING_COMMENT, indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENTS);
-		writeOptionalElement(out, DESIRED_RATING_COMMENT, latestFutureStatus, FutureStatusSchema.TAG_FUTURE_STATUS_COMMENTS);
+		
 			
 		writeEndElement(out, VIABILITY_ASSESSMENT);
+	}
+
+	public void exportFutureStatusValues(UnicodeWriter out, Indicator indicator) throws Exception
+	{
+		ORef latestFutureStatuRef = indicator.getLatestFutureStatusRef();
+		if (latestFutureStatuRef.isInvalid())
+			return;
+		FutureStatus latestFutureStatus = FutureStatus.find(getProject(), latestFutureStatuRef);
+		writeOptionalRankingCodeElement(out, DESIRED_VIABILITY_RATING, indicator.getFutureStatusRating());
+		writeOptionalElement(out, DESIRED_RATING_DATE,  latestFutureStatus, FutureStatusSchema.TAG_FUTURE_STATUS_DATE);
+		writeOptionalElement(out, DESIRED_RATING_COMMENT, latestFutureStatus, FutureStatusSchema.TAG_FUTURE_STATUS_COMMENTS);
 	}
 
 	private void writeThreshold(UnicodeWriter out, String elementName, Indicator indicator, String threshold) throws Exception
