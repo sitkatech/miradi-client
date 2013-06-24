@@ -51,6 +51,7 @@ public class MigrationManager
 	
 	public String migrate(String mpfAsString) throws Exception
 	{
+		//FIXME: Migrate needs to perform the correct migration(s), given the mpf version
 		RawProject rawProject = RawProjectLoader.loadProject(new UnicodeStringReader(mpfAsString));
 		final RawProject migratedPools = IndicatorFutureStatusDataToNewFutureStatusTypeMigration.migrate(rawProject);
 
