@@ -458,7 +458,11 @@ public class EAM
 	{
 		return JOptionPane.showOptionDialog(getMainWindow(), text, title, JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, buttonLabels, null);
 	}
-
+	
+	public static int confirmYesNoDialog(String title, String message)
+	{
+		return JOptionPane.showConfirmDialog(getMainWindow(), message, title, JOptionPane.YES_NO_OPTION);
+	}
 	
 	public static void okDialog(String title, String[] body)
 	{
