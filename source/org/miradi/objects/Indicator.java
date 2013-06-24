@@ -53,7 +53,12 @@ public class Indicator extends BaseObject
 {
 	public Indicator(final ObjectManager objectManager, final IndicatorId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		this(objectManager, idToUse, createSchema());
+	}
+
+	protected Indicator(ObjectManager objectManager, IndicatorId idToUse, IndicatorSchema indicatorSchema)
+	{
+		super(objectManager, idToUse, indicatorSchema);
 	}
 
 	public static IndicatorSchema createSchema()
@@ -395,11 +400,6 @@ public class Indicator extends BaseObject
 	public static final String TAG_VIABILITY_RATINGS_COMMENTS = "ViabilityRatingsComment";
 	public static final String TAG_FUTURE_STATUS_REFS = "FutureStatusRefs";
 
-	public static final String TAG_FUTURE_STATUS_RATING  = "FutureStatusRating";
-	public static final String TAG_FUTURE_STATUS_DATE = "FutureStatusDate";
-	public static final String TAG_FUTURE_STATUS_SUMMARY = "FutureStatusSummary";
-	public static final String TAG_FUTURE_STATUS_DETAIL = "FutureStatusDetail";
-	public static final String TAG_FUTURE_STATUS_COMMENTS = "FutureStatusComment";
 	public static final String TAG_UNIT = "Unit";
 
 	public static final String PSEUDO_TAG_FACTOR = "PseudoTagFactor";

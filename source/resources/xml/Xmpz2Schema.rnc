@@ -1,7 +1,7 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Jun 13 12:02:29 EDT 2013 $
-# $LastChangedRevision: 226 $
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/226'
+# $LastChangedDate: Sun Jun 23 17:05:31 EDT 2013 $
+# $LastChangedRevision: 227 $
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/227'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -284,12 +284,7 @@ Indicator.element = element miradi:Indicator
   element miradi:IndicatorComments { formatted_text }? &
   element miradi:IndicatorDetails { formatted_text }? &
   element miradi:IndicatorExpenseAssignmentIds { ExpenseAssignmentId.element* }? &
-  element miradi:IndicatorFutureStatusComments { formatted_text }? &
-  element miradi:IndicatorFutureStatusDate { vocabulary_date }? &
-  element miradi:IndicatorFutureStatusDetails { formatted_text }? &
   element miradi:IndicatorFutureStatusIds { FutureStatusId.element* }? &
-  element miradi:IndicatorFutureStatusRating { vocabulary_status }? &
-  element miradi:IndicatorFutureStatusSummary { text }? &
   element miradi:IndicatorIdentifier { text }? &
   element miradi:IndicatorLeaderResourceId { ResourceId.element }? &
   element miradi:IndicatorMeasurementIds { MeasurementId.element* }? &
