@@ -20,10 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.viability.nodes;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Vector;
 
 import org.miradi.dialogs.treetables.TreeTableNode;
+import org.miradi.objecthelpers.BaseObjectByTagSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
@@ -37,7 +37,6 @@ import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.schemas.FutureStatusSchema;
-import org.miradi.utils.BaseObjectDateDescendingAndIdComparator;
 
 public class ViabilityIndicatorNode extends TreeTableNode
 {
@@ -171,20 +170,20 @@ public class ViabilityIndicatorNode extends TreeTableNode
 		measurements = measurementAndFutureStatusNodes.toArray(new TreeTableNode[0]);
 	}
 	
-	public static class MeasurementNodeDateComparator implements Comparator<TreeTableNode>
+	private static class MeasurementNodeDateComparator extends BaseObjectByTagSorter
 	{
-		public int compare(TreeTableNode rawNode1, TreeTableNode rawNode2)
+		public MeasurementNodeDateComparator()
 		{
-			return BaseObjectDateDescendingAndIdComparator.compare(rawNode1.getObject(), rawNode2.getObject(), Measurement.TAG_DATE);
+			super(Measurement.TAG_DATE);
 		}	
 	}
 	
-	public static class FutureStatusNodeDateComparator implements Comparator<TreeTableNode>
+	private static class FutureStatusNodeDateComparator extends BaseObjectByTagSorter
 	{
-		public int compare(TreeTableNode rawNode1, TreeTableNode rawNode2)
+		public FutureStatusNodeDateComparator()
 		{
-			return BaseObjectDateDescendingAndIdComparator.compare(rawNode1.getObject(), rawNode2.getObject(), FutureStatusSchema.TAG_FUTURE_STATUS_DATE);
-		}	
+			super(FutureStatusSchema.TAG_FUTURE_STATUS_DATE);
+		}
 	}
 	
 	public static final String[] COLUMN_TAGS = {
