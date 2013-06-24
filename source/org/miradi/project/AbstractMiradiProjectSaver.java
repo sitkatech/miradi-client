@@ -236,7 +236,8 @@ abstract public class AbstractMiradiProjectSaver
 	{
 		for (int type = ObjectType.FIRST_OBJECT_TYPE; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
 		{
-			writePoolForType(type);
+			ORefList refs = getSortedRefsForType(type);
+			writeObjects(refs);
 		}
 	}
 	
@@ -265,7 +266,7 @@ abstract public class AbstractMiradiProjectSaver
 		writeRefTagValue(UPDATE_OBJECT_CODE, ref, tag, data);
 	}
 
-	abstract protected void writePoolForType(int type) throws Exception;
+	abstract protected ORefList getSortedRefsForType(int type) throws Exception;
 	
 	abstract protected String getExceptionLog() throws Exception;
 

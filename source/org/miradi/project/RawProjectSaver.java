@@ -47,14 +47,13 @@ public class RawProjectSaver extends AbstractMiradiProjectSaver
 	}
 
 	@Override
-	protected void writePoolForType(int type) throws Exception
+	protected ORefList getSortedRefsForType(int type) throws Exception
 	{
 		RawPool rawPool = getRawProject().getRawPoolForType(type);
 		if (rawPool == null)
-			return;
+			return new ORefList();
 		
-		ORefList sortedObjectRefs = rawPool.getSortedReflist();
-		writeObjects(sortedObjectRefs);
+		return rawPool.getSortedReflist();
 	}
 
 	@Override

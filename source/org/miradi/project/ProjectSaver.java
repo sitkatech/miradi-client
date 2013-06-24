@@ -99,14 +99,13 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 	}
 
 	@Override
-	protected void writePoolForType(int type) throws Exception
+	protected ORefList getSortedRefsForType(int type) throws Exception
 	{
 		EAMObjectPool pool = getProject().getPool(type);
-		if (pool != null)
-		{
-			ORefList sortedObjectRefs = pool.getSortedRefList();
-			writeObjects(sortedObjectRefs);
-		}
+		if (pool == null)
+			return new ORefList();
+
+		return pool.getSortedRefList();
 	}
 
 	@Override
