@@ -576,8 +576,9 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			MigrationManager migrationManager = new MigrationManager();
 			if (migrationManager.needsMigration(projectFile))
 			{
+				final String[] labels = new String[]{EAM.text("Migrate"), EAM.text("Cancel")};
 				final String message = EAM.text("Project needs migration, do you want to continue?");
-				final int result = EAM.confirmYesNoDialog(EAM.text("Migration"), message);
+				final int result = EAM.confirmDialog(EAM.text("Migration"), message, labels);
 				if (result != 0)
 					return;
 			
