@@ -76,7 +76,6 @@ import org.miradi.actions.ActionDeleteTaggedObjectSet;
 import org.miradi.actions.ActionDiagramProperties;
 import org.miradi.actions.ActionEditTaggedObjectSet;
 import org.miradi.actions.ActionExpandToFutureStatus;
-import org.miradi.actions.ActionExpandToGoal;
 import org.miradi.actions.ActionExpandToIndicator;
 import org.miradi.actions.ActionExpandToMeasurement;
 import org.miradi.actions.ActionExpandToMenu;
@@ -203,7 +202,6 @@ import org.miradi.views.diagram.doers.ZoomToFitDoer;
 import org.miradi.views.planning.doers.CreateRelevancyActivityDoer;
 import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
 import org.miradi.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
-import org.miradi.views.targetviability.doers.ExpandToGoalDoer;
 import org.miradi.views.targetviability.doers.ExpandToIndicatorDoer;
 import org.miradi.views.targetviability.doers.ExpandToMeasurementDoer;
 import org.miradi.views.targetviability.doers.ExpandToMenuDoer;
@@ -350,7 +348,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 		addDoerToMap(ActionExpandToMenu.class, new ExpandToMenuDoer());
 		addDoerToMap(ActionExpandToIndicator.class, new ExpandToIndicatorDoer());
-		addDoerToMap(ActionExpandToGoal.class, new ExpandToGoalDoer());
 		addDoerToMap(ActionExpandToMeasurement.class, new ExpandToMeasurementDoer());
 		addDoerToMap(ActionExpandToFutureStatus.class, new ExpandToFutureStatusDoer());
 		
