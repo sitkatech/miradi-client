@@ -47,6 +47,7 @@ import org.miradi.objects.TableSettings;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ViewData;
+import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
@@ -363,6 +364,9 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 	
 	private boolean didAffectFutureStatus(CommandExecutedEvent event)
 	{
+		if (event.isSetDataCommandWithThisTypeAndTag(FutureStatusSchema.getObjectType(), FutureStatusSchema.TAG_FUTURE_STATUS_DATE))
+			return true;
+		
 		if (event.isSetDataCommandWithThisTypeAndTag(IndicatorSchema.getObjectType(), Indicator.TAG_FUTURE_STATUS_REFS))
 			return true;
 		
