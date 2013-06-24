@@ -27,4 +27,5 @@ public class ConstantButtonNames
 	//do a find and replace them with these.
 	public static final String CANCEL = EAM.text("Cancel");
 	public static final String CREATE = EAM.text("Create");
+	public static final String MIGRATE = EAM.text("Migrate");
 }

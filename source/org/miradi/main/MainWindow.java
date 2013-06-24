@@ -90,6 +90,7 @@ import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.questions.TableRowHeightModeQuestion;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.ProjectMetadataSchema;
+import org.miradi.utils.ConstantButtonNames;
 import org.miradi.utils.DefaultHyperlinkHandler;
 import org.miradi.utils.FileLocker;
 import org.miradi.utils.HtmlViewPanel;
@@ -576,7 +577,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			MigrationManager migrationManager = new MigrationManager();
 			if (migrationManager.needsMigration(projectFile))
 			{
-				final String[] labels = new String[]{EAM.text("Migrate"), EAM.text("Cancel")};
+				final String[] labels = new String[]{ConstantButtonNames.MIGRATE, ConstantButtonNames.CANCEL};
 				final String message = EAM.text("Project needs migration, do you want to continue?");
 				final int result = EAM.confirmDialog(EAM.text("Migration"), message, labels);
 				if (result != 0)
