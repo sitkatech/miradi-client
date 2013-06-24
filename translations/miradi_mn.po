@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-23 16:16-0500\n"
+"POT-Creation-Date: 2013-06-24 10:31-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -5777,7 +5777,7 @@ msgstr "Төслийн Зөвлөх"
 msgid "Project Corruption Detected"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:933
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:942
 msgid "Project Description:"
 msgstr "Төслийн Танилцуулга:"
 
@@ -6383,7 +6383,7 @@ msgstr "Ердийн амьдрах чадвар"
 msgid "Single Selection"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:938
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:947
 msgid "Site/Scope Description:"
 msgstr "ГазарНутаг/Цар Хүрээг Тодорхойлон биих:"
 
@@ -9164,18 +9164,6 @@ msgstr "БаганыХаяг|8.ХэмжилтийнБаталгаатайБай�
 msgid "FieldLabel|8.RatingSource|Rating Source"
 msgstr "БаганыХаяг|8.ҮнэлгээнийЭхҮүсвэр|Үнэлгээний  Эх Үүсвэр"
 
-msgid "FieldLabel|8.FutureStatusDetail|Details"
-msgstr "БаганыХаяг|8.ИрээдүйнСтатусынДэлгэрэнгүйБайдал|Дэлгэрэнгүй байдал"
-
-msgid "FieldLabel|8.FutureStatusSummary|Future Value"
-msgstr "БаганыХаяг|8.ИрээдүйнСтатусынДүгнэлт|Ирээдүйн Үнэ Цэнэ"
-
-msgid "FieldLabel|8.FutureStatusDate|Future Date"
-msgstr "БаганыХаяг|8.ИрээдүйнСтатус Өдөр|Ирээдүйн Өдөр"
-
-msgid "FieldLabel|8.FutureStatusRating|Rating"
-msgstr "БаганыХаяг|8.ИрээдүйнСтатусынҮнэлгээ|Үнэлгээ"
-
 msgid "FieldLabel|8.Detail|Details"
 msgstr "БаганыХаяг|8.ДэлгэрэнгүйБайдал|Дэлгэрэнгүй Байдал"
 
@@ -9184,9 +9172,6 @@ msgstr "БаганыХаяг|8.Тайлбар|Тайлбар"
 
 msgid "FieldLabel|8.ViabilityRatingsComment|Comments"
 msgstr "БаганыХаяг|8.АмьдрахЧадварынҮнэлгээТайлбар|Тайлбар"
-
-msgid "FieldLabel|8.FutureStatusComment|Comments"
-msgstr "БаганыХаяг|8.ИрээдүйнСтатустайлбар|Тайлбар"
 
 msgid "FieldLabel|8.PseudoLatestProgressReportCode|Progress"
 msgstr ""
@@ -31703,6 +31688,21 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "FieldLabel|8.FutureStatusDetail|Details"
+#~ msgstr "БаганыХаяг|8.ИрээдүйнСтатусынДэлгэрэнгүйБайдал|Дэлгэрэнгүй байдал"
+
+#~ msgid "FieldLabel|8.FutureStatusSummary|Future Value"
+#~ msgstr "БаганыХаяг|8.ИрээдүйнСтатусынДүгнэлт|Ирээдүйн Үнэ Цэнэ"
+
+#~ msgid "FieldLabel|8.FutureStatusDate|Future Date"
+#~ msgstr "БаганыХаяг|8.ИрээдүйнСтатус Өдөр|Ирээдүйн Өдөр"
+
+#~ msgid "FieldLabel|8.FutureStatusRating|Rating"
+#~ msgstr "БаганыХаяг|8.ИрээдүйнСтатусынҮнэлгээ|Үнэлгээ"
+
+#~ msgid "FieldLabel|8.FutureStatusComment|Comments"
+#~ msgstr "БаганыХаяг|8.ИрээдүйнСтатустайлбар|Тайлбар"
 
 #~ msgid "Desired Future Value"
 #~ msgstr "Хүсэж буй ирээдүйн үнэлэмж"

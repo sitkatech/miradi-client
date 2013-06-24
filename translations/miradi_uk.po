@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-23 16:16-0500\n"
+"POT-Creation-Date: 2013-06-24 10:31-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -5752,7 +5752,7 @@ msgstr "Консультант проекту"
 msgid "Project Corruption Detected"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:933
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:942
 msgid "Project Description:"
 msgstr "Опис проекту:"
 
@@ -6353,7 +6353,7 @@ msgstr "Проста життєздатність"
 msgid "Single Selection"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:938
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:947
 msgid "Site/Scope Description:"
 msgstr "Опис Ділянки або Зони діяльності:"
 
@@ -9082,18 +9082,6 @@ msgstr "FieldLabel|8.MeasurementStatusConfidence|Конфіденційніст�
 msgid "FieldLabel|8.RatingSource|Rating Source"
 msgstr "FieldLabel|8.RatingSource|Оцінка джерела"
 
-msgid "FieldLabel|8.FutureStatusDetail|Details"
-msgstr "FieldLabel|8.FutureStatusDetail|Деталі"
-
-msgid "FieldLabel|8.FutureStatusSummary|Future Value"
-msgstr "FieldLabel|8.FutureStatusSummary|Майбутня цінність"
-
-msgid "FieldLabel|8.FutureStatusDate|Future Date"
-msgstr "FieldLabel|8.FutureStatusDate|Майбутні дані"
-
-msgid "FieldLabel|8.FutureStatusRating|Rating"
-msgstr "FieldLabel|8.FutureStatusRating|Оцінка"
-
 msgid "FieldLabel|8.Detail|Details"
 msgstr "FieldLabel|8.Detail|Деталі"
 
@@ -9102,9 +9090,6 @@ msgstr "FieldLabel|8.Comments|Коментарі"
 
 msgid "FieldLabel|8.ViabilityRatingsComment|Comments"
 msgstr "FieldLabel|8.ViabilityRatingsComment|Коментарі"
-
-msgid "FieldLabel|8.FutureStatusComment|Comments"
-msgstr "FieldLabel|8.FutureStatusComment|Коментарі"
 
 msgid "FieldLabel|8.PseudoLatestProgressReportCode|Progress"
 msgstr "FieldLabel|8.PseudoLatestProgressReportCode|Прогрес"
@@ -31718,6 +31703,21 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "FieldLabel|8.FutureStatusDetail|Details"
+#~ msgstr "FieldLabel|8.FutureStatusDetail|Деталі"
+
+#~ msgid "FieldLabel|8.FutureStatusSummary|Future Value"
+#~ msgstr "FieldLabel|8.FutureStatusSummary|Майбутня цінність"
+
+#~ msgid "FieldLabel|8.FutureStatusDate|Future Date"
+#~ msgstr "FieldLabel|8.FutureStatusDate|Майбутні дані"
+
+#~ msgid "FieldLabel|8.FutureStatusRating|Rating"
+#~ msgstr "FieldLabel|8.FutureStatusRating|Оцінка"
+
+#~ msgid "FieldLabel|8.FutureStatusComment|Comments"
+#~ msgstr "FieldLabel|8.FutureStatusComment|Коментарі"
 
 #~ msgid "Desired Future Value"
 #~ msgstr "Бажана майбутня цінність"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-23 16:16-0500\n"
+"POT-Creation-Date: 2013-06-24 10:31-0500\n"
 "PO-Revision-Date: 2011-02-15 16:35-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -5515,7 +5515,7 @@ msgstr ""
 msgid "Project Corruption Detected"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:933
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:942
 msgid "Project Description:"
 msgstr ""
 
@@ -6084,7 +6084,7 @@ msgstr ""
 msgid "Single Selection"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:938
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:947
 msgid "Site/Scope Description:"
 msgstr ""
 
@@ -8708,18 +8708,6 @@ msgstr ""
 msgid "FieldLabel|8.RatingSource|Rating Source"
 msgstr ""
 
-msgid "FieldLabel|8.FutureStatusDetail|Details"
-msgstr ""
-
-msgid "FieldLabel|8.FutureStatusSummary|Future Value"
-msgstr ""
-
-msgid "FieldLabel|8.FutureStatusDate|Future Date"
-msgstr ""
-
-msgid "FieldLabel|8.FutureStatusRating|Rating"
-msgstr ""
-
 msgid "FieldLabel|8.Detail|Details"
 msgstr ""
 
@@ -8727,9 +8715,6 @@ msgid "FieldLabel|8.Comments|Comments"
 msgstr ""
 
 msgid "FieldLabel|8.ViabilityRatingsComment|Comments"
-msgstr ""
-
-msgid "FieldLabel|8.FutureStatusComment|Comments"
 msgstr ""
 
 msgid "FieldLabel|8.PseudoLatestProgressReportCode|Progress"

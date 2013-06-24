@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-23 16:16-0500\n"
+"POT-Creation-Date: 2013-06-24 10:31-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -5740,7 +5740,7 @@ msgstr "Asesor del proyecto "
 msgid "Project Corruption Detected"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:933
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:942
 msgid "Project Description:"
 msgstr "Descripción del proyecto: "
 
@@ -6347,7 +6347,7 @@ msgstr "Viabilidad simple"
 msgid "Single Selection"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:938
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:947
 msgid "Site/Scope Description:"
 msgstr "Descripción del alcance/sitio: "
 
@@ -9100,18 +9100,6 @@ msgstr "Confiabilidad"
 msgid "FieldLabel|8.RatingSource|Rating Source"
 msgstr "Fuente de calificación"
 
-msgid "FieldLabel|8.FutureStatusDetail|Details"
-msgstr "Detalles"
-
-msgid "FieldLabel|8.FutureStatusSummary|Future Value"
-msgstr "Valor futuro"
-
-msgid "FieldLabel|8.FutureStatusDate|Future Date"
-msgstr "Fecha futura"
-
-msgid "FieldLabel|8.FutureStatusRating|Rating"
-msgstr "Calificación"
-
 msgid "FieldLabel|8.Detail|Details"
 msgstr "Detalles"
 
@@ -9119,9 +9107,6 @@ msgid "FieldLabel|8.Comments|Comments"
 msgstr "Comentarios"
 
 msgid "FieldLabel|8.ViabilityRatingsComment|Comments"
-msgstr "Comentarios"
-
-msgid "FieldLabel|8.FutureStatusComment|Comments"
 msgstr "Comentarios"
 
 msgid "FieldLabel|8.PseudoLatestProgressReportCode|Progress"
@@ -30131,6 +30116,21 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "FieldLabel|8.FutureStatusDetail|Details"
+#~ msgstr "Detalles"
+
+#~ msgid "FieldLabel|8.FutureStatusSummary|Future Value"
+#~ msgstr "Valor futuro"
+
+#~ msgid "FieldLabel|8.FutureStatusDate|Future Date"
+#~ msgstr "Fecha futura"
+
+#~ msgid "FieldLabel|8.FutureStatusRating|Rating"
+#~ msgstr "Calificación"
+
+#~ msgid "FieldLabel|8.FutureStatusComment|Comments"
+#~ msgstr "Comentarios"
 
 #~ msgid "Desired Future Value"
 #~ msgstr "Valor futuro deseado"

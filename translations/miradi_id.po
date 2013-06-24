@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-23 16:16-0500\n"
+"POT-Creation-Date: 2013-06-24 10:31-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -5709,7 +5709,7 @@ msgstr "Penasihat Proyek"
 msgid "Project Corruption Detected"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:933
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:942
 msgid "Project Description:"
 msgstr "Keterangan Proyek: "
 
@@ -6313,7 +6313,7 @@ msgstr "Kelangsungan sederhana "
 msgid "Single Selection"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:938
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:947
 msgid "Site/Scope Description:"
 msgstr "Keterangan Lokasi/Cakupan: "
 
@@ -9068,18 +9068,6 @@ msgstr "Keyakinan Diri"
 msgid "FieldLabel|8.RatingSource|Rating Source"
 msgstr "Sumber Peringkat "
 
-msgid "FieldLabel|8.FutureStatusDetail|Details"
-msgstr "Rincian "
-
-msgid "FieldLabel|8.FutureStatusSummary|Future Value"
-msgstr "Nilai Yang Akan Datang "
-
-msgid "FieldLabel|8.FutureStatusDate|Future Date"
-msgstr "Tanggal Yang Akan Datang "
-
-msgid "FieldLabel|8.FutureStatusRating|Rating"
-msgstr "Peringkat "
-
 msgid "FieldLabel|8.Detail|Details"
 msgstr "Rincian "
 
@@ -9087,9 +9075,6 @@ msgid "FieldLabel|8.Comments|Comments"
 msgstr "Komentar "
 
 msgid "FieldLabel|8.ViabilityRatingsComment|Comments"
-msgstr "Komentar "
-
-msgid "FieldLabel|8.FutureStatusComment|Comments"
 msgstr "Komentar "
 
 msgid "FieldLabel|8.PseudoLatestProgressReportCode|Progress"
@@ -29953,6 +29938,21 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "FieldLabel|8.FutureStatusDetail|Details"
+#~ msgstr "Rincian "
+
+#~ msgid "FieldLabel|8.FutureStatusSummary|Future Value"
+#~ msgstr "Nilai Yang Akan Datang "
+
+#~ msgid "FieldLabel|8.FutureStatusDate|Future Date"
+#~ msgstr "Tanggal Yang Akan Datang "
+
+#~ msgid "FieldLabel|8.FutureStatusRating|Rating"
+#~ msgstr "Peringkat "
+
+#~ msgid "FieldLabel|8.FutureStatusComment|Comments"
+#~ msgstr "Komentar "
 
 #~ msgid "Desired Future Value"
 #~ msgstr "Nilai Masa Depan yang Diinginkan "
