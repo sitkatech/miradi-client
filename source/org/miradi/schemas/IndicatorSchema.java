@@ -24,7 +24,6 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Indicator;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.RatingSourceQuestion;
-import org.miradi.questions.StatusQuestion;
 
 public class IndicatorSchema extends BaseObjectSchema
 {
@@ -48,11 +47,6 @@ public class IndicatorSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(Indicator.TAG_DETAIL);
 		createFieldSchemaMultiLineUserText(Indicator.TAG_COMMENTS);
 		createFieldSchemaMultiLineUserText(Indicator.TAG_VIABILITY_RATINGS_COMMENTS);
-		createFieldSchemaChoice(Indicator.TAG_FUTURE_STATUS_RATING, StatusQuestion.class);
-		createFieldSchemaDate(Indicator.TAG_FUTURE_STATUS_DATE);
-		createFieldSchemaSingleLineUserText(Indicator.TAG_FUTURE_STATUS_SUMMARY);
-		createFieldSchemaMultiLineUserText(Indicator.TAG_FUTURE_STATUS_DETAIL);
-		createFieldSchemaMultiLineUserText(Indicator.TAG_FUTURE_STATUS_COMMENTS);
 		createFieldSchemaOptionalRef(Indicator.TAG_LEADER_RESOURCE);
 		createFieldSchemaSingleLineUserText(Indicator.TAG_UNIT);
 		createFieldSchemaReflist(Indicator.TAG_FUTURE_STATUS_REFS, "FutureStatus");

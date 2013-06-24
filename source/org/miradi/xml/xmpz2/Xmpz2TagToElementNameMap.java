@@ -211,9 +211,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		//Indicator: has no status tag Status,
 		HashMap<String, String> map = createBaseObjectMap();
 		map.put(Indicator.TAG_DETAIL, DETAILS);
-		map.put(Indicator.TAG_FUTURE_STATUS_DETAIL, FUTURE_STATUS_DETAILS);
 		map.put(Indicator.TAG_METHOD_IDS, METHOD_IDS);
-		map.put(Indicator.TAG_FUTURE_STATUS_COMMENTS, FUTURE_STATUS_COMMENTS);
 		map.put(Indicator.TAG_VIABILITY_RATINGS_COMMENTS, VIABILITY_RATINGS_COMMENTS);
 		map.put(Indicator.TAG_MEASUREMENT_REFS, MEASUREMENT_IDS);
 		map.put(Indicator.TAG_FUTURE_STATUS_REFS, FUTURE_STATUS_IDS);
