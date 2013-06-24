@@ -25,10 +25,10 @@ import org.miradi.objects.BaseObject;
 // if two object's dates are equal,  then the object id is used
 public class BaseObjectDateDescendingAndIdComparator
 {
-	public static int compare(BaseObject rawObject1, BaseObject rawObject2, String dateTag)
+	public static int compare(BaseObject rawObject1, BaseObject rawObject2, String tag)
 	{
-		String safeDate1 = rawObject1.getData(dateTag);
-		String safeDate2 = rawObject2.getData(dateTag);
+		String safeDate1 = rawObject1.getData(tag);
+		String safeDate2 = rawObject2.getData(tag);
 		
 		if (safeDate2.equals(safeDate1))
 			return rawObject2.getId().compareTo(rawObject1.getId());
