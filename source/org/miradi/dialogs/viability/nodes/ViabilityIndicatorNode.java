@@ -20,10 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.viability.nodes;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Vector;
 
 import org.miradi.dialogs.treetables.TreeTableNode;
+import org.miradi.objecthelpers.BaseObjectByTagSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
@@ -36,7 +36,7 @@ import org.miradi.questions.ProgressReportShortStatusQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TaglessChoiceItem;
-import org.miradi.utils.BaseObjectDateDescendingAndIdComparator;
+import org.miradi.schemas.FutureStatusSchema;
 
 public class ViabilityIndicatorNode extends TreeTableNode
 {
@@ -144,30 +144,46 @@ public class ViabilityIndicatorNode extends TreeTableNode
 	public void rebuild() throws Exception
 	{
 		ORefList measurementRefs = indicator.getMeasurementRefs();
-		Vector<TreeTableNode> measurementAndFutureStatusObjects = new Vector<TreeTableNode>();
+		Vector<TreeTableNode> measurementNodes = new Vector<TreeTableNode>();
 		for (int i = 0; i < measurementRefs.size(); ++i)
 		{
 			Measurement measurement = (Measurement) project.findObject(measurementRefs.get(i));
-			measurementAndFutureStatusObjects.add(new ViabilityMeasurementNode(this, measurement));
+			measurementNodes.add(new ViabilityMeasurementNode(this, measurement));
 		}
 
-		Collections.sort(measurementAndFutureStatusObjects, new MeasurementNodeDateComparator());
+		Collections.sort(measurementNodes, new MeasurementNodeDateComparator());
+		
+		Vector<TreeTableNode> futureStatusNodes = new Vector<TreeTableNode>();
 		ORefList futureStatusRefs = indicator.getFutureStatusRefs();
 		for(ORef futureStatusRef : futureStatusRefs)
 		{
 			FutureStatus futureStatus = FutureStatus.find(project, futureStatusRef);
-			measurementAndFutureStatusObjects.add(new ViabilityFutureStatusNode(this, futureStatus));	
+			futureStatusNodes.add(new ViabilityFutureStatusNode(this, futureStatus));	
 		}
 		
-		measurements = measurementAndFutureStatusObjects.toArray(new TreeTableNode[0]);
+		Collections.sort(measurementNodes, new MeasurementNodeDateComparator());
+		Collections.sort(futureStatusNodes, new FutureStatusNodeDateComparator());
+		Vector<TreeTableNode> measurementAndFutureStatusNodes = new Vector<TreeTableNode>();
+		measurementAndFutureStatusNodes.addAll(measurementNodes);
+		measurementAndFutureStatusNodes.addAll(futureStatusNodes);
+		
+		measurements = measurementAndFutureStatusNodes.toArray(new TreeTableNode[0]);
 	}
 	
-	public static class MeasurementNodeDateComparator implements Comparator<TreeTableNode>
+	private static class MeasurementNodeDateComparator extends BaseObjectByTagSorter
 	{
-		public int compare(TreeTableNode rawNode1, TreeTableNode rawNode2)
+		public MeasurementNodeDateComparator()
 		{
-			return BaseObjectDateDescendingAndIdComparator.compare(rawNode1.getObject(), rawNode2.getObject(), Measurement.TAG_DATE);
+			super(Measurement.TAG_DATE);
 		}	
+	}
+	
+	private static class FutureStatusNodeDateComparator extends BaseObjectByTagSorter
+	{
+		public FutureStatusNodeDateComparator()
+		{
+			super(FutureStatusSchema.TAG_FUTURE_STATUS_DATE);
+		}
 	}
 	
 	public static final String[] COLUMN_TAGS = {

@@ -63,6 +63,7 @@ import org.miradi.dialogs.base.ProgressDialog;
 import org.miradi.dialogs.notify.NotifyDialog;
 import org.miradi.dialogs.notify.NotifyDialogTemplateFactory;
 import org.miradi.exceptions.FutureSchemaVersionException;
+import org.miradi.exceptions.NotMiradiProjectFileException;
 import org.miradi.exceptions.OldSchemaVersionException;
 import org.miradi.exceptions.ProjectFileTooNewException;
 import org.miradi.exceptions.ProjectFileTooOldException;
@@ -80,7 +81,6 @@ import org.miradi.objecthelpers.TwoLevelEntry;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TableSettings;
-import org.miradi.project.AbstractProjectLoader;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectLoader;
 import org.miradi.project.ProjectRepairer;
@@ -608,7 +608,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		{
 			EAM.errorDialog(EAM.text("That project is in use by another copy of this application"));
 		}
-		catch(AbstractProjectLoader.NotMiradiProjectFileException e)
+		catch(NotMiradiProjectFileException e)
 		{
 			EAM.errorDialog(EAM.text("That file is not a valid Miradi project"));
 		}
@@ -662,14 +662,13 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		final File oldProjectFile = AutomaticProjectSaver.getOldFile(projectFile);
 		return !oldProjectFile.exists();
 	}
-
-	private void createOrOpenProjectInBackground(File projectFile) throws Exception
+	
+	private void possiblyMigrate(File projectFile) throws Exception
 	{
 		MigrationManager migrationManager = new MigrationManager();
-		migrationManager.validateProjectVersion(projectFile);
 		if (migrationManager.needsMigration(projectFile))
 		{
-			final String[] buttonLabels = new String[]{EAM.text("Ok"), EAM.text("Cancel")};
+			final String[] buttonLabels = new String[]{EAM.text("Yes"), EAM.text("No")};
 			final String message = EAM.text("Project needs migration, do you want to continue?");
 			final int result = EAM.confirmDialog(EAM.text("Migration"), message, buttonLabels);
 			if (result != 0)
@@ -677,6 +676,18 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			
 			migrationManager.safelyMigrate(projectFile);
 		}
+	}
+
+	private void validateProjectVersion(File projectFile) throws Exception
+	{
+		MigrationManager migrationManager = new MigrationManager();
+		migrationManager.validateProjectVersion(projectFile);
+	}
+
+	private void createOrOpenProjectInBackground(File projectFile) throws Exception
+	{
+		validateProjectVersion(projectFile);
+		possiblyMigrate(projectFile);
 		
 		String title = EAM.text("Create Project");
 		if(projectFile.exists())
@@ -684,7 +695,6 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		ProgressDialog progressDialog = new ProgressDialog(this, title);
 		ProjectOpenWorker worker = new ProjectOpenWorker(progressDialog, project, projectFile);
 		progressDialog.doWorkInBackgroundWhileShowingProgress(worker);
-
 	}
 	
 	private static class ProjectOpenWorker extends MiradiBackgroundWorkerThread
