@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-22 07:01-0500\n"
+"POT-Creation-Date: 2013-06-23 16:16-0500\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -3770,7 +3770,7 @@ msgstr ""
 "O nome de arquivo deve conter somente caracteres alfa-numéricos e/ou '_'."
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:97
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:198
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:199
 msgid "File to import does not validate."
 msgstr "O arquivo para importar não validada."
 
@@ -4175,7 +4175,7 @@ msgstr "Esconder Colunas de Trimestre"
 msgid "High"
 msgstr "Alto"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1428
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1439
 msgid "High/Very-High Threat Chains"
 msgstr "Cadeias de Ameaças Altos/Muito Altos"
 
@@ -4397,7 +4397,7 @@ msgstr ""
 "representado por um triângulo roxo."
 
 # I don't understand the use of "holder" here thus I left it in English.
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1326
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1337
 msgid "Indicator Holder"
 msgstr "\"Holder\" de indicador"
 
@@ -4406,7 +4406,7 @@ msgid "Indicator Relevancy Panel"
 msgstr "Painel de relevância do indicador"
 
 # Leo, please check.  Not sure about this translation.
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:161
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:163
 msgid "Indicator does not have a direct/indirect factor parent. "
 msgstr "O indicador não tem um fator direto/indireto pai."
 
@@ -4919,7 +4919,7 @@ msgstr "Localização"
 msgid "Low"
 msgstr "Baixo"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1429
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1440
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Cadeias de Ameaça Baixo/Médio/Sem classificação"
 
@@ -5586,7 +5586,7 @@ msgstr ""
 "representado por um retângulo pequeno azul."
 
 # I don't understand Holder here  in English.  Please clarify.
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1320
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1331
 msgid "Objective Holder"
 msgstr "\"Holder\" de Meta"
 
@@ -5776,7 +5776,7 @@ msgstr "Rosa"
 msgid "Place scope on diagram"
 msgstr "Posicionar Escopo no Diagrama"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1316
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1327
 msgid "Placeholder - From ConPro"
 msgstr "Espaço Reservado - de ConPro"
 
@@ -5994,7 +5994,7 @@ msgstr "Conselheiro do Projeto"
 msgid "Project Corruption Detected"
 msgstr "Corrupção do Projeto Detectado"
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:929
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:933
 msgid "Project Description:"
 msgstr "Descrição do Projeto:"
 
@@ -6609,7 +6609,7 @@ msgstr "Viabilidade Simples"
 msgid "Single Selection"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:934
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:938
 msgid "Site/Scope Description:"
 msgstr "Descrição de Sítio/Escopo:"
 
@@ -7820,7 +7820,7 @@ msgstr "Cor de Canela"
 
 #: Miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:71
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:360
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:362
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:53
 msgid "Target"
 msgstr "Alvo"
@@ -8258,7 +8258,7 @@ msgstr ""
 msgid "This will replace the existing file."
 msgstr "Esta ação substituirá o arquivo existente."
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:385
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:387
 #: Miradi/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:62
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:35
 msgid "Threat"

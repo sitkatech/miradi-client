@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-22 07:01-0500\n"
+"POT-Creation-Date: 2013-06-23 16:16-0500\n"
 "PO-Revision-Date: 2011-03-17 08:35-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3443,7 +3443,7 @@ msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr ""
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:97
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:198
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:199
 msgid "File to import does not validate."
 msgstr ""
 
@@ -3810,7 +3810,7 @@ msgstr ""
 msgid "High"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1428
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1439
 msgid "High/Very-High Threat Chains"
 msgstr ""
 
@@ -4019,7 +4019,7 @@ msgid ""
 "by a purple triangle."
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1326
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1337
 msgid "Indicator Holder"
 msgstr ""
 
@@ -4027,7 +4027,7 @@ msgstr ""
 msgid "Indicator Relevancy Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:161
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:163
 msgid "Indicator does not have a direct/indirect factor parent. "
 msgstr ""
 
@@ -4522,7 +4522,7 @@ msgstr ""
 msgid "Low"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1429
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1440
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
@@ -5125,7 +5125,7 @@ msgid ""
 "by a small blue rectangle."
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1320
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1331
 msgid "Objective Holder"
 msgstr ""
 
@@ -5310,7 +5310,7 @@ msgstr ""
 msgid "Place scope on diagram"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1316
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1327
 msgid "Placeholder - From ConPro"
 msgstr ""
 
@@ -5515,7 +5515,7 @@ msgstr ""
 msgid "Project Corruption Detected"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:929
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:933
 msgid "Project Description:"
 msgstr ""
 
@@ -6084,7 +6084,7 @@ msgstr ""
 msgid "Single Selection"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:934
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:938
 msgid "Site/Scope Description:"
 msgstr ""
 
@@ -7237,7 +7237,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:71
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:360
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:362
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:53
 msgid "Target"
 msgstr ""
@@ -7597,7 +7597,7 @@ msgstr ""
 msgid "This will replace the existing file."
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:385
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:387
 #: Miradi/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:62
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:35
 msgid "Threat"
