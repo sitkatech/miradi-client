@@ -24,7 +24,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.miradi.actions.ActionExpandToFutureStatus;
-import org.miradi.actions.ActionExpandToGoal;
 import org.miradi.actions.ActionExpandToHumanWelfareTarget;
 import org.miradi.actions.ActionExpandToIndicator;
 import org.miradi.actions.ActionExpandToKeyEcologicalAttribute;
@@ -51,7 +50,6 @@ public class ViabilityTreeTable extends PlanningTreeTable
 		relevantActions.add(ActionExpandToHumanWelfareTarget.class);
 		relevantActions.add(ActionExpandToKeyEcologicalAttribute.class);
 		relevantActions.add(ActionExpandToIndicator.class);
-		relevantActions.add(ActionExpandToGoal.class);
 		relevantActions.add(ActionExpandToMeasurement.class);
 		relevantActions.add(ActionExpandToFutureStatus.class);
 		
