@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-22 07:01-0500\n"
+"POT-Creation-Date: 2013-06-23 16:16-0500\n"
 "PO-Revision-Date: 2013-04-02 10:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -3713,7 +3713,7 @@ msgstr ""
 "'_'"
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:97
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:198
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:199
 msgid "File to import does not validate."
 msgstr "Impossible de valider le fichier à importer."
 
@@ -4099,7 +4099,7 @@ msgstr "Masquer les colonnes trimestre"
 msgid "High"
 msgstr "Elevé"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1428
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1439
 msgid "High/Very-High Threat Chains"
 msgstr "Chaînes de menaces élevées/très élevées"
 
@@ -4320,7 +4320,7 @@ msgstr ""
 "mesurable, précis, cohérent et sensible. Dans Miradi, un indicateur est "
 "représenté par un triangle violet."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1326
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1337
 msgid "Indicator Holder"
 msgstr "Détenteur d'indicateur"
 
@@ -4328,7 +4328,7 @@ msgstr "Détenteur d'indicateur"
 msgid "Indicator Relevancy Panel"
 msgstr "Panneau de pertinence de l'indicateur"
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:161
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:163
 msgid "Indicator does not have a direct/indirect factor parent. "
 msgstr "L'indicateur n'a pas un facteur parent direct/indirect."
 
@@ -4834,7 +4834,7 @@ msgstr "Lieu"
 msgid "Low"
 msgstr "Faible"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1429
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1440
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Chaînes de menace Faibles/Moyennes/Non évaluées"
 
@@ -5493,7 +5493,7 @@ msgstr ""
 "que réduire une menace critique. Dans Miradi, un objectif est représenté par "
 "un petit rectangle bleu."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1320
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1331
 msgid "Objective Holder"
 msgstr "Détenteur d'objectif"
 
@@ -5683,7 +5683,7 @@ msgstr "Rose"
 msgid "Place scope on diagram"
 msgstr "Placer la portée sur le diagramme"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1316
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1327
 msgid "Placeholder - From ConPro"
 msgstr "Espace réservé - De ConPro"
 
@@ -5900,7 +5900,7 @@ msgstr "Conseiller du projet"
 msgid "Project Corruption Detected"
 msgstr "Corruption du projet détectée"
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:929
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:933
 msgid "Project Description:"
 msgstr "Description du projet :"
 
@@ -6512,7 +6512,7 @@ msgstr "Viabilité simple"
 msgid "Single Selection"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:934
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:938
 msgid "Site/Scope Description:"
 msgstr "Description du site/de la portée :"
 
@@ -7721,7 +7721,7 @@ msgstr "Brun clair"
 
 #: Miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:71
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:360
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:362
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:53
 msgid "Target"
 msgstr "Cible"
@@ -8161,7 +8161,7 @@ msgstr ""
 msgid "This will replace the existing file."
 msgstr "Ceci va remplacer le fichier existant"
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:385
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:387
 #: Miradi/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:62
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:35
 msgid "Threat"
