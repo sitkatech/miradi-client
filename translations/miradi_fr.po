@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-24 10:31-0500\n"
+"POT-Creation-Date: 2013-06-24 11:46-0500\n"
 "PO-Revision-Date: 2013-04-02 10:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -483,7 +483,7 @@ msgstr "7C. Créer un environnement d'apprentissage"
 msgid "95% C.I. (confidence interval)"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1369
+#: Miradi/source/org/miradi/main/MainWindow.java:1379
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -2664,7 +2664,6 @@ msgstr "Impossible de lier un groupe à un élément qu'il contient"
 msgid "Can't link an item to itself"
 msgstr "Impossible de lier un élément à lui-même"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:672
 #: Miradi/source/org/miradi/utils/ConstantButtonNames.java:28
 #: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:73
 #: Miradi/source/org/miradi/dialogs/base/AbstractSelectionDialog.java:90
@@ -3002,7 +3001,7 @@ msgstr "Création échouée :"
 msgid "Create Folder"
 msgstr "Créer Dossier"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:681
+#: Miradi/source/org/miradi/main/MainWindow.java:692
 msgid "Create Project"
 msgstr "Créer un projet"
 
@@ -3607,7 +3606,7 @@ msgstr "Estimation des coûts des activités et du suivi"
 msgid "Euro"
 msgstr "Euros"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:946
+#: Miradi/source/org/miradi/main/MainWindow.java:956
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 "Les données existant pour un exercice financier différent ont été exclues"
@@ -5209,7 +5208,7 @@ msgstr "Migration des données du projet"
 msgid "Migrating..."
 msgstr "Migration..."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:674
+#: Miradi/source/org/miradi/main/MainWindow.java:673
 msgid "Migration"
 msgstr ""
 
@@ -5266,7 +5265,7 @@ msgstr "Miradi n'a pas reconnu le fichier : %s comme étant importable."
 msgid "Miradi does not recognize %s as a project file"
 msgstr "Miradi ne reconnaît pas %s comme un fichier de projet"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:772
+#: Miradi/source/org/miradi/main/MainWindow.java:782
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5415,6 +5414,7 @@ msgstr "Nouveau nom du projet :"
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:57
 #: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
+#: Miradi/source/org/miradi/main/MainWindow.java:671
 msgid "No"
 msgstr "Non"
 
@@ -5533,10 +5533,6 @@ msgstr "Oct"
 msgid "October to September"
 msgstr "D'octobre à septembre"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:672
-msgid "Ok"
-msgstr ""
-
 #: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:42
 msgid "On-Track"
 msgstr "Sur la bonne voie"
@@ -5571,7 +5567,7 @@ msgid "Open Anyway"
 msgstr "Ouvrir malgré tout"
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:202
-#: Miradi/source/org/miradi/main/MainWindow.java:683
+#: Miradi/source/org/miradi/main/MainWindow.java:694
 msgid "Open Project"
 msgstr "Ouvrir le projet"
 
@@ -5896,7 +5892,7 @@ msgstr "Projet"
 msgid "Project Advisor"
 msgstr "Conseiller du projet"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:770
+#: Miradi/source/org/miradi/main/MainWindow.java:780
 msgid "Project Corruption Detected"
 msgstr "Corruption du projet détectée"
 
@@ -5931,7 +5927,7 @@ msgstr "Ressource du projet"
 msgid "Project Resource Filter Editor"
 msgstr "Éditeur de filtre des ressources du projet"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:944
+#: Miradi/source/org/miradi/main/MainWindow.java:954
 msgid "Project Resource Filter Is On"
 msgstr "Le filtre des ressources du projet est actif"
 
@@ -5968,7 +5964,7 @@ msgstr ""
 "les signes de ponctuation admis sont les points, les traits d'union et les "
 "espaces. "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:673
+#: Miradi/source/org/miradi/main/MainWindow.java:672
 msgid "Project needs migration, do you want to continue?"
 msgstr ""
 
@@ -6578,7 +6574,7 @@ msgstr "Partie prenante"
 msgid "Standard Reports"
 msgstr "Rapports standards"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:978
+#: Miradi/source/org/miradi/main/MainWindow.java:988
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -8117,7 +8113,7 @@ msgid ""
 "damaged. Please contact Miradi support for recovery options."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:761
+#: Miradi/source/org/miradi/main/MainWindow.java:771
 msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
@@ -8546,7 +8542,7 @@ msgstr ""
 "Impossible de supprimer ce projet parce qu'il est utilisé par une autre "
 "copie de cette application : \n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1353
+#: Miradi/source/org/miradi/main/MainWindow.java:1363
 msgid "Unable to launch external web browser"
 msgstr "Impossible de lancer un navigateur web externe"
 
@@ -8567,7 +8563,7 @@ msgstr ""
 "Impossible de renommer ce projet parce qu'il est utilisé par une autre copie "
 "de cette application : \n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1135
+#: Miradi/source/org/miradi/main/MainWindow.java:1145
 msgid "Unable to save preferences"
 msgstr "Impossible d'enregistrer les préférences"
 
@@ -9047,6 +9043,7 @@ msgstr "Yen (Japon)"
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:57
 #: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
+#: Miradi/source/org/miradi/main/MainWindow.java:671
 msgid "Yes"
 msgstr "Oui"
 
