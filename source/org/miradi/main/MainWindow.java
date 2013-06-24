@@ -662,11 +662,10 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		final File oldProjectFile = AutomaticProjectSaver.getOldFile(projectFile);
 		return !oldProjectFile.exists();
 	}
-
-	private void createOrOpenProjectInBackground(File projectFile) throws Exception
+	
+	private void possiblyMigrate(File projectFile) throws Exception
 	{
 		MigrationManager migrationManager = new MigrationManager();
-		migrationManager.validateProjectVersion(projectFile);
 		if (migrationManager.needsMigration(projectFile))
 		{
 			final String[] buttonLabels = new String[]{EAM.text("Ok"), EAM.text("Cancel")};
@@ -677,6 +676,18 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			
 			migrationManager.safelyMigrate(projectFile);
 		}
+	}
+
+	private void validateProjectVersion(File projectFile) throws Exception
+	{
+		MigrationManager migrationManager = new MigrationManager();
+		migrationManager.validateProjectVersion(projectFile);
+	}
+
+	private void createOrOpenProjectInBackground(File projectFile) throws Exception
+	{
+		validateProjectVersion(projectFile);
+		possiblyMigrate(projectFile);
 		
 		String title = EAM.text("Create Project");
 		if(projectFile.exists())
@@ -684,7 +695,6 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		ProgressDialog progressDialog = new ProgressDialog(this, title);
 		ProjectOpenWorker worker = new ProjectOpenWorker(progressDialog, project, projectFile);
 		progressDialog.doWorkInBackgroundWhileShowingProgress(worker);
-
 	}
 	
 	private static class ProjectOpenWorker extends MiradiBackgroundWorkerThread
