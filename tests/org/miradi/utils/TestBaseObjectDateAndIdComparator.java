@@ -43,14 +43,14 @@ public class TestBaseObjectDateAndIdComparator extends TestCaseWithProject
 		ORef measurementRef3 = getProject().createObject(MeasurementSchema.getObjectType(), new BaseId(9999));
 		Measurement measurementWithNoDateAndId9999 = Measurement.find(getProject(), measurementRef3);
 	
-		assertEquals("identical without date?", 0, BaseObjectDateDescendingAndIdComparator.compare(measurementWithNoDate, measurementWithNoDate, Measurement.TAG_DATE));
-		assertEquals("blank date after 1979?", -1, BaseObjectDateDescendingAndIdComparator.compare(measurement1979, measurementWithNoDate, Measurement.TAG_DATE));
-		assertEquals("blank date before 1979?", 1, BaseObjectDateDescendingAndIdComparator.compare(measurementWithNoDate, measurement1979, Measurement.TAG_DATE));
-		assertEquals("identical with same dates?", 0, BaseObjectDateDescendingAndIdComparator.compare(measurement1979, measurement1979, Measurement.TAG_DATE));
-		assertEquals("blank date after id 9999?", -1, BaseObjectDateDescendingAndIdComparator.compare(measurementWithNoDateAndId9999, measurementWithNoDate, Measurement.TAG_DATE));
+		assertEquals("identical without date?", 0, BaseObjectFieldComparator.compare(measurementWithNoDate, measurementWithNoDate, Measurement.TAG_DATE));
+		assertEquals("blank date after 1979?", -1, BaseObjectFieldComparator.compare(measurement1979, measurementWithNoDate, Measurement.TAG_DATE));
+		assertEquals("blank date before 1979?", 1, BaseObjectFieldComparator.compare(measurementWithNoDate, measurement1979, Measurement.TAG_DATE));
+		assertEquals("identical with same dates?", 0, BaseObjectFieldComparator.compare(measurement1979, measurement1979, Measurement.TAG_DATE));
+		assertEquals("blank date after id 9999?", -1, BaseObjectFieldComparator.compare(measurementWithNoDateAndId9999, measurementWithNoDate, Measurement.TAG_DATE));
 		
 		Measurement measurementWithDate2008 = getProject().createMeasurement();
 		measurementWithDate2008.setData(Measurement.TAG_DATE, MultiCalendar.createFromGregorianYearMonthDay(2008, 9, 9).toString());
-		assertTrue("2008 not after 1979?", BaseObjectDateDescendingAndIdComparator.compare(measurement1979, measurementWithDate2008, Measurement.TAG_DATE) > 0);
+		assertTrue("2008 not after 1979?", BaseObjectFieldComparator.compare(measurement1979, measurementWithDate2008, Measurement.TAG_DATE) > 0);
 	}
 }

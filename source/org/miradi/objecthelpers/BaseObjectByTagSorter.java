@@ -23,7 +23,7 @@ package org.miradi.objecthelpers;
 import java.util.Comparator;
 
 import org.miradi.dialogs.treetables.TreeTableNode;
-import org.miradi.utils.BaseObjectDateDescendingAndIdComparator;
+import org.miradi.utils.BaseObjectFieldComparator;
 
 public class BaseObjectByTagSorter implements Comparator<TreeTableNode>
 {
@@ -34,7 +34,7 @@ public class BaseObjectByTagSorter implements Comparator<TreeTableNode>
 	
 	public int compare(TreeTableNode rawNode1, TreeTableNode rawNode2)
 	{
-		return BaseObjectDateDescendingAndIdComparator.compare(rawNode1.getObject(), rawNode2.getObject(), getTagToSortBy());
+		return BaseObjectFieldComparator.compare(rawNode1.getObject(), rawNode2.getObject(), getTagToSortBy());
 	}
 	
 	private String getTagToSortBy()

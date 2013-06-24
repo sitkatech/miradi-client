@@ -58,7 +58,7 @@ import org.miradi.schemas.SubTargetSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
-import org.miradi.utils.BaseObjectDateDescendingAndIdComparator;
+import org.miradi.utils.BaseObjectFieldComparator;
 import org.miradi.utils.CodeList;
 
 abstract public class AbstractTreeRebuilder
@@ -352,7 +352,7 @@ abstract public class AbstractTreeRebuilder
 	{
 		public int compare(BaseObject baseObject1, BaseObject baseObject2)
 		{
-			return BaseObjectDateDescendingAndIdComparator.compare(baseObject1, baseObject2, Measurement.TAG_DATE);
+			return BaseObjectFieldComparator.compare(baseObject1, baseObject2, Measurement.TAG_DATE);
 		}	
 	}
 
