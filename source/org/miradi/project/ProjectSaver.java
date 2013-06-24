@@ -111,6 +111,8 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 	@Override
 	protected void writeObjectUpdateEntries(ORef ref) throws Exception
 	{
+		//FIXME medium - writeObjectUpdateEntries should be made generic and pulled up, to avoid 
+		//writing in leaf classes and duplication between leaf classes. 
 		BaseObject baseObject = getProject().findObject(ref);
 		Vector<String> fieldTags = baseObject.getStoredFieldTags();
 		for(int field = 0; field < fieldTags.size(); ++field)
