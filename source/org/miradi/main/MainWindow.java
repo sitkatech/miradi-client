@@ -573,7 +573,17 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			}
 
 			validateProjectVersion(projectFile);
-			possiblyMigrate(projectFile);
+			MigrationManager migrationManager = new MigrationManager();
+			if (migrationManager.needsMigration(projectFile))
+			{
+				final String message = EAM.text("Project needs migration, do you want to continue?");
+				final int result = EAM.confirmYesNoDialog(EAM.text("Migration"), message);
+				if (result != 0)
+					return;
+			
+				migrationManager.safelyMigrate(projectFile);
+			}
+			
 			createOrOpenProjectInBackground(projectFile);
 			projectSaver.startSaving(projectFile);
 			
@@ -665,20 +675,6 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		return !oldProjectFile.exists();
 	}
 	
-	private void possiblyMigrate(File projectFile) throws Exception
-	{
-		MigrationManager migrationManager = new MigrationManager();
-		if (migrationManager.needsMigration(projectFile))
-		{
-			final String message = EAM.text("Project needs migration, do you want to continue?");
-			final int result = EAM.confirmYesNoDialog(EAM.text("Migration"), message);
-			if (result != 0)
-				return;
-			
-			migrationManager.safelyMigrate(projectFile);
-		}
-	}
-
 	private void validateProjectVersion(File projectFile) throws Exception
 	{
 		MigrationManager migrationManager = new MigrationManager();
