@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Tue Jun 25 14:49:48 EDT 2013 $
+# $LastChangedDate: Tue Jun 25 17:54:32 EDT 2013 $
 # $LastChangedRevision: 228 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/228'
 start = ConservationProject.element
@@ -144,12 +144,12 @@ ProjectPlanning.element = element miradi:ProjectPlanning
   element miradi:ProjectPlanningFinancialComments { formatted_text }? &
   element miradi:ProjectPlanningFiscalYearStart { vocabulary_fiscal_year_start_month }? &
   element miradi:ProjectPlanningFullTimeEmployeeDaysPerYear { xsd:decimal }? &
+  element miradi:ProjectPlanningIncludeWorkPlanDiagramData { vocabulary_included_diagram_types }? &
   element miradi:ProjectPlanningKeyFundingSources { formatted_text }? &
   element miradi:ProjectPlanningPlanningComments { formatted_text }? &
   element miradi:ProjectPlanningQuarterColumnsVisibility { vocabulary_quarter_columns_visibility } &
   element miradi:ProjectPlanningStartDate { vocabulary_date }? &
   element miradi:ProjectPlanningTotalBudgetForFunding { xsd:decimal }? &
-  element miradi:ProjectPlanningWorkPlanDiagramDataInclusion { vocabulary_included_diagram_types }? &
   element miradi:ProjectPlanningWorkPlanEndDate { vocabulary_date }? &
   element miradi:ProjectPlanningWorkPlanStartDate { vocabulary_date }?
 }

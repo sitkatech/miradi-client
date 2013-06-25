@@ -313,6 +313,7 @@ public interface Xmpz2XmlConstants
 	public static final String TAXONOMY_ASSOCIATION_DESCRIPTION = "TaxonomyAssociationDescription";
 	public static final String TAXONOMY_ASSOCIATION_TAXONOMY_CODE = "TaxonomyAssociationTaxonomyCode";
 	public static final String TAXONOMY_ASSOCIATION_CODE = TAXONOMY_ASSOCIATION + CODE;
+	public static final String INCLUDE_WORK_PLAN_DIAGRAM_DATA = "IncludeWorkPlanDiagramData";
 	
 	public static final String VOCABULARY_TAXONOMY_CLASSIFICATION_MULTISELECT_MODE = "vocabulary_taxonomy_classification_multiselect_mode";
 	public static final String VOCABULARY_TAXONOMY_CLASSIFICATION_SELECTION_MODE = "vocabulary_taxonomy_classification_selection_mode";
