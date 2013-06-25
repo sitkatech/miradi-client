@@ -26,6 +26,7 @@ import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.AudienceSchema;
 import org.miradi.schemas.CostAllocationRuleSchema;
 import org.miradi.schemas.FundingSourceSchema;
+import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
@@ -104,6 +105,7 @@ public class ObjectTypeToExporterMap extends HashMap<Integer, BaseObjectExporter
 		addGenericExporterToMap(ScopeBoxSchema.getObjectType());
 		addGenericExporterToMap(OtherNotableSpeciesSchema.getObjectType());
 		addGenericExporterToMap(AudienceSchema.getObjectType());
+		addGenericExporterToMap(FutureStatusSchema.getObjectType());
 	}
 	
 	private void addGenericExporterToMap(final int objectType) throws Exception
