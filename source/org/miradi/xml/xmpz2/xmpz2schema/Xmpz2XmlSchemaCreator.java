@@ -42,6 +42,7 @@ import org.miradi.objects.MiradiShareProjectData;
 import org.miradi.objects.MiradiShareTaxonomy;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.ProjectResource;
 import org.miradi.objects.RatingCriterion;
 import org.miradi.objects.ReportTemplate;
 import org.miradi.objects.ResourceAssignment;
@@ -1115,6 +1116,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		if (MiradiShareTaxonomy.is(baseObjectSchema.getType()))
 			return new MiradiShareTaxonomySchemaWriter(this, baseObjectSchema);
+		
+		if (ProjectResource.is(baseObjectSchema.getType()))
+			return new ResourceSchemaWriter(this, baseObjectSchema);
 		
 		return new BaseObjectSchemaWriter(this, baseObjectSchema);
 	}
