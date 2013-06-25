@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2.xmpz2schema;
 
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.schemas.ProjectMetadataSchema;
 
 public class ProjectSummaryPlanningSchema extends AbstractProjectSummarySchema
@@ -45,7 +46,7 @@ public class ProjectSummaryPlanningSchema extends AbstractProjectSummarySchema
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_KEY_FUNDING_SOURCES));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_FINANCIAL_COMMENTS));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY));
-		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION));
+		createFieldSchemaChoice(INCLUDE_WORK_PLAN_DIAGRAM_DATA, new DiagramObjectDataInclusionQuestion());
 	}
 	
 	@Override

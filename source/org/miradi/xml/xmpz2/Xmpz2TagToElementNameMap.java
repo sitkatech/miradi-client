@@ -83,6 +83,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		HashMap<String, HashMap<String,String>> map = new HashMap<String, HashMap<String,String>>();
 		
 		map.put(PROJECT_SUMMARY, createProjectMetadataMap());
+		map.put(PROJECT_SUMMARY_PLANNING, getProjectPlanningMap());
 		map.put(METHOD, createTaskMap());
 		map.put(ACTIVITY, createTaskMap());
 		map.put(TASK, createTaskMap());
@@ -127,6 +128,14 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		return map;
 	}
 	
+	private HashMap<String, String> getProjectPlanningMap()
+	{
+		HashMap<String, String> map = createBaseObjectMap();
+		map.put(ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION, INCLUDE_WORK_PLAN_DIAGRAM_DATA);
+
+		return map;
+	}
+
 	private HashMap<String, String> createTaxonomyMap()
 	{
 		HashMap<String, String> map = new HashMap<String, String>();
