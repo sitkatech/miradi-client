@@ -1,7 +1,7 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Sun Jun 23 17:05:31 EDT 2013 $
-# $LastChangedRevision: 227 $
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/227'
+# $LastChangedDate: Tue Jun 25 14:49:48 EDT 2013 $
+# $LastChangedRevision: 228 $
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/228'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -149,6 +149,7 @@ ProjectPlanning.element = element miradi:ProjectPlanning
   element miradi:ProjectPlanningQuarterColumnsVisibility { vocabulary_quarter_columns_visibility } &
   element miradi:ProjectPlanningStartDate { vocabulary_date }? &
   element miradi:ProjectPlanningTotalBudgetForFunding { xsd:decimal }? &
+  element miradi:ProjectPlanningWorkPlanDiagramDataInclusion { vocabulary_included_diagram_types }? &
   element miradi:ProjectPlanningWorkPlanEndDate { vocabulary_date }? &
   element miradi:ProjectPlanningWorkPlanStartDate { vocabulary_date }?
 }
@@ -264,7 +265,6 @@ Resource.element = element miradi:Resource
   element miradi:ResourceIMService { text }? &
   element miradi:ResourceIsCcnCoach { xsd:boolean }? &
   element miradi:ResourceLocation { text }? &
-  element miradi:ResourceName { formatted_text }? &
   element miradi:ResourceOfficePhoneNumber { text }? &
   element miradi:ResourceOrganization { text }? &
   element miradi:ResourcePhoneNumberHome { text }? &

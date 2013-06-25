@@ -51,6 +51,7 @@ public class Xmpz2ProjectPlanningImporter extends AbstractXmpz2ObjectImporter
 		importProjectMetadataField(projectSummaryPlanningNode, ProjectMetadata.TAG_BUDGET_SECURED_PERCENT);
 		importProjectMetadataField(projectSummaryPlanningNode, ProjectMetadata.TAG_KEY_FUNDING_SOURCES);
 		importProjectMetadataField(projectSummaryPlanningNode, ProjectMetadata.TAG_FINANCIAL_COMMENTS);
+		importProjectMetadataField(projectSummaryPlanningNode, ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION);
 		getImporter().importCodeField(projectSummaryPlanningNode, PROJECT_SUMMARY_PLANNING, getMetadataRef(), ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, getProject().getQuestion(QuarterColumnsVisibilityQuestion.class));
 	}
 	
