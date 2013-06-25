@@ -60,7 +60,7 @@ public class ProjectResourceSchema extends BaseObjectSchema
 		createFieldSchemaSingleLineUserText(ProjectResource.TAG_CUSTOM_FIELD_1);
 		createFieldSchemaSingleLineUserText(ProjectResource.TAG_CUSTOM_FIELD_2);
 	}
-
+	
 	public static int getObjectType()
 	{
 		return ObjectType.PROJECT_RESOURCE;
