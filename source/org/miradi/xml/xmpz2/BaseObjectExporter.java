@@ -77,7 +77,7 @@ public class BaseObjectExporter implements Xmpz2XmlConstants
 		return false;
 	}
 
-	protected void writeField(final BaseObject baseObject, final AbstractFieldSchema fieldSchema) throws Exception
+	private void writeField(final BaseObject baseObject, final AbstractFieldSchema fieldSchema) throws Exception
 	{
 		getWriter().writeFieldElement(baseObject, fieldSchema);
 	}

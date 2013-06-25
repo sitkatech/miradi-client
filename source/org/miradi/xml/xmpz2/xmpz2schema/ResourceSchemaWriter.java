@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2012, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2013, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -18,32 +18,24 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.xmpz2.objectExporters;
+package org.miradi.xml.xmpz2.xmpz2schema;
 
-import org.miradi.objects.BaseObject;
-import org.miradi.schemas.ProjectResourceSchema;
-import org.miradi.xml.xmpz2.BaseObjectExporter;
-import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
+import org.miradi.objects.ProjectResource;
+import org.miradi.schemas.BaseObjectSchema;
 
-public class ProjectResourceExporter extends BaseObjectExporter
+public class ResourceSchemaWriter extends BaseObjectSchemaWriter
 {
-	public ProjectResourceExporter(Xmpz2XmlWriter writerToUse)
+	public ResourceSchemaWriter(Xmpz2XmlSchemaCreator creatorToUse, BaseObjectSchema baseObjectSchemaToUse)
 	{
-		super(writerToUse, ProjectResourceSchema.getObjectType());
+		super(creatorToUse, baseObjectSchemaToUse);
 	}
 	
 	@Override
 	protected boolean shouldOmitField(String tag)
 	{
-		if (tag.equals(BaseObject.TAG_LABEL))
+		if (tag.equals(ProjectResource.TAG_LABEL))
 			return true;
 		
 		return super.shouldOmitField(tag);
-	}
-
-	@Override
-	public String getExporterContainerName(int objectType)
-	{
-		return PROJECT_RESOURCE;
 	}
 }
