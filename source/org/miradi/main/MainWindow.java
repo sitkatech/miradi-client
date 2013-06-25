@@ -573,18 +573,9 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 				return;
 			}
 
-			validateProjectVersion(projectFile);
-			MigrationManager migrationManager = new MigrationManager();
-			if (migrationManager.needsMigration(projectFile))
-			{
-				final String[] labels = new String[]{ConstantButtonNames.MIGRATE, ConstantButtonNames.CANCEL};
-				final String message = EAM.text("Project needs migration, do you want to continue?");
-				final int result = EAM.confirmDialog(EAM.text("Migration"), message, labels);
-				if (result != 0)
-					return;
-			
-				migrationManager.safelyMigrate(projectFile);
-			}
+			boolean didUserCancel = userConfirmedMigration(projectFile);
+			if (didUserCancel)
+				return;
 			
 			createOrOpenProjectInBackground(projectFile);
 			projectSaver.startSaving(projectFile);
@@ -662,6 +653,27 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			updateActionsAndStatusBar();
 			project.endCommandSideEffectMode();
 		}
+	}
+
+	private boolean userConfirmedMigration(File projectFile) throws Exception
+	{
+		if (!projectFile.exists())
+			return false;
+		
+		validateProjectVersion(projectFile);
+		MigrationManager migrationManager = new MigrationManager();
+		if (migrationManager.needsMigration(projectFile))
+		{
+			final String[] labels = new String[]{ConstantButtonNames.MIGRATE, ConstantButtonNames.CANCEL};
+			final String message = EAM.text("Project needs migration, do you want to continue?");
+			final int result = EAM.confirmDialog(EAM.text("Migration"), message, labels);
+			if (result != 0)
+				return true;
+		
+			migrationManager.safelyMigrate(projectFile);
+		}
+		
+		return false;
 	}
 
 	private boolean canCreateOrOpenProject(File projectFile)
