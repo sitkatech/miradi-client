@@ -49,6 +49,7 @@ import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.questions.DiagramModeQuestion;
+import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TargetModeQuestion;
@@ -72,6 +73,13 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	public TestXmpz2XmlImporter(String name)
 	{
 		super(name);
+	}
+
+	public void testWorkPlanDiagramDataInclustion() throws Exception
+	{
+		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION, DiagramObjectDataInclusionQuestion.INCLUDE_CONCEPTUAL_MODEL_DATA_CODE);
+		ProjectForTesting importedProject = validateUsingStringWriter();
+		assertEquals("Incorrect data inclusion value?", DiagramObjectDataInclusionQuestion.INCLUDE_CONCEPTUAL_MODEL_DATA_CODE, importedProject.getMetadata().getData(ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION));
 	}
 	
 	public void testFutureStatus() throws Exception
