@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Tue Jun 25 17:54:32 EDT 2013 $
+# $LastChangedDate: Tue Jun 25 18:05:11 EDT 2013 $
 # $LastChangedRevision: 228 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/228'
 start = ConservationProject.element
@@ -736,8 +736,8 @@ FutureStatus.element = element miradi:FutureStatus
   attribute Id {xsd:integer} &
   element miradi:FutureStatusComment { formatted_text }? &
   element miradi:FutureStatusDate { vocabulary_date }? &
-  element miradi:FutureStatusDetail { formatted_text }? &
-  element miradi:FutureStatusLabel { formatted_text }? &
+  element miradi:FutureStatusDetails { formatted_text }? &
+  element miradi:FutureStatusName { formatted_text }? &
   element miradi:FutureStatusRating { vocabulary_status }? &
   element miradi:FutureStatusSummary { text }?
 }
