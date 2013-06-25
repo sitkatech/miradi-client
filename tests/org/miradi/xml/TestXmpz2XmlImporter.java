@@ -74,6 +74,15 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 		super(name);
 	}
 	
+	public void testFutureStatus() throws Exception
+	{
+		Cause cause = getProject().createCause();
+		Indicator indicator = getProject().createIndicator(cause);
+		getProject().createAndPopulateFutureStatus(indicator);
+		ProjectForTesting importedProject = validateUsingStringWriter();
+		assertEquals("Incorrect future stutus count?", 1, importedProject.getFutureStatusPool().size());
+	}
+	
 	public void testFormattedText() throws Exception
 	{
 		String sampleData = getProject().getSampleUserText(getProject().getMetadata(), ProjectMetadata.TAG_PROJECT_DESCRIPTION);
