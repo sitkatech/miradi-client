@@ -103,6 +103,7 @@ import org.miradi.utils.HtmlUtilitiesRelatedToShef;
 import org.miradi.utils.PointList;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.StringUtilities;
+import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.AbstractXmlImporter;
 import org.miradi.xml.AbstractXmlNamespaceContext;
 import org.miradi.xml.MiradiXmlValidator;
@@ -570,14 +571,15 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
 		Document documentToUse = documentBuilder.newDocument();
 		final Node clonedNode = node.cloneNode(true);
+		
 		Node adoptedNode = documentToUse.adoptNode(clonedNode);
 		Node appendedNode = documentToUse.appendChild(adoptedNode);
 		String nodeTreeAsString = nodeToString(appendedNode);
 		nodeTreeAsString = HtmlUtilitiesRelatedToShef.getNormalizedAndSanitizedHtmlText(nodeTreeAsString, AbstractUserTextDataWithHtmlFormatting.getAllowedHtmlTags());
-		
+		nodeTreeAsString = XmlUtilities2.getXmlEncodedDoubleQuotes(nodeTreeAsString);
 		importField(ref, destinationTag, nodeTreeAsString);
 	}
-	
+
 	private String nodeToString(Node node) 
 	{
 		StringWriter writer = new StringWriter();

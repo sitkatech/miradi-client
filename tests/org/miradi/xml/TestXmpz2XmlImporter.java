@@ -74,6 +74,18 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	{
 		super(name);
 	}
+	
+	public void testQuotes() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		final String EXPECTED_VALUE = "nima &quot;wow&quot; &amp; &gt; &lt; &apos;";
+		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_TEXT, EXPECTED_VALUE);
+		ProjectForTesting importedProject = validateUsingStringWriter();
+		ORef strateRef = importedProject.getStrategyPool().getORefList().getFirstElement();
+		Strategy importedStrategy = Strategy.find(importedProject, strateRef);
+		String importedData = importedStrategy.getData(Strategy.TAG_TEXT);
+		assertEquals("Incorrect data imported?", EXPECTED_VALUE, importedData);
+	}
 
 	public void testWorkPlanDiagramDataInclustion() throws Exception
 	{

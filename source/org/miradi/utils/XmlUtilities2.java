@@ -49,6 +49,11 @@ public class XmlUtilities2
 		return value.replaceAll("'", "&apos;");
 	}
 	
+	public static String getXmlEncodedDoubleQuotes(String value)
+	{
+		return value.replaceAll("\"", "&quot;");
+	}
+	
 	public static String convertXmlTextToHtml(final String value)
 	{
 		try
