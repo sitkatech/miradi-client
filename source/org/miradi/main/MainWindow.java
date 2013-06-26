@@ -574,7 +574,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			}
 
 			final boolean projectIsPreparedToBeOpened = prepareProjectToOpen(projectFile);
-			if (projectIsPreparedToBeOpened)
+			if (!projectIsPreparedToBeOpened)
 				return;
 			
 			createOrOpenProjectInBackground(projectFile);
@@ -657,23 +657,23 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 
 	private boolean prepareProjectToOpen(File projectFile) throws Exception
 	{
-		if (!projectFile.exists())
-			return false;
-		
-		validateProjectVersion(projectFile);
-		MigrationManager migrationManager = new MigrationManager();
-		if (migrationManager.needsMigration(projectFile))
-		{
-			final String[] labels = new String[]{ConstantButtonNames.MIGRATE, ConstantButtonNames.CANCEL};
-			final String message = EAM.text("Project needs migration, do you want to continue?");
-			final int result = EAM.confirmDialog(EAM.text("Migration"), message, labels);
-			if (result != 0)
-				return true;
-		
-			migrationManager.safelyMigrate(projectFile);
+		if (projectFile.exists())
+		{		
+			validateProjectVersion(projectFile);
+			MigrationManager migrationManager = new MigrationManager();
+			if (migrationManager.needsMigration(projectFile))
+			{
+				final String[] labels = new String[]{ConstantButtonNames.MIGRATE, ConstantButtonNames.CANCEL};
+				final String message = EAM.text("Project needs migration, do you want to continue?");
+				final int result = EAM.confirmDialog(EAM.text("Migration"), message, labels);
+				if (result != 0)
+					return false;
+
+				migrationManager.safelyMigrate(projectFile);
+			}
 		}
-		
-		return false;
+
+		return true;
 	}
 
 	private boolean canCreateOrOpenProject(File projectFile)
