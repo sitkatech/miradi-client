@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-26 14:31-0500\n"
+"POT-Creation-Date: 2013-06-26 17:01-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -5088,7 +5088,7 @@ msgstr ""
 msgid "Migrating..."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:669
+#: Miradi/source/org/miradi/main/MainWindow.java:668
 msgid "Migration"
 msgstr ""
 
@@ -5812,7 +5812,7 @@ msgstr ""
 "Назви файлів проекту не можуть містити іншу пунктуацію, ніж крапки, пробіли "
 "і _ ; і вони не можуть бути довшими, ніж 32 знаки."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:668
+#: Miradi/source/org/miradi/main/MainWindow.java:667
 msgid "Project needs migration, do you want to continue?"
 msgstr ""
 

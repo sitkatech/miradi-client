@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-26 14:31-0500\n"
+"POT-Creation-Date: 2013-06-26 17:01-0500\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -5302,7 +5302,7 @@ msgstr "Migrando Dados do Projeto"
 msgid "Migrating..."
 msgstr "Migrando"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:669
+#: Miradi/source/org/miradi/main/MainWindow.java:668
 msgid "Migration"
 msgstr ""
 
@@ -6056,7 +6056,7 @@ msgstr ""
 "Os nomes de arquivos de projetos não podem conter pontuação além de pontos, "
 "traços, e espaços; e não podem ter mais de 32 caracteres."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:668
+#: Miradi/source/org/miradi/main/MainWindow.java:667
 msgid "Project needs migration, do you want to continue?"
 msgstr ""
 
