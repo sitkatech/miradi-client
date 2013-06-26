@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-25 18:31-0500\n"
+"POT-Creation-Date: 2013-06-26 14:31-0500\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -4337,7 +4337,7 @@ msgid "Importing Miradi Data..."
 msgstr "Importando Dados de Miradi..."
 
 #: Miradi/source/org/miradi/xml/xmpz1/Xmpz1XmlImporter.java:112
-#: Miradi/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:152
+#: Miradi/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:153
 msgid "Importing XML..."
 msgstr "Importando XML..."
 
