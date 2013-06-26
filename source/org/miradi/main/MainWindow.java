@@ -573,8 +573,8 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 				return;
 			}
 
-			boolean didUserCancel = userConfirmedMigration(projectFile);
-			if (didUserCancel)
+			final boolean projectIsPreparedToBeOpened = prepareProjectToOpen(projectFile);
+			if (projectIsPreparedToBeOpened)
 				return;
 			
 			createOrOpenProjectInBackground(projectFile);
@@ -655,7 +655,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		}
 	}
 
-	private boolean userConfirmedMigration(File projectFile) throws Exception
+	private boolean prepareProjectToOpen(File projectFile) throws Exception
 	{
 		if (!projectFile.exists())
 			return false;
