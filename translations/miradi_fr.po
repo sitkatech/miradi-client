@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-26 14:31-0500\n"
+"POT-Creation-Date: 2013-06-26 17:01-0500\n"
 "PO-Revision-Date: 2013-04-02 10:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -5208,7 +5208,7 @@ msgstr "Migration des données du projet"
 msgid "Migrating..."
 msgstr "Migration..."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:669
+#: Miradi/source/org/miradi/main/MainWindow.java:668
 msgid "Migration"
 msgstr ""
 
@@ -5963,7 +5963,7 @@ msgstr ""
 "les signes de ponctuation admis sont les points, les traits d'union et les "
 "espaces. "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:668
+#: Miradi/source/org/miradi/main/MainWindow.java:667
 msgid "Project needs migration, do you want to continue?"
 msgstr ""
 
