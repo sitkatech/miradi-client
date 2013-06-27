@@ -123,6 +123,14 @@ public class RawProject
 	{
 		return idAssigner.takeNextId();
 	}
+	
+	public RawObject createNewRawObject(ORef ref)
+	{
+		RawObject newRawObject = new RawObject();
+		getRawPoolForType(ref.getObjectType()).put(ref, newRawObject);
+		
+		return newRawObject;
+	}
 
 	private HashMap<Integer, RawPool> typeToRawPoolMap;
 	private String exceptionLog;

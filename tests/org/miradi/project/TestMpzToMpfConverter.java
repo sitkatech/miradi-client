@@ -54,6 +54,23 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 		super(name);
 	}
 	
+	public void testIndicatorFutureStatusMigration() throws Exception
+	{
+		byte[] mpzBytes = readSampleMpz("/Sample-v61.mpz");
+		File mpz = writeToTemporaryFile(mpzBytes);
+		try
+		{
+			NullProgressMeter progressIndicator = new NullProgressMeter();
+			String convertedProjectString = MpzToMpfConverter.convert(mpz, progressIndicator);
+			ProjectForTesting project2 = createProjectFromDotMiradi(convertedProjectString);
+			assertTrue("Project should contain future status?", project2.getFutureStatusPool().size() > 0);
+		}
+		finally
+		{
+			mpz.delete();
+		}
+	}
+	
 	public void testGetExceptionsLog() throws Exception
 	{
 		verifyExceptionsLog(Deflater.DEFAULT_COMPRESSION);
@@ -182,7 +199,7 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 			//System.out.println(convertedProjectString);
 			
 			ProjectForTesting project2 = createProjectFromDotMiradi(convertedProjectString);
-			assertEquals(935, project2.getNormalIdAssigner().getHighestAssignedId());
+			assertEquals(944, project2.getNormalIdAssigner().getHighestAssignedId());
 			
 			SimpleThreatRatingFramework simpleThreatRatingFramework = project2.getSimpleThreatRatingFramework();
 			Collection<ThreatRatingBundle> bundles = simpleThreatRatingFramework.getAllBundles();
