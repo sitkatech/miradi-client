@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-26 14:31-0500\n"
+"POT-Creation-Date: 2013-06-26 17:01-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -5160,7 +5160,7 @@ msgstr ""
 msgid "Migrating..."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:669
+#: Miradi/source/org/miradi/main/MainWindow.java:668
 msgid "Migration"
 msgstr ""
 
@@ -5896,7 +5896,7 @@ msgstr ""
 "diversi da punti, trattini e spazi; e non possono essere più lunghi di 32 "
 "caratteri."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:668
+#: Miradi/source/org/miradi/main/MainWindow.java:667
 msgid "Project needs migration, do you want to continue?"
 msgstr ""
 
