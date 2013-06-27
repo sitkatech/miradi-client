@@ -27,7 +27,7 @@ import org.miradi.project.Project;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 
-public class SchemaOutputer
+public class SchemaConsoleWriter
 {
 	public static void main(String[] args)
 	{
