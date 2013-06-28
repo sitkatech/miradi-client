@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-27 11:16-0500\n"
+"POT-Creation-Date: 2013-06-28 16:46-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -5889,7 +5889,7 @@ msgstr "Швидка оцінка"
 msgid "Ratings"
 msgstr "Оцінки"
 
-#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:249
+#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:231
 msgid "Reading..."
 msgstr ""
 
