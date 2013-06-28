@@ -33,10 +33,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.Iterator;
+import java.util.Vector;
 import java.util.zip.ZipEntry;
 
 import org.martus.util.DirectoryUtils;
-import org.martus.util.UnicodeStringReader;
 import org.martus.util.UnicodeStringWriter;
 import org.martus.util.UnicodeWriter;
 import org.miradi.exceptions.CorruptSimpleThreatRatingDataException;
@@ -47,7 +47,6 @@ import org.miradi.ids.FactorId;
 import org.miradi.legacyprojects.DataUpgrader;
 import org.miradi.legacyprojects.Manifest;
 import org.miradi.main.EAM;
-import org.miradi.mpfMigrations.MigrationManager;
 import org.miradi.mpfMigrations.Miradi40TypeToFieldSchameTypesMap;
 import org.miradi.mpfMigrations.RawObject;
 import org.miradi.mpfMigrations.RawPool;
@@ -64,6 +63,7 @@ import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.FileUtilities;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.MiradiZipFile;
+import org.miradi.utils.MpfToMpzConverter;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.Translation;
@@ -149,13 +149,9 @@ public class MpzToMpfConverter extends AbstractConverter
 				
 			RawProject project = converter.convert(progressIndicator);
 			UnicodeStringWriter writer = UnicodeStringWriter.create();
-			RawProjectSaver.saveProject(project, writer);
+			RawProjectSaver.saveProject(project, writer, FIRST_LOW_VERSION_OF_MPF, FIRST_HIGH_VERSION_OF_MPF);
 
-			final String nonMigratedProjectAsString = writer.toString();
-			MigrationManager migrationManager = new MigrationManager();
-			final String migrate = migrationManager.migrate(nonMigratedProjectAsString);
-			
-			return resaveToNormalizeFields(migrate);
+			return writer.toString();
 		}
 		finally
 		{
@@ -163,20 +159,6 @@ public class MpzToMpfConverter extends AbstractConverter
 			if(migratedTempFile != null)
 				FileUtilities.deleteExistingWithRetries(migratedTempFile);
 		}
-	}
-
-	private static String resaveToNormalizeFields(final String migrateMpf)	throws Exception
-	{
-		Project tempProject = new Project();
-		tempProject.clear();
-		
-		final UnicodeStringReader reader = new UnicodeStringReader(migrateMpf);
-		ProjectLoader.loadProject(reader, tempProject);
-		
-		UnicodeStringWriter writer = UnicodeStringWriter.create();
-		ProjectSaver.saveProject(tempProject, writer);
-		
-		return writer.toString();
 	}
 
 	public static boolean needsMigration(MiradiZipFile originalZipFile) throws Exception
@@ -416,28 +398,73 @@ public class MpzToMpfConverter extends AbstractConverter
 		ZipEntry entry = zipFile.getEntry(objectEntryPath);
 		EnhancedJsonObject json = readJson(entry);
 		RawObject rawObject = getProject().createNewRawObject(ref);
-		Iterator keys = json.keys();
-		while (keys.hasNext())
+		
+		Vector<String> sortedKeys = json.getSortedKeys();
+		for (String tag : sortedKeys)
 		{
-			String tag = keys.next().toString();
 			String value = json.get(tag).toString();
-			value = getHtmlEncodedValue(ref, json, tag);
+			if (tag.equals("Id"))
+				continue;
+			
+			if (tag.equals(MpfToMpzConverter.FACTOR_TYPE_TAG))
+				continue;
+		
+			value = getFixedUpValue(ref, json, tag);
+			if (value.length() == 0)
+				continue;
+			
 			rawObject.put(tag, value);	
 		}
 	}
 	
-	private String getHtmlEncodedValue(ORef ref, EnhancedJsonObject json, String tag) throws Exception
+	private String getFixedUpValue(ORef ref, EnhancedJsonObject json, String tag) throws Exception
 	{
 		String value = json.optString(tag);
 		if (Miradi40TypeToFieldSchameTypesMap.isUserTextData(ref.getObjectType(), tag))
 		{
-			value = HtmlUtilities.convertPlainTextToHtmlText(value);
-			
+			return HtmlUtilities.convertPlainTextToHtmlText(value);
 		}
-		else if(Miradi40TypeToFieldSchameTypesMap.isCodeToUserStringMapData(ref.getObjectType(), tag))
+		if(Miradi40TypeToFieldSchameTypesMap.isCodeToUserStringMapData(ref.getObjectType(), tag))
 		{
-			value = encodeIndividualMapValues(value);
+			return encodeIndividualMapValues(value);
 		}
+		if(Miradi40TypeToFieldSchameTypesMap.isNumericData(ref.getObjectType(), tag))
+		{
+			return getSafeNumericValue(value);
+		}
+		if (Miradi40TypeToFieldSchameTypesMap.isIdField(ref.getObjectType(), tag))
+		{
+			return getSafeIdValue(value);
+		}
+		if (Miradi40TypeToFieldSchameTypesMap.isRefField(ref.getObjectType(), tag))
+		{
+			return getSafeRefValue(value);
+		}
+		
+		return value;
+	}
+
+	private String getSafeRefValue(String value)
+	{
+		ORef ref = ORef.createFromString(value);
+		if (ref.isInvalid())
+			return "";
+		
+		return value;
+	}
+
+	private String getSafeIdValue(String value)
+	{
+		if (value.equals("-1"))
+			return "";
+		
+		return value;
+	}
+
+	public String getSafeNumericValue(String value)
+	{
+		if (value.equals("0"))
+			return "";
 		
 		return value;
 	}
@@ -642,7 +669,9 @@ public class MpzToMpfConverter extends AbstractConverter
 	{
 		return project;
 	}
-	
+
+	public static final int FIRST_LOW_VERSION_OF_MPF = 3;
+	public static final int FIRST_HIGH_VERSION_OF_MPF = 3;
 	public static int REQUIRED_VERSION = 61;
 	private MiradiZipFile zipFile;
 	private String projectPrefix;

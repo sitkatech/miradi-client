@@ -136,7 +136,12 @@ abstract public class AbstractMiradiProjectSaver
 	
 	protected void writeFileHeader() throws Exception
 	{
-		getWriter().writeln(getBasicFileHeader() + " " + getLowVersion() + " " + getHighVersion());
+		getWriter().writeln(createLowHighVersionHeaderLine(getLowVersion(), getHighVersion()));
+	}
+
+	public static String createLowHighVersionHeaderLine(final int lowVersion,	final int highVersion)
+	{
+		return getBasicFileHeader() + " " + lowVersion + " " + highVersion;
 	}
 
 	protected int getHighVersion()

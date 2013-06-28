@@ -30,6 +30,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Vector;
 
 import org.martus.swing.Utilities;
@@ -123,6 +124,17 @@ public class Utility
 	public static Vector<String> convertToVector(String[] values)
 	{
 		return new Vector<String>(Arrays.asList(values));
+	}
+	
+	public static Vector<String> convertToVectorOfTypeString(Iterator iterator)
+	{
+		Vector<String> vector = new Vector<String>();
+		while(iterator.hasNext())
+		{
+			vector.add(iterator.next().toString());
+		}
+		
+		return vector;
 	}
 	
 	public static void copyFile(File copyFrom, File copyTo) throws Exception

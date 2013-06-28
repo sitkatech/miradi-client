@@ -22,6 +22,7 @@ package org.miradi.project;
 
 import java.io.File;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Vector;
 
 import org.martus.util.UnicodeStringWriter;
@@ -115,6 +116,7 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		//writing in leaf classes and duplication between leaf classes. 
 		BaseObject baseObject = getProject().findObject(ref);
 		Vector<String> fieldTags = baseObject.getStoredFieldTags();
+		Collections.sort(fieldTags);
 		for(int field = 0; field < fieldTags.size(); ++field)
 		{
 			String tag = fieldTags.get(field);

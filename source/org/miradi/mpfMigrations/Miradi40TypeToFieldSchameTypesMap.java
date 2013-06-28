@@ -42,9 +42,29 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 		return new Miradi40TypeToFieldSchameTypesMap().isCodeToUserStringMapField(objectType, fieldTag);
 	}
 	
+	public static boolean isNumericData(int objectType, String fieldTag)
+	{
+		return new Miradi40TypeToFieldSchameTypesMap().isNumerField(objectType, fieldTag);
+	}
+	
 	public static boolean hasType(int objectType)
 	{
 		return new Miradi40TypeToFieldSchameTypesMap().containsKey(objectType);
+	}
+	
+	public static boolean hasField(int objectType, String tag)
+	{
+		return new Miradi40TypeToFieldSchameTypesMap().hasFieldForType(objectType, tag);
+	}
+	
+	public static boolean isIdField(int objectType, String tag)
+	{
+		return new Miradi40TypeToFieldSchameTypesMap().isIdFieldType(objectType, tag);
+	}
+	
+	public static boolean isRefField(int objectType, String tag)
+	{
+		return new Miradi40TypeToFieldSchameTypesMap().isRefFieldType(objectType, tag);
 	}
 
 	private void fillMap()
@@ -55,7 +75,6 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 
 		HashMap<String, String> fieldsForType2 = new HashMap<String, String>();
 		fieldsForType2.put("Label", EXPANDING_USER_TEXT_DATA);
-		
 		fieldsForType2.put("Numeric", INTEGER_DATA);
 		fieldsForType2.put("Color", INTEGER_DATA);
 		put(2, fieldsForType2);
@@ -65,25 +84,11 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 		fieldsForType3.put("Comments", MULTI_LINE_USER_TEXT_DATA);
 		fieldsForType3.put("Details", MULTI_LINE_USER_TEXT_DATA);
 		fieldsForType3.put("ShortLabel", SINGLE_LINE_USER_TEXT_DATA);
-		fieldsForType3.put("PseudoTagObjectives", PSEUDO_STRING_DATA);
-		fieldsForType3.put("PseudoTagDirectThreats", PSEUDO_STRING_DATA);
-		fieldsForType3.put("PseudoTagTargets", PSEUDO_STRING_DATA);
-		fieldsForType3.put("PseudoTagIndicators", PSEUDO_STRING_DATA);
-		fieldsForType3.put("PseudoTagDiagramRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType3.put("PseudoTagResultsChainDiagramRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType3.put("PseudoTagReferringTagRefs", PSEUDO_REFLIST_DATA);
 		fieldsForType3.put("SubtaskIds", "IdListData");
-		fieldsForType3.put("LeaderResource", "ORefData");
+		fieldsForType3.put("LeaderResource", OREF_DATA);
 		fieldsForType3.put("AssignmentIds", "IdListData");
 		fieldsForType3.put("ExpenseRefs", "RefListData");
-		fieldsForType3.put("EffortDatesTotal", PSEUDO_STRING_DATA);
 		fieldsForType3.put("ProgressReportRefs", "RefListData");
-		fieldsForType3.put("PseudoLatestProgressReportCode", PSEUDO_QUESTION_DATA);
-		fieldsForType3.put("PseudoLatestProgressReportDetails", PSEUDO_STRING_DATA);
-		fieldsForType3.put("StrategyLabel", PSEUDO_STRING_DATA);
-		fieldsForType3.put("IndicatorLabel", PSEUDO_STRING_DATA);
-		fieldsForType3.put("PseudoTaskRelevantObjectiveRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType3.put("PseudoTaskRelevantGoalRefs", PSEUDO_REFLIST_DATA);
 		put(3, fieldsForType3);
 
 		HashMap<String, String> fieldsForType5 = new HashMap<String, String>();
@@ -92,20 +97,20 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 		fieldsForType5.put("DiagramHiddenTypes", "CodeListData");
 		fieldsForType5.put("BudgetRollupReportTypes", "CodeListData");
 		fieldsForType5.put("SingleLevelChoice", "ChoiceData");
-		fieldsForType5.put("CustomPlanRef", "ORefData");
+		fieldsForType5.put("CustomPlanRef", OREF_DATA);
 		fieldsForType5.put("ActionTreeConfigurationChoice", "ChoiceData");
 		fieldsForType5.put("MonitoringTreeConfigurationChoice", "ChoiceData");
 		fieldsForType5.put("CurrentWizardStep", "CodeData");
 		fieldsForType5.put("CurrentTab", INTEGER_DATA);
-		fieldsForType5.put("CurrentConceptualModelRef", "ORefData");
-		fieldsForType5.put("CurrentResultsChainRef", "ORefData");
+		fieldsForType5.put("CurrentConceptualModelRef", OREF_DATA);
+		fieldsForType5.put("CurrentResultsChainRef", OREF_DATA);
 		fieldsForType5.put("ChainModeFactorRefs", "RefListData");
 		put(5, fieldsForType5);
 
 		HashMap<String, String> fieldsForType6 = new HashMap<String, String>();
 		fieldsForType6.put("Label", EXPANDING_USER_TEXT_DATA);
-		fieldsForType6.put("FromRef", "ORefData");
-		fieldsForType6.put("ToRef", "ORefData");
+		fieldsForType6.put("FromRef", OREF_DATA);
+		fieldsForType6.put("ToRef", OREF_DATA);
 		fieldsForType6.put("BidirectionalLink", "BooleanData");
 		put(6, fieldsForType6);
 
@@ -152,23 +157,10 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 		fieldsForType8.put("FutureStatusSummary", SINGLE_LINE_USER_TEXT_DATA);
 		fieldsForType8.put("FutureStatusDetail", MULTI_LINE_USER_TEXT_DATA);
 		fieldsForType8.put("FutureStatusComment", MULTI_LINE_USER_TEXT_DATA);
-		fieldsForType8.put("LeaderResource", "ORefData");
+		fieldsForType8.put("LeaderResource", OREF_DATA);
 		fieldsForType8.put("AssignmentIds", "IdListData");
 		fieldsForType8.put("ExpenseRefs", "RefListData");
-		fieldsForType8.put("EffortDatesTotal", PSEUDO_STRING_DATA);
 		fieldsForType8.put("ProgressReportRefs", "RefListData");
-		fieldsForType8.put("PseudoLatestProgressReportCode", PSEUDO_QUESTION_DATA);
-		fieldsForType8.put("PseudoLatestProgressReportDetails", PSEUDO_STRING_DATA);
-		fieldsForType8.put("Targets", PSEUDO_STRING_DATA);
-		fieldsForType8.put("DirectThreats", PSEUDO_STRING_DATA);
-		fieldsForType8.put("Strategies", PSEUDO_STRING_DATA);
-		fieldsForType8.put("PseudoTagFactor", PSEUDO_STRING_DATA);
-		fieldsForType8.put("Methods", PSEUDO_STRING_DATA);
-		fieldsForType8.put("PriorityValue", PSEUDO_QUESTION_DATA);
-		fieldsForType8.put("StatusValue", PSEUDO_QUESTION_DATA);
-		fieldsForType8.put("RatingSourceValue", PSEUDO_QUESTION_DATA);
-		fieldsForType8.put("LatestMeasurementRef", PSEUDO_QUESTION_DATA);
-		fieldsForType8.put("FutureStatusRatingValue", PSEUDO_QUESTION_DATA);
 		put(8, fieldsForType8);
 
 		HashMap<String, String> fieldsForType9 = new HashMap<String, String>();
@@ -179,14 +171,6 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 		fieldsForType9.put("RelevantIndicatorSet", "RelevancyOverrideSetData");
 		fieldsForType9.put("RelevantStrategySet", "RelevancyOverrideSetData");
 		fieldsForType9.put("ProgressPrecentRefs", "RefListData");
-		fieldsForType9.put("PseudoTagTargets", PSEUDO_STRING_DATA);
-		fieldsForType9.put("PseudoTagDirectThreats", PSEUDO_STRING_DATA);
-		fieldsForType9.put("PseudoTagFactor", PSEUDO_STRING_DATA);
-		fieldsForType9.put("PseudoRelevantIndicatorRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType9.put("PseudoDesireRelevantStrategyRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType9.put("PseudoRelevantActivityRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType9.put("PseudoLatestProgressPercentComplete", PSEUDO_STRING_DATA);
-		fieldsForType9.put("PseudoLatestProgressPercentDetails", PSEUDO_STRING_DATA);
 		put(9, fieldsForType9);
 
 		HashMap<String, String> fieldsForType10 = new HashMap<String, String>();
@@ -197,14 +181,6 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 		fieldsForType10.put("RelevantIndicatorSet", "RelevancyOverrideSetData");
 		fieldsForType10.put("RelevantStrategySet", "RelevancyOverrideSetData");
 		fieldsForType10.put("ProgressPrecentRefs", "RefListData");
-		fieldsForType10.put("PseudoTagTargets", PSEUDO_STRING_DATA);
-		fieldsForType10.put("PseudoTagDirectThreats", PSEUDO_STRING_DATA);
-		fieldsForType10.put("PseudoTagFactor", PSEUDO_STRING_DATA);
-		fieldsForType10.put("PseudoRelevantIndicatorRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType10.put("PseudoDesireRelevantStrategyRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType10.put("PseudoRelevantActivityRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType10.put("PseudoLatestProgressPercentComplete", PSEUDO_STRING_DATA);
-		fieldsForType10.put("PseudoLatestProgressPercentDetails", PSEUDO_STRING_DATA);
 		put(10, fieldsForType10);
 
 		HashMap<String, String> fieldsForType11 = new HashMap<String, String>();
@@ -224,7 +200,7 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 		fieldsForType11.put("CurrencyType", "ChoiceData");
 		fieldsForType11.put("CurrencySymbol", SINGLE_LINE_USER_TEXT_DATA);
 		fieldsForType11.put("TotalBudgetForFunding", NUMBER_DATA);
-		fieldsForType11.put("BudgetSecuredPercent", "PercentageData");
+		fieldsForType11.put("BudgetSecuredPercent", PERCENTAGE_DATA);
 		fieldsForType11.put("FiscalYearStart", "ChoiceData");
 		fieldsForType11.put("FullTimeEmployeeDaysPerYear", NUMBER_DATA);
 		fieldsForType11.put("QuarterColumnsVisibility", "ChoiceData");
@@ -271,15 +247,13 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 		fieldsForType11.put("XenodataRefs", "StringRefMapData");
 		fieldsForType11.put("TargetMode", "ChoiceData");
 		fieldsForType11.put("WorkPlanDiagramDataInclusion", "ChoiceData");
-		fieldsForType11.put("PseudoTagProjectFilename", PSEUDO_STRING_DATA);
-		fieldsForType11.put("AllThreatClassifications", PSEUDO_STRING_DATA);
 		put(11, fieldsForType11);
 
 		HashMap<String, String> fieldsForType13 = new HashMap<String, String>();
 		fieldsForType13.put("Label", EXPANDING_USER_TEXT_DATA);
-		fieldsForType13.put("WrappedLinkId", "BaseIdData");
-		fieldsForType13.put("FromDiagramFactorId", "BaseIdData");
-		fieldsForType13.put("ToDiagramFactorId", "BaseIdData");
+		fieldsForType13.put("WrappedLinkId", BASE_ID_DATA);
+		fieldsForType13.put("FromDiagramFactorId", BASE_ID_DATA);
+		fieldsForType13.put("ToDiagramFactorId", BASE_ID_DATA);
 		fieldsForType13.put("BendPoints", "PointListData");
 		fieldsForType13.put("GroupedDiagramLinkRefs", "RefListData");
 		fieldsForType13.put("Color", "ChoiceData");
@@ -289,13 +263,11 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 		HashMap<String, String> fieldsForType14 = new HashMap<String, String>();
 		fieldsForType14.put("Label", EXPANDING_USER_TEXT_DATA);
 		fieldsForType14.put("Details", "DateUnitEffortListData");
-		fieldsForType14.put("CategoryOneRef", "ORefData");
-		fieldsForType14.put("CategoryTwoRef", "ORefData");
-		fieldsForType14.put("ResourceId", "BaseIdData");
-		fieldsForType14.put("AccountingCode", "BaseIdData");
-		fieldsForType14.put("FundingSource", "BaseIdData");
-		fieldsForType14.put("PseudoTagProjectResourceLabel", PSEUDO_STRING_DATA);
-		fieldsForType14.put("PseudoTagOwningFactorName", PSEUDO_STRING_DATA);
+		fieldsForType14.put("CategoryOneRef", OREF_DATA);
+		fieldsForType14.put("CategoryTwoRef", OREF_DATA);
+		fieldsForType14.put("ResourceId", BASE_ID_DATA);
+		fieldsForType14.put("AccountingCode", BASE_ID_DATA);
+		fieldsForType14.put("FundingSource", BASE_ID_DATA);
 		put(14, fieldsForType14);
 
 		HashMap<String, String> fieldsForType15 = new HashMap<String, String>();
@@ -317,14 +289,13 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 		fieldsForType17.put("Details", MULTI_LINE_USER_TEXT_DATA);
 		fieldsForType17.put("KeyEcologicalAttributeType", "ChoiceData");
 		fieldsForType17.put("ShortLabel", SINGLE_LINE_USER_TEXT_DATA);
-		fieldsForType17.put("ViabilityStatus", PSEUDO_STRING_DATA);
 		put(17, fieldsForType17);
 
 		HashMap<String, String> fieldsForType18 = new HashMap<String, String>();
 		fieldsForType18.put("Label", EXPANDING_USER_TEXT_DATA);
 		fieldsForType18.put("Size", "DimensionData");
 		fieldsForType18.put("Location", "DiagramPointData");
-		fieldsForType18.put("WrappedFactorRef", "ORefData");
+		fieldsForType18.put("WrappedFactorRef", OREF_DATA);
 		fieldsForType18.put("FontSize", "ChoiceData");
 		fieldsForType18.put("FontColor", "ChoiceData");
 		fieldsForType18.put("FontStyle", "ChoiceData");
@@ -342,8 +313,6 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 		fieldsForType19.put("HiddenTypes", "CodeListData");
 		fieldsForType19.put("SelectedTaggedObjectSetRefs", "RefListData");
 		fieldsForType19.put("ZoomScale", NUMBER_DATA);
-		fieldsForType19.put("PseudoCombinedLabel", PSEUDO_STRING_DATA);
-		fieldsForType19.put("PseudoDraftStrategies", PSEUDO_REFLIST_DATA);
 		put(19, fieldsForType19);
 
 		HashMap<String, String> fieldsForType20 = new HashMap<String, String>();
@@ -351,18 +320,10 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 		fieldsForType20.put("Comments", MULTI_LINE_USER_TEXT_DATA);
 		fieldsForType20.put("Text", MULTI_LINE_USER_TEXT_DATA);
 		fieldsForType20.put("ShortLabel", SINGLE_LINE_USER_TEXT_DATA);
-		fieldsForType20.put("PseudoTagObjectives", PSEUDO_STRING_DATA);
-		fieldsForType20.put("PseudoTagDirectThreats", PSEUDO_STRING_DATA);
-		fieldsForType20.put("PseudoTagTargets", PSEUDO_STRING_DATA);
-		fieldsForType20.put("PseudoTagIndicators", PSEUDO_STRING_DATA);
-		fieldsForType20.put("PseudoTagDiagramRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType20.put("PseudoTagResultsChainDiagramRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType20.put("PseudoTagReferringTagRefs", PSEUDO_REFLIST_DATA);
 		fieldsForType20.put("TaxonomyCode", "ChoiceData");
 		fieldsForType20.put("IsDirectThreat", "BooleanData");
 		fieldsForType20.put("IndicatorIds", "IdListData");
 		fieldsForType20.put("ObjectiveIds", "IdListData");
-		fieldsForType20.put("TaxonomyCodeValue", PSEUDO_QUESTION_DATA);
 		put(20, fieldsForType20);
 
 		HashMap<String, String> fieldsForType21 = new HashMap<String, String>();
@@ -370,36 +331,18 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 		fieldsForType21.put("Comments", MULTI_LINE_USER_TEXT_DATA);
 		fieldsForType21.put("Text", MULTI_LINE_USER_TEXT_DATA);
 		fieldsForType21.put("ShortLabel", SINGLE_LINE_USER_TEXT_DATA);
-		fieldsForType21.put("PseudoTagObjectives", PSEUDO_STRING_DATA);
-		fieldsForType21.put("PseudoTagDirectThreats", PSEUDO_STRING_DATA);
-		fieldsForType21.put("PseudoTagTargets", PSEUDO_STRING_DATA);
-		fieldsForType21.put("PseudoTagIndicators", PSEUDO_STRING_DATA);
-		fieldsForType21.put("PseudoTagDiagramRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType21.put("PseudoTagResultsChainDiagramRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType21.put("PseudoTagReferringTagRefs", PSEUDO_REFLIST_DATA);
 		fieldsForType21.put("Status", "ChoiceData");
 		fieldsForType21.put("ActivityIds", "IdListData");
 		fieldsForType21.put("TaxonomyCode", "ChoiceData");
 		fieldsForType21.put("ImpactRating", "ChoiceData");
 		fieldsForType21.put("FeasibilityRating", "ChoiceData");
 		fieldsForType21.put("LegacyTncStrategyRanking", MULTI_LINE_USER_TEXT_DATA);
-		fieldsForType21.put("LeaderResource", "ORefData");
+		fieldsForType21.put("LeaderResource", OREF_DATA);
 		fieldsForType21.put("AssignmentIds", "IdListData");
 		fieldsForType21.put("ExpenseRefs", "RefListData");
-		fieldsForType21.put("EffortDatesTotal", PSEUDO_STRING_DATA);
 		fieldsForType21.put("ProgressReportRefs", "RefListData");
-		fieldsForType21.put("PseudoLatestProgressReportCode", PSEUDO_QUESTION_DATA);
-		fieldsForType21.put("PseudoLatestProgressReportDetails", PSEUDO_STRING_DATA);
 		fieldsForType21.put("IndicatorIds", "IdListData");
 		fieldsForType21.put("ObjectiveIds", "IdListData");
-		fieldsForType21.put("RatingSummary", PSEUDO_STRING_DATA);
-		fieldsForType21.put("ImpactRatingValue", PSEUDO_QUESTION_DATA);
-		fieldsForType21.put("FeasibilityRatingValue", PSEUDO_QUESTION_DATA);
-		fieldsForType21.put("RatingSummaryValue", PSEUDO_QUESTION_DATA);
-		fieldsForType21.put("TaxonomyCodeValue", PSEUDO_QUESTION_DATA);
-		fieldsForType21.put("PseudoTagActivities", PSEUDO_STRING_DATA);
-		fieldsForType21.put("PseudoStrategyRelevantGoalRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType21.put("PseudoStrategyRelevantObjectiveRefs", PSEUDO_REFLIST_DATA);
 		put(21, fieldsForType21);
 
 		HashMap<String, String> fieldsForType22 = new HashMap<String, String>();
@@ -407,13 +350,6 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 		fieldsForType22.put("Comments", MULTI_LINE_USER_TEXT_DATA);
 		fieldsForType22.put("Text", MULTI_LINE_USER_TEXT_DATA);
 		fieldsForType22.put("ShortLabel", SINGLE_LINE_USER_TEXT_DATA);
-		fieldsForType22.put("PseudoTagObjectives", PSEUDO_STRING_DATA);
-		fieldsForType22.put("PseudoTagDirectThreats", PSEUDO_STRING_DATA);
-		fieldsForType22.put("PseudoTagTargets", PSEUDO_STRING_DATA);
-		fieldsForType22.put("PseudoTagIndicators", PSEUDO_STRING_DATA);
-		fieldsForType22.put("PseudoTagDiagramRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType22.put("PseudoTagResultsChainDiagramRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType22.put("PseudoTagReferringTagRefs", PSEUDO_REFLIST_DATA);
 		fieldsForType22.put("TargetStatus", "ChoiceData");
 		fieldsForType22.put("ViabilityMode", "ChoiceData");
 		fieldsForType22.put("CurrentStatusJustification", MULTI_LINE_USER_TEXT_DATA);
@@ -421,13 +357,9 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 		fieldsForType22.put("GoalIds", "IdListData");
 		fieldsForType22.put("KeyEcologicalAttributeIds", "IdListData");
 		fieldsForType22.put("IndicatorIds", "IdListData");
-		fieldsForType22.put("TargetViability", PSEUDO_STRING_DATA);
-		fieldsForType22.put("TargetStatusValue", PSEUDO_QUESTION_DATA);
-		fieldsForType22.put("ViabilityModeValue", PSEUDO_QUESTION_DATA);
 		fieldsForType22.put("StressRefs", "RefListData");
 		fieldsForType22.put("SpeciesLatinName", SINGLE_LINE_USER_TEXT_DATA);
 		fieldsForType22.put("HabitatAssociation", "CodeListData");
-		fieldsForType22.put("HabitatAssociationValue", PSEUDO_QUESTION_DATA);
 		put(22, fieldsForType22);
 
 		HashMap<String, String> fieldsForType23 = new HashMap<String, String>();
@@ -435,13 +367,6 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 		fieldsForType23.put("Comments", MULTI_LINE_USER_TEXT_DATA);
 		fieldsForType23.put("Text", MULTI_LINE_USER_TEXT_DATA);
 		fieldsForType23.put("ShortLabel", SINGLE_LINE_USER_TEXT_DATA);
-		fieldsForType23.put("PseudoTagObjectives", PSEUDO_STRING_DATA);
-		fieldsForType23.put("PseudoTagDirectThreats", PSEUDO_STRING_DATA);
-		fieldsForType23.put("PseudoTagTargets", PSEUDO_STRING_DATA);
-		fieldsForType23.put("PseudoTagIndicators", PSEUDO_STRING_DATA);
-		fieldsForType23.put("PseudoTagDiagramRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType23.put("PseudoTagResultsChainDiagramRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType23.put("PseudoTagReferringTagRefs", PSEUDO_REFLIST_DATA);
 		fieldsForType23.put("IndicatorIds", "IdListData");
 		fieldsForType23.put("ObjectiveIds", "IdListData");
 		put(23, fieldsForType23);
@@ -455,7 +380,6 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 		fieldsForType24.put("HiddenTypes", "CodeListData");
 		fieldsForType24.put("SelectedTaggedObjectSetRefs", "RefListData");
 		fieldsForType24.put("ZoomScale", NUMBER_DATA);
-		fieldsForType24.put("PseudoCombinedLabel", PSEUDO_STRING_DATA);
 		put(24, fieldsForType24);
 
 		HashMap<String, String> fieldsForType25 = new HashMap<String, String>();
@@ -463,14 +387,7 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 		fieldsForType25.put("Comments", MULTI_LINE_USER_TEXT_DATA);
 		fieldsForType25.put("Text", MULTI_LINE_USER_TEXT_DATA);
 		fieldsForType25.put("ShortLabel", SINGLE_LINE_USER_TEXT_DATA);
-		fieldsForType25.put("PseudoTagObjectives", PSEUDO_STRING_DATA);
-		fieldsForType25.put("PseudoTagDirectThreats", PSEUDO_STRING_DATA);
-		fieldsForType25.put("PseudoTagTargets", PSEUDO_STRING_DATA);
-		fieldsForType25.put("PseudoTagIndicators", PSEUDO_STRING_DATA);
-		fieldsForType25.put("PseudoTagDiagramRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType25.put("PseudoTagResultsChainDiagramRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType25.put("PseudoTagReferringTagRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType25.put("RelatedDirectThreatRef", "ORefData");
+		fieldsForType25.put("RelatedDirectThreatRef", OREF_DATA);
 		fieldsForType25.put("IndicatorIds", "IdListData");
 		fieldsForType25.put("ObjectiveIds", "IdListData");
 		put(25, fieldsForType25);
@@ -480,13 +397,6 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 		fieldsForType26.put("Comments", MULTI_LINE_USER_TEXT_DATA);
 		fieldsForType26.put("Text", MULTI_LINE_USER_TEXT_DATA);
 		fieldsForType26.put("ShortLabel", SINGLE_LINE_USER_TEXT_DATA);
-		fieldsForType26.put("PseudoTagObjectives", PSEUDO_STRING_DATA);
-		fieldsForType26.put("PseudoTagDirectThreats", PSEUDO_STRING_DATA);
-		fieldsForType26.put("PseudoTagTargets", PSEUDO_STRING_DATA);
-		fieldsForType26.put("PseudoTagIndicators", PSEUDO_STRING_DATA);
-		fieldsForType26.put("PseudoTagDiagramRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType26.put("PseudoTagResultsChainDiagramRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType26.put("PseudoTagReferringTagRefs", PSEUDO_REFLIST_DATA);
 		put(26, fieldsForType26);
 
 		HashMap<String, String> fieldsForType29 = new HashMap<String, String>();
@@ -506,8 +416,8 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 
 		HashMap<String, String> fieldsForType31 = new HashMap<String, String>();
 		fieldsForType31.put("Label", EXPANDING_USER_TEXT_DATA);
-		fieldsForType31.put("ParentRef", "ORefData");
-		fieldsForType31.put("ChildRef", "ORefData");
+		fieldsForType31.put("ParentRef", OREF_DATA);
+		fieldsForType31.put("ChildRef", OREF_DATA);
 		fieldsForType31.put("CostPercentage", INTEGER_DATA);
 		put(31, fieldsForType31);
 
@@ -527,26 +437,17 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 		fieldsForType33.put("Comments", MULTI_LINE_USER_TEXT_DATA);
 		fieldsForType33.put("Detail", MULTI_LINE_USER_TEXT_DATA);
 		fieldsForType33.put("ShortLabel", SINGLE_LINE_USER_TEXT_DATA);
-		fieldsForType33.put("PseudoTagObjectives", PSEUDO_STRING_DATA);
-		fieldsForType33.put("PseudoTagDirectThreats", PSEUDO_STRING_DATA);
-		fieldsForType33.put("PseudoTagTargets", PSEUDO_STRING_DATA);
-		fieldsForType33.put("PseudoTagIndicators", PSEUDO_STRING_DATA);
-		fieldsForType33.put("PseudoTagDiagramRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType33.put("PseudoTagResultsChainDiagramRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType33.put("PseudoTagReferringTagRefs", PSEUDO_REFLIST_DATA);
 		fieldsForType33.put("Scope", "ChoiceData");
 		fieldsForType33.put("Severity", "ChoiceData");
-		fieldsForType33.put("PseudoStressRating", PSEUDO_QUESTION_DATA);
 		put(33, fieldsForType33);
 
 		HashMap<String, String> fieldsForType34 = new HashMap<String, String>();
 		fieldsForType34.put("Label", EXPANDING_USER_TEXT_DATA);
 		fieldsForType34.put("Contribution", "ChoiceData");
 		fieldsForType34.put("Irreversibility", "ChoiceData");
-		fieldsForType34.put("StressRef", "ORefData");
-		fieldsForType34.put("ThreatRef", "ORefData");
+		fieldsForType34.put("StressRef", OREF_DATA);
+		fieldsForType34.put("ThreatRef", OREF_DATA);
 		fieldsForType34.put("IsActive", "BooleanData");
-		fieldsForType34.put("PseudoThreatRating", PSEUDO_QUESTION_DATA);
 		put(34, fieldsForType34);
 
 		HashMap<String, String> fieldsForType35 = new HashMap<String, String>();
@@ -554,13 +455,6 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 		fieldsForType35.put("Comments", MULTI_LINE_USER_TEXT_DATA);
 		fieldsForType35.put("Text", MULTI_LINE_USER_TEXT_DATA);
 		fieldsForType35.put("ShortLabel", SINGLE_LINE_USER_TEXT_DATA);
-		fieldsForType35.put("PseudoTagObjectives", PSEUDO_STRING_DATA);
-		fieldsForType35.put("PseudoTagDirectThreats", PSEUDO_STRING_DATA);
-		fieldsForType35.put("PseudoTagTargets", PSEUDO_STRING_DATA);
-		fieldsForType35.put("PseudoTagIndicators", PSEUDO_STRING_DATA);
-		fieldsForType35.put("PseudoTagDiagramRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType35.put("PseudoTagResultsChainDiagramRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType35.put("PseudoTagReferringTagRefs", PSEUDO_REFLIST_DATA);
 		put(35, fieldsForType35);
 
 		HashMap<String, String> fieldsForType36 = new HashMap<String, String>();
@@ -653,7 +547,7 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 
 		HashMap<String, String> fieldsForType45 = new HashMap<String, String>();
 		fieldsForType45.put("PercentDate", "DateData");
-		fieldsForType45.put("PercentComplete", "PercentageData");
+		fieldsForType45.put("PercentComplete", PERCENTAGE_DATA);
 		fieldsForType45.put("PercentCompleteNotes", MULTI_LINE_USER_TEXT_DATA);
 		put(45, fieldsForType45);
 
@@ -695,23 +589,16 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 		fieldsForType50.put("Comments", MULTI_LINE_USER_TEXT_DATA);
 		fieldsForType50.put("Text", MULTI_LINE_USER_TEXT_DATA);
 		fieldsForType50.put("ShortLabel", SINGLE_LINE_USER_TEXT_DATA);
-		fieldsForType50.put("PseudoTagObjectives", PSEUDO_STRING_DATA);
-		fieldsForType50.put("PseudoTagDirectThreats", PSEUDO_STRING_DATA);
-		fieldsForType50.put("PseudoTagTargets", PSEUDO_STRING_DATA);
-		fieldsForType50.put("PseudoTagIndicators", PSEUDO_STRING_DATA);
-		fieldsForType50.put("PseudoTagDiagramRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType50.put("PseudoTagResultsChainDiagramRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType50.put("PseudoTagReferringTagRefs", PSEUDO_REFLIST_DATA);
 		fieldsForType50.put("ScopeBoxColorCode", "ChoiceData");
 		put(50, fieldsForType50);
 
 		HashMap<String, String> fieldsForType51 = new HashMap<String, String>();
 		fieldsForType51.put("Label", EXPANDING_USER_TEXT_DATA);
 		fieldsForType51.put("Details", "DateUnitEffortListData");
-		fieldsForType51.put("CategoryOneRef", "ORefData");
-		fieldsForType51.put("CategoryTwoRef", "ORefData");
-		fieldsForType51.put("AccountingCodeRef", "ORefData");
-		fieldsForType51.put("FundingSourceRef", "ORefData");
+		fieldsForType51.put("CategoryOneRef", OREF_DATA);
+		fieldsForType51.put("CategoryTwoRef", OREF_DATA);
+		fieldsForType51.put("AccountingCodeRef", OREF_DATA);
+		fieldsForType51.put("FundingSourceRef", OREF_DATA);
 		put(51, fieldsForType51);
 
 		HashMap<String, String> fieldsForType52 = new HashMap<String, String>();
@@ -719,13 +606,6 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 		fieldsForType52.put("Comments", MULTI_LINE_USER_TEXT_DATA);
 		fieldsForType52.put("Text", MULTI_LINE_USER_TEXT_DATA);
 		fieldsForType52.put("ShortLabel", SINGLE_LINE_USER_TEXT_DATA);
-		fieldsForType52.put("PseudoTagObjectives", PSEUDO_STRING_DATA);
-		fieldsForType52.put("PseudoTagDirectThreats", PSEUDO_STRING_DATA);
-		fieldsForType52.put("PseudoTagTargets", PSEUDO_STRING_DATA);
-		fieldsForType52.put("PseudoTagIndicators", PSEUDO_STRING_DATA);
-		fieldsForType52.put("PseudoTagDiagramRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType52.put("PseudoTagResultsChainDiagramRefs", PSEUDO_REFLIST_DATA);
-		fieldsForType52.put("PseudoTagReferringTagRefs", PSEUDO_REFLIST_DATA);
 		fieldsForType52.put("TargetStatus", "ChoiceData");
 		fieldsForType52.put("ViabilityMode", "ChoiceData");
 		fieldsForType52.put("CurrentStatusJustification", MULTI_LINE_USER_TEXT_DATA);
@@ -733,9 +613,6 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 		fieldsForType52.put("GoalIds", "IdListData");
 		fieldsForType52.put("KeyEcologicalAttributeIds", "IdListData");
 		fieldsForType52.put("IndicatorIds", "IdListData");
-		fieldsForType52.put("TargetViability", PSEUDO_STRING_DATA);
-		fieldsForType52.put("TargetStatusValue", PSEUDO_QUESTION_DATA);
-		fieldsForType52.put("ViabilityModeValue", PSEUDO_QUESTION_DATA);
 		put(52, fieldsForType52);
 
 		HashMap<String, String> fieldsForType53 = new HashMap<String, String>();
@@ -770,74 +647,6 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 		fieldsForType58.put("CommentsMap", CODE_TO_USER_STRING_MAP_DATA);
 		fieldsForType58.put("FlagsMap", "CodeToCodeListMapData");
 		fieldsForType58.put("CurrentDashboardTab", "CodeData");
-		fieldsForType58.put("TeamMemberCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("ProjectScopeWordCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("TargetCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("HumanWelfareTargetCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("TargetWithKeaCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("TargetWithSimpleViabilityCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("ThreatCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("ContributingFactorCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("ThreatWithTaxonomyCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("ThreatTargetLinkCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("ThreatTargetLinkWithSimpleRatingCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("ThreatTargetLinkWithStressedBasedRatingCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("GoalCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("DraftStrategyCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("RankedDraftStrategyCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("StrategyCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("StrategyWithTaxonomyCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("ResultsChainCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("ObjectiveCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("ResultsChainWithObjectiveCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("ObjectivesRelevantToStrategiesPercentage", PSEUDO_STRING_DATA);
-		fieldsForType58.put("IrrelenvatStratgiesToObjectivesPercentage", PSEUDO_STRING_DATA);
-		fieldsForType58.put("KeaIndicatorsCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("FactorIndicatorsCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("ObjectivesRelevantToIndicatorsCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("ProjectPlanningStartDate", PSEUDO_STRING_DATA);
-		fieldsForType58.put("ProjectPlanningEndDate", PSEUDO_STRING_DATA);
-		fieldsForType58.put("StrategiesWithActivitiesCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("ActivitiesCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("ActivitiesAndTasksCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("ActivitiesAndTasksWithAssignmentsCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("IndicatorsWithMethodsCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("MethodsCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("IndicatorsCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("MethodsAndTasksCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("MethodsAndTasksWithAssignmentsCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("WorkPlanStartDate", PSEUDO_STRING_DATA);
-		fieldsForType58.put("WorkPlanEndDate", PSEUDO_STRING_DATA);
-		fieldsForType58.put("TotalProjectResourcesCosts", PSEUDO_STRING_DATA);
-		fieldsForType58.put("TotalProjectExpenses", PSEUDO_STRING_DATA);
-		fieldsForType58.put("TotalProposedBudget", PSEUDO_STRING_DATA);
-		fieldsForType58.put("CurrencySymbo", PSEUDO_STRING_DATA);
-		fieldsForType58.put("BudgetSecuredPercent", PSEUDO_STRING_DATA);
-		fieldsForType58.put("StrategiesAndAcitivitiesWithProgressReportCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("StrategiesAndActivitiesWithProgressReportPercent", PSEUDO_STRING_DATA);
-		fieldsForType58.put("IndicatorsAndMethodsWithProgressReportCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("IndicatorsAndMethodsWithProgressReportPercent", PSEUDO_STRING_DATA);
-		fieldsForType58.put("TargetsWithGoalsCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("ConceptualModelCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put(" AllFactorCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("IndicatorsRelevantToObjectivesPercentage", PSEUDO_STRING_DATA);
-		fieldsForType58.put("IndicatorsIrrelevantToObjectivesPercentage", PSEUDO_STRING_DATA);
-		fieldsForType58.put("TargetWithKeaIndicatorsCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("simpleViabilityIndicatorsCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("targetWithSimpleViabilityIndicatorsCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("DirectThreatIndicatorsCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("ThreatReductionResultIndicatorsCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("OtherOrganizationCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("IndicatorsWithDesiredFutureStatusSpecifiedPercentage", PSEUDO_STRING_DATA);
-		fieldsForType58.put("IndicatorsWithNoMeasurementCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("IndicatorsWithOneMeasurementCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("IndicatorsWithMoreThanOneMeasurementCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("ObjectivesWithNoPercentCompleteRecordCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("ObjectivesWithOnePercentCompleteRecordCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("ObjectivesWithMoreThanOnePercentCompleteRecordCount", PSEUDO_STRING_DATA);
-		fieldsForType58.put("TotalActionBudget", PSEUDO_STRING_DATA);
-		fieldsForType58.put("TotalMonitoringBudget", PSEUDO_STRING_DATA);
-		fieldsForType58.put("TotalFactorCount", PSEUDO_STRING_DATA);
 		put(58, fieldsForType58);
 
 		HashMap<String, String> fieldsForType59 = new HashMap<String, String>();
@@ -860,8 +669,34 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 	
 	private boolean isCodeToUserStringMapField(int objectType, String fieldTag)
 	{
-		Vector<String>  userTextFieldTypes = Utility.convertToVector(CODE_TO_USER_STRING_MAP_DATA);
-
+		return containFieldType(objectType, fieldTag, CODE_TO_USER_STRING_MAP_DATA);
+	}
+	
+	private boolean isNumerField(int objectType, String fieldTag)
+	{
+		Vector<String>  userTextFieldTypes = new Vector<String>();
+		userTextFieldTypes.add(INTEGER_DATA);
+		userTextFieldTypes.add(NUMBER_DATA);
+		userTextFieldTypes.add(FLOAT_DATA);
+		userTextFieldTypes.add(PERCENTAGE_DATA);
+		
+		return containFieldType(objectType, fieldTag, userTextFieldTypes);
+	}
+	
+	private boolean isIdFieldType(int objectType, String fieldTag)
+	{
+		return containFieldType(objectType, fieldTag, BASE_ID_DATA);
+	}
+	
+	private boolean isRefFieldType(int objectType, String fieldTag)
+	{
+		return containFieldType(objectType, fieldTag, OREF_DATA); 
+	}
+	
+	private boolean containFieldType(int objectType, String fieldTag, String userTextFieldTypesToMatch)
+	{
+		Vector<String>  userTextFieldTypes = Utility.convertToVector(userTextFieldTypesToMatch);
+		
 		return containFieldType(objectType, fieldTag, userTextFieldTypes);
 	}
 	
@@ -877,15 +712,22 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 		String fieldTypeForTag = tagToFieldType.get(fieldTag);
 		return userTextFieldTypesToMatch.contains(fieldTypeForTag);
 	}
+	
+	private boolean hasFieldForType(int objectType, String fieldTag)
+	{
+		HashMap<String, String> tagToFieldType = get(objectType);
+		
+		return tagToFieldType.containsKey(fieldTag);
+	}
 
 	private final String SINGLE_LINE_USER_TEXT_DATA = "SingleLineUserTextData";
 	private final String EXPANDING_USER_TEXT_DATA = "ExpandingUserTextData";
 	private final String MULTI_LINE_USER_TEXT_DATA = "MultiLineUserTextData";
 	private final String CODE_TO_USER_STRING_MAP_DATA = "CodeToUserStringMapData";
-	private final String PSEUDO_STRING_DATA = "PseudoStringData";
-	private final String PSEUDO_REFLIST_DATA = "PseudoRefListData";
-	private final String PSEUDO_QUESTION_DATA = "PseudoQuestionData";
 	private final String INTEGER_DATA = "IntegerData";
 	private final String NUMBER_DATA = "NumberData";
 	private final String FLOAT_DATA = "FloatData";
+	private final String PERCENTAGE_DATA = "PercentageData";
+	private final String OREF_DATA = "ORefData";
+	private final String BASE_ID_DATA = "BaseIdData";
 }

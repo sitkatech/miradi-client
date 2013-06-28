@@ -36,6 +36,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.main.ResourcesHandler;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.mpfMigrations.MigrationManager;
 import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Indicator;
@@ -52,23 +53,6 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 	public TestMpzToMpfConverter(String name)
 	{
 		super(name);
-	}
-	
-	public void testIndicatorFutureStatusMigration() throws Exception
-	{
-		byte[] mpzBytes = readSampleMpz("/Sample-v61.mpz");
-		File mpz = writeToTemporaryFile(mpzBytes);
-		try
-		{
-			NullProgressMeter progressIndicator = new NullProgressMeter();
-			String convertedProjectString = MpzToMpfConverter.convert(mpz, progressIndicator);
-			ProjectForTesting project2 = createProjectFromDotMiradi(convertedProjectString);
-			assertTrue("Project should contain future status?", project2.getFutureStatusPool().size() > 0);
-		}
-		finally
-		{
-			mpz.delete();
-		}
 	}
 	
 	public void testGetExceptionsLog() throws Exception
@@ -114,7 +98,7 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 		{
 			sampleException.append("\t");
 			sampleException.append(element[stackCount]);
-			sampleException.append("\n");
+			sampleException.append("\n"); 
 		}
 		
 		StringBuffer sampleExceptionUpToMaxLength = new StringBuffer();
@@ -194,7 +178,9 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 		{
 			NullProgressMeter progressIndicator = new NullProgressMeter();
 			String convertedProjectString = MpzToMpfConverter.convert(mpz, progressIndicator);
-			
+			MigrationManager migrationManager = new MigrationManager();
+			convertedProjectString = migrationManager.migrate(convertedProjectString);
+
 			// NOTE: For easier debugging
 			//System.out.println(convertedProjectString);
 			

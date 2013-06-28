@@ -27,7 +27,9 @@ public class ImportXmpzDoer extends ViewDoer
 	@Override
 	public boolean isAvailable() 
 	{
-		return !getProject().isOpen();
+		//FIXME uncomment this when import xmpz1 is working again
+		//return !getProject().isOpen();
+		return false;
 	}
 	
 	@Override
