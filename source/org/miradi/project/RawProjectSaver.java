@@ -35,7 +35,14 @@ public class RawProjectSaver extends AbstractMiradiProjectSaver
 {
 	public static void saveProject(final RawProject projectToUse, final UnicodeStringWriter writerToUse) throws Exception
 	{
+		saveProject(projectToUse, writerToUse, VERSION_LOW, VERSION_HIGH);
+	}
+	
+	public static void saveProject(final RawProject projectToUse, final UnicodeStringWriter writerToUse, int versionLow, int versionHigh) throws Exception
+	{
 		final RawProjectSaver projectSaver = new RawProjectSaver(projectToUse, writerToUse);
+		projectSaver.setVersionLow(versionLow);
+		projectSaver.setVersionHigh(versionHigh);
 		projectSaver.saveProject();
 	}
 	
@@ -76,13 +83,23 @@ public class RawProjectSaver extends AbstractMiradiProjectSaver
 	@Override
 	protected int getHighVersion()
 	{
-		return VERSION_HIGH;
+		return versionHigh;
 	}
 
 	@Override
 	protected int getLowVersion()
 	{
-		return VERSION_LOW;
+		return versionLow;
+	}
+	
+	private void setVersionHigh(int versionHighToUse)
+	{
+		versionHigh = versionHighToUse;
+	}
+
+	private void setVersionLow(int versionLowToUse)
+	{
+		versionLow = versionLowToUse;
 	}
 
 	@Override
@@ -127,4 +144,6 @@ public class RawProjectSaver extends AbstractMiradiProjectSaver
 	}
 	
 	private RawProject rawProject;
+	private int versionLow;
+	private int versionHigh;
 }

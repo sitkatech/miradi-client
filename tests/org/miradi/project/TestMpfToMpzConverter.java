@@ -26,13 +26,16 @@ import java.io.InputStream;
 import java.util.Collection;
 
 import org.martus.util.DirectoryUtils;
-import org.martus.util.UnicodeStringWriter;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.CodeToUserStringMap;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AbstractTarget;
+import org.miradi.objects.FutureStatus;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.MiradiShareProjectData;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.project.threatrating.ThreatRatingBundle;
@@ -123,19 +126,28 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 
 	private String verifyProject() throws Exception
 	{
+		clearAllFutureStatusDataToAvoidTheLackReverseMigration();
+		clearAllMiradiShareData();
+		String mpfSnapShot = ProjectSaver.createSnapShot(getProject());
+		String actualMpf = toMpzAndBack(mpfSnapShot);
+		String expectedMpf = toMpzAndBack(actualMpf);
+		
+
+		final String actualWithoutTimestamp = stripTimeStamp(actualMpf);
+		final String expectedWithoutTimeStamp = stripTimeStamp(expectedMpf);
+		assertEquals("Mpf was not converted to mpz?", expectedWithoutTimeStamp, actualWithoutTimestamp);
+
+		return changeLowHighVersion(expectedMpf);
+	}
+
+	private String toMpzAndBack(String mpfSnapShot)throws Exception
+	{
 		File temporaryMpzFile = File.createTempFile("$$$tempMpzFile", ".zip");
 		try
 		{
-			String mpfSnapShot = ProjectSaver.createSnapShot(getProject());
 			new MpfToMpzConverter(getProject()).convert(mpfSnapShot, temporaryMpzFile);
-			String actualMpf = MpzToMpfConverter.convert(temporaryMpzFile, new NullProgressMeter());
-			
-			String expectedMpfAsString = reloadIntoProjectToRemoveDefaultValues(actualMpf);
-				
-			actualMpf = stripTimeStamp(actualMpf);
-			String expectedMpfAsStringWithoutTimeStamp = stripTimeStamp(expectedMpfAsString);
-			assertEquals("Mpf was not converted to mpz?", expectedMpfAsStringWithoutTimeStamp, actualMpf);
-			return expectedMpfAsString;
+
+			return MpzToMpfConverter.convert(temporaryMpzFile, new NullProgressMeter());
 		}
 		finally 
 		{
@@ -143,17 +155,41 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 		}
 	}
 
-	private String reloadIntoProjectToRemoveDefaultValues(String actualMpf) throws Exception
+	private String changeLowHighVersion(String mpfContent)
 	{
-		ProjectForTesting projectToFill = loadIntoNewProject(actualMpf);
+		String latestHeaderLine = AbstractMiradiProjectSaver.createLowHighVersionHeaderLine(AbstractMiradiProjectSaver.VERSION_HIGH, AbstractMiradiProjectSaver.VERSION_LOW);
+		String headerLineForMpz = AbstractMiradiProjectSaver.createLowHighVersionHeaderLine(MpzToMpfConverter.FIRST_LOW_VERSION_OF_MPF, MpzToMpfConverter.FIRST_HIGH_VERSION_OF_MPF);
 		
-		UnicodeStringWriter stringWriter = UnicodeStringWriter.create();
-		ProjectSaver.saveProject(projectToFill, stringWriter);
-		
-		return stringWriter.toString();
+		return mpfContent.replaceAll(headerLineForMpz, latestHeaderLine);
 	}
-	
-	public ProjectForTesting loadIntoNewProject(String loadedProject) throws Exception
+
+	private void clearAllMiradiShareData() throws Exception
+	{
+		ORefList miradiShareProjectDataRefs = getProject().getPool(ObjectType.MIRADI_SHARE_PROJECT_DATA).getORefList();
+		for(ORef futureStatusRef : miradiShareProjectDataRefs)
+		{
+			MiradiShareProjectData miradiShareProjectData = MiradiShareProjectData.find(getProject(), futureStatusRef);
+			getProject().deleteObject(miradiShareProjectData);
+		}
+	}
+
+	private void clearAllFutureStatusDataToAvoidTheLackReverseMigration() throws Exception
+	{
+		ORefList indictorRefs = getProject().getIndicatorPool().getORefList();
+		for(ORef indicatorRef : indictorRefs)
+		{
+			getProject().fillObjectUsingCommand(indicatorRef, Indicator.TAG_FUTURE_STATUS_REFS, "");
+		}
+		
+		ORefList futureStatusRefs = getProject().getFutureStatusPool().getORefList();
+		for(ORef futureStatusRef : futureStatusRefs)
+		{
+			FutureStatus futureStatus = FutureStatus.find(getProject(), futureStatusRef);
+			getProject().deleteObject(futureStatus);
+		}
+	}
+
+	private ProjectForTesting loadIntoNewProject(String loadedProject) throws Exception
 	{
 		InputStream is = new ByteArrayInputStream(StringUtilities.getUtf8EncodedBytes(loadedProject));
 		ProjectForTesting projectToFill = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToFillWithMpf");

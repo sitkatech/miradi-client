@@ -282,7 +282,6 @@ public class MpfToMpzConverter extends AbstractConverter
 	private Map<String, String> addCustomTagValues(int objectType)
 	{
 		HashMap<String, String> tagToValueMap = new HashMap<String, String>();
-		final String FACTOR_TYPE_TAG = "Type";
 		if (Target.is(objectType))
 			tagToValueMap.put(FACTOR_TYPE_TAG, "Target");
 		
@@ -369,4 +368,5 @@ public class MpfToMpzConverter extends AbstractConverter
 	private Project project;
 	private HashMap<ORef, EnhancedJsonObject> refToJsonMap;
 	private EnhancedJsonObject projectInfoJson;
+	public static final String FACTOR_TYPE_TAG = "Type";
 }

@@ -23,7 +23,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.text.ParseException;
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.Vector;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -378,6 +380,14 @@ public class EnhancedJsonObject extends JSONObject
 		if(possiblyEmptyJsonString.length() == 0)
 			return "{}";
 		return possiblyEmptyJsonString;
+	}
+	
+	public Vector<String> getSortedKeys()
+	{
+		Iterator keys = keys();
+		Vector<String> sortedKeys = Utility.convertToVectorOfTypeString(keys);
+		Collections.sort(sortedKeys);
+		return sortedKeys;
 	}
 
 	private static String TAG_POINT_X = "X";
