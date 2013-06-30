@@ -51,7 +51,6 @@ import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.project.OldProjectDirToMpfConverter;
 import org.miradi.utils.ColumnSortListener;
 import org.miradi.utils.SortableTable;
 import org.miradi.wizard.noproject.FileSystemTreeNode;
@@ -133,8 +132,9 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 		
 		if (isOldProject(projectFile))
 		{
-			projectFile = OldProjectDirToMpfConverter.convert(mainWindow, projectFile);
-			if(projectFile == null)
+			//FIXME urgent - MPZ import has been disabled until alpha has been released.
+			//projectFile = OldProjectDirToMpfConverter.convert(mainWindow, projectFile);
+			//if(projectFile == null)
 				return;
 		}
 		
