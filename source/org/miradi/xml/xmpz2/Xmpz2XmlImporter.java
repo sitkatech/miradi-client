@@ -22,19 +22,14 @@ package org.miradi.xml.xmpz2;
 
 import java.awt.Dimension;
 import java.awt.Point;
-import java.io.StringWriter;
 import java.util.LinkedHashMap;
 import java.util.Set;
 import java.util.Vector;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 import javax.xml.xpath.XPathExpressionException;
 
 import org.miradi.ids.BaseId;
@@ -99,10 +94,12 @@ import org.miradi.schemas.WcsProjectDataSchema;
 import org.miradi.schemas.WwfProjectDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.HtmlUtilitiesRelatedToShef;
 import org.miradi.utils.PointList;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.StringUtilities;
+import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.AbstractXmlImporter;
 import org.miradi.xml.AbstractXmlNamespaceContext;
@@ -580,15 +577,12 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		importField(ref, destinationTag, nodeTreeAsString);
 	}
 
-	private String nodeToString(Node node) 
+	private String nodeToString(Node node) throws Exception 
 	{
-		StringWriter writer = new StringWriter();
+		final UnicodeXmlWriter writer = UnicodeXmlWriter.create();
 		try 
 		{
-			TransformerFactory factory = TransformerFactory.newInstance();
-	        Transformer transformer = factory.newTransformer();
-	        transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
-			transformer.transform(new DOMSource(node), new StreamResult(writer));
+			HtmlUtilities.toXmlString(new DOMSource(node), writer);
 		} 
 		catch (TransformerException e) 
 		{

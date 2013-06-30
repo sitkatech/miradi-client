@@ -450,16 +450,20 @@ public class HtmlUtilities
 	
 	private static String toXmlString(Document document) throws Exception
 	{
-		DOMSource domSource = new DOMSource(document);
+		final UnicodeXmlWriter writer = UnicodeXmlWriter.create();
+		toXmlString(new DOMSource(document), writer);
+		
+		return writer.toString();
+	}
+
+	public static void toXmlString(DOMSource domSource, UnicodeXmlWriter writer) throws Exception
+	{
 		Transformer transformer = TransformerFactory.newInstance().newTransformer();
 		transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
 		transformer.setOutputProperty(OutputKeys.METHOD, "xml");
 		transformer.setOutputProperty(OutputKeys.INDENT, "no");
-		final UnicodeXmlWriter writer = UnicodeXmlWriter.create();
 		StreamResult result = new StreamResult(writer);
 		transformer.transform(domSource, result);
-		
-		return  result.getWriter().toString();
 	}
 	
 	public static final String BR_TAG = "<br/>";
