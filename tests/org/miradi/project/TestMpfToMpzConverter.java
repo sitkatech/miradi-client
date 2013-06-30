@@ -137,7 +137,7 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 		final String expectedWithoutTimeStamp = stripTimeStamp(expectedMpf);
 		assertEquals("Mpf was not converted to mpz?", expectedWithoutTimeStamp, actualWithoutTimestamp);
 
-		return changeLowHighVersion(expectedMpf);
+		return setHighLowVersionsToLatestMpf(expectedMpf);
 	}
 
 	private String toMpzAndBack(String mpfSnapShot)throws Exception
@@ -155,7 +155,7 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 		}
 	}
 
-	private String changeLowHighVersion(String mpfContent)
+	private String setHighLowVersionsToLatestMpf(String mpfContent)
 	{
 		String latestHeaderLine = AbstractMiradiProjectSaver.createLowHighVersionHeaderLine(AbstractMiradiProjectSaver.VERSION_HIGH, AbstractMiradiProjectSaver.VERSION_LOW);
 		String headerLineForMpz = AbstractMiradiProjectSaver.createLowHighVersionHeaderLine(MpzToMpfConverter.FIRST_LOW_VERSION_OF_MPF, MpzToMpfConverter.FIRST_HIGH_VERSION_OF_MPF);
