@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-28 16:46-0500\n"
+"POT-Creation-Date: 2013-06-30 13:31-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4037,7 +4037,7 @@ msgid "Importing Miradi Data..."
 msgstr ""
 
 #: Miradi/source/org/miradi/xml/xmpz1/Xmpz1XmlImporter.java:112
-#: Miradi/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:153
+#: Miradi/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:150
 msgid "Importing XML..."
 msgstr ""
 
@@ -4842,11 +4842,11 @@ msgstr "中"
 msgid "Medium (Default)"
 msgstr "中等（默认）"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:245
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:244
 msgid "MenuBar|Actions"
 msgstr "动作 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:176
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:175
 msgid "MenuBar|Edit"
 msgstr "编辑 \t\t"
 
@@ -4854,15 +4854,15 @@ msgstr "编辑 \t\t"
 msgid "MenuBar|File"
 msgstr "文件 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:576
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:575
 msgid "MenuBar|Help"
 msgstr "帮助 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:508
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:507
 msgid "MenuBar|Step-by-Step"
 msgstr "一步一步 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:437
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:436
 msgid "MenuBar|View"
 msgstr "视图 \t\t"
 
@@ -4890,7 +4890,7 @@ msgstr "5. 捕捉及共享学识 \t\t"
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:142
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:141
 msgid "Menu|Export Current Page as..."
 msgstr "导出当前页面为... "
 
@@ -4899,11 +4899,11 @@ msgid "Menu|Export Current Project as..."
 msgstr "导出当前项目为... "
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:280
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:425
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:424
 msgid "Menu|Group Box"
 msgstr "组合框 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:155
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:154
 msgid "Menu|Import"
 msgstr "导入 \t\t"
 
