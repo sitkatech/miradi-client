@@ -554,8 +554,15 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	
 	public void importFormattedStringField(Node node, String poolName, ORef destinationRef, String destinationTag) throws Exception
 	{
-		String elementName = findElementName(poolName, destinationTag);
-		importFormattedField(node, poolName + elementName, destinationRef, destinationTag);
+		try
+		{
+			String elementName = findElementName(poolName, destinationTag);
+			importFormattedField(node, poolName + elementName, destinationRef, destinationTag);
+		} 
+		catch (TransformerException e) 
+		{
+			EAM.alertUserOfNonFatalException(e);
+		}
 	}
 	
 	private void importFormattedField(Node parentNode, String path, ORef ref, String destinationTag) throws Exception
@@ -580,14 +587,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	private String nodeToString(Node node) throws Exception 
 	{
 		final UnicodeXmlWriter writer = UnicodeXmlWriter.create();
-		try 
-		{
-			HtmlUtilities.toXmlString(new DOMSource(node), writer);
-		} 
-		catch (TransformerException e) 
-		{
-			EAM.alertUserOfNonFatalException(e);
-		}
+		HtmlUtilities.toXmlString(new DOMSource(node), writer);
 		
 		return writer.toString();
 	}
