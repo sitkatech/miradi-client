@@ -78,7 +78,7 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	public void testQuotesWithHtmlTags() throws Exception
 	{
 		Strategy strategy = getProject().createStrategy();
-		final String EXPECTED_VALUE = "<b>miradi &quot;wow&quot; &amp; &gt; &lt; &apos;</b>";
+		final String EXPECTED_VALUE = "<b>miradi &quot;inside quotes&quot; &amp; &gt; &lt; &apos;</b>";
 		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_TEXT, EXPECTED_VALUE);
 		ProjectForTesting importedProject = validateUsingStringWriter();
 		ORef strateRef = importedProject.getStrategyPool().getORefList().getFirstElement();
