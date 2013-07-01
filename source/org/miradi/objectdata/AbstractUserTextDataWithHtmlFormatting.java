@@ -48,7 +48,7 @@ public class AbstractUserTextDataWithHtmlFormatting extends UserTextData
 	}
 	
 	@Override
-	public boolean isCurrentValue(String text)
+	public boolean isCurrentValue(String text) throws Exception
 	{
 		String currentValue = HtmlUtilitiesRelatedToShef.getNormalizedAndSanitizedHtmlText(get(), getAllowedHtmlTags());
 		String otherValue = HtmlUtilitiesRelatedToShef.getNormalizedAndSanitizedHtmlText(text, getAllowedHtmlTags());
