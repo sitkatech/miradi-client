@@ -29,6 +29,24 @@ public class TestHtmlUtilities extends MiradiTestCase
 		super(name);
 	}
 	
+	public void testEnsureQuotesAndApostrophesAreEscaped() throws Exception
+	{
+		verifyQuotesAndApostrophesAreEscaped("", "");
+		verifyQuotesAndApostrophesAreEscaped("&apos;", "&apos;");
+		verifyQuotesAndApostrophesAreEscaped("&quot;", "&quot;");
+		
+		verifyQuotesAndApostrophesAreEscaped("<b>&apos;</b>", "<b>'</b>");
+		verifyQuotesAndApostrophesAreEscaped("<b>&quot;</b>", "<b>\"</b>");
+		
+		verifyQuotesAndApostrophesAreEscaped("<a href=\"www.miradi.org\">&quot;miradi&apos;s website in <b>bold</b>&quot;", "<a href=\"www.miradi.org\">\"miradi's website in <b>bold</b>\"");
+		verifyQuotesAndApostrophesAreEscaped("line &apos;one&apos;<br/>line &quot;two&quot;", "line 'one'<br/>line \"two\"");
+	}
+	
+	private void verifyQuotesAndApostrophesAreEscaped(String expectedValue, String actualValue) throws Exception
+	{
+		assertEquals("quotes and apostrophes should have been esacaped?", expectedValue, HtmlUtilities.enodeAllUserQuotesAndApostrophes(actualValue));
+	}
+
 	public void testIllegaleAnchorElements() throws Exception
 	{
 		verifyAnchorElements("a b c", "a b c");
