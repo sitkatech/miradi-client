@@ -96,9 +96,17 @@ abstract public class ObjectDataInputField extends ObjectDataField
 
 	private boolean hasDataChanged()
 	{
-		BaseObject object = BaseObject.find(getProject(), getORef());
-		ObjectData field = object.getField(getTag());
-		return !field.isCurrentValue(getText());
+		try
+		{
+			BaseObject object = BaseObject.find(getProject(), getORef());
+			ObjectData field = object.getField(getTag());
+			return !field.isCurrentValue(getText());
+		}
+		catch (Exception e)
+		{
+			EAM.panic(e);
+			return false;
+		}
 	}
 	
 	public void clearNeedsSave()

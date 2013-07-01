@@ -344,21 +344,13 @@ public class HtmlUtilities
 		return htmlText.replaceAll(regex, StringUtilities.EMPTY_STRING);
 	}
 	
-	public static String fixAnchorElementsSafely(String xmlText, String[] allowedHtmlTags)
+	public static String fixAnchorElementsSafely(String xmlText, String[] allowedHtmlTags) throws Exception
 	{
-		try
-		{
-			xmlText = wrapWithTag(xmlText, "xml");
-			
-			final String fixAnchorElements = fixAnchorElements(xmlText);
-			
-			return HtmlUtilities.removeAllExcept(fixAnchorElements, allowedHtmlTags);
-		}
-		catch (Exception e)
-		{
-			EAM.panic(e);
-			return "";
-		}
+		xmlText = wrapWithTag(xmlText, "xml");
+
+		final String fixAnchorElements = fixAnchorElements(xmlText);
+
+		return HtmlUtilities.removeAllExcept(fixAnchorElements, allowedHtmlTags);
 	}
 
 	private static String fixAnchorElements(String htmlText) throws Exception
