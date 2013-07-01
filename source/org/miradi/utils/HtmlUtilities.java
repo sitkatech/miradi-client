@@ -348,9 +348,6 @@ public class HtmlUtilities
 	{
 		try
 		{
-			if(hasNoTags(xmlText))
-				return xmlText;
-			
 			xmlText = wrapWithTag(xmlText, "xml");
 			
 			final String fixAnchorElements = fixAnchorElements(xmlText);
@@ -364,11 +361,6 @@ public class HtmlUtilities
 		}
 	}
 
-	private static boolean hasNoTags(String htmlText)
-	{
-		return htmlText.indexOf("<") < 0;
-	}
-	
 	private static String fixAnchorElements(String htmlText) throws Exception
 	{
 		Document document = createDomDocument(htmlText);
@@ -464,7 +456,38 @@ public class HtmlUtilities
 		StreamResult result = new StreamResult(writer);
 		transformer.transform(domSource, result);
 		
-		return writer.toString();
+		String xmlAsString = writer.toString();
+		xmlAsString = enodeAllUserQuotesAndApostrophes(xmlAsString);
+		return xmlAsString;
+	}
+	
+	public static String enodeAllUserQuotesAndApostrophes(String value)
+	{
+		if (!value.contains("\"") && !value.contains("'"))
+			return value;
+		
+		StringBuffer buffer = new StringBuffer();
+		boolean isInsideTag = false;
+		char[] chars = value.toCharArray();
+		for(char character : chars)
+		{
+			String replacementChar = String.valueOf(character);
+			if (character == '<')
+				isInsideTag = true;
+			
+			if (character == '>')
+				isInsideTag = false;
+			
+			if (!isInsideTag && character =='\'')
+				replacementChar = "&apos;";
+			
+			if (!isInsideTag && character =='\"')
+				replacementChar = "&quot;";
+
+			buffer.append(replacementChar);
+		}
+		
+		return buffer.toString();
 	}
 	
 	public static final String BR_TAG = "<br/>";
