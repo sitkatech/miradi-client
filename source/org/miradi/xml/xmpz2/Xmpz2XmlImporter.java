@@ -99,7 +99,6 @@ import org.miradi.utils.HtmlUtilitiesRelatedToShef;
 import org.miradi.utils.PointList;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.StringUtilities;
-import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.AbstractXmlImporter;
 import org.miradi.xml.AbstractXmlNamespaceContext;
@@ -586,10 +585,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 
 	private String nodeToString(Node node) throws Exception 
 	{
-		final UnicodeXmlWriter writer = UnicodeXmlWriter.create();
-		HtmlUtilities.toXmlString(new DOMSource(node), writer);
-		
-		return writer.toString();
+		return HtmlUtilities.toXmlString(new DOMSource(node));
 	}
 	
 	public void importDimensionField(Node node, ORef destinationRef, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
