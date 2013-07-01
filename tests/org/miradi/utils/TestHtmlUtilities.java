@@ -135,7 +135,7 @@ public class TestHtmlUtilities extends MiradiTestCase
 		verifyGetFirstLineWithTruncationIndicated("Line 1 ...", "Line 1 <br/> line 2");
 	}
 
-	public void testGetNormalizedAndSanitizedHtmlText()
+	public void testGetNormalizedAndSanitizedHtmlText() throws Exception
 	{
 		String htmlText = 
 		  "<html>\n" +
@@ -155,13 +155,13 @@ public class TestHtmlUtilities extends MiradiTestCase
 		assertEquals("wrong new lines inserted?", "text on line 1 text on line 2<br/>text on line 3", HtmlUtilitiesRelatedToShef.getNormalizedAndSanitizedHtmlText(htmlText, getAllowedHtmlTags()));
 	}
 	
-	public void testIncorrectEncodingOfApostrophe()
+	public void testIncorrectEncodingOfApostrophe() throws Exception
 	{
 		String htmlText = "we'll";
 		assertEquals("wrong new lines inserted?", "we&apos;ll", HtmlUtilitiesRelatedToShef.getNormalizedAndSanitizedHtmlText(htmlText, getAllowedHtmlTags()));
 	}
 	
-	public void testSpacesAroundElementShouldNotBeCompletelyRemoved()
+	public void testSpacesAroundElementShouldNotBeCompletelyRemoved() throws Exception
 	{
 		verifySpaceRemovalAroundElement("X<b/>Y", "X<b/>Y");
 		verifySpaceRemovalAroundElement("X<b/> Y", "X<b/> Y");
@@ -175,7 +175,7 @@ public class TestHtmlUtilities extends MiradiTestCase
 		verifySpaceRemovalAroundElement("X<br/>Y", "X <br/> Y");
 	}
 
-	private void verifySpaceRemovalAroundElement(final String expectedValue, final String htmlText)
+	private void verifySpaceRemovalAroundElement(final String expectedValue, final String htmlText) throws Exception
 	{
 		assertEquals("incorrect spacing around element?", expectedValue, HtmlUtilitiesRelatedToShef.getNormalizedAndSanitizedHtmlText(htmlText, getAllowedHtmlTags()));
 	}

@@ -55,7 +55,7 @@ abstract public class ObjectData
 		return toString().length() == 0;
 	}
 	
-	public boolean isCurrentValue(String text)
+	public boolean isCurrentValue(String text) throws Exception
 	{
 		return get().equals(text);
 	}

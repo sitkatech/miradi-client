@@ -139,14 +139,22 @@ abstract public class AbstractHtmlPane extends MiradiTextPane
 	{
 		String text = super.getText();
 
-		String normalizedAndSanitizedHtmlText = stripEntireHeadAndStyle(text);
-		normalizedAndSanitizedHtmlText = XmlUtilities2.getWithUnescapedNumericEntities(normalizedAndSanitizedHtmlText);
-		normalizedAndSanitizedHtmlText = getNormalizedAndSanitizedHtmlText(normalizedAndSanitizedHtmlText);
+		try
+		{
+			String normalizedAndSanitizedHtmlText = stripEntireHeadAndStyle(text);
+			normalizedAndSanitizedHtmlText = XmlUtilities2.getWithUnescapedNumericEntities(normalizedAndSanitizedHtmlText);
+			normalizedAndSanitizedHtmlText = getNormalizedAndSanitizedHtmlText(normalizedAndSanitizedHtmlText);
 
-		return normalizedAndSanitizedHtmlText;
+			return normalizedAndSanitizedHtmlText;
+		}
+		catch (Exception e)
+		{
+			EAM.panic(e);
+			return text;
+		}
 	}
 
-	public static String getNormalizedAndSanitizedHtmlText(final String text)
+	public static String getNormalizedAndSanitizedHtmlText(final String text) throws Exception
 	{
 		return HtmlUtilitiesRelatedToShef.getNormalizedAndSanitizedHtmlText(text, AbstractUserTextDataWithHtmlFormatting.getAllowedHtmlTags());
 	}

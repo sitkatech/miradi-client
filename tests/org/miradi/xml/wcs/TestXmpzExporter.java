@@ -59,6 +59,7 @@ import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.NullProgressMeter;
+import org.miradi.utils.TestStringUtilities;
 import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.xml.TestXmpzXmlImporter;
 import org.miradi.xml.generic.XmlSchemaCreator;
@@ -75,20 +76,19 @@ public class TestXmpzExporter extends TestCaseWithProject
 		super(name);
 	}
 
-//FIXME disabled test to bubble exception from HtmlUtilities.fixAnchorXxx so we can catch it here. 
-//	public void testProjectWithInvalidChars() throws Exception
-//	{
-//		try
-//		{
-//			String valueWithInvalidChar = TestStringUtilities.getIllegalCharAsString();
-//			getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_PROJECT_DESCRIPTION, valueWithInvalidChar);
-//			validateProject();
-//			fail("project with illegal chars should not validate?");
-//		}
-//		catch (Exception ignoreExpectedException)
-//		{
-//		}
-//	}
+	public void testProjectWithInvalidChars() throws Exception
+	{
+		try
+		{
+			String valueWithInvalidChar = TestStringUtilities.getIllegalCharAsString();
+			getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_PROJECT_DESCRIPTION, valueWithInvalidChar);
+			validateProject();
+			fail("project with illegal chars should not validate?");
+		}
+		catch (Exception ignoreExpectedException)
+		{
+		}
+	}
 	
 	public void testValidateEmptyProject() throws Exception
 	{
