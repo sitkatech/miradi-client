@@ -29,7 +29,7 @@ public class TestEditableHtmlPane extends MiradiTestCase
 		super(name);
 	}
 
-	public void testGetNormalizedAndSanitizedHtmlText()
+	public void testGetNormalizedAndSanitizedHtmlText() throws Exception
 	{
 		String htmlText = "<br/><b>x</b><i>x</i><ul>x</ul><ol>x</ol><li>x</li><u>x</u><strike>x</strike><a href=\"\">x</a>";
 
