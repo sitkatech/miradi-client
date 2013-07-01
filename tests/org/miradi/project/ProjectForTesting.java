@@ -1845,15 +1845,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return userText;
 	}
 
-
-	//FIXME urgent - must include multiple lines in sample data.  
-	//This is causing an existing bug to fail a test. 
-	//The bug must be fixed and this must be uncommented
-	//The bug: Transformer unescapes " and ' when html tags (like new lines) exist in text
-	//The sample data also needs to include apos and double quotes
 	private String getMultilineSampleData(String userText)
 	{
-		userText += "Value "/*+ HtmlUtilities.BR_TAG + HtmlUtilities.BR_TAG*/ + "With multiple lines!";
+		userText += "Value "+ HtmlUtilities.BR_TAG + HtmlUtilities.BR_TAG + "With multiple lines!";
 		
 		return userText;
 	}
