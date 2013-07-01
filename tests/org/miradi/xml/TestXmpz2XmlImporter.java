@@ -75,7 +75,7 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 		super(name);
 	}
 	
-	public void testQuotes() throws Exception
+	public void testQuotesWithHtmlTags() throws Exception
 	{
 		Strategy strategy = getProject().createStrategy();
 		final String EXPECTED_VALUE = "nima &quot;wow&quot; &amp; &gt; &lt; &apos;";
