@@ -33,6 +33,14 @@ import org.miradi.utils.Translation;
 public class ExportMpzDoer extends AbstractFileSaverDoer
 {
 	@Override
+	public boolean isAvailable()
+	{
+		//FIXME urgent, due to migration bugs,  MPZ/xmpz1/cpmz import and export have been disabled. 
+		//Remove this isAvailable when migrations have been fixed.  This doer replies on parent's isA
+		return false;
+	}
+	
+	@Override
 	protected MiradiFileSaveChooser createFileChooser()
 	{
 		return new MpzFileChooser(getMainWindow());
