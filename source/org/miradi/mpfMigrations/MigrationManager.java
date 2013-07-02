@@ -74,12 +74,12 @@ public class MigrationManager
 
 	private File getBackupFolder() throws Exception
 	{
-		final String backupFolderName = getBackupforlderTranslatedName() + FileUtilities.SEPARATOR + getSubfolderName();
-		File backupFolder = new File(EAM.getHomeDirectory(), backupFolderName);
-		if (FileUtilities.fileDoesNotExist(backupFolder))
-			backupFolder.mkdirs();
+		File backupFolder = new File(EAM.getHomeDirectory(), getBackupforlderTranslatedName());
+		File backupSubfolder = new File (backupFolder, getSubfolderName());
+		if (FileUtilities.fileDoesNotExist(backupSubfolder))
+			backupSubfolder.mkdirs();
 		
-		return backupFolder;
+		return backupSubfolder;
 	}
 	
 	private String getBackupforlderTranslatedName()
