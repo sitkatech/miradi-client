@@ -344,7 +344,7 @@ public class HtmlUtilities
 		return htmlText.replaceAll(regex, StringUtilities.EMPTY_STRING);
 	}
 	
-	public static String fixAnchorElementsSafely(String xmlText, String[] allowedHtmlTags) throws Exception
+	public static String fixAnchorElements(String xmlText, String[] allowedHtmlTags) throws Exception
 	{
 		xmlText = wrapWithTag(xmlText, "xml");
 

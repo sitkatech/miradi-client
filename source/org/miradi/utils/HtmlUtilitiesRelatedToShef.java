@@ -60,7 +60,7 @@ public class HtmlUtilitiesRelatedToShef
 		// NOTE: Shef does not encode/decode apostrophes as we need for proper XML
 		trimmedText = XmlUtilities2.getXmlEncodedApostrophes(trimmedText);
 		HtmlUtilities.ensureNoCloseBrTags(trimmedText);
-		trimmedText = HtmlUtilities.fixAnchorElementsSafely(trimmedText, allowedHtmlTags);
+		trimmedText = HtmlUtilities.fixAnchorElements(trimmedText, allowedHtmlTags);
 		
 		return trimmedText;
 	}
