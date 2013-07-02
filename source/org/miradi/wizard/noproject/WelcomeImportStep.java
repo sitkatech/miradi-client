@@ -92,11 +92,11 @@ public class WelcomeImportStep extends NoProjectWizardStep
 					"<td><input type='submit' name='" + CONTROL_IMPORT_XMPZ2 + "' value='XML Miradi Project File (.xmpz2)'></input></td>" +
 					"</tr>" +
 
-					"<tr>" +
-					"<td></td>" + 
-					"<td><input type='submit' name='" + CONTROL_IMPORT_MPZ + "' value='Old Miradi Project (.mpz)'></input></td>" +
-					"</tr>" +
-//FIXME urgent - uncomment this when cpmz is working again.  Cpmz import was dsiabled due to latest migtration changes. 					
+//FIXME urgent - uncomment this when cpmz/mpz is working again.  Cpmz/mpz import was dsiabled due to latest migtration changes.					
+//					"<tr>" +
+//					"<td></td>" + 
+//					"<td><input type='submit' name='" + CONTROL_IMPORT_MPZ + "' value='Old Miradi Project (.mpz)'></input></td>" +
+//					"</tr>" + 					
 //					"<tr>" +
 //					"<td></td>" + 
 //					"<td><input type='submit' name='" + CONTROL_IMPORT_CPMZ + "' value='ConPro/Miradi Exchange File (.cpmz)'></input></td>" +
