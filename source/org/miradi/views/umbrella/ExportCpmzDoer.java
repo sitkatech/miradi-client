@@ -44,6 +44,14 @@ import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 public class ExportCpmzDoer extends XmlExporterDoer
 {
 	@Override
+	public boolean isAvailable()
+	{
+		//FIXME urgent, due to migration bugs,  MPZ/xmpz1/cpmz import and export have been disabled. 
+		//Remove this isAvailable when migrations have been fixed.  This doer replies on parent's isA
+		return false;
+	}
+	
+	@Override
 	protected boolean export(File chosen, ProgressInterface progressInterface) throws Exception
 	{
 		Vector<String> messages = getMissingRequiredFieldMessages();

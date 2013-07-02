@@ -26,6 +26,14 @@ import org.miradi.xml.wcs.WcsMiradiXmlValidator;
 public class ExportXmpzDoer extends AbstractExportProjectXmlZipDoer
 {
 	@Override
+	public boolean isAvailable()
+	{
+		//FIXME urgent, due to migration bugs,  MPZ/xmpz1/cpmz import and export have been disabled. 
+		//Remove this isAvailable when migrations have been fixed.  This doer replies on parent's isA
+		return false;
+	}
+	
+	@Override
 	protected MiradiFileSaveChooser createFileChooser()
 	{
 		return new XmpzFileChooser(getMainWindow());
