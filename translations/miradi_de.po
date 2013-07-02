@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-02 16:16-0500\n"
+"POT-Creation-Date: 2013-07-02 16:48-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -542,7 +542,7 @@ msgstr ""
 "Konzeptionellem Modell zu Ergebniswirkungskette (und umgekehrt) nicht "
 "möglich</HTML>"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:52
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:60
 msgid ""
 "<HTML>Your project is missing some data that is required for upload to "
 "ConPro.<br>Please correct the problems listed below then attempt to export "
@@ -2536,7 +2536,7 @@ msgid "Bundle Rules"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:91
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:63
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:71
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
 #: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:49
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:234
@@ -2582,7 +2582,7 @@ msgstr "Nicht Importieren"
 msgid "Button|Exit"
 msgstr "Schließen"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:62
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:70
 msgid "Button|Export"
 msgstr ""
 
@@ -3039,7 +3039,7 @@ msgstr ""
 msgid "Country"
 msgstr "Land"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:176
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:184
 msgid ""
 "Country - Located in Summary View, Location Tab. Select at least one Country"
 msgstr ""
@@ -3690,7 +3690,7 @@ msgstr "Expertenwissen"
 msgid "Export"
 msgstr "Exportieren"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:54
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:62
 msgid "Export MPZ"
 msgstr ""
 
@@ -5760,7 +5760,7 @@ msgid "PlanningSubViewName|Custom"
 msgstr "Benutzerdefiniert"
 
 #: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:80
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:100
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:108
 msgid ""
 "Please choose a specific IUCN classification (Not a category). Fix needed "
 "for Strategy named:\n"
@@ -5955,7 +5955,7 @@ msgstr "Projektbeschreibung:"
 msgid "Project Migration Required"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:165
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:173
 msgid "Project Name - Located in Summary View, Project Tab, Project Name field"
 msgstr ""
 "Projektname - Befindet sich in der Zusammenfassungsansicht im Reiter "
@@ -6830,7 +6830,7 @@ msgstr "Systemweit"
 msgid "TNC"
 msgstr "TNC"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:179
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:187
 msgid ""
 "TNC Operating Unit - At least one TNC Operating Unit must be selected, "
 "<br>located in Summary View, TNC tab. Organizations other than TNC should "
@@ -7891,13 +7891,13 @@ msgstr "Arbeitsgruppe"
 msgid "Team Contact"
 msgstr "Kontaktperson"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:168
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:176
 msgid ""
 "Team Contact - At least one project Team Member must be specified as Team "
 "Contact, <br>located in Summary View, Team Tab, Roles field"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:172
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:180
 msgid ""
 "Team Contact Email - The Team Contact must have an email address, "
 "<br>located in Summary View, Team Tab, ensure Team Contact has email "
@@ -8412,7 +8412,7 @@ msgstr ""
 msgid "Title|Link Create Dialog"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:60
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:68
 msgid "Title|MPZ Export Warning"
 msgstr ""
 
@@ -9136,7 +9136,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:96
 #: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:55
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:75
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:83
 msgid "save..."
 msgstr "Speichern..."
 
