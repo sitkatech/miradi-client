@@ -21,7 +21,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.mpfMigrations;
 
 import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
+import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringReader;
 import org.martus.util.UnicodeStringWriter;
@@ -69,20 +72,30 @@ public class MigrationManager
 		FileUtilities.copyFile(projectFile, backup);
 	}
 
-	private File getBackupFolder()
+	private File getBackupFolder() throws Exception
 	{
-		File backupFolder = new File(EAM.getHomeDirectory(), getBackupforlderTranslatedName());
-		if (!backupFolder.exists())
-			backupFolder.mkdir();
+		final String backupFolderName = getBackupforlderTranslatedName() + FileUtilities.SEPARATOR + getSubfolderName();
+		File backupFolder = new File(EAM.getHomeDirectory(), backupFolderName);
+		if (FileUtilities.fileDoesNotExist(backupFolder))
+			backupFolder.mkdirs();
 		
 		return backupFolder;
 	}
 	
 	private String getBackupforlderTranslatedName()
 	{
-		return EAM.substitute(EAM.text("(%s)"), "FolderName|BackupsFromMigrationsFromMiradi40");
+		return EAM.substitute(EAM.text("(%s)"), "Automated-Migration-Backups");
 	}
 
+	private String getSubfolderName()
+	{
+		MultiCalendar calendar = new MultiCalendar();
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM");
+		String subForlderName = dateFormat.format(calendar.getTime());
+		
+		return subForlderName;
+	}
+	
 	public boolean needsMigration(final File projectFile) throws Exception
 	{
 		String contents = UnicodeReader.getFileContents(projectFile);
