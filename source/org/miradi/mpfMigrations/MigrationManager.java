@@ -29,6 +29,7 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.exceptions.ProjectFileTooNewException;
 import org.miradi.exceptions.ProjectFileTooOldException;
 import org.miradi.files.AbstractMpfFileFilter;
+import org.miradi.main.EAM;
 import org.miradi.project.AbstractMiradiProjectSaver;
 import org.miradi.project.RawProjectSaver;
 import org.miradi.utils.FileUtilities;
@@ -61,11 +62,25 @@ public class MigrationManager
 	private void createBackup(File projectFile) throws Exception
 	{
 		long timeOfBackup = System.currentTimeMillis();
-		File backup = new File(projectFile.getParentFile(), "backup-" + projectFile.getName() + "-" + timeOfBackup + AbstractMpfFileFilter.EXTENSION);
+		File backup = new File(getBackupFolder(), "backup-" + projectFile.getName() + "-" + timeOfBackup + AbstractMpfFileFilter.EXTENSION);
 		if (backup.exists())
 			throw new Exception("Overriding older backup");
 		
 		FileUtilities.copyFile(projectFile, backup);
+	}
+
+	private File getBackupFolder()
+	{
+		File backupFolder = new File(EAM.getHomeDirectory(), getBackupforlderTranslatedName());
+		if (!backupFolder.exists())
+			backupFolder.mkdir();
+		
+		return backupFolder;
+	}
+	
+	private String getBackupforlderTranslatedName()
+	{
+		return EAM.substitute(EAM.text("(%s)"), "FolderName|BackupsFromMigrationsFromMiradi40");
 	}
 
 	public boolean needsMigration(final File projectFile) throws Exception
