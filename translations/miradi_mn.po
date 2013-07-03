@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-02 16:48-0500\n"
+"POT-Creation-Date: 2013-07-03 11:01-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -2475,11 +2475,11 @@ msgstr "Товч|Үргэлжлүүлэх"
 msgid "Button|Delete"
 msgstr "Товч|Устгах"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:187
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:191
 msgid "Button|Don't Import"
 msgstr "Товч|Import хийгдэхгүй"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:188
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:192
 msgid "Button|Exit"
 msgstr "Товч|Гарах"
 
@@ -2491,7 +2491,7 @@ msgstr ""
 msgid "Button|Export..."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:186
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:190
 msgid "Button|Import"
 msgstr "Товч|Импорт хийх"
 
@@ -2621,11 +2621,11 @@ msgstr "Цуцлах"
 msgid "Cancelled"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:155
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:159
 msgid "Cannot import project file %s because it does not exist"
 msgstr "Төслийн файл орохгүй байна %s яагаад гэвэл байхгүй учраас"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:162
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:166
 msgid "Cannot import project file %s because it is a directory, not a file"
 msgstr "Төслийн файл орохгүй байна%sяагаад гэвэл энэ нь файл биш, заавар юм"
 
@@ -3013,7 +3013,7 @@ msgid ""
 "normal mode, press this button: "
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:74
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:78
 msgid ""
 "Currently, Miradi can only import one project file at a time.  Importing "
 "first file only."
@@ -3351,7 +3351,7 @@ msgstr ""
 "болох ба 'IUCN-CMP Шууд үйлчлэх аюулын нэгдсэн ангилал'-ын дагуу ангилж "
 "болно. "
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:172
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:176
 msgid "Do you want to attempt to import %s into Miradi?"
 msgstr "Миради -д импорт-лох оролдлого хийх үү?"
 
@@ -3517,7 +3517,7 @@ msgstr ""
 msgid "Error occurred while trying to export to a tab delimited file."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:206
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:213
 msgid "Error reading %s. Perhaps it is not a valid zip file."
 msgstr "Унших алдаа %s. Zip файл хүчингүй байж болзошгүй."
 
@@ -4127,8 +4127,8 @@ msgstr "Стратегийн болон хяналтын төвөлөгөөг х
 msgid "Implement work plan"
 msgstr "Ажлын төлөвлөгөөг хэрэгжүүлэх"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:74
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:173
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:78
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:177
 #: Miradi/source/org/miradi/utils/XslImportFileChooser.java:44
 msgid "Import"
 msgstr "Импорт хийх"
@@ -5158,11 +5158,11 @@ msgstr ""
 msgid "Miradi data directory:"
 msgstr "Миради-гийн мэдээллийн директорууд:"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:209
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:216
 msgid "Miradi did not recognize the file: %s as importable."
 msgstr "Оруулах боломжтой Файл: %s гэж  Миради таниагүй."
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:79
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:83
 msgid "Miradi does not recognize %s as a project file"
 msgstr "Миради төслийн файлыг танихгүй байна"
 

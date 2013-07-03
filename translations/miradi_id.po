@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-02 16:48-0500\n"
+"POT-Creation-Date: 2013-07-03 11:01-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -2395,11 +2395,11 @@ msgstr "Lanjutkan "
 msgid "Button|Delete"
 msgstr "Hapus "
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:187
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:191
 msgid "Button|Don't Import"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:188
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:192
 msgid "Button|Exit"
 msgstr ""
 
@@ -2411,7 +2411,7 @@ msgstr ""
 msgid "Button|Export..."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:186
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:190
 msgid "Button|Import"
 msgstr ""
 
@@ -2541,11 +2541,11 @@ msgstr "Batalkan "
 msgid "Cancelled"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:155
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:159
 msgid "Cannot import project file %s because it does not exist"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:162
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:166
 msgid "Cannot import project file %s because it is a directory, not a file"
 msgstr ""
 
@@ -2933,7 +2933,7 @@ msgstr ""
 "Sedang dalam mode sumbang saran, jadi beberapa faktor tersembunyi. Untuk "
 "kembali ke mode normal, tekan tombol ini: "
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:74
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:78
 msgid ""
 "Currently, Miradi can only import one project file at a time.  Importing "
 "first file only."
@@ -3271,7 +3271,7 @@ msgstr ""
 "Terpadu IUCN-CMP’, yang tersedia di internet di alamat www."
 "conservationmeasures.org."
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:172
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:176
 msgid "Do you want to attempt to import %s into Miradi?"
 msgstr ""
 
@@ -3442,7 +3442,7 @@ msgid "Error occurred while trying to export to a tab delimited file."
 msgstr ""
 "Terjadi kesalahan saat mencoba mengekspor ke berkas yang dibatasi tab. "
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:206
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:213
 msgid "Error reading %s. Perhaps it is not a valid zip file."
 msgstr ""
 
@@ -4058,8 +4058,8 @@ msgstr "Implementasikan rencana strategis dan pemantauan "
 msgid "Implement work plan"
 msgstr "Laksanakan rencana kerja "
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:74
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:173
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:78
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:177
 #: Miradi/source/org/miradi/utils/XslImportFileChooser.java:44
 msgid "Import"
 msgstr "Impor "
@@ -5096,11 +5096,11 @@ msgstr ""
 msgid "Miradi data directory:"
 msgstr "Direktori data Miradi: "
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:209
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:216
 msgid "Miradi did not recognize the file: %s as importable."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:79
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:83
 msgid "Miradi does not recognize %s as a project file"
 msgstr ""
 

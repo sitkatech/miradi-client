@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-02 16:48-0500\n"
+"POT-Creation-Date: 2013-07-03 11:01-0500\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -2566,11 +2566,11 @@ msgstr "Continuar"
 msgid "Button|Delete"
 msgstr "Apagar"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:187
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:191
 msgid "Button|Don't Import"
 msgstr "Não importar"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:188
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:192
 msgid "Button|Exit"
 msgstr "Sair"
 
@@ -2582,7 +2582,7 @@ msgstr ""
 msgid "Button|Export..."
 msgstr "Exportar..."
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:186
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:190
 msgid "Button|Import"
 msgstr "Importar"
 
@@ -2715,11 +2715,11 @@ msgstr "Cancelar"
 msgid "Cancelled"
 msgstr "Cancelado"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:155
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:159
 msgid "Cannot import project file %s because it does not exist"
 msgstr "Não pode importar o arquivo de projeto %s porque não existe."
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:162
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:166
 msgid "Cannot import project file %s because it is a directory, not a file"
 msgstr ""
 "Não pode importar arquivo de projeto %s porque é diretório, não é arquivo."
@@ -3123,7 +3123,7 @@ msgstr ""
 "Atualmente no modo Brainstorm (Chuva de Ideias), assim alguns fatores estão "
 "escondidos.  Para retornar ao modo normal, pressione este botão:"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:74
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:78
 msgid ""
 "Currently, Miradi can only import one project file at a time.  Importing "
 "first file only."
@@ -3475,7 +3475,7 @@ msgstr ""
 "Unified Classifications of Direct Threats', disponível no site www."
 "conservationmeasures.org."
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:172
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:176
 msgid "Do you want to attempt to import %s into Miradi?"
 msgstr "Quer tentar importar %s em Miradi?"
 
@@ -3646,7 +3646,7 @@ msgstr ""
 "Ocorreu um Erro ao tentar exportar a um arquivo delimitado por marcas de "
 "tabulação ('tabs')"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:206
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:213
 msgid "Error reading %s. Perhaps it is not a valid zip file."
 msgstr "Erro ao ler %s.  Talvez não seja arquivo zip válido."
 
@@ -4290,8 +4290,8 @@ msgstr "Implementar os planos estratégico e de monitoramento"
 msgid "Implement work plan"
 msgstr "Implementar o plano de trabalho"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:74
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:173
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:78
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:177
 #: Miradi/source/org/miradi/utils/XslImportFileChooser.java:44
 msgid "Import"
 msgstr "Importar"
@@ -5355,11 +5355,11 @@ msgstr ""
 msgid "Miradi data directory:"
 msgstr "Diretório de Dados de Miradi"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:209
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:216
 msgid "Miradi did not recognize the file: %s as importable."
 msgstr "Miradi não reconheceu o arquivo: %s como importável."
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:79
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:83
 msgid "Miradi does not recognize %s as a project file"
 msgstr "Miradi não reconhece %s como um arquivo de projeto"
 
