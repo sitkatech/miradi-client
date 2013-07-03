@@ -113,7 +113,7 @@ abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 		if(resourceURL == null)
 			throw new Exception("Schema not found: " + getSchemaRelativeFilePath());
 
-		createZipEntry(zipOut, "schema.rnc", readAll(resourceURL));
+		createZipEntry(zipOut, SCHEMA_FILE_NAME, readAll(resourceURL));
 	}
 
 	private byte[] readAll(URL resourceURL) throws IOException
@@ -148,4 +148,5 @@ abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 	}
 	
 	abstract protected String getSchemaRelativeFilePath();
+	public static final String SCHEMA_FILE_NAME = "schema.rnc";
 }
