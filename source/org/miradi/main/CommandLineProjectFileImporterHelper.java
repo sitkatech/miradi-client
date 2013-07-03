@@ -29,11 +29,15 @@ import java.util.zip.ZipException;
 import org.miradi.exceptions.UnrecognizedFileToImportException;
 import org.miradi.utils.FileUtilities;
 import org.miradi.utils.MiradiZipFile;
+import org.miradi.utils.Xmpz2FileFilter;
 import org.miradi.views.noproject.RenameProjectDoer;
 import org.miradi.views.umbrella.AbstractProjectImporter;
 import org.miradi.views.umbrella.CpmzProjectImporter;
 import org.miradi.views.umbrella.ExportCpmzDoer;
 import org.miradi.views.umbrella.MpzProjectImporter;
+import org.miradi.views.umbrella.XmlExporterDoer;
+import org.miradi.views.umbrella.Xmpz2ProjectImporter;
+import org.miradi.views.umbrella.doers.AbstractExportProjectXmlZipDoer;
 import org.miradi.wizard.noproject.projectlist.ProjectListTreeTable;
 
 public class CommandLineProjectFileImporterHelper
@@ -195,6 +199,9 @@ public class CommandLineProjectFileImporterHelper
 		try
 		{
 			MiradiZipFile zipFile = new MiradiZipFile(projectFile);
+			if (isXmpz2(projectFile))
+				return new Xmpz2ProjectImporter(getMainWindow());
+			
 			if (CpmzProjectImporter.zipContainsMpfProject(zipFile) || CpmzProjectImporter.containsEntry(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME))
 				return new CpmzProjectImporter(getMainWindow());
 			
@@ -209,7 +216,23 @@ public class CommandLineProjectFileImporterHelper
 		throw new UnrecognizedFileToImportException(EAM.substitute(EAM.text("Miradi did not recognize the file: %s as importable."), projectFile.getName()));
 	}
 	
+	private boolean isXmpz2(File projectFile) throws Exception
+	{
+		if (!projectFile.getName().endsWith(new Xmpz2FileFilter().getFileExtension()))
+			return false;
+		
+		if (!containsFile(new MiradiZipFile(projectFile), AbstractExportProjectXmlZipDoer.SCHEMA_FILE_NAME))
+			return false;
+		
+		return containsFile(new MiradiZipFile(projectFile), XmlExporterDoer.PROJECT_XML_FILE_NAME);
+	}
+
 	private boolean isMpz(MiradiZipFile zipFile)
+	{
+		return containsFile(zipFile, CommandLineProjectFileImporterHelper.PROJECTINFO_FILE);
+	}
+
+	private boolean containsFile(MiradiZipFile zipFile, final String fileToFind)
 	{
 		Enumeration<? extends ZipEntry> entries = zipFile.entries();
 		while (entries.hasMoreElements())
@@ -218,7 +241,7 @@ public class CommandLineProjectFileImporterHelper
 			if (entry.isDirectory())
 				continue;
 			
-			if (entry.getName().toLowerCase().endsWith(CommandLineProjectFileImporterHelper.PROJECTINFO_FILE))
+			if (entry.getName().toLowerCase().endsWith(fileToFind))
 				return true;
 		}
 		
