@@ -21,11 +21,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.task;
 
 import org.miradi.main.MainWindow;
-import org.miradi.views.umbrella.ObjectPicker;
 
 abstract public class TaskPropertiesPanelWithoutBudgetPanels extends TaskPropertiesPanel
 {
-	protected TaskPropertiesPanelWithoutBudgetPanels(MainWindow mainWindow,	ObjectPicker objectPickerToUse) throws Exception
+	protected TaskPropertiesPanelWithoutBudgetPanels(MainWindow mainWindow) throws Exception
 	{
 		super(mainWindow);
 	}
