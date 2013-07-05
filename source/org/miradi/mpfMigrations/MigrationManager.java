@@ -76,8 +76,7 @@ public class MigrationManager
 	{
 		File backupFolder = new File(EAM.getHomeDirectory(), getBackupforlderTranslatedName());
 		File backupSubfolder = new File (backupFolder, getSubfolderName());
-		if (FileUtilities.fileDoesNotExist(backupSubfolder))
-			backupSubfolder.mkdirs();
+		backupSubfolder.mkdirs();
 		
 		return backupSubfolder;
 	}
