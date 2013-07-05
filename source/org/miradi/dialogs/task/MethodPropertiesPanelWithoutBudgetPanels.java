@@ -28,7 +28,7 @@ public class MethodPropertiesPanelWithoutBudgetPanels extends TaskPropertiesPane
 {
 	public MethodPropertiesPanelWithoutBudgetPanels(MainWindow mainWindow, ObjectPicker objectPickerToUse) throws Exception
 	{
-		super(mainWindow, objectPickerToUse);
+		super(mainWindow);
 	}
 
 	@Override
