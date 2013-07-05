@@ -62,7 +62,7 @@ public class MiradiShareTaxonomyQuestion extends DynamicChoiceWithRootChoiceItem
 		for (String taxonomyElementCode : childCodes)
 		{
 			TaxonomyElement taxonomyElement = getMiradiShareTaxonomy().findTaxonomyElement(taxonomyElementCode);
-			final String label = taxonomyElement.getUserCode() + ":" + taxonomyElement.getLabel();
+			final String label = taxonomyElement.getUserCode() + ": " + taxonomyElement.getLabel();
 			ChoiceItemWithChildren childChoiceItem = new ChoiceItemWithChildren(taxonomyElement.getCode(), label, taxonomyElement.getDescription());
 			final boolean isSelectable = getTaxonomyAssociation().isSelectable(taxonomyElement);
 			childChoiceItem.setSelectable(isSelectable);
