@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-03 11:01-0500\n"
+"POT-Creation-Date: 2013-07-05 16:16-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -258,7 +258,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
-#: Miradi/source/org/miradi/mpfMigrations/MigrationManager.java:87
+#: Miradi/source/org/miradi/mpfMigrations/MigrationManager.java:86
 msgid "(%s)"
 msgstr ""
 
@@ -3929,11 +3929,9 @@ msgstr ""
 "progetto."
 
 #: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:63
-msgid "Future Status"
-msgstr ""
-
 #: Miradi/source/org/miradi/dialogs/viability/FutureStatusPropertiesPanel.java:39
-msgid "Future Statuss"
+#: Miradi/source/org/miradi/dialogs/viability/ViabilityFutureStatusPropertiesPanel.java:39
+msgid "Future Status"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:31
@@ -8141,7 +8139,7 @@ msgstr "Informazioni su Miradi"
 msgid "Title|Accounting Code Properties"
 msgstr "Proprietà del Codice di Contabilità"
 
-#: Miradi/source/org/miradi/dialogs/task/ActivityPropertiesPanelWithoutBudgetPanels.java:50
+#: Miradi/source/org/miradi/dialogs/task/ActivityPropertiesPanelWithoutBudgetPanels.java:49
 msgid "Title|Activity Properties"
 msgstr "Proprietà dell'Attività"
 
@@ -8259,7 +8257,7 @@ msgstr ""
 msgid "Title|Measurement Properties"
 msgstr "Proprietà della misurazione"
 
-#: Miradi/source/org/miradi/dialogs/task/MethodPropertiesPanelWithoutBudgetPanels.java:43
+#: Miradi/source/org/miradi/dialogs/task/MethodPropertiesPanelWithoutBudgetPanels.java:42
 msgid "Title|Method Properties"
 msgstr "Proprietà del Metodo"
 
@@ -8372,7 +8370,7 @@ msgstr "Pannello Proprietà Etichetta"
 msgid "Title|Target Properties"
 msgstr "Proprietà del Target di Conservazione"
 
-#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityMultiPropertiesPanel.java:69
+#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityMultiPropertiesPanel.java:70
 msgid "Title|Target Viability Properties"
 msgstr "Proprietà della Vitalità del Target di Conservazione"
 

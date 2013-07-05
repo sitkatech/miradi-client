@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-03 11:01-0500\n"
+"POT-Creation-Date: 2013-07-05 16:16-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -253,7 +253,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%нэрээс' -> '%нэрэнд'<br>"
 
-#: Miradi/source/org/miradi/mpfMigrations/MigrationManager.java:87
+#: Miradi/source/org/miradi/mpfMigrations/MigrationManager.java:86
 msgid "(%s)"
 msgstr ""
 
@@ -3885,11 +3885,9 @@ msgid "Funding Sources - The sources of money available to your project."
 msgstr "Санхүүжилтийн эх үүсвэрүүд - Таны төслийн мөнгөний эх үүсвэрүүд."
 
 #: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:63
-msgid "Future Status"
-msgstr ""
-
 #: Miradi/source/org/miradi/dialogs/viability/FutureStatusPropertiesPanel.java:39
-msgid "Future Statuss"
+#: Miradi/source/org/miradi/dialogs/viability/ViabilityFutureStatusPropertiesPanel.java:39
+msgid "Future Status"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:31
@@ -8072,7 +8070,7 @@ msgstr "Гарчиг|Miradi-ийн тухай"
 msgid "Title|Accounting Code Properties"
 msgstr "Гарчиг|Тооцооны кодын Properties"
 
-#: Miradi/source/org/miradi/dialogs/task/ActivityPropertiesPanelWithoutBudgetPanels.java:50
+#: Miradi/source/org/miradi/dialogs/task/ActivityPropertiesPanelWithoutBudgetPanels.java:49
 msgid "Title|Activity Properties"
 msgstr "Гарчиг|Үйл ажиллагааны Properties"
 
@@ -8191,7 +8189,7 @@ msgstr ""
 msgid "Title|Measurement Properties"
 msgstr "Гарчиг|Хэмжигдэхүүний Properties"
 
-#: Miradi/source/org/miradi/dialogs/task/MethodPropertiesPanelWithoutBudgetPanels.java:43
+#: Miradi/source/org/miradi/dialogs/task/MethodPropertiesPanelWithoutBudgetPanels.java:42
 msgid "Title|Method Properties"
 msgstr "гарчиг|Арга Зүйн Properties"
 
@@ -8304,7 +8302,7 @@ msgstr "Гарчиг|Тэмдэглэгээний шинж чанарууд"
 msgid "Title|Target Properties"
 msgstr "Гарчиг|Хамгаалах зүйлийн шинж чанарууд"
 
-#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityMultiPropertiesPanel.java:69
+#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityMultiPropertiesPanel.java:70
 msgid "Title|Target Viability Properties"
 msgstr "Гарчиг|Хамгаалах зүйлийн амьдрах чадварын шинж чанарууд"
 

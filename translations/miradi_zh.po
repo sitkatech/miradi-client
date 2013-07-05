@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-03 11:01-0500\n"
+"POT-Creation-Date: 2013-07-05 16:16-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -253,7 +253,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br> \t\t"
 
-#: Miradi/source/org/miradi/mpfMigrations/MigrationManager.java:87
+#: Miradi/source/org/miradi/mpfMigrations/MigrationManager.java:86
 msgid "(%s)"
 msgstr ""
 
@@ -3752,11 +3752,9 @@ msgid "Funding Sources - The sources of money available to your project."
 msgstr "资金资源——指您的项目可获得的资金来源。"
 
 #: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:63
-msgid "Future Status"
-msgstr ""
-
 #: Miradi/source/org/miradi/dialogs/viability/FutureStatusPropertiesPanel.java:39
-msgid "Future Statuss"
+#: Miradi/source/org/miradi/dialogs/viability/ViabilityFutureStatusPropertiesPanel.java:39
+msgid "Future Status"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:31
@@ -7821,7 +7819,7 @@ msgstr "关于Miradi \t\t"
 msgid "Title|Accounting Code Properties"
 msgstr "会计代码属性"
 
-#: Miradi/source/org/miradi/dialogs/task/ActivityPropertiesPanelWithoutBudgetPanels.java:50
+#: Miradi/source/org/miradi/dialogs/task/ActivityPropertiesPanelWithoutBudgetPanels.java:49
 msgid "Title|Activity Properties"
 msgstr ""
 
@@ -7939,7 +7937,7 @@ msgstr ""
 msgid "Title|Measurement Properties"
 msgstr "测量属性 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/task/MethodPropertiesPanelWithoutBudgetPanels.java:43
+#: Miradi/source/org/miradi/dialogs/task/MethodPropertiesPanelWithoutBudgetPanels.java:42
 msgid "Title|Method Properties"
 msgstr ""
 
@@ -8052,7 +8050,7 @@ msgstr "标题|标签属性面板"
 msgid "Title|Target Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityMultiPropertiesPanel.java:69
+#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityMultiPropertiesPanel.java:70
 msgid "Title|Target Viability Properties"
 msgstr "对象存活属性 \t\t"
 

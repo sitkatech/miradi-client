@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-03 11:01-0500\n"
+"POT-Creation-Date: 2013-07-05 16:16-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -255,7 +255,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br> "
 
-#: Miradi/source/org/miradi/mpfMigrations/MigrationManager.java:87
+#: Miradi/source/org/miradi/mpfMigrations/MigrationManager.java:86
 msgid "(%s)"
 msgstr ""
 
@@ -3818,11 +3818,9 @@ msgstr ""
 "Sumber-sumber Dana – Sumber-sumber keuangan yang tersedia untuk proyek Anda."
 
 #: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:63
-msgid "Future Status"
-msgstr ""
-
 #: Miradi/source/org/miradi/dialogs/viability/FutureStatusPropertiesPanel.java:39
-msgid "Future Statuss"
+#: Miradi/source/org/miradi/dialogs/viability/ViabilityFutureStatusPropertiesPanel.java:39
+msgid "Future Status"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:31
@@ -7991,7 +7989,7 @@ msgstr "Tentang Miradi "
 msgid "Title|Accounting Code Properties"
 msgstr "Sifat-sifat Kode Akuntansi "
 
-#: Miradi/source/org/miradi/dialogs/task/ActivityPropertiesPanelWithoutBudgetPanels.java:50
+#: Miradi/source/org/miradi/dialogs/task/ActivityPropertiesPanelWithoutBudgetPanels.java:49
 msgid "Title|Activity Properties"
 msgstr "Properti Aktivitas "
 
@@ -8109,7 +8107,7 @@ msgstr ""
 msgid "Title|Measurement Properties"
 msgstr "Sifat-sifat Pengukuran "
 
-#: Miradi/source/org/miradi/dialogs/task/MethodPropertiesPanelWithoutBudgetPanels.java:43
+#: Miradi/source/org/miradi/dialogs/task/MethodPropertiesPanelWithoutBudgetPanels.java:42
 msgid "Title|Method Properties"
 msgstr "Properti Metode "
 
@@ -8222,7 +8220,7 @@ msgstr "Panel Sifat-sifat Tag"
 msgid "Title|Target Properties"
 msgstr "Properti Target "
 
-#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityMultiPropertiesPanel.java:69
+#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityMultiPropertiesPanel.java:70
 msgid "Title|Target Viability Properties"
 msgstr "Sifat-sifat Kelangsungan Target "
 
