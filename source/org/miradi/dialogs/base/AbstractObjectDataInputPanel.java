@@ -695,7 +695,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 			final MiradiShareTaxonomyQuestion miradiShareTaxonomyQuestion = new MiradiShareTaxonomyQuestion(miradiShareTaxonomy, taxonomyAssociation);
 			final String taxonomyAssociationCode = taxonomyAssociation.getTaxonomyAssociationCode();
 			final TaxonomyEditorFieldWithReadonlyChoiceList taxonomyEditorField = new TaxonomyEditorFieldWithReadonlyChoiceList(getProject(), getRefForType(objectType), miradiShareTaxonomyQuestion, taxonomyAssociationCode);
-			fieldsToLabelMapForType.put(taxonomyEditorField, taxonomyAssociation.getLabel() + " " + taxonomyAssociation.getTaxonomyCode());
+			fieldsToLabelMapForType.put(taxonomyEditorField, taxonomyAssociation.getLabel());
 		}
 		
 		return fieldsToLabelMapForType;
