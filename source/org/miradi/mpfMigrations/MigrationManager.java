@@ -75,10 +75,10 @@ public class MigrationManager
 	private File getBackupFolder() throws Exception
 	{
 		File backupFolder = new File(EAM.getHomeDirectory(), getBackupforlderTranslatedName());
-		File backupSubfolder = new File (backupFolder, getSubfolderName());
-		backupSubfolder.mkdirs();
+		File backupSubFolder = new File (backupFolder, getSubfolderName());
+		backupSubFolder.mkdirs();
 		
-		return backupSubfolder;
+		return backupSubFolder;
 	}
 	
 	private String getBackupforlderTranslatedName()
