@@ -39,11 +39,13 @@ import org.miradi.dialogs.viability.AbstractIndicatorPropertiesPanel;
 import org.miradi.dialogs.viability.FutureStatusPropertiesPanel;
 import org.miradi.dialogs.viability.IndicatorPropertiesPanelWithBudgetPanels;
 import org.miradi.dialogs.viability.NonDiagramAbstractTargetPropertiesPanel;
+import org.miradi.dialogs.viability.ViabilityFutureStatusPropertiesPanel;
 import org.miradi.ids.BaseId;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
@@ -62,6 +64,7 @@ import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.IntermediateResultSchema;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.StrategySchema;
@@ -131,8 +134,8 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 			if (MeasurementSchema.getObjectType() == objectType)
 				return getMeasurementPropertiesPanel();
 			
-			if (FutureStatus.is(objectType))
-				return getFutureStatusPropertiesPanel();
+			if(FutureStatus.is(objectType))
+				return getFutureStatusForViabilityMode(new ORefList(orefsToUse));
 			
 			if (TargetSchema.getObjectType() == objectType)
 				return getBiodiversityTargetPropertiesPanel();
@@ -252,15 +255,39 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		return measurementPropertiesPanel;
 	}
 	
-	private AbstractObjectDataInputPanel getFutureStatusPropertiesPanel() throws Exception
+	private AbstractObjectDataInputPanel getFutureStatusForViabilityMode(ORefList refList) throws Exception
+	{
+		if (isVibilityFutureStatus(refList))
+			return getViabilityFutureStatusPanel();
+		
+		return getFutureStatusPanel();
+	}
+
+	private boolean isVibilityFutureStatus(ORefList refList)
+	{
+		return refList.getFilteredBy(KeyEcologicalAttributeSchema.getObjectType()).hasRefs();
+	}
+
+	private AbstractObjectDataInputPanel getFutureStatusPanel() throws Exception
 	{
 		if (futureStatusPropertiesPanel == null)
 		{
 			futureStatusPropertiesPanel = new FutureStatusPropertiesPanel(getProject());
 			addPanel(futureStatusPropertiesPanel);
 		}
-			
-		return futureStatusPropertiesPanel;	
+		
+		return futureStatusPropertiesPanel;
+	}
+	
+	private AbstractObjectDataInputPanel getViabilityFutureStatusPanel() throws Exception
+	{
+		if (viabilityFutureStatusPropertiesPanel == null)
+		{
+			viabilityFutureStatusPropertiesPanel = new ViabilityFutureStatusPropertiesPanel(getProject());
+			addPanel(viabilityFutureStatusPropertiesPanel);
+		}
+		
+		return viabilityFutureStatusPropertiesPanel;
 	}
 
 	private AbstractObjectDataInputPanel getBiodiversityTargetPropertiesPanel() throws Exception
@@ -448,4 +475,5 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	private SubTargetPropertiesPanel subTargetPropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;
 	private AbstractObjectDataInputPanel futureStatusPropertiesPanel;
+	private ViabilityFutureStatusPropertiesPanel viabilityFutureStatusPropertiesPanel;
 }

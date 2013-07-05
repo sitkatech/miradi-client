@@ -689,7 +689,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void writeUriRestrictedSchemaElement()
 	{
-		writeRegexRestrictedElement(URI_RESTRICTED_TEXT, "'([a-zA-Z0-9]|=|\\?|\\.|-|#|@|:|\\+|/|&|_)*'");
+		writeRegexRestrictedElement(URI_RESTRICTED_TEXT, "'([a-zA-Z0-9]|=|\\?|\\.|-|#|@|:|\\+|/|&|_|~)*'");
 	}
 	
 	private void writeNonEmptyStringSchemaElement()
