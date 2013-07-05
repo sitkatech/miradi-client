@@ -30,6 +30,7 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.FutureStatus;
 import org.miradi.objects.HumanWelfareTarget;
@@ -89,13 +90,26 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 			if(objectType == MeasurementSchema.getObjectType())
 				return targetViabilityMeasurementPropertiesPanel;
 			if(FutureStatus.is(objectType))
-				return getFutureStatusPanel();
+				return getFutureStatusForViabilityMode(new ORefList(orefsToUse));
 		}
 		catch (Exception e)
 		{
 			EAM.alertUserOfNonFatalException(e);
 		}
 		return blankPropertiesPanel;
+	}
+
+	private AbstractObjectDataInputPanel getFutureStatusForViabilityMode(ORefList refList) throws Exception
+	{
+		if (isVibilityFutureStatus(refList))
+			return getViabilityFutureStatusPanel();
+		
+		return getFutureStatusPanel();
+	}
+
+	private boolean isVibilityFutureStatus(ORefList refList)
+	{
+		return refList.getFilteredBy(KeyEcologicalAttributeSchema.getObjectType()).hasRefs();
 	}
 
 	private AbstractObjectDataInputPanel getFutureStatusPanel() throws Exception
@@ -107,6 +121,17 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		}
 		
 		return futureStatusPropertiesPanel;
+	}
+	
+	private AbstractObjectDataInputPanel getViabilityFutureStatusPanel() throws Exception
+	{
+		if (viabilityFutureStatusPropertiesPanel == null)
+		{
+			viabilityFutureStatusPropertiesPanel = new ViabilityFutureStatusPropertiesPanel(getProject());
+			addPanel(viabilityFutureStatusPropertiesPanel);
+		}
+		
+		return viabilityFutureStatusPropertiesPanel;
 	}
 	
 	@Override
@@ -124,4 +149,5 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 	private AbstractIndicatorPropertiesPanel targetViabilityIndicatorPropertiesPanel;
 	private MeasurementPropertiesPanel targetViabilityMeasurementPropertiesPanel;
 	private FutureStatusPropertiesPanel futureStatusPropertiesPanel;
+	private ViabilityFutureStatusPropertiesPanel viabilityFutureStatusPropertiesPanel;
 }

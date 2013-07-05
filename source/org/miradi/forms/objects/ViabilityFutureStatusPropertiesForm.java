@@ -21,11 +21,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.forms.objects;
 
 
-public class FutureStatusPropertiesForm extends AbstractFutureStatusPropertiesForm
+public class ViabilityFutureStatusPropertiesForm extends AbstractFutureStatusPropertiesForm
 {
 	@Override
 	protected boolean isViabilityFutureStatus()
 	{
-		return false;
+		return true;
 	}
 }

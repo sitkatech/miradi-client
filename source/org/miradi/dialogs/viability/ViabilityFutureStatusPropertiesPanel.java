@@ -18,14 +18,24 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.forms.objects;
+package org.miradi.dialogs.viability;
 
+import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.forms.objects.ViabilityFutureStatusPropertiesForm;
+import org.miradi.main.EAM;
+import org.miradi.project.Project;
+import org.miradi.schemas.FutureStatusSchema;
 
-public class FutureStatusPropertiesForm extends AbstractFutureStatusPropertiesForm
+public class ViabilityFutureStatusPropertiesPanel extends ObjectDataInputPanel
 {
-	@Override
-	protected boolean isViabilityFutureStatus()
+	public ViabilityFutureStatusPropertiesPanel(Project projectToUse) throws Exception
 	{
-		return false;
+		super(projectToUse, FutureStatusSchema.getObjectType(), new ViabilityFutureStatusPropertiesForm());
+	}
+
+	@Override
+	public String getPanelDescription()
+	{
+		return EAM.text("Future Status");
 	}
 }
