@@ -34,7 +34,7 @@ public class MethodListManagementPanel extends ObjectListManagementPanel
 	public static MethodListManagementPanel create(MainWindow mainWindow, ORefList selectedIndicatorHierarchy) throws Exception
 	{
 		MethodListTablePanel tablePanel = new MethodListTablePanel(mainWindow, selectedIndicatorHierarchy);
-		MethodPropertiesPanelWithoutBudgetPanels properties = new MethodPropertiesPanelWithoutBudgetPanels(mainWindow, tablePanel.getTable());
+		MethodPropertiesPanelWithoutBudgetPanels properties = new MethodPropertiesPanelWithoutBudgetPanels(mainWindow);
 		return new MethodListManagementPanel(mainWindow, tablePanel, properties);
 	}
 	
