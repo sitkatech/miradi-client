@@ -36,6 +36,6 @@ public class FutureStatusPropertiesPanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Future Statuss");
+		return EAM.text("Future Status");
 	}
 }

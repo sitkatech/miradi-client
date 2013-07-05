@@ -34,7 +34,7 @@ public class ActivityListManagementPanel extends ObjectListManagementPanel
 	public static ActivityListManagementPanel create(MainWindow mainWindow, ORefList selectedStrategyHierarchy) throws Exception
 	{
 		ActivityListTablePanel tablePanel = new ActivityListTablePanel(mainWindow, selectedStrategyHierarchy);
-		ActivityPropertiesPanelWithoutBudgetPanels properties = new ActivityPropertiesPanelWithoutBudgetPanels(mainWindow, tablePanel.getTable());
+		ActivityPropertiesPanelWithoutBudgetPanels properties = new ActivityPropertiesPanelWithoutBudgetPanels(mainWindow);
 		return new ActivityListManagementPanel(mainWindow, tablePanel, properties);
 	}
 	

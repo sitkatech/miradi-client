@@ -423,7 +423,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		TaxonomyElementList taxonomyElementList = new TaxonomyElementList();
 		TaxonomyElement taxonomyElement1 = new TaxonomyElement();
-		final String URI_ONLY_CHARS = "http+ssh://sample.com@whoever?http://sample.com?a=1&b=2#some_where";
+		final String URI_ONLY_CHARS = "http+ssh://sample.com@who~ever?http://sample.com?a=1&b=2#some_where";
 		taxonomyElement1.setCode(URI_ONLY_CHARS);
 		taxonomyElement1.setChildCodes(new CodeList(new String[]{"1",}));
 		taxonomyElement1.setLabel("Sample & Label");
