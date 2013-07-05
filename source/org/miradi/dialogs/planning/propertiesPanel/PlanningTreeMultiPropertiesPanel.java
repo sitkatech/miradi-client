@@ -20,8 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.dialogs.accountingcode.AccountingCodePropertiesPanel;
+import org.miradi.dialogs.base.AbstractMultiPropertiesPanel;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
-import org.miradi.dialogs.base.OverlaidObjectDataInputPanel;
 import org.miradi.dialogs.categoryOne.BudgetCategoryOnePropertiesPanel;
 import org.miradi.dialogs.categoryTwo.BudgetCategoryTwoPropertiesPanel;
 import org.miradi.dialogs.diagram.AbstractStrategyPropertiesPanel;
@@ -36,10 +36,8 @@ import org.miradi.dialogs.resource.ResourcePropertiesPanel;
 import org.miradi.dialogs.subTarget.SubTargetPropertiesPanel;
 import org.miradi.dialogs.task.WorkPlanActivityPropertiesPanel;
 import org.miradi.dialogs.viability.AbstractIndicatorPropertiesPanel;
-import org.miradi.dialogs.viability.FutureStatusPropertiesPanel;
 import org.miradi.dialogs.viability.IndicatorPropertiesPanelWithBudgetPanels;
 import org.miradi.dialogs.viability.NonDiagramAbstractTargetPropertiesPanel;
-import org.miradi.dialogs.viability.ViabilityFutureStatusPropertiesPanel;
 import org.miradi.ids.BaseId;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
@@ -64,7 +62,6 @@ import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.IntermediateResultSchema;
-import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.StrategySchema;
@@ -72,7 +69,7 @@ import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
 
-public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPanel
+public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPanel
 {
 	public PlanningTreeMultiPropertiesPanel(MainWindow mainWindowToUse, ORef orefToUse) throws Exception
 	{
@@ -255,41 +252,6 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		return measurementPropertiesPanel;
 	}
 	
-	private AbstractObjectDataInputPanel getFutureStatusForViabilityMode(ORefList refList) throws Exception
-	{
-		if (isVibilityFutureStatus(refList))
-			return getViabilityFutureStatusPanel();
-		
-		return getFutureStatusPanel();
-	}
-
-	private boolean isVibilityFutureStatus(ORefList refList)
-	{
-		return refList.getFilteredBy(KeyEcologicalAttributeSchema.getObjectType()).hasRefs();
-	}
-
-	private AbstractObjectDataInputPanel getFutureStatusPanel() throws Exception
-	{
-		if (futureStatusPropertiesPanel == null)
-		{
-			futureStatusPropertiesPanel = new FutureStatusPropertiesPanel(getProject());
-			addPanel(futureStatusPropertiesPanel);
-		}
-		
-		return futureStatusPropertiesPanel;
-	}
-	
-	private AbstractObjectDataInputPanel getViabilityFutureStatusPanel() throws Exception
-	{
-		if (viabilityFutureStatusPropertiesPanel == null)
-		{
-			viabilityFutureStatusPropertiesPanel = new ViabilityFutureStatusPropertiesPanel(getProject());
-			addPanel(viabilityFutureStatusPropertiesPanel);
-		}
-		
-		return viabilityFutureStatusPropertiesPanel;
-	}
-
 	private AbstractObjectDataInputPanel getBiodiversityTargetPropertiesPanel() throws Exception
 	{
 		if(targetPropertiesPanel == null)
@@ -474,6 +436,4 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	private BudgetCategoryTwoPropertiesPanel categoryTwoPropertiesPanel;
 	private SubTargetPropertiesPanel subTargetPropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;
-	private AbstractObjectDataInputPanel futureStatusPropertiesPanel;
-	private ViabilityFutureStatusPropertiesPanel viabilityFutureStatusPropertiesPanel;
 }

@@ -19,8 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.viability;
 
+import org.miradi.dialogs.base.AbstractMultiPropertiesPanel;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
-import org.miradi.dialogs.base.OverlaidObjectDataInputPanel;
 import org.miradi.dialogs.planning.MeasurementPropertiesPanel;
 import org.miradi.dialogs.planning.propertiesPanel.BlankPropertiesPanel;
 import org.miradi.dialogs.strategicPlan.IndicatorPropertiesPanelWithoutBudgetPanels;
@@ -41,7 +41,7 @@ import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.TargetSchema;
 
-public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInputPanel
+public class TargetViabilityMultiPropertiesPanel extends AbstractMultiPropertiesPanel
 {
 	public TargetViabilityMultiPropertiesPanel(MainWindow mainWindow) throws Exception
 	{
@@ -99,41 +99,6 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		return blankPropertiesPanel;
 	}
 
-	private AbstractObjectDataInputPanel getFutureStatusForViabilityMode(ORefList refList) throws Exception
-	{
-		if (isVibilityFutureStatus(refList))
-			return getViabilityFutureStatusPanel();
-		
-		return getFutureStatusPanel();
-	}
-
-	private boolean isVibilityFutureStatus(ORefList refList)
-	{
-		return refList.getFilteredBy(KeyEcologicalAttributeSchema.getObjectType()).hasRefs();
-	}
-
-	private AbstractObjectDataInputPanel getFutureStatusPanel() throws Exception
-	{
-		if (futureStatusPropertiesPanel == null)
-		{
-			futureStatusPropertiesPanel = new FutureStatusPropertiesPanel(getProject());
-			addPanel(futureStatusPropertiesPanel);
-		}
-		
-		return futureStatusPropertiesPanel;
-	}
-	
-	private AbstractObjectDataInputPanel getViabilityFutureStatusPanel() throws Exception
-	{
-		if (viabilityFutureStatusPropertiesPanel == null)
-		{
-			viabilityFutureStatusPropertiesPanel = new ViabilityFutureStatusPropertiesPanel(getProject());
-			addPanel(viabilityFutureStatusPropertiesPanel);
-		}
-		
-		return viabilityFutureStatusPropertiesPanel;
-	}
-	
 	@Override
 	public void commandExecuted(CommandExecutedEvent event)
 	{
@@ -148,6 +113,4 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 	private TargetViabilityKeaPropertiesPanel targetViabilityKeaPropertiesPanel;
 	private AbstractIndicatorPropertiesPanel targetViabilityIndicatorPropertiesPanel;
 	private MeasurementPropertiesPanel targetViabilityMeasurementPropertiesPanel;
-	private FutureStatusPropertiesPanel futureStatusPropertiesPanel;
-	private ViabilityFutureStatusPropertiesPanel viabilityFutureStatusPropertiesPanel;
 }
