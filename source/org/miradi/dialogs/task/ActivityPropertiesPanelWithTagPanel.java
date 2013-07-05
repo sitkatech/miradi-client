@@ -33,7 +33,7 @@ public class ActivityPropertiesPanelWithTagPanel extends ActivityPropertiesPanel
 {
 	public ActivityPropertiesPanelWithTagPanel(MainWindow mainWindow, ObjectPicker objectPickerToUse) throws Exception
 	{
-		super(mainWindow, objectPickerToUse);
+		super(mainWindow);
 		
 		createSingleSection(FactorSummaryCorePanel.getTagsLabel());
 		ObjectsActionButton chooseTagForFactorButton = createObjectsActionButton(getMainWindow().getActions().getObjectsAction(ActionManageFactorTags.class), objectPickerToUse);

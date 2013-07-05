@@ -22,11 +22,10 @@ package org.miradi.dialogs.task;
 
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.views.umbrella.ObjectPicker;
 
 public class MethodPropertiesPanelWithoutBudgetPanels extends TaskPropertiesPanelWithoutBudgetPanels
 {
-	public MethodPropertiesPanelWithoutBudgetPanels(MainWindow mainWindow, ObjectPicker objectPickerToUse) throws Exception
+	public MethodPropertiesPanelWithoutBudgetPanels(MainWindow mainWindow) throws Exception
 	{
 		super(mainWindow);
 	}
