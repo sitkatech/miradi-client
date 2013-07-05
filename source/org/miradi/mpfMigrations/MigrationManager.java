@@ -74,14 +74,14 @@ public class MigrationManager
 
 	private File getBackupFolder() throws Exception
 	{
-		File backupFolder = new File(EAM.getHomeDirectory(), getBackupforlderTranslatedName());
+		File backupFolder = new File(EAM.getHomeDirectory(), getBackupFolderTranslatedName());
 		File backupSubFolder = new File (backupFolder, getSubfolderName());
 		backupSubFolder.mkdirs();
 		
 		return backupSubFolder;
 	}
 	
-	private String getBackupforlderTranslatedName()
+	private String getBackupFolderTranslatedName()
 	{
 		return EAM.substitute(EAM.text("(%s)"), "Automated-Migration-Backups");
 	}
