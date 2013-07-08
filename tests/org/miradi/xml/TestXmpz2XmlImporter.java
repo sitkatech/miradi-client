@@ -41,6 +41,7 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.TaxonomyAssociation;
@@ -251,7 +252,15 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	{
 		DiagramFactor diagramFactor = getProject().createAndPopulateDiagramFactor();
 		getProject().tagDiagramFactor(diagramFactor.getWrappedORef());
-		validateUsingStringWriter();
+		
+		ProjectForTesting importedProject = validateUsingStringWriter();
+		ORef conceptualDiagramRef = importedProject.getConceptualModelDiagramPool().getRefList().getFirstElement();
+		ConceptualModelDiagram diagram = ConceptualModelDiagram.find(importedProject, conceptualDiagramRef);
+		ORefList taggedObjectSetRefs = diagram.getSelectedTaggedObjectSetRefs();
+		assertEquals("incorrect number of tagged object set objects imported?", 1, taggedObjectSetRefs.size());
+		ORef taggedObjectSetORef = taggedObjectSetRefs.getFirstElement();
+		
+		assertTrue("Tagged object set ref should be valid?", TaggedObjectSet.is(taggedObjectSetORef));
 	}
 	
 	public void testXmpz2NameSpaceContext() throws Exception
@@ -336,7 +345,6 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 		{
 			stringInputputStream.close();	
 		}
-		
 		
 		UnicodeXmlWriter secondWriter = createWriter(projectToImportInto);
 		assertEquals("Exports from projects do not match?", exportedProjectXml, secondWriter.toString());

@@ -84,6 +84,7 @@ import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.SubTargetSchema;
+import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.TextBoxSchema;
@@ -510,6 +511,9 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		
 		if (objectTypeName.equals(FUTURE_STATUS))
 			return FutureStatusSchema.getObjectType();
+		
+		if (objectTypeName.equals(TAGGED_OBJECT_SET_ELEMENT_NAME))
+			return TaggedObjectSetSchema.getObjectType();
 		
 		EAM.logError("Could not find type for node: " + objectTypeName);
 		return ObjectType.FAKE;
