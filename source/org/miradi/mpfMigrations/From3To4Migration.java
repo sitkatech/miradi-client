@@ -32,7 +32,7 @@ import org.miradi.objects.Indicator;
 //FIXME medium - refactor this class to work at a higher level before creating any other migrations.
 public class From3To4Migration
 {
-	public static RawProject migrate(RawProject rawProject) throws Exception
+	public static RawProject forwardMigrate(RawProject rawProject) throws Exception
 	{
 		return moveIndicatorFutureStatusesToNewFutureStatus(rawProject);
 	}
