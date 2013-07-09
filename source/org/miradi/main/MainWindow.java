@@ -669,7 +669,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 				if (result != 0)
 					return false;
 
-				migrationManager.safelyMigrate(projectFile);
+				migrationManager.safelyMigrateForward(projectFile);
 			}
 		}
 
