@@ -34,10 +34,10 @@ public class From3To4Migration
 {
 	public static RawProject migrate(RawProject rawProject) throws Exception
 	{
-		return moveIndicatorFutureStatuses(rawProject);
+		return moveIndicatorFutureStatusesToNewFutureStatus(rawProject);
 	}
 
-	private static RawProject moveIndicatorFutureStatuses(RawProject rawProject)
+	private static RawProject moveIndicatorFutureStatusesToNewFutureStatus(RawProject rawProject)
 	{
 		if (!rawProject.containType(ObjectType.INDICATOR))
 			return rawProject;
