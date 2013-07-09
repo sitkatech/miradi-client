@@ -22,4 +22,5 @@ package org.miradi.mpfMigrations;
 
 abstract public class AbstractMigration
 {
+	abstract public RawProject forwardMigrate(RawProject rawProject) throws Exception;
 }

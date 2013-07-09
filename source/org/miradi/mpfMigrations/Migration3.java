@@ -32,7 +32,8 @@ import org.miradi.objects.Indicator;
 //FIXME medium - refactor this class to work at a higher level before creating any other migrations.
 public class Migration3 extends AbstractMigration
 {
-	public static RawProject forwardMigrate(RawProject rawProject) throws Exception
+	@Override
+	public RawProject forwardMigrate(RawProject rawProject) throws Exception
 	{
 		return moveIndicatorFutureStatusesToNewFutureStatus(rawProject);
 	}
