@@ -106,4 +106,16 @@ public class Migration3 extends AbstractMigration
 		
 		return false;
 	}
+
+	public static boolean isVersion(VersionRange versionRange)
+	{
+		return versionRange.getLowVersion() == getMigrationVersionLow();
+	}
+
+	private static int getMigrationVersionLow()
+	{
+		return VERSION_LOW;
+	}
+	
+	private static final int VERSION_LOW = 3;
 }

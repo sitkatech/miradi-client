@@ -55,11 +55,14 @@ public class MigrationManager
 	
 	public String migrateForward(String mpfAsString) throws Exception
 	{
-		//FIXME: Migrate needs to perform the correct migration(s), given the mpf version
+		VersionRange versionRange = RawProjectLoader.loadVersionRange(new UnicodeStringReader(mpfAsString));
 		RawProject rawProject = RawProjectLoader.loadProject(new UnicodeStringReader(mpfAsString));
-		final RawProject migratedPools = new Migration3().forwardMigrate(rawProject);
+		if (Migration3.isVersion(versionRange))
+		{
+			new Migration3().forwardMigrate(rawProject);
+		}
 
-		return convertToMpfString(migratedPools);
+		return convertToMpfString(rawProject);
 	}
 	
 	private void createBackup(File projectFile) throws Exception
