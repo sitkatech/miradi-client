@@ -57,7 +57,7 @@ public class MigrationManager
 	{
 		//FIXME: Migrate needs to perform the correct migration(s), given the mpf version
 		RawProject rawProject = RawProjectLoader.loadProject(new UnicodeStringReader(mpfAsString));
-		final RawProject migratedPools = Migration3.forwardMigrate(rawProject);
+		final RawProject migratedPools = new Migration3().forwardMigrate(rawProject);
 
 		return convertToMpfString(migratedPools);
 	}
