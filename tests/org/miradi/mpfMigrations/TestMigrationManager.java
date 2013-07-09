@@ -149,7 +149,7 @@ public class TestMigrationManager extends TestCaseWithProject
 	{
 		MigrationManager migrationManager = new MigrationManager();
 		String projectAsString = ProjectSaverForTesting.createSnapShot(getProject(), new VersionRange(3, 3));
-		String migratedMpfFile = migrationManager.migrate(projectAsString);
+		String migratedMpfFile = migrationManager.migrateForward(projectAsString);
 		
 		ProjectForTesting migratedProject = ProjectForTesting.createProjectWithoutDefaultObjects("MigratedProject");
 		ProjectLoader.loadProject(new UnicodeStringReader(migratedMpfFile), migratedProject);

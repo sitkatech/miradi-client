@@ -43,17 +43,17 @@ public class MigrationManager
 	{
 	}
 	
-	public void safelyMigrate(File projectFile) throws Exception
+	public void safelyMigrateForward(File projectFile) throws Exception
 	{
 		createBackup(projectFile);
 		String contents = UnicodeReader.getFileContents(projectFile);
-		contents = migrate(contents);
+		contents = migrateForward(contents);
 		UnicodeWriter fileWriter = new UnicodeWriter(projectFile);
 		fileWriter.write(contents);
 		fileWriter.close();
 	}
 	
-	public String migrate(String mpfAsString) throws Exception
+	public String migrateForward(String mpfAsString) throws Exception
 	{
 		//FIXME: Migrate needs to perform the correct migration(s), given the mpf version
 		RawProject rawProject = RawProjectLoader.loadProject(new UnicodeStringReader(mpfAsString));

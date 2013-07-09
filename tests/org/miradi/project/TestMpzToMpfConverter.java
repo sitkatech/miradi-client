@@ -179,7 +179,7 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 			NullProgressMeter progressIndicator = new NullProgressMeter();
 			String convertedProjectString = MpzToMpfConverter.convert(mpz, progressIndicator);
 			MigrationManager migrationManager = new MigrationManager();
-			convertedProjectString = migrationManager.migrate(convertedProjectString);
+			convertedProjectString = migrationManager.migrateForward(convertedProjectString);
 
 			// NOTE: For easier debugging
 			//System.out.println(convertedProjectString);
