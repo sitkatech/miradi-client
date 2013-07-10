@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-09 13:01-0500\n"
+"POT-Creation-Date: 2013-07-10 17:31-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -8711,6 +8711,9 @@ msgstr ""
 msgid "FieldLabel|3.LeaderResource|Leader"
 msgstr ""
 
+msgid "FieldLabel|3.TaxonomyClassificationContainer|Taxonomies"
+msgstr ""
+
 msgid "FieldLabel|5.BudgetRollupReportTypes|Rollup Types"
 msgstr ""
 
@@ -8906,6 +8909,9 @@ msgstr ""
 msgid "FieldLabel|8.Unit|Unit"
 msgstr ""
 
+msgid "FieldLabel|8.TaxonomyClassificationContainer|Taxonomies"
+msgstr ""
+
 msgid "FieldLabel|9.Objective|Objective"
 msgstr "分目标 \t\t"
 
@@ -8952,6 +8958,9 @@ msgid "FieldLabel|9.ProgressPrecentRefs|Progress Percents"
 msgstr ""
 
 msgid "FieldLabel|9.PseudoRelevantStrategyRefs|Relevant Strategies"
+msgstr ""
+
+msgid "FieldLabel|9.TaxonomyClassificationContainer|Taxonomies"
 msgstr ""
 
 msgid "FieldLabel|10.Goal|Goal"
@@ -9379,6 +9388,9 @@ msgstr ""
 msgid "FieldLabel|12.Summary|Future Value"
 msgstr ""
 
+msgid "FieldLabel|12.TaxonomyClassificationContainer|Taxonomies"
+msgstr ""
+
 msgid "FieldLabel|13.DiagramLink|Diagram Link"
 msgstr ""
 
@@ -9444,6 +9456,9 @@ msgstr "条目 \t\t"
 
 msgid "FieldLabel|17.Status|Status"
 msgstr "状态 \t\t"
+
+msgid "FieldLabel|17.TaxonomyClassificationContainer|Taxonomies"
+msgstr ""
 
 msgid "FieldLabel|18.FontSize|Size"
 msgstr "大小 \t\t"
@@ -9518,6 +9533,9 @@ msgid "FieldLabel|20.Text|Details"
 msgstr "详情"
 
 msgid "FieldLabel|20.IsDirectThreat|Direct Threat"
+msgstr ""
+
+msgid "FieldLabel|20.TaxonomyClassificationContainer|Taxonomies"
 msgstr ""
 
 msgid "FieldLabel|21.Strategy|Strategy"
@@ -9839,6 +9857,9 @@ msgid "FieldLabel|33.Contribution|Contribution"
 msgstr ""
 
 msgid "FieldLabel|33.Irreversibility|Irreversibility"
+msgstr ""
+
+msgid "FieldLabel|33.TaxonomyClassificationContainer|Taxonomies"
 msgstr ""
 
 msgid "FieldLabel|34.ThreatStressRating|Threat-Stress Rating"
@@ -10321,6 +10342,9 @@ msgid ""
 msgstr ""
 
 msgid "FieldLabel|60.ProgramTaxonomySetVersion|Program Taxonomy Set Version"
+msgstr ""
+
+msgid "FieldLabel|60.TaxonomyClassificationContainer|Taxonomies"
 msgstr ""
 
 msgid "FieldLabel|61.Taxonomy|Miradi Share Taxonomy"
