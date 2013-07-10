@@ -42,7 +42,7 @@ public class IndicatorSubPanel extends ObjectDataInputPanel
 		final int COLUMNS = 75;
 		addField(createMultilineField(IndicatorSchema.getObjectType(), Indicator.TAG_DETAIL, COLUMNS));
 		addField(createMultilineField(IndicatorSchema.getObjectType(), Indicator.TAG_COMMENTS, COLUMNS));
-		addFields(createMultipleTaxonomyWithEditButtonFields(IndicatorSchema.getObjectType()));
+		addField(createTaxonomyFields(IndicatorSchema.getObjectType()));
 		
 		updateFieldsFromProject();
 	}

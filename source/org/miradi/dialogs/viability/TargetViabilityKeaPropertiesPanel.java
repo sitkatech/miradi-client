@@ -44,7 +44,7 @@ public class TargetViabilityKeaPropertiesPanel extends ObjectDataInputPanelWithS
 		addField(createMultilineField(KeyEcologicalAttributeSchema.getObjectType(), KeyEcologicalAttribute.TAG_DETAILS));
 		addField(createChoiceField(KeyEcologicalAttributeSchema.getObjectType(), KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, new KeyEcologicalAttributeTypeQuestion()));
 		addField(createMultilineField(KeyEcologicalAttributeSchema.getObjectType(), KeyEcologicalAttribute.TAG_DESCRIPTION));
-		addFields(createMultipleTaxonomyWithEditButtonFields(KeyEcologicalAttributeSchema.getObjectType()));
+		addField(createTaxonomyFields(KeyEcologicalAttributeSchema.getObjectType()));
 		
 		updateFieldsFromProject();
 	}
