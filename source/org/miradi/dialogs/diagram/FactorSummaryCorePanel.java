@@ -77,7 +77,7 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		if (factorToEdit.isCause())
 		{
 			addField(createCheckBoxField(CauseSchema.getObjectType(), Cause.TAG_IS_DIRECT_THREAT, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE));
-			addFields(createMultipleTaxonomyWithEditButtonFields(CauseSchema.getObjectType()));
+			addField(createTaxonomyFields(CauseSchema.getObjectType()));
 		}
 		if (factorToEdit.isDirectThreat())
 		{
@@ -96,7 +96,7 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 			addLabeledSubPanelWithoutBorder(new LegacyTncStrategyRankingEditorPropertiesSubPanel(getProject(), factorToEdit.getRef(), actions), EAM.text("Legacy TNC Ratings"));
 			addFieldWithEditButton(EAM.text("Objectives"), createReadOnlyObjectList(StrategySchema.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyObjectiveRelevancyList.class), getPicker()));
 			addFieldWithEditButton(EAM.text("Goals"), createReadOnlyObjectList(StrategySchema.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_GOAL_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyGoalRelevancyList.class), getPicker()));
-			addFields(createMultipleTaxonomyWithEditButtonFields(StrategySchema.getObjectType()));
+			addField(createTaxonomyFields(StrategySchema.getObjectType()));
 		}
 
 		if(factorToEdit.isTarget())
@@ -104,11 +104,11 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 			addField(createMultilineField(Target.TAG_CURRENT_STATUS_JUSTIFICATION));
 			addField(createStringField(Target.TAG_SPECIES_LATIN_NAME));
 			addField(createQuestionFieldWithDescriptionPanel(TargetSchema.getObjectType(), Target.TAG_HABITAT_ASSOCIATION, new HabitatAssociationQuestion()));
-			addFields(createMultipleTaxonomyWithEditButtonFields(TargetSchema.getObjectType()));
+			addField(createTaxonomyFields(TargetSchema.getObjectType()));
 		}
 		if (factorToEdit.isThreatReductionResult())
 		{
-			addFields(createMultipleTaxonomyWithEditButtonFields(ThreatReductionResultSchema.getObjectType()));
+			addField(createTaxonomyFields(ThreatReductionResultSchema.getObjectType()));
 		}
 		
 		addField(createReadOnlyObjectList(factorToEdit.getType(), Factor.PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS));

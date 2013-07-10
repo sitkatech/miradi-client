@@ -23,7 +23,6 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Set;
 import java.util.Vector;
@@ -50,6 +49,7 @@ import org.miradi.dialogfields.DropDownChoiceField;
 import org.miradi.dialogfields.EditableCodeListField;
 import org.miradi.dialogfields.ExternalProjectsDisplayField;
 import org.miradi.dialogfields.IndicatorRelevancyOverrideListField;
+import org.miradi.dialogfields.MultipleTaxonomyEditorFields;
 import org.miradi.dialogfields.ObjectCheckBoxField;
 import org.miradi.dialogfields.ObjectChoiceField;
 import org.miradi.dialogfields.ObjectCodeEditorField;
@@ -78,7 +78,6 @@ import org.miradi.dialogfields.StrategyGoalOverrideListField;
 import org.miradi.dialogfields.StrategyObjectiveOverrideListField;
 import org.miradi.dialogfields.StringMapProjectResourceFilterEditorField;
 import org.miradi.dialogfields.TaxonomyEditorField;
-import org.miradi.dialogfields.TaxonomyEditorFieldWithReadonlyChoiceList;
 import org.miradi.dialogfields.WhenEditorField;
 import org.miradi.dialogfields.WhoEditorField;
 import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
@@ -93,17 +92,11 @@ import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objectdata.BooleanData;
-import org.miradi.objecthelpers.BaseObjectByNameSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.TaxonomyHelper;
-import org.miradi.objectpools.TaxonomyAssociationPool;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.MiradiShareTaxonomy;
-import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.MiradiShareTaxonomyQuestion;
 import org.miradi.questions.ResourceLeaderQuestionWithUnspecifiedChoice;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.schemas.GoalSchema;
@@ -678,27 +671,9 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new TaxonomyEditorField(getProject(), refToUse, tagToUse, questionToUse, taxonomyAssociationCodeToUse);
 	}
 	
-	public LinkedHashMap<ObjectDataInputField, String> createMultipleTaxonomyWithEditButtonFields(int objectType) throws Exception
+	public ObjectDataInputField createTaxonomyFields(int objectType)
 	{
-		ORef refForType = getRefForType(objectType);
-		if (refForType.isInvalid())
-			return new LinkedHashMap<ObjectDataInputField, String>();
-
-		TaxonomyAssociationPool taxonomyAssociationPool = getProject().getTaxonomyAssociationPool();
-		BaseObject baseObject = BaseObject.find(getProject(), refForType);
-		Vector<TaxonomyAssociation> sortedTaxonomyAssociationsForType = taxonomyAssociationPool.findTaxonomyAssociationsForBaseObject(baseObject);
-		Collections.sort(sortedTaxonomyAssociationsForType, new BaseObjectByNameSorter());
-		LinkedHashMap<ObjectDataInputField, String> fieldsToLabelMapForType = new LinkedHashMap<ObjectDataInputField, String>();
-		for(TaxonomyAssociation taxonomyAssociation : sortedTaxonomyAssociationsForType)
-		{
-			MiradiShareTaxonomy miradiShareTaxonomy = TaxonomyHelper.getTaxonomyElementList(taxonomyAssociation);
-			final MiradiShareTaxonomyQuestion miradiShareTaxonomyQuestion = new MiradiShareTaxonomyQuestion(miradiShareTaxonomy, taxonomyAssociation);
-			final String taxonomyAssociationCode = taxonomyAssociation.getTaxonomyAssociationCode();
-			final TaxonomyEditorFieldWithReadonlyChoiceList taxonomyEditorField = new TaxonomyEditorFieldWithReadonlyChoiceList(getProject(), getRefForType(objectType), miradiShareTaxonomyQuestion, taxonomyAssociationCode);
-			fieldsToLabelMapForType.put(taxonomyEditorField, taxonomyAssociation.getLabel());
-		}
-		
-		return fieldsToLabelMapForType;
+		return new MultipleTaxonomyEditorFields(getProject(), objectType);
 	}
 	
 	public ObjectDataInputField createReadOnlyChoiceField(String tagToUse, ChoiceQuestion question)

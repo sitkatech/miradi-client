@@ -128,7 +128,7 @@ abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends	
 			int objectType = data.getObjectType();
 
 			add(new FillerLabel());
-			addFields(createMultipleTaxonomyWithEditButtonFields(objectType));
+			addField(createTaxonomyFields(objectType));
 			return;
 		}
 		if (formItem.isFormQuestionFieldData())

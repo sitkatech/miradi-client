@@ -56,7 +56,7 @@ public class StressDetailsSubPanel extends ObjectDataInputPanel
 		ObjectsActionButton chooseTagForFactorButton = createObjectsActionButton(getMainWindow().getActions().getObjectsAction(ActionManageFactorTags.class), getPicker());
 		ObjectDataInputField readOnlyTaggedObjects = createReadOnlyObjectList(StressSchema.getObjectType(), Factor.PSEUDO_TAG_REFERRING_TAG_REFS);
 		addFieldWithEditButton(FactorSummaryCorePanel.getTagsLabel(), readOnlyTaggedObjects, chooseTagForFactorButton);
-		addFields(createMultipleTaxonomyWithEditButtonFields(StressSchema.getObjectType()));
+		addField(createTaxonomyFields(StressSchema.getObjectType()));
 		
 		updateFieldsFromProject();
 	}
