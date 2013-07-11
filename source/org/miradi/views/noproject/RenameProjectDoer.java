@@ -64,8 +64,11 @@ public class RenameProjectDoer
 			proposedProjectFile = new File(EAM.getHomeDirectory(), projectFileName);
 			if (projectExists(proposedProjectFile))
 			{
-				EAM.notifyDialog(EAM.substitute(EAM.text("A project or file by this name already exists: %s"), projectFileName));
-				continue;
+				boolean shouldOverwrite = EAM.confirmOverwriteDialog("", EAM.substitute(EAM.text("A project or file by this name already exists: %s"), projectFileName));
+				if (!shouldOverwrite)
+					continue;
+				
+				FileUtilities.createMpfBackup(proposedProjectFile, EAM.substitute(EAM.text("(%s)"), "Overriden-backup"));
 			}
 			
 			if (!Project.isValidProjectName(projectName))

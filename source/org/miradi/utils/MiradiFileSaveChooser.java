@@ -40,8 +40,7 @@ abstract public class MiradiFileSaveChooser extends AbstractFileChooser
 		if (file.exists())
 		{
 			String title = getDialogOverwriteTitleText();
-			String[] body = { getDialogOverwriteBodyText() };
-			if (!EAM.confirmOverwriteDialog(title, body))
+			if (!EAM.confirmOverwriteDialog(title, getDialogOverwriteBodyText()))
 				return null;
 		
 			try
