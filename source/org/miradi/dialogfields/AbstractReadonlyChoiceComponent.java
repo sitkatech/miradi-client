@@ -54,8 +54,10 @@ abstract public class AbstractReadonlyChoiceComponent extends MiradiPanel
 		removeAll();
 		createAndAddReadonlyLabelsRecursively(choiceItems, codeList);
 		if (getTopLevelAncestor() != null)
+		{
 			getTopLevelAncestor().validate();
-
+			getTopLevelAncestor().repaint();
+		}
 	}
 
 	private void createAndAddReadonlyLabelsRecursively(Vector<ChoiceItem> allChoiceItems, final CodeList selectedCodes)
