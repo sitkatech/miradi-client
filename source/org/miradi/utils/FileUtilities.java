@@ -26,7 +26,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.HashSet;
+
+import org.martus.util.MultiCalendar;
+import org.miradi.files.AbstractMpfFileFilter;
+import org.miradi.main.EAM;
 
 public class FileUtilities
 {
@@ -231,6 +237,34 @@ public class FileUtilities
 		return name + extension;
 	}
 	
+	public static void createMpfBackup(File projectFile, final String backupFolderName) throws Exception
+	{
+		long timeOfBackup = System.currentTimeMillis();
+		File backup = new File(getBackupFolder(backupFolderName), "backup-" + projectFile.getName() + "-" + timeOfBackup + AbstractMpfFileFilter.EXTENSION);
+		if (backup.exists())
+			throw new Exception("Overriding older backup");
+		
+		FileUtilities.copyFile(projectFile, backup);
+	}
+
+	private static File getBackupFolder(String backupFolderName) throws Exception
+	{
+		File backupFolder = new File(EAM.getHomeDirectory(), backupFolderName);
+		File backupSubFolder = new File (backupFolder, getSubfolderName());
+		backupSubFolder.mkdirs();
+		
+		return backupSubFolder;
+	}
+	
+	private static String getSubfolderName()
+	{
+		MultiCalendar calendar = new MultiCalendar();
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM");
+		String subForlderName = dateFormat.format(calendar.getTime());
+		
+		return subForlderName;
+	}
+
 	public static final String SEPARATOR = "/";
 	public static final String REGULAR_EXPRESSION_BACKSLASH = "\\\\";
 }

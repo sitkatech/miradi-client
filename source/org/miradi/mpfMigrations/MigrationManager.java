@@ -21,17 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.mpfMigrations;
 
 import java.io.File;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 
-import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringReader;
 import org.martus.util.UnicodeStringWriter;
 import org.martus.util.UnicodeWriter;
 import org.miradi.exceptions.ProjectFileTooNewException;
 import org.miradi.exceptions.ProjectFileTooOldException;
-import org.miradi.files.AbstractMpfFileFilter;
 import org.miradi.main.EAM;
 import org.miradi.project.AbstractMiradiProjectSaver;
 import org.miradi.project.RawProjectSaver;
@@ -67,37 +63,14 @@ public class MigrationManager
 	
 	private void createBackup(File projectFile) throws Exception
 	{
-		long timeOfBackup = System.currentTimeMillis();
-		File backup = new File(getBackupFolder(), "backup-" + projectFile.getName() + "-" + timeOfBackup + AbstractMpfFileFilter.EXTENSION);
-		if (backup.exists())
-			throw new Exception("Overriding older backup");
-		
-		FileUtilities.copyFile(projectFile, backup);
+		FileUtilities.createMpfBackup(projectFile, getBackupFolderTranslatedName());
 	}
 
-	private File getBackupFolder() throws Exception
-	{
-		File backupFolder = new File(EAM.getHomeDirectory(), getBackupFolderTranslatedName());
-		File backupSubFolder = new File (backupFolder, getSubfolderName());
-		backupSubFolder.mkdirs();
-		
-		return backupSubFolder;
-	}
-	
 	private String getBackupFolderTranslatedName()
 	{
 		return EAM.substitute(EAM.text("(%s)"), "Automated-Migration-Backups");
 	}
 
-	private String getSubfolderName()
-	{
-		MultiCalendar calendar = new MultiCalendar();
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM");
-		String subForlderName = dateFormat.format(calendar.getTime());
-		
-		return subForlderName;
-	}
-	
 	public boolean needsMigration(final File projectFile) throws Exception
 	{
 		String contents = UnicodeReader.getFileContents(projectFile);
