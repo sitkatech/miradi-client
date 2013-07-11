@@ -29,6 +29,7 @@ import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.base.ReadonlyPanelWithPopupEditor;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.layout.TwoColumnGridLayout;
 import org.miradi.objecthelpers.BaseObjectByNameSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.TaxonomyHelper;
@@ -44,6 +45,8 @@ public class TaxonomyFieldsPanel extends MiradiPanel
 {
 	public TaxonomyFieldsPanel(Project projectToUse)
 	{
+		super(new TwoColumnGridLayout());
+		
 		project = projectToUse;
 		clearFieldsToLabelMap();
 	}
