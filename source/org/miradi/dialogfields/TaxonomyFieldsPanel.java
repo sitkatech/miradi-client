@@ -25,7 +25,9 @@ import java.util.LinkedHashMap;
 import java.util.Set;
 import java.util.Vector;
 
+import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.MiradiPanel;
+import org.miradi.dialogs.base.ReadonlyPanelWithPopupEditor;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.objecthelpers.BaseObjectByNameSorter;
 import org.miradi.objecthelpers.ORef;
@@ -35,9 +37,10 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.MiradiShareTaxonomy;
 import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.MiradiShareTaxonomyQuestion;
 
-public class TaxonomyFieldsPanel extends MiradiPanel
+public class TaxonomyFieldsPanel extends MiradiPanel 
 {
 	public TaxonomyFieldsPanel(Project projectToUse)
 	{
@@ -47,8 +50,8 @@ public class TaxonomyFieldsPanel extends MiradiPanel
 
 	public void setText(String newValue)
 	{
-		Set<ObjectDataInputField> fields = fieldsToLabelMapForType.keySet();
-		for(ObjectDataInputField field : fields)
+		Set<ReadonlyPanelWithPopupEditor> fields = fieldsToLabelMapForType.keySet();
+		for(ReadonlyPanelWithPopupEditor field : fields)
 		{
 			field.setText(newValue);
 		}
@@ -64,12 +67,12 @@ public class TaxonomyFieldsPanel extends MiradiPanel
 	private void addFields()
 	{
 		removeAll();
-		Set<ObjectDataInputField> fields = fieldsToLabelMapForType.keySet();
-		for(ObjectDataInputField field : fields)
+		Set<ReadonlyPanelWithPopupEditor> fields = fieldsToLabelMapForType.keySet();
+		for(ReadonlyPanelWithPopupEditor field : fields)
 		{
 			String label = fieldsToLabelMapForType.get(field);
 			add(new PanelTitleLabel(label));
-			add(field.getComponent());
+			add(field);
 		}
 	}
 
@@ -87,8 +90,10 @@ public class TaxonomyFieldsPanel extends MiradiPanel
 			MiradiShareTaxonomy miradiShareTaxonomy = TaxonomyHelper.getTaxonomyElementList(taxonomyAssociation);
 			final MiradiShareTaxonomyQuestion miradiShareTaxonomyQuestion = new MiradiShareTaxonomyQuestion(miradiShareTaxonomy, taxonomyAssociation);
 			final String taxonomyAssociationCode = taxonomyAssociation.getTaxonomyAssociationCode();
-			final TaxonomyEditorFieldWithReadonlyChoiceList taxonomyEditorField = new TaxonomyEditorFieldWithReadonlyChoiceList(getProject(), refToUse, miradiShareTaxonomyQuestion, taxonomyAssociationCode);
-			fieldsToLabelMapForType.put(taxonomyEditorField, taxonomyAssociation.getLabel());
+			
+			TaxonomyReadonlyPanelWithPopupEditorProvider provider = new TaxonomyReadonlyPanelWithPopupEditorProvider(refToUse, miradiShareTaxonomyQuestion, taxonomyAssociationCode);
+			ReadonlyPanelWithPopupEditor readonlyPanelPopupEditor = new ReadonlyPanelWithPopupEditor(provider, "", miradiShareTaxonomyQuestion);
+			fieldsToLabelMapForType.put(readonlyPanelPopupEditor, taxonomyAssociation.getLabel());
 		}
 	}		
 	
@@ -99,9 +104,33 @@ public class TaxonomyFieldsPanel extends MiradiPanel
 	
 	private void clearFieldsToLabelMap()
 	{
-		fieldsToLabelMapForType = new LinkedHashMap<ObjectDataInputField, String>();
+		fieldsToLabelMapForType = new LinkedHashMap<ReadonlyPanelWithPopupEditor, String>();
 	}
 	
+	private class TaxonomyReadonlyPanelWithPopupEditorProvider implements ReadonlyPanelAndPopupEditorProvider
+	{
+		public TaxonomyReadonlyPanelWithPopupEditorProvider(ORef refToUse, ChoiceQuestion questionToUse, String taxonomyAssociationCodeToUse)
+		{
+			ref = refToUse;
+			question = questionToUse;
+			taxonomyAssociationCode = taxonomyAssociationCodeToUse;
+		}
+		
+		public DisposablePanel createEditorPanel() throws Exception
+		{
+			return new TaxonomyEditorPanel(getProject(), ref, BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER, question, taxonomyAssociationCode);
+		}
+
+		public AbstractReadonlyChoiceComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)
+		{
+			return new ReadonlyTaxonomyMultiChoiceComponent(getProject(), question, taxonomyAssociationCode);
+		}
+		
+		private ORef ref; 
+		private ChoiceQuestion question; 
+		private String taxonomyAssociationCode;
+	}
+
 	private Project project;
-	private LinkedHashMap<ObjectDataInputField, String> fieldsToLabelMapForType;
+	private LinkedHashMap<ReadonlyPanelWithPopupEditor, String> fieldsToLabelMapForType;
 }
