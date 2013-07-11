@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-10 17:31-0500\n"
+"POT-Creation-Date: 2013-07-11 14:46-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -257,7 +257,8 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
-#: Miradi/source/org/miradi/mpfMigrations/MigrationManager.java:89
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:71
+#: Miradi/source/org/miradi/mpfMigrations/MigrationManager.java:71
 msgid "(%s)"
 msgstr ""
 
@@ -2490,7 +2491,7 @@ msgstr "Retener"
 msgid "Button|Save"
 msgstr "Guardar"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:81
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:80
 msgid "Button|Save %s"
 msgstr ""
 
@@ -3391,7 +3392,7 @@ msgstr ""
 msgid "Enter As: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:98
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:101
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:118
 msgid "Enter New Name"
 msgstr "Ingrese un nombre nuevo."
@@ -3553,7 +3554,7 @@ msgstr "Regular "
 msgid "Feb"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:103
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:102
 msgid ""
 "File could not be created, this can be due to bad characters in file name."
 msgstr ""
@@ -3566,7 +3567,7 @@ msgstr ""
 "Ya existe el archivo: no se puede sobrescribir una carpeta que no pertenezca "
 "al proyecto."
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:102
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:101
 msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr ""
 "El nombre de archivo debe contener sólo caracteres alfanuméricos o '_'."
@@ -4289,7 +4290,7 @@ msgstr "Introducción"
 msgid "Invalid project name:"
 msgstr "Nombre de proyecto inválido:"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:73
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:76
 msgid "Invalid project name: %s"
 msgstr ""
 
@@ -5794,7 +5795,7 @@ msgstr "Resumen del proyecto "
 msgid "Project does not exist: "
 msgstr "El proyecto no existe."
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:320
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:319
 msgid ""
 "Project filenames cannot contain punctuation other than dots, dashes, and "
 "spaces; and they cannot be longer than 32 characters. "
@@ -7297,7 +7298,7 @@ msgstr ""
 msgid "TT|Run the Selected Report Template"
 msgstr "Ejecutar la plantilla de informe seleccionada "
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:75
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:74
 msgid "TT|Save %s File"
 msgstr "Grabar archivo %s"
 
@@ -7924,7 +7925,7 @@ msgstr ""
 "del factor que se cortó/copió antes. ¿Está seguro de que desea hacer esto?"
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:308
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:91
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:90
 msgid "This will replace the existing file."
 msgstr "Esto reemplazará el archivo existente."
 
@@ -8180,7 +8181,7 @@ msgid "Title|Other Orgs"
 msgstr "Otras organizaciones"
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:307
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:86
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:85
 msgid "Title|Overwrite existing file?"
 msgstr "¿Desea sobrescribir el archivo existente?"
 
@@ -8208,7 +8209,7 @@ msgstr "Propiedades del recurso"
 msgid "Title|Results Chain Properties"
 msgstr "Propiedades de la cadena de resultados"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:69
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:68
 msgid "Title|Save %s File"
 msgstr "Grabar archivo %s"
 

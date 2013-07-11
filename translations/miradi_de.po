@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-10 17:31-0500\n"
+"POT-Creation-Date: 2013-07-11 14:46-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -282,7 +282,8 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%vonName' -> '%nachName'<br>"
 
-#: Miradi/source/org/miradi/mpfMigrations/MigrationManager.java:89
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:71
+#: Miradi/source/org/miradi/mpfMigrations/MigrationManager.java:71
 msgid "(%s)"
 msgstr ""
 
@@ -2661,7 +2662,7 @@ msgstr "Behalten"
 msgid "Button|Save"
 msgstr "Speichern"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:81
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:80
 msgid "Button|Save %s"
 msgstr ""
 
@@ -3593,7 +3594,7 @@ msgstr "Ende:"
 msgid "Enter As: "
 msgstr "Eingeben als:"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:98
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:101
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:118
 msgid "Enter New Name"
 msgstr "Neuen Namen eingeben"
@@ -3763,7 +3764,7 @@ msgstr "Ausreichend"
 msgid "Feb"
 msgstr "Feb"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:103
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:102
 #, fuzzy
 msgid ""
 "File could not be created, this can be due to bad characters in file name."
@@ -3780,7 +3781,7 @@ msgstr ""
 "Datei besteht: Unmöglich einen Ordner zu überschreiben der kein "
 "Projektordner ist"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:102
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:101
 msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr ""
 "Dateiname darf nur Buchstaben, Ziffern und/oder Unterstriche enthalten."
@@ -4504,7 +4505,7 @@ msgstr "Einführung"
 msgid "Invalid project name:"
 msgstr "Ungültiger Projektname:"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:73
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:76
 msgid "Invalid project name: %s"
 msgstr ""
 
@@ -6006,7 +6007,7 @@ msgstr "Projektzusammenfassung"
 msgid "Project does not exist: "
 msgstr "Projekt existiert nicht:"
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:320
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:319
 msgid ""
 "Project filenames cannot contain punctuation other than dots, dashes, and "
 "spaces; and they cannot be longer than 32 characters. "
@@ -7547,7 +7548,7 @@ msgstr ""
 # "%s Datei speichern" -> wird zu -> "ProjektXYZ Datei speichern"
 # (je nach dem wie der Befehl im Prog umgesetzt wird)
 # -Felix
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:75
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:74
 msgid "TT|Save %s File"
 msgstr "Speichere %s Datei"
 
@@ -8198,7 +8199,7 @@ msgid ""
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:308
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:91
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:90
 msgid "This will replace the existing file."
 msgstr "Dies ersetzt die bereits bestehende Datei. "
 
@@ -8455,7 +8456,7 @@ msgid "Title|Other Orgs"
 msgstr "Andere Organisationen"
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:307
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:86
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:85
 msgid "Title|Overwrite existing file?"
 msgstr "Möchten Sie die bestehende Datei ersetzen?"
 
@@ -8483,7 +8484,7 @@ msgstr "Eigenschaften - Ressource"
 msgid "Title|Results Chain Properties"
 msgstr "Eigenschaften - Ergebniswirkungskette "
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:69
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:68
 msgid "Title|Save %s File"
 msgstr "Speichere %s Datei(en)"
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-10 17:31-0500\n"
+"POT-Creation-Date: 2013-07-11 14:46-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -258,7 +258,8 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
-#: Miradi/source/org/miradi/mpfMigrations/MigrationManager.java:89
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:71
+#: Miradi/source/org/miradi/mpfMigrations/MigrationManager.java:71
 msgid "(%s)"
 msgstr ""
 
@@ -2590,7 +2591,7 @@ msgstr "Mantieni"
 msgid "Button|Save"
 msgstr "Salva"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:81
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:80
 msgid "Button|Save %s"
 msgstr ""
 
@@ -3493,7 +3494,7 @@ msgstr "Fine:"
 msgid "Enter As: "
 msgstr "Inserisci come:"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:98
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:101
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:118
 msgid "Enter New Name"
 msgstr "Inserisci nuovo nome"
@@ -3654,7 +3655,7 @@ msgstr "Sufficiente"
 msgid "Feb"
 msgstr "Feb"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:103
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:102
 msgid ""
 "File could not be created, this can be due to bad characters in file name."
 msgstr ""
@@ -3666,7 +3667,7 @@ msgid "File exists: Cannot overwrite a non project folder"
 msgstr ""
 "Il file esiste: non è possibile sovrascrivere una cartella non di progetto"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:102
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:101
 msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr "Il nome del file  deve contenere solo caratteri alfanumerici e/o '_' ."
 
@@ -4391,7 +4392,7 @@ msgstr "Introduzione"
 msgid "Invalid project name:"
 msgstr "Nome di progetto non valido:"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:73
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:76
 msgid "Invalid project name: %s"
 msgstr ""
 
@@ -5889,7 +5890,7 @@ msgstr "Riassunto del progetto"
 msgid "Project does not exist: "
 msgstr "Il Progetto non esiste:"
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:320
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:319
 msgid ""
 "Project filenames cannot contain punctuation other than dots, dashes, and "
 "spaces; and they cannot be longer than 32 characters. "
@@ -7408,7 +7409,7 @@ msgstr ""
 msgid "TT|Run the Selected Report Template"
 msgstr "Esegui il Modello di Report Selezionato"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:75
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:74
 msgid "TT|Save %s File"
 msgstr "Salva %s File"
 
@@ -8039,7 +8040,7 @@ msgstr ""
 "fattore copiato/tagliato precedentemente. Sei sicuro di volerlo fare?"
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:308
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:91
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:90
 msgid "This will replace the existing file."
 msgstr "Questo sostituirà il file esistente."
 
@@ -8294,7 +8295,7 @@ msgid "Title|Other Orgs"
 msgstr "Altre Organizzazioni"
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:307
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:86
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:85
 msgid "Title|Overwrite existing file?"
 msgstr "Sovrascrivo il file esistente?"
 
@@ -8322,7 +8323,7 @@ msgstr "Proprietà della Risorsa"
 msgid "Title|Results Chain Properties"
 msgstr "Proprietà della Catena dei Risultati"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:69
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:68
 msgid "Title|Save %s File"
 msgstr "Salva %s File"
 
