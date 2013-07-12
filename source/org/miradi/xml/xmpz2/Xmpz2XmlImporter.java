@@ -213,8 +213,6 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 			if (typeToImporterMap.containsKey(objectType))
 				continue;
 			
-			
-			
 			BaseObjectSchema baseObjectSchema = pool.createBaseObjectSchema(getProject());
 			addImporterToMap(typeToImporterMap, new BaseObjectImporter(this, baseObjectSchema));
 		}
@@ -419,7 +417,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		String nodeName = typedIdNode.getNodeName();
 		String objectTypeNameWithNamespace = removeAppendedId(nodeName);
 		String objectTypeName = removeNamepsacePrefix(objectTypeNameWithNamespace);
-		HashMap<String, Integer> elementNameToTypeMap = createElementNameToTypeMap();
+		HashMap<String, Integer> elementNameToTypeMap = createIdElementNameToTypeMap();
 		if (elementNameToTypeMap.containsKey(objectTypeName))
 			return elementNameToTypeMap.get(objectTypeName);
 		
@@ -427,7 +425,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		return ObjectType.FAKE;
 	}
 
-	private HashMap<String, Integer> createElementNameToTypeMap()
+	private HashMap<String, Integer> createIdElementNameToTypeMap()
 	{
 		HashMap<String, Integer> elementNameToType = new HashMap<String, Integer>();
 		elementNameToType.put(SCOPE_BOX, ScopeBoxSchema.getObjectType());
