@@ -113,7 +113,7 @@ public class CommandLineProjectFileImporterHelper
 		if (!getUserImportConfirmation(projectFileToImport.getName()))
 			return null;
 		
-		String projectName = getMainWindow().getLegalMpfProjectFileNameFromUser(getMainWindow(), projectFileToImport);
+		String projectName = getMainWindow().getLegalMpfProjectFileNameFromUser(projectFileToImport);
 		if (projectName == null)
 			return null;
 
