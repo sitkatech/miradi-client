@@ -21,14 +21,9 @@ package org.miradi.views.noproject;
 
 import java.io.File;
 
-import org.miradi.files.AbstractMpfFileFilter;
-import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.project.Project;
 import org.miradi.utils.FileUtilities;
-import org.miradi.utils.ModalRenameDialog;
-import org.miradi.wizard.noproject.WelcomeCreateStep;
 
 public class RenameProjectDoer
 {
@@ -36,7 +31,7 @@ public class RenameProjectDoer
 	{
 		try
 		{
-			String newDirectoryName = getLegalMpfProjectFileNameFromUser(mainWindow, projectFileToRename);
+			String newDirectoryName = mainWindow.getLegalMpfProjectFileNameFromUser(mainWindow, projectFileToRename);
 			if (newDirectoryName == null)
 				return;
 
@@ -50,54 +45,4 @@ public class RenameProjectDoer
 		}
 	}
 	
-	public static String getLegalMpfProjectFileNameFromUser(MainWindow mainWindow, File proposedProjectFile) throws Exception
-	{
-		while (true)
-		{
-			String projectName = askUserForProjectName(mainWindow, Project.withoutMpfProjectSuffix(proposedProjectFile.getName()));
-			if (projectName == null)
-			{
-				return null;
-			}
-
-			String projectFileName =  AbstractMpfFileFilter.createNameWithExtension(projectName);
-			proposedProjectFile = new File(EAM.getHomeDirectory(), projectFileName);
-			if (projectExists(proposedProjectFile))
-			{
-				boolean shouldOverwrite = EAM.confirmOverwriteDialog("", EAM.substitute(EAM.text("A project or file by this name already exists: %s"), projectFileName));
-				if (!shouldOverwrite)
-					continue;
-				
-				FileUtilities.createMpfBackup(proposedProjectFile, EAM.substitute(EAM.text("(%s)"), "Overriden-backup"));
-			}
-			
-			if (!Project.isValidProjectName(projectName))
-			{
-				EAM.errorDialog(EAM.substitute(EAM.text("Invalid project name: %s"), projectName));
-				continue;
-			}
-			
-			return projectFileName;
-		}
-	}
-	
-	private static boolean projectExists(File file) throws Exception
-	{
-		if(LegacyProjectUtilities.isExistingLocalProject(file))
-			return true;
-		
-		if(file.exists())
-			return true;
-		
-		return false;
-	}
-	
-	private static String askUserForProjectName(MainWindow mainWindow, String projectName) throws Exception
-	{
-		String legalProjectName = Project.makeProjectNameLegal(projectName);
-		return ModalRenameDialog.showDialog(mainWindow, RenameProjectDoer.RENAME_TEXT, legalProjectName);
-	}
-
-	public static final String RENAME_TEXT = "<html>" + EAM.text("Enter New Name") + 
-			"<br>&nbsp;&nbsp;&nbsp;<i>" + WelcomeCreateStep.getLegalProjectNameNote();
 }
