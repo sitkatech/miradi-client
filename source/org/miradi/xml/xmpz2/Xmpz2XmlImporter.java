@@ -22,6 +22,7 @@ package org.miradi.xml.xmpz2;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Set;
 import java.util.Vector;
@@ -418,105 +419,54 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		String nodeName = typedIdNode.getNodeName();
 		String objectTypeNameWithNamespace = removeAppendedId(nodeName);
 		String objectTypeName = removeNamepsacePrefix(objectTypeNameWithNamespace);
-		
-		if (objectTypeName.equals(SCOPE_BOX))
-			return ScopeBoxSchema.getObjectType();
-		
-		if (objectTypeName.equals(BIODIVERSITY_TARGET))
-			return TargetSchema.getObjectType();
-		
-		if (objectTypeName.equals(HUMAN_WELFARE_TARGET))
-			return HumanWelfareTargetSchema.getObjectType();
-		
-		if (objectTypeName.equals(CAUSE) || objectTypeName.equals(THREAT))
-			return CauseSchema.getObjectType();
-		
-		if (objectTypeName.equals(STRATEGY))
-			return StrategySchema.getObjectType();
-		
-		if (objectTypeName.equals(INTERMEDIATE_RESULTS))
-			return IntermediateResultSchema.getObjectType();
-		
-		if (objectTypeName.equals(THREAT_REDUCTION_RESULTS))
-			return ThreatReductionResultSchema.getObjectType();
-		
-		if (objectTypeName.equals(TEXT_BOX))
-			return TextBoxSchema.getObjectType();
-		
-		if (objectTypeName.equals(GROUP_BOX))
-			return GroupBoxSchema.getObjectType();
-		
-		if (isTask(objectTypeName))
-			return TaskSchema.getObjectType();
-		
-		if (objectTypeName.equals(STRESS))
-			return StressSchema.getObjectType();
-		
-		if (objectTypeName.equals(PROGRESS_PERCENT))
-			return ProgressPercentSchema.getObjectType();
-		
-		if (objectTypeName.equals(BIODIVERSITY_TARGET))
-			return TargetSchema.getObjectType();
-		
-		if (objectTypeName.equals(DIAGRAM_FACTOR))
-			return DiagramFactorSchema.getObjectType();
-		
-		if (objectTypeName.equals(DIAGRAM_LINK))
-			return DiagramLinkSchema.getObjectType();
-		
-		if (objectTypeName.equals(INDICATOR))
-			return IndicatorSchema.getObjectType();
-		
-		if (objectTypeName.equals(RESOURCE_ASSIGNMENT))
-			return ResourceAssignmentSchema.getObjectType();
-		
-		if (objectTypeName.equals(EXPENSE_ASSIGNMENT))
-			return ExpenseAssignmentSchema.getObjectType();
-		
-		if (objectTypeName.equals(KEY_ECOLOGICAL_ATTRIBUTE))
-			return KeyEcologicalAttributeSchema.getObjectType();
-		
-		if (objectTypeName.equals(MEASUREMENT))
-			return MeasurementSchema.getObjectType();
-		
-		if (objectTypeName.equals(OBJECTIVE))
-			return ObjectiveSchema.getObjectType();
-		
-		if (objectTypeName.equals(SUB_TASK))
-			return TaskSchema.getObjectType();
-		
-		if (objectTypeName.equals(PROGRESS_REPORT))
-			return ProgressReportSchema.getObjectType();
-		
-		if (objectTypeName.equals(SUB_TARGET))
-			return SubTargetSchema.getObjectType();
-		
-		if (objectTypeName.equals(BUDGET_CATEGORY_ONE))
-			return BudgetCategoryOneSchema.getObjectType();
-		
-		if (objectTypeName.equals(BUDGET_CATEGORY_TWO))
-			return BudgetCategoryTwoSchema.getObjectType();
-		
-		if (objectTypeName.equals(ACCOUNTING_CODE))
-			return AccountingCodeSchema.getObjectType();
-		
-		if (objectTypeName.equals(FUNDING_SOURCE))
-			return FundingSourceSchema.getObjectType();
-		
-		if (objectTypeName.equals(RESOURCE))
-			return ProjectResourceSchema.getObjectType();
-		
-		if (objectTypeName.equals(GOAL))
-			return GoalSchema.getObjectType();
-		
-		if (objectTypeName.equals(FUTURE_STATUS))
-			return FutureStatusSchema.getObjectType();
-		
-		if (objectTypeName.equals(TAGGED_OBJECT_SET_ELEMENT_NAME))
-			return TaggedObjectSetSchema.getObjectType();
+		HashMap<String, Integer> elementNameToTypeMap = createElementNameToTypeMap();
+		if (elementNameToTypeMap.containsKey(objectTypeName))
+			return elementNameToTypeMap.get(objectTypeName);
 		
 		EAM.logError("Could not find type for node: " + objectTypeName);
 		return ObjectType.FAKE;
+	}
+
+	private HashMap<String, Integer> createElementNameToTypeMap()
+	{
+		HashMap<String, Integer> elementNameToType = new HashMap<String, Integer>();
+		elementNameToType.put(SCOPE_BOX, ScopeBoxSchema.getObjectType());
+		elementNameToType.put(BIODIVERSITY_TARGET, TargetSchema.getObjectType());
+		elementNameToType.put(HUMAN_WELFARE_TARGET, HumanWelfareTargetSchema.getObjectType());
+		elementNameToType.put(CAUSE, CauseSchema.getObjectType());
+		elementNameToType.put(THREAT, CauseSchema.getObjectType());
+		elementNameToType.put(STRATEGY, StrategySchema.getObjectType());
+		elementNameToType.put(INTERMEDIATE_RESULTS, IntermediateResultSchema.getObjectType());
+		elementNameToType.put(THREAT_REDUCTION_RESULTS, ThreatReductionResultSchema.getObjectType());
+		elementNameToType.put(TEXT_BOX,TextBoxSchema.getObjectType());
+		elementNameToType.put(GROUP_BOX, GroupBoxSchema.getObjectType());
+		elementNameToType.put(TaskSchema.ACTIVITY_NAME, TaskSchema.getObjectType());
+		elementNameToType.put(TaskSchema.METHOD_NAME, TaskSchema.getObjectType());
+		elementNameToType.put(Xmpz2XmlConstants.TASK, TaskSchema.getObjectType());
+		elementNameToType.put(STRESS, StressSchema.getObjectType());
+		elementNameToType.put(PROGRESS_PERCENT, ProgressPercentSchema.getObjectType());
+		elementNameToType.put(BIODIVERSITY_TARGET, TargetSchema.getObjectType());
+		elementNameToType.put(DIAGRAM_FACTOR, DiagramFactorSchema.getObjectType());
+		elementNameToType.put(DIAGRAM_LINK, DiagramLinkSchema.getObjectType());
+		elementNameToType.put(INDICATOR, IndicatorSchema.getObjectType());
+		elementNameToType.put(RESOURCE_ASSIGNMENT, ResourceAssignmentSchema.getObjectType());
+		elementNameToType.put(EXPENSE_ASSIGNMENT, ExpenseAssignmentSchema.getObjectType());
+		elementNameToType.put(KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttributeSchema.getObjectType());
+		elementNameToType.put(MEASUREMENT, MeasurementSchema.getObjectType());
+		elementNameToType.put(OBJECTIVE, ObjectiveSchema.getObjectType());
+		elementNameToType.put(SUB_TASK, TaskSchema.getObjectType());
+		elementNameToType.put(PROGRESS_REPORT, ProgressReportSchema.getObjectType());
+		elementNameToType.put(SUB_TARGET, SubTargetSchema.getObjectType());
+		elementNameToType.put(BUDGET_CATEGORY_ONE, BudgetCategoryOneSchema.getObjectType());
+		elementNameToType.put(BUDGET_CATEGORY_TWO, BudgetCategoryTwoSchema.getObjectType());
+		elementNameToType.put(ACCOUNTING_CODE, AccountingCodeSchema.getObjectType());
+		elementNameToType.put(FUNDING_SOURCE, FundingSourceSchema.getObjectType());
+		elementNameToType.put(RESOURCE, ProjectResourceSchema.getObjectType());
+		elementNameToType.put(GOAL, GoalSchema.getObjectType());
+		elementNameToType.put(FUTURE_STATUS, FutureStatusSchema.getObjectType());
+		elementNameToType.put(TAGGED_OBJECT_SET_ELEMENT_NAME, TaggedObjectSetSchema.getObjectType());
+		
+		return elementNameToType;
 	}
 	
 	private String removeNamepsacePrefix(String objectTypeNameWithNamespace)
