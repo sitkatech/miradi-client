@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-12 11:01-0500\n"
+"POT-Creation-Date: 2013-07-12 14:31-0500\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -265,8 +265,8 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:71
 #: Miradi/source/org/miradi/mpfMigrations/MigrationManager.java:71
+#: Miradi/source/org/miradi/main/MainWindow.java:1403
 msgid "(%s)"
 msgstr ""
 
@@ -498,7 +498,7 @@ msgstr "7C. Crie um ambiente de aprendizagem"
 msgid "95% C.I. (confidence interval)"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1387
+#: Miradi/source/org/miradi/main/MainWindow.java:1442
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -985,7 +985,7 @@ msgid ""
 "<html>An error occurred<br/><br/>Perhaps the destination is full or readonly."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:219
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:218
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Falha na importação<br><p> %s </p></html>"
 
@@ -1089,11 +1089,11 @@ msgid "A project or file by this name already exists: "
 msgstr "Um projeto ou arquivo com este nome já existe: "
 
 # I changed "by this name" to "with this name"
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:67
+#: Miradi/source/org/miradi/main/MainWindow.java:1399
 msgid "A project or file by this name already exists: %s"
 msgstr "Um projeto ou arquivo com este nome ja existe:: %s"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:572
+#: Miradi/source/org/miradi/main/MainWindow.java:577
 msgid "A project with this name already exists."
 msgstr "Um projeto com este nome já existe."
 
@@ -2567,11 +2567,11 @@ msgstr "Continuar"
 msgid "Button|Delete"
 msgstr "Apagar"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:191
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:190
 msgid "Button|Don't Import"
 msgstr "Não importar"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:192
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:191
 msgid "Button|Exit"
 msgstr "Sair"
 
@@ -2583,7 +2583,7 @@ msgstr ""
 msgid "Button|Export..."
 msgstr "Exportar..."
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:190
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:189
 msgid "Button|Import"
 msgstr "Importar"
 
@@ -2712,15 +2712,15 @@ msgstr "Não pode ligar um item a se mesmo"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:594
+#: Miradi/source/org/miradi/main/MainWindow.java:599
 msgid "Cancelled"
 msgstr "Cancelado"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:159
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:158
 msgid "Cannot import project file %s because it does not exist"
 msgstr "Não pode importar o arquivo de projeto %s porque não existe."
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:166
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:165
 msgid "Cannot import project file %s because it is a directory, not a file"
 msgstr ""
 "Não pode importar arquivo de projeto %s porque é diretório, não é arquivo."
@@ -3051,7 +3051,7 @@ msgstr "A Criação falhou:"
 msgid "Create Folder"
 msgstr "Criar Pasta"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:700
+#: Miradi/source/org/miradi/main/MainWindow.java:705
 msgid "Create Project"
 msgstr "Criar Projeto"
 
@@ -3124,7 +3124,7 @@ msgstr ""
 "Atualmente no modo Brainstorm (Chuva de Ideias), assim alguns fatores estão "
 "escondidos.  Para retornar ao modo normal, pressione este botão:"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:78
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:77
 msgid ""
 "Currently, Miradi can only import one project file at a time.  Importing "
 "first file only."
@@ -3476,7 +3476,7 @@ msgstr ""
 "Unified Classifications of Direct Threats', disponível no site www."
 "conservationmeasures.org."
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:176
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:175
 msgid "Do you want to attempt to import %s into Miradi?"
 msgstr "Quer tentar importar %s em Miradi?"
 
@@ -3585,8 +3585,8 @@ msgstr "Terminar"
 msgid "Enter As: "
 msgstr "Entrar Como:"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:101
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:118
+#: Miradi/source/org/miradi/main/MainWindow.java:1433
 msgid "Enter New Name"
 msgstr "Entrar Novo Nome"
 
@@ -3647,7 +3647,7 @@ msgstr ""
 "Ocorreu um Erro ao tentar exportar a um arquivo delimitado por marcas de "
 "tabulação ('tabs')"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:213
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:212
 msgid "Error reading %s. Perhaps it is not a valid zip file."
 msgstr "Erro ao ler %s.  Talvez não seja arquivo zip válido."
 
@@ -3663,7 +3663,7 @@ msgstr "Estimar custos para atividades e monitoramento"
 msgid "Euro"
 msgstr "Euro"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:964
+#: Miradi/source/org/miradi/main/MainWindow.java:969
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr "Dados para um ano fiscal diferente estão sendo excluidos"
 
@@ -4289,8 +4289,8 @@ msgstr "Implementar os planos estratégico e de monitoramento"
 msgid "Implement work plan"
 msgstr "Implementar o plano de trabalho"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:78
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:177
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:77
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:176
 #: Miradi/source/org/miradi/utils/XslImportFileChooser.java:44
 msgid "Import"
 msgstr "Importar"
@@ -4303,11 +4303,11 @@ msgstr "Importar Códigos Contabilísticos"
 msgid "Import Completed"
 msgstr "Importação concluida"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:201
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:200
 msgid "Import Completed.  Would you like to open %s?"
 msgstr "Importação concluida.  Você deseja abrir %s?"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:65
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:64
 msgid "Import Project"
 msgstr "Importar Projeto"
 
@@ -4319,7 +4319,7 @@ msgstr "Importar Zip"
 msgid "Import a Miradi Project Zipfile (.mpz)"
 msgstr "Importar um Arquivo Zip de Projeto Miradi (.mpz)"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:88
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:87
 msgid "Import was canceled!"
 msgstr "Importação foi cancelado!"
 
@@ -4344,7 +4344,7 @@ msgstr "Importando Dados de Miradi..."
 msgid "Importing XML..."
 msgstr "Importando XML..."
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:158
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:157
 msgid "Importing..."
 msgstr "Importando..."
 
@@ -4517,7 +4517,7 @@ msgstr "Introdução"
 msgid "Invalid project name:"
 msgstr "Nome de Projeto Inválido:"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:76
+#: Miradi/source/org/miradi/main/MainWindow.java:1408
 msgid "Invalid project name: %s"
 msgstr "Nome de Projeto Inválido: %s"
 
@@ -5305,7 +5305,7 @@ msgstr "Migrando Dados do Projeto"
 msgid "Migrating..."
 msgstr "Migrando"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:668
+#: Miradi/source/org/miradi/main/MainWindow.java:673
 msgid "Migration"
 msgstr ""
 
@@ -5354,15 +5354,15 @@ msgstr ""
 msgid "Miradi data directory:"
 msgstr "Diretório de Dados de Miradi"
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:216
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:215
 msgid "Miradi did not recognize the file: %s as importable."
 msgstr "Miradi não reconheceu o arquivo: %s como importável."
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:83
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:82
 msgid "Miradi does not recognize %s as a project file"
 msgstr "Miradi não reconhece %s como um arquivo de projeto"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:790
+#: Miradi/source/org/miradi/main/MainWindow.java:795
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5661,8 +5661,8 @@ msgstr "Abrir"
 msgid "Open Anyway"
 msgstr "Abrir de Qualquer Modo"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:202
-#: Miradi/source/org/miradi/main/MainWindow.java:702
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:201
+#: Miradi/source/org/miradi/main/MainWindow.java:707
 msgid "Open Project"
 msgstr "Abrir o Projeto"
 
@@ -5988,7 +5988,7 @@ msgstr "Projeto"
 msgid "Project Advisor"
 msgstr "Conselheiro do Projeto"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:788
+#: Miradi/source/org/miradi/main/MainWindow.java:793
 msgid "Project Corruption Detected"
 msgstr "Corrupção do Projeto Detectado"
 
@@ -6023,7 +6023,7 @@ msgstr "Recurso do Projeto"
 msgid "Project Resource Filter Editor"
 msgstr "Editora do Filtro de Recursos do Projeto"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:962
+#: Miradi/source/org/miradi/main/MainWindow.java:967
 msgid "Project Resource Filter Is On"
 msgstr "Filtro de Recursos do Projeto está Ativado"
 
@@ -6059,7 +6059,7 @@ msgstr ""
 "Os nomes de arquivos de projetos não podem conter pontuação além de pontos, "
 "traços, e espaços; e não podem ter mais de 32 caracteres."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:667
+#: Miradi/source/org/miradi/main/MainWindow.java:672
 msgid "Project needs migration, do you want to continue?"
 msgstr ""
 
@@ -6165,7 +6165,7 @@ msgstr "Estratégias e Atividades Relevantes"
 msgid "Remove Team Member"
 msgstr "Remover Membreo da Equipe"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:49
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:44
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:66
 msgid "Rename Failed"
 msgstr "Renomear Falhou"
@@ -6672,7 +6672,7 @@ msgstr "Ator"
 msgid "Standard Reports"
 msgstr "Relatórios de Padrão Normal"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:996
+#: Miradi/source/org/miradi/main/MainWindow.java:1001
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -7960,7 +7960,7 @@ msgstr "As datas devem ser no formato AAAA-MM-DD"
 msgid "Text|Unknown error prevented saving this data"
 msgstr "Um erro desconhecido não permitiu salvar estes dados"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:618
+#: Miradi/source/org/miradi/main/MainWindow.java:623
 msgid "That file is not a valid Miradi project"
 msgstr "Esse arquivo não é um projeto válido de Miradi "
 
@@ -7972,8 +7972,8 @@ msgstr "Esse pacote de idioma (language pack) já existe.  Deseja substuí-lo?"
 msgid "That language pack is already installed"
 msgstr "Esse pacote de idioma (language pack) já está instalado."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:626
-#: Miradi/source/org/miradi/main/MainWindow.java:630
+#: Miradi/source/org/miradi/main/MainWindow.java:631
+#: Miradi/source/org/miradi/main/MainWindow.java:635
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "Miradi"
@@ -7981,14 +7981,14 @@ msgstr ""
 "Esse projeto não pode ser aberto porque ele foi criado por uma versão mais "
 "nova de Miradi"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:634
+#: Miradi/source/org/miradi/main/MainWindow.java:639
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
 "Esse projeto não pode ser aberto antes de ser migrado para o formato atual "
 "de dados."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:614
+#: Miradi/source/org/miradi/main/MainWindow.java:619
 msgid "That project is in use by another copy of this application"
 msgstr "Este projeto está sendo utilizado por uma outra cópia desta aplicação"
 
@@ -8002,7 +8002,7 @@ msgstr ""
 "Pode utilizar Miradi 1.0 para migrâ-lo para um formato moderno de dados, e "
 "depois o projeto pode ser aberto e migrado por esta versão de Mirad."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:622
+#: Miradi/source/org/miradi/main/MainWindow.java:627
 msgid "That project is too old to be opened with this version of Miradi"
 msgstr ""
 "Esse projeto é velho demais para ser migrado por esta versão de Miradi. "
@@ -8161,7 +8161,7 @@ msgstr "Teoria de Mudança<br/>- Lógica da Estratégia"
 msgid "Theory of Change<br/>- Strategy Selection"
 msgstr "Teoria de Mudança<br/>- Seleção de Estratégia"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:262
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:261
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -8196,19 +8196,19 @@ msgid ""
 "Expected schema version: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:98
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:97
 msgid ""
 "This project cannot be imported because it is in an old data format. \n"
 "Please re-export a new copy from ConPro, and import that instead."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:83
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:82
 msgid ""
 "This project cannot be imported because its Threat Rating data is missing or "
 "damaged. Please contact Miradi support for recovery options."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:779
+#: Miradi/source/org/miradi/main/MainWindow.java:784
 msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
@@ -8638,7 +8638,7 @@ msgstr ""
 "Não é possível apagar (delete) este projeto porque está sendo utilizado por "
 "uma outra cópia desta aplicação:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1371
+#: Miradi/source/org/miradi/main/MainWindow.java:1376
 msgid "Unable to launch external web browser"
 msgstr "Não é possível lançar o navegador (web browser) externo"
 
@@ -8659,7 +8659,7 @@ msgstr ""
 "Não é possível renomear este projeto porque está sendo utilizado por uma "
 "outra cópia desta aplicação:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1153
+#: Miradi/source/org/miradi/main/MainWindow.java:1158
 msgid "Unable to save preferences"
 msgstr "Não é possível salvar as preferências"
 
@@ -8682,7 +8682,7 @@ msgstr "Sem definição"
 msgid "Underline"
 msgstr "Sublinhar"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:218
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:217
 msgid "Unexpected error"
 msgstr "Erro inesperado"
 
@@ -8712,7 +8712,7 @@ msgstr "Universidade"
 msgid "Unknown"
 msgstr "Desconhecido"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:609
+#: Miradi/source/org/miradi/main/MainWindow.java:614
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -8730,7 +8730,7 @@ msgstr "Código Desconhecido"
 msgid "Unknown error displaying diagram"
 msgstr "Erro desconhecido exibindo o diagrama"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:639
+#: Miradi/source/org/miradi/main/MainWindow.java:644
 msgid "Unknown error prevented opening that project"
 msgstr "Um erro desconhecido não permitiu abrir esse projeto"
 
