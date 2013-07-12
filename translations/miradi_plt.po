@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-12 14:31-0500\n"
+"POT-Creation-Date: 2013-07-12 18:01-0500\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -8843,6 +8843,9 @@ msgstr ""
 msgid "FieldLabel|10.PseudoRelevantStrategyRefs|Relevant Strategies"
 msgstr ""
 
+msgid "FieldLabel|10.TaxonomyClassificationContainer|Taxonomies"
+msgstr ""
+
 msgid "FieldLabel|11.ProjectMetadata|Project"
 msgstr ""
 
@@ -9509,6 +9512,9 @@ msgid "FieldLabel|22.Text|Details"
 msgstr ""
 
 msgid "FieldLabel|22.HabitatAssociation|Habitat Association (IUCN v3.0)"
+msgstr ""
+
+msgid "FieldLabel|22.TaxonomyClassificationContainer|Taxonomies"
 msgstr ""
 
 msgid "FieldLabel|23.IntermediateResult|Intermediate Result"
