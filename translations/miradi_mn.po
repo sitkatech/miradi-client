@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-11 14:46-0500\n"
+"POT-Creation-Date: 2013-07-12 11:01-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -3633,7 +3633,7 @@ msgstr "Файл бий: Төслийн бус фолдэрийг шинэчлэ
 msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr "Файлын нэр зөвхөн альфа тоо ба/ '_'тэмдэгтүүдийг агуулах ёстой."
 
-#: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:97
+#: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:95
 #: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:199
 msgid "File to import does not validate."
 msgstr "Оруулах файл хүчин төгөлдөр болохгүй байна."
@@ -4177,7 +4177,7 @@ msgid "Importing Miradi Data..."
 msgstr ""
 
 #: Miradi/source/org/miradi/xml/xmpz1/Xmpz1XmlImporter.java:112
-#: Miradi/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:149
+#: Miradi/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:150
 msgid "Importing XML..."
 msgstr ""
 
