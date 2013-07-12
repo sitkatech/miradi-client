@@ -23,7 +23,6 @@ package org.miradi.dialogfields;
 import java.util.Collections;
 import java.util.Vector;
 
-import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.base.ReadonlyPanelWithPopupEditor;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
@@ -36,7 +35,6 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.MiradiShareTaxonomy;
 import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.MiradiShareTaxonomyQuestion;
 
 public class TaxonomyFieldsPanel extends MiradiPanel 
@@ -79,15 +77,16 @@ public class TaxonomyFieldsPanel extends MiradiPanel
 			final MiradiShareTaxonomyQuestion miradiShareTaxonomyQuestion = new MiradiShareTaxonomyQuestion(miradiShareTaxonomy, taxonomyAssociation);
 			final String taxonomyAssociationCode = taxonomyAssociation.getTaxonomyAssociationCode();
 			
-			TaxonomyReadonlyPanelWithPopupEditorProvider provider = new TaxonomyReadonlyPanelWithPopupEditorProvider(refToUse, miradiShareTaxonomyQuestion, taxonomyAssociationCode);
+			TaxonomyReadonlyPanelWithPopupEditorProvider provider = new TaxonomyReadonlyPanelWithPopupEditorProvider(getProject(), refToUse, miradiShareTaxonomyQuestion, taxonomyAssociationCode);
 			ReadonlyPanelWithPopupEditor readonlyPanelPopupEditor = new ReadonlyPanelWithPopupEditor(provider, "", miradiShareTaxonomyQuestion);
 			taxonomyReadonlyWithPopupEditorPanels.add(readonlyPanelPopupEditor);
+			
 			add(new PanelTitleLabel(taxonomyAssociation.getLabel()));
 			add(readonlyPanelPopupEditor);
 		}
 	}		
 	
-	private Project getProject()
+	Project getProject()
 	{
 		return project;
 	}
@@ -97,30 +96,6 @@ public class TaxonomyFieldsPanel extends MiradiPanel
 		taxonomyReadonlyWithPopupEditorPanels = new Vector<ReadonlyPanelWithPopupEditor>();
 	}
 	
-	private class TaxonomyReadonlyPanelWithPopupEditorProvider implements ReadonlyPanelAndPopupEditorProvider
-	{
-		public TaxonomyReadonlyPanelWithPopupEditorProvider(ORef refToUse, ChoiceQuestion questionToUse, String taxonomyAssociationCodeToUse)
-		{
-			ref = refToUse;
-			question = questionToUse;
-			taxonomyAssociationCode = taxonomyAssociationCodeToUse;
-		}
-		
-		public DisposablePanel createEditorPanel() throws Exception
-		{
-			return new TaxonomyEditorPanel(getProject(), ref, BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER, question, taxonomyAssociationCode);
-		}
-
-		public AbstractReadonlyChoiceComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)
-		{
-			return new ReadonlyTaxonomyMultiChoiceComponent(getProject(), question, taxonomyAssociationCode);
-		}
-		
-		private ORef ref; 
-		private ChoiceQuestion question; 
-		private String taxonomyAssociationCode;
-	}
-
 	private Project project;
 	private Vector<ReadonlyPanelWithPopupEditor> taxonomyReadonlyWithPopupEditorPanels;
 }
