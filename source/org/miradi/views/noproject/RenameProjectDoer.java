@@ -31,7 +31,7 @@ public class RenameProjectDoer
 	{
 		try
 		{
-			String newDirectoryName = mainWindow.getLegalMpfProjectFileNameFromUser(mainWindow, projectFileToRename);
+			String newDirectoryName = mainWindow.getLegalMpfProjectFileNameFromUser(projectFileToRename);
 			if (newDirectoryName == null)
 				return;
 

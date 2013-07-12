@@ -1382,11 +1382,11 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		return linkDescription.startsWith(HTTP_PROTOCOL) || linkDescription.startsWith(MAIL_PROTOCOL);
 	}
 	
-	public static String getLegalMpfProjectFileNameFromUser(MainWindow mainWindow, File proposedProjectFile) throws Exception
+	public String getLegalMpfProjectFileNameFromUser(File proposedProjectFile) throws Exception
 	{
 		while (true)
 		{
-			String projectName = askUserForProjectName(mainWindow, Project.withoutMpfProjectSuffix(proposedProjectFile.getName()));
+			String projectName = askUserForProjectName(Project.withoutMpfProjectSuffix(proposedProjectFile.getName()));
 			if (projectName == null)
 			{
 				return null;
@@ -1424,10 +1424,10 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		return false;
 	}
 	
-	private static String askUserForProjectName(MainWindow mainWindow, String projectName) throws Exception
+	private String askUserForProjectName(String projectName) throws Exception
 	{
 		String legalProjectName = Project.makeProjectNameLegal(projectName);
-		return ModalRenameDialog.showDialog(mainWindow, RENAME_TEXT, legalProjectName);
+		return ModalRenameDialog.showDialog(this, RENAME_TEXT, legalProjectName);
 	}
 
 	public static final String RENAME_TEXT = "<html>" + EAM.text("Enter New Name") + 
