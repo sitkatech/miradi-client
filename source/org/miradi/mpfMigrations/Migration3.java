@@ -107,15 +107,16 @@ public class Migration3 extends AbstractMigration
 		return false;
 	}
 
-	public static boolean canMigrateThisVersion(VersionRange versionRange)
+	public static boolean canMigrateThisVersion(VersionRange versionRange) throws Exception
 	{
-		return versionRange.getLowVersion() == getMigrationVersionLow();
+		return getMigrationVersionLow().doesContainHigh(versionRange.getHighVersion());
 	}
 
-	private static int getMigrationVersionLow()
+	private static VersionRange getMigrationVersionLow() throws Exception
 	{
-		return VERSION_LOW;
+		return new VersionRange(VERSION_LOW, VERSION_HIGH);
 	}
 	
 	private static final int VERSION_LOW = 3;
+	private static final int VERSION_HIGH = 3;
 }
