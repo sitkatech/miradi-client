@@ -149,7 +149,7 @@ public abstract class AbstractProjectImporter
 	
 	public File importProject(File projectDirectory, File fileToImport, final File proposedProjectFile) throws Exception
 	{
-		String projectFileName = getMainWindow().getLegalMpfProjectFileNameFromUser(proposedProjectFile);
+		String projectFileName = getMainWindow().askForDestinationProjectName(proposedProjectFile);
 		if (projectFileName == null)
 			return null;
 		
