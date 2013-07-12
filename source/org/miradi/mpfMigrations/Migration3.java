@@ -107,7 +107,7 @@ public class Migration3 extends AbstractMigration
 		return false;
 	}
 
-	public static boolean isVersion(VersionRange versionRange)
+	public static boolean canMigrateThisVersion(VersionRange versionRange)
 	{
 		return versionRange.getLowVersion() == getMigrationVersionLow();
 	}
