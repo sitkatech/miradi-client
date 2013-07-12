@@ -1382,7 +1382,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		return linkDescription.startsWith(HTTP_PROTOCOL) || linkDescription.startsWith(MAIL_PROTOCOL);
 	}
 	
-	public String getLegalMpfProjectFileNameFromUser(File proposedProjectFile) throws Exception
+	public String askForDestinationProjectName(File proposedProjectFile) throws Exception
 	{
 		while (true)
 		{
