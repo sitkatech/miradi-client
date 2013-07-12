@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-12 14:31-0500\n"
+"POT-Creation-Date: 2013-07-12 18:01-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -9000,6 +9000,9 @@ msgstr ""
 msgid "FieldLabel|10.PseudoRelevantStrategyRefs|Relevant Strategies"
 msgstr ""
 
+msgid "FieldLabel|10.TaxonomyClassificationContainer|Taxonomies"
+msgstr ""
+
 msgid "FieldLabel|11.ProjectMetadata|Project"
 msgstr ""
 
@@ -9666,6 +9669,9 @@ msgid "FieldLabel|22.Text|Details"
 msgstr "详情 \t\t"
 
 msgid "FieldLabel|22.HabitatAssociation|Habitat Association (IUCN v3.0)"
+msgstr ""
+
+msgid "FieldLabel|22.TaxonomyClassificationContainer|Taxonomies"
 msgstr ""
 
 msgid "FieldLabel|23.IntermediateResult|Intermediate Result"

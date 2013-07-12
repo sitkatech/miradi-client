@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-12 14:31-0500\n"
+"POT-Creation-Date: 2013-07-12 18:01-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -9324,6 +9324,9 @@ msgstr ""
 "БаганыХаяг|10.ЗагварчилсанХамааралБүхийСтратегиЛавлагаа|Хамаарал "
 "БүхийСтратеги"
 
+msgid "FieldLabel|10.TaxonomyClassificationContainer|Taxonomies"
+msgstr ""
+
 msgid "FieldLabel|11.ProjectMetadata|Project"
 msgstr "БаганыХаягl|11.ТөслийнӨөрчлөгдөхМэдээлэл|Төсөл"
 
@@ -10051,6 +10054,9 @@ msgstr "БаганыХаяг|22.Текст|Дэлгэрэнгүй Байдал"
 msgid "FieldLabel|22.HabitatAssociation|Habitat Association (IUCN v3.0)"
 msgstr ""
 "БаганыХаяг|22.АмьдрахОрчныНийгэмлэг|Амьдрах Орчны Нийгэмлэг (IUCN v3.0)"
+
+msgid "FieldLabel|22.TaxonomyClassificationContainer|Taxonomies"
+msgstr ""
 
 msgid "FieldLabel|23.IntermediateResult|Intermediate Result"
 msgstr "БаганыХаяг|23.ДундТүвшнийҮрДүн|Дунд Түвшний Үр Дүн"
