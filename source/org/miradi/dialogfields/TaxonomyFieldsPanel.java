@@ -21,8 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.Set;
 import java.util.Vector;
 
 import org.miradi.dialogs.base.DisposablePanel;
@@ -53,8 +51,7 @@ public class TaxonomyFieldsPanel extends MiradiPanel
 
 	public void setText(String newValue)
 	{
-		Set<ReadonlyPanelWithPopupEditor> fields = fieldsToLabelMapForType.keySet();
-		for(ReadonlyPanelWithPopupEditor field : fields)
+		for(ReadonlyPanelWithPopupEditor field : taxonomyReadonlyWithPopupEditorPanels)
 		{
 			field.setText(newValue);
 		}
@@ -63,24 +60,12 @@ public class TaxonomyFieldsPanel extends MiradiPanel
 	public void setObjectRef(ORef refToUse) throws Exception
 	{
 		clearFieldsToLabelMap();
-		createFields(refToUse);
-		addFields();
+		rebuildFields(refToUse);
 	}
 
-	private void addFields()
+	private void rebuildFields(ORef refToUse) throws Exception
 	{
 		removeAll();
-		Set<ReadonlyPanelWithPopupEditor> fields = fieldsToLabelMapForType.keySet();
-		for(ReadonlyPanelWithPopupEditor field : fields)
-		{
-			String label = fieldsToLabelMapForType.get(field);
-			add(new PanelTitleLabel(label));
-			add(field);
-		}
-	}
-
-	private void createFields(ORef refToUse) throws Exception
-	{
 		if (refToUse.isInvalid())
 			return;
 		
@@ -96,7 +81,9 @@ public class TaxonomyFieldsPanel extends MiradiPanel
 			
 			TaxonomyReadonlyPanelWithPopupEditorProvider provider = new TaxonomyReadonlyPanelWithPopupEditorProvider(refToUse, miradiShareTaxonomyQuestion, taxonomyAssociationCode);
 			ReadonlyPanelWithPopupEditor readonlyPanelPopupEditor = new ReadonlyPanelWithPopupEditor(provider, "", miradiShareTaxonomyQuestion);
-			fieldsToLabelMapForType.put(readonlyPanelPopupEditor, taxonomyAssociation.getLabel());
+			taxonomyReadonlyWithPopupEditorPanels.add(readonlyPanelPopupEditor);
+			add(new PanelTitleLabel(taxonomyAssociation.getLabel()));
+			add(readonlyPanelPopupEditor);
 		}
 	}		
 	
@@ -107,7 +94,7 @@ public class TaxonomyFieldsPanel extends MiradiPanel
 	
 	private void clearFieldsToLabelMap()
 	{
-		fieldsToLabelMapForType = new LinkedHashMap<ReadonlyPanelWithPopupEditor, String>();
+		taxonomyReadonlyWithPopupEditorPanels = new Vector<ReadonlyPanelWithPopupEditor>();
 	}
 	
 	private class TaxonomyReadonlyPanelWithPopupEditorProvider implements ReadonlyPanelAndPopupEditorProvider
@@ -135,5 +122,5 @@ public class TaxonomyFieldsPanel extends MiradiPanel
 	}
 
 	private Project project;
-	private LinkedHashMap<ReadonlyPanelWithPopupEditor, String> fieldsToLabelMapForType;
+	private Vector<ReadonlyPanelWithPopupEditor> taxonomyReadonlyWithPopupEditorPanels;
 }
