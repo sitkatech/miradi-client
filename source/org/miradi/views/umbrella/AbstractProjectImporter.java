@@ -48,7 +48,6 @@ import org.miradi.utils.MiradiFileSaveChooser;
 import org.miradi.utils.MiradiZipFile;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.views.noproject.NoProjectView;
-import org.miradi.views.noproject.RenameProjectDoer;
 
 public abstract class AbstractProjectImporter
 {	
@@ -150,7 +149,7 @@ public abstract class AbstractProjectImporter
 	
 	public File importProject(File projectDirectory, File fileToImport, final File proposedProjectFile) throws Exception
 	{
-		String projectFileName = RenameProjectDoer.getLegalMpfProjectFileNameFromUser(getMainWindow(), proposedProjectFile);
+		String projectFileName = getMainWindow().getLegalMpfProjectFileNameFromUser(getMainWindow(), proposedProjectFile);
 		if (projectFileName == null)
 			return null;
 		

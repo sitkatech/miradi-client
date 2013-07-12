@@ -30,7 +30,6 @@ import org.miradi.exceptions.UnrecognizedFileToImportException;
 import org.miradi.utils.FileUtilities;
 import org.miradi.utils.MiradiZipFile;
 import org.miradi.utils.Xmpz2FileFilter;
-import org.miradi.views.noproject.RenameProjectDoer;
 import org.miradi.views.umbrella.AbstractProjectImporter;
 import org.miradi.views.umbrella.CpmzProjectImporter;
 import org.miradi.views.umbrella.ExportCpmzDoer;
@@ -114,7 +113,7 @@ public class CommandLineProjectFileImporterHelper
 		if (!getUserImportConfirmation(projectFileToImport.getName()))
 			return null;
 		
-		String projectName = RenameProjectDoer.getLegalMpfProjectFileNameFromUser(getMainWindow(), projectFileToImport);
+		String projectName = getMainWindow().getLegalMpfProjectFileNameFromUser(getMainWindow(), projectFileToImport);
 		if (projectName == null)
 			return null;
 
