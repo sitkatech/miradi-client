@@ -213,8 +213,6 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 			if (typeToImporterMap.containsKey(objectType))
 				continue;
 			
-			
-			
 			BaseObjectSchema baseObjectSchema = pool.createBaseObjectSchema(getProject());
 			addImporterToMap(typeToImporterMap, new BaseObjectImporter(this, baseObjectSchema));
 		}
