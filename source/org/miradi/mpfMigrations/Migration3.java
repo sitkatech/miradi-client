@@ -34,8 +34,6 @@ public class Migration3 extends AbstractMigration
 	@Override
 	public RawProject forwardMigrate(RawProject rawProject) throws Exception
 	{
-		//FIXME urgent - MigrationManager should be responsible for incrementing
-		rawProject.setCurrentVersionRange(new VersionRange(VERSION_LOW + 1, VERSION_HIGH + 1));
 		return moveIndicatorFutureStatusesToNewFutureStatus(rawProject);
 	}
 
@@ -109,7 +107,7 @@ public class Migration3 extends AbstractMigration
 	}
 
 	@Override
-	protected VersionRange getMigratableVersionRange() throws Exception
+	public VersionRange getMigratableVersionRange() throws Exception
 	{
 		return new VersionRange(VERSION_LOW, VERSION_HIGH);
 	}
