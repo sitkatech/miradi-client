@@ -131,6 +131,16 @@ public class RawProject
 		
 		return newRawObject;
 	}
+	
+	public VersionRange getCurrentVersionRange()
+	{
+		return currentVersionRange;
+	}
+	
+	public void setCurrentVersionRange(VersionRange versionRange)
+	{
+		currentVersionRange = versionRange;
+	}
 
 	private HashMap<Integer, RawPool> typeToRawPoolMap;
 	private String exceptionLog;
@@ -139,4 +149,5 @@ public class RawProject
 	private String projectMetadataId;
 	private long lastModifiedTime;
 	private IdAssigner idAssigner;
+	private VersionRange currentVersionRange;
 }

@@ -23,6 +23,7 @@ package org.miradi.mpfMigrations;
 import org.martus.util.UnicodeStringReader;
 import org.martus.util.UnicodeStringWriter;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.project.AbstractMiradiProjectSaver;
 import org.miradi.project.ProjectSaver;
 import org.miradi.project.RawProjectSaver;
 
@@ -40,7 +41,7 @@ public class TestRawProject extends TestCaseWithProject
 		UnicodeStringReader reader  = new UnicodeStringReader(projectMpfSnapShot);
 		RawProject rawProject = RawProjectLoader.loadProject(reader);
 		UnicodeStringWriter stringWriter = UnicodeStringWriter.create();
-		RawProjectSaver.saveProject(rawProject, stringWriter);
+		RawProjectSaver.saveProject(rawProject, stringWriter, AbstractMiradiProjectSaver.VERSION_LOW , AbstractMiradiProjectSaver.VERSION_HIGH);
 		
 		assertEquals("Project load and save as string is broken?", projectMpfSnapShot, stringWriter.toString());
 	}

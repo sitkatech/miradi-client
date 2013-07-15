@@ -50,9 +50,9 @@ public class StrategyStatusQuestion extends StaticChoiceQuestion
 	@Override
 	protected String getReadableAlternativeDefaultCode()
 	{
-		return STATUS_REAL_CODE;
+		return "Real";
 	}
 	
-	public static final String STATUS_REAL_CODE = "Real";
+	public static final String STATUS_REAL_CODE = "";
 	public static final String STATUS_DRAFT_CODE = "Draft";
 }

@@ -27,15 +27,16 @@ import org.martus.util.UnicodeStringWriter;
 import org.miradi.mpfMigrations.RawObject;
 import org.miradi.mpfMigrations.RawPool;
 import org.miradi.mpfMigrations.RawProject;
+import org.miradi.mpfMigrations.VersionRange;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 
 public class RawProjectSaver extends AbstractMiradiProjectSaver
 {
-	public static void saveProject(final RawProject projectToUse, final UnicodeStringWriter writerToUse) throws Exception
+	public static void saveProject(final RawProject projectToUse, final UnicodeStringWriter writerToUse, VersionRange versionRangeToUse) throws Exception
 	{
-		saveProject(projectToUse, writerToUse, VERSION_LOW, VERSION_HIGH);
+		saveProject(projectToUse, writerToUse, versionRangeToUse.getLowVersion(), versionRangeToUse.getHighVersion());
 	}
 	
 	public static void saveProject(final RawProject projectToUse, final UnicodeStringWriter writerToUse, int versionLow, int versionHigh) throws Exception

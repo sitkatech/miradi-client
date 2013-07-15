@@ -35,11 +35,13 @@ import org.miradi.objectpools.FutureStatusPool;
 import org.miradi.objectpools.IndicatorPool;
 import org.miradi.objects.FutureStatus;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.Strategy;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.project.ProjectLoader;
 import org.miradi.project.ProjectSaverForTesting;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.questions.StrategyStatusQuestion;
 import org.miradi.schemas.IndicatorSchema;
 
 public class TestMigrationManager extends TestCaseWithProject
@@ -49,6 +51,40 @@ public class TestMigrationManager extends TestCaseWithProject
 		super(name);
 	}
 	
+	public void testMigrateWithoutStrategies() throws Exception
+	{
+		verifyMigratingStrategyStatusQuestionRealStatusChoice("", "");
+	}
+
+	public void testMigrateStrategyWithoutStatusTag() throws Exception
+	{
+		verifyMigratingStrategyStatusQuestionRealStatusChoice("", "");
+	}
+	
+	public void testMigrateLegacyStrategyWithStatusReal() throws Exception
+	{
+		verifyMigratingStrategyStatusQuestionRealStatusChoice("", Migration4.LEGACY_DEFAULT_STRATEGY_STATUS_REAL);
+	}
+	
+	public void testMigrateStrategyWithDraftStatus() throws Exception
+	{		
+		verifyMigratingStrategyStatusQuestionRealStatusChoice(StrategyStatusQuestion.STATUS_DRAFT_CODE, StrategyStatusQuestion.STATUS_DRAFT_CODE);
+	}
+	
+	private void verifyMigratingStrategyStatusQuestionRealStatusChoice(String expectedStrategyStatusCode, String strategyStatusCode) throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_STATUS, strategyStatusCode);
+		ProjectForTesting migratedProject = migrateProject(new VersionRange(4, 4));
+		ORefList migratedStrategyRefs = migratedProject.getStrategyPool().getORefList();
+		assertTrue("Incorrect number of strategies after migration?", migratedStrategyRefs.size() == 1);
+		
+		ORef migratedStrategyRef = migratedStrategyRefs.getFirstElement();
+		Strategy migratedStrategy = Strategy.find(migratedProject, migratedStrategyRef);
+		String migratedStrategyStatus = migratedStrategy.getData(Strategy.TAG_STATUS);
+		assertEquals("Incorrect migrated strategy status?", expectedStrategyStatusCode, migratedStrategyStatus);
+	}
+
 	public void testMigrateWithoutIndicators() throws Exception
 	{
 		verifyFutureStatusesCreatedFromIndicators(0);
@@ -67,7 +103,7 @@ public class TestMigrationManager extends TestCaseWithProject
 	private void verifyFutureStatusesCreatedFromIndicators(final int indicatorCount) throws Exception
 	{
 		Vector<Indicator> indicatorsToMigrateFutureStatusesFrom = createAndPopluteIndicators(indicatorCount);
-		ProjectForTesting migratedProject = migrateProject();
+		ProjectForTesting migratedProject = migrateProject(new VersionRange(3, 3));
 		final IndicatorPool indicatorPool = migratedProject.getIndicatorPool();
 		assertEquals("Incorrect indictor count?", indicatorsToMigrateFutureStatusesFrom.size(), indicatorPool.size());
 
@@ -145,10 +181,10 @@ public class TestMigrationManager extends TestCaseWithProject
 		assertEquals("incorrect migration type?", expectedMigrationType, MigrationManager.getMigrationType(miradiVersionRange, mpfVersionRange));
 	}
 	
-	private ProjectForTesting migrateProject() throws Exception, IOException
+	private ProjectForTesting migrateProject(final VersionRange versionRangeToUse) throws Exception, IOException
 	{
 		MigrationManager migrationManager = new MigrationManager();
-		String projectAsString = ProjectSaverForTesting.createSnapShot(getProject(), new VersionRange(3, 3));
+		String projectAsString = ProjectSaverForTesting.createSnapShot(getProject(), versionRangeToUse);
 		String migratedMpfFile = migrationManager.migrateForward(projectAsString);
 		
 		ProjectForTesting migratedProject = ProjectForTesting.createProjectWithoutDefaultObjects("MigratedProject");

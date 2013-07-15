@@ -53,9 +53,14 @@ public class MigrationManager
 	{
 		VersionRange versionRange = RawProjectLoader.loadVersionRange(new UnicodeStringReader(mpfAsString));
 		RawProject rawProject = RawProjectLoader.loadProject(new UnicodeStringReader(mpfAsString));
-		if (Migration3.canMigrateThisVersion(versionRange))
+		rawProject.setCurrentVersionRange(versionRange);
+		if (Migration3.canMigrateThisVersion(rawProject.getCurrentVersionRange()))
 		{
 			new Migration3().forwardMigrate(rawProject);
+		}
+		if (Migration4.canMigrateThisVersion(rawProject.getCurrentVersionRange()))
+		{
+			new Migration4().forwardMigrate(rawProject);
 		}
 
 		return convertToMpfString(rawProject);
@@ -111,7 +116,7 @@ public class MigrationManager
 	private String convertToMpfString(RawProject migratedPools) throws Exception
 	{
 		UnicodeStringWriter stringWriter = UnicodeStringWriter.create();
-		RawProjectSaver.saveProject(migratedPools, stringWriter);
+		RawProjectSaver.saveProject(migratedPools, stringWriter, migratedPools.getCurrentVersionRange());
 		
 		return stringWriter.toString();
 	}
