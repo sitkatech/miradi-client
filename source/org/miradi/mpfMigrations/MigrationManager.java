@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.mpfMigrations;
 
 import java.io.File;
+import java.util.Vector;
 
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringReader;
@@ -54,16 +55,25 @@ public class MigrationManager
 		VersionRange versionRange = RawProjectLoader.loadVersionRange(new UnicodeStringReader(mpfAsString));
 		RawProject rawProject = RawProjectLoader.loadProject(new UnicodeStringReader(mpfAsString));
 		rawProject.setCurrentVersionRange(versionRange);
-		if (new Migration3().canMigrateThisVersion(rawProject.getCurrentVersionRange()))
+		Vector<AbstractMigration> migrations = createEmtyMigrations();
+		for(AbstractMigration abstractMigration : migrations)
 		{
-			new Migration3().forwardMigrate(rawProject);
-		}
-		if (new Migration4().canMigrateThisVersion(rawProject.getCurrentVersionRange()))
-		{
-			new Migration4().forwardMigrate(rawProject);
+			if (abstractMigration.canMigrateThisVersion(rawProject.getCurrentVersionRange()))
+			{
+				abstractMigration.forwardMigrate(rawProject);
+			}	
 		}
 
 		return convertToMpfString(rawProject);
+	}
+	
+	private Vector<AbstractMigration> createEmtyMigrations()
+	{
+		Vector<AbstractMigration> migrations = new Vector<AbstractMigration>();
+		migrations.add(new Migration3());
+		migrations.add(new Migration4());
+		
+		return migrations;
 	}
 	
 	private void createBackup(File projectFile) throws Exception
