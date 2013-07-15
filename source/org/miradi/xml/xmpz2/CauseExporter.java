@@ -40,6 +40,6 @@ public class CauseExporter extends BaseObjectWithThreatRatingExporter
 	@Override
 	protected String getContainerElementName()
 	{
-		return CAUSE;
+		return CauseSchema.OBJECT_NAME;
 	}
 }
