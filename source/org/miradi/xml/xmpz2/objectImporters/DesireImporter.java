@@ -25,6 +25,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objects.Desire;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 
@@ -68,7 +69,7 @@ abstract public class DesireImporter extends BaseObjectImporter
 	private void importRelevantStrategyAndActivityIds(Node node, ORef destinationDesireRef) throws Exception
 	{
 		ORefList importedStrategyAndActivityRefs = new ORefList();
-		importedStrategyAndActivityRefs.addAll(getImporter().extractRefs(node, getXmpz2ElementName(), RELEVANT_STRATEGY_IDS, STRATEGY));
+		importedStrategyAndActivityRefs.addAll(getImporter().extractRefs(node, getXmpz2ElementName(), RELEVANT_STRATEGY_IDS, StrategySchema.OBJECT_NAME));
 		importedStrategyAndActivityRefs.addAll(getImporter().extractRefs(node, getXmpz2ElementName(), RELEVANT_ACTIVITY_IDS, ACTIVITY));
 		
 		Desire desire = Desire.findDesire(getProject(), destinationDesireRef);

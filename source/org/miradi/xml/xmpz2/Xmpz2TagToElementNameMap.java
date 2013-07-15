@@ -55,6 +55,7 @@ import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.MiradiShareTaxonomySchema;
+import org.miradi.schemas.StrategySchema;
 
 public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 {
@@ -98,7 +99,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(KEY_ECOLOGICAL_ATTRIBUTE, createKeyEcologicalAttributeMap());
 		map.put(CONCEPTUAL_MODEL, createDiagramObjectMap());
 		map.put(CauseSchema.OBJECT_NAME, createCauseMap());
-		map.put(STRATEGY, createStrategyMap());
+		map.put(StrategySchema.OBJECT_NAME, createStrategyMap());
 		map.put(BIODIVERSITY_TARGET, createTargetMap());
 		map.put(HUMAN_WELFARE_TARGET, createAbstractTargetMap());
 		map.put(INTERMEDIATE_RESULTS, createFactorMap());

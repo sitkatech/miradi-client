@@ -23,6 +23,7 @@ package org.miradi.xml.xmpz2.xmpz2schema;
 import java.util.Vector;
 
 import org.miradi.schemas.CauseSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.StringUtilities;
 import org.miradi.utils.Utility;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
@@ -40,7 +41,7 @@ abstract public class Xmpz2GroupedConstants implements Xmpz2XmlConstants
 				BIODIVERSITY_TARGET,
 				HUMAN_WELFARE_TARGET, 
 				CauseSchema.OBJECT_NAME,
-				STRATEGY,
+				StrategySchema.OBJECT_NAME,
 				THREAT_REDUCTION_RESULTS, 
 				INTERMEDIATE_RESULTS,
 				GROUP_BOX,
@@ -53,7 +54,7 @@ abstract public class Xmpz2GroupedConstants implements Xmpz2XmlConstants
 				BIODIVERSITY_TARGET, 
 				HUMAN_WELFARE_TARGET, 
 				CauseSchema.OBJECT_NAME, 
-				STRATEGY, 
+				StrategySchema.OBJECT_NAME, 
 				THREAT_REDUCTION_RESULTS, 
 				INTERMEDIATE_RESULTS,
 				GROUP_BOX,
@@ -79,7 +80,7 @@ abstract public class Xmpz2GroupedConstants implements Xmpz2XmlConstants
 		BIODIVERSITY_TARGET,
 		HUMAN_WELFARE_TARGET,
 		CauseSchema.OBJECT_NAME,
-		STRATEGY,
+		StrategySchema.OBJECT_NAME,
 		THREAT_REDUCTION_RESULTS,
 		INTERMEDIATE_RESULTS,
 		GROUP_BOX,
