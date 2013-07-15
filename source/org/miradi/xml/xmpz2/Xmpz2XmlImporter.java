@@ -120,6 +120,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	protected void importXml() throws Exception
 	{
 		LinkedHashMap<Integer, BaseObjectImporter> typeToImporterMap = fillTypeToImporterMap();
+		elementNameToTypeMap = createIdElementNameToTypeMap();
 		progressIndicator.setStatusMessage(EAM.text("Importing XML..."),  12 + typeToImporterMap.size());
 		
 		importSummaryData();
@@ -390,7 +391,6 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		String nodeName = typedIdNode.getNodeName();
 		String objectTypeNameWithNamespace = removeAppendedId(nodeName);
 		String objectTypeName = removeNamepsacePrefix(objectTypeNameWithNamespace);
-		HashMap<String, Integer> elementNameToTypeMap = createIdElementNameToTypeMap();
 		if (elementNameToTypeMap.containsKey(objectTypeName))
 			return elementNameToTypeMap.get(objectTypeName);
 		
@@ -698,4 +698,5 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	
 	private Xmpz2TagToElementNameMap tagToElementNameMap;
 	protected ProgressInterface progressIndicator;
+	private HashMap<String, Integer> elementNameToTypeMap;
 }
