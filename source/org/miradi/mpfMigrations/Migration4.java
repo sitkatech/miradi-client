@@ -45,13 +45,13 @@ public class Migration4 extends AbstractMigration
 		{
 			RawObject strategy = strategyRawPool.get(strategyRef);
 			if (strategy.containsKey(Strategy.TAG_STATUS))
-				updateRealStrategyStatusCode(strategy);
+				updateDefaultRealStatusCode(strategy);
 		}
 		
 		return rawProject;
 	}
 
-	private void updateRealStrategyStatusCode(RawObject strategy)
+	private void updateDefaultRealStatusCode(RawObject strategy)
 	{
 		String strategyStatusCode = strategy.get(Strategy.TAG_STATUS);
 		if (strategyStatusCode.equals(LEGACY_DEFAULT_STRATEGY_STATUS_REAL))
