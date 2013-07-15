@@ -52,6 +52,7 @@ import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.MiradiShareTaxonomySchema;
 
@@ -96,7 +97,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(FUNDING_SOURCE, createBaseObjectMap());
 		map.put(KEY_ECOLOGICAL_ATTRIBUTE, createKeyEcologicalAttributeMap());
 		map.put(CONCEPTUAL_MODEL, createDiagramObjectMap());
-		map.put(CAUSE, createCauseMap());
+		map.put(CauseSchema.OBJECT_NAME, createCauseMap());
 		map.put(STRATEGY, createStrategyMap());
 		map.put(BIODIVERSITY_TARGET, createTargetMap());
 		map.put(HUMAN_WELFARE_TARGET, createAbstractTargetMap());
