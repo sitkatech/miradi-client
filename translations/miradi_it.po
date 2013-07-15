@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-12 14:31-0500\n"
+"POT-Creation-Date: 2013-07-12 18:01-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -9348,6 +9348,9 @@ msgstr "Indicatori rilevanti"
 msgid "FieldLabel|10.PseudoRelevantStrategyRefs|Relevant Strategies"
 msgstr "Strategie rilevanti"
 
+msgid "FieldLabel|10.TaxonomyClassificationContainer|Taxonomies"
+msgstr ""
+
 msgid "FieldLabel|11.ProjectMetadata|Project"
 msgstr "Progetto"
 
@@ -10015,6 +10018,9 @@ msgstr "Dettagli"
 
 msgid "FieldLabel|22.HabitatAssociation|Habitat Association (IUCN v3.0)"
 msgstr "Associazione Habitat (IUCN v3.0)"
+
+msgid "FieldLabel|22.TaxonomyClassificationContainer|Taxonomies"
+msgstr ""
 
 msgid "FieldLabel|23.IntermediateResult|Intermediate Result"
 msgstr "Risultato Intermedio"
