@@ -107,10 +107,10 @@ public class BaseObjectExporter implements Xmpz2XmlConstants
 	protected String getDiagramFactorWrappedFactorTypeName(Factor wrappedFactor)
 	{
 		if (Target.is(wrappedFactor))
-			return BIODIVERSITY_TARGET;
+			return wrappedFactor.getSchema().getXmpz2ElementName();
 		
 		if (Cause.is(wrappedFactor))
-			return CAUSE;
+			return wrappedFactor.getSchema().getXmpz2ElementName();
 		
 		if (HumanWelfareTarget.is(wrappedFactor))
 			return HUMAN_WELFARE_TARGET;
