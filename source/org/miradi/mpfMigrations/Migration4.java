@@ -60,12 +60,8 @@ public class Migration4 extends AbstractMigration
 			strategy.put(Strategy.TAG_STATUS, "");
 	}
 
-	public static boolean canMigrateThisVersion(VersionRange versionRange) throws Exception
-	{
-		return getMigratableVersionRange().doesContainHigh(versionRange.getHighVersion());
-	}
-
-	private static VersionRange getMigratableVersionRange() throws Exception
+	@Override
+	protected VersionRange getMigratableVersionRange() throws Exception
 	{
 		return new VersionRange(VERSION_LOW, VERSION_HIGH);
 	}

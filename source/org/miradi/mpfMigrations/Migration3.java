@@ -108,12 +108,8 @@ public class Migration3 extends AbstractMigration
 		return false;
 	}
 
-	public static boolean canMigrateThisVersion(VersionRange versionRange) throws Exception
-	{
-		return getMigratableVersionRange().doesContainHigh(versionRange.getHighVersion());
-	}
-
-	private static VersionRange getMigratableVersionRange() throws Exception
+	@Override
+	protected VersionRange getMigratableVersionRange() throws Exception
 	{
 		return new VersionRange(VERSION_LOW, VERSION_HIGH);
 	}
