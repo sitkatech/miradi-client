@@ -46,50 +46,23 @@ import org.miradi.objecthelpers.TaxonomyElementList;
 import org.miradi.objecthelpers.TaxonomyHelper;
 import org.miradi.objectpools.BaseObjectPool;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Cause;
 import org.miradi.objects.Dashboard;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.RatingCriterion;
 import org.miradi.objects.ReportTemplate;
+import org.miradi.objects.Task;
 import org.miradi.objects.XslTemplate;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.schemas.AbstractFieldSchema;
-import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.schemas.BudgetCategoryOneSchema;
-import org.miradi.schemas.BudgetCategoryTwoSchema;
-import org.miradi.schemas.CauseSchema;
-import org.miradi.schemas.DiagramFactorSchema;
-import org.miradi.schemas.DiagramLinkSchema;
-import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FosProjectDataSchema;
-import org.miradi.schemas.FundingSourceSchema;
-import org.miradi.schemas.FutureStatusSchema;
-import org.miradi.schemas.GoalSchema;
-import org.miradi.schemas.GroupBoxSchema;
-import org.miradi.schemas.HumanWelfareTargetSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.IntermediateResultSchema;
-import org.miradi.schemas.KeyEcologicalAttributeSchema;
-import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.MiradiShareProjectDataSchema;
 import org.miradi.schemas.MiradiShareTaxonomySchema;
-import org.miradi.schemas.ObjectiveSchema;
-import org.miradi.schemas.ProgressPercentSchema;
-import org.miradi.schemas.ProgressReportSchema;
-import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.schemas.RareProjectDataSchema;
-import org.miradi.schemas.ResourceAssignmentSchema;
-import org.miradi.schemas.ScopeBoxSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.StressSchema;
-import org.miradi.schemas.SubTargetSchema;
-import org.miradi.schemas.TaggedObjectSetSchema;
-import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
-import org.miradi.schemas.TextBoxSchema;
-import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.schemas.ValueOptionSchema;
 import org.miradi.schemas.WcsProjectDataSchema;
@@ -428,41 +401,25 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	private HashMap<String, Integer> createIdElementNameToTypeMap()
 	{
 		HashMap<String, Integer> elementNameToType = new HashMap<String, Integer>();
-		elementNameToType.put(SCOPE_BOX, ScopeBoxSchema.getObjectType());
-		elementNameToType.put(BIODIVERSITY_TARGET, TargetSchema.getObjectType());
-		elementNameToType.put(HUMAN_WELFARE_TARGET, HumanWelfareTargetSchema.getObjectType());
-		elementNameToType.put(CAUSE, CauseSchema.getObjectType());
-		elementNameToType.put(THREAT, CauseSchema.getObjectType());
-		elementNameToType.put(STRATEGY, StrategySchema.getObjectType());
-		elementNameToType.put(INTERMEDIATE_RESULTS, IntermediateResultSchema.getObjectType());
-		elementNameToType.put(THREAT_REDUCTION_RESULTS, ThreatReductionResultSchema.getObjectType());
-		elementNameToType.put(TEXT_BOX,TextBoxSchema.getObjectType());
-		elementNameToType.put(GROUP_BOX, GroupBoxSchema.getObjectType());
-		elementNameToType.put(TaskSchema.ACTIVITY_NAME, TaskSchema.getObjectType());
-		elementNameToType.put(TaskSchema.METHOD_NAME, TaskSchema.getObjectType());
-		elementNameToType.put(Xmpz2XmlConstants.TASK, TaskSchema.getObjectType());
-		elementNameToType.put(STRESS, StressSchema.getObjectType());
-		elementNameToType.put(PROGRESS_PERCENT, ProgressPercentSchema.getObjectType());
-		elementNameToType.put(BIODIVERSITY_TARGET, TargetSchema.getObjectType());
-		elementNameToType.put(DIAGRAM_FACTOR, DiagramFactorSchema.getObjectType());
-		elementNameToType.put(DIAGRAM_LINK, DiagramLinkSchema.getObjectType());
-		elementNameToType.put(INDICATOR, IndicatorSchema.getObjectType());
-		elementNameToType.put(RESOURCE_ASSIGNMENT, ResourceAssignmentSchema.getObjectType());
-		elementNameToType.put(EXPENSE_ASSIGNMENT, ExpenseAssignmentSchema.getObjectType());
-		elementNameToType.put(KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttributeSchema.getObjectType());
-		elementNameToType.put(MEASUREMENT, MeasurementSchema.getObjectType());
-		elementNameToType.put(OBJECTIVE, ObjectiveSchema.getObjectType());
-		elementNameToType.put(SUB_TASK, TaskSchema.getObjectType());
-		elementNameToType.put(PROGRESS_REPORT, ProgressReportSchema.getObjectType());
-		elementNameToType.put(SUB_TARGET, SubTargetSchema.getObjectType());
-		elementNameToType.put(BUDGET_CATEGORY_ONE, BudgetCategoryOneSchema.getObjectType());
-		elementNameToType.put(BUDGET_CATEGORY_TWO, BudgetCategoryTwoSchema.getObjectType());
-		elementNameToType.put(ACCOUNTING_CODE, AccountingCodeSchema.getObjectType());
-		elementNameToType.put(FUNDING_SOURCE, FundingSourceSchema.getObjectType());
-		elementNameToType.put(RESOURCE, ProjectResourceSchema.getObjectType());
-		elementNameToType.put(GOAL, GoalSchema.getObjectType());
-		elementNameToType.put(FUTURE_STATUS, FutureStatusSchema.getObjectType());
-		elementNameToType.put(TAGGED_OBJECT_SET_ELEMENT_NAME, TaggedObjectSetSchema.getObjectType());
+		for(int objectType = ObjectType.FIRST_OBJECT_TYPE; objectType < ObjectType.OBJECT_TYPE_COUNT; ++objectType)
+		{
+			BaseObjectPool pool = getProject().getPool(objectType);
+			if (pool == null)
+				continue;
+			
+			BaseObjectSchema baseObjectSchema = pool.createBaseObjectSchema(getProject());
+			elementNameToType.put(baseObjectSchema.getXmpz2ElementName(), baseObjectSchema.getType());
+			if (Cause.is(objectType))
+			{
+				elementNameToType.put(THREAT, baseObjectSchema.getType());
+			}
+			if (Task.is(objectType))
+			{
+				elementNameToType.put(TaskSchema.ACTIVITY_NAME, TaskSchema.getObjectType());
+				elementNameToType.put(TaskSchema.METHOD_NAME, TaskSchema.getObjectType());
+				elementNameToType.put(SUB_TASK, TaskSchema.getObjectType());
+			}
+		}
 		
 		return elementNameToType;
 	}
