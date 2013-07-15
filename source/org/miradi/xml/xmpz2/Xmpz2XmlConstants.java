@@ -71,7 +71,6 @@ public interface Xmpz2XmlConstants
 	public static final String DIAGRAM_LINK_IDS = "DiagramLinkIds";
 	public static final String BIODIVERSITY_TARGET = "BiodiversityTarget";
 	public static final String HUMAN_WELFARE_TARGET = "HumanWellbeingTarget";
-	public static final String STRATEGY = "Strategy";
 	public static final String THREAT_REDUCTION_RESULTS = "ThreatReductionResult";
 	public static final String INTERMEDIATE_RESULTS = "IntermediateResult";
 	public static final String GROUP_BOX = "GroupBox";

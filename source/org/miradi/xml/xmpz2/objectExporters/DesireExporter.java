@@ -68,7 +68,7 @@ public class DesireExporter extends BaseObjectExporter
 	private void writeRelevantStrategyIds(final String objectName, Desire desire) throws Exception
 	{
 		ORefList relevantStrategyRefs = desire.getRelevantStrategyAndActivityRefs().getFilteredBy(StrategySchema.getObjectType());
-		getWriter().writeReflist(objectName, RELEVANT_STRATEGY_IDS, STRATEGY, relevantStrategyRefs);
+		getWriter().writeReflist(objectName, RELEVANT_STRATEGY_IDS, StrategySchema.OBJECT_NAME, relevantStrategyRefs);
 	}
 	
 	private void writeRelevantActivityIds(final String objectName, Desire desire) throws Exception
