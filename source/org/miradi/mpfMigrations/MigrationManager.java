@@ -54,11 +54,11 @@ public class MigrationManager
 		VersionRange versionRange = RawProjectLoader.loadVersionRange(new UnicodeStringReader(mpfAsString));
 		RawProject rawProject = RawProjectLoader.loadProject(new UnicodeStringReader(mpfAsString));
 		rawProject.setCurrentVersionRange(versionRange);
-		if (Migration3.canMigrateThisVersion(rawProject.getCurrentVersionRange()))
+		if (new Migration3().canMigrateThisVersion(rawProject.getCurrentVersionRange()))
 		{
 			new Migration3().forwardMigrate(rawProject);
 		}
-		if (Migration4.canMigrateThisVersion(rawProject.getCurrentVersionRange()))
+		if (new Migration4().canMigrateThisVersion(rawProject.getCurrentVersionRange()))
 		{
 			new Migration4().forwardMigrate(rawProject);
 		}

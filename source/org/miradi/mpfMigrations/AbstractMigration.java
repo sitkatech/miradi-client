@@ -22,5 +22,12 @@ package org.miradi.mpfMigrations;
 
 abstract public class AbstractMigration
 {
+	public boolean canMigrateThisVersion(VersionRange versionRange) throws Exception
+	{
+		return getMigratableVersionRange().doesContainHigh(versionRange.getHighVersion());
+	}
+
+	abstract protected VersionRange getMigratableVersionRange() throws Exception;
+
 	abstract public RawProject forwardMigrate(RawProject rawProject) throws Exception;
 }
