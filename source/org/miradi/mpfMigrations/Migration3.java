@@ -29,7 +29,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Indicator;
 
-//FIXME medium - refactor this class to work at a higher level before creating any other migrations.
 public class Migration3 extends AbstractMigration
 {
 	@Override
