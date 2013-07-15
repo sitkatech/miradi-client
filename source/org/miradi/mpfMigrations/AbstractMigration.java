@@ -27,7 +27,7 @@ abstract public class AbstractMigration
 		return getMigratableVersionRange().doesContainHigh(versionRange.getHighVersion());
 	}
 
-	abstract protected VersionRange getMigratableVersionRange() throws Exception;
+	public abstract VersionRange getMigratableVersionRange() throws Exception;
 
 	abstract public RawProject forwardMigrate(RawProject rawProject) throws Exception;
 }

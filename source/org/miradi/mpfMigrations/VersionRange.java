@@ -79,6 +79,11 @@ public class VersionRange
 		return highVersion;
 	}
 	
+	public VersionRange incrementByOne() throws Exception
+	{
+		return new VersionRange(getLowVersion() + 1, getHighVersion() + 1);
+	}
+	
 	private int lowVersion;
 	private int highVersion;
 }

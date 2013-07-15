@@ -61,6 +61,9 @@ public class MigrationManager
 			if (abstractMigration.canMigrateThisVersion(rawProject.getCurrentVersionRange()))
 			{
 				abstractMigration.forwardMigrate(rawProject);
+				
+				final VersionRange incrementedByOne = abstractMigration.getMigratableVersionRange().incrementByOne();
+				rawProject.setCurrentVersionRange(incrementedByOne);
 			}	
 		}
 
