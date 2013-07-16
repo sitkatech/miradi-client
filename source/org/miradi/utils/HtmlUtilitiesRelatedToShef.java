@@ -26,6 +26,9 @@ public class HtmlUtilitiesRelatedToShef
 	//NOTE: This method does not attempt to normalize encoding of numeric/named entities like &#160; and &nbsp;
 	public static String getNormalizedAndSanitizedHtmlText(String text, String[] allowedHtmlTags) throws Exception
 	{
+		if (text == null || text.length() == 0)
+			return text;
+		
 		text = HtmlUtilities.stripHtmlComments(text);
 		text = HtmlUtilities.replaceAllEmptyDivsWithBrs(text);
 		text = HtmlUtilities.replaceEndParagraphTagsWithBrs(text);
