@@ -36,12 +36,23 @@ public class XmlUtilities2
 	
 	public static String getXmlDecoded(String value)
 	{
+		if (isEmptyValue(value))
+			return value;
+		
 		return StringEscapeUtils.unescapeXml(value);
 	}
 
 	public static String getXmlEncoded(String value)
 	{
+		if (isEmptyValue(value))
+			return value;
+		
 		return StringEscapeUtils.escapeXml(value);
+	}
+
+	private static boolean isEmptyValue(String value)
+	{
+		return value == null || value.length() == 0;
 	}
 
 	public static String getXmlEncodedApostrophes(String value)
