@@ -58,6 +58,7 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	{
 		project = projectToUse;
 		writer = writerToUse;
+		tagToElementNameMap = new Xmpz2TagToElementNameMap();
 	}
 	
 	public void writeStartPoolElement(String startElementName) throws Exception
@@ -602,8 +603,12 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	
 	private String getConvertedElementName(String parentElementName,String elementName)
 	{
-		Xmpz2TagToElementNameMap map = new Xmpz2TagToElementNameMap();
-		return map.findElementName(parentElementName, elementName);
+		return getTagToElementNameMap().findElementName(parentElementName, elementName);
+	}
+
+	private Xmpz2TagToElementNameMap getTagToElementNameMap()
+	{
+		return tagToElementNameMap;
 	}
 	
 	public void write(final String value) throws Exception
@@ -633,4 +638,5 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	
 	private Project project;
 	private UnicodeWriter writer;
+	private Xmpz2TagToElementNameMap tagToElementNameMap;
 }
