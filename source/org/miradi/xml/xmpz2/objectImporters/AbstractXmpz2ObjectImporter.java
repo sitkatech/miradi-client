@@ -75,7 +75,7 @@ public class AbstractXmpz2ObjectImporter  implements Xmpz2XmlConstants
 	
 	protected void importField(Node baseObjectNode, BaseObjectSchema baseObjectSchemaToUse, BaseObject baseObject, AbstractFieldSchema fieldSchema)	throws Exception
 	{
-		ObjectData objectData = fieldSchema.createField(baseObject);
+		ObjectData objectData = baseObject.getField(fieldSchema.getTag());
 		objectData.readAsXmpz2XmlData(getImporter(), baseObjectNode, baseObject.getRef(), baseObjectSchemaToUse, fieldSchema);
 	}
 	
