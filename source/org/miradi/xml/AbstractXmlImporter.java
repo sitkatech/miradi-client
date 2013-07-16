@@ -186,24 +186,24 @@ abstract public class AbstractXmlImporter
 		setData(ref, tag, Integer.toString(data));
 	}
 		
-	public void setData(ORef ref, String tag, String data) throws Exception
-	{
-		getProject().setObjectData(ref, tag, data.trim());
-	}
-	
 	public void setData(ORef ref, String tag, ORefList refList) throws Exception
 	{
-		getProject().setObjectData(ref, tag, refList.toString());
+		setData(ref, tag, refList.toString());
 	}
 	
 	public void setData(ORef ref, String tag, IdList idList) throws Exception
 	{
-		getProject().setObjectData(ref, tag, idList.toString());
+		setData(ref, tag, idList.toString());
 	}
 	
 	public void setData(ORef ref, String tag, CodeList codes) throws Exception
 	{
-		getProject().setObjectData(ref, tag, codes.toString());
+		setData(ref, tag, codes.toString());
+	}
+	
+	public void setData(ORef ref, String tag, String data) throws Exception
+	{
+		getProject().setObjectData(ref, tag, data.trim());
 	}
 
 	public String generatePath(String[] pathElements)
