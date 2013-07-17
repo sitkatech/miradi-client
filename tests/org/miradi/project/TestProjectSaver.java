@@ -114,7 +114,7 @@ public class TestProjectSaver extends TestCaseWithProject
 
 	public void testLoadTooNew() throws Exception
 	{
-		final int NEWER_VERSION = AbstractMiradiProjectSaver.VERSION_HIGH + 1; 
+		final int NEWER_VERSION = Project.VERSION_HIGH + 1; 
 		String tooNew = AbstractMiradiProjectSaver.getBasicFileHeader() + " " + NEWER_VERSION + " " + NEWER_VERSION + "\n";
 		try
 		{
