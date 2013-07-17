@@ -73,7 +73,7 @@ public class MigrationManager
 	private Vector<AbstractMigration> createEmtyMigrations()
 	{
 		Vector<AbstractMigration> migrations = new Vector<AbstractMigration>();
-		migrations.add(new Migration3());
+		migrations.add(new MigrationTo3());
 		migrations.add(new Migration4());
 		
 		return migrations;
