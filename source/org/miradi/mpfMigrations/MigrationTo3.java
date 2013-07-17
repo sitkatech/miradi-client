@@ -29,7 +29,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Indicator;
 
-public class Migration3 extends AbstractMigration
+public class MigrationTo3 extends AbstractMigration
 {
 	@Override
 	public RawProject forwardMigrate(RawProject rawProject) throws Exception
