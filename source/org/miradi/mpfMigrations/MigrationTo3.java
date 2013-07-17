@@ -39,7 +39,7 @@ public class MigrationTo3 extends AbstractMigration
 
 	private static RawProject moveIndicatorFutureStatusesToNewFutureStatus(RawProject rawProject) throws Exception
 	{
-		if (!rawProject.containType(ObjectType.INDICATOR))
+		if (!rawProject.containsAnyObjectsOfType(ObjectType.INDICATOR))
 			return rawProject;
 		
 		RawPool indicatorRawPool = rawProject.getRawPoolForType(ObjectType.INDICATOR);

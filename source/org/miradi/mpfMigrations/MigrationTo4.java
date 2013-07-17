@@ -36,7 +36,7 @@ public class MigrationTo4 extends AbstractMigration
 	
 	private RawProject updateRealStrategyStatusCodes(RawProject rawProject)
 	{
-		if (!rawProject.containType(ObjectType.STRATEGY))
+		if (!rawProject.containsAnyObjectsOfType(ObjectType.STRATEGY))
 			return rawProject;
 		
 		RawPool strategyRawPool = rawProject.getRawPoolForType(ObjectType.STRATEGY);

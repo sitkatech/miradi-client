@@ -71,7 +71,7 @@ public class RawProjectLoader extends AbstractProjectLoader
 	
 	private RawPool getRawPool(ORef ref)
 	{
-		if (!rawProject.containType(ref.getObjectType()))
+		if (!rawProject.containsAnyObjectsOfType(ref.getObjectType()))
 			getRawProject().putTypeToNewPoolEntry(ref.getObjectType(), new RawPool());
 		
 		return getRawProject().getRawPoolForType(ref.getObjectType());

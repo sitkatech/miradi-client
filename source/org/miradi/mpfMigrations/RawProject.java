@@ -38,7 +38,7 @@ public class RawProject
 		idAssigner = new IdAssigner();
 	}
 	
-	public boolean containType(int type)
+	public boolean containsAnyObjectsOfType(int type)
 	{
 	  return typeToRawPoolMap.containsKey(type);
 	}
