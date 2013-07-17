@@ -110,7 +110,7 @@ public class ProgressDialog extends DialogWithDisposablePanel implements Progres
 		}
 	}
 
-	class ProgressPanel extends OneColumnPanel implements ProgressInterface
+	private class ProgressPanel extends OneColumnPanel implements ProgressInterface
 	{
 		public ProgressPanel(MainWindow mainWindow)
 		{
