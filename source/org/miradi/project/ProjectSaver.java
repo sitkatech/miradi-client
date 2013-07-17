@@ -148,6 +148,18 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 	{
 		return project;
 	}
+
+	@Override
+	protected int getHighVersion()
+	{
+		return Project.VERSION_HIGH;
+	}
+
+	@Override
+	protected int getLowVersion()
+	{
+		return Project.VERSION_LOW;
+	}
 	
 	private Project project;
 }

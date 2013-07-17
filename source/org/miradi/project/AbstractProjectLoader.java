@@ -104,12 +104,12 @@ abstract public class AbstractProjectLoader
 		
 		VersionRange versionRange = loadVersionRange(fileHeaderLine);
 		int lowVersion = versionRange.getLowVersion();
-		if(lowVersion > AbstractMiradiProjectSaver.VERSION_HIGH)
-			throw new ProjectFileTooNewException(lowVersion, AbstractMiradiProjectSaver.VERSION_HIGH);
+		if(lowVersion > Project.VERSION_HIGH)
+			throw new ProjectFileTooNewException(lowVersion, Project.VERSION_HIGH);
 		
 		int highVersion = versionRange.getHighVersion();
-		if(highVersion < AbstractMiradiProjectSaver.VERSION_LOW)
-			throw new ProjectFileTooOldException(highVersion, AbstractMiradiProjectSaver.VERSION_LOW);
+		if(highVersion < Project.VERSION_LOW)
+			throw new ProjectFileTooOldException(highVersion, Project.VERSION_LOW);
 	}
 	
 	protected VersionRange loadVersionRange(String fileHeaderLine) throws Exception

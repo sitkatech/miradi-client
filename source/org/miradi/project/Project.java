@@ -41,6 +41,7 @@ import org.miradi.ids.IdList;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.VersionConstants;
+import org.miradi.mpfMigrations.VersionRange;
 import org.miradi.objecthelpers.CodeToChoiceMap;
 import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.DashboardStatusMapsCache;
@@ -1415,6 +1416,11 @@ public class Project
 	{
 		return MAX_PROJECT_FILENAME_LENGTH - AbstractMpfFileFilter.EXTENSION.length();
 	}
+	
+	public static VersionRange getMiradiVersionRange() throws Exception
+	{
+		return new VersionRange(VERSION_LOW, VERSION_HIGH);
+	}
 
 	public static final String LIBRARY_VIEW_NAME = "Library";
 	public static final String SCHEDULE_VIEW_NAME = "Schedule";
@@ -1462,5 +1468,7 @@ public class Project
 	private String currentViewName;
 	
 	public CommandExecutor commandExecutor;
-
+	
+	public static final int VERSION_LOW = 5;
+	public static final int VERSION_HIGH = 5;
 }
