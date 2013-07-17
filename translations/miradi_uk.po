@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-15 15:46-0500\n"
+"POT-Creation-Date: 2013-07-17 13:31-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -8832,7 +8832,7 @@ msgstr "[НЕ ВКАЗАНИЙ]"
 msgid "[New Results Chain]"
 msgstr "[Новий ланцюг результатів]"
 
-#: Miradi/source/org/miradi/project/Project.java:975
+#: Miradi/source/org/miradi/project/Project.java:976
 msgid "[No Project]"
 msgstr "[Проект не вибраний]"
 
