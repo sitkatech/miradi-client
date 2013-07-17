@@ -195,7 +195,7 @@ public abstract class AbstractProjectImporter
 		private File newProjectFile;
 	}
 
-	protected void userConfirmOpenImportedProject(File projectFile) throws Exception
+	private void userConfirmOpenImportedProject(File projectFile) throws Exception
 	{
 		String openProjectMessage = EAM.substitute(EAM.text("Import Completed.  Would you like to open %s?"), projectFile.getName());
 		boolean shouldOpenProjectAfterImport = EAM.confirmOpenDialog(EAM.text("Open Project"), openProjectMessage);
