@@ -55,7 +55,7 @@ public class MigrationManager
 		VersionRange versionRange = RawProjectLoader.loadVersionRange(new UnicodeStringReader(mpfAsString));
 		RawProject rawProject = RawProjectLoader.loadProject(new UnicodeStringReader(mpfAsString));
 		rawProject.setCurrentVersionRange(versionRange);
-		Vector<AbstractMigration> migrations = createEmtyMigrations();
+		Vector<AbstractMigration> migrations = createEmptyMigrations();
 		for(AbstractMigration abstractMigration : migrations)
 		{
 			if (abstractMigration.canMigrateThisVersion(rawProject.getCurrentVersionRange()))
@@ -70,7 +70,7 @@ public class MigrationManager
 		return convertToMpfString(rawProject);
 	}
 	
-	private Vector<AbstractMigration> createEmtyMigrations()
+	private Vector<AbstractMigration> createEmptyMigrations()
 	{
 		Vector<AbstractMigration> migrations = new Vector<AbstractMigration>();
 		migrations.add(new MigrationTo3());
