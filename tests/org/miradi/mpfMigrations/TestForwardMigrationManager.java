@@ -48,9 +48,9 @@ import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StrategyStatusQuestion;
 import org.miradi.schemas.IndicatorSchema;
 
-public class TestMigrationManager extends TestCaseWithProject
+public class TestForwardMigrationManager extends TestCaseWithProject
 {
-	public TestMigrationManager(String name)
+	public TestForwardMigrationManager(String name)
 	{
 		super(name);
 	}
