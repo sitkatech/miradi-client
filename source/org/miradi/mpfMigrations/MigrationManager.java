@@ -74,7 +74,7 @@ public class MigrationManager
 	{
 		Vector<AbstractMigration> migrations = new Vector<AbstractMigration>();
 		migrations.add(new MigrationTo3());
-		migrations.add(new MigrationTo4());
+		migrations.add(new MigrationTo5());
 		
 		return migrations;
 	}

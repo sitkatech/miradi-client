@@ -63,7 +63,7 @@ public class TestMigrationManager extends TestCaseWithProject
 	
 	public void testMigrateLegacyStrategyWithStatusReal() throws Exception
 	{
-		verifyMigratingStrategyStatusQuestionRealStatusChoice("", MigrationTo4.LEGACY_DEFAULT_STRATEGY_STATUS_REAL);
+		verifyMigratingStrategyStatusQuestionRealStatusChoice("", MigrationTo5.LEGACY_DEFAULT_STRATEGY_STATUS_REAL);
 	}
 	
 	public void testMigrateStrategyWithDraftStatus() throws Exception
