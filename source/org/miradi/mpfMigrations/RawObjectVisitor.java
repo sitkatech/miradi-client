@@ -20,14 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.mpfMigrations;
 
-abstract public class AbstractMigration
+public interface RawObjectVisitor
 {
-	public boolean canMigrateThisVersion(VersionRange versionRange) throws Exception
-	{
-		return getMigratableVersionRange().doesContainHigh(versionRange.getHighVersion());
-	}
-
-	abstract public VersionRange getMigratableVersionRange() throws Exception;
-
-	abstract public RawProject forwardMigrate(RawProject rawProject) throws Exception;
+	public void visit(RawObject rawObject);
 }

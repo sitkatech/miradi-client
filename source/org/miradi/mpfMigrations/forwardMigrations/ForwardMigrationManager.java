@@ -30,7 +30,7 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.exceptions.ProjectFileTooNewException;
 import org.miradi.exceptions.ProjectFileTooOldException;
 import org.miradi.main.EAM;
-import org.miradi.mpfMigrations.AbstractMigration;
+import org.miradi.mpfMigrations.AbstractForwardMigration;
 import org.miradi.mpfMigrations.AbstractMigrationManager;
 import org.miradi.mpfMigrations.RawProject;
 import org.miradi.mpfMigrations.RawProjectLoader;
@@ -60,12 +60,12 @@ public class ForwardMigrationManager extends AbstractMigrationManager
 		VersionRange versionRange = RawProjectLoader.loadVersionRange(new UnicodeStringReader(mpfAsString));
 		RawProject rawProject = RawProjectLoader.loadProject(new UnicodeStringReader(mpfAsString));
 		rawProject.setCurrentVersionRange(versionRange);
-		Vector<AbstractMigration> migrations = createEmptyMigrations();
-		for(AbstractMigration abstractMigration : migrations)
+		Vector<AbstractForwardMigration> migrations = createEmptyMigrations(rawProject);
+		for(AbstractForwardMigration abstractMigration : migrations)
 		{
 			if (abstractMigration.canMigrateThisVersion(rawProject.getCurrentVersionRange()))
 			{
-				abstractMigration.forwardMigrate(rawProject);
+				abstractMigration.forwardMigrate();
 				
 				final VersionRange incrementedByOne = abstractMigration.getMigratableVersionRange().incrementByOne();
 				rawProject.setCurrentVersionRange(incrementedByOne);
@@ -75,11 +75,11 @@ public class ForwardMigrationManager extends AbstractMigrationManager
 		return convertToMpfString(rawProject);
 	}
 	
-	private Vector<AbstractMigration> createEmptyMigrations()
+	private Vector<AbstractForwardMigration> createEmptyMigrations(RawProject rawProject)
 	{
-		Vector<AbstractMigration> migrations = new Vector<AbstractMigration>();
-		migrations.add(new MigrationTo4());
-		migrations.add(new MigrationTo5());
+		Vector<AbstractForwardMigration> migrations = new Vector<AbstractForwardMigration>();
+		migrations.add(new MigrationTo4(rawProject));
+		migrations.add(new MigrationTo5(rawProject));
 		
 		return migrations;
 	}
