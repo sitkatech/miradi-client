@@ -30,7 +30,7 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.exceptions.ProjectFileTooNewException;
 import org.miradi.exceptions.ProjectFileTooOldException;
 import org.miradi.main.EAM;
-import org.miradi.mpfMigrations.AbstractMigration;
+import org.miradi.mpfMigrations.AbstractForwardMigration;
 import org.miradi.mpfMigrations.AbstractMigrationManager;
 import org.miradi.mpfMigrations.RawProject;
 import org.miradi.mpfMigrations.RawProjectLoader;
@@ -60,8 +60,8 @@ public class ForwardMigrationManager extends AbstractMigrationManager
 		VersionRange versionRange = RawProjectLoader.loadVersionRange(new UnicodeStringReader(mpfAsString));
 		RawProject rawProject = RawProjectLoader.loadProject(new UnicodeStringReader(mpfAsString));
 		rawProject.setCurrentVersionRange(versionRange);
-		Vector<AbstractMigration> migrations = createEmptyMigrations();
-		for(AbstractMigration abstractMigration : migrations)
+		Vector<AbstractForwardMigration> migrations = createEmptyMigrations();
+		for(AbstractForwardMigration abstractMigration : migrations)
 		{
 			if (abstractMigration.canMigrateThisVersion(rawProject.getCurrentVersionRange()))
 			{
@@ -75,9 +75,9 @@ public class ForwardMigrationManager extends AbstractMigrationManager
 		return convertToMpfString(rawProject);
 	}
 	
-	private Vector<AbstractMigration> createEmptyMigrations()
+	private Vector<AbstractForwardMigration> createEmptyMigrations()
 	{
-		Vector<AbstractMigration> migrations = new Vector<AbstractMigration>();
+		Vector<AbstractForwardMigration> migrations = new Vector<AbstractForwardMigration>();
 		migrations.add(new MigrationTo4());
 		migrations.add(new MigrationTo5());
 		

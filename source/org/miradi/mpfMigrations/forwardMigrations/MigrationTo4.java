@@ -24,7 +24,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.miradi.ids.BaseId;
-import org.miradi.mpfMigrations.AbstractMigration;
+import org.miradi.mpfMigrations.AbstractForwardMigration;
 import org.miradi.mpfMigrations.IndicatorFutureStatusTagsToFutureStatusTagsMap;
 import org.miradi.mpfMigrations.RawObject;
 import org.miradi.mpfMigrations.RawPool;
@@ -35,7 +35,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Indicator;
 
-public class MigrationTo4 extends AbstractMigration
+public class MigrationTo4 extends AbstractForwardMigration
 {
 	@Override
 	public RawProject forwardMigrate(RawProject rawProject) throws Exception

@@ -22,7 +22,7 @@ package org.miradi.mpfMigrations.forwardMigrations;
 
 import java.util.Set;
 
-import org.miradi.mpfMigrations.AbstractMigration;
+import org.miradi.mpfMigrations.AbstractForwardMigration;
 import org.miradi.mpfMigrations.RawObject;
 import org.miradi.mpfMigrations.RawPool;
 import org.miradi.mpfMigrations.RawProject;
@@ -31,7 +31,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Strategy;
 
-public class MigrationTo5 extends AbstractMigration
+public class MigrationTo5 extends AbstractForwardMigration
 {
 	@Override
 	public RawProject forwardMigrate(RawProject rawProject) throws Exception
