@@ -36,7 +36,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.main.ResourcesHandler;
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.mpfMigrations.ForwardMigrationManager;
+import org.miradi.mpfMigrations.forwardMigrations.ForwardMigrationManager;
 import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Indicator;
