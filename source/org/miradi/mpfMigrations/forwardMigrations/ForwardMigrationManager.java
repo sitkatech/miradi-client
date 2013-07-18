@@ -60,12 +60,12 @@ public class ForwardMigrationManager extends AbstractMigrationManager
 		VersionRange versionRange = RawProjectLoader.loadVersionRange(new UnicodeStringReader(mpfAsString));
 		RawProject rawProject = RawProjectLoader.loadProject(new UnicodeStringReader(mpfAsString));
 		rawProject.setCurrentVersionRange(versionRange);
-		Vector<AbstractForwardMigration> migrations = createEmptyMigrations();
+		Vector<AbstractForwardMigration> migrations = createEmptyMigrations(rawProject);
 		for(AbstractForwardMigration abstractMigration : migrations)
 		{
 			if (abstractMigration.canMigrateThisVersion(rawProject.getCurrentVersionRange()))
 			{
-				abstractMigration.forwardMigrate(rawProject);
+				abstractMigration.forwardMigrate();
 				
 				final VersionRange incrementedByOne = abstractMigration.getMigratableVersionRange().incrementByOne();
 				rawProject.setCurrentVersionRange(incrementedByOne);
@@ -75,11 +75,11 @@ public class ForwardMigrationManager extends AbstractMigrationManager
 		return convertToMpfString(rawProject);
 	}
 	
-	private Vector<AbstractForwardMigration> createEmptyMigrations()
+	private Vector<AbstractForwardMigration> createEmptyMigrations(RawProject rawProject)
 	{
 		Vector<AbstractForwardMigration> migrations = new Vector<AbstractForwardMigration>();
-		migrations.add(new MigrationTo4());
-		migrations.add(new MigrationTo5());
+		migrations.add(new MigrationTo4(rawProject));
+		migrations.add(new MigrationTo5(rawProject));
 		
 		return migrations;
 	}

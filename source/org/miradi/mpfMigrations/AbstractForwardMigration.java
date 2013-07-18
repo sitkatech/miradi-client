@@ -20,14 +20,51 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.mpfMigrations;
 
+import java.util.Set;
+
+import org.miradi.objecthelpers.ORef;
+
 abstract public class AbstractForwardMigration
 {
+	public AbstractForwardMigration(RawProject rawProjectToUse)
+	{
+		rawProject = rawProjectToUse;
+	}
+
+	public void forwardMigrate() throws Exception
+	{
+		visitAllObjectsInPool(getTypeToMigrate(), createRawObjectVisitor());
+	}
+	
+	private void visitAllObjectsInPool(int objectType, RawObjectVisitor visitor)
+	{
+		if (!getRawProject().containsAnyObjectsOfType(objectType))
+			return;
+		
+		RawPool rawPool = getRawProject().getRawPoolForType(objectType);
+		Set<ORef> refs = rawPool.keySet();
+		for(ORef ref : refs)
+		{
+			RawObject rawObject = rawPool.get(ref);
+			visitor.visit(rawObject);
+		}
+	}
+	
 	public boolean canMigrateThisVersion(VersionRange versionRange) throws Exception
 	{
 		return getMigratableVersionRange().doesContainHigh(versionRange.getHighVersion());
 	}
 
+	protected RawProject getRawProject()
+	{
+		return rawProject;
+	}
+	
 	abstract public VersionRange getMigratableVersionRange() throws Exception;
 
-	abstract public RawProject forwardMigrate(RawProject rawProject) throws Exception;
+	abstract protected RawObjectVisitor createRawObjectVisitor();
+
+	abstract protected int getTypeToMigrate();
+	
+	private RawProject rawProject;
 }

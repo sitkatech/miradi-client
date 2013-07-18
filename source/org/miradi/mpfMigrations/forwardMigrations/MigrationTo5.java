@@ -20,53 +20,58 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.mpfMigrations.forwardMigrations;
 
-import java.util.Set;
-
 import org.miradi.mpfMigrations.AbstractForwardMigration;
 import org.miradi.mpfMigrations.RawObject;
-import org.miradi.mpfMigrations.RawPool;
+import org.miradi.mpfMigrations.RawObjectVisitor;
 import org.miradi.mpfMigrations.RawProject;
 import org.miradi.mpfMigrations.VersionRange;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Strategy;
+import org.miradi.schemas.StrategySchema;
 
 public class MigrationTo5 extends AbstractForwardMigration
 {
-	@Override
-	public RawProject forwardMigrate(RawProject rawProject) throws Exception
+	public MigrationTo5(RawProject rawProjectToUse)
 	{
-		return updateRealStrategyStatusCodes(rawProject);
+		super(rawProjectToUse);
+	}
+
+	@Override
+	protected RawObjectVisitor createRawObjectVisitor()
+	{
+		return new StrategyVisitor();
+	}
+
+	@Override
+	protected int getTypeToMigrate()
+	{
+		return StrategySchema.getObjectType();
 	}
 	
-	private RawProject updateRealStrategyStatusCodes(RawProject rawProject)
-	{
-		if (!rawProject.containsAnyObjectsOfType(ObjectType.STRATEGY))
-			return rawProject;
-		
-		RawPool strategyRawPool = rawProject.getRawPoolForType(ObjectType.STRATEGY);
-		Set<ORef> strategyRefs = strategyRawPool.keySet();
-		for(ORef strategyRef : strategyRefs)
-		{
-			RawObject strategy = strategyRawPool.get(strategyRef);
-			if (strategy.containsKey(Strategy.TAG_STATUS))
-				updateDefaultRealStatusCode(strategy);
-		}
-		
-		return rawProject;
-	}
-
-	private void updateDefaultRealStatusCode(RawObject strategy)
-	{
-		String strategyStatusCode = strategy.get(Strategy.TAG_STATUS);
-		if (strategyStatusCode.equals(LEGACY_DEFAULT_STRATEGY_STATUS_REAL))
-			strategy.put(Strategy.TAG_STATUS, "");
-	}
-
 	@Override
 	public VersionRange getMigratableVersionRange() throws Exception
 	{
 		return new VersionRange(VERSION_LOW, VERSION_HIGH);
+	}
+	
+	private class StrategyVisitor implements RawObjectVisitor
+	{
+		public void visit(RawObject rawObject)
+		{
+			updateRealStrategyStatusCodes(rawObject);
+		}
+		
+		private void updateRealStrategyStatusCodes(RawObject strategy)
+		{
+			if (strategy.containsKey(Strategy.TAG_STATUS))
+				updateDefaultRealStatusCode(strategy);
+		}			
+
+		private void updateDefaultRealStatusCode(RawObject strategy)
+		{
+			String strategyStatusCode = strategy.get(Strategy.TAG_STATUS);
+			if (strategyStatusCode.equals(LEGACY_DEFAULT_STRATEGY_STATUS_REAL))
+				strategy.put(Strategy.TAG_STATUS, "");
+		}
 	}
 	
 	private static final int VERSION_LOW = 4;
