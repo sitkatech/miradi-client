@@ -34,9 +34,9 @@ import org.miradi.project.Project;
 import org.miradi.project.RawProjectSaver;
 import org.miradi.utils.FileUtilities;
 
-public class MigrationManager
+public class ForwardMigrationManager
 {
-	public MigrationManager()
+	public ForwardMigrationManager()
 	{
 	}
 	
