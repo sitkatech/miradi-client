@@ -27,6 +27,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.mpfMigrations.AbstractForwardMigration;
 import org.miradi.mpfMigrations.IndicatorFutureStatusTagsToFutureStatusTagsMap;
 import org.miradi.mpfMigrations.RawObject;
+import org.miradi.mpfMigrations.RawObjectVisitor;
 import org.miradi.mpfMigrations.RawPool;
 import org.miradi.mpfMigrations.RawProject;
 import org.miradi.mpfMigrations.VersionRange;
@@ -34,88 +35,102 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Indicator;
+import org.miradi.schemas.FutureStatusSchema;
+import org.miradi.schemas.IndicatorSchema;
 
 public class MigrationTo4 extends AbstractForwardMigration
 {
-	@Override
-	public RawProject forwardMigrate(RawProject rawProject) throws Exception
+	public MigrationTo4(RawProject rawProjectToUse)
 	{
-		return moveIndicatorFutureStatusesToNewFutureStatus(rawProject);
+		super(rawProjectToUse);
 	}
-
-	private RawProject moveIndicatorFutureStatusesToNewFutureStatus(RawProject rawProject) throws Exception
-	{
-		if (!rawProject.containsAnyObjectsOfType(ObjectType.INDICATOR))
-			return rawProject;
-		
-		RawPool indicatorRawPool = rawProject.getRawPoolForType(ObjectType.INDICATOR);
-		Set<ORef> indicatorRefs = indicatorRawPool.keySet();
-		RawPool futureStatusPool = new RawPool();
-		for(ORef indicatorRef : indicatorRefs)
-		{
-			RawObject indicator = indicatorRawPool.get(indicatorRef);
-			if (hasAnyFutureStatusData(indicator))
-			{
-				RawObject newFutureStatus = new RawObject();
-				moveFutureStatusFields(indicator, newFutureStatus);
-				final BaseId nextHighestId = rawProject.getNextHighestId();
-				final ORef newFutureStatusRef = new ORef(ObjectType.FUTURE_STATUS, nextHighestId);
-				futureStatusPool.put(newFutureStatusRef, newFutureStatus);
-				indicator.put(Indicator.TAG_FUTURE_STATUS_REFS, new ORefList(newFutureStatusRef));
-			}
-		}
-		
-		if (futureStatusPool.size() > 0)
-			rawProject.putTypeToNewPoolEntry(ObjectType.FUTURE_STATUS, futureStatusPool);
-		
-		return rawProject;
-	}
-
-	private void moveFutureStatusFields(RawObject indicator, RawObject futurStatus)
-	{
-		IndicatorFutureStatusTagsToFutureStatusTagsMap indicatorFutureStatusTagsToFutureStatusTagMap = new IndicatorFutureStatusTagsToFutureStatusTagsMap();
-		Set<String> indicatorFutureStatusTags = indicatorFutureStatusTagsToFutureStatusTagMap.getIndicatorFutureStatusTags();
-		Set<String> fieldTags = indicator.keySet();
-		Set<String> futureStatusFieldsToRemoveFromIndicator = new HashSet<String>();
-		for(String indicatorFutureStatusTag : indicatorFutureStatusTags)
-		{
-			if (fieldTags.contains(indicatorFutureStatusTag))
-			{
-				String data = indicator.get(indicatorFutureStatusTag);
-				String futureStatusTag = indicatorFutureStatusTagsToFutureStatusTagMap.get(indicatorFutureStatusTag);
-				
-				futurStatus.put(futureStatusTag, data);
-				futureStatusFieldsToRemoveFromIndicator.add(indicatorFutureStatusTag);
-			}
-		}
-
-		for(String futureStatusTagToRemove : futureStatusFieldsToRemoveFromIndicator)
-		{
-			indicator.remove(futureStatusTagToRemove);
-		}
-	}
-
-	private boolean hasAnyFutureStatusData(RawObject indicator)
-	{
-		IndicatorFutureStatusTagsToFutureStatusTagsMap indicatorFutureStatusTagsToFutureStatusTagMap = new IndicatorFutureStatusTagsToFutureStatusTagsMap();
-		Set<String> indicatorFutureStatusTags = indicatorFutureStatusTagsToFutureStatusTagMap.getIndicatorFutureStatusTags();
-		Set<String> allIndicatorTags = indicator.keySet();
-		for(String indicatorFutureStatusTag : indicatorFutureStatusTags)
-		{			
-			if (allIndicatorTags.contains(indicatorFutureStatusTag))
-			{
-				String data = indicator.get(indicatorFutureStatusTag);
-				return data.length() > 0;
-			}
-		}
-		
-		return false;
-	}
-
+	
 	@Override
 	public VersionRange getMigratableVersionRange() throws Exception
 	{
 		return new VersionRange(VERSION_LOW, VERSION_HIGH);
+	}
+
+	@Override
+	protected RawObjectVisitor createRawObjectVisitor()
+	{
+		return new IndicatorVisitor();
+	}
+	
+	@Override
+	protected int getTypeToMigrate()
+	{
+		return IndicatorSchema.getObjectType();
+	}
+	
+	private class IndicatorVisitor implements RawObjectVisitor
+	{
+		public void visit(RawObject rawObject)
+		{
+			RawPool futureStatusPool = getFutureStatusPool();
+			if (hasAnyFutureStatusData(rawObject))
+			{
+				RawObject newFutureStatus = new RawObject();
+				moveFutureStatusFields(rawObject, newFutureStatus);
+				final BaseId nextHighestId = getRawProject().getNextHighestId();
+				final ORef newFutureStatusRef = new ORef(ObjectType.FUTURE_STATUS, nextHighestId);
+				futureStatusPool.put(newFutureStatusRef, newFutureStatus);
+				rawObject.put(Indicator.TAG_FUTURE_STATUS_REFS, new ORefList(newFutureStatusRef));
+			}
+			
+			if (futureStatusPool.size() > 0)
+				getRawProject().putTypeToNewPoolEntry(ObjectType.FUTURE_STATUS, futureStatusPool);
+		}
+
+		private RawPool getFutureStatusPool()
+		{
+			final RawPool futureStatusPool = getRawProject().getRawPoolForType(FutureStatusSchema.getObjectType());
+			if (futureStatusPool == null)
+				return new RawPool();
+			
+			return futureStatusPool;
+		}
+		
+		private void moveFutureStatusFields(RawObject indicator, RawObject futurStatus)
+		{
+			IndicatorFutureStatusTagsToFutureStatusTagsMap indicatorFutureStatusTagsToFutureStatusTagMap = new IndicatorFutureStatusTagsToFutureStatusTagsMap();
+			Set<String> indicatorFutureStatusTags = indicatorFutureStatusTagsToFutureStatusTagMap.getIndicatorFutureStatusTags();
+			Set<String> fieldTags = indicator.keySet();
+			Set<String> futureStatusFieldsToRemoveFromIndicator = new HashSet<String>();
+			for(String indicatorFutureStatusTag : indicatorFutureStatusTags)
+			{
+				if (fieldTags.contains(indicatorFutureStatusTag))
+				{
+					String data = indicator.get(indicatorFutureStatusTag);
+					String futureStatusTag = indicatorFutureStatusTagsToFutureStatusTagMap.get(indicatorFutureStatusTag);
+					
+					futurStatus.put(futureStatusTag, data);
+					futureStatusFieldsToRemoveFromIndicator.add(indicatorFutureStatusTag);
+				}
+			}
+
+			for(String futureStatusTagToRemove : futureStatusFieldsToRemoveFromIndicator)
+			{
+				indicator.remove(futureStatusTagToRemove);
+			}
+		}
+
+		private boolean hasAnyFutureStatusData(RawObject indicator)
+		{
+			IndicatorFutureStatusTagsToFutureStatusTagsMap indicatorFutureStatusTagsToFutureStatusTagMap = new IndicatorFutureStatusTagsToFutureStatusTagsMap();
+			Set<String> indicatorFutureStatusTags = indicatorFutureStatusTagsToFutureStatusTagMap.getIndicatorFutureStatusTags();
+			Set<String> allIndicatorTags = indicator.keySet();
+			for(String indicatorFutureStatusTag : indicatorFutureStatusTags)
+			{			
+				if (allIndicatorTags.contains(indicatorFutureStatusTag))
+				{
+					String data = indicator.get(indicatorFutureStatusTag);
+					return data.length() > 0;
+				}
+			}
+			
+			return false;
+		}
 	}
 	
 	private static final int VERSION_LOW = 3;
