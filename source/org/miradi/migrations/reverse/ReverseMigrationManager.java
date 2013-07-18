@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.mpfMigrations.reverseMigrations;
+package org.miradi.migrations.reverse;
 
 import org.miradi.migrations.AbstractMigrationManager;
 
