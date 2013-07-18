@@ -57,15 +57,10 @@ public class MigrationTo5 extends AbstractForwardMigration
 	{
 		public void visit(RawObject rawObject)
 		{
-			updateRealStrategyStatusCodes(rawObject);
+			if (rawObject.containsKey(Strategy.TAG_STATUS))
+				updateDefaultRealStatusCode(rawObject);
 		}
 		
-		private void updateRealStrategyStatusCodes(RawObject strategy)
-		{
-			if (strategy.containsKey(Strategy.TAG_STATUS))
-				updateDefaultRealStatusCode(strategy);
-		}			
-
 		private void updateDefaultRealStatusCode(RawObject strategy)
 		{
 			String strategyStatusCode = strategy.get(Strategy.TAG_STATUS);
