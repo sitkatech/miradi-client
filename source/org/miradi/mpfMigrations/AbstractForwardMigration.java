@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.mpfMigrations;
 
-abstract public class AbstractMigration
+abstract public class AbstractForwardMigration
 {
 	public boolean canMigrateThisVersion(VersionRange versionRange) throws Exception
 	{
