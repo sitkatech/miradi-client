@@ -20,7 +20,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
+import org.martus.util.UnicodeStringWriter;
+import org.miradi.project.RawProjectSaver;
+
 public class AbstractMigrationManager
 {
-
+	protected String convertToMpfString(RawProject migratedPools) throws Exception
+	{
+		UnicodeStringWriter stringWriter = UnicodeStringWriter.create();
+		RawProjectSaver.saveProject(migratedPools, stringWriter, migratedPools.getCurrentVersionRange());
+		
+		return stringWriter.toString();
+	}
 }

@@ -25,7 +25,6 @@ import java.util.Vector;
 
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringReader;
-import org.martus.util.UnicodeStringWriter;
 import org.martus.util.UnicodeWriter;
 import org.miradi.exceptions.ProjectFileTooNewException;
 import org.miradi.exceptions.ProjectFileTooOldException;
@@ -36,7 +35,6 @@ import org.miradi.migrations.RawProject;
 import org.miradi.migrations.RawProjectLoader;
 import org.miradi.migrations.VersionRange;
 import org.miradi.project.Project;
-import org.miradi.project.RawProjectSaver;
 import org.miradi.utils.FileUtilities;
 
 public class ForwardMigrationManager extends AbstractMigrationManager
@@ -131,14 +129,6 @@ public class ForwardMigrationManager extends AbstractMigrationManager
 		return NO_MIGRATION;
 	}
 
-	private String convertToMpfString(RawProject migratedPools) throws Exception
-	{
-		UnicodeStringWriter stringWriter = UnicodeStringWriter.create();
-		RawProjectSaver.saveProject(migratedPools, stringWriter, migratedPools.getCurrentVersionRange());
-		
-		return stringWriter.toString();
-	}
-	
 	public static final int NO_MIGRATION = 0;
 	public static final int MIGRATION = 1;
 	public static final int TOO_NEW_TO_MIGRATE = 2;
