@@ -26,7 +26,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Strategy;
 
-public class MigrationTo4 extends AbstractMigration
+public class MigrationTo5 extends AbstractMigration
 {
 	@Override
 	public RawProject forwardMigrate(RawProject rawProject) throws Exception
