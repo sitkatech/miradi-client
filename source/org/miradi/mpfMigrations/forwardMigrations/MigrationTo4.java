@@ -43,7 +43,7 @@ public class MigrationTo4 extends AbstractForwardMigration
 		return moveIndicatorFutureStatusesToNewFutureStatus(rawProject);
 	}
 
-	private static RawProject moveIndicatorFutureStatusesToNewFutureStatus(RawProject rawProject) throws Exception
+	private RawProject moveIndicatorFutureStatusesToNewFutureStatus(RawProject rawProject) throws Exception
 	{
 		if (!rawProject.containsAnyObjectsOfType(ObjectType.INDICATOR))
 			return rawProject;
@@ -71,7 +71,7 @@ public class MigrationTo4 extends AbstractForwardMigration
 		return rawProject;
 	}
 
-	private static void moveFutureStatusFields(RawObject indicator, RawObject futurStatus)
+	private void moveFutureStatusFields(RawObject indicator, RawObject futurStatus)
 	{
 		IndicatorFutureStatusTagsToFutureStatusTagsMap indicatorFutureStatusTagsToFutureStatusTagMap = new IndicatorFutureStatusTagsToFutureStatusTagsMap();
 		Set<String> indicatorFutureStatusTags = indicatorFutureStatusTagsToFutureStatusTagMap.getIndicatorFutureStatusTags();
@@ -95,7 +95,7 @@ public class MigrationTo4 extends AbstractForwardMigration
 		}
 	}
 
-	private static boolean hasAnyFutureStatusData(RawObject indicator)
+	private boolean hasAnyFutureStatusData(RawObject indicator)
 	{
 		IndicatorFutureStatusTagsToFutureStatusTagsMap indicatorFutureStatusTagsToFutureStatusTagMap = new IndicatorFutureStatusTagsToFutureStatusTagsMap();
 		Set<String> indicatorFutureStatusTags = indicatorFutureStatusTagsToFutureStatusTagMap.getIndicatorFutureStatusTags();
