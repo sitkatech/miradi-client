@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.mpfMigrations;
+package org.miradi.mpfMigrations.forwardMigrations;
 
 import java.io.File;
 import java.util.Vector;
@@ -30,6 +30,11 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.exceptions.ProjectFileTooNewException;
 import org.miradi.exceptions.ProjectFileTooOldException;
 import org.miradi.main.EAM;
+import org.miradi.mpfMigrations.AbstractMigration;
+import org.miradi.mpfMigrations.AbstractMigrationManager;
+import org.miradi.mpfMigrations.RawProject;
+import org.miradi.mpfMigrations.RawProjectLoader;
+import org.miradi.mpfMigrations.VersionRange;
 import org.miradi.project.Project;
 import org.miradi.project.RawProjectSaver;
 import org.miradi.utils.FileUtilities;

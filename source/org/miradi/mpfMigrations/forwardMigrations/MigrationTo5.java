@@ -18,10 +18,15 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.mpfMigrations;
+package org.miradi.mpfMigrations.forwardMigrations;
 
 import java.util.Set;
 
+import org.miradi.mpfMigrations.AbstractMigration;
+import org.miradi.mpfMigrations.RawObject;
+import org.miradi.mpfMigrations.RawPool;
+import org.miradi.mpfMigrations.RawProject;
+import org.miradi.mpfMigrations.VersionRange;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Strategy;
