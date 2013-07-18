@@ -41,7 +41,7 @@ import org.miradi.ids.IdList;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.VersionConstants;
-import org.miradi.mpfMigrations.VersionRange;
+import org.miradi.migrations.VersionRange;
 import org.miradi.objecthelpers.CodeToChoiceMap;
 import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.DashboardStatusMapsCache;

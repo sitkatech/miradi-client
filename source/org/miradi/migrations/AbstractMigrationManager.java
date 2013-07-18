@@ -18,9 +18,9 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.mpfMigrations;
+package org.miradi.migrations;
 
-public interface RawObjectVisitor
+public class AbstractMigrationManager
 {
-	public void visit(RawObject rawObject);
+
 }

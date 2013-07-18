@@ -30,7 +30,7 @@ import org.miradi.exceptions.ProjectFileTooNewException;
 import org.miradi.exceptions.ProjectFileTooOldException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
-import org.miradi.mpfMigrations.VersionRange;
+import org.miradi.migrations.VersionRange;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.threatrating.RatingValueSet;
 import org.miradi.project.threatrating.ThreatRatingBundle;

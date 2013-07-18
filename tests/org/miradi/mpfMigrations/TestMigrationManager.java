@@ -29,6 +29,8 @@ import org.martus.util.UnicodeStringReader;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IndicatorId;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.migrations.IndicatorFutureStatusTagsToFutureStatusTagsMap;
+import org.miradi.migrations.VersionRange;
 import org.miradi.mpfMigrations.forwardMigrations.ForwardMigrationManager;
 import org.miradi.mpfMigrations.forwardMigrations.MigrationTo5;
 import org.miradi.objecthelpers.ORef;

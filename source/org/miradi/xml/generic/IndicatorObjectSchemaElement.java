@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.mpfMigrations.IndicatorFutureStatusTagsToFutureStatusTagsMap;
+import org.miradi.migrations.IndicatorFutureStatusTagsToFutureStatusTagsMap;
 import org.miradi.objects.Indicator;
 import org.miradi.xml.wcs.Xmpz1XmlConstants;
 

@@ -23,6 +23,8 @@ package org.miradi.mpfMigrations;
 import org.martus.util.UnicodeStringReader;
 import org.martus.util.UnicodeStringWriter;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.migrations.RawProject;
+import org.miradi.migrations.RawProjectLoader;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectSaver;
 import org.miradi.project.RawProjectSaver;

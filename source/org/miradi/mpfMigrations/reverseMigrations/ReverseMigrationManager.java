@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.mpfMigrations.reverseMigrations;
 
-import org.miradi.mpfMigrations.AbstractMigrationManager;
+import org.miradi.migrations.AbstractMigrationManager;
 
 public class ReverseMigrationManager extends AbstractMigrationManager
 {

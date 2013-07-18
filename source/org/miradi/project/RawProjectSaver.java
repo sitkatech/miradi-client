@@ -24,10 +24,10 @@ import java.util.Collection;
 import java.util.Vector;
 
 import org.martus.util.UnicodeStringWriter;
-import org.miradi.mpfMigrations.RawObject;
-import org.miradi.mpfMigrations.RawPool;
-import org.miradi.mpfMigrations.RawProject;
-import org.miradi.mpfMigrations.VersionRange;
+import org.miradi.migrations.RawObject;
+import org.miradi.migrations.RawPool;
+import org.miradi.migrations.RawProject;
+import org.miradi.migrations.VersionRange;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.threatrating.ThreatRatingBundle;
