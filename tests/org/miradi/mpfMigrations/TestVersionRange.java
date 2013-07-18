@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.mpfMigrations;
 
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.migrations.VersionRange;
 
 public class TestVersionRange extends TestCaseWithProject
 {

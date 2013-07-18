@@ -20,11 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.mpfMigrations.forwardMigrations;
 
-import org.miradi.mpfMigrations.AbstractForwardMigration;
-import org.miradi.mpfMigrations.RawObject;
-import org.miradi.mpfMigrations.RawObjectVisitor;
-import org.miradi.mpfMigrations.RawProject;
-import org.miradi.mpfMigrations.VersionRange;
+import org.miradi.migrations.AbstractForwardMigration;
+import org.miradi.migrations.RawObject;
+import org.miradi.migrations.RawObjectVisitor;
+import org.miradi.migrations.RawProject;
+import org.miradi.migrations.VersionRange;
 import org.miradi.objects.Strategy;
 import org.miradi.schemas.StrategySchema;
 

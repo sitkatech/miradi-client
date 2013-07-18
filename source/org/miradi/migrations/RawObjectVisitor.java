@@ -18,16 +18,9 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.mpfMigrations;
+package org.miradi.migrations;
 
-import java.util.LinkedHashMap;
-
-import org.miradi.objecthelpers.ORefList;
-
-public class RawObject extends LinkedHashMap<String, String>
+public interface RawObjectVisitor
 {
-	public void put(String tagFutureStatusRefs, ORefList refList)
-	{
-		put(tagFutureStatusRefs, refList.toString());
-	}
+	public void visit(RawObject rawObject);
 }

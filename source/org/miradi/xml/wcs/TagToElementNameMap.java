@@ -22,7 +22,7 @@ package org.miradi.xml.wcs;
 
 import java.util.HashMap;
 
-import org.miradi.mpfMigrations.IndicatorFutureStatusTagsToFutureStatusTagsMap;
+import org.miradi.migrations.IndicatorFutureStatusTagsToFutureStatusTagsMap;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;

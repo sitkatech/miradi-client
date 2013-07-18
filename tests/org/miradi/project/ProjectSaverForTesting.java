@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import org.martus.util.UnicodeStringWriter;
-import org.miradi.mpfMigrations.VersionRange;
+import org.miradi.migrations.VersionRange;
 
 public class ProjectSaverForTesting extends ProjectSaver
 {
