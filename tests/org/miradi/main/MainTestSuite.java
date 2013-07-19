@@ -69,7 +69,7 @@ import org.miradi.migrations.TestMigrationManager;
 import org.miradi.migrations.TestMigrationTo4;
 import org.miradi.migrations.TestMigrationTo5;
 import org.miradi.migrations.TestRawProject;
-import org.miradi.migrations.TestReverseMigrationManager;
+import org.miradi.migrations.TestAbstractReverseMigration;
 import org.miradi.migrations.TestVersionRange;
 import org.miradi.objectdata.TestAbstractUserStringDataWithHtmlFormatting;
 import org.miradi.objectdata.TestDateData;
@@ -549,7 +549,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestMigrationManager.class));
 		addTest(new TestSuite(TestMigrationTo4.class));
 		addTest(new TestSuite(TestMigrationTo5.class));
-		addTest(new TestSuite(TestReverseMigrationManager.class));
+		addTest(new TestSuite(TestAbstractReverseMigration.class));
 		addTest(new TestSuite(TestVersionRange.class));
 		addTest(new TestSuite(TestRawProject.class));
 	}
