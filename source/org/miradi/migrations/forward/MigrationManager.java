@@ -37,9 +37,9 @@ import org.miradi.migrations.VersionRange;
 import org.miradi.project.Project;
 import org.miradi.utils.FileUtilities;
 
-public class ForwardMigrationManager extends AbstractMigrationManager
+public class MigrationManager extends AbstractMigrationManager
 {
-	public ForwardMigrationManager()
+	public MigrationManager()
 	{
 	}
 	
@@ -71,9 +71,7 @@ public class ForwardMigrationManager extends AbstractMigrationManager
 			}	
 		}
 
-		final String convertToMpfString = convertToMpfString(rawProject);
-		System.out.println(convertToMpfString);
-		return convertToMpfString;
+		return convertToMpfString(rawProject);
 	}
 	
 	public String migrateForward(String mpfAsString) throws Exception

@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.util.Set;
 
 import org.martus.util.UnicodeStringReader;
-import org.miradi.migrations.forward.ForwardMigrationManager;
+import org.miradi.migrations.forward.MigrationManager;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.FutureStatus;
@@ -93,7 +93,7 @@ public class TestReverseMigrationTo4 extends AbstractTestReverseMigration
 	
 	private RawProject reverseMigrateProject() throws Exception, IOException
 	{
-		ForwardMigrationManager migrationManager = new ForwardMigrationManager();
+		MigrationManager migrationManager = new MigrationManager();
 		String projectAsString = ProjectSaverForTesting.createSnapShot(getProject(), new VersionRange(3, 3));
 		String migratedMpfFile = migrationManager.migrateReverse(projectAsString);
 	

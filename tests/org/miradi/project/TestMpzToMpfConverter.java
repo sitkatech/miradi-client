@@ -36,7 +36,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.main.ResourcesHandler;
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.migrations.forward.ForwardMigrationManager;
+import org.miradi.migrations.forward.MigrationManager;
 import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Indicator;
@@ -178,7 +178,7 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 		{
 			NullProgressMeter progressIndicator = new NullProgressMeter();
 			String convertedProjectString = MpzToMpfConverter.convert(mpz, progressIndicator);
-			ForwardMigrationManager migrationManager = new ForwardMigrationManager();
+			MigrationManager migrationManager = new MigrationManager();
 			convertedProjectString = migrationManager.migrateForward(convertedProjectString);
 
 			// NOTE: For easier debugging
