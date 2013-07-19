@@ -25,14 +25,9 @@ import java.io.IOException;
 import org.martus.util.UnicodeStringReader;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.migrations.forward.ForwardMigrationManager;
-import org.miradi.migrations.forward.MigrationTo5;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.Strategy;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.project.ProjectLoader;
 import org.miradi.project.ProjectSaverForTesting;
-import org.miradi.questions.StrategyStatusQuestion;
 
 public class TestForwardMigrationManager extends TestCaseWithProject
 {
@@ -41,40 +36,6 @@ public class TestForwardMigrationManager extends TestCaseWithProject
 		super(name);
 	}
 	
-	public void testMigrateWithoutStrategies() throws Exception
-	{
-		verifyMigratingStrategyStatusQuestionRealStatusChoice("", "");
-	}
-
-	public void testMigrateStrategyWithoutStatusTag() throws Exception
-	{
-		verifyMigratingStrategyStatusQuestionRealStatusChoice("", "");
-	}
-	
-	public void testMigrateLegacyStrategyWithStatusReal() throws Exception
-	{
-		verifyMigratingStrategyStatusQuestionRealStatusChoice("", MigrationTo5.LEGACY_DEFAULT_STRATEGY_STATUS_REAL);
-	}
-	
-	public void testMigrateStrategyWithDraftStatus() throws Exception
-	{		
-		verifyMigratingStrategyStatusQuestionRealStatusChoice(StrategyStatusQuestion.STATUS_DRAFT_CODE, StrategyStatusQuestion.STATUS_DRAFT_CODE);
-	}
-	
-	private void verifyMigratingStrategyStatusQuestionRealStatusChoice(String expectedStrategyStatusCode, String strategyStatusCode) throws Exception
-	{
-		Strategy strategy = getProject().createStrategy();
-		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_STATUS, strategyStatusCode);
-		ProjectForTesting migratedProject = migrateProject(new VersionRange(4, 4));
-		ORefList migratedStrategyRefs = migratedProject.getStrategyPool().getORefList();
-		assertTrue("Incorrect number of strategies after migration?", migratedStrategyRefs.size() == 1);
-		
-		ORef migratedStrategyRef = migratedStrategyRefs.getFirstElement();
-		Strategy migratedStrategy = Strategy.find(migratedProject, migratedStrategyRef);
-		String migratedStrategyStatus = migratedStrategy.getData(Strategy.TAG_STATUS);
-		assertEquals("Incorrect migrated strategy status?", expectedStrategyStatusCode, migratedStrategyStatus);
-	}
-
 	public void testGetMigrationType() throws Exception
 	{
 		VersionRange tenTwentyRange = new VersionRange(10, 20);
