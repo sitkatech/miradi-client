@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
-public class TestReverseMigrationTo4 extends TestAbstractReverseMigration
+public class TestReverseMigrationTo4 extends AbstractTestReverseMigration
 {
 	public TestReverseMigrationTo4(String name)
 	{
