@@ -67,8 +67,8 @@ abstract public class AbstractMigration
 		{
 			getRawProject().visitAllObjectsInPool(getTypeToMigrate(), createRawObjectReverseMigrationVisitors());
 			
-			final VersionRange incrementedByOne = getMigratableVersionRange().decrementByOne();
-			getRawProject().setCurrentVersionRange(incrementedByOne);
+			final VersionRange decrementedByOne = getMigratableVersionRange().decrementByOne();
+			getRawProject().setCurrentVersionRange(decrementedByOne);
 		}
 	}
 	
