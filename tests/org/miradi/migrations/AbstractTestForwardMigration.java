@@ -36,27 +36,6 @@ public class AbstractTestForwardMigration extends TestCaseWithProject
 		super(name);
 	}
 	
-	public void testGetMigrationType() throws Exception
-	{
-		VersionRange tenTwentyRange = new VersionRange(10, 20);
-		VersionRange twentyFourtyRange = new VersionRange(20, 40);
-		VersionRange fourtyFourtyRange = new VersionRange(40);
-		VersionRange fifteenFourtyRange = new VersionRange(15, 40);
-		verifyType(ForwardMigrationManager.NO_MIGRATION, tenTwentyRange, twentyFourtyRange);
-		verifyType(ForwardMigrationManager.TOO_NEW_TO_MIGRATE, tenTwentyRange, fourtyFourtyRange);
-		verifyType(ForwardMigrationManager.NO_MIGRATION, tenTwentyRange, fifteenFourtyRange);
-		verifyType(ForwardMigrationManager.NO_MIGRATION, tenTwentyRange, tenTwentyRange);
-		
-		VersionRange FifteenFifteenRange = new VersionRange(15);
-		verifyType(ForwardMigrationManager.NO_MIGRATION, tenTwentyRange, FifteenFifteenRange);
-		verifyType(ForwardMigrationManager.MIGRATION, fourtyFourtyRange, FifteenFifteenRange);
-	}
-
-	private void verifyType(int expectedMigrationType, VersionRange miradiVersionRange, VersionRange mpfVersionRange) throws Exception
-	{
-		assertEquals("incorrect migration type?", expectedMigrationType, ForwardMigrationManager.getMigrationType(miradiVersionRange, mpfVersionRange));
-	}
-	
 	protected ProjectForTesting migrateProject(final VersionRange versionRangeToUse) throws Exception, IOException
 	{
 		ForwardMigrationManager migrationManager = new ForwardMigrationManager();
