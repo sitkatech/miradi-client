@@ -28,6 +28,7 @@ import java.util.Vector;
 
 import org.miradi.ids.BaseId;
 import org.miradi.migrations.AbstractSingleTypeMigration;
+import org.miradi.migrations.AbstractVisitor;
 import org.miradi.migrations.IndicatorFutureStatusTagsToFutureStatusTagsMap;
 import org.miradi.migrations.RawObject;
 import org.miradi.migrations.RawObjectVisitor;
@@ -84,20 +85,21 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 		return visitors;
 	}
 	
-	private class IndicatorVisitor implements RawObjectVisitor
+	private class IndicatorVisitor extends AbstractVisitor
 	{
 		public int getTypeToMigrate()
 		{
 			return IndicatorSchema.getObjectType();
 		}
 
-		public void visit(RawObject rawObject) throws Exception
+		@Override
+		public void internalVisit(RawObject rawObject) throws Exception
 		{
 			if (!hasAnyFutureStatusData(rawObject))
 				return;
 
 			RawPool futureStatusPool = getOrCreateFutureStatusPool();
-			RawObject newFutureStatus = new RawObject();
+			RawObject newFutureStatus = new RawObject(FutureStatusSchema.getObjectType());
 			moveFutureStatusFields(rawObject, newFutureStatus);
 			final BaseId nextHighestId = getRawProject().getNextHighestId();
 			final ORef newFutureStatusRef = new ORef(ObjectType.FUTURE_STATUS, nextHighestId);
@@ -154,14 +156,15 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 		}
 	}
 	
-	private class ReverseMigrationVisitor implements RawObjectVisitor
+	private class ReverseMigrationVisitor extends AbstractVisitor
 	{
 		public int getTypeToMigrate()
 		{
 			return IndicatorSchema.getObjectType();
 		}
 
-		public void visit(RawObject indicator) throws Exception 
+		@Override
+		public void internalVisit(RawObject indicator) throws Exception 
 		{
 			if (!indicator.containsKey(Indicator.TAG_FUTURE_STATUS_REFS))
 				return;

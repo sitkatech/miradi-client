@@ -58,7 +58,7 @@ public class RawProjectLoader extends AbstractProjectLoader
 	protected void createObject(ORef ref) throws Exception
 	{
 		RawPool pool = getRawPool(ref);
-		pool.put(ref, new RawObject());
+		pool.put(ref, new RawObject(ref));
 	}
 
 	@Override
