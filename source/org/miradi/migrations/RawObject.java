@@ -26,8 +26,8 @@ import org.miradi.objecthelpers.ORefList;
 
 public class RawObject extends LinkedHashMap<String, String>
 {
-	public void put(String tagFutureStatusRefs, ORefList refList)
+	public void put(String tag, ORefList refList)
 	{
-		put(tagFutureStatusRefs, refList.toString());
+		put(tag, refList.toString());
 	}
 }
