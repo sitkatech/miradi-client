@@ -50,7 +50,7 @@ abstract public class AbstractMigration
 		return new Vector<RawObjectVisitor>();
 	}
 	
-	public void possiblyMigrateForward() throws Exception
+	public void forwardMigrateIfPossible() throws Exception
 	{
 		final Vector<RawObjectVisitor> createRawObjectVisitors = createRawObjectVisitors();
 		final VersionRange incrementedByOne = getPostForwardMigrationVersionRange();
