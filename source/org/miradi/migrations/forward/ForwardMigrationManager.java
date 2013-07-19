@@ -63,7 +63,7 @@ public class ForwardMigrationManager extends AbstractMigrationManager
 		{
 			if (abstractMigration.canMigrateThisVersion(rawProject.getCurrentVersionRange()))
 			{
-				abstractMigration.forwardMigrate();
+				rawProject.visitAllObjectsInPool(abstractMigration.getTypeToMigrate(), abstractMigration.createRawObjectVisitor());
 				
 				final VersionRange incrementedByOne = abstractMigration.getMigratableVersionRange().incrementByOne();
 				rawProject.setCurrentVersionRange(incrementedByOne);

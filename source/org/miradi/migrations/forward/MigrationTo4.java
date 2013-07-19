@@ -52,13 +52,13 @@ public class MigrationTo4 extends AbstractForwardMigration
 	}
 
 	@Override
-	protected RawObjectVisitor createRawObjectVisitor()
+	public RawObjectVisitor createRawObjectVisitor()
 	{
 		return new IndicatorVisitor();
 	}
 	
 	@Override
-	protected int getTypeToMigrate()
+	public int getTypeToMigrate()
 	{
 		return IndicatorSchema.getObjectType();
 	}
