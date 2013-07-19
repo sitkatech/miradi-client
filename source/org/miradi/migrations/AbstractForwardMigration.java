@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
+import java.util.Vector;
+
 
 abstract public class AbstractForwardMigration
 {
@@ -38,9 +40,12 @@ abstract public class AbstractForwardMigration
 		return rawProject;
 	}
 	
+	public Vector<RawObjectVisitor> createRawObjectVisitors()
+	{
+		return new Vector<RawObjectVisitor>();
+	}
+	
 	abstract public VersionRange getMigratableVersionRange() throws Exception;
-
-	abstract public RawObjectVisitor createRawObjectVisitor();
 
 	abstract public int getTypeToMigrate();
 	
