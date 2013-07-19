@@ -36,35 +36,42 @@ public class TestMigrationTo5 extends AbstractTestForwardMigration
 	
 	public void testMigrateWithoutStrategies() throws Exception
 	{
-		verifyMigratingStrategyStatusQuestionRealStatusChoice("", "");
+		verifyMigratingStrategyStatusQuestionRealStatusChoice("", "", 0);
 	}
 
 	public void testMigrateStrategyWithoutStatusTag() throws Exception
 	{
-		verifyMigratingStrategyStatusQuestionRealStatusChoice("", "");
+		verifyMigratingStrategyStatusQuestionRealStatusChoice("", "", 1);
 	}
 	
 	public void testMigrateLegacyStrategyWithStatusReal() throws Exception
 	{
-		verifyMigratingStrategyStatusQuestionRealStatusChoice("", MigrationTo5.LEGACY_DEFAULT_STRATEGY_STATUS_REAL);
+		verifyMigratingStrategyStatusQuestionRealStatusChoice("", MigrationTo5.LEGACY_DEFAULT_STRATEGY_STATUS_REAL, 2);
 	}
 	
 	public void testMigrateStrategyWithDraftStatus() throws Exception
 	{		
-		verifyMigratingStrategyStatusQuestionRealStatusChoice(StrategyStatusQuestion.STATUS_DRAFT_CODE, StrategyStatusQuestion.STATUS_DRAFT_CODE);
+		verifyMigratingStrategyStatusQuestionRealStatusChoice(StrategyStatusQuestion.STATUS_DRAFT_CODE, StrategyStatusQuestion.STATUS_DRAFT_CODE, 1);
 	}
 	
-	private void verifyMigratingStrategyStatusQuestionRealStatusChoice(String expectedStrategyStatusCode, String strategyStatusCode) throws Exception
+	private void verifyMigratingStrategyStatusQuestionRealStatusChoice(String expectedStrategyStatusCode, String strategyStatusCode, int strategyCount) throws Exception
 	{
-		Strategy strategy = getProject().createStrategy();
-		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_STATUS, strategyStatusCode);
+		for (int index = 0; index < strategyCount; ++index)
+		{
+			Strategy strategy = getProject().createStrategy();
+			getProject().fillObjectUsingCommand(strategy, Strategy.TAG_STATUS, strategyStatusCode);
+		}
+
 		ProjectForTesting migratedProject = migrateProject(new VersionRange(4, 4));
 		ORefList migratedStrategyRefs = migratedProject.getStrategyPool().getORefList();
-		assertTrue("Incorrect number of strategies after migration?", migratedStrategyRefs.size() == 1);
+		assertTrue("Incorrect number of strategies after migration?", migratedStrategyRefs.size() == strategyCount);
 		
-		ORef migratedStrategyRef = migratedStrategyRefs.getFirstElement();
-		Strategy migratedStrategy = Strategy.find(migratedProject, migratedStrategyRef);
-		String migratedStrategyStatus = migratedStrategy.getData(Strategy.TAG_STATUS);
-		assertEquals("Incorrect migrated strategy status?", expectedStrategyStatusCode, migratedStrategyStatus);
+		for (int index = 0; index < migratedStrategyRefs.size(); ++index)
+		{
+			ORef migratedStrategyRef = migratedStrategyRefs.get(index);
+			Strategy migratedStrategy = Strategy.find(migratedProject, migratedStrategyRef);
+			String migratedStrategyStatus = migratedStrategy.getData(Strategy.TAG_STATUS);
+			assertEquals("Incorrect migrated strategy status?", expectedStrategyStatusCode, migratedStrategyStatus);
+		}
 	}
 }
