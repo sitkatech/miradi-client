@@ -20,32 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
-import java.util.LinkedHashMap;
-
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-
-public class RawObject extends LinkedHashMap<String, String>
+abstract public class AbstractVisitor implements RawObjectVisitor
 {
-	public RawObject(ORef ref)
+	public final void visit(RawObject rawObject) throws Exception
 	{
-		objectType = ref.getObjectType();
-	}
-
-	public RawObject(int objectTypeToUse)
-	{
-		objectType = objectTypeToUse;
+		if (rawObject.getObjectType() != getTypeToMigrate())
+			throw new Exception("Received incorrect object type for visitor, expecting:" + getTypeToMigrate() + " but got type:" + rawObject.getObjectType());
+		
+		internalVisit(rawObject);
 	}
 	
-	public void put(String tag, ORefList refList)
-	{
-		put(tag, refList.toString());
-	}
-	
-	public int getObjectType()
-	{
-		return objectType;
-	}
-	
-	private int objectType;
+	abstract protected void internalVisit(RawObject rawObject) throws Exception;
 }

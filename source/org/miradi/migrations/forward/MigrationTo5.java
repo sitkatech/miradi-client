@@ -23,6 +23,7 @@ package org.miradi.migrations.forward;
 import java.util.Vector;
 
 import org.miradi.migrations.AbstractSingleTypeMigration;
+import org.miradi.migrations.AbstractVisitor;
 import org.miradi.migrations.RawObject;
 import org.miradi.migrations.RawObjectVisitor;
 import org.miradi.migrations.RawProject;
@@ -64,14 +65,15 @@ public class MigrationTo5 extends AbstractSingleTypeMigration
 		return new VersionRange(VERSION_LOW, VERSION_HIGH);
 	}
 	
-	private class StrategyVisitor implements RawObjectVisitor
+	private class StrategyVisitor extends AbstractVisitor
 	{
 		public int getTypeToMigrate()
 		{
 			return StrategySchema.getObjectType();
 		}
 
-		public void visit(RawObject rawObject) throws Exception
+		@Override
+		public void internalVisit(RawObject rawObject) throws Exception
 		{
 			if (rawObject.containsKey(Strategy.TAG_STATUS))
 				updateDefaultRealStatusCode(rawObject);
