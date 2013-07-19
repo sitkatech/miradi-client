@@ -27,7 +27,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.questions.StrategyStatusQuestion;
 
-public class TestMigrationTo5 extends AbstractTestForwardMigration
+public class TestMigrationTo5 extends AbstractTestMigration
 {
 	public TestMigrationTo5(String name)
 	{
