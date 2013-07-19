@@ -22,6 +22,7 @@ package org.miradi.migrations.forward;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Vector;
 
 import org.miradi.ids.BaseId;
 import org.miradi.migrations.AbstractForwardMigration;
@@ -52,9 +53,12 @@ public class MigrationTo4 extends AbstractForwardMigration
 	}
 
 	@Override
-	public RawObjectVisitor createRawObjectVisitor()
+	public Vector<RawObjectVisitor> createRawObjectVisitors()
 	{
-		return new IndicatorVisitor();
+		Vector<RawObjectVisitor> visitors = super.createRawObjectVisitors();
+		visitors.add(new IndicatorVisitor());
+		
+		return visitors;
 	}
 	
 	@Override
