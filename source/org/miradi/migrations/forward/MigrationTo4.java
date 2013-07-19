@@ -85,21 +85,25 @@ public class MigrationTo4 extends AbstractForwardMigration
 			if (!hasAnyFutureStatusData(rawObject))
 				return;
 
-			RawPool futureStatusPool = getFutureStatusPool();
+			RawPool futureStatusPool = getOrCreateFutureStatusPool();
 			RawObject newFutureStatus = new RawObject();
 			moveFutureStatusFields(rawObject, newFutureStatus);
 			final BaseId nextHighestId = getRawProject().getNextHighestId();
 			final ORef newFutureStatusRef = new ORef(ObjectType.FUTURE_STATUS, nextHighestId);
 			futureStatusPool.put(newFutureStatusRef, newFutureStatus);
 			rawObject.put(Indicator.TAG_FUTURE_STATUS_REFS, new ORefList(newFutureStatusRef));
-			getRawProject().putTypeToNewPoolEntry(ObjectType.FUTURE_STATUS, futureStatusPool);
 		}
 
-		private RawPool getFutureStatusPool()
+		private RawPool getOrCreateFutureStatusPool()
 		{
 			final RawPool futureStatusPool = getRawProject().getRawPoolForType(FutureStatusSchema.getObjectType());
 			if (futureStatusPool == null)
-				return new RawPool();
+			{
+				final RawPool newFutureStatusPool = new RawPool();
+				getRawProject().putTypeToNewPoolEntry(ObjectType.FUTURE_STATUS, newFutureStatusPool);
+				
+				return newFutureStatusPool;
+			}
 			
 			return futureStatusPool;
 		}
