@@ -53,27 +53,6 @@ public class MigrationManager extends AbstractMigrationManager
 		fileWriter.close();
 	}
 
-	//FIXME, migrate forward and reverse need to be refactored to eliminate dupe code
-	public String migrateReverse(String mpfAsString) throws Exception
-	{
-		VersionRange versionRange = RawProjectLoader.loadVersionRange(new UnicodeStringReader(mpfAsString));
-		RawProject rawProject = RawProjectLoader.loadProject(new UnicodeStringReader(mpfAsString));
-		rawProject.setCurrentVersionRange(versionRange);
-		Vector<AbstractForwardMigration> migrations = createEmptyMigrations(rawProject);
-		for(AbstractForwardMigration abstractMigration : migrations)
-		{
-			if (abstractMigration.canMigrateThisVersion(rawProject.getCurrentVersionRange()))
-			{
-				rawProject.visitAllObjectsInPool(abstractMigration.getTypeToMigrate(), abstractMigration.createRawObjectReverseMigrationVisitors());
-				
-				final VersionRange incrementedByOne = abstractMigration.getMigratableVersionRange().decrementByOne();
-				rawProject.setCurrentVersionRange(incrementedByOne);
-			}	
-		}
-
-		return convertToMpfString(rawProject);
-	}
-	
 	public String migrateForward(String mpfAsString) throws Exception
 	{
 		VersionRange versionRange = RawProjectLoader.loadVersionRange(new UnicodeStringReader(mpfAsString));
@@ -91,6 +70,27 @@ public class MigrationManager extends AbstractMigrationManager
 			}	
 		}
 
+		return convertToMpfString(rawProject);
+	}
+
+	//FIXME, migrate forward and reverse need to be refactored to eliminate dupe code
+	public String migrateReverse(String mpfAsString) throws Exception
+	{
+		VersionRange versionRange = RawProjectLoader.loadVersionRange(new UnicodeStringReader(mpfAsString));
+		RawProject rawProject = RawProjectLoader.loadProject(new UnicodeStringReader(mpfAsString));
+		rawProject.setCurrentVersionRange(versionRange);
+		Vector<AbstractForwardMigration> migrations = createEmptyMigrations(rawProject);
+		for(AbstractForwardMigration abstractMigration : migrations)
+		{
+			if (abstractMigration.canMigrateThisVersion(rawProject.getCurrentVersionRange()))
+			{
+				rawProject.visitAllObjectsInPool(abstractMigration.getTypeToMigrate(), abstractMigration.createRawObjectReverseMigrationVisitors());
+				
+				final VersionRange incrementedByOne = abstractMigration.getMigratableVersionRange().decrementByOne();
+				rawProject.setCurrentVersionRange(incrementedByOne);
+			}	
+		}
+		
 		return convertToMpfString(rawProject);
 	}
 	
