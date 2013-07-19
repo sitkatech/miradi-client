@@ -52,18 +52,18 @@ abstract public class AbstractMigration
 	
 	public void forwardMigrateIfPossible() throws Exception
 	{
-		final Vector<RawObjectVisitor> createRawObjectVisitors = createRawObjectVisitors();
-		final VersionRange incrementedByOne = getPostForwardMigrationVersionRange();
+		final Vector<RawObjectVisitor> rawObjectForwardMigrationVisitors = createRawObjectVisitors();
+		final VersionRange postMigrationVersionRange = getPostForwardMigrationVersionRange();
 		
-		migrateIfPossible(createRawObjectVisitors, incrementedByOne);
+		migrateIfPossible(rawObjectForwardMigrationVisitors, postMigrationVersionRange);
 	}
 	
 	public void reverseMigrateIfPossible() throws Exception
 	{
-		final Vector<RawObjectVisitor> createRawObjectReverseMigrationVisitors = createRawObjectReverseMigrationVisitors();
-		final VersionRange decrementedByOne = getPostReverseMigrationVersionRange();
+		final Vector<RawObjectVisitor> rawObjectReverseMigrationVisitors = createRawObjectReverseMigrationVisitors();
+		final VersionRange postMigrationVersionRange = getPostReverseMigrationVersionRange();
 		
-		migrateIfPossible(createRawObjectReverseMigrationVisitors, decrementedByOne);
+		migrateIfPossible(rawObjectReverseMigrationVisitors, postMigrationVersionRange);
 	}
 
 	private void migrateIfPossible(final Vector<RawObjectVisitor> rawObjectVisitors, final VersionRange postMigrationVersionRange) throws Exception
