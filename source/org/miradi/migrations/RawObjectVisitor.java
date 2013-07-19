@@ -22,5 +22,5 @@ package org.miradi.migrations;
 
 public interface RawObjectVisitor
 {
-	public void visit(RawObject rawObject);
+	public void visit(RawObject rawObject) throws Exception;
 }

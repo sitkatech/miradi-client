@@ -52,6 +52,29 @@ public class ForwardMigrationManager extends AbstractMigrationManager
 		fileWriter.write(contents);
 		fileWriter.close();
 	}
+
+	//FIXME, migrate forward and reverse need to be refactored to eliminate dupe code
+	public String migrateReverse(String mpfAsString) throws Exception
+	{
+		VersionRange versionRange = RawProjectLoader.loadVersionRange(new UnicodeStringReader(mpfAsString));
+		RawProject rawProject = RawProjectLoader.loadProject(new UnicodeStringReader(mpfAsString));
+		rawProject.setCurrentVersionRange(versionRange);
+		Vector<AbstractForwardMigration> migrations = createEmptyMigrations(rawProject);
+		for(AbstractForwardMigration abstractMigration : migrations)
+		{
+			if (abstractMigration.canMigrateThisVersion(rawProject.getCurrentVersionRange()))
+			{
+				rawProject.visitAllObjectsInPool(abstractMigration.getTypeToMigrate(), abstractMigration.createRawObjectReverseMigrationVisitors());
+				
+				final VersionRange incrementedByOne = abstractMigration.getMigratableVersionRange().decrementByOne();
+				rawProject.setCurrentVersionRange(incrementedByOne);
+			}	
+		}
+
+		final String convertToMpfString = convertToMpfString(rawProject);
+		System.out.println(convertToMpfString);
+		return convertToMpfString;
+	}
 	
 	public String migrateForward(String mpfAsString) throws Exception
 	{

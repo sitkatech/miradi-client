@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations.forward;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Vector;
@@ -60,6 +62,15 @@ public class MigrationTo4 extends AbstractForwardMigration
 		
 		return visitors;
 	}
+
+	@Override
+	public Vector<RawObjectVisitor> createRawObjectReverseMigrationVisitors()
+	{
+		Vector<RawObjectVisitor> visitors = super.createRawObjectVisitors();
+		visitors.add(new ReverseMigrationVisitor());
+		
+		return visitors;
+	}
 	
 	@Override
 	public int getTypeToMigrate()
@@ -69,7 +80,7 @@ public class MigrationTo4 extends AbstractForwardMigration
 	
 	private class IndicatorVisitor implements RawObjectVisitor
 	{
-		public void visit(RawObject rawObject)
+		public void visit(RawObject rawObject) throws Exception
 		{
 			if (!hasAnyFutureStatusData(rawObject))
 				return;
@@ -132,6 +143,73 @@ public class MigrationTo4 extends AbstractForwardMigration
 			}
 			
 			return false;
+		}
+	}
+	
+	private class ReverseMigrationVisitor implements RawObjectVisitor
+	{
+		public void visit(RawObject indicator) throws Exception 
+		{
+			if (!indicator.containsKey(Indicator.TAG_FUTURE_STATUS_REFS))
+				return;
+			
+			ORefList futureStatusRefs = new ORefList(indicator.get(Indicator.TAG_FUTURE_STATUS_REFS));
+			if (futureStatusRefs.isEmpty())
+				return;
+
+			RawObject latestFutureStatus = getLatestFutureStatusRef(futureStatusRefs);
+			moveFieldsFromFutureStatusToIndicator(indicator, latestFutureStatus);
+			clearIndicatorFutureStatusField(indicator);
+			deleteOrphanFutureStatuse(futureStatusRefs);
+		}
+
+		private void moveFieldsFromFutureStatusToIndicator(RawObject indicator, RawObject latestFutureStatus)
+		{
+			IndicatorFutureStatusTagsToFutureStatusTagsMap map = new IndicatorFutureStatusTagsToFutureStatusTagsMap();
+			Set<String> indicatorFutureStatusTags = map.getIndicatorFutureStatusTags();
+			for(String indicatorFutureStatusTag : indicatorFutureStatusTags)
+			{
+				String futureStatusTag = map.get(indicatorFutureStatusTag);
+				String data = latestFutureStatus.get(futureStatusTag);
+				indicator.put(indicatorFutureStatusTag, data);
+			}
+		}
+
+		private void deleteOrphanFutureStatuse(ORefList futureStatusRefs)
+		{
+			for(ORef futureStatusRef : futureStatusRefs)
+			{
+				getRawProject().deleteRawObject(futureStatusRef);	
+			}
+		}
+
+		private void clearIndicatorFutureStatusField(RawObject indicator)
+		{
+			indicator.remove(Indicator.TAG_FUTURE_STATUS_REFS);
+		}
+
+		private RawObject getLatestFutureStatusRef(ORefList futureStatusRefs)
+		{
+			Vector<RawObject> futureStatuses = new Vector<RawObject>();
+			for(ORef futureStatusRef : futureStatusRefs)
+			{
+				futureStatuses.add(getRawProject().findObject(futureStatusRef));
+			}
+			
+			Collections.sort(futureStatuses, new DateSorter());
+			
+			return futureStatuses.firstElement();
+		}
+	}
+	
+	private class DateSorter implements Comparator<RawObject>
+	{
+		public int compare(RawObject rawObject1, RawObject rawObject2)
+		{
+			String date1 = rawObject1.get(FutureStatusSchema.TAG_FUTURE_STATUS_DATE);
+			String date2 = rawObject2.get(FutureStatusSchema.TAG_FUTURE_STATUS_DATE);
+			
+			return date2.compareTo(date1);
 		}
 	}
 	
