@@ -50,6 +50,17 @@ abstract public class AbstractForwardMigration
 		return new Vector<RawObjectVisitor>();
 	}
 	
+	public void possibleMigrate() throws Exception
+	{
+		if (canMigrateThisVersion(getRawProject().getCurrentVersionRange()))
+		{
+			getRawProject().visitAllObjectsInPool(getTypeToMigrate(), createRawObjectReverseMigrationVisitors());
+			
+			final VersionRange incrementedByOne = getMigratableVersionRange().decrementByOne();
+			getRawProject().setCurrentVersionRange(incrementedByOne);
+		}
+	}
+	
 	abstract public VersionRange getMigratableVersionRange() throws Exception;
 
 	abstract public int getTypeToMigrate();

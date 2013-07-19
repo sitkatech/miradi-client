@@ -82,18 +82,12 @@ public class MigrationManager extends AbstractMigrationManager
 		Vector<AbstractForwardMigration> migrations = createEmptyMigrations(rawProject);
 		for(AbstractForwardMigration abstractMigration : migrations)
 		{
-			if (abstractMigration.canMigrateThisVersion(rawProject.getCurrentVersionRange()))
-			{
-				rawProject.visitAllObjectsInPool(abstractMigration.getTypeToMigrate(), abstractMigration.createRawObjectReverseMigrationVisitors());
-				
-				final VersionRange incrementedByOne = abstractMigration.getMigratableVersionRange().decrementByOne();
-				rawProject.setCurrentVersionRange(incrementedByOne);
-			}	
+			abstractMigration.possibleMigrate();	
 		}
 		
 		return convertToMpfString(rawProject);
 	}
-	
+
 	private Vector<AbstractForwardMigration> createEmptyMigrations(RawProject rawProject)
 	{
 		Vector<AbstractForwardMigration> migrations = new Vector<AbstractForwardMigration>();
