@@ -46,7 +46,6 @@ public class TestMigrationTo4 extends TestForwardMigrationManager
 	
 	public void testMigrateWithoutIndicators() throws Exception
 	{
-		fail();
 		verifyFutureStatusesCreatedFromIndicators(0);
 	}
 	
