@@ -22,6 +22,7 @@ package org.miradi.migrations.forward;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Vector;
 
 import org.miradi.ids.BaseId;
 import org.miradi.migrations.AbstractForwardMigration;
@@ -52,13 +53,16 @@ public class MigrationTo4 extends AbstractForwardMigration
 	}
 
 	@Override
-	protected RawObjectVisitor createRawObjectVisitor()
+	public Vector<RawObjectVisitor> createRawObjectVisitors()
 	{
-		return new IndicatorVisitor();
+		Vector<RawObjectVisitor> visitors = super.createRawObjectVisitors();
+		visitors.add(new IndicatorVisitor());
+		
+		return visitors;
 	}
 	
 	@Override
-	protected int getTypeToMigrate()
+	public int getTypeToMigrate()
 	{
 		return IndicatorSchema.getObjectType();
 	}
@@ -67,19 +71,17 @@ public class MigrationTo4 extends AbstractForwardMigration
 	{
 		public void visit(RawObject rawObject)
 		{
+			if (!hasAnyFutureStatusData(rawObject))
+				return;
+
 			RawPool futureStatusPool = getFutureStatusPool();
-			if (hasAnyFutureStatusData(rawObject))
-			{
-				RawObject newFutureStatus = new RawObject();
-				moveFutureStatusFields(rawObject, newFutureStatus);
-				final BaseId nextHighestId = getRawProject().getNextHighestId();
-				final ORef newFutureStatusRef = new ORef(ObjectType.FUTURE_STATUS, nextHighestId);
-				futureStatusPool.put(newFutureStatusRef, newFutureStatus);
-				rawObject.put(Indicator.TAG_FUTURE_STATUS_REFS, new ORefList(newFutureStatusRef));
-			}
-			
-			if (futureStatusPool.size() > 0)
-				getRawProject().putTypeToNewPoolEntry(ObjectType.FUTURE_STATUS, futureStatusPool);
+			RawObject newFutureStatus = new RawObject();
+			moveFutureStatusFields(rawObject, newFutureStatus);
+			final BaseId nextHighestId = getRawProject().getNextHighestId();
+			final ORef newFutureStatusRef = new ORef(ObjectType.FUTURE_STATUS, nextHighestId);
+			futureStatusPool.put(newFutureStatusRef, newFutureStatus);
+			rawObject.put(Indicator.TAG_FUTURE_STATUS_REFS, new ORefList(newFutureStatusRef));
+			getRawProject().putTypeToNewPoolEntry(ObjectType.FUTURE_STATUS, futureStatusPool);
 		}
 
 		private RawPool getFutureStatusPool()
