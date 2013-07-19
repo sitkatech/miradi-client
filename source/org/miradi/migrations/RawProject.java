@@ -22,6 +22,8 @@ package org.miradi.migrations;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Set;
+import java.util.Vector;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
@@ -140,6 +142,28 @@ public class RawProject
 	public void setCurrentVersionRange(VersionRange versionRange)
 	{
 		currentVersionRange = versionRange;
+	}
+	
+	public void visitAllObjectsInPool(int objectType, Vector<RawObjectVisitor> visitors)
+	{
+		if (!containsAnyObjectsOfType(objectType))
+			return;
+		
+		RawPool rawPool = getRawPoolForType(objectType);
+		Set<ORef> refs = rawPool.keySet();
+		for(ORef ref : refs)
+		{
+			RawObject rawObject = rawPool.get(ref);
+			visitAllVisitors(visitors, rawObject);
+		}
+	}
+
+	private void visitAllVisitors(Vector<RawObjectVisitor> visitors, RawObject rawObject)
+	{
+		for(RawObjectVisitor visitor : visitors)
+		{
+			visitor.visit(rawObject);	
+		}
 	}
 
 	private HashMap<Integer, RawPool> typeToRawPoolMap;

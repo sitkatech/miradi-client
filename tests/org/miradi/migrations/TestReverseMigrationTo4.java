@@ -20,34 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
-import java.util.Vector;
-
-
-abstract public class AbstractForwardMigration
+public class TestReverseMigrationTo4 extends AbstractTestReverseMigration
 {
-	public AbstractForwardMigration(RawProject rawProjectToUse)
+	public TestReverseMigrationTo4(String name)
 	{
-		rawProject = rawProjectToUse;
+		super(name);
 	}
-
-	public boolean canMigrateThisVersion(VersionRange versionRange) throws Exception
-	{
-		return getMigratableVersionRange().doesContainHigh(versionRange.getHighVersion());
-	}
-
-	protected RawProject getRawProject()
-	{
-		return rawProject;
-	}
-	
-	public Vector<RawObjectVisitor> createRawObjectVisitors()
-	{
-		return new Vector<RawObjectVisitor>();
-	}
-	
-	abstract public VersionRange getMigratableVersionRange() throws Exception;
-
-	abstract public int getTypeToMigrate();
-	
-	private RawProject rawProject;
 }

@@ -22,9 +22,9 @@ package org.miradi.migrations;
 
 import org.miradi.main.TestCaseWithProject;
 
-public class TestReverseMigrationManager extends TestCaseWithProject
+public class AbstractTestReverseMigration extends TestCaseWithProject
 {
-	public TestReverseMigrationManager(String name)
+	public AbstractTestReverseMigration(String name)
 	{
 		super(name);
 	}
