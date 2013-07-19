@@ -37,9 +37,9 @@ import org.miradi.migrations.VersionRange;
 import org.miradi.project.Project;
 import org.miradi.utils.FileUtilities;
 
-public class ForwardMigrationManager extends AbstractMigrationManager
+public class MigrationManager extends AbstractMigrationManager
 {
-	public ForwardMigrationManager()
+	public MigrationManager()
 	{
 	}
 	

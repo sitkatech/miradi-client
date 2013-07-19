@@ -24,7 +24,7 @@ import java.io.IOException;
 
 import org.martus.util.UnicodeStringReader;
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.migrations.forward.ForwardMigrationManager;
+import org.miradi.migrations.forward.MigrationManager;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.project.ProjectLoader;
 import org.miradi.project.ProjectSaverForTesting;
@@ -38,7 +38,7 @@ public class AbstractTestForwardMigration extends TestCaseWithProject
 	
 	protected ProjectForTesting migrateProject(final VersionRange versionRangeToUse) throws Exception, IOException
 	{
-		ForwardMigrationManager migrationManager = new ForwardMigrationManager();
+		MigrationManager migrationManager = new MigrationManager();
 		String projectAsString = ProjectSaverForTesting.createSnapShot(getProject(), versionRangeToUse);
 		String migratedMpfFile = migrationManager.migrateForward(projectAsString);
 		
