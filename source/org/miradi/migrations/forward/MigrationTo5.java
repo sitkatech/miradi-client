@@ -60,7 +60,7 @@ public class MigrationTo5 extends AbstractForwardMigration
 	
 	private class StrategyVisitor implements RawObjectVisitor
 	{
-		public void visit(RawObject rawObject)
+		public void visit(RawObject rawObject) throws Exception
 		{
 			if (rawObject.containsKey(Strategy.TAG_STATUS))
 				updateDefaultRealStatusCode(rawObject);

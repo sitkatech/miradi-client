@@ -45,6 +45,11 @@ abstract public class AbstractForwardMigration
 		return new Vector<RawObjectVisitor>();
 	}
 	
+	public Vector<RawObjectVisitor> createRawObjectReverseMigrationVisitors()
+	{
+		return new Vector<RawObjectVisitor>();
+	}
+	
 	abstract public VersionRange getMigratableVersionRange() throws Exception;
 
 	abstract public int getTypeToMigrate();

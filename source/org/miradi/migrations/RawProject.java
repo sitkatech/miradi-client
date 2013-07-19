@@ -59,6 +59,12 @@ public class RawProject
 	{
 		return getRawPoolForType(ref.getObjectType()).get(ref);
 	}
+	
+	public void deleteRawObject(ORef ref)
+	{
+		RawPool pool = getRawPoolForType(ref.getObjectType());
+		pool.remove(ref);
+	}
 
 	public void setExceptionLog(final String exceptionLogToUse)
 	{
@@ -144,7 +150,7 @@ public class RawProject
 		currentVersionRange = versionRange;
 	}
 	
-	public void visitAllObjectsInPool(int objectType, Vector<RawObjectVisitor> visitors)
+	public void visitAllObjectsInPool(int objectType, Vector<RawObjectVisitor> visitors) throws Exception
 	{
 		if (!containsAnyObjectsOfType(objectType))
 			return;
@@ -158,7 +164,7 @@ public class RawProject
 		}
 	}
 
-	private void visitAllVisitors(Vector<RawObjectVisitor> visitors, RawObject rawObject)
+	private void visitAllVisitors(Vector<RawObjectVisitor> visitors, RawObject rawObject) throws Exception
 	{
 		for(RawObjectVisitor visitor : visitors)
 		{
