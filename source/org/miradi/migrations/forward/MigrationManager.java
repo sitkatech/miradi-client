@@ -29,7 +29,7 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.exceptions.ProjectFileTooNewException;
 import org.miradi.exceptions.ProjectFileTooOldException;
 import org.miradi.main.EAM;
-import org.miradi.migrations.AbstractForwardMigration;
+import org.miradi.migrations.AbstractMigration;
 import org.miradi.migrations.AbstractMigrationManager;
 import org.miradi.migrations.RawProject;
 import org.miradi.migrations.RawProjectLoader;
@@ -58,8 +58,8 @@ public class MigrationManager extends AbstractMigrationManager
 		VersionRange versionRange = RawProjectLoader.loadVersionRange(new UnicodeStringReader(mpfAsString));
 		RawProject rawProject = RawProjectLoader.loadProject(new UnicodeStringReader(mpfAsString));
 		rawProject.setCurrentVersionRange(versionRange);
-		Vector<AbstractForwardMigration> migrations = createEmptyMigrations(rawProject);
-		for(AbstractForwardMigration abstractMigration : migrations)
+		Vector<AbstractMigration> migrations = createEmptyMigrations(rawProject);
+		for(AbstractMigration abstractMigration : migrations)
 		{
 			abstractMigration.possiblyMigrateForward();	
 		}
@@ -73,8 +73,8 @@ public class MigrationManager extends AbstractMigrationManager
 		VersionRange versionRange = RawProjectLoader.loadVersionRange(new UnicodeStringReader(mpfAsString));
 		RawProject rawProject = RawProjectLoader.loadProject(new UnicodeStringReader(mpfAsString));
 		rawProject.setCurrentVersionRange(versionRange);
-		Vector<AbstractForwardMigration> migrations = createEmptyMigrations(rawProject);
-		for(AbstractForwardMigration abstractMigration : migrations)
+		Vector<AbstractMigration> migrations = createEmptyMigrations(rawProject);
+		for(AbstractMigration abstractMigration : migrations)
 		{
 			abstractMigration.possibleMigrateReverse();	
 		}
@@ -82,9 +82,9 @@ public class MigrationManager extends AbstractMigrationManager
 		return convertToMpfString(rawProject);
 	}
 
-	private Vector<AbstractForwardMigration> createEmptyMigrations(RawProject rawProject)
+	private Vector<AbstractMigration> createEmptyMigrations(RawProject rawProject)
 	{
-		Vector<AbstractForwardMigration> migrations = new Vector<AbstractForwardMigration>();
+		Vector<AbstractMigration> migrations = new Vector<AbstractMigration>();
 		migrations.add(new MigrationTo4(rawProject));
 		migrations.add(new MigrationTo5(rawProject));
 		
