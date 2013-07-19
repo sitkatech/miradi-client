@@ -49,6 +49,18 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 	}
 	
 	@Override
+	public VersionRange getPostForwardMigrationVersionRange() throws Exception
+	{
+		return getMigratableVersionRange().incrementByOne();
+	}
+	
+	@Override
+	public VersionRange getPostReverseMigrationVersionRange() throws Exception
+	{
+		return getMigratableVersionRange().decrementByOne();
+	}
+	
+	@Override
 	public VersionRange getMigratableVersionRange() throws Exception
 	{
 		return new VersionRange(VERSION_LOW, VERSION_HIGH);
