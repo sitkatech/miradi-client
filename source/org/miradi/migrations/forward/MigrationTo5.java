@@ -39,9 +39,9 @@ public class MigrationTo5 extends AbstractSingleTypeMigration
 	}
 
 	@Override
-	public Vector<RawObjectVisitor> createRawObjectVisitors()
+	public Vector<RawObjectVisitor> createRawObjectForwardMigrationVisitors()
 	{
-		Vector<RawObjectVisitor> visitors = super.createRawObjectVisitors();
+		Vector<RawObjectVisitor> visitors = super.createRawObjectForwardMigrationVisitors();
 		visitors.add(new StrategyVisitor());
 		
 		return visitors;

@@ -68,9 +68,9 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 	}
 
 	@Override
-	public Vector<RawObjectVisitor> createRawObjectVisitors()
+	public Vector<RawObjectVisitor> createRawObjectForwardMigrationVisitors()
 	{
-		Vector<RawObjectVisitor> visitors = super.createRawObjectVisitors();
+		Vector<RawObjectVisitor> visitors = super.createRawObjectForwardMigrationVisitors();
 		visitors.add(new IndicatorVisitor());
 		
 		return visitors;
@@ -79,7 +79,7 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 	@Override
 	public Vector<RawObjectVisitor> createRawObjectReverseMigrationVisitors()
 	{
-		Vector<RawObjectVisitor> visitors = super.createRawObjectVisitors();
+		Vector<RawObjectVisitor> visitors = super.createRawObjectForwardMigrationVisitors();
 		visitors.add(new ReverseMigrationVisitor());
 		
 		return visitors;
