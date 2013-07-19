@@ -71,9 +71,7 @@ public class ForwardMigrationManager extends AbstractMigrationManager
 			}	
 		}
 
-		final String convertToMpfString = convertToMpfString(rawProject);
-		System.out.println(convertToMpfString);
-		return convertToMpfString;
+		return convertToMpfString(rawProject);
 	}
 	
 	public String migrateForward(String mpfAsString) throws Exception
