@@ -21,32 +21,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.migrations;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Set;
-import java.util.Vector;
 
 import org.martus.util.UnicodeStringReader;
-import org.miradi.ids.BaseId;
-import org.miradi.ids.IndicatorId;
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.migrations.IndicatorFutureStatusTagsToFutureStatusTagsMap;
-import org.miradi.migrations.VersionRange;
 import org.miradi.migrations.forward.ForwardMigrationManager;
 import org.miradi.migrations.forward.MigrationTo5;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objectpools.FutureStatusPool;
-import org.miradi.objectpools.IndicatorPool;
-import org.miradi.objects.FutureStatus;
-import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
-import org.miradi.project.ObjectManager;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.project.ProjectLoader;
 import org.miradi.project.ProjectSaverForTesting;
-import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StrategyStatusQuestion;
-import org.miradi.schemas.IndicatorSchema;
 
 public class TestForwardMigrationManager extends TestCaseWithProject
 {
@@ -89,81 +75,6 @@ public class TestForwardMigrationManager extends TestCaseWithProject
 		assertEquals("Incorrect migrated strategy status?", expectedStrategyStatusCode, migratedStrategyStatus);
 	}
 
-	public void testMigrateWithoutIndicators() throws Exception
-	{
-		verifyFutureStatusesCreatedFromIndicators(0);
-	}
-	
-	public void testMigrateIndicatorWithFutureStatuses() throws Exception
-	{
-		verifyFutureStatusesCreatedFromIndicators(1);
-	}
-	
-	public void testMigrateIndicatorsWithFutureStatuses() throws Exception
-	{
-		verifyFutureStatusesCreatedFromIndicators(2);
-	}
-
-	private void verifyFutureStatusesCreatedFromIndicators(final int indicatorCount) throws Exception
-	{
-		Vector<Indicator> indicatorsToMigrateFutureStatusesFrom = createAndPopluteIndicators(indicatorCount);
-		ProjectForTesting migratedProject = migrateProject(new VersionRange(3, 3));
-		final IndicatorPool indicatorPool = migratedProject.getIndicatorPool();
-		assertEquals("Incorrect indictor count?", indicatorsToMigrateFutureStatusesFrom.size(), indicatorPool.size());
-
-		final FutureStatusPool futureStatusPool = migratedProject.getFutureStatusPool();
-		assertEquals("Incorrect FutureStatus count?", indicatorsToMigrateFutureStatusesFrom.size(), futureStatusPool.size());
-		
-		for(int index = 0; index <  indicatorsToMigrateFutureStatusesFrom.size(); ++index)
-		{
-			Indicator indicatorToMigrate = indicatorsToMigrateFutureStatusesFrom.get(index);
-			ORef migratedIndicatorRef =  indicatorPool.getRefList().get(index);
-			Indicator migratedIndicator = Indicator.find(migratedProject, migratedIndicatorRef);
-			
-			ORefList futureStatusRefs = migratedIndicator.getSafeRefListData(Indicator.TAG_FUTURE_STATUS_REFS);
-			assertEquals("Migrated indictor should refer to only 1 future status?", 1, futureStatusRefs.size());
-			
-			VerifyMigratedFutureStatusData(migratedProject, indicatorToMigrate, futureStatusRefs.getFirstElement());
-		}
-	}
-
-	private void VerifyMigratedFutureStatusData(ProjectForTesting migratedProject, Indicator indicatorToMigrate, ORef futureStatusRef)
-	{
-		HashMap<String,String> indicatorFutureStatusTagsToFutureStatusTagMap = new IndicatorFutureStatusTagsToFutureStatusTagsMap();
-		Set<String> indicatorFutureStatusTags = indicatorFutureStatusTagsToFutureStatusTagMap.keySet();
-		FutureStatus futureStatus = FutureStatus.find(migratedProject, futureStatusRef);
-		for(String indicatorFutureStatusTag : indicatorFutureStatusTags)
-		{
-			String futureStatusTag = indicatorFutureStatusTagsToFutureStatusTagMap.get(indicatorFutureStatusTag);
-			String expectedData = indicatorToMigrate.getData(indicatorFutureStatusTag);
-			String actualData = futureStatus.getData(futureStatusTag);
-			assertEquals("Future status data was no migrated correctly for tag= " + futureStatusTag + "? " , expectedData, actualData);
-		}
-	}
-
-	private Vector<Indicator> createAndPopluteIndicators(int numberOfIndicatorsToCreateAndPopulate) throws Exception
-	{
-		Vector<Indicator> indicators = new Vector<Indicator>();
-		for (int index = 0; index < numberOfIndicatorsToCreateAndPopulate; ++index)
-		{
-			BaseId indicatorId = getProject().getNormalIdAssigner().takeNextId();
-			LegacyIndicatorWithFutureStatusFields indicator = new LegacyIndicatorWithFutureStatusFields(getObjectManager(), indicatorId);
-			getProject().getIndicatorPool().put(indicator);
-			
-			indicator.setData(IndicatorFutureStatusTagsToFutureStatusTagsMap.TAG_INDICATOR_FUTURE_STATUS_RATING, new StatusQuestion().getCode(index));
-			indicator.setData(IndicatorFutureStatusTagsToFutureStatusTagsMap.TAG_INDICATOR_FUTURE_STATUS_DATE, "2020-01-23" + index);
-			indicator.setData(IndicatorFutureStatusTagsToFutureStatusTagsMap.TAG_INDICATOR_FUTURE_STATUS_COMMENTS, "Some Indicator future status comment" + index);
-			indicator.setData(IndicatorFutureStatusTagsToFutureStatusTagsMap.TAG_INDICATOR_FUTURE_STATUS_DETAIL, "random Details" + index);
-			indicator.setData(IndicatorFutureStatusTagsToFutureStatusTagsMap.TAG_INDICATOR_FUTURE_STATUS_SUMMARY, "FS random summary" + index);
-			
-			indicators.add(indicator);
-		}
-		
-		assertEquals("correct number of indicators created?", numberOfIndicatorsToCreateAndPopulate, indicators.size());
-		
-		return indicators;
-	}
-
 	public void testGetMigrationType() throws Exception
 	{
 		VersionRange tenTwentyRange = new VersionRange(10, 20);
@@ -185,7 +96,7 @@ public class TestForwardMigrationManager extends TestCaseWithProject
 		assertEquals("incorrect migration type?", expectedMigrationType, ForwardMigrationManager.getMigrationType(miradiVersionRange, mpfVersionRange));
 	}
 	
-	private ProjectForTesting migrateProject(final VersionRange versionRangeToUse) throws Exception, IOException
+	protected ProjectForTesting migrateProject(final VersionRange versionRangeToUse) throws Exception, IOException
 	{
 		ForwardMigrationManager migrationManager = new ForwardMigrationManager();
 		String projectAsString = ProjectSaverForTesting.createSnapShot(getProject(), versionRangeToUse);
@@ -195,28 +106,5 @@ public class TestForwardMigrationManager extends TestCaseWithProject
 		ProjectLoader.loadProject(new UnicodeStringReader(migratedMpfFile), migratedProject);
 		
 		return migratedProject;
-	}
-	
-	private class LegacyIndicatorWithFutureStatusFields extends Indicator
-	{
-		protected LegacyIndicatorWithFutureStatusFields(ObjectManager objectManager, BaseId idToUse)
-		{
-			super(objectManager, new IndicatorId(idToUse.asInt()), new LegacyIndicatorSchemaWithFutureStatusFields());
-		}
-	}
-	
-	private class LegacyIndicatorSchemaWithFutureStatusFields extends IndicatorSchema
-	{
-		@Override
-		protected void fillFieldSchemas()
-		{
-			super.fillFieldSchemas();
-			
-			createFieldSchemaChoice(IndicatorFutureStatusTagsToFutureStatusTagsMap.TAG_INDICATOR_FUTURE_STATUS_RATING, StatusQuestion.class);
-			createFieldSchemaDate(IndicatorFutureStatusTagsToFutureStatusTagsMap.TAG_INDICATOR_FUTURE_STATUS_DATE);
-			createFieldSchemaSingleLineUserText(IndicatorFutureStatusTagsToFutureStatusTagsMap.TAG_INDICATOR_FUTURE_STATUS_SUMMARY);
-			createFieldSchemaMultiLineUserText(IndicatorFutureStatusTagsToFutureStatusTagsMap.TAG_INDICATOR_FUTURE_STATUS_DETAIL);
-			createFieldSchemaMultiLineUserText(IndicatorFutureStatusTagsToFutureStatusTagsMap.TAG_INDICATOR_FUTURE_STATUS_COMMENTS);
-		}
-	}
+	}	
 }
