@@ -40,7 +40,7 @@ abstract public class AbstractMigration
 		return rawProject;
 	}
 	
-	public Vector<RawObjectVisitor> createRawObjectVisitors()
+	public Vector<RawObjectVisitor> createRawObjectForwardMigrationVisitors()
 	{
 		return new Vector<RawObjectVisitor>();
 	}
@@ -52,7 +52,7 @@ abstract public class AbstractMigration
 	
 	public void forwardMigrateIfPossible() throws Exception
 	{
-		final Vector<RawObjectVisitor> rawObjectForwardMigrationVisitors = createRawObjectVisitors();
+		final Vector<RawObjectVisitor> rawObjectForwardMigrationVisitors = createRawObjectForwardMigrationVisitors();
 		final VersionRange postMigrationVersionRange = getPostForwardMigrationVersionRange();
 		
 		migrateIfPossible(rawObjectForwardMigrationVisitors, postMigrationVersionRange);
