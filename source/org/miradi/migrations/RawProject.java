@@ -50,6 +50,12 @@ public class RawProject
 		typeToRawPoolMap.put(type, rawPoolToAdd);
 	}
 	
+	public void ensureFutureStatusPoolExists(int objectType)
+	{
+		if (!containsAnyObjectsOfType(objectType))
+			putTypeToNewPoolEntry(objectType, new RawPool());
+	}
+	
 	public RawPool getRawPoolForType(int type)	
 	{		
 		return typeToRawPoolMap.get(type);
