@@ -72,7 +72,7 @@ import org.miradi.exceptions.UserCanceledException;
 import org.miradi.files.AbstractMpfFileFilter;
 import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.menu.MainMenuBar;
-import org.miradi.migrations.forward.ForwardMigrationManager;
+import org.miradi.migrations.forward.MigrationManager;
 import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.ColorsFileLoader;
 import org.miradi.objecthelpers.ORef;
@@ -665,7 +665,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		if (projectFile.exists())
 		{		
 			validateProjectVersion(projectFile);
-			ForwardMigrationManager migrationManager = new ForwardMigrationManager();
+			MigrationManager migrationManager = new MigrationManager();
 			if (migrationManager.needsMigration(projectFile))
 			{
 				final String[] labels = new String[]{ConstantButtonNames.MIGRATE, ConstantButtonNames.CANCEL};
@@ -696,7 +696,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	
 	private void validateProjectVersion(File projectFile) throws Exception
 	{
-		ForwardMigrationManager migrationManager = new ForwardMigrationManager();
+		MigrationManager migrationManager = new MigrationManager();
 		migrationManager.validateProjectVersion(projectFile);
 	}
 
