@@ -36,13 +36,13 @@ public class MigrationTo5 extends AbstractForwardMigration
 	}
 
 	@Override
-	protected RawObjectVisitor createRawObjectVisitor()
+	public RawObjectVisitor createRawObjectVisitor()
 	{
 		return new StrategyVisitor();
 	}
 
 	@Override
-	protected int getTypeToMigrate()
+	public int getTypeToMigrate()
 	{
 		return StrategySchema.getObjectType();
 	}
