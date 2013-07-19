@@ -22,7 +22,7 @@ package org.miradi.migrations.forward;
 
 import java.util.Vector;
 
-import org.miradi.migrations.AbstractMigration;
+import org.miradi.migrations.AbstractSingleTypeMigration;
 import org.miradi.migrations.RawObject;
 import org.miradi.migrations.RawObjectVisitor;
 import org.miradi.migrations.RawProject;
@@ -30,7 +30,7 @@ import org.miradi.migrations.VersionRange;
 import org.miradi.objects.Strategy;
 import org.miradi.schemas.StrategySchema;
 
-public class MigrationTo5 extends AbstractMigration
+public class MigrationTo5 extends AbstractSingleTypeMigration
 {
 	public MigrationTo5(RawProject rawProjectToUse)
 	{

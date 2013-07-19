@@ -27,7 +27,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.miradi.ids.BaseId;
-import org.miradi.migrations.AbstractMigration;
+import org.miradi.migrations.AbstractSingleTypeMigration;
 import org.miradi.migrations.IndicatorFutureStatusTagsToFutureStatusTagsMap;
 import org.miradi.migrations.RawObject;
 import org.miradi.migrations.RawObjectVisitor;
@@ -41,7 +41,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.IndicatorSchema;
 
-public class MigrationTo4 extends AbstractMigration
+public class MigrationTo4 extends AbstractSingleTypeMigration
 {
 	public MigrationTo4(RawProject rawProjectToUse)
 	{
