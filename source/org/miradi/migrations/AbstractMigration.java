@@ -52,23 +52,26 @@ abstract public class AbstractMigration
 	
 	public void possiblyMigrateForward() throws Exception
 	{
-		if (canMigrateThisVersion(getRawProject().getCurrentVersionRange()))
-		{
-			getRawProject().visitAllObjectsInPool(getTypeToMigrate(), createRawObjectVisitors());
-			
-			final VersionRange incrementedByOne = getMigratableVersionRange().incrementByOne();
-			getRawProject().setCurrentVersionRange(incrementedByOne);
-		}
+		final Vector<RawObjectVisitor> createRawObjectVisitors = createRawObjectVisitors();
+		final VersionRange incrementedByOne = getMigratableVersionRange().incrementByOne();
+		
+		migrate(createRawObjectVisitors, incrementedByOne);
 	}
 	
 	public void possibleMigrateReverse() throws Exception
 	{
+		final Vector<RawObjectVisitor> createRawObjectReverseMigrationVisitors = createRawObjectReverseMigrationVisitors();
+		final VersionRange decrementedByOne = getMigratableVersionRange().decrementByOne();
+		
+		migrate(createRawObjectReverseMigrationVisitors, decrementedByOne);
+	}
+
+	private void migrate(final Vector<RawObjectVisitor> rawObjectVisitors, final VersionRange postMigrationVersionRange) throws Exception
+	{
 		if (canMigrateThisVersion(getRawProject().getCurrentVersionRange()))
 		{
-			getRawProject().visitAllObjectsInPool(getTypeToMigrate(), createRawObjectReverseMigrationVisitors());
-			
-			final VersionRange decrementedByOne = getMigratableVersionRange().decrementByOne();
-			getRawProject().setCurrentVersionRange(decrementedByOne);
+			getRawProject().visitAllObjectsInPool(getTypeToMigrate(), rawObjectVisitors);
+			getRawProject().setCurrentVersionRange(postMigrationVersionRange);
 		}
 	}
 	
