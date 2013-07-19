@@ -24,5 +24,8 @@ import org.miradi.migrations.AbstractMigrationManager;
 
 public class ReverseMigrationManager extends AbstractMigrationManager
 {
-
+	public String migrateReverse(String projectAsString)
+	{
+		return null;
+	}
 }
