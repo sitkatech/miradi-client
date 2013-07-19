@@ -61,7 +61,7 @@ public class MigrationManager extends AbstractMigrationManager
 		Vector<AbstractForwardMigration> migrations = createEmptyMigrations(rawProject);
 		for(AbstractForwardMigration abstractMigration : migrations)
 		{
-			abstractMigration.possiblyForwardMigrate();	
+			abstractMigration.possiblyMigrateForward();	
 		}
 
 		return convertToMpfString(rawProject);
@@ -76,7 +76,7 @@ public class MigrationManager extends AbstractMigrationManager
 		Vector<AbstractForwardMigration> migrations = createEmptyMigrations(rawProject);
 		for(AbstractForwardMigration abstractMigration : migrations)
 		{
-			abstractMigration.possibleReverseMigrate();	
+			abstractMigration.possibleMigrateReverse();	
 		}
 		
 		return convertToMpfString(rawProject);
