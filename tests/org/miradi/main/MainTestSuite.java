@@ -65,7 +65,7 @@ import org.miradi.ids.TestBaseId;
 import org.miradi.ids.TestIdList;
 import org.miradi.legacyprojects.TestDataUpgrader;
 import org.miradi.legacyprojects.TestDataUpgraderForMiradi3;
-import org.miradi.migrations.TestForwardMigrationManager;
+import org.miradi.migrations.AbstractTestForwardMigration;
 import org.miradi.migrations.TestMigrationTo4;
 import org.miradi.migrations.TestMigrationTo5;
 import org.miradi.migrations.TestRawProject;
@@ -546,7 +546,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestXmpzSchemaCreator.class));
 		
 		//mpf migrations
-		addTest(new TestSuite(TestForwardMigrationManager.class));
+		addTest(new TestSuite(AbstractTestForwardMigration.class));
 		addTest(new TestSuite(TestMigrationTo4.class));
 		addTest(new TestSuite(TestMigrationTo5.class));
 		addTest(new TestSuite(TestReverseMigrationManager.class));

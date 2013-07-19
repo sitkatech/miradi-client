@@ -37,7 +37,7 @@ import org.miradi.project.ProjectForTesting;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.IndicatorSchema;
 
-public class TestMigrationTo4 extends TestForwardMigrationManager
+public class TestMigrationTo4 extends AbstractTestForwardMigration
 {
 	public TestMigrationTo4(String name)
 	{

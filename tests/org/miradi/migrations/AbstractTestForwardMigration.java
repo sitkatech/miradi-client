@@ -29,9 +29,9 @@ import org.miradi.project.ProjectForTesting;
 import org.miradi.project.ProjectLoader;
 import org.miradi.project.ProjectSaverForTesting;
 
-public class TestForwardMigrationManager extends TestCaseWithProject
+public class AbstractTestForwardMigration extends TestCaseWithProject
 {
-	public TestForwardMigrationManager(String name)
+	public AbstractTestForwardMigration(String name)
 	{
 		super(name);
 	}
