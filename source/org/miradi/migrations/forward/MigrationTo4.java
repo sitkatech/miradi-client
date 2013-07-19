@@ -87,7 +87,7 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 	
 	private class IndicatorVisitor extends AbstractVisitor
 	{
-		public int getTypeToMigrate()
+		public int getTypeToVisit()
 		{
 			return IndicatorSchema.getObjectType();
 		}
@@ -158,7 +158,7 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 	
 	private class ReverseMigrationVisitor extends AbstractVisitor
 	{
-		public int getTypeToMigrate()
+		public int getTypeToVisit()
 		{
 			return IndicatorSchema.getObjectType();
 		}

@@ -67,7 +67,7 @@ public class MigrationTo5 extends AbstractSingleTypeMigration
 	
 	private class StrategyVisitor extends AbstractVisitor
 	{
-		public int getTypeToMigrate()
+		public int getTypeToVisit()
 		{
 			return StrategySchema.getObjectType();
 		}

@@ -22,7 +22,7 @@ package org.miradi.migrations;
 
 public interface RawObjectVisitor
 {
-	public int getTypeToMigrate();
+	public int getTypeToVisit();
 	
 	public void visit(RawObject rawObject) throws Exception;
 }

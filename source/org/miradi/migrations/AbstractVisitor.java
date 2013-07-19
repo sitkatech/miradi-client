@@ -24,8 +24,8 @@ abstract public class AbstractVisitor implements RawObjectVisitor
 {
 	public final void visit(RawObject rawObject) throws Exception
 	{
-		if (rawObject.getObjectType() != getTypeToMigrate())
-			throw new Exception("Received incorrect object type for visitor, expecting:" + getTypeToMigrate() + " but got type:" + rawObject.getObjectType());
+		if (rawObject.getObjectType() != getTypeToVisit())
+			throw new Exception("Received incorrect object type for visitor, expecting:" + getTypeToVisit() + " but got type:" + rawObject.getObjectType());
 		
 		internalVisit(rawObject);
 	}
