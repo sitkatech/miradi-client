@@ -156,25 +156,21 @@ public class RawProject
 		currentVersionRange = versionRange;
 	}
 	
-	public void visitAllObjectsInPool(int objectType, Vector<RawObjectVisitor> visitors) throws Exception
-	{
-		if (!containsAnyObjectsOfType(objectType))
-			return;
-		
-		RawPool rawPool = getRawPoolForType(objectType);
-		Set<ORef> refs = rawPool.keySet();
-		for(ORef ref : refs)
-		{
-			RawObject rawObject = rawPool.get(ref);
-			visitAllVisitors(visitors, rawObject);
-		}
-	}
-
-	private void visitAllVisitors(Vector<RawObjectVisitor> visitors, RawObject rawObject) throws Exception
+	public void visitAllObjectsInPool(Vector<RawObjectVisitor> visitors) throws Exception
 	{
 		for(RawObjectVisitor visitor : visitors)
 		{
-			visitor.visit(rawObject);	
+			int objectType = visitor.getTypeToMigrate();
+			if (!containsAnyObjectsOfType(objectType))
+				continue;
+			
+			RawPool rawPool = getRawPoolForType(objectType);
+			Set<ORef> refs = rawPool.keySet();
+			for(ORef ref : refs)
+			{
+				RawObject rawObject = rawPool.get(ref);
+				visitor.visit(rawObject);
+			}
 		}
 	}
 

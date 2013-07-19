@@ -70,7 +70,7 @@ abstract public class AbstractMigration
 	{
 		if (canMigrateThisVersion(getRawProject().getCurrentVersionRange()))
 		{
-			getRawProject().visitAllObjectsInPool(getTypeToMigrate(), rawObjectVisitors);
+			getRawProject().visitAllObjectsInPool(rawObjectVisitors);
 			getRawProject().setCurrentVersionRange(postMigrationVersionRange);
 		}
 	}
@@ -81,7 +81,5 @@ abstract public class AbstractMigration
 	
 	abstract public VersionRange getPostReverseMigrationVersionRange() throws Exception;
 
-	abstract public int getTypeToMigrate();
-	
 	private RawProject rawProject;
 }

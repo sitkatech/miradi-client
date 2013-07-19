@@ -47,12 +47,6 @@ public class MigrationTo5 extends AbstractSingleTypeMigration
 	}
 
 	@Override
-	public int getTypeToMigrate()
-	{
-		return StrategySchema.getObjectType();
-	}
-	
-	@Override
 	public VersionRange getPostForwardMigrationVersionRange() throws Exception
 	{
 		return getMigratableVersionRange().incrementByOne();
@@ -72,6 +66,11 @@ public class MigrationTo5 extends AbstractSingleTypeMigration
 	
 	private class StrategyVisitor implements RawObjectVisitor
 	{
+		public int getTypeToMigrate()
+		{
+			return StrategySchema.getObjectType();
+		}
+
 		public void visit(RawObject rawObject) throws Exception
 		{
 			if (rawObject.containsKey(Strategy.TAG_STATUS))

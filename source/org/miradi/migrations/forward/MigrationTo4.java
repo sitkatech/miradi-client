@@ -84,14 +84,13 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 		return visitors;
 	}
 	
-	@Override
-	public int getTypeToMigrate()
-	{
-		return IndicatorSchema.getObjectType();
-	}
-	
 	private class IndicatorVisitor implements RawObjectVisitor
 	{
+		public int getTypeToMigrate()
+		{
+			return IndicatorSchema.getObjectType();
+		}
+
 		public void visit(RawObject rawObject) throws Exception
 		{
 			if (!hasAnyFutureStatusData(rawObject))
@@ -157,6 +156,11 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 	
 	private class ReverseMigrationVisitor implements RawObjectVisitor
 	{
+		public int getTypeToMigrate()
+		{
+			return IndicatorSchema.getObjectType();
+		}
+
 		public void visit(RawObject indicator) throws Exception 
 		{
 			if (!indicator.containsKey(Indicator.TAG_FUTURE_STATUS_REFS))
