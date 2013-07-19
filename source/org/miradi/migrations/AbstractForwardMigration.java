@@ -50,7 +50,7 @@ abstract public class AbstractForwardMigration
 		return new Vector<RawObjectVisitor>();
 	}
 	
-	public void possibleMigrate() throws Exception
+	public void possibleReverseMigrate() throws Exception
 	{
 		if (canMigrateThisVersion(getRawProject().getCurrentVersionRange()))
 		{
