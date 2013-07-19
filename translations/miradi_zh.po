@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-18 11:01-0500\n"
+"POT-Creation-Date: 2013-07-18 15:31-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -253,7 +253,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br> \t\t"
 
-#: Miradi/source/org/miradi/mpfMigrations/forwardMigrations/ForwardMigrationManager.java:94
+#: Miradi/source/org/miradi/migrations/forward/ForwardMigrationManager.java:94
 #: Miradi/source/org/miradi/main/MainWindow.java:1403
 msgid "(%s)"
 msgstr ""
