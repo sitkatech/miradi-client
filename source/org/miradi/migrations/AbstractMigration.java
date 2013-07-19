@@ -23,9 +23,9 @@ package org.miradi.migrations;
 import java.util.Vector;
 
 
-abstract public class AbstractForwardMigration
+abstract public class AbstractMigration
 {
-	public AbstractForwardMigration(RawProject rawProjectToUse)
+	public AbstractMigration(RawProject rawProjectToUse)
 	{
 		rawProject = rawProjectToUse;
 	}
