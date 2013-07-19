@@ -55,7 +55,7 @@ abstract public class AbstractMigration
 		final Vector<RawObjectVisitor> createRawObjectVisitors = createRawObjectVisitors();
 		final VersionRange incrementedByOne = getPostForwardMigrationVersionRange();
 		
-		migrate(createRawObjectVisitors, incrementedByOne);
+		migrateIfPossible(createRawObjectVisitors, incrementedByOne);
 	}
 	
 	public void possibleMigrateReverse() throws Exception
@@ -63,10 +63,10 @@ abstract public class AbstractMigration
 		final Vector<RawObjectVisitor> createRawObjectReverseMigrationVisitors = createRawObjectReverseMigrationVisitors();
 		final VersionRange decrementedByOne = getPostReverseMigrationVersionRange();
 		
-		migrate(createRawObjectReverseMigrationVisitors, decrementedByOne);
+		migrateIfPossible(createRawObjectReverseMigrationVisitors, decrementedByOne);
 	}
 
-	private void migrate(final Vector<RawObjectVisitor> rawObjectVisitors, final VersionRange postMigrationVersionRange) throws Exception
+	private void migrateIfPossible(final Vector<RawObjectVisitor> rawObjectVisitors, final VersionRange postMigrationVersionRange) throws Exception
 	{
 		if (canMigrateThisVersion(getRawProject().getCurrentVersionRange()))
 		{
