@@ -58,7 +58,7 @@ abstract public class AbstractMigration
 		migrateIfPossible(createRawObjectVisitors, incrementedByOne);
 	}
 	
-	public void possibleMigrateReverse() throws Exception
+	public void reverseMigrateIfPossible() throws Exception
 	{
 		final Vector<RawObjectVisitor> createRawObjectReverseMigrationVisitors = createRawObjectReverseMigrationVisitors();
 		final VersionRange decrementedByOne = getPostReverseMigrationVersionRange();
