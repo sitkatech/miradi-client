@@ -160,7 +160,7 @@ public class RawProject
 	{
 		for(RawObjectVisitor visitor : visitors)
 		{
-			int objectType = visitor.getTypeToMigrate();
+			int objectType = visitor.getTypeToVisit();
 			if (!containsAnyObjectsOfType(objectType))
 				continue;
 			
