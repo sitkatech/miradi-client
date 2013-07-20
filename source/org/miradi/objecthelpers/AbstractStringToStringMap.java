@@ -24,6 +24,7 @@ import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -151,6 +152,11 @@ abstract public class AbstractStringToStringMap
 					"Attempted to remove non-existant code: " + code
 							+ " from: " + toString());
 		data.remove(code);
+	}
+	
+	public Set<String> getCodes()
+	{
+		return data.keySet();
 	}
 	
 	abstract protected String getMapTag();
