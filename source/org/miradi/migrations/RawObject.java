@@ -29,7 +29,7 @@ public class RawObject extends LinkedHashMap<String, String>
 {
 	public RawObject(ORef ref)
 	{
-		objectType = ref.getObjectType();
+		this(ref.getObjectType());
 	}
 
 	public RawObject(int objectTypeToUse)
