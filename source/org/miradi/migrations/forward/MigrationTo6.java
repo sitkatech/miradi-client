@@ -45,7 +45,7 @@ public class MigrationTo6 extends AbstractSingleTypeMigration
 	public Vector<RawObjectVisitor> createRawObjectForwardMigrationVisitors()
 	{
 		Vector<RawObjectVisitor> visitors = super.createRawObjectForwardMigrationVisitors();
-		visitors.add(new IndictorVisitor());
+		visitors.add(new IndicatorVisitor());
 		
 		return visitors;
 	}
@@ -68,7 +68,7 @@ public class MigrationTo6 extends AbstractSingleTypeMigration
 		return new VersionRange(VERSION_LOW, VERSION_HIGH);
 	}
 	
-	private class IndictorVisitor extends AbstractVisitor
+	private class IndicatorVisitor extends AbstractVisitor
 	{
 		public int getTypeToVisit()
 		{
