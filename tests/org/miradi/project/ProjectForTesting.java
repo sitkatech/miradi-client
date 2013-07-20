@@ -1347,9 +1347,15 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void addThresholdWithXmlEscapedData(Indicator indicator) throws Exception
 	{
+		addPoorThresholdValue(indicator, "&gt;50%");
+	}
+
+	public void addPoorThresholdValue(Indicator indicator, final String thresholdValue) throws Exception
+	{
 		CodeToUserStringMap threshold = new CodeToUserStringMap();
-		threshold.putUserString(StatusQuestion.POOR, "&gt;50%");
+		threshold.putUserString(StatusQuestion.POOR, thresholdValue);
 		fillObjectUsingCommand(indicator, Indicator.TAG_THRESHOLDS_MAP, threshold.toJsonString());
+		fillObjectUsingCommand(indicator, Indicator.TAG_THRESHOLD_DETAILS_MAP, threshold.toJsonString());
 	}
 	
 	public void populateIndicator(Indicator indicator) throws Exception

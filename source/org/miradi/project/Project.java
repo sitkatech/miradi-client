@@ -1469,6 +1469,6 @@ public class Project
 	
 	public CommandExecutor commandExecutor;
 	
-	public static final int VERSION_LOW = 5;
-	public static final int VERSION_HIGH = 5;
+	public static final int VERSION_LOW = 6;
+	public static final int VERSION_HIGH = 6;
 }

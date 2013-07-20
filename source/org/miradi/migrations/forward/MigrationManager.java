@@ -87,6 +87,7 @@ public class MigrationManager extends AbstractMigrationManager
 		Vector<AbstractMigration> migrations = new Vector<AbstractMigration>();
 		migrations.add(new MigrationTo4(rawProject));
 		migrations.add(new MigrationTo5(rawProject));
+		migrations.add(new MigrationTo6(rawProject));
 		
 		return migrations;
 	}
