@@ -52,12 +52,12 @@ public class TestMigrationTo6 extends AbstractTestMigration
 	
 	public void testWithIndicatorWithEscapedThreshold() throws Exception
 	{
-		verifyThresholdsAfterMigration(1, "5 &lt; 100", "5 &lt; 100");
+		verifyThresholdsAfterMigration(1, "5 &amp; &lt; &gt; &quot; &apos; 100", "5 &amp; &lt; &gt; &quot; &apos; 100");
 	}
 	
 	public void testWithIndicatorWithUnescapedThreshold() throws Exception
 	{
-		verifyThresholdsAfterMigration(1, "1 &lt; 2", "1 < 2");
+		verifyThresholdsAfterMigration(1, "1 &amp; &lt; &gt; &quot; &apos; 2", "1 & < > \" ' 2");
 	}
 	
 	private void verifyThresholdsAfterMigration(int indicatorCount, String expectedValue, String actualValue) throws Exception
