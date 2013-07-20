@@ -127,6 +127,7 @@ public class MiradiLogger
 		try
 		{
 			exceptionDestination.println("Miradi Version = " + VersionConstants.getVersion());
+			exceptionDestination.println("Build = " + VersionConstants.getTimestamp());
 			exceptionDestination.println("Java Version = " + EAM.getJavaVersion());
 			exceptionDestination.println("OS Name = " + System.getProperty("os.name"));
 			exceptionDestination.println("OS Version = " + System.getProperty("os.version"));
