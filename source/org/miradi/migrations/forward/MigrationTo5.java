@@ -28,7 +28,6 @@ import org.miradi.migrations.RawObject;
 import org.miradi.migrations.RawObjectVisitor;
 import org.miradi.migrations.RawProject;
 import org.miradi.migrations.VersionRange;
-import org.miradi.objects.Strategy;
 import org.miradi.schemas.StrategySchema;
 
 public class MigrationTo5 extends AbstractSingleTypeMigration
@@ -75,15 +74,15 @@ public class MigrationTo5 extends AbstractSingleTypeMigration
 		@Override
 		public void internalVisit(RawObject rawObject) throws Exception
 		{
-			if (rawObject.containsKey(Strategy.TAG_STATUS))
+			if (rawObject.containsKey(TAG_STATUS))
 				updateDefaultRealStatusCode(rawObject);
 		}
 		
 		private void updateDefaultRealStatusCode(RawObject strategy)
 		{
-			String strategyStatusCode = strategy.get(Strategy.TAG_STATUS);
+			String strategyStatusCode = strategy.get(TAG_STATUS);
 			if (strategyStatusCode.equals(LEGACY_DEFAULT_STRATEGY_STATUS_REAL))
-				strategy.put(Strategy.TAG_STATUS, "");
+				strategy.put(TAG_STATUS, "");
 		}
 	}
 	
@@ -91,4 +90,5 @@ public class MigrationTo5 extends AbstractSingleTypeMigration
 	private static final int VERSION_HIGH = 4;
 
 	public static final String LEGACY_DEFAULT_STRATEGY_STATUS_REAL = "Real";
+	private static final String TAG_STATUS = "Status";
 }
