@@ -30,7 +30,6 @@ import org.miradi.migrations.RawObjectVisitor;
 import org.miradi.migrations.RawProject;
 import org.miradi.migrations.VersionRange;
 import org.miradi.objecthelpers.CodeToUserStringMap;
-import org.miradi.objects.Indicator;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.XmlUtilities2;
 
@@ -78,8 +77,8 @@ public class MigrationTo6 extends AbstractSingleTypeMigration
 		@Override
 		public void internalVisit(RawObject indicator) throws Exception
 		{
-			escapeThresholdValues(indicator, Indicator.TAG_THRESHOLDS_MAP);
-			escapeThresholdValues(indicator, Indicator.TAG_THRESHOLD_DETAILS_MAP);
+			escapeThresholdValues(indicator, TAG_THRESHOLDS_MAP);
+			escapeThresholdValues(indicator, TAG_THRESHOLD_DETAILS_MAP);
 		}
 
 		private void escapeThresholdValues(RawObject indicator, final String tag) throws Exception
@@ -105,4 +104,7 @@ public class MigrationTo6 extends AbstractSingleTypeMigration
 	
 	private static final int VERSION_LOW = 5;
 	private static final int VERSION_HIGH = 5;
+	
+	private static final String TAG_THRESHOLDS_MAP = "IndicatorThresholds";
+	private static final String TAG_THRESHOLD_DETAILS_MAP = "ThresholdDetails";
 }
