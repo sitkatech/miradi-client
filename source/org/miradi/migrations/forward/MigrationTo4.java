@@ -228,9 +228,9 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 		}
 	}
 	
-	private static final String TAG_FUTURE_STATUS_REFS = "FutureStatusRefs";
-	private static final String TAG_FUTURE_STATUS_DATE = "Date";
-	
 	private static final int VERSION_LOW = 3;
 	private static final int VERSION_HIGH = 3;
+	
+	private static final String TAG_FUTURE_STATUS_REFS = "FutureStatusRefs";
+	private static final String TAG_FUTURE_STATUS_DATE = "Date";
 }
