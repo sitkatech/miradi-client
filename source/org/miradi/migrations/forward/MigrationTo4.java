@@ -38,7 +38,6 @@ import org.miradi.migrations.VersionRange;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Indicator;
 import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.IndicatorSchema;
 
@@ -104,7 +103,7 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 			final BaseId nextHighestId = getRawProject().getNextHighestId();
 			final ORef newFutureStatusRef = new ORef(ObjectType.FUTURE_STATUS, nextHighestId);
 			futureStatusPool.put(newFutureStatusRef, newFutureStatus);
-			rawObject.put(Indicator.TAG_FUTURE_STATUS_REFS, new ORefList(newFutureStatusRef));
+			rawObject.put(TAG_FUTURE_STATUS_REFS, new ORefList(newFutureStatusRef));
 		}
 
 		private RawPool getOrCreateFutureStatusPool()
@@ -166,10 +165,10 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 		@Override
 		public void internalVisit(RawObject indicator) throws Exception 
 		{
-			if (!indicator.containsKey(Indicator.TAG_FUTURE_STATUS_REFS))
+			if (!indicator.containsKey(TAG_FUTURE_STATUS_REFS))
 				return;
 			
-			ORefList futureStatusRefs = new ORefList(indicator.get(Indicator.TAG_FUTURE_STATUS_REFS));
+			ORefList futureStatusRefs = new ORefList(indicator.get(TAG_FUTURE_STATUS_REFS));
 			if (futureStatusRefs.isEmpty())
 				return;
 
@@ -201,7 +200,7 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 
 		private void clearIndicatorFutureStatusField(RawObject indicator)
 		{
-			indicator.remove(Indicator.TAG_FUTURE_STATUS_REFS);
+			indicator.remove(TAG_FUTURE_STATUS_REFS);
 		}
 
 		private RawObject getLatestFutureStatusRef(ORefList futureStatusRefs)
@@ -222,12 +221,15 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 	{
 		public int compare(RawObject rawObject1, RawObject rawObject2)
 		{
-			String date1 = rawObject1.get(FutureStatusSchema.TAG_FUTURE_STATUS_DATE);
-			String date2 = rawObject2.get(FutureStatusSchema.TAG_FUTURE_STATUS_DATE);
+			String date1 = rawObject1.get(TAG_FUTURE_STATUS_DATE);
+			String date2 = rawObject2.get(TAG_FUTURE_STATUS_DATE);
 			
 			return date2.compareTo(date1);
 		}
 	}
+	
+	private static final String TAG_FUTURE_STATUS_REFS = "FutureStatusRefs";
+	private static final String TAG_FUTURE_STATUS_DATE = "Date";
 	
 	private static final int VERSION_LOW = 3;
 	private static final int VERSION_HIGH = 3;
