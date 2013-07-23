@@ -45,7 +45,7 @@ public class MigrationTo5 extends AbstractSingleTypeMigration
 		
 		return visitors;
 	}
-
+	
 	@Override
 	public VersionRange getPostForwardMigrationVersionRange() throws Exception
 	{
@@ -63,14 +63,14 @@ public class MigrationTo5 extends AbstractSingleTypeMigration
 	{
 		return new VersionRange(VERSION_LOW, VERSION_HIGH);
 	}
-	
-	private class StrategyVisitor extends AbstractVisitor
+
+	abstract private class AbstractStrategyVisitor extends AbstractVisitor
 	{
 		public int getTypeToVisit()
 		{
 			return StrategySchema.getObjectType();
 		}
-
+		
 		@Override
 		public void internalVisit(RawObject rawObject) throws Exception
 		{
@@ -78,11 +78,22 @@ public class MigrationTo5 extends AbstractSingleTypeMigration
 				updateDefaultRealStatusCode(rawObject);
 		}
 		
-		private void updateDefaultRealStatusCode(RawObject strategy)
+		public void possiblyChangeDefaultStatusCode(RawObject strategy, final String defaultCodeToReplace, final String replacementDefaultCode)
 		{
 			String strategyStatusCode = strategy.get(TAG_STATUS);
-			if (strategyStatusCode.equals(LEGACY_DEFAULT_STRATEGY_STATUS_REAL))
-				strategy.put(TAG_STATUS, "");
+			if (strategyStatusCode.equals(defaultCodeToReplace))
+				strategy.put(TAG_STATUS, replacementDefaultCode);
+		}
+		
+		abstract protected void updateDefaultRealStatusCode(RawObject strategy);
+	}
+	
+	private class StrategyVisitor extends AbstractStrategyVisitor
+	{
+		@Override
+		protected void updateDefaultRealStatusCode(RawObject strategy)
+		{
+			possiblyChangeDefaultStatusCode(strategy, LEGACY_DEFAULT_STRATEGY_STATUS_REAL, "");
 		}
 	}
 	
