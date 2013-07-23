@@ -157,7 +157,8 @@
   <target name="build" depends="init, ThirdParty" description="Compile Miradi">
     <mkdir dir="${eam.class.root}"/>
 
-    <javac source="1.5" target="1.5" compiler="javac1.5" optimize="on" failonerror="true" 
+    <javac source="1.5" target="1.5" compiler="javac1.5" optimize="on" failonerror="true"
+			debug="true" debuglevel="lines,vars,source"
     		srcdir="${eam.src.root}" destdir="${eam.class.root}" >
     	<compilerarg value="-Xlint:unchecked" />
     	<compilerarg value="-Werror" />
