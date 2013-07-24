@@ -65,7 +65,6 @@ public class MigrationManager extends AbstractMigrationManager
 		return convertToMpfString(rawProject);
 	}
 
-	//FIXME, migrate forward and reverse need to be refactored to eliminate dupe code
 	public String migrateReverse(String mpfAsString) throws Exception
 	{
 		RawProject rawProject = RawProjectLoader.loadProject(mpfAsString);
