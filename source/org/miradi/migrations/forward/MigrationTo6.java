@@ -50,21 +50,21 @@ public class MigrationTo6 extends AbstractSingleTypeMigration
 	}
 
 	@Override
-	public VersionRange getPostForwardMigrationVersionRange() throws Exception
-	{
-		return getMigratableVersionRange().incrementByOne();
-	}
-	
-	@Override
-	public VersionRange getPostReverseMigrationVersionRange() throws Exception
-	{
-		return getMigratableVersionRange().decrementByOne();
-	}
-	
-	@Override
 	public VersionRange getMigratableVersionRange() throws Exception
 	{
 		return new VersionRange(VERSION_LOW, VERSION_HIGH);
+	}
+	
+	@Override
+	protected int getToVersion()
+	{
+		return 6;
+	}
+	
+	@Override
+	protected int getFromVersion() 
+	{
+		return 5;
 	}
 	
 	private class IndicatorVisitor extends AbstractVisitor

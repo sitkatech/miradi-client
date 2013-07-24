@@ -26,6 +26,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Strategy;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.questions.StrategyStatusQuestion;
+import org.miradi.schemas.StrategySchema;
 
 public class TestMigrationTo5 extends AbstractTestMigration
 {
@@ -59,10 +60,10 @@ public class TestMigrationTo5 extends AbstractTestMigration
 		for (int index = 0; index < strategyCount; ++index)
 		{
 			Strategy strategy = getProject().createStrategy();
-			getProject().fillObjectUsingCommand(strategy, Strategy.TAG_STATUS, strategyStatusCode);
+			getProject().fillObjectUsingCommand(strategy, MigrationTo5.TAG_STATUS, strategyStatusCode);
 		}
 
-		ProjectForTesting migratedProject = migrateProject(new VersionRange(4, 4));
+		ProjectForTesting migratedProject = migrateProject(new VersionRange(MigrationTo5.FROM_VERSION));
 		ORefList migratedStrategyRefs = migratedProject.getStrategyPool().getORefList();
 		assertTrue("Incorrect number of strategies after migration?", migratedStrategyRefs.size() == strategyCount);
 		
@@ -72,6 +73,38 @@ public class TestMigrationTo5 extends AbstractTestMigration
 			Strategy migratedStrategy = Strategy.find(migratedProject, migratedStrategyRef);
 			String migratedStrategyStatus = migratedStrategy.getData(Strategy.TAG_STATUS);
 			assertEquals("Incorrect migrated strategy status?", expectedStrategyStatusCode, migratedStrategyStatus);
+		}
+	}
+	
+	public void testReverseMigrateWithStrategy() throws Exception
+	{
+		verifyReverseMigratingDefautStatusCode(MigrationTo5.LEGACY_DEFAULT_STRATEGY_STATUS_REAL, "", 1);
+	}
+	
+	public void testReverseMigrateStrategyWithStatusReal() throws Exception
+	{
+		verifyReverseMigratingDefautStatusCode(MigrationTo5.LEGACY_DEFAULT_STRATEGY_STATUS_REAL, "", 2);
+	}
+
+	private void verifyReverseMigratingDefautStatusCode(String expectedStatusCode, String strategyStatusCode, int strategyCount) throws Exception
+	{
+		for (int index = 0; index < strategyCount; ++index)
+		{
+			Strategy strategy = getProject().createStrategy();
+			getProject().fillObjectUsingCommand(strategy, MigrationTo5.TAG_STATUS, strategyStatusCode);
+		}
+		
+		RawProject migratedProject = reverseMigrateProject(new VersionRange(MigrationTo5.TO_VERSION));
+		final RawPool strategyRawPool = migratedProject.getRawPoolForType(StrategySchema.getObjectType());
+		ORefList migratedStrategyRefs = strategyRawPool.getSortedReflist();
+		assertTrue("Incorrect number of strategies after migration?", migratedStrategyRefs.size() == strategyCount);
+		
+		for (int index = 0; index < migratedStrategyRefs.size(); ++index)
+		{
+			ORef migratedStrategyRef = migratedStrategyRefs.get(index);
+			RawObject migratedStrategy = strategyRawPool.get(migratedStrategyRef);
+			String migratedStrategyStatus = migratedStrategy.get(MigrationTo5.TAG_STATUS);
+			assertEquals("Incorrect migrated strategy status?", expectedStatusCode, migratedStrategyStatus);
 		}
 	}
 }

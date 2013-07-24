@@ -79,6 +79,8 @@ public class TestMigrationTo6 extends AbstractTestMigration
 			verifyThresholdValue(migratedIndicator.getThresholdDetailsMap(), expectedValue);
 			verifyThresholdValue(migratedIndicator.getThresholdsMap().getCodeToUserStringMap(), expectedValue);
 		}
+		
+		verifyFullCircleMigrations(new VersionRange(6, 6));
 	}
 
 	public void verifyThresholdValue(CodeToUserStringMap thresholdMap, String expectedThresholdValue)

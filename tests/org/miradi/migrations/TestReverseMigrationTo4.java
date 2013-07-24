@@ -94,7 +94,7 @@ public class TestReverseMigrationTo4 extends AbstractTestReverseMigration
 	private RawProject reverseMigrateProject() throws Exception, IOException
 	{
 		MigrationManager migrationManager = new MigrationManager();
-		String projectAsString = ProjectSaverForTesting.createSnapShot(getProject(), new VersionRange(3, 3));
+		String projectAsString = ProjectSaverForTesting.createSnapShot(getProject(), new VersionRange(4, 4));
 		String migratedMpfFile = migrationManager.migrateReverse(projectAsString);
 	
 		return RawProjectLoader.loadProject(new UnicodeStringReader(migratedMpfFile));

@@ -47,15 +47,11 @@ public class MigrationTo5 extends AbstractSingleTypeMigration
 	}
 	
 	@Override
-	public VersionRange getPostForwardMigrationVersionRange() throws Exception
+	public Vector<RawObjectVisitor> createRawObjectReverseMigrationVisitors()
 	{
-		return getMigratableVersionRange().incrementByOne();
-	}
-	
-	@Override
-	public VersionRange getPostReverseMigrationVersionRange() throws Exception
-	{
-		return getMigratableVersionRange().decrementByOne();
+		final Vector<RawObjectVisitor> visitors = super.createRawObjectReverseMigrationVisitors();
+		visitors.add(new ReverseStrategyVisitor());
+		return visitors;
 	}
 	
 	@Override
@@ -63,7 +59,19 @@ public class MigrationTo5 extends AbstractSingleTypeMigration
 	{
 		return new VersionRange(VERSION_LOW, VERSION_HIGH);
 	}
+	
+	@Override
+	protected int getToVersion()
+	{
+		return TO_VERSION;
+	}
 
+	@Override
+	protected int getFromVersion() 
+	{
+		return FROM_VERSION;
+	}
+	
 	abstract private class AbstractStrategyVisitor extends AbstractVisitor
 	{
 		public int getTypeToVisit()
@@ -76,6 +84,8 @@ public class MigrationTo5 extends AbstractSingleTypeMigration
 		{
 			if (rawObject.containsKey(TAG_STATUS))
 				updateDefaultRealStatusCode(rawObject);
+			else
+				updateNonExistingFieldWithoutDefaultValue(rawObject);
 		}
 		
 		public void possiblyChangeDefaultStatusCode(RawObject strategy, final String defaultCodeToReplace, final String replacementDefaultCode)
@@ -83,6 +93,10 @@ public class MigrationTo5 extends AbstractSingleTypeMigration
 			String strategyStatusCode = strategy.get(TAG_STATUS);
 			if (strategyStatusCode.equals(defaultCodeToReplace))
 				strategy.put(TAG_STATUS, replacementDefaultCode);
+		}
+		
+		protected void updateNonExistingFieldWithoutDefaultValue(RawObject rawObject)
+		{
 		}
 		
 		abstract protected void updateDefaultRealStatusCode(RawObject strategy);
@@ -97,9 +111,26 @@ public class MigrationTo5 extends AbstractSingleTypeMigration
 		}
 	}
 	
+	private class ReverseStrategyVisitor extends AbstractStrategyVisitor
+	{
+		@Override
+		protected void updateDefaultRealStatusCode(RawObject strategy)
+		{
+			possiblyChangeDefaultStatusCode(strategy, "", LEGACY_DEFAULT_STRATEGY_STATUS_REAL);
+		}
+		
+		@Override
+		protected void updateNonExistingFieldWithoutDefaultValue(RawObject strategy)
+		{
+			strategy.put(TAG_STATUS, LEGACY_DEFAULT_STRATEGY_STATUS_REAL);
+		}
+	}
+	
 	private static final int VERSION_LOW = 4;
 	private static final int VERSION_HIGH = 4;
 
+	public static final int TO_VERSION = 5;
+	public static final int FROM_VERSION = 4;
 	public static final String LEGACY_DEFAULT_STRATEGY_STATUS_REAL = "Real";
-	private static final String TAG_STATUS = "Status";
+	public static final String TAG_STATUS = "Status";
 }
