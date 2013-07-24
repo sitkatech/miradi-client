@@ -34,6 +34,12 @@ abstract public class AbstractMigration
 	{
 		return getMigratableVersionRange().doesContainHigh(versionRange.getHighVersion());
 	}
+	
+	public boolean canReverseMigrateThisVersion(VersionRange versionRange) throws Exception
+	{
+		final VersionRange migratableVersionRange = getMigratableVersionRange();
+		return versionRange.isEntirelyNewerThan(migratableVersionRange);
+	}
 
 	protected RawProject getRawProject()
 	{
@@ -54,8 +60,9 @@ abstract public class AbstractMigration
 	{
 		final Vector<RawObjectVisitor> rawObjectForwardMigrationVisitors = createRawObjectForwardMigrationVisitors();
 		final VersionRange postMigrationVersionRange = getPostForwardMigrationVersionRange();
-		
-		migrateIfPossible(rawObjectForwardMigrationVisitors, postMigrationVersionRange);
+
+		if (canMigrateThisVersion(getRawProject().getCurrentVersionRange()))
+			migrate(rawObjectForwardMigrationVisitors, postMigrationVersionRange);
 	}
 	
 	public void reverseMigrateIfPossible() throws Exception
@@ -63,23 +70,31 @@ abstract public class AbstractMigration
 		final Vector<RawObjectVisitor> rawObjectReverseMigrationVisitors = createRawObjectReverseMigrationVisitors();
 		final VersionRange postMigrationVersionRange = getPostReverseMigrationVersionRange();
 		
-		migrateIfPossible(rawObjectReverseMigrationVisitors, postMigrationVersionRange);
+		if (canReverseMigrateThisVersion(getRawProject().getCurrentVersionRange()))
+			migrate(rawObjectReverseMigrationVisitors, postMigrationVersionRange);
 	}
 
-	private void migrateIfPossible(final Vector<RawObjectVisitor> rawObjectVisitors, final VersionRange postMigrationVersionRange) throws Exception
+	private void migrate(final Vector<RawObjectVisitor> rawObjectVisitors, final VersionRange postMigrationVersionRange) throws Exception
 	{
-		if (canMigrateThisVersion(getRawProject().getCurrentVersionRange()))
-		{
-			getRawProject().visitAllObjectsInPool(rawObjectVisitors);
-			getRawProject().setCurrentVersionRange(postMigrationVersionRange);
-		}
+		getRawProject().visitAllObjectsInPool(rawObjectVisitors);
+		getRawProject().setCurrentVersionRange(postMigrationVersionRange);
 	}
+
+	private VersionRange getPostForwardMigrationVersionRange() throws Exception
+	{
+		return new VersionRange(getToVersion());
+	}
+
+	private VersionRange getPostReverseMigrationVersionRange() throws Exception
+	{
+		return new VersionRange(getFromVersion());
+	}
+	
+	abstract protected int getToVersion();
+	
+	abstract protected int getFromVersion(); 
 	
 	abstract public VersionRange getMigratableVersionRange() throws Exception;
 	
-	abstract public VersionRange getPostForwardMigrationVersionRange() throws Exception;
-	
-	abstract public VersionRange getPostReverseMigrationVersionRange() throws Exception;
-
 	private RawProject rawProject;
 }

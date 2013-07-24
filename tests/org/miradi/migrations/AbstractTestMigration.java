@@ -20,14 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
-import java.io.IOException;
-
 import org.martus.util.UnicodeStringReader;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.migrations.forward.MigrationManager;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.project.ProjectLoader;
+import org.miradi.project.ProjectSaver;
 import org.miradi.project.ProjectSaverForTesting;
+import org.miradi.project.RawProjectSaver;
 
 public class AbstractTestMigration extends TestCaseWithProject
 {
@@ -36,7 +36,7 @@ public class AbstractTestMigration extends TestCaseWithProject
 		super(name);
 	}
 	
-	protected ProjectForTesting migrateProject(final VersionRange versionRangeToUse) throws Exception, IOException
+	protected ProjectForTesting migrateProject(final VersionRange versionRangeToUse) throws Exception
 	{
 		MigrationManager migrationManager = new MigrationManager();
 		String projectAsString = ProjectSaverForTesting.createSnapShot(getProject(), versionRangeToUse);
@@ -47,4 +47,24 @@ public class AbstractTestMigration extends TestCaseWithProject
 		
 		return migratedProject;
 	}	
+	
+	protected RawProject reverseMigrateProject(final VersionRange versionRangeToUse) throws Exception
+	{
+		MigrationManager migrationManager = new MigrationManager();
+		String projectAsString = ProjectSaverForTesting.createSnapShot(getProject(), versionRangeToUse);
+		String migratedMpfFile = migrationManager.migrateReverse(projectAsString);
+
+		return RawProjectLoader.loadProject(new UnicodeStringReader(migratedMpfFile));
+	}
+	
+	protected void verifyFullCircleMigrations(final VersionRange versionRangeToUse) throws Exception
+	{
+		String beforeForwardMigration = ProjectSaver.createSnapShot(getProject());
+		migrateProject(versionRangeToUse);
+		
+		RawProject reverseMigratedProject = reverseMigrateProject(versionRangeToUse);
+		String afterReverseMigration = RawProjectSaver.saveProject(reverseMigratedProject, versionRangeToUse);
+		
+		assertEquals("Full circle migration results are not the same?", beforeForwardMigration, afterReverseMigration);
+	}
 }

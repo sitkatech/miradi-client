@@ -34,6 +34,14 @@ import org.miradi.project.threatrating.ThreatRatingBundle;
 
 public class RawProjectSaver extends AbstractMiradiProjectSaver
 {
+	public static String saveProject(final RawProject projectToUse, VersionRange versionRangeToUse) throws Exception
+	{
+		UnicodeStringWriter stringWriter = UnicodeStringWriter.create();
+		saveProject(projectToUse, stringWriter, versionRangeToUse.getLowVersion(), versionRangeToUse.getHighVersion());
+		
+		return stringWriter.toString();
+	}
+
 	public static void saveProject(final RawProject projectToUse, final UnicodeStringWriter writerToUse, VersionRange versionRangeToUse) throws Exception
 	{
 		saveProject(projectToUse, writerToUse, versionRangeToUse.getLowVersion(), versionRangeToUse.getHighVersion());
