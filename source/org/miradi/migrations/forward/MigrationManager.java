@@ -74,9 +74,10 @@ public class MigrationManager extends AbstractMigrationManager
 		RawProject rawProject = RawProjectLoader.loadProject(new UnicodeStringReader(mpfAsString));
 		rawProject.setCurrentVersionRange(versionRange);
 		Vector<AbstractMigration> migrations = createEmptyMigrations(rawProject);
-		for(AbstractMigration abstractMigration : migrations)
+		for(int index = migrations.size() - 1; index >= 0; --index)
 		{
-			abstractMigration.reverseMigrateIfPossible();	
+			AbstractMigration migration = migrations.get(index);
+			migration.reverseMigrateIfPossible();	
 		}
 		
 		return convertToMpfString(rawProject);
