@@ -20,13 +20,25 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
+import java.io.IOException;
+
 import org.martus.util.UnicodeReader;
+import org.martus.util.UnicodeStringReader;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.AbstractProjectLoader;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 
 public class RawProjectLoader extends AbstractProjectLoader
 {
+	public static RawProject loadProject(String mpfAsString) throws Exception, IOException
+	{
+		VersionRange versionRange = loadVersionRange(new UnicodeStringReader(mpfAsString));
+		RawProject rawProject = loadProject(new UnicodeStringReader(mpfAsString));
+		rawProject.setCurrentVersionRange(versionRange);
+		
+		return rawProject;
+	}
+	
 	public static RawProject loadProject(final UnicodeReader reader) throws Exception
 	{
 		final RawProjectLoader projectLoader = new RawProjectLoader(reader);

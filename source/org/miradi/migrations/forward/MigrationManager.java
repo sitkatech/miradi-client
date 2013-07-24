@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.migrations.forward;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Vector;
 
 import org.martus.util.UnicodeReader;
@@ -56,7 +55,7 @@ public class MigrationManager extends AbstractMigrationManager
 
 	public String migrateForward(String mpfAsString) throws Exception
 	{
-		RawProject rawProject = createRawProject(mpfAsString);
+		RawProject rawProject = RawProjectLoader.loadProject(mpfAsString);
 		Vector<AbstractMigration> migrations = createEmptyMigrations(rawProject);
 		for(AbstractMigration abstractMigration : migrations)
 		{
@@ -69,7 +68,7 @@ public class MigrationManager extends AbstractMigrationManager
 	//FIXME, migrate forward and reverse need to be refactored to eliminate dupe code
 	public String migrateReverse(String mpfAsString) throws Exception
 	{
-		RawProject rawProject = createRawProject(mpfAsString);
+		RawProject rawProject = RawProjectLoader.loadProject(mpfAsString);
 		Vector<AbstractMigration> migrations = createEmptyMigrations(rawProject);
 		for(int index = migrations.size() - 1; index >= 0; --index)
 		{
@@ -78,14 +77,6 @@ public class MigrationManager extends AbstractMigrationManager
 		}
 		
 		return convertToMpfString(rawProject);
-	}
-
-	private RawProject createRawProject(String mpfAsString) throws Exception, IOException
-	{
-		VersionRange versionRange = RawProjectLoader.loadVersionRange(new UnicodeStringReader(mpfAsString));
-		RawProject rawProject = RawProjectLoader.loadProject(new UnicodeStringReader(mpfAsString));
-		rawProject.setCurrentVersionRange(versionRange);
-		return rawProject;
 	}
 
 	private Vector<AbstractMigration> createEmptyMigrations(RawProject rawProject)
