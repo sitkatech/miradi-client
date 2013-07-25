@@ -58,26 +58,25 @@ abstract public class AbstractMigration
 	
 	public void forwardMigrateIfPossible() throws Exception
 	{
-		final Vector<RawObjectVisitor> rawObjectForwardMigrationVisitors = createRawObjectForwardMigrationVisitors();
-		final VersionRange postMigrationVersionRange = getPostForwardMigrationVersionRange();
-
 		if (canMigrateThisVersion(getRawProject().getCurrentVersionRange()))
 		{
+			final Vector<RawObjectVisitor> rawObjectForwardMigrationVisitors = createRawObjectForwardMigrationVisitors();
 			getRawProject().visitAllObjectsInPool(rawObjectForwardMigrationVisitors);
-			getRawProject().setCurrentVersionRange(postMigrationVersionRange);
 		}
+		final VersionRange postMigrationVersionRange = getPostForwardMigrationVersionRange();
+		getRawProject().setCurrentVersionRange(postMigrationVersionRange);
 	}
 	
 	public void reverseMigrateIfPossible() throws Exception
 	{
-		final Vector<RawObjectVisitor> rawObjectReverseMigrationVisitors = createRawObjectReverseMigrationVisitors();
-		final VersionRange postMigrationVersionRange = getPostReverseMigrationVersionRange();
 		
 		if (canReverseMigrateThisVersion(getRawProject().getCurrentVersionRange()))
 		{
+			final Vector<RawObjectVisitor> rawObjectReverseMigrationVisitors = createRawObjectReverseMigrationVisitors();
 			getRawProject().visitAllObjectsInPool(rawObjectReverseMigrationVisitors);
-			getRawProject().setCurrentVersionRange(postMigrationVersionRange);
 		}
+		final VersionRange postMigrationVersionRange = getPostReverseMigrationVersionRange();
+		getRawProject().setCurrentVersionRange(postMigrationVersionRange);
 	}
 
 	private VersionRange getPostForwardMigrationVersionRange() throws Exception
