@@ -28,7 +28,7 @@ public class AbstractMigrationManager
 	protected String convertToMpfString(RawProject migratedPools) throws Exception
 	{
 		UnicodeStringWriter stringWriter = UnicodeStringWriter.create();
-		RawProjectSaver.saveProject(migratedPools, stringWriter, migratedPools.getCurrentVersionRange());
+		RawProjectSaver.saveProject(migratedPools, stringWriter);
 		
 		return stringWriter.toString();
 	}
