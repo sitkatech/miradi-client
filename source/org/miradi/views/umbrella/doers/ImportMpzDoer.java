@@ -29,9 +29,7 @@ public class ImportMpzDoer extends ViewDoer
 	@Override
 	public boolean isAvailable() 
 	{
-		//FIXME uncomment this when import mpz is working again
-		//return !getProject().isOpen();
-		return false;
+		return !getProject().isOpen();
 	}
 	
 	@Override
