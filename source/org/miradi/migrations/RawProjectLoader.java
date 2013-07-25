@@ -33,18 +33,12 @@ public class RawProjectLoader extends AbstractProjectLoader
 	public static RawProject loadProject(String mpfAsString) throws Exception, IOException
 	{
 		VersionRange versionRange = loadVersionRange(new UnicodeStringReader(mpfAsString));
-		RawProject rawProject = loadProject(new UnicodeStringReader(mpfAsString));
-		rawProject.setCurrentVersionRange(versionRange);
-		
-		return rawProject;
-	}
-	
-	public static RawProject loadProject(final UnicodeReader reader) throws Exception
-	{
-		final RawProjectLoader projectLoader = new RawProjectLoader(reader);
+		final RawProjectLoader projectLoader = new RawProjectLoader(new UnicodeStringReader(mpfAsString));
 		projectLoader.load();
 		
-		return projectLoader.getRawProject();
+		final RawProject rawProject = projectLoader.getRawProject();
+		rawProject.setCurrentVersionRange(versionRange);
+		return rawProject;
 	}
 	
 	public static VersionRange loadVersionRange(final UnicodeReader reader) throws Exception

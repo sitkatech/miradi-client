@@ -38,8 +38,13 @@ public class AbstractTestMigration extends TestCaseWithProject
 	
 	protected ProjectForTesting migrateProject(final VersionRange versionRangeToUse) throws Exception
 	{
-		MigrationManager migrationManager = new MigrationManager();
 		String projectAsString = ProjectSaverForTesting.createSnapShot(getProject(), versionRangeToUse);
+		return migrateProject(projectAsString);
+	}
+
+	protected ProjectForTesting migrateProject(String projectAsString) throws Exception
+	{
+		MigrationManager migrationManager = new MigrationManager();
 		String migratedMpfFile = migrationManager.migrateForward(projectAsString);
 		
 		ProjectForTesting migratedProject = ProjectForTesting.createProjectWithoutDefaultObjects("MigratedProject");
@@ -54,7 +59,7 @@ public class AbstractTestMigration extends TestCaseWithProject
 		String projectAsString = ProjectSaverForTesting.createSnapShot(getProject(), versionRangeToUse);
 		String migratedMpfFile = migrationManager.migrateReverse(projectAsString);
 
-		return RawProjectLoader.loadProject(new UnicodeStringReader(migratedMpfFile));
+		return RawProjectLoader.loadProject(migratedMpfFile);
 	}
 	
 	protected void verifyFullCircleMigrations(final VersionRange versionRangeToUse) throws Exception
@@ -63,8 +68,11 @@ public class AbstractTestMigration extends TestCaseWithProject
 		migrateProject(versionRangeToUse);
 		
 		RawProject reverseMigratedProject = reverseMigrateProject(versionRangeToUse);
-		String afterReverseMigration = RawProjectSaver.saveProject(reverseMigratedProject, versionRangeToUse);
+		String afterReverseMigration = RawProjectSaver.saveProject(reverseMigratedProject);
 		
-		assertEquals("Full circle migration results are not the same?", beforeForwardMigration, afterReverseMigration);
+		ProjectForTesting fullCircleBackProject = migrateProject(afterReverseMigration);
+		String fullCircleBackProjectAsString = ProjectSaver.createSnapShot(fullCircleBackProject);
+		
+		assertEquals("Full circle migration results are not the same?", beforeForwardMigration, fullCircleBackProjectAsString);
 	}
 }

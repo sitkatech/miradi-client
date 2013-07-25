@@ -20,12 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
-import org.martus.util.UnicodeStringReader;
 import org.martus.util.UnicodeStringWriter;
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.migrations.RawProject;
-import org.miradi.migrations.RawProjectLoader;
-import org.miradi.project.Project;
 import org.miradi.project.ProjectSaver;
 import org.miradi.project.RawProjectSaver;
 
@@ -40,10 +36,9 @@ public class TestRawProject extends TestCaseWithProject
 	{
 		getProject().populateEverything();
 		String projectMpfSnapShot = ProjectSaver.createSnapShot(getProject());
-		UnicodeStringReader reader  = new UnicodeStringReader(projectMpfSnapShot);
-		RawProject rawProject = RawProjectLoader.loadProject(reader);
+		RawProject rawProject = RawProjectLoader.loadProject(projectMpfSnapShot);
 		UnicodeStringWriter stringWriter = UnicodeStringWriter.create();
-		RawProjectSaver.saveProject(rawProject, stringWriter, Project.VERSION_LOW , Project.VERSION_HIGH);
+		RawProjectSaver.saveProject(rawProject, stringWriter);
 		
 		assertEquals("Project load and save as string is broken?", projectMpfSnapShot, stringWriter.toString());
 	}
