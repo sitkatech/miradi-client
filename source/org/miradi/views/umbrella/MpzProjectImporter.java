@@ -56,7 +56,7 @@ public class MpzProjectImporter extends AbstractProjectImporter
 		CpmzProjectImporter.possiblyNotifyUserOfAutoMigration(importFile);
 	}
 	
-	static class ImportMpzWorker extends MiradiBackgroundWorkerThread
+	private static class ImportMpzWorker extends MiradiBackgroundWorkerThread
 	{
 		protected ImportMpzWorker(File importFrom, File saveTo, ProgressInterface progressToNotify)
 		{

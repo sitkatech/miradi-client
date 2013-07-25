@@ -51,6 +51,7 @@ import org.miradi.migrations.Miradi40TypeToFieldSchameTypesMap;
 import org.miradi.migrations.RawObject;
 import org.miradi.migrations.RawPool;
 import org.miradi.migrations.RawProject;
+import org.miradi.migrations.VersionRange;
 import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
@@ -148,8 +149,9 @@ public class MpzToMpfConverter extends AbstractConverter
 				throw new CorruptSimpleThreatRatingDataException();
 				
 			RawProject project = converter.convert(progressIndicator);
+			project.setCurrentVersionRange(new VersionRange(FIRST_LOW_VERSION_OF_MPF, FIRST_HIGH_VERSION_OF_MPF));
 			UnicodeStringWriter writer = UnicodeStringWriter.create();
-			RawProjectSaver.saveProject(project, writer, FIRST_LOW_VERSION_OF_MPF, FIRST_HIGH_VERSION_OF_MPF);
+			RawProjectSaver.saveProject(project, writer);
 
 			return writer.toString();
 		}

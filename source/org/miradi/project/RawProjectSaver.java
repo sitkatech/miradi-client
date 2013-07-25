@@ -27,31 +27,23 @@ import org.martus.util.UnicodeStringWriter;
 import org.miradi.migrations.RawObject;
 import org.miradi.migrations.RawPool;
 import org.miradi.migrations.RawProject;
-import org.miradi.migrations.VersionRange;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 
 public class RawProjectSaver extends AbstractMiradiProjectSaver
 {
-	public static String saveProject(final RawProject projectToUse, VersionRange versionRangeToUse) throws Exception
+	public static String saveProject(final RawProject projectToUse) throws Exception
 	{
 		UnicodeStringWriter stringWriter = UnicodeStringWriter.create();
-		saveProject(projectToUse, stringWriter, versionRangeToUse.getLowVersion(), versionRangeToUse.getHighVersion());
+		saveProject(projectToUse, stringWriter);
 		
 		return stringWriter.toString();
 	}
 
-	public static void saveProject(final RawProject projectToUse, final UnicodeStringWriter writerToUse, VersionRange versionRangeToUse) throws Exception
-	{
-		saveProject(projectToUse, writerToUse, versionRangeToUse.getLowVersion(), versionRangeToUse.getHighVersion());
-	}
-	
-	public static void saveProject(final RawProject projectToUse, final UnicodeStringWriter writerToUse, int versionLow, int versionHigh) throws Exception
+	public static void saveProject(final RawProject projectToUse, final UnicodeStringWriter writerToUse) throws Exception
 	{
 		final RawProjectSaver projectSaver = new RawProjectSaver(projectToUse, writerToUse);
-		projectSaver.setVersionLow(versionLow);
-		projectSaver.setVersionHigh(versionHigh);
 		projectSaver.saveProject();
 	}
 	
@@ -92,25 +84,15 @@ public class RawProjectSaver extends AbstractMiradiProjectSaver
 	@Override
 	protected int getHighVersion()
 	{
-		return versionHigh;
+		return getRawProject().getCurrentVersionRange().getHighVersion();
 	}
 
 	@Override
 	protected int getLowVersion()
 	{
-		return versionLow;
+		return getRawProject().getCurrentVersionRange().getLowVersion();
 	}
 	
-	private void setVersionHigh(int versionHighToUse)
-	{
-		versionHigh = versionHighToUse;
-	}
-
-	private void setVersionLow(int versionLowToUse)
-	{
-		versionLow = versionLowToUse;
-	}
-
 	@Override
 	protected String getExceptionLog() throws Exception
 	{
@@ -153,6 +135,4 @@ public class RawProjectSaver extends AbstractMiradiProjectSaver
 	}
 	
 	private RawProject rawProject;
-	private int versionLow;
-	private int versionHigh;
 }

@@ -23,7 +23,6 @@ package org.miradi.migrations;
 import java.io.IOException;
 import java.util.Set;
 
-import org.martus.util.UnicodeStringReader;
 import org.miradi.migrations.forward.MigrationManager;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -97,6 +96,6 @@ public class TestReverseMigrationTo4 extends AbstractTestReverseMigration
 		String projectAsString = ProjectSaverForTesting.createSnapShot(getProject(), new VersionRange(4, 4));
 		String migratedMpfFile = migrationManager.migrateReverse(projectAsString);
 	
-		return RawProjectLoader.loadProject(new UnicodeStringReader(migratedMpfFile));
+		return RawProjectLoader.loadProject(migratedMpfFile);
 	}
 }
