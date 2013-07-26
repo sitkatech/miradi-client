@@ -144,7 +144,7 @@ public class RawProject
 	
 	public String getData(ORef ref, String tag)
 	{
-		return getRawPoolForType(ref).get(ref).get(tag);
+		return findObject(ref).getData(tag);
 	}
 	
 	public String setData(ORef ref, String tag, String data)
