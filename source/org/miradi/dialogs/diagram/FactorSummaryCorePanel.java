@@ -47,6 +47,7 @@ import org.miradi.questions.StrategyStatusQuestion;
 import org.miradi.questions.ThreatClassificationQuestion;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
@@ -105,6 +106,10 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 			addField(createStringField(Target.TAG_SPECIES_LATIN_NAME));
 			addField(createQuestionFieldWithDescriptionPanel(TargetSchema.getObjectType(), Target.TAG_HABITAT_ASSOCIATION, new HabitatAssociationQuestion()));
 			addField(createTaxonomyFields(TargetSchema.getObjectType()));
+		}
+		if (factorToEdit.isHumanWelfareTarget())
+		{
+			addField(createTaxonomyFields(HumanWelfareTargetSchema.getObjectType()));
 		}
 		if (factorToEdit.isThreatReductionResult())
 		{
