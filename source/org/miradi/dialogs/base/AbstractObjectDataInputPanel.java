@@ -667,7 +667,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new SingleCodeEditableField(getMainWindow(), getRefForType(objectType), tagToUse, question);
 	}
 	
-	public ObjectDataInputField createSingleTaxonomyEditorField(ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, String taxonomyAssociationCodeToUse)
+	public ObjectDataInputField createTaxonomyEditorField(ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, String taxonomyAssociationCodeToUse)
 	{
 		return new TaxonomyEditorField(getProject(), refToUse, tagToUse, questionToUse, taxonomyAssociationCodeToUse);
 	}
