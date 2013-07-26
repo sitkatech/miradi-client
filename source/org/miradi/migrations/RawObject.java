@@ -52,7 +52,7 @@ public class RawObject extends LinkedHashMap<String, String>
 		return objectType;
 	}
 
-	public String setObjectData(String tag, String data)
+	public String setData(String tag, String data)
 	{
 		return put(tag, data);
 	}
