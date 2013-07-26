@@ -61,6 +61,11 @@ public class RawProject
 		return typeToRawPoolMap.get(type);
 	}
 	
+	public RawPool getRawPoolForType(ORef ref)	
+	{		
+		return typeToRawPoolMap.get(ref.getObjectType());
+	}
+	
 	public RawObject findObject(ORef ref)
 	{
 		return getRawPoolForType(ref.getObjectType()).get(ref);
@@ -136,6 +141,16 @@ public class RawProject
 	public BaseId getNextHighestId()
 	{
 		return idAssigner.takeNextId();
+	}
+	
+	public String getData(ORef ref, String tag)
+	{
+		return getRawPoolForType(ref).get(ref).get(tag);
+	}
+	
+	public String setData(ORef ref, String tag, String data)
+	{
+		return findObject(ref).setObjectData(tag, data);
 	}
 	
 	public RawObject createNewRawObject(ORef ref)
