@@ -33,6 +33,14 @@ public class RawPool extends HashMap<ORef, RawObject>
 		return get(ref);
 	}
 	
+	public RawObject createObject(ORef ref)
+	{
+		RawObject newObject = new RawObject(ref);
+		put(ref, newObject);
+		
+		return newObject;
+	}
+	
 	public void deleteObject(ORef ref)
 	{
 		remove(ref);

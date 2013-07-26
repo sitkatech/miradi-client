@@ -154,10 +154,7 @@ public class RawProject
 	
 	public RawObject createObject(ORef ref)
 	{
-		RawObject newRawObject = new RawObject(ref);
-		getRawPoolForType(ref).put(ref, newRawObject);
-		
-		return newRawObject;
+		return getRawPoolForType(ref).createObject(ref);
 	}
 	
 	public VersionRange getCurrentVersionRange()
