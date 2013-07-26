@@ -30,9 +30,14 @@ public class RawPool extends HashMap<ORef, RawObject>
 {
 	public ORefList getSortedReflist()
 	{
-		ORefList refList = new ORefSet(keySet()).toRefList();
+		ORefList refList = getRefList();
 		refList.sort();
 		
 		return refList;
+	}
+	
+	public ORefList getRefList()
+	{
+		return new ORefSet(keySet()).toRefList();
 	}
 }
