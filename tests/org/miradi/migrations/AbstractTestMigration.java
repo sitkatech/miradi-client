@@ -53,10 +53,16 @@ public class AbstractTestMigration extends TestCaseWithProject
 		return migratedProject;
 	}	
 	
-	protected RawProject reverseMigrateProject(final VersionRange versionRangeToUse) throws Exception
+	protected RawProject reverseMigrate(final VersionRange versionRangeToUse) throws Exception
+	{
+		return reverseMigrate(getProject(), versionRangeToUse);
+	}
+
+	protected RawProject reverseMigrate(final ProjectForTesting projectToUse,final VersionRange versionRangeToUse) throws Exception
 	{
 		MigrationManager migrationManager = new MigrationManager();
-		String projectAsString = ProjectSaverForTesting.createSnapShot(getProject(), versionRangeToUse);
+		String projectAsString = ProjectSaverForTesting.createSnapShot(projectToUse, versionRangeToUse);
+		
 		String migratedMpfFile = migrationManager.migrateReverse(projectAsString);
 
 		return RawProjectLoader.loadProject(migratedMpfFile);
@@ -64,10 +70,10 @@ public class AbstractTestMigration extends TestCaseWithProject
 	
 	protected void verifyFullCircleMigrations(final VersionRange versionRangeToUse) throws Exception
 	{
-		String beforeForwardMigration = ProjectSaver.createSnapShot(getProject());
-		migrateProject(versionRangeToUse);
+		ProjectForTesting projectAfterFirstMigration = migrateProject(versionRangeToUse);
+		String beforeForwardMigration = ProjectSaver.createSnapShot(projectAfterFirstMigration);
 		
-		RawProject reverseMigratedProject = reverseMigrateProject(versionRangeToUse);
+		RawProject reverseMigratedProject = reverseMigrate(projectAfterFirstMigration,  versionRangeToUse);
 		String afterReverseMigration = RawProjectSaver.saveProject(reverseMigratedProject);
 		
 		ProjectForTesting fullCircleBackProject = migrateProject(afterReverseMigration);

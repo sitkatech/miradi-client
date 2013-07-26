@@ -94,7 +94,7 @@ public class TestMigrationTo5 extends AbstractTestMigration
 			getProject().fillObjectUsingCommand(strategy, MigrationTo5.TAG_STATUS, strategyStatusCode);
 		}
 		
-		RawProject migratedProject = reverseMigrateProject(new VersionRange(MigrationTo5.TO_VERSION));
+		RawProject migratedProject = reverseMigrate(new VersionRange(MigrationTo5.TO_VERSION));
 		final RawPool strategyRawPool = migratedProject.getRawPoolForType(StrategySchema.getObjectType());
 		ORefList migratedStrategyRefs = strategyRawPool.getSortedReflist();
 		assertTrue("Incorrect number of strategies after migration?", migratedStrategyRefs.size() == strategyCount);
