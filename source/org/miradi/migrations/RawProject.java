@@ -153,7 +153,7 @@ public class RawProject
 		return findObject(ref).setObjectData(tag, data);
 	}
 	
-	public RawObject createNewRawObject(ORef ref)
+	public RawObject createObject(ORef ref)
 	{
 		RawObject newRawObject = new RawObject(ref);
 		getRawPoolForType(ref.getObjectType()).put(ref, newRawObject);
