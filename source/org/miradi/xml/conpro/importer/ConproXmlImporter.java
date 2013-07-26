@@ -93,6 +93,7 @@ import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StrategyStatusQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
@@ -979,7 +980,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 
 	private CodeList extractEcoregions(String[] allEcoregionCodes, Class questionClass)
 	{
-		ChoiceQuestion question = getProject().getQuestion(questionClass);
+		ChoiceQuestion question = StaticQuestionManager.getQuestion(questionClass);
 		CodeList ecoregionCodes = new CodeList();
 		for (int i= 0; i < allEcoregionCodes.length; ++i)
 		{

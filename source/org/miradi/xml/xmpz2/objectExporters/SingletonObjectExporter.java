@@ -120,7 +120,7 @@ public class SingletonObjectExporter implements Xmpz2XmlConstants
 		getWriter().writeNonOptionalCodeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion(), getMetadata().getThreatRatingMode());
 		getWriter().writeNonOptionalCodeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE, new TargetModeQuestion(), getMetadata().getData(ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE));
 
-		ChoiceQuestion budgetTimePeriodQuestion = getProject().getQuestion(BudgetTimePeriodQuestion.class);
+		ChoiceQuestion budgetTimePeriodQuestion = StaticQuestionManager.getQuestion(BudgetTimePeriodQuestion.class);
 		getWriter().writeNonOptionalCodeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, budgetTimePeriodQuestion, getMetadata().getData(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT));
 		
 		
@@ -144,7 +144,7 @@ public class SingletonObjectExporter implements Xmpz2XmlConstants
 	private void writeOverallProjectViabilityRating() throws Exception
 	{
 		String code = Target.computeTNCViability(getProject());
-		ChoiceItem choiceItem = getProject().getQuestion(StatusQuestion.class).findChoiceByCode(code);
+		ChoiceItem choiceItem = StaticQuestionManager.getQuestion(StatusQuestion.class).findChoiceByCode(code);
 		
 		getWriter().writeElement(PROJECT_SUMMARY + OVERALL_PROJECT_VIABILITY_RATING, choiceItem.getCode());
 	}
@@ -282,7 +282,7 @@ public class SingletonObjectExporter implements Xmpz2XmlConstants
 		writeProjectSummaryPlanningElement(ProjectMetadata.TAG_FINANCIAL_COMMENTS);
 		writeProjectSummaryPlanningElement(ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION);
 		
-		ChoiceQuestion quarterColumnsVisibilityQuestion = getProject().getQuestion(QuarterColumnsVisibilityQuestion.class);
+		ChoiceQuestion quarterColumnsVisibilityQuestion = StaticQuestionManager.getQuestion(QuarterColumnsVisibilityQuestion.class);
 		getWriter().writeNonOptionalCodeElement(PROJECT_SUMMARY_PLANNING, ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, quarterColumnsVisibilityQuestion, getMetadata().getData(ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY));
 		
 		

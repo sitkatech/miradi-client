@@ -31,6 +31,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.RatingSourceQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.IndicatorSchema;
@@ -60,7 +61,7 @@ public class IndicatorPoolExporter extends BaseObjectPoolExporter
 		writeMeasurementIds(indicator.getMeasurementRefs());
 		writeOptionalIds(Xmpz1XmlConstants.METHOD_IDS, Xmpz1XmlConstants.METHOD, indicator.getMethodRefs());
 		writeOptionalThreshold(indicator);
-		writeCodeElementSameAsTag(indicator, Indicator.TAG_RATING_SOURCE, getProject().getQuestion(RatingSourceQuestion.class));
+		writeCodeElementSameAsTag(indicator, Indicator.TAG_RATING_SOURCE, StaticQuestionManager.getQuestion(RatingSourceQuestion.class));
 		writeOptionalElementWithSameTag(indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENTS);
 		writeOptionalCalculatedTimePeriodCosts(indicator);
 	}
@@ -93,7 +94,7 @@ public class IndicatorPoolExporter extends BaseObjectPoolExporter
 			return;
 		
 		getWcsXmlExporter().writeStartElement(getWriter(), getWcsXmlExporter().createParentAndChildElementName(getPoolName(), THRESHOLDS));
-		ChoiceQuestion question = getProject().getQuestion(StatusQuestion.class);
+		ChoiceQuestion question = StaticQuestionManager.getQuestion(StatusQuestion.class);
 		CodeList allCodes = question.getAllCodes();
 		for(int index = 0; index < allCodes.size(); ++index)
 		{

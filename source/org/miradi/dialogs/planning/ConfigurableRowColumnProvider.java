@@ -26,6 +26,7 @@ import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.StringList;
 
@@ -109,7 +110,7 @@ public class ConfigurableRowColumnProvider extends AbstractPlanningTreeRowColumn
 
 	private static void omitUnknownColumnTagsInPlace(Project project, CodeList rawCodes)
 	{
-		ChoiceQuestion question = project.getQuestion(CustomPlanningColumnsQuestion.class);
+		ChoiceQuestion question = StaticQuestionManager.getQuestion(CustomPlanningColumnsQuestion.class);
 		CodeList validColumnCodes = question.getAllCodes();
 		validColumnCodes.addAll(getLegacyUselessButHarmlessColumnCodes());
 		CodeList originalCodeList = new CodeList(rawCodes);

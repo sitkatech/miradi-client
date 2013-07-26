@@ -24,6 +24,7 @@ import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.MonitoringTreeConfigurationQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.schemas.ViewDataSchema;
 
 public class PlanningViewMonitoringButtonPanel extends ObjectDataInputPanel
@@ -32,7 +33,7 @@ public class PlanningViewMonitoringButtonPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ViewDataSchema.getObjectType());
 		
-		addFieldWithoutLabelAlignment(createChoiceField(ViewDataSchema.getObjectType(), ViewData.TAG_MONITORING_TREE_CONFIGURATION_CHOICE, getProject().getQuestion(MonitoringTreeConfigurationQuestion.class)));
+		addFieldWithoutLabelAlignment(createChoiceField(ViewDataSchema.getObjectType(), ViewData.TAG_MONITORING_TREE_CONFIGURATION_CHOICE, StaticQuestionManager.getQuestion(MonitoringTreeConfigurationQuestion.class)));
 		
 		setObjectRef(getProject().getCurrentViewData().getRef());
 		updateFieldsFromProject();

@@ -50,6 +50,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.IrreversibilityThreatRatingQuestion;
 import org.miradi.questions.ScopeThreatRatingQuestion;
 import org.miradi.questions.SeverityThreatRatingQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.TargetSchema;
@@ -144,22 +145,22 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 
 	private ChoiceQuestion getRatingQuestion()
 	{
-		return getProject().getQuestion(ThreatRatingQuestion.class);
+		return StaticQuestionManager.getQuestion(ThreatRatingQuestion.class);
 	}
 	
 	private ChoiceQuestion getScopeRatingQuestion()
 	{
-		return getProject().getQuestion(ScopeThreatRatingQuestion.class);
+		return StaticQuestionManager.getQuestion(ScopeThreatRatingQuestion.class);
 	}
 	
 	private ChoiceQuestion getSeverityRatingQuestion()
 	{
-		return getProject().getQuestion(SeverityThreatRatingQuestion.class);
+		return StaticQuestionManager.getQuestion(SeverityThreatRatingQuestion.class);
 	}
 	
 	private ChoiceQuestion getIrreversibilityRatingQuestion()
 	{
-		return getProject().getQuestion(IrreversibilityThreatRatingQuestion.class);
+		return StaticQuestionManager.getQuestion(IrreversibilityThreatRatingQuestion.class);
 	}
 	
 	@Override

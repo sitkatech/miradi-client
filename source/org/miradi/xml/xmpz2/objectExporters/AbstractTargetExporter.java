@@ -25,6 +25,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.xmpz2.BaseObjectWithThreatRatingExporter;
@@ -49,7 +50,7 @@ abstract public class AbstractTargetExporter extends BaseObjectWithThreatRatingE
 
 	private void writeNonOptionalCodeElement(final String elementName, final Class questionClass, final String code) throws Exception
 	{
-		final ChoiceQuestion choiceQuestion = getProject().getQuestion(questionClass);
+		final ChoiceQuestion choiceQuestion = StaticQuestionManager.getQuestion(questionClass);
 		getWriter().writeNonOptionalCodeElement(getTargetElementName(), elementName, choiceQuestion, code);
 	}
 	

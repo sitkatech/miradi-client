@@ -25,10 +25,10 @@ import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Measurement;
-import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.EmptyChoiceItem;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TextAndIconChoiceItem;
@@ -118,21 +118,16 @@ public class ViabilityMeasurementNode extends TreeTableNode
 	private Object createStatusConfidenceChoiceItem(String tag)
 	{
 		String rawValue = getObject().getData(tag);
-		return getProject().getQuestion(StatusConfidenceQuestion.class).findChoiceByCode(rawValue);
+		return StaticQuestionManager.getQuestion(StatusConfidenceQuestion.class).findChoiceByCode(rawValue);
 	}
 
 	public Icon getTrendIcon()
 	{
 		String trendData = getObject().getData(Measurement.TAG_TREND);
-		ChoiceQuestion trendQuestion = getProject().getQuestion(TrendQuestion.class);
+		ChoiceQuestion trendQuestion = StaticQuestionManager.getQuestion(TrendQuestion.class);
 		ChoiceItem findChoiceByCode = trendQuestion.findChoiceByCode(trendData);
 		
 		return findChoiceByCode.getIcon();
-	}
-	
-	private Project getProject()
-	{
-		return getObject().getProject();
 	}
 	
 	@Override

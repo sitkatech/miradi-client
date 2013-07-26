@@ -38,6 +38,7 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.utils.ToolBarButton;
 
@@ -70,7 +71,7 @@ public class ThreatRatingToolBar extends MiradiProjectToolBar
 	{
 		ChoiceItem[] choices = ThreatRatingModeChoiceQuestion.getChoiceItems();
 		ChoiceItemComboBoxWithMaxAsPreferredSize threatRatingModeCombo = new ChoiceItemComboBoxWithMaxAsPreferredSize(choices);	
-		ChoiceQuestion question = project.getQuestion(ThreatRatingModeChoiceQuestion.class);
+		ChoiceQuestion question = StaticQuestionManager.getQuestion(ThreatRatingModeChoiceQuestion.class);
 		
 		String code = "";
 		if (project.isStressBaseMode())

@@ -125,6 +125,7 @@ import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
 import org.miradi.questions.ScopeBoxTypeQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StrategyFeasibilityQuestion;
@@ -1268,7 +1269,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		fillObjectUsingCommand(cause.getRef(), Cause.TAG_LABEL, "SomeCauseLabel");
 		
-		ChoiceQuestion question = getQuestion(ThreatClassificationQuestion.class);
+		ChoiceQuestion question = StaticQuestionManager.getQuestion(ThreatClassificationQuestion.class);
 		final int FIRST_CODE = 0;
 		fillObjectUsingCommand(cause.getRef(), Cause.TAG_TAXONOMY_CODE, question.getCode(FIRST_CODE));
 		
@@ -1307,7 +1308,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	private void populateProjectResource(ProjectResource projectResource) throws Exception
 	{
-		ChoiceQuestion roleQuestion = getQuestion(ResourceRoleQuestion.class);
+		ChoiceQuestion roleQuestion = StaticQuestionManager.getQuestion(ResourceRoleQuestion.class);
 		fillObjectUsingCommand(projectResource, ProjectResource.TAG_ROLE_CODES, roleQuestion.getAllCodes().toString());
 		fillObjectUsingCommand(projectResource, ProjectResource.TAG_LABEL, PROJECT_RESOURCE_LABEL_TEXT);
 		fillObjectUsingCommand(projectResource, ProjectResource.TAG_GIVEN_NAME, "John");
@@ -1534,7 +1535,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(strategy, Strategy.TAG_COMMENTS, "Some Strategy comments");
 		
 		final int FIRST_CODE = 0;
-		ChoiceQuestion question = getQuestion(StrategyTaxonomyQuestion.class);
+		ChoiceQuestion question = StaticQuestionManager.getQuestion(StrategyTaxonomyQuestion.class);
 		fillObjectUsingCommand(strategy, Strategy.TAG_TAXONOMY_CODE, question.getCode(FIRST_CODE));
 		fillObjectUsingCommand(strategy, Strategy.TAG_IMPACT_RATING, StrategyImpactQuestion.HIGH_CODE);
 		fillObjectUsingCommand(strategy, Strategy.TAG_FEASIBILITY_RATING, StrategyFeasibilityQuestion.LOW_CODE);

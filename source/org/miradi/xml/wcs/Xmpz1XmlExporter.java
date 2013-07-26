@@ -45,6 +45,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.FosTrainingTypeQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.TncOperatingUnitsQuestion;
@@ -386,10 +387,10 @@ public class Xmpz1XmlExporter extends XmlExporter implements Xmpz1XmlConstants
 		writeExternalAppIds();
 		writeCodeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion(), getMetadata().getThreatRatingMode());
 		
-		ChoiceQuestion quarterColumnsVisibilityQuestion = getProject().getQuestion(QuarterColumnsVisibilityQuestion.class);
+		ChoiceQuestion quarterColumnsVisibilityQuestion = StaticQuestionManager.getQuestion(QuarterColumnsVisibilityQuestion.class);
 		writeOptionalCodeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, quarterColumnsVisibilityQuestion, getMetadata().getData(ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY));
 		
-		ChoiceQuestion budgetTimePeriodQuestion = getProject().getQuestion(BudgetTimePeriodQuestion.class);
+		ChoiceQuestion budgetTimePeriodQuestion = StaticQuestionManager.getQuestion(BudgetTimePeriodQuestion.class);
 		writeOptionalCodeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, budgetTimePeriodQuestion, getMetadata().getData(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT));
 
 		writeEndElement(out, PROJECT_SUMMARY);
@@ -426,7 +427,7 @@ public class Xmpz1XmlExporter extends XmlExporter implements Xmpz1XmlConstants
 	private void writeOptionalOverallProjectViabilityRating() throws Exception
 	{
 		String code = Target.computeTNCViability(getProject());
-		ChoiceItem choiceItem = getProject().getQuestion(StatusQuestion.class).findChoiceByCode(code);
+		ChoiceItem choiceItem = StaticQuestionManager.getQuestion(StatusQuestion.class).findChoiceByCode(code);
 		
 		writeStartElement(PROJECT_SUMMARY + OVERALL_PROJECT_VIABILITY_RATING);
 		writeXmlEncodedData(getWriter(), choiceItem.getCode());

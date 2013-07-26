@@ -39,6 +39,7 @@ import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.TargetSchema;
@@ -50,7 +51,7 @@ public class ThreatStressRatingValueReadonlyComponent extends MiradiPanel
 		super();
 		
 		project = projectToUse;
-		question = getProject().getQuestion(ThreatRatingQuestion.class);
+		question = StaticQuestionManager.getQuestion(ThreatRatingQuestion.class);
 		component = new PanelTitleLabel("");
 		Border lineBorder = new LineBorder(Color.BLACK);
 		Border emptyBorder = new EmptyBorder(3, 3, 3, 3);

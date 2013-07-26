@@ -29,6 +29,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.RtfLegendObjectsQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.AbstractSingleTableExporter;
 
@@ -42,7 +43,7 @@ public class RtfLegendExporter
 	public void exportLegend(RtfWriter writer) throws Exception
 	{
 		writer.newParagraph();
-		ChoiceQuestion question = getProject().getQuestion(RtfLegendObjectsQuestion.class);
+		ChoiceQuestion question = StaticQuestionManager.getQuestion(RtfLegendObjectsQuestion.class);
 		writer.writeRtfTable(new LegendModelExporter(getProject(), question.getChoices()));
 		writer.newParagraph();
 	}

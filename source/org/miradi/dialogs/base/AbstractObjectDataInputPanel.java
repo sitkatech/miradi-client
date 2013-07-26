@@ -98,6 +98,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ResourceLeaderQuestionWithUnspecifiedChoice;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.ObjectiveSchema;
@@ -166,7 +167,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	protected ChoiceQuestion getQuestion(Class questionClass)
 	{
-		return getProject().getQuestion(questionClass);
+		return StaticQuestionManager.getQuestion(questionClass);
 	}
 
 	public Project getProject()
@@ -719,7 +720,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public PopupQuestionEditorField createPopupQuestionEditor(JDialog parentDialog, int objectType, String tagToUse, Class questionClass) throws Exception
 	{
-		return new PopupQuestionEditorField(parentDialog, getProject(), getRefForType(objectType), tagToUse, getProject().getQuestion(questionClass));
+		return new PopupQuestionEditorField(parentDialog, getProject(), getRefForType(objectType), tagToUse, StaticQuestionManager.getQuestion(questionClass));
 	}
 	
 	public WhenEditorField createWhenEditorField(ORef refToUse)

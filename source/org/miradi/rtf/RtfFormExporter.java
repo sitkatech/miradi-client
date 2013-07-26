@@ -44,6 +44,7 @@ import org.miradi.project.CurrencyFormat;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DoubleUtilities;
@@ -254,7 +255,7 @@ public class RtfFormExporter
 			return "";
 		
 		FormConstant formConstant = (FormConstant) leftFormItem;
-		ChoiceQuestion question = getProject().getQuestion(StatusQuestion.class);
+		ChoiceQuestion question = StaticQuestionManager.getQuestion(StatusQuestion.class);
 		ChoiceItem choiceItem = question.findChoiceByLabel(formConstant.getConstant());
 		
 		CodeToUserStringMap map = stringMapData.getCodeToUserStringMap();

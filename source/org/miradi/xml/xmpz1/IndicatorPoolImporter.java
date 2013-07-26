@@ -26,6 +26,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Indicator;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.RatingSourceQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.IndicatorSchema;
@@ -58,7 +59,7 @@ public class IndicatorPoolImporter extends AbstractBaseObjectPoolImporter
 		importIds(node, destinationRef, Indicator.TAG_METHOD_IDS, TaskSchema.getObjectType(), Xmpz1XmlConstants.METHOD);
 		importRefs(node, Xmpz1XmlConstants.MEASUREMENT_IDS, destinationRef, Indicator.TAG_MEASUREMENT_REFS, MeasurementSchema.getObjectType(), Xmpz1XmlConstants.MEASUREMENT);
 		importThresholds(node, destinationRef);
-		importCodeField(node, destinationRef, Indicator.TAG_RATING_SOURCE, getProject().getQuestion(RatingSourceQuestion.class));
+		importCodeField(node, destinationRef, Indicator.TAG_RATING_SOURCE, StaticQuestionManager.getQuestion(RatingSourceQuestion.class));
 		importField(node, destinationRef, Indicator.TAG_VIABILITY_RATINGS_COMMENTS);
 	}
 

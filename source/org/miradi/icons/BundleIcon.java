@@ -36,6 +36,7 @@ import org.miradi.project.Project;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.ThreatRatingQuestion;
 
 public class BundleIcon extends AbstractMiradiIcon
@@ -79,7 +80,7 @@ public class BundleIcon extends AbstractMiradiIcon
 
 	private ThreatRatingQuestion getThreatRatingQuestion()
 	{
-		return (ThreatRatingQuestion)getProject().getQuestion(ThreatRatingQuestion.class);
+		return (ThreatRatingQuestion)StaticQuestionManager.getQuestion(ThreatRatingQuestion.class);
 	}
 
 	private void drawIndividualRatings(Graphics g) throws Exception

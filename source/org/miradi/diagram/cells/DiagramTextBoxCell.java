@@ -27,6 +27,7 @@ import org.miradi.objects.TextBox;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
+import org.miradi.questions.StaticQuestionManager;
 
 public class DiagramTextBoxCell extends FactorCell
 {
@@ -34,7 +35,7 @@ public class DiagramTextBoxCell extends FactorCell
 	{
 		super(cmFactor, diagramFactorToUse);
 		
-		diagramFactorBackgroundQuestion = cmFactor.getProject().getQuestion(DiagramFactorBackgroundQuestion.class);
+		diagramFactorBackgroundQuestion = StaticQuestionManager.getQuestion(DiagramFactorBackgroundQuestion.class);
 	}
 
 	@Override

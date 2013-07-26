@@ -560,11 +560,6 @@ public class Project
 		return projectInfo.getMetadataId();
 	}
 	
-	public ChoiceQuestion getQuestion(Class questionClass)
-	{
-		return StaticQuestionManager.getQuestion(questionClass);
-	}
-
 	public void appendToQuarantineFile(String textToAppend) throws Exception
 	{
 		quarantine.append(textToAppend);

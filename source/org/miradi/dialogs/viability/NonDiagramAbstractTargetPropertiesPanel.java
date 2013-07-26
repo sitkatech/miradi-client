@@ -29,6 +29,7 @@ import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.TargetSchema;
@@ -95,7 +96,7 @@ public class NonDiagramAbstractTargetPropertiesPanel extends ObjectDataInputPane
 		{
 			super(projectToUse, refToUse);
 			
-			addField(createRatingChoiceField(targetType, Target.TAG_TARGET_STATUS, getProject().getQuestion(StatusQuestion.class)));
+			addField(createRatingChoiceField(targetType, Target.TAG_TARGET_STATUS, StaticQuestionManager.getQuestion(StatusQuestion.class)));
 		}
 
 		@Override
@@ -111,7 +112,7 @@ public class NonDiagramAbstractTargetPropertiesPanel extends ObjectDataInputPane
 		{
 			super(projectToUse, refToUse);
 			
-			addField(createReadOnlyChoiceField(targetType, AbstractTarget.PSEUDO_TAG_TARGET_VIABILITY, getProject().getQuestion(StatusQuestion.class)));
+			addField(createReadOnlyChoiceField(targetType, AbstractTarget.PSEUDO_TAG_TARGET_VIABILITY, StaticQuestionManager.getQuestion(StatusQuestion.class)));
 		}
 
 		@Override

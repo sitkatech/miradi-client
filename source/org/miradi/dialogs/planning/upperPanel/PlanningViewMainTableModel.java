@@ -68,6 +68,7 @@ import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportShortStatusQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
@@ -498,7 +499,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 				return new PriorityRatingQuestion().findChoiceByCode(rawValue);
 			
 			if(columnTag.equals(ProjectResource.TAG_RESOURCE_TYPE))
-				return getProject().getQuestion(ResourceTypeQuestion.class).findChoiceByCode(rawValue);
+				return StaticQuestionManager.getQuestion(ResourceTypeQuestion.class).findChoiceByCode(rawValue);
 			
 			if(columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 				return new ProgressReportShortStatusQuestion().findChoiceByCode(rawValue);
@@ -567,7 +568,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	
 	private ChoiceItem getTargetViabilityRating(AbstractTarget abstractTarget)
 	{
-		ChoiceQuestion question = getProject().getQuestion(StatusQuestion.class);
+		ChoiceQuestion question = StaticQuestionManager.getQuestion(StatusQuestion.class);
 		
 		return question.findChoiceByCode(abstractTarget.getTargetViability());
 	}

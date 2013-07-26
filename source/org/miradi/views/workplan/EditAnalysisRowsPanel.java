@@ -30,6 +30,7 @@ import org.miradi.objects.TableSettings;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.WorkPlanAnalysisConfigurationQuestion;
 import org.miradi.questions.WorkPlanCategoryTypesQuestion;
 import org.miradi.schemas.TableSettingsSchema;
@@ -44,10 +45,10 @@ public class EditAnalysisRowsPanel extends ObjectDataInputPanel
 		setLayout(new OneColumnGridLayout());
 		add(new PanelTitleLabel(EAM.text("Specify values in the drop downs to group work and expense assignments for analysis.")));
 		add(new FillerLabel());
-		addFieldWithoutLabel(createConfigureAnalysisRowsField(getProject().getCurrentViewData().getRef(), ViewData.TAG_BUDGET_ROLLUP_REPORT_TYPES, getProject().getQuestion(WorkPlanCategoryTypesQuestion.class)));
+		addFieldWithoutLabel(createConfigureAnalysisRowsField(getProject().getCurrentViewData().getRef(), ViewData.TAG_BUDGET_ROLLUP_REPORT_TYPES, StaticQuestionManager.getQuestion(WorkPlanCategoryTypesQuestion.class)));
 		
 		TableSettings workPlanTableSettings = TableSettings.findOrCreate(getProject(), AbstractWorkPlanStringMapEditorDoer.getTabSpecificModelIdentifier());
-		ChoiceQuestion columnConfigurationQuestion = getProject().getQuestion(WorkPlanAnalysisConfigurationQuestion.class);
+		ChoiceQuestion columnConfigurationQuestion = StaticQuestionManager.getQuestion(WorkPlanAnalysisConfigurationQuestion.class);
 		addFieldWithCustomLabel(createWorkPlanBudgetColumnCodeListEditor(TableSettingsSchema.getObjectType(), TableSettings.TAG_TABLE_SETTINGS_MAP, columnConfigurationQuestion, TableSettings.ANALYSIS_BUDGET_COLUMNS_CODELIST_KEY), EAM.text("Column groups"));
 
 		setObjectRefs(new ORef[]{getProject().getCurrentViewData().getRef(), workPlanTableSettings.getRef(), });

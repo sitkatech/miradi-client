@@ -74,6 +74,7 @@ import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StrategyClassificationQuestion;
 import org.miradi.questions.TncOperatingUnitsQuestion;
@@ -1082,7 +1083,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 
 	private void writeMemberRoles(UnicodeWriter out, ProjectResource member) throws Exception
 	{
-		ChoiceQuestion question = getProject().getQuestion(ResourceRoleQuestion.class);
+		ChoiceQuestion question = StaticQuestionManager.getQuestion(ResourceRoleQuestion.class);
 		CodeList roleCodes = member.getRoleCodes();
 		for(int index = 0; index < roleCodes.size(); ++index)
 		{

@@ -33,6 +33,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.MajorLanguagesQuestion;
 import org.miradi.questions.ProjectSharingQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.schemas.ProjectMetadataSchema;
@@ -45,7 +46,7 @@ public class SummaryProjectPanel extends ObjectDataInputPanel
 		super(projectToUse, refToUse);
 		
 		addField(createStringField(ProjectMetadata.TAG_PROJECT_NAME));
-		ChoiceQuestion tncProjectSharingQuestion = getProject().getQuestion(ProjectSharingQuestion.class);
+		ChoiceQuestion tncProjectSharingQuestion = StaticQuestionManager.getQuestion(ProjectSharingQuestion.class);
 		addRadioButtonFieldWithCustomLabelAndLink(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_SHARING_CODE, tncProjectSharingQuestion, "", "ProjectSharingMessage.html");
 		addField(createChoiceField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_PROJECT_LANGUAGE, new MajorLanguagesQuestion()));
 		addField(createDateChooserField(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE));

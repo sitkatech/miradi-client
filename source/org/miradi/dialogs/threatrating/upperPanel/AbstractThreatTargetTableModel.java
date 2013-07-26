@@ -34,6 +34,7 @@ import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.EmptyChoiceItem;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.utils.SortableTableModel;
@@ -208,7 +209,7 @@ abstract public class AbstractThreatTargetTableModel extends SortableTableModel
 	
 	protected ChoiceQuestion getThreatRatingQuestion()
 	{
-		return getProject().getQuestion(ThreatRatingQuestion.class);
+		return StaticQuestionManager.getQuestion(ThreatRatingQuestion.class);
 	}
 	
 	public ORefList getObjectHiearchy(int row, int column)

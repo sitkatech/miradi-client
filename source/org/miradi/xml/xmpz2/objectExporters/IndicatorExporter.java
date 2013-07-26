@@ -24,6 +24,7 @@ import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.IndicatorSchema;
@@ -77,7 +78,7 @@ public class IndicatorExporter extends BaseObjectWithLeaderResourceFieldExporter
 		
 		final String elementName = getWriter().appendChildNameToParentName(INDICATOR, THRESHOLDS);
 		getWriter().writeStartElement(elementName);
-		ChoiceQuestion question = getWriter().getProject().getQuestion(StatusQuestion.class);
+		ChoiceQuestion question = StaticQuestionManager.getQuestion(StatusQuestion.class);
 		CodeList allCodes = question.getAllCodes();
 		for(int index = 0; index < allCodes.size(); ++index)
 		{
