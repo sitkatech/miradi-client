@@ -68,12 +68,12 @@ public class RawProject
 	
 	public RawObject findObject(ORef ref)
 	{
-		return getRawPoolForType(ref.getObjectType()).get(ref);
+		return getRawPoolForType(ref).findObject(ref);
 	}
 	
 	public void deleteRawObject(ORef ref)
 	{
-		RawPool pool = getRawPoolForType(ref.getObjectType());
+		RawPool pool = getRawPoolForType(ref);
 		pool.remove(ref);
 	}
 
