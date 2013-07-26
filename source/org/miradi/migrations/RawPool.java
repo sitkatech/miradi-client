@@ -33,6 +33,11 @@ public class RawPool extends HashMap<ORef, RawObject>
 		return get(ref);
 	}
 	
+	public void deleteObject(ORef ref)
+	{
+		remove(ref);
+	}
+	
 	public ORefList getSortedReflist()
 	{
 		ORefList refList = getRefList();

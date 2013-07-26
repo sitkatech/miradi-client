@@ -73,8 +73,7 @@ public class RawProject
 	
 	public void deleteRawObject(ORef ref)
 	{
-		RawPool pool = getRawPoolForType(ref);
-		pool.remove(ref);
+		getRawPoolForType(ref).deleteObject(ref);
 	}
 
 	public void setExceptionLog(final String exceptionLogToUse)
