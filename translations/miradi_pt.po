@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-25 14:46-0500\n"
+"POT-Creation-Date: 2013-07-26 14:31-0500\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -832,7 +832,7 @@ msgid "<html><b>Overall<br>Project<br>Rating</b></html>"
 msgstr "<html><b>Classificação Global<br>doProjeto<br></b></html>"
 
 # Is this missing a command at the end?
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:97
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:98
 msgid "<html><b>Summary<br>Target-Threat<br>Rating"
 msgstr "<html><b>Resumo<br>Classificação<br>Alvo-Ameaça"
 
@@ -2890,8 +2890,8 @@ msgstr "Fechar"
 msgid "Collapse Selected Column"
 msgstr "Comprimir a Coluna Selecionada"
 
-#: Miradi/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:51
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:44
+#: Miradi/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:52
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:45
 msgid "Column groups"
 msgstr "Grupos de Colunas"
 
@@ -2912,7 +2912,7 @@ msgstr "Concluido"
 msgid "Completed - Successfully accomplished"
 msgstr "Concluido - Alcançado com Sucesso"
 
-#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:46
+#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:47
 msgid "ConPro Project Number"
 msgstr ""
 
@@ -3325,7 +3325,7 @@ msgstr "Detalhar atividades/métodos, tarefas e responsabilidades"
 msgid "Detail methods, tasks, and responsibilities"
 msgstr "Detalhar métodos, tarefas, e responsabilidades"
 
-#: Miradi/source/org/miradi/dialogs/viability/ModelessTargetSubPanel.java:56
+#: Miradi/source/org/miradi/dialogs/viability/ModelessTargetSubPanel.java:57
 msgid "Details"
 msgstr "Detalhes"
 
@@ -3401,7 +3401,7 @@ msgstr "Desenvolver a viabilidade do alvo"
 msgid "Diagram"
 msgstr "Diagrama"
 
-#: Miradi/source/org/miradi/dialogs/base/CodeListPanelWithDiagramObjectDataInclusionDropDown.java:47
+#: Miradi/source/org/miradi/dialogs/base/CodeListPanelWithDiagramObjectDataInclusionDropDown.java:48
 msgid "Diagram Data Inclusion Chooser"
 msgstr "Selecionador de Dados a serem incluidos no diagrama"
 
@@ -3626,7 +3626,7 @@ msgstr "Erro ao Desfazer (undo)"
 msgid "Error occured while saving data location"
 msgstr "Ocorreu um Erro ao salvar a localização de dados"
 
-#: Miradi/source/org/miradi/views/threatmatrix/ThreatRatingToolBar.java:112
+#: Miradi/source/org/miradi/views/threatmatrix/ThreatRatingToolBar.java:113
 msgid "Error occurred while switching threat rating mode."
 msgstr "Ocorreu um Erro ao mudar modo de classificação de ameaças"
 
@@ -3770,7 +3770,7 @@ msgstr ""
 "O nome de arquivo deve conter somente caracteres alfa-numéricos e/ou '_'."
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:95
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:199
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:200
 msgid "File to import does not validate."
 msgstr "O arquivo para importar não validada."
 
@@ -4173,7 +4173,7 @@ msgstr "Esconder Colunas de Trimestre"
 msgid "High"
 msgstr "Alto"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1439
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1440
 msgid "High/Very-High Threat Chains"
 msgstr "Cadeias de Ameaças Altos/Muito Altos"
 
@@ -4395,7 +4395,7 @@ msgstr ""
 "representado por um triângulo roxo."
 
 # I don't understand the use of "holder" here thus I left it in English.
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1337
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1338
 msgid "Indicator Holder"
 msgstr "\"Holder\" de indicador"
 
@@ -4404,7 +4404,7 @@ msgid "Indicator Relevancy Panel"
 msgstr "Painel de relevância do indicador"
 
 # Leo, please check.  Not sure about this translation.
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:163
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:164
 msgid "Indicator does not have a direct/indirect factor parent. "
 msgstr "O indicador não tem um fator direto/indireto pai."
 
@@ -4522,7 +4522,7 @@ msgid "Invalid project name: %s"
 msgstr "Nome de Projeto Inválido: %s"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:223
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:106
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:107
 msgid "Irreversibility"
 msgstr "Irreversibilidade"
 
@@ -4757,12 +4757,12 @@ msgstr "Organização"
 msgid "Label|Phone Numbers"
 msgstr "Números de Telefone"
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:62
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:63
 #: Miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:35
 msgid "Label|Project Dates"
 msgstr "Datas do Projeto"
 
-#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:68
+#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:69
 msgid "Label|Project Info"
 msgstr "Informações do Projeto"
 
@@ -4801,7 +4801,7 @@ msgstr "WCS"
 msgid "Label|WWF"
 msgstr "WWF"
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:67
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:68
 msgid "Label|Work Plan Dates"
 msgstr "Datas do Plano de Trabalho"
 
@@ -4842,7 +4842,7 @@ msgstr ""
 msgid "Legacy TNC Ratings"
 msgstr "Classificações Legadas da TNC"
 
-#: Miradi/source/org/miradi/rtf/legend/RtfLegendExporter.java:100
+#: Miradi/source/org/miradi/rtf/legend/RtfLegendExporter.java:101
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:159
 msgid "Legend Table"
 msgstr "Tabela de Legenda"
@@ -4917,7 +4917,7 @@ msgstr "Localização"
 msgid "Low"
 msgstr "Baixo"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1440
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1441
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Cadeias de Ameaça Baixo/Médio/Sem classificação"
 
@@ -5451,7 +5451,7 @@ msgstr ""
 "NOTA: Os nomes de arquivos podem conter letras, números, pontos, traços, e "
 "sublinhas."
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:119
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:120
 msgid ""
 "NOTE: Quarter columns cannot be hidden because this project already has data "
 "for some quarters."
@@ -5588,7 +5588,7 @@ msgstr ""
 "representado por um retângulo pequeno azul."
 
 # I don't understand Holder here  in English.  Please clarify.
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1331
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1332
 msgid "Objective Holder"
 msgstr "\"Holder\" de Meta"
 
@@ -5774,7 +5774,7 @@ msgstr "Rosa"
 msgid "Place scope on diagram"
 msgstr "Posicionar Escopo no Diagrama"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1327
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1328
 msgid "Placeholder - From ConPro"
 msgstr "Espaço Reservado - de ConPro"
 
@@ -5977,7 +5977,7 @@ msgstr "Relatório de Progresso"
 msgid "Progress Reports"
 msgstr "Relatórios de Progresso"
 
-#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:99
+#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:100
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:102
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:68
@@ -5992,7 +5992,7 @@ msgstr "Conselheiro do Projeto"
 msgid "Project Corruption Detected"
 msgstr "Corrupção do Projeto Detectado"
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:942
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:943
 msgid "Project Description:"
 msgstr "Descrição do Projeto:"
 
@@ -6464,7 +6464,7 @@ msgstr ""
 "As.../ RTF&nbsp;File&gt;</code> a comanda do menu de dentro daquela visão.</"
 "span>"
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:41
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:42
 msgid "Select which column groups to display."
 msgstr "Selecionar os grupos de coluna para exibir."
 
@@ -6495,7 +6495,7 @@ msgid "Sep"
 msgstr "set"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:227
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:105
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:106
 msgid "Severity"
 msgstr "Severidade"
 
@@ -6607,7 +6607,7 @@ msgstr "Viabilidade Simples"
 msgid "Single Selection"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:947
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:948
 msgid "Site/Scope Description:"
 msgstr "Descrição de Sítio/Escopo:"
 
@@ -6623,7 +6623,7 @@ msgstr "Pequeno"
 msgid "Smallest"
 msgstr "O menor"
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:105
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:106
 msgid ""
 "Some work plan data is currently hidden and not included in calculated "
 "totals. If the data is outside the planning date range, it will be visible "
@@ -6656,7 +6656,7 @@ msgstr "Trimestre(s) Específico(s)"
 msgid "Specific Year(s)"
 msgstr "Ano(s) Específicos"
 
-#: Miradi/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:45
+#: Miradi/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:46
 msgid ""
 "Specify values in the drop downs to group work and expense assignments for "
 "analysis."
@@ -6684,7 +6684,7 @@ msgstr ""
 msgid "Start:"
 msgstr "Iníciar:"
 
-#: Miradi/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:50
+#: Miradi/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:51
 msgid "Status"
 msgstr "Estatus"
 
@@ -7814,7 +7814,7 @@ msgstr "Cor de Canela"
 
 #: Miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:71
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:362
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:363
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:53
 msgid "Target"
 msgstr "Alvo"
@@ -7948,7 +7948,7 @@ msgstr "Papeis da Equipe"
 msgid "Text Box"
 msgstr "Caixa de Texto"
 
-#: Miradi/source/org/miradi/dialogs/diagram/TextBoxPropertiesPanel.java:59
+#: Miradi/source/org/miradi/dialogs/diagram/TextBoxPropertiesPanel.java:60
 msgid "Text Box Properties"
 msgstr "Propriedades da Caixa de Texto"
 
@@ -8252,7 +8252,7 @@ msgstr ""
 msgid "This will replace the existing file."
 msgstr "Esta ação substituirá o arquivo existente."
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:387
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:388
 #: Miradi/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:62
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:35
 msgid "Threat"
@@ -8333,7 +8333,7 @@ msgstr "Ameaças"
 msgid "Threats at Site"
 msgstr "Ameaças no Sítio"
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:104
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:105
 msgid "Threat|Scope"
 msgstr "Escopo"
 
@@ -8427,7 +8427,7 @@ msgstr "Propriedades de Fontes de Financiamento"
 msgid "Title|Goal Properties"
 msgstr "Propriedades de Objetivos"
 
-#: Miradi/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:87
+#: Miradi/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:88
 msgid "Title|Human Wellbeing Target Properties"
 msgstr ""
 
@@ -8577,7 +8577,7 @@ msgstr "Classificação de Alvo Baseada em Estresse"
 msgid "Title|Tag Properties Panel"
 msgstr "Painel de Propriedades de Tag"
 
-#: Miradi/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:89
+#: Miradi/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:90
 msgid "Title|Target Properties"
 msgstr "Propriedades de Alvo"
 
@@ -8811,7 +8811,7 @@ msgid "Viability Analysis Mode"
 msgstr "Modo de Análise de Viabilidade"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:317
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:99
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:100
 msgid "Viability Ratings"
 msgstr "Classificações de Viabilidade"
 
@@ -9052,11 +9052,11 @@ msgstr ""
 "monitoramento.  Um bom plano de trabalho mostra o cronograma e sequência de "
 "cada tarefa bem como os recursos específicos necessários para executâ-lo."
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:52
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:53
 msgid "Work Plan Column Editor"
 msgstr "Editora de Colunas do Plano de Trabalho "
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:288
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:289
 msgid "Work Plan Settings"
 msgstr "Configurações do Plano de Trabalho"
 
@@ -9075,7 +9075,7 @@ msgstr ""
 msgid "Work Planning"
 msgstr "Planejamento de Trabalho"
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:93
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:94
 msgid "Work plan data currently exists for %startDate - %endDate"
 msgstr ""
 "Dados de Plano de Trabalho atualmente existem para %startDate - %endDate"
@@ -9164,7 +9164,7 @@ msgstr ""
 "as comandas exportar e importar.  Miradi também  criará arquivos de zip para "
 "'backups' de projetos que são crados durante migrações de formatos. "
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:520
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:521
 msgid "[Error]"
 msgstr "[Erro]"
 
@@ -9180,7 +9180,7 @@ msgstr "[NÃO ESPECIFICADO]"
 msgid "[New Results Chain]"
 msgstr "[Nova Cadeia de Resultados]"
 
-#: Miradi/source/org/miradi/project/Project.java:976
+#: Miradi/source/org/miradi/project/Project.java:971
 msgid "[No Project]"
 msgstr "[Sem Projeto]"
 
