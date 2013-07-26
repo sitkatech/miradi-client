@@ -42,10 +42,20 @@ public class RawObject extends LinkedHashMap<String, String>
 		put(tag, refList.toString());
 	}
 	
+	public String getData(String tag)
+	{
+		return get(tag);
+	}
+	
 	public int getObjectType()
 	{
 		return objectType;
 	}
-	
+
+	public String setObjectData(String tag, String data)
+	{
+		return put(tag, data);
+	}
+
 	private int objectType;
 }
