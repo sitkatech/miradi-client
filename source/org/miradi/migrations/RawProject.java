@@ -63,7 +63,7 @@ public class RawProject
 	
 	public RawPool getRawPoolForType(ORef ref)	
 	{		
-		return typeToRawPoolMap.get(ref.getObjectType());
+		return getRawPoolForType(ref.getObjectType());
 	}
 	
 	public RawObject findObject(ORef ref)
