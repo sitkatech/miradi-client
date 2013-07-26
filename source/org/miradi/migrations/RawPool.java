@@ -28,6 +28,11 @@ import org.miradi.objecthelpers.ORefSet;
 
 public class RawPool extends HashMap<ORef, RawObject>
 {
+	public RawObject findObject(ORef ref)
+	{
+		return get(ref);
+	}
+	
 	public ORefList getSortedReflist()
 	{
 		ORefList refList = getRefList();
