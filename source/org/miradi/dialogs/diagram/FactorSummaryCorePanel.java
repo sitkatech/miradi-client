@@ -111,10 +111,6 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		{
 			addField(createTaxonomyFields(HumanWelfareTargetSchema.getObjectType()));
 		}
-		if (factorToEdit.isThreatReductionResult())
-		{
-			addField(createTaxonomyFields(ThreatReductionResultSchema.getObjectType()));
-		}
 		
 		addField(createReadOnlyObjectList(factorToEdit.getType(), Factor.PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS));
 		addField(createReadOnlyObjectList(factorToEdit.getType(), Factor.PSEUDO_TAG_RESULTS_CHAIN_REFS));
@@ -122,6 +118,11 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		ObjectsActionButton chooseTagForFactorButton = createObjectsActionButton(actions.getObjectsAction(ActionManageFactorTags.class), getPicker());
 		ObjectDataInputField readOnlyTaggedObjects = createReadOnlyObjectList(factorToEdit.getRef().getObjectType(), Factor.PSEUDO_TAG_REFERRING_TAG_REFS);
 		addFieldWithEditButton(getTagsLabel(), readOnlyTaggedObjects, chooseTagForFactorButton);
+		
+		if (factorToEdit.isThreatReductionResult())
+		{
+			addField(createTaxonomyFields(ThreatReductionResultSchema.getObjectType()));
+		}
 	}
 	
 	public static String getTagsLabel()
