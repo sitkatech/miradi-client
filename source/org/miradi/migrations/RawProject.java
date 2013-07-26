@@ -149,7 +149,7 @@ public class RawProject
 	
 	public String setData(ORef ref, String tag, String data)
 	{
-		return findObject(ref).setObjectData(tag, data);
+		return findObject(ref).setData(tag, data);
 	}
 	
 	public RawObject createObject(ORef ref)
