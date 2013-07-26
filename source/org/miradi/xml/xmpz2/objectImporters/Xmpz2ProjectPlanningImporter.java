@@ -22,6 +22,7 @@ package org.miradi.xml.xmpz2.objectImporters;
 
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 
@@ -52,7 +53,7 @@ public class Xmpz2ProjectPlanningImporter extends AbstractXmpz2ObjectImporter
 		importProjectMetadataField(projectSummaryPlanningNode, ProjectMetadata.TAG_KEY_FUNDING_SOURCES);
 		importProjectMetadataField(projectSummaryPlanningNode, ProjectMetadata.TAG_FINANCIAL_COMMENTS);
 		importProjectMetadataField(projectSummaryPlanningNode, ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION);
-		getImporter().importCodeField(projectSummaryPlanningNode, PROJECT_SUMMARY_PLANNING, getMetadataRef(), ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, getProject().getQuestion(QuarterColumnsVisibilityQuestion.class));
+		getImporter().importCodeField(projectSummaryPlanningNode, PROJECT_SUMMARY_PLANNING, getMetadataRef(), ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, StaticQuestionManager.getQuestion(QuarterColumnsVisibilityQuestion.class));
 	}
 	
 	private void importProjectMetadataField(Node projectSummaryNode, String tag) throws Exception

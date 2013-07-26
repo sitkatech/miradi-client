@@ -41,6 +41,7 @@ import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StressRatingChoiceQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
@@ -153,7 +154,7 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 		ThreatTargetVirtualLinkHelper threatTargetVirtualLink = new ThreatTargetVirtualLinkHelper(getProject());
 		int calculatedValue = threatTargetVirtualLink.calculateThreatRatingBundleValue(threatRatingMode, threatRef, targetRef);
 		String threatRatingCode = AbstractThreatTargetTableModel.convertIntToString(calculatedValue);
-		final ChoiceQuestion threatRatingQuestion = getProject().getQuestion(ThreatRatingQuestion.class);
+		final ChoiceQuestion threatRatingQuestion = StaticQuestionManager.getQuestion(ThreatRatingQuestion.class);
 		getWcsXmlExporter().writeOptionalCodeElement(THREAT_RATING, THREAT_TARGET_RATING, threatRatingQuestion, threatRatingCode);
 	}
 
@@ -185,13 +186,13 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 		ThreatTargetVirtualLinkHelper virtualLink = new ThreatTargetVirtualLinkHelper(getProject());
 		int rawThreatStressRating = virtualLink.calculateStressBasedThreatRating(threatRef, targetRef);
 		String safeThreatRatingCode = ThreatRatingFramework.getSafeThreatRatingCode(rawThreatStressRating);
-		ChoiceQuestion question = getProject().getQuestion(ThreatStressRatingChoiceQuestion.class);
+		ChoiceQuestion question = StaticQuestionManager.getQuestion(ThreatStressRatingChoiceQuestion.class);
 		exportStressBasedThreatRatingCode(THREAT_STRESS_RATING, question.findChoiceByCode(safeThreatRatingCode));
 	}
 
 	private void exportStressBasedStressRating(String stressRating) throws Exception
 	{
-		ChoiceQuestion question = getProject().getQuestion(StressRatingChoiceQuestion.class);
+		ChoiceQuestion question = StaticQuestionManager.getQuestion(StressRatingChoiceQuestion.class);
 		ChoiceItem stressRatingChoiceItem = question.findChoiceByCode(stressRating);
 		exportStressBasedThreatRatingCode(STRESS_RATING, stressRatingChoiceItem);
 	}

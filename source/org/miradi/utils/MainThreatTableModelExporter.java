@@ -27,6 +27,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.EmptyChoiceItem;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.questions.ThreatRatingQuestion;
 
@@ -37,7 +38,7 @@ public class MainThreatTableModelExporter extends AbstractSingleTableExporter
 		super(mainThreatTableModelToUse.getProject(), mainThreatTableModelToUse.getUniqueTableModelIdentifier());
 		
 		mainThreatTableModel = mainThreatTableModelToUse;
-		threatRatingQuestion = (ThreatRatingQuestion) mainThreatTableModel.getProject().getQuestion(ThreatRatingQuestion.class);
+		threatRatingQuestion = (ThreatRatingQuestion) StaticQuestionManager.getQuestion(ThreatRatingQuestion.class);
 	}
 	
 	@Override

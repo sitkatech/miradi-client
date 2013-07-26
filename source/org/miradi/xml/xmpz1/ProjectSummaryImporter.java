@@ -28,6 +28,7 @@ import org.miradi.objects.Xenodata;
 import org.miradi.questions.BudgetTimePeriodQuestion;
 import org.miradi.questions.ProjectSharingQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.schemas.XenodataSchema;
 import org.miradi.xml.AbstractXmpzObjectImporter;
@@ -60,8 +61,8 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_NEXT_STEPS);
 		importExternalProjectId(projectSumaryNode);
 		importCodeField(projectSumaryNode, getMetadataRef(), ProjectMetadata.TAG_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion());
-		importCodeField(projectSumaryNode, getMetadataRef(), ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, getProject().getQuestion(QuarterColumnsVisibilityQuestion.class));
-		importCodeField(projectSumaryNode, getMetadataRef(), ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, getProject().getQuestion(BudgetTimePeriodQuestion.class));
+		importCodeField(projectSumaryNode, getMetadataRef(), ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, StaticQuestionManager.getQuestion(QuarterColumnsVisibilityQuestion.class));
+		importCodeField(projectSumaryNode, getMetadataRef(), ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, StaticQuestionManager.getQuestion(BudgetTimePeriodQuestion.class));
 	}
 	
 	private void writeShareOutsideOrganizationElement(Node projectSumaryNode) throws Exception

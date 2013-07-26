@@ -26,6 +26,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
 import org.miradi.project.Project;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
 import org.miradi.questions.TncMarineEcoRegionQuestion;
 import org.miradi.questions.TncOperatingUnitsQuestion;
@@ -45,8 +46,8 @@ public class TncProjectSummarySubPanel extends ObjectDataInputPanel
 		addField(createReadonlyTextField(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE));
 		addFieldWithCustomLabel(createSingleStringToRefField(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, ConProMiradiXml.CONPRO_CONTEXT), EAM.text("ConPro Project Number"));		
 		addField(createStringField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS));
-		addField(createSingleColumnCodeListField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_PLACE_TYPES, getProject().getQuestion(TncProjectPlaceTypeQuestion.class)));
-		addField(createSingleColumnCodeListField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, getProject().getQuestion(TncOrganizationalPrioritiesQuestion.class)));
+		addField(createSingleColumnCodeListField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_PLACE_TYPES, StaticQuestionManager.getQuestion(TncProjectPlaceTypeQuestion.class)));
+		addField(createSingleColumnCodeListField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, StaticQuestionManager.getQuestion(TncOrganizationalPrioritiesQuestion.class)));
 
 		addField(createReadonlyTextField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT));
 

@@ -22,6 +22,7 @@ package org.miradi.views.planning.doers;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.questions.StaticQuestionManager;
 
 public class PlanningColumnsEditorDoer extends AbstractPlanningViewConfigurationCodeListEditorDoer
 {
@@ -40,6 +41,6 @@ public class PlanningColumnsEditorDoer extends AbstractPlanningViewConfiguration
 	@Override
 	protected ChoiceQuestion getConfigurationQuestion()
 	{
-		return getProject().getQuestion(CustomPlanningColumnsQuestion.class);
+		return StaticQuestionManager.getQuestion(CustomPlanningColumnsQuestion.class);
 	}
 }

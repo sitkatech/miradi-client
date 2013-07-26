@@ -43,6 +43,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.FiscalYearStartQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.utils.DateRange;
@@ -69,11 +70,11 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		addDataDateRangeTextField();
 
 		addField(createChoiceField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_FISCAL_YEAR_START, new FiscalYearStartQuestion()));
-		addField(createChoiceField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION, getProject().getQuestion(DiagramObjectDataInclusionQuestion.class)));
+		addField(createChoiceField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION, StaticQuestionManager.getQuestion(DiagramObjectDataInclusionQuestion.class)));
 		
 		addFieldWithPopUpInformation(createNumericField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR), "FteFieldDescription.html");
 		
-		ChoiceQuestion quarterColumnsVisibilityQuestion = getProject().getQuestion(QuarterColumnsVisibilityQuestion.class);
+		ChoiceQuestion quarterColumnsVisibilityQuestion = StaticQuestionManager.getQuestion(QuarterColumnsVisibilityQuestion.class);
 		quarterColumnVisibilityComponent = addRadioButtonFieldWithCustomLabel(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, quarterColumnsVisibilityQuestion, "");
 		addQuarterColumnVisibilityExplanationLabel();
 		addField(createMultilineField(ProjectMetadata.TAG_PLANNING_COMMENTS));

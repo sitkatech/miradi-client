@@ -57,6 +57,7 @@ import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.questions.DiagramLegendQuestion;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 import org.miradi.questions.OpenStandardsProgressStatusQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.TextBoxZOrderQuestion;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DashboardSchema;
@@ -162,7 +163,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 	private void verifyDynamicProgressCodesInSchema(String thirdLevelCode) throws Exception
 	{
 		Dashboard dashboard = getDashboard();
-		ChoiceQuestion question = getProject().getQuestion(OpenStandardsProgressStatusQuestion.class);
+		ChoiceQuestion question = StaticQuestionManager.getQuestion(OpenStandardsProgressStatusQuestion.class);
 		CodeList allCodes = question.getAllCodes();
 		for (int index = 0; index < allCodes.size(); ++index)
 		{

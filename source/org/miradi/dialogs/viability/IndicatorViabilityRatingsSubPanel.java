@@ -32,6 +32,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.RatingSourceQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.IndicatorSchema;
 
@@ -41,7 +42,7 @@ public class IndicatorViabilityRatingsSubPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, orefToUse);
 		
-		ChoiceQuestion statusQuestion = getProject().getQuestion(StatusQuestion.class);
+		ChoiceQuestion statusQuestion = StaticQuestionManager.getQuestion(StatusQuestion.class);
 		
 		createThreshholdField(statusQuestion.findChoiceByCode(StatusQuestion.POOR));
 		createThreshholdField(statusQuestion.findChoiceByCode(StatusQuestion.FAIR));

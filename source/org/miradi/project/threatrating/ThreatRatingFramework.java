@@ -30,6 +30,7 @@ import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.utils.Utility;
 
@@ -66,7 +67,7 @@ abstract public class ThreatRatingFramework
 
 	public ChoiceItem convertToChoiceItem(String code)
 	{
-		ChoiceQuestion question = getProject().getQuestion(ThreatRatingQuestion.class);
+		ChoiceQuestion question = StaticQuestionManager.getQuestion(ThreatRatingQuestion.class);
 		return question.findChoiceByCode(code);
 	}
 	

@@ -517,13 +517,13 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	private ChoiceItem createStatusConfidenceChoiceItem(BaseObject baseObject, String tag)
 	{
 		String rawValue = baseObject.getData(tag);
-		return getProject().getQuestion(StatusConfidenceQuestion.class).findChoiceByCode(rawValue);
+		return StaticQuestionManager.getQuestion(StatusConfidenceQuestion.class).findChoiceByCode(rawValue);
 	}
 
 	private Icon getTrendIcon(BaseObject baseObject)
 	{
 		String trendData = baseObject.getData(Measurement.TAG_TREND);
-		ChoiceQuestion trendQuestion = getProject().getQuestion(TrendQuestion.class);
+		ChoiceQuestion trendQuestion = StaticQuestionManager.getQuestion(TrendQuestion.class);
 		ChoiceItem findChoiceByCode = trendQuestion.findChoiceByCode(trendData);
 		
 		return findChoiceByCode.getIcon();

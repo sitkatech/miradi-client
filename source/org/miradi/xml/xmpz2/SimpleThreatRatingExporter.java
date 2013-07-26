@@ -37,6 +37,7 @@ import org.miradi.project.Project;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.ThreatRatingQuestion;
 
 public class SimpleThreatRatingExporter implements Xmpz2XmlConstants
@@ -105,7 +106,7 @@ public class SimpleThreatRatingExporter implements Xmpz2XmlConstants
 		ThreatTargetVirtualLinkHelper threatTargetVirtualLink = new ThreatTargetVirtualLinkHelper(getProject());
 		int calculatedValue = threatTargetVirtualLink.calculateSimpleThreatRating(threatRef, targetRef);
 		String threatRatingCode = AbstractThreatTargetTableModel.convertIntToString(calculatedValue);
-		final ChoiceQuestion threatRatingQuestion = getProject().getQuestion(ThreatRatingQuestion.class);
+		final ChoiceQuestion threatRatingQuestion = StaticQuestionManager.getQuestion(ThreatRatingQuestion.class);
 		
 		getWriter().writeNonOptionalCodeElement(getParentElementName(), SIMPLE_THREAT_TARGET_CALCULATED_RATING, threatRatingQuestion, threatRatingCode);
 	}

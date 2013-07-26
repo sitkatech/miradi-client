@@ -34,6 +34,7 @@ import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.CustomPlanningRowsQuestion;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.PlanningTreeTargetPositionQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StrategyObjectiveTreeOrderQuestion;
 import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 import org.miradi.schemas.ViewDataSchema;
@@ -48,19 +49,19 @@ public class PlanningCustomizePanel extends ObjectDataInputPanel
 		
 		addField(createStringField(ObjectTreeTableConfiguration.TAG_LABEL));
 		
-		ObjectDataInputField dataInclusion = createChoiceField(ObjectTreeTableConfigurationSchema.getObjectType(), ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, getProject().getQuestion(DiagramObjectDataInclusionQuestion.class));
+		ObjectDataInputField dataInclusion = createChoiceField(ObjectTreeTableConfigurationSchema.getObjectType(), ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, StaticQuestionManager.getQuestion(DiagramObjectDataInclusionQuestion.class));
 		addField(dataInclusion);
 		
 		ObjectDataInputField objectiveStrategyNodeOrder = createChoiceField(ObjectTreeTableConfigurationSchema.getObjectType(), ObjectTreeTableConfiguration.TAG_STRATEGY_OBJECTIVE_ORDER, new StrategyObjectiveTreeOrderQuestion());
 		addField(objectiveStrategyNodeOrder);
 		
-		ObjectDataField targetPositionField = createChoiceField(ObjectTreeTableConfigurationSchema.getObjectType(), ObjectTreeTableConfiguration.TAG_TARGET_NODE_POSITION, getProject().getQuestion(PlanningTreeTargetPositionQuestion.class));
+		ObjectDataField targetPositionField = createChoiceField(ObjectTreeTableConfigurationSchema.getObjectType(), ObjectTreeTableConfiguration.TAG_TARGET_NODE_POSITION, StaticQuestionManager.getQuestion(PlanningTreeTargetPositionQuestion.class));
 		addField(targetPositionField);
 		
 		ObjectDataInputPanel rowEditor = new CodeListEditorPanel(getProject(), planningConfigurationRef, ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION, new CustomPlanningRowsQuestion(getProject()), 1);
 		addSubPanelWithoutTitledBorder(rowEditor);
 		
-		ObjectDataInputPanel columnEditor = new CodeListEditorPanel(getProject(), planningConfigurationRef, ObjectTreeTableConfiguration.TAG_COL_CONFIGURATION, getProject().getQuestion(CustomPlanningColumnsQuestion.class), 1);
+		ObjectDataInputPanel columnEditor = new CodeListEditorPanel(getProject(), planningConfigurationRef, ObjectTreeTableConfiguration.TAG_COL_CONFIGURATION, StaticQuestionManager.getQuestion(CustomPlanningColumnsQuestion.class), 1);
 		addSubPanelWithoutTitledBorder(columnEditor);
 		
 		updateFieldsFromProject();

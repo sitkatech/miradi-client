@@ -39,6 +39,7 @@ import org.miradi.project.Project;
 import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.ThreatStressRatingChoiceQuestion;
 import org.miradi.utils.ThreatStressRatingDetailsTableExporter;
 
@@ -135,7 +136,7 @@ public class StressBasedThreatRatingExporter implements Xmpz2XmlConstants
 		ThreatTargetVirtualLinkHelper virtualLink = new ThreatTargetVirtualLinkHelper(getProject());
 		int rawThreatStressRating = virtualLink.calculateStressBasedThreatRating(threatRef, targetRef);
 		String safeThreatRatingCode = ThreatRatingFramework.getSafeThreatRatingCode(rawThreatStressRating);
-		ChoiceQuestion question = getProject().getQuestion(ThreatStressRatingChoiceQuestion.class);
+		ChoiceQuestion question = StaticQuestionManager.getQuestion(ThreatStressRatingChoiceQuestion.class);
 		exportStressBasedThreatRatingCode(CALCULATED_THREAT_TARGET_RATING, question.findChoiceByCode(safeThreatRatingCode));
 	}
 

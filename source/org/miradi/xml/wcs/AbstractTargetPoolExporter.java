@@ -27,6 +27,7 @@ import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.xml.generic.XmlSchemaCreator;
@@ -43,8 +44,8 @@ public abstract class AbstractTargetPoolExporter extends FactorPoolExporter
 	{
 		super.exportFields(writer, baseObject);
 		
-		AbstractTarget abstractTarget = (AbstractTarget) baseObject;					
-		writeCodeElement(XmlSchemaCreator.TARGET_STATUS_ELEMENT_NAME, getProject().getQuestion(StatusQuestion.class), abstractTarget.getTargetViability());
+		AbstractTarget abstractTarget = (AbstractTarget) baseObject;
+		writeCodeElement(XmlSchemaCreator.TARGET_STATUS_ELEMENT_NAME, StaticQuestionManager.getQuestion(StatusQuestion.class), abstractTarget.getTargetViability());
 		writeElementWithSameTag(baseObject, AbstractTarget.TAG_VIABILITY_MODE);
 		writeOptionalElementWithSameTag(baseObject, AbstractTarget.TAG_CURRENT_STATUS_JUSTIFICATION);
 		writeOptionalIds(Xmpz1XmlConstants.SUB_TARGET_IDS_ELEMENT, Xmpz1XmlConstants.SUB_TARGET, abstractTarget.getSubTargetRefs());

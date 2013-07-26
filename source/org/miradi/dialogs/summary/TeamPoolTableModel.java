@@ -26,6 +26,7 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
+import org.miradi.questions.StaticQuestionManager;
 
 public class TeamPoolTableModel extends ObjectPoolTableModel
 {
@@ -44,7 +45,7 @@ public class TeamPoolTableModel extends ObjectPoolTableModel
 	public ChoiceQuestion getColumnQuestion(int column)
 	{
 		if (isRolesColumn(column))
-			return getProject().getQuestion(ResourceRoleQuestion.class);
+			return StaticQuestionManager.getQuestion(ResourceRoleQuestion.class);
 		
 		return super.getColumnQuestion(column);
 	}

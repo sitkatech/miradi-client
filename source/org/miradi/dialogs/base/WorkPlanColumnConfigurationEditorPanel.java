@@ -25,6 +25,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.schemas.TableSettingsSchema;
@@ -35,12 +36,12 @@ public class WorkPlanColumnConfigurationEditorPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, orefToUse);
 
-		addField(createChoiceField(TableSettingsSchema.getObjectType(), TableSettings.TAG_WORK_PLAN_VISIBLE_NODES_CODE, getProject().getQuestion(WorkPlanVisibleRowsQuestion.class)));
+		addField(createChoiceField(TableSettingsSchema.getObjectType(), TableSettings.TAG_WORK_PLAN_VISIBLE_NODES_CODE, StaticQuestionManager.getQuestion(WorkPlanVisibleRowsQuestion.class)));
 		
 		addHtmlWrappedLabel("");
 		addHtmlWrappedLabel(EAM.text("Select which column groups to display."));
 		
-		ChoiceQuestion columnConfigurationQuestion = getProject().getQuestion(WorkPlanColumnConfigurationQuestion.class);
+		ChoiceQuestion columnConfigurationQuestion = StaticQuestionManager.getQuestion(WorkPlanColumnConfigurationQuestion.class);
 		addFieldWithCustomLabel(createWorkPlanBudgetColumnCodeListEditor(orefToUse.getObjectType(), TableSettings.TAG_TABLE_SETTINGS_MAP, columnConfigurationQuestion, TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY), EAM.text("Column groups"));
 		
 		updateFieldsFromProject();

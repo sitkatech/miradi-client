@@ -35,6 +35,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.OpenStandardsProgressStatusQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.schemas.DashboardSchema;
 import org.miradi.utils.CodeList;
 
@@ -101,7 +102,7 @@ public class DashboardProgressEditorField extends AbstractStringStringMapEditorF
 	private void setRadioButtonEnabled(String questionCode, boolean shouldBeEnabled)
 	{
 		RadioButtonEditorComponent radioButtons = (RadioButtonEditorComponent) getComponent();
-		ChoiceQuestion question = getProject().getQuestion(OpenStandardsProgressStatusQuestion.class);
+		ChoiceQuestion question = StaticQuestionManager.getQuestion(OpenStandardsProgressStatusQuestion.class);
 		ChoiceItem choice = question.findChoiceByCode(questionCode);
 		radioButtons.setSingleButtonEnabled(choice, shouldBeEnabled);
 	}

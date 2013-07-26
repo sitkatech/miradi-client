@@ -41,6 +41,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.PointList;
@@ -59,7 +60,7 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 
 		model.addDiagramModelListener(this);
 		
-		diagramFactorBackgroundQuestion = getProject().getQuestion(DiagramFactorBackgroundQuestion.class);
+		diagramFactorBackgroundQuestion = StaticQuestionManager.getQuestion(DiagramFactorBackgroundQuestion.class);
 	}
 	
 	public void setText(String text)
