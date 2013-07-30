@@ -115,7 +115,6 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		for(int i = 0; i < refs.size(); ++i)
 			valueOptions[i] = (ValueOption)ValueOption.find(getProject(), refs.get(i));
 		return valueOptions;
-//		return ratingValueOptions;
 	}
 	
 	class OptionSorter implements Comparator<ValueOption>
@@ -149,7 +148,6 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		for(int i = 0; i < refs.size(); ++i)
 			criteria[i] = (RatingCriterion)RatingCriterion.find(getProject(), refs.get(i));
 		return criteria;
-//		return criteria;
 	}
 	
 	public RatingCriterion getCriterion(BaseId id)
