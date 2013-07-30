@@ -591,6 +591,11 @@ public class Project implements ProjectInterface
 		return projectInfo.obtainFactorLinkId(proposedId);
 	}
 	
+	public boolean containsObject(ORef ref)
+	{
+		return getPool(ref.getObjectType()).findObject(ref) != null;
+	}
+	
 	public ORef createObject(int objectType) throws Exception
 	{
 		BaseId createdId = createObjectAndReturnId(objectType);

@@ -26,4 +26,5 @@ public interface ProjectInterface
 {
 	public ORef createObject(int objectType) throws Exception;
 	public ORef createObject(ORef ref) throws Exception;
+	public boolean containsObject(ORef ref);
 }

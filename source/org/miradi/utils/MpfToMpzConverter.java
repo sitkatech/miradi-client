@@ -40,7 +40,6 @@ import org.miradi.migrations.Miradi40TypeToFieldSchemaTypesMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ThreatRatingBundleSorter;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
@@ -325,7 +324,7 @@ public class MpfToMpzConverter extends AbstractConverter
 		/*String command =*/ tokenizer.nextToken();
 		String refString = tokenizer.nextToken();
 		ORef ref = AbstractProjectLoader.extractRef(refString);
-		if(BaseObject.find(getProject(), ref) == null)
+		if(!getProject().containsObject(ref))
 			throw new RuntimeException("Missing object " + ref.toString() + " from: " + line);
 		
 		String tag = tokenizer.nextToken(ProjectLoader.EQUALS_DELIMITER_TAB_PREFIXED);
