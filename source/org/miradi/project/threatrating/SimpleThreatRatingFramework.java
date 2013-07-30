@@ -38,6 +38,7 @@ import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objectpools.RatingCriterionPool;
 import org.miradi.objectpools.ValueOptionPool;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
 import org.miradi.objects.RatingCriterion;
@@ -81,18 +82,19 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		
 	public IdList getValueOptionIds()
 	{
-		final ValueOption[] valueOptions = getValueOptions();
-		ORefList refs = new ORefList(valueOptions);
-
-		return refs.convertToIdList(ValueOptionSchema.getObjectType());
+		return convertToIdList(getValueOptions(), ValueOptionSchema.getObjectType());
 	}
 	
 	public IdList getCriterionIds()
 	{
-		final RatingCriterion[] criteria = getCriteria();
-		ORefList refs = new ORefList(criteria);
+		return convertToIdList(getCriteria(), RatingCriterionSchema.getObjectType());
+	}
+
+	private IdList convertToIdList(final BaseObject[] baseObjects, final int objectType)
+	{
+		ORefList refs = new ORefList(baseObjects);
 		
-		return refs.convertToIdList(RatingCriterionSchema.getObjectType());
+		return refs.convertToIdList(objectType);
 	}
 	
 	public int getBundleCount()
