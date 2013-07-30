@@ -47,7 +47,7 @@ import org.miradi.ids.FactorId;
 import org.miradi.legacyprojects.DataUpgrader;
 import org.miradi.legacyprojects.Manifest;
 import org.miradi.main.EAM;
-import org.miradi.migrations.Miradi40TypeToFieldSchameTypesMap;
+import org.miradi.migrations.Miradi40TypeToFieldSchemaTypesMap;
 import org.miradi.migrations.RawObject;
 import org.miradi.migrations.RawPool;
 import org.miradi.migrations.RawProject;
@@ -308,7 +308,7 @@ public class MpzToMpfConverter extends AbstractConverter
 	{
 		for(int index = 0; index < ObjectType.OBJECT_TYPE_COUNT; ++index)
 		{
-			if (!Miradi40TypeToFieldSchameTypesMap.hasType(index))
+			if (!Miradi40TypeToFieldSchemaTypesMap.hasType(index))
 				continue;
 
 			RawPool pool = new RawPool();
@@ -422,23 +422,23 @@ public class MpzToMpfConverter extends AbstractConverter
 	private String getFixedUpValue(ORef ref, EnhancedJsonObject json, String tag) throws Exception
 	{
 		String value = json.optString(tag);
-		if (Miradi40TypeToFieldSchameTypesMap.isUserTextData(ref.getObjectType(), tag))
+		if (Miradi40TypeToFieldSchemaTypesMap.isUserTextData(ref.getObjectType(), tag))
 		{
 			return HtmlUtilities.convertPlainTextToHtmlText(value);
 		}
-		if(Miradi40TypeToFieldSchameTypesMap.isCodeToUserStringMapData(ref.getObjectType(), tag))
+		if(Miradi40TypeToFieldSchemaTypesMap.isCodeToUserStringMapData(ref.getObjectType(), tag))
 		{
 			return encodeIndividualMapValues(value);
 		}
-		if(Miradi40TypeToFieldSchameTypesMap.isNumericData(ref.getObjectType(), tag))
+		if(Miradi40TypeToFieldSchemaTypesMap.isNumericData(ref.getObjectType(), tag))
 		{
 			return getSafeNumericValue(value);
 		}
-		if (Miradi40TypeToFieldSchameTypesMap.isIdField(ref.getObjectType(), tag))
+		if (Miradi40TypeToFieldSchemaTypesMap.isIdField(ref.getObjectType(), tag))
 		{
 			return getSafeIdValue(value);
 		}
-		if (Miradi40TypeToFieldSchameTypesMap.isRefField(ref.getObjectType(), tag))
+		if (Miradi40TypeToFieldSchemaTypesMap.isRefField(ref.getObjectType(), tag))
 		{
 			return getSafeRefValue(value);
 		}
