@@ -26,8 +26,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Vector;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.miradi.diagram.ThreatTargetChainWalker;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
@@ -486,33 +484,13 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	
 	public EnhancedJsonObject toJson()
 	{
-		EnhancedJsonObject json = new EnhancedJsonObject();
-		JSONArray bundleKeys = new JSONArray();
-		Iterator iter = bundles.keySet().iterator();
-		while(iter.hasNext())
-		{
-			ThreatRatingBundle bundle = bundles.get(iter.next());
-			JSONObject pair = new JSONObject();
-			pair.put(TAG_BUNDLE_THREAT_ID, bundle.getThreatId());
-			pair.put(TAG_BUNDLE_TARGET_ID, bundle.getTargetId());
-			bundleKeys.put(pair);
-		}
-		json.put(TAG_BUNDLE_KEYS, bundleKeys);
-		json.put(TAG_VALUE_OPTION_IDS, getValueOptionIds().toJson());
-		json.put(TAG_CRITERION_IDS, getCriterionIds().toJson());
-		return json;
+		return SimpleThreatFrameworkJson.toJson(bundles, getValueOptionIds(), getCriterionIds());
 	}
-	
+
 	private ThreatTargetChainWalker getThreatTargetChainObject()
 	{
 		return threatTargetChainObject;
 	}
-	
-	public static final String TAG_BUNDLE_KEYS = "BundleKeys";
-	public static final String TAG_VALUE_OPTION_IDS = "ValueOptionIds";
-	public static final String TAG_CRITERION_IDS = "CriterionIds";
-	public static final String TAG_BUNDLE_THREAT_ID = "BundleThreatId";
-	public static final String TAG_BUNDLE_TARGET_ID = "BundleTargetId";
 	
 	private static final String CRITERION_IRREVERSIBILITY = "Irreversibility";
 	private static final String CRITERION_SEVERITY = "Severity";
