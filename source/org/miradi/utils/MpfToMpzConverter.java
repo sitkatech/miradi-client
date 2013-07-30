@@ -127,8 +127,7 @@ public class MpfToMpzConverter extends AbstractConverter
 
 	private void writeSimpleThreatRatingBundleFiles(ZipOutputStream zipOutputStream) throws Exception
 	{
-		final SimpleThreatRatingFramework simpleThreatRatingFramework = getProject().getSimpleThreatRatingFramework();
-		Collection<ThreatRatingBundle> allBundles = simpleThreatRatingFramework.getAllBundles();
+		Collection<ThreatRatingBundle> allBundles = getProject().getSimpleThreatRatingBundles();
 		Vector<ThreatRatingBundle> sortedBundles = new Vector<ThreatRatingBundle>(allBundles);
 		Collections.sort(sortedBundles, new ThreatRatingBundleSorter());
 		for(ThreatRatingBundle bundle : sortedBundles)
