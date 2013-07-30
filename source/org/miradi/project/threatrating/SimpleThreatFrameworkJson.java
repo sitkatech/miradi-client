@@ -20,24 +20,36 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.project.threatrating;
 
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.Collection;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.miradi.ids.IdList;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.project.ProjectInterface;
+import org.miradi.schemas.RatingCriterionSchema;
+import org.miradi.schemas.ValueOptionSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class SimpleThreatFrameworkJson
 {
-	public static EnhancedJsonObject toJson(final HashMap<String, ThreatRatingBundle> bundlesToUse,	final IdList valueOptionIds, final IdList criterionIds)
+	public static EnhancedJsonObject toJson(ProjectInterface project)
+	{
+		Collection<ThreatRatingBundle> allBundles = project.getSimpleThreatRatingBundles();
+		ORefList valueOptionRefs = project.getAllRefsForType(ValueOptionSchema.getObjectType());
+		ORefList ratingCriterionRefs = project.getAllRefsForType(RatingCriterionSchema.getObjectType());
+		
+		final IdList valueOptionIds = valueOptionRefs.convertToIdList(ValueOptionSchema.getObjectType());
+		final IdList ratingCriterionIds = ratingCriterionRefs.convertToIdList(RatingCriterionSchema.getObjectType());
+		return toJson(allBundles, valueOptionIds, ratingCriterionIds);
+	}
+
+	public static EnhancedJsonObject toJson(final Collection<ThreatRatingBundle> bundlesToUse,	final IdList valueOptionIds, final IdList criterionIds)
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
 		JSONArray bundleKeys = new JSONArray();
-		Iterator iter = bundlesToUse.keySet().iterator();
-		while(iter.hasNext())
+		for (ThreatRatingBundle bundle : bundlesToUse)
 		{
-			ThreatRatingBundle bundle = bundlesToUse.get(iter.next());
 			JSONObject pair = new JSONObject();
 			pair.put(TAG_BUNDLE_THREAT_ID, bundle.getThreatId());
 			pair.put(TAG_BUNDLE_TARGET_ID, bundle.getTargetId());

@@ -50,6 +50,7 @@ import org.miradi.project.MpzToMpfConverter;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectInfo;
 import org.miradi.project.ProjectLoader;
+import org.miradi.project.threatrating.SimpleThreatFrameworkJson;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 //FIXME medium: This class needs to use ZipUtilities to eliminate duplication of
@@ -121,8 +122,8 @@ public class MpfToMpzConverter extends AbstractConverter
 	
 	private void writeSimpleThreatRatingFrameworkFile(ZipOutputStream zipOutputStream) throws Exception
 	{
-		SimpleThreatRatingFramework simpleThreatRatingFramework = getProject().getSimpleThreatRatingFramework();
-		writeZipEntry(zipOutputStream, getThreatFrameworkEntryPath(), simpleThreatRatingFramework.toJson().toString());
+		EnhancedJsonObject simpleThreatRatingBundlesAsJson = SimpleThreatFrameworkJson.toJson(getProject());
+		writeZipEntry(zipOutputStream, getThreatFrameworkEntryPath(), simpleThreatRatingBundlesAsJson.toString());
 	}
 
 	private void writeSimpleThreatRatingBundleFiles(ZipOutputStream zipOutputStream) throws Exception
