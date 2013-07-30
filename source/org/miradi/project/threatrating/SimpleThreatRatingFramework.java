@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project.threatrating;
 
 import java.util.Collection;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -115,17 +114,6 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		for(int i = 0; i < refs.size(); ++i)
 			valueOptions[i] = (ValueOption)ValueOption.find(getProject(), refs.get(i));
 		return valueOptions;
-	}
-	
-	class OptionSorter implements Comparator<ValueOption>
-	{
-		public int compare(ValueOption option1, ValueOption option2)
-		{
-			Integer value1 = new Integer(option1.getNumericValue());
-			Integer value2 = new Integer(option2.getNumericValue());
-			return -(value1.compareTo(value2));
-		}
-	
 	}
 	
 	public ValueOption getValueOption(BaseId id)
