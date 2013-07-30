@@ -209,6 +209,11 @@ public class Project implements ProjectInterface
 		return objectManager;
 	}
 	
+	public ORefList getAllRefsForType(int objectType)
+	{
+		return getPool(objectType).getORefList();
+	}
+	
 	public BaseObjectPool getPool(int objectType)
 	{
 		return objectManager.getPool(objectType);
