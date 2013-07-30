@@ -22,7 +22,7 @@ package org.miradi.project;
 
 import org.miradi.objecthelpers.ORef;
 
-public interface ProjectIterface
+public interface ProjectInterface
 {
 	public ORef createObject(int objectType) throws Exception;
 	public ORef createObject(ORef ref) throws Exception;

@@ -28,11 +28,11 @@ import java.util.Vector;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.project.ProjectIterface;
+import org.miradi.project.ProjectInterface;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 
-public class RawProject implements ProjectIterface
+public class RawProject implements ProjectInterface
 {
 	public RawProject()
 	{
