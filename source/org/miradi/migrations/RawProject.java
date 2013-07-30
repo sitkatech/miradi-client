@@ -157,6 +157,11 @@ public class RawProject implements ProjectInterface
 	{
 		return createObject(new ORef(objectType, getNextHighestId()));
 	}
+	
+	public boolean containsObject(ORef ref)
+	{
+		return findObject(ref) != null;
+	}
 
 	public ORef createObject(ORef ref)
 	{
