@@ -20,11 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.project;
 
+import java.util.Collection;
+
 import org.miradi.objecthelpers.ORef;
+import org.miradi.project.threatrating.ThreatRatingBundle;
 
 public interface ProjectInterface
 {
 	public ORef createObject(int objectType) throws Exception;
 	public ORef createObject(ORef ref) throws Exception;
 	public boolean containsObject(ORef ref);
+	public Collection<ThreatRatingBundle> getSimpleThreatRatingBundles();
 }

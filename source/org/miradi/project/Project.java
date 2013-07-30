@@ -24,6 +24,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.io.File;
 import java.io.PrintStream;
+import java.util.Collection;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
@@ -107,6 +108,7 @@ import org.miradi.project.threatrating.SimpleThreatFormula;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.StressBasedThreatFormula;
 import org.miradi.project.threatrating.StressBasedThreatRatingFramework;
+import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.BudgetTimePeriodQuestion;
 import org.miradi.questions.DiagramModeQuestion;
@@ -468,6 +470,11 @@ public class Project implements ProjectInterface
 	public  boolean isNonChainMode()
 	{
 		return !isChainMode(); 
+	}
+	
+	public Collection<ThreatRatingBundle> getSimpleThreatRatingBundles()
+	{
+		return getSimpleThreatRatingFramework().getAllBundles();
 	}
 	
 	public SimpleThreatRatingFramework getSimpleThreatRatingFramework()
