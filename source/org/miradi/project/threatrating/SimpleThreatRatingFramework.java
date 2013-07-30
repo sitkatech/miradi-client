@@ -471,7 +471,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	
 	public EnhancedJsonObject toJson()
 	{
-		return SimpleThreatFrameworkJson.toJson(bundles, getValueOptionIds(), getCriterionIds());
+		return SimpleThreatFrameworkJson.toJson(new Vector<ThreatRatingBundle>(bundles.values()), getValueOptionIds(), getCriterionIds());
 	}
 
 	private ThreatTargetChainWalker getThreatTargetChainObject()
