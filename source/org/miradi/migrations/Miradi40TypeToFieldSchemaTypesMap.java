@@ -26,9 +26,9 @@ import java.util.Vector;
 
 import org.miradi.utils.Utility;
 
-public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, HashMap<String, String>>
+public final class Miradi40TypeToFieldSchemaTypesMap extends HashMap<Integer, HashMap<String, String>>
 {
-	private Miradi40TypeToFieldSchameTypesMap()
+	private Miradi40TypeToFieldSchemaTypesMap()
 	{
 		fillMap();
 	}
@@ -36,7 +36,7 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 	public static Vector<String> getFieldTags(int objectType)
 	{
 		Vector<String> fieldTagsForType = new Vector<String>();
-		HashMap<String, String> tagToFieldType = new Miradi40TypeToFieldSchameTypesMap().get(objectType);
+		HashMap<String, String> tagToFieldType = new Miradi40TypeToFieldSchemaTypesMap().get(objectType);
 		fieldTagsForType.addAll(tagToFieldType.keySet());
 		Collections.sort(fieldTagsForType);
 
@@ -45,37 +45,37 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 	
 	public static boolean isUserTextData(final int objectType, final String fieldTag)
 	{
-		return new Miradi40TypeToFieldSchameTypesMap().isUserTextField(objectType, fieldTag);
+		return new Miradi40TypeToFieldSchemaTypesMap().isUserTextField(objectType, fieldTag);
 	}
 	
 	public static boolean isCodeToUserStringMapData(int objectType, String fieldTag)
 	{
-		return new Miradi40TypeToFieldSchameTypesMap().isCodeToUserStringMapField(objectType, fieldTag);
+		return new Miradi40TypeToFieldSchemaTypesMap().isCodeToUserStringMapField(objectType, fieldTag);
 	}
 	
 	public static boolean isNumericData(int objectType, String fieldTag)
 	{
-		return new Miradi40TypeToFieldSchameTypesMap().isNumerField(objectType, fieldTag);
+		return new Miradi40TypeToFieldSchemaTypesMap().isNumerField(objectType, fieldTag);
 	}
 	
 	public static boolean hasType(int objectType)
 	{
-		return new Miradi40TypeToFieldSchameTypesMap().containsKey(objectType);
+		return new Miradi40TypeToFieldSchemaTypesMap().containsKey(objectType);
 	}
 	
 	public static boolean hasField(int objectType, String tag)
 	{
-		return new Miradi40TypeToFieldSchameTypesMap().hasFieldForType(objectType, tag);
+		return new Miradi40TypeToFieldSchemaTypesMap().hasFieldForType(objectType, tag);
 	}
 	
 	public static boolean isIdField(int objectType, String tag)
 	{
-		return new Miradi40TypeToFieldSchameTypesMap().isIdFieldType(objectType, tag);
+		return new Miradi40TypeToFieldSchemaTypesMap().isIdFieldType(objectType, tag);
 	}
 	
 	public static boolean isRefField(int objectType, String tag)
 	{
-		return new Miradi40TypeToFieldSchameTypesMap().isRefFieldType(objectType, tag);
+		return new Miradi40TypeToFieldSchemaTypesMap().isRefFieldType(objectType, tag);
 	}
 
 	private void fillMap()

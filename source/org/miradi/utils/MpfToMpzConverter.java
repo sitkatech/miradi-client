@@ -36,7 +36,7 @@ import java.util.zip.ZipOutputStream;
 import org.martus.util.UnicodeStringReader;
 import org.miradi.ids.BaseId;
 import org.miradi.legacyprojects.ObjectManifest;
-import org.miradi.migrations.Miradi40TypeToFieldSchameTypesMap;
+import org.miradi.migrations.Miradi40TypeToFieldSchemaTypesMap;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -251,15 +251,15 @@ public class MpfToMpzConverter extends AbstractConverter
 	private EnhancedJsonObject createInitializedJson(int objectType)
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
-		Vector<String> tags = Miradi40TypeToFieldSchameTypesMap.getFieldTags(objectType);	
+		Vector<String> tags = Miradi40TypeToFieldSchemaTypesMap.getFieldTags(objectType);	
 		HashMap<String, String> tagToValueMap = new HashMap<String, String>();
 		for(String tag : tags)
 		{
 			String defaultValue = "";
-			if (Miradi40TypeToFieldSchameTypesMap.isNumericData(objectType, tag))
+			if (Miradi40TypeToFieldSchemaTypesMap.isNumericData(objectType, tag))
 				defaultValue = Integer.toString(0);
 			
-			if (Miradi40TypeToFieldSchameTypesMap.isIdField(objectType, tag))
+			if (Miradi40TypeToFieldSchemaTypesMap.isIdField(objectType, tag))
 				defaultValue = BaseId.INVALID.toString();
 			
 			tagToValueMap.put(tag, defaultValue);
