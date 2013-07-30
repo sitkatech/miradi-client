@@ -28,6 +28,7 @@ import java.util.Vector;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.ProjectInterface;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
@@ -55,6 +56,11 @@ public class RawProject implements ProjectInterface
 	{
 		if (!containsAnyObjectsOfType(objectType))
 			putTypeToNewPoolEntry(objectType, new RawPool());
+	}
+	
+	public ORefList getAllRefsForType(int objectType)
+	{
+		return getRawPoolForType(objectType).getRefList();
 	}
 	
 	public RawPool getRawPoolForType(int type)	
