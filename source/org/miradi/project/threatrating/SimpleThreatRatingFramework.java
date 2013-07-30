@@ -81,18 +81,18 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		
 	public IdList getValueOptionIds()
 	{
-		IdList ids = new IdList(ValueOptionSchema.getObjectType());
-		for(int i = 0; i < getValueOptions().length; ++i)
-			ids.add(getValueOptions()[i].getId());
-		return ids;
+		final ValueOption[] valueOptions = getValueOptions();
+		ORefList refs = new ORefList(valueOptions);
+
+		return refs.convertToIdList(ValueOptionSchema.getObjectType());
 	}
 	
 	public IdList getCriterionIds()
 	{
-		IdList ids = new IdList(RatingCriterionSchema.getObjectType());
-		for(int i = 0; i < getCriteria().length; ++i)
-			ids.add(getCriteria()[i].getId());
-		return ids;
+		final RatingCriterion[] criteria = getCriteria();
+		ORefList refs = new ORefList(criteria);
+		
+		return refs.convertToIdList(RatingCriterionSchema.getObjectType());
 	}
 	
 	public int getBundleCount()
