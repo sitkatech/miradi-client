@@ -133,7 +133,7 @@ public class MpfToMpzConverter extends AbstractConverter
 		Collections.sort(sortedBundles, new ThreatRatingBundleSorter());
 		for(ThreatRatingBundle bundle : sortedBundles)
 		{
-			String bundleName = simpleThreatRatingFramework.getBundleKey(bundle.getThreatId(), bundle.getTargetId());
+			String bundleName = SimpleThreatRatingFramework.getBundleKey(bundle.getThreatId(), bundle.getTargetId());
 			writeZipEntry(zipOutputStream, getSimpleThreatRatingBundleEntryPath(bundleName), bundle.toString());
 		}
 	}
