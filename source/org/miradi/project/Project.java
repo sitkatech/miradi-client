@@ -148,7 +148,7 @@ import org.miradi.views.planning.doers.CreatePlanningViewEmptyConfigurationDoer;
 import org.miradi.views.workplan.WorkPlanView;
 
 
-public class Project implements ProjectIterface
+public class Project implements ProjectInterface
 {
 	public Project() throws Exception
 	{
