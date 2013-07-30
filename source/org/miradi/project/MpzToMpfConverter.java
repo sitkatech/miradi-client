@@ -399,7 +399,7 @@ public class MpzToMpfConverter extends AbstractConverter
 		String objectEntryPath = getObjectEntryPath(ref);
 		ZipEntry entry = zipFile.getEntry(objectEntryPath);
 		EnhancedJsonObject json = readJson(entry);
-		RawObject rawObject = getProject().createObject(ref);
+		RawObject rawObject = getProject().createObjectAndReturnObject(ref);
 		
 		Vector<String> sortedKeys = json.getSortedKeys();
 		for (String tag : sortedKeys)
