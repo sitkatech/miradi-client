@@ -36,6 +36,7 @@ import java.util.zip.ZipOutputStream;
 import org.martus.util.UnicodeStringReader;
 import org.miradi.ids.BaseId;
 import org.miradi.legacyprojects.ObjectManifest;
+import org.miradi.migrations.Miradi40TypeToFieldSchameTypesMap;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -53,8 +54,6 @@ import org.miradi.project.ProjectInfo;
 import org.miradi.project.ProjectLoader;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
-import org.miradi.schemas.AbstractFieldSchema;
-import org.miradi.schemas.BaseObjectSchema;
 //FIXME medium: This class needs to use ZipUtilities to eliminate duplication of
 // zipFile and zipEntry creation 
 public class MpfToMpzConverter extends AbstractConverter
@@ -252,18 +251,17 @@ public class MpfToMpzConverter extends AbstractConverter
 	private EnhancedJsonObject createInitializedJson(int objectType)
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
-		BaseObjectSchema schema = getProject().getPool(objectType).createBaseObjectSchema(getProject());
+		Vector<String> tags = Miradi40TypeToFieldSchameTypesMap.getFieldTags(objectType);	
 		HashMap<String, String> tagToValueMap = new HashMap<String, String>();
-		for(AbstractFieldSchema fieldSchema : schema)
+		for(String tag : tags)
 		{
 			String defaultValue = "";
-			if (fieldSchema.isIntegerFieldSchema() || fieldSchema.isFloatFieldSchema() || fieldSchema.isNumberFieldSchema() || fieldSchema.isPercentageFieldSchema())
+			if (Miradi40TypeToFieldSchameTypesMap.isNumericData(objectType, tag))
 				defaultValue = Integer.toString(0);
 			
-			if (fieldSchema.isBaseIdFieldSchema())
+			if (Miradi40TypeToFieldSchameTypesMap.isIdField(objectType, tag))
 				defaultValue = BaseId.INVALID.toString();
 			
-			final String tag = fieldSchema.getTag();
 			tagToValueMap.put(tag, defaultValue);
 			tagToValueMap.putAll(addCustomTagValues(objectType));
 		}
