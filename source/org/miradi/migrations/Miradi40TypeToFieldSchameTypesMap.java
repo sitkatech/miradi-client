@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Vector;
 
@@ -30,6 +31,16 @@ public final class Miradi40TypeToFieldSchameTypesMap extends HashMap<Integer, Ha
 	private Miradi40TypeToFieldSchameTypesMap()
 	{
 		fillMap();
+	}
+	
+	public static Vector<String> getFieldTags(int objectType)
+	{
+		Vector<String> fieldTagsForType = new Vector<String>();
+		HashMap<String, String> tagToFieldType = new Miradi40TypeToFieldSchameTypesMap().get(objectType);
+		fieldTagsForType.addAll(tagToFieldType.keySet());
+		Collections.sort(fieldTagsForType);
+
+		return fieldTagsForType;
 	}
 	
 	public static boolean isUserTextData(final int objectType, final String fieldTag)
