@@ -28,10 +28,11 @@ import java.util.Vector;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.project.ProjectLikeIterface;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 
-public class RawProject
+public class RawProject implements ProjectLikeIterface
 {
 	public RawProject()
 	{
@@ -151,8 +152,20 @@ public class RawProject
 	{
 		return findObject(ref).setData(tag, data);
 	}
-	
-	public RawObject createObject(ORef ref)
+
+	public ORef createObject(int objectType)
+	{
+		return createObject(new ORef(objectType, getNextHighestId()));
+	}
+
+	public ORef createObject(ORef ref)
+	{
+		createObjectAndReturnObject(ref);
+
+		return ref;
+	}
+
+	public RawObject createObjectAndReturnObject(ORef ref)
 	{
 		return getRawPoolForType(ref).createObject(ref);
 	}
