@@ -39,6 +39,7 @@ import org.miradi.objects.RatingCriterion;
 import org.miradi.objects.Target;
 import org.miradi.objects.ValueOption;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
+import org.miradi.project.threatrating.SimpleThreatFrameworkJson;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.utils.ColorManager;
 import org.miradi.utils.EnhancedJsonObject;
@@ -72,7 +73,7 @@ public class TestSimpleThreatRatingFramework extends MiradiTestCase
 	public void testJson()
 	{
 		EnhancedJsonObject json = framework.toJson();
-		JSONArray bundleKeys = json.getJsonArray(SimpleThreatRatingFramework.TAG_BUNDLE_KEYS);
+		JSONArray bundleKeys = json.getJsonArray(SimpleThreatFrameworkJson.TAG_BUNDLE_KEYS);
 		assertEquals("didn't jsonize bundle keys?", framework.getBundleCount(), bundleKeys.length());
 	}
 	
