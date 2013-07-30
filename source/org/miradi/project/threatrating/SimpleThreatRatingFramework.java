@@ -122,8 +122,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		return (ValueOption)pool.findObject(id);
 	}
 	
-
-	RatingCriterionPool getCriterionPool()
+	private RatingCriterionPool getCriterionPool()
 	{
 		return (RatingCriterionPool)getProject().getPool(ObjectType.RATING_CRITERION);
 	}
