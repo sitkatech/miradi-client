@@ -23,7 +23,10 @@ package org.miradi.views.umbrella;
 import java.io.File;
 
 import org.miradi.main.EAM;
+import org.miradi.migrations.RawProject;
+import org.miradi.migrations.forward.MigrationManager;
 import org.miradi.project.ProjectSaver;
+import org.miradi.project.RawProjectSaver;
 import org.miradi.utils.MiradiFileSaveChooser;
 import org.miradi.utils.MpfToMpzConverter;
 import org.miradi.utils.MpzFileChooser;
@@ -33,14 +36,6 @@ import org.miradi.utils.Translation;
 public class ExportMpzDoer extends AbstractFileSaverDoer
 {
 	@Override
-	public boolean isAvailable()
-	{
-		//FIXME urgent, due to migration bugs,  MPZ/xmpz1/cpmz import and export have been disabled. 
-		//Remove this isAvailable when migrations have been fixed.  This doer replies on parent's isA
-		return false;
-	}
-	
-	@Override
 	protected MiradiFileSaveChooser createFileChooser()
 	{
 		return new MpzFileChooser(getMainWindow());
@@ -49,9 +44,14 @@ public class ExportMpzDoer extends AbstractFileSaverDoer
 	@Override
 	protected boolean doWork(File destinationFile, ProgressInterface progressInterface) throws Exception
 	{
-		MpfToMpzConverter converter = new MpfToMpzConverter(getProject(), getProject().getFilename());
 		String mpfSnapShot = ProjectSaver.createSnapShot(getProject());
-		converter.convert(mpfSnapShot, destinationFile);
+		MigrationManager migrationManager = new MigrationManager();
+		RawProject migratedRawProject = migrationManager.migrateReverse(mpfSnapShot);
+		final String filename = getProject().getFilename();
+		MpfToMpzConverter converter = new MpfToMpzConverter(migratedRawProject, filename);
+		
+		String rawProjectAsString = RawProjectSaver.saveProject(migratedRawProject);
+		converter.convert(rawProjectAsString, destinationFile);
 		
 		return true;
 	}
