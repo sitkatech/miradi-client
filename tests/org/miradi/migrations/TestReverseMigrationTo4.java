@@ -94,8 +94,6 @@ public class TestReverseMigrationTo4 extends AbstractTestReverseMigration
 	{
 		MigrationManager migrationManager = new MigrationManager();
 		String projectAsString = ProjectSaverForTesting.createSnapShot(getProject(), new VersionRange(4, 4));
-		String migratedMpfFile = migrationManager.migrateReverse(projectAsString);
-	
-		return RawProjectLoader.loadProject(migratedMpfFile);
+		return migrationManager.migrateReverse(projectAsString);
 	}
 }
