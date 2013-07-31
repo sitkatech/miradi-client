@@ -186,7 +186,8 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 			{
 				String futureStatusTag = map.get(indicatorFutureStatusTag);
 				String data = latestFutureStatus.get(futureStatusTag);
-				indicator.put(indicatorFutureStatusTag, data);
+				if (data != null)
+					indicator.put(indicatorFutureStatusTag, data);
 			}
 		}
 
