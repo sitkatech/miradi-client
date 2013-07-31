@@ -123,8 +123,7 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionExportXmpz2.class);
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionExportCpmz.class, KeyEvent.VK_C);
-		//FIXME urgent - nmrd-5575: when mpz exporter is fixed, enable this action
-		//addMenuItem(actions, menu, ActionExportMpz.class);
+		addMenuItem(actions, menu, ActionExportMpz.class);
 		addMenuItem(actions, menu, ActionExportXmpz.class, KeyEvent.VK_X);
 		addMenuItem(actions, menu, ActionExportWcsProjectZip.class);
 		if(Miradi.isDemoMode())
