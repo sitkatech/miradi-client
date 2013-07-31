@@ -47,8 +47,8 @@ import org.miradi.project.AbstractConverter;
 import org.miradi.project.AbstractMiradiProjectSaver;
 import org.miradi.project.AbstractProjectLoader;
 import org.miradi.project.MpzToMpfConverter;
-import org.miradi.project.Project;
 import org.miradi.project.ProjectInfo;
+import org.miradi.project.ProjectInterface;
 import org.miradi.project.ProjectLoader;
 import org.miradi.project.threatrating.SimpleThreatFrameworkJson;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
@@ -57,9 +57,10 @@ import org.miradi.project.threatrating.ThreatRatingBundle;
 // zipFile and zipEntry creation 
 public class MpfToMpzConverter extends AbstractConverter
 {
-	public MpfToMpzConverter(Project projectToUse)
+	public MpfToMpzConverter(ProjectInterface projectToUse, String projectFileNameToUse)
 	{
 		project = projectToUse;
+		projectFileName = projectFileNameToUse;
 		refToJsonMap = new HashMap<ORef, EnhancedJsonObject>();
 		projectInfoJson = new EnhancedJsonObject();
 	}
@@ -344,7 +345,7 @@ public class MpfToMpzConverter extends AbstractConverter
 		return Miradi40TypeToFieldSchemaTypesMap.isCodeToUserStringMapData(ref.getObjectType(), tag);
 	}
 	
-	private Project getProject()
+	private ProjectInterface getProject()
 	{
 		return project;
 	}
@@ -352,11 +353,12 @@ public class MpfToMpzConverter extends AbstractConverter
 	@Override
 	protected String getProjectPrefix()
 	{
-		return getProject().getFilename();
+		return projectFileName;
 	}
 	
-	private Project project;
+	private ProjectInterface project;
 	private HashMap<ORef, EnhancedJsonObject> refToJsonMap;
 	private EnhancedJsonObject projectInfoJson;
+	private String projectFileName;
 	public static final String FACTOR_TYPE_TAG = "Type";
 }
