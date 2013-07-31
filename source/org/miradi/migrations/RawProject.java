@@ -191,6 +191,14 @@ public class RawProject implements ProjectInterface
 		currentVersionRange = versionRange;
 	}
 	
+	public void deleteEmptyPool(int objectType) throws Exception
+	{
+		if (getRawPoolForType(objectType).size() != 0)
+			throw new Exception("Cannot delete an pool with data");
+		
+		typeToRawPoolMap.remove(objectType);
+	}
+	
 	public void visitAllObjectsInPool(Vector<RawObjectVisitor> visitors) throws Exception
 	{
 		for(RawObjectVisitor visitor : visitors)
