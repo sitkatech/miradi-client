@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-30 15:16-0500\n"
+"POT-Creation-Date: 2013-07-31 14:31-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4845,11 +4845,11 @@ msgstr "中"
 msgid "Medium (Default)"
 msgstr "中等（默认）"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:244
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:246
 msgid "MenuBar|Actions"
 msgstr "动作 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:175
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:177
 msgid "MenuBar|Edit"
 msgstr "编辑 \t\t"
 
@@ -4857,15 +4857,15 @@ msgstr "编辑 \t\t"
 msgid "MenuBar|File"
 msgstr "文件 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:575
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:577
 msgid "MenuBar|Help"
 msgstr "帮助 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:507
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:509
 msgid "MenuBar|Step-by-Step"
 msgstr "一步一步 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:436
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:438
 msgid "MenuBar|View"
 msgstr "视图 \t\t"
 
@@ -4893,7 +4893,7 @@ msgstr "5. 捕捉及共享学识 \t\t"
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:141
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:143
 msgid "Menu|Export Current Page as..."
 msgstr "导出当前页面为... "
 
@@ -4902,11 +4902,11 @@ msgid "Menu|Export Current Project as..."
 msgstr "导出当前项目为... "
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:280
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:424
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:426
 msgid "Menu|Group Box"
 msgstr "组合框 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:154
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:156
 msgid "Menu|Import"
 msgstr "导入 \t\t"
 
