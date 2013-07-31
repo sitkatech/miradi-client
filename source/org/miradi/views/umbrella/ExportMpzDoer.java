@@ -49,7 +49,7 @@ public class ExportMpzDoer extends AbstractFileSaverDoer
 	@Override
 	protected boolean doWork(File destinationFile, ProgressInterface progressInterface) throws Exception
 	{
-		MpfToMpzConverter converter = new MpfToMpzConverter(getProject());
+		MpfToMpzConverter converter = new MpfToMpzConverter(getProject(), getProject().getFilename());
 		String mpfSnapShot = ProjectSaver.createSnapShot(getProject());
 		converter.convert(mpfSnapShot, destinationFile);
 		
