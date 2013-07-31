@@ -108,7 +108,7 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 
 		private RawPool getOrCreateFutureStatusPool()
 		{
-			getRawProject().ensureFutureStatusPoolExists(FutureStatusSchema.getObjectType());	
+			getRawProject().ensurePoolExists(FutureStatusSchema.getObjectType());	
 				
 			return  getRawProject().getRawPoolForType(FutureStatusSchema.getObjectType());
 		}

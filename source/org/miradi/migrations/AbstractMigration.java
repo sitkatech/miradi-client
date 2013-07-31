@@ -69,7 +69,6 @@ abstract public class AbstractMigration
 	
 	public void reverseMigrateIfPossible() throws Exception
 	{
-		
 		if (canReverseMigrateThisVersion(getRawProject().getCurrentVersionRange()))
 		{
 			final Vector<RawObjectVisitor> rawObjectReverseMigrationVisitors = createRawObjectReverseMigrationVisitors();

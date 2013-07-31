@@ -52,7 +52,7 @@ public class RawProject implements ProjectInterface
 		typeToRawPoolMap.put(type, rawPoolToAdd);
 	}
 	
-	public void ensureFutureStatusPoolExists(int objectType)
+	public void ensurePoolExists(int objectType)
 	{
 		if (!containsAnyObjectsOfType(objectType))
 			putTypeToNewPoolEntry(objectType, new RawPool());
@@ -189,6 +189,16 @@ public class RawProject implements ProjectInterface
 	public void setCurrentVersionRange(VersionRange versionRange)
 	{
 		currentVersionRange = versionRange;
+	}
+	
+	public void deletePoolWithData(int objectType) throws Exception
+	{
+		RawPool pool = getRawPoolForType(objectType);
+		if (pool == null)
+			return;
+		
+		pool.clear();
+		deleteEmptyPool(objectType);
 	}
 	
 	public void deleteEmptyPool(int objectType) throws Exception

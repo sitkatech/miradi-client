@@ -49,7 +49,7 @@ public class AbstractTestMigration extends TestCaseWithProject
 		
 		ProjectForTesting migratedProject = ProjectForTesting.createProjectWithoutDefaultObjects("MigratedProject");
 		ProjectLoader.loadProject(new UnicodeStringReader(migratedMpfFile), migratedProject);
-		
+
 		return migratedProject;
 	}	
 	
@@ -69,14 +69,21 @@ public class AbstractTestMigration extends TestCaseWithProject
 	protected void verifyFullCircleMigrations(final VersionRange versionRangeToUse) throws Exception
 	{
 		ProjectForTesting projectAfterFirstMigration = migrateProject(versionRangeToUse);
-		String beforeForwardMigration = ProjectSaver.createSnapShot(projectAfterFirstMigration);
-		
+		String afterFirstForwardMigration = ProjectSaver.createSnapShot(projectAfterFirstMigration);
+
 		RawProject reverseMigratedProject = reverseMigrate(projectAfterFirstMigration,  versionRangeToUse);
 		String afterReverseMigration = RawProjectSaver.saveProject(reverseMigratedProject);
 		
 		ProjectForTesting fullCircleBackProject = migrateProject(afterReverseMigration);
 		String fullCircleBackProjectAsString = ProjectSaver.createSnapShot(fullCircleBackProject);
 		
-		assertEquals("Full circle migration results are not the same?", beforeForwardMigration, fullCircleBackProjectAsString);
+		assertEquals("Full circle migration results are not the same?", stripHighestIdLine(afterFirstForwardMigration), stripHighestIdLine(fullCircleBackProjectAsString));
 	}
+	
+	private String stripHighestIdLine(String mpf)
+	{
+		int indexOfLastLine = mpf.indexOf("UP	HighestUsedNodeId=");
+		return mpf.substring(0, indexOfLastLine);
+	}
+
 }
