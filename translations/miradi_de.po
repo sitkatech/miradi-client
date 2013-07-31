@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-31 14:31-0500\n"
+"POT-Creation-Date: 2013-07-31 17:31-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -282,7 +282,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%vonName' -> '%nachName'<br>"
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationManager.java:98
+#: Miradi/source/org/miradi/migrations/forward/MigrationManager.java:99
 #: Miradi/source/org/miradi/main/MainWindow.java:1403
 msgid "(%s)"
 msgstr ""
@@ -5156,11 +5156,11 @@ msgid "Medium (Default)"
 msgstr "Mittel (Standard)"
 
 # Aktionen oder Bearbeiten?
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:246
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:245
 msgid "MenuBar|Actions"
 msgstr "Aktionen"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:177
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:176
 msgid "MenuBar|Edit"
 msgstr "Bearbeiten"
 
@@ -5168,16 +5168,16 @@ msgstr "Bearbeiten"
 msgid "MenuBar|File"
 msgstr "Datei"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:577
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:576
 msgid "MenuBar|Help"
 msgstr "Hilfe"
 
 # mit den Trennstrichen oder ohne?
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:509
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:508
 msgid "MenuBar|Step-by-Step"
 msgstr "Schritt-für-Schritt"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:438
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:437
 msgid "MenuBar|View"
 msgstr "Ansicht"
 
@@ -5209,7 +5209,7 @@ msgstr "5. Erfahrungen festhalten und teilen"
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Tag zu %n ausgewählten Element(en) hinzufügen"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:143
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:142
 msgid "Menu|Export Current Page as..."
 msgstr "Aktuelle Seite exportieren als..."
 
@@ -5218,11 +5218,11 @@ msgid "Menu|Export Current Project as..."
 msgstr "Aktuelles Projekt exportieren als..."
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:280
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:426
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:425
 msgid "Menu|Group Box"
 msgstr "Gruppenbox"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:156
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:155
 msgid "Menu|Import"
 msgstr "Importieren"
 
