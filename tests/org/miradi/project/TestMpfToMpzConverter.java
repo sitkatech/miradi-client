@@ -145,7 +145,7 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 		File temporaryMpzFile = File.createTempFile("$$$tempMpzFile", ".zip");
 		try
 		{
-			new MpfToMpzConverter(getProject()).convert(mpfSnapShot, temporaryMpzFile);
+			new MpfToMpzConverter(getProject(), getProject().getFilename()).convert(mpfSnapShot, temporaryMpzFile);
 
 			return MpzToMpfConverter.convert(temporaryMpzFile, new NullProgressMeter());
 		}

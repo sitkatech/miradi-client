@@ -63,9 +63,7 @@ public class AbstractTestMigration extends TestCaseWithProject
 		MigrationManager migrationManager = new MigrationManager();
 		String projectAsString = ProjectSaverForTesting.createSnapShot(projectToUse, versionRangeToUse);
 		
-		String migratedMpfFile = migrationManager.migrateReverse(projectAsString);
-
-		return RawProjectLoader.loadProject(migratedMpfFile);
+		return  migrationManager.migrateReverse(projectAsString);
 	}
 	
 	protected void verifyFullCircleMigrations(final VersionRange versionRangeToUse) throws Exception

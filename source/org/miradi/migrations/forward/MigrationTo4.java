@@ -190,12 +190,14 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 			}
 		}
 
-		private void deleteOrphanFutureStatuse(ORefList futureStatusRefs)
+		private void deleteOrphanFutureStatuse(ORefList futureStatusRefs) throws Exception
 		{
 			for(ORef futureStatusRef : futureStatusRefs)
 			{
 				getRawProject().deleteRawObject(futureStatusRef);	
 			}
+			
+			getRawProject().deleteEmptyPool(ObjectType.FUTURE_STATUS);
 		}
 
 		private void clearIndicatorFutureStatusField(RawObject indicator)
