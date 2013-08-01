@@ -25,9 +25,13 @@ import org.miradi.diagram.renderers.FactorRenderer;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.FutureStatus;
+import org.miradi.objects.Indicator;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.schemas.FutureStatusSchema;
 
@@ -62,9 +66,25 @@ public class PlanningViewFutureStatusTableModel extends PlanningViewAbstractTree
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
 		BaseObject objectForRow = getBaseObjectForRowColumn(row, column);
-		return new TaglessChoiceItem(objectForRow.getData(getColumnTag(column)));
+		final String tag = getColumnTag(column);
+		if (FutureStatus.is(objectForRow))
+			return new TaglessChoiceItem(objectForRow.getData(tag));
+		
+		if (Indicator.is(objectForRow))
+			return getLatestFutureStatusData((Indicator) objectForRow, tag);
+		
+		return new EmptyChoiceItem();
 	}
 	
+	private ChoiceItem getLatestFutureStatusData(Indicator indicator, String tag)
+	{
+		ORef latestFutureStatusRef = indicator.getLatestFutureStatusRef();
+		if (latestFutureStatusRef.isInvalid())
+			return new EmptyChoiceItem();
+		
+		return new TaglessChoiceItem(getProject().getObjectData(latestFutureStatusRef, tag));
+	}
+
 	@Override
 	public Color getCellBackgroundColor(int column)
 	{
