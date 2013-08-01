@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-01 09:46-0500\n"
+"POT-Creation-Date: 2013-08-01 13:46-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -1566,6 +1566,10 @@ msgstr "Peta "
 
 #: Miradi/source/org/miradi/actions/ActionExportMpz.java:35
 msgid "Action|Miradi 3.3 Project File (.mpz)"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionExportMpf40Version.java:35
+msgid "Action|Miradi 4.0 Project File (.Miradi)"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExportMpf.java:35
@@ -3477,6 +3481,10 @@ msgstr "Pengetahuan Pakar"
 msgid "Export"
 msgstr "Ekspor "
 
+#: Miradi/source/org/miradi/views/umbrella/doers/ExportMpf40VersionDoer.java:61
+msgid "Export 4.0 Miradi"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:55
 msgid "Export MPZ"
 msgstr ""
@@ -4934,11 +4942,11 @@ msgstr "Sedang"
 msgid "Medium (Default)"
 msgstr "Sedang (Standar)"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:245
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:246
 msgid "MenuBar|Actions"
 msgstr "Tindakan "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:176
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:177
 msgid "MenuBar|Edit"
 msgstr "Edit "
 
@@ -4946,15 +4954,15 @@ msgstr "Edit "
 msgid "MenuBar|File"
 msgstr "Berkas "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:576
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:577
 msgid "MenuBar|Help"
 msgstr "Bantuan "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:508
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:509
 msgid "MenuBar|Step-by-Step"
 msgstr "Langkah demi Langkah "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:437
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:438
 msgid "MenuBar|View"
 msgstr "Tampilan "
 
@@ -4982,7 +4990,7 @@ msgstr "5. Tangkap dan Berbagi Pembelajaran "
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Tambahkan Tag ke %n Butir yang Dipilih "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:142
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:143
 msgid "Menu|Export Current Page as..."
 msgstr "Ekspor Halaman Saat Ini sebagai…"
 
@@ -4991,11 +4999,11 @@ msgid "Menu|Export Current Project as..."
 msgstr "Ekspor Proyek Saat Ini sebagai…"
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:280
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:425
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:426
 msgid "Menu|Group Box"
 msgstr "Kotak Grup"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:155
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:156
 msgid "Menu|Import"
 msgstr "Impor "
 
@@ -7037,6 +7045,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExportMpf.java:41
 msgid "TT|Export a .Miradi file"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionExportMpf40Version.java:41
+msgid "TT|Export a .miradi file"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExportMpz.java:41
