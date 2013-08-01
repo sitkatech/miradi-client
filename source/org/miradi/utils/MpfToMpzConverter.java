@@ -67,7 +67,9 @@ public class MpfToMpzConverter extends AbstractConverter
 		String rawProjectAsString = RawProjectSaver.saveProject(migratedRawProject);
 		
 		MpfToMpzConverter converter = new MpfToMpzConverter(migratedRawProject, projectFileNameToUse);
-		converter.convert(rawProjectAsString, destinationFile);
+		final UnicodeStringReader reader = new UnicodeStringReader(rawProjectAsString);
+		converter.load(reader);
+		converter.createZipFile(destinationFile);
 	}
 	
 	public MpfToMpzConverter(ProjectInterface projectToUse, String projectFileNameToUse)
@@ -78,13 +80,6 @@ public class MpfToMpzConverter extends AbstractConverter
 		projectInfoJson = new EnhancedJsonObject();
 	}
 	
-	public void convert(String mpfFileContent, File mpzFileToSaveTo) throws Exception
-	{
-		final UnicodeStringReader reader = new UnicodeStringReader(mpfFileContent);
-		load(reader);
-		createZipFile(mpzFileToSaveTo);
-	}
-
 	private void createZipFile(File mpzFileToSaveTo) throws Exception
 	{
 		final FileOutputStream fileOutputStream = new FileOutputStream(mpzFileToSaveTo);
