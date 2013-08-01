@@ -72,7 +72,7 @@ public class MpfToMpzConverter extends AbstractConverter
 		converter.createZipFile(destinationFile);
 	}
 	
-	public MpfToMpzConverter(ProjectInterface projectToUse, String projectFileNameToUse)
+	private MpfToMpzConverter(ProjectInterface projectToUse, String projectFileNameToUse)
 	{
 		project = projectToUse;
 		projectFileName = projectFileNameToUse;
