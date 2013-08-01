@@ -1,0 +1,13 @@
+RTF files can be read by MS Word, Open Office Writer, and 
+other word processors. 
+
+Unfortunately, the RTF files produced by this export process 
+have some significant limitations. Notably, tables are exported 
+as text boxes plus graphical lines, rather than as a true table. 
+This makes it difficult to make significant edits.
+
+Instead of exporting to RTF, we recommend that you use the ODT 
+format, after downloading a free copy of Open Office Writer from:
+   www.openoffice.org
+   
+ 
