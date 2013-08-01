@@ -203,6 +203,9 @@ public class RawProject implements ProjectInterface
 	
 	public void deleteEmptyPool(int objectType) throws Exception
 	{
+		if (getRawPoolForType(objectType) == null)
+			return;
+		
 		if (getRawPoolForType(objectType).size() != 0)
 			throw new Exception("Cannot delete an pool with data");
 		

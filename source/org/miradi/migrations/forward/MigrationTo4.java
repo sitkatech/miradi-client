@@ -71,6 +71,12 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 		
 		return visitors;
 	}
+
+	@Override
+	protected void doPostMigrationCleanup() throws Exception
+	{
+		getRawProject().deleteEmptyPool(ObjectType.FUTURE_STATUS);
+	}
 	
 	@Override
 	protected int getToVersion()
@@ -197,8 +203,6 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 			{
 				getRawProject().deleteRawObject(futureStatusRef);	
 			}
-			
-			getRawProject().deleteEmptyPool(ObjectType.FUTURE_STATUS);
 		}
 
 		private void clearIndicatorFutureStatusField(RawObject indicator)

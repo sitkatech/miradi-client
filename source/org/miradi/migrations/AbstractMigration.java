@@ -74,8 +74,13 @@ abstract public class AbstractMigration
 			final Vector<RawObjectVisitor> rawObjectReverseMigrationVisitors = createRawObjectReverseMigrationVisitors();
 			getRawProject().visitAllObjectsInPool(rawObjectReverseMigrationVisitors);
 		}
+		doPostMigrationCleanup();
 		final VersionRange postMigrationVersionRange = getPostReverseMigrationVersionRange();
 		getRawProject().setCurrentVersionRange(postMigrationVersionRange);
+	}
+
+	protected void doPostMigrationCleanup() throws Exception
+	{
 	}
 
 	private VersionRange getPostForwardMigrationVersionRange() throws Exception
