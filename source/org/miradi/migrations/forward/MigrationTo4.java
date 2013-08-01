@@ -71,6 +71,12 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 		
 		return visitors;
 	}
+
+	@Override
+	protected void doPostMigrationCleanup() throws Exception
+	{
+		getRawProject().deleteEmptyPool(ObjectType.FUTURE_STATUS);
+	}
 	
 	@Override
 	protected int getToVersion()
@@ -175,7 +181,7 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 			RawObject latestFutureStatus = getLatestFutureStatusRef(futureStatusRefs);
 			moveFieldsFromFutureStatusToIndicator(indicator, latestFutureStatus);
 			clearIndicatorFutureStatusField(indicator);
-			deleteOrphanFutureStatuse(futureStatusRefs);
+			deleteOrphanFutureStatuses(futureStatusRefs);
 		}
 
 		private void moveFieldsFromFutureStatusToIndicator(RawObject indicator, RawObject latestFutureStatus)
@@ -191,14 +197,12 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 			}
 		}
 
-		private void deleteOrphanFutureStatuse(ORefList futureStatusRefs) throws Exception
+		private void deleteOrphanFutureStatuses(ORefList futureStatusRefs) throws Exception
 		{
 			for(ORef futureStatusRef : futureStatusRefs)
 			{
 				getRawProject().deleteRawObject(futureStatusRef);	
 			}
-			
-			getRawProject().deleteEmptyPool(ObjectType.FUTURE_STATUS);
 		}
 
 		private void clearIndicatorFutureStatusField(RawObject indicator)
