@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-31 17:31-0500\n"
+"POT-Creation-Date: 2013-08-01 09:46-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -2360,7 +2360,7 @@ msgid "Bundle Rules"
 msgstr "Aturan Bundel"
 
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:91
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:71
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:64
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
 #: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:49
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:234
@@ -2404,7 +2404,7 @@ msgstr ""
 msgid "Button|Exit"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:70
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:63
 msgid "Button|Export"
 msgstr ""
 
@@ -3477,7 +3477,7 @@ msgstr "Pengetahuan Pakar"
 msgid "Export"
 msgstr "Ekspor "
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:62
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:55
 msgid "Export MPZ"
 msgstr ""
 
@@ -8100,7 +8100,7 @@ msgstr "Sifat-sifat Peringkat Editor Strategi TNC versi sebelumnya "
 msgid "Title|Link Create Dialog"
 msgstr "Dialog Membuat Tautan "
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:68
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:61
 msgid "Title|MPZ Export Warning"
 msgstr ""
 

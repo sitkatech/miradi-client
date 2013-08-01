@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-31 17:31-0500\n"
+"POT-Creation-Date: 2013-08-01 09:46-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -2537,7 +2537,7 @@ msgid "Bundle Rules"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:91
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:71
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:64
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
 #: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:49
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:234
@@ -2583,7 +2583,7 @@ msgstr "Nicht Importieren"
 msgid "Button|Exit"
 msgstr "Schließen"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:70
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:63
 msgid "Button|Export"
 msgstr ""
 
@@ -3691,7 +3691,7 @@ msgstr "Expertenwissen"
 msgid "Export"
 msgstr "Exportieren"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:62
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:55
 msgid "Export MPZ"
 msgstr ""
 
@@ -8411,7 +8411,7 @@ msgstr ""
 msgid "Title|Link Create Dialog"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:68
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:61
 msgid "Title|MPZ Export Warning"
 msgstr ""
 

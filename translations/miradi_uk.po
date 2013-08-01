@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-31 17:31-0500\n"
+"POT-Creation-Date: 2013-08-01 09:46-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -2422,7 +2422,7 @@ msgid "Bundle Rules"
 msgstr "Вузлові правила"
 
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:91
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:71
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:64
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
 #: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:49
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:234
@@ -2466,7 +2466,7 @@ msgstr "Button|Не імпортувати"
 msgid "Button|Exit"
 msgstr "Button|Вихід"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:70
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:63
 msgid "Button|Export"
 msgstr ""
 
@@ -3534,7 +3534,7 @@ msgstr "Спеціальне знання"
 msgid "Export"
 msgstr "Експорт"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:62
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:55
 msgid "Export MPZ"
 msgstr ""
 
@@ -8133,7 +8133,7 @@ msgstr "Title|Функція TNC стратегії редактора ранж�
 msgid "Title|Link Create Dialog"
 msgstr "Title|З'єднати Створити діалог"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:68
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:61
 msgid "Title|MPZ Export Warning"
 msgstr ""
 

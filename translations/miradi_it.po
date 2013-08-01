@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-31 17:31-0500\n"
+"POT-Creation-Date: 2013-08-01 09:46-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -2468,7 +2468,7 @@ msgid "Bundle Rules"
 msgstr "Regole"
 
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:91
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:71
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:64
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
 #: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:49
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:234
@@ -2512,7 +2512,7 @@ msgstr "Non importare"
 msgid "Button|Exit"
 msgstr "Esci"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:70
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:63
 msgid "Button|Export"
 msgstr ""
 
@@ -3589,7 +3589,7 @@ msgstr "Conoscenza specialistica (Expert Knowledge)"
 msgid "Export"
 msgstr "Esporta"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:62
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:55
 msgid "Export MPZ"
 msgstr ""
 
@@ -8250,7 +8250,7 @@ msgstr "Proprietà dell'editor di valutazione della strategia della Legacy TNC"
 msgid "Title|Link Create Dialog"
 msgstr "Link Crea Dialogo "
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:68
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:61
 msgid "Title|MPZ Export Warning"
 msgstr ""
 
