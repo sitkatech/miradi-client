@@ -28,14 +28,10 @@ import java.util.Collection;
 import org.martus.util.DirectoryUtils;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.CodeToUserStringMap;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AbstractTarget;
-import org.miradi.objects.FutureStatus;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
-import org.miradi.objects.MiradiShareProjectData;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.project.threatrating.ThreatRatingBundle;
@@ -126,8 +122,6 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 
 	private String verifyProject() throws Exception
 	{
-		clearAllFutureStatusDataToAvoidTheLackReverseMigration();
-		clearAllMiradiShareData();
 		String mpfSnapShot = ProjectSaver.createSnapShot(getProject());
 		String actualMpf = toMpzAndBack(mpfSnapShot);
 		String expectedMpf = toMpzAndBack(actualMpf);
@@ -145,7 +139,7 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 		File temporaryMpzFile = File.createTempFile("$$$tempMpzFile", ".zip");
 		try
 		{
-			new MpfToMpzConverter(getProject(), getProject().getFilename()).convert(mpfSnapShot, temporaryMpzFile);
+			MpfToMpzConverter.convert(getProject().getFilename(), mpfSnapShot, temporaryMpzFile);
 
 			return MpzToMpfConverter.convert(temporaryMpzFile, new NullProgressMeter());
 		}
@@ -161,32 +155,6 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 		String headerLineForMpz = AbstractMiradiProjectSaver.createLowHighVersionHeaderLine(MpzToMpfConverter.FIRST_LOW_VERSION_OF_MPF, MpzToMpfConverter.FIRST_HIGH_VERSION_OF_MPF);
 		
 		return mpfContent.replaceAll(headerLineForMpz, latestHeaderLine);
-	}
-
-	private void clearAllMiradiShareData() throws Exception
-	{
-		ORefList miradiShareProjectDataRefs = getProject().getPool(ObjectType.MIRADI_SHARE_PROJECT_DATA).getORefList();
-		for(ORef futureStatusRef : miradiShareProjectDataRefs)
-		{
-			MiradiShareProjectData miradiShareProjectData = MiradiShareProjectData.find(getProject(), futureStatusRef);
-			getProject().deleteObject(miradiShareProjectData);
-		}
-	}
-
-	private void clearAllFutureStatusDataToAvoidTheLackReverseMigration() throws Exception
-	{
-		ORefList indictorRefs = getProject().getIndicatorPool().getORefList();
-		for(ORef indicatorRef : indictorRefs)
-		{
-			getProject().fillObjectUsingCommand(indicatorRef, Indicator.TAG_FUTURE_STATUS_REFS, "");
-		}
-		
-		ORefList futureStatusRefs = getProject().getFutureStatusPool().getORefList();
-		for(ORef futureStatusRef : futureStatusRefs)
-		{
-			FutureStatus futureStatus = FutureStatus.find(getProject(), futureStatusRef);
-			getProject().deleteObject(futureStatus);
-		}
 	}
 
 	private ProjectForTesting loadIntoNewProject(String loadedProject) throws Exception

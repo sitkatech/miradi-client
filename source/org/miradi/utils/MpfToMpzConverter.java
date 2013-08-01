@@ -37,6 +37,8 @@ import org.martus.util.UnicodeStringReader;
 import org.miradi.ids.BaseId;
 import org.miradi.legacyprojects.ObjectManifest;
 import org.miradi.migrations.Miradi40TypeToFieldSchemaTypesMap;
+import org.miradi.migrations.RawProject;
+import org.miradi.migrations.forward.MigrationManager;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ThreatRatingBundleSorter;
@@ -50,6 +52,7 @@ import org.miradi.project.MpzToMpfConverter;
 import org.miradi.project.ProjectInfo;
 import org.miradi.project.ProjectInterface;
 import org.miradi.project.ProjectLoader;
+import org.miradi.project.RawProjectSaver;
 import org.miradi.project.threatrating.SimpleThreatFrameworkJson;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
@@ -57,7 +60,19 @@ import org.miradi.project.threatrating.ThreatRatingBundle;
 // zipFile and zipEntry creation 
 public class MpfToMpzConverter extends AbstractConverter
 {
-	public MpfToMpzConverter(ProjectInterface projectToUse, String projectFileNameToUse)
+	public static void convert(String projectFileNameToUse, String mpfSnapShot, File destinationFile) throws Exception
+	{
+		MigrationManager migrationManager = new MigrationManager();
+		RawProject migratedRawProject = migrationManager.migrateReverse(mpfSnapShot);
+		String rawProjectAsString = RawProjectSaver.saveProject(migratedRawProject);
+		
+		MpfToMpzConverter converter = new MpfToMpzConverter(migratedRawProject, projectFileNameToUse);
+		final UnicodeStringReader reader = new UnicodeStringReader(rawProjectAsString);
+		converter.load(reader);
+		converter.createZipFile(destinationFile);
+	}
+	
+	private MpfToMpzConverter(ProjectInterface projectToUse, String projectFileNameToUse)
 	{
 		project = projectToUse;
 		projectFileName = projectFileNameToUse;
@@ -65,13 +80,6 @@ public class MpfToMpzConverter extends AbstractConverter
 		projectInfoJson = new EnhancedJsonObject();
 	}
 	
-	public void convert(String mpfFileContent, File mpzFileToSaveTo) throws Exception
-	{
-		final UnicodeStringReader reader = new UnicodeStringReader(mpfFileContent);
-		load(reader);
-		createZipFile(mpzFileToSaveTo);
-	}
-
 	private void createZipFile(File mpzFileToSaveTo) throws Exception
 	{
 		final FileOutputStream fileOutputStream = new FileOutputStream(mpzFileToSaveTo);
