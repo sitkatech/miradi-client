@@ -183,6 +183,7 @@ public class Actions
 		registerAction(new ActionImportMpz(mainWindow));
 		registerAction(new ActionImportMpf(mainWindow));
 		registerAction(new ActionExportMpz(mainWindow));
+		registerAction(new ActionExportMpf40Version(mainWindow));
 		registerAction(new ActionExportMpf(mainWindow));
 		registerAction(new ActionImportCpmz(mainWindow));
 		registerAction(new ActionExportCpmz(mainWindow));
