@@ -120,6 +120,7 @@ public class MainMenuBar extends JMenuBar
 		menu.setMnemonic(KeyEvent.VK_R);
 		
 		addMenuItem(actions, menu, ActionExportMpf.class);
+		addMenuItem(actions, menu, ActionExportMpf40Version.class);
 		addMenuItem(actions, menu, ActionExportXmpz2.class);
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionExportCpmz.class, KeyEvent.VK_C);
