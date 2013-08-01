@@ -175,7 +175,7 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 			RawObject latestFutureStatus = getLatestFutureStatusRef(futureStatusRefs);
 			moveFieldsFromFutureStatusToIndicator(indicator, latestFutureStatus);
 			clearIndicatorFutureStatusField(indicator);
-			deleteOrphanFutureStatuse(futureStatusRefs);
+			deleteOrphanFutureStatuses(futureStatusRefs);
 		}
 
 		private void moveFieldsFromFutureStatusToIndicator(RawObject indicator, RawObject latestFutureStatus)
@@ -191,7 +191,7 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 			}
 		}
 
-		private void deleteOrphanFutureStatuse(ORefList futureStatusRefs) throws Exception
+		private void deleteOrphanFutureStatuses(ORefList futureStatusRefs) throws Exception
 		{
 			for(ORef futureStatusRef : futureStatusRefs)
 			{
