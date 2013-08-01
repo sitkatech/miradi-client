@@ -45,12 +45,12 @@ public class ExportMpzDoer extends AbstractFileSaverDoer
 	protected boolean doWork(File destinationFile, ProgressInterface progressInterface) throws Exception
 	{
 		String mpfSnapShot = ProjectSaver.createSnapShot(getProject());
+		final String filename = getProject().getFilename();
 		MigrationManager migrationManager = new MigrationManager();
 		RawProject migratedRawProject = migrationManager.migrateReverse(mpfSnapShot);
-		final String filename = getProject().getFilename();
-		MpfToMpzConverter converter = new MpfToMpzConverter(migratedRawProject, filename);
-		
 		String rawProjectAsString = RawProjectSaver.saveProject(migratedRawProject);
+		
+		MpfToMpzConverter converter = new MpfToMpzConverter(migratedRawProject, filename);
 		converter.convert(rawProjectAsString, destinationFile);
 		
 		return true;
