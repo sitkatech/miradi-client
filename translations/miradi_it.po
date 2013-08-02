@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-01 13:46-0500\n"
+"POT-Creation-Date: 2013-08-02 10:31-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -5984,7 +5984,7 @@ msgstr "Valutazione Rapida"
 msgid "Ratings"
 msgstr "Valutazioni"
 
-#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:233
+#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:235
 msgid "Reading..."
 msgstr ""
 
