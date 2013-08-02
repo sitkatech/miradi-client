@@ -38,6 +38,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.legacyprojects.ObjectManifest;
 import org.miradi.migrations.Miradi40TypeToFieldSchemaTypesMap;
 import org.miradi.migrations.RawProject;
+import org.miradi.migrations.VersionRange;
 import org.miradi.migrations.forward.MigrationManager;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -64,10 +65,20 @@ public class MpfToMpzConverter extends AbstractConverter
 	{
 		MigrationManager migrationManager = new MigrationManager();
 		RawProject migratedRawProject = migrationManager.migrateReverse(mpfSnapShot);
-		String rawProjectAsString = RawProjectSaver.saveProject(migratedRawProject);
 		
-		MpfToMpzConverter converter = new MpfToMpzConverter(migratedRawProject, projectFileNameToUse);
-		final UnicodeStringReader reader = new UnicodeStringReader(rawProjectAsString);
+		convertWithoutMigrating(migratedRawProject, projectFileNameToUse, destinationFile);
+	}
+	
+	public static void convertWithoutMigrating(RawProject rawProject, String projectFileNameToUse, File destinationFile) throws Exception
+	{
+		VersionRange versionRange = rawProject.getCurrentVersionRange();
+		VersionRange oldestMpfVersion = new VersionRange(MigrationManager.OLDEST_VERSION_TO_HANDLE);
+		if (versionRange.isEntirelyNewerThan(oldestMpfVersion))
+			throw new Exception("Project is too new to convert");
+		
+		MpfToMpzConverter converter = new MpfToMpzConverter(rawProject, projectFileNameToUse);
+		String mpfSnapShot = RawProjectSaver.saveProject(rawProject);
+		final UnicodeStringReader reader = new UnicodeStringReader(mpfSnapShot);
 		converter.load(reader);
 		converter.createZipFile(destinationFile);
 	}
