@@ -65,19 +65,19 @@ public class MpfToMpzConverter extends AbstractConverter
 	{
 		MigrationManager migrationManager = new MigrationManager();
 		RawProject migratedRawProject = migrationManager.migrateReverse(mpfSnapShot);
-		String rawProjectAsString = RawProjectSaver.saveProject(migratedRawProject);
 		
-		convertWithoutMigrating(migratedRawProject, projectFileNameToUse, rawProjectAsString, destinationFile);
+		convertWithoutMigrating(migratedRawProject, projectFileNameToUse, destinationFile);
 	}
 	
-	public static void convertWithoutMigrating(ProjectInterface projectInterace, String projectFileNameToUse, String mpfSnapShot, File destinationFile) throws Exception
+	public static void convertWithoutMigrating(RawProject rawProject, String projectFileNameToUse, File destinationFile) throws Exception
 	{
-		VersionRange versionRange = projectInterace.getCurrentVersionRange();
+		VersionRange versionRange = rawProject.getCurrentVersionRange();
 		VersionRange oldestMpfVersion = new VersionRange(MigrationManager.OLDEST_VERSION_TO_HANDLE);
 		if (versionRange.isEntirelyNewerThan(oldestMpfVersion))
 			throw new Exception("Project is too new to convert");
 		
-		MpfToMpzConverter converter = new MpfToMpzConverter(projectInterace, projectFileNameToUse);
+		MpfToMpzConverter converter = new MpfToMpzConverter(rawProject, projectFileNameToUse);
+		String mpfSnapShot = RawProjectSaver.saveProject(rawProject);
 		final UnicodeStringReader reader = new UnicodeStringReader(mpfSnapShot);
 		converter.load(reader);
 		converter.createZipFile(destinationFile);
