@@ -22,12 +22,19 @@ package org.miradi.project;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.Collection;
 
 import org.martus.util.DirectoryUtils;
+import org.miradi.main.ResourcesHandler;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.migrations.RawObject;
+import org.miradi.migrations.RawProject;
+import org.miradi.migrations.RawProjectLoader;
 import org.miradi.objecthelpers.CodeToUserStringMap;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Goal;
@@ -36,6 +43,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.MpfToMpzConverter;
 import org.miradi.utils.NullProgressMeter;
@@ -84,15 +92,17 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 		verifyStrategyComments(HtmlUtilities.stripAllHtmlTags("<html><b>boldText</b> and <i>italic</i></html>"), "<html><b>boldText</b> and <i>italic</i></html>");
 	}
 
-	private void verifyStrategyComments(final String expectedComments, final String comment) throws Exception
+	private void verifyStrategyComments(final String expectedComments, final String commentToStore) throws Exception
 	{
-		Strategy strategy = getProject().createStrategy();
-		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_COMMENTS, comment);
-		final String expectedMpfAsString = verifyProject();
-		ProjectForTesting projectToFill = loadIntoNewProject(expectedMpfAsString);
-		ORefList strategyRefs = projectToFill.getStrategyPool().getRefList();
-		Strategy loadedStrategy = Strategy.find(projectToFill, strategyRefs.getFirstElement());		
-		assertEquals("Comment should not change during conversion?", expectedComments, loadedStrategy.getComment());
+		final String STRATEGY_LABEL = "StrategyToVerifyLabel";
+		RawProject rawProject = loadSampleProject();
+		createStrategy(rawProject, STRATEGY_LABEL, commentToStore);
+		
+		String verifiedProjectAsString = verifyProject(rawProject);
+		RawProject verifiedProject = RawProjectLoader.loadProject(verifiedProjectAsString);
+		RawObject strategy = findStrategyMatchingLabel(verifiedProject, STRATEGY_LABEL);
+		final String actualComment = strategy.getData(Strategy.TAG_COMMENTS);
+		assertEquals("Comment should not change during conversion?", expectedComments, actualComment);
 	}
 
 	public void testConvertingFullProject() throws Exception
@@ -122,24 +132,28 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 
 	private String verifyProject() throws Exception
 	{
-		String mpfSnapShot = ProjectSaver.createSnapShot(getProject());
-		String actualMpf = toMpzAndBack(mpfSnapShot);
-		String expectedMpf = toMpzAndBack(actualMpf);
-		
-
-		final String actualWithoutTimestamp = stripTimeStamp(actualMpf);
-		final String expectedWithoutTimeStamp = stripTimeStamp(expectedMpf);
-		assertEquals("Mpf was not converted to mpz?", expectedWithoutTimeStamp, actualWithoutTimestamp);
-
-		return setHighLowVersionsToLatestMpf(expectedMpf);
+		return verifyProject(loadSampleProject());
 	}
 
-	private String toMpzAndBack(String mpfSnapShot)throws Exception
+	private String verifyProject(RawProject rawProject) throws Exception
+	{
+		String actualMpf = toMpzAndBack(rawProject);
+		final String actualWithoutTimestamp = stripLastMod(stripTimeStamp(actualMpf));
+		final String expectedMpfSnapShot = RawProjectSaver.saveProject(rawProject);
+		final String expectedWithoutTimeStamp = stripLastMod(stripTimeStamp(expectedMpfSnapShot));
+		assertEquals("Mpf was not converted to mpz?", expectedWithoutTimeStamp, actualWithoutTimestamp);
+
+		return setHighLowVersionsToLatestMpf(actualMpf);
+	}
+
+	private String toMpzAndBack(RawProject rawProject)throws Exception
 	{
 		File temporaryMpzFile = File.createTempFile("$$$tempMpzFile", ".zip");
 		try
 		{
-			MpfToMpzConverter.convert(getProject().getFilename(), mpfSnapShot, temporaryMpzFile);
+			//FIXME change convert to not accept mpf snap shot
+			String mpfSnapShot = RawProjectSaver.saveProject(rawProject);
+			MpfToMpzConverter.convertWithoutMigrating(rawProject, getProject().getFilename(), mpfSnapShot, temporaryMpzFile);
 
 			return MpzToMpfConverter.convert(temporaryMpzFile, new NullProgressMeter());
 		}
@@ -168,8 +182,47 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 
 	private String stripTimeStamp(String mpf)
 	{
-		int indexOfLastLine = mpf.indexOf("--");
+		return stripLine(mpf, "--");
+	}
+	
+	private String stripLastMod(String mpf)
+	{
+		return stripLine(mpf, "UL	LastModified=");
+	}
+
+	public String stripLine(String mpf, final String str)
+	{
+		int indexOfLastLine = mpf.indexOf(str);
 		return mpf.substring(0, indexOfLastLine);
+	}
+	
+	private RawObject findStrategyMatchingLabel(final RawProject rawProject, final String strategyLabelToMatch) throws Exception
+	{
+		ORefList strategyRefs = rawProject.getAllRefsForType(StrategySchema.getObjectType());
+		for(ORef ref : strategyRefs)
+		{
+			RawObject strategy = rawProject.findObject(ref);		
+			final String data = strategy.getData(Strategy.TAG_LABEL);
+			if (data.equals(strategyLabelToMatch))
+				return strategy;
+		}
+		
+		throw new Exception("Strategy must exist in the project");
+	}
+	
+	private RawProject loadSampleProject() throws IOException, Exception
+	{
+		URL url = ResourcesHandler.getResourceURL("/MarineExample-4.1.0.Miradi");
+		String mpfSnapShot = ResourcesHandler.loadFile(url);
+		
+		return RawProjectLoader.loadProject(mpfSnapShot);
+	}
+	
+	private void createStrategy(RawProject rawProject, final String label, final String comments)	throws Exception
+	{
+		ORef strategyRef = rawProject.createObject(StrategySchema.getObjectType());
+		rawProject.setData(strategyRef, Strategy.TAG_COMMENTS, comments);		
+		rawProject.setData(strategyRef, Strategy.TAG_LABEL, label);
 	}
 	
 	private static final String commentWithXmlEscapedChars = "&quot; &apos; &gt; &lt; &amp;";

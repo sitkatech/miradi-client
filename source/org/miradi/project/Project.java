@@ -1417,6 +1417,11 @@ public class Project implements ProjectInterface
 		throw new RuntimeException("setLocalDataLocation not yet supported!");
 	}
 	
+	public VersionRange getCurrentVersionRange() throws Exception
+	{
+		return getMiradiVersionRange();
+	}
+	
 	public static String withoutMpfProjectSuffix(String name) throws Exception
 	{
 		return StringUtilities.stripTrailingString(name, AbstractMpfFileFilter.EXTENSION);
