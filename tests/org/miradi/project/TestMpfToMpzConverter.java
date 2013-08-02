@@ -151,9 +151,7 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 		File temporaryMpzFile = File.createTempFile("$$$tempMpzFile", ".zip");
 		try
 		{
-			//FIXME change convert to not accept mpf snap shot
-			String mpfSnapShot = RawProjectSaver.saveProject(rawProject);
-			MpfToMpzConverter.convertWithoutMigrating(rawProject, getProject().getFilename(), mpfSnapShot, temporaryMpzFile);
+			MpfToMpzConverter.convertWithoutMigrating(rawProject, getProject().getFilename(), temporaryMpzFile);
 
 			return MpzToMpfConverter.convert(temporaryMpzFile, new NullProgressMeter());
 		}
