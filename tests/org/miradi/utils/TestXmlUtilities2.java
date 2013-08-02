@@ -29,6 +29,16 @@ public class TestXmlUtilities2 extends MiradiTestCase
 		super(name);
 	}
 	
+	public void testReplaceNamedEntitiesWithNumericEntities()
+	{
+		verifyReplaceNamedEntitiesWithNumericEntities("#160;", "&nbsp;");
+	}
+	
+	private void verifyReplaceNamedEntitiesWithNumericEntities(String expectedValue, String actualValue)
+	{
+		assertEquals("Numeric value not escaped?", expectedValue, XmlUtilities2.replaceNamedEntitiesWithNumericEntities(actualValue));
+	}
+
 	public void testGetUnescapedNumericValues() throws Exception
 	{
 		verifyUnescapedNumericValue(new String(new char[] {162}), "&#162;");
