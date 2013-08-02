@@ -30,6 +30,8 @@ import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.Iterator;
@@ -388,9 +390,11 @@ public class MpzToMpfConverter extends AbstractConverter
 		EnhancedJsonObject json = readJson(manifestEntry);
 		Manifest manifest = new Manifest(json);
 		BaseId[] ids = manifest.getAllKeys();
-		for(int index = 0; index < ids.length; ++index)
+		Vector<BaseId> sortedIds = new Vector<BaseId>(Arrays.asList(ids));
+		Collections.sort(sortedIds);
+		for(BaseId id : ids)
 		{
-			convertObject(new ORef(type, ids[index]));
+			convertObject(new ORef(type, id));
 		}
 	}
 
