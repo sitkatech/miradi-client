@@ -62,6 +62,7 @@ public class HtmlUtilitiesRelatedToShef
 		trimmedText = HtmlUtilities.getWithoutSpacesAfterXmlElements(trimmedText);
 		// NOTE: Shef does not encode/decode apostrophes as we need for proper XML
 		trimmedText = XmlUtilities2.getXmlEncodedApostrophes(trimmedText);
+		trimmedText = XmlUtilities2.replaceNamedEntitiesWithNumericEntities(trimmedText);
 		HtmlUtilities.ensureNoCloseBrTags(trimmedText);
 		trimmedText = HtmlUtilities.fixAnchorElements(trimmedText, allowedHtmlTags);
 		

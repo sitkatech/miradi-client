@@ -34,6 +34,11 @@ public class XmlUtilities2
 		return translator.translate(value);
 	}
 	
+	public static String replaceNamedEntitiesWithNumericEntities(String value)
+	{
+		return value.replaceAll("&nbsp;", "#160;");
+	}
+	
 	public static String getXmlDecoded(String value)
 	{
 		if (isEmptyValue(value))
