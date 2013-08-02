@@ -22,6 +22,7 @@ package org.miradi.project;
 
 import java.util.Collection;
 
+import org.miradi.migrations.VersionRange;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.threatrating.ThreatRatingBundle;
@@ -33,4 +34,5 @@ public interface ProjectInterface
 	public boolean containsObject(ORef ref);
 	public Collection<ThreatRatingBundle> getSimpleThreatRatingBundles();
 	public ORefList getAllRefsForType(int objectType);
+	public VersionRange getCurrentVersionRange() throws Exception;
 }

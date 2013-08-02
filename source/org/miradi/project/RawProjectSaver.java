@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Vector;
 
 import org.martus.util.UnicodeStringWriter;
@@ -71,6 +72,7 @@ public class RawProjectSaver extends AbstractMiradiProjectSaver
 		//writing in leaf classes and duplication between leaf classes. 
 		RawObject rawObject = getRawProject().findObject(ref);
 		Vector<String> fieldTags = new Vector<String>(rawObject.keySet());
+		Collections.sort(fieldTags);
 		for(String tag : fieldTags)
 		{
 			String data = rawObject.get(tag);

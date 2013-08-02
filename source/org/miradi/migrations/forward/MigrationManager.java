@@ -141,5 +141,5 @@ public class MigrationManager extends AbstractMigrationManager
 	public static final int TOO_NEW_TO_MIGRATE = 2;
 	public static final int TOO_OLD_TO_MIGRATE = 3;
 	
-	private static final int OLDEST_VERSION_TO_HANDLE = 3;
+	public static final int OLDEST_VERSION_TO_HANDLE = 3;
 }
