@@ -188,7 +188,7 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 		return stripLine(mpf, "UL	LastModified=");
 	}
 
-	public String stripLine(String mpf, final String str)
+	private String stripLine(String mpf, final String str)
 	{
 		int indexOfLastLine = mpf.indexOf(str);
 		return mpf.substring(0, indexOfLastLine);
