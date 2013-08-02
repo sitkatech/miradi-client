@@ -158,7 +158,7 @@
     <mkdir dir="${eam.class.root}"/>
 
     <javac source="1.5" target="1.5" compiler="javac1.5" optimize="on" failonerror="true"
-			debug="true" debuglevel="lines,vars,source"
+			debug="true" debuglevel="lines"
     		srcdir="${eam.src.root}" destdir="${eam.class.root}" >
     	<compilerarg value="-Xlint:unchecked" />
     	<compilerarg value="-Werror" />
