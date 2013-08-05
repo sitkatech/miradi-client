@@ -56,7 +56,7 @@ abstract public class AbstractMigration
 		return new Vector<AbstractMigrationVisitor>();
 	}
 	
-	public void forwardMigrate() throws Exception
+	public void forwardMigrateIfPossible() throws Exception
 	{
 		if (canMigrateThisVersion(getRawProject().getCurrentVersionRange()))
 		{
@@ -67,7 +67,7 @@ abstract public class AbstractMigration
 		}
 	}
 	
-	public void reverseMigrate() throws Exception
+	public void reverseMigrateIfPossible() throws Exception
 	{
 		if (canReverseMigrateThisVersion(getRawProject().getCurrentVersionRange()))
 		{
