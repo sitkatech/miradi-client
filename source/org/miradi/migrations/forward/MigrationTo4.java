@@ -27,11 +27,10 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.miradi.ids.BaseId;
+import org.miradi.migrations.AbstractMigrationVisitor;
 import org.miradi.migrations.AbstractSingleTypeMigration;
-import org.miradi.migrations.AbstractVisitor;
 import org.miradi.migrations.IndicatorFutureStatusTagsToFutureStatusTagsMap;
 import org.miradi.migrations.RawObject;
-import org.miradi.migrations.RawObjectVisitor;
 import org.miradi.migrations.RawPool;
 import org.miradi.migrations.RawProject;
 import org.miradi.migrations.VersionRange;
@@ -55,18 +54,18 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 	}
 
 	@Override
-	public Vector<RawObjectVisitor> createRawObjectForwardMigrationVisitors()
+	public Vector<AbstractMigrationVisitor> createRawObjectForwardMigrationVisitors()
 	{
-		Vector<RawObjectVisitor> visitors = super.createRawObjectForwardMigrationVisitors();
+		Vector<AbstractMigrationVisitor> visitors = super.createRawObjectForwardMigrationVisitors();
 		visitors.add(new IndicatorVisitor());
 		
 		return visitors;
 	}
 
 	@Override
-	public Vector<RawObjectVisitor> createRawObjectReverseMigrationVisitors()
+	public Vector<AbstractMigrationVisitor> createRawObjectReverseMigrationVisitors()
 	{
-		Vector<RawObjectVisitor> visitors = super.createRawObjectForwardMigrationVisitors();
+		Vector<AbstractMigrationVisitor> visitors = super.createRawObjectForwardMigrationVisitors();
 		visitors.add(new ReverseMigrationVisitor());
 		
 		return visitors;
@@ -90,7 +89,7 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 		return 3;
 	}
 	
-	private class IndicatorVisitor extends AbstractVisitor
+	private class IndicatorVisitor extends AbstractMigrationVisitor
 	{
 		public int getTypeToVisit()
 		{
@@ -161,7 +160,7 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 		}
 	}
 	
-	private class ReverseMigrationVisitor extends AbstractVisitor
+	private class ReverseMigrationVisitor extends AbstractMigrationVisitor
 	{
 		public int getTypeToVisit()
 		{

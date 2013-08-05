@@ -22,10 +22,9 @@ package org.miradi.migrations.forward;
 
 import java.util.Vector;
 
+import org.miradi.migrations.AbstractMigrationVisitor;
 import org.miradi.migrations.AbstractSingleTypeMigration;
-import org.miradi.migrations.AbstractVisitor;
 import org.miradi.migrations.RawObject;
-import org.miradi.migrations.RawObjectVisitor;
 import org.miradi.migrations.RawProject;
 import org.miradi.migrations.VersionRange;
 import org.miradi.schemas.StrategySchema;
@@ -38,18 +37,18 @@ public class MigrationTo5 extends AbstractSingleTypeMigration
 	}
 
 	@Override
-	public Vector<RawObjectVisitor> createRawObjectForwardMigrationVisitors()
+	public Vector<AbstractMigrationVisitor> createRawObjectForwardMigrationVisitors()
 	{
-		Vector<RawObjectVisitor> visitors = super.createRawObjectForwardMigrationVisitors();
+		Vector<AbstractMigrationVisitor> visitors = super.createRawObjectForwardMigrationVisitors();
 		visitors.add(new StrategyVisitor());
 		
 		return visitors;
 	}
 	
 	@Override
-	public Vector<RawObjectVisitor> createRawObjectReverseMigrationVisitors()
+	public Vector<AbstractMigrationVisitor> createRawObjectReverseMigrationVisitors()
 	{
-		final Vector<RawObjectVisitor> visitors = super.createRawObjectReverseMigrationVisitors();
+		final Vector<AbstractMigrationVisitor> visitors = super.createRawObjectReverseMigrationVisitors();
 		visitors.add(new ReverseStrategyVisitor());
 		return visitors;
 	}
@@ -72,7 +71,7 @@ public class MigrationTo5 extends AbstractSingleTypeMigration
 		return FROM_VERSION;
 	}
 	
-	abstract private class AbstractStrategyVisitor extends AbstractVisitor
+	abstract private class AbstractStrategyVisitor extends AbstractMigrationVisitor
 	{
 		public int getTypeToVisit()
 		{

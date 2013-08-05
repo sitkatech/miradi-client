@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
-abstract public class AbstractVisitor implements RawObjectVisitor
+abstract public class AbstractMigrationVisitor implements RawObjectVisitor
 {
 	public final void visit(RawObject rawObject) throws Exception
 	{
@@ -31,4 +31,4 @@ abstract public class AbstractVisitor implements RawObjectVisitor
 	}
 	
 	abstract protected void internalVisit(RawObject rawObject) throws Exception;
-}
+}	
