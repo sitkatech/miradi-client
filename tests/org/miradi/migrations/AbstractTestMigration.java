@@ -65,8 +65,10 @@ public class AbstractTestMigration extends TestCaseWithProject
 	{
 		MigrationManager migrationManager = new MigrationManager();
 		String projectAsString = ProjectSaverForTesting.createSnapShot(projectToUse, versionRangeToUse);
+		RawProject rawProjectToMigrate = RawProjectLoader.loadProject(projectAsString);
+		migrationManager.migrate(rawProjectToMigrate, new VersionRange(MigrationManager.OLDEST_VERSION_TO_HANDLE));
 		
-		return  migrationManager.migrateReverse(projectAsString);
+		return  rawProjectToMigrate;
 	}
 	
 	protected void verifyFullCircleMigrations(final VersionRange versionRangeToUse) throws Exception
