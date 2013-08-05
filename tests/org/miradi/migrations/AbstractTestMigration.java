@@ -23,6 +23,7 @@ package org.miradi.migrations;
 import org.martus.util.UnicodeStringReader;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.migrations.forward.MigrationManager;
+import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.project.ProjectLoader;
 import org.miradi.project.ProjectSaver;
@@ -45,8 +46,10 @@ public class AbstractTestMigration extends TestCaseWithProject
 	protected ProjectForTesting migrateProject(String projectAsString) throws Exception
 	{
 		MigrationManager migrationManager = new MigrationManager();
-		String migratedMpfFile = migrationManager.migrateForward(projectAsString);
+		final RawProject projectToMigrate = RawProjectLoader.loadProject(projectAsString);
+		migrationManager.migrate(projectToMigrate, Project.getMiradiVersionRange());
 		
+		String migratedMpfFile = RawProjectSaver.saveProject(projectToMigrate);
 		ProjectForTesting migratedProject = ProjectForTesting.createProjectWithoutDefaultObjects("MigratedProject");
 		ProjectLoader.loadProject(new UnicodeStringReader(migratedMpfFile), migratedProject);
 
