@@ -87,19 +87,6 @@ public class MigrationManager extends AbstractMigrationManager
 		return migrationResult;
 	}
 	
-	public RawProject migrateReverse(String mpfAsString) throws Exception
-	{
-		RawProject rawProject = RawProjectLoader.loadProject(mpfAsString);
-		Vector<AbstractMigration> migrations = createEmptyMigrations(rawProject);
-		for(int index = migrations.size() - 1; index >= 0; --index)
-		{
-			AbstractMigration migration = migrations.get(index);
-			migration.reverseMigrateIfPossible();	
-		}
-		
-		return rawProject;
-	}
-
 	private Vector<AbstractMigration> createEmptyMigrations(RawProject rawProject)
 	{
 		Vector<AbstractMigration> migrations = new Vector<AbstractMigration>();
