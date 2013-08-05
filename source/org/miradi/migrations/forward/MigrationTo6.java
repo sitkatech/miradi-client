@@ -23,10 +23,9 @@ package org.miradi.migrations.forward;
 import java.util.Set;
 import java.util.Vector;
 
+import org.miradi.migrations.AbstractMigrationVisitor;
 import org.miradi.migrations.AbstractSingleTypeMigration;
-import org.miradi.migrations.AbstractVisitor;
 import org.miradi.migrations.RawObject;
-import org.miradi.migrations.RawObjectVisitor;
 import org.miradi.migrations.RawProject;
 import org.miradi.migrations.VersionRange;
 import org.miradi.objecthelpers.CodeToUserStringMap;
@@ -41,9 +40,9 @@ public class MigrationTo6 extends AbstractSingleTypeMigration
 	}
 
 	@Override
-	public Vector<RawObjectVisitor> createRawObjectForwardMigrationVisitors()
+	public Vector<AbstractMigrationVisitor> createRawObjectForwardMigrationVisitors()
 	{
-		Vector<RawObjectVisitor> visitors = super.createRawObjectForwardMigrationVisitors();
+		Vector<AbstractMigrationVisitor> visitors = super.createRawObjectForwardMigrationVisitors();
 		visitors.add(new IndicatorVisitor());
 		
 		return visitors;
@@ -67,7 +66,7 @@ public class MigrationTo6 extends AbstractSingleTypeMigration
 		return 5;
 	}
 	
-	private class IndicatorVisitor extends AbstractVisitor
+	private class IndicatorVisitor extends AbstractMigrationVisitor
 	{
 		public int getTypeToVisit()
 		{

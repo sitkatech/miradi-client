@@ -23,9 +23,8 @@ package org.miradi.migrations.forward;
 import java.util.Vector;
 
 import org.miradi.migrations.AbstractMigration;
-import org.miradi.migrations.AbstractVisitor;
+import org.miradi.migrations.AbstractMigrationVisitor;
 import org.miradi.migrations.RawObject;
-import org.miradi.migrations.RawObjectVisitor;
 import org.miradi.migrations.RawProject;
 import org.miradi.migrations.VersionRange;
 import org.miradi.objecthelpers.ObjectType;
@@ -54,9 +53,9 @@ public class MigrationTo7 extends AbstractMigration
 	}
 	
 	@Override
-	public Vector<RawObjectVisitor> createRawObjectReverseMigrationVisitors()
+	public Vector<AbstractMigrationVisitor> createRawObjectReverseMigrationVisitors()
 	{
-		Vector<RawObjectVisitor> visitors = super.createRawObjectForwardMigrationVisitors();
+		Vector<AbstractMigrationVisitor> visitors = super.createRawObjectForwardMigrationVisitors();
 		Vector<Integer> typesWithTaxonomyClassifications = getTypesWithTaxonomyClassifications();
 		for(Integer typeWithTaxonomy : typesWithTaxonomyClassifications)
 		{
@@ -98,7 +97,7 @@ public class MigrationTo7 extends AbstractMigration
 		return 6;
 	}
 	
-	private class RemoveTaxonomyClassificationFieldVisitor extends AbstractVisitor
+	private class RemoveTaxonomyClassificationFieldVisitor extends AbstractMigrationVisitor
 	{
 		public RemoveTaxonomyClassificationFieldVisitor(int typeToUse)
 		{

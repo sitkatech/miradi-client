@@ -212,7 +212,7 @@ public class RawProject implements ProjectInterface
 		typeToRawPoolMap.remove(objectType);
 	}
 	
-	public void visitAllObjectsInPool(Vector<RawObjectVisitor> visitors) throws Exception
+	public void visitAllObjectsInPool(Vector<? extends RawObjectVisitor> visitors) throws Exception
 	{
 		for(RawObjectVisitor visitor : visitors)
 		{
