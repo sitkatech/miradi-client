@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.migrations.forward;
 
 import java.util.Set;
-import java.util.Vector;
 
 import org.miradi.migrations.AbstractMigrationVisitor;
 import org.miradi.migrations.AbstractSingleTypeMigration;
@@ -42,17 +41,7 @@ public class MigrationTo6 extends AbstractSingleTypeMigration
 	@Override
 	public void migrateForward() throws Exception
 	{
-		final Vector<AbstractMigrationVisitor> rawObjectForwardMigrationVisitors = createRawObjectForwardMigrationVisitors();
-		getRawProject().visitAllObjectsInPool(rawObjectForwardMigrationVisitors);
-	}
-
-	@Override
-	public Vector<AbstractMigrationVisitor> createRawObjectForwardMigrationVisitors()
-	{
-		Vector<AbstractMigrationVisitor> visitors = super.createRawObjectForwardMigrationVisitors();
-		visitors.add(new IndicatorVisitor());
-		
-		return visitors;
+		getRawProject().visitAllObjectsInPool(new IndicatorVisitor());
 	}
 
 	@Override

@@ -56,23 +56,13 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 	@Override
 	public void migrateForward() throws Exception
 	{
-		final Vector<AbstractMigrationVisitor> rawObjectForwardMigrationVisitors = createRawObjectForwardMigrationVisitors();
-		getRawProject().visitAllObjectsInPool(rawObjectForwardMigrationVisitors);
-	}
-
-	@Override
-	public Vector<AbstractMigrationVisitor> createRawObjectForwardMigrationVisitors()
-	{
-		Vector<AbstractMigrationVisitor> visitors = super.createRawObjectForwardMigrationVisitors();
-		visitors.add(new IndicatorVisitor());
-		
-		return visitors;
+		getRawProject().visitAllObjectsInPool(new IndicatorVisitor());
 	}
 
 	@Override
 	public Vector<AbstractMigrationVisitor> createRawObjectReverseMigrationVisitors()
 	{
-		Vector<AbstractMigrationVisitor> visitors = super.createRawObjectForwardMigrationVisitors();
+		Vector<AbstractMigrationVisitor> visitors = super.createRawObjectReverseMigrationVisitors();
 		visitors.add(new ReverseMigrationVisitor());
 		
 		return visitors;

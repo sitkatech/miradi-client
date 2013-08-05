@@ -39,8 +39,6 @@ public class MigrationTo7 extends AbstractMigration
 	@Override
 	public void migrateForward() throws Exception
 	{
-		final Vector<AbstractMigrationVisitor> rawObjectForwardMigrationVisitors = createRawObjectForwardMigrationVisitors();
-		getRawProject().visitAllObjectsInPool(rawObjectForwardMigrationVisitors);
 	}
 
 	@Override
@@ -62,7 +60,7 @@ public class MigrationTo7 extends AbstractMigration
 	@Override
 	public Vector<AbstractMigrationVisitor> createRawObjectReverseMigrationVisitors()
 	{
-		Vector<AbstractMigrationVisitor> visitors = super.createRawObjectForwardMigrationVisitors();
+		Vector<AbstractMigrationVisitor> visitors = super.createRawObjectReverseMigrationVisitors();
 		Vector<Integer> typesWithTaxonomyClassifications = getTypesWithTaxonomyClassifications();
 		for(Integer typeWithTaxonomy : typesWithTaxonomyClassifications)
 		{
