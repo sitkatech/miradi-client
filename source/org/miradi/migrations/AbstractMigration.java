@@ -67,17 +67,6 @@ abstract public class AbstractMigration
 		}
 	}
 		
-	public void forwardMigrateIfPossible() throws Exception
-	{
-		if (canMigrateThisVersion(getRawProject().getCurrentVersionRange()))
-		{
-			final Vector<RawObjectVisitor> rawObjectForwardMigrationVisitors = createRawObjectForwardMigrationVisitors();
-			getRawProject().visitAllObjectsInPool(rawObjectForwardMigrationVisitors);
-		}
-		final VersionRange postMigrationVersionRange = getPostForwardMigrationVersionRange();
-		getRawProject().setCurrentVersionRange(postMigrationVersionRange);
-	}
-	
 	public void reverseMigrateIfPossible() throws Exception
 	{
 		if (canReverseMigrateThisVersion(getRawProject().getCurrentVersionRange()))
