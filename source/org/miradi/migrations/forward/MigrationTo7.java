@@ -44,15 +44,15 @@ public class MigrationTo7 extends AbstractMigration
 	}
 	
 	@Override
-	public void reverseMigrateIfPossible() throws Exception
+	protected void doPostMigrationCleanup() throws Exception
 	{
 		getRawProject().deletePoolWithData(ObjectType.MIRADI_SHARE_PROJECT_DATA);
 		getRawProject().deletePoolWithData(ObjectType.MIRADI_SHARE_TAXONOMY);
 		getRawProject().deletePoolWithData(ObjectType.TAXONOMY_ASSOCIATION);
-		
-		super.reverseMigrateIfPossible();
-	}
 
+		super.doPostMigrationCleanup();
+	}
+	
 	@Override
 	public Vector<RawObjectVisitor> createRawObjectReverseMigrationVisitors()
 	{
