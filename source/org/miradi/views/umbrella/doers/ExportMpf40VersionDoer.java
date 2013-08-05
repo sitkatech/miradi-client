@@ -25,6 +25,8 @@ import java.io.File;
 import org.martus.util.UnicodeWriter;
 import org.miradi.main.EAM;
 import org.miradi.migrations.RawProject;
+import org.miradi.migrations.RawProjectLoader;
+import org.miradi.migrations.VersionRange;
 import org.miradi.migrations.forward.MigrationManager;
 import org.miradi.project.ProjectSaver;
 import org.miradi.project.RawProjectSaver;
@@ -46,8 +48,10 @@ public class ExportMpf40VersionDoer extends AbstractFileSaverDoer
 	{
 		String mpfSnapShot = ProjectSaver.createSnapShot(getProject());
 		MigrationManager migrationManager = new MigrationManager();
-		RawProject migratedRawProject = migrationManager.migrateReverse(mpfSnapShot);
-		String migratedRawProjectAsString = RawProjectSaver.saveProject(migratedRawProject);
+		RawProject rawProjectToMigrate = RawProjectLoader.loadProject(mpfSnapShot);
+		migrationManager.migrate(rawProjectToMigrate, new VersionRange(MigrationManager.OLDEST_VERSION_TO_HANDLE));
+		
+		String migratedRawProjectAsString = RawProjectSaver.saveProject(rawProjectToMigrate);
 		UnicodeWriter fileWriter = new UnicodeWriter(destinationFile);
 		fileWriter.write(migratedRawProjectAsString);
 		fileWriter.close();

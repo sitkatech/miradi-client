@@ -38,6 +38,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.legacyprojects.ObjectManifest;
 import org.miradi.migrations.Miradi40TypeToFieldSchemaTypesMap;
 import org.miradi.migrations.RawProject;
+import org.miradi.migrations.RawProjectLoader;
 import org.miradi.migrations.VersionRange;
 import org.miradi.migrations.forward.MigrationManager;
 import org.miradi.objecthelpers.ORef;
@@ -64,9 +65,10 @@ public class MpfToMpzConverter extends AbstractConverter
 	public static void convert(String projectFileNameToUse, String mpfSnapShot, File destinationFile) throws Exception
 	{
 		MigrationManager migrationManager = new MigrationManager();
-		RawProject migratedRawProject = migrationManager.migrateReverse(mpfSnapShot);
+		RawProject projectToMigrate = RawProjectLoader.loadProject(mpfSnapShot);
+		migrationManager.migrate(projectToMigrate, new VersionRange(MigrationManager.OLDEST_VERSION_TO_HANDLE));
 		
-		convertWithoutMigrating(migratedRawProject, projectFileNameToUse, destinationFile);
+		convertWithoutMigrating(projectToMigrate, projectFileNameToUse, destinationFile);
 	}
 	
 	public static void convertWithoutMigrating(RawProject rawProject, String projectFileNameToUse, File destinationFile) throws Exception
