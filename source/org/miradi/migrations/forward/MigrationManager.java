@@ -81,7 +81,7 @@ public class MigrationManager extends AbstractMigrationManager
 			//FIXME urgent - Needs to update migrationResult, remove manual addition of success status
 			migrationResult.addSuccess();
 			AbstractMigration migration = migrations.get(index);
-			migration.reverseMigrateIfPossible();
+			migration.reverseMigrate();
 		}
 		
 		return migrationResult;
