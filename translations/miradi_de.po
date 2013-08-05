@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-05 14:31-0500\n"
+"POT-Creation-Date: 2013-08-05 15:16-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -282,7 +282,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%vonName' -> '%nachName'<br>"
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationManager.java:133
+#: Miradi/source/org/miradi/migrations/forward/MigrationManager.java:108
 #: Miradi/source/org/miradi/main/MainWindow.java:1426
 msgid "(%s)"
 msgstr ""
@@ -3695,7 +3695,7 @@ msgstr "Expertenwissen"
 msgid "Export"
 msgstr "Exportieren"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/ExportMpf40VersionDoer.java:61
+#: Miradi/source/org/miradi/views/umbrella/doers/ExportMpf40VersionDoer.java:65
 msgid "Export 4.0 Miradi"
 msgstr ""
 
