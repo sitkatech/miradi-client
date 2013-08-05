@@ -37,6 +37,13 @@ public class MigrationTo7 extends AbstractMigration
 	}
 
 	@Override
+	public void migrateForward() throws Exception
+	{
+		final Vector<AbstractMigrationVisitor> rawObjectForwardMigrationVisitors = createRawObjectForwardMigrationVisitors();
+		getRawProject().visitAllObjectsInPool(rawObjectForwardMigrationVisitors);
+	}
+
+	@Override
 	public VersionRange getMigratableVersionRange() throws Exception
 	{
 		return new VersionRange(VERSION_LOW, VERSION_HIGH);
