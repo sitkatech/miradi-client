@@ -87,18 +87,6 @@ public class MigrationManager extends AbstractMigrationManager
 		return migrationResult;
 	}
 	
-	public String migrateForward(String mpfAsString) throws Exception
-	{
-		RawProject rawProject = RawProjectLoader.loadProject(mpfAsString);
-		Vector<AbstractMigration> migrations = createEmptyMigrations(rawProject);
-		for(AbstractMigration abstractMigration : migrations)
-		{
-			abstractMigration.forwardMigrateIfPossible();	
-		}
-
-		return convertToMpfString(rawProject);
-	}
-
 	public RawProject migrateReverse(String mpfAsString) throws Exception
 	{
 		RawProject rawProject = RawProjectLoader.loadProject(mpfAsString);
