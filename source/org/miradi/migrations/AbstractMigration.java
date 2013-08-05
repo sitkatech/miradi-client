@@ -46,11 +46,6 @@ abstract public class AbstractMigration
 		return rawProject;
 	}
 	
-	public Vector<AbstractMigrationVisitor> createRawObjectForwardMigrationVisitors()
-	{
-		return new Vector<AbstractMigrationVisitor>();
-	}
-	
 	public Vector<AbstractMigrationVisitor> createRawObjectReverseMigrationVisitors()
 	{
 		return new Vector<AbstractMigrationVisitor>();
