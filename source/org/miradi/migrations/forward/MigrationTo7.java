@@ -119,8 +119,8 @@ public class MigrationTo7 extends AbstractMigration
 		private int type;
 	}
 	
-	private static final int VERSION_LOW = 7;
-	private static final int VERSION_HIGH = 7;
+	private static final int VERSION_LOW = 6;
+	private static final int VERSION_HIGH = 6;
 	
 	private static final String TAG_TAXONOMY_CLASSIFICATION_CONTAINER = "TaxonomyClassificationContainer";
 }

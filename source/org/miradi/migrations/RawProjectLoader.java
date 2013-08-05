@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.martus.util.UnicodeReader;
@@ -30,6 +31,13 @@ import org.miradi.project.threatrating.ThreatRatingBundle;
 
 public class RawProjectLoader extends AbstractProjectLoader
 {
+	public static RawProject loadProject(File projectFile) throws Exception
+	{
+		String projectToMigrateAsString = UnicodeReader.getFileContents(projectFile);
+		
+		return loadProject(projectToMigrateAsString);
+	}
+	
 	public static RawProject loadProject(String mpfAsString) throws Exception, IOException
 	{
 		VersionRange versionRange = loadVersionRange(new UnicodeStringReader(mpfAsString));
