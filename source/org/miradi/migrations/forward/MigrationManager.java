@@ -25,12 +25,12 @@ import java.util.Vector;
 
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringReader;
-import org.martus.util.UnicodeWriter;
 import org.miradi.exceptions.ProjectFileTooNewException;
 import org.miradi.exceptions.ProjectFileTooOldException;
 import org.miradi.main.EAM;
 import org.miradi.migrations.AbstractMigration;
 import org.miradi.migrations.AbstractMigrationManager;
+import org.miradi.migrations.MigrationResult;
 import org.miradi.migrations.RawProject;
 import org.miradi.migrations.RawProjectLoader;
 import org.miradi.migrations.VersionRange;
@@ -43,16 +43,50 @@ public class MigrationManager extends AbstractMigrationManager
 	{
 	}
 	
-	public void safelyMigrateForward(File projectFile) throws Exception
+	public MigrationResult migrate(RawProject rawProject, VersionRange desiredVersion) throws Exception
 	{
-		createBackup(projectFile);
-		String contents = UnicodeReader.getFileContents(projectFile);
-		contents = migrateForward(contents);
-		UnicodeWriter fileWriter = new UnicodeWriter(projectFile);
-		fileWriter.write(contents);
-		fileWriter.close();
+		MigrationResult migrationResult = new MigrationResult();
+		if (rawProject.getCurrentVersionRange().isEntirelyNewerThan(desiredVersion))
+		{
+			migrationResult.merge(migrateReverse(rawProject));			
+		}
+		if (rawProject.getCurrentVersionRange().isEntirelyOlderThan(desiredVersion))
+		{
+			migrationResult.merge(migrateForward(rawProject));
+		}		
+		
+		return migrationResult;
 	}
 
+	private MigrationResult migrateForward(RawProject rawProject) throws Exception
+	{
+		MigrationResult migrationResult = new MigrationResult();
+		Vector<AbstractMigration> migrations = createEmptyMigrations(rawProject);
+		for(AbstractMigration migration : migrations)
+		{
+			migration.forwardMigrate();
+			//FIXME urgent - Needs to update migrationResult, remove manual addition of success status
+			migrationResult.addSuccess();
+		}
+
+		return migrationResult;
+	}
+
+	private MigrationResult migrateReverse(RawProject rawProject) throws Exception
+	{
+		MigrationResult migrationResult = new MigrationResult();
+		Vector<AbstractMigration> migrations = createEmptyMigrations(rawProject);
+		for(int index = migrations.size() - 1; index >= 0; --index)
+		{
+			//FIXME urgent - Needs to update migrationResult, remove manual addition of success status
+			migrationResult.addSuccess();
+			AbstractMigration migration = migrations.get(index);
+			migration.reverseMigrateIfPossible();
+		}
+		
+		return migrationResult;
+	}
+	
 	public String migrateForward(String mpfAsString) throws Exception
 	{
 		RawProject rawProject = RawProjectLoader.loadProject(mpfAsString);
@@ -89,12 +123,12 @@ public class MigrationManager extends AbstractMigrationManager
 		return migrations;
 	}
 	
-	private void createBackup(File projectFile) throws Exception
+	public static void createBackup(File projectFile) throws Exception
 	{
 		FileUtilities.createMpfBackup(projectFile, getBackupFolderTranslatedName());
 	}
 
-	private String getBackupFolderTranslatedName()
+	private static String getBackupFolderTranslatedName()
 	{
 		return EAM.substitute(EAM.text("(%s)"), "Automated-Migration-Backups");
 	}

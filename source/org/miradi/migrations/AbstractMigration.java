@@ -56,6 +56,17 @@ abstract public class AbstractMigration
 		return new Vector<RawObjectVisitor>();
 	}
 	
+	public void forwardMigrate() throws Exception
+	{
+		if (canMigrateThisVersion(getRawProject().getCurrentVersionRange()))
+		{
+			final Vector<RawObjectVisitor> rawObjectForwardMigrationVisitors = createRawObjectForwardMigrationVisitors();
+			getRawProject().visitAllObjectsInPool(rawObjectForwardMigrationVisitors);
+			final VersionRange postMigrationVersionRange = getPostForwardMigrationVersionRange();
+			getRawProject().setCurrentVersionRange(postMigrationVersionRange);
+		}
+	}
+		
 	public void forwardMigrateIfPossible() throws Exception
 	{
 		if (canMigrateThisVersion(getRawProject().getCurrentVersionRange()))

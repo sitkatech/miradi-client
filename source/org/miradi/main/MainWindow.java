@@ -53,6 +53,7 @@ import org.martus.swing.HyperlinkHandler;
 import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringReader;
+import org.martus.util.UnicodeWriter;
 import org.miradi.actions.Actions;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
@@ -72,6 +73,9 @@ import org.miradi.exceptions.UserCanceledException;
 import org.miradi.files.AbstractMpfFileFilter;
 import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.menu.MainMenuBar;
+import org.miradi.migrations.MigrationResult;
+import org.miradi.migrations.RawProject;
+import org.miradi.migrations.RawProjectLoader;
 import org.miradi.migrations.forward.MigrationManager;
 import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.ColorsFileLoader;
@@ -87,6 +91,7 @@ import org.miradi.project.Project;
 import org.miradi.project.ProjectLoader;
 import org.miradi.project.ProjectRepairer;
 import org.miradi.project.ProjectSaver;
+import org.miradi.project.RawProjectSaver;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.questions.TableRowHeightModeQuestion;
@@ -674,11 +679,29 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 				if (result != 0)
 					return false;
 
-				migrationManager.safelyMigrateForward(projectFile);
+				return possiblyMigrateWithBackup(projectFile, migrationManager);
 			}
 		}
 
 		return true;
+	}
+
+	private boolean possiblyMigrateWithBackup(File projectFile, MigrationManager migrationManager) throws Exception, IOException
+	{
+		RawProject rawProjectToMigrate = RawProjectLoader.loadProject(projectFile);
+		MigrationResult migrationResult = migrationManager.migrate(rawProjectToMigrate, Project.getMiradiVersionRange());
+		//FIXME urgent - also migrate if data was lost, and user confirms
+		if (migrationResult.didSucceed())
+		{
+			MigrationManager.createBackup(projectFile);
+			String migratedProjectAsString = RawProjectSaver.saveProject(rawProjectToMigrate);
+			UnicodeWriter fileWriter = new UnicodeWriter(projectFile);
+			fileWriter.write(migratedProjectAsString);
+			fileWriter.close();
+			return true;
+		}
+		
+		return false;
 	}
 
 	private boolean canCreateOrOpenProject(File projectFile)
