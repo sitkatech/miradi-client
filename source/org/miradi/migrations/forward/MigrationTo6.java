@@ -38,6 +38,13 @@ public class MigrationTo6 extends AbstractSingleTypeMigration
 	{
 		super(rawProjectToUse);
 	}
+	
+	@Override
+	public void migrateForward() throws Exception
+	{
+		final Vector<AbstractMigrationVisitor> rawObjectForwardMigrationVisitors = createRawObjectForwardMigrationVisitors();
+		getRawProject().visitAllObjectsInPool(rawObjectForwardMigrationVisitors);
+	}
 
 	@Override
 	public Vector<AbstractMigrationVisitor> createRawObjectForwardMigrationVisitors()
