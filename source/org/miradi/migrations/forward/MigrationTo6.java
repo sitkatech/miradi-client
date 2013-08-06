@@ -49,8 +49,9 @@ public class MigrationTo6 extends AbstractSingleTypeMigration
 	}
 	
 	@Override
-	protected void reverseMigrate() throws Exception
+	protected MigrationResult reverseMigrate() throws Exception
 	{
+		return new MigrationResult();
 	}
 
 	@Override
