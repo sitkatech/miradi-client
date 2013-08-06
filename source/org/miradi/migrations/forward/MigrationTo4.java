@@ -58,7 +58,7 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 	protected MigrationResult migrateForward() throws Exception
 	{
 		final IndicatorVisitor visitor = new IndicatorVisitor();
-		getRawProject().visitAllObjectsInPool(visitor);
+		visitAllObjectsInPool(visitor);
 		
 		return visitor.getMigrationResult();
 	}
@@ -67,7 +67,7 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 	protected MigrationResult reverseMigrate() throws Exception
 	{
 		final ReverseMigrationVisitor visitor = new ReverseMigrationVisitor();
-		getRawProject().visitAllObjectsInPool(visitor);
+		visitAllObjectsInPool(visitor);
 		getRawProject().deleteEmptyPool(ObjectType.FUTURE_STATUS);
 		
 		return visitor.getMigrationResult();

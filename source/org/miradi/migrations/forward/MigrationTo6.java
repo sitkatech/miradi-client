@@ -43,7 +43,7 @@ public class MigrationTo6 extends AbstractSingleTypeMigration
 	protected MigrationResult migrateForward() throws Exception
 	{
 		final IndicatorVisitor visitor = new IndicatorVisitor();
-		getRawProject().visitAllObjectsInPool(visitor);
+		visitAllObjectsInPool(visitor);
 		
 		return visitor.getMigrationResult();
 	}
