@@ -20,9 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
-import java.util.Vector;
+import java.util.HashSet;
 
-public class MigrationResult extends Vector<String>
+
+public class MigrationResult extends HashSet<String>
 {
 	private MigrationResult()
 	{
