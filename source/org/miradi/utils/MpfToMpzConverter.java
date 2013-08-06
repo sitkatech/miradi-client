@@ -64,7 +64,7 @@ import org.miradi.project.threatrating.ThreatRatingBundle;
 // zipFile and zipEntry creation 
 public class MpfToMpzConverter extends AbstractConverter
 {
-	public static void convert(Project project, File destinationFile) throws Exception
+	public static void convertMpfToMpz(Project project, File destinationFile) throws Exception
 	{
 		MigrationManager migrationManager = new MigrationManager();
 		String mpfSnapShot = ProjectSaver.createSnapShot(project);
