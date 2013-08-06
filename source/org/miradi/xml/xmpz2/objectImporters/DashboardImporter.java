@@ -44,7 +44,7 @@ public class DashboardImporter extends AbstractXmpz2ObjectImporter
 		String poolName = Xmpz2XmlWriter.createPoolElementName(getPoolName());
 		Node dashboardPoolNode = getImporter().getNamedChildNode(getImporter().getRootNode(), poolName);
 		Node dashboardNode = getImporter().getNamedChildNode(dashboardPoolNode, getPoolName());
-		Node statusesNode = getImporter().getNode(dashboardNode,  getPoolName() + DASHBOARD_STATUS_ENTRIES);
+		Node statusesNode = getImporter().getNamedChildNode(dashboardNode,  getPoolName() + DASHBOARD_STATUS_ENTRIES);
 		NodeList statusNodes = getImporter().getNodes(statusesNode, new String[]{DASHBOARD_STATUS_ENTRY});
 		
 		CodeToChoiceMap userProgressMap = new CodeToChoiceMap();

@@ -46,7 +46,7 @@ public class ThreatTargetThreatRatingElementImporter extends AbstractXmpzObjectI
 	@Override
 	public void importElement() throws Exception
 	{
-		Node threatRatingPoolNode = getImporter().getNode(getImporter().getRootNode(), getPoolName() + Xmpz1XmlConstants.POOL_ELEMENT_TAG);
+		Node threatRatingPoolNode = getImporter().getNamedChildNode(getImporter().getRootNode(), getPoolName() + Xmpz1XmlConstants.POOL_ELEMENT_TAG);
 		NodeList threatRatingNodes = getImporter().getNodes(threatRatingPoolNode, new String[]{THREAT_RATING, });
 		for (int index = 0; index < threatRatingNodes.getLength(); ++index)
 		{
@@ -86,14 +86,14 @@ public class ThreatTargetThreatRatingElementImporter extends AbstractXmpzObjectI
 
 	private ORef getThreatRef(Node threatRatingNode) throws Exception
 	{
-		Node threatIdNode = getImporter().getNode(threatRatingNode, getPoolName() + THREAT + ID);
+		Node threatIdNode = getImporter().getNamedChildNode(threatRatingNode, getPoolName() + THREAT + ID);
 		ORef threatRef = getImporter().getNodeAsRef(threatIdNode, THREAT + ID, CauseSchema.getObjectType());
 		return threatRef;
 	}
 
 	private ORef getTargetRef(Node threatRatingNode) throws Exception
 	{
-		Node targetIdNode = getImporter().getNode(threatRatingNode, getPoolName() + TARGET + ID);
+		Node targetIdNode = getImporter().getNamedChildNode(threatRatingNode, getPoolName() + TARGET + ID);
 		ORef targetRef = getImporter().getNodeAsRef(targetIdNode,  BIODIVERSITY_TARGET + ID, TargetSchema.getObjectType());
 		return targetRef;
 	}

@@ -74,7 +74,7 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 	
 	private void importFontStylingElements(Node node, ORef destinationRef) throws Exception
 	{
-		Node diagramFactorSyleNode = getImporter().getNode(node, getPoolName() + STYLING);
+		Node diagramFactorSyleNode = getImporter().getNamedChildNode(node, getPoolName() + STYLING);
 		Node style = getImporter().getNamedChildNode(diagramFactorSyleNode, STYLING);
 		importCodeField(style, destinationRef, DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion());
 		importCodeField(style, destinationRef, DiagramFactor.TAG_FONT_STYLE, new LegacyDiagramFactorFontStyleQuestion());
@@ -174,7 +174,7 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 
 	private void importDiagramFactorSize(Node node, ORef destinationRef) throws Exception
 	{
-		Node diagramFactorSizeNode = getImporter().getNode(node, getPoolName()+ SIZE);
+		Node diagramFactorSizeNode = getImporter().getNamedChildNode(node, getPoolName()+ SIZE);
 		Node sizNode = getImporter().getNamedChildNode(diagramFactorSizeNode, DIAGRAM_SIZE_ELEMENT_NAME);
 		Node widthNode = getImporter().getNamedChildNode(sizNode, WIDTH_ELEMENT_NAME);
 		Node heightNode = getImporter().getNamedChildNode(sizNode, HEIGHT_ELEMENT_NAME);
@@ -186,7 +186,7 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 	
 	private void importDiagramFactorLocation(Node node, ORef destinationRef) throws Exception
 	{
-		Node locationNode = getImporter().getNode(node, getPoolName()+ LOCATION);
+		Node locationNode = getImporter().getNamedChildNode(node, getPoolName()+ LOCATION);
 		Node pointNode = getImporter().getNamedChildNode(locationNode, DIAGRAM_POINT_ELEMENT_NAME);
 		Point point = extractPointFromNode(pointNode);
 		String pointAsString = EnhancedJsonObject.convertFromPoint(point);

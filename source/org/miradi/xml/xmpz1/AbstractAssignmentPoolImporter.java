@@ -52,7 +52,7 @@ abstract public class AbstractAssignmentPoolImporter extends AbstractBaseObjectP
 
 	private void importDateUnitEffortList(Node node, ORef destinationRef) throws Exception
 	{
-		Node dateUnitEffortsNode = getImporter().getNode(node, getPoolName() + Assignment.TAG_DATEUNIT_EFFORTS);
+		Node dateUnitEffortsNode = getImporter().getNamedChildNode(node, getPoolName() + Assignment.TAG_DATEUNIT_EFFORTS);
 		if (dateUnitEffortsNode == null)
 			return;
 		

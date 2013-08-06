@@ -215,7 +215,7 @@ abstract public class AbstractXmpzObjectImporter implements Xmpz1XmlConstants
 	
 	protected void importBooleanField(Node node, ORef destinationRef, String tag) throws Exception
 	{
-		Node booleanNode = getImporter().getNode(node, getPoolName() + tag);
+		Node booleanNode = getImporter().getNamedChildNode(node, getPoolName() + tag);
 		String isValue = BooleanData.BOOLEAN_FALSE;
 		if (booleanNode != null && getImporter().isTrue(booleanNode.getTextContent()))
 			isValue = BooleanData.BOOLEAN_TRUE;

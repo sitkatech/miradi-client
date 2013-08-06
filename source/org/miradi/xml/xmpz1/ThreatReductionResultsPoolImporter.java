@@ -47,11 +47,11 @@ public class ThreatReductionResultsPoolImporter extends FactorPoolImporter
 
 	private void importThreatId(Node node, ORef destinationRef) throws Exception
 	{
-		Node relatedThreatIdNode = getImporter().getNode(node, getPoolName() + Xmpz1XmlConstants.RELATED_THREAT_ID);
+		Node relatedThreatIdNode = getImporter().getNamedChildNode(node, getPoolName() + Xmpz1XmlConstants.RELATED_THREAT_ID);
 		if (relatedThreatIdNode == null)
 			return;
 		
-		Node threatIdNode = getImporter().getNode(relatedThreatIdNode, getPoolName() + Xmpz1XmlConstants.THREAT_ID);
+		Node threatIdNode = getImporter().getNamedChildNode(relatedThreatIdNode, getPoolName() + Xmpz1XmlConstants.THREAT_ID);
 		Node idNode = getImporter().getNamedChildNode(threatIdNode, Xmpz1XmlConstants.THREAT_ID);
 		BaseId relatedThreatId = new BaseId(idNode.getTextContent());
 		ORef relatedThreatRef = new ORef(CauseSchema.getObjectType(), relatedThreatId);

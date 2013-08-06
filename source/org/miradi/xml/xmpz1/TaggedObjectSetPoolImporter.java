@@ -46,7 +46,7 @@ public class TaggedObjectSetPoolImporter extends AbstractBaseObjectPoolImporter
 	private void importFactorRefs(Node node, ORef destinationRef, String tagTaggedObjectRefs) throws Exception
 	{
 		ORefList taggedFactorRefs = new ORefList();
-		Node taggedFactorIdsNode = getImporter().getNode(node, getPoolName() + TAGGED_FACTOR_IDS);
+		Node taggedFactorIdsNode = getImporter().getNamedChildNode(node, getPoolName() + TAGGED_FACTOR_IDS);
 		NodeList childNodes = getImporter().getNodes(taggedFactorIdsNode, new String[]{WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME, });
 		for (int index = 0; index < childNodes.getLength(); ++index)
 		{

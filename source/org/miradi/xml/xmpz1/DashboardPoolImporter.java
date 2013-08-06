@@ -39,9 +39,9 @@ public class DashboardPoolImporter extends AbstractXmpzObjectImporter
 	@Override
 	public void importElement() throws Exception
 	{
-		Node dashboardPoolNode = getImporter().getNode(getImporter().getRootNode(), getPoolName() + POOL_ELEMENT_TAG);
+		Node dashboardPoolNode = getImporter().getNamedChildNode(getImporter().getRootNode(), getPoolName() + POOL_ELEMENT_TAG);
 		Node dashboardNode = getImporter().getNamedChildNode(dashboardPoolNode, getPoolName());
-		Node statusesNode = getImporter().getNode(dashboardNode,  getPoolName() + DASHBOARD_STATUS_ENTRIES);
+		Node statusesNode = getImporter().getNamedChildNode(dashboardNode,  getPoolName() + DASHBOARD_STATUS_ENTRIES);
 		NodeList statusNodes = getImporter().getNodes(statusesNode, new String[]{DASHBOARD_STATUS_ENTRY});
 		
 		CodeToChoiceMap userProgressMap = new CodeToChoiceMap();
