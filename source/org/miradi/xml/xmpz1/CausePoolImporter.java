@@ -48,7 +48,7 @@ public class CausePoolImporter extends FactorPoolImporter
 
 	private void importIsThreat(Node node, ORef destinationRef)	throws Exception
 	{
-		Node isThreatNode = getImporter().getNode(node, getPoolName() + Cause.TAG_IS_DIRECT_THREAT);
+		Node isThreatNode = getImporter().getNamedChildNode(node, getPoolName() + Cause.TAG_IS_DIRECT_THREAT);
 		String isThreatValue = BooleanData.BOOLEAN_FALSE;
 		if (isThreatNode != null && getImporter().isTrue(isThreatNode.getTextContent()))
 			isThreatValue = BooleanData.BOOLEAN_TRUE;

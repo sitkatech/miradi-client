@@ -60,7 +60,7 @@ public class DiagramLinkPoolImporter extends AbstractBaseObjectPoolImporter
 
 	private void importBidirectionalCode(Node node, DiagramLink diagramLink) throws Exception
 	{
-		Node bidirectionalNode = getImporter().getNode(node, getPoolName() + DiagramLink.TAG_IS_BIDIRECTIONAL_LINK);
+		Node bidirectionalNode = getImporter().getNamedChildNode(node, getPoolName() + DiagramLink.TAG_IS_BIDIRECTIONAL_LINK);
 		String bidirectionalNodeValue = bidirectionalNode.getTextContent();
 		if (getImporter().isTrue(bidirectionalNodeValue))
 			getImporter().setData(diagramLink, DiagramLink.TAG_IS_BIDIRECTIONAL_LINK, DiagramLink.BIDIRECTIONAL_LINK);
@@ -68,7 +68,7 @@ public class DiagramLinkPoolImporter extends AbstractBaseObjectPoolImporter
 	
 	private void importBendPoints(Node node, ORef destinationRef) throws Exception
 	{
-		Node bendPointsNode = getImporter().getNode(node, getPoolName() + BEND_POINTS_ELEMENT_NAME);
+		Node bendPointsNode = getImporter().getNamedChildNode(node, getPoolName() + BEND_POINTS_ELEMENT_NAME);
 		NodeList bendPointNodes = getImporter().getNodes(bendPointsNode, new String[]{DIAGRAM_POINT_ELEMENT_NAME, });
 		PointList bendPoints = new PointList();
 		for (int index = 0; index < bendPointNodes.getLength(); ++index)
@@ -84,8 +84,8 @@ public class DiagramLinkPoolImporter extends AbstractBaseObjectPoolImporter
 	@Override
 	protected void postCreateFix(ORef ref, Node node) throws Exception
 	{
-		Node fromDiagramFactorIdNode = getImporter().getNode(node, getPoolName() + FROM_DIAGRAM_FACTOR_ID);
-		Node toDiagramFactorIdNode = getImporter().getNode(node, getPoolName() + TO_DIAGRAM_FACTOR_ID);
+		Node fromDiagramFactorIdNode = getImporter().getNamedChildNode(node, getPoolName() + FROM_DIAGRAM_FACTOR_ID);
+		Node toDiagramFactorIdNode = getImporter().getNamedChildNode(node, getPoolName() + TO_DIAGRAM_FACTOR_ID);
 		
 		DiagramFactorId fromId = new DiagramFactorId(fromDiagramFactorIdNode.getTextContent().trim());
 		DiagramFactorId toId = new DiagramFactorId(toDiagramFactorIdNode.getTextContent().trim());

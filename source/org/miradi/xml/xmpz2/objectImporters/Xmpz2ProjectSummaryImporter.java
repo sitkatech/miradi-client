@@ -43,7 +43,7 @@ public class Xmpz2ProjectSummaryImporter extends BaseObjectImporter
 
 	public void importFields() throws Exception
 	{
-		Node projectSumaryNode = getImporter().getNode(getImporter().getRootNode(), PROJECT_SUMMARY);
+		Node projectSumaryNode = getImporter().getNamedChildNode(getImporter().getRootNode(), PROJECT_SUMMARY);
 				
 		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_NAME);
 		writeShareOutsideOrganizationElement(projectSumaryNode);

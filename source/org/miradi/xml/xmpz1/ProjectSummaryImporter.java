@@ -67,7 +67,7 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 	
 	private void writeShareOutsideOrganizationElement(Node projectSumaryNode) throws Exception
 	{
-		Node shareOutsideTncNode = getImporter().getNode(projectSumaryNode, getPoolName() + XmlSchemaCreator.PROJECT_SHARE_OUTSIDE_ORGANIZATION);
+		Node shareOutsideTncNode = getImporter().getNamedChildNode(projectSumaryNode, getPoolName() + XmlSchemaCreator.PROJECT_SHARE_OUTSIDE_ORGANIZATION);
 		String isShareWithAnyOneCode = ProjectSharingQuestion.SHARE_ONLY_INSIDE_ORGANIZATION;
 		if (getImporter().isTrue(shareOutsideTncNode.getTextContent()))
 			isShareWithAnyOneCode = ProjectSharingQuestion.SHARE_WITH_ANYONE;
@@ -82,7 +82,7 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 	
 	private void importExternalProjectId(Node projectSumaryNode) throws Exception
 	{
-		Node projectIdNode = getImporter().getNode(projectSumaryNode, getPoolName() + Xenodata.TAG_PROJECT_ID);
+		Node projectIdNode = getImporter().getNamedChildNode(projectSumaryNode, getPoolName() + Xenodata.TAG_PROJECT_ID);
 		NodeList projectIdNodes = getImporter().getNodes(projectIdNode, new String[]{EXTERNAL_PROJECT_ID_ELEMENT_NAME, });
 		StringRefMap stringRefMap = new StringRefMap();
 		for (int index = 0; index < projectIdNodes.getLength(); ++index)

@@ -81,7 +81,7 @@ public class DiagramFactorImporter extends BaseObjectImporter
 	
 	private  static ORef importWrappedRef(Xmpz2XmlImporter importer, String poolName, Node parentNode) throws Exception
 	{
-		Node wrappedFactorIdNode = importer.getNode(parentNode, poolName + WRAPPED_FACTOR_ID_ELEMENT_NAME);
+		Node wrappedFactorIdNode = importer.getNamedChildNode(parentNode, poolName + WRAPPED_FACTOR_ID_ELEMENT_NAME);
 
 		return importWrappedRef(importer, wrappedFactorIdNode);
 	}
