@@ -89,6 +89,11 @@ abstract public class AbstractMigration
 		rawObject.remove(fieldTag);
 	}
 	
+	protected void visitAllObjectsInPool(final RawObjectVisitor visitor) throws Exception
+	{
+		getRawProject().visitAllObjectsInPool(visitor);
+	}
+	
 	abstract protected int getToVersion();
 	
 	abstract protected int getFromVersion(); 
