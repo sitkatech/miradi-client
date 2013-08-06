@@ -24,6 +24,7 @@ import java.io.File;
 
 import org.martus.util.UnicodeWriter;
 import org.miradi.main.EAM;
+import org.miradi.migrations.MigrationResult;
 import org.miradi.migrations.RawProject;
 import org.miradi.migrations.RawProjectLoader;
 import org.miradi.migrations.VersionRange;
@@ -49,7 +50,17 @@ public class ExportMpf40VersionDoer extends AbstractFileSaverDoer
 		String mpfSnapShot = ProjectSaver.createSnapShot(getProject());
 		MigrationManager migrationManager = new MigrationManager();
 		RawProject rawProjectToMigrate = RawProjectLoader.loadProject(mpfSnapShot);
-		migrationManager.migrate(rawProjectToMigrate, new VersionRange(MigrationManager.OLDEST_VERSION_TO_HANDLE));
+		MigrationResult migrationResult = migrationManager.migrate(rawProjectToMigrate, new VersionRange(MigrationManager.OLDEST_VERSION_TO_HANDLE));
+		if (migrationResult.didLooseData())
+		{
+			EAM.notifyDialog(EAM.text("There was data loss during export!"));
+		}
+		
+		if (migrationResult.didFail())
+		{
+			EAM.errorDialog(EAM.text("Could not migrate!"));
+			return false;
+		}
 		
 		String migratedRawProjectAsString = RawProjectSaver.saveProject(rawProjectToMigrate);
 		UnicodeWriter fileWriter = new UnicodeWriter(destinationFile);
