@@ -23,7 +23,6 @@ package org.miradi.migrations;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Set;
-import java.util.Vector;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
@@ -214,21 +213,16 @@ public class RawProject implements ProjectInterface
 	
 	public void visitAllObjectsInPool(RawObjectVisitor visitor) throws Exception
 	{
-		Vector<RawObjectVisitor> visitors = new Vector<RawObjectVisitor>();
-		visitors.add(visitor);
-		for(RawObjectVisitor visitor1 : visitors)
+		int objectType = visitor.getTypeToVisit();
+		if (!containsAnyObjectsOfType(objectType))
+			return;
+
+		RawPool rawPool = getRawPoolForType(objectType);
+		Set<ORef> refs = rawPool.keySet();
+		for(ORef ref : refs)
 		{
-			int objectType = visitor1.getTypeToVisit();
-			if (!containsAnyObjectsOfType(objectType))
-				continue;
-			
-			RawPool rawPool = getRawPoolForType(objectType);
-			Set<ORef> refs = rawPool.keySet();
-			for(ORef ref : refs)
-			{
-				RawObject rawObject = rawPool.get(ref);
-				visitor1.visit(rawObject);
-			}
+			RawObject rawObject = rawPool.get(ref);
+			visitor.visit(rawObject);
 		}
 	}
 	
