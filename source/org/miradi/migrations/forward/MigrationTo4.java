@@ -64,9 +64,12 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 	}
 
 	@Override
-	protected void reverseMigrate() throws Exception
+	protected MigrationResult reverseMigrate() throws Exception
 	{
-		getRawProject().visitAllObjectsInPool(new ReverseMigrationVisitor());
+		final ReverseMigrationVisitor visitor = new ReverseMigrationVisitor();
+		getRawProject().visitAllObjectsInPool(visitor);
+		
+		return visitor.getMigrationResult();
 	}
 
 	@Override
