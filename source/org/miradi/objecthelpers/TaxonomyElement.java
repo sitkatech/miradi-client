@@ -24,7 +24,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.XmlUtilities2;
 
-public class TaxonomyElement
+public class TaxonomyElement implements Comparable<TaxonomyElement>
 {
 	public TaxonomyElement()
 	{
@@ -111,6 +111,11 @@ public class TaxonomyElement
 	public void setUserCode(String userCodeToUse)
 	{
 		userCode = XmlUtilities2.getXmlEncoded(userCodeToUse);
+	}
+	
+	public int compareTo(TaxonomyElement other)
+	{
+		return toJsonString().compareTo(other.toJsonString());
 	}
 	
 	private String code;

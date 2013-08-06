@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objecthelpers;
 
+import java.util.Collections;
 import java.util.Vector;
 
 import org.json.JSONArray;
@@ -57,6 +58,7 @@ public class TaxonomyElementList extends Vector<TaxonomyElement>
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
 		JSONArray array = new JSONArray();
+		Collections.sort(this);
 		for(TaxonomyElement taxonomyElement : this)
 		{
 			array.put(taxonomyElement.toJson());
