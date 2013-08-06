@@ -46,7 +46,7 @@ public class MigrationTo7 extends AbstractMigration
 	@Override
 	protected MigrationResult reverseMigrate() throws Exception
 	{
-		MigrationResult migrationResult = null;
+		MigrationResult migrationResult = MigrationResult.createUninitializedResult();
 		Vector<Integer> typesWithTaxonomyClassifications = getTypesWithTaxonomyClassifications();
 		for(Integer typeWithTaxonomy : typesWithTaxonomyClassifications)
 		{
