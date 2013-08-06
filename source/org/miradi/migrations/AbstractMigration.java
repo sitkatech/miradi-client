@@ -51,24 +51,27 @@ abstract public class AbstractMigration
 		if (canMigrateThisVersion(getRawProject().getCurrentVersionRange()))
 		{
 			migrationResult = migrateForward();
-			final VersionRange postMigrationVersionRange = getPostForwardMigrationVersionRange();
-			getRawProject().setCurrentVersionRange(postMigrationVersionRange);
+			updateProjectVersionRange(getPostForwardMigrationVersionRange());
 		}
 		
 		return migrationResult;
 	}
-	
+
 	public MigrationResult reverseMigrateIfPossible() throws Exception
 	{
 		MigrationResult migrationResult = new MigrationResult();
 		if (canReverseMigrateThisVersion(getRawProject().getCurrentVersionRange()))
 		{
 			migrationResult = reverseMigrate();
-			final VersionRange postMigrationVersionRange = getPostReverseMigrationVersionRange();
-			getRawProject().setCurrentVersionRange(postMigrationVersionRange);
+			updateProjectVersionRange(getPostReverseMigrationVersionRange());
 		}
 		
 		return migrationResult;
+	}
+
+	private void updateProjectVersionRange(final VersionRange postMigrationVersionRange)
+	{
+		getRawProject().setCurrentVersionRange(postMigrationVersionRange);
 	}
 
 	private VersionRange getPostForwardMigrationVersionRange() throws Exception
