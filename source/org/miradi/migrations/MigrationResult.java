@@ -24,6 +24,18 @@ import java.util.Vector;
 
 public class MigrationResult extends Vector<String>
 {
+	private MigrationResult()
+	{
+	}
+	
+	public static MigrationResult createUninitializedResult()
+	{
+		MigrationResult migrationResult = new MigrationResult();
+		migrationResult.add(UNINITIALIZED);
+		
+		return migrationResult;
+	}
+	
 	public static MigrationResult createSuccess()
 	{
 		MigrationResult migrationResult = new MigrationResult();
@@ -69,7 +81,7 @@ public class MigrationResult extends Vector<String>
 	{
 		add(SUCCESS);
 	}
-	
+
 	public void addDataLoss()
 	{
 		add(DATA_LOSS);
@@ -79,4 +91,5 @@ public class MigrationResult extends Vector<String>
 	private static final String DATA_LOSS = "DataLoss";
 	private static final String FAILED = "Failed";
 	private static final String CANNOT_MIGRATE = "CannotMigrate";
+	private static final String UNINITIALIZED = "Uninitialized";
 }

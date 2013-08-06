@@ -31,7 +31,7 @@ abstract public class AbstractMigration
 	
 	public MigrationResult forwardMigrateIfPossible() throws Exception
 	{
-		MigrationResult migrationResult = new MigrationResult();
+		MigrationResult migrationResult = MigrationResult.createUninitializedResult();
 		if (canForwardMigrateThisVersion(getRawProject().getCurrentVersionRange()))
 		{
 			migrationResult = migrateForward();
@@ -43,7 +43,7 @@ abstract public class AbstractMigration
 
 	public MigrationResult reverseMigrateIfPossible() throws Exception
 	{
-		MigrationResult migrationResult = new MigrationResult();
+		MigrationResult migrationResult = MigrationResult.createUninitializedResult();
 		if (canReverseMigrateThisVersion(getRawProject().getCurrentVersionRange()))
 		{
 			migrationResult = reverseMigrate();
