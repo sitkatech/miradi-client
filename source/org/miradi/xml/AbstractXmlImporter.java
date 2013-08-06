@@ -293,11 +293,6 @@ abstract public class AbstractXmlImporter
 		return null;
 	}
 	
-	public Node getNode(Node node, String xpathExpression) throws Exception
-	{
-		return getNode(node, new String[]{xpathExpression});
-	}
-	
 	public Node getNode(Node node, String[] xpathExpressions) throws Exception
 	{
 		return (Node) evaluate(node, xpathExpressions, XPathConstants.NODE);
