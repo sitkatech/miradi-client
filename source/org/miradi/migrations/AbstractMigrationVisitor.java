@@ -24,7 +24,6 @@ abstract public class AbstractMigrationVisitor implements RawObjectVisitor
 {
 	public AbstractMigrationVisitor()
 	{
-		migrationResult = new MigrationResult();
 	}
 	
 	public final void visit(RawObject rawObject) throws Exception
@@ -32,7 +31,11 @@ abstract public class AbstractMigrationVisitor implements RawObjectVisitor
 		if (rawObject.getObjectType() != getTypeToVisit())
 			throw new Exception("Received incorrect object type for visitor, expecting:" + getTypeToVisit() + " but got type:" + rawObject.getObjectType());
 		
-		migrationResult.merge(internalVisit(rawObject));
+		final MigrationResult internalVisitMigrationResult = internalVisit(rawObject);
+		if (migrationResult == null)
+			migrationResult = internalVisitMigrationResult;
+		else
+			migrationResult.merge(internalVisitMigrationResult);
 	}
 	
 	public MigrationResult getMigrationResult()

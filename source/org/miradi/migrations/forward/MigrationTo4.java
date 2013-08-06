@@ -96,7 +96,7 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 		public MigrationResult internalVisit(RawObject rawObject) throws Exception
 		{
 			if (!hasAnyFutureStatusData(rawObject))
-				return new MigrationResult();
+				return MigrationResult.createSuccess();
 
 			RawPool futureStatusPool = getOrCreateFutureStatusPool();
 			RawObject newFutureStatus = new RawObject(FutureStatusSchema.getObjectType());
@@ -169,11 +169,11 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 		public MigrationResult internalVisit(RawObject indicator) throws Exception 
 		{
 			if (!indicator.containsKey(TAG_FUTURE_STATUS_REFS))
-				return new MigrationResult();
+				return MigrationResult.createSuccess();
 			
 			ORefList futureStatusRefs = new ORefList(indicator.get(TAG_FUTURE_STATUS_REFS));
 			if (futureStatusRefs.isEmpty())
-				return new MigrationResult();
+				return MigrationResult.createSuccess();
 
 			RawObject latestFutureStatus = getLatestFutureStatusRef(futureStatusRefs);
 			moveFieldsFromFutureStatusToIndicator(indicator, latestFutureStatus);

@@ -51,7 +51,7 @@ public class MigrationTo6 extends AbstractSingleTypeMigration
 	@Override
 	protected MigrationResult reverseMigrate() throws Exception
 	{
-		return new MigrationResult();
+		return MigrationResult.createSuccess();
 	}
 
 	@Override

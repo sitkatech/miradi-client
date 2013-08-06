@@ -40,19 +40,23 @@ public class MigrationTo7 extends AbstractMigration
 	@Override
 	protected MigrationResult migrateForward() throws Exception
 	{
-		return new MigrationResult();
+		return MigrationResult.createSuccess();
 	}
 	
 	@Override
 	protected MigrationResult reverseMigrate() throws Exception
 	{
-		MigrationResult migrationResult = new MigrationResult();
+		MigrationResult migrationResult = null;
 		Vector<Integer> typesWithTaxonomyClassifications = getTypesWithTaxonomyClassifications();
 		for(Integer typeWithTaxonomy : typesWithTaxonomyClassifications)
 		{
 			final RemoveTaxonomyClassificationFieldVisitor visitor = new RemoveTaxonomyClassificationFieldVisitor(typeWithTaxonomy);
 			visitAllObjectsInPool(visitor);
-			migrationResult.merge(visitor.getMigrationResult());
+			final MigrationResult thisMigrationResult = visitor.getMigrationResult();
+			if (migrationResult == null)
+				migrationResult = thisMigrationResult;
+			else
+				migrationResult.merge(thisMigrationResult);
 		}
 		
 		getRawProject().deletePoolWithData(ObjectType.MIRADI_SHARE_PROJECT_DATA);

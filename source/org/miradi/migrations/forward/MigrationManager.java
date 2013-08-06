@@ -45,7 +45,7 @@ public class MigrationManager extends AbstractMigrationManager
 	
 	public MigrationResult migrate(RawProject rawProject, VersionRange desiredVersion) throws Exception
 	{
-		MigrationResult migrationResult = new MigrationResult();
+		MigrationResult migrationResult = MigrationResult.createUninitializedResult();
 		if (rawProject.getCurrentVersionRange().isEntirelyNewerThan(desiredVersion))
 		{
 			migrationResult.merge(migrateReverse(rawProject));			
@@ -60,7 +60,7 @@ public class MigrationManager extends AbstractMigrationManager
 
 	private MigrationResult migrateForward(RawProject rawProject) throws Exception
 	{
-		MigrationResult migrationResult = new MigrationResult();
+		MigrationResult migrationResult = MigrationResult.createUninitializedResult();
 		Vector<AbstractMigration> migrations = createMigrations(rawProject);
 		for(AbstractMigration migration : migrations)
 		{
@@ -72,7 +72,7 @@ public class MigrationManager extends AbstractMigrationManager
 
 	private MigrationResult migrateReverse(RawProject rawProject) throws Exception
 	{
-		MigrationResult migrationResult = new MigrationResult();
+		MigrationResult migrationResult = MigrationResult.createUninitializedResult();
 		Vector<AbstractMigration> migrations = createMigrations(rawProject);
 		for(int index = migrations.size() - 1; index >= 0; --index)
 		{
