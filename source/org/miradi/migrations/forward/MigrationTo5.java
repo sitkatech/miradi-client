@@ -36,7 +36,7 @@ public class MigrationTo5 extends AbstractSingleTypeMigration
 	}
 	
 	@Override
-	public MigrationResult migrateForward() throws Exception
+	protected MigrationResult migrateForward() throws Exception
 	{
 		final StrategyVisitor visitor = new StrategyVisitor();
 		getRawProject().visitAllObjectsInPool(visitor);
@@ -54,7 +54,7 @@ public class MigrationTo5 extends AbstractSingleTypeMigration
 	}
 
 	@Override
-	public VersionRange getMigratableVersionRange() throws Exception
+	protected VersionRange getMigratableVersionRange() throws Exception
 	{
 		return new VersionRange(VERSION_LOW, VERSION_HIGH);
 	}
