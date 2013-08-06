@@ -130,7 +130,7 @@ public class Xmpz1XmlImporter extends AbstractXmlImporter implements Xmpz1XmlCon
 
 	private void importDeletedOrphanText() throws Exception
 	{
-		Node node = getNode(getRootNode(), Xmpz1XmlConstants.DELETED_ORPHANS_ELEMENT_NAME);
+		Node node = getNamedChildNode(getRootNode(), Xmpz1XmlConstants.DELETED_ORPHANS_ELEMENT_NAME);
 		String nodeContent = getSafeNodeContent(node);
 		nodeContent = XmlUtilities2.getXmlEncoded(nodeContent);
 		nodeContent = HtmlUtilities.replaceNonHtmlNewlines(nodeContent);

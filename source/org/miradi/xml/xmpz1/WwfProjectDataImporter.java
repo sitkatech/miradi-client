@@ -35,7 +35,7 @@ public class WwfProjectDataImporter extends AbstractXmpzObjectImporter
 	@Override
 	public void importElement() throws Exception
 	{
-		Node wwfProjectDataNode = getImporter().getNode(getImporter().getRootNode(), getPoolName());
+		Node wwfProjectDataNode = getImporter().getNamedChildNode(getImporter().getRootNode(), getPoolName());
 		
 		importCodeListField(wwfProjectDataNode, getWwfProjectDataRef(), WwfProjectData.TAG_MANAGING_OFFICES);
 		importCodeListField(wwfProjectDataNode, getWwfProjectDataRef(), WwfProjectData.TAG_REGIONS);

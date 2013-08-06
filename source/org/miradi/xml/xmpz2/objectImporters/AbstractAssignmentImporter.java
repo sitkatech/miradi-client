@@ -58,7 +58,7 @@ abstract public class AbstractAssignmentImporter extends BaseObjectImporter
 	
 	private void importDateUnitEffortList(Node node, ORef destinationRef) throws Exception
 	{
-		Node dateUnitEffortsNode = getImporter().getNode(node, getXmpz2ElementName() + Assignment.TAG_DATEUNIT_EFFORTS);
+		Node dateUnitEffortsNode = getImporter().getNamedChildNode(node, getXmpz2ElementName() + Assignment.TAG_DATEUNIT_EFFORTS);
 		if (dateUnitEffortsNode == null)
 			return;
 		
@@ -67,10 +67,10 @@ abstract public class AbstractAssignmentImporter extends BaseObjectImporter
 		for (int index = 0; index < dateUnitEffortNodes.getLength(); ++index)
 		{
 			Node dateUnitEffortNode = dateUnitEffortNodes.item(index);
-			Node dateUnitNode = getImporter().getNode(dateUnitEffortNode, getDateUnitElementName());
+			Node dateUnitNode = getImporter().getNamedChildNode(dateUnitEffortNode, getDateUnitElementName());
 			DateUnit dateUnit = extractDateUnit(dateUnitNode);
 			
-			Node quantityNode = getImporter().getNode(dateUnitEffortNode, getQuantatityElementName());
+			Node quantityNode = getImporter().getNamedChildNode(dateUnitEffortNode, getQuantatityElementName());
 			String quantityAsString = quantityNode.getTextContent();
 			DateUnitEffort dateUnitEffort = new DateUnitEffort(dateUnit, DoubleUtilities.toDoubleFromDataFormat(quantityAsString));
 			dateUnitEffortList.add(dateUnitEffort);
@@ -81,13 +81,13 @@ abstract public class AbstractAssignmentImporter extends BaseObjectImporter
 
 	private DateUnit extractDateUnit(Node dateUnitNode) throws Exception
 	{
-		Node timeSpanNode = getImporter().getNode(dateUnitNode, getFullProjectTimespanElementName());
+		Node timeSpanNode = getImporter().getNamedChildNode(dateUnitNode, getFullProjectTimespanElementName());
 		if (timeSpanNode != null)
 		{
 			return new DateUnit();
 		}
 		
-		Node yearNode = getImporter().getNode(dateUnitNode, getYearElementName());
+		Node yearNode = getImporter().getNamedChildNode(dateUnitNode, getYearElementName());
 		if (yearNode != null)
 		{
 			int startYear = getAttributeAsInt(yearNode, START_YEAR);
@@ -96,7 +96,7 @@ abstract public class AbstractAssignmentImporter extends BaseObjectImporter
 			return DateUnit.createFiscalYear(startYear, startMonth);
 		}
 		
-		Node quarterNode = getImporter().getNode(dateUnitNode, getQuarterElementName());
+		Node quarterNode = getImporter().getNamedChildNode(dateUnitNode, getQuarterElementName());
 		if (quarterNode != null)
 		{
 			int year = getAttributeAsInt(quarterNode, YEAR);
@@ -105,7 +105,7 @@ abstract public class AbstractAssignmentImporter extends BaseObjectImporter
 			return DateUnit.createQuarterDateUnit(year, (startMonth-1)/3 + 1);
 		}
 			
-		Node monthNode = getImporter().getNode(dateUnitNode, getMonthElementName());
+		Node monthNode = getImporter().getNamedChildNode(dateUnitNode, getMonthElementName());
 		if (monthNode != null)
 		{
 			int year = getAttributeAsInt(monthNode, YEAR);
@@ -115,7 +115,7 @@ abstract public class AbstractAssignmentImporter extends BaseObjectImporter
 			return DateUnit.createMonthDateUnit(date.toIsoDateString());
 		}
 		
-		Node dayNode = getImporter().getNode(dateUnitNode, getDayElementName());
+		Node dayNode = getImporter().getNamedChildNode(dateUnitNode, getDayElementName());
 		if (dayNode != null)
 		{
 			return DateUnit.createDayDateUnit(getImporter().getAttributeValue(dayNode, DATE));

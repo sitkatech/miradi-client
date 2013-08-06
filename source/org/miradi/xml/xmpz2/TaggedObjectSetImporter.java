@@ -56,7 +56,7 @@ public class TaggedObjectSetImporter extends BaseObjectImporter
 	private void importFactorRefs(Node node, ORef destinationRef, String tagTaggedObjectRefs) throws Exception
 	{
 		ORefList taggedFactorRefs = new ORefList();
-		Node taggedFactorIdsNode = getImporter().getNode(node, getXmpz2ElementName() + TAGGED_FACTOR_IDS);
+		Node taggedFactorIdsNode = getImporter().getNamedChildNode(node, getXmpz2ElementName() + TAGGED_FACTOR_IDS);
 		NodeList childNodes = getImporter().getNodes(taggedFactorIdsNode, new String[]{WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME, });
 		for (int index = 0; index < childNodes.getLength(); ++index)
 		{

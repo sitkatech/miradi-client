@@ -36,7 +36,7 @@ public class SimpleThreatRatingImporter extends	AbstractThreatRatingImporter
 	public void importFields() throws Exception
 	{
 		String poolName = Xmpz2XmlWriter.createPoolElementName(getParentElementName());
-		Node threatRatingPoolNode = getImporter().getNode(getImporter().getRootNode(), poolName);
+		Node threatRatingPoolNode = getImporter().getNamedChildNode(getImporter().getRootNode(), poolName);
 		NodeList threatRatingNodes = getImporter().getNodes(threatRatingPoolNode, new String[]{getParentElementName(), });
 		for (int index = 0; index < threatRatingNodes.getLength(); ++index)
 		{
@@ -50,15 +50,15 @@ public class SimpleThreatRatingImporter extends	AbstractThreatRatingImporter
 		importThreatRatingsComment(threatRatingNode);
 		ORef threatRef = getThreatRef(threatRatingNode);
 		ORef targetRef = getTargetRef(threatRatingNode);
-		Node scopeNode = getImporter().getNode(threatRatingNode, getParentElementName() + SCOPE);
+		Node scopeNode = getImporter().getNamedChildNode(threatRatingNode, getParentElementName() + SCOPE);
 		if (scopeNode != null)
 			getProject().getSimpleThreatRatingFramework().setScope(threatRef, targetRef, extractNodeTextContentAsInt(scopeNode));
 		
-		Node severityNode = getImporter().getNode(threatRatingNode, getParentElementName() + SEVERITY);
+		Node severityNode = getImporter().getNamedChildNode(threatRatingNode, getParentElementName() + SEVERITY);
 		if (severityNode != null)
 			getProject().getSimpleThreatRatingFramework().setSeverity(threatRef, targetRef, extractNodeTextContentAsInt(severityNode));
 		
-		Node irreversibilityNode = getImporter().getNode(threatRatingNode, getParentElementName() + IRREVERSIBILITY);
+		Node irreversibilityNode = getImporter().getNamedChildNode(threatRatingNode, getParentElementName() + IRREVERSIBILITY);
 		if (irreversibilityNode != null)
 			getProject().getSimpleThreatRatingFramework().setIrreversibility(threatRef, targetRef, extractNodeTextContentAsInt(irreversibilityNode));
 	}

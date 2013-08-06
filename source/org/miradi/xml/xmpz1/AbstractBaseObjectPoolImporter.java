@@ -107,8 +107,8 @@ abstract public class AbstractBaseObjectPoolImporter extends AbstractXmpzObjectI
 	
 	protected Point extractPointFromNode(Node pointNode) throws Exception
 	{
-		Node xNode = getImporter().getNode(pointNode, Xmpz1XmlConstants.X_ELEMENT_NAME);
-		Node yNode = getImporter().getNode(pointNode, Xmpz1XmlConstants.Y_ELEMENT_NAME);
+		Node xNode = getImporter().getNamedChildNode(pointNode, Xmpz1XmlConstants.X_ELEMENT_NAME);
+		Node yNode = getImporter().getNamedChildNode(pointNode, Xmpz1XmlConstants.Y_ELEMENT_NAME);
 		int x = extractNodeTextContentAsInt(xNode);
 		int y = extractNodeTextContentAsInt(yNode);
 		

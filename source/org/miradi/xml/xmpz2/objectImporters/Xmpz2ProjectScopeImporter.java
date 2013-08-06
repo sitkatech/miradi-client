@@ -37,7 +37,7 @@ public class Xmpz2ProjectScopeImporter extends AbstractXmpz2ObjectImporter
 
 	public void importFields() throws Exception
 	{
-		Node projectSummaryNode = getImporter().getNode(getImporter().getRootNode(), PROJECT_SUMMARY_SCOPE);
+		Node projectSummaryNode = getImporter().getNamedChildNode(getImporter().getRootNode(), PROJECT_SUMMARY_SCOPE);
 		
 		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_SHORT_PROJECT_SCOPE);
 		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_PROJECT_SCOPE);

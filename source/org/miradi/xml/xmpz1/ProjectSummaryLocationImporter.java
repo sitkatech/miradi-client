@@ -35,7 +35,7 @@ public class ProjectSummaryLocationImporter extends AbstractXmpzObjectImporter
 	@Override
 	public void importElement() throws Exception
 	{
-		Node projectSummaryLocationNode = getImporter().getNode(getImporter().getRootNode(), Xmpz1XmlConstants.PROJECT_SUMMARY_LOCATION);
+		Node projectSummaryLocationNode = getImporter().getNamedChildNode(getImporter().getRootNode(), Xmpz1XmlConstants.PROJECT_SUMMARY_LOCATION);
 		
 		importGeospatialLocationField(projectSummaryLocationNode);		
 		importCodeListField(projectSummaryLocationNode, getMetadataRef(), ProjectMetadata.TAG_COUNTRIES);
@@ -49,11 +49,11 @@ public class ProjectSummaryLocationImporter extends AbstractXmpzObjectImporter
 	
 	private void importGeospatialLocationField(Node projectSummaryLocationNode) throws Exception
 	{
-		Node locationNode = getImporter().getNode(projectSummaryLocationNode, Xmpz1XmlConstants.PROJECT_SUMMARY_LOCATION + Xmpz1XmlConstants.PROJECT_LOCATION);
+		Node locationNode = getImporter().getNamedChildNode(projectSummaryLocationNode, Xmpz1XmlConstants.PROJECT_SUMMARY_LOCATION + Xmpz1XmlConstants.PROJECT_LOCATION);
 		if(locationNode == null)
 			return;
 		
-		Node gespatialLocationNode = getImporter().getNode(locationNode, Xmpz1XmlConstants.GEOSPATIAL_LOCATION);
+		Node gespatialLocationNode = getImporter().getNamedChildNode(locationNode, Xmpz1XmlConstants.GEOSPATIAL_LOCATION);
 		if(gespatialLocationNode == null)
 			return;
 		
