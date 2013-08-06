@@ -255,9 +255,9 @@ abstract public class AbstractXmlImporter
 		return (Node) expression.evaluate(getDocument(), XPathConstants.NODE);
 	}
 	
-	protected String getNamedChildNodeContent(Node node, String element) throws Exception
+	protected String getNamedChildNodeContent(Node parentNode, String childNodeName) throws Exception
 	{
-		Node foundNode = getNode(node, element);
+		Node foundNode = getNode(parentNode, childNodeName);
 		return getSafeNodeContent(foundNode);
 	}
 	
