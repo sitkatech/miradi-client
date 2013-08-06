@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
-import java.util.Vector;
 
 
 abstract public class AbstractMigration
@@ -46,11 +45,6 @@ abstract public class AbstractMigration
 		return rawProject;
 	}
 	
-	public Vector<AbstractMigrationVisitor> createRawObjectReverseMigrationVisitors()
-	{
-		return new Vector<AbstractMigrationVisitor>();
-	}
-	
 	public void forwardMigrateIfPossible() throws Exception
 	{
 		if (canMigrateThisVersion(getRawProject().getCurrentVersionRange()))
@@ -66,14 +60,13 @@ abstract public class AbstractMigration
 	{
 		if (canReverseMigrateThisVersion(getRawProject().getCurrentVersionRange()))
 		{
-			final Vector<AbstractMigrationVisitor> rawObjectReverseMigrationVisitors = createRawObjectReverseMigrationVisitors();
-			getRawProject().visitAllObjectsInPool(rawObjectReverseMigrationVisitors);
+			reverseMigrate();
 			doPostMigrationCleanup();
 			final VersionRange postMigrationVersionRange = getPostReverseMigrationVersionRange();
 			getRawProject().setCurrentVersionRange(postMigrationVersionRange);
 		}
 	}
-		
+
 	protected void doPostMigrationCleanup() throws Exception
 	{
 	}
@@ -95,6 +88,8 @@ abstract public class AbstractMigration
 	abstract public VersionRange getMigratableVersionRange() throws Exception;
 	
 	abstract public void migrateForward() throws Exception;
+	
+	abstract protected void reverseMigrate() throws Exception;
 	
 	private RawProject rawProject;
 }

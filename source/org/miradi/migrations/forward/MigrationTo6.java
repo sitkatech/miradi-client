@@ -43,6 +43,11 @@ public class MigrationTo6 extends AbstractSingleTypeMigration
 	{
 		getRawProject().visitAllObjectsInPool(new IndicatorVisitor());
 	}
+	
+	@Override
+	protected void reverseMigrate() throws Exception
+	{
+	}
 
 	@Override
 	public VersionRange getMigratableVersionRange() throws Exception
