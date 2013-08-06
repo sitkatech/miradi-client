@@ -59,7 +59,7 @@ public class RawProject implements ProjectInterface
 	
 	public ORefList getAllRefsForType(int objectType)
 	{
-		return getRawPoolForType(objectType).getRefList();
+		return getRawPoolForType(objectType).getSortedReflist();
 	}
 	
 	public RawPool getRawPoolForType(int type)	
