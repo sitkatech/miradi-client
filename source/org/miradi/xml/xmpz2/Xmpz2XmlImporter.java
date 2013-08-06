@@ -472,9 +472,9 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		}
 	}
 	
-	private void importFormattedField(Node parentNode, String path, ORef ref, String destinationTag) throws Exception
+	private void importFormattedField(Node parentNode, String childNodeName, ORef ref, String destinationTag) throws Exception
 	{
-		Node node = getNode(parentNode, path);
+		Node node = getNode(parentNode, childNodeName);
 		if (node == null)
 			return;
 		
