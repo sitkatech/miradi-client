@@ -39,7 +39,7 @@ public class MigrationTo5 extends AbstractSingleTypeMigration
 	protected MigrationResult migrateForward() throws Exception
 	{
 		final StrategyVisitor visitor = new StrategyVisitor();
-		getRawProject().visitAllObjectsInPool(visitor);
+		visitAllObjectsInPool(visitor);
 		
 		return visitor.getMigrationResult();
 	}
@@ -48,7 +48,7 @@ public class MigrationTo5 extends AbstractSingleTypeMigration
 	protected MigrationResult reverseMigrate() throws Exception
 	{
 		final ReverseStrategyVisitor visitor = new ReverseStrategyVisitor();
-		getRawProject().visitAllObjectsInPool(visitor);
+		visitAllObjectsInPool(visitor);
 		
 		return visitor.getMigrationResult();
 	}
