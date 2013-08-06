@@ -24,6 +24,22 @@ import java.util.Vector;
 
 public class MigrationResult extends Vector<String>
 {
+	public static MigrationResult createSuccess()
+	{
+		MigrationResult migrationResult = new MigrationResult();
+		migrationResult.addSuccess();
+		
+		return migrationResult;
+	}
+	
+	public static MigrationResult createDataLoss()
+	{
+		MigrationResult migrationResult = new MigrationResult();
+		migrationResult.addDataLoss();
+		
+		return migrationResult;
+	}
+	
 	public void merge(MigrationResult migrationResult)
 	{
 		addAll(migrationResult);
@@ -54,6 +70,11 @@ public class MigrationResult extends Vector<String>
 		add(SUCCESS);
 	}
 	
+	public void addDataLoss()
+	{
+		add(DATA_LOSS);
+	}
+
 	private static final String SUCCESS = "Success";
 	private static final String DATA_LOSS = "DataLoss";
 	private static final String FAILED = "Failed";

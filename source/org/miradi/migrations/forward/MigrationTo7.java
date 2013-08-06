@@ -24,6 +24,7 @@ import java.util.Vector;
 
 import org.miradi.migrations.AbstractMigration;
 import org.miradi.migrations.AbstractMigrationVisitor;
+import org.miradi.migrations.MigrationResult;
 import org.miradi.migrations.RawObject;
 import org.miradi.migrations.RawProject;
 import org.miradi.migrations.VersionRange;
@@ -37,8 +38,9 @@ public class MigrationTo7 extends AbstractMigration
 	}
 
 	@Override
-	public void migrateForward() throws Exception
+	public MigrationResult migrateForward() throws Exception
 	{
+		return new MigrationResult();
 	}
 	
 	@Override
@@ -112,9 +114,11 @@ public class MigrationTo7 extends AbstractMigration
 		}
 
 		@Override
-		public void internalVisit(RawObject rawObject) throws Exception 
+		public MigrationResult internalVisit(RawObject rawObject) throws Exception 
 		{
 			rawObject.remove(TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
+			
+			return MigrationResult.createDataLoss();
 		}
 		
 		private int type;

@@ -24,6 +24,7 @@ import java.util.Set;
 
 import org.miradi.migrations.AbstractMigrationVisitor;
 import org.miradi.migrations.AbstractSingleTypeMigration;
+import org.miradi.migrations.MigrationResult;
 import org.miradi.migrations.RawObject;
 import org.miradi.migrations.RawProject;
 import org.miradi.migrations.VersionRange;
@@ -39,9 +40,12 @@ public class MigrationTo6 extends AbstractSingleTypeMigration
 	}
 	
 	@Override
-	public void migrateForward() throws Exception
+	public MigrationResult migrateForward() throws Exception
 	{
-		getRawProject().visitAllObjectsInPool(new IndicatorVisitor());
+		final IndicatorVisitor visitor = new IndicatorVisitor();
+		getRawProject().visitAllObjectsInPool(visitor);
+		
+		return visitor.getMigrationResult();
 	}
 	
 	@Override
@@ -75,10 +79,12 @@ public class MigrationTo6 extends AbstractSingleTypeMigration
 		}
 
 		@Override
-		public void internalVisit(RawObject indicator) throws Exception
+		public MigrationResult internalVisit(RawObject indicator) throws Exception
 		{
 			escapeThresholdValues(indicator, TAG_THRESHOLDS_MAP);
 			escapeThresholdValues(indicator, TAG_THRESHOLD_DETAILS_MAP);
+			
+			return MigrationResult.createSuccess();
 		}
 
 		private void escapeThresholdValues(RawObject indicator, final String tag) throws Exception

@@ -30,6 +30,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.migrations.AbstractMigrationVisitor;
 import org.miradi.migrations.AbstractSingleTypeMigration;
 import org.miradi.migrations.IndicatorFutureStatusTagsToFutureStatusTagsMap;
+import org.miradi.migrations.MigrationResult;
 import org.miradi.migrations.RawObject;
 import org.miradi.migrations.RawPool;
 import org.miradi.migrations.RawProject;
@@ -54,9 +55,12 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 	}
 
 	@Override
-	public void migrateForward() throws Exception
+	public MigrationResult migrateForward() throws Exception
 	{
-		getRawProject().visitAllObjectsInPool(new IndicatorVisitor());
+		final IndicatorVisitor visitor = new IndicatorVisitor();
+		getRawProject().visitAllObjectsInPool(visitor);
+		
+		return visitor.getMigrationResult();
 	}
 
 	@Override
@@ -91,10 +95,10 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 		}
 
 		@Override
-		public void internalVisit(RawObject rawObject) throws Exception
+		public MigrationResult internalVisit(RawObject rawObject) throws Exception
 		{
 			if (!hasAnyFutureStatusData(rawObject))
-				return;
+				return new MigrationResult();
 
 			RawPool futureStatusPool = getOrCreateFutureStatusPool();
 			RawObject newFutureStatus = new RawObject(FutureStatusSchema.getObjectType());
@@ -103,6 +107,8 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 			final ORef newFutureStatusRef = new ORef(ObjectType.FUTURE_STATUS, nextHighestId);
 			futureStatusPool.put(newFutureStatusRef, newFutureStatus);
 			rawObject.put(TAG_FUTURE_STATUS_REFS, new ORefList(newFutureStatusRef));
+			
+			return MigrationResult.createSuccess();
 		}
 
 		private RawPool getOrCreateFutureStatusPool()
@@ -162,19 +168,22 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 		}
 
 		@Override
-		public void internalVisit(RawObject indicator) throws Exception 
+		public MigrationResult internalVisit(RawObject indicator) throws Exception 
 		{
 			if (!indicator.containsKey(TAG_FUTURE_STATUS_REFS))
-				return;
+				return new MigrationResult();
 			
 			ORefList futureStatusRefs = new ORefList(indicator.get(TAG_FUTURE_STATUS_REFS));
 			if (futureStatusRefs.isEmpty())
-				return;
+				return new MigrationResult();
 
 			RawObject latestFutureStatus = getLatestFutureStatusRef(futureStatusRefs);
 			moveFieldsFromFutureStatusToIndicator(indicator, latestFutureStatus);
 			clearIndicatorFutureStatusField(indicator);
 			deleteOrphanFutureStatuses(futureStatusRefs);
+			
+			//FIXME urgent - this needs to return data loss if only the latest FS's data was stored in the indicator
+			return MigrationResult.createSuccess();
 		}
 
 		private void moveFieldsFromFutureStatusToIndicator(RawObject indicator, RawObject latestFutureStatus)
