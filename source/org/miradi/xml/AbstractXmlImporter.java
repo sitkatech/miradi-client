@@ -298,7 +298,7 @@ abstract public class AbstractXmlImporter
 		return (Node) evaluate(node, xpathExpressions, XPathConstants.NODE);
 	}
 	
-	public NodeList getNodes(Node node, String xpathExpression) throws Exception
+	public NodeList getNamedChildNodes(Node node, String xpathExpression) throws Exception
 	{
 		return getNodes(node, new String[]{xpathExpression, });
 	}
