@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml;
 
 import java.awt.Point;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Vector;
 
 import javax.xml.namespace.QName;
@@ -298,9 +300,19 @@ abstract public class AbstractXmlImporter
 		return (Node) evaluate(node, xpathExpressions, XPathConstants.NODE);
 	}
 	
-	public NodeList getNamedChildNodes(Node node, String childNodeName) throws Exception
+	public Set<Node> getNamedChildNodes(Node parent, String childNodeName) throws Exception
 	{
-		return getNodes(node, new String[]{childNodeName, });
+		HashSet<Node> matchingChildNodes = new HashSet<Node>();
+		NodeList childNodes = parent.getChildNodes();
+		for(int index = 0; index < childNodes.getLength(); ++index)
+		{
+			Node child = childNodes.item(index);
+			String childName = child.getLocalName();
+			if(childName != null && childName.equals(childNodeName))
+				matchingChildNodes.add(child);
+		}
+		
+		return matchingChildNodes;
 	}
 	
 	public NodeList getNodes(Node node, String[] xpathExpressions) throws Exception
