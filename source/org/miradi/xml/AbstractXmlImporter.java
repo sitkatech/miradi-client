@@ -245,7 +245,7 @@ abstract public class AbstractXmlImporter
 	{
 		// FIXME low - Why do we need to trim??.  We have this fixme in other places and need to figure out
 		//why a new line has been appended.  Export is not appending a new line and has been verified in output.s
-		String trimmedIdAsString = getNodeContent(node, element).trim();
+		String trimmedIdAsString = getNamedChildNodeContent(node, element).trim();
 		return new ORef(type, new BaseId(trimmedIdAsString));
 	}
 	
@@ -255,7 +255,7 @@ abstract public class AbstractXmlImporter
 		return (Node) expression.evaluate(getDocument(), XPathConstants.NODE);
 	}
 	
-	protected String getNodeContent(Node node, String element) throws Exception
+	protected String getNamedChildNodeContent(Node node, String element) throws Exception
 	{
 		Node foundNode = getNode(node, element);
 		return getSafeNodeContent(foundNode);
