@@ -23,6 +23,12 @@ package org.miradi.views.umbrella;
 import java.io.File;
 
 import org.miradi.main.EAM;
+import org.miradi.migrations.RawProject;
+import org.miradi.migrations.RawProjectLoader;
+import org.miradi.migrations.VersionRange;
+import org.miradi.migrations.forward.MigrationManager;
+import org.miradi.project.Project;
+import org.miradi.project.ProjectSaver;
 import org.miradi.utils.MiradiFileSaveChooser;
 import org.miradi.utils.MpfToMpzConverter;
 import org.miradi.utils.MpzFileChooser;
@@ -40,9 +46,20 @@ public class ExportMpzDoer extends AbstractFileSaverDoer
 	@Override
 	protected boolean doWork(File destinationFile, ProgressInterface progressInterface) throws Exception
 	{
-		MpfToMpzConverter.convertMpfToMpz(getProject(), destinationFile);
+		convertMpfToMpz(getProject(), destinationFile);
 		
 		return true;
+	}
+	
+	private void convertMpfToMpz(Project project, File destinationFile) throws Exception
+	{
+		MigrationManager migrationManager = new MigrationManager();
+		String mpfSnapShot = ProjectSaver.createSnapShot(project);
+		RawProject projectToMigrate = RawProjectLoader.loadProject(mpfSnapShot);
+		migrationManager.migrate(projectToMigrate, new VersionRange(MigrationManager.OLDEST_VERSION_TO_HANDLE));
+		
+		final String projectFileNameToUse = project.getFilename();
+		MpfToMpzConverter.convertWithoutMigrating(projectToMigrate, projectFileNameToUse, destinationFile);
 	}
 
 	@Override

@@ -38,7 +38,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.legacyprojects.ObjectManifest;
 import org.miradi.migrations.Miradi40TypeToFieldSchemaTypesMap;
 import org.miradi.migrations.RawProject;
-import org.miradi.migrations.RawProjectLoader;
 import org.miradi.migrations.VersionRange;
 import org.miradi.migrations.forward.MigrationManager;
 import org.miradi.objecthelpers.ORef;
@@ -51,11 +50,9 @@ import org.miradi.project.AbstractConverter;
 import org.miradi.project.AbstractMiradiProjectSaver;
 import org.miradi.project.AbstractProjectLoader;
 import org.miradi.project.MpzToMpfConverter;
-import org.miradi.project.Project;
 import org.miradi.project.ProjectInfo;
 import org.miradi.project.ProjectInterface;
 import org.miradi.project.ProjectLoader;
-import org.miradi.project.ProjectSaver;
 import org.miradi.project.RawProjectSaver;
 import org.miradi.project.threatrating.SimpleThreatFrameworkJson;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
@@ -64,17 +61,6 @@ import org.miradi.project.threatrating.ThreatRatingBundle;
 // zipFile and zipEntry creation 
 public class MpfToMpzConverter extends AbstractConverter
 {
-	public static void convertMpfToMpz(Project project, File destinationFile) throws Exception
-	{
-		MigrationManager migrationManager = new MigrationManager();
-		String mpfSnapShot = ProjectSaver.createSnapShot(project);
-		RawProject projectToMigrate = RawProjectLoader.loadProject(mpfSnapShot);
-		migrationManager.migrate(projectToMigrate, new VersionRange(MigrationManager.OLDEST_VERSION_TO_HANDLE));
-		
-		final String projectFileNameToUse = project.getFilename();
-		convertWithoutMigrating(projectToMigrate, projectFileNameToUse, destinationFile);
-	}
-	
 	public static void convertWithoutMigrating(RawProject rawProject, String projectFileNameToUse, File destinationFile) throws Exception
 	{
 		VersionRange versionRange = rawProject.getCurrentVersionRange();
