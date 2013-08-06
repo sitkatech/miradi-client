@@ -216,14 +216,9 @@ public class RawProject implements ProjectInterface
 	{
 		Vector<RawObjectVisitor> visitors = new Vector<RawObjectVisitor>();
 		visitors.add(visitor);
-		visitAllObjectsInPool(visitors);
-	}
-	
-	public void visitAllObjectsInPool(Vector<? extends RawObjectVisitor> visitors) throws Exception
-	{
-		for(RawObjectVisitor visitor : visitors)
+		for(RawObjectVisitor visitor1 : visitors)
 		{
-			int objectType = visitor.getTypeToVisit();
+			int objectType = visitor1.getTypeToVisit();
 			if (!containsAnyObjectsOfType(objectType))
 				continue;
 			
@@ -232,11 +227,11 @@ public class RawProject implements ProjectInterface
 			for(ORef ref : refs)
 			{
 				RawObject rawObject = rawPool.get(ref);
-				visitor.visit(rawObject);
+				visitor1.visit(rawObject);
 			}
 		}
 	}
-
+	
 	private HashMap<Integer, RawPool> typeToRawPoolMap;
 	private String exceptionLog;
 	private String quarantineData;
