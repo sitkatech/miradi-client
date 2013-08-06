@@ -257,7 +257,7 @@ abstract public class AbstractXmlImporter
 	
 	protected String getNamedChildNodeContent(Node parentNode, String childNodeName) throws Exception
 	{
-		Node foundNode = getNode(parentNode, childNodeName);
+		Node foundNode = getNamedChildNode(parentNode, childNodeName);
 		return getSafeNodeContent(foundNode);
 	}
 	
