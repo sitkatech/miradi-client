@@ -76,7 +76,6 @@ public class MigrationManager extends AbstractMigrationManager
 		Vector<AbstractMigration> migrations = createEmptyMigrations(rawProject);
 		for(int index = migrations.size() - 1; index >= 0; --index)
 		{
-			//FIXME urgent - Needs to update migrationResult, remove manual addition of success status
 			AbstractMigration migration = migrations.get(index);
 			migrationResult.merge(migration.reverseMigrateIfPossible());
 		}
