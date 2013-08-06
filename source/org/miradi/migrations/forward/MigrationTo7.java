@@ -55,6 +55,10 @@ public class MigrationTo7 extends AbstractMigration
 			migrationResult.merge(visitor.getMigrationResult());
 		}
 		
+		getRawProject().deletePoolWithData(ObjectType.MIRADI_SHARE_PROJECT_DATA);
+		getRawProject().deletePoolWithData(ObjectType.MIRADI_SHARE_TAXONOMY);
+		getRawProject().deletePoolWithData(ObjectType.TAXONOMY_ASSOCIATION);
+
 		return migrationResult;
 	}
 
@@ -62,16 +66,6 @@ public class MigrationTo7 extends AbstractMigration
 	public VersionRange getMigratableVersionRange() throws Exception
 	{
 		return new VersionRange(VERSION_LOW, VERSION_HIGH);
-	}
-	
-	@Override
-	protected void doPostMigrationCleanup() throws Exception
-	{
-		getRawProject().deletePoolWithData(ObjectType.MIRADI_SHARE_PROJECT_DATA);
-		getRawProject().deletePoolWithData(ObjectType.MIRADI_SHARE_TAXONOMY);
-		getRawProject().deletePoolWithData(ObjectType.TAXONOMY_ASSOCIATION);
-
-		super.doPostMigrationCleanup();
 	}
 	
 	private Vector<Integer> getTypesWithTaxonomyClassifications()

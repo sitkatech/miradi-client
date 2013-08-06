@@ -64,16 +64,11 @@ abstract public class AbstractMigration
 		if (canReverseMigrateThisVersion(getRawProject().getCurrentVersionRange()))
 		{
 			migrationResult = reverseMigrate();
-			doPostMigrationCleanup();
 			final VersionRange postMigrationVersionRange = getPostReverseMigrationVersionRange();
 			getRawProject().setCurrentVersionRange(postMigrationVersionRange);
 		}
 		
 		return migrationResult;
-	}
-
-	protected void doPostMigrationCleanup() throws Exception
-	{
 	}
 
 	private VersionRange getPostForwardMigrationVersionRange() throws Exception

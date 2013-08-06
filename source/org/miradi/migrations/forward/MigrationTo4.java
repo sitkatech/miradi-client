@@ -68,16 +68,11 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 	{
 		final ReverseMigrationVisitor visitor = new ReverseMigrationVisitor();
 		getRawProject().visitAllObjectsInPool(visitor);
+		getRawProject().deleteEmptyPool(ObjectType.FUTURE_STATUS);
 		
 		return visitor.getMigrationResult();
 	}
 
-	@Override
-	protected void doPostMigrationCleanup() throws Exception
-	{
-		getRawProject().deleteEmptyPool(ObjectType.FUTURE_STATUS);
-	}
-	
 	@Override
 	protected int getToVersion()
 	{
