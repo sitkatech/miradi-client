@@ -36,7 +36,7 @@ public class TncProjectDataImporter extends AbstractXmpzObjectImporter
 	@Override
 	public void importElement() throws Exception
 	{
-		Node tncProjectDataNode = getImporter().getNode(getImporter().getRootNode(), getPoolName());
+		Node tncProjectDataNode = getImporter().getNamedChildNode(getImporter().getRootNode(), getPoolName());
 		importField(tncProjectDataNode, getMetadataRef(), ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
 		importField(tncProjectDataNode, getMetadataRef(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
 		importCodeListField(tncProjectDataNode, getTncProjectDataRef(), TncProjectData.TAG_PROJECT_PLACE_TYPES);

@@ -35,7 +35,7 @@ public class Xmpz2ProjectLocationImporter extends AbstractXmpz2ObjectImporter
 	
 	public void importFields() throws Exception
 	{
-		Node projectSummaryLocationNode = getImporter().getNode(getImporter().getRootNode(), PROJECT_SUMMARY_LOCATION);
+		Node projectSummaryLocationNode = getImporter().getNamedChildNode(getImporter().getRootNode(), PROJECT_SUMMARY_LOCATION);
 		
 		importGeospatialLocationField(projectSummaryLocationNode);		
 		getImporter().importCodeListField(projectSummaryLocationNode, PROJECT_SUMMARY_LOCATION, getMetadataRef(), ProjectMetadata.TAG_COUNTRIES, StaticQuestionManager.getQuestion(CountriesQuestion.class));
@@ -49,11 +49,11 @@ public class Xmpz2ProjectLocationImporter extends AbstractXmpz2ObjectImporter
 	
 	private void importGeospatialLocationField(Node projectSummaryLocationNode) throws Exception
 	{
-		Node locationNode = getImporter().getNode(projectSummaryLocationNode, PROJECT_SUMMARY_LOCATION + PROJECT_LOCATION);
+		Node locationNode = getImporter().getNamedChildNode(projectSummaryLocationNode, PROJECT_SUMMARY_LOCATION + PROJECT_LOCATION);
 		if(locationNode == null)
 			return;
 		
-		Node gespatialLocationNode = getImporter().getNode(locationNode, GEOSPATIAL_LOCATION);
+		Node gespatialLocationNode = getImporter().getNamedChildNode(locationNode, GEOSPATIAL_LOCATION);
 		if(gespatialLocationNode == null)
 			return;
 		

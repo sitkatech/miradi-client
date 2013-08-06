@@ -58,7 +58,7 @@ public class ThreatTargetThreatRatingElementImporter extends AbstractXmpzObjectI
 	private void importThreatRatings(Node threatRatingNode) throws Exception
 	{
 		importThreatRatingsComment(threatRatingNode);
-		Node threatRatingRatings = getImporter().getNode(threatRatingNode, THREAT_RATING + RATINGS);
+		Node threatRatingRatings = getImporter().getNamedChildNode(threatRatingNode, THREAT_RATING + RATINGS);
 		if (isSimpleThreatRatingNode(threatRatingNode))
 			importSimpleThreatRating(threatRatingNode, threatRatingRatings);
 		else
@@ -70,7 +70,7 @@ public class ThreatTargetThreatRatingElementImporter extends AbstractXmpzObjectI
 		ORef targetRef = getTargetRef(threatRatingNode);
 		ORef threatRef = getThreatRef(threatRatingNode);
 		
-		Node commentsNode = getImporter().getNode(threatRatingNode, THREAT_RATING + COMMENTS);
+		Node commentsNode = getImporter().getNamedChildNode(threatRatingNode, THREAT_RATING + COMMENTS);
 		ThreatRatingCommentsData threatRatingCommentsData = getProject().getSingletonThreatRatingCommentsData();
 		if (commentsNode != null)
 		{
@@ -116,8 +116,8 @@ public class ThreatTargetThreatRatingElementImporter extends AbstractXmpzObjectI
 	
 	private boolean isSimpleThreatRatingNode(Node threatRatingNode) throws Exception
 	{
-		Node threatRatingRatings = getImporter().getNode(threatRatingNode, THREAT_RATING + RATINGS);
-		Node simpleThreatRatingNode = getImporter().getNode(threatRatingRatings, SIMPLE_BASED_THREAT_RATING);
+		Node threatRatingRatings = getImporter().getNamedChildNode(threatRatingNode, THREAT_RATING + RATINGS);
+		Node simpleThreatRatingNode = getImporter().getNamedChildNode(threatRatingRatings, SIMPLE_BASED_THREAT_RATING);
 		if (simpleThreatRatingNode != null)
 			return true;
 
@@ -128,23 +128,23 @@ public class ThreatTargetThreatRatingElementImporter extends AbstractXmpzObjectI
 	{
 		ORef threatRef = getThreatRef(threatRatingNode);
 		ORef targetRef = getTargetRef(threatRatingNode);
-		Node simpleThreatRatingNode = getImporter().getNode(threatRatingRatings, SIMPLE_BASED_THREAT_RATING);
-		Node scopeNode = getImporter().getNode(simpleThreatRatingNode, SIMPLE_BASED_THREAT_RATING + SCOPE);
+		Node simpleThreatRatingNode = getImporter().getNamedChildNode(threatRatingRatings, SIMPLE_BASED_THREAT_RATING);
+		Node scopeNode = getImporter().getNamedChildNode(simpleThreatRatingNode, SIMPLE_BASED_THREAT_RATING + SCOPE);
 		if (scopeNode != null)
 			getProject().getSimpleThreatRatingFramework().setScope(threatRef, targetRef, extractNodeTextContentAsInt(scopeNode));
 		
-		Node severityNode = getImporter().getNode(simpleThreatRatingNode, SIMPLE_BASED_THREAT_RATING + SEVERITY);
+		Node severityNode = getImporter().getNamedChildNode(simpleThreatRatingNode, SIMPLE_BASED_THREAT_RATING + SEVERITY);
 		if (severityNode != null)
 			getProject().getSimpleThreatRatingFramework().setSeverity(threatRef, targetRef, extractNodeTextContentAsInt(severityNode));
 		
-		Node irreversibilityNode = getImporter().getNode(simpleThreatRatingNode, SIMPLE_BASED_THREAT_RATING + IRREVERSIBILITY);
+		Node irreversibilityNode = getImporter().getNamedChildNode(simpleThreatRatingNode, SIMPLE_BASED_THREAT_RATING + IRREVERSIBILITY);
 		if (irreversibilityNode != null)
 			getProject().getSimpleThreatRatingFramework().setIrreversibility(threatRef, targetRef, extractNodeTextContentAsInt(irreversibilityNode));
 	}
 
 	private void importStressBasedThreatRating(Node threatRatingNode, Node threatRatingRatings) throws Exception
 	{
-		Node stressBasedThreatRatingNode = getImporter().getNode(threatRatingRatings, STRESS_BASED_THREAT_RATING);
+		Node stressBasedThreatRatingNode = getImporter().getNamedChildNode(threatRatingRatings, STRESS_BASED_THREAT_RATING);
 		ORef stressRef = getStressRef(stressBasedThreatRatingNode);
 		ORef threatRef = getThreatRef(threatRatingNode);
 		ThreatTargetVirtualLinkHelper helper = new ThreatTargetVirtualLinkHelper(getProject());
@@ -156,7 +156,7 @@ public class ThreatTargetThreatRatingElementImporter extends AbstractXmpzObjectI
 	
 	private void importIsActive(Node stressBasedThreatRatingNode, ORef threatStressRatingRef)	throws Exception
 	{
-		Node isActiveNode = getImporter().getNode(stressBasedThreatRatingNode, STRESS_BASED_THREAT_RATING + IS_ACTIVE);
+		Node isActiveNode = getImporter().getNamedChildNode(stressBasedThreatRatingNode, STRESS_BASED_THREAT_RATING + IS_ACTIVE);
 		String isActive = BooleanData.BOOLEAN_FALSE;
 		if (isActiveNode != null && getImporter().isTrue(isActiveNode.getTextContent()))
 			isActive = BooleanData.BOOLEAN_TRUE;;
@@ -166,7 +166,7 @@ public class ThreatTargetThreatRatingElementImporter extends AbstractXmpzObjectI
 
 	private ORef getStressRef(Node stressBasedThreatRatingNode)	throws Exception
 	{
-		Node stressIdNode = getImporter().getNode(stressBasedThreatRatingNode, STRESS_BASED_THREAT_RATING + STRESS + ID);
+		Node stressIdNode = getImporter().getNamedChildNode(stressBasedThreatRatingNode, STRESS_BASED_THREAT_RATING + STRESS + ID);
 		ORef stressRef = getImporter().getNodeAsRef(stressIdNode,  STRESS+ ID, StressSchema.getObjectType());
 		return stressRef;
 	}

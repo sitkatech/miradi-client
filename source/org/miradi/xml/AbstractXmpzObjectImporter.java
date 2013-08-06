@@ -158,7 +158,7 @@ abstract public class AbstractXmpzObjectImporter implements Xmpz1XmlConstants
 	private ORef getRefToImport(Node node, String idElementName, int objectType) throws Exception
 	{
 		String element = getPoolName() + idElementName + Xmpz1XmlConstants.ID;
-		Node idNode = getImporter().getNode(node, element);
+		Node idNode = getImporter().getNamedChildNode(node, element);
 		if (idNode == null)
 			return ORef.INVALID;
 

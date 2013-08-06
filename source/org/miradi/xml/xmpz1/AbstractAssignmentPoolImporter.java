@@ -61,10 +61,10 @@ abstract public class AbstractAssignmentPoolImporter extends AbstractBaseObjectP
 		for (int index = 0; index < dateUnitEffortNodes.getLength(); ++index)
 		{
 			Node dateUnitEffortNode = dateUnitEffortNodes.item(index);
-			Node dateUnitNode = getImporter().getNode(dateUnitEffortNode, getDateUnitElementName());
+			Node dateUnitNode = getImporter().getNamedChildNode(dateUnitEffortNode, getDateUnitElementName());
 			DateUnit dateUnit = extractDateUnit(dateUnitNode);
 			
-			Node quantityNode = getImporter().getNode(dateUnitEffortNode, getQuantatityElementName());
+			Node quantityNode = getImporter().getNamedChildNode(dateUnitEffortNode, getQuantatityElementName());
 			String quantityAsString = quantityNode.getTextContent();
 			DateUnitEffort dateUnitEffort = new DateUnitEffort(dateUnit, DoubleUtilities.toDoubleFromDataFormat(quantityAsString));
 			dateUnitEffortList.add(dateUnitEffort);
@@ -75,13 +75,13 @@ abstract public class AbstractAssignmentPoolImporter extends AbstractBaseObjectP
 
 	private DateUnit extractDateUnit(Node dateUnitNode) throws Exception
 	{
-		Node timeSpanNode = getImporter().getNode(dateUnitNode, getFullProjectTimespanElementName());
+		Node timeSpanNode = getImporter().getNamedChildNode(dateUnitNode, getFullProjectTimespanElementName());
 		if (timeSpanNode != null)
 		{
 			return new DateUnit();
 		}
 		
-		Node yearNode = getImporter().getNode(dateUnitNode, getYearElementName());
+		Node yearNode = getImporter().getNamedChildNode(dateUnitNode, getYearElementName());
 		if (yearNode != null)
 		{
 			int startYear = getAttributeAsInt(yearNode, Xmpz1XmlConstants.START_YEAR);
@@ -90,7 +90,7 @@ abstract public class AbstractAssignmentPoolImporter extends AbstractBaseObjectP
 			return DateUnit.createFiscalYear(startYear, startMonth);
 		}
 		
-		Node quarterNode = getImporter().getNode(dateUnitNode, getQuarterElementName());
+		Node quarterNode = getImporter().getNamedChildNode(dateUnitNode, getQuarterElementName());
 		if (quarterNode != null)
 		{
 			int year = getAttributeAsInt(quarterNode, Xmpz1XmlConstants.YEAR);
@@ -99,7 +99,7 @@ abstract public class AbstractAssignmentPoolImporter extends AbstractBaseObjectP
 			return DateUnit.createQuarterDateUnit(year, (startMonth-1)/3 + 1);
 		}
 			
-		Node monthNode = getImporter().getNode(dateUnitNode, getMonthElementName());
+		Node monthNode = getImporter().getNamedChildNode(dateUnitNode, getMonthElementName());
 		if (monthNode != null)
 		{
 			int year = getAttributeAsInt(monthNode, Xmpz1XmlConstants.YEAR);
@@ -109,7 +109,7 @@ abstract public class AbstractAssignmentPoolImporter extends AbstractBaseObjectP
 			return DateUnit.createMonthDateUnit(date.toIsoDateString());
 		}
 		
-		Node dayNode = getImporter().getNode(dateUnitNode, getDayElementName());
+		Node dayNode = getImporter().getNamedChildNode(dateUnitNode, getDayElementName());
 		if (dayNode != null)
 		{
 			return DateUnit.createDayDateUnit(getImporter().getAttributeValue(dayNode, DATE));

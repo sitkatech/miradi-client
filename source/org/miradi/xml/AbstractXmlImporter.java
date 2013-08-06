@@ -146,8 +146,8 @@ abstract public class AbstractXmlImporter
 	
 	protected Point extractPointFromNode(Node pointNode) throws Exception
 	{
-		Node xNode = getNode(pointNode, Xmpz1XmlConstants.X_ELEMENT_NAME);
-		Node yNode = getNode(pointNode, Xmpz1XmlConstants.Y_ELEMENT_NAME);
+		Node xNode = getNamedChildNode(pointNode, Xmpz1XmlConstants.X_ELEMENT_NAME);
+		Node yNode = getNamedChildNode(pointNode, Xmpz1XmlConstants.Y_ELEMENT_NAME);
 		int x = extractNodeTextContentAsInt(xNode);
 		int y = extractNodeTextContentAsInt(yNode);
 		
@@ -279,6 +279,20 @@ abstract public class AbstractXmlImporter
 		return getPathData(node, new String[]{xpathExpression, });
 	}
 
+	public Node getNamedChildNode(Node parent, String childNodeName)
+	{
+		NodeList childNodes = parent.getChildNodes();
+		for(int index = 0; index < childNodes.getLength(); ++index)
+		{
+			Node child = childNodes.item(index);
+			String childName = child.getLocalName();
+			if(childName != null && childName.equals(childNodeName))
+				return child;
+		}
+		
+		return null;
+	}
+	
 	public Node getNode(Node node, String xpathExpression) throws Exception
 	{
 		return getNode(node, new String[]{xpathExpression});

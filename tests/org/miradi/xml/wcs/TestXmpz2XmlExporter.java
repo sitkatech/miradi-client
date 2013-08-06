@@ -138,13 +138,13 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 		assertEquals("should have one task node?", expectedTaskCount, baseObjectNodes.getLength());
 		Node baseObjectNode = baseObjectNodes.item(0);
 		
-		Node baseObjectCalculatedCostsNode = xmlImporter.getNode(baseObjectNode, elementObjectName + Xmpz2XmlConstants.TIME_PERIOD_COSTS);
+		Node baseObjectCalculatedCostsNode = xmlImporter.getNamedChildNode(baseObjectNode, elementObjectName + Xmpz2XmlConstants.TIME_PERIOD_COSTS);
 		assertNotNull("should have object calcualted costs element?", baseObjectCalculatedCostsNode);
 		
-		Node calculatedCostsNode = xmlImporter.getNode(baseObjectCalculatedCostsNode, Xmpz2XmlConstants.TIME_PERIOD_COSTS);
+		Node calculatedCostsNode = xmlImporter.getNamedChildNode(baseObjectCalculatedCostsNode, Xmpz2XmlConstants.TIME_PERIOD_COSTS);
 		assertNotNull("should have calcualted costs element?", calculatedCostsNode);
 		
-		Node calculatedTotalBudgetCostNode = xmlImporter.getNode(calculatedCostsNode, Xmpz1XmlConstants.CALCULATED_TOTAL_BUDGET_COST);
+		Node calculatedTotalBudgetCostNode = xmlImporter.getNamedChildNode(calculatedCostsNode, Xmpz1XmlConstants.CALCULATED_TOTAL_BUDGET_COST);
 		assertEquals("incorrect total budget value for object?", "112", xmlImporter.getSafeNodeContent(calculatedTotalBudgetCostNode));
 	}
 	

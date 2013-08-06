@@ -72,8 +72,8 @@ public class DiagramLinkImporter extends BaseObjectImporter
 
 	private DiagramFactor getDiagramFactorForLinkEnd(Node node,	final String diagramFactorIdElementName) throws Exception
 	{
-		Node diagramFactorIdNode = getImporter().getNode(node, getXmpz2ElementName() + diagramFactorIdElementName);
-		Node linkableNode = getImporter().getNode(diagramFactorIdNode, LINKABLE_FACTOR_ID);
+		Node diagramFactorIdNode = getImporter().getNamedChildNode(node, getXmpz2ElementName() + diagramFactorIdElementName);
+		Node linkableNode = getImporter().getNamedChildNode(diagramFactorIdNode, LINKABLE_FACTOR_ID);
 		Node factorNodeId = getFactorNodeId(linkableNode.getChildNodes());
 		DiagramFactorId diagramFactorId = new DiagramFactorId(factorNodeId.getTextContent().trim());
 		ORef diagramFactorRef = new ORef(DiagramFactorSchema.getObjectType(), diagramFactorId);

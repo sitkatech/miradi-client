@@ -35,7 +35,7 @@ public class Xmpz2ProjectPlanningImporter extends AbstractXmpz2ObjectImporter
 
 	public void importFields() throws Exception
 	{
-		Node projectSummaryPlanningNode = getImporter().getNode(getImporter().getRootNode(), PROJECT_SUMMARY_PLANNING);
+		Node projectSummaryPlanningNode = getImporter().getNamedChildNode(getImporter().getRootNode(), PROJECT_SUMMARY_PLANNING);
 		
 		importProjectMetadataField(projectSummaryPlanningNode, ProjectMetadata.TAG_START_DATE);
 		importProjectMetadataField(projectSummaryPlanningNode, ProjectMetadata.TAG_EXPECTED_END_DATE);

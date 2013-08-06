@@ -68,15 +68,15 @@ public class IndicatorImporter extends BaseObjectWithLeaderResourceFieldImporter
 		for (int index = 0; index < thresholdNodes.getLength(); ++index)
 		{
 			Node thrsholdNode = thresholdNodes.item(index);
-			Node statusCodeNode = getImporter().getNode(thrsholdNode, STATUS_CODE);
+			Node statusCodeNode = getImporter().getNamedChildNode(thrsholdNode, STATUS_CODE);
 			if (statusCodeNode != null)
 			{
 				String statusCode = statusCodeNode.getTextContent();
-				Node thresholdValueNode = getImporter().getNode(thrsholdNode, THRESHOLD_VALUE);
+				Node thresholdValueNode = getImporter().getNamedChildNode(thrsholdNode, THRESHOLD_VALUE);
 				final String thresholdValue = getImporter().getSafeNodeContent(thresholdValueNode);
 				thresholdValuesMap.putUserString(statusCode, getImporter().escapeDueToParserUnescaping(thresholdValue));
 				
-				Node thresholdDetailsNode = getImporter().getNode(thrsholdNode, THRESHOLD_DETAILS);
+				Node thresholdDetailsNode = getImporter().getNamedChildNode(thrsholdNode, THRESHOLD_DETAILS);
 				final String thresholdDetails = getImporter().getSafeNodeContent(thresholdDetailsNode);
 				thresholdDetailsMap.putUserString(statusCode, getImporter().escapeDueToParserUnescaping(thresholdDetails));
 			}			
