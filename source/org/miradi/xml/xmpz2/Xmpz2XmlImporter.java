@@ -611,7 +611,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	public void importTaxonomyElementList(Node node, ORef destinationRef, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
 		Node taxonomyElementListNode = getNamedChildNode(node, TAXONOMY_ELEMENTS);
-		NodeList taxonomyElementCodes = getNodes(taxonomyElementListNode, TAXONOMY_ELEMENT);
+		NodeList taxonomyElementCodes = getNamedChildNodes(taxonomyElementListNode, TAXONOMY_ELEMENT);
 		TaxonomyElementList taxonomyElements =  new TaxonomyElementList();
 		for (int index = 0; index < taxonomyElementCodes.getLength(); ++index)
 		{
