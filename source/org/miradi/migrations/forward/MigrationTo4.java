@@ -60,12 +60,9 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 	}
 
 	@Override
-	public Vector<AbstractMigrationVisitor> createRawObjectReverseMigrationVisitors()
+	protected void reverseMigrate() throws Exception
 	{
-		Vector<AbstractMigrationVisitor> visitors = super.createRawObjectReverseMigrationVisitors();
-		visitors.add(new ReverseMigrationVisitor());
-		
-		return visitors;
+		getRawProject().visitAllObjectsInPool(new ReverseMigrationVisitor());
 	}
 
 	@Override

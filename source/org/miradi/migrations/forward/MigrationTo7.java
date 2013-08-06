@@ -40,6 +40,16 @@ public class MigrationTo7 extends AbstractMigration
 	public void migrateForward() throws Exception
 	{
 	}
+	
+	@Override
+	protected void reverseMigrate() throws Exception
+	{
+		Vector<Integer> typesWithTaxonomyClassifications = getTypesWithTaxonomyClassifications();
+		for(Integer typeWithTaxonomy : typesWithTaxonomyClassifications)
+		{
+			getRawProject().visitAllObjectsInPool(new RemoveTaxonomyClassificationFieldVisitor(typeWithTaxonomy));	
+		}
+	}
 
 	@Override
 	public VersionRange getMigratableVersionRange() throws Exception
@@ -55,19 +65,6 @@ public class MigrationTo7 extends AbstractMigration
 		getRawProject().deletePoolWithData(ObjectType.TAXONOMY_ASSOCIATION);
 
 		super.doPostMigrationCleanup();
-	}
-	
-	@Override
-	public Vector<AbstractMigrationVisitor> createRawObjectReverseMigrationVisitors()
-	{
-		Vector<AbstractMigrationVisitor> visitors = super.createRawObjectReverseMigrationVisitors();
-		Vector<Integer> typesWithTaxonomyClassifications = getTypesWithTaxonomyClassifications();
-		for(Integer typeWithTaxonomy : typesWithTaxonomyClassifications)
-		{
-			visitors.add(new RemoveTaxonomyClassificationFieldVisitor(typeWithTaxonomy));	
-		}
-		
-		return visitors;
 	}
 	
 	private Vector<Integer> getTypesWithTaxonomyClassifications()

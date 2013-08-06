@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations.forward;
 
-import java.util.Vector;
-
 import org.miradi.migrations.AbstractMigrationVisitor;
 import org.miradi.migrations.AbstractSingleTypeMigration;
 import org.miradi.migrations.RawObject;
@@ -41,15 +39,13 @@ public class MigrationTo5 extends AbstractSingleTypeMigration
 	{
 		getRawProject().visitAllObjectsInPool(new StrategyVisitor());
 	}
-
-	@Override
-	public Vector<AbstractMigrationVisitor> createRawObjectReverseMigrationVisitors()
-	{
-		final Vector<AbstractMigrationVisitor> visitors = super.createRawObjectReverseMigrationVisitors();
-		visitors.add(new ReverseStrategyVisitor());
-		return visitors;
-	}
 	
+	@Override
+	protected void reverseMigrate() throws Exception
+	{
+		getRawProject().visitAllObjectsInPool(new ReverseStrategyVisitor());
+	}
+
 	@Override
 	public VersionRange getMigratableVersionRange() throws Exception
 	{
