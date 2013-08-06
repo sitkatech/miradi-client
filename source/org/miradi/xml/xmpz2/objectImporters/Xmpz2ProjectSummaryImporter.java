@@ -65,7 +65,7 @@ public class Xmpz2ProjectSummaryImporter extends BaseObjectImporter
 	
 	private void writeShareOutsideOrganizationElement(Node projectSumaryNode) throws Exception
 	{
-		Node shareOutsideTncNode = getImporter().getNode(projectSumaryNode, PROJECT_SUMMARY + PROJECT_SHARE_OUTSIDE_ORGANIZATION);
+		Node shareOutsideTncNode = getImporter().getNamedChildNode(projectSumaryNode, PROJECT_SUMMARY + PROJECT_SHARE_OUTSIDE_ORGANIZATION);
 		String shareOutsideTncValue = getImporter().getSafeNodeContent(shareOutsideTncNode);
 		getImporter().setData(getTncProjectDataRef(), TncProjectData.TAG_PROJECT_SHARING_CODE, shareOutsideTncValue);
 	}	
@@ -77,17 +77,17 @@ public class Xmpz2ProjectSummaryImporter extends BaseObjectImporter
 	
 	private void importExternalProjectId(Node projectSumaryNode) throws Exception
 	{
-		Node projectIdNode = getImporter().getNode(projectSumaryNode, PROJECT_SUMMARY + Xenodata.TAG_PROJECT_ID);
+		Node projectIdNode = getImporter().getNamedChildNode(projectSumaryNode, PROJECT_SUMMARY + Xenodata.TAG_PROJECT_ID);
 		NodeList projectIdNodes = getImporter().getNodes(projectIdNode, new String[]{EXTERNAL_PROJECT_ID_ELEMENT_NAME, });
 		StringRefMap stringRefMap = new StringRefMap();
 		for (int index = 0; index < projectIdNodes.getLength(); ++index)
 		{
 			Node node = projectIdNodes.item(index);
 			
-			Node externalAppNode = getImporter().getNode(node, EXTERNAL_APP_ELEMENT_NAME);
+			Node externalAppNode = getImporter().getNamedChildNode(node, EXTERNAL_APP_ELEMENT_NAME);
 			String externalAppThatAssignedId = externalAppNode.getTextContent();
 			
-			Node externalProjectIdNode = getImporter().getNode(node, PROJECT_ID);
+			Node externalProjectIdNode = getImporter().getNamedChildNode(node, PROJECT_ID);
 			String externalProjectId = externalProjectIdNode.getTextContent();
 			
 			ORef xenodataRef = getProject().createObject(XenodataSchema.getObjectType());

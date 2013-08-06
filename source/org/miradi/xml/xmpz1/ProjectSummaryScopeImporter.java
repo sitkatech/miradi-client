@@ -36,7 +36,7 @@ public class ProjectSummaryScopeImporter extends AbstractXmpzObjectImporter
 	@Override
 	public void importElement() throws Exception
 	{
-		Node projectSummaryNode = getImporter().getNode(getImporter().getRootNode(), Xmpz1XmlConstants.PROJECT_SUMMARY_SCOPE);
+		Node projectSummaryNode = getImporter().getNamedChildNode(getImporter().getRootNode(), Xmpz1XmlConstants.PROJECT_SUMMARY_SCOPE);
 		
 		importField(projectSummaryNode, getMetadataRef(), ProjectMetadata.TAG_SHORT_PROJECT_SCOPE);
 		importField(projectSummaryNode, getMetadataRef(), ProjectMetadata.TAG_PROJECT_SCOPE);

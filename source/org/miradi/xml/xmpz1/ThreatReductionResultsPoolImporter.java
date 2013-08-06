@@ -52,7 +52,7 @@ public class ThreatReductionResultsPoolImporter extends FactorPoolImporter
 			return;
 		
 		Node threatIdNode = getImporter().getNode(relatedThreatIdNode, getPoolName() + Xmpz1XmlConstants.THREAT_ID);
-		Node idNode = getImporter().getNode(threatIdNode, Xmpz1XmlConstants.THREAT_ID);
+		Node idNode = getImporter().getNamedChildNode(threatIdNode, Xmpz1XmlConstants.THREAT_ID);
 		BaseId relatedThreatId = new BaseId(idNode.getTextContent());
 		ORef relatedThreatRef = new ORef(CauseSchema.getObjectType(), relatedThreatId);
 		getImporter().setData(destinationRef, ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, relatedThreatRef.toString());

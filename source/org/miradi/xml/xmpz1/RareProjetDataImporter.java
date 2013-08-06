@@ -35,7 +35,7 @@ public class RareProjetDataImporter extends AbstractXmpzObjectImporter
 	@Override
 	public void importElement() throws Exception
 	{
-		Node rareProjectDataNode = getImporter().getNode(getImporter().getRootNode(), getPoolName());
+		Node rareProjectDataNode = getImporter().getNamedChildNode(getImporter().getRootNode(), getPoolName());
 		
 		importField(rareProjectDataNode, getRareProjectDataRef(), RareProjectData.TAG_COHORT);
 		importField(rareProjectDataNode, getRareProjectDataRef(), RareProjectData.LEGACY_TAG_THREATS_ADDRESSED_NOTES);

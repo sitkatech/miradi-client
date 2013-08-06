@@ -40,7 +40,7 @@ abstract public class AbstractThreatRatingImporter extends AbstractXmpz2ObjectIm
 		ORef targetRef = getTargetRef(threatRatingNode);
 		ORef threatRef = getThreatRef(threatRatingNode);
 		
-		Node commentsNode = getImporter().getNode(threatRatingNode, getParentElementName() + COMMENTS);
+		Node commentsNode = getImporter().getNamedChildNode(threatRatingNode, getParentElementName() + COMMENTS);
 		ThreatRatingCommentsData threatRatingCommentsData = getProject().getSingletonThreatRatingCommentsData();
 		if (commentsNode != null)
 		{
@@ -56,14 +56,14 @@ abstract public class AbstractThreatRatingImporter extends AbstractXmpz2ObjectIm
 	
 	protected ORef getThreatRef(Node threatRatingNode) throws Exception
 	{
-		Node threatIdNode = getImporter().getNode(threatRatingNode, getParentElementName() + THREAT + ID);
+		Node threatIdNode = getImporter().getNamedChildNode(threatRatingNode, getParentElementName() + THREAT + ID);
 		ORef threatRef = getImporter().getNodeAsRef(threatIdNode, THREAT + ID, CauseSchema.getObjectType());
 		return threatRef;
 	}
 
 	protected ORef getTargetRef(Node threatRatingNode) throws Exception
 	{
-		Node targetIdNode = getImporter().getNode(threatRatingNode, getParentElementName() + TARGET + ID);
+		Node targetIdNode = getImporter().getNamedChildNode(threatRatingNode, getParentElementName() + TARGET + ID);
 		ORef targetRef = getImporter().getNodeAsRef(targetIdNode,  BIODIVERSITY_TARGET + ID, TargetSchema.getObjectType());
 		return targetRef;
 	}

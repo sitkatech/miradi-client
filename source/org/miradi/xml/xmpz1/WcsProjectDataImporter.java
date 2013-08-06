@@ -35,7 +35,7 @@ public class WcsProjectDataImporter extends AbstractXmpzObjectImporter
 	@Override
 	public void importElement() throws Exception
 	{
-		Node wcsProjectDataNode = getImporter().getNode(getImporter().getRootNode(), getPoolName());
+		Node wcsProjectDataNode = getImporter().getNamedChildNode(getImporter().getRootNode(), getPoolName());
 		
 		importField(wcsProjectDataNode, getWcsProjectDataRef(), WcsProjectData.TAG_ORGANIZATIONAL_FOCUS);
 		importField(wcsProjectDataNode, getWcsProjectDataRef(), WcsProjectData.TAG_ORGANIZATIONAL_LEVEL);

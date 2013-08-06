@@ -75,7 +75,7 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 	private void importFontStylingElements(Node node, ORef destinationRef) throws Exception
 	{
 		Node diagramFactorSyleNode = getImporter().getNode(node, getPoolName() + STYLING);
-		Node style = getImporter().getNode(diagramFactorSyleNode, STYLING);
+		Node style = getImporter().getNamedChildNode(diagramFactorSyleNode, STYLING);
 		importCodeField(style, destinationRef, DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion());
 		importCodeField(style, destinationRef, DiagramFactor.TAG_FONT_STYLE, new LegacyDiagramFactorFontStyleQuestion());
 		importCodeField(style, destinationRef, DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion());
@@ -91,14 +91,14 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 
 	private  static ORef importWrappedRef(Xmpz1XmlImporter importer, String poolName, Node parentNode) throws Exception
 	{
-		Node wrappedFactorIdNode = importer.getNode(parentNode, poolName + WRAPPED_FACTOR_ID_ELEMENT_NAME);
+		Node wrappedFactorIdNode = importer.getNamedChildNode(parentNode, poolName + WRAPPED_FACTOR_ID_ELEMENT_NAME);
 
 		return importWrappedRef(importer, wrappedFactorIdNode);
 	}
 
 	public static ORef importWrappedRef(Xmpz1XmlImporter importer, Node wrappedFactorIdNode) throws Exception
 	{
-		Node wrappedByDiagamFactorIdNode = importer.getNode(wrappedFactorIdNode, WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
+		Node wrappedByDiagamFactorIdNode = importer.getNamedChildNode(wrappedFactorIdNode, WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
 		
 		return getWrappedRef(importer, wrappedByDiagamFactorIdNode);
 	}
@@ -175,9 +175,9 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 	private void importDiagramFactorSize(Node node, ORef destinationRef) throws Exception
 	{
 		Node diagramFactorSizeNode = getImporter().getNode(node, getPoolName()+ SIZE);
-		Node sizNode = getImporter().getNode(diagramFactorSizeNode, DIAGRAM_SIZE_ELEMENT_NAME);
-		Node widthNode = getImporter().getNode(sizNode, WIDTH_ELEMENT_NAME);
-		Node heightNode = getImporter().getNode(sizNode, HEIGHT_ELEMENT_NAME);
+		Node sizNode = getImporter().getNamedChildNode(diagramFactorSizeNode, DIAGRAM_SIZE_ELEMENT_NAME);
+		Node widthNode = getImporter().getNamedChildNode(sizNode, WIDTH_ELEMENT_NAME);
+		Node heightNode = getImporter().getNamedChildNode(sizNode, HEIGHT_ELEMENT_NAME);
 		int width = extractNodeTextContentAsInt(widthNode);
 		int height = extractNodeTextContentAsInt(heightNode);
 		String dimensionAsString = EnhancedJsonObject.convertFromDimension(new Dimension(width, height));
@@ -187,7 +187,7 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 	private void importDiagramFactorLocation(Node node, ORef destinationRef) throws Exception
 	{
 		Node locationNode = getImporter().getNode(node, getPoolName()+ LOCATION);
-		Node pointNode = getImporter().getNode(locationNode, DIAGRAM_POINT_ELEMENT_NAME);
+		Node pointNode = getImporter().getNamedChildNode(locationNode, DIAGRAM_POINT_ELEMENT_NAME);
 		Point point = extractPointFromNode(pointNode);
 		String pointAsString = EnhancedJsonObject.convertFromPoint(point);
 		getImporter().setData(destinationRef, DiagramFactor.TAG_LOCATION, pointAsString);

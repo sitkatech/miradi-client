@@ -54,7 +54,7 @@ public class StressBasedThreatTargetThreatRatingImporter extends AbstractThreatR
 		}
 
 		String poolName = Xmpz2XmlWriter.createPoolElementName(getParentElementName());
-		Node threatRatingPoolNode = getImporter().getNode(getImporter().getRootNode(), poolName);
+		Node threatRatingPoolNode = getImporter().getNamedChildNode(getImporter().getRootNode(), poolName);
 		if (threatRatingPoolNode == null)
 			return;
 		
@@ -119,7 +119,7 @@ public class StressBasedThreatTargetThreatRatingImporter extends AbstractThreatR
 	
 	private void importIsActive(Node threatStressRatingNode, ORef threatStressRatingRef)	throws Exception
 	{
-		Node isActiveNode = getImporter().getNode(threatStressRatingNode, THREAT_STRESS_RATING + IS_ACTIVE);
+		Node isActiveNode = getImporter().getNamedChildNode(threatStressRatingNode, THREAT_STRESS_RATING + IS_ACTIVE);
 		String isActive = BooleanData.BOOLEAN_FALSE;
 		if (isActiveNode != null && getImporter().isTrue(isActiveNode.getTextContent()))
 			isActive = BooleanData.BOOLEAN_TRUE;;
@@ -129,7 +129,7 @@ public class StressBasedThreatTargetThreatRatingImporter extends AbstractThreatR
 
 	private ORef getStressRef(Node threatStressRatingNode)	throws Exception
 	{
-		Node stressIdNode = getImporter().getNode(threatStressRatingNode, THREAT_STRESS_RATING + STRESS_ID);
+		Node stressIdNode = getImporter().getNamedChildNode(threatStressRatingNode, THREAT_STRESS_RATING + STRESS_ID);
 		ORef stressRef = getImporter().getNodeAsRef(stressIdNode,  STRESS_ID, StressSchema.getObjectType());
 		return stressRef;
 	}

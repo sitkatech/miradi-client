@@ -42,8 +42,8 @@ public class DashboardImporter extends AbstractXmpz2ObjectImporter
 	public void importFields() throws Exception
 	{
 		String poolName = Xmpz2XmlWriter.createPoolElementName(getPoolName());
-		Node dashboardPoolNode = getImporter().getNode(getImporter().getRootNode(), poolName);
-		Node dashboardNode = getImporter().getNode(dashboardPoolNode, getPoolName());
+		Node dashboardPoolNode = getImporter().getNamedChildNode(getImporter().getRootNode(), poolName);
+		Node dashboardNode = getImporter().getNamedChildNode(dashboardPoolNode, getPoolName());
 		Node statusesNode = getImporter().getNode(dashboardNode,  getPoolName() + DASHBOARD_STATUS_ENTRIES);
 		NodeList statusNodes = getImporter().getNodes(statusesNode, new String[]{DASHBOARD_STATUS_ENTRY});
 		
@@ -54,7 +54,7 @@ public class DashboardImporter extends AbstractXmpz2ObjectImporter
 		{
 			Node statusNode = statusNodes.item(index);
 			String thirdLevelCode = getImporter().getAttributeValue(statusNode, KEY_ATTRIBUTE_NAME);
-			Node progressCodeNode = getImporter().getNode(statusNode, DASHBOARD_PROGRESS);
+			Node progressCodeNode = getImporter().getNamedChildNode(statusNode, DASHBOARD_PROGRESS);
 			if (progressCodeNode != null)
 			{
 				String statusCode = progressCodeNode.getTextContent();
@@ -64,7 +64,7 @@ public class DashboardImporter extends AbstractXmpz2ObjectImporter
 			CodeList flagCodes = getFlagsCodeList(statusNode);
 			userFlagsMap.putCodeList(thirdLevelCode, flagCodes);
 			
-			Node commentsNode = getImporter().getNode(statusNode, DASHBOARD_COMMENTS);
+			Node commentsNode = getImporter().getNamedChildNode(statusNode, DASHBOARD_COMMENTS);
 			if (commentsNode != null)
 			{
 				String userComments = commentsNode.getTextContent();

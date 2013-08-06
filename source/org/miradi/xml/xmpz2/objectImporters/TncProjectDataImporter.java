@@ -64,7 +64,7 @@ public class TncProjectDataImporter extends SingletonObjectImporter
 	
 	public void importFields() throws Exception
 	{
-		Node tncProjectDataNode = getImporter().getNode(getImporter().getRootNode(), getXmpz2ElementName());
+		Node tncProjectDataNode = getImporter().getNamedChildNode(getImporter().getRootNode(), getXmpz2ElementName());
 		importProjectMetadataField(tncProjectDataNode, ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
 		importProjectMetadataField(tncProjectDataNode, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
 		importProjectMetadataField(tncProjectDataNode, ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS);
