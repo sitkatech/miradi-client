@@ -22,6 +22,7 @@ package org.miradi.migrations.forward;
 
 import org.miradi.migrations.AbstractMigrationVisitor;
 import org.miradi.migrations.AbstractSingleTypeMigration;
+import org.miradi.migrations.MigrationResult;
 import org.miradi.migrations.RawObject;
 import org.miradi.migrations.RawProject;
 import org.miradi.migrations.VersionRange;
@@ -35,9 +36,12 @@ public class MigrationTo5 extends AbstractSingleTypeMigration
 	}
 	
 	@Override
-	public void migrateForward() throws Exception
+	public MigrationResult migrateForward() throws Exception
 	{
-		getRawProject().visitAllObjectsInPool(new StrategyVisitor());
+		final StrategyVisitor visitor = new StrategyVisitor();
+		getRawProject().visitAllObjectsInPool(visitor);
+		
+		return visitor.getMigrationResult();
 	}
 	
 	@Override
@@ -72,12 +76,14 @@ public class MigrationTo5 extends AbstractSingleTypeMigration
 		}
 		
 		@Override
-		public void internalVisit(RawObject rawObject) throws Exception
+		public MigrationResult internalVisit(RawObject rawObject) throws Exception
 		{
 			if (rawObject.containsKey(TAG_STATUS))
 				updateDefaultRealStatusCode(rawObject);
 			else
 				updateNonExistingFieldWithoutDefaultValue(rawObject);
+			
+			return MigrationResult.createSuccess();
 		}
 		
 		public void possiblyChangeDefaultStatusCode(RawObject strategy, final String defaultCodeToReplace, final String replacementDefaultCode)

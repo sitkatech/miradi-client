@@ -22,13 +22,25 @@ package org.miradi.migrations;
 
 abstract public class AbstractMigrationVisitor implements RawObjectVisitor
 {
+	public AbstractMigrationVisitor()
+	{
+		migrationResult = new MigrationResult();
+	}
+	
 	public final void visit(RawObject rawObject) throws Exception
 	{
 		if (rawObject.getObjectType() != getTypeToVisit())
 			throw new Exception("Received incorrect object type for visitor, expecting:" + getTypeToVisit() + " but got type:" + rawObject.getObjectType());
 		
-		internalVisit(rawObject);
+		migrationResult.merge(internalVisit(rawObject));
 	}
 	
-	abstract protected void internalVisit(RawObject rawObject) throws Exception;
+	public MigrationResult getMigrationResult()
+	{
+		return migrationResult;
+	}
+	
+	abstract protected MigrationResult internalVisit(RawObject rawObject) throws Exception;
+	
+	private MigrationResult migrationResult;
 }	
