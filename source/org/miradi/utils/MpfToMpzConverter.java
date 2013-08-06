@@ -51,9 +51,11 @@ import org.miradi.project.AbstractConverter;
 import org.miradi.project.AbstractMiradiProjectSaver;
 import org.miradi.project.AbstractProjectLoader;
 import org.miradi.project.MpzToMpfConverter;
+import org.miradi.project.Project;
 import org.miradi.project.ProjectInfo;
 import org.miradi.project.ProjectInterface;
 import org.miradi.project.ProjectLoader;
+import org.miradi.project.ProjectSaver;
 import org.miradi.project.RawProjectSaver;
 import org.miradi.project.threatrating.SimpleThreatFrameworkJson;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
@@ -62,8 +64,11 @@ import org.miradi.project.threatrating.ThreatRatingBundle;
 // zipFile and zipEntry creation 
 public class MpfToMpzConverter extends AbstractConverter
 {
-	public static void convert(String projectFileNameToUse, String mpfSnapShot, File destinationFile) throws Exception
+	public static void convert(Project project, File destinationFile) throws Exception
 	{
+		String mpfSnapShot = ProjectSaver.createSnapShot(project);
+		final String projectFileNameToUse = project.getFilename();
+		
 		MigrationManager migrationManager = new MigrationManager();
 		RawProject projectToMigrate = RawProjectLoader.loadProject(mpfSnapShot);
 		migrationManager.migrate(projectToMigrate, new VersionRange(MigrationManager.OLDEST_VERSION_TO_HANDLE));

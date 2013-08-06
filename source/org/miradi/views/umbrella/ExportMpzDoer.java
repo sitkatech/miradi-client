@@ -23,7 +23,6 @@ package org.miradi.views.umbrella;
 import java.io.File;
 
 import org.miradi.main.EAM;
-import org.miradi.project.ProjectSaver;
 import org.miradi.utils.MiradiFileSaveChooser;
 import org.miradi.utils.MpfToMpzConverter;
 import org.miradi.utils.MpzFileChooser;
@@ -41,10 +40,7 @@ public class ExportMpzDoer extends AbstractFileSaverDoer
 	@Override
 	protected boolean doWork(File destinationFile, ProgressInterface progressInterface) throws Exception
 	{
-		String mpfSnapShot = ProjectSaver.createSnapShot(getProject());
-		final String filename = getProject().getFilename();
-		
-		MpfToMpzConverter.convert(filename, mpfSnapShot, destinationFile);
+		MpfToMpzConverter.convert(getProject(), destinationFile);
 		
 		return true;
 	}
