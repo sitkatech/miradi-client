@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-06 13:31-0500\n"
+"POT-Creation-Date: 2013-08-06 15:01-0500\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2294,7 +2294,7 @@ msgid "Bundle Rules"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:91
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:60
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:77
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
 #: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:49
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:234
@@ -2338,7 +2338,7 @@ msgstr ""
 msgid "Button|Exit"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:59
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:76
 msgid "Button|Export"
 msgstr ""
 
@@ -2754,6 +2754,10 @@ msgstr ""
 msgid ""
 "Corrupted link(s) have been found on %DiagramType: '%DiagramName'.<br>For "
 "each of the following, please delete the link and re-create it:<br>"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/doers/ExportMpf40VersionDoer.java:61
+msgid "Could not migrate!"
 msgstr ""
 
 #: Miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:41
@@ -3367,11 +3371,11 @@ msgstr ""
 msgid "Export"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/ExportMpf40VersionDoer.java:65
+#: Miradi/source/org/miradi/views/umbrella/doers/ExportMpf40VersionDoer.java:76
 msgid "Export 4.0 Miradi"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:51
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:68
 msgid "Export MPZ"
 msgstr ""
 
@@ -7530,6 +7534,10 @@ msgstr ""
 msgid "Theory of Change<br/>- Strategy Selection"
 msgstr ""
 
+#: Miradi/source/org/miradi/views/umbrella/doers/ExportMpf40VersionDoer.java:56
+msgid "There was data loss during export!"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:261
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
@@ -7805,7 +7813,7 @@ msgstr ""
 msgid "Title|Link Create Dialog"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:57
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:74
 msgid "Title|MPZ Export Warning"
 msgstr ""
 
