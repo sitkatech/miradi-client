@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.umbrella;
 
+import org.martus.util.Stopwatch;
 import org.miradi.views.ViewDoer;
 
 public class ImportXmpz2Doer extends ViewDoer
@@ -36,6 +37,9 @@ public class ImportXmpz2Doer extends ViewDoer
 		if (!isAvailable())
 			return;
 		
+		Stopwatch sw = new Stopwatch();
 		new Xmpz2ProjectImporter(getMainWindow()).importProject();
+		long elapsedInSeconds = sw.elapsedInSeconds();
+		System.out.println("xmpz2 import took: " + elapsedInSeconds + " seconds");
 	}
 }
