@@ -41,8 +41,8 @@ public class ExtraDataImporter extends AbstractXmpzObjectImporter
 	@Override
 	public void importElement() throws Exception
 	{
-		Node extraDataNode = getImporter().getNode(getImporter().getRootNode(), EXTRA_DATA);
-		Node extraDataSection = getImporter().getNode(extraDataNode, EXTRA_DATA_SECTION);
+		Node extraDataNode = getImporter().getNamedChildNode(getImporter().getRootNode(), EXTRA_DATA);
+		Node extraDataSection = getImporter().getNamedChildNode(extraDataNode, EXTRA_DATA_SECTION);
 		if (extraDataSection == null)
 			return;
 		
@@ -63,7 +63,7 @@ public class ExtraDataImporter extends AbstractXmpzObjectImporter
 			String tag = splitValues[2];
 			
 			BaseObject baseObject = createOrGetExisting(typeName, id);
-			Node extraDataItemValueNode = getImporter().getNode(extraDataItemNode, EXTRA_DATA_ITEM_VALUE);
+			Node extraDataItemValueNode = getImporter().getNamedChildNode(extraDataItemNode, EXTRA_DATA_ITEM_VALUE);
 			if (extraDataItemValueNode != null)
 			{
 				String value = extraDataItemValueNode.getTextContent();

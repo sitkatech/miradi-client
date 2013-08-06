@@ -68,11 +68,11 @@ public class DiagramFactorImporter extends BaseObjectImporter
 	
 	private void importFontStylingElements(Node node, ORef destinationRef) throws Exception
 	{
-		Node diagramFactorSyleNode = getImporter().getNode(node, getXmpz2ElementName() + STYLE);
+		Node diagramFactorSyleNode = getImporter().getNamedChildNode(node, getXmpz2ElementName() + STYLE);
 		if (diagramFactorSyleNode == null)
 			return;
 		
-		Node styleNode = getImporter().getNode(diagramFactorSyleNode, STYLE);
+		Node styleNode = getImporter().getNamedChildNode(diagramFactorSyleNode, STYLE);
 		getImporter().importCodeField(styleNode, getBaseObjectSchema().getXmpz2ElementName(), destinationRef, DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion());
 		getImporter().importCodeField(styleNode, getBaseObjectSchema().getXmpz2ElementName(), destinationRef, DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion());
 		getImporter().importCodeField(styleNode, getBaseObjectSchema().getXmpz2ElementName(), destinationRef, DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion());
@@ -88,7 +88,7 @@ public class DiagramFactorImporter extends BaseObjectImporter
 
 	private static ORef importWrappedRef(Xmpz2XmlImporter importer, Node wrappedFactorIdNode) throws Exception
 	{
-		Node wrappedByDiagamFactorIdNode = importer.getNode(wrappedFactorIdNode, WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
+		Node wrappedByDiagamFactorIdNode = importer.getNamedChildNode(wrappedFactorIdNode, WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
 		
 		return getWrappedRef(importer, wrappedByDiagamFactorIdNode);
 	}

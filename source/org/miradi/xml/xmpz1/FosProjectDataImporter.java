@@ -36,7 +36,7 @@ public class FosProjectDataImporter extends AbstractXmpzObjectImporter
 	@Override
 	public void importElement() throws Exception
 	{
-		Node fosProjectDataNode = getImporter().getNode(getImporter().getRootNode(), getPoolName());
+		Node fosProjectDataNode = getImporter().getNamedChildNode(getImporter().getRootNode(), getPoolName());
 		
 		importCodeField(fosProjectDataNode, getFosProjectDataRef(), FosProjectData.TAG_TRAINING_TYPE, new FosTrainingTypeQuestion());
 		importField(fosProjectDataNode, getFosProjectDataRef(), FosProjectData.TAG_TRAINING_DATES);

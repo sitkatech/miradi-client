@@ -272,7 +272,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	
 	private void importSingletonObject(final SingletonObjectImporter importer, final BaseObjectSchema baseObjectSchema) throws Exception
 	{
-		final Node singletonNode = getNode(getRootNode(), baseObjectSchema.getXmpz2ElementName());
+		final Node singletonNode = getNamedChildNode(getRootNode(), baseObjectSchema.getXmpz2ElementName());
 		if (singletonNode == null)
 			return;
 		
@@ -437,7 +437,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	
 	public void importBooleanField(Node node, ORef destinationRefToUse,	BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		Node booleanNode = getNode(node, baseObjectSchema.getXmpz2ElementName() + fieldSchema.getTag());
+		Node booleanNode = getNamedChildNode(node, baseObjectSchema.getXmpz2ElementName() + fieldSchema.getTag());
 		String isValue = BooleanData.BOOLEAN_FALSE;
 		if (booleanNode != null && isTrue(booleanNode.getTextContent()))
 			isValue = BooleanData.BOOLEAN_TRUE;
@@ -497,10 +497,10 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	
 	public void importDimensionField(Node node, ORef destinationRef, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		Node diagramFactorSizeNode = getNode(node, baseObjectSchema.getXmpz2ElementName() + SIZE);
-		Node sizNode = getNode(diagramFactorSizeNode, DIAGRAM_SIZE_ELEMENT_NAME);
-		Node widthNode = getNode(sizNode, WIDTH_ELEMENT_NAME);
-		Node heightNode = getNode(sizNode, HEIGHT_ELEMENT_NAME);
+		Node diagramFactorSizeNode = getNamedChildNode(node, baseObjectSchema.getXmpz2ElementName() + SIZE);
+		Node sizNode = getNamedChildNode(diagramFactorSizeNode, DIAGRAM_SIZE_ELEMENT_NAME);
+		Node widthNode = getNamedChildNode(sizNode, WIDTH_ELEMENT_NAME);
+		Node heightNode = getNamedChildNode(sizNode, HEIGHT_ELEMENT_NAME);
 		int width = extractNodeTextContentAsInt(widthNode);
 		int height = extractNodeTextContentAsInt(heightNode);
 		String dimensionAsString = EnhancedJsonObject.convertFromDimension(new Dimension(width, height));
@@ -509,8 +509,8 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	
 	public void importDiagramPointField(Node node, ORef destinationRef, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		Node locationNode = getNode(node, baseObjectSchema.getXmpz2ElementName() + LOCATION);
-		Node pointNode = getNode(locationNode, DIAGRAM_POINT_ELEMENT_NAME);
+		Node locationNode = getNamedChildNode(node, baseObjectSchema.getXmpz2ElementName() + LOCATION);
+		Node pointNode = getNamedChildNode(locationNode, DIAGRAM_POINT_ELEMENT_NAME);
 		Point point = extractPointFromNode(pointNode);
 		String pointAsString = EnhancedJsonObject.convertFromPoint(point);
 		setData(destinationRef, DiagramFactor.TAG_LOCATION, pointAsString);
@@ -553,11 +553,11 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	
 	private ORef getRefToImport(Node node, String parentElementName, String elementName) throws Exception
 	{
-		Node idParentNode = getNode(node, parentElementName);
+		Node idParentNode = getNamedChildNode(node, parentElementName);
 		if (idParentNode == null)
 			return ORef.INVALID;
 		
-		Node idNode = getNode(idParentNode, elementName);
+		Node idNode = getNamedChildNode(idParentNode, elementName);
 		if (idNode == null)
 			return ORef.INVALID;
 		
@@ -568,7 +568,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	
 	public void importPointListField(Node node, ORef destinationRef, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		Node bendPointsNode = getNode(node, baseObjectSchema.getXmpz2ElementName() + BEND_POINTS_ELEMENT_NAME);
+		Node bendPointsNode = getNamedChildNode(node, baseObjectSchema.getXmpz2ElementName() + BEND_POINTS_ELEMENT_NAME);
 		if (bendPointsNode == null)
 			return;
 		
@@ -610,7 +610,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	
 	public void importTaxonomyElementList(Node node, ORef destinationRef, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		Node taxonomyElementListNode = getNode(node, TAXONOMY_ELEMENTS);
+		Node taxonomyElementListNode = getNamedChildNode(node, TAXONOMY_ELEMENTS);
 		NodeList taxonomyElementCodes = getNodes(taxonomyElementListNode, TAXONOMY_ELEMENT);
 		TaxonomyElementList taxonomyElements =  new TaxonomyElementList();
 		for (int index = 0; index < taxonomyElementCodes.getLength(); ++index)
@@ -632,7 +632,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	
 	public void importTaxonomyClassificationList(Node node, ORef destinationRef, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		Node taxonomyClassifcationContainerNode = getNode(node, TAXONOMY_CLASSIFICATION_CONTAINER);
+		Node taxonomyClassifcationContainerNode = getNamedChildNode(node, TAXONOMY_CLASSIFICATION_CONTAINER);
 		if (taxonomyClassifcationContainerNode == null)
 			return;
 		
@@ -641,7 +641,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		for (int index = 0; index < taxonomyClassificationNodeList.getLength(); ++index)
 		{
 			Node taxonomyClassificationNode = taxonomyClassificationNodeList.item(index);
-			Node taxononomyClassificationTaxonomyCodeNode = getNode(taxonomyClassificationNode, TAXONOMY_CLASSIFICATION_TAXONOMY_CODE);
+			Node taxononomyClassificationTaxonomyCodeNode = getNamedChildNode(taxonomyClassificationNode, TAXONOMY_CLASSIFICATION_TAXONOMY_CODE);
 			final String taxonomyCode = taxononomyClassificationTaxonomyCodeNode.getTextContent();
 			String containerElementName = Xmpz2XmlWriter.createContainerElementName(TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODE);
 			final CodeList taxonomyElementCodes = getCodeList(taxonomyClassificationNode, containerElementName);

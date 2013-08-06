@@ -88,14 +88,14 @@ public class IndicatorPoolImporter extends AbstractBaseObjectPoolImporter
 		for (int index = 0; index < thresholdNodes.getLength(); ++index)
 		{
 			Node thrsholdNode = thresholdNodes.item(index);
-			Node statusCodeNode = getImporter().getNode(thrsholdNode, STATUS_CODE);
+			Node statusCodeNode = getImporter().getNamedChildNode(thrsholdNode, STATUS_CODE);
 			if (statusCodeNode != null)
 			{
 				String statusCode = statusCodeNode.getTextContent();
-				Node thresholdValueNode = getImporter().getNode(thrsholdNode, THRESHOLD_VALUE);
+				Node thresholdValueNode = getImporter().getNamedChildNode(thrsholdNode, THRESHOLD_VALUE);
 				thresholdValues.putUserString(statusCode, getImporter().getSafeNodeContent(thresholdValueNode));
 				
-				Node thresholdDetailsNode = getImporter().getNode(thrsholdNode, THRESHOLD_DETAILS);
+				Node thresholdDetailsNode = getImporter().getNamedChildNode(thrsholdNode, THRESHOLD_DETAILS);
 				thresholdDetails.putUserString(statusCode, getImporter().getSafeNodeContent(thresholdDetailsNode));
 			}			
 		}

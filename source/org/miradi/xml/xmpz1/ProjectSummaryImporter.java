@@ -47,7 +47,7 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 	@Override
 	public void importElement() throws Exception
 	{
-		Node projectSumaryNode = getImporter().getNode(getImporter().getRootNode(), Xmpz1XmlConstants.PROJECT_SUMMARY);
+		Node projectSumaryNode = getImporter().getNamedChildNode(getImporter().getRootNode(), Xmpz1XmlConstants.PROJECT_SUMMARY);
 				
 		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_NAME);
 		writeShareOutsideOrganizationElement(projectSumaryNode);
@@ -89,10 +89,10 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 		{
 			Node node = projectIdNodes.item(index);
 			
-			Node externalAppNode = getImporter().getNode(node, EXTERNAL_APP_ELEMENT_NAME);
+			Node externalAppNode = getImporter().getNamedChildNode(node, EXTERNAL_APP_ELEMENT_NAME);
 			String externalAppThatAssignedId = externalAppNode.getTextContent();
 			
-			Node externalProjectIdNode = getImporter().getNode(node, Xmpz1XmlConstants.PROJECT_ID);
+			Node externalProjectIdNode = getImporter().getNamedChildNode(node, Xmpz1XmlConstants.PROJECT_ID);
 			String externalProjectId = externalProjectIdNode.getTextContent();
 			
 			ORef xenodataRef = getProject().createObject(XenodataSchema.getObjectType());
