@@ -84,6 +84,11 @@ abstract public class AbstractMigration
 		return new VersionRange(getFromVersion());
 	}
 	
+	protected void removeField(RawObject rawObject, final String fieldTag)
+	{
+		rawObject.remove(fieldTag);
+	}
+	
 	abstract protected int getToVersion();
 	
 	abstract protected int getFromVersion(); 
