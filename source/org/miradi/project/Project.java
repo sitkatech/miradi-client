@@ -605,7 +605,7 @@ public class Project implements ProjectInterface
 	
 	public boolean containsObject(ORef ref)
 	{
-		return getPool(ref.getObjectType()).findObject(ref) != null;
+		return findObject(ref) != null;
 	}
 	
 	public ORef createObject(int objectType) throws Exception
