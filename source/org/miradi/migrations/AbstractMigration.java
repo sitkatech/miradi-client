@@ -28,22 +28,6 @@ abstract public class AbstractMigration
 	{
 		rawProject = rawProjectToUse;
 	}
-
-	private boolean canForwardMigrateThisVersion(VersionRange versionRange) throws Exception
-	{
-		return getMigratableVersionRange().doesContainHigh(versionRange.getHighVersion());
-	}
-	
-	private boolean canReverseMigrateThisVersion(VersionRange versionRange) throws Exception
-	{
-		final VersionRange migratableVersionRange = getMigratableVersionRange();
-		return versionRange.isEntirelyNewerThan(migratableVersionRange);
-	}
-
-	protected RawProject getRawProject()
-	{
-		return rawProject;
-	}
 	
 	public MigrationResult forwardMigrateIfPossible() throws Exception
 	{
@@ -69,6 +53,22 @@ abstract public class AbstractMigration
 		return migrationResult;
 	}
 
+	private boolean canForwardMigrateThisVersion(VersionRange versionRange) throws Exception
+	{
+		return getMigratableVersionRange().doesContainHigh(versionRange.getHighVersion());
+	}
+	
+	private boolean canReverseMigrateThisVersion(VersionRange versionRange) throws Exception
+	{
+		final VersionRange migratableVersionRange = getMigratableVersionRange();
+		return versionRange.isEntirelyNewerThan(migratableVersionRange);
+	}
+
+	protected RawProject getRawProject()
+	{
+		return rawProject;
+	}
+	
 	private void updateProjectVersionRange(final VersionRange postMigrationVersionRange)
 	{
 		getRawProject().setCurrentVersionRange(postMigrationVersionRange);
