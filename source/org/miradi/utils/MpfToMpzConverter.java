@@ -66,13 +66,12 @@ public class MpfToMpzConverter extends AbstractConverter
 {
 	public static void convert(Project project, File destinationFile) throws Exception
 	{
-		String mpfSnapShot = ProjectSaver.createSnapShot(project);
-		final String projectFileNameToUse = project.getFilename();
-		
 		MigrationManager migrationManager = new MigrationManager();
+		String mpfSnapShot = ProjectSaver.createSnapShot(project);
 		RawProject projectToMigrate = RawProjectLoader.loadProject(mpfSnapShot);
 		migrationManager.migrate(projectToMigrate, new VersionRange(MigrationManager.OLDEST_VERSION_TO_HANDLE));
 		
+		final String projectFileNameToUse = project.getFilename();
 		convertWithoutMigrating(projectToMigrate, projectFileNameToUse, destinationFile);
 	}
 	
