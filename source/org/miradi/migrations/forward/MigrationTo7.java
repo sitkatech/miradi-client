@@ -51,7 +51,7 @@ public class MigrationTo7 extends AbstractMigration
 		for(Integer typeWithTaxonomy : typesWithTaxonomyClassifications)
 		{
 			final RemoveTaxonomyClassificationFieldVisitor visitor = new RemoveTaxonomyClassificationFieldVisitor(typeWithTaxonomy);
-			getRawProject().visitAllObjectsInPool(visitor);
+			visitAllObjectsInPool(visitor);
 			migrationResult.merge(visitor.getMigrationResult());
 		}
 		
