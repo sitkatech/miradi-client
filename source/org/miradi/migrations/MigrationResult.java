@@ -80,12 +80,19 @@ public class MigrationResult extends HashSet<String>
 
 	public void addSuccess()
 	{
+		setInitialized();
 		add(SUCCESS);
 	}
 
 	public void addDataLoss()
 	{
+		setInitialized();
 		add(DATA_LOSS);
+	}
+
+	private void setInitialized()
+	{
+		remove(UNINITIALIZED);
 	}
 
 	private static final String SUCCESS = "Success";
