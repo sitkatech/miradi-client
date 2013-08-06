@@ -98,7 +98,7 @@ public class StressBasedThreatTargetThreatRatingImporter extends AbstractThreatR
 	{
 		ORef threatRef = getThreatRef(stressBasedThreatRatingNode);
 		final ORef targetRef = getTargetRef(stressBasedThreatRatingNode);
-		Node stressBasedThreatRatingThreatRatingNode = getImporter().getNode(stressBasedThreatRatingNode, new String[]{STRESS_BASED_THREAT_RATING + THREAT_STRESS_RATING, });
+		Node stressBasedThreatRatingThreatRatingNode = getImporter().getNamedChildNode(stressBasedThreatRatingNode, STRESS_BASED_THREAT_RATING + THREAT_STRESS_RATING);
 		NodeList threatStressRatingNodes = getImporter().getNodes(stressBasedThreatRatingThreatRatingNode, new String[]{THREAT_STRESS_RATING, });
 		for(int index = 0; index < threatStressRatingNodes.getLength(); ++index)
 		{
