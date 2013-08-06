@@ -88,9 +88,9 @@ abstract public class AbstractMigration
 	
 	abstract protected int getFromVersion(); 
 	
-	abstract public VersionRange getMigratableVersionRange() throws Exception;
+	protected abstract VersionRange getMigratableVersionRange() throws Exception;
 	
-	abstract public MigrationResult migrateForward() throws Exception;
+	protected abstract MigrationResult migrateForward() throws Exception;
 	
 	abstract protected MigrationResult reverseMigrate() throws Exception;
 	

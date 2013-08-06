@@ -38,7 +38,7 @@ public class MigrationTo7 extends AbstractMigration
 	}
 
 	@Override
-	public MigrationResult migrateForward() throws Exception
+	protected MigrationResult migrateForward() throws Exception
 	{
 		return new MigrationResult();
 	}
@@ -63,7 +63,7 @@ public class MigrationTo7 extends AbstractMigration
 	}
 
 	@Override
-	public VersionRange getMigratableVersionRange() throws Exception
+	protected VersionRange getMigratableVersionRange() throws Exception
 	{
 		return new VersionRange(VERSION_LOW, VERSION_HIGH);
 	}

@@ -49,13 +49,13 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 	}
 	
 	@Override
-	public VersionRange getMigratableVersionRange() throws Exception
+	protected VersionRange getMigratableVersionRange() throws Exception
 	{
 		return new VersionRange(VERSION_LOW, VERSION_HIGH);
 	}
 
 	@Override
-	public MigrationResult migrateForward() throws Exception
+	protected MigrationResult migrateForward() throws Exception
 	{
 		final IndicatorVisitor visitor = new IndicatorVisitor();
 		getRawProject().visitAllObjectsInPool(visitor);
