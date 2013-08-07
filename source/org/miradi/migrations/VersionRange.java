@@ -64,7 +64,7 @@ public class VersionRange
 		return false;
 	}
 	
-	public boolean doesContainHigh(int version)
+	public boolean doesContain(int version)
 	{
 		return (getLowVersion() <= version) && (version <= getHighVersion());
 	}
