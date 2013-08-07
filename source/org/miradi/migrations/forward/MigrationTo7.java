@@ -119,9 +119,13 @@ public class MigrationTo7 extends AbstractMigration
 		@Override
 		public MigrationResult internalVisit(RawObject rawObject) throws Exception 
 		{
-			removeField(rawObject, TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
+			if (rawObject.containsKey(TAG_TAXONOMY_CLASSIFICATION_CONTAINER))
+			{
+				removeField(rawObject, TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
+				return MigrationResult.createDataLoss();
+			}
 			
-			return MigrationResult.createDataLoss();
+			return MigrationResult.createSuccess();
 		}
 
 		private int type;
