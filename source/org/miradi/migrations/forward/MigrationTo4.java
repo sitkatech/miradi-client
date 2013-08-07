@@ -230,6 +230,14 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 		{
 			String date1 = rawObject1.get(TAG_FUTURE_STATUS_DATE);
 			String date2 = rawObject2.get(TAG_FUTURE_STATUS_DATE);
+			if (date1 == null && date2 == null)
+				return 0;
+			
+			if (date1 == null)
+				return 1;
+			
+			if (date2 == null)
+				return -1;
 			
 			return date2.compareTo(date1);
 		}
