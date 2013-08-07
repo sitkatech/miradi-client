@@ -60,8 +60,8 @@ abstract public class AbstractMigration
 	
 	private boolean canReverseMigrateThisVersion(VersionRange versionRange) throws Exception
 	{
-		final VersionRange migratableVersionRange = getMigratableVersionRange();
-		return versionRange.isEntirelyNewerThan(migratableVersionRange);
+		final VersionRange migratableVersionRange = new VersionRange(getToVersion());
+		return migratableVersionRange.doesContainHigh(versionRange.getLowVersion());
 	}
 
 	protected RawProject getRawProject()
