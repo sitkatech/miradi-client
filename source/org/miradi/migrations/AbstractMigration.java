@@ -55,13 +55,13 @@ abstract public class AbstractMigration
 
 	private boolean canForwardMigrateThisVersion(VersionRange versionRange) throws Exception
 	{
-		return getMigratableVersionRange().doesContainHigh(versionRange.getHighVersion());
+		return getMigratableVersionRange().doesContain(versionRange.getHighVersion());
 	}
 	
 	private boolean canReverseMigrateThisVersion(VersionRange versionRange) throws Exception
 	{
 		final VersionRange migratableVersionRange = new VersionRange(getToVersion());
-		return migratableVersionRange.doesContainHigh(versionRange.getLowVersion());
+		return migratableVersionRange.doesContain(versionRange.getLowVersion());
 	}
 
 	protected RawProject getRawProject()
