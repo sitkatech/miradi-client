@@ -172,7 +172,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		getSafeRowSelectionHandler().addSelectableRow(selectableComponents, choiceItem.getLongDescriptionProvider());
 	}
 	
-	protected int getIndentPerLevel()
+	private int getIndentPerLevel()
 	{
 		return INDENT_PER_LEVEL;
 	}
@@ -212,5 +212,5 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 	private MainWindow mainWindow;
 	private SingleRowSelectionHandler rowSelectionHandler;
 	
-	protected static final int INDENT_PER_LEVEL = 25;
+	private static final int INDENT_PER_LEVEL = 25;
 }
