@@ -177,10 +177,15 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		Box box = Box.createHorizontalBox();
 		for (int index = 0; index < indentCount; ++index)
 		{
-			box.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
+			box.add(Box.createHorizontalStrut(getIndentPerLevel()));
 		}
 		
 		return box;
+	}
+
+	protected int getIndentPerLevel()
+	{
+		return INDENT_PER_LEVEL;
 	}
 	
 	private Font createHeaderTitleFont()
