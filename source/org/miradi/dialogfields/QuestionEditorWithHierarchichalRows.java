@@ -161,7 +161,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		PanelTitleLabel rightComponent = new PanelTitleLabel(choiceItem.getAdditionalText());
 		rightComponent.setFont(font);
 		
-		Box box = createHorizontalBoxWithIndents(indentCount);
+		Box box = createHorizontalBoxWithIndents(INDENT_PER_LEVEL, indentCount);
 		box.add(leftComponent);
 		mainRowsPanel.add(box);
 		mainRowsPanel.add(rightComponent);
@@ -170,17 +170,6 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		selectableComponents.add(leftColumnComponent);
 		selectableComponents.add(rightComponent);
 		getSafeRowSelectionHandler().addSelectableRow(selectableComponents, choiceItem.getLongDescriptionProvider());
-	}
-	
-	protected Box createHorizontalBoxWithIndents(int indentCount)
-	{
-		Box box = Box.createHorizontalBox();
-		for (int index = 0; index < indentCount; ++index)
-		{
-			box.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
-		}
-		
-		return box;
 	}
 	
 	private Font createHeaderTitleFont()
@@ -218,5 +207,5 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 	private MainWindow mainWindow;
 	private SingleRowSelectionHandler rowSelectionHandler;
 	
-	protected static final int INDENT_PER_LEVEL = 25;
+	private static final int INDENT_PER_LEVEL = 25;
 }
