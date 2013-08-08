@@ -29,7 +29,6 @@ import org.miradi.icons.ObjectiveIcon;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Desire;
-import org.miradi.objects.Goal;
 import org.miradi.objects.Objective;
 import org.miradi.project.Project;
 import org.miradi.schemas.ObjectiveSchema;
@@ -58,7 +57,7 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanelWithSections
 		addSubPanelWithTitledBorder(new ProgressPercentSubPanel(getProject()));
 		
 		addField(createTaxonomyFields(ObjectiveSchema.getObjectType()));
-		addField(createMultilineField(Goal.TAG_COMMENTS));
+		addField(createMultilineField(Objective.TAG_COMMENTS));
 
 		updateFieldsFromProject();
 	}
