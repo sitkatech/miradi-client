@@ -47,12 +47,12 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 
 	private AbstractEditorComponentWithHiearchies createEditorComponent(ChoiceQuestion questionToUse)
 	{
-		if (taxonomyAssociation.isMultiSelectionTaxonomy())
+		if (getTaxonomyAssociation().isMultiSelectionTaxonomy())
 			return new MultiSelectionEditorComponentWithHierarchies(questionToUse);
 		
 		return new SingleSelectionEditorComponentWithHierarchies(questionToUse);
 	}
-	
+
 	@Override
 	public String getText()
 	{
@@ -61,7 +61,7 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 			BaseObject baseObject = BaseObject.find(getProject(), getORef());
 			TaxonomyClassificationMap taxonomyClassificationList = new TaxonomyClassificationMap(baseObject.getData(BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER));
 			CodeList selectedTaxonomyElementCodes = new CodeList(component.getText());
-			taxonomyClassificationList.putCodeList(taxonomyAssociation.getTaxonomyCode(), selectedTaxonomyElementCodes);
+			taxonomyClassificationList.putCodeList(getTaxonomyAssociation().getTaxonomyCode(), selectedTaxonomyElementCodes);
 
 			return taxonomyClassificationList.toJsonString();
 		}
@@ -77,7 +77,7 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 	{
 		try
 		{
-			CodeList taxonomyElementCodes = TaxonomyClassificationMap.getTaxonomyElementCodes(getProject(), newValue, taxonomyAssociation.getTaxonomyAssociationCode());
+			CodeList taxonomyElementCodes = TaxonomyClassificationMap.getTaxonomyElementCodes(getProject(), newValue, getTaxonomyAssociation().getTaxonomyAssociationCode());
 			component.setText(taxonomyElementCodes.toString());
 		}
 		catch (Exception e)
@@ -101,6 +101,11 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 	public void valueChanged(ListSelectionEvent arg0)
 	{
 		forceSave();
+	}
+	
+	private TaxonomyAssociation getTaxonomyAssociation()
+	{
+		return taxonomyAssociation;
 	}
 	
 	private TaxonomyAssociation taxonomyAssociation;
