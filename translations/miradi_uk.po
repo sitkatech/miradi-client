@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-06 15:01-0500\n"
+"POT-Creation-Date: 2013-08-08 11:31-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -4228,7 +4228,7 @@ msgid "Indicator does not have a direct/indirect factor parent. "
 msgstr "Індикатор не має джерела прямого або непрямогой фактора. "
 
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:49
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:55
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:54
 msgid "Indicators"
 msgstr "Індикатори"
 
@@ -5348,8 +5348,8 @@ msgstr "Листопад"
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:169
 #: Miradi/source/org/miradi/forms/objects/ObjectivePropertiesForm.java:34
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:78
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:43
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:47
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:42
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:46
 msgid "Objective"
 msgstr "Завдання"
 
@@ -6474,7 +6474,7 @@ msgstr ""
 "змінити світ, що міститьцілі, завдання та стратегії проекту"
 
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:50
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:56
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:55
 msgid "Strategies And Activities"
 msgstr "Стратегії і дії"
 
@@ -8173,7 +8173,7 @@ msgstr ""
 msgid "Title|Nested Target Properties"
 msgstr "Title|Складові ущільнених цілей"
 
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:69
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:68
 msgid "Title|Objective Properties"
 msgstr "Title|Складові завдань"
 
@@ -9957,6 +9957,9 @@ msgid "FieldLabel|24.SelectedTaggedObjectSetRefs|Tags"
 msgstr "FieldLabel|24.SelectedTaggedObjectSetRefs|Ярлички"
 
 msgid "FieldLabel|24.Detail|Details"
+msgstr ""
+
+msgid "FieldLabel|24.TaxonomyClassificationContainer|Taxonomies"
 msgstr ""
 
 msgid "FieldLabel|25.ThreatReductionResult|Threat Reduction Result"

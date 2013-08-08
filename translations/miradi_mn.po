@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-06 15:01-0500\n"
+"POT-Creation-Date: 2013-08-08 11:31-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -4252,7 +4252,7 @@ msgid "Indicator does not have a direct/indirect factor parent. "
 msgstr "Шалгуур үзүүлэлт нь шууд/шууд бус хүчин зүйлийн эх сурвалжгүй байна."
 
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:49
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:55
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:54
 msgid "Indicators"
 msgstr "Шалгуур үзүүлэлтүүд"
 
@@ -5374,8 +5374,8 @@ msgstr "Арван нэгдүгээр сар"
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:169
 #: Miradi/source/org/miradi/forms/objects/ObjectivePropertiesForm.java:34
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:78
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:43
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:47
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:42
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:46
 msgid "Objective"
 msgstr "Зорилт"
 
@@ -6514,7 +6514,7 @@ msgstr ""
 "тоймлон гаргах."
 
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:50
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:56
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:55
 msgid "Strategies And Activities"
 msgstr "Стратегууд ба Үйл ажиллагаа"
 
@@ -8222,7 +8222,7 @@ msgstr ""
 msgid "Title|Nested Target Properties"
 msgstr "Гарчиг|Давхар хамгаалагдах зүйлийн Properties"
 
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:69
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:68
 msgid "Title|Objective Properties"
 msgstr "Гарчиг|Зорилтын Properties"
 
@@ -10120,6 +10120,9 @@ msgstr "БаганыХаяг|24.СонгосонТэмдэглэгдсэнБаг
 
 msgid "FieldLabel|24.Detail|Details"
 msgstr "БаганыХаяг|24.ДэлгэрэнгүйБайдал|Дэлгэрэнгүй Байдал"
+
+msgid "FieldLabel|24.TaxonomyClassificationContainer|Taxonomies"
+msgstr ""
 
 msgid "FieldLabel|25.ThreatReductionResult|Threat Reduction Result"
 msgstr "БаганыХаяг|25.АюулЗаналБуурсанҮрДүн|Аюул Занал Буурсан Үр Дүн"

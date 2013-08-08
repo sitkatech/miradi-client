@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-06 15:01-0500\n"
+"POT-Creation-Date: 2013-08-08 11:31-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -4197,7 +4197,7 @@ msgid "Indicator does not have a direct/indirect factor parent. "
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:49
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:55
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:54
 msgid "Indicators"
 msgstr "Indicadores"
 
@@ -5336,8 +5336,8 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:169
 #: Miradi/source/org/miradi/forms/objects/ObjectivePropertiesForm.java:34
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:78
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:43
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:47
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:42
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:46
 msgid "Objective"
 msgstr "Meta"
 
@@ -6469,7 +6469,7 @@ msgstr ""
 "propone cambiar el mundo."
 
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:50
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:56
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:55
 msgid "Strategies And Activities"
 msgstr "Estrategias y actividades "
 
@@ -8176,7 +8176,7 @@ msgstr ""
 msgid "Title|Nested Target Properties"
 msgstr "Propiedades del objeto anidado"
 
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:69
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:68
 msgid "Title|Objective Properties"
 msgstr "Propiedades del Meta"
 
@@ -9969,6 +9969,9 @@ msgstr "Etiquetas"
 
 msgid "FieldLabel|24.Detail|Details"
 msgstr "Detalles"
+
+msgid "FieldLabel|24.TaxonomyClassificationContainer|Taxonomies"
+msgstr ""
 
 msgid "FieldLabel|25.ThreatReductionResult|Threat Reduction Result"
 msgstr "Resultado de reducción de amenazas"

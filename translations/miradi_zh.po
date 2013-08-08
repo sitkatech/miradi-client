@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-06 15:01-0500\n"
+"POT-Creation-Date: 2013-08-08 11:31-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4113,7 +4113,7 @@ msgid "Indicator does not have a direct/indirect factor parent. "
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:49
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:55
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:54
 msgid "Indicators"
 msgstr "指示物 \t\t"
 
@@ -5209,8 +5209,8 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:169
 #: Miradi/source/org/miradi/forms/objects/ObjectivePropertiesForm.java:34
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:78
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:43
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:47
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:42
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:46
 msgid "Objective"
 msgstr "分目标 \t\t"
 
@@ -6302,7 +6302,7 @@ msgstr ""
 "目标、分目标和各种策略。 "
 
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:50
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:56
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:55
 msgid "Strategies And Activities"
 msgstr "策略和活动"
 
@@ -7970,7 +7970,7 @@ msgstr ""
 msgid "Title|Nested Target Properties"
 msgstr "嵌套对象属性 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:69
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:68
 msgid "Title|Objective Properties"
 msgstr "分目标属性 \t\t"
 
@@ -9731,6 +9731,9 @@ msgid "FieldLabel|24.SelectedTaggedObjectSetRefs|Tags"
 msgstr "标签"
 
 msgid "FieldLabel|24.Detail|Details"
+msgstr ""
+
+msgid "FieldLabel|24.TaxonomyClassificationContainer|Taxonomies"
 msgstr ""
 
 msgid "FieldLabel|25.ThreatReductionResult|Threat Reduction Result"
