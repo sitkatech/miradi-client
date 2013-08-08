@@ -22,6 +22,8 @@ package org.miradi.dialogfields;
 
 import java.text.ParseException;
 
+import javax.swing.Box;
+
 import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
@@ -65,5 +67,16 @@ public class QuestionBasedEditorComponent extends AbstractQuestionBasedComponent
 			EAM.alertUserOfNonFatalException(e);
 			return new CodeList();
 		}
+	}
+	
+	protected Box createHorizontalBoxWithIndents(int indentPerLevel, int indentCount)
+	{
+		Box box = Box.createHorizontalBox();
+		for (int index = 0; index < indentCount; ++index)
+		{
+			box.add(Box.createHorizontalStrut(indentPerLevel));
+		}
+		
+		return box;
 	}
 }

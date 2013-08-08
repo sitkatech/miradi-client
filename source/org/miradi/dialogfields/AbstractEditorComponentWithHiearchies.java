@@ -62,7 +62,7 @@ abstract public class AbstractEditorComponentWithHiearchies extends QuestionBase
 		Vector<ChoiceItem> children = parentChoiceItem.getChildren();
 		for(ChoiceItem childChoiceItem : children)
 		{
-			Box box = createHorizontalBoxWithIndents(horizontalIndent);
+			Box box = createHorizontalBoxWithIndents(getIndentPerLevel(), horizontalIndent);
 			box.add(createLeftColumnComponent(childChoiceItem));
 			mainRowsPanel.add(box);
 			addRowComponents(mainRowsPanel, childChoiceItem, horizontalIndent);
@@ -73,17 +73,6 @@ abstract public class AbstractEditorComponentWithHiearchies extends QuestionBase
 	protected int calculateColumnCount()
 	{
 		return 1;
-	}
-
-	private Box createHorizontalBoxWithIndents(int indentCount)
-	{
-		Box box = Box.createHorizontalBox();
-		for (int index = 0; index < indentCount; ++index)
-		{
-			box.add(Box.createHorizontalStrut(getIndentPerLevel()));
-		}
-		
-		return box;
 	}
 
 	protected int getIndentPerLevel()
