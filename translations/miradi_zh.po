@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-08 11:31-0500\n"
+"POT-Creation-Date: 2013-08-08 14:31-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -254,7 +254,7 @@ msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br> \t\t"
 
 #: Miradi/source/org/miradi/migrations/forward/MigrationManager.java:104
-#: Miradi/source/org/miradi/main/MainWindow.java:1426
+#: Miradi/source/org/miradi/main/MainWindow.java:1431
 msgid "(%s)"
 msgstr ""
 
@@ -485,7 +485,7 @@ msgstr "7C.创造学习环境 \t\t"
 msgid "95% C.I. (confidence interval)"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1465
+#: Miradi/source/org/miradi/main/MainWindow.java:1470
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -936,7 +936,7 @@ msgstr ""
 msgid "A project or file by this name already exists: "
 msgstr "使用该名称的项目或文件已存在: \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1422
+#: Miradi/source/org/miradi/main/MainWindow.java:1427
 msgid "A project or file by this name already exists: %s"
 msgstr ""
 
@@ -2829,7 +2829,7 @@ msgstr "创建失败： \t\t"
 msgid "Create Folder"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:728
+#: Miradi/source/org/miradi/main/MainWindow.java:733
 msgid "Create Project"
 msgstr ""
 
@@ -3339,7 +3339,7 @@ msgid "Enter As: "
 msgstr ""
 
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:118
-#: Miradi/source/org/miradi/main/MainWindow.java:1456
+#: Miradi/source/org/miradi/main/MainWindow.java:1461
 msgid "Enter New Name"
 msgstr ""
 
@@ -3416,7 +3416,7 @@ msgstr "估计活动及监控的开销 \t\t"
 msgid "Euro"
 msgstr "欧元"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:992
+#: Miradi/source/org/miradi/main/MainWindow.java:997
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
@@ -4215,7 +4215,7 @@ msgstr "绪论 \t\t"
 msgid "Invalid project name:"
 msgstr "无效的项目名称： \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1431
+#: Miradi/source/org/miradi/main/MainWindow.java:1436
 msgid "Invalid project name: %s"
 msgstr ""
 
@@ -4970,7 +4970,7 @@ msgstr ""
 msgid "Migrating..."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:678
+#: Miradi/source/org/miradi/main/MainWindow.java:683
 msgid "Migration"
 msgstr ""
 
@@ -5022,7 +5022,7 @@ msgstr ""
 msgid "Miradi does not recognize %s as a project file"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:818
+#: Miradi/source/org/miradi/main/MainWindow.java:823
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5297,7 +5297,7 @@ msgid "Open Anyway"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:201
-#: Miradi/source/org/miradi/main/MainWindow.java:730
+#: Miradi/source/org/miradi/main/MainWindow.java:735
 msgid "Open Project"
 msgstr ""
 
@@ -5607,7 +5607,7 @@ msgstr "项目 \t\t"
 msgid "Project Advisor"
 msgstr "项目顾问"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:816
+#: Miradi/source/org/miradi/main/MainWindow.java:821
 msgid "Project Corruption Detected"
 msgstr ""
 
@@ -5640,7 +5640,7 @@ msgstr ""
 msgid "Project Resource Filter Editor"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:990
+#: Miradi/source/org/miradi/main/MainWindow.java:995
 msgid "Project Resource Filter Is On"
 msgstr ""
 
@@ -5674,10 +5674,6 @@ msgid ""
 "spaces; and they cannot be longer than 32 characters. "
 msgstr ""
 "项目文件名不能包含除点、破折号和空格之外的标点符号；且不能超过32个字符。 "
-
-#: Miradi/source/org/miradi/main/MainWindow.java:677
-msgid "Project needs migration, do you want to continue?"
-msgstr ""
 
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:107
 msgid "Project was migrated to the current data format"
@@ -6248,7 +6244,7 @@ msgstr "利益相关者"
 msgid "Standard Reports"
 msgstr "标准报告 \t\t"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1024
+#: Miradi/source/org/miradi/main/MainWindow.java:1029
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -7708,7 +7704,7 @@ msgid ""
 "damaged. Please contact Miradi support for recovery options."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:807
+#: Miradi/source/org/miradi/main/MainWindow.java:812
 msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
@@ -7721,6 +7717,22 @@ msgid ""
 msgstr ""
 "本项目是用旧版Miradi创建的，因此需要迁移到当前的数据格式才能打开。首先要保存"
 "一个备份以防万一出错。要执行自动迁移吗？"
+
+#: Miradi/source/org/miradi/main/MainWindow.java:677
+msgid ""
+"This project was saved using an older version of Miradi. Before it can be "
+"opened, it needs to be migrated \n"
+"to the current data format. This is an automatic process, and a backup copy "
+"will be saved before the migrated \n"
+"version is written. After the project has been migrated, this project file "
+"will no longer be readable by \n"
+"older versions of Miradi. However, Miradi now has the option to export "
+"projects to older project formats,\n"
+"allowing you to send your projects to people who are still using an older "
+"version of Miradi.\n"
+"\n"
+"Do you wish to proceed with the migration?"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:66
 msgid "This resource has been assigned work in the Work Plan"
@@ -8126,7 +8138,7 @@ msgid ""
 "application:\n"
 msgstr "无法删除该项目，因为它正被该应用程序的另一拷贝所使用:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1399
+#: Miradi/source/org/miradi/main/MainWindow.java:1404
 msgid "Unable to launch external web browser"
 msgstr "无法运行外部网页浏览器 \t\t"
 
@@ -8145,7 +8157,7 @@ msgid ""
 "application:\n"
 msgstr "无法重命名该项目，因为它正被该应用程序的另一拷贝所使用:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1181
+#: Miradi/source/org/miradi/main/MainWindow.java:1186
 msgid "Unable to save preferences"
 msgstr "无法保存优先选项 \t\t"
 
