@@ -57,8 +57,8 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanelWithSections
 		
 		addSubPanelWithTitledBorder(new ProgressPercentSubPanel(getProject()));
 		
-		addField(createMultilineField(Goal.TAG_COMMENTS));
 		addField(createTaxonomyFields(ObjectiveSchema.getObjectType()));
+		addField(createMultilineField(Goal.TAG_COMMENTS));
 
 		updateFieldsFromProject();
 	}
