@@ -80,10 +80,15 @@ abstract public class AbstractEditorComponentWithHiearchies extends QuestionBase
 		Box box = Box.createHorizontalBox();
 		for (int index = 0; index < indentCount; ++index)
 		{
-			box.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
+			box.add(Box.createHorizontalStrut(getIndentPerLevel()));
 		}
 		
 		return box;
+	}
+
+	protected int getIndentPerLevel()
+	{
+		return INDENT_PER_LEVEL;
 	}
 	
 	abstract protected boolean isRootChoiceItemSelectable();
