@@ -62,7 +62,7 @@ abstract public class AbstractEditorComponentWithHiearchies extends QuestionBase
 		Vector<ChoiceItem> children = parentChoiceItem.getChildren();
 		for(ChoiceItem childChoiceItem : children)
 		{
-			Box box = createHorizontalBoxWithIndents(getIndentPerLevel(), horizontalIndent);
+			Box box = createHorizontalBoxWithIndents(INDENT_PER_LEVEL, horizontalIndent);
 			box.add(createLeftColumnComponent(childChoiceItem));
 			mainRowsPanel.add(box);
 			addRowComponents(mainRowsPanel, childChoiceItem, horizontalIndent);
@@ -75,11 +75,6 @@ abstract public class AbstractEditorComponentWithHiearchies extends QuestionBase
 		return 1;
 	}
 
-	protected int getIndentPerLevel()
-	{
-		return INDENT_PER_LEVEL;
-	}
-	
 	abstract protected boolean isRootChoiceItemSelectable();
 	
 	private static final int INDENT_PER_LEVEL = 5;
