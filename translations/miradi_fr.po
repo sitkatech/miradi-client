@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-06 15:01-0500\n"
+"POT-Creation-Date: 2013-08-08 11:31-0500\n"
 "PO-Revision-Date: 2013-04-02 10:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -4343,7 +4343,7 @@ msgid "Indicator does not have a direct/indirect factor parent. "
 msgstr "L'indicateur n'a pas un facteur parent direct/indirect."
 
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:49
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:55
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:54
 msgid "Indicators"
 msgstr "Indicateurs"
 
@@ -5492,8 +5492,8 @@ msgstr "Nov"
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:169
 #: Miradi/source/org/miradi/forms/objects/ObjectivePropertiesForm.java:34
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:78
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:43
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:47
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:42
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:46
 msgid "Objective"
 msgstr "Objectif"
 
@@ -6647,7 +6647,7 @@ msgstr ""
 "stratégies du projet."
 
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:50
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:56
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:55
 msgid "Strategies And Activities"
 msgstr "Stratégies et activités"
 
@@ -8402,7 +8402,7 @@ msgstr ""
 msgid "Title|Nested Target Properties"
 msgstr "Propriétés de la cible imbriquée"
 
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:69
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:68
 msgid "Title|Objective Properties"
 msgstr "Propriétés de l'objectif"
 
@@ -10209,6 +10209,9 @@ msgstr "Etiquettes"
 
 msgid "FieldLabel|24.Detail|Details"
 msgstr "Détails"
+
+msgid "FieldLabel|24.TaxonomyClassificationContainer|Taxonomies"
+msgstr ""
 
 msgid "FieldLabel|25.ThreatReductionResult|Threat Reduction Result"
 msgstr "Résultat de réduction de la menace"
