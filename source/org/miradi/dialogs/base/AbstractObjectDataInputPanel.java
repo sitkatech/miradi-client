@@ -49,7 +49,7 @@ import org.miradi.dialogfields.DropDownChoiceField;
 import org.miradi.dialogfields.EditableCodeListField;
 import org.miradi.dialogfields.ExternalProjectsDisplayField;
 import org.miradi.dialogfields.IndicatorRelevancyOverrideListField;
-import org.miradi.dialogfields.MultipleTaxonomyEditorFields;
+import org.miradi.dialogfields.TaxonomyEditorFields;
 import org.miradi.dialogfields.ObjectCheckBoxField;
 import org.miradi.dialogfields.ObjectChoiceField;
 import org.miradi.dialogfields.ObjectCodeEditorField;
@@ -674,7 +674,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createTaxonomyFields(int objectType)
 	{
-		return new MultipleTaxonomyEditorFields(getProject(), objectType);
+		return new TaxonomyEditorFields(getProject(), objectType);
 	}
 	
 	public ObjectDataInputField createReadOnlyChoiceField(String tagToUse, ChoiceQuestion question)

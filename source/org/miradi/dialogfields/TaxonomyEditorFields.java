@@ -28,9 +28,9 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
-public class MultipleTaxonomyEditorFields extends ObjectDataInputField
+public class TaxonomyEditorFields extends ObjectDataInputField
 {
-	public MultipleTaxonomyEditorFields(Project projectToUse, int objectType)
+	public TaxonomyEditorFields(Project projectToUse, int objectType)
 	{
 		super(projectToUse, ORef.createInvalidWithType(objectType), BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
 	}
