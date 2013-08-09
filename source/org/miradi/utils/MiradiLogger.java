@@ -126,16 +126,24 @@ public class MiradiLogger
 	{
 		try
 		{
-			exceptionDestination.println("Miradi Version = " + VersionConstants.getVersion());
-			exceptionDestination.println("Build = " + VersionConstants.getTimestamp());
-			exceptionDestination.println("Java Version = " + EAM.getJavaVersion());
-			exceptionDestination.println("OS Name = " + System.getProperty("os.name"));
-			exceptionDestination.println("OS Version = " + System.getProperty("os.version"));
+			exceptionDestination.print(createLogHeader());
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace(exceptionDestination);
 		}
+	}
+
+	public static String createLogHeader() throws Exception
+	{
+		StringBuffer stringBuffer = new StringBuffer();
+		stringBuffer.append("Miradi Version = " + VersionConstants.getVersion() + "\n");
+		stringBuffer.append("Build = " + VersionConstants.getTimestamp() + "\n");
+		stringBuffer.append("Java Version = " + EAM.getJavaVersion() + "\n");
+		stringBuffer.append("OS Name = " + System.getProperty("os.name") + "\n");
+		stringBuffer.append("OS Version = " + System.getProperty("os.version") + "\n");
+		
+		return stringBuffer.toString();
 	}
 
 	private void logTimeStamp()
