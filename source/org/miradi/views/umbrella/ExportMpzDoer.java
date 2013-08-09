@@ -23,6 +23,7 @@ package org.miradi.views.umbrella;
 import java.io.File;
 
 import org.miradi.main.EAM;
+import org.miradi.migrations.MigrationResult;
 import org.miradi.migrations.RawProject;
 import org.miradi.migrations.RawProjectLoader;
 import org.miradi.migrations.VersionRange;
@@ -56,7 +57,17 @@ public class ExportMpzDoer extends AbstractFileSaverDoer
 		MigrationManager migrationManager = new MigrationManager();
 		String mpfSnapShot = ProjectSaver.createSnapShot(project);
 		RawProject projectToMigrate = RawProjectLoader.loadProject(mpfSnapShot);
-		migrationManager.migrate(projectToMigrate, new VersionRange(MigrationManager.OLDEST_VERSION_TO_HANDLE));
+		MigrationResult migrationResult = migrationManager.migrate(projectToMigrate, new VersionRange(MigrationManager.OLDEST_VERSION_TO_HANDLE));
+		if (migrationResult.didLooseData())
+		{
+			EAM.notifyDialog(EAM.text("There was data loss during export!"));
+		}
+		
+		if (migrationResult.didFail())
+		{
+			EAM.errorDialog(EAM.text("Could not migrate!"));
+			return;
+		}
 		
 		final String projectFileNameToUse = project.getFilename();
 		MpfToMpzConverter.convertWithoutMigrating(projectToMigrate, projectFileNameToUse, destinationFile);
