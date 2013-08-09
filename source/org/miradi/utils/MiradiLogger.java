@@ -115,7 +115,6 @@ public class MiradiLogger
 		log.log(Level.SEVERE, "Exception", e);
 		if(exceptionDestination != null)
 		{
-			logTimeStamp();
 			logVersions();
 			e.printStackTrace(exceptionDestination);
 			exceptionDestination.flush();
@@ -137,6 +136,9 @@ public class MiradiLogger
 	public static String createLogHeader() throws Exception
 	{
 		StringBuffer stringBuffer = new StringBuffer();
+		
+		Date now = new Date();
+		stringBuffer.append("Time Stamp = " + now + "\n");
 		stringBuffer.append("Miradi Version = " + VersionConstants.getVersion() + "\n");
 		stringBuffer.append("Build = " + VersionConstants.getTimestamp() + "\n");
 		stringBuffer.append("Java Version = " + EAM.getJavaVersion() + "\n");
@@ -146,19 +148,6 @@ public class MiradiLogger
 		return stringBuffer.toString();
 	}
 
-	private void logTimeStamp()
-	{
-		try
-		{
-			Date now = new Date();
-			exceptionDestination.println("Time Stamp = " + now);
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace(exceptionDestination);
-		}
-	}
-	
 	public void logError(String text)
 	{
 		log(Level.SEVERE, text);
