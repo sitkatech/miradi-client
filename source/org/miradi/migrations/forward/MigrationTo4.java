@@ -179,8 +179,9 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 			moveFieldsFromFutureStatusToIndicator(indicator, latestFutureStatus);
 			clearIndicatorFutureStatusField(indicator);
 			deleteOrphanFutureStatuses(futureStatusRefs);
+			if (futureStatusRefs.size() > 1)
+				return MigrationResult.createDataLoss();
 			
-			//FIXME urgent - this needs to return data loss if only the latest FS's data was stored in the indicator
 			return MigrationResult.createSuccess();
 		}
 
