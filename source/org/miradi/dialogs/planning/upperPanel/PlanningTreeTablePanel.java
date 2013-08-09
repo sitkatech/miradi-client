@@ -421,6 +421,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 				if(column < table.getColumnCount())
 					table.getColumnModel().getSelectionModel().setSelectionInterval(column, column);
 				table.ensureSelectedRowVisible();
+				getMainWindow().updateActionsAndStatusBar();
 			}
 			finally 
 			{
