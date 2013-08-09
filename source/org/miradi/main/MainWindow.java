@@ -104,6 +104,7 @@ import org.miradi.utils.FileUtilities;
 import org.miradi.utils.HtmlViewPanel;
 import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.utils.MiradiBackgroundWorkerThread;
+import org.miradi.utils.MiradiLogger;
 import org.miradi.utils.MiradiResourceImageIcon;
 import org.miradi.utils.ModalRenameDialog;
 import org.miradi.utils.NullProgressMeter;
@@ -161,6 +162,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	
 	public void start(String[] args) throws Exception
 	{
+		createSessionFile();
 		Vector<String> commandLineArgumentsToUse = new Vector<String>(Arrays.asList(args));
 		setCommandLineArguments(commandLineArgumentsToUse);
 		
@@ -274,6 +276,17 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		safelySavePreferences();
 	}
 	
+	private void createSessionFile() throws Exception
+	{
+		File sessionFile = new File(EAM.getHomeDirectory(), "session.log");
+		FileUtilities.deleteIfExistsWithRetries(sessionFile);
+		StringBuffer buffer = new StringBuffer();
+		buffer.append(MiradiLogger.createLogHeader());
+		UnicodeWriter fileWriter = new UnicodeWriter(sessionFile);
+		fileWriter.write(buffer.toString());
+		fileWriter.close();
+	}
+
 	private void setCommandLineArguments(Vector<String> commandLineArgumentsToUse)
 	{
 		commandLineArguments = commandLineArgumentsToUse;
