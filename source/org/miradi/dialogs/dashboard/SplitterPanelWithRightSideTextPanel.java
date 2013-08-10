@@ -90,7 +90,6 @@ abstract public class SplitterPanelWithRightSideTextPanel extends DisposablePane
 		return new RightSideDescriptionPanel(getMainWindow(), mainDescriptionProvider, this, getRightPanelBackgroundColor());
 	}
 	
-
 	private MainWindow getMainWindow()
 	{
 		return mainWindow;
