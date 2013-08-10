@@ -20,16 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import javax.swing.event.ListSelectionListener;
 
 import org.miradi.dialogfields.editors.SplitterPanelWithStaticRightSideTextPanel;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.ModalDialogWithClose;
-import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
-import org.miradi.dialogs.base.RowSelectionListener;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 
 public class SingleCodeEditableField extends AbstractEditableCodeListField
@@ -56,28 +52,6 @@ public class SingleCodeEditableField extends AbstractEditableCodeListField
 			return new SplitterPanelWithStaticRightSideTextPanel(mainWindow, question, leftPanel);
 
 		return leftPanel;
-	}
-	
-	private class OneFieldObjectDataInputPanelWithListenerDelegator extends OneFieldObjectDataInputPanel  implements RowSelectionListener
-	{
-		public OneFieldObjectDataInputPanelWithListenerDelegator(Project projectToUse, ORef orefToUse, String tagToUse, QuestionBasedEditorComponent editorToUse)
-		{
-			super(projectToUse, orefToUse, tagToUse, new ComponentWrapperObjectDataInputField(projectToUse, getORef(), getTag(), editorToUse));
-			
-			editor = editorToUse;
-		}
-		
-		public void addRowSelectionListener(ListSelectionListener listener)
-		{
-			editor.getSafeRowSelectionHandler().addSelectionListener(listener);
-		}
-
-		public void removeRowSelectionListener(ListSelectionListener listener)
-		{
-			editor.getSafeRowSelectionHandler().removeSelectionListener(listener);
-		}
-		
-		private QuestionBasedEditorComponent editor;
 	}
 	
 	@Override
