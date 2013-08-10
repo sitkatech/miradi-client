@@ -91,7 +91,7 @@ abstract public class SplitterPanelWithRightSideTextPanel extends DisposablePane
 	}
 	
 
-	protected MainWindow getMainWindow()
+	private MainWindow getMainWindow()
 	{
 		return mainWindow;
 	}
