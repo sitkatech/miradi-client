@@ -25,7 +25,10 @@ import java.util.Vector;
 import javax.swing.Box;
 import javax.swing.JComponent;
 
+import org.miradi.dialogs.base.DataPanelSingleRowSelectionHandler;
 import org.miradi.dialogs.base.MiradiPanel;
+import org.miradi.dialogs.base.SingleRowSelectionHandler;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
@@ -35,6 +38,32 @@ abstract public class AbstractEditorComponentWithHiearchies extends QuestionBase
 	public AbstractEditorComponentWithHiearchies(ChoiceQuestion questionToUse)
 	{
 		super(questionToUse);
+		
+		rowSelectionHandler = getSafeRowSelectionHandler();
+	}
+	
+	public SingleRowSelectionHandler getSafeRowSelectionHandler()
+	{
+		if (rowSelectionHandler == null)
+			rowSelectionHandler = new DataPanelSingleRowSelectionHandler();
+		
+		return rowSelectionHandler;
+	}
+	
+	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		
+		getSafeRowSelectionHandler().becomeActive();
+	}
+
+	@Override
+	public void becomeInactive()
+	{
+		getSafeRowSelectionHandler().becomeInactive();
+		
+		super.becomeInactive();
 	}
 	
 	@Override
@@ -63,12 +92,21 @@ abstract public class AbstractEditorComponentWithHiearchies extends QuestionBase
 		for(ChoiceItem childChoiceItem : children)
 		{
 			Box box = createHorizontalBoxWithIndents(INDENT_PER_LEVEL, horizontalIndent);
-			box.add(createLeftColumnComponent(childChoiceItem));
+			JComponent leftColumnComponent = createLeftColumnComponent(childChoiceItem);
+			PanelTitleLabel rightDescriptionComponent = new PanelTitleLabel(childChoiceItem.getAdditionalText());
+			box.add(leftColumnComponent);
 			mainRowsPanel.add(box);
+			mainRowsPanel.add(rightDescriptionComponent);
 			addRowComponents(mainRowsPanel, childChoiceItem, horizontalIndent);
+			
+			Vector<JComponent> selectableComponents = new Vector<JComponent>();
+			selectableComponents.add(leftColumnComponent);
+			selectableComponents.add(rightDescriptionComponent);
+
+			getSafeRowSelectionHandler().addSelectableRow(selectableComponents, childChoiceItem.getLongDescriptionProvider());
 		}
 	}
-	
+
 	@Override
 	protected int calculateColumnCount()
 	{
@@ -76,6 +114,8 @@ abstract public class AbstractEditorComponentWithHiearchies extends QuestionBase
 	}
 
 	abstract protected boolean isRootChoiceItemSelectable();
+	
+	private SingleRowSelectionHandler rowSelectionHandler;
 	
 	private static final int INDENT_PER_LEVEL = 5;
 }

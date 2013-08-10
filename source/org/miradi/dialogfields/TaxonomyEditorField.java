@@ -24,6 +24,10 @@ import javax.swing.JComponent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import org.miradi.dialogfields.editors.SplitterPanelWithStaticRightSideTextPanel;
+import org.miradi.dialogs.base.DisposablePanel;
+import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
+import org.miradi.dialogs.base.RowSelectionListener;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.TaxonomyClassificationMap;
@@ -36,16 +40,35 @@ import org.miradi.utils.CodeList;
 
 public class TaxonomyEditorField extends ObjectDataInputField implements ListSelectionListener
 {
-	public TaxonomyEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, String taxonomyAssociationCodeToUse)
+	public TaxonomyEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, String taxonomyAssociationCodeToUse) throws Exception
 	{
 		super(projectToUse, refToUse, tagToUse);
 		
 		taxonomyAssociation = TaxonomyHelper.findTaxonomyAssociation(getProject(), taxonomyAssociationCodeToUse);
-		component = createEditorComponent(questionToUse);
-		component.addListSelectionListener(this);
+		createEditorComponent(questionToUse);
+		taxonomyLeftSideEditorComponent.addListSelectionListener(this);
+	}
+	
+	public void becomeActive()
+	{
+		splitterPanel.becomeActive();
+		taxonomyLeftSideEditorComponent.becomeActive();
+	}
+	
+	public void becomeInactive()
+	{
+		splitterPanel.becomeInactive();
+		taxonomyLeftSideEditorComponent.becomeInactive();
 	}
 
-	private AbstractEditorComponentWithHiearchies createEditorComponent(ChoiceQuestion questionToUse)
+	private void createEditorComponent(ChoiceQuestion questionToUse) throws Exception
+	{
+		taxonomyLeftSideEditorComponent = createTaxonomyEditorComponent(questionToUse);
+		OneFieldObjectDataInputPanelWithListenerDelegator leftPanel = new OneFieldObjectDataInputPanelWithListenerDelegator(getProject(), getORef(), getTag(), taxonomyLeftSideEditorComponent);
+		splitterPanel = new SplitterPanelWithStaticRightSideTextPanel(EAM.getMainWindow(), questionToUse, leftPanel);
+	}
+
+	private AbstractEditorComponentWithHiearchies createTaxonomyEditorComponent(ChoiceQuestion questionToUse)
 	{
 		if (getTaxonomyAssociation().isMultiSelectionTaxonomy())
 			return new MultiSelectionEditorComponentWithHierarchies(questionToUse);
@@ -60,7 +83,7 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 		{
 			BaseObject baseObject = BaseObject.find(getProject(), getORef());
 			TaxonomyClassificationMap taxonomyClassificationList = new TaxonomyClassificationMap(baseObject.getData(BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER));
-			CodeList selectedTaxonomyElementCodes = new CodeList(component.getText());
+			CodeList selectedTaxonomyElementCodes = new CodeList(taxonomyLeftSideEditorComponent.getText());
 			taxonomyClassificationList.putCodeList(getTaxonomyAssociation().getTaxonomyCode(), selectedTaxonomyElementCodes);
 
 			return taxonomyClassificationList.toJsonString();
@@ -78,7 +101,7 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 		try
 		{
 			CodeList taxonomyElementCodes = TaxonomyClassificationMap.getTaxonomyElementCodes(getProject(), newValue, getTaxonomyAssociation().getTaxonomyAssociationCode());
-			component.setText(taxonomyElementCodes.toString());
+			taxonomyLeftSideEditorComponent.setText(taxonomyElementCodes.toString());
 		}
 		catch (Exception e)
 		{
@@ -89,7 +112,7 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 	@Override
 	public JComponent getComponent()
 	{
-		return component;
+		return splitterPanel;
 	}
 	
 	@Override
@@ -108,6 +131,29 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 		return taxonomyAssociation;
 	}
 	
+	private class OneFieldObjectDataInputPanelWithListenerDelegator extends OneFieldObjectDataInputPanel  implements RowSelectionListener
+	{
+		public OneFieldObjectDataInputPanelWithListenerDelegator(Project projectToUse, ORef orefToUse, String tagToUse, AbstractEditorComponentWithHiearchies editorToUse)
+		{
+			super(projectToUse, orefToUse, tagToUse, new ComponentWrapperObjectDataInputField(projectToUse, getORef(), getTag(), editorToUse));
+			
+			editor = editorToUse;
+		}
+		
+		public void addRowSelectionListener(ListSelectionListener listener)
+		{
+			editor.getSafeRowSelectionHandler().addSelectionListener(listener);
+		}
+
+		public void removeRowSelectionListener(ListSelectionListener listener)
+		{
+			editor.getSafeRowSelectionHandler().removeSelectionListener(listener);
+		}
+		
+		private AbstractEditorComponentWithHiearchies editor;
+	}
+	
 	private TaxonomyAssociation taxonomyAssociation;
-	private AbstractEditorComponentWithHiearchies component;
+	private DisposablePanel splitterPanel;
+	private AbstractEditorComponentWithHiearchies taxonomyLeftSideEditorComponent;
 }
