@@ -32,7 +32,7 @@ public class QuestionBasedEditorComponent extends AbstractQuestionBasedComponent
 {
 	public QuestionBasedEditorComponent(ChoiceQuestion questionToUse)
 	{
-		super(questionToUse, SINGLE_COLUMN);
+		this(questionToUse, SINGLE_COLUMN);
 	}
 
 	public QuestionBasedEditorComponent(ChoiceQuestion questionToUse,	int columnCount)
