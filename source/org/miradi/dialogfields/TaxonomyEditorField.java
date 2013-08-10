@@ -133,7 +133,7 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 	
 	private class OneFieldObjectDataInputPanelWithListenerDelegator extends OneFieldObjectDataInputPanel  implements RowSelectionListener
 	{
-		public OneFieldObjectDataInputPanelWithListenerDelegator(Project projectToUse, ORef orefToUse, String tagToUse, AbstractEditorComponentWithHiearchies editorToUse)
+		public OneFieldObjectDataInputPanelWithListenerDelegator(Project projectToUse, ORef orefToUse, String tagToUse, QuestionBasedEditorComponent editorToUse)
 		{
 			super(projectToUse, orefToUse, tagToUse, new ComponentWrapperObjectDataInputField(projectToUse, getORef(), getTag(), editorToUse));
 			
@@ -150,7 +150,7 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 			editor.getSafeRowSelectionHandler().removeSelectionListener(listener);
 		}
 		
-		private AbstractEditorComponentWithHiearchies editor;
+		private QuestionBasedEditorComponent editor;
 	}
 	
 	private TaxonomyAssociation taxonomyAssociation;

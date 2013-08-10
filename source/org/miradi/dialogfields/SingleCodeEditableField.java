@@ -60,7 +60,7 @@ public class SingleCodeEditableField extends AbstractEditableCodeListField
 	
 	private class OneFieldObjectDataInputPanelWithListenerDelegator extends OneFieldObjectDataInputPanel  implements RowSelectionListener
 	{
-		public OneFieldObjectDataInputPanelWithListenerDelegator(Project projectToUse, ORef orefToUse, String tagToUse, RadioButtonEditorComponentWithHierarchicalRows editorToUse)
+		public OneFieldObjectDataInputPanelWithListenerDelegator(Project projectToUse, ORef orefToUse, String tagToUse, QuestionBasedEditorComponent editorToUse)
 		{
 			super(projectToUse, orefToUse, tagToUse, new ComponentWrapperObjectDataInputField(projectToUse, getORef(), getTag(), editorToUse));
 			
@@ -77,7 +77,7 @@ public class SingleCodeEditableField extends AbstractEditableCodeListField
 			editor.getSafeRowSelectionHandler().removeSelectionListener(listener);
 		}
 		
-		private RadioButtonEditorComponentWithHierarchicalRows editor;
+		private QuestionBasedEditorComponent editor;
 	}
 	
 	@Override
