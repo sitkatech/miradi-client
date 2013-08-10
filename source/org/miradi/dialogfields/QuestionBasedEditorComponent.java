@@ -24,6 +24,8 @@ import java.text.ParseException;
 
 import javax.swing.Box;
 
+import org.miradi.dialogs.base.DataPanelSingleRowSelectionHandler;
+import org.miradi.dialogs.base.SingleRowSelectionHandler;
 import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
@@ -38,6 +40,32 @@ public class QuestionBasedEditorComponent extends AbstractQuestionBasedComponent
 	public QuestionBasedEditorComponent(ChoiceQuestion questionToUse,	int columnCount)
 	{
 		super(questionToUse, columnCount);
+		
+		rowSelectionHandler = getSafeRowSelectionHandler();
+	}
+	
+	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		
+		getSafeRowSelectionHandler().becomeActive();
+	}
+
+	@Override
+	public void becomeInactive()
+	{
+		getSafeRowSelectionHandler().becomeInactive();
+		
+		super.becomeInactive();
+	}
+	
+	public SingleRowSelectionHandler getSafeRowSelectionHandler()
+	{
+		if (rowSelectionHandler == null)
+			rowSelectionHandler = new DataPanelSingleRowSelectionHandler();
+		
+		return rowSelectionHandler;
 	}
 	
 	@Override
@@ -79,4 +107,6 @@ public class QuestionBasedEditorComponent extends AbstractQuestionBasedComponent
 		
 		return box;
 	}
+	
+	private SingleRowSelectionHandler rowSelectionHandler;
 }

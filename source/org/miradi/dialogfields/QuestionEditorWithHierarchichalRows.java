@@ -26,9 +26,7 @@ import java.util.Vector;
 import javax.swing.Box;
 import javax.swing.JComponent;
 
-import org.miradi.dialogs.base.DataPanelSingleRowSelectionHandler;
 import org.miradi.dialogs.base.MiradiPanel;
-import org.miradi.dialogs.base.SingleRowSelectionHandler;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
@@ -44,34 +42,9 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		super(questionToUse, SINGLE_COLUMN);
 		
 		mainWindow = mainWindowToUse;
-		rowSelectionHandler = getSafeRowSelectionHandler();
 		setBackground(AppPreferences.getDataPanelBackgroundColor());
 	}
 	
-	@Override
-	public void becomeActive()
-	{
-		super.becomeActive();
-		
-		getSafeRowSelectionHandler().becomeActive();
-	}
-
-	@Override
-	public void becomeInactive()
-	{
-		getSafeRowSelectionHandler().becomeInactive();
-		
-		super.becomeInactive();
-	}
-	
-	public SingleRowSelectionHandler getSafeRowSelectionHandler()
-	{
-		if (rowSelectionHandler == null)
-			rowSelectionHandler = new DataPanelSingleRowSelectionHandler();
-		
-		return rowSelectionHandler;
-	}
-
 	@Override
 	protected void addComponentToRowPanel(MiradiPanel mainRowsPanel, JComponent leftColumnComponent, ChoiceItem choiceItem)
 	{
@@ -194,7 +167,6 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 	}
 	
 	private MainWindow mainWindow;
-	private SingleRowSelectionHandler rowSelectionHandler;
 	
 	private static final int INDENT_PER_LEVEL = 25;
 }
