@@ -26,8 +26,6 @@ import javax.swing.event.ListSelectionListener;
 
 import org.miradi.dialogfields.editors.SplitterPanelWithStaticRightSideTextPanel;
 import org.miradi.dialogs.base.DisposablePanel;
-import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
-import org.miradi.dialogs.base.RowSelectionListener;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.TaxonomyClassificationMap;
@@ -129,28 +127,6 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 	private TaxonomyAssociation getTaxonomyAssociation()
 	{
 		return taxonomyAssociation;
-	}
-	
-	private class OneFieldObjectDataInputPanelWithListenerDelegator extends OneFieldObjectDataInputPanel  implements RowSelectionListener
-	{
-		public OneFieldObjectDataInputPanelWithListenerDelegator(Project projectToUse, ORef orefToUse, String tagToUse, QuestionBasedEditorComponent editorToUse)
-		{
-			super(projectToUse, orefToUse, tagToUse, new ComponentWrapperObjectDataInputField(projectToUse, getORef(), getTag(), editorToUse));
-			
-			editor = editorToUse;
-		}
-		
-		public void addRowSelectionListener(ListSelectionListener listener)
-		{
-			editor.getSafeRowSelectionHandler().addSelectionListener(listener);
-		}
-
-		public void removeRowSelectionListener(ListSelectionListener listener)
-		{
-			editor.getSafeRowSelectionHandler().removeSelectionListener(listener);
-		}
-		
-		private QuestionBasedEditorComponent editor;
 	}
 	
 	private TaxonomyAssociation taxonomyAssociation;
