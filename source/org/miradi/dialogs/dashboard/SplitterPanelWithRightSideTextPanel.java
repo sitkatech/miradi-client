@@ -52,7 +52,6 @@ abstract public class SplitterPanelWithRightSideTextPanel extends DisposablePane
 		return splitPane;
 	}
 
-	protected abstract String getSplitterIdentifier();
 
 	protected void setupCommunicationBetweenLeftAndRightPanels(RightSideDescriptionPanel rightPanel)
 	{
@@ -91,12 +90,15 @@ abstract public class SplitterPanelWithRightSideTextPanel extends DisposablePane
 		return new RightSideDescriptionPanel(getMainWindow(), mainDescriptionProvider, this, getRightPanelBackgroundColor());
 	}
 	
-	abstract protected Color getRightPanelBackgroundColor();
 
 	protected MainWindow getMainWindow()
 	{
 		return mainWindow;
 	}
+
+	abstract protected String getSplitterIdentifier();
+	
+	abstract protected Color getRightPanelBackgroundColor();
 	
 	abstract protected AbstractLongDescriptionProvider getDefaultDescriptionProvider() throws Exception;
 	
