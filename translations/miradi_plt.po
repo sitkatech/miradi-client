@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-09 14:46-0500\n"
+"POT-Creation-Date: 2013-08-10 16:01-0500\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3258,7 +3258,7 @@ msgstr ""
 msgid "Edit.."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/TaxonomyEditorPanel.java:43
+#: Miradi/source/org/miradi/dialogfields/TaxonomyEditorPanel.java:60
 #: Miradi/source/org/miradi/dialogs/base/ObjectRefListEditorPanel.java:51
 #: Miradi/source/org/miradi/dialogs/base/CodeListEditorPanel.java:46
 msgid "Editor"
