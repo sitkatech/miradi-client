@@ -27,7 +27,7 @@ import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.base.ReadonlyPanelWithPopupEditor;
 import org.miradi.dialogs.base.ReadonlyPanelWithPopupEditorWithoutMainScrollPane;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.layout.TwoColumnGridLayout;
+import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.objecthelpers.BaseObjectByNameSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.TaxonomyHelper;
@@ -37,12 +37,13 @@ import org.miradi.objects.MiradiShareTaxonomy;
 import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.project.Project;
 import org.miradi.questions.MiradiShareTaxonomyQuestion;
+import org.miradi.utils.FillerLabel;
 
 public class TaxonomyFieldsPanel extends MiradiPanel 
 {
 	public TaxonomyFieldsPanel(Project projectToUse)
 	{
-		super(new TwoColumnGridLayout());
+		super(new OneColumnGridLayout());
 		
 		project = projectToUse;
 		clearFieldsToLabelMap();
@@ -84,6 +85,7 @@ public class TaxonomyFieldsPanel extends MiradiPanel
 			
 			add(new PanelTitleLabel(taxonomyAssociation.getLabel()));
 			add(readonlyPanelPopupEditor);
+			add(new FillerLabel());
 		}
 	}		
 	
