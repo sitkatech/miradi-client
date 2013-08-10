@@ -28,13 +28,30 @@ import org.miradi.questions.ChoiceQuestion;
 
 public class TaxonomyEditorPanel extends ObjectDataInputPanel
 {
-	public TaxonomyEditorPanel(Project projectToUse, ORef orefToUse, String tagToUse, ChoiceQuestion question, String taxonomyAssociationCodeToUse)
+	public TaxonomyEditorPanel(Project projectToUse, ORef orefToUse, String tagToUse, ChoiceQuestion question, String taxonomyAssociationCodeToUse) throws Exception
 	{
 		super(projectToUse, orefToUse);
 		
-		addFieldWithoutLabel(createTaxonomyEditorField(orefToUse, tagToUse, question, taxonomyAssociationCodeToUse));
+		taxonomyEditorField = createTaxonomyEditorField(orefToUse, tagToUse, question, taxonomyAssociationCodeToUse);
+		addFieldWithoutLabel(taxonomyEditorField);
 		
 		updateFieldsFromProject();
+	}
+	
+	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+
+		taxonomyEditorField.becomeActive();
+	}
+	
+	@Override
+	public void becomeInactive()
+	{
+		super.becomeInactive();
+		
+		taxonomyEditorField.becomeInactive();
 	}
 
 	@Override
@@ -42,4 +59,6 @@ public class TaxonomyEditorPanel extends ObjectDataInputPanel
 	{
 		return EAM.text("Editor");
 	}
+	
+	private TaxonomyEditorField taxonomyEditorField;
 }
