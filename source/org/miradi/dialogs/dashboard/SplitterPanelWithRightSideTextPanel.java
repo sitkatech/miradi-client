@@ -53,7 +53,7 @@ abstract public class SplitterPanelWithRightSideTextPanel extends DisposablePane
 	}
 
 
-	protected void setupCommunicationBetweenLeftAndRightPanels(RightSideDescriptionPanel rightPanel)
+	private void setupCommunicationBetweenLeftAndRightPanels(RightSideDescriptionPanel rightPanel)
 	{
 		((RowSelectionListener) leftPanel).addRowSelectionListener(rightPanel);	
 	}
