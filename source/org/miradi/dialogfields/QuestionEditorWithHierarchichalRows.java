@@ -25,7 +25,6 @@ import java.util.Vector;
 
 import javax.swing.Box;
 import javax.swing.JComponent;
-import javax.swing.event.ListSelectionListener;
 
 import org.miradi.dialogs.base.DataPanelSingleRowSelectionHandler;
 import org.miradi.dialogs.base.MiradiPanel;
@@ -73,16 +72,6 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		return rowSelectionHandler;
 	}
 
-	public void addSelectionListener(ListSelectionListener rightSideDescriptionPanel)
-	{
-		getSafeRowSelectionHandler().addSelectionListener(rightSideDescriptionPanel);
-	}
-	
-	public void removeSelectionListener(ListSelectionListener rightSideDescriptionPanel)
-	{
-		getSafeRowSelectionHandler().removeSelectionListener(rightSideDescriptionPanel);
-	}
-		
 	@Override
 	protected void addComponentToRowPanel(MiradiPanel mainRowsPanel, JComponent leftColumnComponent, ChoiceItem choiceItem)
 	{
