@@ -357,7 +357,7 @@ return true;
                       </void>
                       <void property="windowsIconFile">
                         <object class="com.install4j.api.beans.ExternalFile">
-                          <string>./installer/BuildFiles/xmpz2.ico</string>
+                          <string>./installer/BuildFiles/miradi.ico</string>
                         </object>
                       </void>
                     </object>
@@ -380,7 +380,7 @@ return true;
                       </void>
                       <void property="windowsIconFile">
                         <object class="com.install4j.api.beans.ExternalFile">
-                          <string>./installer/BuildFiles/miradi.ico</string>
+                          <string>./installer/BuildFiles/xmpz2.ico</string>
                         </object>
                       </void>
                     </object>
