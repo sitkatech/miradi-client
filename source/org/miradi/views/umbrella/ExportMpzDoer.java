@@ -60,7 +60,16 @@ public class ExportMpzDoer extends AbstractFileSaverDoer
 		MigrationResult migrationResult = migrationManager.migrate(projectToMigrate, new VersionRange(MigrationManager.OLDEST_VERSION_TO_HANDLE));
 		if (migrationResult.didLooseData())
 		{
-			EAM.notifyDialog(EAM.text("There was data loss during export!"));
+			final String message = "While migrating this project back to an older data format, some data was lost. \n" +
+								   "This would typically be because the project had data in fields that did not \n" +
+								   "exist in earlier versions of Miradi. You can continue, but that data will \n" +
+								   "not be included in the exported project.\n\n" +
+								   "Continue with export?";
+			
+			final int userChoice = EAM.confirmDialog(EAM.text("Confirm"), message, new String[]{EAM.text("Export"), EAM.text("Cancel"), });
+			if (userChoice == 0)
+				return;
+			
 		}
 		
 		if (migrationResult.didFail())
