@@ -24,8 +24,6 @@ import javax.swing.JComponent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import org.miradi.dialogfields.editors.SplitterPanelWithStaticRightSideTextPanel;
-import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.TaxonomyClassificationMap;
@@ -49,23 +47,19 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 	
 	public void becomeActive()
 	{
-		splitterPanel.becomeActive();
 		taxonomyLeftSideEditorComponent.becomeActive();
 	}
 	
 	public void becomeInactive()
 	{
-		splitterPanel.becomeInactive();
 		taxonomyLeftSideEditorComponent.becomeInactive();
 	}
 
 	private void createEditorComponent(ChoiceQuestion questionToUse) throws Exception
 	{
 		taxonomyLeftSideEditorComponent = createTaxonomyEditorComponent(questionToUse);
-		OneFieldObjectDataInputPanelWithListenerDelegator leftPanel = new OneFieldObjectDataInputPanelWithListenerDelegator(getProject(), getORef(), getTag(), taxonomyLeftSideEditorComponent);
-		splitterPanel = new SplitterPanelWithStaticRightSideTextPanel(EAM.getMainWindow(), questionToUse, leftPanel);
 	}
-
+	
 	private AbstractEditorComponentWithHiearchies createTaxonomyEditorComponent(ChoiceQuestion questionToUse)
 	{
 		if (getTaxonomyAssociation().isMultiSelectionTaxonomy())
@@ -110,7 +104,7 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 	@Override
 	public JComponent getComponent()
 	{
-		return splitterPanel;
+		return taxonomyLeftSideEditorComponent;
 	}
 	
 	@Override
@@ -130,6 +124,5 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 	}
 	
 	private TaxonomyAssociation taxonomyAssociation;
-	private DisposablePanel splitterPanel;
 	private AbstractEditorComponentWithHiearchies taxonomyLeftSideEditorComponent;
 }
