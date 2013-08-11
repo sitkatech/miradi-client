@@ -35,6 +35,7 @@ import org.miradi.utils.MiradiFileSaveChooser;
 import org.miradi.utils.MpfFileChooser;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.views.umbrella.AbstractFileSaverDoer;
+import org.miradi.views.umbrella.ExportMpzDoer;
 
 public class ExportMpf40VersionDoer extends AbstractFileSaverDoer
 {
@@ -53,7 +54,8 @@ public class ExportMpf40VersionDoer extends AbstractFileSaverDoer
 		MigrationResult migrationResult = migrationManager.migrate(rawProjectToMigrate, new VersionRange(MigrationManager.OLDEST_VERSION_TO_HANDLE));
 		if (migrationResult.didLooseData())
 		{
-			EAM.notifyDialog(EAM.text("There was data loss during export!"));
+			if (!ExportMpzDoer.userConfirmLossData())
+				return false;
 		}
 		
 		if (migrationResult.didFail())
