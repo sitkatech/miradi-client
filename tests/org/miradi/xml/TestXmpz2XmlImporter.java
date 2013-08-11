@@ -76,14 +76,6 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 		super(name);
 	}
 	
-	public void testNestedBullets() throws Exception
-	{
-		Strategy strategy = getProject().createStrategy();
-		final String EXPECTED_VALUE = "<ol><li>one</li><li>two</li><ol><li>Nested Item 1</li><li>Nested Item 2</li></ol></ol>";
-		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_TEXT, EXPECTED_VALUE);
-		validateUsingStringWriter();
-	}
-	
 	public void testQuotesWithHtmlTags() throws Exception
 	{
 		Strategy strategy = getProject().createStrategy();
