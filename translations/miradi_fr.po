@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-10 16:01-0500\n"
+"POT-Creation-Date: 2013-08-10 21:31-0500\n"
 "PO-Revision-Date: 2013-04-02 10:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -2497,7 +2497,7 @@ msgid "Bundle Rules"
 msgstr "Règles groupées"
 
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:91
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:88
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:97
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
 #: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:49
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:234
@@ -2541,7 +2541,7 @@ msgstr "Ne pas Importer"
 msgid "Button|Exit"
 msgstr "Quitter"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:87
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:96
 msgid "Button|Export"
 msgstr ""
 
@@ -2669,6 +2669,7 @@ msgstr "Impossible de lier un groupe à un élément qu'il contient"
 msgid "Can't link an item to itself"
 msgstr "Impossible de lier un élément à lui-même"
 
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:69
 #: Miradi/source/org/miradi/utils/ConstantButtonNames.java:28
 #: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:73
 #: Miradi/source/org/miradi/dialogs/base/AbstractSelectionDialog.java:90
@@ -2912,6 +2913,10 @@ msgstr "Conduire des évaluations et/ou des audits"
 msgid "Configure Work Plan Analysis"
 msgstr "Configurer une Analyse du plan de travail"
 
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:69
+msgid "Confirm"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:59
 msgid "Confirmation"
 msgstr ""
@@ -2983,7 +2988,7 @@ msgstr ""
 "Pour chaque élément suivant, veuillez supprimer le lien et le créer à "
 "nouveau :<br>"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:68
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:77
 #: Miradi/source/org/miradi/views/umbrella/doers/ExportMpf40VersionDoer.java:61
 msgid "Could not migrate!"
 msgstr ""
@@ -3631,6 +3636,7 @@ msgstr "Développer la colonne sélectionnée"
 msgid "Expert Knowledge"
 msgstr "Connaissances d'expert"
 
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:69
 #: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:64
 msgid "Export"
 msgstr "Exporter"
@@ -3639,7 +3645,7 @@ msgstr "Exporter"
 msgid "Export 4.0 Miradi"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:79
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:88
 msgid "Export MPZ"
 msgstr ""
 
@@ -8075,7 +8081,6 @@ msgstr ""
 msgid "Theory of Change<br/>- Strategy Selection"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:63
 #: Miradi/source/org/miradi/views/umbrella/doers/ExportMpf40VersionDoer.java:56
 msgid "There was data loss during export!"
 msgstr ""
@@ -8396,7 +8401,7 @@ msgstr "Propriétés du classement de l'éditeur de stratégie Legacy TNC"
 msgid "Title|Link Create Dialog"
 msgstr "Lien créer une boîte de dialogue"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:85
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:94
 msgid "Title|MPZ Export Warning"
 msgstr ""
 

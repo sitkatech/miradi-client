@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-10 16:01-0500\n"
+"POT-Creation-Date: 2013-08-10 21:31-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -2364,7 +2364,7 @@ msgid "Bundle Rules"
 msgstr "Aturan Bundel"
 
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:91
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:88
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:97
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
 #: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:49
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:234
@@ -2408,7 +2408,7 @@ msgstr ""
 msgid "Button|Exit"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:87
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:96
 msgid "Button|Export"
 msgstr ""
 
@@ -2536,6 +2536,7 @@ msgstr "Tidak bisa menautkan grup ke butir yang dikandungnya "
 msgid "Can't link an item to itself"
 msgstr "Tidak bisa menautkan butir dengan butir itu sendiri "
 
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:69
 #: Miradi/source/org/miradi/utils/ConstantButtonNames.java:28
 #: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:73
 #: Miradi/source/org/miradi/dialogs/base/AbstractSelectionDialog.java:90
@@ -2774,6 +2775,10 @@ msgstr ""
 msgid "Configure Work Plan Analysis"
 msgstr ""
 
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:69
+msgid "Confirm"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:59
 msgid "Confirmation"
 msgstr ""
@@ -2844,7 +2849,7 @@ msgstr ""
 "Tautan rusak ditemukan pada %DiagramType: '%DiagramName'.<br>Untuk masing-"
 "masing dari berikut ini, hapus tautan dan buat lagi: "
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:68
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:77
 #: Miradi/source/org/miradi/views/umbrella/doers/ExportMpf40VersionDoer.java:61
 msgid "Could not migrate!"
 msgstr ""
@@ -3482,6 +3487,7 @@ msgstr "Perluas Kolom yang Dipilih "
 msgid "Expert Knowledge"
 msgstr "Pengetahuan Pakar"
 
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:69
 #: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:64
 msgid "Export"
 msgstr "Ekspor "
@@ -3490,7 +3496,7 @@ msgstr "Ekspor "
 msgid "Export 4.0 Miradi"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:79
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:88
 msgid "Export MPZ"
 msgstr ""
 
@@ -7817,7 +7823,6 @@ msgstr ""
 msgid "Theory of Change<br/>- Strategy Selection"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:63
 #: Miradi/source/org/miradi/views/umbrella/doers/ExportMpf40VersionDoer.java:56
 msgid "There was data loss during export!"
 msgstr ""
@@ -8134,7 +8139,7 @@ msgstr "Sifat-sifat Peringkat Editor Strategi TNC versi sebelumnya "
 msgid "Title|Link Create Dialog"
 msgstr "Dialog Membuat Tautan "
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:85
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:94
 msgid "Title|MPZ Export Warning"
 msgstr ""
 

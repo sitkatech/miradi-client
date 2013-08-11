@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-10 16:01-0500\n"
+"POT-Creation-Date: 2013-08-10 21:31-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2330,7 +2330,7 @@ msgid "Bundle Rules"
 msgstr "规则集"
 
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:91
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:88
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:97
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
 #: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:49
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:234
@@ -2374,7 +2374,7 @@ msgstr ""
 msgid "Button|Exit"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:87
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:96
 msgid "Button|Export"
 msgstr ""
 
@@ -2502,6 +2502,7 @@ msgstr "不能将组链接到其所包含的条目 \t\t"
 msgid "Can't link an item to itself"
 msgstr "不能将条目链接到其本身 \t\t"
 
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:69
 #: Miradi/source/org/miradi/utils/ConstantButtonNames.java:28
 #: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:73
 #: Miradi/source/org/miradi/dialogs/base/AbstractSelectionDialog.java:90
@@ -2738,6 +2739,10 @@ msgstr ""
 msgid "Configure Work Plan Analysis"
 msgstr ""
 
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:69
+msgid "Confirm"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:59
 msgid "Confirmation"
 msgstr ""
@@ -2804,7 +2809,7 @@ msgstr ""
 "在%DiagramType上发现损坏的链接‘%DiagramName'。<br>对于以下各项，请删除链接并"
 "重新创建：<br>\t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:68
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:77
 #: Miradi/source/org/miradi/views/umbrella/doers/ExportMpf40VersionDoer.java:61
 msgid "Could not migrate!"
 msgstr ""
@@ -3431,6 +3436,7 @@ msgstr ""
 msgid "Expert Knowledge"
 msgstr "专家知识"
 
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:69
 #: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:64
 msgid "Export"
 msgstr "导出 "
@@ -3439,7 +3445,7 @@ msgstr "导出 "
 msgid "Export 4.0 Miradi"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:79
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:88
 msgid "Export MPZ"
 msgstr ""
 
@@ -7658,7 +7664,6 @@ msgstr ""
 msgid "Theory of Change<br/>- Strategy Selection"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:63
 #: Miradi/source/org/miradi/views/umbrella/doers/ExportMpf40VersionDoer.java:56
 msgid "There was data loss during export!"
 msgstr ""
@@ -7964,7 +7969,7 @@ msgstr "传承TNC（大自然保护协会）策略编辑器排行属性 \t\t"
 msgid "Title|Link Create Dialog"
 msgstr "链接创建对话框 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:85
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:94
 msgid "Title|MPZ Export Warning"
 msgstr ""
 
