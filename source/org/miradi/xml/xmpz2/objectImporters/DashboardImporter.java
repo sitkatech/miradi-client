@@ -68,7 +68,7 @@ public class DashboardImporter extends AbstractXmpz2ObjectImporter
 			if (commentsNode != null)
 			{
 				String userComments = commentsNode.getTextContent();
-				userCommentsMap.putUserString(thirdLevelCode, userComments);
+				userCommentsMap.putUserString(thirdLevelCode, getImporter().escapeDueToParserUnescaping(userComments));
 			}
 		}
 		

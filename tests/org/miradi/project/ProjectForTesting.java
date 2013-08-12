@@ -1892,13 +1892,18 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	private void populateDashboard() throws Exception
 	{
+		populateDashboard("Some random user comment");
+	}
+
+	public void populateDashboard(final String sampleComments) throws Exception
+	{
 		ORef dashboardRef = getSingletonObjectRef(DashboardSchema.getObjectType());
 		CodeToChoiceMap progressChoiceMap = new CodeToChoiceMap();
 		progressChoiceMap.putChoiceCode(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE);
 		fillObjectUsingCommand(dashboardRef, Dashboard.TAG_PROGRESS_CHOICE_MAP, progressChoiceMap.toJsonString());
 		
 		CodeToUserStringMap commentsMap = new CodeToUserStringMap();
-		commentsMap.putUserString(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, "Some random user comment");
+		commentsMap.putUserString(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, sampleComments);
 		fillObjectUsingCommand(dashboardRef, Dashboard.TAG_COMMENTS_MAP, commentsMap.toJsonString());
 
 		CodeToCodeListMap flagsMap = new CodeToCodeListMap();
