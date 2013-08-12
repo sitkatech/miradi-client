@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-11 17:31-0500\n"
+"POT-Creation-Date: 2013-08-12 09:22-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -9977,6 +9977,9 @@ msgstr "Rincian "
 
 msgid "FieldLabel|25.Comments|Comment"
 msgstr "Komentar "
+
+msgid "FieldLabel|25.TaxonomyClassificationContainer|Taxonomies"
+msgstr ""
 
 msgid "FieldLabel|26.Label|Text"
 msgstr "Teks"
