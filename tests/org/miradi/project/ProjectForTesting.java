@@ -1859,7 +1859,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return userText;
 	}
 
-	private String getSingleLineSampleData()
+	public String getSingleLineSampleData()
 	{
 		return "Sample text with encoded values: &amp; &lt; &gt;";
 	}

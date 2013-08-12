@@ -232,7 +232,7 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	
 	public void testProjectWithSimpleThreatRatingData() throws Exception
 	{
-		getProject().populateSimpleThreatRatingCommentsData(getProject().getSampleUserText());
+		getProject().populateSimpleThreatRatingCommentsData(getProject().getSingleLineSampleData());
 		getProject().populateSimpleThreatRatingValues();
 		validateUsingStringWriter();
 	}
