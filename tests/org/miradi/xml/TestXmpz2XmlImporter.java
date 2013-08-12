@@ -76,6 +76,12 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 		super(name);
 	}
 	
+	public void testDashboardCommentsField() throws Exception
+	{
+		getProject().populateDashboard(getProject().getSingleLineSampleData());
+		validateUsingStringWriter();
+	}
+	
 	public void testQuotesWithHtmlTags() throws Exception
 	{
 		Strategy strategy = getProject().createStrategy();
