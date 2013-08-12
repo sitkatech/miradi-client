@@ -1806,7 +1806,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		}
 		if (field.isUserTextWithHtmlFormatting())
 		{
-			return getSampleUserText(field);
+			return getSampleUserText();
 		}
 		if (field.isSingleLineUserText())
 		{
@@ -1843,7 +1843,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return getSampleData(objectData);
 	}
 	
-	public String getSampleUserText(ObjectData field)
+	public String getSampleUserText()
 	{
 		String userText = getSingleLineSampleData();
 		userText = getSingleLineFormattedHtmlTextSample(userText);
