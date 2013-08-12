@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-11 17:31-0500\n"
+"POT-Creation-Date: 2013-08-12 09:22-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -10000,6 +10000,9 @@ msgstr "FieldLabel|25.Text|Деталі"
 
 msgid "FieldLabel|25.Comments|Comment"
 msgstr "FieldLabel|25.Comments|Коментарі"
+
+msgid "FieldLabel|25.TaxonomyClassificationContainer|Taxonomies"
+msgstr ""
 
 msgid "FieldLabel|26.Label|Text"
 msgstr "FieldLabel|26.Label|Текст"
