@@ -4,7 +4,7 @@ Copyright 2005-2013, Foundations of Success, Bethesda, Maryland
      (on behalf of the Conservation Measures Partnership, "CMP") and
      Beneficent Technology, Inc. ("Benetech"), Palo Alto, California.
 
-VERSION 4.0.0
+VERSION pre-4.1.0 BETA
 
 License and Copying
 
@@ -123,9 +123,9 @@ Mac OS X:
 
 GNU/Linux:
 
-- Make sure Sun's official Java 1.5 (aka Java 5) or 1.6 (aka Java 6) is 
-  installed (Miradi will not work with Java 1.4, and has not been tested 
-  with any non-Sun Java alternatives such as kaffe or gij)
+- Make sure Sun's official Java 1.5 (aka Java 5) or later is installed. 
+  Miradi will not work with Java 1.4, and has not been tested extensively 
+  with OpenJDK or any other non-Sun Java alternatives.
 
 - Obtain Miradi-Linux.zip from http://miradi.org and unzip the contents 
   into a directory, perhaps /usr/local/lib or ~/Miradi-2.0
@@ -143,7 +143,37 @@ GNU/Linux:
 ---------------------
 Changes
 
-Miradi 4.0.0 is a major release, and we recommend that all users 
+Miradi pre-4.1.0 BETA is a testing release, and we recommend that it is 
+only used by people who are testing Miradi Share. Certain features (such 
+as exporting CPMZ files) have been disabled for this beta version, and 
+will be restored later.
+
+Projects from earlier versions of Miradi can be opened, and will 
+automatically be migrated to the latest data format. These projects 
+cannot be directly opened by earlier versions of Miradi, but pre-4.1.0 
+includes the ability to export projects in Miradi 4.0 format, or 
+in the MPZ format used by Miradi 3.3. In some cases, data may be 
+lost when exporting to these older formats, but a warning dialog will 
+indicate when that is the case.
+
+Notable changes in 4.1.0 include:
+
+Appwide:
+- New Miradi Share tab in Summary View
+- Support for Miradi Share taxonomies for several object types
+- Indicators can now have multiple Desired Future Statuses
+- Improvements to logging and debug output
+
+Export/Import:
+- Can now export projects to Miradi 4.0 format
+- Importing now allows overwriting an existing project by that name
+- Importing XMPZ2 files is now much faster 
+- XMPZ2 schema changes to accommodate Miradi Share data
+- Now have an icon for XMPZ2 files
+
+
+
+Miradi 4.0.0 was a major release, and we recommend that all users 
 upgrade to it. 
 
 Projects from Miradi 3.x can be read by Miradi 4.x, and will be 
