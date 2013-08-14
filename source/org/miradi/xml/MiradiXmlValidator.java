@@ -31,8 +31,8 @@ import org.xml.sax.SAXParseException;
 
 import com.thaiopensource.util.PropertyMapBuilder;
 import com.thaiopensource.validate.SchemaReader;
+import com.thaiopensource.validate.prop.rng.RngProperty;
 import com.thaiopensource.validate.rng.CompactSchemaReader;
-import com.thaiopensource.validate.rng.RngProperty;
 
 //NOTE: this class was duplicated from com.thaiopensource.validate.ValidationDriver. in order to 
 //have better error handling
