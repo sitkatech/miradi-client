@@ -25,7 +25,7 @@ import java.net.URL;
 
 import org.miradi.main.EAM;
 import org.miradi.main.ResourcesHandler;
-import org.miradi.xml.conpro.MiradiValidationDriver;
+import org.miradi.xml.xmpz2.ValidationDriver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXParseException;
 
@@ -47,7 +47,7 @@ abstract public class MiradiXmlValidator
 		
 		InputSource schemaInputSource = new InputSource(resourceURL.openStream());
 		SchemaReader schemaReader = CompactSchemaReader.getInstance();
-		MiradiValidationDriver validationDriver = new MiradiValidationDriver(properties.toPropertyMap(), schemaReader);
+		ValidationDriver validationDriver = new ValidationDriver(properties.toPropertyMap(), schemaReader);
 		if (validationDriver.loadSchema(schemaInputSource))
 		{
 			InputSource xmlInputSource = new InputSource(xmlInputStream);
