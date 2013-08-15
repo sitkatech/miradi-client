@@ -322,7 +322,7 @@
 
 	<antcall target='download'>
 		<param name='directory' value='jing' />
-		<param name='filename' value='jing-src-20030619.zip' />
+		<param name='filename' value='jing-src-20091111.zip' />
 	</antcall>
 	<antcall target='download'>
 		<param name='directory' value='jing' />
