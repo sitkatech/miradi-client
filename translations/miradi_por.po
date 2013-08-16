@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-07-25 13:53-0500\n"
-"PO-Revision-Date: 2013-04-24 21:03-0500\n"
+"PO-Revision-Date: 2013-08-07 13:24-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -92,11 +92,11 @@ msgstr "%1 Ameaças Diretas criadas"
 
 #: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:123
 msgid "%1 Draft Strategies Created"
-msgstr "%1 Rascunhos de Estratégias Criados"
+msgstr "%1 Estratégias Preliminares Criadas"
 
 #: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:128
 msgid "%1 Draft Strategies Ranked"
-msgstr "%1 Rascunhos de Estratégias Classificados"
+msgstr "%1 Estratégias Preliminares Classificadas"
 
 #: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:162
 msgid "%1 Indicators associated to KEA's"
@@ -359,7 +359,7 @@ msgstr "2) Construa uma cadeia de resultados inicial"
 
 #: Miradi/source/org/miradi/wizard/diagram/DevelopDraftStrategiesStep.java:50
 msgid "2) Develop draft strategies"
-msgstr "2) Desenvolva rascunhos de estratégias"
+msgstr "2) Desenvolva estratégias preliminares"
 
 #: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityIdentifyIndicatorsStep.java:50
 msgid "2) Identify indicators"
@@ -403,7 +403,7 @@ msgstr "3) Concilie despesas reais"
 
 #: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityDevelopDraftIndicatorsStep.java:50
 msgid "3a) Develop draft indicator ratings"
-msgstr "3a) Desenvolva rascunho de classificação de indicadores"
+msgstr "3a) Desenvolva classificação preliminar de indicadores"
 
 #: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityRefineIndicatorRatingsStep.java:50
 msgid "3b) Refine indicator ratings"
@@ -1087,7 +1087,7 @@ msgstr "Inserir Ameaça Direta"
 
 #: Miradi/source/org/miradi/actions/ActionInsertDraftStrategy.java:35
 msgid "Action|Insert|Insert Draft Strategy"
-msgstr "Inserir Rascunho de Estratégia"
+msgstr "Inserir Estratégia Preliminar"
 
 #: Miradi/source/org/miradi/actions/ActionInsertHumanWelfareTarget.java:38
 msgid "Action|Insert|Insert Human Welfare Target"
@@ -2446,7 +2446,7 @@ msgstr "Páginas de Modelo Conceitual e Cadeias de Resultados"
 
 #: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:51
 msgid "Conceptual Model diagrams (including Brainstorm mode to capture all draft strategies considered that were not selected). Strategy Ranking fields of: Potential Impact and Feasibility"
-msgstr "Diagramas de Modelo Conceitual (incluindo modo chuva de idéias para capturar todos os rascunhos de estratégias consideradas que não foram selectionadas).  Campos de Classificação de Estratégias de: Impacto Potencial e Viabilidade "
+msgstr "Diagramas de Modelo Conceitual (incluindo modo chuva de idéias para capturar todas as estratégias preliminares consideradas que não foram selectionadas).  Campos de Classificação de Estratégias de: Impacto Potencial e Viabilidade "
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:107
 msgid "Conceptual model - A diagram of a set of relationships between certain factors that are believed to impact or lead to a conservation target."
@@ -2820,7 +2820,7 @@ msgstr "Desenvolver estratégia de comunicação"
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpDevelopDraftStrategiesStep.java:35
 msgid "Develop draft strategies"
-msgstr "Desenvolver rascunhos de estratégias"
+msgstr "Desenvolver estratégias preliminares"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:79
 msgid "Develop goals for each target"
@@ -3148,7 +3148,7 @@ msgstr "Outro"
 
 #: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:132
 msgid "FTE Days Per Year:"
-msgstr "Equivalente a Tempo Integral (ETI) Dias Por Ano"
+msgstr "Equivalente a Tempo Integral (ETI) Dias Úteis Por Ano"
 
 #: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:430
 msgid "Factor Properties"
@@ -3595,7 +3595,7 @@ msgstr "Espécie da Lista Vermelha da UICN"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:84
 msgid "Identify &quot;key factors&quot; and draft strategies"
-msgstr "Identifcar &quot;fatores chave&quot; e elaborar estratégias"
+msgstr "Identifcar &quot;fatores chave&quot; e elaborar estratégias preliminares"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:123
 msgid "Identify direct threats"
@@ -4009,7 +4009,7 @@ msgstr "Métodos"
 
 #: Miradi/source/org/miradi/views/diagram/InsertDraftStrategyDoer.java:65
 msgid "Label|New Draft Strategy"
-msgstr "Novo Rascunho de Estratégia"
+msgstr "Nova Estratégia Preliminar"
 
 #: Miradi/source/org/miradi/views/diagram/InsertDirectThreatDoer.java:50
 #: Miradi/source/org/miradi/views/diagram/InsertContributingFactorDoer.java:46
@@ -5304,7 +5304,7 @@ msgstr "Classificar as ameaças diretas"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:89
 msgid "Rank draft strategies"
-msgstr "Classificar os rascunhos de estratégias"
+msgstr "Classificar as estratégias preliminares"
 
 #: Miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:38
 msgid "Rapid Assessment"
@@ -6504,7 +6504,7 @@ msgstr "Inserir um Resultado de Redução de Ameaça"
 
 #: Miradi/source/org/miradi/actions/ActionInsertDraftStrategy.java:41
 msgid "TT|Insert a draft Strategy"
-msgstr "Inserir um rascunho de Estratégia"
+msgstr "Inserir uma Estratégia preliminar"
 
 #: Miradi/source/org/miradi/utils/LanguagePackFileChooser.java:49
 msgid "TT|Install the selected language pack"
@@ -7151,9 +7151,10 @@ msgstr "Ameaças"
 msgid "Threats at Site"
 msgstr "Ameaças no Sítio"
 
+# Verify that this Scope is related to a threat and not the scope of a project.
 #: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:104
 msgid "Threat|Scope"
-msgstr "Escopo"
+msgstr "Abrangência"
 
 #: Miradi/source/org/miradi/questions/FontFamiliyQuestion.java:46
 msgid "Times New Roman"
@@ -8321,7 +8322,7 @@ msgid "FieldLabel|11.ExpectedEndDate|End"
 msgstr "Fim"
 
 msgid "FieldLabel|11.DataEffectiveDate|Project Data Effective Date"
-msgstr "Data Efetiva dos Dados do Projeto"
+msgstr "Data Efectiva dos Dados do Projeto"
 
 msgid "FieldLabel|11.TeamResourceIds|Project Team"
 msgstr "Equipe do Projeto"
@@ -8351,7 +8352,7 @@ msgid "FieldLabel|11.FiscalYearStart|Fiscal Year"
 msgstr "Ano Fiscal"
 
 msgid "FieldLabel|11.FullTimeEmployeeDaysPerYear|FTE Days per Year"
-msgstr "Dias por Ano de Empregado de Tempo Integral (ETI)"
+msgstr "Dias úteis por ano de Empregado de Tempo Integral (ETI)"
 
 msgid "FieldLabel|11.TNC.Ecoregion|Ecoregion (legacy)"
 msgstr "Ecorregião (legado)"
@@ -8771,7 +8772,7 @@ msgid "FieldLabel|19.Detail|Details"
 msgstr "Detalhes"
 
 msgid "FieldLabel|19.PseudoDraftStrategies|Draft Strategies"
-msgstr "Rascunhos de Estratégias"
+msgstr "Estratégias Preliminares"
 
 msgid "FieldLabel|20.Label|Name"
 msgstr "Nome"
@@ -9026,7 +9027,7 @@ msgid "FieldLabel|29.TagDiagramDataInclusion|Include Data From"
 msgstr "Incluir dados de"
 
 msgid "FieldLabel|29.StrategyObjectiveOrder|Objective/Strategy Display"
-msgstr "Exibição de Estratégia"
+msgstr "Meta/Exibição de Estratégia"
 
 msgid "FieldLabel|29.TargetNodePosition|Position of Targets in Trees"
 msgstr "Posição de Alvos nas Árvores (Trees)"
@@ -9575,7 +9576,7 @@ msgstr "html|/resources/FOSAbout.html| <h3>About Foundations of Success (FOS)</h
 
 # Will Miradi have someone at TNC@miradi.org who can deal with Portuguese?
 msgid "html|/resources/NextStepAfterCpmzImport.html|<ol><li>Your ConPro project has been successfully imported. You can now continue to work on your project in Miradi. You may wish to start by reviewing the information in the summary view and then cleaning up your conceptual model diagrams and building new result chain diagrams.</li><li>Miradi has created separate draft conceptual model diagrams for each conservation target plus one diagram showing “All on One Page”.  Please note that there are checkboxes in the Control Bar for turning “Tags” on/off to filter the contents of the diagrams by overall threat rank.</li><li>Short animated, narrated Miradi tutorials are available at: <a href='http://elearn.tnc.org/cap/miradi/player.html'>http://elearn.tnc.org/cap/miradi/player.html<a>.  Tutorials 46-50 provide guidance specific to ConPro-Miradi data exchanges.</li><li>Go to <a href='http://conservationgateway.org/Miradi'>http://conservationgateway.org/Miradi</a>  for more details about the import process including, in particular, how information from various ConPro data fields are handled in Miradi.</li><li>If you have any problems or suggestions as to ways to improve this import process, please contact us at <a href='mailto:TNC@miradi.org'>TNC@miradi.org</a>.</li></ol>"
-msgstr "<ol><li>A importação de seu projeto de ConPro foi concluída com sucesso. Agora pode continuar a trabalhar em seu projeto em Miradi.  Pode começar revisando as informações no resumo da visão e depois arrumar seus diagramas de modelo conceitual e construir novos diagramas de cadeias de resultados.</li><li>Miradi criou diagramas de rascunho de modelos conceituais separados para cada alvo de conservação além de um diagrama que apresenta \"Todos em Uma Só Página\".  Por favor, note que tem campos de seleção (checkboxes) na Barra de Controle que ativam/desativam \"Tags\" para filtrar o conteúdo dos diagramas pela classificação total de ameaça.</li><li>Breves tutoriais animados e narrados são disponíveis no site: <a href='http://elearn.tnc.org/cap/miradi/player.html'>http://elearn.tnc.org/cap/miradi/player.html<a>. Os tutoriais 46-50 fornecem orientações específicas para o intercâmbio de dados ConPro-Miradi.</li><li>Veja <a href='http://conservationgateway.org/Miradi'>http://conservationgateway.org/Miradi</a>  para mais detalhes sobre o processo de importação inclusive, em particular, como informações de vários campos de dados de ConPro são tratados em Miradi.</li><li>Se tiver problemas ou sugestões para melhorar o processo de importação, por favor nos contate no e-mail <a href='mailto:TNC@miradi.org'>TNC@miradi.org</a>.</li></ol>"
+msgstr "<ol><li>A importação de seu projeto de ConPro foi concluída com sucesso. Agora pode continuar a trabalhar em seu projeto em Miradi.  Pode começar revisando as informações no resumo da visão e depois arrumar seus diagramas de modelo conceitual e construir novos diagramas de cadeias de resultados.</li><li>Miradi criou diagramas preliminares de modelos conceituais separados para cada alvo de conservação além de um diagrama que apresenta \"Todos em Uma Só Página\".  Por favor, note que tem campos de seleção (checkboxes) na Barra de Controle que ativam/desativam \"Tags\" para filtrar o conteúdo dos diagramas pela classificação total de ameaça.</li><li>Breves tutoriais animados e narrados são disponíveis no site: <a href='http://elearn.tnc.org/cap/miradi/player.html'>http://elearn.tnc.org/cap/miradi/player.html<a>. Os tutoriais 46-50 fornecem orientações específicas para o intercâmbio de dados ConPro-Miradi.</li><li>Veja <a href='http://conservationgateway.org/Miradi'>http://conservationgateway.org/Miradi</a>  para mais detalhes sobre o processo de importação inclusive, em particular, como informações de vários campos de dados de ConPro são tratados em Miradi.</li><li>Se tiver problemas ou sugestões para melhorar o processo de importação, por favor nos contate no e-mail <a href='mailto:TNC@miradi.org'>TNC@miradi.org</a>.</li></ol>"
 
 # NEW Please check
 msgid "html|/resources/views/ReportsView/MoreInfo.html|<p><table>\t<tr>\t\t<td><IMG height=48 alt=\"\" hspace=20 src=\"icons/info-48.png\" width=48 align=absMiddle border=0>\t\t</td>\t\t<td width='20'></td>\t\t<td>\t\t\t<FONT face=Tahoma color=#000000 size=5 name=\"Tahoma\">\t\t\t\t<STRONG>More Information About Reports</STRONG>\t\t\t</FONT>\t\t\t&nbsp;\t\t</td>\t\t\t</tr></table></p><br><hr><H3>An Overview of Reports in Miradi</H3>This view enables you to produce various reports about your project. Reports are only one of many ways to export your information from Miradi to other applications.<br><p>Miradi currently supports two types of reports:<ul><li><b>Standard Reports - </b>These are pre-defined reports that produce documents in accordance with the CMP Open Standards. Use the <code class='toolbarbutton'>&lt;Full&nbsp;Project&nbsp;Report&gt;</code> button to create a document showing all of your project info; use the remaining buttons to create a document showing one section of your plan.</li><br><li><b>Custom Reports - </b>These are pre-defined reports that produce documents in accordance with the needs of a specific organization. Use the appropriate button to generate the report that you want. Contact us at <A href=\"mailto:support@miradi.org\">support@miradi.org</A> if you would like to develop your own custom report.</li></ul><p>Once you select one of the reports, Miradi will prompt you to specify where to save the RTF file.  RTF files (Rich Text Files) are compatible with most word processing programs includinng Micrsoft Word.  However, if you open this fie in Microsoft Word, you should save it as a .doc file type instead of the RTF.  Saving as an RTF can result in a large file size.</p><p class='hint'><b>Hint:</b> Changes made to the reports outside of Miradi will not be maintained the next time you generate a report. As a result, try to make the changes in the appropriate Miradi fields where possible.</p>"
@@ -9743,7 +9744,7 @@ msgstr ""
 
 # New. Check.
 msgid "html|/resources/wizard/PlanningView/PlanningWizardFinalizeStrategicPlanStepLeft.html|At this point, you should have already created your draft action plan by assigning specific goals, objectives, and strategies to specific factors in the diagram view.<p>Click on the <code class='toolbarbutton'>&lt;Action&nbsp;Plan&gt;</code> tab in the Strategic Plan View to view and edit this plan. You can look at your plans either based on your overall conceptual model, or on specific results chains by collapsing and expanding elements of the tree.</p><p>Note that in your action plan, a given strategy may be repeated several times if it contributes to more than one goal or objective. (In your work plan, by contrast, strategies are not repeated.) If you want to adjust which strategy or activity is tied to a given objective, click on the objective in the upper tree table. In the panel below, click on the <code class='toolbarbutton'>&lt;Choose&gt;</code> button for Strategies and Activities and check the Is Relevant box for the strategies and activities you would like to have associated with this objective.</p>"
-msgstr "Neste momento, você já deveria ter criado um rascunho de seu plano de ação através da atribuição de objetivos específicos, metas, e estratégias a fatores específicos na visão diagrama.<p>Clique na aba <code class='toolbarbutton'>&lt;Plano&nbsp;de&nbsp;Ação&gt;</code> na Visão Plano Estratégico para visualizar e editar este plano.  Você pode olhar seus planos baseados em seu modelo conceitual global ou em cadeias de resultados específicos, comprimindo ou expandindo elementos do tree (esquema). p><p>Note que em seu plano de ação, uma estratégia pode ser repetida várias vezes se contribuir para mais de um objetivo ou meta. (No seu plano de trabalho, em contraste, as estratégias não são repetidas.)  Se quiser ajustar qual estratégia ou atividade é ligada a uma determinada meta, clique na meta na tabela superior do tree.  No painel abaixo, clique no botão<code class='toolbarbutton'>&lt;Selecionar&gt;</code> para Estratégias e Atividades e marque a caixa É Relevante para as estratégias e atividades que queria associar com esta meta.</p>"
+msgstr "Neste momento, você já deveria ter criado seu plano de ação preliminar através da atribuição de objetivos específicos, metas, e estratégias a fatores específicos na visão diagrama.<p>Clique na aba <code class='toolbarbutton'>&lt;Plano&nbsp;de&nbsp;Ação&gt;</code> na Visão Plano Estratégico para visualizar e editar este plano.  Você pode olhar seus planos baseados em seu modelo conceitual global ou em cadeias de resultados específicos, comprimindo ou expandindo elementos do tree (esquema). p><p>Note que em seu plano de ação, uma estratégia pode ser repetida várias vezes se contribuir para mais de um objetivo ou meta. (No seu plano de trabalho, em contraste, as estratégias não são repetidas.)  Se quiser ajustar qual estratégia ou atividade é ligada a uma determinada meta, clique na meta na tabela superior do tree.  No painel abaixo, clique no botão<code class='toolbarbutton'>&lt;Selecionar&gt;</code> para Estratégias e Atividades e marque a caixa É Relevante para as estratégias e atividades que queria associar com esta meta.</p>"
 
 msgid "html|/resources/wizard/PlanningView/DevelopOperationalPlanRight.html|  As outlined in the CMP Open Standards, key components for an operational plan include analyses of: <ul><li>Funding required to implement your project, and your current and potential sources of these funds,</li><li>Human capacity and skills and other non-financial resources required to implement your project and what you need to do to develop those resources,</li><li>What risk factors exist for your project and how they can be addressed,</li><li>How long your project will last, how you will ensure the sustainability of your project's achievements, and what your exit strategy will be.</li></ul><p>The level of detail and formality of your operational plan will vary depending on the size and level of complexity of your project. Small projects may only briefly touch on each of these topics whereas large, complex ones might have an extensive and formal treatment of each.</p> "
 msgstr ""
@@ -9906,7 +9907,7 @@ msgid "html|/resources/wizard/DiagramView/DiagramWizardGoodResultsChainCriteriaR
 msgstr ""
 
 msgid "html|/resources/wizard/DiagramView/DevelopDraftStrategiesStepRight.html|<div class='navigation'>            A <i>strategy</i> describes a group of actions with a common focus that work together to reduce threats, capitalize on opportunities, or restore natural systems.  A good strategy meets the criteria of being:          \t<ul><li><strong>Linked -</strong> Directly affects one or more critical factors</li>          <li><strong>Focused -</strong> Outlines specific courses of action to be carried out</li><li><strong>Feasible -</strong> Accomplishable in light of the project's resources and constraints</li><li><strong>Appropriate -</strong> Acceptable to and falling within site-specific cultural, social, and biological norms</p></li></ul>          \t<p>A <i>draft strategy</i> is one that you have brainstormed, but not yet decided to implement.</p>                      <table>              <tr>              \t<td align='right'>              \t\t<img border='0' src='images/DiagramWizard/developDraftStrategies.png' width= '500' height='228'>              \t</td>              </tr>            </table>          </div>"
-msgstr ""
+msgstr "<div class='navigation'>            Uma <i>estratégia</i> descreve um grupo de ações com enfoque comum e que, em conjunto, visam reduzir ameaças, aproveitar de oportunidades, restaurar sistemas naturais, ou proporcionar capacidade.  Uma boa estratégia atende aos critérios de ser:          \t<ul><li><strong>Vinculada -</strong> Afeta diretamente um ou mais fatores críticos</li>          <li><strong>Focada -</strong> Estabelece cursos de ações específicos que precisam ser realizados</li><li><strong>Factível -</strong> Exeqüivel de acordo com os recursos e limitações do projeto</li><li><strong>Apropriada -</strong> Aceitavel e adequada em relação às normas culturais, sociais e biológicas do local</p></li></ul>          \t<p>Uma <i>estratégia preliminar</i> é uma que surgiu da chuva de idéias mas que você não decidiu ainda implementar.</p>                      <table>              <tr>              \t<td align='right'>              \t\t<img border='0' src='images/DiagramWizard/developDraftStrategies.png' width= '500' height='228'>              \t</td>              </tr>            </table>          </div>"
 
 msgid "html|/resources/wizard/DiagramView/DiagramWizardLinkDirectThreatsToTargetsStepLeft.html|Many threats affect more than one target. To link your threat to another target, select the direct threat, hold the <code class='toolbarbutton'>&lt;Shift&gt;</code> key and then select the desired target. Then click on the <code class='toolbarbutton'>&lt;Insert&nbsp;Link&gt;</code> button (the arrow). You can also link direct threats to each other using the <code class='toolbarbutton'>&lt;Insert&nbsp;Link&gt;</code> button (the arrow).<p class='hint'><strong>Hint:</strong> The best way to link two factors in Miradi is to select the first one, hold the shift key, select the second one, and then click the <code class='toolbarbutton'>&lt;Insert&nbsp;Link&gt;</code> button (the arrow) in the Control Bar. This method avoids the need to scroll through a lengthy list of all factors in the system.</p><p class='hint'><strong>Hint:</strong> If you end up with spaghetti - many crossing links - you can uncheck \"target links\" on the Control Bar to hide these links except when you click on a factor.</p><p class='hint'><strong>Hint:</strong> If you are using <a href='Definition:Stress' class='definition'>stresses</a>, you can position your stress boxes on a link between the threat and the target to display your stresses in the diagram. </p>"
 msgstr ""
@@ -9918,7 +9919,7 @@ msgid "html|/resources/wizard/DiagramView/DiagramWizardDefineTargetsStepRight.ht
 msgstr ""
 
 msgid "html|/resources/wizard/DiagramView/RankDraftStrategiesStepLeft.html|Once you have developed your draft strategies, you rate each one in terms of its <b>Potential Impact</b> and <b>Feasibility</b> by double clicking on a draft strategy and clicking the Potential Impact and Feasibility ratings buttons.<p>Once you have developed all your draft strategies, you can decide which one(s) you want to carry forward. Unchecking <b>Draft</b> in the status field in the dialogue box will convert the strategy from a light yellow \"draft strategy\" to a dark yellow \"strategy.\"</p><p>Click the <code class='toolbarbutton'>&lt;Show&nbsp;Full&nbsp;Diagram&gt;</code> button (available at the bottom of the screen, the toolbar, or by right (alt) clicking the mouse) to go back to the full model and hide all your draft strategies. Note that your draft strategies are still retained in <code class='toolbarbutton'>&lt;Brainstorm&nbsp;Mode&gt;</code>.</p><p>You can also view and edit all your project's strategies using the <i>\"Strategies Only\"</i> view under the Lists tab in the Strategic Plan View.</p>\t"
-msgstr ""
+msgstr "Assim que você tiver suas estratégias preliminares identificadas, classifique cada uma em termos de seu <b>Impacto Potencial</b> e sua <b>Viabilidade</b> clicando duas vezes numa estratégia preliminar e clicando os botões de classificação de Impacto Potencial e de Viabilidade.<p>Assim que desenvolver todas suas estratégias preliminares, você pode decidir qual (quais) você quer levar adiante. Desmarcando <b>Versão Preliminar</b> no campo de status na caixa de diálogo converterá a estratégia de uma \"estratégia preliminar\" amarela clara em uma  \"estratégia\" amarela escura.</p><p>Clique o <code class='toolbarbutton'>botão&lt;Mostrar&nbsp;Diagrama&nbsp;Completo&gt;</code>  (disponível na parte inferior da tela, na barra de ferramentas,  ou por clicar o mouse no lado direito) para voltar ao modelo conceitual e esconder todas suas estratégias preliminares. Note que todas suas estratégias preliminares ainda são retidas no <code class='toolbarbutton'>&lt;Modo&nbsp;Chuva&nbsp;de&nbsp;Idéias&gt;</code>.</p><p>Você pode também ver e editar todas as estratégias de seu projeto utilizando a visão  <i>\"Somente Estratégias\"</i> sob a aba Listas na Visão Plano Estratégico.</p>\t"
 
 msgid "html|/resources/wizard/DiagramView/StrategicPlanDevelopGoalStepRight.html|<div class='navigation'>A <i>goal</i> is a formal statement detailing a desired impact of a project. In conservation projects, it is the desired future status of a target. A good goal meets the criteria of being:          <ul><li><strong>Linked to Targets:</strong> Directly associated with one or more of your biodiversity targets</li><li><strong>Impact Oriented:</strong> Represents the desired future status of the target over the long-term</li> <li><strong>Measurable:</strong> Definable in relation to some standard scale (numbers, percentage, fractions, or all/nothing states)</li><li><strong>Time Limited:</strong> Achievable within a specific period of time, often 10 or more years</li><li><strong>Specific:</strong>Clearly defined so that all people involved in the project have the same understanding of what the terms in the goal mean</li>          </ul>\t\t\t  </div>"
 msgstr ""
@@ -9933,7 +9934,7 @@ msgid "html|/resources/wizard/DiagramView/DiagramWizardProjectScopeStepRight.htm
 msgstr ""
 
 msgid "html|/resources/wizard/DiagramView/RankDraftStrategiesStepRight.html|          <div class='navigation'>Draft strategies can be rated on the following criteria:<p><strong>Potential Impact -</strong> If implemented, will the strategy lead to desired changes in the situation at your project site?</p><ul><li><b>Very High</b> - The strategy is very likely to completely mitigate a threat or restore a target.</li><li><b>High</b> - The strategy is likely to help mitigate a threat or restore a target.</li><li><b>Medium</b> - The strategy could possibly help mitigate a threat or restore a target.</li><li><b>Low</b> - The strategy will probably not contribute to meaningful threat mitigation or target restoration.</li></ul><p>Note that there are at least two dimensions being rolled up into this rating:  probability of positive impact and magnitude of change. The users will have to integrate these into their rating.</p><p><strong>Feasibility -</strong> Would your project team be able to implement the strategy within likely time, financial, staffing, ethical, and other constraints?</p><ul><li><b>Very High</b> - The strategy is ethically, technically, AND financially feasible.</li><li><b>High</b> - The strategy is ethically and technically feasible, but may require some additional financial resources.</li><li><b>Medium</b> - The strategy is ethically feasible, but either technically OR financially difficult without substantial additional resources.</li><li><b>Low</b> -The strategy is not ethically, technically, OR financially feasible.</p></li></ul>These ratings are then rolled-up to give an overall summary rating for the strategy.  Note that if a draft strategy is assigned any \"red\" colored rating, then the summary rating will also be \"red.\"<br><br>Here is a relatively simple roll-up of the overall Strategy Priority.  At higher levels, a project has to be both feasible AND have a high potential impact to score high.  But at lower levels, either low feasibility OR low impact gives an overall low priority. <BR><BR><table>              <tr>              \t<td align='right'>              \t\t<img border='0' src='images/DiagramWizard/rankDraftStrategies.png' width= '550' height='200'>              \t</td>              </tr>            </table>          </div>"
-msgstr ""
+msgstr "     <div class='navigation'>Estratégias preliminares podem ser classificadas de acordo com os seguintes critérios:<p><strong>Impacto Potencial -</strong> Se for executada, a estratégia vai levar às mudanças desejadas na situação do local de seu projeto? </p><ul><li><b>Muito Alto</b> - A estratégia tem alta probabilidade de mitigar completamente uma ameaça ou restaurar completamente um alvo?</li><li><b>Alto</b> - A estratégia provavelmente ajudará mitigar uma ameaça ou restaurar um alvo.</li><li><b>Médio</b> - A estratégia possivelmente ajudará mitigar uma ameaça ou restaurar um alvo.</li><li><b>Baixo</b> - A estratégia provavelmente não contribuirá de uma forma significante à mitigação de uma ameaça ou à restauração de um alvo.</li></ul><p>Note que há pelo menos duas dimensões sendo combinadas nesta classificação: a probabilidade de impacto positivo e a magnitude de mudança.  Os usuários terão que integrar estas dimensões na sua classificação. </p><p><strong>Viabilidade -</strong> Sua equipe do projeto poderia executar a estratégia dentro dos limites prováveis de tempo, de recursos humanos e financeiros, de ética, e outros?</p><ul><li><b>Muito Alto</b> - A estratégia é viável eticamente, tecnicamente E financeiramente.</li><li><b>Alto</b> - A estratégia é viável eticamente e tecnicamente, mas pode requerer recursos financeiros adicionais.</li><li><b>Médio</b> - A Estratégia é viável eticamente, mas de difícil execução tecnicamente OU financeiramente sem recursos adicionais substanciais.</li><li><b>Baixo</b> - A estratégia não é viável eticamente, tecnicamente, OU financeiramente.</p></li></ul>Estas classificações são combinadas para dar um resumo da classificação da estratégia.  Note que se uma estratégia preliminar for classificada com qualquer classificação \"vermelha\", o resumo da classificação também será \"vermelho.\"<br><br>Esta é uma combinação relativamente simples da Prioridade Geral da Estratégia.  Nos níveis mais altos, uma estratégia tem que ser viável E ter um impacto potencial alto para ser classificada como alta prioridade.  Mas nos níveis mais baixos, uma estratégia com viabilidade baixa OU impacto potencial baixo é classificada como baixa prioridade.<BR><BR><table>              <tr>              \t<td align='right'>              \t\t<img border='0' src='images/DiagramWizard/rankDraftStrategies.png' width= '550' height='200'>              \t</td>              </tr>            </table>          </div>"
 
 msgid "html|/resources/wizard/DiagramView/TargetViabilityMethodChoiceStepLeft.html|Miradi currently supports two different viability analysis modes for assessing target status. Generally, within a project you should consistently use one mode or the other, but you can use different modes on different targets if you wish.\t\t\t\t\t\t</P>\t\t\t<br></br>\t\t\t<table>\t\t\t\t<tr>\t\t\t\t\t<td width='25'></td>\t\t\t\t\t<td>\t\t\t\t\t\t<table>            \t\t      <tr>                    \t\t<td align='left' valign='top' align='center'><input type='submit' name='SimpleMode' value='Simple Mode'></input></td>                    \t\t<td align='left' valign='top'>&nbsp;</td>                    \t\t<td align='left' valign='top'><input type='submit' name='DetailedViability' value='Key Attribute Mode'></input></td>                  \t\t</tr>\t\t\t\t\t\t<tr>\t\t\t\t\t\t</tr>                  \t\t<tr>                    \t\t<td align='left' valign='top'>&nbsp;</td>                    \t\t<td align='left' valign='top'><input type='submit' name='DoneViabilityAnalysis' value='Done with Viability Analysis'></input></td>                    \t\t<td align='left' valign='top'>&nbsp;</td>                  \t\t </tr>                \t\t</table>\t\t\t\t\t</td>\t\t\t\t\t<td width='25'></td>\t\t\t\t</tr>\t\t\t</table><p>To begin viability analysis on a target, bring up its properties dialog by double-clicking on the target oval in the diagram. Then click either the <code class='toolbarbutton'>&lt;Simple Mode&gt;</code> or <code class='toolbarbutton'>&lt;Key Attribute Mode&gt;</code> buttons to indicate which method you would like to use for this target.</p><p>Once you return to this screen, you can repeat the viability analysis for another target. You can also click the <code class='toolbarbutton'>&lt;Done with Viability Analysis&gt;</code> button once you have completed viability analysis for all your targets and are ready to move on to the next step.</p>\t"
 msgstr ""
@@ -9951,7 +9952,7 @@ msgid "html|/resources/wizard/DiagramView/DiagramWizardConstructInitialResultsCh
 msgstr ""
 
 msgid "html|/resources/wizard/DiagramView/DevelopDraftStrategiesStepLeft.html|Once you have isolated the chain that you want to work on, brainstorm draft <a href='Definition:Strategy' class='definition'>strategies</a> that your team could use at various points along the chain. Select the factor and click the <code class='toolbarbutton'>&lt;Insert&nbsp;Draft&nbsp;Strategy&gt;</code> button on the toolbar or legend.\t\t\t<p>The software will add a new draft strategy linked to the target and open a dialogue box. Type an <b>ID, Name,</b> and <b>Details</b> for the strategy and a <b>Comment</b> if necessary. You can also link this strategy to the <b>Standard Classification</b> if necessary.</p>\t"
-msgstr ""
+msgstr "Uma vez que você isolar a cadeia em que você quer trabalhar, faça uma chuva de idéias de <a href='Definition:Strategy' class='definition'>estratégias</a> preliminares que sua equipe poderá utilizar em vários pontos na cadeia.  Selecione o fator e clique o botão <code class='toolbarbutton'>&lt;Inserir&nbsp;Estratégia&nbsp;Preliminar&gt;</code> na barra de ferramentas ou na legenda.\t\t\t<p>O software acrescentará uma nova estratégia preliminar ligada ao alvo e abrirá uma caixa de dialogo. Digite uma <b>identificação - ID, Nome,</b> e <b>Detalhes</b> da estratégia e um <b>Comentário</b> se for necessário.  Você pode também ligar esta estratégia à <b>Classificação Padrão</b> se for necessário.</p>\t"
 
 msgid "html|/resources/wizard/DiagramView/DiagramWizardReviewModelAndAdjustStepRight.html|<div class='navigation'>Conceptual models should be considered dynamic. As you learn more about your project site, you should periodically revisit your conceptual model and revise it as necessary. You should also think about the interventions you have chosen and whether, based on the new information about your site, you need to choose new interventions or modify existing ones.<p>Finally, a reminder - do not strive for perfection in your conceptual model. Strive for something that will be useful for your team - something that will help you portray what is happening at your site and determine what interventions you should be taking.</p></div>"
 msgstr ""
