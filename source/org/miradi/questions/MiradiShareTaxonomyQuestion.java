@@ -37,7 +37,10 @@ public class MiradiShareTaxonomyQuestion extends DynamicChoiceWithRootChoiceItem
 	@Override
 	protected ChoiceItemWithChildren createHeaderChoiceItem() throws Exception
 	{
-		return createChoiceItems();
+		if (createChoiceItems == null)
+			createChoiceItems = createChoiceItems();
+		
+		return createChoiceItems;
 	}
 	
 	private ChoiceItemWithChildren createChoiceItems() throws Exception
@@ -83,4 +86,5 @@ public class MiradiShareTaxonomyQuestion extends DynamicChoiceWithRootChoiceItem
 	
 	private MiradiShareTaxonomy miradiShareTaxonomy;
 	private TaxonomyAssociation taxonomyAssociation;
+	private ChoiceItemWithChildren createChoiceItems;
 }
