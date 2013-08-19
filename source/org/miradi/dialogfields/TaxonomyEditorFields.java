@@ -38,7 +38,7 @@ public class TaxonomyEditorFields extends ObjectDataInputField
 	@Override
 	public String getText()
 	{
-		return "";
+			return "";
 	}
 
 	@Override
@@ -64,6 +64,10 @@ public class TaxonomyEditorFields extends ObjectDataInputField
 		super.setObjectRef(refToUse);
 		try
 		{
+			if (refToUse.equals(currentRef))
+				return;
+			
+			currentRef = refToUse;
 			panelWithFields.setObjectRef(refToUse);
 		}
 		catch (Exception e)
@@ -72,5 +76,7 @@ public class TaxonomyEditorFields extends ObjectDataInputField
 		}
 	}
 	
+	
+	private ORef currentRef; 
 	private TaxonomyFieldsPanel panelWithFields; 
 }
