@@ -46,17 +46,20 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.objects.ThreatReductionResult;
+import org.miradi.objects.TncProjectData;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.questions.DiagramModeQuestion;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
+import org.miradi.questions.ProjectSharingQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TargetModeQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
+import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.NullProgressMeter;
@@ -74,6 +77,18 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	public TestXmpz2XmlImporter(String name)
 	{
 		super(name);
+	}
+	
+	public void testProjectSharingCode() throws Exception
+	{
+		ORef tncProjectDataRef = getProject().getSingletonObjectRef(TncProjectDataSchema.getObjectType());
+		getProject().fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_SHARING_CODE, ProjectSharingQuestion.SHARE_ONLY_INSIDE_ORGANIZATION);
+		ProjectForTesting importedProject = validateUsingStringWriter();
+		
+		ORef importedTncProjectDataRef = importedProject.getSingletonObjectRef(TncProjectDataSchema.getObjectType());
+		TncProjectData importedTncProjectData = TncProjectData.find(importedProject, importedTncProjectDataRef);
+		String importedProjectSharingCode = importedTncProjectData.getData(TncProjectData.TAG_PROJECT_SHARING_CODE);
+		assertEquals("incorrect project sharing code?", "", importedProjectSharingCode);
 	}
 	
 	public void testDashboardCommentsField() throws Exception
