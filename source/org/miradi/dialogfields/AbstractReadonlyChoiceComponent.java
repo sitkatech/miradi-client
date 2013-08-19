@@ -45,13 +45,16 @@ abstract public class AbstractReadonlyChoiceComponent extends MiradiPanel
 		setLayout(new BasicGridLayout(0, columnCount));
 		setBackground(EAM.READONLY_BACKGROUND_COLOR);
 		setForeground(EAM.READONLY_FOREGROUND_COLOR);
-	}
+	}		
 	
 	protected void createAndAddReadonlyLabels(final CodeList codeList)
 	{
+		removeAll();
+		if (codeList.isEmpty())
+			return;
+
 		getQuestion().reloadQuestion();
 		Vector<ChoiceItem> choiceItems = getQuestion().getChoicesAsVector();
-		removeAll();
 		createAndAddReadonlyLabelsRecursively(choiceItems, codeList);
 		if (getTopLevelAncestor() != null)
 		{
