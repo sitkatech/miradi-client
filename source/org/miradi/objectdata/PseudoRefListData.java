@@ -38,7 +38,7 @@ public class PseudoRefListData extends RefListData
 	public void set(String newValue) throws Exception
 	{
 		if (newValue.length()!=0)
-			throw new RuntimeException("Set not allowed in a pseuod field. ref=" + object.getRef() + "  tag="  + getTag());
+			throw new Exception("Set not allowed in a pseuod field. ref=" + object.getRef() + "  tag="  + getTag());
 	}
 
 	@Override
