@@ -159,7 +159,7 @@ abstract public class DiagramPaster
 	
 	private Command[] getCommandsToFixUpORefList(HashMap pastedObjectMap, BaseObject newObject, String tag) throws Exception
 	{
-		if (!newObject.isRefList(tag))
+		if (!newObject.isRefList(tag) || newObject.isPseudoField(tag))
 			return new Command[0];
 		
 		Command commandToFixRefs = fixUpRefList(pastedObjectMap, newObject, tag);

@@ -35,6 +35,7 @@ import org.miradi.ids.IdList;
 import org.miradi.main.AbstractTransferableMiradiList;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
+import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.main.TransferableMiradiListVersion4;
 import org.miradi.objecthelpers.ORef;
@@ -53,6 +54,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
+import org.miradi.project.FactorDeleteHelper;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.GoalSchema;
@@ -72,6 +74,56 @@ public class TestDiagramPaster extends TestCaseWithProject
 	public TestDiagramPaster(String name)
 	{
 		super(name);
+	}
+	
+	public void testPseudoReflistNotPasted() throws Exception
+	{
+		DiagramFactor strategyDiagramFactorWithObjective = getProject().createAndAddFactorToDiagram(StrategySchema.getObjectType());
+		getProject().addObjective(strategyDiagramFactorWithObjective.getWrappedFactor());
+		
+		DiagramFactor strategyDiagramFactor = getProject().createAndAddFactorToDiagram(StrategySchema.getObjectType());
+		DiagramLink diagramLink = getProject().createDiagramLinkAndAddToDiagramModel(strategyDiagramFactorWithObjective, strategyDiagramFactor);
+
+		AbstractTransferableMiradiList transferableList = cut(strategyDiagramFactorWithObjective, diagramLink);
+		paste(transferableList);
+	
+		try
+		{
+			UndoDoer.undo(getProject());
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			fail("Command to set pseudoReflist on undostack, paste should not have called set?");
+		}
+	}
+
+	private void paste(AbstractTransferableMiradiList transferableList) throws Exception
+	{
+		getProject().executeCommand(new CommandBeginTransaction());
+		DiagramPaster paster = new DiagramCopyPaster(null, getProject().getTestingDiagramModel(), transferableList);
+		paster.pasteFactorsAndLinks(new Point(0, 0));
+		getProject().executeCommand(new CommandEndTransaction());
+	}
+
+	private AbstractTransferableMiradiList cut(DiagramFactor strategyDiagramFactorWithObjective, DiagramLink diagramLink) throws Exception
+	{
+		getProject().executeCommand(new CommandBeginTransaction());
+		DiagramModel model = getDiagramModel();
+		FactorCell strategyCell = model.getFactorCellByRef(strategyDiagramFactorWithObjective.getRef());
+	
+		EAMGraphCell[] dataCells = new EAMGraphCell[]{strategyCell, };
+		ORef diagramObjectRef = getDiagramModel().getDiagramObject().getRef();
+		AbstractTransferableMiradiList transferableList = new TransferableMiradiListVersion4(getProject(), diagramObjectRef);
+		transferableList.storeData(dataCells);
+	
+		LinkDeletor linkDeletor = new LinkDeletor(getProject());
+		linkDeletor.deleteDiagramLink(diagramLink);
+		FactorDeleteHelper factorDeletor = FactorDeleteHelper.createFactorDeleteHelperForNonSelectedFactors(DiagramObject.findDiagramObject(getProject(), diagramObjectRef));
+		factorDeletor.deleteFactorAndDiagramFactor(strategyDiagramFactorWithObjective);
+		getProject().executeCommand(new CommandEndTransaction());
+
+		return transferableList;
 	}
 	
 	public void testBudgetItemPasteIntoDifferentProject() throws Exception

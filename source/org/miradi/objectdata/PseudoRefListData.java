@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objectdata;
 
+import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
@@ -38,7 +39,7 @@ public class PseudoRefListData extends RefListData
 	public void set(String newValue) throws Exception
 	{
 		if (newValue.length()!=0)
-			throw new Exception("Set not allowed in a pseuod field. ref=" + object.getRef() + "  tag="  + getTag());
+			EAM.logError("Set not allowed in a pseuod field. ref=" + object.getRef() + "  tag="  + getTag());
 	}
 
 	@Override
