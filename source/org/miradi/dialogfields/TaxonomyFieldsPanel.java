@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
+import java.awt.Color;
 import java.util.Collections;
 import java.util.Vector;
 
@@ -27,6 +28,7 @@ import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.base.ReadonlyPanelWithPopupEditor;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.OneColumnGridLayout;
+import org.miradi.main.AppPreferences;
 import org.miradi.objecthelpers.BaseObjectByNameSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.TaxonomyHelper;
@@ -87,6 +89,12 @@ public class TaxonomyFieldsPanel extends MiradiPanel
 			add(new FillerLabel());
 		}
 	}		
+	
+	@Override
+	public Color getBackground() 
+	{
+		return AppPreferences.getDataPanelBackgroundColor(); 
+	}	
 	
 	Project getProject()
 	{
