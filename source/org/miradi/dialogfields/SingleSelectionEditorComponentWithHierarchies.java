@@ -27,13 +27,23 @@ import javax.swing.JToggleButton;
 import org.miradi.dialogs.fieldComponents.RadioButtonWithChoiceItemProvider;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.utils.CodeList;
 
 public class SingleSelectionEditorComponentWithHierarchies extends AbstractEditorComponentWithHiearchies
 {
 	public SingleSelectionEditorComponentWithHierarchies(ChoiceQuestion questionToUse)
 	{
 		super(questionToUse);
+		
+		initializeWithDefaultChoice(questionToUse);
 	}
+
+	private void initializeWithDefaultChoice(ChoiceQuestion questionToUse)
+	{
+		String defaultCode = questionToUse.getAllCodes().firstElement();
+		setText(new CodeList(new String[]{defaultCode}).toString());
+	}
+	
 	@Override
 	protected JToggleButton createToggleButton(ChoiceItem choiceItem)
 	{
