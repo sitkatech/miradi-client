@@ -170,7 +170,7 @@ public class FileUtilities
 			Thread.currentThread().sleep(sleepPerTryMillis);
 		}
 		
-		throw new IOException("Rename failed for file:" + fromFile.getAbsolutePath());
+		throw new IOException("Rename failed.  From:" + fromFile.getAbsolutePath() + " To:" + toFile.getAbsolutePath());
 	}
 
 	public static boolean fileDoesNotExist(final File fileToDelete)
