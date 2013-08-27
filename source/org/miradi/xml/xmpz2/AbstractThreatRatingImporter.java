@@ -44,11 +44,11 @@ abstract public class AbstractThreatRatingImporter extends AbstractXmpz2ObjectIm
 		ThreatRatingCommentsData threatRatingCommentsData = getProject().getSingletonThreatRatingCommentsData();
 		if (commentsNode != null)
 		{
-			String comments = commentsNode.getTextContent();
+			String comments = getImporter().getFormattedNodeContent(commentsNode);
 			CodeToUserStringMap commentsMap = getThreatRatingCommentsMap(threatRatingNode, threatRatingCommentsData);
 			String threatTargetKey = ThreatRatingCommentsData.createKey(threatRef, targetRef);
 			
-			commentsMap.putUserString(threatTargetKey, getImporter().escapeDueToParserUnescaping(comments));
+			commentsMap.putUserString(threatTargetKey, comments);
 			String commentsMapTag = getCommentsMapTag(threatRatingNode);
 			getImporter().setData(threatRatingCommentsData, commentsMapTag, commentsMap.toJsonString());
 		}

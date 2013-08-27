@@ -478,6 +478,12 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		if (node == null)
 			return;
 		
+		String nodeTreeAsString = getFormattedNodeContent(node);
+		importField(ref, destinationTag, nodeTreeAsString);
+	}
+
+	public String getFormattedNodeContent(Node node)	throws Exception
+	{
 		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
 		Document documentToUse = documentBuilder.newDocument();
@@ -487,7 +493,8 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		Node appendedNode = documentToUse.appendChild(adoptedNode);
 		String nodeTreeAsString = nodeToString(appendedNode);
 		nodeTreeAsString = HtmlUtilitiesRelatedToShef.getNormalizedAndSanitizedHtmlText(nodeTreeAsString, AbstractUserTextDataWithHtmlFormatting.getAllowedHtmlTags());
-		importField(ref, destinationTag, nodeTreeAsString);
+		
+		return nodeTreeAsString;
 	}
 
 	private String nodeToString(Node node) throws Exception 
