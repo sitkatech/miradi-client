@@ -40,8 +40,7 @@ public class SingleSelectionEditorComponentWithHierarchies extends AbstractEdito
 
 	private void initializeWithDefaultChoice(ChoiceQuestion questionToUse)
 	{
-		String defaultCode = questionToUse.getAllCodes().firstElement();
-		setText(new CodeList(new String[]{defaultCode}).toString());
+		setText(new CodeList(new String[]{""}).toString());
 	}
 	
 	@Override
