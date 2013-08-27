@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objects;
 
+import java.util.Arrays;
 import java.util.Vector;
 
 import org.miradi.ids.BaseId;
@@ -225,12 +226,15 @@ abstract public class AbstractTarget extends Factor
 
 	public static String computeTNCViability(Project project)
 	{
-		Target[] targets = project.getTargetPool().getSortedTargets();
+		Vector<AbstractTarget> targets = new Vector<AbstractTarget>();
+		targets.addAll(Arrays.asList(project.getHumanWelfareTargetPool().getSortedHumanWelfareTargets()));
+		targets.addAll(Arrays.asList(project.getTargetPool().getSortedTargets()));
 		CodeList codes = new CodeList();
-		for(int i = 0; i < targets.length; ++i)
+		for(AbstractTarget target : targets)
 		{
-			codes.add(targets[i].getTargetViability());
+			codes.add(target.getTargetViability());
 		}
+		
 		return TNCViabilityFormula.getAverageRatingCode(codes);
 	}
 

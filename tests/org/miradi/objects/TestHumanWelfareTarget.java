@@ -23,7 +23,7 @@ package org.miradi.objects;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 
 
-public class TestHumanWelfareTarget extends ObjectTestCase
+public class TestHumanWelfareTarget extends TestAbstractTarget
 {
 	public TestHumanWelfareTarget(String name)
 	{
@@ -32,6 +32,12 @@ public class TestHumanWelfareTarget extends ObjectTestCase
 	
 	public void testFields() throws Exception
 	{
-		verifyFields(HumanWelfareTargetSchema.getObjectType());
+		verifyFields(getTargetType());
+	}
+
+	@Override
+	protected int getTargetType()
+	{
+		return HumanWelfareTargetSchema.getObjectType();
 	}
 }
