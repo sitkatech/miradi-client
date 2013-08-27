@@ -154,6 +154,7 @@ import org.miradi.objects.TestStress;
 import org.miradi.objects.TestSubTarget;
 import org.miradi.objects.TestTableSettings;
 import org.miradi.objects.TestTaggedObjectSet;
+import org.miradi.objects.TestTarget;
 import org.miradi.objects.TestTask;
 import org.miradi.objects.TestTextBox;
 import org.miradi.objects.TestThreatRatingBundle;
@@ -464,6 +465,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestThreatRatingCommentsData.class));
 		addTest(new TestSuite(TestExpense.class));
 		addTest(new TestSuite(TestHumanWelfareTarget.class));
+		addTest(new TestSuite(TestTarget.class));
 		addTest(new TestSuite(TestIucnRedlistSpecies.class));
 		addTest(new TestSuite(TestOtherNotableSpecies.class));
 		addTest(new TestSuite(TestAudience.class));
