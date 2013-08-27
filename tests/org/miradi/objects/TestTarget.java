@@ -29,11 +29,6 @@ public class TestTarget extends TestAbstractTarget
 		super(name);
 	}
 	
-	public void testFields() throws Exception
-	{
-		verifyFields(getTargetType());
-	}
-
 	@Override
 	protected int getTargetType()
 	{
