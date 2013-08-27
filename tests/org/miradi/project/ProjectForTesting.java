@@ -1854,7 +1854,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	private String getMultilineSampleData(String userText)
 	{
-		userText += "Value "+ HtmlUtilities.BR_TAG + HtmlUtilities.BR_TAG + "With multiple lines!";
+		userText += "Value"+ HtmlUtilities.BR_TAG + HtmlUtilities.BR_TAG + "With multiple lines!";
 		
 		return userText;
 	}
