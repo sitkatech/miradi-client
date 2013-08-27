@@ -31,6 +31,11 @@ abstract public class TestAbstractTarget extends ObjectTestCase
 		super(name);
 	}
 	
+	public void testFields() throws Exception
+	{
+		verifyFields(getTargetType());
+	}
+	
 	public void testOverallProjectViabilityRating() throws Exception
 	{
 		verifyOverallViabilityRating("");
