@@ -64,12 +64,12 @@ public class IndicatorViabilityTableModel extends PlanningViewAbstractTreeTableS
 	}
 	
 	@Override
-	public boolean isFortmattedColumn(int modelColumn)
+	public boolean isFormattedColumn(int modelColumn)
 	{
 		if (isSummaryColumn(modelColumn))
 			return true;
 		
-		return super.isFortmattedColumn(modelColumn);
+		return super.isFormattedColumn(modelColumn);
 	}
 	
 	@Override

@@ -141,7 +141,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	}
 	
 	@Override
-	public boolean isFortmattedColumn(int modelColumn)
+	public boolean isFormattedColumn(int modelColumn)
 	{
 		if (isDetailsColumn(modelColumn))
 			return true;
@@ -149,7 +149,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		if (isCommentsColumn(modelColumn))
 			return true;
 		
-		return super.isFortmattedColumn(modelColumn);
+		return super.isFormattedColumn(modelColumn);
 	}
 
 	private boolean isWhoColumn(String columnTag)
