@@ -46,6 +46,7 @@ import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTable
 import org.miradi.dialogs.tablerenderers.BasicTableCellEditorOrRendererFactory;
 import org.miradi.dialogs.tablerenderers.BudgetCostTreeTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
+import org.miradi.dialogs.tablerenderers.ExpandingReadonlyTableCellEditorOrRendererFactory;
 import org.miradi.dialogs.tablerenderers.FontForObjectProvider;
 import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererOnlyFactory;
 import org.miradi.dialogs.tablerenderers.NumericTableCellRendererFactory;
@@ -84,6 +85,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		whoColumnTableCellEditorFactory = new WhoColumnTableCellEditorFactory(getMainWindow(), this);
 		whenColumnTableCellEditorFactory = new WhenTableCellPopupEditorOrRendererFactory(mainWindowToUse, this, fontProvider);
 		singleLineTextCellEditorFactory = new SingleLineObjectTableCellEditorOrRendererFactory(this, fontProvider);
+		multiLineTextCellEditorFactor = new ExpandingReadonlyTableCellEditorOrRendererFactory(mainWindowToUse, this, fontProvider);
 		
 		addMouseListener(new PlanningRightClickHandler(getMainWindow(), this, this));
 	}
@@ -110,6 +112,11 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 			ChoiceQuestion question = StaticQuestionManager.getQuestion(cellQuestionClass);
 			ChoiceItemComboBox comboBox = new ChoiceItemComboBox(question);
 			return new DefaultCellEditor(comboBox);
+		}
+		
+		if (getCastedModel().isFortmattedEditableColumn(modelColumn))
+		{
+			return multiLineTextCellEditorFactor;
 		}
 		
 		return getSingleLineTextCellEditorFactory();
@@ -262,4 +269,5 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	private WhoColumnTableCellEditorFactory whoColumnTableCellEditorFactory;
 	private WhenTableCellPopupEditorOrRendererFactory whenColumnTableCellEditorFactory;
 	private SingleLineObjectTableCellEditorOrRendererFactory singleLineTextCellEditorFactory;
+	private ExpandingReadonlyTableCellEditorOrRendererFactory multiLineTextCellEditorFactor;
 }
