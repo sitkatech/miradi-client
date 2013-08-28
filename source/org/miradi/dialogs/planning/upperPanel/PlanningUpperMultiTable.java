@@ -114,7 +114,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 			return new DefaultCellEditor(comboBox);
 		}
 		
-		if (getCastedModel().isFortmattedEditableColumn(modelColumn))
+		if (getCastedModel().isFormattedEditableColumn(modelColumn))
 		{
 			return multiLineTextCellEditorFactor;
 		}
