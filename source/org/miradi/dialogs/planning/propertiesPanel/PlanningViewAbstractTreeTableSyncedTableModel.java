@@ -98,7 +98,7 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return false;
 	}
 	
-	public boolean isFortmattedColumn(int modelColumn)
+	public boolean isFormattedColumn(int modelColumn)
 	{
 		return false;
 	}
