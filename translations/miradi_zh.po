@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-28 11:01-0500\n"
+"POT-Creation-Date: 2013-08-28 13:16-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -7679,6 +7679,26 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:80
 msgid "This item is shared, so will be deleted from multiple places."
 msgstr "本条目是共享的，因此将会从多个地方删除。 \t\t"
+
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo7.java:111
+msgid ""
+"This migraiton ony has reverse to remove Miradi share taxonomy related "
+"objects."
+msgstr ""
+
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo5.java:78
+msgid "This migration changes default real status code to \"\""
+msgstr ""
+
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo6.java:79
+msgid "This migration corrects indicator threshold escaping issues."
+msgstr ""
+
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo4.java:92
+msgid ""
+"This migration creates new future status objects from indicator's future "
+"status fields"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:89
 msgid ""
