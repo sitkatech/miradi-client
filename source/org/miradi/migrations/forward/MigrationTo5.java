@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations.forward;
 
+import org.miradi.main.EAM;
 import org.miradi.migrations.AbstractMigrationVisitor;
 import org.miradi.migrations.AbstractSingleTypeMigration;
 import org.miradi.migrations.MigrationResult;
@@ -69,6 +70,12 @@ public class MigrationTo5 extends AbstractSingleTypeMigration
 	protected int getFromVersion() 
 	{
 		return FROM_VERSION;
+	}
+	
+	@Override
+	protected String getDescription()
+	{
+		return EAM.text("This migration changes default real status code to \"\"");
 	}
 	
 	abstract private class AbstractStrategyVisitor extends AbstractMigrationVisitor

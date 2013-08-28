@@ -27,6 +27,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.miradi.ids.BaseId;
+import org.miradi.main.EAM;
 import org.miradi.migrations.AbstractMigrationVisitor;
 import org.miradi.migrations.AbstractSingleTypeMigration;
 import org.miradi.migrations.IndicatorFutureStatusTagsToFutureStatusTagsMap;
@@ -83,6 +84,12 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 	protected int getFromVersion() 
 	{
 		return 3;
+	}
+	
+	@Override
+	protected String getDescription()
+	{
+		return EAM.text("This migration creates new future status objects from indicator's future status fields");
 	}
 	
 	private class IndicatorVisitor extends AbstractMigrationVisitor

@@ -22,6 +22,7 @@ package org.miradi.migrations.forward;
 
 import java.util.Set;
 
+import org.miradi.main.EAM;
 import org.miradi.migrations.AbstractMigrationVisitor;
 import org.miradi.migrations.AbstractSingleTypeMigration;
 import org.miradi.migrations.MigrationResult;
@@ -70,6 +71,12 @@ public class MigrationTo6 extends AbstractSingleTypeMigration
 	protected int getFromVersion() 
 	{
 		return 5;
+	}
+	
+	@Override
+	protected String getDescription()
+	{
+		return EAM.text("This migration corrects indicator threshold escaping issues.");
 	}
 	
 	private class IndicatorVisitor extends AbstractMigrationVisitor

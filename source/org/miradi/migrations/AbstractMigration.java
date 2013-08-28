@@ -104,5 +104,7 @@ abstract public class AbstractMigration
 	
 	abstract protected MigrationResult reverseMigrate() throws Exception;
 	
+	abstract protected String getDescription();
+	
 	private RawProject rawProject;
 }

@@ -22,6 +22,7 @@ package org.miradi.migrations.forward;
 
 import java.util.Vector;
 
+import org.miradi.main.EAM;
 import org.miradi.migrations.AbstractMigration;
 import org.miradi.migrations.AbstractMigrationVisitor;
 import org.miradi.migrations.MigrationResult;
@@ -102,6 +103,12 @@ public class MigrationTo7 extends AbstractMigration
 	protected int getFromVersion() 
 	{
 		return 6;
+	}
+	
+	@Override
+	protected String getDescription()
+	{
+		return EAM.text("This migraiton ony has reverse to remove Miradi share taxonomy related objects.");
 	}
 	
 	private class RemoveTaxonomyClassificationFieldVisitor extends AbstractMigrationVisitor
