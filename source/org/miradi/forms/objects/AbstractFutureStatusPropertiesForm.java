@@ -21,8 +21,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.forms.objects;
 
 import org.miradi.forms.FieldPanelSpec;
+import org.miradi.objects.Indicator;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.FutureStatusSchema;
+import org.miradi.schemas.IndicatorSchema;
 
 abstract public class AbstractFutureStatusPropertiesForm extends FieldPanelSpec
 {
@@ -33,6 +35,7 @@ abstract public class AbstractFutureStatusPropertiesForm extends FieldPanelSpec
 		if (isViabilityFutureStatus())
 			addChoiceField(type, FutureStatusSchema.TAG_FUTURE_STATUS_RATING, StatusQuestion.class);
 		
+		addLabelAndReadOnlySingeLineField(IndicatorSchema.getObjectType(), Indicator.TAG_UNIT);
 		addDateField(type, FutureStatusSchema.TAG_FUTURE_STATUS_DATE);
 		addLabelAndField(type, FutureStatusSchema.TAG_FUTURE_STATUS_DETAIL, TYPE_SINGLE_LINE_STRING);
 		addLabelAndField(type, FutureStatusSchema.TAG_FUTURE_STATUS_COMMENTS, TYPE_SINGLE_LINE_STRING);
