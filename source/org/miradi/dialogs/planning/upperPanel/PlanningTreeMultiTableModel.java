@@ -83,7 +83,7 @@ public class PlanningTreeMultiTableModel extends MultiTableModel implements Mode
 	
 	public boolean isFortmattedEditableColumn(int modelColumn)
 	{
-		return getCastedModel(modelColumn).isFortmattedColumn(modelColumn);
+		return getCastedModel(modelColumn).isFormattedColumn(modelColumn);
 	}
 	
 	public Class getCellQuestion(int row, int modelColumn)
