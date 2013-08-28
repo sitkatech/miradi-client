@@ -98,6 +98,11 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return false;
 	}
 	
+	public boolean isFortmattedColumn(int modelColumn)
+	{
+		return false;
+	}
+	
 	@Override
 	public String getColumnGroupCode(int modelColumn)
 	{

@@ -139,6 +139,18 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		
 		return true;
 	}
+	
+	@Override
+	public boolean isFortmattedColumn(int modelColumn)
+	{
+		if (isDetailsColumn(modelColumn))
+			return true;
+		
+		if (isCommentsColumn(modelColumn))
+			return true;
+		
+		return super.isFortmattedColumn(modelColumn);
+	}
 
 	private boolean isWhoColumn(String columnTag)
 	{
@@ -684,8 +696,11 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	@Override
 	public String getTagForCell(int nodeType, int column)
 	{
+		if (Target.is(nodeType))
+			System.out.println("hserer");
+		
 		String columnTag = getColumnTag(column);
-		if (columnTag.equals(WorkPlanColumnConfigurationQuestion.COMMENTS_COLUMN_CODE))
+		if (isCommentsColumn(column))
 		{
 			columnTag = Factor.TAG_COMMENTS;
 		}
@@ -790,6 +805,14 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		}
 		
 		return columnTag;
+	}
+	
+	private boolean isCommentsColumn(int column)
+	{
+		if (getColumnTag(column).equals(Factor.TAG_COMMENTS))
+			return true;
+		
+		return getColumnTag(column).equals(WorkPlanColumnConfigurationQuestion.COMMENTS_COLUMN_CODE);
 	}
 
 	private boolean isDetailsColumn(int column)
