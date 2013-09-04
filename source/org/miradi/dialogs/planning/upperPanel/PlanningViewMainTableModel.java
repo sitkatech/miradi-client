@@ -696,9 +696,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	@Override
 	public String getTagForCell(int nodeType, int column)
 	{
-		if (Target.is(nodeType))
-			System.out.println("hserer");
-		
 		String columnTag = getColumnTag(column);
 		if (isCommentsColumn(column))
 		{
