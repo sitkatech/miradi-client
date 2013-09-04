@@ -390,7 +390,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		
 		reformatted.add(wholePanel.getTree().getTableHeader());
 		reformatted.add(wholePanel.getMainTable().getTableHeader());
-		
+		wholePanel.getTree().updateAutomaticRowHeights();
 		reformatted.add(wholePanel.getTree());
 		reformatted.add(wholePanel.getMainTable());
 		
