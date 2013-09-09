@@ -94,12 +94,14 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 	{
 		project.addCommandExecutedListener(this);
 		selectionPanel.becomeActive();
+		legendPanel.becomeActive();
 	}
 	
 	public void becomeInactive()
 	{
 		project.removeCommandExecutedListener(this);
 		selectionPanel.becomeInactive();
+		legendPanel.becomeInactive();
 	}
 	
 	private void reloadDiagramCards(int objectType) throws Exception
