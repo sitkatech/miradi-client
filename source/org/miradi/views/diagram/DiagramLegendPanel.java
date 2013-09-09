@@ -95,7 +95,6 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		super(mainWindowToUse.getProject());
 		
 		mainWindow = mainWindowToUse;
-		getProject().addCommandExecutedListener(this);
 		editListPanel = new ObjectRefListEditorPanel(getProject(), ORef.createInvalidWithType(getDiagramType()), DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, TaggedObjectSetSchema.getObjectType());
 		createLegendCheckBoxes();
 		addAllComponents();
@@ -103,10 +102,24 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	}
 	
 	@Override
-	public void dispose()
+	public void becomeActive()
+	{
+		super.becomeActive();
+		
+		getProject().addCommandExecutedListener(this);
+	}
+	
+	@Override
+	public void becomeInactive()
 	{
 		getProject().removeCommandExecutedListener(this);
-
+		
+		super.becomeInactive();	
+	}
+	
+	@Override
+	public void dispose()
+	{
 		if(editListPanel != null)
 			editListPanel.dispose();
 		editListPanel = null;
