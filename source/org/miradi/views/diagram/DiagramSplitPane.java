@@ -77,8 +77,6 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		
 		setLeftComponent(createLeftPanel(objectType));
 		setRightComponent(new MiradiScrollPane(diagramCards));
-		
-		project.addCommandExecutedListener(this);
 	}
 
 	public void showCurrentCard() throws Exception
@@ -88,9 +86,20 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 	
 	public void dispose()
 	{
-		project.removeCommandExecutedListener(this);
 		getDiagramPageList().dispose();
 		legendPanel.dispose();
+	}
+	
+	public void becomeActive()
+	{
+		project.addCommandExecutedListener(this);
+		selectionPanel.becomeActive();
+	}
+	
+	public void becomeInactive()
+	{
+		project.removeCommandExecutedListener(this);
+		selectionPanel.becomeInactive();
 	}
 	
 	private void reloadDiagramCards(int objectType) throws Exception

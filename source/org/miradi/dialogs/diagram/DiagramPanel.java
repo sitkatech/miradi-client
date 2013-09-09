@@ -179,7 +179,6 @@ abstract public class DiagramPanel extends DisposablePanelWithDescription implem
 		diagramSplitter.showCurrentCard();
 	}
 	
-	
 	public DisposablePanelWithDescription getTabContentsComponent()
 	{
 		return this;
@@ -227,13 +226,13 @@ abstract public class DiagramPanel extends DisposablePanelWithDescription implem
 	@Override
 	public void becomeActive()
 	{
-		// TODO: When diagramSplitter has becomeActive, call it from here
+		diagramSplitter.becomeActive();
 	}
 	
 	@Override
 	public void becomeInactive()
 	{
-		// TODO: When diagramSplitter has becomeInactive, call it from here
+		diagramSplitter.becomeInactive();
 	}
 
 	abstract protected DiagramSplitPane createDiagramSplitter() throws Exception;
