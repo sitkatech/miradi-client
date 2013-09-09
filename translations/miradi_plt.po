@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-28 13:16-0500\n"
+"POT-Creation-Date: 2013-09-09 14:16-0500\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1926,7 +1926,7 @@ msgstr ""
 msgid "An error has occured while writing assignment data."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:335
+#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:346
 #: Miradi/source/org/miradi/diagram/DiagramModel.java:762
 msgid ""
 "An error is preventing this diagram from displaying correctly. Most likely, "
@@ -2743,7 +2743,7 @@ msgid ""
 "given the continuation of the existing management/conservation situation)."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:178
+#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:189
 msgid "Control Bar"
 msgstr ""
 
@@ -4555,11 +4555,11 @@ msgstr ""
 msgid "Manage Stresses for "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:411
+#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:424
 msgid "Manage Tags"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:137
+#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:150
 msgid "Manage Tags (BETA)..."
 msgstr ""
 
@@ -5115,7 +5115,7 @@ msgstr ""
 msgid "Not Started"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:424
+#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:435
 msgid "Not all factors are being shown because %s tag(s) are checked"
 msgstr ""
 
