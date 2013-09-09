@@ -105,7 +105,8 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	public void becomeActive()
 	{
 		super.becomeActive();
-		
+
+		editListPanel.becomeActive();
 		getProject().addCommandExecutedListener(this);
 	}
 	
@@ -113,6 +114,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	public void becomeInactive()
 	{
 		getProject().removeCommandExecutedListener(this);
+		editListPanel.becomeInactive();
 		
 		super.becomeInactive();	
 	}
@@ -175,7 +177,6 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		createCheckBox(GoalSchema.OBJECT_NAME);
 		createCheckBox(ObjectiveSchema.OBJECT_NAME);
 		createCheckBox(IndicatorSchema.OBJECT_NAME);
-
 	}
 	
 	private JPanel createLegendButtonPanel(Actions actions)
@@ -343,6 +344,13 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		{
 			if (shouldResetCheckBoxes(event))
 				resetCheckBoxes();
+
+			if (isUpdateTaggedObjectSetsCommand(event))
+			{
+				DiagramObject diagramObject = getCurrentDiagramObject();
+				if (diagramObject != null)
+					editListPanel.setObjectRef(diagramObject.getRef());
+			}
 		}
 		catch (Exception e)
 		{
@@ -352,9 +360,6 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 
 	private boolean shouldResetCheckBoxes(CommandExecutedEvent event)
 	{
-		if (isUpdateTaggedObjectSetsCommand(event))
-			return true;
-		
 		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE))
 			return true;
 		
