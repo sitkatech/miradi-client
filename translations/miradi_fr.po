@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-09 14:16-0500\n"
+"POT-Creation-Date: 2013-09-09 14:31-0500\n"
 "PO-Revision-Date: 2013-04-02 10:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -4869,11 +4869,11 @@ msgstr ""
 msgid "Manage Stresses for "
 msgstr "Gérer les stress pour"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:424
+#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:429
 msgid "Manage Tags"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:150
+#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:152
 msgid "Manage Tags (BETA)..."
 msgstr "Gérer les étiquettes (BETA) ..."
 

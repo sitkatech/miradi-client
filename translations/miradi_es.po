@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-09 14:16-0500\n"
+"POT-Creation-Date: 2013-09-09 14:31-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -4721,11 +4721,11 @@ msgstr ""
 msgid "Manage Stresses for "
 msgstr "Manejar presiones para"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:424
+#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:429
 msgid "Manage Tags"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:150
+#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:152
 msgid "Manage Tags (BETA)..."
 msgstr "Administrar etiquetas (BETA)… "
 
