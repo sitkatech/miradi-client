@@ -29,6 +29,14 @@ public class TestEAM extends MiradiTestCase
 		super(name);
 	}
 	
+	public void testSubstituteWithNullReplacementValue()
+	{
+		String replacement = null;
+		String substituteString = "something plus something =  %s dollars";
+		assertEquals("didnt substitude correctly?", "something plus something =   dollars", EAM.substitute(substituteString, replacement));
+		assertEquals("Substitution was correct?", "something plus something =  4 dollars", EAM.substitute(substituteString, "4"));
+	}
+	
 	public void testSubstituteWithMap()
 	{
 		HashMap<String, String> substituteMap = new HashMap<String, String>();
