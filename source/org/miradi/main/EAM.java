@@ -387,6 +387,12 @@ public class EAM
 	
 	public static String substitute(String text, String token, String replacement)
 	{
+		if (text == null)
+			EAM.logError("Substitute called with null value");
+		
+		if (replacement == null)
+			replacement = "";
+		
 		return text.replace(token, replacement);
 	}
 
@@ -458,6 +464,7 @@ public class EAM
 	{
 		return JOptionPane.showOptionDialog(getMainWindow(), text, title, JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, buttonLabels, null);
 	}
+
 	
 	public static void okDialog(String title, String[] body)
 	{

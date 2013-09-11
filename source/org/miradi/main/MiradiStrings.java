@@ -77,12 +77,20 @@ public class MiradiStrings
 	public static String getErrorMessage(Exception e)
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
-		tokenReplacementMap.put("%message", e.getMessage());
+		tokenReplacementMap.put("%message", getSafeMessage(e));
 		tokenReplacementMap.put("%logPath", EAM.getDefaultExceptionsLogFile().getAbsolutePath());
 		return EAM.substitute("An unexpected error occurred: %message" +
 				"\n\nPlease report this to the Miradi support team, " +
 				"ideally including the contents of this file: " +
 				"\n\n   %logPath" +  
 				"\n\nMiradi has attempted to save your latest changes, and will now exit.", tokenReplacementMap);
+	}
+
+	private static String getSafeMessage(Exception e)
+	{
+		if (e.getMessage() != null)
+			return e.getMessage();
+
+		return "No Exception Message";
 	}
 }

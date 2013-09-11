@@ -398,7 +398,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		return reformatted;
 	}
 	
-	public void selectObjectAfterSwingClearsItDueToTreeStructureChange(TableWithColumnWidthAndSequenceSaver table, int fallbackRow, int fallbackColumn)
+	private void selectObjectAfterSwingClearsItDueToTreeStructureChange(TableWithColumnWidthAndSequenceSaver table, int fallbackRow, int fallbackColumn)
 	{
 		SwingUtilities.invokeLater(new Reselecter(table, fallbackRow, fallbackColumn));
 	}
