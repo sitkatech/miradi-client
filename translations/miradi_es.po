@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-09 14:31-0500\n"
+"POT-Creation-Date: 2013-09-11 13:01-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -4326,7 +4326,7 @@ msgstr "Es relevante"
 msgid "Is Tagged"
 msgstr "Está etiquetado"
 
-#: Miradi/source/org/miradi/main/EAM.java:635
+#: Miradi/source/org/miradi/main/EAM.java:642
 msgid ""
 "It appears that Miradi was launched without the -Xmx512m switch. As a "
 "result, certain operations like Reports may run out of memory."
