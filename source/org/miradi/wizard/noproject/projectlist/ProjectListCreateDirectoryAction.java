@@ -57,10 +57,12 @@ public class ProjectListCreateDirectoryAction extends ProjectListAction
 	@Override
 	protected void doWork() throws Exception
 	{	
-		File newDirToCreate = new File(getSelectedFile(), "New Folder");
+		String newFolderName = RenameOldProjectDoer.getLegalProjectNameFromUser(getMainWindow(), "New Folder");
+		if (newFolderName == null)
+			return;
+		
+		File newDirToCreate = new File(getSelectedFile(), newFolderName);
 		if (!newDirToCreate.mkdirs())
 			throw new IOException();
-			
-		RenameOldProjectDoer.doIt(EAM.getMainWindow(), newDirToCreate);
 	}
 }

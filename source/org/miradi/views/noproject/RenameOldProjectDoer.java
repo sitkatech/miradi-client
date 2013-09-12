@@ -71,7 +71,7 @@ public class RenameOldProjectDoer
 		}
 	}
 	
-	private static String getLegalProjectNameFromUser(MainWindow mainWindow, String projectName) throws Exception
+	public static String getLegalProjectNameFromUser(MainWindow mainWindow, String projectName) throws Exception
 	{
 		while (true)
 		{
