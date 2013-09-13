@@ -91,6 +91,6 @@ public class MiradiStrings
 		if (e.getMessage() != null)
 			return e.getMessage();
 
-		return "No Exception Message";
+		return "";
 	}
 }
