@@ -49,7 +49,6 @@ import org.miradi.dialogfields.DropDownChoiceField;
 import org.miradi.dialogfields.EditableCodeListField;
 import org.miradi.dialogfields.ExternalProjectsDisplayField;
 import org.miradi.dialogfields.IndicatorRelevancyOverrideListField;
-import org.miradi.dialogfields.TaxonomyEditorFields;
 import org.miradi.dialogfields.ObjectCheckBoxField;
 import org.miradi.dialogfields.ObjectChoiceField;
 import org.miradi.dialogfields.ObjectCodeEditorField;
@@ -78,7 +77,7 @@ import org.miradi.dialogfields.StrategyGoalOverrideListField;
 import org.miradi.dialogfields.StrategyObjectiveOverrideListField;
 import org.miradi.dialogfields.StringMapProjectResourceFilterEditorField;
 import org.miradi.dialogfields.TaxonomyEditorField;
-import org.miradi.dialogfields.WhenEditorField;
+import org.miradi.dialogfields.TaxonomyEditorFields;
 import org.miradi.dialogfields.WhoEditorField;
 import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
@@ -721,11 +720,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public PopupQuestionEditorField createPopupQuestionEditor(JDialog parentDialog, int objectType, String tagToUse, Class questionClass) throws Exception
 	{
 		return new PopupQuestionEditorField(parentDialog, getProject(), getRefForType(objectType), tagToUse, StaticQuestionManager.getQuestion(questionClass));
-	}
-	
-	public WhenEditorField createWhenEditorField(ORef refToUse)
-	{
-		return new WhenEditorField(getMainWindow(), refToUse);
 	}
 	
 	public WhoEditorField createWhoEditorField(ORef refToUse)
