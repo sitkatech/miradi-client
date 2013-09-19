@@ -201,13 +201,13 @@ public class TimePeriodCosts
 	
 	protected void mergeNonConflicting(TimePeriodCosts snapShotTimePeriodCosts, TimePeriodCosts timePeriodCostsToMerge) throws Exception
 	{
-		if (!snapShotTimePeriodCosts.hasExpenseData())
+		if (!snapShotTimePeriodCosts.hasExpenseData() || snapShotTimePeriodCosts.isZeroExpenseValue())
 			mergeAllExpenseCategorizedQuantityInPlace(timePeriodCostsToMerge);
 		
-		if (!snapShotTimePeriodCosts.hasTotalWorkUnitsData())
+		if (!snapShotTimePeriodCosts.hasTotalWorkUnitsData() || snapShotTimePeriodCosts.isZeroTotaWorkUnits())
 			mergeAllWorkUnitCategorizedQuantityInPlace(timePeriodCostsToMerge);
 	}
-	
+
 	public void retainWorkUnitDataRelatedToAnyOf(BaseObject baseObject)
 	{
 		retainWorkUnitDataRelatedToAnyOf(new ORefSet(baseObject));
@@ -383,6 +383,16 @@ public class TimePeriodCosts
 	private boolean hasTotalWorkUnitsData()
 	{
 		return getTotalWorkUnits().hasValue();
+	}
+	
+	private boolean isZeroExpenseValue()
+	{
+		return getTotalExpense().isZeroValue();
+	}
+
+	private boolean isZeroTotaWorkUnits()
+	{
+		return getTotalWorkUnits().isZeroValue();
 	}
 	
 	public Vector<CategorizedQuantity> getWorkUnitCategorizedQuantities()

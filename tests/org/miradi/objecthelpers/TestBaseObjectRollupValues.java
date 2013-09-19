@@ -27,8 +27,10 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ResourceAssignment;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.utils.DateUnitEffortList;
+import org.miradi.utils.OptionalDouble;
 
 public class TestBaseObjectRollupValues extends TestCaseWithProject
 {
@@ -67,6 +69,38 @@ public class TestBaseObjectRollupValues extends TestCaseWithProject
 		
 		TimePeriodCosts timePeriodCosts2009 = timePeriodCostsMap.calculateTimePeriodCosts(year2009);
 		assertEquals("wrong total for 2009?", 15.0, timePeriodCosts2009.getTotalWorkUnits().getValue());
+	}
+	
+	public void testDoNotOverrideExpensesWithZero() throws Exception
+	{
+		getProject().setProjectStartDate(MultiCalendar.createFromGregorianYearMonthDay(2009, 1, 1));
+		getProject().setProjectEndDate(MultiCalendar.createFromGregorianYearMonthDay(2009, 12, 31));
+
+		Strategy strategy = getProject().createStrategy();
+		getProject().addExpenseAssignment(strategy, year2009, 3);
+		
+		Task activity = getProject().createTask(strategy);
+		getProject().addExpenseAssignment(activity, year2009, 0);
+
+		TimePeriodCosts strategyTimePeriodCosts = strategy.calculateTimePeriodCosts(year2009);
+		OptionalDouble total = strategyTimePeriodCosts.getTotalExpense();
+		assertEquals("Super value should not be overriden by 0 value?", 3.0, total.getValue());
+	}
+	
+	public void testDoNotOverrideWorkUnitsWithZero() throws Exception
+	{
+		getProject().setProjectStartDate(MultiCalendar.createFromGregorianYearMonthDay(2009, 1, 1));
+		getProject().setProjectEndDate(MultiCalendar.createFromGregorianYearMonthDay(2009, 12, 31));
+
+		Strategy strategy = getProject().createStrategy();
+		getProject().addResourceAssignment(strategy, 3, year2009);
+		
+		Task activity = getProject().createTask(strategy);
+		getProject().addResourceAssignment(activity, 0, year2009);
+		
+		TimePeriodCosts strategyTimePeriodCosts = strategy.calculateTimePeriodCosts(year2009);
+		OptionalDouble total = strategyTimePeriodCosts.getTotalWorkUnits();
+		assertEquals("Super value should not be overriden by 0 value?", 3.0, total.getValue());
 	}
 	
 	public void testRollupResourceAssignmentsWithNoQuantities() throws Exception

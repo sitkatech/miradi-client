@@ -39,6 +39,13 @@ public class TestOptionalDouble extends MiradiTestCase
 		assertEquals("different hashcodes for tens?", ten.hashCode(), anotherTen.hashCode());		
 	}
 	
+	public void testIsZero()
+	{
+		assertFalse("No value is not zero?", new OptionalDouble().isZeroValue());
+		assertFalse("Value is not zero?", new OptionalDouble(1.0).isZeroValue());
+		assertTrue("Value is zero?", new OptionalDouble(0.0).isZeroValue());
+	}
+	
 	public void testHasNonZeroValue()
 	{
 		assertFalse("empty OptionalDouble should not have value?", new OptionalDouble().hasNonZeroValue());

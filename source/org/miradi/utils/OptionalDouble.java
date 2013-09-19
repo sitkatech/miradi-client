@@ -167,7 +167,20 @@ public class OptionalDouble
 		if (hasNoValue())
 			return false;
 		
-		return getRawValue() != 0.0;
+		return !isValueZero();
+	}
+	
+	public boolean isZeroValue()
+	{
+		if (hasNoValue())
+			return false;
+		
+		return isValueZero();
+	}
+
+	private boolean isValueZero()
+	{
+		return getRawValue() == 0.0;
 	}
 	
 	private boolean hasValue;
