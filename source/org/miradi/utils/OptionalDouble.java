@@ -167,7 +167,7 @@ public class OptionalDouble
 		if (hasNoValue())
 			return false;
 		
-		return !isValueZero();
+		return !isValuePresentButZero();
 	}
 	
 	public boolean isZeroValue()
@@ -175,10 +175,10 @@ public class OptionalDouble
 		if (hasNoValue())
 			return false;
 		
-		return isValueZero();
+		return isValuePresentButZero();
 	}
 
-	private boolean isValueZero()
+	private boolean isValuePresentButZero()
 	{
 		return getRawValue() == 0.0;
 	}
