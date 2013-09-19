@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-11 13:01-0500\n"
+"POT-Creation-Date: 2013-09-17 17:31-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -6011,7 +6011,6 @@ msgid "Select Location..."
 msgstr "选择位置... \t\t"
 
 #: Miradi/source/org/miradi/dialogfields/WhoEditorField.java:42
-#: Miradi/source/org/miradi/dialogfields/WhenEditorField.java:43
 msgid "Select Project Resources"
 msgstr ""
 
