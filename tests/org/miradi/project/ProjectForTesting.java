@@ -1876,7 +1876,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		userText += "<ul><li>" + userText +  "</li></ul>";
 		userText += "<ol><li>" + userText +  "</li></ol>";
-		return null;
+		
+		return userText;
 	}
 
 	public String getSampleCode(ObjectData field)
