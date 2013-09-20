@@ -144,6 +144,7 @@ public class MiradiLogger
 		stringBuffer.append("Java Version = " + EAM.getJavaVersion() + "\n");
 		stringBuffer.append("OS Name = " + System.getProperty("os.name") + "\n");
 		stringBuffer.append("OS Version = " + System.getProperty("os.version") + "\n");
+		stringBuffer.append("OS Architecture = " + System.getProperty("os.arch") + "\n");
 		
 		return stringBuffer.toString();
 	}
