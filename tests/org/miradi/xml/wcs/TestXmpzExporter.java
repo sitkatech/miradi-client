@@ -83,10 +83,10 @@ public class TestXmpzExporter extends TestCaseWithProject
 			String valueWithInvalidChar = TestStringUtilities.getIllegalCharAsString();
 			getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_PROJECT_DESCRIPTION, valueWithInvalidChar);
 			validateProject();
-			fail("project with illegal chars should not validate?");
 		}
 		catch (Exception ignoreExpectedException)
 		{
+			fail("project with illegal chars be sanitized and should validate?");
 		}
 	}
 	

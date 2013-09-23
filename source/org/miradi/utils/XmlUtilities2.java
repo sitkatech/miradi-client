@@ -105,7 +105,7 @@ public class XmlUtilities2
 		return decodeApostrophes(value);
 	}
 
-	private static String decodeApostrophes(String value)
+	public static String decodeApostrophes(String value)
 	{
 		value = value.replaceAll("&#39;", "'");
 		value = value.replaceAll("&#x27;", "'");

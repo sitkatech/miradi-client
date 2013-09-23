@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import java.awt.Color;
+import java.io.InputStream;
 import java.util.Collections;
 import java.util.Vector;
 import java.util.regex.Pattern;
@@ -41,6 +42,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.w3c.tidy.Tidy;
 import org.xml.sax.InputSource;
 
 public class HtmlUtilities
@@ -347,7 +349,7 @@ public class HtmlUtilities
 	public static String fixAnchorElements(String xmlText, String[] allowedHtmlTags) throws Exception
 	{
 		xmlText = wrapWithTag(xmlText, "xml");
-
+		
 		final String fixAnchorElements = fixAnchorElements(xmlText);
 
 		return HtmlUtilities.removeAllExcept(fixAnchorElements, allowedHtmlTags);
@@ -425,11 +427,36 @@ public class HtmlUtilities
 	{
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		factory.setNamespaceAware(true);
-		DocumentBuilder documentBuilder = factory.newDocumentBuilder();
-		StringInputStreamWithSeek stringInputputStream = new StringInputStreamWithSeek(htmlText);
-		InputSource inputSource = new InputSource(stringInputputStream);
+		String tidyHtml = tidyValue(htmlText);
 
+		InputSource inputSource = new InputSource(new StringInputStreamWithSeek(tidyHtml));
+		DocumentBuilder documentBuilder = factory.newDocumentBuilder();
 		return documentBuilder.parse(inputSource);
+	}
+
+	private static String tidyValue(String htmlText) throws Exception
+	{
+		Tidy tidy = new Tidy();
+		tidy.setInputEncoding("UTF-8");
+        tidy.setOutputEncoding("UTF-8");
+		tidy.setQuiet(true);
+		tidy.setXmlOut(true);
+		tidy.setShowWarnings(false);
+		tidy.setOnlyErrors(true);
+		tidy.setShowErrors(0);
+		tidy.setWord2000(true);
+		tidy.setMakeBare(true);
+		tidy.setRawOut(true);
+		tidy.setBreakBeforeBR(false);
+		tidy.setTrimEmptyElements(false);
+		
+		htmlText = XmlUtilities2.decodeApostrophes(htmlText);
+		InputStream inputSource = new StringInputStreamWithSeek(htmlText);
+		
+		// NOTE: We tried XML output from JTidy but it was including <head> and <body>
+		Document document = tidy.parseDOM(inputSource, null);
+
+		return toXmlString(document);
 	}
 	
 	private static String toXmlString(Document document) throws Exception

@@ -1879,6 +1879,26 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		return userText;
 	}
+	
+	public String createNestedBulletsList()
+	{
+		String userText = "";
+		userText += 
+			"<ul>" +
+				"<li>" +
+					"<ol><li><b>level2</b></li></ol>" +
+				"</li>" +
+			"</ul>";
+		
+		userText += 
+			"<ol>" +
+				"<li>" +
+					"<ul><li>level2</li></ul>" +
+				"</li>" +
+			"</ol>";
+
+		return userText;
+	}
 
 	public String getSampleCode(ObjectData field)
 	{

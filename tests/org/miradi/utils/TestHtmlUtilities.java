@@ -29,6 +29,11 @@ public class TestHtmlUtilities extends MiradiTestCase
 		super(name);
 	}
 	
+	public void testStartElementsWithMissingEndElements() throws Exception
+	{
+		assertEquals("Start element should have end element?", "<ul><li>1</li><li>2</li></ul>", HtmlUtilitiesRelatedToShef.getNormalizedAndSanitizedHtmlText("<ul><li>1<li>2</ul>", getAllowedHtmlTags()));
+	}
+	
 	public void testEnsureQuotesAndApostrophesAreEscaped() throws Exception
 	{
 		verifyQuotesAndApostrophesAreEscaped("", "");

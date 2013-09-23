@@ -79,6 +79,12 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 		super(name);
 	}
 	
+	public void testNestedBullets() throws Exception
+	{
+		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_PROJECT_DESCRIPTION, getProject().createNestedBulletsList());
+		validateUsingStringWriter();
+	}
+	
 	public void testProjectSharingCode() throws Exception
 	{
 		ORef tncProjectDataRef = getProject().getSingletonObjectRef(TncProjectDataSchema.getObjectType());
