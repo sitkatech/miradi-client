@@ -31,7 +31,7 @@ public class TestEditableHtmlPane extends MiradiTestCase
 
 	public void testGetNormalizedAndSanitizedHtmlText() throws Exception
 	{
-		String htmlText = "<br/><b>x</b><i>x</i><ul>x</ul><ol>x</ol><li>x</li><u>x</u><strike>x</strike><a href=\"\">x</a>";
+		String htmlText ="<br/><b>x</b><i>x</i><ul><li>x</li></ul><ol><li>x</li></ol><ol><li>x</li></ol><u>x</u><strike>x</strike><a href=\"\">x</a>";
 
 		assertEquals("wrong new lines inserted?", htmlText, EditableHtmlPane.getNormalizedAndSanitizedHtmlText(htmlText));
 	}
