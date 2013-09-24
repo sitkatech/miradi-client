@@ -24,7 +24,6 @@ import java.awt.Color;
 
 import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
-import org.miradi.dialogs.dashboard.DashboardTabSplitPane;
 import org.miradi.dialogs.dashboard.SplitterPanelWithRightSideTextPanel;
 import org.miradi.dialogs.dashboard.StaticLongDescriptionProvider;
 import org.miradi.main.AppPreferences;
@@ -67,6 +66,6 @@ public class SplitterPanelWithStaticRightSideTextPanel extends SplitterPanelWith
 	@Override
 	protected PersistentNonPercentageHorizontalSplitPane createRawSplitPaneComponent(MainWindow mainWindowToUse)
 	{
-		return new DashboardTabSplitPane(this, mainWindowToUse, getSplitterIdentifier());
+		return new PersistentNonPercentageHorizontalSplitPane(this, mainWindowToUse, getSplitterIdentifier());
 	}
 }
