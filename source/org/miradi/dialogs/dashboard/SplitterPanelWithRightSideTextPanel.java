@@ -28,6 +28,7 @@ import org.miradi.dialogs.base.RowSelectionListener;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
+import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
 abstract public class SplitterPanelWithRightSideTextPanel extends DisposablePanelWithDescription
 {
@@ -100,7 +101,7 @@ abstract public class SplitterPanelWithRightSideTextPanel extends DisposablePane
 	
 	abstract protected AbstractLongDescriptionProvider getDefaultDescriptionProvider() throws Exception;
 	
-	abstract protected DashboardTabSplitPane createRawSplitPaneComponent(MainWindow mainWindowToUse);
+	abstract protected PersistentNonPercentageHorizontalSplitPane createRawSplitPaneComponent(MainWindow mainWindowToUse);
 	
 	private MainWindow mainWindow;
 	protected AbstractObjectDataInputPanel leftPanel;
