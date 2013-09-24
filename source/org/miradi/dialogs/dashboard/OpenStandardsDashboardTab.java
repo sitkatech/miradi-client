@@ -85,6 +85,12 @@ abstract public class OpenStandardsDashboardTab extends SplitterPanelWithRightSi
 
 		return false;
 	}
+
+	@Override
+	protected DashboardTabSplitPane createRawSplitPaneComponent(MainWindow mainWindowToUse)
+	{
+		return new DashboardTabSplitPane(this, mainWindowToUse, getSplitterIdentifier());
+	}
 	
 	private static final String SAME_SPLITTER_IDENTIFIER_FOR_ALL_TABS = "PanelWithDescriptionPanel";
 	private static final int BORDER_THICKNESS = 10;
