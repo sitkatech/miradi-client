@@ -52,11 +52,6 @@ abstract public class SplitterPanelWithRightSideTextPanel extends DisposablePane
 		return splitPane;
 	}
 
-	protected DashboardTabSplitPane createRawSplitPaneComponent(MainWindow mainWindowToUse)
-	{
-		return new DashboardTabSplitPane(this, mainWindowToUse, getSplitterIdentifier());
-	}
-
 	private void setupCommunicationBetweenLeftAndRightPanels(RightSideDescriptionPanel rightPanel)
 	{
 		((RowSelectionListener) leftPanel).addRowSelectionListener(rightPanel);	
@@ -104,6 +99,8 @@ abstract public class SplitterPanelWithRightSideTextPanel extends DisposablePane
 	abstract protected Color getRightPanelBackgroundColor();
 	
 	abstract protected AbstractLongDescriptionProvider getDefaultDescriptionProvider() throws Exception;
+	
+	abstract protected DashboardTabSplitPane createRawSplitPaneComponent(MainWindow mainWindowToUse);
 	
 	private MainWindow mainWindow;
 	protected AbstractObjectDataInputPanel leftPanel;
