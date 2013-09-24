@@ -43,7 +43,7 @@ abstract public class SplitterPanelWithRightSideTextPanel extends DisposablePane
 
 	private PersistentHorizontalSplitPane createSplitPane(MainWindow mainWindowToUse) throws Exception
 	{
-		splitPane = new DashboardTabSplitPane(this, mainWindowToUse, getSplitterIdentifier());
+		splitPane = createRawSplitPaneComponent(mainWindowToUse);
 		rightPanel = createRightPanel(getDefaultDescriptionProvider());
 		setupCommunicationBetweenLeftAndRightPanels(rightPanel);
 		
@@ -52,6 +52,10 @@ abstract public class SplitterPanelWithRightSideTextPanel extends DisposablePane
 		return splitPane;
 	}
 
+	protected DashboardTabSplitPane createRawSplitPaneComponent(MainWindow mainWindowToUse)
+	{
+		return new DashboardTabSplitPane(this, mainWindowToUse, getSplitterIdentifier());
+	}
 
 	private void setupCommunicationBetweenLeftAndRightPanels(RightSideDescriptionPanel rightPanel)
 	{
