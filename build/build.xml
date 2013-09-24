@@ -74,6 +74,7 @@
     	<pathelement path="${jortho.jar}"/>
     	<pathelement path="${shef.jar}"/>
     	<pathelement path="${sam.jar}"/>
+    	<pathelement path="${jtidy.jar}"/>
      </path>
     
     <!-- defined values -->
