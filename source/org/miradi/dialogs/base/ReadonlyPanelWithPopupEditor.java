@@ -63,11 +63,6 @@ abstract public class ReadonlyPanelWithPopupEditor extends MiradiPanel
 		selectButton.setEnabled(isEnabled);			
 	}
 	
-	protected void addDialogMainPanel(ModalDialogWithClose dialog, DisposablePanel editorPanel)
-	{
-		dialog.setScrollableMainPanel(editorPanel);
-	}
-	
 	public void setText(String newValue)
 	{
 		readOnlyCodeListComponent.setText(newValue);
@@ -114,6 +109,8 @@ abstract public class ReadonlyPanelWithPopupEditor extends MiradiPanel
 			dialog.setSize(size);
 		}
 	}
+	
+	abstract protected void addDialogMainPanel(ModalDialogWithClose dialog, DisposablePanel editorPanel);
 	
 	private PanelButton selectButton;
 	private AbstractReadonlyChoiceComponent readOnlyCodeListComponent;
