@@ -26,6 +26,7 @@ import java.util.Vector;
 
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.base.ReadonlyPanelWithPopupEditor;
+import org.miradi.dialogs.base.ReadonlyPanelWithPopupEditorWithMainScrollPane;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.AppPreferences;
@@ -81,7 +82,7 @@ public class TaxonomyFieldsPanel extends MiradiPanel
 			final String taxonomyAssociationCode = taxonomyAssociation.getTaxonomyAssociationCode();
 			
 			TaxonomyReadonlyPanelWithPopupEditorProvider provider = new TaxonomyReadonlyPanelWithPopupEditorProvider(getProject(), refToUse, miradiShareTaxonomyQuestion, taxonomyAssociationCode);
-			ReadonlyPanelWithPopupEditor readonlyPanelPopupEditor = new ReadonlyPanelWithPopupEditor(provider, taxonomyAssociation.getLabel(), miradiShareTaxonomyQuestion);
+			ReadonlyPanelWithPopupEditor readonlyPanelPopupEditor = new ReadonlyPanelWithPopupEditorWithMainScrollPane(provider, taxonomyAssociation.getLabel(), miradiShareTaxonomyQuestion);
 			taxonomyReadonlyWithPopupEditorPanels.add(readonlyPanelPopupEditor);
 			
 			add(new PanelTitleLabel(taxonomyAssociation.getLabel()));

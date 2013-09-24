@@ -24,6 +24,7 @@ import javax.swing.JComponent;
 
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.ReadonlyPanelWithPopupEditor;
+import org.miradi.dialogs.base.ReadonlyPanelWithPopupEditorWithMainScrollPane;
 import org.miradi.dialogs.planning.upperPanel.WhoStateLogic;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -39,7 +40,7 @@ public class WhoEditorField extends ObjectDataField implements ReadonlyPanelAndP
 	{
 		super(mainWindow.getProject(), refToUse);
 
-		readonlyPanelWithPopupEditor = new ReadonlyPanelWithPopupEditor(this, EAM.text("Select Project Resources"), new ProjectResourceQuestion(getProject()));		
+		readonlyPanelWithPopupEditor = new ReadonlyPanelWithPopupEditorWithMainScrollPane(this, EAM.text("Select Project Resources"), new ProjectResourceQuestion(getProject()));		
 	}
 	
 	@Override

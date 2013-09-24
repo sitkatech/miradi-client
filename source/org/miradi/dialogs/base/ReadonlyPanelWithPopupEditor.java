@@ -36,7 +36,7 @@ import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceQuestion;
 
-public class ReadonlyPanelWithPopupEditor extends MiradiPanel
+abstract public class ReadonlyPanelWithPopupEditor extends MiradiPanel
 {
 	public ReadonlyPanelWithPopupEditor(ReadonlyPanelAndPopupEditorProvider readonlyAndEditorProviderToUse, String popupEditorDialogTitleToUse, ChoiceQuestion choiceQuestion)
 	{
