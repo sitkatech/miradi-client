@@ -25,6 +25,7 @@ import javax.swing.JComponent;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.dialogs.base.ReadonlyPanelWithPopupEditor;
+import org.miradi.dialogs.base.ReadonlyPanelWithPopupEditorWithMainScrollPane;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
@@ -51,7 +52,7 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 		if (readonlyPanelPopupEditor == null)
 		{
 			final String dialogTitle = Translation.fieldLabel(getObjectType(), getTag());
-			readonlyPanelPopupEditor = new ReadonlyPanelWithPopupEditor(this, dialogTitle, question);
+			readonlyPanelPopupEditor = new ReadonlyPanelWithPopupEditorWithMainScrollPane(this, dialogTitle, question);
 		}
 		
 		return readonlyPanelPopupEditor;
