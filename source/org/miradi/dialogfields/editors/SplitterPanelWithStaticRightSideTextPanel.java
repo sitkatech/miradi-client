@@ -31,6 +31,7 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
 public class SplitterPanelWithStaticRightSideTextPanel extends SplitterPanelWithRightSideTextPanel
 {
@@ -64,7 +65,7 @@ public class SplitterPanelWithStaticRightSideTextPanel extends SplitterPanelWith
 	}
 	
 	@Override
-	protected DashboardTabSplitPane createRawSplitPaneComponent(MainWindow mainWindowToUse)
+	protected PersistentNonPercentageHorizontalSplitPane createRawSplitPaneComponent(MainWindow mainWindowToUse)
 	{
 		return new DashboardTabSplitPane(this, mainWindowToUse, getSplitterIdentifier());
 	}

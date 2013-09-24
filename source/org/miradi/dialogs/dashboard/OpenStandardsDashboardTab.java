@@ -10,6 +10,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Dashboard;
 import org.miradi.schemas.DashboardSchema;
+import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
 /* 
 Copyright 2005-2011, Foundations of Success, Bethesda, Maryland 
@@ -87,7 +88,7 @@ abstract public class OpenStandardsDashboardTab extends SplitterPanelWithRightSi
 	}
 
 	@Override
-	protected DashboardTabSplitPane createRawSplitPaneComponent(MainWindow mainWindowToUse)
+	protected PersistentNonPercentageHorizontalSplitPane createRawSplitPaneComponent(MainWindow mainWindowToUse)
 	{
 		return new DashboardTabSplitPane(this, mainWindowToUse, getSplitterIdentifier());
 	}
