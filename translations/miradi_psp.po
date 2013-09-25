@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-17 17:31-0500\n"
+"POT-Creation-Date: 2013-09-24 19:01-0500\n"
 "PO-Revision-Date: 2013-06-21 12:48-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3259,7 +3259,7 @@ msgstr ""
 msgid "Edit Text"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/editors/SplitterPanelWithStaticRightSideTextPanel.java:50
+#: Miradi/source/org/miradi/dialogfields/editors/SplitterPanelWithStaticRightSideTextPanel.java:51
 msgid "Edit.."
 msgstr ""
 
@@ -5915,7 +5915,7 @@ msgstr ""
 msgid "Select Location..."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/WhoEditorField.java:42
+#: Miradi/source/org/miradi/dialogfields/WhoEditorField.java:43
 msgid "Select Project Resources"
 msgstr ""
 

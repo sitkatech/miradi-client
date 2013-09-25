@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-17 17:31-0500\n"
+"POT-Creation-Date: 2013-09-24 19:01-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -3482,7 +3482,7 @@ msgstr "Modifica i metodi"
 msgid "Edit Text"
 msgstr "Modifica il testo"
 
-#: Miradi/source/org/miradi/dialogfields/editors/SplitterPanelWithStaticRightSideTextPanel.java:50
+#: Miradi/source/org/miradi/dialogfields/editors/SplitterPanelWithStaticRightSideTextPanel.java:51
 msgid "Edit.."
 msgstr ""
 
@@ -6255,7 +6255,7 @@ msgstr "Seleziona il pacchetto lingua da installare"
 msgid "Select Location..."
 msgstr "Seleziona luogo..."
 
-#: Miradi/source/org/miradi/dialogfields/WhoEditorField.java:42
+#: Miradi/source/org/miradi/dialogfields/WhoEditorField.java:43
 msgid "Select Project Resources"
 msgstr ""
 
