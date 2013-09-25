@@ -78,6 +78,7 @@ import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.MiradiShareProjectData;
 import org.miradi.objects.MiradiShareTaxonomy;
+import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Organization;
 import org.miradi.objects.OtherNotableSpecies;
@@ -106,16 +107,20 @@ import org.miradi.objects.WwfProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.CustomPlanningAllRowsQuestion;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.DashboardFlagsQuestion;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.questions.DiagramFactorFontColorQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.questions.DiagramLinkColorQuestion;
+import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.FosTrainingTypeQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 import org.miradi.questions.OpenStandardsProgressStatusQuestion;
+import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 import org.miradi.questions.PrecisionTypeQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
@@ -130,6 +135,7 @@ import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StrategyFeasibilityQuestion;
 import org.miradi.questions.StrategyImpactQuestion;
+import org.miradi.questions.StrategyObjectiveTreeOrderQuestion;
 import org.miradi.questions.StrategyStatusQuestion;
 import org.miradi.questions.StrategyTaxonomyQuestion;
 import org.miradi.questions.StressContributionQuestion;
@@ -167,6 +173,7 @@ import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.MiradiShareProjectDataSchema;
 import org.miradi.schemas.MiradiShareTaxonomySchema;
+import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.OrganizationSchema;
 import org.miradi.schemas.OtherNotableSpeciesSchema;
@@ -418,6 +425,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		taxonomy.setData(MiradiShareTaxonomySchema.TAG_TAXONOMY_TOP_LEVEL_ELEMENT_CODES, CodeList.createWithSingleCode("RandomCodeXxx").toString());
 		
 		return taxonomy;
+	}
+	
+	public ObjectTreeTableConfiguration createAndPopulateObjectTreeTableConfiguration() throws Exception
+	{
+		ObjectTreeTableConfiguration objectTreeTableConfiguration = createObjectTreeTableConfiguration();
+		populateObjectTreeTableConfiguration(objectTreeTableConfiguration);
+		
+		return objectTreeTableConfiguration;
 	}
 	
 	public String createSampleTaxonomyElementListAsJsonString()
@@ -1147,6 +1162,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return taggedObjectSet;
 	}
 	
+	public ObjectTreeTableConfiguration createObjectTreeTableConfiguration() throws Exception
+	{
+		ORef objectTreeTableConfigurationRef = createObject(ObjectTreeTableConfigurationSchema.getObjectType());
+		return ObjectTreeTableConfiguration.find(this, objectTreeTableConfigurationRef);
+	}
+	
 	public void tagDiagramFactor(ORef refToTag) throws Exception
 	{
 		TaggedObjectSet taggedObjectSet = createTaggedObjectSet();
@@ -1600,6 +1621,19 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		fillObjectUsingCommand(threatRatingCommentsData, tagStressBasedThreatRatingCommentsMap, map.toJsonString());
 	}
+	
+	private void populateObjectTreeTableConfiguration(ObjectTreeTableConfiguration objectTreeTableConfiguration) throws Exception
+	{
+		CodeList rowCodes = new CustomPlanningAllRowsQuestion().getAllCodes();
+		fillObjectUsingCommand(objectTreeTableConfiguration, ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION, rowCodes);
+		
+		CodeList columnCodes = new CustomPlanningColumnsQuestion().getAllCodes();
+		fillObjectUsingCommand(objectTreeTableConfiguration, ObjectTreeTableConfiguration.TAG_COL_CONFIGURATION, columnCodes);
+		
+		fillObjectUsingCommand(objectTreeTableConfiguration, ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, DiagramObjectDataInclusionQuestion.INCLUDE_RESULTS_CHAIN_DATA_CODE);
+		fillObjectUsingCommand(objectTreeTableConfiguration, ObjectTreeTableConfiguration.TAG_STRATEGY_OBJECTIVE_ORDER, StrategyObjectiveTreeOrderQuestion.STRATEGY_CONTAINS_OBJECTIVE_CODE);
+		fillObjectUsingCommand(objectTreeTableConfiguration, ObjectTreeTableConfiguration.TAG_TARGET_NODE_POSITION, PlanningTreeTargetPositionQuestion.TARGET_NODES_TOP_OF_PLANNING_TREE_CODE);
+	}
 
 	public ProgressReport addProgressReport(BaseObject baseObject) throws Exception
 	{
@@ -1773,6 +1807,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		populateDashboard();
 		populateBaseObjectWithSampleData(createBaseObject(XslTemplateSchema.getObjectType()));
 		populateBaseObjectWithSampleData(createBaseObject(ReportTemplateSchema.getObjectType()));
+		createAndPopulateObjectTreeTableConfiguration();
 	}
 	
 	public void populateBaseObjectWithSampleData(BaseObject baseObject) throws Exception
@@ -2062,6 +2097,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void fillObjectUsingCommand(ORef ref, String fieldTag, ORefList data) throws Exception
 	{
 		fillObjectUsingCommand(ref, fieldTag, data.toString());
+	}
+	
+	public void fillObjectUsingCommand(BaseObject baseObject, String fieldTag, CodeList data) throws Exception
+	{
+		fillObjectUsingCommand(baseObject, fieldTag, data.toJsonString());
 	}
 	
 	public void fillObjectUsingCommand(BaseObject object, String fieldTag, ORefList data) throws Exception

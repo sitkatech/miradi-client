@@ -21,44 +21,17 @@ package org.miradi.questions;
 
 import java.util.Vector;
 
-import javax.swing.Icon;
-
 import org.miradi.icons.ActivityIcon;
-import org.miradi.icons.ConceptualModelIcon;
 import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
-import org.miradi.icons.GoalIcon;
-import org.miradi.icons.HumanWelfareTargetIcon;
-import org.miradi.icons.IconManager;
-import org.miradi.icons.IntermediateResultIcon;
-import org.miradi.icons.MeasurementIcon;
 import org.miradi.icons.MethodIcon;
-import org.miradi.icons.ObjectiveIcon;
-import org.miradi.icons.ResultsChainIcon;
-import org.miradi.icons.SubTargetIcon;
-import org.miradi.icons.TargetIcon;
 import org.miradi.icons.TaskIcon;
-import org.miradi.icons.ThreatReductionResultIcon;
-import org.miradi.main.EAM;
 import org.miradi.objects.Cause;
 import org.miradi.project.Project;
 import org.miradi.schemas.CauseSchema;
-import org.miradi.schemas.ConceptualModelDiagramSchema;
-import org.miradi.schemas.FutureStatusSchema;
-import org.miradi.schemas.GoalSchema;
-import org.miradi.schemas.HumanWelfareTargetSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.IntermediateResultSchema;
-import org.miradi.schemas.MeasurementSchema;
-import org.miradi.schemas.ObjectiveSchema;
-import org.miradi.schemas.ResultsChainDiagramSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.SubTargetSchema;
-import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
-import org.miradi.schemas.ThreatReductionResultSchema;
 
-public class CustomPlanningRowsQuestion extends ProjectBasedDynamicQuestion
+public class CustomPlanningRowsQuestion extends AbstractCustomPlanningRowsQuestion
 {
 	public CustomPlanningRowsQuestion(Project projectToUse)
 	{
@@ -68,43 +41,9 @@ public class CustomPlanningRowsQuestion extends ProjectBasedDynamicQuestion
 	}
 
 	@Override
-	public ChoiceItem[] getChoices()
+	protected boolean shouldIncludeHumanWellbeignTargetRow()
 	{
-		return getRowChoices().toArray(new ChoiceItem[0]);
-	}
-
-	private Vector<ChoiceItem> getRowChoices()
-	{	
-		Vector<ChoiceItem> choiceItems = new Vector<ChoiceItem>();
-
-		choiceItems.add(createChoiceItem(ConceptualModelDiagramSchema.getObjectType(), ConceptualModelDiagramSchema.OBJECT_NAME, new ConceptualModelIcon()));
-		choiceItems.add(createChoiceItem(ResultsChainDiagramSchema.getObjectType(), ResultsChainDiagramSchema.OBJECT_NAME, new ResultsChainIcon()));
-		choiceItems.add(createChoiceItem(TargetSchema.getObjectType(), TargetSchema.OBJECT_NAME, new TargetIcon()));
-		
-		if (getProject().getMetadata().isHumanWelfareTargetMode())
-			choiceItems.add(createChoiceItem(HumanWelfareTargetSchema.getObjectType(), HumanWelfareTargetSchema.OBJECT_NAME, new HumanWelfareTargetIcon()));
-		
-		choiceItems.add(createChoiceItem(SubTargetSchema.getObjectType(), SubTargetSchema.OBJECT_NAME, new SubTargetIcon()));
-		choiceItems.add(createChoiceItem(GoalSchema.getObjectType(), GoalSchema.OBJECT_NAME, new GoalIcon()));
-		choiceItems.add(createChoiceItem(ObjectiveSchema.getObjectType(), ObjectiveSchema.OBJECT_NAME, new ObjectiveIcon()));
-		choiceItems.add(createChoiceItem(CauseSchema.getObjectType(), Cause.OBJECT_NAME_THREAT, new DirectThreatIcon()));
-		choiceItems.add(createChoiceItem(CauseSchema.getObjectType(), Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, new ContributingFactorIcon())); 
-		choiceItems.add(createChoiceItem(ThreatReductionResultSchema.getObjectType(), ThreatReductionResultSchema.OBJECT_NAME, new ThreatReductionResultIcon()));
-		choiceItems.add(createChoiceItem(IntermediateResultSchema.getObjectType(), IntermediateResultSchema.OBJECT_NAME, new IntermediateResultIcon()));
-		choiceItems.add(createChoiceItem(StrategySchema.getObjectType(), StrategySchema.OBJECT_NAME, IconManager.getStrategyIcon()));
-		choiceItems.add(createChoiceItem(TaskSchema.getObjectType(), TaskSchema.ACTIVITY_NAME, new ActivityIcon()));
-		choiceItems.add(createChoiceItem(IndicatorSchema.getObjectType(), IndicatorSchema.OBJECT_NAME, IconManager.getIndicatorIcon()));
-		choiceItems.add(createChoiceItem(TaskSchema.getObjectType(), TaskSchema.METHOD_NAME, new MethodIcon()));
-		choiceItems.add(createChoiceItem(TaskSchema.getObjectType(), TaskSchema.OBJECT_NAME, new TaskIcon()));
-		choiceItems.add(createChoiceItem(MeasurementSchema.getObjectType(), MeasurementSchema.OBJECT_NAME, new MeasurementIcon()));
-		choiceItems.add(createChoiceItem(FutureStatusSchema.getObjectType(), FutureStatusSchema.OBJECT_NAME, new GoalIcon()));
-		
-		return choiceItems;
-	}
-
-	private static ChoiceItem createChoiceItem(int objectType, String objectName, Icon iconToUse)
-	{
-		return new ChoiceItem(objectName, EAM.fieldLabel(objectType, objectName), iconToUse);
+		return getProject().getMetadata().isHumanWelfareTargetMode();
 	}
 
 	private Project getProject()
@@ -113,4 +52,25 @@ public class CustomPlanningRowsQuestion extends ProjectBasedDynamicQuestion
 	}
 
 	private Project project;
+
+	@Override
+	protected Vector<ChoiceItem> createCauseChoiceItems()
+	{
+		Vector<ChoiceItem> choiceItems = new Vector<ChoiceItem>();
+		choiceItems.add(createChoiceItem(CauseSchema.getObjectType(), Cause.OBJECT_NAME_THREAT, new DirectThreatIcon()));
+		choiceItems.add(createChoiceItem(CauseSchema.getObjectType(), Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, new ContributingFactorIcon())); 
+
+		return choiceItems;
+	}
+	
+	@Override
+	protected Vector<ChoiceItem> createTaskChoiceItems()
+	{
+		Vector<ChoiceItem> choiceItems = new Vector<ChoiceItem>();
+		choiceItems.add(createChoiceItem(TaskSchema.getObjectType(), TaskSchema.ACTIVITY_NAME, new ActivityIcon()));
+		choiceItems.add(createChoiceItem(TaskSchema.getObjectType(), TaskSchema.METHOD_NAME, new MethodIcon()));
+		choiceItems.add(createChoiceItem(TaskSchema.getObjectType(), TaskSchema.OBJECT_NAME, new TaskIcon()));
+
+		return choiceItems;
+	}
 }
