@@ -237,7 +237,7 @@ public abstract class AbstractProjectImporter
 	
 	protected InputStreamWithSeek getProjectAsInputStream(MiradiZipFile zipFile) throws Exception
 	{
-		String xmlFileName = ExportCpmzDoer.PROJECT_XML_FILE_NAME;
+		String xmlFileName = XmlExporterDoer.PROJECT_XML_FILE_NAME;
 		ZipEntry zipEntry = zipFile.getEntry(xmlFileName);
 		if(zipEntry == null)
 			throw new FileNotFoundException("Invalid XMPZ file: Could not find " + xmlFileName);

@@ -52,7 +52,7 @@ public interface Xmpz2XmlConstants
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
 	public static final String DOT_ELEMENT = ".element";
 	
-	public static final String NAME_SPACE_VERSION = "228";
+	public static final String NAME_SPACE_VERSION = "229";
 	public static final String PARTIAL_NAME_SPACE = "http://xml.miradi.org/schema/ConservationProject/";
 	public static final String NAME_SPACE = PARTIAL_NAME_SPACE + NAME_SPACE_VERSION;
 	public static final String XMLNS = "xmlns";
@@ -240,6 +240,7 @@ public interface Xmpz2XmlConstants
 	public static final String CALCULATED_EXPENSE_TOTAL = "CalculatedExpenseTotal";
 	public static final String CALCULATED_WORK_UNITS_TOTAL = "CalculatedWorkUnitsTotal";
 	public static final String CALCULATED_TOTAL_BUDGET_COST = "CalculatedTotalBudgetCost";
+	public static final String CALCULATED_WORK_COST_TOTAL = "CalculatedWorkCostTotal";
 	public static final String CALCULATED_WHO = "CalculatedWho";
 	public static final String CALCULATED_START_DATE = "CalculatedStartDate";
 	public static final String CALCULATED_END_DATE = "CalculatedEndDate";
@@ -286,6 +287,9 @@ public interface Xmpz2XmlConstants
 	public static final String SCOPE_NAME = "ScopeName";
 	public static final String SCOPE_DESCRIPTION = "ScopeDescription";
 	public static final String DIAGRAM_DATA_INCLUSION = "DiagramDataInclusion";
+	public static final String COLUMN_CONFIGURATION_CODES = "ColumnNames";
+	public static final String ROW_CONFIGURATION_CODES = "RowObjectTypes";
+
 	public static final String DAILY_RATE = "DailyRate";
 	public static final String DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME = DiagramFactor.TAG_BACKGROUND_COLOR;
 	public static final String DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME = DiagramFactor.TAG_FOREGROUND_COLOR;
@@ -396,4 +400,6 @@ public interface Xmpz2XmlConstants
 	public static final String VOCABULARY_YEAR = "vocabulary_year";
 	public static final String VOCABULARY_TARGET_MODE = "vocabulary_target_mode";
 	public static final String VOCABULARY_PRECISION_TYPE = "vocabulary_precision_type";
+	public static final String VOCABULARY_CUSTOM_ROWS = "vocabulary_custom_rows";
+	public static final String VOCABULARY_CUSTOM_COLUMNS = "vocabulary_custom_columns";
 }

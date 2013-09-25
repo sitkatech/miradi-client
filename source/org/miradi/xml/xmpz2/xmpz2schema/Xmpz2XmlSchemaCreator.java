@@ -689,7 +689,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	
 	private void writeUriRestrictedSchemaElement()
 	{
-		writeRegexRestrictedElement(URI_RESTRICTED_TEXT, "'([a-zA-Z0-9]|=|\\?|\\.|-|#|@|:|\\+|/|&|_|~)*'");
+		writeRegexRestrictedElement(URI_RESTRICTED_TEXT, "'([a-zA-Z0-9]|=|\\?|\\.|-|#|@|:|\\+|/|&|_|~|%)*'");
 	}
 	
 	private void writeNonEmptyStringSchemaElement()
@@ -858,6 +858,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		creator.addOptionalDecimalElement(CALCULATED_EXPENSE_TOTAL);
 		creator.addOptionalDecimalElement(CALCULATED_WORK_UNITS_TOTAL);
 		creator.addOptionalDecimalElement(CALCULATED_TOTAL_BUDGET_COST);
+		creator.addOptionalDecimalElement(CALCULATED_WORK_COST_TOTAL);
 		creator.addOptionalChildElement(CALCULATED_WHO, getSchemaWriter().createZeroOrMoreDotElement(RESOURCE_ID));
 		creator.addOptionalChildElement(CALCULATED_EXPENSE_ENTRIES, getSchemaWriter().createZeroOrMoreDotElement(EXPENSE_ENTRY));
 		creator.addChildElement(getSchemaWriter().createOptionalSchemaElement(CALCULATED_WORK_UNITS_ENTRIES, getSchemaWriter().createZeroOrMoreDotElement(WORK_UNITS_ENTRY)));

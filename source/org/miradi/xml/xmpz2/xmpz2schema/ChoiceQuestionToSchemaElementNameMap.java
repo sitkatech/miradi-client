@@ -26,6 +26,8 @@ import org.miradi.questions.BudgetTimePeriodQuestion;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CountriesQuestion;
 import org.miradi.questions.CurrencyTypeQuestion;
+import org.miradi.questions.CustomPlanningAllRowsQuestion;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.DashboardFlagsQuestion;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.questions.DiagramFactorFontColorQuestion;
@@ -155,6 +157,8 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(TaxonomyClassificationSelectionModeQuestion.class, VOCABULARY_TAXONOMY_CLASSIFICATION_SELECTION_MODE);
 		addItem(PrecisionTypeQuestion.class, VOCABULARY_PRECISION_TYPE);
 		addItem(InternalQuestionWithoutValues.class, URI_RESTRICTED_TEXT);
+		addItem(new CustomPlanningAllRowsQuestion(), VOCABULARY_CUSTOM_ROWS);
+		addItem(new CustomPlanningColumnsQuestion(), VOCABULARY_CUSTOM_COLUMNS);
 	}
 	
 	private void addItem(Class questionClass, String value)
@@ -177,5 +181,5 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		}
 		
 		throw new RuntimeException("Could not find a vocabulary for question: " + questionToFind.getClass().getSimpleName());
-	}			
+	}
 }

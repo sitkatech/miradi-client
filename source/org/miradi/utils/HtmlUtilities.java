@@ -459,7 +459,7 @@ public class HtmlUtilities
 		return toXmlString(document);
 	}
 	
-	private static String toXmlString(Document document) throws Exception
+	public static String toXmlString(Document document) throws Exception
 	{
 		return toXmlString(new DOMSource(document));
 	}
