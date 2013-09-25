@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-24 19:01-0500\n"
+"POT-Creation-Date: 2013-09-24 19:46-0500\n"
 "PO-Revision-Date: 2013-06-07 01:56+0100\n"
 "Last-Translator: Galragchaa <galragchaa@yahoo.com>\n"
 "Language-Team: none\n"
@@ -2359,6 +2359,10 @@ msgstr "8 дугаар сар"
 msgid "Automatic"
 msgstr "Автомат"
 
+#: Miradi/source/org/miradi/views/summary/MiradiShareTaxonomyPanel.java:39
+msgid "Basics"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/TextBoxZOrderQuestion.java:34
 msgid "Behind"
 msgstr "Ар талд"
@@ -3219,6 +3223,7 @@ msgstr "Тодорхой үйл ажиллагаа/арга зүй, үүрэг �
 msgid "Detail methods, tasks, and responsibilities"
 msgstr "Тодорхой арга зүй, үүрэг даалгавар, ба хариуцлага"
 
+#: Miradi/source/org/miradi/views/summary/MiradiShareDetailsPanel.java:39
 #: Miradi/source/org/miradi/dialogs/viability/ModelessTargetSubPanel.java:58
 msgid "Details"
 msgstr "Дэлгэрэнгүй:"
@@ -4531,7 +4536,7 @@ msgstr "Хаяг|IM хаяг"
 msgid "Label|Methods"
 msgstr "Хаяг|Арга зүй"
 
-#: Miradi/source/org/miradi/views/summary/SummaryMiradiSharePanel.java:58
+#: Miradi/source/org/miradi/views/summary/SummaryMiradiSharePanel.java:63
 msgid "Label|Miradi Share"
 msgstr ""
 

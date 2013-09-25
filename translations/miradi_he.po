@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-24 19:01-0500\n"
+"POT-Creation-Date: 2013-09-24 19:46-0500\n"
 "PO-Revision-Date: 2011-03-17 08:35-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2214,6 +2214,10 @@ msgstr ""
 msgid "Automatic"
 msgstr ""
 
+#: Miradi/source/org/miradi/views/summary/MiradiShareTaxonomyPanel.java:39
+msgid "Basics"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/TextBoxZOrderQuestion.java:34
 msgid "Behind"
 msgstr ""
@@ -3049,6 +3053,7 @@ msgstr ""
 msgid "Detail methods, tasks, and responsibilities"
 msgstr ""
 
+#: Miradi/source/org/miradi/views/summary/MiradiShareDetailsPanel.java:39
 #: Miradi/source/org/miradi/dialogs/viability/ModelessTargetSubPanel.java:58
 msgid "Details"
 msgstr ""
@@ -4319,7 +4324,7 @@ msgstr ""
 msgid "Label|Methods"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryMiradiSharePanel.java:58
+#: Miradi/source/org/miradi/views/summary/SummaryMiradiSharePanel.java:63
 msgid "Label|Miradi Share"
 msgstr ""
 

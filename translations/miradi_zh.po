@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-24 19:01-0500\n"
+"POT-Creation-Date: 2013-09-24 19:46-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2248,6 +2248,10 @@ msgstr ""
 msgid "Automatic"
 msgstr "自动的"
 
+#: Miradi/source/org/miradi/views/summary/MiradiShareTaxonomyPanel.java:39
+msgid "Basics"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/TextBoxZOrderQuestion.java:34
 msgid "Behind"
 msgstr ""
@@ -3101,6 +3105,7 @@ msgstr "详尽的活动/方法、任务、以及职责 \t\t"
 msgid "Detail methods, tasks, and responsibilities"
 msgstr "详尽的方法、任务及职责 \t\t"
 
+#: Miradi/source/org/miradi/views/summary/MiradiShareDetailsPanel.java:39
 #: Miradi/source/org/miradi/dialogs/viability/ModelessTargetSubPanel.java:58
 msgid "Details"
 msgstr ""
@@ -4395,7 +4400,7 @@ msgstr "IM地址 \t\t"
 msgid "Label|Methods"
 msgstr "方法 \t\t"
 
-#: Miradi/source/org/miradi/views/summary/SummaryMiradiSharePanel.java:58
+#: Miradi/source/org/miradi/views/summary/SummaryMiradiSharePanel.java:63
 msgid "Label|Miradi Share"
 msgstr ""
 
