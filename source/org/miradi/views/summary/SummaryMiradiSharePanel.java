@@ -22,7 +22,7 @@ package org.miradi.views.summary;
 
 import javax.swing.Icon;
 
-import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.forms.objects.MiradiShareProjectDataForm;
 import org.miradi.icons.MiradiShareIcon;
 import org.miradi.main.EAM;
@@ -32,11 +32,16 @@ import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.schemas.MiradiShareProjectDataSchema;
 
-public class SummaryMiradiSharePanel extends ObjectDataInputPanel
+public class SummaryMiradiSharePanel extends ObjectDataInputPanelWithSections
 {
 	public SummaryMiradiSharePanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, getSingletonRefs(projectToUse), createMiradiShareProjectDataForm());
+		super(projectToUse, MiradiShareProjectDataSchema.getObjectType());
+		
+		addSubPanelWithTitledBorder(new MiradiShareTaxonomyPanel(projectToUse, getSingletonRefs(projectToUse)));
+		addSubPanelWithTitledBorder(new MiradiShareDetailsPanel(projectToUse, getSingletonRefs(projectToUse)));
+		
+		updateFieldsFromProject();
 	}
 
 	private static ORef[] getSingletonRefs(Project projectToUse)
