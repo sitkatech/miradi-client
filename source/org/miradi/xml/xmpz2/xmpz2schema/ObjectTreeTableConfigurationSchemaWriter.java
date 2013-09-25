@@ -20,7 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.xmpz2schema;
 
+import java.util.Vector;
+
 import org.miradi.objects.ObjectTreeTableConfiguration;
+import org.miradi.questions.CustomPlanningAllRowsQuestion;
 import org.miradi.schemas.BaseObjectSchema;
 
 public class ObjectTreeTableConfigurationSchemaWriter extends BaseObjectSchemaWriter
@@ -29,17 +32,24 @@ public class ObjectTreeTableConfigurationSchemaWriter extends BaseObjectSchemaWr
 	{
 		super(creatorToUse, baseObjectSchemaToUse);
 	}
-
+	
 	@Override
-	protected boolean shouldOmitField(String tag)
+	protected boolean doesFieldRequireSpecialHandling(String tag)
 	{
-		//NOTE: These were omitted from XMPZ1. See Jira MRD-4920 for status in XMPZ2
-		if (tag.equals(ObjectTreeTableConfiguration.TAG_COL_CONFIGURATION))
-			return true;
-		
 		if (tag.equals(ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION))
 			return true;
 		
-		return super.shouldOmitField(tag);
+		return super.doesFieldRequireSpecialHandling(tag);
+	}
+	
+	@Override
+	protected Vector<String> createCustomSchemaFields()
+	{
+		Vector<String> schemaElements = super.createCustomSchemaFields();
+		
+		String customRowsSchemaElement = getXmpz2XmlSchemaCreator().createCodelistSchemaElement(getBaseObjectSchema(), getBaseObjectSchema().getFieldSchema(ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION), new CustomPlanningAllRowsQuestion());
+		schemaElements.add(customRowsSchemaElement);
+		
+		return schemaElements;
 	}
 }
