@@ -33,6 +33,7 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.xpath.XPathExpressionException;
 
+import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.AbstractUserTextDataWithHtmlFormatting;
@@ -114,6 +115,15 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		
 		tagToElementNameMap = new Xmpz2TagToElementNameMap();
 		progressIndicator = progressIndicatorToUse;
+	}
+	
+	@Override
+	protected InputStreamWithSeek migrate(InputStreamWithSeek projectAsInputStream) throws Exception
+	{
+		Xmpz2ForwardMigration migration = new Xmpz2ForwardMigration();
+		projectAsInputStream = migration.migrate(projectAsInputStream);
+
+		return projectAsInputStream;
 	}
 		
 	@Override

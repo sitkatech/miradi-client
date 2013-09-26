@@ -20,37 +20,61 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
+import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
+import org.miradi.exceptions.XmpzVersionTooOldException;
 import org.miradi.utils.HtmlUtilities;
+import org.miradi.xml.AbstractXmlImporter;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.xml.sax.InputSource;
 
-//FIXME urgent - this class is under construction
 public class Xmpz2ForwardMigration implements Xmpz2XmlConstants
 {
-	public Xmpz2ForwardMigration(Document documentToUse)
+	public StringInputStreamWithSeek migrate(InputStreamWithSeek projectAsInputStream) throws Exception
 	{
-		document = documentToUse;
-	}
-	
-	public Document migrate() throws Exception
-	{
-		//System.out.println(HtmlUtilities.toXmlString(getDocument()));
-		Element rootElement = getDocument().getDocumentElement();
-		final String nameSpaceAttributeName = XMLNS + COLON + RAW_PREFIX;
-		System.out.println("nameSpace=" + rootElement.getAttribute(nameSpaceAttributeName));
-		String newNameSpaceValue = PARTIAL_NAME_SPACE + "3333";
-		rootElement.setAttribute(nameSpaceAttributeName, newNameSpaceValue);
+		Document document = convertToDocument(projectAsInputStream);
+		Element rootElement = document.getDocumentElement();
+		final String currentNamespace = getNameSpace(rootElement);
+		String readInSchemaVersionAsString = AbstractXmlImporter.getSchemaVersionToImport(currentNamespace);
+		int readInSchemaVersion = Integer.parseInt(readInSchemaVersionAsString);
+		if (readInSchemaVersion < LOWEST_SCHEMA_VERSION)
+		{
+			throw new XmpzVersionTooOldException(Integer.toString(LOWEST_SCHEMA_VERSION), readInSchemaVersionAsString);
+		}
 		
-		//getDocument().
-		System.out.println(HtmlUtilities.toXmlString(getDocument()));
+		if (readInSchemaVersion <  Integer.parseInt(NAME_SPACE_VERSION))
+		{
+			setNameSpaceVersion(rootElement, NAME_SPACE_VERSION);
+		}
 		
-		return null;
+		final String migratedXmlAsString = HtmlUtilities.toXmlString(document);
+
+		return new StringInputStreamWithSeek(migratedXmlAsString);
 	}
 
-	private Document getDocument()
+	public static void setNameSpaceVersion(Element rootElement, String newNameSpaceVersion)
 	{
+		rootElement.setAttribute(NAME_SPACE_ATTRIBUTE_NAME, PARTIAL_NAME_SPACE + newNameSpaceVersion);
+	}
+
+	private String getNameSpace(Element rootElement)
+	{
+		return rootElement.getAttribute(NAME_SPACE_ATTRIBUTE_NAME);
+	}
+
+	public static Document convertToDocument(InputStreamWithSeek projectAsInputStream) throws Exception
+	{
+		InputSource inputSource = new InputSource(projectAsInputStream);
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder documentBuilder = factory.newDocumentBuilder();
+		Document document = documentBuilder.parse(inputSource);
+		
 		return document;
 	}
 	
-	private Document document;
+	private static final int LOWEST_SCHEMA_VERSION = 228;
 }
