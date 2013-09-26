@@ -358,11 +358,15 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	private ProjectForTesting validateUsingStringWriter() throws Exception
 	{
 		UnicodeXmlWriter projectWriter = createWriter(getProject());
-		
+		String exportedProjectXml = projectWriter.toString();		
+		return validateImport(exportedProjectXml);
+	}
+
+	protected ProjectForTesting validateImport(String exportedProjectXml) throws Exception
+	{
 		ProjectForTesting projectToImportInto = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToImportInto");
 		Xmpz2XmlImporter xmlImporter = new Xmpz2XmlImporter(projectToImportInto, new NullProgressMeter());
 		
-		String exportedProjectXml = projectWriter.toString();
 		StringInputStreamWithSeek stringInputputStream = new StringInputStreamWithSeek(exportedProjectXml);
 		try
 		{
@@ -379,7 +383,7 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 		return projectToImportInto;
 	}
 
-	private UnicodeXmlWriter createWriter(ProjectForTesting projectToUse) throws Exception
+	public static UnicodeXmlWriter createWriter(ProjectForTesting projectToUse) throws Exception
 	{
 		Xmpz2XmlExporter exporter = new MockXmpz2XmlExporterWithoutTimeStampForTesting(projectToUse);
 		UnicodeXmlWriter writer = UnicodeXmlWriter.create();

@@ -69,6 +69,8 @@ abstract public class AbstractXmlImporter
 	
 	private void loadXml(InputStreamWithSeek projectAsInputStream) throws Exception
 	{
+		projectAsInputStream = migrate(projectAsInputStream);
+		
 		InputSource inputSource = new InputSource(projectAsInputStream);
 		document = createDocument(inputSource);
 				
@@ -80,7 +82,7 @@ abstract public class AbstractXmlImporter
 				
 		if (isUnsupportedNewVersion(nameSpaceUri))
 		{
-			throw new UnsupportedNewVersionSchemaException();
+			throw new UnsupportedNewVersionSchemaException(nameSpaceUri);
 		}
 		
 		if (isUnsupportedOldVersion(nameSpaceUri))
@@ -98,6 +100,11 @@ abstract public class AbstractXmlImporter
 		}
 		
 		xPath = createXPath();
+	}
+
+	protected InputStreamWithSeek migrate(InputStreamWithSeek projectAsInputStream) throws Exception
+	{
+		return projectAsInputStream;
 	}
 
 	private String getXmlTextForDebugging(InputStreamWithSeek projectAsInputStream) throws Exception
@@ -375,7 +382,7 @@ abstract public class AbstractXmlImporter
 		return nameSpaceUri.startsWith(getPartialNameSpace());
 	}
 	
-	private String getSchemaVersionToImport(String nameSpaceUri) throws Exception
+	public static String getSchemaVersionToImport(String nameSpaceUri) throws Exception
 	{
 		int lastSlashIndexBeforeVersion = nameSpaceUri.lastIndexOf("/");
 		String versionAsString = nameSpaceUri.substring(lastSlashIndexBeforeVersion + 1, nameSpaceUri.length());

@@ -21,4 +21,8 @@ package org.miradi.exceptions;
 
 public class UnsupportedNewVersionSchemaException extends Exception
 {
+	public UnsupportedNewVersionSchemaException(String nameSpaceUri)
+	{
+		super("namespace not supported" + nameSpaceUri);
+	}
 }

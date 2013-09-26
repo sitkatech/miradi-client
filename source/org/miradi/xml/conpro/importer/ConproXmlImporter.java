@@ -186,7 +186,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 				
 		if (isUnsupportedNewVersion(nameSpaceUri))
 		{
-			throw new UnsupportedNewVersionSchemaException();
+			throw new UnsupportedNewVersionSchemaException(nameSpaceUri);
 		}
 		
 		if (isUnsupportedOldVersion(nameSpaceUri))

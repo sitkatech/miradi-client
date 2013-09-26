@@ -56,6 +56,7 @@ public interface Xmpz2XmlConstants
 	public static final String PARTIAL_NAME_SPACE = "http://xml.miradi.org/schema/ConservationProject/";
 	public static final String NAME_SPACE = PARTIAL_NAME_SPACE + NAME_SPACE_VERSION;
 	public static final String XMLNS = "xmlns";
+	public static final String NAME_SPACE_ATTRIBUTE_NAME = XMLNS + COLON + RAW_PREFIX;
 	
 	public static final String CONTAINER_ELEMENT_TAG = "Container";
 	public static final String POOL_ELEMENT_TAG = "Pool";
