@@ -209,6 +209,7 @@ import org.miradi.utils.TestAbstractTableExporter;
 import org.miradi.utils.TestBaseObjectDateAndIdComparator;
 import org.miradi.utils.TestBaseObjectDeepCopier;
 import org.miradi.utils.TestBendPointList;
+import org.miradi.utils.TestBiDirectionalHashMap;
 import org.miradi.utils.TestCodeList;
 import org.miradi.utils.TestColumnSequenceSaver;
 import org.miradi.utils.TestConproMiradiHabitatCodeMap;
@@ -480,6 +481,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestMiradiShareTaxonomy.class));
 		addTest(new TestSuite(TestMiradiShareTaxonomyAssociation.class));
 		addTest(new TestSuite(TestFutureStatus.class));
+		addTest(new TestSuite(TestBiDirectionalHashMap.class));
 			
 		// commands package
 		addTest(new TestSuite(TestCommands.class));
