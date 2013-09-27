@@ -1,0 +1,1085 @@
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/73'
+start = ConservationProject.element
+ConservationProject.element = element miradi:ConservationProject
+{
+  ProjectSummary.element &
+  ProjectSummaryScope.element &
+  ProjectSummaryLocation.element &
+  ProjectSummaryPlanning.element &
+  ProjectResourcePool.element ?  &
+  OrganizationPool.element ?  &
+  TncProjectData.element &
+  WwfProjectData.element &
+  WCSData.element &
+  RareProjectData.element &
+  FosProjectData.element &
+  ConceptualModelPool.element ?  &
+  ResultsChainPool.element ?  &
+  DiagramFactorPool.element ?  &
+  DiagramLinkPool.element ?  &
+  BiodiversityTargetPool.element ?  &
+  HumanWelfareTargetPool.element ?  &
+  CausePool.element ?  &
+  StrategyPool.element ?  &
+  ThreatReductionResultPool.element ?  &
+  IntermediateResultPool.element ?  &
+  GroupBoxPool.element ?  &
+  TextBoxPool.element ?  &
+  ScopeBoxPool.element ?  &
+  KeyEcologicalAttributePool.element ?  &
+  StressPool.element ?  &
+  SubTargetPool.element ?  &
+  GoalPool.element ?  &
+  ObjectivePool.element ?  &
+  IndicatorPool.element ?  &
+  TaskPool.element ?  &
+  ProgressReportPool.element ?  &
+  ProgressPercentPool.element ?  &
+  MeasurementPool.element ?  &
+  AccountingCodePool.element ?  &
+  FundingSourcePool.element ?  &
+  BudgetCategoryOnePool.element ?  &
+  BudgetCategoryTwoPool.element ?  &
+  ExpenseAssignmentPool.element ?  &
+  ResourceAssignmentPool.element ?  &
+  ThreatRatingPool.element ?  &
+  IUCNRedListSpeciesPool.element ?  &
+  OtherNotableSpeciesPool.element ?  &
+  AudiencePool.element ?  &
+  PlanningViewConfigurationPool.element ?  &
+  DashboardPool.element ?  &
+  TaggedObjectSetPool.element ?  &
+  ExtraData.element &
+  element miradi:DeletedOrphans{ text }?
+}
+
+ProjectSummary.element = element miradi:ProjectSummary
+{
+  element miradi:ProjectSummaryProjectName { text }? &
+  element miradi:ProjectSummaryShareOutsideOrganization { xsd:boolean }? &
+  element miradi:ProjectSummaryProjectLanguage { vocabulary_language_code  }? &
+  element miradi:ProjectSummaryDataEffectiveDate { vocabulary_date }? &
+  element miradi:ProjectSummaryOtherOrgProjectNumber { text }? &
+  element miradi:ProjectSummaryOtherOrgRelatedProjects { text }? &
+  element miradi:ProjectSummaryProjectURL { text }? &
+  element miradi:ProjectSummaryProjectDescription { text }? &
+  element miradi:ProjectSummaryProjectStatus { text }? &
+  element miradi:ProjectSummaryNextSteps { text }? &
+  element miradi:ProjectSummaryOverallProjectThreatRating { vocabulary_threat_rating  }? &
+  element miradi:ProjectSummaryOverallProjectViabilityRating { vocabulary_target_status  }? &
+  element miradi:ProjectSummaryProjectId { ExternalProjectId.element *}  &
+  element miradi:ProjectSummaryThreatRatingMode { vocabulary_threat_rating_mode  } &
+  element miradi:ProjectSummaryQuarterColumnsVisibility { vocabulary_quarter_columns_visibility  } &
+  element miradi:ProjectSummaryWorkPlanTimeUnit { vocabulary_work_plan_time_unit  }
+}
+
+ProjectSummaryScope.element = element miradi:ProjectSummaryScope
+{
+  element miradi:ProjectSummaryScopeShortProjectScope { text }? &
+  element miradi:ProjectSummaryScopeProjectScope { text }? &
+  element miradi:ProjectSummaryScopeProjectVision { text }? &
+  element miradi:ProjectSummaryScopeScopeComments { text }? &
+  element miradi:ProjectSummaryScopeProjectArea { text }? &
+  element miradi:ProjectSummaryScopeProjectAreaNote { text }? &
+  element miradi:ProjectSummaryScopeHumanPopulation { xsd:decimal }? &
+  element miradi:ProjectSummaryScopeHumanPopulationNotes { text }? &
+  element miradi:ProjectSummaryScopeSocialContext { text }? &
+  ProjectSummaryScopeProtectedAreaCategoriesContainer.element ? &
+  element miradi:ProjectSummaryScopeProtectedAreaCategoryNotes { text }? &
+  element miradi:ProjectSummaryScopeLegalStatus { text }? &
+  element miradi:ProjectSummaryScopeLegislativeContext { text }? &
+  element miradi:ProjectSummaryScopePhysicalDescription { text }? &
+  element miradi:ProjectSummaryScopeBiologicalDescription { text }? &
+  element miradi:ProjectSummaryScopeSocioEconomicInformation { text }? &
+  element miradi:ProjectSummaryScopeHistoricalDescription { text }? &
+  element miradi:ProjectSummaryScopeCulturalDescription { text }? &
+  element miradi:ProjectSummaryScopeAccessInformation { text }? &
+  element miradi:ProjectSummaryScopeVisitationInformation { text }? &
+  element miradi:ProjectSummaryScopeCurrentLandUses { text }? &
+  element miradi:ProjectSummaryScopeManagementResources { text }?
+}
+
+ProjectSummaryLocation.element = element miradi:ProjectSummaryLocation
+{
+  element miradi:ProjectSummaryLocationProjectLocation { GeospatialLocation.element }? &
+  ProjectSummaryLocationCountriesContainer.element ? &
+  element miradi:ProjectSummaryLocationStateAndProvinces { text }? &
+  element miradi:ProjectSummaryLocationMunicipalities { text }? &
+  element miradi:ProjectSummaryLocationLegislativeDistricts { text }? &
+  element miradi:ProjectSummaryLocationLocationDetail { text }? &
+  element miradi:ProjectSummaryLocationSiteMapReference { text }? &
+  element miradi:ProjectSummaryLocationLocationComments { text }?
+}
+
+ProjectSummaryPlanning.element = element miradi:ProjectSummaryPlanning
+{
+  element miradi:ProjectSummaryPlanningStartDate { vocabulary_date }? &
+  element miradi:ProjectSummaryPlanningExpectedEndDate { vocabulary_date }? &
+  element miradi:ProjectSummaryPlanningWorkPlanStartDate { vocabulary_date }? &
+  element miradi:ProjectSummaryPlanningWorkPlanEndDate { vocabulary_date }? &
+  element miradi:ProjectSummaryPlanningFiscalYearStart { vocabulary_fiscal_year_start_month }? &
+  element miradi:ProjectSummaryPlanningFullTimeEmployeeDaysPerYear { xsd:decimal }? &
+  element miradi:ProjectSummaryPlanningPlanningComments { text }? &
+  element miradi:ProjectSummaryPlanningCurrencyType { text }? &
+  element miradi:ProjectSummaryPlanningCurrencySymbol { text }? &
+  element miradi:ProjectSummaryPlanningCurrencyDecimalPlaces { xsd:decimal }? &
+  element miradi:ProjectSummaryPlanningTotalBudgetForFunding { xsd:decimal }? &
+  element miradi:ProjectSummaryPlanningBudgetSecuredPercent { xsd:decimal }? &
+  element miradi:ProjectSummaryPlanningKeyFundingSources { text }? &
+  element miradi:ProjectSummaryPlanningFinancialComments { text }?
+}
+
+ProjectResourcePool.element = element miradi:ProjectResourcePool { ProjectResource.element* }
+ProjectResource.element = element miradi:ProjectResource
+{
+  attribute Id {xsd:integer}  &
+  element miradi:ProjectResourceResourceType { vocabulary_resource_type  } &
+  element miradi:ProjectResourceGivenName { text }? &
+  element miradi:ProjectResourceSurname { text }? &
+  element miradi:ProjectResourceResource_Id { text }? &
+  ProjectResourceRoleCodesContainer.element ? &
+  element miradi:ProjectResourceOrganization { text }? &
+  element miradi:ProjectResourcePosition { text }? &
+  element miradi:ProjectResourceLocation { text }? &
+  element miradi:ProjectResourceOfficePhoneNumber { text }? &
+  element miradi:ProjectResourcePhoneNumberMobile { text }? &
+  element miradi:ProjectResourcePhoneNumberHome { text }? &
+  element miradi:ProjectResourcePhoneNumberOther { text }? &
+  element miradi:ProjectResourceEmail { text }? &
+  element miradi:ProjectResourceAlternativeEmail { text }? &
+  element miradi:ProjectResourceIMAddress { text }? &
+  element miradi:ProjectResourceIMService { text }? &
+  element miradi:ProjectResourceDateUpdated { vocabulary_date }? &
+  element miradi:ProjectResourceDailyRate { xsd:decimal }? &
+  element miradi:ProjectResourceComments { text }? &
+  element miradi:ProjectResourceIsCcnCoach { xsd:boolean }? &
+  element miradi:ProjectResourceCustom.Custom1 { text }? &
+  element miradi:ProjectResourceCustom.Custom2 { text }?
+}
+
+OrganizationPool.element = element miradi:OrganizationPool { Organization.element* }
+Organization.element = element miradi:Organization
+{
+  attribute Id {xsd:integer}  &
+  element miradi:OrganizationName { text }? &
+  element miradi:OrganizationId { text }? &
+  element miradi:OrganizationRolesDescription { text }? &
+  element miradi:OrganizationGivenName { text }? &
+  element miradi:OrganizationSurname { text }? &
+  element miradi:OrganizationEmail { text }? &
+  element miradi:OrganizationPhoneNumber { text }? &
+  element miradi:OrganizationComments { text }?
+}
+
+TncProjectData.element = element miradi:TncProjectData
+{
+  element miradi:TncProjectDataDatabaseDownloadDate { text }? &
+  element miradi:TncProjectDataOtherOrgRelatedProjects { text }? &
+  element miradi:TncProjectDataPlanningTeamComments { text }? &
+  element miradi:TncProjectDataConProParentChildProjectText { text }? &
+  element miradi:TncProjectDataLessonsLearned { text }? &
+  element miradi:TncProjectDataProjectResourcesScorecard { text }? &
+  element miradi:TncProjectDataProjectLevelComments { text }? &
+  element miradi:TncProjectDataProjectCitations { text }? &
+  element miradi:TncProjectDataCapStandardsScorecard { text }? &
+  TncProjectDataTNCProjectPlaceTypesContainer.element ? &
+  TncProjectDataTNCOrganizationalPrioritiesContainer.element ? &
+  TncProjectDataTNCOperatingUnitsContainer.element ? &
+  TncProjectDataTNCTerrestrialEcoRegionContainer.element ? &
+  TncProjectDataTNCMarineEcoRegionContainer.element ? &
+  TncProjectDataTNCFreshwaterEcoRegionContainer.element ?
+}
+
+WwfProjectData.element = element miradi:WwfProjectData
+{
+  WwfProjectDataManagingOfficesContainer.element ? &
+  WwfProjectDataRegionsContainer.element ? &
+  WwfProjectDataEcoRegionsContainer.element ?
+}
+
+WCSData.element = element miradi:WCSData
+{
+  element miradi:WCSDataOrganizationalFocus { text }? &
+  element miradi:WCSDataOrganizationalLevel { text }? &
+  element miradi:WCSDataSwotCompleted { text }? &
+  element miradi:WCSDataSwotUrl { text }? &
+  element miradi:WCSDataStepCompleted { text }? &
+  element miradi:WCSDataStepUrl { text }?
+}
+
+RareProjectData.element = element miradi:RareProjectData
+{
+  element miradi:RareProjectDataCohort { text }? &
+  element miradi:RareProjectDataThreatsAddressedNotes { text }? &
+  element miradi:RareProjectDataNumberOfCommunitiesInCampaignArea { text }? &
+  element miradi:RareProjectDataBiodiversityHotspots { text }? &
+  element miradi:RareProjectDataFlagshipSpeciesCommonName { text }? &
+  element miradi:RareProjectDataFlagshipSpeciesScientificName { text }? &
+  element miradi:RareProjectDataFlagshipSpeciesDetail { text }? &
+  element miradi:RareProjectDataCampaignTheoryOfChange { text }? &
+  element miradi:RareProjectDataCampaignSlogan { text }? &
+  element miradi:RareProjectDataSummaryOfKeyMessages { text }? &
+  element miradi:RareProjectDataMainActivitiesNotes { text }?
+}
+
+FosProjectData.element = element miradi:FosProjectData
+{
+  element miradi:FosProjectDataTrainingType { vocabulary_fos_training_type  } &
+  element miradi:FosProjectDataTrainingDates { text }? &
+  element miradi:FosProjectDataTrainers { text }? &
+  element miradi:FosProjectDataCoaches { text }?
+}
+
+ConceptualModelPool.element = element miradi:ConceptualModelPool { ConceptualModel.element* }
+ConceptualModel.element = element miradi:ConceptualModel
+{
+  attribute Id {xsd:integer}  &
+  element miradi:ConceptualModelName { text }? &
+  element miradi:ConceptualModelId { text }? &
+  element miradi:ConceptualModelDetails { text }? &
+  element miradi:ConceptualModelZoomScale { xsd:decimal }? &
+  element miradi:ConceptualModelDiagramFactorIds { DiagramFactorId.element* } &
+  element miradi:ConceptualModelDiagramLinkIds { DiagramLinkId.element* } &
+  ConceptualModelHiddenTypesContainer.element ? &
+  element miradi:ConceptualModelSelectedTaggedObjectSetIds { TaggedObjectSetId.element* }
+}
+
+ResultsChainPool.element = element miradi:ResultsChainPool { ResultsChain.element* }
+ResultsChain.element = element miradi:ResultsChain
+{
+  attribute Id {xsd:integer}  &
+  element miradi:ResultsChainName { text }? &
+  element miradi:ResultsChainId { text }? &
+  element miradi:ResultsChainDetails { text }? &
+  element miradi:ResultsChainZoomScale { xsd:decimal }? &
+  element miradi:ResultsChainDiagramFactorIds { DiagramFactorId.element* } &
+  element miradi:ResultsChainDiagramLinkIds { DiagramLinkId.element* } &
+  ResultsChainHiddenTypesContainer.element ? &
+  element miradi:ResultsChainSelectedTaggedObjectSetIds { TaggedObjectSetId.element* }
+}
+
+DiagramFactorPool.element = element miradi:DiagramFactorPool { DiagramFactor.element* }
+DiagramFactor.element = element miradi:DiagramFactor
+{
+  attribute Id {xsd:integer}  &
+  element miradi:DiagramFactorName { text }? &
+  element miradi:DiagramFactorWrappedFactorId{ WrappedByDiagramFactorId.element } &
+  element miradi:DiagramFactorLocation { DiagramPoint.element } &
+  element miradi:DiagramFactorSize { DiagramSize.element } &
+  element miradi:DiagramFactorGroupBoxChildrenIds { DiagramFactorId.element* } &
+  element miradi:DiagramFactorTextBoxZOrderCode { vocabulary_text_box_z_order  }? &
+  element miradi:DiagramFactorStyle { Style.element } 
+}
+
+DiagramLinkPool.element = element miradi:DiagramLinkPool { DiagramLink.element* }
+DiagramLink.element = element miradi:DiagramLink
+{
+  attribute Id {xsd:integer}  &
+  element miradi:DiagramLinkName { text }? &
+  element miradi:DiagramLinkFromDiagramFactorId{ LinkableFactorId.element } &
+  element miradi:DiagramLinkToDiagramFactorId{ LinkableFactorId.element } &
+  element miradi:DiagramLinkBendPoints{ DiagramPoint.element* } &
+  element miradi:DiagramLinkGroupedDiagramLinkIds { DiagramLinkId.element* } &
+  element miradi:DiagramLinkColor { vocabulary_diagram_link_color  } &
+  element miradi:DiagramLinkIsBidirectionalLink { xsd:boolean }?
+}
+
+BiodiversityTargetPool.element = element miradi:BiodiversityTargetPool { BiodiversityTarget.element* }
+BiodiversityTarget.element = element miradi:BiodiversityTarget
+{
+  attribute Id {xsd:integer}  &
+  element miradi:BiodiversityTargetName { text }? &
+  element miradi:BiodiversityTargetId { text }? &
+  element miradi:BiodiversityTargetDetails { text }? &
+  element miradi:BiodiversityTargetComments { text }? &
+  element miradi:BiodiversityTargetViabilityStatus { vocabulary_target_status  } &
+  element miradi:BiodiversityTargetViabilityMode { vocabulary_target_viability_mode  } &
+  element miradi:BiodiversityTargetCurrentStatusJustification { text }? &
+  element miradi:BiodiversityTargetSubTargetIds { SubTargetId.element* }? &
+  element miradi:BiodiversityTargetGoalIds { GoalId.element* }? &
+  element miradi:BiodiversityTargetKeyEcologicalAttributeIds { KeyEcologicalAttributeId.element* }? &
+  element miradi:BiodiversityTargetIndicatorIds { IndicatorId.element* }? &
+  element miradi:BiodiversityTargetThreatRating { vocabulary_threat_rating  }? &
+  element miradi:BiodiversityTargetStressIds { StressId.element* }? &
+  BiodiversityTargetHabitatAssociationContainer.element ? &
+  element miradi:BiodiversityTargetSpeciesLatinName { text }?
+}
+
+HumanWelfareTargetPool.element = element miradi:HumanWelfareTargetPool { HumanWelfareTarget.element* }
+HumanWelfareTarget.element = element miradi:HumanWelfareTarget
+{
+  attribute Id {xsd:integer}  &
+  element miradi:HumanWelfareTargetName { text }? &
+  element miradi:HumanWelfareTargetId { text }? &
+  element miradi:HumanWelfareTargetDetails { text }? &
+  element miradi:HumanWelfareTargetComments { text }? &
+  element miradi:HumanWelfareTargetViabilityStatus { vocabulary_target_status  } &
+  element miradi:HumanWelfareTargetViabilityMode { vocabulary_target_viability_mode  } &
+  element miradi:HumanWelfareTargetCurrentStatusJustification { text }? &
+  element miradi:HumanWelfareTargetSubTargetIds { SubTargetId.element* }? &
+  element miradi:HumanWelfareTargetGoalIds { GoalId.element* }? &
+  element miradi:HumanWelfareTargetKeyEcologicalAttributeIds { KeyEcologicalAttributeId.element* }? &
+  element miradi:HumanWelfareTargetIndicatorIds { IndicatorId.element* }? &
+  element miradi:HumanWelfareTargetThreatRating { vocabulary_threat_rating  }?
+}
+
+CausePool.element = element miradi:CausePool { Cause.element* }
+Cause.element = element miradi:Cause
+{
+  attribute Id {xsd:integer}  &
+  element miradi:CauseName { text }? &
+  element miradi:CauseId { text }? &
+  element miradi:CauseDetails { text }? &
+  element miradi:CauseComments { text }? &
+  element miradi:CauseIsDirectThreat { xsd:boolean }? &
+  element miradi:CauseStandardClassification { vocabulary_cause_taxonomy_code  }? &
+  element miradi:CauseObjectiveIds { ObjectiveId.element* }? &
+  element miradi:CauseIndicatorIds { IndicatorId.element* }? &
+  element miradi:CauseThreatRating { vocabulary_threat_rating  }?
+}
+
+StrategyPool.element = element miradi:StrategyPool { Strategy.element* }
+Strategy.element = element miradi:Strategy
+{
+  attribute Id {xsd:integer}  &
+  element miradi:StrategyName { text }? &
+  element miradi:StrategyId { text }? &
+  element miradi:StrategyDetails { text }? &
+  element miradi:StrategyComments { text }? &
+  element miradi:StrategyObjectiveIds { ObjectiveId.element* }? &
+  element miradi:StrategySortedActivityIds { ActivityId.element* }? &
+  element miradi:StrategyStatus { text }? &
+  element miradi:StrategyStandardClassification { vocabulary_strategy_taxonomy_code  } &
+  element miradi:StrategyImpactRating { vocabulary_strategy_impact_rating_code  } &
+  element miradi:StrategyFeasibilityRating { vocabulary_strategy_feasibility_rating_code  } &
+  element miradi:StrategyLegacyTncStrategyRanking { text }? &
+  element miradi:StrategyProgressReportIds { ProgressReportId.element* }? &
+  element miradi:StrategyExpenseIds { ExpenseAssignmentId.element* }? &
+  element miradi:StrategyAssignmentIds { ResourceAssignmentId.element* }? &
+  element miradi:StrategyIndicatorIds { IndicatorId.element* }? &
+  element miradi:StrategyCalculatedCosts { CalculatedCosts.element }?
+}
+
+ThreatReductionResultPool.element = element miradi:ThreatReductionResultPool { ThreatReductionResult.element* }
+ThreatReductionResult.element = element miradi:ThreatReductionResult
+{
+  attribute Id {xsd:integer}  &
+  element miradi:ThreatReductionResultName { text }? &
+  element miradi:ThreatReductionResultId { text }? &
+  element miradi:ThreatReductionResultDetails { text }? &
+  element miradi:ThreatReductionResultComments { text }? &
+  element miradi:ThreatReductionResultRelatedDirectThreatId{ ThreatReductionResultThreatId.element }? &
+  element miradi:ThreatReductionResultObjectiveIds { ObjectiveId.element* }? &
+  element miradi:ThreatReductionResultIndicatorIds { IndicatorId.element* }?
+}
+
+IntermediateResultPool.element = element miradi:IntermediateResultPool { IntermediateResult.element* }
+IntermediateResult.element = element miradi:IntermediateResult
+{
+  attribute Id {xsd:integer}  &
+  element miradi:IntermediateResultName { text }? &
+  element miradi:IntermediateResultId { text }? &
+  element miradi:IntermediateResultDetails { text }? &
+  element miradi:IntermediateResultComments { text }? &
+  element miradi:IntermediateResultObjectiveIds { ObjectiveId.element* }? &
+  element miradi:IntermediateResultIndicatorIds { IndicatorId.element* }?
+}
+
+GroupBoxPool.element = element miradi:GroupBoxPool { GroupBox.element* }
+GroupBox.element = element miradi:GroupBox
+{
+  attribute Id {xsd:integer}  &
+  element miradi:GroupBoxName { text }? &
+  element miradi:GroupBoxId { text }? &
+  element miradi:GroupBoxDetails { text }? &
+  element miradi:GroupBoxComments { text }?
+}
+
+TextBoxPool.element = element miradi:TextBoxPool { TextBox.element* }
+TextBox.element = element miradi:TextBox
+{
+  attribute Id {xsd:integer}  &
+  element miradi:TextBoxName { text }? &
+  element miradi:TextBoxId { text }? &
+  element miradi:TextBoxDetails { text }? &
+  element miradi:TextBoxComments { text }?
+}
+
+ScopeBoxPool.element = element miradi:ScopeBoxPool { ScopeBox.element* }
+ScopeBox.element = element miradi:ScopeBox
+{
+  attribute Id {xsd:integer}  &
+  element miradi:ScopeBoxName { text }? &
+  element miradi:ScopeBoxId { text }? &
+  element miradi:ScopeBoxDetails { text }? &
+  element miradi:ScopeBoxComments { text }? &
+  element miradi:ScopeBoxScopeBoxTypeCode { vocabulary_scope_box_type  }
+}
+
+KeyEcologicalAttributePool.element = element miradi:KeyEcologicalAttributePool { KeyEcologicalAttribute.element* }
+KeyEcologicalAttribute.element = element miradi:KeyEcologicalAttribute
+{
+  attribute Id {xsd:integer}  &
+  element miradi:KeyEcologicalAttributeName { text }? &
+  element miradi:KeyEcologicalAttributeId { text }? &
+  element miradi:KeyEcologicalAttributeIndicatorIds { IndicatorId.element* }? &
+  element miradi:KeyEcologicalAttributeComments { text }? &
+  element miradi:KeyEcologicalAttributeDetails { text }? &
+  element miradi:KeyEcologicalAttributeKeyEcologicalAttributeType { vocabulary_key_ecological_attribute_type  }
+}
+
+StressPool.element = element miradi:StressPool { Stress.element* }
+Stress.element = element miradi:Stress
+{
+  attribute Id {xsd:integer}  &
+  element miradi:StressName { text }? &
+  element miradi:StressId { text }? &
+  element miradi:StressDetails { text }? &
+  element miradi:StressComments { text }? &
+  element miradi:StressSeverity { vocabulary_stress_severity  } &
+  element miradi:StressScope { vocabulary_stress_scope  }
+}
+
+SubTargetPool.element = element miradi:SubTargetPool { SubTarget.element* }
+SubTarget.element = element miradi:SubTarget
+{
+  attribute Id {xsd:integer}  &
+  element miradi:SubTargetName { text }? &
+  element miradi:SubTargetId { text }? &
+  element miradi:SubTargetDetails { text }?
+}
+
+GoalPool.element = element miradi:GoalPool { Goal.element* }
+Goal.element = element miradi:Goal
+{
+  attribute Id {xsd:integer}  &
+  element miradi:GoalName { text }? &
+  element miradi:GoalId { text }? &
+  element miradi:GoalDetails { text }? &
+  element miradi:GoalRelevantIndicatorIds { IndicatorId.element* }? &
+  element miradi:GoalRelevantStrategyIds { StrategyId.element* }? &
+  element miradi:GoalRelevantActivityIds { ActivityId.element* }? &
+  element miradi:GoalProgressPercentIds { ProgressPercentId.element* }? &
+  element miradi:GoalComments { text }?
+}
+
+ObjectivePool.element = element miradi:ObjectivePool { Objective.element* }
+Objective.element = element miradi:Objective
+{
+  attribute Id {xsd:integer}  &
+  element miradi:ObjectiveName { text }? &
+  element miradi:ObjectiveId { text }? &
+  element miradi:ObjectiveDetails { text }? &
+  element miradi:ObjectiveRelevantIndicatorIds { IndicatorId.element* }? &
+  element miradi:ObjectiveRelevantStrategyIds { StrategyId.element* }? &
+  element miradi:ObjectiveRelevantActivityIds { ActivityId.element* }? &
+  element miradi:ObjectiveProgressPercentIds { ProgressPercentId.element* }? &
+  element miradi:ObjectiveComments { text }?
+}
+
+IndicatorPool.element = element miradi:IndicatorPool { Indicator.element* }
+Indicator.element = element miradi:Indicator
+{
+  attribute Id {xsd:integer}  &
+  element miradi:IndicatorName { text }? &
+  element miradi:IndicatorId { text }? &
+  element miradi:IndicatorDetails { text }? &
+  element miradi:IndicatorComments { text }? &
+  element miradi:IndicatorPriority { vocabulary_priority_rating_code  } &
+  element miradi:IndicatorFutureStatusDate { vocabulary_date }? &
+  element miradi:IndicatorFutureStatusSummary { text }? &
+  element miradi:IndicatorFutureStatusRating { vocabulary_measurement_status  } &
+  element miradi:IndicatorFutureStatusDetails { text }? &
+  element miradi:IndicatorFutureStatusComments { text }? &
+  element miradi:IndicatorProgressReportIds { ProgressReportId.element* }? &
+  element miradi:IndicatorExpenseIds { ExpenseAssignmentId.element* }? &
+  element miradi:IndicatorAssignmentIds { ResourceAssignmentId.element* }? &
+  element miradi:IndicatorMeasurementIds { MeasurementId.element* }? &
+  element miradi:IndicatorSortedMethodIds { MethodId.element* }? &
+  element miradi:IndicatorThresholds { IndicatorThreshold.element* }? &
+  element miradi:IndicatorRatingSource { vocabulary_rating_source  }? &
+  element miradi:IndicatorViabilityRatingsComments { text }? &
+  element miradi:IndicatorCalculatedCosts { CalculatedCosts.element }?
+}
+
+TaskPool.element = element miradi:TaskPool { Task.element* }
+Task.element = element miradi:Task
+{
+  attribute Id {xsd:integer}  &
+  element miradi:TaskName { text }? &
+  element miradi:TaskId { text }? &
+  element miradi:TaskDetails { text }? &
+  element miradi:TaskComments { text }? &
+  element miradi:TaskExpenseIds { ExpenseAssignmentId.element* }? &
+  element miradi:TaskAssignmentIds { ResourceAssignmentId.element* }? &
+  element miradi:TaskProgressReportIds { ProgressReportId.element* }? &
+  element miradi:TaskSortedSubTaskIds { SubTaskId.element* }? &
+  element miradi:TaskCalculatedCosts { CalculatedCosts.element }?
+}
+
+ProgressReportPool.element = element miradi:ProgressReportPool { ProgressReport.element* }
+ProgressReport.element = element miradi:ProgressReport
+{
+  attribute Id {xsd:integer}  &
+  element miradi:ProgressReportProgressDate { vocabulary_date }? &
+  element miradi:ProgressReportDetails { text }? &
+  element miradi:ProgressReportProgressStatus { vocabulary_progress_report_status  }
+}
+
+ProgressPercentPool.element = element miradi:ProgressPercentPool { ProgressPercent.element* }
+ProgressPercent.element = element miradi:ProgressPercent
+{
+  attribute Id {xsd:integer}  &
+  element miradi:ProgressPercentPercentDate { vocabulary_date }? &
+  element miradi:ProgressPercentPercentComplete { xsd:decimal }? &
+  element miradi:ProgressPercentDetails { text }?
+}
+
+MeasurementPool.element = element miradi:MeasurementPool { Measurement.element* }
+Measurement.element = element miradi:Measurement
+{
+  attribute Id {xsd:integer}  &
+  element miradi:MeasurementName { text }? &
+  element miradi:MeasurementTrend { vocabulary_measurement_trend  } &
+  element miradi:MeasurementRating { vocabulary_measurement_status  } &
+  element miradi:MeasurementDate { vocabulary_date }? &
+  element miradi:MeasurementMeasurementValue { text }? &
+  element miradi:MeasurementDetail { text }? &
+  element miradi:MeasurementSource { vocabulary_measurement_status_confidence  } &
+  element miradi:MeasurementComments { text }?
+}
+
+AccountingCodePool.element = element miradi:AccountingCodePool { AccountingCode.element* }
+AccountingCode.element = element miradi:AccountingCode
+{
+  attribute Id {xsd:integer}  &
+  element miradi:AccountingCodeName { text }? &
+  element miradi:AccountingCodeCode { text }? &
+  element miradi:AccountingCodeComments { text }?
+}
+
+FundingSourcePool.element = element miradi:FundingSourcePool { FundingSource.element* }
+FundingSource.element = element miradi:FundingSource
+{
+  attribute Id {xsd:integer}  &
+  element miradi:FundingSourceName { text }? &
+  element miradi:FundingSourceCode { text }? &
+  element miradi:FundingSourceComments { text }?
+}
+
+BudgetCategoryOnePool.element = element miradi:BudgetCategoryOnePool { BudgetCategoryOne.element* }
+BudgetCategoryOne.element = element miradi:BudgetCategoryOne
+{
+  attribute Id {xsd:integer}  &
+  element miradi:BudgetCategoryOneLabel { text }? &
+  element miradi:BudgetCategoryOneCode { text }? &
+  element miradi:BudgetCategoryOneComments { text }?
+}
+
+BudgetCategoryTwoPool.element = element miradi:BudgetCategoryTwoPool { BudgetCategoryTwo.element* }
+BudgetCategoryTwo.element = element miradi:BudgetCategoryTwo
+{
+  attribute Id {xsd:integer}  &
+  element miradi:BudgetCategoryTwoLabel { text }? &
+  element miradi:BudgetCategoryTwoCode { text }? &
+  element miradi:BudgetCategoryTwoComments { text }?
+}
+
+ExpenseAssignmentPool.element = element miradi:ExpenseAssignmentPool { ExpenseAssignment.element* }
+ExpenseAssignment.element = element miradi:ExpenseAssignment
+{
+  attribute Id {xsd:integer}  &
+  element miradi:ExpenseAssignmentName { text }? &
+  element miradi:ExpenseAssignmentFundingSourceId{ FundingSourceId.element }? &
+  element miradi:ExpenseAssignmentAccountingCodeId{ AccountingCodeId.element }? &
+  element miradi:ExpenseAssignmentBudgetCategoryOneId{ BudgetCategoryOneId.element }? &
+  element miradi:ExpenseAssignmentBudgetCategoryTwoId{ BudgetCategoryTwoId.element }? &
+  element miradi:ExpenseAssignmentDetails{ DateUnitExpense.element* }?
+}
+
+ResourceAssignmentPool.element = element miradi:ResourceAssignmentPool { ResourceAssignment.element* }
+ResourceAssignment.element = element miradi:ResourceAssignment
+{
+  attribute Id {xsd:integer}  &
+  element miradi:ResourceAssignmentName { text }? &
+  element miradi:ResourceAssignmentFundingSourceId{ FundingSourceId.element }? &
+  element miradi:ResourceAssignmentAccountingCodeId{ AccountingCodeId.element }? &
+  element miradi:ResourceAssignmentBudgetCategoryOneId{ BudgetCategoryOneId.element }? &
+  element miradi:ResourceAssignmentBudgetCategoryTwoId{ BudgetCategoryTwoId.element }? &
+  element miradi:ResourceAssignmentResourceId{ ResourceId.element }? &
+  element miradi:ResourceAssignmentDetails{ DateUnitWorkUnits.element* }?
+}
+
+ThreatRatingPool.element = element miradi:ThreatRatingPool { ThreatRating.element* }
+ThreatRating.element = element miradi:ThreatRating
+{
+  element miradi:ThreatRatingTargetId{ BiodiversityTargetId.element } &
+  element miradi:ThreatRatingThreatId{ ThreatId.element } &
+  element miradi:ThreatRatingThreatTargetRating { vocabulary_threat_rating  }? &
+  element miradi:ThreatRatingComments { text }? &
+  element miradi:ThreatRatingRatings{ SimpleThreatRating.element | StressBasedThreatRating.element* }
+}
+
+IUCNRedListSpeciesPool.element = element miradi:IUCNRedListSpeciesPool { IUCNRedListSpecies.element* }
+IUCNRedListSpecies.element = element miradi:IUCNRedListSpecies
+{
+  attribute Id {xsd:integer}  &
+  element miradi:IUCNRedListSpeciesName { text }?
+}
+
+OtherNotableSpeciesPool.element = element miradi:OtherNotableSpeciesPool { OtherNotableSpecies.element* }
+OtherNotableSpecies.element = element miradi:OtherNotableSpecies
+{
+  attribute Id {xsd:integer}  &
+  element miradi:OtherNotableSpeciesName { text }?
+}
+
+AudiencePool.element = element miradi:AudiencePool { Audience.element* }
+Audience.element = element miradi:Audience
+{
+  attribute Id {xsd:integer}  &
+  element miradi:AudienceName { text }? &
+  element miradi:AudiencePeopleCount { text }? &
+  element miradi:AudienceSummary { text }?
+}
+
+PlanningViewConfigurationPool.element = element miradi:PlanningViewConfigurationPool { PlanningViewConfiguration.element* }
+PlanningViewConfiguration.element = element miradi:PlanningViewConfiguration
+{
+  attribute Id {xsd:integer}  &
+  element miradi:PlanningViewConfigurationName { text }? &
+  element miradi:PlanningViewConfigurationDiagramDataInclusion { vocabulary_included_diagram_types  }? &
+  element miradi:PlanningViewConfigurationStrategyObjectiveOrder { vocabulary_planning_tree_objective_strategy_node_order  }? &
+  element miradi:PlanningViewConfigurationTargetNodePosition { vocabulary_planning_tree_target_node_position  }?
+}
+
+DashboardPool.element = element miradi:DashboardPool { Dashboard.element* }
+Dashboard.element = element miradi:Dashboard
+{
+  attribute Id {xsd:integer}  &
+  element miradi:DashboardStatusEntries { StatusEntry.element* }?
+}
+
+TaggedObjectSetPool.element = element miradi:TaggedObjectSetPool { TaggedObjectSet.element* }
+TaggedObjectSet.element = element miradi:TaggedObjectSet
+{
+  attribute Id {xsd:integer}  &
+  element miradi:TaggedObjectSetName { text }? &
+  element miradi:TaggedObjectSetId { text }? &
+  element miradi:TaggedObjectSetComments { text }? &
+  element miradi:TaggedObjectSetFactorIds { WrappedByDiagramFactorId.element* }
+}
+
+ExtraData.element = element miradi:ExtraData
+{
+ExtraDataSection.element *
+}
+
+vocabulary_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
+vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } 
+vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='12' } 
+vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }
+vocabulary_text_box_z_order = 'Back' | 'Front'
+vocabulary_language_code = 'ab'|'aa'|'af'|'ak'|'sq'|'am'|'ar'|'an'|'hy'|'as'|'av'|'ae'|'ay'|'az'|'bm'|'ba'|'eu'|'be'|'bn'|'bh'|'bi'|'nb'|'bs'|'br'|'bg'|'my'|'ca'|'km'|'ch'|'ce'|'ny'|'zh'|'cu'|'cv'|'kw'|'co'|'cr'|'hr'|'cs'|'da'|'dv'|'nl'|'dz'|'en'|'eo'|'et'|'ee'|'fo'|'fj'|'fi'|'fr'|'ff'|'gd'|'gl'|'lg'|'ka'|'de'|'el'|'gn'|'gu'|'ht'|'ha'|'he'|'hz'|'hi'|'ho'|'hu'|'is'|'io'|'ig'|'id'|'ia'|'ie'|'iu'|'ik'|'ga'|'it'|'ja'|'jv'|'kl'|'kn'|'kr'|'ks'|'kk'|'ki'|'rw'|'ky'|'kv'|'kg'|'ko'|'kj'|'ku'|'lo'|'la'|'lv'|'li'|'ln'|'lt'|'lu'|'lb'|'mk'|'mg'|'ms'|'ml'|'mt'|'gv'|'mi'|'mr'|'mh'|'mo'|'mn'|'na'|'nv'|'nd'|'nr'|'ng'|'ne'|'se'|'no'|'nn'|'oc'|'oj'|'or'|'om'|'os'|'pi'|'pa'|'fa'|'pl'|'pt'|'ps'|'qu'|'ro'|'rm'|'rn'|'ru'|'sm'|'sg'|'sa'|'sc'|'sr'|'sn'|'ii'|'sd'|'si'|'sk'|'sl'|'so'|'st'|'es'|'su'|'sw'|'ss'|'sv'|'tl'|'ty'|'tg'|'ta'|'tt'|'te'|'th'|'bo'|'ti'|'to'|'ts'|'tn'|'tr'|'tk'|'tw'|'ug'|'uk'|''|'ur'|'uz'|'ve'|'vi'|'vo'|'wa'|'cy'|'fy'|'wo'|'xh'|'yi'|'yo'|'za'|'zu'
+vocabulary_fiscal_year_start_month = ''|'10'|'7'|'4'
+vocabulary_protected_area_categories = 'Ia'|'Ib'|'II'|'III'|'IV'|'V'|'VI'
+vocabulary_resource_type = 'Person'|'Group'
+vocabulary_resource_role_codes = 'TeamMember'|'Contact'|'Leader'|'Facilitator'|'Advisor'|'Stakeholder'
+vocabulary_hidden_types = 'Strategy'|'DraftStrategy'|'ContributingFactor'|'DirectThreat'|'Target'|'HumanWelfareTarget'|'Link'|'Goal'|'Objective'|'Indicator'|'TextBox'|'ScopeBox'|'Stress'|'Activity'|'IntermediateResult'|'ThreatReductionResult'|'GroupBox'
+vocabulary_diagram_factor_font_size = '1.0'|'0.5'|'0.75'|'0.9'|'1.25'|'1.75'|'2.5'
+vocabulary_diagram_factor_font_style = ''|'<B>'|'<U>'|'<S>'
+vocabulary_diagram_factor_background_color = 'LightGray'|'White'|'Pink'|'Orange'|'LightYellow'|'LightGreen'|'LightBlue'|'LightPurple'|'Tan'|'Black'|'DarkGray'|'Red'|'DarkOrange'|'DarkYellow'|'DarkGreen'|'DarkBlue'|'DarkPurple'|'Brown'
+vocabulary_diagram_factor_foreground_color = '#000000'|'#4E4848'|'#FF0000'|'#FF6600'|'#FFCC00'|'#007F00'|'#0000CC'|'#9900FF'|'#C85A17'|'#6D7B8D'|'#FFFFFF'|'#FF00FF'|'#FF8040'|'#FFFFCC'|'#5FFB17'|'#00CCFF'|'#CC99FF'|'#EDE275'
+vocabulary_diagram_link_color = 'black'|'darkGray'|'red'|'DarkOrange'|'DarkYellow'|'darkGreen'|'darkBlue'|'DarkPurple'|'brown'|'lightGray'|'White'|'pink'|'orange'|'yellow'|'lightGreen'|'lightBlue'|'LightPurple'|'tan'
+vocabulary_biodiversity_target_habitat_association = '1'|'1.1'|'1.2'|'1.3'|'1.4'|'1.5'|'1.6'|'1.7'|'1.8'|'1.9'|'2'|'2.1'|'2.2'|'3'|'3.1'|'3.2'|'3.3'|'3.4'|'3.5'|'3.6'|'3.7'|'3.8'|'4'|'4.1'|'4.2'|'4.3'|'4.4'|'4.5'|'4.6'|'4.7'|'5'|'5.1'|'5.2'|'5.3'|'5.4'|'5.5'|'5.6'|'5.7'|'5.8'|'5.9'|'5.10'|'5.11'|'5.12'|'5.13'|'5.14'|'5.15'|'5.16'|'5.17'|'5.18'|'6'|'7'|'7.1'|'7.2'|'8'|'8.1'|'8.2'|'8.3'|'9'|'9.1'|'9.2'|'9.3'|'9.5'|'9.6'|'9.7'|'9.8'|'9.8.1'|'9.8.2'|'9.8.3'|'9.8.4'|'9.8.5'|'9.8.6'|'9.9'|'9.10'|'10'|'10.1'|'10.2'|'10.3'|'10.4'|'11'|'11.1'|'11.1.1'|'11.1.2'|'11.2'|'11.3'|'11.4'|'11.5'|'11.6'|'12'|'12.1'|'12.2'|'12.3'|'12.4'|'12.5'|'12.6'|'12.7'|'13'|'13.1'|'13.2'|'13.3'|'13.4'|'13.5'|'14'|'14.1'|'14.2'|'14.3'|'14.4'|'14.5'|'14.6'|'15'|'15.1'|'15.2'|'15.3'|'15.4'|'15.5'|'15.6'|'15.7'|'15.8'|'15.9'|'15.10'|'15.11'|'15.12'|'15.13'|'16'|'TNC1'|'TNC2'|'TNC3'|'17'|'18'
+vocabulary_target_status = ''|'1'|'2'|'3'|'4'
+vocabulary_target_viability_mode = ''|'TNC'
+vocabulary_cause_taxonomy_code = ''|'T10'|'T10.10'|'T10.20'|'T10.30'|'T20'|'T20.10'|'T20.30'|'T20.40'|'T20.50'|'T30'|'T30.10'|'T30.20'|'T30.30'|'T40'|'T40.10'|'T40.20'|'T40.30'|'T40.40'|'T50'|'T50.10'|'T50.20'|'T50.30'|'T50.40'|'T60'|'T60.10'|'T60.20'|'T60.30'|'T70'|'T70.10'|'T70.20'|'T70.30'|'T80'|'T80.10'|'T80.20'|'T80.30'|'T91'|'T91.10'|'T91.20'|'T91.30'|'T91.40'|'T91.50'|'T91.60'|'T100'|'T100.10'|'T100.20'|'T100.30'|'T110'|'T110.10'|'T110.20'|'T110.30'|'T110.40'
+vocabulary_scope_box_type = 'Biodiversity'|'HumanWelfare'
+vocabulary_stress_severity = ''|'1'|'2'|'3'|'4'
+vocabulary_stress_scope = ''|'1'|'2'|'3'|'4'
+vocabulary_strategy_taxonomy_code = ''|'A10'|'A10.10'|'A10.30'|'A20'|'A20.10'|'A20.20'|'A20.30'|'A30'|'A30.10'|'A30.20'|'A30.30'|'A30.40'|'A40'|'A40.10'|'A40.20'|'A40.30'|'A50'|'A50.10'|'A50.20'|'A50.30'|'A50.40'|'A60'|'A60.10'|'A60.20'|'A60.30'|'A60.40'|'A60.50'|'A70'|'A70.10'|'A70.20'|'A70.30'
+vocabulary_strategy_impact_rating_code = ''|'1'|'2'|'3'|'4'
+vocabulary_strategy_feasibility_rating_code = ''|'1'|'2'|'3'|'4'
+vocabulary_priority_rating_code = ''|'1'|'2'|'3'|'4'
+vocabulary_key_ecological_attribute_type = ''|'10'|'20'|'30'
+vocabulary_contribution_code = ''|'1'|'2'|'3'|'4'
+vocabulary_irreversibility_code = ''|'1'|'2'|'3'|'4'
+vocabulary_simple_threat_rating_scope_code = ''|'1'|'2'|'3'|'4'
+vocabulary_simple_threat_rating_severitiy_code = ''|'1'|'2'|'3'|'4'
+vocabulary_simple_threat_rating_irreversibility_code = ''|'1'|'2'|'3'|'4'
+vocabulary_tnc_project_place_types = 'SinglePlaceBasedProject'|'MultiPlaceBasedProject'|'NonPlaceBasedProject'
+vocabulary_tnc_organizational_priorities = 'CapitalCampaign'|'RegionalPriority'|'FocalAreaClimate'|'FocalAreaMarine'|'FocalAreaFreshwater'|'FocalAreaProtected Areas'
+vocabulary_tnc_operating_units = 'AFRRO'|'AL_US'|'AK_US'|'AMAZO'|'AZ_US'|'AR_US'|'APARO'|'ATLCS'|'AUSTR'|'CA_US'|'CANAD'|'CARIB'|'CHINA'|'CO_US'|'CT_US'|'DE_US'|'FL_US'|'GA_US'|'HI_US'|'ID_US'|'IL_US'|'IN_US'|'INDON'|'IA_US'|'KS_US'|'KY_US'|'LAMRO'|'LA_US'|'ME_US'|'MD_US'|'MA_US'|'MEXIC'|'MI_US'|'MICRO'|'MN_US'|'MS_US'|'MO_US'|'MONGO'|'MT_US'|'NE_US'|'NV_US'|'NH_US'|'NJ_US'|'NM_US'|'NY_US'|'OTHER'|'NAMRO'|'NASRO'|'NC_US'|'ND_US'|'NANDE'|'OH_US'|'OK_US'|'OR_US'|'PAPUA'|'PA_US'|'RI_US'|'SOLOM'|'SC_US'|'SD_US'|'SANDE'|'TN_US'|'TX_US'|'UT_US'|'VT_US'|'VA_US'|'WA_US'|'WV_US'|'WI_US'|'WORLD'|'WY_US'|'OBSOLETE'
+vocabulary_tnc_terrestrial_eco_region = '10000'|'10649'|'10671'|'10144'|'10587'|'10672'|'17076'|'17052'|'17077'|'10170'|'10085'|'10173'|'10555'|'10613'|'10556'|'10588'|'10312'|'10480'|'10145'|'10605'|'10650'|'10198'|'10118'|'10155'|'10119'|'10156'|'10060'|'17088'|'10509'|'10393'|'10673'|'10174'|'10313'|'10465'|'17078'|'10635'|'17027'|'10045'|'10120'|'17064'|'10466'|'10314'|'10674'|'10394'|'10086'|'10510'|'10057'|'10675'|'10511'|'10676'|'10422'|'10481'|'10315'|'10316'|'17089'|'10306'|'10512'|'10395'|'10513'|'10677'|'10001'|'10423'|'10436'|'17079'|'10636'|'17080'|'10304'|'10002'|'17028'|'10606'|'10396'|'10317'|'17053'|'17054'|'17055'|'10199'|'10200'|'10201'|'10202'|'10046'|'17081'|'10003'|'10467'|'10318'|'10557'|'17085'|'17029'|'17086'|'10087'|'10437'|'17030'|'10651'|'10514'|'10054'|'10115'|'10047'|'10319'|'10203'|'10468'|'10070'|'10487'|'10558'|'10048'|'10515'|'10678'|'10320'|'10397'|'10321'|'10516'|'10322'|'10517'|'10679'|'10193'|'10323'|'10398'|'10324'|'10424'|'10589'|'10518'|'10455'|'10456'|'10457'|'17006'|'10680'|'10681'|'10682'|'10519'|'10088'|'10270'|'10520'|'10271'|'10521'|'10309'|'17100'|'17065'|'10683'|'10488'|'10004'|'10058'|'10071'|'17066'|'17067'|'10614'|'10121'|'10438'|'10522'|'10523'|'10204'|'10205'|'10031'|'10637'|'17007'|'10272'|'10399'|'10325'|'17090'|'10464'|'10326'|'10206'|'10400'|'10327'|'10207'|'10638'|'17099'|'10328'|'17091'|'17092'|'10089'|'17056'|'10489'|'10061'|'10458'|'10459'|'10329'|'10330'|'10652'|'10331'|'10653'|'10524'|'10090'|'10091'|'17068'|'10469'|'10401'|'10332'|'10425'|'10448'|'17008'|'10654'|'10559'|'10525'|'17069'|'10590'|'10294'|'10526'|'10157'|'10158'|'10439'|'10560'|'10147'|'10194'|'10092'|'10159'|'17031'|'10273'|'10527'|'17032'|'10175'|'10576'|'10122'|'10528'|'10591'|'10093'|'10055'|'10032'|'10094'|'10333'|'10684'|'10095'|'10208'|'10615'|'10286'|'10289'|'10209'|'10210'|'10655'|'10490'|'10123'|'10334'|'17057'|'10160'|'10402'|'17070'|'10049'|'10561'|'10592'|'10529'|'10449'|'10176'|'10062'|'10444'|'10096'|'10161'|'10162'|'10177'|'10148'|'10530'|'10063'|'10593'|'10335'|'17071'|'10503'|'10491'|'10033'|'17033'|'10470'|'10616'|'10072'|'10594'|'10298'|'10685'|'10097'|'17093'|'17087'|'17009'|'10686'|'10073'|'10074'|'10211'|'10471'|'10450'|'10336'|'10337'|'10338'|'10339'|'10440'|'10124'|'10195'|'10098'|'10507'|'17063'|'17034'|'10310'|'10178'|'10340'|'10212'|'10005'|'17105'|'17106'|'17107'|'17104'|'10562'|'10563'|'17010'|'10460'|'10163'|'10213'|'10282'|'10617'|'10403'|'10341'|'10426'|'10179'|'10531'|'10564'|'10565'|'10532'|'17058'|'10441'|'10445'|'10006'|'10656'|'10657'|'10577'|'10658'|'10299'|'10300'|'10295'|'10149'|'17059'|'17011'|'10342'|'10274'|'10214'|'10215'|'10404'|'10343'|'10344'|'10659'|'10125'|'10405'|'10406'|'10345'|'17000'|'10346'|'10064'|'10216'|'10164'|'10432'|'10687'|'10347'|'10307'|'10308'|'10126'|'10180'|'10639'|'10578'|'10579'|'10181'|'10618'|'10217'|'10595'|'10688'|'10596'|'10597'|'10492'|'10619'|'10566'|'10275'|'10050'|'10293'|'17035'|'10099'|'10640'|'10689'|'10620'|'10621'|'10100'|'10472'|'10150'|'17003'|'17102'|'17108'|'10407'|'10348'|'10408'|'10027'|'10442'|'10007'|'10008'|'10446'|'10218'|'17012'|'10171'|'10219'|'10220'|'10221'|'10283'|'10116'|'10165'|'10101'|'10196'|'10182'|'10102'|'10183'|'10533'|'10349'|'10409'|'10350'|'10351'|'10433'|'10222'|'10223'|'10473'|'10534'|'10127'|'10103'|'10166'|'10410'|'10352'|'10353'|'10411'|'10504'|'10081'|'10493'|'10184'|'10104'|'10354'|'10082'|'10660'|'10567'|'10661'|'10622'|'10662'|'10224'|'10225'|'10311'|'10482'|'10690'|'17036'|'10598'|'17037'|'10226'|'10227'|'10228'|'10427'|'17013'|'10051'|'10229'|'17094'|'10599'|'17038'|'10172'|'10355'|'10474'|'10105'|'10065'|'10066'|'10301'|'10230'|'10185'|'10186'|'10187'|'10231'|'10356'|'10067'|'10276'|'10357'|'10034'|'10607'|'10009'|'10010'|'10028'|'10011'|'10080'|'10232'|'10106'|'10107'|'10535'|'10536'|'10608'|'10012'|'17014'|'10537'|'17039'|'17015'|'10035'|'10691'|'10623'|'10233'|'10234'|'10538'|'10284'|'10641'|'10580'|'10358'|'10108'|'10568'|'10663'|'10128'|'10569'|'10461'|'10235'|'17016'|'17082'|'10129'|'10277'|'17072'|'10236'|'10237'|'10483'|'10013'|'10014'|'17073'|'10238'|'10239'|'10287'|'10240'|'10109'|'10036'|'10664'|'10642'|'10359'|'10110'|'10506'|'10624'|'10296'|'10643'|'10570'|'10075'|'10360'|'10494'|'17040'|'10581'|'10625'|'10361'|'10451'|'10241'|'17074'|'17017'|'17018'|'17041'|'10495'|'10242'|'10626'|'10412'|'10539'|'10452'|'10362'|'10363'|'10475'|'10453'|'10692'|'10447'|'10413'|'10243'|'10244'|'10245'|'10364'|'10365'|'10693'|'10366'|'10367'|'17019'|'10076'|'10665'|'10540'|'10600'|'17020'|'10414'|'10368'|'10369'|'10370'|'10541'|'10694'|'10571'|'10627'|'10542'|'10572'|'10015'|'10037'|'10292'|'10496'|'10246'|'10695'|'10696'|'10697'|'10038'|'10371'|'17002'|'17098'|'17103'|'17109'|'10543'|'10167'|'17042'|'10698'|'10151'|'10609'|'10130'|'10582'|'10497'|'10434'|'10476'|'10372'|'10462'|'10111'|'10544'|'10628'|'10601'|'10573'|'10583'|'10574'|'10644'|'10083'|'10477'|'10602'|'10016'|'10131'|'10373'|'10545'|'10415'|'10428'|'10374'|'10375'|'10429'|'10430'|'17005'|'10305'|'17043'|'10077'|'10416'|'10417'|'10498'|'10188'|'10376'|'10017'|'10132'|'10189'|'17095'|'17004'|'10484'|'10666'|'17044'|'10247'|'10248'|'10278'|'10699'|'10059'|'10039'|'10168'|'10700'|'10546'|'10603'|'10249'|'10250'|'10251'|'10040'|'10056'|'10629'|'10667'|'10279'|'10018'|'10133'|'10134'|'10197'|'10668'|'10463'|'10377'|'10252'|'17083'|'10485'|'17021'|'10454'|'10135'|'10084'|'10547'|'10486'|'10136'|'10019'|'10020'|'10418'|'10169'|'17045'|'17075'|'10280'|'10112'|'10378'|'10068'|'10069'|'10253'|'10669'|'10190'|'10191'|'10281'|'10254'|'10255'|'10137'|'17022'|'10478'|'10192'|'10610'|'10630'|'10021'|'10022'|'10256'|'10257'|'10258'|'10259'|'10260'|'10285'|'10029'|'10302'|'10261'|'10262'|'10303'|'17023'|'17001'|'17084'|'17060'|'10548'|'10549'|'10645'|'10263'|'10701'|'10379'|'17096'|'10380'|'10550'|'10041'|'10042'|'10043'|'10479'|'10264'|'10291'|'10297'|'10604'|'10575'|'10631'|'10702'|'10632'|'10611'|'10030'|'10078'|'10381'|'10499'|'10265'|'10266'|'10052'|'10646'|'10584'|'10431'|'10382'|'10383'|'10146'|'10023'|'17101'|'10500'|'10501'|'10419'|'10670'|'10384'|'10385'|'17024'|'10267'|'17046'|'10585'|'10443'|'10551'|'17047'|'17048'|'10435'|'10024'|'10386'|'10420'|'10387'|'10388'|'10138'|'10053'|'10025'|'10026'|'17049'|'17050'|'10703'|'10586'|'10139'|'17025'|'10079'|'10140'|'10113'|'10389'|'10552'|'10114'|'10633'|'10288'|'10290'|'10268'|'10269'|'10502'|'10553'|'17061'|'10141'|'10044'|'17026'|'17051'|'10390'|'10647'|'17097'|'10391'|'10648'|'10505'|'10634'|'10612'|'10421'|'10392'|'17062'|'10508'|'10554'|'10142'|'10143'|'10152'|'10117'|'10153'|'10154'
+vocabulary_tnc_marine_eco_region = '20030'|'25031'|'20192'|'25036'|'20053'|'20072'|'20194'|'20228'|'20109'|'20110'|'25086'|'20223'|'20090'|'20139'|'20178'|'20140'|'20232'|'20029'|'25007'|'20063'|'20024'|'20131'|'20205'|'20012'|'20011'|'20062'|'20101'|'20134'|'20044'|'20141'|'25230'|'20217'|'20231'|'20204'|'20079'|'20097'|'25042'|'20026'|'20143'|'20177'|'20051'|'25199'|'20175'|'20093'|'20106'|'20187'|'25198'|'20167'|'20188'|'20013'|'20165'|'20169'|'20120'|'20150'|'20060'|'20215'|'20102'|'20095'|'20226'|'20225'|'20224'|'20124'|'20052'|'20003'|'20015'|'20163'|'25014'|'20076'|'20064'|'20173'|'20107'|'20127'|'20144'|'20021'|'20074'|'25147'|'20070'|'25154'|'20208'|'20065'|'20171'|'20071'|'20089'|'20054'|'20083'|'20084'|'25085'|'20082'|'25081'|'25040'|'20091'|'20138'|'20037'|'20115'|'20112'|'20129'|'25152'|'20213'|'25010'|'20211'|'20008'|'20176'|'25034'|'20179'|'25046'|'20017'|'20214'|'25195'|'25009'|'20016'|'20209'|'20132'|'25032'|'20155'|'20151'|'20212'|'20061'|'20118'|'20105'|'20186'|'20203'|'20123'|'20162'|'20153'|'20098'|'20166'|'20191'|'25190'|'20193'|'20149'|'20168'|'20145'|'25055'|'20018'|'20002'|'20001'|'25184'|'20025'|'20133'|'20075'|'20048'|'25196'|'20087'|'20108'|'25058'|'20172'|'20005'|'20043'|'20006'|'20094'|'20023'|'20122'|'25057'|'20047'|'20126'|'20170'|'20130'|'25185'|'20218'|'20156'|'20216'|'25056'|'20159'|'20164'|'20182'|'20181'|'20229'|'20028'|'25080'|'20157'|'20073'|'20039'|'20049'|'20045'|'20096'|'20210'|'20201'|'20161'|'20135'|'20136'|'20020'|'20207'|'20114'|'20027'|'20220'|'20104'|'20121'|'20200'|'20221'|'20219'|'20222'|'20099'|'20137'|'20180'|'25059'|'20066'|'20113'|'20160'|'20038'|'20069'|'20119'|'20022'|'20088'|'20116'|'20067'|'20078'|'20128'|'20117'|'20197'|'20146'|'20142'|'20077'|'20189'|'20158'|'25033'|'20202'|'20183'|'20148'|'20041'|'20227'|'20125'|'20004'|'20100'|'20092'|'20206'|'20068'|'20174'|'20103'|'25035'|'20111'|'20019'|'20050'
+vocabulary_tnc_freshwater_eco_region = '30736'|'30424'|'30103'|'30101'|'30541'|'30577'|'30323'|'30315'|'30312'|'30316'|'30168'|'30610'|'30768'|'30155'|'30157'|'30440'|'30805'|'30629'|'30618'|'30515'|'30338'|'30501'|'30901'|'30212'|'30624'|'30701'|'30544'|'30407'|'30809'|'30176'|'30517'|'30817'|'30643'|'30347'|'30127'|'30743'|'30112'|'30115'|'30903'|'30403'|'30578'|'30902'|'30446'|'30452'|'30740'|'30404'|'30431'|'30336'|'30106'|'30912'|'30146'|'30342'|'30907'|'30209'|'30732'|'30158'|'30201'|'30719'|'30206'|'30909'|'30604'|'30615'|'30564'|'30767'|'30436'|'30172'|'30217'|'30908'|'30130'|'30120'|'30121'|'30584'|'30918'|'30426'|'30551'|'30136'|'30211'|'30151'|'30537'|'30340'|'30419'|'30128'|'30425'|'30418'|'30427'|'30574'|'30504'|'30623'|'30829'|'30611'|'30140'|'30745'|'30807'|'30731'|'30113'|'30414'|'30758'|'30638'|'30563'|'30514'|'30109'|'30725'|'30449'|'30310'|'30204'|'30525'|'30553'|'30821'|'30156'|'30352'|'30510'|'30350'|'30920'|'30709'|'30710'|'30131'|'30998'|'30173'|'30319'|'30311'|'30114'|'30415'|'30161'|'30759'|'30640'|'30828'|'30702'|'30214'|'30642'|'30529'|'30635'|'30401'|'30346'|'30737'|'30705'|'30723'|'30621'|'30508'|'30421'|'30601'|'30207'|'30416'|'30213'|'30438'|'30351'|'30557'|'30570'|'30613'|'30741'|'30573'|'30554'|'30546'|'30448'|'30727'|'30803'|'30609'|'30612'|'30728'|'30428'|'30434'|'30334'|'30126'|'30606'|'30520'|'30806'|'30627'|'30753'|'30559'|'30409'|'30751'|'30565'|'30526'|'30542'|'30530'|'30444'|'30521'|'30116'|'30608'|'30165'|'30748'|'30637'|'30166'|'30915'|'30703'|'30722'|'30626'|'30616'|'30550'|'30549'|'30636'|'30726'|'30105'|'30149'|'30505'|'30523'|'30345'|'30135'|'30441'|'30332'|'30766'|'30561'|'30581'|'30583'|'30904'|'30321'|'30733'|'30302'|'30547'|'30543'|'30734'|'30906'|'30548'|'30747'|'30318'|'30339'|'30303'|'30911'|'30826'|'30914'|'30586'|'30750'|'30163'|'30502'|'30729'|'30630'|'30617'|'30712'|'30143'|'30108'|'30765'|'30558'|'30752'|'30153'|'30203'|'30513'|'30562'|'30808'|'30447'|'30552'|'30708'|'30820'|'30814'|'30813'|'30811'|'30769'|'30506'|'30524'|'30916'|'30301'|'30118'|'30744'|'30326'|'30328'|'30430'|'30760'|'30406'|'30402'|'30628'|'30735'|'30713'|'30528'|'30518'|'30451'|'30755'|'30511'|'30742'|'30580'|'30405'|'30602'|'30910'|'30532'|'30569'|'30614'|'30443'|'30123'|'30124'|'30309'|'30308'|'30305'|'30307'|'30306'|'30437'|'30445'|'30145'|'30147'|'30756'|'30804'|'30568'|'30167'|'30171'|'30816'|'30343'|'30329'|'30325'|'30348'|'30133'|'30802'|'30921'|'30215'|'30632'|'30202'|'30827'|'30330'|'30169'|'30134'|'30314'|'30137'|'30138'|'30164'|'30210'|'30327'|'30587'|'30141'|'30125'|'30503'|'30641'|'30823'|'30205'|'30534'|'30208'|'30119'|'30509'|'30585'|'30531'|'30619'|'30170'|'30435'|'30162'|'30720'|'30824'|'30905'|'30818'|'30761'|'30620'|'30160'|'30304'|'30341'|'30420'|'30746'|'30716'|'30639'|'30331'|'30432'|'30730'|'30408'|'30159'|'30738'|'30714'|'30566'|'30533'|'30110'|'30413'|'30571'|'30582'|'30739'|'30810'|'30575'|'30512'|'30815'|'30439'|'30801'|'30717'|'30718'|'30117'|'30535'|'30749'|'30607'|'30567'|'30320'|'30625'|'30150'|'30152'|'30423'|'30707'|'30337'|'30324'|'30917'|'30335'|'30919'|'30825'|'30538'|'30450'|'30317'|'30536'|'30631'|'30711'|'30540'|'30539'|'30417'|'30633'|'30634'|'30706'|'30603'|'30724'|'30545'|'30104'|'30148'|'30142'|'30507'|'30522'|'30344'|'30132'|'30721'|'30107'|'30122'|'30442'|'30333'|'30174'|'30764'|'30102'|'30556'|'30144'|'30349'|'30819'|'30422'|'30129'|'30812'|'30410'|'30453'|'30516'|'30913'|'30822'|'30830'|'30154'|'30139'|'30313'|'30429'|'30411'|'30519'|'30715'|'30111'|'30412'|'30579'|'30622'|'30572'|'30527'|'30757'|'30433'|'30216'|'30763'|'30322'|'30704'|'30605'|'30175'|'30762'|'30555'|'30560'|'30576'
+vocabulary_wwf_managing_offices = 'F101'|'F102'|'F103'|'F104'|'F105'|'F106'|'F107'|'F108'|'F109'|'F110'|'F111'|'F112'|'F113'|'F114'|'F115'|'F116'|'F117'|'F118'|'F119'|'F120'|'F121'|'F122'|'F123'|'F124'|'F125'|'F126'|'F127'|'F128'|'F129'|'F130'|'F131'|'F132'|'F133'|'F134'|'F135'|'F136'|'F137'|'F138'|'F139'|'F140'|'F141'|'F142'|'F143'|'F144'|'F145'|'F146'|'F147'|'F148'|'F167'|'F149'|'F150'|'F151'|'F152'|'F153'|'F154'|'F155'|'F156'|'F157'|'F158'|'F159'|'F160'|'F161'|'F162'|'F163'|'F164'|'F165'|'F166'
+vocabulary_wwf_regions = 'AM'|'AP'|'EM'|'LA'|'NA'
+vocabulary_wwf_ecoregions = '1'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'|'10'|'11'|'12'|'13'|'14'|'15'|'16'|'17'|'18'|'19'|'20'|'21'|'22'|'23'|'24'|'25'|'26'|'27'|'28'|'29'|'30'|'31'|'32'|'33'|'34'|'35'|'36'|'37'|'38'|'39'|'40'|'41'|'42'|'43'|'44'|'45'|'46'|'47'|'48'|'49'|'50'|'51'|'52'|'53'|'54'|'55'|'56'|'57'|'58'|'59'|'60'|'61'|'62'|'63'|'64'|'65'|'66'|'67'|'68'|'69'|'70'|'71'|'72'|'73'|'74'|'75'|'76'|'77'|'78'|'79'|'80'|'81'|'82'|'83'|'84'|'85'|'86'|'87'|'88'|'89'|'90'|'91'|'92'|'93'|'94'|'95'|'96'|'97'|'98'|'99'|'100'|'101'|'102'|'103'|'104'|'105'|'106'|'107'|'108'|'109'|'110'|'111'|'112'|'113'|'114'|'115'|'116'|'117'|'118'|'119'|'120'|'121'|'122'|'123'|'124'|'125'|'126'|'127'|'128'|'129'|'130'|'131'|'132'|'133'|'134'|'135'|'136'|'137'|'138'|'139'|'140'|'141'|'142'|'143'|'144'|'145'|'146'|'147'|'148'|'149'|'150'|'151'|'152'|'153'|'154'|'155'|'156'|'157'|'158'|'159'|'160'|'161'|'162'|'163'|'164'|'165'|'166'|'167'|'168'|'169'|'170'|'171'|'172'|'173'|'174'|'175'|'176'|'177'|'178'|'179'|'180'|'181'|'182'|'183'|'184'|'185'|'186'|'187'|'188'|'189'|'190'|'191'|'192'|'193'|'194'|'195'|'196'|'197'|'198'|'199'|'200'|'201'|'202'|'203'|'204'|'205'|'206'|'207'|'208'|'209'|'210'|'211'|'212'|'213'|'214'|'215'|'216'|'217'|'218'|'219'|'220'|'221'|'222'|'223'|'224'|'225'|'226'|'227'|'228'|'229'|'230'|'231'|'232'|'233'|'235'|'236'|'237'|'238'
+vocabulary_fos_training_type = ''|'1'|'2'|'3'|'4'
+vocabulary_progress_report_status = ''|'Planned'|'MajorIssues'|'MinorIssues'|'OnTrack'|'Completed'|'Abandoned'
+vocabulary_measurement_trend = ''|'Unknown'|'StrongIncrease'|'MildIncrease'|'Flat'|'MildDecrease'|'StrongDecrease'
+vocabulary_measurement_status = ''|'1'|'2'|'3'|'4'
+vocabulary_measurement_status_confidence = ''|'RoughGuess'|'ExpertKnowledge'|'RapidAssessment'|'IntensiveAssessment'
+vocabulary_countries = 'ZZZ'|'XXX'|'AFG'|'ALA'|'ALB'|'DZA'|'ASM'|'AND'|'AGO'|'AIA'|'ATA'|'ATG'|'ARG'|'ARM'|'ABW'|'AUS'|'AUT'|'AZE'|'BHS'|'BHR'|'BGD'|'BRB'|'BLR'|'BEL'|'BLZ'|'BEN'|'BMU'|'BTN'|'BOL'|'BIH'|'BWA'|'BVT'|'BRA'|'IOT'|'VGB'|'BRN'|'BGR'|'BFA'|'BDI'|'KHM'|'CMR'|'CAN'|'CPV'|'CYM'|'CAF'|'TCD'|'CHL'|'CHN'|'CXR'|'CCK'|'COL'|'COM'|'COG'|'COK'|'CRI'|'CIV'|'HRV'|'CUB'|'CYP'|'CZE'|'PRK'|'COD'|'DNK'|'DJI'|'DMA'|'DOM'|'ECU'|'EGY'|'SLV'|'GNQ'|'ERI'|'EST'|'ETH'|'FRO'|'FLK'|'FJI'|'FIN'|'FRA'|'FXX'|'GUF'|'PYF'|'ATF'|'GAB'|'GMB'|'GEO'|'DEU'|'GHA'|'GIB'|'GRC'|'GRL'|'GRD'|'GLP'|'GUM'|'GTM'|'GIN'|'GNB'|'GUY'|'HTI'|'HMD'|'VAT'|'HND'|'HKG'|'HUN'|'ISL'|'IND'|'IDN'|'IRN'|'IRQ'|'IRL'|'IMN'|'ISR'|'ITA'|'JAM'|'JPN'|'JOR'|'KAZ'|'KEN'|'KIR'|'KWT'|'KGZ'|'LAO'|'LVA'|'LBN'|'LSO'|'LBR'|'LBY'|'LIE'|'LTU'|'LUX'|'MAC'|'MKD'|'MDG'|'MWI'|'MYS'|'MDV'|'MLI'|'MLT'|'MHL'|'MTQ'|'MRT'|'MUS'|'MYT'|'MEX'|'FSM'|'MCO'|'MNG'|'MSR'|'MAR'|'MOZ'|'MMR'|'NAM'|'NRU'|'NPL'|'NLD'|'ANT'|'NCL'|'NZL'|'NIC'|'NER'|'NGA'|'NIU'|'NFK'|'MNP'|'NOR'|'PSE'|'OMN'|'PAK'|'PLW'|'PAN'|'PNG'|'PRY'|'PER'|'PHL'|'PCN'|'POL'|'PRT'|'PRI'|'QAT'|'KOR'|'MDA'|'REU'|'ROU'|'RUS'|'RWA'|'SHN'|'KNA'|'LCA'|'SPM'|'VCT'|'WSM'|'SMR'|'STP'|'SAU'|'SEN'|'SCG'|'SYC'|'SLE'|'SGP'|'SVK'|'SVN'|'SLB'|'SOM'|'ZAF'|'SGS'|'ESP'|'LKA'|'SDN'|'SUR'|'SJM'|'SWZ'|'SWE'|'CHE'|'SYR'|'TWN'|'TJK'|'THA'|'TLS'|'TGO'|'TKL'|'TON'|'TTO'|'TUN'|'TUR'|'TKM'|'TCA'|'TUV'|'UGA'|'UKR'|'ARE'|'GBR'|'TZA'|'UMI'|'USA'|'VIR'|'URY'|'UZB'|'VUT'|'VEN'|'VNM'|'WLF'|'PSE'|'ESH'|'YEM'|'ZMB'|'ZWE'
+vocabulary_threat_rating = ''|'1'|'2'|'3'|'4'
+vocabulary_included_diagram_types = 'AllTypes'|'IncludeConceptualModelData'|'IncludeResultsChainData'
+vocabulary_planning_tree_objective_strategy_node_order = 'ObjectiveContainsStrategy'|'StrategyContainsObjective'
+vocabulary_planning_tree_target_node_position = 'TargetNodesChildrenOfDiagramObjects'|'TargetNodesTopOfPlanningTree'
+vocabulary_threat_rating_mode = 'Simple'|'StressBased'
+vocabulary_dashboard_row_flags = 'needsAttention'
+vocabulary_quarter_columns_visibility = 'ShowQuarterColumns'|'HideQuarterColumns'
+vocabulary_work_plan_time_unit = 'QUARTERLY'|'YEARLY'
+vocabulary_rating_source = ''|'RoughGuess'|'ExpertKnowlege'|'ExternalResearch'|'OnsiteResearch'
+vocabulary_dashboard_row_progress = ''|'1'|'2'|'3'|'4'
+ConceptualModelId.element = element miradi:ConceptualModelId { xsd:integer }
+ResultsChainId.element = element miradi:ResultsChainId { xsd:integer }
+DiagramFactorId.element = element miradi:DiagramFactorId { xsd:integer }
+BiodiversityTargetId.element = element miradi:BiodiversityTargetId { xsd:integer }
+HumanWelfareTargetId.element = element miradi:HumanWelfareTargetId { xsd:integer }
+CauseId.element = element miradi:CauseId { xsd:integer }
+StrategyId.element = element miradi:StrategyId { xsd:integer }
+ThreatReductionResultId.element = element miradi:ThreatReductionResultId { xsd:integer }
+IntermediateResultId.element = element miradi:IntermediateResultId { xsd:integer }
+GroupBoxId.element = element miradi:GroupBoxId { xsd:integer }
+TextBoxId.element = element miradi:TextBoxId { xsd:integer }
+ScopeBoxId.element = element miradi:ScopeBoxId { xsd:integer }
+ActivityId.element = element miradi:ActivityId { xsd:integer }
+StressId.element = element miradi:StressId { xsd:integer }
+DiagramLinkId.element = element miradi:DiagramLinkId { xsd:integer }
+GoalId.element = element miradi:GoalId { xsd:integer }
+ObjectiveId.element = element miradi:ObjectiveId { xsd:integer }
+IndicatorId.element = element miradi:IndicatorId { xsd:integer }
+KeyEcologicalAttributeId.element = element miradi:KeyEcologicalAttributeId { xsd:integer }
+TaggedObjectSetId.element = element miradi:TaggedObjectSetId { xsd:integer }
+SubTargetId.element = element miradi:SubTargetId { xsd:integer }
+ThreatId.element = element miradi:ThreatId { xsd:integer }
+AccountingCodeId.element = element miradi:AccountingCodeId { xsd:integer }
+FundingSourceId.element = element miradi:FundingSourceId { xsd:integer }
+BudgetCategoryOneId.element = element miradi:BudgetCategoryOneId { xsd:integer }
+BudgetCategoryTwoId.element = element miradi:BudgetCategoryTwoId { xsd:integer }
+ProgressReportId.element = element miradi:ProgressReportId { xsd:integer }
+ProgressPercentId.element = element miradi:ProgressPercentId { xsd:integer }
+ExpenseAssignmentId.element = element miradi:ExpenseAssignmentId { xsd:integer }
+ResourceAssignmentId.element = element miradi:ResourceAssignmentId { xsd:integer }
+ResourceId.element = element miradi:ResourceId { xsd:integer }
+AcitivityId.element = element miradi:AcitivityId { xsd:integer }
+MeasurementId.element = element miradi:MeasurementId { xsd:integer }
+MethodId.element = element miradi:MethodId { xsd:integer }
+SubTaskId.element = element miradi:SubTaskId { xsd:integer }
+WrappedByDiagramFactorId.element = element miradi:WrappedByDiagramFactorId
+{
+  BiodiversityTargetId.element |
+  HumanWelfareTargetId.element |
+  CauseId.element |
+  StrategyId.element |
+  ThreatReductionResultId.element |
+  IntermediateResultId.element |
+  GroupBoxId.element |
+  TextBoxId.element |
+  ScopeBoxId.element |
+  ActivityId.element |
+  StressId.element 
+}
+
+ThreatReductionResultThreatId.element = element miradi:ThreatReductionResultThreatId
+{
+  ThreatId.element
+}
+
+LinkableFactorId.element = element miradi:LinkableFactorId
+{
+  BiodiversityTargetId.element |
+  HumanWelfareTargetId.element |
+  CauseId.element |
+  StrategyId.element |
+  ThreatReductionResultId.element |
+  IntermediateResultId.element |
+  GroupBoxId.element 
+}
+
+GeospatialLocation.element = element miradi:GeospatialLocation
+{
+  element miradi:latitude { xsd:decimal } &
+  element miradi:longitude { xsd:decimal } 
+}
+
+ExternalProjectId.element = element miradi:ExternalProjectId
+{
+  element miradi:ExternalApp { text } &
+  element miradi:ProjectId { text } 
+}
+
+DiagramPoint.element = element miradi:DiagramPoint
+{
+  element miradi:x { xsd:integer } &
+  element miradi:y { xsd:integer } 
+}
+
+DiagramSize.element = element miradi:DiagramSize
+{
+  element miradi:width { xsd:integer } &
+  element miradi:height { xsd:integer } 
+}
+
+Style.element = element miradi:Style
+{
+  element miradi:DiagramFactorFontSize { vocabulary_diagram_factor_font_size }? &
+  element miradi:DiagramFactorFontStyle { vocabulary_diagram_factor_font_style }? &
+  element miradi:DiagramFactorFontColor { vocabulary_diagram_factor_foreground_color }? &
+  element miradi:DiagramFactorBackgroundColor { vocabulary_diagram_factor_background_color }?
+}
+
+SimpleThreatRating.element = element miradi:SimpleThreatRating
+{
+  element miradi:SimpleThreatRatingScope { vocabulary_simple_threat_rating_scope_code }? &
+  element miradi:SimpleThreatRatingSeverity { vocabulary_simple_threat_rating_severitiy_code }? &
+  element miradi:SimpleThreatRatingIrreversibility { vocabulary_simple_threat_rating_irreversibility_code }?
+}
+
+StressBasedThreatRating.element = element miradi:StressBasedThreatRating
+{
+  element miradi:StressBasedThreatRatingStressId{ StressId.element } &
+  element miradi:StressBasedThreatRatingContribution { vocabulary_contribution_code }? &
+  element miradi:StressBasedThreatRatingIrreversibility { vocabulary_irreversibility_code }? &
+  element miradi:StressBasedThreatRatingIsActive { xsd:boolean }? &
+  element miradi:StressBasedThreatRatingStressRating { vocabulary_threat_rating }? &
+  element miradi:StressBasedThreatRatingThreatStressRating { vocabulary_threat_rating }? 
+}
+
+DateUnitWorkUnits.element = element miradi:DateUnitWorkUnits
+{
+  element miradi:WorkUnitsDateUnit{WorkUnitsDay.element | WorkUnitsMonth.element | WorkUnitsQuarter.element | WorkUnitsYear.element | WorkUnitsFullProjectTimespan.element }? &
+  element miradi:NumberOfUnits { xsd:decimal }?
+}
+
+WorkUnitsFullProjectTimespan.element = element miradi:WorkUnitsFullProjectTimespan
+{
+  attribute FullProjectTimespan { vocabulary_full_project_timespan }
+}
+
+WorkUnitsYear.element = element miradi:WorkUnitsYear
+{
+  attribute StartYear {vocabulary_year} &
+  attribute StartMonth {vocabulary_month}
+}
+
+WorkUnitsQuarter.element = element miradi:WorkUnitsQuarter
+{
+  attribute Year {vocabulary_year} &
+  attribute StartMonth {vocabulary_month}
+}
+
+WorkUnitsMonth.element = element miradi:WorkUnitsMonth
+{
+  attribute Year {vocabulary_year} &
+  attribute Month {vocabulary_month}
+}
+
+WorkUnitsDay.element = element miradi:WorkUnitsDay
+{
+  attribute Date {vocabulary_date}
+}
+
+IndicatorThreshold.element = element miradi:IndicatorThreshold
+{
+  element miradi:StatusCode{vocabulary_measurement_status}? &
+  element miradi:ThresholdValue { text }? &
+  element miradi:ThresholdDetails { text }?
+}
+
+CalculatedCosts.element = element miradi:CalculatedCosts
+{
+  element miradi:CalculatedStartDate{ vocabulary_date } &
+  element miradi:CalculatedEndDate{ vocabulary_date } &
+  element miradi:CalculatedExpenseTotal{ xsd:decimal }? &
+  element miradi:CalculatedWorkUnitsTotal{ xsd:decimal }? &
+  element miradi:CalculatedTotalBudgetCost{ xsd:decimal }? &
+  element miradi:CalculatedWho{ ResourceId.element* }? &
+  element miradi:CalculatedExpenseEntries{ ExpenseEntry.element* }? &
+  element miradi:CalculatedWorkUnitsEntries{ WorkUnitsEntry.element* }?
+}
+
+ExpenseEntry.element = element miradi:ExpenseEntry
+{
+  element miradi:ExpenseEntryFundingSourceId{ FundingSourceId.element }? &
+  element miradi:ExpenseEntryAccountingCodeId{ AccountingCodeId.element }? &
+  element miradi:ExpenseEntryBudgetCategoryOneId{ BudgetCategoryOneId.element }? &
+  element miradi:ExpenseEntryBudgetCategoryTwoId{ BudgetCategoryTwoId.element }? &
+  element miradi:ExpenseEntryDetails{ DateUnitExpense.element* }?
+}
+
+WorkUnitsEntry.element = element miradi:WorkUnitsEntry
+{
+  element miradi:WorkUnitsEntryResourceId{ ResourceId.element }? &
+  element miradi:WorkUnitsEntryFundingSourceId{ FundingSourceId.element }? &
+  element miradi:WorkUnitsEntryAccountingCodeId{ AccountingCodeId.element }? &
+  element miradi:WorkUnitsEntryBudgetCategoryOneId{ BudgetCategoryOneId.element }? &
+  element miradi:WorkUnitsEntryBudgetCategoryTwoId{ BudgetCategoryTwoId.element }? &
+  element miradi:WorkUnitsEntryDetails{ DateUnitWorkUnits.element* }?
+}
+
+DateUnitExpense.element = element miradi:DateUnitExpense
+{
+  element miradi:ExpensesDateUnit{ExpensesDay.element | ExpensesMonth.element | ExpensesQuarter.element | ExpensesYear.element | ExpensesFullProjectTimespan.element }? &
+  element miradi:Expense { xsd:decimal }?
+}
+
+ExpensesFullProjectTimespan.element = element miradi:ExpensesFullProjectTimespan
+{
+  attribute FullProjectTimespan { vocabulary_full_project_timespan }
+}
+
+ExpensesYear.element = element miradi:ExpensesYear
+{
+  attribute StartYear {vocabulary_year} &
+  attribute StartMonth {vocabulary_month}
+}
+
+ExpensesQuarter.element = element miradi:ExpensesQuarter
+{
+  attribute Year {vocabulary_year} &
+  attribute StartMonth {vocabulary_month}
+}
+
+ExpensesMonth.element = element miradi:ExpensesMonth
+{
+  attribute Year {vocabulary_year} &
+  attribute Month {vocabulary_month}
+}
+
+ExpensesDay.element = element miradi:ExpensesDay
+{
+  attribute Date {vocabulary_date}
+}
+
+ProjectSummaryPlanningFiscalYearStartMonthContainer.element = element miradi:ProjectSummaryPlanningFiscalYearStartMonthContainer
+{
+  element miradi:code { vocabulary_fiscal_year_start_month } * 
+}
+
+ProjectSummaryScopeProtectedAreaCategoriesContainer.element = element miradi:ProjectSummaryScopeProtectedAreaCategoriesContainer
+{
+  element miradi:code { vocabulary_protected_area_categories } * 
+}
+
+ProjectResourceRoleCodesContainer.element = element miradi:ProjectResourceRoleCodesContainer
+{
+  element miradi:code { vocabulary_resource_role_codes } * 
+}
+
+ConceptualModelHiddenTypesContainer.element = element miradi:ConceptualModelHiddenTypesContainer
+{
+  element miradi:code { vocabulary_hidden_types } * 
+}
+
+ResultsChainHiddenTypesContainer.element = element miradi:ResultsChainHiddenTypesContainer
+{
+  element miradi:code { vocabulary_hidden_types } * 
+}
+
+BiodiversityTargetHabitatAssociationContainer.element = element miradi:BiodiversityTargetHabitatAssociationContainer
+{
+  element miradi:code { vocabulary_biodiversity_target_habitat_association } * 
+}
+
+HumanWelfareTargetHabitatAssociationContainer.element = element miradi:HumanWelfareTargetHabitatAssociationContainer
+{
+  element miradi:code { vocabulary_biodiversity_target_habitat_association } * 
+}
+
+HumanWelfareTargetViabilityStatusContainer.element = element miradi:HumanWelfareTargetViabilityStatusContainer
+{
+  element miradi:code { vocabulary_target_status } * 
+}
+
+HumanWelfareTargetViabilityModeContainer.element = element miradi:HumanWelfareTargetViabilityModeContainer
+{
+  element miradi:code { vocabulary_target_viability_mode } * 
+}
+
+StressSeverityContainer.element = element miradi:StressSeverityContainer
+{
+  element miradi:code { vocabulary_stress_severity } * 
+}
+
+StressScopeContainer.element = element miradi:StressScopeContainer
+{
+  element miradi:code { vocabulary_stress_scope } * 
+}
+
+TncProjectDataTNCProjectPlaceTypesContainer.element = element miradi:TncProjectDataTNCProjectPlaceTypesContainer
+{
+  element miradi:code { vocabulary_tnc_project_place_types } * 
+}
+
+TncProjectDataTNCOrganizationalPrioritiesContainer.element = element miradi:TncProjectDataTNCOrganizationalPrioritiesContainer
+{
+  element miradi:code { vocabulary_tnc_organizational_priorities } * 
+}
+
+TncProjectDataTNCOperatingUnitsContainer.element = element miradi:TncProjectDataTNCOperatingUnitsContainer
+{
+  element miradi:code { vocabulary_tnc_operating_units } * 
+}
+
+TncProjectDataTNCTerrestrialEcoRegionContainer.element = element miradi:TncProjectDataTNCTerrestrialEcoRegionContainer
+{
+  element miradi:code { vocabulary_tnc_terrestrial_eco_region } * 
+}
+
+TncProjectDataTNCMarineEcoRegionContainer.element = element miradi:TncProjectDataTNCMarineEcoRegionContainer
+{
+  element miradi:code { vocabulary_tnc_marine_eco_region } * 
+}
+
+TncProjectDataTNCFreshwaterEcoRegionContainer.element = element miradi:TncProjectDataTNCFreshwaterEcoRegionContainer
+{
+  element miradi:code { vocabulary_tnc_freshwater_eco_region } * 
+}
+
+WwfProjectDataManagingOfficesContainer.element = element miradi:WwfProjectDataManagingOfficesContainer
+{
+  element miradi:code { vocabulary_wwf_managing_offices } * 
+}
+
+WwfProjectDataRegionsContainer.element = element miradi:WwfProjectDataRegionsContainer
+{
+  element miradi:code { vocabulary_wwf_regions } * 
+}
+
+WwfProjectDataEcoRegionsContainer.element = element miradi:WwfProjectDataEcoRegionsContainer
+{
+  element miradi:code { vocabulary_wwf_ecoregions } * 
+}
+
+ProjectSummaryLocationCountriesContainer.element = element miradi:ProjectSummaryLocationCountriesContainer
+{
+  element miradi:code { vocabulary_countries } * 
+}
+
+DashboardFlagsContainer.element = element miradi:DashboardFlagsContainer
+{
+  element miradi:code { vocabulary_dashboard_row_flags } * 
+}
+
+StatusEntry.element = element miradi:StatusEntry
+{
+  attribute Key { text } &
+  element miradi:Progress { vocabulary_dashboard_row_progress }? &
+  DashboardFlagsContainer.element? &
+  element miradi:Comments { text }?
+}
+
+ExtraDataSection.element = element miradi:ExtraDataSection
+{
+  attribute owner { text } &
+  ExtraDataItem.element *
+}
+
+ExtraDataItem.element = element miradi:ExtraDataItem
+{
+  attribute ExtraDataItemName { text } &
+  element miradi:ExtraDataItemValue { text }?
+}
