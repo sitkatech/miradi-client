@@ -49,6 +49,7 @@ import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.FieldSchemaIdList;
 import org.miradi.schemas.FieldSchemaReflist;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.PointList;
 import org.miradi.utils.XmlUtilities2;
 
@@ -555,6 +556,14 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 			writeXmlText(question.convertToReadableCode(code));
 		
 		writeEndElement(parentElementName + convertedElementName);
+	}
+	
+	public void writeElement(String elementName, OptionalDouble data) throws Exception
+	{
+		if (data.hasNoValue())
+			return;
+		
+		writeElement(elementName, data.toString());
 	}
 	
 	private void writeElement(final String elementName, final int data) throws Exception
