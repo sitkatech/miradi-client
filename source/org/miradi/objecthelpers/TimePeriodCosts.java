@@ -125,7 +125,7 @@ public class TimePeriodCosts
 		return totalResourceCost.add(expenseToAdd);
 	}
 	
-	private OptionalDouble calculateResourcesTotalCost(Project projectToUse) throws Exception
+	public OptionalDouble calculateResourcesTotalCost(Project projectToUse) throws Exception
 	{
 		OptionalDouble resourcesTotalCost = new OptionalDouble();
 		Vector<CategorizedQuantity> categorizedQuantities = workUnitCategorizedQuantities;
