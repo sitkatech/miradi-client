@@ -20,7 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectExporters;
 
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.ObjectTreeTableConfiguration;
+import org.miradi.questions.CustomPlanningAllRowsQuestion;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 import org.miradi.xml.xmpz2.BaseObjectExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
@@ -38,9 +41,14 @@ public class ObjectTreeTableConfigurationExporter extends BaseObjectExporter
 		if (tag.equals(ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION))
 			return true;
 		
-		if (tag.equals(ObjectTreeTableConfiguration.TAG_COL_CONFIGURATION))
-			return true;
-		
 		return super.doesFieldRequireSpecialHandling(tag);
+	}
+	
+	@Override
+	protected void writeFields(BaseObject baseObject, BaseObjectSchema baseObjectSchema) throws Exception
+	{
+		super.writeFields(baseObject, baseObjectSchema);
+		
+		getWriter().writeCodeListData(baseObjectSchema, baseObjectSchema.getFieldSchema(ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION), new CustomPlanningAllRowsQuestion(), new CustomPlanningAllRowsQuestion().getAllCodes().toJsonString());
 	}
 }
