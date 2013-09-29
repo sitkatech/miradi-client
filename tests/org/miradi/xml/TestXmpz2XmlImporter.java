@@ -358,7 +358,9 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	private ProjectForTesting validateUsingStringWriter() throws Exception
 	{
 		UnicodeXmlWriter projectWriter = createWriter(getProject());
-		String exportedProjectXml = projectWriter.toString();		
+		String exportedProjectXml = projectWriter.toString();	
+		System.out.println(exportedProjectXml);
+		
 		return validateImport(exportedProjectXml);
 	}
 
