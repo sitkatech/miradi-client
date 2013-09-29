@@ -1622,7 +1622,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(threatRatingCommentsData, tagStressBasedThreatRatingCommentsMap, map.toJsonString());
 	}
 	
-	private void populateObjectTreeTableConfiguration(ObjectTreeTableConfiguration objectTreeTableConfiguration) throws Exception
+	public void populateObjectTreeTableConfiguration(ObjectTreeTableConfiguration objectTreeTableConfiguration) throws Exception
 	{
 		CodeList rowCodes = new CustomPlanningAllRowsQuestion().getAllCodes();
 		fillObjectUsingCommand(objectTreeTableConfiguration, ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION, rowCodes);

@@ -36,6 +36,7 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Goal;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
@@ -50,6 +51,7 @@ import org.miradi.objects.TncProjectData;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.questions.CustomPlanningAllRowsQuestion;
 import org.miradi.questions.DiagramModeQuestion;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.ProjectSharingQuestion;
@@ -59,6 +61,7 @@ import org.miradi.questions.TargetModeQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
+import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateUnitEffortList;
@@ -77,6 +80,24 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	public TestXmpz2XmlImporter(String name)
 	{
 		super(name);
+	}
+	
+	public void testObjectTreeTableConfiguration() throws Exception
+	{
+		final ORef ref = getProject().getSingletonObjectRef(ObjectTreeTableConfigurationSchema.getObjectType());
+		ObjectTreeTableConfiguration objectTreeTableConfiguration = ObjectTreeTableConfiguration.find(getProject(), ref);
+		getProject().populateObjectTreeTableConfiguration(objectTreeTableConfiguration);
+		ProjectForTesting importedProject = validateUsingStringWriter();
+		ORefList objectTreeTableConfigurationRefs = importedProject.getPool(ObjectTreeTableConfigurationSchema.getObjectType()).getRefList();
+		for(ORef objectTreeTableConfigurationRef : objectTreeTableConfigurationRefs)
+		{
+			ObjectTreeTableConfiguration importedObjectTreeTableConfiguration = ObjectTreeTableConfiguration.find(importedProject, objectTreeTableConfigurationRef);
+			CodeList importedCodes = importedObjectTreeTableConfiguration.getCodeList(ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION);
+			CodeList allInternalCodes = new CustomPlanningAllRowsQuestion().getAllCodes();
+			final int expectedSize = allInternalCodes.size();
+			allInternalCodes.retainAll(importedCodes);
+			assertEquals("Incorrect codes imported?", expectedSize, allInternalCodes.size());
+		}
 	}
 	
 	public void testNestedBullets() throws Exception
@@ -360,7 +381,6 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 		UnicodeXmlWriter projectWriter = createWriter(getProject());
 		String exportedProjectXml = projectWriter.toString();	
 		System.out.println(exportedProjectXml);
-		
 		return validateImport(exportedProjectXml);
 	}
 
