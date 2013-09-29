@@ -22,8 +22,12 @@ package org.miradi.questions;
 
 import java.util.Vector;
 
+import org.miradi.icons.ActivityIcon;
+import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
+import org.miradi.icons.MethodIcon;
 import org.miradi.icons.TaskIcon;
+import org.miradi.objects.Cause;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
@@ -43,18 +47,21 @@ public class CustomPlanningAllRowsQuestion extends AbstractCustomPlanningRowsQue
 	@Override
 	protected Vector<ChoiceItem> createCauseChoiceItems()
 	{
-		Vector<ChoiceItem> causeChoiceItem = new Vector<ChoiceItem>();
-		causeChoiceItem.add(createChoiceItem(CauseSchema.getObjectType(), CauseSchema.OBJECT_NAME, new DirectThreatIcon()));
-		
-		return causeChoiceItem;
-	}
+		Vector<ChoiceItem> choiceItems = new Vector<ChoiceItem>();
+		choiceItems.add(createChoiceItem(CauseSchema.getObjectType(), Cause.OBJECT_NAME_THREAT, new DirectThreatIcon()));
+		choiceItems.add(createChoiceItem(CauseSchema.getObjectType(), Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, new ContributingFactorIcon())); 
 
+		return choiceItems;
+	}
+	
 	@Override
 	protected Vector<ChoiceItem> createTaskChoiceItems()
 	{
 		Vector<ChoiceItem> choiceItems = new Vector<ChoiceItem>();
+		choiceItems.add(createChoiceItem(TaskSchema.getObjectType(), TaskSchema.ACTIVITY_NAME, new ActivityIcon()));
+		choiceItems.add(createChoiceItem(TaskSchema.getObjectType(), TaskSchema.METHOD_NAME, new MethodIcon()));
 		choiceItems.add(createChoiceItem(TaskSchema.getObjectType(), TaskSchema.OBJECT_NAME, new TaskIcon()));
-		
+
 		return choiceItems;
 	}
 	
@@ -93,5 +100,4 @@ public class CustomPlanningAllRowsQuestion extends AbstractCustomPlanningRowsQue
 
 		return super.convertToInternalCode(code);
 	}
-
 }

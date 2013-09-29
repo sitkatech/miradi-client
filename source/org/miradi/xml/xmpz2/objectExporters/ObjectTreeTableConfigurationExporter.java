@@ -23,6 +23,7 @@ package org.miradi.xml.xmpz2.objectExporters;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.questions.CustomPlanningAllRowsQuestion;
+import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 import org.miradi.xml.xmpz2.BaseObjectExporter;
@@ -49,6 +50,8 @@ public class ObjectTreeTableConfigurationExporter extends BaseObjectExporter
 	{
 		super.writeFields(baseObject, baseObjectSchema);
 		
-		getWriter().writeCodeListData(baseObjectSchema, baseObjectSchema.getFieldSchema(ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION), new CustomPlanningAllRowsQuestion(), new CustomPlanningAllRowsQuestion().getAllCodes().toJsonString());
+		final String selectedRowCodes = baseObject.getCodeList(ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION).toJsonString();
+		final AbstractFieldSchema rowFieldSchema = baseObjectSchema.getFieldSchema(ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION);
+		getWriter().writeCodeListData(baseObjectSchema, rowFieldSchema, new CustomPlanningAllRowsQuestion(), selectedRowCodes);
 	}
 }
