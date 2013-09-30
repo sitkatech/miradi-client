@@ -94,5 +94,5 @@ public class MigrationTo8 extends AbstractMigration
 	private static final int VERSION_LOW = 7;
 	private static final int VERSION_HIGH = 8;
 	
-	public static final String TAG_UNIT = "Unit";
+	private static final String TAG_UNIT = "Unit";
 }
