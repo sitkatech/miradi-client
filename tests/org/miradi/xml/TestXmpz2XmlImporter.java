@@ -380,7 +380,7 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 	{
 		UnicodeXmlWriter projectWriter = createWriter(getProject());
 		String exportedProjectXml = projectWriter.toString();	
-		System.out.println(exportedProjectXml);
+
 		return validateImport(exportedProjectXml);
 	}
 
