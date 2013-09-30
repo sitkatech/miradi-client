@@ -28,9 +28,7 @@ public class ImportCpmzDoer extends ViewDoer
 	@Override
 	public boolean isAvailable() 
 	{
-		//FIXME uncomment this when import cpmz is working again
-		//return !getProject().isOpen();
-		return false;
+		return !getProject().isOpen();
 	}
 	
 	@Override
