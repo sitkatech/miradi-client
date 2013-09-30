@@ -1948,7 +1948,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	private void populateDashboard() throws Exception
 	{
-		populateDashboard("Some random user comment");
+		populateDashboard("Some random user comment" + getSingleLineSampleData());
 	}
 
 	public void populateDashboard(final String sampleComments) throws Exception
