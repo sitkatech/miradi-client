@@ -83,8 +83,8 @@ public class IndicatorPoolImporter extends AbstractBaseObjectPoolImporter
 	private void importThresholds(Node indicatorNode, ORef destinationRef) throws Exception
 	{
 		NodeList thresholdNodes = getImporter().getNodes(indicatorNode, new String[]{getPoolName() + THRESHOLDS, THRESHOLD});
-		CodeToUserStringMap thresholdValues = new CodeToUserStringMap();
-		CodeToUserStringMap thresholdDetails = new CodeToUserStringMap();
+		CodeToUserStringMap thresholdValueMap = new CodeToUserStringMap();
+		CodeToUserStringMap thresholdDetailsMap = new CodeToUserStringMap();
 		for (int index = 0; index < thresholdNodes.getLength(); ++index)
 		{
 			Node thrsholdNode = thresholdNodes.item(index);
@@ -93,14 +93,14 @@ public class IndicatorPoolImporter extends AbstractBaseObjectPoolImporter
 			{
 				String statusCode = statusCodeNode.getTextContent();
 				Node thresholdValueNode = getImporter().getNamedChildNode(thrsholdNode, THRESHOLD_VALUE);
-				thresholdValues.putUserString(statusCode, getImporter().getSafeNodeContent(thresholdValueNode));
+				thresholdValueMap.putUserString(statusCode, getImporter().getSafeNodeContent(thresholdValueNode));
 				
 				Node thresholdDetailsNode = getImporter().getNamedChildNode(thrsholdNode, THRESHOLD_DETAILS);
-				thresholdDetails.putUserString(statusCode, getImporter().getSafeNodeContent(thresholdDetailsNode));
+				thresholdDetailsMap.putUserString(statusCode, getImporter().getSafeNodeContent(thresholdDetailsNode));
 			}			
 		}
 		
-		getImporter().setData(destinationRef, Indicator.TAG_THRESHOLDS_MAP, thresholdValues.toJsonString());
-		getImporter().setData(destinationRef, Indicator.TAG_THRESHOLD_DETAILS_MAP, thresholdDetails.toJsonString());
+		getImporter().setData(destinationRef, Indicator.TAG_THRESHOLDS_MAP, thresholdValueMap.toJsonString());
+		getImporter().setData(destinationRef, Indicator.TAG_THRESHOLD_DETAILS_MAP, thresholdDetailsMap.toJsonString());
 	}
 }
