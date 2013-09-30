@@ -26,14 +26,18 @@ import java.io.FileOutputStream;
 import java.util.Vector;
 import java.util.zip.ZipOutputStream;
 
-import org.martus.util.UnicodeStringWriter;
 import org.miradi.exceptions.InvalidICUNSelectionException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.files.AbstractMpfFileFilter;
 import org.miradi.main.EAM;
+import org.miradi.migrations.RawProject;
+import org.miradi.migrations.RawProjectLoader;
+import org.miradi.migrations.VersionRange;
+import org.miradi.migrations.forward.MigrationManager;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.ProjectSaver;
+import org.miradi.project.RawProjectSaver;
 import org.miradi.utils.CpmzFileChooser;
 import org.miradi.utils.MpzFileFilterForChooserDialog;
 import org.miradi.utils.ProgressInterface;
@@ -43,14 +47,6 @@ import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 
 public class ExportCpmzDoer extends XmlExporterDoer
 {
-	@Override
-	public boolean isAvailable()
-	{
-		//FIXME urgent, due to migration bugs,  MPZ/xmpz1/cpmz import and export have been disabled. 
-		//Remove this isAvailable when migrations have been fixed.  This doer replies on parent's isA
-		return false;
-	}
-	
 	@Override
 	protected boolean export(File chosen, ProgressInterface progressInterface) throws Exception
 	{
@@ -127,9 +123,14 @@ public class ExportCpmzDoer extends XmlExporterDoer
 
 	private void addProjectAsMpfToZip(ZipOutputStream zipOut) throws Exception
 	{
-		UnicodeStringWriter writer = UnicodeStringWriter.create();
-		ProjectSaver.saveProject(getProject(), writer);
-		createZipEntry(zipOut, PROJECT_MPF_NAME, writer.toString());
+		MigrationManager migrationManager = new MigrationManager();
+		String mpfSnapShot = ProjectSaver.createSnapShot(getProject());
+		RawProject projectToMigrate = RawProjectLoader.loadProject(mpfSnapShot);
+		migrationManager.migrate(projectToMigrate, new VersionRange(MigrationManager.OLDEST_VERSION_TO_HANDLE));
+		
+		String projectAsString = RawProjectSaver.saveProject(projectToMigrate);
+		
+		createZipEntry(zipOut, PROJECT_MPF_NAME, projectAsString);
 	}
 	
 	private void addUnreadableMpzToZip(ZipOutputStream zipOut) throws Exception
