@@ -1401,16 +1401,16 @@ public class ProjectForTesting extends ProjectWithHelpers
 		addProgressReport(indicator);
 		
 		CodeToUserStringMap threshold = new CodeToUserStringMap();
-		threshold.putUserString(StatusQuestion.POOR, "poor text");
-		threshold.putUserString(StatusQuestion.FAIR, "fair text");
-		threshold.putUserString(StatusQuestion.GOOD, "good text");
-		threshold.putUserString(StatusQuestion.VERY_GOOD, "very good text");
+		threshold.putUserString(StatusQuestion.POOR, "poor text" + getSingleLineSampleData());
+		threshold.putUserString(StatusQuestion.FAIR, "fair text" + getSingleLineSampleData());
+		threshold.putUserString(StatusQuestion.GOOD, "good text" + getSingleLineSampleData());
+		threshold.putUserString(StatusQuestion.VERY_GOOD, "very good text" + getSingleLineSampleData());
 		fillObjectUsingCommand(indicator, Indicator.TAG_THRESHOLDS_MAP, threshold.toJsonString());
 		
 		CodeToUserStringMap thresholdDetails = new CodeToUserStringMap();
-		thresholdDetails.putUserString(StatusQuestion.POOR, "poor details");
-		thresholdDetails.putUserString(StatusQuestion.FAIR, "fair details");
-		thresholdDetails.putUserString(StatusQuestion.GOOD, "good details");
+		thresholdDetails.putUserString(StatusQuestion.POOR, "poor details" + getSingleLineSampleData());
+		thresholdDetails.putUserString(StatusQuestion.FAIR, "fair details" + getSingleLineSampleData());
+		thresholdDetails.putUserString(StatusQuestion.GOOD, "good details" + getSingleLineSampleData());
 		thresholdDetails.putUserString(StatusQuestion.VERY_GOOD, "very good details");
 		fillObjectUsingCommand(indicator, Indicator.TAG_THRESHOLD_DETAILS_MAP, thresholdDetails.toJsonString());
 		

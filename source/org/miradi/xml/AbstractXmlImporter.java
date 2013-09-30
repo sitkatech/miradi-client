@@ -270,6 +270,12 @@ abstract public class AbstractXmlImporter
 		return getSafeNodeContent(foundNode);
 	}
 	
+	public String getSafeEncodedContent(Node node)
+	{
+		final String rawValue = getSafeNodeContent(node);
+		return escapeDueToParserUnescaping(rawValue);
+	}
+	
 	public String getSafeNodeContent(Node foundNode)
 	{
 		if (foundNode == null)
