@@ -22,7 +22,7 @@ package org.miradi.dialogs.dashboard;
 
 import java.awt.Color;
 
-import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
+import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.RowSelectionListener;
 import org.miradi.main.MainWindow;
@@ -32,7 +32,7 @@ import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
 abstract public class SplitterPanelWithRightSideTextPanel extends DisposablePanelWithDescription
 {
-	public SplitterPanelWithRightSideTextPanel(MainWindow mainWindowToUse, AbstractObjectDataInputPanel leftPanelToUse) throws Exception
+	public SplitterPanelWithRightSideTextPanel(MainWindow mainWindowToUse, DisposablePanel leftPanelToUse) throws Exception
 	{
 		super();
 		
@@ -104,7 +104,7 @@ abstract public class SplitterPanelWithRightSideTextPanel extends DisposablePane
 	abstract protected PersistentNonPercentageHorizontalSplitPane createRawSplitPaneComponent(MainWindow mainWindowToUse);
 	
 	private MainWindow mainWindow;
-	protected AbstractObjectDataInputPanel leftPanel;
+	protected DisposablePanel leftPanel;
 	protected RightSideDescriptionPanel rightPanel;
 	private PersistentHorizontalSplitPane splitPane;
 }
