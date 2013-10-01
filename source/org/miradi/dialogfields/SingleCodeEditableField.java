@@ -49,7 +49,7 @@ public class SingleCodeEditableField extends AbstractEditableCodeListField
 		RadioButtonEditorComponentWithHierarchicalRows editor = new RadioButtonEditorComponentWithHierarchicalRows(mainWindow, question);
 		OneFieldObjectDataInputPanelWithListenerDelegator leftPanel = new OneFieldObjectDataInputPanelWithListenerDelegator(getProject(), getORef(), getTag(), editor);
 		if (editor.getQuestion().hasLongDescriptionProvider())
-			return new SplitterPanelWithStaticRightSideTextPanel(mainWindow, question, leftPanel);
+			return new SplitterPanelWithStaticRightSideTextPanel(mainWindow, leftPanel);
 
 		return leftPanel;
 	}

@@ -44,7 +44,7 @@ public class CodeListPopupWithDescriptionPanelField extends	AbstractEditableCode
 		OneFieldObjectDataInputPanel leftPanel = new OneFieldObjectDataInputPanel(getProject(), getORef(), getTag(), field);
 		
 		if (leftComponent.getQuestion().hasLongDescriptionProvider())
-			return new SplitterPanelWithStaticRightSideTextPanel(mainWindow, question, leftPanel);
+			return new SplitterPanelWithStaticRightSideTextPanel(mainWindow, leftPanel);
 
 		return leftPanel;
 	}

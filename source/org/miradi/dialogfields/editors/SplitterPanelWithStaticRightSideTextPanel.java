@@ -29,12 +29,11 @@ import org.miradi.dialogs.dashboard.StaticLongDescriptionProvider;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.questions.ChoiceQuestion;
 import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
 public class SplitterPanelWithStaticRightSideTextPanel extends SplitterPanelWithRightSideTextPanel
 {
-	public SplitterPanelWithStaticRightSideTextPanel(MainWindow mainWindowToUse, ChoiceQuestion questionToUse, OneFieldObjectDataInputPanel leftPanelEditorComponentToUse) throws Exception
+	public SplitterPanelWithStaticRightSideTextPanel(MainWindow mainWindowToUse, OneFieldObjectDataInputPanel leftPanelEditorComponentToUse) throws Exception
 	{
 		super(mainWindowToUse, leftPanelEditorComponentToUse);		
 	}		
