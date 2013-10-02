@@ -87,17 +87,17 @@ public class MigrationTo9 extends AbstractMigration
 		public MigrationResult internalVisit(RawObject rawObject) throws Exception
 		{
 			MigrationResult migrationResult = MigrationResult.createSuccess();
-			if (rawObject.containsKey(TAG_SAMPLE_PRECISION))
+			if (rawObject.hasValue(TAG_SAMPLE_PRECISION))
 			{
 				rawObject.remove(TAG_SAMPLE_PRECISION);
 				migrationResult = migrationResult.createDataLoss();
 			}
-			if (rawObject.containsKey(TAG_SAMPLE_SIZE))
+			if (rawObject.hasValue(TAG_SAMPLE_SIZE))
 			{
 				rawObject.remove(TAG_SAMPLE_SIZE);
 				migrationResult = migrationResult.createDataLoss();
 			}
-			if (rawObject.containsKey(TAG_SAMPLE_PRECISION_TYPE))
+			if (rawObject.hasValue(TAG_SAMPLE_PRECISION_TYPE))
 			{
 				rawObject.remove(TAG_SAMPLE_PRECISION_TYPE);
 				migrationResult = migrationResult.createDataLoss();

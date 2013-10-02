@@ -56,6 +56,14 @@ public class RawObject extends LinkedHashMap<String, String>
 	{
 		return put(tag, data);
 	}
+	
+	public boolean hasValue(String tag)
+	{
+		if (!containsKey(tag))
+			return false;
+		
+		return getData(tag).length() > 0;
+	}
 
 	private int objectType;
 }
