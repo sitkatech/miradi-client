@@ -38,7 +38,7 @@ public class TaxonomyEditorFields extends ObjectDataInputField
 	@Override
 	public String getText()
 	{
-			return "";
+		return "";
 	}
 
 	@Override
