@@ -93,7 +93,7 @@ public class MigrationTo9 extends AbstractMigration
 			if (statusConfidence != null && statusConfidence.equals(SAMPLING_BASED_CODE))
 				rawObject.setData(TAG_STATUS_CONFIDENCE, "");
 			
-			return MigrationResult.createSuccess();
+			return MigrationResult.createDataLoss();
 		}
 	}
 	
