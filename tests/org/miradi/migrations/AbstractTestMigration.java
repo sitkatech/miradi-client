@@ -37,6 +37,20 @@ public class AbstractTestMigration extends TestCaseWithProject
 		super(name);
 	}
 	
+	protected MigrationResult migrateProject(Project projectToUse, VersionRange FromVersionRange, VersionRange toVersionRange) throws Exception
+	{
+		String projectAsString = ProjectSaverForTesting.createSnapShot(projectToUse, FromVersionRange);
+		final RawProject projectToMigrate = RawProjectLoader.loadProject(projectAsString);
+		return migrateProject(projectToMigrate, toVersionRange);
+	}
+
+	protected MigrationResult migrateProject(final RawProject projectToMigrate, VersionRange toVersionRange) throws Exception
+	{
+		MigrationManager migrationManager = new MigrationManager();
+		
+		return migrationManager.migrate(projectToMigrate, toVersionRange);
+	}
+
 	protected ProjectForTesting migrateProject(final VersionRange versionRangeToUse) throws Exception
 	{
 		String projectAsString = ProjectSaverForTesting.createSnapShot(getProject(), versionRangeToUse);
