@@ -85,9 +85,13 @@ public class MigrationTo8 extends AbstractMigration
 		@Override
 		public MigrationResult internalVisit(RawObject indicator) throws Exception
 		{
-			indicator.remove(TAG_UNIT);
+			if (indicator.containsKey(TAG_UNIT))
+			{
+				indicator.remove(TAG_UNIT);
+				return MigrationResult.createDataLoss();
+			}
 
-			return MigrationResult.createDataLoss();
+			return MigrationResult.createSuccess();
 		}
 	}
 	
