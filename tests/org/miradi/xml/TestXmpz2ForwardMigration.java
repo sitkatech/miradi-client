@@ -7,6 +7,7 @@ import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.xml.wcs.Xmpz2XmlValidator;
 import org.miradi.xml.xmpz2.Xmpz2ForwardMigration;
+import org.miradi.xml.xmpz2.Xmpz2XmlSilentValidatorForTesting;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -47,7 +48,7 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject
 		Xmpz2ForwardMigration.setNameSpaceVersion(rootElement, "228");
 		
 		String updatedXmlAsString = HtmlUtilities.toXmlString(document);
-		if (new Xmpz2XmlValidator().isValid(new StringInputStreamWithSeek(updatedXmlAsString)))
+		if (new Xmpz2XmlSilentValidatorForTesting().isValid(new StringInputStreamWithSeek(updatedXmlAsString)))
 			fail("Project should not validate due to incorrect schema?");
 		
 		Xmpz2ForwardMigration migration = new Xmpz2ForwardMigration();
