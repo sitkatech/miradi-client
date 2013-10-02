@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-26 15:01-0500\n"
+"POT-Creation-Date: 2013-09-30 15:31-0500\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -265,7 +265,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationManager.java:104
+#: Miradi/source/org/miradi/migrations/forward/MigrationManager.java:106
 #: Miradi/source/org/miradi/main/MainWindow.java:1444
 msgid "(%s)"
 msgstr ""
@@ -518,7 +518,7 @@ msgstr ""
 "<HTML>Quando colar entre projetos, não pode colar de Modelo Conceitual para "
 "Cadeia de Resultados ou vice versa</HTML>"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:60
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:56
 msgid ""
 "<HTML>Your project is missing some data that is required for upload to "
 "ConPro.<br>Please correct the problems listed below then attempt to export "
@@ -3050,7 +3050,7 @@ msgstr ""
 msgid "Country"
 msgstr "País"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:184
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:185
 msgid ""
 "Country - Located in Summary View, Location Tab. Select at least one Country"
 msgstr ""
@@ -5829,7 +5829,7 @@ msgid "PlanningSubViewName|Custom"
 msgstr "Personalizado"
 
 #: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:80
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:108
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:104
 msgid ""
 "Please choose a specific IUCN classification (Not a category). Fix needed "
 "for Strategy named:\n"
@@ -6024,7 +6024,7 @@ msgstr "Descrição do Projeto:"
 msgid "Project Migration Required"
 msgstr "É Necessário Migrar o Projeto"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:173
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:174
 msgid "Project Name - Located in Summary View, Project Tab, Project Name field"
 msgstr ""
 "Nome do Projeto - Localizado na Visão de Resumo, Aba Projeto, Campo Nome do "
@@ -6897,7 +6897,7 @@ msgstr "Em todo o sistema"
 msgid "TNC"
 msgstr "TNC"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:187
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:188
 msgid ""
 "TNC Operating Unit - At least one TNC Operating Unit must be selected, "
 "<br>located in Summary View, TNC tab. Organizations other than TNC should "
@@ -7936,7 +7936,7 @@ msgstr "Equipe"
 msgid "Team Contact"
 msgstr "Contato da Equipe"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:176
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:177
 msgid ""
 "Team Contact - At least one project Team Member must be specified as Team "
 "Contact, <br>located in Summary View, Team Tab, Roles field"
@@ -7945,7 +7945,7 @@ msgstr ""
 "Projeto como Contato da Equipe, <br>localizado na Visão de Resumo, Aba "
 "Equipe, Campo Papéis"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:180
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:181
 msgid ""
 "Team Contact Email - The Team Contact must have an email address, "
 "<br>located in Summary View, Team Tab, ensure Team Contact has email "
@@ -8220,6 +8220,17 @@ msgstr ""
 msgid ""
 "This migration creates new future status objects from indicator's future "
 "status fields"
+msgstr ""
+
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo8.java:75
+msgid "This migration removes indicator's unit field"
+msgstr ""
+
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo9.java:75
+msgid ""
+"This migration removes new measuremt fields: Sample size, Sample Precision, "
+"Sample Precision Type and clears status confidenceif the choice is Sampling "
+"Based"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:89
@@ -9266,7 +9277,7 @@ msgstr "Não será exibido.  Desmarcar para ter Miradi"
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:96
 #: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:55
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:83
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:79
 msgid "save..."
 msgstr "salvar..."
 
