@@ -71,7 +71,7 @@ public class AbstractTestMigration extends TestCaseWithProject
 		return  rawProjectToMigrate;
 	}
 	
-	protected void verifyFullCircleMigrations(final VersionRange versionRangeToUse) throws Exception
+	protected ProjectForTesting verifyFullCircleMigrations(final VersionRange versionRangeToUse) throws Exception
 	{
 		ProjectForTesting projectAfterFirstMigration = migrateProject(versionRangeToUse);
 		String afterFirstForwardMigration = ProjectSaver.createSnapShot(projectAfterFirstMigration);
@@ -83,6 +83,8 @@ public class AbstractTestMigration extends TestCaseWithProject
 		String fullCircleBackProjectAsString = ProjectSaver.createSnapShot(fullCircleBackProject);
 		
 		assertEquals("Full circle migration results are not the same?", stripHighestIdLine(afterFirstForwardMigration), stripHighestIdLine(fullCircleBackProjectAsString));
+		
+		return fullCircleBackProject;
 	}
 	
 	private String stripHighestIdLine(String mpf)
