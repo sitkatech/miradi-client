@@ -87,7 +87,7 @@ public class MigrationTo8 extends AbstractMigration
 		{
 			indicator.remove(TAG_UNIT);
 
-			return MigrationResult.createSuccess();
+			return MigrationResult.createDataLoss();
 		}
 	}
 	
