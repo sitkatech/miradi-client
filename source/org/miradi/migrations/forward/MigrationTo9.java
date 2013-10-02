@@ -114,11 +114,11 @@ public class MigrationTo9 extends AbstractMigration
 		}
 	}
 	
-	private static final String TAG_STATUS_CONFIDENCE = "StatusConfidence";
-	private static final String SAMPLING_BASED_CODE = "SamplingBased";
-	private static final String TAG_SAMPLE_SIZE ="SampleSize";
-	private static final String TAG_SAMPLE_PRECISION ="SamplePrecision";
-	private static final String TAG_SAMPLE_PRECISION_TYPE ="SamplePrecisionType";
+	public static final String TAG_STATUS_CONFIDENCE = "StatusConfidence";
+	public static final String SAMPLING_BASED_CODE = "SamplingBased";
+	public static final String TAG_SAMPLE_SIZE ="SampleSize";
+	public static final String TAG_SAMPLE_PRECISION ="SamplePrecision";
+	public static final String TAG_SAMPLE_PRECISION_TYPE ="SamplePrecisionType";
 	
 	private static final int VERSION_LOW = 8;
 	private static final int VERSION_HIGH = 9;
