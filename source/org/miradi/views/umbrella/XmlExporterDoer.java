@@ -55,7 +55,7 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 					"want a backup copy of your project, or if you want to send a copy to " +
 					"someone who uses Miradi 4.0, you should either export to the XMPZ2 format, " +
 					"or just use the .Miradi project file directly.  " +
-					"NOTE: This data format can be for sending to other systems or creating reports. " +
+					"NOTE: This data format can be used for sending to other systems or creating reports. " +
 					"It cannot be used to transfer data from one copy or version of Miradi to another.\n" +
 					"Do you want to continue with XMPZ export that may lose data?"),
 		};
