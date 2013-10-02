@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2013, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -17,6 +17,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
+
 package org.miradi.dialogfields;
 
 import javax.swing.text.JTextComponent;
@@ -25,11 +26,11 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.utils.ReadonlyHtmlPane;
 
-public class ObjectMultilineDisplayField extends AbstractObjectMultilineDisplayField
+public class ObjectMultilineShortDisplayField extends AbstractObjectMultilineDisplayField
 {
-	public ObjectMultilineDisplayField(MainWindow mainWindow, ORef refToUse, String tagToUse) throws Exception
+	public ObjectMultilineShortDisplayField(MainWindow mainWindow, ORef refToUse, String tagToUse) throws Exception
 	{
-		super(mainWindow, refToUse, tagToUse, createTextComponent(mainWindow, 1, DEFAULT_WIDE_FIELD_CHARACTERS));
+		super(mainWindow, refToUse, tagToUse, createTextComponent(mainWindow, 1, DEFAULT_SHORT_FIELD_CHARACTERS));
 	}
 	
 	private static JTextComponent createTextComponent(MainWindow mainWindow, int initialVisibleRows, int columnsToUse) throws Exception
@@ -37,5 +38,5 @@ public class ObjectMultilineDisplayField extends AbstractObjectMultilineDisplayF
 		return new ReadonlyHtmlPane(mainWindow, columnsToUse, initialVisibleRows);
 	}
 	
-	public static int DEFAULT_WIDE_FIELD_CHARACTERS = 50;
+	public static int DEFAULT_SHORT_FIELD_CHARACTERS = 10;
 }

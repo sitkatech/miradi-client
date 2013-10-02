@@ -53,7 +53,7 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 		PanelTitleLabel valueLabel = new PanelTitleLabel(EAM.text("Value"));
 		ObjectDataInputField summaryField = createExpandableField(Measurement.TAG_SUMMARY);
 		PanelTitleLabel unitLabel = new PanelTitleLabel(EAM.text("Unit"));
-		ObjectDataInputField readonlyUnitField = createReadonlyTextField(IndicatorSchema.getObjectType(), Indicator.TAG_UNIT);
+		ObjectDataInputField readonlyUnitField = createReadonlyShortTextField(IndicatorSchema.getObjectType(), Indicator.TAG_UNIT);
 		addFieldsOnOneLine(measurementLabel, new Object[]{dateLabel, dateField, valueLabel, summaryField, unitLabel, readonlyUnitField,});
 
 		addField(createMultilineField(Measurement.TAG_DETAIL));		

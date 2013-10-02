@@ -60,6 +60,7 @@ import org.miradi.dialogfields.ObjectExpandingMultilineInputField;
 import org.miradi.dialogfields.ObjectFloatingPointRestrictedInputField;
 import org.miradi.dialogfields.ObjectIconChoiceField;
 import org.miradi.dialogfields.ObjectMultilineDisplayField;
+import org.miradi.dialogfields.ObjectMultilineShortDisplayField;
 import org.miradi.dialogfields.ObjectOverridenListField;
 import org.miradi.dialogfields.ObjectPercentageInputField;
 import org.miradi.dialogfields.ObjectRadioButtonGroupField;
@@ -624,6 +625,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public ObjectDataInputField createReadonlyTextField(String tag) throws Exception
 	{
 		return new ObjectMultilineDisplayField(getMainWindow(), getFirstSelectedRef(), tag);
+	}
+	
+	public ObjectDataInputField createReadonlyShortTextField(int objectType, String tag) throws Exception
+	{
+		return new ObjectMultilineShortDisplayField(getMainWindow(), getRefForType(objectType), tag);
 	}
 	
 	public ObjectDataInputField createReadonlyTextField(int objectType, String tag) throws Exception
