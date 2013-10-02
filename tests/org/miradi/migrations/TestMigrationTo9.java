@@ -53,6 +53,13 @@ public class TestMigrationTo9 extends AbstractTestMigration
 		assertFalse("Incorrect migration result?", migrationResult.didLooseData());
 	}
 
+	public void testDataLossMigration() throws Exception
+	{
+		verifyValueIsReverseMigrated(MigrationTo9.TAG_SAMPLE_PRECISION);
+		verifyValueIsReverseMigrated(MigrationTo9.TAG_SAMPLE_PRECISION_TYPE);
+		verifyValueIsReverseMigrated(MigrationTo9.TAG_SAMPLE_SIZE);
+	}
+
 	private MigrationResult verifyStatusConfidenceCode(final String expectedStatucConfidenceCode, final String actualStatucConfidenceCode) throws Exception
 	{
 		Measurement measurement = getProject().createMeasurement();
@@ -71,13 +78,6 @@ public class TestMigrationTo9 extends AbstractTestMigration
 		return migrationResult;
 	}
 	
-	public void testDataLossMigration() throws Exception
-	{
-		verifyValueIsReverseMigrated(MigrationTo9.TAG_SAMPLE_PRECISION);
-		verifyValueIsReverseMigrated(MigrationTo9.TAG_SAMPLE_PRECISION_TYPE);
-		verifyValueIsReverseMigrated(MigrationTo9.TAG_SAMPLE_SIZE);
-	}
-
 	private void verifyValueIsReverseMigrated(final String tag) throws Exception
 	{
 		Measurement measurement = getProject().createMeasurement();
