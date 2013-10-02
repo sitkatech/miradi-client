@@ -1592,7 +1592,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void populateStressBasedThreatRatingCommentsData() throws Exception
 	{
-		populateStressBasedThreatRatingCommentsData("Some Comment for Threat and Target");
+		populateStressBasedThreatRatingCommentsData("Some Comment for Threat and Target" + getSampleUserText());
 	}
 
 	public void populateStressBasedThreatRatingCommentsData(String comment)	throws Exception
@@ -1602,7 +1602,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void populateSimpleThreatRatingCommentsData() throws Exception
 	{
-		populateSimpleThreatRatingCommentsData("Some Comment for Threat and Target");
+		populateSimpleThreatRatingCommentsData("Some Comment for Threat and Target" + getSampleUserText());
 	}
 
 	public void populateSimpleThreatRatingCommentsData(String comment)	throws Exception
