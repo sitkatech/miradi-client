@@ -86,9 +86,22 @@ public class MigrationTo9 extends AbstractMigration
 		@Override
 		public MigrationResult internalVisit(RawObject rawObject) throws Exception
 		{
-			MigrationResult migrationResult = possiblyRemoveField(rawObject, TAG_SAMPLE_PRECISION);
-			migrationResult = possiblyRemoveField(rawObject, TAG_SAMPLE_SIZE);
-			migrationResult = possiblyRemoveField(rawObject, TAG_SAMPLE_PRECISION_TYPE);
+			MigrationResult migrationResult = MigrationResult.createSuccess();
+			if (rawObject.containsKey(TAG_SAMPLE_PRECISION))
+			{
+				rawObject.remove(TAG_SAMPLE_PRECISION);
+				migrationResult = migrationResult.createDataLoss();
+			}
+			if (rawObject.containsKey(TAG_SAMPLE_SIZE))
+			{
+				rawObject.remove(TAG_SAMPLE_SIZE);
+				migrationResult = migrationResult.createDataLoss();
+			}
+			if (rawObject.containsKey(TAG_SAMPLE_PRECISION_TYPE))
+			{
+				rawObject.remove(TAG_SAMPLE_PRECISION_TYPE);
+				migrationResult = migrationResult.createDataLoss();
+			}
 			
 			String statusConfidence = rawObject.getData(TAG_STATUS_CONFIDENCE);
 			if (statusConfidence != null && statusConfidence.equals(SAMPLING_BASED_CODE))
@@ -98,17 +111,6 @@ public class MigrationTo9 extends AbstractMigration
 			}
 			
 			return migrationResult;
-		}
-
-		private MigrationResult possiblyRemoveField(RawObject rawObject, final String tagSamplePrecisionType)
-		{
-			if (rawObject.containsKey(tagSamplePrecisionType))
-			{
-				rawObject.remove(tagSamplePrecisionType);
-				return MigrationResult.createDataLoss();
-			}
-			
-			return MigrationResult.createSuccess();
 		}
 	}
 	
