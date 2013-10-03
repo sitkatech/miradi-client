@@ -77,7 +77,6 @@ import org.miradi.dialogfields.SingleXenodataProjectIdReadonlyField;
 import org.miradi.dialogfields.StrategyGoalOverrideListField;
 import org.miradi.dialogfields.StrategyObjectiveOverrideListField;
 import org.miradi.dialogfields.StringMapProjectResourceFilterEditorField;
-import org.miradi.dialogfields.TaxonomyEditorField;
 import org.miradi.dialogfields.TaxonomyEditorFields;
 import org.miradi.dialogfields.WhoEditorField;
 import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
@@ -670,11 +669,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public ObjectDataInputField createRadioButtonEditorField(int objectType, String tagToUse, ChoiceQuestion question)
 	{
 		return new SingleCodeEditableField(getMainWindow(), getRefForType(objectType), tagToUse, question);
-	}
-	
-	public TaxonomyEditorField createTaxonomyEditorField(ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, String taxonomyAssociationCodeToUse) throws Exception
-	{
-		return new TaxonomyEditorField(getProject(), refToUse, tagToUse, questionToUse, taxonomyAssociationCodeToUse);
 	}
 	
 	public ObjectDataInputField createTaxonomyFields(int objectType)
