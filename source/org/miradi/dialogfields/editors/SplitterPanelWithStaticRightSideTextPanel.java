@@ -22,7 +22,7 @@ package org.miradi.dialogfields.editors;
 
 import java.awt.Color;
 
-import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
+import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
 import org.miradi.dialogs.dashboard.SplitterPanelWithRightSideTextPanel;
 import org.miradi.dialogs.dashboard.StaticLongDescriptionProvider;
@@ -33,7 +33,7 @@ import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
 public class SplitterPanelWithStaticRightSideTextPanel extends SplitterPanelWithRightSideTextPanel
 {
-	public SplitterPanelWithStaticRightSideTextPanel(MainWindow mainWindowToUse, OneFieldObjectDataInputPanel leftPanelEditorComponentToUse) throws Exception
+	public SplitterPanelWithStaticRightSideTextPanel(MainWindow mainWindowToUse, DisposablePanel leftPanelEditorComponentToUse) throws Exception
 	{
 		super(mainWindowToUse, leftPanelEditorComponentToUse);		
 	}		
