@@ -20,53 +20,21 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import javax.swing.JComponent;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.TaxonomyClassificationMap;
-import org.miradi.objecthelpers.TaxonomyHelper;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 
-//FIXME urgent - remove this class and its references, its no longer used
-public class TaxonomyEditorField extends ObjectDataInputField implements ListSelectionListener
+public class TaxonomyEditorComponentWrapperField extends ComponentWrapperObjectDataInputField
 {
-	public TaxonomyEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, String taxonomyAssociationCodeToUse) throws Exception
+	public TaxonomyEditorComponentWrapperField(Project projectToUse, ORef refToUse, String tagToUse, SavebleComponent componentToUse, TaxonomyAssociation taxonomyAssociationToUse)
 	{
-		super(projectToUse, refToUse, tagToUse);
+		super(projectToUse, refToUse, tagToUse, componentToUse);
 		
-		taxonomyAssociation = TaxonomyHelper.findTaxonomyAssociation(getProject(), taxonomyAssociationCodeToUse);
-		createEditorComponent(questionToUse);
-		taxonomyLeftSideEditorComponent.addListSelectionListener(this);
-	}
-	
-	public void becomeActive()
-	{
-		taxonomyLeftSideEditorComponent.becomeActive();
-	}
-	
-	public void becomeInactive()
-	{
-		taxonomyLeftSideEditorComponent.becomeInactive();
-	}
-
-	private void createEditorComponent(ChoiceQuestion questionToUse) throws Exception
-	{
-		taxonomyLeftSideEditorComponent = createTaxonomyEditorComponent(questionToUse);
-	}
-	
-	private AbstractEditorComponentWithHiearchies createTaxonomyEditorComponent(ChoiceQuestion questionToUse)
-	{
-		if (getTaxonomyAssociation().isMultiSelectionTaxonomy())
-			return new MultiSelectionEditorComponentWithHierarchies(questionToUse);
-		
-		return new SingleSelectionEditorComponentWithHierarchies(questionToUse);
+		taxonomyAssociation = taxonomyAssociationToUse;
 	}
 
 	@Override
@@ -76,7 +44,7 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 		{
 			BaseObject baseObject = BaseObject.find(getProject(), getORef());
 			TaxonomyClassificationMap taxonomyClassificationList = new TaxonomyClassificationMap(baseObject.getData(BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER));
-			CodeList selectedTaxonomyElementCodes = new CodeList(taxonomyLeftSideEditorComponent.getText());
+			CodeList selectedTaxonomyElementCodes = new CodeList(super.getText());
 			taxonomyClassificationList.putCodeList(getTaxonomyAssociation().getTaxonomyCode(), selectedTaxonomyElementCodes);
 
 			return taxonomyClassificationList.toJsonString();
@@ -94,7 +62,7 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 		try
 		{
 			CodeList taxonomyElementCodes = TaxonomyClassificationMap.getTaxonomyElementCodes(getProject(), newValue, getTaxonomyAssociation().getTaxonomyAssociationCode());
-			taxonomyLeftSideEditorComponent.setText(taxonomyElementCodes.toString());
+			super.setText(taxonomyElementCodes.toJsonString());
 		}
 		catch (Exception e)
 		{
@@ -102,28 +70,10 @@ public class TaxonomyEditorField extends ObjectDataInputField implements ListSel
 		}
 	}
 
-	@Override
-	public JComponent getComponent()
-	{
-		return taxonomyLeftSideEditorComponent;
-	}
-	
-	@Override
-	protected boolean shouldBeEditable()
-	{
-		return isValidObject();
-	}
-	
-	public void valueChanged(ListSelectionEvent arg0)
-	{
-		forceSave();
-	}
-	
 	private TaxonomyAssociation getTaxonomyAssociation()
 	{
 		return taxonomyAssociation;
 	}
 	
 	private TaxonomyAssociation taxonomyAssociation;
-	private AbstractEditorComponentWithHiearchies taxonomyLeftSideEditorComponent;
 }

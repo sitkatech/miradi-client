@@ -26,6 +26,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 
+//FIXME urgent - remove this class and its references, its no longer used
 public class TaxonomyEditorPanel extends ObjectDataInputPanel
 {
 	public TaxonomyEditorPanel(Project projectToUse, ORef orefToUse, String tagToUse, ChoiceQuestion question, String taxonomyAssociationCodeToUse) throws Exception
