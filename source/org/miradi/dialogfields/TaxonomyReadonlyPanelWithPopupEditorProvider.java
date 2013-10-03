@@ -48,17 +48,13 @@ public class TaxonomyReadonlyPanelWithPopupEditorProvider implements ReadonlyPan
 
 	public DisposablePanel createEditorPanel() throws Exception
 	{
-		return createEditorComponent(question);
-	}
-	
-	private SplitterPanelWithStaticRightSideTextPanel createEditorComponent(ChoiceQuestion questionToUse) throws Exception
-	{
-		AbstractEditorComponentWithHiearchies taxonomyLeftSideEditorComponent = createTaxonomyEditorComponent(questionToUse);
+		AbstractEditorComponentWithHiearchies taxonomyLeftSideEditorComponent = createTaxonomyEditorComponent(question);
 		TaxonomyOneFieldObjectDataInputPanelWithListenerDelegator leftPanel = new TaxonomyOneFieldObjectDataInputPanelWithListenerDelegator(getProject(), getRef(), BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER, taxonomyAssociation, taxonomyLeftSideEditorComponent);
+		
 		//FIXME urgent : only display splitter if right side description exists
 		return new SplitterPanelWithStaticRightSideTextPanel(EAM.getMainWindow(), leftPanel);
 	}
-
+	
 	private AbstractEditorComponentWithHiearchies createTaxonomyEditorComponent(ChoiceQuestion questionToUse)
 	{
 		if (getTaxonomyAssociation().isMultiSelectionTaxonomy())
