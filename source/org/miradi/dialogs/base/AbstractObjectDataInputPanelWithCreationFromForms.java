@@ -60,7 +60,7 @@ abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends	
 		updateFieldsFromProject();
 	}
 
-	private void createFieldsFromForm(FieldPanelSpec form) throws Exception
+	protected void createFieldsFromForm(FieldPanelSpec form) throws Exception
 	{
 		for(int row = 0; row < form.getFieldRowCount(); ++row)
 		{
