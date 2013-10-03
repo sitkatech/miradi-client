@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-01 21:01-0500\n"
+"POT-Creation-Date: 2013-10-03 14:16-0500\n"
 "PO-Revision-Date: 2011-03-17 08:35-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3268,7 +3268,6 @@ msgstr ""
 msgid "Edit.."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/TaxonomyEditorPanel.java:60
 #: Miradi/source/org/miradi/dialogs/base/ObjectRefListEditorPanel.java:51
 #: Miradi/source/org/miradi/dialogs/base/CodeListEditorPanel.java:46
 msgid "Editor"
@@ -8444,7 +8443,7 @@ msgstr ""
 msgid "Work plan overview"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryView.java:171
+#: Miradi/source/org/miradi/views/summary/SummaryView.java:175
 msgid "Work plan start date is before project start date"
 msgstr ""
 
@@ -16125,6 +16124,21 @@ msgid ""
 "biological diversity</li><li>ensuring that the use of renewable natural "
 "resources is sustainable</li><li>promoting the reduction of pollution and "
 "wasteful consumption.</li>"
+msgstr ""
+
+msgid ""
+"html|/resources/MiradiShareNonSharedProjectHelpPanel.html|  <div "
+"class=''><table cellpadding='10'><tr><td><img width='64' height='64' "
+"src='icons/miradi64.png'></img></td> <td>Miradi Share <a href='http://www."
+"miradishare.org'>Start sharing now!</a></td></tr><tr><td></td><td>Learn how "
+"to share your project with your colleagues within your program and beyond. "
+"<br/><br/>Miradi Share is a new cloud-based software system that enables "
+"conservation practitioners, managers, and funders to design, manage, "
+"monitor, and learn from collections of related conservation \"projects\" "
+"that make up a conservation \"program\" <br/><br/>Miradi Share provides a "
+"powerful suite of tools that build on and extend the functionality provided "
+"by CMP Open Standards for the Practice of Conservation and Miradi Desktop "
+"Software. </td></tr></table></div>"
 msgstr ""
 
 msgid ""
