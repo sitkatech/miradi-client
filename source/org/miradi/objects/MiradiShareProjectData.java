@@ -80,4 +80,6 @@ public class MiradiShareProjectData extends BaseObject
 	public static final String TAG_PROGRAM_TAXONOMY_SET_NAME = "ProgramTaxonomySetName";
 	public static final String TAG_PROGRAM_TAXONOMY_SET_VERSION_ID = "ProgramTaxonomySetVersionId";
 	public static final String TAG_PROGRAM_TAXONOMY_SET_VERSION = "ProgramTaxonomySetVersion";
+	
+	public static final String MIRADI_SHARE_PROJECT_CODE = "MiradiShare";
 }

@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
+import java.util.Set;
 import java.util.Vector;
 
 import org.martus.util.MultiCalendar;
@@ -168,6 +169,18 @@ public class ProjectMetadata extends BaseObject
 			EAM.logDebug("Exception ocurred while trying to parse project area.");
 			return new OptionalDouble();
 		}
+	}
+	
+	public boolean isMiradiShareProject()
+	{
+		Set<String> externalContextCodes = getXenodataStringRefMap().getKeys();
+		for(String externalContextCode : externalContextCodes)
+		{
+			if (externalContextCode.equals(MiradiShareProjectData.MIRADI_SHARE_PROJECT_CODE))
+				return true;
+		}
+		
+		return false;
 	}
 	
 	public StringRefMap getXenodataStringRefMap()

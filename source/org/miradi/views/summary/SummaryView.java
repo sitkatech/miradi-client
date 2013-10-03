@@ -97,7 +97,11 @@ public class SummaryView extends TabbedView
 		};
 		
 		addSummaryTab(new SummaryProjectPanel(getProject(), metadata.getRef()));
-		addSummaryTab(new SummaryMiradiSharePanel(getProject()));
+		if (getProject().getMetadata().isMiradiShareProject())
+			addSummaryTab(new SummaryMiradiSharePanel(getProject()));
+		else
+			addNonScrollingTab(new SummaryNonSharedMiradiSharePanel(getMainWindow()));
+		
 		addNonScrollingTab(teamManagementPanel);
 		addNonScrollingTab(new OrganizationalTabPanel(getMainWindow(), organizationManagementPanel));
 		addSummaryTab(new SummaryScopeTabPanel(getProject(), allRelatedRefs));
