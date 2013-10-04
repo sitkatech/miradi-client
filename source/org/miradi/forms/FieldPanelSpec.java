@@ -24,6 +24,7 @@ import java.util.Vector;
 import javax.swing.Icon;
 
 import org.miradi.forms.objects.FormFieldCodeListData;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.utils.BufferedImageFactory;
@@ -128,6 +129,11 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 	{
 		addField(objectType, fieldTag, new FormFieldDisplayData(objectType, fieldTag));
 	}
+	
+	protected void addTextHtmlPanel(String htmlText)
+	{
+		addFieldWithoutLabel(ObjectType.FAKE, "", new FormFieldHtmlStatisText(htmlText));
+	}
 
 	protected void addLabelAndField(int type, String fieldTag)
 	{
@@ -144,6 +150,11 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 	{
 		FormConstant label = new FormConstant(translatedLabelToUse);
 		addFormRow(label, formFieldData);
+	}
+	
+	private void addFieldWithoutLabel(int type, String fieldTag, FormItem formItem)
+	{
+		addFormRow(new FormRow(new FormConstant(), formItem));
 	}
 
 	public void addFormRow(FormItem label, FieldRelatedFormItem formFieldData)
