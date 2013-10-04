@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-03 16:31-0500\n"
+"POT-Creation-Date: 2013-10-04 12:01-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -2343,7 +2343,7 @@ msgstr "Серпень"
 msgid "Automatic"
 msgstr "Автоматичний"
 
-#: Miradi/source/org/miradi/views/summary/MiradiShareTaxonomyPanel.java:74
+#: Miradi/source/org/miradi/views/summary/MiradiShareTaxonomyPanel.java:71
 msgid "Basics"
 msgstr ""
 
