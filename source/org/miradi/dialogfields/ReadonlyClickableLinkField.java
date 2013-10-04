@@ -21,7 +21,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import javax.swing.JComponent;
+import javax.swing.text.html.StyleSheet;
 
+import org.martus.swing.HyperlinkHandler;
 import org.miradi.dialogs.fieldComponents.HtmlFormViewer;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
@@ -35,7 +37,7 @@ public class ReadonlyClickableLinkField extends ObjectDataInputField
 		super(mainWindow.getProject(), refToUse, tagToUse);
 		
 		//NOTE: passing anything other than "" so that cursor changes to index finger when mouse is over clickable link
-		htmlFormViewer = new HtmlFormViewer(mainWindow, HtmlUtilities.wrapInHtmlTags("") , mainWindow.getHyperlinkHandler());
+		htmlFormViewer = new DataPanelHtmlFormViewer(mainWindow, HtmlUtilities.wrapInHtmlTags("") , mainWindow.getHyperlinkHandler());
 	}
 	
 	@Override
@@ -55,7 +57,7 @@ public class ReadonlyClickableLinkField extends ObjectDataInputField
 
 	private String wrapInHtmlAnchor(String url)
 	{
-		url = "<body bgcolor=\"" + AppPreferences.getDataPanelBackgroundColorForCss() + "\">" +  
+		url = "<body>" +  
 		"<a href=\"" + url + "\">" + url +"</a>" +
 		"</body>";
 
@@ -74,6 +76,22 @@ public class ReadonlyClickableLinkField extends ObjectDataInputField
 	{
 		return htmlFormViewer;
 	}
+	
+	private class DataPanelHtmlFormViewer extends HtmlFormViewer
+	{
+		public DataPanelHtmlFormViewer(MainWindow mainWindow, String wrapInHtmlTags, HyperlinkHandler hyperlinkHandler)
+		{
+			super(mainWindow, wrapInHtmlTags, hyperlinkHandler);
+		}
 
-	private HtmlFormViewer htmlFormViewer;
+		@Override
+		public void customizeStyleSheet(StyleSheet style)
+		{
+			super.customizeStyleSheet(style);
+			
+			style.addRule("body {background-color: " + AppPreferences.getDataPanelBackgroundColorForCss() + ";}");
+		}	
+	}
+
+	private DataPanelHtmlFormViewer htmlFormViewer;
 }
