@@ -81,7 +81,7 @@ abstract public class FormItem
 		return false;
 	}
 	
-	public boolean isHtmlLink()
+	public boolean isReadonlyClickableLinkField()
 	{
 		return false;
 	}

@@ -29,7 +29,7 @@ public class FormFieldReadonlyClickableLinkField extends FieldRelatedFormItem
 	}
 	
 	@Override
-	public boolean isHtmlLink()
+	public boolean isReadonlyClickableLinkField()
 	{
 		return true;
 	}
