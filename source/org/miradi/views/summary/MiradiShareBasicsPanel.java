@@ -54,10 +54,13 @@ public class MiradiShareBasicsPanel extends ObjectDataInputPanel
 			return programName;
 		
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
-		tokenReplacementMap.put("%projectUrl", projectUrl);
-		tokenReplacementMap.put("%programName", programName);
+		final String PROJET_URL_KEY = "projectUrl";
+		final String PROGRAM_NAME = "programName";
 		
-		return EAM.substitute("<a href=\"%projectUrl\">%programName</a>", tokenReplacementMap);
+		tokenReplacementMap.put(PROJET_URL_KEY, projectUrl);
+		tokenReplacementMap.put(PROGRAM_NAME, programName);
+		
+		return EAM.substitute("<a href=\"" + PROJET_URL_KEY + "\">" + "%programName" + "</a>", tokenReplacementMap);
 	}
 
 	@Override
