@@ -163,7 +163,7 @@ abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends	
 			return;
 		}
 		
-		if (formItem.isHtmlLink())
+		if (formItem.isReadonlyClickableLinkField())
 		{
 			FormFieldReadonlyClickableLinkField data = (FormFieldReadonlyClickableLinkField) formItem;
 			addFieldWithoutLabel(createReadonlyClickableLinkField(data.getObjectType(), data.getObjectTag()));
