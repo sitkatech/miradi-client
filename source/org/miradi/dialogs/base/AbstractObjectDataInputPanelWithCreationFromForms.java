@@ -29,6 +29,7 @@ import org.miradi.forms.FormConstant;
 import org.miradi.forms.FormFieldData;
 import org.miradi.forms.FormFieldDisplayData;
 import org.miradi.forms.FormFieldExternalProjectIdData;
+import org.miradi.forms.FormFieldHtmlLink;
 import org.miradi.forms.FormFieldHtmlStatisText;
 import org.miradi.forms.FormFieldLabel;
 import org.miradi.forms.FormItem;
@@ -158,6 +159,14 @@ abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends	
 		{
 			FormFieldHtmlStatisText data = (FormFieldHtmlStatisText) formItem;
 			add(new HtmlFormViewer(getMainWindow(), data.getHtmlText(), getMainWindow().getHyperlinkHandler()));
+			
+			return;
+		}
+		
+		if (formItem.isHtmlLink())
+		{
+			FormFieldHtmlLink data = (FormFieldHtmlLink) formItem;
+			addFieldWithoutLabel(createHtmlLinkField(data.getObjectType(), data.getObjectTag()));
 			
 			return;
 		}

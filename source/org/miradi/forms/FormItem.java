@@ -80,4 +80,9 @@ abstract public class FormItem
 	{
 		return false;
 	}
+	
+	public boolean isHtmlLink()
+	{
+		return false;
+	}
 }
