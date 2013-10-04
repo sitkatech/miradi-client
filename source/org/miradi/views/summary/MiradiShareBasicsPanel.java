@@ -37,11 +37,17 @@ public class MiradiShareBasicsPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, orefsToUse);
 		
-		String html = Translation.getHtmlContent("MiradiShareSharedProjectHelpPanel.html");
-		html = EAM.substitute(html, getMiradiShareProjectUrl());
+		String html = getMiradiSharedProjectHelpContent();
 		createFieldsFromForm(new MiradiShareTaxonomyDataForm(html));
 
 		updateFieldsFromProject();
+	}
+
+	private String getMiradiSharedProjectHelpContent() throws Exception
+	{
+		String html = Translation.getHtmlContent("MiradiShareSharedProjectHelpPanel.html");
+
+		return  EAM.substitute(html, getMiradiShareProjectUrl());
 	}
 
 	private String getMiradiShareProjectUrl()
