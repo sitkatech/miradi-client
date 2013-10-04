@@ -166,7 +166,7 @@ abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends	
 		if (formItem.isHtmlLink())
 		{
 			FormFieldHtmlLink data = (FormFieldHtmlLink) formItem;
-			addFieldWithoutLabel(createHtmlLinkField(data.getObjectType(), data.getObjectTag()));
+			addFieldWithoutLabel(createReadonlyClickableLinkField(data.getObjectType(), data.getObjectTag()));
 			
 			return;
 		}

@@ -28,9 +28,9 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.utils.HtmlUtilities;
 
-public class HtmlLinkField extends ObjectDataInputField
+public class ReadonlyClickableLinkField extends ObjectDataInputField
 {
-	public HtmlLinkField(MainWindow mainWindow, ORef refToUse, String tagToUse)
+	public ReadonlyClickableLinkField(MainWindow mainWindow, ORef refToUse, String tagToUse)
 	{
 		super(mainWindow.getProject(), refToUse, tagToUse);
 		
