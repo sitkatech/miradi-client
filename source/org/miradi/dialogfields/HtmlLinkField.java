@@ -34,6 +34,7 @@ public class HtmlLinkField extends ObjectDataInputField
 	{
 		super(mainWindow.getProject(), refToUse, tagToUse);
 		
+		//NOTE: passing anything other than "" so that cursor changes to index finger when mouse is over clickable link
 		htmlFormViewer = new HtmlFormViewer(mainWindow, HtmlUtilities.wrapInHtmlTags("") , mainWindow.getHyperlinkHandler());
 	}
 	
