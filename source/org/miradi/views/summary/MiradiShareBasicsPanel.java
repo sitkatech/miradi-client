@@ -31,9 +31,9 @@ import org.miradi.project.Project;
 import org.miradi.schemas.MiradiShareProjectDataSchema;
 import org.miradi.utils.Translation;
 
-public class MiradiShareTaxonomyPanel extends ObjectDataInputPanel
+public class MiradiShareBasicsPanel extends ObjectDataInputPanel
 {
-	public MiradiShareTaxonomyPanel(Project projectToUse, ORef[] orefsToUse) throws Exception
+	public MiradiShareBasicsPanel(Project projectToUse, ORef[] orefsToUse) throws Exception
 	{
 		super(projectToUse, orefsToUse);
 		

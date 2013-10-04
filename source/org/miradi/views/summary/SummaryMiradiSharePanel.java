@@ -38,7 +38,7 @@ public class SummaryMiradiSharePanel extends ObjectDataInputPanelWithSections
 	{
 		super(projectToUse, MiradiShareProjectDataSchema.getObjectType());
 		
-		addSubPanelWithTitledBorder(new MiradiShareTaxonomyPanel(projectToUse, getSingletonRefs(projectToUse)));
+		addSubPanelWithTitledBorder(new MiradiShareBasicsPanel(projectToUse, getSingletonRefs(projectToUse)));
 		addSubPanelWithTitledBorder(new MiradiShareDetailsPanel(projectToUse, getSingletonRefs(projectToUse)));
 		
 		updateFieldsFromProject();
