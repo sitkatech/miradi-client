@@ -30,7 +30,7 @@ import org.miradi.forms.FormFieldData;
 import org.miradi.forms.FormFieldDisplayData;
 import org.miradi.forms.FormFieldExternalProjectIdData;
 import org.miradi.forms.FormFieldHtmlLink;
-import org.miradi.forms.FormFieldHtmlStatisText;
+import org.miradi.forms.FormFieldHtmlStaticText;
 import org.miradi.forms.FormFieldLabel;
 import org.miradi.forms.FormItem;
 import org.miradi.forms.FormRow;
@@ -157,7 +157,7 @@ abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends	
 		}
 		if (formItem.isHtmlPanel())
 		{
-			FormFieldHtmlStatisText data = (FormFieldHtmlStatisText) formItem;
+			FormFieldHtmlStaticText data = (FormFieldHtmlStaticText) formItem;
 			add(new HtmlFormViewer(getMainWindow(), data.getHtmlText(), getMainWindow().getHyperlinkHandler()));
 			
 			return;
