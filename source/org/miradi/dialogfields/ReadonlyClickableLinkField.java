@@ -68,7 +68,7 @@ public class ReadonlyClickableLinkField extends ObjectDataInputField
 	@Override
 	protected boolean shouldBeEditable()
 	{
-		//NOTE: Returning true so that the foreground is grayed out. This field's component is an html viewer that is not editable
+		//NOTE: Returning true so that the foreground is not grayed out. This field's component is an html viewer that is not editable
 		return true;
 	}
 
