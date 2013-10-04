@@ -123,6 +123,11 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 	{
 		addFieldWithCustomLabel(objectType, fieldTag, new FormFieldMultipleTaxonomyWithEditButtonFields(objectType, fieldTag), "");
 	}
+	
+	protected void addDisplayField(int objectType, String fieldTag)
+	{
+		addField(objectType, fieldTag, new FormFieldDisplayData(objectType, fieldTag));
+	}
 
 	protected void addLabelAndField(int type, String fieldTag)
 	{

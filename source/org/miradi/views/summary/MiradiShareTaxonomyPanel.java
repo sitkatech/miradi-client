@@ -28,10 +28,8 @@ import org.miradi.forms.objects.MiradiShareTaxonomyDataForm;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.MiradiShareProjectData;
-import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.schemas.MiradiShareProjectDataSchema;
-import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.utils.FillerLabel;
 import org.miradi.utils.Translation;
 
@@ -46,7 +44,6 @@ public class MiradiShareTaxonomyPanel extends ObjectDataInputPanel
 		add(new FillerLabel());
 		add(new HtmlFormViewer(EAM.getMainWindow(), html, EAM.getMainWindow().getHyperlinkHandler()));
 
-		addField(createReadonlyTextField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_PROJECT_NAME));
 		createFieldsFromForm(new MiradiShareTaxonomyDataForm());
 
 		updateFieldsFromProject();

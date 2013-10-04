@@ -26,6 +26,7 @@ import org.miradi.forms.FieldPanelSpec;
 import org.miradi.forms.FieldRelatedFormItem;
 import org.miradi.forms.FormConstant;
 import org.miradi.forms.FormFieldData;
+import org.miradi.forms.FormFieldDisplayData;
 import org.miradi.forms.FormFieldExternalProjectIdData;
 import org.miradi.forms.FormFieldLabel;
 import org.miradi.forms.FormItem;
@@ -143,6 +144,12 @@ abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends	
 			FieldRelatedFormItem data = (FieldRelatedFormItem) formItem;
 			addFieldWithoutLabel(createDateChooserField(data.getObjectType(), data.getObjectTag()));
 			
+			return;
+		}
+		if (formItem.isDisplayFieldData())
+		{
+			FormFieldDisplayData data = (FormFieldDisplayData) formItem;
+			addFieldWithoutLabel(createReadonlyTextField(data.getObjectType(), data.getObjectTag()));
 			return;
 		}
 		
