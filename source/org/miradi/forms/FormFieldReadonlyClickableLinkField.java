@@ -21,9 +21,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.forms;
 
 
-public class FormFieldHtmlLink extends FieldRelatedFormItem
+public class FormFieldReadonlyClickableLinkField extends FieldRelatedFormItem
 {
-	public FormFieldHtmlLink(int objectTypeToUse, String objectTagToUse)
+	public FormFieldReadonlyClickableLinkField(int objectTypeToUse, String objectTagToUse)
 	{
 		super(objectTypeToUse, objectTagToUse);
 	}

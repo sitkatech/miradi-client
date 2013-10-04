@@ -137,7 +137,7 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 	
 	protected void addHtmlLink(int objectType, String tag)
 	{
-		addFieldWithoutLabel(objectType, tag, new FormFieldHtmlLink(objectType, tag));
+		addFieldWithoutLabel(objectType, tag, new FormFieldReadonlyClickableLinkField(objectType, tag));
 	}
 
 	protected void addLabelAndField(int type, String fieldTag)
