@@ -174,13 +174,8 @@ public class ProjectMetadata extends BaseObject
 	public boolean isMiradiShareProject()
 	{
 		Set<String> externalContextCodes = getXenodataStringRefMap().getKeys();
-		for(String externalContextCode : externalContextCodes)
-		{
-			if (externalContextCode.equals(MiradiShareProjectData.MIRADI_SHARE_PROJECT_CODE))
-				return true;
-		}
-		
-		return false;
+
+		return externalContextCodes.contains(MiradiShareProjectData.MIRADI_SHARE_PROJECT_CODE);
 	}
 	
 	public StringRefMap getXenodataStringRefMap()
