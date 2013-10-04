@@ -20,9 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.forms;
 
-public class FormFieldHtmlStatisText extends FormItem
+public class FormFieldHtmlStaticText extends FormItem
 {
-	public FormFieldHtmlStatisText(String htmlTextToUse)
+	public FormFieldHtmlStaticText(String htmlTextToUse)
 	{
 		htmlText = htmlTextToUse;
 	}

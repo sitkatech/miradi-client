@@ -132,7 +132,7 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 	
 	protected void addTextHtmlPanel(String htmlText)
 	{
-		addFieldWithoutLabel(ObjectType.FAKE, "", new FormFieldHtmlStatisText(htmlText));
+		addFieldWithoutLabel(ObjectType.FAKE, "", new FormFieldHtmlStaticText(htmlText));
 	}
 	
 	protected void addHtmlLink(int objectType, String tag)
