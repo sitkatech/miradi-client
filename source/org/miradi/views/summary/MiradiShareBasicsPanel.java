@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.summary;
 
-import java.util.HashMap;
-
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.forms.objects.MiradiShareTaxonomyDataForm;
 import org.miradi.main.EAM;
@@ -54,19 +52,12 @@ public class MiradiShareBasicsPanel extends ObjectDataInputPanel
 	{
 		ORef miradiShareProjectDataRef = getProject().getSingletonObjectRef(MiradiShareProjectDataSchema.getObjectType());
 		MiradiShareProjectData miradiShareProjectData = MiradiShareProjectData.find(getProject(), miradiShareProjectDataRef);
-		String projectUrl = miradiShareProjectData.getData(MiradiShareProjectData.TAG_PROGRAM_URL);
+		String programUrl = miradiShareProjectData.getData(MiradiShareProjectData.TAG_PROGRAM_URL);
 		String programName = miradiShareProjectData.getData(MiradiShareProjectData.TAG_PROGRAM_NAME);
-		if (projectUrl.length() == 0)
+		if (programUrl.length() == 0)
 			return programName;
 		
-		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
-		final String PROJET_URL_KEY = "projectUrl";
-		final String PROGRAM_NAME = "programName";
-		
-		tokenReplacementMap.put(PROJET_URL_KEY, projectUrl);
-		tokenReplacementMap.put(PROGRAM_NAME, programName);
-		
-		return EAM.substitute("<a href=\"" + PROJET_URL_KEY + "\">" + PROGRAM_NAME + "</a>", tokenReplacementMap);
+		return "<a href=\"" + programUrl + "\">" + programName + "</a>";
 	}
 
 	@Override
