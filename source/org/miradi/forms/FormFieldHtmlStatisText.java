@@ -18,20 +18,25 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.forms.objects;
+package org.miradi.forms;
 
-import org.miradi.forms.FieldPanelSpec;
-import org.miradi.objects.MiradiShareProjectData;
-import org.miradi.objects.ProjectMetadata;
-import org.miradi.schemas.MiradiShareProjectDataSchema;
-import org.miradi.schemas.ProjectMetadataSchema;
-
-public class MiradiShareTaxonomyDataForm extends FieldPanelSpec
+public class FormFieldHtmlStatisText extends FormItem
 {
-	public MiradiShareTaxonomyDataForm(String htmlText)
+	public FormFieldHtmlStatisText(String htmlTextToUse)
 	{
-		addTextHtmlPanel(htmlText);
-		addDisplayField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_PROJECT_NAME);
-		addMultipleTaxonomyWithEditButtonFields(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
+		htmlText = htmlTextToUse;
 	}
+	
+	@Override
+	public boolean isHtmlPanel()
+	{
+		return true;
+	}
+	
+	public String getHtmlText()
+	{
+		return htmlText;
+	}
+	
+	private String htmlText;
 }

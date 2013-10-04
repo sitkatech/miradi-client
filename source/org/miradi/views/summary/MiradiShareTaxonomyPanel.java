@@ -23,14 +23,12 @@ package org.miradi.views.summary;
 import java.util.HashMap;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.dialogs.fieldComponents.HtmlFormViewer;
 import org.miradi.forms.objects.MiradiShareTaxonomyDataForm;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.MiradiShareProjectData;
 import org.miradi.project.Project;
 import org.miradi.schemas.MiradiShareProjectDataSchema;
-import org.miradi.utils.FillerLabel;
 import org.miradi.utils.Translation;
 
 public class MiradiShareTaxonomyPanel extends ObjectDataInputPanel
@@ -41,10 +39,7 @@ public class MiradiShareTaxonomyPanel extends ObjectDataInputPanel
 		
 		String html = Translation.getHtmlContent("MiradiShareSharedProjectHelpPanel.html");
 		html = EAM.substitute(html, getMiradiShareProjectUrl());
-		add(new FillerLabel());
-		add(new HtmlFormViewer(EAM.getMainWindow(), html, EAM.getMainWindow().getHyperlinkHandler()));
-
-		createFieldsFromForm(new MiradiShareTaxonomyDataForm());
+		createFieldsFromForm(new MiradiShareTaxonomyDataForm(html));
 
 		updateFieldsFromProject();
 	}
