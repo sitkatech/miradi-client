@@ -48,7 +48,7 @@ public class MiradiShareBasicsPanel extends ObjectDataInputPanel
 	{
 		ORef miradiShareProjectDataRef = getProject().getSingletonObjectRef(MiradiShareProjectDataSchema.getObjectType());
 		MiradiShareProjectData miradiShareProjectData = MiradiShareProjectData.find(getProject(), miradiShareProjectDataRef);
-		String projectUrl = miradiShareProjectData.getData(MiradiShareProjectData.TAG_PROJECT_URL);
+		String projectUrl = miradiShareProjectData.getData(MiradiShareProjectData.TAG_PROGRAM_URL);
 		String programName = miradiShareProjectData.getData(MiradiShareProjectData.TAG_PROGRAM_NAME);
 		if (projectUrl.length() == 0)
 			return programName;
