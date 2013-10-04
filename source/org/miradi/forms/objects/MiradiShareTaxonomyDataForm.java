@@ -22,12 +22,15 @@ package org.miradi.forms.objects;
 
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.objects.MiradiShareProjectData;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.schemas.MiradiShareProjectDataSchema;
+import org.miradi.schemas.ProjectMetadataSchema;
 
 public class MiradiShareTaxonomyDataForm extends FieldPanelSpec
 {
 	public MiradiShareTaxonomyDataForm()
 	{
+		addDisplayField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_PROJECT_NAME);
 		addMultipleTaxonomyWithEditButtonFields(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
 	}
 }

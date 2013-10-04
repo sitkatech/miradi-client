@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2013, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -17,62 +17,19 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
+
 package org.miradi.forms;
 
-abstract public class FormItem
+public class FormFieldDisplayData extends FieldRelatedFormItem
 {
-	public boolean isFormConstant()
+	public FormFieldDisplayData(int objectTypeToUse, String objectTagToUse)
 	{
-		return false;
+		super(objectTypeToUse, objectTagToUse);
 	}
 	
-	public boolean isFormFieldLabel()
-	{
-		return false;
-	}
-	
-	public boolean isFormFieldData()
-	{
-		return false;
-	}
-	
-	public boolean isFormFieldImage()
-	{
-		return false;
-	}
-	
-	public boolean isFormQuestionFieldData()
-	{
-		return false;
-	}
-	
-	public boolean isFormCurrencyFieldData()
-	{
-		return false;
-	}
-	
-	public boolean isCodeListFormFieldData()
-	{
-		return false;
-	}
-	
-	public boolean isExternaProjectIdFieldData()
-	{
-		return false;
-	}
-	
-	public boolean isMultipleTaxonomyWithEditButtonFields()
-	{
-		return false;
-	}
-	
-	public boolean isDateFieldData()
-	{
-		return false;
-	}
-	
+	@Override
 	public boolean isDisplayFieldData()
 	{
-		return false;
+		return true;
 	}
 }
