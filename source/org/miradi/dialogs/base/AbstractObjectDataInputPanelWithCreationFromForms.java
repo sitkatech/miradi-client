@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.base;
 
 import org.miradi.dialogfields.ObjectDataInputField;
+import org.miradi.dialogs.fieldComponents.HtmlFormViewer;
 import org.miradi.forms.AbstractFormFieldQuestionData;
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.forms.FieldRelatedFormItem;
@@ -28,6 +29,7 @@ import org.miradi.forms.FormConstant;
 import org.miradi.forms.FormFieldData;
 import org.miradi.forms.FormFieldDisplayData;
 import org.miradi.forms.FormFieldExternalProjectIdData;
+import org.miradi.forms.FormFieldHtmlStatisText;
 import org.miradi.forms.FormFieldLabel;
 import org.miradi.forms.FormItem;
 import org.miradi.forms.FormRow;
@@ -152,6 +154,14 @@ abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends	
 			addFieldWithoutLabel(createReadonlyTextField(data.getObjectType(), data.getObjectTag()));
 			return;
 		}
+		if (formItem.isHtmlPanel())
+		{
+			FormFieldHtmlStatisText data = (FormFieldHtmlStatisText) formItem;
+			add(new HtmlFormViewer(getMainWindow(), data.getHtmlText(), getMainWindow().getHyperlinkHandler()));
+			
+			return;
+		}
+		
 		
 		if(!formItem.isFormFieldData())
 			throw new RuntimeException(getClass().getName()	+ ": Don't know how to add non-field " + formItem);

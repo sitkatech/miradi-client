@@ -21,6 +21,11 @@ package org.miradi.forms;
 
 public class FormConstant extends FormItem
 {
+	public FormConstant()
+	{
+		this("");
+	}
+	
 	public FormConstant(String translatedConstantToUse)
 	{
 		translatedConstant = translatedConstantToUse;
