@@ -48,6 +48,7 @@ import org.miradi.dialogfields.CodeToUserStringMapMultiLineEditor;
 import org.miradi.dialogfields.DropDownChoiceField;
 import org.miradi.dialogfields.EditableCodeListField;
 import org.miradi.dialogfields.ExternalProjectsDisplayField;
+import org.miradi.dialogfields.HtmlLinkField;
 import org.miradi.dialogfields.IndicatorRelevancyOverrideListField;
 import org.miradi.dialogfields.ObjectCheckBoxField;
 import org.miradi.dialogfields.ObjectChoiceField;
@@ -725,6 +726,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public WhoEditorField createWhoEditorField(ORef refToUse)
 	{
 		return new WhoEditorField(getMainWindow(), refToUse);
+	}
+	
+	public ObjectDataInputField createHtmlLinkField(int objectType, String tag)
+	{
+		return new HtmlLinkField(getMainWindow(), getRefForType(objectType), tag);
 	}
 	
 	public ORef getRefForType(int objectType)
