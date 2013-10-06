@@ -36,8 +36,7 @@ public class ReadonlyClickableLinkField extends ObjectDataInputField
 	{
 		super(mainWindow.getProject(), refToUse, tagToUse);
 		
-		//NOTE: passing anything other than "" so that cursor changes to index finger when mouse is over clickable link
-		htmlFormViewer = new DataPanelHtmlFormViewer(mainWindow, HtmlUtilities.wrapInHtmlTags("") , mainWindow.getHyperlinkHandler());
+		htmlFormViewer = new DataPanelHtmlFormViewer(mainWindow, mainWindow.getHyperlinkHandler());
 	}
 	
 	@Override
@@ -80,9 +79,10 @@ public class ReadonlyClickableLinkField extends ObjectDataInputField
 	
 	private class DataPanelHtmlFormViewer extends HtmlFormViewer
 	{
-		public DataPanelHtmlFormViewer(MainWindow mainWindow, String wrapInHtmlTags, HyperlinkHandler hyperlinkHandler)
+		public DataPanelHtmlFormViewer(MainWindow mainWindow, HyperlinkHandler hyperlinkHandler)
 		{
-			super(mainWindow, wrapInHtmlTags, hyperlinkHandler);
+			//NOTE: passing anything other than "" so that cursor changes to index finger when mouse is over clickable link
+			super(mainWindow, HtmlUtilities.wrapInHtmlTags(""), hyperlinkHandler);
 		}
 
 		@Override
