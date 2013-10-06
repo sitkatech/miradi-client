@@ -877,6 +877,11 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		}
 	}
 
+	public SummaryView getSummaryView()
+	{
+		return summaryView;
+	}
+	
 	public DiagramView getDiagramView()
 	{
 		return diagramView;
@@ -1489,7 +1494,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	private AutomaticProjectSaver projectSaver;
 	
 	private NoProjectView noProjectView;
-	private UmbrellaView summaryView;
+	private SummaryView summaryView;
 	private DiagramView diagramView;
 	private ThreatMatrixView threatMatrixView;
 	private MapView mapView;

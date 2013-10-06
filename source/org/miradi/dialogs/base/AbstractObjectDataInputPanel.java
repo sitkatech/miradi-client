@@ -48,7 +48,6 @@ import org.miradi.dialogfields.CodeToUserStringMapMultiLineEditor;
 import org.miradi.dialogfields.DropDownChoiceField;
 import org.miradi.dialogfields.EditableCodeListField;
 import org.miradi.dialogfields.ExternalProjectsDisplayField;
-import org.miradi.dialogfields.ReadonlyClickableLinkField;
 import org.miradi.dialogfields.IndicatorRelevancyOverrideListField;
 import org.miradi.dialogfields.ObjectCheckBoxField;
 import org.miradi.dialogfields.ObjectChoiceField;
@@ -73,6 +72,8 @@ import org.miradi.dialogfields.ObjectStringMapInputField;
 import org.miradi.dialogfields.PopupQuestionEditorField;
 import org.miradi.dialogfields.RadioButtonsField;
 import org.miradi.dialogfields.ReadOnlyCodeListField;
+import org.miradi.dialogfields.ReadonlyClickableLinkField;
+import org.miradi.dialogfields.ReadonlyStaticClickableLinkField;
 import org.miradi.dialogfields.SingleCodeEditableField;
 import org.miradi.dialogfields.SingleXenodataProjectIdReadonlyField;
 import org.miradi.dialogfields.StrategyGoalOverrideListField;
@@ -731,6 +732,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public ObjectDataInputField createReadonlyClickableLinkField(int objectType, String tag)
 	{
 		return new ReadonlyClickableLinkField(getMainWindow(), getRefForType(objectType), tag);
+	}
+	
+	public ObjectDataField createStaticReadonlyClickableLinkField(int objectType, String htmlText, String tabIdentifier) throws Exception
+	{
+		return new ReadonlyStaticClickableLinkField(getMainWindow(), getRefForType(objectType), htmlText, tabIdentifier);
 	}
 	
 	public ORef getRefForType(int objectType)

@@ -24,54 +24,39 @@ import javax.swing.JComponent;
 
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.utils.HtmlUtilities;
+import org.miradi.utils.SummaryViewTabChangeLinkHandler;
 
-public class ReadonlyClickableLinkField extends ObjectDataInputField
+public class ReadonlyStaticClickableLinkField extends ObjectDataField
 {
-	public ReadonlyClickableLinkField(MainWindow mainWindow, ORef refToUse, String tagToUse)
+	public ReadonlyStaticClickableLinkField(MainWindow mainWindow, ORef refToUse, String htmlLink, String tabIdentifier) throws Exception
 	{
-		super(mainWindow.getProject(), refToUse, tagToUse);
+		super(mainWindow.getProject(), refToUse);
 		
-		htmlFormViewer = new StaticHtmlForm(mainWindow, mainWindow.getHyperlinkHandler());
+		staticHtmlForm = new StaticHtmlForm(mainWindow, htmlLink, new SummaryViewTabChangeLinkHandler(mainWindow, tabIdentifier));
 	}
-	
+
 	@Override
-	public String getText()
+	public String getTag()
 	{
 		return "";
 	}
 
 	@Override
-	public void setText(String newValue)
+	public void updateFromObject()
 	{
-		if (newValue.length() > 0)
-			newValue = wrapInHtmlAnchor(newValue);
-
-		htmlFormViewer.setText(newValue);
-	}
-
-	private String wrapInHtmlAnchor(String url)
-	{
-		url = "<body>" +  
-		"<a href=\"" + url + "\">" + url +"</a>" +
-		"</body>";
-
-		url = HtmlUtilities.wrapInHtmlTags(url);
-		return url;
-	}
-	
-	@Override
-	protected boolean shouldBeEditable()
-	{
-		//NOTE: Returning true so that the foreground is not grayed out. This field's component is an html viewer that is not editable
-		return true;
 	}
 
 	@Override
 	public JComponent getComponent()
 	{
-		return htmlFormViewer;
+		return staticHtmlForm;
 	}
-	
-	private StaticHtmlForm htmlFormViewer;
+
+	@Override
+	public void saveIfNeeded()
+	{
+	}
+
+	private StaticHtmlForm staticHtmlForm;
 }
+

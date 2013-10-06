@@ -96,7 +96,7 @@ public class SummaryView extends TabbedView
 			getProject().getSingletonObjectRef(WcpaProjectDataSchema.getObjectType()),
 		};
 		
-		addSummaryTab(new SummaryProjectPanel(getProject(), metadata.getRef()));
+		addSummaryTab(new SummaryProjectPanel(getMainWindow(), metadata.getRef()));
 		if (getProject().getMetadata().isMiradiShareProject())
 			addSummaryTab(new SummaryMiradiSharePanel(getProject()));
 		else
