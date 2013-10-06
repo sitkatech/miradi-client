@@ -215,6 +215,24 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 		add(fieldPanel);
 	}
 	
+	//FIXME urgent - this method contains duplication, refactor extract duplication
+	protected void addFieldsOnOneLineWithoutFieldLabels(String translatedLabel, ObjectDataField[] fields)
+	{
+		final OneRowPanel fieldPanel = new OneRowPanel();
+		fieldPanel.setGaps(3);
+
+		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		for(int i = 0; i < fields.length; ++i)
+		{
+			addFieldToList(fields[i]);
+			fieldPanel.add(fields[i].getComponent());
+			fieldPanel.add(new JLabel(" "));
+		}
+		
+		addHtmlWrappedLabel(translatedLabel);
+		add(fieldPanel);
+	}
+	
 	protected void addFieldsOnOneLine(PanelTitleLabel label, ObjectDataInputField[] fields)
 	{
 		JPanel fieldPanel = createFieldPanel(fields);

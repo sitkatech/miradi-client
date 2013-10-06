@@ -22,26 +22,31 @@ package org.miradi.views.summary;
 import javax.swing.Icon;
 
 import org.miradi.actions.views.ActionViewSummary;
+import org.miradi.dialogfields.ObjectDataField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.forms.summary.ProjectTabForm;
 import org.miradi.icons.MiradiApplicationIcon;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.MiradiShareProjectData;
 import org.miradi.objects.ProjectMetadata;
-import org.miradi.project.Project;
 import org.miradi.questions.MajorLanguagesQuestion;
 import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
+import org.miradi.schemas.MiradiShareProjectDataSchema;
 import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.schemas.TncProjectDataSchema;
 
 public class SummaryProjectPanel extends ObjectDataInputPanel
 {
-	public SummaryProjectPanel(Project projectToUse, ORef refToUse) throws Exception
+	public SummaryProjectPanel(MainWindow mainWindow, ORef refToUse) throws Exception
 	{
-		super(projectToUse, refToUse);
+		super(mainWindow.getProject(), refToUse);
 		
 		addField(createStringField(ProjectMetadata.TAG_PROJECT_NAME));
+		
+		addMiradiShareField();
 		addField(createChoiceField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_PROJECT_LANGUAGE, new MajorLanguagesQuestion()));
 		addField(createDateChooserField(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE));
 		addField(createReadonlyTextField(ProjectMetadata.PSEUDO_TAG_PROJECT_FILENAME));
@@ -56,8 +61,26 @@ public class SummaryProjectPanel extends ObjectDataInputPanel
 		addField(createMultilineField(ProjectMetadata.TAG_NEXT_STEPS));
 		addField(createMultilineField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_TNC_LESSONS_LEARNED));
 		
-		setObjectRefs(new ORef[]{refToUse, getProject().getSingletonObjectRef(TncProjectDataSchema.getObjectType()), });
+		setObjectRefs(new ORef[]{refToUse, getProject().getSingletonObjectRef(TncProjectDataSchema.getObjectType()), getProject().getSingletonObjectRef(MiradiShareProjectDataSchema.getObjectType()),});
 		updateFieldsFromProject();
+	}
+
+	private void addMiradiShareField() throws Exception
+	{
+		String htmlLinkToMiradiShareTab = "<a href=\"\">" + EAM.text("Learn about Miradi Share") + "</a>";
+		if (getProject().getMetadata().isMiradiShareProject())
+		{
+			final String tabIdentifier = SummaryMiradiSharePanel.class.getSimpleName();
+			final ObjectDataField clickableLinkField = createStaticReadonlyClickableLinkField(ProjectMetadataSchema.getObjectType(), htmlLinkToMiradiShareTab, tabIdentifier);
+			final ObjectDataField readonlyProgramNameField = createReadonlyTextField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_NAME);
+			addFieldsOnOneLineWithoutFieldLabels(EAM.text("Miradi Share Proram"), new ObjectDataField[]{readonlyProgramNameField, clickableLinkField});
+		}
+		else
+		{
+			final String tabIdentifier = SummaryNonSharedMiradiSharePanel.class.getSimpleName();
+			final ObjectDataField staticReadonlyClickableLinkField = createStaticReadonlyClickableLinkField(ProjectMetadataSchema.getObjectType(), htmlLinkToMiradiShareTab, tabIdentifier);
+			addFieldsOnOneLineWithoutFieldLabels(EAM.text("Miradi Share Proram"), new ObjectDataField[]{staticReadonlyClickableLinkField, });
+		}
 	}
 
 	@Override
