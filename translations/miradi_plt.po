@@ -3,13 +3,11 @@
 # This file is distributed under the same license as the Miradi package.
 # Automatically generated, 2011.
 #
-#: Miradi/source/org/miradi/questions/DiagramModeQuestion.java:31
-#: Miradi/source/org/miradi/questions/DiagramModeQuestion.java:32
 msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-04 17:01-0500\n"
+"POT-Creation-Date: 2013-10-06 15:01-0500\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -252,7 +250,7 @@ msgid "'%FromName' -> '%ToName'<br>"
 msgstr ""
 
 #: Miradi/source/org/miradi/migrations/forward/MigrationManager.java:106
-#: Miradi/source/org/miradi/main/MainWindow.java:1444
+#: Miradi/source/org/miradi/main/MainWindow.java:1449
 msgid "(%s)"
 msgstr ""
 
@@ -483,7 +481,7 @@ msgstr ""
 msgid "95% C.I. (confidence interval)"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1483
+#: Miradi/source/org/miradi/main/MainWindow.java:1488
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -917,7 +915,7 @@ msgstr ""
 msgid "A project or file by this name already exists: "
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1440
+#: Miradi/source/org/miradi/main/MainWindow.java:1445
 msgid "A project or file by this name already exists: %s"
 msgstr ""
 
@@ -2258,6 +2256,10 @@ msgstr ""
 msgid "Bold"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/DiagramModeQuestion.java:32
+msgid "Brain Storm"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/DiagramLinkColorQuestion.java:44
 #: Miradi/source/org/miradi/questions/DiagramFactorFontColorQuestion.java:45
 #: Miradi/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:55
@@ -3290,7 +3292,7 @@ msgid "Enter As: "
 msgstr ""
 
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:118
-#: Miradi/source/org/miradi/main/MainWindow.java:1474
+#: Miradi/source/org/miradi/main/MainWindow.java:1479
 msgid "Enter New Name"
 msgstr ""
 
@@ -3363,7 +3365,7 @@ msgstr ""
 msgid "Euro"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1010
+#: Miradi/source/org/miradi/main/MainWindow.java:1015
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
@@ -3687,6 +3689,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:159
 msgid "Freshwater Lakes"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/DiagramModeQuestion.java:31
+msgid "Full Conceptual Model"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:62
@@ -4153,7 +4159,7 @@ msgstr ""
 msgid "Invalid project name:"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1449
+#: Miradi/source/org/miradi/main/MainWindow.java:1454
 msgid "Invalid project name: %s"
 msgstr ""
 
@@ -4462,6 +4468,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/questions/TaxonomyClassificationSelectionModeQuestion.java:35
 msgid "Leaf Only"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:70
+msgid "Learn about Miradi Share"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:58
@@ -4932,6 +4942,11 @@ msgstr ""
 
 #: Miradi/source/org/miradi/forms/objects/MiradiShareProjectDataForm.java:45
 msgid "Miradi Share Project Id"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:76
+#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:82
+msgid "Miradi Share Proram"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/MainWindowAction.java:143
@@ -5521,7 +5536,7 @@ msgstr ""
 msgid "Progress Reports"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:94
+#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:117
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:102
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:68
@@ -5565,7 +5580,7 @@ msgstr ""
 msgid "Project Resource Filter Editor"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1008
+#: Miradi/source/org/miradi/main/MainWindow.java:1013
 msgid "Project Resource Filter Is On"
 msgstr ""
 
@@ -6156,7 +6171,7 @@ msgstr ""
 msgid "Standard Reports"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1042
+#: Miradi/source/org/miradi/main/MainWindow.java:1047
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -8038,7 +8053,7 @@ msgid ""
 "application:\n"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1417
+#: Miradi/source/org/miradi/main/MainWindow.java:1422
 msgid "Unable to launch external web browser"
 msgstr ""
 
@@ -8057,7 +8072,7 @@ msgid ""
 "application:\n"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1199
+#: Miradi/source/org/miradi/main/MainWindow.java:1204
 msgid "Unable to save preferences"
 msgstr ""
 
