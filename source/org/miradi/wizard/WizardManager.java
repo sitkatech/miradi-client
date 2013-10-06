@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.wizard;
 
-import java.util.Collection;
 import java.util.Hashtable;
 
 import org.miradi.actions.openstandards.ActionOpenStandardsAnalyzeUseAndAdaptParentMenu;
@@ -553,20 +552,7 @@ public class WizardManager
 		String name = stripJumpPrefix(stepMarker);
 		return (stepEntries.get(name)!=null);
 	}
-	
-	public SkeletonWizardStep findStepWithTabIdentifier(String tabIdentifierToUse)
-	{
-		Collection<SkeletonWizardStep> skeletonWizardSteps = stepEntries.values();
-		for(SkeletonWizardStep skeletonWizardStep : skeletonWizardSteps)
-		{
-			String tabIdentifier = skeletonWizardStep.getTabIdentifier();
-			if (tabIdentifier != null && tabIdentifier.equals(tabIdentifierToUse))
-				return skeletonWizardStep;
-		}
-		
-		return null;
-	}
-	
+
 	public SkeletonWizardStep findStep(String stepName)
 	{
 		SkeletonWizardStep step = stepEntries.get(stepName);
