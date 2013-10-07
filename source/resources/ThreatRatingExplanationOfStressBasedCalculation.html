@@ -1,0 +1,50 @@
+<!--
+Copyright 2005-2010, Foundations of Success, Bethesda, Maryland
+(on behalf of the Conservation Measures Partnership, "CMP") and
+Beneficent Technology, Inc. ("Benetech"), Palo Alto, California.
+
+This file is part of Miradi
+
+Miradi is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License version 3, 
+as published by the Free Software Foundation.
+
+Miradi is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
+-->  
+
+<html>
+<h3>Explanation of How Target-Threat Ratings Are Calculated (Stress Based Mode)</h3>
+<p>
+In stress based mode, Scope and Severity ranks are combined to create Threat Magnitude.  
+Irreversibility is combined with Contribution to create the Source of Stress Ranking, 
+and then Threat Magnitude and Source of Stress Rankings are combined to create the 
+Summary Stress Rating.
+</p>
+<p>
+<b>Stress Ranking (Threat Magnitude):</b> Each stress is given a rank for Severity and Scope. 
+A rule-based procedure is then used to combine the rankings for the Scope and Severity 
+variables to get a ranking of Threat Magnitude.  Under these rules, if a threat is 
+rated 'low' on either variable, then the magnitude is 'low' overall. 
+</p>
+<img src="images/StressBasedRules1.png"  width='544' height='184'>
+
+<p>
+<b>Source of Stress Ranking:</b> A source rank is the calculated by combining the 
+rankings for Contribution and Irreversibility as shown in the matrix below.
+</p>
+<img src="images/StressBasedRules2.png"  width='546' height='185'>
+
+<p>
+<b>Combining Stress and Source Ranks:</b> The source rank calculated from the first matrix 
+is then combined with the stress rank which was calculated from the Stress Ranking matrix 
+as shown in the matrix below.
+</p>
+<img src="images/StressBasedRules3.png"  width='546' height='185'>
+
+</html>
