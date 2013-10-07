@@ -273,7 +273,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, createConproXenodata());
 	}
 
-	private ORef getTncProjectDataRef()
+	public ORef getTncProjectDataRef()
 	{
 		return getSingletonObjectRef(TncProjectDataSchema.getObjectType());
 	}

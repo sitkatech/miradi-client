@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import java.util.HashSet;
+
 import org.miradi.main.MiradiTestCase;
 
 public class TestBiDirectionalHashMap extends MiradiTestCase
@@ -27,6 +29,28 @@ public class TestBiDirectionalHashMap extends MiradiTestCase
 	public TestBiDirectionalHashMap(String name)
 	{
 		super(name);
+	}
+	
+	public void reverseBiDirectionalHashMap() throws Exception
+	{
+		BiDirectionalHashMap map = new BiDirectionalHashMap();
+		verifyReverseMap(map);
+		map.put("1", "a");
+		map.put("2", "b");
+		map.put("3", "c");
+		
+		verifyReverseMap(map);
+	}
+
+	private void verifyReverseMap(BiDirectionalHashMap map) throws Exception
+	{
+		BiDirectionalHashMap reversedMap = map.reverseMap();
+		assertEquals("Incorrect size?", map.size(), reversedMap.size());
+		HashSet<String> keys = map.getKeys();
+		for(String key : keys)
+		{
+			assertEquals("Incorrect key in reverse map's key?", key, reversedMap.getKey(key));
+		}
 	}
 	
 	public void testBasics() throws Exception

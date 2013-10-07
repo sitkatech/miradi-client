@@ -1484,6 +1484,6 @@ public class Project implements ProjectInterface
 	
 	public CommandExecutor commandExecutor;
 	
-	public static final int VERSION_LOW = 9;
-	public static final int VERSION_HIGH = 9;
+	public static final int VERSION_LOW = 10;
+	public static final int VERSION_HIGH = 10;
 }

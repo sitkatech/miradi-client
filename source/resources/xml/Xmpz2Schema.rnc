@@ -1,7 +1,7 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Sun Sep 29 13:09:08 EDT 2013 $
-# $LastChangedRevision: 229 $
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/229'
+# $LastChangedDate: Mon Oct 07 16:17:10 EDT 2013 $
+# $LastChangedRevision: 230 $
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/230'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -156,12 +156,12 @@ ProjectPlanning.element = element miradi:ProjectPlanning
 
 TNCProjectData.element = element miradi:TNCProjectData
 {
-  element miradi:TNCProjectDataCapacityAndFunding { formatted_text }? &
   element miradi:TNCProjectDataCAPStandardsScorecard { formatted_text }? &
   element miradi:TNCProjectDataConProParentChildProjectText { formatted_text }? &
   element miradi:TNCProjectDataDatabaseDownloadDate { vocabulary_date }? &
-  element miradi:TNCProjectDataMakingTheCase { formatted_text }? &
+  element miradi:TNCProjectDataFinancialPlan { formatted_text }? &
   element miradi:TNCProjectDataOtherOrgRelatedProjects { text }? &
+  element miradi:TNCProjectDataOverallProjectGoal { formatted_text }? &
   element miradi:TNCProjectDataPlanningTeamComments { formatted_text }? &
   element miradi:TNCProjectDataProjectCitations { formatted_text }? &
   element miradi:TNCProjectDataProjectLevelComments { formatted_text }? &

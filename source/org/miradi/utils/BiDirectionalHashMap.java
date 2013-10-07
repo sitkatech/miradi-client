@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class BiDirectionalHashMap
 {
@@ -65,6 +66,23 @@ public class BiDirectionalHashMap
 			throw new Exception("BiDirectional maps should be the same size");
 		
 		return keyToValueMap.size();
+	}
+	
+	public HashSet<String> getKeys()
+	{
+		return new HashSet<String>(keyToValueMap.keySet());
+	}
+	
+	public BiDirectionalHashMap reverseMap()
+	{
+		BiDirectionalHashMap reverseMap = new BiDirectionalHashMap();
+		HashSet<String> keys = getKeys();
+		for(String key : keys)
+		{
+			reverseMap.put(getValue(key), key);
+		}
+
+		return reverseMap;
 	}
 	
 	private HashMap<String, String> keyToValueMap;
