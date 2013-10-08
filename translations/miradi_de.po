@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-06 15:01-0500\n"
+"POT-Creation-Date: 2013-10-07 16:01-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -280,7 +280,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%vonName' -> '%nachName'<br>"
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationManager.java:106
+#: Miradi/source/org/miradi/migrations/forward/MigrationManager.java:107
 #: Miradi/source/org/miradi/main/MainWindow.java:1449
 msgid "(%s)"
 msgstr ""
@@ -8205,6 +8205,10 @@ msgid ""
 "Based"
 msgstr ""
 
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo10.java:84
+msgid "This migration renames 2 fields"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:89
 msgid ""
 "This model is not for a single assignment and has no assignment information"
@@ -10636,13 +10640,13 @@ msgstr "Zitate"
 msgid "FieldLabel|40.CapStandardsScorecard|CAP Standards Scorecard"
 msgstr ""
 
-msgid "FieldLabel|40.MakingTheCase|Making the Case"
+msgid "FieldLabel|40.OverallProjectGoal|Overall Project Goal"
 msgstr ""
 
 msgid "FieldLabel|40.Risks|Risks"
 msgstr ""
 
-msgid "FieldLabel|40.CapacityAndFunding|Capacity and Funding"
+msgid "FieldLabel|40.FinancialPlan|Financial Plan"
 msgstr ""
 
 msgid "FieldLabel|41.FosProjectData|FOS Project Data"
