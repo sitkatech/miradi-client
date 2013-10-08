@@ -34,7 +34,7 @@ abstract public class ObjectDataField extends DataField
 	
 	public boolean isValidObject()
 	{
-		return (!ref.isInvalid());
+		return ref.isValid();
 	}
 	
 	public int getObjectType()
