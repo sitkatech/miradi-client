@@ -50,6 +50,7 @@ import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
@@ -175,6 +176,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	@Override
 	protected void rebuildEntireTreeTable() throws Exception
 	{
+		ORefList selectionHierarchy = getTree().getSelectionHierarchy();
 		int selectedRow = tree.getSelectionModel().getMinSelectionIndex();
 		int selectedColumn = getMainTable().getColumnModel().getSelectionModel().getMinSelectionIndex();
 		getMainTable().clearSelection();
@@ -208,7 +210,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		restoreTreeExpansionState();
 		updateRightSideTablePanels();
 
-		selectObjectAfterSwingClearsItDueToTreeStructureChange(getMainTable(), selectedRow, selectedColumn);
+		selectObjectAfterSwingClearsItDueToTreeStructureChange(getMainTable(), selectionHierarchy, selectedRow, selectedColumn);
 	}
 	
 	protected void updateResourceFilter() throws Exception
@@ -398,16 +400,17 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		return reformatted;
 	}
 	
-	private void selectObjectAfterSwingClearsItDueToTreeStructureChange(TableWithColumnWidthAndSequenceSaver table, int fallbackRow, int fallbackColumn)
+	private void selectObjectAfterSwingClearsItDueToTreeStructureChange(TableWithColumnWidthAndSequenceSaver table, ORefList selectionHierarchy, int fallbackRow, int fallbackColumn)
 	{
-		SwingUtilities.invokeLater(new Reselecter(table, fallbackRow, fallbackColumn));
+		SwingUtilities.invokeLater(new Reselecter(table, selectionHierarchy, fallbackRow, fallbackColumn));
 	}
 	
-	class Reselecter implements Runnable
+	private class Reselecter implements Runnable
 	{
-		public Reselecter(TableWithColumnWidthAndSequenceSaver tableToUse, int rowToSelect, int columnToSelect)
+		public Reselecter(TableWithColumnWidthAndSequenceSaver tableToUse, ORefList selectionHierarchyToUse, int rowToSelect, int columnToSelect)
 		{
 			table = tableToUse;
+			selectionHierarchy = selectionHierarchyToUse;
 			row = rowToSelect;
 			column = columnToSelect;
 		}
@@ -417,9 +420,16 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 			disableSectionSwitchDuringFullRebuild();
 			try
 			{
-				table.getSelectionModel().setSelectionInterval(row, row);
-				if(column < table.getColumnCount())
-					table.getColumnModel().getSelectionModel().setSelectionInterval(column, column);
+				if (selectionHierarchy.hasRefs())
+				{
+					getTree().selectObject(selectionHierarchy, row);
+				}
+				else
+				{
+					table.getSelectionModel().setSelectionInterval(row, row);
+					if(column < table.getColumnCount())
+						table.getColumnModel().getSelectionModel().setSelectionInterval(column, column);
+				}
 				table.ensureSelectedRowVisible();
 				getMainWindow().updateActionsAndStatusBar();
 			}
@@ -430,6 +440,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		}
 		
 		private TableWithColumnWidthAndSequenceSaver table;
+		private ORefList selectionHierarchy;
 		private int row;
 		private int column;
 	}
