@@ -46,8 +46,14 @@ public class WhoEditorField extends ObjectDataField implements ReadonlyPanelAndP
 	@Override
 	public void updateFromObject()
 	{
-		getComponent().setEnabled(isValidObject());
-		if (!isValidObject())
+		updateReadonlyField();
+		updateEditableButtonState();
+	}
+	
+	private void updateReadonlyField()
+	{
+		readonlyPanelWithPopupEditor.setText("");
+		if (super.isInvalidObject())
 			return;
 
 		BaseObject baseObject = BaseObject.find(getProject(), getORef());
@@ -55,13 +61,17 @@ public class WhoEditorField extends ObjectDataField implements ReadonlyPanelAndP
 		readonlyPanelWithPopupEditor.setText(whoTotals.toString());
 	}
 	
-	
-	@Override
-	public boolean isValidObject()
+	private void updateEditableButtonState()
 	{
-		if (!super.isValidObject())
-			return false;
-			
+		readonlyPanelWithPopupEditor.setEnabled(false);
+		if (super.isInvalidObject())
+			return;
+
+		readonlyPanelWithPopupEditor.setEnabled(isWhoCellEditable());
+	}
+	
+	private boolean isWhoCellEditable()
+	{
 		BaseObject baseObject = BaseObject.find(getProject(), getORef());
 		
 		return new WhoStateLogic(getProject()).isWhoCellEditable(baseObject);
