@@ -58,11 +58,6 @@ abstract public class ReadonlyPanelWithPopupEditor extends MiradiPanel
 		add(buttonPanel, BorderLayout.AFTER_LINE_ENDS);
 	}
 	
-	public void updateEditableState(boolean isEnabled)
-	{
-		selectButton.setEnabled(isEnabled);			
-	}
-	
 	public void setText(String newValue)
 	{
 		readOnlyCodeListComponent.setText(newValue);
