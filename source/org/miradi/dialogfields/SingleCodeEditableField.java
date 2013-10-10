@@ -23,7 +23,6 @@ package org.miradi.dialogfields;
 
 import org.miradi.dialogfields.editors.SplitterPanelWithStaticRightSideTextPanel;
 import org.miradi.dialogs.base.DisposablePanel;
-import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.questions.ChoiceQuestion;
@@ -52,12 +51,6 @@ public class SingleCodeEditableField extends AbstractEditableCodeListField
 			return new SplitterPanelWithStaticRightSideTextPanel(mainWindow, leftPanel);
 
 		return leftPanel;
-	}
-	
-	@Override
-	protected void addDialogMainPanel(ModalDialogWithClose dialog, DisposablePanel editorPanel)
-	{
-		dialog.setMainPanel(editorPanel);
 	}
 	
 	private MainWindow mainWindow;
