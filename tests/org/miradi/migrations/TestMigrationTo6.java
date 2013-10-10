@@ -88,4 +88,16 @@ public class TestMigrationTo6 extends AbstractTestMigration
 		String actualThresholdValue = thresholdMap.getUserString(StatusQuestion.POOR);
 		assertEquals("Incorrect threshold value after migration?", expectedThresholdValue, actualThresholdValue);
 	}
+	
+	@Override
+	protected int getFromVersion()
+	{
+		return 5;
+	}
+	
+	@Override
+	protected int getToVersion()
+	{
+		return 6;
+	}
 }

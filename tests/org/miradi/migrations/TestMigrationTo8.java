@@ -61,4 +61,16 @@ public class TestMigrationTo8 extends AbstractTestMigration
 	{
 		return new VersionRange(8);
 	}
+	
+	@Override
+	protected int getFromVersion()
+	{
+		return 7;
+	}
+	
+	@Override
+	protected int getToVersion()
+	{
+		return 8;
+	}
 }

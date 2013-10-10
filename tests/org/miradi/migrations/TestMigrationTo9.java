@@ -85,4 +85,16 @@ public class TestMigrationTo9 extends AbstractTestMigration
 		MigrationResult migrationResult = migrateProject(getProject(), new VersionRange(9), new VersionRange(8));
 		assertTrue("Incorrect migration result?", migrationResult.didLooseData());
 	}
+	
+	@Override
+	protected int getFromVersion()
+	{
+		return 8;
+	}
+	
+	@Override
+	protected int getToVersion()
+	{
+		return 9;
+	}
 }

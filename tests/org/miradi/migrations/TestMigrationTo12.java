@@ -31,11 +31,6 @@ public class TestMigrationTo12 extends AbstractTestMigration
 		super(name);
 	}
 	
-	public void testEmptyProject() throws Exception
-	{
-		verifyFullCircleMigrations(new VersionRange(11, 12));
-	}
-	
 	public void testFieldsRemovedAfterReverseMigration() throws Exception
 	{
 		getProject().fillTncProjectData();
@@ -44,5 +39,17 @@ public class TestMigrationTo12 extends AbstractTestMigration
 		RawObject tncProjectDataRawObject = rawProject.getRawPoolForType(TncProjectDataSchema.getObjectType()).get(tncProjectDataRef);
 		assertFalse("Field should have been removed during reverse migration?", tncProjectDataRawObject.containsKey(MigrationTo12.TAG_PROJECT_FOCUS));
 		assertFalse("Field should have been removed during reverse migration?", tncProjectDataRawObject.containsKey(MigrationTo12.TAG_PROJECT_SCALE));
+	}
+	
+	@Override
+	protected int getFromVersion()
+	{
+		return 11;
+	}
+	
+	@Override
+	protected int getToVersion()
+	{
+		return 12;
 	}
 }
