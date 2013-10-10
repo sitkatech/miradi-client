@@ -38,11 +38,6 @@ public class TestMigrationTo11 extends AbstractTestMigration
 		super(name);
 	}
 	
-	public void testEmptyProject() throws Exception
-	{
-		verifyFullCircleMigrations(new VersionRange(10, 11));
-	}
-	
 	public void testBasics() throws Exception
 	{
 		ORef tncProjectDataRef = getProject().getTncProjectDataRef();
@@ -64,6 +59,18 @@ public class TestMigrationTo11 extends AbstractTestMigration
 		RawObject migratedTncProjectData = tncProjectDataRawObjects.get(migratedTncProjectDataRef);
 		assertFalse("field should have been removed?", migratedTncProjectData.containsKey(MigrationTo11.LEGACY_TAG_TNC_PROJET_TYPES));
 		assertFalse("field should have been removed?", migratedTncProjectData.containsKey(MigrationTo11.LEGACY_TAG_TNC_ORGANIZATIONAL_PRIORITIES));
+	}
+	
+	@Override
+	protected int getFromVersion()
+	{
+		return 10;
+	}
+	
+	@Override
+	protected int getToVersion()
+	{
+		return 11;
 	}
 	
 	private class LegacyTncProjectData extends TncProjectData

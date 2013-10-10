@@ -118,6 +118,18 @@ public class TestMigrationTo4 extends AbstractTestMigration
 		
 		return indicators;
 	}
+	
+	@Override
+	protected int getFromVersion()
+	{
+		return 3;
+	}
+	
+	@Override
+	protected int getToVersion()
+	{
+		return 4;
+	}
 
 	private class LegacyIndicatorWithFutureStatusFields extends Indicator
 	{

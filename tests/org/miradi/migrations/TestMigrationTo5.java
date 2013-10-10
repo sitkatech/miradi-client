@@ -107,4 +107,16 @@ public class TestMigrationTo5 extends AbstractTestMigration
 			assertEquals("Incorrect migrated strategy status?", expectedStatusCode, migratedStrategyStatus);
 		}
 	}
+	
+	@Override
+	protected int getFromVersion()
+	{
+		return 4;
+	}
+	
+	@Override
+	protected int getToVersion()
+	{
+		return 5;
+	}
 }

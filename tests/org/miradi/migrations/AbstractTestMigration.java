@@ -30,13 +30,18 @@ import org.miradi.project.ProjectSaver;
 import org.miradi.project.ProjectSaverForTesting;
 import org.miradi.project.RawProjectSaver;
 
-public class AbstractTestMigration extends TestCaseWithProject
+abstract public class AbstractTestMigration extends TestCaseWithProject
 {
 	public AbstractTestMigration(String name)
 	{
 		super(name);
 	}
 	
+	public void testEmptyProject() throws Exception
+	{
+		verifyFullCircleMigrations(new VersionRange(getFromVersion(), getToVersion()));
+	}
+
 	protected MigrationResult migrateProject(Project projectToUse, VersionRange FromVersionRange, VersionRange toVersionRange) throws Exception
 	{
 		String projectAsString = ProjectSaverForTesting.createSnapShot(projectToUse, FromVersionRange);
@@ -112,5 +117,8 @@ public class AbstractTestMigration extends TestCaseWithProject
 		int indexOfLastLine = mpf.indexOf("UP	HighestUsedNodeId=");
 		return mpf.substring(0, indexOfLastLine);
 	}
+	
+	abstract protected int getToVersion();
 
+	abstract protected int getFromVersion();
 }

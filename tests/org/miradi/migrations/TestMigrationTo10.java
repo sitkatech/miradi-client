@@ -49,6 +49,18 @@ public class TestMigrationTo10 extends AbstractTestMigration
 		verifyFullCircleMigrations(new VersionRange(9, 10));
 	}
 	
+	@Override
+	protected int getFromVersion()
+	{
+		return 9;
+	}
+	
+	@Override
+	protected int getToVersion()
+	{
+		return 10;
+	}
+
 	private static final String SAMPLE_MAKING_THE_CASE_DATA = "SampleMakingTheCaseData";
 	private static final String SAMPLE_CAPACITY_AND_FUNDING_DATA = "SampleCapacityAndFundingData";
 }
