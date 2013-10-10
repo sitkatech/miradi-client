@@ -20,7 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.xmpz2schema;
 
+import java.util.Vector;
+
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.xml.generic.XmlSchemaCreator;
 
 public class TargetSchemaWriter extends AbstractTargetSchemaWriter
 {
@@ -28,4 +31,13 @@ public class TargetSchemaWriter extends AbstractTargetSchemaWriter
 	{
 		super(creatorToUse, baseObjectSchemaToUse);
 	}
+	
+	@Override
+	public Vector<String> createFieldSchemas() throws Exception
+	{
+		Vector<String> schemaElements = super.createFieldSchemas();
+		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(getXmpz2ElementName() + CALCULATED_THREAT_RATING, XmlSchemaCreator.VOCABULARY_THREAT_RATING));
+		
+		return schemaElements;
+	}	
 }
