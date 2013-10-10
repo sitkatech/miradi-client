@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-07 16:01-0500\n"
+"POT-Creation-Date: 2013-10-10 14:01-0500\n"
 "PO-Revision-Date: 2013-04-02 10:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -2876,7 +2876,7 @@ msgstr "Terminé"
 msgid "Completed - Successfully accomplished"
 msgstr "Terminé - Effectué avec succès"
 
-#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:49
+#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:47
 msgid "ConPro Project Number"
 msgstr ""
 
@@ -4126,7 +4126,7 @@ msgstr "Masquer les colonnes trimestre"
 msgid "High"
 msgstr "Elevé"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1440
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1378
 msgid "High/Very-High Threat Chains"
 msgstr "Chaînes de menaces élevées/très élevées"
 
@@ -4347,7 +4347,7 @@ msgstr ""
 "mesurable, précis, cohérent et sensible. Dans Miradi, un indicateur est "
 "représenté par un triangle violet."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1338
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1276
 msgid "Indicator Holder"
 msgstr "Détenteur d'indicateur"
 
@@ -4707,7 +4707,7 @@ msgstr "Numéros de téléphone"
 msgid "Label|Project Dates"
 msgstr "Dates du projet"
 
-#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:73
+#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:69
 msgid "Label|Project Info"
 msgstr ""
 
@@ -4865,7 +4865,7 @@ msgstr "Lieu"
 msgid "Low"
 msgstr "Faible"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1441
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1379
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Chaînes de menace Faibles/Moyennes/Non évaluées"
 
@@ -5533,7 +5533,7 @@ msgstr ""
 "que réduire une menace critique. Dans Miradi, un objectif est représenté par "
 "un petit rectangle bleu."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1332
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1270
 msgid "Objective Holder"
 msgstr "Détenteur d'objectif"
 
@@ -5719,7 +5719,7 @@ msgstr "Rose"
 msgid "Place scope on diagram"
 msgstr "Placer la portée sur le diagramme"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1328
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1266
 msgid "Placeholder - From ConPro"
 msgstr "Espace réservé - De ConPro"
 
@@ -5936,7 +5936,7 @@ msgstr "Conseiller du projet"
 msgid "Project Corruption Detected"
 msgstr "Corruption du projet détectée"
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:943
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:929
 msgid "Project Description:"
 msgstr "Description du projet :"
 
@@ -6543,7 +6543,7 @@ msgstr "Viabilité simple"
 msgid "Single Selection"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:948
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:934
 msgid "Site/Scope Description:"
 msgstr "Description du site/de la portée :"
 

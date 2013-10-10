@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-07 16:01-0500\n"
+"POT-Creation-Date: 2013-10-10 14:01-0500\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -2923,7 +2923,7 @@ msgstr "Concluido"
 msgid "Completed - Successfully accomplished"
 msgstr "Concluido - Alcançado com Sucesso"
 
-#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:49
+#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:47
 msgid "ConPro Project Number"
 msgstr ""
 
@@ -4202,7 +4202,7 @@ msgstr "Esconder Colunas de Trimestre"
 msgid "High"
 msgstr "Alto"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1440
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1378
 msgid "High/Very-High Threat Chains"
 msgstr "Cadeias de Ameaças Altos/Muito Altos"
 
@@ -4424,7 +4424,7 @@ msgstr ""
 "representado por um triângulo roxo."
 
 # I don't understand the use of "holder" here thus I left it in English.
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1338
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1276
 msgid "Indicator Holder"
 msgstr "\"Holder\" de indicador"
 
@@ -4791,7 +4791,7 @@ msgstr "Números de Telefone"
 msgid "Label|Project Dates"
 msgstr "Datas do Projeto"
 
-#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:73
+#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:69
 msgid "Label|Project Info"
 msgstr "Informações do Projeto"
 
@@ -4950,7 +4950,7 @@ msgstr "Localização"
 msgid "Low"
 msgstr "Baixo"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1441
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1379
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Cadeias de Ameaça Baixo/Médio/Sem classificação"
 
@@ -5626,7 +5626,7 @@ msgstr ""
 "representado por um retângulo pequeno azul."
 
 # I don't understand Holder here  in English.  Please clarify.
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1332
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1270
 msgid "Objective Holder"
 msgstr "\"Holder\" de Meta"
 
@@ -5812,7 +5812,7 @@ msgstr "Rosa"
 msgid "Place scope on diagram"
 msgstr "Posicionar Escopo no Diagrama"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1328
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1266
 msgid "Placeholder - From ConPro"
 msgstr "Espaço Reservado - de ConPro"
 
@@ -6030,7 +6030,7 @@ msgstr "Conselheiro do Projeto"
 msgid "Project Corruption Detected"
 msgstr "Corrupção do Projeto Detectado"
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:943
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:929
 msgid "Project Description:"
 msgstr "Descrição do Projeto:"
 
@@ -6640,7 +6640,7 @@ msgstr "Viabilidade Simples"
 msgid "Single Selection"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:948
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:934
 msgid "Site/Scope Description:"
 msgstr "Descrição de Sítio/Escopo:"
 
