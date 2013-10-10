@@ -65,8 +65,6 @@ public class TncProjectData extends BaseObject
 	}
 		
 	public final static String TAG_PROJECT_SHARING_CODE = "ProjectSharingCode";
-	public final static String TAG_PROJECT_PLACE_TYPES = "ProjectPlaceTypes";
-	public final static String TAG_ORGANIZATIONAL_PRIORITIES = "OrganizationalPriorities";
 	public final static String TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT = "ConProParentChildProjectText";
 	public final static String TAG_PROJECT_RESOURCES_SCORECARD = "ProjectResourcesScorecard";
 	public final static String TAG_PROJECT_LEVEL_COMMENTS = "ProjectLevelComments";
