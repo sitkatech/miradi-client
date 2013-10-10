@@ -41,4 +41,10 @@ public class HumanWelfareTargetExporter extends AbstractTargetExporter
 	{
 		return HUMAN_WELFARE_TARGET;
 	}
+
+	@Override
+	protected boolean hasThreatRatingToExport()
+	{
+		return false;
+	}
 }

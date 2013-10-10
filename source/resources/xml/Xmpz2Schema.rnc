@@ -1,7 +1,7 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Mon Oct 07 16:17:10 EDT 2013 $
-# $LastChangedRevision: 230 $
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/230'
+# $LastChangedDate: Thu Oct 10 13:07:14 EDT 2013 $
+# $LastChangedRevision: 231 $
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/231'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -659,7 +659,6 @@ HumanWellbeingTargetPool.element = element miradi:HumanWellbeingTargetPool { Hum
 HumanWellbeingTarget.element = element miradi:HumanWellbeingTarget
 {
   attribute Id {xsd:integer} &
-  element miradi:HumanWellbeingTargetCalculatedThreatRating { vocabulary_threat_rating }? &
   element miradi:HumanWellbeingTargetCalculatedViabilityStatus { vocabulary_target_status }? &
   element miradi:HumanWellbeingTargetComments { formatted_text }? &
   element miradi:HumanWellbeingTargetCurrentStatusJustification { formatted_text }? &

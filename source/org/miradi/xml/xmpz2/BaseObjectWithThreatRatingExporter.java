@@ -39,9 +39,15 @@ abstract public class BaseObjectWithThreatRatingExporter extends BaseObjectExpor
 	{
 		super.writeFields(baseObject, baseObjectSchema);
 		
-		exportThreatTargetRating((Factor) baseObject);
+		if (hasThreatRatingToExport())
+			exportThreatTargetRating((Factor) baseObject);
 	}
 	
+	protected boolean hasThreatRatingToExport()
+	{
+		return true;
+	}
+
 	private void exportThreatTargetRating(Factor factor) throws Exception
 	{
 		if (getProject().isStressBaseMode())
