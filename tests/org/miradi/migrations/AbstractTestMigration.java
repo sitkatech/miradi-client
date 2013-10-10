@@ -59,15 +59,21 @@ public class AbstractTestMigration extends TestCaseWithProject
 
 	protected ProjectForTesting migrateProject(String projectAsString) throws Exception
 	{
-		MigrationManager migrationManager = new MigrationManager();
-		final RawProject projectToMigrate = RawProjectLoader.loadProject(projectAsString);
-		migrationManager.migrate(projectToMigrate, Project.getMiradiVersionRange());
+		final RawProject projectToMigrate = migrateProjectAndReturnRawProject(projectAsString);
 		
 		String migratedMpfFile = RawProjectSaver.saveProject(projectToMigrate);
 		ProjectForTesting migratedProject = ProjectForTesting.createProjectWithoutDefaultObjects("MigratedProject");
 		ProjectLoader.loadProject(new UnicodeStringReader(migratedMpfFile), migratedProject);
 
 		return migratedProject;
+	}
+
+	protected RawProject migrateProjectAndReturnRawProject(String projectAsString) throws Exception
+	{
+		MigrationManager migrationManager = new MigrationManager();
+		final RawProject projectToMigrate = RawProjectLoader.loadProject(projectAsString);
+		migrationManager.migrate(projectToMigrate, Project.getMiradiVersionRange());
+		return projectToMigrate;
 	}	
 	
 	protected RawProject reverseMigrate(final VersionRange versionRangeToUse) throws Exception

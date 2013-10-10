@@ -21,12 +21,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.migrations;
 
 import org.miradi.ids.BaseId;
+import org.miradi.migrations.forward.MigrationManager;
 import org.miradi.migrations.forward.MigrationTo11;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.TncProjectData;
 import org.miradi.project.ObjectManager;
-import org.miradi.project.ProjectForTesting;
+import org.miradi.project.ProjectSaverForTesting;
 import org.miradi.questions.InternalQuestionWithoutValues;
 import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.utils.CodeList;
@@ -38,6 +38,11 @@ public class TestMigrationTo11 extends AbstractTestMigration
 		super(name);
 	}
 	
+	public void testEmptyProject() throws Exception
+	{
+		verifyFullCircleMigrations(new VersionRange(10, 11));
+	}
+	
 	public void testBasics() throws Exception
 	{
 		ORef tncProjectDataRef = getProject().getTncProjectDataRef();
@@ -45,17 +50,20 @@ public class TestMigrationTo11 extends AbstractTestMigration
 		BaseId nextId = getProject().getNormalIdAssigner().takeNextId();
 		LegacyTncProjectData legacyTncProjectData = new LegacyTncProjectData(getObjectManager(), nextId);
 		getProject().getPool(TncProjectDataSchema.getObjectType()).put(legacyTncProjectData);
-		getProject().fillObjectUsingCommand(legacyTncProjectData, MigrationTo11.LEGACY_TAG_TNC_PROJET_TYPES, new CodeList(new String[]{"1", }).toJsonString());
-		getProject().fillObjectUsingCommand(legacyTncProjectData, MigrationTo11.LEGACY_TAG_TNC_ORGANIZATIONAL_PRIORITIES, new CodeList(new String[]{"x", }).toJsonString());
+		getProject().fillObjectUsingCommand(legacyTncProjectData, MigrationTo11.LEGACY_TAG_TNC_PROJET_TYPES, new CodeList(new String[]{"randomX", }).toJsonString());
+		getProject().fillObjectUsingCommand(legacyTncProjectData, MigrationTo11.LEGACY_TAG_TNC_ORGANIZATIONAL_PRIORITIES, new CodeList(new String[]{"randomY", }).toJsonString());
+		assertTrue("field should have been removed?", legacyTncProjectData.getStoredFieldTags().contains(MigrationTo11.LEGACY_TAG_TNC_PROJET_TYPES));
+		assertTrue("field should have been removed?", legacyTncProjectData.getStoredFieldTags().contains(MigrationTo11.LEGACY_TAG_TNC_ORGANIZATIONAL_PRIORITIES));
+
+		String legacyProject = ProjectSaverForTesting.createSnapShot(getProject(), new VersionRange(MigrationManager.OLDEST_VERSION_TO_HANDLE));
+		RawProject migratedProject = migrateProjectAndReturnRawProject(legacyProject);
+		RawPool tncProjectDataRawObjects = migratedProject.getRawPoolForType(TncProjectDataSchema.getObjectType());
+		assertEquals("Incorrect singelton Tnc Project data count?", 1, tncProjectDataRawObjects.size());
 		
-		ProjectForTesting migratedProject = verifyFullCircleMigrations(new VersionRange(10, 11));
-		ORefList tncProjectDataRefs = migratedProject.getPool(TncProjectDataSchema.getObjectType()).getORefList();
-		assertEquals("Incorrect singelton Tnc Project data count?", 1, tncProjectDataRefs.size());
-		
-		ORef migratedTncProjectDataRef = tncProjectDataRefs.getFirstElement();
-		TncProjectData tncProjectData = TncProjectData.find(migratedProject, migratedTncProjectDataRef);
-		assertFalse("field should have been removed?", tncProjectData.getStoredFieldTags().contains(MigrationTo11.LEGACY_TAG_TNC_PROJET_TYPES));
-		assertFalse("field should have been removed?", tncProjectData.getStoredFieldTags().contains(MigrationTo11.LEGACY_TAG_TNC_ORGANIZATIONAL_PRIORITIES));
+		ORef migratedTncProjectDataRef = tncProjectDataRawObjects.getSortedReflist().getFirstElement();
+		RawObject migratedTncProjectData = tncProjectDataRawObjects.get(migratedTncProjectDataRef);
+		assertFalse("field should have been removed?", migratedTncProjectData.containsKey(MigrationTo11.LEGACY_TAG_TNC_PROJET_TYPES));
+		assertFalse("field should have been removed?", migratedTncProjectData.containsKey(MigrationTo11.LEGACY_TAG_TNC_ORGANIZATIONAL_PRIORITIES));
 	}
 	
 	private class LegacyTncProjectData extends TncProjectData

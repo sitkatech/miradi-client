@@ -27,7 +27,6 @@ public class RemoveMultipleFieldMigrator
 	public RemoveMultipleFieldMigrator(int typeToUse, HashSet<String> fieldsToRemoveToUse)
 	{
 		type = typeToUse;
-		
 		fieldsToRemove = fieldsToRemoveToUse;
 	}
 
