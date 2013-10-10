@@ -41,8 +41,6 @@ public class ProjectSummaryTncProjectDataSchema extends AbstractProjectSummarySc
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION));
 	
 		TncProjectDataSchema tncProjectDataSchema = new TncProjectDataSchema();
-		addFieldSchema(tncProjectDataSchema.getFieldSchema(TncProjectData.TAG_PROJECT_PLACE_TYPES));
-		addFieldSchema(tncProjectDataSchema.getFieldSchema(TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES));
 		addFieldSchema(tncProjectDataSchema.getFieldSchema(TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT));
 		addFieldSchema(tncProjectDataSchema.getFieldSchema(TncProjectData.TAG_PROJECT_RESOURCES_SCORECARD));
 		addFieldSchema(tncProjectDataSchema.getFieldSchema(TncProjectData.TAG_PROJECT_LEVEL_COMMENTS));

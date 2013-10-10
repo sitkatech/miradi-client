@@ -46,8 +46,6 @@ import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
 import org.miradi.questions.TncMarineEcoRegionQuestion;
 import org.miradi.questions.TncOperatingUnitsQuestion;
-import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
-import org.miradi.questions.TncProjectPlaceTypeQuestion;
 import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.questions.WwfEcoRegionsQuestion;
 import org.miradi.questions.WwfManagingOfficesQuestion;
@@ -295,8 +293,6 @@ public class SingletonObjectExporter implements Xmpz2XmlConstants
 		
 		writeProjectMetadataElement(TNC_PROJECT_DATA, ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
 		writeProjectMetadataElement(TNC_PROJECT_DATA, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
-		writeCodeListElement(TNC_PROJECT_DATA, TNC_PROJECT_PLACE_TYPES, getTncProjectData(), TncProjectData.TAG_PROJECT_PLACE_TYPES, TncProjectPlaceTypeQuestion.class);
-		writeCodeListElement(TNC_PROJECT_DATA, TNC_ORGANIZATIONAL_PRIORITIES, getTncProjectData(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, TncOrganizationalPrioritiesQuestion.class);
 		writeProjectMetadataElement(TNC_PROJECT_DATA, ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS);
 		writeElement(TNC_PROJECT_DATA, getTncProjectData(), TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
 		exportTncOperatingUnits();
