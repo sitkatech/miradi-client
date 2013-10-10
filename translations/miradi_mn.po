@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-07 16:01-0500\n"
+"POT-Creation-Date: 2013-10-10 14:01-0500\n"
 "PO-Revision-Date: 2013-06-07 01:56+0100\n"
 "Last-Translator: Galragchaa <galragchaa@yahoo.com>\n"
 "Language-Team: none\n"
@@ -2818,7 +2818,7 @@ msgstr "Бүрэн дуусгасан"
 msgid "Completed - Successfully accomplished"
 msgstr "Бүрэн дуусгасан- Амжилттай хийж дуусгасан"
 
-#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:49
+#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:47
 msgid "ConPro Project Number"
 msgstr ""
 
@@ -4036,7 +4036,7 @@ msgstr "Баганы дөрөвний нэгийг нуух"
 msgid "High"
 msgstr "Өндөр"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1440
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1378
 msgid "High/Very-High Threat Chains"
 msgstr "Өндөр/Маш- Их  Аюул заналын гинжин холбоос"
 
@@ -4250,7 +4250,7 @@ msgstr ""
 "хангасан байдаг : хэмжигдэхүйц, тодорхой, тогтвортой ба мэдрэмтгий.  Шалгуур "
 "үзүүлэлтийг Miradi-д нил ягаан гурвалжингаар төлөөлүүлсэн."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1338
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1276
 msgid "Indicator Holder"
 msgstr "Шалгуур үзүүлэлт агуулагч"
 
@@ -4607,7 +4607,7 @@ msgstr "Хаяг|Утасны дугаарууд"
 msgid "Label|Project Dates"
 msgstr "Хаяг|Төслийн огноо"
 
-#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:73
+#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:69
 msgid "Label|Project Info"
 msgstr ""
 
@@ -4765,7 +4765,7 @@ msgstr "Байршил"
 msgid "Low"
 msgstr " бага"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1441
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1379
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Сул/Дундаж/Үнэлэгдээгүй аюул заналын хэлхээс"
 
@@ -5409,7 +5409,7 @@ msgstr ""
 "албан ёсны мэдэгдэл. Зорилт нь Miradi-д жижиг цэнхэр тэгш өнцөгтөөр "
 "төлөөллөгдсөн."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1332
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1270
 msgid "Objective Holder"
 msgstr "Зорилтуудын хайрцаг"
 
@@ -5590,7 +5590,7 @@ msgstr "Ягаан"
 msgid "Place scope on diagram"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1328
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1266
 msgid "Placeholder - From ConPro"
 msgstr ""
 
@@ -5807,7 +5807,7 @@ msgstr "Төслийн Зөвлөх"
 msgid "Project Corruption Detected"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:943
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:929
 msgid "Project Description:"
 msgstr "Төслийн танилцуулга:"
 
@@ -6408,7 +6408,7 @@ msgstr "Ердийн амьдрах чадвар"
 msgid "Single Selection"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:948
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:934
 msgid "Site/Scope Description:"
 msgstr "ГазарНутаг/Хамрах хүрээний тодорхойлолт:"
 
