@@ -145,8 +145,6 @@ import org.miradi.questions.TaxonomyMultiSelectModeQuestion;
 import org.miradi.questions.TextBoxZOrderQuestion;
 import org.miradi.questions.ThreatClassificationQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
-import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
-import org.miradi.questions.TncProjectPlaceTypeQuestion;
 import org.miradi.questions.TrendQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.questions.WwfEcoRegionsQuestion;
@@ -333,8 +331,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ORef tncProjectDataRef = getTncProjectDataRef();
 
-		fillObjectUsingCommand(getTncProjectDataRef(), TncProjectData.TAG_PROJECT_PLACE_TYPES, new TncProjectPlaceTypeQuestion().getAllCodes().toString());
-		fillObjectUsingCommand(getTncProjectDataRef(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, new TncOrganizationalPrioritiesQuestion().getAllCodes().toString());
 		fillObjectUsingCommand(getTncProjectDataRef(), TncProjectData.TAG_PROJECT_SHARING_CODE, ProjectSharingQuestion.SHARE_WITH_ANYONE);
 		fillObjectWithSampleStringData(tncProjectDataRef, TncProjectData.TAG_MAKING_THE_CASE);
 		fillObjectWithSampleStringData(tncProjectDataRef, TncProjectData.TAG_RISKS);
