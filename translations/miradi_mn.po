@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-10 14:01-0500\n"
+"POT-Creation-Date: 2013-10-10 15:31-0500\n"
 "PO-Revision-Date: 2013-06-07 01:56+0100\n"
 "Last-Translator: Galragchaa <galragchaa@yahoo.com>\n"
 "Language-Team: none\n"
@@ -250,8 +250,8 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%нэрээс' -> '%нэрэнд'<br>"
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationManager.java:107
-#: Miradi/source/org/miradi/main/MainWindow.java:1449
+#: Miradi/source/org/miradi/migrations/forward/MigrationManager.java:108
+#: Miradi/source/org/miradi/main/MainWindow.java:1456
 msgid "(%s)"
 msgstr ""
 
@@ -482,7 +482,7 @@ msgstr "7C. Суралцах орчинг бүрдүүлэх"
 msgid "95% C.I. (confidence interval)"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1488
+#: Miradi/source/org/miradi/main/MainWindow.java:1495
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -1024,7 +1024,7 @@ msgstr ""
 msgid "A project or file by this name already exists: "
 msgstr "Ийм нэр бүхий төсөл эсвэл файл байна:"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1445
+#: Miradi/source/org/miradi/main/MainWindow.java:1452
 msgid "A project or file by this name already exists: %s"
 msgstr ""
 
@@ -2957,7 +2957,7 @@ msgstr "Шинээр үүсгэх амжилтгүй болов:"
 msgid "Create Folder"
 msgstr "Фолдер үүсгэх"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:746
+#: Miradi/source/org/miradi/main/MainWindow.java:753
 msgid "Create Project"
 msgstr ""
 
@@ -3102,6 +3102,10 @@ msgstr "Мэдээллийн байршил"
 #: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:62
 msgid "Data was exported as tab delimited."
 msgstr "Мэдээлэл таб-тай экспортлогдсон"
+
+#: Miradi/source/org/miradi/main/MainWindow.java:714
+msgid "Data was lost during migration.  Would you like to continue?"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:51
 msgid "Date"
@@ -3475,7 +3479,7 @@ msgid "Enter As: "
 msgstr "-ээр орох: "
 
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:118
-#: Miradi/source/org/miradi/main/MainWindow.java:1479
+#: Miradi/source/org/miradi/main/MainWindow.java:1486
 msgid "Enter New Name"
 msgstr "Шинэ нэрээр оруулах"
 
@@ -3548,7 +3552,7 @@ msgstr "Үйл ажиллагаа ба мониторингийн өртгийн
 msgid "Euro"
 msgstr "Евро"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1015
+#: Miradi/source/org/miradi/main/MainWindow.java:1022
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr "Өөр санхүүгийн жилийн байгаа мэдээлэл хасагдаж байна."
 
@@ -4366,7 +4370,7 @@ msgstr "Танилцуулга"
 msgid "Invalid project name:"
 msgstr "Төслийн нэр хүчингүй:"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1454
+#: Miradi/source/org/miradi/main/MainWindow.java:1461
 msgid "Invalid project name: %s"
 msgstr ""
 
@@ -5135,6 +5139,7 @@ msgid "Migrating..."
 msgstr ""
 
 #: Miradi/source/org/miradi/main/MainWindow.java:696
+#: Miradi/source/org/miradi/main/MainWindow.java:715
 msgid "Migration"
 msgstr ""
 
@@ -5197,7 +5202,7 @@ msgstr "Оруулах боломжтой Файл: %s гэж  Миради та
 msgid "Miradi does not recognize %s as a project file"
 msgstr "Миради төслийн файлыг танихгүй байна"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:836
+#: Miradi/source/org/miradi/main/MainWindow.java:843
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5483,7 +5488,7 @@ msgid "Open Anyway"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:201
-#: Miradi/source/org/miradi/main/MainWindow.java:748
+#: Miradi/source/org/miradi/main/MainWindow.java:755
 msgid "Open Project"
 msgstr "Төслийг Нээх"
 
@@ -5803,7 +5808,7 @@ msgstr "Төсөл"
 msgid "Project Advisor"
 msgstr "Төслийн Зөвлөх"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:834
+#: Miradi/source/org/miradi/main/MainWindow.java:841
 msgid "Project Corruption Detected"
 msgstr ""
 
@@ -5836,7 +5841,7 @@ msgstr "Төслийн нөөц"
 msgid "Project Resource Filter Editor"
 msgstr "Төслийн нөөцийн шүүлтүүрийн хянан засварлагч"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1013
+#: Miradi/source/org/miradi/main/MainWindow.java:1020
 msgid "Project Resource Filter Is On"
 msgstr "Төслийн нөөцийн шүүлтүүр ажиллагаатай"
 
@@ -6471,7 +6476,7 @@ msgstr "Оролцогч тал"
 msgid "Standard Reports"
 msgstr "Стандарт тайлан"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1047
+#: Miradi/source/org/miradi/main/MainWindow.java:1054
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -7951,6 +7956,10 @@ msgid ""
 "status fields"
 msgstr ""
 
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo11.java:85
+msgid "This migration removes 2 Tnc fields"
+msgstr ""
+
 #: Miradi/source/org/miradi/migrations/forward/MigrationTo8.java:75
 msgid "This migration removes indicator's unit field"
 msgstr ""
@@ -7995,7 +8004,7 @@ msgid ""
 "damaged. Please contact Miradi support for recovery options."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:825
+#: Miradi/source/org/miradi/main/MainWindow.java:832
 msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
@@ -8436,7 +8445,7 @@ msgstr ""
 "Энэ программын өөр хуулбарт энэ төслийг ашиглаж байгаа учир энэ төслийг "
 "устгах боломжгүй байна:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1422
+#: Miradi/source/org/miradi/main/MainWindow.java:1429
 msgid "Unable to launch external web browser"
 msgstr "Вэб хуудас эхлүүлэх боломжгүй байна"
 
@@ -8458,7 +8467,7 @@ msgstr ""
 "болохгүй байна:\n"
 " "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1204
+#: Miradi/source/org/miradi/main/MainWindow.java:1211
 msgid "Unable to save preferences"
 msgstr "Сонголтуудийг хадгалах боломжгүй байна"
 
