@@ -32,8 +32,6 @@ import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
 import org.miradi.questions.TncMarineEcoRegionQuestion;
 import org.miradi.questions.TncOperatingUnitsQuestion;
-import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
-import org.miradi.questions.TncProjectPlaceTypeQuestion;
 import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.schemas.TncProjectDataSchema;
@@ -50,8 +48,6 @@ public class TncProjectSummarySubPanel extends ObjectDataInputPanel
 		addField(createStringField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS));
 		ChoiceQuestion tncProjectSharingQuestion = StaticQuestionManager.getQuestion(ProjectSharingQuestion.class);
 		addRadioButtonFieldWithCustomLabelAndLink(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_SHARING_CODE, tncProjectSharingQuestion, "", "ProjectSharingMessage.html");
-		addField(createSingleColumnCodeListField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_PLACE_TYPES, StaticQuestionManager.getQuestion(TncProjectPlaceTypeQuestion.class)));
-		addField(createSingleColumnCodeListField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, StaticQuestionManager.getQuestion(TncOrganizationalPrioritiesQuestion.class)));
 
 		addField(createReadonlyTextField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT));
 
