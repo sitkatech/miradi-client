@@ -67,6 +67,7 @@ import org.miradi.legacyprojects.TestDataUpgrader;
 import org.miradi.legacyprojects.TestDataUpgraderForMiradi3;
 import org.miradi.migrations.TestMigrationManager;
 import org.miradi.migrations.TestMigrationTo10;
+import org.miradi.migrations.TestMigrationTo11;
 import org.miradi.migrations.TestMigrationTo4;
 import org.miradi.migrations.TestMigrationTo5;
 import org.miradi.migrations.TestMigrationTo6;
@@ -563,6 +564,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestMigrationTo8.class));
 		addTest(new TestSuite(TestMigrationTo9.class));
 		addTest(new TestSuite(TestMigrationTo10.class));
+		addTest(new TestSuite(TestMigrationTo11.class));
 		
 		addTest(new TestSuite(TestReverseMigrationTo4.class));
 		addTest(new TestSuite(TestVersionRange.class));

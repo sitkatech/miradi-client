@@ -30,7 +30,12 @@ public class TncProjectData extends BaseObject
 {
 	public TncProjectData(ObjectManager objectManager, BaseId id)
 	{
-		super(objectManager, id, createSchema());
+		this(objectManager, id, createSchema());
+	}
+
+	public TncProjectData(ObjectManager objectManager, BaseId id, TncProjectDataSchema schema)
+	{
+		super(objectManager, id, schema);
 	}
 
 	public static TncProjectDataSchema createSchema()
