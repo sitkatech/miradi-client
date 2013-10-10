@@ -22,7 +22,7 @@ package org.miradi.migrations;
 
 import java.util.HashSet;
 
-public class RemoveMultipleFieldReverseMigrator extends	RemoveMultipleFieldMigrator
+public class RemoveMultipleFieldReverseMigrator extends	AbstractRemoveMultipleFieldMigrator
 {
 	public RemoveMultipleFieldReverseMigrator(int typeToUse, HashSet<String> fieldsToRemoveToUse)
 	{
