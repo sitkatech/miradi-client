@@ -32,7 +32,7 @@ public class RemoveMultipleFieldMigrator
 
 	public AbstractMigrationVisitor migrateForward() throws Exception
 	{
-		return new ForwardRemoveVisitor();
+		return new RemoveVisitor();
 	}
 	
 	public AbstractMigrationVisitor reverseMigrate() throws Exception
@@ -54,7 +54,7 @@ public class RemoveMultipleFieldMigrator
 		return migrationResult;
 	}
 	
-	private class ForwardRemoveVisitor extends AbstractMigrationVisitor
+	protected class RemoveVisitor extends AbstractMigrationVisitor
 	{
 		public int getTypeToVisit()
 		{
@@ -68,6 +68,6 @@ public class RemoveMultipleFieldMigrator
 		}
 	}
 	
-	private int type;
+	protected int type;
 	private HashSet<String> fieldsToRemove;
 }
