@@ -25,7 +25,6 @@ import javax.swing.JComponent;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ChoiceItemWithLongDescriptionProvider;
 import org.miradi.questions.ChoiceQuestion;
 
 public class SingleLevelQuestionEditor extends QuestionEditorWithHierarchichalRows
@@ -38,6 +37,6 @@ public class SingleLevelQuestionEditor extends QuestionEditorWithHierarchichalRo
 	@Override
 	protected void addRowComponents(MiradiPanel mainRowsPanel,	JComponent leftColumnComponent, ChoiceItem choiceItem) throws Exception
 	{
-		addSelectableRow(mainRowsPanel, leftColumnComponent, (ChoiceItemWithLongDescriptionProvider) choiceItem, 0, getRawFont());
+		addSelectableRow(mainRowsPanel, leftColumnComponent, choiceItem, 0, getRawFont());
 	}
 }

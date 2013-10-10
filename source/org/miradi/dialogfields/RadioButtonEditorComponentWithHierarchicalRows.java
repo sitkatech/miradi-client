@@ -30,7 +30,6 @@ import org.miradi.dialogs.fieldComponents.RadioButtonWithChoiceItemProvider;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ChoiceItemWithLongDescriptionProvider;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DataPanelFlexibleWidthHtmlViewer;
@@ -47,7 +46,7 @@ public class RadioButtonEditorComponentWithHierarchicalRows extends QuestionEdit
 	@Override
 	protected void addRowComponents(MiradiPanel mainRowsPanel,	JComponent leftColumnComponent, ChoiceItem choiceItem) throws Exception
 	{
-		addSelectableRow(mainRowsPanel, leftColumnComponent, (ChoiceItemWithLongDescriptionProvider) choiceItem, 0, getRawFont());
+		addSelectableRow(mainRowsPanel, leftColumnComponent, choiceItem, 0, getRawFont());
 	}
 	
 	private void initializeRadioButtons()

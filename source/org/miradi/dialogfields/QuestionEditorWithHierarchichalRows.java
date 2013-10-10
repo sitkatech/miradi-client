@@ -115,7 +115,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		addSelectableRow(mainRowsPanel, leftColumnComponent, choiceItem, HEADER_INDENT_COUNT, createHeaderTitleFont());
 	}
 
-	protected void addSelectableRow(MiradiPanel mainRowsPanel, JComponent leftColumnComponent, ChoiceItemWithLongDescriptionProvider choiceItem, final int indentCount, Font font)
+	protected void addSelectableRow(MiradiPanel mainRowsPanel, JComponent leftColumnComponent, ChoiceItem choiceItem, final int indentCount, Font font)
 	{
 		JComponent leftComponent = createLeftColumnComponent(choiceItem, leftColumnComponent);
 		leftComponent.setFont(font);
