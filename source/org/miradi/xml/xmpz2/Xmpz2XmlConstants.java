@@ -399,4 +399,6 @@ public interface Xmpz2XmlConstants
 	public static final String VOCABULARY_PRECISION_TYPE = "vocabulary_precision_type";
 	public static final String VOCABULARY_CUSTOM_ROWS = "vocabulary_custom_rows";
 	public static final String VOCABULARY_CUSTOM_COLUMNS = "vocabulary_custom_columns";
+	public static final String VOCABULARY_PROJET_FOCUS = "vocabulary_project_focus";
+	public static final String VOCABULARY_PROJET_SCALE = "vocabulary_project_scale";
 }

@@ -27,6 +27,8 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.ProjectFocusQuestion;
+import org.miradi.questions.ProjectScaleQuestion;
 import org.miradi.questions.ProjectSharingQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
@@ -46,6 +48,8 @@ public class TncProjectSummarySubPanel extends ObjectDataInputPanel
 		addField(createReadonlyTextField(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE));
 		addFieldWithCustomLabel(createSingleStringToRefField(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, ConProMiradiXml.CONPRO_CONTEXT), EAM.text("ConPro Project Number"));		
 		addField(createStringField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS));
+		addField(createRadioButtonEditorField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_FOCUS, StaticQuestionManager.getQuestion(ProjectFocusQuestion.class)));
+		addField(createRadioButtonEditorField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_SCALE, StaticQuestionManager.getQuestion(ProjectScaleQuestion.class)));
 		ChoiceQuestion tncProjectSharingQuestion = StaticQuestionManager.getQuestion(ProjectSharingQuestion.class);
 		addRadioButtonFieldWithCustomLabelAndLink(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_SHARING_CODE, tncProjectSharingQuestion, "", "ProjectSharingMessage.html");
 

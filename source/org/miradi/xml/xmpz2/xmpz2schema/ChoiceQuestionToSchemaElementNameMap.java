@@ -48,6 +48,8 @@ import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 import org.miradi.questions.PrecisionTypeQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
+import org.miradi.questions.ProjectFocusQuestion;
+import org.miradi.questions.ProjectScaleQuestion;
 import org.miradi.questions.ProjectSharingQuestion;
 import org.miradi.questions.ProtectedAreaCategoryQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
@@ -155,6 +157,8 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(InternalQuestionWithoutValues.class, URI_RESTRICTED_TEXT);
 		addItem(new CustomPlanningAllRowsQuestion(), VOCABULARY_CUSTOM_ROWS);
 		addItem(new CustomPlanningColumnsQuestion(), VOCABULARY_CUSTOM_COLUMNS);
+		addItem(ProjectFocusQuestion.class, VOCABULARY_PROJET_FOCUS);
+		addItem(ProjectScaleQuestion.class, VOCABULARY_PROJET_SCALE);
 	}
 	
 	private void addItem(Class questionClass, String value)

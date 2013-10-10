@@ -22,6 +22,8 @@ package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.TncProjectData;
+import org.miradi.questions.ProjectFocusQuestion;
+import org.miradi.questions.ProjectScaleQuestion;
 import org.miradi.questions.ProjectSharingQuestion;
 
 public class TncProjectDataSchema extends BaseObjectSchema
@@ -45,6 +47,8 @@ public class TncProjectDataSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(TncProjectData.TAG_MAKING_THE_CASE);
 		createFieldSchemaMultiLineUserText(TncProjectData.TAG_RISKS);
 		createFieldSchemaMultiLineUserText(TncProjectData.TAG_CAPACITY_AND_FUNDING);
+		createFieldSchemaChoice(TncProjectData.TAG_PROJECT_FOCUS, ProjectFocusQuestion.class);
+		createFieldSchemaChoice(TncProjectData.TAG_PROJECT_SCALE, ProjectScaleQuestion.class);
 	}
 	
 	public static int getObjectType()

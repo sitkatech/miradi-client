@@ -83,7 +83,7 @@ public class MigrationTo12 extends AbstractMigration
 	@Override
 	protected String getDescription()
 	{
-		return EAM.text("This migration removes 2 Tnc fields");
+		return EAM.text("This migration removes 2 Tnc fields when reverse migrating");
 	}
 	
 	private RemoveMultipleFieldMigrator removeMultipleFieldsMigrator;
