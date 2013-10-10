@@ -23,7 +23,6 @@ package org.miradi.dialogfields;
 import javax.swing.JComponent;
 
 import org.miradi.dialogs.base.DisposablePanel;
-import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.dialogs.base.ReadonlyPanelWithPopupEditor;
 import org.miradi.dialogs.base.ReadonlyPanelWithPopupEditorWithoutMainScrollPane;
 import org.miradi.objecthelpers.ORef;
@@ -68,11 +67,6 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 	public void setText(String newValue)
 	{
 		readonlyPanelPopupEditor.setText(newValue);
-	}
-	
-	protected void addDialogMainPanel(ModalDialogWithClose dialog, DisposablePanel editorPanel)
-	{
-		dialog.setScrollableMainPanel(editorPanel);
 	}
 	
 	protected ChoiceQuestion getQuestion()
