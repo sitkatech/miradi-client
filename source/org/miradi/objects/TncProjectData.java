@@ -25,7 +25,6 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ProjectSharingQuestion;
 import org.miradi.schemas.TncProjectDataSchema;
-import org.miradi.utils.CodeList;
 
 public class TncProjectData extends BaseObject
 {
@@ -37,16 +36,6 @@ public class TncProjectData extends BaseObject
 	public static TncProjectDataSchema createSchema()
 	{
 		return new TncProjectDataSchema();
-	}
-	
-	public CodeList getOrganizationalPriorityCodes()
-	{
-		return getCodeListData(TAG_ORGANIZATIONAL_PRIORITIES);
-	}
-	
-	public CodeList getProjectPlaceTypeCodes()
-	{
-		return getCodeListData(TAG_PROJECT_PLACE_TYPES);
 	}
 	
 	@Override
