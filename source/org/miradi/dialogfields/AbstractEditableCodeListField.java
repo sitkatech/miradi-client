@@ -28,6 +28,7 @@ import org.miradi.dialogs.base.ReadonlyPanelWithPopupEditorWithoutMainScrollPane
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.utils.FastScrollPane;
 import org.miradi.utils.Translation;
 
 abstract public class AbstractEditableCodeListField extends ObjectDataInputField implements ReadonlyPanelAndPopupEditorProvider
@@ -72,6 +73,14 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 	protected ChoiceQuestion getQuestion()
 	{
 		return question;
+	}
+	
+	protected DisposablePanel createScrollingPanel(DisposablePanel panel)
+	{
+		final DisposablePanel scrollingPanelContainer = new DisposablePanel();
+		scrollingPanelContainer.add(new FastScrollPane(panel));
+		
+		return scrollingPanelContainer;
 	}
 	
 	abstract public DisposablePanel createEditorPanel() throws Exception;

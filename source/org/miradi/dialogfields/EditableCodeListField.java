@@ -35,7 +35,7 @@ public class EditableCodeListField extends AbstractEditableCodeListField
 	@Override
 	public DisposablePanel createEditorPanel() throws Exception
 	{
-		return new CodeListEditorPanel(getProject(), getORef(), getTag(), question, 1);
+		return createScrollingPanel(new CodeListEditorPanel(getProject(), getORef(), getTag(), question, 1));
 	}	
 
 	@Override

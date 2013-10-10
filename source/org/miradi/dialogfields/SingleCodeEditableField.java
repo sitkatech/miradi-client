@@ -50,7 +50,7 @@ public class SingleCodeEditableField extends AbstractEditableCodeListField
 		if (editor.getQuestion().hasLongDescriptionProvider())
 			return new SplitterPanelWithStaticRightSideTextPanel(mainWindow, leftPanel);
 
-		return leftPanel;
+		return createScrollingPanel(leftPanel);
 	}
 	
 	private MainWindow mainWindow;
