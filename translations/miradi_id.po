@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-07 16:01-0500\n"
+"POT-Creation-Date: 2013-10-10 14:01-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -2739,7 +2739,7 @@ msgstr "Diselesaikan "
 msgid "Completed - Successfully accomplished"
 msgstr "Selesai – Berhasil diselesaikan"
 
-#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:49
+#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:47
 msgid "ConPro Project Number"
 msgstr ""
 
@@ -3973,7 +3973,7 @@ msgstr ""
 msgid "High"
 msgstr "Tinggi"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1440
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1378
 msgid "High/Very-High Threat Chains"
 msgstr "Rangkaian Ancaman Tinggi/Sangat Tinggi "
 
@@ -4188,7 +4188,7 @@ msgstr ""
 "konsisten, dan sensitif. Dalam Miradi, indikator diwakili oleh bentuk "
 "segitiga warna ungu."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1338
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1276
 msgid "Indicator Holder"
 msgstr "Pemilik Indikator "
 
@@ -4545,7 +4545,7 @@ msgstr "Nomor Telepon "
 msgid "Label|Project Dates"
 msgstr "Tanggal Proyek "
 
-#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:73
+#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:69
 msgid "Label|Project Info"
 msgstr ""
 
@@ -4703,7 +4703,7 @@ msgstr "Lokasi "
 msgid "Low"
 msgstr "Rendah"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1441
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1379
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Rangkaian Ancaman Rendah/Sedang/Tak Terukur "
 
@@ -5350,7 +5350,7 @@ msgstr ""
 "diinginkan dari suatu proyek, seperti mengurangi ancaman kritis. Dalam "
 "Miradi, sasaran diwakili oleh persegi empat kecil warna biru."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1332
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1270
 msgid "Objective Holder"
 msgstr "Pemilik Tujuan "
 
@@ -5531,7 +5531,7 @@ msgstr "Merah Muda"
 msgid "Place scope on diagram"
 msgstr "Tempatkan cakupan pada diagram "
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1328
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1266
 msgid "Placeholder - From ConPro"
 msgstr "Placeholder - Dari ConPro "
 
@@ -5745,7 +5745,7 @@ msgstr "Penasihat Proyek"
 msgid "Project Corruption Detected"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:943
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:929
 msgid "Project Description:"
 msgstr "Keterangan Proyek: "
 
@@ -6344,7 +6344,7 @@ msgstr "Kelangsungan sederhana "
 msgid "Single Selection"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:948
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:934
 msgid "Site/Scope Description:"
 msgstr "Keterangan Lokasi/Cakupan: "
 

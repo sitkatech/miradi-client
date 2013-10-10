@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-07 16:01-0500\n"
+"POT-Creation-Date: 2013-10-10 14:01-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -2851,7 +2851,7 @@ msgstr "Completato"
 msgid "Completed - Successfully accomplished"
 msgstr "Completato - realizzato con successo"
 
-#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:49
+#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:47
 msgid "ConPro Project Number"
 msgstr ""
 
@@ -4087,7 +4087,7 @@ msgstr "Nascondi le colonne trimestre"
 msgid "High"
 msgstr "Alto"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1440
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1378
 msgid "High/Very-High Threat Chains"
 msgstr "Alta/molto-alta Catene di Minacce"
 
@@ -4302,7 +4302,7 @@ msgstr ""
 "coerente e sensibile. In Miradi, un Indicatore è rappresentato da un "
 "triangolo viola."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1338
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1276
 msgid "Indicator Holder"
 msgstr "Indicatore (Indicator holder)"
 
@@ -4662,7 +4662,7 @@ msgstr "Numero di Telefono"
 msgid "Label|Project Dates"
 msgstr "Date del Progetto"
 
-#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:73
+#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:69
 msgid "Label|Project Info"
 msgstr ""
 
@@ -4820,7 +4820,7 @@ msgstr "Localizzazione"
 msgid "Low"
 msgstr "Basso"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1441
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1379
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Catene della Minaccia Bassa/Media/Non Valutata"
 
@@ -5473,7 +5473,7 @@ msgstr ""
 "Minaccia critica. In Miradi, un Obiettivo Gestionale è rappresentato da un "
 "piccolo rettangolo blu."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1332
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1270
 msgid "Objective Holder"
 msgstr "Obiettivo Gestionale (Objective Holder)"
 
@@ -5654,7 +5654,7 @@ msgstr "Rosa"
 msgid "Place scope on diagram"
 msgstr "Inserisci l'Ambito geografico nel diagramma"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1328
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1266
 msgid "Placeholder - From ConPro"
 msgstr "Segnaposto - Da ConPro"
 
@@ -5871,7 +5871,7 @@ msgstr "Consulente di progetto"
 msgid "Project Corruption Detected"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:943
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:929
 msgid "Project Description:"
 msgstr "Descrizione del Progetto:"
 
@@ -6474,7 +6474,7 @@ msgstr "Vitalità semplificata"
 msgid "Single Selection"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:948
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:934
 msgid "Site/Scope Description:"
 msgstr "Descrizione del Sito/Ambito geografico:"
 

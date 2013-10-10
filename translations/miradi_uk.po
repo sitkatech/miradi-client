@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-07 16:01-0500\n"
+"POT-Creation-Date: 2013-10-10 14:01-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -2803,7 +2803,7 @@ msgstr "Завершений"
 msgid "Completed - Successfully accomplished"
 msgstr "Завершений - Успішно закінчений"
 
-#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:49
+#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:47
 msgid "ConPro Project Number"
 msgstr ""
 
@@ -4018,7 +4018,7 @@ msgstr ""
 msgid "High"
 msgstr "Високий"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1440
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1378
 msgid "High/Very-High Threat Chains"
 msgstr "Ланцюги високої або дуже високої загрози"
 
@@ -4232,7 +4232,7 @@ msgstr ""
 "несуперечливий і чутливий.У Міраді індикатор представляється фіолетовим "
 "трикутником."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1338
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1276
 msgid "Indicator Holder"
 msgstr "Тримач Індикатора"
 
@@ -4588,7 +4588,7 @@ msgstr "Label|Номер телефону"
 msgid "Label|Project Dates"
 msgstr "Label|Дати проекту"
 
-#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:73
+#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:69
 msgid "Label|Project Info"
 msgstr ""
 
@@ -4746,7 +4746,7 @@ msgstr "Місцезнаходження"
 msgid "Low"
 msgstr "Низький"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1441
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1379
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Ланцюги низьких/середніх/неоцінених загроз"
 
@@ -5389,7 +5389,7 @@ msgstr ""
 "як зменшення критичної загрози. У Міраді завдання представляєтьсяється малим "
 "блакитним прямокутником. "
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1332
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1270
 msgid "Objective Holder"
 msgstr "Тримач Завдання"
 
@@ -5570,7 +5570,7 @@ msgstr "Рожевий"
 msgid "Place scope on diagram"
 msgstr "Встановити сферу дій на діаграмі"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1328
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1266
 msgid "Placeholder - From ConPro"
 msgstr "Заповнювач - від ConPro"
 
@@ -5788,7 +5788,7 @@ msgstr "Консультант проекту"
 msgid "Project Corruption Detected"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:943
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:929
 msgid "Project Description:"
 msgstr "Опис проекту:"
 
@@ -6384,7 +6384,7 @@ msgstr "Проста життєздатність"
 msgid "Single Selection"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:948
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:934
 msgid "Site/Scope Description:"
 msgstr "Опис Ділянки або Зони діяльності:"
 
