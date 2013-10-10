@@ -27,7 +27,7 @@ import org.miradi.migrations.AbstractMigration;
 import org.miradi.migrations.AbstractMigrationVisitor;
 import org.miradi.migrations.MigrationResult;
 import org.miradi.migrations.RawProject;
-import org.miradi.migrations.RemoveMultipleFieldMigrator;
+import org.miradi.migrations.AbstractRemoveMultipleFieldMigrator;
 import org.miradi.migrations.RemoveMultipleFieldReverseMigrator;
 import org.miradi.migrations.VersionRange;
 import org.miradi.schemas.TncProjectDataSchema;
@@ -86,7 +86,7 @@ public class MigrationTo12 extends AbstractMigration
 		return EAM.text("This migration removes 2 Tnc fields when reverse migrating");
 	}
 	
-	private RemoveMultipleFieldMigrator removeMultipleFieldsMigrator;
+	private AbstractRemoveMultipleFieldMigrator removeMultipleFieldsMigrator;
 		
 	private static final int VERSION_FROM = 11;
 	public static final int VERSION_TO = 12;
