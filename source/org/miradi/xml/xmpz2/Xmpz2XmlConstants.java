@@ -256,8 +256,6 @@ public interface Xmpz2XmlConstants
 	public static final String TARGET_STATUS_ELEMENT_NAME = "SimpleViabilityStatus";
 	public static final String TARGET_CALCULATED_STATUS_ELEMENT_NAME = "CalculatedViabilityStatus";
 	public static final String TNC_OPERATING_UNITS = "TNCOperatingUnits";
-	public static final String TNC_PROJECT_PLACE_TYPES = "TNCProjectPlaceTypes";
-	public static final String TNC_ORGANIZATIONAL_PRIORITIES = "TNCOrganizationalPriorities";
 	public static final String TNC_CAP_STANDARDS_SCORECARD = "CAPStandardsScorecard";
 	public static final String TNC_TERRESTRIAL_ECO_REGION = "TNCTerrestrialEcoRegion";
 	public static final String TNC_MARINE_ECO_REGION = "TNCMarineEcoRegion";
@@ -366,8 +364,6 @@ public interface Xmpz2XmlConstants
 	public static final String VOCABULARY_KEA_TYPE = "vocabulary_key_ecological_attribute_type";
 	public static final String VOCABULARY_IRREVERSIBILITY_CODE = "vocabulary_irreversibility_rating";
 	public static final String VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE = "vocabulary_contribution_rating";
-	public static final String VOCABULARY_TNC_PROJECT_PLACE_TYPES = "vocabulary_tnc_project_place_types";
-	public static final String VOCABULARY_TNC_ORGANIZATIONAL_PRIORITIES = "vocabulary_tnc_organizational_priorities";
 	public static final String VOCABULARY_TNC_OPERATING_UNTIS = "vocabulary_tnc_operating_units";
 	public static final String VOCABULARY_TNC_TERRESTRIAL_ECO_REGION = "vocabulary_tnc_terrestrial_eco_region";
 	public static final String VOCABULARY_TNC_MARINE_ECO_REGION = "vocabulary_tnc_marine_eco_region";

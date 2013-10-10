@@ -902,21 +902,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	private void writeClassifications(UnicodeWriter out) throws Exception
 	{
 		writeStartElement(out, CLASSIFICATIONS);
-		
-		HashMap<String, String> classificationRelatedMiradiToConproMap = new HashMap<String, String>();
-		classificationRelatedMiradiToConproMap.putAll(getCodeMapHelper().getMiradiToConProTncOrganizationalPrioritiesMap());
-		classificationRelatedMiradiToConproMap.putAll(getCodeMapHelper().getMiradiToConProTncProjectPlaceTypesMap());
-		
-		TncProjectData tncProjectData = getTncProjectData();
-		CodeList classificationRelatedCodes = new CodeList();
-		classificationRelatedCodes.addAll(tncProjectData.getOrganizationalPriorityCodes());
-		classificationRelatedCodes.addAll(tncProjectData.getProjectPlaceTypeCodes());
-		for(int index = 0; index < classificationRelatedCodes.size(); ++index)
-		{
-			String code = classificationRelatedCodes.get(index);
-			writeCodeElement(out, CLASSIFICATION_ID, code, classificationRelatedMiradiToConproMap);
-		}
-		
+		//NOTE: no longer exporting TNC project types and organizational priotiries
 		writeEndElement(out, CLASSIFICATIONS);
 	}
 

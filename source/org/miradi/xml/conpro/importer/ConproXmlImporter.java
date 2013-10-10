@@ -673,62 +673,10 @@ public class ConproXmlImporter implements ConProMiradiXml
 	private void importClassificationCodes(Node projectSumaryNode) throws Exception
 	{
 		CodeList classificationCodesToImport = extractAllClassificationCodes(projectSumaryNode);
-		
-		CodeList classificationCodesImportedAsOrganizationalPriorities = importOrganizationalPriorities(classificationCodesToImport);
-		classificationCodesToImport.subtract(classificationCodesImportedAsOrganizationalPriorities);
-		
-		CodeList classificationCodesImportedAsProjectPlaceTypes = importProjectPlaceTypes(classificationCodesToImport);
-		classificationCodesToImport.subtract(classificationCodesImportedAsProjectPlaceTypes);
-		
 		if (classificationCodesToImport.size() > 0)
 			throw new RuntimeException("Not all classification Codes could imported." + classificationCodesToImport.toString());
 	}
 
-	private CodeList importProjectPlaceTypes(CodeList allClassificationCodes) throws Exception
-	{
-		return importClassifications(allClassificationCodes, TncProjectData.TAG_PROJECT_PLACE_TYPES, getConProToMiradiTncProjectPlaceTypeMap());
-	}
-
-	private CodeList importOrganizationalPriorities(CodeList allClassificationCodes) throws Exception
-	{
-		return importClassifications(allClassificationCodes, TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, getConProToMiradiTncOrganizationalPrioritiesMap());
-	}
-
-	private CodeList importClassifications(CodeList allClassificationCodes,	final String tag, HashMap<String, String> conProToMiradiMap)	throws Exception
-	{
-		CodeList classificationCodesToImportHere = getCodesThatAreKeys(allClassificationCodes, conProToMiradiMap);
-		CodeList mappedCodes = getMappedValues(classificationCodesToImportHere, conProToMiradiMap);
-		importField(getSingletonTncProjectDataRef(), tag, mappedCodes.toString());
-		
-		return classificationCodesToImportHere;
-	}
-
-	private CodeList getCodesThatAreKeys(CodeList allClassificationCodes, HashMap<String, String> classificationRelatedMap)
-	{
-		CodeList codesToRemove = new CodeList();
-		for (int index = 0; index < allClassificationCodes.size(); ++index)
-		{
-			String code = allClassificationCodes.get(index);
-			if (classificationRelatedMap.containsKey(code))
-				codesToRemove.add(code);
-		}
-		
-		return codesToRemove;
-	}
-
-	private CodeList getMappedValues(CodeList allCodes, HashMap<String, String> classificationRelatedMap) throws Exception
-	{
-		CodeList mappedCodes = new CodeList();
-		for (int index = 0; index < allCodes.size(); ++index)
-		{
-			String code = allCodes.get(index);
-			if (classificationRelatedMap.containsKey(code))
-				mappedCodes.add(classificationRelatedMap.get(code));
-		}
-		
-		return mappedCodes;
-	}
-	
 	private CodeList extractAllClassificationCodes(Node projectSumaryNode) throws Exception
 	{
 		CodeList extractedCodes = new CodeList();		
@@ -741,16 +689,6 @@ public class ConproXmlImporter implements ConProMiradiXml
 		}
 		
 		return extractedCodes;
-	}
-	
-	private HashMap<String, String> getConProToMiradiTncProjectPlaceTypeMap()
-	{
-		return getCodeMapHelper().getConProToMiradiTncProjectPlaceTypeMap();
-	}
-
-	private HashMap<String, String> getConProToMiradiTncOrganizationalPrioritiesMap()
-	{
-		return getCodeMapHelper().getConProToMiradiTncOrganizationalPrioritiesMap();
 	}
 	
 	private ORef getSingletonTncProjectDataRef()
