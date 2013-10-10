@@ -23,8 +23,6 @@ package org.miradi.schemas;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.TncProjectData;
 import org.miradi.questions.ProjectSharingQuestion;
-import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
-import org.miradi.questions.TncProjectPlaceTypeQuestion;
 
 public class TncProjectDataSchema extends BaseObjectSchema
 {
@@ -39,8 +37,6 @@ public class TncProjectDataSchema extends BaseObjectSchema
 		super.fillFieldSchemas();
 		
 		createFieldSchemaChoice(TncProjectData.TAG_PROJECT_SHARING_CODE, ProjectSharingQuestion.class);
-		createFieldSchemaCodeList(TncProjectData.TAG_PROJECT_PLACE_TYPES, getQuestion(TncProjectPlaceTypeQuestion.class));
-		createFieldSchemaCodeList(TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, getQuestion(TncOrganizationalPrioritiesQuestion.class));
 		createFieldSchemaMultiLineUserText(TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
 		createFieldSchemaMultiLineUserText(TncProjectData.TAG_PROJECT_RESOURCES_SCORECARD);
 		createFieldSchemaMultiLineUserText(TncProjectData.TAG_PROJECT_LEVEL_COMMENTS);
