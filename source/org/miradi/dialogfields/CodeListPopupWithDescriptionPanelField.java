@@ -42,11 +42,10 @@ public class CodeListPopupWithDescriptionPanelField extends	AbstractEditableCode
 		SingleLevelQuestionEditor leftComponent = new SingleLevelQuestionEditor(mainWindow, question);
 		ComponentWrapperObjectDataInputField field = new ComponentWrapperObjectDataInputField(getProject(), getORef(), getTag(), leftComponent);
 		OneFieldObjectDataInputPanel leftPanel = new OneFieldObjectDataInputPanel(getProject(), getORef(), getTag(), field);
-		
 		if (leftComponent.getQuestion().hasLongDescriptionProvider())
 			return new SplitterPanelWithStaticRightSideTextPanel(mainWindow, leftPanel);
 
-		return leftPanel;
+		return createScrollingPanel(leftPanel);
 	}
 
 	@Override
