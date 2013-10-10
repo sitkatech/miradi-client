@@ -22,7 +22,7 @@ package org.miradi.migrations;
 
 import java.util.HashSet;
 
-public class RemoveMultipleFieldMigrator
+abstract public class RemoveMultipleFieldMigrator
 {
 	public RemoveMultipleFieldMigrator(int typeToUse, HashSet<String> fieldsToRemoveToUse)
 	{
@@ -30,16 +30,6 @@ public class RemoveMultipleFieldMigrator
 		fieldsToRemove = fieldsToRemoveToUse;
 	}
 
-	public AbstractMigrationVisitor migrateForward() throws Exception
-	{
-		return new RemoveVisitor();
-	}
-	
-	public AbstractMigrationVisitor reverseMigrate() throws Exception
-	{
-		return new DoNothingReverseMigrationVisitor(type);
-	}
-	
 	private static MigrationResult removeFields(RawObject rawObject, HashSet<String> fieldsToRemove)
 	{
 		MigrationResult migrationResult = MigrationResult.createUninitializedResult();
@@ -67,6 +57,10 @@ public class RemoveMultipleFieldMigrator
 			return removeFields(rawObject, fieldsToRemove);
 		}
 	}
+	
+	abstract public AbstractMigrationVisitor migrateForward() throws Exception;
+	
+	abstract public AbstractMigrationVisitor reverseMigrate() throws Exception;
 	
 	protected int type;
 	private HashSet<String> fieldsToRemove;

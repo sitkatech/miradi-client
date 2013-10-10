@@ -27,21 +27,21 @@ import org.miradi.migrations.AbstractMigration;
 import org.miradi.migrations.AbstractMigrationVisitor;
 import org.miradi.migrations.MigrationResult;
 import org.miradi.migrations.RawProject;
-import org.miradi.migrations.RemoveMultipleFieldForwardMigrator;
 import org.miradi.migrations.RemoveMultipleFieldMigrator;
+import org.miradi.migrations.RemoveMultipleFieldReverseMigrator;
 import org.miradi.migrations.VersionRange;
 import org.miradi.schemas.TncProjectDataSchema;
 
-public class MigrationTo11 extends AbstractMigration
+public class MigrationTo12 extends AbstractMigration
 {
-	public MigrationTo11(RawProject rawProjectToUse)
+	public MigrationTo12(RawProject rawProjectToUse)
 	{
 		super(rawProjectToUse);
 		
 		HashSet<String> fieldsToRemove = new HashSet<String>();
-		fieldsToRemove.add(LEGACY_TAG_TNC_PROJET_TYPES);
-		fieldsToRemove.add(LEGACY_TAG_TNC_ORGANIZATIONAL_PRIORITIES);
-		removeMultipleFieldsMigrator = new RemoveMultipleFieldForwardMigrator(TncProjectDataSchema.getObjectType(), fieldsToRemove);
+		fieldsToRemove.add(TAG_PROJECT_FOCUS);
+		fieldsToRemove.add(TAG_PROJECT_SCALE);
+		removeMultipleFieldsMigrator = new RemoveMultipleFieldReverseMigrator(TncProjectDataSchema.getObjectType(), fieldsToRemove);
 	}
 
 	@Override
@@ -88,10 +88,10 @@ public class MigrationTo11 extends AbstractMigration
 	
 	private RemoveMultipleFieldMigrator removeMultipleFieldsMigrator;
 		
-	private static final int VERSION_FROM = 10;
-	public static final int VERSION_TO = 11;
+	private static final int VERSION_FROM = 11;
+	public static final int VERSION_TO = 12;
 	
 	
-	public final static String LEGACY_TAG_TNC_PROJET_TYPES = "ProjectPlaceTypes";
-	public final static String LEGACY_TAG_TNC_ORGANIZATIONAL_PRIORITIES = "OrganizationalPriorities";
+	public final static String TAG_PROJECT_FOCUS = "ProjectFocus";
+	public final static String TAG_PROJECT_SCALE = "ProjectScale";
 }
