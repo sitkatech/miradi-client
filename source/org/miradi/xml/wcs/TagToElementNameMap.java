@@ -50,7 +50,6 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
-import org.miradi.objects.TncProjectData;
 import org.miradi.xml.generic.XmlSchemaCreator;
 
 public class TagToElementNameMap implements Xmpz1XmlConstants
@@ -205,8 +204,8 @@ public class TagToElementNameMap implements Xmpz1XmlConstants
 		map.put(ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS, XmlSchemaCreator.TNC_PLANNING_TEAM_COMMENTS);
 		map.put(ProjectMetadata.TAG_TNC_LESSONS_LEARNED, XmlSchemaCreator.TNC_LESSONS_LEARNED);
 		map.put(ProjectMetadata.TAG_TNC_OPERATING_UNITS, XmlSchemaCreator.TNC_OPERATING_UNITS);
-		map.put(TncProjectData.TAG_PROJECT_PLACE_TYPES, XmlSchemaCreator.TNC_PROJECT_PLACE_TYPES);
-		map.put(TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, XmlSchemaCreator.TNC_ORGANIZATIONAL_PRIORITIES);
+		map.put("ProjectPlaceTypes", XmlSchemaCreator.TNC_PROJECT_PLACE_TYPES);
+		map.put("OrganizationalPriorities", XmlSchemaCreator.TNC_ORGANIZATIONAL_PRIORITIES);
 		map.put(ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, XmlSchemaCreator.TNC_TERRESTRIAL_ECO_REGION);
 		map.put(ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, XmlSchemaCreator.TNC_MARINE_ECO_REGION);
 		map.put(ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, XmlSchemaCreator.TNC_FRESHWATER_ECO_REGION);
