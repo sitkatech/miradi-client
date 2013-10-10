@@ -124,6 +124,8 @@ import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 import org.miradi.questions.PrecisionTypeQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
+import org.miradi.questions.ProjectFocusQuestion;
+import org.miradi.questions.ProjectScaleQuestion;
 import org.miradi.questions.ProjectSharingQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.RatingSourceQuestion;
@@ -327,7 +329,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectWithSampleStringData(fosProjectDataRef, FosProjectData.TAG_COACHES);	
 	}
 	
-	private void fillTncProjectData() throws Exception
+	public void fillTncProjectData() throws Exception
 	{
 		ORef tncProjectDataRef = getTncProjectDataRef();
 
@@ -343,6 +345,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectWithSampleStringData(tncProjectDataRef, TncProjectData.TAG_MAKING_THE_CASE);
 		fillObjectWithSampleStringData(tncProjectDataRef, TncProjectData.TAG_RISKS);
 		fillObjectWithSampleStringData(tncProjectDataRef, TncProjectData.TAG_CAPACITY_AND_FUNDING);
+		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_FOCUS, ProjectFocusQuestion.POLICY_AND_PRACTIVE_CODE);
+		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_SCALE, ProjectScaleQuestion.REGIONAL_CODE);
 	}
 	
 	public void setFiscalYearStartMonth(int startMonth) throws Exception

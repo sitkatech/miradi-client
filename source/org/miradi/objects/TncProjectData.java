@@ -78,4 +78,6 @@ public class TncProjectData extends BaseObject
 	public final static String TAG_MAKING_THE_CASE = "OverallProjectGoal";
 	public final static String TAG_RISKS = "Risks";
 	public final static String TAG_CAPACITY_AND_FUNDING = "FinancialPlan";
+	public final static String TAG_PROJECT_FOCUS = "ProjectFocus";
+	public final static String TAG_PROJECT_SCALE = "ProjectScale";
 }
