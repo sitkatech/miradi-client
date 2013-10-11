@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-11 14:01-0500\n"
+"POT-Creation-Date: 2013-10-11 14:31-0500\n"
 "PO-Revision-Date: 2013-06-07 01:56+0100\n"
 "Last-Translator: Galragchaa <galragchaa@yahoo.com>\n"
 "Language-Team: none\n"
@@ -3103,10 +3103,6 @@ msgstr "Мэдээллийн байршил"
 msgid "Data was exported as tab delimited."
 msgstr "Мэдээлэл таб-тай экспортлогдсон"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:714
-msgid "Data was lost during migration.  Would you like to continue?"
-msgstr ""
-
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:54
 msgid "Date"
 msgstr "Огноо"
@@ -4131,6 +4127,12 @@ msgstr ""
 msgid ""
 "If implemented, will the strategy lead to desired changes in the situation "
 "at your project site?"
+msgstr ""
+
+#: Miradi/source/org/miradi/main/MainWindow.java:714
+msgid ""
+"If you continue with this migration, some data will be lost. Would you like "
+"to continue anyway?"
 msgstr ""
 
 #: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:104
@@ -7977,11 +7979,11 @@ msgid ""
 "status fields"
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo11.java:86
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo11.java:95
 msgid "This migration removes 2 Tnc fields"
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo12.java:86
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo12.java:95
 msgid "This migration removes 2 Tnc fields when reverse migrating"
 msgstr ""
 
