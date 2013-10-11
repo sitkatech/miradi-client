@@ -32,7 +32,7 @@ abstract public class AbstractRemoveMultipleFieldMigrator
 
 	private static MigrationResult removeFields(RawObject rawObject, HashSet<String> fieldsToRemove)
 	{
-		MigrationResult migrationResult = MigrationResult.createUninitializedResult();
+		MigrationResult migrationResult = MigrationResult.createSuccess();
 		for(String tagToRemove : fieldsToRemove)
 		{
 			if (rawObject.containsKey(tagToRemove))

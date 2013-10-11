@@ -46,7 +46,7 @@ public class RenameMultipleFieldMigrator
 	
 	private static MigrationResult renameFields(RawObject rawObject, BiDirectionalHashMap oldToNewTagMapToUse)
 	{
-		MigrationResult migrationResult = MigrationResult.createUninitializedResult();
+		MigrationResult migrationResult = MigrationResult.createSuccess();
 		HashSet<String> legacyTags = oldToNewTagMapToUse.getKeys();
 		for(String legacyTag : legacyTags)
 		{
