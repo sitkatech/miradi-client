@@ -68,18 +68,19 @@ public class SummaryProjectPanel extends ObjectDataInputPanel
 	private void addMiradiShareField() throws Exception
 	{
 		String htmlLinkToMiradiShareTab = "<a href=\"\">" + EAM.text("Learn about Miradi Share") + "</a>";
+		final String label = EAM.text("Miradi Share Program");
 		if (getProject().getMetadata().isMiradiShareProject())
 		{
 			final String tabIdentifier = SummaryMiradiSharePanel.class.getSimpleName();
 			final ObjectDataField clickableLinkField = createStaticReadonlyClickableLinkField(ProjectMetadataSchema.getObjectType(), htmlLinkToMiradiShareTab, tabIdentifier);
 			final ObjectDataField readonlyProgramNameField = createReadonlyTextField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_NAME);
-			addFieldsOnOneLineWithoutFieldLabels(EAM.text("Miradi Share Proram"), new ObjectDataField[]{readonlyProgramNameField, clickableLinkField});
+			addFieldsOnOneLineWithoutFieldLabels(label, new ObjectDataField[]{readonlyProgramNameField, clickableLinkField});
 		}
 		else
 		{
 			final String tabIdentifier = SummaryNonSharedMiradiSharePanel.class.getSimpleName();
 			final ObjectDataField staticReadonlyClickableLinkField = createStaticReadonlyClickableLinkField(ProjectMetadataSchema.getObjectType(), htmlLinkToMiradiShareTab, tabIdentifier);
-			addFieldsOnOneLineWithoutFieldLabels(EAM.text("Miradi Share Proram"), new ObjectDataField[]{staticReadonlyClickableLinkField, });
+			addFieldsOnOneLineWithoutFieldLabels(label, new ObjectDataField[]{staticReadonlyClickableLinkField, });
 		}
 	}
 

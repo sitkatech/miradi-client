@@ -24,7 +24,7 @@ import javax.swing.JComponent;
 
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.utils.SummaryViewTabChangeLinkHandler;
+import org.miradi.utils.SummaryViewSwitchTabLinkHandler;
 
 public class ReadonlyStaticClickableLinkField extends ObjectDataField
 {
@@ -32,7 +32,7 @@ public class ReadonlyStaticClickableLinkField extends ObjectDataField
 	{
 		super(mainWindow.getProject(), refToUse);
 		
-		staticHtmlForm = new StaticHtmlForm(mainWindow, htmlLink, new SummaryViewTabChangeLinkHandler(mainWindow, tabIdentifier));
+		staticHtmlForm = new StaticHtmlDataPanelViewer(mainWindow, htmlLink, new SummaryViewSwitchTabLinkHandler(mainWindow, tabIdentifier));
 	}
 
 	@Override
@@ -57,6 +57,6 @@ public class ReadonlyStaticClickableLinkField extends ObjectDataField
 	{
 	}
 
-	private StaticHtmlForm staticHtmlForm;
+	private StaticHtmlDataPanelViewer staticHtmlForm;
 }
 
