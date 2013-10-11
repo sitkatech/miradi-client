@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-10 17:16-0500\n"
+"POT-Creation-Date: 2013-10-11 13:31-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -2922,7 +2922,7 @@ msgid "Currency|Other"
 msgstr "Lainnya"
 
 #: Miradi/source/org/miradi/forms/objects/MeasurementPropertiesForm.java:36
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:61
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:64
 msgid "Current Status"
 msgstr "Status Saat Ini "
 
@@ -3033,7 +3033,7 @@ msgstr "Data diekspor sebagai data yang dipisahkan oleh tab. "
 msgid "Data was lost during migration.  Would you like to continue?"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:51
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:54
 msgid "Date"
 msgstr "Tanggal "
 
@@ -4943,8 +4943,8 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:323
 #: Miradi/source/org/miradi/forms/objects/MeasurementPropertiesForm.java:33
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:86
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:49
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:50
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:52
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:53
 msgid "Measurement"
 msgstr "Pengukuran "
 
@@ -6077,7 +6077,7 @@ msgstr "STEP "
 msgid "SWOT"
 msgstr "SWOT "
 
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:72
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:76
 msgid "Sample"
 msgstr ""
 
@@ -8227,7 +8227,7 @@ msgstr "Dialog Membuat Tautan "
 msgid "Title|MPZ Export Warning"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:128
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:133
 msgid "Title|Measurement Properties"
 msgstr "Sifat-sifat Pengukuran "
 
@@ -8456,7 +8456,7 @@ msgstr "Kesalahan tak terduga membuat paket bahasa tidak dapat diinstal "
 msgid "Unexpected error prevented the tag operation from succeeding"
 msgstr "Kesalahan tak terduga telah menghalangi operasi tag tersebut "
 
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:55
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:58
 msgid "Unit"
 msgstr "Unit "
 
@@ -8526,7 +8526,7 @@ msgstr ""
 msgid "User Defined Extension"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:53
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:56
 msgid "Value"
 msgstr "Nilai "
 

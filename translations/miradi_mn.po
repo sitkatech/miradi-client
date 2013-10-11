@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-10 17:16-0500\n"
+"POT-Creation-Date: 2013-10-11 13:31-0500\n"
 "PO-Revision-Date: 2013-06-07 01:56+0100\n"
 "Last-Translator: Galragchaa <galragchaa@yahoo.com>\n"
 "Language-Team: none\n"
@@ -2998,7 +2998,7 @@ msgid "Currency|Other"
 msgstr "Мөнгөн тэмдэгт|Бусад"
 
 #: Miradi/source/org/miradi/forms/objects/MeasurementPropertiesForm.java:36
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:61
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:64
 msgid "Current Status"
 msgstr "Одоогийн статус"
 
@@ -3107,7 +3107,7 @@ msgstr "Мэдээлэл таб-тай экспортлогдсон"
 msgid "Data was lost during migration.  Would you like to continue?"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:51
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:54
 msgid "Date"
 msgstr "Огноо"
 
@@ -4995,8 +4995,8 @@ msgstr "Таван сар"
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:323
 #: Miradi/source/org/miradi/forms/objects/MeasurementPropertiesForm.java:33
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:86
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:49
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:50
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:52
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:53
 msgid "Measurement"
 msgstr "Хэмжилт"
 
@@ -6138,7 +6138,7 @@ msgstr "Үе шат"
 msgid "SWOT"
 msgstr "SWOT"
 
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:72
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:76
 msgid "Sample"
 msgstr ""
 
@@ -8297,7 +8297,7 @@ msgstr "Гарчиг|Харилцан ярилах цонх үүсгэх лин�
 msgid "Title|MPZ Export Warning"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:128
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:133
 msgid "Title|Measurement Properties"
 msgstr "Гарчиг|Хэмжигдэхүүний  агуулга"
 
@@ -8527,7 +8527,7 @@ msgstr "Хэлний багцыг суулгахад гэнэтийн алдаа
 msgid "Unexpected error prevented the tag operation from succeeding"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:55
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:58
 msgid "Unit"
 msgstr ""
 
@@ -8597,7 +8597,7 @@ msgstr ""
 msgid "User Defined Extension"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:53
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:56
 msgid "Value"
 msgstr "Үнэ цэнэ"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-10 17:16-0500\n"
+"POT-Creation-Date: 2013-10-11 13:31-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -2985,7 +2985,7 @@ msgid "Currency|Other"
 msgstr "Currency|Інший"
 
 #: Miradi/source/org/miradi/forms/objects/MeasurementPropertiesForm.java:36
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:61
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:64
 msgid "Current Status"
 msgstr "Поточний стан"
 
@@ -3096,7 +3096,7 @@ msgstr "Дані були експортовані як tab delimited."
 msgid "Data was lost during migration.  Would you like to continue?"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:51
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:54
 msgid "Date"
 msgstr "Дата"
 
@@ -4985,8 +4985,8 @@ msgstr "Травень"
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:323
 #: Miradi/source/org/miradi/forms/objects/MeasurementPropertiesForm.java:33
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:86
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:49
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:50
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:52
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:53
 msgid "Measurement"
 msgstr "Вимірювання"
 
@@ -6118,7 +6118,7 @@ msgstr "STEP"
 msgid "SWOT"
 msgstr "SWOT-аналіз"
 
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:72
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:76
 msgid "Sample"
 msgstr ""
 
@@ -8260,7 +8260,7 @@ msgstr "Title|З'єднати Створити діалог"
 msgid "Title|MPZ Export Warning"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:128
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:133
 msgid "Title|Measurement Properties"
 msgstr "Title|Складові вимірювання"
 
@@ -8488,7 +8488,7 @@ msgstr "Нечекана помилка перешкодила інсталяц�
 msgid "Unexpected error prevented the tag operation from succeeding"
 msgstr "Нечекана помилка, через яку тегова операція не встигла здійснитися "
 
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:55
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:58
 msgid "Unit"
 msgstr ""
 
@@ -8558,7 +8558,7 @@ msgstr ""
 msgid "User Defined Extension"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:53
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:56
 msgid "Value"
 msgstr "Цінність"
 
