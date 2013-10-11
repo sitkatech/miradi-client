@@ -240,7 +240,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 		add(fieldPanel);
 	}
 	
-	private JPanel createFieldPanel(ObjectDataInputField[] fields)
+	public JPanel createFieldPanel(ObjectDataInputField[] fields)
 	{
 		final OneRowPanel fieldPanel = new OneRowPanel();
 		fieldPanel.setGaps(3);

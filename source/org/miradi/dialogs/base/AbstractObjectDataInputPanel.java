@@ -969,11 +969,13 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		addTopAlignedLabel(label);
 	}
 
-	public void addHtmlWrappedLabel(String translatedText)
+	public UiLabel addHtmlWrappedLabel(String translatedText)
 	{
 		translatedText = HtmlUtilities.wrapInHtmlTags(translatedText);
 		UiLabel label = new PanelTitleLabel(translatedText);
 		addTopAlignedLabel(label);
+		
+		return label;
 	}
 
 	public void addLabel(int objectType, String fieldTag)
