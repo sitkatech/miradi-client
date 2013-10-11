@@ -252,7 +252,9 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 		for(int i = 0; i < fields.length; ++i)
 		{
 			addFieldToList(fields[i]);
-			fieldPanel.add(new PanelTitleLabel(labelTexts[i]));
+			if (i < labelTexts.length)
+				fieldPanel.add(new PanelTitleLabel(labelTexts[i]));
+			
 			fieldPanel.add(fields[i].getComponent());
 			fieldPanel.add(new JLabel(" "));
 		}
@@ -260,20 +262,9 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 		return fieldPanel;
 	}
 
-	//FIXME urgent - this method contains duplication, refactor extract duplication
 	protected void addFieldsOnOneLineWithoutFieldLabels(String translatedLabel, ObjectDataField[] fields)
 	{
-		final OneRowPanel fieldPanel = new OneRowPanel();
-		fieldPanel.setGaps(3);
-
-		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		for(int i = 0; i < fields.length; ++i)
-		{
-			addFieldToList(fields[i]);
-			fieldPanel.add(fields[i].getComponent());
-			fieldPanel.add(new JLabel(" "));
-		}
-		
+		JPanel fieldPanel = createFieldPanel(new String[0], fields);
 		addHtmlWrappedLabel(translatedLabel);
 		add(fieldPanel);
 	}
