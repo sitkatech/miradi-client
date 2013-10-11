@@ -23,31 +23,34 @@ package org.miradi.migrations.forward;
 import java.util.HashSet;
 
 import org.miradi.main.EAM;
-import org.miradi.migrations.AbstractMigration;
 import org.miradi.migrations.AbstractMigrationVisitor;
 import org.miradi.migrations.MigrationResult;
 import org.miradi.migrations.RawProject;
 import org.miradi.migrations.RemoveMultipleFieldForwardMigrator;
-import org.miradi.migrations.AbstractRemoveMultipleFieldMigrator;
 import org.miradi.migrations.VersionRange;
 import org.miradi.schemas.TncProjectDataSchema;
 
-public class MigrationTo11 extends AbstractMigration
+public class MigrationTo11 extends RemoveMultipleFieldForwardMigrator
 {
 	public MigrationTo11(RawProject rawProjectToUse)
 	{
-		super(rawProjectToUse);
-		
+		super(rawProjectToUse, TncProjectDataSchema.getObjectType());
+	}
+
+	@Override
+	protected HashSet<String> createFieldsToRemove()
+	{
 		HashSet<String> fieldsToRemove = new HashSet<String>();
 		fieldsToRemove.add(LEGACY_TAG_TNC_PROJET_TYPES);
 		fieldsToRemove.add(LEGACY_TAG_TNC_ORGANIZATIONAL_PRIORITIES);
-		removeMultipleFieldsMigrator = new RemoveMultipleFieldForwardMigrator(TncProjectDataSchema.getObjectType(), fieldsToRemove);
+		
+		return fieldsToRemove;
 	}
 
 	@Override
 	protected MigrationResult migrateForward() throws Exception
 	{
-		AbstractMigrationVisitor visitor = removeMultipleFieldsMigrator.createMigrateForwardVisitor();
+		AbstractMigrationVisitor visitor = createMigrateForwardVisitor();
 		visitAllObjectsInPool(visitor);
 		
 		return visitor.getMigrationResult();
@@ -56,7 +59,7 @@ public class MigrationTo11 extends AbstractMigration
 	@Override
 	protected MigrationResult reverseMigrate() throws Exception
 	{
-		AbstractMigrationVisitor visitor = removeMultipleFieldsMigrator.createReverseMigrateVisitor();
+		AbstractMigrationVisitor visitor = createReverseMigrateVisitor();
 		visitAllObjectsInPool(visitor);
 		
 		return visitor.getMigrationResult();
@@ -86,11 +89,8 @@ public class MigrationTo11 extends AbstractMigration
 		return EAM.text("This migration removes 2 Tnc fields");
 	}
 	
-	private AbstractRemoveMultipleFieldMigrator removeMultipleFieldsMigrator;
-		
 	private static final int VERSION_FROM = 10;
 	public static final int VERSION_TO = 11;
-	
 	
 	public final static String LEGACY_TAG_TNC_PROJET_TYPES = "ProjectPlaceTypes";
 	public final static String LEGACY_TAG_TNC_ORGANIZATIONAL_PRIORITIES = "OrganizationalPriorities";

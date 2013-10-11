@@ -23,31 +23,34 @@ package org.miradi.migrations.forward;
 import java.util.HashSet;
 
 import org.miradi.main.EAM;
-import org.miradi.migrations.AbstractMigration;
 import org.miradi.migrations.AbstractMigrationVisitor;
 import org.miradi.migrations.MigrationResult;
 import org.miradi.migrations.RawProject;
-import org.miradi.migrations.AbstractRemoveMultipleFieldMigrator;
 import org.miradi.migrations.RemoveMultipleFieldReverseMigrator;
 import org.miradi.migrations.VersionRange;
 import org.miradi.schemas.TncProjectDataSchema;
 
-public class MigrationTo12 extends AbstractMigration
+public class MigrationTo12 extends RemoveMultipleFieldReverseMigrator
 {
 	public MigrationTo12(RawProject rawProjectToUse)
 	{
-		super(rawProjectToUse);
-		
+		super(rawProjectToUse, TncProjectDataSchema.getObjectType());
+	}
+
+	@Override
+	protected HashSet<String> createFieldsToRemove()
+	{
 		HashSet<String> fieldsToRemove = new HashSet<String>();
 		fieldsToRemove.add(TAG_PROJECT_FOCUS);
 		fieldsToRemove.add(TAG_PROJECT_SCALE);
-		removeMultipleFieldsMigrator = new RemoveMultipleFieldReverseMigrator(TncProjectDataSchema.getObjectType(), fieldsToRemove);
+		
+		return fieldsToRemove;
 	}
 
 	@Override
 	protected MigrationResult migrateForward() throws Exception
 	{
-		AbstractMigrationVisitor visitor = removeMultipleFieldsMigrator.createMigrateForwardVisitor();
+		AbstractMigrationVisitor visitor = createMigrateForwardVisitor();
 		visitAllObjectsInPool(visitor);
 		
 		return visitor.getMigrationResult();
@@ -56,7 +59,7 @@ public class MigrationTo12 extends AbstractMigration
 	@Override
 	protected MigrationResult reverseMigrate() throws Exception
 	{
-		AbstractMigrationVisitor visitor = removeMultipleFieldsMigrator.createReverseMigrateVisitor();
+		AbstractMigrationVisitor visitor = createReverseMigrateVisitor();
 		visitAllObjectsInPool(visitor);
 		
 		return visitor.getMigrationResult();
@@ -86,11 +89,8 @@ public class MigrationTo12 extends AbstractMigration
 		return EAM.text("This migration removes 2 Tnc fields when reverse migrating");
 	}
 	
-	private AbstractRemoveMultipleFieldMigrator removeMultipleFieldsMigrator;
-		
 	private static final int VERSION_FROM = 11;
 	public static final int VERSION_TO = 12;
-	
 	
 	public final static String TAG_PROJECT_FOCUS = "ProjectFocus";
 	public final static String TAG_PROJECT_SCALE = "ProjectScale";

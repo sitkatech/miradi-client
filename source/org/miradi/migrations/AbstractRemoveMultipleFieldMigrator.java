@@ -22,12 +22,14 @@ package org.miradi.migrations;
 
 import java.util.HashSet;
 
-abstract public class AbstractRemoveMultipleFieldMigrator
+abstract public class AbstractRemoveMultipleFieldMigrator extends AbstractMigration
 {
-	public AbstractRemoveMultipleFieldMigrator(int typeToUse, HashSet<String> fieldsToRemoveToUse)
+	public AbstractRemoveMultipleFieldMigrator(RawProject rawProject, int typeToUse)
 	{
+		super(rawProject);
+		
 		type = typeToUse;
-		fieldsToRemove = fieldsToRemoveToUse;
+		fieldsToRemove = createFieldsToRemove();
 	}
 
 	private static MigrationResult removeFields(RawObject rawObject, HashSet<String> fieldsToRemove)
@@ -57,6 +59,8 @@ abstract public class AbstractRemoveMultipleFieldMigrator
 			return removeFields(rawObject, fieldsToRemove);
 		}
 	}
+	
+	abstract protected HashSet<String> createFieldsToRemove();
 	
 	abstract public AbstractMigrationVisitor createMigrateForwardVisitor() throws Exception;
 	

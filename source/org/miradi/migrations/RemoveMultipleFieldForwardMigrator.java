@@ -20,13 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
-import java.util.HashSet;
 
-public class RemoveMultipleFieldForwardMigrator extends	AbstractRemoveMultipleFieldMigrator
+abstract public class RemoveMultipleFieldForwardMigrator extends AbstractRemoveMultipleFieldMigrator
 {
-	public RemoveMultipleFieldForwardMigrator(int typeToUse, HashSet<String> fieldsToRemoveToUse)
+	public RemoveMultipleFieldForwardMigrator(RawProject rawProject, int typeToUse)
 	{
-		super(typeToUse, fieldsToRemoveToUse);
+		super(rawProject, typeToUse);
 	}
 	
 	@Override
