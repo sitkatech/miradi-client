@@ -34,12 +34,12 @@ public class RenameMultipleFieldMigrator
 		oldToNewTagMap = oldToNewTagMapToUse;
 	}
 
-	public AbstractMigrationVisitor migrateForward() throws Exception
+	public AbstractMigrationVisitor createMigrateForwardVisitor() throws Exception
 	{
 		return new ForwardRenameVisitor();
 	}
 	
-	public AbstractMigrationVisitor reverseMigrate() throws Exception
+	public AbstractMigrationVisitor createReverseMigrateVisitor() throws Exception
 	{
 		return  new ReverseRenameVisitor();
 	}
