@@ -21,8 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.migrations.forward;
 
 import org.miradi.main.EAM;
-import org.miradi.migrations.AbstractMigrationVisitor;
-import org.miradi.migrations.MigrationResult;
 import org.miradi.migrations.RawProject;
 import org.miradi.migrations.RenameMultipleFieldMigrator;
 import org.miradi.migrations.VersionRange;
@@ -36,24 +34,6 @@ public class MigrationTo10 extends RenameMultipleFieldMigrator
 		super(rawProject, TncProjectDataSchema.getObjectType());
 
 		createLegacyToNewMap();
-	}
-
-	@Override
-	protected MigrationResult migrateForward() throws Exception
-	{
-		AbstractMigrationVisitor visitor = createMigrateForwardVisitor();
-		visitAllObjectsInPool(visitor);
-		
-		return visitor.getMigrationResult();
-	}
-	
-	@Override
-	protected MigrationResult reverseMigrate() throws Exception
-	{
-		AbstractMigrationVisitor visitor = createReverseMigrateVisitor();
-		visitAllObjectsInPool(visitor);
-		
-		return visitor.getMigrationResult();
 	}
 
 	@Override

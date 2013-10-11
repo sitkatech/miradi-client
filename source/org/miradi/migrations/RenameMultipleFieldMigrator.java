@@ -35,6 +35,24 @@ abstract public class RenameMultipleFieldMigrator extends AbstractMigration
 		
 		oldToNewTagMap = createLegacyToNewMap();
 	}
+	
+	@Override
+	protected MigrationResult migrateForward() throws Exception
+	{
+		AbstractMigrationVisitor visitor = createMigrateForwardVisitor();
+		visitAllObjectsInPool(visitor);
+		
+		return visitor.getMigrationResult();
+	}
+	
+	@Override
+	protected MigrationResult reverseMigrate() throws Exception
+	{
+		AbstractMigrationVisitor visitor = createReverseMigrateVisitor();
+		visitAllObjectsInPool(visitor);
+		
+		return visitor.getMigrationResult();
+	}
 
 	public AbstractMigrationVisitor createMigrateForwardVisitor() throws Exception
 	{
