@@ -45,9 +45,9 @@ public class TestMigrationTo11 extends AbstractTestMigration
 		BaseId nextId = getProject().getNormalIdAssigner().takeNextId();
 		LegacyTncProjectData legacyTncProjectData = new LegacyTncProjectData(getObjectManager(), nextId);
 		getProject().getPool(TncProjectDataSchema.getObjectType()).put(legacyTncProjectData);
-		getProject().fillObjectUsingCommand(legacyTncProjectData, MigrationTo11.LEGACY_TAG_TNC_PROJET_TYPES, new CodeList(new String[]{"randomX", }).toJsonString());
+		getProject().fillObjectUsingCommand(legacyTncProjectData, MigrationTo11.LEGACY_TAG_TNC_PROJECT_TYPES, new CodeList(new String[]{"randomX", }).toJsonString());
 		getProject().fillObjectUsingCommand(legacyTncProjectData, MigrationTo11.LEGACY_TAG_TNC_ORGANIZATIONAL_PRIORITIES, new CodeList(new String[]{"randomY", }).toJsonString());
-		assertTrue("field should have been removed?", legacyTncProjectData.getStoredFieldTags().contains(MigrationTo11.LEGACY_TAG_TNC_PROJET_TYPES));
+		assertTrue("field should have been removed?", legacyTncProjectData.getStoredFieldTags().contains(MigrationTo11.LEGACY_TAG_TNC_PROJECT_TYPES));
 		assertTrue("field should have been removed?", legacyTncProjectData.getStoredFieldTags().contains(MigrationTo11.LEGACY_TAG_TNC_ORGANIZATIONAL_PRIORITIES));
 
 		String legacyProject = ProjectSaverForTesting.createSnapShot(getProject(), new VersionRange(MigrationManager.OLDEST_VERSION_TO_HANDLE));
@@ -57,7 +57,7 @@ public class TestMigrationTo11 extends AbstractTestMigration
 		
 		ORef migratedTncProjectDataRef = tncProjectDataRawObjects.getSortedReflist().getFirstElement();
 		RawObject migratedTncProjectData = tncProjectDataRawObjects.get(migratedTncProjectDataRef);
-		assertFalse("field should have been removed?", migratedTncProjectData.containsKey(MigrationTo11.LEGACY_TAG_TNC_PROJET_TYPES));
+		assertFalse("field should have been removed?", migratedTncProjectData.containsKey(MigrationTo11.LEGACY_TAG_TNC_PROJECT_TYPES));
 		assertFalse("field should have been removed?", migratedTncProjectData.containsKey(MigrationTo11.LEGACY_TAG_TNC_ORGANIZATIONAL_PRIORITIES));
 	}
 	
@@ -88,7 +88,7 @@ public class TestMigrationTo11 extends AbstractTestMigration
 		{
 			super.fillFieldSchemas();
 			
-			createFieldSchemaCodeList(MigrationTo11.LEGACY_TAG_TNC_PROJET_TYPES, new InternalQuestionWithoutValues());
+			createFieldSchemaCodeList(MigrationTo11.LEGACY_TAG_TNC_PROJECT_TYPES, new InternalQuestionWithoutValues());
 			createFieldSchemaCodeList(MigrationTo11.LEGACY_TAG_TNC_ORGANIZATIONAL_PRIORITIES, new InternalQuestionWithoutValues());
 		}
 	}
