@@ -248,7 +248,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 		return createFieldPanel(fieldPanel, fields);
 	}
 
-	private JPanel createFieldPanel(JPanel fieldPanel, ObjectDataInputField[] fields)
+	private JPanel createFieldPanel(JPanel fieldPanel, ObjectDataField[] fields)
 	{
 		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		for(int i = 0; i < fields.length; ++i)
