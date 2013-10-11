@@ -23,9 +23,9 @@ package org.miradi.migrations;
 
 abstract public class RemoveMultipleFieldForwardMigrator extends AbstractRemoveMultipleFieldMigrator
 {
-	public RemoveMultipleFieldForwardMigrator(RawProject rawProject, int typeToUse)
+	public RemoveMultipleFieldForwardMigrator(RawProject rawProject)
 	{
-		super(rawProject, typeToUse);
+		super(rawProject);
 	}
 	
 	@Override

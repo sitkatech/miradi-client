@@ -24,11 +24,11 @@ import java.util.HashSet;
 
 abstract public class AbstractRemoveMultipleFieldMigrator extends AbstractMigration
 {
-	public AbstractRemoveMultipleFieldMigrator(RawProject rawProject, int typeToUse)
+	public AbstractRemoveMultipleFieldMigrator(RawProject rawProject)
 	{
 		super(rawProject);
 		
-		type = typeToUse;
+		type = getTypeToRemoveFieldsFrom();
 		fieldsToRemove = createFieldsToRemove();
 	}
 
@@ -59,6 +59,8 @@ abstract public class AbstractRemoveMultipleFieldMigrator extends AbstractMigrat
 			return removeFields(rawObject, fieldsToRemove);
 		}
 	}
+	
+	abstract protected int getTypeToRemoveFieldsFrom();
 	
 	abstract protected HashSet<String> createFieldsToRemove();
 	
