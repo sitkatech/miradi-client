@@ -32,7 +32,7 @@ public class ReadonlyStaticClickableLinkField extends ObjectDataField
 	{
 		super(mainWindow.getProject(), refToUse);
 		
-		staticHtmlForm = new StaticHtmlForm(mainWindow, htmlLink, new SummaryViewTabChangeLinkHandler(mainWindow, tabIdentifier));
+		staticHtmlForm = new StaticHtmlDataPanelViewer(mainWindow, htmlLink, new SummaryViewTabChangeLinkHandler(mainWindow, tabIdentifier));
 	}
 
 	@Override
@@ -57,6 +57,6 @@ public class ReadonlyStaticClickableLinkField extends ObjectDataField
 	{
 	}
 
-	private StaticHtmlForm staticHtmlForm;
+	private StaticHtmlDataPanelViewer staticHtmlForm;
 }
 

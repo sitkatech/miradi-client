@@ -28,15 +28,15 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.HtmlUtilities;
 
-public class StaticHtmlForm extends HtmlFormViewer
+public class StaticHtmlDataPanelViewer extends HtmlFormViewer
 {
-	public StaticHtmlForm(MainWindow mainWindowToUse, HyperlinkHandler hyperLinkHandler)
+	public StaticHtmlDataPanelViewer(MainWindow mainWindowToUse, HyperlinkHandler hyperLinkHandler)
 	{
 		//NOTE: passing anything other than "" so that cursor changes to index finger when mouse is over clickable link
 		this(mainWindowToUse, HtmlUtilities.wrapInHtmlTags(""), hyperLinkHandler);
 	}
 	
-	public StaticHtmlForm(MainWindow mainWindowToUse, String htmlSource, HyperlinkHandler hyperLinkHandler)
+	public StaticHtmlDataPanelViewer(MainWindow mainWindowToUse, String htmlSource, HyperlinkHandler hyperLinkHandler)
 	{
 		super(mainWindowToUse, htmlSource, hyperLinkHandler);
 	}
