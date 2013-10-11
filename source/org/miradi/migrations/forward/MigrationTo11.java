@@ -23,8 +23,6 @@ package org.miradi.migrations.forward;
 import java.util.HashSet;
 
 import org.miradi.main.EAM;
-import org.miradi.migrations.AbstractMigrationVisitor;
-import org.miradi.migrations.MigrationResult;
 import org.miradi.migrations.RawProject;
 import org.miradi.migrations.RemoveMultipleFieldForwardMigrator;
 import org.miradi.migrations.VersionRange;
@@ -51,24 +49,6 @@ public class MigrationTo11 extends RemoveMultipleFieldForwardMigrator
 		fieldsToRemove.add(LEGACY_TAG_TNC_ORGANIZATIONAL_PRIORITIES);
 		
 		return fieldsToRemove;
-	}
-
-	@Override
-	protected MigrationResult migrateForward() throws Exception
-	{
-		AbstractMigrationVisitor visitor = createMigrateForwardVisitor();
-		visitAllObjectsInPool(visitor);
-		
-		return visitor.getMigrationResult();
-	}
-	
-	@Override
-	protected MigrationResult reverseMigrate() throws Exception
-	{
-		AbstractMigrationVisitor visitor = createReverseMigrateVisitor();
-		visitAllObjectsInPool(visitor);
-		
-		return visitor.getMigrationResult();
 	}
 
 	@Override
