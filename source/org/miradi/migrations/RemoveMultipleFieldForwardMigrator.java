@@ -30,13 +30,13 @@ public class RemoveMultipleFieldForwardMigrator extends	AbstractRemoveMultipleFi
 	}
 	
 	@Override
-	public AbstractMigrationVisitor migrateForward() throws Exception
+	public AbstractMigrationVisitor createMigrateForwardVisitor() throws Exception
 	{
 		return new RemoveVisitor();
 	}
 
 	@Override
-	public AbstractMigrationVisitor reverseMigrate() throws Exception
+	public AbstractMigrationVisitor createReverseMigrateVisitor() throws Exception
 	{
 		return new DoNothingReverseMigrationVisitor(type);
 	}
