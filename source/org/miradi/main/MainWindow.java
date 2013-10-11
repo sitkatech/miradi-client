@@ -708,7 +708,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	{
 		RawProject rawProjectToMigrate = RawProjectLoader.loadProject(projectFile);
 		MigrationResult migrationResult = migrationManager.migrate(rawProjectToMigrate, Project.getMiradiVersionRange());
-		if (migrationResult.didLooseData())
+		if (migrationResult.didLoseData())
 		{
 			final String[] labels = new String[]{ConstantButtonNames.MIGRATE, ConstantButtonNames.CANCEL};
 			final String message = EAM.text("If you continue with this migration, some data will be lost. Would you like to continue anyway?");
