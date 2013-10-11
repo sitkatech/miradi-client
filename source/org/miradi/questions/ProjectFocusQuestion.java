@@ -40,6 +40,6 @@ public class ProjectFocusQuestion extends StaticChoiceQuestion
 	}
 	
 	private static final String PLACE_CODE = "place";
-	public static final String POLICY_AND_PRACTIVE_CODE = "policyandpractice";
+	public static final String POLICY_AND_PRACTIVE_CODE = "policyAndPractice";
 	private static final String PERFORMANCE_CODE = "performance";
 }

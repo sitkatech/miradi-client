@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Oct 10 17:03:46 EDT 2013 $
+# $LastChangedDate: Fri Oct 11 15:25:45 EDT 2013 $
 # $LastChangedRevision: 231 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/231'
 start = ConservationProject.element
@@ -868,7 +868,7 @@ vocabulary_planning_tree_target_node_position = 'TargetNodesChildrenOfDiagramObj
 vocabulary_precision_type = ''|'StandardDeviation'|'StandardError'|'ConfidenceInterval95Percent'|'ConfidenceIntervalOther'
 vocabulary_priority_rating_code = ''|'1'|'2'|'3'|'4'
 vocabulary_progress_report_status = ''|'Planned'|'MajorIssues'|'MinorIssues'|'OnTrack'|'Completed'|'Abandoned'
-vocabulary_project_focus = ''|'place'|'policyandpractice'|'performance'
+vocabulary_project_focus = ''|'place'|'policyAndPractice'|'performance'
 vocabulary_project_scale = ''|'global'|'regional'|'local'
 vocabulary_share_outside_organization = 'Private'|'ShareWithAnyone'
 vocabulary_protected_area_categories = 'Ia'|'Ib'|'II'|'III'|'IV'|'V'|'VI'
