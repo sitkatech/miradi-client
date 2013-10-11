@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-11 14:31-0500\n"
+"POT-Creation-Date: 2013-10-11 15:16-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -7964,7 +7964,7 @@ msgid ""
 "Based"
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo10.java:84
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo10.java:80
 msgid "This migration renames 2 fields"
 msgstr ""
 
