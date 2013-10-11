@@ -52,7 +52,7 @@ public class ExportMpf40VersionDoer extends AbstractFileSaverDoer
 		MigrationManager migrationManager = new MigrationManager();
 		RawProject rawProjectToMigrate = RawProjectLoader.loadProject(mpfSnapShot);
 		MigrationResult migrationResult = migrationManager.migrate(rawProjectToMigrate, new VersionRange(MigrationManager.OLDEST_VERSION_TO_HANDLE));
-		if (migrationResult.didLooseData())
+		if (migrationResult.didLoseData())
 		{
 			if (!ExportMpzDoer.userConfirmLossData())
 				return false;

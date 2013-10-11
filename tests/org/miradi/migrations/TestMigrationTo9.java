@@ -38,19 +38,19 @@ public class TestMigrationTo9 extends AbstractTestMigration
 		getProject().createMeasurement();
 		MigrationResult migrationResult = migrateProject(getProject(), new VersionRange(9), new VersionRange(8));
 		assertTrue("Incorrect migration result?", migrationResult.didSucceed());
-		assertFalse("Incorrect migration result?", migrationResult.didLooseData());
+		assertFalse("Incorrect migration result?", migrationResult.didLoseData());
 	}		
 	
 	public void testStatusConfidenceSamplingBasedChoiceIsCleared() throws Exception
 	{
 		MigrationResult migrationResult = verifyStatusConfidenceCode("", MigrationTo9.SAMPLING_BASED_CODE);
-		assertTrue("Incorrect migration result?", migrationResult.didLooseData());
+		assertTrue("Incorrect migration result?", migrationResult.didLoseData());
 	}
 	
 	public void testStatusConfidenceNonSamplingBasedChoiceIsNotCleared() throws Exception
 	{
 		MigrationResult migrationResult = verifyStatusConfidenceCode(StatusConfidenceQuestion.RAPID_ASSESSMENT_CODE, StatusConfidenceQuestion.RAPID_ASSESSMENT_CODE);
-		assertFalse("Incorrect migration result?", migrationResult.didLooseData());
+		assertFalse("Incorrect migration result?", migrationResult.didLoseData());
 	}
 
 	public void testDataLossMigration() throws Exception
@@ -83,7 +83,7 @@ public class TestMigrationTo9 extends AbstractTestMigration
 		Measurement measurement = getProject().createMeasurement();
 		getProject().fillObjectUsingCommand(measurement, tag, "999");
 		MigrationResult migrationResult = migrateProject(getProject(), new VersionRange(9), new VersionRange(8));
-		assertTrue("Incorrect migration result?", migrationResult.didLooseData());
+		assertTrue("Incorrect migration result?", migrationResult.didLoseData());
 	}
 	
 	@Override

@@ -58,7 +58,7 @@ public class ExportMpzDoer extends AbstractFileSaverDoer
 		String mpfSnapShot = ProjectSaver.createSnapShot(project);
 		RawProject projectToMigrate = RawProjectLoader.loadProject(mpfSnapShot);
 		MigrationResult migrationResult = migrationManager.migrate(projectToMigrate, new VersionRange(MigrationManager.OLDEST_VERSION_TO_HANDLE));
-		if (migrationResult.didLooseData())
+		if (migrationResult.didLoseData())
 		{
 			if (!userConfirmLossData())
 				return;
