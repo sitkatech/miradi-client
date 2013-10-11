@@ -32,7 +32,7 @@ public class ReadonlyClickableLinkField extends ObjectDataInputField
 	{
 		super(mainWindow.getProject(), refToUse, tagToUse);
 		
-		htmlFormViewer = new StaticHtmlForm(mainWindow, mainWindow.getHyperlinkHandler());
+		htmlFormViewer = new StaticHtmlDataPanelViewer(mainWindow, mainWindow.getHyperlinkHandler());
 	}
 	
 	@Override
@@ -73,5 +73,5 @@ public class ReadonlyClickableLinkField extends ObjectDataInputField
 		return htmlFormViewer;
 	}
 	
-	private StaticHtmlForm htmlFormViewer;
+	private StaticHtmlDataPanelViewer htmlFormViewer;
 }
