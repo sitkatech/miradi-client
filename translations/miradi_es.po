@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-11 13:31-0500\n"
+"POT-Creation-Date: 2013-10-11 14:01-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -5149,13 +5149,12 @@ msgstr "Problemas menores – Activo, problemas menores que requieren atención 
 msgid "Miradi Preferences"
 msgstr ""
 
-#: Miradi/source/org/miradi/forms/objects/MiradiShareProjectDataForm.java:45
-msgid "Miradi Share Project Id"
+#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:71
+msgid "Miradi Share Program"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:76
-#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:82
-msgid "Miradi Share Proram"
+#: Miradi/source/org/miradi/forms/objects/MiradiShareProjectDataForm.java:45
+msgid "Miradi Share Project Id"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/MainWindowAction.java:143
@@ -5784,7 +5783,7 @@ msgstr "Informe de progreso "
 msgid "Progress Reports"
 msgstr "Informes de progreso"
 
-#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:117
+#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:118
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:102
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:68

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-11 13:31-0500\n"
+"POT-Creation-Date: 2013-10-11 14:01-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -5161,13 +5161,12 @@ msgstr "Незначна справа - Діюча незначна справа
 msgid "Miradi Preferences"
 msgstr ""
 
-#: Miradi/source/org/miradi/forms/objects/MiradiShareProjectDataForm.java:45
-msgid "Miradi Share Project Id"
+#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:71
+msgid "Miradi Share Program"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:76
-#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:82
-msgid "Miradi Share Proram"
+#: Miradi/source/org/miradi/forms/objects/MiradiShareProjectDataForm.java:45
+msgid "Miradi Share Project Id"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/MainWindowAction.java:143
@@ -5796,7 +5795,7 @@ msgstr "Проміжний звіт"
 msgid "Progress Reports"
 msgstr "Проміжні звіти"
 
-#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:117
+#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:118
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:102
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:68
