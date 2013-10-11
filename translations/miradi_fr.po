@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-10 15:31-0500\n"
+"POT-Creation-Date: 2013-10-10 17:16-0500\n"
 "PO-Revision-Date: 2013-04-02 10:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -254,7 +254,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationManager.java:108
+#: Miradi/source/org/miradi/migrations/forward/MigrationManager.java:109
 #: Miradi/source/org/miradi/main/MainWindow.java:1456
 msgid "(%s)"
 msgstr ""
@@ -2876,7 +2876,7 @@ msgstr "Terminé"
 msgid "Completed - Successfully accomplished"
 msgstr "Terminé - Effectué avec succès"
 
-#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:47
+#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:49
 msgid "ConPro Project Number"
 msgstr ""
 
@@ -4011,6 +4011,10 @@ msgstr ""
 msgid "Future Status"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/ProjectScaleQuestion.java:36
+msgid "Global"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:31
 #: Miradi/source/org/miradi/forms/objects/GoalPropertiesForm.java:32
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:77
@@ -4711,7 +4715,7 @@ msgstr "Numéros de téléphone"
 msgid "Label|Project Dates"
 msgstr "Dates du projet"
 
-#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:69
+#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:73
 msgid "Label|Project Info"
 msgstr ""
 
@@ -5479,8 +5483,10 @@ msgstr "Non efficace"
 #: Miradi/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:36
 #: Miradi/source/org/miradi/questions/MiradiShareTaxonomyQuestion.java:58
 #: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:37
+#: Miradi/source/org/miradi/questions/ProjectFocusQuestion.java:35
 #: Miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:35
 #: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:42
+#: Miradi/source/org/miradi/questions/ProjectScaleQuestion.java:35
 #: Miradi/source/org/miradi/questions/KeyEcologicalAttributeTypeQuestion.java:35
 #: Miradi/source/org/miradi/questions/StressScopeChoiceQuestion.java:36
 #: Miradi/source/org/miradi/questions/StrategyFeasibilityQuestion.java:37
@@ -5705,6 +5711,10 @@ msgstr "Facteurs partagés copiés"
 msgid "Percent of Budget Secured:  %1 %"
 msgstr "Pourcentage de Budget Sécurisé : %1 %"
 
+#: Miradi/source/org/miradi/questions/ProjectFocusQuestion.java:38
+msgid "Performance"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/ResourceTypeQuestion.java:35
 msgid "Person"
 msgstr "Personne"
@@ -5718,6 +5728,10 @@ msgstr "Peso (Mexique)"
 #: Miradi/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:39
 msgid "Pink"
 msgstr "Rose"
+
+#: Miradi/source/org/miradi/questions/ProjectFocusQuestion.java:36
+msgid "Place"
+msgstr ""
 
 #: Miradi/source/org/miradi/wizard/diagram/DiagramWizardProjectScopeStep.java:49
 #: Miradi/source/org/miradi/actions/jump/ActionJumpDiagramWizardProjectScopeStep.java:35
@@ -5797,6 +5811,10 @@ msgid ""
 msgstr ""
 "Veuillez sélctionner le facteur à partager avec ce facteur, ensuite appuyez "
 "sur le bouton Partager"
+
+#: Miradi/source/org/miradi/questions/ProjectFocusQuestion.java:37
+msgid "Policy And Practice"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/StatusQuestion.java:37
 msgid "Poor"
@@ -6094,6 +6112,10 @@ msgstr ""
 #: Miradi/source/org/miradi/questions/DiagramLinkColorQuestion.java:38
 msgid "Red"
 msgstr "Rouge"
+
+#: Miradi/source/org/miradi/questions/ProjectScaleQuestion.java:37
+msgid "Regional"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:50
 msgid "Related Items"
@@ -8144,8 +8166,12 @@ msgid ""
 "status fields"
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo11.java:85
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo11.java:86
 msgid "This migration removes 2 Tnc fields"
+msgstr ""
+
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo12.java:86
+msgid "This migration removes 2 Tnc fields when reverse migrating"
 msgstr ""
 
 #: Miradi/source/org/miradi/migrations/forward/MigrationTo8.java:75
@@ -9212,6 +9238,10 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/NeverShowAgainPanel.java:48
 msgid "it will not be shown. Uncheck it to have Miradi "
 msgstr "ne sera pas affiché. Décochez-le pour avoir Miradi"
+
+#: Miradi/source/org/miradi/questions/ProjectScaleQuestion.java:38
+msgid "local"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:96
 #: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:55
@@ -10580,9 +10610,6 @@ msgstr "Numéro du projet ConPro"
 msgid "FieldLabel|40.ProjectSharingCode|ConPro Data Sharing"
 msgstr "Partage des données ConPro"
 
-msgid "FieldLabel|40.ProjectPlaceTypes|Project Types"
-msgstr "Types de projet"
-
 msgid "FieldLabel|40.ConProParentChildProjectText|Parent Child"
 msgstr "Parent enfant"
 
@@ -10592,9 +10619,6 @@ msgstr "Projets associés"
 msgid ""
 "FieldLabel|40.PsuedoClassificationsAsMultilineText|Project Classification(s)"
 msgstr "Classification(s) du projet"
-
-msgid "FieldLabel|40.OrganizationalPriorities|Organizational Priorities"
-msgstr "Priorités organisationnelles"
 
 msgid "FieldLabel|40.ProjectResourcesScorecard|Project Resources Scorecard"
 msgstr "Feuille de score des ressources du projet"
@@ -10615,6 +10639,12 @@ msgid "FieldLabel|40.Risks|Risks"
 msgstr ""
 
 msgid "FieldLabel|40.FinancialPlan|Financial Plan"
+msgstr ""
+
+msgid "FieldLabel|40.ProjectFocus|Project Focus"
+msgstr ""
+
+msgid "FieldLabel|40.ProjectScale|Project Scale"
 msgstr ""
 
 msgid "FieldLabel|41.FosProjectData|FOS Project Data"
@@ -30656,6 +30686,12 @@ msgid ""
 msgstr ""
 "Marin___Atlantique tropical occidental___Écorégion marine du versant nord-"
 "est du Brésil___Brésil"
+
+#~ msgid "FieldLabel|40.ProjectPlaceTypes|Project Types"
+#~ msgstr "Types de projet"
+
+#~ msgid "FieldLabel|40.OrganizationalPriorities|Organizational Priorities"
+#~ msgstr "Priorités organisationnelles"
 
 #~ msgid "Action|Table|Expand To Goal"
 #~ msgstr "Développer au But"

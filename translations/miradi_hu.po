@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-10 15:31-0500\n"
+"POT-Creation-Date: 2013-10-10 17:16-0500\n"
 "PO-Revision-Date: 2011-02-15 16:35-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -249,7 +249,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationManager.java:108
+#: Miradi/source/org/miradi/migrations/forward/MigrationManager.java:109
 #: Miradi/source/org/miradi/main/MainWindow.java:1456
 msgid "(%s)"
 msgstr ""
@@ -2664,7 +2664,7 @@ msgstr ""
 msgid "Completed - Successfully accomplished"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:47
+#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:49
 msgid "ConPro Project Number"
 msgstr ""
 
@@ -3725,6 +3725,10 @@ msgstr ""
 msgid "Future Status"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/ProjectScaleQuestion.java:36
+msgid "Global"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:31
 #: Miradi/source/org/miradi/forms/objects/GoalPropertiesForm.java:32
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:77
@@ -4399,7 +4403,7 @@ msgstr ""
 msgid "Label|Project Dates"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:69
+#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:73
 msgid "Label|Project Info"
 msgstr ""
 
@@ -5115,8 +5119,10 @@ msgstr ""
 #: Miradi/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:36
 #: Miradi/source/org/miradi/questions/MiradiShareTaxonomyQuestion.java:58
 #: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:37
+#: Miradi/source/org/miradi/questions/ProjectFocusQuestion.java:35
 #: Miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:35
 #: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:42
+#: Miradi/source/org/miradi/questions/ProjectScaleQuestion.java:35
 #: Miradi/source/org/miradi/questions/KeyEcologicalAttributeTypeQuestion.java:35
 #: Miradi/source/org/miradi/questions/StressScopeChoiceQuestion.java:36
 #: Miradi/source/org/miradi/questions/StrategyFeasibilityQuestion.java:37
@@ -5332,6 +5338,10 @@ msgstr ""
 msgid "Percent of Budget Secured:  %1 %"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/ProjectFocusQuestion.java:38
+msgid "Performance"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/ResourceTypeQuestion.java:35
 msgid "Person"
 msgstr ""
@@ -5344,6 +5354,10 @@ msgstr ""
 #: Miradi/source/org/miradi/questions/DiagramFactorFontColorQuestion.java:48
 #: Miradi/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:39
 msgid "Pink"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/ProjectFocusQuestion.java:36
+msgid "Place"
 msgstr ""
 
 #: Miradi/source/org/miradi/wizard/diagram/DiagramWizardProjectScopeStep.java:49
@@ -5413,6 +5427,10 @@ msgstr ""
 msgid ""
 "Please select which item should be shared to this factor, then press the "
 "Share button"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/ProjectFocusQuestion.java:37
+msgid "Policy And Practice"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/StatusQuestion.java:37
@@ -5699,6 +5717,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/questions/DiagramLinkColorQuestion.java:38
 msgid "Red"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/ProjectScaleQuestion.java:37
+msgid "Regional"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:50
@@ -7593,8 +7615,12 @@ msgid ""
 "status fields"
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo11.java:85
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo11.java:86
 msgid "This migration removes 2 Tnc fields"
+msgstr ""
+
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo12.java:86
+msgid "This migration removes 2 Tnc fields when reverse migrating"
 msgstr ""
 
 #: Miradi/source/org/miradi/migrations/forward/MigrationTo8.java:75
@@ -8577,6 +8603,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/NeverShowAgainPanel.java:48
 msgid "it will not be shown. Uncheck it to have Miradi "
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/ProjectScaleQuestion.java:38
+msgid "local"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:96
@@ -9946,9 +9976,6 @@ msgstr ""
 msgid "FieldLabel|40.ProjectSharingCode|ConPro Data Sharing"
 msgstr ""
 
-msgid "FieldLabel|40.ProjectPlaceTypes|Project Types"
-msgstr ""
-
 msgid "FieldLabel|40.ConProParentChildProjectText|Parent Child"
 msgstr ""
 
@@ -9957,9 +9984,6 @@ msgstr ""
 
 msgid ""
 "FieldLabel|40.PsuedoClassificationsAsMultilineText|Project Classification(s)"
-msgstr ""
-
-msgid "FieldLabel|40.OrganizationalPriorities|Organizational Priorities"
 msgstr ""
 
 msgid "FieldLabel|40.ProjectResourcesScorecard|Project Resources Scorecard"
@@ -9981,6 +10005,12 @@ msgid "FieldLabel|40.Risks|Risks"
 msgstr ""
 
 msgid "FieldLabel|40.FinancialPlan|Financial Plan"
+msgstr ""
+
+msgid "FieldLabel|40.ProjectFocus|Project Focus"
+msgstr ""
+
+msgid "FieldLabel|40.ProjectScale|Project Scale"
 msgstr ""
 
 msgid "FieldLabel|41.FosProjectData|FOS Project Data"
