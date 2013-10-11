@@ -29,9 +29,9 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 
-public class SummaryViewTabChangeLinkHandler implements HyperlinkHandler
+public class SummaryViewSwitchTabLinkHandler implements HyperlinkHandler
 {
-	public SummaryViewTabChangeLinkHandler(MainWindow mainWindowToUse, String tabIdentifierToUse)
+	public SummaryViewSwitchTabLinkHandler(MainWindow mainWindowToUse, String tabIdentifierToUse)
 	{
 		mainWindow = mainWindowToUse;
 		tabIdentifier = tabIdentifierToUse;
