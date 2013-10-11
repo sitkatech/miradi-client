@@ -39,8 +39,8 @@ public class ProjectScaleQuestion extends StaticChoiceQuestion
 		};
 	}
 	
-	private static final String GLOABAL_CODE = "global";
-	public static final String REGIONAL_CODE = "regional";
-	private static final String LOCAL_CODE = "local";
+	private static final String GLOABAL_CODE = "Global";
+	public static final String REGIONAL_CODE = "Regional";
+	private static final String LOCAL_CODE = "Local";
 
 }
