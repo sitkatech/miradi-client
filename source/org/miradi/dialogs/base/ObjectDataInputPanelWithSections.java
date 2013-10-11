@@ -23,6 +23,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 
 import javax.swing.Icon;
+import javax.swing.JPanel;
 
 import org.miradi.dialogfields.ObjectDataField;
 import org.miradi.dialogfields.ObjectDataInputField;
@@ -112,6 +113,11 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 	public void addFieldsOnOneLine(String text, ObjectDataInputField[] objectDataInputFields)
 	{
 		singleSection.addFieldsOnOneLine(text, objectDataInputFields);
+	}
+	
+	public JPanel createFieldPanel(ObjectDataInputField[] fields)
+	{
+		return singleSection.createFieldPanel(fields);
 	}
 
 	public void addFieldsOnOneLine(PanelTitleLabel labelComponent, Object[] componentsOrFields)

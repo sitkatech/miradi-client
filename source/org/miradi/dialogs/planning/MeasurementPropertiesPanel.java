@@ -19,6 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning;
 
+import javax.swing.JPanel;
+
+import org.martus.swing.UiLabel;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
@@ -66,10 +69,13 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 		addFieldsOnOneLine(statusLabel, new Object[]{statusLabelField, statusField, trendLabelField, trendField});
 
 		addField(createChoiceField(ObjectType.MEASUREMENT, Measurement.TAG_STATUS_CONFIDENCE, new StatusConfidenceQuestion()));
-		sampleSizeField = createNumericField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLE_SIZE);
-		samplePrecisionField = createNumericField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLE_PRECISION);
-		samplePrecisionTypeField = createChoiceField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLE_PRECISION_TYPE, getQuestion(PrecisionTypeQuestion.class));
-		addFieldsOnOneLine(EAM.text("Sample"), new ObjectDataInputField[]{sampleSizeField, samplePrecisionField, samplePrecisionTypeField, });
+		ObjectDataInputField sampleSizeField = createNumericField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLE_SIZE);
+		ObjectDataInputField samplePrecisionField = createNumericField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLE_PRECISION);
+		ObjectDataInputField samplePrecisionTypeField = createChoiceField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLE_PRECISION_TYPE, getQuestion(PrecisionTypeQuestion.class));
+		samplingBasedPanel = createFieldPanel(new ObjectDataInputField[]{sampleSizeField, samplePrecisionField, samplePrecisionTypeField, });
+		samplingBasedLabel = addHtmlWrappedLabel(EAM.text("Sample"));
+		add(samplingBasedPanel);
+		
 		addField(createMultilineField(ObjectType.MEASUREMENT, Measurement.TAG_COMMENTS));
 
 		updateFieldsFromProject();
@@ -107,9 +113,8 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 	private void setVisibilityOfSampleBasedFields()
 	{
 		final boolean shouldShowSampleBasedFields = areSampleBasedFieldsVisible();
-		sampleSizeField.setVisible(shouldShowSampleBasedFields);
-		samplePrecisionField.setVisible(shouldShowSampleBasedFields);
-		samplePrecisionTypeField.setVisible(shouldShowSampleBasedFields);
+		samplingBasedPanel.setVisible(shouldShowSampleBasedFields);
+		samplingBasedLabel.setVisible(shouldShowSampleBasedFields);
 	}
 
 	public boolean areSampleBasedFieldsVisible()
@@ -130,7 +135,7 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 	
 	private ObjectDataInputField statusField;
 	private PanelFieldLabel statusLabelField;
-	private ObjectDataInputField sampleSizeField;
-	private ObjectDataInputField samplePrecisionField;
-	private ObjectDataInputField samplePrecisionTypeField;
+	
+	private JPanel samplingBasedPanel;
+	private UiLabel samplingBasedLabel;
 }
