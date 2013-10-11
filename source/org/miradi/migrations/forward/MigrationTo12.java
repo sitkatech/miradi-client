@@ -47,7 +47,7 @@ public class MigrationTo12 extends AbstractMigration
 	@Override
 	protected MigrationResult migrateForward() throws Exception
 	{
-		AbstractMigrationVisitor visitor = removeMultipleFieldsMigrator.migrateForward();
+		AbstractMigrationVisitor visitor = removeMultipleFieldsMigrator.createMigrateForwardVisitor();
 		visitAllObjectsInPool(visitor);
 		
 		return visitor.getMigrationResult();
@@ -56,7 +56,7 @@ public class MigrationTo12 extends AbstractMigration
 	@Override
 	protected MigrationResult reverseMigrate() throws Exception
 	{
-		AbstractMigrationVisitor visitor = removeMultipleFieldsMigrator.reverseMigrate();
+		AbstractMigrationVisitor visitor = removeMultipleFieldsMigrator.createReverseMigrateVisitor();
 		visitAllObjectsInPool(visitor);
 		
 		return visitor.getMigrationResult();

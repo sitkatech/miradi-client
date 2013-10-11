@@ -58,9 +58,9 @@ abstract public class AbstractRemoveMultipleFieldMigrator
 		}
 	}
 	
-	abstract public AbstractMigrationVisitor migrateForward() throws Exception;
+	abstract public AbstractMigrationVisitor createMigrateForwardVisitor() throws Exception;
 	
-	abstract public AbstractMigrationVisitor reverseMigrate() throws Exception;
+	abstract public AbstractMigrationVisitor createReverseMigrateVisitor() throws Exception;
 	
 	protected int type;
 	private HashSet<String> fieldsToRemove;
