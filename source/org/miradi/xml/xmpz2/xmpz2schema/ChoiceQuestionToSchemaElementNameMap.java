@@ -157,8 +157,8 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(InternalQuestionWithoutValues.class, URI_RESTRICTED_TEXT);
 		addItem(new CustomPlanningAllRowsQuestion(), VOCABULARY_CUSTOM_ROWS);
 		addItem(new CustomPlanningColumnsQuestion(), VOCABULARY_CUSTOM_COLUMNS);
-		addItem(ProjectFocusQuestion.class, VOCABULARY_PROJET_FOCUS);
-		addItem(ProjectScaleQuestion.class, VOCABULARY_PROJET_SCALE);
+		addItem(ProjectFocusQuestion.class, VOCABULARY_PROJECT_FOCUS);
+		addItem(ProjectScaleQuestion.class, VOCABULARY_PROJECT_SCALE);
 	}
 	
 	private void addItem(Class questionClass, String value)
