@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.migrations.forward;
 
 import org.miradi.main.EAM;
-import org.miradi.migrations.AbstractMigration;
 import org.miradi.migrations.AbstractMigrationVisitor;
 import org.miradi.migrations.MigrationResult;
 import org.miradi.migrations.RawProject;
@@ -30,22 +29,19 @@ import org.miradi.migrations.VersionRange;
 import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.utils.BiDirectionalHashMap;
 
-public class MigrationTo10 extends AbstractMigration
+public class MigrationTo10 extends RenameMultipleFieldMigrator
 {
 	public MigrationTo10(RawProject rawProject)
 	{
-		super(rawProject);
+		super(rawProject, TncProjectDataSchema.getObjectType());
 
-		BiDirectionalHashMap oldToNewTagMap = new BiDirectionalHashMap();
-		oldToNewTagMap.put(LEGACY_TAG_MAKING_THE_CASE, TAG_OVERALL_PROJECT_GOAL);
-		oldToNewTagMap.put(LEGACY_TAG_CAPACITY_AND_FUNDING, TAG_FINANCIAL_PLAN);
-		renameMultipleFieldMigrator = new RenameMultipleFieldMigrator(TncProjectDataSchema.getObjectType(), oldToNewTagMap);
+		createLegacyToNewMap();
 	}
 
 	@Override
 	protected MigrationResult migrateForward() throws Exception
 	{
-		AbstractMigrationVisitor visitor = renameMultipleFieldMigrator.createMigrateForwardVisitor();
+		AbstractMigrationVisitor visitor = createMigrateForwardVisitor();
 		visitAllObjectsInPool(visitor);
 		
 		return visitor.getMigrationResult();
@@ -54,7 +50,7 @@ public class MigrationTo10 extends AbstractMigration
 	@Override
 	protected MigrationResult reverseMigrate() throws Exception
 	{
-		AbstractMigrationVisitor visitor = renameMultipleFieldMigrator.createReverseMigrateVisitor();
+		AbstractMigrationVisitor visitor = createReverseMigrateVisitor();
 		visitAllObjectsInPool(visitor);
 		
 		return visitor.getMigrationResult();
@@ -83,9 +79,17 @@ public class MigrationTo10 extends AbstractMigration
 	{
 		return EAM.text("This migration renames 2 fields");
 	}
-	
-	private RenameMultipleFieldMigrator renameMultipleFieldMigrator;
+
+	@Override
+	protected BiDirectionalHashMap createLegacyToNewMap()
+	{
+		BiDirectionalHashMap oldToNewTagMap = new BiDirectionalHashMap();
+		oldToNewTagMap.put(LEGACY_TAG_MAKING_THE_CASE, TAG_OVERALL_PROJECT_GOAL);
+		oldToNewTagMap.put(LEGACY_TAG_CAPACITY_AND_FUNDING, TAG_FINANCIAL_PLAN);
 		
+		return oldToNewTagMap;
+	}
+	
 	private static final int VERSION_FROM = 9;
 	public static final int VERSION_TO = 10;
 	

@@ -25,13 +25,15 @@ import java.util.HashSet;
 import org.miradi.utils.BiDirectionalHashMap;
 
 
-public class RenameMultipleFieldMigrator
+abstract public class RenameMultipleFieldMigrator extends AbstractMigration
 {
-	public RenameMultipleFieldMigrator(int typeToUse, BiDirectionalHashMap oldToNewTagMapToUse)
+	public RenameMultipleFieldMigrator(RawProject rawProject, int typeToUse)
 	{
+		super(rawProject);
+		
 		type = typeToUse;
 		
-		oldToNewTagMap = oldToNewTagMapToUse;
+		oldToNewTagMap = createLegacyToNewMap();
 	}
 
 	public AbstractMigrationVisitor createMigrateForwardVisitor() throws Exception
@@ -61,6 +63,8 @@ public class RenameMultipleFieldMigrator
 		}
 		return migrationResult;
 	}
+	
+	abstract protected BiDirectionalHashMap createLegacyToNewMap();
 	
 	private class ForwardRenameVisitor extends AbstractMigrationVisitor
 	{
