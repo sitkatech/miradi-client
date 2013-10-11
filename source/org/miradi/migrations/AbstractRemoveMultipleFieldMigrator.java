@@ -22,12 +22,14 @@ package org.miradi.migrations;
 
 import java.util.HashSet;
 
-abstract public class AbstractRemoveMultipleFieldMigrator
+abstract public class AbstractRemoveMultipleFieldMigrator extends AbstractMigration
 {
-	public AbstractRemoveMultipleFieldMigrator(int typeToUse, HashSet<String> fieldsToRemoveToUse)
+	public AbstractRemoveMultipleFieldMigrator(RawProject rawProject)
 	{
-		type = typeToUse;
-		fieldsToRemove = fieldsToRemoveToUse;
+		super(rawProject);
+		
+		type = getTypeToRemoveFieldsFrom();
+		fieldsToRemove = createFieldsToRemove();
 	}
 
 	private static MigrationResult removeFields(RawObject rawObject, HashSet<String> fieldsToRemove)
@@ -58,9 +60,13 @@ abstract public class AbstractRemoveMultipleFieldMigrator
 		}
 	}
 	
-	abstract public AbstractMigrationVisitor migrateForward() throws Exception;
+	abstract protected int getTypeToRemoveFieldsFrom();
 	
-	abstract public AbstractMigrationVisitor reverseMigrate() throws Exception;
+	abstract protected HashSet<String> createFieldsToRemove();
+	
+	abstract public AbstractMigrationVisitor createMigrateForwardVisitor() throws Exception;
+	
+	abstract public AbstractMigrationVisitor createReverseMigrateVisitor() throws Exception;
 	
 	protected int type;
 	private HashSet<String> fieldsToRemove;

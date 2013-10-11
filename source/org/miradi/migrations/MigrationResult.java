@@ -63,7 +63,7 @@ public class MigrationResult extends HashSet<String>
 		return contains(SUCCESS);
 	}
 	
-	public boolean didLooseData()
+	public boolean didLoseData()
 	{
 		return contains(DATA_LOSS);
 	}
