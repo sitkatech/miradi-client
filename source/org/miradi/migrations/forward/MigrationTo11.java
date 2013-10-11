@@ -47,7 +47,7 @@ public class MigrationTo11 extends RemoveMultipleFieldForwardMigrator
 	protected HashSet<String> createFieldsToRemove()
 	{
 		HashSet<String> fieldsToRemove = new HashSet<String>();
-		fieldsToRemove.add(LEGACY_TAG_TNC_PROJET_TYPES);
+		fieldsToRemove.add(LEGACY_TAG_TNC_PROJECT_TYPES);
 		fieldsToRemove.add(LEGACY_TAG_TNC_ORGANIZATIONAL_PRIORITIES);
 		
 		return fieldsToRemove;
@@ -98,6 +98,6 @@ public class MigrationTo11 extends RemoveMultipleFieldForwardMigrator
 	private static final int VERSION_FROM = 10;
 	public static final int VERSION_TO = 11;
 	
-	public final static String LEGACY_TAG_TNC_PROJET_TYPES = "ProjectPlaceTypes";
+	public final static String LEGACY_TAG_TNC_PROJECT_TYPES = "ProjectPlaceTypes";
 	public final static String LEGACY_TAG_TNC_ORGANIZATIONAL_PRIORITIES = "OrganizationalPriorities";
 }
