@@ -29,6 +29,21 @@ public class TestHtmlUtilities extends MiradiTestCase
 		super(name);
 	}
 	
+	public void testComments() throws Exception
+	{
+		verifyCommentRemoval("<body>no comment</body", "<body>no comment</body");
+		verifyCommentRemoval("<html><body>random text with html comment </html></body>", "<html><body>random text with html comment <!-- Hello --></html></body>");
+		verifyCommentRemoval("<html><body>random text with html comment </html></body>", "<html><body>random text with html comment <!-- Hello -- -- Hello--></html></body>");
+		verifyCommentRemoval("<html><body>random text with html comment </html></body>", "<html><body>random text with html comment <!----></html></body>");
+		verifyCommentRemoval("<html><body>random text with html comment </html></body>", "<html><body>random text with html comment <!------ Hello --></html></body>");
+		verifyCommentRemoval("<html><body>random text with html comment </html></body>", "<html><body>random text with html comment <!></html></body>"); 
+	}
+	
+	private void verifyCommentRemoval(String expectedWithoutComments, String actualText) throws Exception
+	{
+		assertEquals("Comment did not make sanitation?", expectedWithoutComments, HtmlUtilities.stripHtmlComments(actualText));
+	}
+
 	public void testStartElementsWithMissingEndElements() throws Exception
 	{
 		assertEquals("Start element should have end element?", "<ul><li>1</li><li>2</li></ul>", HtmlUtilitiesRelatedToShef.getNormalizedAndSanitizedHtmlText("<ul><li>1<li>2</ul>", getAllowedHtmlTags()));

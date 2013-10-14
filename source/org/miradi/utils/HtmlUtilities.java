@@ -341,7 +341,7 @@ public class HtmlUtilities
 
 	public static String stripHtmlComments(String htmlText)
 	{
-		String regex = "<!--[\\s\\S]*?-->";
+		String regex = "<![\\s\\S]*?>";
 
 		return htmlText.replaceAll(regex, StringUtilities.EMPTY_STRING);
 	}
