@@ -31,15 +31,15 @@ public class TestHtmlUtilities extends MiradiTestCase
 	
 	public void testComments() throws Exception
 	{
-		verifyCommentRemoval("<body>no comment</body", "<body>no comment</body");
-		verifyCommentRemoval("<html><body>random text with html comment </html></body>", "<html><body>random text with html comment <!-- Hello --></html></body>");
-		verifyCommentRemoval("<html><body>random text with html comment </html></body>", "<html><body>random text with html comment <!-- Hello -- -- Hello--></html></body>");
-		verifyCommentRemoval("<html><body>random text with html comment </html></body>", "<html><body>random text with html comment <!----></html></body>");
-		verifyCommentRemoval("<html><body>random text with html comment </html></body>", "<html><body>random text with html comment <!------ Hello --></html></body>");
-		verifyCommentRemoval("<html><body>random text with html comment </html></body>", "<html><body>random text with html comment <!></html></body>"); 
+		verifyHtmlCommentRemoval("<body>no comment</body", "<body>no comment</body");
+		verifyHtmlCommentRemoval("<html><body>random text with html comment </html></body>", "<html><body>random text with html comment <!-- Hello --></html></body>");
+		verifyHtmlCommentRemoval("<html><body>random text with html comment </html></body>", "<html><body>random text with html comment <!-- Hello -- -- Hello--></html></body>");
+		verifyHtmlCommentRemoval("<html><body>random text with html comment </html></body>", "<html><body>random text with html comment <!----></html></body>");
+		verifyHtmlCommentRemoval("<html><body>random text with html comment </html></body>", "<html><body>random text with html comment <!------ Hello --></html></body>");
+		verifyHtmlCommentRemoval("<html><body>random text with html comment </html></body>", "<html><body>random text with html comment <!></html></body>"); 
 	}
 	
-	private void verifyCommentRemoval(String expectedWithoutComments, String actualText) throws Exception
+	private void verifyHtmlCommentRemoval(String expectedWithoutComments, String actualText) throws Exception
 	{
 		assertEquals("Comment did not make sanitation?", expectedWithoutComments, HtmlUtilities.stripHtmlComments(actualText));
 	}
