@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-11 15:16-0500\n"
+"POT-Creation-Date: 2013-10-14 10:46-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -7746,12 +7746,8 @@ msgid ""
 "status fields"
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo11.java:95
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo11.java:75
 msgid "This migration removes 2 Tnc fields"
-msgstr ""
-
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo12.java:95
-msgid "This migration removes 2 Tnc fields when reverse migrating"
 msgstr ""
 
 #: Miradi/source/org/miradi/migrations/forward/MigrationTo8.java:75
@@ -7765,7 +7761,7 @@ msgid ""
 "Based"
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo10.java:80
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo10.java:60
 msgid "This migration renames 2 fields"
 msgstr ""
 
@@ -7828,6 +7824,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:66
 msgid "This resource has been assigned work in the Work Plan"
+msgstr ""
+
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo12.java:75
+msgid "This reverse migration removes 2 newly added Tnc fields."
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:175
