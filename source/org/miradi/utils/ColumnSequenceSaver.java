@@ -67,7 +67,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 
 	private CodeList calculateDesiredSequenceCodesForRestoring() throws Exception
 	{
-		return calculateArrangedColumnCodes(getDesiredColumnSequenceCodes(), getCurrentSequence());
+		return calculateArrangedColumnCodesToRestore(getDesiredColumnSequenceCodes(), getCurrentSequence());
 	}
 	
 	private CodeList calculateDesiredSequenceCodesToSaving() throws Exception
@@ -100,7 +100,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 		return arrangedColumnCodes.withoutDuplicates();
 	}
 
-	public static CodeList calculateArrangedColumnCodes(CodeList desiredColumnCodes, CodeList currentColumnTagSequences)
+	public static CodeList calculateArrangedColumnCodesToRestore(CodeList desiredColumnCodes, CodeList currentColumnTagSequences)
 	{
 		if (desiredColumnCodes == null || hasColumnsThatWereNotExpected(desiredColumnCodes, currentColumnTagSequences))
 			desiredColumnCodes = currentColumnTagSequences;
