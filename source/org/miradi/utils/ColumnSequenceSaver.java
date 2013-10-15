@@ -72,7 +72,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 	
 	private CodeList calculateDesiredSequenceCodesToSaving() throws Exception
 	{
-		return calculateArrangedColumnCodesToSave(getCurrentSequence(), getDesiredColumnSequenceCodes());
+		return calculateArrangedColumnCodesToSave(getCurrentSequence(), new CodeList());
 	}
 
 	protected void moveColumn(int tableColumn, int destination)
@@ -90,8 +90,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 		if (currentColumnTagSequences == null)
 			currentColumnTagSequences = desiredColumnCodes;
 
-		return calculateUniqueCodes(desiredColumnCodes,
-				currentColumnTagSequences);
+		return calculateUniqueCodes(desiredColumnCodes,	currentColumnTagSequences);
 	}
 
 	public static CodeList calculateArrangedColumnCodesToRestore(CodeList desiredColumnCodes, CodeList currentColumnTagSequences)
