@@ -105,13 +105,13 @@ public class ColumnSequenceSaver extends MouseAdapter
 		return calculateUniqueCodes(storedColumnTags, currentColumnTagSequences);
 	}
 	
-	private static CodeList calculateUniqueCodes(CodeList desiredColumnCodes, CodeList currentColumnTagSequences)
+	private static CodeList calculateUniqueCodes(CodeList desiredCodes, CodeList actualCodes)
 	{
-		CodeList newColumnTags = new CodeList(currentColumnTagSequences);
-		newColumnTags.subtract(desiredColumnCodes);
+		CodeList newColumnTags = new CodeList(actualCodes);
+		newColumnTags.subtract(desiredCodes);
 		
 		CodeList arrangedColumnCodes = new CodeList();
-		arrangedColumnCodes.addAll(desiredColumnCodes);
+		arrangedColumnCodes.addAll(desiredCodes);
 		arrangedColumnCodes.addAll(newColumnTags);
 		
 		return arrangedColumnCodes.withoutDuplicates();
