@@ -39,7 +39,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 	public void restoreColumnSequences() throws Exception
 	{
 		int destination = 0;
-		CodeList desiredSequenceCodes = calculateDesiredSequenceCodes();
+		CodeList desiredSequenceCodes = calculateDesiredSequenceCodesForRestoring();
 		for (int codeIndex = 0; codeIndex < desiredSequenceCodes.size(); ++codeIndex)
 		{	
 			String desiredSequenceCode = desiredSequenceCodes.get(codeIndex);
@@ -65,12 +65,14 @@ public class ColumnSequenceSaver extends MouseAdapter
 		return foundCount;
 	}
 
-	private CodeList calculateDesiredSequenceCodes() throws Exception
+	private CodeList calculateDesiredSequenceCodesForRestoring() throws Exception
 	{
-		CodeList currentColumnTagSequences = getCurrentSequence();		
-		CodeList storedColumnSequenceCodes = getDesiredColumnSequenceCodes();
-		
-		return calculateArrangedColumnCodes(storedColumnSequenceCodes, currentColumnTagSequences);
+		return calculateArrangedColumnCodes(getDesiredColumnSequenceCodes(), getCurrentSequence());
+	}
+	
+	private CodeList calculateDesiredSequenceCodesToSaving() throws Exception
+	{
+		return calculateArrangedColumnCodesToSave(getCurrentSequence(), getDesiredColumnSequenceCodes());
 	}
 
 	protected void moveColumn(int tableColumn, int destination)
@@ -81,6 +83,21 @@ public class ColumnSequenceSaver extends MouseAdapter
 	protected int getTableColumnCount()
 	{
 		return table.getColumnCount();
+	}
+	
+	public static CodeList calculateArrangedColumnCodesToSave(CodeList desiredColumnCodes, CodeList currentColumnTagSequences)
+	{
+		if (currentColumnTagSequences == null)
+			currentColumnTagSequences = desiredColumnCodes;
+
+		CodeList newColumnTags = new CodeList(currentColumnTagSequences);
+		newColumnTags.subtract(desiredColumnCodes);
+		
+		CodeList arrangedColumnCodes = new CodeList();
+		arrangedColumnCodes.addAll(desiredColumnCodes);
+		arrangedColumnCodes.addAll(newColumnTags);
+		
+		return arrangedColumnCodes.withoutDuplicates();
 	}
 
 	public static CodeList calculateArrangedColumnCodes(CodeList desiredColumnCodes, CodeList currentColumnTagSequences)
@@ -100,7 +117,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 		
 		return arrangedColumnCodes.withoutDuplicates();
 	}
-	
+
 	private static boolean hasColumnsThatWereNotExpected(CodeList desiredColumnCodes, CodeList currentColumnTagSequences)
 	{
 		CodeList inFirstNotSecond = new CodeList(desiredColumnCodes);
@@ -148,7 +165,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 	public void saveColumnSequence() throws Exception
 	{		
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), uniqueTableIdentifier);
-		final String desiredSequenceColumnCodes = calculateDesiredSequenceCodes().toString();
+		final String desiredSequenceColumnCodes = calculateDesiredSequenceCodesToSaving().toString();
 		CommandSetObjectData setColumnSequence = new CommandSetObjectData(tableSettings.getRef(), TableSettings.TAG_COLUMN_SEQUENCE_CODES, desiredSequenceColumnCodes);
 		getProject().executeCommand(setColumnSequence);
 	}
