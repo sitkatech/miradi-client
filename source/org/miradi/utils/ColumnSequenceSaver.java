@@ -67,14 +67,10 @@ public class ColumnSequenceSaver extends MouseAdapter
 
 	private CodeList calculateDesiredSequenceCodesForRestoring() throws Exception
 	{
-		return calculateArrangedColumnCodesToRestore(getDesiredColumnSequenceCodes(), getCurrentSequence());
+		final CodeList calculateArrangedColumnCodesToRestore = calculateArrangedColumnCodesToRestore(getDesiredColumnSequenceCodes(), getCurrentSequence());
+		return calculateArrangedColumnCodesToRestore;
 	}
 	
-	private CodeList calculateDesiredSequenceCodesToSaving() throws Exception
-	{
-		return calculateArrangedColumnCodesToSave(getCurrentSequence(), new CodeList());
-	}
-
 	protected void moveColumn(int tableColumn, int destination)
 	{
 		table.getColumnModel().moveColumn(tableColumn, destination);
@@ -85,14 +81,6 @@ public class ColumnSequenceSaver extends MouseAdapter
 		return table.getColumnCount();
 	}
 	
-	public static CodeList calculateArrangedColumnCodesToSave(CodeList desiredColumnCodes, CodeList currentColumnTagSequences)
-	{
-		if (currentColumnTagSequences == null)
-			currentColumnTagSequences = desiredColumnCodes;
-
-		return calculateUniqueCodes(desiredColumnCodes,	currentColumnTagSequences);
-	}
-
 	public static CodeList calculateArrangedColumnCodesToRestore(CodeList desiredColumnCodes, CodeList currentColumnTagSequences)
 	{
 		if (desiredColumnCodes == null || hasColumnsThatWereNotExpected(desiredColumnCodes, currentColumnTagSequences))
@@ -163,7 +151,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 	public void saveColumnSequence() throws Exception
 	{		
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), uniqueTableIdentifier);
-		final String desiredSequenceColumnCodes = calculateDesiredSequenceCodesToSaving().toString();
+		final String desiredSequenceColumnCodes = getCurrentSequence().toString();
 		CommandSetObjectData setColumnSequence = new CommandSetObjectData(tableSettings.getRef(), TableSettings.TAG_COLUMN_SEQUENCE_CODES, desiredSequenceColumnCodes);
 		getProject().executeCommand(setColumnSequence);
 	}
