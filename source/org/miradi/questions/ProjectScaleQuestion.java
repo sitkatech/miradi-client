@@ -33,13 +33,13 @@ public class ProjectScaleQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 			new ChoiceItem("", EAM.text("Not Specified")),
-			new ChoiceItem(GLOABAL_CODE, EAM.text("Global")),	
+			new ChoiceItem(GLOBAL_CODE, EAM.text("Global")),	
 			new ChoiceItem(REGIONAL_CODE, EAM.text("Regional")),
 			new ChoiceItem(LOCAL_CODE, EAM.text("local")),
 		};
 	}
 	
-	private static final String GLOABAL_CODE = "Global";
+	private static final String GLOBAL_CODE = "Global";
 	public static final String REGIONAL_CODE = "Regional";
 	private static final String LOCAL_CODE = "Local";
 
