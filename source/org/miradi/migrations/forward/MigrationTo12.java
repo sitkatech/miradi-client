@@ -66,7 +66,7 @@ public class MigrationTo12 extends RemoveMultipleFieldReverseMigrator
 	@Override
 	protected String getDescription()
 	{
-		return EAM.text("This reverse migration removes 2 newly added Tnc fields.");
+		return EAM.text("This migration adds 2 new TNC fields.");
 	}
 	
 	private static final int VERSION_FROM = 11;
