@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-16 16:16-0500\n"
+"POT-Creation-Date: 2013-10-16 16:46-0500\n"
 "PO-Revision-Date: 2013-04-02 10:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -8157,15 +8157,15 @@ msgstr ""
 msgid "This migration adds 2 new TNC fields."
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo5.java:78
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo5.java:76
 msgid "This migration changes default real status code to \"\""
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo6.java:79
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo6.java:78
 msgid "This migration corrects indicator threshold escaping issues."
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo4.java:92
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo4.java:91
 msgid ""
 "This migration creates new future status objects from indicator's future "
 "status fields"
@@ -8175,11 +8175,11 @@ msgstr ""
 msgid "This migration removes 2 Tnc fields"
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo8.java:75
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo8.java:74
 msgid "This migration removes indicator's unit field"
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo9.java:75
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo9.java:74
 msgid ""
 "This migration removes new measuremt fields: Sample size, Sample Precision, "
 "Sample Precision Type and clears status confidenceif the choice is Sampling "
