@@ -81,24 +81,24 @@ public class ColumnSequenceSaver extends MouseAdapter
 		return table.getColumnCount();
 	}
 	
-	public static CodeList calculateArrangedColumnCodesToRestore(CodeList desiredColumnCodes, CodeList currentColumnTagSequences)
+	public static CodeList calculateArrangedColumnCodesToRestore(CodeList savedColumnCodes, CodeList displayColumnTagSequences)
 	{
-		if (desiredColumnCodes == null)
-			desiredColumnCodes = currentColumnTagSequences;
+		if (savedColumnCodes == null)
+			savedColumnCodes = displayColumnTagSequences;
 
-		CodeList storedColumnTags = new CodeList(desiredColumnCodes);
-		storedColumnTags.retainAll(currentColumnTagSequences);
+		CodeList storedColumnTags = new CodeList(savedColumnCodes);
+		storedColumnTags.retainAll(displayColumnTagSequences);
 		
-		return calculateUniqueCodes(storedColumnTags, currentColumnTagSequences);
+		return calculateUniqueCodes(storedColumnTags, displayColumnTagSequences);
 	}
 	
-	private static CodeList calculateUniqueCodes(CodeList desiredCodes, CodeList actualCodes)
+	private static CodeList calculateUniqueCodes(CodeList savedCodes, CodeList displayCodes)
 	{
-		CodeList actualCodesClone = new CodeList(actualCodes);
-		actualCodesClone.subtract(desiredCodes);
+		CodeList actualCodesClone = new CodeList(displayCodes);
+		actualCodesClone.subtract(savedCodes);
 		
 		CodeList arrangedColumnCodes = new CodeList();
-		arrangedColumnCodes.addAll(desiredCodes);
+		arrangedColumnCodes.addAll(savedCodes);
 		arrangedColumnCodes.addAll(actualCodesClone);
 		
 		return arrangedColumnCodes.withoutDuplicates();
