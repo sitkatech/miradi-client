@@ -32,13 +32,7 @@ public class MigrationTo11 extends RemoveMultipleFieldForwardMigrator
 {
 	public MigrationTo11(RawProject rawProjectToUse)
 	{
-		super(rawProjectToUse);
-	}
-
-	@Override
-	protected int getTypeToRemoveFieldsFrom()
-	{
-		return TncProjectDataSchema.getObjectType();
+		super(rawProjectToUse, TncProjectDataSchema.getObjectType());
 	}
 
 	@Override
