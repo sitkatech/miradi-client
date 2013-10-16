@@ -22,12 +22,12 @@ package org.miradi.migrations.forward;
 
 import org.miradi.main.EAM;
 import org.miradi.migrations.RawProject;
-import org.miradi.migrations.RenameMultipleFieldMigrator;
+import org.miradi.migrations.RemoveMultipleFieldReverseMigration;
 import org.miradi.migrations.VersionRange;
 import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.utils.BiDirectionalHashMap;
 
-public class MigrationTo10 extends RenameMultipleFieldMigrator
+public class MigrationTo10 extends RemoveMultipleFieldReverseMigration
 {
 	public MigrationTo10(RawProject rawProject)
 	{
