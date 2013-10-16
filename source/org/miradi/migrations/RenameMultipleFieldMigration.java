@@ -40,18 +40,16 @@ abstract public class RenameMultipleFieldMigration extends AbstractMigration
 	protected MigrationResult migrateForward() throws Exception
 	{
 		AbstractMigrationVisitor visitor = createMigrateForwardVisitor();
-		visitAllObjectsInPool(visitor);
-		
-		return visitor.getMigrationResult();
+
+		return visitAllObjectsInPool(visitor);
 	}
 	
 	@Override
 	protected MigrationResult reverseMigrate() throws Exception
 	{
 		AbstractMigrationVisitor visitor = createReverseMigrateVisitor();
-		visitAllObjectsInPool(visitor);
-		
-		return visitor.getMigrationResult();
+
+		return visitAllObjectsInPool(visitor);
 	}
 
 	public AbstractMigrationVisitor createMigrateForwardVisitor() throws Exception

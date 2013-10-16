@@ -46,9 +46,8 @@ public class MigrationTo8 extends AbstractMigration
 	protected MigrationResult reverseMigrate() throws Exception
 	{
 		final IndicatorVisitor visitor = new IndicatorVisitor();
-		visitAllObjectsInPool(visitor);
 		
-		return visitor.getMigrationResult();
+		return visitAllObjectsInPool(visitor);
 	}
 
 	@Override
