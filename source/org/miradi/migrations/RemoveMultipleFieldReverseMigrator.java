@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.migrations;
 
 
-abstract public class RemoveMultipleFieldReverseMigrator extends AbstractRemoveMultipleFieldMigrator
+abstract public class RemoveMultipleFieldReverseMigrator extends AbstractRemoveMultipleFieldMigration
 {
 	public RemoveMultipleFieldReverseMigrator(RawProject rawProject, int typeToRemoveFieldsFrom)
 	{

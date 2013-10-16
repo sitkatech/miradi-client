@@ -22,9 +22,9 @@ package org.miradi.migrations;
 
 import java.util.HashSet;
 
-abstract public class AbstractRemoveMultipleFieldMigrator extends AbstractMigration
+abstract public class AbstractRemoveMultipleFieldMigration extends AbstractMigration
 {
-	public AbstractRemoveMultipleFieldMigrator(RawProject rawProject, int typeToRemoveFieldsFromToUse)
+	public AbstractRemoveMultipleFieldMigration(RawProject rawProject, int typeToRemoveFieldsFromToUse)
 	{
 		super(rawProject);
 		
