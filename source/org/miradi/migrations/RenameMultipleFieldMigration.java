@@ -25,9 +25,9 @@ import java.util.HashSet;
 import org.miradi.utils.BiDirectionalHashMap;
 
 
-abstract public class RemoveMultipleFieldReverseMigration extends AbstractMigration
+abstract public class RenameMultipleFieldMigration extends AbstractMigration
 {
-	public RemoveMultipleFieldReverseMigration(RawProject rawProject, int typeToUse)
+	public RenameMultipleFieldMigration(RawProject rawProject, int typeToUse)
 	{
 		super(rawProject);
 		
