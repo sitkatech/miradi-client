@@ -37,12 +37,18 @@ public class TestHtmlUtilities extends MiradiTestCase
 		verifyHtmlCommentRemoval("<!---->");
 		verifyHtmlCommentRemoval("<!------ Hello -->");
 		verifyHtmlCommentRemoval("<!>"); 
+		verifyHtmlCommentRemoval("<!Illegal comment>", "<!Illegal comment>");
 	}
 	
 	private void verifyHtmlCommentRemoval(String htmlComment) throws Exception
 	{
+		verifyHtmlCommentRemoval("", htmlComment);
+	}
+	
+	private void verifyHtmlCommentRemoval(String expectedReplacementValue, String htmlComment) throws Exception
+	{
 		String withComment = "<html><body>random text with html comment " + htmlComment + "</html></body>";
-		String expectedWithoutComments = "<html><body>random text with html comment </html></body>";
+		String expectedWithoutComments = "<html><body>random text with html comment " + expectedReplacementValue + "</html></body>";
 		assertEquals("Comment did not make sanitation?", expectedWithoutComments, HtmlUtilities.stripHtmlComments(withComment));
 	}
 
