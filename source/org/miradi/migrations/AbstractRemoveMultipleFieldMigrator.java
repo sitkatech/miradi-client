@@ -36,18 +36,16 @@ abstract public class AbstractRemoveMultipleFieldMigrator extends AbstractMigrat
 	protected MigrationResult migrateForward() throws Exception
 	{
 		AbstractMigrationVisitor visitor = createMigrateForwardVisitor();
-		visitAllObjectsInPool(visitor);
-		
-		return visitor.getMigrationResult();
+
+		return visitAllObjectsInPool(visitor);
 	}
 	
 	@Override
 	protected MigrationResult reverseMigrate() throws Exception
 	{
 		AbstractMigrationVisitor visitor = createReverseMigrateVisitor();
-		visitAllObjectsInPool(visitor);
-		
-		return visitor.getMigrationResult();
+
+		return visitAllObjectsInPool(visitor);
 	}
 
 	private static MigrationResult removeFields(RawObject rawObject, HashSet<String> fieldsToRemove)

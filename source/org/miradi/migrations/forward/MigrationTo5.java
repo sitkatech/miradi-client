@@ -40,18 +40,16 @@ public class MigrationTo5 extends AbstractSingleTypeMigration
 	protected MigrationResult migrateForward() throws Exception
 	{
 		final StrategyVisitor visitor = new StrategyVisitor();
-		visitAllObjectsInPool(visitor);
-		
-		return visitor.getMigrationResult();
+
+		return visitAllObjectsInPool(visitor);
 	}
 	
 	@Override
 	protected MigrationResult reverseMigrate() throws Exception
 	{
 		final ReverseStrategyVisitor visitor = new ReverseStrategyVisitor();
-		visitAllObjectsInPool(visitor);
-		
-		return visitor.getMigrationResult();
+
+		return visitAllObjectsInPool(visitor);
 	}
 
 	@Override

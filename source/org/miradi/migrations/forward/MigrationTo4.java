@@ -59,9 +59,8 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 	protected MigrationResult migrateForward() throws Exception
 	{
 		final IndicatorVisitor visitor = new IndicatorVisitor();
-		visitAllObjectsInPool(visitor);
 		
-		return visitor.getMigrationResult();
+		return visitAllObjectsInPool(visitor);
 	}
 
 	@Override

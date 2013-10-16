@@ -46,9 +46,8 @@ public class MigrationTo9 extends AbstractMigration
 	protected MigrationResult reverseMigrate() throws Exception
 	{
 		final MeasurementVisitor visitor = new MeasurementVisitor();
-		visitAllObjectsInPool(visitor);
 		
-		return visitor.getMigrationResult();
+		return visitAllObjectsInPool(visitor);
 	}
 
 	@Override
