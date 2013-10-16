@@ -98,6 +98,7 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 	{
 		try
 		{
+			//NOTE: Switching on/off columns does not trigger a save column sequence.
 			ORef tableSettingRef = getTableSettingsRef();
 			if (event.isSetDataCommandFor(tableSettingRef))
 			{
