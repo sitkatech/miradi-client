@@ -32,15 +32,9 @@ public class MigrationTo12 extends RemoveMultipleFieldReverseMigrator
 {
 	public MigrationTo12(RawProject rawProjectToUse)
 	{
-		super(rawProjectToUse);
+		super(rawProjectToUse, TncProjectDataSchema.getObjectType());
 	}
-
-	@Override
-	protected int getTypeToRemoveFieldsFrom()
-	{
-		return TncProjectDataSchema.getObjectType();
-	}
-
+	
 	@Override
 	protected HashSet<String> createFieldsToRemove()
 	{
