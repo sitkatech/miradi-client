@@ -38,6 +38,15 @@ public class Xmpz2ForwardMigration implements Xmpz2XmlConstants
 	{
 		Document document = convertToDocument(projectAsInputStream);
 		Element rootElement = document.getDocumentElement();
+		updateXmpz2SchemaVersionToCurrentVersion(rootElement);
+		
+		final String migratedXmlAsString = HtmlUtilities.toXmlString(document);
+
+		return new StringInputStreamWithSeek(migratedXmlAsString);
+	}
+
+	private void updateXmpz2SchemaVersionToCurrentVersion(Element rootElement) throws Exception
+	{
 		final String currentNamespace = getNameSpace(rootElement);
 		String readInSchemaVersionAsString = AbstractXmlImporter.getSchemaVersionToImport(currentNamespace);
 		int readInSchemaVersion = Integer.parseInt(readInSchemaVersionAsString);
@@ -50,10 +59,6 @@ public class Xmpz2ForwardMigration implements Xmpz2XmlConstants
 		{
 			setNameSpaceVersion(rootElement, NAME_SPACE_VERSION);
 		}
-		
-		final String migratedXmlAsString = HtmlUtilities.toXmlString(document);
-
-		return new StringInputStreamWithSeek(migratedXmlAsString);
 	}
 
 	public static void setNameSpaceVersion(Element rootElement, String newNameSpaceVersion)
