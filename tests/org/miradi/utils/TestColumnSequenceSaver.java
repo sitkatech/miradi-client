@@ -32,7 +32,7 @@ public class TestColumnSequenceSaver extends TestCaseWithProject
 	public void testRestoreColumnSequence() throws Exception
 	{
 		CodeList storedCodeList = new CodeList(new String[]{"Item","Viability Mode","Status","Type","Poor","Fair","Good","Very Good","Source","Progress"});
-		CodeList defaultCodeList = new CodeList(new String[]{"Posten", "Lebensf\u00e4higkeits Modus", "Status", "Typ","Mangelhaft","Ausreichend","Gut","Sehr gut","Quelle","Fortschritt"});
+		CodeList defaultCodeList = new CodeList(new String[]{"Status", "Lebensf\u00e4higkeits Modus", "Posten","Typ","Mangelhaft","Ausreichend","Gut","Sehr gut","Quelle","Fortschritt"});
 		ColumnSequenceSaver columnSequenceSaver = new ColumnSequenceSaver(getProject(), null, getName());
 		CodeList calculatedList1 = columnSequenceSaver.calculateArrangedColumnCodesToRestore(storedCodeList, defaultCodeList);
 		assertEquals("Didn't use default sequence when columns added?", defaultCodeList, calculatedList1);
