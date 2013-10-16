@@ -24,11 +24,11 @@ import java.util.HashSet;
 
 import org.miradi.main.EAM;
 import org.miradi.migrations.RawProject;
-import org.miradi.migrations.RemoveMultipleFieldReverseMigrator;
+import org.miradi.migrations.RemoveMultipleFieldReverseMigration;
 import org.miradi.migrations.VersionRange;
 import org.miradi.schemas.TncProjectDataSchema;
 
-public class MigrationTo12 extends RemoveMultipleFieldReverseMigrator
+public class MigrationTo12 extends RemoveMultipleFieldReverseMigration
 {
 	public MigrationTo12(RawProject rawProjectToUse)
 	{
