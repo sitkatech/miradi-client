@@ -81,15 +81,15 @@ public class ColumnSequenceSaver extends MouseAdapter
 		return table.getColumnCount();
 	}
 	
-	public static CodeList calculateArrangedColumnCodesToRestore(CodeList savedColumnCodes, CodeList displayColumnTagSequences)
+	public static CodeList calculateArrangedColumnCodesToRestore(CodeList savedColumnCodes, CodeList displayColumnCodes)
 	{
-		if (savedColumnCodes == null || hasColumnsThatWereNotExpected(savedColumnCodes, displayColumnTagSequences))
-			savedColumnCodes = displayColumnTagSequences;
+		if (savedColumnCodes == null || hasColumnsThatWereNotExpected(savedColumnCodes, displayColumnCodes))
+			savedColumnCodes = displayColumnCodes;
 
 		CodeList storedColumnTags = new CodeList(savedColumnCodes);
-		storedColumnTags.retainAll(displayColumnTagSequences);
+		storedColumnTags.retainAll(displayColumnCodes);
 		
-		return calculateUniqueCodes(storedColumnTags, displayColumnTagSequences);
+		return calculateUniqueCodes(storedColumnTags, displayColumnCodes);
 	}
 	
 	private static CodeList calculateUniqueCodes(CodeList savedCodes, CodeList displayCodes)
