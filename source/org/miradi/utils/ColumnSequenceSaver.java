@@ -104,10 +104,10 @@ public class ColumnSequenceSaver extends MouseAdapter
 		return arrangedColumnCodes.withoutDuplicates();
 	}
 	
-	private static boolean hasColumnsThatWereNotExpected(CodeList desiredColumnCodes, CodeList currentColumnTagSequences)
+	private static boolean hasColumnsThatWereNotExpected(CodeList savedColumnCodes, CodeList displayColumnCodes)
 	{
-		CodeList inFirstNotSecond = new CodeList(desiredColumnCodes);
-		inFirstNotSecond.subtract(currentColumnTagSequences);
+		CodeList inFirstNotSecond = new CodeList(savedColumnCodes);
+		inFirstNotSecond.subtract(displayColumnCodes);
 		if(inFirstNotSecond.hasData())
 			return true;
 
