@@ -151,8 +151,8 @@ public class ColumnSequenceSaver extends MouseAdapter
 	public void saveColumnSequence() throws Exception
 	{		
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), uniqueTableIdentifier);
-		final String desiredSequenceColumnCodes = getDisplayColumnCodes().toString();
-		CommandSetObjectData setColumnSequence = new CommandSetObjectData(tableSettings.getRef(), TableSettings.TAG_COLUMN_SEQUENCE_CODES, desiredSequenceColumnCodes);
+		final String displayColumnCodes = getDisplayColumnCodes().toString();
+		CommandSetObjectData setColumnSequence = new CommandSetObjectData(tableSettings.getRef(), TableSettings.TAG_COLUMN_SEQUENCE_CODES, displayColumnCodes);
 		getProject().executeCommand(setColumnSequence);
 	}
 
