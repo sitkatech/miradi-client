@@ -93,14 +93,14 @@ public class ColumnSequenceSaver extends MouseAdapter
 		if (savedColumnCodes == null || hasColumnsThatWereNotExpected(savedColumnCodes, displayColumnCodes))
 			savedColumnCodes = displayColumnCodes;
 
-		CodeList storedColumnTags = new CodeList(savedColumnCodes);
-		storedColumnTags.retainAll(displayColumnCodes);
+		CodeList savedColumnCodesClone = new CodeList(savedColumnCodes);
+		savedColumnCodesClone.retainAll(displayColumnCodes);
 		
 		CodeList displayColumnCodesClone = new CodeList(displayColumnCodes);
-		displayColumnCodesClone.subtract(storedColumnTags);
+		displayColumnCodesClone.subtract(savedColumnCodesClone);
 		
 		CodeList arrangedColumnCodes = new CodeList();
-		arrangedColumnCodes.addAll(storedColumnTags);
+		arrangedColumnCodes.addAll(savedColumnCodesClone);
 		arrangedColumnCodes.addAll(displayColumnCodesClone);
 		
 		return arrangedColumnCodes.withoutDuplicates();
