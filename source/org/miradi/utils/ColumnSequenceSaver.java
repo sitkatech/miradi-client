@@ -67,8 +67,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 
 	private CodeList calculateColumnCodesToRestore() throws Exception
 	{
-		final CodeList calculateArrangedColumnCodesToRestore = calculateColumnCodesToRestore(getSavedColumnCodes(), getDisplayColumnCodes());
-		return calculateArrangedColumnCodesToRestore;
+		return calculateColumnCodesToRestore(getSavedColumnCodes(), getDisplayColumnCodes());
 	}
 	
 	protected void moveColumn(int tableColumn, int destination)
