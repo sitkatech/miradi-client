@@ -182,6 +182,4 @@ public class ColumnSequenceSaver extends MouseAdapter
 	private Project project;
 	private TableWithColumnManagement table;
 	private String uniqueTableIdentifier;
-	public static final int DEFAULT_NARROW_COLUMN_WIDTH = 75;
-	public static final int DEFAULT_WIDE_COLUMN_WIDTH = 200;
 }
