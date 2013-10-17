@@ -131,7 +131,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 		return storedColumnSequences;
 	}
 
-	public Project getProject()
+	private Project getProject()
 	{
 		return project;
 	}
