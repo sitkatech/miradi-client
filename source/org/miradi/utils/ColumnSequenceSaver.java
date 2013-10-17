@@ -39,10 +39,10 @@ public class ColumnSequenceSaver extends MouseAdapter
 	public void restoreColumnSequences() throws Exception
 	{
 		int destination = 0;
-		CodeList desiredSequenceCodes = calculateDesiredSequenceCodesForRestoring();
-		for (int codeIndex = 0; codeIndex < desiredSequenceCodes.size(); ++codeIndex)
+		CodeList columnCodesToRestore = calculateDesiredSequenceCodesForRestoring();
+		for (int codeIndex = 0; codeIndex < columnCodesToRestore.size(); ++codeIndex)
 		{	
-			String desiredSequenceCode = desiredSequenceCodes.get(codeIndex);
+			String desiredSequenceCode = columnCodesToRestore.get(codeIndex);
 			destination += findAndMoveColumn(destination, desiredSequenceCode);
 		}
 	}
