@@ -48,7 +48,7 @@ public abstract class AbstractTableExporter implements TableExporter
 
 	private CodeList getArrangedColumnCodes()
 	{
-		CodeList desiredColumnCodes = ColumnSequenceSaver.getDesiredColumnCodes(getProject(), getUniqueModelIdentifier());
+		CodeList desiredColumnCodes = ColumnSequenceSaver.getSavedColumnCodes(getProject(), getUniqueModelIdentifier());
 		if (desiredColumnCodes != null)
 			return desiredColumnCodes;
 		
