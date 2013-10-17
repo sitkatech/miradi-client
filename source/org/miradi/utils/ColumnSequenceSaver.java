@@ -36,6 +36,14 @@ public class ColumnSequenceSaver extends MouseAdapter
 		uniqueTableIdentifier = uniqueTableIdentifierToUse;
 	}
 	
+	public void saveColumnSequence() throws Exception
+	{		
+		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), uniqueTableIdentifier);
+		final String displayColumnCodes = getDisplayColumnCodes().toString();
+		CommandSetObjectData setColumnSequence = new CommandSetObjectData(tableSettings.getRef(), TableSettings.TAG_COLUMN_SEQUENCE_CODES, displayColumnCodes);
+		getProject().executeCommand(setColumnSequence);
+	}
+	
 	public void restoreColumnSequences() throws Exception
 	{
 		int destination = 0;
@@ -147,14 +155,6 @@ public class ColumnSequenceSaver extends MouseAdapter
 		return currentColumnTagSequences;
 	}
 	
-	public void saveColumnSequence() throws Exception
-	{		
-		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), uniqueTableIdentifier);
-		final String displayColumnCodes = getDisplayColumnCodes().toString();
-		CommandSetObjectData setColumnSequence = new CommandSetObjectData(tableSettings.getRef(), TableSettings.TAG_COLUMN_SEQUENCE_CODES, displayColumnCodes);
-		getProject().executeCommand(setColumnSequence);
-	}
-
 	protected String getColumnGroupCode(int tableColumn)
 	{
 		return table.getColumnGroupCode(tableColumn);
