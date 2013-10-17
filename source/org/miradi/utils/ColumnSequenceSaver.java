@@ -139,11 +139,6 @@ public class ColumnSequenceSaver extends MouseAdapter
 		return storedColumnSequences;
 	}
 
-	private Project getProject()
-	{
-		return project;
-	}
-
 	protected CodeList getDisplayColumnCodes()
 	{
 		CodeList currentColumnTagSequences = new CodeList();
@@ -172,6 +167,11 @@ public class ColumnSequenceSaver extends MouseAdapter
 		{
 			EAM.logException(e);
 		}
+	}
+	
+	private Project getProject()
+	{
+		return project;
 	}
 
 	private Project project;
