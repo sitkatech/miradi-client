@@ -67,7 +67,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 
 	private CodeList calculateDesiredSequenceCodesForRestoring() throws Exception
 	{
-		final CodeList calculateArrangedColumnCodesToRestore = calculateArrangedColumnCodesToRestore(getDesiredColumnSequenceCodes(), getCurrentSequence());
+		final CodeList calculateArrangedColumnCodesToRestore = calculateArrangedColumnCodesToRestore(getSavedColumnCodes(), getCurrentSequence());
 		return calculateArrangedColumnCodesToRestore;
 	}
 	
@@ -114,7 +114,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 		return false;
 	}
 
-	protected CodeList getDesiredColumnSequenceCodes()
+	protected CodeList getSavedColumnCodes()
 	{
 		return getSavedColumnCodes(getProject(), uniqueTableIdentifier);
 	}

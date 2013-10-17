@@ -103,7 +103,7 @@ public class TestColumnSequenceSaver extends TestCaseWithProject
 		}
 		
 		@Override
-		protected CodeList getDesiredColumnSequenceCodes()
+		protected CodeList getSavedColumnCodes()
 		{
 			return new CodeList(storedCodeList);
 		}
