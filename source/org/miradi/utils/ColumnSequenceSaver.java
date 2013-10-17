@@ -90,32 +90,19 @@ public class ColumnSequenceSaver extends MouseAdapter
 	
 	public static CodeList calculateColumnCodesToRestore(CodeList savedColumnCodes, CodeList displayColumnCodes)
 	{
-		if (savedColumnCodes == null || hasColumnsThatWereNotExpected(savedColumnCodes, displayColumnCodes))
+		if (savedColumnCodes == null)
 			savedColumnCodes = displayColumnCodes;
 
 		CodeList savedColumnCodesClone = new CodeList(savedColumnCodes);
 		savedColumnCodesClone.retainAll(displayColumnCodes);
 		
-		CodeList displayColumnCodesClone = new CodeList(displayColumnCodes);
-		displayColumnCodesClone.subtract(savedColumnCodesClone);
-		
 		CodeList arrangedColumnCodes = new CodeList();
 		arrangedColumnCodes.addAll(savedColumnCodesClone);
-		arrangedColumnCodes.addAll(displayColumnCodesClone);
+		arrangedColumnCodes.addAll(displayColumnCodes);
 		
 		return arrangedColumnCodes.withoutDuplicates();
 	}
 	
-	private static boolean hasColumnsThatWereNotExpected(CodeList savedColumnCodes, CodeList displayColumnCodes)
-	{
-		CodeList inFirstNotSecond = new CodeList(savedColumnCodes);
-		inFirstNotSecond.subtract(displayColumnCodes);
-		if(inFirstNotSecond.hasData())
-			return true;
-
-		return false;
-	}
-
 	protected CodeList getSavedColumnCodes()
 	{
 		return getSavedColumnCodes(getProject(), getUniqueTableIdentifier());
