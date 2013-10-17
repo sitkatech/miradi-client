@@ -39,7 +39,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 	public void restoreColumnSequences() throws Exception
 	{
 		int destination = 0;
-		CodeList columnCodesToRestore = calculateDesiredSequenceCodesForRestoring();
+		CodeList columnCodesToRestore = calculateColumnCodesToRestore();
 		for (int codeIndex = 0; codeIndex < columnCodesToRestore.size(); ++codeIndex)
 		{	
 			String desiredSequenceCode = columnCodesToRestore.get(codeIndex);
@@ -65,7 +65,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 		return foundCount;
 	}
 
-	private CodeList calculateDesiredSequenceCodesForRestoring() throws Exception
+	private CodeList calculateColumnCodesToRestore() throws Exception
 	{
 		final CodeList calculateArrangedColumnCodesToRestore = calculateArrangedColumnCodesToRestore(getSavedColumnCodes(), getDisplayColumnCodes());
 		return calculateArrangedColumnCodesToRestore;
