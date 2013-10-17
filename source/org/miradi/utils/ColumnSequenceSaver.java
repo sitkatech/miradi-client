@@ -67,7 +67,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 
 	private CodeList calculateDesiredSequenceCodesForRestoring() throws Exception
 	{
-		final CodeList calculateArrangedColumnCodesToRestore = calculateArrangedColumnCodesToRestore(getSavedColumnCodes(), getCurrentSequence());
+		final CodeList calculateArrangedColumnCodesToRestore = calculateArrangedColumnCodesToRestore(getSavedColumnCodes(), getDisplayColumnCodes());
 		return calculateArrangedColumnCodesToRestore;
 	}
 	
@@ -137,7 +137,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 		return project;
 	}
 
-	protected CodeList getCurrentSequence()
+	protected CodeList getDisplayColumnCodes()
 	{
 		CodeList currentColumnTagSequences = new CodeList();
 		for (int tableColumn = 0; tableColumn < getTableColumnCount(); ++tableColumn)
@@ -151,7 +151,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 	public void saveColumnSequence() throws Exception
 	{		
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), uniqueTableIdentifier);
-		final String desiredSequenceColumnCodes = getCurrentSequence().toString();
+		final String desiredSequenceColumnCodes = getDisplayColumnCodes().toString();
 		CommandSetObjectData setColumnSequence = new CommandSetObjectData(tableSettings.getRef(), TableSettings.TAG_COLUMN_SEQUENCE_CODES, desiredSequenceColumnCodes);
 		getProject().executeCommand(setColumnSequence);
 	}

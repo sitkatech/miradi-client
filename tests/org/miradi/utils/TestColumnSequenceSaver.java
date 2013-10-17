@@ -69,7 +69,7 @@ public class TestColumnSequenceSaver extends TestCaseWithProject
 	{
 		ColumnSequenceSaverForTesting columnSequenceSaver = new ColumnSequenceSaverForTesting(getProject(), storedCodeList , currentCodeList);
 		columnSequenceSaver.restoreColumnSequences();
-		CodeList afterMoveSequence = columnSequenceSaver.getCurrentSequence();
+		CodeList afterMoveSequence = columnSequenceSaver.getDisplayColumnCodes();
 				
 		assertEquals("incorrect move?", expectedSequenceAfterMove, afterMoveSequence);
 	}
@@ -97,7 +97,7 @@ public class TestColumnSequenceSaver extends TestCaseWithProject
 		}
 		
 		@Override
-		protected CodeList getCurrentSequence()
+		protected CodeList getDisplayColumnCodes()
 		{
 			return new CodeList(currentCodeList);
 		}
