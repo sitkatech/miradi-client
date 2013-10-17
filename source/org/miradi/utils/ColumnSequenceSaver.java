@@ -73,11 +73,6 @@ public class ColumnSequenceSaver extends MouseAdapter
 		return foundCount;
 	}
 
-	private CodeList calculateColumnCodesToRestore() throws Exception
-	{
-		return calculateColumnCodesToRestore(getSavedColumnCodes(), getDisplayColumnCodes());
-	}
-	
 	protected void moveColumn(int tableColumn, int destination)
 	{
 		table.getColumnModel().moveColumn(tableColumn, destination);
@@ -86,6 +81,11 @@ public class ColumnSequenceSaver extends MouseAdapter
 	protected int getTableColumnCount()
 	{
 		return table.getColumnCount();
+	}
+	
+	private CodeList calculateColumnCodesToRestore() throws Exception
+	{
+		return calculateColumnCodesToRestore(getSavedColumnCodes(), getDisplayColumnCodes());
 	}
 	
 	public static CodeList calculateColumnCodesToRestore(CodeList savedColumnCodes, CodeList displayColumnCodes)
