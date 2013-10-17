@@ -38,12 +38,12 @@ public class ColumnSequenceSaver extends MouseAdapter
 	
 	public void saveColumnSequence() throws Exception
 	{		
-		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), uniqueTableIdentifier);
+		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getUniqueTableIdentifier());
 		final String displayColumnCodes = getDisplayColumnCodes().toString();
 		CommandSetObjectData setColumnSequence = new CommandSetObjectData(tableSettings.getRef(), TableSettings.TAG_COLUMN_SEQUENCE_CODES, displayColumnCodes);
 		getProject().executeCommand(setColumnSequence);
 	}
-	
+
 	public void restoreColumnSequences() throws Exception
 	{
 		int destination = 0;
@@ -123,7 +123,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 
 	protected CodeList getSavedColumnCodes()
 	{
-		return getSavedColumnCodes(getProject(), uniqueTableIdentifier);
+		return getSavedColumnCodes(getProject(), getUniqueTableIdentifier());
 	}
 
 	public static CodeList getSavedColumnCodes(Project project, String uniqueTableIdentifierToUse)
@@ -167,6 +167,11 @@ public class ColumnSequenceSaver extends MouseAdapter
 		{
 			EAM.logException(e);
 		}
+	}
+	
+	private String getUniqueTableIdentifier()
+	{
+		return uniqueTableIdentifier;
 	}
 	
 	private Project getProject()
