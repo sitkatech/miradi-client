@@ -43,7 +43,7 @@ public abstract class AbstractTableExporter implements TableExporter
 
 	protected CodeList calculateArrangedColumnCodes(CodeList modelColumnSequence)
 	{
-		return ColumnSequenceSaver.calculateArrangedColumnCodesToRestore(getArrangedColumnCodes(), new CodeList(modelColumnSequence));
+		return ColumnSequenceSaver.calculateColumnCodesToRestore(getArrangedColumnCodes(), new CodeList(modelColumnSequence));
 	}
 
 	private CodeList getArrangedColumnCodes()
@@ -57,7 +57,7 @@ public abstract class AbstractTableExporter implements TableExporter
 
 	public static HashMap<Integer, Integer> buildModelColumnIndexMap(CodeList desiredSequenceCodesToUse, CodeList modelColumnCodes)
 	{
-		CodeList desiredSequenceCodes = ColumnSequenceSaver.calculateArrangedColumnCodesToRestore(new CodeList(desiredSequenceCodesToUse), new CodeList(modelColumnCodes));
+		CodeList desiredSequenceCodes = ColumnSequenceSaver.calculateColumnCodesToRestore(new CodeList(desiredSequenceCodesToUse), new CodeList(modelColumnCodes));
 		
 		int destination = 0;
 		HashMap<Integer, Integer> tableColumnToModelColumnMap = new HashMap<Integer, Integer>();

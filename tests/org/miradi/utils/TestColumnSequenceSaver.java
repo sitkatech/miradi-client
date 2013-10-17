@@ -34,10 +34,10 @@ public class TestColumnSequenceSaver extends TestCaseWithProject
 		CodeList storedCodeList = new CodeList(new String[]{"Item","Viability Mode","Status","Type","Poor","Fair","Good","Very Good","Source","Progress"});
 		CodeList defaultCodeList = new CodeList(new String[]{"Status", "Lebensf\u00e4higkeits Modus", "Posten","Typ","Mangelhaft","Ausreichend","Gut","Sehr gut","Quelle","Fortschritt"});
 		ColumnSequenceSaver columnSequenceSaver = new ColumnSequenceSaver(getProject(), null, getName());
-		CodeList calculatedList1 = columnSequenceSaver.calculateArrangedColumnCodesToRestore(storedCodeList, defaultCodeList);
+		CodeList calculatedList1 = columnSequenceSaver.calculateColumnCodesToRestore(storedCodeList, defaultCodeList);
 		assertEquals("Didn't use default sequence when columns added?", defaultCodeList, calculatedList1);
 
-		CodeList calculatedList2 = columnSequenceSaver.calculateArrangedColumnCodesToRestore(defaultCodeList, storedCodeList);
+		CodeList calculatedList2 = columnSequenceSaver.calculateColumnCodesToRestore(defaultCodeList, storedCodeList);
 		assertNotEquals("Used default sequence when columns added?", defaultCodeList, calculatedList2);
 	}
 	
@@ -46,7 +46,7 @@ public class TestColumnSequenceSaver extends TestCaseWithProject
 		CodeList storedCodeList = new CodeList(new String[]{"A", "C", "B", });
 		CodeList currentCodeList = new CodeList(new String[]{"B", "C", "D", "D","A"});
 		ColumnSequenceSaver columnSequenceSaver = new ColumnSequenceSaver(getProject(), null, getName());
-		CodeList desiredList = columnSequenceSaver.calculateArrangedColumnCodesToRestore(storedCodeList, currentCodeList);
+		CodeList desiredList = columnSequenceSaver.calculateColumnCodesToRestore(storedCodeList, currentCodeList);
 		
 		CodeList expectedCodeList = new CodeList(new String[]{"A","C","B","D"}); 
 		assertEquals("new sequence list was calculated incorrectly?", expectedCodeList, desiredList);
