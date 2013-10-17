@@ -116,10 +116,10 @@ public class ColumnSequenceSaver extends MouseAdapter
 
 	protected CodeList getDesiredColumnSequenceCodes()
 	{
-		return getDesiredColumnCodes(getProject(), uniqueTableIdentifier);
+		return getSavedColumnCodes(getProject(), uniqueTableIdentifier);
 	}
 
-	public static CodeList getDesiredColumnCodes(Project project, String uniqueTableIdentifierToUse)
+	public static CodeList getSavedColumnCodes(Project project, String uniqueTableIdentifierToUse)
 	{
 		TableSettings tableSettings = TableSettings.find(project, uniqueTableIdentifierToUse);
 		if (tableSettings == null)
