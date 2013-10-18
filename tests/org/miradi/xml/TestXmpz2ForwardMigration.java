@@ -43,10 +43,7 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject
 	
 	public void testImportingRemovedTncFields() throws Exception
 	{
-		UnicodeXmlWriter projectWriter = TestXmpz2XmlImporter.createWriter(getProject());
-		String exportedProjectXml = projectWriter.toString();
-		StringInputStreamWithSeek stringInputputStream = new StringInputStreamWithSeek(exportedProjectXml);
-		Document document = Xmpz2ForwardMigration.convertToDocument(stringInputputStream);
+		Document document = convertProjectToDocument();
 		Element rootElement = document.getDocumentElement();
 		NodeList tncProjectDataNodes = rootElement.getElementsByTagName(Xmpz2XmlConstants.PREFIX + Xmpz2XmlConstants.TNC_PROJECT_DATA);
 		for (int index = 0; index < tncProjectDataNodes.getLength(); ++index)
@@ -76,10 +73,7 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject
 	
 	public void testImportingLegalOlderSchemaVersion() throws Exception
 	{
-		UnicodeXmlWriter projectWriter = TestXmpz2XmlImporter.createWriter(getProject());
-		String exportedProjectXml = projectWriter.toString();
-		StringInputStreamWithSeek stringInputputStream = new StringInputStreamWithSeek(exportedProjectXml);
-		Document document = Xmpz2ForwardMigration.convertToDocument(stringInputputStream);
+		Document document = convertProjectToDocument();
 		Element rootElement = document.getDocumentElement();
 		Xmpz2ForwardMigration.setNameSpaceVersion(rootElement, "228");
 		
@@ -91,5 +85,14 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject
 		InputStreamWithSeek inputStream = migration.migrate(new StringInputStreamWithSeek(updatedXmlAsString));
 		if (!new Xmpz2XmlValidator().isValid(inputStream))
 			fail("Project should validate after xml has been migrated?");
+	}
+	
+	private Document convertProjectToDocument() throws Exception
+	{
+		UnicodeXmlWriter projectWriter = TestXmpz2XmlImporter.createWriter(getProject());
+		String exportedProjectXml = projectWriter.toString();
+		StringInputStreamWithSeek stringInputputStream = new StringInputStreamWithSeek(exportedProjectXml);
+		Document document = Xmpz2ForwardMigration.convertToDocument(stringInputputStream);
+		return document;
 	}
 }
