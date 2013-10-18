@@ -20,16 +20,22 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
+import java.util.Collections;
+import java.util.Vector;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.exceptions.XmpzVersionTooOldException;
+import org.miradi.migrations.forward.MigrationTo11;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.xml.AbstractXmlImporter;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
 public class Xmpz2ForwardMigration implements Xmpz2XmlConstants
@@ -39,10 +45,56 @@ public class Xmpz2ForwardMigration implements Xmpz2XmlConstants
 		Document document = convertToDocument(projectAsInputStream);
 		Element rootElement = document.getDocumentElement();
 		updateXmpz2SchemaVersionToCurrentVersion(rootElement);
-		
+		removeLegacyTncFields(document, rootElement);
 		final String migratedXmlAsString = HtmlUtilities.toXmlString(document);
 
 		return new StringInputStreamWithSeek(migratedXmlAsString);
+	}
+
+	private void removeLegacyTncFields(Document document, Element rootElement)
+	{
+		Node tncProjectDataNode = findNode(rootElement.getChildNodes(), Xmpz2XmlConstants.TNC_PROJECT_DATA);
+		if (tncProjectDataNode != null)
+			removeLegacyTncChildren(document, tncProjectDataNode);
+	}
+
+	private Node findNode(NodeList children, final String elementNameWithoutAlias)
+	{
+		for (int index = 0; index < children.getLength(); ++index)
+		{
+			Node childNode = children.item(index);
+			if (childNode.getNodeName().endsWith(elementNameWithoutAlias))
+				return childNode;
+		}
+		
+		return null;
+	}
+
+	private void removeLegacyTncChildren(Document document, Node tncProjectDataNode)
+	{
+		NodeList children = tncProjectDataNode.getChildNodes();
+		Vector<Node> childrenToRemove = new Vector<Node>();
+		final Node organizationPrioritiesNode = findNode(children, createLegacyTncOrganizationlPrioritesElementName());
+		childrenToRemove.add(organizationPrioritiesNode);
+		
+		final Node projectTypesNode = findNode(children, createLegacyTncProjectPlaceTypesElementName());
+		childrenToRemove.add(projectTypesNode);
+
+		childrenToRemove.removeAll(Collections.singleton(null));
+		for(Node childNodeToRemove : childrenToRemove)
+		{
+			tncProjectDataNode.removeChild(childNodeToRemove);
+		}
+	}
+
+	public static String createLegacyTncProjectPlaceTypesElementName()
+	{
+		return Xmpz2XmlConstants.TNC_PROJECT_DATA + "TNC" +  MigrationTo11.LEGACY_TAG_TNC_PROJECT_TYPES + Xmpz2XmlConstants.CONTAINER_ELEMENT_TAG;
+	}
+
+	public static String createLegacyTncOrganizationlPrioritesElementName()
+	{
+		return Xmpz2XmlConstants.TNC_PROJECT_DATA + "TNC" + MigrationTo11.LEGACY_TAG_TNC_ORGANIZATIONAL_PRIORITIES + Xmpz2XmlConstants.CONTAINER_ELEMENT_TAG;
 	}
 
 	private void updateXmpz2SchemaVersionToCurrentVersion(Element rootElement) throws Exception
