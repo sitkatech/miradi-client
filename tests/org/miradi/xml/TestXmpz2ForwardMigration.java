@@ -53,17 +53,11 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject
 		{
 			Node node = tncProjectDataNodes.item(index);
 			
-			Element legacyOrganizationalPrioritiesNode = document.createElement(Xmpz2XmlConstants.PREFIX + Xmpz2ForwardMigration.createLegacyTncOrganizationlPrioritesElementName());
-			Element legacyOrganizationalPrioritiesCodeNode = document.createElement(Xmpz2XmlConstants.CODE_ELEMENT_NAME);
-			legacyOrganizationalPrioritiesCodeNode.setTextContent("Some value");
-			legacyOrganizationalPrioritiesNode.appendChild(legacyOrganizationalPrioritiesCodeNode);
-			node.appendChild(legacyOrganizationalPrioritiesNode);
+			final String createLegacyTncOrganizationlPrioritesElementName = Xmpz2ForwardMigration.createLegacyTncOrganizationlPrioritesElementName();
+			appendContainerWithSampleCode(document, node, createLegacyTncOrganizationlPrioritesElementName);
 			
-			Element legacyProjectPlaceTypesNode = document.createElement(Xmpz2XmlConstants.PREFIX + Xmpz2ForwardMigration.createLegacyTncProjectPlaceTypesElementName());
-			Element legacyProjectPlaceTypesCodeNode = document.createElement(Xmpz2XmlConstants.CODE_ELEMENT_NAME);
-			legacyProjectPlaceTypesCodeNode.setTextContent("Some value");
-			legacyProjectPlaceTypesNode.appendChild(legacyProjectPlaceTypesCodeNode);
-			node.appendChild(legacyProjectPlaceTypesNode);
+			final String createLegacyTncProjectPlaceTypesElementName = Xmpz2ForwardMigration.createLegacyTncProjectPlaceTypesElementName();
+			appendContainerWithSampleCode(document, node, createLegacyTncProjectPlaceTypesElementName);
 		}
 		
 		String updatedXmlAsString = HtmlUtilities.toXmlString(document);
@@ -72,6 +66,15 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject
 		
 		if (!new Xmpz2XmlValidator().isValid(inputStream))
 			fail("Project should validate after xml has been migrated?");
+	}
+
+	protected void appendContainerWithSampleCode(Document document, Node node, final String createLegacyTncProjectPlaceTypesElementName)
+	{
+		Element legacyProjectPlaceTypesNode = document.createElement(Xmpz2XmlConstants.PREFIX + createLegacyTncProjectPlaceTypesElementName);
+		Element legacyProjectPlaceTypesCodeNode = document.createElement(Xmpz2XmlConstants.CODE_ELEMENT_NAME);
+		legacyProjectPlaceTypesCodeNode.setTextContent("Some value");
+		legacyProjectPlaceTypesNode.appendChild(legacyProjectPlaceTypesCodeNode);
+		node.appendChild(legacyProjectPlaceTypesNode);
 	}
 	
 	public void testImportingLegalOlderSchemaVersion() throws Exception
