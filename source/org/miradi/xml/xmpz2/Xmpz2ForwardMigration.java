@@ -65,7 +65,7 @@ public class Xmpz2ForwardMigration implements Xmpz2XmlConstants
 			if (humanWellbeingTarget == null)
 				continue;
 			
-			removeChildren(document, humanWellbeingTarget, new String[]{Xmpz2XmlConstants.HUMAN_WELFARE_TARGET + Xmpz2XmlConstants.CALCULATED_THREAT_RATING,});
+			removeChildren(humanWellbeingTarget, new String[]{Xmpz2XmlConstants.HUMAN_WELFARE_TARGET + Xmpz2XmlConstants.CALCULATED_THREAT_RATING,});
 		}
 	}
 
@@ -91,10 +91,10 @@ public class Xmpz2ForwardMigration implements Xmpz2XmlConstants
 	private void removeLegacyTncChildren(Document document, Node tncProjectDataNode)
 	{
 		String[] elementNamesToRemove = new String[]{createLegacyTncOrganizationlPrioritesElementName(), createLegacyTncProjectPlaceTypesElementName(), };
-		removeChildren(document, tncProjectDataNode, elementNamesToRemove);
+		removeChildren(tncProjectDataNode, elementNamesToRemove);
 	}
 	
-	private void removeChildren(Document document, Node nodeToRemoveElementsFrom, String[] elementNames)
+	private void removeChildren(Node nodeToRemoveElementsFrom, String[] elementNames)
 	{
 		NodeList children = nodeToRemoveElementsFrom.getChildNodes();
 		Vector<Node> childrenToRemove = new Vector<Node>();
