@@ -46,10 +46,27 @@ public class Xmpz2ForwardMigration implements Xmpz2XmlConstants
 		Element rootElement = document.getDocumentElement();
 		updateXmpz2SchemaVersionToCurrentVersion(rootElement);
 		removeLegacyTncFields(document, rootElement);
-		
+		removeHumanWellbeingTargetCalculatedThreatRatingElement(document, rootElement);
 		final String migratedXmlAsString = HtmlUtilities.toXmlString(document);
 
 		return new StringInputStreamWithSeek(migratedXmlAsString);
+	}
+
+	private void removeHumanWellbeingTargetCalculatedThreatRatingElement(Document document, Element rootElement)
+	{
+		Node humanWelbeignTargetPool = findNode(rootElement.getChildNodes(), Xmpz2XmlWriter.createPoolElementName(Xmpz2XmlConstants.HUMAN_WELFARE_TARGET));
+		if (humanWelbeignTargetPool == null)
+			return;
+		
+		NodeList children = humanWelbeignTargetPool.getChildNodes();
+		for (int index = 0; index < children.getLength(); ++index)
+		{
+			Node humanWellbeingTarget = children.item(index);
+			if (humanWellbeingTarget == null)
+				continue;
+			
+			removeChildren(document, humanWellbeingTarget, new String[]{Xmpz2XmlConstants.HUMAN_WELFARE_TARGET + Xmpz2XmlConstants.CALCULATED_THREAT_RATING,});
+		}
 	}
 
 	private void removeLegacyTncFields(Document document, Element rootElement)
@@ -77,9 +94,9 @@ public class Xmpz2ForwardMigration implements Xmpz2XmlConstants
 		removeChildren(document, tncProjectDataNode, elementNamesToRemove);
 	}
 	
-	private void removeChildren(Document document, Node tncProjectDataNode, String[] elementNames)
+	private void removeChildren(Document document, Node nodeToRemoveElementsFrom, String[] elementNames)
 	{
-		NodeList children = tncProjectDataNode.getChildNodes();
+		NodeList children = nodeToRemoveElementsFrom.getChildNodes();
 		Vector<Node> childrenToRemove = new Vector<Node>();
 		for(String elementNameToRemove : elementNames)
 		{
@@ -90,7 +107,7 @@ public class Xmpz2ForwardMigration implements Xmpz2XmlConstants
 		childrenToRemove.removeAll(Collections.singleton(null));
 		for(Node childNodeToRemove : childrenToRemove)
 		{
-			tncProjectDataNode.removeChild(childNodeToRemove);
+			nodeToRemoveElementsFrom.removeChild(childNodeToRemove);
 		}
 	}
 
