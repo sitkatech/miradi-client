@@ -67,7 +67,6 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject
 		}
 		
 		String updatedXmlAsString = HtmlUtilities.toXmlString(document);
-		System.out.println(updatedXmlAsString);
 		Xmpz2ForwardMigration migration = new Xmpz2ForwardMigration();
 		InputStreamWithSeek inputStream = migration.migrate(new StringInputStreamWithSeek(updatedXmlAsString));
 		
