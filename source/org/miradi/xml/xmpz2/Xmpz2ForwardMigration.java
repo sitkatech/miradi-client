@@ -73,7 +73,7 @@ public class Xmpz2ForwardMigration implements Xmpz2XmlConstants
 	{
 		Node tncProjectDataNode = findNode(rootElement.getChildNodes(), Xmpz2XmlConstants.TNC_PROJECT_DATA);
 		if (tncProjectDataNode != null)
-			removeLegacyTncChildren(document, tncProjectDataNode);
+			removeLegacyTncChildren(tncProjectDataNode);
 	}
 
 	private Node findNode(NodeList children, final String elementNameWithoutAlias)
@@ -88,7 +88,7 @@ public class Xmpz2ForwardMigration implements Xmpz2XmlConstants
 		return null;
 	}
 
-	private void removeLegacyTncChildren(Document document, Node tncProjectDataNode)
+	private void removeLegacyTncChildren(Node tncProjectDataNode)
 	{
 		String[] elementNamesToRemove = new String[]{createLegacyTncOrganizationlPrioritesElementName(), createLegacyTncProjectPlaceTypesElementName(), };
 		removeChildren(tncProjectDataNode, elementNamesToRemove);
