@@ -46,6 +46,7 @@ public class Xmpz2ForwardMigration implements Xmpz2XmlConstants
 		Element rootElement = document.getDocumentElement();
 		updateXmpz2SchemaVersionToCurrentVersion(rootElement);
 		removeLegacyTncFields(document, rootElement);
+		
 		final String migratedXmlAsString = HtmlUtilities.toXmlString(document);
 
 		return new StringInputStreamWithSeek(migratedXmlAsString);
@@ -72,14 +73,20 @@ public class Xmpz2ForwardMigration implements Xmpz2XmlConstants
 
 	private void removeLegacyTncChildren(Document document, Node tncProjectDataNode)
 	{
+		String[] elementNamesToRemove = new String[]{createLegacyTncOrganizationlPrioritesElementName(), createLegacyTncProjectPlaceTypesElementName(), };
+		removeChildren(document, tncProjectDataNode, elementNamesToRemove);
+	}
+	
+	private void removeChildren(Document document, Node tncProjectDataNode, String[] elementNames)
+	{
 		NodeList children = tncProjectDataNode.getChildNodes();
 		Vector<Node> childrenToRemove = new Vector<Node>();
-		final Node organizationPrioritiesNode = findNode(children, createLegacyTncOrganizationlPrioritesElementName());
-		childrenToRemove.add(organizationPrioritiesNode);
+		for(String elementNameToRemove : elementNames)
+		{
+			final Node nodeToRemove = findNode(children, elementNameToRemove);
+			childrenToRemove.add(nodeToRemove);
+		}
 		
-		final Node projectTypesNode = findNode(children, createLegacyTncProjectPlaceTypesElementName());
-		childrenToRemove.add(projectTypesNode);
-
 		childrenToRemove.removeAll(Collections.singleton(null));
 		for(Node childNodeToRemove : childrenToRemove)
 		{
