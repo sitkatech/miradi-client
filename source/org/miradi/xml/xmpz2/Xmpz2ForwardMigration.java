@@ -45,7 +45,7 @@ public class Xmpz2ForwardMigration implements Xmpz2XmlConstants
 		Document document = convertToDocument(projectAsInputStream);
 		Element rootElement = document.getDocumentElement();
 		updateXmpz2SchemaVersionToCurrentVersion(rootElement);
-		removeLegacyTncFields(document, rootElement);
+		removeLegacyTncFields(rootElement);
 		removeHumanWellbeingTargetCalculatedThreatRatingElement(document, rootElement);
 		final String migratedXmlAsString = HtmlUtilities.toXmlString(document);
 
@@ -69,7 +69,7 @@ public class Xmpz2ForwardMigration implements Xmpz2XmlConstants
 		}
 	}
 
-	private void removeLegacyTncFields(Document document, Element rootElement)
+	private void removeLegacyTncFields(Element rootElement)
 	{
 		Node tncProjectDataNode = findNode(rootElement.getChildNodes(), Xmpz2XmlConstants.TNC_PROJECT_DATA);
 		if (tncProjectDataNode != null)
