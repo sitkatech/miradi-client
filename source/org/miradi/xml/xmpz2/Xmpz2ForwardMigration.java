@@ -46,13 +46,13 @@ public class Xmpz2ForwardMigration implements Xmpz2XmlConstants
 		Element rootElement = document.getDocumentElement();
 		updateXmpz2SchemaVersionToCurrentVersion(rootElement);
 		removeLegacyTncFields(rootElement);
-		removeHumanWellbeingTargetCalculatedThreatRatingElement(document, rootElement);
+		removeHumanWellbeingTargetCalculatedThreatRatingElement(rootElement);
 		final String migratedXmlAsString = HtmlUtilities.toXmlString(document);
 
 		return new StringInputStreamWithSeek(migratedXmlAsString);
 	}
 
-	private void removeHumanWellbeingTargetCalculatedThreatRatingElement(Document document, Element rootElement)
+	private void removeHumanWellbeingTargetCalculatedThreatRatingElement(Element rootElement)
 	{
 		Node humanWelbeignTargetPool = findNode(rootElement.getChildNodes(), Xmpz2XmlWriter.createPoolElementName(Xmpz2XmlConstants.HUMAN_WELFARE_TARGET));
 		if (humanWelbeignTargetPool == null)
