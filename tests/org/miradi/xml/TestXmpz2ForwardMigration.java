@@ -53,11 +53,8 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject
 		{
 			Node node = tncProjectDataNodes.item(index);
 			
-			final String createLegacyTncOrganizationlPrioritesElementName = Xmpz2ForwardMigration.createLegacyTncOrganizationlPrioritesElementName();
-			appendContainerWithSampleCode(document, node, createLegacyTncOrganizationlPrioritesElementName);
-			
-			final String createLegacyTncProjectPlaceTypesElementName = Xmpz2ForwardMigration.createLegacyTncProjectPlaceTypesElementName();
-			appendContainerWithSampleCode(document, node, createLegacyTncProjectPlaceTypesElementName);
+			appendContainerWithSampleCode(document, node, Xmpz2ForwardMigration.createLegacyTncOrganizationlPrioritesElementName());
+			appendContainerWithSampleCode(document, node, Xmpz2ForwardMigration.createLegacyTncProjectPlaceTypesElementName());
 		}
 		
 		String updatedXmlAsString = HtmlUtilities.toXmlString(document);
@@ -68,7 +65,7 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject
 			fail("Project should validate after xml has been migrated?");
 	}
 
-	protected void appendContainerWithSampleCode(Document document, Node node, final String createLegacyTncProjectPlaceTypesElementName)
+	private void appendContainerWithSampleCode(Document document, Node node, final String createLegacyTncProjectPlaceTypesElementName)
 	{
 		Element legacyProjectPlaceTypesNode = document.createElement(Xmpz2XmlConstants.PREFIX + createLegacyTncProjectPlaceTypesElementName);
 		Element legacyProjectPlaceTypesCodeNode = document.createElement(Xmpz2XmlConstants.CODE_ELEMENT_NAME);
