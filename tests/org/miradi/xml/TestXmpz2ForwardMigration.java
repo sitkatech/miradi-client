@@ -65,13 +65,13 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject
 			fail("Project should validate after xml has been migrated?");
 	}
 
-	private void appendContainerWithSampleCode(Document document, Node node, final String createLegacyTncProjectPlaceTypesElementName)
+	private void appendContainerWithSampleCode(Document document, Node node, final String containerName)
 	{
-		Element legacyProjectPlaceTypesNode = document.createElement(Xmpz2XmlConstants.PREFIX + createLegacyTncProjectPlaceTypesElementName);
-		Element legacyProjectPlaceTypesCodeNode = document.createElement(Xmpz2XmlConstants.CODE_ELEMENT_NAME);
-		legacyProjectPlaceTypesCodeNode.setTextContent("Some value");
-		legacyProjectPlaceTypesNode.appendChild(legacyProjectPlaceTypesCodeNode);
-		node.appendChild(legacyProjectPlaceTypesNode);
+		Element containerNode = document.createElement(Xmpz2XmlConstants.PREFIX + containerName);
+		Element codeNode = document.createElement(Xmpz2XmlConstants.CODE_ELEMENT_NAME);
+		codeNode.setTextContent("Some value");
+		containerNode.appendChild(codeNode);
+		node.appendChild(containerNode);
 	}
 	
 	public void testImportingLegalOlderSchemaVersion() throws Exception
