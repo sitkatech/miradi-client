@@ -41,6 +41,28 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject
 		super(name);
 	}
 	
+	public void validateMigratingEmptyProject() throws Exception
+	{
+		Document document = convertProjectToDocument();
+		verifyMigratedXmpz2(document);
+	}
+	
+	public void testLegacyHumanWellbeingTargetCalculatedThreatRating() throws Exception
+	{
+		getProject().createHumanWelfareTarget();
+		Document document = convertProjectToDocument();
+		Element rootElement = document.getDocumentElement();
+		NodeList humanWellBeingTargets = rootElement.getElementsByTagName(Xmpz2XmlConstants.PREFIX + Xmpz2XmlConstants.HUMAN_WELFARE_TARGET);
+		for (int index = 0; index < humanWellBeingTargets.getLength(); ++index)
+		{
+			Node node = humanWellBeingTargets.item(index);
+			Element nodeToBeRemovedByMigration = document.createElement(Xmpz2XmlConstants.PREFIX + Xmpz2XmlConstants.HUMAN_WELFARE_TARGET + Xmpz2XmlConstants.CALCULATED_THREAT_RATING);
+			node.appendChild(nodeToBeRemovedByMigration);
+		}
+		
+		verifyMigratedXmpz2(document);
+	}
+	
 	public void testImportingRemovedTncFields() throws Exception
 	{
 		Document document = convertProjectToDocument();
@@ -54,12 +76,7 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject
 			appendContainerWithSampleCode(document, node, Xmpz2ForwardMigration.createLegacyTncProjectPlaceTypesElementName());
 		}
 		
-		String updatedXmlAsString = HtmlUtilities.toXmlString(document);
-		Xmpz2ForwardMigration migration = new Xmpz2ForwardMigration();
-		InputStreamWithSeek inputStream = migration.migrate(new StringInputStreamWithSeek(updatedXmlAsString));
-		
-		if (!new Xmpz2XmlValidator().isValid(inputStream))
-			fail("Project should validate after xml has been migrated?");
+		verifyMigratedXmpz2(document);
 	}
 
 	private void appendContainerWithSampleCode(Document document, Node node, final String containerName)
@@ -95,4 +112,16 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject
 		Document document = Xmpz2ForwardMigration.convertToDocument(stringInputputStream);
 		return document;
 	}
+	
+	private void verifyMigratedXmpz2(Document document) throws Exception
+	{
+		String updatedXmlAsString = HtmlUtilities.toXmlString(document);
+		System.out.println(updatedXmlAsString);
+		Xmpz2ForwardMigration migration = new Xmpz2ForwardMigration();
+		InputStreamWithSeek inputStream = migration.migrate(new StringInputStreamWithSeek(updatedXmlAsString));
+		if (!new Xmpz2XmlValidator().isValid(inputStream))
+			fail("Project should validate after xml has been migrated?");
+	}
+
+
 }
