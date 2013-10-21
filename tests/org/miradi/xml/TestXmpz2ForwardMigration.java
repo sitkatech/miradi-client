@@ -35,7 +35,7 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
  */
 
-public class TestXmpz2ForwardMigration extends TestCaseWithProject
+public class TestXmpz2ForwardMigration extends TestCaseWithProject implements Xmpz2XmlConstants
 {
 	public TestXmpz2ForwardMigration(String name)
 	{
@@ -66,8 +66,13 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject
 
 	private void appendChildNodeWithSampleText(Document document, Node node, final String childElementName)
 	{
+		appendChildNodeWithSampleText(document, node, childElementName, "Some value");
+	}
+
+	private void appendChildNodeWithSampleText(Document document, Node node, final String childElementName, final String value)
+	{
 		Element childNode = document.createElement(Xmpz2XmlConstants.PREFIX + childElementName);
-		childNode.setTextContent("Some value");
+		childNode.setTextContent(value);
 		node.appendChild(childNode);
 	}
 	
@@ -145,6 +150,4 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject
 		if (!new Xmpz2XmlValidator().isValid(inputStream))
 			fail("Project should validate after xml has been migrated?");
 	}
-
-
 }
