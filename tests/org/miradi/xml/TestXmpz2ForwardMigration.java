@@ -52,13 +52,13 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject implements Xm
 	{
 		Document document = convertProjectToDocument();
 		Element rootElement = document.getDocumentElement();
-		NodeList tncProjectDataNodes = rootElement.getElementsByTagName(Xmpz2XmlConstants.PREFIX + Xmpz2XmlConstants.TNC_PROJECT_DATA);
+		NodeList tncProjectDataNodes = rootElement.getElementsByTagName(PREFIX + TNC_PROJECT_DATA);
 		for (int index = 0; index < tncProjectDataNodes.getLength(); ++index)
 		{
 			Node node = tncProjectDataNodes.item(index);
 			
-			appendChildNodeWithSampleText(document, node, Xmpz2XmlConstants.TNC_PROJECT_DATA + MigrationTo10.LEGACY_TAG_MAKING_THE_CASE);
-			appendChildNodeWithSampleText(document, node, Xmpz2XmlConstants.TNC_PROJECT_DATA + MigrationTo10.LEGACY_TAG_CAPACITY_AND_FUNDING);
+			appendChildNodeWithSampleText(document, node, TNC_PROJECT_DATA + MigrationTo10.LEGACY_TAG_MAKING_THE_CASE);
+			appendChildNodeWithSampleText(document, node, TNC_PROJECT_DATA + MigrationTo10.LEGACY_TAG_CAPACITY_AND_FUNDING);
 		}
 		
 		verifyMigratedXmpz2(document);
@@ -71,7 +71,7 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject implements Xm
 
 	private void appendChildNodeWithSampleText(Document document, Node node, final String childElementName, final String value)
 	{
-		Element childNode = document.createElement(Xmpz2XmlConstants.PREFIX + childElementName);
+		Element childNode = document.createElement(PREFIX + childElementName);
 		childNode.setTextContent(value);
 		node.appendChild(childNode);
 	}
@@ -81,11 +81,11 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject implements Xm
 		getProject().createHumanWelfareTarget();
 		Document document = convertProjectToDocument();
 		Element rootElement = document.getDocumentElement();
-		NodeList humanWellBeingTargets = rootElement.getElementsByTagName(Xmpz2XmlConstants.PREFIX + Xmpz2XmlConstants.HUMAN_WELFARE_TARGET);
+		NodeList humanWellBeingTargets = rootElement.getElementsByTagName(PREFIX + HUMAN_WELFARE_TARGET);
 		for (int index = 0; index < humanWellBeingTargets.getLength(); ++index)
 		{
 			Node node = humanWellBeingTargets.item(index);
-			Element nodeToBeRemovedByMigration = document.createElement(Xmpz2XmlConstants.PREFIX + Xmpz2XmlConstants.HUMAN_WELFARE_TARGET + Xmpz2XmlConstants.CALCULATED_THREAT_RATING);
+			Element nodeToBeRemovedByMigration = document.createElement(PREFIX + HUMAN_WELFARE_TARGET + CALCULATED_THREAT_RATING);
 			node.appendChild(nodeToBeRemovedByMigration);
 		}
 		
@@ -96,7 +96,7 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject implements Xm
 	{
 		Document document = convertProjectToDocument();
 		Element rootElement = document.getDocumentElement();
-		NodeList tncProjectDataNodes = rootElement.getElementsByTagName(Xmpz2XmlConstants.PREFIX + Xmpz2XmlConstants.TNC_PROJECT_DATA);
+		NodeList tncProjectDataNodes = rootElement.getElementsByTagName(PREFIX + TNC_PROJECT_DATA);
 		for (int index = 0; index < tncProjectDataNodes.getLength(); ++index)
 		{
 			Node node = tncProjectDataNodes.item(index);
@@ -110,8 +110,8 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject implements Xm
 
 	private void appendContainerWithSampleCode(Document document, Node node, final String containerName)
 	{
-		Element containerNode = document.createElement(Xmpz2XmlConstants.PREFIX + containerName);
-		Element codeNode = document.createElement(Xmpz2XmlConstants.CODE_ELEMENT_NAME);
+		Element containerNode = document.createElement(PREFIX + containerName);
+		Element codeNode = document.createElement(CODE_ELEMENT_NAME);
 		codeNode.setTextContent("Some value");
 		containerNode.appendChild(codeNode);
 		node.appendChild(containerNode);
