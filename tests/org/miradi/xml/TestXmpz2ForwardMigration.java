@@ -3,6 +3,7 @@ package org.miradi.xml;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.migrations.forward.MigrationTo10;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.xml.wcs.Xmpz2XmlValidator;
@@ -45,6 +46,29 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject
 	{
 		Document document = convertProjectToDocument();
 		verifyMigratedXmpz2(document);
+	}
+	
+	public void testRenameTncFieldsMigration() throws Exception
+	{
+		Document document = convertProjectToDocument();
+		Element rootElement = document.getDocumentElement();
+		NodeList tncProjectDataNodes = rootElement.getElementsByTagName(Xmpz2XmlConstants.PREFIX + Xmpz2XmlConstants.TNC_PROJECT_DATA);
+		for (int index = 0; index < tncProjectDataNodes.getLength(); ++index)
+		{
+			Node node = tncProjectDataNodes.item(index);
+			
+			appendChildNodeWithSampleText(document, node, Xmpz2XmlConstants.TNC_PROJECT_DATA + MigrationTo10.LEGACY_TAG_MAKING_THE_CASE);
+			appendChildNodeWithSampleText(document, node, Xmpz2XmlConstants.TNC_PROJECT_DATA + MigrationTo10.LEGACY_TAG_CAPACITY_AND_FUNDING);
+		}
+		
+		verifyMigratedXmpz2(document);
+	}
+
+	private void appendChildNodeWithSampleText(Document document, Node node, final String childElementName)
+	{
+		Element childNode = document.createElement(Xmpz2XmlConstants.PREFIX + childElementName);
+		childNode.setTextContent("Some value");
+		node.appendChild(childNode);
 	}
 	
 	public void testLegacyHumanWellbeingTargetCalculatedThreatRating() throws Exception

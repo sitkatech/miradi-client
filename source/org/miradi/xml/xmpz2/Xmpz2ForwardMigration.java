@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Vector;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -29,7 +30,9 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.exceptions.XmpzVersionTooOldException;
+import org.miradi.migrations.forward.MigrationTo10;
 import org.miradi.migrations.forward.MigrationTo11;
+import org.miradi.utils.BiDirectionalHashMap;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.xml.AbstractXmlImporter;
 import org.w3c.dom.Document;
@@ -48,9 +51,54 @@ public class Xmpz2ForwardMigration implements Xmpz2XmlConstants
 		updateXmpz2SchemaVersionToCurrentVersion(rootElement);
 		removeLegacyTncFields(rootElement);
 		removeHumanWellbeingTargetCalculatedThreatRatingElement(rootElement);
+		renameTncFields(document);
 		final String migratedXmlAsString = HtmlUtilities.toXmlString(document);
 
 		return new StringInputStreamWithSeek(migratedXmlAsString);
+	}
+	
+	private void renameTncFields(Document document) throws Exception
+	{
+		Element rootElement = document.getDocumentElement();
+		Node tncProjectDataNode = findNode(rootElement.getChildNodes(), Xmpz2XmlConstants.TNC_PROJECT_DATA);
+		if (tncProjectDataNode != null)
+		{	
+			BiDirectionalHashMap legacyToNewTncFieldNamesMap = createLegacyTncToNewFieldNamesMap();
+			renameElements(document, tncProjectDataNode, legacyToNewTncFieldNamesMap);
+		}
+	}
+	
+	private BiDirectionalHashMap createLegacyTncToNewFieldNamesMap()
+	{
+		BiDirectionalHashMap oldToNewTagMap = new BiDirectionalHashMap();
+		oldToNewTagMap.put(Xmpz2XmlConstants.TNC_PROJECT_DATA + MigrationTo10.LEGACY_TAG_MAKING_THE_CASE, Xmpz2XmlConstants.TNC_PROJECT_DATA + MigrationTo10.TAG_OVERALL_PROJECT_GOAL);
+		oldToNewTagMap.put(Xmpz2XmlConstants.TNC_PROJECT_DATA + MigrationTo10.LEGACY_TAG_CAPACITY_AND_FUNDING, Xmpz2XmlConstants.TNC_PROJECT_DATA + MigrationTo10.TAG_FINANCIAL_PLAN);
+		
+		return oldToNewTagMap;
+	}
+	
+	private void renameElements(Document document, Node parentNode, BiDirectionalHashMap fromToNameMap) throws Exception
+	{
+		final String alias = getNameSpaceAliasName(document.getDocumentElement());
+		HashSet<String> keys = fromToNameMap.getKeys();
+		for(String fromName : keys)
+		{
+			Node childNode = findNode(parentNode, fromName);
+			if (childNode == null)
+				continue;
+			
+			String textToTransferToNewNode = childNode.getTextContent();
+			parentNode.removeChild(childNode);
+			final String toName = fromToNameMap.getValue(fromName);
+			Node newNode = document.createElement(alias + COLON +  toName);
+			newNode.setTextContent(textToTransferToNewNode);
+			parentNode.appendChild(newNode);
+		}
+	}
+
+	private Node findNode(Node parentNode, final String elementNameWithoutAlias)
+	{
+		return findNode(parentNode.getChildNodes(), elementNameWithoutAlias);
 	}
 
 	private void removeHumanWellbeingTargetCalculatedThreatRatingElement(Element rootElement)
