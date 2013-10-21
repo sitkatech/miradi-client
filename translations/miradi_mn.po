@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-16 16:46-0500\n"
+"POT-Creation-Date: 2013-10-21 15:01-0500\n"
 "PO-Revision-Date: 2013-06-07 01:56+0100\n"
 "Last-Translator: Galragchaa <galragchaa@yahoo.com>\n"
 "Language-Team: none\n"
@@ -250,7 +250,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%нэрээс' -> '%нэрэнд'<br>"
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationManager.java:109
+#: Miradi/source/org/miradi/migrations/forward/MigrationManager.java:110
 #: Miradi/source/org/miradi/main/MainWindow.java:1456
 msgid "(%s)"
 msgstr ""
@@ -4503,7 +4503,7 @@ msgstr ""
 msgid "Label|Budget Category Two"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:96
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:97
 msgid "Label|Business Planning"
 msgstr ""
 
@@ -7965,6 +7965,10 @@ msgid ""
 "objects."
 msgstr ""
 
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo13.java:68
+msgid "This migration adds 1 new TNC field."
+msgstr ""
+
 #: Miradi/source/org/miradi/migrations/forward/MigrationTo12.java:69
 msgid "This migration adds 2 new TNC fields."
 msgstr ""
@@ -10582,6 +10586,9 @@ msgid "FieldLabel|40.ProjectFocus|Project Focus"
 msgstr ""
 
 msgid "FieldLabel|40.ProjectScale|Project Scale"
+msgstr ""
+
+msgid "FieldLabel|40.FundraisingPlan|Fundraising Plan"
 msgstr ""
 
 msgid "FieldLabel|41.FosProjectData|FOS Project Data"
