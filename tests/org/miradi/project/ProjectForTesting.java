@@ -345,6 +345,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectWithSampleStringData(tncProjectDataRef, TncProjectData.TAG_MAKING_THE_CASE);
 		fillObjectWithSampleStringData(tncProjectDataRef, TncProjectData.TAG_RISKS);
 		fillObjectWithSampleStringData(tncProjectDataRef, TncProjectData.TAG_CAPACITY_AND_FUNDING);
+		fillObjectWithSampleStringData(tncProjectDataRef, TncProjectData.TAG_FUNDRAISING_PLAN);
 		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_FOCUS, ProjectFocusQuestion.POLICY_AND_PRACTIVE_CODE);
 		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_SCALE, ProjectScaleQuestion.REGIONAL_CODE);
 	}

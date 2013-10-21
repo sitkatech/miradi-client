@@ -80,4 +80,5 @@ public class TncProjectData extends BaseObject
 	public final static String TAG_CAPACITY_AND_FUNDING = "FinancialPlan";
 	public final static String TAG_PROJECT_FOCUS = "ProjectFocus";
 	public final static String TAG_PROJECT_SCALE = "ProjectScale";
+	public final static String TAG_FUNDRAISING_PLAN = "FundraisingPlan";
 }

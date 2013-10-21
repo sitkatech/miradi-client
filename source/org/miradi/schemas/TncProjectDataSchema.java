@@ -49,6 +49,7 @@ public class TncProjectDataSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(TncProjectData.TAG_CAPACITY_AND_FUNDING);
 		createFieldSchemaChoice(TncProjectData.TAG_PROJECT_FOCUS, ProjectFocusQuestion.class);
 		createFieldSchemaChoice(TncProjectData.TAG_PROJECT_SCALE, ProjectScaleQuestion.class);
+		createFieldSchemaMultiLineUserText(TncProjectData.TAG_FUNDRAISING_PLAN);
 	}
 	
 	public static int getObjectType()
