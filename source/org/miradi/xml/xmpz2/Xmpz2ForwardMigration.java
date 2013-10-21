@@ -34,6 +34,7 @@ import org.miradi.utils.HtmlUtilities;
 import org.miradi.xml.AbstractXmlImporter;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
@@ -137,14 +138,40 @@ public class Xmpz2ForwardMigration implements Xmpz2XmlConstants
 		}
 	}
 
-	public static void setNameSpaceVersion(Element rootElement, String newNameSpaceVersion)
+	public static void setNameSpaceVersion(Element rootElement, String newNameSpaceVersion) throws Exception
 	{
-		rootElement.setAttribute(NAME_SPACE_ATTRIBUTE_NAME, PARTIAL_NAME_SPACE + newNameSpaceVersion);
+		rootElement.setAttribute(getNamespaceAttributeName(rootElement), PARTIAL_NAME_SPACE + newNameSpaceVersion);
 	}
 
-	private String getNameSpace(Element rootElement)
+	private static String getNameSpace(Element rootElement) throws Exception
 	{
-		return rootElement.getAttribute(NAME_SPACE_ATTRIBUTE_NAME);
+		return rootElement.getAttribute(getNamespaceAttributeName(rootElement));
+	}
+
+	private static String getNamespaceAttributeName(Element rootElement) throws Exception
+	{
+		final String alias = getNameSpaceAliasName(rootElement);
+		return  XMLNS + COLON + alias;
+	}
+	
+	private static String getNameSpaceAliasName(Element rootElement) throws Exception
+	{
+		NamedNodeMap attributes = rootElement.getAttributes();
+		for (int index = 0; index < attributes.getLength(); ++index)
+		{
+			final Node nameSpaceAttribute = attributes.item(index);
+			final String nodeName = nameSpaceAttribute.getNodeName();
+			if (nodeName.startsWith(Xmpz2XmlConstants.XMLNS))
+				return extractAlias(nodeName);
+		}
+		throw new Exception("Could not find xml namespace!");
+	}
+
+	private static String extractAlias(String namespaceAttributeName)
+	{
+		final String aliasNameLeftOver = namespaceAttributeName.replaceAll(Xmpz2XmlConstants.XMLNS + Xmpz2XmlConstants.COLON, "");
+		
+		return aliasNameLeftOver;
 	}
 
 	public static Document convertToDocument(InputStreamWithSeek projectAsInputStream) throws Exception
