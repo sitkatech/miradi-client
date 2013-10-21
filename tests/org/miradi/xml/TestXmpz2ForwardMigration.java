@@ -116,7 +116,6 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject
 	private void verifyMigratedXmpz2(Document document) throws Exception
 	{
 		String updatedXmlAsString = HtmlUtilities.toXmlString(document);
-		System.out.println(updatedXmlAsString);
 		Xmpz2ForwardMigration migration = new Xmpz2ForwardMigration();
 		InputStreamWithSeek inputStream = migration.migrate(new StringInputStreamWithSeek(updatedXmlAsString));
 		if (!new Xmpz2XmlValidator().isValid(inputStream))
