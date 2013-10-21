@@ -51,6 +51,7 @@ public class ProjectSummaryTncProjectDataSchema extends AbstractProjectSummarySc
 		addFieldSchema(tncProjectDataSchema.getFieldSchema(TncProjectData.TAG_CAPACITY_AND_FUNDING));
 		addFieldSchema(tncProjectDataSchema.getFieldSchema(TncProjectData.TAG_PROJECT_FOCUS));
 		addFieldSchema(tncProjectDataSchema.getFieldSchema(TncProjectData.TAG_PROJECT_SCALE));
+		addFieldSchema(tncProjectDataSchema.getFieldSchema(TncProjectData.TAG_FUNDRAISING_PLAN));
 	}
 
 	@Override

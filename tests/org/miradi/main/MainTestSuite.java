@@ -69,6 +69,7 @@ import org.miradi.migrations.TestMigrationManager;
 import org.miradi.migrations.TestMigrationTo10;
 import org.miradi.migrations.TestMigrationTo11;
 import org.miradi.migrations.TestMigrationTo12;
+import org.miradi.migrations.TestMigrationTo13;
 import org.miradi.migrations.TestMigrationTo4;
 import org.miradi.migrations.TestMigrationTo5;
 import org.miradi.migrations.TestMigrationTo6;
@@ -567,6 +568,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestMigrationTo10.class));
 		addTest(new TestSuite(TestMigrationTo11.class));
 		addTest(new TestSuite(TestMigrationTo12.class));
+		addTest(new TestSuite(TestMigrationTo13.class));
 		
 		addTest(new TestSuite(TestReverseMigrationTo4.class));
 		addTest(new TestSuite(TestVersionRange.class));

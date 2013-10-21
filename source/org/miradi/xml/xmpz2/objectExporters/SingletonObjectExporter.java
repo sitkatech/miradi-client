@@ -308,6 +308,7 @@ public class SingletonObjectExporter implements Xmpz2XmlConstants
 		writeTncElement(TncProjectData.TAG_MAKING_THE_CASE);
 		writeTncElement(TncProjectData.TAG_RISKS);
 		writeTncElement(TncProjectData.TAG_CAPACITY_AND_FUNDING);
+		writeTncElement(TncProjectData.TAG_FUNDRAISING_PLAN);
 
 		getWriter().writeEndElement(TNC_PROJECT_DATA);
 	}

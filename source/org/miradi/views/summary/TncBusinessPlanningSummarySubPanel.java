@@ -74,6 +74,7 @@ public class TncBusinessPlanningSummarySubPanel extends ObjectDataInputPanel
 		addLabelAndFieldFromForm(measuresRow);
 		FormRow workPlanRow = createReadonlyTextFormRow(EAM.text("Work Planning"), workPlanRowContent);
 		addLabelAndFieldFromForm(workPlanRow);
+		addField(createMultilineField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_FUNDRAISING_PLAN));
 		addField(createMultilineField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_CAPACITY_AND_FUNDING));
 		
 		updateFieldsFromProject();
