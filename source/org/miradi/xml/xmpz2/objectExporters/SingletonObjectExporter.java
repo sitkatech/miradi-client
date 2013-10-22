@@ -309,6 +309,8 @@ public class SingletonObjectExporter implements Xmpz2XmlConstants
 		writeTncElement(TncProjectData.TAG_RISKS);
 		writeTncElement(TncProjectData.TAG_CAPACITY_AND_FUNDING);
 		writeTncElement(TncProjectData.TAG_FUNDRAISING_PLAN);
+		writeChoiceData(TNC_PROJECT_DATA, TncProjectData.TAG_PROJECT_FOCUS, getTncProjectData(), TncProjectData.TAG_PROJECT_FOCUS);
+		writeChoiceData(TNC_PROJECT_DATA, TncProjectData.TAG_PROJECT_SCALE, getTncProjectData(), TncProjectData.TAG_PROJECT_SCALE);
 
 		getWriter().writeEndElement(TNC_PROJECT_DATA);
 	}
@@ -411,6 +413,11 @@ public class SingletonObjectExporter implements Xmpz2XmlConstants
 	{
 		CodeList codes = object.getCodeList(tag);
 		getWriter().writeCodeList(parentElementName + poolElementName, StaticQuestionManager.getQuestion(questionClassToUse), codes);
+	}
+	
+	private void writeChoiceData(String parentElementName, String poolElementName, BaseObject baseObject, String tag) throws Exception
+	{
+		getWriter().writeChoiceData(parentElementName + poolElementName, baseObject, tag);
 	}
 	
 	private void writeWcpaElement(final String tag) throws Exception
