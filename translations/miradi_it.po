@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-21 15:01-0500\n"
+"POT-Creation-Date: 2013-10-23 12:46-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -240,6 +240,24 @@ msgstr "%countLabel: %itemCount"
 msgid "%externalContextCode - %projectCodeWithinExternalContext  <br/>"
 msgstr ""
 
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo8.java:99
+msgid "%fieldName field data will be lost for %indicatorLabel (Indicator)"
+msgstr ""
+
+#: Miradi/source/org/miradi/migrations/AbstractRemoveMultipleFieldMigration.java:69
+msgid "%fieldName will be removed, label = %label"
+msgstr ""
+
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo4.java:196
+msgid ""
+"%futureStatusCount future status(s) for indicator (%indicatorLabel) exist, "
+"only latest will be preserved"
+msgstr ""
+
+#: Miradi/source/org/miradi/migrations/MigrationResult.java:120
+msgid "%messageCount case(s) of: %message"
+msgstr ""
+
 #: Miradi/source/org/miradi/wizard/noproject/FileSystemProjectOrDirectoryNode.java:91
 msgid "%s (old project)"
 msgstr ""
@@ -252,12 +270,20 @@ msgstr ""
 msgid "%s Objs"
 msgstr ""
 
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo7.java:133
+msgid "%s field data will be lost"
+msgstr ""
+
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo9.java:118
+msgid "%s field data will be lost for measurement"
+msgstr ""
+
 #: Miradi/source/org/miradi/utils/DiagramCorruptionDetector.java:222
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
 #: Miradi/source/org/miradi/migrations/forward/MigrationManager.java:110
-#: Miradi/source/org/miradi/main/MainWindow.java:1456
+#: Miradi/source/org/miradi/main/MainWindow.java:1459
 msgid "(%s)"
 msgstr ""
 
@@ -489,7 +515,7 @@ msgstr "7C. Crea un Ambiente di Apprendimento"
 msgid "95% C.I. (confidence interval)"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1495
+#: Miradi/source/org/miradi/main/MainWindow.java:1498
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -1041,7 +1067,7 @@ msgstr ""
 msgid "A project or file by this name already exists: "
 msgstr "Esiste un progetto o un file con lo stesso nome:"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1452
+#: Miradi/source/org/miradi/main/MainWindow.java:1455
 msgid "A project or file by this name already exists: %s"
 msgstr ""
 
@@ -2478,7 +2504,7 @@ msgid "Bundle Rules"
 msgstr "Regole"
 
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:91
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:104
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:106
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
 #: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:49
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:234
@@ -2522,7 +2548,7 @@ msgstr "Non importare"
 msgid "Button|Exit"
 msgstr "Esci"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:103
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:105
 msgid "Button|Export"
 msgstr ""
 
@@ -2650,7 +2676,7 @@ msgstr "Non è possibile collegare un gruppo ad un oggetto che lo contiene"
 msgid "Can't link an item to itself"
 msgstr "Non posso creare un link di un oggetto a se stesso"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:85
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:87
 #: Miradi/source/org/miradi/utils/ConstantButtonNames.java:28
 #: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:73
 #: Miradi/source/org/miradi/dialogs/base/AbstractSelectionDialog.java:90
@@ -2894,7 +2920,7 @@ msgstr ""
 msgid "Configure Work Plan Analysis"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:85
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:87
 msgid "Confirm"
 msgstr ""
 
@@ -2994,7 +3020,7 @@ msgstr "Fallita creazione:"
 msgid "Create Folder"
 msgstr "crea cartella"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:753
+#: Miradi/source/org/miradi/main/MainWindow.java:756
 msgid "Create Project"
 msgstr ""
 
@@ -3515,7 +3541,7 @@ msgid "Enter As: "
 msgstr "Inserisci come:"
 
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:118
-#: Miradi/source/org/miradi/main/MainWindow.java:1486
+#: Miradi/source/org/miradi/main/MainWindow.java:1489
 msgid "Enter New Name"
 msgstr "Inserisci nuovo nome"
 
@@ -3591,7 +3617,7 @@ msgstr "Stima i costi per le attività e il monitoraggio"
 msgid "Euro"
 msgstr "Euro"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1022
+#: Miradi/source/org/miradi/main/MainWindow.java:1025
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr "I dati esistenti per un anno fiscale differente sono esclusi"
 
@@ -3605,7 +3631,7 @@ msgstr "Espandi la colonna selezionata"
 msgid "Expert Knowledge"
 msgstr "Conoscenza specialistica (Expert Knowledge)"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:85
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:87
 #: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:64
 msgid "Export"
 msgstr "Esporta"
@@ -3614,7 +3640,7 @@ msgstr "Esporta"
 msgid "Export 4.0 Miradi"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:95
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:97
 msgid "Export MPZ"
 msgstr ""
 
@@ -4182,8 +4208,11 @@ msgstr ""
 
 #: Miradi/source/org/miradi/main/MainWindow.java:714
 msgid ""
-"If you continue with this migration, some data will be lost. Would you like "
-"to continue anyway?"
+"If you continue with this migration, some data will be lost.\n"
+"\n"
+"Summary of data losses:\n"
+"%s \n"
+"Would you like to continue anyway?"
 msgstr ""
 
 #: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:104
@@ -4431,7 +4460,7 @@ msgstr "Introduzione"
 msgid "Invalid project name:"
 msgstr "Nome di progetto non valido:"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1461
+#: Miradi/source/org/miradi/main/MainWindow.java:1464
 msgid "Invalid project name: %s"
 msgstr ""
 
@@ -4448,7 +4477,7 @@ msgstr "E' rilevante"
 msgid "Is Tagged"
 msgstr "E' etichettato"
 
-#: Miradi/source/org/miradi/main/EAM.java:642
+#: Miradi/source/org/miradi/main/EAM.java:647
 msgid ""
 "It appears that Miradi was launched without the -Xmx512m switch. As a "
 "result, certain operations like Reports may run out of memory."
@@ -5207,7 +5236,7 @@ msgid "Migrating..."
 msgstr ""
 
 #: Miradi/source/org/miradi/main/MainWindow.java:696
-#: Miradi/source/org/miradi/main/MainWindow.java:715
+#: Miradi/source/org/miradi/main/MainWindow.java:718
 msgid "Migration"
 msgstr ""
 
@@ -5269,7 +5298,7 @@ msgstr "Miradi non riconosce il file %s come importabile"
 msgid "Miradi does not recognize %s as a project file"
 msgstr "Miradi non riconosce il file %s come file di progetto"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:843
+#: Miradi/source/org/miradi/main/MainWindow.java:846
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5559,7 +5588,7 @@ msgid "Open Anyway"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:201
-#: Miradi/source/org/miradi/main/MainWindow.java:755
+#: Miradi/source/org/miradi/main/MainWindow.java:758
 msgid "Open Project"
 msgstr "Apri progetto"
 
@@ -5891,7 +5920,7 @@ msgstr "Progetto"
 msgid "Project Advisor"
 msgstr "Consulente di progetto"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:841
+#: Miradi/source/org/miradi/main/MainWindow.java:844
 msgid "Project Corruption Detected"
 msgstr ""
 
@@ -5924,7 +5953,7 @@ msgstr "Risorsa del progetto"
 msgid "Project Resource Filter Editor"
 msgstr "Editor del filtro della risorsa del progetto"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1020
+#: Miradi/source/org/miradi/main/MainWindow.java:1023
 msgid "Project Resource Filter Is On"
 msgstr "Il filtro delle risorse di progetto è attivo"
 
@@ -6565,7 +6594,7 @@ msgstr "Portatore di interesse"
 msgid "Standard Reports"
 msgstr "Report Standard"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1054
+#: Miradi/source/org/miradi/main/MainWindow.java:1057
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -8039,7 +8068,7 @@ msgstr ""
 msgid "This item is shared, so will be deleted from multiple places."
 msgstr "Questo elemento è condiviso, quindi verrà eliminato da più posti."
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo7.java:111
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo7.java:112
 msgid ""
 "This migraiton ony has reverse to remove Miradi share taxonomy related "
 "objects."
@@ -8061,7 +8090,7 @@ msgstr ""
 msgid "This migration corrects indicator threshold escaping issues."
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo4.java:91
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo4.java:93
 msgid ""
 "This migration creates new future status objects from indicator's future "
 "status fields"
@@ -8071,11 +8100,11 @@ msgstr ""
 msgid "This migration removes 2 Tnc fields"
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo8.java:74
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo8.java:78
 msgid "This migration removes indicator's unit field"
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo9.java:74
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo9.java:75
 msgid ""
 "This migration removes new measuremt fields: Sample size, Sample Precision, "
 "Sample Precision Type and clears status confidenceif the choice is Sampling "
@@ -8115,7 +8144,7 @@ msgid ""
 "damaged. Please contact Miradi support for recovery options."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:832
+#: Miradi/source/org/miradi/main/MainWindow.java:835
 msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
@@ -8378,7 +8407,7 @@ msgstr "Proprietà dell'editor di valutazione della strategia della Legacy TNC"
 msgid "Title|Link Create Dialog"
 msgstr "Link Crea Dialogo "
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:101
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:103
 msgid "Title|MPZ Export Warning"
 msgstr ""
 
@@ -8554,7 +8583,7 @@ msgid ""
 "application:\n"
 msgstr "Impossibile cancellare questo progetto perché è in uso:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1429
+#: Miradi/source/org/miradi/main/MainWindow.java:1432
 msgid "Unable to launch external web browser"
 msgstr "Impossibile lanciare il browser web esterno"
 
@@ -8573,7 +8602,7 @@ msgid ""
 "application:\n"
 msgstr "Impossibile rinominare questo progetto perchè è in uso: \n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1211
+#: Miradi/source/org/miradi/main/MainWindow.java:1214
 msgid "Unable to save preferences"
 msgstr "Impossibile salvare le preferenze"
 
@@ -8918,6 +8947,21 @@ msgstr "Il Quando ignorato è:"
 #: Miradi/source/org/miradi/legacyprojects/migrations/ConvertHighLevelEstimatesIntoAssignments.java:137
 msgid "When Override was: %s"
 msgstr "Il Quando ignorato è: %s"
+
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:79
+msgid ""
+"While migrating this project back to an older data format, some data would "
+"be lost. \n"
+"This would typically be because the project had data in fields that did "
+"not \n"
+"exist in earlier versions of Miradi. You can continue, and the original "
+"project will remain unchanged, but that data will not be included in the "
+"exported project.\n"
+"\n"
+"Summary of data loss:\n"
+"%s \n"
+"Continue with export?"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/DiagramLinkColorQuestion.java:46
 #: Miradi/source/org/miradi/questions/DiagramFactorFontColorQuestion.java:47
