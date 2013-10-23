@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations.forward;
 
+import java.util.HashMap;
+
 import org.miradi.main.EAM;
 import org.miradi.migrations.AbstractMigration;
 import org.miradi.migrations.AbstractMigrationVisitor;
@@ -27,7 +29,9 @@ import org.miradi.migrations.MigrationResult;
 import org.miradi.migrations.RawObject;
 import org.miradi.migrations.RawProject;
 import org.miradi.migrations.VersionRange;
+import org.miradi.objects.Indicator;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.utils.Translation;
 
 public class MigrationTo8 extends AbstractMigration
 {
@@ -87,7 +91,14 @@ public class MigrationTo8 extends AbstractMigration
 			if (indicator.containsKey(TAG_UNIT))
 			{
 				indicator.remove(TAG_UNIT);
-				return MigrationResult.createDataLoss();
+				
+				String indicatorLabel = indicator.get(Indicator.TAG_LABEL);
+				HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+				tokenReplacementMap.put("%indicatorLabel", indicatorLabel);
+				tokenReplacementMap.put("%fieldName", Translation.fieldLabel(indicator.getObjectType(), TAG_UNIT));
+				final String dataLossMessage = EAM.substitute(EAM.text("%fieldName field data will be lost for %indicatorLabel (Indicator)"), tokenReplacementMap);
+
+				return MigrationResult.createDataLoss(dataLossMessage);
 			}
 
 			return MigrationResult.createSuccess();

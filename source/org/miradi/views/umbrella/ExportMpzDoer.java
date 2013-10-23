@@ -60,7 +60,7 @@ public class ExportMpzDoer extends AbstractFileSaverDoer
 		MigrationResult migrationResult = migrationManager.migrate(projectToMigrate, new VersionRange(MigrationManager.OLDEST_VERSION_TO_HANDLE));
 		if (migrationResult.didLoseData())
 		{
-			if (!userConfirmLossData())
+			if (!userConfirmLossData(migrationResult.getUserFriendlyGroupedDataLossMessagesAsString()))
 				return;
 		}
 		
@@ -74,13 +74,15 @@ public class ExportMpzDoer extends AbstractFileSaverDoer
 		MpfToMpzConverter.convertWithoutMigrating(projectToMigrate, projectFileNameToUse, destinationFile);
 	}
 
-	public static boolean userConfirmLossData()
+	public static boolean userConfirmLossData(String summaryOfMesssages)
 	{
-		final String message = "While migrating this project back to an older data format, some data would be lost. \n" +
+		final String message = EAM.substitute(EAM.text("While migrating this project back to an older data format, some data would be lost. \n" +
 							   "This would typically be because the project had data in fields that did not \n" +
 							   "exist in earlier versions of Miradi. You can continue, and the original project " +
 							   "will remain unchanged, but that data will not be included in the exported project.\n\n" +
-							   "Continue with export?";
+							   "Summary of data loss:\n" + 
+							   "%s \n" + 
+							   "Continue with export?"), summaryOfMesssages);
 		
 		final int userChoice = EAM.confirmDialog(EAM.text("Confirm"), message, new String[]{EAM.text("Export"), EAM.text("Cancel"), });
 		if (userChoice == 0)
