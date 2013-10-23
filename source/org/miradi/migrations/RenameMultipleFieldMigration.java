@@ -74,9 +74,9 @@ abstract public class RenameMultipleFieldMigration extends AbstractMigration
 				String data = rawObject.get(legacyTag);
 				rawObject.remove(legacyTag);
 				rawObject.put(newTag, data);
-				migrationResult.merge(migrationResult.createDataLoss());
 			}
 		}
+
 		return migrationResult;
 	}
 	
