@@ -20,13 +20,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Set;
+import java.util.Vector;
+
+import org.miradi.main.EAM;
 
 
 public class MigrationResult extends HashSet<String>
 {
 	private MigrationResult()
 	{
+		dataLossMessages = new Vector<String>();
 	}
 	
 	public static MigrationResult createUninitializedResult()
@@ -45,16 +51,27 @@ public class MigrationResult extends HashSet<String>
 		return migrationResult;
 	}
 	
-	public static MigrationResult createDataLoss()
+	public static MigrationResult createDataLoss(String dataLossMessageToUse)
 	{
 		MigrationResult migrationResult = new MigrationResult();
-		migrationResult.addDataLoss();
+		migrationResult.addDataLoss(dataLossMessageToUse);
 		
 		return migrationResult;
+	}
+
+	public void addDataLoss(String dataLossMessageToUse)
+	{
+		dataLossMessages.add(dataLossMessageToUse);
+	}
+	
+	public int dataLossCount()
+	{
+		return dataLossMessages.size();
 	}
 	
 	public void merge(MigrationResult migrationResult)
 	{
+		dataLossMessages.addAll(migrationResult.dataLossMessages);
 		addAll(migrationResult);
 	}
 	
@@ -65,7 +82,7 @@ public class MigrationResult extends HashSet<String>
 	
 	public boolean didLoseData()
 	{
-		return contains(DATA_LOSS);
+		return !dataLossMessages.isEmpty();
 	}
 	
 	public boolean didFail()
@@ -84,20 +101,49 @@ public class MigrationResult extends HashSet<String>
 		add(SUCCESS);
 	}
 
-	public void addDataLoss()
-	{
-		setInitialized();
-		add(DATA_LOSS);
-	}
-
 	private void setInitialized()
 	{
 		remove(UNINITIALIZED);
 	}
+	
+	public String getUserFriendlyGroupedDataLossMessagesAsString()
+	{
+		HashMap<String, Integer> messageToCountMap = groupMessagesWithCount();
+		Set<String> messages = messageToCountMap.keySet();
+		StringBuffer messagesAsString = new StringBuffer();
+		for(String message : messages)
+		{
+			int messageCount = messageToCountMap.get(message);
+			HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+			tokenReplacementMap.put("%messageCount", Integer.toString(messageCount));
+			tokenReplacementMap.put("%message", message);
+			String dataLossMessage = EAM.substitute(EAM.text("%messageCount case(s) of: %message"), tokenReplacementMap);
+			messagesAsString.append(dataLossMessage + "\n");
+		}
+		
+		return messagesAsString.toString();
+	}
+
+	private HashMap<String, Integer> groupMessagesWithCount()
+	{
+		HashMap<String, Integer> messageToCountMap = new HashMap<String, Integer>();
+		for (int index = 0; index < dataLossMessages.size(); ++index)
+		{
+			String message = dataLossMessages.get(index);
+			int messageCount = 0;
+			if (messageToCountMap.containsKey(message))
+				messageCount = messageToCountMap.get(message);
+			
+			messageToCountMap.put(message, ++messageCount);
+		}
+		
+		return messageToCountMap;
+	}
 
 	private static final String SUCCESS = "Success";
-	private static final String DATA_LOSS = "DataLoss";
 	private static final String FAILED = "Failed";
 	private static final String CANNOT_MIGRATE = "CannotMigrate";
 	private static final String UNINITIALIZED = "Uninitialized";
+	
+	private Vector<String> dataLossMessages;
 }

@@ -20,7 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
+import java.util.HashMap;
 import java.util.HashSet;
+
+import org.miradi.main.EAM;
+import org.miradi.objects.Indicator;
+import org.miradi.utils.Translation;
 
 abstract public class AbstractRemoveMultipleFieldMigration extends AbstractMigration
 {
@@ -56,7 +61,13 @@ abstract public class AbstractRemoveMultipleFieldMigration extends AbstractMigra
 			if (rawObject.containsKey(tagToRemove))
 			{
 				rawObject.remove(tagToRemove);
-				migrationResult.merge(migrationResult.createDataLoss());
+				String fieldBeingRemoved = Translation.fieldLabel(rawObject.getObjectType(), tagToRemove);
+				String label = rawObject.get(Indicator.TAG_LABEL);
+				HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+				tokenReplacementMap.put("%label", label);
+				tokenReplacementMap.put("%fieldName", fieldBeingRemoved);
+				String dataLossMessage = EAM.substitute(EAM.text("%fieldName will be removed, label = %label"), tokenReplacementMap);
+				migrationResult.addDataLoss(dataLossMessage);
 			}
 		}
 		return migrationResult;

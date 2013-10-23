@@ -28,6 +28,7 @@ import org.miradi.migrations.RawObject;
 import org.miradi.migrations.RawProject;
 import org.miradi.migrations.VersionRange;
 import org.miradi.schemas.MeasurementSchema;
+import org.miradi.utils.Translation;
 
 public class MigrationTo9 extends AbstractMigration
 {
@@ -89,27 +90,32 @@ public class MigrationTo9 extends AbstractMigration
 			if (rawObject.hasValue(TAG_SAMPLE_PRECISION))
 			{
 				rawObject.remove(TAG_SAMPLE_PRECISION);
-				migrationResult = migrationResult.createDataLoss();
+				migrationResult.addDataLoss(createDataLossMessage(rawObject, TAG_SAMPLE_PRECISION));
 			}
 			if (rawObject.hasValue(TAG_SAMPLE_SIZE))
 			{
 				rawObject.remove(TAG_SAMPLE_SIZE);
-				migrationResult = migrationResult.createDataLoss();
+				migrationResult.addDataLoss(createDataLossMessage(rawObject, TAG_SAMPLE_SIZE));
 			}
 			if (rawObject.hasValue(TAG_SAMPLE_PRECISION_TYPE))
 			{
 				rawObject.remove(TAG_SAMPLE_PRECISION_TYPE);
-				migrationResult = migrationResult.createDataLoss();
+				migrationResult.addDataLoss(createDataLossMessage(rawObject, TAG_SAMPLE_PRECISION_TYPE));
 			}
 			
 			String statusConfidence = rawObject.getData(TAG_STATUS_CONFIDENCE);
 			if (statusConfidence != null && statusConfidence.equals(SAMPLING_BASED_CODE))
 			{
 				rawObject.setData(TAG_STATUS_CONFIDENCE, "");
-				migrationResult = migrationResult.createDataLoss();
+				migrationResult.addDataLoss(createDataLossMessage(rawObject, TAG_STATUS_CONFIDENCE));
 			}
 			
 			return migrationResult;
+		}
+
+		private String createDataLossMessage(RawObject rawObject, final String tag)
+		{
+			return EAM.substitute(EAM.text("%s field data will be lost for measurement"), Translation.fieldLabel(rawObject.getObjectType(), tag));
 		}
 	}
 	

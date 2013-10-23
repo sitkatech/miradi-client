@@ -22,6 +22,7 @@ package org.miradi.migrations.forward;
 
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Vector;
@@ -39,6 +40,7 @@ import org.miradi.migrations.VersionRange;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Indicator;
 import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.IndicatorSchema;
 
@@ -186,7 +188,15 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 			clearIndicatorFutureStatusField(indicator);
 			deleteOrphanFutureStatuses(futureStatusRefs);
 			if (futureStatusRefs.size() > 1)
-				return MigrationResult.createDataLoss();
+			{
+				String indicatorLabel = indicator.get(Indicator.TAG_LABEL);
+				HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+				tokenReplacementMap.put("%indicatorLabel", indicatorLabel);
+				tokenReplacementMap.put("%futureStatusCount", Integer.toString(futureStatusRefs.size()));
+				final String dataLossMessage = EAM.substitute(EAM.text("%futureStatusCount future status(s) for indicator (%indicatorLabel) exist, only latest will be preserved"), futureStatusRefs.size());
+				
+				return MigrationResult.createDataLoss(dataLossMessage);
+			}
 			
 			return MigrationResult.createSuccess();
 		}

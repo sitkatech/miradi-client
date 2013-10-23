@@ -711,7 +711,10 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		if (migrationResult.didLoseData())
 		{
 			final String[] labels = new String[]{ConstantButtonNames.MIGRATE, ConstantButtonNames.CANCEL};
-			final String message = EAM.text("If you continue with this migration, some data will be lost. Would you like to continue anyway?");
+			final String message = EAM.substitute(EAM.text("If you continue with this migration, some data will be lost.\n\n" +
+											"Summary of data losses:\n" +
+											 "%s \n" + 
+											"Would you like to continue anyway?"), migrationResult.getUserFriendlyGroupedDataLossMessagesAsString());
 			final int result = EAM.confirmDialog(EAM.text("Migration"), message, labels);
 			if (result != 0)
 				return false;

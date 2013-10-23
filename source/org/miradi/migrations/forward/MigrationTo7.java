@@ -30,6 +30,7 @@ import org.miradi.migrations.RawObject;
 import org.miradi.migrations.RawProject;
 import org.miradi.migrations.VersionRange;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.utils.Translation;
 
 public class MigrationTo7 extends AbstractMigration
 {
@@ -129,7 +130,8 @@ public class MigrationTo7 extends AbstractMigration
 			if (rawObject.containsKey(TAG_TAXONOMY_CLASSIFICATION_CONTAINER))
 			{
 				removeField(rawObject, TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
-				return MigrationResult.createDataLoss();
+				final String dataLossMessage = EAM.substitute(EAM.text("%s field data will be lost"), Translation.fieldLabel(rawObject.getObjectType(), TAG_TAXONOMY_CLASSIFICATION_CONTAINER));
+				return MigrationResult.createDataLoss(dataLossMessage);
 			}
 			
 			return MigrationResult.createSuccess();
