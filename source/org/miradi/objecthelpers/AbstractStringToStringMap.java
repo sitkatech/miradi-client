@@ -150,7 +150,7 @@ abstract public class AbstractStringToStringMap
 		if(!data.containsKey(code))
 			throw new RuntimeException(
 					"Attempted to remove non-existant code: " + code
-							+ " from: " + toString());
+							+ " from: " + toJsonString());
 		data.remove(code);
 	}
 	
