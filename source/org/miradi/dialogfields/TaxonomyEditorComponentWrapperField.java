@@ -45,8 +45,11 @@ public class TaxonomyEditorComponentWrapperField extends ComponentWrapperObjectD
 			BaseObject baseObject = BaseObject.find(getProject(), getORef());
 			TaxonomyClassificationMap taxonomyClassificationList = new TaxonomyClassificationMap(baseObject.getData(BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER));
 			CodeList selectedTaxonomyElementCodes = new CodeList(super.getText());
-			taxonomyClassificationList.putCodeList(getTaxonomyAssociation().getTaxonomyCode(), selectedTaxonomyElementCodes);
-
+			final String taxonomyCode = getTaxonomyAssociation().getTaxonomyCode();
+			taxonomyClassificationList.safelyRemoveCode(taxonomyCode);
+			if (selectedTaxonomyElementCodes.hasData())
+				taxonomyClassificationList.putCodeList(taxonomyCode, selectedTaxonomyElementCodes);
+			
 			return taxonomyClassificationList.toJsonString();
 		}
 		catch (Exception e)
