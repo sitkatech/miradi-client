@@ -154,6 +154,12 @@ abstract public class AbstractStringToStringMap
 		data.remove(code);
 	}
 	
+	public void safelyRemoveCode(String code)
+	{
+		if (contains(code))
+			removeCode(code);
+	}
+	
 	public Set<String> getCodes()
 	{
 		return data.keySet();
