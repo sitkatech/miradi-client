@@ -153,7 +153,7 @@ public class RawProject implements ProjectInterface
 		return findObject(ref).getData(tag);
 	}
 	
-	public void setObjectData(ORef ref, String tag, String data)
+	public void setObjectData(ORef ref, String tag, String data) throws Exception
 	{
 		findObject(ref).setData(tag, data);
 	}
