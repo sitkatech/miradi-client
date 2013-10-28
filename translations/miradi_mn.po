@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-23 12:46-0500\n"
+"POT-Creation-Date: 2013-10-28 14:01-0500\n"
 "PO-Revision-Date: 2013-06-07 01:56+0100\n"
 "Last-Translator: Galragchaa <galragchaa@yahoo.com>\n"
 "Language-Team: none\n"
@@ -9925,6 +9925,9 @@ msgid "FieldLabel|12.Summary|Future Value"
 msgstr ""
 
 msgid "FieldLabel|12.TaxonomyClassificationContainer|Taxonomies"
+msgstr ""
+
+msgid "FieldLabel|12.Rating|Rating"
 msgstr ""
 
 msgid "FieldLabel|13.DiagramLink|Diagram Link"
