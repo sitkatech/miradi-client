@@ -35,4 +35,5 @@ public interface ProjectInterface
 	public Collection<ThreatRatingBundle> getSimpleThreatRatingBundles();
 	public ORefList getAllRefsForType(int objectType);
 	public VersionRange getCurrentVersionRange() throws Exception;
+	public void setObjectData(ORef ref, String tag, String data) throws Exception;
 }

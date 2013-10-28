@@ -90,6 +90,7 @@ import org.miradi.objects.TncProjectData;
 import org.miradi.objects.ValueOption;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
+import org.miradi.project.ProjectInterface;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.questions.ChoiceItem;
@@ -178,7 +179,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		progressIndicator.incrementProgress();
 	}
 	
-	private void importProjectId(RawProject rawProject, Node projectSumaryNode, ORef metadataRef) throws Exception
+	private void importProjectId(ProjectInterface projectInterface, Node projectSumaryNode, ORef metadataRef) throws Exception
 	{
 		NodeList projectIdNodes = getNodes(projectSumaryNode, new String[]{PROJECT_ID});
 		StringRefMap stringRefMap = new StringRefMap();
@@ -188,13 +189,13 @@ public class ConproXmlImporter implements ConProMiradiXml
 			
 			String projectId = getSafeNodeContent(projectIdNode);
 			ORef xenodataRef = findOrCreateXenodataObject();
-			rawProject.setObjectData(xenodataRef, Xenodata.TAG_PROJECT_ID, projectId);
+			projectInterface.setObjectData(xenodataRef, Xenodata.TAG_PROJECT_ID, projectId);
 
 			String contextAttributeValue = getAttributeValue(projectIdNode, CONTEXT_ATTRIBUTE);
 			stringRefMap.add(contextAttributeValue, xenodataRef);
 		}
 		
-		rawProject.setObjectData(metadataRef, ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, stringRefMap.toJsonString());
+		projectInterface.setObjectData(metadataRef, ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, stringRefMap.toJsonString());
 	}
 
 	private void loadXml(InputStreamWithSeek projectAsInputStream) throws Exception
