@@ -661,7 +661,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		importCodeField(tncProjectDataRef, TncProjectData.TAG_PROJECT_SHARING_CODE, getCodeMapHelper().getConProToMiradiTncProjectSharingMap(), booleanAsString);
 		
 		importField(projectSumaryNode, NAME, metadataRef,ProjectMetadata.TAG_PROJECT_NAME);
-		importProjectId(projectSumaryNode, metadataRef);
+		importProjectId(getProject(), projectSumaryNode, metadataRef);
 		importField(projectSumaryNode, START_DATE, metadataRef, ProjectMetadata.TAG_START_DATE);
 		importField(projectSumaryNode, DATA_EFFECTIVE_DATE, metadataRef, ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
 		importField(projectSumaryNode, AREA_SIZE, metadataRef, ProjectMetadata.TAG_PROJECT_AREA);	
@@ -721,25 +721,6 @@ public class ConproXmlImporter implements ConProMiradiXml
 		return getProject().getSingletonObjectRef(TncProjectDataSchema.getObjectType());
 	}
 	
-	private void importProjectId(Node projectSumaryNode, ORef metadataRef) throws Exception
-	{
-		NodeList projectIdNodes = getNodes(projectSumaryNode, new String[]{PROJECT_ID});
-		StringRefMap stringRefMap = new StringRefMap();
-		for (int nodeIndex = 0; nodeIndex < projectIdNodes.getLength(); ++nodeIndex) 
-		{
-			Node projectIdNode = projectIdNodes.item(nodeIndex);
-			
-			String projectId = getSafeNodeContent(projectIdNode);
-			ORef xenodataRef = findOrCreateXenodataObject();
-			getProject().setObjectData(xenodataRef, Xenodata.TAG_PROJECT_ID, projectId);
-
-			String contextAttributeValue = getAttributeValue(projectIdNode, CONTEXT_ATTRIBUTE);
-			stringRefMap.add(contextAttributeValue, xenodataRef);
-		}
-		
-		getProject().setObjectData(metadataRef, ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, stringRefMap.toJsonString());
-	}
-
 	private ORef findOrCreateXenodataObject() throws Exception
 	{
 		ORefList xenodataRefs = getProject().getPool(XenodataSchema.getObjectType()).getRefList();
