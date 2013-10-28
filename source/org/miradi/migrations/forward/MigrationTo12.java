@@ -20,11 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations.forward;
 
-import java.util.HashSet;
+import java.util.HashMap;
 
 import org.miradi.main.EAM;
-import org.miradi.migrations.RawProject;
 import org.miradi.migrations.AddMultipleFieldMigration;
+import org.miradi.migrations.RawProject;
 import org.miradi.migrations.VersionRange;
 import org.miradi.schemas.TncProjectDataSchema;
 
@@ -36,11 +36,11 @@ public class MigrationTo12 extends AddMultipleFieldMigration
 	}
 	
 	@Override
-	protected HashSet<String> createFieldsToRemove()
+	protected HashMap<String, String> createFieldsToRemove()
 	{
-		HashSet<String> fieldsToRemove = new HashSet<String>();
-		fieldsToRemove.add(TAG_PROJECT_FOCUS);
-		fieldsToRemove.add(TAG_PROJECT_SCALE);
+		HashMap<String, String> fieldsToRemove = new HashMap<String, String>();
+		fieldsToRemove.put(TAG_PROJECT_FOCUS, EAM.text("Project Focus"));
+		fieldsToRemove.put(TAG_PROJECT_SCALE, EAM.text("Project Scale"));
 		
 		return fieldsToRemove;
 	}

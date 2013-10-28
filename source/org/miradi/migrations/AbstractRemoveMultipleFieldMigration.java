@@ -21,11 +21,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.migrations;
 
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.Set;
 
 import org.miradi.main.EAM;
 import org.miradi.objects.Indicator;
-import org.miradi.utils.Translation;
 
 abstract public class AbstractRemoveMultipleFieldMigration extends AbstractMigration
 {
@@ -53,19 +52,20 @@ abstract public class AbstractRemoveMultipleFieldMigration extends AbstractMigra
 		return visitAllObjectsInPool(visitor);
 	}
 
-	private static MigrationResult removeFields(RawObject rawObject, HashSet<String> fieldsToRemove)
+	private static MigrationResult removeFields(RawObject rawObject, HashMap<String, String> fieldsToLabelMap)
 	{
 		MigrationResult migrationResult = MigrationResult.createSuccess();
+		Set<String> fieldsToRemove = fieldsToLabelMap.keySet();
 		for(String tagToRemove : fieldsToRemove)
 		{
 			if (rawObject.containsKey(tagToRemove))
 			{
 				rawObject.remove(tagToRemove);
-				String fieldBeingRemoved = Translation.fieldLabel(rawObject.getObjectType(), tagToRemove);
+				String labelOfFieldBeingRemoved = fieldsToLabelMap.get(tagToRemove);
 				String label = rawObject.get(Indicator.TAG_LABEL);
 				HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 				tokenReplacementMap.put("%label", label);
-				tokenReplacementMap.put("%fieldName", fieldBeingRemoved);
+				tokenReplacementMap.put("%fieldName", labelOfFieldBeingRemoved);
 				String dataLossMessage = EAM.substitute(EAM.text("%fieldName will be removed, label = %label"), tokenReplacementMap);
 				migrationResult.addDataLoss(dataLossMessage);
 			}
@@ -87,12 +87,12 @@ abstract public class AbstractRemoveMultipleFieldMigration extends AbstractMigra
 		}
 	}
 	
-	abstract protected HashSet<String> createFieldsToRemove();
+	abstract protected HashMap<String, String> createFieldsToRemove();
 	
 	abstract public AbstractMigrationVisitor createMigrateForwardVisitor() throws Exception;
 	
 	abstract public AbstractMigrationVisitor createReverseMigrateVisitor() throws Exception;
 	
 	protected int type;
-	private HashSet<String> fieldsToRemove;
+	private HashMap<String, String> fieldsToRemove;
 }

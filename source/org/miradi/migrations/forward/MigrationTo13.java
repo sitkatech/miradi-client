@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations.forward;
 
-import java.util.HashSet;
+import java.util.HashMap;
 
 import org.miradi.main.EAM;
 import org.miradi.migrations.AddMultipleFieldMigration;
@@ -36,10 +36,10 @@ public class MigrationTo13 extends AddMultipleFieldMigration
 	}
 	
 	@Override
-	protected HashSet<String> createFieldsToRemove()
+	protected HashMap<String, String> createFieldsToRemove()
 	{
-		HashSet<String> fieldsToRemove = new HashSet<String>();
-		fieldsToRemove.add(TAG_FUNDRAISING_PLAN);
+		HashMap<String, String> fieldsToRemove = new HashMap<String, String>();
+		fieldsToRemove.put(TAG_FUNDRAISING_PLAN, EAM.text("Fundraising Plan"));
 		
 		return fieldsToRemove;
 	}
