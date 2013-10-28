@@ -141,7 +141,7 @@ public class MigrationResult extends HashSet<String>
 			if (messageToCountMap.containsKey(message))
 				messageCount = messageToCountMap.get(message);
 			
-			messageToCountMap.put(message, ++messageCount);
+			messageToCountMap.put(message, messageCount + 1);
 		}
 		
 		return messageToCountMap;
