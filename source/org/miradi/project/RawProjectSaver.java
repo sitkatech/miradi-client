@@ -25,6 +25,7 @@ import java.util.Collections;
 import java.util.Vector;
 
 import org.martus.util.UnicodeStringWriter;
+import org.martus.util.UnicodeWriter;
 import org.miradi.migrations.RawObject;
 import org.miradi.migrations.RawPool;
 import org.miradi.migrations.RawProject;
@@ -36,19 +37,19 @@ public class RawProjectSaver extends AbstractMiradiProjectSaver
 {
 	public static String saveProject(final RawProject projectToUse) throws Exception
 	{
-		UnicodeStringWriter stringWriter = UnicodeStringWriter.create();
+		UnicodeWriter stringWriter = UnicodeStringWriter.create();
 		saveProject(projectToUse, stringWriter);
 		
 		return stringWriter.toString();
 	}
 
-	public static void saveProject(final RawProject projectToUse, final UnicodeStringWriter writerToUse) throws Exception
+	public static void saveProject(final RawProject projectToUse, final UnicodeWriter writerToUse) throws Exception
 	{
 		final RawProjectSaver projectSaver = new RawProjectSaver(projectToUse, writerToUse);
 		projectSaver.saveProject();
 	}
 	
-	private RawProjectSaver(RawProject rawProjectToUse, UnicodeStringWriter writerToUse)
+	private RawProjectSaver(RawProject rawProjectToUse, UnicodeWriter writerToUse)
 	{
 		super(writerToUse);
 		
