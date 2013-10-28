@@ -30,6 +30,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.TaxonomyHelper;
 import org.miradi.objectpools.TaxonomyAssociationPool;
 import org.miradi.objects.AbstractTarget;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
@@ -88,8 +89,12 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 		Project importedProject = validateUsingStringWriter();
 		final ORef tncProjectDataRef = importedProject.getSingletonObjectRef(TncProjectDataSchema.getObjectType());
 		TncProjectData tncProjectData = TncProjectData.find(importedProject, tncProjectDataRef);
-		assertTrue("Field should contain data?", tncProjectData.getData(TncProjectData.TAG_PROJECT_SCALE).length() > 0);
-		assertTrue("Field should contain data?", tncProjectData.getData(TncProjectData.TAG_PROJECT_FOCUS).length() > 0);
+		Vector<String> storedFieldTags = tncProjectData.getStoredFieldTags();
+		for(String tag : storedFieldTags)
+		{
+			if (!tag.equals(BaseObject.TAG_LABEL))
+				assertTrue("Field should contain data for " + tag + "?", tncProjectData.getData(tag).length() > 0);
+		}
 	}
 	
 	public void testObjectTreeTableConfiguration() throws Exception
