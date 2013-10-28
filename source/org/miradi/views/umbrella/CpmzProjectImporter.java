@@ -71,8 +71,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 	@Override
 	public void createProject(File importFile, File newProjectFile, ProgressInterface progressIndicator) throws Exception
 	{
-		Project project = importProject(importFile, progressIndicator);
-		ProjectSaver.saveProject(project, newProjectFile);
+		importProject(importFile, newProjectFile, progressIndicator);
 	}
 
 	@Override
@@ -112,22 +111,25 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 		}
 	}
 
-	private Project importProject(File zipFileToImport, ProgressInterface progressIndicator) throws ZipException, IOException, Exception, ValidationException
+	private void importProject(File zipFileToImport, File newProjectFile, ProgressInterface progressIndicator) throws ZipException, IOException, Exception, ValidationException
 	{
 		MiradiZipFile zipFile = new MiradiZipFile(zipFileToImport);
 		try
 		{
 			if (zipContainsMpfProject(zipFile))
 			{
-				return importProjectFromMpfEntry(zipFile, progressIndicator);
+				final Project project = importProjectFromMpfEntry(zipFile, progressIndicator);
+				ProjectSaver.saveProject(project, newProjectFile);
 			}
 			else if(zipContainsMpzProject(zipFile))
 			{
-				return importProjectFromMpzEntry(zipFile, progressIndicator);
+				final Project project = importProjectFromMpzEntry(zipFile, progressIndicator);
+				ProjectSaver.saveProject(project, newProjectFile);
 			}
 			else
 			{
-				return importProjectFromXmlEntry(zipFile, progressIndicator);
+				final Project project = importProjectFromXmlEntry(zipFile, progressIndicator);
+				ProjectSaver.saveProject(project, newProjectFile);
 			}
 		}
 		finally
