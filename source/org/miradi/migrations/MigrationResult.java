@@ -114,14 +114,21 @@ public class MigrationResult extends HashSet<String>
 		for(String message : messages)
 		{
 			int messageCount = messageToCountMap.get(message);
-			HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
-			tokenReplacementMap.put("%messageCount", Integer.toString(messageCount));
-			tokenReplacementMap.put("%message", message);
-			String dataLossMessage = EAM.substitute(EAM.text("%messageCount case(s) of: %message"), tokenReplacementMap);
+			String dataLossMessage = getDataLossMessage(message, messageCount);
 			messagesAsString.append(dataLossMessage + "\n");
 		}
 		
 		return messagesAsString.toString();
+	}
+
+	private String getDataLossMessage(String message, int messageCount)
+	{
+		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+		tokenReplacementMap.put("%messageCount", Integer.toString(messageCount));
+		tokenReplacementMap.put("%message", message);
+		String dataLossMessage = EAM.substitute(EAM.text("%messageCount case(s) of: %message"), tokenReplacementMap);
+		
+		return dataLossMessage;
 	}
 
 	private HashMap<String, Integer> groupMessagesWithCount()
