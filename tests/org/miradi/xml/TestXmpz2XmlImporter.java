@@ -82,6 +82,16 @@ public class TestXmpz2XmlImporter extends TestCaseWithProject
 		super(name);
 	}
 	
+	public void testNewTncProjectData() throws Exception
+	{
+		getProject().fillTncProjectData();
+		Project importedProject = validateUsingStringWriter();
+		final ORef tncProjectDataRef = importedProject.getSingletonObjectRef(TncProjectDataSchema.getObjectType());
+		TncProjectData tncProjectData = TncProjectData.find(importedProject, tncProjectDataRef);
+		assertTrue("Field should contain data?", tncProjectData.getData(TncProjectData.TAG_PROJECT_SCALE).length() > 0);
+		assertTrue("Field should contain data?", tncProjectData.getData(TncProjectData.TAG_PROJECT_FOCUS).length() > 0);
+	}
+	
 	public void testObjectTreeTableConfiguration() throws Exception
 	{
 		final ORef ref = getProject().getSingletonObjectRef(ObjectTreeTableConfigurationSchema.getObjectType());
