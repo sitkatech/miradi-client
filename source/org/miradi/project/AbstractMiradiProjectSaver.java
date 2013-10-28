@@ -27,7 +27,6 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.Vector;
 
-import org.martus.util.UnicodeStringWriter;
 import org.martus.util.UnicodeWriter;
 import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.EAM;
@@ -43,12 +42,12 @@ import org.miradi.utils.StringUtilities;
 
 abstract public class AbstractMiradiProjectSaver
 {
-	public AbstractMiradiProjectSaver(UnicodeStringWriter writerToUse)
+	public AbstractMiradiProjectSaver(UnicodeWriter writerToUse)
 	{
 		writer = writerToUse;
 	}
 
-	protected UnicodeStringWriter getWriter()
+	protected UnicodeWriter getWriter()
 	{
 		return writer;
 	}
@@ -294,5 +293,5 @@ abstract public class AbstractMiradiProjectSaver
 
 	public static final String STOP_MARKER = "--";
 
-	private UnicodeStringWriter writer;
+	private UnicodeWriter writer;
 }
