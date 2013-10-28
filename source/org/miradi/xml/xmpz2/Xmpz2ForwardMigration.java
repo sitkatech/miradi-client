@@ -214,7 +214,7 @@ public class Xmpz2ForwardMigration implements Xmpz2XmlConstants
 			if (nodeName.startsWith(Xmpz2XmlConstants.XMLNS))
 				return extractAlias(nodeName);
 		}
-		throw new Exception("Could not find xml namespace!");
+		throw new Exception("Could not find xmlns attribute!");
 	}
 
 	private static String extractAlias(String namespaceAttributeName)
