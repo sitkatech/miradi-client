@@ -209,8 +209,8 @@ public class Xmpz2ForwardMigration implements Xmpz2XmlConstants
 		NamedNodeMap attributes = rootElement.getAttributes();
 		for (int index = 0; index < attributes.getLength(); ++index)
 		{
-			final Node nameSpaceAttribute = attributes.item(index);
-			final String nodeName = nameSpaceAttribute.getNodeName();
+			final Node attribute = attributes.item(index);
+			final String nodeName = attribute.getNodeName();
 			if (nodeName.startsWith(Xmpz2XmlConstants.XMLNS))
 				return extractAlias(nodeName);
 		}
