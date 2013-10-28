@@ -165,17 +165,6 @@ public class ConproXmlImporter implements ConProMiradiXml
 		importXml();
 	}
 	
-	public void importConProProjectNumbers(InputStreamWithSeek projectAsInputStream) throws Exception
-	{
-		loadXml(projectAsInputStream);
-		Node projectSumaryNode = getNode(getRootNode(), PROJECT_SUMMARY);
-		ORef metadataRef = getProject().getMetadata().getRef();
-		importProjectId(projectSumaryNode, metadataRef);
-		importParentChildField(projectSumaryNode, getSingletonTncProjectDataRef());
-		progressIndicator.incrementProgress();
-	}
-	
-	//FIXME urgent - this method has been duplicated and altered to use RawProject, other method will be removed
 	public void importConProProjectNumbers(InputStreamWithSeek projectAsInputStream, RawProject rawProjectToLoadInto) throws Exception
 	{
 		loadXml(projectAsInputStream);
