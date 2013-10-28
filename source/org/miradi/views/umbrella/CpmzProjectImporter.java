@@ -28,12 +28,15 @@ import java.util.zip.ZipException;
 
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringReader;
+import org.martus.util.UnicodeWriter;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.arranger.MeglerArranger;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.migrations.RawProject;
+import org.miradi.migrations.RawProjectLoader;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -43,6 +46,7 @@ import org.miradi.project.MpzToMpfConverter;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectLoader;
 import org.miradi.project.ProjectSaver;
+import org.miradi.project.RawProjectSaver;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.utils.ConceptualModelByTargetSplitter;
@@ -118,8 +122,8 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 		{
 			if (zipContainsMpfProject(zipFile))
 			{
-				final Project project = importProjectFromMpfEntry(zipFile, progressIndicator);
-				ProjectSaver.saveProject(project, newProjectFile);
+				final RawProject project = importProjectFromMpfEntry(zipFile, progressIndicator);
+				RawProjectSaver.saveProject(project, new UnicodeWriter(newProjectFile));
 			}
 			else if(zipContainsMpzProject(zipFile))
 			{
@@ -138,27 +142,39 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 		}
 	}
 
-	private Project importProjectFromMpfEntry(MiradiZipFile zipFile, ProgressInterface progressIndicator) throws Exception
+	private RawProject importProjectFromMpfEntry(MiradiZipFile zipFile, ProgressInterface progressIndicator) throws Exception
 	{
 		ZipEntry mpfEntry = zipFile.getEntry(ExportCpmzDoer.PROJECT_MPF_NAME);
 		InputStream inputStream = zipFile.getInputStream(mpfEntry);
 		try
 		{
-			Project project = new Project();
+			String mpfString = toString(inputStream);
+			RawProject rawProject = RawProjectLoader.loadProject(mpfString);
 			progressIndicator.setStatusMessage(EAM.text("Importing Miradi Data..."), 1);
-			ProjectLoader.loadProject(inputStream, project);
 			progressIndicator.incrementProgress();
 			
 			progressIndicator.setStatusMessage(EAM.text("Updating ConPro Project Number..."), 1);
-			importConproProjectNumbers(zipFile, project, progressIndicator);
+			importConproProjectNumbers(zipFile, rawProject, progressIndicator);
 			
-			return project;
+			return rawProject;
 		}
 		finally
 		{
 			inputStream.close();
 		}
-		
+	}
+
+	private String toString(InputStream inputStream) throws Exception
+	{
+		UnicodeReader reader = new UnicodeReader(inputStream);
+		try
+		{
+			return reader.readAll();
+		}
+		finally
+		{
+			reader.close();
+		}
 	}
 
 	private Project importProjectFromMpzEntry(MiradiZipFile zipFile, ProgressInterface progressIndicator) throws Exception
@@ -205,6 +221,20 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 		try
 		{
 			new ConproXmlImporter(projectToFill, progressIndicator).importConProProjectNumbers(projectAsInputStream);
+		}
+		finally
+		{
+			projectAsInputStream.close();
+		}
+	}
+
+	//FIXME urgent - this is a duplicate,  other method needs to be removed when its dereferenced
+	private void importConproProjectNumbers(MiradiZipFile zipFile, RawProject projectToFill, ProgressInterface progressIndicator) throws Exception
+	{
+		InputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
+		try
+		{
+			new ConproXmlImporter(null, progressIndicator).importConProProjectNumbers(projectAsInputStream, projectToFill);
 		}
 		finally
 		{
