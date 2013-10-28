@@ -47,6 +47,7 @@ import org.miradi.exceptions.ValidationException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
+import org.miradi.migrations.RawProject;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.DateUnit;
@@ -114,6 +115,7 @@ import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ProgressPercentSchema;
 import org.miradi.schemas.ProgressReportSchema;
+import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
@@ -163,14 +165,36 @@ public class ConproXmlImporter implements ConProMiradiXml
 		importXml();
 	}
 	
-	public void importConProProjectNumbers(InputStreamWithSeek projectAsInputStream) throws Exception
+	public void importConProProjectNumbers(InputStreamWithSeek projectAsInputStream, RawProject rawProjectToLoadInto) throws Exception
 	{
 		loadXml(projectAsInputStream);
 		Node projectSumaryNode = getNode(getRootNode(), PROJECT_SUMMARY);
-		ORef metadataRef = getProject().getMetadata().getRef();
-		importProjectId(projectSumaryNode, metadataRef);
-		importParentChildField(projectSumaryNode, getSingletonTncProjectDataRef());
+		ORef metadataRef = new ORef(ProjectMetadataSchema.getObjectType(), new BaseId(rawProjectToLoadInto.getProjectMetadataId()));
+		importProjectId(rawProjectToLoadInto, projectSumaryNode, metadataRef);
+		
+		String parentChildData = getPathDataAsHtml(projectSumaryNode, new String[]{PARENT_CHILD});
+		ORef tncProjectDataRef = rawProjectToLoadInto.getSingletonRef(TncProjectDataSchema.getObjectType());
+		rawProjectToLoadInto.setObjectData(tncProjectDataRef, TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT, parentChildData);
 		progressIndicator.incrementProgress();
+	}
+	
+	private void importProjectId(RawProject rawProject, Node projectSumaryNode, ORef metadataRef) throws Exception
+	{
+		NodeList projectIdNodes = getNodes(projectSumaryNode, new String[]{PROJECT_ID});
+		StringRefMap stringRefMap = new StringRefMap();
+		for (int nodeIndex = 0; nodeIndex < projectIdNodes.getLength(); ++nodeIndex) 
+		{
+			Node projectIdNode = projectIdNodes.item(nodeIndex);
+			
+			String projectId = getSafeNodeContent(projectIdNode);
+			ORef xenodataRef = findOrCreateXenodataObject();
+			rawProject.setObjectData(xenodataRef, Xenodata.TAG_PROJECT_ID, projectId);
+
+			String contextAttributeValue = getAttributeValue(projectIdNode, CONTEXT_ATTRIBUTE);
+			stringRefMap.add(contextAttributeValue, xenodataRef);
+		}
+		
+		rawProject.setObjectData(metadataRef, ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, stringRefMap.toJsonString());
 	}
 
 	private void loadXml(InputStreamWithSeek projectAsInputStream) throws Exception
@@ -961,10 +985,17 @@ public class ConproXmlImporter implements ConProMiradiXml
 	
 	private void importField(Node node, String[] elements, ORef ref, String tag) throws Exception 
 	{
+		String data = getPathDataAsHtml(node, elements);
+		importField(ref, tag, data);
+	}
+
+	private String getPathDataAsHtml(Node node, String[] elements) throws Exception
+	{
 		String data = getPathData(node, elements);
 		data = XmlUtilities2.getXmlEncoded(data);
 		data = HtmlUtilities.replaceNonHtmlNewlines(data);
-		importField(ref, tag, data);
+		
+		return data;
 	}
 
 	private String getPathData(Node node, String[] elements) throws XPathExpressionException

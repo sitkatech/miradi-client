@@ -153,7 +153,7 @@ public class RawProject implements ProjectInterface
 		return findObject(ref).getData(tag);
 	}
 	
-	public String setData(ORef ref, String tag, String data)
+	public String setObjectData(ORef ref, String tag, String data)
 	{
 		return findObject(ref).setData(tag, data);
 	}
@@ -224,6 +224,15 @@ public class RawProject implements ProjectInterface
 			RawObject rawObject = rawPool.get(ref);
 			visitor.visit(rawObject);
 		}
+	}
+	
+	public ORef getSingletonRef(int objectType) throws Exception
+	{
+		RawPool pool = getRawPoolForType(objectType);
+		if (pool.size() != 1)
+			throw new Exception("Singleton pool was empty for type =" + objectType);
+		
+		return pool.getSortedReflist().getFirstElement();
 	}
 	
 	private HashMap<Integer, RawPool> typeToRawPoolMap;
