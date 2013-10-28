@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-28 15:01-0500\n"
+"POT-Creation-Date: 2013-10-28 17:19-0500\n"
 "PO-Revision-Date: 2013-04-02 10:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -3764,7 +3764,7 @@ msgstr ""
 "'_'"
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:99
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:200
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:225
 msgid "File to import does not validate."
 msgstr "Impossible de valider le fichier à importer."
 
@@ -4160,7 +4160,7 @@ msgstr "Masquer les colonnes trimestre"
 msgid "High"
 msgstr "Elevé"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1378
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1391
 msgid "High/Very-High Threat Chains"
 msgstr "Chaînes de menaces élevées/très élevées"
 
@@ -4322,7 +4322,7 @@ msgstr "L'importation a été annulée !"
 msgid "Import..."
 msgstr "Importer ..."
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:222
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:234
 msgid "Importing ConPro Data..."
 msgstr ""
 
@@ -4330,7 +4330,7 @@ msgstr ""
 msgid "Importing MPZ"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:146
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:151
 msgid "Importing Miradi Data..."
 msgstr ""
 
@@ -4390,7 +4390,7 @@ msgstr ""
 "mesurable, précis, cohérent et sensible. Dans Miradi, un indicateur est "
 "représenté par un triangle violet."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1276
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1289
 msgid "Indicator Holder"
 msgstr "Détenteur d'indicateur"
 
@@ -4908,7 +4908,7 @@ msgstr "Lieu"
 msgid "Low"
 msgstr "Faible"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1379
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1392
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Chaînes de menace Faibles/Moyennes/Non évaluées"
 
@@ -5578,7 +5578,7 @@ msgstr ""
 "que réduire une menace critique. Dans Miradi, un objectif est représenté par "
 "un petit rectangle bleu."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1270
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1283
 msgid "Objective Holder"
 msgstr "Détenteur d'objectif"
 
@@ -5776,7 +5776,7 @@ msgstr ""
 msgid "Place scope on diagram"
 msgstr "Placer la portée sur le diagramme"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1266
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1279
 msgid "Placeholder - From ConPro"
 msgstr "Espace réservé - De ConPro"
 
@@ -8827,8 +8827,8 @@ msgstr "Non planifié"
 msgid "Unspecified"
 msgstr "Non spécifié"
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:150
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:170
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:154
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:186
 msgid "Updating ConPro Project Number..."
 msgstr ""
 
