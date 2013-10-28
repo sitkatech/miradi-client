@@ -219,8 +219,8 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 	private void createStrategy(RawProject rawProject, final String label, final String comments)	throws Exception
 	{
 		ORef strategyRef = rawProject.createObject(StrategySchema.getObjectType());
-		rawProject.setData(strategyRef, Strategy.TAG_COMMENTS, comments);		
-		rawProject.setData(strategyRef, Strategy.TAG_LABEL, label);
+		rawProject.setObjectData(strategyRef, Strategy.TAG_COMMENTS, comments);		
+		rawProject.setObjectData(strategyRef, Strategy.TAG_LABEL, label);
 	}
 	
 	private static final String commentWithXmlEscapedChars = "&quot; &apos; &gt; &lt; &amp;";
