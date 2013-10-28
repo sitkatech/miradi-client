@@ -174,7 +174,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		
 		String parentChildData = getPathDataAsHtml(projectSumaryNode, new String[]{PARENT_CHILD});
 		ORef tncProjectDataRef = rawProjectToLoadInto.getSingletonRef(TncProjectDataSchema.getObjectType());
-		rawProjectToLoadInto.setData(tncProjectDataRef, TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT, parentChildData);
+		rawProjectToLoadInto.setObjectData(tncProjectDataRef, TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT, parentChildData);
 		progressIndicator.incrementProgress();
 	}
 	
@@ -188,13 +188,13 @@ public class ConproXmlImporter implements ConProMiradiXml
 			
 			String projectId = getSafeNodeContent(projectIdNode);
 			ORef xenodataRef = findOrCreateXenodataObject();
-			rawProject.setData(xenodataRef, Xenodata.TAG_PROJECT_ID, projectId);
+			rawProject.setObjectData(xenodataRef, Xenodata.TAG_PROJECT_ID, projectId);
 
 			String contextAttributeValue = getAttributeValue(projectIdNode, CONTEXT_ATTRIBUTE);
 			stringRefMap.add(contextAttributeValue, xenodataRef);
 		}
 		
-		rawProject.setData(metadataRef, ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, stringRefMap.toJsonString());
+		rawProject.setObjectData(metadataRef, ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, stringRefMap.toJsonString());
 	}
 
 	private void loadXml(InputStreamWithSeek projectAsInputStream) throws Exception
