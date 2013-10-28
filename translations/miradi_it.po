@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-28 14:01-0500\n"
+"POT-Creation-Date: 2013-10-28 15:01-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -254,7 +254,7 @@ msgid ""
 "only latest will be preserved"
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/MigrationResult.java:120
+#: Miradi/source/org/miradi/migrations/MigrationResult.java:129
 msgid "%messageCount case(s) of: %message"
 msgstr ""
 
@@ -3984,6 +3984,10 @@ msgstr ""
 "Fonti di finanziamento - Le risorse economiche a disposizione per il "
 "progetto."
 
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo13.java:42
+msgid "Fundraising Plan"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:63
 #: Miradi/source/org/miradi/dialogs/viability/FutureStatusPropertiesPanel.java:39
 #: Miradi/source/org/miradi/dialogs/viability/ViabilityFutureStatusPropertiesPanel.java:39
@@ -5626,6 +5630,10 @@ msgstr ""
 msgid "Organization"
 msgstr "Organizzazione"
 
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo11.java:43
+msgid "Organizational Priorities"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:160
 msgid "Other"
 msgstr "Altro"
@@ -5928,6 +5936,10 @@ msgstr ""
 msgid "Project Description:"
 msgstr "Descrizione del Progetto:"
 
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo12.java:42
+msgid "Project Focus"
+msgstr ""
+
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:55
 msgid "Project Migration Required"
 msgstr "E' richiesta la migrazione del Progetto"
@@ -5939,6 +5951,10 @@ msgstr ""
 #: Miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:40
 msgid "Project Number"
 msgstr "Numero Progetto"
+
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo11.java:42
+msgid "Project Place Types"
+msgstr ""
 
 #: Miradi/source/org/miradi/rtf/ProjectRtfExporter.java:57
 msgid "Project Plan For "
@@ -5962,6 +5978,10 @@ msgstr "Il filtro delle risorse di progetto è attivo"
 #: Miradi/source/org/miradi/views/workplan/ProjectResourceManagementConfiguration.java:58
 msgid "Project Resources"
 msgstr "Risorse del progetto"
+
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo12.java:43
+msgid "Project Scale"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/InsertScopeBoxDoer.java:73
 #: Miradi/source/org/miradi/legacyprojects/migrations/CreateScopeBoxesSuroundingTargetsMigration.java:312

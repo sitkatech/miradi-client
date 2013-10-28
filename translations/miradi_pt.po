@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-28 14:01-0500\n"
+"POT-Creation-Date: 2013-10-28 15:01-0500\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -260,7 +260,7 @@ msgid ""
 "only latest will be preserved"
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/MigrationResult.java:120
+#: Miradi/source/org/miradi/migrations/MigrationResult.java:129
 msgid "%messageCount case(s) of: %message"
 msgstr ""
 
@@ -4102,6 +4102,10 @@ msgstr "Fontes de Recursos"
 msgid "Funding Sources - The sources of money available to your project."
 msgstr "Fontes de Recursos - As fontes de dinheiro disponível para seu projeto"
 
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo13.java:42
+msgid "Fundraising Plan"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:63
 #: Miradi/source/org/miradi/dialogs/viability/FutureStatusPropertiesPanel.java:39
 #: Miradi/source/org/miradi/dialogs/viability/ViabilityFutureStatusPropertiesPanel.java:39
@@ -5784,6 +5788,10 @@ msgstr "Lista Ordenada"
 msgid "Organization"
 msgstr "Organização"
 
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo11.java:43
+msgid "Organizational Priorities"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:160
 msgid "Other"
 msgstr "Outro"
@@ -6087,6 +6095,10 @@ msgstr "Corrupção do Projeto Detectado"
 msgid "Project Description:"
 msgstr "Descrição do Projeto:"
 
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo12.java:42
+msgid "Project Focus"
+msgstr ""
+
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:55
 msgid "Project Migration Required"
 msgstr "É Necessário Migrar o Projeto"
@@ -6100,6 +6112,10 @@ msgstr ""
 #: Miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:40
 msgid "Project Number"
 msgstr "Número do Projeto"
+
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo11.java:42
+msgid "Project Place Types"
+msgstr ""
 
 #: Miradi/source/org/miradi/rtf/ProjectRtfExporter.java:57
 msgid "Project Plan For "
@@ -6123,6 +6139,10 @@ msgstr "Filtro de Recursos do Projeto está Ativado"
 #: Miradi/source/org/miradi/views/workplan/ProjectResourceManagementConfiguration.java:58
 msgid "Project Resources"
 msgstr "Recursos do Projeto"
+
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo12.java:43
+msgid "Project Scale"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/InsertScopeBoxDoer.java:73
 #: Miradi/source/org/miradi/legacyprojects/migrations/CreateScopeBoxesSuroundingTargetsMigration.java:312

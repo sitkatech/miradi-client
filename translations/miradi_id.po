@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-28 14:01-0500\n"
+"POT-Creation-Date: 2013-10-28 15:01-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -251,7 +251,7 @@ msgid ""
 "only latest will be preserved"
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/MigrationResult.java:120
+#: Miradi/source/org/miradi/migrations/MigrationResult.java:129
 msgid "%messageCount case(s) of: %message"
 msgstr ""
 
@@ -3873,6 +3873,10 @@ msgid "Funding Sources - The sources of money available to your project."
 msgstr ""
 "Sumber-sumber Dana – Sumber-sumber keuangan yang tersedia untuk proyek Anda."
 
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo13.java:42
+msgid "Fundraising Plan"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:63
 #: Miradi/source/org/miradi/dialogs/viability/FutureStatusPropertiesPanel.java:39
 #: Miradi/source/org/miradi/dialogs/viability/ViabilityFutureStatusPropertiesPanel.java:39
@@ -5503,6 +5507,10 @@ msgstr ""
 msgid "Organization"
 msgstr "Organisasi "
 
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo11.java:43
+msgid "Organizational Priorities"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:160
 msgid "Other"
 msgstr "Lainnya"
@@ -5802,6 +5810,10 @@ msgstr ""
 msgid "Project Description:"
 msgstr "Keterangan Proyek: "
 
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo12.java:42
+msgid "Project Focus"
+msgstr ""
+
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:55
 msgid "Project Migration Required"
 msgstr "Memerlukan Migrasi Proyek"
@@ -5813,6 +5825,10 @@ msgstr ""
 #: Miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:40
 msgid "Project Number"
 msgstr "Nomor Proyek "
+
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo11.java:42
+msgid "Project Place Types"
+msgstr ""
 
 #: Miradi/source/org/miradi/rtf/ProjectRtfExporter.java:57
 msgid "Project Plan For "
@@ -5836,6 +5852,10 @@ msgstr "Filter Sumber Daya Proyek Adalah Aktif "
 #: Miradi/source/org/miradi/views/workplan/ProjectResourceManagementConfiguration.java:58
 msgid "Project Resources"
 msgstr "Sumber Daya Proyek "
+
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo12.java:43
+msgid "Project Scale"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/InsertScopeBoxDoer.java:73
 #: Miradi/source/org/miradi/legacyprojects/migrations/CreateScopeBoxesSuroundingTargetsMigration.java:312
