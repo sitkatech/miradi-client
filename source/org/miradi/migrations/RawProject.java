@@ -226,6 +226,15 @@ public class RawProject implements ProjectInterface
 		}
 	}
 	
+	public ORef getSingletonRef(int objectType) throws Exception
+	{
+		RawPool pool = getRawPoolForType(objectType);
+		if (pool.size() != 1)
+			throw new Exception("Singleton pool was empty for type =" + objectType);
+		
+		return pool.getSortedReflist().getFirstElement();
+	}
+	
 	private HashMap<Integer, RawPool> typeToRawPoolMap;
 	private String exceptionLog;
 	private String quarantineData;
