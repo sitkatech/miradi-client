@@ -8,7 +8,6 @@ import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.xml.wcs.Xmpz2XmlValidator;
 import org.miradi.xml.xmpz2.Xmpz2ForwardMigration;
-import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlSilentValidatorForTesting;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -35,7 +34,7 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
  */
 
-public class TestXmpz2ForwardMigration extends TestCaseWithProject implements Xmpz2XmlConstants
+public class TestXmpz2ForwardMigration extends TestCaseWithProject
 {
 	public TestXmpz2ForwardMigration(String name)
 	{
@@ -150,4 +149,12 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject implements Xm
 		if (!new Xmpz2XmlValidator().isValid(inputStream))
 			fail("Project should validate after xml has been migrated?");
 	}
+	
+	private static final String RAW_PREFIX = "miradi";
+	private static final String COLON = ":";
+	private static final String PREFIX = RAW_PREFIX + COLON;
+	private static final String CODE_ELEMENT_NAME = "code";
+	private static final String TNC_PROJECT_DATA = "TNCProjectData";
+	private static final String HUMAN_WELFARE_TARGET = "HumanWellbeingTarget";
+	private static final String CALCULATED_THREAT_RATING = "CalculatedThreatRating";
 }
