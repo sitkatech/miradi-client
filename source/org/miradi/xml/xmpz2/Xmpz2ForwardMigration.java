@@ -188,9 +188,9 @@ public class Xmpz2ForwardMigration implements Xmpz2XmlConstants
 
 	public static void setNameSpaceVersion(Element rootElement, String newNameSpaceVersion) throws Exception
 	{
-		final String attributeNamespaceName = getNamespaceAttributeName(rootElement);
-		final String attributeNamespaceValue = PARTIAL_NAME_SPACE + newNameSpaceVersion;
-		rootElement.setAttribute(attributeNamespaceName, attributeNamespaceValue);
+		final String attributeName = getNamespaceAttributeName(rootElement);
+		final String nameSpaceWithVersion = PARTIAL_NAME_SPACE + newNameSpaceVersion;
+		rootElement.setAttribute(attributeName, nameSpaceWithVersion);
 	}
 
 	private static String getNameSpace(Element rootElement) throws Exception
