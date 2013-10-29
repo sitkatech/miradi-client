@@ -137,11 +137,11 @@ public class MigrationResult extends HashSet<String>
 		for (int index = 0; index < dataLossMessages.size(); ++index)
 		{
 			String message = dataLossMessages.get(index);
-			int numberOfMessages = 0;
+			int countOfThisMessage = 0;
 			if (messageToCountMap.containsKey(message))
-				numberOfMessages = messageToCountMap.get(message);
+				countOfThisMessage = messageToCountMap.get(message);
 			
-			messageToCountMap.put(message, numberOfMessages + 1);
+			messageToCountMap.put(message, countOfThisMessage + 1);
 		}
 		
 		return messageToCountMap;
