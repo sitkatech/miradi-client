@@ -36,7 +36,7 @@ public class MigrationTo13 extends NewFieldsMigration
 	}
 	
 	@Override
-	protected HashMap<String, String> createFieldsToRemove()
+	protected HashMap<String, String> createFieldsToLabelMapToModify()
 	{
 		HashMap<String, String> fieldsToRemove = new HashMap<String, String>();
 		fieldsToRemove.put(TAG_FUNDRAISING_PLAN, EAM.text("Fundraising Plan"));

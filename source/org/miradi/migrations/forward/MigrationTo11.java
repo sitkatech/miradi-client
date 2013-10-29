@@ -36,7 +36,7 @@ public class MigrationTo11 extends RemoveMultipleFieldsMigration
 	}
 
 	@Override
-	protected HashMap<String, String> createFieldsToRemove()
+	protected HashMap<String, String> createFieldsToLabelMapToModify()
 	{
 		HashMap<String, String> fieldsToRemove = new HashMap<String, String>();
 		fieldsToRemove.put(LEGACY_TAG_TNC_PROJECT_TYPES, EAM.text("Project Place Types"));
