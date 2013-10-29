@@ -26,9 +26,9 @@ import java.util.Set;
 import org.miradi.main.EAM;
 import org.miradi.objects.Indicator;
 
-abstract public class AbstractRemoveMultipleFieldMigration extends AbstractMigration
+abstract public class AbstractModifyMultipleFieldMigration extends AbstractMigration
 {
-	public AbstractRemoveMultipleFieldMigration(RawProject rawProject, int typeToRemoveFieldsFromToUse)
+	public AbstractModifyMultipleFieldMigration(RawProject rawProject, int typeToRemoveFieldsFromToUse)
 	{
 		super(rawProject);
 		
