@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-29 13:31-0500\n"
+"POT-Creation-Date: 2013-10-29 13:46-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -235,7 +235,7 @@ msgstr ""
 msgid "%externalContextCode - %projectCodeWithinExternalContext  <br/>"
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo8.java:99
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo8.java:92
 msgid "%fieldName field data will be lost for %indicatorLabel (Indicator)"
 msgstr ""
 
@@ -243,7 +243,7 @@ msgstr ""
 msgid "%fieldName will be removed, label = %label"
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo4.java:196
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo4.java:189
 msgid ""
 "%futureStatusCount future status(s) for indicator (%indicatorLabel) exist, "
 "only latest will be preserved"
@@ -265,11 +265,11 @@ msgstr ""
 msgid "%s Objs"
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo7.java:133
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo7.java:126
 msgid "%s field data will be lost"
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo9.java:118
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo9.java:111
 msgid "%s field data will be lost for measurement"
 msgstr ""
 
@@ -3807,7 +3807,7 @@ msgstr "资金来源"
 msgid "Funding Sources - The sources of money available to your project."
 msgstr "资金资源——指您的项目可获得的资金来源。"
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo13.java:42
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo13.java:41
 msgid "Fundraising Plan"
 msgstr ""
 
@@ -5406,7 +5406,7 @@ msgstr ""
 msgid "Organization"
 msgstr "组织 \t\t"
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo11.java:43
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo11.java:42
 msgid "Organizational Priorities"
 msgstr ""
 
@@ -5702,7 +5702,7 @@ msgstr ""
 msgid "Project Description:"
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo12.java:42
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo12.java:41
 msgid "Project Focus"
 msgstr ""
 
@@ -5718,7 +5718,7 @@ msgstr ""
 msgid "Project Number"
 msgstr "项目编号 \t\t"
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo11.java:42
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo11.java:41
 msgid "Project Place Types"
 msgstr ""
 
@@ -5745,7 +5745,7 @@ msgstr ""
 msgid "Project Resources"
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo12.java:43
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo12.java:42
 msgid "Project Scale"
 msgstr ""
 
@@ -7775,50 +7775,50 @@ msgstr ""
 msgid "This item is shared, so will be deleted from multiple places."
 msgstr "本条目是共享的，因此将会从多个地方删除。 \t\t"
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo7.java:112
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo7.java:105
 msgid ""
 "This migraiton ony has reverse to remove Miradi share taxonomy related "
 "objects."
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo13.java:68
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo13.java:61
 msgid "This migration adds 1 new TNC field."
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo12.java:69
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo12.java:62
 msgid "This migration adds 2 new TNC fields."
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo5.java:76
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo5.java:69
 msgid "This migration changes default real status code to \"\""
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo6.java:78
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo6.java:71
 msgid "This migration corrects indicator threshold escaping issues."
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo4.java:93
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo4.java:86
 msgid ""
 "This migration creates new future status objects from indicator's future "
 "status fields"
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo11.java:69
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo11.java:62
 msgid "This migration removes 2 Tnc fields"
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo8.java:78
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo8.java:71
 msgid "This migration removes indicator's unit field"
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo9.java:75
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo9.java:68
 msgid ""
 "This migration removes new measuremt fields: Sample size, Sample Precision, "
 "Sample Precision Type and clears status confidenceif the choice is Sampling "
 "Based"
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo10.java:60
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo10.java:53
 msgid "This migration renames 2 fields"
 msgstr ""
 
