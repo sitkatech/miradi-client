@@ -96,13 +96,13 @@ public class CommandLineProjectFileImporterHelper
 		else
 		{
 			if (getUserImportConfirmation(projectFileToImport.getName()))
-				return importMpzFile(projectFileToImport);
+				return importZippedProject(projectFileToImport);
 		}
 		
 		return projectFileToImport;
 	}
 
-	private File importMpzFile(File projectFileToImport)	throws Exception
+	private File importZippedProject(File projectFileToImport)	throws Exception
 	{
 		AbstractProjectImporter importer = createImporter(projectFileToImport);
 		return importer.importProject(projectFileToImport);
