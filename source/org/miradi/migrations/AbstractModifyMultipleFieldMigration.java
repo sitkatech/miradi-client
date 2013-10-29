@@ -33,7 +33,7 @@ abstract public class AbstractModifyMultipleFieldMigration extends AbstractMigra
 		super(rawProject);
 		
 		type = typeToRemoveFieldsFromToUse;
-		fieldsToRemove = createFieldsToRemove();
+		fieldsToRemove = createFieldsToLabelMapToModify();
 	}
 	
 	@Override
@@ -87,7 +87,7 @@ abstract public class AbstractModifyMultipleFieldMigration extends AbstractMigra
 		}
 	}
 	
-	abstract protected HashMap<String, String> createFieldsToRemove();
+	abstract protected HashMap<String, String> createFieldsToLabelMapToModify();
 	
 	abstract public AbstractMigrationVisitor createMigrateForwardVisitor() throws Exception;
 	
