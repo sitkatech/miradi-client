@@ -88,8 +88,7 @@ public abstract class AbstractProjectImporter
 		}
 		catch (UnsupportedNewVersionSchemaException e)
 		{
-			EAM.logException(e);
-			showImportFailedErrorDialog(IMPORT_FAILED_MESSAGE);
+			logTooNewVersionException(e);
 		}
 		catch (CpmzVersionTooOldException e)
 		{
@@ -120,6 +119,12 @@ public abstract class AbstractProjectImporter
 				message = "";
 			showImportFailedErrorDialog(message);
 		}
+	}
+
+	public static void logTooNewVersionException(UnsupportedNewVersionSchemaException e)
+	{
+		EAM.logException(e);
+		showImportFailedErrorDialog(IMPORT_FAILED_MESSAGE);
 	}
 
 	private String getNameWithoutExtension(File fileToImport)
@@ -211,7 +216,7 @@ public abstract class AbstractProjectImporter
 		AbstractFileChooser.addFileFilters(fileChooser, filters);
 	}
 
-	private void showImportFailedErrorDialog(String message)
+	private static void showImportFailedErrorDialog(String message)
 	{
 		if(message == null)
 			message = EAM.text("Unexpected error");

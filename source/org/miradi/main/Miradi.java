@@ -29,11 +29,13 @@ import java.util.Vector;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
+import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.AllLanguagesQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.utils.LanguagePackFileFilter;
 import org.miradi.utils.Translation;
+import org.miradi.views.umbrella.AbstractProjectImporter;
 
 
 public class Miradi
@@ -298,6 +300,11 @@ public class Miradi
 				getMainWindow().start(commandLineArgs);
 				
 				CommandLineProjectFileImporterHelper.importIfRequested(getMainWindow(), commandLineArgs);
+			}
+			catch (UnsupportedNewVersionSchemaException e)
+			{
+				AbstractProjectImporter.logTooNewVersionException(e);
+				System.exit(1);
 			}
 			catch(Exception e)
 			{
