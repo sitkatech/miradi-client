@@ -123,7 +123,7 @@ public class XmlUtilities2
 		//does not handle all characters, like non breaking space  &nbsp;
 		//NOTE: this safety mechanism might be a speed concern
 		if (!isValidXmlWithNoHtmlTags(valueWithoutHtmlTags))
-			EAM.logWarning("Invalid xml value =" + valueWithoutHtmlTags);
+			EAM.logWarning("Invalid xml value =" + valueWithoutHtmlTags + " validated xml =" + getXmlEncoded(valueWithoutHtmlTags));
 	}
 	
 	public static boolean isValidXmlWithNoHtmlTags(final String value)
