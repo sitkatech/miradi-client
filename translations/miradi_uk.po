@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-28 15:01-0500\n"
+"POT-Creation-Date: 2013-10-28 17:19-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -3666,7 +3666,7 @@ msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr "Назва файла має містити тільки альфа цифрові і або  '_' символи."
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:99
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:200
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:225
 msgid "File to import does not validate."
 msgstr "Файл для імпорту відсутній"
 
@@ -4052,7 +4052,7 @@ msgstr ""
 msgid "High"
 msgstr "Високий"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1378
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1391
 msgid "High/Very-High Threat Chains"
 msgstr "Ланцюги високої або дуже високої загрози"
 
@@ -4212,7 +4212,7 @@ msgstr ""
 msgid "Import..."
 msgstr "Імпортувати..."
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:222
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:234
 msgid "Importing ConPro Data..."
 msgstr ""
 
@@ -4220,7 +4220,7 @@ msgstr ""
 msgid "Importing MPZ"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:146
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:151
 msgid "Importing Miradi Data..."
 msgstr ""
 
@@ -4275,7 +4275,7 @@ msgstr ""
 "несуперечливий і чутливий.У Міраді індикатор представляється фіолетовим "
 "трикутником."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1276
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1289
 msgid "Indicator Holder"
 msgstr "Тримач Індикатора"
 
@@ -4789,7 +4789,7 @@ msgstr "Місцезнаходження"
 msgid "Low"
 msgstr "Низький"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1379
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1392
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Ланцюги низьких/середніх/неоцінених загроз"
 
@@ -5434,7 +5434,7 @@ msgstr ""
 "як зменшення критичної загрози. У Міраді завдання представляєтьсяється малим "
 "блакитним прямокутником. "
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1270
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1283
 msgid "Objective Holder"
 msgstr "Тримач Завдання"
 
@@ -5627,7 +5627,7 @@ msgstr ""
 msgid "Place scope on diagram"
 msgstr "Встановити сферу дій на діаграмі"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1266
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1279
 msgid "Placeholder - From ConPro"
 msgstr "Заповнювач - від ConPro"
 
@@ -8595,8 +8595,8 @@ msgstr ""
 msgid "Unspecified"
 msgstr "Невизначений"
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:150
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:170
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:154
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:186
 msgid "Updating ConPro Project Number..."
 msgstr ""
 

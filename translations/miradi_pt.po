@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-28 15:01-0500\n"
+"POT-Creation-Date: 2013-10-28 17:19-0500\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -3821,7 +3821,7 @@ msgstr ""
 "O nome de arquivo deve conter somente caracteres alfa-numéricos e/ou '_'."
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:99
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:200
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:225
 msgid "File to import does not validate."
 msgstr "O arquivo para importar não validada."
 
@@ -4236,7 +4236,7 @@ msgstr "Esconder Colunas de Trimestre"
 msgid "High"
 msgstr "Alto"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1378
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1391
 msgid "High/Very-High Threat Chains"
 msgstr "Cadeias de Ameaças Altos/Muito Altos"
 
@@ -4399,7 +4399,7 @@ msgstr "Importação foi cancelado!"
 msgid "Import..."
 msgstr "Importar..."
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:222
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:234
 msgid "Importing ConPro Data..."
 msgstr "Importando Dados ConPro..."
 
@@ -4407,7 +4407,7 @@ msgstr "Importando Dados ConPro..."
 msgid "Importing MPZ"
 msgstr "Importando MPZ"
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:146
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:151
 msgid "Importing Miradi Data..."
 msgstr "Importando Dados de Miradi..."
 
@@ -4467,7 +4467,7 @@ msgstr ""
 "representado por um triângulo roxo."
 
 # I don't understand the use of "holder" here thus I left it in English.
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1276
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1289
 msgid "Indicator Holder"
 msgstr "\"Holder\" de indicador"
 
@@ -4993,7 +4993,7 @@ msgstr "Localização"
 msgid "Low"
 msgstr "Baixo"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1379
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1392
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Cadeias de Ameaça Baixo/Médio/Sem classificação"
 
@@ -5671,7 +5671,7 @@ msgstr ""
 "representado por um retângulo pequeno azul."
 
 # I don't understand Holder here  in English.  Please clarify.
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1270
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1283
 msgid "Objective Holder"
 msgstr "\"Holder\" de Meta"
 
@@ -5869,7 +5869,7 @@ msgstr ""
 msgid "Place scope on diagram"
 msgstr "Posicionar Escopo no Diagrama"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1266
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1279
 msgid "Placeholder - From ConPro"
 msgstr "Espaço Reservado - de ConPro"
 
@@ -8926,8 +8926,8 @@ msgstr "Não Programado"
 msgid "Unspecified"
 msgstr "Não Especificado"
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:150
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:170
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:154
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:186
 msgid "Updating ConPro Project Number..."
 msgstr "Atualizando número de Projeto ConPro"
 
