@@ -23,12 +23,12 @@ package org.miradi.migrations.forward;
 import java.util.HashMap;
 
 import org.miradi.main.EAM;
-import org.miradi.migrations.AddMultipleFieldMigration;
+import org.miradi.migrations.NewFieldsMigration;
 import org.miradi.migrations.RawProject;
 import org.miradi.migrations.VersionRange;
 import org.miradi.schemas.TncProjectDataSchema;
 
-public class MigrationTo13 extends AddMultipleFieldMigration
+public class MigrationTo13 extends NewFieldsMigration
 {
 	public MigrationTo13(RawProject rawProjectToUse)
 	{

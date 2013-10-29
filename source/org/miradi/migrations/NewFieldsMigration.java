@@ -21,9 +21,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.migrations;
 
 
-abstract public class AddMultipleFieldMigration extends AbstractRemoveMultipleFieldMigration
+abstract public class NewFieldsMigration extends AbstractRemoveMultipleFieldMigration
 {
-	public AddMultipleFieldMigration(RawProject rawProject, int typeToRemoveFieldsFrom)
+	public NewFieldsMigration(RawProject rawProject, int typeToRemoveFieldsFrom)
 	{
 		super(rawProject, typeToRemoveFieldsFrom);
 	}
