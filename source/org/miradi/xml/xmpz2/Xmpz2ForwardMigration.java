@@ -42,7 +42,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
-public class Xmpz2ForwardMigration implements Xmpz2XmlConstants
+public class Xmpz2ForwardMigration
 {
 	public StringInputStreamWithSeek migrate(InputStreamWithSeek projectAsInputStream) throws Exception
 	{
@@ -235,4 +235,8 @@ public class Xmpz2ForwardMigration implements Xmpz2XmlConstants
 	}
 	
 	private static final int LOWEST_SCHEMA_VERSION = 228;
+	private static final String NAME_SPACE_VERSION = "232";
+	private static final String XMLNS = "xmlns";
+	private static final String COLON = ":";
+	private static final String PARTIAL_NAME_SPACE = "http://xml.miradi.org/schema/ConservationProject/";
 }
