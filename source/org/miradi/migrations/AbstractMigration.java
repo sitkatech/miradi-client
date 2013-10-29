@@ -96,11 +96,14 @@ abstract public class AbstractMigration
 		return visitor.getMigrationResult();
 	}
 	
+	protected VersionRange getMigratableVersionRange() throws Exception
+	{
+		return new VersionRange(getFromVersion(), getToVersion());
+	}
+	
 	abstract protected int getToVersion();
 	
 	abstract protected int getFromVersion(); 
-	
-	abstract protected VersionRange getMigratableVersionRange() throws Exception;
 	
 	abstract protected MigrationResult migrateForward() throws Exception;
 	

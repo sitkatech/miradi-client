@@ -28,7 +28,6 @@ import org.miradi.migrations.AbstractSingleTypeMigration;
 import org.miradi.migrations.MigrationResult;
 import org.miradi.migrations.RawObject;
 import org.miradi.migrations.RawProject;
-import org.miradi.migrations.VersionRange;
 import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.XmlUtilities2;
@@ -54,12 +53,6 @@ public class MigrationTo6 extends AbstractSingleTypeMigration
 		return MigrationResult.createSuccess();
 	}
 
-	@Override
-	protected VersionRange getMigratableVersionRange() throws Exception
-	{
-		return new VersionRange(VERSION_LOW, VERSION_HIGH);
-	}
-	
 	@Override
 	protected int getToVersion()
 	{
@@ -114,9 +107,6 @@ public class MigrationTo6 extends AbstractSingleTypeMigration
 			indicator.put(tag, escapedMap.toJsonString());
 		}
 	}
-	
-	private static final int VERSION_LOW = 5;
-	private static final int VERSION_HIGH = 5;
 	
 	private static final String TAG_THRESHOLDS_MAP = "IndicatorThresholds";
 	private static final String TAG_THRESHOLD_DETAILS_MAP = "ThresholdDetails";

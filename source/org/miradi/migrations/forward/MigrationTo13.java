@@ -25,7 +25,6 @@ import java.util.HashMap;
 import org.miradi.main.EAM;
 import org.miradi.migrations.NewlyAddedFieldsMigration;
 import org.miradi.migrations.RawProject;
-import org.miradi.migrations.VersionRange;
 import org.miradi.schemas.TncProjectDataSchema;
 
 public class MigrationTo13 extends NewlyAddedFieldsMigration
@@ -44,12 +43,6 @@ public class MigrationTo13 extends NewlyAddedFieldsMigration
 		return fieldsToRemove;
 	}
 
-	@Override
-	protected VersionRange getMigratableVersionRange() throws Exception
-	{
-		return new VersionRange(VERSION_FROM, VERSION_TO);
-	}
-	
 	@Override
 	protected int getToVersion()
 	{

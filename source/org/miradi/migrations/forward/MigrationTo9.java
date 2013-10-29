@@ -26,7 +26,6 @@ import org.miradi.migrations.AbstractMigrationVisitor;
 import org.miradi.migrations.MigrationResult;
 import org.miradi.migrations.RawObject;
 import org.miradi.migrations.RawProject;
-import org.miradi.migrations.VersionRange;
 import org.miradi.schemas.MeasurementSchema;
 import org.miradi.utils.Translation;
 
@@ -51,12 +50,6 @@ public class MigrationTo9 extends AbstractMigration
 		return visitAllObjectsInPool(visitor);
 	}
 
-	@Override
-	protected VersionRange getMigratableVersionRange() throws Exception
-	{
-		return new VersionRange(VERSION_LOW, VERSION_HIGH);
-	}
-	
 	@Override
 	protected int getToVersion()
 	{

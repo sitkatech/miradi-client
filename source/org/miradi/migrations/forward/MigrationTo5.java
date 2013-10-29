@@ -26,7 +26,6 @@ import org.miradi.migrations.AbstractSingleTypeMigration;
 import org.miradi.migrations.MigrationResult;
 import org.miradi.migrations.RawObject;
 import org.miradi.migrations.RawProject;
-import org.miradi.migrations.VersionRange;
 import org.miradi.schemas.StrategySchema;
 
 public class MigrationTo5 extends AbstractSingleTypeMigration
@@ -52,12 +51,6 @@ public class MigrationTo5 extends AbstractSingleTypeMigration
 		return visitAllObjectsInPool(visitor);
 	}
 
-	@Override
-	protected VersionRange getMigratableVersionRange() throws Exception
-	{
-		return new VersionRange(VERSION_LOW, VERSION_HIGH);
-	}
-	
 	@Override
 	protected int getToVersion()
 	{
@@ -132,9 +125,6 @@ public class MigrationTo5 extends AbstractSingleTypeMigration
 		}
 	}
 	
-	private static final int VERSION_LOW = 4;
-	private static final int VERSION_HIGH = 4;
-
 	public static final int TO_VERSION = 5;
 	public static final int FROM_VERSION = 4;
 	public static final String LEGACY_DEFAULT_STRATEGY_STATUS_REAL = "Real";

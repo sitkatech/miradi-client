@@ -23,7 +23,6 @@ package org.miradi.migrations.forward;
 import org.miradi.main.EAM;
 import org.miradi.migrations.RawProject;
 import org.miradi.migrations.RenameMultipleFieldMigration;
-import org.miradi.migrations.VersionRange;
 import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.utils.BiDirectionalHashMap;
 
@@ -36,12 +35,6 @@ public class MigrationTo10 extends RenameMultipleFieldMigration
 		createLegacyToNewMap();
 	}
 
-	@Override
-	protected VersionRange getMigratableVersionRange() throws Exception
-	{
-		return new VersionRange(VERSION_FROM, VERSION_TO);
-	}
-	
 	@Override
 	protected int getToVersion()
 	{

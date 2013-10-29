@@ -36,7 +36,6 @@ import org.miradi.migrations.MigrationResult;
 import org.miradi.migrations.RawObject;
 import org.miradi.migrations.RawPool;
 import org.miradi.migrations.RawProject;
-import org.miradi.migrations.VersionRange;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -51,12 +50,6 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 		super(rawProjectToUse);
 	}
 	
-	@Override
-	protected VersionRange getMigratableVersionRange() throws Exception
-	{
-		return new VersionRange(VERSION_LOW, VERSION_HIGH);
-	}
-
 	@Override
 	protected MigrationResult migrateForward() throws Exception
 	{
@@ -259,9 +252,6 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 			return date2.compareTo(date1);
 		}
 	}
-	
-	private static final int VERSION_LOW = 3;
-	private static final int VERSION_HIGH = 3;
 	
 	private static final String TAG_FUTURE_STATUS_REFS = "FutureStatusRefs";
 	private static final String TAG_FUTURE_STATUS_DATE = "Date";
