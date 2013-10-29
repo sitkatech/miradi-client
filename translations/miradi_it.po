@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-29 10:43-0500\n"
+"POT-Creation-Date: 2013-10-29 13:31-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -244,7 +244,7 @@ msgstr ""
 msgid "%fieldName field data will be lost for %indicatorLabel (Indicator)"
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/AbstractRemoveMultipleFieldMigration.java:69
+#: Miradi/source/org/miradi/migrations/AbstractModifyMultipleFieldMigration.java:69
 msgid "%fieldName will be removed, label = %label"
 msgstr ""
 
