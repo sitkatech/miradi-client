@@ -1,0 +1,448 @@
+30101	Alaskan Coastal
+30102	Upper Yukon
+30103	Alaska & Canada Pacific Coastal
+30104	Upper Mackenzie
+30105	Lower Mackenzie
+30106	Central Arctic Coastal
+30107	Upper Saskatchewan
+30108	Middle Saskatchewan
+30109	English - Winnipeg Lakes
+30110	Southern Hudson Bay
+30111	Western Hudson Bay
+30112	Canadian Arctic Archipelago
+30113	Eastern Hudson Bay - Ungava
+30114	Gulf of St.Lawrence Coastal Drainages
+30115	Canadian Atlantic Islands
+30116	Laurentian Great Lakes
+30117	St.Lawrence
+30118	Northeast US & Southeast Canada Atlantic Drainages
+30119	Scotia - Fundy
+30120	Columbia Glaciated
+30121	Columbia Unglaciated
+30122	Upper Snake
+30123	Oregon & Northern California Coastal
+30124	Oregon Lakes
+30125	Sacramento - San Joaquin
+30126	Lahontan
+30127	Bonneville
+30128	Death Valley
+30129	Vegas - Virgin
+30130	Colorado
+30131	Gila
+30132	Upper Rio Grande - Bravo
+30133	Pecos
+30134	Rio Conchos
+30135	Lower Rio Grande - Bravo
+30136	Cuatro Cienegas
+30137	Rio Salado
+30138	Rio San Juan (Mexico)
+30139	West Texas Gulf
+30140	East Texas Gulf
+30141	Sabine - Galveston
+30142	Upper Missouri
+30143	Middle Missouri
+30144	US Southern Plains
+30145	Ouachita Highlands
+30146	Central Prairie
+30147	Ozark Highlands
+30148	Upper Mississippi
+30149	Lower Mississippi
+30150	Teays - Old Ohio
+30151	Cumberland
+30152	Tennessee
+30153	Mobile Bay
+30154	West Florida Gulf
+30155	Apalachicola
+30156	Florida Peninsula
+30157	Appalachian Piedmont
+30158	Chesapeake Bay
+30159	Southern California Coastal - Baja California
+30160	Sonora
+30161	Guzman - Samalayuca
+30162	Sinaloa
+30163	Mayran - Viesca
+30164	Rio Santiago
+30165	Lerma - Chapala
+30166	Llanos El Salado
+30167	Panuco
+30168	Ameca - Manantlan
+30169	Rio Balsas
+30170	Sierra Madre del Sur
+30171	Papaloapan
+30172	Coatzacoalcos
+30173	Grijalva - Usumacinta
+30174	Upper Usumacinta
+30175	Yucatan
+30176	Bermuda
+30201	Chiapas - Fonseca
+30202	Quintana Roo - Motagua
+30203	Mosquitia
+30204	Estero Real - Tempisque
+30205	San Juan (Nicaragua/Costa Rica)
+30206	Chiriqui
+30207	Isthmus Caribbean
+30208	Santa Maria
+30209	Chagres
+30210	Rio Tuira
+30211	Cuba - Cayman Islands
+30212	Bahama Archipelago
+30213	Jamaica
+30214	Hispaniola
+30215	Puerto Rico - Virgin Islands
+30216	Windward & Leeward Islands
+30217	Cocos Island (Costa Rica)
+30301	North Andean Pacific Slopes - Rio Atrato
+30302	Magdalena - Sinu
+30303	Maracaibo
+30304	South America Caribbean Drainages - Trinidad
+30305	Orinoco High Andes
+30306	Orinoco Piedmont
+30307	Orinoco Llanos
+30308	Orinoco Guiana Shield
+30309	Orinoco Delta & Coastal Drainages
+30310	Essequibo
+30311	Guianas
+30312	Amazonas High Andes
+30313	Western Amazon Piedmont
+30314	Rio Negro
+30315	Amazonas Guiana Shield
+30316	Amazonas Lowlands
+30317	Ucayali - Urubamba Piedmont
+30318	Mamore - Madre de Dios Piedmont
+30319	Guapore - Itenez
+30320	Tapajos - Juruena
+30321	Madeira Brazilian Shield
+30322	Xingu
+30323	Amazonas Estuary & Coastal Drainages
+30324	Tocantins - Araguaia
+30325	Parnaiba
+30326	Northeastern Caatinga & Coastal Drainages
+30327	S. Francisco
+30328	Northeastern Mata Atlantica
+30329	Paraiba do Sul
+30330	Ribeira de Iguape
+30331	Southeastern Mata Atlantica
+30332	Lower Uruguay
+30333	Upper Uruguay
+30334	Laguna dos Patos
+30335	Tramandai - Mampituba
+30336	Central Andean Pacific Slopes
+30337	Titicaca
+30338	Atacama
+30339	Mar Chiquita - Salinas Grandes
+30340	Cuyan - Desaguadero
+30341	South Andean Pacific Slopes
+30342	Chaco
+30343	Paraguay
+30344	Upper Parana
+30345	Lower Parana
+30346	Iguassu
+30347	Bonaerensean Drainages
+30348	Patagonia
+30349	Valdivian Lakes
+30350	Galapagos Islands
+30351	Juan Fernandez Island
+30352	Fluminense
+30401	Iceland - Jan Mayen
+30402	Northern British Isles
+30403	Cantabric Coast - Languedoc
+30404	Central & Western Europe
+30405	Norwegian Sea Drainages
+30406	Northern Baltic Drainages
+30407	Barents Sea Drainages
+30408	Southern Baltic Lowlands
+30409	Lake Onega - Lake Ladoga
+30410	Volga - Ural
+30411	Western Caspian Drainages
+30412	Western Iberia
+30413	Southern Iberia
+30414	Eastern Iberia
+30415	Gulf of Venice Drainages
+30416	Italian Peninsula & Islands
+30417	Upper Danube
+30418	Dniester - Lower Danube
+30419	Dalmatia
+30420	Southeast Adriatic Drainages
+30421	Ionian Drainages
+30422	Vardar
+30423	Thrace
+30424	Aegean Drainages
+30425	Dnieper - South Bug
+30426	Crimea Peninsula
+30427	Don
+30428	Kuban
+30429	Western Anatolia
+30430	Northern Anatolia
+30431	Central Anatolia
+30432	Southern Anatolia
+30433	Western Transcaucasia
+30434	Kura - South Caspian Drainages
+30435	Sinai
+30436	Coastal Levant
+30437	Orontes
+30438	Jordan River
+30439	Southwestern Arabian Coast
+30440	Arabian Interior
+30441	Lower Tigris & Euphrates
+30442	Upper Tigris & Euphrates
+30443	Oman Mountains
+30444	Lake Van
+30445	Orumiyeh
+30446	Caspian Highlands
+30447	Namak
+30448	Kavir & Lut Deserts
+30449	Esfahan
+30450	Turan Plain
+30451	Northern Hormuz Drainages
+30452	Caspian Marine
+30453	Volga Delta - Northern Caspian Drainages
+30501	Atlantic Northwest Africa
+30502	Mediterranean Northwest Africa
+30503	Sahara
+30504	Dry Sahel
+30505	Lower Niger - Benue
+30506	Niger Delta
+30507	Upper Niger
+30508	Inner Niger Delta
+30509	Senegal - Gambia
+30510	Fouta - Djalon
+30511	Northern Upper Guinea
+30512	Southern Upper Guinea
+30513	Mount Nimba
+30514	Eburneo
+30515	Ashanti
+30516	Volta
+30517	Bight Drainages
+30518	Northern Gulf of Guinea Drainages
+30519	Western Equatorial Crater Lakes
+30520	Lake Chad
+30521	Lake Victoria Basin
+30522	Upper Nile
+30523	Lower Nile
+30524	Nile Delta
+30525	Ethiopian Highlands
+30526	Lake Tana
+30527	Western Red Sea Drainages
+30528	Northern Eastern Rift
+30529	Horn of Africa
+30530	Lake Turkana
+30531	Shebelle - Juba
+30532	Ogooue - Nyanga - Kouilou - Niari
+30533	Southern Gulf of Guinea Drainages - Bioko
+30534	Sangha
+30535	Sudanic Congo - Oubangi
+30536	Uele
+30537	Cuvette Centrale
+30538	Tumba
+30539	Upper Congo Rapids
+30540	Upper Congo
+30541	Albertine Highlands
+30542	Lake Tanganyika
+30543	Malagarasi - Moyowosi
+30544	Bangweulu - Mweru
+30545	Upper Lualaba
+30546	Kasai
+30547	Mai Ndombe
+30548	Malebo Pool
+30549	Lower Congo Rapids
+30550	Lower Congo
+30551	Cuanza
+30552	Namib
+30553	Etosha
+30554	Karstveld Sink Holes
+30555	Zambezian Headwaters
+30556	Upper Zambezi Floodplains
+30557	Kafue
+30558	Middle Zambezi - Luangwa
+30559	Lake Malawi
+30560	Zambezian Highveld
+30561	Lower Zambezi
+30562	Mulanje
+30563	Eastern Zimbabwe Highlands
+30564	Coastal East Africa
+30565	Lake Rukwa
+30566	Southern Eastern Rift
+30567	"Tana, Athi & Coastal Drainages"
+30568	Pangani
+30569	Okavango
+30570	Kalahari
+30571	Southern Kalahari
+30572	Western Orange
+30573	Karoo
+30574	Drakensberg - Maloti Highlands
+30575	Southern Temperate Highveld
+30576	Zambezian Lowveld
+30577	Amatolo - Winterberg Highlands
+30578	Cape Fold
+30579	Western Madagascar
+30580	Northwestern Madagascar
+30581	Madagascar Eastern Highlands
+30582	Southern Madagascar
+30583	Madagascar Eastern Lowlands
+30584	Comoros - Mayotte
+30585	Seychelles
+30586	Mascarenes
+30587	S. Tome & Principe - Annobon
+30601	Irgyz -Turgai
+30602	Ob
+30603	Upper Irtysh
+30604	Chuya
+30605	Yenisei
+30606	Lake Baikal
+30607	Taimyr
+30608	Lena
+30609	Kolyma
+30610	Anadyr
+30611	East Chukotka
+30612	Koryakia
+30613	Kamchatka & Northern Kurils
+30614	Okhotsk Coast
+30615	Coastal Amur
+30616	Lower Amur
+30617	Middle Amur
+30618	Argun
+30619	Shilka (Amur)
+30620	Songhua Jiang
+30621	Inner Mongolia Endorheic Basins
+30622	Western Mongolia
+30623	Dzungaria
+30624	Balkash - Alakul
+30625	Tarim
+30626	Lower & Middle Syr Darya
+30627	Lake Issyk Kul - Upper Chu
+30628	Northern Central Asian Highlands
+30629	Aral Sea Drainages
+30630	Middle Amu Darya
+30631	Upper Amu Darya
+30632	Qaidan
+30633	Upper Huang He
+30634	Upper Huang He Corridor
+30635	Huang He Great Bend
+30636	Lower Huang He
+30637	Liao He
+30638	Eastern Yellow Sea Drainages
+30639	Southeastern Korean Peninsula
+30640	Hamgyong - Sanmaek
+30641	"Sakhalin, Hokkaido, & Sikhote - Alin Coast"
+30642	Honshu - Shikoku - Kyushu
+30643	Biwa Ko
+30701	Baluchistan
+30702	Helmand - Sistan
+30703	Lower & Middle Indus
+30704	Yaghistan
+30705	Indus Himalayan Foothills
+30706	Upper Indus
+30707	Tibetan Plateau Endorheic Drainages
+30708	Namuda - Tapi
+30709	Ganges Delta & Plain
+30710	Ganges Himalayan Foothills
+30711	Upper Brahmaputra
+30712	Middle Brahmaputra
+30713	Northern Deccan Plateau
+30714	Southern Deccan Plateau
+30715	Western Ghats
+30716	Southeastern Ghats
+30717	Sri Lanka Dry Zone
+30718	Sri Lanka Wet Zone
+30719	Chin Hills - Arakan Coast
+30720	Sitang - Irawaddy
+30721	Upper Salween
+30722	Lower & Middle Salween
+30723	Inle Lake
+30724	Upper Lancang (Mekong)
+30725	Er Hai
+30726	Lower Lancang (Mekong)
+30727	Khorat Plateau (Mekong)
+30728	Kratie - Stung Treng (Mekong)
+30729	Mekong Delta
+30730	Southern Annam
+30731	Eastern Gulf of Thailand Drainages
+30732	Chao Phraya
+30733	Mae Khlong
+30734	Malay Peninsula Eastern Slope
+30735	Northern Central Sumatra - Western Malaysia
+30736	Aceh
+30737	Indian Ocean Slope of Sumatra & Java
+30738	Southern Central Sumatra
+30739	Southern Sumatra - Western Java
+30740	Central & Eastern Java
+30741	Kapuas
+30742	Northwestern Borneo
+30743	Borneo Highlands
+30744	Northeastern Borneo
+30745	Eastern Borneo
+30746	Southeastern Borneo
+30747	Malukku
+30748	Lesser Sunda Islands
+30749	Sulawesi
+30750	Matano - Southern Malili Lakes
+30751	Lake Poso
+30752	Mindanao
+30753	Lake Lanao
+30755	Northern Philippine Islands
+30756	Palawan - Busuanga - Mindoro
+30757	Western Taiwan
+30758	Eastern Taiwan
+30759	Hainan
+30760	Northern Annam
+30761	Song Hong
+30762	Yunnan Lakes
+30763	Xi Yiang
+30764	Upper Yangtze
+30765	Middle Yangtze
+30766	Lower Yangtze
+30767	Coastal Fujian - Zeijang
+30768	Andaman Islands
+30769	Nicobar Islands
+30801	Southwestern Australia
+30802	Pilbara
+30803	Kimberley
+30804	Paleo
+30805	Arafura - Carpentaria
+30806	Lake Eyre Basin
+30807	Eastern Coastal Australia
+30808	Murray - Darling
+30809	Bass Strait Drainages
+30810	Southern Tasmania
+30811	New Zealand
+30812	Vogelkop - Bomberai
+30813	New Guinea North Coast
+30814	New Guinea Central Mountains
+30815	Southwest New Guinea - Trans-Fly Lowland
+30816	Papuan Peninsula
+30817	Bismarck Archipelago
+30818	Solomon Islands
+30819	Vanuatu
+30820	New Caledonia
+30821	Fiji
+30822	Wallis - Futuna
+30823	Samoas
+30824	Society Islands
+30825	Tubuai Islands
+30826	Marquesas Islands
+30827	Rapa
+30828	Hawaiian Islands
+30829	East Caroline Islands
+30830	West Caroline Islands
+30901	Azores
+30902	Cape Verde
+30903	Canary Islands
+30904	Madeira Archipelago
+30905	Socotra
+30906	Maldives - Lakshadweep
+30907	Chagos
+30908	Cocos Islands
+30909	Christmas Island
+30910	Ogasarawa Islands - Kazan Archipelago
+30911	Mariana Islands
+30912	Central Caroline Islands
+30913	Wake Island
+30914	Marshall Islands
+30915	Lord Howe Island
+30916	Norfolk Island
+30917	Tonga
+30918	Cook Islands
+30919	Tuamotu Islands
+30920	Gambier Islands
+30921	Pitcairn Island
+30998	Greenland
