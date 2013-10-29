@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-28 17:19-0500\n"
+"POT-Creation-Date: 2013-10-29 10:43-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -948,7 +948,7 @@ msgid ""
 "<html>An error occurred<br/><br/>Perhaps the destination is full or readonly."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:218
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:223
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Імпорт не вдався: <br><p> %s </p></html>"
 
@@ -4188,7 +4188,7 @@ msgstr "Імпортувати розрахункові коди"
 msgid "Import Completed"
 msgstr "Імпорт завершений"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:200
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:205
 msgid "Import Completed.  Would you like to open %s?"
 msgstr "Імпорт завершено. Чи бажаєте відкрити %s?"
 
@@ -4229,7 +4229,7 @@ msgstr ""
 msgid "Importing XML..."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:157
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:162
 msgid "Importing..."
 msgstr ""
 
@@ -5507,7 +5507,7 @@ msgstr "Відкрити"
 msgid "Open Anyway"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:201
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:206
 #: Miradi/source/org/miradi/main/MainWindow.java:758
 msgid "Open Project"
 msgstr "Відкрити проект"
@@ -7955,7 +7955,7 @@ msgstr ""
 msgid "Theory of Change<br/>- Strategy Selection"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:261
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:266
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -8036,7 +8036,7 @@ msgid ""
 "Expected schema version: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:97
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:96
 msgid ""
 "This project cannot be imported because it is in an old data format. \n"
 "Please re-export a new copy from ConPro, and import that instead."
@@ -8530,7 +8530,7 @@ msgstr "Невизначене"
 msgid "Underline"
 msgstr "Підкреслений"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:217
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:222
 msgid "Unexpected error"
 msgstr ""
 
