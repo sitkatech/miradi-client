@@ -37,6 +37,6 @@ abstract public class RemoveMultipleFieldsMigration extends AbstractRemoveMultip
 	@Override
 	public AbstractMigrationVisitor createReverseMigrateVisitor() throws Exception
 	{
-		return new DoNothingReverseMigrationVisitor(type);
+		return new DoNothingMigrationVisitor(type);
 	}
 }

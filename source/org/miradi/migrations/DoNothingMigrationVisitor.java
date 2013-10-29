@@ -20,9 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
-public class DoNothingReverseMigrationVisitor extends AbstractMigrationVisitor
+public class DoNothingMigrationVisitor extends AbstractMigrationVisitor
 {
-	public DoNothingReverseMigrationVisitor(int objectTypeToUse)
+	public DoNothingMigrationVisitor(int objectTypeToUse)
 	{
 		objectType = objectTypeToUse;
 	}
