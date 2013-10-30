@@ -734,7 +734,7 @@ msgstr ""
 "байдалд оруулах боломжтой</b> ба хамгаалах зүйлийг сэргээж болно, гэхдээ "
 "<b>амьдралд хэрэгжүүлэх боломжгүй</b>ба/буюу үүнд <b>21-100 жил</b> үүнд "
 "хүрэхэд шаардагдана (жишээ, намгархаг газрыг газар тариалангийн талбай "
-"болгон хувиргах).</htm>"
+"болгон хувиргах).</html>"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi 4.0 Language
 #: Packs/source/org/miradi/questions/StressIrreversibilityQuestion.java:46
