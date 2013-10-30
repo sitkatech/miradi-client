@@ -376,7 +376,7 @@ msgstr "<div class='WizardText'>руу <strong>шинэ төслийг эхлү�
 
 #: Miradi/source/org/miradi/questions/IrreversibilityThreatRatingQuestion.java:47
 msgid "<html><b>High:</b> The effects of the threat <b>can technically be reversed</b> and the target restored, but it is <b>not practically affordable</b> and/or it would take <b>21-100 years</b> to achieve this (e.g., wetland converted to agriculture).</html>"
-msgstr "<html><b>Их:</b> Аюул заналын нөлөөг <b>техникийн хувьд буцаан хуучин байдалд оруулах боломжтой</b> ба хамгаалах зүйлийг сэргээж болно, гэхдээ <b>амьдралд хэрэгжүүлэх боломжгүй</b>ба/буюу үүнд <b>21-100 жил</b> үүнд хүрэхэд шаардагдана (жишээ, намгархаг газрыг газар тариалангийн талбай болгон хувиргах).</htm>"
+msgstr "<html><b>Их:</b> Аюул заналын нөлөөг <b>техникийн хувьд буцаан хуучин байдалд оруулах боломжтой</b> ба хамгаалах зүйлийг сэргээж болно, гэхдээ <b>амьдралд хэрэгжүүлэх боломжгүй</b>ба/буюу үүнд <b>21-100 жил</b> үүнд хүрэхэд шаардагдана (жишээ, намгархаг газрыг газар тариалангийн талбай болгон хувиргах).</html>"
 
 #: Miradi/source/org/miradi/questions/StressIrreversibilityQuestion.java:46
 msgid "<html><b>High:</b> The effects of the threat are <b>technically reversible</b>, but not practically affordable (e.g., wetland converted to agriculture).</html>"
