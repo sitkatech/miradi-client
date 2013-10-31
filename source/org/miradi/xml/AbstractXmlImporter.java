@@ -21,6 +21,7 @@ package org.miradi.xml;
 
 import java.awt.Point;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 import java.util.Vector;
 
@@ -294,17 +295,13 @@ abstract public class AbstractXmlImporter
 		return getPathData(node, new String[]{xpathExpression, });
 	}
 
-	public Node getNamedChildNode(Node parent, String childNodeName)
+	public Node getNamedChildNode(Node parent, String childNodeName) throws Exception
 	{
-		NodeList childNodes = parent.getChildNodes();
-		for(int index = 0; index < childNodes.getLength(); ++index)
-		{
-			Node child = childNodes.item(index);
-			String childName = child.getLocalName();
-			if(childName != null && childName.equals(childNodeName))
-				return child;
-		}
-		
+		Set<Node> childNodes = getNamedChildNodes(parent, childNodeName);
+		Iterator<Node> iterator = childNodes.iterator();
+		if (iterator.hasNext())
+			return iterator.next();
+				
 		return null;
 	}
 	
@@ -317,12 +314,17 @@ abstract public class AbstractXmlImporter
 	{
 		HashSet<Node> matchingChildNodes = new HashSet<Node>();
 		NodeList childNodes = parent.getChildNodes();
-		for(int index = 0; index < childNodes.getLength(); ++index)
+		if (childNodes.getLength() == 0)
+			return matchingChildNodes;
+		
+		Node node = childNodes.item(0);
+		while (node != null)
 		{
-			Node child = childNodes.item(index);
-			String childName = child.getLocalName();
+			String childName = node.getLocalName();
 			if(childName != null && childName.equals(childNodeName))
-				matchingChildNodes.add(child);
+				matchingChildNodes.add(node);
+			
+			node = node.getNextSibling();
 		}
 		
 		return matchingChildNodes;
@@ -341,7 +343,7 @@ abstract public class AbstractXmlImporter
 			generatedPath = generatePath(xpathExpressions);
 			XPathExpression expression = getXPath().compile(generatedPath);
 
-			return expression.evaluate(node, qName);
+			return expression.evaluate(node.cloneNode(true), qName);
 		}
 		catch (Exception e)
 		{
@@ -355,7 +357,7 @@ abstract public class AbstractXmlImporter
 		try
 		{
 			generatedPath = generatePath(xpathExpressions);
-			return getXPath().evaluate(generatedPath, node);
+			return getXPath().evaluate(generatedPath, node.cloneNode(true));
 		}
 		catch (Exception e)
 		{
