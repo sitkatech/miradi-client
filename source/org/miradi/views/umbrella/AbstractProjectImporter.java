@@ -27,6 +27,7 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
 import org.martus.swing.UiFileChooser;
+import org.martus.util.Stopwatch;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.ZipEntryInputStreamWithSeek;
 import org.miradi.dialogs.base.ProgressDialog;
@@ -72,7 +73,10 @@ public abstract class AbstractProjectImporter
 			File fileToImport = fileChooser.getSelectedFile();
 			fileToImport = MiradiFileSaveChooser.getFileWithExtension(fileChooser, fileToImport);
 			
+			Stopwatch sw = new Stopwatch();
 			File importedFile = importProject(fileToImport);
+			long elapsedInSeconds = sw.elapsedInSeconds();
+			EAM.logDebug("xmpz2 import took: " + elapsedInSeconds + " seconds");
 			if (importedFile != null)
 				userConfirmOpenImportedProject(importedFile);
 		}
