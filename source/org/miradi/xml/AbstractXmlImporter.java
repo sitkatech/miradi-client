@@ -307,11 +307,6 @@ abstract public class AbstractXmlImporter
 		return null;
 	}
 	
-	public Node getNode(Node node, String[] xpathExpressions) throws Exception
-	{
-		return (Node) evaluate(node, xpathExpressions, XPathConstants.NODE);
-	}
-	
 	public Set<Node> getNamedChildNodes(Node parent, String childNodeName) throws Exception
 	{
 		HashSet<Node> matchingChildNodes = new HashSet<Node>();
@@ -330,6 +325,11 @@ abstract public class AbstractXmlImporter
 		}
 		
 		return matchingChildNodes;
+	}
+	
+	public Node getNode(Node node, String[] xpathExpressions) throws Exception
+	{
+		return (Node) evaluate(node, xpathExpressions, XPathConstants.NODE);
 	}
 	
 	public NodeList getNodes(Node node, String[] xpathExpressions) throws Exception
