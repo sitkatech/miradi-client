@@ -235,13 +235,13 @@ abstract public class AbstractXmlImporter
 	{
 		XPathExpression expression = getXPath().compile(path);
 		NodeList nodeList = (NodeList) expression.evaluate(getDocument(), XPathConstants.NODESET);
-		Vector<String> nodes = new Vector<String>();
+		Vector<String> nodeTextValues = new Vector<String>();
 		for (int nodeIndex = 0; nodeIndex < nodeList.getLength(); ++nodeIndex) 
 		{
-			nodes.add(nodeList.item(nodeIndex).getTextContent());
+			nodeTextValues.add(nodeList.item(nodeIndex).getTextContent());
 		}
 		
-		return nodes.toArray(new String[0]);
+		return nodeTextValues.toArray(new String[0]);
 	}
 	
 	public String getAttributeValue(Node elementNode, String attributeName)
