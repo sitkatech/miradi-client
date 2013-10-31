@@ -345,7 +345,7 @@ abstract public class AbstractXmlImporter
 			generatedPath = generatePath(xpathExpressions);
 			XPathExpression expression = getXPath().compile(generatedPath);
 
-			return expression.evaluate(node.cloneNode(true), qName);
+			return expression.evaluate(deepCloneNode(node), qName);
 		}
 		catch (Exception e)
 		{
@@ -359,12 +359,17 @@ abstract public class AbstractXmlImporter
 		try
 		{
 			generatedPath = generatePath(xpathExpressions);
-			return getXPath().evaluate(generatedPath, node.cloneNode(true));
+			return getXPath().evaluate(generatedPath, deepCloneNode(node));
 		}
 		catch (Exception e)
 		{
 			throw createNewExceptionWithPathData(e, generatedPath);
 		}
+	}
+	
+	private Node deepCloneNode(Node node)
+	{
+		return node.cloneNode(true);
 	}
 	
 	private Exception createNewExceptionWithPathData(Exception exception, String generatedPath)
