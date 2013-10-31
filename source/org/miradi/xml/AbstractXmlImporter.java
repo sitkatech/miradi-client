@@ -236,9 +236,11 @@ abstract public class AbstractXmlImporter
 		XPathExpression expression = getXPath().compile(path);
 		NodeList nodeList = (NodeList) expression.evaluate(getDocument(), XPathConstants.NODESET);
 		Vector<String> nodeTextValues = new Vector<String>();
-		for (int nodeIndex = 0; nodeIndex < nodeList.getLength(); ++nodeIndex) 
+		Node node = nodeList.item(0);
+		while (node != null)
 		{
-			nodeTextValues.add(nodeList.item(nodeIndex).getTextContent());
+			nodeTextValues.add(node.getTextContent());
+			node = node.getNextSibling();
 		}
 		
 		return nodeTextValues.toArray(new String[0]);
