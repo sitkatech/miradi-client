@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-29 13:46-0500\n"
+"POT-Creation-Date: 2013-10-31 14:01-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -1041,7 +1041,7 @@ msgid ""
 "<html>An error occurred<br/><br/>Perhaps the destination is full or readonly."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:223
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:227
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Importieren fehlgeschlagen: <br><p> %s </p></html>"
 
@@ -3837,7 +3837,7 @@ msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr ""
 "Dateiname darf nur Buchstaben, Ziffern und/oder Unterstriche enthalten."
 
-#: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:99
+#: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:100
 #: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:225
 msgid "File to import does not validate."
 msgstr ""
@@ -4370,11 +4370,11 @@ msgstr ""
 msgid "Import Completed"
 msgstr "Importieren abgeschlossen"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:205
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:209
 msgid "Import Completed.  Would you like to open %s?"
 msgstr "Importieren abgeschlossen. Soll %s geöffnet werden?"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:64
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:65
 msgid "Import Project"
 msgstr "Projekt importieren"
 
@@ -4386,7 +4386,7 @@ msgstr ""
 msgid "Import a Miradi Project Zipfile (.mpz)"
 msgstr "Eine Miradi Zip Datei importieren"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:87
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:91
 msgid "Import was canceled!"
 msgstr "Importieren wurde abgebrochen!"
 
@@ -4411,7 +4411,7 @@ msgstr ""
 msgid "Importing XML..."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:162
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:166
 msgid "Importing..."
 msgstr "Importiere..."
 
@@ -5696,7 +5696,7 @@ msgstr "Öffnen"
 msgid "Open Anyway"
 msgstr "Trotzdem Öffnen"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:206
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:210
 #: Miradi/source/org/miradi/main/MainWindow.java:758
 msgid "Open Project"
 msgstr "Projekt Öffnen"
@@ -8238,7 +8238,7 @@ msgstr ""
 msgid "Theory of Change<br/>- Strategy Selection"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:266
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:270
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -8313,13 +8313,13 @@ msgid ""
 "Expected schema version: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:96
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:100
 msgid ""
 "This project cannot be imported because it is in an old data format. \n"
 "Please re-export a new copy from ConPro, and import that instead."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:82
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:86
 msgid ""
 "This project cannot be imported because its Threat Rating data is missing or "
 "damaged. Please contact Miradi support for recovery options."
@@ -8812,7 +8812,7 @@ msgstr "Nicht definiert"
 msgid "Underline"
 msgstr "Unterstreichen"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:222
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:226
 msgid "Unexpected error"
 msgstr ""
 

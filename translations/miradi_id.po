@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-29 13:46-0500\n"
+"POT-Creation-Date: 2013-10-31 14:01-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -885,7 +885,7 @@ msgid ""
 "<html>An error occurred<br/><br/>Perhaps the destination is full or readonly."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:223
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:227
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Impor gagal: <br><p> %s </p></html> "
 
@@ -3610,7 +3610,7 @@ msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr ""
 "Nama berkas harus mengandung huruf dan angka dan/atau karakter '_' saja. "
 
-#: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:99
+#: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:100
 #: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:225
 msgid "File to import does not validate."
 msgstr "Berkas yang akan diimpor tidak bisa divalidasi. "
@@ -4143,11 +4143,11 @@ msgstr "Impor Kode Akuntansi "
 msgid "Import Completed"
 msgstr "Impor Selesai "
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:205
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:209
 msgid "Import Completed.  Would you like to open %s?"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:64
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:65
 msgid "Import Project"
 msgstr "Impor Proyek "
 
@@ -4159,7 +4159,7 @@ msgstr ""
 msgid "Import a Miradi Project Zipfile (.mpz)"
 msgstr "Impor Berkas Zip Proyek Miradi (.mpz) "
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:87
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:91
 msgid "Import was canceled!"
 msgstr ""
 
@@ -4184,7 +4184,7 @@ msgstr ""
 msgid "Importing XML..."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:162
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:166
 msgid "Importing..."
 msgstr ""
 
@@ -5468,7 +5468,7 @@ msgstr "Buka \t"
 msgid "Open Anyway"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:206
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:210
 #: Miradi/source/org/miradi/main/MainWindow.java:758
 msgid "Open Project"
 msgstr ""
@@ -7918,7 +7918,7 @@ msgstr ""
 msgid "Theory of Change<br/>- Strategy Selection"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:266
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:270
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -8002,13 +8002,13 @@ msgid ""
 "Expected schema version: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:96
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:100
 msgid ""
 "This project cannot be imported because it is in an old data format. \n"
 "Please re-export a new copy from ConPro, and import that instead."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:82
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:86
 msgid ""
 "This project cannot be imported because its Threat Rating data is missing or "
 "damaged. Please contact Miradi support for recovery options."
@@ -8498,7 +8498,7 @@ msgstr "Tidak terdefinisi"
 msgid "Underline"
 msgstr "Garis Bawah"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:222
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:226
 msgid "Unexpected error"
 msgstr ""
 
