@@ -31,6 +31,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
 import org.martus.util.UnicodeReader;
@@ -235,13 +236,15 @@ abstract public class AbstractXmlImporter
 	{
 		XPathExpression expression = getXPath().compile(path);
 		NodeList nodeList = (NodeList) expression.evaluate(getDocument(), XPathConstants.NODESET);
-		Vector<String> nodes = new Vector<String>();
-		for (int nodeIndex = 0; nodeIndex < nodeList.getLength(); ++nodeIndex) 
+		Vector<String> nodeTextValues = new Vector<String>();
+		Node node = nodeList.item(0);
+		while (node != null)
 		{
-			nodes.add(nodeList.item(nodeIndex).getTextContent());
+			nodeTextValues.add(node.getTextContent());
+			node = node.getNextSibling();
 		}
 		
-		return nodes.toArray(new String[0]);
+		return nodeTextValues.toArray(new String[0]);
 	}
 	
 	public String getAttributeValue(Node elementNode, String attributeName)
@@ -305,11 +308,6 @@ abstract public class AbstractXmlImporter
 		return null;
 	}
 	
-	public Node getNode(Node node, String[] xpathExpressions) throws Exception
-	{
-		return (Node) evaluate(node, xpathExpressions, XPathConstants.NODE);
-	}
-	
 	public Set<Node> getNamedChildNodes(Node parent, String childNodeName) throws Exception
 	{
 		HashSet<Node> matchingChildNodes = new HashSet<Node>();
@@ -330,6 +328,11 @@ abstract public class AbstractXmlImporter
 		return matchingChildNodes;
 	}
 	
+	public Node getNode(Node node, String[] xpathExpressions) throws Exception
+	{
+		return (Node) evaluate(node, xpathExpressions, XPathConstants.NODE);
+	}
+	
 	public NodeList getNodes(Node node, String[] xpathExpressions) throws Exception
 	{
 		return (NodeList) evaluate(node, xpathExpressions, XPathConstants.NODESET);
@@ -341,14 +344,19 @@ abstract public class AbstractXmlImporter
 		try
 		{
 			generatedPath = generatePath(xpathExpressions);
-			XPathExpression expression = getXPath().compile(generatedPath);
-
-			return expression.evaluate(node.cloneNode(true), qName);
+			return evaluate(node, generatedPath, qName);
 		}
 		catch (Exception e)
 		{
 			throw createNewExceptionWithPathData(e, generatedPath);
 		}
+	}
+
+	public Object evaluate(Node node, String generatedPath, final QName qName) throws XPathExpressionException
+	{
+		XPathExpression expression = getXPath().compile(generatedPath);
+
+		return expression.evaluate(deepCloneNode(node), qName);
 	}
 
 	public String getPathData(Node node, String[] xpathExpressions) throws Exception
@@ -357,12 +365,17 @@ abstract public class AbstractXmlImporter
 		try
 		{
 			generatedPath = generatePath(xpathExpressions);
-			return getXPath().evaluate(generatedPath, node.cloneNode(true));
+			return getXPath().evaluate(generatedPath, deepCloneNode(node));
 		}
 		catch (Exception e)
 		{
 			throw createNewExceptionWithPathData(e, generatedPath);
 		}
+	}
+	
+	private Node deepCloneNode(Node node)
+	{
+		return node.cloneNode(true);
 	}
 	
 	private Exception createNewExceptionWithPathData(Exception exception, String generatedPath)
