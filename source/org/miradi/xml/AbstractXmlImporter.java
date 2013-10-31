@@ -293,11 +293,6 @@ abstract public class AbstractXmlImporter
 		return getNode(generatePath(new String[]{getRootNodeName()}));
 	}
 	
-	public String getPathData(Node node, String xpathExpression) throws Exception
-	{
-		return getPathData(node, new String[]{xpathExpression, });
-	}
-
 	public Node getNamedChildNode(Node parent, String childNodeName) throws Exception
 	{
 		Set<Node> childNodes = getNamedChildNodes(parent, childNodeName);
@@ -357,6 +352,11 @@ abstract public class AbstractXmlImporter
 		XPathExpression expression = getXPath().compile(generatedPath);
 
 		return expression.evaluate(deepCloneNode(node), qName);
+	}
+	
+	public String getPathData(Node node, String xpathExpression) throws Exception
+	{
+		return getPathData(node, new String[]{xpathExpression, });
 	}
 
 	public String getPathData(Node node, String[] xpathExpressions) throws Exception
