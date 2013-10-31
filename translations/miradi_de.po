@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-31 15:46-0500\n"
+"POT-Creation-Date: 2013-10-31 16:14-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -2093,7 +2093,7 @@ msgstr "heraus zoomen"
 msgid "Action|Zoom To Fit"
 msgstr "auf Fenstergröße zoomen"
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:57
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:59
 msgid "Activities Only"
 msgstr "Nur Aktivitäten"
 
@@ -2449,6 +2449,10 @@ msgstr "Zugeteilte Ressourcen"
 msgid ""
 "Assigned Resource - A project resource that has been assigned to a specific "
 "activity, method, or task."
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:62
+msgid "Assigned Resources Only"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:75
@@ -3512,7 +3516,7 @@ msgstr "Direkte Bedrohung"
 msgid "Direct Threat (Pink)"
 msgstr "Direkte Bedrohung (Pink)"
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:55
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:57
 msgid "Direct Threats Only"
 msgstr "Nur direkte Bedrohungen"
 
@@ -4092,6 +4096,7 @@ msgstr ""
 msgid "Fundraising Plan"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:63
 #: Miradi/source/org/miradi/dialogs/viability/FutureStatusPropertiesPanel.java:39
 #: Miradi/source/org/miradi/dialogs/viability/ViabilityFutureStatusPropertiesPanel.java:39
 msgid "Future Status"
@@ -4126,7 +4131,7 @@ msgstr ""
 msgid "Goals"
 msgstr "Schutzziele"
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:48
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:50
 msgid "Goals Only"
 msgstr "Nur Schutzziele"
 
@@ -4264,7 +4269,7 @@ msgid ""
 "by tan ovals."
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:53
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:55
 msgid "Human Wellbeing Targets Only"
 msgstr ""
 
@@ -4471,7 +4476,7 @@ msgstr ""
 msgid "Indicators"
 msgstr "Indikatoren"
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:58
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:60
 msgid "Indicators Only"
 msgstr "Nur Indikatoren"
 
@@ -5322,7 +5327,7 @@ msgstr ""
 msgid "Method selection"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:59
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:61
 msgid "Methods Only"
 msgstr ""
 
@@ -5630,7 +5635,7 @@ msgstr ""
 msgid "Objectives"
 msgstr "Zwischenziele"
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:49
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:51
 msgid "Objectives Only"
 msgstr "Nur Zwischenziele"
 
@@ -6801,7 +6806,7 @@ msgstr ""
 msgid "Strategies And Activities"
 msgstr "Strategien und Aktivitäten"
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:56
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:58
 msgid "Strategies Only"
 msgstr "Nur Strategien"
 
@@ -7953,7 +7958,7 @@ msgstr ""
 "funktionalen Landschaften. In Miradi werden Schutzobjekte durch ein großes, "
 "grünes Oval dargestellt. "
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:50
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:52
 msgid "Targets Only"
 msgstr "Nur Schutzobjekte"
 

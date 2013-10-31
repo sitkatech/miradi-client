@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-31 15:46-0500\n"
+"POT-Creation-Date: 2013-10-31 16:14-0500\n"
 "PO-Revision-Date: 2013-06-07 01:56+0100\n"
 "Last-Translator: Galragchaa <galragchaa@yahoo.com>\n"
 "Language-Team: none\n"
@@ -1990,7 +1990,7 @@ msgstr "Арга хэмжээ|Багасгах"
 msgid "Action|Zoom To Fit"
 msgstr "Арга хэмжээ|Тохируулах"
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:57
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:59
 msgid "Activities Only"
 msgstr "Зөвхөн үйл ажиллагаа"
 
@@ -2350,6 +2350,10 @@ msgid ""
 msgstr ""
 "Товлосон нөөц - Тодорхой үйл ажиллагаа, арга зүй, аль эсвэл даалгаврыг "
 "гүйцэтгэхэд хуваарилсан төслийн нөөц."
+
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:62
+msgid "Assigned Resources Only"
+msgstr "Зөвхөн хуваарилсан нөөц"
 
 #: Miradi/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:75
 msgid "Assignments"
@@ -3365,7 +3369,7 @@ msgstr "Шууд үйлчлэх аюул занал"
 msgid "Direct Threat (Pink)"
 msgstr "Шууд үйлчлэх аюул занал (Ягаан)"
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:55
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:57
 msgid "Direct Threats Only"
 msgstr "Зөвхөн шуул үйлчлэх аюул занал"
 
@@ -3934,6 +3938,7 @@ msgstr "Санхүүжилтийн эх үүсвэрүүд - Таны төсли
 msgid "Fundraising Plan"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:63
 #: Miradi/source/org/miradi/dialogs/viability/FutureStatusPropertiesPanel.java:39
 #: Miradi/source/org/miradi/dialogs/viability/ViabilityFutureStatusPropertiesPanel.java:39
 msgid "Future Status"
@@ -3972,7 +3977,7 @@ msgstr ""
 msgid "Goals"
 msgstr "Зорилгууд"
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:48
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:50
 msgid "Goals Only"
 msgstr "Зөвхөн зорилгууд"
 
@@ -4111,7 +4116,7 @@ msgid ""
 "by tan ovals."
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:53
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:55
 msgid "Human Wellbeing Targets Only"
 msgstr ""
 
@@ -4305,7 +4310,7 @@ msgstr "Шалгуур үзүүлэлт нь шууд/шууд бус хүчин
 msgid "Indicators"
 msgstr "Шалгуур үзүүлэлтүүд"
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:58
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:60
 msgid "Indicators Only"
 msgstr "Зөвхөн шалгуур үзүүлэлтүүд"
 
@@ -5151,7 +5156,7 @@ msgstr ""
 msgid "Method selection"
 msgstr "Арга зүйг сонгох"
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:59
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:61
 msgid "Methods Only"
 msgstr "Зөвхөн арга зүй"
 
@@ -5464,7 +5469,7 @@ msgstr ""
 msgid "Objectives"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:49
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:51
 msgid "Objectives Only"
 msgstr "Зөвхөн зорилтууд"
 
@@ -6604,7 +6609,7 @@ msgstr ""
 msgid "Strategies And Activities"
 msgstr "Стратегууд ба үйл ажиллагаа"
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:56
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:58
 msgid "Strategies Only"
 msgstr "Зөвхөн Стратегууд"
 
@@ -7723,7 +7728,7 @@ msgstr ""
 "нутгийн унаган байгалийг бүхэлд нь хамгаалах явдал баталгаажина. Хамгаалах "
 "зүйлсийг Miradi-д том ногоон зуувангаар төлөөлүүлсэн болно."
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:50
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:52
 msgid "Targets Only"
 msgstr "Зөвхөн хамгаалах зүйлс"
 
@@ -31939,9 +31944,6 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
-
-#~ msgid "Assigned Resources Only"
-#~ msgstr "Зөвхөн хуваарилсан нөөц"
 
 #~ msgid ""
 #~ "\n"
