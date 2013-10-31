@@ -31,6 +31,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
 import org.martus.util.UnicodeReader;
@@ -343,14 +344,19 @@ abstract public class AbstractXmlImporter
 		try
 		{
 			generatedPath = generatePath(xpathExpressions);
-			XPathExpression expression = getXPath().compile(generatedPath);
-
-			return expression.evaluate(deepCloneNode(node), qName);
+			return evaluate(node, generatedPath, qName);
 		}
 		catch (Exception e)
 		{
 			throw createNewExceptionWithPathData(e, generatedPath);
 		}
+	}
+
+	public Object evaluate(Node node, String generatedPath, final QName qName) throws XPathExpressionException
+	{
+		XPathExpression expression = getXPath().compile(generatedPath);
+
+		return expression.evaluate(deepCloneNode(node), qName);
 	}
 
 	public String getPathData(Node node, String[] xpathExpressions) throws Exception

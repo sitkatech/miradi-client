@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2.objectImporters;
 
 import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpression;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
@@ -96,8 +95,7 @@ public class DiagramFactorImporter extends BaseObjectImporter
 	public static ORef getWrappedRef(Xmpz2XmlImporter importer, Node wrappedByDiagamFactorIdNode) throws Exception
 	{
 		String oredWrappedFactorNames = Xmpz2GroupedConstants.createOredWrappableFactorNames();
-		XPathExpression expression = importer.getXPath().compile(oredWrappedFactorNames);
-		Node node =  (Node) expression.evaluate(wrappedByDiagamFactorIdNode, XPathConstants.NODE);
+		Node node = (Node) importer.evaluate(wrappedByDiagamFactorIdNode, oredWrappedFactorNames, XPathConstants.NODE);
 		BaseId wrappedId = new BaseId(node.getTextContent());
 		final int objectTypeOfNode = importer.getObjectTypeOfNode(node);
 		
