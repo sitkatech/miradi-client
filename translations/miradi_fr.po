@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-31 16:14-0500\n"
+"POT-Creation-Date: 2013-11-04 14:31-0600\n"
 "PO-Revision-Date: 2013-04-02 10:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -280,7 +280,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
-#: Miradi/source/org/miradi/migrations/forward/MigrationManager.java:110
+#: Miradi/source/org/miradi/migrations/forward/MigrationManager.java:111
 #: Miradi/source/org/miradi/main/MainWindow.java:1459
 msgid "(%s)"
 msgstr ""
@@ -2035,7 +2035,7 @@ msgstr "Zoom arrière"
 msgid "Action|Zoom To Fit"
 msgstr "Zoom d'ajustement"
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:59
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:57
 msgid "Activities Only"
 msgstr "Activités Seulement "
 
@@ -2400,10 +2400,6 @@ msgid ""
 msgstr ""
 "Ressource affectée - Une ressource du projet qui a été affectée à une "
 "activité, méthode ou tâche spécifiques."
-
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:62
-msgid "Assigned Resources Only"
-msgstr "Ressources affectées seulement "
 
 #: Miradi/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:75
 msgid "Assignments"
@@ -3435,7 +3431,7 @@ msgstr "Menace directe"
 msgid "Direct Threat (Pink)"
 msgstr "Menace directe (Rose)"
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:57
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:55
 msgid "Direct Threats Only"
 msgstr "Menaces directes seulement"
 
@@ -4031,7 +4027,6 @@ msgstr ""
 msgid "Fundraising Plan"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:63
 #: Miradi/source/org/miradi/dialogs/viability/FutureStatusPropertiesPanel.java:39
 #: Miradi/source/org/miradi/dialogs/viability/ViabilityFutureStatusPropertiesPanel.java:39
 msgid "Future Status"
@@ -4069,7 +4064,7 @@ msgstr "Panneau de pertinence du but"
 msgid "Goals"
 msgstr "Buts"
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:50
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:48
 msgid "Goals Only"
 msgstr "Buts seulement"
 
@@ -4206,7 +4201,7 @@ msgid ""
 "by tan ovals."
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:55
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:53
 msgid "Human Wellbeing Targets Only"
 msgstr ""
 
@@ -4407,7 +4402,7 @@ msgstr "L'indicateur n'a pas un facteur parent direct/indirect."
 msgid "Indicators"
 msgstr "Indicateurs"
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:60
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:58
 msgid "Indicators Only"
 msgstr "Indicateurs seulement"
 
@@ -5266,7 +5261,7 @@ msgstr ""
 msgid "Method selection"
 msgstr "Sélection méthode"
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:61
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:59
 msgid "Methods Only"
 msgstr "Méthode seulement"
 
@@ -5593,7 +5588,7 @@ msgstr "Panneau de pertinence de l'objectif"
 msgid "Objectives"
 msgstr "Objectifs"
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:51
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:49
 msgid "Objectives Only"
 msgstr "Uniquement objectifs"
 
@@ -5801,6 +5796,10 @@ msgstr "Planification"
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:70
 msgid "Planning Parameters"
 msgstr "Planification des paramètres"
+
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo14.java:68
+msgid "Planning view legacy single view choice has been removed."
+msgstr ""
 
 #: Miradi/source/org/miradi/views/planning/doers/AbstractCreatePlanningViewConfigurationDoer.java:102
 msgid "PlanningSubViewName|Custom"
@@ -6749,7 +6748,7 @@ msgstr ""
 msgid "Strategies And Activities"
 msgstr "Stratégies et activités"
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:58
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:56
 msgid "Strategies Only"
 msgstr "Uniquement stratégies"
 
@@ -7885,7 +7884,7 @@ msgstr ""
 "sein des paysages fonctionelles. Dans Miradi, une cible est représentée par "
 "un grand ovale vert."
 
-#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:52
+#: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:50
 msgid "Targets Only"
 msgstr "Uniquement cibles"
 
@@ -8212,6 +8211,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/migrations/forward/MigrationTo5.java:69
 msgid "This migration changes default real status code to \"\""
+msgstr ""
+
+#: Miradi/source/org/miradi/migrations/forward/MigrationTo14.java:62
+msgid "This migration clears choices that no longer exist."
 msgstr ""
 
 #: Miradi/source/org/miradi/migrations/forward/MigrationTo6.java:71
@@ -30761,6 +30764,9 @@ msgid ""
 msgstr ""
 "Marin___Atlantique tropical occidental___Écorégion marine du versant nord-"
 "est du Brésil___Brésil"
+
+#~ msgid "Assigned Resources Only"
+#~ msgstr "Ressources affectées seulement "
 
 #~ msgid "FieldLabel|40.ProjectPlaceTypes|Project Types"
 #~ msgstr "Types de projet"
