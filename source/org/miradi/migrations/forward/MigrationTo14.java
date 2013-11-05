@@ -38,8 +38,8 @@ public class MigrationTo14 extends AbstractUpdateFieldData
 	private static HashMap<String, String> createFromToDataMap()
 	{
 		HashMap<String, String> fromToDataMap = new HashMap<String, String>();
-		fromToDataMap.put(LEGACY_RESOURCE_CHOICE, REPLACEMENT_CODE);
-		fromToDataMap.put(LEGACY_FUTURE_STATUS_CHOICE, REPLACEMENT_CODE);
+		fromToDataMap.put(LEGACY_RESOURCE_CHOICE, "");
+		fromToDataMap.put(LEGACY_FUTURE_STATUS_CHOICE, "");
 		
 		return fromToDataMap;
 	}
@@ -74,5 +74,4 @@ public class MigrationTo14 extends AbstractUpdateFieldData
 	
 	public static final String LEGACY_RESOURCE_CHOICE = "ResourceAssignment";
 	public static final String LEGACY_FUTURE_STATUS_CHOICE = "FutureStatus";
-	public static final String REPLACEMENT_CODE = "Goal";
 }
