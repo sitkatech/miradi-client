@@ -22,9 +22,9 @@ package org.miradi.migrations;
 
 import java.util.HashMap;
 
-abstract public class AbstractUpdateFieldData extends AbstractMigration
+abstract public class AbstractUpdateUiFieldData extends AbstractMigration
 {
-	public AbstractUpdateFieldData(RawProject rawProjectToUse, int typeToUse, String tagToUse, HashMap<String, String> fromToDataMapToUse)
+	public AbstractUpdateUiFieldData(RawProject rawProjectToUse, int typeToUse, String tagToUse, HashMap<String, String> fromToDataMapToUse)
 	{
 		super(rawProjectToUse);
 		
