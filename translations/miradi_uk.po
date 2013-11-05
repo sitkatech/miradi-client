@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-04 14:31-0600\n"
+"POT-Creation-Date: 2013-11-05 11:01-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -5647,10 +5647,6 @@ msgstr "Планування"
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:70
 msgid "Planning Parameters"
 msgstr "Параметри планування"
-
-#: Miradi/source/org/miradi/migrations/forward/MigrationTo14.java:68
-msgid "Planning view legacy single view choice has been removed."
-msgstr ""
 
 #: Miradi/source/org/miradi/views/planning/doers/AbstractCreatePlanningViewConfigurationDoer.java:102
 msgid "PlanningSubViewName|Custom"
