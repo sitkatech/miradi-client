@@ -23,12 +23,12 @@ package org.miradi.migrations.forward;
 import java.util.HashMap;
 
 import org.miradi.main.EAM;
-import org.miradi.migrations.AbstractUpdateFieldData;
+import org.miradi.migrations.AbstractUpdateUiFieldData;
 import org.miradi.migrations.RawProject;
 import org.miradi.objects.ViewData;
 import org.miradi.schemas.ViewDataSchema;
 
-public class MigrationTo14 extends AbstractUpdateFieldData
+public class MigrationTo14 extends AbstractUpdateUiFieldData
 {
 	public MigrationTo14(RawProject rawProjectToUse)
 	{
