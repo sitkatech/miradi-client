@@ -34,9 +34,9 @@ public class TestMigrationTo14 extends AbstractTestMigration
 	
 	public void testClearingOfLegacyChoices() throws Exception
 	{
-		verifyMigratingSingleChoiceField(MigrationTo14.REPLACEMENT_CODE, MigrationTo14.LEGACY_RESOURCE_CHOICE);
-		verifyMigratingSingleChoiceField(MigrationTo14.REPLACEMENT_CODE, MigrationTo14.LEGACY_FUTURE_STATUS_CHOICE);
-		verifyMigratingSingleChoiceField(MigrationTo14.REPLACEMENT_CODE, MigrationTo14.REPLACEMENT_CODE);
+		verifyMigratingSingleChoiceField("", MigrationTo14.LEGACY_RESOURCE_CHOICE);
+		verifyMigratingSingleChoiceField("", MigrationTo14.LEGACY_FUTURE_STATUS_CHOICE);
+		verifyMigratingSingleChoiceField("", "");
 		verifyMigratingSingleChoiceField("RandomCode", "RandomCode");
 	}
 
