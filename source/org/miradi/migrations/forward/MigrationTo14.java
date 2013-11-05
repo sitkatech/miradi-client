@@ -62,13 +62,6 @@ public class MigrationTo14 extends AbstractUpdateFieldData
 		return EAM.text("This migration clears choices that no longer exist.");
 	}
 	
-	@Override
-	protected String createDataLossMessage()
-	{
-		return EAM.text("Planning view legacy single view choice has been removed.");
-	}
-
-	
 	public static final int VERSION_FROM = 13;
 	public static final int VERSION_TO = 14;
 	
