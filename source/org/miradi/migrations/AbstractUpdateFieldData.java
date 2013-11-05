@@ -63,12 +63,10 @@ abstract public class AbstractUpdateFieldData extends AbstractMigration
 			String replacementData = fromToDataMap.get(existingData);
 			rawObject.put(tag, replacementData);
 			
-			return MigrationResult.createDataLoss(createDataLossMessage());
+			return MigrationResult.createSuccess();
 		}
 	}
 	
-	abstract protected String createDataLossMessage();
-
 	private int type;
 	private String tag;
 	private HashMap<String, String> fromToDataMap;
