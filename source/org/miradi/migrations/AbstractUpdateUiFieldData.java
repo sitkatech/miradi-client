@@ -22,9 +22,9 @@ package org.miradi.migrations;
 
 import java.util.HashMap;
 
-abstract public class AbstractUpdateFieldData extends AbstractMigration
+abstract public class AbstractUpdateUiFieldData extends AbstractMigration
 {
-	public AbstractUpdateFieldData(RawProject rawProjectToUse, int typeToUse, String tagToUse, HashMap<String, String> fromToDataMapToUse)
+	public AbstractUpdateUiFieldData(RawProject rawProjectToUse, int typeToUse, String tagToUse, HashMap<String, String> fromToDataMapToUse)
 	{
 		super(rawProjectToUse);
 		
@@ -63,12 +63,10 @@ abstract public class AbstractUpdateFieldData extends AbstractMigration
 			String replacementData = fromToDataMap.get(existingData);
 			rawObject.put(tag, replacementData);
 			
-			return MigrationResult.createDataLoss(createDataLossMessage());
+			return MigrationResult.createSuccess();
 		}
 	}
 	
-	abstract protected String createDataLossMessage();
-
 	private int type;
 	private String tag;
 	private HashMap<String, String> fromToDataMap;

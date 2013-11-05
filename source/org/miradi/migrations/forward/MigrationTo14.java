@@ -23,12 +23,12 @@ package org.miradi.migrations.forward;
 import java.util.HashMap;
 
 import org.miradi.main.EAM;
-import org.miradi.migrations.AbstractUpdateFieldData;
+import org.miradi.migrations.AbstractUpdateUiFieldData;
 import org.miradi.migrations.RawProject;
 import org.miradi.objects.ViewData;
 import org.miradi.schemas.ViewDataSchema;
 
-public class MigrationTo14 extends AbstractUpdateFieldData
+public class MigrationTo14 extends AbstractUpdateUiFieldData
 {
 	public MigrationTo14(RawProject rawProjectToUse)
 	{
@@ -38,8 +38,8 @@ public class MigrationTo14 extends AbstractUpdateFieldData
 	private static HashMap<String, String> createFromToDataMap()
 	{
 		HashMap<String, String> fromToDataMap = new HashMap<String, String>();
-		fromToDataMap.put(LEGACY_RESOURCE_CHOICE, REPLACEMENT_CODE);
-		fromToDataMap.put(LEGACY_FUTURE_STATUS_CHOICE, REPLACEMENT_CODE);
+		fromToDataMap.put(LEGACY_RESOURCE_CHOICE, "");
+		fromToDataMap.put(LEGACY_FUTURE_STATUS_CHOICE, "");
 		
 		return fromToDataMap;
 	}
@@ -62,17 +62,9 @@ public class MigrationTo14 extends AbstractUpdateFieldData
 		return EAM.text("This migration clears choices that no longer exist.");
 	}
 	
-	@Override
-	protected String createDataLossMessage()
-	{
-		return EAM.text("Planning view legacy single view choice has been removed.");
-	}
-
-	
 	public static final int VERSION_FROM = 13;
 	public static final int VERSION_TO = 14;
 	
 	public static final String LEGACY_RESOURCE_CHOICE = "ResourceAssignment";
 	public static final String LEGACY_FUTURE_STATUS_CHOICE = "FutureStatus";
-	public static final String REPLACEMENT_CODE = "Goal";
 }
