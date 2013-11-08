@@ -144,9 +144,7 @@ GNU/Linux:
 Changes
 
 Miradi pre-4.1.0 BETA is a testing release, and we recommend that it is 
-only used by people who are testing Miradi Share. Certain features (such 
-as exporting CPMZ files) have been disabled for this beta version, and 
-will be restored later.
+to be used by anyone who is testing Miradi Share.  
 
 Projects from earlier versions of Miradi can be opened, and will 
 automatically be migrated to the latest data format. These projects 
@@ -156,16 +154,18 @@ in the MPZ format used by Miradi 3.3. In some cases, data may be
 lost when exporting to these older formats, but a warning dialog will 
 indicate when that is the case.
 
-Notable changes in 4.1.0 include:
+Notable changes in pre-4.1.0 BETA (compared to 4.0) include:
 
 Appwide:
-- New Miradi Share tab in Summary View
+- New 2 state Miradi Share tab in Summary View
 - Support for Miradi Share taxonomies for several object types
 - Indicators can now have multiple Desired Future Statuses
+- Data loss loss migration error message shows what data will be lost
+- New TNC fields added and a few removed
 - Improvements to logging and debug output
 
 Export/Import:
-- Can now export projects to Miradi 4.0 format
+- Can now export projects to Miradi 4.0 format (reverse migration)
 - Importing now allows overwriting an existing project by that name
 - Importing XMPZ2 files is now much faster 
 - XMPZ2 schema changes to accommodate Miradi Share data
