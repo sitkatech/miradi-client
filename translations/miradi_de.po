@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-05 11:01-0600\n"
+"POT-Creation-Date: 2013-11-12 13:01-0600\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -3251,7 +3251,7 @@ msgstr "Schreibtisch"
 msgid "Data Location"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:62
+#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:63
 msgid "Data was exported as tab delimited."
 msgstr ""
 
@@ -3694,7 +3694,7 @@ msgstr ""
 "Beim Exportieren der ausgewählten Reportvorlage als RTF ist ein Fehler "
 "aufgetreten.\n"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:67
+#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:68
 msgid "Error occurred while trying to export to a tab delimited file."
 msgstr ""
 
@@ -8640,7 +8640,7 @@ msgstr "Möchten Sie die bestehende Datei ersetzen?"
 msgid "Title|Progress Percent"
 msgstr "Fortschrittsanzeige"
 
-#: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportSubPanel.java:61
+#: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportSubPanel.java:63
 msgid "Title|Progress Report"
 msgstr "Fortschrittsbericht"
 
