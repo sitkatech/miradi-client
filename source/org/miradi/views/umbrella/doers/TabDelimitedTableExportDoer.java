@@ -27,8 +27,9 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.rtf.AboveColumnHeaderLabelProvider;
 import org.miradi.rtf.ColumnHeaderLabelProvider;
-import org.miradi.rtf.TableHeaderColumnLabelProvider;
 import org.miradi.rtf.RtfWriter;
+import org.miradi.rtf.TableHeaderColumnLabelProvider;
+import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.MiradiTabDelimitedFileChooser;
 import org.miradi.utils.TableExporter;
 import org.miradi.views.ViewDoer;
@@ -89,7 +90,9 @@ public class TabDelimitedTableExportDoer extends ViewDoer
 				{
 					pad(out, table.getDepth(row, column), column);
 					String safeValue = getSafeValue(table, row, column);
-					out.write(withoutTabsAndNewlines(safeValue) + TAB);
+					safeValue = HtmlUtilities.convertHtmlToPlainText(safeValue);
+					final String withoutTabsAndNewlines = withoutTabsAndNewlines(safeValue);
+					out.write(withoutTabsAndNewlines + TAB);
 					
 					int postPadCount = maxDepth - table.getDepth(row, column);
 					pad(out, postPadCount, column);
