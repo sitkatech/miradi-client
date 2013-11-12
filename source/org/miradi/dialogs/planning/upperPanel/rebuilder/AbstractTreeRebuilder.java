@@ -21,18 +21,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel.rebuilder;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Vector;
 
 import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
 import org.miradi.dialogs.planning.treenodes.PlanningTaskNode;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeBaseObjectNode;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeErrorNode;
+import org.miradi.dialogs.progressReport.FieldComparator;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.Desire;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Indicator;
@@ -58,7 +57,6 @@ import org.miradi.schemas.SubTargetSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
-import org.miradi.utils.BaseObjectFieldComparator;
 import org.miradi.utils.CodeList;
 
 abstract public class AbstractTreeRebuilder
@@ -341,21 +339,13 @@ abstract public class AbstractTreeRebuilder
 			measurements.add(Measurement.find(getProject(), measurementRefs.get(index)));
 		}
 		
-		Collections.sort(measurements, new MeasurementDateComparator());
+		Collections.sort(measurements, new FieldComparator(Measurement.TAG_DATE));
 		
 		return new ORefList(measurements);
 	}
 	
 	abstract protected ORefList getChildRefs(ORef parentRef, DiagramObject diagram) throws Exception;
 	
-	protected class MeasurementDateComparator implements Comparator<BaseObject>
-	{
-		public int compare(BaseObject baseObject1, BaseObject baseObject2)
-		{
-			return BaseObjectFieldComparator.compare(baseObject1, baseObject2, Measurement.TAG_DATE);
-		}	
-	}
-
 	public static void dumpTreeToConsole(TreeTableNode node, int level)
 	{
 		for(int indent = 0; indent < level; ++indent)
