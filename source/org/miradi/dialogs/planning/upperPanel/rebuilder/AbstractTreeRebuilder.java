@@ -32,6 +32,7 @@ import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Desire;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Indicator;
@@ -337,15 +338,15 @@ abstract public class AbstractTreeRebuilder
 
 	public static ORefList getSortedByFieldRefs(Project projectToUse, final ORefList refs, final String tag)
 	{
-		Vector<Measurement> measurements = new Vector<Measurement>();
+		Vector<BaseObject> baseObjects = new Vector<BaseObject>();
 		for(int index = 0; index < refs.size(); ++index)
 		{
-			measurements.add(Measurement.find(projectToUse, refs.get(index)));
+			baseObjects.add(BaseObject.find(projectToUse, refs.get(index)));
 		}
 		
-		Collections.sort(measurements, new FieldComparator(tag));
+		Collections.sort(baseObjects, new FieldComparator(tag));
 		
-		return new ORefList(measurements);
+		return new ORefList(baseObjects);
 	}
 	
 	abstract protected ORefList getChildRefs(ORef parentRef, DiagramObject diagram) throws Exception;
