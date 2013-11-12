@@ -332,9 +332,7 @@ abstract public class AbstractTreeRebuilder
 	
 	public ORefList getSortedByDateMeasurementRefs(Indicator indicator)
 	{
-		final ORefList measurementRefs = indicator.getMeasurementRefs();
-		final String tag = Measurement.TAG_DATE;
-		return getSortedByFieldRefs(getProject(), measurementRefs, tag);
+		return getSortedByFieldRefs(getProject(), indicator.getMeasurementRefs(), Measurement.TAG_DATE);
 	}
 
 	public static ORefList getSortedByFieldRefs(Project projectToUse, final ORefList refs, final String tag)
