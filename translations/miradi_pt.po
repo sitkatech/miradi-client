@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-05 11:01-0600\n"
+"POT-Creation-Date: 2013-11-12 13:01-0600\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -3239,7 +3239,7 @@ msgstr "Painel de Instumentos"
 msgid "Data Location"
 msgstr "Localização dos dados"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:62
+#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:63
 msgid "Data was exported as tab delimited."
 msgstr ""
 "Os dados foram exportados  de formato delimitado por marcas de tabulação "
@@ -3683,7 +3683,7 @@ msgstr ""
 "Ocorreu um erro ao tentar exportar modelo de relatório selecionado como "
 "RTF.\n"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:67
+#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:68
 msgid "Error occurred while trying to export to a tab delimited file."
 msgstr ""
 "Ocorreu um Erro ao tentar exportar a um arquivo delimitado por marcas de "
@@ -8689,7 +8689,7 @@ msgstr "Sobregravar arquivo existente?"
 msgid "Title|Progress Percent"
 msgstr "Percentual de Andamento"
 
-#: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportSubPanel.java:61
+#: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportSubPanel.java:63
 msgid "Title|Progress Report"
 msgstr "Relatório de Progresso"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-05 11:01-0600\n"
+"POT-Creation-Date: 2013-11-12 13:01-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -3110,7 +3110,7 @@ msgstr ""
 msgid "Data Location"
 msgstr "Розміщення даних"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:62
+#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:63
 msgid "Data was exported as tab delimited."
 msgstr "Дані були експортовані як tab delimited."
 
@@ -3538,7 +3538,7 @@ msgid ""
 "Error occurred while trying to export selected report template as RTF.\n"
 msgstr "Помилка під час спроби експортувати вибраний шаблон звіту як RTF.\n"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:67
+#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:68
 msgid "Error occurred while trying to export to a tab delimited file."
 msgstr "Сталася помилка під час спроби транспортувати до файлу tab delimited."
 
@@ -8362,7 +8362,7 @@ msgstr "Title|Перезаписати існуючий файл?"
 msgid "Title|Progress Percent"
 msgstr "Title|Відсоток прогресу"
 
-#: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportSubPanel.java:61
+#: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportSubPanel.java:63
 msgid "Title|Progress Report"
 msgstr "Title|Проміжний звіт"
 

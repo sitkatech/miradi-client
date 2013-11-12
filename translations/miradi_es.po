@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-05 11:01-0600\n"
+"POT-Creation-Date: 2013-11-12 13:01-0600\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -3059,7 +3059,7 @@ msgstr ""
 msgid "Data Location"
 msgstr "Localización de los datos"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:62
+#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:63
 msgid "Data was exported as tab delimited."
 msgstr "Los datos se exportaron separados por tabuladores."
 
@@ -3490,7 +3490,7 @@ msgstr ""
 "Se produjo un error al intentar exportar la plantilla del informe "
 "seleccionado como RTF.\n"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:67
+#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:68
 msgid "Error occurred while trying to export to a tab delimited file."
 msgstr ""
 "Se produjo un error al intentar exportar a un archivo separado por "
@@ -8365,7 +8365,7 @@ msgstr "¿Desea sobrescribir el archivo existente?"
 msgid "Title|Progress Percent"
 msgstr "Porcentaje de progreso"
 
-#: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportSubPanel.java:61
+#: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportSubPanel.java:63
 msgid "Title|Progress Report"
 msgstr ""
 
