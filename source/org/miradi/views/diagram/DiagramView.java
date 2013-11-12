@@ -128,6 +128,7 @@ import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.EAMGraphSelectionModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
+import org.miradi.dialogs.base.AbstractDialogWithClose;
 import org.miradi.dialogs.base.ModelessDialogWithClose;
 import org.miradi.dialogs.diagram.ConceptualModelDiagramPanel;
 import org.miradi.dialogs.diagram.DiagramPanel;
@@ -954,7 +955,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	}
 	
 	@Override
-	public void showFloatingPropertiesDialog(ModelessDialogWithClose newDialog)
+	public void showFloatingPropertiesDialog(AbstractDialogWithClose newDialog)
 	{
 		if(nodePropertiesDlg != null)
 			disposeOfNodePropertiesDialog();

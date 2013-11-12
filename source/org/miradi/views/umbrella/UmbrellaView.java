@@ -184,8 +184,8 @@ import org.miradi.actions.views.ActionViewThreatMatrix;
 import org.miradi.actions.views.ActionViewWorkPlan;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandDeleteObject;
+import org.miradi.dialogs.base.AbstractDialogWithClose;
 import org.miradi.dialogs.base.ModelessDialogPanel;
-import org.miradi.dialogs.base.ModelessDialogWithClose;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
@@ -355,7 +355,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		return null;
 	}
 	
-	public void showFloatingPropertiesDialog(ModelessDialogWithClose newDialog)
+	public void showFloatingPropertiesDialog(AbstractDialogWithClose newDialog)
 	{
 		closeActivePropertiesDialog();
 		
@@ -652,7 +652,5 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	private NullDoer nullDoer;
 	private HashMap<Class, Doer> actionToDoerMap;
 	private boolean isActive;
-	
-	private ModelessDialogWithClose activePropertiesDlg;
- 
+	private AbstractDialogWithClose activePropertiesDlg;
 }

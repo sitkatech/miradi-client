@@ -24,6 +24,7 @@ import java.util.Vector;
 
 import javax.swing.Box;
 import javax.swing.JDialog;
+import javax.swing.JPanel;
 
 import org.martus.swing.UiButton;
 import org.miradi.dialogs.fieldComponents.PanelButton;
@@ -70,4 +71,12 @@ abstract public class AbstractDialogWithClose extends DialogWithDisposablePanelA
 		return components;
 	}
 	
+	public ModelessDialogPanel safeGetWrappedModelessDialogPanel()
+	{
+		JPanel wrappedPanel = getWrappedPanel();
+		if(wrappedPanel instanceof ModelessDialogPanel)
+			return (ModelessDialogPanel)wrappedPanel;
+		
+		return null;
+	}
 }

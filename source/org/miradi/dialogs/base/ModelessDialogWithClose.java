@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.base; 
 
 import javax.swing.JDialog;
-import javax.swing.JPanel;
 
 import org.miradi.main.MainWindow;
 
@@ -58,14 +57,5 @@ public class ModelessDialogWithClose extends AbstractDialogWithClose
 	protected DisposablePanel getMainPanel()
 	{
 		return (DisposablePanel)getWrappedPanel();
-	}
-
-	public ModelessDialogPanel safeGetWrappedModelessDialogPanel()
-	{
-		JPanel wrappedPanel = getWrappedPanel();
-		if(wrappedPanel instanceof ModelessDialogPanel)
-			return (ModelessDialogPanel)wrappedPanel;
-		
-		return null;
 	}
 }
