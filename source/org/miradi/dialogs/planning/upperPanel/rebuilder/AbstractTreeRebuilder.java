@@ -333,13 +333,19 @@ abstract public class AbstractTreeRebuilder
 	public ORefList getSortedByDateMeasurementRefs(Indicator indicator)
 	{
 		final ORefList measurementRefs = indicator.getMeasurementRefs();
+		final String tag = Measurement.TAG_DATE;
+		return getSortedByFieldRefs(getProject(), measurementRefs, tag);
+	}
+
+	public static ORefList getSortedByFieldRefs(Project projectToUse, final ORefList refs, final String tag)
+	{
 		Vector<Measurement> measurements = new Vector<Measurement>();
-		for(int index = 0; index < measurementRefs.size(); ++index)
+		for(int index = 0; index < refs.size(); ++index)
 		{
-			measurements.add(Measurement.find(getProject(), measurementRefs.get(index)));
+			measurements.add(Measurement.find(projectToUse, refs.get(index)));
 		}
 		
-		Collections.sort(measurements, new FieldComparator(Measurement.TAG_DATE));
+		Collections.sort(measurements, new FieldComparator(tag));
 		
 		return new ORefList(measurements);
 	}
