@@ -622,7 +622,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		if(activePropertiesDlg == null)
 			return false;
 		
-		ModelessDialogPanel panel = activePropertiesDlg.safeGetWrappedModelessDialogPanel();
+		ModelessDialogPanel panel = safeGetWrappedModelessDialogPanel();
 		if(panel == null)
 			return false;
 		
@@ -633,6 +633,15 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		return (ref.equals(objectBeingEdited.getRef()));
 	}
 	
+	private ModelessDialogPanel safeGetWrappedModelessDialogPanel()
+	{
+		JPanel wrappedPanel = activePropertiesDlg.getWrappedPanel();
+		if(wrappedPanel instanceof ModelessDialogPanel)
+			return (ModelessDialogPanel)wrappedPanel;
+		
+		return null;
+	}
+
 	public void closeActivePropertiesDialog()
 	{
 		if(activePropertiesDlg != null && activePropertiesDlg.isDisplayable())
