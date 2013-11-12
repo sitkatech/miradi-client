@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.progressReport;
 
 import org.miradi.dialogs.base.EditableObjectRefsTableModel;
+import org.miradi.dialogs.planning.upperPanel.rebuilder.AbstractTreeRebuilder;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
@@ -55,9 +56,10 @@ public class ProgressReportTableModel extends EditableObjectRefsTableModel
 		if (progressReportParent == null)
 			return new ORefList();
 		
-		return progressReportParent.getSafeRefListData(BaseObject.TAG_PROGRESS_REPORT_REFS);
+		final ORefList safeRefListData = progressReportParent.getSafeRefListData(BaseObject.TAG_PROGRESS_REPORT_REFS);
+		return AbstractTreeRebuilder.getSortedByFieldRefs(getProject(), safeRefListData, ProgressReport.TAG_PROGRESS_DATE);
 	}
-
+	
 	@Override
 	protected int getObjectType()
 	{

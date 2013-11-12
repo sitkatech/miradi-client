@@ -24,9 +24,11 @@ import java.util.LinkedHashMap;
 
 import org.miradi.actions.ActionDeleteProgressReport;
 import org.miradi.dialogs.base.EditableObjectListTableSubPanel;
+import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ProgressReport;
 import org.miradi.schemas.ProgressReportSchema;
 import org.miradi.views.umbrella.ActionCreateProgressReport;
 import org.miradi.views.umbrella.ObjectPicker;
@@ -85,5 +87,14 @@ public class ProgressReportSubPanel extends EditableObjectListTableSubPanel
 	private static int getObjectType()
 	{
 		return ProgressReportSchema.getObjectType();
+	}
+	
+	@Override
+	protected boolean shouldRefreshModel(CommandExecutedEvent event)
+	{
+		if (super.shouldRefreshModel(event))
+			return true;
+		
+		return event.isSetDataCommandWithThisTag(ProgressReport.TAG_PROGRESS_DATE);
 	}
 }
