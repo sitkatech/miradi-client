@@ -186,7 +186,7 @@ public class MigrationTo4 extends AbstractSingleTypeMigration
 				HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 				tokenReplacementMap.put("%indicatorLabel", indicatorLabel);
 				tokenReplacementMap.put("%futureStatusCount", Integer.toString(futureStatusRefs.size()));
-				final String dataLossMessage = EAM.substitute(EAM.text("%futureStatusCount future status(s) for indicator (%indicatorLabel) exist, only latest will be preserved"), futureStatusRefs.size());
+				final String dataLossMessage = EAM.substitute(EAM.text("%futureStatusCount future status(s) for indicator (%indicatorLabel) exist, only latest will be preserved"), tokenReplacementMap);
 				
 				return MigrationResult.createDataLoss(dataLossMessage);
 			}
