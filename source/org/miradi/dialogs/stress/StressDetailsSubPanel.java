@@ -23,6 +23,7 @@ import javax.swing.JDialog;
 
 import org.miradi.actions.ActionManageFactorTags;
 import org.miradi.dialogfields.ObjectDataInputField;
+import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.diagram.FactorSummaryCorePanel;
 import org.miradi.icons.StressIcon;
@@ -35,11 +36,12 @@ import org.miradi.questions.ScopeStressBasedThreatRatingQuestion;
 import org.miradi.questions.SeverityStressBasedThreatRatingQuestion;
 import org.miradi.questions.StressRatingChoiceQuestion;
 import org.miradi.schemas.StressSchema;
+import org.miradi.utils.FillerLabel;
 import org.miradi.utils.ObjectsActionButton;
 
 public class StressDetailsSubPanel extends ObjectDataInputPanel
 {
-	public StressDetailsSubPanel(JDialog parentDialogToUse, Project projectToUse) throws Exception
+	public StressDetailsSubPanel(JDialog parentDialogToUse, Project projectToUse, AbstractObjectDataInputPanel visibilityPanel) throws Exception
 	{
 		super(projectToUse, ObjectType.STRESS);
 	
@@ -48,6 +50,11 @@ public class StressDetailsSubPanel extends ObjectDataInputPanel
 		ObjectDataInputField shortLabelField = createShortStringField(Stress.TAG_SHORT_LABEL);
 		ObjectDataInputField labelField = createExpandableField(Stress.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Stress"), new StressIcon(), new ObjectDataInputField[]{shortLabelField, labelField});
+		if(visibilityPanel != null)
+		{
+			add(new FillerLabel());
+			addSubPanelWithTitledBorder(visibilityPanel);
+		}
 		
 		addField(createMultilineField(Stress.TAG_DETAIL));
 		if (projectToUse.isStressBaseMode())

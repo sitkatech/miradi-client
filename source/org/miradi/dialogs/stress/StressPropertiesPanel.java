@@ -46,9 +46,7 @@ public class StressPropertiesPanel extends ObjectDataInputPanelWithSections
 		super(mainWindow.getProject(), ObjectType.STRESS);
 	
 		setLayout(new OneColumnGridLayout());
-		addSubPanelWithTitledBorder(new StressDetailsSubPanel(parent, getProject()));
-		if(visibilityPanel != null)
-			addSubPanelWithTitledBorder(visibilityPanel);
+		addSubPanelWithTitledBorder(new StressDetailsSubPanel(parent, getProject(), visibilityPanel));
 		addSubPanelWithTitledBorder(new StressCommentsSubPanel(getProject()));
 		
 		updateFieldsFromProject();
