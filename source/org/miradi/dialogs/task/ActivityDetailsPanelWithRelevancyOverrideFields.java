@@ -24,6 +24,7 @@ import org.miradi.actions.ActionEditActivityGoalRelevancyList;
 import org.miradi.actions.ActionEditActivityObjectiveRelevancyList;
 import org.miradi.actions.Actions;
 import org.miradi.actions.ObjectsAction;
+import org.miradi.dialogs.activity.ActivityFactorVisibilityControlPanel;
 import org.miradi.main.EAM;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
@@ -31,9 +32,9 @@ import org.miradi.schemas.TaskSchema;
 
 public class ActivityDetailsPanelWithRelevancyOverrideFields extends TaskDetailsPanel
 {
-	public ActivityDetailsPanelWithRelevancyOverrideFields(Project projectToUse, Actions actionsToUse) throws Exception
+	public ActivityDetailsPanelWithRelevancyOverrideFields(Project projectToUse, Actions actionsToUse, ActivityFactorVisibilityControlPanel activityVisibilityButtonPanel) throws Exception
 	{
-		super(projectToUse, actionsToUse);
+		super(projectToUse, actionsToUse, activityVisibilityButtonPanel);
 	}
 
 	@Override

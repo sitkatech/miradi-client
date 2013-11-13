@@ -38,12 +38,13 @@ public abstract class TaskPropertiesPanel extends ObjectDataInputPanelWithSectio
 	protected TaskPropertiesPanel(MainWindow mainWindow) throws Exception
 	{
 		super(mainWindow.getProject(), TaskSchema.getObjectType());
-		
-		addSubPanelWithTitledBorder(createDetailsPanel(mainWindow));
 
+		ActivityFactorVisibilityControlPanel activityVisibilityButtonPanel = null;
 		if(shouldHaveVisibilityPanel())
-			addSubPanelWithTitledBorder(new ActivityFactorVisibilityControlPanel(mainWindow));
-				
+			activityVisibilityButtonPanel = new ActivityFactorVisibilityControlPanel(mainWindow);
+
+		addSubPanelWithTitledBorder(createDetailsPanel(mainWindow, activityVisibilityButtonPanel));
+
 		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow()));
 		addSubPanelWithTitledBorder(new WorkPlanPanelPropertiesPanel(getProject(), ORef.createInvalidWithType(TaskSchema.getObjectType())));
 		addBudgetSubPanels();
@@ -51,9 +52,9 @@ public abstract class TaskPropertiesPanel extends ObjectDataInputPanelWithSectio
 		updateFieldsFromProject();
 	}
 
-	protected ObjectDataInputPanel createDetailsPanel(MainWindow mainWindow) throws Exception
+	protected ObjectDataInputPanel createDetailsPanel(MainWindow mainWindow, ActivityFactorVisibilityControlPanel activityVisibilityButtonPanel) throws Exception
 	{
-		return new TaskDetailsPanel(getProject(), mainWindow.getActions());
+		return new TaskDetailsPanel(getProject(), mainWindow.getActions(), activityVisibilityButtonPanel);
 	}
 
 	protected void addBudgetSubPanels() throws Exception
