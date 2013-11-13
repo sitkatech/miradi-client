@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-13 12:31-0600\n"
+"POT-Creation-Date: 2013-11-13 13:46-0600\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -2892,7 +2892,7 @@ msgstr "Pagina delle proprietà del Modello Concettuale"
 msgid "Conceptual Model Pages and Results Chains"
 msgstr "Pagine del Modello Concettuale e delle Catene dei Risultati"
 
-#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:51
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:52
 msgid ""
 "Conceptual Model diagrams (including Brainstorm mode to capture all draft "
 "strategies considered that were not selected). Strategy Ranking fields of: "
@@ -3372,7 +3372,7 @@ msgstr "Selettore per l'inclusione dei dati di diagramma"
 msgid "Diagram Link Color Panel"
 msgstr "Pannello dei colori dei collegamenti del diagramma"
 
-#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:47
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:48
 msgid ""
 "Diagram View - Conceptual Model diagram showing key drivers and "
 "opportunities and their relationships to ultimate outcomes. Text field for "
@@ -3380,16 +3380,17 @@ msgid ""
 "(available via right-click menu on all diagrams - Diagram Properties)"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:56
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:57
 msgid ""
-"Diagram View - Indicators explicitly linked to conservation outcomes (goals) "
-"and intermediate results (objectives)"
+"Diagram View - Indicators explicitly linked to outcomes captured as either "
+"goals or objectives"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:46
 msgid ""
-"Diagram View - Targets and Target Goals for both biodiversity and human well-"
-"being targets"
+"Diagram View - Use Targets and Target Goals for describing ultimate desired "
+"outcomes for both biodiversity and human well-being targets.  Use\t\t\t\t\t\t"
+"\t Objectives field for capturing other types of outcomes."
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpDiagramOverviewStep.java:35
@@ -6173,13 +6174,12 @@ msgstr "Catena dei Risultati"
 msgid "Results Chain Properties"
 msgstr "Proprietà della Catena dei Risultati"
 
-#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:53
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:54
 msgid ""
 "Results Chain diagrams for entering intermediate results linking strategies "
 "to targets. Text field for alternative or supplemental narrative description "
 "of results chain diagrams (available via right-click menu on all diagrams - "
-"Diagram Properties). Objectives field for specifying measurable desired "
-"results."
+"Diagram Properties)."
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:83
@@ -9043,9 +9043,9 @@ msgstr "Impostazioni del Piano di Lavoro"
 
 #: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:58
 msgid ""
-"Work Plan View - Flexible management of work planning (Strategies, "
-"Activities, and Tasks with who and when information) and budget information "
-"including work effort, expenses, and funding sources."
+"Work Plan View - Flexible management of work planning content (including "
+"Strategies, Activities, and Tasks with who and when information) and budget "
+"information (including work effort, expenses, and funding sources)."
 msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:75

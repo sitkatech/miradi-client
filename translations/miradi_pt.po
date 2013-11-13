@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-13 12:31-0600\n"
+"POT-Creation-Date: 2013-11-13 13:46-0600\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -2964,7 +2964,7 @@ msgstr "Propriedades da Página de Modelo Conceitual"
 msgid "Conceptual Model Pages and Results Chains"
 msgstr "Páginas de Modelo Conceitual e Cadeias de Resultados"
 
-#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:51
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:52
 msgid ""
 "Conceptual Model diagrams (including Brainstorm mode to capture all draft "
 "strategies considered that were not selected). Strategy Ranking fields of: "
@@ -3452,7 +3452,7 @@ msgstr "Selecionador de Dados a serem incluidos no diagrama"
 msgid "Diagram Link Color Panel"
 msgstr "Painel  Cor de Ligação no diagrama"
 
-#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:47
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:48
 msgid ""
 "Diagram View - Conceptual Model diagram showing key drivers and "
 "opportunities and their relationships to ultimate outcomes. Text field for "
@@ -3465,21 +3465,18 @@ msgstr ""
 "conceitual (disponível via menu do clique direito em todos os diagramas - "
 "Propriedades do Diagrama) "
 
-#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:56
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:57
 msgid ""
-"Diagram View - Indicators explicitly linked to conservation outcomes (goals) "
-"and intermediate results (objectives)"
+"Diagram View - Indicators explicitly linked to outcomes captured as either "
+"goals or objectives"
 msgstr ""
-"Visão Diagrama - Indicadores explicitamente ligados aos resultados de "
-"conservação (objetivos) e aos resultados intermediários (metas)"
 
 #: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:46
 msgid ""
-"Diagram View - Targets and Target Goals for both biodiversity and human well-"
-"being targets"
+"Diagram View - Use Targets and Target Goals for describing ultimate desired "
+"outcomes for both biodiversity and human well-being targets.  Use\t\t\t\t\t\t"
+"\t Objectives field for capturing other types of outcomes."
 msgstr ""
-"Visão Diagrama - Alvos e Objetivos para alvos de biodiversidade tanto como "
-"alvos de bem estar humano"
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpDiagramOverviewStep.java:35
 msgid "Diagram overview"
@@ -6334,20 +6331,13 @@ msgstr "Cadiea de Resultados"
 msgid "Results Chain Properties"
 msgstr "Propriedades de Cadeias de Resultados"
 
-#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:53
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:54
 msgid ""
 "Results Chain diagrams for entering intermediate results linking strategies "
 "to targets. Text field for alternative or supplemental narrative description "
 "of results chain diagrams (available via right-click menu on all diagrams - "
-"Diagram Properties). Objectives field for specifying measurable desired "
-"results."
+"Diagram Properties)."
 msgstr ""
-"Diagramas de Cadeias de Resultados para inserir resultados intermediários "
-"que ligam estratégias a alvos.  Campo de texto para descrição narrativa "
-"alternativa ou complementar dos diagramas de cadeias de resultados "
-"(disponível via o menu de clique direito em todos os diagramas - "
-"Propriedades de Diagramas.  Campo de Metas para especificar resultados "
-"mensuráveis desejados."
 
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:83
 #: Miradi/source/org/miradi/dialogs/diagram/ResultsChainDiagramPanel.java:50
@@ -9253,14 +9243,10 @@ msgstr "Configurações do Plano de Trabalho"
 
 #: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:58
 msgid ""
-"Work Plan View - Flexible management of work planning (Strategies, "
-"Activities, and Tasks with who and when information) and budget information "
-"including work effort, expenses, and funding sources."
+"Work Plan View - Flexible management of work planning content (including "
+"Strategies, Activities, and Tasks with who and when information) and budget "
+"information (including work effort, expenses, and funding sources)."
 msgstr ""
-"Visão de Plano de Trabalho - Gestão flexível do planejamento de trabalho "
-"(Estratégias, Atividades, e Tarefas com Informações de quem e quando e "
-"informações do orçamento, inclusive esforço de trabalho, despesas, e fontes "
-"de financiamento."
 
 #: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:75
 msgid "Work Planning"
@@ -27968,6 +27954,44 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid ""
+#~ "Diagram View - Indicators explicitly linked to conservation outcomes "
+#~ "(goals) and intermediate results (objectives)"
+#~ msgstr ""
+#~ "Visão Diagrama - Indicadores explicitamente ligados aos resultados de "
+#~ "conservação (objetivos) e aos resultados intermediários (metas)"
+
+#~ msgid ""
+#~ "Diagram View - Targets and Target Goals for both biodiversity and human "
+#~ "well-being targets"
+#~ msgstr ""
+#~ "Visão Diagrama - Alvos e Objetivos para alvos de biodiversidade tanto "
+#~ "como alvos de bem estar humano"
+
+#~ msgid ""
+#~ "Results Chain diagrams for entering intermediate results linking "
+#~ "strategies to targets. Text field for alternative or supplemental "
+#~ "narrative description of results chain diagrams (available via right-"
+#~ "click menu on all diagrams - Diagram Properties). Objectives field for "
+#~ "specifying measurable desired results."
+#~ msgstr ""
+#~ "Diagramas de Cadeias de Resultados para inserir resultados intermediários "
+#~ "que ligam estratégias a alvos.  Campo de texto para descrição narrativa "
+#~ "alternativa ou complementar dos diagramas de cadeias de resultados "
+#~ "(disponível via o menu de clique direito em todos os diagramas - "
+#~ "Propriedades de Diagramas.  Campo de Metas para especificar resultados "
+#~ "mensuráveis desejados."
+
+#~ msgid ""
+#~ "Work Plan View - Flexible management of work planning (Strategies, "
+#~ "Activities, and Tasks with who and when information) and budget "
+#~ "information including work effort, expenses, and funding sources."
+#~ msgstr ""
+#~ "Visão de Plano de Trabalho - Gestão flexível do planejamento de trabalho "
+#~ "(Estratégias, Atividades, e Tarefas com Informações de quem e quando e "
+#~ "informações do orçamento, inclusive esforço de trabalho, despesas, e "
+#~ "fontes de financiamento."
 
 #~ msgid "Assigned Resources Only"
 #~ msgstr "Somente Recursos Designados"
