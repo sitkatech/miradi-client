@@ -43,7 +43,8 @@ public class TncBusinessPlanningSummarySubPanel extends ObjectDataInputPanel
 		setLayout(layout);
 
 		String summaryRowContent = EAM.text("Summary View - Project Description, Scope, and Vision fields");
-		String outcomesRowContent = EAM.text("Diagram View - Targets and Target Goals for both biodiversity and human well-being targets");
+		String outcomesRowContent = EAM.text("Diagram View - Use Targets and Target Goals for describing ultimate desired outcomes for both biodiversity and human well-being targets.  Use" +
+				"							 Objectives field for capturing other types of outcomes.");
 		String situationRowContent = EAM.text("Diagram View - Conceptual Model diagram showing key drivers and opportunities and their " +
 												"relationships to ultimate outcomes. Text field for alternative or supplemental narrative " +
 												"description of conceptual model (available via right-click menu on all diagrams - " +
@@ -52,11 +53,10 @@ public class TncBusinessPlanningSummarySubPanel extends ObjectDataInputPanel
 												"considered that were not selected). Strategy Ranking fields of: Potential Impact and Feasibility");
 		String strategyLogicRowContent = EAM.text("Results Chain diagrams for entering intermediate results linking strategies to targets. Text field " +
 												"for alternative or supplemental narrative description of results chain diagrams (available via right-click " +
-												"menu on all diagrams - Diagram Properties). Objectives field for specifying measurable desired results.");
-		String measuresRowContent = EAM.text("Diagram View - Indicators explicitly linked to conservation outcomes (goals) and " +
-												"intermediate results (objectives)");
-		String workPlanRowContent = EAM.text("Work Plan View - Flexible management of work planning (Strategies, Activities, and Tasks with who and when information) " +
-											"and budget information including work effort, expenses, and funding sources.");
+												"menu on all diagrams - Diagram Properties).");
+		String measuresRowContent = EAM.text("Diagram View - Indicators explicitly linked to outcomes captured as either goals or objectives");
+		String workPlanRowContent = EAM.text("Work Plan View - Flexible management of work planning content (including Strategies, Activities, and Tasks with who and when information) " +
+											"and budget information (including work effort, expenses, and funding sources).");
 		
 		FormRow contextRow = createReadonlyTextFormRow(EAM.text("Context"), summaryRowContent);
 		addLabelAndFieldFromForm(contextRow);
