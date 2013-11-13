@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-05 11:01-0600\n"
+"POT-Creation-Date: 2013-11-12 13:01-0600\n"
 "PO-Revision-Date: 2013-06-07 01:56+0100\n"
 "Last-Translator: Galragchaa <galragchaa@yahoo.com>\n"
 "Language-Team: none\n"
@@ -3121,7 +3121,7 @@ msgstr ""
 msgid "Data Location"
 msgstr "Мэдээллийн байршил"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:62
+#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:63
 msgid "Data was exported as tab delimited."
 msgstr "Мэдээлэл таб-тай экспортлогдсон"
 
@@ -3550,7 +3550,7 @@ msgid ""
 "Error occurred while trying to export selected report template as RTF.\n"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:67
+#: Miradi/source/org/miradi/views/umbrella/doers/TabDelimitedTableExportDoer.java:68
 msgid "Error occurred while trying to export to a tab delimited file."
 msgstr ""
 
@@ -8399,7 +8399,7 @@ msgstr "Гарчиг|Одоогийн байгаа файлыг өөрчлөх �
 msgid "Title|Progress Percent"
 msgstr "Гарчиг|Явцын хувь"
 
-#: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportSubPanel.java:61
+#: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportSubPanel.java:63
 msgid "Title|Progress Report"
 msgstr "Гарчиг|Явцын тайлан"
 
