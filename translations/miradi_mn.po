@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-13 08:46-0600\n"
+"POT-Creation-Date: 2013-11-13 12:31-0600\n"
 "PO-Revision-Date: 2013-06-07 01:56+0100\n"
 "Last-Translator: Galragchaa <galragchaa@yahoo.com>\n"
 "Language-Team: none\n"
@@ -2003,7 +2003,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:198
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:85
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:85
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:93
 msgid "Activity"
 msgstr "Үйл ажиллагаа"
 
@@ -3966,7 +3966,7 @@ msgstr ""
 msgid "Goal Relevancy Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:46
+#: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:47
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:61
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:99
 msgid "Goals"
@@ -5132,7 +5132,7 @@ msgstr "Цэс|Сонгосон Зүйлээс(үүдээс) Тэмдэглэг�
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:146
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:84
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:87
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:95
 msgid "Method"
 msgstr "Арга зүй"
 
@@ -5457,7 +5457,7 @@ msgstr "Зорилтуудын хайрцаг"
 msgid "Objective Relevancy Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:43
+#: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:44
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:60
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:98
 #: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:44
@@ -6009,7 +6009,7 @@ msgstr "Стратегийн төслийг зэрэглэх"
 msgid "Rapid Assessment"
 msgstr "Шуурхай үнэлгээ"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:68
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:75
 msgid "Ratings"
 msgstr "Үнэлгээ"
 
@@ -6653,7 +6653,7 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:60
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:80
 #: Miradi/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:73
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:50
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:52
 msgid "Stress"
 msgstr "Дарамт"
 
@@ -6714,7 +6714,7 @@ msgstr "Эрчтэй өсөлт"
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:67
 #: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:38
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:112
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:120
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:153
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:67
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:151
@@ -7737,7 +7737,7 @@ msgstr "Диаграмм дахь хамгаалах зүйлс"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:202
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:83
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:89
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:97
 msgid "Task"
 msgstr "Даалгавар"
 
@@ -8236,7 +8236,7 @@ msgstr "Гарчиг|Miradi-ийн тухай"
 msgid "Title|Accounting Code Properties"
 msgstr "Гарчиг|Тооцооны кодын Properties"
 
-#: Miradi/source/org/miradi/dialogs/task/ActivityPropertiesPanelWithoutBudgetPanels.java:49
+#: Miradi/source/org/miradi/dialogs/task/ActivityPropertiesPanelWithoutBudgetPanels.java:50
 msgid "Title|Activity Properties"
 msgstr "Гарчиг|Үйл ажиллагааны агуулга"
 
@@ -8443,11 +8443,11 @@ msgstr "Гарчиг|Стратегийн агуулга"
 msgid "Title|Stress Comments"
 msgstr "Гарчиг|Дарамтын тайлбар"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:76
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:83
 msgid "Title|Stress Details"
 msgstr "Гарчиг|Дарамтын дэлгэрэнгүй тайлбарууд"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressPropertiesPanel.java:60
+#: Miradi/source/org/miradi/dialogs/stress/StressPropertiesPanel.java:58
 msgid "Title|Stress Properties"
 msgstr "Гарчиг|Дарамтын агуулга"
 
