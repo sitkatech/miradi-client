@@ -23,6 +23,7 @@ import javax.swing.Icon;
 
 import org.miradi.actions.Actions;
 import org.miradi.dialogfields.ObjectDataInputField;
+import org.miradi.dialogs.activity.ActivityFactorVisibilityControlPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.ActivityIcon;
@@ -35,10 +36,11 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.schemas.TaskSchema;
+import org.miradi.utils.FillerLabel;
 
 public class TaskDetailsPanel extends ObjectDataInputPanel
 {
-	public TaskDetailsPanel(Project projectToUse, Actions actionsToUse) throws Exception
+	public TaskDetailsPanel(Project projectToUse, Actions actionsToUse, ActivityFactorVisibilityControlPanel activityVisibilityButtonPanel) throws Exception
 	{
 		super(projectToUse, TaskSchema.getObjectType());
 		
@@ -46,6 +48,12 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 		ObjectDataInputField taskNameField = createExpandableField(ObjectType.TASK, Task.TAG_LABEL);
 		ObjectDataInputField taskIdField = createShortStringField(ObjectType.TASK, Task.TAG_SHORT_LABEL);
 		addFieldsOnOneLine(taskNameLabel, new ObjectDataInputField[] {taskIdField, taskNameField,} );
+		if (activityVisibilityButtonPanel != null)
+		{
+			add(new FillerLabel());
+			addSubPanelField(activityVisibilityButtonPanel);
+		}
+		
 		addField(createMultilineField(TaskSchema.getObjectType(), Task.TAG_DETAILS));
 		addCustomFields(actionsToUse);
 		addField(createTaxonomyFields(TaskSchema.getObjectType()));
