@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-12 13:01-0600\n"
+"POT-Creation-Date: 2013-11-13 08:46-0600\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -3803,7 +3803,7 @@ msgstr "Bosque - Pantanoso tropical/subtropical"
 msgid "Forest - Temperate"
 msgstr "Bosque - Templado "
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:484
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:485
 msgid "Found Corrupted Data:"
 msgstr "Se encontraron datos dañados."
 
@@ -8257,7 +8257,7 @@ msgstr "|Error "
 msgid "Title|Export Image Scale"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:972
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:973
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Propiedades del factor"
@@ -8576,7 +8576,7 @@ msgstr ""
 msgid "Unknown code: "
 msgstr "Código desconocido:"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:411
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:412
 msgid "Unknown error displaying diagram"
 msgstr "Error desconocido al mostrar el diagrama"
 
