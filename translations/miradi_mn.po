@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-12 13:01-0600\n"
+"POT-Creation-Date: 2013-11-13 08:46-0600\n"
 "PO-Revision-Date: 2013-06-07 01:56+0100\n"
 "Last-Translator: Galragchaa <galragchaa@yahoo.com>\n"
 "Language-Team: none\n"
@@ -3858,7 +3858,7 @@ msgstr "Ой - Субтропикийн/Тропикийн Намаг"
 msgid "Forest - Temperate"
 msgstr "Ой- Сэрүүн бүсийн"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:484
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:485
 msgid "Found Corrupted Data:"
 msgstr "Эвдэрсэн мэдээлэл олдсон:"
 
@@ -8292,7 +8292,7 @@ msgstr "Гарчиг|Алдаа"
 msgid "Title|Export Image Scale"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:972
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:973
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Гарчиг|Хүчин зүйлийн агуулга"
@@ -8610,7 +8610,7 @@ msgstr ""
 msgid "Unknown code: "
 msgstr "Тодорхой бус код: "
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:411
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:412
 msgid "Unknown error displaying diagram"
 msgstr "Тодорхой бус шалтгаанаар диаграммыг үзүүлэх боломжгүй"
 
