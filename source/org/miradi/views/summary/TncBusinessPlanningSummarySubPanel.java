@@ -43,8 +43,8 @@ public class TncBusinessPlanningSummarySubPanel extends ObjectDataInputPanel
 		setLayout(layout);
 
 		String summaryRowContent = EAM.text("Summary View - Project Description, Scope, and Vision fields");
-		String outcomesRowContent = EAM.text("Diagram View - Use Targets and Target Goals for describing ultimate desired outcomes for both biodiversity and human well-being targets.  Use " +
-											"Objectives field for capturing other types of outcomes.");
+		String outcomesRowContent = EAM.text("Diagram View - Use Targets and Target Goals for describing ultimate desired outcomes for both biodiversity and human well-being targets.  " +
+											"Use Objectives field for capturing other types of outcomes.");
 		String situationRowContent = EAM.text("Diagram View - Conceptual Model diagram showing key drivers and opportunities and their " +
 												"relationships to ultimate outcomes. Text field for alternative or supplemental narrative " +
 												"description of conceptual model (available via right-click menu on all diagrams - " +
