@@ -380,14 +380,9 @@ public class EAM
 		return text;
 	}
 	
-	public static String substitute(String text, String replacement)
+	public static String substituteString(String text, String replacement)
 	{
 		return substitute(text, STRING_TO_SUBSTITUTE, replacement);
-	}
-	
-	public static String substitute(String text, int replacement)
-	{
-		return substitute(text, STRING_TO_SUBSTITUTE, Integer.toString(replacement));
 	}
 	
 	public static String substitute(String text, String token, String replacement)

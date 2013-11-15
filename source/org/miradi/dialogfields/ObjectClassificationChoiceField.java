@@ -59,7 +59,7 @@ public class ObjectClassificationChoiceField extends ObjectChoiceField
 			ChoiceItem taxonomyItem = (ChoiceItem) ((UiComboBox)e.getSource()).getSelectedItem();
 			if (!taxonomyItem.isSelectable())
 			{
-				String text = EAM.substitute(EAM.text("Please choose a specific classification, instead of a category like:\n'%s'"), taxonomyItem.getLabel());
+				String text = EAM.substituteString(EAM.text("Please choose a specific classification, instead of a category like:\n'%s'"), taxonomyItem.getLabel());
 				EAM.errorDialog(text);
 			}
 		}

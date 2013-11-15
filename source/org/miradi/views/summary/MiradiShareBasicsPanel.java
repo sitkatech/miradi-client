@@ -45,7 +45,7 @@ public class MiradiShareBasicsPanel extends ObjectDataInputPanel
 	{
 		String html = Translation.getHtmlContent("MiradiShareSharedProjectHelpPanel.html");
 
-		return  EAM.substitute(html, getMiradiShareProjectUrl());
+		return  EAM.substituteString(html, getMiradiShareProjectUrl());
 	}
 
 	private String getMiradiShareProjectUrl()
