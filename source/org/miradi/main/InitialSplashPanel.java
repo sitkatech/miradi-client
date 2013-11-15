@@ -142,7 +142,7 @@ public class InitialSplashPanel extends HelpAboutPanel
 					"If you already have a Language Pack file, you can install it into Miradi now.<br>" +
 					"Otherwise, you can download one from www.miradi.org. <br>" +
 					"");
-			text = EAM.substituteString(text, sampleJarName);
+			text = EAM.substituteSingleString(text, sampleJarName);
 			int result = EAM.confirmDialog(EAM.text("Install Language Pack"), text, buttonLabels);
 			
 			if(buttonLabels[result].equals(local))

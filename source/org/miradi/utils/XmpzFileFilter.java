@@ -27,7 +27,7 @@ public class XmpzFileFilter extends GenericMiradiFileFilter
 	@Override
 	public String getDescription()
 	{
-		return EAM.substituteString(EAM.text("FileFilter|XMPZ (*%s)"),getFileExtension());
+		return EAM.substituteSingleString(EAM.text("FileFilter|XMPZ (*%s)"),getFileExtension());
 	}
 	
 	public String getFileExtension()

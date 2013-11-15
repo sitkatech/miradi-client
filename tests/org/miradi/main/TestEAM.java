@@ -33,8 +33,8 @@ public class TestEAM extends MiradiTestCase
 	{
 		String replacement = null;
 		String substituteString = "something plus something =  %s dollars";
-		assertEquals("didnt substitude correctly?", "something plus something =   dollars", EAM.substituteString(substituteString, replacement));
-		assertEquals("Substitution was correct?", "something plus something =  4 dollars", EAM.substituteString(substituteString, "4"));
+		assertEquals("didnt substitude correctly?", "something plus something =   dollars", EAM.substituteSingleString(substituteString, replacement));
+		assertEquals("Substitution was correct?", "something plus something =  4 dollars", EAM.substituteSingleString(substituteString, "4"));
 	}
 	
 	public void testSubstituteWithMap()
@@ -58,11 +58,11 @@ public class TestEAM extends MiradiTestCase
 	{
 		String beforeSubstitute = "some text with %s";
 		String substituteString = "some more text";
-		String substitudedText = EAM.substituteString(beforeSubstitute, substituteString);
+		String substitudedText = EAM.substituteSingleString(beforeSubstitute, substituteString);
 		String expectedText = "some text with some more text";
 		assertEquals("didnt substitude correctly?", expectedText, substitudedText); 
 		
-		assertEquals("abc\\", EAM.substituteString("abc%s", "\\"));
+		assertEquals("abc\\", EAM.substituteSingleString("abc%s", "\\"));
 	}
 	
 	public void testIsOneFileInsideTheOther()

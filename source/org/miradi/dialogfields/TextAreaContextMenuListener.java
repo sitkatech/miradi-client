@@ -147,7 +147,7 @@ class TextAreaContextMenuListener extends MiradiCheckerListener
 	@Override
 	protected void addMenuItemAddToDictionary(JTextComponent jText, String word, boolean addSeparator) 
 	{
-		String addWordLabel = EAM.substituteString(EAM.text("Add '%s' to User Dictionary"), word);
+		String addWordLabel = EAM.substituteSingleString(EAM.text("Add '%s' to User Dictionary"), word);
 		AddWordAction addWordAction = new AddWordAction(textField, word, addWordLabel);
 		menu.add(addWordAction);
 	}

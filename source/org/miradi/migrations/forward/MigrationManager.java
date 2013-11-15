@@ -108,7 +108,7 @@ public class MigrationManager extends AbstractMigrationManager
 
 	private static String getBackupFolderTranslatedName()
 	{
-		return EAM.substituteString(EAM.text("(%s)"), "Automated-Migration-Backups");
+		return EAM.substituteSingleString(EAM.text("(%s)"), "Automated-Migration-Backups");
 	}
 
 	public boolean needsMigration(final File projectFile) throws Exception

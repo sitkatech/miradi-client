@@ -206,7 +206,7 @@ public abstract class AbstractProjectImporter
 
 	private void userConfirmOpenImportedProject(File projectFile) throws Exception
 	{
-		String openProjectMessage = EAM.substituteString(EAM.text("Import Completed.  Would you like to open %s?"), projectFile.getName());
+		String openProjectMessage = EAM.substituteSingleString(EAM.text("Import Completed.  Would you like to open %s?"), projectFile.getName());
 		boolean shouldOpenProjectAfterImport = EAM.confirmOpenDialog(EAM.text("Open Project"), openProjectMessage);
 		if (shouldOpenProjectAfterImport)
 		{
@@ -224,7 +224,7 @@ public abstract class AbstractProjectImporter
 	{
 		if(message == null)
 			message = EAM.text("Unexpected error");
-		String safeMessage = EAM.substituteString(EAM.text("<html>Import failed: <br><p> %s </p></html>"), message);
+		String safeMessage = EAM.substituteSingleString(EAM.text("<html>Import failed: <br><p> %s </p></html>"), message);
 		EAM.errorDialog(safeMessage);
 	}
 

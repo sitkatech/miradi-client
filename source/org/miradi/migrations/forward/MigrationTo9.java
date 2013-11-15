@@ -108,7 +108,7 @@ public class MigrationTo9 extends AbstractMigration
 
 		private String createDataLossMessage(RawObject rawObject, final String tag)
 		{
-			return EAM.substituteString(EAM.text("%s field data will be lost for measurement"), Translation.fieldLabel(rawObject.getObjectType(), tag));
+			return EAM.substituteSingleString(EAM.text("%s field data will be lost for measurement"), Translation.fieldLabel(rawObject.getObjectType(), tag));
 		}
 	}
 	

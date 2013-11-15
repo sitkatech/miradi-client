@@ -79,7 +79,7 @@ public class CommandLineProjectFileImporterHelper
 		File projectFileToImport = filesToImport.firstElement();
 		if (!isImportableProjectFile(projectFileToImport))
 		{
-			EAM.errorDialog(EAM.substituteString(EAM.text("Miradi does not recognize %s as a project file"), projectFileToImport.getName()));
+			EAM.errorDialog(EAM.substituteSingleString(EAM.text("Miradi does not recognize %s as a project file"), projectFileToImport.getName()));
 			return null;
 		}
 
@@ -155,14 +155,14 @@ public class CommandLineProjectFileImporterHelper
 	{
 		if (!projectFileToImport.exists())
 		{
-			String message = EAM.substituteString(EAM.text("Cannot import project file %s because it does not exist"), projectFileToImport.getName());
+			String message = EAM.substituteSingleString(EAM.text("Cannot import project file %s because it does not exist"), projectFileToImport.getName());
 			EAM.errorDialog(message);
 			return false;
 		}
 		
 		if (projectFileToImport.isDirectory())
 		{
-			String message = EAM.substituteString(EAM.text("Cannot import project file %s because it is a directory, not a file"), projectFileToImport.getName());
+			String message = EAM.substituteSingleString(EAM.text("Cannot import project file %s because it is a directory, not a file"), projectFileToImport.getName());
 			EAM.errorDialog(message);
 			return false;
 		}
@@ -172,7 +172,7 @@ public class CommandLineProjectFileImporterHelper
 	
 	private boolean getUserImportConfirmation(String fileNameToImport) throws Exception
 	{
-		String message = EAM.substituteString(EAM.text("Do you want to attempt to import %s into Miradi?"), fileNameToImport);
+		String message = EAM.substituteSingleString(EAM.text("Do you want to attempt to import %s into Miradi?"), fileNameToImport);
 		int userComfirmationChoice = confirmImportDialog(EAM.text("Import"), message);
 		if (userComfirmationChoice == IMPORT_CHOICE)
 			return true;
@@ -209,10 +209,10 @@ public class CommandLineProjectFileImporterHelper
 		}
 		catch(ZipException e)
 		{
-			throw new ZipException(EAM.substituteString(EAM.text("Error reading %s. Perhaps it is not a valid zip file."), projectFile.getName()));
+			throw new ZipException(EAM.substituteSingleString(EAM.text("Error reading %s. Perhaps it is not a valid zip file."), projectFile.getName()));
 		}
 		
-		throw new UnrecognizedFileToImportException(EAM.substituteString(EAM.text("Miradi did not recognize the file: %s as importable."), projectFile.getName()));
+		throw new UnrecognizedFileToImportException(EAM.substituteSingleString(EAM.text("Miradi did not recognize the file: %s as importable."), projectFile.getName()));
 	}
 	
 	private boolean isXmpz2(File projectFile) throws Exception

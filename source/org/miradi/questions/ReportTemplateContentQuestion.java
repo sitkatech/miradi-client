@@ -119,7 +119,7 @@ public class ReportTemplateContentQuestion extends ProjectBasedDynamicQuestion
 		for(BaseObject subview : subviews)
 		{
 			String code = CUSTOM_TABLE_CODE_PREFIX + subview.getRef().toString();
-			String name = EAM.substituteString(getCustomTableNameTemplate(), subview.getFullName());
+			String name = EAM.substituteSingleString(getCustomTableNameTemplate(), subview.getFullName());
 			choices.add(new ChoiceItem(code, name));
 		}
 		Collections.sort(choices);
