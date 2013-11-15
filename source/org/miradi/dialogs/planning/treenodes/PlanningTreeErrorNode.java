@@ -56,7 +56,7 @@ public class PlanningTreeErrorNode extends AbstractPlanningTreeNode
 	@Override
 	public String getNodeLabel()
 	{
-		return EAM.substitute(EAM.text("Error Creating: %s"), getObject().getLabel()) ;
+		return EAM.substituteString(EAM.text("Error Creating: %s"), getObject().getLabel()) ;
 	}
 	
 	@Override

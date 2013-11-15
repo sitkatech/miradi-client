@@ -69,7 +69,7 @@ public class DiagramCorruptionDetector
 			if (diagramLink ==null)
 			{	
 				EAM.logVerbose("Found null diagramLink ref = " + diagramLinkRefs.get(index));
-				errorMessages.add(EAM.substitute(EAM.text("Found null diagramLink.  Diagram = %s"), diagramName));
+				errorMessages.add(EAM.substituteString(EAM.text("Found null diagramLink.  Diagram = %s"), diagramName));
 				continue;
 			}
 
@@ -78,14 +78,14 @@ public class DiagramCorruptionDetector
 			if (fromDiagramFactor == null || toDiagramFactor == null)
 			{
 				EAM.logVerbose("Found null from or to for diagram link ref = " + diagramLink.getRef() + " .  from = " + fromDiagramFactor + " to = " + toDiagramFactor);
-				errorMessages.add(EAM.substitute(EAM.text("Found null from or to for diagram link.  Diagram = %s"), diagramName));
+				errorMessages.add(EAM.substituteString(EAM.text("Found null from or to for diagram link.  Diagram = %s"), diagramName));
 				continue;
 			}
 			
 			if (fromDiagramFactor.getWrappedFactor() == null || toDiagramFactor.getWrappedFactor() == null)
 			{
 				EAM.logVerbose("Found null from wrapped factor or to wrapped factor from diagram link ref = " + diagramLink.getRef() + " from wrapped ref = " +fromDiagramFactor.getWrappedORef() +  " to wrapped ref = " + toDiagramFactor.getWrappedORef() );
-				errorMessages.add(EAM.substitute(EAM.text("Found null from wrapped factor or to wrapped factor from diagram link.  Diagram = %s"), diagramName));
+				errorMessages.add(EAM.substituteString(EAM.text("Found null from wrapped factor or to wrapped factor from diagram link.  Diagram = %s"), diagramName));
 				continue;
 			}
 		}
@@ -124,7 +124,7 @@ public class DiagramCorruptionDetector
 			{
 				String errorMesssage = "Found null diagram factor. Ref = " + diagramFactorRefs.get(index);
 				EAM.logVerbose(errorMesssage);
-				errorMessages.add(EAM.substitute(EAM.text("Found null diagram factor.  Diagram = %s"), diagramName));
+				errorMessages.add(EAM.substituteString(EAM.text("Found null diagram factor.  Diagram = %s"), diagramName));
 				continue;
 			}
 			
@@ -132,7 +132,7 @@ public class DiagramCorruptionDetector
 			if (factor == null)
 			{
 				EAM.logVerbose("Found null wrapped factor.  Ref = " + diagramFactor.getWrappedORef());
-				errorMessages.add(EAM.substitute(EAM.text("Found null underlying factor  .Diagram = %s"), diagramName));
+				errorMessages.add(EAM.substituteString(EAM.text("Found null underlying factor  .Diagram = %s"), diagramName));
 				continue;
 			}
 			

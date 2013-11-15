@@ -62,6 +62,6 @@ public class SeverityThreatRatingQuestion extends ThreatRatingQuestion
 						"as the degree of reduction of the target population within the scope.");
 		
 		//NOTE: The thml table tag exists to ensure max width of 750.  Text was getting cut off.
-		return EAM.substitute("<html><table><tr><td width='750'> %s </td></tr></table></html>", description);
+		return EAM.substituteString("<html><table><tr><td width='750'> %s </td></tr></table></html>", description);
 	}
 }

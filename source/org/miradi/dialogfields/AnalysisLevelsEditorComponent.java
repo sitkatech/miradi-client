@@ -89,7 +89,7 @@ public class AnalysisLevelsEditorComponent extends MiradiPanel
 		if (allCodes.size() > editors.size())
 		{
 			allCodes = stripOutExtraCodes(allCodes);
-			EAM.logError(EAM.substitute(EAM.text("Extra/unexpected configuration data was found, and will be ignored.\n CodeList= %s"), codes));
+			EAM.logError(EAM.substituteString(EAM.text("Extra/unexpected configuration data was found, and will be ignored.\n CodeList= %s"), codes));
 		}
 		
 		for (int index = 0; index < allCodes.size(); ++index)
