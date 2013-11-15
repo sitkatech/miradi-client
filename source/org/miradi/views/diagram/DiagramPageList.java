@@ -60,6 +60,14 @@ abstract public class DiagramPageList extends ObjectPoolTable
 		
 		ignoreKeystrokesThatShouldGoToDiagram();
 	}
+	
+	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		
+		listChanged();
+	}
 
 	private void ignoreKeystrokesThatShouldGoToDiagram()
 	{
