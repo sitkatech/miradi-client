@@ -432,7 +432,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 	{
 		ORefList activeTaggedObjectSetRefs = getCurrentDiagramComponent().getDiagramObject().getSelectedTaggedObjectSetRefs();
 		if (activeTaggedObjectSetRefs.hasRefs())
-			getMainWindow().setStatusBarWarningMessage(EAM.substitute(EAM.text("Not all factors are being shown because %s tag(s) are checked"), Integer.toString(activeTaggedObjectSetRefs.size())));
+			getMainWindow().setStatusBarWarningMessage(EAM.substituteString(EAM.text("Not all factors are being shown because %s tag(s) are checked"), Integer.toString(activeTaggedObjectSetRefs.size())));
 		else
 			getMainWindow().clearStatusBar();
 	}

@@ -123,7 +123,7 @@ public class MigrationTo7 extends AbstractMigration
 			if (rawObject.containsKey(TAG_TAXONOMY_CLASSIFICATION_CONTAINER))
 			{
 				removeField(rawObject, TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
-				final String dataLossMessage = EAM.substitute(EAM.text("%s field data will be lost"), Translation.fieldLabel(rawObject.getObjectType(), TAG_TAXONOMY_CLASSIFICATION_CONTAINER));
+				final String dataLossMessage = EAM.substituteString(EAM.text("%s field data will be lost"), Translation.fieldLabel(rawObject.getObjectType(), TAG_TAXONOMY_CLASSIFICATION_CONTAINER));
 				return MigrationResult.createDataLoss(dataLossMessage);
 			}
 			
