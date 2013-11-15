@@ -380,6 +380,11 @@ public class EAM
 		return text;
 	}
 	
+	public static String substituteSingleInteger(String text, int replacement)
+	{
+		return substituteSingleString(text, Integer.toString(replacement));
+	}
+	
 	public static String substituteSingleString(String text, String replacement)
 	{
 		return substitute(text, STRING_TO_SUBSTITUTE, replacement);
