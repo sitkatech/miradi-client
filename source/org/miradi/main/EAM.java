@@ -385,11 +385,6 @@ public class EAM
 		return substitute(text, STRING_TO_SUBSTITUTE, replacement);
 	}
 	
-	public static String substitute(String text, int replacement)
-	{
-		return substitute(text, STRING_TO_SUBSTITUTE, Integer.toString(replacement));
-	}
-	
 	public static String substitute(String text, String token, String replacement)
 	{
 		if (text == null)
