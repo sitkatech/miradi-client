@@ -70,7 +70,7 @@ public class LanguagePackFileFilter extends FileFilter implements MiradiFileFilt
 	public String getDescription()
 	{
 		String wildcardSpec = Miradi.LANGUAGE_PACK_PREFIX + "*.jar";
-		return EAM.substituteString(EAM.text("FileFilter|Miradi Language Pack (%s)"), wildcardSpec);
+		return EAM.substituteSingleString(EAM.text("FileFilter|Miradi Language Pack (%s)"), wildcardSpec);
 	}
 	
 	public String getFileExtension()

@@ -55,8 +55,8 @@ abstract public class DeletePoolObjectDoer extends ObjectsDoer
 			return;
 		
 		String[] buttons = {EAM.text("Yes"), EAM.text("No"), };
-		final String title = EAM.substituteString(EAM.text("Delete %s"), getCustomText());
-		final String text = EAM.substituteString(EAM.text("\nAre you sure you want to delete the selected %s?"), getCustomText());
+		final String title = EAM.substituteSingleString(EAM.text("Delete %s"), getCustomText());
+		final String text = EAM.substituteSingleString(EAM.text("\nAre you sure you want to delete the selected %s?"), getCustomText());
 		if(!EAM.confirmDialog(title, new String[]{text}, buttons))
 			return;
 

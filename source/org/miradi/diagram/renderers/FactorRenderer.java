@@ -211,7 +211,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 				return EAM.text("1 Goal");
 			
 			if (size > 1)
-				return EAM.substituteString(EAM.text("%s Goals"), Integer.toString(size));
+				return EAM.substituteSingleString(EAM.text("%s Goals"), Integer.toString(size));
 		}
 		if (Objective.is(annotationType))
 		{
@@ -219,7 +219,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 				return EAM.text("1 Obj");
 			
 			if (size > 1)
-				return EAM.substituteString(EAM.text("%s Objs"), Integer.toString(size));
+				return EAM.substituteSingleString(EAM.text("%s Objs"), Integer.toString(size));
 		}
 			
 		return null;

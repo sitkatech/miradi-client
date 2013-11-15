@@ -58,7 +58,7 @@ public class StressBasedThreatRatingQuestionPopupEditorComponent extends Abstrac
 	@Override
 	protected String getAdditionalLabel()
 	{
-		return EAM.substituteString(EAM.text("Stress: %s"), stress.getFullName());
+		return EAM.substituteSingleString(EAM.text("Stress: %s"), stress.getFullName());
 	}
 	
 	private class AncestorHandler implements AncestorListener

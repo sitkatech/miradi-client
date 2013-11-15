@@ -88,7 +88,7 @@ public class FileSystemProjectOrDirectoryNode extends FileSystemTreeNode
 				return Project.withoutMpfProjectSuffix(possibleProjectFile.getName());
 			
 			if (LegacyProjectUtilities.isExistingLocalProject(possibleProjectFile))
-				return EAM.substituteString(EAM.text("%s (old project)"), possibleProjectFile.getName());
+				return EAM.substituteSingleString(EAM.text("%s (old project)"), possibleProjectFile.getName());
 			
 			return super.getNodeLabel();
 		}

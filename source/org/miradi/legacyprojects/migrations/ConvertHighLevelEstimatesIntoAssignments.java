@@ -132,11 +132,11 @@ public class ConvertHighLevelEstimatesIntoAssignments
 		String migrationDetialsText = EAM.text("Migrated High Level Estimate:");
 		final String NEW_LINE = "\n";
 		migrationDetialsText += NEW_LINE;
-		migrationDetialsText += EAM.substituteString(EAM.text("Budget Override was: %s"), getSafeBudgetCostOverride(objectJson));
+		migrationDetialsText += EAM.substituteSingleString(EAM.text("Budget Override was: %s"), getSafeBudgetCostOverride(objectJson));
 		migrationDetialsText += NEW_LINE;
-		migrationDetialsText += EAM.substituteString(EAM.text("When Override was: %s"), createOverrideWhenString(objectJson));
+		migrationDetialsText += EAM.substituteSingleString(EAM.text("When Override was: %s"), createOverrideWhenString(objectJson));
 		migrationDetialsText += NEW_LINE;
-		migrationDetialsText += EAM.substituteString(EAM.text("Who Override was: %s"), createAppendedResourceNames(jsonDir, objectJson));
+		migrationDetialsText += EAM.substituteSingleString(EAM.text("Who Override was: %s"), createAppendedResourceNames(jsonDir, objectJson));
 		migrationDetialsText += NEW_LINE;
 		migrationDetialsText += "---------------------------------------------------";
 		migrationDetialsText += NEW_LINE;

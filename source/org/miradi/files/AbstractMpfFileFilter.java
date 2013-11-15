@@ -31,7 +31,7 @@ abstract public class AbstractMpfFileFilter extends GenericMiradiFileFilter
 	@Override
 	public String getDescription()
 	{
-		return EAM.substituteString(EAM.text("FileFilter|Miradi (*%s)"),getFileExtension());
+		return EAM.substituteSingleString(EAM.text("FileFilter|Miradi (*%s)"),getFileExtension());
 	}
 
 	public String getFileExtension()

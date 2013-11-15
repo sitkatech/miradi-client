@@ -61,7 +61,7 @@ public class AboutDoer extends MainWindowDoer
 			try
 			{
 				String translationVersion = VersionConstants.getVersionAndTimestamp();
-				text += " " + EAM.substituteString(template, translationVersion);
+				text += " " + EAM.substituteSingleString(template, translationVersion);
 			}
 			catch(Exception e)
 			{
