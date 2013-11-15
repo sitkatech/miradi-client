@@ -711,7 +711,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		if (migrationResult.didLoseData())
 		{
 			final String[] labels = new String[]{ConstantButtonNames.MIGRATE, ConstantButtonNames.CANCEL};
-			final String message = EAM.substitute(EAM.text("If you continue with this migration, some data will be lost.\n\n" +
+			final String message = EAM.substituteString(EAM.text("If you continue with this migration, some data will be lost.\n\n" +
 											"Summary of data losses:\n" +
 											 "%s \n" + 
 											"Would you like to continue anyway?"), migrationResult.getUserFriendlyGroupedDataLossMessagesAsString());
@@ -1452,16 +1452,16 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			proposedProjectFile = new File(EAM.getHomeDirectory(), projectFileName);
 			if (projectExists(proposedProjectFile))
 			{
-				boolean shouldOverwrite = EAM.confirmOverwriteDialog("", EAM.substitute(EAM.text("A project or file by this name already exists: %s"), projectFileName));
+				boolean shouldOverwrite = EAM.confirmOverwriteDialog("", EAM.substituteString(EAM.text("A project or file by this name already exists: %s"), projectFileName));
 				if (!shouldOverwrite)
 					continue;
 				
-				FileUtilities.createMpfBackup(proposedProjectFile, EAM.substitute(EAM.text("(%s)"), "Overriden-backup"));
+				FileUtilities.createMpfBackup(proposedProjectFile, EAM.substituteString(EAM.text("(%s)"), "Overriden-backup"));
 			}
 			
 			if (!Project.isValidProjectName(projectName))
 			{
-				EAM.errorDialog(EAM.substitute(EAM.text("Invalid project name: %s"), projectName));
+				EAM.errorDialog(EAM.substituteString(EAM.text("Invalid project name: %s"), projectName));
 				continue;
 			}
 			
