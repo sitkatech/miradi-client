@@ -95,7 +95,7 @@ public class CreateConceptualModelPageDoer extends ViewDoer
 		if (conceptualModelCount == 1)
 			return diagramObject.toString();
 		
-		return EAM.substituteSingleString(EAM.text("[Page %s]"), Integer.toString(conceptualModelCount - 1));
+		return EAM.substituteSingleInteger(EAM.text("[Page %s]"), (conceptualModelCount - 1));
 		
 	}
 }
