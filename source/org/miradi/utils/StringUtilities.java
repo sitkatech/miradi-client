@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -46,6 +47,11 @@ public class StringUtilities
 		final int firstIndexOfToChar = line.indexOf(delimeterAfter, indexAfterFirstFromChar);
 		
 		return line.substring(indexAfterFirstFromChar, firstIndexOfToChar);
+	}
+	
+	public static String joingWitOr(Vector<String> list, String prefix, String suffix)
+	{
+		return joinListItems(list.toArray(new String[0]), prefix, "|", suffix);
 	}
 	
 	public static String joinWithOr(String[] tagsToKeep)

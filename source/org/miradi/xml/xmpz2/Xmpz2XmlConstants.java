@@ -366,6 +366,8 @@ public interface Xmpz2XmlConstants
 	public static final String VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE = "vocabulary_contribution_rating";
 	public static final String VOCABULARY_TNC_OPERATING_UNTIS = "vocabulary_tnc_operating_units";
 	public static final String VOCABULARY_TNC_TERRESTRIAL_ECO_REGION = "vocabulary_tnc_terrestrial_eco_region";
+	public static final String VOCABULARY_TNC_TERRESTRIAL_ECO_REGION_SUBSET_1 = "vocabulary_tnc_terrestrial_eco_region_subset_1";
+	public static final String VOCABULARY_TNC_TERRESTRIAL_ECO_REGION_SUBSET_2 = "vocabulary_tnc_terrestrial_eco_region_subset_2";
 	public static final String VOCABULARY_TNC_MARINE_ECO_REGION = "vocabulary_tnc_marine_eco_region";
 	public static final String VOCABULARY_TNC_FRESHWATER_ECO_REGION = "vocabulary_tnc_freshwater_eco_region";
 	public static final String VOCABULARY_SHARE_OUTSIDE_ORGANIZATION = "vocabulary_share_outside_organization";

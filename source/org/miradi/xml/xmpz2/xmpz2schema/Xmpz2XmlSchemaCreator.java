@@ -65,6 +65,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DashboardFlagsQuestion;
 import org.miradi.questions.InternalQuestionWithoutValues;
 import org.miradi.questions.StaticQuestionManager;
+import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.questions.TwoLetterLanguagesQuestion;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
@@ -494,6 +495,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().println("vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='12' } ");
 		getSchemaWriter().println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
 		writeLanguageVocabulary();
+		writeTncTerrestrialEcoregionVocabulary();
 	}
 
 	private boolean shouldOmitQuestion(Class<? extends ChoiceQuestion> questionClass)
@@ -506,12 +508,30 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	private boolean isCustomWrittenVocabulary(String vocabularyName)
 	{
+		if (vocabularyName.equals(VOCABULARY_TNC_TERRESTRIAL_ECO_REGION))
+			return true;
+		
 		return vocabularyName.equals(VOCABULARY_LANGUAGE_CODE);
 	}
 	
 	private void writeLanguageVocabulary()
 	{
 		getSchemaWriter().println("vocabulary_language_code = xsd:NMTOKEN { pattern = '([a-z][a-z][a-z])|"+ getOredElements(new TwoLetterLanguagesQuestion().getAllCodes())+ "' }");
+	}
+	
+	private void writeTncTerrestrialEcoregionVocabulary()
+	{
+		TncTerrestrialEcoRegionQuestion question = new TncTerrestrialEcoRegionQuestion();
+		CodeList allCodes = question.getAllCodes();
+		Vector<String> codes = allCodes.toVector();
+		int almostHalf = codes.size() / 2;
+		Vector<String> subList1 = new Vector<String>(codes.subList(0, almostHalf));
+		Vector<String> subList2 = new Vector<String>(codes);
+		subList2.removeAll(subList1);
+		
+		getSchemaWriter().println(VOCABULARY_TNC_TERRESTRIAL_ECO_REGION  + " = " + VOCABULARY_TNC_TERRESTRIAL_ECO_REGION_SUBSET_1 + "|" + VOCABULARY_TNC_TERRESTRIAL_ECO_REGION_SUBSET_2);
+		getSchemaWriter().println(VOCABULARY_TNC_TERRESTRIAL_ECO_REGION_SUBSET_1 + " = " + StringUtilities.joingWitOr(subList1, "'", "'"));
+		getSchemaWriter().println(VOCABULARY_TNC_TERRESTRIAL_ECO_REGION_SUBSET_2 + " = " + StringUtilities.joingWitOr(subList2, "'", "'"));
 	}
 
 	private String getOredElements(CodeList allCodes)
