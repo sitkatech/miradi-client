@@ -234,7 +234,7 @@ abstract public class AbstractMiradiProjectSaver
 		}
 	}
 	
-	protected void writeObjects(ORefList sortedObjectRefs) throws Exception
+	private void writeObjects(ORefList sortedObjectRefs) throws Exception
 	{
 		for (int index = 0; index < sortedObjectRefs.size(); ++index)
 		{
