@@ -39,19 +39,6 @@ public class WhoStateLogic
 		project = projectToUse;
 	}
 	
-	public boolean isLeaderEditable(BaseObject baseObjectToUse)
-	{
-		try
-		{
-			return !doAnySubtasksHaveAnyWorkUnitData(baseObjectToUse);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return false;		
-		}
-	}
-	
 	public boolean isWhoCellEditable(BaseObject baseObjectToUse)
 	{
 		try
