@@ -29,9 +29,7 @@ import javax.swing.JComponent;
 
 import org.miradi.dialogfields.ObjectChoiceField;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
-import org.miradi.dialogs.planning.upperPanel.WhoStateLogic;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ResourceLeaderQuestionWithUnspecifiedChoice;
 
@@ -50,9 +48,7 @@ public class ResourceLeaderDropDownField extends ObjectChoiceField
 		if (!super.isValidObject())
 			return false;
 		
-		BaseObject baseObject = BaseObject.find(getProject(), getORef());
-		
-		return new WhoStateLogic(getProject()).isLeaderEditable(baseObject);
+		return true;
 	}
 
 	@Override
