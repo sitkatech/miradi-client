@@ -49,7 +49,7 @@ public class StringUtilities
 		return line.substring(indexAfterFirstFromChar, firstIndexOfToChar);
 	}
 	
-	public static String joingWitOr(Vector<String> list, String prefix, String suffix)
+	public static String joinWithOr(Vector<String> list, String prefix, String suffix)
 	{
 		return joinListItems(list.toArray(new String[0]), prefix, "|", suffix);
 	}
