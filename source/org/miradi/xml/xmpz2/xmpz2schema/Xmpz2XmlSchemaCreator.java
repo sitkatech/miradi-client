@@ -530,8 +530,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		subList2.removeAll(subList1);
 		
 		getSchemaWriter().println(VOCABULARY_TNC_TERRESTRIAL_ECO_REGION  + " = " + VOCABULARY_TNC_TERRESTRIAL_ECO_REGION_SUBSET_1 + "|" + VOCABULARY_TNC_TERRESTRIAL_ECO_REGION_SUBSET_2);
-		getSchemaWriter().println(VOCABULARY_TNC_TERRESTRIAL_ECO_REGION_SUBSET_1 + " = " + StringUtilities.joingWitOr(subList1, "'", "'"));
-		getSchemaWriter().println(VOCABULARY_TNC_TERRESTRIAL_ECO_REGION_SUBSET_2 + " = " + StringUtilities.joingWitOr(subList2, "'", "'"));
+		getSchemaWriter().println(VOCABULARY_TNC_TERRESTRIAL_ECO_REGION_SUBSET_1 + " = " + StringUtilities.joinWithOr(subList1, "'", "'"));
+		getSchemaWriter().println(VOCABULARY_TNC_TERRESTRIAL_ECO_REGION_SUBSET_2 + " = " + StringUtilities.joinWithOr(subList2, "'", "'"));
 	}
 
 	private String getOredElements(CodeList allCodes)
