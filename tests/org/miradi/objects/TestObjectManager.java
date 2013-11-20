@@ -206,7 +206,7 @@ public class TestObjectManager extends MiradiTestCase
 		assertEquals(type + " didn't write/read data for " + tag + "?", "data", withData.getData(tag));
 		assertEquals(type + " can't get data from project?", "data", manager.getObjectData(type, createdId, tag));
 		
-		manager.deleteObject(withData);
+		manager.deleteObject(withData.getRef());
 		try
 		{
 			manager.getObjectData(type, createdId, tag);

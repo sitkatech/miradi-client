@@ -639,7 +639,7 @@ public class Project implements ProjectInterface
 	
 	public void deleteObject(BaseObject object) throws Exception
 	{
-		objectManager.deleteObject(object);
+		objectManager.deleteObject(object.getRef());
 	}
 	
 	public void setObjectData(int objectType, BaseId objectId, String fieldTag, String dataValue) throws Exception
