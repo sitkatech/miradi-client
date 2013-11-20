@@ -367,6 +367,11 @@ public class ObjectManager
 	public void deleteObject(BaseObject object) throws Exception
 	{
 		ORef objectRef = object.getRef();
+		deleteObject(objectRef);
+	}
+
+	public void deleteObject(ORef objectRef)
+	{
 		removeFromReferrerCache(objectRef);
 		int objectType = objectRef.getObjectType();
 		BaseId objectId = objectRef.getObjectId();
