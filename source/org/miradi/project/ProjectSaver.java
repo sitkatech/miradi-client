@@ -128,7 +128,7 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 				{
 					ensureNoNonHtmlNewlinesExists(data);
 				}
-				writeUpdateObjectLine(ref, tag, data);
+				ProjectSaverHelper.writeUpdateObjectLine(getWriter(), ref, tag, data);
 			}
 		}
 	}
