@@ -368,8 +368,8 @@ public class ObjectManager
 	{
 		ORef objectRef = object.getRef();
 		removeFromReferrerCache(objectRef);
-		int objectType = object.getType();
-		BaseId objectId = object.getId();
+		int objectType = objectRef.getObjectType();
+		BaseId objectId = objectRef.getObjectId();
 		EAMObjectPool pool = getPool(objectType);
 		if(pool.findObject(objectId) == null)
 			throw new RuntimeException("Attempted to delete missing object: " + objectType + ":" + objectId);
