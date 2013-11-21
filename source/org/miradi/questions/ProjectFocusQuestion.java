@@ -34,12 +34,12 @@ public class ProjectFocusQuestion extends StaticChoiceQuestion
 		return new ChoiceItem[] {
 			new ChoiceItem("", EAM.text("Not Specified")),
 			new ChoiceItem(PLACE_CODE, EAM.text("Place")),	
-			new ChoiceItem(POLICY_AND_PRACTIVE_CODE, EAM.text("Policy and Practice")),
+			new ChoiceItem(POLICY_AND_PRACTICE_CODE, EAM.text("Policy and Practice")),
 			new ChoiceItem(PERFORMANCE_CODE, EAM.text("Performance")),
 		};
 	}
 	
 	private static final String PLACE_CODE = "Place";
-	public static final String POLICY_AND_PRACTIVE_CODE = "PolicyAndPractice";
+	public static final String POLICY_AND_PRACTICE_CODE = "PolicyAndPractice";
 	private static final String PERFORMANCE_CODE = "Performance";
 }
