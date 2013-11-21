@@ -35,7 +35,7 @@ public class ProjectScaleQuestion extends StaticChoiceQuestion
 			new ChoiceItem("", EAM.text("Not Specified")),
 			new ChoiceItem(GLOBAL_CODE, EAM.text("Global")),	
 			new ChoiceItem(REGIONAL_CODE, EAM.text("Regional")),
-			new ChoiceItem(LOCAL_CODE, EAM.text("local")),
+			new ChoiceItem(LOCAL_CODE, EAM.text("Local")),
 		};
 	}
 	
