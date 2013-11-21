@@ -25,7 +25,7 @@ import java.io.IOException;
 import org.martus.util.UnicodeWriter;
 import org.miradi.objecthelpers.ORef;
 
-public class ProjectSaverHelper
+public class MiradiProjectFileUtilities
 {
 	public static void writeNewObjectEntry(UnicodeWriter writer, ORef ref) throws Exception
 	{

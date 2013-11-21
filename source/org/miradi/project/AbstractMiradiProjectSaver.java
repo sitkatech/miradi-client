@@ -79,9 +79,9 @@ abstract public class AbstractMiradiProjectSaver
 	{
 		String defaultValueIdString = Integer.toString(defaultValueId);
 		String bundleName = SimpleThreatRatingFramework.getBundleKey(threatId, targetId);
-		ProjectSaverHelper.writeValue(getWriter(), ProjectSaverHelper.CREATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, bundleName);
-		ProjectSaverHelper.writeLabelTagValue(getWriter(), ProjectSaverHelper.UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, bundleName, ThreatRatingBundle.TAG_DEFAULT_VALUE_ID, defaultValueIdString);
-		ProjectSaverHelper.writeLabelTagValue(getWriter(), ProjectSaverHelper.UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, bundleName, ThreatRatingBundle.TAG_VALUES, ratings);
+		MiradiProjectFileUtilities.writeValue(getWriter(), MiradiProjectFileUtilities.CREATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, bundleName);
+		MiradiProjectFileUtilities.writeLabelTagValue(getWriter(), MiradiProjectFileUtilities.UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, bundleName, ThreatRatingBundle.TAG_DEFAULT_VALUE_ID, defaultValueIdString);
+		MiradiProjectFileUtilities.writeLabelTagValue(getWriter(), MiradiProjectFileUtilities.UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, bundleName, ThreatRatingBundle.TAG_VALUES, ratings);
 	}
 
 	protected void writeFileHeader() throws Exception
@@ -99,7 +99,7 @@ abstract public class AbstractMiradiProjectSaver
 		Date lastModified = new Date(lastModifiedMillis);
 		long lastModifiedForComputers = lastModified.getTime();
 		String lastModifiedForHumans = DateFormat.getDateTimeInstance().format(lastModified);
-		getWriter().writeln(ProjectSaverHelper.STOP_MARKER + " " + lastModifiedForComputers + " " + lastModifiedForHumans);
+		getWriter().writeln(MiradiProjectFileUtilities.STOP_MARKER + " " + lastModifiedForComputers + " " + lastModifiedForHumans);
 	}
 	
 	protected void flushWriter() throws IOException
@@ -109,7 +109,7 @@ abstract public class AbstractMiradiProjectSaver
 
 	protected void writeSchemaVersion() throws Exception
 	{
-		ProjectSaverHelper.writeTagValue(getWriter(), ProjectSaverHelper.UPDATE_PROJECT_VERSION_CODE, "Version", Integer.toString(LegacyProjectUtilities.DATA_VERSION));
+		MiradiProjectFileUtilities.writeTagValue(getWriter(), MiradiProjectFileUtilities.UPDATE_PROJECT_VERSION_CODE, "Version", Integer.toString(LegacyProjectUtilities.DATA_VERSION));
 	}
 
 	public static String getBasicFileHeader()
@@ -120,13 +120,13 @@ abstract public class AbstractMiradiProjectSaver
 	
 	protected void writeProjectInfo() throws Exception
 	{
-		ProjectSaverHelper.writeTagValue(getWriter(), ProjectSaverHelper.UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_HIGHEST_OBJECT_ID, Integer.toString(getHighestAssignedId()));
-		ProjectSaverHelper.writeTagValue(getWriter(), ProjectSaverHelper.UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_PROJECT_METADATA_ID, getProjectMetadataId());
+		MiradiProjectFileUtilities.writeTagValue(getWriter(), MiradiProjectFileUtilities.UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_HIGHEST_OBJECT_ID, Integer.toString(getHighestAssignedId()));
+		MiradiProjectFileUtilities.writeTagValue(getWriter(), MiradiProjectFileUtilities.UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_PROJECT_METADATA_ID, getProjectMetadataId());
 	}
 
 	protected void writeLastModified() throws Exception
 	{
-		ProjectSaverHelper.writeTagValue(getWriter(), ProjectSaverHelper.UPDATE_LAST_MODIFIED_TIME_CODE, ProjectSaverHelper.LAST_MODIFIED_TAG, LegacyProjectUtilities.timestampToString(getLastModifiedTime()));
+		MiradiProjectFileUtilities.writeTagValue(getWriter(), MiradiProjectFileUtilities.UPDATE_LAST_MODIFIED_TIME_CODE, MiradiProjectFileUtilities.LAST_MODIFIED_TAG, LegacyProjectUtilities.timestampToString(getLastModifiedTime()));
 	}
 	
 	protected void writeAllSimpleThreatRatings() throws Exception
@@ -154,7 +154,7 @@ abstract public class AbstractMiradiProjectSaver
 	{
 		String quarantineFileContents = getQuarantineData();
 		ensureNoNonHtmlNewlinesExists(quarantineFileContents);
-		ProjectSaverHelper.writeTagValue(getWriter(), ProjectSaverHelper.UPDATE_QUARANTINE_CODE, ProjectSaverHelper.QUARANTINE_DATA_TAG, quarantineFileContents);
+		MiradiProjectFileUtilities.writeTagValue(getWriter(), MiradiProjectFileUtilities.UPDATE_QUARANTINE_CODE, MiradiProjectFileUtilities.QUARANTINE_DATA_TAG, quarantineFileContents);
 	}
 	
 	protected void writeExceptionsLog() throws Exception
@@ -163,7 +163,7 @@ abstract public class AbstractMiradiProjectSaver
 		exceptions = HtmlUtilities.replaceNonHtmlNewlines(exceptions);
 		ensureNoNonHtmlNewlinesExists(exceptions);
 		exceptions = truncate(exceptions);
-		ProjectSaverHelper.writeTagValue(getWriter(), ProjectSaverHelper.UPDATE_EXCEPTIONS_CODE, ProjectSaverHelper.EXCEPTIONS_DATA_TAG, exceptions);
+		MiradiProjectFileUtilities.writeTagValue(getWriter(), MiradiProjectFileUtilities.UPDATE_EXCEPTIONS_CODE, MiradiProjectFileUtilities.EXCEPTIONS_DATA_TAG, exceptions);
 	}
 	
 	private String truncate(String fileContent)
@@ -191,7 +191,7 @@ abstract public class AbstractMiradiProjectSaver
 		for (int index = 0; index < sortedObjectRefs.size(); ++index)
 		{
 			final ORef ref = sortedObjectRefs.get(index);
-			ProjectSaverHelper.writeNewObjectEntry(getWriter(), ref);
+			MiradiProjectFileUtilities.writeNewObjectEntry(getWriter(), ref);
 			writeObjectUpdateEntries(ref);
 		}
 	}
