@@ -299,7 +299,7 @@ public class RtfWriter
 		encodedString = HtmlUtilities.stripAllHtmlTags(encodedString);
 		encodedString = XmlUtilities2.getXmlDecoded(encodedString);
 		
-		String NEW_LINE_TO_SEPERATE_FROM_NEXT_CHAR = "\\~" + HtmlUtilities.BR_TAG;
+		String NEW_LINE_TO_SEPERATE_FROM_NEXT_CHAR = "\\~\n";
 		StringBuffer buffer = new StringBuffer(encodedString);
 		for(int i = 0; i < buffer.length(); ++i)
 		{
