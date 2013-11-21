@@ -52,7 +52,7 @@ import org.miradi.project.MpzToMpfConverter;
 import org.miradi.project.ProjectInfo;
 import org.miradi.project.ProjectInterface;
 import org.miradi.project.ProjectLoader;
-import org.miradi.project.ProjectSaverHelper;
+import org.miradi.project.MiradiProjectFileUtilities;
 import org.miradi.project.RawProjectSaver;
 import org.miradi.project.threatrating.SimpleThreatFrameworkJson;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
@@ -222,7 +222,7 @@ public class MpfToMpzConverter extends AbstractConverter
 			if(line == null)
 				break;
 
-			if (line.startsWith(ProjectSaverHelper.STOP_MARKER))
+			if (line.startsWith(MiradiProjectFileUtilities.STOP_MARKER))
 			{
 				foundEnd = true;
 				continue;
@@ -241,18 +241,18 @@ public class MpfToMpzConverter extends AbstractConverter
 	
 	private void processLine(String line) throws Exception
 	{
-		if (line.startsWith(ProjectSaverHelper.CREATE_OBJECT_CODE))
+		if (line.startsWith(MiradiProjectFileUtilities.CREATE_OBJECT_CODE))
 		{
 			ORef ref = AbstractProjectLoader.extractRefFromLine(line);
 			EnhancedJsonObject jsonObject = createInitializedJson(ref.getObjectType());
 			jsonObject.putId("Id", ref.getObjectId());
 			refToJsonMap.put(ref, jsonObject);
 		}
-		else if (line.startsWith(ProjectSaverHelper.UPDATE_OBJECT_CODE))
+		else if (line.startsWith(MiradiProjectFileUtilities.UPDATE_OBJECT_CODE))
 		{
 			loadUpdateObjectline(line);
 		}
-		else if (line.startsWith(ProjectSaverHelper.UPDATE_PROJECT_INFO_CODE))
+		else if (line.startsWith(MiradiProjectFileUtilities.UPDATE_PROJECT_INFO_CODE))
 		{
 			loadProjectInformation(line);
 		}
@@ -309,8 +309,8 @@ public class MpfToMpzConverter extends AbstractConverter
 
 	private void loadProjectInformation(String line)
 	{
-		String[] splitLine = line.split(ProjectSaverHelper.TAB);
-		String[] tagValue = splitLine[1].split(ProjectSaverHelper.EQUALS);
+		String[] splitLine = line.split(MiradiProjectFileUtilities.TAB);
+		String[] tagValue = splitLine[1].split(MiradiProjectFileUtilities.EQUALS);
 		String tag = tagValue[0];
 		if (isProjectInformationTag(tag))
 		{

@@ -79,7 +79,7 @@ public class RawProjectSaver extends AbstractMiradiProjectSaver
 			String data = rawObject.get(tag);
 			if (data.length() > 0)
 			{
-				ProjectSaverHelper.writeUpdateObjectLine(getWriter(), ref, tag, data);
+				MiradiProjectFileUtilities.writeUpdateObjectLine(getWriter(), ref, tag, data);
 			}
 		}
 	}

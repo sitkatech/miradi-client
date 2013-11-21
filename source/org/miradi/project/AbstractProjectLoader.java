@@ -60,7 +60,7 @@ abstract public class AbstractProjectLoader
 			if(line == null)
 				break;
 			
-			if (line.startsWith(ProjectSaverHelper.STOP_MARKER))
+			if (line.startsWith(MiradiProjectFileUtilities.STOP_MARKER))
 			{
 				foundEnd = true;
 				long lastModified = processStopLine(line);
@@ -87,7 +87,7 @@ abstract public class AbstractProjectLoader
 			if(line == null)
 				break;
 
-			if (line.startsWith(ProjectSaverHelper.STOP_MARKER))
+			if (line.startsWith(MiradiProjectFileUtilities.STOP_MARKER))
 			{
 				long lastModified = processStopLine(line);
 				return lastModified;
@@ -125,31 +125,31 @@ abstract public class AbstractProjectLoader
 
 	private void processLine(String line) throws Exception
 	{
-		if (line.startsWith(ProjectSaverHelper.UPDATE_PROJECT_VERSION_CODE))
+		if (line.startsWith(MiradiProjectFileUtilities.UPDATE_PROJECT_VERSION_CODE))
 			loadProjectVersionLine(line);
 
-		else if (line.startsWith(ProjectSaverHelper.UPDATE_PROJECT_INFO_CODE))
+		else if (line.startsWith(MiradiProjectFileUtilities.UPDATE_PROJECT_INFO_CODE))
 			loadProjectInfoLine(line);
 		
-		else if (line.startsWith(ProjectSaverHelper.UPDATE_LAST_MODIFIED_TIME_CODE))
+		else if (line.startsWith(MiradiProjectFileUtilities.UPDATE_LAST_MODIFIED_TIME_CODE))
 			loadLastModified(line);
 		
-		else if (line.startsWith(ProjectSaverHelper.CREATE_OBJECT_CODE))
+		else if (line.startsWith(MiradiProjectFileUtilities.CREATE_OBJECT_CODE))
 			loadCreateObjectLine(line);
 		
-		else if (line.startsWith(ProjectSaverHelper.UPDATE_OBJECT_CODE))
+		else if (line.startsWith(MiradiProjectFileUtilities.UPDATE_OBJECT_CODE))
 			loadUpdateObjectline(line);
 		
-		else if (line.startsWith(ProjectSaverHelper.CREATE_SIMPLE_THREAT_RATING_BUNDLE_CODE))
+		else if (line.startsWith(MiradiProjectFileUtilities.CREATE_SIMPLE_THREAT_RATING_BUNDLE_CODE))
 			loadCreateSimpleThreatRatingLine(line);
 		
-		else if (line.startsWith(ProjectSaverHelper.UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE))
+		else if (line.startsWith(MiradiProjectFileUtilities.UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE))
 			loadUpdateSimpleThreatRatingLine(line);
 		
-		else if (line.startsWith(ProjectSaverHelper.UPDATE_QUARANTINE_CODE))
+		else if (line.startsWith(MiradiProjectFileUtilities.UPDATE_QUARANTINE_CODE))
 			loadQuarantine(line);
 		
-		else if(line.startsWith(ProjectSaverHelper.UPDATE_EXCEPTIONS_CODE))
+		else if(line.startsWith(MiradiProjectFileUtilities.UPDATE_EXCEPTIONS_CODE))
 			loadExceptions(line);
 		
 		else
@@ -173,7 +173,7 @@ abstract public class AbstractProjectLoader
 		String[] tagValue = parseTagValueLine(line);
 		String tag = tagValue[0];
 		String value = tagValue[1];
-		if(!tag.equals(ProjectSaverHelper.EXCEPTIONS_DATA_TAG))
+		if(!tag.equals(MiradiProjectFileUtilities.EXCEPTIONS_DATA_TAG))
 			throw new Exception("Unknown Exceptions field: " + tag);
 
 		updateExceptionLog(value);
@@ -184,7 +184,7 @@ abstract public class AbstractProjectLoader
 		String[] tagValue = parseTagValueLine(line);
 		String tag = tagValue[0];
 		String value = tagValue[1];
-		if(!tag.equals(ProjectSaverHelper.QUARANTINE_DATA_TAG))
+		if(!tag.equals(MiradiProjectFileUtilities.QUARANTINE_DATA_TAG))
 			throw new Exception("Unknown Quarantine field: " + tag);
 
 		updateQuarantineFile(value);
@@ -192,8 +192,8 @@ abstract public class AbstractProjectLoader
 
 	private String[] parseTagValueLine(String line) throws Exception
 	{
-		final String tag = StringUtilities.substringBetween(line, ProjectSaverHelper.TAB, ProjectSaverHelper.EQUALS);
-		final String value = StringUtilities.substringAfter(line, ProjectSaverHelper.EQUALS);;
+		final String tag = StringUtilities.substringBetween(line, MiradiProjectFileUtilities.TAB, MiradiProjectFileUtilities.EQUALS);
+		final String value = StringUtilities.substringAfter(line, MiradiProjectFileUtilities.EQUALS);;
 
 		return new String[] {tag, value};
 	}
@@ -204,8 +204,8 @@ abstract public class AbstractProjectLoader
 	
 	private void loadProjectInfoLine(final String line)
 	{
-		String[] splitLine = line.split(ProjectSaverHelper.TAB);
-		String[] tagValue = splitLine[1].split(ProjectSaverHelper.EQUALS);
+		String[] splitLine = line.split(MiradiProjectFileUtilities.TAB);
+		String[] tagValue = splitLine[1].split(MiradiProjectFileUtilities.EQUALS);
 		String tag = tagValue[0];
 		String value = tagValue[1];
 		if (tag.equals(ProjectInfo.TAG_PROJECT_METADATA_ID))
