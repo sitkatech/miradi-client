@@ -162,7 +162,7 @@ public class ExportCpmzDoer extends XmlExporterDoer
 	}
 	
 	@Override
-	protected boolean doesConfirmBetaExport() throws Exception
+	protected boolean doesConfirmExport() throws Exception
 	{
 		return true;
 	}
