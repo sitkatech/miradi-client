@@ -26,6 +26,6 @@ public class MiradiShareIcon extends MiradiResourceImageIcon
 {
 	public MiradiShareIcon()
 	{
-		super("icons/grid.png");
+		super("icons/miradiShareIcon.png");
 	}
 }
