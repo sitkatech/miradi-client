@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-21 15:16-0600\n"
+"POT-Creation-Date: 2013-11-21 22:01-0600\n"
 "PO-Revision-Date: 2013-04-02 10:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -2020,7 +2020,7 @@ msgid "Action|XML Miradi Project ZIP v1 [Deprecated] (.xmpz)"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExportXmpz2.java:35
-msgid "Action|XML Miradi Project ZIP v2 [BETA] (.xmpz2)"
+msgid "Action|XML Miradi Project ZIP v2 (.xmpz2)"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionZoomIn.java:34
@@ -3683,8 +3683,8 @@ msgid "Export Miradi Project"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:50
-msgid "Export Project (BETA)"
-msgstr "Exporter le projet (BETA)"
+msgid "Export Project"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:96
 msgid "Export complete"
@@ -30731,6 +30731,9 @@ msgid ""
 msgstr ""
 "Marin___Atlantique tropical occidental___Écorégion marine du versant nord-"
 "est du Brésil___Brésil"
+
+#~ msgid "Export Project (BETA)"
+#~ msgstr "Exporter le projet (BETA)"
 
 #~ msgid ""
 #~ "choice|/resources/fieldoptions/ThreatTaxonomies.tsv|\"Natural System "
