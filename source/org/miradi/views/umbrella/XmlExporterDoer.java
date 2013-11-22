@@ -47,7 +47,7 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 	@Override
 	protected boolean doesConfirmExport() throws Exception
 	{
-		String title = EAM.text("Export Project (BETA)");
+		String title = EAM.text("Export Project");
 		String[] body = new String[] {
 			EAM.text("The XMPZ format is only supported for compatibility with Miradi 3.3. " +
 					"It does not support some of the newer features of Miradi 4.0, so exporting " +
