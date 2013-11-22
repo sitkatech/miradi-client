@@ -45,7 +45,7 @@ import org.miradi.xml.XmlExporter;
 abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 {
 	@Override
-	protected boolean doesConfirmBetaExport() throws Exception
+	protected boolean doesConfirmExport() throws Exception
 	{
 		String title = EAM.text("Export Project (BETA)");
 		String[] body = new String[] {
