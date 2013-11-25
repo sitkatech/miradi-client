@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-21 15:16-0600\n"
+"POT-Creation-Date: 2013-11-21 22:01-0600\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1854,7 +1854,7 @@ msgid "Action|XML Miradi Project ZIP v1 [Deprecated] (.xmpz)"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExportXmpz2.java:35
-msgid "Action|XML Miradi Project ZIP v2 [BETA] (.xmpz2)"
+msgid "Action|XML Miradi Project ZIP v2 (.xmpz2)"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionZoomIn.java:34
@@ -3420,7 +3420,7 @@ msgid "Export Miradi Project"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:50
-msgid "Export Project (BETA)"
+msgid "Export Project"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:96
