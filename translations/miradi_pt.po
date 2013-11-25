@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-21 22:01-0600\n"
+"POT-Creation-Date: 2013-11-25 13:31-0600\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -250,10 +250,6 @@ msgstr ""
 msgid "%fieldName field data will be lost for %indicatorLabel (Indicator)"
 msgstr ""
 
-#: Miradi/source/org/miradi/migrations/AbstractModifyMultipleFieldMigration.java:69
-msgid "%fieldName will be removed, label = %label"
-msgstr ""
-
 #: Miradi/source/org/miradi/migrations/forward/MigrationTo4.java:189
 msgid ""
 "%futureStatusCount future status(s) for indicator (%indicatorLabel) exist, "
@@ -282,6 +278,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/migrations/forward/MigrationTo9.java:111
 msgid "%s field data will be lost for measurement"
+msgstr ""
+
+#: Miradi/source/org/miradi/migrations/AbstractModifyMultipleFieldMigration.java:66
+msgid "%s will be removed."
 msgstr ""
 
 # Do we translate any of this?
@@ -4676,6 +4676,10 @@ msgstr "Atributo Chave"
 #: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:42
 msgid "Key Ecological Attribute (KEA)"
 msgstr "Atributo Ecológico Chave "
+
+#: Miradi/source/org/miradi/migrations/AbstractModifyMultipleFieldMigration.java:65
+msgid "Label = %s"
+msgstr ""
 
 #: Miradi/source/org/miradi/objects/FutureStatus.java:95
 msgid "Label|(Future Status)"
