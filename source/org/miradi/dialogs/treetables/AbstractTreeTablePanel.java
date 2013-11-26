@@ -141,11 +141,9 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		{		
 			if (isColumnExpandCollapseCommand(event))
 			{
-				getMainTable().clearColumnSelection();
 				rebuildEntireTreeAndTable();
 			}
-			
-			
+
 			if (doesCommandForceRebuild(event))
 			{
 				rebuildEntireTreeAndTable();
