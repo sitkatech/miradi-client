@@ -37,6 +37,12 @@ public class TaxonomyClassificationMapData extends ObjectData
 		
 		data = new TaxonomyClassificationMap();
 	}
+	
+	@Override
+	public boolean isTaxonomyClassificationMapData()
+	{
+		return true;
+	}
 
 	@Override
 	public String get()

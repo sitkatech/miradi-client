@@ -170,6 +170,11 @@ abstract public class ObjectData
 	{
 		return false;
 	}
+	
+	public boolean isTaxonomyClassificationMapData()
+	{
+		return false;
+	}
 
 	public ChoiceQuestion getChoiceQuestion()
 	{
