@@ -36,8 +36,10 @@ import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.Task;
@@ -451,10 +453,24 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		for (int index = 0; index < assignmentRefs.size(); ++index)
 		{
 			Assignment assignment = Assignment.findAssignment(getProject(), assignmentRefs.get(index));
-			assignments.add(assignment);
+			if (shouldIncludeAssignment(assignmentRefs.get(index)))
+				assignments.add(assignment);
 		}
 		
 		return assignments;
+	}
+
+	private boolean shouldIncludeAssignment(ORef assignmentRef)
+	{
+		if (ExpenseAssignment.is(assignmentRef))
+			return true;
+		
+		ORefSet resourcesFilter = getResourcesFilter();
+		if (resourcesFilter.isEmpty())
+			return true;
+		
+		ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), assignmentRef);
+		return resourcesFilter.contains(resourceAssignment.getResourceRef());
 	}
 	
 	private Vector<Assignment> convertToVector(Assignment assignment)
