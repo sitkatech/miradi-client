@@ -23,10 +23,11 @@ package org.miradi.views.summary;
 import javax.swing.Icon;
 
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
-import org.miradi.forms.objects.MiradiShareProjectDataForm;
+import org.miradi.forms.objects.MiradiShareTabForm;
 import org.miradi.icons.MiradiShareIcon;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.Project;
 import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
@@ -78,12 +79,8 @@ public class SummaryMiradiSharePanel extends ObjectDataInputPanelWithSections
 	@Override
 	public void exportRtf(RtfWriter writer) throws Exception
 	{
-		RtfFormExporter rtfFormExporter = new RtfFormExporter(getProject(), writer, getSelectedRefs());
-		rtfFormExporter.exportForm(createMiradiShareProjectDataForm());
-	}
-	
-	private static MiradiShareProjectDataForm createMiradiShareProjectDataForm()
-	{
-		return new MiradiShareProjectDataForm();
+		final ORef[] singletonRefs = getSingletonRefs(getProject());
+		RtfFormExporter rtfFormExporter = new RtfFormExporter(getProject(), writer, new ORefList(singletonRefs));
+		rtfFormExporter.exportForm(new MiradiShareTabForm());
 	}
 }
