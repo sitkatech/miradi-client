@@ -57,7 +57,6 @@ abstract public class UpperPanelBaseObjectTable extends EditableBaseObjectTable 
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		statusQuestionRenderer = new ChoiceItemTableCellRendererFactory(this, fontProvider);
 		codeListRenderer = new CodeListRendererFactory(mainWindowToUse, this, fontProvider);
-		singleLineRendererOrEditorFactory = new SingleLineObjectTableCellEditorOrRendererFactory(this, fontProvider);
 	}
 	
 	// FIXME urgent: This code no longer has any effect, so any useful bits
@@ -118,6 +117,14 @@ abstract public class UpperPanelBaseObjectTable extends EditableBaseObjectTable 
 			return statusQuestionRenderer;
 		}
 		
+		return getSafeSingleLineRendererOrEditorFactory();
+	}
+
+	private SingleLineObjectTableCellEditorOrRendererFactory getSafeSingleLineRendererOrEditorFactory()
+	{
+		if (singleLineRendererOrEditorFactory == null)
+			singleLineRendererOrEditorFactory = new SingleLineObjectTableCellEditorOrRendererFactory(this, new DefaultFontProvider(getMainWindow()));
+
 		return singleLineRendererOrEditorFactory;
 	}
 	
