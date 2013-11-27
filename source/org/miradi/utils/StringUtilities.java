@@ -54,6 +54,11 @@ public class StringUtilities
 		return joinListItems(list.toArray(new String[0]), prefix, "|", suffix);
 	}
 	
+	public static String joinList(Vector<String> list, String delimiter)
+	{
+		return joinListItems(list.toArray(new String[0]), "", delimiter, "");
+	}
+	
 	public static String joinWithOr(String[] tagsToKeep)
 	{
 		return joinListItems(tagsToKeep, "", "|", "");
