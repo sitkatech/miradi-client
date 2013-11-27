@@ -442,34 +442,47 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		BaseObject baseObjectForRowColumn = getBaseObjectForRowColumn(row, 0);
 		ORefList assignmentRefsForRowObject = baseObjectForRowColumn.getSafeRefListData(getAssignmentsTag());
 		if (assignmentRefsForRowObject.size() > 0)
-			return refsToAssignments(assignmentRefsForRowObject);
+		{
+			final Vector<Assignment> allAssignments = refsToAssignments(assignmentRefsForRowObject);
+			return getFilteredAssignments(allAssignments);
+		}
 		
 		return convertToVector(createAndAddNewAssignment(baseObjectForRowColumn));
 	}
 	
+	private Vector<Assignment> getFilteredAssignments(Vector<Assignment> refsToAssignments)
+	{
+		Vector<Assignment> assignments = new Vector<Assignment>();
+		for(Assignment assignment : refsToAssignments)
+		{
+			if (shouldIncludeAssignment(assignment))
+				assignments.add(assignment);
+		}
+		return assignments;
+	}
+
 	private Vector<Assignment> refsToAssignments(ORefList assignmentRefs)
 	{
 		Vector<Assignment> assignments = new Vector<Assignment>();
 		for (int index = 0; index < assignmentRefs.size(); ++index)
 		{
 			Assignment assignment = Assignment.findAssignment(getProject(), assignmentRefs.get(index));
-			if (shouldIncludeAssignment(assignmentRefs.get(index)))
-				assignments.add(assignment);
+			assignments.add(assignment);
 		}
 		
 		return assignments;
 	}
 
-	private boolean shouldIncludeAssignment(ORef assignmentRef)
+	private boolean shouldIncludeAssignment(Assignment assignment)
 	{
-		if (ExpenseAssignment.is(assignmentRef))
+		if (ExpenseAssignment.is(assignment))
 			return true;
 		
 		ORefSet resourcesFilter = getResourcesFilter();
 		if (resourcesFilter.isEmpty())
 			return true;
 		
-		ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), assignmentRef);
+		ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), assignment.getRef());
 		return resourcesFilter.contains(resourceAssignment.getResourceRef());
 	}
 	
