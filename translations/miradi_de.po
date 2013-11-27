@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-26 18:46-0600\n"
+"POT-Creation-Date: 2013-11-27 07:46-0600\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -319,7 +319,7 @@ msgstr "(Erstellen, managen und bewerten Sie Stresse für dieses Schutzobjekt)"
 msgid "(Definition Not Available)"
 msgstr "(Definition nicht verfügbar)"
 
-#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:118
+#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:120
 #: Miradi/source/org/miradi/dialogs/base/UpperPanelBaseObjectTableModel.java:125
 msgid "(Error)"
 msgstr "(Fehler)"
