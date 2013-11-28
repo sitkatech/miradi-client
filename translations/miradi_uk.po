@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-27 07:46-0600\n"
+"POT-Creation-Date: 2013-11-27 15:08-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -241,6 +241,10 @@ msgstr ""
 msgid "%fieldName field data will be lost for %indicatorLabel (Indicator)"
 msgstr ""
 
+#: Miradi/source/org/miradi/migrations/AbstractModifyMultipleFieldMigration.java:70
+msgid "%fieldName will be removed. %label"
+msgstr ""
+
 #: Miradi/source/org/miradi/migrations/forward/MigrationTo4.java:189
 msgid ""
 "%futureStatusCount future status(s) for indicator (%indicatorLabel) exist, "
@@ -269,10 +273,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/migrations/forward/MigrationTo9.java:111
 msgid "%s field data will be lost for measurement"
-msgstr ""
-
-#: Miradi/source/org/miradi/migrations/AbstractModifyMultipleFieldMigration.java:66
-msgid "%s will be removed."
 msgstr ""
 
 #: Miradi/source/org/miradi/utils/DiagramCorruptionDetector.java:222
@@ -4565,7 +4565,7 @@ msgstr "Label|IM адреса"
 msgid "Label|Methods"
 msgstr "Label|Методи"
 
-#: Miradi/source/org/miradi/views/summary/SummaryMiradiSharePanel.java:63
+#: Miradi/source/org/miradi/views/summary/SummaryMiradiSharePanel.java:64
 msgid "Label|Miradi Share"
 msgstr ""
 
