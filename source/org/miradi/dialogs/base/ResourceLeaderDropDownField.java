@@ -23,7 +23,6 @@ package org.miradi.dialogs.base;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusListener;
 
 import javax.swing.JComponent;
 
@@ -67,7 +66,6 @@ public class ResourceLeaderDropDownField extends ObjectChoiceField
 			return;
 
 		ChoiceItemComboBox newCombo = new ChoiceItemComboBox(question.getChoices());
-		transferFocusListeners(newCombo);
 		transferActionListeners(newCombo);
 
 		int currentComboIndex = getComponentIndex(getComboBox());
@@ -87,16 +85,6 @@ public class ResourceLeaderDropDownField extends ObjectChoiceField
 		}
 	}
 
-	private void transferFocusListeners(ChoiceItemComboBox newCombo)
-	{
-		FocusListener[] focusListeners = getComboBox().getFocusListeners();
-		for(FocusListener focusListener : focusListeners)
-		{
-			newCombo.addFocusListener(focusListener);
-			getComboBox().removeFocusListener(focusListener);
-		}
-	}
-	
 	private final int getComponentIndex(Component component) 
 	{
 		Container container = component.getParent();
