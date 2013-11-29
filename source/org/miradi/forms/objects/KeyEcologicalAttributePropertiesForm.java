@@ -35,5 +35,6 @@ public class KeyEcologicalAttributePropertiesForm extends FieldPanelSpec
 		addLabelAndField(type, KeyEcologicalAttribute.TAG_DETAILS);
 		addLabelAndField(type, KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
 		addLabelAndField(type, KeyEcologicalAttribute.TAG_DESCRIPTION);
+		addMultipleTaxonomyWithEditButtonFields(type, KeyEcologicalAttribute.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
 	}
 }
