@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.rtf;
 
 import java.awt.image.BufferedImage;
+import java.util.Collections;
+import java.util.Vector;
 
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.forms.FieldRelatedFormItem;
@@ -27,6 +29,7 @@ import org.miradi.forms.FormConstant;
 import org.miradi.forms.FormCurrencyFieldData;
 import org.miradi.forms.FormFieldData;
 import org.miradi.forms.FormFieldLabel;
+import org.miradi.forms.FormFieldMultipleTaxonomyWithEditButtonFields;
 import org.miradi.forms.FormFieldQuestionData;
 import org.miradi.forms.FormImage;
 import org.miradi.forms.FormItem;
@@ -36,14 +39,21 @@ import org.miradi.forms.objects.FormFieldCodeListData;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.CodeToUserStringMapData;
 import org.miradi.objectdata.ObjectData;
+import org.miradi.objectdata.TaxonomyClassificationMapData;
 import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.TaxonomyClassificationMap;
+import org.miradi.objecthelpers.TaxonomyHelper;
+import org.miradi.objectpools.TaxonomyAssociationPool;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.MiradiShareTaxonomy;
+import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.project.CurrencyFormat;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.MiradiShareTaxonomyQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.CodeList;
@@ -189,8 +199,75 @@ public class RtfFormExporter
 		{
 			return formatFormFieldCodeListFieldData(formRow, formItem);
 		}
+		else if (formItem.isMultipleTaxonomyWithEditButtonFields())
+		{
+			return formatFormFieldTaxonomyFieldData(formRow, (FormFieldMultipleTaxonomyWithEditButtonFields)formItem);
+		}
 		
 		return "";
+	}
+
+	private String formatFormFieldTaxonomyFieldData(FormRow formRow, FormFieldMultipleTaxonomyWithEditButtonFields formItem) throws Exception
+	{
+		String taxonomyClassificationAsString = getFieldData(formItem, formRow);
+		TaxonomyClassificationMap map = new TaxonomyClassificationMap(taxonomyClassificationAsString);
+		Vector<String> poolNamesForType = TaxonomyHelper.getTaxonomyAssociationPoolNamesForType(formItem.getObjectType());
+		StringBuffer concatinatedTaxonomies = new StringBuffer();
+		for(int index = 0; index < poolNamesForType.size(); ++index)
+		{
+			String taxonomyAssociationPoolName = poolNamesForType.get(index);
+			final String formattedTaxonomyClassifications = createUserReadableTaxonomyClassifications(taxonomyAssociationPoolName, map, formItem);
+			concatinatedTaxonomies.append(formattedTaxonomyClassifications);
+			if (index < poolNamesForType.size() && formattedTaxonomyClassifications.length() > 0)
+				concatinatedTaxonomies.append(" | ");
+		}
+
+		return concatinatedTaxonomies.toString();
+	}
+
+	private String createUserReadableTaxonomyClassifications(String taxonomyAssociationPoolName, TaxonomyClassificationMap map, FormFieldMultipleTaxonomyWithEditButtonFields formItem) throws Exception
+	{
+		ORef ref = getRefs().getRefForType(formItem.getObjectType());
+		BaseObject baseObject = getProject().findObject(ref);
+		TaxonomyAssociationPool taxonomyAssociationPool = getProject().getTaxonomyAssociationPool();		
+		Vector<TaxonomyAssociation> taxonomyAssociationsForType = taxonomyAssociationPool.findTaxonomyAssociationsForBaseObject(baseObject);
+		StringBuffer concatinatedTaxonomies = new StringBuffer();
+		for(int index = 0; index < taxonomyAssociationsForType.size(); ++index)
+		{
+			TaxonomyAssociation taxonomyAssociation = taxonomyAssociationsForType.get(index);
+			MiradiShareTaxonomy miradiShareTaxonomy = TaxonomyHelper.getTaxonomyElementList(taxonomyAssociation);
+			final MiradiShareTaxonomyQuestion miradiShareTaxonomyQuestion = new MiradiShareTaxonomyQuestion(miradiShareTaxonomy, taxonomyAssociation);
+			String choicesAsString = createLabelFromTaxonomyChoices(map, taxonomyAssociation, miradiShareTaxonomyQuestion);
+			String prefixWhiteSpace = "";
+			if (index > 0)
+				prefixWhiteSpace = " ";
+			
+			if (choicesAsString.length() > 0)
+				concatinatedTaxonomies.append(prefixWhiteSpace + taxonomyAssociation.getLabel() + " ");
+
+			concatinatedTaxonomies.append(choicesAsString);
+		}
+		
+		return concatinatedTaxonomies.toString();
+	}
+
+	private String createLabelFromTaxonomyChoices(TaxonomyClassificationMap map, TaxonomyAssociation taxonomyAssociation, MiradiShareTaxonomyQuestion miradiShareTaxonomyQuestion) throws Exception
+	{
+		final String taxonomyAssociationCode = taxonomyAssociation.getTaxonomyAssociationCode();
+		CodeList taxonomyElementCodes = map.getTaxonomyElementCodes(getProject(), taxonomyAssociationCode);
+		Vector<String> taxonomyLabels = new Vector<String>();
+		for (String taxonomyElementCode : taxonomyElementCodes)
+		{
+			final ChoiceItem taxonomyChoiceItem = miradiShareTaxonomyQuestion.findChoiceItem(taxonomyElementCode);
+			if (taxonomyChoiceItem != null)
+			{
+				taxonomyLabels.add(taxonomyChoiceItem.getLabel());
+			}
+		}	
+		
+		Collections.sort(taxonomyLabels);
+		
+		return StringUtilities.joinList(taxonomyLabels, ", ");
 	}
 
 	private String formatFormFieldCodeListFieldData(FormRow formRow, FormItem formItem) throws Exception
@@ -200,7 +277,7 @@ public class RtfFormExporter
 		ChoiceQuestion question = formFieldCodeListData.getQuestion();
 		CodeList codeList = new CodeList(codeListAsString);
 		String appendedLabels = "";
-		appendedLabels += "Count:" + codeList.size() + StringUtilities.NEW_LINE;
+		appendedLabels += " Count:" + codeList.size() + StringUtilities.NEW_LINE;
 		for (int index = 0; index < codeList.size(); ++index)
 		{
 			ChoiceItem choiceItem = question.findChoiceByCode(codeList.get(index));
@@ -233,8 +310,16 @@ public class RtfFormExporter
 		
 		if (rawObjectData.isCodeToUserStringMapData())
 			return createFromCodeToUserStringMapData((CodeToUserStringMapData) rawObjectData, formRow);
+		
+		if (rawObjectData.isTaxonomyClassificationMapData())
+			return createFromTaxonomyClassificationMapData((TaxonomyClassificationMapData) rawObjectData, formRow);
 	
 		return rawObjectData.get();
+	}
+
+	private String createFromTaxonomyClassificationMapData(TaxonomyClassificationMapData rawObjectData, FormRow formRow)
+	{
+		return rawObjectData.getTaxonomyClassifications().toJsonString();
 	}
 
 	private String createFromChoiceData(ObjectData choiceData)

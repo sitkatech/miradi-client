@@ -27,6 +27,27 @@ import org.miradi.utils.CodeList;
 
 abstract public class DynamicChoiceWithRootChoiceItem extends MultiSelectDynamicChoiceQuestion
 {
+	public ChoiceItem findChoiceItem(String code) throws Exception
+	{
+		ChoiceItemWithChildren headChoiceItem = createHeaderChoiceItem();
+		return recursivelyFindChoiceItem(headChoiceItem.getChildren(), code);
+	}
+	
+	private ChoiceItem recursivelyFindChoiceItem(Vector<ChoiceItem> children, String codeToFind)
+	{
+		for(ChoiceItem childChoiceItem : children)
+		{
+			String code = childChoiceItem.getCode();
+			if (code.equals(codeToFind))
+				return childChoiceItem;
+
+			if (childChoiceItem.hasChildren())
+				return recursivelyFindChoiceItem(childChoiceItem.getChildren(), codeToFind);
+		}
+		
+		return null;
+	}
+
 	@Override
 	public CodeList getAllCodes()
 	{
