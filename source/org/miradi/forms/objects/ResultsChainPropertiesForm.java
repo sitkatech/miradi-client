@@ -20,10 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.forms.objects;
 
 import org.miradi.forms.FieldPanelSpec;
+import org.miradi.objects.ResultsChainDiagram;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 
 public class ResultsChainPropertiesForm extends FieldPanelSpec
 {
 	public ResultsChainPropertiesForm()
 	{
+		addMultipleTaxonomyWithEditButtonFields(ResultsChainDiagramSchema.getObjectType(), ResultsChainDiagram.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
 	}
 }

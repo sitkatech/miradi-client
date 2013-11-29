@@ -37,5 +37,6 @@ public class StrategyCoreSubForm extends FieldPanelSpec
 		addLabelAndFieldsWithLabels(EAM.text("Priority"), type, new String[]{Strategy.TAG_IMPACT_RATING, Strategy.TAG_FEASIBILITY_RATING, Strategy.PSEUDO_TAG_RATING_SUMMARY});
 		addLabelAndField(type, Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
 		addLabelAndFieldWithLabel(EAM.text("Progress"), type, Strategy.TAG_PROGRESS_REPORT_REFS);
+		addMultipleTaxonomyWithEditButtonFields(type, Strategy.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
 	}
 }

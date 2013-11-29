@@ -33,5 +33,6 @@ public class IndicatorSubForm extends FieldPanelSpec
 		addStandardNameRow(IconManager.getIndicatorIcon(), EAM.text("Indicator"), type, new String[]{Indicator.TAG_SHORT_LABEL, Indicator.TAG_LABEL});
 		addLabelAndField(type, Indicator.TAG_DETAIL);
 		addLabelAndField(type, Indicator.TAG_COMMENTS);
+		addMultipleTaxonomyWithEditButtonFields(type, Indicator.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
 	}
 }

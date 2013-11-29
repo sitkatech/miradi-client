@@ -28,5 +28,6 @@ public class ThreatReductionResultPropertiesForm extends FieldPanelSpec
 	public ThreatReductionResultPropertiesForm()
 	{
 		addLabelAndField(ThreatReductionResultSchema.getObjectType(), ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF);
+		addMultipleTaxonomyWithEditButtonFields(ThreatReductionResultSchema.getObjectType(), ThreatReductionResult.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
 	}
 }

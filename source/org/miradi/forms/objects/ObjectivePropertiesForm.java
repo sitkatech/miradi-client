@@ -40,5 +40,6 @@ public class ObjectivePropertiesForm extends FieldPanelSpec
 		addLabelAndField(type, Objective.PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS);
 		addLabelAndFieldsWithLabels(EAM.text("Progress Percents"), type, new String[]{Objective.TAG_PROGRESS_PERCENT_REFS});
 		addLabelAndField(type, Goal.TAG_COMMENTS);
+		addMultipleTaxonomyWithEditButtonFields(ObjectiveSchema.getObjectType(), Objective.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
 	}
 }

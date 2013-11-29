@@ -32,5 +32,6 @@ public class TaskDetailsSubForm extends FieldPanelSpec
 		addLabelAndField(TaskSchema.getObjectType(), Task.TAG_DETAILS);
 		
 		addLabelAndFieldWithLabel(EAM.text("Progress Reports"), TaskSchema.getObjectType(), Task.TAG_PROGRESS_REPORT_REFS);
+		addMultipleTaxonomyWithEditButtonFields(TaskSchema.getObjectType(), Task.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
 	}
 }

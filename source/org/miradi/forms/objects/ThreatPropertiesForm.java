@@ -28,5 +28,6 @@ public class ThreatPropertiesForm extends FieldPanelSpec
 	public ThreatPropertiesForm()
 	{
 		addLabelAndField(CauseSchema.getObjectType(), Cause.TAG_TAXONOMY_CODE);
+		addMultipleTaxonomyWithEditButtonFields(CauseSchema.getObjectType(), Cause.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
 	}
 }

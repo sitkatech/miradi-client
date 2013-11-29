@@ -35,5 +35,6 @@ public class GoalPropertiesForm extends FieldPanelSpec
 		addLabelAndField(GoalSchema.getObjectType(), Desire.PSEUDO_TAG_FACTOR);
 		addLabelAndField(GoalSchema.getObjectType(), Desire.PSEUDO_TAG_DIRECT_THREATS);
 		addLabelAndField(GoalSchema.getObjectType(), Desire.TAG_COMMENTS);
+		addMultipleTaxonomyWithEditButtonFields(GoalSchema.getObjectType(), Goal.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
 	}
 }
