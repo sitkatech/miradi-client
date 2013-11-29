@@ -149,6 +149,7 @@ public class StandardReportPanel extends TwoColumnPanel
 		summaryCodes.add(ReportTemplateContentQuestion.SUMMARY_VIEW_WCS_TAB_CODE);
 		summaryCodes.add(ReportTemplateContentQuestion.SUMMARY_VIEW_RARE_TAB_CODE);
 		summaryCodes.add(ReportTemplateContentQuestion.SUMMARY_VIEW_FOS_TAB_CODE);
+		summaryCodes.add(ReportTemplateContentQuestion.SUMMARY_VIEW_MIRADI_SHARE_TAB_CODE);
 		
 		return summaryCodes;
 	}
