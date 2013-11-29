@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-27 20:16-0600\n"
+"POT-Creation-Date: 2013-11-29 16:46-0600\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -1115,7 +1115,7 @@ msgstr "Codice Contabile"
 
 #: Miradi/source/org/miradi/views/workplan/AccountingCodeManagementConfiguration.java:60
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:291
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:189
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:191
 msgid "Accounting Codes"
 msgstr "Codici Contabili"
 
@@ -1133,11 +1133,11 @@ msgstr ""
 msgid "Acct Code"
 msgstr "Codice Acct "
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:209
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:211
 msgid "Action Plan: Objective-based"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:214
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:216
 msgid "Action Plan: Strategy-based"
 msgstr ""
 
@@ -2130,7 +2130,7 @@ msgid "An unexpected error has occurred."
 msgstr "Si è verificato un errore inaspettato."
 
 #: Miradi/source/org/miradi/views/workplan/AnalysisManagementConfiguration.java:50
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:184
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:186
 msgid "Analysis"
 msgstr ""
 
@@ -2396,7 +2396,7 @@ msgstr ""
 "modalità effetto collaterale."
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteAudienceDoer.java:38
-#: Miradi/source/org/miradi/rtf/viewExporters/SummaryViewRtfExporter.java:150
+#: Miradi/source/org/miradi/rtf/viewExporters/SummaryViewRtfExporter.java:155
 msgid "Audience"
 msgstr "Pubblico"
 
@@ -2478,12 +2478,12 @@ msgstr ""
 "strategico e di monitoraggio."
 
 #: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:50
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:174
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:176
 msgid "Budget Category One"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:51
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:179
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:181
 msgid "Budget Category Two"
 msgstr ""
 
@@ -2879,7 +2879,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:107
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:69
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:82
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:84
 #: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelDiagramPanel.java:69
 msgid "Conceptual Model"
 msgstr "Modello Concettuale"
@@ -3095,7 +3095,7 @@ msgid ""
 "first file only."
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:131
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:133
 msgid "Custom Table: %s"
 msgstr ""
 
@@ -3971,7 +3971,7 @@ msgstr "Fonte di finanziamento"
 
 #: Miradi/source/org/miradi/views/workplan/FundingSourceManagementConfiguration.java:58
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:304
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:169
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:171
 msgid "Funding Sources"
 msgstr "Fonti di finanziamento"
 
@@ -4168,7 +4168,7 @@ msgid "Human Wellbeing Targets Only"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteIucnRedlistSpeciesDoer.java:38
-#: Miradi/source/org/miradi/rtf/viewExporters/SummaryViewRtfExporter.java:117
+#: Miradi/source/org/miradi/rtf/viewExporters/SummaryViewRtfExporter.java:122
 msgid "IUCN Redlist Species"
 msgstr "IUCN Specie in Lista Rossa"
 
@@ -4790,7 +4790,7 @@ msgid "Legacy TNC Ratings"
 msgstr "Valutazione dell'ordinamento TNC"
 
 #: Miradi/source/org/miradi/rtf/legend/RtfLegendExporter.java:101
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:159
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:161
 msgid "Legend Table"
 msgstr "Tabella della legenda"
 
@@ -5274,6 +5274,10 @@ msgstr ""
 msgid "Miradi Preferences"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:76
+msgid "Miradi Share"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:71
 msgid "Miradi Share Program"
 msgstr ""
@@ -5330,7 +5334,7 @@ msgstr "Panoramica sul monitoraggio"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:151
 #: Miradi/source/org/miradi/questions/MonitoringTreeConfigurationQuestion.java:35
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:204
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:206
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:69
 msgid "Monitoring Plan"
 msgstr "Piano di Monitoraggio"
@@ -5630,7 +5634,7 @@ msgid "Ordered List"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/doers/DeleteOranizationDoer.java:32
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:234
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:236
 msgid "Organization"
 msgstr "Organizzazione"
 
@@ -5643,7 +5647,7 @@ msgid "Other"
 msgstr "Altro"
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteOtherNotableSpeciesDoer.java:38
-#: Miradi/source/org/miradi/rtf/viewExporters/SummaryViewRtfExporter.java:118
+#: Miradi/source/org/miradi/rtf/viewExporters/SummaryViewRtfExporter.java:123
 msgid "Other Notable Species"
 msgstr "Altre specie rilevanti"
 
@@ -5913,7 +5917,7 @@ msgstr "Avanzamento(Progress)"
 msgid "Progress Percents"
 msgstr "Percentuali di Avanzamento(Progress)"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:164
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:166
 msgid "Progress Report"
 msgstr "Resoconto di Avanzamento(Progress Report)"
 
@@ -6164,7 +6168,7 @@ msgstr ""
 "attività/metodo o un compito. Ci sono tre principali tipi di risorse - "
 "umane, materiali e finanziarie."
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:194
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:196
 msgid "Resources"
 msgstr "Risorse"
 
@@ -6190,7 +6194,7 @@ msgid ""
 "Diagram Properties)."
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:83
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:85
 #: Miradi/source/org/miradi/dialogs/diagram/ResultsChainDiagramPanel.java:50
 msgid "Results Chains"
 msgstr "Catene dei risultati"
@@ -7760,11 +7764,11 @@ msgstr "Tan"
 msgid "Target"
 msgstr "Target di Conservazione"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:154
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:156
 msgid "Target Viability - Details"
 msgstr "Vitalità del Target di Conservazione- Dettagli"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:149
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:151
 msgid "Target Viability - Table"
 msgstr "Vitalità del Target di Conservazione- Tabella"
 
@@ -7849,7 +7853,7 @@ msgstr "Il Task non ha elemento superiore"
 msgid "Tasks"
 msgstr "Task"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:229
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:231
 msgid "Team"
 msgstr "Team"
 
@@ -8259,11 +8263,11 @@ msgstr ""
 msgid "Threat Ratings"
 msgstr "Analisi delle Minacce"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:224
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:226
 msgid "Threat Ratings - Details"
 msgstr "Analisi delle minacce - Dettagli"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:219
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:221
 msgid "Threat Ratings - Table"
 msgstr "Analisi delle minacce - Tabella"
 
@@ -9025,7 +9029,7 @@ msgid "Wizard load of control failed:"
 msgstr "Caricamento del controllo non riuscito:"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:191
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:199
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:201
 msgid "Work Plan"
 msgstr "Piano di lavoro"
 

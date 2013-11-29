@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-27 20:16-0600\n"
+"POT-Creation-Date: 2013-11-29 16:46-0600\n"
 "PO-Revision-Date: 2013-06-07 01:56+0100\n"
 "Last-Translator: Galragchaa <galragchaa@yahoo.com>\n"
 "Language-Team: none\n"
@@ -1098,7 +1098,7 @@ msgstr "Тооцооны код"
 
 #: Miradi/source/org/miradi/views/workplan/AccountingCodeManagementConfiguration.java:60
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:291
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:189
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:191
 msgid "Accounting Codes"
 msgstr "Тооцооны кодууд"
 
@@ -1116,11 +1116,11 @@ msgstr ""
 msgid "Acct Code"
 msgstr "Acct Код"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:209
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:211
 msgid "Action Plan: Objective-based"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:214
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:216
 msgid "Action Plan: Strategy-based"
 msgstr ""
 
@@ -2110,7 +2110,7 @@ msgid "An unexpected error has occurred."
 msgstr "Гэнэтийн алдаа гарлаа."
 
 #: Miradi/source/org/miradi/views/workplan/AnalysisManagementConfiguration.java:50
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:184
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:186
 msgid "Analysis"
 msgstr ""
 
@@ -2366,7 +2366,7 @@ msgid "Attempted to execute side effect command while not in side effect mode."
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteAudienceDoer.java:38
-#: Miradi/source/org/miradi/rtf/viewExporters/SummaryViewRtfExporter.java:150
+#: Miradi/source/org/miradi/rtf/viewExporters/SummaryViewRtfExporter.java:155
 msgid "Audience"
 msgstr "Сонсогчид"
 
@@ -2447,12 +2447,12 @@ msgstr ""
 "хэрэгжүүлэх зардлын урьдчилан тооцсон үнэлгээ ба санхүүгийн эх үүсвэр."
 
 #: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:50
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:174
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:176
 msgid "Budget Category One"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:51
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:179
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:181
 msgid "Budget Category Two"
 msgstr ""
 
@@ -2846,7 +2846,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:107
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:69
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:82
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:84
 #: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelDiagramPanel.java:69
 msgid "Conceptual Model"
 msgstr "Концепцийн загвар"
@@ -3056,7 +3056,7 @@ msgid ""
 "first file only."
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:131
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:133
 msgid "Custom Table: %s"
 msgstr ""
 
@@ -3923,7 +3923,7 @@ msgstr "Санхүүжилтийн эх үүсвэр"
 
 #: Miradi/source/org/miradi/views/workplan/FundingSourceManagementConfiguration.java:58
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:304
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:169
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:171
 msgid "Funding Sources"
 msgstr "Санхүүжилтийн эх үүсвэрүүд"
 
@@ -4117,7 +4117,7 @@ msgid "Human Wellbeing Targets Only"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteIucnRedlistSpeciesDoer.java:38
-#: Miradi/source/org/miradi/rtf/viewExporters/SummaryViewRtfExporter.java:117
+#: Miradi/source/org/miradi/rtf/viewExporters/SummaryViewRtfExporter.java:122
 msgid "IUCN Redlist Species"
 msgstr "IUCN-ны ховор амьтдын улаан дансанд орсон зүйл"
 
@@ -4735,7 +4735,7 @@ msgid "Legacy TNC Ratings"
 msgstr "TNC-ийн уламжлалт үнэлгээ"
 
 #: Miradi/source/org/miradi/rtf/legend/RtfLegendExporter.java:101
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:159
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:161
 msgid "Legend Table"
 msgstr "Таних тэмдгийн хүснэгт"
 
@@ -5212,6 +5212,10 @@ msgstr ""
 msgid "Miradi Preferences"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:76
+msgid "Miradi Share"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:71
 msgid "Miradi Share Program"
 msgstr ""
@@ -5268,7 +5272,7 @@ msgstr "Хяналтын тойм үнэлгээ"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:151
 #: Miradi/source/org/miradi/questions/MonitoringTreeConfigurationQuestion.java:35
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:204
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:206
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:69
 msgid "Monitoring Plan"
 msgstr "Мониторингийн төлөвлөгөө"
@@ -5566,7 +5570,7 @@ msgid "Ordered List"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/doers/DeleteOranizationDoer.java:32
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:234
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:236
 msgid "Organization"
 msgstr "Байгууллага"
 
@@ -5579,7 +5583,7 @@ msgid "Other"
 msgstr "Бусад"
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteOtherNotableSpeciesDoer.java:38
-#: Miradi/source/org/miradi/rtf/viewExporters/SummaryViewRtfExporter.java:118
+#: Miradi/source/org/miradi/rtf/viewExporters/SummaryViewRtfExporter.java:123
 msgid "Other Notable Species"
 msgstr "Өөр бусад онцгой төрөл зүйлүүд"
 
@@ -5849,7 +5853,7 @@ msgstr "Ахиц"
 msgid "Progress Percents"
 msgstr "Хэрэгжилтийн хувь"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:164
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:166
 msgid "Progress Report"
 msgstr "Хэрэгжилтийн тайлан"
 
@@ -6099,7 +6103,7 @@ msgstr ""
 "шаардлагатай хүн аль эсвэл зүйл. Гурван гол нөөц байдаг - хүнийн, материалын "
 "болон санхүүгийн."
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:194
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:196
 msgid "Resources"
 msgstr "Нөөцүүд"
 
@@ -6125,7 +6129,7 @@ msgid ""
 "Diagram Properties)."
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:83
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:85
 #: Miradi/source/org/miradi/dialogs/diagram/ResultsChainDiagramPanel.java:50
 msgid "Results Chains"
 msgstr "Үр дүнгийн  хэлхээс"
@@ -7681,11 +7685,11 @@ msgstr "Ухаа шаргал"
 msgid "Target"
 msgstr "Хамгаалах  зүйл"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:154
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:156
 msgid "Target Viability - Details"
 msgstr "Хамгаалах зүйлийн амьдрах чадвар - Дэлгэрэнгүй:"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:149
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:151
 msgid "Target Viability - Table"
 msgstr "Хамгаалах зүйлийн амьдрах чадвар - Хүснэгт"
 
@@ -7768,7 +7772,7 @@ msgstr "Даалгавар гарал үүсэлгүй байна."
 msgid "Tasks"
 msgstr "Даалгаварууд"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:229
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:231
 msgid "Team"
 msgstr "Баг"
 
@@ -8178,11 +8182,11 @@ msgstr ""
 msgid "Threat Ratings"
 msgstr "Аюул заналын үнэлгээ"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:224
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:226
 msgid "Threat Ratings - Details"
 msgstr "Аюул заналын үнэлгээ - Дэлгэрэнгүй:"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:219
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:221
 msgid "Threat Ratings - Table"
 msgstr "Аюул заналын үнэлгээ  - Хүснэгт"
 
@@ -8963,7 +8967,7 @@ msgid "Wizard load of control failed:"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:191
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:199
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:201
 msgid "Work Plan"
 msgstr "Ажлын төлөвлөгөө"
 
