@@ -26,6 +26,7 @@ import org.miradi.dialogs.organization.OrganizationPoolTableModel;
 import org.miradi.dialogs.otherNotableSpecies.OtherNotableSpeciesEditablePoolTableModel;
 import org.miradi.dialogs.summary.TeamPoolTableModel;
 import org.miradi.forms.PropertiesPanelSpec;
+import org.miradi.forms.objects.MiradiShareTabForm;
 import org.miradi.forms.summary.FosTabForm;
 import org.miradi.forms.summary.LocationTabForm;
 import org.miradi.forms.summary.PlanningTabForm;
@@ -43,6 +44,7 @@ import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.schemas.FosProjectDataSchema;
+import org.miradi.schemas.MiradiShareProjectDataSchema;
 import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.schemas.WcpaProjectDataSchema;
@@ -93,6 +95,9 @@ public class SummaryViewRtfExporter extends RtfViewExporter
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.SUMMARY_VIEW_FOS_TAB_CODE))
 			exportFosTab(writer);
+		
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.SUMMARY_VIEW_MIRADI_SHARE_TAB_CODE))
+			exportMiradiShareTab(writer);
 	}
 
 	private void exportProjectTab(RtfWriter writer) throws Exception
@@ -161,6 +166,11 @@ public class SummaryViewRtfExporter extends RtfViewExporter
 	private void exportFosTab(RtfWriter writer) throws Exception
 	{
 		exportForm(writer, new FosTabForm(), FosProjectDataSchema.getObjectType());
+	}
+	
+	private void exportMiradiShareTab(RtfWriter writer) throws Exception
+	{
+		exportForm(writer, new MiradiShareTabForm(), MiradiShareProjectDataSchema.getObjectType());
 	}
 
 	private void exportForm(RtfWriter writer, PropertiesPanelSpec form, int otherProjectDataType) throws Exception
