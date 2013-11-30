@@ -23,11 +23,13 @@ package org.miradi.dialogs.base;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusListener;
 
 import javax.swing.JComponent;
 
 import org.miradi.dialogfields.ObjectChoiceField;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ResourceLeaderQuestionWithUnspecifiedChoice;
@@ -67,6 +69,7 @@ public class ResourceLeaderDropDownField extends ObjectChoiceField
 
 		ChoiceItemComboBox newCombo = new ChoiceItemComboBox(question.getChoices());
 		transferActionListeners(newCombo);
+		transferFocusListeners(newCombo);
 
 		int currentComboIndex = getComponentIndex(getComboBox());
 		parent.add(newCombo, currentComboIndex);
@@ -82,6 +85,28 @@ public class ResourceLeaderDropDownField extends ObjectChoiceField
 		{
 			newCombo.addActionListener(actionListener);
 			getComboBox().removeActionListener(actionListener);
+		}
+	}
+	
+	private void transferFocusListeners(ChoiceItemComboBox newCombo)
+	{
+		removeAllFocusListeners(newCombo);
+		FocusListener[] focusListeners = getComboBox().getFocusListeners();
+		for(FocusListener focusListener : focusListeners)
+		{
+			newCombo.addFocusListener(focusListener);
+		}
+		
+		if (getComboBox().getFocusListeners().length != newCombo.getFocusListeners().length)
+			EAM.logWarning("Orphan focus listener created");
+	}
+
+	private void removeAllFocusListeners(ChoiceItemComboBox combo)
+	{
+		FocusListener[] focusListeners = combo.getFocusListeners();
+		for(FocusListener focusListener : focusListeners)
+		{
+			combo.removeFocusListener(focusListener);
 		}
 	}
 
