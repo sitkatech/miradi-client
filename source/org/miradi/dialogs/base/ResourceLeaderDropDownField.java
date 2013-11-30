@@ -68,6 +68,12 @@ public class ResourceLeaderDropDownField extends ObjectChoiceField
 			return;
 
 		ChoiceItemComboBox newCombo = new ChoiceItemComboBox(question.getChoices());
+		//NOTE: ActionListeners are transferred since the parent constructor adds actionListener. 
+		//Parent saves data using ActionListener vs ItemListener.  
+		//Default focus listeners are removed from new comboBox since we want to transfer
+		//the default and custom focus listeners from old combo box. 
+		// This may be dangerous if more ActionListeners or FocusListeners are used in the future
+		// or if they are changed
 		transferActionListeners(newCombo);
 		transferFocusListeners(newCombo);
 
