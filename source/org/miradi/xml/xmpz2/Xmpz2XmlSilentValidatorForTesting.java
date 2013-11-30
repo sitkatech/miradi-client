@@ -20,13 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
+import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.xml.wcs.Xmpz2XmlValidator;
 import org.xml.sax.SAXParseException;
 
 public class Xmpz2XmlSilentValidatorForTesting extends Xmpz2XmlValidator
 {
 	@Override
-	protected void logException(SAXParseException e)
+	protected void logException(SAXParseException e, InputStreamWithSeek xmlInputStream)
 	{
 	}
 }

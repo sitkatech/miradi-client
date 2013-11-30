@@ -20,9 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml;
 
-import java.io.InputStream;
 import java.net.URL;
 
+import org.martus.util.UnicodeReader;
+import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.main.EAM;
 import org.miradi.main.ResourcesHandler;
 import org.miradi.xml.xmpz2.ValidationDriver;
@@ -38,7 +39,7 @@ import com.thaiopensource.validate.rng.CompactSchemaReader;
 //have better error handling
 abstract public class MiradiXmlValidator
 {
-	public boolean isValid(InputStream xmlInputStream) throws Exception
+	public boolean isValid(InputStreamWithSeek xmlInputStream) throws Exception
 	{
 		PropertyMapBuilder properties = getValidatorProperties();
 		URL resourceURL = ResourcesHandler.getEnglishResourceURL(getSchemaFileRelativePathName());
@@ -57,7 +58,7 @@ abstract public class MiradiXmlValidator
 			}
 			catch(SAXParseException e)
 			{
-				logException(e);
+				logException(e, xmlInputStream);
 				return false;
 			}
 			catch(Exception e)
@@ -70,15 +71,37 @@ abstract public class MiradiXmlValidator
 		throw new Exception("XML file is invalid (does not conform to the schema)");
 	}
 
-	protected void logException(SAXParseException e)
+	protected void logException(SAXParseException e, InputStreamWithSeek xmlInputStream) throws Exception
 	{
-		String error = "XML Parse error line " + e.getLineNumber() + ", column " + e.getColumnNumber() + "\n";
+		final int lineNumber = e.getLineNumber();
+		String lineValue = findLineValue(xmlInputStream, lineNumber);
+		String error = "XML Parse error line " + lineNumber + ", column " + e.getColumnNumber() + "\n";
+		error += "Line :" + lineValue + "\n";
 		error += " Public Id: " + e.getPublicId() + "\n";
 		error += " System Id: " + e.getSystemId();
 		EAM.logError(error);
 		EAM.logException(e);
 	}
 
+	private String findLineValue(InputStreamWithSeek xmlInputStream, final int lineNumber) throws Exception
+	{
+		xmlInputStream.seek(0);
+		UnicodeReader reader = new UnicodeReader(xmlInputStream);
+		int lineCounter = 0;
+		while(true)
+		{
+			String line = reader.readLine();
+			lineCounter++;
+			if(line == null)
+				break;
+			
+			if (lineCounter == lineNumber)
+				return line;
+		}
+		
+		return "Line Not Found";
+	}
+	
 	private PropertyMapBuilder getValidatorProperties()
 	{
 		PropertyMapBuilder properties = new PropertyMapBuilder();

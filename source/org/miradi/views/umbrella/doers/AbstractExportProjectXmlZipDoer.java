@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.umbrella.doers;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -28,6 +27,7 @@ import java.net.URL;
 import java.util.zip.ZipOutputStream;
 
 import org.martus.util.UnicodeReader;
+import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.exceptions.InvalidICUNSelectionException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
@@ -137,7 +137,7 @@ abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 	}
 	
 	@Override
-	protected boolean isValidXml(ByteArrayInputStream inputStream) throws Exception
+	protected boolean isValidXml(InputStreamWithSeek inputStream) throws Exception
 	{
 		return new WcsMiradiXmlValidator().isValid(inputStream);
 	}

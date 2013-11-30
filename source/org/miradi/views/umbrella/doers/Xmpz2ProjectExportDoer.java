@@ -20,8 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.umbrella.doers;
 
-import java.io.ByteArrayInputStream;
 
+import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.utils.MiradiFileSaveChooser;
 import org.miradi.utils.Xmpz2ZipFileChooser;
 import org.miradi.xml.XmlExporter;
@@ -49,7 +49,7 @@ public class Xmpz2ProjectExportDoer extends AbstractExportProjectXmlZipDoer
 	}
 	
 	@Override
-	protected boolean isValidXml(ByteArrayInputStream inputStream) throws Exception
+	protected boolean isValidXml(InputStreamWithSeek inputStream) throws Exception
 	{
 		return new Xmpz2XmlValidator().isValid(inputStream);
 	}

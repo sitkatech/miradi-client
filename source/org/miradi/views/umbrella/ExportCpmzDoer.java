@@ -19,13 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Vector;
 import java.util.zip.ZipOutputStream;
 
+import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.exceptions.InvalidICUNSelectionException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.files.AbstractMpfFileFilter;
@@ -156,7 +156,7 @@ public class ExportCpmzDoer extends XmlExporterDoer
 	}
 	
 	@Override
-	protected boolean isValidXml(ByteArrayInputStream inputStream) throws Exception
+	protected boolean isValidXml(InputStreamWithSeek inputStream) throws Exception
 	{
 		return new ConProMiradiXmlValidator().isValid(inputStream);
 	}

@@ -20,11 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.conpro.exporter;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.martus.util.DirectoryUtils;
+import org.martus.util.inputstreamwithseek.FileInputStreamWithSeek;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.TestCaseWithProject;
@@ -111,7 +111,7 @@ public class TestConproXmlExporter extends TestCaseWithProject
 		try
 		{
 			new ConproXmlExporter(getProject()).export(tempXmlOutFile);
-			assertTrue("did not validate?", new ConProMiradiXmlValidator().isValid(new FileInputStream(tempXmlOutFile)));
+			assertTrue("did not validate?", new ConProMiradiXmlValidator().isValid(new FileInputStreamWithSeek(tempXmlOutFile)));
 		}
 		finally
 		{

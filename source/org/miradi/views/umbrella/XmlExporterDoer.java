@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella;
 
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -29,6 +28,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+import org.martus.util.inputstreamwithseek.ByteArrayInputStreamWithSeek;
+import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -84,7 +85,7 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 	protected void addProjectAsXmlToZip(ZipOutputStream zipOut) throws Exception
 	{
 		byte[] projectXmlInBytes = exportProjectXmlToBytes();
-		ByteArrayInputStream inputStream = new ByteArrayInputStream(projectXmlInBytes);
+		ByteArrayInputStreamWithSeek inputStream = new ByteArrayInputStreamWithSeek(projectXmlInBytes);
 		try
 		{
 			if (!isValidXml(inputStream))
@@ -179,7 +180,7 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 	
 	abstract protected XmlExporter createExporter() throws Exception;
 	
-	abstract protected boolean isValidXml(ByteArrayInputStream inputStream) throws Exception;
+	abstract protected boolean isValidXml(InputStreamWithSeek inputStream) throws Exception;
 
 	@Override
 	abstract protected MiradiFileSaveChooser createFileChooser();
