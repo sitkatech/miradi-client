@@ -55,6 +55,7 @@ public class TextAreaRightClickMouseHandler extends MouseAdapter
 	
 	private void fireRightClick(MouseEvent e)
 	{
+		textField.requestFocus();
 		setInvocationLocation(e.getPoint());
 		getRightClickMenu().show(getTextField(), e.getX(), e.getY());
 	}
