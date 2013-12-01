@@ -50,7 +50,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 		try 
 		{
 			//FIXME medium - this needs to be cleaned up.  Push down into sub classes.  
-			if (!doesConfirmExport() ||  !doesUserConfirm())
+			if (!doesUserConfirm())
 				return;
 			
 			MiradiFileSaveChooser eamFileChooser = createFileChooser();
@@ -99,11 +99,6 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 	protected String getIOExceptionErrorMessage()
 	{
 		return EAM.text("<html>An error occurred<br/><br/>Perhaps the destination is full or readonly.");
-	}
-	
-	protected boolean doesConfirmExport() throws Exception
-	{
-		return true;
 	}
 	
 	protected boolean doesUserConfirm() throws Exception

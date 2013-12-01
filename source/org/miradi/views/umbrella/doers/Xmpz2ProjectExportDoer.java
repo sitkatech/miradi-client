@@ -31,7 +31,7 @@ import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
 public class Xmpz2ProjectExportDoer extends AbstractExportProjectXmlZipDoer
 {
 	@Override
-	protected boolean doesConfirmExport() throws Exception
+	protected boolean doesUserConfirm() throws Exception
 	{
 		return true;
 	}
