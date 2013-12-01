@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-30 15:16-0600\n"
+"POT-Creation-Date: 2013-12-01 11:16-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -3574,7 +3574,7 @@ msgid "Expert Knowledge"
 msgstr "Спеціальне знання"
 
 #: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:87
-#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:65
+#: Miradi/source/org/miradi/views/umbrella/doers/ExportXmpzDoer.java:64
 msgid "Export"
 msgstr "Експорт"
 
@@ -3590,7 +3590,7 @@ msgstr ""
 msgid "Export Miradi Project"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:51
+#: Miradi/source/org/miradi/views/umbrella/doers/ExportXmpzDoer.java:50
 msgid "Export Project"
 msgstr ""
 
@@ -3602,11 +3602,11 @@ msgstr "Експорт завершено"
 msgid "Export to Miradi Zip..."
 msgstr "Експортувати до Miradi Zip..."
 
-#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:178
+#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:153
 msgid "Export..."
 msgstr "Експортувати..."
 
-#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:94
+#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:69
 msgid "Exported file does not validate."
 msgstr "Експортований файл не дійсний."
 
@@ -7845,7 +7845,7 @@ msgstr ""
 "інструменти, такі як Міраді. Більше інформації на сайті www."
 "ConservationMeasures.org"
 
-#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:53
+#: Miradi/source/org/miradi/views/umbrella/doers/ExportXmpzDoer.java:52
 msgid ""
 "The XMPZ format is only supported for compatibility with Miradi 3.3. It does "
 "not support some of the newer features of Miradi 4.0, so exporting your "
@@ -8523,7 +8523,7 @@ msgstr ""
 msgid "Unable to save preferences"
 msgstr "Неможливо зберегти преференції"
 
-#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:81
+#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:56
 msgid ""
 "Unable to write XML. Perhaps the disk was full, or you don't have permission "
 "to write to it, or you are using invalid characters in the file name."
