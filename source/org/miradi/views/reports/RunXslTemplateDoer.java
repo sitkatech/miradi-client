@@ -27,12 +27,15 @@ import java.util.HashMap;
 import java.util.Set;
 
 import javax.imageio.stream.FileImageOutputStream;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
 import org.martus.util.UnicodeStringReader;
+import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
@@ -45,7 +48,13 @@ import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.views.ObjectsDoer;
 import org.miradi.views.umbrella.SaveImagePngDoer;
+import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.xml.sax.InputSource;
 
 public class RunXslTemplateDoer extends ObjectsDoer
 {
@@ -68,9 +77,61 @@ public class RunXslTemplateDoer extends ObjectsDoer
 		String xlsTemplate = selectedObject.getData(XslTemplate.TAG_TEMPLATE_CONTENTS);
 		xlsTemplate = HtmlUtilities.convertStoredXslToNative(xlsTemplate);
 		
+		Document document = createDomDocument(xlsTemplate);
+		String xmpz2NameSpaceUrl = findXmpz2SNameSpaceUrl(document);
+		String xmpz2SchemaVersion = xmpz2NameSpaceUrl.replaceAll(Xmpz2XmlConstants.PARTIAL_NAME_SPACE, "");
+
+		boolean doesMatchXmpz2SchemaVersion = xmpz2SchemaVersion.equals(Xmpz2XmlConstants.NAME_SPACE_VERSION);
+		if (!doesMatchXmpz2SchemaVersion)
+		{
+			HashMap<String, String> tokenToTextMap = new HashMap<String, String>();
+			tokenToTextMap.put("%xmpz2SchemaVersion", Xmpz2XmlConstants.NAME_SPACE_VERSION);
+			tokenToTextMap.put("%versioninXsl", xmpz2SchemaVersion);
+			EAM.errorDialog(EAM.substitute(EAM.text("Cannot export the report because the XSL's miradi namespace schema version does not match the current\n" +
+									 "xmpz2 schema version or the miradi xmpz2 name space reference in root element is missing.\n" +
+									 "Update the XLS and try again. \n" +
+									 "Current Xmpz2 schema version = %xmpz2SchemaVersion\n" +
+									 "Xmp2 schema version in XSL = %versioninXsl"), tokenToTextMap));
+			return;
+		}
+		
 		final File outputFile = getOutputFile(selectedObject);
 		if (outputFile != null)
 			transform(xlsTemplate, outputFile);
+	}
+
+	private String findXmpz2SNameSpaceUrl(Document document)
+	{
+		Element rootElement = document.getDocumentElement();
+		NamedNodeMap attributes = rootElement.getAttributes();
+	    if (attributes == null)
+	    	return "";
+	    
+	    for (int index = 0; index < attributes.getLength(); index++)
+	    {
+	    	Node node = attributes.item(index);
+	    	if (node.getNodeType() != Node.ATTRIBUTE_NODE)
+	    		continue;
+
+	    	final String textContent = node.getTextContent();
+	    	if (textContent == null)
+	    		continue;
+
+	    	if (textContent.contains(Xmpz2XmlConstants.PARTIAL_NAME_SPACE))
+	    		return textContent;
+	    }
+	    
+	    return "";
+	}
+	
+	private Document createDomDocument(String text) throws Exception
+	{
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		factory.setNamespaceAware(true);
+
+		InputSource inputSource = new InputSource(new StringInputStreamWithSeek(text));
+		DocumentBuilder documentBuilder = factory.newDocumentBuilder();
+		return documentBuilder.parse(inputSource);
 	}
 
 	public File getOutputFile(BaseObject selectedObject) throws Exception
