@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-01 11:16-0600\n"
+"POT-Creation-Date: 2013-12-01 12:31-0600\n"
 "PO-Revision-Date: 2013-04-02 10:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -2708,6 +2708,17 @@ msgstr "Annuler"
 msgid "Cancelled"
 msgstr "Annulé"
 
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:90
+msgid ""
+"Cannot export the report because the XSL's miradi namespace schema version "
+"does not match the current\n"
+"xmpz2 schema version or the miradi xmpz2 name space reference in root "
+"element is missing.\n"
+"Update the XLS and try again. \n"
+"Current Xmpz2 schema version = %xmpz2SchemaVersion\n"
+"Xmp2 schema version in XSL = %versioninXsl"
+msgstr ""
+
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:158
 msgid "Cannot import project file %s because it does not exist"
 msgstr "Impossible d'importer le fichier de projet %s car il n'existe pas"
@@ -4264,7 +4275,7 @@ msgstr "Ignorer les facteurs non liés..."
 msgid "Image Scale %"
 msgstr "Echelle de l'image %"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:103
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:164
 msgid "Images dir could not be created!"
 msgstr ""
 
@@ -5834,11 +5845,11 @@ msgstr ""
 "telle que :\n"
 "'%s'"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:121
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:182
 msgid "Please choose an empty directory!"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:85
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:146
 msgid "Please choose an output directory."
 msgstr ""
 
@@ -6205,7 +6216,7 @@ msgstr "Changer de nom ..."
 msgid "Replace Language Pack"
 msgstr "Remplacer le Pack de langues"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:160
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:221
 msgid "Report Completed"
 msgstr ""
 

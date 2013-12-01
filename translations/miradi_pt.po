@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-01 11:16-0600\n"
+"POT-Creation-Date: 2013-12-01 12:31-0600\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -2749,6 +2749,17 @@ msgstr "Cancelar"
 msgid "Cancelled"
 msgstr "Cancelado"
 
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:90
+msgid ""
+"Cannot export the report because the XSL's miradi namespace schema version "
+"does not match the current\n"
+"xmpz2 schema version or the miradi xmpz2 name space reference in root "
+"element is missing.\n"
+"Update the XLS and try again. \n"
+"Current Xmpz2 schema version = %xmpz2SchemaVersion\n"
+"Xmp2 schema version in XSL = %versioninXsl"
+msgstr ""
+
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:158
 msgid "Cannot import project file %s because it does not exist"
 msgstr "Não pode importar o arquivo de projeto %s porque não existe."
@@ -4337,7 +4348,7 @@ msgstr "Ignorando fatores sem ligação"
 msgid "Image Scale %"
 msgstr "Escala de Imagem %"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:103
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:164
 msgid "Images dir could not be created!"
 msgstr ""
 
@@ -5923,11 +5934,11 @@ msgstr ""
 "como:\n"
 "'%s'"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:121
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:182
 msgid "Please choose an empty directory!"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:85
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:146
 msgid "Please choose an output directory."
 msgstr ""
 
@@ -6294,7 +6305,7 @@ msgstr "Renomear..."
 msgid "Replace Language Pack"
 msgstr "Substituir Pacote de Idioma (Language Pack)"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:160
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:221
 msgid "Report Completed"
 msgstr "Relatório Concluido"
 
