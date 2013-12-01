@@ -37,4 +37,10 @@ public class WcsXmlExportDoer extends AbstractExportProjectXmlZipDoer
 	{
 		return WcsMiradiXmlValidator.WCS_MIRADI_SCHEMA_FILE_RELATIVE_PATH;
 	}
+	
+	@Override
+	protected boolean doesUserConfirm() throws Exception
+	{
+		return ExportXmpzDoer.doesUserConfirmXmpz1Export();
+	}
 }
