@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-30 09:46-0600\n"
+"POT-Creation-Date: 2013-11-30 15:16-0600\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -3629,7 +3629,7 @@ msgid "Expert Knowledge"
 msgstr "Conoscenza specialistica (Expert Knowledge)"
 
 #: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:87
-#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:64
+#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:65
 msgid "Export"
 msgstr "Esporta"
 
@@ -3645,7 +3645,7 @@ msgstr ""
 msgid "Export Miradi Project"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:50
+#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:51
 msgid "Export Project"
 msgstr ""
 
@@ -3657,11 +3657,11 @@ msgstr "Esportazione completa"
 msgid "Export to Miradi Zip..."
 msgstr "Esporta su Miradi Zip..."
 
-#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:177
+#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:178
 msgid "Export..."
 msgstr "Esporta..."
 
-#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:93
+#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:94
 msgid "Exported file does not validate."
 msgstr "Il file esportato non è valido."
 
@@ -7959,7 +7959,7 @@ msgstr ""
 "Miradi. Ulteriori informazioni sono disponibili presso www."
 "ConservationMeasures.org"
 
-#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:52
+#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:53
 msgid ""
 "The XMPZ format is only supported for compatibility with Miradi 3.3. It does "
 "not support some of the newer features of Miradi 4.0, so exporting your "
@@ -8637,7 +8637,7 @@ msgstr "Impossibile rinominare questo progetto perchè è in uso: \n"
 msgid "Unable to save preferences"
 msgstr "Impossibile salvare le preferenze"
 
-#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:80
+#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:81
 msgid ""
 "Unable to write XML. Perhaps the disk was full, or you don't have permission "
 "to write to it, or you are using invalid characters in the file name."
