@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-02 16:01-0600\n"
+"POT-Creation-Date: 2013-12-02 16:31-0600\n"
 "PO-Revision-Date: 2013-06-07 01:56+0100\n"
 "Last-Translator: Galragchaa <galragchaa@yahoo.com>\n"
 "Language-Team: none\n"
@@ -2469,7 +2469,7 @@ msgid "Bundle Rules"
 msgstr "Багц дүрэм"
 
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:91
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:107
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:108
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
 #: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:49
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:234
@@ -2513,7 +2513,7 @@ msgstr "Товч|Import хийгдэхгүй"
 msgid "Button|Exit"
 msgstr "Товч|Гарах"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:106
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:107
 msgid "Button|Export"
 msgstr ""
 
@@ -2641,7 +2641,7 @@ msgstr ""
 msgid "Can't link an item to itself"
 msgstr "Үүнийг өөртэй нь холбох боломжгүй байна"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:88
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:89
 #: Miradi/source/org/miradi/utils/ConstantButtonNames.java:28
 #: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:73
 #: Miradi/source/org/miradi/dialogs/base/AbstractSelectionDialog.java:90
@@ -2893,7 +2893,7 @@ msgstr ""
 msgid "Configure Work Plan Analysis"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:88
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:89
 msgid "Confirm"
 msgstr ""
 
@@ -2964,8 +2964,8 @@ msgstr ""
 " %DiagramType-д  холбоос эвдэрсэн байна: '%Диаграммын Нэр'.<br>Дараагийн "
 "тохиолдол бүрт холбоосыг  устгаж шинээр үүсгэнэ үү:<br>"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:70
-#: Miradi/source/org/miradi/views/umbrella/doers/ExportMpf40VersionDoer.java:63
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:71
+#: Miradi/source/org/miradi/views/umbrella/doers/ExportMpf40VersionDoer.java:64
 msgid "Could not migrate!"
 msgstr ""
 
@@ -3596,20 +3596,20 @@ msgstr "Сонгосон баганыг өргөжүүлэх"
 msgid "Expert Knowledge"
 msgstr "Экспертийн мэдлэг"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:88
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:89
 #: Miradi/source/org/miradi/views/umbrella/doers/ExportXmpzDoer.java:64
 msgid "Export"
 msgstr "Экспорт хийх"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/ExportMpf40VersionDoer.java:78
+#: Miradi/source/org/miradi/views/umbrella/doers/ExportMpf40VersionDoer.java:80
 msgid "Export 4.0 Miradi"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:98
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:99
 msgid "Export MPZ"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpfDoer.java:50
+#: Miradi/source/org/miradi/views/umbrella/ExportMpfDoer.java:52
 msgid "Export Miradi Project"
 msgstr ""
 
@@ -6236,7 +6236,7 @@ msgstr "Саванн- Чийглэг Саванн"
 msgid "Save As..."
 msgstr "Нэр, төрөл, байрлал...сольж хадгалах"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:107
+#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:109
 msgid "Save..."
 msgstr ""
 
@@ -8369,7 +8369,7 @@ msgstr "Гарчиг |TNC-ийн өвлөж ирсэн Стратегийн зэ
 msgid "Title|Link Create Dialog"
 msgstr "Гарчиг|Харилцан ярилах цонх үүсгэх линк"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:104
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:105
 msgid "Title|MPZ Export Warning"
 msgstr ""
 
@@ -8928,7 +8928,7 @@ msgstr "Хэзээ зогсоосон: "
 msgid "When Override was: %s"
 msgstr "Хэзээ зогсоосон: %s"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:80
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzDoer.java:81
 msgid ""
 "While migrating this project back to an older data format, some data would "
 "be lost. \n"
@@ -9141,7 +9141,8 @@ msgstr ""
 msgid "it will not be shown. Uncheck it to have Miradi "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:96
+#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:116
+#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:98
 #: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:55
 #: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:79
 msgid "save..."
