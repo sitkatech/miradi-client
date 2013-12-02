@@ -48,6 +48,7 @@ public class ExportMpf40VersionDoer extends AbstractFileSaverDoer
 	@Override
 	protected boolean doWork(File destinationFile, ProgressInterface progressInterface) throws Exception
 	{
+		initializeSingleStepSaveProgressInterface(progressInterface);
 		String mpfSnapShot = ProjectSaver.createSnapShot(getProject());
 		MigrationManager migrationManager = new MigrationManager();
 		RawProject rawProjectToMigrate = RawProjectLoader.loadProject(mpfSnapShot);
@@ -68,6 +69,7 @@ public class ExportMpf40VersionDoer extends AbstractFileSaverDoer
 		UnicodeWriter fileWriter = new UnicodeWriter(destinationFile);
 		fileWriter.write(migratedRawProjectAsString);
 		fileWriter.close();
+		progressInterface.incrementProgress();
 		
 		return true;
 	}

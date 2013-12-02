@@ -111,6 +111,11 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 		safeDoIt();
 	}
 	
+	protected void initializeSingleStepSaveProgressInterface(ProgressInterface progressInterface)
+	{
+		progressInterface.setStatusMessage(EAM.text("save..."), 1);
+	}
+	
 	private class ExportWorker extends MiradiBackgroundWorkerThread
 	{
 		public ExportWorker(ProgressInterface progressToNotify, File destinationFileToUse)

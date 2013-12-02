@@ -39,7 +39,9 @@ public class ExportMpfDoer extends AbstractFileSaverDoer
 	@Override
 	protected boolean doWork(File destinationFile, ProgressInterface progressInterface) throws Exception
 	{
+		initializeSingleStepSaveProgressInterface(progressInterface);
 		ProjectSaver.saveProject(getProject(), destinationFile);
+		progressInterface.incrementProgress();
 		
 		return true;
 	}

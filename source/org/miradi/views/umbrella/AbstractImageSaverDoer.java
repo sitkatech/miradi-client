@@ -46,10 +46,12 @@ abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 	@Override
 	protected boolean doWork(File destinationFile, ProgressInterface progressInterface) throws Exception
 	{
+		initializeSingleStepSaveProgressInterface(progressInterface);
 		ImageOutputStream out = createOutputStream(destinationFile);
 		try
 		{
 			saveImage(out, progressInterface);
+			progressInterface.incrementProgress();
 			return true;
 		}
 		finally
