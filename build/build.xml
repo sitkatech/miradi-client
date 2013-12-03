@@ -260,9 +260,6 @@
 <!-- THIRD-PARTY JARS, SOURCE, LICENSES                                 -->
 <!-- ================================================================== -->
 <target name='ThirdParty' depends='' description='Download third-party jars'>
-	
-	<get verbose='true' usetimestamp='true' src='http://artifacts.miradi.org/jres/windows-x86-1.7.0-Miradi-4.1.tgz' dest='${build.dir}/windows-x86-1.7.0_45.tar.gz' />
-
 	<antcall target='download'>
 		<param name='directory' value='BrowserLauncher2' />
 		<param name='filename' value='BrowserLauncher2-all-10rc4.jar' />
