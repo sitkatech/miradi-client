@@ -87,12 +87,11 @@ public class RunXslTemplateDoer extends ObjectsDoer
 			HashMap<String, String> tokenToTextMap = new HashMap<String, String>();
 			tokenToTextMap.put("%xmpz2SchemaVersion", Xmpz2XmlConstants.NAME_SPACE_VERSION);
 			tokenToTextMap.put("%versioninXsl", xmpz2SchemaVersion);
-			EAM.errorDialog(EAM.substitute(EAM.text("Cannot export the report because the XSL's miradi namespace schema version does not match the current\n" +
+			EAM.errorDialog(EAM.substitute(EAM.text("The report might not be correct since the XSL's miradi namespace schema version does not match the current\n" +
 									 "xmpz2 schema version or the miradi xmpz2 name space reference in root element is missing.\n" +
 									 "Update the XLS and try again. \n" +
 									 "Current Xmpz2 schema version = %xmpz2SchemaVersion\n" +
 									 "Xmp2 schema version in XSL = %versioninXsl"), tokenToTextMap));
-			return;
 		}
 		
 		final File outputFile = getOutputFile(selectedObject);
