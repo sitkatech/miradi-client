@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-03 16:09-0600\n"
+"POT-Creation-Date: 2013-12-04 09:31-0600\n"
 "PO-Revision-Date: 2013-06-07 01:56+0100\n"
 "Last-Translator: Galragchaa <galragchaa@yahoo.com>\n"
 "Language-Team: none\n"
@@ -2101,7 +2101,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr "Энэ үйлдлийг хийхэд дотоод алдаа саад болж байна."
 
-#: Miradi/source/org/miradi/main/MiradiStrings.java:54
+#: Miradi/source/org/miradi/main/MiradiStrings.java:59
 msgid "An unexpected error has occurred"
 msgstr "Гэнэтийн алдаа гарлаа"
 
@@ -2475,7 +2475,7 @@ msgstr "Багц дүрэм"
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:234
 #: Miradi/source/org/miradi/project/OldProjectDirToMpfConverter.java:57
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
-#: Miradi/source/org/miradi/main/MiradiStrings.java:34
+#: Miradi/source/org/miradi/main/MiradiStrings.java:39
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:132
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:171
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:54
@@ -2542,7 +2542,7 @@ msgstr "Товч|Байрлал зөөх"
 msgid "Button|No"
 msgstr "Товч|Үгүй"
 
-#: Miradi/source/org/miradi/main/MiradiStrings.java:44
+#: Miradi/source/org/miradi/main/MiradiStrings.java:49
 #: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:239
 msgid "Button|OK"
 msgstr "Товч|Зөвшөөрөн сонгох"
@@ -2551,12 +2551,12 @@ msgstr "Товч|Зөвшөөрөн сонгох"
 msgid "Button|Ok"
 msgstr "Товч|Зөвшөөрөн сонгох"
 
-#: Miradi/source/org/miradi/main/MiradiStrings.java:39
+#: Miradi/source/org/miradi/main/MiradiStrings.java:44
 #: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:44
 msgid "Button|Open"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MiradiStrings.java:29
+#: Miradi/source/org/miradi/main/MiradiStrings.java:34
 msgid "Button|Overwrite"
 msgstr ""
 
@@ -3172,7 +3172,7 @@ msgstr "Төслийн хүрээг тодорхойлох"
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:65
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:70
-#: Miradi/source/org/miradi/main/MiradiStrings.java:69
+#: Miradi/source/org/miradi/main/MiradiStrings.java:74
 msgid "Delete"
 msgstr "Устгах"
 
@@ -3604,6 +3604,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/ExportXmpzDoer.java:50
 msgid "Export Project"
+msgstr ""
+
+#: Miradi/source/org/miradi/main/MiradiStrings.java:29
+msgid "Export Report"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:96
@@ -4172,7 +4176,7 @@ msgstr "Холбоогүй хүчин зүйлүүдийг анхаарахгү�
 msgid "Image Scale %"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:163
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:171
 msgid "Images dir could not be created!"
 msgstr ""
 
@@ -5703,11 +5707,11 @@ msgstr ""
 "Үүнтэй:\n"
 "'%s адил ангиллаас өөр тодорхой ангиллыг сонгоно уу'"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:181
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:189
 msgid "Please choose an empty directory!"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:145
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:153
 msgid "Please choose an output directory."
 msgstr ""
 
@@ -6072,7 +6076,7 @@ msgstr "Нэр солих..."
 msgid "Replace Language Pack"
 msgstr "Хэлний багцыг солих"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:220
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:228
 msgid "Report Completed"
 msgstr ""
 
@@ -6135,7 +6139,7 @@ msgid "Results Chains"
 msgstr "Үр дүнгийн  хэлхээс"
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
-#: Miradi/source/org/miradi/main/MiradiStrings.java:64
+#: Miradi/source/org/miradi/main/MiradiStrings.java:69
 msgid "Retain"
 msgstr "Хэвээр хадгалж үлдэх"
 
@@ -6172,6 +6176,10 @@ msgstr "Тойм таамаглал"
 #: Miradi/source/org/miradi/questions/CurrencyTypeQuestion.java:42
 msgid "Ruble (Russia)"
 msgstr "Рубль (Орос улс)"
+
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:100
+msgid "Run XSL Report"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:122
 msgid "Run..."
@@ -7913,6 +7921,18 @@ msgstr ""
 "Линк зөвхөн энэ хуудаснаас гадна, Коцепцийн загварын болон Үр Дүнгийн Гинжин "
 "Холбооны бүх хуудаснаас устгагдах болно. "
 
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:93
+msgid ""
+"The output from this report might not be correct, because this XSL "
+"template \n"
+"appears to have been created for use with an earlier version of Miradi. "
+"The \n"
+"current Miradi schema version is %xmpz2SchemaVersion, but this template \n"
+"expects %versionInXsl. Continuing will produce output which may or may \n"
+"not be correct. \n"
+"Are you sure you want to do this?"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/notify/NotifyDialogTemplateFactory.java:31
 msgid ""
 "The pasted factors are now shared, meaning that any changes made in this "
@@ -7924,17 +7944,6 @@ msgid ""
 "where these factors originated, and paste them there. Then use the &lt;"
 "Cut&gt; command to move them to the clipboard, return to this diagram, and "
 "paste the new copies here."
-msgstr ""
-
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:90
-msgid ""
-"The report might not be correct since the XSL's miradi namespace schema "
-"version does not match the current\n"
-"xmpz2 schema version or the miradi xmpz2 name space reference in root "
-"element is missing.\n"
-"Update the XLS and try again. \n"
-"Current Xmpz2 schema version = %xmpz2SchemaVersion\n"
-"Xmp2 schema version in XSL = %versioninXsl"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:205
@@ -8307,7 +8316,7 @@ msgstr "Гарчиг|Диаграммын  агуулга"
 msgid "Title|Direct Threat Properties"
 msgstr "Гарчиг|Шууд үйлчлэх аюул заналын  агуулга"
 
-#: Miradi/source/org/miradi/main/MiradiStrings.java:59
+#: Miradi/source/org/miradi/main/MiradiStrings.java:64
 msgid "Title|Error"
 msgstr "Гарчиг|Алдаа"
 
@@ -8791,7 +8800,7 @@ msgstr "Зэрлэг амьтан хамгаалах нийгэмлэг"
 msgid "WWF"
 msgstr "Дэлхийн байгаль хамгаалах сан"
 
-#: Miradi/source/org/miradi/main/MiradiStrings.java:49
+#: Miradi/source/org/miradi/main/MiradiStrings.java:54
 msgid "Warning"
 msgstr "САНУУЛГА"
 
@@ -8965,7 +8974,7 @@ msgstr "Хэн зогсоосон: %s"
 msgid "Who and When"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MiradiStrings.java:74
+#: Miradi/source/org/miradi/main/MiradiStrings.java:79
 msgid "Wintitle|Information"
 msgstr ""
 
