@@ -302,7 +302,9 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	@Override
 	public void setValueAt(Object value, int row, int column)
 	{
-		if(getChoiceItemAt(row, column).getLabel().equals(value.toString()))
+		final String newValueAsString = value.toString();
+		final String oldValueAsString = getChoiceItemAt(row, column).getCode();
+		if(oldValueAsString.equals(newValueAsString))
 			return;
 		
 		try
