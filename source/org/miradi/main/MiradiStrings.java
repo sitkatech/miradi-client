@@ -24,6 +24,11 @@ import java.util.HashMap;
 
 public class MiradiStrings
 {
+	public static String getExportReportLabel()
+	{
+		return EAM.text("Export Report");
+	}
+
 	public static String getOverwriteLabel()
 	{
 		return EAM.text("Button|Overwrite");

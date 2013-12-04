@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 import javax.imageio.stream.FileImageOutputStream;
+import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
@@ -38,6 +39,7 @@ import org.martus.util.UnicodeStringReader;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.main.MiradiStrings;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.XslTemplate;
 import org.miradi.utils.BufferedImageFactory;
@@ -86,12 +88,18 @@ public class RunXslTemplateDoer extends ObjectsDoer
 		{
 			HashMap<String, String> tokenToTextMap = new HashMap<String, String>();
 			tokenToTextMap.put("%xmpz2SchemaVersion", Xmpz2XmlConstants.NAME_SPACE_VERSION);
-			tokenToTextMap.put("%versioninXsl", xmpz2SchemaVersion);
-			EAM.errorDialog(EAM.substitute(EAM.text("The report might not be correct since the XSL's miradi namespace schema version does not match the current\n" +
-									 "xmpz2 schema version or the miradi xmpz2 name space reference in root element is missing.\n" +
-									 "Update the XLS and try again. \n" +
-									 "Current Xmpz2 schema version = %xmpz2SchemaVersion\n" +
-									 "Xmp2 schema version in XSL = %versioninXsl"), tokenToTextMap));
+			tokenToTextMap.put("%versionInXsl", xmpz2SchemaVersion);
+			
+			String message = EAM.substitute(EAM.text("The output from this report might not be correct, because this XSL template \n" +
+													 "appears to have been created for use with an earlier version of Miradi. The \n" +
+													 "current Miradi schema version is %xmpz2SchemaVersion, but this template \n" +
+													 "expects %versionInXsl. Continuing will produce output which may or may \n" +
+													 "not be correct. \n" +
+													 "Are you sure you want to do this?"), tokenToTextMap);
+			
+			int result = EAM.confirmDialog(EAM.text("Run XSL Report"), message, new String[]{MiradiStrings.getExportReportLabel(), MiradiStrings.getCancelButtonText()});
+			if (result == JOptionPane.NO_OPTION)
+				return;
 		}
 		
 		final File outputFile = getOutputFile(selectedObject);
