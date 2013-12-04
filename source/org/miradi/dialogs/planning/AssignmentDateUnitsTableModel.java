@@ -302,6 +302,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	@Override
 	public void setValueAt(Object value, int row, int column)
 	{
+		// TODO: Compare with code in divideValue. Why does this not need trim and if?
 		final String newValueAsString = value.toString();
 		final String oldValueAsString = getChoiceItemAt(row, column).getCode();
 		if(oldValueAsString.equals(newValueAsString))
