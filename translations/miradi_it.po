@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-03 16:09-0600\n"
+"POT-Creation-Date: 2013-12-04 09:31-0600\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -2121,7 +2121,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr "Un errore interno ha impedito questa operazione"
 
-#: Miradi/source/org/miradi/main/MiradiStrings.java:54
+#: Miradi/source/org/miradi/main/MiradiStrings.java:59
 msgid "An unexpected error has occurred"
 msgstr "Si è verificato un errore inaspettato"
 
@@ -2506,7 +2506,7 @@ msgstr "Regole"
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:234
 #: Miradi/source/org/miradi/project/OldProjectDirToMpfConverter.java:57
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
-#: Miradi/source/org/miradi/main/MiradiStrings.java:34
+#: Miradi/source/org/miradi/main/MiradiStrings.java:39
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:132
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:171
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:54
@@ -2573,7 +2573,7 @@ msgstr "Sposta"
 msgid "Button|No"
 msgstr "No"
 
-#: Miradi/source/org/miradi/main/MiradiStrings.java:44
+#: Miradi/source/org/miradi/main/MiradiStrings.java:49
 #: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:239
 msgid "Button|OK"
 msgstr "OK"
@@ -2582,12 +2582,12 @@ msgstr "OK"
 msgid "Button|Ok"
 msgstr "Ok"
 
-#: Miradi/source/org/miradi/main/MiradiStrings.java:39
+#: Miradi/source/org/miradi/main/MiradiStrings.java:44
 #: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:44
 msgid "Button|Open"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MiradiStrings.java:29
+#: Miradi/source/org/miradi/main/MiradiStrings.java:34
 msgid "Button|Overwrite"
 msgstr ""
 
@@ -3211,7 +3211,7 @@ msgstr "Definisci l'Ambito geografico del Progetto di Conservazione"
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:65
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:70
-#: Miradi/source/org/miradi/main/MiradiStrings.java:69
+#: Miradi/source/org/miradi/main/MiradiStrings.java:74
 msgid "Delete"
 msgstr "Cancella"
 
@@ -3647,6 +3647,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/ExportXmpzDoer.java:50
 msgid "Export Project"
+msgstr ""
+
+#: Miradi/source/org/miradi/main/MiradiStrings.java:29
+msgid "Export Report"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:96
@@ -4223,7 +4227,7 @@ msgstr "I fattori non collegati sono ignorati....."
 msgid "Image Scale %"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:163
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:171
 msgid "Images dir could not be created!"
 msgstr ""
 
@@ -5769,11 +5773,11 @@ msgstr ""
 "come:\n"
 "'%s'"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:181
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:189
 msgid "Please choose an empty directory!"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:145
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:153
 msgid "Please choose an output directory."
 msgstr ""
 
@@ -6137,7 +6141,7 @@ msgstr "Rinomina..."
 msgid "Replace Language Pack"
 msgstr "Sostituisci il pacchetto di lingua"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:220
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:228
 msgid "Report Completed"
 msgstr ""
 
@@ -6200,7 +6204,7 @@ msgid "Results Chains"
 msgstr "Catene dei risultati"
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
-#: Miradi/source/org/miradi/main/MiradiStrings.java:64
+#: Miradi/source/org/miradi/main/MiradiStrings.java:69
 msgid "Retain"
 msgstr "Mantieni"
 
@@ -6237,6 +6241,10 @@ msgstr "Stima approssimativa"
 #: Miradi/source/org/miradi/questions/CurrencyTypeQuestion.java:42
 msgid "Ruble (Russia)"
 msgstr "Rublo(Russia)"
+
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:100
+msgid "Run XSL Report"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:122
 msgid "Run..."
@@ -7995,6 +8003,18 @@ msgstr ""
 "I(l) link verrà (verranno) cancellato(i) dalle pagine del Modello "
 "Concettuale e delle catene dei Risultati, non solo qui."
 
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:93
+msgid ""
+"The output from this report might not be correct, because this XSL "
+"template \n"
+"appears to have been created for use with an earlier version of Miradi. "
+"The \n"
+"current Miradi schema version is %xmpz2SchemaVersion, but this template \n"
+"expects %versionInXsl. Continuing will produce output which may or may \n"
+"not be correct. \n"
+"Are you sure you want to do this?"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/notify/NotifyDialogTemplateFactory.java:31
 msgid ""
 "The pasted factors are now shared, meaning that any changes made in this "
@@ -8006,17 +8026,6 @@ msgid ""
 "where these factors originated, and paste them there. Then use the &lt;"
 "Cut&gt; command to move them to the clipboard, return to this diagram, and "
 "paste the new copies here."
-msgstr ""
-
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:90
-msgid ""
-"The report might not be correct since the XSL's miradi namespace schema "
-"version does not match the current\n"
-"xmpz2 schema version or the miradi xmpz2 name space reference in root "
-"element is missing.\n"
-"Update the XLS and try again. \n"
-"Current Xmpz2 schema version = %xmpz2SchemaVersion\n"
-"Xmp2 schema version in XSL = %versioninXsl"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:205
@@ -8387,7 +8396,7 @@ msgstr "Proprietà Diagramma"
 msgid "Title|Direct Threat Properties"
 msgstr "Proprietà della Minaccia Diretta"
 
-#: Miradi/source/org/miradi/main/MiradiStrings.java:59
+#: Miradi/source/org/miradi/main/MiradiStrings.java:64
 msgid "Title|Error"
 msgstr "Errore"
 
@@ -8869,7 +8878,7 @@ msgstr "WCS"
 msgid "WWF"
 msgstr "WWF"
 
-#: Miradi/source/org/miradi/main/MiradiStrings.java:49
+#: Miradi/source/org/miradi/main/MiradiStrings.java:54
 msgid "Warning"
 msgstr "Avvertimento"
 
@@ -9027,7 +9036,7 @@ msgstr "Il Chi ignorato è: %s"
 msgid "Who and When"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MiradiStrings.java:74
+#: Miradi/source/org/miradi/main/MiradiStrings.java:79
 msgid "Wintitle|Information"
 msgstr "Informazione"
 

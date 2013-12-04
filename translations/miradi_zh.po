@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-03 16:09-0600\n"
+"POT-Creation-Date: 2013-12-04 09:31-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -1995,7 +1995,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr "一个内部错误阻止了该操作 \t\t"
 
-#: Miradi/source/org/miradi/main/MiradiStrings.java:54
+#: Miradi/source/org/miradi/main/MiradiStrings.java:59
 msgid "An unexpected error has occurred"
 msgstr ""
 
@@ -2364,7 +2364,7 @@ msgstr "规则集"
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:234
 #: Miradi/source/org/miradi/project/OldProjectDirToMpfConverter.java:57
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
-#: Miradi/source/org/miradi/main/MiradiStrings.java:34
+#: Miradi/source/org/miradi/main/MiradiStrings.java:39
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:132
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:171
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:54
@@ -2431,7 +2431,7 @@ msgstr ""
 msgid "Button|No"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MiradiStrings.java:44
+#: Miradi/source/org/miradi/main/MiradiStrings.java:49
 #: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:239
 msgid "Button|OK"
 msgstr "确定 \t\t"
@@ -2440,12 +2440,12 @@ msgstr "确定 \t\t"
 msgid "Button|Ok"
 msgstr "确定 \t\t"
 
-#: Miradi/source/org/miradi/main/MiradiStrings.java:39
+#: Miradi/source/org/miradi/main/MiradiStrings.java:44
 #: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:44
 msgid "Button|Open"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MiradiStrings.java:29
+#: Miradi/source/org/miradi/main/MiradiStrings.java:34
 msgid "Button|Overwrite"
 msgstr ""
 
@@ -3057,7 +3057,7 @@ msgstr "规定项目范围 \t\t"
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:65
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:70
-#: Miradi/source/org/miradi/main/MiradiStrings.java:69
+#: Miradi/source/org/miradi/main/MiradiStrings.java:74
 msgid "Delete"
 msgstr "删除 \t\t"
 
@@ -3484,6 +3484,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/ExportXmpzDoer.java:50
 msgid "Export Project"
+msgstr ""
+
+#: Miradi/source/org/miradi/main/MiradiStrings.java:29
+msgid "Export Report"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:96
@@ -4041,7 +4045,7 @@ msgstr ""
 msgid "Image Scale %"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:163
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:171
 msgid "Images dir could not be created!"
 msgstr ""
 
@@ -5541,11 +5545,11 @@ msgstr ""
 "请选择特定的类别，而不是种类如：\n"
 "'%s' \t\t"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:181
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:189
 msgid "Please choose an empty directory!"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:145
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:153
 msgid "Please choose an output directory."
 msgstr ""
 
@@ -5901,7 +5905,7 @@ msgstr "重命名… \t\t"
 msgid "Replace Language Pack"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:220
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:228
 msgid "Report Completed"
 msgstr ""
 
@@ -5963,7 +5967,7 @@ msgid "Results Chains"
 msgstr "结果链 \t\t"
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
-#: Miradi/source/org/miradi/main/MiradiStrings.java:64
+#: Miradi/source/org/miradi/main/MiradiStrings.java:69
 msgid "Retain"
 msgstr "保留 \t\t"
 
@@ -6000,6 +6004,10 @@ msgstr "大致猜测"
 #: Miradi/source/org/miradi/questions/CurrencyTypeQuestion.java:42
 msgid "Ruble (Russia)"
 msgstr "卢布（俄罗斯）"
+
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:100
+msgid "Run XSL Report"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:122
 msgid "Run..."
@@ -7683,6 +7691,18 @@ msgstr ""
 "该（多重）链接将会被从所有概念模型页面及结果链中删除，而不是仅限于该单一链"
 "接。 \t\t"
 
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:93
+msgid ""
+"The output from this report might not be correct, because this XSL "
+"template \n"
+"appears to have been created for use with an earlier version of Miradi. "
+"The \n"
+"current Miradi schema version is %xmpz2SchemaVersion, but this template \n"
+"expects %versionInXsl. Continuing will produce output which may or may \n"
+"not be correct. \n"
+"Are you sure you want to do this?"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/notify/NotifyDialogTemplateFactory.java:31
 msgid ""
 "The pasted factors are now shared, meaning that any changes made in this "
@@ -7694,17 +7714,6 @@ msgid ""
 "where these factors originated, and paste them there. Then use the &lt;"
 "Cut&gt; command to move them to the clipboard, return to this diagram, and "
 "paste the new copies here."
-msgstr ""
-
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:90
-msgid ""
-"The report might not be correct since the XSL's miradi namespace schema "
-"version does not match the current\n"
-"xmpz2 schema version or the miradi xmpz2 name space reference in root "
-"element is missing.\n"
-"Update the XLS and try again. \n"
-"Current Xmpz2 schema version = %xmpz2SchemaVersion\n"
-"Xmp2 schema version in XSL = %versioninXsl"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:205
@@ -8067,7 +8076,7 @@ msgstr "图表属性 \t\t"
 msgid "Title|Direct Threat Properties"
 msgstr "标题|直接威胁因子属性"
 
-#: Miradi/source/org/miradi/main/MiradiStrings.java:59
+#: Miradi/source/org/miradi/main/MiradiStrings.java:64
 msgid "Title|Error"
 msgstr "错误 "
 
@@ -8542,7 +8551,7 @@ msgstr "WCS "
 msgid "WWF"
 msgstr "WWF "
 
-#: Miradi/source/org/miradi/main/MiradiStrings.java:49
+#: Miradi/source/org/miradi/main/MiradiStrings.java:54
 msgid "Warning"
 msgstr "警告 \t\t"
 
@@ -8685,7 +8694,7 @@ msgstr ""
 msgid "Who and When"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MiradiStrings.java:74
+#: Miradi/source/org/miradi/main/MiradiStrings.java:79
 msgid "Wintitle|Information"
 msgstr "信息 \t\t"
 
