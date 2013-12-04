@@ -302,7 +302,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	@Override
 	public void setValueAt(Object value, int row, int column)
 	{
-		if(getValueAt(row, column).equals(value))
+		if(getChoiceItemAt(row, column).getLabel().equals(value.toString()))
 			return;
 		
 		try
