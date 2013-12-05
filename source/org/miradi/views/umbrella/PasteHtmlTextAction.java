@@ -57,7 +57,9 @@ public class PasteHtmlTextAction extends AbstractAction
 				return;                
 
 			final DataFlavor[] transferDataFlavors = contents.getTransferDataFlavors();
-			DataFlavor dataFlavor = selectBestDataFlavor(transferDataFlavors);        
+			DataFlavor dataFlavor = selectBestDataFlavor(transferDataFlavors);
+			if (dataFlavor == null)
+				return;
 
 			String clipboardValue = read(dataFlavor.getReaderForText(contents));
 			if(clipboardValue == null)
