@@ -36,7 +36,7 @@ public class XmlUtilities2
 	
 	public static String replaceNamedEntitiesWithNumericEntities(String value)
 	{
-		return value.replaceAll("&nbsp;", "#160;");
+		return value.replaceAll("&nbsp;", "&#160;");
 	}
 	
 	public static String getXmlDecoded(String value)
