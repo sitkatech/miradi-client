@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-04 15:46-0600\n"
+"POT-Creation-Date: 2013-12-05 16:31-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -6172,7 +6172,7 @@ msgstr "Savana – Savana Basah"
 msgid "Save As..."
 msgstr "Simpan Sebagai... "
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:109
+#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:107
 msgid "Save..."
 msgstr ""
 
@@ -9066,7 +9066,7 @@ msgid "it will not be shown. Uncheck it to have Miradi "
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:116
-#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:98
+#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:96
 #: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:55
 #: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:79
 msgid "save..."
