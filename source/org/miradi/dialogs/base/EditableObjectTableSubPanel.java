@@ -126,7 +126,6 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 	@Override
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		ORefList[] selectionHieararchies = objectTable.getSelectedHierarchies();
 		super.commandExecuted(event);
 		
 		
@@ -136,12 +135,12 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 		if (shouldRefreshModel(event))
 			refreshModel();
 		
-		selectObjectAfterSwingClearsItDueToTreeStructureChange(objectTable, selectionHieararchies);
+		selectObjectAfterSwingClearsItDueToTreeStructureChange(objectTable);
 	}
 
-	private void selectObjectAfterSwingClearsItDueToTreeStructureChange(DynamicWidthEditableObjectTable table, ORefList[] selectionHieararchies)
+	private void selectObjectAfterSwingClearsItDueToTreeStructureChange(DynamicWidthEditableObjectTable table)
 	{
-		SwingUtilities.invokeLater(new Reselecter(table, selectionHieararchies));
+		SwingUtilities.invokeLater(new CellEditStopper(table));
 	}
 	
 	abstract protected boolean shouldRefreshModel(CommandExecutedEvent event);
@@ -152,26 +151,19 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 	
 	abstract protected void createTable() throws Exception;
 	
-	private class Reselecter implements Runnable
+	private class CellEditStopper implements Runnable
 	{
-		public Reselecter(DynamicWidthEditableObjectTable tableToUse, ORefList[] selectionHieararchiesToUse)
+		public CellEditStopper(DynamicWidthEditableObjectTable tableToUse)
 		{
 			table = tableToUse;
-			selectionHieararchies = selectionHieararchiesToUse;
 		}
 
 		public void run()
 		{
 			table.stopCellEditing();
-			if (selectionHieararchies.length != 1)
-				return;
-			
-			final ORefList selectionHierarchy = selectionHieararchies[0];
-			table.ensureOneCopyOfObjectSelectedAndVisible(selectionHierarchy.getFirstElement());
 		}
 
 		private DynamicWidthEditableObjectTable table;
-		private ORefList[] selectionHieararchies;
 	}
 	
 	private PanelTitleLabel rowCountLanel;
