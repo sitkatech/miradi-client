@@ -38,6 +38,7 @@ import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
 import org.miradi.icons.ExpenseAssignmentIcon;
 import org.miradi.icons.FundingSourceIcon;
+import org.miradi.icons.FutureStatusIcon;
 import org.miradi.icons.GoalIcon;
 import org.miradi.icons.GroupBoxIcon;
 import org.miradi.icons.HumanWelfareTargetIcon;
@@ -114,7 +115,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		setRendererDefaults(goalRenderer, new GoalIcon(), getBoldFont());
 		
 		futureStatusRenderer = createRenderer(treeTableToUse);
-		setRendererDefaults(futureStatusRenderer, new GoalIcon(), getPlainFont());
+		setRendererDefaults(futureStatusRenderer, new FutureStatusIcon(), getPlainFont());
 		
 		activityRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(activityRenderer, new ActivityIcon(), getPlainFont());

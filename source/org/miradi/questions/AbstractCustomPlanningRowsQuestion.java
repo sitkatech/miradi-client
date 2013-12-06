@@ -25,6 +25,7 @@ import java.util.Vector;
 import javax.swing.Icon;
 
 import org.miradi.icons.ConceptualModelIcon;
+import org.miradi.icons.FutureStatusIcon;
 import org.miradi.icons.GoalIcon;
 import org.miradi.icons.HumanWelfareTargetIcon;
 import org.miradi.icons.IconManager;
@@ -79,7 +80,7 @@ abstract public class AbstractCustomPlanningRowsQuestion extends ProjectBasedDyn
 		choiceItems.add(createChoiceItem(IndicatorSchema.getObjectType(), IndicatorSchema.OBJECT_NAME, IconManager.getIndicatorIcon()));
 		choiceItems.addAll(createTaskChoiceItems());
 		choiceItems.add(createChoiceItem(MeasurementSchema.getObjectType(), MeasurementSchema.OBJECT_NAME, new MeasurementIcon()));
-		choiceItems.add(createChoiceItem(FutureStatusSchema.getObjectType(), FutureStatusSchema.OBJECT_NAME, new GoalIcon()));
+		choiceItems.add(createChoiceItem(FutureStatusSchema.getObjectType(), FutureStatusSchema.OBJECT_NAME, new FutureStatusIcon()));
 		
 		return choiceItems;
 	}

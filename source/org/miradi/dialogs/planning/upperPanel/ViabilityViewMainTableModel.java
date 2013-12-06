@@ -408,7 +408,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	{
 		String tag = COLUMN_TAGS_FOR_FUTURE_RESULTS[column];
 		
-		return getStatusColumnChoiceItem(tag, baseObject, FutureStatusSchema.TAG_FUTURE_STATUS_SUMMARY, FutureStatusSchema.TAG_FUTURE_STATUS_RATING, IconManager.getGoalIcon());
+		return getStatusColumnChoiceItem(tag, baseObject, FutureStatusSchema.TAG_FUTURE_STATUS_SUMMARY, FutureStatusSchema.TAG_FUTURE_STATUS_RATING, IconManager.getFutureStatusIcon());
 	}
 
 	private ChoiceItem getStatusColumnChoiceItem(String tag, BaseObject baseObject, final String summaryTag, final String statusTag, final Icon icon)

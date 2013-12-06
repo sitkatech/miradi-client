@@ -96,6 +96,7 @@ public class IconManager
 		addIcon(new OpenStandardsNotApplicableIcon());
 		addIcon(new OpenStandardsInProgressIcon());
 		addIcon(new OpenStandardsCompleteIcon());
+		addIcon(new FundingSourceIcon());
 		addResourceImageIcon(COLLAPSE_ICON_FILE_NAME);
 		addResourceImageIcon(EXPAND_ICON_FILE_NAME);
 		addResourceImageIcon(SPELLCHECK_ICON_FILE_NAME);
@@ -517,6 +518,11 @@ public class IconManager
 		return getIcon(DOCUMENT_ICON_FILE_NAME);
 	}
 
+	public static Icon getFutureStatusIcon()
+	{
+		return getIcon(FutureStatusIcon.class);
+	}
+	
 	private static HashMap<String, Icon> iconMap;
 	private static final String EXPAND_ICON_FILE_NAME = "icons/expand.png";
 	private static final String COLLAPSE_ICON_FILE_NAME = "icons/collapse.png";

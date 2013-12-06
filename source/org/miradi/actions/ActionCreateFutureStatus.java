@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.actions;
 
-import org.miradi.icons.GoalIcon;
+import org.miradi.icons.FutureStatusIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -28,7 +28,7 @@ public class ActionCreateFutureStatus extends ObjectsAction
 {
 	public ActionCreateFutureStatus(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel(), new GoalIcon());
+		super(mainWindow, getLabel(), new FutureStatusIcon());
 	}
 
 	private static String getLabel()

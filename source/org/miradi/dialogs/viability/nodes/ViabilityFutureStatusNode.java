@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.viability.nodes;
 
 import org.miradi.dialogs.treetables.TreeTableNode;
-import org.miradi.icons.GoalIcon;
+import org.miradi.icons.FutureStatusIcon;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.FutureStatus;
@@ -81,7 +81,7 @@ public class ViabilityFutureStatusNode extends TreeTableNode
 		String tag = COLUMN_TAGS[column];
 		String summaryData = getObject().getData(FutureStatusSchema.TAG_FUTURE_STATUS_SUMMARY);
 		String statusData = getObject().getData(FutureStatusSchema.TAG_FUTURE_STATUS_RATING);
-		TextAndIconChoiceItem textAndIconChoiceItem = new TextAndIconChoiceItem(summaryData, new GoalIcon());		
+		TextAndIconChoiceItem textAndIconChoiceItem = new TextAndIconChoiceItem(summaryData, new FutureStatusIcon());		
 		if (tag.equals(StatusQuestion.POOR) && StatusQuestion.POOR.equals(statusData))
 			return textAndIconChoiceItem;
 
