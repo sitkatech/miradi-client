@@ -2,7 +2,7 @@
 UV	Version=61
 UP	HighestUsedNodeId=1147
 UP	ProjectMetadataId=0
-UL	LastModified=2013-08-08 11:56
+UL	LastModified=2013-12-06 15:04
 CO	1:1
 UO	1:1	Label=Scope
 CO	1:2
@@ -378,7 +378,7 @@ UO	7:21	DateUpdated=2012-04-01
 UO	7:21	Email=jose@ebngo.org
 UO	7:21	Initials=JH
 UO	7:21	Location=Main Office
-UO	7:21	Name=Jose
+UO	7:21	Name=José
 UO	7:21	Organization=Eastern Bay NGO
 UO	7:21	PhoneNumber=555-2374
 UO	7:21	PhoneNumberMobile=555-9778
