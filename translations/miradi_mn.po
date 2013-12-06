@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-06 14:16-0600\n"
+"POT-Creation-Date: 2013-12-06 15:01-0600\n"
 "PO-Revision-Date: 2013-06-07 01:56+0100\n"
 "Last-Translator: Galragchaa <galragchaa@yahoo.com>\n"
 "Language-Team: none\n"
@@ -7821,11 +7821,11 @@ msgstr "Текст бичих хайрцаг (Text Box)"
 msgid "Text Box Properties"
 msgstr "Текст бичих хайрцгийн агуулга"
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:157
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:163
 msgid "Text|Dates must be in YYYY-MM-DD format"
 msgstr "Текст|Огноог ЖЖЖЖ-СС-ӨӨ форматаар бичнэ"
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:169
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:175
 msgid "Text|Unknown error prevented saving this data"
 msgstr "Текст|Мэдээллийг хадгалахад үл мэдэгдэх алдаа саад болж байна."
 
@@ -8150,7 +8150,7 @@ msgstr ""
 msgid "This resource has been assigned work in the Work Plan"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:175
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:181
 msgid ""
 "This value must be numeric<br><br>Currency symbols and percent signs are not "
 "allowed"
