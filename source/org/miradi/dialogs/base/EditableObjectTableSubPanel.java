@@ -76,7 +76,7 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 		super.becomeInactive();
 	}
 	
-	public void refreshModel()
+	private void refreshModel()
 	{
 		ORefList[] selectedHierarchies = getPicker().getSelectedHierarchies();
 		if (selectedHierarchies.length > 0)
