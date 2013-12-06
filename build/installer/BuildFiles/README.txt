@@ -114,9 +114,16 @@ Mac OS X:
 - Before installing Miradi, make sure Apple's official Java J2SE5 or J2SE6 
   is installed (Miradi will not work with Java 1.4). If you are running 
   a current version of OS X, Java should have been installed automatically.
-- Download Miradi.dmg from http://miradi.org and open it
-- Copy the .app file to your desktop, or to your Applications folder, or 
-  wherever you wish to launch it from
+  
+  
+- Download the Miradi.dmg file
+- Using the mac Finder navigate to the folder containing Miradi.dmg
+- Double click the file Miradi.dmg
+- In the Finder's left panel select the Miradi "Mac Install" drive
+- In the right you will see the contents of the drive
+- Copy the Miradi app into your applications folder
+- Select the Miradi app file and bring up the context menu (click and hold, or right click) and select open. A warning dialog will appear. Select open.	
+- Note: You can also double click the .app file. However depending on security settings, the warning dialog might not provide an open option,  in which case, use the context menu step instead.
 - MarineExample.mpz is a sample project that can be imported into Miradi 
   after you start the app
 
