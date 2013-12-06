@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-04 15:46-0600\n"
+"POT-Creation-Date: 2013-12-05 16:31-0600\n"
 "PO-Revision-Date: 2011-03-17 08:35-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -5969,7 +5969,7 @@ msgstr ""
 msgid "Save As..."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:109
+#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:107
 msgid "Save..."
 msgstr ""
 
@@ -8706,7 +8706,7 @@ msgid "it will not be shown. Uncheck it to have Miradi "
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:116
-#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:98
+#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:96
 #: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:55
 #: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:79
 msgid "save..."
