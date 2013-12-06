@@ -2,7 +2,7 @@
 UV	Version=61
 UP	HighestUsedNodeId=1147
 UP	ProjectMetadataId=0
-UL	LastModified=2013-12-06 15:04
+UL	LastModified=2013-12-06 15:11
 CO	1:1
 UO	1:1	Label=Scope
 CO	1:2
@@ -384,7 +384,7 @@ UO	7:21	PhoneNumber=555-2374
 UO	7:21	PhoneNumberMobile=555-9778
 UO	7:21	Position=Monitoring Officer
 UO	7:21	RoleCodes={"Codes":["TeamMember"]}
-UO	7:21	SurName=Hernandez
+UO	7:21	SurName=Hernández
 CO	7:22
 UO	7:22	Comments=Elena is the primary manager of the project.
 UO	7:22	CostPerUnit=150
@@ -3307,4 +3307,4 @@ UT	47-39	DefaultValueId=4
 UT	47-39	Values={"3":7,"2":7,"1":7}
 UQ	Data=
 UE	Data=
--- 1375977407940 Aug 8, 2013 11:56:47 AM
+-- 1386360673293 Dec 6, 2013 3:11:13 PM
