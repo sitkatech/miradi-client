@@ -1333,7 +1333,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		ChoiceQuestion roleQuestion = StaticQuestionManager.getQuestion(ResourceRoleQuestion.class);
 		fillObjectUsingCommand(projectResource, ProjectResource.TAG_ROLE_CODES, roleQuestion.getAllCodes().toString());
 		fillObjectUsingCommand(projectResource, ProjectResource.TAG_LABEL, PROJECT_RESOURCE_LABEL_TEXT);
-		fillObjectUsingCommand(projectResource, ProjectResource.TAG_GIVEN_NAME, "John");
+		fillObjectUsingCommand(projectResource, ProjectResource.TAG_GIVEN_NAME, "María");
 		fillObjectUsingCommand(projectResource, ProjectResource.TAG_SUR_NAME, "Doe");
 		fillObjectUsingCommand(projectResource, ProjectResource.TAG_LOCATION, "1 SomeStreet ave. Tampa FL 33600");
 		fillObjectUsingCommand(projectResource, ProjectResource.TAG_PHONE_NUMBER, "555-555-5555");
