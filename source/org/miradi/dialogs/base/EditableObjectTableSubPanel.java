@@ -80,7 +80,10 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 	{
 		ORefList[] selectedHierarchies = getPicker().getSelectedHierarchies();
 		if (selectedHierarchies.length > 0)
+		{
 			setObjectRefs(selectedHierarchies[0].toArray());
+			stopCellEditingBecauseSelectionDoeesNotMatchPreviousObjectForRow(objectTable);
+		}
 	}
 	
 	@Override
@@ -128,14 +131,11 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 	{
 		super.commandExecuted(event);
 		
-		
 		if (event.isSetDataCommandWithThisType(getEditableObjectType()))
 			objectTableModel.fireTableDataChanged();
 		
 		if (shouldRefreshModel(event))
 			refreshModel();
-		
-		stopCellEditingBecauseSelectionDoeesNotMatchPreviousObjectForRow(objectTable);
 	}
 
 	private void stopCellEditingBecauseSelectionDoeesNotMatchPreviousObjectForRow(DynamicWidthEditableObjectTable table)
