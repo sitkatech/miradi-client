@@ -33,7 +33,7 @@ public class FutureStatusIcon extends AbstractMiradiIcon
 {
 	public void paintIcon(Component c, Graphics g, int x, int y)
 	{
-		Rectangle rect = new Rectangle(x+1, y, getIconWidth()-2, getIconHeight()-2);
+		Rectangle rect = new Rectangle(x + 1, y - 1, getIconWidth()-2, getIconHeight()-2);
 		Polygon triangle = TriangleRenderer.buildTriangle(rect);
 		
 		g.setColor(getFutureStatusIconFillColor());
@@ -43,10 +43,10 @@ public class FutureStatusIcon extends AbstractMiradiIcon
 		g.drawPolygon(triangle);
 		
 		g.setColor(getFutureStatusIconFillColor());
-		g.fillRect(x, y + 9, getIconWidth(), getIconHeight()/3);
+		g.fillRect(x, y + (getIconHeight() / 2 ), getIconWidth(), getIconHeight()/3);
 		
 		g.setColor(getBorderColor());
-		g.drawRect(x, y + 9, getIconWidth(), getIconHeight()/3);
+		g.drawRect(x, y + (getIconHeight() / 2 ), getIconWidth(), getIconHeight()/3);
 
 	}
 
