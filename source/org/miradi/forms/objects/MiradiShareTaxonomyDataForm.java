@@ -28,11 +28,12 @@ import org.miradi.schemas.ProjectMetadataSchema;
 
 public class MiradiShareTaxonomyDataForm extends FieldPanelSpec
 {
-	public MiradiShareTaxonomyDataForm(String htmlText)
+	public MiradiShareTaxonomyDataForm(String upperHelpContant, String lowerHelpContent)
 	{
-		addTextHtmlPanel(htmlText);
+		addTextHtmlPanel(upperHelpContant);
 		addDisplayField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_PROJECT_NAME);
 		addHtmlLink(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROJECT_URL);
 		addMultipleTaxonomyWithEditButtonFields(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
+		addTextHtmlPanel(lowerHelpContent);
 	}
 }

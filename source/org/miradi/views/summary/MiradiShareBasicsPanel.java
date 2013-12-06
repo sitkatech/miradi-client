@@ -35,15 +35,21 @@ public class MiradiShareBasicsPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, orefsToUse);
 		
-		String html = getMiradiSharedProjectHelpContent();
-		createFieldsFromForm(new MiradiShareTaxonomyDataForm(html));
+		String upperHelpContant = getUpperHelpContent();
+		String lowerHelpContent = getLowerHelpContent();
+		createFieldsFromForm(new MiradiShareTaxonomyDataForm(upperHelpContant, lowerHelpContent));
 
 		updateFieldsFromProject();
 	}
-
-	private String getMiradiSharedProjectHelpContent() throws Exception
+	
+	private String getLowerHelpContent() throws Exception
 	{
-		String html = Translation.getHtmlContent("MiradiShareSharedProjectHelpPanel.html");
+		return Translation.getHtmlContent("MiradiShareProjectHelpLowerText.html");
+	}
+
+	private String getUpperHelpContent() throws Exception
+	{
+		String html = Translation.getHtmlContent("MiradiShareProjectHelpUpperText.html");
 
 		return  EAM.substituteSingleString(html, getMiradiShareProjectUrl());
 	}

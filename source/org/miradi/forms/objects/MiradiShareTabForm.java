@@ -30,7 +30,7 @@ public class MiradiShareTabForm extends PanelHolderSpec
 	{
 		addPanel(new TitlePanel(SummaryMiradiSharePanel.getPlanningPanelDescription()));
 		//FIXME - urgent , once taxonomies are in RTF reports, make sure the empty arg is ok
-		addPanel(new MiradiShareTaxonomyDataForm(""));
+		addPanel(new MiradiShareTaxonomyDataForm("", ""));
 		addPanel(new MiradiShareProjectDataForm());
 	}
 }
