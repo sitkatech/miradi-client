@@ -135,10 +135,10 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 		if (shouldRefreshModel(event))
 			refreshModel();
 		
-		selectObjectAfterSwingClearsItDueToTreeStructureChange(objectTable);
+		stopCellEditingBecauseSelectionDoeesNotMatchPreviousObjectForRow(objectTable);
 	}
 
-	private void selectObjectAfterSwingClearsItDueToTreeStructureChange(DynamicWidthEditableObjectTable table)
+	private void stopCellEditingBecauseSelectionDoeesNotMatchPreviousObjectForRow(DynamicWidthEditableObjectTable table)
 	{
 		SwingUtilities.invokeLater(new CellEditStopper(table));
 	}
