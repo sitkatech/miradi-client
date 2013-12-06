@@ -25,6 +25,7 @@ import java.util.LinkedHashMap;
 import java.util.Set;
 
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
@@ -125,15 +126,24 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 	@Override
 	public void commandExecuted(CommandExecutedEvent event)
 	{
+		ORefList[] selectionHieararchies = objectTable.getSelectedHierarchies();
 		super.commandExecuted(event);
+		
 		
 		if (event.isSetDataCommandWithThisType(getEditableObjectType()))
 			objectTableModel.fireTableDataChanged();
 		
 		if (shouldRefreshModel(event))
 			refreshModel();
+		
+		selectObjectAfterSwingClearsItDueToTreeStructureChange(objectTable, selectionHieararchies);
 	}
 
+	private void selectObjectAfterSwingClearsItDueToTreeStructureChange(DynamicWidthEditableObjectTable table, ORefList[] selectionHieararchies)
+	{
+		SwingUtilities.invokeLater(new Reselecter(table, selectionHieararchies));
+	}
+	
 	abstract protected boolean shouldRefreshModel(CommandExecutedEvent event);
 	
 	abstract protected int getEditableObjectType();
@@ -141,6 +151,28 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 	abstract protected LinkedHashMap<Class, ObjectPicker> getButtonsActionsPickerMap();
 	
 	abstract protected void createTable() throws Exception;
+	
+	private class Reselecter implements Runnable
+	{
+		public Reselecter(DynamicWidthEditableObjectTable tableToUse, ORefList[] selectionHieararchiesToUse)
+		{
+			table = tableToUse;
+			selectionHieararchies = selectionHieararchiesToUse;
+		}
+
+		public void run()
+		{
+			table.stopCellEditing();
+			if (selectionHieararchies.length != 1)
+				return;
+			
+			final ORefList selectionHierarchy = selectionHieararchies[0];
+			table.ensureOneCopyOfObjectSelectedAndVisible(selectionHierarchy.getFirstElement());
+		}
+
+		private DynamicWidthEditableObjectTable table;
+		private ORefList[] selectionHieararchies;
+	}
 	
 	private PanelTitleLabel rowCountLanel;
 	protected EditableObjectRefsTableModel objectTableModel;
