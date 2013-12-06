@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-04 15:46-0600\n"
+"POT-Creation-Date: 2013-12-05 16:31-0600\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -6456,7 +6456,7 @@ msgstr "Savana - Savana Húmida"
 msgid "Save As..."
 msgstr "Salvar Como..."
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:109
+#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:107
 msgid "Save..."
 msgstr "Salvar"
 
@@ -9415,7 +9415,7 @@ msgid "it will not be shown. Uncheck it to have Miradi "
 msgstr "Não será exibido.  Desmarcar para ter Miradi"
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:116
-#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:98
+#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:96
 #: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:55
 #: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:79
 msgid "save..."

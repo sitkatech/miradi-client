@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-04 15:46-0600\n"
+"POT-Creation-Date: 2013-12-05 16:31-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -6213,7 +6213,7 @@ msgstr "Саванна - волога саванна"
 msgid "Save As..."
 msgstr "Зберегти як..."
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:109
+#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:107
 msgid "Save..."
 msgstr ""
 
@@ -9080,7 +9080,7 @@ msgid "it will not be shown. Uncheck it to have Miradi "
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:116
-#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:98
+#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:96
 #: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:55
 #: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:79
 msgid "save..."
