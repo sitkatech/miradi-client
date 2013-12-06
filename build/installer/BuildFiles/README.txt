@@ -174,9 +174,8 @@ Appwide:
 - Data loss loss migration error message shows what data will be lost
 - New TNC fields added and a few removed
 - Improvements to logging and debug output
-- Work plan bug fixes
 - Miradi Share tab has two modes
-- Can select leader for objects with finder assignments
+- Can select leader for objects with finer assignments
 
 Export/Import:
 - Can now export projects to Miradi 4.0 format (reverse migration)
