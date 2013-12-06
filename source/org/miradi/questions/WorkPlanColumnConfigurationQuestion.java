@@ -22,6 +22,8 @@ package org.miradi.questions;
 
 import java.util.Vector;
 
+import org.miradi.objects.BaseObject;
+
 public class WorkPlanColumnConfigurationQuestion extends MultipleSelectStaticChoiceQuestion
 {
 	public WorkPlanColumnConfigurationQuestion()
@@ -37,6 +39,8 @@ public class WorkPlanColumnConfigurationQuestion extends MultipleSelectStaticCho
 		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE));
 		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE));
 		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE));
+		choiceItems.add(createChoiceItem(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE));
+		choiceItems.add(createChoiceItem(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS));
 		choiceItems.addAll(createCustomChoices());
 		
 		return choiceItems.toArray(new ChoiceItem[0]);
