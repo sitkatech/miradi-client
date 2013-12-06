@@ -489,7 +489,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		{	
 			String columnTag = getTagForCell(baseObject.getType(), column);
 			if(isWhoColumn(columnTag))
-				return appendedProjectResources(baseObject);
+				return getAppendedProjectResourcesAsChoiceItem(baseObject);
 			if (columnTag.equals(CustomPlanningColumnsQuestion.META_CURRENT_RATING))
 				return getRatingChoiceItem(baseObject);
 			
@@ -601,7 +601,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		return baseObject.getResourceAssignmentsTimePeriodCostsMap();
 	}
 	
-	private ChoiceItem appendedProjectResources(BaseObject baseObject) throws Exception
+	private ChoiceItem getAppendedProjectResourcesAsChoiceItem(BaseObject baseObject) throws Exception
 	{
 		TimePeriodCosts timePeriodCosts = calculateTimePeriodCosts(baseObject, new DateUnit(), getRowColumnProvider().getWorkPlanBudgetMode());
 		timePeriodCosts.retainWorkUnitDataRelatedToAnyOf(getResourcesFilter());
