@@ -489,7 +489,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		{	
 			String columnTag = getTagForCell(baseObject.getType(), column);
 			if(isWhoColumn(columnTag))
-				return appendedProjectResources(baseObject);
+				return getAppendedProjectResourcesAsChoiceItem(baseObject);
 			if (columnTag.equals(CustomPlanningColumnsQuestion.META_CURRENT_RATING))
 				return getRatingChoiceItem(baseObject);
 			
@@ -601,7 +601,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		return baseObject.getResourceAssignmentsTimePeriodCostsMap();
 	}
 	
-	private ChoiceItem appendedProjectResources(BaseObject baseObject) throws Exception
+	private ChoiceItem getAppendedProjectResourcesAsChoiceItem(BaseObject baseObject) throws Exception
 	{
 		TimePeriodCosts timePeriodCosts = calculateTimePeriodCosts(baseObject, new DateUnit(), getRowColumnProvider().getWorkPlanBudgetMode());
 		timePeriodCosts.retainWorkUnitDataRelatedToAnyOf(getResourcesFilter());
@@ -641,7 +641,14 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		Vector<ProjectResource> resources = new Vector<ProjectResource>();
 		for(ORef resourceRef : resourcesRefs)
 		{
-			resources.add(ProjectResource.find(getProject(), resourceRef));
+			final ProjectResource projectResource = ProjectResource.find(getProject(), resourceRef);
+			if (projectResource == null)
+			{
+				EAM.logError("Could not find Project Resource objecf for ref:" + resourceRef);
+				continue;
+			}
+			
+			resources.add(projectResource);
 		}
 		
 		return resources;
