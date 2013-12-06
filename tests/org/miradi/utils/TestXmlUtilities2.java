@@ -31,7 +31,7 @@ public class TestXmlUtilities2 extends MiradiTestCase
 	
 	public void testReplaceNamedEntitiesWithNumericEntities()
 	{
-		verifyReplaceNamedEntitiesWithNumericEntities("#160;", "&nbsp;");
+		verifyReplaceNamedEntitiesWithNumericEntities("&#160;", "&nbsp;");
 	}
 	
 	private void verifyReplaceNamedEntitiesWithNumericEntities(String expectedValue, String actualValue)
