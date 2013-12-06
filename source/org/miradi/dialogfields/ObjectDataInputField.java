@@ -99,6 +99,12 @@ abstract public class ObjectDataInputField extends ObjectDataField
 		try
 		{
 			BaseObject object = BaseObject.find(getProject(), getORef());
+			if (object == null)
+			{
+				EAM.logError("ObjectDatInputField.hasDataChanged encountered a null object for ref:"  + getORef());
+				return false;
+			}
+			
 			ObjectData field = object.getField(getTag());
 			return !field.isCurrentValue(getText());
 		}
