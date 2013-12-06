@@ -641,7 +641,14 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		Vector<ProjectResource> resources = new Vector<ProjectResource>();
 		for(ORef resourceRef : resourcesRefs)
 		{
-			resources.add(ProjectResource.find(getProject(), resourceRef));
+			final ProjectResource projectResource = ProjectResource.find(getProject(), resourceRef);
+			if (projectResource == null)
+			{
+				EAM.logError("Could not find Project Resource objecf for ref:" + resourceRef);
+				continue;
+			}
+			
+			resources.add(projectResource);
 		}
 		
 		return resources;
