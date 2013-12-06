@@ -174,6 +174,9 @@ Appwide:
 - Data loss loss migration error message shows what data will be lost
 - New TNC fields added and a few removed
 - Improvements to logging and debug output
+- Work plan bug fixes
+- Miradi Share tab has two modes
+- Can select leader for objects with finder assignments
 
 Export/Import:
 - Can now export projects to Miradi 4.0 format (reverse migration)
@@ -181,7 +184,6 @@ Export/Import:
 - Importing XMPZ2 files is now much faster 
 - XMPZ2 schema changes to accommodate Miradi Share data
 - Now have an icon for XMPZ2 files
-
 
 
 Miradi 4.0.0 was a major release, and we recommend that all users 
