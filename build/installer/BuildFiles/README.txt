@@ -123,11 +123,11 @@ Mac OS X:
 - In the right you will see the contents of the drive
 - Copy the Miradi app into your applications folder
 - Select the Miradi app file and bring up the context menu 
-(click and hold, or right click) and select open. A warning 
-dialog will appear. Select open.	
+  (click and hold, or right click) and select open. A warning 
+  dialog will appear. Select open.	
 - Note: You can also double click the .app file. However 
-depending on security settings, the warning dialog might 
-not provide an open option,  in which case, use the context menu step instead.
+  depending on security settings, the warning dialog might 
+  not provide an open option,  in which case, use the context menu step instead.
 - MarineExample.mpz is a sample project that can be imported into Miradi 
   after you start the app
 
