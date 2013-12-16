@@ -96,7 +96,7 @@ public class IconManager
 		addIcon(new OpenStandardsNotApplicableIcon());
 		addIcon(new OpenStandardsInProgressIcon());
 		addIcon(new OpenStandardsCompleteIcon());
-		addIcon(new FundingSourceIcon());
+		addIcon(new FutureStatusIcon());
 		addResourceImageIcon(COLLAPSE_ICON_FILE_NAME);
 		addResourceImageIcon(EXPAND_ICON_FILE_NAME);
 		addResourceImageIcon(SPELLCHECK_ICON_FILE_NAME);
