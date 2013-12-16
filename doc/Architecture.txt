@@ -165,3 +165,17 @@ Internally, text falls into one of several categories:
 A build script uses standard tools to extract the constant 
 strings. It then runs custom tools that combine the other text 
 into the "po" file.
+
+H. ADDITIONAL TOPICS THAT SHOULD BE COVERED
+
+- BaseObjectSchema, FieldSchema
+- Migrations
+- Legacy SimpleThreatRatings
+- Work Plan: Assignments, TimePeriodCostMap, DateUnitEffortList, rollup rules
+- Diagram (modified JGraph)
+- Forms and RTF output
+- XSL output
+- HTML/XML text data
+- Wizard
+- JUnit tests
+- New .Miradi data format
