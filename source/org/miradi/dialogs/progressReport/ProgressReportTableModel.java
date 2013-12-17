@@ -20,8 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.progressReport;
 
+import java.util.Comparator;
+
 import org.miradi.dialogs.base.EditableObjectRefsTableModel;
 import org.miradi.dialogs.planning.upperPanel.rebuilder.AbstractTreeRebuilder;
+import org.miradi.dialogs.threatrating.upperPanel.TableModelDateComparatorWithEmptyValuesAtEnd;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
@@ -149,5 +152,14 @@ public class ProgressReportTableModel extends EditableObjectRefsTableModel
 			ProgressReport.TAG_PROGRESS_STATUS, 
 			ProgressReport.TAG_DETAILS, 
 			};
+	}
+	
+	@Override
+	public Comparator<ORef> createComparator(int columnToSortOn)
+	{
+		if (isDateColumn(columnToSortOn))
+			return new TableModelDateComparatorWithEmptyValuesAtEnd(this, columnToSortOn);
+		
+		return super.createComparator(columnToSortOn);
 	}
 }
