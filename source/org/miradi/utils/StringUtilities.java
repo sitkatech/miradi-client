@@ -83,6 +83,14 @@ public class StringUtilities
 		return actualMpf.getBytes("UTF-8");
 	}
 	
+	public static String safelyStripTrailingString(String name, String suffix) throws Exception
+	{
+		if (!name.endsWith(suffix))
+			return name;
+		
+		return stripTrailingString(name, suffix);
+	}
+	
 	public static String stripTrailingString(String name, final String suffix) throws Exception
 	{
 		int lastIndexOfSuffix = name.lastIndexOf(suffix);

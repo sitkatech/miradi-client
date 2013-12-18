@@ -62,7 +62,7 @@ public class TestBaseObject extends TestCaseWithProject
 	{
 		ORef causeRef = getProject().createObject(ObjectType.CAUSE);
 		BaseObject cause = Cause.find(getProject(), causeRef);
-		String[] allPossibleValuesToConvertToHtml = new String[]{"\n", "&", "<", ">", "\\", "\""};
+		String[] allPossibleValuesToConvertToHtml = new String[]{"a\nb", "&", "<", ">", "\\", "\""};
 		for (int index = 0; index < allPossibleValuesToConvertToHtml.length; ++index)
 		{
 			String value = cause.getHtmlDataFromNonHtml(Cause.TAG_COMMENTS, allPossibleValuesToConvertToHtml[index]);
