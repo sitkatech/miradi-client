@@ -75,4 +75,16 @@ public class HtmlUtilitiesRelatedToShef
 	{
 		return StringUtilities.safelyStripTrailingString(trimmedText, HtmlUtilities.BR_TAG);
 	}
+
+	public static String ensureNonEmptyBecauseShefWillBehaveOddly(String text)
+	{
+		// NOTE: If you call setText("") into shef, then 
+		// pressing Enter will look double-spaced.
+		// This is a workaround that we found.
+		if(text.length() == 0)
+		{
+			text = "<b/>";
+		}
+		return text;
+	}
 }
