@@ -109,6 +109,8 @@ abstract public class AbstractHtmlPane extends MiradiTextPane
 	@Override
 	public void setText(String text)
 	{
+		text = HtmlUtilitiesRelatedToShef.ensureNonEmptyBecauseShefWillBehaveOddly(text);
+
 		clearDocumentToAvoidFormattingLeak();
 		updateStyleSheet();
 		String topText = HtmlUtilities.removeAllExcept(text, AbstractUserTextDataWithHtmlFormatting.getAllowedHtmlTags());
