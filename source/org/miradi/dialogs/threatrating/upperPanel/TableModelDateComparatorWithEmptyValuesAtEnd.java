@@ -33,15 +33,15 @@ public class TableModelDateComparatorWithEmptyValuesAtEnd extends TableModelStri
 	protected int compareValues(Comparable element1, Comparable element2)
 	{
 		final boolean isElement1Empty = element1.toString().length() == 0;
+		final boolean isElement2Empty = element2.toString().length() == 0;
+		if (isElement1Empty && isElement2Empty)
+			return 0;
+
 		if (isElement1Empty)
 			return 1;
 		
-		final boolean isElement2Empty = element2.toString().length() == 0;
 		if (isElement2Empty)
 			return -1;
-		
-		if (isElement1Empty && isElement2Empty)
-			return 0;
 		
 		return element1.toString().compareToIgnoreCase(element2.toString());
 	}
