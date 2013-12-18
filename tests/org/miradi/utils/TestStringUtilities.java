@@ -29,6 +29,23 @@ public class TestStringUtilities extends MiradiTestCase
 		super(name);
 	}
 	
+	public void testSafelyStripTrailingString() throws Exception
+	{
+		verifySafelyStripTrailingString("", "", "");
+		verifySafelyStripTrailingString("", "", "a");
+		verifySafelyStripTrailingString("", "a", "a");
+		verifySafelyStripTrailingString("a", "ab", "b");
+		verifySafelyStripTrailingString("ab", "ab", "a");
+		verifySafelyStripTrailingString("ab", "ab", "c");
+		verifySafelyStripTrailingString("ab", "ab", "");
+		verifySafelyStripTrailingString("", "ab", "ab");
+	}
+	
+	private void verifySafelyStripTrailingString(String expectedValue, String actualValue, String suffix) throws Exception
+	{
+		assertEquals("Incorrect post fix trimmed?", expectedValue, StringUtilities.safelyStripTrailingString(actualValue, suffix));
+	}
+
 	public void testRemoveIllegalCharacters()
 	{
 		verifyRemovalOfIllegalChars("sample", "sample");

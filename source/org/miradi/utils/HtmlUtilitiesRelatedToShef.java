@@ -66,8 +66,13 @@ public class HtmlUtilitiesRelatedToShef
 		HtmlUtilities.ensureNoCloseBrTags(trimmedText);
 		trimmedText = HtmlUtilities.fixAnchorElements(trimmedText, allowedHtmlTags);
 		
+		trimmedText = stripTrailingHtmlNewLineInsertedByHtmlPaneInitializeCode(trimmedText);
+		
 		return trimmedText;
 	}
-	
-	
+
+	private static String stripTrailingHtmlNewLineInsertedByHtmlPaneInitializeCode(String trimmedText) throws Exception
+	{
+		return StringUtilities.safelyStripTrailingString(trimmedText, HtmlUtilities.BR_TAG);
+	}
 }
