@@ -2,7 +2,7 @@
 UV	Version=61
 UP	HighestUsedNodeId=1147
 UP	ProjectMetadataId=0
-UL	LastModified=2013-12-19 11:47
+UL	LastModified=2013-12-19 16:20
 CO	1:1
 UO	1:1	Label=Scope
 CO	1:2
@@ -677,7 +677,7 @@ UO	11:0	PlanningComments=Detailed planning focuses on the next three year phase 
 UO	11:0	PlanningTreeTargetNodePosition=TargetNodesTopOfPlanningTree
 UO	11:0	ProjectArea=40,000
 UO	11:0	ProjectAreaNote=This covers all of the marine habitats in Eastern Bay.
-UO	11:0	ProjectDescription=(All information in this project is fictitious - any resemblance to a real-world project is purely coincidental.)<br/><br/>The Eastern Bay Conservation Project (EBCP) is focused on working with the residents of Eastern Bay Village to help manage and conserve the marine resources of their traditional fishing grounds. Key partners on the project team include the residents of Eastern Bay Village, Eastern Bay NGO, and researchers from the local university. Our conservation targets are coral reefs, sharks, seagrass beds, mangroves, and seabirds. Major threats include unsustainable fishing by local people, invasive rats eating seabird eggs, and commercial shark finning operations. The project is implementing strategies to rid key breeding islets of rats, establish alternative income sources for local fishermen, and to liaise with an international conservation organization to combat the demand for shark fin soup. We are monitoring both the status of our conservation targets and the effectiveness of our conservation strategies. This project is funded by the Adaptive Management Foundation and the Island Development Bank.<br/>
+UO	11:0	ProjectDescription=(<i>All information in this project is fictitious - any resemblance to a real-world project is purely coincidental.</i>)<br/><br/>The <b>Eastern Bay Conservation Project</b> (EBCP) is focused on working with the residents of Eastern Bay Village to help manage and conserve the marine resources of their traditional fishing grounds. Key partners on the project team include the residents of Eastern Bay Village, Eastern Bay NGO, and researchers from the local university. Our conservation targets are coral reefs, sharks, seagrass beds, mangroves, and seabirds. Major threats include unsustainable fishing by local people, invasive rats eating seabird eggs, and commercial shark finning operations. The project is implementing strategies to rid key breeding islets of rats, establish alternative income sources for local fishermen, and to liaise with an international conservation organization to combat the demand for shark fin soup. We are monitoring both the status of our conservation targets and the effectiveness of our conservation strategies. This project is funded by the Adaptive Management Foundation and the Island Development Bank.
 UO	11:0	ProjectLanguage=en
 UO	11:0	ProjectLatitude=46.7
 UO	11:0	ProjectLongitude=7.9
@@ -3307,4 +3307,4 @@ UT	47-39	DefaultValueId=4
 UT	47-39	Values={"3":7,"2":7,"1":7}
 UQ	Data=
 UE	Data=
--- 1387471642554 Dec 19, 2013 11:47:22 AM
+-- 1387488044752 Dec 19, 2013 4:20:44 PM
