@@ -20,12 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.tablerenderers;
 
+import java.awt.Component;
 import java.awt.Dimension;
 
 import javax.swing.JComponent;
 import javax.swing.JTable;
 
 import org.miradi.main.MainWindow;
+import org.miradi.utils.AbstractPopupEditorComponent;
 import org.miradi.utils.TableWithRowHeightSaver;
 import org.miradi.utils.TextFieldPopupEditorComponent;
 
@@ -50,6 +52,17 @@ public class ExpandingReadonlyTableCellEditorOrRendererFactory extends ObjectTab
 		
 		super.dispose();
 	}
+	
+	@Override
+	public Component getTableCellEditorComponent(JTable table, Object value,
+			boolean isSelected, int row, int tableColumn)
+	{
+		Component editor = super.getTableCellEditorComponent(table, value, isSelected, row,
+				tableColumn);
+		((AbstractPopupEditorComponent)editor).setEditable(true);
+		return editor;
+	}
+	
 	public void editingWasStoppedByComponent()
 	{
 		stopCellEditing();
