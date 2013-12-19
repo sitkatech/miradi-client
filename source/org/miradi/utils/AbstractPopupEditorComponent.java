@@ -135,6 +135,11 @@ abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 		}
 	}
 	
+	public void setEditable(boolean b)
+	{
+		currentSelectionText.setEditable(b);
+	}
+
 	abstract protected void invokePopupEditor() throws Exception;
 
 	private MainWindow mainWindow;
