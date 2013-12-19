@@ -37,6 +37,12 @@ public class ProjectFileTooNewException extends Exception
 	{
 		return highestAllowedVersion;
 	}
+	
+	@Override
+	public String getMessage()
+	{
+		return "this version= " + getThisVersion() + " highest allowed=" + highestMaxAllowedVersion();
+	}
 
 	private int thisVersion;
 	private int highestAllowedVersion;

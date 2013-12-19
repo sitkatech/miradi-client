@@ -647,6 +647,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		catch(ProjectFileTooNewException e)
 		{
 			EAM.errorDialog(EAM.text("That project cannot be opened because it was created by a newer version of Miradi"));
+			EAM.logException(e);
 		}
 		catch(FutureSchemaVersionException e)
 		{
