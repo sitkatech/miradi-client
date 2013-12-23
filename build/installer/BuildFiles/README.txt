@@ -176,6 +176,7 @@ Appwide:
 - Improvements to logging and debug output
 - Miradi Share tab has two modes
 - Can select leader for objects with finer assignments
+- Single click to edit progress report table's details cell
 
 Export/Import:
 - Can now export projects to Miradi 4.0 format (reverse migration)
