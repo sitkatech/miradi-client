@@ -162,10 +162,10 @@ public class Project implements ProjectInterface
 		planningPreferencesChangeHandler = new PlanningPreferencesChangeHandler(this);
 		dashboardStatusMapsCache = new DashboardStatusMapsCache(this);
 		timePeriodCostsMapsCache = new TimePeriodCostsMapsCache(this);
+		clear();
+
 		enableIsDoNothingCommandOptimization();
 		enableListeners();
-		
-		clear();
 	}
 
 	public void clear() throws Exception
