@@ -41,6 +41,11 @@ public class DashboardStatusMapsCache implements CommandExecutedListener
 		project = projectToUse;
 	}
 	
+	public void clear()
+	{
+		invalidateAllCachedMaps();
+	}
+
 	public void enable()
 	{
 		getProject().addCommandExecutedListener(this);
@@ -63,7 +68,7 @@ public class DashboardStatusMapsCache implements CommandExecutedListener
 		}
 	}
 	
-	public void invalidateAllCachedMaps() throws Exception
+	public void invalidateAllCachedMaps()
 	{
 		cachedEffectiveStatusMap = null;
 		cachedCalculatedStatusMap = null;

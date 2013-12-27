@@ -32,12 +32,17 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 	public TimePeriodCostsMapsCache(Project projectToUse)
 	{
 		project = projectToUse;
-		clearAllCachedData();
+		clear();
 	}
 	
-	public void commandExecuted(CommandExecutedEvent event)
+	public void clear()
 	{
 		clearAllCachedData();
+	}
+
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		clear();
 	}
 
 	private void clearAllCachedData()
