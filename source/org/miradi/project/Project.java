@@ -157,7 +157,6 @@ public class Project implements ProjectInterface
 		commandExecutor = new CommandExecutor(this);
 		projectCalendar = new ProjectCalendar(this);
 		
-		//FIXME: As soon as PTC actually caches data, it needs to be reset inside clear()
 		projectTotalCalculator = new ProjectTotalCalculator(this);
 		
 		threatStressRatingEnsurer = new ThreatStressRatingEnsurer(this);
@@ -184,6 +183,12 @@ public class Project implements ProjectInterface
 		
 		currentViewName = NO_PROJECT_VIEW_NAME;
 
+		// NOTE: We must call clear() on ALL members that contain any
+		// project-specific data, to avoid data bleeding through 
+		// after project close/open
+		dashboardStatusMapsCache.clear();
+		timePeriodCostsMapsCache.clear();
+		projectTotalCalculator.clear();
 		
 		quarantine = new StringBuilder();
 		exceptionLog = new StringBuilder();
