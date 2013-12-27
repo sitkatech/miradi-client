@@ -59,6 +59,7 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		// TODO: Only clear the cache when it actually needs it
+		//FIXME: As soon as PTC actually caches data, it needs to be reset inside Project.clear()
 		modeToTimePeriodCostsMapMap.clear();
 	}
 	
