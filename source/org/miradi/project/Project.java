@@ -156,7 +156,10 @@ public class Project implements ProjectInterface
 	{
 		commandExecutor = new CommandExecutor(this);
 		projectCalendar = new ProjectCalendar(this);
+		
+		//FIXME: As soon as PTC actually caches data, it needs to be reset inside clear()
 		projectTotalCalculator = new ProjectTotalCalculator(this);
+		
 		threatStressRatingEnsurer = new ThreatStressRatingEnsurer(this);
 		leaderEnsurer = new LeaderEnsurer(this);
 		planningPreferencesChangeHandler = new PlanningPreferencesChangeHandler(this);
