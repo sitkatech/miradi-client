@@ -4,7 +4,7 @@ Copyright 2005-2013, Foundations of Success, Bethesda, Maryland
      (on behalf of the Conservation Measures Partnership, "CMP") and
      Beneficent Technology, Inc. ("Benetech"), Palo Alto, California.
 
-VERSION pre-4.1.0 BETA
+VERSION 4.1.0
 
 License and Copying
 
@@ -154,18 +154,15 @@ GNU/Linux:
 ---------------------
 Changes
 
-Miradi pre-4.1.0 BETA is a testing release, and we recommend that it is 
-to be used by anyone who is testing Miradi Share.  
-
 Projects from earlier versions of Miradi can be opened, and will 
 automatically be migrated to the latest data format. These projects 
-cannot be directly opened by earlier versions of Miradi, but pre-4.1.0 
+cannot be directly opened by earlier versions of Miradi, but 4.1.0 
 includes the ability to export projects in Miradi 4.0 format, or 
 in the MPZ format used by Miradi 3.3. In some cases, data may be 
 lost when exporting to these older formats, but a warning dialog will 
 indicate when that is the case.
 
-Notable changes in pre-4.1.0 BETA (compared to 4.0) include:
+Notable changes in 4.1.0 (compared to 4.0) include:
 
 Appwide:
 - New 2 state Miradi Share tab in Summary View
