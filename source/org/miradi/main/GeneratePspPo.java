@@ -76,12 +76,9 @@ public class GeneratePspPo
 				msgstr = getConvertedString(msgid);
 			}
 
-			if(!msgstr.equals(msgid))
-			{
-				output(msgid);
-				output(msgstr);
-				output("");
-			}
+			output("msgid" + " \"" + msgid + "\"");
+			output("msgstr" + " \"" + msgstr + "\"");
+			output("");
 		}
 	}
 
@@ -107,6 +104,8 @@ public class GeneratePspPo
 		msgstr = msgstr.replaceAll("direct threat", "pressure");
 		msgstr = msgstr.replaceAll("Threat", "Pressure");
 		msgstr = msgstr.replaceAll("threat", "pressure");
+		
+		msgstr = msgstr.replaceAll("pressureened", "threatened");
 
 		return msgstr;
 	}
