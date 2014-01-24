@@ -24,6 +24,7 @@ import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
 
 import org.martus.common.i18n.PoLoader;
 import org.martus.common.i18n.TranslationEntry;
@@ -49,15 +50,19 @@ public class GeneratePspPo
 		String formatted = dateFormat.format(new Date());
 		output("# Automatically generated, " + formatted);
 		
+		HashSet<String> ids = new HashSet<String>();
+		
 		for(TranslationEntry entry : contents.getEntries())
 		{
 			String msgid = entry.getMsgid();
+			if(ids.contains(msgid))
+				throw new RuntimeException("Duplicate ids: " + msgid);
+			ids.add(msgid);
+			
 			if(msgid.length() == 0)
 				throw new RuntimeException("Wasn't expecting empty msgid");
 			
 			String msgstr = entry.getMsgstr();
-			if(msgstr.length() != 0)
-				throw new RuntimeException("Wasn't expecting non-empty msgstr");
 		
 			if(msgid.startsWith("html|"))
 			{
@@ -75,11 +80,27 @@ public class GeneratePspPo
 			{
 				msgstr = getConvertedString(msgid);
 			}
+			
+			String originalMsgstr = entry.getMsgstr();
+			if(!isCompatible(msgstr, originalMsgstr))
+				throw new RuntimeException("Wasn't expecting non-empty msgstr");
+
 
 			output("msgid" + " \"" + msgid + "\"");
 			output("msgstr" + " \"" + msgstr + "\"");
 			output("");
 		}
+	}
+	
+	private static boolean isCompatible(String converted, String original)
+	{
+		if(original.length() == 0)
+			return true;
+		
+		if(converted.equals(original))
+			return true;
+		
+		return false;
 	}
 
 	private static String getConvertedPrefixedString(String msgid)
