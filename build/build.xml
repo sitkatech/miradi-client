@@ -12,6 +12,8 @@
 	<property name="version.full" value="${version.main}${version.minor}"/>
 	<property name="version.langpack" value="${version.main}" />
   
+	<property environment="env"/>
+	
 	<!-- module name  -->
     <property name="source.cvs.module"  value="Miradi"/>
     <property name="binaries.cvs.module"  value="Miradi"/>
