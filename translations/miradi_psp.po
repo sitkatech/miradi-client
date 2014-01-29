@@ -6935,8 +6935,8 @@ msgstr "FieldLabel|32.Trend|Trend"
 msgid "FieldLabel|32.SampleSize|Size"
 msgstr "FieldLabel|32.SampleSize|Size"
 
-msgid "FieldLabel|32.SamplePrecision|Precision "
-msgstr "FieldLabel|32.SamplePrecision|Precision "
+msgid "FieldLabel|32.SamplePrecision|Precision ±"
+msgstr "FieldLabel|32.SamplePrecision|Precision ±"
 
 msgid "FieldLabel|32.SamplePrecisionType|Precision Type"
 msgstr "FieldLabel|32.SamplePrecisionType|Precision Type"
