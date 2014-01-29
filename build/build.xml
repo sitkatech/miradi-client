@@ -576,7 +576,8 @@
 <!-- ================================================================== -->
 <target name="pot" depends="init" description="Create Translatable POT file">
 	<property name="java_files" value="${dist.dir}/java_files.txt"/>
-	
+	<mkdir dir="${dist.dir}" />
+		
 	<!-- Required for all languages -->
 	<echo message="build list of all files that contain translatable strings"/>
 	<echo message="Writing list of java files in ${eam.src.root} to ${java_files}..." />
