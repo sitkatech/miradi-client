@@ -37446,6 +37446,3 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
-
-#~ msgid "FieldLabel|32.SamplePrecision|Precision "
-#~ msgstr "FieldLabel|32.SamplePrecision|Precision "
