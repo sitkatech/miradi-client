@@ -84,9 +84,9 @@ public class GeneratePspPo
 			String originalMsgstr = entry.getMsgstr();
 			if(!isCompatible(msgstr, originalMsgstr))
 			{
-				System.err.println("# NOTE: Replacing different translation");
-				System.err.println("# " + msgstr);
-				System.err.println("# " + originalMsgstr);
+				output("# NOTE: Replacing different translation");
+				output("# " + msgstr);
+				output("# " + originalMsgstr);
 			}
 
 
