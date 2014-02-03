@@ -63,7 +63,7 @@
       <fileEntry mountPoint="95" file="../dist/temp/jars/saxon/HE9.4.0.3J/LICENSE.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/commons-lang3/3.1/LICENSE.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/commons-lang3/3.1/commons-lang3-3.1.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="17" file="./installer/BuildFiles/MarineExample-4.1.0.Miradi" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="17" file="./installer/BuildFiles/MarineExample-4.2.0.Miradi" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="17" file="./installer/BuildFiles/LicenseOverview.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="17" file="./installer/BuildFiles/LICENSE.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="17" file="./installer/BuildFiles/README.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
