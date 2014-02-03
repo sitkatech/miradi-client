@@ -118,6 +118,15 @@ public class SchemaWriter extends PrintWriter
 		println();
 	}
 
-	private int indentLevel;
+    /***
+     * Will write a line using LF as the line ending, disregarding the system property <code>line.separator</code>
+     */
+    @Override
+    public void println() {
+        char lineFeed = 0x000A;
+        super.print(lineFeed);
+    }
+
+    private int indentLevel;
 	public static final String INDENTATION = "  ";
 }
