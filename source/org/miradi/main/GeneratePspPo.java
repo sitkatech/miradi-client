@@ -50,6 +50,12 @@ public class GeneratePspPo
 		String formatted = dateFormat.format(new Date());
 		output("# Automatically generated, " + formatted);
 		
+		output("msgid \"\"");
+		output("msgstr \"\"");
+		output("\"Content-Type: text/plain; charset=UTF-8\"");
+		output("\"Content-Transfer-Encoding: 8bit\"");
+		output("\"Language: psp\"");
+		
 		HashSet<String> ids = new HashSet<String>();
 		
 		for(TranslationEntry entry : contents.getEntries())
