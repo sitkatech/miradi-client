@@ -83,7 +83,11 @@ public class GeneratePspPo
 			
 			String originalMsgstr = entry.getMsgstr();
 			if(!isCompatible(msgstr, originalMsgstr))
-				throw new RuntimeException("Wasn't expecting non-empty msgstr");
+			{
+				System.err.println("# NOTE: Replacing different translation");
+				System.err.println("# " + msgstr);
+				System.err.println("# " + originalMsgstr);
+			}
 
 
 			output("msgid" + " \"" + msgid + "\"");
