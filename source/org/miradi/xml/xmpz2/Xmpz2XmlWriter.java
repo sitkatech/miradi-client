@@ -23,6 +23,7 @@ package org.miradi.xml.xmpz2;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.martus.util.MultiCalendar;
@@ -150,7 +151,10 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	public void writeNonOptionalCodeListElement(final String elementName, ChoiceQuestion questionToUse, final CodeList codes)	throws Exception
 	{
 		CodeList readableCodes = convertToReadableCodes(questionToUse, codes);
-		writeNonOptionalCodeListElement(elementName, readableCodes);
+        if(readableCodes.hasData())
+        {
+		    writeNonOptionalCodeListElement(elementName, readableCodes);
+        }
 	}
 
 	public void writeNonOptionalCodeListElement(final String elementName, final CodeList codes) throws Exception
@@ -167,9 +171,18 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	
 	private CodeList convertToReadableCodes(ChoiceQuestion questionToUse, CodeList internalCodes)
 	{
+        HashSet<String> validCodes = new HashSet<String>();
+        for(ChoiceItem choice : questionToUse.getChoices())
+        {
+            validCodes.add(choice.getCode());
+        }
 		CodeList readableCodes = new CodeList();
 		for (String internalCode : internalCodes)
 		{
+            if(!validCodes.contains(internalCode))
+            {
+                continue;
+            }
 			String readableCode = questionToUse.convertToReadableCode(internalCode);
 			readableCodes.add(readableCode);
 		}
