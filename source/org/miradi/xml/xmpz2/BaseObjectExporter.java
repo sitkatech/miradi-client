@@ -118,39 +118,60 @@ public class BaseObjectExporter implements Xmpz2XmlConstants
 		return wrappedFactor.getTypeName();
 	}
 	
-	protected void writeOptionalCalculatedTimePeriodCosts(BaseObject baseObject, BaseObjectSchema baseObjectSchema) throws Exception
-	{
-		TimePeriodCostsMap totalBudgetCostsTimePeriodCostsMap = baseObject.getTotalTimePeriodCostsMap();
-		TimePeriodCosts totalBudgetCost = totalBudgetCostsTimePeriodCostsMap.calculateTotalBudgetCost();
-		
-		final OptionalDouble totalCostValue = totalBudgetCost.calculateTotalCost(getProject());
-		if (totalCostValue.hasValue())
-		{
-			final DateRange projectPlanningDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
-			DateRange totalDateRange = totalBudgetCostsTimePeriodCostsMap.getRolledUpDateRange(projectPlanningDateRange);
-			getWriter().writeStartElement(baseObjectSchema.getObjectName() + TIME_PERIOD_COSTS);
+    protected void writeOptionalCalculatedTimePeriodCosts(BaseObject baseObject, BaseObjectSchema baseObjectSchema) throws Exception
+    {
+        // we need to check if any of these optional values should be exported before we write out the 2 container elements that surround them
+        final TimePeriodCostsMap totalBudgetCostsTimePeriodCostsMap = baseObject.getTotalTimePeriodCostsMap();
+        final TimePeriodCosts totalBudgetCost = totalBudgetCostsTimePeriodCostsMap.calculateTotalBudgetCost();
+        final DateRange projectPlanningDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
+        final DateRange totalDateRange = totalBudgetCostsTimePeriodCostsMap.getRolledUpDateRange(projectPlanningDateRange);
+        final OptionalDouble totalCostValue = totalBudgetCost.calculateTotalCost(getProject());
+        final OptionalDouble calculatedWorkCostTotal = totalBudgetCost.calculateResourcesTotalCost(getProject());
+        final Set<ORef> calculatedWho = totalBudgetCost.getWorkUnitsRefSetForType(ProjectResourceSchema.getObjectType());
+        final OptionalDouble calculatedExpenseTotal = totalBudgetCost.getTotalExpense();
+        final OptionalDouble calculatedWorkUnits = totalBudgetCost.getTotalWorkUnits();
+        final TimePeriodCostsMap expenseAssignmentTimePeriodCostsMap = baseObject.getExpenseAssignmentsTimePeriodCostsMap();
+        final TimePeriodCostsMap resourceAssignmentTimePeriodCostsMap = baseObject.getResourceAssignmentsTimePeriodCostsMap();
+        final boolean haveExpenseTotalCost = expenseAssignmentTimePeriodCostsMap.calculateTotalBudgetCost(getProject()).hasValue();
+        final boolean haveResourceTotalCost = resourceAssignmentTimePeriodCostsMap.calculateTotalBudgetCost(getProject()).hasValue();
 
-			getWriter().writeStartElement(TIME_PERIOD_COSTS);
-			getWriter().writeElement(CALCULATED_START_DATE, totalDateRange.getStartDate().toIsoDateString());
-			getWriter().writeElement(CALCULATED_END_DATE, totalDateRange.getEndDate().toIsoDateString());
-			getWriter().writeElement(CALCULATED_TOTAL_BUDGET_COST, totalCostValue.toString());
-			getWriter().writeElement(CALCULATED_WORK_COST_TOTAL, totalBudgetCost.calculateResourcesTotalCost(getProject()));
-			writeResourceIds(CALCULATED_WHO, totalBudgetCost.getWorkUnitsRefSetForType(ProjectResourceSchema.getObjectType()));
-			writeOptionalTotalCost(CALCULATED_EXPENSE_TOTAL, totalBudgetCost.getTotalExpense());
-			writeOptionalTotalCost(CALCULATED_WORK_UNITS_TOTAL, totalBudgetCost.getTotalWorkUnits());			
+        boolean haveValueToWrite = totalDateRange != null
+                                || totalCostValue.hasValue()
+                                || calculatedWorkCostTotal.hasValue()
+                                || !calculatedWho.isEmpty()
+                                || calculatedExpenseTotal.hasValue()
+                                || calculatedWorkUnits.hasValue()
+                                || haveExpenseTotalCost
+                                || haveResourceTotalCost;
 
-			TimePeriodCostsMap expenseAssignmentTimePeriodCostsMap = baseObject.getExpenseAssignmentsTimePeriodCostsMap();
-			if (expenseAssignmentTimePeriodCostsMap.calculateTotalBudgetCost(getProject()).hasValue())
-				new ExpenseTimePeriodCostsWriter2(getWriter()).writeTimePeriodCosts(expenseAssignmentTimePeriodCostsMap.getDateUnitTimePeriodCostsMap());
-			
-			TimePeriodCostsMap resourceAssignmentTimePeriodCostsMap = baseObject.getResourceAssignmentsTimePeriodCostsMap();
-			if (resourceAssignmentTimePeriodCostsMap.calculateTotalBudgetCost(getProject()).hasValue())
-				new WorkUnitsTimePeriodCostsWriter2(getWriter()).writeTimePeriodCosts(resourceAssignmentTimePeriodCostsMap.getDateUnitTimePeriodCostsMap());
+        if(haveValueToWrite)
+        {
+            getWriter().writeStartElement(baseObjectSchema.getObjectName() + TIME_PERIOD_COSTS);
+            getWriter().writeStartElement(TIME_PERIOD_COSTS);
 
-			getWriter().writeEndElement(TIME_PERIOD_COSTS);
-			getWriter().writeEndElement(baseObjectSchema.getObjectName() + TIME_PERIOD_COSTS);
-		}
-	}
+            if(totalDateRange != null)
+            {
+                getWriter().writeElement(CALCULATED_START_DATE, totalDateRange.getStartDate().toIsoDateString());
+                getWriter().writeElement(CALCULATED_END_DATE, totalDateRange.getEndDate().toIsoDateString());
+            }
+            writeOptionalCost(CALCULATED_TOTAL_BUDGET_COST, totalCostValue);
+            getWriter().writeElement(CALCULATED_WORK_COST_TOTAL, calculatedWorkCostTotal);
+            writeResourceIds(CALCULATED_WHO, calculatedWho);
+            writeOptionalCost(CALCULATED_EXPENSE_TOTAL, calculatedExpenseTotal);
+            writeOptionalCost(CALCULATED_WORK_UNITS_TOTAL, calculatedWorkUnits);
+            if (haveExpenseTotalCost)
+            {
+                new ExpenseTimePeriodCostsWriter2(getWriter()).writeTimePeriodCosts(expenseAssignmentTimePeriodCostsMap.getDateUnitTimePeriodCostsMap());
+            }
+            if (haveResourceTotalCost)
+            {
+                new WorkUnitsTimePeriodCostsWriter2(getWriter()).writeTimePeriodCosts(resourceAssignmentTimePeriodCostsMap.getDateUnitTimePeriodCostsMap());
+            }
+
+            getWriter().writeEndElement(TIME_PERIOD_COSTS);
+            getWriter().writeEndElement(baseObjectSchema.getObjectName() + TIME_PERIOD_COSTS);
+        }
+    }
 	
 	private void writeResourceIds(String elementName, Set<ORef> resourceRefs) throws Exception
 	{
@@ -165,7 +186,7 @@ public class BaseObjectExporter implements Xmpz2XmlConstants
 		getWriter().writeEndElement(elementName);
 	}
 	
-	private void writeOptionalTotalCost(final String totalCostElementName, final OptionalDouble totalCost) throws Exception
+	private void writeOptionalCost(final String totalCostElementName, final OptionalDouble totalCost) throws Exception
 	{
 		if (totalCost.hasValue())
 		{
