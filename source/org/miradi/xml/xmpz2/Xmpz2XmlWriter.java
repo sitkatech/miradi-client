@@ -145,19 +145,16 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	public void writeCodeList(final String elementName, ChoiceQuestion questionToUse, CodeList codes)	throws Exception
 	{
 		if (codes.hasData())
-			writeNonOptionalCodeListElement(elementName, questionToUse, codes);
-	}
-
-	public void writeNonOptionalCodeListElement(final String elementName, ChoiceQuestion questionToUse, final CodeList codes)	throws Exception
-	{
-		CodeList readableCodes = convertToReadableCodes(questionToUse, codes);
-        if(readableCodes.hasData())
         {
-		    writeNonOptionalCodeListElement(elementName, readableCodes);
+            CodeList readableCodes = convertToReadableCodes(questionToUse, codes);
+            if(readableCodes.hasData())
+            {
+                writeNonOptionalCodeListElement(elementName, readableCodes);
+            }
         }
 	}
 
-	public void writeNonOptionalCodeListElement(final String elementName, final CodeList codes) throws Exception
+    public void writeNonOptionalCodeListElement(final String elementName, final CodeList codes) throws Exception
 	{
 		final String elementContainerName = createContainerElementName(elementName);
 		writeStartElement(elementContainerName);
