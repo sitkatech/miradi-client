@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-31 19:33-0600\n"
+"POT-Creation-Date: 2014-02-12 18:30-0600\n"
 "PO-Revision-Date: 2013-04-02 10:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -835,7 +835,7 @@ msgstr ""
 "réduire moyennement</b> la cible ou de réduire sa population de <b>11-30%</"
 "b> en dix ans ou trois générations.</html>"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:422
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:435
 msgid "<html><b>Overall<br>Project<br>Rating</b></html>"
 msgstr "<html><b>Évaluation<br>Globale<br>du Projet</b></html>"
 
@@ -6886,7 +6886,7 @@ msgstr "Résumé"
 msgid "Summary Report"
 msgstr "Rapport de résumé"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:148
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:154
 msgid "Summary Target Ratings:"
 msgstr "Résumé des classements  des cibles :"
 
@@ -7876,7 +7876,7 @@ msgstr ""
 msgid "Target: %s"
 msgstr "Cible : %s"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:58
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:55
 msgid "Targets"
 msgstr "Cibles"
 
@@ -8436,7 +8436,7 @@ msgstr "Menace : %s"
 msgid "ThreatReduction Result"
 msgstr ""
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:58
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:55
 msgid "Threats"
 msgstr "Menaces"
 

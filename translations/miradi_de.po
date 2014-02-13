@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-31 19:33-0600\n"
+"POT-Creation-Date: 2014-02-12 18:30-0600\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -884,7 +884,7 @@ msgstr ""
 "oder reduziert dessen Population um <b>11-30%</b> innerhalb der nächsten 10 "
 "Jahre oder 3 Generationen.</html>"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:422
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:435
 msgid "<html><b>Overall<br>Project<br>Rating</b></html>"
 msgstr "<html><b>Projekt<br>Gesamt <br>Bewertung</b></html>"
 
@@ -6933,7 +6933,7 @@ msgstr "Zusammenfassender Bericht"
 # Schutzobjektbewertung
 # mit "s" oder ohne?
 # Das ist der Eintrag im Threat Rating in der Liste ganz links unten. Im Summary eben! (Felix)
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:148
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:154
 msgid "Summary Target Ratings:"
 msgstr "Zusammenfassung Schutzobjektsbewertung"
 
@@ -7948,7 +7948,7 @@ msgstr ""
 msgid "Target: %s"
 msgstr "Schutzobjekt: %s"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:58
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:55
 msgid "Targets"
 msgstr "Schutzobjekte"
 
@@ -8485,7 +8485,7 @@ msgstr "Bedrohungen: %s"
 msgid "ThreatReduction Result"
 msgstr ""
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:58
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:55
 msgid "Threats"
 msgstr "Bedrohungen"
 
