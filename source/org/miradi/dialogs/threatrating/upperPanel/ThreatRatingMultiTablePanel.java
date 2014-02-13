@@ -41,12 +41,7 @@ import org.miradi.layout.OneRowGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.utils.FlexibleWidthHtmlViewer;
-import org.miradi.utils.MainThreatTableModelExporter;
-import org.miradi.utils.TableExporter;
-import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
-import org.miradi.utils.ThreatNameTableModelExporter;
-import org.miradi.utils.ThreatTargetTableModelExporter;
+import org.miradi.utils.*;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class ThreatRatingMultiTablePanel extends MultiTablePanel implements ListSelectionListener 
@@ -66,16 +61,18 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 	public void dispose()
 	{
 		super.dispose();
-		
+
+        threatIconTable.dispose();
 		threatNameTable.dispose();
 		targetThreatLinkTable.dispose();
 		threatSummaryColumnTable.dispose();
 		targetSummaryRowTable.dispose();
-		overallProjectSummaryCellTable.dispose();	
+		overallProjectSummaryCellTable.dispose();
 	}
 	
 	public void updateAllTables() throws Exception
 	{
+		updateTable(threatIconTable);
 		updateTable(threatNameTable);
 		updateTable(targetThreatLinkTable);
 		updateTable(threatSummaryColumnTable);
@@ -91,6 +88,7 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 	
 	private void addTablesToSelectionController()
 	{
+		selectionController.addTable(threatIconTable);
 		selectionController.addTable(threatNameTable);
 		selectionController.addTable(targetThreatLinkTable);
 		selectionController.addTable(threatSummaryColumnTable);
@@ -98,8 +96,15 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 	
 	private void createTables() throws Exception
 	{
+        threatIconTableModel = new ThreatIconColumnTableModel(getProject());
 		threatNameTableModel = new ThreatNameColumnTableModel(getProject());
+		threatIconTable = new ThreatIconColumnTable(getMainWindow(), threatIconTableModel);
 		threatNameTable = new ThreatNameColumnTable(getMainWindow(), threatNameTableModel);
+
+        addRowHeightControlledTable(threatIconTable);
+        addRowSortControlledTable(threatIconTable);
+        listenForColumnWidthChanges(threatIconTable);
+
 		addRowHeightControlledTable(threatNameTable);
 		addRowSortControlledTable(threatNameTable);
 		listenForColumnWidthChanges(threatNameTable);
@@ -129,6 +134,7 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 	public TableExporter createTableForExporting()
 	{
 		ThreatRatingMultiTableAsOneExporter exporter = new ThreatRatingMultiTableAsOneExporter(getProject());
+		exporter.addAsTopRowTable(new ThreatIconTableModelExporter(threatIconTableModel));
 		exporter.addAsTopRowTable(new ThreatNameTableModelExporter(threatNameTableModel));
 		exporter.addAsTopRowTable(new ThreatTargetTableModelExporter(targetThreatLinkTableModel));
 		exporter.addAsTopRowTable(new MainThreatTableModelExporter(threatSummaryColumnTableModel));
@@ -231,9 +237,9 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 	
 	static class CornerFillerComponent extends FlexibleWidthHtmlViewer
 	{
-		public CornerFillerComponent(MainWindow mainWindow, JComponent matchWidthOfComponent, JComponent matchHeightOfComponent)
+		public CornerFillerComponent(MainWindow mainWindow, JComponent matchWidthOfComponent, JComponent matchHeightOfComponent, String htmlText)
 		{
-			super(mainWindow, "<HTML><div class='DataPanel'><b>" + getTargetSummaryRowHeaderLabel() + "<br><br><br></html>");
+			super(mainWindow, htmlText);
 			
 			matchWidthOf = matchWidthOfComponent;
 			matchHeightOf = matchHeightOfComponent;
@@ -391,8 +397,15 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		threatSummaryColumnTableScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		threatSummaryColumnTableScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
-		MouseWheelListener masterMouseWheelListener = getFirstMasterWheelListener(threatSummaryColumnTableScroller);		
-	
+		MouseWheelListener masterMouseWheelListener = getFirstMasterWheelListener(threatSummaryColumnTableScroller);
+
+        ScrollPaneWithSizeConstraints threatIconScroller = new ScrollPaneWithSizeConstraints(threatIconTable, masterMouseWheelListener);
+        threatIconScroller.capMinWidth();
+        threatIconScroller.capMaxWidth();
+        threatIconScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        threatIconScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+        addToVerticalController(threatIconScroller);
+
 		ScrollPaneWithSizeConstraints threatTableScroller = new ScrollPaneWithSizeConstraints(threatNameTable, masterMouseWheelListener);
 		threatTableScroller.capMinWidth();
 		threatTableScroller.capMaxWidth();
@@ -428,16 +441,19 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		overallProjectSummaryCellTableScroller.setMinimumSize(overallProjectSummaryCellTableScroller.getPreferredSize());
 		overallProjectSummaryCellTableScroller.setMaximumSize(overallProjectSummaryCellTableScroller.getPreferredSize());
 
-		CornerFillerComponent lowerLeftCell = new CornerFillerComponent(getMainWindow(), threatTableScroller, targetSummaryRowTableScroller);
-		
+		CornerFillerComponent firstLowerLeftCell = new CornerFillerComponent(getMainWindow(), threatIconScroller, targetSummaryRowTableScroller, "");
+		CornerFillerComponent secondLowerLeftCell = new CornerFillerComponent(getMainWindow(), threatTableScroller, targetSummaryRowTableScroller, "<html><div class='DataPanel'><b>" + getTargetSummaryRowHeaderLabel() + "<br><br><br></html>");
+
 		Box hBoxTop = Box.createHorizontalBox();
+		hBoxTop.add(threatIconScroller);
 		hBoxTop.add(threatTableScroller);
 		hBoxTop.add(targetThreatLinkTableScroller);
 		hBoxTop.add(threatSummaryColumnTableScroller);
 		hBoxTop.add(Box.createHorizontalGlue());
 		
 		Box hBoxBottom = Box.createHorizontalBox();
-		hBoxBottom.add(lowerLeftCell);
+		hBoxBottom.add(firstLowerLeftCell);
+		hBoxBottom.add(secondLowerLeftCell);
 		hBoxBottom.add(targetSummaryRowTableScroller);
 		hBoxBottom.add(overallProjectSummaryCellTableScroller);
 		hBoxBottom.add(Box.createHorizontalGlue());
@@ -489,9 +505,11 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 	{
 		targetThreatLinkTable.getSelectionModel().removeListSelectionListener(listener);
 	}
-	
+
+    private ThreatIconColumnTableModel threatIconTableModel;
 	private ThreatNameColumnTableModel threatNameTableModel;
 	private ThreatNameColumnTable threatNameTable;
+	private ThreatIconColumnTable threatIconTable;
 	private TargetThreatLinkTableModel targetThreatLinkTableModel;
 	private TargetThreatLinkTable targetThreatLinkTable;
 	

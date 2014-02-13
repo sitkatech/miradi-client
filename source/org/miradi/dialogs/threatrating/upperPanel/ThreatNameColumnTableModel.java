@@ -27,63 +27,46 @@ import org.miradi.questions.TaglessChoiceItem;
 
 public class ThreatNameColumnTableModel extends AbstractThreatPerRowTableModel
 {
-	public ThreatNameColumnTableModel(Project projectToUse)
-	{
-		super(projectToUse);
-	}
-	
-	@Override
-	public String getUniqueTableModelIdentifier()
+    public ThreatNameColumnTableModel(Project projectToUse)
+    {
+        super(projectToUse);
+    }
+
+    @Override
+    public String getUniqueTableModelIdentifier()
 	{
 		return UNIQUE_IDENTIFIER;
 	}
 
-	public int getColumnCount()
+    public int getColumnCount()
 	{
 		return COLUMN_COUNT;
 	}
-	
-	@Override
-	public String getColumnGroupCode(int column)
-	{
-		return getColumnName(column);
-	}
-	
-	@Override
-	public String getColumnName(int column)
-	{
-		if (isThreatIconColumn(column))
-			return "";
-		
-		return EAM.text("Threats") + " \\ " + EAM.text("Targets");
-	}
-	
-	public Object getValueAt(int row, int column)
-	{
-		return getChoiceItemAt(row, column);
-	}
 
-	public ChoiceItem getChoiceItemAt(int row, int column)
-	{
-		if (isThreatIconColumn(column))
-			return createTaglessChoiceItemWithThreatIcon();
-		
-		return new TaglessChoiceItem(getDirectThreat(row).toString());
-	}
+    @Override
+    public String getColumnGroupCode(int column)
+    {
+        return getColumnName(column);
+    }
 
-	public TaglessChoiceItem createTaglessChoiceItemWithThreatIcon()
-	{
-		return new TaglessChoiceItem(new DirectThreatIcon());
-	}
+    @Override
+    public String getColumnName(int column)
+    {
+        return EAM.text("Threats") + " \\ " + EAM.text("Targets");
+    }
 
-	private boolean isThreatIconColumn(int column)
-	{
-		return column == THREAT_ICON_COLUMN_INDEX;
-	}
-	
-	private static final String UNIQUE_IDENTIFIER = "ThreatNameColumnTableModel";
-	
-	public static final int THREAT_ICON_COLUMN_INDEX = 0;
-	public static final int THREAT_NAME_COLUMN_INDEX = 1;
-	public static final int COLUMN_COUNT = 2;
+    public Object getValueAt(int row, int column)
+    {
+        return getChoiceItemAt(row, column);
+    }
+
+    public ChoiceItem getChoiceItemAt(int row, int column)
+    {
+        return new TaglessChoiceItem(getDirectThreat(row).toString());
+    }
+
+    private static final String UNIQUE_IDENTIFIER = "ThreatNameColumnTableModel";
+
+    public static final int THREAT_NAME_COLUMN_INDEX = 0;
+    public static final int COLUMN_COUNT = 1;
 }
