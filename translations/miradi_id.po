@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-31 19:33-0600\n"
+"POT-Creation-Date: 2014-02-12 18:30-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -771,7 +771,7 @@ msgid ""
 "within ten years or three generations.</html>"
 msgstr ""
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:422
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:435
 msgid "<html><b>Overall<br>Project<br>Rating</b></html>"
 msgstr "<html><b>Peringkat<br>Keseluruhan<br>Proyek</b></html> "
 
@@ -6673,7 +6673,7 @@ msgstr "Ringkasan "
 msgid "Summary Report"
 msgstr "Laporan Ringkas"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:148
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:154
 msgid "Summary Target Ratings:"
 msgstr "Ringkasan Ancaman-Target: "
 
@@ -7651,7 +7651,7 @@ msgstr ""
 msgid "Target: %s"
 msgstr ""
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:58
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:55
 msgid "Targets"
 msgstr "Target "
 
@@ -8174,7 +8174,7 @@ msgstr ""
 msgid "ThreatReduction Result"
 msgstr ""
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:58
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:55
 msgid "Threats"
 msgstr "Ancaman "
 

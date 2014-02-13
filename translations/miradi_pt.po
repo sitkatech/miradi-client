@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-31 19:33-0600\n"
+"POT-Creation-Date: 2014-02-12 18:30-0600\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -851,7 +851,7 @@ msgstr ""
 "30%</b> dentro de dez anos ou três gerações.</html>"
 
 # check if <br> (line break) is positioned correctly.
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:422
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:435
 msgid "<html><b>Overall<br>Project<br>Rating</b></html>"
 msgstr "<html><b>Classificação Global<br>doProjeto<br></b></html>"
 
@@ -6970,7 +6970,7 @@ msgstr "Resumo"
 msgid "Summary Report"
 msgstr "Relatório Resumido"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:148
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:154
 msgid "Summary Target Ratings:"
 msgstr "Resumo das Classificações dos Alvos"
 
@@ -7965,7 +7965,7 @@ msgstr ""
 msgid "Target: %s"
 msgstr "Alvo: %s"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:58
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:55
 msgid "Targets"
 msgstr "Alvos"
 
@@ -8523,7 +8523,7 @@ msgstr "Ameaça: %s"
 msgid "ThreatReduction Result"
 msgstr "Resultado de Redução de Ameaça"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:58
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:55
 msgid "Threats"
 msgstr "Ameaças"
 
