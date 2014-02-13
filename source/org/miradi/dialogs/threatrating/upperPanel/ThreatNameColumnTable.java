@@ -32,6 +32,7 @@ import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererOnlyFac
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.icons.DirectThreatIcon;
 import org.miradi.main.MainWindow;
+import org.miradi.utils.SortableTableModel;
 
 
 public class ThreatNameColumnTable extends TableWhoseScrollPaneAlwaysExactlyFits
@@ -39,11 +40,7 @@ public class ThreatNameColumnTable extends TableWhoseScrollPaneAlwaysExactlyFits
 	public ThreatNameColumnTable(MainWindow mainWindowToUse, AbstractThreatPerRowTableModel tableModel)
 	{
 		super(mainWindowToUse, tableModel, tableModel.getUniqueTableModelIdentifier());
-		
-		iconCellRendererFactory = new BorderlessChoiceItemCellRendererFactory(tableModel, new DefaultFontProvider(getMainWindow()));
-		getColumnModel().getColumn(ThreatNameColumnTableModel.THREAT_ICON_COLUMN_INDEX).setCellRenderer(iconCellRendererFactory);
-		setColumnWidth(ThreatNameColumnTableModel.THREAT_ICON_COLUMN_INDEX, new DirectThreatIcon().getIconWidth() * 2);
-		
+
 		textCellRendererFactory = new BorderlessMultilineCellRendererFactory(mainWindowToUse, tableModel, new DefaultFontProvider(getMainWindow()));
 		getColumnModel().getColumn(ThreatNameColumnTableModel.THREAT_NAME_COLUMN_INDEX).setCellRenderer(textCellRendererFactory);
 		
@@ -58,28 +55,7 @@ public class ThreatNameColumnTable extends TableWhoseScrollPaneAlwaysExactlyFits
 		return false;
 	}
 
-	private BorderlessChoiceItemCellRendererFactory iconCellRendererFactory;
 	private BorderlessMultilineCellRendererFactory textCellRendererFactory;
-}
-
-class BorderlessChoiceItemCellRendererFactory extends ChoiceItemTableCellRendererFactory
-{
-	public BorderlessChoiceItemCellRendererFactory(
-			RowColumnBaseObjectProvider providerToUse,
-			FontForObjectProvider fontProviderToUse)
-	{
-		super(providerToUse, fontProviderToUse);
-	}
-	
-	@Override
-	public Component getTableCellRendererComponent(JTable table, Object value,
-			boolean isSelected, boolean hasFocus, int row, int tableColumn)
-	{
-		final Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus,
-				row, tableColumn);
-		((JComponent)component).setBorder(BorderFactory.createEmptyBorder());
-		return component;
-	}
 }
 
 class BorderlessMultilineCellRendererFactory extends MultiLineObjectTableCellRendererOnlyFactory
