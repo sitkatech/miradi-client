@@ -49,7 +49,7 @@ public class IndicatorSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(Indicator.TAG_VIABILITY_RATINGS_COMMENTS);
 		createFieldSchemaOptionalRef(Indicator.TAG_LEADER_RESOURCE);
 		createFieldSchemaSingleLineUserText(Indicator.TAG_UNIT);
-		createFieldSchemaReflist(Indicator.TAG_FUTURE_STATUS_REFS, "FutureStatus");
+        createOwnedFieldSchemaReflist(Indicator.TAG_FUTURE_STATUS_REFS, FUTURE_STATUS);
 		createBudgetSchemas();
 		createProgressReportSchema();
 		createTaxonomyClassificationSchemaField();
