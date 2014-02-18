@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-12 18:30-0600\n"
+"POT-Creation-Date: 2014-02-17 19:00-0600\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -5467,7 +5467,7 @@ msgstr ""
 "Recomendamos fechar este projeto e contatar a equipe de apoio de Miradi para "
 "que possam concertar este projeto com segurança. "
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/project/ProjectRepairer.java:155
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/project/ProjectRepairer.java:132
 msgid "Missing Indicator(s) was removed!"
 msgstr ""
 
