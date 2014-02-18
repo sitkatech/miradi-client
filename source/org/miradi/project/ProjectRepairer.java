@@ -165,7 +165,7 @@ public class ProjectRepairer
 
     private void repairIndicatorsReferringToSameFutureStatus() throws Exception
     {
-        HashSet<BaseId> futureToForget = new HashSet<BaseId>();
+        HashSet<FutureStatus> futuresToForget = new HashSet<FutureStatus>();
         ORef[] futureStatuses = getProject().getFutureStatusPool().getRefList().toArray();
         BaseObjectDeepCopier deepCopier = new BaseObjectDeepCopierNotUsingCommands(getProject());
         for(ORef futureStatRef : futureStatuses)
@@ -174,7 +174,7 @@ public class ProjectRepairer
             ORefList indicatorRefs = futureStatus.findObjectsThatReferToUs(IndicatorSchema.getObjectType());
             if(indicatorRefs.size() > 1)
             {
-                futureToForget.add(futureStatus.getId());
+                futuresToForget.add(futureStatus);
                 for (ORef indicatorRef : indicatorRefs)
                 {
                     Indicator indicator = Indicator.find(getProject(), indicatorRef);
@@ -186,9 +186,12 @@ public class ProjectRepairer
                 }
             }
         }
-        for(BaseId badFuture : futureToForget)
+        for(FutureStatus badFuture : futuresToForget)
         {
-            getProject().getFutureStatusPool().remove(badFuture);
+            if(badFuture.findAllObjectsThatReferToUs().isEmpty())
+            {
+                getProject().deleteObject(badFuture);
+            }
         }
     }
 
