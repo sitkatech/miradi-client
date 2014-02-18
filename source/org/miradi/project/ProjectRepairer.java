@@ -21,12 +21,7 @@ package org.miradi.project;
 
 import java.awt.Dimension;
 import java.awt.Point;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.Vector;
+import java.util.*;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
@@ -39,27 +34,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.objectpools.ObjectPool;
 import org.miradi.objectpools.PoolWithIdAssigner;
-import org.miradi.objects.AbstractTarget;
-import org.miradi.objects.Assignment;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramObject;
-import org.miradi.objects.ExpenseAssignment;
-import org.miradi.objects.FactorLink;
-import org.miradi.objects.GroupBox;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.ResourceAssignment;
-import org.miradi.objects.TableSettings;
-import org.miradi.objects.TaggedObjectSet;
-import org.miradi.objects.ThreatStressRating;
-import org.miradi.objects.ViewData;
-import org.miradi.schemas.DiagramFactorSchema;
-import org.miradi.schemas.ExpenseAssignmentSchema;
-import org.miradi.schemas.HumanWelfareTargetSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.ResourceAssignmentSchema;
-import org.miradi.schemas.TaggedObjectSetSchema;
-import org.miradi.schemas.TargetSchema;
+import org.miradi.objects.*;
+import org.miradi.schemas.*;
 import org.miradi.utils.BaseObjectDeepCopier;
 import org.miradi.utils.BaseObjectDeepCopierNotUsingCommands;
 import org.miradi.utils.EnhancedJsonObject;
@@ -127,9 +103,10 @@ public class ProjectRepairer
 		repairKeaModeTargetsReferringToMissingSimpleModeIndicators(HumanWelfareTargetSchema.getObjectType());
 		repairTargetsReferringToSameSimpleModeIndicator(TargetSchema.getObjectType());
 		repairTargetsReferringToSameSimpleModeIndicator(HumanWelfareTargetSchema.getObjectType());
+		repairIndicatorsReferringToSameFutureStatus();
 	}
-	
-	private void repairKeaModeTargetsReferringToMissingSimpleModeIndicators(final int abstractTargetType) throws Exception
+
+    private void repairKeaModeTargetsReferringToMissingSimpleModeIndicators(final int abstractTargetType) throws Exception
 	{
 		ORefList abstractTargetRefs = getProject().getPool(abstractTargetType).getORefList();
 		for(ORef abstractTargetRef : abstractTargetRefs)
@@ -159,6 +136,35 @@ public class ProjectRepairer
 		targetIndicatorRefs.removeAll(indicatorsToDelete);
 		setIndicatorRefs(target, targetIndicatorRefs);
 	}
+
+    private void repairIndicatorsReferringToSameFutureStatus() throws Exception
+    {
+        HashSet<BaseId> futureToForget = new HashSet<BaseId>();
+        ORef[] futureStatuses = getProject().getFutureStatusPool().getRefList().toArray();
+        BaseObjectDeepCopier deepCopier = new BaseObjectDeepCopierNotUsingCommands(getProject());
+        for(ORef futureStatRef : futureStatuses)
+        {
+            FutureStatus futureStatus = FutureStatus.find(getProject(), futureStatRef);
+            ORefList indicatorRefs = futureStatus.findObjectsThatReferToUs(IndicatorSchema.getObjectType());
+            if(indicatorRefs.size() > 1)
+            {
+                futureToForget.add(futureStatus.getId());
+                for (ORef indicatorRef : indicatorRefs)
+                {
+                    Indicator indicator = Indicator.find(getProject(), indicatorRef);
+                    ORefList futureStatusRefs = indicator.getFutureStatusRefs();
+                    futureStatusRefs.remove(futureStatRef);
+                    FutureStatus copy = (FutureStatus)deepCopier.createDeepCopier(futureStatus);
+                    futureStatusRefs.add(copy);
+                    getProject().setObjectData(indicatorRef, Indicator.TAG_FUTURE_STATUS_REFS, futureStatusRefs.toString());
+                }
+            }
+        }
+        for(BaseId badFuture : futureToForget)
+        {
+            getProject().getFutureStatusPool().remove(badFuture);
+        }
+    }
 
 	private void repairTargetsReferringToSameSimpleModeIndicator(final int abstractTargetType) throws Exception
 	{
