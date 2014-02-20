@@ -26,10 +26,11 @@ import org.miradi.main.MainWindow;
 
 public class XmpzFileChooser extends MiradiFileSaveChooser
 {
-	public XmpzFileChooser(MainWindow mainWindow)
-	{
-		super(mainWindow);
-	}
+    public XmpzFileChooser(MainWindow mainWindow)
+    {
+        super(mainWindow);
+        setOptionalSelectedFile(getDefaultProjectExportSelectedFile());
+    }
 
 	@Override
 	public FileFilter[] getFileFilter()

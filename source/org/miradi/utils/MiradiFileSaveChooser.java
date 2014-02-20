@@ -29,10 +29,10 @@ import org.miradi.main.MainWindow;
 
 abstract public class MiradiFileSaveChooser extends AbstractFileChooser
 {
-	public MiradiFileSaveChooser(MainWindow mainWindowToUse)
-	{
-		super(mainWindowToUse);
-	}
+    public MiradiFileSaveChooser(MainWindow mainWindowToUse)
+    {
+        super(mainWindowToUse);
+    }
 
 	@Override
 	protected File doCustomWork(final File file)
@@ -80,6 +80,23 @@ abstract public class MiradiFileSaveChooser extends AbstractFileChooser
 		return EAM.substituteSingleString(EAM.text("Button|Save %s"), getFileExtensionLabel());
 	}
 
+    @Override
+    protected File getOptionalSelectedFile()
+    {
+        return optionalSelectedFile;
+    }
+
+    protected void setOptionalSelectedFile(File file)
+    {
+        optionalSelectedFile = file;
+    }
+
+    protected File getDefaultProjectExportSelectedFile()
+    {
+        String fileName = getMainWindow().getProject().getFilename();
+        return new File(fileName + "." + getFileExtensionLabel().toLowerCase());
+    }
+
 	private String getDialogOverwriteTitleText()
 	{
 		return EAM.text("Title|Overwrite existing file?");
@@ -95,8 +112,9 @@ abstract public class MiradiFileSaveChooser extends AbstractFileChooser
 	{
 		return false;
 	}
-	
-	protected abstract String getFileExtensionLabel();
+
+    protected abstract String getFileExtensionLabel();
+    private File optionalSelectedFile;
 	
 	public static final String INVALID_PROJECT_FILE_NAME_MESSAGE = EAM.text("File name must contain only alpha numeric and/or '_' characters.");
 	public static final String PROJECT_FILE_NOT_FOUND = EAM.text("File could not be created, this can be due to bad characters in file name.");

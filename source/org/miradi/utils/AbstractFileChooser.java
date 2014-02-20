@@ -60,17 +60,20 @@ abstract public class AbstractFileChooser
 		currentDirectory = selectedFile.getParent();
 	}
 
-	protected JFileChooser createFileChooserDialog()
-	{
-		JFileChooser dialog = new JFileChooser(currentDirectory);
-		dialog.setAcceptAllFileFilterUsed(shouldAllowAllFileFilter());
-		dialog.setDialogTitle(getDialogTitleText());
-		addFileFilters(dialog);
-		dialog.setDialogType(getDialogType());
-		dialog.setApproveButtonToolTipText(getApproveButtonToolTipText());
-		
-		return dialog;
-	}
+    protected JFileChooser createFileChooserDialog()
+    {
+        JFileChooser dialog = new JFileChooser(currentDirectory);
+        dialog.setAcceptAllFileFilterUsed(shouldAllowAllFileFilter());
+        dialog.setDialogTitle(getDialogTitleText());
+        addFileFilters(dialog);
+        dialog.setDialogType(getDialogType());
+        dialog.setApproveButtonToolTipText(getApproveButtonToolTipText());
+        if(getOptionalSelectedFile() != null)
+        {
+            dialog.setSelectedFile(getOptionalSelectedFile());
+        }
+        return dialog;
+    }
 
 	private void addFileFilters(JFileChooser dialog)
 	{
@@ -107,7 +110,12 @@ abstract public class AbstractFileChooser
 	{
 		return mainWindow;
 	}
-	
+
+    protected File getOptionalSelectedFile()
+    {
+        return null;
+    }
+
 	public static void addFileFilters(JFileChooser fileChooser, FileFilter[] filters)
 	{
 		for (int i = 0; i < filters.length; ++i)

@@ -23,12 +23,17 @@ import javax.swing.filechooser.FileFilter;
 
 import org.miradi.main.MainWindow;
 
+import java.io.File;
+
 public class CpmzFileChooser extends MiradiFileSaveChooser
 {
-	public CpmzFileChooser(MainWindow mainWindow)
-	{
-		super(mainWindow);
-	}
+    public CpmzFileChooser(MainWindow mainWindow)
+    {
+        super(mainWindow);
+        String fileName = getMainWindow().getProject().getFilename();
+        File selectedFile = new File(fileName + ".cpmz");
+        setOptionalSelectedFile(selectedFile);
+    }
 
 	@Override
 	public FileFilter[] getFileFilter()

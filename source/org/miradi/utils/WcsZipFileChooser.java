@@ -26,10 +26,11 @@ import org.miradi.main.MainWindow;
 
 public class WcsZipFileChooser extends MiradiFileSaveChooser
 {
-	public WcsZipFileChooser(MainWindow mainWindow)
-	{
-		super(mainWindow);
-	}
+    public WcsZipFileChooser(MainWindow mainWindow)
+    {
+        super(mainWindow);
+        setOptionalSelectedFile(getDefaultProjectExportSelectedFile());
+    }
 
 	@Override
 	public FileFilter[] getFileFilter()

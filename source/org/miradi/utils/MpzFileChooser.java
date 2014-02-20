@@ -26,10 +26,11 @@ import org.miradi.main.MainWindow;
 
 public class MpzFileChooser extends MiradiFileSaveChooser
 {
-	public MpzFileChooser(MainWindow mainWindow)
-	{
-		super(mainWindow);
-	}
+    public MpzFileChooser(MainWindow mainWindow)
+    {
+        super(mainWindow);
+        setOptionalSelectedFile(getDefaultProjectExportSelectedFile());
+    }
 
 	@Override
 	public FileFilter[] getFileFilter()

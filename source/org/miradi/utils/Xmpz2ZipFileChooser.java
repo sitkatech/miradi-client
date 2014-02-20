@@ -26,10 +26,11 @@ import org.miradi.main.MainWindow;
 
 public class Xmpz2ZipFileChooser extends MiradiFileSaveChooser
 {
-	public Xmpz2ZipFileChooser(MainWindow mainWindow)
-	{
-		super(mainWindow);
-	}
+    public Xmpz2ZipFileChooser(MainWindow mainWindow)
+    {
+        super(mainWindow);
+        setOptionalSelectedFile(getDefaultProjectExportSelectedFile());
+    }
 
 	@Override
 	public FileFilter[] getFileFilter()
@@ -42,6 +43,6 @@ public class Xmpz2ZipFileChooser extends MiradiFileSaveChooser
 	{
 		return XMPZ_UI_EXTENSION_TAG;
 	}
-	
+
 	private static final String XMPZ_UI_EXTENSION_TAG = "XMPZ2";
 }
