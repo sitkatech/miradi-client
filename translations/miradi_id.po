@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-18 15:00-0600\n"
+"POT-Creation-Date: 2014-02-19 18:30-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -1297,6 +1297,10 @@ msgstr "Keluar "
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExpandAllRows.java:35
 msgid "Action|Expand All Rows"
 msgstr "Perluas Semua Baris "
+
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExportMiradiShareFile.java:15
+msgid "Action|Export MiradiShare File"
+msgstr ""
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExportXslTemplate.java:36
 msgid "Action|Export XSL Template"
@@ -5018,11 +5022,11 @@ msgstr "Sedang"
 msgid "Medium (Default)"
 msgstr "Sedang (Standar)"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:246
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:247
 msgid "MenuBar|Actions"
 msgstr "Tindakan "
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:177
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:178
 msgid "MenuBar|Edit"
 msgstr "Edit "
 
@@ -5030,15 +5034,15 @@ msgstr "Edit "
 msgid "MenuBar|File"
 msgstr "Berkas "
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:577
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:578
 msgid "MenuBar|Help"
 msgstr "Bantuan "
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:509
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:510
 msgid "MenuBar|Step-by-Step"
 msgstr "Langkah demi Langkah "
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:438
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:439
 msgid "MenuBar|View"
 msgstr "Tampilan "
 
@@ -5066,20 +5070,20 @@ msgstr "5. Tangkap dan Berbagi Pembelajaran "
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Tambahkan Tag ke %n Butir yang Dipilih "
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:143
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:144
 msgid "Menu|Export Current Page as..."
 msgstr "Ekspor Halaman Saat Ini sebagai…"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:119
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:120
 msgid "Menu|Export Current Project as..."
 msgstr "Ekspor Proyek Saat Ini sebagai…"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:280
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:426
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:427
 msgid "Menu|Group Box"
 msgstr "Kotak Grup"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:156
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:157
 msgid "Menu|Import"
 msgstr "Impor "
 
@@ -7184,6 +7188,7 @@ msgstr "Ekspor halaman yang tampak saat ini sebagai berkas RTF"
 msgid "TT|Export entire project as a WCS Miradi Project ZIP file"
 msgstr ""
 
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExportMiradiShareFile.java:21
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExportXmpz.java:40
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExportXmpz2.java:41
 msgid "TT|Export entire project as an XML file"
