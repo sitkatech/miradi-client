@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-19 18:30-0600\n"
+"POT-Creation-Date: 2014-02-20 15:45-0600\n"
 "PO-Revision-Date: 2013-04-02 10:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -3751,7 +3751,7 @@ msgstr "Moyen"
 msgid "Feb"
 msgstr "Fév"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:102
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:120
 msgid ""
 "File could not be created, this can be due to bad characters in file name."
 msgstr ""
@@ -3762,7 +3762,7 @@ msgstr ""
 msgid "File exists: Cannot overwrite a non project folder"
 msgstr "Le fichier existe : impossible de remplacer un dossier hors projet"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:101
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:119
 msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr ""
 "Le nom du fichier ne doit contenir que des caractères alphanumériques et/ou "
@@ -8364,7 +8364,7 @@ msgstr ""
 "vouloir faire ceci ?"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:308
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:90
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:107
 msgid "This will replace the existing file."
 msgstr "Ceci va remplacer le fichier existant"
 
@@ -8620,7 +8620,7 @@ msgid "Title|Other Orgs"
 msgstr "Autres organisations"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:307
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:85
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:102
 msgid "Title|Overwrite existing file?"
 msgstr "Remplacer le fichier existant?"
 

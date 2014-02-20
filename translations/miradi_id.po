@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-19 18:30-0600\n"
+"POT-Creation-Date: 2014-02-20 15:45-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -3599,7 +3599,7 @@ msgstr "Wajar"
 msgid "Feb"
 msgstr ""
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:102
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:120
 msgid ""
 "File could not be created, this can be due to bad characters in file name."
 msgstr ""
@@ -3610,7 +3610,7 @@ msgstr ""
 msgid "File exists: Cannot overwrite a non project folder"
 msgstr "File yang ada: Tidak dapat menimpa folder nonproyek "
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:101
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:119
 msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr ""
 "Nama berkas harus mengandung huruf dan angka dan/atau karakter '_' saja. "
@@ -8103,7 +8103,7 @@ msgstr ""
 "disalin sebelumnya. Anda yakin ingin melakukan ini?: "
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:308
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:90
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:107
 msgid "This will replace the existing file."
 msgstr "Ini akan mengganti berkas yang ada. "
 
@@ -8358,7 +8358,7 @@ msgid "Title|Other Orgs"
 msgstr "Organisasi Lain "
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:307
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:85
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:102
 msgid "Title|Overwrite existing file?"
 msgstr "Tulis tindih berkas yang ada? "
 
