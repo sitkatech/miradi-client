@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-18 15:00-0600\n"
+"POT-Creation-Date: 2014-02-19 18:30-0600\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1253,6 +1253,10 @@ msgstr ""
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExpandAllRows.java:35
 msgid "Action|Expand All Rows"
+msgstr ""
+
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExportMiradiShareFile.java:15
+msgid "Action|Export MiradiShare File"
 msgstr ""
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExportXslTemplate.java:36
@@ -4852,11 +4856,11 @@ msgstr ""
 msgid "Medium (Default)"
 msgstr ""
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:246
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:247
 msgid "MenuBar|Actions"
 msgstr ""
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:177
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:178
 msgid "MenuBar|Edit"
 msgstr ""
 
@@ -4864,15 +4868,15 @@ msgstr ""
 msgid "MenuBar|File"
 msgstr ""
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:577
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:578
 msgid "MenuBar|Help"
 msgstr ""
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:509
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:510
 msgid "MenuBar|Step-by-Step"
 msgstr ""
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:438
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:439
 msgid "MenuBar|View"
 msgstr ""
 
@@ -4900,20 +4904,20 @@ msgstr ""
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr ""
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:143
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:144
 msgid "Menu|Export Current Page as..."
 msgstr ""
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:119
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:120
 msgid "Menu|Export Current Project as..."
 msgstr ""
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:280
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:426
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:427
 msgid "Menu|Group Box"
 msgstr ""
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:156
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:157
 msgid "Menu|Import"
 msgstr ""
 
@@ -6932,6 +6936,7 @@ msgstr ""
 msgid "TT|Export entire project as a WCS Miradi Project ZIP file"
 msgstr ""
 
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExportMiradiShareFile.java:21
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExportXmpz.java:40
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExportXmpz2.java:41
 msgid "TT|Export entire project as an XML file"
