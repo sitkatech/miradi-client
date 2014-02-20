@@ -91,28 +91,29 @@ public class MainMenuBar extends JMenuBar
 		add(createHelpMenu(actions));
 	}
 
-	private JMenu createFileMenu(Actions actions)
-	{
-		JMenu menu = new JMenu(EAM.text("MenuBar|File"));
-		menu.setMnemonic(KeyEvent.VK_F);
+    private JMenu createFileMenu(Actions actions)
+    {
+        JMenu menu = new JMenu(EAM.text("MenuBar|File"));
+        menu.setMnemonic(KeyEvent.VK_F);
 
-		addMenuItem(actions, menu, ActionSaveProjectAs.class, KeyEvent.VK_A);
-		addMenuItem(actions, menu, ActionHowToSave.class, KeyEvent.VK_H);
-		addMenuItem(actions, menu, ActionClose.class, KeyEvent.VK_C);
-		menu.addSeparator();
-		
-		addMenuItem(actions, menu, ActionPrint.class, KeyEvent.VK_P);
-		menu.addSeparator();
-		
-		menu.add(createExportCurrentPageMenu(actions));
-		menu.add(createExportMenu(actions));
-		menu.add(createImportMenu(actions));
-		menu.addSeparator();
-		
-		addMenuItem(actions, menu, ActionExit.class, KeyEvent.VK_X);
-		
-		return menu;
-	}
+        addMenuItem(actions, menu, ActionSaveProjectAs.class, KeyEvent.VK_A);
+        addMenuItem(actions, menu, ActionHowToSave.class, KeyEvent.VK_H);
+        addMenuItem(actions, menu, ActionClose.class, KeyEvent.VK_C);
+        menu.addSeparator();
+
+        addMenuItem(actions, menu, ActionPrint.class, KeyEvent.VK_P);
+        menu.addSeparator();
+
+        menu.add(createExportCurrentPageMenu(actions));
+        menu.add(createExportMenu(actions));
+        addMenuItem(actions, menu, ActionExportMiradiShareFile.class);
+        menu.add(createImportMenu(actions));
+        menu.addSeparator();
+
+        addMenuItem(actions, menu, ActionExit.class, KeyEvent.VK_X);
+
+        return menu;
+    }
 
 	private JMenu createExportMenu(Actions actions)
 	{
