@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-18 15:00-0600\n"
+"POT-Creation-Date: 2014-02-19 18:30-0600\n"
 "PO-Revision-Date: 2013-06-07 01:56+0100\n"
 "Last-Translator: Galragchaa <galragchaa@yahoo.com>\n"
 "Language-Team: none\n"
@@ -1375,6 +1375,10 @@ msgstr "Арга хэмжээ|Гарах"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExpandAllRows.java:35
 msgid "Action|Expand All Rows"
 msgstr "Арга хэмжээ|Бүх эгнээг өргөжүүлэх"
+
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExportMiradiShareFile.java:15
+msgid "Action|Export MiradiShare File"
+msgstr ""
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExportXslTemplate.java:36
 msgid "Action|Export XSL Template"
@@ -5070,11 +5074,11 @@ msgstr "Дундаж"
 msgid "Medium (Default)"
 msgstr "Дундаж (Default)"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:246
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:247
 msgid "MenuBar|Actions"
 msgstr "Цэсийн системийн команд|Үйлдлүүд"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:177
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:178
 msgid "MenuBar|Edit"
 msgstr "Цэсийн системийн команд|Засах"
 
@@ -5082,15 +5086,15 @@ msgstr "Цэсийн системийн команд|Засах"
 msgid "MenuBar|File"
 msgstr "Цэсийн системийн команд|Файл"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:577
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:578
 msgid "MenuBar|Help"
 msgstr "Цэсийн системийн команд|Тусламж"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:509
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:510
 msgid "MenuBar|Step-by-Step"
 msgstr "Цэсийн системийн команд|Алхам алхамаар"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:438
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:439
 msgid "MenuBar|View"
 msgstr "Цэсийн системийн команд|Харах"
 
@@ -5118,20 +5122,20 @@ msgstr "Цэс|5. Дүрслэн гаргах ба сургамжаа хуваа
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Цэс|Сонгосон зүйлд(үүдэд) Тэмдэглэл нэмэх"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:143
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:144
 msgid "Menu|Export Current Page as..."
 msgstr "Цэс|Идэвхитэй хуудсанд экспорт хийх (Export)"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:119
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:120
 msgid "Menu|Export Current Project as..."
 msgstr "Цэс|Одоогийн төсөлд экспорт хийх (Export)"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:280
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:426
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:427
 msgid "Menu|Group Box"
 msgstr "Цэс|Бүлгийн хайрцаг"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:156
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:157
 msgid "Menu|Import"
 msgstr "Цэс|Импорт хийх"
 
@@ -7256,6 +7260,7 @@ msgstr "TT|Одоогийн хуудсыг  RTF файлаар экспорт х
 msgid "TT|Export entire project as a WCS Miradi Project ZIP file"
 msgstr "TT|Төслийг бүхэлд нь WCS Miradi Project ZIP файлаар экспорт хийх"
 
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExportMiradiShareFile.java:21
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExportXmpz.java:40
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExportXmpz2.java:41
 msgid "TT|Export entire project as an XML file"

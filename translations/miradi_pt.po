@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-18 15:00-0600\n"
+"POT-Creation-Date: 2014-02-19 18:30-0600\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -1447,6 +1447,10 @@ msgstr "Sair"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExpandAllRows.java:35
 msgid "Action|Expand All Rows"
 msgstr "Expandir Todas as Linhas"
+
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExportMiradiShareFile.java:15
+msgid "Action|Export MiradiShare File"
+msgstr ""
 
 # Leo, Please verify what term is used for computer termplate.  - LA
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExportXslTemplate.java:36
@@ -5269,11 +5273,11 @@ msgstr "Médio"
 msgid "Medium (Default)"
 msgstr "Médio (Default)"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:246
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:247
 msgid "MenuBar|Actions"
 msgstr "Ações"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:177
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:178
 msgid "MenuBar|Edit"
 msgstr "Editar"
 
@@ -5281,16 +5285,16 @@ msgstr "Editar"
 msgid "MenuBar|File"
 msgstr "Arquivo"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:577
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:578
 msgid "MenuBar|Help"
 msgstr "Ajuda"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:509
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:510
 msgid "MenuBar|Step-by-Step"
 msgstr "Passo a Passo"
 
 # Leo, Should this be "visualização"?
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:438
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:439
 msgid "MenuBar|View"
 msgstr "Visão"
 
@@ -5318,20 +5322,20 @@ msgstr "5. Documentar e Compartilhar o Aprendizado"
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Adicionar \"Tag\" a %n Item(Itens) Selecionado(s)"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:143
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:144
 msgid "Menu|Export Current Page as..."
 msgstr "Exportar Página Atual como..."
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:119
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:120
 msgid "Menu|Export Current Project as..."
 msgstr "Exportar Projeto Atual Como..."
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:280
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:426
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:427
 msgid "Menu|Group Box"
 msgstr "Caixa de Grupo"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:156
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/menu/MainMenuBar.java:157
 msgid "Menu|Import"
 msgstr "Importar"
 
@@ -7486,6 +7490,7 @@ msgstr "Exportar a página atual como arquivo de RTF"
 msgid "TT|Export entire project as a WCS Miradi Project ZIP file"
 msgstr "Exportar o projeto inteiro como um arquivo de WCS Miradi Project Zip"
 
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExportMiradiShareFile.java:21
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExportXmpz.java:40
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExportXmpz2.java:41
 msgid "TT|Export entire project as an XML file"
