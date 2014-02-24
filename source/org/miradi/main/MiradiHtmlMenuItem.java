@@ -25,6 +25,7 @@ import javax.swing.Action;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
+import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.LocationHolder;
 import org.miradi.utils.XmlUtilities2;
 
@@ -57,12 +58,15 @@ public class MiradiHtmlMenuItem extends JMenuItem implements LocationHolder
 	{
 		return false;
 	}
-	
-	@Override
-	public String getText()
-	{
-		return XmlUtilities2.convertXmlTextToHtml(super.getText());
-	}
-    
+
+    @Override
+    public String getText()
+    {
+        String htmlText = XmlUtilities2.convertXmlTextToHtml(super.getText());
+        // TODO: there were problems with html in menus (markup visible on MacOS, items with no action not looking inactivated) so enter the plainText workaround
+        String plainText = HtmlUtilities.stripAllHtmlTags(htmlText);
+        return plainText;
+    }
+
 	final static KeyStroke KEY_CTL_P = KeyStroke.getKeyStroke(KeyEvent.VK_P ,KeyEvent.CTRL_MASK,true);
 }
