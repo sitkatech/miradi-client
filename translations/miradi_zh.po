@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-19 18:30-0600\n"
+"POT-Creation-Date: 2014-02-20 15:45-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -3548,7 +3548,7 @@ msgstr "一般"
 msgid "Feb"
 msgstr ""
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:102
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:120
 msgid ""
 "File could not be created, this can be due to bad characters in file name."
 msgstr "文件无法创建，这可能由文件名中的坏字符导致的。 \t\t"
@@ -3557,7 +3557,7 @@ msgstr "文件无法创建，这可能由文件名中的坏字符导致的。 \t
 msgid "File exists: Cannot overwrite a non project folder"
 msgstr ""
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:101
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:119
 msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr "文件名只能包含文字数字和/或'_'字符。 \t\t"
 
@@ -7934,7 +7934,7 @@ msgstr ""
 "\t"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:308
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:90
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:107
 msgid "This will replace the existing file."
 msgstr "这将会替换现有的文件。 \t\t"
 
@@ -8188,7 +8188,7 @@ msgid "Title|Other Orgs"
 msgstr "其它组织 \t\t"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:307
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:85
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:102
 msgid "Title|Overwrite existing file?"
 msgstr "重写存在的文件？ \t\t"
 
