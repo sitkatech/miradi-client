@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-19 18:30-0600\n"
+"POT-Creation-Date: 2014-02-20 15:45-0600\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -3803,7 +3803,7 @@ msgstr "Razoável"
 msgid "Feb"
 msgstr "fev"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:102
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:120
 msgid ""
 "File could not be created, this can be due to bad characters in file name."
 msgstr ""
@@ -3816,7 +3816,7 @@ msgstr ""
 "O arquivo existe: Não pode gravar em cima (overwrite) de uma pasta não sendo "
 "de projeto"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:101
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:119
 msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr ""
 "O nome de arquivo deve conter somente caracteres alfa-numéricos e/ou '_'."
@@ -8451,7 +8451,7 @@ msgstr ""
 "lo?"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:308
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:90
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:107
 msgid "This will replace the existing file."
 msgstr "Esta ação substituirá o arquivo existente."
 
@@ -8708,7 +8708,7 @@ msgid "Title|Other Orgs"
 msgstr "Outras Orgs"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:307
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:85
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:102
 msgid "Title|Overwrite existing file?"
 msgstr "Sobregravar arquivo existente?"
 
