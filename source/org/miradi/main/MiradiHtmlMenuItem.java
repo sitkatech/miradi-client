@@ -62,10 +62,11 @@ public class MiradiHtmlMenuItem extends JMenuItem implements LocationHolder
     @Override
     public String getText()
     {
+        // TODO: there were problems with html in menus (markup visible on MacOS, items with no action not looking inactivated) so enter this convoluted workaround
         String htmlText = XmlUtilities2.convertXmlTextToHtml(super.getText());
-        // TODO: there were problems with html in menus (markup visible on MacOS, items with no action not looking inactivated) so enter the plainText workaround
-        String plainText = HtmlUtilities.stripAllHtmlTags(htmlText);
-        return plainText;
+        String taglessText = HtmlUtilities.stripAllHtmlTags(htmlText);
+        String unescapedText = XmlUtilities2.getXmlDecoded(taglessText);
+        return unescapedText;
     }
 
 	final static KeyStroke KEY_CTL_P = KeyStroke.getKeyStroke(KeyEvent.VK_P ,KeyEvent.CTRL_MASK,true);
