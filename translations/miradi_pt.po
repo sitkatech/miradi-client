@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-20 15:45-0600\n"
+"POT-Creation-Date: 2014-02-25 17:30-0600\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -1449,7 +1449,7 @@ msgid "Action|Expand All Rows"
 msgstr "Expandir Todas as Linhas"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExportMiradiShareFile.java:15
-msgid "Action|Export MiradiShare File"
+msgid "Action|Export Miradi Share File"
 msgstr ""
 
 # Leo, Please verify what term is used for computer termplate.  - LA

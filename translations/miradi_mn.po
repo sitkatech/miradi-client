@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-20 15:45-0600\n"
+"POT-Creation-Date: 2014-02-25 17:30-0600\n"
 "PO-Revision-Date: 2013-06-07 01:56+0100\n"
 "Last-Translator: Galragchaa <galragchaa@yahoo.com>\n"
 "Language-Team: none\n"
@@ -1377,7 +1377,7 @@ msgid "Action|Expand All Rows"
 msgstr "Арга хэмжээ|Бүх эгнээг өргөжүүлэх"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExportMiradiShareFile.java:15
-msgid "Action|Export MiradiShare File"
+msgid "Action|Export Miradi Share File"
 msgstr ""
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExportXslTemplate.java:36

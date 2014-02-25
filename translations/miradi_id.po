@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-20 15:45-0600\n"
+"POT-Creation-Date: 2014-02-25 17:30-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -1299,7 +1299,7 @@ msgid "Action|Expand All Rows"
 msgstr "Perluas Semua Baris "
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExportMiradiShareFile.java:15
-msgid "Action|Export MiradiShare File"
+msgid "Action|Export Miradi Share File"
 msgstr ""
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExportXslTemplate.java:36

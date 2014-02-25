@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-20 15:45-0600\n"
+"POT-Creation-Date: 2014-02-25 17:30-0600\n"
 "Content-Type: text/plain; charset=UTF-8Content-Transfer-Encoding: "
 "8bitLanguage: psp\n"
 
@@ -1461,7 +1461,7 @@ msgid "Action|Expand All Rows"
 msgstr "Action|Expand All Rows"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExportMiradiShareFile.java:15
-msgid "Action|Export MiradiShare File"
+msgid "Action|Export Miradi Share File"
 msgstr ""
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/actions/ActionExportXslTemplate.java:36
