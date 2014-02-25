@@ -12,7 +12,7 @@ public class ActionExportMiradiShareFile extends MainWindowAction
 
     public static String getLabel()
     {
-        return EAM.text("Action|Export MiradiShare File");
+        return EAM.text("Action|Export Miradi Share File");
     }
 
     @Override
