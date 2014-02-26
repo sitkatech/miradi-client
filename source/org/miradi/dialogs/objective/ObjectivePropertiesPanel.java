@@ -67,4 +67,17 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanelWithSections
 	{
 		return EAM.text("Title|Objective Properties");
 	}
+
+    @Override
+    public void becomeActive()
+    {
+        super.becomeActive();
+        if(firstTimeActive)
+        {
+            setFocusOnFirstField();
+        }
+        firstTimeActive = false;
+    }
+
+    private boolean firstTimeActive = true;
 }
