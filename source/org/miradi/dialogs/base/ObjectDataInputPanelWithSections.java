@@ -138,7 +138,18 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 			throw new RuntimeException("Cannot addFieldComponent directly to ODIPWithSections without singleSection");
 		return singleSection.add(component);
 	}
-	
+
+    @Override
+    public void becomeActive()
+    {
+        super.becomeActive();
+        if(firstTimeActive)
+        {
+            setFocusOnFirstField();
+        }
+        firstTimeActive = false;
+    }
+
 	protected void setTabEnabled(String panelDescription, boolean shouldEnable)
 	{
 		int tabAt = findTabByDescription(panelDescription);
@@ -179,4 +190,5 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 	private ObjectDataInputPanel singleSection;
 	private PanelTabbedPane tabPanel;
 	private int objectType;
+    private boolean firstTimeActive = true;
 }
