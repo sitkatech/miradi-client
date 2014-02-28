@@ -75,17 +75,18 @@ public class PasteHtmlTextAction extends AbstractAction
 		}
 	}
 
-	private void pasteText(DataFlavor dataFlavor, String clipboardValue) throws Exception
-	{
-		if (isMimeType(dataFlavor, HTML_MIME_TYPE))
-		{
-			replaceNormalizedHtmlAtCaretPosition(clipboardValue);
-		}
-		else
-		{
-			getEditorField().paste();
-		}
-	}
+    private void pasteText(DataFlavor dataFlavor, String clipboardValue) throws Exception
+    {
+        if (isMimeType(dataFlavor, HTML_MIME_TYPE))
+        {
+            replaceNormalizedHtmlAtCaretPosition(clipboardValue);
+        }
+        else
+        {
+            String newLineToBr = clipboardValue.replaceAll("\\r?\\n", "<br />");
+            replaceTextAtCaretPosition(newLineToBr);
+        }
+    }
 
 	private void replaceNormalizedHtmlAtCaretPosition(String html) throws Exception
     {
@@ -134,7 +135,7 @@ public class PasteHtmlTextAction extends AbstractAction
 		if (dataFlavor != null)
 			return dataFlavor;
 
-		return DataFlavor.selectBestTextFlavor(transferDataFlavors);		
+		return DataFlavor.selectBestTextFlavor(transferDataFlavors);
 	}
 
 	private DataFlavor findDataFlavor(final DataFlavor[] transferDataFlavors, String mimeType)
