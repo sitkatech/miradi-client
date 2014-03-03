@@ -39,6 +39,7 @@ import net.atlanticbb.tantlinger.ui.text.CompoundUndoManager;
 import org.miradi.main.EAM;
 import org.miradi.utils.AbstractHtmlPane;
 import org.miradi.utils.AbstractHtmlPane.HtmlEditorKitWithNonSharedStyleSheet;
+import org.miradi.utils.HtmlUtilities;
 
 public class PasteHtmlTextAction extends AbstractAction
 {
@@ -83,7 +84,7 @@ public class PasteHtmlTextAction extends AbstractAction
         }
         else
         {
-            String newLineToBr = clipboardValue.replaceAll("\\r?\\n", "<br />");
+            String newLineToBr = HtmlUtilities.convertPlainTextToHtmlText(clipboardValue);
             replaceTextAtCaretPosition(newLineToBr);
         }
     }
