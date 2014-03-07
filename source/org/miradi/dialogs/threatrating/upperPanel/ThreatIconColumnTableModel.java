@@ -32,7 +32,7 @@ public class ThreatIconColumnTableModel extends AbstractThreatPerRowTableModel
     @Override
     public String getColumnName(int column)
     {
-        return "";
+        return " ";
     }
 
     public Object getValueAt(int row, int column)
