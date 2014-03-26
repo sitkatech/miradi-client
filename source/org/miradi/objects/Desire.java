@@ -241,6 +241,27 @@ abstract public class Desire extends BaseObject
 				strategyOrActivityRef, shouldBeRelevant);
 	}
 
+	public CommandVector createCommandsToEnsureIndicatorIsIrrelevant(ORef indicatorRef) throws Exception
+	{
+		boolean shouldBeRelevant = false;
+		
+		return createCommandsToEnsureProperIndicatorRelevancy(indicatorRef, shouldBeRelevant);
+	}
+	
+	public CommandVector createCommandsToEnsureIndicatorIsRelevant(ORef indicatorRef) throws Exception
+	{
+		boolean shouldBeRelevant = true;
+		
+		return createCommandsToEnsureProperIndicatorRelevancy(indicatorRef, shouldBeRelevant);
+	}
+
+	private CommandVector createCommandsToEnsureProperIndicatorRelevancy(ORef indicatorRef, boolean shouldBeRelevant) throws Exception
+	{
+		String relevancyOverridesTag = TAG_RELEVANT_INDICATOR_SET;
+		return createCommandsToEnsureProperRelevancy(relevancyOverridesTag,
+				indicatorRef, shouldBeRelevant);
+	}
+
 	private CommandVector createCommandsToEnsureProperRelevancy(
 			String relevancyOverridesTag, ORef ref, boolean shouldBeRelevant)
 			throws Exception
@@ -251,7 +272,14 @@ abstract public class Desire extends BaseObject
 		if (isAlreadyCorrectlyOverridden(existingOverride, shouldBeRelevant))
 			return new CommandVector();
 		
-		boolean isCorrectDefaultRelevancy = isCorrectDefaultRelevancy(ref, shouldBeRelevant);
+		boolean isCorrectDefaultRelevancy = false;
+		if(relevancyOverridesTag.equals(TAG_RELEVANT_STRATEGY_ACTIVITY_SET))
+			isCorrectDefaultRelevancy = isCorrectDefaultStrategyOrActivityRelevancy(ref, shouldBeRelevant);
+		else if(relevancyOverridesTag.equals(TAG_RELEVANT_INDICATOR_SET))
+			isCorrectDefaultRelevancy = isCorrectDefaultIndicatorRelevancy(ref, shouldBeRelevant);
+		else
+			throw new RuntimeException("Unexpected relevancy request for: " + relevancyOverridesTag);
+		
 		if (isCorrectDefaultRelevancy && existingOverride == null)
 			return new CommandVector();
 		
@@ -263,7 +291,12 @@ abstract public class Desire extends BaseObject
 		return new CommandVector(commandToEnsureProperRelevancy);
 	}
 
-	private boolean isCorrectDefaultRelevancy(ORef strategyOrActivityRef, boolean shouldBeRelevant) throws Exception
+	private boolean isCorrectDefaultIndicatorRelevancy(ORef indicatorRef, boolean shouldBeRelevant) throws Exception
+	{
+		return getDefaultRelevantIndicatorRefs().contains(indicatorRef) == shouldBeRelevant;
+	}
+
+	private boolean isCorrectDefaultStrategyOrActivityRelevancy(ORef strategyOrActivityRef, boolean shouldBeRelevant) throws Exception
 	{
 		return getDefaultRelevantStrategyRefs().contains(strategyOrActivityRef) == shouldBeRelevant;
 	}
@@ -305,10 +338,16 @@ abstract public class Desire extends BaseObject
 	
 	public ORefList getRelevantIndicatorRefList() throws Exception
 	{
-		ORefSet relevantRefList = indicatorsOnSameFactorAsRefSet();
+		ORefSet relevantRefList = getDefaultRelevantIndicatorRefs();
 		RelevancyOverrideSet relevantOverrides = getRawRelevancyOverrideData(TAG_RELEVANT_INDICATOR_SET);
 	
 		return calculateRelevantRefList(relevantRefList, relevantOverrides);
+	}
+
+	private ORefSet getDefaultRelevantIndicatorRefs()
+	{
+		ORefSet relevantRefList = indicatorsOnSameFactorAsRefSet();
+		return relevantRefList;
 	}
 
 	public ORefList getRelevantStrategyAndActivityRefs() throws Exception
