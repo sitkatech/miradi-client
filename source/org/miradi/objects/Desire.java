@@ -266,7 +266,13 @@ abstract public class Desire extends BaseObject
 			String relevancyOverridesTag, ORef ref, boolean shouldBeRelevant)
 			throws Exception
 	{
-		RelevancyOverrideSet relevancyOverrideSet = getStrategyActivityRelevancyOverrideSet();
+		RelevancyOverrideSet relevancyOverrideSet = null;
+		if(relevancyOverridesTag.equals(TAG_RELEVANT_STRATEGY_ACTIVITY_SET))
+			relevancyOverrideSet = getStrategyActivityRelevancyOverrideSet();
+		else if(relevancyOverridesTag.equals(TAG_RELEVANT_INDICATOR_SET))
+			relevancyOverrideSet = getIndicatorRelevancyOverrideSet();
+		else
+			throw new RuntimeException("Unexpected relevancy request for: " + relevancyOverridesTag);
 		
 		RelevancyOverride existingOverride = relevancyOverrideSet.find(ref);
 		if (isAlreadyCorrectlyOverridden(existingOverride, shouldBeRelevant))
@@ -298,7 +304,9 @@ abstract public class Desire extends BaseObject
 
 	private boolean isCorrectDefaultStrategyOrActivityRelevancy(ORef strategyOrActivityRef, boolean shouldBeRelevant) throws Exception
 	{
-		return getDefaultRelevantStrategyRefs().contains(strategyOrActivityRef) == shouldBeRelevant;
+		ORefList defaultRelevantStrategyRefs = getDefaultRelevantStrategyRefs();
+		boolean isRelevantByDefault = defaultRelevantStrategyRefs.contains(strategyOrActivityRef);
+		return isRelevantByDefault == shouldBeRelevant;
 	}
 
 	private boolean isAlreadyCorrectlyOverridden(RelevancyOverride existingOverride, boolean shouldBeRelevant)
@@ -334,6 +342,11 @@ abstract public class Desire extends BaseObject
 	public RelevancyOverrideSet getStrategyActivityRelevancyOverrideSet()
 	{
 		return getRawRelevancyOverrideData(TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
+	}
+	
+	public RelevancyOverrideSet getIndicatorRelevancyOverrideSet()
+	{
+		return getRawRelevancyOverrideData(TAG_RELEVANT_INDICATOR_SET);
 	}
 	
 	public ORefList getRelevantIndicatorRefList() throws Exception
