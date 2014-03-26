@@ -20,14 +20,24 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
+import java.io.IOException;
+
+import org.martus.util.UnicodeStringWriter;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.Indicator;
+import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.Strategy;
+import org.miradi.objects.Task;
+import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.project.ProjectSaver;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
@@ -75,6 +85,91 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 		catch (Exception expectedExceptionToIgnore)
 		{
 		}
+	}
+	
+	public void testRelevancyOverrides() throws Exception
+	{
+		Task nearbyActivity = getProject().createActivity();
+		Strategy mainStrategy = Strategy.find(getProject(), nearbyActivity.getOwnerRef());
+		Indicator nearbyIndicator = getProject().createIndicator(mainStrategy);
+		Objective nearbyObjective = getProject().createObjective(mainStrategy);
+
+		Strategy otherStrategy = getProject().createStrategy();
+		Indicator otherIndicator = getProject().createIndicator(otherStrategy);
+		Task otherActivity = getProject().createActivity();
+
+		assertEquals(new ORefList(mainStrategy.getRef()), nearbyObjective.getRelevantStrategyRefs());
+// FIXME: This assert is commented out because it fails with current code (MRD-5842)
+//		assertEquals(new ORefList(nearbyActivity.getRef()), nearbyObjective.getRelevantActivityRefs());
+		assertEquals(new ORefList(nearbyIndicator.getRef()), nearbyObjective.getRelevantIndicatorRefList());
+
+		verifyRoundTripExportImport();
+		
+		getProject().executeCommands(nearbyObjective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(mainStrategy.getRef()));
+		getProject().executeCommands(nearbyObjective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(nearbyActivity.getRef()));
+		getProject().executeCommands(nearbyObjective.createCommandsToEnsureIndicatorIsIrrelevant(nearbyIndicator.getRef()));
+		assertEquals(new ORefList(), nearbyObjective.getRelevantStrategyRefs());
+		assertEquals(new ORefList(), nearbyObjective.getRelevantActivityRefs());
+		assertEquals(new ORefList(), nearbyObjective.getRelevantIndicatorRefList());
+		verifyRoundTripExportImport();
+
+		getProject().executeCommands(nearbyObjective.createCommandsToEnsureStrategyOrActivityIsRelevant(otherStrategy.getRef()));
+		getProject().executeCommands(nearbyObjective.createCommandsToEnsureStrategyOrActivityIsRelevant(otherActivity.getRef()));
+		getProject().executeCommands(nearbyObjective.createCommandsToEnsureIndicatorIsRelevant(otherIndicator.getRef()));
+		assertEquals(new ORefList(otherStrategy.getRef()), nearbyObjective.getRelevantStrategyRefs());
+		assertEquals(new ORefList(otherActivity.getRef()), nearbyObjective.getRelevantActivityRefs());
+		assertEquals(new ORefList(otherIndicator.getRef()), nearbyObjective.getRelevantIndicatorRefList());
+		verifyRoundTripExportImport();
+	}
+
+	private void verifyRoundTripExportImport() throws Exception, IOException
+	{
+		Project roundTrip = exportAndImportProject(getProject());
+		String originalMpf = getProjectMpfWithoutTimestamp(getProject());
+		String roundTripMpf = getProjectMpfWithoutTimestamp(roundTrip);
+		assertEquals(originalMpf, roundTripMpf);
+	}
+
+	private String getProjectMpfWithoutTimestamp(Project roundTrip)
+			throws IOException, Exception
+	{
+		UnicodeStringWriter roundTripWriter = UnicodeStringWriter.create();
+		ProjectSaver.saveProject(roundTrip, roundTripWriter);
+		String roundTripMpf = roundTripWriter.toString();
+		int roundTripEndLine = roundTripMpf.indexOf("-- ");
+		roundTripMpf = roundTripMpf.substring(0, roundTripEndLine);
+		return roundTripMpf;
+	}
+	
+	private Project exportAndImportProject(Project projectToExport) throws Exception
+	{
+		String xml = exportProject(projectToExport);
+		return importIntoNewProject(xml);
+	}
+	
+	private Project importIntoNewProject(String xml) throws Exception
+	{
+		ProjectForTesting projectToImportInto = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToImportInto");
+		Xmpz2XmlImporter xmlImporter = new Xmpz2XmlImporter(projectToImportInto, new NullProgressMeter());
+		StringInputStreamWithSeek stringInputputStream = new StringInputStreamWithSeek(xml);
+		try
+		{
+			xmlImporter.importProject(stringInputputStream);
+			return xmlImporter.getProject();
+		}
+		finally
+		{
+			stringInputputStream.close();	
+		}
+		
+	}
+	
+	private String exportProject(Project projectToExport) throws Exception
+	{
+		final UnicodeXmlWriter writer = UnicodeXmlWriter.create();
+		new Xmpz2XmlExporter(projectToExport).exportProject(writer);
+		writer.close();
+		return writer.toString();
 	}
 	
 	private void create(final String externalAppCope, String xenoDataProjectId) throws Exception

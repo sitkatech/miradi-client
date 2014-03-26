@@ -224,39 +224,89 @@ abstract public class Desire extends BaseObject
 	{
 		boolean shouldBeRelevant = false;
 		
-		return createCommandsToEnsureProperRelevancy(strategyOrActivityRef, shouldBeRelevant);
+		return createCommandsToEnsureProperStrategyOrActivityRelevancy(strategyOrActivityRef, shouldBeRelevant);
 	}
 	
 	public CommandVector createCommandsToEnsureStrategyOrActivityIsRelevant(ORef strategyOrActivityRef) throws Exception
 	{
 		boolean shouldBeRelevant = true;
 		
-		return createCommandsToEnsureProperRelevancy(strategyOrActivityRef, shouldBeRelevant);
+		return createCommandsToEnsureProperStrategyOrActivityRelevancy(strategyOrActivityRef, shouldBeRelevant);
 	}
 
-	private CommandVector createCommandsToEnsureProperRelevancy(ORef strategyOrActivityRef, boolean shouldBeRelevant) throws Exception
+	private CommandVector createCommandsToEnsureProperStrategyOrActivityRelevancy(ORef strategyOrActivityRef, boolean shouldBeRelevant) throws Exception
 	{
-		RelevancyOverrideSet relevancyOverrideSet = getStrategyActivityRelevancyOverrideSet();
+		String relevancyOverridesTag = TAG_RELEVANT_STRATEGY_ACTIVITY_SET;
+		return createCommandsToEnsureProperRelevancy(relevancyOverridesTag,
+				strategyOrActivityRef, shouldBeRelevant);
+	}
+
+	public CommandVector createCommandsToEnsureIndicatorIsIrrelevant(ORef indicatorRef) throws Exception
+	{
+		boolean shouldBeRelevant = false;
 		
-		RelevancyOverride existingOverride = relevancyOverrideSet.find(strategyOrActivityRef);
+		return createCommandsToEnsureProperIndicatorRelevancy(indicatorRef, shouldBeRelevant);
+	}
+	
+	public CommandVector createCommandsToEnsureIndicatorIsRelevant(ORef indicatorRef) throws Exception
+	{
+		boolean shouldBeRelevant = true;
+		
+		return createCommandsToEnsureProperIndicatorRelevancy(indicatorRef, shouldBeRelevant);
+	}
+
+	private CommandVector createCommandsToEnsureProperIndicatorRelevancy(ORef indicatorRef, boolean shouldBeRelevant) throws Exception
+	{
+		String relevancyOverridesTag = TAG_RELEVANT_INDICATOR_SET;
+		return createCommandsToEnsureProperRelevancy(relevancyOverridesTag,
+				indicatorRef, shouldBeRelevant);
+	}
+
+	private CommandVector createCommandsToEnsureProperRelevancy(
+			String relevancyOverridesTag, ORef ref, boolean shouldBeRelevant)
+			throws Exception
+	{
+		RelevancyOverrideSet relevancyOverrideSet = null;
+		if(relevancyOverridesTag.equals(TAG_RELEVANT_STRATEGY_ACTIVITY_SET))
+			relevancyOverrideSet = getStrategyActivityRelevancyOverrideSet();
+		else if(relevancyOverridesTag.equals(TAG_RELEVANT_INDICATOR_SET))
+			relevancyOverrideSet = getIndicatorRelevancyOverrideSet();
+		else
+			throw new RuntimeException("Unexpected relevancy request for: " + relevancyOverridesTag);
+		
+		RelevancyOverride existingOverride = relevancyOverrideSet.find(ref);
 		if (isAlreadyCorrectlyOverridden(existingOverride, shouldBeRelevant))
 			return new CommandVector();
 		
-		boolean isCorrectDefaultRelevancy = isCorrectDefaultRelevancy(strategyOrActivityRef, shouldBeRelevant);
+		boolean isCorrectDefaultRelevancy = false;
+		if(relevancyOverridesTag.equals(TAG_RELEVANT_STRATEGY_ACTIVITY_SET))
+			isCorrectDefaultRelevancy = isCorrectDefaultStrategyOrActivityRelevancy(ref, shouldBeRelevant);
+		else if(relevancyOverridesTag.equals(TAG_RELEVANT_INDICATOR_SET))
+			isCorrectDefaultRelevancy = isCorrectDefaultIndicatorRelevancy(ref, shouldBeRelevant);
+		else
+			throw new RuntimeException("Unexpected relevancy request for: " + relevancyOverridesTag);
+		
 		if (isCorrectDefaultRelevancy && existingOverride == null)
 			return new CommandVector();
 		
-		relevancyOverrideSet.remove(strategyOrActivityRef);
+		relevancyOverrideSet.remove(ref);
 		if (!isCorrectDefaultRelevancy)
-			relevancyOverrideSet.add(new RelevancyOverride(strategyOrActivityRef, shouldBeRelevant));
+			relevancyOverrideSet.add(new RelevancyOverride(ref, shouldBeRelevant));
 		
-		CommandSetObjectData commandToEnsureProperRelevancy = new CommandSetObjectData(getRef(), TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevancyOverrideSet.toString());
+		CommandSetObjectData commandToEnsureProperRelevancy = new CommandSetObjectData(getRef(), relevancyOverridesTag, relevancyOverrideSet.toString());
 		return new CommandVector(commandToEnsureProperRelevancy);
 	}
 
-	private boolean isCorrectDefaultRelevancy(ORef strategyOrActivityRef, boolean shouldBeRelevant) throws Exception
+	private boolean isCorrectDefaultIndicatorRelevancy(ORef indicatorRef, boolean shouldBeRelevant) throws Exception
 	{
-		return getDefaultRelevantStrategyRefs().contains(strategyOrActivityRef) == shouldBeRelevant;
+		return getDefaultRelevantIndicatorRefs().contains(indicatorRef) == shouldBeRelevant;
+	}
+
+	private boolean isCorrectDefaultStrategyOrActivityRelevancy(ORef strategyOrActivityRef, boolean shouldBeRelevant) throws Exception
+	{
+		ORefList defaultRelevantStrategyRefs = getDefaultRelevantStrategyRefs();
+		boolean isRelevantByDefault = defaultRelevantStrategyRefs.contains(strategyOrActivityRef);
+		return isRelevantByDefault == shouldBeRelevant;
 	}
 
 	private boolean isAlreadyCorrectlyOverridden(RelevancyOverride existingOverride, boolean shouldBeRelevant)
@@ -294,12 +344,23 @@ abstract public class Desire extends BaseObject
 		return getRawRelevancyOverrideData(TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
 	}
 	
+	public RelevancyOverrideSet getIndicatorRelevancyOverrideSet()
+	{
+		return getRawRelevancyOverrideData(TAG_RELEVANT_INDICATOR_SET);
+	}
+	
 	public ORefList getRelevantIndicatorRefList() throws Exception
 	{
-		ORefSet relevantRefList = indicatorsOnSameFactorAsRefSet();
+		ORefSet relevantRefList = getDefaultRelevantIndicatorRefs();
 		RelevancyOverrideSet relevantOverrides = getRawRelevancyOverrideData(TAG_RELEVANT_INDICATOR_SET);
 	
 		return calculateRelevantRefList(relevantRefList, relevantOverrides);
+	}
+
+	private ORefSet getDefaultRelevantIndicatorRefs()
+	{
+		ORefSet relevantRefList = indicatorsOnSameFactorAsRefSet();
+		return relevantRefList;
 	}
 
 	public ORefList getRelevantStrategyAndActivityRefs() throws Exception
