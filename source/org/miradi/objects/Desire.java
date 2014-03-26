@@ -236,6 +236,7 @@ abstract public class Desire extends BaseObject
 
 	private CommandVector createCommandsToEnsureProperRelevancy(ORef strategyOrActivityRef, boolean shouldBeRelevant) throws Exception
 	{
+		String relevancyOverridesTag = TAG_RELEVANT_STRATEGY_ACTIVITY_SET;
 		RelevancyOverrideSet relevancyOverrideSet = getStrategyActivityRelevancyOverrideSet();
 		
 		RelevancyOverride existingOverride = relevancyOverrideSet.find(strategyOrActivityRef);
@@ -250,7 +251,7 @@ abstract public class Desire extends BaseObject
 		if (!isCorrectDefaultRelevancy)
 			relevancyOverrideSet.add(new RelevancyOverride(strategyOrActivityRef, shouldBeRelevant));
 		
-		CommandSetObjectData commandToEnsureProperRelevancy = new CommandSetObjectData(getRef(), TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevancyOverrideSet.toString());
+		CommandSetObjectData commandToEnsureProperRelevancy = new CommandSetObjectData(getRef(), relevancyOverridesTag, relevancyOverrideSet.toString());
 		return new CommandVector(commandToEnsureProperRelevancy);
 	}
 
