@@ -38,7 +38,6 @@ import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.project.ProjectSaver;
-import org.miradi.utils.CommandVector;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
@@ -100,34 +99,27 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 		Task otherActivity = getProject().createActivity();
 
 		assertEquals(new ORefList(mainStrategy.getRef()), nearbyObjective.getRelevantStrategyRefs());
-// FIXME: This assert is commented out because it fails with current code
+// FIXME: This assert is commented out because it fails with current code (MRD-5842)
 //		assertEquals(new ORefList(nearbyActivity.getRef()), nearbyObjective.getRelevantActivityRefs());
 		assertEquals(new ORefList(nearbyIndicator.getRef()), nearbyObjective.getRelevantIndicatorRefList());
 
 		verifyRoundTripExportImport();
 		
-		CommandVector irrelevancyCommands = new CommandVector();
-		irrelevancyCommands.addAll(nearbyObjective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(mainStrategy.getRef()));
-		irrelevancyCommands.addAll(nearbyObjective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(nearbyActivity.getRef()));
-		irrelevancyCommands.addAll(nearbyObjective.createCommandsToEnsureIndicatorIsIrrelevant(nearbyIndicator.getRef()));
-		getProject().executeCommands(irrelevancyCommands);
+		getProject().executeCommands(nearbyObjective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(mainStrategy.getRef()));
+		getProject().executeCommands(nearbyObjective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(nearbyActivity.getRef()));
+		getProject().executeCommands(nearbyObjective.createCommandsToEnsureIndicatorIsIrrelevant(nearbyIndicator.getRef()));
 		assertEquals(new ORefList(), nearbyObjective.getRelevantStrategyRefs());
 		assertEquals(new ORefList(), nearbyObjective.getRelevantActivityRefs());
 		assertEquals(new ORefList(), nearbyObjective.getRelevantIndicatorRefList());
 		verifyRoundTripExportImport();
 
-		CommandVector relevancyCommands = new CommandVector();
-		relevancyCommands.addAll(nearbyObjective.createCommandsToEnsureStrategyOrActivityIsRelevant(otherStrategy.getRef()));
-		relevancyCommands.addAll(nearbyObjective.createCommandsToEnsureStrategyOrActivityIsRelevant(otherActivity.getRef()));
-		relevancyCommands.addAll(nearbyObjective.createCommandsToEnsureIndicatorIsRelevant(otherIndicator.getRef()));
-		getProject().executeCommands(relevancyCommands);
-// FIXME: This assert is commented out because it fails with current code
-//		assertEquals(new ORefList(otherStrategy.getRef()), nearbyObjective.getRelevantStrategyRefs());
+		getProject().executeCommands(nearbyObjective.createCommandsToEnsureStrategyOrActivityIsRelevant(otherStrategy.getRef()));
+		getProject().executeCommands(nearbyObjective.createCommandsToEnsureStrategyOrActivityIsRelevant(otherActivity.getRef()));
+		getProject().executeCommands(nearbyObjective.createCommandsToEnsureIndicatorIsRelevant(otherIndicator.getRef()));
+		assertEquals(new ORefList(otherStrategy.getRef()), nearbyObjective.getRelevantStrategyRefs());
 		assertEquals(new ORefList(otherActivity.getRef()), nearbyObjective.getRelevantActivityRefs());
-// FIXME: This assert is commented out because it fails with current code
-//		assertEquals(new ORefList(otherIndicator.getRef()), nearbyObjective.getRelevantIndicatorRefList());
-// FIXME: This verify is commented out because it fails with current code
-//		verifyRoundTripExportImport();
+		assertEquals(new ORefList(otherIndicator.getRef()), nearbyObjective.getRelevantIndicatorRefList());
+		verifyRoundTripExportImport();
 	}
 
 	private void verifyRoundTripExportImport() throws Exception, IOException
