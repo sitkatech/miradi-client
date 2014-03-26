@@ -224,17 +224,17 @@ abstract public class Desire extends BaseObject
 	{
 		boolean shouldBeRelevant = false;
 		
-		return createCommandsToEnsureProperRelevancy(strategyOrActivityRef, shouldBeRelevant);
+		return createCommandsToEnsureProperStrategyOrActivityRelevancy(strategyOrActivityRef, shouldBeRelevant);
 	}
 	
 	public CommandVector createCommandsToEnsureStrategyOrActivityIsRelevant(ORef strategyOrActivityRef) throws Exception
 	{
 		boolean shouldBeRelevant = true;
 		
-		return createCommandsToEnsureProperRelevancy(strategyOrActivityRef, shouldBeRelevant);
+		return createCommandsToEnsureProperStrategyOrActivityRelevancy(strategyOrActivityRef, shouldBeRelevant);
 	}
 
-	private CommandVector createCommandsToEnsureProperRelevancy(ORef strategyOrActivityRef, boolean shouldBeRelevant) throws Exception
+	private CommandVector createCommandsToEnsureProperStrategyOrActivityRelevancy(ORef strategyOrActivityRef, boolean shouldBeRelevant) throws Exception
 	{
 		String relevancyOverridesTag = TAG_RELEVANT_STRATEGY_ACTIVITY_SET;
 		RelevancyOverrideSet relevancyOverrideSet = getStrategyActivityRelevancyOverrideSet();
