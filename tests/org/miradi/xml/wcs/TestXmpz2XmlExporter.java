@@ -31,6 +31,7 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.GroupBox;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
@@ -40,6 +41,7 @@ import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.project.ProjectSaver;
 import org.miradi.schemas.CauseSchema;
+import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.UnicodeXmlWriter;
@@ -88,6 +90,14 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 		catch (Exception expectedExceptionToIgnore)
 		{
 		}
+	}
+	
+	public void testGroupBoxes() throws Exception
+	{
+		DiagramFactor groupBoxDiagramFactor = getProject().createAndAddFactorToDiagram(GroupBoxSchema.getObjectType());
+		DiagramFactor strategyDiagramFactor = getProject().createAndAddFactorToDiagram(StrategySchema.getObjectType());
+		getProject().populateDiagramFactorGroupBox(groupBoxDiagramFactor, strategyDiagramFactor);
+		verifyRoundTripExportImport();
 	}
 	
 	public void testRelevancyOverridesWithLinks() throws Exception
