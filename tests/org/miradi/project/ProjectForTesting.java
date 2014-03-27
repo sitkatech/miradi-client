@@ -2711,6 +2711,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public Task createActivity() throws Exception
 	{
 		Strategy strategy = createStrategy();
+		return createActivity(strategy);
+	}
+
+	public Task createActivity(Strategy strategy) throws Exception
+	{
 		Task activity = createTask(strategy);
 		
 		return activity;
