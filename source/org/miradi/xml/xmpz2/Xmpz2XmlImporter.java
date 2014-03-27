@@ -59,10 +59,13 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.FosProjectDataSchema;
+import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.MiradiShareProjectDataSchema;
 import org.miradi.schemas.MiradiShareTaxonomySchema;
 import org.miradi.schemas.RareProjectDataSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.schemas.ValueOptionSchema;
@@ -175,7 +178,13 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		addImporterToMap(typeToImporterMap, new DiagramFactorImporter(this));
 		addImporterToMap(typeToImporterMap, new DiagramLinkImporter(this));
 		addImporterToMap(typeToImporterMap, new StrategyImporter(this));
+
+		// NOTE: Must import all factor types before importing objectives, for relevancy
+		addImporterToMap(typeToImporterMap, new BaseObjectImporter(this, new CauseSchema()));
+		addImporterToMap(typeToImporterMap, new BaseObjectImporter(this, new IntermediateResultSchema()));
 		addImporterToMap(typeToImporterMap, new ThreatReductionResultsImporter(this));
+		addImporterToMap(typeToImporterMap, new BaseObjectImporter(this, new TargetSchema()));
+		
 		addImporterToMap(typeToImporterMap, new IndicatorImporter(this));
 		addImporterToMap(typeToImporterMap, new ResourceAssignmentImporter(this));
 		addImporterToMap(typeToImporterMap, new ExpenseAssignmentImporter(this));

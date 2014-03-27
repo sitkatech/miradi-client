@@ -104,8 +104,7 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 		assertEquals(new ORefList(strategy.getRef()), objective.getRelevantStrategyRefs());
 		assertEquals(new ORefList(), objective.getRelevantActivityRefs());
 		assertEquals(new ORefList(), objective.getRelevantIndicatorRefList());
-// FIXME: This verify is commented out because it fails with current code (MRD-5842)
-//		verifyRoundTripExportImport();
+		verifyRoundTripExportImport();
 		
 		getProject().executeCommands(objective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategy.getRef()));
 		getProject().executeCommands(objective.createCommandsToEnsureStrategyOrActivityIsRelevant(activity.getRef()));
@@ -113,8 +112,7 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 		assertEquals(new ORefList(), objective.getRelevantStrategyRefs());
 		assertEquals(new ORefList(activity.getRef()), objective.getRelevantActivityRefs());
 		assertEquals(new ORefList(indicator.getRef()), objective.getRelevantIndicatorRefList());
-// FIXME: This verify is commented out because it fails with current code (MRD-5842)
-//		verifyRoundTripExportImport();
+		verifyRoundTripExportImport();
 		
 	}
 	
