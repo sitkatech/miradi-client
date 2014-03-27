@@ -2368,11 +2368,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public ORef createDiagramLink(DiagramFactor from, DiagramFactor to) throws Exception
 	{
+		final ORef diagramLinkRef = createObject(ObjectType.DIAGRAM_LINK);
+
 		BaseId baseId = BaseId.INVALID;
 		if(!shouldCreateGroupBoxLink(from, to))
 			baseId = createFactorLink(from.getWrappedORef(), to.getWrappedORef()).getObjectId();
 		
-		final ORef diagramLinkRef = createObject(ObjectType.DIAGRAM_LINK);
 		setObjectData(diagramLinkRef, DiagramLink.TAG_WRAPPED_ID, baseId.toString());
 		setObjectData(diagramLinkRef, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, from.getId().toString());
 		setObjectData(diagramLinkRef, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, to.getId().toString());
