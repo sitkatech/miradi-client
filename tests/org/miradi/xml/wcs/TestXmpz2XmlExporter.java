@@ -29,6 +29,7 @@ import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
@@ -38,6 +39,8 @@ import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.project.ProjectSaver;
+import org.miradi.schemas.CauseSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
@@ -87,7 +90,35 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 		}
 	}
 	
-	public void testRelevancyOverrides() throws Exception
+	public void testRelevancyOverridesWithLinks() throws Exception
+	{
+		DiagramFactor strategyDiagramFactor = getProject().createAndAddFactorToDiagram(StrategySchema.getObjectType());
+		Strategy strategy = Strategy.find(getProject(), strategyDiagramFactor.getWrappedORef());
+		Task activity = getProject().createActivity(strategy);
+		Indicator indicator = getProject().createIndicator(strategy);
+		DiagramFactor causeDiagramFactor = getProject().createAndAddFactorToDiagram(CauseSchema.getObjectType());
+		Cause cause = Cause.find(getProject(), causeDiagramFactor.getWrappedORef());
+		Objective objective = getProject().createObjective(cause);
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor, causeDiagramFactor);
+		
+		assertEquals(new ORefList(strategy.getRef()), objective.getRelevantStrategyRefs());
+		assertEquals(new ORefList(), objective.getRelevantActivityRefs());
+		assertEquals(new ORefList(), objective.getRelevantIndicatorRefList());
+// FIXME: This verify is commented out because it fails with current code (MRD-5842)
+//		verifyRoundTripExportImport();
+		
+		getProject().executeCommands(objective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategy.getRef()));
+		getProject().executeCommands(objective.createCommandsToEnsureStrategyOrActivityIsRelevant(activity.getRef()));
+		getProject().executeCommands(objective.createCommandsToEnsureIndicatorIsRelevant(indicator.getRef()));
+		assertEquals(new ORefList(), objective.getRelevantStrategyRefs());
+		assertEquals(new ORefList(activity.getRef()), objective.getRelevantActivityRefs());
+		assertEquals(new ORefList(indicator.getRef()), objective.getRelevantIndicatorRefList());
+// FIXME: This verify is commented out because it fails with current code (MRD-5842)
+//		verifyRoundTripExportImport();
+		
+	}
+	
+	public void testRelevancyOverridesWithoutLinks() throws Exception
 	{
 		Task nearbyActivity = getProject().createActivity();
 		Strategy mainStrategy = Strategy.find(getProject(), nearbyActivity.getOwnerRef());
@@ -97,7 +128,7 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 		Strategy otherStrategy = getProject().createStrategy();
 		Indicator otherIndicator = getProject().createIndicator(otherStrategy);
 		Task otherActivity = getProject().createActivity();
-
+		
 		assertEquals(new ORefList(mainStrategy.getRef()), nearbyObjective.getRelevantStrategyRefs());
 // FIXME: This assert is commented out because it fails with current code (MRD-5842)
 //		assertEquals(new ORefList(nearbyActivity.getRef()), nearbyObjective.getRelevantActivityRefs());
