@@ -22,7 +22,6 @@ package org.miradi.xml.xmpz2.objectImporters;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objects.Desire;
 import org.miradi.schemas.BaseObjectSchema;
@@ -75,14 +74,6 @@ abstract public class DesireImporter extends BaseObjectImporter
 
         Desire desire = Desire.findDesire(getProject(), destinationDesireRef);
         RelevancyOverrideSet set = desire.getCalculatedRelevantStrategyActivityOverrides(importedStrategyAndActivityRefs);
-
-        ORefList allStrategies = getProject().getStrategyPool().getNonDraftStrategyRefs();
-        for(ORef stratRef : allStrategies){
-            if(set.contains(stratRef) || importedStrategyAndActivityRefs.contains(stratRef)){
-                continue;
-            }
-            set.add(new RelevancyOverride(stratRef, false));
-        }
 
         getImporter().setData(destinationDesireRef, Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, set.toString());
     }
