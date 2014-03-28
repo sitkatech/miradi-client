@@ -935,7 +935,7 @@ abstract public class DiagramPaster
 		return currentModel.getDiagramObject();
 	}
 	
-	protected int getTypeFromJson(EnhancedJsonObject json)
+	protected static int getTypeFromJson(EnhancedJsonObject json)
 	{
 		return json.getInt(FAKE_TAG_TYPE);
 	}
