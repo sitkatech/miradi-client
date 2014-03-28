@@ -1018,14 +1018,15 @@ abstract public class DiagramPaster
 	public static Vector<String> getTagsToLoadFromJson(EnhancedJsonObject json, BaseObject baseObject)
 	{
 		final Vector<String> storedFieldTags = baseObject.getStoredFieldTags();
+		int oldType = getTypeFromJson(json);
 		int newType = baseObject.getType();
-		final Vector<String> tagsToSkip = getTagsToSkipWhenLoadingJsonData(newType);
+		final Vector<String> tagsToSkip = getTagsToSkipWhenLoadingJsonData(oldType, newType);
 		storedFieldTags.removeAll(tagsToSkip);
 		
 		return storedFieldTags;
 	}
 	
-	private static Vector<String> getTagsToSkipWhenLoadingJsonData(final int objectType)
+	private static Vector<String> getTagsToSkipWhenLoadingJsonData(int oldType, int objectType)
 	{
 		// NOTE: DF has already been switched to the new pattern.
 		// When these other classes are switched to match it,
