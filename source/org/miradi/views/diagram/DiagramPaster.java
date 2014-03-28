@@ -1018,8 +1018,8 @@ abstract public class DiagramPaster
 	public static Vector<String> getTagsToLoadFromJson(BaseObject baseObject)
 	{
 		final Vector<String> storedFieldTags = baseObject.getStoredFieldTags();
-		final Vector<String> nonClearningTags = getTagsToSkipWhenLoadingJsonData(baseObject.getType());
-		storedFieldTags.removeAll(nonClearningTags);
+		final Vector<String> tagsToSkip = getTagsToSkipWhenLoadingJsonData(baseObject.getType());
+		storedFieldTags.removeAll(tagsToSkip);
 		
 		return storedFieldTags;
 	}
