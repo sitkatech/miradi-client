@@ -31,7 +31,6 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.GroupBox;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
