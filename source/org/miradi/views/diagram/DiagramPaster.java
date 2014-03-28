@@ -1026,24 +1026,24 @@ abstract public class DiagramPaster
 		return storedFieldTags;
 	}
 	
-	private static Vector<String> getTagsToSkipWhenLoadingJsonData(int oldType, int objectType)
+	private static Vector<String> getTagsToSkipWhenLoadingJsonData(int oldType, int newType)
 	{
 		// NOTE: DF has already been switched to the new pattern.
 		// When these other classes are switched to match it,
 		// this whole method will go away.
 		Vector<String> tags = new Vector<String>();
-		if (FactorLink.is(objectType))
+		if (FactorLink.is(newType))
 		{
 			tags.add(FactorLink.TAG_FROM_REF);
 			tags.add(FactorLink.TAG_TO_REF);
 		}
-		else if (DiagramLink.is(objectType))
+		else if (DiagramLink.is(newType))
 		{
 			tags.add(DiagramLink.TAG_WRAPPED_ID);
 			tags.add(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
 			tags.add(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
 		}
-		else if (ThreatStressRating.is(objectType))
+		else if (ThreatStressRating.is(newType))
 		{
 			tags.add(ThreatStressRating.TAG_STRESS_REF);
 			tags.add(ThreatStressRating.TAG_THREAT_REF);
