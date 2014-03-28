@@ -1001,7 +1001,7 @@ abstract public class DiagramPaster
 	private Command[] createCommandsToLoadFromJson(EnhancedJsonObject json, BaseObject baseObject) throws Exception
 	{
 		Vector<CommandSetObjectData> commands = new Vector<CommandSetObjectData>();
-		Vector<String> tags = getTagsToLoadFromJson(baseObject);
+		Vector<String> tags = getTagsToLoadFromJson(json, baseObject);
 		for (String tag : tags)
 		{
 			String value = json.optString(tag);
@@ -1015,7 +1015,7 @@ abstract public class DiagramPaster
 		return commands.toArray(new Command[0]);
 	}
 
-	public static Vector<String> getTagsToLoadFromJson(BaseObject baseObject)
+	public static Vector<String> getTagsToLoadFromJson(EnhancedJsonObject json, BaseObject baseObject)
 	{
 		final Vector<String> storedFieldTags = baseObject.getStoredFieldTags();
 		final Vector<String> tagsToSkip = getTagsToSkipWhenLoadingJsonData(baseObject.getType());
