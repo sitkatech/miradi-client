@@ -27,6 +27,7 @@ import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramModel;
+import org.miradi.diagram.MemoryDiagramModel;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
@@ -38,11 +39,13 @@ import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.main.TransferableMiradiListVersion4;
+import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
@@ -74,6 +77,33 @@ public class TestDiagramPaster extends TestCaseWithProject
 	public TestDiagramPaster(String name)
 	{
 		super(name);
+	}
+	
+	public void testPasteThreatIntoResultsChain() throws Exception
+	{
+		FactorCell threatCell = getProject().createFactorCell(CauseSchema.getObjectType());
+		DiagramFactor threatDiagramFactor = threatCell.getDiagramFactor();
+		Cause threat = Cause.find(getProject(), threatDiagramFactor.getWrappedORef());
+		threat.setData(Cause.TAG_IS_DIRECT_THREAT, BooleanData.BOOLEAN_TRUE);
+		getProject().populateBaseObject(threat);
+	
+		DiagramObject conceptualModel = getProject().getMainDiagramObject();
+		TransferableMiradiListVersion4 miradiList = new TransferableMiradiListVersion4(getProject(), conceptualModel.getRef());
+		miradiList.storeData(new EAMGraphCell[] {threatCell});
+
+		ORef resultsChainRef = getProject().createResultsChainDiagram();
+		DiagramObject resultsChain = (DiagramObject)DiagramObject.find(getProject(), resultsChainRef);
+		DiagramModel model = new MemoryDiagramModel(getProject());
+		model.fillFrom(resultsChain);
+		
+		DiagramCopyPaster paster = new DiagramCopyPaster(null, model, miradiList);
+		paster.pasteFactors(new Point());
+		
+		ORefList resultsChainDiagramFactorRefs = resultsChain.getAllDiagramFactorRefs();
+		assertEquals(1, resultsChainDiagramFactorRefs.size());
+		DiagramFactor trrDiagramFactor = DiagramFactor.find(getProject(), resultsChainDiagramFactorRefs.get(0));
+		ThreatReductionResult trr = ThreatReductionResult.find(getProject(), trrDiagramFactor.getWrappedORef());
+		assertEquals("", trr.getData(trr.TAG_TAXONOMY_CLASSIFICATION_CONTAINER));
 	}
 	
 	public void testPseudoReflistNotPasted() throws Exception

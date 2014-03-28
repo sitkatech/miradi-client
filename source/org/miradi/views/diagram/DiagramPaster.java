@@ -1032,7 +1032,12 @@ abstract public class DiagramPaster
 		// When these other classes are switched to match it,
 		// this whole method will go away.
 		Vector<String> tags = new Vector<String>();
-		if (FactorLink.is(newType))
+		
+		if (Cause.is(oldType) && ThreatReductionResult.is(newType))
+		{
+			tags.add(BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
+		}
+		else if (FactorLink.is(newType))
 		{
 			tags.add(FactorLink.TAG_FROM_REF);
 			tags.add(FactorLink.TAG_TO_REF);
