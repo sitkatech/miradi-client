@@ -4,7 +4,7 @@ Copyright 2005-2013, Foundations of Success, Bethesda, Maryland
      (on behalf of the Conservation Measures Partnership, "CMP") and
      Beneficent Technology, Inc. ("Benetech"), Palo Alto, California.
 
-VERSION 4.1.0
+VERSION 4.1.1
 
 License and Copying
 
@@ -156,11 +156,31 @@ Changes
 
 Projects from earlier versions of Miradi can be opened, and will 
 automatically be migrated to the latest data format. These projects 
-cannot be directly opened by earlier versions of Miradi, but 4.1.0 
-includes the ability to export projects in Miradi 4.0 format, or 
+cannot be directly opened by earlier versions of Miradi, but 4.1.1 and 
+4.1.0 include the ability to export projects in Miradi 4.0 format, or 
 in the MPZ format used by Miradi 3.3. In some cases, data may be 
 lost when exporting to these older formats, but a warning dialog will 
 indicate when that is the case.
+
+
+Notable changes in 4.1.1 (compared to 4.1.0) include:
+
+Appwide:
+- Menu items under mac are no longer wrapped with HTML tags.
+- Adjusting width of Threat Name column in Threat Summary View 
+  no longer widens the threat icon column. 
+
+Export/Import:
+- Export of Miradi Share file (xmpz2) is simplified.
+- Create from Existing Indicator no longer permits loss of 
+  Future Status data.
+- CalculatedWho now exports properly to xmpz2 when WHO is selected 
+  for a Factor and no Work Units are specified.
+- Export/import of xmpz2 files no longer changes the display and 
+  behavior of group box members.
+- Export/import of xmpz2 files now correctly retains once-removed 
+  objective-strategy relevancy information.
+
 
 Notable changes in 4.1.0 (compared to 4.0) include:
 
