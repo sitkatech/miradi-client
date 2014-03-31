@@ -31,10 +31,13 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
@@ -89,6 +92,16 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 		catch (Exception expectedExceptionToIgnore)
 		{
 		}
+	}
+	
+	public void testRelevancyWithKeaIndicators() throws Exception
+	{
+		Target target = getProject().createKeaModeTarget();
+		KeyEcologicalAttribute kea = getProject().createKea(target);
+		Indicator indicator = getProject().createIndicator(kea);
+		Goal goal = getProject().createGoal(target);
+		assertEquals(new ORefList(indicator.getRef()), goal.getRelevantIndicatorRefList());
+		verifyRoundTripExportImport();
 	}
 	
 	public void testGroupBoxes() throws Exception

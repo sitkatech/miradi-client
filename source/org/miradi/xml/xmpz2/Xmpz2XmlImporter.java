@@ -62,6 +62,7 @@ import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.schemas.IntermediateResultSchema;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MiradiShareProjectDataSchema;
 import org.miradi.schemas.MiradiShareTaxonomySchema;
 import org.miradi.schemas.RareProjectDataSchema;
@@ -82,6 +83,7 @@ import org.miradi.xml.AbstractXmlImporter;
 import org.miradi.xml.AbstractXmlNamespaceContext;
 import org.miradi.xml.MiradiXmlValidator;
 import org.miradi.xml.wcs.Xmpz2XmlValidator;
+import org.miradi.xml.xmpz1.KeyEcologicalAttributePoolImporter;
 import org.miradi.xml.xmpz2.objectImporters.BaseObjectImporter;
 import org.miradi.xml.xmpz2.objectImporters.ConceptualModelDiagramImporter;
 import org.miradi.xml.xmpz2.objectImporters.DashboardImporter;
@@ -185,6 +187,9 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		addImporterToMap(typeToImporterMap, new ThreatReductionResultsImporter(this));
 		addImporterToMap(typeToImporterMap, new BaseObjectImporter(this, new TargetSchema()));
 		
+		// NOTE: Must import all KEA's before importing objectives/goals, for relevancy
+		addImporterToMap(typeToImporterMap, new BaseObjectImporter(this, new KeyEcologicalAttributeSchema()));
+
 		addImporterToMap(typeToImporterMap, new IndicatorImporter(this));
 		addImporterToMap(typeToImporterMap, new ResourceAssignmentImporter(this));
 		addImporterToMap(typeToImporterMap, new ExpenseAssignmentImporter(this));
