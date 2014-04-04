@@ -134,7 +134,7 @@ public class InitialSplashPanel extends HelpAboutPanel
 					local, 
 					cancel
 					};
-			String sampleJarName = "MiradiContent-" + Miradi.MAIN_VERSION + "-es.jar";
+			String sampleJarName = "MiradiContent-" + Miradi.LANGUAGE_PACK_VERSION + "-es.jar";
 			String text = "<html>" + EAM.text(
 					"Additional languages are supported by installing Miradi Language Packs,<br> " +
 					"which are files with a name like: <em>%s</em><br>" +
