@@ -83,7 +83,7 @@ public class TestCaseForXmpz2ExportAndImport extends TestCaseWithProject
 		
 	}
 
-	private String exportProject(Project projectToExport) throws Exception
+	protected String exportProject(Project projectToExport) throws Exception
 	{
 		final UnicodeXmlWriter writer = UnicodeXmlWriter.create();
 		new Xmpz2XmlExporter(projectToExport).exportProject(writer);
