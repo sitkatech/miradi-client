@@ -27,7 +27,6 @@ import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
-import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
@@ -47,6 +46,7 @@ import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.UnicodeXmlWriter;
+import org.miradi.xml.TestCaseForXmpz2ExportAndImport;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
@@ -59,7 +59,7 @@ import org.miradi.xml.xmpz2.objectImporters.TaskImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class TestXmpz2XmlExporter extends TestCaseWithProject
+public class TestXmpz2XmlExporter extends TestCaseForXmpz2ExportAndImport
 {
 	public TestXmpz2XmlExporter(String name)
 	{
