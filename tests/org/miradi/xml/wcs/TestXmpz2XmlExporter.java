@@ -94,6 +94,15 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 		}
 	}
 	
+	public void testTaxonomyClassificationContainer() throws Exception
+	{
+		Target target = getProject().createTarget();
+		getProject().populateBaseObject(target);
+		String xml = exportProject(getProject());
+		assertContains(target.getData(target.TAG_TAXONOMY_CLASSIFICATION_CONTAINER), xml);
+		verifyRoundTripExportImport();
+	}
+	
 	public void testRelevancyWithKeaIndicators() throws Exception
 	{
 		Target target = getProject().createKeaModeTarget();
