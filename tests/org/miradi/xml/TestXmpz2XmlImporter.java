@@ -23,7 +23,6 @@ package org.miradi.xml;
 import java.util.Vector;
 
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
-import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -76,7 +75,7 @@ import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 
-public class TestXmpz2XmlImporter extends TestCaseWithProject
+public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 {
 	public TestXmpz2XmlImporter(String name)
 	{
