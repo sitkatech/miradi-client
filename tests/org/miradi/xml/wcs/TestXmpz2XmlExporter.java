@@ -98,8 +98,6 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 	{
 		Target target = getProject().createTarget();
 		getProject().populateBaseObject(target);
-		String xml = exportProject(getProject());
-		assertContains(target.getData(target.TAG_TAXONOMY_CLASSIFICATION_CONTAINER), xml);
 		verifyRoundTripExportImport();
 	}
 	
