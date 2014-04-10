@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-31 12:01-0500\n"
+"POT-Creation-Date: 2014-04-10 11:15-0500\n"
 "PO-Revision-Date: 2013-06-07 01:56+0100\n"
 "Last-Translator: Galragchaa <galragchaa@yahoo.com>\n"
 "Language-Team: none\n"
@@ -4247,7 +4247,7 @@ msgid "Importing Miradi Data..."
 msgstr ""
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/xml/xmpz1/Xmpz1XmlImporter.java:112
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:139
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:138
 msgid "Importing XML..."
 msgstr ""
 
@@ -7725,7 +7725,7 @@ msgstr ""
 msgid "Target: %s"
 msgstr "Хамгаалах зүйл: %s"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:55
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:54
 msgid "Targets"
 msgstr "Хамгаалах зүйлс"
 
@@ -8249,7 +8249,7 @@ msgstr "Аюул занал: %s"
 msgid "ThreatReduction Result"
 msgstr ""
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:55
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:54
 msgid "Threats"
 msgstr "Аюул заналууд"
 
