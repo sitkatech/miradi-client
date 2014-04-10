@@ -44,6 +44,7 @@ import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.InternalQuestionWithoutValues;
 import org.miradi.questions.QuestionWithJustSpecificCodes;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
@@ -176,7 +177,16 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 		CodeList readableCodes = new CodeList();
 		for (String internalCode : internalCodes)
 		{
-            if(!validCodes.contains(internalCode))
+            boolean isValidCode = validCodes.contains(internalCode);
+            
+            // NOTE: This is an expedient hack to get a fix release out
+            // The only case this is used is for TaxonomySchema elements, 
+            // where any code is valid, because we don't know in advance 
+            // what codes will be available
+            if(questionToUse instanceof InternalQuestionWithoutValues)
+            	isValidCode = true;
+            
+			if(!isValidCode)
             {
             	EAM.logWarning("Export discarding invalid code " + internalCode);
                 continue;

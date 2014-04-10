@@ -26,6 +26,8 @@ import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.TaxonomyElement;
+import org.miradi.objecthelpers.TaxonomyElementList;
 import org.miradi.objecthelpers.TaxonomyHelper;
 import org.miradi.objectpools.TaxonomyAssociationPool;
 import org.miradi.objects.AbstractTarget;
@@ -37,6 +39,7 @@ import org.miradi.objects.Goal;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
+import org.miradi.objects.MiradiShareTaxonomy;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
@@ -522,7 +525,9 @@ public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 	
 	public void testTaxonomySchemas() throws Exception
 	{
-		getProject().createAndPopulateMiradiShareTaxonomy();
-		verifyRoundTripExportImport();
+		MiradiShareTaxonomy taxonomySchema = getProject().createAndPopulateMiradiShareTaxonomy();
+		String xml = exportProject(getProject());
+		CodeList topLevelCodes = taxonomySchema.getTopLevelTaxonomyElementCodes();
+		assertContains("Taxonomy top level code not found in XML output?", topLevelCodes.get(0), xml);
 	}
 }
