@@ -44,7 +44,7 @@ import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.MultiSelectDynamicChoiceQuestion;
+import org.miradi.questions.QuestionWithJustSpecificCodes;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.FieldSchemaIdList;
@@ -137,26 +137,6 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 		writeCodeList(elementName, questionToUse, codes);
 	}
 
-	class QuestionWithJustSpecificCodes extends MultiSelectDynamicChoiceQuestion
-	{
-		public QuestionWithJustSpecificCodes(CodeList codesToInclude)
-		{
-			codes = codesToInclude;
-		}
-		
-		@Override
-		public ChoiceItem[] getChoices()
-		{
-			ChoiceItem[] choices = new ChoiceItem[codes.size()];
-			for(int i = 0; i < codes.size(); ++i)
-				choices[i] = new ChoiceItem(codes.get(i), codes.get(i));
-			
-			return choices;
-		}
-
-		private CodeList codes;
-	}
-	
 	private void writeCodeList(final String elementName, CodeList codes)	throws Exception
 	{
 		writeCodeList(elementName, new QuestionWithJustSpecificCodes(codes), codes);
