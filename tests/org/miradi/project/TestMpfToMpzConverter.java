@@ -210,7 +210,7 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 	
 	private RawProject loadSampleProject() throws IOException, Exception
 	{
-		URL url = ResourcesHandler.getResourceURL("/MarineExample-4.1.2.Miradi");
+		URL url = ResourcesHandler.getResourceURL("/SampleProjectSavedFromVersion-4.1.0.Miradi");
 		String mpfSnapShot = ResourcesHandler.loadFile(url);
 		
 		return RawProjectLoader.loadProject(mpfSnapShot);
