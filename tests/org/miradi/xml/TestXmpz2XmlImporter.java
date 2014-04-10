@@ -36,7 +36,9 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Goal;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.ObjectTreeTableConfiguration;
+import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
@@ -59,9 +61,12 @@ import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TargetModeQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
+import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateUnitEffortList;
@@ -419,6 +424,84 @@ public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 		return projectToImportInto;
 	}
 
+	public void testRelevancyOverridesWithLinks() throws Exception
+	{
+		DiagramFactor strategyDiagramFactor = getProject().createAndAddFactorToDiagram(StrategySchema.getObjectType());
+		Strategy strategy = Strategy.find(getProject(), strategyDiagramFactor.getWrappedORef());
+		Task activity = getProject().createActivity(strategy);
+		Indicator indicator = getProject().createIndicator(strategy);
+		DiagramFactor causeDiagramFactor = getProject().createAndAddFactorToDiagram(CauseSchema.getObjectType());
+		Cause cause = Cause.find(getProject(), causeDiagramFactor.getWrappedORef());
+		Objective objective = getProject().createObjective(cause);
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor, causeDiagramFactor);
+		
+		assertEquals(new ORefList(strategy.getRef()), objective.getRelevantStrategyRefs());
+		assertEquals(new ORefList(), objective.getRelevantActivityRefs());
+		assertEquals(new ORefList(), objective.getRelevantIndicatorRefList());
+		verifyRoundTripExportImport();
+		
+		getProject().executeCommands(objective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategy.getRef()));
+		getProject().executeCommands(objective.createCommandsToEnsureStrategyOrActivityIsRelevant(activity.getRef()));
+		getProject().executeCommands(objective.createCommandsToEnsureIndicatorIsRelevant(indicator.getRef()));
+		assertEquals(new ORefList(), objective.getRelevantStrategyRefs());
+		assertEquals(new ORefList(activity.getRef()), objective.getRelevantActivityRefs());
+		assertEquals(new ORefList(indicator.getRef()), objective.getRelevantIndicatorRefList());
+		verifyRoundTripExportImport();
+		
+	}
+
+	public void testRelevancyOverridesWithoutLinks() throws Exception
+		{
+			Task nearbyActivity = getProject().createActivity();
+			Strategy mainStrategy = Strategy.find(getProject(), nearbyActivity.getOwnerRef());
+			Indicator nearbyIndicator = getProject().createIndicator(mainStrategy);
+			Objective nearbyObjective = getProject().createObjective(mainStrategy);
+	
+			Strategy otherStrategy = getProject().createStrategy();
+			Indicator otherIndicator = getProject().createIndicator(otherStrategy);
+			Task otherActivity = getProject().createActivity();
+			
+			assertEquals(new ORefList(mainStrategy.getRef()), nearbyObjective.getRelevantStrategyRefs());
+	// FIXME: This assert is commented out because it fails with current code (MRD-5842)
+	//		assertEquals(new ORefList(nearbyActivity.getRef()), nearbyObjective.getRelevantActivityRefs());
+			assertEquals(new ORefList(nearbyIndicator.getRef()), nearbyObjective.getRelevantIndicatorRefList());
+	
+			verifyRoundTripExportImport();
+			
+			getProject().executeCommands(nearbyObjective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(mainStrategy.getRef()));
+			getProject().executeCommands(nearbyObjective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(nearbyActivity.getRef()));
+			getProject().executeCommands(nearbyObjective.createCommandsToEnsureIndicatorIsIrrelevant(nearbyIndicator.getRef()));
+			assertEquals(new ORefList(), nearbyObjective.getRelevantStrategyRefs());
+			assertEquals(new ORefList(), nearbyObjective.getRelevantActivityRefs());
+			assertEquals(new ORefList(), nearbyObjective.getRelevantIndicatorRefList());
+			verifyRoundTripExportImport();
+	
+			getProject().executeCommands(nearbyObjective.createCommandsToEnsureStrategyOrActivityIsRelevant(otherStrategy.getRef()));
+			getProject().executeCommands(nearbyObjective.createCommandsToEnsureStrategyOrActivityIsRelevant(otherActivity.getRef()));
+			getProject().executeCommands(nearbyObjective.createCommandsToEnsureIndicatorIsRelevant(otherIndicator.getRef()));
+			assertEquals(new ORefList(otherStrategy.getRef()), nearbyObjective.getRelevantStrategyRefs());
+			assertEquals(new ORefList(otherActivity.getRef()), nearbyObjective.getRelevantActivityRefs());
+			assertEquals(new ORefList(otherIndicator.getRef()), nearbyObjective.getRelevantIndicatorRefList());
+			verifyRoundTripExportImport();
+		}
+
+	public void testRelevancyWithKeaIndicators() throws Exception
+	{
+		Target target = getProject().createKeaModeTarget();
+		KeyEcologicalAttribute kea = getProject().createKea(target);
+		Indicator indicator = getProject().createIndicator(kea);
+		Goal goal = getProject().createGoal(target);
+		assertEquals(new ORefList(indicator.getRef()), goal.getRelevantIndicatorRefList());
+		verifyRoundTripExportImport();
+	}
+
+	public void testTaxonomyClassificationContainer() throws Exception
+	{
+		Target target = getProject().createTarget();
+		getProject().populateBaseObject(target);
+		verifyRoundTripExportImport();
+	}
+
 	public static UnicodeXmlWriter createWriter(ProjectForTesting projectToUse) throws Exception
 	{
 		Xmpz2XmlExporter exporter = new MockXmpz2XmlExporterWithoutTimeStampForTesting(projectToUse);
@@ -428,4 +511,13 @@ public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 		
 		return writer;
 	}
+
+	public void testGroupBoxes() throws Exception
+	{
+		DiagramFactor groupBoxDiagramFactor = getProject().createAndAddFactorToDiagram(GroupBoxSchema.getObjectType());
+		DiagramFactor strategyDiagramFactor = getProject().createAndAddFactorToDiagram(StrategySchema.getObjectType());
+		getProject().populateDiagramFactorGroupBox(groupBoxDiagramFactor, strategyDiagramFactor);
+		verifyRoundTripExportImport();
+	}
+	
 }
