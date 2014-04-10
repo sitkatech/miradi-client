@@ -520,4 +520,9 @@ public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 		verifyRoundTripExportImport();
 	}
 	
+	public void testTaxonomySchemas() throws Exception
+	{
+		getProject().createAndPopulateMiradiShareTaxonomy();
+		verifyRoundTripExportImport();
+	}
 }
