@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.wcs;
+package org.miradi.xml;
 
 import java.io.IOException;
 
@@ -46,7 +46,8 @@ import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.UnicodeXmlWriter;
-import org.miradi.xml.TestCaseForXmpz2ExportAndImport;
+import org.miradi.xml.wcs.Xmpz1XmlConstants;
+import org.miradi.xml.wcs.Xmpz2XmlValidator;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
