@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-31 12:01-0500\n"
+"POT-Creation-Date: 2014-04-10 11:15-0500\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -4412,7 +4412,7 @@ msgid "Importing Miradi Data..."
 msgstr "Importando Dados de Miradi..."
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/xml/xmpz1/Xmpz1XmlImporter.java:112
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:139
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:138
 msgid "Importing XML..."
 msgstr "Importando XML..."
 
@@ -7970,7 +7970,7 @@ msgstr ""
 msgid "Target: %s"
 msgstr "Alvo: %s"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:55
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:54
 msgid "Targets"
 msgstr "Alvos"
 
@@ -8528,7 +8528,7 @@ msgstr "Ameaça: %s"
 msgid "ThreatReduction Result"
 msgstr "Resultado de Redução de Ameaça"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:55
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:54
 msgid "Threats"
 msgstr "Ameaças"
 

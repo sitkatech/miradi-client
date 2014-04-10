@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-31 12:01-0500\n"
+"POT-Creation-Date: 2014-04-10 11:15-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4116,7 +4116,7 @@ msgid "Importing Miradi Data..."
 msgstr ""
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/xml/xmpz1/Xmpz1XmlImporter.java:112
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:139
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:138
 msgid "Importing XML..."
 msgstr ""
 
@@ -7508,7 +7508,7 @@ msgstr ""
 msgid "Target: %s"
 msgstr ""
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:55
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:54
 msgid "Targets"
 msgstr ""
 
@@ -8009,7 +8009,7 @@ msgstr ""
 msgid "ThreatReduction Result"
 msgstr ""
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:55
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:54
 msgid "Threats"
 msgstr "威胁因子 \t\t"
 
