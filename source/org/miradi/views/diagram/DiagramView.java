@@ -962,28 +962,28 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		super.showFloatingPropertiesDialog(newDialog);
 	}
 
-	public void showNodeProperties(DiagramFactor node, int startingTabIdentifier)
-	{
-		closeActivePropertiesDialog();
-		disposeOfNodePropertiesDialog();
-		
-		getCurrentDiagramComponent().requestFocusInWindow();
-		
-		FactorPropertiesPanel newPropertiesPanel = new FactorPropertiesPanel(getMainWindow(), getCurrentDiagramComponent());
-		String title = EAM.text("Title|Factor Properties");
-		FactorPropertiesDialog newPropertiesDialog = new FactorPropertiesDialog(getMainWindow(), newPropertiesPanel, title);
-		newPropertiesPanel.setCurrentDiagramFactor(node);
-		newPropertiesPanel.selectTab(startingTabIdentifier);
-		newPropertiesDialog.pack();
-		newPropertiesDialog.updatePreferredSize();
-		Utilities.centerDlg(newPropertiesDialog);
-		
-		getCurrentDiagramComponent().selectFactor(node.getWrappedORef());
-		nodePropertiesPanel = newPropertiesPanel;
-		nodePropertiesDlg = newPropertiesDialog;
+    public void showNodeProperties(DiagramFactor node, int startingTabIdentifier)
+    {
+        closeActivePropertiesDialog();
+        disposeOfNodePropertiesDialog();
 
-		nodePropertiesDlg.setVisible(true);
-	}
+        getCurrentDiagramComponent().requestFocusInWindow();
+        FactorPropertiesPanel newPropertiesPanel = new FactorPropertiesPanel(getMainWindow(), getCurrentDiagramComponent());
+        String title = EAM.text("Title|Factor Properties");
+        FactorPropertiesDialog newPropertiesDialog = new FactorPropertiesDialog(getMainWindow(), newPropertiesPanel, title);
+        newPropertiesPanel.setCurrentDiagramFactor(node);
+        newPropertiesDialog.pack();
+        newPropertiesDialog.updatePreferredSize();
+        newPropertiesDialog.pack();
+        newPropertiesPanel.selectTab(startingTabIdentifier);
+        Utilities.centerDlg(newPropertiesDialog);
+
+        getCurrentDiagramComponent().selectFactor(node.getWrappedORef());
+        nodePropertiesPanel = newPropertiesPanel;
+        nodePropertiesDlg = newPropertiesDialog;
+
+        nodePropertiesDlg.setVisible(true);
+    }
 
 	private void disposeOfNodePropertiesDialog()
 	{
