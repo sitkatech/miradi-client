@@ -95,7 +95,7 @@ abstract public class PersistentSplitPane extends JSplitPane
 	
 	public int getSplitterLocation(String name)
 	{
-		int splitPercentFromMiddle = splitPositionSaver.getSplitterLocation(name);		
+		int splitPercentFromMiddle = splitPositionSaver.getSplitterLocation(name);
 		int location = computeLocationFromPercent(splitPercentFromMiddle);
 		
 		return location; 
@@ -103,8 +103,8 @@ abstract public class PersistentSplitPane extends JSplitPane
 
 	protected int computeLocationFromPercent(int splitPercentFromMiddle)
 	{
-		double splitPercent = (splitPercentFromMiddle + 100) / 2 + .5;
-		int location = (int) (getContainerHeightOrWidth() * splitPercent / 100);
+		double splitPercent = (splitPercentFromMiddle + 100) / 2.0;
+		int location = (int) (getContainerHeightOrWidth() * splitPercent / 100.0);
 		return location;
 	}
 	
