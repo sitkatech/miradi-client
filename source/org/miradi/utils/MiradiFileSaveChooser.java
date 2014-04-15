@@ -94,7 +94,7 @@ abstract public class MiradiFileSaveChooser extends AbstractFileChooser
     protected File getDefaultProjectExportSelectedFile()
     {
         String fileName = getMainWindow().getProject().getFilename();
-        return new File(fileName + "." + getFileExtensionLabel().toLowerCase());
+        return new File(fileName + "." + getFileExtensionLabel());
     }
 
 	private String getDialogOverwriteTitleText()
