@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-10 11:15-0500\n"
+"POT-Creation-Date: 2014-04-15 16:15-0500\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -8608,7 +8608,7 @@ msgstr "Erro"
 msgid "Title|Export Image Scale"
 msgstr "Exportar Escala de Imagem"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/views/diagram/DiagramView.java:973
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/views/diagram/DiagramView.java:972
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Propriedades de Fatores"
