@@ -265,6 +265,21 @@ public class FileUtilities
 		return subForlderName;
 	}
 
-	public static final String SEPARATOR = "/";
-	public static final String REGULAR_EXPRESSION_BACKSLASH = "\\\\";
+    public static String fileNameWithoutExtension(String filename) {
+        int lastDotIndex = filename.lastIndexOf('.');
+        char nix_sep = '/';
+        char win_sep = '\\';
+        int lastUnixSepIndex = filename.lastIndexOf(nix_sep);
+        int lastWindowsSepIndex = filename.lastIndexOf(win_sep);
+        int lastSepIndex = Math.max(lastUnixSepIndex, lastWindowsSepIndex);
+        int substringIndex = (lastSepIndex > lastDotIndex ? -1 : lastDotIndex);
+        if (substringIndex < 0) {
+            return filename;
+        } else {
+            return filename.substring(0, substringIndex);
+        }
+    }
+
+    public static final String SEPARATOR = "/";
+    public static final String REGULAR_EXPRESSION_BACKSLASH = "\\\\";
 }
