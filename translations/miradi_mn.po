@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-15 16:15-0500\n"
+"POT-Creation-Date: 2014-04-16 18:30-0500\n"
 "PO-Revision-Date: 2013-06-07 01:56+0100\n"
 "Last-Translator: Galragchaa <galragchaa@yahoo.com>\n"
 "Language-Team: none\n"
@@ -277,7 +277,7 @@ msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%нэрээс' -> '%нэрэнд'<br>"
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/migrations/forward/MigrationManager.java:111
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/MainWindow.java:1460
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/MainWindow.java:1461
 msgid "(%s)"
 msgstr ""
 
@@ -508,7 +508,7 @@ msgstr "7C. Суралцах орчинг бүрдүүлэх"
 msgid "95% C.I. (confidence interval)"
 msgstr ""
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/MainWindow.java:1499
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/MainWindow.java:1500
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -955,7 +955,7 @@ msgid ""
 "<html>An error occurred<br/><br/>Perhaps the destination is full or readonly."
 msgstr ""
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:227
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:224
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Import амжилтгүй болсон: <br><p> %s </p></html>"
 
@@ -1050,7 +1050,7 @@ msgstr ""
 msgid "A project or file by this name already exists: "
 msgstr "Ийм нэр бүхий төсөл эсвэл файл байна:"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/MainWindow.java:1456
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/MainWindow.java:1457
 msgid "A project or file by this name already exists: %s"
 msgstr ""
 
@@ -3502,7 +3502,7 @@ msgid "Enter As: "
 msgstr "-ээр орох: "
 
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:118
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/MainWindow.java:1490
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/MainWindow.java:1491
 msgid "Enter New Name"
 msgstr "Шинэ нэрээр оруулах"
 
@@ -4210,7 +4210,7 @@ msgstr "Тооцооны код импорт хийх"
 msgid "Import Completed"
 msgstr "Импорт хийх бүрэн дууссан"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:209
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:206
 msgid "Import Completed.  Would you like to open %s?"
 msgstr "импорт хийх бүрэн дууссан. Нээж харах уу%?"
 
@@ -4251,7 +4251,7 @@ msgstr ""
 msgid "Importing XML..."
 msgstr ""
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:166
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:163
 msgid "Importing..."
 msgstr ""
 
@@ -4413,7 +4413,7 @@ msgstr "Танилцуулга"
 msgid "Invalid project name:"
 msgstr "Төслийн нэр хүчингүй:"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/MainWindow.java:1465
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/MainWindow.java:1466
 msgid "Invalid project name: %s"
 msgstr ""
 
@@ -5543,7 +5543,7 @@ msgstr "Нээх"
 msgid "Open Anyway"
 msgstr ""
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:210
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:207
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/main/MainWindow.java:759
 msgid "Open Project"
 msgstr "Төслийг Нээх"
@@ -8021,7 +8021,7 @@ msgstr ""
 msgid "Theory of Change<br/>- Strategy Selection"
 msgstr ""
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:270
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:267
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -8605,7 +8605,7 @@ msgstr "Тогтоогдоогүй"
 msgid "Underline"
 msgstr "Доогуур зурах/тодруулах"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:226
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:223
 msgid "Unexpected error"
 msgstr ""
 
