@@ -1438,38 +1438,39 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	{
 		return linkDescription.startsWith(HTTP_PROTOCOL) || linkDescription.startsWith(MAIL_PROTOCOL);
 	}
-	
-	public String askForDestinationProjectName(File proposedProjectFile) throws Exception
-	{
-		while (true)
-		{
-			String projectName = askUserForProjectName(Project.withoutMpfProjectSuffix(proposedProjectFile.getName()));
-			if (projectName == null)
-			{
-				return null;
-			}
 
-			String projectFileName =  AbstractMpfFileFilter.createNameWithExtension(projectName);
-			proposedProjectFile = new File(EAM.getHomeDirectory(), projectFileName);
-			if (projectExists(proposedProjectFile))
-			{
-				boolean shouldOverwrite = EAM.confirmOverwriteDialog("", EAM.substituteSingleString(EAM.text("A project or file by this name already exists: %s"), projectFileName));
-				if (!shouldOverwrite)
-					continue;
-				
-				FileUtilities.createMpfBackup(proposedProjectFile, EAM.substituteSingleString(EAM.text("(%s)"), "Overriden-backup"));
-			}
-			
-			if (!Project.isValidProjectName(projectName))
-			{
-				EAM.errorDialog(EAM.substituteSingleString(EAM.text("Invalid project name: %s"), projectName));
-				continue;
-			}
-			
-			return projectFileName;
-		}
-	}
-	
+    public String askForDestinationProjectName(File proposedProjectFile) throws Exception
+    {
+        while (true)
+        {
+            String fileNameWithoutExtension = FileUtilities.fileNameWithoutExtension(proposedProjectFile.getName());
+            String projectName = askUserForProjectName(fileNameWithoutExtension);
+            if (projectName == null)
+            {
+                return null;
+            }
+
+            String projectFileName =  AbstractMpfFileFilter.createNameWithExtension(projectName);
+            proposedProjectFile = new File(EAM.getHomeDirectory(), projectFileName);
+            if (projectExists(proposedProjectFile))
+            {
+                boolean shouldOverwrite = EAM.confirmOverwriteDialog("", EAM.substituteSingleString(EAM.text("A project or file by this name already exists: %s"), projectFileName));
+                if (!shouldOverwrite)
+                    continue;
+
+                FileUtilities.createMpfBackup(proposedProjectFile, EAM.substituteSingleString(EAM.text("(%s)"), "Overriden-backup"));
+            }
+
+            if (!Project.isValidProjectName(projectName))
+            {
+                EAM.errorDialog(EAM.substituteSingleString(EAM.text("Invalid project name: %s"), projectName));
+                continue;
+            }
+
+            return projectFileName;
+        }
+    }
+
 	private static boolean projectExists(File file) throws Exception
 	{
 		if(LegacyProjectUtilities.isExistingLocalProject(file))

@@ -148,14 +148,11 @@ public abstract class AbstractProjectImporter
 		return fileName;
 	}
 
-	public File importProject(File fileToImport) throws Exception
-	{
-		final String fileNameWithoutExtension = getNameWithoutExtension(fileToImport);
-		final File proposedMpfProjectFile = new File(AbstractMpfFileFilter.createNameWithExtension(fileNameWithoutExtension));
-		
-		return importProject(EAM.getHomeDirectory(), fileToImport, proposedMpfProjectFile);
-	}
-	
+    public File importProject(File fileToImport) throws Exception
+    {
+        return importProject(EAM.getHomeDirectory(), fileToImport, fileToImport);
+    }
+
 	public File importProject(File projectDirectory, File fileToImport, final File proposedProjectFile) throws Exception
 	{
 		String projectFileName = getMainWindow().askForDestinationProjectName(proposedProjectFile);
