@@ -44,7 +44,8 @@ class TextReplacementManager(object):
         self.replacement_ranges = []
 
     def replace_text(self, search_text, new_text):
-        locations_found = [m.start() for m in re.finditer(search_text, self.original_text, re.IGNORECASE)]
+        escaped_search_text = r"\b" + re.escape(search_text) + r"\b"
+        locations_found = [m.start() for m in re.finditer(escaped_search_text, self.original_text, re.IGNORECASE)]
         if len(locations_found) == 0:
             return
         search_len = len(search_text)
@@ -59,7 +60,8 @@ class TextReplacementManager(object):
                 elif self.is_first_capitalized(og_text):
                     temp_new_text = self.capitalize_first(temp_new_text)
                 # replace just the first match of search_text
-                self.replacement_text = re.sub(og_text, temp_new_text, self.replacement_text, count=1)
+                escaped_og_text = r"\b" + re.escape(og_text) + r"\b"
+                self.replacement_text = re.sub(escaped_og_text, temp_new_text, self.replacement_text, count=1)
 
     def is_first_capitalized(self, some_text):
         if some_text == u"":
