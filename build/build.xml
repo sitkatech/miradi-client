@@ -97,7 +97,7 @@
 	</condition>
 
 	<!-- translations -->
-	<property name="miradi.pot" value="${dist.dir}/miradi.pot" />
+	<property name="miradi.pot" value="${dist.dir}/miradi-${version.langpack}.pot" />
     <property name="miradi.po.de" value="${translations.dir}/miradi_de.po" />
     <property name="miradi.po.es" value="${translations.dir}/miradi_es.po" />
     <property name="miradi.po.fr" value="${translations.dir}/miradi_fr.po" />
