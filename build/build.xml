@@ -111,6 +111,7 @@
     <property name="miradi.po.psp" value="${translations.dir}/miradi_psp.po" />
     <property name="miradi.po.uk" value="${translations.dir}/miradi_uk.po" />
     <property name="miradi.po.zh" value="${translations.dir}/miradi_zh.po" />
+    <property name="miradi.po.usaid_project" value="${translations.dir}/miradi_usaid_project.po" />
 
 	
 	<!-- ================================================================== -->
@@ -790,6 +791,16 @@
 		<param name="language.code" value="uk"/>
 	</antcall>
 </target>
+
+<!-- ================================================================== -->
+<!-- USAID Project (English, but with some terms substituted)           -->
+<!-- ================================================================== -->
+<target name="usaid-project-langpack" depends="pot" description="Update USAID Project Language Pack Content">
+    <antcall target="update-po">
+        <param name="po.file" value="${miradi.po.usaid_project}"/>
+        <param name="language.code" value="usaid_project"/>
+    </antcall>
+</target>
 	
 <!-- ================================================================== -->
 <!-- UPDATE PO CONTENTS                                            -->
@@ -816,7 +827,7 @@
 <!-- T R A N S L A T I O N S                                            -->
 <!-- ================================================================== -->
 <target name="translations" 
-	depends="pot, chinese, french, german, hebrew, hungarian, indonesian, italian, malagasy, mongolian, portuguese, psp-langpack, spanish, ukrainian" 
+	depends="pot, chinese, french, german, hebrew, hungarian, indonesian, italian, malagasy, mongolian, portuguese, psp-langpack, spanish, ukrainian, usaid-project-langpack"
 	description="Create Translatable Content jars/zips">
 
 	<!-- Add any new translation files -->	
