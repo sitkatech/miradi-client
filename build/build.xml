@@ -111,7 +111,7 @@
     <property name="miradi.po.psp" value="${translations.dir}/miradi_psp.po" />
     <property name="miradi.po.uk" value="${translations.dir}/miradi_uk.po" />
     <property name="miradi.po.zh" value="${translations.dir}/miradi_zh.po" />
-    <property name="miradi.po.usaid_project" value="${translations.dir}/miradi_usaid_project.po" />
+    <property name="miradi.po.aid" value="${translations.dir}/miradi_aid.po" />
 
 	
 	<!-- ================================================================== -->
@@ -797,7 +797,7 @@
 <!-- ================================================================== -->
 <target name="usaid-project-langpack" depends="pot" description="Update USAID Project Language Pack Content">
     <antcall target="update-po">
-        <param name="po.file" value="${miradi.po.usaid_project}"/>
+        <param name="po.file" value="${miradi.po.aid}"/>
         <param name="language.code" value="usaid_project"/>
     </antcall>
 </target>
