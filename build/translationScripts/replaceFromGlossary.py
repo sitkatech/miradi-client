@@ -103,9 +103,8 @@ def clean_prefixed_entries(msgid):
         # return the text after the final pipe, which may be the empty string
         pipe_split = msgid.split(u"|")
         thing_to_translate = pipe_split[-1]
-        prefix = msgid[:-len(thing_to_translate)]
-        return prefix, thing_to_translate
-    return u"", msgid
+        return thing_to_translate
+    return msgid
 
 
 def replace_with_glossary(glossary, msgstr):
@@ -135,9 +134,9 @@ def main():
 
     input_po = polib.pofile(input_file_name)
     for entry in input_po.translated_entries():
-        prefix, thing_to_translate = clean_prefixed_entries(entry.msgid)
+        thing_to_translate = clean_prefixed_entries(entry.msgid)
         translated_text = replace_with_glossary(glossary, thing_to_translate)
-        entry.msgstr = prefix + translated_text
+        entry.msgstr = translated_text
 
     input_po.save(output_file_name)
 
