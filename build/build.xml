@@ -798,7 +798,7 @@
 <target name="usaid-project-langpack" depends="pot" description="Update USAID Project Language Pack Content">
     <antcall target="update-po">
         <param name="po.file" value="${miradi.po.aid}"/>
-        <param name="language.code" value="usaid_project"/>
+        <param name="language.code" value="aid"/>
     </antcall>
 </target>
 	
