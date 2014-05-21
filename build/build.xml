@@ -113,7 +113,6 @@
     <property name="miradi.po.zh" value="${translations.dir}/miradi_zh.po" />
     <property name="miradi.po.aid" value="${translations.dir}/miradi_aid.po" />
 
-	
 	<!-- ================================================================== -->
     <!-- I N I T                                                            -->
     <!-- ================================================================== -->
