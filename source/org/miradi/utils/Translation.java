@@ -39,27 +39,28 @@ public class Translation
 	{
 		restoreDefaultLocalization();
 	}
-	
+
 	public static boolean isDefaultLocalization()
 	{
 		return textTranslations == null;
 	}
-	
+
 	public static String getCurrentLanguageCode()
 	{
 		return currentLanguageCode;
 	}
-	
-	public static void restoreDefaultLocalization() throws IOException
-	{
-		if (DEFAULT_LANGUAGE_CODE.equals(currentLanguageCode))
-			return;
 
-		currentLanguageCode = DEFAULT_LANGUAGE_CODE;
-		textTranslations = null;
-		fieldLabelTranslations = loadProperties(getEnglishTranslationFileURL("FieldLabels.properties"));
-		StaticQuestionManager.initialize();
-	}
+    public static void restoreDefaultLocalization() throws IOException
+    {
+        if (DEFAULT_LANGUAGE_CODE.equals(currentLanguageCode))
+            return;
+
+        currentLanguageCode = DEFAULT_LANGUAGE_CODE;
+        textTranslations = null;
+        htmlTextTranslations = null;
+        fieldLabelTranslations = loadProperties(getEnglishTranslationFileURL("FieldLabels.properties"));
+        StaticQuestionManager.initialize();
+    }
 
 	public static void setLocalization(URL urlOfLocalizationZip, String languageCode) throws Exception
 	{
@@ -94,27 +95,50 @@ public class Translation
 		}
 	}
 
-	private static void setLocalization(String languageCode, HashMap<String, String> translationStrings)
-	{
-		textTranslations = translationStrings;
-		StaticQuestionManager.initialize();
-		currentLanguageCode = languageCode;
-	}
+    private static void setLocalization(String languageCode, HashMap<String, String> translationStrings)
+    {
+        textTranslations = translationStrings;
+        htmlTextTranslations = _SetHtmlTranslations(translationStrings);
+        StaticQuestionManager.initialize();
+        currentLanguageCode = languageCode;
+    }
 
-	public static String text(String key)
-	{
-		String result = extractPartToDisplay(key);
-	
-		if(textTranslations != null)
-		{
-			String defaultValue = "~(" + result + ")";
-			result = textTranslations.get(key);
-			if(result == null)
-				result = defaultValue;
-		}
-		
-		return extractPartToDisplay(result);
-	}
+    private static HashMap<String, String> _SetHtmlTranslations(HashMap<String, String> translationStrings)
+    {
+        HashMap<String, String> htmlTranslations = new HashMap<String, String>();
+        for (String sk : translationStrings.keySet()){
+            if(sk.startsWith(HTML_TRANSLATION_KEY_PREFIX)){
+                htmlTranslations.put(_HtmlKey(sk), translationStrings.get(sk));
+            }
+        }
+        return htmlTranslations;
+    }
+
+    public static String text(String key)
+    {
+        String result = extractPartToDisplay(key);
+        if(textTranslations != null)
+        {
+            String defaultValue = "~(" + result + ")";
+            result = _TranslationFromKey(key);
+            if(result == null)
+                result = defaultValue;
+        }
+        return extractPartToDisplay(result);
+    }
+
+    // Assumes that fullKey begins with HTML_TRANSLATION_KEY_PREFIX
+    private static String _HtmlKey(String fullKey){
+        String resource = fullKey.substring(HTML_TRANSLATION_KEY_PREFIX.length()).split("\\|")[0];
+        return HTML_TRANSLATION_KEY_PREFIX + resource;
+    }
+
+    private static String _TranslationFromKey(String key){
+        if(key.startsWith(HTML_TRANSLATION_KEY_PREFIX)){
+            return htmlTextTranslations.get(_HtmlKey(key));
+        }
+        return textTranslations.get(key);
+    }
 
 	public static String fieldLabel(int objectType, String fieldTag)
 	{
@@ -130,21 +154,21 @@ public class Translation
 
 		return text("FieldLabel|" + fullTag + "|" + label);
 	}
-	
+
 	public static String getHtmlContent(String resourceFileName) throws Exception
 	{
 		URL englishHtmlURL = ResourcesHandler.getEnglishResourceURL(resourceFileName);
 		if(englishHtmlURL == null)
 			throw new RuntimeException("Missing HTML content: " + resourceFileName);
-		
+
 		String englishHtml = ResourcesHandler.loadFile(englishHtmlURL);
 		if(textTranslations == null)
 			return englishHtml;
-		
+
 		String fixedNewLines = englishHtml.replaceAll("\r", "");
 		String allOnOneLine = fixedNewLines.replaceAll("\\n", "");
 		String withoutComments = allOnOneLine.replaceAll("<!--.*?-->", "");
-		
+
 		String key = "html|/resources/" + resourceFileName + "|" + withoutComments;
 		String result = text(key);
 		if(result.startsWith("~") && result.length() > 100)
@@ -195,7 +219,7 @@ public class Translation
 		thisLine = thisLine.substring(firstTabAt + 1);
 		
 		thisLine = thisLine.replaceAll("\\t", TAB_SUBSTITUTE);
-		String translated = textTranslations.get(prefix + thisLine);
+		String translated = _TranslationFromKey(prefix + thisLine);
 		if(translated == null)
 			translated = thisLine.replaceAll(TAB_SUBSTITUTE, TAB_SUBSTITUTE + "~");
 		thisLine = code + TAB_SUBSTITUTE + translated;
@@ -337,11 +361,13 @@ public class Translation
 		return EAM.text("Error");
 	}
 
-	public final static String DEFAULT_LANGUAGE_CODE = "en";
-	public final static String TAB_SUBSTITUTE = "___";
-	public final static String TRANSLATION_VERSION_KEY = "TranslationVersion";
+    public final static String DEFAULT_LANGUAGE_CODE = "en";
+    public final static String TAB_SUBSTITUTE = "___";
+    public final static String TRANSLATION_VERSION_KEY = "TranslationVersion";
+    private final static String HTML_TRANSLATION_KEY_PREFIX = "html|/resources/";
 
-	private static String currentLanguageCode;
-	private static HashMap<String, String> textTranslations;
-	private static Properties fieldLabelTranslations;
+    private static String currentLanguageCode;
+    private static HashMap<String, String> textTranslations;
+    private static HashMap<String, String> htmlTextTranslations;
+    private static Properties fieldLabelTranslations;
 }
