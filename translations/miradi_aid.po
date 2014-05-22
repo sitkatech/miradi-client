@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-21 20:15-0500\n"
+"POT-Creation-Date: 2014-05-22 17:30-0500\n"
 "PO-Revision-Date: 2014-05-13 02:40+0000\n"
 "Last-Translator: nsalafsky <nick@fosonline.org>\n"
 "Language-Team: English (Estonia) (http://www.transifex.com/projects/p/miradi-"
@@ -3626,7 +3626,7 @@ msgstr "Enter Tag Name"
 msgid "Entire Project Duration"
 msgstr "Entire Project Duration"
 
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/Translation.java:337
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/Translation.java:361
 msgid "Error"
 msgstr "Error"
 
@@ -5563,7 +5563,7 @@ msgstr "Not Effective"
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/questions/TrendQuestion.java:37
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/xml/generic/XmlSchemaCreator.java:654
-#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/Translation.java:332
+#: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/utils/Translation.java:356
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:285
 #: /home/jenkins/.jenkins/slaves/miradi/workspace/Miradi/source/org/miradi/dialogs/planning/treenodes/UnspecifiedBaseObject.java:45
 msgid "Not Specified"
