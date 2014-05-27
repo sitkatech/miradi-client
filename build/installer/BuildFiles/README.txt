@@ -4,7 +4,7 @@ Copyright 2005-2013, Foundations of Success, Bethesda, Maryland
      (on behalf of the Conservation Measures Partnership, "CMP") and
      Beneficent Technology, Inc. ("Benetech"), Palo Alto, California.
 
-VERSION 4.1.2
+VERSION 4.1.3
 
 License and Copying
 
@@ -161,6 +161,12 @@ cannot be directly opened by earlier versions of Miradi, but 4.1.2 and
 in the MPZ format used by Miradi 3.3. In some cases, data may be
 lost when exporting to these older formats, but a warning dialog will
 indicate when that is the case.
+
+Notable changes in 4.1.3:
+
+Appwide:
+- Fixed errors that were causing portions of all language packs to not display all of the available translated text.
+
 
 Notable changes in 4.1.2 (compared to 4.1.0, includes changes in the aborted 4.1.1 release):
 
