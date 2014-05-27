@@ -322,7 +322,7 @@ public class Miradi
 	}
 
     public static final String LANGUAGE_PACK_VERSION = "4.1";
-    public static final String MAIN_VERSION = LANGUAGE_PACK_VERSION + ".2";
+    public static final String MAIN_VERSION = LANGUAGE_PACK_VERSION + ".3";
 
     public static final String LANGUAGE_PACK_PREFIX = "MiradiContent-" + LANGUAGE_PACK_VERSION + "-";
     private static final String ALPHA_TESTER_MODE_ON_SWITCH = "--tester";
