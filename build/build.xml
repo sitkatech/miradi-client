@@ -113,125 +113,119 @@
     <property name="miradi.po.zh" value="${translations.dir}/miradi_zh.po" />
     <property name="miradi.po.aid" value="${translations.dir}/miradi_aid.po" />
 
-	<!-- ================================================================== -->
-    <!-- I N I T                                                            -->
-    <!-- ================================================================== -->
+<!-- ================================================================== -->
+<!-- I N I T                                                            -->
+<!-- ================================================================== -->
+<target name="init" description="Initialize build number, timestamp and version">
+    <tstamp>
+        <format property="version.timestamp" pattern="yyyy-MM-dd HH:mm:ss"/>
+    </tstamp>
 
-    <target name="init" description="Initialize build number, timestamp and version">
-        <tstamp>
-            <format property="version.timestamp" pattern="yyyy-MM-dd HH:mm:ss"/>
-        </tstamp>
+    <tstamp/>
 
-        <tstamp/>
+    <echo message="Date timestamp is ${DSTAMP}" />
+    <echo message="Time timestamp is ${TSTAMP}" />
+    <echo message="Version timestamp is ${version.timestamp}" />
 
-    	<echo message="Date timestamp is ${DSTAMP}" />
-        <echo message="Time timestamp is ${TSTAMP}" />
-        <echo message="Version timestamp is ${version.timestamp}" />
-    	
-    	<mkdir dir='${binaries.cvs.module}' />
-    	<mkdir dir='${dist.dir}' />
-    	<mkdir dir='${dist.temp.jars}' />
-    	
-	    <echo file="${version.file}" append="false" message="${version.prefix}${version.full}"/>
-	    <echo file="${timestamp.file}" append="false" message="${version.timestamp}"/>
-	
-    </target>
+    <mkdir dir='${binaries.cvs.module}' />
+    <mkdir dir='${dist.dir}' />
+    <mkdir dir='${dist.temp.jars}' />
 
-    <!-- ================================================================== -->
-    <!-- C L E A N                                                          -->
-    <!-- ================================================================== -->
+    <echo file="${version.file}" append="false" message="${version.prefix}${version.full}"/>
+    <echo file="${timestamp.file}" append="false" message="${version.timestamp}"/>
+</target>
 
-  <target name="clean" description="Remove all class files and jars">
-    <delete dir="${dist.dir}"/>
-  </target>
+<!-- ================================================================== -->
+<!-- C L E A N                                                          -->
+<!-- ================================================================== -->
+<target name="clean" description="Remove all class files and jars">
+<delete dir="${dist.dir}"/>
+</target>
 
-    <!-- ================================================================== -->
-    <!-- CLEANUP                                                          -->
-    <!-- ================================================================== -->
+<!-- ================================================================== -->
+<!-- CLEANUP                                                          -->
+<!-- ================================================================== -->
+<target name="cleanup" description="Delete temp files">
+<delete dir="${dist.temp}"/>
+</target>
 
-  <target name="cleanup" description="Delete temp files">
-    <delete dir="${dist.temp}"/>
-  </target>
+<!-- ================================================================== -->
+<!-- B U I L D                                                          -->
+<!-- ================================================================== -->
+<target name="build" depends="init, ThirdParty" description="Compile Miradi">
+<mkdir dir="${eam.class.root}"/>
 
-  <!-- ================================================================== -->
-  <!-- B U I L D                                                          -->
-  <!-- ================================================================== -->
+<javac source="1.5" target="1.5" compiler="javac1.5" optimize="on" failonerror="true"
+        debug="true" debuglevel="lines,source"
+        srcdir="${eam.src.root}" destdir="${eam.class.root}" >
+    <compilerarg value="-Xlint:unchecked" />
+    <compilerarg value="-Werror" />
+    <classpath refid="eam.class.path"/>
+    <include name="**/*.java"/>
+</javac>
 
-  <target name="build" depends="init, ThirdParty" description="Compile Miradi">
-    <mkdir dir="${eam.class.root}"/>
+</target>
 
-    <javac source="1.5" target="1.5" compiler="javac1.5" optimize="on" failonerror="true"
-			debug="true" debuglevel="lines,source"
-    		srcdir="${eam.src.root}" destdir="${eam.class.root}" >
-    	<compilerarg value="-Xlint:unchecked" />
-    	<compilerarg value="-Werror" />
-        <classpath refid="eam.class.path"/>
-        <include name="**/*.java"/>
-    </javac>
-    
-  </target>
+<!-- ================================================================== -->
+<!-- T E S T                                                            -->
+<!-- ================================================================== -->
+<target name="test" depends="init, build" description="Run unit tests">
+<mkdir dir="${eam.test.class.root}"/>
+<javac source="1.5" target="1.5" compiler="javac1.5" optimize="on" failonerror="true"
+        srcdir="${eam.test.src.root}" destdir="${eam.test.class.root}" >
+    <compilerarg value="-Xlint:unchecked" />
+    <classpath refid="eam.class.path"/>
+    <classpath location='${junit.jar}' />
+    <include name="**/*.java"/>
+</javac>
 
-  <!-- ================================================================== -->
-  <!-- T E S T                                                            -->
-  <!-- ================================================================== -->
+<copy todir="${eam.test.class.root}/resources">
+    <fileset dir="${eam.resources}" />
+</copy>
+<copy todir="${eam.test.class.root}/translations">
+    <fileset dir="${eam.test.src.root}/translations" />
+</copy>
+<copy todir="${eam.test.class.root}">
+    <fileset dir="${eam.src.root}">
+        <include name="**/*.txt" />
+    </fileset>
+</copy>
 
-  <target name="test" depends="init, build" description="Run unit tests">
-  	<mkdir dir="${eam.test.class.root}"/>
-    <javac source="1.5" target="1.5" compiler="javac1.5" optimize="on" failonerror="true" 
-    		srcdir="${eam.test.src.root}" destdir="${eam.test.class.root}" >
-    	<compilerarg value="-Xlint:unchecked" />
-        <classpath refid="eam.class.path"/>
-		<classpath location='${junit.jar}' />
-        <include name="**/*.java"/>
-    </javac>
-  	
-  	<copy todir="${eam.test.class.root}/resources">
-  		<fileset dir="${eam.resources}" />
-  	</copy>
-  	<copy todir="${eam.test.class.root}/translations">
-  		<fileset dir="${eam.test.src.root}/translations" />
-  	</copy>
-  	<copy todir="${eam.test.class.root}">
-  		<fileset dir="${eam.src.root}">
-  			<include name="**/*.txt" />
-  		</fileset>
-  	</copy>
-
-  	<!--
-  	<java classname='org.miradi.main.MainTests'>
-  		<classpath refid='eam.class.path' />
-		<classpath>
-			<pathelement location='${eam.test.class.root}' />
-			<pathelement location='${eam.class.root}' />
-			<pathelement location='/work/benetech/miradi3/eclipse/miradi-thirdparty/JUnit/bin/junit.jar' />
-		</classpath>
-  	</java>
-  	-->
-	<junit haltonfailure='on' showoutput='on'>
-		<classpath location='${junit.jar}' />
-  		<classpath refid='eam.class.path' />
-		<classpath location='${eam.class.root}' />
-
-		<test name='org.miradi.main.MainTests' todir='${eam.test.class.root}' />
 <!--
-		<batchtest fork="yes">
-			<fileset dir="${eam.test.src.root}">
-				<include name="**/Test*.java"/>
-				<exclude name="**/MainTests.java"/>
-			</fileset>
-		</batchtest>
+<java classname='org.miradi.main.MainTests'>
+    <classpath refid='eam.class.path' />
+    <classpath>
+        <pathelement location='${eam.test.class.root}' />
+        <pathelement location='${eam.class.root}' />
+        <pathelement location='/work/benetech/miradi3/eclipse/miradi-thirdparty/JUnit/bin/junit.jar' />
+    </classpath>
+</java>
+-->
+<junit haltonfailure='on' showoutput='on'>
+    <classpath location='${junit.jar}' />
+    <classpath refid='eam.class.path' />
+    <classpath location='${eam.class.root}' />
+
+    <test name='org.miradi.main.MainTests' todir='${eam.test.class.root}' />
+<!--
+    <batchtest fork="yes">
+        <fileset dir="${eam.test.src.root}">
+            <include name="**/Test*.java"/>
+            <exclude name="**/MainTests.java"/>
+        </fileset>
+    </batchtest>
 -->
 
-  	    <formatter type="plain" />
+    <formatter type="plain" />
 
-  	</junit>
-  </target>
+</junit>
+</target>
 
-  <!-- ================================================================== -->
-  <!-- J A R                                                          -->
-  <!-- ================================================================== -->
-	<!-- TODO: Change depends from build to test after unit tests no longer depend on Swing -->
-    <target name="jar" depends="build" description="Create jar">
+<!-- ================================================================== -->
+<!-- J A R                                                          -->
+<!-- ================================================================== -->
+<!-- TODO: Change depends from build to test after unit tests no longer depend on Swing -->
+<target name="jar" depends="build" description="Create jar">
         <mkdir dir="${dist.dir}"/>
         <jar destfile="${dist.dir}/miradi.jar">
           	<manifest>
@@ -242,8 +236,7 @@
             <fileset dir="${eam.src.root}" includes="org/miradi/xml/**/*.txt" />
         	<fileset dir="${dist.dir}" includes="*.txt" />
         </jar>
-    </target>
-    
+</target>
 
 <!-- ================================================================== -->
 <!-- DOWNLOAD FROM ARTIFACTS.MIRADI.ORG                                 -->
@@ -256,7 +249,6 @@
 		src='${from}' 
 		dest='${dir}/${filename}' />
 </target>
-
     
 <!-- ================================================================== -->
 <!-- THIRD-PARTY JARS, SOURCE, LICENSES                                 -->
@@ -507,7 +499,6 @@
 		<param name='directory' value='shef/0.5' />
 		<param name='filename' value='jtidy-src.zip' />
 	</antcall>
-
 </target>
 
 <!-- ================================================================== -->
@@ -570,7 +561,6 @@
 	
 	<copy file="${installer.buildfiles.dir}/${samples.marine.miradi}" todir="${dist.dir}" />
 	<copy file="${installer.buildfiles.dir}/README.txt" todir="${dist.dir}" />
-	
 </target>
 	
 <!-- ================================================================== -->
@@ -624,7 +614,6 @@
 		<arg value="${eam.src.root}"/>
 		<arg value="${miradi.pot}"/>
 	</exec>
-	
 </target>
 
 <!-- ================================================================== -->
@@ -750,7 +739,6 @@
 </antcall>
 </target>
 
-			
 <!-- ================================================================== -->
 <!-- PORTUGUESE                                                         -->
 <!-- ================================================================== -->
@@ -877,7 +865,6 @@
 		<zipfileset dir="${installer.buildfiles.dir}" includes="LicenseOverview.txt"/>
 		<zipfileset dir="${build.dir}" includes='build.xml'/>
 	</zip>
-	
 </target>
 
 <!-- ================================================================== -->
@@ -920,7 +907,6 @@
 		<javaproperty name="apple.awt.antialiasing" value="true" />
 		<javaproperty name="apple.awt.textantialiasing" value="true" />
 	</jarbundler>
-
 </target>
 
 <!-- ================================================================== -->
@@ -994,9 +980,9 @@
 <!-- ================================================================== -->
 <!-- R E L E A S E                                                      -->
 <!-- ================================================================== -->
-    <target name="release" depends="translations,source,zips,macdmgfile,win32installer,cleanup">
-        <echo message="Release Built"/>
-        <echo message="REMEMBER TO TAG THIS RELEASE WITH ${version.timestamp} !"/>
-    </target>
+<target name="release" depends="translations,source,zips,macdmgfile,win32installer,cleanup">
+    <echo message="Release Built"/>
+    <echo message="REMEMBER TO TAG THIS RELEASE WITH ${version.timestamp} !"/>
+</target>
 
 </project>
