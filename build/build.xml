@@ -531,7 +531,7 @@
 <!-- ================================================================== -->
 <taskdef name="jarbundler"
          classname="net.sourceforge.jarbundler.JarBundler"
-         classpath="${installer.mac}/jarbundler-2.3.1/jarbundler-2.3.1.jar" />
+         classpath="${installer.mac}/jarbundler-2.3.1/build/jarbundler-2.3.1.jar" />
 
 <taskdef name="install4j"
          classname="com.install4j.Install4JTask"
