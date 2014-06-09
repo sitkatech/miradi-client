@@ -428,16 +428,32 @@ public class JarBundler extends MatchingTask {
 	}
 
 	/**
-	 * Setter for the "developmentregion" attribute(optional) Default "English".
+	 * Setter for the "developmentregion" attribute (optional) Default "English".
 	 */
 	public void setDevelopmentregion(String s) {
 		bundleProperties.setCFBundleDevelopmentRegion(s);
 	}
 
+	/**  Tobias Fischer, v2.3.0
+	 * Setter for the "allowmixedlocalizations" attribute (optional) Default "false".
+	 */
+	public void setAllowMixedLocalizations(boolean b) {
+		bundleProperties.setCFBundleAllowMixedLocalizations(b);
+	}
+
+	/** Tobias Fisher, v2.3.1
+	 * Setter for the "NSHumanReadableCopyright" attribute (optional)
+	 */
+
+	public void setCopyright(String s) {
+		bundleProperties.setNSHumanReadableCopyright(s);
+	}
+
 	/**
-	 * Setter for the "aboutmenuname" attribute (optional)
+	 * Setter for the deprecated "aboutmenuname" attribute (optional)
 	 */
 	public void setAboutmenuname(String s) {
+		System.err.println("WARNING: 'aboutmenuname' is deprecated! Use JarBundler attribute 'shortname' instead!");
 		bundleProperties.setCFBundleName(s);
 	}
 
@@ -519,12 +535,39 @@ public class JarBundler extends MatchingTask {
 		bundleProperties.setJVMVersion(s);
 	}
 
+    // New in JarBundler 2.2.0; Tobias Bley ----------------
+
 	/**
+     * Setter for the "JVMArchs" attribute (optional)
+     */
+    public void setJvmArchs(String s) {
+        bundleProperties.setJVMArchs(s);
+    }
+
+    /**  Michael Bader <nufan_k@me.com> --------------------
+     * Setter for the "LSArchitecturePriority" attribute (optional)
+     */
+    public void setLSArchitecturePriority(String s) {
+        bundleProperties.setLSArchitecturePriority(s);
+    }
+    
+    //-------------------------------------------------------
+
+    /**
 	 * Setter for the "startonmainthread" attribute (optional)
 	 */
 	public void setStartonmainthread(boolean b) {
 		bundleProperties.setStartOnMainThread(new Boolean(b));
 	}
+
+
+	/**
+	 * Setter for the "startasagent" attribute (optional)
+	 */
+	public void setIsAgent( boolean b ) {
+		bundleProperties.setLSUIElement( new Boolean( b ) );
+	}
+
 
 	/**
 	 * Setter for the "infostring" attribute (optional) This key identifies a
@@ -556,6 +599,7 @@ public class JarBundler extends MatchingTask {
 	 * build.
 	 */
 	public void setShortInfoString(String s) {
+		System.err.println("WARNING: 'shortinfostring' is deprecated! Use JarBundler attribute 'infostring' instead!");
 		setVersion(s);
 	}
 
