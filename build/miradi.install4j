@@ -2,10 +2,10 @@
 <install4j version="4.1.5" transformSequenceNumber="2">
   <directoryPresets config="./installer/BuildFiles" />
   <application name="Miradi" distributionSourceDir="" applicationId="9257-7778-0919-8416" 
-		  mediaDir="../dist" mediaFilePattern="${compiler:sys.shortName}Setup" compression="9" 
+		  mediaDir="${compiler:dist.dir}" mediaFilePattern="${compiler:sys.shortName}Setup ${compiler:version.full}" compression="9"
 		  lzmaCompression="true" pack200Compression="true" excludeSignedFromPacking="true" 
 		  keepModificationTimes="false" shortName="Miradi" publisher="Miradi" 
-		  publisherWeb="http://miradi.org" version="4.1.3" allPathsRelative="true"
+		  publisherWeb="http://miradi.org" version="${compiler:version.full}" allPathsRelative="true"
 		  backupOnSave="false" autoSave="false" convertDotsToUnderscores="true" macSignature="????" 
 		  installerName="" javaMinVersion="1.6" javaMaxVersion="" allowBetaVM="false" jdkMode="runtimeJre" jdkName="">
     <languages skipLanguageSelection="false">
@@ -32,12 +32,12 @@
       <mountPoint id="17" root="" location="" mode="755" />
     </mountPoints>
     <entries>
-      <fileEntry mountPoint="95" file="../dist/temp/jars/jortho/jortho/0.5/jortho.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="95" file="../dist/temp/jars/jortho/jortho/0.5/jortho-license.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="95" file="../dist/temp/jars/jortho/bin/jortho.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="95" file="../dist/temp/jars/jortho/jortho-license.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/martus-utils/bin/martus-utils.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/martus-utils/martus-utils-license.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/martus-swing/bin/martus-swing.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="95" file="../dist/temp/jars/martus-swing/martus-swing-license-txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="95" file="../dist/temp/jars/martus-swing/martus-swing-license.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/jing/bin/xml-apis.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/jing/bin/xercesImpl.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/jing/bin/saxon.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
@@ -45,7 +45,7 @@
       <fileEntry mountPoint="95" file="../dist/temp/jars/swingx/0.9.7/swingx-0.9.7.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/swingx/0.9.7/swingx-license.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/jing/bin/isorelax.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="95" file="../dist/temp/jars/jing/LICENSE-jing.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="95" file="../dist/temp/jars/jing/jing-license.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/jing/xerces-license.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/jgraph/miradi-jgraph-5.12.2.2b.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/jgraph/jgraph-license.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
@@ -59,11 +59,13 @@
       <fileEntry mountPoint="95" file="../dist/temp/jars/shef/0.5/LICENSE-sam.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/shef/0.5/shef.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/shef/0.5/LICENSE-shef.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <!--
       <fileEntry mountPoint="95" file="../dist/temp/jars/saxon/HE9.4.0.3J/saxon9he.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/saxon/HE9.4.0.3J/LICENSE.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="95" file="../dist/temp/jars/commons-lang3/3.1/LICENSE.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      -->
+      <fileEntry mountPoint="95" file="../dist/temp/jars/commons-lang3/ApacheCommons-license.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/commons-lang3/3.1/commons-lang3-3.1.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="17" file="./installer/BuildFiles/MarineExample-4.1.3.Miradi" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="17" file="./installer/BuildFiles/MarineExample-4.2.0.Miradi" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="17" file="./installer/BuildFiles/LicenseOverview.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="17" file="./installer/BuildFiles/LICENSE.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="17" file="./installer/BuildFiles/README.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
@@ -517,7 +519,7 @@ return true;
     </applications>
   </installerGui>
   <mediaSets>
-    <win32 name="Windows" id="22" mediaFileName="" installDir="Miradi" overridePrincipalLanguage="false" requires64bit="false" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" includedJRE="windows-x86-1.6.0_11" manualJREEntry="false" bundleType="2" jreURL="http://artifacts.miradi.org/jres/windows-x86-1.6.0-Miradi-3.3.tgz" jreFtpURL="" jreShared="true" customInstallBaseDir="" createUninstallIcon="true" contentFilesType="1" downloadURL="" runAsAdmin="true">
+    <win32 name="Windows" id="22" mediaFileName="" installDir="Miradi" overridePrincipalLanguage="false" requires64bit="false" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" includedJRE="windows-x86-1.6.0_45" manualJREEntry="false" bundleType="2" jreURL="${compiler:jres.path}/windows-x86-1.6.0_45.tar.gz" jreFtpURL="" jreShared="true" customInstallBaseDir="" createUninstallIcon="true" contentFilesType="1" downloadURL="" runAsAdmin="true">
       <excludedLaunchers />
       <excludedComponents />
       <excludedBeans />
