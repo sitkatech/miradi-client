@@ -139,6 +139,15 @@
     <fail message="env.INSTALL4J.JRES.PATH is not defined" unless="env.INSTALL4J.JRES.PATH"/>
     <echo message="env.INSTALL4J.JRES.PATH = ${env.INSTALL4J.JRES.PATH}"/>
 
+    <condition property="isLinux">
+        <and>
+            <os family="unix"/>
+            <not>
+                <os family="mac"/>
+            </not>
+        </and>
+    </condition>
+
     <mkdir dir='${dist.dir}' />
     <mkdir dir='${dist.temp.jars}' />
 
@@ -947,7 +956,7 @@
 <!-- ================================================================== -->
 <!-- M A C   D M G   F I L E                                            -->
 <!-- ================================================================== -->
-<target name="macdmgfile" depends="macappbundle" description="create a mac dmg file">
+<target name="macdmgfile" depends="macappbundle" description="create a mac dmg file" if="isLinux">
 	<property name="rawdmgfile" value="${dist.dir}/mac-client-build-dependencies/images/Miradi.dmg" />
 	<property name="dmgsizemegs" value="18" />
 	<property name="dmgmount" value="${dist.dir}/mac-client-build-dependencies/mounts/dmgfile" />
@@ -1019,7 +1028,7 @@
 <!-- R E L E A S E                                                      -->
 <!-- ================================================================== -->
 <!--<target name="release" depends="translations, source, zips, macdmgfile, win32installer, cleanup">-->
-<target name="release" depends="source, zips, win32installer, cleanup">
+<target name="release" depends="source, zips, macdmgfile, win32installer, cleanup">
     <echo message="Release Built"/>
     <echo message="REMEMBER TO TAG THIS RELEASE WITH ${version.timestamp} !"/>
 </target>
