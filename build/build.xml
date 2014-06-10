@@ -1026,10 +1026,17 @@
 </target>
 
 <!-- ================================================================== -->
+<!-- permissions                                                        -->
+<!-- ================================================================== -->
+<target name="permissions" depends="" description="Modify permissions on built output">
+    <chmod file="${dist.dir}/**" perm="g+w" type="both" parallel="false"/>
+</target>
+
+<!-- ================================================================== -->
 <!-- R E L E A S E                                                      -->
 <!-- ================================================================== -->
-<!--<target name="release" depends="translations, source, zips, macdmgfile, win32installer, cleanup">-->
-<target name="release" depends="source, zips, macdmgfile, win32installer, cleanup">
+<!--<target name="release" depends="translations, source, zips, macdmgfile, win32installer, cleanup, permissions">-->
+<target name="release" depends="source, zips, macdmgfile, win32installer, cleanup, permissions">
     <echo message="Release Built"/>
     <echo message="REMEMBER TO TAG THIS RELEASE WITH ${version.timestamp} !"/>
 </target>
