@@ -1010,6 +1010,7 @@
     <install4j projectfile="${build.dir}/miradi.install4j">
         <variable name="version.full" value="${version.full}"/>
         <variable name="dist.dir" value="${dist.dir}"/>
+        <variable name="dist.temp.jars" value="${dist.temp.jars}"/>
         <variable name="jres.path" value="${env.INSTALL4J.JRES.PATH}"/>
     </install4j>
 </target>
