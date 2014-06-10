@@ -1003,6 +1003,7 @@
 	</copy>
 
 	<exec os="Linux"  executable="umount" failonerror="true">
+		<arg value="-l"/>
 		<arg value="-d"/>
 		<arg value="${dmgmount}"/>
 	</exec>
