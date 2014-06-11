@@ -8,6 +8,9 @@ dist
 *~
 *.class
 
+# ignore jarbundler (which we build)
+jarbundler*.jar
+
 # switch to regexp syntax.
 syntax: regexp
 # ^\.pc/
