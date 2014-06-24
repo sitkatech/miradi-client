@@ -167,7 +167,7 @@ public class HtmlUtilities
 
 	public static String stripAllHtmlTags(String text)
 	{
-		final String ANY = "<.*?>";
+		final String ANY = "<[a-zA-Z\\/][^>]*>";
 		return replaceAll(ANY, text, StringUtilities.EMPTY_STRING);
 	}
 
