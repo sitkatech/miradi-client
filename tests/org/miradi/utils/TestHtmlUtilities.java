@@ -314,6 +314,10 @@ public class TestHtmlUtilities extends MiradiTestCase
 	public void testStripAllHtmlTags()
 	{
 		verifyStringHtmlTags("", "");
+		verifyStringHtmlTags("someText < someText", "someText < someText");
+		verifyStringHtmlTags("someText > someText", "someText > someText");
+		verifyStringHtmlTags("someText < someText > someText", "someText < someText > someText");
+		verifyStringHtmlTags("<a href=\"#\">someText</a>", "someText");
 		verifyStringHtmlTags("<html>", "");
 		verifyStringHtmlTags("<html><body><h1><br/>someText</body></html>", "someText");
 		verifyStringHtmlTags("<html><body><h1><font size=\"5\">someText</body></html>", "someText");

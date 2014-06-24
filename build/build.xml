@@ -212,6 +212,13 @@
         <include name="**/*.txt" />
     </fileset>
 </copy>
+<copy todir="${eam.test.class.root}">
+    <fileset dir="${eam.test.src.root}">
+        <include name="**/*.xls" />
+        <include name="**/*.mpz" />
+        <include name="**/*.Miradi" />
+    </fileset>
+</copy>
 
 <!--
 <java classname='org.miradi.main.MainTests'>
