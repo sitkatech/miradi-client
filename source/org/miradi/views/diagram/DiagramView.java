@@ -575,12 +575,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		}
 	}
 
-	public void setTabToConceptualModel()
-	{
-		final int CONCEPTUAL_MODEL_INDEX = 0;
-		setTab(CONCEPTUAL_MODEL_INDEX);
-	}
-	
 	public DiagramModel getDiagramModel()
 	{
 		DiagramComponent diagramComponent = getCurrentDiagramComponent();
