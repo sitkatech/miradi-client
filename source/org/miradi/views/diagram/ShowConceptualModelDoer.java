@@ -19,6 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
+import org.miradi.commands.CommandBeginTransaction;
+import org.miradi.commands.CommandEndTransaction;
+import org.miradi.commands.CommandSetObjectData;
+import org.miradi.exceptions.CommandFailedException;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.ViewData;
+import org.miradi.project.Project;
 import org.miradi.views.ViewDoer;
 
 public class ShowConceptualModelDoer extends ViewDoer
@@ -31,7 +38,7 @@ public class ShowConceptualModelDoer extends ViewDoer
 
 		if (! getDiagramView().isResultsChainTab())
 			return false;
-		
+
 		return true;
 	}
 
@@ -40,7 +47,41 @@ public class ShowConceptualModelDoer extends ViewDoer
 	{
 		if (! isAvailable())
 			return;
-		
-		getDiagramView().setTabToConceptualModel();
+
+        getProject().executeCommand(new CommandBeginTransaction());
+        try
+        {
+            setToNormalMode();
+            showConceptualModel(getDiagramView());
+        }
+        catch (Exception e)
+        {
+            throw new CommandFailedException(e);
+        }
+        finally
+        {
+            getProject().executeCommand(new CommandEndTransaction());
+        }
 	}
+
+    public static void showConceptualModel(DiagramView diagramView) throws Exception
+    {
+        final int CONCEPTUAL_MODEL_INDEX = 0;
+
+        Project project = diagramView.getProject();
+        ViewData viewData = project.getViewData(diagramView.cardName());
+        ORef currentConceptualModelRef = viewData.getCurrentConceptualModelRef();
+
+        CommandSetObjectData setTabCommand = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_CURRENT_TAB, Integer.toString(CONCEPTUAL_MODEL_INDEX));
+        project.executeCommand(setTabCommand);
+
+        CommandSetObjectData setCurrentDiagram = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF, currentConceptualModelRef);
+        project.executeCommand(setCurrentDiagram);
+    }
+
+    private void setToNormalMode() throws Exception
+    {
+        ShowFullModelModeDoer.showFullModelMode(getProject(), getDiagramView().getCurrentDiagramComponent());
+    }
+
 }
