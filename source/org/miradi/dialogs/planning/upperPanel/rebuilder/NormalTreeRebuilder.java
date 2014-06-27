@@ -216,7 +216,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		Desire desire = Desire.findDesire(getProject(), parentRef);
 		if (doObjectivesContainStrategies())
 			childRefs.addAll(getRelevantStrategyAndActivityRefsInDiagram(diagram, desire));
-		
+
 		childRefs.addAll(getRelevantIndicatorsInDiagram(diagram, desire));
 		return childRefs;
 	}
@@ -226,13 +226,20 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		return keepObjectsThatAreInDiagram(diagram, desire.getRelevantIndicatorRefList());
 	}
 
-	private ORefList getRelevantStrategyAndActivityRefsInDiagram(DiagramObject diagram, Desire desire) throws Exception
+    public ORefList getRelevantStrategiesInDiagram(DiagramObject diagram, Desire desire) throws Exception
+    {
+        return keepObjectsThatAreInDiagram(diagram, desire.getRelevantStrategyRefs());
+    }
+
+    private ORefList getRelevantStrategyAndActivityRefsInDiagram(DiagramObject diagram, Desire desire) throws Exception
 	{
-		final ORefList relevantStrategyAndActivityRefs = desire.getRelevantStrategyAndActivityRefs();
-		return keepObjectsThatAreInDiagram(diagram, relevantStrategyAndActivityRefs);
+        ORefList strategyAndActivityRefs = new ORefList();
+        strategyAndActivityRefs.addAll(getRelevantStrategiesInDiagram(diagram, desire));
+        strategyAndActivityRefs.addAll(desire.getRelevantActivityRefs());
+        return strategyAndActivityRefs;
 	}
-	
-	private ORefList getChildrenOfIndicator(ORef parentRef, DiagramObject diagram) throws Exception
+
+    private ORefList getChildrenOfIndicator(ORef parentRef, DiagramObject diagram) throws Exception
 	{
 		ORefList childRefs = new ORefList();
 		Indicator indicator = Indicator.find(getProject(), parentRef);

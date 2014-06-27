@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.planning;
 
-import java.util.Vector;
-
 import org.miradi.dialogs.planning.CustomTablePlanningTreeRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNodeAlwaysExpanded;
@@ -34,28 +32,15 @@ import org.miradi.ids.IdList;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.Cause;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.Goal;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.ObjectTreeTableConfiguration;
-import org.miradi.objects.Objective;
-import org.miradi.objects.ResultsChainDiagram;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Target;
-import org.miradi.objects.Task;
+import org.miradi.objects.*;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 import org.miradi.questions.StrategyObjectiveTreeOrderQuestion;
-import org.miradi.schemas.CauseSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.ObjectiveSchema;
-import org.miradi.schemas.ResultsChainDiagramSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.TargetSchema;
-import org.miradi.schemas.TaskSchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
+
+import java.util.Vector;
 
 public class TestTreeRebuilder extends TestCaseWithProject
 {
@@ -90,50 +75,64 @@ public class TestTreeRebuilder extends TestCaseWithProject
 	{
 		verifyRelevantNodes(StrategyObjectiveTreeOrderQuestion.STRATEGY_CONTAINS_OBJECTIVE_CODE);
 	}
-	
-	public void testRelvantIndicatorNodes() throws Exception
+
+	public void testRelevantIndicatorNodes() throws Exception
 	{
 		ResultsChainDiagram resultChainA = ResultsChainDiagram.find(getProject(), getProject().createResultsChainDiagram());
 		Strategy strategyA = getProject().createStrategy();
 		getProject().createAndAddFactorToDiagram(resultChainA, strategyA.getRef());
 		getProject().addObjective(strategyA);
 		Indicator indicator = getProject().createIndicator(strategyA);
-		
+        int resultChainAExpectedChildCount = 1;
+        int resultChainAExpectedGrandchildCount = 1;
+
 		ResultsChainDiagram resultChainB = ResultsChainDiagram.find(getProject(), getProject().createResultsChainDiagram());
 		Strategy strategyB = getProject().createStrategy();
 		getProject().createAndAddFactorToDiagram(resultChainB, strategyB.getRef());
 		Objective objectiveB = getProject().addObjective(strategyB);
 		getProject().addSingleItemRelevantBaseObject(objectiveB, indicator, Objective.TAG_RELEVANT_INDICATOR_SET);
-		
+        int resultChainBExpectedChildCount = 1;
+        int resultChainBExpectedGrandchildCount = 0;
+
 		CodeList rowCodes = new CodeList();
 		rowCodes.add(ResultsChainDiagramSchema.OBJECT_NAME);
 		rowCodes.add(ObjectiveSchema.OBJECT_NAME);
 		rowCodes.add(IndicatorSchema.OBJECT_NAME);
 		
-		verifyNodeHierarchy(resultChainA, resultChainB, rowCodes, StrategyObjectiveTreeOrderQuestion.STRATEGY_CONTAINS_OBJECTIVE_CODE);
+        verifyNodeHierarchy(resultChainA, resultChainAExpectedChildCount, resultChainAExpectedGrandchildCount,
+                            resultChainB, resultChainBExpectedChildCount, resultChainBExpectedGrandchildCount,
+                            rowCodes, StrategyObjectiveTreeOrderQuestion.STRATEGY_CONTAINS_OBJECTIVE_CODE);
 	}
 
-	private void verifyRelevantNodes(final String strategyContainsObjectiveCode)	throws Exception
+	private void verifyRelevantNodes(final String strategyContainsObjectiveCode) throws Exception
 	{
 		ResultsChainDiagram resultChainA = ResultsChainDiagram.find(getProject(), getProject().createResultsChainDiagram());
 		Strategy strategyA = getProject().createStrategy();
 		getProject().createAndAddFactorToDiagram(resultChainA, strategyA.getRef());
 		Objective objectiveA = getProject().addObjective(strategyA);
-		
+        int resultChainAExpectedChildCount = 1;
+        int resultChainAExpectedGrandchildCount = 1;
+
 		ResultsChainDiagram resultChainB = ResultsChainDiagram.find(getProject(), getProject().createResultsChainDiagram());
 		Strategy strategyB = getProject().createStrategy();
 		getProject().createAndAddFactorToDiagram(resultChainB, strategyB.getRef());
 		getProject().addSingleItemRelevantBaseObject(objectiveA, strategyB, Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
-		
+        int resultChainBExpectedChildCount = 1;
+        int resultChainBExpectedGrandchildCount = 0;
+
 		CodeList rowCodes = new CodeList();
 		rowCodes.add(ResultsChainDiagramSchema.OBJECT_NAME);
 		rowCodes.add(StrategySchema.OBJECT_NAME);
 		rowCodes.add(ObjectiveSchema.OBJECT_NAME);
 
-		verifyNodeHierarchy(resultChainA, resultChainB, rowCodes, strategyContainsObjectiveCode);
+        verifyNodeHierarchy(resultChainA, resultChainAExpectedChildCount, resultChainAExpectedGrandchildCount,
+                            resultChainB, resultChainBExpectedChildCount, resultChainBExpectedGrandchildCount,
+                            rowCodes, strategyContainsObjectiveCode);
 	}
-	
-	public void verifyNodeHierarchy(ResultsChainDiagram resultChainA, ResultsChainDiagram resultChainB, CodeList rowCodes, final String strategyContainsObjectiveCode) throws Exception
+
+	private void verifyNodeHierarchy(ResultsChainDiagram resultChainA, final int resultChainAExpectedChildCount, final int resultChainAExpectedGrandchildCount,
+                                     ResultsChainDiagram resultChainB, final int resultChainBExpectedChildCount, final int resultChainBExpectedGrandchildCount,
+                                     CodeList rowCodes, final String strategyContainsObjectiveCode) throws Exception
 	{
 		AbstractPlanningTreeNode rootNode = createAndBuildTree(rowCodes, strategyContainsObjectiveCode);
 		Vector<AbstractPlanningTreeNode> resultsChainNodes = rootNode.getRawChildrenByReference();
@@ -145,15 +144,48 @@ public class TestTreeRebuilder extends TestCaseWithProject
 		assertTrue("Should contain resultsChain?", resultsChainNodeRefs.contains(resultChainB.getRef()));
 		
 		AbstractPlanningTreeNode resultChainANode = findMatchingNode(resultChainA.getRef(), resultsChainNodes);
-		assertEquals("incorrect child count?", 1, resultChainANode.getChildCount());
-		assertEquals("incorrect child count?", 1, resultChainANode.getChild(0).getChildCount());
-		
+		assertEquals("incorrect child count?", resultChainAExpectedChildCount, resultChainANode.getChildCount());
+		assertEquals("incorrect child count?", resultChainAExpectedGrandchildCount, resultChainANode.getChild(0).getChildCount());
+
 		AbstractPlanningTreeNode resultChainBNode = findMatchingNode(resultChainB.getRef(), resultsChainNodes);
-		assertEquals("incorrect child count?", 1, resultChainBNode.getChildCount());
-		assertEquals("incorrect child count?", 0, resultChainBNode.getChild(0).getChildCount());
+		assertEquals("incorrect child count?", resultChainBExpectedChildCount, resultChainBNode.getChildCount());
+		assertEquals("incorrect child count?", resultChainBExpectedGrandchildCount, resultChainBNode.getChild(0).getChildCount());
 	}
-	
-	private AbstractPlanningTreeNode findMatchingNode(ORef ref, Vector<AbstractPlanningTreeNode> resultsChainNodes) throws Exception
+
+    public void testStrategyContainsActivityNodes() throws Exception
+    {
+        verifyActivityNodes(StrategyObjectiveTreeOrderQuestion.OBJECTIVE_CONTAINS_STRATEGY_CODE);
+    }
+
+    private void verifyActivityNodes(final String strategyContainsObjectiveCode) throws Exception
+    {
+        ResultsChainDiagram resultChainA = ResultsChainDiagram.find(getProject(), getProject().createResultsChainDiagram());
+        Strategy strategyA = getProject().createStrategy();
+        getProject().createAndAddFactorToDiagram(resultChainA, strategyA.getRef());
+        Objective objectiveA = getProject().addObjective(strategyA);
+        Task activity = getProject().createActivity();
+        getProject().addSingleItemRelevantBaseObject(objectiveA, activity, Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
+        int resultChainAExpectedChildCount = 1;
+        int resultChainAExpectedGrandchildCount = 2; // objective + task
+
+        ResultsChainDiagram resultChainB = ResultsChainDiagram.find(getProject(), getProject().createResultsChainDiagram());
+        Strategy strategyB = getProject().createStrategy();
+        getProject().createAndAddFactorToDiagram(resultChainB, strategyB.getRef());
+        int resultChainBExpectedChildCount = 1;
+        int resultChainBExpectedGrandchildCount = 0;
+
+        CodeList rowCodes = new CodeList();
+        rowCodes.add(ResultsChainDiagramSchema.OBJECT_NAME);
+        rowCodes.add(StrategySchema.OBJECT_NAME);
+        rowCodes.add(ObjectiveSchema.OBJECT_NAME);
+        rowCodes.add(TaskSchema.ACTIVITY_NAME);
+
+        verifyNodeHierarchy(resultChainA, resultChainAExpectedChildCount, resultChainAExpectedGrandchildCount,
+                            resultChainB, resultChainBExpectedChildCount, resultChainBExpectedGrandchildCount,
+                            rowCodes, strategyContainsObjectiveCode);
+    }
+
+    private AbstractPlanningTreeNode findMatchingNode(ORef ref, Vector<AbstractPlanningTreeNode> resultsChainNodes) throws Exception
 	{
 		for(AbstractPlanningTreeNode node : resultsChainNodes)
 		{
