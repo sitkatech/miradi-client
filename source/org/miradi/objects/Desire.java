@@ -378,10 +378,7 @@ abstract public class Desire extends BaseObject
 
 	public ORefList getRelevantActivityRefs() throws Exception
 	{
-		ORefSet relevantRefList = new ORefSet(getDefaultRelevantStrategyRefs());
-		RelevancyOverrideSet relevantOverrides = getStrategyActivityRelevancyOverrideSet();
-	
-		return calculateRelevantRefList(relevantRefList, relevantOverrides).getFilteredBy(TaskSchema.getObjectType());
+        return getRelevantStrategyAndActivityRefs().getFilteredBy(TaskSchema.getObjectType());
 	}
 
 	public static CommandVector buildRemoveObjectFromRelevancyListCommands(Project project, int typeWithRelevacnyOverrideSetList, String relevancyTag, ORef relevantObjectRefToRemove) throws Exception
