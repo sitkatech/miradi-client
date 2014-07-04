@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-25 10:06-0700\n"
+"POT-Creation-Date: 2014-07-04 01:21-0700\n"
 "PO-Revision-Date: 2014-05-28 17:01+0000\n"
 "Last-Translator: nsalafsky <nick@fosonline.org>\n"
 "Language-Team: English (Estonia) (http://www.transifex.com/projects/p/miradi-"
@@ -287,7 +287,7 @@ msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:111
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1461
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1459
 msgid "(%s)"
 msgstr "(%s)"
 
@@ -518,7 +518,7 @@ msgstr "7C. Create a Learning Environment"
 msgid "95% C.I. (confidence interval)"
 msgstr "95% C.I. (confidence interval)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1500
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1498
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -1020,7 +1020,7 @@ msgid ""
 msgstr ""
 "<html>An error occurred<br/><br/>Perhaps the destination is full or readonly."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:224
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:223
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Import failed: <br><p> %s </p></html>"
 
@@ -1145,7 +1145,7 @@ msgstr "A file or folder with that name already exists"
 msgid "A project or file by this name already exists: "
 msgstr "A project or file by this name already exists: "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1457
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1455
 msgid "A project or file by this name already exists: %s"
 msgstr "A project or file by this name already exists: %s"
 
@@ -3615,7 +3615,7 @@ msgid "Enter As: "
 msgstr "Enter As: "
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/noproject/RenameOldProjectDoer.java:118
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1491
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1489
 msgid "Enter New Name"
 msgstr "Enter New Name"
 
@@ -3689,7 +3689,7 @@ msgstr "Estimate costs for outputs and monitoring"
 msgid "Euro"
 msgstr "Euro"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1026
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1024
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr "Existing data for a different fiscal year is being excluded"
 
@@ -4335,7 +4335,7 @@ msgstr "Import Accounting Codes"
 msgid "Import Completed"
 msgstr "Import Completed"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:206
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:205
 msgid "Import Completed.  Would you like to open %s?"
 msgstr "Import Completed.  Would you like to open %s?"
 
@@ -4543,7 +4543,7 @@ msgstr "Introduction"
 msgid "Invalid project name:"
 msgstr "Invalid project name:"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1466
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1464
 msgid "Invalid project name: %s"
 msgstr "Invalid project name: %s"
 
@@ -5383,7 +5383,7 @@ msgstr "Miradi did not recognize the file: %s as importable."
 msgid "Miradi does not recognize %s as a project file"
 msgstr "Miradi does not recognize %s as a project file"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:847
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:845
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5681,7 +5681,7 @@ msgstr "Open"
 msgid "Open Anyway"
 msgstr "Open Anyway"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:207
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:206
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:759
 msgid "Open Project"
 msgstr "Open Project"
@@ -6022,7 +6022,7 @@ msgstr "Project"
 msgid "Project Advisor"
 msgstr "Project Advisor"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:845
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:843
 msgid "Project Corruption Detected"
 msgstr "Project Corruption Detected"
 
@@ -6064,7 +6064,7 @@ msgstr "Project Resource"
 msgid "Project Resource Filter Editor"
 msgstr "Project Resource Filter Editor"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1024
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1022
 msgid "Project Resource Filter Is On"
 msgstr "Project Resource Filter Is On"
 
@@ -6715,7 +6715,7 @@ msgstr "Stakeholder"
 msgid "Standard Reports"
 msgstr "Standard Reports"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1058
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1056
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently "
 "%endDate)"
@@ -8229,7 +8229,7 @@ msgstr "Theory of Change<br/>- Intervention Logic"
 msgid "Theory of Change<br/>- Strategy Selection"
 msgstr "Theory of Change<br/>- Intervention Selection"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:267
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:266
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -8339,7 +8339,7 @@ msgstr ""
 "This project cannot be imported because its Pressure Rating data is missing "
 "or damaged. Please contact Miradi support for recovery options."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:836
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:834
 msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
@@ -8792,7 +8792,7 @@ msgstr ""
 "Unable to delete this project because it is in use by another copy of this "
 "application:\n"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1433
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1431
 msgid "Unable to launch external web browser"
 msgstr "Unable to launch external web browser"
 
@@ -8813,7 +8813,7 @@ msgstr ""
 "Unable to rename this project because it is in use by another copy of this "
 "application:\n"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1215
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1213
 msgid "Unable to save preferences"
 msgstr "Unable to save preferences"
 
@@ -8835,7 +8835,7 @@ msgstr "Undefined"
 msgid "Underline"
 msgstr "Underline"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:223
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:222
 msgid "Unexpected error"
 msgstr "Unexpected error"
 
