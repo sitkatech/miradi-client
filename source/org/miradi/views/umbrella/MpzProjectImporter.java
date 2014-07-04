@@ -77,7 +77,6 @@ public class MpzProjectImporter extends AbstractProjectImporter
 			UnicodeWriter writer = new UnicodeWriter(mpfFile);
 			writer.write(contents);
 			writer.close();
-			getProgressIndicator().finished();
 		}
 		
 		private String convertMpzToMpfString(File mpzFileToImport) throws Exception
