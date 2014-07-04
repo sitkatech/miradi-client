@@ -59,7 +59,7 @@ public class EAM
 		
 		preferredHomeDir.mkdirs();
 		if (!preferredHomeDir.exists() || !preferredHomeDir.isDirectory())
-		{	
+		{
 			displayHtmlWarningDialog("NoHomeDirectoryFoundMessage.html","@DIRECTORY_NAME@", preferredHomeDir.getAbsolutePath());
 			return true;
 		}
@@ -83,14 +83,18 @@ public class EAM
 		File preferredHomeDir = getPreferredHomeDirectory();
 		if (preferredHomeDir != null)
 			return preferredHomeDir;
-		
-		File defaultHomeDirectory = getDefaultHomeDirectory();
-		Preferences.userNodeForPackage(Miradi.class).put(EAM.MIRADI_DATA_DIRECTORY_KEY, defaultHomeDirectory.getAbsolutePath());
-		
-		return defaultHomeDirectory;
+
+        return setDefaultHomeDirectory();
 	}
-	
-	public static boolean isOneFileInsideTheOther(File file1, File file2)
+
+    public static File setDefaultHomeDirectory() {
+        File defaultHomeDirectory = getDefaultHomeDirectory();
+        Preferences.userNodeForPackage(Miradi.class).put(EAM.MIRADI_DATA_DIRECTORY_KEY, defaultHomeDirectory.getAbsolutePath());
+
+        return defaultHomeDirectory;
+    }
+
+    public static boolean isOneFileInsideTheOther(File file1, File file2)
 	{
 		String file1AsString = file1.getAbsolutePath();
 		String file2AsString = file2.getAbsolutePath();
