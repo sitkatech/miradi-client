@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-04 01:21-0700\n"
+"POT-Creation-Date: 2014-07-04 07:21-0700\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -4314,7 +4314,7 @@ msgid ""
 "Initial Project Team - The people who conceive of and initiate the project."
 msgstr "Початкова робоча група проекту - які започаткували і ініціювали проект"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/ProgressDialog.java:52
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/ProgressDialog.java:51
 msgid "Initializing..."
 msgstr ""
 
@@ -6575,7 +6575,7 @@ msgstr "Крок"
 msgid "Step (not available)"
 msgstr "Стадія (відсутня)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/ProgressDialog.java:103
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/ProgressDialog.java:102
 msgid "Stop"
 msgstr ""
 

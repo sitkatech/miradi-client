@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-04 01:21-0700\n"
+"POT-Creation-Date: 2014-07-04 07:21-0700\n"
 "Content-Type: text/plain; charset=UTF-8Content-Transfer-Encoding: "
 "8bitLanguage: psp\n"
 
@@ -4452,7 +4452,7 @@ msgid ""
 msgstr ""
 "Initial Project Team - The people who conceive of and initiate the project."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/ProgressDialog.java:52
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/ProgressDialog.java:51
 msgid "Initializing..."
 msgstr "Initializing..."
 
@@ -6746,7 +6746,7 @@ msgstr "Step "
 msgid "Step (not available)"
 msgstr "Step (not available)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/ProgressDialog.java:103
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/ProgressDialog.java:102
 msgid "Stop"
 msgstr "Stop"
 
