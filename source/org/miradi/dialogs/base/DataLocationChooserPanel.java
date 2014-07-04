@@ -91,7 +91,10 @@ public class DataLocationChooserPanel extends MiradiPanel
 				
 				if (!chosenDir.exists())
 					return;
-				
+
+                if (!chosenDir.canWrite())
+                    return;
+
 				Preferences.userNodeForPackage(Miradi.class).put(EAM.MIRADI_DATA_DIRECTORY_KEY, chosenDir.getAbsolutePath());
 				directoryReadonlyTextField.setText(EAM.getHomeDirectory().getAbsolutePath());
 				mainWindow.refreshWizard();
