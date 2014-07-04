@@ -785,8 +785,6 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			{
 				project.createWithDefaultObjectsAndDiagramHelp(projectFile, getProgressIndicator());
 			}
-			
-			getProgressIndicator().finished();
 		}
 
 		private Project project;

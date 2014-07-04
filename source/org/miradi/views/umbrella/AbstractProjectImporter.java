@@ -193,7 +193,6 @@ public abstract class AbstractProjectImporter
 		protected void doRealWork() throws Exception
 		{
 			createProject(fileToImport, newProjectFile, getProgressIndicator());
-			getProgressIndicator().finished();
 		}
 		
 		private File fileToImport;
