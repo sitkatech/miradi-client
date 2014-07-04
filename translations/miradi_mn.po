@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-04 01:21-0700\n"
+"POT-Creation-Date: 2014-07-04 07:21-0700\n"
 "PO-Revision-Date: 2013-06-07 01:56+0100\n"
 "Last-Translator: Galragchaa <galragchaa@yahoo.com>\n"
 "Language-Team: none\n"
@@ -4332,7 +4332,7 @@ msgid ""
 "Initial Project Team - The people who conceive of and initiate the project."
 msgstr "Төслийн анхны баг - Төслийг бодож олсон ба санаачилсан хүмүүс."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/ProgressDialog.java:52
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/ProgressDialog.java:51
 msgid "Initializing..."
 msgstr "Эхлүүлэх..."
 
@@ -6608,7 +6608,7 @@ msgstr "Үе шат "
 msgid "Step (not available)"
 msgstr "Үе шат (боломжгүй)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/ProgressDialog.java:103
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/ProgressDialog.java:102
 msgid "Stop"
 msgstr "Зогсоох"
 
