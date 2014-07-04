@@ -24,8 +24,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 
-import javax.swing.AbstractAction;
-import javax.swing.JProgressBar;
+import javax.swing.*;
 
 import org.martus.swing.Utilities;
 import org.miradi.dialogs.fieldComponents.PanelButton;
@@ -126,16 +125,25 @@ public class ProgressDialog extends DialogWithDisposablePanel implements Progres
 			shouldExit = true;
 		}
 		
-		public void setStatusMessage(String translatedMessage, int stepCount)
+		public void setStatusMessage(final String translatedMessage, final int stepCount)
 		{
-			message.setText(translatedMessage);
-			progressBar.setMaximum(stepCount);
-			progressBar.setValue(0);
+            SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    message.setText(translatedMessage);
+                    progressBar.setMaximum(stepCount);
+                    progressBar.setValue(0);
+                }
+            });
 		}
 		
 		public void finished()
 		{
-			progressBar.setValue(progressBar.getMaximum());
+            SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    progressBar.setValue(progressBar.getMaximum());
+                }
+            });
+
 			shouldExit();
 		}
 
@@ -144,13 +152,17 @@ public class ProgressDialog extends DialogWithDisposablePanel implements Progres
 			return shouldExit;
 		}
 
-		public void updateProgressMeter(int currentValue) throws UserCanceledException
+		public void updateProgressMeter(final int currentValue) throws UserCanceledException
 		{
 			if (shouldExit())
 				throw new UserCanceledException();
-			
-			progressBar.setValue(currentValue);
-			progressBar.repaint();
+
+            SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    progressBar.setValue(currentValue);
+                    progressBar.repaint();
+                }
+            });
 		}
 
 		public void incrementProgress() throws UserCanceledException
