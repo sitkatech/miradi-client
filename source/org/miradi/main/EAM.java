@@ -38,12 +38,7 @@ import javax.swing.filechooser.FileSystemView;
 import org.martus.swing.UiNotifyDlg;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.project.Project;
-import org.miradi.utils.FileUtilities;
-import org.miradi.utils.HtmlViewPanel;
-import org.miradi.utils.HtmlViewPanelWithMargins;
-import org.miradi.utils.MiradiLogger;
-import org.miradi.utils.StringUtilities;
-import org.miradi.utils.Translation;
+import org.miradi.utils.*;
 
 public class EAM
 {
@@ -52,18 +47,6 @@ public class EAM
 
 	public static boolean initializeHomeDirectory()
 	{
-		if (Miradi.isWindows())
-			alertIfHomeIsNotOnC();
-		
-		File preferredHomeDir = getHomeDirectory();
-		
-		preferredHomeDir.mkdirs();
-		if (!preferredHomeDir.exists() || !preferredHomeDir.isDirectory())
-		{
-			displayHtmlWarningDialog("NoHomeDirectoryFoundMessage.html","@DIRECTORY_NAME@", preferredHomeDir.getAbsolutePath());
-			return true;
-		}
-
 		if(!EAM.handleEamToMiradiMigration())
 			return false;
 		
@@ -81,17 +64,28 @@ public class EAM
 	public static File getHomeDirectory()
 	{
 		File preferredHomeDir = getPreferredHomeDirectory();
-		if (preferredHomeDir != null)
-			return preferredHomeDir;
 
-        return setDefaultHomeDirectory();
+        if (preferredHomeDirectoryIsValid(preferredHomeDir))
+            return preferredHomeDir;
+        else
+            return getDefaultHomeDirectory();
 	}
 
     public static File setDefaultHomeDirectory() {
         File defaultHomeDirectory = getDefaultHomeDirectory();
         Preferences.userNodeForPackage(Miradi.class).put(EAM.MIRADI_DATA_DIRECTORY_KEY, defaultHomeDirectory.getAbsolutePath());
+        defaultHomeDirectory.mkdirs();
 
         return defaultHomeDirectory;
+    }
+
+    public static boolean preferredHomeDirectoryIsValid(File preferredHomeDir)
+    {
+        if (preferredHomeDir == null)
+            return false;
+
+        preferredHomeDir.mkdirs();
+        return preferredHomeDir.exists() && preferredHomeDir.isDirectory() && preferredHomeDir.canWrite();
     }
 
     public static boolean isOneFileInsideTheOther(File file1, File file2)
@@ -113,10 +107,10 @@ public class EAM
 		String homeDir = getHomeDirectory().getAbsolutePath();
 		if (homeDir.startsWith("C:\\"))
 			return;
-		
+
 		displayHtmlWarningDialog("NoWindowsDataLocalDataLocationMessage.html", "@DIRECTORY_NAME@", homeDir);
 	}
-	
+
 	public static boolean isValidProjectNameCharacter(char c)
 	{
 		if(LEGAL_NON_ALPHA_NUMERIC_CHARACTERS.indexOf(c) >= 0)
@@ -127,25 +121,29 @@ public class EAM
 		
 		return Character.isLetterOrDigit(c);
 	}
-	
-	private static void displayHtmlWarningDialog(String htmlFileName, String findToReplace,  String replacementForStr1)
+
+    public static String getHtmlDialogContent(String htmlFileName, String findToReplace, String replacementForStr1) {
+        String html = null;
+        try {
+            html = Translation.getHtmlContent(htmlFileName);
+            html = html.replace(findToReplace, replacementForStr1);
+
+        } catch (Exception e) {
+            logException(e);
+        }
+        return html;
+    }
+
+    private static void displayHtmlWarningDialog(String htmlFileName, String findToReplace, String replacementForStr1)
 	{
-		try
-		{
-			String html = Translation.getHtmlContent(htmlFileName);
-			html = html.replace(findToReplace, replacementForStr1);
-			displayHtmlWarningDialog(html);
-		}
-		catch (Exception e)
-		{
-			logException(e);
-		}
+        String html = getHtmlDialogContent(htmlFileName, findToReplace, replacementForStr1);
+        displayHtmlWarningDialog(html);
 	}
 
-	public static void displayHtmlWarningDialog(String messageAsHtml)
+    public static void displayHtmlWarningDialog(String messageAsHtml)
 	{
-		HtmlViewPanel htmlViwer = new HtmlViewPanel(getMainWindow(), MiradiStrings.getWarningLabel(), messageAsHtml, null);
-		htmlViwer.showAsOkDialog();
+		HtmlViewPanel htmlViewer = new HtmlViewPanel(getMainWindow(), MiradiStrings.getWarningLabel(), messageAsHtml, null);
+		htmlViewer.showAsOkDialog();
 	}
 
 	public static void showSafeHtmlOkMessageDialog(String messageFileName, String title)
@@ -171,7 +169,7 @@ public class EAM
 		showHtmlMessageOkDialog(messageFileName, MiradiStrings.getInformationDialogTitle());
 	}
 
-	private static File getPreferredHomeDirectory()
+	public static File getPreferredHomeDirectory()
 	{
 		String preferredHomeDirAsString = Preferences.userNodeForPackage(Miradi.class).get(MIRADI_DATA_DIRECTORY_KEY, "");
 		if (preferredHomeDirAsString == null || preferredHomeDirAsString.length() == 0)
