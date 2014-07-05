@@ -22,6 +22,8 @@ package org.miradi.dialogs.notify;
 
 import org.miradi.main.EAM;
 
+import java.io.File;
+
 public class NotifyDialogTemplateFactory
 {
 	public static NotifyDialogTemplate pastedSharedFactors()
@@ -58,5 +60,13 @@ public class NotifyDialogTemplateFactory
 									   "<b><u>Please do not contact Miradi Support with questions unless you have read through the full instructions and are still experiencing problems.</b></u><br/><br/>");
 		
 		return new NotifyDialogTemplate("NewFileStructure", title, notificationTextToUse);
+	}
+
+	public static NotifyDialogTemplate notifyUserOfInvalidPreferredHomeDirectory(File preferredHomeDir)
+	{
+		String title = EAM.text("Home Folder Not Found");
+		String notificationTextToUse = EAM.getHtmlDialogContent("NoHomeDirectoryFoundMessage.html","@DIRECTORY_NAME@", preferredHomeDir.getAbsolutePath());
+
+		return new NotifyDialogTemplate("HomeFolderNotFound", title, notificationTextToUse);
 	}
 }
