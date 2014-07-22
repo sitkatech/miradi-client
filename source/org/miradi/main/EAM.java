@@ -65,13 +65,13 @@ public class EAM
 	{
 		File preferredHomeDir = getPreferredHomeDirectory();
 
-        if (preferredHomeDirectoryIsValid(preferredHomeDir))
+        if (isPreferredHomeDirectoryValid(preferredHomeDir))
             return preferredHomeDir;
         else
             return getDefaultHomeDirectory();
 	}
 
-    public static File setDefaultHomeDirectory() {
+    public static File setDefaultHomeDirectoryPreference() {
         File defaultHomeDirectory = getDefaultHomeDirectory();
         Preferences.userNodeForPackage(Miradi.class).put(EAM.MIRADI_DATA_DIRECTORY_KEY, defaultHomeDirectory.getAbsolutePath());
         defaultHomeDirectory.mkdirs();
@@ -79,7 +79,7 @@ public class EAM
         return defaultHomeDirectory;
     }
 
-    public static boolean preferredHomeDirectoryIsValid(File preferredHomeDir)
+    public static boolean isPreferredHomeDirectoryValid(File preferredHomeDir)
     {
         if (preferredHomeDir == null)
             return false;
