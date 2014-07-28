@@ -153,8 +153,7 @@ public class TestXmpz2XmlExporter extends TestCaseForXmpz2ExportAndImport
 		Task otherActivity = getProject().createActivity();
 		
 		assertEquals(new ORefList(mainStrategy.getRef()), nearbyObjective.getRelevantStrategyRefs());
-// FIXME: This assert is commented out because it fails with current code (MRD-5842)
-//		assertEquals(new ORefList(nearbyActivity.getRef()), nearbyObjective.getRelevantActivityRefs());
+		assertEquals(new ORefList(), nearbyObjective.getRelevantActivityRefs());
 		assertEquals(new ORefList(nearbyIndicator.getRef()), nearbyObjective.getRelevantIndicatorRefList());
 
 		verifyRoundTripExportImport();
