@@ -71,12 +71,12 @@ abstract public class AbstractTreeRebuilder
 	public void rebuildTree(AbstractPlanningTreeNode rootNode) throws Exception
 	{
 		CodeList rows = getRowColumnProvider().getRowCodesToShow();
-		rebuildTree(rootNode, null, rows);
+		rebuildTree(null, rootNode, null);
 		removeUnwantedLayersAndPromoteChildren(rootNode, rows);
 		deleteUnclesAndTheirChildren(rootNode);
 	}
 
-	private void rebuildTree(AbstractPlanningTreeNode parentNode, DiagramObject diagram, CodeList rows)
+	private void rebuildTree(AbstractPlanningTreeNode grandparentNode, AbstractPlanningTreeNode parentNode, DiagramObject diagram)
 	{
 		try
 		{
@@ -85,7 +85,9 @@ abstract public class AbstractTreeRebuilder
 			if(DiagramObject.isDiagramObject(parentRef))
 				diagram = DiagramObject.findDiagramObject(getProject(), parentRef);
 
-			ORefList candidateChildRefs = getChildRefs(parentNode.getObjectReference(), diagram);
+            ORef grandparentRef = (grandparentNode != null) ? grandparentNode.getObjectReference() : null;
+
+			ORefList candidateChildRefs = getChildRefs(grandparentRef, parentNode.getObjectReference(), diagram);
 			candidateChildRefs.addAll(parentNode.getObject().getResourceAssignmentRefs());
 			candidateChildRefs.addAll(parentNode.getObject().getExpenseAssignmentRefs());
 			ORefList childRefs = getListWithoutChildrenThatWouldCauseRecursion(parentNode, candidateChildRefs);
@@ -94,7 +96,7 @@ abstract public class AbstractTreeRebuilder
 			for(int index = 0; index < parentNode.getChildCount(); ++index)
 			{
 				AbstractPlanningTreeNode childNode = (AbstractPlanningTreeNode) parentNode.getChild(index);
-				rebuildTree(childNode, diagram, rows);
+				rebuildTree(parentNode, childNode, diagram);
 			}
 		}
 		catch(Exception e)
@@ -349,7 +351,7 @@ abstract public class AbstractTreeRebuilder
 		return new ORefList(baseObjects);
 	}
 	
-	abstract protected ORefList getChildRefs(ORef parentRef, DiagramObject diagram) throws Exception;
+	abstract protected ORefList getChildRefs(ORef grandparentRef, ORef parentRef, DiagramObject diagram) throws Exception;
 	
 	public static void dumpTreeToConsole(TreeTableNode node, int level)
 	{

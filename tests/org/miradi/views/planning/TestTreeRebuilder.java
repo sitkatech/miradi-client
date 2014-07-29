@@ -185,6 +185,136 @@ public class TestTreeRebuilder extends TestCaseWithProject
                             rowCodes, strategyContainsObjectiveCode);
     }
 
+    //region tests that illustrate defect analysis outlined on https://bugs.benetech.org/browse/MRD-5842
+    public void testRelevancyStrategyObjectiveDefaultAssociations() throws Exception
+    {
+        createAndVerifyTreeForRelevancyTests(true, false, StrategyObjectiveTreeOrderQuestion.STRATEGY_CONTAINS_OBJECTIVE_CODE);
+    }
+
+    public void testRelevancyObjectiveStrategyDefaultAssociations() throws Exception
+    {
+        createAndVerifyTreeForRelevancyTests(true, false, StrategyObjectiveTreeOrderQuestion.OBJECTIVE_CONTAINS_STRATEGY_CODE);
+    }
+
+    public void testRelevancyStrategyObjectiveDefaultAssociationsHideStrategy() throws Exception
+    {
+        createAndVerifyTreeForRelevancyTests(true, true, StrategyObjectiveTreeOrderQuestion.STRATEGY_CONTAINS_OBJECTIVE_CODE);
+    }
+
+    public void testRelevancyObjectiveStrategyDefaultAssociationsHideStrategy() throws Exception
+    {
+        createAndVerifyTreeForRelevancyTests(true, true, StrategyObjectiveTreeOrderQuestion.OBJECTIVE_CONTAINS_STRATEGY_CODE);
+    }
+
+    public void testRelevancyStrategyObjectiveUserAssertedAssociations() throws Exception
+    {
+        createAndVerifyTreeForRelevancyTests(false, false, StrategyObjectiveTreeOrderQuestion.STRATEGY_CONTAINS_OBJECTIVE_CODE);
+    }
+
+    public void testRelevancyObjectiveStrategyUserAssertedAssociations() throws Exception
+    {
+        createAndVerifyTreeForRelevancyTests(false, false, StrategyObjectiveTreeOrderQuestion.OBJECTIVE_CONTAINS_STRATEGY_CODE);
+    }
+
+    public void testRelevancyStrategyObjectiveUserAssertedAssociationsHideStrategy() throws Exception
+    {
+        createAndVerifyTreeForRelevancyTests(false, true, StrategyObjectiveTreeOrderQuestion.STRATEGY_CONTAINS_OBJECTIVE_CODE);
+    }
+
+    public void testRelevancyObjectiveStrategyUserAssertedAssociationsHideStrategy() throws Exception
+    {
+        createAndVerifyTreeForRelevancyTests(false, true, StrategyObjectiveTreeOrderQuestion.OBJECTIVE_CONTAINS_STRATEGY_CODE);
+    }
+
+    private void createAndVerifyTreeForRelevancyTests(final boolean defaultAssociations, final boolean hideStrategies, final String strategyContainsObjectiveCode) throws Exception
+    {
+        ResultsChainDiagram resultChainDiagram = ResultsChainDiagram.find(getProject(), getProject().createResultsChainDiagram());
+
+        Strategy strategy = getProject().createStrategy();
+        getProject().createAndAddFactorToDiagram(resultChainDiagram, strategy.getRef());
+
+        ORef relevantActivityRef = getProject().addActivityToStrategy(strategy.getRef(), Strategy.TAG_ACTIVITY_IDS);
+        Task relevantActivity = Task.find(getProject(), relevantActivityRef);
+        ORef nearbyActivityRef = getProject().addActivityToStrategy(strategy.getRef(), Strategy.TAG_ACTIVITY_IDS);
+        Task nearbyActivity = Task.find(getProject(), nearbyActivityRef);
+
+        Objective objective = getProject().addObjective(strategy);
+
+        BaseId relevantIndicatorId = getProject().addItemToIndicatorList(strategy.getRef(), Strategy.TAG_INDICATOR_IDS);
+        ORef relevantIndicatorRef = new ORef(IndicatorSchema.getObjectType(), relevantIndicatorId);
+        Indicator relevantIndicator = Indicator.find(getProject(), relevantIndicatorRef);
+        BaseId nearbyIndicatorId = getProject().addItemToIndicatorList(strategy.getRef(), Strategy.TAG_INDICATOR_IDS);
+        ORef nearbyIndicatorRef = new ORef(IndicatorSchema.getObjectType(), nearbyIndicatorId);
+        Indicator nearbyIndicator = Indicator.find(getProject(), nearbyIndicatorRef);
+
+        if (!defaultAssociations)
+        {
+            // all indicators marked as relevant by default...so remove 'nearby' indicator
+            getProject().executeCommands(objective.createCommandsToEnsureIndicatorIsIrrelevant(nearbyIndicator.getRef()));
+            // conversely, activities are not current marked as relevant as default...so add 'relevant' activity
+            getProject().addSingleItemRelevantBaseObject(objective, relevantActivity, Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
+            // finally, mark strategy as not relevant
+            getProject().executeCommands(objective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategy.getRef()));
+        }
+
+        CodeList rowCodes = new CodeList();
+        rowCodes.add(ResultsChainDiagramSchema.OBJECT_NAME);
+        if (!hideStrategies)
+            rowCodes.add(StrategySchema.OBJECT_NAME);
+        rowCodes.add(ObjectiveSchema.OBJECT_NAME);
+        rowCodes.add(TaskSchema.ACTIVITY_NAME);
+        rowCodes.add(IndicatorSchema.OBJECT_NAME);
+
+        AbstractPlanningTreeNode rootNode = createAndBuildTree(rowCodes, strategyContainsObjectiveCode);
+        Vector<AbstractPlanningTreeNode> resultsChainNodes = rootNode.getRawChildrenByReference();
+
+        assertEquals("incorrect children count?", 1, resultsChainNodes.size());
+        ORefList resultsChainNodeRefs = new ORefList();
+        resultsChainNodeRefs.add(resultsChainNodes.get(0).getObjectReference());
+        assertTrue("Should contain resultsChain?", resultsChainNodeRefs.contains(resultChainDiagram.getRef()));
+
+        AbstractPlanningTreeNode resultsChainNode = findMatchingNode(resultChainDiagram.getRef(), resultsChainNodes);
+
+        boolean strategiesContainObjectives = (strategyContainsObjectiveCode.equals(StrategyObjectiveTreeOrderQuestion.STRATEGY_CONTAINS_OBJECTIVE_CODE));
+
+        if (defaultAssociations)
+        {
+            if (hideStrategies)
+            {
+                assertEquals("incorrect child count for results chain?", 3, resultsChainNode.getChildCount());
+                assertEquals("incorrect grandchild count?", 2, resultsChainNode.getChild(0).getChildCount());
+            }
+            else
+            {
+                if (strategiesContainObjectives)
+                {
+                    assertEquals("incorrect child count for results chain?", 1, resultsChainNode.getChildCount());
+                    assertEquals("incorrect grandchild count?", 3, resultsChainNode.getChild(0).getChildCount());
+                }
+                else
+                {
+                    assertEquals("incorrect child count for results chain?", 1, resultsChainNode.getChildCount());
+                    assertEquals("incorrect grandchild count?", 1, resultsChainNode.getChild(0).getChildCount());
+                }
+            }
+        }
+        else
+        {
+            if (hideStrategies)
+            {
+                assertEquals("incorrect child count for results chain?", 3, resultsChainNode.getChildCount());
+                assertEquals("incorrect grandchild count?", 2, resultsChainNode.getChild(0).getChildCount());
+            }
+            else
+            {
+                assertEquals("incorrect child count for results chain?", 2, resultsChainNode.getChildCount());
+                assertEquals("incorrect grandchild count?", 2, resultsChainNode.getChild(0).getChildCount());
+                assertEquals("incorrect grandchild count?", 4, resultsChainNode.getChild(1).getChildCount());
+            }
+        }
+    }
+    //endregion
+
     private AbstractPlanningTreeNode findMatchingNode(ORef ref, Vector<AbstractPlanningTreeNode> resultsChainNodes) throws Exception
 	{
 		for(AbstractPlanningTreeNode node : resultsChainNodes)
@@ -304,7 +434,7 @@ public class TestTreeRebuilder extends TestCaseWithProject
 		objectiveId = project.addItemToObjectiveList(diagramCause.getWrappedORef(), Cause.TAG_OBJECTIVE_IDS);
 		indicatorId = project.addItemToIndicatorList(diagramCause.getWrappedORef(), Cause.TAG_INDICATOR_IDS);
 		taskId = project.addItemToIndicatorList(indicatorId, TaskSchema.getObjectType(), Indicator.TAG_METHOD_IDS);
-		activityId = project.addActivityToStrateyList(diagramStrategy1.getWrappedORef(), Strategy.TAG_ACTIVITY_IDS);
+		activityId = project.addActivityToStrategyList(diagramStrategy1.getWrappedORef(), Strategy.TAG_ACTIVITY_IDS);
 		subtaskId = project.addSubtaskToActivity(getTask().getRef(), Task.TAG_SUBTASK_IDS);
 		
 		IdList activityIds = new IdList(TaskSchema.getObjectType(), new BaseId[] {activityId});
