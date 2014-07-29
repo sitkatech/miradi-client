@@ -165,7 +165,7 @@ public class PlanningCategoryTreeRebuilder extends AbstractTreeRebuilder
 	}
 	
 	@Override
-	protected ORefList getChildRefs(ORef parentRef, DiagramObject diagram) throws Exception
+	protected ORefList getChildRefs(ORef grandparentRef, ORef parentRef, DiagramObject diagram) throws Exception
 	{
 		return new ORefList();
 	}

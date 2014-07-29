@@ -49,7 +49,7 @@ public class ViabilityTreeRebuilder extends AbstractTreeRebuilder
 	}
 	
 	@Override
-	protected ORefList getChildRefs(ORef parentRef, DiagramObject diagram) throws Exception
+	protected ORefList getChildRefs(ORef grandparentRef, ORef parentRef, DiagramObject diagram) throws Exception
 	{
 		final ORefList noChildren = new ORefList();
 		if(ProjectMetadata.is(parentRef))

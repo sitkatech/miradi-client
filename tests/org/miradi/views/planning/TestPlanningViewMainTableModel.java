@@ -45,7 +45,7 @@ public class TestPlanningViewMainTableModel extends TestCaseWithProject
 		Strategy strategy = getProject().createStrategy();
 		assertTrue("can't edit new strategy?", isWhenEditable(strategy));
 		
-		ORef activityRef = getProject().addActivityToStratey(strategy.getRef(), Strategy.TAG_ACTIVITY_IDS);
+		ORef activityRef = getProject().addActivityToStrategy(strategy.getRef(), Strategy.TAG_ACTIVITY_IDS);
 		assertTrue("can't edit strategy with empty activity?", isWhenEditable(strategy));
 		
 		Task activity = Task.find(getProject(), activityRef);

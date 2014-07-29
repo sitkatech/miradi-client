@@ -48,6 +48,7 @@ import org.miradi.project.Project;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.MeasurementSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.CodeList;
 
 public class NormalTreeRebuilder extends AbstractTreeRebuilder
@@ -58,51 +59,51 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 	}
 	
 	@Override
-	public ORefList getChildRefs(ORef parentRef, DiagramObject diagram) throws Exception
+	public ORefList getChildRefs(ORef grandparentRef, ORef parentRef, DiagramObject diagram) throws Exception
 	{
 		final ORefList noChildren = new ORefList();
 		if(ProjectMetadata.is(parentRef))
 			return getChildrenOfProjectNode(parentRef);
-		
+
 		if(DiagramObject.isDiagramObject(parentRef))
 			return getChildrenOfDiagramNode(parentRef);
-		
+
 		if(AbstractTarget.isAbstractTarget(parentRef))
 			return getChildrenOfAbstractTarget(parentRef, diagram);
-		
+
 		if(Cause.is(parentRef))
 			return getChildrenOfBasicFactor(parentRef, diagram);
-		
+
 		if(Strategy.is(parentRef))
-			return getChildrenOfStrategy(parentRef, diagram);
-		
+			return getChildrenOfStrategy(grandparentRef, parentRef, diagram);
+
 		if(ThreatReductionResult.is(parentRef))
 			return getChildrenOfBasicFactor(parentRef, diagram);
-		
+
 		if(IntermediateResult.is(parentRef))
 			return getChildrenOfBasicFactor(parentRef, diagram);
-		
+
 		if(Desire.isDesire(parentRef))
-			return getChildrenOfDesire(parentRef, diagram);
-		
+            return getChildrenOfDesire(parentRef, diagram);
+
 		if(Indicator.is(parentRef))
 			return getChildrenOfIndicator(parentRef, diagram);
-		
+
 		if(Task.is(parentRef))
 			return getChildrenOfTask(parentRef, diagram);
-		
+
 		if(Measurement.is(parentRef))
 			return noChildren;
-		
+
 		if(ResourceAssignment.is(parentRef))
 			return noChildren;
-		
+
 		if(ExpenseAssignment.is(parentRef))
 			return noChildren;
-		
+
 		if(SubTarget.is(parentRef))
 			return noChildren;
-		
+
 		if (FutureStatus.is(parentRef))
 			return noChildren;
 
@@ -111,7 +112,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 			EAM.logDebug("NormalTreeRebuilder.getChildRefs called for INVALID, type=" + parentRef.getObjectType());
 			return noChildren;
 		}
-		
+
 		EAM.logDebug("Don't know how to get children of " + parentRef);
 		return new ORefList();
 	}
@@ -198,14 +199,21 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		return childRefs;
 	}
 
-	private ORefList getChildrenOfStrategy(ORef parentRef, DiagramObject diagram) throws Exception
+	private ORefList getChildrenOfStrategy(ORef grandparentRef, ORef parentRef, DiagramObject diagram) throws Exception
 	{
 		ORefList childRefs = new ORefList();
+
+        CodeList visibleRowTypes = getRowColumnProvider().getRowCodesToShow();
+        boolean includeStrategies = visibleRowTypes.contains(StrategySchema.OBJECT_NAME);
+
+        if (!includeStrategies && grandparentRef!= null && Desire.isDesire(grandparentRef))
+            return childRefs;
+
 		Strategy strategy = Strategy.find(getProject(), parentRef);
 		childRefs.addAll(strategy.getActivityRefs());
 		if (doStrategiesContainObjectives())
 			childRefs.addAll(getRelevantObjectivesAndGoalsOnDiagram(diagram, parentRef));
-		
+
 		childRefs.addAll(strategy.getOwnedObjectRefs().getFilteredBy(IndicatorSchema.getObjectType()));
 		return childRefs;
 	}
@@ -214,9 +222,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 	{
 		ORefList childRefs = new ORefList();
 		Desire desire = Desire.findDesire(getProject(), parentRef);
-		if (doObjectivesContainStrategies())
-			childRefs.addAll(getRelevantStrategyAndActivityRefsInDiagram(diagram, desire));
-
+		childRefs.addAll(getRelevantStrategyAndActivityRefsInDiagram(diagram, desire));
 		childRefs.addAll(getRelevantIndicatorsInDiagram(diagram, desire));
 		return childRefs;
 	}

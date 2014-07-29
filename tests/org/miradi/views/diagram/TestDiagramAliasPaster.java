@@ -84,7 +84,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	{
 		DiagramFactor strategyDiagramFactor = getProject().createAndAddFactorToDiagram(StrategySchema.getObjectType());
 		Strategy strategy = (Strategy) strategyDiagramFactor.getWrappedFactor();
-		ORef activityRef = getProject().addActivityToStratey(strategy.getRef(), Strategy.TAG_ACTIVITY_IDS);
+		ORef activityRef = getProject().addActivityToStrategy(strategy.getRef(), Strategy.TAG_ACTIVITY_IDS);
 		Task activity = Task.find(getProject(), activityRef);
 		getProject().addProgressReport(activity);
 		AbstractTransferableMiradiList transferable = createTransferable(getDiagramModel(), getDiagramModel().getAllDiagramFactors(), new Vector<DiagramLink>());
