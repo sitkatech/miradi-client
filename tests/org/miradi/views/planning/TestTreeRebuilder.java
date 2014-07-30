@@ -282,19 +282,60 @@ public class TestTreeRebuilder extends TestCaseWithProject
             if (hideStrategies)
             {
                 assertEquals("incorrect child count for results chain?", 3, resultsChainNode.getChildCount());
-                assertEquals("incorrect grandchild count?", 2, resultsChainNode.getChild(0).getChildCount());
+                TreeTableNode objectiveNode = resultsChainNode.getChild(0);
+                assertEquals("expected objective?", objective.getRef(), objectiveNode.getObjectReference());
+                assertEquals("incorrect objective child count?", 2, objectiveNode.getChildCount());
+                ORefList indicatorNodeRefs = new ORefList();
+                indicatorNodeRefs.add(objectiveNode.getChild(0).getObjectReference());
+                indicatorNodeRefs.add(objectiveNode.getChild(1).getObjectReference());
+                assertTrue("Should contain nearby indicator?", indicatorNodeRefs.contains(nearbyIndicator.getRef()));
+                assertTrue("Should contain relevant indicator?", indicatorNodeRefs.contains(relevantIndicator.getRef()));
+                ORefList activityNodeRefs = new ORefList();
+                activityNodeRefs.add(resultsChainNode.getChild(1).getObjectReference());
+                activityNodeRefs.add(resultsChainNode.getChild(2).getObjectReference());
+                assertTrue("Should contain nearby activity?", activityNodeRefs.contains(nearbyActivity.getRef()));
+                assertTrue("Should contain relevant activity?", activityNodeRefs.contains(relevantActivity.getRef()));
             }
             else
             {
                 if (strategiesContainObjectives)
                 {
                     assertEquals("incorrect child count for results chain?", 1, resultsChainNode.getChildCount());
-                    assertEquals("incorrect grandchild count?", 3, resultsChainNode.getChild(0).getChildCount());
+                    TreeTableNode strategyNode = resultsChainNode.getChild(0);
+                    assertEquals("expected strategy?", strategy.getRef(), strategyNode.getObjectReference());
+                    assertEquals("incorrect strategy child count?", 3, strategyNode.getChildCount());
+                    TreeTableNode objectiveNode = strategyNode.getChild(0);
+                    assertEquals("expected objective?", objective.getRef(), objectiveNode.getObjectReference());
+                    assertEquals("incorrect objective child count?", 2, objectiveNode.getChildCount());
+                    ORefList indicatorNodeRefs = new ORefList();
+                    indicatorNodeRefs.add(objectiveNode.getChild(0).getObjectReference());
+                    indicatorNodeRefs.add(objectiveNode.getChild(1).getObjectReference());
+                    assertTrue("Should contain nearby indicator?", indicatorNodeRefs.contains(nearbyIndicator.getRef()));
+                    assertTrue("Should contain relevant indicator?", indicatorNodeRefs.contains(relevantIndicator.getRef()));
+                    ORefList activityNodeRefs = new ORefList();
+                    activityNodeRefs.add(strategyNode.getChild(1).getObjectReference());
+                    activityNodeRefs.add(strategyNode.getChild(2).getObjectReference());
+                    assertTrue("Should contain nearby activity?", activityNodeRefs.contains(nearbyActivity.getRef()));
+                    assertTrue("Should contain relevant activity?", activityNodeRefs.contains(relevantActivity.getRef()));
                 }
                 else
                 {
                     assertEquals("incorrect child count for results chain?", 1, resultsChainNode.getChildCount());
-                    assertEquals("incorrect grandchild count?", 1, resultsChainNode.getChild(0).getChildCount());
+                    TreeTableNode objectiveNode = resultsChainNode.getChild(0);
+                    assertEquals("expected objective?", objective.getRef(), objectiveNode.getObjectReference());
+                    assertEquals("incorrect objective child count?", 1, objectiveNode.getChildCount());
+                    TreeTableNode strategyNode = objectiveNode.getChild(0);
+                    assertEquals("expected strategy?", strategy.getRef(), strategyNode.getObjectReference());
+                    assertEquals("incorrect strategy child count?", 4, strategyNode.getChildCount());
+                    ORefList strategyChildNodeRefs = new ORefList();
+                    strategyChildNodeRefs.add(strategyNode.getChild(0).getObjectReference());
+                    strategyChildNodeRefs.add(strategyNode.getChild(1).getObjectReference());
+                    strategyChildNodeRefs.add(strategyNode.getChild(2).getObjectReference());
+                    strategyChildNodeRefs.add(strategyNode.getChild(3).getObjectReference());
+                    assertTrue("Should contain nearby indicator?", strategyChildNodeRefs.contains(nearbyIndicator.getRef()));
+                    assertTrue("Should contain relevant indicator?", strategyChildNodeRefs.contains(relevantIndicator.getRef()));
+                    assertTrue("Should contain nearby activity?", strategyChildNodeRefs.contains(nearbyActivity.getRef()));
+                    assertTrue("Should contain relevant activity?", strategyChildNodeRefs.contains(relevantActivity.getRef()));
                 }
             }
         }
@@ -303,13 +344,43 @@ public class TestTreeRebuilder extends TestCaseWithProject
             if (hideStrategies)
             {
                 assertEquals("incorrect child count for results chain?", 3, resultsChainNode.getChildCount());
-                assertEquals("incorrect grandchild count?", 2, resultsChainNode.getChild(0).getChildCount());
+                TreeTableNode objectiveNode = resultsChainNode.getChild(0);
+                assertEquals("expected objective?", objective.getRef(), objectiveNode.getObjectReference());
+                assertEquals("incorrect objective child count?", 2, objectiveNode.getChildCount());
+                ORefList objectiveChildNodeRefs = new ORefList();
+                objectiveChildNodeRefs.add(objectiveNode.getChild(0).getObjectReference());
+                objectiveChildNodeRefs.add(objectiveNode.getChild(1).getObjectReference());
+                assertTrue("Should contain relevant indicator?", objectiveChildNodeRefs.contains(relevantIndicator.getRef()));
+                assertTrue("Should contain relevant activity?", objectiveChildNodeRefs.contains(relevantActivity.getRef()));
+                ORefList otherChildNodeRefs = new ORefList();
+                otherChildNodeRefs.add(resultsChainNode.getChild(1).getObjectReference());
+                otherChildNodeRefs.add(resultsChainNode.getChild(2).getObjectReference());
+                assertTrue("Should contain nearby indicator?", otherChildNodeRefs.contains(nearbyIndicator.getRef()));
+                assertTrue("Should contain nearby activity?", otherChildNodeRefs.contains(nearbyActivity.getRef()));
             }
             else
             {
                 assertEquals("incorrect child count for results chain?", 2, resultsChainNode.getChildCount());
-                assertEquals("incorrect grandchild count?", 2, resultsChainNode.getChild(0).getChildCount());
-                assertEquals("incorrect grandchild count?", 4, resultsChainNode.getChild(1).getChildCount());
+                TreeTableNode objectiveNode = resultsChainNode.getChild(0);
+                assertEquals("expected objective?", objective.getRef(), objectiveNode.getObjectReference());
+                assertEquals("incorrect objective child count?", 2, objectiveNode.getChildCount());
+                ORefList objectiveChildNodeRefs = new ORefList();
+                objectiveChildNodeRefs.add(objectiveNode.getChild(0).getObjectReference());
+                objectiveChildNodeRefs.add(objectiveNode.getChild(1).getObjectReference());
+                assertTrue("Should contain relevant indicator?", objectiveChildNodeRefs.contains(relevantIndicator.getRef()));
+                assertTrue("Should contain relevant activity?", objectiveChildNodeRefs.contains(relevantActivity.getRef()));
+                TreeTableNode strategyNode = resultsChainNode.getChild(1);
+                assertEquals("expected strategy?", strategy.getRef(), strategyNode.getObjectReference());
+                assertEquals("incorrect strategy child count?", 4, strategyNode.getChildCount());
+                ORefList strategyChildNodeRefs = new ORefList();
+                strategyChildNodeRefs.add(strategyNode.getChild(0).getObjectReference());
+                strategyChildNodeRefs.add(strategyNode.getChild(1).getObjectReference());
+                strategyChildNodeRefs.add(strategyNode.getChild(2).getObjectReference());
+                strategyChildNodeRefs.add(strategyNode.getChild(3).getObjectReference());
+                assertTrue("Should contain nearby indicator?", strategyChildNodeRefs.contains(nearbyIndicator.getRef()));
+                assertTrue("Should contain relevant indicator?", strategyChildNodeRefs.contains(relevantIndicator.getRef()));
+                assertTrue("Should contain nearby activity?", strategyChildNodeRefs.contains(nearbyActivity.getRef()));
+                assertTrue("Should contain relevant activity?", strategyChildNodeRefs.contains(relevantActivity.getRef()));
             }
         }
     }
