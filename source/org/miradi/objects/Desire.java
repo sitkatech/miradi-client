@@ -352,7 +352,7 @@ abstract public class Desire extends BaseObject
 	public ORefList getRelevantIndicatorRefList() throws Exception
 	{
 		ORefSet relevantRefList = getDefaultRelevantIndicatorRefs();
-		RelevancyOverrideSet relevantOverrides = getRawRelevancyOverrideData(TAG_RELEVANT_INDICATOR_SET);
+		RelevancyOverrideSet relevantOverrides = getIndicatorRelevancyOverrideSet();
 	
 		return calculateRelevantRefList(relevantRefList, relevantOverrides);
 	}
