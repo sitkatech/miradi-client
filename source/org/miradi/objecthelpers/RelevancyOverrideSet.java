@@ -20,13 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objecthelpers;
 
 import java.text.ParseException;
-import java.util.HashSet;
 import java.util.Iterator;
+import java.util.TreeSet;
 
 import org.miradi.utils.EnhancedJsonArray;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class RelevancyOverrideSet extends HashSet<RelevancyOverride>
+public class RelevancyOverrideSet extends TreeSet<RelevancyOverride>
 {
 	public RelevancyOverrideSet()
 	{
@@ -82,7 +82,8 @@ public class RelevancyOverrideSet extends HashSet<RelevancyOverride>
 	public void remove(ORef ref)
 	{
 		RelevancyOverride relevancyOverride = find(ref);
-		remove(relevancyOverride);
+        if (relevancyOverride != null)
+		    remove(relevancyOverride);
 	}
 	
 	public boolean contains(ORef ref)

@@ -21,7 +21,7 @@ package org.miradi.objecthelpers;
 
 import org.miradi.utils.EnhancedJsonObject;
 
-public class RelevancyOverride
+public class RelevancyOverride implements Comparable<RelevancyOverride>
 {
 	public RelevancyOverride(ORef refToUse, boolean overrideFlagToUse)
 	{
@@ -96,4 +96,9 @@ public class RelevancyOverride
 	
 	private static final String TAG_OVERRIDE_REF = "Ref";
 	private static final String TAG_OVERRIDE_FLAG = "Flag";
+
+    @Override
+    public int compareTo(RelevancyOverride otherOverride) {
+        return this.getRef().compareTo(otherOverride.getRef());
+    }
 }
