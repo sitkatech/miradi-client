@@ -247,12 +247,18 @@ public class TestTreeRebuilder extends TestCaseWithProject
         ORef nearbyIndicatorRef = new ORef(IndicatorSchema.getObjectType(), nearbyIndicatorId);
         Indicator nearbyIndicator = Indicator.find(getProject(), nearbyIndicatorRef);
 
-        if (!defaultAssociations)
+        if (defaultAssociations)
+        {
+            // all activities under strategy are now marked relevant as default...so adjust for test case
+            getProject().executeCommands(objective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(nearbyActivity.getRef()));
+            getProject().executeCommands(objective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(relevantActivity.getRef()));
+        }
+        else
         {
             // all indicators marked as relevant by default...so remove 'nearby' indicator
             getProject().executeCommands(objective.createCommandsToEnsureIndicatorIsIrrelevant(nearbyIndicator.getRef()));
-            // conversely, activities are not current marked as relevant as default...so add 'relevant' activity
-            getProject().addSingleItemRelevantBaseObject(objective, relevantActivity, Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
+            // all activities under strategy are now marked relevant as default...so remove 'nearby' activity
+            getProject().executeCommands(objective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(nearbyActivity.getRef()));
             // finally, mark strategy as not relevant
             getProject().executeCommands(objective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategy.getRef()));
         }
@@ -456,7 +462,7 @@ public class TestTreeRebuilder extends TestCaseWithProject
 		assertEquals("More than one activity?", 1, rootNode.getChildCount());
 		AbstractPlanningTreeNode childNode = (AbstractPlanningTreeNode) rootNode.getChild(0);
 		assertEquals("Not the activity?", activityId, childNode.getObjectReference().getObjectId());
-		assertEquals(2, childNode.getProportionShares());
+		assertEquals(3, childNode.getProportionShares());
 		assertFalse("Full proportion task is allocated?", childNode.areBudgetValuesAllocated());
 	}
 	

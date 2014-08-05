@@ -127,7 +127,7 @@ public class TestXmpz2XmlExporter extends TestCaseForXmpz2ExportAndImport
 		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor, causeDiagramFactor);
 		
 		assertEquals(new ORefList(strategy.getRef()), objective.getRelevantStrategyRefs());
-		assertEquals(new ORefList(), objective.getRelevantActivityRefs());
+		assertEquals(new ORefList(activity.getRef()), objective.getRelevantActivityRefs());
 		assertEquals(new ORefList(), objective.getRelevantIndicatorRefList());
 		verifyRoundTripExportImport();
 		
@@ -153,11 +153,11 @@ public class TestXmpz2XmlExporter extends TestCaseForXmpz2ExportAndImport
 		Task otherActivity = getProject().createActivity();
 		
 		assertEquals(new ORefList(mainStrategy.getRef()), nearbyObjective.getRelevantStrategyRefs());
-		assertEquals(new ORefList(), nearbyObjective.getRelevantActivityRefs());
+		assertEquals(new ORefList(nearbyActivity.getRef()), nearbyObjective.getRelevantActivityRefs());
 		assertEquals(new ORefList(nearbyIndicator.getRef()), nearbyObjective.getRelevantIndicatorRefList());
 
 		verifyRoundTripExportImport();
-		
+
 		getProject().executeCommands(nearbyObjective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(mainStrategy.getRef()));
 		getProject().executeCommands(nearbyObjective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(nearbyActivity.getRef()));
 		getProject().executeCommands(nearbyObjective.createCommandsToEnsureIndicatorIsIrrelevant(nearbyIndicator.getRef()));

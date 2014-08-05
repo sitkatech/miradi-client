@@ -439,7 +439,7 @@ public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor, causeDiagramFactor);
 		
 		assertEquals(new ORefList(strategy.getRef()), objective.getRelevantStrategyRefs());
-		assertEquals(new ORefList(), objective.getRelevantActivityRefs());
+		assertEquals(new ORefList(activity.getRef()), objective.getRelevantActivityRefs());
 		assertEquals(new ORefList(), objective.getRelevantIndicatorRefList());
 		verifyRoundTripExportImport();
 		
@@ -454,39 +454,38 @@ public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 	}
 
 	public void testRelevancyOverridesWithoutLinks() throws Exception
-		{
-			Task nearbyActivity = getProject().createActivity();
-			Strategy mainStrategy = Strategy.find(getProject(), nearbyActivity.getOwnerRef());
-			Indicator nearbyIndicator = getProject().createIndicator(mainStrategy);
-			Objective nearbyObjective = getProject().createObjective(mainStrategy);
-	
-			Strategy otherStrategy = getProject().createStrategy();
-			Indicator otherIndicator = getProject().createIndicator(otherStrategy);
-			Task otherActivity = getProject().createActivity();
-			
-			assertEquals(new ORefList(mainStrategy.getRef()), nearbyObjective.getRelevantStrategyRefs());
-	// FIXME: This assert is commented out because it fails with current code (MRD-5842)
-	//		assertEquals(new ORefList(nearbyActivity.getRef()), nearbyObjective.getRelevantActivityRefs());
-			assertEquals(new ORefList(nearbyIndicator.getRef()), nearbyObjective.getRelevantIndicatorRefList());
-	
-			verifyRoundTripExportImport();
-			
-			getProject().executeCommands(nearbyObjective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(mainStrategy.getRef()));
-			getProject().executeCommands(nearbyObjective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(nearbyActivity.getRef()));
-			getProject().executeCommands(nearbyObjective.createCommandsToEnsureIndicatorIsIrrelevant(nearbyIndicator.getRef()));
-			assertEquals(new ORefList(), nearbyObjective.getRelevantStrategyRefs());
-			assertEquals(new ORefList(), nearbyObjective.getRelevantActivityRefs());
-			assertEquals(new ORefList(), nearbyObjective.getRelevantIndicatorRefList());
-			verifyRoundTripExportImport();
-	
-			getProject().executeCommands(nearbyObjective.createCommandsToEnsureStrategyOrActivityIsRelevant(otherStrategy.getRef()));
-			getProject().executeCommands(nearbyObjective.createCommandsToEnsureStrategyOrActivityIsRelevant(otherActivity.getRef()));
-			getProject().executeCommands(nearbyObjective.createCommandsToEnsureIndicatorIsRelevant(otherIndicator.getRef()));
-			assertEquals(new ORefList(otherStrategy.getRef()), nearbyObjective.getRelevantStrategyRefs());
-			assertEquals(new ORefList(otherActivity.getRef()), nearbyObjective.getRelevantActivityRefs());
-			assertEquals(new ORefList(otherIndicator.getRef()), nearbyObjective.getRelevantIndicatorRefList());
-			verifyRoundTripExportImport();
-		}
+    {
+        Task nearbyActivity = getProject().createActivity();
+        Strategy mainStrategy = Strategy.find(getProject(), nearbyActivity.getOwnerRef());
+        Indicator nearbyIndicator = getProject().createIndicator(mainStrategy);
+        Objective nearbyObjective = getProject().createObjective(mainStrategy);
+
+        Strategy otherStrategy = getProject().createStrategy();
+        Indicator otherIndicator = getProject().createIndicator(otherStrategy);
+        Task otherActivity = getProject().createActivity();
+
+        assertEquals(new ORefList(mainStrategy.getRef()), nearbyObjective.getRelevantStrategyRefs());
+        assertEquals(new ORefList(nearbyActivity.getRef()), nearbyObjective.getRelevantActivityRefs());
+        assertEquals(new ORefList(nearbyIndicator.getRef()), nearbyObjective.getRelevantIndicatorRefList());
+
+        verifyRoundTripExportImport();
+
+        getProject().executeCommands(nearbyObjective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(mainStrategy.getRef()));
+        getProject().executeCommands(nearbyObjective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(nearbyActivity.getRef()));
+        getProject().executeCommands(nearbyObjective.createCommandsToEnsureIndicatorIsIrrelevant(nearbyIndicator.getRef()));
+        assertEquals(new ORefList(), nearbyObjective.getRelevantStrategyRefs());
+        assertEquals(new ORefList(), nearbyObjective.getRelevantActivityRefs());
+        assertEquals(new ORefList(), nearbyObjective.getRelevantIndicatorRefList());
+        verifyRoundTripExportImport();
+
+        getProject().executeCommands(nearbyObjective.createCommandsToEnsureStrategyOrActivityIsRelevant(otherStrategy.getRef()));
+        getProject().executeCommands(nearbyObjective.createCommandsToEnsureStrategyOrActivityIsRelevant(otherActivity.getRef()));
+        getProject().executeCommands(nearbyObjective.createCommandsToEnsureIndicatorIsRelevant(otherIndicator.getRef()));
+        assertEquals(new ORefList(otherStrategy.getRef()), nearbyObjective.getRelevantStrategyRefs());
+        assertEquals(new ORefList(otherActivity.getRef()), nearbyObjective.getRelevantActivityRefs());
+        assertEquals(new ORefList(otherIndicator.getRef()), nearbyObjective.getRelevantIndicatorRefList());
+        verifyRoundTripExportImport();
+    }
 
 	public void testRelevancyWithKeaIndicators() throws Exception
 	{
