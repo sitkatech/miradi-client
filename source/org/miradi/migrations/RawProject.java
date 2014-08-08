@@ -226,6 +226,20 @@ public class RawProject implements ProjectInterface
 		}
 	}
 	
+	public void visitAllORefsInPool(ORefVisitor visitor) throws Exception
+	{
+		int objectType = visitor.getTypeToVisit();
+		if (!containsAnyObjectsOfType(objectType))
+			return;
+
+		RawPool rawPool = getRawPoolForType(objectType);
+		Set<ORef> refs = rawPool.keySet();
+		for(ORef ref : refs)
+		{
+			visitor.visit(ref);
+		}
+	}
+
 	public ORef getSingletonRef(int objectType) throws Exception
 	{
 		RawPool pool = getRawPoolForType(objectType);

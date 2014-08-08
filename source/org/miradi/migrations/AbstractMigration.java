@@ -96,6 +96,13 @@ abstract public class AbstractMigration
 		return visitor.getMigrationResult();
 	}
 	
+	protected MigrationResult visitAllORefsInPool(final AbstractMigrationORefVisitor visitor) throws Exception
+	{
+		getRawProject().visitAllORefsInPool(visitor);
+
+		return visitor.getMigrationResult();
+	}
+
 	protected VersionRange getMigratableVersionRange() throws Exception
 	{
 		return new VersionRange(getFromVersion(), getToVersion());
