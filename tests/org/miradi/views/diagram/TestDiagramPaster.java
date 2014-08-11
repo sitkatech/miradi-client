@@ -42,33 +42,12 @@ import org.miradi.main.TransferableMiradiListVersion4;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
-import org.miradi.objects.AbstractTarget;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Cause;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramLink;
-import org.miradi.objects.DiagramObject;
-import org.miradi.objects.ExpenseAssignment;
-import org.miradi.objects.Factor;
-import org.miradi.objects.ResourceAssignment;
-import org.miradi.objects.Stress;
-import org.miradi.objects.Target;
-import org.miradi.objects.Task;
-import org.miradi.objects.ThreatReductionResult;
-import org.miradi.objects.ThreatStressRating;
+import org.miradi.objects.*;
 import org.miradi.project.FactorDeleteHelper;
 import org.miradi.project.ProjectForTesting;
-import org.miradi.schemas.CauseSchema;
-import org.miradi.schemas.GoalSchema;
-import org.miradi.schemas.HumanWelfareTargetSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.KeyEcologicalAttributeSchema;
-import org.miradi.schemas.ObjectiveSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.TargetSchema;
-import org.miradi.schemas.ThreatReductionResultSchema;
-import org.miradi.schemas.ThreatStressRatingSchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
 import org.miradi.views.umbrella.UndoDoer;
 
@@ -106,7 +85,7 @@ public class TestDiagramPaster extends TestCaseWithProject
 		assertEquals("", trr.getData(trr.TAG_TAXONOMY_CLASSIFICATION_CONTAINER));
 	}
 	
-	public void testPseudoReflistNotPasted() throws Exception
+	public void testPseudoRefListNotPasted() throws Exception
 	{
 		DiagramFactor strategyDiagramFactorWithObjective = getProject().createAndAddFactorToDiagram(StrategySchema.getObjectType());
 		getProject().addObjective(strategyDiagramFactorWithObjective.getWrappedFactor());
@@ -201,7 +180,7 @@ public class TestDiagramPaster extends TestCaseWithProject
 		assertEquals("tag was not cleared?", "", baseObject.getData(tag));
 	}
 
-	public void testThreatStressRatingPasteIntoDiffererentProject() throws Exception
+	public void testThreatStressRatingPasteIntoDifferentProject() throws Exception
 	{
 		DiagramFactor threatDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		getProject().enableAsThreat(threatDiagramFactor.getWrappedORef());
@@ -439,4 +418,75 @@ public class TestDiagramPaster extends TestCaseWithProject
 		
 		return paster;
 	}
+
+    public void testPasteFactorCompatibleTaxonomySets() throws Exception
+    {
+        getProject().createAndPopulateMiradiShareProjectData();
+
+        DiagramFactor strategyDiagramFactor = getProject().createAndAddFactorToDiagram(StrategySchema.getObjectType());
+        Strategy strategy = Strategy.find(getProject(), strategyDiagramFactor.getWrappedORef());
+        getProject().populateBaseObject(strategy);
+
+        Vector<DiagramFactor> diagramFactorsToPaste = new Vector<DiagramFactor>();
+        diagramFactorsToPaste.add(strategyDiagramFactor);
+
+        ProjectForTesting projectToPasteInto = createNewProject();
+        projectToPasteInto.createAndPopulateMiradiShareProjectData();
+
+        DiagramPaster diagramPaster = paste(projectToPasteInto, diagramFactorsToPaste, new Vector<DiagramLink>());
+        assertFalse(diagramPaster.wasAnyDataLost());
+
+        MiradiShareProjectData fromMiradiShareProjectData = getProject().getSafeMiradiShareProjectData();
+        String fromTaxonomySetVersion = fromMiradiShareProjectData.getProgramTaxonomySetVersionId();
+
+        MiradiShareProjectData toMiradiShareProjectData = projectToPasteInto.getSafeMiradiShareProjectData();
+        String toTaxonomySetVersion = toMiradiShareProjectData.getProgramTaxonomySetVersionId();
+
+        assertEquals(fromTaxonomySetVersion, toTaxonomySetVersion);
+
+        String fromProjectStrategyTaxonomyClassifications = strategy.getData(BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
+
+        ORefList toProjectStrategyRefs = projectToPasteInto.getAllRefsForType(ObjectType.STRATEGY);
+        Strategy toProjectStrategy = (Strategy) projectToPasteInto.getObjectManager().findObject(toProjectStrategyRefs.get(0));
+        String toProjectStrategyTaxonomyClassifications = toProjectStrategy.getData(BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
+
+        assertEquals(fromProjectStrategyTaxonomyClassifications, toProjectStrategyTaxonomyClassifications);
+    }
+
+    public void testPasteFactorIncompatibleTaxonomySets() throws Exception
+    {
+        getProject().createAndPopulateMiradiShareProjectData();
+
+        DiagramFactor strategyDiagramFactor = getProject().createAndAddFactorToDiagram(StrategySchema.getObjectType());
+        Strategy strategy = Strategy.find(getProject(), strategyDiagramFactor.getWrappedORef());
+        getProject().populateBaseObject(strategy);
+
+        Vector<DiagramFactor> diagramFactorsToPaste = new Vector<DiagramFactor>();
+        diagramFactorsToPaste.add(strategyDiagramFactor);
+
+        ProjectForTesting projectToPasteInto = createNewProject();
+        projectToPasteInto.createAndPopulateMiradiShareProjectData();
+
+        MiradiShareProjectData toMiradiShareProjectData = projectToPasteInto.getSafeMiradiShareProjectData();
+        toMiradiShareProjectData.setData(MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_VERSION_ID, "DummyValue");
+
+        DiagramPaster diagramPaster = paste(projectToPasteInto, diagramFactorsToPaste, new Vector<DiagramLink>());
+        assertTrue(diagramPaster.wasAnyDataLost());
+
+        MiradiShareProjectData fromMiradiShareProjectData = getProject().getSafeMiradiShareProjectData();
+        String fromTaxonomySetVersion = fromMiradiShareProjectData.getProgramTaxonomySetVersionId();
+
+        String toTaxonomySetVersion = toMiradiShareProjectData.getProgramTaxonomySetVersionId();
+
+        assertNotEquals(fromTaxonomySetVersion, toTaxonomySetVersion);
+
+        String fromProjectStrategyTaxonomyClassifications = strategy.getData(BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
+
+        ORefList toProjectStrategyRefs = projectToPasteInto.getAllRefsForType(ObjectType.STRATEGY);
+        Strategy toProjectStrategy = (Strategy) projectToPasteInto.getObjectManager().findObject(toProjectStrategyRefs.get(0));
+        String toProjectStrategyTaxonomyClassifications = toProjectStrategy.getData(BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
+
+        assertNotEquals(fromProjectStrategyTaxonomyClassifications, toProjectStrategyTaxonomyClassifications);
+        assertEquals(toProjectStrategyTaxonomyClassifications, "");
+    }
 }

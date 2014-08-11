@@ -45,40 +45,9 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.ThreatStressPair;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Cause;
-import org.miradi.objects.ConceptualModelDiagram;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramLink;
-import org.miradi.objects.DiagramObject;
-import org.miradi.objects.ExpenseAssignment;
-import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
-import org.miradi.objects.GroupBox;
-import org.miradi.objects.IntermediateResult;
-import org.miradi.objects.ResourceAssignment;
-import org.miradi.objects.ResultsChainDiagram;
-import org.miradi.objects.Stress;
-import org.miradi.objects.TaggedObjectSet;
-import org.miradi.objects.Task;
-import org.miradi.objects.ThreatReductionResult;
-import org.miradi.objects.ThreatStressRating;
+import org.miradi.objects.*;
 import org.miradi.project.Project;
-import org.miradi.schemas.AccountingCodeSchema;
-import org.miradi.schemas.CauseSchema;
-import org.miradi.schemas.DiagramFactorSchema;
-import org.miradi.schemas.DiagramLinkSchema;
-import org.miradi.schemas.ExpenseAssignmentSchema;
-import org.miradi.schemas.FactorLinkSchema;
-import org.miradi.schemas.FundingSourceSchema;
-import org.miradi.schemas.IntermediateResultSchema;
-import org.miradi.schemas.ProjectResourceSchema;
-import org.miradi.schemas.ResourceAssignmentSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.TaggedObjectSetSchema;
-import org.miradi.schemas.TargetSchema;
-import org.miradi.schemas.ThreatReductionResultSchema;
-import org.miradi.schemas.ThreatStressRatingSchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
@@ -100,7 +69,11 @@ abstract public class DiagramPaster
 		factorLinkDeepCopies = transferableList.getFactorLinkDeepCopies();
 		diagramLinkDeepCopies = transferableList.getDiagramLinkDeepCopies();
 		pastedCellsToSelect = new Vector<EAMGraphCell>();
-	}
+
+        fromMiradiShareProjectData = project.getSafeMiradiShareProjectData();
+        if (transferableListToUse.project != null)
+            toMiradiShareProjectData = transferableList.project.getSafeMiradiShareProjectData();
+    }
 	
 	protected Vector<String> getFactorDeepCopies()
 	{
@@ -366,7 +339,6 @@ abstract public class DiagramPaster
 		return newList;
 	}
 
-	
 	private ORef fixupSingleRef(HashMap pastedObjectMap, ORef oldRef) throws Exception
 	{
 		if (pastedObjectMap.containsKey(oldRef))
@@ -444,7 +416,6 @@ abstract public class DiagramPaster
 		LinkCell linkCell = currentModel.getLinkCell(diagramLink);
 		pastedCellsToSelect.add(linkCell);	
 	}
-
 
 	private ORef createDiagramFactor() throws CommandFailedException
 	{
@@ -832,7 +803,15 @@ abstract public class DiagramPaster
 	{
 		return ! getProject().getFilename().equals(getClipboardProjectFileName());
 	}
-	
+
+    private boolean isBetweenProjectsWithDifferentTaxonomySets()
+    {
+        String fromTaxonomySetVersion = (fromMiradiShareProjectData != null) ? fromMiradiShareProjectData.getProgramTaxonomySetVersionId() : "";
+        String toTaxonomySetVersion = (toMiradiShareProjectData != null) ? toMiradiShareProjectData.getProgramTaxonomySetVersionId() : "";
+
+        return !fromTaxonomySetVersion.equals(toTaxonomySetVersion);
+    }
+
 	private boolean cannotCreateNewFactorLinkFromAnotherProject(EnhancedJsonObject json)
 	{
 		ORef oldFromRef = json.getRef(FactorLink.TAG_FROM_REF);
@@ -850,9 +829,12 @@ abstract public class DiagramPaster
 	
 	public boolean wasAnyDataLost() throws Exception
 	{
-		if (! isInBetweenProjectPaste())
+		if (!isInBetweenProjectPaste())
 			return false;
-		
+
+        if (isBetweenProjectsWithDifferentTaxonomySets())
+            return true;
+
 		for (int i = 0; i < factorDeepCopies.size(); ++i)
 		{
 			String jsonAsString = factorDeepCopies.get(i);
@@ -863,14 +845,12 @@ abstract public class DiagramPaster
 				return true;
 			if (ResourceAssignmentSchema.getObjectType() == type)
 				return true;
-			
 			if (ExpenseAssignmentSchema.getObjectType() == type)
 				return true;
 		}
 		
 		return false;
 	}
-	
 
 	private ORef getDiagramFactorId(EnhancedJsonObject json, String tag)
 	{
@@ -887,8 +867,7 @@ abstract public class DiagramPaster
 			 
 		return newRef;
 	}
-	
-	
+
 	private int convertType(ORef oldObjectRef)
 	{
 		if (isPastingInSameDiagramType())
@@ -1007,9 +986,17 @@ abstract public class DiagramPaster
 			String value = json.optString(tag);
 			if (transferableList.isLegacyTransferableMiradiList())
 				value = baseObject.getHtmlEncodedValue(json, tag);
-			
-			CommandSetObjectData setDataCommand = new CommandSetObjectData(baseObject.getRef(), tag, value);
-			commands.add(setDataCommand);
+
+            //noinspection StatementWithEmptyBody
+            if (tag.equals(BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER) && isBetweenProjectsWithDifferentTaxonomySets())
+            {
+                // err on the safe side, and skip copying over taxonomy classifications that *may* be invalid
+            }
+            else
+            {
+                CommandSetObjectData setDataCommand = new CommandSetObjectData(baseObject.getRef(), tag, value);
+                commands.add(setDataCommand);
+            }
 		}
 		
 		return commands.toArray(new Command[0]);
@@ -1032,7 +1019,7 @@ abstract public class DiagramPaster
 		// When these other classes are switched to match it,
 		// this whole method will go away.
 		Vector<String> tags = new Vector<String>();
-		
+
 		if (Cause.is(oldType) && ThreatReductionResult.is(newType))
 		{
 			tags.add(BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
@@ -1081,7 +1068,10 @@ abstract public class DiagramPaster
 	protected PointManipulator dataHelper;
 	protected AbstractTransferableMiradiList transferableList;
 	private Vector<EAMGraphCell> pastedCellsToSelect;
-	
+
+    private MiradiShareProjectData fromMiradiShareProjectData;
+    private MiradiShareProjectData toMiradiShareProjectData;
+
 	public static final String FAKE_TAG_TYPE = "Type";
 	public static final String FAKE_TAG_TAG_NAMES = "TagNames";
 
