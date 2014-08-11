@@ -54,9 +54,9 @@ public class MiradiShareProjectData extends BaseObject
 		return false;
 	}
 	
-	public static boolean is(final int onbjectType)
+	public static boolean is(final int otherObjectType)
 	{
-		return MiradiShareProjectDataSchema.getObjectType() == onbjectType;
+		return MiradiShareProjectDataSchema.getObjectType() == otherObjectType;
 	}
 	
 	public static MiradiShareProjectData find(ObjectManager objectManager, ORef miradiShareProjectDataRef)

@@ -23,9 +23,9 @@ import java.awt.Point;
 
 import org.miradi.project.Project;
 
-public class PointManipulater 
+public class PointManipulator
 {
-	public PointManipulater(Point insertionPointToUse, Point upperMostLeftMostCornerToUse)
+	public PointManipulator(Point insertionPointToUse, Point upperMostLeftMostCornerToUse)
 	{
 		insertionPoint = insertionPointToUse;
 		upperMostLeftMostCorner = upperMostLeftMostCornerToUse;
