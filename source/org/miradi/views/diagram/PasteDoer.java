@@ -134,6 +134,7 @@ public class PasteDoer extends AbstractPasteDoer
 				"This would include work or expense assignments to Project Resources, Accounting Codes, " +
 				"Funding Sources, and items in Category #1 or Category #2 lists. The Leader attribute " +
 				"is also not copied.</li>" +
+				"<li>Taxonomy classifications where the two projects do not share the same taxonomy classification lists. </li>" +
 				"</ol></html>");
 
 		HtmlViewPanel htmlViewPanel = HtmlViewPanelWithMargins.createFromTextString(getMainWindow(), dialogTitle, message);
