@@ -142,7 +142,7 @@ public class DiagramAsSharedPaster extends DiagramPaster
 	@Override
 	public void pasteFactors(Point startPoint) throws Exception
 	{
-		dataHelper = new PointManipulater(startPoint, transferableList.getUpperMostLeftMostCorner());
+		dataHelper = new PointManipulator(startPoint, transferableList.getUpperMostLeftMostCorner());
 		createNewFactorsAndContents();
 		createNewDiagramFactors();
 		
@@ -184,7 +184,7 @@ public class DiagramAsSharedPaster extends DiagramPaster
 	}
 
 	@Override
-	public ORef getCorrospondingNewRef(ORef oldWrappedRef)
+	public ORef getCorrespondingNewRef(ORef oldWrappedRef)
 	{
 		if(BaseObject.find(getProject(), oldWrappedRef) != null)
 			return oldWrappedRef;
@@ -248,8 +248,8 @@ public class DiagramAsSharedPaster extends DiagramPaster
 	@Override
 	protected FactorLink createFactorLink(EnhancedJsonObject json) throws Exception
 	{
-		ORef newFromRef = getFixedupRef(getOldToNewObjectRefMap(), json, FactorLink.TAG_FROM_REF);
-		ORef newToRef = getFixedupRef(getOldToNewObjectRefMap(), json, FactorLink.TAG_TO_REF);	
+		ORef newFromRef = getFixedUpRef(getOldToNewObjectRefMap(), json, FactorLink.TAG_FROM_REF);
+		ORef newToRef = getFixedUpRef(getOldToNewObjectRefMap(), json, FactorLink.TAG_TO_REF);
 		
 		FactorLink existingLink = findFactorLink(newFromRef, newToRef);
 		if(existingLink != null)

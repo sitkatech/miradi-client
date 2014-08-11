@@ -27,7 +27,7 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Target;
 import org.miradi.project.FactorDeleteHelper;
 import org.miradi.schemas.TargetSchema;
-import org.miradi.views.diagram.PointManipulater;
+import org.miradi.views.diagram.PointManipulator;
 
 //TODO rename and move to correct package (also when moving to new package, update the code inside
 // the main test suite)
@@ -44,7 +44,7 @@ public class TestFactorDataHelper extends TestCaseWithProject
 		Point diagramFactor1Location = new Point(100, 100);
 		Point diagramFactor2Location = new Point(200, 200);
 		Point upperMostLeftMostCorner = new Point(100, 100);
-		PointManipulater helper = new PointManipulater(insertLocation, upperMostLeftMostCorner);
+		PointManipulator helper = new PointManipulator(insertLocation, upperMostLeftMostCorner);
 		
 		Point newDiagramFactor1Location = helper.getNewLocation(diagramFactor1Location);
 		assertEquals("wrong location for diagram factor 1?", insertLocation, newDiagramFactor1Location);
@@ -60,7 +60,7 @@ public class TestFactorDataHelper extends TestCaseWithProject
 		Point diagramFactor1Location = new Point(100, 100);
 		Point upperMostLeftMostCorner = new Point(100, 100);
 		
-		PointManipulater helper = new PointManipulater(insertLocation, upperMostLeftMostCorner);
+		PointManipulator helper = new PointManipulator(insertLocation, upperMostLeftMostCorner);
 		Point translatedSnappedOffsettedPoint1 = helper.getSnappedTranslatedPoint(getProject(), diagramFactor1Location, offset);
 		assertEquals("wrong location for diagram factor 1?", new Point(510, 510), translatedSnappedOffsettedPoint1);
 	}

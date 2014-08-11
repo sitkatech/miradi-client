@@ -378,7 +378,7 @@ abstract public class DiagramPaster
 		return ORef.INVALID;
 	}
 
-	protected ORef getFixedupRef(HashMap pastedObjectMap, EnhancedJsonObject json, String tag) throws Exception
+	protected ORef getFixedUpRef(HashMap pastedObjectMap, EnhancedJsonObject json, String tag) throws Exception
 	{
 		ORef oldRef = json.getRef(tag);
 		return fixupSingleRef(pastedObjectMap, oldRef);
@@ -483,8 +483,8 @@ abstract public class DiagramPaster
 		ORef oldStressRef = json.getRef(ThreatStressRating.TAG_STRESS_REF);
 		ORef oldThreatRef = json.getRef(ThreatStressRating.TAG_THREAT_REF);
 		
-		ORef newStressRef = getCorrospondingNewRef(oldStressRef);
-		ORef newThreatRef = getCorrospondingNewRef(oldThreatRef);
+		ORef newStressRef = getCorrespondingNewRef(oldStressRef);
+		ORef newThreatRef = getCorrespondingNewRef(oldThreatRef);
 		
 		ORef threatStressRatingRef = ThreatStressPair.findMatchingThreatStressRating(getProject(), newThreatRef, newStressRef);
 		return ThreatStressRating.find(getProject(), threatStressRatingRef);
@@ -607,7 +607,7 @@ abstract public class DiagramPaster
 		if (!isGroupBox && oldToNewPastedObjectMap.containsKey(diagramFactorRef))
 			return;
 		
-		ORef newWrappedRef = getCorrospondingNewRef(oldWrappedRef);
+		ORef newWrappedRef = getCorrespondingNewRef(oldWrappedRef);
 	
 		// TODO: GB logic should probably be handled in DiagramAliasPaster, not here
 		if (!isGroupBox && diagramAlreadyContainsAlias(newWrappedRef))
@@ -809,8 +809,8 @@ abstract public class DiagramPaster
 		
 		// TODO: Switch this to match the DF pattern of:
 		// create, load (everything), fixup (everything)
-		ORef newFromRef = getFixedupRef(getOldToNewObjectRefMap(), json, FactorLink.TAG_FROM_REF);
-		ORef newToRef = getFixedupRef(getOldToNewObjectRefMap(), json, FactorLink.TAG_TO_REF);	
+		ORef newFromRef = getFixedUpRef(getOldToNewObjectRefMap(), json, FactorLink.TAG_FROM_REF);
+		ORef newToRef = getFixedUpRef(getOldToNewObjectRefMap(), json, FactorLink.TAG_TO_REF);
 		
 		LinkCreator linkCreator = new LinkCreator(getProject());
 		if (linkCreator.linkWasRejected(currentModel, newFromRef, newToRef))
@@ -1063,7 +1063,7 @@ abstract public class DiagramPaster
 	
 	abstract public void pasteFactorsAndLinks(Point startPoint) throws Exception;
 	
-	abstract public ORef getCorrospondingNewRef(ORef oldWrappedRef) throws Exception;
+	abstract public ORef getCorrespondingNewRef(ORef oldWrappedRef) throws Exception;
 	
 	abstract protected boolean shouldCreateObject(ORef ref, EnhancedJsonObject json);
 	
@@ -1078,7 +1078,7 @@ abstract public class DiagramPaster
 	private Vector<String> diagramLinkDeepCopies;
 	
 	protected HashMap<ORef, ORef> oldToNewPastedObjectMap;	
-	protected PointManipulater dataHelper;
+	protected PointManipulator dataHelper;
 	protected AbstractTransferableMiradiList transferableList;
 	private Vector<EAMGraphCell> pastedCellsToSelect;
 	

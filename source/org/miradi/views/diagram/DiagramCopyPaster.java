@@ -49,13 +49,13 @@ public class DiagramCopyPaster extends DiagramPaster
 	@Override
 	public void pasteFactors(Point startPoint) throws Exception
 	{	
-		dataHelper = new PointManipulater(startPoint, transferableList.getUpperMostLeftMostCorner());
+		dataHelper = new PointManipulator(startPoint, transferableList.getUpperMostLeftMostCorner());
 		createNewFactorsAndContents();	
 		createNewDiagramFactors();
 	}
 	
 	@Override
-	public ORef getCorrospondingNewRef(ORef oldWrappedRef) throws Exception
+	public ORef getCorrespondingNewRef(ORef oldWrappedRef) throws Exception
 	{
 		ORef foundRef = getOldToNewObjectRefMap().get(oldWrappedRef);
 		if (foundRef == null)
