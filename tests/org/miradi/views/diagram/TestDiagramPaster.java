@@ -40,12 +40,11 @@ import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.main.TransferableMiradiListVersion4;
 import org.miradi.objectdata.BooleanData;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
+import org.miradi.objecthelpers.*;
+import org.miradi.objectpools.TaxonomyAssociationPool;
 import org.miradi.objects.*;
 import org.miradi.project.FactorDeleteHelper;
+import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
@@ -419,9 +418,10 @@ public class TestDiagramPaster extends TestCaseWithProject
 		return paster;
 	}
 
-    public void testPasteFactorCompatibleTaxonomySets() throws Exception
+    public void testPasteFactorCompatibleTaxonomies() throws Exception
     {
-        getProject().createAndPopulateMiradiShareProjectData();
+        getProject().createAndPopulateMiradiShareTaxonomy();
+        getProject().populateTaxonomyAssociationsForBaseObjectTypes();
 
         DiagramFactor strategyDiagramFactor = getProject().createAndAddFactorToDiagram(StrategySchema.getObjectType());
         Strategy strategy = Strategy.find(getProject(), strategyDiagramFactor.getWrappedORef());
@@ -431,18 +431,11 @@ public class TestDiagramPaster extends TestCaseWithProject
         diagramFactorsToPaste.add(strategyDiagramFactor);
 
         ProjectForTesting projectToPasteInto = createNewProject();
-        projectToPasteInto.createAndPopulateMiradiShareProjectData();
+        projectToPasteInto.createAndPopulateMiradiShareTaxonomy();
+        projectToPasteInto.populateTaxonomyAssociationsForBaseObjectTypes();
 
         DiagramPaster diagramPaster = paste(projectToPasteInto, diagramFactorsToPaste, new Vector<DiagramLink>());
         assertFalse(diagramPaster.wasAnyDataLost());
-
-        MiradiShareProjectData fromMiradiShareProjectData = getProject().getSafeMiradiShareProjectData();
-        String fromTaxonomySetVersion = fromMiradiShareProjectData.getProgramTaxonomySetVersionId();
-
-        MiradiShareProjectData toMiradiShareProjectData = projectToPasteInto.getSafeMiradiShareProjectData();
-        String toTaxonomySetVersion = toMiradiShareProjectData.getProgramTaxonomySetVersionId();
-
-        assertEquals(fromTaxonomySetVersion, toTaxonomySetVersion);
 
         String fromProjectStrategyTaxonomyClassifications = strategy.getData(BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
 
@@ -453,9 +446,10 @@ public class TestDiagramPaster extends TestCaseWithProject
         assertEquals(fromProjectStrategyTaxonomyClassifications, toProjectStrategyTaxonomyClassifications);
     }
 
-    public void testPasteFactorIncompatibleTaxonomySets() throws Exception
+    public void testPasteFactorIncompatibleTaxonomies() throws Exception
     {
-        getProject().createAndPopulateMiradiShareProjectData();
+        getProject().createAndPopulateMiradiShareTaxonomy();
+        getProject().populateTaxonomyAssociationsForBaseObjectTypes();
 
         DiagramFactor strategyDiagramFactor = getProject().createAndAddFactorToDiagram(StrategySchema.getObjectType());
         Strategy strategy = Strategy.find(getProject(), strategyDiagramFactor.getWrappedORef());
@@ -465,20 +459,14 @@ public class TestDiagramPaster extends TestCaseWithProject
         diagramFactorsToPaste.add(strategyDiagramFactor);
 
         ProjectForTesting projectToPasteInto = createNewProject();
-        projectToPasteInto.createAndPopulateMiradiShareProjectData();
+        projectToPasteInto.createAndPopulateMiradiShareTaxonomy();
+        projectToPasteInto.populateTaxonomyAssociationsForBaseObjectTypes();
 
-        MiradiShareProjectData toMiradiShareProjectData = projectToPasteInto.getSafeMiradiShareProjectData();
-        toMiradiShareProjectData.setData(MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_VERSION_ID, "DummyValue");
+        // remove taxonomy association in destination project for strategy (making pasted taxonomy classifications invalid)
+        deleteTaxonomyAssociationsForObject(projectToPasteInto, StrategySchema.getObjectType());
 
         DiagramPaster diagramPaster = paste(projectToPasteInto, diagramFactorsToPaste, new Vector<DiagramLink>());
         assertTrue(diagramPaster.wasAnyDataLost());
-
-        MiradiShareProjectData fromMiradiShareProjectData = getProject().getSafeMiradiShareProjectData();
-        String fromTaxonomySetVersion = fromMiradiShareProjectData.getProgramTaxonomySetVersionId();
-
-        String toTaxonomySetVersion = toMiradiShareProjectData.getProgramTaxonomySetVersionId();
-
-        assertNotEquals(fromTaxonomySetVersion, toTaxonomySetVersion);
 
         String fromProjectStrategyTaxonomyClassifications = strategy.getData(BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
 
@@ -489,4 +477,23 @@ public class TestDiagramPaster extends TestCaseWithProject
         assertNotEquals(fromProjectStrategyTaxonomyClassifications, toProjectStrategyTaxonomyClassifications);
         assertEquals(toProjectStrategyTaxonomyClassifications, "");
     }
+
+    private void deleteTaxonomyAssociationsForObject(Project project, int objectType) throws Exception
+    {
+        TaxonomyAssociationPool taxonomyAssociationPool = project.getTaxonomyAssociationPool();
+
+        Vector<String> poolNamesForType = TaxonomyHelper.getTaxonomyAssociationPoolNamesForType(objectType);
+        for(String taxonomyAssociationPoolName : poolNamesForType)
+        {
+            Vector<TaxonomyAssociation> taxonomyAssociationsForBaseObject = taxonomyAssociationPool.findTaxonomyAssociationsForPoolName(taxonomyAssociationPoolName);
+            for (TaxonomyAssociation taxonomyAssociation : taxonomyAssociationsForBaseObject)
+            {
+                project.deleteObject(taxonomyAssociation);
+            }
+        }
+    }
+
+
+
+
 }

@@ -43,9 +43,9 @@ public class TaxonomyClassificationMap extends CodeToCodeListMap
 		super(jsonToUse);
 	}
 	
-	public static CodeList getTaxonomyElementCodes(Project projectTouse, String taxonomyClassificationMapAsString, String taxonomyAssociationCode) throws Exception
+	public static CodeList getTaxonomyElementCodes(Project projectToUse, String taxonomyClassificationMapAsString, String taxonomyAssociationCode) throws Exception
 	{
-		return  new TaxonomyClassificationMap(taxonomyClassificationMapAsString).getTaxonomyElementCodes(projectTouse, taxonomyAssociationCode);
+		return  new TaxonomyClassificationMap(taxonomyClassificationMapAsString).getTaxonomyElementCodes(projectToUse, taxonomyAssociationCode);
 	}
 	
 	public CodeList getTaxonomyElementCodes(Project projectToUse, String taxonomyAssociationCode)

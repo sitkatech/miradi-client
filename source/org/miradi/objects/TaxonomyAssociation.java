@@ -128,9 +128,9 @@ public class TaxonomyAssociation extends BaseObject
 		return TaxonomyAssociationSchema.getObjectType() == onbjectType;
 	}
 	
-	public static TaxonomyAssociation find(ObjectManager objectManager, ORef miradiSharfeTaxonomyAssociationRe)
+	public static TaxonomyAssociation find(ObjectManager objectManager, ORef miradiShareTaxonomyAssociationRef)
 	{
-		return (TaxonomyAssociation) objectManager.findObject(miradiSharfeTaxonomyAssociationRe);
+		return (TaxonomyAssociation) objectManager.findObject(miradiShareTaxonomyAssociationRef);
 	}
 	
 	public static TaxonomyAssociation find(Project project, ORef miradiShareTaxonomyAssociationRef)

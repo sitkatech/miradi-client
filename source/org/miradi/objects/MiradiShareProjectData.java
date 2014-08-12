@@ -44,11 +44,6 @@ public class MiradiShareProjectData extends BaseObject
 		return NO_OWNERS;
 	}
 
-    public String getProgramTaxonomySetVersionId()
-    {
-        return getData(MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_VERSION_ID);
-    }
-
 	public static boolean canOwnThisType(int type)
 	{
 		return false;

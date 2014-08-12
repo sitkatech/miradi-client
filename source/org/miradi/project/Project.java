@@ -1416,15 +1416,6 @@ public class Project implements ProjectInterface
 		return getMiradiVersionRange();
 	}
 
-    public MiradiShareProjectData getSafeMiradiShareProjectData()
-    {
-        ORef miradiShareProjectDataRef = getSafeSingleObjectRef(MiradiShareProjectDataSchema.getObjectType());
-        if (miradiShareProjectDataRef.isValid())
-            return MiradiShareProjectData.find(this, miradiShareProjectDataRef);
-        else
-            return null;
-    }
-
 	public static String withoutMpfProjectSuffix(String name) throws Exception
 	{
 		return StringUtilities.stripTrailingString(name, AbstractMpfFileFilter.EXTENSION);
