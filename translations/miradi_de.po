@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-08 07:06-0700\n"
+"POT-Creation-Date: 2014-08-12 08:06-0700\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -1061,7 +1061,8 @@ msgid ""
 "refers to other data which only exists in the old project.This would include "
 "work or expense assignments to Project Resources, Accounting Codes, Funding "
 "Sources, and items in Category #1 or Category #2 lists. The Leader attribute "
-"is also not copied.</li></ol></html>"
+"is also not copied.</li><li>Taxonomy classifications where the two projects "
+"do not share the same taxonomy classification lists. </li></ol></html>"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
@@ -2670,7 +2671,7 @@ msgstr ""
 msgid "Button|Paste"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/PasteDoer.java:188
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/PasteDoer.java:189
 msgid "Button|Paste As Copies"
 msgstr "Als Kopie einfügen"
 
@@ -2678,7 +2679,7 @@ msgstr "Als Kopie einfügen"
 msgid "Button|Paste Contents"
 msgstr "Inhalt einfügen"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/PasteDoer.java:189
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/PasteDoer.java:190
 msgid "Button|Paste Shared"
 msgstr ""
 
@@ -9343,7 +9344,7 @@ msgstr "[NICHT GENAUER BESCHRIEBEN]"
 msgid "[New Results Chain]"
 msgstr "[Neue Ergebniswirkungskette]"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:994
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:980
 msgid "[No Project]"
 msgstr "[Kein Projekt]"
 
