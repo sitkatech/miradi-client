@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-08 07:06-0700\n"
+"POT-Creation-Date: 2014-08-12 08:06-0700\n"
 "Content-Type: text/plain; charset=UTF-8Content-Transfer-Encoding: "
 "8bitLanguage: psp\n"
 
@@ -1028,14 +1028,9 @@ msgid ""
 "refers to other data which only exists in the old project.This would include "
 "work or expense assignments to Project Resources, Accounting Codes, Funding "
 "Sources, and items in Category #1 or Category #2 lists. The Leader attribute "
-"is also not copied.</li></ol></html>"
+"is also not copied.</li><li>Taxonomy classifications where the two projects "
+"do not share the same taxonomy classification lists. </li></ol></html>"
 msgstr ""
-"<html>Note that certain project data cannot be copied between projects. This "
-"includes:<ol><li>Simple Pressure Ratings </li><li>Work planning data that "
-"refers to other data which only exists in the old project.This would include "
-"work or expense assignments to Project Resources, Accounting Codes, Funding "
-"Sources, and items in Category #1 or Category #2 lists. The Leader attribute "
-"is also not copied.</li></ol></html>"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
 msgid ""
@@ -2655,7 +2650,7 @@ msgstr "Button|Overwrite"
 msgid "Button|Paste"
 msgstr "Button|Paste"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/PasteDoer.java:188
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/PasteDoer.java:189
 msgid "Button|Paste As Copies"
 msgstr "Button|Paste As Copies"
 
@@ -2663,7 +2658,7 @@ msgstr "Button|Paste As Copies"
 msgid "Button|Paste Contents"
 msgstr "Button|Paste Contents"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/PasteDoer.java:189
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/PasteDoer.java:190
 msgid "Button|Paste Shared"
 msgstr "Button|Paste Shared"
 
@@ -9351,7 +9346,7 @@ msgstr "[NOT SPECIFIED]"
 msgid "[New Results Chain]"
 msgstr "[New Results Chain]"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:994
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:980
 msgid "[No Project]"
 msgstr "[No Project]"
 
@@ -37454,6 +37449,21 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid ""
+#~ "<html>Note that certain project data cannot be copied between projects. "
+#~ "This includes:<ol><li>Simple Threat Ratings </li><li>Work planning data "
+#~ "that refers to other data which only exists in the old project.This would "
+#~ "include work or expense assignments to Project Resources, Accounting "
+#~ "Codes, Funding Sources, and items in Category #1 or Category #2 lists. "
+#~ "The Leader attribute is also not copied.</li></ol></html>"
+#~ msgstr ""
+#~ "<html>Note that certain project data cannot be copied between projects. "
+#~ "This includes:<ol><li>Simple Pressure Ratings </li><li>Work planning data "
+#~ "that refers to other data which only exists in the old project.This would "
+#~ "include work or expense assignments to Project Resources, Accounting "
+#~ "Codes, Funding Sources, and items in Category #1 or Category #2 lists. "
+#~ "The Leader attribute is also not copied.</li></ol></html>"
 
 #~ msgid ""
 #~ "html|/resources/NoHomeDirectoryFoundMessage.html|  <HTML><p>The home "
