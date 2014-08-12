@@ -20,26 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objecthelpers;
 
+import java.text.ParseException;
 import java.util.Vector;
 
 import org.miradi.objectpools.TaxonomyAssociationPool;
-import org.miradi.objects.Cause;
-import org.miradi.objects.Goal;
-import org.miradi.objects.HumanWelfareTarget;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.KeyEcologicalAttribute;
-import org.miradi.objects.MiradiShareProjectData;
-import org.miradi.objects.MiradiShareTaxonomy;
-import org.miradi.objects.Objective;
-import org.miradi.objects.ResultsChainDiagram;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Stress;
-import org.miradi.objects.Target;
-import org.miradi.objects.Task;
-import org.miradi.objects.TaxonomyAssociation;
-import org.miradi.objects.ThreatReductionResult;
+import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.schemas.MiradiShareTaxonomySchema;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.Utility;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 
@@ -80,14 +68,14 @@ public class TaxonomyHelper implements Xmpz2XmlConstants
 		if (Cause.is(objectType))
 			return convertToVector(CONTRIBUTING_FACTOR_TAXONOMY_ASSOCIATION_POOL, DIRECT_THREAT_TAXONOMY_ASSOCIATION_POOL);
 		
-		String singleItemPoolName = getSingleItemPoolName(objectType);
+		String singleItemPoolName = getSingleItemTaxonomyAssociationPoolName(objectType);
 		if (singleItemPoolName != null)
 			return convertToSingleItemVector(singleItemPoolName);
 
 		return new Vector<String>();
 	}
 
-	private static String getSingleItemPoolName(final int objectType)
+	private static String getSingleItemTaxonomyAssociationPoolName(final int objectType)
 	{
 		if (MiradiShareProjectData.is(objectType))
 			return MIRADI_SHARE_PROJECT_DATA_TAXONOMY_ASSOCIATION_POOL;
@@ -158,4 +146,49 @@ public class TaxonomyHelper implements Xmpz2XmlConstants
 	{
 		return taxonomyAssociationPoolName.equals(CONTRIBUTING_FACTOR_TAXONOMY_ASSOCIATION_POOL);
 	}
+
+    public static boolean isTaxonomyClassificationMapValid(Project project, BaseObject baseObject, TaxonomyClassificationMap taxonomyClassificationMap) throws Exception
+    {
+        if (taxonomyClassificationMap == null)
+            return true;
+
+        for(String taxonomyCode : taxonomyClassificationMap.getCodes())
+        {
+            TaxonomyAssociation taxonomyAssociation = findTaxonomyAssociation(project, baseObject, taxonomyCode);
+            if (taxonomyAssociation == null)
+                return false;
+
+            MiradiShareTaxonomy taxonomyElementList = TaxonomyHelper.getTaxonomyElementList(taxonomyAssociation);
+
+            CodeList taxonomyCodeList = taxonomyClassificationMap.getCodeList(taxonomyCode);
+            for(String taxonomyElementCode : taxonomyCodeList.toVector())
+            {
+                if (!isValidTaxonomyElementCode(taxonomyElementList, taxonomyElementCode))
+                    return false;
+            }
+        }
+
+        return true;
+    }
+
+    private static TaxonomyAssociation findTaxonomyAssociation(Project project, BaseObject baseObject, String taxonomyCode)
+    {
+        TaxonomyAssociationPool taxonomyAssociationPool = project.getTaxonomyAssociationPool();
+        Vector<TaxonomyAssociation> taxonomyAssociationsForBaseObject = taxonomyAssociationPool.findTaxonomyAssociationsForBaseObject(baseObject);
+
+        for (TaxonomyAssociation taxonomyAssociation : taxonomyAssociationsForBaseObject)
+        {
+            if (taxonomyAssociation.getTaxonomyCode().equals(taxonomyCode))
+                return taxonomyAssociation;
+        }
+
+        return null;
+    }
+
+    private static boolean isValidTaxonomyElementCode(MiradiShareTaxonomy taxonomyAssociation, String taxonomyElementCode) throws Exception
+    {
+        TaxonomyElement taxonomyElement = taxonomyAssociation.findTaxonomyElement(taxonomyElementCode);
+        return taxonomyElement != null;
+    }
+
 }

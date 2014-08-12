@@ -420,7 +420,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public MiradiShareTaxonomy createAndPopulateMiradiShareTaxonomy() throws Exception
 	{
 		MiradiShareTaxonomy taxonomy = createMiradiShareTaxonomy();
-		taxonomy.setData(MiradiShareTaxonomySchema.TAG_TAXONOMY_CODE, "randomCode");
+		taxonomy.setData(MiradiShareTaxonomySchema.TAG_TAXONOMY_CODE, "randomTaxonomyCode1");
 		taxonomy.setData(MiradiShareTaxonomySchema.TAG_TAXONOMY_VERSION, "VersionXxx");
 		taxonomy.setData(MiradiShareTaxonomySchema.TAG_TAXONOMY_ELEMENTS, createSampleTaxonomyElementListAsJsonString());
 		taxonomy.setData(MiradiShareTaxonomySchema.TAG_TAXONOMY_TOP_LEVEL_ELEMENT_CODES, CodeList.createWithSingleCode("RandomCodeXxx").toString());
@@ -439,6 +439,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public String createSampleTaxonomyElementListAsJsonString()
 	{
 		TaxonomyElementList taxonomyElementList = new TaxonomyElementList();
+
 		TaxonomyElement taxonomyElement1 = new TaxonomyElement();
 		final String URI_ONLY_CHARS = "http+ssh://sample.com@who~ever?http://sample.com?a=1&b=2#some_where";
 		taxonomyElement1.setCode(URI_ONLY_CHARS);
@@ -455,11 +456,31 @@ public class ProjectForTesting extends ProjectWithHelpers
 		taxonomyElement2.setDescription("Random ><Description");
 		taxonomyElement2.setUserCode("Sample >&'< User code");
 		taxonomyElementList.add(taxonomyElement2);
-		
+
+        CodeList sampleCodeList = createSampleFreshwaterEcoregionsCodeList();
+        for (String code : sampleCodeList)
+        {
+            TaxonomyElement taxonomyElement = new TaxonomyElement();
+            taxonomyElement.setCode(code);
+            taxonomyElement.setChildCodes(new CodeList());
+            taxonomyElement.setLabel("Random & Label");
+            taxonomyElement.setDescription("Random ><Description");
+            taxonomyElement.setUserCode("Sample >&'< User code");
+            taxonomyElementList.add(taxonomyElement);
+        }
+
 		return taxonomyElementList.toJsonString();
 	}
 
-	public void populateTaxonomyAssociationsForBaseObjectTypes() throws Exception
+    public String createSampleTaxonomyClassificationsList()
+    {
+        TaxonomyClassificationMap taxonomyClassificationList = new TaxonomyClassificationMap();
+        taxonomyClassificationList.putCodeList("randomTaxonomyCode1", createSampleFreshwaterEcoregionsCodeList());
+
+        return taxonomyClassificationList.toJsonString();
+    }
+
+    public void populateTaxonomyAssociationsForBaseObjectTypes() throws Exception
 	{
 		Vector<Integer> objectTypesWithTaxonomyAssociationPool = getTypesWithTaxonomyAssociationPools();
 		for(Integer taxonomyAssociationParentType : objectTypesWithTaxonomyAssociationPool)
@@ -472,7 +493,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		}
 	}
 
-	private void createAndPopulateTaxonomyAssociation(Integer taxonomyAssociationParentType, final String  taxonomyAssociationPoolName) throws Exception
+	private void createAndPopulateTaxonomyAssociation(Integer taxonomyAssociationParentType, final String taxonomyAssociationPoolName) throws Exception
 	{
 		ORef taxonomyAssociationRef = createObject(TaxonomyAssociationSchema.getObjectType());
 		TaxonomyAssociation taxonomyAssociation = TaxonomyAssociation.find(this, taxonomyAssociationRef);
@@ -482,7 +503,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_MULTI_SELECT, TaxonomyMultiSelectModeQuestion.MULTI_SELECT_CODE);
 		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_SELECTION_TYPE, TaxonomyClassificationSelectionModeQuestion.ANY_NODE_CODE);
 		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_DESCRIPTION, "Some random description");
-		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_TAXONOMY_CODE, "RandomTaxonomyCode");			
+		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_TAXONOMY_CODE, "randomTaxonomyCode1");
 		fillObjectUsingCommand(taxonomyAssociation, BaseObject.TAG_LABEL, "RandomLabel");
 	}
 	
@@ -505,8 +526,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		return typesWithTaxonomyAssociationPools;
 	}
-	
-	public ORef createResultsChainDiagram() throws Exception
+
+    public ORef createResultsChainDiagram() throws Exception
 	{
 		ORef resultsChainRef = createObject(ResultsChainDiagramSchema.getObjectType());
 		ResultsChainDiagram resultsChain = ResultsChainDiagram.find(this, resultsChainRef);
@@ -1992,15 +2013,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		ORef threatRef = getUpstreamThreatRef(diagramLink);
 		Strategy strategy = createAndPopulateStrategy();
 		createFactorLink(threatRef, strategy.getRef());
-	}
-	
-	public String createSampleTaxonomyClassificationsList()
-	{
-		TaxonomyClassificationMap taxonomyClassificationList = new TaxonomyClassificationMap();
-		taxonomyClassificationList.putCodeList("randomTaxonomyCode1", createSampleFreshwaterEcoregionsCodeList());
-		taxonomyClassificationList.putCodeList("randomTaxonomyCode2", createSampleMarineEcoregionsCodeList());
-		
-		return taxonomyClassificationList.toJsonString();
 	}
 	
 	private CodeList createSampleTerrestrialEcoregionsCodeList()

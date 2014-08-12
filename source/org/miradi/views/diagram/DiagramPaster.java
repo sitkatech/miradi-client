@@ -39,12 +39,7 @@ import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.AbstractTransferableMiradiList;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.RelevancyOverride;
-import org.miradi.objecthelpers.RelevancyOverrideSet;
-import org.miradi.objecthelpers.ThreatStressPair;
+import org.miradi.objecthelpers.*;
 import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.schemas.*;
@@ -62,17 +57,14 @@ abstract public class DiagramPaster
 		project = currentModel.getProject();
 		transferableList = transferableListToUse;
 		oldToNewPastedObjectMap = new HashMap<ORef, ORef>();
-		
+        doesPasteDiscardInvalidTaxonomyClassifcationList = false;
+
 		factorDeepCopies = transferableList.getFactorDeepCopies();
 		diagramFactorDeepCopies = transferableList.getDiagramFactorDeepCopies();
 		threatStressRatings = transferableListToUse.getThreatStressRatingDeepCopies();
 		factorLinkDeepCopies = transferableList.getFactorLinkDeepCopies();
 		diagramLinkDeepCopies = transferableList.getDiagramLinkDeepCopies();
 		pastedCellsToSelect = new Vector<EAMGraphCell>();
-
-        fromMiradiShareProjectData = project.getSafeMiradiShareProjectData();
-        if (transferableListToUse.project != null)
-            toMiradiShareProjectData = transferableList.project.getSafeMiradiShareProjectData();
     }
 	
 	protected Vector<String> getFactorDeepCopies()
@@ -804,12 +796,13 @@ abstract public class DiagramPaster
 		return ! getProject().getFilename().equals(getClipboardProjectFileName());
 	}
 
-    private boolean isBetweenProjectsWithDifferentTaxonomySets()
+    private boolean isValidTaxonomyClassificationList(Project project, BaseObject baseObject, String taxonomyClassificationList) throws Exception
     {
-        String fromTaxonomySetVersion = (fromMiradiShareProjectData != null) ? fromMiradiShareProjectData.getProgramTaxonomySetVersionId() : "";
-        String toTaxonomySetVersion = (toMiradiShareProjectData != null) ? toMiradiShareProjectData.getProgramTaxonomySetVersionId() : "";
+        if (taxonomyClassificationList.equals(""))
+            return true;
 
-        return !fromTaxonomySetVersion.equals(toTaxonomySetVersion);
+        TaxonomyClassificationMap taxonomyClassificationLMap = new TaxonomyClassificationMap(taxonomyClassificationList);
+        return TaxonomyHelper.isTaxonomyClassificationMapValid(project, baseObject, taxonomyClassificationLMap);
     }
 
 	private boolean cannotCreateNewFactorLinkFromAnotherProject(EnhancedJsonObject json)
@@ -832,7 +825,7 @@ abstract public class DiagramPaster
 		if (!isInBetweenProjectPaste())
 			return false;
 
-        if (isBetweenProjectsWithDifferentTaxonomySets())
+        if (doesPasteDiscardInvalidTaxonomyClassifcationList)
             return true;
 
 		for (int i = 0; i < factorDeepCopies.size(); ++i)
@@ -904,7 +897,7 @@ abstract public class DiagramPaster
 		return project;
 	}
 
-	public HashMap<ORef, ORef> getOldToNewObjectRefMap()
+    public HashMap<ORef, ORef> getOldToNewObjectRefMap()
 	{
 		return oldToNewPastedObjectMap;
 	}
@@ -983,20 +976,18 @@ abstract public class DiagramPaster
 		Vector<String> tags = getTagsToLoadFromJson(json, baseObject);
 		for (String tag : tags)
 		{
-			String value = json.optString(tag);
-			if (transferableList.isLegacyTransferableMiradiList())
-				value = baseObject.getHtmlEncodedValue(json, tag);
+            String value = json.optString(tag);
+            if (transferableList.isLegacyTransferableMiradiList())
+                value = baseObject.getHtmlEncodedValue(json, tag);
 
-            //noinspection StatementWithEmptyBody
-            if (tag.equals(BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER) && isBetweenProjectsWithDifferentTaxonomySets())
+            if (tag.equals(BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER) && !isValidTaxonomyClassificationList(project, baseObject, value))
             {
-                // err on the safe side, and skip copying over taxonomy classifications that *may* be invalid
+                doesPasteDiscardInvalidTaxonomyClassifcationList = true;
+                continue;
             }
-            else
-            {
-                CommandSetObjectData setDataCommand = new CommandSetObjectData(baseObject.getRef(), tag, value);
-                commands.add(setDataCommand);
-            }
+
+            CommandSetObjectData setDataCommand = new CommandSetObjectData(baseObject.getRef(), tag, value);
+            commands.add(setDataCommand);
 		}
 		
 		return commands.toArray(new Command[0]);
@@ -1057,7 +1048,7 @@ abstract public class DiagramPaster
 	private Project project;
 	private DiagramModel currentModel;
 	private DiagramPanel diagramPanel;
-	
+
 	private Vector<String> factorDeepCopies;
 	private Vector<String> diagramFactorDeepCopies;
 	private Vector<String> threatStressRatings;
@@ -1069,8 +1060,7 @@ abstract public class DiagramPaster
 	protected AbstractTransferableMiradiList transferableList;
 	private Vector<EAMGraphCell> pastedCellsToSelect;
 
-    private MiradiShareProjectData fromMiradiShareProjectData;
-    private MiradiShareProjectData toMiradiShareProjectData;
+    private boolean doesPasteDiscardInvalidTaxonomyClassifcationList;
 
 	public static final String FAKE_TAG_TYPE = "Type";
 	public static final String FAKE_TAG_TAG_NAMES = "TagNames";
