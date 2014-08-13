@@ -37,6 +37,7 @@
     <property name="eam.test.class.root" value="${dist.temp}/testbin"/>
 	<property name="eam.thirdparty" value="${dist.temp.jars}"/>
 	<property name="eam.resources" value="${eam.src.root}/resources" />
+	<property name="eam.icons" value="${eam.resources}/icons" />
 	<property name="eam.fieldlabels.properties" value="${eam.resources}/FieldLabels.properties"/>
 	<property name="eam.translations.dir" value = "${eam.src.root}/${translations.subdir}"/>
     
@@ -939,6 +940,7 @@
 		version="${version.full}"
 		build="${version.timestamp}"
 		vmoptions="-Xmx512m"
+        icon="${eam.icons}/miradi.icns"
 		>
 
 		<jarfileset dir="${dist.dir}">
