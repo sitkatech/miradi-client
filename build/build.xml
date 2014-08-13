@@ -87,7 +87,8 @@
     <property name="installer.src" value="${installer.win32}"/>
     <property name="installer.bin" value="${installer.win32}/bin"/>
 	<property name="installer.mac" value="${installer.top}/Mac" />
-	
+	<property name="installer.dmg.template" value="${installer.mac}/dmg-template" />
+
 	<property name="samples.marine" value="MarineExample-${version.full}"/>
 	<property name="samples.marine.miradi" value="${samples.marine}.Miradi"/>
 	
@@ -966,6 +967,7 @@
 	<property name="rawdmgfile" value="${dist.dir}/mac-client-build-dependencies/images/Miradi.dmg" />
 	<property name="dmgsizemegs" value="18" />
 	<property name="dmgmount" value="${dist.dir}/mac-client-build-dependencies/mounts/dmgfile" />
+	<property name="dmgbackground" value="${dmgmount}/.background" />
 
 	<exec os="Linux"  executable="umount" failonerror="false">
 		<arg value="-d"/>
@@ -1008,7 +1010,19 @@
 		<fileset dir="${installer.buildfiles.dir}" includes="${samples.marine.miradi}" />
 	</copy>
 
-	<exec os="Linux"  executable="umount" failonerror="true">
+    <!-- make hidden dir for background image and copy template image -->
+    <mkdir dir="${dmgbackground}"/>
+    <copy todir="${dmgbackground}">
+        <fileset dir="${installer.dmg.template}" includes="background.png" />
+    </copy>
+
+    <!-- copy template to hidden metadata (for dmg folder layout)  -->
+    <copy file="${installer.dmg.template}/template.DS_Store" tofile="${dmgmount}/.DS_Store"/>
+
+    <!-- add link to apps folder -->
+    <symlink link="${dmgmount}/Applications" resource="/Applications" failonerror="false" />
+
+    <exec os="Linux"  executable="umount" failonerror="true">
 		<arg value="-l"/>
 		<arg value="-d"/>
 		<arg value="${dmgmount}"/>
