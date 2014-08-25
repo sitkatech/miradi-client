@@ -99,6 +99,6 @@ public class RelevancyOverride implements Comparable<RelevancyOverride>
 
     @Override
     public int compareTo(RelevancyOverride otherOverride) {
-        return this.getRef().compareTo(otherOverride.getRef());
+        return toString().compareTo(otherOverride.toString());
     }
 }
