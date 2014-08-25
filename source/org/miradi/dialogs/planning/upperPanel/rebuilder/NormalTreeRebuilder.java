@@ -206,7 +206,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
         CodeList visibleRowTypes = getRowColumnProvider().getRowCodesToShow();
         boolean includeStrategies = visibleRowTypes.contains(StrategySchema.OBJECT_NAME);
 
-        if (!includeStrategies && grandparentRef!= null && Desire.isDesire(grandparentRef))
+        if (!includeStrategies && Desire.isDesire(grandparentRef))
             return childRefs;
 
 		Strategy strategy = Strategy.find(getProject(), parentRef);

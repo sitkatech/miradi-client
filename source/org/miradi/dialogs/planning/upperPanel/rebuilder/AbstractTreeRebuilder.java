@@ -85,7 +85,7 @@ abstract public class AbstractTreeRebuilder
 			if(DiagramObject.isDiagramObject(parentRef))
 				diagram = DiagramObject.findDiagramObject(getProject(), parentRef);
 
-            ORef grandparentRef = (grandparentNode != null) ? grandparentNode.getObjectReference() : null;
+            ORef grandparentRef = (grandparentNode != null) ? grandparentNode.getObjectReference() : ORef.INVALID;
 
 			ORefList candidateChildRefs = getChildRefs(grandparentRef, parentNode.getObjectReference(), diagram);
 			candidateChildRefs.addAll(parentNode.getObject().getResourceAssignmentRefs());
