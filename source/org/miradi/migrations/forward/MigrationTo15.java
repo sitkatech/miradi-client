@@ -180,7 +180,7 @@ public class MigrationTo15 extends AbstractMigration
                         boolean isBidirectionalLink = isFactorLinkBidirectional(rawFactorLink);
                         if (isBidirectionalLink)
                         {
-                            if (fromRef.equals(parentFactor) && isNonDraftStrategy(toRef))
+                            if ((fromRef.equals(parentFactor) && isNonDraftStrategy(toRef)) || (toRef.equals(parentFactor) && isNonDraftStrategy(fromRef)))
                                 relatedStrategyRefs.add(toRef);
                         }
                         else
