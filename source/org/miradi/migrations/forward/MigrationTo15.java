@@ -208,23 +208,24 @@ public class MigrationTo15 extends AbstractMigration
             return isBidirectional;
         }
 
-        private ORef getFactorLinkFromRef(RawObject rawFactorLink)
+        private ORef getFactorLinkFromRef(RawObject rawFactorLink) throws Exception
         {
             return getFactorLinkRef(rawFactorLink, FACTOR_LINK_TAG_FROM_REF);
         }
 
-        private ORef getFactorLinkToRef(RawObject rawFactorLink)
+        private ORef getFactorLinkToRef(RawObject rawFactorLink) throws Exception
         {
             return getFactorLinkRef(rawFactorLink, FACTOR_LINK_TAG_TO_REF);
         }
 
-        private ORef getFactorLinkRef(RawObject rawFactorLink, String directionTag)
+        private ORef getFactorLinkRef(RawObject rawFactorLink, String directionTag) throws Exception
         {
             ORef linkRef = null;
 
             if (rawFactorLink.hasValue(directionTag))
             {
-                ORefData linkRefData = new ORefData(rawFactorLink.getData(directionTag));
+                ORefData linkRefData = new ORefData(directionTag);
+                linkRefData.set(rawFactorLink.getData(directionTag));
                 linkRef = linkRefData.getRef();
             }
 
