@@ -45,10 +45,7 @@ import org.miradi.objects.SubTarget;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
-import org.miradi.schemas.GoalSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.MeasurementSchema;
-import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
 
 public class NormalTreeRebuilder extends AbstractTreeRebuilder
@@ -222,7 +219,18 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 	{
 		ORefList childRefs = new ORefList();
 		Desire desire = Desire.findDesire(getProject(), parentRef);
-		childRefs.addAll(getRelevantStrategyAndActivityRefsInDiagram(diagram, desire));
+
+        ORefList relevantStrategyAndActivityRefs = getRelevantStrategyAndActivityRefsInDiagram(diagram, desire);
+
+        if (doObjectivesContainStrategies())
+        {
+            childRefs.addAll(relevantStrategyAndActivityRefs);
+        }
+        else
+        {
+            childRefs.addAll(relevantStrategyAndActivityRefs.getFilteredBy(TaskSchema.getObjectType()));
+        }
+
 		childRefs.addAll(getRelevantIndicatorsInDiagram(diagram, desire));
 		return childRefs;
 	}
