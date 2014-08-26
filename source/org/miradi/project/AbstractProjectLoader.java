@@ -53,13 +53,16 @@ abstract public class AbstractProjectLoader
 		
 		String fileHeaderLine = reader.readLine();
 		validateHeaderLine(fileHeaderLine);
-		
+
 		while(true)
 		{
 			String line = reader.readLine();
 			if(line == null)
 				break;
-			
+
+            if(line.equals(StringUtilities.EMPTY_LINE))
+                continue;
+
 			if (line.startsWith(MiradiProjectFileUtilities.STOP_MARKER))
 			{
 				foundEnd = true;
