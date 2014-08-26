@@ -123,6 +123,7 @@ public class StringUtilities
 	}
 	
 	public static final String EMPTY_SPACE= " ";
+	public static final String EMPTY_LINE= "";
 	public static final String NEW_LINE = "\n";
 	public static final String EMPTY_STRING = "";
 	private static final String REGEXP_TAB = "\\u0009";
