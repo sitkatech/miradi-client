@@ -125,11 +125,6 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 		model.sortLayers();
 	}
 
-	private int getLabelLineCount()
-	{
-		return HtmlUtilities.getLabelLineCount(getWrappedFactor().getLabel());
-	}
-
 	private void saveLocationAndSize(Point location, Dimension size) throws Exception
 	{
 		CommandSetObjectData setLocation = new CommandSetObjectData(diagramFactor.getRef(), DiagramFactor.TAG_LOCATION, EnhancedJsonObject.convertFromPoint(location));

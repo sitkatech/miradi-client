@@ -496,7 +496,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
 		writeLanguageVocabulary();
 		writeTncTerrestrialEcoregionVocabulary();
-        getSchemaWriter().println("vocabulary_diagram_factor_header_height = xsd:integer { minInclusive='0' maxInclusive='9' } ");
+        getSchemaWriter().println("vocabulary_diagram_factor_header_height = xsd:integer { minInclusive='0' maxInclusive='9' }");
 	}
 
 	private boolean shouldOmitQuestion(Class<? extends ChoiceQuestion> questionClass)
