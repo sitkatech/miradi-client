@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-12 08:06-0700\n"
+"POT-Creation-Date: 2014-09-01 08:51-0700\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -280,7 +280,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br> "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:112
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:113
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1468
 msgid "(%s)"
 msgstr ""
@@ -306,6 +306,10 @@ msgstr "(Garis lintang harus berada pada posisi -90,0000 sampai +90,0000)"
 msgid "(Longitude must be -180.0000 to +180.0000)"
 msgstr "(Garis bujur harus berada pada posisi -180,0000 sampai +180,0000)"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:43
+msgid "(Max value is 9, if not supplied defaults to 2)"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:42
 msgid "(See Location tab)"
 msgstr "(Lihat tab Lokasi) "
@@ -319,7 +323,7 @@ msgid "(Translation: %code %date)"
 msgstr "(Penerjemahan: : %code %date) "
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/noproject/projectlist/ProjectList.java:70
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/DiagramFactor.java:209
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/DiagramFactor.java:215
 msgid "(Unknown)"
 msgstr "(Tidak Dikenal) "
 
@@ -3982,7 +3986,7 @@ msgstr "Kelompok"
 msgid "Group Box"
 msgstr "Kotak Grup"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:54
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:55
 msgid "Group Box Properties"
 msgstr "Sifat-sifat Kotak Grup "
 
@@ -3993,6 +3997,10 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:55
 msgid "Habitat"
 msgstr "Habitat "
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo16.java:41
+msgid "Header Height"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/HowToSaveDoer.java:44
 msgid "Help"
@@ -7990,6 +7998,10 @@ msgstr ""
 msgid "This migration adds 2 new TNC fields."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo16.java:61
+msgid "This migration adds a new field to the Diagram Factor properties."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo5.java:69
 msgid "This migration changes default real status code to \"\""
 msgstr ""
@@ -8271,7 +8283,7 @@ msgstr "Kesalahan"
 msgid "Title|Export Image Scale"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramView.java:966
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramView.java:967
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Sifat-sifat Faktor "
@@ -9925,6 +9937,9 @@ msgstr "Warna Latar "
 
 msgid "FieldLabel|18.TextBoxZOrderCode|Position"
 msgstr "Posisi "
+
+msgid "FieldLabel|18.HeaderHeight|Header Height"
+msgstr ""
 
 msgid "FieldLabel|19.ScopeBox|Scope Box"
 msgstr "Kotak Cakupan "
