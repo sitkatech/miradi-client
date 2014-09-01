@@ -67,13 +67,14 @@ public class DiagramFactorImporter extends BaseObjectImporter
 	
 	private void importFontStylingElements(Node node, ORef destinationRef) throws Exception
 	{
-		Node diagramFactorSyleNode = getImporter().getNamedChildNode(node, getXmpz2ElementName() + STYLE);
-		if (diagramFactorSyleNode == null)
+		Node diagramFactorStyleNode = getImporter().getNamedChildNode(node, getXmpz2ElementName() + STYLE);
+		if (diagramFactorStyleNode == null)
 			return;
 		
-		Node styleNode = getImporter().getNamedChildNode(diagramFactorSyleNode, STYLE);
+		Node styleNode = getImporter().getNamedChildNode(diagramFactorStyleNode, STYLE);
 		getImporter().importCodeField(styleNode, getBaseObjectSchema().getXmpz2ElementName(), destinationRef, DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion());
 		getImporter().importCodeField(styleNode, getBaseObjectSchema().getXmpz2ElementName(), destinationRef, DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion());
+        getImporter().importFieldQualifiedByContainerName(styleNode, getBaseObjectSchema().getXmpz2ElementName(), destinationRef, DiagramFactor.TAG_HEADER_HEIGHT);
 		getImporter().importCodeField(styleNode, getBaseObjectSchema().getXmpz2ElementName(), destinationRef, DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion());
 		getImporter().importCodeField(styleNode, getBaseObjectSchema().getXmpz2ElementName(), destinationRef, DiagramFactor.TAG_BACKGROUND_COLOR, new DiagramFactorBackgroundQuestion());
 	}
@@ -87,15 +88,15 @@ public class DiagramFactorImporter extends BaseObjectImporter
 
 	private static ORef importWrappedRef(Xmpz2XmlImporter importer, Node wrappedFactorIdNode) throws Exception
 	{
-		Node wrappedByDiagamFactorIdNode = importer.getNamedChildNode(wrappedFactorIdNode, WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
+		Node wrappedByDiagramFactorIdNode = importer.getNamedChildNode(wrappedFactorIdNode, WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
 		
-		return getWrappedRef(importer, wrappedByDiagamFactorIdNode);
+		return getWrappedRef(importer, wrappedByDiagramFactorIdNode);
 	}
 
-	public static ORef getWrappedRef(Xmpz2XmlImporter importer, Node wrappedByDiagamFactorIdNode) throws Exception
+	public static ORef getWrappedRef(Xmpz2XmlImporter importer, Node wrappedByDiagramFactorIdNode) throws Exception
 	{
 		String oredWrappedFactorNames = Xmpz2GroupedConstants.createOredWrappableFactorNames();
-		Node node = (Node) importer.evaluate(wrappedByDiagamFactorIdNode, oredWrappedFactorNames, XPathConstants.NODE);
+		Node node = (Node) importer.evaluate(wrappedByDiagramFactorIdNode, oredWrappedFactorNames, XPathConstants.NODE);
 		BaseId wrappedId = new BaseId(node.getTextContent());
 		final int objectTypeOfNode = importer.getObjectTypeOfNode(node);
 		

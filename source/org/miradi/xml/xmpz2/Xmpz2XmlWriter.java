@@ -579,6 +579,13 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 		writeEndElement(parentElementName + convertedElementName);
 	}
 	
+	public void writeElement(String parentElementName, String elementName, final int data) throws Exception
+	{
+		String convertedElementName = getConvertedElementName(parentElementName, elementName);
+        String qualifiedElementName = parentElementName + convertedElementName;
+        writeElement(qualifiedElementName, data);
+	}
+
 	public void writeElement(String elementName, OptionalDouble data) throws Exception
 	{
 		if (data.hasNoValue())

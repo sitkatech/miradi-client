@@ -80,7 +80,10 @@ public class DiagramFactorExporter extends BaseObjectExporter
 		if (tag.equals(DiagramFactor.TAG_FOREGROUND_COLOR))
 			return true;
 
-		return false;
+        if (tag.equals(DiagramFactor.TAG_HEADER_HEIGHT))
+            return true;
+
+        return false;
 	}
 
 	protected void writeWrappedFactorId(Factor wrappedFactor) throws Exception
@@ -108,12 +111,13 @@ public class DiagramFactorExporter extends BaseObjectExporter
 		getWriter().writeStartElement(STYLE);
 		getWriter().writeNonOptionalCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion(), diagramFactor.getFontSize());
 		getWriter().writeNonOptionalCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion(), XmlUtilities2.convertXmlTextToHtml(diagramFactor.getFontStyle()));
+        getWriter().writeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_HEADER_HEIGHT, diagramFactor.getHeaderHeight());
 		getWriter().writeNonOptionalCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion(), diagramFactor.getFontColor());
 		
 		Factor wrappedFactor = diagramFactor.getWrappedFactor();
 		if (wrappedFactor.isGroupBox() || wrappedFactor.isTextBox())
 			getWriter().writeNonOptionalCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_BACKGROUND_COLOR, new DiagramFactorBackgroundQuestion(), diagramFactor.getBackgroundColor());
-		
+
 		getWriter().writeEndElement(STYLE);
 		
 		getWriter().writeEndElement(STYLING_ELEMENT_NAME);

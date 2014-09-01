@@ -42,45 +42,7 @@ import javax.swing.event.ListSelectionListener;
 
 import org.martus.swing.UiLabel;
 import org.miradi.commands.CommandDeleteObject;
-import org.miradi.dialogfields.AnalysisLevelsChooserField;
-import org.miradi.dialogfields.CodeListPopupWithDescriptionPanelField;
-import org.miradi.dialogfields.CodeToUserStringMapMultiLineEditor;
-import org.miradi.dialogfields.DropDownChoiceField;
-import org.miradi.dialogfields.EditableCodeListField;
-import org.miradi.dialogfields.ExternalProjectsDisplayField;
-import org.miradi.dialogfields.IndicatorRelevancyOverrideListField;
-import org.miradi.dialogfields.ObjectCheckBoxField;
-import org.miradi.dialogfields.ObjectChoiceField;
-import org.miradi.dialogfields.ObjectCodeEditorField;
-import org.miradi.dialogfields.ObjectCurrencyInputField;
-import org.miradi.dialogfields.ObjectDataField;
-import org.miradi.dialogfields.ObjectDataInputField;
-import org.miradi.dialogfields.ObjectDateChooserInputField;
-import org.miradi.dialogfields.ObjectExpandingMultilineInputField;
-import org.miradi.dialogfields.ObjectFloatingPointRestrictedInputField;
-import org.miradi.dialogfields.ObjectIconChoiceField;
-import org.miradi.dialogfields.ObjectMultilineDisplayField;
-import org.miradi.dialogfields.ObjectMultilineShortDisplayField;
-import org.miradi.dialogfields.ObjectOverridenListField;
-import org.miradi.dialogfields.ObjectPercentageInputField;
-import org.miradi.dialogfields.ObjectRadioButtonGroupField;
-import org.miradi.dialogfields.ObjectReadonlyChoiceField;
-import org.miradi.dialogfields.ObjectReadonlyObjectListField;
-import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
-import org.miradi.dialogfields.ObjectStringInputField;
-import org.miradi.dialogfields.ObjectStringMapInputField;
-import org.miradi.dialogfields.PopupQuestionEditorField;
-import org.miradi.dialogfields.RadioButtonsField;
-import org.miradi.dialogfields.ReadOnlyCodeListField;
-import org.miradi.dialogfields.ReadonlyClickableLinkField;
-import org.miradi.dialogfields.ReadonlyStaticClickableLinkField;
-import org.miradi.dialogfields.SingleCodeEditableField;
-import org.miradi.dialogfields.SingleXenodataProjectIdReadonlyField;
-import org.miradi.dialogfields.StrategyGoalOverrideListField;
-import org.miradi.dialogfields.StrategyObjectiveOverrideListField;
-import org.miradi.dialogfields.StringMapProjectResourceFilterEditorField;
-import org.miradi.dialogfields.TaxonomyEditorFields;
-import org.miradi.dialogfields.WhoEditorField;
+import org.miradi.dialogfields.*;
 import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitledBorder;
@@ -513,6 +475,21 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public ObjectDataInputField createNumericField(int objectType, String tag) throws Exception
 	{
 		return new ObjectFloatingPointRestrictedInputField(getMainWindow(), getRefForType(objectType), tag);
+	}
+
+	public ObjectDataInputField createNonNegativeIntegerField(String tag) throws Exception
+	{
+		return new ObjectNonNegativeIntegerRestrictedInputField(getMainWindow(), getFirstSelectedRef(), tag);
+	}
+
+	public ObjectDataInputField createNonNegativeIntegerField(int objectType, String tag) throws Exception
+	{
+		return new ObjectNonNegativeIntegerRestrictedInputField(getMainWindow(), getRefForType(objectType), tag);
+	}
+
+	public ObjectDataInputField createNonNegativeIntegerField(int objectType, String tag, int columnCount) throws Exception
+	{
+		return new ObjectNonNegativeIntegerRestrictedInputField(getMainWindow(), getRefForType(objectType), tag, columnCount);
 	}
 
 	public ObjectDataInputField createPercentageField(String tag) throws Exception
