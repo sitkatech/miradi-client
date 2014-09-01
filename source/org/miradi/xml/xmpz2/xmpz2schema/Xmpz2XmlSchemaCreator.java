@@ -496,6 +496,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
 		writeLanguageVocabulary();
 		writeTncTerrestrialEcoregionVocabulary();
+        getSchemaWriter().println("vocabulary_diagram_factor_header_height = xsd:integer { minInclusive='0' maxInclusive='99' } ");
 	}
 
 	private boolean shouldOmitQuestion(Class<? extends ChoiceQuestion> questionClass)
@@ -927,7 +928,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		creator.addOptionalChildElement(DIAGRAM_FACTOR + DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME, VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE);
 		creator.addOptionalChildElement(DIAGRAM_FACTOR + DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME, VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR);
 		creator.addOptionalChildElement(DIAGRAM_FACTOR + DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME, VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR);
-		
+        creator.addOptionalChildElement(DIAGRAM_FACTOR + DIAGRAM_FACTOR_HEADER_SIZE_ELEMENT_NAME, VOCABULARY_DIAGRAM_FACTOR_HEADER_HEIGHT);
+
 		return creator;
 	}
 	

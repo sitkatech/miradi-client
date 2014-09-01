@@ -44,6 +44,7 @@ public class GroupBoxPropertiesPanel extends ObjectDataInputPanel
 		addField(createChoiceField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion()));
 		addField(createChoiceField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion()));
 		addField(createChoiceField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion()));
+        addFieldWithCustomLabelAndHint(createNonNegativeIntegerField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_HEADER_HEIGHT, 2), EAM.text("(Header Height must be 0 to 99)"));
 
 		updateFieldsFromProject();
 	}

@@ -409,7 +409,16 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		String internalCode = question.convertToInternalCode(importedReadableCode);		
 		importField(destinationRef, destinationTag, internalCode);
 	}
-	
+
+    public void importFieldQualifiedByContainerName(Node node, String containerName, ORef destinationRef, String destinationTag) throws Exception
+    {
+        Xmpz2TagToElementNameMap map = new Xmpz2TagToElementNameMap();
+        String elementName = map.findElementName(containerName, destinationTag);
+        final String containerElementName = containerName  + elementName;
+        String fieldDataToImport = getPathData(node, new String[]{containerElementName, });
+        importField(destinationRef, destinationTag, fieldDataToImport);
+    }
+
 	public int getObjectTypeOfNode(Node typedIdNode)
 	{
 		String nodeName = typedIdNode.getNodeName();

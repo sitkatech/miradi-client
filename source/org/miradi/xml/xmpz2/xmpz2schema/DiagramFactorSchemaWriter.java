@@ -37,8 +37,11 @@ public class DiagramFactorSchemaWriter extends BaseObjectSchemaWriter
 	{
 		if (tag.equals(DiagramFactor.TAG_FONT_STYLE))
 			return true;
-		
-		if (tag.equals(DiagramFactor.TAG_BACKGROUND_COLOR))
+
+        if (tag.equals(DiagramFactor.TAG_HEADER_HEIGHT))
+            return true;
+
+        if (tag.equals(DiagramFactor.TAG_BACKGROUND_COLOR))
 			return true;
 		
 		if (tag.equals(DiagramFactor.TAG_FONT_SIZE))
@@ -46,8 +49,8 @@ public class DiagramFactorSchemaWriter extends BaseObjectSchemaWriter
 		
 		if (tag.equals(DiagramFactor.TAG_FOREGROUND_COLOR))
 			return true;
-				
-		return super.doesFieldRequireSpecialHandling(tag);
+
+        return super.doesFieldRequireSpecialHandling(tag);
 	}
 	
 	@Override

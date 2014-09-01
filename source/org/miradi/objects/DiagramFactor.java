@@ -150,13 +150,19 @@ public class DiagramFactor extends BaseObject
 	{
 		return getStringData(TAG_FONT_STYLE);
 	}
-	
+
 	public String getBackgroundColor()
 	{
 		return getStringData(TAG_BACKGROUND_COLOR);
 	}
-	
-	public void setLocation(Point pointToUse)
+
+    public int getHeaderHeight()
+    {
+        return getIntegerData(TAG_HEADER_HEIGHT);
+    }
+
+
+    public void setLocation(Point pointToUse)
 	{
 		setPointData(TAG_LOCATION, pointToUse);
 	}
@@ -254,11 +260,14 @@ public class DiagramFactor extends BaseObject
 		
 		CommandSetObjectData setFontStyleCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_FONT_STYLE, getStringData(TAG_FONT_STYLE));
 		commands.add(setFontStyleCommand);
-		
-		CommandSetObjectData setBackgroundColorCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_BACKGROUND_COLOR, getStringData(TAG_BACKGROUND_COLOR));
+
+        CommandSetObjectData setHeaderHeightCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_HEADER_HEIGHT, Integer.toString(getHeaderHeight()));
+        commands.add(setHeaderHeightCommand);
+
+        CommandSetObjectData setBackgroundColorCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_BACKGROUND_COLOR, getStringData(TAG_BACKGROUND_COLOR));
 		commands.add(setBackgroundColorCommand);
-		
-		return commands.toArray(new Command[0]);
+
+        return commands.toArray(new Command[0]);
 	}
 	
 	public boolean isCoveredByGroupBox()
@@ -308,7 +317,10 @@ public class DiagramFactor extends BaseObject
 	public static final String TAG_GROUP_BOX_CHILDREN_REFS = "GroupBoxChildrenRefs";
 	public static final String TAG_BACKGROUND_COLOR = "BackgroundColor";
 	public static final String TAG_TEXT_BOX_Z_ORDER_CODE = "TextBoxZOrderCode";
-	
+    public static final String TAG_HEADER_HEIGHT = "HeaderHeight";
+
+    public static final int DEFAULT_HEADER_HEIGHT = 2;
+
 	public static final Dimension DEFAULT_STRESS_SIZE = new Dimension(60, 30);
 	public static final Dimension DEFAULT_ACTIVITY_SIZE = new Dimension(60, 30);
 }
