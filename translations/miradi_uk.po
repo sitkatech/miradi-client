@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-12 08:06-0700\n"
+"POT-Creation-Date: 2014-09-01 08:51-0700\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -280,7 +280,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:112
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:113
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1468
 msgid "(%s)"
 msgstr ""
@@ -306,6 +306,10 @@ msgstr "(Широта має бути від -90.0000 до +90.0000)"
 msgid "(Longitude must be -180.0000 to +180.0000)"
 msgstr "(Довгота має бути від -180.0000 до +180.0000)"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:43
+msgid "(Max value is 9, if not supplied defaults to 2)"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:42
 msgid "(See Location tab)"
 msgstr "(Дивись табулятор розміщення)"
@@ -319,7 +323,7 @@ msgid "(Translation: %code %date)"
 msgstr "(Перетворення: %code %date) "
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/noproject/projectlist/ProjectList.java:70
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/DiagramFactor.java:209
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/DiagramFactor.java:215
 msgid "(Unknown)"
 msgstr ""
 
@@ -4027,7 +4031,7 @@ msgstr ""
 msgid "Group Box"
 msgstr "Групова рамка"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:54
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:55
 msgid "Group Box Properties"
 msgstr "Складові Групової рамки"
 
@@ -4038,6 +4042,10 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:55
 msgid "Habitat"
 msgstr "Оселище"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo16.java:41
+msgid "Header Height"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/HowToSaveDoer.java:44
 msgid "Help"
@@ -8026,6 +8034,10 @@ msgstr ""
 msgid "This migration adds 2 new TNC fields."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo16.java:61
+msgid "This migration adds a new field to the Diagram Factor properties."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo5.java:69
 msgid "This migration changes default real status code to \"\""
 msgstr ""
@@ -8304,7 +8316,7 @@ msgstr "Title|Помилка"
 msgid "Title|Export Image Scale"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramView.java:966
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramView.java:967
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Title|Фактори"
@@ -9947,6 +9959,9 @@ msgstr "FieldLabel|18.BackgroundColor|Колір фону"
 
 msgid "FieldLabel|18.TextBoxZOrderCode|Position"
 msgstr "FieldLabel|18.TextBoxZOrderCode|Позиція"
+
+msgid "FieldLabel|18.HeaderHeight|Header Height"
+msgstr ""
 
 msgid "FieldLabel|19.ScopeBox|Scope Box"
 msgstr "FieldLabel|19.ScopeBox|Рамка сфери дій"
