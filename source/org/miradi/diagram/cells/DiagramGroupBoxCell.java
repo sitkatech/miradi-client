@@ -100,7 +100,10 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 			return;
 		
 		int gridSize = getProject().getGridSize();
-		heightOfTextArea = (getLabelLineCount() + 1) * gridSize;
+
+        int headerHeight = Math.max(diagramFactor.getHeaderHeight(), DiagramFactor.DEFAULT_HEADER_HEIGHT);
+        heightOfTextArea = headerHeight * gridSize;
+
 		Rectangle2D groupBoxBounds = computeCurrentChildrenBounds();
 		Point location = new Point((int)groupBoxBounds.getX() - gridSize, (int)groupBoxBounds.getY()  - heightOfTextArea);
 		location = getProject().getSnapped(location);

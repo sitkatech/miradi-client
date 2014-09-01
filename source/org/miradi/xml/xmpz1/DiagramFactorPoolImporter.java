@@ -74,8 +74,8 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 	
 	private void importFontStylingElements(Node node, ORef destinationRef) throws Exception
 	{
-		Node diagramFactorSyleNode = getImporter().getNamedChildNode(node, getPoolName() + STYLING);
-		Node style = getImporter().getNamedChildNode(diagramFactorSyleNode, STYLING);
+		Node diagramFactorStyleNode = getImporter().getNamedChildNode(node, getPoolName() + STYLING);
+		Node style = getImporter().getNamedChildNode(diagramFactorStyleNode, STYLING);
 		importCodeField(style, destinationRef, DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion());
 		importCodeField(style, destinationRef, DiagramFactor.TAG_FONT_STYLE, new LegacyDiagramFactorFontStyleQuestion());
 		importCodeField(style, destinationRef, DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion());

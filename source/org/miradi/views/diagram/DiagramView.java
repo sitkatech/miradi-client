@@ -746,7 +746,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			if (event.isSetDataCommandWithThisTypeAndTag(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE))
 				handleTextBoxZOrderChanged(setCommand.getObjectORef());
 			
-			if(event.isSetDataCommandWithThisTypeAndTag(GroupBoxSchema.getObjectType(), GroupBox.TAG_LABEL))
+			if(event.isSetDataCommandWithThisTypeAndTag(GroupBoxSchema.getObjectType(), GroupBox.TAG_LABEL) ||
+               event.isSetDataCommandWithThisTypeAndTag(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_HEADER_HEIGHT))
 				getDiagramModel().updateGroupBoxCells();
 			
 			forceDiagramComponentRepaint();
