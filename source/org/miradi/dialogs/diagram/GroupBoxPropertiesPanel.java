@@ -40,11 +40,11 @@ public class GroupBoxPropertiesPanel extends ObjectDataInputPanel
 		setObjectRefs(new ORef[] {diagramFactor.getWrappedORef(), diagramFactor.getRef()});
 		
 		addField(createExpandableField(GroupBox.TAG_LABEL));
+        addFieldWithCustomLabelAndHint(createNonNegativeIntegerField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_HEADER_HEIGHT, 1), EAM.text("(Max value is 9, if not supplied defaults to 2)"));
 		addField(createChoiceField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_BACKGROUND_COLOR, new DiagramFactorBackgroundQuestion()));
 		addField(createChoiceField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion()));
 		addField(createChoiceField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion()));
 		addField(createChoiceField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion()));
-        addFieldWithCustomLabelAndHint(createNonNegativeIntegerField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_HEADER_HEIGHT, 2), EAM.text("(Header Height must be 0 to 99)"));
 
 		updateFieldsFromProject();
 	}
