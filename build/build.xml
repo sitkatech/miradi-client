@@ -14,15 +14,20 @@
   
 	<property environment="env"/>
 
+    <!-- env vars from build machine -->
+    <property name="mac.build.user" value="${env.SITKA.MAC.BUILDUSER}" />
+    <property name="mac.build.server" value="${env.SITKA.MAC.BUILDSERVER}" />
+    <property name="source.hg.username" value="${env.HG.USER}"/>
+    <property name="source.hg.password" value="${env.HG.PASSWORD}"/>
+    <property name="jenkins.workspace" value="${env.WORKSPACE}"/>
+
     <!-- repos -->
     <property name="source.hg.miradi-client" value="https://code.google.com/p/miradi-client/"/>
     <property name="source.hg.miradi-client-thirdparty" value="https://code.google.com/p/miradi-client-thirdparty/"/>
-    <property name="source.hg.username" value="${hguser}"/>
-    <property name="source.hg.password" value="${hgpassword}"/>
 
 	<!-- directories -->
-	<property name="build.dir" value="${env.WORKSPACE}/build"/>
-    <property name="dist.dir" value="${env.WORKSPACE}/../miradi-client-dist"/>
+	<property name="build.dir" value="${jenkins.workspace}/build"/>
+    <property name="dist.dir" value="${jenkins.workspace}/../miradi-client-dist"/>
 
     <property name="dist.temp" value="${dist.dir}/temp"/>
     <property name="dist.temp.jars" value="${dist.temp}/jars"/>
@@ -30,9 +35,9 @@
 	
 	<property name="translations.subdir" value="translations"/>
     
-	<property name="miradi.root.dir" value="${env.WORKSPACE}" />
-    <property name="eam.src.root" value="${env.WORKSPACE}/source"/>
-    <property name="eam.test.src.root" value="${env.WORKSPACE}/tests"/>
+	<property name="miradi.root.dir" value="${jenkins.workspace}" />
+    <property name="eam.src.root" value="${jenkins.workspace}/source"/>
+    <property name="eam.test.src.root" value="${jenkins.workspace}/tests"/>
     <property name="eam.class.root" value="${dist.temp}/bin"/>
     <property name="eam.test.class.root" value="${dist.temp}/testbin"/>
 	<property name="eam.thirdparty" value="${dist.temp.jars}"/>
@@ -41,7 +46,7 @@
 	<property name="eam.fieldlabels.properties" value="${eam.resources}/FieldLabels.properties"/>
 	<property name="eam.translations.dir" value = "${eam.src.root}/${translations.subdir}"/>
     
-    <property name="translations.dir" value="${env.WORKSPACE}/${translations.subdir}" />
+    <property name="translations.dir" value="${jenkins.workspace}/${translations.subdir}" />
 
 	<property name="version.file" value = "${dist.dir}/miradi.version.txt" />
 	<property name="timestamp.file" value = "${dist.dir}/miradi.timestamp.txt" />
@@ -86,11 +91,10 @@
 	<property name="installer.buildfiles.dir" value="${installer.top}/BuildFiles"/>
     <property name="installer.src" value="${installer.win32}"/>
     <property name="installer.bin" value="${installer.win32}/bin"/>
-	<property name="installer.mac" value="${installer.top}/Mac" />
-	<property name="installer.dmg.template" value="${installer.mac}/dmg-template" />
+	<property name="installer.mac.dir" value="${installer.top}/Mac" />
+	<property name="installer.mac.dmgbuild.dir" value="${installer.mac.dir}/dmgbuild" />
 
-	<property name="samples.marine" value="MarineExample-${version.full}"/>
-	<property name="samples.marine.miradi" value="${samples.marine}.Miradi"/>
+	<property name="samples.marine.miradi" value="MarineExample.Miradi"/>
 	
 	<property name="dist.mactree" value="${dist.dir}/MiradiMacInstall" />
 	<property name="mac.app.name" value="Miradi-${version.full}" />
@@ -141,6 +145,7 @@
     <fail message="env.INSTALL4J.JRES.PATH is not defined" unless="env.INSTALL4J.JRES.PATH"/>
     <echo message="env.INSTALL4J.JRES.PATH = ${env.INSTALL4J.JRES.PATH}"/>
 
+    <!-- TODO: this should be replaced by isBuildServer or similar... -->
     <condition property="isLinux">
         <and>
             <os family="unix"/>
@@ -548,7 +553,7 @@
 <!-- ================================================================== -->
 <taskdef name="jarbundler"
          classname="net.sourceforge.jarbundler.JarBundler"
-         classpath="${installer.mac}/jarbundler-2.3.1/build/jarbundler-2.3.1.jar" />
+         classpath="${installer.mac.dir}/jarbundler-2.3.1/build/jarbundler-2.3.1.jar" />
 
 <taskdef name="install4j"
          classname="com.install4j.Install4JTask"
@@ -924,7 +929,7 @@
 <!-- M A C   A P P   B U N D L E                                        -->
 <!-- ================================================================== -->
 <target name="macappbundle" depends="" description="create a jar app bundle for the mac">
-	<property name="macjavastubfile" value="${installer.mac}/JavaApplicationStub/JavaApplicationStub" />
+	<property name="macjavastubfile" value="${installer.mac.dir}/JavaApplicationStub/JavaApplicationStub" />
 
 	<mkdir dir="${dist.mactree}" />
 	<delete>
@@ -964,71 +969,47 @@
 <!-- M A C   D M G   F I L E                                            -->
 <!-- ================================================================== -->
 <target name="macdmgfile" depends="macappbundle" description="create a mac dmg file" if="isLinux">
-	<property name="rawdmgfile" value="${dist.dir}/mac-client-build-dependencies/images/Miradi.dmg" />
-	<property name="dmgsizemegs" value="18" />
-	<property name="dmgmount" value="${dist.dir}/mac-client-build-dependencies/mounts/dmgfile" />
-	<property name="dmgbackground" value="${dmgmount}/.background" />
+    <property name="mac.build.temp.dir" value="/Users/${mac.build.user}/miradi-build-temp/" />
+    <property name="mac.dmgbuild.settings" value="settings.py" />
+    <property name="mac.dmgbuild.background" value="background.png" />
+    <property name="mac.build.dmg" value="Miradi.dmg" />
+    <property name="mac.build.dmg.name" value="Miradi ${version.full} Mac Install" />
 
-	<exec os="Linux"  executable="umount" failonerror="false">
-		<arg value="-d"/>
-		<arg value="${dmgmount}"/>
-	</exec>
+    <!-- delete / create temp folder on mac build machine -->
+    <exec executable="ssh">
+        <arg value="${mac.build.user}@${mac.build.server}"/>
+        <arg value="rm -rf ${mac.build.temp.dir}"/>
+        <arg value="mkdir ${mac.build.temp.dir}"/>
+    </exec>
 
-	<!-- Create an empty .dmg file of the appropriate size -->
-	<delete file="${rawdmgfile}" />	
-	<exec os="Linux"  executable="dd" failonerror="true">
-		<arg value="if=/dev/zero"/>
-		<arg value="of=${rawdmgfile}"/>
-		<arg value="bs=1M"/>
-		<arg value="count=${dmgsizemegs}"/>
-	</exec>
-	
-	<!-- Format that file as an hfsplus disk image -->
-	<exec os="Linux"  executable="mkfs.hfsplus" failonerror="true">
-		<arg value="-v"/>
-		<arg value="Miradi ${version.full} Mac Install"/>
-		<arg value="${rawdmgfile}"/>
-	</exec>
-	
-	<echo message="Mounting ${dmgmount} (must be in fstab)" />
-	<echo message="${rawdmgfile} ${dmgmount} hfsplus rw,user,loop 0 0" />
-	<exec os="Linux"  executable="mount" failonerror="true">
-		<arg value="${dmgmount}"/>
-	</exec>
-	
-	<!-- Copy .app directory to the disk image -->
-	<!-- USING cp to PRESERVE FILE PERMISSIONS! -->
-	<exec executable="cp">
-		<arg value="-r" />
-		<arg value="${dist.mactree}/${mac.app.name}.app" />
-		<arg value="${dmgmount}" />
-	</exec> 
-	
-	<copy todir="${dmgmount}">
-		<fileset dir="${installer.buildfiles.dir}" includes="README.txt" />
-		<fileset dir="${installer.buildfiles.dir}" includes="LICENSE.txt" />
-		<fileset dir="${installer.buildfiles.dir}" includes="${samples.marine.miradi}" />
-	</copy>
+    <!-- copy over necessary files -->
+    <exec executable="scp">
+        <arg value="${dist.mactree}/${mac.app.name}.app ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}"/>
+        <arg value="${installer.buildfiles.dir}/README.txt ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}"/>
+        <arg value="${installer.buildfiles.dir}/LICENSE.txt ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}"/>
+        <arg value="${installer.buildfiles.dir}/${samples.marine.miradi} ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}"/>
+        <arg value="${installer.mac.dmgbuild.dir}/${mac.dmgbuild.settings} ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}"/>
+        <arg value="${installer.mac.dmgbuild.dir}/${mac.dmgbuild.background} ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}"/>
+    </exec>
 
-    <!-- make hidden dir for background image and copy template image -->
-    <mkdir dir="${dmgbackground}"/>
-    <copy todir="${dmgbackground}">
-        <fileset dir="${installer.dmg.template}" includes="background.png" />
-    </copy>
+    <!-- ssh to mac build machine and sign app, exec dmgbuild to create dmg -->
+    <exec executable="ssh">
+        <arg value="${mac.build.user}@${mac.build.server}"/>
+        <arg value="cd ${mac.build.temp.dir}"/>
+        <!-- TODO: sign app -->
+        <arg value="dmgbuild -s ${mac.dmgbuild.settings} -D app=${mac.app.name} '${mac.build.dmg.name}' ${mac.build.dmg}"/>
+    </exec>
 
-    <!-- copy template to hidden metadata (for dmg folder layout)  -->
-    <copy file="${installer.dmg.template}/template.DS_Store" tofile="${dmgmount}/.DS_Store"/>
+    <!-- copy back over built dmg -->
+    <exec executable="scp">
+        <arg value="${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}/${mac.build.dmg} ${dist.dir}"/>
+    </exec>
 
-    <!-- add link to apps folder -->
-    <symlink link="${dmgmount}/Applications" resource="/Applications" failonerror="false" />
-
-    <exec os="Linux"  executable="umount" failonerror="true">
-		<arg value="-l"/>
-		<arg value="-d"/>
-		<arg value="${dmgmount}"/>
-	</exec>
-	
-	<copy todir="${dist.dir}" file="${rawdmgfile}" />
+    <!-- delete temp folder on mac build machine -->
+    <exec executable="ssh">
+        <arg value="${mac.build.user}@${mac.build.server}"/>
+        <arg value="rm -rf ${mac.build.temp.dir}"/>
+    </exec>
 
 	<delete dir="${dist.mactree}" />
 </target>
