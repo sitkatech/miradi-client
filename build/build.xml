@@ -969,46 +969,54 @@
 <!-- M A C   D M G   F I L E                                            -->
 <!-- ================================================================== -->
 <target name="macdmgfile" depends="macappbundle" description="create a mac dmg file" if="isLinux">
-    <property name="mac.build.temp.dir" value="/Users/${mac.build.user}/miradi-build-temp/" />
+    <property name="mac.build.temp.dir" value="/Users/${mac.build.user}/miradi-build-temp" />
     <property name="mac.dmgbuild.settings" value="settings.py" />
     <property name="mac.dmgbuild.background" value="background.png" />
     <property name="mac.build.dmg" value="Miradi.dmg" />
     <property name="mac.build.dmg.name" value="Miradi ${version.full} Mac Install" />
 
     <!-- delete / create temp folder on mac build machine -->
-    <exec executable="ssh">
+    <echo message="Creating ${mac.build.temp.dir} folder on ${mac.build.user}@${mac.build.server}" />
+    <exec executable="ssh" failonerror="true">
         <arg value="${mac.build.user}@${mac.build.server}"/>
         <arg value="rm -rf ${mac.build.temp.dir}"/>
         <arg value="mkdir ${mac.build.temp.dir}"/>
+        <arg value="logout"/>
     </exec>
 
     <!-- copy over necessary files -->
-    <exec executable="scp">
-        <arg value="${dist.mactree}/${mac.app.name}.app ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}"/>
-        <arg value="${installer.buildfiles.dir}/README.txt ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}"/>
-        <arg value="${installer.buildfiles.dir}/LICENSE.txt ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}"/>
-        <arg value="${installer.buildfiles.dir}/${samples.marine.miradi} ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}"/>
-        <arg value="${installer.mac.dmgbuild.dir}/${mac.dmgbuild.settings} ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}"/>
-        <arg value="${installer.mac.dmgbuild.dir}/${mac.dmgbuild.background} ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}"/>
+    <echo message="Copying files to ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}" />
+    <exec executable="scp" failonerror="true">
+        <arg value="${dist.mactree}/${mac.app.name}.app ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}/${mac.app.name}.app"/>
+        <arg value="${installer.buildfiles.dir}/README.txt ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}/README.txt"/>
+        <arg value="${installer.buildfiles.dir}/LICENSE.txt ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}/LICENSE.txt"/>
+        <arg value="${installer.buildfiles.dir}/${samples.marine.miradi} ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}/${samples.marine.miradi}"/>
+        <arg value="${installer.mac.dmgbuild.dir}/${mac.dmgbuild.settings} ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}/${mac.dmgbuild.settings}"/>
+        <arg value="${installer.mac.dmgbuild.dir}/${mac.dmgbuild.background} ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}/${mac.dmgbuild.background}"/>
     </exec>
 
     <!-- ssh to mac build machine and sign app, exec dmgbuild to create dmg -->
-    <exec executable="ssh">
+    <echo message="Signing ${mac.app.name}.app and building ${mac.build.dmg}" />
+    <exec executable="ssh" failonerror="true">
         <arg value="${mac.build.user}@${mac.build.server}"/>
         <arg value="cd ${mac.build.temp.dir}"/>
         <!-- TODO: sign app -->
         <arg value="dmgbuild -s ${mac.dmgbuild.settings} -D app=${mac.app.name} '${mac.build.dmg.name}' ${mac.build.dmg}"/>
+        <arg value="logout"/>
     </exec>
 
     <!-- copy back over built dmg -->
-    <exec executable="scp">
-        <arg value="${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}/${mac.build.dmg} ${dist.dir}"/>
+    <echo message="Copying ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}/${mac.build.dmg} to ${dist.dir}/${mac.build.dmg}" />
+    <exec executable="scp" failonerror="true">
+        <arg value="${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}/${mac.build.dmg} ${dist.dir}/${mac.build.dmg}"/>
     </exec>
 
     <!-- delete temp folder on mac build machine -->
-    <exec executable="ssh">
+    <echo message="Deleting ${mac.build.temp.dir} on ${mac.build.user}@${mac.build.server}" />
+    <exec executable="ssh" failonerror="true">
         <arg value="${mac.build.user}@${mac.build.server}"/>
         <arg value="rm -rf ${mac.build.temp.dir}"/>
+        <arg value="logout"/>
     </exec>
 
 	<delete dir="${dist.mactree}" />
