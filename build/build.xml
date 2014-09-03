@@ -988,7 +988,7 @@
         <arg value="${mac.build.user}@${mac.build.server}"/>
         <arg value="rm -rf ${mac.build.temp.dir};
                     mkdir ${mac.build.temp.dir};
-                    logout;"/>
+                    exit;"/>
     </exec>
 
     <!-- copy over necessary files -->
@@ -1010,7 +1010,7 @@
         <!-- TODO: sign app -->
         <arg value="cd ${mac.build.temp.dir};
                     dmgbuild -s ${mac.dmgbuild.settings} -D app=${mac.app.name} '${mac.build.dmg.name}' ${mac.build.dmg};
-                    logout;"/>
+                    exit;"/>
     </exec>
 
     <!-- copy back over built dmg -->
@@ -1024,7 +1024,7 @@
     <exec executable="ssh" failonerror="true">
         <arg value="${mac.build.user}@${mac.build.server}"/>
         <arg value="rm -rf ${mac.build.temp.dir};
-                    logout;"/>
+                    exit;"/>
     </exec>
 
 	<delete dir="${dist.mactree}" />
