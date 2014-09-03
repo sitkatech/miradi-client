@@ -963,6 +963,13 @@
 		<javaproperty name="apple.awt.antialiasing" value="true" />
 		<javaproperty name="apple.awt.textantialiasing" value="true" />
 	</jarbundler>
+
+    <copy todir="${dist.mactree}">
+        <fileset dir="${installer.mac.dmgbuild.dir}">
+            <include name="**/*.*" />
+        </fileset>
+    </copy>
+
 </target>
 
 <!-- ================================================================== -->
@@ -979,30 +986,31 @@
     <echo message="Creating ${mac.build.temp.dir} folder on ${mac.build.user}@${mac.build.server}" />
     <exec executable="ssh" failonerror="true">
         <arg value="${mac.build.user}@${mac.build.server}"/>
-        <arg value="rm -rf ${mac.build.temp.dir}"/>
-        <arg value="mkdir ${mac.build.temp.dir}"/>
-        <arg value="logout"/>
+        <arg value="rm -rf ${mac.build.temp.dir};
+                    mkdir ${mac.build.temp.dir};
+                    logout;"/>
     </exec>
 
     <!-- copy over necessary files -->
     <echo message="Copying files to ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}" />
     <exec executable="scp" failonerror="true">
-        <arg value="${dist.mactree}/${mac.app.name}.app ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}/${mac.app.name}.app"/>
-        <arg value="${installer.buildfiles.dir}/README.txt ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}/README.txt"/>
-        <arg value="${installer.buildfiles.dir}/LICENSE.txt ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}/LICENSE.txt"/>
-        <arg value="${installer.buildfiles.dir}/${samples.marine.miradi} ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}/${samples.marine.miradi}"/>
-        <arg value="${installer.mac.dmgbuild.dir}/${mac.dmgbuild.settings} ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}/${mac.dmgbuild.settings}"/>
-        <arg value="${installer.mac.dmgbuild.dir}/${mac.dmgbuild.background} ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}/${mac.dmgbuild.background}"/>
+        <arg value="${dist.mactree}/${mac.app.name}.app"/>
+        <arg value="${dist.mactree}/${mac.dmgbuild.settings}"/>
+        <arg value="${dist.mactree}/${mac.dmgbuild.background}"/>
+        <arg value="${installer.buildfiles.dir}/README.txt"/>
+        <arg value="${installer.buildfiles.dir}/LICENSE.txt"/>
+        <arg value="${installer.buildfiles.dir}/${samples.marine.miradi}" />
+        <arg value="${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}"/>
     </exec>
 
     <!-- ssh to mac build machine and sign app, exec dmgbuild to create dmg -->
     <echo message="Signing ${mac.app.name}.app and building ${mac.build.dmg}" />
     <exec executable="ssh" failonerror="true">
         <arg value="${mac.build.user}@${mac.build.server}"/>
-        <arg value="cd ${mac.build.temp.dir}"/>
         <!-- TODO: sign app -->
-        <arg value="dmgbuild -s ${mac.dmgbuild.settings} -D app=${mac.app.name} '${mac.build.dmg.name}' ${mac.build.dmg}"/>
-        <arg value="logout"/>
+        <arg value="cd ${mac.build.temp.dir};
+                    dmgbuild -s ${mac.dmgbuild.settings} -D app=${mac.app.name} '${mac.build.dmg.name}' ${mac.build.dmg};
+                    logout;"/>
     </exec>
 
     <!-- copy back over built dmg -->
@@ -1015,8 +1023,8 @@
     <echo message="Deleting ${mac.build.temp.dir} on ${mac.build.user}@${mac.build.server}" />
     <exec executable="ssh" failonerror="true">
         <arg value="${mac.build.user}@${mac.build.server}"/>
-        <arg value="rm -rf ${mac.build.temp.dir}"/>
-        <arg value="logout"/>
+        <arg value="rm -rf ${mac.build.temp.dir};
+                    logout;"/>
     </exec>
 
 	<delete dir="${dist.mactree}" />
