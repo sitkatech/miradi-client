@@ -17,6 +17,8 @@
     <!-- env vars from build machine -->
     <property name="mac.build.user" value="${env.SITKA.MAC.BUILDUSER}" />
     <property name="mac.build.server" value="${env.SITKA.MAC.BUILDSERVER}" />
+    <property name="mac.build.password" value="${env.SITKA.MAC.BUILDPASSWORD}" />
+    <property name="mac.build.certname" value="${env.SITKA.MAC.BUILDCERT}" />
     <property name="source.hg.username" value="${env.HG.USER}"/>
     <property name="source.hg.password" value="${env.HG.PASSWORD}"/>
     <property name="jenkins.workspace" value="${env.WORKSPACE}"/>
@@ -1008,9 +1010,10 @@
     <echo message="Signing ${mac.app.name}.app and building ${mac.build.dmg}" />
     <exec executable="ssh" failonerror="true">
         <arg value="${mac.build.user}@${mac.build.server}"/>
-        <!-- TODO: sign app -->
         <arg value="cd ${mac.build.temp.dir};
-                    /usr/local/bin/dmgbuild -s ${mac.dmgbuild.settings} -D app=${mac.app.name}.app '${mac.build.dmg.name}' ${mac.build.dmg};
+                    security unlock-keychain -p ${mac.build.password};
+                    codesign -s '${mac.build.certname}' -f ${mac.build.temp.dir}/${mac.app.name}.app;
+                    dmgbuild -s ${mac.dmgbuild.settings} -D app=${mac.app.name}.app '${mac.build.dmg.name}' ${mac.build.dmg};
                     exit;"/>
     </exec>
 
