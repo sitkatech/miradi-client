@@ -994,6 +994,7 @@
     <!-- copy over necessary files -->
     <echo message="Copying files to ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}" />
     <exec executable="scp" failonerror="true">
+        <arg value="-r"/>
         <arg value="${dist.mactree}/${mac.app.name}.app"/>
         <arg value="${dist.mactree}/${mac.dmgbuild.settings}"/>
         <arg value="${dist.mactree}/${mac.dmgbuild.background}"/>
