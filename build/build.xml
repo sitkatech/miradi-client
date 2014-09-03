@@ -1010,7 +1010,7 @@
         <arg value="${mac.build.user}@${mac.build.server}"/>
         <!-- TODO: sign app -->
         <arg value="cd ${mac.build.temp.dir};
-                    dmgbuild -s ${mac.dmgbuild.settings} -D app=${mac.app.name} '${mac.build.dmg.name}' ${mac.build.dmg};
+                    /usr/local/bin/dmgbuild -s ${mac.dmgbuild.settings} -D app=${mac.app.name} '${mac.build.dmg.name}' ${mac.build.dmg};
                     exit;"/>
     </exec>
 
