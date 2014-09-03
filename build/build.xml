@@ -1020,8 +1020,8 @@
     <!-- copy back over built dmg -->
     <echo message="Copying ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}/${mac.build.dmg} to ${dist.dir}/${mac.build.dmg}" />
     <exec executable="scp" failonerror="true">
-        <arg value="-v"/>
-        <arg value="${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}/${mac.build.dmg} ${dist.dir}/${mac.build.dmg}"/>
+        <arg value="${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}/${mac.build.dmg}"/>
+        <arg value="${dist.dir}/${mac.build.dmg}"/>
     </exec>
 
     <!-- delete temp folder on mac build machine -->
