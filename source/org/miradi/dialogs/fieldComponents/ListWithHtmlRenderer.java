@@ -1,5 +1,6 @@
 /* 
-(on behalf of the Conservation Measures Partnership, "CMP") and 
+Copyright 2005-2014, Foundations of Success, Bethesda, Maryland
+(on behalf of the Conservation Measures Partnership, "CMP") and
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
 This file is part of Miradi
@@ -15,7 +16,7 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/ 
+*/
 package org.miradi.dialogs.fieldComponents;
 
 import java.util.Vector;

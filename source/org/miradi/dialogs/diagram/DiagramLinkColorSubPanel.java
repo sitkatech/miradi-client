@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2014, Foundations of Success, Bethesda, Maryland
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -31,7 +31,8 @@ public class DiagramLinkColorSubPanel extends ObjectDataInputPanel
 {
 	public DiagramLinkColorSubPanel(Project projectToUse, int type)	
 	{
-		super(projectToUse, type);
+		super(projectToUse, type);
+
 		addField(createChoiceField(DiagramLinkSchema.getObjectType(), DiagramLink.TAG_COLOR, new DiagramLinkColorQuestion()));
 		
 		updateFieldsFromProject();

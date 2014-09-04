@@ -11,7 +11,7 @@ import org.miradi.main.ResourcesHandler;
 import org.miradi.utils.IgnoreCaseStringComparator;
 import org.miradi.utils.XmlUtilities2;
 /* 
-Copyright 2005-2012, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2014, Foundations of Success, Bethesda, Maryland
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
