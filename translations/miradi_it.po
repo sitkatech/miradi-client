@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-01 08:51-0700\n"
+"POT-Creation-Date: 2014-09-04 02:21-0700\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -1399,7 +1399,7 @@ msgstr "Esci"
 msgid "Action|Expand All Rows"
 msgstr "Espandi tutte le righe"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportMiradiShareFile.java:15
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportMiradiShareFile.java:34
 msgid "Action|Export Miradi Share File"
 msgstr ""
 
@@ -7348,7 +7348,7 @@ msgid "TT|Export entire project as a WCS Miradi Project ZIP file"
 msgstr "Esporta il progetto come file WCS Miradi Project ZIP"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportXmpz.java:40
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportMiradiShareFile.java:21
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportMiradiShareFile.java:40
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportXmpz2.java:41
 msgid "TT|Export entire project as an XML file"
 msgstr "Esporta il progetto come file XML"
@@ -15700,7 +15700,7 @@ msgid ""
 "html|/resources/help/AboutPart1.html|  <!DOCTYPE HTML PUBLIC \"-//W3C//DTD "
 "HTML 4.0 Transitional//EN\"><HTML><HEAD><TITLE></TITLE><STYLE type=text/"
 "css></STYLE></HEAD><body class='sidebar'><div class='indented'><FONT "
-"size=4><P>Copyright 2005-2013, Foundations of Success, Bethesda, Maryland "
+"size=4><P>Copyright 2005-2014, Foundations of Success, Bethesda, Maryland "
 "(on behalf of the Conservation Measures Partnership, \"CMP\") and Beneficent "
 "Technology, Inc. (\"The Benetech Initiative\"), Palo Alto, California.</P>"
 msgstr ""
