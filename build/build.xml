@@ -981,7 +981,7 @@
     <property name="mac.build.temp.dir" value="/Users/${mac.build.user}/miradi-build-temp" />
     <property name="mac.dmgbuild.settings" value="settings.py" />
     <property name="mac.dmgbuild.background" value="background.png" />
-    <property name="mac.build.dmg" value="Miradi.dmg" />
+    <property name="mac.build.dmg" value="Miradi-${version.full}.dmg" />
     <property name="mac.build.dmg.name" value="Miradi ${version.full} Mac Install" />
 
     <!-- delete / create temp folder on mac build machine -->
