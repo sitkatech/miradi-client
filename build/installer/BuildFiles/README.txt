@@ -1,10 +1,10 @@
 Miradi (TM)
 
-Copyright 2005-2013, Foundations of Success, Bethesda, Maryland
+Copyright 2005-2014, Foundations of Success, Bethesda, Maryland
      (on behalf of the Conservation Measures Partnership, "CMP") and
      Beneficent Technology, Inc. ("Benetech"), Palo Alto, California.
 
-VERSION 4.1.3
+VERSION 4.2.0
 
 License and Copying
 
@@ -56,12 +56,12 @@ For MS Windows:
 - 80 MB available disk space
 
 For Mac OS X:
-- Java 1.5 or later
+- Java 1.6 or later
 - 1 GB RAM recommended
 - 30 MB available disk space
 
 For GNU/Linux:
-- Java 1.5 or later
+- Java 1.6 or later
 - 1 GB RAM recommended
 - 30 MB available disk space
 
@@ -111,15 +111,15 @@ Mac OS X:
       - martus-utils.jar
       - persiancalendar.jar
 
-- Before installing Miradi, make sure Apple's official Java J2SE5 or J2SE6 
+- Before installing Miradi, make sure Apple's official Java J2SE6 or J2SE7
   is installed (Miradi will not work with Java 1.4). If you are running 
   a current version of OS X, Java should have been installed automatically.
   
   
-- Download the Miradi.dmg file
-- Using the mac Finder navigate to the folder containing Miradi.dmg
-- Double click the file Miradi.dmg
-- In the Finder's left panel select the Miradi "Mac Install" drive
+- Download the Miradi-4.2.0.dmg file
+- Using the mac Finder navigate to the folder containing Miradi-4.2.0.dmg
+- Double click the file Miradi-4.2.0.dmg
+- In the Finder's left panel select the Miradi "Miradi 4.2.0 Mac Install" drive
 - In the right you will see the contents of the drive
 - Copy the Miradi app into your applications folder
 - Select the Miradi app file and bring up the context menu 
@@ -128,25 +128,25 @@ Mac OS X:
 - Note: You can also double click the .app file. However 
   depending on security settings, the warning dialog might 
   not provide an open option,  in which case, use the context menu step instead.
-- MarineExample.mpz is a sample project that can be imported into Miradi 
+- MarineExample.Miradi is a sample project that can be imported into Miradi
   after you start the app
 
 
 GNU/Linux:
 
-- Make sure Sun's official Java 1.5 (aka Java 5) or later is installed. 
+- Make sure Sun's official Java 1.6 (aka Java 6) or later is installed.
   Miradi will not work with Java 1.4, and has not been tested extensively 
   with OpenJDK or any other non-Sun Java alternatives.
 
 - Obtain Miradi-Linux.zip from http://miradi.org and unzip the contents 
-  into a directory, perhaps /usr/local/lib or ~/Miradi-2.0
+  into a directory, perhaps /usr/local/lib or ~/Miradi-4.2.0
   (We recommend not installing to ~/Miradi because that is the default 
   location for project data).
 
 - To run Miradi, use this command line:
     java -Xmx512m -jar <path-to-miradi.jar>
     
-- MarineExample.mpz is a sample project that can be imported into Miradi
+- MarineExample.Miradi is a sample project that can be imported into Miradi
   after you start the app
 
 
@@ -161,6 +161,31 @@ cannot be directly opened by earlier versions of Miradi, but 4.1.2 and
 in the MPZ format used by Miradi 3.3. In some cases, data may be
 lost when exporting to these older formats, but a warning dialog will
 indicate when that is the case.
+
+
+Notable changes in 4.2.0:
+
+Installer:
+- The Mac installer is now code signed to minimize security warnings related to Gatekeeper on OS X 10.7.5 (and later).
+- Similarly the Windows installer should not display warnings related to the Program Compatibility
+  Assistant (PCA) on Windows 7 (and later).
+
+Appwide:
+- On launching Miradi if the preferred data directory is not accessible (e.g. a disconnected network drive),
+  then the end-user receives a notification, and the default location is restored.
+
+Diagram:
+- The default relevancy rule for Activities has been changed such that all Activities are marked as relevant when
+  associating a relevant Strategy to an Objective.
+- Improvements have been made to the Strategic Plan view to ensure that Objective - Activity relationships are
+  displayed correctly.
+- To aid diagram layout, a new field has been added to the Group Box Properties window to allow the end-user to adjust
+  the amount of vertical space that the header text occupies.
+
+Miradi Share Integration:
+- Copying and pasting diagram objects across projects now ensures that only valid taxonomy classifications are copied.
+
+
 
 Notable changes in 4.1.3:
 
@@ -187,6 +212,7 @@ Export/Import:
   objective-strategy relevancy information.
 
 
+
 Notable changes in 4.1.0 (compared to 4.0) include:
 
 Appwide:
@@ -206,6 +232,7 @@ Export/Import:
 - Importing XMPZ2 files is now much faster 
 - XMPZ2 schema changes to accommodate Miradi Share data
 - Now have an icon for XMPZ2 files
+
 
 
 Miradi 4.0.0 was a major release, and we recommend that all users 
@@ -256,7 +283,7 @@ Translations:
 
 
 
-Miradi 3.3.4 is a minor fix release for compatiblity with Java 7. 
+Miradi 3.3.4 is a minor fix release for compatibility with Java 7.
 Projects are fully compatible between all versions 3.3.X, but 
 we recommend that all users upgrade to the latest version. 
 
