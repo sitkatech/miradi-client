@@ -13,7 +13,7 @@ import org.miradi.schemas.DashboardSchema;
 import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
 /* 
-Copyright 2005-2011, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2014, Foundations of Success, Bethesda, Maryland
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
