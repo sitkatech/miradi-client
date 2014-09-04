@@ -6,8 +6,9 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-09-01 08:51-0700\n"
-"Content-Type: text/plain; charset=UTF-8Content-Transfer-Encoding: "
-"8bitLanguage: psp\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: psp\n"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:59
 msgid ""
