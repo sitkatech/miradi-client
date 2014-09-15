@@ -118,7 +118,7 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 		if(file == null)
 			return false;
 		
-		return file.getName().endsWith(AbstractMpfFileFilter.EXTENSION);
+		return file.getName().toLowerCase().endsWith(AbstractMpfFileFilter.EXTENSION.toLowerCase());
 	}
 
 	public static boolean isOldProject(File selectedFile) throws Exception
