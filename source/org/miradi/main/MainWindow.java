@@ -287,7 +287,9 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	
 	private void createSessionFile() throws Exception
 	{
-		File sessionFile = new File(EAM.getHomeDirectory(), "session.log");
+        File homeDirectory = EAM.getHomeDirectory();
+        homeDirectory.mkdirs();
+        File sessionFile = new File(homeDirectory, "session.log");
 		FileUtilities.deleteIfExistsWithRetries(sessionFile);
 		StringBuffer buffer = new StringBuffer();
 		buffer.append(MiradiLogger.createLogHeader());
