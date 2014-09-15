@@ -173,11 +173,11 @@ public class CommandLineProjectFileImporterHelper
 	private boolean getUserImportConfirmation(String fileNameToImport) throws Exception
 	{
 		String message = EAM.substituteSingleString(EAM.text("Do you want to attempt to import %s into Miradi?"), fileNameToImport);
-		int userComfirmationChoice = confirmImportDialog(EAM.text("Import"), message);
-		if (userComfirmationChoice == IMPORT_CHOICE)
+		int userConfirmationChoice = confirmImportDialog(EAM.text("Import"), message);
+		if (userConfirmationChoice == IMPORT_CHOICE)
 			return true;
 		
-		if (userComfirmationChoice == EXIT_CHOICE)
+		if (userConfirmationChoice == EXIT_CHOICE)
 			getMainWindow().exitNormally();
 		
 		return false;
@@ -217,7 +217,7 @@ public class CommandLineProjectFileImporterHelper
 	
 	private boolean isXmpz2(File projectFile) throws Exception
 	{
-		if (!projectFile.getName().endsWith(new Xmpz2FileFilter().getFileExtension()))
+		if (!projectFile.getName().toLowerCase().endsWith(new Xmpz2FileFilter().getFileExtension().toLowerCase()))
 			return false;
 		
 		if (!containsFile(new MiradiZipFile(projectFile), AbstractExportProjectXmlZipDoer.SCHEMA_FILE_NAME))
