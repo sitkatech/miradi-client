@@ -76,8 +76,13 @@ public class ProgressDialog extends DialogWithDisposablePanel implements Progres
 	public void finished()
 	{
 		progressPanel.finished();
-		setVisible(false);
-		dispose();
+
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                setVisible(false);
+                dispose();
+            }
+        });
 	}
 	
 	public boolean shouldExit()
