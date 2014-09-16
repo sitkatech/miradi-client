@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-15 06:36-0700\n"
+"POT-Creation-Date: 2014-09-16 02:51-0700\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -6845,7 +6845,7 @@ msgstr "Passo"
 msgid "Step (not available)"
 msgstr "Passo (não disponível)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/ProgressDialog.java:102
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/ProgressDialog.java:107
 msgid "Stop"
 msgstr "Parar"
 

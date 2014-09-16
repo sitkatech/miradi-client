@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-15 06:36-0700\n"
+"POT-Creation-Date: 2014-09-16 02:51-0700\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -6819,7 +6819,7 @@ msgstr "Schritt "
 msgid "Step (not available)"
 msgstr "Schritt (not verfügbar)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/ProgressDialog.java:102
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/ProgressDialog.java:107
 msgid "Stop"
 msgstr "Stop"
 
