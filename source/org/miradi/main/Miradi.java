@@ -114,6 +114,10 @@ public class Miradi
 			developerMode = true;
 			EAM.logDebug("Developer mode enabled");
 		}
+		else if(arg.equals("--repair"))
+		{
+			EAM.logDebug("Repair mode enabled");
+		}
 		else
 		{
 			EAM.logDebug("Unrecognized command-line switch: " + arg);
