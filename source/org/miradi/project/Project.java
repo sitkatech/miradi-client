@@ -96,12 +96,7 @@ import org.miradi.project.threatrating.StressBasedThreatFormula;
 import org.miradi.project.threatrating.StressBasedThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.project.threatrating.ThreatRatingFramework;
-import org.miradi.questions.BudgetTimePeriodQuestion;
-import org.miradi.questions.DiagramModeQuestion;
-import org.miradi.questions.FontFamiliyQuestion;
-import org.miradi.questions.FontSizeQuestion;
-import org.miradi.questions.ThreatRatingModeChoiceQuestion;
-import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
+import org.miradi.questions.*;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DashboardSchema;
 import org.miradi.schemas.DiagramFactorSchema;
@@ -836,6 +831,7 @@ public class Project implements ProjectInterface
 		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, BudgetTimePeriodQuestion.BUDGET_BY_YEAR_CODE);
 		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_DIAGRAM_FONT_FAMILY, FontFamiliyQuestion.ARIAL_CODE);
 		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_DIAGRAM_FONT_SIZE, FontSizeQuestion.getDefaultSizeCode());
+		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE, TargetModeQuestion.HUMAN_WELFARE_TARGET_CODE);
 	}
 	
 	private void createDefaultProjectDataObject(int objectType) throws Exception

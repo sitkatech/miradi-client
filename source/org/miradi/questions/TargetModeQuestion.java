@@ -48,14 +48,14 @@ public class TargetModeQuestion extends StaticChoiceQuestion
 	@Override
 	protected String getReadableAlternativeDefaultCode()
 	{
-		return READBLE_DEFAULT_CODE;
+		return READABLE_DEFAULT_CODE;
 	}
 	
 	@Override
 	public String convertToReadableCode(String code)
 	{
 		if (code.equals(DEFAULT_CODE))
-			return READBLE_DEFAULT_CODE;
+			return READABLE_DEFAULT_CODE;
 		
 		if (code.equals(HUMAN_WELFARE_TARGET_CODE))
 			return READABLE_HUMAN_WELFARE_CODE;
@@ -66,7 +66,7 @@ public class TargetModeQuestion extends StaticChoiceQuestion
 	@Override
 	public String convertToInternalCode(String code)
 	{
-		if (code.equals(READBLE_DEFAULT_CODE))
+		if (code.equals(READABLE_DEFAULT_CODE))
 			return DEFAULT_CODE;
 		
 		if (code.equals(READABLE_HUMAN_WELFARE_CODE))
@@ -79,6 +79,6 @@ public class TargetModeQuestion extends StaticChoiceQuestion
 	public static final String DEFAULT_CODE = "";
 	public static final String HUMAN_WELFARE_TARGET_CODE = "HumanWelfareTargetMode";
 	
-	public static final String READBLE_DEFAULT_CODE = "BiologicalTargetsOnly";
+	public static final String READABLE_DEFAULT_CODE = "BiologicalTargetsOnly";
 	public static final String READABLE_HUMAN_WELFARE_CODE = "BiologicalAndHumanWellbeingTargets";
 }
