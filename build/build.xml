@@ -1084,6 +1084,10 @@
 		<arg value="${dist.dir}/${windows.setup.name}_signed.exe"/>
 	</exec>
 
+	<!-- clean up -->
+	<delete file="${dist.dir}/${windows.setup.name}.exe"/>
+	<move file="${dist.dir}/${windows.setup.name}_signed.exe" tofile="${dist.dir}/${windows.setup.name}.exe"/>
+
 </target>
 
 <!-- ================================================================== -->
