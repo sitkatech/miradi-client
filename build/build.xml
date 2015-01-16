@@ -5,11 +5,21 @@
     </description>
 	
 	<!-- product version -->
-	<!-- NOTE: Remember to change install4j version too! -->
 	<property name="version.prefix" value=""/>
 	<property name="version.main" value = "4.2"/>
 	<property name="version.minor" value = ".0"/>
 	<property name="version.full" value="${version.main}${version.minor}"/>
+
+	<loadresource property="version.full.installer">
+		<propertyresource name="version.full"/>
+		<filterchain>
+			<tokenfilter>
+				<filetokenizer/>
+				<replacestring from="." to="_"/>
+			</tokenfilter>
+		</filterchain>
+	</loadresource>
+
 	<property name="version.langpack" value="${version.main}" />
   
 	<property environment="env"/>
@@ -104,7 +114,7 @@
 	
 	<property name="dist.mactree" value="${dist.dir}/MiradiMacInstall" />
 	<property name="mac.app.name" value="Miradi-${version.full}" />
-	<property name="windows.setup.name" value="MiradiSetup-${version.full}" />
+	<property name="windows.setup.name" value="MiradiSetup_${version.full.installer}" />
 
 	<condition property="nsis.executable" value="makensis.exe" else="makensis">
 		<os family="windows"/>
