@@ -19,6 +19,10 @@
     <property name="mac.build.server" value="${env.SITKA.MAC.BUILDSERVER}" />
     <property name="mac.build.password" value="${env.SITKA.MAC.BUILDPASSWORD}" />
     <property name="mac.build.certname" value="${env.SITKA.MAC.BUILDCERT}" />
+    <property name="windows.build.certname.spc" value="${env.SITKA.WINDOWS.BUILDCERT.SPC}" />
+    <property name="windows.build.certname.pvk" value="${env.SITKA.WINDOWS.BUILDCERT.PVK}" />
+    <property name="windows.build.certname.subject" value="${env.SITKA.WINDOWS.BUILDCERT.SUBJECT}" />
+    <property name="miradi.web.domain" value="${env.SITKA.MIRADI.WEB.DOMAIN}" />
     <property name="source.hg.username" value="${env.HG.USER}"/>
     <property name="source.hg.password" value="${env.HG.PASSWORD}"/>
     <property name="jenkins.workspace" value="${env.WORKSPACE}"/>
@@ -100,6 +104,8 @@
 	
 	<property name="dist.mactree" value="${dist.dir}/MiradiMacInstall" />
 	<property name="mac.app.name" value="Miradi-${version.full}" />
+	<property name="windows.setup.name" value="MiradiSetup-${version.full}" />
+
 	<condition property="nsis.executable" value="makensis.exe" else="makensis">
 		<os family="windows"/>
 	</condition>
@@ -147,7 +153,6 @@
     <fail message="env.INSTALL4J.JRES.PATH is not defined" unless="env.INSTALL4J.JRES.PATH"/>
     <echo message="env.INSTALL4J.JRES.PATH = ${env.INSTALL4J.JRES.PATH}"/>
 
-    <!-- TODO: this should be replaced by isBuildServer or similar... -->
     <condition property="isLinux">
         <and>
             <os family="unix"/>
@@ -1041,10 +1046,26 @@
 <target name="win32installer" depends="jar" description="Windows install4j installer build">
     <install4j projectfile="${build.dir}/miradi.install4j">
         <variable name="version.full" value="${version.full}"/>
+        <variable name="windows.setup.name" value="${windows.setup.name}"/>
         <variable name="dist.dir" value="${dist.dir}"/>
         <variable name="dist.temp.jars" value="${dist.temp.jars}"/>
         <variable name="jres.path" value="${env.INSTALL4J.JRES.PATH}"/>
     </install4j>
+
+	<!-- sign built exe -->
+	<echo message="Signing ${windows.setup.name}.exe" />
+
+	<exec executable="signcode" failonerror="true">
+		<arg value="-spc ${windows.build.certname.spc}"/>
+		<arg value="-v ${windows.build.certname.pvk}"/>
+		<arg value="-a sha1"/>
+		<arg value="-$ commercial"/>
+		<arg value="-n ${windows.build.certname.subject}"/>
+		<arg value="-i http://${miradi.web.domain}"/>
+		<arg value="-t http://timestamp.verisign.com/scripts/timstamp.dll"/>
+		<arg value="-tr 10 ${windows.setup.name}.exe"/>
+	</exec>
+
 </target>
 
 <!-- ================================================================== -->
