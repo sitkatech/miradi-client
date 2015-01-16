@@ -1063,7 +1063,7 @@
 		<arg value="-n ${windows.build.certname.subject}"/>
 		<arg value="-i http://${miradi.web.domain}"/>
 		<arg value="-t http://timestamp.verisign.com/scripts/timstamp.dll"/>
-		<arg value="-tr 10 ${windows.setup.name}.exe"/>
+		<arg value="-tr 10 ${dist.dir}/${windows.setup.name}.exe"/>
 	</exec>
 
 </target>
