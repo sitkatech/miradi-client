@@ -31,7 +31,7 @@
     <property name="mac.build.certname" value="${env.SITKA.MAC.BUILDCERT}" />
     <property name="windows.build.certname.spc" value="${env.SITKA.WINDOWS.BUILDCERT.SPC}" />
     <property name="windows.build.certname.pvk" value="${env.SITKA.WINDOWS.BUILDCERT.PVK}" />
-    <property name="windows.build.certname.subject" value="${env.SITKA.WINDOWS.BUILDCERT.SUBJECT}" />
+    <property name="windows.build.certname.password" value="${env.SITKA.WINDOWS.BUILDCERT.PASSWORD}" />
     <property name="miradi.web.domain" value="${env.SITKA.MIRADI.WEB.DOMAIN}" />
     <property name="source.hg.username" value="${env.HG.USER}"/>
     <property name="source.hg.password" value="${env.HG.PASSWORD}"/>
@@ -1065,16 +1065,16 @@
 	<!-- sign built exe -->
 	<echo message="Signing ${windows.setup.name}.exe" />
 
-	<exec executable="signcode" failonerror="true">
-		<arg value="-spc ${windows.build.certname.spc}"/>
-		<arg value="-v ${windows.build.certname.pvk}"/>
-		<arg value="-a sha1"/>
-		<arg value="-$ commercial"/>
-		<arg value="-n ${windows.build.certname.subject}"/>
+	<exec executable="osslsigncode" failonerror="true">
+		<arg value="sign"/>
+		<arg value="-certs ${windows.build.certname.spc}"/>
+		<arg value="-key ${windows.build.certname.pvk}"/>
+		<arg value="-pass ${windows.build.certname.password}"/>
+		<arg value="-n 'Miradi'"/>
 		<arg value="-i http://${miradi.web.domain}"/>
 		<arg value="-t http://timestamp.verisign.com/scripts/timstamp.dll"/>
-		<arg value="-tr 10"/>
-		<arg value="${dist.dir}/${windows.setup.name}.exe"/>
+		<arg value="-in ${dist.dir}/${windows.setup.name}.exe"/>
+		<arg value="${dist.dir}/${windows.setup.name}_signed.exe"/>
 	</exec>
 
 </target>
