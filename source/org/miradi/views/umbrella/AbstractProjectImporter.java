@@ -264,9 +264,8 @@ public abstract class AbstractProjectImporter
 
 	private static String currentDirectory = UiFileChooser.getHomeDirectoryFile().getPath();
 	private static final String IMPORT_FAILED_MESSAGE = EAM.text("This file cannot be imported because it is a newer format than this version of Miradi supports. <br>" +
-			  "Please make sure you are running the latest version of Miradi. If you are already <br>" +
-			  "running the latest Miradi, either wait for a newer version that supports this format, <br>" +
-			  "or re-export the project to an older (supported) format.");
+			  "Please make sure you are running the latest version of Miradi. <br>" +
+			  "To download the latest version of Miradi, go to www.miradi.org.");
 	
 	protected abstract void createProject(File importFile, File newProjectFile, ProgressInterface progressIndicator)  throws Exception;
 	
