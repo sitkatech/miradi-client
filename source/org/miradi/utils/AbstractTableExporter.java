@@ -118,7 +118,7 @@ public abstract class AbstractTableExporter implements TableExporter
 		{
 			ChoiceItem choiceItem = question.findChoiceByCode(codeList.get(index));
 			codeListAsString.append(choiceItem.getLabel());
-			codeListAsString.append(CODE_LIST_SEPERATOR);
+			codeListAsString.append(CODE_LIST_SEPARATOR);
 		}
 		
 		return codeListAsString.toString();
@@ -181,7 +181,7 @@ public abstract class AbstractTableExporter implements TableExporter
 	abstract public Vector<Integer> getAllTypes();
 	abstract public ORefList getAllRefs(int objectType);
 	
-	private static final String CODE_LIST_SEPERATOR = ";";
+	private static final String CODE_LIST_SEPARATOR = ";";
 	protected String uniqueModelIdentifier;
 	private Project project;
 	public static final String NO_UNIQUE_MODEL_IDENTIFIER = "";

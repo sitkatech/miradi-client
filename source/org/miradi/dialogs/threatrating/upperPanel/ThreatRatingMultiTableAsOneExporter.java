@@ -66,7 +66,7 @@ public class ThreatRatingMultiTableAsOneExporter extends MultiTableCombinedAsOne
 	{
 		final int SUMMARY_TABLES_ROW_COUNT = 1;
 		
-		return super.getRowCount() +  SUMMARY_TABLES_ROW_COUNT;
+		return super.getRowCount() + SUMMARY_TABLES_ROW_COUNT;
 	}
 	
 	@Override
@@ -75,30 +75,46 @@ public class ThreatRatingMultiTableAsOneExporter extends MultiTableCombinedAsOne
 		if (isTopRowTable(row))
 			return super.getModelChoiceItemAt(row, modelColumn);
 
-		if (isFirstBlankTableSummaryRow(modelColumn))
+        if (isTargetSummaryRowLabel(modelColumn))
+            return new TaglessChoiceItem(ThreatRatingMultiTablePanel.getTargetSummaryRowHeaderLabel());
+
+        if (isTargetSummaryRowBlankColumn(modelColumn))
 			return new EmptyChoiceItem();
 		
-		if (isTargetSummaryRowHeader(modelColumn))
-			return new TaglessChoiceItem(ThreatRatingMultiTablePanel.getTargetSummaryRowHeaderLabel());
-
-		int columnWithinSummaryTable = convertToSummaryTableColumn(modelColumn);		
+		int columnWithinSummaryTable = convertToSummaryTableColumn(modelColumn);
 		if (isColumnWithinSummaryTable(columnWithinSummaryTable))
 			return targetSummaryRowTable.getChoiceItemAt(0, columnWithinSummaryTable);
-		
+
 		return overallProjectRatingSummaryTable.getChoiceItemAt(0, 0);
 	}
 
-	private boolean isTargetSummaryRowHeader(int modelColumn)
-	{
-		return modelColumn == ThreatNameColumnTableModel.THREAT_NAME_COLUMN_INDEX;
-	}
+    private boolean isTopRowTable(int row)
+    {
+        return row < super.getRowCount();
+    }
+
+    private boolean isTargetSummaryRowLabel(int modelColumn)
+    {
+        return modelColumn == ThreatNameColumnTableModel.THREAT_NAME_COLUMN_INDEX;
+    }
+
+    private boolean isTargetSummaryRowBlankColumn(int modelColumn)
+    {
+        return modelColumn == ThreatNameColumnTableModel.THREAT_NAME_COLUMN_INDEX + 1;
+    }
 
 	private boolean isColumnWithinSummaryTable(int columnWithinSummaryTable)
 	{
 		return columnWithinSummaryTable < targetSummaryRowTable.getColumnCount();
 	}
 
-	@Override
+    private int convertToSummaryTableColumn(int modelColumn)
+    {
+		int LABEL_COLUMN_COUNT = ThreatNameColumnTableModel.COLUMN_COUNT + ThreatIconColumnTableModel.COLUMN_COUNT;
+        return modelColumn - LABEL_COLUMN_COUNT;
+    }
+
+    @Override
 	public int getRowType(int row)
 	{
 		if (isTopRowTable(row))
@@ -115,24 +131,7 @@ public class ThreatRatingMultiTableAsOneExporter extends MultiTableCombinedAsOne
 		
 		return null;
 	}
-	
-	private boolean isFirstBlankTableSummaryRow(int column)
-	{
-		return column < ThreatNameColumnTableModel.THREAT_NAME_COLUMN_INDEX;
-	}
 
-	private int convertToSummaryTableColumn(int column)
-	{
-		int BLANK_FIRST_COLUMN_COUNT = ThreatNameColumnTableModel.COLUMN_COUNT;
-		
-		return column - BLANK_FIRST_COLUMN_COUNT;
-	}
-
-	private boolean isTopRowTable(int row)
-	{
-		return row < super.getRowCount();
-	}
-	
 	@Override
 	public ORefList getAllRefs(int objectType)
 	{

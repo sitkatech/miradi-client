@@ -49,10 +49,10 @@ public class ThreatSummaryColumnTableModel extends AbstractThreatPerRowTableMode
 	@Override
 	public String getColumnName(int column)
 	{
-		return getThreatSummartRatingLabel();
+		return getThreatSummaryRatingLabel();
 	}
 
-	public static String getThreatSummartRatingLabel()
+	public static String getThreatSummaryRatingLabel()
 	{
 		return EAM.text("Summary Threat Rating");
 	}
