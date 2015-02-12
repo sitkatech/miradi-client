@@ -61,7 +61,7 @@ public class SimpleThreatRatingDetailsTableExporter extends AbstractThreatRating
 			return getThreatColumnName();
 		
 		if (getColumnTag(modelColumn).equals(Stress.PSEUDO_STRESS_RATING))
-			return ThreatSummaryColumnTableModel.getThreatSummartRatingLabel();
+			return ThreatSummaryColumnTableModel.getThreatSummaryRatingLabel();
 		
 		if (isCommentsColumn(modelColumn))
 			return getCommentsColumnName();
