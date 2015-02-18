@@ -32,7 +32,6 @@ import javax.swing.border.LineBorder;
 import org.martus.swing.UiLabel;
 import org.martus.swing.Utilities;
 import org.miradi.actions.ActionAbout;
-import org.miradi.actions.ActionAboutBenetech;
 import org.miradi.actions.ActionAboutCMP;
 import org.miradi.actions.ActionAssignResource;
 import org.miradi.actions.ActionClose;
@@ -381,7 +380,6 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	private void addUmbrellaDoersToMap()
 	{
 		addDoerToMap(ActionAbout.class, new AboutDoer());
-		addDoerToMap(ActionAboutBenetech.class, new HelpButtonDoer());
 		addDoerToMap(ActionAboutCMP.class, new HelpButtonDoer());
 		addDoerToMap(ActionHelpComingAttractions.class, new HelpButtonDoer());
 		addDoerToMap(ActionHelpAdaptiveManagement.class, new HelpButtonDoer());
