@@ -53,8 +53,6 @@ public class HelpButtonData
 	public static final String COMING_ATTRACTIONS_HTML = "help/ComingAttractions.html";
 	public static final String CREDITS = EAM.text("Action|Credits");
 	public static final String CREDITS_HTML = "help/Credits.html";
-	public static final String ABOUT_BENETECH = EAM.text("Action|About Benetech");
-	public static final String ABOUT_BENETECH_HTML = "help/AboutBenetech.html";
 	public static final String ABOUT_CMP = EAM.text("Action|About the CMP");
 	public static final String ABOUT_CMP_HTML = "help/AboutCMP.html";
 	public static final String AGILE_SOFTWARE = EAM.text("Action|Agile Software");

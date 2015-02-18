@@ -617,10 +617,6 @@ public class MainMenuBar extends JMenuBar
 		item.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(HelpButtonData.CREDITS,HelpButtonData.CREDITS_HTML));
 		
-		item  = addMenuItem(actions, menu, ActionAboutBenetech.class, KeyEvent.VK_B);
-		item.putClientProperty(HelpButtonData.class, 
-				new HelpButtonData(HelpButtonData.ABOUT_BENETECH,HelpButtonData.ABOUT_BENETECH_HTML));
-
 		item  = addMenuItem(actions, menu, ActionAboutCMP.class, KeyEvent.VK_C);
 		item.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(HelpButtonData.ABOUT_CMP,HelpButtonData.ABOUT_CMP_HTML));
