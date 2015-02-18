@@ -1,8 +1,8 @@
 ﻿Miradi (TM)
 
-Copyright 2005-2014, Foundations of Success, Bethesda, Maryland
-     (on behalf of the Conservation Measures Partnership, "CMP") and
-     Beneficent Technology, Inc. ("Benetech"), Palo Alto, California.
+Copyright 2005-2015, Foundations of Success, Bethesda, Maryland
+on behalf of the Conservation Measures Partnership ("CMP").
+Material developed between 2005-2013 is jointly copyright by Beneficent Technology, Inc. ("The Benetech Initiative"), Palo Alto, California.
 
 License and Copying
 Miradi is distributed under the terms of the GNU General Public License version 3, as published by the Free Software Foundation.  Miradi is distributed in the hope that it will be useful, but without any warranty;  without even the implied warranty of merchantability or fitness for a particular purpose.

@@ -1,7 +1,7 @@
 /* 
-Copyright 2005-2014, Foundations of Success, Bethesda, Maryland
-(Dashboard.on behalf of the Conservation Measures Partnership, "CMP") and 
-Beneficent Technology, Inc. (Dashboard."Benetech"), Palo Alto, California. 
+Copyright 2005-2015, Foundations of Success, Bethesda, Maryland
+on behalf of the Conservation Measures Partnership ("CMP").
+Material developed between 2005-2013 is jointly copyright by Beneficent Technology, Inc. ("The Benetech Initiative"), Palo Alto, California.
 
 This file is part of Miradi
 
@@ -16,7 +16,7 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/ 
+*/
 
 package org.miradi.schemas;
 
