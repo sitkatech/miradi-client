@@ -6,7 +6,7 @@
 	
 	<!-- product version -->
 	<property name="version.prefix" value=""/>
-	<property name="version.main" value = "4.2"/>
+	<property name="version.main" value = "4.3"/>
 	<property name="version.minor" value = ".0"/>
 	<property name="version.full" value="${version.main}${version.minor}"/>
 
@@ -33,13 +33,11 @@
     <property name="windows.build.certname.pvk" value="${env.SITKA.WINDOWS.BUILDCERT.PVK}" />
     <property name="windows.build.certname.password" value="${env.SITKA.WINDOWS.BUILDCERT.PASSWORD}" />
     <property name="miradi.web.domain" value="${env.SITKA.MIRADI.WEB.DOMAIN}" />
-    <property name="source.hg.username" value="${env.HG.USER}"/>
-    <property name="source.hg.password" value="${env.HG.PASSWORD}"/>
     <property name="jenkins.workspace" value="${env.WORKSPACE}"/>
 
     <!-- repos -->
-    <property name="source.hg.miradi-client" value="https://code.google.com/p/miradi-client/"/>
-    <property name="source.hg.miradi-client-thirdparty" value="https://code.google.com/p/miradi-client-thirdparty/"/>
+    <property name="scm.miradi-client" value="git@github.com:sitkatech/miradi-client.git"/>
+    <property name="scm.miradi-client-thirdparty" value="git@github.com:sitkatech/miradi-client-thirdparty.git"/>
 
 	<!-- directories -->
 	<property name="build.dir" value="${jenkins.workspace}/build"/>
@@ -307,11 +305,11 @@
 </target>
 
 <target name="get-thirdparty" depends="clean-thirdparty">
-    <echo message="Cloning source from ${source.hg.miradi-client-thirdparty} to ${dist.temp}" />
+    <echo message="Cloning source from ${scm.miradi-client-thirdparty} to ${dist.temp}" />
     <mkdir dir='${dist.temp}' />
-    <exec executable="hg" failonerror="true" dir="${dist.temp}">
+    <exec executable="git" failonerror="true" dir="${dist.temp}">
         <arg value="clone" />
-        <arg value="${source.hg.miradi-client-thirdparty}" />
+        <arg value="${scm.miradi-client-thirdparty}" />
     </exec>
 </target>
 
@@ -923,21 +921,15 @@
 
 <target name="CommitTranslations" if="FilesWereModified">
 	<echo message="Committing translations" />
-	<exec executable="hg" failonerror="true" dir="${miradi.root.dir}">
+	<exec executable="git" failonerror="true" dir="${miradi.root.dir}">
 		<arg value="commit" />
-		<arg value="--message" />
+		<arg value="-m" />
 		<arg value="Updated PO files: ${version.timestamp}" />
 	</exec>
-	<exec executable="hg" failonerror="true" dir="${miradi.root.dir}">
-		<arg value="--config" />
-		<arg value="auth.google.prefix=${source.hg.miradi-client}" />
-		<arg value="--config" />
-		<arg value="auth.google.username=${source.hg.username}"/>
-		<arg value="--config" />
-		<arg value="auth.google.password=${source.hg.password}" />
+	<exec executable="git" failonerror="true" dir="${miradi.root.dir}">
 		<arg value="push" />
-		<arg value="-r" />
-		<arg value="." />
+		<arg value="origin" />
+		<arg value="master" />
 	</exec>
 </target>
 	
