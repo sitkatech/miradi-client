@@ -904,14 +904,15 @@
 	description="Create Translatable Content jars/zips">
 
 	<!-- Add any new translation files -->	
-	<exec executable="hg" failonerror="false" dir="${miradi.root.dir}" >
+	<exec executable="git" failonerror="false" dir="${miradi.root.dir}" >
 		<arg value="add"/>
 		<arg value="${translations.subdir}"/>
 	</exec>
 
 	<!-- See if there is anything to commit -->
-	<exec executable="hg" failonerror="true" dir="${translations.dir}" outputproperty="output">
+	<exec executable="git" failonerror="true" dir="${translations.dir}" outputproperty="output">
 		<arg value="status"/>
+		<arg value="-s" />
 	</exec>
 	<condition property="FilesWereModified">
 		<length string="${output}" trim="true" when="greater" length="0" />
