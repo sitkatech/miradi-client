@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-18 05:37-0800\n"
+"POT-Creation-Date: 2015-04-20 05:35-0700\n"
 "PO-Revision-Date: 2013-06-07 01:56+0100\n"
 "Last-Translator: Galragchaa <galragchaa@yahoo.com>\n"
 "Language-Team: none\n"
@@ -5127,7 +5127,7 @@ msgstr "Цэс|4. Дүн шинжилгээ хийх, хэрэглэх, тохи
 msgid "Menu|5. Capture and Share Learning"
 msgstr "Цэс|5. Дүрслэн гаргах ба сургамжаа хуваалцах"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:242
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:243
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Цэс|Сонгосон зүйлд(үүдэд) Тэмдэглэл нэмэх"
 
@@ -5139,7 +5139,7 @@ msgstr "Цэс|Идэвхитэй хуудсанд экспорт хийх (Expo
 msgid "Menu|Export Current Project as..."
 msgstr "Цэс|Одоогийн төсөлд экспорт хийх (Export)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:280
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:283
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:427
 msgid "Menu|Group Box"
 msgstr "Цэс|Бүлгийн хайрцаг"
@@ -5148,11 +5148,11 @@ msgstr "Цэс|Бүлгийн хайрцаг"
 msgid "Menu|Import"
 msgstr "Цэс|Импорт хийх"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:291
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:294
 msgid "Menu|Insert"
 msgstr "Цэс|Оруулах"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:248
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:249
 msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr "Цэс|Сонгосон Зүйлээс(үүдээс) Тэмдэглэгээг арилгах"
 
@@ -8625,7 +8625,7 @@ msgstr ""
 msgid "Unexpected error prevented installing that language pack"
 msgstr "Хэлний багцыг суулгахад гэнэтийн алдаа гарлаа"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:174
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:175
 msgid "Unexpected error prevented the tag operation from succeeding"
 msgstr ""
 
