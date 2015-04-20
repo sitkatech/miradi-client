@@ -924,7 +924,7 @@
 	<echo message="Committing translations" />
 	<exec executable="git" failonerror="true" dir="${miradi.root.dir}">
 		<arg value="commit" />
-		<arg value="-a" />
+		<arg value="--untracked-files=no" />
 		<arg value="-m" />
 		<arg value="Updated PO files: ${version.timestamp}" />
 	</exec>
