@@ -85,6 +85,7 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objectpools.TaggedObjectSetPool;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.project.Project;
+import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.LocationHolder;
 import org.miradi.utils.MenuItemWithoutLocation;
 import org.miradi.views.diagram.DiagramView;
@@ -262,7 +263,9 @@ public class DiagramContextMenuHandler
 		for(TaggedObjectSet set : tags)
 		{
 			Action action = actionCreator.createAction(factorRefs, set);
-			menu.add(new MenuItemWithoutLocation(action));
+			MenuItemWithoutLocation menuItem = new MenuItemWithoutLocation(action);
+			menuItem.setText(HtmlUtilities.wrapInHtmlTags(set.getLabel()));
+			menu.add(menuItem);
 		}
 		
 		menu.setEnabled(!tags.isEmpty());
