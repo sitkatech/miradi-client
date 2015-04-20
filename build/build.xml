@@ -912,6 +912,7 @@
 	<!-- See if there is anything to commit -->
 	<exec executable="git" failonerror="true" dir="${translations.dir}" outputproperty="output">
 		<arg value="status"/>
+		<arg value="--untracked-files=no" />
 		<arg value="-s" />
 	</exec>
 	<condition property="FilesWereModified">
