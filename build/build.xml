@@ -969,7 +969,7 @@
 		<fileset dir="${dist.mactree}" includes="*" />
 	</delete>
 
-	<appbundler>
+	<appbundler
 		jvmrequired="1.6+"
 		classpathref="runclasspathref"
 		outputdirectory="${dist.mactree}"
