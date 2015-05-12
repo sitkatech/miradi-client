@@ -34,6 +34,7 @@
     <property name="windows.build.certname.password" value="${env.SITKA.WINDOWS.BUILDCERT.PASSWORD}" />
     <property name="miradi.web.domain" value="${env.SITKA.MIRADI.WEB.DOMAIN}" />
     <property name="jenkins.workspace" value="${env.WORKSPACE}"/>
+	<property name="scm.miradi-client.branch" value="${env.SCM.BRANCH}"/>
 
     <!-- repos -->
     <property name="scm.miradi-client" value="git@github.com:sitkatech/miradi-client.git"/>
@@ -162,7 +163,10 @@
     <fail message="env.INSTALL4J.JRES.PATH is not defined" unless="env.INSTALL4J.JRES.PATH"/>
     <echo message="env.INSTALL4J.JRES.PATH = ${env.INSTALL4J.JRES.PATH}"/>
 
-    <condition property="isLinux">
+	<fail message="env.SCM.BRANCH is not defined" unless="env.SCM.BRANCH"/>
+	<echo message="env.SCM.BRANCH = ${env.SCM.BRANCH}"/>
+
+	<condition property="isLinux">
         <and>
             <os family="unix"/>
             <not>
@@ -932,7 +936,7 @@
 	<exec executable="git" failonerror="true" dir="${miradi.root.dir}">
 		<arg value="push" />
 		<arg value="origin" />
-		<arg value="master" />
+		<arg value="${scm.miradi-client.branch}" />
 	</exec>
 </target>
 	
