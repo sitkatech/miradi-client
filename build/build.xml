@@ -571,10 +571,6 @@
 <!-- ================================================================== -->
 <!-- C U S T O M  T A S K   D E S                                       -->
 <!-- ================================================================== -->
-<!--<taskdef name="jarbundler"-->
-         <!--classname="net.sourceforge.jarbundler.JarBundler"-->
-         <!--classpath="${installer.mac.dir}/jarbundler-2.3.1/build/jarbundler-2.3.1.jar" />-->
-
 <taskdef name="appbundler"
          classname="com.oracle.appbundler.AppBundlerTask"
          classpath="${installer.mac.dir}/appbundler-1.0ea/appbundler-1.0ea.jar" />
@@ -962,7 +958,6 @@
 <!-- M A C   A P P   B U N D L E                                        -->
 <!-- ================================================================== -->
 <target name="macappbundle" depends="" description="create a jar app bundle for the mac">
-	<!--<property name="macjavastubfile" value="${installer.mac.dir}/JavaApplicationStub/JavaApplicationStub" />-->
 
 	<mkdir dir="${dist.mactree}" />
 	<delete>
@@ -970,8 +965,7 @@
 	</delete>
 
 	<appbundler
-		jvmrequired="1.6+"
-		classpathref="runclasspathref"
+		jvmrequired="1.8"
 		outputdirectory="${dist.mactree}"
 		name="Miradi"
 		displayname="${mac.app.name}"
@@ -1024,34 +1018,6 @@
 
 		<option value="-Xmx521M" name="Xmx"/>
 	</appbundler>
-
-    <!--<jarbundler-->
-		<!--dir="${dist.mactree}"-->
-		<!--name="${mac.app.name}" -->
-		<!--mainclass="org.miradi.main.Miradi" -->
-		<!--jvmversion="1.6+"-->
-		<!--stubfile="${macjavastubfile}" -->
-		<!--shortname="Miradi" -->
-		<!--version="${version.full}"-->
-		<!--build="${version.timestamp}"-->
-		<!--vmoptions="-Xmx512m"-->
-        <!--icon="${eam.icons}/miradi.icns"-->
-		<!-->-->
-
-		<!--<jarfileset dir="${dist.dir}">-->
-			<!--<include name="miradi.jar" />-->
-		<!--</jarfileset>-->
-		<!--<jarfileset dir="${dist.temp.jars}/">-->
-			<!--<include name="**/*.jar" />-->
-			<!--<exclude name="junit*" />-->
-		<!--</jarfileset>-->
-
-		<!--<javaproperty name="apple.laf.useScreenMenuBar" value="true" />-->
-		<!--<javaproperty name="apple.awt.brushMetal" value="true" />-->
-		<!--<javaproperty name="apple.awt.showGrowBox" value="true" />-->
-		<!--<javaproperty name="apple.awt.antialiasing" value="true" />-->
-		<!--<javaproperty name="apple.awt.textantialiasing" value="true" />-->
-	<!--</jarbundler>-->
 
     <copy todir="${dist.mactree}">
         <fileset dir="${installer.mac.dmgbuild.dir}">
