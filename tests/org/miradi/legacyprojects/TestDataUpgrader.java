@@ -1306,7 +1306,7 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 		File file30 = new File(objects19, "30");
 		createFile(file30, objects19Content);
 		
-		createManifestFile(objects19, new int[] {30});
+		createManifestFile(objects19, new int[]{30});
 		
 		DataUpgrader.initializeStaticDirectory(tempDirectory);
 		MigrationsOlderThanMiradiVersion2.upgradeToVersion18();
@@ -1378,14 +1378,13 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 		factorLinkIds[0] = 56;
 		factorLinkIds[1] = 57;
 		
-		HashMap<Integer, Integer> factorToDiamgramFactorIdMap = new HashMap<Integer, Integer>();
-		factorToDiamgramFactorIdMap.put(new Integer(28), new Integer(91));
-		factorToDiamgramFactorIdMap.put(new Integer(29), new Integer(92));
+		HashMap<Integer, Integer> factorToDiagramFactorIdMap = new HashMap<Integer, Integer>();
+		factorToDiagramFactorIdMap.put(new Integer(28), new Integer(91));
+		factorToDiagramFactorIdMap.put(new Integer(29), new Integer(92));
 	
-		factorToDiamgramFactorIdMap.put(new Integer(30), new Integer(93));
-		factorToDiamgramFactorIdMap.put(new Integer(31), new Integer(94));
-		
-		
+		factorToDiagramFactorIdMap.put(new Integer(30), new Integer(93));
+		factorToDiagramFactorIdMap.put(new Integer(31), new Integer(94));
+
 		File jsonDir = new File(tempDirectory, "json");
 		jsonDir.mkdirs();
 		
@@ -1408,7 +1407,7 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 		File projectFile = new File(jsonDir, "project");
 		createFile(projectFile, "{\"HighestUsedNodeId\":134}");
 		DataUpgrader.initializeStaticDirectory(tempDirectory);
-		MigrationsOlderThanMiradiVersion2.createDiagramFactorLinksFromRawFactorLinks(factorToDiamgramFactorIdMap);
+		MigrationsOlderThanMiradiVersion2.createDiagramFactorLinksFromRawFactorLinks(factorToDiagramFactorIdMap);
 		
 		File objects13Dir = new File(jsonDir, "objects-13");
 		assertTrue("objects-13 dir does not exist?", objects13Dir.exists());
@@ -1418,24 +1417,41 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 		
 		File file1 = new File(objects13Dir, "135");
 		assertTrue("diagram link file 135 exists?", file1.exists());
-		
+
+		HashMap<Integer, Integer> expectedFromDiagramLinkMap = new HashMap<Integer, Integer>();
+		expectedFromDiagramLinkMap.put(new Integer(56), new Integer(91));
+		expectedFromDiagramLinkMap.put(new Integer(57), new Integer(93));
+
+		HashMap<Integer, Integer> expectedToDiagramLinkMap = new HashMap<Integer, Integer>();
+		expectedToDiagramLinkMap.put(new Integer(56), new Integer(92));
+		expectedToDiagramLinkMap.put(new Integer(57), new Integer(94));
+
 		EnhancedJsonObject json1 = new EnhancedJsonObject(readFile(file1));
-		assertEquals("same wrapped id?", 57, json1.getId(DiagramLink.TAG_WRAPPED_ID).asInt());
-		BaseId fromDiagramLinkId = json1.getId(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
-		BaseId toDiagramLinkId = json1.getId(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
-		assertEquals("same from diagram link id?", 93, fromDiagramLinkId.asInt());
-		assertEquals("same from diagram link id?", 94, toDiagramLinkId.asInt());
-	
-		
+		int wrappedId1 = json1.getId(DiagramLink.TAG_WRAPPED_ID).asInt();
+
+		BaseId fromDiagramLinkId1 = json1.getId(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
+		BaseId toDiagramLinkId1 = json1.getId(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
+
+		int expectedFromDiagramLinkId1 = expectedFromDiagramLinkMap.get(wrappedId1);
+		int expectedToDiagramLinkId1 = expectedToDiagramLinkMap.get(wrappedId1);
+
+		assertEquals("same from diagram link id?", expectedFromDiagramLinkId1, fromDiagramLinkId1.asInt());
+		assertEquals("same to diagram link id?", expectedToDiagramLinkId1, toDiagramLinkId1.asInt());
+
 		File file2 = new File(objects13Dir, "136");
 		assertTrue("diagram link file 136 exists?", file2.exists());
 		
 		EnhancedJsonObject json2 = new EnhancedJsonObject(readFile(file2));
-		assertEquals("same wrapped id?", 56, json2.getId(DiagramLink.TAG_WRAPPED_ID).asInt());
+		int wrappedId2 = json2.getId(DiagramLink.TAG_WRAPPED_ID).asInt();
+
 		BaseId fromDiagramLinkId2 = json2.getId(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
 		BaseId toDiagramLinkId2 = json2.getId(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
-		assertEquals("same from diagram link id?", 91, fromDiagramLinkId2.asInt());
-		assertEquals("same from diagram link id?", 92, toDiagramLinkId2.asInt());
+
+		int expectedFromDiagramLinkId2 = expectedFromDiagramLinkMap.get(wrappedId2);
+		int expectedToDiagramLinkId2 = expectedToDiagramLinkMap.get(wrappedId2);
+
+		assertEquals("same from diagram link id?", expectedFromDiagramLinkId2, fromDiagramLinkId2.asInt());
+		assertEquals("same to diagram link id?", expectedToDiagramLinkId2, toDiagramLinkId2.asInt());
 	}
 	
 	public void testCreateDiagramFactorsFromRawFactors() throws Exception
