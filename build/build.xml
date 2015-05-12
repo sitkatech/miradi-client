@@ -970,7 +970,7 @@
 	</delete>
 
 	<appbundler>
-		jvmrequired="1.8+"
+		jvmrequired="1.6+"
 		classpathref="runclasspathref"
 		outputdirectory="${dist.mactree}"
 		name="Miradi"
