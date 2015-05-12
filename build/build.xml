@@ -967,7 +967,7 @@
 	<appbundler
 		jvmrequired="1.8"
 		outputdirectory="${dist.mactree}"
-		name="Miradi"
+		name="${mac.app.name}"
 		displayname="${mac.app.name}"
 		executableName="${mac.app.name}"
 		identifier="org.miradi.main.Miradi"
