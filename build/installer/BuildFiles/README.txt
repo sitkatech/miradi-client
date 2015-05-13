@@ -4,7 +4,7 @@ Copyright 2005-2015, Foundations of Success, Bethesda, Maryland
 on behalf of the Conservation Measures Partnership ("CMP").
 Material developed between 2005-2013 is jointly copyright by Beneficent Technology, Inc. ("The Benetech Initiative"), Palo Alto, California.
 
-VERSION 4.2.1
+VERSION 4.3.0
 
 License and Copying
 
@@ -116,10 +116,10 @@ Mac OS X:
   Miradi will no longer work with Apple's 1.6 version of Java (which is no longer maintained by Apple).
   
   
-- Download the Miradi-4.2.1.dmg file
-- Using the mac Finder navigate to the folder containing Miradi-4.2.1.dmg
-- Double click the file Miradi-4.2.1.dmg
-- In the Finder's left panel select the Miradi "Miradi 4.2.1 Mac Install" drive
+- Download the Miradi-4.3.0.dmg file
+- Using the mac Finder navigate to the folder containing Miradi-4.3.0.dmg
+- Double click the file Miradi-4.3.0.dmg
+- In the Finder's left panel select the Miradi "Miradi 4.3.0 Mac Install" drive
 - In the right you will see the contents of the drive
 - Copy the Miradi app into your applications folder
 - Select the Miradi app file and bring up the context menu 
@@ -161,6 +161,12 @@ cannot be directly opened by earlier versions of Miradi, but 4.1.2 and
 in the MPZ format used by Miradi 3.3. In some cases, data may be
 lost when exporting to these older formats, but a warning dialog will
 indicate when that is the case.
+
+
+Notable changes in 4.3.0:
+
+Diagram:
+- HTML formatting added to a Tag name now renders correctly in the right-click context menu.
 
 
 Notable changes in 4.2.1:

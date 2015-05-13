@@ -6,8 +6,8 @@
 	
 	<!-- product version -->
 	<property name="version.prefix" value=""/>
-	<property name="version.main" value = "4.2"/>
-	<property name="version.minor" value = ".1"/>
+	<property name="version.main" value = "4.3"/>
+	<property name="version.minor" value = ".0"/>
 	<property name="version.full" value="${version.main}${version.minor}"/>
 
 	<loadresource property="version.full.installer">
