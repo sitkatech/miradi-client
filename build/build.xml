@@ -6,8 +6,8 @@
 	
 	<!-- product version -->
 	<property name="version.prefix" value=""/>
-	<property name="version.main" value = "4.3"/>
-	<property name="version.minor" value = ".0"/>
+	<property name="version.main" value = "4.2"/>
+	<property name="version.minor" value = ".1"/>
 	<property name="version.full" value="${version.main}${version.minor}"/>
 
 	<loadresource property="version.full.installer">
@@ -34,6 +34,7 @@
     <property name="windows.build.certname.password" value="${env.SITKA.WINDOWS.BUILDCERT.PASSWORD}" />
     <property name="miradi.web.domain" value="${env.SITKA.MIRADI.WEB.DOMAIN}" />
     <property name="jenkins.workspace" value="${env.WORKSPACE}"/>
+	<property name="scm.miradi-client.branch" value="${env.SCM.BRANCH}"/>
 
     <!-- repos -->
     <property name="scm.miradi-client" value="git@github.com:sitkatech/miradi-client.git"/>
@@ -162,7 +163,10 @@
     <fail message="env.INSTALL4J.JRES.PATH is not defined" unless="env.INSTALL4J.JRES.PATH"/>
     <echo message="env.INSTALL4J.JRES.PATH = ${env.INSTALL4J.JRES.PATH}"/>
 
-    <condition property="isLinux">
+	<fail message="env.SCM.BRANCH is not defined" unless="env.SCM.BRANCH"/>
+	<echo message="env.SCM.BRANCH = ${env.SCM.BRANCH}"/>
+
+	<condition property="isLinux">
         <and>
             <os family="unix"/>
             <not>
@@ -567,9 +571,9 @@
 <!-- ================================================================== -->
 <!-- C U S T O M  T A S K   D E S                                       -->
 <!-- ================================================================== -->
-<taskdef name="jarbundler"
-         classname="net.sourceforge.jarbundler.JarBundler"
-         classpath="${installer.mac.dir}/jarbundler-2.3.1/build/jarbundler-2.3.1.jar" />
+<taskdef name="appbundler"
+         classname="com.oracle.appbundler.AppBundlerTask"
+         classpath="${installer.mac.dir}/appbundler-1.0ea/appbundler-1.0ea.jar" />
 
 <taskdef name="install4j"
          classname="com.install4j.Install4JTask"
@@ -932,7 +936,7 @@
 	<exec executable="git" failonerror="true" dir="${miradi.root.dir}">
 		<arg value="push" />
 		<arg value="origin" />
-		<arg value="master" />
+		<arg value="${scm.miradi-client.branch}" />
 	</exec>
 </target>
 	
@@ -954,40 +958,66 @@
 <!-- M A C   A P P   B U N D L E                                        -->
 <!-- ================================================================== -->
 <target name="macappbundle" depends="" description="create a jar app bundle for the mac">
-	<property name="macjavastubfile" value="${installer.mac.dir}/JavaApplicationStub/JavaApplicationStub" />
 
 	<mkdir dir="${dist.mactree}" />
 	<delete>
 		<fileset dir="${dist.mactree}" includes="*" />
 	</delete>
 
-    <jarbundler
-		dir="${dist.mactree}"
-		name="${mac.app.name}" 
-		mainclass="org.miradi.main.Miradi" 
-		jvmversion="1.6+"
-		stubfile="${macjavastubfile}" 
-		shortname="Miradi" 
-		version="${version.full}"
-		build="${version.timestamp}"
-		vmoptions="-Xmx512m"
-        icon="${eam.icons}/miradi.icns"
-		>
+	<appbundler
+		jvmrequired="1.8"
+		outputdirectory="${dist.mactree}"
+		name="${mac.app.name}"
+		displayname="${mac.app.name}"
+		executableName="${mac.app.name}"
+		identifier="org.miradi.main.Miradi"
+		shortversion="${version.full}"
+		version="${version.timestamp}"
+		icon="${eam.icons}/miradi.icns"
+		mainclassname="org.miradi.main.Miradi">
 
-		<jarfileset dir="${dist.dir}">
-			<include name="miradi.jar" />
-		</jarfileset>
-		<jarfileset dir="${dist.temp.jars}/">
-			<include name="**/*.jar" />
-			<exclude name="junit*" />
-		</jarfileset>
+		<arch name="x86_64"/>
+		<arch name="i386"/>
 
-		<javaproperty name="apple.laf.useScreenMenuBar" value="true" />
-		<javaproperty name="apple.awt.brushMetal" value="true" />
-		<javaproperty name="apple.awt.showGrowBox" value="true" />
-		<javaproperty name="apple.awt.antialiasing" value="true" />
-		<javaproperty name="apple.awt.textantialiasing" value="true" />
-	</jarbundler>
+		<classpath file="${dist.dir}/miradi.jar" />
+		<classpath file="${dist.temp.jars}/BrowserLauncher2/BrowserLauncher2-all-10rc4.jar" />
+		<classpath file="${dist.temp.jars}/JUnit/bin/junit.jar" />
+		<classpath file="${dist.temp.jars}/commons-lang3/3.1/commons-lang3-3.1-sources.jar" />
+		<classpath file="${dist.temp.jars}/commons-lang3/3.1/commons-lang3-3.1.jar" />
+		<classpath file="${dist.temp.jars}/jcalendar-1.3.2/jcalendar-1.3.2.jar" />
+		<classpath file="${dist.temp.jars}/jgraph/miradi-jgraph-5.12.2.2b.jar" />
+		<classpath file="${dist.temp.jars}/jing/bin/isorelax.jar" />
+		<classpath file="${dist.temp.jars}/jing/bin/jing.jar" />
+		<classpath file="${dist.temp.jars}/jing/bin/saxon.jar" />
+		<classpath file="${dist.temp.jars}/jing/bin/xercesImpl.jar" />
+		<classpath file="${dist.temp.jars}/jing/bin/xml-apis.jar" />
+		<classpath file="${dist.temp.jars}/jortho/bin/jortho.jar" />
+		<classpath file="${dist.temp.jars}/martus-swing/bin/martus-swing.jar" />
+		<classpath file="${dist.temp.jars}/martus-swing/source/martus-swing-src.jar" />
+		<classpath file="${dist.temp.jars}/martus-utils/bin/martus-utils.jar" />
+		<classpath file="${dist.temp.jars}/martus-utils/source/martus-utils-src.jar" />
+		<classpath file="${dist.temp.jars}/shef/0.5/jtidy-8.0.jar" />
+		<classpath file="${dist.temp.jars}/shef/0.5/sam-src.jar" />
+		<classpath file="${dist.temp.jars}/shef/0.5/sam.jar" />
+		<classpath file="${dist.temp.jars}/shef/0.5/shef.jar" />
+		<classpath file="${dist.temp.jars}/swingx/0.9.7/swingx-0.9.7.jar" />
+
+		<!-- Workaround as com.apple.mrj.application.apple.menu.about.name property may no longer work -->
+		<option value="-Xdock:name=${mac.app.name}"/>
+
+		<option value="-Dapple.laf.useScreenMenuBar=true"/>
+		<option value="-Dapple.awt.brushMetal=true"/>
+		<option value="-Dapple.awt.showGrowBox=true"/>
+		<option value="-Dapple.awt.antialiasing=true"/>
+		<option value="-Dapple.awt.textantialiasing"/>
+		<option value="-Dcom.apple.macos.use-file-dialog-packages=true"/>
+		<option value="-Dcom.apple.macos.useScreenMenuBar=true"/>
+		<option value="-Dcom.apple.mrj.application.apple.menu.about.name=${mac.app.name}"/>
+		<option value="-Dcom.apple.smallTabs=true"/>
+		<option value="-Dfile.encoding=UTF-8"/>
+
+		<option value="-Xmx521M" name="Xmx"/>
+	</appbundler>
 
     <copy todir="${dist.mactree}">
         <fileset dir="${installer.mac.dmgbuild.dir}">

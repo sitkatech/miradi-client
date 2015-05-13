@@ -31,36 +31,35 @@ public class TestEAM extends MiradiTestCase
 	
 	public void testSubstituteWithNullReplacementValue()
 	{
-		String replacement = null;
 		String substituteString = "something plus something =  %s dollars";
-		assertEquals("didnt substitude correctly?", "something plus something =   dollars", EAM.substituteSingleString(substituteString, replacement));
+		assertEquals("didnt substitute correctly?", "something plus something =   dollars", EAM.substituteSingleString(substituteString, null));
 		assertEquals("Substitution was correct?", "something plus something =  4 dollars", EAM.substituteSingleString(substituteString, "4"));
 	}
 	
 	public void testSubstituteWithMap()
 	{
 		HashMap<String, String> substituteMap = new HashMap<String, String>();
-		assertEquals("nothing should have been subsituted with empty map?", "%s nothing to substitute", EAM.substitute("%s nothing to substitute", substituteMap));
+		assertEquals("nothing should have been substituted with empty map?", "%s nothing to substitute", EAM.substitute("%s nothing to substitute", substituteMap));
 		
 		substituteMap.put("%countLabel", "Strategy Count");
-		substituteMap.put("%count", "5");
-		String labelToSubstitute = EAM.text("%countLabel : %count");
-		assertEquals("Incorrect subsitution?", "Strategy Count : 5", EAM.substitute(labelToSubstitute, substituteMap));
+		substituteMap.put("%itemCount", "5");
+		String labelToSubstitute = EAM.text("%countLabel : %itemCount");
+		assertEquals("Incorrect substitution?", "Strategy Count : 5", EAM.substitute(labelToSubstitute, substituteMap));
 		
 		String labelWithSameTokens = EAM.text("%countLabel : %countLabel");
-		assertEquals("Incorrect subsitution?", "Strategy Count : Strategy Count", EAM.substitute(labelWithSameTokens, substituteMap));
+		assertEquals("Incorrect substitution?", "Strategy Count : Strategy Count", EAM.substitute(labelWithSameTokens, substituteMap));
 		
-		String labelWithReversedTokens = EAM.text("%count : %countLabel");
-		assertEquals("Incorrect subsitution for reversed?", "5 : Strategy Count", EAM.substitute(labelWithReversedTokens, substituteMap));
+		String labelWithReversedTokens = EAM.text("%itemCount : %countLabel");
+		assertEquals("Incorrect substitution for reversed?", "5 : Strategy Count", EAM.substitute(labelWithReversedTokens, substituteMap));
 	}
 	
 	public void testSubstitute()
 	{
 		String beforeSubstitute = "some text with %s";
 		String substituteString = "some more text";
-		String substitudedText = EAM.substituteSingleString(beforeSubstitute, substituteString);
+		String substitutedText = EAM.substituteSingleString(beforeSubstitute, substituteString);
 		String expectedText = "some text with some more text";
-		assertEquals("didnt substitude correctly?", expectedText, substitudedText); 
+		assertEquals("didnt substitute correctly?", expectedText, substitutedText);
 		
 		assertEquals("abc\\", EAM.substituteSingleString("abc%s", "\\"));
 	}

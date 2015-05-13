@@ -4,7 +4,7 @@ Copyright 2005-2015, Foundations of Success, Bethesda, Maryland
 on behalf of the Conservation Measures Partnership ("CMP").
 Material developed between 2005-2013 is jointly copyright by Beneficent Technology, Inc. ("The Benetech Initiative"), Palo Alto, California.
 
-VERSION 4.3.0
+VERSION 4.2.1
 
 License and Copying
 
@@ -56,7 +56,7 @@ For MS Windows:
 - 80 MB available disk space
 
 For Mac OS X:
-- Java 1.6 or later
+- Java 1.8 or later
 - 1 GB RAM recommended
 - 30 MB available disk space
 
@@ -111,15 +111,15 @@ Mac OS X:
       - martus-utils.jar
       - persiancalendar.jar
 
-- Before installing Miradi, make sure Apple's official Java J2SE6 or J2SE7
-  is installed (Miradi will not work with Java 1.4). If you are running 
-  a current version of OS X, Java should have been installed automatically.
+- Before installing Miradi, make sure Oracle's official Java J2SE8 is installed. As of these release notes
+  it can be downloaded from http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html.
+  Miradi will no longer work with Apple's 1.6 version of Java (which is no longer maintained by Apple).
   
   
-- Download the Miradi-4.2.0.dmg file
-- Using the mac Finder navigate to the folder containing Miradi-4.2.0.dmg
-- Double click the file Miradi-4.2.0.dmg
-- In the Finder's left panel select the Miradi "Miradi 4.2.0 Mac Install" drive
+- Download the Miradi-4.2.1.dmg file
+- Using the mac Finder navigate to the folder containing Miradi-4.2.1.dmg
+- Double click the file Miradi-4.2.1.dmg
+- In the Finder's left panel select the Miradi "Miradi 4.2.1 Mac Install" drive
 - In the right you will see the contents of the drive
 - Copy the Miradi app into your applications folder
 - Select the Miradi app file and bring up the context menu 
@@ -161,6 +161,13 @@ cannot be directly opened by earlier versions of Miradi, but 4.1.2 and
 in the MPZ format used by Miradi 3.3. In some cases, data may be
 lost when exporting to these older formats, but a warning dialog will
 indicate when that is the case.
+
+
+Notable changes in 4.2.1:
+
+Installer:
+- The Mac installer now requires the installation of the 1.8 version of the Java SE runtime (JRE) from Oracle. As of
+  these release notes it can be downloaded from http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html.
 
 
 Notable changes in 4.2.0:
