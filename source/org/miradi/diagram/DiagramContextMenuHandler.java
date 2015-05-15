@@ -142,7 +142,7 @@ public class DiagramContextMenuHandler
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionSelectChain.class)));
 		menu.add(getModeSwitchMenuItem());
 		DiagramView diagramView = (DiagramView) mainWindow.getCurrentView();
-		menu.add(getDiagamModeSwitchItem(diagramView, actions));
+		menu.add(getDiagramModeSwitchItem(diagramView, actions));
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionCreateResultsChain.class)));
 		menu.addSeparator();
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionDiagramProperties.class)));
@@ -264,7 +264,7 @@ public class DiagramContextMenuHandler
 		{
 			Action action = actionCreator.createAction(factorRefs, set);
 			MenuItemWithoutLocation menuItem = new MenuItemWithoutLocation(action);
-			menuItem.setText(HtmlUtilities.wrapInHtmlTags(set.getLabel()));
+			menuItem.setText(HtmlUtilities.wrapInHtmlTags(set.getFullName()));
 			menu.add(menuItem);
 		}
 		
@@ -327,7 +327,7 @@ public class DiagramContextMenuHandler
 		menu.show(diagramComponent, e.getX(), e.getY());
 	}
 	
-	public static MiradiAction getDiagamModeSwitchItem(DiagramView diagramView, Actions actions)
+	public static MiradiAction getDiagramModeSwitchItem(DiagramView diagramView, Actions actions)
 	{
 		if (diagramView.isResultsChainTab())
 			return actions.get(ActionShowConceptualModel.class);

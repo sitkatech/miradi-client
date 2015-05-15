@@ -81,9 +81,9 @@ public class TaggedObjectSet extends BaseObject
 		return (TaggedObjectSet) objectManager.findObject(objectTagRef);
 	}
 	
-	public static TaggedObjectSet find(Project project, ORef eportTemplateRef)
+	public static TaggedObjectSet find(Project project, ORef reportTemplateRef)
 	{
-		return find(project.getObjectManager(), eportTemplateRef);
+		return find(project.getObjectManager(), reportTemplateRef);
 	}
 
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
