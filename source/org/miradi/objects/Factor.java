@@ -186,6 +186,9 @@ abstract public class Factor extends BaseObject
 		if (typeToUse == ObjectType.SCOPE_BOX)
 			return true;
 		
+		if (typeToUse == ObjectType.BIOPHYSICAL_FACTOR)
+			return true;
+
 		if (HumanWelfareTarget.is(typeToUse))
 			return true;
 		
@@ -256,7 +259,12 @@ abstract public class Factor extends BaseObject
 	{
 		return false;
 	}
-	
+
+	public boolean isBiophysicalFactor()
+	{
+		return false;
+	}
+
 	public boolean canHaveType(final int type)
 	{
 		if (Goal.is(type))
@@ -344,8 +352,12 @@ abstract public class Factor extends BaseObject
 		
 		else if (objectType == ObjectType.HUMAN_WELFARE_TARGET)
 			return new HumanWelfareTarget(objectManager, idToCreate);
-		
-		throw new RuntimeException("Tried to create unknown node type: " + objectType);
+
+        else if(objectType == ObjectType.BIOPHYSICAL_FACTOR)
+            return new BiophysicalFactor(objectManager, idToCreate);
+
+
+        throw new RuntimeException("Tried to create unknown node type: " + objectType);
 	}
 	
 	@Override

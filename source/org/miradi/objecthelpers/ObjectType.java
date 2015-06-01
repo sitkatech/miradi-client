@@ -129,13 +129,15 @@ public class ObjectType
 	//NOTE: 63 is currently reserved for image type.
 	//public static final int IMAGE = 63;
 	public static final int FUTURE_STATUS = 64;
-	
+	public static final int BIOPHYSICAL_FACTOR = 65;
+
 	// When you add a new type, be sure to:
 	// - increment OBJECT_TYPE_COUNT
 	// - IF it is a user-visible object, add a case to getUserFriendlyObjectTypeName below
 	// - IF it is a top-level object, add it to getTopLevelObjectTypes below
-	
-	public static final int OBJECT_TYPE_COUNT = 65;
+	// - add appropriate entry to FieldLabels.properties file
+
+	public static final int OBJECT_TYPE_COUNT = 66;
 
 	public static String getUserFriendlyObjectTypeName(Project project, int objectType)
 	{

@@ -30,127 +30,9 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objectpools.AccountingCodePool;
-import org.miradi.objectpools.FutureStatusPool;
-import org.miradi.objectpools.MiradiShareProjectDataPool;
-import org.miradi.objectpools.TaxonomyAssociationPool;
-import org.miradi.objectpools.MiradiShareTaxonomyPool;
-import org.miradi.objectpools.ResourceAssignmentPool;
-import org.miradi.objectpools.AudiencePool;
-import org.miradi.objectpools.BudgetCategoryOnePool;
-import org.miradi.objectpools.BudgetCategoryTwoPool;
-import org.miradi.objectpools.CausePool;
-import org.miradi.objectpools.ConceptualModelDiagramPool;
-import org.miradi.objectpools.CostAllocationRulePool;
-import org.miradi.objectpools.DashboardPool;
-import org.miradi.objectpools.DiagramFactorPool;
-import org.miradi.objectpools.DiagramLinkPool;
-import org.miradi.objectpools.BaseObjectPool;
-import org.miradi.objectpools.EAMObjectPool;
-import org.miradi.objectpools.ExpenseAssignmentPool;
-import org.miradi.objectpools.FactorLinkPool;
-import org.miradi.objectpools.FosProjectDataPool;
-import org.miradi.objectpools.FundingSourcePool;
-import org.miradi.objectpools.GoalPool;
-import org.miradi.objectpools.GroupBoxPool;
-import org.miradi.objectpools.HumanWelfareTargetPool;
-import org.miradi.objectpools.IndicatorPool;
-import org.miradi.objectpools.IntermediateResultPool;
-import org.miradi.objectpools.IucnRedlistSpeciesPool;
-import org.miradi.objectpools.KeyEcologicalAttributePool;
-import org.miradi.objectpools.MeasurementPool;
-import org.miradi.objectpools.ObjectTreeTableConfigurationPool;
-import org.miradi.objectpools.ObjectivePool;
-import org.miradi.objectpools.OrganizationPool;
-import org.miradi.objectpools.OtherNotableSpeciesPool;
-import org.miradi.objectpools.ProgressPercentPool;
-import org.miradi.objectpools.ProgressReportPool;
-import org.miradi.objectpools.ProjectMetadataPool;
-import org.miradi.objectpools.RareProjectDataPool;
-import org.miradi.objectpools.RatingCriterionPool;
-import org.miradi.objectpools.ReportTemplatePool;
-import org.miradi.objectpools.ResourcePool;
-import org.miradi.objectpools.ResultsChainDiagramPool;
-import org.miradi.objectpools.ScopeBoxPool;
-import org.miradi.objectpools.StrategyPool;
-import org.miradi.objectpools.StressPool;
-import org.miradi.objectpools.SubTargetPool;
-import org.miradi.objectpools.TableSettingsPool;
-import org.miradi.objectpools.TaggedObjectSetPool;
-import org.miradi.objectpools.TargetPool;
-import org.miradi.objectpools.TaskPool;
-import org.miradi.objectpools.TextBoxPool;
-import org.miradi.objectpools.ThreatRatingCommentsDataPool;
-import org.miradi.objectpools.ThreatReductionResultPool;
-import org.miradi.objectpools.ThreatStressRatingPool;
-import org.miradi.objectpools.TncProjectDataPool;
-import org.miradi.objectpools.ValueOptionPool;
-import org.miradi.objectpools.ViewPool;
-import org.miradi.objectpools.WcpaProjectDataPool;
-import org.miradi.objectpools.WcsProjectDataPool;
-import org.miradi.objectpools.WwfProjectDataPool;
-import org.miradi.objectpools.XenodataPool;
-import org.miradi.objectpools.XslTemplatePool;
+import org.miradi.objectpools.*;
 import org.miradi.objects.BaseObject;
-import org.miradi.schemas.AccountingCodeSchema;
-import org.miradi.schemas.AudienceSchema;
-import org.miradi.schemas.BudgetCategoryOneSchema;
-import org.miradi.schemas.BudgetCategoryTwoSchema;
-import org.miradi.schemas.CauseSchema;
-import org.miradi.schemas.ConceptualModelDiagramSchema;
-import org.miradi.schemas.CostAllocationRuleSchema;
-import org.miradi.schemas.DashboardSchema;
-import org.miradi.schemas.DiagramFactorSchema;
-import org.miradi.schemas.DiagramLinkSchema;
-import org.miradi.schemas.ExpenseAssignmentSchema;
-import org.miradi.schemas.FactorLinkSchema;
-import org.miradi.schemas.FosProjectDataSchema;
-import org.miradi.schemas.FundingSourceSchema;
-import org.miradi.schemas.FutureStatusSchema;
-import org.miradi.schemas.GoalSchema;
-import org.miradi.schemas.GroupBoxSchema;
-import org.miradi.schemas.HumanWelfareTargetSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.IntermediateResultSchema;
-import org.miradi.schemas.IucnRedlistSpeciesSchema;
-import org.miradi.schemas.KeyEcologicalAttributeSchema;
-import org.miradi.schemas.MeasurementSchema;
-import org.miradi.schemas.MiradiShareProjectDataSchema;
-import org.miradi.schemas.TaxonomyAssociationSchema;
-import org.miradi.schemas.MiradiShareTaxonomySchema;
-import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
-import org.miradi.schemas.ObjectiveSchema;
-import org.miradi.schemas.OrganizationSchema;
-import org.miradi.schemas.OtherNotableSpeciesSchema;
-import org.miradi.schemas.ProgressPercentSchema;
-import org.miradi.schemas.ProgressReportSchema;
-import org.miradi.schemas.ProjectMetadataSchema;
-import org.miradi.schemas.ProjectResourceSchema;
-import org.miradi.schemas.RareProjectDataSchema;
-import org.miradi.schemas.RatingCriterionSchema;
-import org.miradi.schemas.ReportTemplateSchema;
-import org.miradi.schemas.ResourceAssignmentSchema;
-import org.miradi.schemas.ResultsChainDiagramSchema;
-import org.miradi.schemas.ScopeBoxSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.StressSchema;
-import org.miradi.schemas.SubTargetSchema;
-import org.miradi.schemas.TableSettingsSchema;
-import org.miradi.schemas.TaggedObjectSetSchema;
-import org.miradi.schemas.TargetSchema;
-import org.miradi.schemas.TaskSchema;
-import org.miradi.schemas.TextBoxSchema;
-import org.miradi.schemas.ThreatRatingCommentsDataSchema;
-import org.miradi.schemas.ThreatReductionResultSchema;
-import org.miradi.schemas.ThreatStressRatingSchema;
-import org.miradi.schemas.TncProjectDataSchema;
-import org.miradi.schemas.ValueOptionSchema;
-import org.miradi.schemas.ViewDataSchema;
-import org.miradi.schemas.WcpaProjectDataSchema;
-import org.miradi.schemas.WcsProjectDataSchema;
-import org.miradi.schemas.WwfProjectDataSchema;
-import org.miradi.schemas.XenodataSchema;
-import org.miradi.schemas.XslTemplateSchema;
+import org.miradi.schemas.*;
 
 public class ObjectManager
 {
@@ -179,6 +61,7 @@ public class ObjectManager
 		addNormalPool(new KeyEcologicalAttributePool(ida), KeyEcologicalAttributeSchema.OBJECT_NAME);
 		addNormalPool(new DiagramFactorPool(ida), DiagramFactorSchema.OBJECT_NAME);
 		addNormalPool(new CausePool(ida), CauseSchema.OBJECT_NAME);
+		addNormalPool(new BiophysicalFactorPool(ida), BiophysicalFactorSchema.OBJECT_NAME);
 		addNormalPool(new StrategyPool(ida), StrategySchema.OBJECT_NAME);
 		addNormalPool(new TargetPool(ida), TargetSchema.OBJECT_NAME);
 		addNormalPool(new IntermediateResultPool(ida), IntermediateResultSchema.OBJECT_NAME);
@@ -410,8 +293,10 @@ public class ObjectManager
 	public static int[] getAllObjectTypes()
 	{
 		//NOTE: Pools must be loaded in a specific sequence
+        // MRD-5911 - yes...but what sequence...?
 		int[] types = {
 			ObjectType.CAUSE,
+			ObjectType.BIOPHYSICAL_FACTOR,
 			ObjectType.STRATEGY,
 			ObjectType.TARGET,
 			ObjectType.FACTOR_LINK,

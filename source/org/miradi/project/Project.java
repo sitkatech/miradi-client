@@ -52,43 +52,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.PlanningPreferencesChangeHandler;
 import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.objecthelpers.TimePeriodCostsMapsCache;
-import org.miradi.objectpools.BaseObjectPool;
-import org.miradi.objectpools.CausePool;
-import org.miradi.objectpools.ConceptualModelDiagramPool;
-import org.miradi.objectpools.DiagramFactorPool;
-import org.miradi.objectpools.DiagramLinkPool;
-import org.miradi.objectpools.EAMObjectPool;
-import org.miradi.objectpools.ExpenseAssignmentPool;
-import org.miradi.objectpools.FactorLinkPool;
-import org.miradi.objectpools.FundingSourcePool;
-import org.miradi.objectpools.FutureStatusPool;
-import org.miradi.objectpools.GoalPool;
-import org.miradi.objectpools.GroupBoxPool;
-import org.miradi.objectpools.HumanWelfareTargetPool;
-import org.miradi.objectpools.IndicatorPool;
-import org.miradi.objectpools.IntermediateResultPool;
-import org.miradi.objectpools.KeyEcologicalAttributePool;
-import org.miradi.objectpools.ObjectTreeTableConfigurationPool;
-import org.miradi.objectpools.ObjectivePool;
-import org.miradi.objectpools.RareProjectDataPool;
-import org.miradi.objectpools.ResourceAssignmentPool;
-import org.miradi.objectpools.ResourcePool;
-import org.miradi.objectpools.ResultsChainDiagramPool;
-import org.miradi.objectpools.ScopeBoxPool;
-import org.miradi.objectpools.StrategyPool;
-import org.miradi.objectpools.StressPool;
-import org.miradi.objectpools.TableSettingsPool;
-import org.miradi.objectpools.TaggedObjectSetPool;
-import org.miradi.objectpools.TargetPool;
-import org.miradi.objectpools.TaskPool;
-import org.miradi.objectpools.TaxonomyAssociationPool;
-import org.miradi.objectpools.TextBoxPool;
-import org.miradi.objectpools.ThreatReductionResultPool;
-import org.miradi.objectpools.ThreatStressRatingPool;
-import org.miradi.objectpools.ViewPool;
-import org.miradi.objectpools.WcpaProjectDataPool;
-import org.miradi.objectpools.WcsProjectDataPool;
-import org.miradi.objectpools.WwfProjectDataPool;
+import org.miradi.objectpools.*;
 import org.miradi.objects.*;
 import org.miradi.project.threatrating.SimpleThreatFormula;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
@@ -268,6 +232,11 @@ public class Project implements ProjectInterface
 		return (CausePool) getPool(ObjectType.CAUSE);
 	}
 	
+	public BiophysicalFactorPool getBiophysicalFactorPool()
+	{
+		return (BiophysicalFactorPool) getPool(ObjectType.BIOPHYSICAL_FACTOR);
+	}
+
 	public StressPool getStressPool()
 	{
 		return (StressPool) getPool(ObjectType.STRESS);
