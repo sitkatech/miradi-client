@@ -83,7 +83,7 @@ public class DiagramToolBar extends MiradiProjectToolBar
 	
 	private static ToolBarButton getModeSwitchButton(Actions actions, DiagramView diagramView)
 	{
-		if(diagramView.isStategyBrainstormMode())
+		if(diagramView.isStrategyBrainstormMode())
 			return new ToolBarButton(actions, ActionShowFullModelMode.class);
 		return new ToolBarButton(actions, ActionShowSelectedChainMode.class);
 	}

@@ -39,8 +39,8 @@ public class FactorPropertiesDialog extends ModelessDialogWithDirections
 	public void updatePreferredSize()
 	{
 		Rectangle screenRect = Utilities.getViewableRectangle();
-		int tenPercentWiderDiaglogWidth = getWidth() * 11 / 10;
-		int width = Math.min(tenPercentWiderDiaglogWidth, screenRect.width * 9 / 10);
+		int tenPercentWiderDialogWidth = getWidth() * 11 / 10;
+		int width = Math.min(tenPercentWiderDialogWidth, screenRect.width * 9 / 10);
 		int height = Math.min(getHeight(), screenRect.height * 9 / 10);
 		Dimension size = new Dimension(width, height);
 		

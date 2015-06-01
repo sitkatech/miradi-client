@@ -28,99 +28,7 @@ import java.util.Vector;
 import javax.swing.JPopupMenu;
 
 import org.martus.swing.Utilities;
-import org.miradi.actions.ActionActivityMoveDown;
-import org.miradi.actions.ActionActivityMoveUp;
-import org.miradi.actions.ActionArrangeConceptualModel;
-import org.miradi.actions.ActionCloneGoal;
-import org.miradi.actions.ActionCloneIndicator;
-import org.miradi.actions.ActionCloneObjective;
-import org.miradi.actions.ActionCloneStress;
-import org.miradi.actions.ActionConfigureLayers;
-import org.miradi.actions.ActionCopy;
-import org.miradi.actions.ActionCreateActivity;
-import org.miradi.actions.ActionCreateBendPoint;
-import org.miradi.actions.ActionCreateConceptualModel;
-import org.miradi.actions.ActionCreateDiagramMargin;
-import org.miradi.actions.ActionCreateFutureStatus;
-import org.miradi.actions.ActionCreateGoal;
-import org.miradi.actions.ActionCreateIncomingJunction;
-import org.miradi.actions.ActionCreateIndicator;
-import org.miradi.actions.ActionCreateIndicatorMeasurement;
-import org.miradi.actions.ActionCreateKeyEcologicalAttribute;
-import org.miradi.actions.ActionCreateKeyEcologicalAttributeIndicator;
-import org.miradi.actions.ActionCreateKeyEcologicalAttributeMeasurement;
-import org.miradi.actions.ActionCreateNamedTaggedObjectSet;
-import org.miradi.actions.ActionCreateObjective;
-import org.miradi.actions.ActionCreateOrShowResultsChain;
-import org.miradi.actions.ActionCreateOutgoingJunction;
-import org.miradi.actions.ActionCreateResultsChain;
-import org.miradi.actions.ActionCreateStress;
-import org.miradi.actions.ActionCreateStressFromKea;
-import org.miradi.actions.ActionCreateSubTarget;
-import org.miradi.actions.ActionCreateTaggedObjectSet;
-import org.miradi.actions.ActionCut;
-import org.miradi.actions.ActionDelete;
-import org.miradi.actions.ActionDeleteActivity;
-import org.miradi.actions.ActionDeleteBendPoint;
-import org.miradi.actions.ActionDeleteConceptualModel;
-import org.miradi.actions.ActionDeleteGoal;
-import org.miradi.actions.ActionDeleteGroupBox;
-import org.miradi.actions.ActionDeleteKeyEcologicalAttribute;
-import org.miradi.actions.ActionDeleteKeyEcologicalAttributeIndicator;
-import org.miradi.actions.ActionDeleteObjective;
-import org.miradi.actions.ActionDeletePlanningViewTreeNode;
-import org.miradi.actions.ActionDeleteResultsChain;
-import org.miradi.actions.ActionDeleteStress;
-import org.miradi.actions.ActionDeleteSubTarget;
-import org.miradi.actions.ActionDeleteTaggedObjectSet;
-import org.miradi.actions.ActionDiagramProperties;
-import org.miradi.actions.ActionEditTaggedObjectSet;
-import org.miradi.actions.ActionExpandToFutureStatus;
-import org.miradi.actions.ActionExpandToIndicator;
-import org.miradi.actions.ActionExpandToMeasurement;
-import org.miradi.actions.ActionExpandToMenu;
-import org.miradi.actions.ActionGroupBoxAddFactor;
-import org.miradi.actions.ActionGroupBoxRemoveFactor;
-import org.miradi.actions.ActionHideActivityBubble;
-import org.miradi.actions.ActionHideStressBubble;
-import org.miradi.actions.ActionInsertContributingFactor;
-import org.miradi.actions.ActionInsertDirectThreat;
-import org.miradi.actions.ActionInsertDraftStrategy;
-import org.miradi.actions.ActionInsertGroupBox;
-import org.miradi.actions.ActionInsertHumanWelfareTarget;
-import org.miradi.actions.ActionInsertIntermediateResult;
-import org.miradi.actions.ActionInsertLink;
-import org.miradi.actions.ActionInsertScopeBox;
-import org.miradi.actions.ActionInsertStrategy;
-import org.miradi.actions.ActionInsertTarget;
-import org.miradi.actions.ActionInsertTextBox;
-import org.miradi.actions.ActionInsertThreatReductionResult;
-import org.miradi.actions.ActionManageFactorTags;
-import org.miradi.actions.ActionManageFactorTagsFromMenu;
-import org.miradi.actions.ActionManageStresses;
-import org.miradi.actions.ActionNudgeDown;
-import org.miradi.actions.ActionNudgeLeft;
-import org.miradi.actions.ActionNudgeRight;
-import org.miradi.actions.ActionNudgeUp;
-import org.miradi.actions.ActionPaste;
-import org.miradi.actions.ActionPasteFactorContent;
-import org.miradi.actions.ActionPasteWithoutLinks;
-import org.miradi.actions.ActionProperties;
-import org.miradi.actions.ActionRenameConceptualModel;
-import org.miradi.actions.ActionRenameResultsChain;
-import org.miradi.actions.ActionSelectAll;
-import org.miradi.actions.ActionSelectChain;
-import org.miradi.actions.ActionShareActivity;
-import org.miradi.actions.ActionShowActivityBubble;
-import org.miradi.actions.ActionShowConceptualModel;
-import org.miradi.actions.ActionShowFullModelMode;
-import org.miradi.actions.ActionShowResultsChain;
-import org.miradi.actions.ActionShowSelectedChainMode;
-import org.miradi.actions.ActionShowStressBubble;
-import org.miradi.actions.ActionTreeCreateRelevancyActivity;
-import org.miradi.actions.ActionZoomIn;
-import org.miradi.actions.ActionZoomOut;
-import org.miradi.actions.ActionZoomToFit;
+import org.miradi.actions.*;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.ChainWalker;
 import org.miradi.diagram.DiagramComponent;
@@ -286,6 +194,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionInsertTarget.class, new InsertTargetDoer());
 		addDoerToMap(ActionInsertHumanWelfareTarget.class, new InsertHumanWelfareTargetDoer());
 		addDoerToMap(ActionInsertContributingFactor.class, new InsertContributingFactorDoer());
+		addDoerToMap(ActionInsertBiophysicalFactor.class, new InsertBiophysicalFactorDoer());
 		addDoerToMap(ActionInsertDirectThreat.class, new InsertDirectThreatDoer());
 		addDoerToMap(ActionInsertStrategy.class, new InsertStrategyDoer());
 		addDoerToMap(ActionInsertDraftStrategy.class, new InsertDraftStrategyDoer());
@@ -420,7 +329,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 
 	private void switchToFullMode() throws Exception
 	{
-		if (!isStategyBrainstormMode())
+		if (!isStrategyBrainstormMode())
 			return;
 	
 		CommandVector commands = ShowFullModelModeDoer.createCommandsToSwithToDefaultMode(getViewData().getRef());
@@ -1054,7 +963,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return mode;
 	}
 
-	public boolean isStategyBrainstormMode()
+	public boolean isStrategyBrainstormMode()
 	{
 		return getCurrentMode().equals(DiagramModeQuestion.MODE_STRATEGY_BRAINSTORM);
 	}

@@ -34,7 +34,7 @@ public abstract class AbstractStressVisibilityDoer extends AbstractVisibilityDoe
 		if (!superIsAvailable)
 			return false;
 		
-		if (getDiagramView().isStategyBrainstormMode())
+		if (getDiagramView().isStrategyBrainstormMode())
 			return false;
 		
 		DiagramObject currentDiagramObject = getDiagramView().getDiagramModel().getDiagramObject();

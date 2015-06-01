@@ -33,47 +33,7 @@ import javax.swing.JPopupMenu;
 
 import org.martus.swing.UiMenu;
 import org.martus.swing.UiPopupMenu;
-import org.miradi.actions.ActionCopy;
-import org.miradi.actions.ActionCreateBendPoint;
-import org.miradi.actions.ActionCreateIncomingJunction;
-import org.miradi.actions.ActionCreateOutgoingJunction;
-import org.miradi.actions.ActionCreateResultsChain;
-import org.miradi.actions.ActionCut;
-import org.miradi.actions.ActionDelete;
-import org.miradi.actions.ActionDeleteBendPoint;
-import org.miradi.actions.ActionDeleteGroupBox;
-import org.miradi.actions.ActionDiagramProperties;
-import org.miradi.actions.ActionGroupBoxAddFactor;
-import org.miradi.actions.ActionGroupBoxRemoveFactor;
-import org.miradi.actions.ActionInsertContributingFactor;
-import org.miradi.actions.ActionInsertDirectThreat;
-import org.miradi.actions.ActionInsertDraftStrategy;
-import org.miradi.actions.ActionInsertGroupBox;
-import org.miradi.actions.ActionInsertHumanWelfareTarget;
-import org.miradi.actions.ActionInsertIntermediateResult;
-import org.miradi.actions.ActionInsertLink;
-import org.miradi.actions.ActionInsertScopeBox;
-import org.miradi.actions.ActionInsertStrategy;
-import org.miradi.actions.ActionInsertTarget;
-import org.miradi.actions.ActionInsertTextBox;
-import org.miradi.actions.ActionInsertThreatReductionResult;
-import org.miradi.actions.ActionManageFactorTagsFromMenu;
-import org.miradi.actions.ActionPaste;
-import org.miradi.actions.ActionPasteFactorContent;
-import org.miradi.actions.ActionPasteWithoutLinks;
-import org.miradi.actions.ActionProperties;
-import org.miradi.actions.ActionRedo;
-import org.miradi.actions.ActionSelectAll;
-import org.miradi.actions.ActionSelectChain;
-import org.miradi.actions.ActionShowConceptualModel;
-import org.miradi.actions.ActionShowFullModelMode;
-import org.miradi.actions.ActionShowResultsChain;
-import org.miradi.actions.ActionShowSelectedChainMode;
-import org.miradi.actions.ActionUndo;
-import org.miradi.actions.Actions;
-import org.miradi.actions.LocationAction;
-import org.miradi.actions.MainWindowAction;
-import org.miradi.actions.MiradiAction;
+import org.miradi.actions.*;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.icons.TaggedObjectSetIcon;
 import org.miradi.main.EAM;
@@ -297,6 +257,8 @@ public class DiagramContextMenuHandler
 		insertMenu.add(createMenuItem(ActionInsertStrategy.class, menuInvokedAt));
 		insertMenu.add(createMenuItem(ActionInsertContributingFactor.class, menuInvokedAt));
 		insertMenu.add(createMenuItem(ActionInsertDirectThreat.class, menuInvokedAt));
+		// TODO: MRD-5911 - will need to make this conditional based on project setting
+		insertMenu.add(createMenuItem(ActionInsertBiophysicalFactor.class, menuInvokedAt));
 		insertMenu.add(createMenuItem(ActionInsertTarget.class, menuInvokedAt));
 		if (getProject().getMetadata().isHumanWelfareTargetMode())
 			insertMenu.add(createMenuItem(ActionInsertHumanWelfareTarget.class, menuInvokedAt));
@@ -337,7 +299,7 @@ public class DiagramContextMenuHandler
 	
 	private MenuItemWithoutLocation getModeSwitchMenuItem()
 	{
-		if (((DiagramView)mainWindow.getCurrentView()).isStategyBrainstormMode())
+		if (((DiagramView)mainWindow.getCurrentView()).isStrategyBrainstormMode())
 			return new MenuItemWithoutLocation(actions.get(ActionShowFullModelMode.class));
 		
 		return new MenuItemWithoutLocation(actions.get(ActionShowSelectedChainMode.class));

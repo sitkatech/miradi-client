@@ -49,7 +49,7 @@ public class CreateResultsChainDoer extends ViewDoer
 		if (! DiagramView.is(getView()))
 			return false;
 		
-		if (getDiagramView().isStategyBrainstormMode())
+		if (getDiagramView().isStrategyBrainstormMode())
 			return false;
 		
 		return true;

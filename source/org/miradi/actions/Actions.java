@@ -175,6 +175,7 @@ public class Actions
 		registerAction(new ActionInsertHumanWelfareTarget(mainWindow));
 		registerAction(new ActionInsertDraftStrategy(mainWindow));
 		registerAction(new ActionInsertStrategy(mainWindow));
+		registerAction(new ActionInsertBiophysicalFactor(mainWindow));
 		registerAction(new ActionInsertDirectThreat(mainWindow));
 		registerAction(new ActionInsertContributingFactor(mainWindow));
 		registerAction(new ActionSaveProjectAs(mainWindow));

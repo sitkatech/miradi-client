@@ -27,15 +27,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import org.miradi.actions.ActionInsertDraftStrategy;
-import org.miradi.actions.ActionInsertGroupBox;
-import org.miradi.actions.ActionInsertHumanWelfareTarget;
-import org.miradi.actions.ActionInsertLink;
-import org.miradi.actions.ActionInsertScopeBox;
-import org.miradi.actions.ActionInsertStrategy;
-import org.miradi.actions.ActionInsertTarget;
-import org.miradi.actions.ActionInsertTextBox;
-import org.miradi.actions.Actions;
+import org.miradi.actions.*;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandDeleteObject;
@@ -66,24 +58,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.DiagramLegendQuestion;
-import org.miradi.schemas.ConceptualModelDiagramSchema;
-import org.miradi.schemas.FactorLinkSchema;
-import org.miradi.schemas.GoalSchema;
-import org.miradi.schemas.GroupBoxSchema;
-import org.miradi.schemas.HumanWelfareTargetSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.IntermediateResultSchema;
-import org.miradi.schemas.ObjectiveSchema;
-import org.miradi.schemas.ProjectMetadataSchema;
-import org.miradi.schemas.ResultsChainDiagramSchema;
-import org.miradi.schemas.ScopeBoxSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.StressSchema;
-import org.miradi.schemas.TaggedObjectSetSchema;
-import org.miradi.schemas.TargetSchema;
-import org.miradi.schemas.TaskSchema;
-import org.miradi.schemas.TextBoxSchema;
-import org.miradi.schemas.ThreatReductionResultSchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
 import org.miradi.views.umbrella.LegendPanel;
 import org.miradi.views.umbrella.doers.AbstractPopUpEditDoer;
@@ -159,7 +134,9 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		createCheckBox(ScopeBoxSchema.OBJECT_NAME);
 		createCheckBox(TargetSchema.OBJECT_NAME);
 		createCheckBox(HumanWelfareTargetSchema.OBJECT_NAME);
-		
+
+		createCheckBox(BiophysicalFactorSchema.OBJECT_NAME);
+
 		createCheckBox(Cause.OBJECT_NAME_THREAT);
 		createCheckBox(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR);
 		createCheckBox(ThreatReductionResultSchema.OBJECT_NAME);
@@ -190,11 +167,14 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		addButtonLineWithCheckBox(jpanel, TargetSchema.getObjectType(), TargetSchema.OBJECT_NAME, actions.get(ActionInsertTarget.class));
 		if (getProject().getMetadata().isHumanWelfareTargetMode())
 			addButtonLineWithCheckBox(jpanel, HumanWelfareTargetSchema.getObjectType(), HumanWelfareTargetSchema.OBJECT_NAME, actions.get(ActionInsertHumanWelfareTarget.class));
-		
+
+        // TODO: MRD-5911 - will need to make this conditional based on project setting
+        addButtonLineWithCheckBox(jpanel, BiophysicalFactorSchema.getObjectType(), BiophysicalFactorSchema.OBJECT_NAME, actions.get(ActionInsertBiophysicalFactor.class));
+
 		createCustomLegendPanelSection(actions, jpanel);
 		
 		addButtonLineWithCheckBox(jpanel, StrategySchema.getObjectType(),StrategySchema.OBJECT_NAME, actions.get(ActionInsertStrategy.class));
-		if (mainWindow.getDiagramView().isStategyBrainstormMode())
+		if (mainWindow.getDiagramView().isStrategyBrainstormMode())
 			addButtonLineWithCheckBox(jpanel, StrategySchema.getObjectType(), Strategy.OBJECT_NAME_DRAFT, actions.get(ActionInsertDraftStrategy.class));
 
 		addButtonLineWithCheckBox(jpanel, FactorLinkSchema.getObjectType(), FactorLinkSchema.OBJECT_NAME, actions.get(ActionInsertLink.class));

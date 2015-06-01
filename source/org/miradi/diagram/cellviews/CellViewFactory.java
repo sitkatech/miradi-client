@@ -64,6 +64,10 @@ public class CellViewFactory extends DefaultCellViewFactory
 		{
 			return new RectangleFactorView(diagramFactor);
 		}
+		if(diagramFactor.isBiophysicalFactor())
+		{
+			return new RectangleFactorView(diagramFactor);
+		}
 		if(diagramFactor.isStrategy())
 		{
 			return new HexagonFactorView(diagramFactor);

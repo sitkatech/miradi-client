@@ -257,6 +257,8 @@ public class MainMenuBar extends JMenuBar
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertStrategy.class),KeyEvent.VK_S));
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertContributingFactor.class),KeyEvent.VK_C));
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertDirectThreat.class),KeyEvent.VK_D));
+		// TODO: MRD-5911 - will need to make this conditional based on project setting
+		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertBiophysicalFactor.class),KeyEvent.VK_F));
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertIntermediateResult.class),KeyEvent.VK_R));
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertThreatReductionResult.class),KeyEvent.VK_R));
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertScopeBox.class), KeyEvent.VK_B));

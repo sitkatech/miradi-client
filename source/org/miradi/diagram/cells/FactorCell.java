@@ -336,6 +336,11 @@ abstract public class FactorCell extends EAMGraphCell
 		return getWrappedFactor().isContributingFactor();
 	}
 	
+	public boolean isBiophysicalFactor()
+	{
+		return getWrappedFactor().isBiophysicalFactor();
+	}
+
 	public boolean isDirectThreat()
 	{
 		return getWrappedFactor().isDirectThreat();

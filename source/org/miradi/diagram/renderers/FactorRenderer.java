@@ -280,8 +280,8 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 
 	private boolean shouldMarkAsShared(DiagramModel model)
 	{
-		boolean isSharedInCoceptualModel = model.isSharedInConceptualModel(getFactorCell().getDiagramFactor());
-		if(isSharedInCoceptualModel)
+		boolean isSharedInConceptualModel = model.isSharedInConceptualModel(getFactorCell().getDiagramFactor());
+		if(isSharedInConceptualModel)
 			   return true;
 
 		boolean isResultsChain = model.isResultsChain();

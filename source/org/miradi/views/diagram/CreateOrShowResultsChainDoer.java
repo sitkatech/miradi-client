@@ -39,7 +39,7 @@ public class CreateOrShowResultsChainDoer extends ViewDoer
 			return false;
 		
 		
-		if (getDiagramView().isStategyBrainstormMode())
+		if (getDiagramView().isStrategyBrainstormMode())
 			return false;
 		
 		return true;
