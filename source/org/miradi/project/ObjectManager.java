@@ -293,7 +293,6 @@ public class ObjectManager
 	public static int[] getAllObjectTypes()
 	{
 		//NOTE: Pools must be loaded in a specific sequence
-        // MRD-5911 - yes...but what sequence...?
 		int[] types = {
 			ObjectType.CAUSE,
 			ObjectType.BIOPHYSICAL_FACTOR,

@@ -25,25 +25,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.AbstractTarget;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Cause;
-import org.miradi.objects.Desire;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramObject;
-import org.miradi.objects.ExpenseAssignment;
-import org.miradi.objects.Factor;
-import org.miradi.objects.FutureStatus;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.IntermediateResult;
-import org.miradi.objects.Measurement;
-import org.miradi.objects.PlanningTreeRowColumnProvider;
-import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.ResourceAssignment;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.SubTarget;
-import org.miradi.objects.Task;
-import org.miradi.objects.ThreatReductionResult;
+import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
@@ -68,7 +50,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		if(AbstractTarget.isAbstractTarget(parentRef))
 			return getChildrenOfAbstractTarget(parentRef, diagram);
 
-		if(Cause.is(parentRef))
+		if(Cause.is(parentRef) || BiophysicalFactor.is(parentRef))
 			return getChildrenOfBasicFactor(parentRef, diagram);
 
 		if(Strategy.is(parentRef))

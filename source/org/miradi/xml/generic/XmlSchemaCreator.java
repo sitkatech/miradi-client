@@ -108,9 +108,9 @@ public class XmlSchemaCreator implements Xmpz1XmlConstants
 		writer.defineAlias("start", rootElement.getProjectElementName() + ".element");
 		rootElement.output(writer);
 		
-		writer.println("vocabulary_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } ");
-		writer.println("vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } ");
-		writer.println("vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='12' } ");
+		writer.println("vocabulary_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' }");
+		writer.println("vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' }");
+		writer.println("vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='12' }");
 		writer.println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
 		writer.println(VOCABULARY_TEXT_BOX_Z_ORDER + " = '" + Z_ORDER_BACK_CODE + "' | '" + TextBoxZOrderQuestion.FRONT_CODE + "'");
 		defineLanguagesVocabulary(writer);

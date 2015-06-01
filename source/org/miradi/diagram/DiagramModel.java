@@ -36,20 +36,7 @@ import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.DefaultGraphModel;
 import org.jgraph.graph.GraphLayoutCache;
-import org.miradi.diagram.cells.DiagramActivityCell;
-import org.miradi.diagram.cells.DiagramCauseCell;
-import org.miradi.diagram.cells.DiagramGroupBoxCell;
-import org.miradi.diagram.cells.DiagramHumanWelfareTarget;
-import org.miradi.diagram.cells.DiagramIntermediateResultCell;
-import org.miradi.diagram.cells.DiagramScopeBoxCell;
-import org.miradi.diagram.cells.DiagramStrategyCell;
-import org.miradi.diagram.cells.DiagramStressCell;
-import org.miradi.diagram.cells.DiagramTargetCell;
-import org.miradi.diagram.cells.DiagramTextBoxCell;
-import org.miradi.diagram.cells.DiagramThreatReductionResultCell;
-import org.miradi.diagram.cells.EAMGraphCell;
-import org.miradi.diagram.cells.FactorCell;
-import org.miradi.diagram.cells.LinkCell;
+import org.miradi.diagram.cells.*;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.IdList;
@@ -63,21 +50,7 @@ import org.miradi.objectpools.DiagramLinkPool;
 import org.miradi.objectpools.FactorLinkPool;
 import org.miradi.objectpools.GoalPool;
 import org.miradi.objectpools.ObjectivePool;
-import org.miradi.objects.Cause;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramLink;
-import org.miradi.objects.DiagramObject;
-import org.miradi.objects.Factor;
-import org.miradi.objects.GroupBox;
-import org.miradi.objects.HumanWelfareTarget;
-import org.miradi.objects.IntermediateResult;
-import org.miradi.objects.ScopeBox;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Stress;
-import org.miradi.objects.Target;
-import org.miradi.objects.Task;
-import org.miradi.objects.TextBox;
-import org.miradi.objects.ThreatReductionResult;
+import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.schemas.DiagramFactorSchema;
@@ -138,6 +111,9 @@ abstract public class DiagramModel extends DefaultGraphModel
 		if (factorType == ObjectType.CAUSE)
 			return new DiagramCauseCell((Cause) factor, diagramFactor);
 	
+		if (factorType == ObjectType.BIOPHYSICAL_FACTOR)
+			return new DiagramBiophysicalFactorCell((BiophysicalFactor) factor, diagramFactor);
+
 		if (factorType == ObjectType.STRATEGY)
 			return new DiagramStrategyCell((Strategy) factor, diagramFactor);
 		

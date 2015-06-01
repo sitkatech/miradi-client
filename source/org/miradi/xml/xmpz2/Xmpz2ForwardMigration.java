@@ -235,7 +235,7 @@ public class Xmpz2ForwardMigration
 	}
 	
 	private static final int LOWEST_SCHEMA_VERSION = 228;
-	private static final String NAME_SPACE_VERSION = "233";
+	private static final String NAME_SPACE_VERSION = "234";
 	private static final String XMLNS = "xmlns";
 	private static final String COLON = ":";
 	private static final String PARTIAL_NAME_SPACE = "http://xml.miradi.org/schema/ConservationProject/";

@@ -52,7 +52,6 @@ public class BiophysicalFactor extends Factor
 		return true;
 	}
 
-    // TODO: MRD-5911 - need to determine if this is the case...
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
@@ -66,7 +65,7 @@ public class BiophysicalFactor extends Factor
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == CauseSchema.getObjectType();
+		return objectType == BiophysicalFactorSchema.getObjectType();
 	}
 	
 	public static boolean is(BaseObject object)

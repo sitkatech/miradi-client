@@ -490,9 +490,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 			defineVocabulary(question, vocabularyName);
 		}
 		
-		getSchemaWriter().println("vocabulary_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } ");
-		getSchemaWriter().println("vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } ");
-		getSchemaWriter().println("vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='12' } ");
+		getSchemaWriter().println("vocabulary_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' }");
+		getSchemaWriter().println("vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' }");
+		getSchemaWriter().println("vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='12' }");
 		getSchemaWriter().println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
 		writeLanguageVocabulary();
 		writeTncTerrestrialEcoregionVocabulary();
