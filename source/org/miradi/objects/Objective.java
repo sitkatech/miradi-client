@@ -24,11 +24,7 @@ import org.miradi.ids.ObjectiveId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.schemas.CauseSchema;
-import org.miradi.schemas.IntermediateResultSchema;
-import org.miradi.schemas.ObjectiveSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.ThreatReductionResultSchema;
+import org.miradi.schemas.*;
 
 
 public class Objective extends Desire
@@ -47,11 +43,12 @@ public class Objective extends Desire
 	public int[] getTypesThatCanOwnUs()
 	{
 		return new int[] {
-			StrategySchema.getObjectType(),
-			CauseSchema.getObjectType(),
-			IntermediateResultSchema.getObjectType(),
-			ThreatReductionResultSchema.getObjectType(),
-			};
+            StrategySchema.getObjectType(),
+            CauseSchema.getObjectType(),
+            IntermediateResultSchema.getObjectType(),
+            ThreatReductionResultSchema.getObjectType(),
+            BiophysicalFactorSchema.getObjectType(),
+        };
 	}
 	
 	public static Objective find(ObjectManager objectManager, ORef objectiveRef)

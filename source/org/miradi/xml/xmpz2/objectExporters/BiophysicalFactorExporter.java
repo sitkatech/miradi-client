@@ -16,46 +16,18 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/ 
+*/
 
-package org.miradi.schemas;
+package org.miradi.xml.xmpz2.objectExporters;
 
-import org.miradi.objecthelpers.ObjectType;
+import org.miradi.schemas.BiophysicalFactorSchema;
+import org.miradi.xml.xmpz2.BaseObjectExporter;
+import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
-public class BiophysicalFactorSchema extends FactorSchema
+public class BiophysicalFactorExporter extends BaseObjectExporter
 {
-	public BiophysicalFactorSchema()
+	public BiophysicalFactorExporter(Xmpz2XmlWriter writerToUse)
 	{
-		super();
+		super(writerToUse, BiophysicalFactorSchema.getObjectType());
 	}
-	
-	@Override
-	protected void fillFieldSchemas()
-	{
-		super.fillFieldSchemas();
-		
-	    writeIndicatorIds();
-		writeObjectiveIds();
-		createTaxonomyClassificationSchemaField();
-	}
-
-	public static int getObjectType()
-	{
-		return ObjectType.BIOPHYSICAL_FACTOR;
-	}
-	
-	@Override
-	public int getType()
-	{
-		return getObjectType();
-	}
-
-	@Override
-	public String getObjectName()
-	{
-		return OBJECT_NAME;
-	}
-	
-	public static final String OBJECT_NAME = "BiophysicalFactor";
-	public static final String BIOPHYSICAL_FACTOR = "BiophysicalFactor";
 }

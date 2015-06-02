@@ -38,27 +38,7 @@ import org.miradi.schemas.ProgressReportSchema;
 import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.SubTargetSchema;
 import org.miradi.schemas.TextBoxSchema;
-import org.miradi.xml.xmpz2.objectExporters.BudgetCategoryOneExporter;
-import org.miradi.xml.xmpz2.objectExporters.BudgetCategoryTwoExporter;
-import org.miradi.xml.xmpz2.objectExporters.ConceptualModelDiagramExporter;
-import org.miradi.xml.xmpz2.objectExporters.DashboardExporter;
-import org.miradi.xml.xmpz2.objectExporters.DiagramFactorExporter;
-import org.miradi.xml.xmpz2.objectExporters.DiagramLinkExporter;
-import org.miradi.xml.xmpz2.objectExporters.ExpenseAssignmentExporter;
-import org.miradi.xml.xmpz2.objectExporters.GoalExporter;
-import org.miradi.xml.xmpz2.objectExporters.HumanWelfareTargetExporter;
-import org.miradi.xml.xmpz2.objectExporters.IndicatorExporter;
-import org.miradi.xml.xmpz2.objectExporters.IucnRedlistSpeciesExporter;
-import org.miradi.xml.xmpz2.objectExporters.ObjectTreeTableConfigurationExporter;
-import org.miradi.xml.xmpz2.objectExporters.ObjectiveExporter;
-import org.miradi.xml.xmpz2.objectExporters.ProjectResourceExporter;
-import org.miradi.xml.xmpz2.objectExporters.ResourceAssignmentExporter;
-import org.miradi.xml.xmpz2.objectExporters.ResultsChainExporter;
-import org.miradi.xml.xmpz2.objectExporters.StrategyExporter;
-import org.miradi.xml.xmpz2.objectExporters.TaggedObjectSetExporter;
-import org.miradi.xml.xmpz2.objectExporters.TargetExporter;
-import org.miradi.xml.xmpz2.objectExporters.TaskExporter;
-import org.miradi.xml.xmpz2.objectExporters.ThreatReductionResultExporter;
+import org.miradi.xml.xmpz2.objectExporters.*;
 
 public class ObjectTypeToExporterMap extends HashMap<Integer, BaseObjectExporter>
 {
@@ -81,6 +61,7 @@ public class ObjectTypeToExporterMap extends HashMap<Integer, BaseObjectExporter
 		addExporterToMap(new ThreatReductionResultExporter(getWriter()));
 		addExporterToMap(new TargetExporter(getWriter()));
 		addExporterToMap(new HumanWelfareTargetExporter(getWriter()));
+		addExporterToMap(new BiophysicalFactorExporter(getWriter()));
 		addExporterToMap(new CauseExporter(getWriter()));
 		addExporterToMap(new TaggedObjectSetExporter(getWriter()));
 		addExporterToMap(new IucnRedlistSpeciesExporter(getWriter()));

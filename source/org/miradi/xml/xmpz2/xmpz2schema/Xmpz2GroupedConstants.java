@@ -39,7 +39,8 @@ abstract public class Xmpz2GroupedConstants implements Xmpz2XmlConstants
 	{
 		return new String[]{
 				BIODIVERSITY_TARGET,
-				HUMAN_WELFARE_TARGET, 
+				HUMAN_WELFARE_TARGET,
+                BIOPHYSICAL_FACTOR,
 				CauseSchema.OBJECT_NAME,
 				StrategySchema.OBJECT_NAME,
 				THREAT_REDUCTION_RESULTS, 
@@ -52,7 +53,8 @@ abstract public class Xmpz2GroupedConstants implements Xmpz2XmlConstants
 	{
 		return new String[]{
 				BIODIVERSITY_TARGET, 
-				HUMAN_WELFARE_TARGET, 
+				HUMAN_WELFARE_TARGET,
+				BIOPHYSICAL_FACTOR,
 				CauseSchema.OBJECT_NAME, 
 				StrategySchema.OBJECT_NAME, 
 				THREAT_REDUCTION_RESULTS, 
@@ -79,6 +81,7 @@ abstract public class Xmpz2GroupedConstants implements Xmpz2XmlConstants
 		DIAGRAM_LINK,
 		BIODIVERSITY_TARGET,
 		HUMAN_WELFARE_TARGET,
+        BIOPHYSICAL_FACTOR,
 		CauseSchema.OBJECT_NAME,
 		StrategySchema.OBJECT_NAME,
 		THREAT_REDUCTION_RESULTS,

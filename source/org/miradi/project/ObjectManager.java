@@ -61,9 +61,9 @@ public class ObjectManager
 		addNormalPool(new KeyEcologicalAttributePool(ida), KeyEcologicalAttributeSchema.OBJECT_NAME);
 		addNormalPool(new DiagramFactorPool(ida), DiagramFactorSchema.OBJECT_NAME);
 		addNormalPool(new CausePool(ida), CauseSchema.OBJECT_NAME);
-		addNormalPool(new BiophysicalFactorPool(ida), BiophysicalFactorSchema.OBJECT_NAME);
 		addNormalPool(new StrategyPool(ida), StrategySchema.OBJECT_NAME);
 		addNormalPool(new TargetPool(ida), TargetSchema.OBJECT_NAME);
+		addNormalPool(new BiophysicalFactorPool(ida), BiophysicalFactorSchema.OBJECT_NAME);
 		addNormalPool(new IntermediateResultPool(ida), IntermediateResultSchema.OBJECT_NAME);
 		addNormalPool(new ResultsChainDiagramPool(ida), ResultsChainDiagramSchema.OBJECT_NAME);
 		addNormalPool(new ConceptualModelDiagramPool(ida), ConceptualModelDiagramSchema.OBJECT_NAME);
@@ -295,9 +295,9 @@ public class ObjectManager
 		//NOTE: Pools must be loaded in a specific sequence
 		int[] types = {
 			ObjectType.CAUSE,
-			ObjectType.BIOPHYSICAL_FACTOR,
 			ObjectType.STRATEGY,
 			ObjectType.TARGET,
+            ObjectType.BIOPHYSICAL_FACTOR,
 			ObjectType.FACTOR_LINK,
 			ObjectType.TASK,
 			ObjectType.VIEW_DATA,

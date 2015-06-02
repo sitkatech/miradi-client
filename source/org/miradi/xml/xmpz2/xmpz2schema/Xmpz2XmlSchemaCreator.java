@@ -27,39 +27,7 @@ import java.util.Vector;
 import org.miradi.main.Miradi;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.BaseObjectPool;
-import org.miradi.objects.Cause;
-import org.miradi.objects.Dashboard;
-import org.miradi.objects.Desire;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramLink;
-import org.miradi.objects.DiagramObject;
-import org.miradi.objects.ExpenseAssignment;
-import org.miradi.objects.FactorLink;
-import org.miradi.objects.HumanWelfareTarget;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.KeyEcologicalAttribute;
-import org.miradi.objects.MiradiShareProjectData;
-import org.miradi.objects.MiradiShareTaxonomy;
-import org.miradi.objects.ObjectTreeTableConfiguration;
-import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.ProjectResource;
-import org.miradi.objects.RatingCriterion;
-import org.miradi.objects.ReportTemplate;
-import org.miradi.objects.ResourceAssignment;
-import org.miradi.objects.ResultsChainDiagram;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Stress;
-import org.miradi.objects.TableSettings;
-import org.miradi.objects.TaggedObjectSet;
-import org.miradi.objects.Target;
-import org.miradi.objects.Task;
-import org.miradi.objects.TaxonomyAssociation;
-import org.miradi.objects.ThreatRatingCommentsData;
-import org.miradi.objects.ThreatReductionResult;
-import org.miradi.objects.ThreatStressRating;
-import org.miradi.objects.ViewData;
-import org.miradi.objects.Xenodata;
-import org.miradi.objects.XslTemplate;
+import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DashboardFlagsQuestion;
@@ -144,14 +112,14 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		creators.add(createTimePeriodCostsElementSchemaCreator());
 		creators.add(createExpenseEntryElementSchemaCreator());
 		creators.add(createWorkUnitsEntryElementSchemaCreator());
-		creators.add(createExternaIdSchemaElementSchemaCreator());
+		creators.add(createExternalIdSchemaElementSchemaCreator());
 		creators.add(createDiagramFactorUiSettingsSchemaCreator());
 		creators.add(createDashboardUserChoiceMapSchemaCreator());
 		creators.add(createExtraDataElement());
 		creators.add(writeExtraDataSectionElement());
 		creators.add(defineExtraDataItemElement());
 		creators.add(defineThreatStressRatingElement());
-		creators.add(defineTaxnomyAssociationsElement());
+		creators.add(defineTaxonomyAssociationsElement());
 		creators.add(defineTaxonomyClassificationContainerElement());
 		creators.add(defineTaxonomyElement());
 		
@@ -207,7 +175,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		elementNames.add(createOptionalSchemaElement(RARE_PROJECT_DATA));
 		elementNames.add(createOptionalSchemaElement(FOS_PROJECT_DATA));
 		elementNames.add(createElementName(EXTRA_DATA));
-		elementNames.add(createOptionalSchemaElement(MIRADI_SHARE_PROJET_DATA));
+		elementNames.add(createOptionalSchemaElement(MIRADI_SHARE_PROJECT_DATA));
 		for(BaseObjectSchemaWriter baseObjectSchemaWriter : baseObjectSchemaWriters)
 		{
 			String poolName = baseObjectSchemaWriter.getPoolName();
@@ -912,7 +880,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return creator;
 	}
 
-	private Xmpz2CustomSchemaDefinitionCreator createExternaIdSchemaElementSchemaCreator()
+	private Xmpz2CustomSchemaDefinitionCreator createExternalIdSchemaElementSchemaCreator()
 	{
 		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), EXTERNAL_PROJECT_ID_ELEMENT_NAME);
 		creator.addChildElement(EXTERNAL_APP_ELEMENT_NAME, NON_EMPTY_STRING);
@@ -951,7 +919,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return creator;
 	}
 	
-	private Xmpz2CustomSchemaDefinitionCreator defineTaxnomyAssociationsElement()
+	private Xmpz2CustomSchemaDefinitionCreator defineTaxonomyAssociationsElement()
 	{
 		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), TAXONOMY_ASSOCIATION);
 		creator.addUriRestrictedAttributeElement(TAXONOMY_ASSOCIATION + CODE);
@@ -1119,6 +1087,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		if (HumanWelfareTarget.is(baseObjectSchema.getType()))
 			return new HumanWelfareTargetSchemaWriter(this, baseObjectSchema);
 		
+		if (BiophysicalFactor.is(baseObjectSchema.getType()))
+			return new BiophysicalFactorSchemaWriter(this, baseObjectSchema);
+
 		if (Cause.is(baseObjectSchema.getType()))
 			return new CauseSchemaWriter(this, baseObjectSchema);
 		

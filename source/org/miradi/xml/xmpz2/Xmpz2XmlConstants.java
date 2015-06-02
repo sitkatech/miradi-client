@@ -21,26 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2;
 
 import org.miradi.objects.DiagramFactor;
-import org.miradi.schemas.AccountingCodeSchema;
-import org.miradi.schemas.DiagramFactorSchema;
-import org.miradi.schemas.DiagramLinkSchema;
-import org.miradi.schemas.FundingSourceSchema;
-import org.miradi.schemas.FutureStatusSchema;
-import org.miradi.schemas.GoalSchema;
-import org.miradi.schemas.GroupBoxSchema;
-import org.miradi.schemas.HumanWelfareTargetSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.IntermediateResultSchema;
-import org.miradi.schemas.KeyEcologicalAttributeSchema;
-import org.miradi.schemas.MeasurementSchema;
-import org.miradi.schemas.ObjectiveSchema;
-import org.miradi.schemas.OrganizationSchema;
-import org.miradi.schemas.ScopeBoxSchema;
-import org.miradi.schemas.StressSchema;
-import org.miradi.schemas.TargetSchema;
-import org.miradi.schemas.TaskSchema;
-import org.miradi.schemas.TextBoxSchema;
-import org.miradi.schemas.ThreatReductionResultSchema;
+import org.miradi.schemas.*;
 
 public interface Xmpz2XmlConstants
 {
@@ -84,7 +65,7 @@ public interface Xmpz2XmlConstants
 	public static final String WCS_PROJECT_DATA = "WCSProjectData";
 	public static final String RARE_PROJECT_DATA = "RareProjectData";
 	public static final String FOS_PROJECT_DATA = "FOSProjectData";
-	public static final String MIRADI_SHARE_PROJET_DATA = "MiradiShareProjectData";
+	public static final String MIRADI_SHARE_PROJECT_DATA = "MiradiShareProjectData";
 	public static final String CONCEPTUAL_MODEL = "ConceptualModel";
 	public static final String RESULTS_CHAIN = "ResultsChain";
 	public static final String DIAGRAM_FACTOR = DiagramFactorSchema.OBJECT_NAME;
@@ -92,6 +73,7 @@ public interface Xmpz2XmlConstants
 	public static final String DIAGRAM_LINK_IDS = "DiagramLinkIds";
 	public static final String BIODIVERSITY_TARGET = "BiodiversityTarget";
 	public static final String HUMAN_WELFARE_TARGET = HumanWelfareTargetSchema.HUMAN_WELLBEING_TARGET;
+	public static final String BIOPHYSICAL_FACTOR = BiophysicalFactorSchema.BIOPHYSICAL_FACTOR;
 	public static final String THREAT_REDUCTION_RESULTS = ThreatReductionResultSchema.OBJECT_NAME;
 	public static final String INTERMEDIATE_RESULTS = IntermediateResultSchema.OBJECT_NAME;
 	public static final String GROUP_BOX = GroupBoxSchema.OBJECT_NAME;

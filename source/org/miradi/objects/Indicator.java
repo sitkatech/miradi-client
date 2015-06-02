@@ -34,19 +34,7 @@ import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.StatusQuestion;
-import org.miradi.schemas.CauseSchema;
-import org.miradi.schemas.FutureStatusSchema;
-import org.miradi.schemas.GoalSchema;
-import org.miradi.schemas.HumanWelfareTargetSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.IntermediateResultSchema;
-import org.miradi.schemas.KeyEcologicalAttributeSchema;
-import org.miradi.schemas.MeasurementSchema;
-import org.miradi.schemas.ObjectiveSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.TargetSchema;
-import org.miradi.schemas.TaskSchema;
-import org.miradi.schemas.ThreatReductionResultSchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.CommandVector;
 
 public class Indicator extends BaseObject
@@ -296,6 +284,7 @@ public class Indicator extends BaseObject
 			TargetSchema.getObjectType(),
 			HumanWelfareTargetSchema.getObjectType(),
 			KeyEcologicalAttributeSchema.getObjectType(),
+            BiophysicalFactorSchema.getObjectType(),
 		};
 	}
 	

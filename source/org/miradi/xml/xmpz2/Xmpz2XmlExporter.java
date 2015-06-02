@@ -83,8 +83,8 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 
 	protected String getCurrentTime()
 	{
-		DateFormat formater = DateFormat.getDateTimeInstance();
-		return formater.format(Calendar.getInstance().getTime());
+		DateFormat formatter = DateFormat.getDateTimeInstance();
+		return formatter.format(Calendar.getInstance().getTime());
 	}
 
 	private void exportProjectSummary() throws Exception

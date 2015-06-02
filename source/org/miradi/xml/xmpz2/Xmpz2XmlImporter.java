@@ -57,21 +57,7 @@ import org.miradi.objects.Task;
 import org.miradi.objects.XslTemplate;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.schemas.AbstractFieldSchema;
-import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.schemas.CauseSchema;
-import org.miradi.schemas.FosProjectDataSchema;
-import org.miradi.schemas.IntermediateResultSchema;
-import org.miradi.schemas.KeyEcologicalAttributeSchema;
-import org.miradi.schemas.MiradiShareProjectDataSchema;
-import org.miradi.schemas.MiradiShareTaxonomySchema;
-import org.miradi.schemas.RareProjectDataSchema;
-import org.miradi.schemas.TargetSchema;
-import org.miradi.schemas.TaskSchema;
-import org.miradi.schemas.TncProjectDataSchema;
-import org.miradi.schemas.ValueOptionSchema;
-import org.miradi.schemas.WcsProjectDataSchema;
-import org.miradi.schemas.WwfProjectDataSchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.HtmlUtilities;
@@ -185,7 +171,8 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		addImporterToMap(typeToImporterMap, new BaseObjectImporter(this, new IntermediateResultSchema()));
 		addImporterToMap(typeToImporterMap, new ThreatReductionResultsImporter(this));
 		addImporterToMap(typeToImporterMap, new BaseObjectImporter(this, new TargetSchema()));
-		
+		addImporterToMap(typeToImporterMap, new BaseObjectImporter(this, new BiophysicalFactorSchema()));
+
 		// NOTE: Must import all KEA's before importing objectives/goals, for relevancy
 		addImporterToMap(typeToImporterMap, new BaseObjectImporter(this, new KeyEcologicalAttributeSchema()));
 
@@ -671,11 +658,11 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	
 	public void importTaxonomyClassificationList(Node node, ORef destinationRef, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		Node taxonomyClassifcationContainerNode = getNamedChildNode(node, TAXONOMY_CLASSIFICATION_CONTAINER);
-		if (taxonomyClassifcationContainerNode == null)
+		Node taxonomyClassificationContainerNode = getNamedChildNode(node, TAXONOMY_CLASSIFICATION_CONTAINER);
+		if (taxonomyClassificationContainerNode == null)
 			return;
 		
-		NodeList taxonomyClassificationNodeList = getNodes(taxonomyClassifcationContainerNode, new String[]{TAXONOMY_CLASSIFICATION, });
+		NodeList taxonomyClassificationNodeList = getNodes(taxonomyClassificationContainerNode, new String[]{TAXONOMY_CLASSIFICATION, });
 		TaxonomyClassificationMap taxonomyClassificationsList = new TaxonomyClassificationMap();
 		for (int index = 0; index < taxonomyClassificationNodeList.getLength(); ++index)
 		{
