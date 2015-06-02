@@ -168,9 +168,6 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		if (getProject().getMetadata().isHumanWelfareTargetMode())
 			addButtonLineWithCheckBox(jpanel, HumanWelfareTargetSchema.getObjectType(), HumanWelfareTargetSchema.OBJECT_NAME, actions.get(ActionInsertHumanWelfareTarget.class));
 
-        // TODO: MRD-5911 - will need to make this conditional based on project setting
-        addButtonLineWithCheckBox(jpanel, BiophysicalFactorSchema.getObjectType(), BiophysicalFactorSchema.OBJECT_NAME, actions.get(ActionInsertBiophysicalFactor.class));
-
 		createCustomLegendPanelSection(actions, jpanel);
 		
 		addButtonLineWithCheckBox(jpanel, StrategySchema.getObjectType(),StrategySchema.OBJECT_NAME, actions.get(ActionInsertStrategy.class));
@@ -214,7 +211,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	
 	public void actionPerformed(ActionEvent event)
 	{
-		updateVisiblity();
+		updateVisibility();
 		saveSettingsToProject(DiagramObject.TAG_HIDDEN_TYPES);
 		getMainWindow().updateActionStates();
 	}
@@ -300,10 +297,10 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 			checkBoxToSetSelectionOn.setSelected(false);
 		}
 
-		updateVisiblity();
+		updateVisibility();
 	}
 
-	private void updateVisiblity()
+	private void updateVisibility()
 	{
 		mainWindow.preventActionUpdates();
 		try

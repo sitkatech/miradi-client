@@ -21,6 +21,7 @@ package org.miradi.views.diagram;
 
 import javax.swing.JPanel;
 
+import org.miradi.actions.ActionInsertBiophysicalFactor;
 import org.miradi.actions.ActionInsertContributingFactor;
 import org.miradi.actions.ActionInsertDirectThreat;
 import org.miradi.actions.Actions;
@@ -28,6 +29,7 @@ import org.miradi.icons.StressIcon;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Cause;
+import org.miradi.schemas.BiophysicalFactorSchema;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.StressSchema;
@@ -42,6 +44,8 @@ public class ConceptualModelDiagramLegendPanel extends DiagramLegendPanel
 	@Override
 	protected void createCustomLegendPanelSection(Actions actions, JPanel jpanel)
 	{
+		// TODO: MRD-5911 - will need to make this conditional based on project setting
+		addButtonLineWithCheckBox(jpanel, BiophysicalFactorSchema.getObjectType(), BiophysicalFactorSchema.OBJECT_NAME, actions.get(ActionInsertBiophysicalFactor.class));
 		addButtonLineWithCheckBox(jpanel, CauseSchema.getObjectType(), Cause.OBJECT_NAME_THREAT, actions.get(ActionInsertDirectThreat.class));
 		addButtonLineWithCheckBox(jpanel, CauseSchema.getObjectType(),  Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, actions.get(ActionInsertContributingFactor.class));
 	}
