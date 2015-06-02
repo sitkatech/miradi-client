@@ -82,7 +82,7 @@ public class TestXmpz2XmlExporter extends TestCaseForXmpz2ExportAndImport
 		try
 		{
 			create(externalAppCope, xenoDataProjectId);
-			validateProjetSilently();
+			validateProjectSilently();
 			fail("empty values should have caused xml to fail validation?");
 		}
 		catch (Exception expectedExceptionToIgnore)
@@ -284,7 +284,7 @@ public class TestXmpz2XmlExporter extends TestCaseForXmpz2ExportAndImport
 		return validateProject(new Xmpz2XmlValidator());
 	}
 	
-	private String validateProjetSilently() throws Exception
+	private String validateProjectSilently() throws Exception
 	{
 		return validateProject(new Xmpz2XmlSilentValidatorForTesting());
 	}

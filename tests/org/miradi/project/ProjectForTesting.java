@@ -50,61 +50,7 @@ import org.miradi.objecthelpers.TaxonomyElement;
 import org.miradi.objecthelpers.TaxonomyElementList;
 import org.miradi.objecthelpers.TaxonomyHelper;
 import org.miradi.objecthelpers.TimePeriodCosts;
-import org.miradi.objects.AbstractBudgetCategoryObject;
-import org.miradi.objects.AbstractTarget;
-import org.miradi.objects.AccountingCode;
-import org.miradi.objects.Audience;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.BudgetCategoryOne;
-import org.miradi.objects.BudgetCategoryTwo;
-import org.miradi.objects.Cause;
-import org.miradi.objects.Dashboard;
-import org.miradi.objects.Desire;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramLink;
-import org.miradi.objects.DiagramObject;
-import org.miradi.objects.ExpenseAssignment;
-import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
-import org.miradi.objects.FosProjectData;
-import org.miradi.objects.FundingSource;
-import org.miradi.objects.FutureStatus;
-import org.miradi.objects.Goal;
-import org.miradi.objects.GroupBox;
-import org.miradi.objects.HumanWelfareTarget;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.IucnRedlistSpecies;
-import org.miradi.objects.KeyEcologicalAttribute;
-import org.miradi.objects.Measurement;
-import org.miradi.objects.MiradiShareProjectData;
-import org.miradi.objects.MiradiShareTaxonomy;
-import org.miradi.objects.ObjectTreeTableConfiguration;
-import org.miradi.objects.Objective;
-import org.miradi.objects.Organization;
-import org.miradi.objects.OtherNotableSpecies;
-import org.miradi.objects.ProgressPercent;
-import org.miradi.objects.ProgressReport;
-import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.ProjectResource;
-import org.miradi.objects.RareProjectData;
-import org.miradi.objects.ResourceAssignment;
-import org.miradi.objects.ResultsChainDiagram;
-import org.miradi.objects.ScopeBox;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Stress;
-import org.miradi.objects.SubTarget;
-import org.miradi.objects.TaggedObjectSet;
-import org.miradi.objects.Target;
-import org.miradi.objects.Task;
-import org.miradi.objects.TaxonomyAssociation;
-import org.miradi.objects.TextBox;
-import org.miradi.objects.ThreatRatingCommentsData;
-import org.miradi.objects.ThreatReductionResult;
-import org.miradi.objects.ThreatStressRating;
-import org.miradi.objects.TncProjectData;
-import org.miradi.objects.WcsProjectData;
-import org.miradi.objects.WwfProjectData;
-import org.miradi.objects.Xenodata;
+import org.miradi.objects.*;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CustomPlanningAllRowsQuestion;
@@ -152,54 +98,7 @@ import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.questions.WwfEcoRegionsQuestion;
 import org.miradi.questions.WwfManagingOfficesQuestion;
 import org.miradi.questions.WwfRegionsQuestion;
-import org.miradi.schemas.AccountingCodeSchema;
-import org.miradi.schemas.AudienceSchema;
-import org.miradi.schemas.BudgetCategoryOneSchema;
-import org.miradi.schemas.BudgetCategoryTwoSchema;
-import org.miradi.schemas.CauseSchema;
-import org.miradi.schemas.DashboardSchema;
-import org.miradi.schemas.DiagramLinkSchema;
-import org.miradi.schemas.ExpenseAssignmentSchema;
-import org.miradi.schemas.FactorLinkSchema;
-import org.miradi.schemas.FosProjectDataSchema;
-import org.miradi.schemas.FundingSourceSchema;
-import org.miradi.schemas.FutureStatusSchema;
-import org.miradi.schemas.GoalSchema;
-import org.miradi.schemas.GroupBoxSchema;
-import org.miradi.schemas.HumanWelfareTargetSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.IucnRedlistSpeciesSchema;
-import org.miradi.schemas.KeyEcologicalAttributeSchema;
-import org.miradi.schemas.MeasurementSchema;
-import org.miradi.schemas.MiradiShareProjectDataSchema;
-import org.miradi.schemas.MiradiShareTaxonomySchema;
-import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
-import org.miradi.schemas.ObjectiveSchema;
-import org.miradi.schemas.OrganizationSchema;
-import org.miradi.schemas.OtherNotableSpeciesSchema;
-import org.miradi.schemas.ProgressPercentSchema;
-import org.miradi.schemas.ProgressReportSchema;
-import org.miradi.schemas.ProjectResourceSchema;
-import org.miradi.schemas.RareProjectDataSchema;
-import org.miradi.schemas.ReportTemplateSchema;
-import org.miradi.schemas.ResourceAssignmentSchema;
-import org.miradi.schemas.ResultsChainDiagramSchema;
-import org.miradi.schemas.ScopeBoxSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.StressSchema;
-import org.miradi.schemas.SubTargetSchema;
-import org.miradi.schemas.TaggedObjectSetSchema;
-import org.miradi.schemas.TargetSchema;
-import org.miradi.schemas.TaskSchema;
-import org.miradi.schemas.TaxonomyAssociationSchema;
-import org.miradi.schemas.TextBoxSchema;
-import org.miradi.schemas.ThreatReductionResultSchema;
-import org.miradi.schemas.ThreatStressRatingSchema;
-import org.miradi.schemas.TncProjectDataSchema;
-import org.miradi.schemas.WcsProjectDataSchema;
-import org.miradi.schemas.WwfProjectDataSchema;
-import org.miradi.schemas.XenodataSchema;
-import org.miradi.schemas.XslTemplateSchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateRange;
@@ -605,6 +504,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return humanWelfareTarget;
 	}
 	
+	public BiophysicalFactor createAndPopulateBiophysicalFactor() throws Exception
+	{
+		BiophysicalFactor biophysicalFactor = createBiophysicalFactor();
+		populateBiophysicalFactor(biophysicalFactor);
+
+		return biophysicalFactor;
+	}
+
 	public Stress createAndPopulateStress() throws Exception
 	{
 		Stress stress = createStress();
@@ -927,6 +834,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return HumanWelfareTarget.find(this, ref);
 	}
 	
+	public BiophysicalFactor createBiophysicalFactor() throws Exception
+	{
+		ORef ref = createObject(BiophysicalFactorSchema.getObjectType(), new FactorId(takeNextId(BiophysicalFactorSchema.getObjectType())));
+		return BiophysicalFactor.find(this, ref);
+	}
+
 	public Stress createStress() throws Exception
 	{
 		ORef stressRef = createObject(StressSchema.getObjectType());
@@ -1296,6 +1209,22 @@ public class ProjectForTesting extends ProjectWithHelpers
 		IdList keaIds = new IdList(KeyEcologicalAttributeSchema.getObjectType());
 		keaIds.addRef(kea.getRef());
 		fillObjectUsingCommand(target, AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaIds.toString());
+	}
+
+	public void populateBiophysicalFactor(BiophysicalFactor biophysicalFactor) throws Exception
+	{
+		fillObjectUsingCommand(biophysicalFactor, BiophysicalFactor.TAG_LABEL, "Biophysical Factor " + biophysicalFactor.getId().toString());
+		fillObjectUsingCommand(biophysicalFactor, BiophysicalFactor.TAG_TEXT, "Some Description Text");
+		fillObjectUsingCommand(biophysicalFactor, BiophysicalFactor.TAG_COMMENTS, "Some comment Text");
+
+        IdList objectiveIds = new IdList(ObjectiveSchema.getObjectType());
+        final Objective objective = createAndPopulateObjective(biophysicalFactor);
+        objectiveIds.addRef(objective.getRef());
+        fillObjectUsingCommand(biophysicalFactor, Factor.TAG_OBJECTIVE_IDS, objectiveIds.toString());
+
+        IdList indicatorIds = new IdList(IndicatorSchema.getObjectType());
+        indicatorIds.addRef(createAndPopulateIndicator(biophysicalFactor).getRef());
+        fillObjectUsingCommand(biophysicalFactor, BiophysicalFactor.TAG_INDICATOR_IDS, indicatorIds.toString());
 	}
 
 	public void turnOnTncMode(AbstractTarget target) throws Exception

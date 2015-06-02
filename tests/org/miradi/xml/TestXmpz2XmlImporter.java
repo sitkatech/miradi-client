@@ -20,68 +20,26 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml;
 
-import java.util.Vector;
-
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.TaxonomyElement;
-import org.miradi.objecthelpers.TaxonomyElementList;
 import org.miradi.objecthelpers.TaxonomyHelper;
 import org.miradi.objectpools.TaxonomyAssociationPool;
-import org.miradi.objects.AbstractTarget;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Cause;
-import org.miradi.objects.ConceptualModelDiagram;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.Goal;
-import org.miradi.objects.HumanWelfareTarget;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.KeyEcologicalAttribute;
-import org.miradi.objects.MiradiShareTaxonomy;
-import org.miradi.objects.ObjectTreeTableConfiguration;
-import org.miradi.objects.Objective;
-import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.ProjectResource;
-import org.miradi.objects.ResourceAssignment;
-import org.miradi.objects.ResultsChainDiagram;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.TaggedObjectSet;
-import org.miradi.objects.Target;
-import org.miradi.objects.Task;
-import org.miradi.objects.TaxonomyAssociation;
-import org.miradi.objects.ThreatReductionResult;
-import org.miradi.objects.TncProjectData;
-import org.miradi.objects.ViewData;
+import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
-import org.miradi.questions.CustomPlanningAllRowsQuestion;
-import org.miradi.questions.DiagramModeQuestion;
-import org.miradi.questions.DiagramObjectDataInclusionQuestion;
-import org.miradi.questions.ProjectSharingQuestion;
-import org.miradi.questions.QuarterColumnsVisibilityQuestion;
-import org.miradi.questions.StatusQuestion;
-import org.miradi.questions.TargetModeQuestion;
-import org.miradi.questions.ThreatRatingModeChoiceQuestion;
-import org.miradi.schemas.CauseSchema;
-import org.miradi.schemas.ConceptualModelDiagramSchema;
-import org.miradi.schemas.GroupBoxSchema;
-import org.miradi.schemas.HumanWelfareTargetSchema;
-import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.TncProjectDataSchema;
-import org.miradi.utils.CodeList;
-import org.miradi.utils.DateUnitEffortList;
-import org.miradi.utils.NullProgressMeter;
-import org.miradi.utils.PointList;
-import org.miradi.utils.UnicodeXmlWriter;
+import org.miradi.questions.*;
+import org.miradi.schemas.*;
+import org.miradi.utils.*;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.views.diagram.TestLinkBendPointsMoveHandler;
 import org.miradi.xml.xmpz2.MockXmpz2XmlExporterWithoutTimeStampForTesting;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
+
+import java.util.Vector;
 
 public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 {
@@ -152,13 +110,13 @@ public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 		final String EXPECTED_VALUE = "<b>miradi &quot;inside quotes&quot; &amp; &gt; &lt; &apos;</b>";
 		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_TEXT, EXPECTED_VALUE);
 		ProjectForTesting importedProject = validateUsingStringWriter();
-		ORef strateRef = importedProject.getStrategyPool().getORefList().getFirstElement();
-		Strategy importedStrategy = Strategy.find(importedProject, strateRef);
+		ORef strategyRef = importedProject.getStrategyPool().getORefList().getFirstElement();
+		Strategy importedStrategy = Strategy.find(importedProject, strategyRef);
 		String importedData = importedStrategy.getData(Strategy.TAG_TEXT);
 		assertEquals("Incorrect data imported?", EXPECTED_VALUE, importedData);
 	}
 
-	public void testWorkPlanDiagramDataInclustion() throws Exception
+	public void testWorkPlanDiagramDataInclusion() throws Exception
 	{
 		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION, DiagramObjectDataInclusionQuestion.INCLUDE_CONCEPTUAL_MODEL_DATA_CODE);
 		ProjectForTesting importedProject = validateUsingStringWriter();
@@ -171,7 +129,7 @@ public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 		Indicator indicator = getProject().createIndicator(cause);
 		getProject().createAndPopulateFutureStatus(indicator);
 		ProjectForTesting importedProject = validateUsingStringWriter();
-		assertEquals("Incorrect future stutus count?", 1, importedProject.getFutureStatusPool().size());
+		assertEquals("Incorrect future status count?", 1, importedProject.getFutureStatusPool().size());
 	}
 	
 	public void testFormattedText() throws Exception
@@ -241,12 +199,12 @@ public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 		ProjectForTesting projectForTesting = validateUsingStringWriter();
 		
 		ORefList importedDiagramObjectRefs = projectForTesting.getPool(ConceptualModelDiagramSchema.getObjectType()).getRefList();
-		assertEquals("there should be only one concptual model diagram?", 1, importedDiagramObjectRefs.size());
+		assertEquals("there should be only one conceptual model diagram?", 1, importedDiagramObjectRefs.size());
 		ORef conceptualModelDiagramRef = importedDiagramObjectRefs.getFirstElement();
 		ConceptualModelDiagram conceptualModelDiagram = ConceptualModelDiagram.find(projectForTesting, conceptualModelDiagramRef);
 		CodeList importedHiddenTypeCodes = conceptualModelDiagram.getHiddenTypes();
 		assertEquals("incorrect number of hidden types?", 1, importedHiddenTypeCodes.size());
-		assertEquals("incrrect hidden type?", HumanWelfareTargetSchema.OBJECT_NAME, importedHiddenTypeCodes.firstElement());
+		assertEquals("incorrect hidden type?", HumanWelfareTargetSchema.OBJECT_NAME, importedHiddenTypeCodes.firstElement());
 	}
 	
 	public void testStrategyCalculatedCostElement() throws Exception
@@ -307,7 +265,7 @@ public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 		validateUsingStringWriter();
 	}
 	
-	public void testImportAbsractTargetStatus() throws Exception
+	public void testImportAbstractTargetStatus() throws Exception
 	{
 		HumanWelfareTarget humanWelfareTarget = getProject().createHumanWelfareTarget();
 		getProject().fillObjectUsingCommand(humanWelfareTarget, HumanWelfareTarget.TAG_TARGET_STATUS, StatusQuestion.FAIR);
@@ -379,6 +337,7 @@ public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 		getProject().populateEverything();
 		getProject().populateBaseObjectWithSampleData(getProject().getMetadata());
 		AbstractTarget target = getProject().createAndPopulateHumanWelfareTarget();
+        getProject().createAndPopulateBiophysicalFactor();
 		Strategy strategy = getProject().createStrategy();
 		Indicator indicator = getProject().createAndPopulateIndicator(strategy);
 		getProject().addThresholdWithXmlEscapedData(indicator);
@@ -411,14 +370,14 @@ public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 		ProjectForTesting projectToImportInto = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToImportInto");
 		Xmpz2XmlImporter xmlImporter = new Xmpz2XmlImporter(projectToImportInto, new NullProgressMeter());
 		
-		StringInputStreamWithSeek stringInputputStream = new StringInputStreamWithSeek(exportedProjectXml);
+		StringInputStreamWithSeek stringInputStream = new StringInputStreamWithSeek(exportedProjectXml);
 		try
 		{
-			xmlImporter.importProject(stringInputputStream);
+			xmlImporter.importProject(stringInputStream);
 		}
 		finally
 		{
-			stringInputputStream.close();	
+			stringInputStream.close();
 		}
 		
 		UnicodeXmlWriter secondWriter = createWriter(projectToImportInto);
