@@ -26,18 +26,7 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Cause;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramLink;
-import org.miradi.objects.DiagramObject;
-import org.miradi.objects.FactorLink;
-import org.miradi.objects.GroupBox;
-import org.miradi.objects.HumanWelfareTarget;
-import org.miradi.objects.IntermediateResult;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Target;
-import org.miradi.objects.ThreatReductionResult;
-import org.miradi.objects.ThreatStressRating;
+import org.miradi.objects.*;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.GroupBoxSchema;
@@ -55,11 +44,11 @@ public class TestLinkCreator extends TestCaseWithProject
 		super(name);
 	}
 	
-	public void testIsValidLinakableType()
+	public void testIsValidLinkableType()
 	{
 		for (int type = ObjectType.FIRST_OBJECT_TYPE; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
 		{
-			if (Strategy.is(type) || Cause.is(type) || IntermediateResult.is(type) || ThreatReductionResult.is(type) || Target.is(type) || HumanWelfareTarget.is(type)|| GroupBox.is(type))
+			if (Strategy.is(type) || Cause.is(type) || IntermediateResult.is(type) || ThreatReductionResult.is(type) || Target.is(type) || HumanWelfareTarget.is(type)|| GroupBox.is(type) || BiophysicalFactor.is(type))
 				assertTrue("not a linkable type?", LinkCreator.isValidLinkableType(type));
 			else
 				assertFalse("is a linkable type?", LinkCreator.isValidLinkableType(type));

@@ -156,15 +156,15 @@ public class LinkCreateDialog extends DialogWithButtonBar implements ActionListe
 
 	private DiagramFactor[] getFilteredDiagramFactors(DiagramFactor[] allDiagramFactors)
 	{
-		Vector<DiagramFactor> filterdDiagramFactors = new Vector<DiagramFactor>();
+		Vector<DiagramFactor> filteredDiagramFactors = new Vector<DiagramFactor>();
 		for (int i = 0; i < allDiagramFactors.length; ++i)
 		{
 			int wrappedType = allDiagramFactors[i].getWrappedType();
 			if (LinkCreator.isValidLinkableType(wrappedType))
-				filterdDiagramFactors.add(allDiagramFactors[i]);
+				filteredDiagramFactors.add(allDiagramFactors[i]);
 		}
 			
-		return filterdDiagramFactors.toArray(new DiagramFactor[0]);
+		return filteredDiagramFactors.toArray(new DiagramFactor[0]);
 	}
 
 	private Factor[] convertToFactorList(Project project, DiagramFactor[] allDiagramFactors)
