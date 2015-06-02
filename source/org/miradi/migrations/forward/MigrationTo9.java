@@ -65,7 +65,7 @@ public class MigrationTo9 extends AbstractMigration
 	@Override
 	protected String getDescription()
 	{
-		return EAM.text("This migration removes new measuremt fields: Sample size, Sample Precision, Sample Precision Type and clears status confidence" +
+		return EAM.text("This migration removes new measurement fields: Sample size, Sample Precision, Sample Precision Type and clears status confidence " +
 						"if the choice is Sampling Based");
 	}
 	

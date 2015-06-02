@@ -20,29 +20,26 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
-import org.miradi.main.MiradiTestCase;
+import org.miradi.migrations.forward.MigrationTo17;
 
-public class TestMigrationResult extends MiradiTestCase
+public class TestMigrationTo17 extends AbstractTestMigration
 {
-	public TestMigrationResult(String name)
+	public TestMigrationTo17(String name)
 	{
 		super(name);
 	}
-	
-	public void testDataLoss()
+
+    // TODO: MRD-5911 - implement tests...
+    
+	@Override
+	protected int getFromVersion()
 	{
-		MigrationResult migrationResult = MigrationResult.createUninitializedResult();
-		assertFalse("Should not be data loss?", migrationResult.didLoseData());
-		
-		MigrationResult dataLossResult = migrationResult.createDataLoss("");
-		assertTrue("Should be data loss?", dataLossResult.didLoseData());
-		
-		migrationResult.merge(dataLossResult);
-		assertTrue("Should be data loss?", migrationResult.didLoseData());
-		
-		assertEquals("incorrect data loss messages count?", 1, migrationResult.dataLossCount());
-		
-		migrationResult.addDataLoss("Some random message");
-		assertEquals("incorrect data loss messages count?", 2, migrationResult.dataLossCount());
+		return MigrationTo17.FROM_VERSION;
+	}
+	
+	@Override
+	protected int getToVersion()
+	{
+		return MigrationTo17.TO_VERSION;
 	}
 }

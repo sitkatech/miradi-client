@@ -80,7 +80,7 @@ public class ExportMpzDoer extends AbstractFileSaverDoer
 	{
 		final String message = EAM.substituteSingleString(EAM.text("While migrating this project back to an older data format, some data would be lost. \n" +
 							   "This would typically be because the project had data in fields that did not \n" +
-							   "exist in earlier versions of Miradi. You can continue, and the original project " +
+							   "exist in earlier versions of Miradi. You can continue, and the original project \n" +
 							   "will remain unchanged, but that data will not be included in the exported project.\n\n" +
 							   "Summary of data loss:\n" + 
 							   "%s \n" + 

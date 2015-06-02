@@ -102,7 +102,7 @@ public class MigrationTo7 extends AbstractMigration
 	@Override
 	protected String getDescription()
 	{
-		return EAM.text("This migraiton ony has reverse to remove Miradi share taxonomy related objects.");
+		return EAM.text("This migration only has reverse to remove Miradi share taxonomy related objects.");
 	}
 	
 	private class RemoveTaxonomyClassificationFieldVisitor extends AbstractMigrationVisitor

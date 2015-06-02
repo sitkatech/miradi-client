@@ -125,8 +125,8 @@ public class MigrationResult extends HashSet<String>
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%messageCount", Integer.toString(messageCount));
-		tokenReplacementMap.put("%message", message);
-		String dataLossMessage = EAM.substitute(EAM.text("%messageCount case(s) of: %message"), tokenReplacementMap);
+		tokenReplacementMap.put("%dataLossMessage", message);
+		String dataLossMessage = EAM.substitute(EAM.text("%messageCount case(s) of: %dataLossMessage"), tokenReplacementMap);
 		
 		return dataLossMessage;
 	}
