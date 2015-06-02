@@ -68,7 +68,7 @@ public class InsertLinkDoer extends ViewDoer
 		LinkCreator linkCreator = new LinkCreator(getProject());
 		try
 		{
-			addOrphandDiagramLinksToDiagramObject(linkCreator, from, to);
+			addOrphanedDiagramLinksToDiagramObject(linkCreator, from, to);
 			if (linkCreator.linkToBeCreatedWasRejected(model, from, to))
 				return;
 		}
@@ -93,7 +93,7 @@ public class InsertLinkDoer extends ViewDoer
 		}
 	}
 
-	private void addOrphandDiagramLinksToDiagramObject(LinkCreator linkCreator, DiagramFactor from, DiagramFactor to) throws Exception
+	private void addOrphanedDiagramLinksToDiagramObject(LinkCreator linkCreator, DiagramFactor from, DiagramFactor to) throws Exception
 	{
 		ORef factorLinkRef = getProject().getFactorLinkPool().getLinkedRef(from.getWrappedFactor(), to.getWrappedFactor());
 		if (factorLinkRef.isInvalid())
@@ -115,14 +115,14 @@ public class InsertLinkDoer extends ViewDoer
 		CommandSetObjectData addDiagramLink = CommandSetObjectData.createAppendIdCommand(getDiagramView().getCurrentDiagramObject(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, new DiagramLinkId(diagramLinkReferrerRef.getObjectId().asInt()));
 		getProject().executeCommand(addDiagramLink);
 		
-		EAM.logWarning("An Orphand Diagram Link was found for where the user wanted to create a link.  The Orphand Link was added to the Diagram");
+		EAM.logWarning("An Orphaned Diagram Link was found for where the user wanted to create a link.  The Orphaned Link was added to the Diagram");
 	}
 
 	private FromToDiagramFactorsHolder getFromToDiagramFactors(DiagramView diagramView)
 	{
 		DiagramPanel diagramPanel = diagramView.getDiagramPanel();
 		DiagramComponent diagram = diagramPanel.getCurrentDiagramComponent();
-		FromToDiagramFactorsHolder fromToHolder = getFromToDiagramsForNonDiaglogCreation(diagram);
+		FromToDiagramFactorsHolder fromToHolder = getFromToDiagramsForNonDialogCreation(diagram);
 		if (fromToHolder != null)
 			return fromToHolder;
 		
@@ -134,7 +134,7 @@ public class InsertLinkDoer extends ViewDoer
 		return new FromToDiagramFactorsHolder(dialog.getFrom(), dialog.getTo());
 	}
 
-	private FromToDiagramFactorsHolder getFromToDiagramsForNonDiaglogCreation(DiagramComponent diagram)
+	private FromToDiagramFactorsHolder getFromToDiagramsForNonDialogCreation(DiagramComponent diagram)
 	{
 		if (diagram.getOnlySelectedFactorCells().length != 2)
 			return null;
