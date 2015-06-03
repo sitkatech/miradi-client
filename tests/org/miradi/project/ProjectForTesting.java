@@ -1223,7 +1223,8 @@ public class ProjectForTesting extends ProjectWithHelpers
         fillObjectUsingCommand(biophysicalFactor, Factor.TAG_OBJECTIVE_IDS, objectiveIds.toString());
 
         IdList indicatorIds = new IdList(IndicatorSchema.getObjectType());
-        indicatorIds.addRef(createAndPopulateIndicator(biophysicalFactor).getRef());
+        final Indicator indicator = createAndPopulateIndicator(biophysicalFactor);
+        indicatorIds.addRef(indicator.getRef());
         fillObjectUsingCommand(biophysicalFactor, BiophysicalFactor.TAG_INDICATOR_IDS, indicatorIds.toString());
 	}
 
@@ -1528,7 +1529,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		addProgressReport(strategy);
 	}
 	
-	public void createandpopulateThreatReductionResult() throws Exception
+	public void createAndPopulateThreatReductionResult() throws Exception
 	{
 		ThreatReductionResult threatReductionResult = createThreatReductionResult();
 		fillObjectWithSampleStringData(threatReductionResult.getRef(), ThreatReductionResult.TAG_LABEL);
@@ -1738,6 +1739,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createAndPopulateStress();
 		createAndPopulateSubTarget();
 		createAndPopulateTarget();
+        createAndPopulateBiophysicalFactor();
 		createAndPopulateThreat();
 		createThreatReductionResult();
 		createAndPopulateDraftStrategy();

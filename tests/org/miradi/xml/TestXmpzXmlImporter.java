@@ -357,7 +357,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		getProject().createDiagramFactorLink();
 		getProject().createAndPopulateGroupBoxDiagramLink();
 		getProject().createAndPopulateGoal(getProject().createTarget());
-		getProject().createandpopulateThreatReductionResult();
+		getProject().createAndPopulateThreatReductionResult();
 		getProject().populateEverything();
 		createFilledResultsChainDiagram();
 		getProject().createObjective(getProject().createCause());		

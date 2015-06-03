@@ -121,7 +121,7 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 		getProject().addProgressPercent(goal);
 		getProject().addExpenseWithValue(strategy);
 		getProject().addResourceAssignment(strategy);
-		getProject().createandpopulateThreatReductionResult();
+		getProject().createAndPopulateThreatReductionResult();
 		
 		PointList bendPointList = TestLinkBendPointsMoveHandler.createBendPointList();
 		getProject().createLinkCellWithBendPoints(bendPointList);

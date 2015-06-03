@@ -130,6 +130,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		{
 			ORef indicatorRef = indicatorRefs.get(refIndex);
 			Indicator indicator = Indicator.find(getProject(), indicatorRef);
+            // TODO: MRD-5913 - if 'owned' by biophysical factor do we skip this...?
 			if (indicator.isActive())
 				writeIndicator(out, indicator);
 		}

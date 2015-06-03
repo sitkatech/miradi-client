@@ -349,7 +349,7 @@ public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 		getProject().addProgressPercent(goal);
 		getProject().addExpenseWithValue(strategy);
 		getProject().addResourceAssignment(strategy);
-		getProject().createandpopulateThreatReductionResult();
+		getProject().createAndPopulateThreatReductionResult();
 		
 		PointList bendPointList = TestLinkBendPointsMoveHandler.createBendPointList();
 		getProject().createLinkCellWithBendPoints(bendPointList);
