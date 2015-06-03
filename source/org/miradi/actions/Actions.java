@@ -176,6 +176,7 @@ public class Actions
 		registerAction(new ActionInsertDraftStrategy(mainWindow));
 		registerAction(new ActionInsertStrategy(mainWindow));
 		registerAction(new ActionInsertBiophysicalFactor(mainWindow));
+		registerAction(new ActionInsertBiophysicalResult(mainWindow));
 		registerAction(new ActionInsertDirectThreat(mainWindow));
 		registerAction(new ActionInsertContributingFactor(mainWindow));
 		registerAction(new ActionSaveProjectAs(mainWindow));

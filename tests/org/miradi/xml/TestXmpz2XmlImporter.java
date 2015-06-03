@@ -338,6 +338,7 @@ public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 		getProject().populateBaseObjectWithSampleData(getProject().getMetadata());
 		AbstractTarget target = getProject().createAndPopulateHumanWelfareTarget();
         getProject().createAndPopulateBiophysicalFactor();
+        getProject().createAndPopulateBiophysicalResult();
 		Strategy strategy = getProject().createStrategy();
 		Indicator indicator = getProject().createAndPopulateIndicator(strategy);
 		getProject().addThresholdWithXmlEscapedData(indicator);

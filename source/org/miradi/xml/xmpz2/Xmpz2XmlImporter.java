@@ -172,6 +172,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		addImporterToMap(typeToImporterMap, new ThreatReductionResultsImporter(this));
 		addImporterToMap(typeToImporterMap, new BaseObjectImporter(this, new TargetSchema()));
 		addImporterToMap(typeToImporterMap, new BaseObjectImporter(this, new BiophysicalFactorSchema()));
+		addImporterToMap(typeToImporterMap, new BaseObjectImporter(this, new BiophysicalResultSchema()));
 
 		// NOTE: Must import all KEA's before importing objectives/goals, for relevancy
 		addImporterToMap(typeToImporterMap, new BaseObjectImporter(this, new KeyEcologicalAttributeSchema()));

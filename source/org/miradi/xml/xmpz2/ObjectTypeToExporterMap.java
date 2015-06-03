@@ -22,22 +22,7 @@ package org.miradi.xml.xmpz2;
 
 import java.util.HashMap;
 
-import org.miradi.schemas.AccountingCodeSchema;
-import org.miradi.schemas.AudienceSchema;
-import org.miradi.schemas.CostAllocationRuleSchema;
-import org.miradi.schemas.FundingSourceSchema;
-import org.miradi.schemas.FutureStatusSchema;
-import org.miradi.schemas.GroupBoxSchema;
-import org.miradi.schemas.IntermediateResultSchema;
-import org.miradi.schemas.KeyEcologicalAttributeSchema;
-import org.miradi.schemas.MeasurementSchema;
-import org.miradi.schemas.OrganizationSchema;
-import org.miradi.schemas.OtherNotableSpeciesSchema;
-import org.miradi.schemas.ProgressPercentSchema;
-import org.miradi.schemas.ProgressReportSchema;
-import org.miradi.schemas.ScopeBoxSchema;
-import org.miradi.schemas.SubTargetSchema;
-import org.miradi.schemas.TextBoxSchema;
+import org.miradi.schemas.*;
 import org.miradi.xml.xmpz2.objectExporters.*;
 
 public class ObjectTypeToExporterMap extends HashMap<Integer, BaseObjectExporter>
@@ -74,6 +59,7 @@ public class ObjectTypeToExporterMap extends HashMap<Integer, BaseObjectExporter
 		addGenericExporterToMap(AccountingCodeSchema.getObjectType());
 		addGenericExporterToMap(FundingSourceSchema.getObjectType());
 		addGenericExporterToMap(KeyEcologicalAttributeSchema.getObjectType());
+		addGenericExporterToMap(BiophysicalResultSchema.getObjectType());
 		addGenericExporterToMap(IntermediateResultSchema.getObjectType());
 		addGenericExporterToMap(TextBoxSchema.getObjectType());
 		addGenericExporterToMap(CostAllocationRuleSchema.getObjectType());

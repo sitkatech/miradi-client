@@ -211,6 +211,8 @@ public class AppPreferences
 			return directThreatColor;
 		if(tag.equals(TAG_COLOR_BIOPHYSICAL_FACTOR))
 			return biophysicalFactorColor;
+		if(tag.equals(TAG_COLOR_BIOPHYSICAL_RESULT))
+			return biophysicalResultColor;
 		if(tag.equals(TAG_COLOR_TARGET))
 			return targetColor;
 		if(tag.equals(TAG_COLOR_HUMAN_WELFARE_TARGET))
@@ -239,6 +241,8 @@ public class AppPreferences
 			directThreatColor = colorToUse;
 		else if(tag.equals(TAG_COLOR_BIOPHYSICAL_FACTOR))
 			biophysicalFactorColor = colorToUse;
+		else if(tag.equals(TAG_COLOR_BIOPHYSICAL_RESULT))
+			biophysicalResultColor = colorToUse;
 		else if(tag.equals(TAG_COLOR_TARGET))
 			targetColor = colorToUse;
 		else if(tag.equals(TAG_COLOR_HUMAN_WELFARE_TARGET))
@@ -375,6 +379,7 @@ public class AppPreferences
 		json.put(TAG_COLOR_CONTRIBUTING_FACTOR, contributingFactorColor);
 		json.put(TAG_COLOR_DIRECT_THREAT, directThreatColor);
 		json.put(TAG_COLOR_BIOPHYSICAL_FACTOR, biophysicalFactorColor);
+		json.put(TAG_COLOR_BIOPHYSICAL_RESULT, biophysicalResultColor);
 		json.put(TAG_COLOR_TARGET, targetColor);
 		json.put(TAG_COLOR_HUMAN_WELFARE_TARGET, humanWelfareTargetColor);
 		json.put(TAG_COLOR_SCOPE_BOX, scopeColor);
@@ -445,6 +450,7 @@ public class AppPreferences
 		contributingFactorColor = json.optColor(TAG_COLOR_CONTRIBUTING_FACTOR, DiagramConstants.DEFAULT_CONTRIBUTING_FACTOR_COLOR);
 		directThreatColor = json.optColor(TAG_COLOR_DIRECT_THREAT, DiagramConstants.DEFAULT_DIRECT_THREAT_COLOR);
 		biophysicalFactorColor = json.optColor(TAG_COLOR_BIOPHYSICAL_FACTOR, DiagramConstants.DEFAULT_BIOPHYSICAL_FACTOR_COLOR);
+		biophysicalResultColor = json.optColor(TAG_COLOR_BIOPHYSICAL_RESULT, DiagramConstants.DEFAULT_BIOPHYSICAL_RESULT_COLOR);
 		targetColor = json.optColor(TAG_COLOR_TARGET, DiagramConstants.DEFAULT_TARGET_COLOR);
 		humanWelfareTargetColor = json.optColor(TAG_COLOR_HUMAN_WELFARE_TARGET, DiagramConstants.DEFAULT_HUMAN_WELFARE_TARGET_COLOR);
 		scopeColor = json.optColor(TAG_COLOR_SCOPE_BOX, DiagramConstants.DEFAULT_SCOPE_COLOR);
@@ -671,6 +677,7 @@ public class AppPreferences
 	public static final String TAG_COLOR_ACTIVITIES = "ColorActivities";
 	public static final String TAG_COLOR_CONTRIBUTING_FACTOR = "ColorIndirectFactor";
 	public static final String TAG_COLOR_BIOPHYSICAL_FACTOR = "ColorBiophysicalFactor";
+	public static final String TAG_COLOR_BIOPHYSICAL_RESULT = "ColorBiophysicalResult";
 	public static final String TAG_COLOR_DIRECT_THREAT = "ColorDirectThreat";
 	public static final String TAG_COLOR_TARGET = "ColorTarget";
 	public static final String TAG_COLOR_HUMAN_WELFARE_TARGET = "ColorHumanWelfareTarget";
@@ -762,6 +769,7 @@ public class AppPreferences
 	public Color contributingFactorColor;
 	public Color directThreatColor;
 	public Color biophysicalFactorColor;
+	public Color biophysicalResultColor;
 	public Color targetColor;
 	public Color humanWelfareTargetColor;
 	public Color scopeColor;

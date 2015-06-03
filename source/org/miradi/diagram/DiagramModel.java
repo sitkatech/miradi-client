@@ -114,6 +114,9 @@ abstract public class DiagramModel extends DefaultGraphModel
 		if (factorType == ObjectType.BIOPHYSICAL_FACTOR)
 			return new DiagramBiophysicalFactorCell((BiophysicalFactor) factor, diagramFactor);
 
+		if (factorType == ObjectType.BIOPHYSICAL_RESULT)
+			return new DiagramBiophysicalResultCell((BiophysicalResult) factor, diagramFactor);
+
 		if (factorType == ObjectType.STRATEGY)
 			return new DiagramStrategyCell((Strategy) factor, diagramFactor);
 		

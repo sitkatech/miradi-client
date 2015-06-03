@@ -48,7 +48,7 @@ public class TestLinkCreator extends TestCaseWithProject
 	{
 		for (int type = ObjectType.FIRST_OBJECT_TYPE; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
 		{
-			if (Strategy.is(type) || Cause.is(type) || IntermediateResult.is(type) || ThreatReductionResult.is(type) || Target.is(type) || HumanWelfareTarget.is(type)|| GroupBox.is(type) || BiophysicalFactor.is(type))
+			if (Strategy.is(type) || Cause.is(type) || IntermediateResult.is(type) || ThreatReductionResult.is(type) || Target.is(type) || HumanWelfareTarget.is(type)|| GroupBox.is(type) || BiophysicalFactor.is(type) || BiophysicalResult.is(type))
 				assertTrue("not a linkable type?", LinkCreator.isValidLinkableType(type));
 			else
 				assertFalse("is a linkable type?", LinkCreator.isValidLinkableType(type));

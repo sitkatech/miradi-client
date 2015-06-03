@@ -48,6 +48,7 @@ public class Objective extends Desire
             IntermediateResultSchema.getObjectType(),
             ThreatReductionResultSchema.getObjectType(),
             BiophysicalFactorSchema.getObjectType(),
+            BiophysicalResultSchema.getObjectType(),
         };
 	}
 	

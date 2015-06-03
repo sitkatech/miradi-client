@@ -17,43 +17,38 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
+package org.miradi.views.diagram;
 
-package org.miradi.schemas;
-
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.schemas.BiophysicalResultSchema;
 
-public class BiophysicalResultSchema extends FactorSchema
+public class InsertBiophysicalResultDoer extends InsertFactorDoer
 {
-	public BiophysicalResultSchema()
+	@Override
+	public boolean isAvailable()
 	{
-		super();
+		if (!super.isAvailable())
+			return false;
+				
+		return getDiagramView().isResultsChainTab();
 	}
 	
 	@Override
-	protected void fillFieldSchemas()
-	{
-		super.fillFieldSchemas();
-		
-	    writeIndicatorIds();
-		writeObjectiveIds();
-	}
-
-	public static int getObjectType()
+	public int getTypeToInsert()
 	{
 		return ObjectType.BIOPHYSICAL_RESULT;
 	}
-	
+
 	@Override
-	public int getType()
+	public String getInitialText()
 	{
-		return getObjectType();
+		return EAM.text("Label|New Biophysical Result");
 	}
 
 	@Override
-	public String getObjectName()
+	public void forceVisibleInLayerManager() throws Exception
 	{
-		return OBJECT_NAME;
+		getCurrentLayerManager().setVisibility(BiophysicalResultSchema.OBJECT_NAME, true);
 	}
-	
-	public static final String OBJECT_NAME = "BiophysicalResult";
 }

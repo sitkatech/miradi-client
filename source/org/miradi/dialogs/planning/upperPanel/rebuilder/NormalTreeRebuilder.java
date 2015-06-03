@@ -50,7 +50,13 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		if(AbstractTarget.isAbstractTarget(parentRef))
 			return getChildrenOfAbstractTarget(parentRef, diagram);
 
-		if(Cause.is(parentRef) || BiophysicalFactor.is(parentRef))
+		if(BiophysicalFactor.is(parentRef))
+			return getChildrenOfBasicFactor(parentRef, diagram);
+
+		if(BiophysicalResult.is(parentRef))
+			return getChildrenOfBasicFactor(parentRef, diagram);
+
+		if(Cause.is(parentRef))
 			return getChildrenOfBasicFactor(parentRef, diagram);
 
 		if(Strategy.is(parentRef))

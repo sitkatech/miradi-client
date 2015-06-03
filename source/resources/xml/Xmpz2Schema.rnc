@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Wed Jun 03 09:32:22 BST 2015 $
+# $LastChangedDate: Wed Jun 03 11:14:20 BST 2015 $
 # $LastChangedRevision: 234 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/234'
 start = ConservationProject.element
@@ -950,6 +950,7 @@ DiagramLinkId.element = element miradi:DiagramLinkId { xsd:integer }
 BiodiversityTargetId.element = element miradi:BiodiversityTargetId { xsd:integer }
 HumanWellbeingTargetId.element = element miradi:HumanWellbeingTargetId { xsd:integer }
 BiophysicalFactorId.element = element miradi:BiophysicalFactorId { xsd:integer }
+BiophysicalResultId.element = element miradi:BiophysicalResultId { xsd:integer }
 CauseId.element = element miradi:CauseId { xsd:integer }
 StrategyId.element = element miradi:StrategyId { xsd:integer }
 ThreatReductionResultId.element = element miradi:ThreatReductionResultId { xsd:integer }
@@ -981,12 +982,12 @@ SubTaskId.element = element miradi:SubTaskId { xsd:integer }
 FutureStatusId.element = element miradi:FutureStatusId { xsd:integer }
 WrappedByDiagramFactorId.element = element miradi:WrappedByDiagramFactorId
 {
-  BiodiversityTargetId.element|  HumanWellbeingTargetId.element|  BiophysicalFactorId.element|  CauseId.element|  StrategyId.element|  ThreatReductionResultId.element|  IntermediateResultId.element|  GroupBoxId.element|  TextBoxId.element|  ScopeBoxId.element|  ActivityId.element|  StressId.element
+  BiodiversityTargetId.element|  HumanWellbeingTargetId.element|  BiophysicalFactorId.element|  BiophysicalResultId.element|  CauseId.element|  StrategyId.element|  ThreatReductionResultId.element|  IntermediateResultId.element|  GroupBoxId.element|  TextBoxId.element|  ScopeBoxId.element|  ActivityId.element|  StressId.element
 }
 
 LinkableFactorId.element = element miradi:LinkableFactorId
 {
-  BiodiversityTargetId.element|  HumanWellbeingTargetId.element|  BiophysicalFactorId.element|  CauseId.element|  StrategyId.element|  ThreatReductionResultId.element|  IntermediateResultId.element|  GroupBoxId.element
+  BiodiversityTargetId.element|  HumanWellbeingTargetId.element|  BiophysicalFactorId.element|  BiophysicalResultId.element|  CauseId.element|  StrategyId.element|  ThreatReductionResultId.element|  IntermediateResultId.element|  GroupBoxId.element
 }
 
 formatted_text = ( text|element.br|element.b|element.i|element.u|element.strike|element.a|element.ul|element.ol

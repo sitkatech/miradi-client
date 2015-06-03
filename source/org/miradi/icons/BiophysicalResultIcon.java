@@ -17,43 +17,41 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
+package org.miradi.icons;
 
-package org.miradi.schemas;
+import org.miradi.diagram.renderers.FactorRenderer;
+import org.miradi.diagram.renderers.RectangleRenderer;
+import org.miradi.main.AppPreferences;
+import org.miradi.main.EAM;
 
-import org.miradi.objecthelpers.ObjectType;
+import javax.swing.*;
+import java.awt.*;
 
-public class BiophysicalResultSchema extends FactorSchema
+public class BiophysicalResultIcon extends AbstractShapeIcon
 {
-	public BiophysicalResultSchema()
+	@Override
+	FactorRenderer getRenderer()
 	{
-		super();
+		return new RectangleRenderer();
 	}
 	
 	@Override
-	protected void fillFieldSchemas()
+	Color getIconColor()
 	{
-		super.fillFieldSchemas();
-		
-	    writeIndicatorIds();
-		writeObjectiveIds();
-	}
-
-	public static int getObjectType()
-	{
-		return ObjectType.BIOPHYSICAL_RESULT;
+		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_BIOPHYSICAL_RESULT);
 	}
 	
-	@Override
-	public int getType()
+	static public Icon createDisabledIcon()
 	{
-		return getObjectType();
-	}
-
-	@Override
-	public String getObjectName()
-	{
-		return OBJECT_NAME;
+		return new BiophysicalResultDisabledIcon();
 	}
 	
-	public static final String OBJECT_NAME = "BiophysicalResult";
+	private static final class BiophysicalResultDisabledIcon extends BiophysicalResultIcon
+	{
+		@Override
+		Color getIconColor()
+		{
+			return Color.LIGHT_GRAY;
+		}
+	}
 }

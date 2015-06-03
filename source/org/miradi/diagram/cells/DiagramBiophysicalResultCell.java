@@ -17,43 +17,27 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
+package org.miradi.diagram.cells;
 
-package org.miradi.schemas;
+import org.miradi.main.AppPreferences;
+import org.miradi.main.EAM;
+import org.miradi.objects.BiophysicalResult;
+import org.miradi.objects.DiagramFactor;
 
-import org.miradi.objecthelpers.ObjectType;
+import java.awt.*;
 
-public class BiophysicalResultSchema extends FactorSchema
+public class DiagramBiophysicalResultCell extends FactorCell
 {
-	public BiophysicalResultSchema()
+	public DiagramBiophysicalResultCell(BiophysicalResult factor, DiagramFactor diagramFactorToUse)
 	{
-		super();
-	}
-	
-	@Override
-	protected void fillFieldSchemas()
-	{
-		super.fillFieldSchemas();
-		
-	    writeIndicatorIds();
-		writeObjectiveIds();
-	}
-
-	public static int getObjectType()
-	{
-		return ObjectType.BIOPHYSICAL_RESULT;
-	}
-	
-	@Override
-	public int getType()
-	{
-		return getObjectType();
+		super(factor, diagramFactorToUse);
 	}
 
 	@Override
-	public String getObjectName()
+	public Color getColor()
 	{
-		return OBJECT_NAME;
+		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_BIOPHYSICAL_RESULT);
 	}
-	
-	public static final String OBJECT_NAME = "BiophysicalResult";
+
+
 }

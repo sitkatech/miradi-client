@@ -512,6 +512,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return biophysicalFactor;
 	}
 
+	public BiophysicalResult createAndPopulateBiophysicalResult() throws Exception
+	{
+        BiophysicalResult biophysicalResult = createBiophysicalResult();
+		populateBiophysicalResult(biophysicalResult);
+
+		return biophysicalResult;
+	}
+
 	public Stress createAndPopulateStress() throws Exception
 	{
 		Stress stress = createStress();
@@ -838,6 +846,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ORef ref = createObject(BiophysicalFactorSchema.getObjectType(), new FactorId(takeNextId(BiophysicalFactorSchema.getObjectType())));
 		return BiophysicalFactor.find(this, ref);
+	}
+
+	public BiophysicalResult createBiophysicalResult() throws Exception
+	{
+		ORef ref = createObject(BiophysicalResultSchema.getObjectType(), new FactorId(takeNextId(BiophysicalResultSchema.getObjectType())));
+		return BiophysicalResult.find(this, ref);
 	}
 
 	public Stress createStress() throws Exception
@@ -1228,6 +1242,23 @@ public class ProjectForTesting extends ProjectWithHelpers
         fillObjectUsingCommand(biophysicalFactor, BiophysicalFactor.TAG_INDICATOR_IDS, indicatorIds.toString());
 	}
 
+	public void populateBiophysicalResult(BiophysicalResult biophysicalResult) throws Exception
+	{
+		fillObjectUsingCommand(biophysicalResult, BiophysicalResult.TAG_LABEL, "Biophysical Result " + biophysicalResult.getId().toString());
+		fillObjectUsingCommand(biophysicalResult, BiophysicalResult.TAG_TEXT, "Some Description Text");
+		fillObjectUsingCommand(biophysicalResult, BiophysicalResult.TAG_COMMENTS, "Some comment Text");
+
+        IdList objectiveIds = new IdList(ObjectiveSchema.getObjectType());
+        final Objective objective = createAndPopulateObjective(biophysicalResult);
+        objectiveIds.addRef(objective.getRef());
+        fillObjectUsingCommand(biophysicalResult, Factor.TAG_OBJECTIVE_IDS, objectiveIds.toString());
+
+        IdList indicatorIds = new IdList(IndicatorSchema.getObjectType());
+        final Indicator indicator = createAndPopulateIndicator(biophysicalResult);
+        indicatorIds.addRef(indicator.getRef());
+        fillObjectUsingCommand(biophysicalResult, BiophysicalResult.TAG_INDICATOR_IDS, indicatorIds.toString());
+	}
+
 	public void turnOnTncMode(AbstractTarget target) throws Exception
 	{
 		fillObjectUsingCommand(target, AbstractTarget.TAG_VIABILITY_MODE, ViabilityModeQuestion.TNC_STYLE_CODE);
@@ -1473,7 +1504,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		populateOtherNotableSpecies(otherNotableSpecies);
 	}
 	
-	public void createAndPopulateIucnRedlistspecies() throws Exception
+	public void createAndPopulateIucnRedlistSpecies() throws Exception
 	{
 		IucnRedlistSpecies iucnRedlistSpecies = createIucnRedlistSpecies();
 		populateIucnRedlistSpecies(iucnRedlistSpecies);
@@ -1740,6 +1771,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createAndPopulateSubTarget();
 		createAndPopulateTarget();
         createAndPopulateBiophysicalFactor();
+        createAndPopulateBiophysicalResult();
 		createAndPopulateThreat();
 		createThreatReductionResult();
 		createAndPopulateDraftStrategy();
@@ -1755,7 +1787,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createAndPopulateGroupBox();
 		createAndPopulateAudience();
 		createAndPopulateOtherNotableSpecies();
-		createAndPopulateIucnRedlistspecies();
+		createAndPopulateIucnRedlistSpecies();
 		createAndPopulateCategoryOne();
 		createAndPopulateCategoryTwo();
 		populateDashboard();
@@ -2285,7 +2317,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ORef diagramLinkRef = createDiagramLinkAndAddToDiagram(from, to);
 		DiagramLink diagramLink = DiagramLink.find(this, diagramLinkRef);
-		setBidrectionality(diagramLink, isBidirectionalTag);
+		setBidirectionality(diagramLink, isBidirectionalTag);
 		
 		return diagramLinkRef;
 	}
@@ -2400,7 +2432,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return factorLinkRef;
 	}
 	
-	public void setBidrectionality(DiagramLink diagramLink, String isBidirectional)	throws CommandFailedException
+	public void setBidirectionality(DiagramLink diagramLink, String isBidirectional)	throws CommandFailedException
 	{
 		CommandVector setBidirectionality = diagramLink.createCommandsToEnableBidirectionalFlag();
 		executeCommands(setBidirectionality);

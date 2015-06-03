@@ -69,6 +69,7 @@ public class MigrationTo17 extends AbstractSingleTypeMigration
 		}
 
 		getRawProject().deletePoolWithData(ObjectType.BIOPHYSICAL_FACTOR);
+		getRawProject().deletePoolWithData(ObjectType.BIOPHYSICAL_RESULT);
 
 		return migrationResult;
 	}
@@ -77,6 +78,7 @@ public class MigrationTo17 extends AbstractSingleTypeMigration
     {
         Vector<Integer> typesToMigrate = new Vector<Integer>();
         typesToMigrate.add(ObjectType.BIOPHYSICAL_FACTOR);
+        typesToMigrate.add(ObjectType.BIOPHYSICAL_RESULT);
 
         return typesToMigrate;
     }

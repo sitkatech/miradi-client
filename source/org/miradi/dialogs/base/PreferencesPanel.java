@@ -253,6 +253,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		biodiversityTargetScopeDropdown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Biodiversity Target Scope (Darker Green)"), DiagramConstants.biodiversityTargetScopeColorChoices, AppPreferences.TAG_COLOR_SCOPE_BOX);
 		humanWelfareScopeDropDown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Human Wellbeing Target Scope (Darker Brown)"), DiagramConstants.humanWelfareScopeColorChoices, AppPreferences.TAG_COLOR_HUMAN_WELFARE_SCOPE_BOX);
 		intermediateResultDropDown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Intermediate Result (Light Blue)"), DiagramConstants.intermediateResultChoices, AppPreferences.TAG_COLOR_INTERMEDIATE_RESULT);
+		biophysicalResultDropdown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Biophysical Result (Lavender Blue)"), DiagramConstants.biophysicalResultColorChoices, AppPreferences.TAG_COLOR_BIOPHYSICAL_RESULT);
 		threatReductionResultDropDown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Threat Reduction Result (Light Purple)"), DiagramConstants.threatReductionResultChoices, AppPreferences.TAG_COLOR_THREAT_REDUCTION_RESULT);
 
 		
@@ -305,6 +306,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		setColorPreference(indirectFactorDropdown, AppPreferences.TAG_COLOR_CONTRIBUTING_FACTOR);
 		setColorPreference(directThreatDropdown, AppPreferences.TAG_COLOR_DIRECT_THREAT);
 		setColorPreference(biophysicalFactorDropdown, AppPreferences.TAG_COLOR_BIOPHYSICAL_FACTOR);
+		setColorPreference(biophysicalResultDropdown, AppPreferences.TAG_COLOR_BIOPHYSICAL_RESULT);
 		setColorPreference(biodiversityTargetDropdown, AppPreferences.TAG_COLOR_TARGET);
 		setColorPreference(humanWelfareTargetDropdown, AppPreferences.TAG_COLOR_HUMAN_WELFARE_TARGET);
 		setColorPreference(biodiversityTargetScopeDropdown, AppPreferences.TAG_COLOR_SCOPE_BOX);
@@ -433,6 +435,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	private UiComboBox interventionDropdown;
 	private UiComboBox directThreatDropdown;
 	private UiComboBox biophysicalFactorDropdown;
+	private UiComboBox biophysicalResultDropdown;
 	private UiComboBox indirectFactorDropdown;
 	private UiComboBox biodiversityTargetDropdown;
 	private UiComboBox humanWelfareTargetDropdown;

@@ -77,6 +77,7 @@ public class IconManager
 		addIcon(new KeyEcologicalAttributeIcon());
 		addIcon(new ContributingFactorIcon());
 		addIcon(new BiophysicalFactorIcon());
+		addIcon(new BiophysicalResultIcon());
 		addIcon(new HumanWelfareTargetIcon());
 		addIcon(new StressIcon());
 		addIcon(new GroupBoxIcon());
@@ -216,6 +217,9 @@ public class IconManager
 		if (factor.isBiophysicalFactor())
 			return getBiophysicalFactorIcon();
 
+		if (factor.isBiophysicalResult())
+			return getBiophysicalResultIcon();
+
 		if (factor.isStrategy())
 			return getStrategyIcon();
 		
@@ -265,6 +269,11 @@ public class IconManager
 	private static Icon getBiophysicalFactorIcon()
 	{
 		return getIcon(BiophysicalFactorIcon.class);
+	}
+
+	private static Icon getBiophysicalResultIcon()
+	{
+		return getIcon(BiophysicalResultIcon.class);
 	}
 
 	private static Icon getHumanWelfareTargetIcon()

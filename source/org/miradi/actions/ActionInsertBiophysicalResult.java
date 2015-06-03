@@ -16,44 +16,38 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/ 
+*/
+package org.miradi.actions;
 
-package org.miradi.schemas;
+import org.miradi.icons.BiophysicalResultIcon;
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
-import org.miradi.objecthelpers.ObjectType;
+import javax.swing.*;
 
-public class BiophysicalResultSchema extends FactorSchema
+public class ActionInsertBiophysicalResult extends LocationAction
 {
-	public BiophysicalResultSchema()
+	public ActionInsertBiophysicalResult(MainWindow mainWindow)
 	{
-		super();
-	}
-	
-	@Override
-	protected void fillFieldSchemas()
-	{
-		super.fillFieldSchemas();
-		
-	    writeIndicatorIds();
-		writeObjectiveIds();
+		super(mainWindow, getLabel(), new BiophysicalResultIcon());
 	}
 
-	public static int getObjectType()
+	private static String getLabel()
 	{
-		return ObjectType.BIOPHYSICAL_RESULT;
-	}
-	
-	@Override
-	public int getType()
-	{
-		return getObjectType();
+		return EAM.text("Action|Insert|Insert Biophysical Result");
 	}
 
 	@Override
-	public String getObjectName()
+	public String getToolTipText()
 	{
-		return OBJECT_NAME;
+		return EAM.text("TT|Insert a Biophysical Result");
 	}
-	
-	public static final String OBJECT_NAME = "BiophysicalResult";
+
+	@Override
+	public Icon getDisabledIcon()
+	{
+		return BiophysicalResultIcon.createDisabledIcon();
+	}
+
 }
+

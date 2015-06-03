@@ -48,6 +48,11 @@ public class DiagramConstants
 		new Color(159, 159, 255),
 		new Color(119, 119, 253)
     };
+	public static final Color[] biophysicalResultColorChoices = {
+		new Color(204, 204, 255),
+		new Color(159, 159, 255),
+		new Color(119, 119, 253)
+    };
 	public static final Color[] contributingFactorColorChoices = {
 		new Color(255, 190, 0),
 		new Color(255, 128, 0),
@@ -99,6 +104,7 @@ public class DiagramConstants
 	public static final Color DEFAULT_HUMAN_WELFARE_TARGET_COLOR = humanWelfareTargetColorChoices[1];
 	public static final Color DEFAULT_DIRECT_THREAT_COLOR = directThreatColorChoices[0];
 	public static final Color DEFAULT_BIOPHYSICAL_FACTOR_COLOR = biophysicalFactorColorChoices[0];
+	public static final Color DEFAULT_BIOPHYSICAL_RESULT_COLOR = biophysicalResultColorChoices[0];
 	public static final Color DEFAULT_CONTRIBUTING_FACTOR_COLOR = contributingFactorColorChoices[0];
 	public static final Color DEFAULT_STRATEGY_COLOR = strategyColorChoices[0];
 	public static final Color DEFAULT_SCOPE_COLOR = biodiversityTargetScopeColorChoices[1];

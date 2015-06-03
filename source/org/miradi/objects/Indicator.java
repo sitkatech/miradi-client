@@ -285,6 +285,7 @@ public class Indicator extends BaseObject
 			HumanWelfareTargetSchema.getObjectType(),
 			KeyEcologicalAttributeSchema.getObjectType(),
             BiophysicalFactorSchema.getObjectType(),
+            BiophysicalResultSchema.getObjectType(),
 		};
 	}
 	

@@ -74,6 +74,7 @@ public interface Xmpz2XmlConstants
 	public static final String BIODIVERSITY_TARGET = "BiodiversityTarget";
 	public static final String HUMAN_WELFARE_TARGET = HumanWelfareTargetSchema.HUMAN_WELLBEING_TARGET;
 	public static final String BIOPHYSICAL_FACTOR = BiophysicalFactorSchema.BIOPHYSICAL_FACTOR;
+	public static final String BIOPHYSICAL_RESULTS = BiophysicalResultSchema.OBJECT_NAME;
 	public static final String THREAT_REDUCTION_RESULTS = ThreatReductionResultSchema.OBJECT_NAME;
 	public static final String INTERMEDIATE_RESULTS = IntermediateResultSchema.OBJECT_NAME;
 	public static final String GROUP_BOX = GroupBoxSchema.OBJECT_NAME;

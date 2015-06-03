@@ -316,7 +316,7 @@ abstract public class FactorCell extends EAMGraphCell
 		return getWrappedFactor().isIntermediateResult();
 	}
 	
-	public boolean isThreatRedectionResult()
+	public boolean isThreatReductionResult()
 	{
 		return getWrappedFactor().isThreatReductionResult();
 	}
@@ -339,6 +339,11 @@ abstract public class FactorCell extends EAMGraphCell
 	public boolean isBiophysicalFactor()
 	{
 		return getWrappedFactor().isBiophysicalFactor();
+	}
+
+	public boolean isBiophysicalResult()
+	{
+		return getWrappedFactor().isBiophysicalResult();
 	}
 
 	public boolean isDirectThreat()

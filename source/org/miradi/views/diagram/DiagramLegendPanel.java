@@ -134,9 +134,8 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		createCheckBox(ScopeBoxSchema.OBJECT_NAME);
 		createCheckBox(TargetSchema.OBJECT_NAME);
 		createCheckBox(HumanWelfareTargetSchema.OBJECT_NAME);
-
 		createCheckBox(BiophysicalFactorSchema.OBJECT_NAME);
-
+		createCheckBox(BiophysicalResultSchema.OBJECT_NAME);
 		createCheckBox(Cause.OBJECT_NAME_THREAT);
 		createCheckBox(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR);
 		createCheckBox(ThreatReductionResultSchema.OBJECT_NAME);

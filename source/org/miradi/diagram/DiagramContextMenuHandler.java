@@ -265,6 +265,8 @@ public class DiagramContextMenuHandler
 
 		insertMenu.add(createMenuItem(ActionInsertIntermediateResult.class, menuInvokedAt));
 		insertMenu.add(createMenuItem(ActionInsertThreatReductionResult.class, menuInvokedAt));
+		// TODO: MRD-5912 - will need to make this conditional based on project setting
+		insertMenu.add(createMenuItem(ActionInsertBiophysicalResult.class, menuInvokedAt));
 		insertMenu.add(createMenuItem(ActionInsertTextBox.class, menuInvokedAt));
 		insertMenu.add(createMenuItem(ActionInsertScopeBox.class, menuInvokedAt));
 		

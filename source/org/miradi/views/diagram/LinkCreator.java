@@ -424,6 +424,7 @@ public class LinkCreator
 				HumanWelfareTargetSchema.getObjectType(),
 				GroupBoxSchema.getObjectType(),
 				BiophysicalFactorSchema.getObjectType(),
+				BiophysicalResultSchema.getObjectType(),
 		};
 		
 		HashSet<Integer> linkableTypes = new HashSet<Integer>();

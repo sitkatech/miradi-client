@@ -21,16 +21,11 @@ package org.miradi.views.diagram;
 
 import javax.swing.JPanel;
 
-import org.miradi.actions.ActionInsertIntermediateResult;
-import org.miradi.actions.ActionInsertThreatReductionResult;
-import org.miradi.actions.Actions;
+import org.miradi.actions.*;
 import org.miradi.icons.ActivityIcon;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.MainWindow;
-import org.miradi.schemas.IntermediateResultSchema;
-import org.miradi.schemas.ResultsChainDiagramSchema;
-import org.miradi.schemas.TaskSchema;
-import org.miradi.schemas.ThreatReductionResultSchema;
+import org.miradi.schemas.*;
 
 public class ResultsChainDiagramLegendPanel extends DiagramLegendPanel
 {
@@ -42,6 +37,8 @@ public class ResultsChainDiagramLegendPanel extends DiagramLegendPanel
 	@Override
 	protected void createCustomLegendPanelSection(Actions actions, JPanel jpanel)
 	{
+		// TODO: MRD-5912 - will need to make this conditional based on project setting
+		addButtonLineWithCheckBox(jpanel, BiophysicalResultSchema.getObjectType(), BiophysicalResultSchema.OBJECT_NAME, actions.get(ActionInsertBiophysicalResult.class));
 		addButtonLineWithCheckBox(jpanel, ThreatReductionResultSchema.getObjectType(), ThreatReductionResultSchema.OBJECT_NAME, actions.get(ActionInsertThreatReductionResult.class));
 		addButtonLineWithCheckBox(jpanel, IntermediateResultSchema.getObjectType(), IntermediateResultSchema.OBJECT_NAME, actions.get(ActionInsertIntermediateResult.class));
 	}

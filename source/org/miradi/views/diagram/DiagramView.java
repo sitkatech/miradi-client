@@ -195,6 +195,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionInsertHumanWelfareTarget.class, new InsertHumanWelfareTargetDoer());
 		addDoerToMap(ActionInsertContributingFactor.class, new InsertContributingFactorDoer());
 		addDoerToMap(ActionInsertBiophysicalFactor.class, new InsertBiophysicalFactorDoer());
+		addDoerToMap(ActionInsertBiophysicalResult.class, new InsertBiophysicalResultDoer());
 		addDoerToMap(ActionInsertDirectThreat.class, new InsertDirectThreatDoer());
 		addDoerToMap(ActionInsertStrategy.class, new InsertStrategyDoer());
 		addDoerToMap(ActionInsertDraftStrategy.class, new InsertDraftStrategyDoer());
