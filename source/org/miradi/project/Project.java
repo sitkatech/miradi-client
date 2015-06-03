@@ -237,6 +237,11 @@ public class Project implements ProjectInterface
 		return (BiophysicalFactorPool) getPool(ObjectType.BIOPHYSICAL_FACTOR);
 	}
 
+	public BiophysicalResultPool getBiophysicalResultPool()
+	{
+		return (BiophysicalResultPool) getPool(ObjectType.BIOPHYSICAL_RESULT);
+	}
+
 	public StressPool getStressPool()
 	{
 		return (StressPool) getPool(ObjectType.STRESS);

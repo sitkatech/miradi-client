@@ -23,22 +23,22 @@ import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.schemas.BiophysicalFactorSchema;
+import org.miradi.schemas.BiophysicalResultSchema;
 
-public class BiophysicalFactor extends Factor
+public class BiophysicalResult extends Factor
 {
-	public BiophysicalFactor(ObjectManager objectManager, FactorId idToUse)
+	public BiophysicalResult(ObjectManager objectManager, FactorId idToUse)
 	{
 		super(objectManager, idToUse, createSchema());
 	}
 
-	public static BiophysicalFactorSchema createSchema()
+	public static BiophysicalResultSchema createSchema()
 	{
-		return new BiophysicalFactorSchema();
+		return new BiophysicalResultSchema();
 	}
 
     @Override
-    public boolean isBiophysicalFactor()
+    public boolean isBiophysicalResult()
     {
         return true;
     }
@@ -62,7 +62,7 @@ public class BiophysicalFactor extends Factor
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == BiophysicalFactorSchema.getObjectType();
+		return objectType == BiophysicalResultSchema.getObjectType();
 	}
 	
 	public static boolean is(BaseObject object)
@@ -70,14 +70,14 @@ public class BiophysicalFactor extends Factor
 		return is(object.getType());
 	}
 
-	public static BiophysicalFactor find(ObjectManager objectManager, ORef biophysicalFactorRef)
+	public static BiophysicalResult find(ObjectManager objectManager, ORef biophysicalResultRef)
 	{
-		return (BiophysicalFactor) objectManager.findObject(biophysicalFactorRef);
+		return (BiophysicalResult) objectManager.findObject(biophysicalResultRef);
 	}
 	
-	public static BiophysicalFactor find(Project project, ORef biophysicalFactorRef)
+	public static BiophysicalResult find(Project project, ORef biophysicalResultRef)
 	{
-		return find(project.getObjectManager(), biophysicalFactorRef);
+		return find(project.getObjectManager(), biophysicalResultRef);
 	}
 	
 }
