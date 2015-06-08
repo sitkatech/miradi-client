@@ -310,11 +310,13 @@ public class ResultsChainCreatorHelper
 		
 		if (diagramFactor.getWrappedType() == ObjectType.SCOPE_BOX)
 			return diagramFactor.getWrappedORef();
-		
-		
+
 		if (diagramFactor.getWrappedType() == ObjectType.CAUSE)
 			return createNewFactorAndSetLabel(diagramFactor);
 		
+		if (diagramFactor.getWrappedType() == ObjectType.BIOPHYSICAL_FACTOR)
+			return createNewFactorAndSetLabel(diagramFactor);
+
 		if (diagramFactor.getWrappedType() == ObjectType.TEXT_BOX)
 			return createNewFactorAndSetLabel(diagramFactor);
 		
@@ -346,13 +348,13 @@ public class ResultsChainCreatorHelper
 		return newlyCreatedRef;
 	}
 
-	public void transferAnnotationsToNewFactor(ORef tranferringFromFactorRef, ORef transferringToFactorRef, String tag) throws Exception
+	public void transferAnnotationsToNewFactor(ORef transferringFromFactorRef, ORef transferringToFactorRef, String tag) throws Exception
 	{
-		String idsToMoveToTransfer = getProject().getObjectData(tranferringFromFactorRef, tag);
+		String idsToMoveToTransfer = getProject().getObjectData(transferringFromFactorRef, tag);
 		CommandSetObjectData setNewlyCreatedToPointToIds = new CommandSetObjectData(transferringToFactorRef, tag, idsToMoveToTransfer);
 		getProject().executeCommand(setNewlyCreatedToPointToIds);
 		
-		CommandSetObjectData clearOriginalIds = new CommandSetObjectData(tranferringFromFactorRef, tag, "");
+		CommandSetObjectData clearOriginalIds = new CommandSetObjectData(transferringFromFactorRef, tag, "");
 		getProject().executeCommand(clearOriginalIds);
 	}
 
@@ -373,6 +375,9 @@ public class ResultsChainCreatorHelper
 		if (factor.isContributingFactor())
 			return new CommandCreateObject(ObjectType.INTERMEDIATE_RESULT);
 		
+		if (factor.isBiophysicalFactor())
+			return new CommandCreateObject(ObjectType.BIOPHYSICAL_RESULT);
+
 		if (factor.isTextBox())
 			return new CommandCreateObject(ObjectType.TEXT_BOX);
 		
@@ -516,9 +521,15 @@ public class ResultsChainCreatorHelper
 		if (isNonDraftStrategy(diagramFactor))
 			return true;
 
-		if (diagramFactor.getWrappedType() == ObjectType.INTERMEDIATE_RESULT)
+		if (diagramFactor.getWrappedType() == ObjectType.BIOPHYSICAL_FACTOR)
 			return true;
 		
+		if (diagramFactor.getWrappedType() == ObjectType.BIOPHYSICAL_RESULT)
+			return true;
+
+		if (diagramFactor.getWrappedType() == ObjectType.INTERMEDIATE_RESULT)
+			return true;
+
 		if (diagramFactor.getWrappedType() == ObjectType.THREAT_REDUCTION_RESULT)
 			return true;
 		

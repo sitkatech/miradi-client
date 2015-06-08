@@ -34,6 +34,7 @@ import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.project.ResultsChainCreatorHelper;
+import org.miradi.schemas.BiophysicalResultSchema;
 import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.views.ViewDoer;
@@ -86,8 +87,8 @@ public class CreateResultsChainDoer extends ViewDoer
 		selectResultsChain(project, diagramView, newResultsChainRef);
 		
 		if (diagramModel != null && diagramModel.isConceptualModelDiagram() && wereAnyAnnotationsTransferred(project, newResultsChainRef))
-			EAM.notifyDialog(EAM.text("Any Indicators or Objectives that were associated to Contributing Factors or Threats \n" +
-									"have been moved to the corresponding Threat Reduction Result or Intermediate Result"));
+			EAM.notifyDialog(EAM.text("Any Indicators or Objectives that were associated to Contributing Factors, Threats or Biophysical Factors \n" +
+									"have been moved to the corresponding Threat Reduction Result, Intermediate Result or Biophysical Result"));
 	}
 
 	private static boolean wereAnyAnnotationsTransferred(Project project, ORef newResultsChainRef)
@@ -96,6 +97,7 @@ public class CreateResultsChainDoer extends ViewDoer
 		HashSet<Factor> factors = new HashSet<Factor>();
 		factors.addAll(resultsChain.getFactorsOfType(ThreatReductionResultSchema.getObjectType()));
 		factors.addAll(resultsChain.getFactorsOfType(IntermediateResultSchema.getObjectType()));
+		factors.addAll(resultsChain.getFactorsOfType(BiophysicalResultSchema.getObjectType()));
 		for (Factor factor :factors)
 		{
 			if (factor.getDirectOrIndirectIndicatorRefs().hasRefs())

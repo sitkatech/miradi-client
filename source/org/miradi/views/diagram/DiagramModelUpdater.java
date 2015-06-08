@@ -92,7 +92,7 @@ public class DiagramModelUpdater
 		IdList factorLinkIdsAfter = new IdList(DiagramLinkSchema.getObjectType(), dataValueAfter);
 
 		IdList addedLinkIds = getAddedIds(factorLinkIdsBefore, factorLinkIdsAfter);
-		addDiagamLinks(addedLinkIds);
+		addDiagramLinks(addedLinkIds);
 		
 		IdList removedLinkIds = getRemovedIds(factorLinkIdsBefore, factorLinkIdsAfter);
 		removeDiagramLinks(removedLinkIds);
@@ -109,7 +109,7 @@ public class DiagramModelUpdater
 		}
 	}
 
-	private void addDiagamLinks(IdList addedLinkIds) throws Exception
+	private void addDiagramLinks(IdList addedLinkIds) throws Exception
 	{
 		for (int i = 0; i < addedLinkIds.size(); i++)
 		{
@@ -131,7 +131,7 @@ public class DiagramModelUpdater
 	
 	//FIXME low: This is a hack and needs to have a better solution. 
 	// after undoing a create link,  isAvailable was getting selected cells,
-	// the delted link was included in the selected cells.  
+	// the deleted link was included in the selected cells.
 	private void clearDiagramSelection(EAMGraphCell cell)
 	{
 		if (EAM.getMainWindow() == null)
