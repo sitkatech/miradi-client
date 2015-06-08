@@ -383,6 +383,7 @@ public interface Xmpz2XmlConstants
 	public static final String VOCABULARY_MONTH = "vocabulary_month";
 	public static final String VOCABULARY_YEAR = "vocabulary_year";
 	public static final String VOCABULARY_TARGET_MODE = "vocabulary_target_mode";
+	public static final String VOCABULARY_FACTOR_MODE = "vocabulary_factor_mode";
 	public static final String VOCABULARY_PRECISION_TYPE = "vocabulary_precision_type";
 	public static final String VOCABULARY_CUSTOM_ROWS = "vocabulary_custom_rows";
 	public static final String VOCABULARY_CUSTOM_COLUMNS = "vocabulary_custom_columns";

@@ -37,8 +37,8 @@ public class ResultsChainDiagramLegendPanel extends DiagramLegendPanel
 	@Override
 	protected void createCustomLegendPanelSection(Actions actions, JPanel jpanel)
 	{
-		// TODO: MRD-5912 - will need to make this conditional based on project setting
-		addButtonLineWithCheckBox(jpanel, BiophysicalResultSchema.getObjectType(), BiophysicalResultSchema.OBJECT_NAME, actions.get(ActionInsertBiophysicalResult.class));
+		if (getProject().getMetadata().isBiophysicalFactorMode())
+			addButtonLineWithCheckBox(jpanel, BiophysicalResultSchema.getObjectType(), BiophysicalResultSchema.OBJECT_NAME, actions.get(ActionInsertBiophysicalResult.class));
 		addButtonLineWithCheckBox(jpanel, ThreatReductionResultSchema.getObjectType(), ThreatReductionResultSchema.OBJECT_NAME, actions.get(ActionInsertThreatReductionResult.class));
 		addButtonLineWithCheckBox(jpanel, IntermediateResultSchema.getObjectType(), IntermediateResultSchema.OBJECT_NAME, actions.get(ActionInsertIntermediateResult.class));
 	}

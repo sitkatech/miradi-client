@@ -33,9 +33,11 @@ public class TargetModeQuestion extends StaticChoiceQuestion
 
 	public static ChoiceItem[] getChoiceItems()
 	{
+        // Note per MRD-5892 the decision was made to default to including HWBs for all new projects via project metadata set-up (see createProjectMetadata)
+        // The original logical default value is retained here to handle migration of older projects whose default behavior should not change
 		return new ChoiceItem[] {
-				new ChoiceItem(DEFAULT_CODE, EAM.text("Default Mode"), new TargetIcon()),
-				new ChoiceItem(HUMAN_WELFARE_TARGET_CODE, EAM.text("Human Wellbeing Target Mode"), new HumanWelfareTargetIcon()),
+				new ChoiceItem(DEFAULT_CODE, EAM.text("Biodiversity Targets Only"), new TargetIcon()),
+				new ChoiceItem(HUMAN_WELFARE_TARGET_CODE, EAM.text("Include Human Wellbeing Targets (default)"), new HumanWelfareTargetIcon()),
 		};
 	}
 	

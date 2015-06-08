@@ -25,11 +25,7 @@ import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.Xenodata;
-import org.miradi.questions.BudgetTimePeriodQuestion;
-import org.miradi.questions.ProjectSharingQuestion;
-import org.miradi.questions.StaticQuestionManager;
-import org.miradi.questions.TargetModeQuestion;
-import org.miradi.questions.ThreatRatingModeChoiceQuestion;
+import org.miradi.questions.*;
 import org.miradi.schemas.XenodataSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
@@ -44,24 +40,25 @@ public class Xmpz2ProjectSummaryImporter extends BaseObjectImporter
 
 	public void importFields() throws Exception
 	{
-		Node projectSumaryNode = getImporter().getNamedChildNode(getImporter().getRootNode(), PROJECT_SUMMARY);
+		Node projectSummaryNode = getImporter().getNamedChildNode(getImporter().getRootNode(), PROJECT_SUMMARY);
 				
-		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_NAME);
-		writeShareOutsideOrganizationElement(projectSumaryNode);
-		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_LANGUAGE);
-		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
-		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER);
-		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
-		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_URL);
-		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_DESCRIPTION);
-		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_STATUS);
-		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_NEXT_STEPS);
-		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
-		importExternalProjectId(projectSumaryNode);
+		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_PROJECT_NAME);
+		writeShareOutsideOrganizationElement(projectSummaryNode);
+		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_PROJECT_LANGUAGE);
+		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
+		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER);
+		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
+		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_PROJECT_URL);
+		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_PROJECT_DESCRIPTION);
+		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_PROJECT_STATUS);
+		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_NEXT_STEPS);
+		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
+		importExternalProjectId(projectSummaryNode);
 				
-		getImporter().importCodeField(projectSumaryNode, PROJECT_SUMMARY, getMetadataRef(), ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE, new TargetModeQuestion());
-		getImporter().importCodeField(projectSumaryNode, PROJECT_SUMMARY, getMetadataRef(), ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, StaticQuestionManager.getQuestion(BudgetTimePeriodQuestion.class));
-		getImporter().importCodeField(projectSumaryNode, PROJECT_SUMMARY, getMetadataRef(), ProjectMetadata.TAG_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion());
+		getImporter().importCodeField(projectSummaryNode, PROJECT_SUMMARY, getMetadataRef(), ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE, new TargetModeQuestion());
+		getImporter().importCodeField(projectSummaryNode, PROJECT_SUMMARY, getMetadataRef(), ProjectMetadata.TAG_BIOPHYSICAL_FACTOR_MODE, new FactorModeQuestion());
+		getImporter().importCodeField(projectSummaryNode, PROJECT_SUMMARY, getMetadataRef(), ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, StaticQuestionManager.getQuestion(BudgetTimePeriodQuestion.class));
+		getImporter().importCodeField(projectSummaryNode, PROJECT_SUMMARY, getMetadataRef(), ProjectMetadata.TAG_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion());
 	}
 	
 	private void writeShareOutsideOrganizationElement(Node projectSumaryNode) throws Exception

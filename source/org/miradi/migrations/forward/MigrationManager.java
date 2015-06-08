@@ -100,6 +100,7 @@ public class MigrationManager extends AbstractMigrationManager
 		migrations.add(new MigrationTo15(rawProject));
 		migrations.add(new MigrationTo16(rawProject));
 		migrations.add(new MigrationTo17(rawProject));
+		migrations.add(new MigrationTo18(rawProject));
 
 		return migrations;
 	}

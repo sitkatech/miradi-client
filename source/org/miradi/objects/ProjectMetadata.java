@@ -29,12 +29,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.project.ObjectManager;
-import org.miradi.questions.BudgetTimePeriodQuestion;
-import org.miradi.questions.DiagramObjectDataInclusionQuestion;
-import org.miradi.questions.PlanningTreeTargetPositionQuestion;
-import org.miradi.questions.QuarterColumnsVisibilityQuestion;
-import org.miradi.questions.TargetModeQuestion;
-import org.miradi.questions.ThreatRatingModeChoiceQuestion;
+import org.miradi.questions.*;
 import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DoubleUtilities;
@@ -268,6 +263,12 @@ public class ProjectMetadata extends BaseObject
 		return code.equals(TargetModeQuestion.HUMAN_WELFARE_TARGET_CODE);
 	}
 		
+	public boolean isBiophysicalFactorMode()
+	{
+		String code = getData(TAG_BIOPHYSICAL_FACTOR_MODE);
+		return code.equals(FactorModeQuestion.BIOPHYSICAL_FACTOR_CODE);
+	}
+
 	public String getThreatRatingMode()
 	{
 		return getData(TAG_THREAT_RATING_MODE);
@@ -408,4 +409,5 @@ public class ProjectMetadata extends BaseObject
 	
 	public static final String TAG_XENODATA_STRING_REF_MAP = "XenodataRefs";
 	public static final String TAG_HUMAN_WELFARE_TARGET_MODE = "TargetMode";
+	public static final String TAG_BIOPHYSICAL_FACTOR_MODE = "FactorMode";
 }

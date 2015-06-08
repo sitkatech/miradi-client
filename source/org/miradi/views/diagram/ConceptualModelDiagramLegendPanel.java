@@ -44,8 +44,8 @@ public class ConceptualModelDiagramLegendPanel extends DiagramLegendPanel
 	@Override
 	protected void createCustomLegendPanelSection(Actions actions, JPanel jpanel)
 	{
-		// TODO: MRD-5911 - will need to make this conditional based on project setting
-		addButtonLineWithCheckBox(jpanel, BiophysicalFactorSchema.getObjectType(), BiophysicalFactorSchema.OBJECT_NAME, actions.get(ActionInsertBiophysicalFactor.class));
+		if (getProject().getMetadata().isBiophysicalFactorMode())
+			addButtonLineWithCheckBox(jpanel, BiophysicalFactorSchema.getObjectType(), BiophysicalFactorSchema.OBJECT_NAME, actions.get(ActionInsertBiophysicalFactor.class));
 		addButtonLineWithCheckBox(jpanel, CauseSchema.getObjectType(), Cause.OBJECT_NAME_THREAT, actions.get(ActionInsertDirectThreat.class));
 		addButtonLineWithCheckBox(jpanel, CauseSchema.getObjectType(),  Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, actions.get(ActionInsertContributingFactor.class));
 	}

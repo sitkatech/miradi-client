@@ -185,6 +185,12 @@ public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 		validateUsingStringWriter();
 	}
 
+	public void testBiophysicalFactorMode() throws Exception
+	{
+		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_BIOPHYSICAL_FACTOR_MODE, FactorModeQuestion.BIOPHYSICAL_FACTOR_CODE);
+		validateUsingStringWriter();
+	}
+
 	public void testExtraData() throws Exception
 	{
 		getProject().fillObjectUsingCommand(getProject().getViewData(DiagramView.getViewName()), ViewData.TAG_CURRENT_MODE, DiagramModeQuestion.MODE_STRATEGY_BRAINSTORM);

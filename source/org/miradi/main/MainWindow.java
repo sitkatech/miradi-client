@@ -180,10 +180,12 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		ensureFontSizeIsSet();
 		
 		humanWelfareModeHandler = new HumanWelfareTargetModeChangeHandler();
+		biophysicalFactorModeChangeHandler = new BiophysicalFactorModeChangeHandler();
 		lowMemoryHandler = new WarnLowMemoryHandler();
 		refreshWizardHandler = new RefreshWizardHandler();
 		
 		getProject().addCommandExecutedListener(humanWelfareModeHandler);
+		getProject().addCommandExecutedListener(biophysicalFactorModeChangeHandler);
 		getProject().addCommandExecutedListener(refreshWizardHandler);
 		getProject().addCommandExecutedListener(lowMemoryHandler);
 		
@@ -970,6 +972,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		{
 			closeProject();
 			getProject().removeCommandExecutedListener(humanWelfareModeHandler);
+			getProject().removeCommandExecutedListener(biophysicalFactorModeChangeHandler);
 			getProject().removeCommandExecutedListener(lowMemoryHandler);
 			getProject().removeCommandExecutedListener(refreshWizardHandler);
 			projectSaver.dispose();
@@ -1391,6 +1394,15 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		}
 	}
 	
+	private class BiophysicalFactorModeChangeHandler implements CommandExecutedListener
+	{
+		public void commandExecuted(CommandExecutedEvent event)
+		{
+			if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_BIOPHYSICAL_FACTOR_MODE))
+				updateMenuOptions();
+		}
+	}
+
 	private class RefreshWizardHandler implements CommandExecutedListener
 	{
 		public void commandExecuted(CommandExecutedEvent event)
@@ -1541,6 +1553,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	
 	private boolean hasMemoryWarningBeenShown;
 	private HumanWelfareTargetModeChangeHandler humanWelfareModeHandler;
+	private BiophysicalFactorModeChangeHandler biophysicalFactorModeChangeHandler;
 	private WarnLowMemoryHandler lowMemoryHandler;
 	private RefreshWizardHandler refreshWizardHandler;
 	private List<String> commandLineArguments;	

@@ -92,6 +92,7 @@ public class StaticQuestionManager
 		addQuestion(new CustomPlanningColumnsQuestion());
 		addQuestion(new TncProjectPlaceTypeQuestion());
 		addQuestion(new TargetModeQuestion());
+		addQuestion(new FactorModeQuestion());
 		addQuestion(new WorkPlanColumnConfigurationQuestion());
 		addQuestion(new MonthAbbreviationsQuestion());
 		addQuestion(new TncOrganizationalPrioritiesQuestion());

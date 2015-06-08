@@ -22,23 +22,7 @@ package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ProjectMetadata;
-import org.miradi.questions.BudgetTimePeriodQuestion;
-import org.miradi.questions.CountriesQuestion;
-import org.miradi.questions.CurrencyTypeQuestion;
-import org.miradi.questions.DiagramObjectDataInclusionQuestion;
-import org.miradi.questions.FiscalYearStartQuestion;
-import org.miradi.questions.FontFamiliyQuestion;
-import org.miradi.questions.FontSizeQuestion;
-import org.miradi.questions.MajorLanguagesQuestion;
-import org.miradi.questions.PlanningTreeTargetPositionQuestion;
-import org.miradi.questions.ProtectedAreaCategoryQuestion;
-import org.miradi.questions.QuarterColumnsVisibilityQuestion;
-import org.miradi.questions.TargetModeQuestion;
-import org.miradi.questions.ThreatRatingModeChoiceQuestion;
-import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
-import org.miradi.questions.TncMarineEcoRegionQuestion;
-import org.miradi.questions.TncOperatingUnitsQuestion;
-import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
+import org.miradi.questions.*;
 
 public class ProjectMetadataSchema extends BaseObjectSchema
 {
@@ -126,6 +110,7 @@ public class ProjectMetadataSchema extends BaseObjectSchema
 		createFieldSchemaRequiredChoice(ProjectMetadata.TAG_THREAT_RATING_MODE, ThreatRatingModeChoiceQuestion.class);
 		createFieldSchemaStringRefMap(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP);
 		createFieldSchemaChoice(ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE, TargetModeQuestion.class);
+		createFieldSchemaChoice(ProjectMetadata.TAG_BIOPHYSICAL_FACTOR_MODE, FactorModeQuestion.class);
 		createFieldSchemaChoice(ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION, DiagramObjectDataInclusionQuestion.class);
 		
 		createPseudoFieldSchemaString(ProjectMetadata.PSEUDO_TAG_PROJECT_FILENAME);

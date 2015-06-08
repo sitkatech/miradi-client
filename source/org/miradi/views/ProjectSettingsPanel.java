@@ -25,6 +25,7 @@ import org.miradi.main.EAM;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.FactorModeQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.TargetModeQuestion;
 import org.miradi.schemas.ProjectMetadataSchema;
@@ -35,9 +36,12 @@ public class ProjectSettingsPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, projectToUse.getMetadata().getRef());
 		
-		final ChoiceQuestion question = StaticQuestionManager.getQuestion(TargetModeQuestion.class);
-		addField(createChoiceField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE, question));
+		final ChoiceQuestion targetModeQuestion = StaticQuestionManager.getQuestion(TargetModeQuestion.class);
+		addField(createChoiceField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE, targetModeQuestion));
 		
+		final ChoiceQuestion factorModeQuestion = StaticQuestionManager.getQuestion(FactorModeQuestion.class);
+		addField(createChoiceField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_BIOPHYSICAL_FACTOR_MODE, factorModeQuestion));
+
 		updateFieldsFromProject();
 	}
 
