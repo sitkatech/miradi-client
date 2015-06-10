@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-08 09:06-0700\n"
+"POT-Creation-Date: 2015-06-10 08:36-0700\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -2096,7 +2096,7 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:198
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:93
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:85
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:57
 msgid "Activity"
 msgstr "Atividade"
 
@@ -2512,8 +2512,18 @@ msgstr "Escopo do Alvo de Biodiversidade (Verde Escuro)"
 msgid "Biodiversity Targets Only"
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewBiophysicalFactorPropertiesPanel.java:33
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:42
+msgid "Biophysical Factor"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:249
 msgid "Biophysical Factor (Lavender Blue)"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewBiophysicalResultPropertiesPanel.java:33
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:43
+msgid "Biophysical Result"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:256
@@ -2972,7 +2982,7 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:107
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ConceptualModelDiagramPanel.java:69
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:69
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:38
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:84
 msgid "Conceptual Model"
 msgstr "Modelo Conceitual"
@@ -3030,7 +3040,7 @@ msgstr "Contexto"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:101
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewContributingFactorPropertiesPanel.java:33
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:73
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:45
 msgid "Contributing Factor"
 msgstr "Fator Contribuinte"
 
@@ -3504,7 +3514,7 @@ msgid "Diagram overview"
 msgstr "Síntese do Diagrama"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:90
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:72
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:44
 msgid "Direct Threat"
 msgstr "Ameaça Direta"
 
@@ -4141,7 +4151,7 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:42
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:45
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/GoalPropertiesForm.java:32
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:77
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:49
 msgid "Goal"
 msgstr "Objetivo"
 
@@ -4222,7 +4232,7 @@ msgstr "Averiguar (ground truth) e Revisar Modelo"
 msgid "Group"
 msgstr "Grupar"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:82
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:54
 msgid "Group Box"
 msgstr "Caixa de Grupo"
 
@@ -4285,6 +4295,7 @@ msgstr "Atores Humanos"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/HumanWelfareTargetPropertiesForm.java:34
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/LegacyScopeBoxTypeQuestion.java:61
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ScopeBoxTypeQuestion.java:59
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:41
 msgid "Human Wellbeing Target"
 msgstr ""
 
@@ -4481,7 +4492,7 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:40
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:53
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/IndicatorSubForm.java:33
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:79
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:51
 msgid "Indicator"
 msgstr "Indicador"
 
@@ -4585,7 +4596,7 @@ msgstr "Avaliação Intensiva"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:311
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewIntermediateResultPropertiesPanel.java:33
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:74
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:46
 msgid "Intermediate Result"
 msgstr "Resultado Intermediário"
 
@@ -5283,7 +5294,7 @@ msgstr "Maio"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:52
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:53
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/MeasurementPropertiesForm.java:33
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:86
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:58
 msgid "Measurement"
 msgstr "Medida"
 
@@ -5390,7 +5401,7 @@ msgstr "Remover \"Tag\" de %n Item(Itens) Selecionado(s)"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:146
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:95
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:84
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:56
 msgid "Method"
 msgstr "Método"
 
@@ -5709,7 +5720,7 @@ msgstr "nov"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:42
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:46
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ObjectivePropertiesForm.java:34
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:78
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:50
 msgid "Objective"
 msgstr "Meta"
 
@@ -6131,7 +6142,7 @@ msgstr "Relatórios de Progresso"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:118
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:68
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:37
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:102
 msgid "Project"
 msgstr "Projeto"
@@ -6384,7 +6395,7 @@ msgstr "Recursos:"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ResultsChainCreatorHelper.java:196
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:70
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:39
 msgid "Results Chain"
 msgstr "Cadiea de Resultados"
 
@@ -6907,7 +6918,7 @@ msgstr "Strategies contain Objectives"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:180
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:47
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/StrategyCoreSubForm.java:34
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:76
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:48
 msgid "Strategy"
 msgstr "Estratégia"
 
@@ -6942,7 +6953,7 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:60
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:52
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:73
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:80
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:52
 msgid "Stress"
 msgstr "Estresse"
 
@@ -7988,7 +7999,7 @@ msgstr "Cor de Canela"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:53
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:364
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:71
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:40
 msgid "Target"
 msgstr "Alvo"
 
@@ -8056,7 +8067,7 @@ msgstr "Alvos dentro dos Diagramas"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:202
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:97
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:83
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:55
 msgid "Task"
 msgstr "Tarefa"
 
@@ -8117,7 +8128,7 @@ msgstr "Membros da Equipe: %1"
 msgid "Team Roles"
 msgstr "Papeis da Equipe"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:81
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:53
 msgid "Text Box"
 msgstr "Caixa de Texto"
 
@@ -8558,7 +8569,7 @@ msgid "Threat Ratings - Table"
 msgstr "Classificações de Ameaças - Tabela"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewThreatReductionResultPropertiesPanel.java:33
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:75
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:47
 msgid "Threat Reduction Result"
 msgstr "Resultado de Redução de Ameaça"
 
@@ -8626,6 +8637,14 @@ msgstr "Visibilidade de Atividades"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/audience/AudienceSubPanel.java:60
 msgid "Title|Audiences"
 msgstr "Públicos"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewBiophysicalFactorPropertiesPanel.java:39
+msgid "Title|Biophysical Factor Properties"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewBiophysicalResultPropertiesPanel.java:39
+msgid "Title|Biophysical Result Properties"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/categoryOne/BudgetCategoryOnePropertiesPanel.java:38
 msgid "Title|Budget Category One Properties"
