@@ -105,7 +105,7 @@ abstract public class AbstractObjectTableModel extends SortableTableModel
 		throw new RuntimeException("areBudgetValuesAllocated has not been implemented by ObjectTableModel");
 	}
 	
-	public ORefList getObjectHiearchy(int row, int column)
+	public ORefList getObjectHierarchy(int row, int column)
 	{
 		throw new RuntimeException("Method is currently unused and has no implementation");
 	}

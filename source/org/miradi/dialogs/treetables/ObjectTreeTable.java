@@ -114,7 +114,7 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		return "<html><b>" + typeName + "</b><br>" + XmlUtilities2.convertXmlTextToHtmlWithoutSurroundingHtmlTags(object.getFullName()) + "</html>";
 	}
 	
-	public static Font createFristLevelFont(Font defaultFontToUse)
+	public static Font createFirstLevelFont(Font defaultFontToUse)
 	{
 		Map<TextAttribute, Object> map = new HashMap<TextAttribute, Object>(defaultFontToUse.getAttributes());
 	    map.put(TextAttribute.SIZE, new Float(defaultFontToUse.getSize2D() + 2));
@@ -303,18 +303,18 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		public Reselecter(ObjectTreeTable treeTableToUse, ORefList hierarchyToSelect, int rowToSelect)
 		{
 			treeTable = treeTableToUse;
-			selectedHierachy = hierarchyToSelect;
+			selectedHierarchy = hierarchyToSelect;
 			row = rowToSelect;
 		}
 		
 		public void run()
 		{
-			treeTable.selectObject(selectedHierachy, row);
+			treeTable.selectObject(selectedHierarchy, row);
 			treeTable.ensureSelectedRowVisible();
 		}
 		
 		private ObjectTreeTable treeTable;
-		private ORefList selectedHierachy;
+		private ORefList selectedHierarchy;
 		private int row;
 	}
 
@@ -328,7 +328,7 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		return set;
 	}
 	
-	public ORefList getObjectHiearchy(int row, int column)
+	public ORefList getObjectHierarchy(int row, int column)
 	{
 		TreePath treePathForRow = getTree().getPathForRow(row);
 		

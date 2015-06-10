@@ -25,28 +25,7 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
-import org.miradi.schemas.AccountingCodeSchema;
-import org.miradi.schemas.BudgetCategoryOneSchema;
-import org.miradi.schemas.BudgetCategoryTwoSchema;
-import org.miradi.schemas.ConceptualModelDiagramSchema;
-import org.miradi.schemas.ExpenseAssignmentSchema;
-import org.miradi.schemas.FundingSourceSchema;
-import org.miradi.schemas.FutureStatusSchema;
-import org.miradi.schemas.GoalSchema;
-import org.miradi.schemas.HumanWelfareTargetSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.IntermediateResultSchema;
-import org.miradi.schemas.KeyEcologicalAttributeSchema;
-import org.miradi.schemas.MeasurementSchema;
-import org.miradi.schemas.ObjectiveSchema;
-import org.miradi.schemas.ProjectResourceSchema;
-import org.miradi.schemas.ResourceAssignmentSchema;
-import org.miradi.schemas.ResultsChainDiagramSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.SubTargetSchema;
-import org.miradi.schemas.TargetSchema;
-import org.miradi.schemas.TaskSchema;
-import org.miradi.schemas.ThreatReductionResultSchema;
+import org.miradi.schemas.*;
 
 public class TreeRebuilderNodeSorter extends NodeSorter
 {
@@ -82,8 +61,10 @@ public class TreeRebuilderNodeSorter extends NodeSorter
 			FutureStatusSchema.OBJECT_NAME,
 			GoalSchema.OBJECT_NAME,
 			SubTargetSchema.OBJECT_NAME,
+            BiophysicalFactorSchema.OBJECT_NAME,
 			Cause.OBJECT_NAME_THREAT,
 			Cause.OBJECT_NAME_CONTRIBUTING_FACTOR,
+            BiophysicalResultSchema.OBJECT_NAME,
 			ThreatReductionResultSchema.OBJECT_NAME,
 			IntermediateResultSchema.OBJECT_NAME,
 			ObjectiveSchema.OBJECT_NAME,

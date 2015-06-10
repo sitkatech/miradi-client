@@ -17,16 +17,26 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.tablerenderers;
+package org.miradi.dialogs.planning.propertiesPanel;
 
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.BaseObject;
+import org.miradi.icons.BiophysicalResultIcon;
+import org.miradi.main.EAM;
+import org.miradi.project.Project;
+import org.miradi.schemas.BiophysicalResultSchema;
 
-public interface RowColumnBaseObjectProvider
+public class PlanningViewBiophysicalResultPropertiesPanel extends MinimalFactorPropertiesPanel
 {
-	public int getRowCount();
-	public BaseObject getBaseObjectForRowColumn(int row, int column);
-	public int getProportionShares(int row);
-	public boolean areBudgetValuesAllocated(int row);
-	public ORefList getObjectHierarchy(int row, int column);
+	public PlanningViewBiophysicalResultPropertiesPanel(Project projectToUse) throws Exception
+	{
+		super(projectToUse, BiophysicalResultSchema.getObjectType());
+		
+		createAndAddFields(EAM.text("Biophysical Result"), new BiophysicalResultIcon());
+	}
+
+	@Override
+	public String getPanelDescription()
+	{
+		return EAM.text("Title|Biophysical Result Properties");
+	}
+
 }

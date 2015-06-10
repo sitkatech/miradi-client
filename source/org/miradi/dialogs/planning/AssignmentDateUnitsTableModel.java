@@ -524,7 +524,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		{
 			DateUnit dateUnit = getDateUnit(column);
 			TimePeriodCosts timePeriodCosts = getProjectTotalTimePeriodCostFor(dateUnit);
-			ORefList objectHierarchy = getRowColumnBaseObjectProvider().getObjectHiearchy(row, column);
+			ORefList objectHierarchy = getRowColumnBaseObjectProvider().getObjectHierarchy(row, column);
 			ORefSet refsToRetain = new ORefSet(objectHierarchy);
 			removeMetadataRootNodeRefInPlace(refsToRetain);
 			retainDataRelatedToAllOf(timePeriodCosts, refsToRetain);

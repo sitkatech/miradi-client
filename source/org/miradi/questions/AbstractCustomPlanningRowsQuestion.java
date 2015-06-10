@@ -24,32 +24,9 @@ import java.util.Vector;
 
 import javax.swing.Icon;
 
-import org.miradi.icons.ConceptualModelIcon;
-import org.miradi.icons.FutureStatusIcon;
-import org.miradi.icons.GoalIcon;
-import org.miradi.icons.HumanWelfareTargetIcon;
-import org.miradi.icons.IconManager;
-import org.miradi.icons.IntermediateResultIcon;
-import org.miradi.icons.MeasurementIcon;
-import org.miradi.icons.ObjectiveIcon;
-import org.miradi.icons.ResultsChainIcon;
-import org.miradi.icons.SubTargetIcon;
-import org.miradi.icons.TargetIcon;
-import org.miradi.icons.ThreatReductionResultIcon;
+import org.miradi.icons.*;
 import org.miradi.main.EAM;
-import org.miradi.schemas.ConceptualModelDiagramSchema;
-import org.miradi.schemas.FutureStatusSchema;
-import org.miradi.schemas.GoalSchema;
-import org.miradi.schemas.HumanWelfareTargetSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.IntermediateResultSchema;
-import org.miradi.schemas.MeasurementSchema;
-import org.miradi.schemas.ObjectiveSchema;
-import org.miradi.schemas.ResultsChainDiagramSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.SubTargetSchema;
-import org.miradi.schemas.TargetSchema;
-import org.miradi.schemas.ThreatReductionResultSchema;
+import org.miradi.schemas.*;
 
 abstract public class AbstractCustomPlanningRowsQuestion extends ProjectBasedDynamicQuestion
 {
@@ -67,13 +44,21 @@ abstract public class AbstractCustomPlanningRowsQuestion extends ProjectBasedDyn
 		choiceItems.add(createChoiceItem(ResultsChainDiagramSchema.getObjectType(), ResultsChainDiagramSchema.OBJECT_NAME, new ResultsChainIcon()));
 		choiceItems.add(createChoiceItem(TargetSchema.getObjectType(), TargetSchema.OBJECT_NAME, new TargetIcon()));
 		
-		if (shouldIncludeHumanWellbeignTargetRow())
+		if (shouldIncludeHumanWellbeingTargetRow())
 			choiceItems.add(createChoiceItem(HumanWelfareTargetSchema.getObjectType(), HumanWelfareTargetSchema.OBJECT_NAME, new HumanWelfareTargetIcon()));
 		
 		choiceItems.add(createChoiceItem(SubTargetSchema.getObjectType(), SubTargetSchema.OBJECT_NAME, new SubTargetIcon()));
 		choiceItems.add(createChoiceItem(GoalSchema.getObjectType(), GoalSchema.OBJECT_NAME, new GoalIcon()));
 		choiceItems.add(createChoiceItem(ObjectiveSchema.getObjectType(), ObjectiveSchema.OBJECT_NAME, new ObjectiveIcon()));
+
+        if (shouldIncludeBiophysicalFactorRow())
+		    choiceItems.add(createChoiceItem(BiophysicalFactorSchema.getObjectType(), BiophysicalFactorSchema.OBJECT_NAME, new BiophysicalFactorIcon()));
+
 		choiceItems.addAll(createCauseChoiceItems());
+
+        if (shouldIncludeBiophysicalFactorRow())
+		    choiceItems.add(createChoiceItem(BiophysicalResultSchema.getObjectType(), BiophysicalResultSchema.OBJECT_NAME, new BiophysicalResultIcon()));
+
 		choiceItems.add(createChoiceItem(ThreatReductionResultSchema.getObjectType(), ThreatReductionResultSchema.OBJECT_NAME, new ThreatReductionResultIcon()));
 		choiceItems.add(createChoiceItem(IntermediateResultSchema.getObjectType(), IntermediateResultSchema.OBJECT_NAME, new IntermediateResultIcon()));
 		choiceItems.add(createChoiceItem(StrategySchema.getObjectType(), StrategySchema.OBJECT_NAME, IconManager.getStrategyIcon()));
@@ -90,8 +75,10 @@ abstract public class AbstractCustomPlanningRowsQuestion extends ProjectBasedDyn
 		return new ChoiceItem(objectName, EAM.fieldLabel(objectType, objectName), iconToUse);
 	}
 	
-	abstract protected boolean shouldIncludeHumanWellbeignTargetRow();
-	
+	abstract protected boolean shouldIncludeHumanWellbeingTargetRow();
+
+	abstract protected boolean shouldIncludeBiophysicalFactorRow();
+
 	abstract protected Vector<ChoiceItem> createCauseChoiceItems();
 	
 	abstract protected Vector<ChoiceItem> createTaskChoiceItems();

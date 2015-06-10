@@ -28,35 +28,7 @@ import javax.swing.JTree;
 import javax.swing.tree.TreeCellRenderer;
 
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
-import org.miradi.icons.AccountingCodeIcon;
-import org.miradi.icons.ActivityIcon;
-import org.miradi.icons.AssignmentIcon;
-import org.miradi.icons.BudgetCategoryOneIcon;
-import org.miradi.icons.BudgetCategoryTwoIcon;
-import org.miradi.icons.ConceptualModelIcon;
-import org.miradi.icons.ContributingFactorIcon;
-import org.miradi.icons.DirectThreatIcon;
-import org.miradi.icons.ExpenseAssignmentIcon;
-import org.miradi.icons.FundingSourceIcon;
-import org.miradi.icons.FutureStatusIcon;
-import org.miradi.icons.GoalIcon;
-import org.miradi.icons.GroupBoxIcon;
-import org.miradi.icons.HumanWelfareTargetIcon;
-import org.miradi.icons.IconManager;
-import org.miradi.icons.IntermediateResultIcon;
-import org.miradi.icons.KeyEcologicalAttributeIcon;
-import org.miradi.icons.MeasurementIcon;
-import org.miradi.icons.MethodIcon;
-import org.miradi.icons.ObjectiveIcon;
-import org.miradi.icons.ProjectResourceIcon;
-import org.miradi.icons.ResultsChainIcon;
-import org.miradi.icons.ScopeBoxIcon;
-import org.miradi.icons.StressIcon;
-import org.miradi.icons.SubTargetIcon;
-import org.miradi.icons.TargetIcon;
-import org.miradi.icons.TaskIcon;
-import org.miradi.icons.TextBoxIcon;
-import org.miradi.icons.ThreatReductionResultIcon;
+import org.miradi.icons.*;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AccountingCode;
@@ -92,6 +64,12 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		
 		humanWelfareTargetRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(humanWelfareTargetRenderer, new HumanWelfareTargetIcon(), getBoldFont());
+
+		biophysicalFactorRenderer = createRenderer(treeTableToUse);
+		setRendererDefaults(biophysicalFactorRenderer, new BiophysicalFactorIcon(), getPlainFont());
+
+		biophysicalResultRenderer = createRenderer(treeTableToUse);
+		setRendererDefaults(biophysicalResultRenderer, new BiophysicalResultIcon(), getPlainFont());
 
 		directThreatRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(directThreatRenderer, new DirectThreatIcon(), getPlainFont());
@@ -142,7 +120,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		setRendererDefaults(resultsChainRenderer, new ResultsChainIcon(), getBoldFont());
 
 		stringNoIconRenderer = createRenderer(treeTableToUse);
-		setRendererDefaults(stringNoIconRenderer, null, ObjectTreeTable.createFristLevelFont(getPlainFont()));
+		setRendererDefaults(stringNoIconRenderer, null, ObjectTreeTable.createFirstLevelFont(getPlainFont()));
 		
 		defaultRenderer = createRenderer(treeTableToUse);
 		defaultRenderer.setFont(getPlainFont());
@@ -213,6 +191,10 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 			renderer = targetRenderer;
 		else if (node.getType() == ObjectType.HUMAN_WELFARE_TARGET)
 			renderer = humanWelfareTargetRenderer;
+		else if (node.getType() == ObjectType.BIOPHYSICAL_FACTOR)
+			renderer = biophysicalFactorRenderer;
+		else if (node.getType() == ObjectType.BIOPHYSICAL_RESULT)
+			renderer = biophysicalResultRenderer;
 		else if(node.getType() == ObjectType.CAUSE)
 			renderer = getCauseRenderer((Cause)node.getObject());
 		else if(node.getType() == ObjectType.THREAT_REDUCTION_RESULT)
@@ -270,10 +252,10 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 	{
 		if (cause.isDirectThreat())
 			return directThreatRenderer;
-		
+
 		return contributingFactorRenderer;
 	}
-	
+
 	private TreeCellRenderer getTaskRenderer(Task task, int proportionShares)
 	{
 		if(task.isActivity())
@@ -336,6 +318,8 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 	private	VariableHeightTreeCellRenderer textBoxRenderer;
 	private	VariableHeightTreeCellRenderer groupBoxRenderer;
 	private VariableHeightTreeCellRenderer contributingFactorRenderer;
+	private VariableHeightTreeCellRenderer biophysicalFactorRenderer;
+	private VariableHeightTreeCellRenderer biophysicalResultRenderer;
 	private VariableHeightTreeCellRenderer assignmentRenderer;
 	private VariableHeightTreeCellRenderer expenseAssignmentRenderer;
 	private VariableHeightTreeCellRenderer projectResourceRenderer;

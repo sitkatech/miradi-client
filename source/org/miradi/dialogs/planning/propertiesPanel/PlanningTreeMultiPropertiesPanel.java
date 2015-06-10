@@ -44,30 +44,8 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.AccountingCode;
-import org.miradi.objects.BudgetCategoryOne;
-import org.miradi.objects.BudgetCategoryTwo;
-import org.miradi.objects.Cause;
-import org.miradi.objects.ConceptualModelDiagram;
-import org.miradi.objects.FundingSource;
-import org.miradi.objects.FutureStatus;
-import org.miradi.objects.HumanWelfareTarget;
-import org.miradi.objects.ProjectResource;
-import org.miradi.objects.ResultsChainDiagram;
-import org.miradi.objects.SubTarget;
-import org.miradi.objects.Target;
-import org.miradi.objects.Task;
-import org.miradi.schemas.CauseSchema;
-import org.miradi.schemas.GoalSchema;
-import org.miradi.schemas.HumanWelfareTargetSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.IntermediateResultSchema;
-import org.miradi.schemas.MeasurementSchema;
-import org.miradi.schemas.ObjectiveSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.TargetSchema;
-import org.miradi.schemas.TaskSchema;
-import org.miradi.schemas.ThreatReductionResultSchema;
+import org.miradi.objects.*;
+import org.miradi.schemas.*;
 
 public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPanel
 {
@@ -101,14 +79,14 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 	}
 
 	@Override
-	protected AbstractObjectDataInputPanel findPanel(ORef[] orefsToUse)
+	protected AbstractObjectDataInputPanel findPanel(ORef[] oRefsToUse)
 	{
-		if(orefsToUse.length == 0)
+		if(oRefsToUse.length == 0)
 			return blankPropertiesPanel;
 		
 		try
 		{
-			ORef firstRef = orefsToUse[DEEPEST_INDEX];
+			ORef firstRef = oRefsToUse[DEEPEST_INDEX];
 			int objectType = firstRef.getObjectType();
 			if (GoalSchema.getObjectType() == objectType)
 				return getGoalPropertiesPanel();
@@ -132,7 +110,7 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 				return getMeasurementPropertiesPanel();
 			
 			if(FutureStatus.is(objectType))
-				return getFutureStatusForViabilityMode(new ORefList(orefsToUse));
+				return getFutureStatusForViabilityMode(new ORefList(oRefsToUse));
 			
 			if (TargetSchema.getObjectType() == objectType)
 				return getBiodiversityTargetPropertiesPanel();
@@ -140,9 +118,15 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 			if (HumanWelfareTarget.is(objectType))
 				return getHumanWelfareTargetPropertiesPanel();
 			
+			if (BiophysicalFactorSchema.getObjectType() == objectType)
+				return getBiophysicalFactorPropertiesPanel();
+			
+			if (BiophysicalResultSchema.getObjectType() == objectType)
+				return getBiophysicalResultPropertiesPanel();
+
 			if (CauseSchema.getObjectType() == objectType)
 				return getCausePropertiesPanel(firstRef);
-			
+
 			if (IntermediateResultSchema.getObjectType() == objectType)
 				return getIntermediateResultPropertiesPanel();
 			
@@ -372,12 +356,32 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 		return subTargetPropertiesPanel;
 	}
 
+	private MinimalFactorPropertiesPanel getBiophysicalFactorPropertiesPanel() throws Exception
+	{
+        if(biophysicalFactorPropertiesPanel == null)
+        {
+            biophysicalFactorPropertiesPanel = new PlanningViewBiophysicalFactorPropertiesPanel(getProject());
+            addPanel(biophysicalFactorPropertiesPanel);
+        }
+        return biophysicalFactorPropertiesPanel;
+	}
+
+	private MinimalFactorPropertiesPanel getBiophysicalResultPropertiesPanel() throws Exception
+	{
+        if(biophysicalResultPropertiesPanel == null)
+        {
+            biophysicalResultPropertiesPanel = new PlanningViewBiophysicalResultPropertiesPanel(getProject());
+            addPanel(biophysicalResultPropertiesPanel);
+        }
+        return biophysicalResultPropertiesPanel;
+	}
+
 	private MinimalFactorPropertiesPanel getCausePropertiesPanel(ORef causeRef) throws Exception
 	{
 		Cause cause = Cause.find(getProject(), causeRef);
 		if (cause.isDirectThreat())
 			return getThreatPropertiesPanel();
-		
+
 		return getContributingFactorPropertiesPanel();
 	}
 
@@ -426,6 +430,8 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 	private PlanningViewThreatReductionResultPropertiesPanel threatReductionResultPropertiesPanel;
 	private PlanningViewDirectThreatPropertiesPanel threatPropertiesPanel;
 	private PlanningViewContributingFactorPropertiesPanel contributingFactorPropertiesPanel;
+    private PlanningViewBiophysicalFactorPropertiesPanel biophysicalFactorPropertiesPanel;
+    private PlanningViewBiophysicalResultPropertiesPanel biophysicalResultPropertiesPanel;
 	private MeasurementPropertiesPanel measurementPropertiesPanel;
 	private ResultsChainPropertiesPanel resultsChainPropertiesPanel;
 	private ConceptualModelPropertiesPanel conceptualModelPropertiesPanel;

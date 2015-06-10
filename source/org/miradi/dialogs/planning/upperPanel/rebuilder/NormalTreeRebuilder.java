@@ -323,6 +323,12 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		if (factor.isContributingFactor())
 			return true;
 		
+		if (factor.isBiophysicalFactor())
+			return true;
+
+		if (factor.isBiophysicalResult())
+			return true;
+
 		if (factor.isThreatReductionResult())
 			return true;
 		

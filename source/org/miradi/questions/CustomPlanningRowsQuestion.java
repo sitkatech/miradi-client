@@ -41,9 +41,15 @@ public class CustomPlanningRowsQuestion extends AbstractCustomPlanningRowsQuesti
 	}
 
 	@Override
-	protected boolean shouldIncludeHumanWellbeignTargetRow()
+	protected boolean shouldIncludeHumanWellbeingTargetRow()
 	{
 		return getProject().getMetadata().isHumanWelfareTargetMode();
+	}
+
+	@Override
+	protected boolean shouldIncludeBiophysicalFactorRow()
+	{
+		return getProject().getMetadata().isBiophysicalFactorMode();
 	}
 
 	private Project getProject()

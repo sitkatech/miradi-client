@@ -39,11 +39,17 @@ import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 public class CustomPlanningAllRowsQuestion extends AbstractCustomPlanningRowsQuestion
 {
 	@Override
-	protected boolean shouldIncludeHumanWellbeignTargetRow()
+	protected boolean shouldIncludeHumanWellbeingTargetRow()
 	{
 		return true;
 	}
-	
+
+	@Override
+	protected boolean shouldIncludeBiophysicalFactorRow()
+	{
+		return true;
+	}
+
 	@Override
 	protected Vector<ChoiceItem> createCauseChoiceItems()
 	{
