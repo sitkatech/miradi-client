@@ -19,41 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
-import org.miradi.icons.ActivityIcon;
-import org.miradi.icons.ConceptualModelIcon;
-import org.miradi.icons.ContributingFactorIcon;
-import org.miradi.icons.DirectThreatIcon;
-import org.miradi.icons.GoalIcon;
-import org.miradi.icons.GroupBoxIcon;
-import org.miradi.icons.IconManager;
-import org.miradi.icons.IntermediateResultIcon;
-import org.miradi.icons.MeasurementIcon;
-import org.miradi.icons.MethodIcon;
-import org.miradi.icons.MiradiApplicationIcon;
-import org.miradi.icons.ObjectiveIcon;
-import org.miradi.icons.ResultsChainIcon;
-import org.miradi.icons.StressIcon;
-import org.miradi.icons.TargetIcon;
-import org.miradi.icons.TaskIcon;
-import org.miradi.icons.TextBoxIcon;
-import org.miradi.icons.ThreatReductionResultIcon;
+import org.miradi.icons.*;
 import org.miradi.main.EAM;
 import org.miradi.objects.Cause;
-import org.miradi.schemas.ConceptualModelDiagramSchema;
-import org.miradi.schemas.GoalSchema;
-import org.miradi.schemas.GroupBoxSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.IntermediateResultSchema;
-import org.miradi.schemas.MeasurementSchema;
-import org.miradi.schemas.ObjectiveSchema;
-import org.miradi.schemas.ProjectMetadataSchema;
-import org.miradi.schemas.ResultsChainDiagramSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.StressSchema;
-import org.miradi.schemas.TargetSchema;
-import org.miradi.schemas.TaskSchema;
-import org.miradi.schemas.TextBoxSchema;
-import org.miradi.schemas.ThreatReductionResultSchema;
+import org.miradi.schemas.*;
 
 public class RtfLegendObjectsQuestion extends MultipleSelectStaticChoiceQuestion
 {
@@ -69,6 +38,9 @@ public class RtfLegendObjectsQuestion extends MultipleSelectStaticChoiceQuestion
 				new ChoiceItem(ConceptualModelDiagramSchema.OBJECT_NAME, EAM.text("Conceptual Model"), new ConceptualModelIcon()),
 				new ChoiceItem(ResultsChainDiagramSchema.OBJECT_NAME, EAM.text("Results Chain"), new ResultsChainIcon()),
 				new ChoiceItem(TargetSchema.OBJECT_NAME, EAM.text("Target"), new TargetIcon()),
+				new ChoiceItem(HumanWelfareTargetSchema.OBJECT_NAME, EAM.text("Human Wellbeing Target"), new HumanWelfareTargetIcon()),
+				new ChoiceItem(BiophysicalFactorSchema.OBJECT_NAME, EAM.text("Biophysical Factor"), new BiophysicalFactorIcon()),
+				new ChoiceItem(BiophysicalResultSchema.OBJECT_NAME, EAM.text("Biophysical Result"), new BiophysicalResultIcon()),
 				new ChoiceItem(Cause.OBJECT_NAME_THREAT, EAM.text("Direct Threat"), new DirectThreatIcon()),
 				new ChoiceItem(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, EAM.text("Contributing Factor"), new ContributingFactorIcon()),
 				new ChoiceItem(IntermediateResultSchema.OBJECT_NAME, EAM.text("Intermediate Result"), new IntermediateResultIcon()),
