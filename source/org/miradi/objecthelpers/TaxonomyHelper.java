@@ -86,6 +86,9 @@ public class TaxonomyHelper implements Xmpz2XmlConstants
 		if (HumanWelfareTarget.is(objectType))
 			return HUMAN_WELLBEING_TARGET_TAXONOMY_ASSOCIATION_POOL;
 		
+		if (BiophysicalFactor.is(objectType))
+			return BIOPHYSICAL_FACTOR_TAXONOMY_ASSOCIATION_POOL;
+
 		if (Strategy.is(objectType))
 			return STRATEGY_TAXONOMY_ASSOCIATION_POOL;
 		

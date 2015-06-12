@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Wed Jun 10 12:42:47 BST 2015 $
+# $LastChangedDate: Fri Jun 12 08:15:05 BST 2015 $
 # $LastChangedRevision: 234 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/234'
 start = ConservationProject.element
@@ -63,6 +63,7 @@ ConservationProject.element = element miradi:ConservationProject
   MiradiShareProjectDataTaxonomyAssociationPool.element? &
   BiodiversityTargetTaxonomyAssociationPool.element? &
   HumanWellbeingTargetTaxonomyAssociationPool.element? &
+  BiophysicalFactorTaxonomyAssociationPool.element? &
   ContributingFactorTaxonomyAssociationPool.element? &
   DirectThreatTaxonomyAssociationPool.element? &
   StrategyTaxonomyAssociationPool.element? &
@@ -1102,6 +1103,7 @@ ExpensesDay.element = element miradi:ExpensesDay
 MiradiShareProjectDataTaxonomyAssociationPool.element = element miradi:MiradiShareProjectDataTaxonomyAssociationPool { TaxonomyAssociation.element* }
 BiodiversityTargetTaxonomyAssociationPool.element = element miradi:BiodiversityTargetTaxonomyAssociationPool { TaxonomyAssociation.element* }
 HumanWellbeingTargetTaxonomyAssociationPool.element = element miradi:HumanWellbeingTargetTaxonomyAssociationPool { TaxonomyAssociation.element* }
+BiophysicalFactorTaxonomyAssociationPool.element = element miradi:BiophysicalFactorTaxonomyAssociationPool { TaxonomyAssociation.element* }
 ContributingFactorTaxonomyAssociationPool.element = element miradi:ContributingFactorTaxonomyAssociationPool { TaxonomyAssociation.element* }
 DirectThreatTaxonomyAssociationPool.element = element miradi:DirectThreatTaxonomyAssociationPool { TaxonomyAssociation.element* }
 StrategyTaxonomyAssociationPool.element = element miradi:StrategyTaxonomyAssociationPool { TaxonomyAssociation.element* }

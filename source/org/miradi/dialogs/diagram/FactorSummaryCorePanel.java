@@ -45,12 +45,7 @@ import org.miradi.questions.StrategyImpactQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.StrategyStatusQuestion;
 import org.miradi.questions.ThreatClassificationQuestion;
-import org.miradi.schemas.CauseSchema;
-import org.miradi.schemas.DiagramFactorSchema;
-import org.miradi.schemas.HumanWelfareTargetSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.TargetSchema;
-import org.miradi.schemas.ThreatReductionResultSchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.ObjectsActionButton;
 
 public class FactorSummaryCorePanel extends ObjectDataInputPanel
@@ -75,6 +70,10 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		ObjectDataInputField styleField = createChoiceField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion());
 		addFieldsOnOneLine(EAM.text("Font"), new ObjectDataInputField[]{fontField, colorField, styleField});
 		
+		if (factorToEdit.isBiophysicalFactor())
+		{
+			addField(createTaxonomyFields(BiophysicalFactorSchema.getObjectType()));
+		}
 		if (factorToEdit.isCause())
 		{
 			addField(createCheckBoxField(CauseSchema.getObjectType(), Cause.TAG_IS_DIRECT_THREAT, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE));

@@ -68,6 +68,8 @@ public class MigrationTo17 extends AbstractSingleTypeMigration
 				migrationResult.merge(thisMigrationResult);
 		}
 
+		// TODO: MRD-5916 - need to look at MigrationTo7 to do similar for BiophysicalFactor taxonomy info
+
 		getRawProject().deletePoolWithData(ObjectType.BIOPHYSICAL_FACTOR);
 		getRawProject().deletePoolWithData(ObjectType.BIOPHYSICAL_RESULT);
 

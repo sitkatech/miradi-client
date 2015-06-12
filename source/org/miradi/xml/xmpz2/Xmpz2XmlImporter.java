@@ -411,7 +411,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	{
 		String nodeName = typedIdNode.getNodeName();
 		String objectTypeNameWithNamespace = removeAppendedId(nodeName);
-		String objectTypeName = removeNamepsacePrefix(objectTypeNameWithNamespace);
+		String objectTypeName = removeNamespacePrefix(objectTypeNameWithNamespace);
 		if (elementNameToTypeMap.containsKey(objectTypeName))
 			return elementNameToTypeMap.get(objectTypeName);
 		
@@ -445,7 +445,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		return elementNameToType;
 	}
 	
-	private String removeNamepsacePrefix(String objectTypeNameWithNamespace)
+	private String removeNamespacePrefix(String objectTypeNameWithNamespace)
 	{
 		int indexOfPrefix = objectTypeNameWithNamespace.indexOf(":");
 		return objectTypeNameWithNamespace.substring(indexOfPrefix + 1, objectTypeNameWithNamespace.length());
@@ -668,8 +668,8 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		for (int index = 0; index < taxonomyClassificationNodeList.getLength(); ++index)
 		{
 			Node taxonomyClassificationNode = taxonomyClassificationNodeList.item(index);
-			Node taxononomyClassificationTaxonomyCodeNode = getNamedChildNode(taxonomyClassificationNode, TAXONOMY_CLASSIFICATION_TAXONOMY_CODE);
-			final String taxonomyCode = taxononomyClassificationTaxonomyCodeNode.getTextContent();
+			Node taxonomyClassificationTaxonomyCodeNode = getNamedChildNode(taxonomyClassificationNode, TAXONOMY_CLASSIFICATION_TAXONOMY_CODE);
+			final String taxonomyCode = taxonomyClassificationTaxonomyCodeNode.getTextContent();
 			String containerElementName = Xmpz2XmlWriter.createContainerElementName(TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODE);
 			final CodeList taxonomyElementCodes = getCodeList(taxonomyClassificationNode, containerElementName);
 			taxonomyClassificationsList.putCodeList(taxonomyCode, taxonomyElementCodes);
