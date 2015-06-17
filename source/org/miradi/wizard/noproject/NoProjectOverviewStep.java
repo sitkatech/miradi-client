@@ -92,7 +92,7 @@ public class NoProjectOverviewStep extends NoProjectWizardStep
 
 		private Component createImportButtonRow()
 		{
-			return createButtonRow(ActionJumpWelcomeImportStep.class, EAM.text("an exported Miradi file (.Miradi, .xmpz2, .mpz or .cpmz)"));
+			return createButtonRow(ActionJumpWelcomeImportStep.class, EAM.text("an exported Miradi file (.Miradi, .xmpz2, or .mpz)"));
 		}
 
 		private Component createButtonRow(Class jumpActionClass, String description)

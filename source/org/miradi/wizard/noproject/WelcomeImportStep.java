@@ -27,7 +27,6 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import org.martus.swing.HyperlinkHandler;
-import org.miradi.actions.ActionImportCpmz;
 import org.miradi.actions.ActionImportMpf;
 import org.miradi.actions.ActionImportMpz;
 import org.miradi.actions.ActionImportXmpz2;
@@ -72,10 +71,10 @@ public class WelcomeImportStep extends NoProjectWizardStep
 			String intro = EAM.text(
 						"<div class='WizardText'>" +
 						"Miradi is able to import three different kinds of project files.<BR>" +
-						"Miradi files are new project files <BR>" +
+						"Miradi files are new project files. <BR>" +
 						"MPZ files are <a href='Definition:ImportZip' class='definition'>Miradi Project Zip</a> files that were created by exporting a project from within Miradi. <BR>" +
-						"CPMZ files are used to import and export project data from ConPro, The Nature Conservancy's online project database.<BR><BR>" + 
-						"To import a Miradi, XMPZ2, MPZ, or CPMZ file, click the button for the appropriate file type, select the file in the dialog that pops up and then click <strong>import</strong>."
+						"XMPZ2 files are files that were created by exporting a project from within Miradi, with the intention to manage them via Miradi Share.<BR><BR>" +
+						"To import a Miradi, XMPZ2, or MPZ file, click the button for the appropriate file type, select the file in the dialog that pops up and then click <strong>import</strong>."
 			);
 
 			add(new FlexibleWidthHtmlViewer(getMainWindow(), hyperlinkHandler, intro));
@@ -96,12 +95,7 @@ public class WelcomeImportStep extends NoProjectWizardStep
 					"<td></td>" + 
 					"<td><input type='submit' name='" + CONTROL_IMPORT_MPZ + "' value='Old Miradi Project (.mpz)'></input></td>" +
 					"</tr>" + 					
-					
-					"<tr>" +
-					"<td></td>" + 
-					"<td><input type='submit' name='" + CONTROL_IMPORT_CPMZ + "' value='ConPro/Miradi Exchange File (.cpmz)'></input></td>" +
-					"</tr>" +
-					"</table></p><br>") ; 
+					"</table></p><br>") ;
 
 			add(new FlexibleWidthHtmlViewer(getMainWindow(), hyperlinkHandler, buttonsText));
 		}
@@ -143,12 +137,7 @@ public class WelcomeImportStep extends NoProjectWizardStep
 				MiradiAction action = getMainWindow().getActions().get(ActionImportMpz.class);
 				action.doAction();
 			}
-			if (buttonName.equals(CONTROL_IMPORT_CPMZ))
-			{
-				MiradiAction action = getMainWindow().getActions().get(ActionImportCpmz.class);
-				action.doAction();
-			}
-			else 
+			else
 			{
 				super.buttonPressed(buttonName);
 			}
@@ -162,6 +151,5 @@ public class WelcomeImportStep extends NoProjectWizardStep
 
 	public static final String CONTROL_IMPORT_MIRADI = "ImportMiradiProject";
 	public static final String CONTROL_IMPORT_XMPZ2 = "ImportXmpz2";
-	public static final String CONTROL_IMPORT_CPMZ = "ImportCpmz";
 	public static final String CONTROL_IMPORT_MPZ = "ImportMpz";
 }
