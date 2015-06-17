@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Fri Jun 12 08:15:05 BST 2015 $
+# $LastChangedDate: Wed Jun 17 09:52:06 BST 2015 $
 # $LastChangedRevision: 234 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/234'
 start = ConservationProject.element
@@ -753,11 +753,11 @@ BiophysicalFactor.element = element miradi:BiophysicalFactor
 {
   attribute Id {xsd:integer} &
   element miradi:BiophysicalFactorComments { formatted_text }? &
+  element miradi:BiophysicalFactorDetails { formatted_text }? &
+  element miradi:BiophysicalFactorIdentifier { text }? &
   element miradi:BiophysicalFactorIndicatorIds { IndicatorId.element* }? &
-  element miradi:BiophysicalFactorLabel { formatted_text }? &
+  element miradi:BiophysicalFactorName { formatted_text }? &
   element miradi:BiophysicalFactorObjectiveIds { ObjectiveId.element* }? &
-  element miradi:BiophysicalFactorShortLabel { text }? &
-  element miradi:BiophysicalFactorText { formatted_text }? &
   TaxonomyClassificationContainer.element?
 }
 
@@ -766,11 +766,11 @@ BiophysicalResult.element = element miradi:BiophysicalResult
 {
   attribute Id {xsd:integer} &
   element miradi:BiophysicalResultComments { formatted_text }? &
+  element miradi:BiophysicalResultDetails { formatted_text }? &
+  element miradi:BiophysicalResultIdentifier { text }? &
   element miradi:BiophysicalResultIndicatorIds { IndicatorId.element* }? &
-  element miradi:BiophysicalResultLabel { formatted_text }? &
-  element miradi:BiophysicalResultObjectiveIds { ObjectiveId.element* }? &
-  element miradi:BiophysicalResultShortLabel { text }? &
-  element miradi:BiophysicalResultText { formatted_text }?
+  element miradi:BiophysicalResultName { formatted_text }? &
+  element miradi:BiophysicalResultObjectiveIds { ObjectiveId.element* }?
 }
 
 SimpleThreatRatingPool.element = element miradi:SimpleThreatRatingPool { SimpleThreatRating.element* }

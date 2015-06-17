@@ -102,6 +102,8 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(StrategySchema.OBJECT_NAME, createStrategyMap());
 		map.put(BIODIVERSITY_TARGET, createTargetMap());
 		map.put(HUMAN_WELFARE_TARGET, createAbstractTargetMap());
+		map.put(BIOPHYSICAL_FACTOR, createFactorMap());
+		map.put(BIOPHYSICAL_RESULTS, createFactorMap());
 		map.put(INTERMEDIATE_RESULTS, createFactorMap());
 		map.put(RESULTS_CHAIN, createDiagramObjectMap());
 		map.put(THREAT_REDUCTION_RESULTS, createThreatReductionResultsMap());
