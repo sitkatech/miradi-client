@@ -112,8 +112,6 @@ import org.miradi.utils.ThreatStressRatingHelper;
 import org.miradi.utils.Translation;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.views.diagram.LinkCreator;
-import org.miradi.xml.conpro.ConProMiradiXml;
-
 
 
 public class ProjectForTesting extends ProjectWithHelpers
@@ -169,7 +167,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, createSampleFreshwaterEcoregionsCodeList().toString());
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, createSampleMarineEcoregionsCodeList().toString());
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, createSampleTerrestrialEcoregionsCodeList().toString());
-		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, createConproXenodata());
+		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, createSampleXenodata());
 	}
 
 	public ORef getTncProjectDataRef()
@@ -436,35 +434,18 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return resultsChainRef;
 	}
 	
-	private String createConproXenodata() throws Exception
-	{
-		ORef xenodataRef1 = createAndPopulateXenodata("1").getRef();
-		ORef xenodataRef2 = createAndPopulateXenodata("2").getRef();
-		StringRefMap refMap = new StringRefMap();
-		refMap.add(ConProMiradiXml.CONPRO_CONTEXT, xenodataRef1);
-		refMap.add("RandomKey", xenodataRef2);
-		
-		return refMap.toJsonString();
-	}
-	
-	public String createConproXenodata(String externalAppCope, String xenoDataProjectId) throws Exception
+	public String createXenodata(String externalAppCode, String xenoDataProjectId) throws Exception
 	{
 		ORef xenodataRef = createAndPopulateXenodata(xenoDataProjectId).getRef();
 		StringRefMap refMap = new StringRefMap();
-		refMap.add(externalAppCope, xenodataRef);
+		refMap.add(externalAppCode, xenodataRef);
 		
 		return refMap.toJsonString();
 	}
-	
-	public void createConproXenodataReferredToByMetadata(final String conproProjectId) throws Exception
+
+	public String createSampleXenodata() throws Exception
 	{
-		if (getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP).length() > 0)
-			throw new RuntimeException("Project metadata xenodata field has data, cannot override");
-		
-		Xenodata xenodata = createAndPopulateXenodata(conproProjectId);
-		StringRefMap refMap = new StringRefMap();
-		refMap.add(ConProMiradiXml.CONPRO_CONTEXT, xenodata.getRef());
-		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, refMap.toJsonString());
+		return createXenodata("randomCode", "randomProjectId");
 	}
 
 	public ProjectResource createAndPopulateProjectResource() throws Exception
@@ -1852,9 +1833,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 		}
 		if (field.isStringRefMapData())
 		{
-			return createConproXenodata();
+			return createSampleXenodata();
 		}
-		
+
 		throw new Exception("no sample data for: " + field.getClass().getSimpleName());
 	}
 

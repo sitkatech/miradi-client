@@ -32,13 +32,11 @@ import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.ZipEntryInputStreamWithSeek;
 import org.miradi.dialogs.base.ProgressDialog;
 import org.miradi.exceptions.CorruptSimpleThreatRatingDataException;
-import org.miradi.exceptions.CpmzVersionTooOldException;
 import org.miradi.exceptions.FutureSchemaVersionException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.exceptions.UserCanceledException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.exceptions.XmpzVersionTooOldException;
-import org.miradi.files.AbstractMpfFileFilter;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
@@ -93,12 +91,6 @@ public abstract class AbstractProjectImporter
 		catch (UnsupportedNewVersionSchemaException e)
 		{
 			logTooNewVersionException(e);
-		}
-		catch (CpmzVersionTooOldException e)
-		{
-			EAM.logException(e);
-			EAM.errorDialog(EAM.text("This project cannot be imported because it is in an old data format. \n" +
-									 "Please re-export a new copy from ConPro, and import that instead."));
 		}
 		catch (XmpzVersionTooOldException e)
 		{

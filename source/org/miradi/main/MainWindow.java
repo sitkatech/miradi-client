@@ -1518,8 +1518,6 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	private static final String APP_PREFERENCES_FILENAME = "settings";
 	private static final int TOOLTIP_DELAY_MILLIS = 1000;
 	
-	public static final String DISABLED_CONPRO_IMPORT_EXPORT_MESSAGE = EAM.text("<HTML>Data exchange between Miradi and ConPro is not available in this version of Miradi. <BR> It is currently being tested, and should be available in the next version of Miradi. <BR>If you have questions, contact support@miradi.org.</HTML>");
-
 	private Actions actions;
 	private AppPreferences preferences;
 	private Project project;

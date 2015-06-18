@@ -31,8 +31,6 @@ import org.miradi.utils.FileUtilities;
 import org.miradi.utils.MiradiZipFile;
 import org.miradi.utils.Xmpz2FileFilter;
 import org.miradi.views.umbrella.AbstractProjectImporter;
-import org.miradi.views.umbrella.CpmzProjectImporter;
-import org.miradi.views.umbrella.ExportCpmzDoer;
 import org.miradi.views.umbrella.MpzProjectImporter;
 import org.miradi.views.umbrella.XmlExporterDoer;
 import org.miradi.views.umbrella.Xmpz2ProjectImporter;
@@ -200,9 +198,6 @@ public class CommandLineProjectFileImporterHelper
 			MiradiZipFile zipFile = new MiradiZipFile(projectFile);
 			if (isXmpz2(projectFile))
 				return new Xmpz2ProjectImporter(getMainWindow());
-			
-			if (CpmzProjectImporter.zipContainsMpfProject(zipFile) || CpmzProjectImporter.containsEntry(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME))
-				return new CpmzProjectImporter(getMainWindow());
 			
 			if (isMpz(zipFile))
 				return new MpzProjectImporter(getMainWindow());

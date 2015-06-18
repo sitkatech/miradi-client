@@ -26,18 +26,9 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.ProjectFocusQuestion;
-import org.miradi.questions.ProjectScaleQuestion;
-import org.miradi.questions.ProjectSharingQuestion;
-import org.miradi.questions.StaticQuestionManager;
-import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
-import org.miradi.questions.TncMarineEcoRegionQuestion;
-import org.miradi.questions.TncOperatingUnitsQuestion;
-import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
+import org.miradi.questions.*;
 import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.schemas.TncProjectDataSchema;
-import org.miradi.xml.conpro.ConProMiradiXml;
 
 public class TncProjectSummarySubPanel extends ObjectDataInputPanel
 {
@@ -46,7 +37,7 @@ public class TncProjectSummarySubPanel extends ObjectDataInputPanel
 		super(projectToUse, refs);
 		
 		addField(createReadonlyTextField(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE));
-		addFieldWithCustomLabel(createSingleStringToRefField(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, ConProMiradiXml.CONPRO_CONTEXT), EAM.text("ConPro Project Number"));		
+		addFieldWithCustomLabel(createSingleStringToRefField(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, CONPRO_CONTEXT), EAM.text("ConPro Project Number"));
 		addField(createStringField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS));
 		addField(createRadioButtonEditorField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_FOCUS, StaticQuestionManager.getQuestion(ProjectFocusQuestion.class)));
 		addField(createRadioButtonEditorField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_SCALE, StaticQuestionManager.getQuestion(ProjectScaleQuestion.class)));
@@ -71,4 +62,5 @@ public class TncProjectSummarySubPanel extends ObjectDataInputPanel
 	}
 	
 	public static final String PANEL_DESCRIPTION = EAM.text("Label|Project Info");
+	public static final String CONPRO_CONTEXT = "ConPro";
 }

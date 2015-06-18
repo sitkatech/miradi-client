@@ -28,11 +28,7 @@ import org.miradi.exceptions.UserCanceledException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.MpzToMpfConverter;
-import org.miradi.utils.GenericMiradiFileFilter;
-import org.miradi.utils.MiradiBackgroundWorkerThread;
-import org.miradi.utils.MpzFileFilterForChooserDialog;
-import org.miradi.utils.ProgressInterface;
-import org.miradi.utils.ZipFileFilterForChooserDialog;
+import org.miradi.utils.*;
 
 public class MpzProjectImporter extends AbstractProjectImporter
 {
@@ -51,11 +47,20 @@ public class MpzProjectImporter extends AbstractProjectImporter
 	}
 
 	@Override
-	protected void possiblyNotifyUserOfAutomaticMigration(File importFile) throws Exception
+	public void possiblyNotifyUserOfAutomaticMigration(File mpzFile) throws Exception
 	{
-		CpmzProjectImporter.possiblyNotifyUserOfAutoMigration(importFile);
+		final MiradiZipFile mpzZipFile = new MiradiZipFile(mpzFile);
+		try
+		{
+			if(MpzToMpfConverter.needsMigration(mpzZipFile))
+				notifyUserOfAutoMigration();
+		}
+		finally
+		{
+			mpzZipFile.close();
+		}
 	}
-	
+
 	private static class ImportMpzWorker extends MiradiBackgroundWorkerThread
 	{
 		protected ImportMpzWorker(File importFrom, File saveTo, ProgressInterface progressToNotify)

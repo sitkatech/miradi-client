@@ -23,7 +23,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.utils.InvalidDateException;
-import org.miradi.xml.conpro.ConProMiradiXml;
 
 public class TestProjectMetadata extends TestCaseWithProject
 {
@@ -35,10 +34,6 @@ public class TestProjectMetadata extends TestCaseWithProject
 	public void testIsMiradiShareProject() throws Exception
 	{
 		StringRefMap refMap = new StringRefMap();
-		refMap.add(ConProMiradiXml.CONPRO_CONTEXT, getProject().createAndPopulateXenodata("Some Project Id").getRef());
-		getProject().fillObjectUsingCommand(getProject().getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, refMap.toJsonString());		
-		assertFalse("Project should not be Miradi Share?", getProject().getMetadata().isMiradiShareProject());
-		
 		refMap.add(MiradiShareProjectData.MIRADI_SHARE_PROJECT_CODE, getProject().createAndPopulateXenodata("Some Miradi Share Project Id").getRef());
 		getProject().fillObjectUsingCommand(getProject().getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, refMap.toJsonString());
 		assertTrue("Project should be Miradi Share?", getProject().getMetadata().isMiradiShareProject());

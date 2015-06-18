@@ -25,16 +25,7 @@ import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.Cause;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.Goal;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.KeyEcologicalAttribute;
-import org.miradi.objects.Objective;
-import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Target;
-import org.miradi.objects.Task;
+import org.miradi.objects.*;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.GroupBoxSchema;
@@ -43,11 +34,7 @@ import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.xml.wcs.Xmpz1XmlConstants;
 import org.miradi.xml.wcs.Xmpz2XmlValidator;
-import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
-import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
-import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
-import org.miradi.xml.xmpz2.Xmpz2XmlSilentValidatorForTesting;
-import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
+import org.miradi.xml.xmpz2.*;
 import org.miradi.xml.xmpz2.objectImporters.BaseObjectImporter;
 import org.miradi.xml.xmpz2.objectImporters.IndicatorImporter;
 import org.miradi.xml.xmpz2.objectImporters.StrategyImporter;
@@ -71,17 +58,17 @@ public class TestXmpz2XmlExporter extends TestCaseForXmpz2ExportAndImport
 		verifyNonEmptyValues("randomCode", "randomProjectId");
 	}
 	
-	private void verifyNonEmptyValues(final String externalAppCope,	String xenoDataProjectId) throws Exception
+	private void verifyNonEmptyValues(final String externalAppCode,	String xenoDataProjectId) throws Exception
 	{
-		create(externalAppCope, xenoDataProjectId);
+		create(externalAppCode, xenoDataProjectId);
 		validateProject();
 	}
 
-	private void verifyEmptyValues(final String externalAppCope, String xenoDataProjectId)
+	private void verifyEmptyValues(final String externalAppCode, String xenoDataProjectId)
 	{
 		try
 		{
-			create(externalAppCope, xenoDataProjectId);
+			create(externalAppCode, xenoDataProjectId);
 			validateProjectSilently();
 			fail("empty values should have caused xml to fail validation?");
 		}
@@ -175,9 +162,9 @@ public class TestXmpz2XmlExporter extends TestCaseForXmpz2ExportAndImport
 		verifyRoundTripExportImport();
 	}
 
-	private void create(final String externalAppCope, String xenoDataProjectId) throws Exception
+	private void create(final String externalAppCode, String xenoDataProjectId) throws Exception
 	{
-		final String xenodataAsString = getProject().createConproXenodata(externalAppCope, xenoDataProjectId);
+		final String xenodataAsString = getProject().createXenodata(externalAppCode, xenoDataProjectId);
 		getProject().fillObjectUsingCommand(getProject().getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, xenodataAsString);
 	}
 	

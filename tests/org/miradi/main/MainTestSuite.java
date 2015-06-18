@@ -220,7 +220,6 @@ import org.miradi.utils.TestBendPointList;
 import org.miradi.utils.TestBiDirectionalHashMap;
 import org.miradi.utils.TestCodeList;
 import org.miradi.utils.TestColumnSequenceSaver;
-import org.miradi.utils.TestConproMiradiHabitatCodeMap;
 import org.miradi.utils.TestDateRange;
 import org.miradi.utils.TestDelimitedFileLoader;
 import org.miradi.utils.TestDiagramCorruptionDetector;
@@ -257,9 +256,6 @@ import org.miradi.xml.TestXmpz2SchemaCreator;
 import org.miradi.xml.TestXmpz2XmlExporter;
 import org.miradi.xml.TestXmpz2XmlImporter;
 import org.miradi.xml.TestXmpzXmlImporter;
-import org.miradi.xml.conpro.TestConProCodeMapHelper;
-import org.miradi.xml.conpro.exporter.TestConproXmlExporter;
-import org.miradi.xml.conpro.importer.TestConproXmlImporter;
 import org.miradi.xml.wcs.TestXmpzExporter;
 import org.miradi.xml.wcs.TestXmpzSchemaCreator;
 
@@ -338,7 +334,6 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestDelimitedFileLoader.class));
 		addTest(new TestSuite(TestTaxonomyFileLoader.class));
 		addTest(new TestSuite(TestDateRange.class));
-		addTest(new TestSuite(TestConproMiradiHabitatCodeMap.class));
 		addTest(new TestSuite(TestBaseObjectDateAndIdComparator.class));
 		addTest(new TestSuite(TestDiagramCorruptionDetector.class));
 		addTest(new TestSuite(TestRtfWriter.class));
@@ -544,15 +539,8 @@ public class MainTestSuite extends TestSuite
 		//xml.export
 		addTest(new TestSuite(TestXmpzExporter.class));
 		addTest(new TestSuite(TestXmpz2XmlExporter.class));
-		
-		//xml.conpro
-		addTest(new TestSuite(TestConProCodeMapHelper.class));
-		
-		//xml.conpro.export
-		addTest(new TestSuite(TestConproXmlExporter.class));
-		
-		//xml.conpro.importer
-		addTest(new TestSuite(TestConproXmlImporter.class));
+
+		//xml.importer
 		addTest(new TestSuite(TestXmpzXmlImporter.class));
 		addTest(new TestSuite(TestXmpz2XmlImporter.class));
 		addTest(new TestSuite(TestXmpz2ForwardMigration.class));

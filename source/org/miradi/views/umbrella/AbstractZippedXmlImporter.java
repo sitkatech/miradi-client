@@ -43,7 +43,7 @@ abstract public class AbstractZippedXmlImporter extends AbstractProjectImporter
 
 		InputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
 		if (projectAsInputStream.available() == 0)
-			throw new Exception(ExportCpmzDoer.PROJECT_XML_FILE_NAME + EAM.text(" was empty"));
+			throw new Exception(XmlExporterDoer.PROJECT_XML_FILE_NAME + EAM.text(" was empty"));
 
 		try
 		{
