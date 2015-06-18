@@ -50,7 +50,7 @@ abstract public class AbstractXmpzProjectImporter extends AbstractZippedXmlImpor
 	@Override
 	protected void createOrOpenProject(Project projectToFill, File projectFile) throws Exception
 	{
-		projectToFill.rawCreateorOpen();
+		projectToFill.rawCreatorOpen();
 	}
 	
 	@Override

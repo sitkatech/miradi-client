@@ -23,7 +23,6 @@ package org.miradi.migrations.forward;
 import org.miradi.main.EAM;
 import org.miradi.migrations.*;
 import org.miradi.objecthelpers.ObjectType;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.Vector;
 
@@ -59,7 +58,7 @@ public class MigrationTo17 extends AbstractSingleTypeMigration
 
 		for(Integer typeToVisit : typesToVisit)
 		{
-			final RemoveBiophysicalFactorVisitor visitor = new RemoveBiophysicalFactorVisitor(typeToVisit);
+			final BiophysicalFactorVisitor visitor = new BiophysicalFactorVisitor(typeToVisit);
 			visitAllObjectsInPool(visitor);
 			final MigrationResult thisMigrationResult = visitor.getMigrationResult();
 			if (migrationResult == null)
@@ -67,11 +66,6 @@ public class MigrationTo17 extends AbstractSingleTypeMigration
 			else
 				migrationResult.merge(thisMigrationResult);
 		}
-
-		// TODO: MRD-5916 - need to look at MigrationTo7 to do similar for BiophysicalFactor taxonomy info
-
-		getRawProject().deletePoolWithData(ObjectType.BIOPHYSICAL_FACTOR);
-		getRawProject().deletePoolWithData(ObjectType.BIOPHYSICAL_RESULT);
 
 		return migrationResult;
 	}
@@ -88,12 +82,12 @@ public class MigrationTo17 extends AbstractSingleTypeMigration
     @Override
 	protected String getDescription()
 	{
-		return EAM.text("This migration removes newly added Biophysical Factors if reversing (to support an older file format).");
+		return EAM.text("This migration prevents the removal of Biophysical Factors and / or Results if reversing (to support an older file format / Miradi version).");
 	}
 
-    private class RemoveBiophysicalFactorVisitor extends AbstractMigrationVisitor
+    private class BiophysicalFactorVisitor extends AbstractMigrationVisitor
     {
-        public RemoveBiophysicalFactorVisitor(int typeToUse)
+        public BiophysicalFactorVisitor(int typeToUse)
         {
             type = typeToUse;
         }
@@ -106,9 +100,7 @@ public class MigrationTo17 extends AbstractSingleTypeMigration
         @Override
         public MigrationResult internalVisit(RawObject rawObject) throws Exception
         {
-            // TODO: MRD-5911 - implement this...
-            throw new NotImplementedException();
-//            return MigrationResult.createDataLoss(EAM.text("Biophysical factor will be removed"));
+            return MigrationResult.createCannotMigrate(EAM.text("Biophysical Factors and Results are not supported in prior versions of Miradi."));
         }
 
         private int type;

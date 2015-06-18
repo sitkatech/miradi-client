@@ -33,6 +33,7 @@ public class MigrationResult extends HashSet<String>
 	private MigrationResult()
 	{
 		dataLossMessages = new Vector<String>();
+		cannotMigrateMessages = new Vector<String>();
 	}
 	
 	public static MigrationResult createUninitializedResult()
@@ -59,6 +60,15 @@ public class MigrationResult extends HashSet<String>
 		return migrationResult;
 	}
 
+	public static MigrationResult createCannotMigrate(String messageToUse)
+	{
+		MigrationResult migrationResult = new MigrationResult();
+		migrationResult.add(CANNOT_MIGRATE);
+		migrationResult.addCannotMigrate(messageToUse);
+
+		return migrationResult;
+	}
+
 	public void addDataLoss(String dataLossMessageToUse)
 	{
 		dataLossMessages.add(dataLossMessageToUse);
@@ -68,10 +78,21 @@ public class MigrationResult extends HashSet<String>
 	{
 		return dataLossMessages.size();
 	}
-	
+
+	public void addCannotMigrate(String messageToUse)
+	{
+		cannotMigrateMessages.add(messageToUse);
+	}
+
+	public int cannotMigrateCount()
+	{
+		return cannotMigrateMessages.size();
+	}
+
 	public void merge(MigrationResult migrationResult)
 	{
 		dataLossMessages.addAll(migrationResult.dataLossMessages);
+		cannotMigrateMessages.addAll(migrationResult.cannotMigrateMessages);
 		addAll(migrationResult);
 	}
 	
@@ -108,35 +129,48 @@ public class MigrationResult extends HashSet<String>
 	
 	public String getUserFriendlyGroupedDataLossMessagesAsString()
 	{
-		HashMap<String, Integer> messageToCountMap = groupMessagesWithCount();
+		HashMap<String, Integer> messageToCountMap = groupMessagesWithCount(this.dataLossMessages);
 		Set<String> messages = messageToCountMap.keySet();
 		StringBuffer messagesAsString = new StringBuffer();
 		for(String message : messages)
 		{
 			int messageCount = messageToCountMap.get(message);
-			String dataLossMessage = getDataLossMessage(message, messageCount);
+			String dataLossMessage = getMessageWithCount(message, messageCount);
 			messagesAsString.append(dataLossMessage + "\n");
 		}
 		
 		return messagesAsString.toString();
 	}
 
-	private String getDataLossMessage(String message, int messageCount)
+	public String getUserFriendlyGroupedCannotMigrateMessagesAsString()
+	{
+		HashMap<String, Integer> messageToCountMap = groupMessagesWithCount(this.cannotMigrateMessages);
+		Set<String> messages = messageToCountMap.keySet();
+		StringBuffer messagesAsString = new StringBuffer();
+		for(String message : messages)
+		{
+			messagesAsString.append(message + "\n");
+		}
+
+		return messagesAsString.toString();
+	}
+
+	private String getMessageWithCount(String message, int messageCount)
 	{
 		HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 		tokenReplacementMap.put("%messageCount", Integer.toString(messageCount));
-		tokenReplacementMap.put("%dataLossMessage", message);
-		String dataLossMessage = EAM.substitute(EAM.text("%messageCount case(s) of: %dataLossMessage"), tokenReplacementMap);
+		tokenReplacementMap.put("%migrationMessage", message);
+		String migrationMessage = EAM.substitute(EAM.text("%messageCount case(s) of: %migrationMessage"), tokenReplacementMap);
 		
-		return dataLossMessage;
+		return migrationMessage;
 	}
 
-	private HashMap<String, Integer> groupMessagesWithCount()
+	private HashMap<String, Integer> groupMessagesWithCount(Vector<String> messages)
 	{
 		HashMap<String, Integer> messageToCountMap = new HashMap<String, Integer>();
-		for (int index = 0; index < dataLossMessages.size(); ++index)
+		for (int index = 0; index < messages.size(); ++index)
 		{
-			String message = dataLossMessages.get(index);
+			String message = messages.get(index);
 			int countOfThisMessage = 0;
 			if (messageToCountMap.containsKey(message))
 				countOfThisMessage = messageToCountMap.get(message);
@@ -153,4 +187,5 @@ public class MigrationResult extends HashSet<String>
 	private static final String UNINITIALIZED = "Uninitialized";
 	
 	private Vector<String> dataLossMessages;
+	private Vector<String> cannotMigrateMessages;
 }

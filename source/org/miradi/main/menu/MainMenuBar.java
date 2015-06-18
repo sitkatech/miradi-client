@@ -122,6 +122,10 @@ public class MainMenuBar extends JMenuBar
 		
 		addMenuItem(actions, menu, ActionExportMpf.class);
 		addMenuItem(actions, menu, ActionExportXmpz2.class);
+
+		menu.addSeparator();
+		addMenuItem(actions, menu, ActionExportMpf42Version.class);
+
 		if(Miradi.isDemoMode())
 		{
 			menu.addSeparator();

@@ -188,6 +188,7 @@ public class Actions
 		registerAction(new ActionExportXmpz2(mainWindow));
 		registerAction(new ActionExportMiradiShareFile(mainWindow));
 		registerAction(new ActionImportXmpz2(mainWindow));
+		registerAction(new ActionExportMpf42Version(mainWindow));
 
 		registerAction(new ActionProperties(mainWindow));
 		registerAction(new ActionSaveImageJPEG(mainWindow));

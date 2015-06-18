@@ -45,4 +45,21 @@ public class TestMigrationResult extends MiradiTestCase
 		migrationResult.addDataLoss("Some random message");
 		assertEquals("incorrect data loss messages count?", 2, migrationResult.dataLossCount());
 	}
+
+	public void testCannotMigrate()
+	{
+		MigrationResult migrationResult = MigrationResult.createUninitializedResult();
+		assertFalse("Should not be cannot migrate?", migrationResult.cannotMigrate());
+
+		MigrationResult cannotMigrateResult = migrationResult.createCannotMigrate("");
+		assertTrue("Should be cannot migrate?", cannotMigrateResult.cannotMigrate());
+
+		migrationResult.merge(cannotMigrateResult);
+		assertTrue("Should be cannot migrate?", migrationResult.cannotMigrate());
+
+		assertEquals("incorrect cannot migrate messages count?", 1, migrationResult.cannotMigrateCount());
+
+		migrationResult.addCannotMigrate("Some random message");
+		assertEquals("incorrect cannot migrate messages count?", 2, migrationResult.cannotMigrateCount());
+	}
 }

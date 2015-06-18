@@ -70,11 +70,10 @@ public class WelcomeImportStep extends NoProjectWizardStep
 			
 			String intro = EAM.text(
 						"<div class='WizardText'>" +
-						"Miradi is able to import three different kinds of project files.<BR>" +
-						"Miradi files are new project files. <BR>" +
-						"MPZ files are <a href='Definition:ImportZip' class='definition'>Miradi Project Zip</a> files that were created by exporting a project from within Miradi. <BR>" +
-						"XMPZ2 files are files that were created by exporting a project from within Miradi, with the intention to manage them via Miradi Share.<BR><BR>" +
-						"To import a Miradi, XMPZ2, or MPZ file, click the button for the appropriate file type, select the file in the dialog that pops up and then click <strong>import</strong>."
+						"Miradi is able to import three different kinds of project files.  To import a Miradi, XMPZ2, or MPZ file, click the button for the <BR>" +
+						"appropriate file type, select the file in the dialog that pops up, and then click <strong>Import</strong>.<BR><BR>" +
+						"(Note: If you need to import a ConPro/Miradi Exchange File (.cpmz), please contact Miradi support.)" +
+						"</div>"
 			);
 
 			add(new FlexibleWidthHtmlViewer(getMainWindow(), hyperlinkHandler, intro));

@@ -644,7 +644,7 @@ public class Project implements ProjectInterface
 
 	public void createOrOpenWithDefaultObjects(File projectFileToUse, ProgressInterface progressMeter) throws Exception
 	{
-		rawCreateorOpen();
+		rawCreatorOpen();
 		createMissingDefaultObjects();
 		applyDefaultBehavior();
 		finishOpeningAfterLoad(projectFileToUse);
@@ -664,7 +664,7 @@ public class Project implements ProjectInterface
 		isOpen = true;
 	}
 
-	public void rawCreateorOpen() throws Exception
+	public void rawCreatorOpen() throws Exception
 	{
 		currentViewName = SUMMARY_VIEW_NAME;
 		writeStartingLogEntry();

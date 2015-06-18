@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.migrations;
 
 import org.miradi.migrations.forward.MigrationTo17;
+import org.miradi.project.ProjectForTesting;
 
 public class TestMigrationTo17 extends AbstractTestMigration
 {
@@ -29,8 +30,20 @@ public class TestMigrationTo17 extends AbstractTestMigration
 		super(name);
 	}
 
-    // TODO: MRD-5911 - implement tests...
-    
+	public void testCannotMigrateWhenBiophysicalFactorPresent() throws Exception
+	{
+		ProjectForTesting projectForTesting = getProject();
+		projectForTesting.populateEverything();
+		MigrationResult migrationResult = reverseMigrateReturnMigrationResult(projectForTesting, new VersionRange(MigrationTo17.TO_VERSION));
+		assertTrue("Should not be able to reverse migrate (test project has Biophysical Factor / Result)", migrationResult.cannotMigrate());
+	}
+
+	public void testCanMigrateWhenNoBiophysicalFactorPresent() throws Exception
+	{
+		MigrationResult migrationResult = reverseMigrateReturnMigrationResult(new VersionRange(MigrationTo17.TO_VERSION));
+		assertFalse("Should be able to reverse migrate (test project has no Biophysical Factor / Result)", migrationResult.cannotMigrate());
+	}
+
 	@Override
 	protected int getFromVersion()
 	{
