@@ -48,36 +48,36 @@ public class MigrationManager extends AbstractMigrationManager
 		MigrationResult migrationResult = MigrationResult.createUninitializedResult();
 		if (rawProject.getCurrentVersionRange().isEntirelyNewerThan(desiredVersion))
 		{
-			migrationResult.merge(migrateReverse(rawProject));			
+			migrationResult.merge(migrateReverse(rawProject, desiredVersion));
 		}
 		if (rawProject.getCurrentVersionRange().isEntirelyOlderThan(desiredVersion))
 		{
-			migrationResult.merge(migrateForward(rawProject));
+			migrationResult.merge(migrateForward(rawProject, desiredVersion));
 		}		
 		
 		return migrationResult;
 	}
 
-	private MigrationResult migrateForward(RawProject rawProject) throws Exception
+	private MigrationResult migrateForward(RawProject rawProject, VersionRange desiredVersion) throws Exception
 	{
 		MigrationResult migrationResult = MigrationResult.createUninitializedResult();
 		Vector<AbstractMigration> migrations = createMigrations(rawProject);
 		for(AbstractMigration migration : migrations)
 		{
-			migrationResult.merge(migration.forwardMigrateIfPossible());
+			migrationResult.merge(migration.forwardMigrateIfPossible(desiredVersion));
 		}
 
 		return migrationResult;
 	}
 
-	private MigrationResult migrateReverse(RawProject rawProject) throws Exception
+	private MigrationResult migrateReverse(RawProject rawProject, VersionRange desiredVersion) throws Exception
 	{
 		MigrationResult migrationResult = MigrationResult.createUninitializedResult();
 		Vector<AbstractMigration> migrations = createMigrations(rawProject);
 		for(int index = migrations.size() - 1; index >= 0; --index)
 		{
 			AbstractMigration migration = migrations.get(index);
-			migrationResult.merge(migration.reverseMigrateIfPossible());
+			migrationResult.merge(migration.reverseMigrateIfPossible(desiredVersion));
 		}
 		
 		return migrationResult;

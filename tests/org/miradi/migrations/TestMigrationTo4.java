@@ -61,7 +61,7 @@ public class TestMigrationTo4 extends AbstractTestMigration
 
 	private void verifyFutureStatusesCreatedFromIndicators(final int indicatorCount) throws Exception
 	{
-		Vector<Indicator> indicatorsToMigrateFutureStatusesFrom = createAndPopluteIndicators(indicatorCount);
+		Vector<Indicator> indicatorsToMigrateFutureStatusesFrom = createAndPopulateIndicators(indicatorCount);
 		ProjectForTesting migratedProject = migrateProject(new VersionRange(3, 3));
 		final IndicatorPool indicatorPool = migratedProject.getIndicatorPool();
 		assertEquals("Incorrect indictor count?", indicatorsToMigrateFutureStatusesFrom.size(), indicatorPool.size());
@@ -96,7 +96,7 @@ public class TestMigrationTo4 extends AbstractTestMigration
 		}
 	}
 
-	private Vector<Indicator> createAndPopluteIndicators(int numberOfIndicatorsToCreateAndPopulate) throws Exception
+	private Vector<Indicator> createAndPopulateIndicators(int numberOfIndicatorsToCreateAndPopulate) throws Exception
 	{
 		Vector<Indicator> indicators = new Vector<Indicator>();
 		for (int index = 0; index < numberOfIndicatorsToCreateAndPopulate; ++index)

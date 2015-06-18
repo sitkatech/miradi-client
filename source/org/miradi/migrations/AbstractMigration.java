@@ -29,10 +29,10 @@ abstract public class AbstractMigration
 		rawProject = rawProjectToUse;
 	}
 	
-	public MigrationResult forwardMigrateIfPossible() throws Exception
+	public MigrationResult forwardMigrateIfPossible(VersionRange desiredVersion) throws Exception
 	{
 		MigrationResult migrationResult = MigrationResult.createUninitializedResult();
-		if (canForwardMigrateThisVersion(getRawProject().getCurrentVersionRange()))
+		if (canForwardMigrateThisVersion(getRawProject().getCurrentVersionRange(), desiredVersion))
 		{
 			migrationResult = migrateForward();
 			updateProjectVersionRange(getPostForwardMigrationVersionRange());
@@ -41,10 +41,10 @@ abstract public class AbstractMigration
 		return migrationResult;
 	}
 
-	public MigrationResult reverseMigrateIfPossible() throws Exception
+	public MigrationResult reverseMigrateIfPossible(VersionRange desiredVersion) throws Exception
 	{
 		MigrationResult migrationResult = MigrationResult.createUninitializedResult();
-		if (canReverseMigrateThisVersion(getRawProject().getCurrentVersionRange()))
+		if (canReverseMigrateThisVersion(getRawProject().getCurrentVersionRange(), desiredVersion))
 		{
 			migrationResult = reverseMigrate();
 			updateProjectVersionRange(getPostReverseMigrationVersionRange());
@@ -53,15 +53,16 @@ abstract public class AbstractMigration
 		return migrationResult;
 	}
 
-	private boolean canForwardMigrateThisVersion(VersionRange versionRange) throws Exception
+	private boolean canForwardMigrateThisVersion(VersionRange currentVersionRange, VersionRange desiredVersion) throws Exception
 	{
-		return getMigratableVersionRange().doesContain(versionRange.getHighVersion());
+		VersionRange migratableVersionRange = getMigratableVersionRange();
+		return migratableVersionRange.doesContain(currentVersionRange.getHighVersion()) && migratableVersionRange.getHighVersion() <= desiredVersion.getLowVersion();
 	}
 	
-	private boolean canReverseMigrateThisVersion(VersionRange versionRange) throws Exception
+	private boolean canReverseMigrateThisVersion(VersionRange currentVersionRange, VersionRange desiredVersion) throws Exception
 	{
-		final VersionRange migratableVersionRange = new VersionRange(getToVersion());
-		return migratableVersionRange.doesContain(versionRange.getLowVersion());
+		final VersionRange migratableVersionRange = getMigratableVersionRange();
+		return migratableVersionRange.doesContain(currentVersionRange.getLowVersion()) && migratableVersionRange.getLowVersion() >= desiredVersion.getHighVersion();
 	}
 
 	protected RawProject getRawProject()

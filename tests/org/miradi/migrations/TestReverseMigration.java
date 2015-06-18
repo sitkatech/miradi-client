@@ -20,45 +20,54 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
-import java.io.IOException;
-import java.util.Set;
-
 import org.miradi.migrations.forward.MigrationManager;
+import org.miradi.migrations.forward.MigrationTo16;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.FutureStatus;
 import org.miradi.objects.Indicator;
+import org.miradi.project.ProjectForTesting;
 import org.miradi.project.ProjectSaverForTesting;
 import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.IndicatorSchema;
 
-public class TestReverseMigrationTo4 extends AbstractTestReverseMigration
+import java.util.Set;
+
+public class TestReverseMigration extends AbstractTestReverseMigration
 {
-	public TestReverseMigrationTo4(String name)
+	public TestReverseMigration(String name)
 	{
 		super(name);
 	}
 	
-	public void testMigrationTo4WithoutFutureStatus() throws Exception
+	public void testMigrationToOldestVersionWithoutFutureStatus() throws Exception
 	{
 		verifyFutureStatusDataTransferToIndicator(0);
 	}
 	
-	public void testMigrationTo4WithOneFutureStatus() throws Exception
+	public void testMigrationToOldestVersionWithOneFutureStatus() throws Exception
 	{
 		verifyFutureStatusDataTransferToIndicator(1);
 	}
 	
-	public void testMigrationTo4WithTwoFutureStatuses() throws Exception
+	public void testMigrationToOldestVersionWithTwoFutureStatuses() throws Exception
 	{
 		verifyFutureStatusDataTransferToIndicator(2);
+	}
+
+	public void testReverseMigrationToMiradi42() throws Exception
+	{
+		VersionRange miradi42VersionRange = new VersionRange(MigrationTo16.VERSION_TO);
+		assertTrue("Expected test project to be newer than Miradi 4.2 version", getProject().getCurrentVersionRange().isEntirelyNewerThan(miradi42VersionRange));
+		RawProject reverseMigratedProject = reverseMigrateProjectToSpecificVersion(getProject(), miradi42VersionRange);
+		assertEquals(reverseMigratedProject.getCurrentVersionRange(), miradi42VersionRange);
 	}
 
 	private void verifyFutureStatusDataTransferToIndicator(int futureStatusCount) throws Exception
 	{
 		Indicator indicator = getProject().createIndicator(getProject().createCause());
 		createFutureStatuses(indicator, futureStatusCount);
-		RawProject reverseMigratedProject = reverseMigrateProject();
+		RawProject reverseMigratedProject = reverseMigrateProjectToSpecificVersion(getProject(), new VersionRange(MigrationManager.OLDEST_VERSION_TO_HANDLE));
 		assertEquals("Future statuses should have been deleted?", null, reverseMigratedProject.getRawPoolForType(FutureStatusSchema.getObjectType()));
 
 		ORefList migratedIndicatorRefs = reverseMigratedProject.getRawPoolForType(IndicatorSchema.getObjectType()).getSortedReflist();
@@ -90,13 +99,14 @@ public class TestReverseMigrationTo4 extends AbstractTestReverseMigration
 		}
 	}
 	
-	private RawProject reverseMigrateProject() throws Exception, IOException
+	private RawProject reverseMigrateProjectToSpecificVersion(ProjectForTesting project, VersionRange desiredVersion) throws Exception
 	{
 		MigrationManager migrationManager = new MigrationManager();
-		String projectAsString = ProjectSaverForTesting.createSnapShot(getProject(), new VersionRange(4, 4));
+		String projectAsString = ProjectSaverForTesting.createSnapShot(project, project.getCurrentVersionRange());
 		RawProject rawProjectToMigrate = RawProjectLoader.loadProject(projectAsString);
-		migrationManager.migrate(rawProjectToMigrate, new VersionRange(MigrationManager.OLDEST_VERSION_TO_HANDLE));
+		migrationManager.migrate(rawProjectToMigrate, desiredVersion);
 		
 		return rawProjectToMigrate;
 	}
+
 }

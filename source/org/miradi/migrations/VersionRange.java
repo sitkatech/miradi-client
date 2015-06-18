@@ -81,4 +81,25 @@ public class VersionRange
 	
 	private int lowVersion;
 	private int highVersion;
+
+	@Override
+	public boolean equals(Object o)
+	{
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		VersionRange that = (VersionRange) o;
+
+		if (lowVersion != that.lowVersion) return false;
+		return highVersion == that.highVersion;
+
+	}
+
+	@Override
+	public int hashCode()
+	{
+		int result = lowVersion;
+		result = 31 * result + highVersion;
+		return result;
+	}
 }
