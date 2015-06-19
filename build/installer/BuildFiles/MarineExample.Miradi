@@ -1,4 +1,4 @@
-﻿MiradiProjectFile 16 16
+﻿MiradiProjectFile 18 18
 UV	Version=61
 UP	HighestUsedNodeId=1147
 UP	ProjectMetadataId=0
@@ -439,25 +439,25 @@ UO	7:426	SurName=Rat Attack Team
 CO	8:155
 UO	8:155	Detail=Based on 2010 survey of the Bay which identified areas of coral reef.
 UO	8:155	FutureStatusRefs={"References":[{"ObjectType":64,"ObjectId":1139}]}
-UO	8:155	IndicatorThresholds={"StringMap":{"3":"71 - 90%","2":"51 - 70%","1":"&lt; 50%","4":"&gt; 90%"}}
+UO	8:155	IndicatorThresholds={"StringMap":{"1":"&lt; 50%","2":"51 - 70%","3":"71 - 90%","4":"&gt; 90%"}}
 UO	8:155	Label=% of appropriate areas covered<br/>by healthy coral reef
 UO	8:155	MeasurementRefs={"References":[{"ObjectType":32,"ObjectId":156},{"ObjectType":32,"ObjectId":157}]}
 UO	8:155	Priority=3
 UO	8:155	ProgressReportRefs={"References":[{"ObjectType":37,"ObjectId":158}]}
 UO	8:155	RatingSource=ExpertKnowlege
 UO	8:155	ShortLabel=A1
-UO	8:155	ThresholdDetails={"StringMap":{"3":"% appropriate areas covered","2":"% appropriate areas covered","1":"% appropriate areas covered","4":"% appropriate areas covered"}}
+UO	8:155	ThresholdDetails={"StringMap":{"1":"% appropriate areas covered","2":"% appropriate areas covered","3":"% appropriate areas covered","4":"% appropriate areas covered"}}
 UO	8:155	ViabilityRatingsComment=Ratings are derived from consultation with researchers at the local university.
 CO	8:160
 UO	8:160	Detail=The average qualitative assessment of the degree of bomb damage for the 20 coral reef sampling locations.
 UO	8:160	FutureStatusRefs={"References":[{"ObjectType":64,"ObjectId":1136}]}
-UO	8:160	IndicatorThresholds={"StringMap":{"3":"minimal","2":"some","1":"lots","4":"none"}}
+UO	8:160	IndicatorThresholds={"StringMap":{"1":"lots","2":"some","3":"minimal","4":"none"}}
 UO	8:160	Label=Degree of bomb damage of<br/>coral reef sample locations
 UO	8:160	MeasurementRefs={"References":[{"ObjectType":32,"ObjectId":161},{"ObjectType":32,"ObjectId":162}]}
 UO	8:160	ProgressReportRefs={"References":[{"ObjectType":37,"ObjectId":302}]}
 UO	8:160	RatingSource=RoughGuess
 UO	8:160	ShortLabel=A2
-UO	8:160	ThresholdDetails={"StringMap":{"3":"less than 5 sites with minimal damage","2":"at least 10 sites with some damage","1":"all 20 sites with moderate to heavy damage","4":"only 1 or 2 sites with any damage"}}
+UO	8:160	ThresholdDetails={"StringMap":{"1":"all 20 sites with moderate to heavy damage","2":"at least 10 sites with some damage","3":"less than 5 sites with minimal damage","4":"only 1 or 2 sites with any damage"}}
 CO	8:215
 UO	8:215	AssignmentIds={"Ids":[541]}
 UO	8:215	Detail=The number of restaurants in Hong Kong actively participating in the Stop Shark Fin Soup Campaign.
@@ -491,7 +491,7 @@ UO	8:217	ShortLabel=Shark 3a
 UO	8:217	TaskIds={"Ids":[232]}
 CO	8:298
 UO	8:298	FutureStatusRefs={"References":[{"ObjectType":64,"ObjectId":1143}]}
-UO	8:298	IndicatorThresholds={"StringMap":{"3":"501-1000","2":"250-500","1":"&lt;250","4":"&gt;1000"}}
+UO	8:298	IndicatorThresholds={"StringMap":{"1":"&lt;250","2":"250-500","3":"501-1000","4":"&gt;1000"}}
 UO	8:298	Label=Number of breeding pairs of ruby<br/>crested puffins
 UO	8:298	MeasurementRefs={"References":[{"ObjectType":32,"ObjectId":299},{"ObjectType":32,"ObjectId":300}]}
 UO	8:298	Priority=4
@@ -714,12 +714,12 @@ UO	13:100	FromDiagramFactorId=98
 UO	13:100	ToDiagramFactorId=60
 UO	13:100	WrappedLinkId=99
 CO	13:1078
-UO	13:1078	BendPoints={"Points":["{\"Y\":315,\"X\":630}"]}
+UO	13:1078	BendPoints={"Points":["{\"X\":630,\"Y\":315}"]}
 UO	13:1078	FromDiagramFactorId=1073
 UO	13:1078	ToDiagramFactorId=1068
 UO	13:1078	WrappedLinkId=271
 CO	13:1079
-UO	13:1079	BendPoints={"Points":["{\"Y\":495,\"X\":285}"]}
+UO	13:1079	BendPoints={"Points":["{\"X\":285,\"Y\":495}"]}
 UO	13:1079	FromDiagramFactorId=1074
 UO	13:1079	ToDiagramFactorId=1070
 UO	13:1079	WrappedLinkId=307
@@ -732,7 +732,7 @@ UO	13:1081	FromDiagramFactorId=1069
 UO	13:1081	ToDiagramFactorId=1068
 UO	13:1081	WrappedLinkId=267
 CO	13:1082
-UO	13:1082	BendPoints={"Points":["{\"Y\":195,\"X\":750}","{\"Y\":150,\"X\":750}"]}
+UO	13:1082	BendPoints={"Points":["{\"X\":750,\"Y\":195}","{\"X\":750,\"Y\":150}"]}
 UO	13:1082	FromDiagramFactorId=1068
 UO	13:1082	ToDiagramFactorId=1072
 UO	13:1082	WrappedLinkId=277
@@ -749,7 +749,7 @@ UO	13:1107	FromDiagramFactorId=1097
 UO	13:1107	ToDiagramFactorId=1094
 UO	13:1107	WrappedLinkId=1106
 CO	13:115
-UO	13:115	BendPoints={"Points":["{\"Y\":210,\"X\":465}","{\"Y\":285,\"X\":465}"]}
+UO	13:115	BendPoints={"Points":["{\"X\":465,\"Y\":210}","{\"X\":465,\"Y\":285}"]}
 UO	13:115	FromDiagramFactorId=113
 UO	13:115	ToDiagramFactorId=60
 UO	13:115	WrappedLinkId=114
@@ -758,7 +758,7 @@ UO	13:119	FromDiagramFactorId=117
 UO	13:119	ToDiagramFactorId=78
 UO	13:119	WrappedLinkId=118
 CO	13:121
-UO	13:121	BendPoints={"Points":["{\"Y\":615,\"X\":15}","{\"Y\":15,\"X\":15}","{\"Y\":15,\"X\":585}"]}
+UO	13:121	BendPoints={"Points":["{\"X\":15,\"Y\":615}","{\"X\":15,\"Y\":15}","{\"X\":585,\"Y\":15}"]}
 UO	13:121	FromDiagramFactorId=117
 UO	13:121	ToDiagramFactorId=64
 UO	13:121	WrappedLinkId=120
@@ -775,7 +775,7 @@ UO	13:126	FromDiagramFactorId=110
 UO	13:126	GroupedDiagramLinkRefs={"References":[{"ObjectType":13,"ObjectId":123},{"ObjectType":13,"ObjectId":125}]}
 UO	13:126	ToDiagramFactorId=98
 CO	13:130
-UO	13:130	BendPoints={"Points":["{\"Y\":195,\"X\":465}"]}
+UO	13:130	BendPoints={"Points":["{\"X\":465,\"Y\":195}"]}
 UO	13:130	FromDiagramFactorId=128
 UO	13:130	ToDiagramFactorId=64
 UO	13:130	WrappedLinkId=129
@@ -784,7 +784,7 @@ UO	13:134	FromDiagramFactorId=132
 UO	13:134	ToDiagramFactorId=94
 UO	13:134	WrappedLinkId=133
 CO	13:142
-UO	13:142	BendPoints={"Points":["{\"Y\":705,\"X\":660}"]}
+UO	13:142	BendPoints={"Points":["{\"X\":660,\"Y\":705}"]}
 UO	13:142	FromDiagramFactorId=140
 UO	13:142	ToDiagramFactorId=42
 UO	13:142	WrappedLinkId=141
@@ -821,7 +821,7 @@ UO	13:270	FromDiagramFactorId=264
 UO	13:270	ToDiagramFactorId=261
 UO	13:270	WrappedLinkId=269
 CO	13:272
-UO	13:272	BendPoints={"Points":["{\"Y\":345,\"X\":660}"]}
+UO	13:272	BendPoints={"Points":["{\"X\":660,\"Y\":345}"]}
 UO	13:272	FromDiagramFactorId=259
 UO	13:272	ToDiagramFactorId=258
 UO	13:272	WrappedLinkId=271
@@ -830,7 +830,7 @@ UO	13:274	FromDiagramFactorId=266
 UO	13:274	ToDiagramFactorId=264
 UO	13:274	WrappedLinkId=273
 CO	13:278
-UO	13:278	BendPoints={"Points":["{\"Y\":225,\"X\":780}","{\"Y\":180,\"X\":780}"]}
+UO	13:278	BendPoints={"Points":["{\"X\":780,\"Y\":225}","{\"X\":780,\"Y\":180}"]}
 UO	13:278	FromDiagramFactorId=258
 UO	13:278	ToDiagramFactorId=256
 UO	13:278	WrappedLinkId=277
@@ -851,12 +851,12 @@ UO	13:296	FromDiagramFactorId=294
 UO	13:296	ToDiagramFactorId=42
 UO	13:296	WrappedLinkId=295
 CO	13:306
-UO	13:306	BendPoints={"Points":["{\"Y\":705,\"X\":300}"]}
+UO	13:306	BendPoints={"Points":["{\"X\":300,\"Y\":705}"]}
 UO	13:306	FromDiagramFactorId=136
 UO	13:306	ToDiagramFactorId=78
 UO	13:306	WrappedLinkId=305
 CO	13:308
-UO	13:308	BendPoints={"Points":["{\"Y\":525,\"X\":315}"]}
+UO	13:308	BendPoints={"Points":["{\"X\":315,\"Y\":525}"]}
 UO	13:308	FromDiagramFactorId=262
 UO	13:308	ToDiagramFactorId=264
 UO	13:308	WrappedLinkId=307
@@ -889,12 +889,12 @@ UO	13:362	FromDiagramFactorId=351
 UO	13:362	ToDiagramFactorId=358
 UO	13:362	WrappedLinkId=361
 CO	13:364
-UO	13:364	BendPoints={"Points":["{\"Y\":360,\"X\":555}"]}
+UO	13:364	BendPoints={"Points":["{\"X\":555,\"Y\":360}"]}
 UO	13:364	FromDiagramFactorId=358
 UO	13:364	ToDiagramFactorId=349
 UO	13:364	WrappedLinkId=363
 CO	13:366
-UO	13:366	BendPoints={"Points":["{\"Y\":360,\"X\":780}","{\"Y\":195,\"X\":810}"]}
+UO	13:366	BendPoints={"Points":["{\"X\":780,\"Y\":360}","{\"X\":810,\"Y\":195}"]}
 UO	13:366	FromDiagramFactorId=349
 UO	13:366	ToDiagramFactorId=355
 UO	13:366	WrappedLinkId=365
@@ -931,7 +931,7 @@ UO	13:390	FromDiagramFactorId=354
 UO	13:390	ToDiagramFactorId=386
 UO	13:390	WrappedLinkId=389
 CO	13:44
-UO	13:44	BendPoints={"Points":["{\"Y\":615,\"X\":780}","{\"Y\":555,\"X\":780}"]}
+UO	13:44	BendPoints={"Points":["{\"X\":780,\"Y\":615}","{\"X\":780,\"Y\":555}"]}
 UO	13:44	FromDiagramFactorId=42
 UO	13:44	ToDiagramFactorId=40
 UO	13:44	WrappedLinkId=43
@@ -940,12 +940,12 @@ UO	13:50	FromDiagramFactorId=48
 UO	13:50	ToDiagramFactorId=38
 UO	13:50	WrappedLinkId=49
 CO	13:52
-UO	13:52	BendPoints={"Points":["{\"Y\":465,\"X\":795}"]}
+UO	13:52	BendPoints={"Points":["{\"X\":795,\"Y\":465}"]}
 UO	13:52	FromDiagramFactorId=48
 UO	13:52	ToDiagramFactorId=40
 UO	13:52	WrappedLinkId=51
 CO	13:54
-UO	13:54	BendPoints={"Points":["{\"Y\":465,\"X\":855}"]}
+UO	13:54	BendPoints={"Points":["{\"X\":855,\"Y\":465}"]}
 UO	13:54	FromDiagramFactorId=48
 UO	13:54	ToDiagramFactorId=36
 UO	13:54	WrappedLinkId=53
@@ -958,7 +958,7 @@ UO	13:62	FromDiagramFactorId=60
 UO	13:62	ToDiagramFactorId=34
 UO	13:62	WrappedLinkId=61
 CO	13:66
-UO	13:66	BendPoints={"Points":["{\"Y\":195,\"X\":735}","{\"Y\":195,\"X\":735}"]}
+UO	13:66	BendPoints={"Points":["{\"X\":735,\"Y\":195}","{\"X\":735,\"Y\":195}"]}
 UO	13:66	FromDiagramFactorId=64
 UO	13:66	ToDiagramFactorId=31
 UO	13:66	WrappedLinkId=65
@@ -967,7 +967,7 @@ UO	13:682	FromDiagramFactorId=68
 UO	13:682	ToDiagramFactorId=676
 UO	13:682	WrappedLinkId=681
 CO	13:684
-UO	13:684	BendPoints={"Points":["{\"Y\":135,\"X\":660}"]}
+UO	13:684	BendPoints={"Points":["{\"X\":660,\"Y\":135}"]}
 UO	13:684	FromDiagramFactorId=68
 UO	13:684	ToDiagramFactorId=678
 UO	13:684	WrappedLinkId=683
@@ -980,12 +980,12 @@ UO	13:691	FromDiagramFactorId=676
 UO	13:691	ToDiagramFactorId=31
 UO	13:691	WrappedLinkId=690
 CO	13:705
-UO	13:705	BendPoints={"Points":["{\"Y\":270,\"X\":390}","{\"Y\":315,\"X\":390}"]}
+UO	13:705	BendPoints={"Points":["{\"X\":390,\"Y\":270}","{\"X\":390,\"Y\":315}"]}
 UO	13:705	FromDiagramFactorId=700
 UO	13:705	ToDiagramFactorId=699
 UO	13:705	WrappedLinkId=57
 CO	13:707
-UO	13:707	BendPoints={"Points":["{\"Y\":270,\"X\":390}","{\"Y\":210,\"X\":390}"]}
+UO	13:707	BendPoints={"Points":["{\"X\":390,\"Y\":270}","{\"X\":390,\"Y\":210}"]}
 UO	13:707	FromDiagramFactorId=700
 UO	13:707	ToDiagramFactorId=698
 UO	13:707	WrappedLinkId=71
@@ -998,7 +998,7 @@ UO	13:728	FromDiagramFactorId=715
 UO	13:728	ToDiagramFactorId=700
 UO	13:728	WrappedLinkId=95
 CO	13:72
-UO	13:72	BendPoints={"Points":["{\"Y\":375,\"X\":750}","{\"Y\":195,\"X\":795}"]}
+UO	13:72	BendPoints={"Points":["{\"X\":750,\"Y\":375}","{\"X\":795,\"Y\":195}"]}
 UO	13:72	FromDiagramFactorId=56
 UO	13:72	ToDiagramFactorId=31
 UO	13:72	WrappedLinkId=71
@@ -1015,7 +1015,7 @@ UO	13:740	FromDiagramFactorId=698
 UO	13:740	ToDiagramFactorId=734
 UO	13:740	WrappedLinkId=739
 CO	13:742
-UO	13:742	BendPoints={"Points":["{\"Y\":315,\"X\":585}"]}
+UO	13:742	BendPoints={"Points":["{\"X\":585,\"Y\":315}"]}
 UO	13:742	FromDiagramFactorId=698
 UO	13:742	ToDiagramFactorId=730
 UO	13:742	WrappedLinkId=741
@@ -1028,7 +1028,7 @@ UO	13:80	FromDiagramFactorId=78
 UO	13:80	ToDiagramFactorId=74
 UO	13:80	WrappedLinkId=79
 CO	13:84
-UO	13:84	BendPoints={"Points":["{\"Y\":375,\"X\":495}"]}
+UO	13:84	BendPoints={"Points":["{\"X\":495,\"Y\":375}"]}
 UO	13:84	FromDiagramFactorId=82
 UO	13:84	ToDiagramFactorId=56
 UO	13:84	WrappedLinkId=83
@@ -1046,128 +1046,128 @@ UO	13:96	ToDiagramFactorId=56
 UO	13:96	WrappedLinkId=95
 CO	14:171
 UO	14:171	AccountingCode=427
-UO	14:171	Details={"DateUnitEfforts":[{"NumberOfUnits":3,"DateUnit":{"DateUnitCode":"2011Q1"}},{"NumberOfUnits":3,"DateUnit":{"DateUnitCode":"2011Q2"}},{"NumberOfUnits":3,"DateUnit":{"DateUnitCode":"2011Q3"}},{"NumberOfUnits":3,"DateUnit":{"DateUnitCode":"2011Q4"}},{"NumberOfUnits":5,"DateUnit":{"DateUnitCode":"YEARFROM:2012-01"}}]}
+UO	14:171	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011Q1"},"NumberOfUnits":3},{"DateUnit":{"DateUnitCode":"2011Q2"},"NumberOfUnits":3},{"DateUnit":{"DateUnitCode":"2011Q3"},"NumberOfUnits":3},{"DateUnit":{"DateUnitCode":"2011Q4"},"NumberOfUnits":3},{"DateUnit":{"DateUnitCode":"YEARFROM:2012-01"},"NumberOfUnits":5}]}
 UO	14:171	FundingSource=175
 UO	14:171	ResourceId=21
 CO	14:177
 UO	14:177	AccountingCode=427
-UO	14:177	Details={"DateUnitEfforts":[{"NumberOfUnits":3.5,"DateUnit":{"DateUnitCode":"2011Q1"}},{"NumberOfUnits":3.5,"DateUnit":{"DateUnitCode":"2011Q2"}},{"NumberOfUnits":3.5,"DateUnit":{"DateUnitCode":"2011Q3"}},{"NumberOfUnits":3.5,"DateUnit":{"DateUnitCode":"2011Q4"}},{"NumberOfUnits":60,"DateUnit":{"DateUnitCode":"YEARFROM:2012-01"}},{"NumberOfUnits":15,"DateUnit":{"DateUnitCode":"YEARFROM:2013-01"}}]}
+UO	14:177	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011Q1"},"NumberOfUnits":3.5},{"DateUnit":{"DateUnitCode":"2011Q2"},"NumberOfUnits":3.5},{"DateUnit":{"DateUnitCode":"2011Q3"},"NumberOfUnits":3.5},{"DateUnit":{"DateUnitCode":"2011Q4"},"NumberOfUnits":3.5},{"DateUnit":{"DateUnitCode":"YEARFROM:2012-01"},"NumberOfUnits":60},{"DateUnit":{"DateUnitCode":"YEARFROM:2013-01"},"NumberOfUnits":15}]}
 UO	14:177	FundingSource=175
 UO	14:177	ResourceId=24
 CO	14:178
 UO	14:178	AccountingCode=427
-UO	14:178	Details={"DateUnitEfforts":[{"NumberOfUnits":3.5,"DateUnit":{"DateUnitCode":"2011Q1"}},{"NumberOfUnits":3.5,"DateUnit":{"DateUnitCode":"2011Q2"}},{"NumberOfUnits":3.5,"DateUnit":{"DateUnitCode":"2011Q3"}},{"NumberOfUnits":3.5,"DateUnit":{"DateUnitCode":"2011Q4"}},{"NumberOfUnits":15,"DateUnit":{"DateUnitCode":"YEARFROM:2012-01"}},{"NumberOfUnits":5,"DateUnit":{"DateUnitCode":"YEARFROM:2013-01"}}]}
+UO	14:178	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011Q1"},"NumberOfUnits":3.5},{"DateUnit":{"DateUnitCode":"2011Q2"},"NumberOfUnits":3.5},{"DateUnit":{"DateUnitCode":"2011Q3"},"NumberOfUnits":3.5},{"DateUnit":{"DateUnitCode":"2011Q4"},"NumberOfUnits":3.5},{"DateUnit":{"DateUnitCode":"YEARFROM:2012-01"},"NumberOfUnits":15},{"DateUnit":{"DateUnitCode":"YEARFROM:2013-01"},"NumberOfUnits":5}]}
 UO	14:178	FundingSource=175
 UO	14:178	ResourceId=22
 CO	14:179
 UO	14:179	AccountingCode=427
-UO	14:179	Details={"DateUnitEfforts":[{"NumberOfUnits":5,"DateUnit":{"DateUnitCode":"2011Q1"}},{"NumberOfUnits":5,"DateUnit":{"DateUnitCode":"2011Q2"}},{"NumberOfUnits":5,"DateUnit":{"DateUnitCode":"2011Q3"}},{"NumberOfUnits":5,"DateUnit":{"DateUnitCode":"2011Q4"}}]}
+UO	14:179	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011Q1"},"NumberOfUnits":5},{"DateUnit":{"DateUnitCode":"2011Q2"},"NumberOfUnits":5},{"DateUnit":{"DateUnitCode":"2011Q3"},"NumberOfUnits":5},{"DateUnit":{"DateUnitCode":"2011Q4"},"NumberOfUnits":5}]}
 UO	14:179	FundingSource=175
 UO	14:179	ResourceId=22
 CO	14:180
 UO	14:180	AccountingCode=427
-UO	14:180	Details={"DateUnitEfforts":[{"NumberOfUnits":1.5,"DateUnit":{"DateUnitCode":"2011Q1"}},{"NumberOfUnits":1.5,"DateUnit":{"DateUnitCode":"2011Q2"}},{"NumberOfUnits":1.5,"DateUnit":{"DateUnitCode":"2011Q3"}},{"NumberOfUnits":1.5,"DateUnit":{"DateUnitCode":"2011Q4"}},{"NumberOfUnits":2,"DateUnit":{"DateUnitCode":"YEARFROM:2012-01"}}]}
+UO	14:180	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011Q1"},"NumberOfUnits":1.5},{"DateUnit":{"DateUnitCode":"2011Q2"},"NumberOfUnits":1.5},{"DateUnit":{"DateUnitCode":"2011Q3"},"NumberOfUnits":1.5},{"DateUnit":{"DateUnitCode":"2011Q4"},"NumberOfUnits":1.5},{"DateUnit":{"DateUnitCode":"YEARFROM:2012-01"},"NumberOfUnits":2}]}
 UO	14:180	FundingSource=175
 UO	14:180	ResourceId=22
 CO	14:441
 UO	14:441	AccountingCode=427
-UO	14:441	Details={"DateUnitEfforts":[{"NumberOfUnits":10,"DateUnit":{"DateUnitCode":"2011Q1"}}]}
+UO	14:441	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011Q1"},"NumberOfUnits":10}]}
 UO	14:441	FundingSource=175
 UO	14:441	ResourceId=21
 CO	14:444
 UO	14:444	AccountingCode=427
-UO	14:444	Details={"DateUnitEfforts":[{"NumberOfUnits":20,"DateUnit":{"DateUnitCode":"2011Q1"}},{"NumberOfUnits":5,"DateUnit":{"DateUnitCode":"2011Q2"}},{"NumberOfUnits":5,"DateUnit":{"DateUnitCode":"2011Q3"}},{"NumberOfUnits":5,"DateUnit":{"DateUnitCode":"2011Q4"}}]}
+UO	14:444	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011Q1"},"NumberOfUnits":20},{"DateUnit":{"DateUnitCode":"2011Q2"},"NumberOfUnits":5},{"DateUnit":{"DateUnitCode":"2011Q3"},"NumberOfUnits":5},{"DateUnit":{"DateUnitCode":"2011Q4"},"NumberOfUnits":5}]}
 UO	14:444	FundingSource=175
 UO	14:444	ResourceId=21
 CO	14:446
 UO	14:446	AccountingCode=427
-UO	14:446	Details={"DateUnitEfforts":[{"NumberOfUnits":10,"DateUnit":{"DateUnitCode":"2011Q2"}},{"NumberOfUnits":8,"DateUnit":{"DateUnitCode":"2011Q3"}},{"NumberOfUnits":8,"DateUnit":{"DateUnitCode":"2011Q4"}}]}
+UO	14:446	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011Q2"},"NumberOfUnits":10},{"DateUnit":{"DateUnitCode":"2011Q3"},"NumberOfUnits":8},{"DateUnit":{"DateUnitCode":"2011Q4"},"NumberOfUnits":8}]}
 UO	14:446	FundingSource=175
 UO	14:446	ResourceId=21
 CO	14:448
 UO	14:448	AccountingCode=429
-UO	14:448	Details={"DateUnitEfforts":[{"NumberOfUnits":5,"DateUnit":{"DateUnitCode":"2011Q1"}},{"NumberOfUnits":15,"DateUnit":{"DateUnitCode":"2011Q2"}},{"NumberOfUnits":15,"DateUnit":{"DateUnitCode":"2011Q3"}},{"NumberOfUnits":15,"DateUnit":{"DateUnitCode":"2011Q4"}}]}
+UO	14:448	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011Q1"},"NumberOfUnits":5},{"DateUnit":{"DateUnitCode":"2011Q2"},"NumberOfUnits":15},{"DateUnit":{"DateUnitCode":"2011Q3"},"NumberOfUnits":15},{"DateUnit":{"DateUnitCode":"2011Q4"},"NumberOfUnits":15}]}
 UO	14:448	FundingSource=176
 UO	14:448	ResourceId=426
 CO	14:449
 UO	14:449	AccountingCode=429
-UO	14:449	Details={"DateUnitEfforts":[{"NumberOfUnits":5,"DateUnit":{"DateUnitCode":"2011Q2"}},{"NumberOfUnits":5,"DateUnit":{"DateUnitCode":"2011Q3"}},{"NumberOfUnits":5,"DateUnit":{"DateUnitCode":"2011Q4"}}]}
+UO	14:449	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011Q2"},"NumberOfUnits":5},{"DateUnit":{"DateUnitCode":"2011Q3"},"NumberOfUnits":5},{"DateUnit":{"DateUnitCode":"2011Q4"},"NumberOfUnits":5}]}
 UO	14:449	FundingSource=176
 UO	14:449	ResourceId=426
 CO	14:452
 UO	14:452	AccountingCode=427
-UO	14:452	Details={"DateUnitEfforts":[{"NumberOfUnits":10,"DateUnit":{"DateUnitCode":"2011Q1"}}]}
+UO	14:452	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011Q1"},"NumberOfUnits":10}]}
 UO	14:452	FundingSource=175
 UO	14:452	ResourceId=21
 CO	14:453
 UO	14:453	AccountingCode=429
-UO	14:453	Details={"DateUnitEfforts":[{"NumberOfUnits":8,"DateUnit":{"DateUnitCode":"2011Q1"}}]}
+UO	14:453	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011Q1"},"NumberOfUnits":8}]}
 UO	14:453	FundingSource=176
 UO	14:453	ResourceId=426
 CO	14:455
 UO	14:455	AccountingCode=429
-UO	14:455	Details={"DateUnitEfforts":[{"NumberOfUnits":10,"DateUnit":{"DateUnitCode":"2011Q1"}},{"NumberOfUnits":20,"DateUnit":{"DateUnitCode":"2011Q2"}},{"NumberOfUnits":30,"DateUnit":{"DateUnitCode":"YEARFROM:2012-01"}},{"NumberOfUnits":30,"DateUnit":{"DateUnitCode":"YEARFROM:2013-01"}}]}
+UO	14:455	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011Q1"},"NumberOfUnits":10},{"DateUnit":{"DateUnitCode":"2011Q2"},"NumberOfUnits":20},{"DateUnit":{"DateUnitCode":"YEARFROM:2012-01"},"NumberOfUnits":30},{"DateUnit":{"DateUnitCode":"YEARFROM:2013-01"},"NumberOfUnits":30}]}
 UO	14:455	FundingSource=176
 UO	14:455	ResourceId=426
 CO	14:469
 UO	14:469	AccountingCode=427
-UO	14:469	Details={"DateUnitEfforts":[{"NumberOfUnits":7,"DateUnit":{"DateUnitCode":"2011Q2"}}]}
+UO	14:469	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011Q2"},"NumberOfUnits":7}]}
 UO	14:469	FundingSource=175
 UO	14:469	ResourceId=22
 CO	14:471
 UO	14:471	AccountingCode=427
-UO	14:471	Details={"DateUnitEfforts":[{"NumberOfUnits":1,"DateUnit":{"DateUnitCode":"2011Q1"}},{"NumberOfUnits":1,"DateUnit":{"DateUnitCode":"2011Q2"}},{"NumberOfUnits":1,"DateUnit":{"DateUnitCode":"2011Q3"}},{"NumberOfUnits":1,"DateUnit":{"DateUnitCode":"2011Q4"}},{"NumberOfUnits":2,"DateUnit":{"DateUnitCode":"YEARFROM:2012-01"}},{"NumberOfUnits":2,"DateUnit":{"DateUnitCode":"YEARFROM:2013-01"}}]}
+UO	14:471	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011Q1"},"NumberOfUnits":1},{"DateUnit":{"DateUnitCode":"2011Q2"},"NumberOfUnits":1},{"DateUnit":{"DateUnitCode":"2011Q3"},"NumberOfUnits":1},{"DateUnit":{"DateUnitCode":"2011Q4"},"NumberOfUnits":1},{"DateUnit":{"DateUnitCode":"YEARFROM:2012-01"},"NumberOfUnits":2},{"DateUnit":{"DateUnitCode":"YEARFROM:2013-01"},"NumberOfUnits":2}]}
 UO	14:471	FundingSource=175
 UO	14:471	ResourceId=22
 CO	14:531
-UO	14:531	Details={"DateUnitEfforts":[{"NumberOfUnits":3,"DateUnit":{"DateUnitCode":"2011Q3"}}]}
+UO	14:531	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011Q3"},"NumberOfUnits":3}]}
 UO	14:531	ResourceId=21
 CO	14:532
-UO	14:532	Details={"DateUnitEfforts":[{"NumberOfUnits":3,"DateUnit":{"DateUnitCode":"2011Q3"}}]}
+UO	14:532	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011Q3"},"NumberOfUnits":3}]}
 UO	14:532	ResourceId=426
 CO	14:534
 UO	14:534	AccountingCode=427
-UO	14:534	Details={"DateUnitEfforts":[{"NumberOfUnits":2,"DateUnit":{"DateUnitCode":""}}]}
+UO	14:534	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":""},"NumberOfUnits":2}]}
 UO	14:534	ResourceId=21
 CO	14:536
-UO	14:536	Details={"DateUnitEfforts":[{"NumberOfUnits":2,"DateUnit":{"DateUnitCode":"2011Q1"}},{"NumberOfUnits":2,"DateUnit":{"DateUnitCode":"2011Q2"}},{"NumberOfUnits":2,"DateUnit":{"DateUnitCode":"2011Q3"}},{"NumberOfUnits":2,"DateUnit":{"DateUnitCode":"2011Q4"}}]}
+UO	14:536	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011Q1"},"NumberOfUnits":2},{"DateUnit":{"DateUnitCode":"2011Q2"},"NumberOfUnits":2},{"DateUnit":{"DateUnitCode":"2011Q3"},"NumberOfUnits":2},{"DateUnit":{"DateUnitCode":"2011Q4"},"NumberOfUnits":2}]}
 UO	14:536	ResourceId=21
 CO	14:537
-UO	14:537	Details={"DateUnitEfforts":[{"NumberOfUnits":2,"DateUnit":{"DateUnitCode":"2011Q1"}},{"NumberOfUnits":2,"DateUnit":{"DateUnitCode":"2011Q2"}},{"NumberOfUnits":2,"DateUnit":{"DateUnitCode":"2011Q3"}},{"NumberOfUnits":2,"DateUnit":{"DateUnitCode":"2011Q4"}}]}
+UO	14:537	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011Q1"},"NumberOfUnits":2},{"DateUnit":{"DateUnitCode":"2011Q2"},"NumberOfUnits":2},{"DateUnit":{"DateUnitCode":"2011Q3"},"NumberOfUnits":2},{"DateUnit":{"DateUnitCode":"2011Q4"},"NumberOfUnits":2}]}
 UO	14:537	ResourceId=426
 CO	14:539
-UO	14:539	Details={"DateUnitEfforts":[{"NumberOfUnits":1,"DateUnit":{"DateUnitCode":"2011-07-14"}}]}
+UO	14:539	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011-07-14"},"NumberOfUnits":1}]}
 UO	14:539	ResourceId=24
 CO	14:540
-UO	14:540	Details={"DateUnitEfforts":[{"NumberOfUnits":1,"DateUnit":{"DateUnitCode":"2011-07-14"}}]}
+UO	14:540	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011-07-14"},"NumberOfUnits":1}]}
 UO	14:540	ResourceId=22
 CO	14:541
 UO	14:541	ResourceId=22
 CO	14:543
-UO	14:543	Details={"DateUnitEfforts":[{"NumberOfUnits":0,"DateUnit":{"DateUnitCode":""}}]}
+UO	14:543	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":""},"NumberOfUnits":0}]}
 UO	14:543	ResourceId=23
 CO	14:545
-UO	14:545	Details={"DateUnitEfforts":[{"NumberOfUnits":20,"DateUnit":{"DateUnitCode":"2011Q3"}},{"NumberOfUnits":20,"DateUnit":{"DateUnitCode":"2011Q4"}},{"NumberOfUnits":25,"DateUnit":{"DateUnitCode":"YEARFROM:2012-01"}},{"NumberOfUnits":30,"DateUnit":{"DateUnitCode":"YEARFROM:2013-01"}}]}
+UO	14:545	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011Q3"},"NumberOfUnits":20},{"DateUnit":{"DateUnitCode":"2011Q4"},"NumberOfUnits":20},{"DateUnit":{"DateUnitCode":"YEARFROM:2012-01"},"NumberOfUnits":25},{"DateUnit":{"DateUnitCode":"YEARFROM:2013-01"},"NumberOfUnits":30}]}
 UO	14:545	ResourceId=22
 CO	14:546
-UO	14:546	Details={"DateUnitEfforts":[{"NumberOfUnits":20,"DateUnit":{"DateUnitCode":"2011Q3"}},{"NumberOfUnits":20,"DateUnit":{"DateUnitCode":"2011Q4"}},{"NumberOfUnits":25,"DateUnit":{"DateUnitCode":"YEARFROM:2012-01"}},{"NumberOfUnits":30,"DateUnit":{"DateUnitCode":"YEARFROM:2013-01"}}]}
+UO	14:546	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011Q3"},"NumberOfUnits":20},{"DateUnit":{"DateUnitCode":"2011Q4"},"NumberOfUnits":20},{"DateUnit":{"DateUnitCode":"YEARFROM:2012-01"},"NumberOfUnits":25},{"DateUnit":{"DateUnitCode":"YEARFROM:2013-01"},"NumberOfUnits":30}]}
 UO	14:546	ResourceId=23
 CO	14:591
-UO	14:591	Details={"DateUnitEfforts":[{"NumberOfUnits":8,"DateUnit":{"DateUnitCode":"2011Q1"}},{"NumberOfUnits":0.5,"DateUnit":{"DateUnitCode":"2011Q2"}},{"NumberOfUnits":0.5,"DateUnit":{"DateUnitCode":"2011Q3"}},{"NumberOfUnits":0.5,"DateUnit":{"DateUnitCode":"2011Q4"}},{"NumberOfUnits":10,"DateUnit":{"DateUnitCode":"YEARFROM:2012-01"}},{"NumberOfUnits":10,"DateUnit":{"DateUnitCode":"YEARFROM:2013-01"}}]}
+UO	14:591	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011Q1"},"NumberOfUnits":8},{"DateUnit":{"DateUnitCode":"2011Q2"},"NumberOfUnits":0.5},{"DateUnit":{"DateUnitCode":"2011Q3"},"NumberOfUnits":0.5},{"DateUnit":{"DateUnitCode":"2011Q4"},"NumberOfUnits":0.5},{"DateUnit":{"DateUnitCode":"YEARFROM:2012-01"},"NumberOfUnits":10},{"DateUnit":{"DateUnitCode":"YEARFROM:2013-01"},"NumberOfUnits":10}]}
 UO	14:591	ResourceId=21
 CO	14:592
 CO	14:593
 UO	14:593	AccountingCode=427
-UO	14:593	Details={"DateUnitEfforts":[{"NumberOfUnits":70,"DateUnit":{"DateUnitCode":"YEARFROM:2011-01"}}]}
+UO	14:593	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"YEARFROM:2011-01"},"NumberOfUnits":70}]}
 UO	14:593	FundingSource=175
 UO	14:593	ResourceId=21
 CO	14:594
 UO	14:594	AccountingCode=429
-UO	14:594	Details={"DateUnitEfforts":[{"NumberOfUnits":70,"DateUnit":{"DateUnitCode":"YEARFROM:2011-01"}}]}
+UO	14:594	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"YEARFROM:2011-01"},"NumberOfUnits":70}]}
 UO	14:594	FundingSource=175
 UO	14:594	ResourceId=426
 CO	14:773
-UO	14:773	Details={"DateUnitEfforts":[{"NumberOfUnits":0,"DateUnit":{"DateUnitCode":"2011Q1"}}]}
+UO	14:773	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011Q1"},"NumberOfUnits":0}]}
 CO	15:427
 UO	15:427	Code=1000
 UO	15:427	Label=Salaries &amp; wages
@@ -1226,478 +1226,478 @@ UO	17:297	IndicatorIds={"Ids":[298]}
 UO	17:297	KeyEcologicalAttributeType=10
 UO	17:297	Label=Population Size of Ruby Crested Puffin
 CO	18:1003
-UO	18:1003	Location={"Y":180,"X":765}
+UO	18:1003	Location={"X":765,"Y":180}
 UO	18:1003	Size={"Height":60,"Width":120}
 UO	18:1003	WrappedFactorRef={"ObjectType":20,"ObjectId":1002}
 CO	18:102
-UO	18:102	Location={"Y":225,"X":60}
+UO	18:102	Location={"X":60,"Y":225}
 UO	18:102	Size={"Height":60,"Width":120}
 UO	18:102	WrappedFactorRef={"ObjectType":20,"ObjectId":101}
 CO	18:1066
-UO	18:1066	Location={"Y":75,"X":765}
+UO	18:1066	Location={"X":765,"Y":75}
 UO	18:1066	Size={"Height":180,"Width":180}
 UO	18:1066	WrappedFactorRef={"ObjectType":50,"ObjectId":1009}
 CO	18:1067
 UO	18:1067	FontSize=1.25
 UO	18:1067	FontStyle=<B>
-UO	18:1067	Location={"Y":15,"X":45}
+UO	18:1067	Location={"X":45,"Y":15}
 UO	18:1067	Size={"Height":30,"Width":570}
 UO	18:1067	WrappedFactorRef={"ObjectType":26,"ObjectId":1010}
 CO	18:1068
-UO	18:1068	Location={"Y":150,"X":570}
+UO	18:1068	Location={"X":570,"Y":150}
 UO	18:1068	Size={"Height":90,"Width":120}
 UO	18:1068	WrappedFactorRef={"ObjectType":25,"ObjectId":257}
 CO	18:1069
-UO	18:1069	Location={"Y":150,"X":405}
+UO	18:1069	Location={"X":405,"Y":150}
 UO	18:1069	Size={"Height":90,"Width":120}
 UO	18:1069	WrappedFactorRef={"ObjectType":23,"ObjectId":260}
 CO	18:106
-UO	18:106	Location={"Y":135,"X":60}
+UO	18:106	Location={"X":60,"Y":135}
 UO	18:106	Size={"Height":60,"Width":120}
 UO	18:106	WrappedFactorRef={"ObjectType":20,"ObjectId":105}
 CO	18:1070
-UO	18:1070	Location={"Y":150,"X":210}
+UO	18:1070	Location={"X":210,"Y":150}
 UO	18:1070	Size={"Height":90,"Width":150}
 UO	18:1070	WrappedFactorRef={"ObjectType":23,"ObjectId":263}
 CO	18:1071
-UO	18:1071	Location={"Y":150,"X":45}
+UO	18:1071	Location={"X":45,"Y":150}
 UO	18:1071	Size={"Height":90,"Width":120}
 UO	18:1071	WrappedFactorRef={"ObjectType":23,"ObjectId":265}
 CO	18:1072
-UO	18:1072	Location={"Y":120,"X":810}
+UO	18:1072	Location={"X":810,"Y":120}
 UO	18:1072	Size={"Height":60,"Width":120}
 UO	18:1072	WrappedFactorRef={"ObjectType":22,"ObjectId":39}
 CO	18:1073
-UO	18:1073	Location={"Y":285,"X":450}
+UO	18:1073	Location={"X":450,"Y":285}
 UO	18:1073	Size={"Height":60,"Width":150}
 UO	18:1073	WrappedFactorRef={"ObjectType":21,"ObjectId":139}
 CO	18:1074
-UO	18:1074	Location={"Y":465,"X":0}
+UO	18:1074	Location={"X":0,"Y":465}
 UO	18:1074	Size={"Height":60,"Width":180}
 UO	18:1074	WrappedFactorRef={"ObjectType":21,"ObjectId":135}
 CO	18:1075
-UO	18:1075	Location={"Y":360,"X":150}
+UO	18:1075	Location={"X":150,"Y":360}
 UO	18:1075	Size={"Height":30,"Width":270}
 UO	18:1075	WrappedFactorRef={"ObjectType":3,"ObjectId":164}
 CO	18:1076
-UO	18:1076	Location={"Y":315,"X":150}
+UO	18:1076	Location={"X":150,"Y":315}
 UO	18:1076	Size={"Height":30,"Width":270}
 UO	18:1076	WrappedFactorRef={"ObjectType":3,"ObjectId":166}
 CO	18:1077
-UO	18:1077	Location={"Y":405,"X":150}
+UO	18:1077	Location={"X":150,"Y":405}
 UO	18:1077	Size={"Height":30,"Width":270}
 UO	18:1077	WrappedFactorRef={"ObjectType":3,"ObjectId":165}
 CO	18:1094
-UO	18:1094	Location={"Y":120,"X":1155}
+UO	18:1094	Location={"X":1155,"Y":120}
 UO	18:1094	Size={"Height":60,"Width":120}
 UO	18:1094	WrappedFactorRef={"ObjectType":52,"ObjectId":1092}
 CO	18:1095
-UO	18:1095	Location={"Y":75,"X":1125}
+UO	18:1095	Location={"X":1125,"Y":75}
 UO	18:1095	Size={"Height":180,"Width":180}
 UO	18:1095	WrappedFactorRef={"ObjectType":50,"ObjectId":1093}
 CO	18:1097
-UO	18:1097	Location={"Y":105,"X":975}
+UO	18:1097	Location={"X":975,"Y":105}
 UO	18:1097	Size={"Height":90,"Width":120}
 UO	18:1097	WrappedFactorRef={"ObjectType":23,"ObjectId":1096}
 CO	18:110
 UO	18:110	GroupBoxChildrenRefs={"References":[{"ObjectType":18,"ObjectId":102},{"ObjectType":18,"ObjectId":106}]}
-UO	18:110	Location={"Y":90,"X":45}
+UO	18:110	Location={"X":45,"Y":90}
 UO	18:110	Size={"Height":210,"Width":150}
 UO	18:110	WrappedFactorRef={"ObjectType":35,"ObjectId":109}
 CO	18:113
-UO	18:113	Location={"Y":180,"X":270}
+UO	18:113	Location={"X":270,"Y":180}
 UO	18:113	Size={"Height":60,"Width":150}
 UO	18:113	WrappedFactorRef={"ObjectType":20,"ObjectId":112}
 CO	18:117
-UO	18:117	Location={"Y":585,"X":60}
+UO	18:117	Location={"X":60,"Y":585}
 UO	18:117	Size={"Height":60,"Width":120}
 UO	18:117	WrappedFactorRef={"ObjectType":20,"ObjectId":116}
 CO	18:128
-UO	18:128	Location={"Y":30,"X":405}
+UO	18:128	Location={"X":405,"Y":30}
 UO	18:128	Size={"Height":60,"Width":120}
 UO	18:128	WrappedFactorRef={"ObjectType":20,"ObjectId":127}
 CO	18:132
-UO	18:132	Location={"Y":345,"X":60}
+UO	18:132	Location={"X":60,"Y":345}
 UO	18:132	Size={"Height":60,"Width":180}
 UO	18:132	WrappedFactorRef={"ObjectType":21,"ObjectId":131}
 CO	18:136
-UO	18:136	Location={"Y":675,"X":75}
+UO	18:136	Location={"X":75,"Y":675}
 UO	18:136	Size={"Height":60,"Width":180}
 UO	18:136	WrappedFactorRef={"ObjectType":21,"ObjectId":135}
 CO	18:140
-UO	18:140	Location={"Y":675,"X":465}
+UO	18:140	Location={"X":465,"Y":675}
 UO	18:140	Size={"Height":60,"Width":150}
 UO	18:140	WrappedFactorRef={"ObjectType":21,"ObjectId":139}
 CO	18:144
-UO	18:144	Location={"Y":90,"X":210}
+UO	18:144	Location={"X":210,"Y":90}
 UO	18:144	Size={"Height":60,"Width":210}
 UO	18:144	WrappedFactorRef={"ObjectType":21,"ObjectId":143}
 CO	18:148
 UO	18:148	BackgroundColor=LightPurple
 UO	18:148	FontSize=1.25
 UO	18:148	FontStyle=<B>
-UO	18:148	Location={"Y":660,"X":750}
+UO	18:148	Location={"X":750,"Y":660}
 UO	18:148	Size={"Height":60,"Width":210}
 UO	18:148	WrappedFactorRef={"ObjectType":26,"ObjectId":147}
 CO	18:182
-UO	18:182	Location={"Y":300,"X":765}
+UO	18:182	Location={"X":765,"Y":300}
 UO	18:182	Size={"Height":60,"Width":120}
 UO	18:182	WrappedFactorRef={"ObjectType":22,"ObjectId":33}
 CO	18:183
-UO	18:183	Location={"Y":120,"X":75}
+UO	18:183	Location={"X":75,"Y":120}
 UO	18:183	Size={"Height":60,"Width":150}
 UO	18:183	WrappedFactorRef={"ObjectType":21,"ObjectId":143}
 CO	18:187
-UO	18:187	Location={"Y":270,"X":585}
+UO	18:187	Location={"X":585,"Y":270}
 UO	18:187	Size={"Height":120,"Width":120}
 UO	18:187	WrappedFactorRef={"ObjectType":25,"ObjectId":186}
 CO	18:198
-UO	18:198	Location={"Y":270,"X":420}
+UO	18:198	Location={"X":420,"Y":270}
 UO	18:198	Size={"Height":120,"Width":120}
 UO	18:198	WrappedFactorRef={"ObjectType":23,"ObjectId":197}
 CO	18:202
-UO	18:202	Location={"Y":270,"X":255}
+UO	18:202	Location={"X":255,"Y":270}
 UO	18:202	Size={"Height":120,"Width":120}
 UO	18:202	WrappedFactorRef={"ObjectType":23,"ObjectId":201}
 CO	18:206
-UO	18:206	Location={"Y":270,"X":90}
+UO	18:206	Location={"X":90,"Y":270}
 UO	18:206	Size={"Height":120,"Width":120}
 UO	18:206	WrappedFactorRef={"ObjectType":23,"ObjectId":205}
 CO	18:256
-UO	18:256	Location={"Y":150,"X":825}
+UO	18:256	Location={"X":825,"Y":150}
 UO	18:256	Size={"Height":60,"Width":120}
 UO	18:256	WrappedFactorRef={"ObjectType":22,"ObjectId":39}
 CO	18:258
-UO	18:258	Location={"Y":180,"X":600}
+UO	18:258	Location={"X":600,"Y":180}
 UO	18:258	Size={"Height":90,"Width":120}
 UO	18:258	WrappedFactorRef={"ObjectType":25,"ObjectId":257}
 CO	18:259
-UO	18:259	Location={"Y":315,"X":480}
+UO	18:259	Location={"X":480,"Y":315}
 UO	18:259	Size={"Height":60,"Width":150}
 UO	18:259	WrappedFactorRef={"ObjectType":21,"ObjectId":139}
 CO	18:261
-UO	18:261	Location={"Y":180,"X":435}
+UO	18:261	Location={"X":435,"Y":180}
 UO	18:261	Size={"Height":90,"Width":120}
 UO	18:261	WrappedFactorRef={"ObjectType":23,"ObjectId":260}
 CO	18:262
-UO	18:262	Location={"Y":495,"X":30}
+UO	18:262	Location={"X":30,"Y":495}
 UO	18:262	Size={"Height":60,"Width":180}
 UO	18:262	WrappedFactorRef={"ObjectType":21,"ObjectId":135}
 CO	18:264
-UO	18:264	Location={"Y":180,"X":240}
+UO	18:264	Location={"X":240,"Y":180}
 UO	18:264	Size={"Height":90,"Width":150}
 UO	18:264	WrappedFactorRef={"ObjectType":23,"ObjectId":263}
 CO	18:266
-UO	18:266	Location={"Y":180,"X":75}
+UO	18:266	Location={"X":75,"Y":180}
 UO	18:266	Size={"Height":90,"Width":120}
 UO	18:266	WrappedFactorRef={"ObjectType":23,"ObjectId":265}
 CO	18:280
-UO	18:280	Location={"Y":600,"X":900}
+UO	18:280	Location={"X":900,"Y":600}
 UO	18:280	Size={"Height":60,"Width":180}
 UO	18:280	WrappedFactorRef={"ObjectType":21,"ObjectId":279}
 CO	18:284
-UO	18:284	Location={"Y":420,"X":15}
+UO	18:284	Location={"X":15,"Y":420}
 UO	18:284	Size={"Height":60,"Width":120}
 UO	18:284	WrappedFactorRef={"ObjectType":21,"ObjectId":283}
 CO	18:290
-UO	18:290	Location={"Y":675,"X":270}
+UO	18:290	Location={"X":270,"Y":675}
 UO	18:290	Size={"Height":60,"Width":180}
 UO	18:290	WrappedFactorRef={"ObjectType":21,"ObjectId":289}
 CO	18:294
-UO	18:294	Location={"Y":495,"X":585}
+UO	18:294	Location={"X":585,"Y":495}
 UO	18:294	Size={"Height":60,"Width":150}
 UO	18:294	WrappedFactorRef={"ObjectType":21,"ObjectId":293}
 CO	18:31
-UO	18:31	Location={"Y":165,"X":900}
+UO	18:31	Location={"X":900,"Y":165}
 UO	18:31	Size={"Height":60,"Width":120}
 UO	18:31	WrappedFactorRef={"ObjectType":22,"ObjectId":30}
 CO	18:322
-UO	18:322	Location={"Y":405,"X":195}
+UO	18:322	Location={"X":195,"Y":405}
 UO	18:322	Size={"Height":60,"Width":210}
 UO	18:322	WrappedFactorRef={"ObjectType":21,"ObjectId":321}
 CO	18:328
-UO	18:328	Location={"Y":30,"X":45}
+UO	18:328	Location={"X":45,"Y":30}
 UO	18:328	Size={"Height":60,"Width":150}
 UO	18:328	WrappedFactorRef={"ObjectType":21,"ObjectId":327}
 CO	18:332
-UO	18:332	Location={"Y":165,"X":600}
+UO	18:332	Location={"X":600,"Y":165}
 UO	18:332	Size={"Height":60,"Width":150}
 UO	18:332	WrappedFactorRef={"ObjectType":21,"ObjectId":331}
 CO	18:336
-UO	18:336	Location={"Y":180,"X":465}
+UO	18:336	Location={"X":465,"Y":180}
 UO	18:336	Size={"Height":60,"Width":150}
 UO	18:336	WrappedFactorRef={"ObjectType":21,"ObjectId":335}
 CO	18:340
-UO	18:340	Location={"Y":210,"X":270}
+UO	18:340	Location={"X":270,"Y":210}
 UO	18:340	Size={"Height":60,"Width":210}
 UO	18:340	WrappedFactorRef={"ObjectType":21,"ObjectId":339}
 CO	18:344
-UO	18:344	Location={"Y":525,"X":270}
+UO	18:344	Location={"X":270,"Y":525}
 UO	18:344	Size={"Height":60,"Width":150}
 UO	18:344	WrappedFactorRef={"ObjectType":21,"ObjectId":343}
 CO	18:349
-UO	18:349	Location={"Y":315,"X":600}
+UO	18:349	Location={"X":600,"Y":315}
 UO	18:349	Size={"Height":90,"Width":120}
 UO	18:349	WrappedFactorRef={"ObjectType":25,"ObjectId":348}
 CO	18:34
-UO	18:34	Location={"Y":255,"X":900}
+UO	18:34	Location={"X":900,"Y":255}
 UO	18:34	Size={"Height":60,"Width":120}
 UO	18:34	WrappedFactorRef={"ObjectType":22,"ObjectId":33}
 CO	18:351
-UO	18:351	Location={"Y":480,"X":330}
+UO	18:351	Location={"X":330,"Y":480}
 UO	18:351	Size={"Height":90,"Width":120}
 UO	18:351	WrappedFactorRef={"ObjectType":23,"ObjectId":350}
 CO	18:353
-UO	18:353	Location={"Y":480,"X":165}
+UO	18:353	Location={"X":165,"Y":480}
 UO	18:353	Size={"Height":90,"Width":120}
 UO	18:353	WrappedFactorRef={"ObjectType":23,"ObjectId":352}
 CO	18:354
-UO	18:354	Location={"Y":195,"X":15}
+UO	18:354	Location={"X":15,"Y":195}
 UO	18:354	Size={"Height":60,"Width":180}
 UO	18:354	WrappedFactorRef={"ObjectType":21,"ObjectId":131}
 CO	18:355
-UO	18:355	Location={"Y":165,"X":855}
+UO	18:355	Location={"X":855,"Y":165}
 UO	18:355	Size={"Height":60,"Width":120}
 UO	18:355	WrappedFactorRef={"ObjectType":22,"ObjectId":30}
 CO	18:356
 UO	18:356	FontSize=0.9
-UO	18:356	Location={"Y":330,"X":855}
+UO	18:356	Location={"X":855,"Y":330}
 UO	18:356	Size={"Height":60,"Width":120}
 UO	18:356	WrappedFactorRef={"ObjectType":22,"ObjectId":35}
 CO	18:358
-UO	18:358	Location={"Y":480,"X":495}
+UO	18:358	Location={"X":495,"Y":480}
 UO	18:358	Size={"Height":90,"Width":120}
 UO	18:358	WrappedFactorRef={"ObjectType":23,"ObjectId":357}
 CO	18:360
-UO	18:360	Location={"Y":315,"X":45}
+UO	18:360	Location={"X":45,"Y":315}
 UO	18:360	Size={"Height":90,"Width":120}
 UO	18:360	WrappedFactorRef={"ObjectType":23,"ObjectId":359}
 CO	18:36
 UO	18:36	FontSize=0.9
-UO	18:36	Location={"Y":345,"X":900}
+UO	18:36	Location={"X":900,"Y":345}
 UO	18:36	Size={"Height":60,"Width":120}
 UO	18:36	WrappedFactorRef={"ObjectType":22,"ObjectId":35}
 CO	18:376
-UO	18:376	Location={"Y":315,"X":405}
+UO	18:376	Location={"X":405,"Y":315}
 UO	18:376	Size={"Height":90,"Width":120}
 UO	18:376	WrappedFactorRef={"ObjectType":23,"ObjectId":375}
 CO	18:380
-UO	18:380	Location={"Y":315,"X":225}
+UO	18:380	Location={"X":225,"Y":315}
 UO	18:380	Size={"Height":90,"Width":120}
 UO	18:380	WrappedFactorRef={"ObjectType":23,"ObjectId":379}
 CO	18:386
-UO	18:386	Location={"Y":180,"X":405}
+UO	18:386	Location={"X":405,"Y":180}
 UO	18:386	Size={"Height":90,"Width":120}
 UO	18:386	WrappedFactorRef={"ObjectType":23,"ObjectId":385}
 CO	18:38
-UO	18:38	Location={"Y":435,"X":900}
+UO	18:38	Location={"X":900,"Y":435}
 UO	18:38	Size={"Height":60,"Width":120}
 UO	18:38	WrappedFactorRef={"ObjectType":22,"ObjectId":37}
 CO	18:404
 UO	18:404	FontSize=1.25
 UO	18:404	FontStyle=<B>
-UO	18:404	Location={"Y":90,"X":60}
+UO	18:404	Location={"X":60,"Y":90}
 UO	18:404	Size={"Height":30,"Width":450}
 UO	18:404	WrappedFactorRef={"ObjectType":26,"ObjectId":403}
 CO	18:406
 UO	18:406	FontSize=1.25
 UO	18:406	FontStyle=<B>
-UO	18:406	Location={"Y":45,"X":75}
+UO	18:406	Location={"X":75,"Y":45}
 UO	18:406	Size={"Height":30,"Width":450}
 UO	18:406	WrappedFactorRef={"ObjectType":26,"ObjectId":405}
 CO	18:408
 UO	18:408	FontSize=1.25
 UO	18:408	FontStyle=<B>
-UO	18:408	Location={"Y":45,"X":165}
+UO	18:408	Location={"X":165,"Y":45}
 UO	18:408	Size={"Height":30,"Width":540}
 UO	18:408	WrappedFactorRef={"ObjectType":26,"ObjectId":407}
 CO	18:40
-UO	18:40	Location={"Y":525,"X":900}
+UO	18:40	Location={"X":900,"Y":525}
 UO	18:40	Size={"Height":60,"Width":120}
 UO	18:40	WrappedFactorRef={"ObjectType":22,"ObjectId":39}
 CO	18:410
 UO	18:410	BackgroundColor=Orange
-UO	18:410	Location={"Y":120,"X":240}
+UO	18:410	Location={"X":240,"Y":120}
 UO	18:410	Size={"Height":30,"Width":180}
 UO	18:410	WrappedFactorRef={"ObjectType":26,"ObjectId":409}
 CO	18:412
 UO	18:412	BackgroundColor=Orange
-UO	18:412	Location={"Y":120,"X":510}
+UO	18:412	Location={"X":510,"Y":120}
 UO	18:412	Size={"Height":30,"Width":180}
 UO	18:412	WrappedFactorRef={"ObjectType":26,"ObjectId":411}
 CO	18:414
 UO	18:414	BackgroundColor=LightYellow
-UO	18:414	Location={"Y":435,"X":180}
+UO	18:414	Location={"X":180,"Y":435}
 UO	18:414	Size={"Height":30,"Width":90}
 UO	18:414	WrappedFactorRef={"ObjectType":26,"ObjectId":413}
 CO	18:416
 UO	18:416	BackgroundColor=LightYellow
-UO	18:416	Location={"Y":435,"X":420}
+UO	18:416	Location={"X":420,"Y":435}
 UO	18:416	Size={"Height":30,"Width":90}
 UO	18:416	WrappedFactorRef={"ObjectType":26,"ObjectId":415}
 CO	18:418
 UO	18:418	BackgroundColor=LightYellow
-UO	18:418	Location={"Y":435,"X":600}
+UO	18:418	Location={"X":600,"Y":435}
 UO	18:418	Size={"Height":30,"Width":90}
 UO	18:418	WrappedFactorRef={"ObjectType":26,"ObjectId":417}
 CO	18:42
-UO	18:42	Location={"Y":585,"X":600}
+UO	18:42	Location={"X":600,"Y":585}
 UO	18:42	Size={"Height":60,"Width":120}
 UO	18:42	WrappedFactorRef={"ObjectType":20,"ObjectId":41}
 CO	18:473
-UO	18:473	Location={"Y":435,"X":180}
+UO	18:473	Location={"X":180,"Y":435}
 UO	18:473	Size={"Height":30,"Width":270}
 UO	18:473	WrappedFactorRef={"ObjectType":3,"ObjectId":165}
 CO	18:474
-UO	18:474	Location={"Y":390,"X":180}
+UO	18:474	Location={"X":180,"Y":390}
 UO	18:474	Size={"Height":30,"Width":270}
 UO	18:474	WrappedFactorRef={"ObjectType":3,"ObjectId":164}
 CO	18:475
-UO	18:475	Location={"Y":345,"X":180}
+UO	18:475	Location={"X":180,"Y":345}
 UO	18:475	Size={"Height":30,"Width":270}
 UO	18:475	WrappedFactorRef={"ObjectType":3,"ObjectId":166}
 CO	18:476
-UO	18:476	Location={"Y":195,"X":30}
+UO	18:476	Location={"X":30,"Y":195}
 UO	18:476	Size={"Height":30,"Width":210}
 UO	18:476	WrappedFactorRef={"ObjectType":3,"ObjectId":163}
 CO	18:477
-UO	18:477	Location={"Y":210,"X":285}
+UO	18:477	Location={"X":285,"Y":210}
 UO	18:477	Size={"Height":30,"Width":240}
 UO	18:477	WrappedFactorRef={"ObjectType":3,"ObjectId":464}
 CO	18:48
-UO	18:48	Location={"Y":435,"X":645}
+UO	18:48	Location={"X":645,"Y":435}
 UO	18:48	Size={"Height":60,"Width":120}
 UO	18:48	WrappedFactorRef={"ObjectType":20,"ObjectId":47}
 CO	18:491
-UO	18:491	Location={"Y":210,"X":705}
+UO	18:491	Location={"X":705,"Y":210}
 UO	18:491	Size={"Height":30,"Width":150}
 UO	18:491	WrappedFactorRef={"ObjectType":33,"ObjectId":487}
 CO	18:495
-UO	18:495	Location={"Y":570,"X":735}
+UO	18:495	Location={"X":735,"Y":570}
 UO	18:495	Size={"Height":30,"Width":120}
 UO	18:495	WrappedFactorRef={"ObjectType":33,"ObjectId":492}
 CO	18:523
-UO	18:523	Location={"Y":90,"X":870}
+UO	18:523	Location={"X":870,"Y":90}
 UO	18:523	Size={"Height":540,"Width":180}
 UO	18:523	WrappedFactorRef={"ObjectType":50,"ObjectId":522}
 CO	18:56
-UO	18:56	Location={"Y":345,"X":540}
+UO	18:56	Location={"X":540,"Y":345}
 UO	18:56	Size={"Height":60,"Width":150}
 UO	18:56	WrappedFactorRef={"ObjectType":20,"ObjectId":55}
 CO	18:60
-UO	18:60	Location={"Y":255,"X":570}
+UO	18:60	Location={"X":570,"Y":255}
 UO	18:60	Size={"Height":60,"Width":150}
 UO	18:60	WrappedFactorRef={"ObjectType":20,"ObjectId":59}
 CO	18:64
-UO	18:64	Location={"Y":165,"X":525}
+UO	18:64	Location={"X":525,"Y":165}
 UO	18:64	Size={"Height":60,"Width":120}
 UO	18:64	WrappedFactorRef={"ObjectType":20,"ObjectId":63}
 CO	18:676
-UO	18:676	Location={"Y":30,"X":750}
+UO	18:676	Location={"X":750,"Y":30}
 UO	18:676	Size={"Height":60,"Width":90}
 UO	18:676	WrappedFactorRef={"ObjectType":20,"ObjectId":675}
 CO	18:678
-UO	18:678	Location={"Y":105,"X":750}
+UO	18:678	Location={"X":750,"Y":105}
 UO	18:678	Size={"Height":60,"Width":90}
 UO	18:678	WrappedFactorRef={"ObjectType":20,"ObjectId":677}
 CO	18:68
-UO	18:68	Location={"Y":30,"X":600}
+UO	18:68	Location={"X":600,"Y":30}
 UO	18:68	Size={"Height":60,"Width":120}
 UO	18:68	WrappedFactorRef={"ObjectType":20,"ObjectId":67}
 CO	18:694
-UO	18:694	Location={"Y":105,"X":795}
+UO	18:694	Location={"X":795,"Y":105}
 UO	18:694	Size={"Height":180,"Width":180}
 UO	18:694	WrappedFactorRef={"ObjectType":50,"ObjectId":522}
 CO	18:695
-UO	18:695	Location={"Y":120,"X":825}
+UO	18:695	Location={"X":825,"Y":120}
 UO	18:695	Size={"Height":300,"Width":180}
 UO	18:695	WrappedFactorRef={"ObjectType":50,"ObjectId":522}
 CO	18:696
-UO	18:696	Location={"Y":240,"X":735}
+UO	18:696	Location={"X":735,"Y":240}
 UO	18:696	Size={"Height":180,"Width":180}
 UO	18:696	WrappedFactorRef={"ObjectType":50,"ObjectId":522}
 CO	18:697
-UO	18:697	Location={"Y":120,"X":405}
+UO	18:697	Location={"X":405,"Y":120}
 UO	18:697	Size={"Height":270,"Width":180}
 UO	18:697	WrappedFactorRef={"ObjectType":50,"ObjectId":522}
 CO	18:698
-UO	18:698	Location={"Y":180,"X":435}
+UO	18:698	Location={"X":435,"Y":180}
 UO	18:698	Size={"Height":60,"Width":120}
 UO	18:698	WrappedFactorRef={"ObjectType":22,"ObjectId":30}
 CO	18:699
 UO	18:699	FontSize=0.9
-UO	18:699	Location={"Y":285,"X":435}
+UO	18:699	Location={"X":435,"Y":285}
 UO	18:699	Size={"Height":60,"Width":120}
 UO	18:699	WrappedFactorRef={"ObjectType":22,"ObjectId":35}
 CO	18:700
-UO	18:700	Location={"Y":240,"X":225}
+UO	18:700	Location={"X":225,"Y":240}
 UO	18:700	Size={"Height":60,"Width":150}
 UO	18:700	WrappedFactorRef={"ObjectType":20,"ObjectId":55}
 CO	18:712
-UO	18:712	Location={"Y":135,"X":45}
+UO	18:712	Location={"X":45,"Y":135}
 UO	18:712	Size={"Height":60,"Width":180}
 UO	18:712	WrappedFactorRef={"ObjectType":21,"ObjectId":131}
 CO	18:715
-UO	18:715	Location={"Y":240,"X":75}
+UO	18:715	Location={"X":75,"Y":240}
 UO	18:715	Size={"Height":60,"Width":120}
 UO	18:715	WrappedFactorRef={"ObjectType":20,"ObjectId":93}
 CO	18:723
-UO	18:723	Location={"Y":285,"X":930}
+UO	18:723	Location={"X":930,"Y":285}
 UO	18:723	Size={"Height":60,"Width":120}
 UO	18:723	WrappedFactorRef={"ObjectType":52,"ObjectId":722}
 CO	18:725
-UO	18:725	Location={"Y":180,"X":930}
+UO	18:725	Location={"X":930,"Y":180}
 UO	18:725	Size={"Height":60,"Width":120}
 UO	18:725	WrappedFactorRef={"ObjectType":52,"ObjectId":724}
 CO	18:727
-UO	18:727	Location={"Y":120,"X":900}
+UO	18:727	Location={"X":900,"Y":120}
 UO	18:727	Size={"Height":270,"Width":180}
 UO	18:727	WrappedFactorRef={"ObjectType":50,"ObjectId":726}
 CO	18:730
-UO	18:730	Location={"Y":285,"X":615}
+UO	18:730	Location={"X":615,"Y":285}
 UO	18:730	Size={"Height":60,"Width":120}
 UO	18:730	WrappedFactorRef={"ObjectType":20,"ObjectId":729}
 CO	18:734
-UO	18:734	Location={"Y":180,"X":615}
+UO	18:734	Location={"X":615,"Y":180}
 UO	18:734	Size={"Height":60,"Width":120}
 UO	18:734	WrappedFactorRef={"ObjectType":20,"ObjectId":733}
 CO	18:746
 UO	18:746	BackgroundColor=LightYellow
 UO	18:746	FontSize=1.25
-UO	18:746	Location={"Y":15,"X":75}
+UO	18:746	Location={"X":75,"Y":15}
 UO	18:746	Size={"Height":60,"Width":450}
 UO	18:746	WrappedFactorRef={"ObjectType":26,"ObjectId":745}
 CO	18:748
 UO	18:748	BackgroundColor=LightBlue
-UO	18:748	Location={"Y":435,"X":585}
+UO	18:748	Location={"X":585,"Y":435}
 UO	18:748	Size={"Height":90,"Width":390}
 UO	18:748	WrappedFactorRef={"ObjectType":26,"ObjectId":747}
 CO	18:74
-UO	18:74	Location={"Y":585,"X":420}
+UO	18:74	Location={"X":420,"Y":585}
 UO	18:74	Size={"Height":60,"Width":120}
 UO	18:74	WrappedFactorRef={"ObjectType":20,"ObjectId":73}
 CO	18:78
-UO	18:78	Location={"Y":585,"X":225}
+UO	18:78	Location={"X":225,"Y":585}
 UO	18:78	Size={"Height":60,"Width":150}
 UO	18:78	WrappedFactorRef={"ObjectType":20,"ObjectId":77}
 CO	18:82
-UO	18:82	Location={"Y":465,"X":435}
+UO	18:82	Location={"X":435,"Y":465}
 UO	18:82	Size={"Height":60,"Width":120}
 UO	18:82	WrappedFactorRef={"ObjectType":20,"ObjectId":81}
 CO	18:86
-UO	18:86	Location={"Y":465,"X":270}
+UO	18:86	Location={"X":270,"Y":465}
 UO	18:86	Size={"Height":60,"Width":120}
 UO	18:86	WrappedFactorRef={"ObjectType":20,"ObjectId":85}
 CO	18:90
-UO	18:90	Location={"Y":465,"X":105}
+UO	18:90	Location={"X":105,"Y":465}
 UO	18:90	Size={"Height":60,"Width":120}
 UO	18:90	WrappedFactorRef={"ObjectType":20,"ObjectId":89}
 CO	18:94
-UO	18:94	Location={"Y":345,"X":330}
+UO	18:94	Location={"X":330,"Y":345}
 UO	18:94	Size={"Height":60,"Width":120}
 UO	18:94	WrappedFactorRef={"ObjectType":20,"ObjectId":93}
 CO	18:98
-UO	18:98	Location={"Y":255,"X":270}
+UO	18:98	Location={"X":270,"Y":255}
 UO	18:98	Size={"Height":60,"Width":120}
 UO	18:98	WrappedFactorRef={"ObjectType":20,"ObjectId":97}
 CO	19:9
@@ -2474,7 +2474,7 @@ CO	48:1119
 UO	48:1119	TableIdentifier=MultiTableModelStrategicPlanProjectResourceManagementConfiguration
 CO	48:500
 UO	48:500	ColumnSequenceCodes={"Codes":["ID","Name","Role(s)","Given Name","Surname","Email","Phone"]}
-UO	48:500	ColumnWidths={"StringMap":{"Name":"185","Phone":"75","Email":"75","Given Name":"96","ID":"75","Role(s)":"146","Surname":"79"}}
+UO	48:500	ColumnWidths={"StringMap":{"Role(s)":"146","Given Name":"96","Email":"75","Phone":"75","ID":"75","Surname":"79","Name":"185"}}
 UO	48:500	TableIdentifier=OrganizationPoolTable
 CO	48:501
 UO	48:501	ColumnSequenceCodes={"Codes":["Item"]}
@@ -2484,7 +2484,7 @@ CO	48:502
 UO	48:502	TableIdentifier=PlanningUpperMultiTable
 CO	48:511
 UO	48:511	ColumnSequenceCodes={"Codes":["{\"ObjectType\":22,\"ObjectId\":30}","{\"ObjectType\":22,\"ObjectId\":519}","{\"ObjectType\":22,\"ObjectId\":37}","{\"ObjectType\":22,\"ObjectId\":39}","{\"ObjectType\":22,\"ObjectId\":35}","{\"ObjectType\":22,\"ObjectId\":33}"]}
-UO	48:511	ColumnWidths={"StringMap":{"Sharks":"100","Coral Reefs":"100","Seagrass Beds":"106","Seabirds":"100","New Target":"100","Mangroves":"108"}}
+UO	48:511	ColumnWidths={"StringMap":{"Seagrass Beds":"106","Sharks":"100","New Target":"100","Seabirds":"100","Mangroves":"108","Coral Reefs":"100"}}
 UO	48:511	TableIdentifier=TargetThreatLinkTable
 CO	48:512
 UO	48:512	ColumnWidths={"StringMap":{"":"32","\u21d3Threats\u21d3 \/ \u21d2Targets\u21d2":"117"}}
@@ -2664,12 +2664,12 @@ CO	48:631
 UO	48:631	TableIdentifier=ObjectsOnlyPlanningTreeTableModel.AccountingCodeExpenseTableModel
 CO	48:632
 UO	48:632	ColumnSequenceCodes={"Codes":["Item","Viability Mode","Status","Type","Poor","Fair","Good","Very Good","Source","Progress"]}
-UO	48:632	ColumnWidths={"StringMap":{"Very Good":"84","Source":"75","Status":"75","Good":"75","Viability Mode":"104","Item":"310","Fair":"75","Type":"75","Poor":"75","Progress":"98"}}
+UO	48:632	ColumnWidths={"StringMap":{"Status":"75","Item":"310","Type":"75","Progress":"98","Poor":"75","Viability Mode":"104","Fair":"75","Good":"75","Very Good":"84","Source":"75"}}
 UO	48:632	TableIdentifier=ViabilityTreeModel
 UO	48:632	TreeExpansionList={"Codes":["{\"References\":[{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":52,\"ObjectId\":724},{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":52,\"ObjectId\":722},{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":22,\"ObjectId\":30},{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":17,\"ObjectId\":154},{\"ObjectType\":22,\"ObjectId\":30},{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":155},{\"ObjectType\":17,\"ObjectId\":154},{\"ObjectType\":22,\"ObjectId\":30},{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":157},{\"ObjectType\":8,\"ObjectId\":155},{\"ObjectType\":17,\"ObjectId\":154},{\"ObjectType\":22,\"ObjectId\":30},{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":156},{\"ObjectType\":8,\"ObjectId\":155},{\"ObjectType\":17,\"ObjectId\":154},{\"ObjectType\":22,\"ObjectId\":30},{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":10,\"ObjectId\":-1},{\"ObjectType\":8,\"ObjectId\":155},{\"ObjectType\":17,\"ObjectId\":154},{\"ObjectType\":22,\"ObjectId\":30},{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":17,\"ObjectId\":159},{\"ObjectType\":22,\"ObjectId\":30},{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":160},{\"ObjectType\":17,\"ObjectId\":159},{\"ObjectType\":22,\"ObjectId\":30},{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":162},{\"ObjectType\":8,\"ObjectId\":160},{\"ObjectType\":17,\"ObjectId\":159},{\"ObjectType\":22,\"ObjectId\":30},{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":161},{\"ObjectType\":8,\"ObjectId\":160},{\"ObjectType\":17,\"ObjectId\":159},{\"ObjectType\":22,\"ObjectId\":30},{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":10,\"ObjectId\":-1},{\"ObjectType\":8,\"ObjectId\":160},{\"ObjectType\":17,\"ObjectId\":159},{\"ObjectType\":22,\"ObjectId\":30},{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":22,\"ObjectId\":33},{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":421},{\"ObjectType\":22,\"ObjectId\":33},{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":10,\"ObjectId\":-1},{\"ObjectType\":8,\"ObjectId\":421},{\"ObjectType\":22,\"ObjectId\":33},{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":22,\"ObjectId\":35},{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":395},{\"ObjectType\":22,\"ObjectId\":35},{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":10,\"ObjectId\":-1},{\"ObjectType\":8,\"ObjectId\":395},{\"ObjectType\":22,\"ObjectId\":35},{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":22,\"ObjectId\":37},{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":422},{\"ObjectType\":22,\"ObjectId\":37},{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":10,\"ObjectId\":-1},{\"ObjectType\":8,\"ObjectId\":422},{\"ObjectType\":22,\"ObjectId\":37},{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":22,\"ObjectId\":39},{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":17,\"ObjectId\":297},{\"ObjectType\":22,\"ObjectId\":39},{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":298},{\"ObjectType\":17,\"ObjectId\":297},{\"ObjectType\":22,\"ObjectId\":39},{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":300},{\"ObjectType\":8,\"ObjectId\":298},{\"ObjectType\":17,\"ObjectId\":297},{\"ObjectType\":22,\"ObjectId\":39},{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":299},{\"ObjectType\":8,\"ObjectId\":298},{\"ObjectType\":17,\"ObjectId\":297},{\"ObjectType\":22,\"ObjectId\":39},{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}","{\"References\":[{\"ObjectType\":10,\"ObjectId\":-1},{\"ObjectType\":8,\"ObjectId\":298},{\"ObjectType\":17,\"ObjectId\":297},{\"ObjectType\":22,\"ObjectId\":39},{\"ObjectType\":11,\"ObjectId\":0},{\"ObjectType\":12,\"ObjectId\":-1}]}"]}
 CO	48:633
 UO	48:633	ColumnSequenceCodes={"Codes":["Item","Measurement Value","Source"]}
-UO	48:633	ColumnWidths={"StringMap":{"Source":"147","Measurement Value":"128","Item":"336"}}
+UO	48:633	ColumnWidths={"StringMap":{"Item":"336","Measurement Value":"128","Source":"147"}}
 UO	48:633	TableIdentifier=IndicatorTreeModel
 UO	48:633	TreeExpansionList={"Codes":["{\"References\":[{\"ObjectType\":8,\"ObjectId\":770},{\"ObjectType\":23,\"ObjectId\":260}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":772},{\"ObjectType\":23,\"ObjectId\":260}]}","{\"References\":[{\"ObjectType\":8,\"ObjectId\":215},{\"ObjectType\":23,\"ObjectId\":205}]}","{\"References\":[{\"ObjectType\":32,\"ObjectId\":782},{\"ObjectType\":8,\"ObjectId\":215},{\"ObjectType\":23,\"ObjectId\":205}]}"]}
 CO	48:635
@@ -2678,11 +2678,11 @@ UO	48:635	ColumnWidths={"StringMap":{"Details":"539","Standard Classification":"
 UO	48:635	TableIdentifier=MultiTableModelObjectsOnlyPlanningTreeTableModel
 CO	48:647
 UO	48:647	ColumnSequenceCodes={"Codes":["Item","Status","Type","Poor","Fair","Good","Very Good","Source","Progress"]}
-UO	48:647	ColumnWidths={"StringMap":{"Very Good":"75","Source":"150","Status":"75","Good":"75","Item":"261","Fair":"75","Type":"75","Poor":"75","Progress":"102"}}
+UO	48:647	ColumnWidths={"StringMap":{"Status":"75","Item":"261","Type":"75","Progress":"102","Poor":"75","Fair":"75","Good":"75","Very Good":"75","Source":"150"}}
 UO	48:647	TableIdentifier=TargetViabilityTreeModel
 CO	48:648
 UO	48:648	ColumnSequenceCodes={"Codes":["ID","Name","Scope","Severity","Magnitude","Details"]}
-UO	48:648	ColumnWidths={"StringMap":{"Name":"147","Severity":"75","Magnitude":"82","Details":"183","ID":"75","Scope":"75"}}
+UO	48:648	ColumnWidths={"StringMap":{"Details":"183","Scope":"75","Severity":"75","ID":"75","Magnitude":"82","Name":"147"}}
 UO	48:648	TableIdentifier=StressListTableModel
 CO	48:659
 UO	48:659	ColumnSortTag=Threats \ Targets
@@ -2691,7 +2691,7 @@ UO	48:659	TableIdentifier=ThreatNameColumnTableModel
 CO	48:660
 UO	48:660	ColumnSequenceCodes={"Codes":["{\"ObjectType\":22,\"ObjectId\":30}","{\"ObjectType\":22,\"ObjectId\":33}","{\"ObjectType\":22,\"ObjectId\":35}","{\"ObjectType\":22,\"ObjectId\":37}","{\"ObjectType\":22,\"ObjectId\":39}"]}
 UO	48:660	ColumnSortTag=Threats \ Targets
-UO	48:660	ColumnWidths={"StringMap":{"{\"ObjectType\":22,\"ObjectId\":33}.Sharks":"66","{\"ObjectType\":22,\"ObjectId\":30}.Coral Reefs":"76","{\"ObjectType\":22,\"ObjectId\":37}.Mangroves":"73","{\"ObjectType\":22,\"ObjectId\":35}.Seagrass Beds":"100","{\"ObjectType\":22,\"ObjectId\":39}.Seabirds":"63"}}
+UO	48:660	ColumnWidths={"StringMap":{"{\"ObjectType\":22,\"ObjectId\":35}.Seagrass Beds":"100","{\"ObjectType\":22,\"ObjectId\":39}.Seabirds":"63","{\"ObjectType\":22,\"ObjectId\":30}.Coral Reefs":"76","{\"ObjectType\":22,\"ObjectId\":37}.Mangroves":"73","{\"ObjectType\":22,\"ObjectId\":33}.Sharks":"66"}}
 UO	48:660	TableIdentifier=TargetThreatLinkTableModel
 CO	48:661
 UO	48:661	ColumnSortTag=Threats \ Targets
@@ -2699,45 +2699,45 @@ UO	48:661	ColumnWidths={"StringMap":{"Summary Threat Rating":"97"}}
 UO	48:661	TableIdentifier=ThreatSummaryColumnTableModel
 CO	48:666
 UO	48:666	ColumnSequenceCodes={"Codes":["Active?","Threat Name","Stress Name","Magnitude","Contribution","Irreversibility","Summary Rating"]}
-UO	48:666	ColumnWidths={"StringMap":{"Magnitude":"82","Threat Name":"97","Contribution":"92","Stress Name":"98","Active?":"75","Irreversibility":"93","Summary Rating":"117"}}
+UO	48:666	ColumnWidths={"StringMap":{"Active?":"75","Threat Name":"97","Stress Name":"98","Irreversibility":"93","Magnitude":"82","Summary Rating":"117","Contribution":"92"}}
 UO	48:666	TableIdentifier=ThreatStressRatingTable
 CO	48:667
 UO	48:667	ColumnSequenceCodes={"Codes":["RatingSummary","MetaWhoTotal","PseudoLatestProgressReportCode","FullText"]}
-UO	48:667	ColumnWidths={"StringMap":{"Strategy Priority":"105","Who":"75","Details":"986","Progress":"110"}}
+UO	48:667	ColumnWidths={"StringMap":{"Progress":"110","Details":"986","Strategy Priority":"105","Who":"75"}}
 UO	48:667	TableIdentifier=MultiTableModelStrategicPlanTreeTableModel
 CO	48:668
 UO	48:668	ColumnSequenceCodes={"Codes":["Methods","Priority","MetaWhoTotal","EffortDatesTotal","PseudoLatestProgressReportCode","FullText"]}
-UO	48:668	ColumnWidths={"StringMap":{"Who":"75","Methods":"164","Details":"784","When":"94","Progress":"96","Priority":"75"}}
+UO	48:668	ColumnWidths={"StringMap":{"Progress":"96","Details":"784","When":"94","Priority":"75","Methods":"164","Who":"75"}}
 UO	48:668	TableIdentifier=MultiTableModelMonitoringPlanTreeTableModel
 CO	48:669
 UO	48:669	ColumnSequenceCodes={"Codes":["Code","MetaProjectResourceWorkUnitsColumnCode","MetaProjectResourceWorkUnitsColumnCode","MetaProjectResourceWorkUnitsColumnCode","MetaProjectResourceWorkUnitsColumnCode","MetaExpenseAmountColumnCode","MetaExpenseAmountColumnCode","MetaExpenseAmountColumnCode","MetaExpenseAmountColumnCode","MetaFundingSourceBudgetDetailsColumnCode","MetaFundingSourceBudgetDetailsColumnCode","MetaFundingSourceBudgetDetailsColumnCode","MetaFundingSourceBudgetDetailsColumnCode"]}
 UO	48:669	TableIdentifier=MultiTableModelFundingSourceTreeTableModel
 CO	48:670
 UO	48:670	ColumnSequenceCodes={"Codes":["ID","Name","Text"]}
-UO	48:670	ColumnWidths={"StringMap":{"Name":"191","Text":"455","ID":"75"}}
+UO	48:670	ColumnWidths={"StringMap":{"Text":"455","ID":"75","Name":"191"}}
 UO	48:670	TableIdentifier=ObjectiveListTableModel
 CO	48:671
 UO	48:671	ColumnSequenceCodes={"Codes":["ID","Name","Text"]}
-UO	48:671	ColumnWidths={"StringMap":{"Name":"176","Text":"466","ID":"75"}}
+UO	48:671	ColumnWidths={"StringMap":{"Text":"466","ID":"75","Name":"176"}}
 UO	48:671	TableIdentifier=GoalListTableModel
 CO	48:672
 UO	48:672	ColumnSequenceCodes={"Codes":["ID ","Name"]}
-UO	48:672	ColumnWidths={"StringMap":{"Name":"197","ID ":"75"}}
+UO	48:672	ColumnWidths={"StringMap":{"ID ":"75","Name":"197"}}
 UO	48:672	TableIdentifier=SubTargetListTableModel
 CO	48:673
 UO	48:673	ColumnSequenceCodes={"Codes":["Given Name","Surname","Resource ID","Organization","Position","Roles","Email","Office"]}
-UO	48:673	ColumnWidths={"StringMap":{"Email":"125","Given Name":"93","Organization":"94","Position":"99","Surname":"76","Office":"131","Resource ID":"94","Roles":"144"}}
+UO	48:673	ColumnWidths={"StringMap":{"Office":"131","Given Name":"93","Email":"125","Organization":"94","Resource ID":"94","Position":"99","Roles":"144","Surname":"76"}}
 UO	48:673	TableIdentifier=TeamPoolTableModel
 CO	48:674
 UO	48:674	ColumnSequenceCodes={"Codes":["ID","Name","Role(s)","Given Name","Surname","Email","Phone"]}
-UO	48:674	ColumnWidths={"StringMap":{"Name":"104","Phone":"106","Email":"126","Given Name":"93","ID":"75","Role(s)":"103","Surname":"76"}}
+UO	48:674	ColumnWidths={"StringMap":{"Role(s)":"103","Given Name":"93","Email":"126","Phone":"106","ID":"75","Surname":"76","Name":"104"}}
 UO	48:674	TableIdentifier=OrganizationPoolTableModel
 CO	48:693
 UO	48:693	ColumnSequenceCodes={"Codes":["Conceptual Models"]}
 UO	48:693	TableIdentifier=ConceptualModelPoolTableModel
 CO	48:749
 UO	48:749	ColumnSequenceCodes={"Codes":["Priority","PseudoLatestProgressReportCode","FullText","Comments","Methods","PseudoTagActivities"]}
-UO	48:749	ColumnWidths={"StringMap":{"PseudoTagActivities.Activities":"100","FullText.Details":"400","Comments":"385","Methods":"340","PseudoLatestProgressReportCode.Progress":"100","Priority":"75"}}
+UO	48:749	ColumnWidths={"StringMap":{"Comments":"385","Priority":"75","PseudoLatestProgressReportCode.Progress":"100","PseudoTagActivities.Activities":"100","FullText.Details":"400","Methods":"340"}}
 UO	48:749	TableIdentifier=MultiTableModelConfigurablePlanningTreeTableModel
 CO	48:758
 UO	48:758	TableIdentifier=ConfigurablePlanningTreeTableModel.ProjectResourceBudgetDetailsTableModel
@@ -3084,7 +3084,7 @@ UO	48:931	ColumnWidths={"StringMap":{"PseudoLatestProgressReportCode.Progress":"
 UO	48:931	TableIdentifier=MultiTableModelConfigurableTreeTableModel
 CO	48:932
 UO	48:932	ColumnSequenceCodes={"Codes":["Name","ID","Comments"]}
-UO	48:932	ColumnWidths={"StringMap":{"Name":"200","Comments":"460","ID":"50"}}
+UO	48:932	ColumnWidths={"StringMap":{"Comments":"460","ID":"50","Name":"200"}}
 UO	48:932	TableIdentifier=ReportTemplatePoolTableModel
 CO	48:936
 UO	48:936	ColumnSequenceCodes={"Codes":["Item"]}
@@ -3136,8 +3136,8 @@ UO	48:998	TableIdentifier=StrategyActivityRelevancyTableModel
 CO	48:999
 UO	48:999	TableIdentifier=MethodListTableModel
 CO	49:521
-UO	49:521	SimpleThreatRatingCommentsMap={"StringMap":{"{\"ObjectType\":20,\"ObjectId\":59}{\"ObjectType\":22,\"ObjectId\":33}":"Shark boats are affecting all but closest in areas.","{\"ObjectType\":20,\"ObjectId\":47}{\"ObjectType\":22,\"ObjectId\":35}":"","{\"ObjectType\":20,\"ObjectId\":67}{\"ObjectType\":22,\"ObjectId\":30}":"Have not noticed bleaching yet, but we predict it will happen in next 5 years.","{\"ObjectType\":20,\"ObjectId\":55}{\"ObjectType\":22,\"ObjectId\":35}":"Fishing effects might be more recoverable on seagrass bed areas","{\"ObjectType\":20,\"ObjectId\":47}{\"ObjectType\":22,\"ObjectId\":37}":"","{\"ObjectType\":20,\"ObjectId\":55}{\"ObjectType\":22,\"ObjectId\":30}":"Blast fishing is decimating coral reefs","{\"ObjectType\":20,\"ObjectId\":63}{\"ObjectType\":22,\"ObjectId\":30}":"Some damage noticed at heavily visited reefs.","{\"ObjectType\":20,\"ObjectId\":47}{\"ObjectType\":22,\"ObjectId\":39}":"Some evidence of sewage affecting the birds.","{\"ObjectType\":20,\"ObjectId\":41}{\"ObjectType\":22,\"ObjectId\":39}":"Rats are killing seabird eggs and chicks.  Rats have been found on all islands."}}
-UO	49:521	StressBasedThreatRatingCommentsMap={"StringMap":{"{\"ObjectType\":20,\"ObjectId\":59}{\"ObjectType\":22,\"ObjectId\":33}":"","{\"ObjectType\":20,\"ObjectId\":47}{\"ObjectType\":22,\"ObjectId\":35}":"","{\"ObjectType\":20,\"ObjectId\":67}{\"ObjectType\":22,\"ObjectId\":30}":"","{\"ObjectType\":20,\"ObjectId\":55}{\"ObjectType\":22,\"ObjectId\":35}":"","{\"ObjectType\":20,\"ObjectId\":47}{\"ObjectType\":22,\"ObjectId\":37}":"","{\"ObjectType\":20,\"ObjectId\":55}{\"ObjectType\":22,\"ObjectId\":30}":"","{\"ObjectType\":20,\"ObjectId\":63}{\"ObjectType\":22,\"ObjectId\":30}":"","{\"ObjectType\":20,\"ObjectId\":47}{\"ObjectType\":22,\"ObjectId\":39}":"","{\"ObjectType\":20,\"ObjectId\":41}{\"ObjectType\":22,\"ObjectId\":39}":""}}
+UO	49:521	SimpleThreatRatingCommentsMap={"StringMap":{"{\"ObjectType\":20,\"ObjectId\":55}{\"ObjectType\":22,\"ObjectId\":30}":"Blast fishing is decimating coral reefs","{\"ObjectType\":20,\"ObjectId\":59}{\"ObjectType\":22,\"ObjectId\":33}":"Shark boats are affecting all but closest in areas.","{\"ObjectType\":20,\"ObjectId\":67}{\"ObjectType\":22,\"ObjectId\":30}":"Have not noticed bleaching yet, but we predict it will happen in next 5 years.","{\"ObjectType\":20,\"ObjectId\":41}{\"ObjectType\":22,\"ObjectId\":39}":"Rats are killing seabird eggs and chicks.  Rats have been found on all islands.","{\"ObjectType\":20,\"ObjectId\":47}{\"ObjectType\":22,\"ObjectId\":39}":"Some evidence of sewage affecting the birds.","{\"ObjectType\":20,\"ObjectId\":47}{\"ObjectType\":22,\"ObjectId\":37}":"","{\"ObjectType\":20,\"ObjectId\":55}{\"ObjectType\":22,\"ObjectId\":35}":"Fishing effects might be more recoverable on seagrass bed areas","{\"ObjectType\":20,\"ObjectId\":47}{\"ObjectType\":22,\"ObjectId\":35}":"","{\"ObjectType\":20,\"ObjectId\":63}{\"ObjectType\":22,\"ObjectId\":30}":"Some damage noticed at heavily visited reefs."}}
+UO	49:521	StressBasedThreatRatingCommentsMap={"StringMap":{"{\"ObjectType\":20,\"ObjectId\":55}{\"ObjectType\":22,\"ObjectId\":30}":"","{\"ObjectType\":20,\"ObjectId\":59}{\"ObjectType\":22,\"ObjectId\":33}":"","{\"ObjectType\":20,\"ObjectId\":67}{\"ObjectType\":22,\"ObjectId\":30}":"","{\"ObjectType\":20,\"ObjectId\":41}{\"ObjectType\":22,\"ObjectId\":39}":"","{\"ObjectType\":20,\"ObjectId\":47}{\"ObjectType\":22,\"ObjectId\":39}":"","{\"ObjectType\":20,\"ObjectId\":47}{\"ObjectType\":22,\"ObjectId\":37}":"","{\"ObjectType\":20,\"ObjectId\":55}{\"ObjectType\":22,\"ObjectId\":35}":"","{\"ObjectType\":20,\"ObjectId\":47}{\"ObjectType\":22,\"ObjectId\":35}":"","{\"ObjectType\":20,\"ObjectId\":63}{\"ObjectType\":22,\"ObjectId\":30}":""}}
 CO	50:1009
 UO	50:1009	Label=Conservation Scope: Marine Resources
 UO	50:1009	Text=The marine resources of Eastern Bay Village&apos;s traditional fishing grounds.
@@ -3154,27 +3154,27 @@ UO	50:726	ScopeBoxColorCode=HumanWelfareTargetBrown
 UO	50:726	Text=The well-being of the human population of the Eastern Bay
 CO	51:533
 CO	51:538
-UO	51:538	Details={"DateUnitEfforts":[{"NumberOfUnits":5000,"DateUnit":{"DateUnitCode":"2011-07-14"}}]}
+UO	51:538	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011-07-14"},"NumberOfUnits":5000}]}
 UO	51:538	Label=travel expenses for meeting
 CO	51:542
-UO	51:542	Details={"DateUnitEfforts":[{"NumberOfUnits":600,"DateUnit":{"DateUnitCode":""}}]}
+UO	51:542	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":""},"NumberOfUnits":600}]}
 UO	51:542	Label=report purchase
 CO	51:544
-UO	51:544	Details={"DateUnitEfforts":[{"NumberOfUnits":2500,"DateUnit":{"DateUnitCode":""}}]}
+UO	51:544	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":""},"NumberOfUnits":2500}]}
 UO	51:544	Label=cost of collecting data
 CO	51:586
-UO	51:586	Details={"DateUnitEfforts":[{"NumberOfUnits":50,"DateUnit":{"DateUnitCode":"2011Q1"}}]}
+UO	51:586	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011Q1"},"NumberOfUnits":50}]}
 UO	51:586	FundingSourceRef={"ObjectType":16,"ObjectId":176}
 UO	51:586	Label=Boat Rentals
 CO	51:587
-UO	51:587	Details={"DateUnitEfforts":[{"NumberOfUnits":1000,"DateUnit":{"DateUnitCode":"2011Q1"}},{"NumberOfUnits":1000,"DateUnit":{"DateUnitCode":"2011Q2"}},{"NumberOfUnits":1000,"DateUnit":{"DateUnitCode":"2011Q3"}},{"NumberOfUnits":1000,"DateUnit":{"DateUnitCode":"2011Q4"}},{"NumberOfUnits":5000,"DateUnit":{"DateUnitCode":"YEARFROM:2012-01"}},{"NumberOfUnits":5000,"DateUnit":{"DateUnitCode":"YEARFROM:2013-01"}}]}
+UO	51:587	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011Q1"},"NumberOfUnits":1000},{"DateUnit":{"DateUnitCode":"2011Q2"},"NumberOfUnits":1000},{"DateUnit":{"DateUnitCode":"2011Q3"},"NumberOfUnits":1000},{"DateUnit":{"DateUnitCode":"2011Q4"},"NumberOfUnits":1000},{"DateUnit":{"DateUnitCode":"YEARFROM:2012-01"},"NumberOfUnits":5000},{"DateUnit":{"DateUnitCode":"YEARFROM:2013-01"},"NumberOfUnits":5000}]}
 UO	51:587	FundingSourceRef={"ObjectType":16,"ObjectId":176}
 UO	51:587	Label=boat rentals
 CO	51:588
-UO	51:588	Details={"DateUnitEfforts":[{"NumberOfUnits":500,"DateUnit":{"DateUnitCode":"2011Q1"}}]}
+UO	51:588	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011Q1"},"NumberOfUnits":500}]}
 UO	51:588	Label=boat rentals
 CO	51:589
-UO	51:589	Details={"DateUnitEfforts":[{"NumberOfUnits":1500,"DateUnit":{"DateUnitCode":"2011Q1"}},{"NumberOfUnits":1500,"DateUnit":{"DateUnitCode":"2011Q2"}},{"NumberOfUnits":1500,"DateUnit":{"DateUnitCode":"2011Q3"}},{"NumberOfUnits":1500,"DateUnit":{"DateUnitCode":"2011Q4"}},{"NumberOfUnits":1500,"DateUnit":{"DateUnitCode":"YEARFROM:2012-01"}},{"NumberOfUnits":1500,"DateUnit":{"DateUnitCode":"YEARFROM:2013-01"}}]}
+UO	51:589	Details={"DateUnitEfforts":[{"DateUnit":{"DateUnitCode":"2011Q1"},"NumberOfUnits":1500},{"DateUnit":{"DateUnitCode":"2011Q2"},"NumberOfUnits":1500},{"DateUnit":{"DateUnitCode":"2011Q3"},"NumberOfUnits":1500},{"DateUnit":{"DateUnitCode":"2011Q4"},"NumberOfUnits":1500},{"DateUnit":{"DateUnitCode":"YEARFROM:2012-01"},"NumberOfUnits":1500},{"DateUnit":{"DateUnitCode":"YEARFROM:2013-01"},"NumberOfUnits":1500}]}
 UO	51:589	FundingSourceRef={"ObjectType":16,"ObjectId":176}
 UO	51:589	Label=boat rentals
 CO	52:1092
@@ -3194,10 +3194,10 @@ UO	53:752	Label=Ruby-Crested Puffins
 CO	53:757
 UO	53:757	Label=Lesser Mackerel Shark
 CO	58:774
-UO	58:774	CommentsMap={"StringMap":{"DocumentKeyResultsAndLessons":"Several lessons learned are already emerging.  Discussing best way to capture and share these","DevelopAndSubmitFundingProposals":"Several proposals submitted.  Final budget will determine scope of work","FinalizeMonitoringPlan":"Under review by outside stakeholders","AddHumanWelfareTargetsIfDesired":"First version is complete but may need to revisit this.","AssessStakeholders":"stakeholder assesment being performed outside of Miradi.","DetailMethodsTasksAndResponsibilities":"Not all Indicators and methods have been finalized.  Final version will be based on available resources.","Share success & failures with practitioners around the world":"Some results being shared already","DefineProjectScope":"","RankDirectThreats":"Needs final review with stakeholders.","ShareFeedbackFormallyOrInformally":"","FinalizeStrategicPlan":"Under review by outside stakeholders","AssessRisks":"Risk analysis being performed outside of Miradi","ImplementWorkPlan":"Several tasks already under way","DevelopSystemsForRecordingStoringProcessingAndBackingUpProjectData":"Investigating use of ConPro and other data management systems.","DevelopObjectives":"","SelectInitialTeamMembers":"Core team is defined, may need to add more resources as project progresses ","RankDraftStrategies":"A more fine grained ranking may need to be developed at a later time.","DetailActivitiesTasksAndResponsibilities":"Final scope of work is to be determined based on available funds\/resources.","DevelopMapOfProjectArea":"Need to investigate GIS tools and other resources for this step.","DefineIndicators":"Some input needed from field experts."}}
+UO	58:774	CommentsMap={"StringMap":{"AddHumanWelfareTargetsIfDesired":"First version is complete but may need to revisit this.","AssessRisks":"Risk analysis being performed outside of Miradi","FinalizeMonitoringPlan":"Under review by outside stakeholders","RankDraftStrategies":"A more fine grained ranking may need to be developed at a later time.","DefineIndicators":"Some input needed from field experts.","DevelopObjectives":"","DevelopMapOfProjectArea":"Need to investigate GIS tools and other resources for this step.","DefineProjectScope":"","DevelopSystemsForRecordingStoringProcessingAndBackingUpProjectData":"Investigating use of ConPro and other data management systems.","AssessStakeholders":"stakeholder assesment being performed outside of Miradi.","FinalizeStrategicPlan":"Under review by outside stakeholders","DocumentKeyResultsAndLessons":"Several lessons learned are already emerging.  Discussing best way to capture and share these","Share success & failures with practitioners around the world":"Some results being shared already","ShareFeedbackFormallyOrInformally":"","SelectInitialTeamMembers":"Core team is defined, may need to add more resources as project progresses ","DetailActivitiesTasksAndResponsibilities":"Final scope of work is to be determined based on available funds\/resources.","DevelopAndSubmitFundingProposals":"Several proposals submitted.  Final budget will determine scope of work","DetailMethodsTasksAndResponsibilities":"Not all Indicators and methods have been finalized.  Final version will be based on available resources.","RankDirectThreats":"Needs final review with stakeholders.","ImplementWorkPlan":"Several tasks already under way"}}
 UO	58:774	CurrentDashboardTab=Conceptualize
-UO	58:774	FlagsMap={"StringCodeListMap":{"AssessHumanFinacialAndOtherResources":"","DevelopAndSubmitFundingProposals":"{\"Codes\":[\"needsAttention\"]}","AddHumanWelfareTargetsIfDesired":"{\"Codes\":[\"needsAttention\"]}","DetailMethodsTasksAndResponsibilities":"{\"Codes\":[\"needsAttention\"]}","DevelopSystemsForRecordingStoringProcessingAndBackingUpProjectData":"{\"Codes\":[\"needsAttention\"]}","DetailActivitiesTasksAndResponsibilities":"{\"Codes\":[\"needsAttention\"]}","ShareFeedbackFormallyOrInformally":"","DevelopMapOfProjectArea":"{\"Codes\":[\"needsAttention\"]}","RankDirectThreats":"{\"Codes\":[\"needsAttention\"]}","DefineIndicators":"{\"Codes\":[\"needsAttention\"]}"}}
-UO	58:774	ProgressChoiceMap={"StringChoiceMap":{"IdentifyIndirectThreatsAndOpportunities":"3","AssessStakeholders":"2","IdentifyDirectThreats":"3","DefineAudiencesAndInformationNeeds":"2","PlanProjectLifespanAndExitStrategy":"3","AssessRisks":"2","DescribeStatusOfTargets":"3","GroundTruthAndReviseModel":"2","ImplementWorkPlan":"2","UseOthersCommunicationProducts":"2","DevelopObjectives":"3","SelectInitialTeamMembers":"3","IdentifyKeyAudiences":"2","DevelopMapOfProjectArea":"1","DemonstrateCommitmentFromLeadersToLearningAndInnovation":"2","DocumentKeyResultsAndLessons":"2","AgreeOnRolesAndResponsibilities":"2","AddHumanWelfareTargetsIfDesired":"3","DocumentDiscussionsAndDecisions":"2","Share success & failures with practitioners around the world":"2","DevelopGoalsGorEachTarget":"3","RankDirectThreats":"2","CreateInitialConceptualModel":"3","DevelopAndShareCommunicationProducts":"2","IdentifyKeyFactorsAndDraftStrategies":"3","AnalyzeProjectResultsSndSssumptions":"2","SelectConservationTargets":"3","ReportToProjectTeamAndStakeholders":"2","CreateResultsChainsShowingAssumptions":"3","RankDraftStrategies":"3","DetailActivitiesTasksAndResponsibilities":"","DevelopProjectTimelineOrCalendar":"","DevelopCommunicationsStrategy":"2"}}
+UO	58:774	FlagsMap={"StringCodeListMap":{"AssessHumanFinacialAndOtherResources":"","AddHumanWelfareTargetsIfDesired":"{\"Codes\":[\"needsAttention\"]}","ShareFeedbackFormallyOrInformally":"","DetailActivitiesTasksAndResponsibilities":"{\"Codes\":[\"needsAttention\"]}","DevelopAndSubmitFundingProposals":"{\"Codes\":[\"needsAttention\"]}","DetailMethodsTasksAndResponsibilities":"{\"Codes\":[\"needsAttention\"]}","RankDirectThreats":"{\"Codes\":[\"needsAttention\"]}","DefineIndicators":"{\"Codes\":[\"needsAttention\"]}","DevelopMapOfProjectArea":"{\"Codes\":[\"needsAttention\"]}","DevelopSystemsForRecordingStoringProcessingAndBackingUpProjectData":"{\"Codes\":[\"needsAttention\"]}"}}
+UO	58:774	ProgressChoiceMap={"StringChoiceMap":{"AddHumanWelfareTargetsIfDesired":"3","DevelopCommunicationsStrategy":"2","DescribeStatusOfTargets":"3","RankDraftStrategies":"3","DevelopMapOfProjectArea":"1","DevelopGoalsGorEachTarget":"3","CreateInitialConceptualModel":"3","AssessStakeholders":"2","DemonstrateCommitmentFromLeadersToLearningAndInnovation":"2","AnalyzeProjectResultsSndSssumptions":"2","DefineAudiencesAndInformationNeeds":"2","Share success & failures with practitioners around the world":"2","IdentifyKeyAudiences":"2","RankDirectThreats":"2","ImplementWorkPlan":"2","IdentifyDirectThreats":"3","PlanProjectLifespanAndExitStrategy":"3","GroundTruthAndReviseModel":"2","DocumentDiscussionsAndDecisions":"2","ReportToProjectTeamAndStakeholders":"2","AssessRisks":"2","DevelopAndShareCommunicationProducts":"2","AgreeOnRolesAndResponsibilities":"2","IdentifyKeyFactorsAndDraftStrategies":"3","SelectConservationTargets":"3","CreateResultsChainsShowingAssumptions":"3","DevelopObjectives":"3","UseOthersCommunicationProducts":"2","DocumentKeyResultsAndLessons":"2","DevelopProjectTimelineOrCalendar":"","SelectInitialTeamMembers":"3","DetailActivitiesTasksAndResponsibilities":"","IdentifyIndirectThreatsAndOpportunities":"3"}}
 CO	59:1129
 UO	59:1129	FileExtension=html
 UO	59:1129	Label=Project Summary
@@ -3269,43 +3269,43 @@ UO	64:1146	Date=2012-12-31
 UO	64:1146	Summary=80%
 CT	55-30
 UT	55-30	DefaultValueId=4
-UT	55-30	Values={"3":5,"2":5,"1":5}
+UT	55-30	Values={"1":5,"2":5,"3":5}
 CT	63-30
 UT	63-30	DefaultValueId=4
-UT	63-30	Values={"3":7,"2":7,"1":7}
+UT	63-30	Values={"1":7,"2":7,"3":7}
 CT	67-30
 UT	67-30	DefaultValueId=4
-UT	67-30	Values={"3":5,"2":6,"1":5}
+UT	67-30	Values={"1":5,"2":6,"3":5}
 CT	55-33
 UT	55-33	DefaultValueId=4
 UT	55-33	Values={}
 CT	59-33
 UT	59-33	DefaultValueId=4
-UT	59-33	Values={"3":6,"2":5,"1":6}
+UT	59-33	Values={"1":6,"2":5,"3":6}
 CT	63-33
 UT	63-33	DefaultValueId=4
 UT	63-33	Values={}
 CT	47-35
 UT	47-35	DefaultValueId=4
-UT	47-35	Values={"3":8,"2":8,"1":6}
+UT	47-35	Values={"1":6,"2":8,"3":8}
 CT	55-35
 UT	55-35	DefaultValueId=4
-UT	55-35	Values={"3":7,"2":5,"1":5}
+UT	55-35	Values={"1":5,"2":5,"3":7}
 CT	59-35
 UT	59-35	DefaultValueId=4
 UT	59-35	Values={}
 CT	47-37
 UT	47-37	DefaultValueId=4
-UT	47-37	Values={"3":8,"2":7,"1":7}
+UT	47-37	Values={"1":7,"2":7,"3":8}
 CT	55-37
 UT	55-37	DefaultValueId=4
 UT	55-37	Values={}
 CT	41-39
 UT	41-39	DefaultValueId=4
-UT	41-39	Values={"3":6,"2":5,"1":5}
+UT	41-39	Values={"1":5,"2":5,"3":6}
 CT	47-39
 UT	47-39	DefaultValueId=4
-UT	47-39	Values={"3":7,"2":7,"1":7}
+UT	47-39	Values={"1":7,"2":7,"3":7}
 UQ	Data=
 UE	Data=
 -- 1387488044752 Dec 19, 2013 9:20:44 PM

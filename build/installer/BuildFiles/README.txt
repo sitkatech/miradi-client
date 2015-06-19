@@ -167,6 +167,12 @@ Notable changes in 4.3.0:
 
 Diagram:
 - HTML formatting added to a Tag name now renders correctly in the right-click context menu.
+- Biophysical Factors / Results added to the list of diagram objects.
+
+Import / Export
+- Deprecated formats .xmpz, .cpmz (ConPro) and .zip (WCS) have been removed from the import / export menu.
+- Export to Miradi 4.0 has been brought forward to Miradi 4.2.
+- Export to legacy .mpz format has been removed, but import has been retained.
 
 
 Notable changes in 4.2.1:
