@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-12 01:51-0700\n"
+"POT-Creation-Date: 2015-06-19 04:21-0700\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -278,8 +278,8 @@ msgid ""
 "only latest will be preserved"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/MigrationResult.java:129
-msgid "%messageCount case(s) of: %dataLossMessage"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/MigrationResult.java:163
+msgid "%messageCount case(s) of: %migrationMessage"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/noproject/FileSystemProjectOrDirectoryNode.java:91
@@ -554,14 +554,6 @@ msgstr "7C. Schaffen Sie eine Lernumgebung"
 msgid "95% C.I. (confidence interval)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1521
-msgid ""
-"<HTML>Data exchange between Miradi and ConPro is not available in this "
-"version of Miradi. <BR> It is currently being tested, and should be "
-"available in the next version of Miradi. <BR>If you have questions, contact "
-"support@miradi.org.</HTML>"
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/PasteDoer.java:58
 msgid ""
 "<HTML>When pasting between projects, can't paste from CM to RC or vice "
@@ -570,16 +562,6 @@ msgstr ""
 "<HTML>zwischen verschiedenen Projekten ist die Funktion \"Einfügen\" von "
 "Konzeptionellem Modell zu Ergebniswirkungskette (und umgekehrt) nicht "
 "möglich</HTML>"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/ExportCpmzDoer.java:56
-msgid ""
-"<HTML>Your project is missing some data that is required for upload to "
-"ConPro.<br>Please correct the problems listed below then attempt to export "
-"the project again:<BR><BR>"
-msgstr ""
-"<HTML>Ihrem Projekt fehlen Daten die benötigt werden um die Daten in ConPro "
-"zu importieren.<br>Bitte bearbeiten Sie die untenstehenden Probleme und "
-"versuchen Sie erneut die Datei zu exportieren:<BR><BR>"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/notify/NotifyDialogTemplateFactory.java:52
 msgid ""
@@ -620,7 +602,7 @@ msgstr ""
 "<div class='DataPanel'><p>Warum ist meine Auswahl auf eine Farbengruppe "
 "limitiert?</p>"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/noproject/WelcomeImportStep.java:83
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/noproject/WelcomeImportStep.java:81
 msgid ""
 "<div class='WizardText'><p><table><tr><td><input type='submit' name='Back' "
 "value='&lt; Previous'></input></td><td><input type='submit' name='"
@@ -636,16 +618,13 @@ msgstr ""
 "value='&lt; Vorherige'></input></td><td><input type='submit' name='Next' "
 "value='Weiter &gt;'></input></td></tr>"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/noproject/WelcomeImportStep.java:73
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/noproject/WelcomeImportStep.java:72
 msgid ""
 "<div class='WizardText'>Miradi is able to import three different kinds of "
-"project files.<BR>Miradi files are new project files <BR>MPZ files are <a "
-"href='Definition:ImportZip' class='definition'>Miradi Project Zip</a> files "
-"that were created by exporting a project from within Miradi. <BR>CPMZ files "
-"are used to import and export project data from ConPro, The Nature "
-"Conservancy's online project database.<BR><BR>To import a Miradi, XMPZ2, "
-"MPZ, or CPMZ file, click the button for the appropriate file type, select "
-"the file in the dialog that pops up and then click <strong>import</strong>."
+"project files.  To import a Miradi, XMPZ2, or MPZ file, click the button for "
+"the <BR>appropriate file type, select the file in the dialog that pops up, "
+"and then click <strong>Import</strong>.<BR><BR>(Note: If you need to import "
+"a ConPro/Miradi Exchange File (.cpmz), please contact Miradi support.)</div>"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/noproject/projectlist/TreeBasedProjectList.java:64
@@ -1045,7 +1024,7 @@ msgid ""
 "<html>An error occurred<br/><br/>Perhaps the destination is full or readonly."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:223
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:215
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Importieren fehlgeschlagen: <br><p> %s </p></html>"
 
@@ -1277,10 +1256,6 @@ msgstr "Alle Zeilen minimieren"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionHelpComingAttractions.java:34
 msgid "Action|Coming Attractions"
 msgstr "kommende Neuerungen"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportCpmz.java:34
-msgid "Action|ConPro File (.cpmz)"
-msgstr ""
 
 # Export konfigurieren
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionConfigureExport.java:34
@@ -1773,8 +1748,8 @@ msgstr "Karten"
 msgid "Action|Miradi 3.3 Project File (.mpz)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportMpf40Version.java:35
-msgid "Action|Miradi 4.0 Project File (.Miradi)"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportMpf42Version.java:35
+msgid "Action|Miradi 4.2 Project File (.Miradi)"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportMpf.java:35
@@ -2070,10 +2045,6 @@ msgstr "Ansicht"
 msgid "Action|View|Layer..."
 msgstr "Ebene..."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportWcsProjectZip.java:35
-msgid "Action|WCS Miradi Project ZIP"
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/views/ActionViewWorkPlan.java:36
 msgid "Action|Work Plan"
 msgstr "Arbeitsplan"
@@ -2082,10 +2053,6 @@ msgstr "Arbeitsplan"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionHelpButtonWorkshop.java:34
 msgid "Action|Workshop"
 msgstr "Workshop"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportXmpz.java:34
-msgid "Action|XML Miradi Project ZIP v1 [Deprecated] (.xmpz)"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportXmpz2.java:35
 msgid "Action|XML Miradi Project ZIP v2 (.xmpz2)"
@@ -2535,6 +2502,12 @@ msgstr ""
 msgid "Biophysical Factor (Lavender Blue)"
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo17.java:103
+msgid ""
+"Biophysical Factors and Results are not supported in prior versions of "
+"Miradi."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewBiophysicalResultPropertiesPanel.java:33
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:43
 msgid "Biophysical Result"
@@ -2640,12 +2613,12 @@ msgstr "Weiter"
 msgid "Button|Delete"
 msgstr "Löschen"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:190
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:188
 msgid "Button|Don't Import"
 msgstr "Nicht Importieren"
 
 # es gibt auch den Eintrag "Button/Close" der auch mit Schließen übersetzt wurde -> muss ggf überprüft werden, ob das irreführend ist!!! (Felix)
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:191
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:189
 msgid "Button|Exit"
 msgstr "Schließen"
 
@@ -2657,7 +2630,7 @@ msgstr ""
 msgid "Button|Export..."
 msgstr "Exportieren..."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:189
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:187
 msgid "Button|Import"
 msgstr "Importieren"
 
@@ -2795,11 +2768,11 @@ msgstr "Abbrechen"
 msgid "Cancelled"
 msgstr "Abgebrochen"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:158
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:156
 msgid "Cannot import project file %s because it does not exist"
 msgstr "Projektdatei %s kann nicht importiert werden, da sie nicht existiert"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:165
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:163
 msgid "Cannot import project file %s because it is a directory, not a file"
 msgstr ""
 "Projektdatei %s kann nicht importiert werden, da es sich um einen Pfad "
@@ -2996,7 +2969,7 @@ msgstr "Abgeschlossen"
 msgid "Completed - Successfully accomplished"
 msgstr "Abgeschlossen - erfolgreich beendet"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:49
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:40
 msgid "ConPro Project Number"
 msgstr ""
 
@@ -3112,20 +3085,13 @@ msgstr ""
 "Verbindung neu:<br>"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/ExportMpzDoer.java:71
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/ExportMpf40VersionDoer.java:64
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/ExportMpf42VersionDoer.java:74
 msgid "Could not migrate!"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:41
 msgid "Country"
 msgstr "Land"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/ExportCpmzDoer.java:185
-msgid ""
-"Country - Located in Summary View, Location Tab. Select at least one Country"
-msgstr ""
-"Land - Befindet sich in der Zusammenfassungsansicht im Reiter \"Ort\". "
-"Wählen Sie mindestens ein Land aus."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/ConstantButtonNames.java:29
 msgid "Create"
@@ -3218,7 +3184,7 @@ msgstr ""
 "befinden. Um zur normalen Ansicht zurückzukehren, drücken sie diese "
 "Schaltfläche:"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:77
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:75
 msgid ""
 "Currently, Miradi can only import one project file at a time.  Importing "
 "first file only."
@@ -3566,7 +3532,7 @@ msgstr ""
 
 # importieren nach ??
 # -felix
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:175
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:173
 msgid "Do you want to attempt to import %s into Miradi?"
 msgstr "Wollen Sie versuchen %s in Miradi zu importieren?"
 
@@ -3732,7 +3698,7 @@ msgstr ""
 msgid "Error occurred while trying to export to a tab delimited file."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:212
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:207
 msgid "Error reading %s. Perhaps it is not a valid zip file."
 msgstr "Lesefehler %s. Eventuell ist die Datei keine zulässige Zip-Datei."
 
@@ -3757,19 +3723,18 @@ msgstr ""
 msgid "Expand Selected Column"
 msgstr "Ausgewählte Spalte anzeigen"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:656
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:655
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:37
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RatingSourceQuestion.java:37
 msgid "Expert Knowledge"
 msgstr "Expertenwissen"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/ExportMpzDoer.java:89
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/ExportXmpzDoer.java:64
 msgid "Export"
 msgstr "Exportieren"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/ExportMpf40VersionDoer.java:80
-msgid "Export 4.0 Miradi"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/ExportMpf42VersionDoer.java:90
+msgid "Export 4.2 Miradi"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/ExportMpzDoer.java:99
@@ -3778,10 +3743,6 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/ExportMpfDoer.java:52
 msgid "Export Miradi Project"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/ExportXmpzDoer.java:50
-msgid "Export Project"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MiradiStrings.java:29
@@ -3876,13 +3837,8 @@ msgstr ""
 "Dateiname darf nur Buchstaben, Ziffern und/oder Unterstriche enthalten."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/AbstractXmlImporter.java:101
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:225
 msgid "File to import does not validate."
 msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/CpmzFileFilterForChooserDialog.java:29
-msgid "FileFilter|ConPro Miradi Zip (*%s)"
-msgstr "ConPro Miradi Zip (*%s)"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/JPEGFileFilter.java:46
 msgid "FileFilter|JPEG (*.jpg)"
@@ -3923,10 +3879,6 @@ msgstr "Tab getrennt (*.txt)"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/XMLFileFilter.java:42
 msgid "FileFilter|XML (*.xml)"
 msgstr "XML (*.xml)"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/XmpzFileFilter.java:30
-msgid "FileFilter|XMPZ (*%s)"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/Xmpz2FileFilter.java:30
 msgid "FileFilter|XMPZ2 (*%s)"
@@ -4264,10 +4216,6 @@ msgstr "Quartalsspalte(n) verbergen"
 msgid "High"
 msgstr "Hoch"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1391
-msgid "High/Very-High Threat Chains"
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/notify/NotifyDialogTemplateFactory.java:67
 msgid "Home Folder Not Found"
 msgstr ""
@@ -4399,8 +4347,8 @@ msgid "Implement work plan"
 msgstr "Arbeitsplan umsetzen"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/XslImportFileChooser.java:44
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:77
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:176
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:75
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:174
 msgid "Import"
 msgstr "Importieren"
 
@@ -4412,11 +4360,11 @@ msgstr ""
 msgid "Import Completed"
 msgstr "Importieren abgeschlossen"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:205
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:197
 msgid "Import Completed.  Would you like to open %s?"
 msgstr "Importieren abgeschlossen. Soll %s geöffnet werden?"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:65
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:63
 msgid "Import Project"
 msgstr "Projekt importieren"
 
@@ -4428,7 +4376,7 @@ msgstr ""
 msgid "Import a Miradi Project Zipfile (.mpz)"
 msgstr "Eine Miradi Zip Datei importieren"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:91
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:89
 msgid "Import was canceled!"
 msgstr "Importieren wurde abgebrochen!"
 
@@ -4436,24 +4384,15 @@ msgstr "Importieren wurde abgebrochen!"
 msgid "Import..."
 msgstr "Importieren..."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/CpmzProjectImporter.java:234
-msgid "Importing ConPro Data..."
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/MpzProjectImporter.java:47
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/MpzProjectImporter.java:43
 msgid "Importing MPZ"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/CpmzProjectImporter.java:151
-msgid "Importing Miradi Data..."
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/xmpz1/Xmpz1XmlImporter.java:112
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:124
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:123
 msgid "Importing XML..."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:163
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:155
 msgid "Importing..."
 msgstr "Importiere..."
 
@@ -4509,16 +4448,8 @@ msgid ""
 "by a purple triangle."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1289
-msgid "Indicator Holder"
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/RelevancyIndicatorPanel.java:42
 msgid "Indicator Relevancy Panel"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:165
-msgid "Indicator does not have a direct/indirect factor parent. "
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:54
@@ -4586,7 +4517,7 @@ msgstr "Installation erfolgreich"
 msgid "Instructions"
 msgstr "Hilfe"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:658
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:657
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:39
 msgid "Intensive Assessment"
 msgstr "Intensive Untersuchung/Erhebung"
@@ -4877,7 +4808,7 @@ msgstr "Telefonnummern"
 msgid "Label|Project Dates"
 msgstr "Projekt Datum"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:73
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:64
 msgid "Label|Project Info"
 msgstr ""
 
@@ -5042,10 +4973,6 @@ msgstr "Ort"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StrategyFeasibilityQuestion.java:38
 msgid "Low"
 msgstr "Niedrig"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1392
-msgid "Low/Medium/Unrated Threat Chains"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:54
 msgid "Major Issues"
@@ -5298,11 +5225,11 @@ msgid "Medium (Default)"
 msgstr "Mittel (Standard)"
 
 # Aktionen oder Bearbeiten?
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:247
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:243
 msgid "MenuBar|Actions"
 msgstr "Aktionen"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:178
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:174
 msgid "MenuBar|Edit"
 msgstr "Bearbeiten"
 
@@ -5310,16 +5237,16 @@ msgstr "Bearbeiten"
 msgid "MenuBar|File"
 msgstr "Datei"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:585
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:581
 msgid "MenuBar|Help"
 msgstr "Hilfe"
 
 # mit den Trennstrichen oder ohne?
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:517
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:513
 msgid "MenuBar|Step-by-Step"
 msgstr "Schritt-für-Schritt"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:446
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:442
 msgid "MenuBar|View"
 msgstr "Ansicht"
 
@@ -5351,7 +5278,7 @@ msgstr "5. Erfahrungen festhalten und teilen"
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Tag zu %n ausgewählten Element(en) hinzufügen"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:144
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:142
 msgid "Menu|Export Current Page as..."
 msgstr "Aktuelle Seite exportieren als..."
 
@@ -5360,11 +5287,11 @@ msgid "Menu|Export Current Project as..."
 msgstr "Aktuelles Projekt exportieren als..."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:243
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:434
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:430
 msgid "Menu|Group Box"
 msgstr "Gruppenbox"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:157
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:155
 msgid "Menu|Import"
 msgstr "Importieren"
 
@@ -5469,11 +5396,11 @@ msgid "Miradi data directory:"
 msgstr "Miradi Datenverzeichnis"
 
 # nicht importierbar, aber erkennen... da würde ich mich ja schlapplachen (felix)
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:215
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:210
 msgid "Miradi did not recognize the file: %s as importable."
 msgstr "Miradi hat die Datei: %s als nicht importierbar erkannt"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:82
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:80
 msgid "Miradi does not recognize %s as a project file"
 msgstr "Miradi erkennt %s nicht als Projektdatei"
 
@@ -5631,7 +5558,7 @@ msgstr "Nicht effektiv"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:285
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/treenodes/UnspecifiedBaseObject.java:45
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/Translation.java:356
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:654
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:653
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:36
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/MiradiShareTaxonomyQuestion.java:58
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:35
@@ -5688,10 +5615,6 @@ msgid ""
 "Objective - A formal statement detailing a desired outcome of a project, "
 "such as reducing a critical threat. In Miradi, an objective is represented "
 "by a small blue rectangle."
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1283
-msgid "Objective Holder"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/RelevancyObjectivePanel.java:41
@@ -5766,7 +5689,7 @@ msgstr "Öffnen"
 msgid "Open Anyway"
 msgstr "Trotzdem Öffnen"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:206
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:198
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:772
 msgid "Open Project"
 msgstr "Projekt Öffnen"
@@ -5893,10 +5816,6 @@ msgstr ""
 msgid "Place scope on diagram"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1279
-msgid "Placeholder - From ConPro"
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/LegacyDiagramFactorFontStyleQuestion.java:37
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DiagramFactorFontStyleQuestion.java:35
 msgid "Plain (Default)"
@@ -5923,8 +5842,7 @@ msgstr ""
 msgid "PlanningSubViewName|Custom"
 msgstr "Benutzerdefiniert"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:80
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/ExportCpmzDoer.java:104
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:76
 msgid ""
 "Please choose a specific IUCN classification (Not a category). Fix needed "
 "for Strategy named:\n"
@@ -6115,10 +6033,6 @@ msgstr "ProjektberaterIn"
 msgid "Project Corruption Detected"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:930
-msgid "Project Description:"
-msgstr "Projektbeschreibung:"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo12.java:41
 msgid "Project Focus"
 msgstr ""
@@ -6126,12 +6040,6 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/legacyprojects/DataUpgrader.java:55
 msgid "Project Migration Required"
 msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/ExportCpmzDoer.java:174
-msgid "Project Name - Located in Summary View, Project Tab, Project Name field"
-msgstr ""
-"Projektname - Befindet sich in der Zusammenfassungsansicht im Reiter "
-"\"Projekt\", im Feld \"Projektname\"."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:40
 msgid "Project Number"
@@ -6259,7 +6167,7 @@ msgstr "Direkte Bedrohungen gliedern"
 msgid "Rank draft strategies"
 msgstr "Strategieentwürfe gliedern"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:657
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:656
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:38
 msgid "Rapid Assessment"
 msgstr "Oberflächliche Erfassung"
@@ -6408,7 +6316,7 @@ msgstr "Rivers, Creeks and Streams"
 msgid "Rocky Areas [e.g. inland cliffs, mountain peaks]"
 msgstr "Rocky Areas [e.g. inland cliffs, mountain peaks]"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:655
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:654
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:36
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RatingSourceQuestion.java:36
 msgid "Rough Guess"
@@ -6764,10 +6672,6 @@ msgstr "Einfache Lebensfähigkeit"
 msgid "Single Selection"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:935
-msgid "Site/Scope Description:"
-msgstr "Gebiets-/Planungsraumbeschreibung"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:66
 msgid "Situation Analysis"
 msgstr ""
@@ -7011,13 +6915,6 @@ msgstr "Systemweit"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:71
 msgid "TNC"
 msgstr "TNC"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/ExportCpmzDoer.java:188
-msgid ""
-"TNC Operating Unit - At least one TNC Operating Unit must be selected, "
-"<br>located in Summary View, TNC tab. Organizations other than TNC should "
-"select 'Non-TNC'"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionResourceListAdd.java:40
 msgid "TT|Add"
@@ -7494,7 +7391,7 @@ msgstr ""
 msgid "TT|Export a .Miradi file"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportMpf40Version.java:41
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportMpf42Version.java:41
 msgid "TT|Export a .miradi file"
 msgstr ""
 
@@ -7502,19 +7399,10 @@ msgstr ""
 msgid "TT|Export a .mpz file"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportCpmz.java:40
-msgid "TT|Export a file that can be imported by ConPro"
-msgstr "Eine Datei exportieren die von ConPro importiert werden kann"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportRtf.java:40
 msgid "TT|Export current page as an RTF file"
 msgstr "Aktuelle Seite als RTF Datei exportieren"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportWcsProjectZip.java:41
-msgid "TT|Export entire project as a WCS Miradi Project ZIP file"
-msgstr "Gesamtes Projekt als WCS Miradi Projekt ZIP Datei exportieren"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportXmpz.java:40
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportMiradiShareFile.java:40
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportXmpz2.java:41
 msgid "TT|Export entire project as an XML file"
@@ -7571,10 +7459,6 @@ msgstr "Wie man Dateien mit Miradi speichert"
 msgid "TT|Import Xsl File"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionImportCpmz.java:35
-msgid "TT|Import a .cpmz file that was exported from ConPro"
-msgstr "Eine von ConPro exportierte .cpmz Datei importieren"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionImportMpz.java:41
 msgid "TT|Import a .mpz file that was exported by an earlier version of Miradi"
 msgstr ""
@@ -7590,10 +7474,6 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionImportXslTemplate.java:41
 msgid "TT|Import an XSL Template"
 msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionImportXmpz.java:36
-msgid "TT|Import entire project from a XML file"
-msgstr "Ein komplettes Projekt aus einer XML Datei importieren"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionImportXmpz2.java:36
 msgid "TT|Import entire project from an XML file"
@@ -7981,7 +7861,6 @@ msgstr "Hellbraun"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:53
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:364
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:40
 msgid "Target"
 msgstr "Schutzobjekt"
@@ -8086,19 +7965,6 @@ msgstr "Arbeitsgruppe"
 msgid "Team Contact"
 msgstr "Kontaktperson"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/ExportCpmzDoer.java:177
-msgid ""
-"Team Contact - At least one project Team Member must be specified as Team "
-"Contact, <br>located in Summary View, Team Tab, Roles field"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/ExportCpmzDoer.java:181
-msgid ""
-"Team Contact Email - The Team Contact must have an email address, "
-"<br>located in Summary View, Team Tab, ensure Team Contact has email "
-"specified"
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ResourceRoleQuestion.java:46
 msgid "Team Member"
 msgstr "Mitglied der Arbeitsgruppe"
@@ -8185,19 +8051,6 @@ msgstr ""
 "zusammenarbeiten um gemeinsame Standards und Werkzeuge wie Miradi zu "
 "entwicklen. Mehr Information ist unter www.ConservationMeasures.org "
 "verfügbar."
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/ExportXmpzDoer.java:52
-msgid ""
-"The XMPZ format is only supported for compatibility with Miradi 3.3. It does "
-"not support some of the newer features of Miradi 4.0, so exporting your "
-"project to the XMPZ format may lose data. If you just want a backup copy of "
-"your project, or if you want to send a copy to someone who uses Miradi 4.0, "
-"you should either export to the XMPZ2 format, or just use the .Miradi "
-"project file directly.  NOTE: This data format can be used for sending to "
-"other systems or creating reports. It cannot be used to transfer data from "
-"one copy or version of Miradi to another.\n"
-"Do you want to continue with XMPZ export that may lose data?"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:58
 msgid ""
@@ -8332,7 +8185,7 @@ msgstr ""
 msgid "Theory of Change<br/>- Strategy Selection"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:266
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:258
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -8390,6 +8243,12 @@ msgid ""
 "objects."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo17.java:85
+msgid ""
+"This migration prevents the removal of Biophysical Factors and / or Results "
+"if reversing (to support an older file format / Miradi version)."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo11.java:62
 msgid "This migration removes 2 Tnc fields"
 msgstr ""
@@ -8405,12 +8264,6 @@ msgid ""
 "is Sampling Based"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo17.java:91
-msgid ""
-"This migration removes newly added Biophysical Factors if reversing (to "
-"support an older file format)."
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo10.java:53
 msgid "This migration renames 2 fields"
 msgstr ""
@@ -8424,19 +8277,13 @@ msgstr ""
 msgid "This person is a coach within the Conservation Coaches Network"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/exceptions/XmpzVersionTooOldException.java:30
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/exceptions/XmlVersionTooOldException.java:30
 msgid ""
 "This project cannot be imported because it is in an old data format.\n"
 "Expected schema version: "
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:100
-msgid ""
-"This project cannot be imported because it is in an old data format. \n"
-"Please re-export a new copy from ConPro, and import that instead."
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:86
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:84
 msgid ""
 "This project cannot be imported because its Threat Rating data is missing or "
 "damaged. Please contact Miradi support for recovery options."
@@ -8499,7 +8346,6 @@ msgstr "Dies ersetzt die bereits bestehende Datei. "
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:62
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:389
 msgid "Threat"
 msgstr "Direkte Bedrohung"
 
@@ -8887,6 +8733,14 @@ msgstr "Summe Budget für Finanzierung: %1 %2"
 msgid "Total Monitoring Budget %1 %2"
 msgstr "Summe Monitoringbudget %1 %2"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/ExportMpf42VersionDoer.java:59
+msgid ""
+"Unable to complete this migration.\n"
+"\n"
+"Issues encountered:\n"
+"%s"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/noproject/DeleteOldProject.java:38
 msgid ""
 "Unable to delete this project because it is in use by another copy of this "
@@ -8904,7 +8758,7 @@ msgid "Unable to process file: verify file format"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:141
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/noproject/WelcomeImportStep.java:159
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/noproject/WelcomeImportStep.java:147
 msgid "Unable to process request: "
 msgstr ""
 
@@ -8937,7 +8791,7 @@ msgstr "Nicht definiert"
 msgid "Underline"
 msgstr "Unterstreichen"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:222
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:214
 msgid "Unexpected error"
 msgstr ""
 
@@ -8999,11 +8853,6 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ObjectQuestion.java:54
 msgid "Unspecified"
 msgstr "nicht spezif."
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/CpmzProjectImporter.java:154
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/CpmzProjectImporter.java:186
-msgid "Updating ConPro Project Number..."
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/arranger/MeglerArranger.java:392
 msgid "Updating locations..."
@@ -9357,7 +9206,7 @@ msgstr ""
 "Würde ihr Projektteam diese Strategie innerhalb eines angemessenen "
 "zeitlichen, finanziellen, personellen und ethischen Rahmen umsetzen können?"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/MpzProjectImporter.java:76
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/MpzProjectImporter.java:81
 msgid "Writing..."
 msgstr ""
 
@@ -9441,7 +9290,7 @@ msgid "a new project from scratch"
 msgstr "ein neues Projekt "
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/noproject/NoProjectOverviewStep.java:95
-msgid "an exported Miradi file (.Miradi, .xmpz2, .mpz or .cpmz)"
+msgid "an exported Miradi file (.Miradi, .xmpz2, or .mpz)"
 msgstr ""
 
 # NICHT EDITEN, STIMMT SO. IST MIT 2 WEITEREN STRINGS VERLINGT DIE NUR ZUSAMMEN SINN ERGEBEN!!! -> Miradi Einstellungen/Benachrichtigungen
@@ -9453,8 +9302,7 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:96
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:116
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:55
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/ExportCpmzDoer.java:79
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:51
 msgid "save..."
 msgstr "Speichern..."
 
@@ -30296,6 +30144,49 @@ msgid ""
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
 "Marine___Western Tropical Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid ""
+#~ "<HTML>Your project is missing some data that is required for upload to "
+#~ "ConPro.<br>Please correct the problems listed below then attempt to "
+#~ "export the project again:<BR><BR>"
+#~ msgstr ""
+#~ "<HTML>Ihrem Projekt fehlen Daten die benötigt werden um die Daten in "
+#~ "ConPro zu importieren.<br>Bitte bearbeiten Sie die untenstehenden "
+#~ "Probleme und versuchen Sie erneut die Datei zu exportieren:<BR><BR>"
+
+#~ msgid ""
+#~ "Country - Located in Summary View, Location Tab. Select at least one "
+#~ "Country"
+#~ msgstr ""
+#~ "Land - Befindet sich in der Zusammenfassungsansicht im Reiter \"Ort\". "
+#~ "Wählen Sie mindestens ein Land aus."
+
+#~ msgid "FileFilter|ConPro Miradi Zip (*%s)"
+#~ msgstr "ConPro Miradi Zip (*%s)"
+
+#~ msgid "Project Description:"
+#~ msgstr "Projektbeschreibung:"
+
+#~ msgid ""
+#~ "Project Name - Located in Summary View, Project Tab, Project Name field"
+#~ msgstr ""
+#~ "Projektname - Befindet sich in der Zusammenfassungsansicht im Reiter "
+#~ "\"Projekt\", im Feld \"Projektname\"."
+
+#~ msgid "Site/Scope Description:"
+#~ msgstr "Gebiets-/Planungsraumbeschreibung"
+
+#~ msgid "TT|Export a file that can be imported by ConPro"
+#~ msgstr "Eine Datei exportieren die von ConPro importiert werden kann"
+
+#~ msgid "TT|Export entire project as a WCS Miradi Project ZIP file"
+#~ msgstr "Gesamtes Projekt als WCS Miradi Projekt ZIP Datei exportieren"
+
+#~ msgid "TT|Import a .cpmz file that was exported from ConPro"
+#~ msgstr "Eine von ConPro exportierte .cpmz Datei importieren"
+
+#~ msgid "TT|Import entire project from a XML file"
+#~ msgstr "Ein komplettes Projekt aus einer XML Datei importieren"
 
 # ??-felix
 #~ msgid "Default Mode"
