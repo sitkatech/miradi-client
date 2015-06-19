@@ -6,7 +6,7 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.migrations.forward.MigrationTo10;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.UnicodeXmlWriter;
-import org.miradi.xml.wcs.Xmpz2XmlValidator;
+import org.miradi.xml.xmpz2.Xmpz2XmlValidator;
 import org.miradi.xml.xmpz2.Xmpz2ForwardMigration;
 import org.miradi.xml.xmpz2.Xmpz2XmlSilentValidatorForTesting;
 import org.w3c.dom.Document;

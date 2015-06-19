@@ -22,8 +22,6 @@ package org.miradi.xml.generic;
 
 import java.io.IOException;
 
-import org.miradi.xml.wcs.Xmpz1XmlConstants;
-
 public class StylingFieldSchemaElement extends FieldSchemaElement
 {
 	protected StylingFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
@@ -35,6 +33,6 @@ public class StylingFieldSchemaElement extends FieldSchemaElement
 	public void output(SchemaWriter writer) throws IOException
 	{
 		super.output(writer);
-		writer.write(" { " + Xmpz1XmlConstants.STYLING + ".element } ");
+		writer.write(" { " + XmlConstants.STYLING + ".element } ");
 	}
 }

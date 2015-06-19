@@ -20,12 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.xml.wcs.Xmpz1XmlConstants;
-
 public class ResultsChainSchemaElement extends DiagramSchemaElement
 {
 	public ResultsChainSchemaElement()
 	{
-		super(Xmpz1XmlConstants.RESULTS_CHAIN);
+		super(XmlConstants.RESULTS_CHAIN);
 	}
 }

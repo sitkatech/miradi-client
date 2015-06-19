@@ -21,20 +21,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.DiagramFactor;
-import org.miradi.xml.wcs.Xmpz1XmlConstants;
 
 public class DiagramFactorSchemaElement extends BaseObjectSchemaElementWithLabel
 {
 	public DiagramFactorSchemaElement()
 	{
-		super(Xmpz1XmlConstants.DIAGRAM_FACTOR);
+		super(XmlConstants.DIAGRAM_FACTOR);
 		
-		createWrappedByDiagramFactorIdField(Xmpz1XmlConstants.WRAPPED_FACTOR_ID_ELEMENT_NAME);
+		createWrappedByDiagramFactorIdField(XmlConstants.WRAPPED_FACTOR_ID_ELEMENT_NAME);
 		createDiagramPointField(DiagramFactor.TAG_LOCATION);
 		createDiagramSizeField(DiagramFactor.TAG_SIZE);
-		createIdListField(Xmpz1XmlConstants.GROUP_BOX_CHILDREN_IDS, Xmpz1XmlConstants.DIAGRAM_FACTOR);
+		createIdListField(XmlConstants.GROUP_BOX_CHILDREN_IDS, XmlConstants.DIAGRAM_FACTOR);
 		
 		createOptionalCodeField(DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, XmlSchemaCreator.VOCABULARY_TEXT_BOX_Z_ORDER);
-		createStylingField(Xmpz1XmlConstants.STYLING);
+		createStylingField(XmlConstants.STYLING);
 	}
 }

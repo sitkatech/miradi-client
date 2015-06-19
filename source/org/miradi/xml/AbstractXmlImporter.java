@@ -38,7 +38,7 @@ import org.martus.util.UnicodeReader;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.exceptions.ValidationException;
-import org.miradi.exceptions.XmpzVersionTooOldException;
+import org.miradi.exceptions.XmlVersionTooOldException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
@@ -49,7 +49,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.XmlUtilities2;
-import org.miradi.xml.wcs.Xmpz1XmlConstants;
+import org.miradi.xml.generic.XmlConstants;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -89,7 +89,7 @@ abstract public class AbstractXmlImporter
 		
 		if (isUnsupportedOldVersion(nameSpaceUri))
 		{
-			throw new XmpzVersionTooOldException(getNameSpaceVersion(), getSchemaVersionToImport(nameSpaceUri));
+			throw new XmlVersionTooOldException(getNameSpaceVersion(), getSchemaVersionToImport(nameSpaceUri));
 		}
 		
 		projectAsInputStream.seek(0);
@@ -157,8 +157,8 @@ abstract public class AbstractXmlImporter
 	
 	protected Point extractPointFromNode(Node pointNode) throws Exception
 	{
-		Node xNode = getNamedChildNode(pointNode, Xmpz1XmlConstants.X_ELEMENT_NAME);
-		Node yNode = getNamedChildNode(pointNode, Xmpz1XmlConstants.Y_ELEMENT_NAME);
+		Node xNode = getNamedChildNode(pointNode, XmlConstants.X_ELEMENT_NAME);
+		Node yNode = getNamedChildNode(pointNode, XmlConstants.Y_ELEMENT_NAME);
 		int x = extractNodeTextContentAsInt(xNode);
 		int y = extractNodeTextContentAsInt(yNode);
 		

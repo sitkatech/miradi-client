@@ -28,7 +28,6 @@ import org.miradi.schemas.TableSettingsSchema;
 import org.miradi.schemas.ViewDataSchema;
 import org.miradi.schemas.XslTemplateSchema;
 import org.miradi.utils.StringUtilities;
-import org.miradi.xml.wcs.ExtraDataExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -56,7 +55,7 @@ public class Xmpz2ExtraDataImporter extends AbstractXmpz2ObjectImporter
 		{
 			Node extraDataItemNode = extraDataNodes.item(index);
 			String extraDataName = getImporter().getAttributeValue(extraDataItemNode, EXTRA_DATA_ITEM_NAME);
-			String[] splitValues = extraDataName.split(ExtraDataExporter.TYPE_ID_TAG_SPLIT_TOKEN_FOR_REGULAR_EXPRESSION);
+			String[] splitValues = extraDataName.split(TYPE_ID_TAG_SPLIT_TOKEN_FOR_REGULAR_EXPRESSION);
 			if (splitValues.length != 3)
 				throw new RuntimeException("Incorrect number if values split of extra data name, Raw name before split = " + extraDataName);
 			String typeName = splitValues[0];
@@ -103,4 +102,6 @@ public class Xmpz2ExtraDataImporter extends AbstractXmpz2ObjectImporter
 		
 		throw new RuntimeException("Object type name is not recognized as type, " + typeName);
 	}
+
+	public static final String TYPE_ID_TAG_SPLIT_TOKEN_FOR_REGULAR_EXPRESSION = "\\.";
 }

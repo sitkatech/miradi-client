@@ -255,9 +255,6 @@ import org.miradi.xml.TestXmpz2ForwardMigration;
 import org.miradi.xml.TestXmpz2SchemaCreator;
 import org.miradi.xml.TestXmpz2XmlExporter;
 import org.miradi.xml.TestXmpz2XmlImporter;
-import org.miradi.xml.TestXmpzXmlImporter;
-import org.miradi.xml.wcs.TestXmpzExporter;
-import org.miradi.xml.wcs.TestXmpzSchemaCreator;
 
 public class MainTestSuite extends TestSuite
 {
@@ -537,17 +534,14 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestMultiCalendar.class));
 		
 		//xml.export
-		addTest(new TestSuite(TestXmpzExporter.class));
 		addTest(new TestSuite(TestXmpz2XmlExporter.class));
 
 		//xml.importer
-		addTest(new TestSuite(TestXmpzXmlImporter.class));
 		addTest(new TestSuite(TestXmpz2XmlImporter.class));
 		addTest(new TestSuite(TestXmpz2ForwardMigration.class));
 		
 		addTest(new TestSuite(TestXmpz2SchemaCreator.class));
-		addTest(new TestSuite(TestXmpzSchemaCreator.class));
-		
+
 		//mpf migrations
 		addTest(new TestSuite(TestMigrationManager.class));
 		addTest(new TestSuite(TestMigrationResult.class));

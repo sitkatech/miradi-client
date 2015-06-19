@@ -32,8 +32,8 @@ import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.UnicodeXmlWriter;
-import org.miradi.xml.wcs.Xmpz1XmlConstants;
-import org.miradi.xml.wcs.Xmpz2XmlValidator;
+import org.miradi.xml.generic.XmlConstants;
+import org.miradi.xml.xmpz2.Xmpz2XmlValidator;
 import org.miradi.xml.xmpz2.*;
 import org.miradi.xml.xmpz2.objectImporters.BaseObjectImporter;
 import org.miradi.xml.xmpz2.objectImporters.IndicatorImporter;
@@ -229,7 +229,7 @@ public class TestXmpz2XmlExporter extends TestCaseForXmpz2ExportAndImport
 		Node calculatedCostsNode = xmlImporter.getNamedChildNode(baseObjectCalculatedCostsNode, Xmpz2XmlConstants.TIME_PERIOD_COSTS);
 		assertNotNull("should have calcualted costs element?", calculatedCostsNode);
 		
-		Node calculatedTotalBudgetCostNode = xmlImporter.getNamedChildNode(calculatedCostsNode, Xmpz1XmlConstants.CALCULATED_TOTAL_BUDGET_COST);
+		Node calculatedTotalBudgetCostNode = xmlImporter.getNamedChildNode(calculatedCostsNode, XmlConstants.CALCULATED_TOTAL_BUDGET_COST);
 		assertEquals("incorrect total budget value for object?", "112", xmlImporter.getSafeNodeContent(calculatedTotalBudgetCostNode));
 	}
 	

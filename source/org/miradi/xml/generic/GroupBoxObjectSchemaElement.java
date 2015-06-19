@@ -20,13 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.xml.wcs.Xmpz1XmlConstants;
-
 
 public class GroupBoxObjectSchemaElement extends FactorObjectSchemaElement
 {
 	public GroupBoxObjectSchemaElement()
 	{
-		super(Xmpz1XmlConstants.GROUP_BOX);
+		super(XmlConstants.GROUP_BOX);
 	}
 }

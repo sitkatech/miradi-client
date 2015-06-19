@@ -86,9 +86,8 @@ import org.miradi.questions.WwfManagingOfficesQuestion;
 import org.miradi.questions.WwfRegionsQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.Translation;
-import org.miradi.xml.wcs.Xmpz1XmlConstants;
 
-public class XmlSchemaCreator implements Xmpz1XmlConstants
+public class XmlSchemaCreator implements XmlConstants
 {
 	public static void main(String[] args) throws Exception
 	{
@@ -104,7 +103,7 @@ public class XmlSchemaCreator implements Xmpz1XmlConstants
 	public void printXmlRncSchema(SchemaWriter writer) throws Exception
 	{
 		ProjectSchemaElement rootElement = new ProjectSchemaElement();
-		writer.println("namespace miradi = '" + Xmpz1XmlConstants.NAME_SPACE + "'");
+		writer.println("namespace miradi = '" + XmlConstants.NAME_SPACE + "'");
 		writer.defineAlias("start", rootElement.getProjectElementName() + ".element");
 		rootElement.output(writer);
 		
@@ -207,7 +206,7 @@ public class XmlSchemaCreator implements Xmpz1XmlConstants
 		defineIdElement(writer, METHOD);
 		defineIdElement(writer, SUB_TASK);
 		
-		writer.defineAlias(Xmpz1XmlConstants.WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME + ".element", "element " + Xmpz1XmlConstants.PREFIX + Xmpz1XmlConstants.WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
+		writer.defineAlias(XmlConstants.WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME + ".element", "element " + XmlConstants.PREFIX + XmlConstants.WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
 		writer.startBlock();
 		writer.printlnIndented("BiodiversityTargetId.element |");
 		writer.printlnIndented("HumanWelfareTargetId.element |");
@@ -223,12 +222,12 @@ public class XmlSchemaCreator implements Xmpz1XmlConstants
 		writer.endBlock();
 		
 		
-		writer.defineAlias("ThreatReductionResultThreatId.element", "element " + Xmpz1XmlConstants.PREFIX + "ThreatReductionResultThreatId");
+		writer.defineAlias("ThreatReductionResultThreatId.element", "element " + XmlConstants.PREFIX + "ThreatReductionResultThreatId");
 		writer.startBlock();
 		writer.printlnIndented("ThreatId.element");
 		writer.endBlock();
 		
-		writer.defineAlias(Xmpz1XmlConstants.LINKABLE_FACTOR_ID + ".element", "element " + Xmpz1XmlConstants.PREFIX + Xmpz1XmlConstants.LINKABLE_FACTOR_ID);
+		writer.defineAlias(XmlConstants.LINKABLE_FACTOR_ID + ".element", "element " + XmlConstants.PREFIX + XmlConstants.LINKABLE_FACTOR_ID);
 		writer.startBlock();
 		writer.printlnIndented("BiodiversityTargetId.element |");
 		writer.printlnIndented("HumanWelfareTargetId.element |");
@@ -241,26 +240,26 @@ public class XmlSchemaCreator implements Xmpz1XmlConstants
 		
 		writer.defineAlias("GeospatialLocation.element", "element miradi:GeospatialLocation");
 		writer.startBlock();
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + "latitude { xsd:decimal } &");
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + "longitude { xsd:decimal } ");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + "latitude { xsd:decimal } &");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + "longitude { xsd:decimal } ");
 		writer.endBlock();
 		
-		writer.defineAlias(Xmpz1XmlConstants.EXTERNAL_PROJECT_ID_ELEMENT_NAME + ".element", "element " + Xmpz1XmlConstants.PREFIX + Xmpz1XmlConstants.EXTERNAL_PROJECT_ID_ELEMENT_NAME);
+		writer.defineAlias(XmlConstants.EXTERNAL_PROJECT_ID_ELEMENT_NAME + ".element", "element " + XmlConstants.PREFIX + XmlConstants.EXTERNAL_PROJECT_ID_ELEMENT_NAME);
 		writer.startBlock();
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + Xmpz1XmlConstants.EXTERNAL_APP_ELEMENT_NAME + " { text } &");
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + Xmpz1XmlConstants.PROJECT_ID + " { text } ");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + XmlConstants.EXTERNAL_APP_ELEMENT_NAME + " { text } &");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + XmlConstants.PROJECT_ID + " { text } ");
 		writer.endBlock();
 		
-		writer.defineAlias(Xmpz1XmlConstants.DIAGRAM_POINT_ELEMENT_NAME + ".element", "element " + Xmpz1XmlConstants.PREFIX + Xmpz1XmlConstants.DIAGRAM_POINT_ELEMENT_NAME);
+		writer.defineAlias(XmlConstants.DIAGRAM_POINT_ELEMENT_NAME + ".element", "element " + XmlConstants.PREFIX + XmlConstants.DIAGRAM_POINT_ELEMENT_NAME);
 		writer.startBlock();
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + Xmpz1XmlConstants.X_ELEMENT_NAME + " { xsd:integer } &");
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + Xmpz1XmlConstants.Y_ELEMENT_NAME + " { xsd:integer } ");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + XmlConstants.X_ELEMENT_NAME + " { xsd:integer } &");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + XmlConstants.Y_ELEMENT_NAME + " { xsd:integer } ");
 		writer.endBlock();
 		
-		writer.defineAlias(Xmpz1XmlConstants.DIAGRAM_SIZE_ELEMENT_NAME + ".element", "element " + Xmpz1XmlConstants.PREFIX + Xmpz1XmlConstants.DIAGRAM_SIZE_ELEMENT_NAME);
+		writer.defineAlias(XmlConstants.DIAGRAM_SIZE_ELEMENT_NAME + ".element", "element " + XmlConstants.PREFIX + XmlConstants.DIAGRAM_SIZE_ELEMENT_NAME);
 		writer.startBlock();
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + Xmpz1XmlConstants.WIDTH_ELEMENT_NAME + " { xsd:integer } &");
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + Xmpz1XmlConstants.HEIGHT_ELEMENT_NAME + " { xsd:integer } ");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + XmlConstants.WIDTH_ELEMENT_NAME + " { xsd:integer } &");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + XmlConstants.HEIGHT_ELEMENT_NAME + " { xsd:integer } ");
 		writer.endBlock();
 		
 		defineDiagramFactorUiSettings(writer);
@@ -284,27 +283,27 @@ public class XmlSchemaCreator implements Xmpz1XmlConstants
 		defineExpenseMonthElement(writer);
 		defineExpenseDayElement(writer);
 		
-		defineVocabularyDefinedAlias(writer, Xmpz1XmlConstants.PROJECT_SUMMARY_PLANNING, VOCABULARY_FISCAL_YEAR_START, "FiscalYearStartMonth");
-		defineVocabularyDefinedAlias(writer, Xmpz1XmlConstants.PROJECT_SUMMARY_SCOPE, VOCABULARY_PROTECTED_AREA_CATEGORIES, PROTECTED_AREA_CATEGORIES_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, Xmpz1XmlConstants.PROJECT_RESOURCE, VOCABULARY_RESOURCE_ROLE_CODES, RESOURCE_ROLE_CODES_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, Xmpz1XmlConstants.CONCEPTUAL_MODEL, VOCABULARY_HIDDEN_TYPES, HIDDEN_TYPES_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, Xmpz1XmlConstants.RESULTS_CHAIN, VOCABULARY_HIDDEN_TYPES, HIDDEN_TYPES_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, Xmpz1XmlConstants.BIODIVERSITY_TARGET, VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION, BIODIVERSITY_TARGET_HABITAT_ASSOCIATION_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, Xmpz1XmlConstants.HUMAN_WELFARE_TARGET, VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION, BIODIVERSITY_TARGET_HABITAT_ASSOCIATION_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, Xmpz1XmlConstants.HUMAN_WELFARE_TARGET, VOCABULARY_TARGET_STATUS, TARGET_STATUS_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, Xmpz1XmlConstants.HUMAN_WELFARE_TARGET, VOCABULARY_TARGET_VIABILITY_MODE, TARGET_VIABILITY_MODE_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, Xmpz1XmlConstants.STRESS, VOCABULARY_STRESS_SEVERITY, STRESS_SEVERITY_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, Xmpz1XmlConstants.STRESS, VOCABULARY_STRESS_SCOPE, STRESS_SCOPE_ELEMENT_NAME);
-		defineVocabularyDefinedAlias(writer, Xmpz1XmlConstants.TNC_PROJECT_DATA, VOCABULARY_TNC_PROJECT_PLACE_TYPES, TNC_PROJECT_PLACE_TYPES);
-		defineVocabularyDefinedAlias(writer, Xmpz1XmlConstants.TNC_PROJECT_DATA, VOCABULARY_TNC_ORGANIZATIONAL_PRIORITIES, TNC_ORGANIZATIONAL_PRIORITIES);
-		defineVocabularyDefinedAlias(writer, Xmpz1XmlConstants.TNC_PROJECT_DATA, VOCABULARY_TNC_OPERATING_UNTIS, TNC_OPERATING_UNITS);
-		defineVocabularyDefinedAlias(writer, Xmpz1XmlConstants.TNC_PROJECT_DATA, VOCABULARY_TNC_TERRESTRIAL_ECO_REGION, TNC_TERRESTRIAL_ECO_REGION);
-		defineVocabularyDefinedAlias(writer, Xmpz1XmlConstants.TNC_PROJECT_DATA, VOCABULARY_TNC_MARINE_ECO_REGION, TNC_MARINE_ECO_REGION);
-		defineVocabularyDefinedAlias(writer, Xmpz1XmlConstants.TNC_PROJECT_DATA, VOCABULARY_TNC_FRESHWATER_ECO_REGION, TNC_FRESHWATER_ECO_REGION);
-		defineVocabularyDefinedAlias(writer, Xmpz1XmlConstants.WWF_PROJECT_DATA, VOCABULARY_WWF_MANAGING_OFFICES, WwfProjectData.TAG_MANAGING_OFFICES);
-		defineVocabularyDefinedAlias(writer, Xmpz1XmlConstants.WWF_PROJECT_DATA, VOCABULARY_WWF_REGIONS, WwfProjectData.TAG_REGIONS);
-		defineVocabularyDefinedAlias(writer, Xmpz1XmlConstants.WWF_PROJECT_DATA, VOCABULARY_WWF_ECOREGIONS, WwfProjectData.TAG_ECOREGIONS);
-		defineVocabularyDefinedAlias(writer, Xmpz1XmlConstants.PROJECT_SUMMARY_LOCATION, VOCABULARY_COUNTRIES, COUNTRIES);
+		defineVocabularyDefinedAlias(writer, XmlConstants.PROJECT_SUMMARY_PLANNING, VOCABULARY_FISCAL_YEAR_START, "FiscalYearStartMonth");
+		defineVocabularyDefinedAlias(writer, XmlConstants.PROJECT_SUMMARY_SCOPE, VOCABULARY_PROTECTED_AREA_CATEGORIES, PROTECTED_AREA_CATEGORIES_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, XmlConstants.PROJECT_RESOURCE, VOCABULARY_RESOURCE_ROLE_CODES, RESOURCE_ROLE_CODES_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, XmlConstants.CONCEPTUAL_MODEL, VOCABULARY_HIDDEN_TYPES, HIDDEN_TYPES_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, XmlConstants.RESULTS_CHAIN, VOCABULARY_HIDDEN_TYPES, HIDDEN_TYPES_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, XmlConstants.BIODIVERSITY_TARGET, VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION, BIODIVERSITY_TARGET_HABITAT_ASSOCIATION_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, XmlConstants.HUMAN_WELFARE_TARGET, VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION, BIODIVERSITY_TARGET_HABITAT_ASSOCIATION_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, XmlConstants.HUMAN_WELFARE_TARGET, VOCABULARY_TARGET_STATUS, TARGET_STATUS_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, XmlConstants.HUMAN_WELFARE_TARGET, VOCABULARY_TARGET_VIABILITY_MODE, TARGET_VIABILITY_MODE_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, XmlConstants.STRESS, VOCABULARY_STRESS_SEVERITY, STRESS_SEVERITY_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, XmlConstants.STRESS, VOCABULARY_STRESS_SCOPE, STRESS_SCOPE_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, XmlConstants.TNC_PROJECT_DATA, VOCABULARY_TNC_PROJECT_PLACE_TYPES, TNC_PROJECT_PLACE_TYPES);
+		defineVocabularyDefinedAlias(writer, XmlConstants.TNC_PROJECT_DATA, VOCABULARY_TNC_ORGANIZATIONAL_PRIORITIES, TNC_ORGANIZATIONAL_PRIORITIES);
+		defineVocabularyDefinedAlias(writer, XmlConstants.TNC_PROJECT_DATA, VOCABULARY_TNC_OPERATING_UNTIS, TNC_OPERATING_UNITS);
+		defineVocabularyDefinedAlias(writer, XmlConstants.TNC_PROJECT_DATA, VOCABULARY_TNC_TERRESTRIAL_ECO_REGION, TNC_TERRESTRIAL_ECO_REGION);
+		defineVocabularyDefinedAlias(writer, XmlConstants.TNC_PROJECT_DATA, VOCABULARY_TNC_MARINE_ECO_REGION, TNC_MARINE_ECO_REGION);
+		defineVocabularyDefinedAlias(writer, XmlConstants.TNC_PROJECT_DATA, VOCABULARY_TNC_FRESHWATER_ECO_REGION, TNC_FRESHWATER_ECO_REGION);
+		defineVocabularyDefinedAlias(writer, XmlConstants.WWF_PROJECT_DATA, VOCABULARY_WWF_MANAGING_OFFICES, WwfProjectData.TAG_MANAGING_OFFICES);
+		defineVocabularyDefinedAlias(writer, XmlConstants.WWF_PROJECT_DATA, VOCABULARY_WWF_REGIONS, WwfProjectData.TAG_REGIONS);
+		defineVocabularyDefinedAlias(writer, XmlConstants.WWF_PROJECT_DATA, VOCABULARY_WWF_ECOREGIONS, WwfProjectData.TAG_ECOREGIONS);
+		defineVocabularyDefinedAlias(writer, XmlConstants.PROJECT_SUMMARY_LOCATION, VOCABULARY_COUNTRIES, COUNTRIES);
 		defineVocabularyDefinedAlias(writer, DASHBOARD, VOCABULARY_DASHBOARD_ROW_FLAGS, DASHBOARD_FLAGS);
 		
 		defineDashboardUserChoiceMap(writer);
@@ -315,7 +314,7 @@ public class XmlSchemaCreator implements Xmpz1XmlConstants
 	
 	private void defineExtraDataSectionElement(SchemaWriter writer)
 	{
-		writer.defineAlias(EXTRA_DATA_SECTION + ".element", "element " + Xmpz1XmlConstants.PREFIX + EXTRA_DATA_SECTION);
+		writer.defineAlias(EXTRA_DATA_SECTION + ".element", "element " + XmlConstants.PREFIX + EXTRA_DATA_SECTION);
 		writer.startBlock();
 		writer.printlnIndented("attribute " + EXTRA_DATA_SECTION_OWNER_ATTRIBUTE + " { text } &");
 		writer.printlnIndented(EXTRA_DATA_ITEM + ".element *");
@@ -326,10 +325,10 @@ public class XmlSchemaCreator implements Xmpz1XmlConstants
 
 	private void defineExtraDataItemElement(SchemaWriter writer)
 	{
-		writer.defineAlias(EXTRA_DATA_ITEM + ".element", "element " + Xmpz1XmlConstants.PREFIX + EXTRA_DATA_ITEM);
+		writer.defineAlias(EXTRA_DATA_ITEM + ".element", "element " + XmlConstants.PREFIX + EXTRA_DATA_ITEM);
 		writer.startBlock();
 		writer.printlnIndented("attribute " + EXTRA_DATA_ITEM_NAME + " { text } &");
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + EXTRA_DATA_ITEM_VALUE + " { text }?");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + EXTRA_DATA_ITEM_VALUE + " { text }?");
 		writer.endBlock();
 	}
 
@@ -357,12 +356,12 @@ public class XmlSchemaCreator implements Xmpz1XmlConstants
 	
 	private void defineDashboardUserChoiceMap(SchemaWriter writer)
 	{
-		writer.defineAlias(DASHBOARD_STATUS_ENTRY + ".element", "element " + Xmpz1XmlConstants.PREFIX + DASHBOARD_STATUS_ENTRY);
+		writer.defineAlias(DASHBOARD_STATUS_ENTRY + ".element", "element " + XmlConstants.PREFIX + DASHBOARD_STATUS_ENTRY);
 		writer.startBlock();
 		writer.printlnIndented("attribute " + KEY_ATTRIBUTE_NAME + " { text } &");
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + DASHBOARD_PROGRESS + " { " + VOCABULARY_DASHBOARD_ROW_PROGRESS + " }? &");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + DASHBOARD_PROGRESS + " { " + VOCABULARY_DASHBOARD_ROW_PROGRESS + " }? &");
 		writer.printlnIndented(DASHBOARD + DASHBOARD_FLAGS + CONTAINER_ELEMENT_TAG + ".element? &");
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + DASHBOARD_COMMENTS + " { text }?");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + DASHBOARD_COMMENTS + " { text }?");
 		writer.endBlock();
 	}
 
@@ -402,19 +401,19 @@ public class XmlSchemaCreator implements Xmpz1XmlConstants
 
 	private void defineDateUnitEfforts(SchemaWriter writer)
 	{
-		writer.defineAlias("DateUnitWorkUnits.element", "element " + Xmpz1XmlConstants.PREFIX + "DateUnitWorkUnits");
+		writer.defineAlias("DateUnitWorkUnits.element", "element " + XmlConstants.PREFIX + "DateUnitWorkUnits");
 		writer.startBlock();
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + "WorkUnitsDateUnit{WorkUnitsDay.element | WorkUnitsMonth.element | WorkUnitsQuarter.element | WorkUnitsYear.element | WorkUnitsFullProjectTimespan.element }? &");
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + "NumberOfUnits { xsd:decimal }?");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + "WorkUnitsDateUnit{WorkUnitsDay.element | WorkUnitsMonth.element | WorkUnitsQuarter.element | WorkUnitsYear.element | WorkUnitsFullProjectTimespan.element }? &");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + "NumberOfUnits { xsd:decimal }?");
 		writer.endBlock();
 	}
 
 	private void defineDateUnitExpense(SchemaWriter writer)
 	{
-		writer.defineAlias("DateUnitExpense.element", "element " + Xmpz1XmlConstants.PREFIX + "DateUnitExpense");
+		writer.defineAlias("DateUnitExpense.element", "element " + XmlConstants.PREFIX + "DateUnitExpense");
 		writer.startBlock();
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + Xmpz1XmlConstants.EXPENSES_DATE_UNIT + "{ExpensesDay.element | ExpensesMonth.element | ExpensesQuarter.element | ExpensesYear.element | ExpensesFullProjectTimespan.element }? &");
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + Xmpz1XmlConstants.EXPENSE + " { xsd:decimal }?");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + XmlConstants.EXPENSES_DATE_UNIT + "{ExpensesDay.element | ExpensesMonth.element | ExpensesQuarter.element | ExpensesYear.element | ExpensesFullProjectTimespan.element }? &");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + XmlConstants.EXPENSE + " { xsd:decimal }?");
 		writer.endBlock();
 	}
 	
@@ -470,51 +469,51 @@ public class XmlSchemaCreator implements Xmpz1XmlConstants
 	
 	private void defineTimePeriodCostsElement(SchemaWriter writer)
 	{
-		writer.defineAlias(TIME_PERIOD_COSTS + ".element", "element " + Xmpz1XmlConstants.PREFIX + TIME_PERIOD_COSTS);
+		writer.defineAlias(TIME_PERIOD_COSTS + ".element", "element " + XmlConstants.PREFIX + TIME_PERIOD_COSTS);
 		writer.startBlock();
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + CALCULATED_START_DATE + "{ vocabulary_date } &");
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + CALCULATED_END_DATE + "{ vocabulary_date } &");
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + CALCULATED_EXPENSE_TOTAL + "{ xsd:decimal }? &");
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + CALCULATED_WORK_UNITS_TOTAL + "{ xsd:decimal }? &");
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + CALCULATED_TOTAL_BUDGET_COST + "{ xsd:decimal }? &");
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + CALCULATED_WHO + "{ ResourceId.element* }? &");
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + CALCULATED_EXPENSE_ENTRIES + "{ " + EXPENSE_ENTRY + ".element* }? &");
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + CALCULATED_WORK_UNITS_ENTRIES + "{ " + WORK_UNITS_ENTRY + ".element* }?");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + CALCULATED_START_DATE + "{ vocabulary_date } &");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + CALCULATED_END_DATE + "{ vocabulary_date } &");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + CALCULATED_EXPENSE_TOTAL + "{ xsd:decimal }? &");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + CALCULATED_WORK_UNITS_TOTAL + "{ xsd:decimal }? &");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + CALCULATED_TOTAL_BUDGET_COST + "{ xsd:decimal }? &");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + CALCULATED_WHO + "{ ResourceId.element* }? &");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + CALCULATED_EXPENSE_ENTRIES + "{ " + EXPENSE_ENTRY + ".element* }? &");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + CALCULATED_WORK_UNITS_ENTRIES + "{ " + WORK_UNITS_ENTRY + ".element* }?");
 		writer.endBlock();
 	}
 	
 	private void defineExpenseEntryElement(SchemaWriter writer)
 	{
-		writer.defineAlias(EXPENSE_ENTRY + ".element", "element " + Xmpz1XmlConstants.PREFIX + EXPENSE_ENTRY);
+		writer.defineAlias(EXPENSE_ENTRY + ".element", "element " + XmlConstants.PREFIX + EXPENSE_ENTRY);
 		writer.startBlock();
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + EXPENSE_ENTRY + FUNDING_SOURCE_ID + "{ " + FUNDING_SOURCE_ID + ".element }? &");
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + EXPENSE_ENTRY + ACCOUNTING_CODE_ID + "{ " + ACCOUNTING_CODE_ID + ".element }? &");
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + EXPENSE_ENTRY + BUDGET_CATEGORY_ONE_ID + "{ " + BUDGET_CATEGORY_ONE_ID + ".element }? &");
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + EXPENSE_ENTRY + BUDGET_CATEGORY_TWO_ID + "{ " + BUDGET_CATEGORY_TWO_ID + ".element }? &");
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + EXPENSE_ENTRY + DETAILS + "{ " + DATE_UNITS_EXPENSE + ".element* }?");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + EXPENSE_ENTRY + FUNDING_SOURCE_ID + "{ " + FUNDING_SOURCE_ID + ".element }? &");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + EXPENSE_ENTRY + ACCOUNTING_CODE_ID + "{ " + ACCOUNTING_CODE_ID + ".element }? &");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + EXPENSE_ENTRY + BUDGET_CATEGORY_ONE_ID + "{ " + BUDGET_CATEGORY_ONE_ID + ".element }? &");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + EXPENSE_ENTRY + BUDGET_CATEGORY_TWO_ID + "{ " + BUDGET_CATEGORY_TWO_ID + ".element }? &");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + EXPENSE_ENTRY + DETAILS + "{ " + DATE_UNITS_EXPENSE + ".element* }?");
 		writer.endBlock();
 	}
 	
 	private void defineWorkUnitsEntryElement(SchemaWriter writer)
 	{
-		writer.defineAlias(WORK_UNITS_ENTRY + ".element", "element " + Xmpz1XmlConstants.PREFIX + WORK_UNITS_ENTRY);
+		writer.defineAlias(WORK_UNITS_ENTRY + ".element", "element " + XmlConstants.PREFIX + WORK_UNITS_ENTRY);
 		writer.startBlock();
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + WORK_UNITS_ENTRY + RESOURCE_ID + "{ " + RESOURCE_ID + ".element }? &");
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + WORK_UNITS_ENTRY + FUNDING_SOURCE_ID + "{ " + FUNDING_SOURCE_ID + ".element }? &");
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + WORK_UNITS_ENTRY + ACCOUNTING_CODE_ID + "{ " + ACCOUNTING_CODE_ID + ".element }? &");
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + WORK_UNITS_ENTRY + BUDGET_CATEGORY_ONE_ID + "{ " + BUDGET_CATEGORY_ONE_ID + ".element }? &");
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + WORK_UNITS_ENTRY + BUDGET_CATEGORY_TWO_ID + "{ " + BUDGET_CATEGORY_TWO_ID + ".element }? &");
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + WORK_UNITS_ENTRY + DETAILS + "{ " + DATE_UNIT_WORK_UNITS + ".element* }?");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + WORK_UNITS_ENTRY + RESOURCE_ID + "{ " + RESOURCE_ID + ".element }? &");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + WORK_UNITS_ENTRY + FUNDING_SOURCE_ID + "{ " + FUNDING_SOURCE_ID + ".element }? &");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + WORK_UNITS_ENTRY + ACCOUNTING_CODE_ID + "{ " + ACCOUNTING_CODE_ID + ".element }? &");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + WORK_UNITS_ENTRY + BUDGET_CATEGORY_ONE_ID + "{ " + BUDGET_CATEGORY_ONE_ID + ".element }? &");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + WORK_UNITS_ENTRY + BUDGET_CATEGORY_TWO_ID + "{ " + BUDGET_CATEGORY_TWO_ID + ".element }? &");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + WORK_UNITS_ENTRY + DETAILS + "{ " + DATE_UNIT_WORK_UNITS + ".element* }?");
 		writer.endBlock();
 	}
 	
 	private void defineThresholdsElement(SchemaWriter writer)
 	{
-		writer.defineAlias(THRESHOLD + ".element", "element " + Xmpz1XmlConstants.PREFIX + THRESHOLD);
+		writer.defineAlias(THRESHOLD + ".element", "element " + XmlConstants.PREFIX + THRESHOLD);
 		writer.startBlock();
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + STATUS_CODE + "{" + VOCABULARY_MEASUREMENT_STATUS + "}? &");
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + THRESHOLD_VALUE + " { text }? &");
-		writer.printlnIndented("element " + Xmpz1XmlConstants.PREFIX + THRESHOLD_DETAILS + " { text }?");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + STATUS_CODE + "{" + VOCABULARY_MEASUREMENT_STATUS + "}? &");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + THRESHOLD_VALUE + " { text }? &");
+		writer.printlnIndented("element " + XmlConstants.PREFIX + THRESHOLD_DETAILS + " { text }?");
 		writer.endBlock();
 	}
 	
@@ -567,7 +566,7 @@ public class XmlSchemaCreator implements Xmpz1XmlConstants
 	
 	private void defineVocabularyDefinedAlias(SchemaWriter writer, String parentElementName, String vocabularyElementName, String elementName)
 	{
-		writer.defineAlias(parentElementName + elementName+Xmpz1XmlConstants.CONTAINER_ELEMENT_TAG + ".element", "element miradi:" + parentElementName + elementName+Xmpz1XmlConstants.CONTAINER_ELEMENT_TAG);
+		writer.defineAlias(parentElementName + elementName+ XmlConstants.CONTAINER_ELEMENT_TAG + ".element", "element miradi:" + parentElementName + elementName+ XmlConstants.CONTAINER_ELEMENT_TAG);
 		writer.startBlock();
 		writer.printlnIndented("element miradi:" + CODE_ELEMENT_NAME + " { " + vocabularyElementName + " } * ");
 		writer.endBlock();
@@ -575,7 +574,7 @@ public class XmlSchemaCreator implements Xmpz1XmlConstants
 	
 	private void defineIdElement(SchemaWriter writer, String baseName)
 	{
-		writer.println(baseName + "Id.element = element " + Xmpz1XmlConstants.PREFIX + baseName + "Id { xsd:integer }");
+		writer.println(baseName + "Id.element = element " + XmlConstants.PREFIX + baseName + "Id { xsd:integer }");
 	}
 	
 	private void defineVocabulary(SchemaWriter writer, String vocabularyName, ChoiceQuestion question)

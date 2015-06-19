@@ -18,17 +18,17 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.wcs;
+package org.miradi.exceptions;
 
-import org.miradi.xml.MiradiXmlValidator;
+import org.miradi.main.EAM;
 
-public class Xmpz2XmlValidator extends MiradiXmlValidator
+
+public class XmlVersionTooOldException extends Exception
 {
-	@Override
-	protected String getSchemaFileRelativePathName()
+	public XmlVersionTooOldException(String expectedSchemaVersion, String actualSchemaVersion)
 	{
-		return XMPZ2_SCHEMA_FILE_RELATIVE_PATH;
+		super(EAM.text("This project cannot be imported because it is in an old data format." +
+					   "\nExpected schema version: " + expectedSchemaVersion + 
+					   "\nVersion being imported:" + actualSchemaVersion));
 	}
-	
-	public static final String XMPZ2_SCHEMA_FILE_RELATIVE_PATH = "xml/Xmpz2Schema.rnc";
 }

@@ -22,13 +22,12 @@ package org.miradi.xml.generic;
 
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Xenodata;
-import org.miradi.xml.wcs.Xmpz1XmlConstants;
 
 class ProjectSummarySchemaElement extends ObjectSchemaElement
 {
 	public ProjectSummarySchemaElement()
 	{
-		super(Xmpz1XmlConstants.PROJECT_SUMMARY);
+		super(XmlConstants.PROJECT_SUMMARY);
 	
 		createOptionalTextField(ProjectMetadata.TAG_PROJECT_NAME);
 		createOptionalBooleanField(XmlSchemaCreator.PROJECT_SHARE_OUTSIDE_ORGANIZATION);

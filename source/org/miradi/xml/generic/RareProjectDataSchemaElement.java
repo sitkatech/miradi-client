@@ -21,13 +21,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.RareProjectData;
-import org.miradi.xml.wcs.Xmpz1XmlConstants;
 
 public class RareProjectDataSchemaElement extends ObjectSchemaElement
 {
 	public RareProjectDataSchemaElement()
 	{
-		super(Xmpz1XmlConstants.RARE_PROJECT_DATA);
+		super(XmlConstants.RARE_PROJECT_DATA);
 		
 		createOptionalTextField(RareProjectData.TAG_COHORT);
 		

@@ -21,13 +21,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.Organization;
-import org.miradi.xml.wcs.Xmpz1XmlConstants;
 
 public class OrganizationObjectSchemaElement extends BaseObjectSchemaElementWithLabel
 {
 	public OrganizationObjectSchemaElement()
 	{
-		super(Xmpz1XmlConstants.ORGANIZATION);
+		super(XmlConstants.ORGANIZATION);
 		
 		createOptionalTextField(Organization.TAG_SHORT_LABEL);
 		createOptionalTextField(Organization.TAG_ROLES_DESCRIPTION);

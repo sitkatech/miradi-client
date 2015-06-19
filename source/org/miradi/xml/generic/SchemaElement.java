@@ -22,9 +22,7 @@ package org.miradi.xml.generic;
 
 import java.io.IOException;
 
-import org.miradi.xml.wcs.Xmpz1XmlConstants;
-
-public abstract class SchemaElement implements Xmpz1XmlConstants
+public abstract class SchemaElement implements XmlConstants
 {
 	abstract public void output(SchemaWriter writer) throws IOException;
 

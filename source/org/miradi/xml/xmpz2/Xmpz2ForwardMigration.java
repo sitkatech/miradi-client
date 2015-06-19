@@ -29,7 +29,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
-import org.miradi.exceptions.XmpzVersionTooOldException;
+import org.miradi.exceptions.XmlVersionTooOldException;
 import org.miradi.migrations.forward.MigrationTo10;
 import org.miradi.migrations.forward.MigrationTo11;
 import org.miradi.utils.BiDirectionalHashMap;
@@ -177,7 +177,7 @@ public class Xmpz2ForwardMigration
 		int readInSchemaVersion = Integer.parseInt(readInSchemaVersionAsString);
 		if (readInSchemaVersion < LOWEST_SCHEMA_VERSION)
 		{
-			throw new XmpzVersionTooOldException(Integer.toString(LOWEST_SCHEMA_VERSION), readInSchemaVersionAsString);
+			throw new XmlVersionTooOldException(Integer.toString(LOWEST_SCHEMA_VERSION), readInSchemaVersionAsString);
 		}
 		
 		if (readInSchemaVersion <  Integer.parseInt(NAME_SPACE_VERSION))

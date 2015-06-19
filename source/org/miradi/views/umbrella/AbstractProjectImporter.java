@@ -36,7 +36,7 @@ import org.miradi.exceptions.FutureSchemaVersionException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.exceptions.UserCanceledException;
 import org.miradi.exceptions.ValidationException;
-import org.miradi.exceptions.XmpzVersionTooOldException;
+import org.miradi.exceptions.XmlVersionTooOldException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
@@ -92,7 +92,7 @@ public abstract class AbstractProjectImporter
 		{
 			logTooNewVersionException(e);
 		}
-		catch (XmpzVersionTooOldException e)
+		catch (XmlVersionTooOldException e)
 		{
 			EAM.alertUserOfNonFatalException(e);
 		}

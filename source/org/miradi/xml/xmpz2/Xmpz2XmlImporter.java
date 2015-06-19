@@ -68,7 +68,6 @@ import org.miradi.utils.StringUtilities;
 import org.miradi.xml.AbstractXmlImporter;
 import org.miradi.xml.AbstractXmlNamespaceContext;
 import org.miradi.xml.MiradiXmlValidator;
-import org.miradi.xml.wcs.Xmpz2XmlValidator;
 import org.miradi.xml.xmpz2.objectImporters.BaseObjectImporter;
 import org.miradi.xml.xmpz2.objectImporters.ConceptualModelDiagramImporter;
 import org.miradi.xml.xmpz2.objectImporters.DashboardImporter;

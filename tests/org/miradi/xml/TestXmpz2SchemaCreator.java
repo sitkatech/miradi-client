@@ -25,8 +25,7 @@ import java.io.IOException;
 import org.martus.util.UnicodeStringWriter;
 import org.martus.util.UnicodeWriter;
 import org.miradi.utils.StringUtilities;
-import org.miradi.xml.wcs.TestAbstractSchemaCreator;
-import org.miradi.xml.wcs.Xmpz2XmlValidator;
+import org.miradi.xml.xmpz2.Xmpz2XmlValidator;
 import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2SchemaWriter;
 import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2XmlSchemaCreator;
 

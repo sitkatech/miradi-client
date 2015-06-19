@@ -25,7 +25,7 @@ import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.utils.MiradiFileSaveChooser;
 import org.miradi.utils.Xmpz2ZipFileChooser;
 import org.miradi.xml.XmlExporter;
-import org.miradi.xml.wcs.Xmpz2XmlValidator;
+import org.miradi.xml.xmpz2.Xmpz2XmlValidator;
 import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
 
 public class Xmpz2ProjectExportDoer extends AbstractExportProjectXmlZipDoer

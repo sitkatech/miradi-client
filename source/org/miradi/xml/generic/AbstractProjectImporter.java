@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml;
+package org.miradi.xml.generic;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,10 +32,11 @@ import org.miradi.project.ProjectSaver;
 import org.miradi.utils.MiradiZipFile;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.views.umbrella.AbstractZippedXmlImporter;
+import org.miradi.xml.AbstractXmlImporter;
 
-abstract public class AbstractXmpzProjectImporter extends AbstractZippedXmlImporter
+abstract public class AbstractProjectImporter extends AbstractZippedXmlImporter
 {
-	public AbstractXmpzProjectImporter(MainWindow mainWindowToUse)
+	public AbstractProjectImporter(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
 	}

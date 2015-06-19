@@ -20,12 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.xml.wcs.Xmpz1XmlConstants;
-
 public class AccountingCodeObjectSchemaElement extends AbstractBudgetCategorySchemaElement
 {
 	public AccountingCodeObjectSchemaElement()
 	{
-		super(Xmpz1XmlConstants.ACCOUNTING_CODE);
+		super(XmlConstants.ACCOUNTING_CODE);
 	}
 }

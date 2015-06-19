@@ -22,13 +22,12 @@ package org.miradi.xml.generic;
 
 import org.miradi.migrations.IndicatorFutureStatusTagsToFutureStatusTagsMap;
 import org.miradi.objects.Indicator;
-import org.miradi.xml.wcs.Xmpz1XmlConstants;
 
 public class IndicatorObjectSchemaElement extends BaseObjectSchemaElementWithLabel
 {
 	public IndicatorObjectSchemaElement()
 	{
-		super(Xmpz1XmlConstants.INDICATOR);
+		super(XmlConstants.INDICATOR);
 		
 		createOptionalTextField(Indicator.TAG_SHORT_LABEL);
 		createOptionalTextField(Indicator.TAG_DETAIL);
@@ -39,11 +38,11 @@ public class IndicatorObjectSchemaElement extends BaseObjectSchemaElementWithLab
 		createCodeField(IndicatorFutureStatusTagsToFutureStatusTagsMap.TAG_INDICATOR_FUTURE_STATUS_RATING, XmlSchemaCreator.VOCABULARY_MEASUREMENT_STATUS);
 		createOptionalTextField(IndicatorFutureStatusTagsToFutureStatusTagsMap.TAG_INDICATOR_FUTURE_STATUS_DETAIL);
 		createOptionalTextField(IndicatorFutureStatusTagsToFutureStatusTagsMap.TAG_INDICATOR_FUTURE_STATUS_COMMENTS);	
-		createOptionalIdListField(Xmpz1XmlConstants.PROGRESS_REPORT_IDS, XmlSchemaCreator.PROGRESS_REPORT_ID_ELEMENT_NAME);
-		createOptionalIdListField(Xmpz1XmlConstants.EXPENSE_IDS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
+		createOptionalIdListField(XmlConstants.PROGRESS_REPORT_IDS, XmlSchemaCreator.PROGRESS_REPORT_ID_ELEMENT_NAME);
+		createOptionalIdListField(XmlConstants.EXPENSE_IDS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
 		createOptionalIdListField(Indicator.TAG_RESOURCE_ASSIGNMENT_IDS, XmlSchemaCreator.RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
-		createOptionalIdListField(Xmpz1XmlConstants.MEASUREMENT_IDS, XmlSchemaCreator.MEASUREMENT_ID_ELEMENT_NAME);
-		createOptionalIdListField(Xmpz1XmlConstants.METHOD_IDS, XmlSchemaCreator.METHOD);
+		createOptionalIdListField(XmlConstants.MEASUREMENT_IDS, XmlSchemaCreator.MEASUREMENT_ID_ELEMENT_NAME);
+		createOptionalIdListField(XmlConstants.METHOD_IDS, XmlSchemaCreator.METHOD);
 		createOptionalThresholdsField();
 		createOptionalCodeField(Indicator.TAG_RATING_SOURCE, XmlSchemaCreator.VOCABULARY_RATING_SOURCE);
 		createOptionalTextField(Indicator.TAG_VIABILITY_RATINGS_COMMENTS);

@@ -20,13 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.xml.wcs.Xmpz1XmlConstants;
-
 
 public class ObjectiveSchemaElement extends DesireSchemaElement
 {
 	public ObjectiveSchemaElement()
 	{
-		super(Xmpz1XmlConstants.OBJECTIVE);
+		super(XmlConstants.OBJECTIVE);
 	}
 }

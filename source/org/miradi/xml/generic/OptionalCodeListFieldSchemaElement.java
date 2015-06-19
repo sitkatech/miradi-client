@@ -22,8 +22,6 @@ package org.miradi.xml.generic;
 
 import java.io.IOException;
 
-import org.miradi.xml.wcs.Xmpz1XmlConstants;
-
 public class OptionalCodeListFieldSchemaElement extends FieldSchemaElement
 {
 	protected OptionalCodeListFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
@@ -34,6 +32,6 @@ public class OptionalCodeListFieldSchemaElement extends FieldSchemaElement
 	@Override
 	public void output(SchemaWriter writer) throws IOException
 	{
-		writer.print(Xmpz1XmlConstants.SINGLE_SPACE + Xmpz1XmlConstants.SINGLE_SPACE + getObjectTypeName() + getConvertedElementName() + Xmpz1XmlConstants.CONTAINER_ELEMENT_TAG + ".element ?");
+		writer.print(XmlConstants.SINGLE_SPACE + XmlConstants.SINGLE_SPACE + getObjectTypeName() + getConvertedElementName() + XmlConstants.CONTAINER_ELEMENT_TAG + ".element ?");
 	}
 }

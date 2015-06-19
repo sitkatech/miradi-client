@@ -22,13 +22,12 @@ package org.miradi.xml.generic;
 
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.WcpaProjectData;
-import org.miradi.xml.wcs.Xmpz1XmlConstants;
 
 public class ProjectSummaryScopeSchemaElement extends ObjectSchemaElement
 {
 	public ProjectSummaryScopeSchemaElement()
 	{
-		super(Xmpz1XmlConstants.PROJECT_SUMMARY_SCOPE);
+		super(XmlConstants.PROJECT_SUMMARY_SCOPE);
 		
 		createOptionalTextField(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE);
 		createOptionalTextField(ProjectMetadata.TAG_PROJECT_SCOPE);

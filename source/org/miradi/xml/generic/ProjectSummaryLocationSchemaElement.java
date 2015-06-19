@@ -21,13 +21,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.ProjectMetadata;
-import org.miradi.xml.wcs.Xmpz1XmlConstants;
 
 public class ProjectSummaryLocationSchemaElement extends ObjectSchemaElement
 {
 	public ProjectSummaryLocationSchemaElement()
 	{
-		super(Xmpz1XmlConstants.PROJECT_SUMMARY_LOCATION);
+		super(XmlConstants.PROJECT_SUMMARY_LOCATION);
 
 		createOptionalGeospatialLocationField("ProjectLocation");
 		createOptionalCodeListField(XmlSchemaCreator.COUNTRIES);

@@ -22,8 +22,6 @@ package org.miradi.xml.generic;
 
 import java.io.IOException;
 
-import org.miradi.xml.wcs.TagToElementNameMap;
-
 class FieldSchemaElement extends SchemaElement
 {
 	protected FieldSchemaElement(String objectTypeNameToUse, String tagToUse)

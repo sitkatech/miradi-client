@@ -20,14 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.umbrella.doers;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.URL;
-import java.util.zip.ZipOutputStream;
-
 import org.martus.util.UnicodeReader;
-import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.exceptions.InvalidICUNSelectionException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
@@ -37,9 +30,12 @@ import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.PNGFileFilter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.views.umbrella.XmlExporterDoer;
-import org.miradi.xml.XmlExporter;
-import org.miradi.xml.wcs.WcsMiradiXmlValidator;
-import org.miradi.xml.wcs.Xmpz1XmlExporter;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.util.zip.ZipOutputStream;
 
 abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 {
@@ -130,23 +126,6 @@ abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 		}
 	}
 
-	@Override
-	protected XmlExporter createExporter() throws Exception
-	{
-		return new Xmpz1XmlExporter(getProject());
-	}
-	
-	@Override
-	protected boolean isValidXml(InputStreamWithSeek inputStream) throws Exception
-	{
-		return new WcsMiradiXmlValidator().isValid(inputStream);
-	}
-	
-	protected void notifyUserWhenExportingXmpz1()
-	{
-		EAM.displayHtmlWarningDialog("NOTE: This data format is good for sending to other systems or creating reports. <br/>It cannot be used to transfer data from one copy or version of Miradi to another.");
-	}
-	
 	abstract protected String getSchemaRelativeFilePath();
 	public static final String SCHEMA_FILE_NAME = "schema.rnc";
 }

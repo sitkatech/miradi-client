@@ -26,10 +26,10 @@ import org.miradi.utils.GenericMiradiFileFilter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.Xmpz2FileFilter;
 import org.miradi.xml.AbstractXmlImporter;
-import org.miradi.xml.AbstractXmpzProjectImporter;
+import org.miradi.xml.generic.AbstractProjectImporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 
-public class Xmpz2ProjectImporter extends AbstractXmpzProjectImporter
+public class Xmpz2ProjectImporter extends AbstractProjectImporter
 {
 	public Xmpz2ProjectImporter(MainWindow mainWindowToUse)
 	{

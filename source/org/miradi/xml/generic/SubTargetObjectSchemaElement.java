@@ -21,13 +21,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.SubTarget;
-import org.miradi.xml.wcs.Xmpz1XmlConstants;
 
 public class SubTargetObjectSchemaElement extends BaseObjectSchemaElementWithLabel
 {
 	public SubTargetObjectSchemaElement()
 	{
-		super(Xmpz1XmlConstants.SUB_TARGET);
+		super(XmlConstants.SUB_TARGET);
 		
 		createOptionalTextField(SubTarget.TAG_SHORT_LABEL);
 		createOptionalTextField(SubTarget.TAG_DETAIL);
