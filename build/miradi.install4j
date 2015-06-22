@@ -586,7 +586,7 @@ return true;
     </applications>
   </installerGui>
   <mediaSets>
-    <windows name="Windows" id="22" customizedId="" mediaFileName="" installDir="Miradi" overridePrincipalLanguage="false" jreBitType="32" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" includedJRE="windows-x86-1.6.0_45" manualJREEntry="false" bundleType="2" jreURL="${compiler:jres.path}/windows-x86-1.6.0_45.tar.gz" jreShared="true" directDownload="false" installOnlyIfNecessary="true" customInstallBaseDir="" contentFilesType="1" downloadURL="" verifyIntegrity="true">
+    <windows name="Windows" id="22" customizedId="" mediaFileName="" installDir="Miradi" overridePrincipalLanguage="false" jreBitType="32" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" includedJRE="windows-x86-1.8.0_45" manualJREEntry="false" bundleType="2" jreURL="${compiler:jres.path}/windows-x86-1.8.0_45.tar.gz" jreShared="true" directDownload="false" installOnlyIfNecessary="true" customInstallBaseDir="" contentFilesType="1" downloadURL="" verifyIntegrity="true">
       <excludedLaunchers />
       <excludedBeans />
       <overriddenPrincipalLanguage id="en" customLocalizationFile="" />
