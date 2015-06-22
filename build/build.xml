@@ -202,7 +202,7 @@
 <target name="build" depends="init, ThirdParty" description="Compile Miradi">
 <mkdir dir="${eam.class.root}"/>
 
-<javac source="1.6" target="1.6" compiler="javac1.7" optimize="on" failonerror="true"
+<javac source="1.6" target="1.7" compiler="javac1.7" optimize="on" failonerror="true"
         includeantruntime="false"
         debug="true" debuglevel="lines,source"
         srcdir="${eam.src.root}" destdir="${eam.class.root}"
@@ -220,7 +220,7 @@
 <!-- ================================================================== -->
 <target name="test" depends="init, build" description="Run unit tests">
 <mkdir dir="${eam.test.class.root}"/>
-<javac source="1.6" target="1.6" compiler="javac1.7" optimize="on" failonerror="true"
+<javac source="1.6" target="1.7" compiler="javac1.7" optimize="on" failonerror="true"
         srcdir="${eam.test.src.root}" destdir="${eam.test.class.root}" >
     <compilerarg value="-Xlint:unchecked" />
     <classpath refid="eam.class.path"/>
