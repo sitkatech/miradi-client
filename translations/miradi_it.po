@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-19 04:21-0700\n"
+"POT-Creation-Date: 2015-06-23 06:21-0700\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -4874,11 +4874,11 @@ msgstr ""
 msgid "Manage Stresses for "
 msgstr "Gestisci gli Stress per "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:408
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:411
 msgid "Manage Tags"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:127
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:128
 msgid "Manage Tags (BETA)..."
 msgstr "Gestisci le etichette(Tag)"
 

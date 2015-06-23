@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-19 04:21-0700\n"
+"POT-Creation-Date: 2015-06-23 06:21-0700\n"
 "PO-Revision-Date: 2015-03-12 11:25+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -4613,11 +4613,11 @@ msgstr ""
 msgid "Manage Stresses for "
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:408
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:411
 msgid "Manage Tags"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:127
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:128
 msgid "Manage Tags (BETA)..."
 msgstr ""
 
