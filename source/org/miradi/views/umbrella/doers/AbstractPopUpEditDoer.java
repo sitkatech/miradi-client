@@ -20,11 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella.doers;
 
 import org.martus.swing.Utilities;
-import org.miradi.dialogs.base.MiradiDialog;
-import org.miradi.dialogs.base.ModalDialogWithClose;
-import org.miradi.dialogs.base.ModelessDialogWithDirections;
-import org.miradi.dialogs.base.ObjectListManagementPanel;
-import org.miradi.dialogs.base.ObjectManagementPanel;
+import org.miradi.dialogs.base.*;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -59,7 +55,7 @@ abstract public class AbstractPopUpEditDoer extends ObjectsDoer
 		
 		try
 		{
-			showManagementDialog(getMainWindow(), createManagementPanel(), getDialogTitle());			
+			createAndShowManagementDialog(getMainWindow(), createManagementPanel(), getDialogTitle());
 		}
 		catch(Exception e)
 		{
@@ -67,22 +63,24 @@ abstract public class AbstractPopUpEditDoer extends ObjectsDoer
 		}
 	}
 	
-	public static void showManagementDialogWithInstructionsButton(MainWindow mainWindow, ObjectManagementPanel managementPanel, String dialogTitle) throws Exception
+	public static AbstractDialogWithClose createAndShowManagementDialogWithInstructionsButton(MainWindow mainWindow, ObjectManagementPanel managementPanel, String dialogTitle) throws Exception
 	{
-		showDialog(new ModelessDialogWithDirections(mainWindow, managementPanel, dialogTitle), managementPanel);
+		return createAndShowDialog(new ModelessDialogWithDirections(mainWindow, managementPanel, dialogTitle), managementPanel);
 	}
 
-	public static void showManagementDialog(MainWindow mainWindow, ObjectManagementPanel managementPanel, String dialogTitle) throws Exception
+	public static AbstractDialogWithClose createAndShowManagementDialog(MainWindow mainWindow, ObjectManagementPanel managementPanel, String dialogTitle) throws Exception
 	{
-		showDialog(new ModalDialogWithClose(mainWindow, managementPanel, dialogTitle), managementPanel);
+		return createAndShowDialog(new ModalDialogWithClose(mainWindow, managementPanel, dialogTitle), managementPanel);
 	}
 
-	private static void showDialog(MiradiDialog dialog, ObjectManagementPanel managementPanel)
+	private static AbstractDialogWithClose createAndShowDialog(AbstractDialogWithClose dialog, ObjectManagementPanel managementPanel)
 	{
 		Utilities.centerDlg(dialog);
 
 		managementPanel.becomeActive();
 		dialog.setVisible(true);
+
+		return dialog;
 	}
 
 	protected int getTypeToFilterOn()

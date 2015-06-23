@@ -32,6 +32,7 @@ import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogs.base.AbstractDialogWithClose;
 import org.miradi.dialogs.base.ObjectManagementPanel;
 import org.miradi.dialogs.base.ObjectRefListEditorPanel;
 import org.miradi.dialogs.fieldComponents.PanelButton;
@@ -403,15 +404,30 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		{
 			try
 			{
+				closeActiveTaggedObjectsDialog();
+
 				TaggedObjectSetPoolTable poolTable = new TaggedObjectSetPoolTable(getMainWindow(), new TaggedObjectSetPoolTableModel(getProject()));
 				ObjectManagementPanel panel = new TaggedObjectSetManagementPanel(getMainWindow(), poolTable);
-				AbstractPopUpEditDoer.showManagementDialogWithInstructionsButton(mainWindow, panel, EAM.text("Manage Tags"));
+				activeTaggedObjectsDialog = AbstractPopUpEditDoer.createAndShowManagementDialogWithInstructionsButton(mainWindow, panel, EAM.text("Manage Tags"));
 			}
 			catch (Exception e)
 			{
 				EAM.logException(e);
 			}
 		}
+
+		private void closeActiveTaggedObjectsDialog()
+		{
+			if(activeTaggedObjectsDialog != null && activeTaggedObjectsDialog.isDisplayable())
+			{
+				activeTaggedObjectsDialog.setVisible(false);
+				activeTaggedObjectsDialog.dispose();
+			}
+			activeTaggedObjectsDialog = null;
+		}
+
+
+		private AbstractDialogWithClose activeTaggedObjectsDialog;
 	}
 	
 	abstract protected void createCustomLegendPanelSection(Actions actions, JPanel jpanel);
