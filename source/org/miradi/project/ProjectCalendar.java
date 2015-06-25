@@ -452,7 +452,7 @@ public class ProjectCalendar
 		int startYear = start.getGregorianYear();
 		int startMonth = getFiscalYearFirstMonth();
 		MultiCalendar startOfFiscalYear = MultiCalendar.createFromGregorianYearMonthDay(startYear, startMonth, 1);
-		while(startOfFiscalYear.after(start))
+		while(isStartDateAfterEndDate(startOfFiscalYear, start))
 			startOfFiscalYear = getOneYearEarlier(startOfFiscalYear);
 
 		return startOfFiscalYear;
@@ -463,7 +463,7 @@ public class ProjectCalendar
 		MultiCalendar thisStartDate = getPlanningStartMultiCalendar();
 		MultiCalendar thisEndDate = getPlanningEndMultiCalendar();
 		
-		if (thisStartDate.after(thisEndDate))
+		if (isStartDateAfterEndDate(thisStartDate, thisEndDate))
 		{
 			EAM.logWarning("Project planning DateRange end date: " + thisEndDate + " was before start date: " + thisEndDate);
 			return new DateRange(thisStartDate, thisStartDate);
@@ -471,10 +471,23 @@ public class ProjectCalendar
 			
 		return new DateRange(thisStartDate, thisEndDate);
 	}
-	
+
+	public boolean isStartDateAfterEndDate()
+	{
+		MultiCalendar thisStartDate = getPlanningStartMultiCalendar();
+		MultiCalendar thisEndDate = getPlanningEndMultiCalendar();
+
+		return thisStartDate.after(thisEndDate);
+	}
+
+	public boolean isStartDateAfterEndDate(MultiCalendar thisStartDate, MultiCalendar thisEndDate)
+	{
+		return thisStartDate.after(thisEndDate);
+	}
+
 	public boolean arePlanningStartAndEndDatesFlipped()
 	{
-		return getPlanningStartMultiCalendar().after(getPlanningEndMultiCalendar());
+		return isStartDateAfterEndDate(getPlanningStartMultiCalendar(), getPlanningEndMultiCalendar());
 	}
 	
 	public DateUnit getProjectPlanningDateUnit() throws Exception

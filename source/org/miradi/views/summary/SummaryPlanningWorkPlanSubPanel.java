@@ -49,24 +49,33 @@ import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.MiradiTextPane;
 
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+
 public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 {
-	public SummaryPlanningWorkPlanSubPanel(Project projectToUse, ORef orefToUse) throws Exception
+	public SummaryPlanningWorkPlanSubPanel(Project projectToUse, ORef oRefToUse) throws Exception
 	{
-		super(projectToUse, orefToUse);
+		super(projectToUse, oRefToUse);
 		
-		addHiddenDataWarningLabel();
+		addHiddenWorkPlanDataWarningLabel();
 		
 		ObjectDataInputField startDate = createDateChooserField(ProjectMetadata.TAG_START_DATE);
+		startDate.getComponent().addFocusListener(new ProjectPlanningDateFocusListener());
 		ObjectDataInputField endDate = createDateChooserField(ProjectMetadata.TAG_EXPECTED_END_DATE);
+		endDate.getComponent().addFocusListener(new ProjectPlanningDateFocusListener());
 		ObjectDataInputField[] projectDateFields = new ObjectDataInputField[] {startDate, endDate, };
 		addFieldsOnOneLine(EAM.text("Label|Project Dates"), projectDateFields);
-		
+
 		ObjectDataInputField workPlanStartDate = createDateChooserField(ProjectMetadata.TAG_WORKPLAN_START_DATE);
+		workPlanStartDate.getComponent().addFocusListener(new ProjectPlanningDateFocusListener());
 		ObjectDataInputField workPlanEndDate = createDateChooserField(ProjectMetadata.TAG_WORKPLAN_END_DATE);
+		workPlanEndDate.getComponent().addFocusListener(new ProjectPlanningDateFocusListener());
 		ObjectDataInputField[] workPlanDateFields = new ObjectDataInputField[] {workPlanStartDate, workPlanEndDate, };
 		addFieldsOnOneLine(EAM.text("Label|Work Plan Dates"), workPlanDateFields);
-		
+
+		addHiddenProjectPlanningDateWarningLabel();
+
 		addDataDateRangeTextField();
 
 		addField(createChoiceField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_FISCAL_YEAR_START, new FiscalYearStartQuestion()));
@@ -81,10 +90,24 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		
 		updateQuarterColumnVisibilityEnableStatus();
 		
-		setObjectRefs(new ORef[] {orefToUse, projectToUse.getSingletonObjectRef(ProjectMetadataSchema.getObjectType()), });
+		setObjectRefs(new ORef[] {oRefToUse, projectToUse.getSingletonObjectRef(ProjectMetadataSchema.getObjectType()), });
 		updateFieldsFromProject();
 	}
-	
+
+	class ProjectPlanningDateFocusListener implements FocusListener
+	{
+
+		@Override
+		public void focusGained(FocusEvent e) {
+		}
+
+		@Override
+		public void focusLost(FocusEvent e) {
+			updateWorkPlanDataOutOfRangeWarningField();
+			updateProjectPlanningDateWarningField();
+		}
+	}
+
 	private void addDataDateRangeTextField() throws Exception
 	{
 		String startDate = getFirstDateWithData();
@@ -100,9 +123,9 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		add(textArea);
 	}
 
-	private void addHiddenDataWarningLabel() throws Exception
+	private void addHiddenWorkPlanDataWarningLabel() throws Exception
 	{
-		warningLabelFillerReplacement =createAndAddFillerPanel();
+		workPlanDataWarningLabelFillerReplacement = createAndAddFillerPanel();
 		String warningMessage = EAM.text("Some work plan data is currently hidden and not included in " +
 										"calculated totals. If the data is outside the planning date range, " +
 										"it will be visible again if you set the planning start and end date " +
@@ -110,10 +133,19 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 										"Otherwise, it could be that annual data was entered for a " +
 										"different fiscal year setting, in which case it will be visible " +
 										"if you set the fiscal year start back to its previous setting.");
-		warningPanel = createAndAddWarningPanel(warningMessage);
-		updateOutOfRangeDataWarningField();
+		workPlanDataWarningPanel = createAndAddWarningPanel(warningMessage);
+		updateWorkPlanDataOutOfRangeWarningField();
 	}
 	
+	private void addHiddenProjectPlanningDateWarningLabel() throws Exception
+	{
+		projectPlanningDateWarningLabelFillerReplacement = createAndAddFillerPanel();
+		String warningMessage = EAM.text("Effective end date for project planning date range is before start date.");
+		projectPlanningDateWarningPanel = createAndAddWarningPanel(warningMessage);
+
+		updateProjectPlanningDateWarningField();
+	}
+
 	private void addQuarterColumnVisibilityExplanationLabel() throws Exception
 	{	
 		quarterVisibilityExplanationFillerReplacement = createAndAddFillerPanel();
@@ -127,7 +159,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		add(new FillerPanel());
 		FillerPanel warningPanelEmptyReplacementPanel = new FillerPanel();
 		add(warningPanelEmptyReplacementPanel);
-		
+
 		return warningPanelEmptyReplacementPanel;
 	}
 
@@ -139,7 +171,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		label.setAlignmentY(TOP_ALIGNMENT);
 		label.setForeground(getForeground());
 		label.setBackground(getBackground());
-		
+
 		add(label);
 		
 		return label;
@@ -160,27 +192,38 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		label.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		panel.add(icon);
 		panel.add(label);
-		
+
 		add(panel);
 		
 		return panel;
 	}
 	
 	@Override
-	public void setObjectRefs(ORef[] orefsToUse)
+	public void setObjectRefs(ORef[] oRefsToUse)
 	{
-		super.setObjectRefs(orefsToUse);
-		updateOutOfRangeDataWarningField();
+		super.setObjectRefs(oRefsToUse);
+		updateWorkPlanDataOutOfRangeWarningField();
+		updateProjectPlanningDateWarningField();
 	}
 	
-	private void updateOutOfRangeDataWarningField()
+	private void updateWorkPlanDataOutOfRangeWarningField()
 	{
-		if (warningPanel == null)
+		if (workPlanDataWarningPanel == null)
 			return;
-		
+
 		boolean showWarning = hasDataOutsideOfProjectDateRange(getProject());
-		warningPanel.setVisible(showWarning);
-		warningLabelFillerReplacement.setVisible(!showWarning);
+		workPlanDataWarningPanel.setVisible(showWarning);
+		workPlanDataWarningLabelFillerReplacement.setVisible(!showWarning);
+	}
+
+	private void updateProjectPlanningDateWarningField()
+	{
+		if (projectPlanningDateWarningPanel == null)
+			return;
+
+		boolean showWarning = getProject().getProjectCalendar().isStartDateAfterEndDate();
+		projectPlanningDateWarningPanel.setVisible(showWarning);
+		projectPlanningDateWarningLabelFillerReplacement.setVisible(!showWarning);
 	}
 
 	@Override
@@ -195,7 +238,8 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		if (isOneOfOurFields(setCommand.getFieldTag()))
 		{
 			updateQuarterColumnVisibilityEnableStatus();
-			updateOutOfRangeDataWarningField();
+			updateWorkPlanDataOutOfRangeWarningField();
+			updateProjectPlanningDateWarningField();
 			getMainWindow().updatePlanningDateRelatedStatus();
 		}
 	}
@@ -289,9 +333,11 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		return EAM.text("Work Plan Settings");
 	}
 	
-	private FillerPanel warningLabelFillerReplacement;
+	private FillerPanel workPlanDataWarningLabelFillerReplacement;
+	private FillerPanel projectPlanningDateWarningLabelFillerReplacement;
 	private FillerPanel quarterVisibilityExplanationFillerReplacement;
-	private JComponent warningPanel;
+	private JComponent workPlanDataWarningPanel;
+	private JComponent projectPlanningDateWarningPanel;
 	private JComponent explanationPanel;
 	private ObjectDataInputField quarterColumnVisibilityComponent;
 }
