@@ -103,7 +103,7 @@ import org.miradi.views.diagram.doers.ManageFactorTagsDoer;
 import org.miradi.views.diagram.doers.ManageFactorTagsFromMenuDoer;
 import org.miradi.views.diagram.doers.PasteFactorContentDoer;
 import org.miradi.views.diagram.doers.SelectChainDoer;
-import org.miradi.views.diagram.doers.ShowActityBubbleDoer;
+import org.miradi.views.diagram.doers.ShowActivityBubbleDoer;
 import org.miradi.views.diagram.doers.ShowStressBubbleDoer;
 import org.miradi.views.diagram.doers.ZoomIn;
 import org.miradi.views.diagram.doers.ZoomOut;
@@ -291,7 +291,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionShowStressBubble.class, new ShowStressBubbleDoer());
 		addDoerToMap(ActionHideStressBubble.class, new HideStressBubbleDoer());
 		
-		addDoerToMap(ActionShowActivityBubble.class, new ShowActityBubbleDoer());
+		addDoerToMap(ActionShowActivityBubble.class, new ShowActivityBubbleDoer());
 		addDoerToMap(ActionHideActivityBubble.class, new HideActivityBubbleDoer());
 		
 		addDoerToMap(ActionCreateTaggedObjectSet.class, new CreateTaggedObjectSetDoer());
