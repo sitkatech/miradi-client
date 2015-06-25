@@ -88,7 +88,7 @@ public class CommandExecutor
 		try
 		{
 			getNormalExecutor().executeSingleCommand(command);			
-			if(shouldUpdateLastModfiedTime(command))
+			if(shouldUpdateLastModifiedTime(command))
 				getProject().setLastModified(System.currentTimeMillis());
 			
 			if(!isInTransaction())
@@ -114,7 +114,7 @@ public class CommandExecutor
 		return true;
 	}
 
-	private boolean shouldUpdateLastModfiedTime(Command command)
+	private boolean shouldUpdateLastModifiedTime(Command command)
 	{
 		if (command.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
 			return true;
