@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-23 06:21-0700\n"
+"POT-Creation-Date: 2015-06-25 07:36-0700\n"
 "PO-Revision-Date: 2013-04-02 10:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -3546,6 +3546,11 @@ msgstr "Éditeur"
 msgid "Effective"
 msgstr "Efficace"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:143
+msgid ""
+"Effective end date for project planning date range is before start date."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:160
 msgid "Enable Spell Checking"
 msgstr "Activer la Vérification orthographique"
@@ -4732,7 +4737,7 @@ msgstr "Organisation"
 msgid "Label|Phone Numbers"
 msgstr "Numéros de téléphone"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:63
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:68
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:35
 msgid "Label|Project Dates"
 msgstr "Dates du projet"
@@ -4776,7 +4781,7 @@ msgstr "WCS"
 msgid "Label|WWF"
 msgstr "WWF"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:68
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:75
 msgid "Label|Work Plan Dates"
 msgstr "Dates du plan de travail"
 
@@ -5429,7 +5434,7 @@ msgstr ""
 "REMARQUE : les noms de fichiers du projet peuvent contenir des lettres, des "
 "chiffres, des espaces, des points, des tirets et des soulignements."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:120
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:152
 msgid ""
 "NOTE: Quarter columns cannot be hidden because this project already has data "
 "for some quarters."
@@ -6607,7 +6612,7 @@ msgstr "Petit"
 msgid "Smallest"
 msgstr "Le plus petit"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:106
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:129
 msgid ""
 "Some work plan data is currently hidden and not included in calculated "
 "totals. If the data is outside the planning date range, it will be visible "
@@ -9113,7 +9118,7 @@ msgstr ""
 msgid "Work Plan Column Editor"
 msgstr "Éditeur de colonne du plan de travail"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:289
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:333
 msgid "Work Plan Settings"
 msgstr "Paramètres du plan de travail"
 
@@ -9128,7 +9133,7 @@ msgstr ""
 msgid "Work Planning"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:94
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:117
 msgid "Work plan data currently exists for %startDate - %endDate"
 msgstr ""
 "Les données du plan de travail existent actuellement pour %startDate - "

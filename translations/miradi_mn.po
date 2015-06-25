@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-23 06:21-0700\n"
+"POT-Creation-Date: 2015-06-25 07:36-0700\n"
 "PO-Revision-Date: 2013-06-07 01:56+0100\n"
 "Last-Translator: Galragchaa <galragchaa@yahoo.com>\n"
 "Language-Team: none\n"
@@ -3483,6 +3483,11 @@ msgstr "Редактор"
 msgid "Effective"
 msgstr "Үр дүнтэй"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:143
+msgid ""
+"Effective end date for project planning date range is before start date."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:160
 msgid "Enable Spell Checking"
 msgstr "Зөв бичлэгийн хяналтыг ажиллуулж эхлэх"
@@ -4637,7 +4642,7 @@ msgstr "Хаяг|Байгууллага"
 msgid "Label|Phone Numbers"
 msgstr "Хаяг|Утасны дугаарууд"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:63
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:68
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:35
 msgid "Label|Project Dates"
 msgstr "Хаяг|Төслийн огноо"
@@ -4681,7 +4686,7 @@ msgstr "Хаяг|Зэрлэг Амьтан Хамгаалах Нийгэмлэг
 msgid "Label|WWF"
 msgstr "Хаяг|Дэлхийн Байгаль Хамгаалах Сан"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:68
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:75
 msgid "Label|Work Plan Dates"
 msgstr "Хаяг|Ажлын төлөвлөгөөний огноо"
 
@@ -5315,7 +5320,7 @@ msgstr ""
 "Тайлбар: Төслийн файлын нэр нь үсэг, тоо, зай, үе, зураас, үгийн доогуур "
 "зурах зэргийг агуулсан байж болно."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:120
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:152
 msgid ""
 "NOTE: Quarter columns cannot be hidden because this project already has data "
 "for some quarters."
@@ -6479,7 +6484,7 @@ msgstr "Жижиг"
 msgid "Smallest"
 msgstr "Хамгийн жижигхэн"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:106
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:129
 msgid ""
 "Some work plan data is currently hidden and not included in calculated "
 "totals. If the data is outside the planning date range, it will be visible "
@@ -8947,7 +8952,7 @@ msgstr ""
 msgid "Work Plan Column Editor"
 msgstr "Ажлын төлөвлөгөө баганан редактор"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:289
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:333
 msgid "Work Plan Settings"
 msgstr "Ажлын төлөвлөгөөний тохиргоо (Settings)"
 
@@ -8962,7 +8967,7 @@ msgstr ""
 msgid "Work Planning"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:94
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:117
 msgid "Work plan data currently exists for %startDate - %endDate"
 msgstr ""
 " %эхлэхОгноо - %дуусах огноо зориулсан ажлын төлөвлөгөөний одоогийн мэдээлэл "
