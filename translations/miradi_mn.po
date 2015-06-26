@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-26 05:51-0700\n"
+"POT-Creation-Date: 2015-06-26 08:06-0700\n"
 "PO-Revision-Date: 2013-06-07 01:56+0100\n"
 "Last-Translator: Galragchaa <galragchaa@yahoo.com>\n"
 "Language-Team: none\n"
@@ -9054,7 +9054,7 @@ msgstr ""
 "уу. Форматыг шилжүүлж байхад үүссэн төслийн нөөц хувийг ч Миради мөн адил  "
 "zip файл үүсгэнэ.  "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:533
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:515
 msgid "[Error]"
 msgstr "[Алдаа]"
 
