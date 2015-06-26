@@ -72,6 +72,7 @@ public class MainMenuBar extends JMenuBar
 	public void updateMenuOptions()
 	{
 		createMenus(mainWindow.getActions());
+		this.updateUI();
 	}
 
 	private void createMenus(Actions actions)
