@@ -54,17 +54,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.EAMObjectPool;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramLink;
-import org.miradi.objects.DiagramObject;
-import org.miradi.objects.Factor;
-import org.miradi.objects.GroupBox;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Stress;
-import org.miradi.objects.Target;
-import org.miradi.objects.Task;
-import org.miradi.objects.ViewData;
+import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.questions.DiagramModeQuestion;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
@@ -685,18 +675,21 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			currentDiagramComponent.forceRepaint();
 	}
 
-
 	private boolean isDeleteVisibleDiagramFactorCommand(CommandSetObjectData setCommand) throws Exception
 	{		
 		if (!DiagramObject.isDiagramObject(setCommand.getObjectORef()))
 			return false;
-		
+
 		if (!setCommand.getFieldTag().equals(DiagramObject.TAG_DIAGRAM_FACTOR_IDS))
 			return false;
 			
 		if (nodePropertiesPanel == null)
 			return false;
-					
+
+		if  ((this.getDiagramModel().isResultsChain() && !ResultsChainDiagram.is(setCommand.getObjectORef())) ||
+			 (this.getDiagramModel().isConceptualModelDiagram() && !ConceptualModelDiagram.is(setCommand.getObjectORef())))
+			return false;
+
 		DiagramFactor diagramFactorRefForPropertiesDialog = nodePropertiesPanel.getCurrentDiagramFactor();
 		if (diagramFactorRefForPropertiesDialog == null)
 			return true;
