@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-26 08:06-0700\n"
+"POT-Creation-Date: 2015-06-29 07:36-0700\n"
 "PO-Revision-Date: 2012-09-01 14:51-0500\n"
 "Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
 "Language-Team: none\n"
@@ -212,8 +212,8 @@ msgid "%1 targets have KEA"
 msgstr "%1 alvos têm atributo ecológico chave"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:226
-msgid "%1 targets have simple viablity information"
-msgstr "%1 alvos têm informações de viabilidade simples"
+msgid "%1 targets have simple viability information"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:254
 msgid "%1 total factors created"
@@ -3429,6 +3429,7 @@ msgstr "Desenvolver planos de trabalho de curto prazo"
 msgid "Develop systems for handling project data"
 msgstr "Desenvolver sistemas para manejo dos dados do projeto"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpTargetViabilityOverviewStep.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpTargetViability3Step.java:35
 msgid "Develop target viability"
 msgstr "Desenvolver a viabilidade do alvo"
@@ -27933,6 +27934,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid "%1 targets have simple viablity information"
+#~ msgstr "%1 alvos têm informações de viabilidade simples"
 
 #~ msgid ""
 #~ "<HTML>Data exchange between Miradi and ConPro is not available in this "

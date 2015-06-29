@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-26 08:06-0700\n"
+"POT-Creation-Date: 2015-06-29 07:36-0700\n"
 "PO-Revision-Date: 2013-04-02 10:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -208,8 +208,8 @@ msgid "%1 targets have KEA"
 msgstr "%1 cibles ont des AEC"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:226
-msgid "%1 targets have simple viablity information"
-msgstr "%1 cibles ont des informations de viabilité simple"
+msgid "%1 targets have simple viability information"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:254
 msgid "%1 total factors created"
@@ -3375,6 +3375,7 @@ msgstr "Élaborer les plans de travail à court terme"
 msgid "Develop systems for handling project data"
 msgstr "Développer des systèmes pour manipuler les données du projet"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpTargetViabilityOverviewStep.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpTargetViability3Step.java:35
 msgid "Develop target viability"
 msgstr "Élaborer la viabilité de la cible"
@@ -30673,6 +30674,9 @@ msgid ""
 msgstr ""
 "Marin___Atlantique tropical occidental___Écorégion marine du versant nord-"
 "est du Brésil___Brésil"
+
+#~ msgid "%1 targets have simple viablity information"
+#~ msgstr "%1 cibles ont des informations de viabilité simple"
 
 #~ msgid ""
 #~ "<HTML>Data exchange between Miradi and ConPro is not available in this "

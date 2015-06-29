@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-26 08:06-0700\n"
+"POT-Creation-Date: 2015-06-29 07:36-0700\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -222,10 +222,9 @@ msgstr ""
 msgid "%1 targets have KEA"
 msgstr "%1 der Schutzobjekte hat/haben ÖSA"
 
-# Lebensfähigkeitsinformationen (klingt nicht gut)-Felix
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:226
-msgid "%1 targets have simple viablity information"
-msgstr "%1 der Schutzobjekte haben einfache Lebensfähigkeitsinformationen"
+msgid "%1 targets have simple viability information"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:254
 msgid "%1 total factors created"
@@ -3458,6 +3457,7 @@ msgstr "System entwickeln um mit Projektdaten umzugehen"
 # -Schutzobjektsviabilität klingt nicht gut
 # -erstellen ist das falsche verb
 # (Felix)
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpTargetViabilityOverviewStep.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpTargetViability3Step.java:35
 msgid "Develop target viability"
 msgstr "Schutzobjektsviabilität erstellen"
@@ -30149,6 +30149,10 @@ msgid ""
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
 "Marine___Western Tropical Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+# Lebensfähigkeitsinformationen (klingt nicht gut)-Felix
+#~ msgid "%1 targets have simple viablity information"
+#~ msgstr "%1 der Schutzobjekte haben einfache Lebensfähigkeitsinformationen"
 
 #~ msgid ""
 #~ "<HTML>Your project is missing some data that is required for upload to "

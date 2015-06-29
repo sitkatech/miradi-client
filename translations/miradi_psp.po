@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-26 08:06-0700\n"
+"POT-Creation-Date: 2015-06-29 07:36-0700\n"
 "Language: psp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -201,8 +201,8 @@ msgid "%1 targets have KEA"
 msgstr "%1 components have KEA"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:226
-msgid "%1 targets have simple viablity information"
-msgstr "%1 components have simple viablity information"
+msgid "%1 targets have simple viability information"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:254
 msgid "%1 total factors created"
@@ -3391,6 +3391,7 @@ msgstr "Develop short-term work plans"
 msgid "Develop systems for handling project data"
 msgstr "Develop systems for handling project data"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpTargetViabilityOverviewStep.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpTargetViability3Step.java:35
 msgid "Develop target viability"
 msgstr "Develop component viability"
@@ -37040,6 +37041,9 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "%1 targets have simple viablity information"
+#~ msgstr "%1 components have simple viablity information"
 
 #~ msgid ""
 #~ "<HTML>Data exchange between Miradi and ConPro is not available in this "
