@@ -19,13 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.viability;
 
-import javax.swing.Icon;
-
-import org.miradi.actions.jump.ActionJumpTargetViabilityMethodChoiceStep;
+import org.miradi.actions.jump.ActionJumpTargetViabilityOverviewStep;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+
+import javax.swing.*;
 
 public class TargetViabilityManagementPanel extends AbstractViabilityManagementPanel
 {
@@ -51,7 +51,7 @@ public class TargetViabilityManagementPanel extends AbstractViabilityManagementP
 	@Override
 	public Class getJumpActionClass()
 	{
-		return ActionJumpTargetViabilityMethodChoiceStep.class;
+		return ActionJumpTargetViabilityOverviewStep.class;
 	}
 
 	@Override

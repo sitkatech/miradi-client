@@ -16,31 +16,22 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/ 
+*/
 package org.miradi.actions.jump;
 
-import java.awt.event.KeyEvent;
-
-import org.miradi.actions.AbstractJumpMenuAction;
+import org.miradi.actions.AbstractJumpAction;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 
-public class ActionJumpSummaryWizardDefineTeamMembers extends AbstractJumpMenuAction
+public class ActionJumpTargetViabilityOverviewStep extends AbstractJumpAction
 {
-	public ActionJumpSummaryWizardDefineTeamMembers(MainWindow mainWindowToUse)
+	public ActionJumpTargetViabilityOverviewStep(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, OpenStandardsConceptualizeQuestion.getSelectIntialTeamMembersLabel());
+		super(mainWindowToUse, getLabel());
 	}
-
-	@Override
-	public int getMnemonic()
+	
+	private static String getLabel()
 	{
-		return KeyEvent.VK_S;
-	}
-
-	@Override
-	public String getCode()
-	{
-		return OpenStandardsConceptualizeQuestion.SELECT_INITIAL_TEAM_MEMBERS_CODE;
+		return EAM.text("Develop target viability");
 	}
 }

@@ -41,6 +41,6 @@ public class ActionJumpDiagramWizardReviewModelAndAdjustStep extends AbstractJum
 	@Override
 	public String getCode()
 	{
-		return OpenStandardsConceptualizeQuestion.GROUND_THRUTH_AND_REVISE_MODEL_CODE;
+		return OpenStandardsConceptualizeQuestion.GROUND_TRUTH_AND_REVISE_MODEL_CODE;
 	}
 }

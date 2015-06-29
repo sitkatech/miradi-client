@@ -94,13 +94,13 @@ public class TestDashboardStatusMapsCache extends TestCaseWithProject
 	public void testGetEffectiveStatusMapWithUserData() throws Exception
 	{
 		getProject().createProjectResource();
-		putUserChoice(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, OpenStandardsProgressStatusQuestion.COMPLETE_CODE);
+		putUserChoice(OpenStandardsConceptualizeQuestion.SELECT_INITIAL_TEAM_MEMBERS_CODE, OpenStandardsProgressStatusQuestion.COMPLETE_CODE);
 		verifyTeamMemberEffectiveStatus(OpenStandardsProgressStatusQuestion.COMPLETE_CODE);
 	}
 
 	private void verifyTeamMemberEffectiveStatus(String expectedCode) throws Exception
 	{
-		verifyEffectiveStatus(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, expectedCode);
+		verifyEffectiveStatus(OpenStandardsConceptualizeQuestion.SELECT_INITIAL_TEAM_MEMBERS_CODE, expectedCode);
 	}
 
 	private void verifyEffectiveStatus(final String thirdLevelRowCode, String expectedCode) throws Exception

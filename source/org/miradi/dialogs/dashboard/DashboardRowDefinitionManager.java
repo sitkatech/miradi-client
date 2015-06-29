@@ -190,7 +190,7 @@ public class DashboardRowDefinitionManager
 	private Vector<DashboardRowDefinition> addConceptualizeRowDefinitions(String code)
 	{
 		Vector<DashboardRowDefinition> rowDefinitions = new Vector<DashboardRowDefinition>();
-		if (code.equals(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE))
+		if (code.equals(OpenStandardsConceptualizeQuestion.SELECT_INITIAL_TEAM_MEMBERS_CODE))
 		{
 			rowDefinitions.add(new DashboardRowDefinition(EAM.text("Team Members: %1"), Dashboard.PSEUDO_TEAM_MEMBER_COUNT));
 		}
@@ -223,7 +223,7 @@ public class DashboardRowDefinitionManager
 		if (code.equals(OpenStandardsConceptualizeQuestion.DESCRIBE_STATUS_OF_TARGETS_CODE))
 		{
 			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 targets have KEA"), Dashboard.PSEUDO_TARGET_WITH_KEA_COUNT));
-			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 targets have simple viablity information"), Dashboard.PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT));
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 targets have simple viability information"), Dashboard.PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT));
 		}
 		
 		if (code.equals(OpenStandardsConceptualizeQuestion.IDENTIFY_DIRECT_THREATS_CODE))
@@ -254,7 +254,7 @@ public class DashboardRowDefinitionManager
 			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 total factors created"), Dashboard.PSEUDO_TOTAL_FACTOR_COUNT));
 		}
 		
-		if (code.equals(OpenStandardsConceptualizeQuestion.GROUND_THRUTH_AND_REVISE_MODEL_CODE))
+		if (code.equals(OpenStandardsConceptualizeQuestion.GROUND_TRUTH_AND_REVISE_MODEL_CODE))
 		{
 			addGroundTruthAndReviseModel();
 		}

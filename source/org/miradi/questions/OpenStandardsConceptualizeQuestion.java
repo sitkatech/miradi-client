@@ -32,7 +32,7 @@ public class OpenStandardsConceptualizeQuestion extends DynamicChoiceWithRootCho
 		
 		ChoiceItemWithChildren processStep1A = new ChoiceItemWithChildren(PROCESS_STEP_1A_CODE, getProcessStep1aLabel(), "", new HtmlResourceLongDescriptionProvider(DESCRIPTION_1A_FILE_NAME));
 		headerChoiceItem.addChild(processStep1A);		
-		processStep1A.addChild(new ChoiceItem(SELECT_INTIAL_TEAM_MEMBERS_CODE, getSelectIntialTeamMembersLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_1A_FILE_NAME)));
+		processStep1A.addChild(new ChoiceItem(SELECT_INITIAL_TEAM_MEMBERS_CODE, getSelectIntialTeamMembersLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_1A_FILE_NAME)));
 		processStep1A.addChild(new ChoiceItem(AGREE_ON_ROLES_AND_RESPONSIBILITIES_CODE, getAgreeOnRolesAndResponsibilitiesLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_1A_FILE_NAME)));
 		
 		ChoiceItemWithChildren processStep1BChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_1B_CODE, getProcessStep1bLabel(), "", new HtmlResourceLongDescriptionProvider(DESCRIPTION_1B_FILE_NAME));
@@ -53,7 +53,7 @@ public class OpenStandardsConceptualizeQuestion extends DynamicChoiceWithRootCho
 		processStep1dChoiceItem.addChild(new ChoiceItem(IDENTIFY_INDIRECT_THREATS_AND_OPPORTUNITIES_CODE, getIdentifyIndirectThreatsAndOpportunitiesLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_1D_FILE_NAME)));
 		processStep1dChoiceItem.addChild(new ChoiceItem(ASSESS_STAKEHOLDERS_CODE, getAssessStakeholdersLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_1D_FILE_NAME)));
 		processStep1dChoiceItem.addChild(new ChoiceItem(CREATE_INITIAL_CONCEPTUAL_MODEL_CODE, getCreateInitialConceptualModelLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_1D_FILE_NAME)));
-		processStep1dChoiceItem.addChild(new ChoiceItem(GROUND_THRUTH_AND_REVISE_MODEL_CODE, getGroundTruthAndReviseModelLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_1D_FILE_NAME)));
+		processStep1dChoiceItem.addChild(new ChoiceItem(GROUND_TRUTH_AND_REVISE_MODEL_CODE, getGroundTruthAndReviseModelLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_1D_FILE_NAME)));
 		
 		return headerChoiceItem;
 	}
@@ -154,7 +154,7 @@ public class OpenStandardsConceptualizeQuestion extends DynamicChoiceWithRootCho
 	public static final String PROCESS_STEP_1C_CODE = "ProcessStep1C";
 	public static final String PROCESS_STEP_1D_CODE = "ProcessStep1D";
 
-	public static final String SELECT_INTIAL_TEAM_MEMBERS_CODE = "SelectInitialTeamMembers";
+	public static final String SELECT_INITIAL_TEAM_MEMBERS_CODE = "SelectInitialTeamMembers";
 	public static final String AGREE_ON_ROLES_AND_RESPONSIBILITIES_CODE = "AgreeOnRolesAndResponsibilities";
 	public static final String DEFINE_PROJECT_SCOPE_CODE = "DefineProjectScope";
 	public static final String DEVELOP_MAP_OF_PROJECT_AREA_CODE = "DevelopMapOfProjectArea";
@@ -166,7 +166,7 @@ public class OpenStandardsConceptualizeQuestion extends DynamicChoiceWithRootCho
 	public static final String IDENTIFY_INDIRECT_THREATS_AND_OPPORTUNITIES_CODE = "IdentifyIndirectThreatsAndOpportunities";
 	public static final String ASSESS_STAKEHOLDERS_CODE = "AssessStakeholders";
 	public static final String CREATE_INITIAL_CONCEPTUAL_MODEL_CODE = "CreateInitialConceptualModel";
-	public static final String GROUND_THRUTH_AND_REVISE_MODEL_CODE = "GroundTruthAndReviseModel";
+	public static final String GROUND_TRUTH_AND_REVISE_MODEL_CODE = "GroundTruthAndReviseModel";
 	
 	public static final String MAIN_DESCRIPTION_RIGHT_PANEL_FILE_NAME = "dashboard/1.html";
 	private static final String DESCRIPTION_1A_FILE_NAME = "dashboard/1A.html";

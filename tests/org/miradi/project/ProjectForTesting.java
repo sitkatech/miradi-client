@@ -1922,17 +1922,17 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ORef dashboardRef = getSingletonObjectRef(DashboardSchema.getObjectType());
 		CodeToChoiceMap progressChoiceMap = new CodeToChoiceMap();
-		progressChoiceMap.putChoiceCode(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE);
+		progressChoiceMap.putChoiceCode(OpenStandardsConceptualizeQuestion.SELECT_INITIAL_TEAM_MEMBERS_CODE, OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE);
 		fillObjectUsingCommand(dashboardRef, Dashboard.TAG_PROGRESS_CHOICE_MAP, progressChoiceMap.toJsonString());
 		
 		CodeToUserStringMap commentsMap = new CodeToUserStringMap();
-		commentsMap.putUserString(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, sampleComments);
+		commentsMap.putUserString(OpenStandardsConceptualizeQuestion.SELECT_INITIAL_TEAM_MEMBERS_CODE, sampleComments);
 		fillObjectUsingCommand(dashboardRef, Dashboard.TAG_COMMENTS_MAP, commentsMap.toJsonString());
 
 		CodeToCodeListMap flagsMap = new CodeToCodeListMap();
 		CodeList flags = new CodeList();
 		flags.add(DashboardFlagsQuestion.NEEDS_ATTENTION_CODE);
-		flagsMap.putCodeList(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, flags);
+		flagsMap.putCodeList(OpenStandardsConceptualizeQuestion.SELECT_INITIAL_TEAM_MEMBERS_CODE, flags);
 		fillObjectUsingCommand(dashboardRef, Dashboard.TAG_FLAGS_MAP, flagsMap.toJsonString());
 	}
 

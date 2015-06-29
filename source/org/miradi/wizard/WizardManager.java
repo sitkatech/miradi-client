@@ -137,7 +137,7 @@ public class WizardManager
 	{
 		createNoProjectStepEntries(panel);
 		createSummaryStepEntries(panel);
-		createDigramViewStepEntries(panel);
+		createDiagramViewStepEntries(panel);
 		createTargetViabilityStepEntries(panel);
 		createThreatMatrixViewStepEntries(panel);
 		createPlanningViewStepEntries(panel);
@@ -264,7 +264,7 @@ public class WizardManager
 		createStepEntry(new SummaryWizardDefineProjectVision(panel));
 	}
 	
-	public void createDigramViewStepEntries(WizardPanel panel)
+	public void createDiagramViewStepEntries(WizardPanel panel)
 	{
 		createStepEntry(new DiagramOverviewStep(panel));
 		createStepEntry(new DiagramWizardProjectScopeStep(panel));
