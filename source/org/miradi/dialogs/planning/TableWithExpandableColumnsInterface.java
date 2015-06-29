@@ -28,7 +28,7 @@ public interface TableWithExpandableColumnsInterface
 	public int getColumnWidth(int tableColumnIndex);
 	public String getColumnGroupCode(int tableColumn);
 	public boolean isColumnExpandable(int tableColumnIndex);
-	public boolean isColumnCollapsable(int tableColumnIndex);
+	public boolean isColumnCollapsible(int tableColumnIndex);
 	public void respondToExpandOrCollapseColumnEvent(int tableColumnIndex) throws Exception;
 	public TableColumnModel getColumnModel();
 }

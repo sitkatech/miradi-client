@@ -139,7 +139,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	}
 
 	@Override
-	public boolean isColumnCollapsable(int modelColumn)
+	public boolean isColumnCollapsible(int modelColumn)
 	{
 		try
 		{

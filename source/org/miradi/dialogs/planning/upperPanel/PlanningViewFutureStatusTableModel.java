@@ -57,7 +57,13 @@ public class PlanningViewFutureStatusTableModel extends PlanningViewAbstractTree
 	{
 		return EAM.fieldLabel(FutureStatusSchema.getObjectType(), getColumnTag(column));
 	}
-	
+
+	@Override
+	public String getColumnGroupCode(int modelColumn)
+	{
+		return getUniqueTableModelIdentifier() + "." + getColumnTag(modelColumn);
+	}
+
 	public Object getValueAt(int row, int column)
 	{
 		return getChoiceItemAt(row, column);

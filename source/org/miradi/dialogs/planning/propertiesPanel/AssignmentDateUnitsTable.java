@@ -133,10 +133,10 @@ abstract public class AssignmentDateUnitsTable extends AbstractAssignmentDetails
 		return getWorkUnitsTableModel().isColumnExpandable(modelColumn);
 	}
 	
-	public boolean isColumnCollapsable(int tableColumn)
+	public boolean isColumnCollapsible(int tableColumn)
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
-		return getWorkUnitsTableModel().isColumnCollapsable(modelColumn);
+		return getWorkUnitsTableModel().isColumnCollapsible(modelColumn);
 	}
 	
 	public boolean isDayColumnSelected()
@@ -166,7 +166,7 @@ abstract public class AssignmentDateUnitsTable extends AbstractAssignmentDetails
 
 		if(model.isColumnExpandable(modelColumn))
 			rightClickActions.add(new ExpandColumnAction(this, model));
-		if(model.isColumnCollapsable(modelColumn))
+		if(model.isColumnCollapsible(modelColumn))
 			rightClickActions.add(new CollapseColumnAction(this, model));
 		
 		return rightClickActions;		

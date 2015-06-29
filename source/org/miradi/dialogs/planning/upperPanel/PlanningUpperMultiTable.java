@@ -204,7 +204,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		actions.add(null);
 		if(model.isColumnExpandable(modelColumn))
 			actions.add(new MultiTableExpandColumnAction(this));
-		if(model.isColumnCollapsable(modelColumn))
+		if(model.isColumnCollapsible(modelColumn))
 			actions.add(new MultiTableCollapseColumnAction(this));
 		if(model.isFullTimeEmployeeFractionAvailable(row, modelColumn))
 			actions.add(new FullTimeEmployeeDaysPerYearAction(this));
@@ -216,11 +216,11 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		return getColumnModel().getColumn(tableColumnIndex).getWidth();
 	}
 
-	public boolean isColumnCollapsable(int tableColumnIndex)
+	public boolean isColumnCollapsible(int tableColumnIndex)
 	{
 		int modelColumn = getModelColumnWithinModel(tableColumnIndex);
 		PlanningViewAbstractTreeTableSyncedTableModel model = getModel(convertColumnIndexToModel(tableColumnIndex));
-		return model.isColumnCollapsable(modelColumn);
+		return model.isColumnCollapsible(modelColumn);
 	}
 
 	public boolean isColumnExpandable(int tableColumnIndex)

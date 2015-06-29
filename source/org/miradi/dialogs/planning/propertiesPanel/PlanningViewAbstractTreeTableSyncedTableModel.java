@@ -119,7 +119,7 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return null;
 	}
 	
-	public boolean isColumnCollapsable(int modelColumn)
+	public boolean isColumnCollapsible(int modelColumn)
 	{
 		return false;
 	}
@@ -131,7 +131,7 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 	
 	public DateUnit getDateUnit(int modelColumn)
 	{
-		throw new RuntimeException("This method should be overriden by subclass.");
+		throw new RuntimeException("This method should be overridden by subclass.");
 	}
 
 	public void respondToExpandOrCollapseColumnEvent(int modelColumnIndex) throws Exception

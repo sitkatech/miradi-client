@@ -128,7 +128,7 @@ public class TableHeaderWithExpandCollapseIcons extends JTableHeader
 	{
 		if(tableWithExpandableColumnsInterface.isColumnExpandable(tableColumn))
 			return getExpandIcon();
-		if(tableWithExpandableColumnsInterface.isColumnCollapsable(tableColumn))
+		if(tableWithExpandableColumnsInterface.isColumnCollapsible(tableColumn))
 			return getCollapseIcon();
 		return null;
 	}
