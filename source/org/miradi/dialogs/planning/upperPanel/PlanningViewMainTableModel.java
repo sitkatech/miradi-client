@@ -359,7 +359,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		if (isProjectResourceTypeColumn(modelColumn))
 			return ResourceTypeQuestion.class;
 		
-		if (isPriortyColumn(modelColumn))
+		if (isPriorityColumn(modelColumn))
 			return PriorityRatingQuestion.class;
 		
 		return null;
@@ -369,7 +369,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	public boolean isChoiceItemColumn(int column)
 	{
 		String columnTag = getColumnTag(column);
-		if(isPriortyColumn(column))
+		if(isPriorityColumn(column))
 			return true;
 		
 		if(columnTag.equals(CustomPlanningColumnsQuestion.META_CURRENT_RATING))
@@ -386,7 +386,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		return getColumnTag(column).equals(ProjectResource.TAG_RESOURCE_TYPE);
 	}
 	
-	private boolean isPriortyColumn(int column)
+	private boolean isPriorityColumn(int column)
 	{
 		return getColumnTag(column).equals(Indicator.TAG_PRIORITY);
 	}

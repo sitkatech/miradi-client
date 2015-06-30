@@ -102,7 +102,8 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 	{
 		Cause threat = Cause.find(getProject(), threatRef);
 		int summaryRatingOfThreat = get2PrimeSummaryRatingValue(threat);
-		return  threatRatingQuestion.findChoiceByCode(Integer.toString(summaryRatingOfThreat));
+		String code = getSafeThreatRatingCode(summaryRatingOfThreat);
+		return threatRatingQuestion.findChoiceByCode(code);
 	}
 	
 	@Override

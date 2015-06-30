@@ -70,14 +70,14 @@ abstract public class ThreatRatingFramework
 		ChoiceQuestion question = StaticQuestionManager.getQuestion(ThreatRatingQuestion.class);
 		return question.findChoiceByCode(code);
 	}
-	
+
 	public int get2PrimeSummaryRatingValue(Factor factor) throws Exception
 	{
 		int[] summaryRatingValues = calculateSummaryRatingValues(factor);
 		
 		return getThreatFormula().getSummaryOfBundlesWithTwoPrimeRule(summaryRatingValues);
 	}
-		
+
 	protected int[] calculateSummaryRatingValues(Factor factor) throws Exception
 	{
 		if (factor.isDirectThreat())
@@ -106,7 +106,7 @@ abstract public class ThreatRatingFramework
 	private int[] calculateSummaryRatingValue(ORefSet upstreamThreats, ORefSet downstreamTargets) throws Exception
 	{
 		if (upstreamThreats.size() > 1 && downstreamTargets.size() > 1)
-			throw new RuntimeException("Method should only be used to calculate rating from a sinlge factor to multiple up/downstream factors");
+			throw new RuntimeException("Method should only be used to calculate rating from a single factor to multiple up/downstream factors");
 		
 		Vector<Integer> calculatedSummaryRatingValues = new Vector<Integer>();
 		ThreatTargetVirtualLinkHelper threatTargetVirtualLink = new ThreatTargetVirtualLinkHelper(getProject());
