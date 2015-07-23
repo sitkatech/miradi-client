@@ -44,9 +44,9 @@ public class DiagramConstants
 		new Color(255, 200, 200)
     };
 	public static final Color[] biophysicalFactorColorChoices = {
-		new Color(204, 204, 255),
-		new Color(159, 159, 255),
-		new Color(119, 119, 253)
+		new Color(195, 190, 131),
+		new Color(180, 174, 100),
+		new Color(162, 156, 78)
     };
 	public static final Color[] biophysicalResultColorChoices = {
 		new Color(204, 204, 255),

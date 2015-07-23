@@ -246,7 +246,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		diagramTab.add(new PanelTitleLabel(EAM.text("Choose the colors that look best on your system:")));
 		interventionDropdown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Strategy (Yellow)"), DiagramConstants.strategyColorChoices, AppPreferences.TAG_COLOR_STRATEGY);
 		directThreatDropdown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Direct Threat (Pink)"), DiagramConstants.directThreatColorChoices, AppPreferences.TAG_COLOR_DIRECT_THREAT);
-		biophysicalFactorDropdown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Biophysical Factor (Lavender Blue)"), DiagramConstants.biophysicalFactorColorChoices, AppPreferences.TAG_COLOR_BIOPHYSICAL_FACTOR);
+		biophysicalFactorDropdown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Biophysical Factor (Olive)"), DiagramConstants.biophysicalFactorColorChoices, AppPreferences.TAG_COLOR_BIOPHYSICAL_FACTOR);
 		indirectFactorDropdown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Contributing Factor (Orange)"), DiagramConstants.contributingFactorColorChoices, AppPreferences.TAG_COLOR_CONTRIBUTING_FACTOR);
 		biodiversityTargetDropdown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Biodiversity Target (Lighter Green)"), DiagramConstants.targetColorChoices, AppPreferences.TAG_COLOR_TARGET);
 		humanWelfareTargetDropdown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Human Wellbeing Target (Lighter Brown)"), DiagramConstants.humanWelfareTargetColorChoices, AppPreferences.TAG_COLOR_HUMAN_WELFARE_TARGET);
