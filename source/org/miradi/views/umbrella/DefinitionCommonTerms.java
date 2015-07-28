@@ -65,6 +65,11 @@ public class DefinitionCommonTerms
 		defs.put("Definition:Stress", def);
 		
 		
+		def = Definition.createDefinitionFromTextString(EAM.text("BiophysicalFactor"), EAM.text("Biophysical factor - a generic term that encompasses " +
+		"the biological and physical effects resulting from a direct threat and influencing the health of a conservation target."));
+		defs.put("Definition:BiophysicalFactor", def);
+
+
 		def = Definition.createDefinitionFromTextString(EAM.text("Ecosystems"), EAM.text("Ecosystems - The ecological systems that characterize the " +
 		"terrestrial, aquatic, and marine biodiversity of the project site. "));
 		defs.put("Definition:Ecosystems", def);
