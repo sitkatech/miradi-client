@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-22 23:51-0700\n"
+"POT-Creation-Date: 2015-07-28 09:37-0700\n"
 "PO-Revision-Date: 2014-05-28 17:01+0000\n"
 "Last-Translator: nsalafsky <nick@fosonline.org>\n"
 "Language-Team: English (Estonia) (http://www.transifex.com/projects/p/miradi-"
@@ -995,7 +995,7 @@ msgstr ""
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Import failed: <br><p> %s </p></html>"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:223
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:228
 msgid ""
 "<html>Irreversibility - The degree to which the effects of a threat can be "
 "reversed and the target affected by the threat restored. "
@@ -1014,7 +1014,7 @@ msgid ""
 "do not share the same taxonomy classification lists. </li></ol></html>"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:245
 msgid ""
 "<html>Project (general) - Any set of actions undertaken by a group of people "
 "and/or organizations to achieve defined goals and objectives. Projects can "
@@ -1127,11 +1127,11 @@ msgstr "Abandoned"
 msgid "Abandoned - No longer relevant or useful"
 msgstr "Abandoned - No longer relevant or useful"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:320
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:325
 msgid "Acceptable Range of Variation"
 msgstr "Acceptable Range of Variation"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:320
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:325
 msgid ""
 "Acceptable Range of Variation - Key ecological attributes of focal targets "
 "naturally vary over time. The acceptable range defines the limits of this "
@@ -1156,12 +1156,12 @@ msgid "Accounting Code"
 msgstr "Accounting Code"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/AccountingCodeManagementConfiguration.java:60
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:291
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:296
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:191
 msgid "Accounting Codes"
 msgstr "Accounting Codes"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:291
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:296
 msgid ""
 "Accounting Codes - A set of categories developed by an organization to "
 "categorize and track expenses.  They typically include hierarchical strings "
@@ -2055,13 +2055,13 @@ msgstr ""
 "Outputs can only be shown on Development Hypotheses, not Situation Model "
 "pages"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:198
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:203
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:93
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:57
 msgid "Activity"
 msgstr "Output"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:198
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:203
 msgid ""
 "Activity - An action carried out to accomplish one or more of a project's "
 "strategies. In Miradi, an activity is represented by a yellow flattened oval."
@@ -2070,11 +2070,11 @@ msgstr ""
 "interventions. In Miradi, an output is represented by a yellow flattened "
 "oval."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:285
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:290
 msgid "Actual Expenditures"
 msgstr "Actual Expenditures"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:285
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:290
 msgid ""
 "Actual Expenditures - A backwards looking report on the money you spent for "
 "the activities/methods and tasks you undertook to implement your strategic "
@@ -2390,11 +2390,11 @@ msgstr "Assess risks"
 msgid "Assign Resources"
 msgstr "Assign Resources"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:116
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:121
 msgid "Assigned Resource"
 msgstr "Assigned Resource"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:116
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:121
 msgid ""
 "Assigned Resource - A project resource that has been assigned to a specific "
 "activity, method, or task."
@@ -2490,6 +2490,17 @@ msgstr ""
 msgid "Biophysical Result (Lavender Blue)"
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:68
+msgid ""
+"Biophysical factor - a generic term that encompasses the biological and "
+"physical effects resulting from a direct threat and influencing the health "
+"of a conservation target."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:68
+msgid "BiophysicalFactor"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:46
 msgid "Black"
 msgstr "Black"
@@ -2515,11 +2526,11 @@ msgstr "Brain Storm"
 msgid "Brown"
 msgstr "Brown"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:279
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:284
 msgid "Budget"
 msgstr "Budget"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:279
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:284
 msgid ""
 "Budget - A forward looking projection of the expenses and anticipated "
 "funding sources for the activities/methods and tasks you need to implement "
@@ -2547,7 +2558,7 @@ msgstr "Budget Override was: "
 msgid "Budget Override was: %s"
 msgstr "Budget Override was: %s"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:340
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:345
 msgid "Bundle Rules"
 msgstr "Bundle Rules"
 
@@ -2699,7 +2710,7 @@ msgstr "By Year"
 msgid "CM Page"
 msgstr "Situation Model Page"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:256
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:261
 msgid "CMP"
 msgstr "CMP"
 
@@ -2881,7 +2892,7 @@ msgstr "Choose Tags"
 msgid "Choose the colors that look best on your system:"
 msgstr "Choose the colors that look best on your system:"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:95
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:100
 msgid "Classifications of Direct Threats"
 msgstr "Classifications of Pressures"
 
@@ -2927,7 +2938,7 @@ msgstr "Completed - Successfully accomplished"
 msgid "ConPro Project Number"
 msgstr "ConPro Project Number"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:107
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:112
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ConceptualModelDiagramPanel.java:69
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:38
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:84
@@ -2952,7 +2963,7 @@ msgstr ""
 "interventions considered that were not selected). Intervention Ranking "
 "fields of: Potential Impact and Feasibility"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:107
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:112
 msgid ""
 "Conceptual model - A diagram of a set of relationships between certain "
 "factors that are believed to impact or lead to a conservation target."
@@ -2984,7 +2995,7 @@ msgstr "Focal Interests"
 msgid "Context"
 msgstr "Context"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:101
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:106
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewContributingFactorPropertiesPanel.java:33
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:45
 msgid "Contributing Factor"
@@ -2998,7 +3009,7 @@ msgstr "Driver (Orange)"
 msgid "Contributing Factors and Intermediate Results Only (default)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:101
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:106
 msgid ""
 "Contributing factor (Indirect threats and Opportunities) - A human-induced "
 "action or event that underlies or leads to one or more direct threats. In "
@@ -3008,11 +3019,11 @@ msgstr ""
 "event that underlies or leads to one or more pressures. In Miradi, a driver "
 "is represented by an orange rectangle."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:235
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
 msgid "Contribution"
 msgstr "Contribution"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:235
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
 msgid ""
 "Contribution - A threat rating criterion defined as the expected "
 "contribution of the source, acting alone, to the full expression of a stress "
@@ -3303,11 +3314,11 @@ msgstr "Desert - Hot"
 msgid "Desert - Temperate"
 msgstr "Desert - Temperate"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:329
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:334
 msgid "Desired Future Status"
 msgstr "Performance Target"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:329
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:334
 msgid ""
 "Desired Future Status - A measurement or rating value for an indicator for a "
 "key ecological attribute that the project intends to achieve at a specified "
@@ -3452,7 +3463,7 @@ msgstr ""
 msgid "Diagram overview"
 msgstr "Diagram overview"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:90
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:95
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:44
 msgid "Direct Threat"
 msgstr "Pressure"
@@ -3465,7 +3476,7 @@ msgstr "Pressure (Pink)"
 msgid "Direct Threats Only"
 msgstr "Pressures Only"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:90
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:95
 msgid ""
 "Direct threat - A proximate agent or factor that directly degrades one or "
 "more conservation targets. In Miradi, a dirct threat is represented by a "
@@ -3475,7 +3486,7 @@ msgstr ""
 "focal interests. In Miradi, a dirct pressure is represented by a pink "
 "rectangle."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:95
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:100
 msgid ""
 "Direct threats can be classified according to the new 'IUCN-CMP Unified "
 "Classifications of Direct Threats', available on the web at www."
@@ -3521,11 +3532,11 @@ msgstr "Don't show this dialog again"
 msgid "Draft"
 msgstr "Draft"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:82
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:87
 msgid "Ecological Processes"
 msgstr "Ecological Processes"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:82
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:87
 msgid ""
 "Ecological Processes - Ecological processes that create and maintain "
 "biodiversity. These could include pollination, seed dispersal, dispersal of "
@@ -3539,11 +3550,11 @@ msgstr ""
 "and recruitment areas for coastal fisheries; or altitudinal migrations by "
 "birds."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:68
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:73
 msgid "Ecosystems"
 msgstr "Ecosystems"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:68
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:73
 msgid ""
 "Ecosystems - The ecological systems that characterize the terrestrial, "
 "aquatic, and marine biodiversity of the project site. "
@@ -3872,11 +3883,11 @@ msgstr "Fiscal Year|FY"
 msgid "Flat"
 msgstr "Flat"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:73
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:78
 msgid "Focal Species"
 msgstr "Focal Species"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:73
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:78
 msgid ""
 "Focal Species - These include species endemic to the ecoregion, area-"
 "sensitive (umbrella) species, commercially exploited species, flagship "
@@ -4021,12 +4032,12 @@ msgid "Funding Source"
 msgstr "Funding Source"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/FundingSourceManagementConfiguration.java:58
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:304
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:309
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:171
 msgid "Funding Sources"
 msgstr "Funding Sources"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:304
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:309
 msgid "Funding Sources - The sources of money available to your project."
 msgstr "Funding Sources - The sources of money available to your project."
 
@@ -4317,7 +4328,7 @@ msgstr "Import Completed.  Would you like to open %s?"
 msgid "Import Project"
 msgstr "Import Project"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:270
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:275
 msgid "Import Zip"
 msgstr "Import Zip"
 
@@ -4377,7 +4388,7 @@ msgstr ""
 "to 300%.<br><br> Images exported as PNG may produce a smaller file size than "
 "JPG at the same scale."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:134
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:139
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:40
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:53
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/IndicatorSubForm.java:33
@@ -4385,7 +4396,7 @@ msgstr ""
 msgid "Indicator"
 msgstr "Indicator"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:134
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:139
 msgid ""
 "Indicator - A measurable entity related to a specific information need (for "
 "example, the status of a target, change in a threat, or progress towards an "
@@ -4416,11 +4427,11 @@ msgstr "Indicators Only"
 msgid "Indicators:"
 msgstr "Indicators:"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:187
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:192
 msgid "Initial Project Team"
 msgstr "Initial Project Team"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:187
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:192
 msgid ""
 "Initial Project Team - The people who conceive of and initiate the project."
 msgstr ""
@@ -4472,7 +4483,7 @@ msgstr "Instructions"
 msgid "Intensive Assessment"
 msgstr "Intensive Assessment"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:311
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:316
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewIntermediateResultPropertiesPanel.java:33
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:46
 msgid "Intermediate Result"
@@ -4482,7 +4493,7 @@ msgstr "Result"
 msgid "Intermediate Result (Light Blue)"
 msgstr "Result (Light Blue)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:311
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:316
 msgid ""
 "Intermediate Result - A factor in a results chain that describes a specific "
 "outcome that results from implementing one or more conservation strategies. "
@@ -4512,7 +4523,7 @@ msgstr "Invalid project name:"
 msgid "Invalid project name: %s"
 msgstr "Invalid project name: %s"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:223
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:228
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:107
 msgid "Irreversibility"
 msgstr "Irreversibility"
@@ -4561,12 +4572,12 @@ msgstr "July to June"
 msgid "Jun"
 msgstr "Jun"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:141
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:146
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/KeyEcologicalAttributePropertiesForm.java:33
 msgid "KEA"
 msgstr "KA"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:141
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:146
 msgid ""
 "KEA (Key Ecological Attribute) - An aspect of a target's biology or ecology "
 "that if present, defines a healthy target and if missing or altered, would "
@@ -5138,7 +5149,7 @@ msgstr "Marine Oceanic - Mesopelagic (200-1,000 m)"
 msgid "May"
 msgstr "May"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:323
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:328
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:52
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:53
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/MeasurementPropertiesForm.java:33
@@ -5146,7 +5157,7 @@ msgstr "May"
 msgid "Measurement"
 msgstr "Measurement"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:323
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:328
 msgid ""
 "Measurement - An assessment of an indicator at a given point in time. "
 "Measurements can be either quantitative or qualitative."
@@ -5246,13 +5257,13 @@ msgstr "Menu|Insert"
 msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr "Menu|Remove Tag from %n Selected Item(s)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:146
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:151
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:95
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:56
 msgid "Method"
 msgstr "Method"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:146
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:151
 msgid ""
 "Method - A specific technique used to collect data to measure an indicator.  "
 "A good method is accurate, reliable, cost-effective, feasible, and "
@@ -5380,14 +5391,14 @@ msgstr "Monitoring Data"
 msgid "Monitoring Overview"
 msgstr "Monitoring Overview"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:151
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:156
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:69
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/MonitoringTreeConfigurationQuestion.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:206
 msgid "Monitoring Plan"
 msgstr "Monitoring Plan"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:151
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:156
 msgid ""
 "Monitoring Plan - A plan for collecting information that you and others need "
 "to know about your project. A good plan includes the indicators that you "
@@ -5467,12 +5478,12 @@ msgstr "Name"
 msgid "Needs Attention"
 msgstr "Needs Attention"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:314
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:319
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:38
 msgid "Nested Target"
 msgstr "Nested Interest"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:314
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:319
 msgid ""
 "Nested Target - Species, ecological communities, or ecological system "
 "targets whose conservation needs are subsumed in one or more focal "
@@ -5559,7 +5570,7 @@ msgstr "Notifications"
 msgid "Nov"
 msgstr "Nov"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:169
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:42
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:46
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ObjectivePropertiesForm.java:34
@@ -5567,7 +5578,7 @@ msgstr "Nov"
 msgid "Objective"
 msgstr "Outcome"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:169
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
 msgid ""
 "Objective - A formal statement detailing a desired outcome of a project, "
 "such as reducing a critical threat. In Miradi, an objective is represented "
@@ -5651,11 +5662,11 @@ msgstr "Open Anyway"
 msgid "Open Project"
 msgstr "Open Project"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:268
 msgid "Open Standards"
 msgstr "Open Standards"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:268
 msgid ""
 "Open Standards for the Practice of Conservation - A series of best practices "
 "for designing, managing, monitoring, and learning from conservation "
@@ -5715,7 +5726,7 @@ msgstr "Other confidence interval"
 msgid "Outcomes"
 msgstr "Outcomes"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:218
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:223
 msgid "Overall Threat Rating"
 msgstr "Overall Pressure Rating"
 
@@ -5865,11 +5876,11 @@ msgstr "Preparing groups..."
 msgid "Priority"
 msgstr "Priority"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:326
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:331
 msgid "Priority Rating"
 msgstr "Priority Rating"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:326
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:331
 msgid ""
 "Priority Rating - An assesment of the importance or urgency or collecting "
 "measurements for a given indicator."
@@ -5971,7 +5982,7 @@ msgstr "Progress Report"
 msgid "Progress Reports"
 msgstr "Progress Reports"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:245
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:118
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:37
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:102
@@ -6063,7 +6074,7 @@ msgstr "Project was migrated to the current data format"
 msgid "Projected Expenses"
 msgstr "Projected Expenses"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:118
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryScopeTabPanel.java:73
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:68
 msgid "Project|Scope"
@@ -6081,11 +6092,11 @@ msgstr "Provide a safe environment for experimentation"
 msgid "Public (anyone)"
 msgstr "Public (anyone)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:207
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:212
 msgid "Quarter"
 msgstr "Quarter"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:207
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:212
 msgid ""
 "Quarter - A planning period encompassing 3 months. If you are using a "
 "Western calendar, typically 1st quarter is Jan - Mar, 2nd quarter is Apr - "
@@ -6187,7 +6198,7 @@ msgstr "Report Template"
 msgid "Report to project team and stakeholders"
 msgstr "Report to project team and stakeholders"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:213
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:218
 msgid "Resource"
 msgstr "Resource"
 
@@ -6195,7 +6206,7 @@ msgstr "Resource"
 msgid "Resource (Who)"
 msgstr "Resource (Who)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:213
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:218
 msgid ""
 "Resource - A person or item that is needed to complete an activity/method or "
 "a task. There are three main kinds of resources - human, material, and "
@@ -6347,11 +6358,11 @@ msgstr "Scheduled"
 msgid "Scheduled for future implementation"
 msgstr "Scheduled for future implementation"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:120
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:125
 msgid "Scope (Threat Ratings)"
 msgstr "Scope (Pressure Ratings)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:120
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:125
 msgid ""
 "Scope (Threat Ratings) - A threat rating criterion that is most commonly "
 "defined spatially as the proportion of the target that can reasonably be "
@@ -6369,7 +6380,7 @@ msgstr ""
 "occurence. For species, measured as the proportion of the interest's "
 "population."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:118
 msgid ""
 "Scope - The broad geographic or thematic focus of a project. In Miradi, a "
 "project's scope is represented by a green box around the targets."
@@ -6489,12 +6500,12 @@ msgstr "Selection Dialog"
 msgid "Sep"
 msgstr "Sep"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:227
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:232
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:106
 msgid "Severity"
 msgstr "Severity"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:227
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:232
 msgid ""
 "Severity - Within the scope, the level of damage to the target from the "
 "threat that can reasonably be expected given the continuation of current "
@@ -6678,11 +6689,11 @@ msgstr "Start:"
 msgid "Status"
 msgstr "Status"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:163
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:168
 msgid "Status Assessments"
 msgstr "Status Assessments"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:163
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:168
 msgid ""
 "Status Assessments - Information used to answer the questions how are key "
 "targets, threats, and other factors changing? Answers to these questions, "
@@ -6706,11 +6717,11 @@ msgstr "Step (not available)"
 msgid "Stop"
 msgstr "Stop"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:179
 msgid "Strategic Plan"
 msgstr "Strategic Plan"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:179
 msgid ""
 "Strategic plan - An outline of how the project team proposes to change the "
 "world that contains a project's goals, objectives, and strategies."
@@ -6732,7 +6743,7 @@ msgstr "Interventions Only"
 msgid "Strategies contain Objectives"
 msgstr "Interventions contain Outcomes"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:180
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:185
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:47
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/StrategyCoreSubForm.java:34
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:48
@@ -6743,7 +6754,7 @@ msgstr "Intervention"
 msgid "Strategy (Yellow)"
 msgstr "Intervention (Yellow)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:180
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:185
 msgid ""
 "Strategy - A broad course of action designed to restore natural systems, "
 "reduce threats, and/or develop capacity.  A strategy is typically used as an "
@@ -6755,11 +6766,11 @@ msgstr ""
 "as an umbrella term to describe a set of specific conservation actions. In "
 "Miradi, a intervention is represented by a yellow hexagon."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:158
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:163
 msgid "Strategy Effectiveness"
 msgstr "Intervention Effectiveness"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:158
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:163
 msgid ""
 "Strategy Effectiveness - Information used to answer the question: Are the "
 "conservation actions we are taking achieving their desired results?"
@@ -6792,7 +6803,7 @@ msgstr ""
 msgid "Stress Based Threat Rating Mode"
 msgstr "Stress Based Pressure Rating Mode"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:343
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:348
 msgid "Stress Calculation Rules"
 msgstr "Stress Calculation Rules"
 
@@ -7668,11 +7679,11 @@ msgstr "TT|Zoom Out"
 msgid "TT|Zoom To Fit"
 msgstr "TT|Zoom To Fit"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:297
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:302
 msgid "Tab Delimited File"
 msgstr "Tab Delimited File"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:297
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:302
 msgid ""
 "Tab Delimited File - A software file with regular entries spaced by tab "
 "commands.  Most word processors or spreadsheet programs will allow you to "
@@ -7789,7 +7800,7 @@ msgstr "Interest Viability - Table"
 msgid "Target-Threat Rating"
 msgstr "Interest-Pressure Rating"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:218
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:223
 msgid ""
 "Target-Threat Rating - The rating of the effect of a direct threat on a "
 "specific target. The target-threat rating is calculated using a rule-based "
@@ -7838,13 +7849,13 @@ msgstr "Interests at top level"
 msgid "Targets within Diagrams"
 msgstr "Interests within Diagrams"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:202
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:207
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:97
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:55
 msgid "Task"
 msgstr "Task"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:202
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:207
 msgid ""
 "Task - A specific action required in service of an activity or method.  "
 "Tasks themselves can be broken into sub-tasks if necessary. In Miradi, a "
@@ -7943,7 +7954,7 @@ msgstr ""
 msgid "That project is too old to be opened with this version of Miradi"
 msgstr "That project is too old to be opened with this version of Miradi"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:256
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:261
 msgid ""
 "The Conservation Measures Partnership (CMP) - A consortium of some of the "
 "world's leading conservation organizations, CMP members work together to "
@@ -8301,8 +8312,8 @@ msgstr "This will replace the existing file."
 msgid "Threat"
 msgstr "Pressure"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:334
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:337
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:339
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:342
 msgid "Threat Calculations"
 msgstr "Pressure Calculations"
 
@@ -8343,7 +8354,7 @@ msgstr "Pressure Reduction Result"
 msgid "Threat Reduction Result (Light Purple)"
 msgstr "Pressure Reduction Result (Light Purple)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:308
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:313
 msgid ""
 "Threat Reduction Result - A factor in a results chain that describes the "
 "desired change in a direct threat that results from implementing one or more "
@@ -8363,7 +8374,7 @@ msgstr "Pressure rating summary"
 msgid "Threat: %s"
 msgstr "Pressure: %s"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:308
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:313
 msgid "ThreatReduction Result"
 msgstr "ThreatReduction Result"
 
@@ -8728,7 +8739,7 @@ msgstr ""
 "Unable to write XML. Perhaps the disk was full, or you don't have permission "
 "to write to it, or you are using invalid characters in the file name."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:353
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:358
 msgid "Undefined"
 msgstr "Undefined"
 
@@ -8858,12 +8869,12 @@ msgstr "Very Small"
 msgid "Viability Analysis Mode"
 msgstr "Viability Analysis Mode"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:317
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:322
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:100
 msgid "Viability Ratings"
 msgstr "Viability Ratings"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:317
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:322
 msgid ""
 "Viability Ratings - A project's scale of what is very good, good, fair, or "
 "poor for a given indicator for a given target. Viability ratings are often "
@@ -8895,11 +8906,11 @@ msgstr "View all sub-purposes"
 msgid "View all objectives"
 msgstr "View all outcomes"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:129
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:134
 msgid "Vision"
 msgstr "Vision"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:129
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:134
 msgid ""
 "Vision - A general summary of the desired state or ultimate condition of the "
 "project area that a project is working to achieve."
@@ -9103,12 +9114,12 @@ msgstr "Within your Organization Only"
 msgid "Wizard load of control failed:"
 msgstr "Wizard load of control failed:"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:191
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:196
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:201
 msgid "Work Plan"
 msgstr "Work Plan"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:191
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:196
 msgid ""
 "Work Plan - A description of the specific activities/methods and tasks that "
 "you need to undertake your strategic and monitoring plans.  A good work plan "
@@ -9211,7 +9222,7 @@ msgstr ""
 msgid "You must select one item in each of the two lists"
 msgstr "You must select one item in each of the two lists"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:270
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:275
 msgid ""
 "Zipped Project - A project folder that has been compressed using the zip "
 "format. To share files with other Miradi users, you can use the file/export/"
@@ -15741,16 +15752,16 @@ msgstr ""
 "keys (holding the control key also allows you to deselect factors).</p>"
 
 msgid ""
-"html|/resources/wizard/DiagramView/TargetStressesStepLeft.html|Some "
-"conservation planning methodologies, such as The Nature Conservancy's CAP "
-"Process, call for identifying the <a href='Definition:Stress' "
-"class='definition'>stresses</a> that affect your conservation targets. If "
-"you want to use stresses, double click on a target, and click on the <code "
-"class='toolbarbutton'>&lt;Stresses&gt;</code> tab in the target properties "
-"window. Click on the buttons to create a new stress, create a stress from an "
-"existing stress, or create a stress from one of your KEAs. For each stress, "
-"you can then fill in the <strong>ID</strong>, <strong>name</strong>, and "
-"<strong>details</strong> fields. You can also click the <code "
+"html|/resources/wizard/DiagramView/TargetStressesStepLeft.html|<h3>Stresses</"
+"h3>Some conservation planning methodologies, such as The Nature "
+"Conservancy's CAP Process, call for identifying the <a href='Definition:"
+"Stress' class='definition'>stresses</a> that affect your conservation "
+"targets. If you want to use stresses, double click on a target, and click on "
+"the <code class='toolbarbutton'>&lt;Stresses&gt;</code> tab in the target "
+"properties window. Click on the buttons to create a new stress, create a "
+"stress from an existing stress, or create a stress from one of your KEAs. "
+"For each stress, you can then fill in the <strong>ID</strong>, <strong>name</"
+"strong>, and <strong>details</strong> fields. You can also click the <code "
 "class='toolbarbutton'>&lt;Stress Visibility&gt;</code> side tab and then the "
 "<code class='toolbarbutton'>&lt;Show Stress on this page&gt;</code> button "
 "to display a stress in a box on the current conceptual model page, or the "
@@ -15759,28 +15770,23 @@ msgid ""
 "on the diagram as blue boxes. You can position them on top of links from "
 "other factors to targets, but you cannot link to them directly. When you "
 "click on a stress, its corresponding target will also be selected. Likewise, "
-"when you click on a target, its corresponding stresses will be selected.</p>"
+"when you click on a target, its corresponding stresses will be selected.</"
+"p><br/><h3>Biophysical Factors</h3>Starting with Version 4.3, Miradi now "
+"supports optional <a href='Definition:BiophysicalFactor' "
+"class='definition'>Biophysical Factors</a> that can be used to show the "
+"mechanism of how direct threats affect conservation targets. To use "
+"biophysical factors, you first have to click on the <code "
+"class='toolbarbutton'>&lt;Edit/Preferences/Project Settings&gt;</code> menu "
+"and then set the <code class='toolbarbutton'>&lt;Project Mode&gt;</code> to "
+"<code class='toolbarbutton'>&lt;Include Biophysical Factors and Results&gt;</"
+"code>.  You should now see an <code class='toolbarbutton'>&lt;Insert "
+"Biophysical Factor&gt;</code> button in the Control Bar for Conceptual "
+"Models and an <code class='toolbarbutton'>&lt;Insert Biophysical Result&gt;</"
+"code> button for Results Chains. <p class='hint'><strong>Hint:</strong> "
+"Unlike stresses, biophysical factors are full factors in that they can link "
+"to other factors and support objectives and indicators. They also “transmit” "
+"the linkage of a direct threat to a target.</p>"
 msgstr ""
-"html|/resources/wizard/DiagramView/TargetStressesStepLeft.html|Some "
-"conservation planning methodologies, such as The Nature Conservancy's CAP "
-"Process, call for identifying the <a href='Definition:Stress' "
-"class='definition'>stresses</a> that affect your focal interests. If you "
-"want to use stresses, double click on an interest, and click on the <code "
-"class='toolbarbutton'>&lt;Stresses&gt;</code> tab in the interest properties "
-"window. Click on the buttons to create a new stress, create a stress from an "
-"existing stress, or create a stress from one of your KAs. For each stress, "
-"you can then fill in the <strong>ID</strong>, <strong>name</strong>, and "
-"<strong>details</strong> fields. You can also click the <code "
-"class='toolbarbutton'>&lt;Stress Visibility&gt;</code> side tab and then the "
-"<code class='toolbarbutton'>&lt;Show Stress on this page&gt;</code> button "
-"to display a stress in a box on the current situation model page, or the "
-"<code class='toolbarbutton'>&lt;Hide Stress on this page&gt;</code> button "
-"to hide it.</p><p class='hint'><strong>Hint:</strong> Stresses are displayed "
-"on the diagram as blue boxes. You can position them on top of links from "
-"other factors to interests, but you cannot link to them directly. When you "
-"click on a stress, its corresponding interest will also be selected. "
-"Likewise, when you click on an interest, its corresponding stresses will be "
-"selected.</p>"
 
 msgid ""
 "html|/resources/wizard/DiagramView/DiagramOverviewStepRight.html|<div "
@@ -17493,26 +17499,38 @@ msgstr ""
 
 msgid ""
 "html|/resources/wizard/DiagramView/TargetStressesStepRight.html|<div "
-"class='navigation'>A <i>stress</i> is an impaired aspect of a conservation "
-"target that results directly or indirectly from human activities (e.g., low "
-"population size, reduced extent of forest system; reduced river flows; "
-"increased sedimentation; lowered groundwater table level). <p> A stress is a "
-"degraded key ecological attribute - one that is outside its acceptable range "
-"of variation. Most of the stresses acting on your targets can thus be "
-"identified by looking at which key ecological attributes are currently "
-"degraded or have a high potential to become degraded within the planning "
-"horizon of your project (e.g., the next 10 years).</p></div>"
+"class='navigation'><h3>Stresses</h3>A <i>stress</i> is an impaired aspect of "
+"a conservation target that results directly or indirectly from human "
+"activities (e.g., low population size, reduced extent of forest system; "
+"reduced river flows; increased sedimentation; lowered groundwater table "
+"level). <p> A stress is a degraded key ecological attribute - one that is "
+"outside its acceptable range of variation. Most of the stresses acting on "
+"your targets can thus be identified by looking at which key ecological "
+"attributes are currently degraded or have a high potential to become "
+"degraded within the planning horizon of your project (e.g., the next 10 "
+"years).</p></div><br/><h3>Biophysical Factors</h3>In some cases (e.g. to "
+"clarify all the effects of climate change), a project team may wish to show "
+"a string of ecological and/or physical factors that connect a direct threat "
+"to a conservation target. For example, as shown in the following figure, one "
+"of the key attributes of the River target is a certain flow regime. Reduced "
+"flows represent an altered KEA and, therefore, a stress to that target. Yet, "
+"this team found it useful to show the additional factors that show how fire "
+"and forest management practices caused this stress – in this case dense "
+"forests and soil moisture depletion. These latter two factors are not "
+"stresses (because they are not properties of the river system itself) but "
+"represent a key causal relationship in this model. We use the general term "
+"“biophysical factor” to represent any factor (including, but not limited to "
+"traditional stresses) that connect a direct threat to a conservation target. "
+"<table width='100%'><tr><td align='center'><img src='images/DiagramWizard/"
+"biophysical-factors.png' width='622' height='150'></img></td></tr></table><p "
+"class='hint'><strong>Warning:</strong> When using Biophysical Factors, do "
+"not “overgeneralize them” and use them to connect all threats to all "
+"targets. For example, if you create a factor of “habitat loss” and then "
+"connect it to all your targets, your threat rating tables will show all "
+"threats connected to all targets. Instead, you should create more specific "
+"biophysical factors such as “loss of stream habitat” and “loss of forest "
+"habitat.”</p>"
 msgstr ""
-"html|/resources/wizard/DiagramView/TargetStressesStepRight.html|<div "
-"class='navigation'>A <i>stress</i> is an impaired aspect of a focal interest "
-"that results directly or indirectly from human outputs (e.g., low population "
-"size, reduced extent of forest system; reduced river flows; increased "
-"sedimentation; lowered groundwater table level). <p> A stress is a degraded "
-"Key Attribute - one that is outside its acceptable range of variation. Most "
-"of the stresses acting on your interests can thus be identified by looking "
-"at which key attributes are currently degraded or have a high potential to "
-"become degraded within the planning horizon of your project (e.g., the next "
-"10 years).</p></div>"
 
 msgid ""
 "html|/resources/wizard/DiagramView/DiagramWizardDefineAudienceStepLeft.html|"
@@ -37072,6 +37090,73 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid ""
+#~ "html|/resources/wizard/DiagramView/TargetStressesStepLeft.html|Some "
+#~ "conservation planning methodologies, such as The Nature Conservancy's CAP "
+#~ "Process, call for identifying the <a href='Definition:Stress' "
+#~ "class='definition'>stresses</a> that affect your conservation targets. If "
+#~ "you want to use stresses, double click on a target, and click on the "
+#~ "<code class='toolbarbutton'>&lt;Stresses&gt;</code> tab in the target "
+#~ "properties window. Click on the buttons to create a new stress, create a "
+#~ "stress from an existing stress, or create a stress from one of your KEAs. "
+#~ "For each stress, you can then fill in the <strong>ID</strong>, "
+#~ "<strong>name</strong>, and <strong>details</strong> fields. You can also "
+#~ "click the <code class='toolbarbutton'>&lt;Stress Visibility&gt;</code> "
+#~ "side tab and then the <code class='toolbarbutton'>&lt;Show Stress on this "
+#~ "page&gt;</code> button to display a stress in a box on the current "
+#~ "conceptual model page, or the <code class='toolbarbutton'>&lt;Hide Stress "
+#~ "on this page&gt;</code> button to hide it.</p><p "
+#~ "class='hint'><strong>Hint:</strong> Stresses are displayed on the diagram "
+#~ "as blue boxes. You can position them on top of links from other factors "
+#~ "to targets, but you cannot link to them directly. When you click on a "
+#~ "stress, its corresponding target will also be selected. Likewise, when "
+#~ "you click on a target, its corresponding stresses will be selected.</p>"
+#~ msgstr ""
+#~ "html|/resources/wizard/DiagramView/TargetStressesStepLeft.html|Some "
+#~ "conservation planning methodologies, such as The Nature Conservancy's CAP "
+#~ "Process, call for identifying the <a href='Definition:Stress' "
+#~ "class='definition'>stresses</a> that affect your focal interests. If you "
+#~ "want to use stresses, double click on an interest, and click on the <code "
+#~ "class='toolbarbutton'>&lt;Stresses&gt;</code> tab in the interest "
+#~ "properties window. Click on the buttons to create a new stress, create a "
+#~ "stress from an existing stress, or create a stress from one of your KAs. "
+#~ "For each stress, you can then fill in the <strong>ID</strong>, "
+#~ "<strong>name</strong>, and <strong>details</strong> fields. You can also "
+#~ "click the <code class='toolbarbutton'>&lt;Stress Visibility&gt;</code> "
+#~ "side tab and then the <code class='toolbarbutton'>&lt;Show Stress on this "
+#~ "page&gt;</code> button to display a stress in a box on the current "
+#~ "situation model page, or the <code class='toolbarbutton'>&lt;Hide Stress "
+#~ "on this page&gt;</code> button to hide it.</p><p "
+#~ "class='hint'><strong>Hint:</strong> Stresses are displayed on the diagram "
+#~ "as blue boxes. You can position them on top of links from other factors "
+#~ "to interests, but you cannot link to them directly. When you click on a "
+#~ "stress, its corresponding interest will also be selected. Likewise, when "
+#~ "you click on an interest, its corresponding stresses will be selected.</p>"
+
+#~ msgid ""
+#~ "html|/resources/wizard/DiagramView/TargetStressesStepRight.html|<div "
+#~ "class='navigation'>A <i>stress</i> is an impaired aspect of a "
+#~ "conservation target that results directly or indirectly from human "
+#~ "activities (e.g., low population size, reduced extent of forest system; "
+#~ "reduced river flows; increased sedimentation; lowered groundwater table "
+#~ "level). <p> A stress is a degraded key ecological attribute - one that is "
+#~ "outside its acceptable range of variation. Most of the stresses acting on "
+#~ "your targets can thus be identified by looking at which key ecological "
+#~ "attributes are currently degraded or have a high potential to become "
+#~ "degraded within the planning horizon of your project (e.g., the next 10 "
+#~ "years).</p></div>"
+#~ msgstr ""
+#~ "html|/resources/wizard/DiagramView/TargetStressesStepRight.html|<div "
+#~ "class='navigation'>A <i>stress</i> is an impaired aspect of a focal "
+#~ "interest that results directly or indirectly from human outputs (e.g., "
+#~ "low population size, reduced extent of forest system; reduced river "
+#~ "flows; increased sedimentation; lowered groundwater table level). <p> A "
+#~ "stress is a degraded Key Attribute - one that is outside its acceptable "
+#~ "range of variation. Most of the stresses acting on your interests can "
+#~ "thus be identified by looking at which key attributes are currently "
+#~ "degraded or have a high potential to become degraded within the planning "
+#~ "horizon of your project (e.g., the next 10 years).</p></div>"
 
 #~ msgid "%1 targets have simple viablity information"
 #~ msgstr "%1 interests have simple viablity information"
