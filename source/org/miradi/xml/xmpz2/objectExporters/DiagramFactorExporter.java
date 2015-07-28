@@ -110,7 +110,7 @@ public class DiagramFactorExporter extends BaseObjectExporter
 		
 		getWriter().writeStartElement(STYLE);
 		getWriter().writeNonOptionalCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion(), diagramFactor.getFontSize());
-		getWriter().writeNonOptionalCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion(), XmlUtilities2.convertXmlTextToHtml(diagramFactor.getFontStyle()));
+		getWriter().writeNonOptionalCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion(), XmlUtilities2.convertXmlTextToHtmlWithoutSurroundingHtmlTags(diagramFactor.getFontStyle()));
         if (diagramFactor.getHeaderHeight() != 0)
             getWriter().writeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_HEADER_HEIGHT, diagramFactor.getHeaderHeight());
 		getWriter().writeNonOptionalCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion(), diagramFactor.getFontColor());
