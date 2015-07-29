@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-28 09:37-0700\n"
+"POT-Creation-Date: 2015-07-29 01:52-0700\n"
 "Language: psp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -277,7 +277,7 @@ msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:115
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1482
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1481
 msgid "(%s)"
 msgstr "(%s)"
 
@@ -1102,7 +1102,7 @@ msgstr "A file or folder with that name already exists"
 msgid "A project or file by this name already exists: "
 msgstr "A project or file by this name already exists: "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1478
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1477
 msgid "A project or file by this name already exists: %s"
 msgstr "A project or file by this name already exists: %s"
 
@@ -2086,6 +2086,10 @@ msgstr "Add '%s' to User Dictionary"
 msgid "Add Human Wellbeing Targets If Desired"
 msgstr "Add Human Wellbeing Components If Desired"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpTargetStressesStep.java:35
+msgid "Add stresses and/or biophysical factors (optional)"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/InitialSplashPanel.java:139
 msgid ""
 "Additional languages are supported by installing Miradi Language Packs,<br> "
@@ -3066,7 +3070,7 @@ msgstr "Create Failed:"
 msgid "Create Folder"
 msgstr "Create Folder"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:770
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:769
 msgid "Create Project"
 msgstr "Create Project"
 
@@ -3599,7 +3603,7 @@ msgid "Enter As: "
 msgstr "Enter As: "
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/noproject/RenameOldProjectDoer.java:118
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1512
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1511
 msgid "Enter New Name"
 msgstr "Enter New Name"
 
@@ -3673,7 +3677,7 @@ msgstr "Estimate costs for activities and monitoring"
 msgid "Euro"
 msgstr "Euro"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1038
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1037
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr "Existing data for a different fiscal year is being excluded"
 
@@ -4242,10 +4246,6 @@ msgstr "Identify key audiences"
 msgid "Identify key skills"
 msgstr "Identify key skills"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpTargetStressesStep.java:35
-msgid "Identify stresses (optional)"
-msgstr "Identify stresses (optional)"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/NeverShowAgainPanel.java:47
 msgid "If a notification dialog in this list is checked, "
 msgstr "If a notification dialog in this list is checked, "
@@ -4258,7 +4258,7 @@ msgstr ""
 "If implemented, will the strategy lead to desired changes in the situation "
 "at your project site?"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:728
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:727
 msgid ""
 "If you continue with this migration, some data will be lost.\n"
 "\n"
@@ -4509,7 +4509,7 @@ msgstr "Introduction"
 msgid "Invalid project name:"
 msgstr "Invalid project name:"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1487
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1486
 msgid "Invalid project name: %s"
 msgstr "Invalid project name: %s"
 
@@ -5288,8 +5288,8 @@ msgstr "Migrating Project Data"
 msgid "Migrating..."
 msgstr "Migrating..."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:710
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:732
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:709
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:731
 msgid "Migration"
 msgstr "Migration"
 
@@ -5353,7 +5353,7 @@ msgstr "Miradi did not recognize the file: %s as importable."
 msgid "Miradi does not recognize %s as a project file"
 msgstr "Miradi does not recognize %s as a project file"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:858
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:857
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5648,7 +5648,7 @@ msgid "Open Anyway"
 msgstr "Open Anyway"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:198
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:772
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:771
 msgid "Open Project"
 msgstr "Open Project"
 
@@ -5983,7 +5983,7 @@ msgstr "Project"
 msgid "Project Advisor"
 msgstr "Project Advisor"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:856
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:855
 msgid "Project Corruption Detected"
 msgstr "Project Corruption Detected"
 
@@ -6016,7 +6016,7 @@ msgstr "Project Resource"
 msgid "Project Resource Filter Editor"
 msgstr "Project Resource Filter Editor"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1036
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1035
 msgid "Project Resource Filter Is On"
 msgstr "Project Resource Filter Is On"
 
@@ -6663,7 +6663,7 @@ msgstr "Stakeholder"
 msgid "Standard Reports"
 msgstr "Standard Reports"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1070
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1069
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently "
 "%endDate)"
@@ -8221,7 +8221,7 @@ msgstr ""
 "This project cannot be imported because its Pressure Rating data is missing "
 "or damaged. Please contact Miradi support for recovery options."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:847
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:846
 msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
@@ -8245,25 +8245,10 @@ msgid ""
 "will be saved before the migrated \n"
 "version is written. After the project has been migrated, this project file "
 "will no longer be readable by \n"
-"older versions of Miradi. However, Miradi now has the option to export "
-"projects to older project formats,\n"
-"allowing you to send your projects to people who are still using an older "
-"version of Miradi.\n"
+"older versions of Miradi.\n"
 "\n"
 "Do you wish to proceed with the migration?"
 msgstr ""
-"This project was saved using an older version of Miradi. Before it can be "
-"opened, it needs to be migrated \n"
-"to the current data format. This is an automatic process, and a backup copy "
-"will be saved before the migrated \n"
-"version is written. After the project has been migrated, this project file "
-"will no longer be readable by \n"
-"older versions of Miradi. However, Miradi now has the option to export "
-"projects to older project formats,\n"
-"allowing you to send your projects to people who are still using an older "
-"version of Miradi.\n"
-"\n"
-"Do you wish to proceed with the migration?"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteResourceDoer.java:66
 msgid "This resource has been assigned work in the Work Plan"
@@ -8689,7 +8674,7 @@ msgstr ""
 "Unable to delete this project because it is in use by another copy of this "
 "application:\n"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1454
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1453
 msgid "Unable to launch external web browser"
 msgstr "Unable to launch external web browser"
 
@@ -8710,7 +8695,7 @@ msgstr ""
 "Unable to rename this project because it is in use by another copy of this "
 "application:\n"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1227
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1226
 msgid "Unable to save preferences"
 msgstr "Unable to save preferences"
 
@@ -37059,6 +37044,36 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "Identify stresses (optional)"
+#~ msgstr "Identify stresses (optional)"
+
+#~ msgid ""
+#~ "This project was saved using an older version of Miradi. Before it can be "
+#~ "opened, it needs to be migrated \n"
+#~ "to the current data format. This is an automatic process, and a backup "
+#~ "copy will be saved before the migrated \n"
+#~ "version is written. After the project has been migrated, this project "
+#~ "file will no longer be readable by \n"
+#~ "older versions of Miradi. However, Miradi now has the option to export "
+#~ "projects to older project formats,\n"
+#~ "allowing you to send your projects to people who are still using an older "
+#~ "version of Miradi.\n"
+#~ "\n"
+#~ "Do you wish to proceed with the migration?"
+#~ msgstr ""
+#~ "This project was saved using an older version of Miradi. Before it can be "
+#~ "opened, it needs to be migrated \n"
+#~ "to the current data format. This is an automatic process, and a backup "
+#~ "copy will be saved before the migrated \n"
+#~ "version is written. After the project has been migrated, this project "
+#~ "file will no longer be readable by \n"
+#~ "older versions of Miradi. However, Miradi now has the option to export "
+#~ "projects to older project formats,\n"
+#~ "allowing you to send your projects to people who are still using an older "
+#~ "version of Miradi.\n"
+#~ "\n"
+#~ "Do you wish to proceed with the migration?"
 
 #~ msgid ""
 #~ "html|/resources/wizard/DiagramView/TargetStressesStepLeft.html|Some "
