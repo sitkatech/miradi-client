@@ -32,6 +32,6 @@ public class ActionJumpTargetStressesStep extends AbstractJumpAction
 	
 	private static String getLabel()
 	{
-		return EAM.text("Identify stresses (optional)");
+		return EAM.text("Add stresses and/or biophysical factors (optional)");
 	}
 }

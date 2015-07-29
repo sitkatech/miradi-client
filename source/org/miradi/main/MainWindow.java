@@ -704,8 +704,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 				final String message = EAM.text("This project was saved using an older version of Miradi. Before it can be opened, it needs to be migrated \n" +
 												"to the current data format. This is an automatic process, and a backup copy will be saved before the migrated \n" +
 												"version is written. After the project has been migrated, this project file will no longer be readable by \n" +
-												"older versions of Miradi. However, Miradi now has the option to export projects to older project formats,\n" +
-												"allowing you to send your projects to people who are still using an older version of Miradi." +
+												"older versions of Miradi." +
 												"\n\nDo you wish to proceed with the migration?");
 				final int result = EAM.confirmDialog(EAM.text("Migration"), message, labels);
 				if (result != 0)
