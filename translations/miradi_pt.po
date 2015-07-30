@@ -1,20 +1,23 @@
-# Language POR translations for Miradi.
-# Copyright (C) 2011 Benetech
-# This file is distributed under the same license as the j package.
-# Automatically generated, 2011.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Benetech
+# This file is distributed under the same license as the PACKAGE package.
 #
+# Translators:
+# Automatically generated, 2011
 msgid ""
 msgstr ""
-"Project-Id-Version: Miradi 4.0\n"
+"Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-07-29 01:52-0700\n"
-"PO-Revision-Date: 2012-09-01 14:51-0500\n"
-"Last-Translator: Lou Ann Dietz <louann.dietz2@gmail.com>\n"
-"Language-Team: none\n"
-"Language: \n"
+"PO-Revision-Date: 2015-03-21 19:17+0000\n"
+"Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
+"Language-Team: Portuguese (http://www.transifex.com/projects/p/miradi-client/"
+"language/pt/)\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:59
 msgid ""
@@ -168,17 +171,14 @@ msgstr "%1 indicadores com mais de 1 medida"
 msgid "%1 indicators with no measurement"
 msgstr "%1 indicadores sem medida"
 
-# English "record" is not clear.  Does this refer to a data base record?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:279
 msgid "%1 objectives with 1 percent complete record"
 msgstr "%1 metas com 1 por cento dos dados completos"
 
-# English "record" refers to what here?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:280
 msgid "%1 objectives with more than 1 percent complete record"
 msgstr "%1 metas com mais de 1 por cento dos dados completos"
 
-# English "record"refers to what?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:278
 msgid "%1 objectives with no percent complete record"
 msgstr "%1 metas com zero por cento dos dados completos"
@@ -212,8 +212,9 @@ msgid "%1 targets have KEA"
 msgstr "%1 alvos têm atributo ecológico chave"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:226
+#, fuzzy
 msgid "%1 targets have simple viability information"
-msgstr ""
+msgstr "%1 alvos têm informações de viabilidade simples"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:254
 msgid "%1 total factors created"
@@ -223,7 +224,6 @@ msgstr "%1 total de fatores criados"
 msgid "%2 of %1 Activities and tasks have assignments"
 msgstr "%2 de %1 Atividades e tarefas têm responsáveis designados"
 
-# What is RC in English?  Result Chain?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:141
 msgid "%2 of %1 RCs have at least 1 objective"
 msgstr "%2 de %1 Cadeias de Resultados têm pelo menos 1 meta"
@@ -232,13 +232,11 @@ msgstr "%2 de %1 Cadeias de Resultados têm pelo menos 1 meta"
 msgid "%2 of %1 threat/target ranks with simple ranking"
 msgstr "%2 de %1 classificações de ameaça/alvo com classificação simples"
 
-# Stress here should be translated as pressão ou estresse?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:238
 msgid "%2 of %1 threat/target ranks with stress-based ranking"
 msgstr ""
 "%2 de %1 classificações de ameaça/alvo com classificação baseada em estresse"
 
-# Should any of this be translated?  It appears to be a variable that will be replaced with data
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/ReadOnlyCodeListField.java:81
 msgid "%countLabel: %itemCount"
 msgstr "%countLabel: %itemCount"
@@ -285,7 +283,6 @@ msgstr ""
 msgid "%s field data will be lost for measurement"
 msgstr ""
 
-# Do we translate any of this?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/DiagramCorruptionDetector.java:222
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
@@ -328,7 +325,6 @@ msgstr "(Veja aba de Localização)"
 msgid "(See Project tab)"
 msgstr "(Veja aba de Projeto)"
 
-# Please verify if correct items were translated
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AboutDoer.java:73
 msgid "(Translation: %code %date)"
 msgstr "(Tradução: %code %date)"
@@ -581,7 +577,6 @@ msgid ""
 "value='&lt; Previous'></input></td><td><input type='submit' name='"
 msgstr ""
 
-# Nothing to translate here, correct?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:76
 msgid ""
 "<div class='WizardText'><p><table><tr><td><input type='submit' name='Back' "
@@ -601,7 +596,6 @@ msgid ""
 "a ConPro/Miradi Exchange File (.cpmz), please contact Miradi support.)</div>"
 msgstr ""
 
-# Please check if I have translated all the appropriate items
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/noproject/projectlist/TreeBasedProjectList.java:64
 msgid ""
 "<div class='WizardText'>To <strong>continue work</strong> on an existing "
@@ -611,7 +605,6 @@ msgstr ""
 "projeto existente, ou <strong>ver um exemplo</strong>, selecione um projeto "
 "a baixo:"
 
-# Please check if I have translated all the correct information
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:76
 msgid ""
 "<div class='WizardText'>To <strong>create a new project</strong>, enter the "
@@ -630,7 +623,6 @@ msgstr ""
 "<div class='WizardText'>Para <strong>iniciar um projeto novo</strong> neste "
 "computador, selecione:"
 
-# Please check if I have translated the correct items
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/IrreversibilityThreatRatingQuestion.java:47
 msgid ""
 "<html><b>High:</b> The effects of the threat <b>can technically be reversed</"
@@ -643,7 +635,6 @@ msgstr ""
 "financeiramente</b> e/ou demoraria <b>21-100 anos</b> para reverter   (e.g., "
 "área húmida convertida para agricultura).</html>"
 
-# Please check to see if I have translated the all the correct items
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StressIrreversibilityQuestion.java:46
 msgid ""
 "<html><b>High:</b> The effects of the threat are <b>technically reversible</"
@@ -830,12 +821,10 @@ msgstr ""
 "<b>degrade/reduza moderadamente</b> o alvo ou reduza sua população por "
 "<b>11-30%</b> dentro de dez anos ou três gerações.</html>"
 
-# check if <br> (line break) is positioned correctly.
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:435
 msgid "<html><b>Overall<br>Project<br>Rating</b></html>"
 msgstr "<html><b>Classificação Global<br>doProjeto<br></b></html>"
 
-# Is this missing a command at the end?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:98
 msgid "<html><b>Summary<br>Target-Threat<br>Rating"
 msgstr "<html><b>Resumo<br>Classificação<br>Alvo-Ameaça"
@@ -888,7 +877,6 @@ msgstr ""
 "sua abrangência, afetando o alvo em <b>toda ou a maioria (71-100%)</b> de "
 "sua ocorrência/população.</html>"
 
-# Verify if the English means within the Project Scope or the scope of the stress.  I am assuming the scope of the stress and thus use abrangência to avoid confusion with Escopo (Project Scope)
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/SeverityStressBasedThreatRatingQuestion.java:53
 msgid ""
 "<html><b>Very High:</b> Within the scope, the stress is likely to <b>destroy "
@@ -951,7 +939,6 @@ msgstr ""
 "<html><strong>Irreversibilidade - </strong>O grau que os efeitos de uma "
 "ameaça podem ser restaurados.</html>"
 
-# I am translating the threat rating "scope" as "abrangência" to avoid confusion with Project Scope which is translated "Escopo" in the agreed glossary.
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ScopeStressBasedThreatRatingQuestion.java:58
 msgid ""
 "<html><strong>Scope - </strong>Most commonly defined spatially as the "
@@ -1037,8 +1024,8 @@ msgid ""
 "<br>will enter zeros in the appropriate time period column(s)."
 msgstr ""
 "<html>Especificando neste dialogo quando este item de trabalho vai ocorrer "
-"<br>vai entrar zeros na(s) coluna(s) do periodo de tempo apropriado. column"
-"(s)."
+"<br>vai entrar zeros na(s) coluna(s) do periodo de tempo apropriado. "
+"column(s)."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/SeverityStressBasedThreatRatingQuestion.java:58
 msgid ""
@@ -1087,13 +1074,11 @@ msgstr ""
 msgid "A file or folder with that name already exists"
 msgstr "Um arquivo ou pasta com aquele nome já existe"
 
-# I changed "by this name" to "with this name"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/noproject/RenameOldProjectDoer.java:57
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/noproject/RenameOldProjectDoer.java:87
 msgid "A project or file by this name already exists: "
 msgstr "Um projeto ou arquivo com este nome já existe: "
 
-# I changed "by this name" to "with this name"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1477
 msgid "A project or file by this name already exists: %s"
 msgstr "Um projeto ou arquivo com este nome ja existe:: %s"
@@ -1172,7 +1157,6 @@ msgstr "Plano de Ação: Beaseado nas Estratégias"
 msgid "Action-Related"
 msgstr "Relacionado às Ações"
 
-# Should anything be translated here?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionWizardPrevious.java:36
 msgid "Action|< Previous"
 msgstr "< Anterior"
@@ -1193,7 +1177,6 @@ msgstr ""
 msgid "Action|Adaptive Management"
 msgstr "Gestão Adaptativa"
 
-# This is a name, thus not translated, right?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/HelpButtonData.java:58
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionHelpAgileSoftware.java:34
 msgid "Action|Agile Software"
@@ -1203,7 +1186,6 @@ msgstr "Agile Software"
 msgid "Action|Assign Resource"
 msgstr "Atribuir Recurso"
 
-# Not sure of the meaning here.  Is this a command to arrange the boxes in the diagram automatically?  Does it need to be abbreviated to fit somewhere?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionArrangeConceptualModel.java:35
 msgid "Action|Auto-Arrange Diagram (BETA)"
 msgstr "Automáticamente arranjar o Diagrama (BETA)"
@@ -1279,12 +1261,10 @@ msgstr "Criar Junção de Entrada"
 msgid "Action|Create Margin"
 msgstr "Criar Margem"
 
-# Leo, would this be the most commonly used translation?  Would "encaixado" be better?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateSubTarget.java:35
 msgid "Action|Create Nested Target"
 msgstr "Criar Alvo Aninhado"
 
-# Leo, OK usar o termo inglês?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateNamedTaggedObjectSet.java:35
 msgid "Action|Create New Tag..."
 msgstr "Criar Tag"
@@ -1305,7 +1285,6 @@ msgstr "Criar Cadeia de Resultados"
 msgid "Action|Create Stress"
 msgstr "Criar Estresse"
 
-# Leo,  Should we maintain "KEA" for an abbreviation here?  I thought it might reduce communication problems.
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateStressFromKea.java:35
 msgid "Action|Create Stress from KEA"
 msgstr "Criar Estresse de Atributo Ecológico Chave (KEA)"
@@ -1390,7 +1369,6 @@ msgstr "Apagar Tabela"
 msgid "Action|Diagram"
 msgstr "Diagrama"
 
-# Leo, Help!  Is the English word used in computer language in Brazil?  I couldn't find a Portuguese term for this. - LA
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDiagramProperties.java:34
 msgid "Action|Diagram Properties..."
 msgstr "Properties do Diagrama"
@@ -1424,12 +1402,10 @@ msgstr "Expandir Todas as Linhas"
 msgid "Action|Export Miradi Share File"
 msgstr ""
 
-# Leo, Please verify what term is used for computer termplate.  - LA
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportXslTemplate.java:36
 msgid "Action|Export XSL Template"
 msgstr "Exportar Modelo de XSL "
 
-# What does finance tree mean in English?  Is it a plan for financing?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportBudgetTableTree.java:34
 msgid "Action|Export finance tree"
 msgstr "Exportar esquema ('tree') de financiamento"
@@ -1462,7 +1438,6 @@ msgstr "Como Salvar"
 msgid "Action|Import Accounting Codes"
 msgstr "Importar Códigos Contabilísticos"
 
-# Leo, please verify translation for Template
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionImportXslTemplate.java:35
 msgid "Action|Import XSL Template"
 msgstr "Importar Modelo XSL"
@@ -1480,12 +1455,14 @@ msgid "Action|Insert|Create Group Box"
 msgstr "Criar Caixa de Agrupamento"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionInsertBiophysicalFactor.java:38
+#, fuzzy
 msgid "Action|Insert|Insert Biophysical Factor"
-msgstr ""
+msgstr "Inserir Fator Contribuinte"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionInsertBiophysicalResult.java:37
+#, fuzzy
 msgid "Action|Insert|Insert Biophysical Result"
-msgstr ""
+msgstr "Inserir Resultado Intermediário"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionInsertContributingFactor.java:37
 msgid "Action|Insert|Insert Contributing Factor"
@@ -1571,7 +1548,6 @@ msgstr "Criar Item de Categoria No. 1"
 msgid "Action|Manage|Create Category #2 Item"
 msgstr "Criar Item de Categoria No. 2"
 
-# Leo, Filho ou filhote?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateChildTask.java:40
 msgid "Action|Manage|Create Child Task"
 msgstr "Criar Tarefa Filhote"
@@ -1594,7 +1570,6 @@ msgstr "Criar Espécie da Lista Vermelha UICN"
 msgid "Action|Manage|Create Indicator"
 msgstr "Criar Indicador"
 
-# Leo, Mantem KEA?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateKeyEcologicalAttribute.java:35
 msgid "Action|Manage|Create KEA"
 msgstr "Criar Atributo Ecológico Chave (KEA)"
@@ -1719,7 +1694,6 @@ msgstr "Apagar Recurso"
 msgid "Action|Manage|Modify Resource"
 msgstr "Modificar Recurso"
 
-# Is there a difference between Delete and Remove?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionResourceListRemove.java:34
 msgid "Action|Manage|Remove Resource"
 msgstr "Remover Recurso"
@@ -1753,7 +1727,6 @@ msgstr "Mais informações"
 msgid "Action|Next >"
 msgstr "Próximo >"
 
-# Leo, Nudge????
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionNudgeDown.java:34
 msgid "Action|Nudge Item Down"
 msgstr "Avançar Item para Baixo"
@@ -1881,7 +1854,6 @@ msgstr "Mostrar Atividade nesta página"
 msgid "Action|Show Conceptual Model"
 msgstr "Mostrar Modelo Conceitual"
 
-# Leo, Vamos manter Wizard ou usar Assistente?  Outro?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShowCurrentWizardFileName.java:34
 msgid "Action|Show Current Wizard Name"
 msgstr "Mostrar Nome do Wizard Atual"
@@ -2090,7 +2062,6 @@ msgstr ""
 msgid "Adaptive Management Software for Conservation Projects"
 msgstr "Software para Gestão Adaptativa de Projetos de Conservação"
 
-# Please verify that '%s' should not be translated
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:150
 msgid "Add '%s' to User Dictionary"
 msgstr "Adicionar '%s' ao dicionário do usuário"
@@ -2103,7 +2074,6 @@ msgstr ""
 msgid "Add stresses and/or biophysical factors (optional)"
 msgstr ""
 
-# Please check if I have translated the correct items
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/InitialSplashPanel.java:139
 msgid ""
 "Additional languages are supported by installing Miradi Language Packs,<br> "
@@ -2139,7 +2109,6 @@ msgstr "Todas as sub-tarefas neste item serão removidas também"
 msgid "An Error Occurred During Sorting."
 msgstr "Um erro ocorreu durante a ordenação"
 
-# I'm not usre of the context of assignment data.  Does this mean identifying responsible persons?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:78
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:120
 msgid "An error has occured while writing assignment data."
@@ -2192,12 +2161,17 @@ msgid "Analyze project results and assumptions"
 msgstr "Analizar os resultados e os pressupostos do projeto"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/CreateResultsChainDoer.java:90
+#, fuzzy
 msgid ""
 "Any Indicators or Objectives that were associated to Contributing Factors, "
 "Threats or Biophysical Factors \n"
 "have been moved to the corresponding Threat Reduction Result, Intermediate "
 "Result or Biophysical Result"
 msgstr ""
+"Quaisquer Indicadores ou Metas que foram associados aos Fatores "
+"Contribuintes ou Ameaças \n"
+" foram movidos ao Resultado de Redução de Ameaça ou Resultado Imetermediário "
+"correspondente."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/TaxonomyClassificationSelectionModeQuestion.java:36
 msgid "Any Node"
@@ -2264,7 +2238,6 @@ msgstr "Tem certeza que quer apagar este projeto de Miradi de formato antigo?"
 msgid "Are you sure?"
 msgstr "Tem certeza?"
 
-# Please verify that this is a font type.
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FontFamiliyQuestion.java:41
 msgid "Arial"
 msgstr "Arial"
@@ -2417,7 +2390,6 @@ msgstr ""
 msgid "Assignments"
 msgstr "Designações"
 
-# Please verify I translated the correct items
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/legacyprojects/DataUpgrader.java:109
 msgid ""
 "Attempt to migrate project to the current data format FAILED\n"
@@ -2476,8 +2448,9 @@ msgid "Biodiversity Target Scope (Darker Green)"
 msgstr "Escopo do Alvo de Biodiversidade (Verde Escuro)"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/TargetModeQuestion.java:39
+#, fuzzy
 msgid "Biodiversity Targets Only"
-msgstr ""
+msgstr "Alvo de Biodiversidade"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewBiophysicalFactorPropertiesPanel.java:33
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:42
@@ -2563,7 +2536,6 @@ msgstr "Categoria de Orçamento Um"
 msgid "Budget Category Two"
 msgstr "Categoria de Orçamento Dois"
 
-# Leo, I'm not certain of the translation of override.  Please help
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/legacyprojects/migrations/RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration.java:80
 msgid "Budget Override was: "
 msgstr "Sobreposição do Oçamento foi:"
@@ -2572,7 +2544,6 @@ msgstr "Sobreposição do Oçamento foi:"
 msgid "Budget Override was: %s"
 msgstr "Sobreposição do Oçamento foi: %s"
 
-# What is the context for this?  Is this a programming term?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:345
 msgid "Bundle Rules"
 msgstr "Regras de Pacote"
@@ -2689,7 +2660,6 @@ msgstr "Colar Compartihado"
 msgid "Button|Replace"
 msgstr "Substituir"
 
-# Leo, OK to use the English Backup here since this is a button and has to be short?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/legacyprojects/DataUpgrader.java:66
 msgid "Button|Replace Backup"
 msgstr "Substuir Backup"
@@ -2722,8 +2692,6 @@ msgstr "Por Trimestre"
 msgid "By Year"
 msgstr "Por Ano"
 
-# Does CM here refer to Conservation MEasures?
-# Is the page referring to a website?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:36
 msgid "CM Page"
 msgstr "Página Conservation Measures"
@@ -2859,7 +2827,6 @@ msgstr ""
 "execução de uma estratégia.  As cadeias representam os pressupostos que você "
 "faz sobre o sítio de seu projeto."
 
-# What is Yuan Renminbi????
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/CurrencyTypeQuestion.java:43
 msgid "Chinese Yuan Renminbi"
 msgstr "Yuan Renminbi Chinês"
@@ -2872,12 +2839,10 @@ msgstr "Escolher pasta de dados"
 msgid "Choose Folder"
 msgstr "Escolher Pasta"
 
-# Leo, Can you think of a better way to express this?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/CloneGoalDoer.java:33
 msgid "Choose Goal to Create from"
 msgstr "Escolher Objetivo para iniciar a Criação "
 
-# Leo, can you think of a better way to say this?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/CloneIndicatorDoer.java:33
 msgid "Choose Indicator to Create from"
 msgstr "Escolher Indicador para iniciar a Criação "
@@ -2886,7 +2851,6 @@ msgstr "Escolher Indicador para iniciar a Criação "
 msgid "Choose Key Ecological Attribute to Create from"
 msgstr "Escolher Atributo Ecológico Chave para Iniciar a Criação"
 
-# Leo, Can you think of a better way to say this?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/CloneObjectiveDoer.java:33
 msgid "Choose Objective to Create from"
 msgstr "Escolher Meta para Iniciar a Criação"
@@ -2896,7 +2860,6 @@ msgstr "Escolher Meta para Iniciar a Criação"
 msgid "Choose Relevant Goal(s)"
 msgstr "Escolher Objetivo Relevante"
 
-# Leo, please help think of a better way to say this.
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractRelevancyEditListDoer.java:53
 msgid "Choose Relevant Indicator(s)"
 msgstr "Escolher Indicador(es) Relevante(s)"
@@ -3504,7 +3467,6 @@ msgstr "Ameaça Direta (Rosa)"
 msgid "Direct Threats Only"
 msgstr "Somente Ameaças Diretas"
 
-# I changed this definition a bit to align with the Portuguese definition of Direct Threat to which we all agreed.
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:95
 msgid ""
 "Direct threat - A proximate agent or factor that directly degrades one or "
@@ -3629,7 +3591,6 @@ msgstr ""
 msgid "Enable Spell Checking"
 msgstr "Ativar Verificação Ortográfica"
 
-# Is this a verb or noun???  I have translated as a verb
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/DateUnitStartAndEndCard.java:36
 msgid "End:"
 msgstr "Terminar"
@@ -3735,8 +3696,9 @@ msgid "Export"
 msgstr "Exportar"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/ExportMpf42VersionDoer.java:90
+#, fuzzy
 msgid "Export 4.2 Miradi"
-msgstr ""
+msgstr "Exportar para Miradi Zip..."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/ExportMpzDoer.java:99
 msgid "Export MPZ"
@@ -3770,7 +3732,6 @@ msgstr "Arquivo exportado não valida"
 msgid "External Research"
 msgstr "Pesquisa Externa"
 
-# Please verify if I have translated correct items
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/AnalysisLevelsEditorComponent.java:92
 msgid ""
 "Extra/unexpected configuration data was found, and will be ignored.\n"
@@ -3787,7 +3748,6 @@ msgstr "Extraindo fatores..."
 msgid "FOS"
 msgstr "FOS"
 
-# Please verify if I have translated correct items.
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FosTrainingTypeQuestion.java:39
 msgid "FOS Training Type|Other"
 msgstr "Outro"
@@ -3797,8 +3757,9 @@ msgid "FTE Days Per Year:"
 msgstr "Equivalente a Tempo Integral (ETI) Dias Por Ano"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo18.java:41
+#, fuzzy
 msgid "Factor Mode"
-msgstr ""
+msgstr "Propriedades do Fator"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:429
 msgid "Factor Properties"
@@ -3834,67 +3795,54 @@ msgstr ""
 msgid "File to import does not validate."
 msgstr "O arquivo para importar não validada."
 
-# Please verify I have translated correct items
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/JPEGFileFilter.java:46
 msgid "FileFilter|JPEG (*.jpg)"
 msgstr "JPEG (*.jpg)"
 
-# Please verify I have translated correct items
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/TreeExportFileFilter.java:41
 msgid "FileFilter|MTE (*.mte)"
 msgstr "MTE (*.mte)"
 
-# Please verify I have translated correct items
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/files/AbstractMpfFileFilter.java:34
 msgid "FileFilter|Miradi (*%s)"
 msgstr "Miradi (*%s)"
 
-# Please verify I have translated correct items
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/LanguagePackFileFilter.java:73
 msgid "FileFilter|Miradi Language Pack (%s)"
 msgstr "Miradi Language Pack (%s)"
 
-# Please verify I have translated correct items
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/MpzFileFilterForChooserDialog.java:29
 msgid "FileFilter|Miradi Project Zip (*.mpz)"
 msgstr "Miradi Project Zip (*.mpz)"
 
-# Please verify I have translated correct items
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/PNGFileFilter.java:34
 msgid "FileFilter|PNG (*.png)"
 msgstr "PNG (*.png)"
 
-# Please verify I have translated correct items
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/RtfFileFilter.java:42
 msgid "FileFilter|Rich Text Format (*.rtf)"
 msgstr "Rich Text Format (*.rtf)"
 
-# Please verify I have translated correct items
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/SVGFileFilter.java:46
 msgid "FileFilter|SVG (*.svg)"
 msgstr "SVG (*.svg)"
 
-# Please verify I have translated correct items
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/TabDelimitedFileFilter.java:42
 msgid "FileFilter|Tab Delimited (*.txt)"
 msgstr "Delimitado por tabulação (*.txt)"
 
-# Please verify I have translated correct items
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/XMLFileFilter.java:42
 msgid "FileFilter|XML (*.xml)"
 msgstr "XML (*.xml)"
 
-# Please verify I have translated correct items
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/Xmpz2FileFilter.java:30
 msgid "FileFilter|XMPZ2 (*%s)"
 msgstr "XMPZ2 (*%s)"
 
-# Please verify I have translated correct items
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/XslFileFilter.java:42
 msgid "FileFilter|XSL (*.xsl)"
 msgstr "XSL (*.xsl)"
 
-# Please verify I have translated correct items
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/ZIPFileFilter.java:47
 msgid "FileFilter|ZIP (*.zip)"
 msgstr "ZIP (*.zip)"
@@ -3915,7 +3863,6 @@ msgstr "Finalizar plano estratégico"
 msgid "Financial"
 msgstr "Financeiro"
 
-# ??? Does English refer to features that Miradi will have in the future (this is what I translated) or are they demonstrating the financial future of the project????
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpBudgetFutureDemo.java:35
 msgid "Financial Future Features Demo"
 msgstr "Demonstração de Características Futuras Financeiras"
@@ -3924,17 +3871,14 @@ msgstr "Demonstração de Características Futuras Financeiras"
 msgid "Financial Settings"
 msgstr "Configurações Financeiras"
 
-# Leo, Do you agree with this abbreviation?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:317
 msgid "Fiscal Quarter Prefix|FQ"
 msgstr "TRIM"
 
-# Leo, Is there a better abbreviation for Ano Fiscal?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:307
 msgid "Fiscal Year|FY"
 msgstr "Ano"
 
-# Is the English here an adjective or a noun (geographic term)?  I translated as an adjective
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/TrendQuestion.java:41
 msgid "Flat"
 msgstr "Achatado"
@@ -4026,7 +3970,6 @@ msgstr "Floresta - Temperada"
 msgid "Found Corrupted Data:"
 msgstr "Dados Corrompidos Encontrados:"
 
-# The English here is confusing.  Could we use "ïtem" instead of "factor" so as not to confuse with "contributing factor"?  Also is the term label supposed to be translated??
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/DiagramCorruptionDetector.java:143
 msgid ""
 "Found non activity factor that is a task. label = %FactorName.  Diagram = "
@@ -4043,12 +3986,10 @@ msgstr "Fator nulo de diagrama encontrado.  Diagrama = %s"
 msgid "Found null diagramLink.  Diagram = %s"
 msgstr "Ligação nula de diagrama encontrada.  Diagrama = %s"
 
-# I'm unsure what the English means....
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/DiagramCorruptionDetector.java:81
 msgid "Found null from or to for diagram link.  Diagram = %s"
 msgstr "Ligação de diagrama nula de ou para encontrada.  Diagrama =%s "
 
-# I have no idea what this means in English....thus my translation is very unclear.
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/DiagramCorruptionDetector.java:88
 msgid ""
 "Found null from wrapped factor or to wrapped factor from diagram link.  "
@@ -4194,7 +4135,6 @@ msgstr "Averiguar (ground truth) e Revisar Modelo"
 msgid "Ground-truth and revise model"
 msgstr "Averiguar (ground truth) e Revisar Modelo"
 
-# Is the English a noun or verb???
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ResourceTypeQuestion.java:36
 msgid "Group"
 msgstr "Grupar"
@@ -4290,7 +4230,6 @@ msgstr ""
 msgid "IUCN Redlist Species"
 msgstr "Espécie da Lista Vermelha da UICN"
 
-# Please verify - should key factors be translated? Also &quot; ?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:84
 msgid "Identify &quot;key factors&quot; and draft strategies"
 msgstr "Identifcar &quot;fatores chaves&quot; e elaborar estratégias"
@@ -4499,7 +4438,6 @@ msgstr "Inserir"
 msgid "Insert FTE Fraction"
 msgstr "Inserir fração de ETI (equivalente tempo integral)"
 
-# Leo please verify.  I'm not sure of the translation for Label in computer language - rótulo???  I left it in English.
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:228
 msgid "Insert Factor Link dialog|No Label Specified"
 msgstr "\"Label\" não especificado"
@@ -4556,7 +4494,6 @@ msgstr ""
 "\"intermediário\" tipicamente se refere a uma dimensão temporal).  Em "
 "Miradi, um resultado intermeiário é representado por um retângulo azul."
 
-# Leo, should we translate view or leave it in English?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/WizardTitlePanel.java:69
 msgid "Intro to View"
 msgstr "Introdução à Visão"
@@ -4626,7 +4563,6 @@ msgstr "julho a junho"
 msgid "Jun"
 msgstr "jun"
 
-# Leo, I decided not to use an abbreviation in Portuguese for this.  Do you agree?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:146
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/KeyEcologicalAttributePropertiesForm.java:33
 msgid "KEA"
@@ -4710,7 +4646,6 @@ msgstr "Categoria de Orçamento Dois"
 msgid "Label|Business Planning"
 msgstr "Planejamento Empresarial"
 
-# Leo, OK para abreviar assim?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncCapLegacySummarySubPanel.java:52
 msgid "Label|CAP Legacy"
 msgstr "Legado do PCA"
@@ -4745,7 +4680,6 @@ msgstr "FOS"
 msgid "Label|Human Stakeholder Pop Size"
 msgstr "Tam da População de Atores"
 
-# Leo, OK to keep "IM" em Portugês?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:76
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:72
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:39
@@ -4761,12 +4695,14 @@ msgid "Label|Miradi Share"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/InsertBiophysicalFactorDoer.java:46
+#, fuzzy
 msgid "Label|New Biophysical Factor"
-msgstr ""
+msgstr "Novo Fator"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/InsertBiophysicalResultDoer.java:46
+#, fuzzy
 msgid "Label|New Biophysical Result"
-msgstr ""
+msgstr "Novo Resultado Intermediário"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/InsertDraftStrategyDoer.java:65
 msgid "Label|New Draft Strategy"
@@ -4964,7 +4900,6 @@ msgstr "Amarelo Claro"
 msgid "Link Direct Threats to Targets"
 msgstr "Ligar as Ameaças Diretas aos Alvos"
 
-# Is link a verb or noun here?  I translated as a noun
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorLinkPropertiesPanel.java:58
 msgid "Link Properties"
 msgstr "Propriedades da Ligação"
@@ -5022,7 +4957,6 @@ msgstr "Manual"
 msgid "Mar"
 msgstr "mar"
 
-# Leo, what is the Technical Term for Supra Tidal? - A Cima do Nivel de Mará?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/HabitatAssociationQuestion.java:129
 msgid "Marine Coastal/Supratidal"
 msgstr "Marinho Costeiro/&quot;Supratidal&quot; "
@@ -5080,12 +5014,10 @@ msgstr ""
 "Marinho Bêntico Profundo - Talude Continental/Zona &quot;Bathyl&quot; - "
 "Substrato Mole"
 
-# Leo, I couldn't find the technical translation for this.  Do you know?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/HabitatAssociationQuestion.java:120
 msgid "Marine Deep Benthic - Deep Sea Vents (Rifts/Seeps)"
 msgstr "Marinho Bêntico Profundo - &quot;Deep Sea Vents (Rifts/Seeps)&quot;"
 
-# Leo, I couldn't find the technical translation for this.
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/HabitatAssociationQuestion.java:118
 msgid "Marine Deep Benthic - Hadal/Deep Sea Trench (&gt;6,000 m)"
 msgstr ""
@@ -5103,8 +5035,6 @@ msgstr "Marinho Intertidal"
 msgid "Marine Intertidal - Mangrove Submerged Roots"
 msgstr "Marinho Intertidal - Manguezal de Raizes Submersas"
 
-# Leo,
-# Conhece estes termos em português?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/HabitatAssociationQuestion.java:125
 msgid "Marine Intertidal - Mud Flats and Salt Flats"
 msgstr "Marinho Intertidal - &quot;Mud Flats&quot; e &quot;Salt Flats&quot; "
@@ -5281,7 +5211,6 @@ msgstr "Ajuda"
 msgid "MenuBar|Step-by-Step"
 msgstr "Passo a Passo"
 
-# Leo, Should this be "visualização"?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:443
 msgid "MenuBar|View"
 msgstr "Visão"
@@ -5963,7 +5892,6 @@ msgstr "Prioridade"
 msgid "Priority Rating"
 msgstr "Priorização"
 
-# The English has typos!!!!  Should be assessment and urgency OF
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:331
 msgid ""
 "Priority Rating - An assesment of the importance or urgency or collecting "
@@ -6387,7 +6315,6 @@ msgstr ""
 msgid "SE (standard error)"
 msgstr ""
 
-# Is this an acronym?  I translated as Step.
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/WCSSummaryPanel.java:51
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/summary/WcsTabForm.java:51
 msgid "STEP"
@@ -6803,7 +6730,6 @@ msgstr "Parar"
 msgid "Strategic Plan"
 msgstr "Plano Estratégico"
 
-# I changed this definition to correspond with the definition in the agreed Portuguese translation of the Standards.
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:179
 msgid ""
 "Strategic plan - An outline of how the project team proposes to change the "
@@ -6906,7 +6832,6 @@ msgstr ""
 "Os estresses podem ser exibidos comente nas páginas de ModelosConceituais, "
 "não nas páginas de Cadeias de Resultados"
 
-# How is "strike"used here?  "to strike a key"?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:63
 msgid "Strike"
 msgstr "Pressionar"
@@ -7042,7 +6967,6 @@ msgid ""
 "TT|Choose which strategies and activities are relevant to this objective."
 msgstr "Selecione as estratégias e atividades relevantes para esta meta."
 
-# Leo, um termo melhor para Tree?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCollapseAllRows.java:41
 msgid "TT|Collapse All Tree Rows"
 msgstr "Comprimir Todas as Linhas de Arvore de Compnentes ('Tree')"
@@ -7516,12 +7440,14 @@ msgid "TT|Import entire project from an XML file"
 msgstr "Importar projeto inteiro de um arquivo XML"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionInsertBiophysicalFactor.java:44
+#, fuzzy
 msgid "TT|Insert a Biophysical Factor"
-msgstr ""
+msgstr "Inserir um Fator Contribuinte"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionInsertBiophysicalResult.java:43
+#, fuzzy
 msgid "TT|Insert a Biophysical Result"
-msgstr ""
+msgstr "Inserir um Resultado Intermediário"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionInsertContributingFactor.java:43
 msgid "TT|Insert a Contributing Factor"
@@ -7615,7 +7541,6 @@ msgstr "Colar o conteudo da área de transferência ('clipboard')"
 msgid "TT|Paste the clipboard without links"
 msgstr "Colar o conteudo da área de transferência ('clipboard') sem links"
 
-# Leo, seria mais claro dizer "Enviar a visão atual para uma impressora"???
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionPrint.java:40
 msgid "TT|Print the current view to a printer"
 msgstr "Imprimir a Visão atual para uma impressora"
@@ -8196,7 +8121,6 @@ msgstr ""
 "Provavelmente a estratégia não contribuirá de uma forma significante à "
 "mitigação de uma ameaça ou à restauração de um alvo."
 
-# I don't understand the context of then by; thus the Portuguese doesn't make sense.
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/AnalysisLevelsEditorComponent.java:65
 msgid "Then by"
 msgstr "Depois por"
@@ -8334,6 +8258,7 @@ msgstr ""
 "Realize a migração automática?"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:704
+#, fuzzy
 msgid ""
 "This project was saved using an older version of Miradi. Before it can be "
 "opened, it needs to be migrated \n"
@@ -8345,6 +8270,10 @@ msgid ""
 "\n"
 "Do you wish to proceed with the migration?"
 msgstr ""
+"Este projeto foi criado por uma versão mais velha de Miradi; assim precisa "
+"ser migrado ao formato de dados atual antes de poder ser aberto.  Uma cópia "
+"de segurança será salvo primeiro, caso que qualquer coisa der errado.  "
+"Realize a migração automática?"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteResourceDoer.java:66
 msgid "This resource has been assigned work in the Work Plan"
@@ -8439,7 +8368,6 @@ msgstr "Resumo das classificações da ameaça"
 msgid "Threat: %s"
 msgstr "Ameaça: %s"
 
-# The English is missing a space.
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:313
 msgid "ThreatReduction Result"
 msgstr "Resultado de Redução de Ameaça"
@@ -8481,12 +8409,14 @@ msgid "Title|Audiences"
 msgstr "Públicos"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewBiophysicalFactorPropertiesPanel.java:39
+#, fuzzy
 msgid "Title|Biophysical Factor Properties"
-msgstr ""
+msgstr "Propriedades de Fatores"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewBiophysicalResultPropertiesPanel.java:39
+#, fuzzy
 msgid "Title|Biophysical Result Properties"
-msgstr ""
+msgstr "Propriedades de Resultados Intermediários"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/categoryOne/BudgetCategoryOnePropertiesPanel.java:38
 msgid "Title|Budget Category One Properties"
@@ -8541,7 +8471,6 @@ msgstr "Propriedades de Fatores"
 msgid "Title|Filter by Resource(s)"
 msgstr "Filtrar por Recurso(s)"
 
-# I assume this is arrow connections and not links to websites.
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/DiagramCorruptionDetector.java:172
 msgid "Title|Found Corrupted Links"
 msgstr "Ligações Corruptas encontradas"
@@ -8888,7 +8817,6 @@ msgstr "Não Especificado"
 msgid "Updating locations..."
 msgstr "Atualizando localizações"
 
-#  What is this? other&apos;s
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:43
 msgid "Use other&apos;s communication products"
 msgstr "Utilizar produtos de comunicação de outros"
@@ -8982,7 +8910,6 @@ msgstr "Ver todas as metas"
 msgid "Vision"
 msgstr "Visão"
 
-# Leo, I included here the entire description agreed upon in the translation of the Standards.  We need to discuss if it is okay to translate "view" also as "visão".  Maybe we refer to Vision as "Visão do Futuro"?
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:134
 msgid ""
 "Vision - A general summary of the desired state or ultimate condition of the "
@@ -9118,12 +9045,10 @@ msgstr ""
 msgid "When - %s"
 msgstr "Quando - %s"
 
-# Not sure of the meaning in English here.  Please help.
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/legacyprojects/migrations/RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration.java:82
 msgid "When Override was: "
 msgstr "Quando foi Sobreposto (overridden):"
 
-# Please check the use of override & correct translation
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/legacyprojects/migrations/ConvertHighLevelEstimatesIntoAssignments.java:137
 msgid "When Override was: %s"
 msgstr "Quando foi Sobreposto (overridden): %s"
@@ -9154,12 +9079,10 @@ msgstr "Branco"
 msgid "Who"
 msgstr ""
 
-# Check use of override and correct translation
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/legacyprojects/migrations/RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration.java:84
 msgid "Who Override was: "
 msgstr "Quem fez a sobreposição (override):"
 
-# Check use of override and correct translation
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/legacyprojects/migrations/ConvertHighLevelEstimatesIntoAssignments.java:139
 msgid "Who Override was: %s"
 msgstr "Quem fez a sobreposição (override): %s"
@@ -9176,7 +9099,6 @@ msgstr "Informações"
 msgid "Within your Organization Only"
 msgstr "Somente Dentro de sua Organização"
 
-# I don't understand this in English; thus the translation is literal.  Please explain English.
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/SkeletonWizardStep.java:186
 msgid "Wizard load of control failed:"
 msgstr "O carregamento de controle pelo assistente (Wizard) falhou:"
@@ -9342,7 +9264,6 @@ msgstr "um novo projeto do nada"
 msgid "an exported Miradi file (.Miradi, .xmpz2, or .mpz)"
 msgstr ""
 
-# Unclear English
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/NeverShowAgainPanel.java:48
 msgid "it will not be shown. Uncheck it to have Miradi "
 msgstr "Não será exibido.  Desmarcar para ter Miradi"
@@ -9549,22 +9470,18 @@ msgstr "Métodos"
 msgid "FieldLabel|8.IndicatorThresholds|Value Range"
 msgstr "Faixa de Valor"
 
-# What is CS? Conservation Status?
 msgid "FieldLabel|8.MeasurementStatus|CS Rating"
 msgstr "Classificação de Estado de Conservação"
 
 msgid "FieldLabel|8.MeasurementTrend|Trend"
 msgstr "Tendência"
 
-# What is CS? Conservation Status?
 msgid "FieldLabel|8.MeasurementDate|CS Date"
 msgstr "Data de Estado de Conservação"
 
-# Please verify if I have translated the correct items.  Also, what is CS? Conservation Status?
 msgid "FieldLabel|8.MeasurementSummary|CS Label"
 msgstr "Rótulo de Estado de Conservação"
 
-# What is CS? Conservation Status?
 msgid "FieldLabel|8.MeasurementDetail|CS Text"
 msgstr "Texto de Estado de Conservação"
 
@@ -9919,8 +9836,9 @@ msgstr ""
 msgid "FieldLabel|11.TargetMode|Target Mode"
 msgstr "Modo Alvo"
 
+#, fuzzy
 msgid "FieldLabel|11.FactorMode|Factor Mode"
-msgstr ""
+msgstr "Modo Alvo"
 
 msgid "FieldLabel|11.AllThreatClassifications|Threats Addressed"
 msgstr "Ameaças Abordadas"
@@ -10578,7 +10496,6 @@ msgstr "Detalhes"
 msgid "FieldLabel|33.PseudoStressRating|Magnitude"
 msgstr "Magnitude"
 
-# I am translating scope of threats and stresses as "abrangência" to avoid confusion with Project Scope = Escopo
 msgid "FieldLabel|33.Scope|Scope"
 msgstr "Abrangência"
 
@@ -11111,53 +11028,69 @@ msgstr ""
 msgid "FieldLabel|64.Comment|Comments"
 msgstr ""
 
+#, fuzzy
 msgid "FieldLabel|65.BiophysicalFactor|Biophysical Factor"
-msgstr ""
+msgstr "Descrição Física"
 
+#, fuzzy
 msgid "FieldLabel|65.Label|Name"
-msgstr ""
+msgstr "Nome"
 
+#, fuzzy
 msgid "FieldLabel|65.ShortLabel|ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgid "FieldLabel|65.Comments|Comments"
-msgstr ""
+msgstr "Comentários"
 
+#, fuzzy
 msgid "FieldLabel|65.PseudoTagObjectives|Related Objectives"
-msgstr ""
+msgstr "Metas Relacionadas"
 
+#, fuzzy
 msgid "FieldLabel|65.PseudoTagDiagramRefs|Conceptual Model Pages"
-msgstr ""
+msgstr "Páginas de Modelo Conceitual"
 
+#, fuzzy
 msgid "FieldLabel|65.PseudoTagResultsChainDiagramRefs|Results Chains"
-msgstr ""
+msgstr "Cadeias de Resultados"
 
+#, fuzzy
 msgid "FieldLabel|65.Text|Details"
-msgstr ""
+msgstr "Detalhes"
 
+#, fuzzy
 msgid "FieldLabel|65.TaxonomyClassificationContainer|Taxonomies"
-msgstr ""
+msgstr "Classificação Padrão"
 
+#, fuzzy
 msgid "FieldLabel|66.BiophysicalResult|Biophysical Result"
-msgstr ""
+msgstr "Descrição Física"
 
+#, fuzzy
 msgid "FieldLabel|66.Label|Name"
-msgstr ""
+msgstr "Nome"
 
+#, fuzzy
 msgid "FieldLabel|66.ShortLabel|ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgid "FieldLabel|66.Comments|Comments"
-msgstr ""
+msgstr "Comentários"
 
+#, fuzzy
 msgid "FieldLabel|66.PseudoTagDiagramRefs|Conceptual Model Pages"
-msgstr ""
+msgstr "Páginas de Modelo Conceitual"
 
+#, fuzzy
 msgid "FieldLabel|66.PseudoTagResultsChainDiagramRefs|Results Chains"
-msgstr ""
+msgstr "Cadeias de Resultados"
 
+#, fuzzy
 msgid "FieldLabel|66.Text|Details"
-msgstr ""
+msgstr "Detalhes"
 
 msgid ""
 "html|/resources/TNCMiradiHelp.html|  <p>For help with Miradi at The Nature "
@@ -11809,9 +11742,9 @@ msgid ""
 "Information</STRONG>\t\t\t</FONT>\t\t\t&nbsp; \t\t</td>\t\t\t</tr></table></"
 "p><br><HR><H3>About the More Information Pages</H3>The More Information "
 "Pages are context sensitive to the view that you are currently in. As the "
-"name implies, they provide additional material describing the specific step"
-"(s) in the adaptive management cycle as well as links to further reading on "
-"the topic. <br><br><HR><H3>CMP<EM> Open Standards</EM></H3><P>Miradi "
+"name implies, they provide additional material describing the specific "
+"step(s) in the adaptive management cycle as well as links to further reading "
+"on the topic. <br><br><HR><H3>CMP<EM> Open Standards</EM></H3><P>Miradi "
 "software is being developed to assist conservation practitioners to go "
 "through the adaptive management process outlined in the CMP's <EM>Open "
 "Standards for the Practice of Conservation</EM>.&nbsp; You can download a "
@@ -12058,9 +11991,9 @@ msgid ""
 "Information</STRONG>\t\t\t</FONT>\t\t\t&nbsp; \t\t</td>\t\t\t</tr></table></"
 "p><br><HR><H3>About the More Information Pages</H3>The More Information "
 "Pages are context sensitive to the view that you are currently in. As the "
-"name implies, they provide additional material describing the specific step"
-"(s) in the adaptive management cycle as well as links to further reading on "
-"the topic. <br><br><HR><H3>CMP<EM> Open Standards</EM></H3><P>Miradi "
+"name implies, they provide additional material describing the specific "
+"step(s) in the adaptive management cycle as well as links to further reading "
+"on the topic. <br><br><HR><H3>CMP<EM> Open Standards</EM></H3><P>Miradi "
 "software is being developed to assist conservation practitioners to go "
 "through the adaptive management process outlined in the CMP's <EM>Open "
 "Standards for the Practice of Conservation</EM>.&nbsp; You can download a "
@@ -15600,12 +15533,12 @@ msgid ""
 "the <code class='toolbarbutton'>&lt;Work&nbsp;Plan&gt;</code> tab and select "
 "the item in the project tree for the strategy, indicator, activity/method or "
 "task that you want to focus on. <p>You can either double click the blue Who "
-"cell to open a pop up where you can then click the check box for the resource"
-"(s) you want to add, or select the <b>Assignments</b> tab in the lower panel "
-"and click the <code class='toolbarbutton'>&lt;Assign&nbsp;Resource&gt;</"
-"code> button and select the resource from the drop down menu. </p> <p>You "
-"can add multiple resources if necessary. You can also use the <code "
-"class='toolbarbutton'>&lt;Leader&gt;</code> button on the <code "
+"cell to open a pop up where you can then click the check box for the "
+"resource(s) you want to add, or select the <b>Assignments</b> tab in the "
+"lower panel and click the <code class='toolbarbutton'>&lt;Assign&nbsp;"
+"Resource&gt;</code> button and select the resource from the drop down menu. "
+"</p> <p>You can add multiple resources if necessary. You can also use the "
+"<code class='toolbarbutton'>&lt;Leader&gt;</code> button on the <code "
 "class='toolbarbutton'>&lt;Who&nbsp;and&nbsp;When&gt;</code> sidetab to "
 "assign one resource to be the leader; the designated leader appears first in "
 "the upper column with an asterisk (*) by their name.</p><p>Once you have "
@@ -15912,37 +15845,37 @@ msgid ""
 "Swanson (WWF)   <LI>Karl Didier, Lynn Duda, Josh Ginsberg, Jonathan Palmer, "
 "John Robinson, David Wilkie (Wildlife Conservation Society)   <LI>Paul "
 "Butler, Amielle DeWan, Megan Hill, Brett Jenks, Peter Vaughn (Rare "
-"Conservation)   <LI>Richard Margoluis, Nick Salafsky (Foundations of Success)"
-"</LI>  <LI>Matt Deniston (Sitka Technology Group)</LI></UL><HR><H3>Funding</"
-"H3><UL>  <LI>Gordon &amp; Betty Moore Foundation (special thanks to Dan "
-"Martin, Jason Cole, Rachel Strader)   <LI>William &amp; Flora Hewlett "
-"Foundation (special thanks to Rhea Suh, Hal Harvey)   <LI>David &amp; "
-"Lucille Packard Foundation (special thanks to Kristin Sherwood, Kai Lee, "
-"Walt Reid, Gale Berkowitz, Bernd Cordes, Jim Leape)   <LI>Leo Model "
-"Foundation (special thanks to Allen Model)   <LI>The Nature Conservancy   "
-"<LI>WWF   <LI>Wildlife Conservation Society   <LI>Rare Conservation   "
-"<LI>Foundations of Success   <LI>National Audubon Society</LI></"
-"UL><HR><H3>Translations</H3><UL>  <LI>Rare Conservation (Chinese)</LI>  "
+"Conservation)   <LI>Richard Margoluis, Nick Salafsky (Foundations of "
+"Success)</LI>  <LI>Matt Deniston (Sitka Technology Group)</LI></"
+"UL><HR><H3>Funding</H3><UL>  <LI>Gordon &amp; Betty Moore Foundation "
+"(special thanks to Dan Martin, Jason Cole, Rachel Strader)   <LI>William "
+"&amp; Flora Hewlett Foundation (special thanks to Rhea Suh, Hal Harvey)   "
+"<LI>David &amp; Lucille Packard Foundation (special thanks to Kristin "
+"Sherwood, Kai Lee, Walt Reid, Gale Berkowitz, Bernd Cordes, Jim Leape)   "
+"<LI>Leo Model Foundation (special thanks to Allen Model)   <LI>The Nature "
+"Conservancy   <LI>WWF   <LI>Wildlife Conservation Society   <LI>Rare "
+"Conservation   <LI>Foundations of Success   <LI>National Audubon Society</"
+"LI></UL><HR><H3>Translations</H3><UL>  <LI>Rare Conservation (Chinese)</LI>  "
 "<LI>Marina Gomei (French)</LI>  <LI>Felix Cybulla (German)</LI>  <LI>Rare "
 "Conservation (Indonesian)</LI>  <LI>Saul Ciriaco (Italian)</LI>    "
 "<LI>Tuguldur Enkhtsetseg (Mongolian)</LI>  <LI>Lou Ann Dietz (Portugese)</"
-"LI>  <LI>Rare Conservation (Spanish)</LI>  <LI>Yaroslav Dovhanych (Ukrainian)"
-"</LI></UL> <p>Please contact the Miradi team if you would like to help "
-"generate a translation in your language.</p> <HR><H3>Content Drawn From</"
-"H3><UL>  <LI>CMP's <EM>Open Standards for the Practice of Conservation</EM></"
-"LI>   <LI>Conservation Coaches Network (CCNet) Training Materials</LI>     "
-"<LI>FOS's <EM>Measures of Success</EM> and Training Materials</LI>   <LI>The "
-"Nature Conservancy's <EM>5-S</EM> and <EM>Conservation Action Planning</EM> "
-"Processes and the Efroymson Network Training Materials</LI>   <LI>RARE "
-"Conservation's Training Materials</LI>   <LI>WCS's Living Landscapes Program "
-"and Training Materials</LI>   <LI>WWF's <EM>Project and Programme Standards</"
-"EM> and Training Materials</LI></UL><HR><H3>Technical Contributions Drawn "
-"From</H3><UL>  <LI><STRONG>Third Party Libraries:</STRONG> "
-"BrowserLauncher,   JCalendar, JGraph, JHLabs, Jing, JTreeTable, JarBuilder, "
-"install4j, JOrtho   <LI><STRONG>Development Tools:</STRONG> Ant, CVS, "
-"Eclipse, Java, JUnit, NSIS, POEdit, Ruby, Subversion   <LI><STRONG>Martus:</"
-"STRONG> Benetech's software for human rights groups</LI></UL><P><FONT "
-"size=2>&nbsp;</P></FONT></BODY></HTML>"
+"LI>  <LI>Rare Conservation (Spanish)</LI>  <LI>Yaroslav Dovhanych "
+"(Ukrainian)</LI></UL> <p>Please contact the Miradi team if you would like to "
+"help generate a translation in your language.</p> <HR><H3>Content Drawn "
+"From</H3><UL>  <LI>CMP's <EM>Open Standards for the Practice of "
+"Conservation</EM></LI>   <LI>Conservation Coaches Network (CCNet) Training "
+"Materials</LI>     <LI>FOS's <EM>Measures of Success</EM> and Training "
+"Materials</LI>   <LI>The Nature Conservancy's <EM>5-S</EM> and "
+"<EM>Conservation Action Planning</EM> Processes and the Efroymson Network "
+"Training Materials</LI>   <LI>RARE Conservation's Training Materials</LI>   "
+"<LI>WCS's Living Landscapes Program and Training Materials</LI>   <LI>WWF's "
+"<EM>Project and Programme Standards</EM> and Training Materials</LI></"
+"UL><HR><H3>Technical Contributions Drawn From</H3><UL>  <LI><STRONG>Third "
+"Party Libraries:</STRONG> BrowserLauncher,   JCalendar, JGraph, JHLabs, "
+"Jing, JTreeTable, JarBuilder, install4j, JOrtho   <LI><STRONG>Development "
+"Tools:</STRONG> Ant, CVS, Eclipse, Java, JUnit, NSIS, POEdit, Ruby, "
+"Subversion   <LI><STRONG>Martus:</STRONG> Benetech's software for human "
+"rights groups</LI></UL><P><FONT size=2>&nbsp;</P></FONT></BODY></HTML>"
 msgstr ""
 
 msgid "html|/resources/help/AboutEnd.html|</div>"
@@ -16281,8 +16214,8 @@ msgid ""
 "took this Version 1.0 and refined it to meet their needs, developing the "
 "<EM>WWF Project and Programme Standards</EM> shown below.&nbsp;Similarly, "
 "TNC took their 5-S process and refined it to&nbsp;fit the <EM>Open "
-"Standards</EM>, producing the <EM>TNC Conservation Action Planning (CAP)"
-"&nbsp;Approach</EM> shown below. And the WCS Living Landscapes Program "
+"Standards</EM>, producing the <EM>TNC Conservation Action Planning "
+"(CAP)&nbsp;Approach</EM> shown below. And the WCS Living Landscapes Program "
 "developed their own version of the&nbsp;project cycle shown below.&nbsp;The "
 "CMP the evaluated the changes made by WWF, TNC, FOS, WCS&nbsp;and others, "
 "and used them to produce Version 2.0 of the <EM>Open Standards</EM> that "
@@ -27980,12 +27913,6 @@ msgid ""
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
 
-#~ msgid "Identify stresses (optional)"
-#~ msgstr "Identificar estresses (opcional)"
-
-#~ msgid "%1 targets have simple viablity information"
-#~ msgstr "%1 alvos têm informações de viabilidade simples"
-
 #~ msgid ""
 #~ "<HTML>Data exchange between Miradi and ConPro is not available in this "
 #~ "version of Miradi. <BR> It is currently being tested, and should be "
@@ -28013,16 +27940,20 @@ msgstr ""
 #~ "País - Localizado na Visão de Resumo, Aba Localização.  Selecione pelo "
 #~ "menos um país"
 
-# Please verify I have translated correct items
+#~ msgid "Default Mode"
+#~ msgstr "Modo Default (Pre-selecionado)"
+
 #~ msgid "FileFilter|ConPro Miradi Zip (*%s)"
 #~ msgstr "ConPro Miradi Zip (*%s)"
 
-# Please verify I have translated correct items
 #~ msgid "FileFilter|XMPZ (*%s)"
 #~ msgstr "XMPZ (*%s)"
 
 #~ msgid "High/Very-High Threat Chains"
 #~ msgstr "Cadeias de Ameaças Altos/Muito Altos"
+
+#~ msgid "Identify stresses (optional)"
+#~ msgstr "Identificar estresses (opcional)"
 
 #~ msgid "Importing ConPro Data..."
 #~ msgstr "Importando Dados ConPro..."
@@ -28030,18 +27961,15 @@ msgstr ""
 #~ msgid "Importing Miradi Data..."
 #~ msgstr "Importando Dados de Miradi..."
 
-# I don't understand the use of "holder" here thus I left it in English.
 #~ msgid "Indicator Holder"
 #~ msgstr "\"Holder\" de indicador"
 
-# Leo, please check.  Not sure about this translation.
 #~ msgid "Indicator does not have a direct/indirect factor parent. "
 #~ msgstr "O indicador não tem um fator direto/indireto pai."
 
 #~ msgid "Low/Medium/Unrated Threat Chains"
 #~ msgstr "Cadeias de Ameaça Baixo/Médio/Sem classificação"
 
-# I don't understand Holder here  in English.  Please clarify.
 #~ msgid "Objective Holder"
 #~ msgstr "\"Holder\" de Meta"
 
@@ -28101,705 +28029,3 @@ msgstr ""
 
 #~ msgid "Updating ConPro Project Number..."
 #~ msgstr "Atualizando número de Projeto ConPro"
-
-#~ msgid ""
-#~ "Any Indicators or Objectives that were associated to Contributing Factors "
-#~ "or Threats \n"
-#~ "have been moved to the corresponding Threat Reduction Result or "
-#~ "Intermediate Result"
-#~ msgstr ""
-#~ "Quaisquer Indicadores ou Metas que foram associados aos Fatores "
-#~ "Contribuintes ou Ameaças \n"
-#~ " foram movidos ao Resultado de Redução de Ameaça ou Resultado "
-#~ "Imetermediário correspondente."
-
-#~ msgid "Default Mode"
-#~ msgstr "Modo Default (Pre-selecionado)"
-
-#~ msgid "Action|About Benetech"
-#~ msgstr "Sobre Benetech"
-
-#~ msgid ""
-#~ "html|/resources/help/AboutCMP.html|  <!DOCTYPE HTML PUBLIC \"-//W3C//DTD "
-#~ "HTML 4.0 Transitional//EN\"><HTML><HEAD><TITLE></TITLE><STYLE type=text/"
-#~ "css></STYLE></HEAD><BODY><table><tr><td><IMG height=36 alt=\"\" hspace=20 "
-#~ "src=\"images/Umbrella/cmp64.png\" width=64 align=absMiddle border=0></"
-#~ "img></td><td><H2>About The Conservation Measures Partnership</H2></td></"
-#~ "tr></table><HR><P>Biodiversity conservation projects are implemented by "
-#~ "hundreds of international, national and local groups that include "
-#~ "nonprofit organizations, government entities, for-profit companies, and "
-#~ "other actors. The network of funders supporting the work of "
-#~ "conservationists is also quite extensive and includes individual donors, "
-#~ "private foundations, and organizations such as the U.N., World Bank, "
-#~ "bilateral aid organizations, and government bodies at all levels. While "
-#~ "biodiversity conservation practitioners have made significant advances in "
-#~ "recent years, they face several challenges related to the adaptive "
-#~ "management of their projects (see section on adaptive mangement for a "
-#~ "definition of this concept):</P><UL>  <LI><STRONG>Designing and "
-#~ "Implementing Effective Actions</STRONG> – In the   face of growing "
-#~ "threats and limited resources, practitioners need to be able   to "
-#~ "understand the context they are working in, select the actions that "
-#~ "will   give the highest returns on their investments, and implement these "
-#~ "actions in   an effective and efficient fashion.   <LI><STRONG>Measuring "
-#~ "and Documenting Impact</STRONG> – In light of the   increased demand for "
-#~ "accountability among private donors, governments and the   general "
-#~ "public, practitioners need to be able to measure and document the   "
-#~ "effectiveness of their actions. This is a particular challenge because   "
-#~ "conservation projects operate amid tremendous complexity and over long "
-#~ "time   scales. Since most projects have multiple managers and donors that "
-#~ "they report   to, each with their own unique reporting format, this "
-#~ "reporting process also   consumes valuable project staff time and "
-#~ "resources.   <LI><STRONG>Promoting Collaborative Learning</STRONG> – "
-#~ "Meeting the previous   two challenges is hampered by the traditional lack "
-#~ "of collaboration among the   major practitioners. This absence of "
-#~ "cooperation has led to the proliferation   of multiple planning "
-#~ "frameworks and conservation terminologies that have made   communication "
-#~ "between groups even more difficult. As a result, there is   significant "
-#~ "duplication of effort among practitioners and little knowledge   "
-#~ "regarding which practices are most effective and which are not. "
-#~ "Practitioners   need to be able to learn from their successes and "
-#~ "failures and to share what   they have learned with others.</LI></"
-#~ "UL><P>Recognizing these problems and their adverse impact on the practice "
-#~ "of conservation, a number of leading conservation organizations have come "
-#~ "together to form a consortium known as the Conservation Measures "
-#~ "Partnership (CMP). To achieve its goal of improving the practice of "
-#~ "conservation, the CMP is developing and promoting common standards and "
-#~ "tools for planning, implementation and measuring conservation impact. "
-#~ "Each organization within CMP has biodiversity conservation as its primary "
-#~ "goal, has a focus on field-based conservation actions and is working to "
-#~ "develop better approaches to project design, management, and assessment. "
-#~ "CMP Core Members include: the African Wildlife Foundation (AWF), The "
-#~ "Nature Conservancy (TNC), the Wildlife Conservation Society (WCS) and the "
-#~ "Worldwide Fund for Nature/ World Wildlife Fund (WWF). Collaborating "
-#~ "Members include: the Cambridge Conservation Forum, Conservation "
-#~ "International (CI),&nbsp;Enterprise Works Worldwide, Foundations of "
-#~ "Success, IUCN, RARE Center, and the World Commission on Protected Areas. "
-#~ "</P><P>The CMP members have come together to work on issues related to "
-#~ "project design, impact assessment, and learning because they believe "
-#~ "that, collectively, they have a greater chance of making significant "
-#~ "progress on designing and implementing effective adaptive management "
-#~ "systems. More information about the CMP and its initiatives is available "
-#~ "at <A href=\"http://www.conservationmeasures.org\">www."
-#~ "conservationmeasures.org</A></P><P>&nbsp;</P>"
-#~ msgstr ""
-#~ "html|/resources/help/AboutCMP.html|  <!DOCTYPE HTML PUBLIC \"-//W3C//DTD "
-#~ "HTML 4.0 Transitional//EN\"><HTML><HEAD><TITLE></TITLE><STYLE type=text/"
-#~ "css></STYLE></HEAD><BODY><table><tr><td><IMG height=36 alt=\"\" hspace=20 "
-#~ "src=\"images/Umbrella/cmp64.png\" width=64 align=absMiddle border=0></"
-#~ "img></td><td><H2>About The Conservation Measures Partnership</H2></td></"
-#~ "tr></table><HR><P>Biodiversity conservation projects are implemented by "
-#~ "hundreds of international, national and local groups that include "
-#~ "nonprofit organizations, government entities, for-profit companies, and "
-#~ "other actors. The network of funders supporting the work of "
-#~ "conservationists is also quite extensive and includes individual donors, "
-#~ "private foundations, and organizations such as the U.N., World Bank, "
-#~ "bilateral aid organizations, and government bodies at all levels. While "
-#~ "biodiversity conservation practitioners have made significant advances in "
-#~ "recent years, they face several challenges related to the adaptive "
-#~ "management of their projects (see section on adaptive mangement for a "
-#~ "definition of this concept):</P><UL>  <LI><STRONG>Designing and "
-#~ "Implementing Effective Actions</STRONG> – In the   face of growing "
-#~ "threats and limited resources, practitioners need to be able   to "
-#~ "understand the context they are working in, select the actions that "
-#~ "will   give the highest returns on their investments, and implement these "
-#~ "actions in   an effective and efficient fashion.   <LI><STRONG>Measuring "
-#~ "and Documenting Impact</STRONG> – In light of the   increased demand for "
-#~ "accountability among private donors, governments and the   general "
-#~ "public, practitioners need to be able to measure and document the   "
-#~ "effectiveness of their actions. This is a particular challenge because   "
-#~ "conservation projects operate amid tremendous complexity and over long "
-#~ "time   scales. Since most projects have multiple managers and donors that "
-#~ "they report   to, each with their own unique reporting format, this "
-#~ "reporting process also   consumes valuable project staff time and "
-#~ "resources.   <LI><STRONG>Promoting Collaborative Learning</STRONG> – "
-#~ "Meeting the previous   two challenges is hampered by the traditional lack "
-#~ "of collaboration among the   major practitioners. This absence of "
-#~ "cooperation has led to the proliferation   of multiple planning "
-#~ "frameworks and conservation terminologies that have made   communication "
-#~ "between groups even more difficult. As a result, there is   significant "
-#~ "duplication of effort among practitioners and little knowledge   "
-#~ "regarding which practices are most effective and which are not. "
-#~ "Practitioners   need to be able to learn from their successes and "
-#~ "failures and to share what   they have learned with others.</LI></"
-#~ "UL><P>Recognizing these problems and their adverse impact on the practice "
-#~ "of conservation, a number of leading conservation organizations have come "
-#~ "together to form a consortium known as the Conservation Measures "
-#~ "Partnership (CMP). To achieve its goal of improving the practice of "
-#~ "conservation, the CMP is developing and promoting common standards and "
-#~ "tools for planning, implementation and measuring conservation impact. "
-#~ "Each organization within CMP has biodiversity conservation as its primary "
-#~ "goal, has a focus on field-based conservation actions and is working to "
-#~ "develop better approaches to project design, management, and assessment. "
-#~ "CMP Core Members include: the African Wildlife Foundation (AWF), The "
-#~ "Nature Conservancy (TNC), the Wildlife Conservation Society (WCS) and the "
-#~ "Worldwide Fund for Nature/ World Wildlife Fund (WWF). Collaborating "
-#~ "Members include: the Cambridge Conservation Forum, Conservation "
-#~ "International (CI),&nbsp;Enterprise Works Worldwide, Foundations of "
-#~ "Success, IUCN, RARE Center, and the World Commission on Protected Areas. "
-#~ "</P><P>The CMP members have come together to work on issues related to "
-#~ "project design, impact assessment, and learning because they believe "
-#~ "that, collectively, they have a greater chance of making significant "
-#~ "progress on designing and implementing effective adaptive management "
-#~ "systems. More information about the CMP and its initiatives is available "
-#~ "at <A href=\"http://www.conservationmeasures.org\">www."
-#~ "conservationmeasures.org</A></P><P>&nbsp;</P>"
-
-#~ msgid ""
-#~ "This file cannot be imported because it is a newer format than this "
-#~ "version of Miradi supports. <br>Please make sure you are running the "
-#~ "latest version of Miradi. If you are already <br>running the latest "
-#~ "Miradi, either wait for a newer version that supports this format, <br>or "
-#~ "re-export the project to an older (supported) format."
-#~ msgstr ""
-#~ "Este arquivo não pode ser importado porque é um formato mais novo do que "
-#~ "esta versão de Miradi suporta. <br>Por favor verifique que está "
-#~ "executando a última versão de Miradi.  Se já estiver executando a última "
-#~ "versão de Miradi, ou espere por uma versão novo que suporta este formato, "
-#~ "<br> ou re-exportar o projeto para um formato mais velho (suportado)."
-
-#~ msgid "Export Project (BETA)"
-#~ msgstr "Exportar Projeto (BETA)"
-
-#~ msgid ""
-#~ "Diagram View - Indicators explicitly linked to conservation outcomes "
-#~ "(goals) and intermediate results (objectives)"
-#~ msgstr ""
-#~ "Visão Diagrama - Indicadores explicitamente ligados aos resultados de "
-#~ "conservação (objetivos) e aos resultados intermediários (metas)"
-
-#~ msgid ""
-#~ "Diagram View - Targets and Target Goals for both biodiversity and human "
-#~ "well-being targets"
-#~ msgstr ""
-#~ "Visão Diagrama - Alvos e Objetivos para alvos de biodiversidade tanto "
-#~ "como alvos de bem estar humano"
-
-#~ msgid ""
-#~ "Results Chain diagrams for entering intermediate results linking "
-#~ "strategies to targets. Text field for alternative or supplemental "
-#~ "narrative description of results chain diagrams (available via right-"
-#~ "click menu on all diagrams - Diagram Properties). Objectives field for "
-#~ "specifying measurable desired results."
-#~ msgstr ""
-#~ "Diagramas de Cadeias de Resultados para inserir resultados intermediários "
-#~ "que ligam estratégias a alvos.  Campo de texto para descrição narrativa "
-#~ "alternativa ou complementar dos diagramas de cadeias de resultados "
-#~ "(disponível via o menu de clique direito em todos os diagramas - "
-#~ "Propriedades de Diagramas.  Campo de Metas para especificar resultados "
-#~ "mensuráveis desejados."
-
-#~ msgid ""
-#~ "Work Plan View - Flexible management of work planning (Strategies, "
-#~ "Activities, and Tasks with who and when information) and budget "
-#~ "information including work effort, expenses, and funding sources."
-#~ msgstr ""
-#~ "Visão de Plano de Trabalho - Gestão flexível do planejamento de trabalho "
-#~ "(Estratégias, Atividades, e Tarefas com Informações de quem e quando e "
-#~ "informações do orçamento, inclusive esforço de trabalho, despesas, e "
-#~ "fontes de financiamento."
-
-#~ msgid "Assigned Resources Only"
-#~ msgstr "Somente Recursos Designados"
-
-#~ msgid "FieldLabel|40.ProjectPlaceTypes|Project Types"
-#~ msgstr "Tipos de Projetos"
-
-#~ msgid "FieldLabel|40.OrganizationalPriorities|Organizational Priorities"
-#~ msgstr "Prioridades Organizacionais"
-
-#~ msgid "FieldLabel|40.MakingTheCase|Making the Case"
-#~ msgstr "Defendendo"
-
-#~ msgid "FieldLabel|40.CapacityAndFunding|Capacity and Funding"
-#~ msgstr "Capacidade e Financiamento"
-
-#~ msgid "Action|Table|Expand To Goal"
-#~ msgstr "Expandir ao Objetivo"
-
-#~ msgid "TT|Expand To Goal"
-#~ msgstr "Expandir ao Objetivo"
-
-#~ msgid "FieldLabel|8.FutureStatusDetail|Details"
-#~ msgstr "Detalhes"
-
-#~ msgid "FieldLabel|8.FutureStatusSummary|Future Value"
-#~ msgstr "Valor Futuro"
-
-#~ msgid "FieldLabel|8.FutureStatusDate|Future Date"
-#~ msgstr "Data Futura"
-
-#~ msgid "FieldLabel|8.FutureStatusRating|Rating"
-#~ msgstr "Classificação"
-
-#~ msgid "FieldLabel|8.FutureStatusComment|Comments"
-#~ msgstr "Comentários"
-
-#~ msgid "Desired Future Value"
-#~ msgstr "Valor Futuro Desejado"
-
-#~ msgid "Desired Value/Status"
-#~ msgstr "Valor/Estado Desejado"
-
-#~ msgid "label|Error"
-#~ msgstr "Erro"
-
-#~ msgid "Action|Manage|Delete Measurement"
-#~ msgstr "apagar Medida"
-
-#~ msgid "TT|Delete a Measurement"
-#~ msgstr "Apagar uma Medida"
-
-#~ msgid ""
-#~ "A backup archive for this project already exists.Continuing with this "
-#~ "migration will replace the existing backup with a new copy.It is probably "
-#~ "safe to do this, unless an earlier migration attempt failed."
-#~ msgstr "Um arquivo de backup para este projeto já existe"
-
-# Please verify that I have translated the correct items.
-# Leo, please verify that my translation is clear!
-#~ msgid ""
-#~ "html|/resources/ThreatRatingExplanationOfStressBasedCalculation.html|  "
-#~ "<html><h3>Explanation of How Target-Threat Ratings Are Calculated (Stress "
-#~ "Based Mode)</h3><p>In stress based mode, Scope and Severity ranks are "
-#~ "combined to create Threat Magnitude.  Irreversibility is combined with "
-#~ "Contribution to create the Source of Stress Ranking, and then Threat "
-#~ "Magnitude and Source of Stress Rankings are combined to create the "
-#~ "Summary Stress Rating.</p><p><b>Stress Ranking (Threat Magnitude):</b> "
-#~ "Each stress is given a rank for Severity and Scope. A rule-based "
-#~ "procedure is then used to combine the rankings for the Scope and Severity "
-#~ "variables to get a ranking of Threat Magnitude.  Under these rules, if a "
-#~ "threat is rated 'low' on either variable, then the magnitude is 'low' "
-#~ "overall. </p><img src=\"images/StressBasedRules1.png\"  width='544' "
-#~ "height='184'><p><b>Source of Stress Ranking:</b> A source rank is the "
-#~ "calculated by combining the rankings for Contribution and Irreversibility "
-#~ "as shown in the matrix below.</p><img src=\"images/StressBasedRules2.png"
-#~ "\"  width='546' height='185'><p><b>Combining Stress and Source Ranks:</b> "
-#~ "The source rank calculated from the first matrix is then combined with "
-#~ "the stress rank which was calculated from the Stress Ranking matrix as "
-#~ "shown in the matrix below.</p><img src=\"images/StressBasedRules3.png\"  "
-#~ "width='546' height='185'></html>"
-#~ msgstr ""
-#~ "<html><h3>Explicação do Cálculo de Classificações de Alvo-Ameaça (Modo "
-#~ "Baseado em Estresse)</h3><p>No modo baseado em estresse, as "
-#~ "classificações de Abrangência e Severidade são combinados para criar a "
-#~ "Magnitude da Ameaça.  A classificação de irreversibilidade é combinado "
-#~ "com a classificação de Contribuição para criar a Classificação da Fonte "
-#~ "de Estresse, e então as Classificações de Magnitude da Ameaça e Fonte de "
-#~ "Estresse são combinados para criar a Classificação Resumo da Estresse.</"
-#~ "p><p><b>Classificação de Estresse (Magnitude da Ameaça):</b> Cada "
-#~ "estresse recebe uma classificação para Severidade e Abrangência.  Um "
-#~ "procedimento baseado em regras é então usado para combinar as "
-#~ "classificações dos variáveis para Abrangência e Severidade para obter uma "
-#~ "classificação de Magnitude da Ameaça.  Conforme estas regras, se uma "
-#~ "ameaça for classificada como 'baixo' para qualquer um dos dois variáveis, "
-#~ "a magnitude é 'baixo'.  </p><img src=\"images/StressBasedRules1.png\"  "
-#~ "width='544' height='184'><p><b>Classificação Fonte de Estresse:</b> Uma "
-#~ "classificação da fonte é calculado pela combinação das classificações "
-#~ "para Contribuição e Irreversibilidade conforme apresentado na matriz "
-#~ "abaixo.</p><img src=\"images/StressBasedRules2.png\"  width='546' "
-#~ "height='185'><p><b>Combinando as Classificações de Estresse e Fonte:</b> "
-#~ "A classificação de fonte calculada da primeira matriz é então combinada "
-#~ "com a classificação da estresse que foi calculada da matriz de "
-#~ "Classificação de Estresse conforme aparece na matriz abaixo.</p><img src="
-#~ "\"images/StressBasedRules3.png\"  width='546' height='185'></html>"
-
-#~ msgid ""
-#~ "html|/resources/FteDaysPerYearDialogExplanation.html|<p>Enter a value "
-#~ "below to assign a fraction of a Full Time Employee (FTE) for the selected "
-#~ "work item and time period. Miradi will use the fraction to calculate the "
-#~ "appropriate number of days using the FTE Days Per Year value shown below. "
-#~ "The FTE Days Per Year value is set in Work Plan Settings under the "
-#~ "Planning tab in the Summary view.</p>"
-#~ msgstr ""
-#~ "<p>Insira um valor a baixo para designar uma fração de um Empregado Tempo "
-#~ "Integral (ETI) para o item de trabalho e período de tempo selecionados.  "
-#~ "Miradi utilizará esta fração para calcular o número de dias utilizando o "
-#~ "valor de Dias de ETI Por Ano conforme aparece abaixo.  O valor de Dias de "
-#~ "ETI Por Ano é configurado na Configuração do Plano de Trabalho sob a aba "
-#~ "Planejamento na visão de Resumo.</p>"
-
-# Will Miradi have someone at TNC@miradi.org who can deal with Portuguese?
-#~ msgid ""
-#~ "html|/resources/NextStepAfterCpmzImport.html|<ol><li>Your ConPro project "
-#~ "has been successfully imported. You can now continue to work on your "
-#~ "project in Miradi. You may wish to start by reviewing the information in "
-#~ "the summary view and then cleaning up your conceptual model diagrams and "
-#~ "building new result chain diagrams.</li><li>Miradi has created separate "
-#~ "draft conceptual model diagrams for each conservation target plus one "
-#~ "diagram showing “All on One Page”.  Please note that there are checkboxes "
-#~ "in the Control Bar for turning “Tags” on/off to filter the contents of "
-#~ "the diagrams by overall threat rank.</li><li>Short animated, narrated "
-#~ "Miradi tutorials are available at: <a href='http://elearn.tnc.org/cap/"
-#~ "miradi/player.html'>http://elearn.tnc.org/cap/miradi/player.html<a>.  "
-#~ "Tutorials 46-50 provide guidance specific to ConPro-Miradi data exchanges."
-#~ "</li><li>Go to <a href='http://conservationgateway.org/Miradi'>http://"
-#~ "conservationgateway.org/Miradi</a>  for more details about the import "
-#~ "process including, in particular, how information from various ConPro "
-#~ "data fields are handled in Miradi.</li><li>If you have any problems or "
-#~ "suggestions as to ways to improve this import process, please contact us "
-#~ "at <a href='mailto:TNC@miradi.org'>TNC@miradi.org</a>.</li></ol>"
-#~ msgstr ""
-#~ "<ol><li>A importação de seu projeto de ConPro foi conclluida com sucesso. "
-#~ "Agora pode continuar a trabalhar no seu projeto em Miradi.  Pode querer "
-#~ "começar por revisar as informações na visão de resumo e depois arrumar "
-#~ "seus diagramas de modelo conceitual e construir diagramas novos de "
-#~ "cadeias de resultados.</li><li>Miradi criou diagramas de rascunho de "
-#~ "modelos conceituais separados para cada alvo de conservação além de um "
-#~ "diagrama que apresenta \"Todos em Uma Só Página\".  Por favor note que "
-#~ "tem campos de seleção (checkboxes) na Barra de Contole que ativam/"
-#~ "desativam \"Tags\" para filtrar o conteudo dos diagramas pela "
-#~ "classificação total de ameaça.</li><li>Breves tutoriais animados e "
-#~ "narrados são disponíveis no site: <a href='http://elearn.tnc.org/cap/"
-#~ "miradi/player.html'>http://elearn.tnc.org/cap/miradi/player.html<a>.   Os "
-#~ "tutoriais 46-50 fornecem orientações específicas para o intercâmbio de "
-#~ "dados ConPro-Miradi.</li><li>Veja <a href='http://conservationgateway.org/"
-#~ "Miradi'>http://conservationgateway.org/Miradi</a>  para mais detalhes "
-#~ "sobre o processo de importação inclusive, em particular, como informações "
-#~ "de vários campos de dados de ConPro são tratados em Miradi.</li><li>Se "
-#~ "tiver problemas ou sugestões para melhorar o processo de importação, por "
-#~ "favor nos contate no e-mail <a href='mailto:TNC@miradi.org'>TNC@miradi."
-#~ "org</a>.</li></ol>"
-
-# Please verify that I have translated the correct items.  I am not familiar with html codes.  Please also note that we should include links to the Portuguese Version of the Standards as well as the Portuguese CAP.
-#~ msgid ""
-#~ "html|/resources/views/SummaryView/MoreInfo.html|<p><table>\t<tr>\t"
-#~ "\t<td><IMG height=48 alt=\"\" hspace=20 src=\"icons/info-48.png\" "
-#~ "width=48 align=absMiddle border=0></td>\t\t<td width='20'></td>\t\t<td>\t"
-#~ "\t\t<FONT face=Tahoma color=#000000 size=5 name=\"Tahoma\">\t\t\t"
-#~ "\t<STRONG>More Information</STRONG>\t\t\t</FONT>\t\t\t&nbsp;\t\t</td>\t\t"
-#~ "\t</tr></table></p><br><HR><H3>About the More Information Pages</H3>The "
-#~ "More Information Pages are context sensitive to the view that you are "
-#~ "currently in. As the name implies, they provide additional material "
-#~ "describing the specific step(s) in the adaptive management cycle as well "
-#~ "as links to further reading on the topic.<br><br><HR><H3>CMP<EM> Open "
-#~ "Standards</EM></H3><P>Miradi software is being developed to assist "
-#~ "conservation practitioners to go through the adaptive management process "
-#~ "outlined in the CMP's <EM>Open Standards for the Practice of "
-#~ "Conservation</EM>.&nbsp; You can download a copy of the latest version at:"
-#~ "</P><BLOCKQUOTE dir=ltr style=\"MARGIN-RIGHT: 0px\">  <P>CMP. 2008. Open "
-#~ "Standards for the Practice of   Conservation, v 2.0.<BR>&nbsp;&nbsp;&nbsp;"
-#~ "&nbsp; <A   href=\"http://www.conservationmeasures.org/wp-content/"
-#~ "uploads/2010/04/CMP_Open_Standards_Version_2.0.pdf\">http://www."
-#~ "conservationmeasures.org/wp-content/uploads/2010/04/"
-#~ "CMP_Open_Standards_Version_2.0.pdf</A></P></BLOCKQUOTE><P>Many of the CMP "
-#~ "members also have their own version of the standards as well as specific "
-#~ "guidance materials for many of the steps as shown below.</"
-#~ "P><br><HR><H3>The Nature Conservancy (TNC)</H3><BLOCKQUOTE dir=ltr style="
-#~ "\"MARGIN-RIGHT: 0px\">  <P>TNC.&nbsp;2005.&nbsp; <EM>Conservation Action "
-#~ "Planning: Developing   Strategies, Taking Action, and Measuring Success "
-#~ "at Any Scale. Overview of   Basic Practices.&nbsp;<BR></EM>&nbsp;&nbsp;"
-#~ "&nbsp;&nbsp;&nbsp;<A   href=\"http://conserveonline.org/workspaces/"
-#~ "cbdgateway/cap/resources/1/TNC_CAP_Basic_Practices.pdf/download\">http://"
-#~ "conserveonline.org/workspaces/cbdgateway/cap/resources/1/"
-#~ "TNC_CAP_Basic_Practices.pdf/download</A></P>  <P>Extensive guidance "
-#~ "materials are also available   at:<BR>&nbsp;&nbsp;&nbsp;&nbsp; <A   href="
-#~ "\"http://conserveonline.org/workspaces/cbdgateway/cap/resources\">http://"
-#~ "conserveonline.org/workspaces/cbdgateway/cap/resources</A>&nbsp;</P></"
-#~ "BLOCKQUOTE><br><HR><H3>Wildlife Conservation Society (WCS)</"
-#~ "H3><BLOCKQUOTE dir=ltr style=\"MARGIN-RIGHT: 0px\">  <P>Extensive "
-#~ "guidance materials are available at:<BR>&nbsp;&nbsp;&nbsp;&nbsp;   <A   "
-#~ "href=\"http://wcslivinglandscapes.com/\">http://wcslivinglandscapes.com/</"
-#~ "A></P></BLOCKQUOTE><br><HR><H3 dir=ltr>WWF</H3><BLOCKQUOTE dir=ltr style="
-#~ "\"MARGIN-RIGHT: 0px\">  <P dir=ltr>WWF. 2006. <EM>WWF Standards of "
-#~ "Project and Programme   Management.<BR></EM>&nbsp;&nbsp;&nbsp;&nbsp; <A   "
-#~ "href=\"http://www.panda.org/standards/complete\">http://www.panda.org/"
-#~ "standards/complete</A></P>  <P dir=ltr>Extensive guidance materials are "
-#~ "also available   at:<BR>&nbsp;&nbsp;&nbsp;&nbsp; <A   href=\"http://www."
-#~ "panda.org/standards\">www.panda.org/standards</A> </P></"
-#~ "BLOCKQUOTE><br><HR><H3 dir=ltr>Foundations of Success (FOS)</"
-#~ "H3><BLOCKQUOTE dir=ltr style=\"MARGIN-RIGHT: 0px\">  <P>Margoluis, R., "
-#~ "and N. Salafsky. 1998. <EM>Measures of Success: Designing,   Managing, "
-#~ "and Monitoring Conservation and Development Projects. </EM>Island   "
-#~ "Press, Washington, DC.<BR>&nbsp;&nbsp;&nbsp;&nbsp; </FONT><A   href="
-#~ "\"http://islandpress.org\"><U><FONT   color=#0000ff>http://islandpress."
-#~ "org</U></FONT></A></P>  <P>Extensive guidance materials are available in "
-#~ "the resources&nbsp;section   of:<BR>&nbsp;&nbsp;&nbsp;&nbsp; <A   href="
-#~ "\"http://fosonline.org\">http://fosonline.org</A></P></BLOCKQUOTE>"
-#~ msgstr ""
-#~ "<p><table>\t<tr>\t\t<td><IMG height=48 alt=\"\" hspace=20 src=\"icons/"
-#~ "info-48.png\" width=48 align=absMiddle border=0></td>\t\t<td width='20'></"
-#~ "td>\t\t<td>\t\t\t<FONT face=Tahoma color=#000000 size=5 name=\"Tahoma\">\t"
-#~ "\t\t\t<STRONG>Mais Informações</STRONG>\t\t\t</FONT>\t\t\t&nbsp;\t\t</td>"
-#~ "\t\t\t</tr></table></p><br><HR><H3>Sobre as Páginas de Mais Informações</"
-#~ "H3>As Páginas de Mais Infomações são sensíveis ao contexto da visão em "
-#~ "que se encontra atualmente.  Como o nome implica, elas fornecem materiais "
-#~ "adicionais que descrevem o(s) passo(s) específico(s) do cíclo de gestão "
-#~ "adaptativa bem como links a artigos maiores sobre o tópico."
-#~ "<br><br><HR><H3>CMP<EM> Padrões Abertos</EM></H3><P>O software Miradi  "
-#~ "está sendo desenvolvido para ajudar os profissionais de conservação a "
-#~ "passarem pelo processo de gestão adaptativa descrito no documento "
-#~ "<EM>Padrões Abertos para a Prática da Conservação da Conservation "
-#~ "Measures Partnership (CMP)</EM>.&nbsp; Pode fazer download de uma cópia "
-#~ "da última versão no site:</P><BLOCKQUOTE dir=ltr style=\"MARGIN-RIGHT: 0px"
-#~ "\">  <P>CMP. 2008. Padrões Abertos para a Prática de Conservação, v 2.0."
-#~ "<BR>&nbsp;&nbsp;&nbsp;&nbsp; <A   href=\"http://www.conservationmeasures."
-#~ "org/wp-content/uploads/2010/04/CMP_Open_Standards_Version_2.0.pdf"
-#~ "\">http://www.conservationmeasures.org/wp-content/uploads/2010/04/"
-#~ "CMP_Open_Standards_Version_2.0.pdf</A></P></BLOCKQUOTE><P>Vários membros "
-#~ "da CMP também têm sua própria versão dos padrões bem como materias "
-#~ "específicos de orientação para muitos dos passos como apresentado abaixo."
-#~ "</P><br><HR><H3>The Nature Conservancy (TNC)</H3><BLOCKQUOTE dir=ltr "
-#~ "style=\"MARGIN-RIGHT: 0px\">  <P>TNC.&nbsp;2005.&nbsp; <EM>Conservation "
-#~ "Action Planning: Developing  Strategies, Taking Action, and Measuring "
-#~ "Success at Any Scale. Overview of  Basic Practices.&nbsp;<BR></EM>&nbsp;"
-#~ "&nbsp;&nbsp;&nbsp;&nbsp;<A   href=\"http://conserveonline.org/workspaces/"
-#~ "cbdgateway/cap/resources/1/TNC_CAP_Basic_Practices.pdf/download\">http://"
-#~ "conserveonline.org/workspaces/cbdgateway/cap/resources/1/"
-#~ "TNC_CAP_Basic_Practices.pdf/download</A></P>  <P>Materiais de orientação "
-#~ "extensiva também são disponíveis no site:<BR>&nbsp;&nbsp;&nbsp;&nbsp; "
-#~ "<A   href=\"http://conserveonline.org/workspaces/cbdgateway/cap/resources"
-#~ "\">http://conserveonline.org/workspaces/cbdgateway/cap/resources</A>&nbsp;"
-#~ "</P></BLOCKQUOTE><br><HR><H3>Wildlife Conservation Society (WCS)</"
-#~ "H3><BLOCKQUOTE dir=ltr style=\"MARGIN-RIGHT: 0px\">  <P>Materiais de "
-#~ "orientação extensiva são disponíveis no site:<BR>&nbsp;&nbsp;&nbsp;"
-#~ "&nbsp;   <A   href=\"http://wcslivinglandscapes.com/\">http://"
-#~ "wcslivinglandscapes.com/</A></P></BLOCKQUOTE><br><HR><H3 dir=ltr>WWF</"
-#~ "H3><BLOCKQUOTE dir=ltr style=\"MARGIN-RIGHT: 0px\">  <P dir=ltr>WWF. "
-#~ "2006. <EM>WWF Standards of Project and Programme   Management.<BR></"
-#~ "EM>&nbsp;&nbsp;&nbsp;&nbsp; <A   href=\"http://www.panda.org/standards/"
-#~ "complete\">http://www.panda.org/standards/complete</A></P>  <P "
-#~ "dir=ltr>Materiais de orientação extensiva também são disponíveis no site:"
-#~ "<BR>&nbsp;&nbsp;&nbsp;&nbsp; <A   href=\"http://www.panda.org/standards"
-#~ "\">www.panda.org/standards</A> </P></BLOCKQUOTE><br><HR><H3 "
-#~ "dir=ltr>Foundations of Success (FOS)</H3><BLOCKQUOTE dir=ltr style="
-#~ "\"MARGIN-RIGHT: 0px\">  <P>Margoluis, R., and N. Salafsky. 1998. "
-#~ "<EM>Measures of Success: Designing,   Managing, and Monitoring "
-#~ "Conservation and Development Projects. </EM>Island   Press, Washington, "
-#~ "DC.<BR>&nbsp;&nbsp;&nbsp;&nbsp; </FONT><A   href=\"http://islandpress.org"
-#~ "\"><U><FONT   color=#0000ff>http://islandpress.org</U></FONT></A></P>  "
-#~ "<P>Materiais de orientação extensiva também são disponíveis no setor  "
-#~ "resources&nbsp; de:<BR>&nbsp;&nbsp;&nbsp;&nbsp; <A   href=\"http://"
-#~ "fosonline.org\">http://fosonline.org</A></P></BLOCKQUOTE>"
-
-#~ msgid "Action|ConPro (CPMZ) File"
-#~ msgstr "Arquivo ConPro (CPMZ)"
-
-#~ msgid "Action|Export|ConPro (CPMZ) File"
-#~ msgstr "Arquivo ConPro (CPMZ) "
-
-#~ msgid "Action|Miradi 3.3 MPZ Project File"
-#~ msgstr "Arquivo de Projeto Miradi 3.3 MPZ"
-
-#~ msgid "Action|Old Miradi (MPZ) Project File"
-#~ msgstr "Arquivo de Projeto Velho de Miradi (MPZ)"
-
-#~ msgid "Action|WCS Miradi Project ZIP (BETA)"
-#~ msgstr "WCS Projeto Miradi ZIP (BETA)"
-
-#~ msgid "Action|XML Miradi Project ZIP (BETA)"
-#~ msgstr "XML Projeto Miradi ZIP (BETA)"
-
-#~ msgid "Action|XML Miradi Project ZIP (BETA) "
-#~ msgstr "XML Projeto Miradi ZIP (BETA)"
-
-#~ msgid "Action|XMPZ2 (BETA) "
-#~ msgstr "XMPZ2 (BETA) "
-
-#~ msgid ""
-#~ "This project resource is being used in the Work Plan and Financial Budget."
-#~ msgstr ""
-#~ "Este recurso do projeto está sendo utilizado no Plano de Trabalho e no "
-#~ "Orçamento Financeiro"
-
-#~ msgid "Label|Initials"
-#~ msgstr "Iniciais"
-
-#~ msgid "Effectiveness Monitoring Plan"
-#~ msgstr "Plano de Monitoramento da Efetividade"
-
-#~ msgid ""
-#~ "Some of the data could not be moved to this project because it refers to "
-#~ "other data that only exists in the old project"
-#~ msgstr ""
-#~ "Não foi possível transferir todos os dados para este projeto porque "
-#~ "refere a outros dados que somente existem no projeto antigo"
-
-#~ msgid "Results Monitoring Plan"
-#~ msgstr "Plano de Monitoramento de Resultos"
-
-#~ msgid "FieldLabel|11.XenodataRefs|ConPro Project Number"
-#~ msgstr "Número de Projeto de ConPro"
-
-# Verify if I have translated the correct items
-#~ msgid ""
-#~ "<html>Project (general) - Any set of actions undertaken by a group of "
-#~ "people and/or organizations to achieve defined goals and objectives. "
-#~ "Projects can range in scale from efforts by local people to protect a "
-#~ "small sacred grove to efforts by a donor to protect an entire ocean. \n"
-#~ "\n"
-#~ "<p>Project (in Miradi) - A project is the basic unit for a software file "
-#~ "in Miradi. As a general rule, you should have one file for each real-"
-#~ "world project you are managing, although for certain large and complex "
-#~ "projects, you may wish to have one file for each target or for other "
-#~ "subdivisions. \n"
-#~ "\n"
-#~ "<p>To see where your projects are being stored, use the <code "
-#~ "class='toolbarbutton'>&lt;Edit&gt;/&lt;Preferences&gt;</code> menu, and "
-#~ "look at the bottom of the <code class='toolbarbutton'>&lt;Data "
-#~ "Location&gt;</code> tab."
-#~ msgstr ""
-#~ "<html>Projeto (geral) - Qualquer conjunto de ações executadas por um "
-#~ "grupo de pessoas e/ou organizações para atingir objetivos e metas "
-#~ "definidos.  Projetos podem variar em escala de esforços desde esforços de "
-#~ "membros de uma comunidade para proteger um pequeno bosque sagrado até "
-#~ "esforços de um doador para proteger um oceano inteiro. \n"
-#~ "\n"
-#~ "<p>Projeto (em Miradi) - Um projeto é a unidade básico para um arquivo de "
-#~ "software em Miradi.   Em regra geral, você deve ter um arquivo para cada "
-#~ "projeto real que está administrando, embora para certos projetos grandes "
-#~ "e complexos você pode querer um arquivo para cada alvo ou para outras "
-#~ "subdivisões.\n"
-#~ "<p>Para ver onde seus projetos estão sendo armenizados, utilize o <code "
-#~ "class='toolbarbutton'>&lt;Edit&gt;/&lt;Preferences&gt;</code> menu, e "
-#~ "procure a baixo do aba <code class='toolbarbutton'>&lt;Data Location&gt;</"
-#~ "code>."
-
-#~ msgid ""
-#~ "This feature is not yet fully supported. It exports all the project data, "
-#~ "but the XML schema is still in flux. Future versions of Miradi will "
-#~ "export the data in different formats."
-#~ msgstr ""
-#~ "Este recurso não é totalmente suportado ainda.  Exporta todos os dados de "
-#~ "projeto, mas o esquema XML ainda está em fluxo.  As versões futuras de "
-#~ "Miradi exportarão os dados em formatos diferentes."
-
-#~ msgid ""
-#~ "These fields contain data, however the data will not appear in version "
-#~ "3.3.2:"
-#~ msgstr ""
-#~ "Este campo contem dados; porém os dados não aparecerão na versão 3.3.2"
-
-#~ msgid "Objs"
-#~ msgstr "Metas"
-
-#~ msgid "TT|Switch to the Strategic Planning View"
-#~ msgstr "Alternar para a Visão de Planejamento Estratégico"
-
-#~ msgid "Action|Insert|Insert Human Welfare Target"
-#~ msgstr "Inserir Alvo de Bem Estar Humano"
-
-#~ msgid "Action|Table|Expand To Human Welfare Target"
-#~ msgstr "Expandir ao Alvo de Bem Estar Humano"
-
-#~ msgid "Add Human Welfare Targets If Desired"
-#~ msgstr "Adicionar Alvos de Bem Estar Humano se desejar"
-
-#~ msgid "Human Welfare Target"
-#~ msgstr "Alvo de Bem Estar Humano"
-
-#~ msgid "Human Welfare Target (Lighter Brown)"
-#~ msgstr "Alvo de Bem Estar Humano (Marron Claro)"
-
-#~ msgid "Human Welfare Target Mode"
-#~ msgstr "Modo Alvo de Bem Estar Humano"
-
-#~ msgid "Human Welfare Target Scope (Darker Brown)"
-#~ msgstr "Escopo de Alvo de Bem Estar Humano (Marron Escuro)"
-
-#~ msgid "Human Welfare Targets"
-#~ msgstr "Alvos de Bem Estar Humano"
-
-#~ msgid ""
-#~ "Human Welfare Targets - A limited suite of elements chosen to represent "
-#~ "and encompass the desired human values of the system. In Miradi, "
-#~ "represented by tan ovals."
-#~ msgstr ""
-#~ "Alvos de Bem Estar Humano - Um conjunto de elementos selecionados para "
-#~ "representar e englobar os valores humanos desejados do sistema.  Em "
-#~ "Miradi, representados por ovais bronzeados."
-
-#~ msgid "Human Welfare Targets Only"
-#~ msgstr "Somente Alvos de Bem Estar Humano"
-
-#~ msgid "Label|New Human Welfare Target"
-#~ msgstr "Novo Alvo de Bem Estar Humano"
-
-#~ msgid "TT|Expand To Human Welfare Target"
-#~ msgstr "Expandir ao Alvo de Bem Estar Humano"
-
-#~ msgid "TT|Insert a Human Welfare Target"
-#~ msgstr "Inserir um Alvo de Bem Estar Humano"
-
-#~ msgid "Title|Human Welfare Target Properties"
-#~ msgstr "Propriedades de Alvos de Bem Estar Humano"
-
-#~ msgid "FieldLabel|52.HumanWelfareTarget|Human Welfare Target"
-#~ msgstr "Alvo de Bem Estar Humano"
-
-#~ msgid "Obj"
-#~ msgstr "Meta"
-
-# Nothing should be translated here, correct?
-#~ msgid ""
-#~ "<div class='WizardText'><p><table><tr><td><input type='submit' "
-#~ "name='Back' value='&lt; Previous'></input></td><td><input type='submit' "
-#~ "name='ImportMpz' value='Old Miradi Project (.mpz)'></input></td></"
-#~ "tr><tr><td></td><td><input type='submit' name='ImportCpmz' value='ConPro/"
-#~ "Miradi Exchange File (.cpmz)'></input></td></tr></table></p><br>"
-#~ msgstr ""
-#~ "<div class='WizardText'><p><table><tr><td><input type='submit' "
-#~ "name='Back' value='&lt; Previous'></input></td><td><input type='submit' "
-#~ "name='ImportMpz' value='Old Miradi Project (.mpz)'></input></td></"
-#~ "tr><tr><td></td><td><input type='submit' name='ImportCpmz' value='ConPro/"
-#~ "Miradi Exchange File (.cpmz)'></input></td></tr></table></p><br>"
-
-# Please verify that all the correct information is translated.
-#~ msgid ""
-#~ "<div class='WizardText'>Miradi is able to import two different kinds of "
-#~ "project files.<BR>MPZ files are <a href='Definition:ImportZip' "
-#~ "class='definition'>Miradi Project Zip</a> files that were created by "
-#~ "exporting a project from within Miradi. <BR>CPMZ files are used to import "
-#~ "and export project data from ConPro, The Nature Conservancy's online "
-#~ "project database.<BR><BR>To import a MPZ, or CPMZ file, click the button "
-#~ "for the appropriate file type, select the file in the dialog that pops up "
-#~ "and then click <strong>import</strong>."
-#~ msgstr ""
-#~ "<div class='WizardText'>Miradi pode importar dois tipos de arquivos de "
-#~ "projeto.<BR>Arquivos MPZ são <a href='Definition:ImportZip' "
-#~ "class='definition'>arquivos Zip</a> de Projetos de Miradi que foram "
-#~ "criados dentro de Miradi pela exportação de um projeto.  <BR>Arquivos de "
-#~ "CPMZ são usados para importar e exportar dados de projetos de ConPro, o "
-#~ "banco de dados on-line de projetos da The Nature Conservancy (TNC)."
-#~ "<BR><BR>Para importar um arquivo MPZ ou CPMZ, clique o botão para o tipo "
-#~ "de arquivo apropriado, selecione o arquivo no dialogo que  aparece e "
-#~ "depois clique <strong>importar</strong>."
-
-#~ msgid "an exported Miradi file (.mpz or .cpmz)"
-#~ msgstr "um arquivo de Miradi (.mpz ou .cpmz)"
-
-# not sure of what this is referring to in English
-#~ msgid "%1 with taxonomy assignments"
-#~ msgstr "%1 com designação taxonómica"
-
-#~ msgid "%2 of %1 have taxonomy assignments"
-#~ msgstr "%2 de %1 têm designação taxonómica"
-
-#~ msgid ""
-#~ "\n"
-#~ "WARNING: Attempting to open this project again before repairing the "
-#~ "problem may result in losing data. \n"
-#~ "Please seek technical help from the Miradi team."
-#~ msgstr ""
-#~ "\n"
-#~ "AVISO:  A tentativa de abrir este projeto novamente antes de corrigir o "
-#~ "problema pode resultar em perda de dados. \n"
-#~ "Por favor procure a assistência técnica da equipe de Miradi. "
-
-#~ msgid "Error Occurred please try saving under different name."
-#~ msgstr "Ocorreu um Erro.  Por favor tentar salvar com nome diferente"
-
-# Leo, Please verify these technical terms
-#~ msgid ""
-#~ "Marine Coastal/&quot;Supratidal&quot; - Sea Cliffs and Rocky Offshore "
-#~ "Islands"
-#~ msgstr ""
-#~ "Marinho Costeiro/&quot;Supratidal&quot; - Falésias Marinhas e Ilhas "
-#~ "Rochosas de Alto Mar"
-
-#~ msgid ""
-#~ "This project cannot be imported by this version of Miradi because it \n"
-#~ "is in a newer data format. Please upgrade to the latest version of Miradi."
-#~ msgstr ""
-#~ "Este projeto não pode ser importado por esta versão de Miradi porque \n"
-#~ "tem um formato de dados mais novo.  Por favor atualise à última versão de "
-#~ "Miradi. "
