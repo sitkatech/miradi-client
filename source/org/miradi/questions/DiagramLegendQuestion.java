@@ -21,20 +21,7 @@ package org.miradi.questions;
 
 import org.miradi.objects.Cause;
 import org.miradi.objects.Strategy;
-import org.miradi.schemas.FactorLinkSchema;
-import org.miradi.schemas.GoalSchema;
-import org.miradi.schemas.GroupBoxSchema;
-import org.miradi.schemas.HumanWelfareTargetSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.IntermediateResultSchema;
-import org.miradi.schemas.ObjectiveSchema;
-import org.miradi.schemas.ScopeBoxSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.StressSchema;
-import org.miradi.schemas.TargetSchema;
-import org.miradi.schemas.TaskSchema;
-import org.miradi.schemas.TextBoxSchema;
-import org.miradi.schemas.ThreatReductionResultSchema;
+import org.miradi.schemas.*;
 
 public class DiagramLegendQuestion extends MultipleSelectStaticChoiceQuestion
 {
@@ -52,6 +39,8 @@ public class DiagramLegendQuestion extends MultipleSelectStaticChoiceQuestion
 				new ChoiceItem(Cause.OBJECT_NAME_THREAT, Cause.OBJECT_NAME_THREAT),
 				new ChoiceItem(TargetSchema.OBJECT_NAME, TargetSchema.OBJECT_NAME),
 				new ChoiceItem(HumanWelfareTargetSchema.OBJECT_NAME, HumanWelfareTargetSchema.OBJECT_NAME),
+				new ChoiceItem(BiophysicalFactorSchema.OBJECT_NAME, BiophysicalFactorSchema.OBJECT_NAME),
+				new ChoiceItem(BiophysicalResultSchema.OBJECT_NAME, BiophysicalResultSchema.OBJECT_NAME),
 				new ChoiceItem(FactorLinkSchema.OBJECT_NAME, FactorLinkSchema.OBJECT_NAME),
 				new ChoiceItem(GoalSchema.OBJECT_NAME, GoalSchema.OBJECT_NAME),
 				new ChoiceItem(ObjectiveSchema.OBJECT_NAME, ObjectiveSchema.OBJECT_NAME),
