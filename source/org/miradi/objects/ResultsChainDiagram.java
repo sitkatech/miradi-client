@@ -72,6 +72,8 @@ public class ResultsChainDiagram extends DiagramObject
 			return true;
 		if(Task.is(objectType))
 			return true;
+		if(BiophysicalResult.is(objectType))
+			return true;
 		
 		return super.canContainFactorType(objectType);
 	}

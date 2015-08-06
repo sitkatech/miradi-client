@@ -881,6 +881,12 @@ abstract public class DiagramPaster
 			return IntermediateResultSchema.getObjectType();
 		}
 
+		if (BiophysicalFactor.is(oldObjectRef))
+			return BiophysicalResultSchema.getObjectType();
+
+		if (BiophysicalResult.is(oldObjectRef))
+			return BiophysicalFactorSchema.getObjectType();
+
 		return oldObjectRef.getObjectType();
 	}
 

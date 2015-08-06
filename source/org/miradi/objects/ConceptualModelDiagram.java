@@ -50,6 +50,8 @@ public class ConceptualModelDiagram extends DiagramObject
 			return true;
 		if(Stress.is(objectType))
 			return true;
+		if(BiophysicalFactor.is(objectType))
+			return true;
 		
 		return super.canContainFactorType(objectType);
 	}
