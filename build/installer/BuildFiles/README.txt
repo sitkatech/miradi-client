@@ -4,7 +4,7 @@ Copyright 2005-2015, Foundations of Success, Bethesda, Maryland
 on behalf of the Conservation Measures Partnership ("CMP").
 Material developed between 2005-2013 is jointly copyright by Beneficent Technology, Inc. ("The Benetech Initiative"), Palo Alto, California.
 
-VERSION 4.3.0
+VERSION 4.3.1
 
 License and Copying
 
@@ -161,6 +161,13 @@ cannot be directly opened by earlier versions of Miradi, but 4.1.2 and
 in the MPZ format used by Miradi 3.3. In some cases, data may be
 lost when exporting to these older formats, but a warning dialog will
 indicate when that is the case.
+
+
+Notable changes in 4.3.1:
+
+Diagram:
+- Fixed issue with show / hide of Biophysical Factors / Results on diagrams.
+- Fixed issue with cut / copy / paste of Biophysical Factors / Results between CM and RC diagrams.
 
 
 Notable changes in 4.3.0:
