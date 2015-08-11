@@ -53,7 +53,7 @@ public class StrategyCoreSubpanel extends ObjectDataInputPanel
 		ObjectDataInputField impactField = createRadioButtonEditorField(StrategySchema.getObjectType(), Strategy.TAG_IMPACT_RATING, getQuestion(StrategyImpactQuestion.class));
 		ObjectDataInputField feasibilityField = createRadioButtonEditorField(StrategySchema.getObjectType(), Strategy.TAG_FEASIBILITY_RATING, getQuestion(StrategyFeasibilityQuestion.class));
 		ObjectDataInputField prioritySummaryField = createReadOnlyChoiceField(Strategy.PSEUDO_TAG_RATING_SUMMARY, getQuestion(StrategyRatingSummaryQuestion.class));
-		addFieldsOnOneLine(EAM.text("Priority"), new ObjectDataInputField[] {impactField, feasibilityField, prioritySummaryField});
+		addFieldsOnOneLine(EAM.text("Rating"), new ObjectDataInputField[] {impactField, feasibilityField, prioritySummaryField});
 		
 		addLabeledSubPanelWithoutBorder(new LegacyTncStrategyRankingEditorPropertiesSubPanel(getProject(), getRefForType(StrategySchema.getObjectType()), actions), EAM.text("Legacy TNC Ratings"));
 		
