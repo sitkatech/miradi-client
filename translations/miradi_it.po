@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-18 23:25-0700\n"
+"POT-Creation-Date: 2015-08-18 23:55-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/miradi-client/"
@@ -528,7 +528,7 @@ msgstr ""
 "<HTML>Quando incolli tra progetti non si può fare da Modelli Concettuali a "
 "Catene dei Risultati o vice versa</HTML>"
 
-#: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/dialogs/notify/NotifyDialogTemplateFactory.java:52
+#: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/dialogs/notify/NotifyDialogTemplateFactory.java:60
 msgid ""
 "<b><font color=\"#990000\">IMPORTANT: Miradi has a new file structure</"
 "font></b><br/><br/>Please read the <a href=\"https://miradi.org/files/"
@@ -4144,7 +4144,7 @@ msgstr "Nascondi le colonne trimestre"
 msgid "High"
 msgstr "Alto"
 
-#: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/dialogs/notify/NotifyDialogTemplateFactory.java:67
+#: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/dialogs/notify/NotifyDialogTemplateFactory.java:75
 msgid "Home Folder Not Found"
 msgstr ""
 
@@ -5447,7 +5447,7 @@ msgstr ""
 "inglobati in uno o più Target di Conservazione. Spesso include obiettivi "
 "ecoregionali che un gruppo di lavoro vuole osservare e/o tracciare."
 
-#: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/dialogs/notify/NotifyDialogTemplateFactory.java:51
+#: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/dialogs/notify/NotifyDialogTemplateFactory.java:59
 msgid "New File Structure Reminder"
 msgstr ""
 
@@ -5699,6 +5699,31 @@ msgstr "Incolla contenuto..."
 
 #: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/dialogs/notify/NotifyDialogTemplateFactory.java:31
 msgid "Pasted Shared Factors"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/dialogs/notify/NotifyDialogTemplateFactory.java:33
+msgid ""
+"Pasted factors take two forms - shared factors and complementary factors <br/"
+"><br/> Pasted Shared Factors <ul> <li>When pasting to the same type of "
+"diagram: all factors</li> <li>When pasting from Conceptual Model to Result "
+"Chain or vice-versa: targets and strategies only</li> </ul> <br/> The pasted "
+"factors are (in the above instances) <b>shared</b>, meaning that any changes "
+"made in this diagram will also be reflected in other diagrams that these "
+"factors appear. In other words, each factor will only exist once in this "
+"project, but will be visible in multiple diagram pages. <br/><br/> Normally, "
+"this is what you want. If you really wanted to create duplicate copies of "
+"the factors, separate from the originals, you must undo the paste, return to "
+"the diagram where these factors originated, and paste them there. Then use "
+"the &lt;Cut&gt; command to move them to the clipboard, return to this "
+"diagram, and paste the new copies here. <br/><br/> Pasted Complementary "
+"Factors <ul> <li>When pasting from Conceptual Model to Result Chain or vice-"
+"versa: Threats and Threat Reduction Results, Contributing Factors and "
+"Intermediate Results, Biophysical Factors and Biophysical Results</li> </ul> "
+"<br/> The pasted complementary factors are <b>not</b> shared, meaning that "
+"any changes made to the pasted factor in this diagram will not affect the "
+"original factor, and vice-versa. This also means that taxonomy or "
+"classification selections made in the original factor will not carry over to "
+"its pasted complementary factor."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:94
@@ -7965,19 +7990,6 @@ msgid ""
 "expects %versionInXsl. Continuing will produce output which may or may \n"
 "not be correct. \n"
 "Are you sure you want to do this?"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/dialogs/notify/NotifyDialogTemplateFactory.java:33
-msgid ""
-"The pasted factors are now shared, meaning that any changes made in this "
-"diagram will also be reflected in other diagrams that these factors appear. "
-"In other words, each factor will only exist once in this project, but will "
-"be visible in multiple diagram pages. Normally, this is what you want."
-"<br><br>If you really wanted to create duplicate copies of the factors, "
-"separate from the originals, you must undo the paste, return to the diagram "
-"where these factors originated, and paste them there. Then use the &lt;"
-"Cut&gt; command to move them to the clipboard, return to this diagram, and "
-"paste the new copies here."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:205
