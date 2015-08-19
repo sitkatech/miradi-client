@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 08:41-0700\n"
+"POT-Creation-Date: 2015-08-18 23:25-0700\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -5499,11 +5499,6 @@ msgstr ""
 msgid "Preparing groups..."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:95
-#: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/forms/objects/StrategyCoreSubForm.java:37
-msgid "Priority"
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:331
 msgid "Priority Rating"
 msgstr ""
@@ -5757,6 +5752,8 @@ msgid "Rapid Assessment"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:56
+#: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:95
+#: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/forms/objects/StrategyCoreSubForm.java:37
 msgid "Rating"
 msgstr ""
 

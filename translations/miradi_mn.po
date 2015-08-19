@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 08:41-0700\n"
+"POT-Creation-Date: 2015-08-18 23:25-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Mongolian (http://www.transifex.com/projects/p/miradi-client/"
@@ -5761,11 +5761,6 @@ msgstr "Сонголт"
 msgid "Preparing groups..."
 msgstr "...Бүлгүүдийг бэлтгэх"
 
-#: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:95
-#: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/forms/objects/StrategyCoreSubForm.java:37
-msgid "Priority"
-msgstr "Тэргүүлэх ач холбогдол"
-
 #: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:331
 msgid "Priority Rating"
 msgstr "Тэргүүлэх ач холбогдлыг үнэлэх"
@@ -6028,6 +6023,8 @@ msgid "Rapid Assessment"
 msgstr "Шуурхай үнэлгээ"
 
 #: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:56
+#: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:95
+#: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/forms/objects/StrategyCoreSubForm.java:37
 msgid "Rating"
 msgstr ""
 
@@ -31973,6 +31970,9 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "Priority"
+#~ msgstr "Тэргүүлэх ач холбогдол"
 
 #~ msgid ""
 #~ "<HTML>Data exchange between Miradi and ConPro is not available in this "

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 08:41-0700\n"
+"POT-Creation-Date: 2015-08-18 23:25-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/miradi-client/"
@@ -5902,11 +5902,6 @@ msgstr "Предпочитания"
 msgid "Preparing groups..."
 msgstr "Подготвяне на групи..."
 
-#: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:95
-#: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/forms/objects/StrategyCoreSubForm.java:37
-msgid "Priority"
-msgstr "Приоритет"
-
 #: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:331
 msgid "Priority Rating"
 msgstr "Оценяване на приоритет"
@@ -6167,6 +6162,8 @@ msgid "Rapid Assessment"
 msgstr "Бърза преценка"
 
 #: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:56
+#: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:95
+#: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/forms/objects/StrategyCoreSubForm.java:37
 msgid "Rating"
 msgstr ""
 
@@ -32800,6 +32797,9 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Морски___Западен тропически "
 "Атлантически океан___Североизточен бразилски шелф___Бразилия"
+
+#~ msgid "Priority"
+#~ msgstr "Приоритет"
 
 #~ msgid ""
 #~ "<HTML>Data exchange between Miradi and ConPro is not available in this "

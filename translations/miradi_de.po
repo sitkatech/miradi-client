@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 08:41-0700\n"
+"POT-Creation-Date: 2015-08-18 23:25-0700\n"
 "PO-Revision-Date: 2015-07-15 14:36+0000\n"
 "Last-Translator: Felix <felix.cybulla@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/miradi-client/"
@@ -5714,11 +5714,6 @@ msgstr "Eigenschaften"
 msgid "Preparing groups..."
 msgstr "Bereite Gruppen vor..."
 
-#: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:95
-#: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/forms/objects/StrategyCoreSubForm.java:37
-msgid "Priority"
-msgstr "Priorität"
-
 #: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:331
 msgid "Priority Rating"
 msgstr "Prioritätsbewertung"
@@ -5974,6 +5969,8 @@ msgid "Rapid Assessment"
 msgstr "Oberflächliche Erfassung"
 
 #: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:56
+#: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:95
+#: /usr/share/jenkins/jobs/Miradi_4.3/workspace/source/org/miradi/forms/objects/StrategyCoreSubForm.java:37
 msgid "Rating"
 msgstr ""
 
@@ -29887,6 +29884,9 @@ msgid ""
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
 "Marine___Western Tropical Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "Priority"
+#~ msgstr "Priorität"
 
 #~ msgid ""
 #~ "<HTML>Your project is missing some data that is required for upload to "
