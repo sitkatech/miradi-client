@@ -295,9 +295,9 @@ abstract public class DiagramPaster
 		DiagramFactor fromDiagramFactor = groupDiagramLink.getFromDiagramFactor();
 		boolean isFromGroup = fromDiagramFactor.isGroupBoxFactor();
 		ORefList legalFromRefs = fromDiagramFactor.getGroupBoxChildrenRefs();
-		DiagramFactor toDiagramfactoFactor = groupDiagramLink.getToDiagramFactor();
-		boolean isToGroup = toDiagramfactoFactor.isGroupBoxFactor();
-		ORefList legalToRefs = toDiagramfactoFactor.getGroupBoxChildrenRefs();
+		DiagramFactor toDiagramFactor = groupDiagramLink.getToDiagramFactor();
+		boolean isToGroup = toDiagramFactor.isGroupBoxFactor();
+		ORefList legalToRefs = toDiagramFactor.getGroupBoxChildrenRefs();
 		
 		for(int index = 0; index < groupedDiagramLinkRefs.size(); ++ index)
 		{

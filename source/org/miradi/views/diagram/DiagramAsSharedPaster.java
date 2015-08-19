@@ -35,18 +35,7 @@ import org.miradi.main.AbstractTransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Cause;
-import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
-import org.miradi.objects.HumanWelfareTarget;
-import org.miradi.objects.IntermediateResult;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Stress;
-import org.miradi.objects.Target;
-import org.miradi.objects.Task;
-import org.miradi.objects.ThreatReductionResult;
-import org.miradi.objects.ViewData;
+import org.miradi.objects.*;
 import org.miradi.questions.DiagramModeQuestion;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
@@ -199,14 +188,6 @@ public class DiagramAsSharedPaster extends DiagramPaster
 		return oldWrappedFactorLinkRef;
 	}
 	
-	protected int[] getResultsChainPastableTypes()
-	{
-		return new int[] {
-				ObjectType.THREAT_REDUCTION_RESULT,
-				ObjectType.INTERMEDIATE_RESULT, 
-				};
-	}
-	
 	@Override
 	protected boolean shouldCreateObject(ORef ref, EnhancedJsonObject json)
 	{
@@ -241,7 +222,11 @@ public class DiagramAsSharedPaster extends DiagramPaster
 			return true;
 		if(Task.is(objectType))
 			return true;
-		
+		if(BiophysicalFactor.is(objectType))
+			return true;
+		if(BiophysicalResult.is(objectType))
+			return true;
+
 		return false;
 	}
 
