@@ -21,23 +21,11 @@ package org.miradi.dialogs.diagram;
 
 import javax.swing.Icon;
 
-import org.miradi.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
-import org.miradi.actions.jump.ActionJumpDiagramWizardHumanWelfareTargetsStep;
-import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyDirectThreatStep;
-import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
-import org.miradi.actions.jump.ActionJumpDiagramWizardResultsChainSelectStrategyStep;
-import org.miradi.actions.jump.ActionJumpSelectChainStep;
+import org.miradi.actions.jump.*;
 import org.miradi.dialogs.base.ModelessDialogPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Cause;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.HumanWelfareTarget;
-import org.miradi.objects.IntermediateResult;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Target;
-import org.miradi.objects.ThreatReductionResult;
+import org.miradi.objects.*;
 import org.miradi.utils.MiradiScrollPane;
 
 public class FactorSummaryScrollablePanel extends ModelessDialogPanel
@@ -117,9 +105,12 @@ public class FactorSummaryScrollablePanel extends ModelessDialogPanel
 		if(Strategy.is(currentFactorRef))
 			return ActionJumpSelectChainStep.class;
 		
-		if(IntermediateResult.is(currentFactorRef) || ThreatReductionResult.is(currentFactorRef))
+		if(IntermediateResult.is(currentFactorRef) || ThreatReductionResult.is(currentFactorRef) || BiophysicalResult.is(currentFactorRef))
 			return ActionJumpDiagramWizardResultsChainSelectStrategyStep.class;
-		
+
+		if (BiophysicalFactor.is(currentFactorRef))
+			return ActionJumpTargetStressesStep.class;
+
 		return super.getJumpActionClass();
 	}
 
