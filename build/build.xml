@@ -130,7 +130,7 @@
     <property name="miradi.po.id" value="${translations.dir}/miradi_id.po" />
     <property name="miradi.po.it" value="${translations.dir}/miradi_it.po" />
     <property name="miradi.po.mn" value="${translations.dir}/miradi_mn.po" />
-    <property name="miradi.po.nep" value="${translations.dir}/miradi_nep.po" />
+    <property name="miradi.po.ne" value="${translations.dir}/miradi_ne.po" />
     <property name="miradi.po.plt" value="${translations.dir}/miradi_plt.po" />
     <property name="miradi.po.pt" value="${translations.dir}/miradi_pt.po" />
     <property name="miradi.po.psp" value="${translations.dir}/miradi_psp.po" />
@@ -835,8 +835,8 @@
 <!-- ================================================================== -->
 <target name="nepalese" depends="pot" description="Update Nepalese Content">
 <antcall target="update-po">
-	<param name="po.file" value="${miradi.po.nep}"/>
-	<param name="language.code" value="nep"/>
+	<param name="po.file" value="${miradi.po.ne}"/>
+	<param name="language.code" value="ne"/>
 </antcall>
 </target>
 
