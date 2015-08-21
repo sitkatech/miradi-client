@@ -130,6 +130,7 @@
     <property name="miradi.po.id" value="${translations.dir}/miradi_id.po" />
     <property name="miradi.po.it" value="${translations.dir}/miradi_it.po" />
     <property name="miradi.po.mn" value="${translations.dir}/miradi_mn.po" />
+    <property name="miradi.po.nep" value="${translations.dir}/miradi_nep.po" />
     <property name="miradi.po.plt" value="${translations.dir}/miradi_plt.po" />
     <property name="miradi.po.pt" value="${translations.dir}/miradi_pt.po" />
     <property name="miradi.po.psp" value="${translations.dir}/miradi_psp.po" />
@@ -477,7 +478,7 @@
 	<antcall target='copy-thirdparty'>
 			<param name='directory' value='martus-swing' />
 			<param name='filename' value='martus-swing-license.txt' />
-		</antcall>
+	</antcall>
 	
 	<antcall target='copy-thirdparty'>
 		<param name='directory' value='martus-utils/bin' />
@@ -830,6 +831,16 @@
 </target>
 
 <!-- ================================================================== -->
+<!-- NEPALESE					                                        -->
+<!-- ================================================================== -->
+<target name="nepalese" depends="pot" description="Update Nepalese Content">
+<antcall target="update-po">
+	<param name="po.file" value="${miradi.po.nep}"/>
+	<param name="language.code" value="nep"/>
+</antcall>
+</target>
+
+<!-- ================================================================== -->
 <!-- PORTUGUESE                                                         -->
 <!-- ================================================================== -->
 <target name="portuguese" depends="pot" description="Update Portuguese Content">
@@ -904,7 +915,7 @@
 <!-- T R A N S L A T I O N S                                            -->
 <!-- ================================================================== -->
 <target name="translations" 
-	depends="pot, bulgarian, chinese, french, german, hebrew, hungarian, indonesian, italian, malagasy, mongolian, portuguese, psp-langpack, spanish, ukrainian, usaid-project-langpack"
+	depends="pot, bulgarian, chinese, french, german, hebrew, hungarian, indonesian, italian, malagasy, mongolian, nepalese, portuguese, psp-langpack, spanish, ukrainian, usaid-project-langpack"
 	description="Create Translatable Content jars/zips">
 
 	<!-- Add any new translation files -->	
