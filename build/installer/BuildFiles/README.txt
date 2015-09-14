@@ -4,7 +4,7 @@ Copyright 2005-2015, Foundations of Success, Bethesda, Maryland
 on behalf of the Conservation Measures Partnership ("CMP").
 Material developed between 2005-2013 is jointly copyright by Beneficent Technology, Inc. ("The Benetech Initiative"), Palo Alto, California.
 
-VERSION 4.3.1
+VERSION 4.4.0
 
 License and Copying
 
@@ -61,7 +61,7 @@ For Mac OS X:
 - 30 MB available disk space
 
 For GNU/Linux:
-- Java 1.6 or later
+- Java 1.8 or later
 - 1 GB RAM recommended
 - 30 MB available disk space
 
@@ -116,10 +116,10 @@ Mac OS X:
   Miradi will no longer work with Apple's 1.6 version of Java (which is no longer maintained by Apple).
   
   
-- Download the Miradi-4.3.0.dmg file
-- Using the mac Finder navigate to the folder containing Miradi-4.3.0.dmg
-- Double click the file Miradi-4.3.0.dmg
-- In the Finder's left panel select the Miradi "Miradi 4.3.0 Mac Install" drive
+- Download the Miradi-4.4.0.dmg file
+- Using the mac Finder navigate to the folder containing Miradi-4.4.0.dmg
+- Double click the file Miradi-4.4.0.dmg
+- In the Finder's left panel select the Miradi "Miradi 4.4.0 Mac Install" drive
 - In the right you will see the contents of the drive
 - Copy the Miradi app into your applications folder
 - Select the Miradi app file and bring up the context menu 
@@ -134,12 +134,12 @@ Mac OS X:
 
 GNU/Linux:
 
-- Make sure Sun's official Java 1.6 (aka Java 6) or later is installed.
+- Make sure Oracle's official Java 1.8 (aka Java 8) or later is installed.
   Miradi will not work with Java 1.4, and has not been tested extensively 
-  with OpenJDK or any other non-Sun Java alternatives.
+  with OpenJDK or any other non-Oracle Java alternatives.
 
 - Obtain Miradi-Linux.zip from http://miradi.org and unzip the contents 
-  into a directory, perhaps /usr/local/lib or ~/Miradi-4.2.0
+  into a directory, perhaps /usr/local/lib or ~/Miradi-4.4.0
   (We recommend not installing to ~/Miradi because that is the default 
   location for project data).
 
@@ -162,6 +162,10 @@ in the MPZ format used by Miradi 3.3. In some cases, data may be
 lost when exporting to these older formats, but a warning dialog will
 indicate when that is the case.
 
+
+Notable changes in 4.4.0:
+
+  TBD
 
 Notable changes in 4.3.1:
 
