@@ -70,8 +70,8 @@ public class ThreatRatingUpperPanel extends MultiTableUpperPanel
 	public void valueChanged(ListSelectionEvent event)
 	{
 		super.valueChanged(event);
-		ORefList[] selectedHierarcies = multiTablePanel.getSelectedHierarchies();
-		propertiesPanel.setObjectRefs(selectedHierarcies[0]);
+		ORefList[] selectedHierarchies = multiTablePanel.getSelectedHierarchies();
+		propertiesPanel.setObjectRefs(selectedHierarchies[0]);
 	}
 	
 	@Override

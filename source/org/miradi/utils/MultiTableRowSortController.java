@@ -97,8 +97,8 @@ public class MultiTableRowSortController implements CommandExecutedListener
 		for (int index = 0; index < tablesToSort.size(); ++index)
 		{
 			TableWithRowHeightSaver table = tablesToSort.get(index);
-			SortableTableModel modelToSetThreats = (SortableTableModel)table.getModel();
-			modelToSetThreats.setSortedRefs(sortedRefs);
+			SortableTableModel tableModel = (SortableTableModel)table.getModel();
+			tableModel.setSortedRefs(sortedRefs);
 			table.updateAutomaticRowHeights();
 			table.revalidate();
 			table.repaint();
@@ -133,11 +133,8 @@ public class MultiTableRowSortController implements CommandExecutedListener
 	{
 		try
 		{
-			if (event.isSetDataCommandWithThisTypeAndTag(TableSettingsSchema.getObjectType(), TableSettings.TAG_COLUMN_SORT_TAG) ||
-				event.isSetDataCommandWithThisTypeAndTag(TableSettingsSchema.getObjectType(), TableSettings.TAG_COLUMN_SORT_DIRECTION))
-			{
+			if (isEventRelevant(event))
 				sortAllTables();
-			}
 		}
 		catch (Exception e)
 		{
@@ -145,7 +142,29 @@ public class MultiTableRowSortController implements CommandExecutedListener
 			EAM.errorDialog(EAM.text("An Error Occurred During Sorting."));
 		}
 	}
-	
+
+	private boolean isEventRelevant(CommandExecutedEvent event) throws Exception
+	{
+		boolean eventIsRelevant = false;
+
+		if (event.isSetDataCommandWithThisTypeAndTag(TableSettingsSchema.getObjectType(), TableSettings.TAG_COLUMN_SORT_TAG) ||
+			event.isSetDataCommandWithThisTypeAndTag(TableSettingsSchema.getObjectType(), TableSettings.TAG_COLUMN_SORT_DIRECTION))
+		{
+			for (TableWithRowHeightSaver table : tablesToSort)
+			{
+				SortableTableModel model = getCastedModel(table);
+				TableSettings tableSettings = findOrCreateTableSettings(model);
+				if (event.isSetDataCommandFor(tableSettings.getRef()))
+				{
+					eventIsRelevant = true;
+					break;
+				}
+			}
+		}
+
+		return eventIsRelevant;
+	}
+
 	private SortableTableModel getCastedModel(JTable tableToUse)
 	{
 		return (SortableTableModel)tableToUse.getModel();

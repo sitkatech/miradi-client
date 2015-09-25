@@ -74,6 +74,9 @@ public class ThreatTargetTableCellRendererFactory extends ChoiceItemTableCellRen
 		
 		if(model.getProject().isStressBaseMode())
 		{
+			if (choice == null)
+				return null;
+
 			stressBasedIcon.setColor(choice.getColor());
 			return stressBasedIcon;
 		}

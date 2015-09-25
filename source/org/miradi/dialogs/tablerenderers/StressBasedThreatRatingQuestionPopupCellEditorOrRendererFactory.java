@@ -52,8 +52,11 @@ public class StressBasedThreatRatingQuestionPopupCellEditorOrRendererFactory ext
 	protected Component getConfiguredComponent(JTable table, Object value, int row, int column)
 	{
 		ChoiceItem choiceItem = (ChoiceItem) value;
-		questionComponent.setCode(choiceItem.getCode());
-		
+		String code = "";
+		if (choiceItem != null)
+			code = choiceItem.getCode();
+		questionComponent.setCode(code);
+
 		ThreatStressRatingTableModel model = ((ThreatStressRatingTable) table).getThreatStressRatingTableModel();
 		ORef threatRef = model.getThreatRef();
 		ORef targetRef = model.getTargetRef();

@@ -61,7 +61,7 @@ public class ThreatMatrixView extends CardedView
 	{
 		super(mainWindowToUse);
 		
-		addThreatMatrixiewDoersToMap();
+		addThreatMatrixViewDoersToMap();
 	}
 
 	@Override
@@ -75,7 +75,7 @@ public class ThreatMatrixView extends CardedView
 		return getMainWindow().getBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE);
 	}
 
-	private void addThreatMatrixiewDoersToMap()
+	private void addThreatMatrixViewDoersToMap()
 	{
 		addDoerToMap(ActionShowCellRatings.class, new ShowCellRatingsDoer());
 		addDoerToMap(ActionHideCellRatings.class, new HideCellRatingsDoer());
