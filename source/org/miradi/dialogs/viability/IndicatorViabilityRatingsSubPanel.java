@@ -44,10 +44,10 @@ public class IndicatorViabilityRatingsSubPanel extends ObjectDataInputPanel
 		
 		ChoiceQuestion statusQuestion = StaticQuestionManager.getQuestion(StatusQuestion.class);
 		
-		createThreshholdField(statusQuestion.findChoiceByCode(StatusQuestion.POOR));
-		createThreshholdField(statusQuestion.findChoiceByCode(StatusQuestion.FAIR));
-		createThreshholdField(statusQuestion.findChoiceByCode(StatusQuestion.GOOD));
-		createThreshholdField(statusQuestion.findChoiceByCode(StatusQuestion.VERY_GOOD));
+		createThresholdField(statusQuestion.findChoiceByCode(StatusQuestion.POOR));
+		createThresholdField(statusQuestion.findChoiceByCode(StatusQuestion.FAIR));
+		createThresholdField(statusQuestion.findChoiceByCode(StatusQuestion.GOOD));
+		createThresholdField(statusQuestion.findChoiceByCode(StatusQuestion.VERY_GOOD));
 				
 		addField(createRatingChoiceField(ObjectType.INDICATOR, Indicator.TAG_RATING_SOURCE, new RatingSourceQuestion()));
 		addField(createMultilineField(ObjectType.INDICATOR, Indicator.TAG_VIABILITY_RATINGS_COMMENTS));
@@ -55,7 +55,7 @@ public class IndicatorViabilityRatingsSubPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
-	private void createThreshholdField(ChoiceItem choiceItem) throws Exception
+	private void createThresholdField(ChoiceItem choiceItem) throws Exception
 	{
 		PanelTitleLabel label = new PanelTitleLabel(choiceItem.getLabel());
 		Font font = label.getFont();
