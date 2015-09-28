@@ -133,7 +133,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		expenseAmountsTableModel = new WorkPlanExpenseAmountsTableModel(getProject(), getRowColumnProvider(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		budgetDetailsTableModel = new WorkPlanBudgetDetailsTableModel(getProject(), getRowColumnProvider(),getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		fundingSourceBudgetDetailsTableModel = new FundingSourceBudgetDetailsTableModel(getProject(), getRowColumnProvider(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
-		accoundingCodeBudgetDetailsTableModel = new AccountingCodeBudgetDetailsTableModel(getProject(), getRowColumnProvider(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
+		accountingCodeBudgetDetailsTableModel = new AccountingCodeBudgetDetailsTableModel(getProject(), getRowColumnProvider(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		fundingSourceExpenseTableModel = new FundingSourceExpenseTableModel(getProject(), getRowColumnProvider(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		accountingCodeExpenseTableModel = new AccountingCodeExpenseTableModel(getProject(), getRowColumnProvider(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		rollupReportsWorkUnitsModel = new AnalysisWorkUnitsModel(getProject(), getRowColumnProvider(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
@@ -203,7 +203,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		expenseAmountsTableModel.fireTableDataChanged();
 		budgetDetailsTableModel.fireTableDataChanged();
 		fundingSourceBudgetDetailsTableModel.fireTableDataChanged();
-		accoundingCodeBudgetDetailsTableModel.fireTableDataChanged();
+		accountingCodeBudgetDetailsTableModel.fireTableDataChanged();
 		rollupReportsWorkUnitsModel.fireTableDataChanged();
 		rollupReportsExpenseModel.fireTableDataChanged();
 		rollupReportsBudgetDetailsModel.fireTableDataChanged();
@@ -254,7 +254,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 			multiTableModel.addModel(fundingSourceBudgetDetailsTableModel);
 		
 		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_ACCOUNTING_CODE_BUDGET_DETAILS_COLUMN_CODE))
-			multiTableModel.addModel(accoundingCodeBudgetDetailsTableModel);
+			multiTableModel.addModel(accountingCodeBudgetDetailsTableModel);
 		
 		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
 			multiTableModel.addModel(budgetDetailsTableModel);
@@ -509,7 +509,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	private WorkPlanExpenseAmountsTableModel expenseAmountsTableModel;
 	protected WorkPlanBudgetDetailsTableModel budgetDetailsTableModel;
 	private FundingSourceBudgetDetailsTableModel fundingSourceBudgetDetailsTableModel;
-	private AccountingCodeBudgetDetailsTableModel accoundingCodeBudgetDetailsTableModel;
+	private AccountingCodeBudgetDetailsTableModel accountingCodeBudgetDetailsTableModel;
 	private ProjectResourceWorkUnitsTableModel resourceWorkUnitsTableModel;
 	private ProjectResourceBudgetDetailsTableModel resourceBudgetDetailsTableModel;
 	private FundingSourceExpenseTableModel fundingSourceExpenseTableModel;

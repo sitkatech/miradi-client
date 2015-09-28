@@ -28,12 +28,9 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.Measurement;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.RatingSourceQuestion;
-import org.miradi.questions.StaticQuestionManager;
-import org.miradi.questions.StatusQuestion;
+import org.miradi.questions.*;
 import org.miradi.schemas.IndicatorSchema;
 
 public class IndicatorViabilityRatingsSubPanel extends ObjectDataInputPanel
@@ -73,7 +70,11 @@ public class IndicatorViabilityRatingsSubPanel extends ObjectDataInputPanel
 	{
 		if (isThresholdTag(tagToUse))
 			return true;
-		
+
+		// apparently the rating source is mapped via the measurement status confidence tag in the upper panel
+		if (isStatusConfidenceTag(tagToUse))
+			return true;
+
 		return super.doesSectionContainFieldWithTag(tagToUse);
 	}
 	
@@ -91,6 +92,14 @@ public class IndicatorViabilityRatingsSubPanel extends ObjectDataInputPanel
 		if (tagToUse.equals(StatusQuestion.VERY_GOOD))
 			return true;
 			
+		return false;
+	}
+
+	private boolean isStatusConfidenceTag(String tagToUse)
+	{
+		if (tagToUse.equals(Measurement.TAG_STATUS_CONFIDENCE))
+			return true;
+
 		return false;
 	}
 
