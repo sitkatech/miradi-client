@@ -81,6 +81,9 @@ public class ProgressReportSubPanel extends EditableObjectListTableSubPanel
 		if (tagToUse.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 			return true;
 		
+		if (tagToUse.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS))
+			return true;
+
 		return super.doesSectionContainFieldWithTag(tagToUse);
 	}
 	
