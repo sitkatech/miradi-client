@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-28 00:21-0700\n"
+"POT-Creation-Date: 2015-09-29 04:36-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/miradi-client/"
@@ -8790,7 +8790,7 @@ msgid "Viability Analysis Mode"
 msgstr "Modalità Analisi Vitalità"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:322
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:100
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:109
 msgid "Viability Ratings"
 msgstr "Analisi Vitalità"
 
