@@ -28,6 +28,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.utils.AbstractPopupEditorComponent;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.HtmlUtilities;
 
 /*
  * FIXME medium: This code currently retrieves dialog data after the dialog has been disposed
@@ -78,7 +79,8 @@ public class WhenPopupEditorComponent extends AbstractPopupEditorComponent
 	
 	private String getBaseObjectForRowLabel()
 	{
-		return baseObjectForRow.combineShortLabelAndLabel();
+		String combinedValue = baseObjectForRow.combineShortLabelAndLabel();
+		return HtmlUtilities.convertHtmlToPlainText(combinedValue);
 	}
 	
 	public void setBaseObjectForRowLabel(BaseObject baseObjectForRowToUse)

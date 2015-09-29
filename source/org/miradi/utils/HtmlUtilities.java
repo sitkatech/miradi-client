@@ -476,11 +476,11 @@ public class HtmlUtilities
 		transformer.transform(domSource, result);
 		
 		String xmlAsString = writer.toString();
-		xmlAsString = enodeAllUserQuotesAndApostrophes(xmlAsString);
+		xmlAsString = encodeAllUserQuotesAndApostrophes(xmlAsString);
 		return xmlAsString;
 	}
 	
-	public static String enodeAllUserQuotesAndApostrophes(String value)
+	public static String encodeAllUserQuotesAndApostrophes(String value)
 	{
 		if (!value.contains("\"") && !value.contains("'"))
 			return value;

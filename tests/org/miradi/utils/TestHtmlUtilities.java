@@ -72,7 +72,7 @@ public class TestHtmlUtilities extends MiradiTestCase
 	
 	private void verifyQuotesAndApostrophesAreEscaped(String expectedValue, String actualValue) throws Exception
 	{
-		assertEquals("quotes and apostrophes should have been esacaped?", expectedValue, HtmlUtilities.enodeAllUserQuotesAndApostrophes(actualValue));
+		assertEquals("quotes and apostrophes should have been escaped?", expectedValue, HtmlUtilities.encodeAllUserQuotesAndApostrophes(actualValue));
 	}
 
 	public void testIllegaleAnchorElements() throws Exception
