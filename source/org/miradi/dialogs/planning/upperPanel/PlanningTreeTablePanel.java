@@ -46,7 +46,6 @@ import org.miradi.dialogs.planning.propertiesPanel.WorkPlanExpenseAmountsTableMo
 import org.miradi.dialogs.planning.propertiesPanel.WorkPlanWorkUnitsTableModel;
 import org.miradi.dialogs.treetables.AbstractTreeTablePanel;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
-import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
@@ -90,8 +89,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		rebuildEntireTreeAndTable();
 	
 		mainTableColumnSelectionListener = new MainTableSelectionHandler();
-		treeTableRowSelectionListener = new TreeTableRowSelectionHandler();
-		
+
 		enableSelectionListeners();
 	}
 
@@ -347,7 +345,6 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	private void enableSelectionListeners()
 	{
 		listenForColumnSelectionChanges(getMainTable());
-		listenForTreeTableRowSelectionChanges(getTree());
 	}
 	
 	private void listenForColumnSelectionChanges(JTable table)
@@ -356,11 +353,6 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		table.getSelectionModel().addListSelectionListener(mainTableColumnSelectionListener);
 	}
 
-	private void listenForTreeTableRowSelectionChanges(TreeTableWithStateSaving treeToUse)
-	{
-		treeToUse.addSelectionChangeListener(treeTableRowSelectionListener);
-	}
-	
 	private void selectSectionForTag(String selectedColumnTag)
 	{
 		if (isSideTabSwitchingDisabled())
@@ -444,15 +436,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		private int row;
 		private int column;
 	}
-	
-	private class TreeTableRowSelectionHandler implements ListSelectionListener
-	{
-		public void valueChanged(ListSelectionEvent e)
-		{
-			selectSectionForTag(BaseObject.TAG_LABEL);
-		}
-	}
-	
+
 	private class MainTableSelectionHandler  implements TableColumnModelListener, ListSelectionListener
 	{
 		public void columnAdded(TableColumnModelEvent e)
@@ -471,14 +455,25 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		{
 		}
 
+		// defer handling column / value changes until later to allow JTreeTable ListSelectionHandler to execute first
 		public void columnSelectionChanged(ListSelectionEvent e)
 		{
-			selectSectionForColumn();
+			if (!e.getValueIsAdjusting())
+				SwingUtilities.invokeLater(new Runnable() {
+					public void run() {
+						selectSectionForColumn();
+					}
+				});
 		}
 
 		public void valueChanged(ListSelectionEvent e)
 		{
-			selectSectionForColumn();
+			if (!e.getValueIsAdjusting())
+				SwingUtilities.invokeLater(new Runnable() {
+					public void run() {
+						selectSectionForColumn();
+					}
+				});
 		}
 		
 		private void selectSectionForColumn()
@@ -525,6 +520,5 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	private BudgetCategoryOneBudgetDetailsTableModel budgetCategoryTwoBudgetDetailsModel;
 	
 	private MainTableSelectionHandler mainTableColumnSelectionListener;
-	private TreeTableRowSelectionHandler treeTableRowSelectionListener;
 	private JComponent filterStatusPanel;
 }
