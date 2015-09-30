@@ -36,7 +36,7 @@ public class ConceptualModelPropertiesPanel extends ObjectDataInputPanelWithSect
 		createSingleSection(EAM.text("CM Page"));
 		
 		ObjectDataInputField shortLabelField = createShortStringField(ConceptualModelDiagramSchema.getObjectType(), DiagramObject.TAG_SHORT_LABEL);
-		ObjectDataInputField labelField = createMediumStringField(ConceptualModelDiagramSchema.getObjectType(), DiagramObject.TAG_LABEL);
+		ObjectDataInputField labelField = createExpandableField(ConceptualModelDiagramSchema.getObjectType(), DiagramObject.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Page:"), new ObjectDataInputField[]{shortLabelField, labelField});
 	
 		addField(createMultilineField(ConceptualModelDiagramSchema.getObjectType(), DiagramObject.TAG_DETAIL));
