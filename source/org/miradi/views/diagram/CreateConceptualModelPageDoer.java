@@ -29,9 +29,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
-import org.miradi.views.ViewDoer;
 
-public class CreateConceptualModelPageDoer extends ViewDoer
+public class CreateConceptualModelPageDoer extends CreateDiagramDoer
 {
 	@Override
 	public boolean isAvailable()
@@ -39,7 +38,7 @@ public class CreateConceptualModelPageDoer extends ViewDoer
 		if(!getProject().isOpen())
 			return false;
 		
-		if (! DiagramView.is(getView()))
+		if (!DiagramView.is(getView()))
 			return false;
 		
 		if (getDiagramView().isResultsChainTab())
@@ -61,6 +60,7 @@ public class CreateConceptualModelPageDoer extends ViewDoer
 			ShowFullModelModeDoer.showFullModelModeWithoutSelecting(getProject());
 			ViewData viewData = project.getViewData(getDiagramView().cardName());
 			createConceptualModelPage(viewData);
+			openDiagramProperties(getDiagramView());
 		}
 		catch (Exception e)
 		{

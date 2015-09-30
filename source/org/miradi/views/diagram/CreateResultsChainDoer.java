@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
-import java.util.HashSet;
-
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
@@ -37,9 +35,10 @@ import org.miradi.project.ResultsChainCreatorHelper;
 import org.miradi.schemas.BiophysicalResultSchema;
 import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
-import org.miradi.views.ViewDoer;
 
-public class CreateResultsChainDoer extends ViewDoer
+import java.util.HashSet;
+
+public class CreateResultsChainDoer extends CreateDiagramDoer
 {
 	@Override
 	public boolean isAvailable()
@@ -47,7 +46,7 @@ public class CreateResultsChainDoer extends ViewDoer
 		if (!getProject().isOpen())
 			return false;
 		
-		if (! DiagramView.is(getView()))
+		if (!DiagramView.is(getView()))
 			return false;
 		
 		if (getDiagramView().isStrategyBrainstormMode())
@@ -66,6 +65,7 @@ public class CreateResultsChainDoer extends ViewDoer
 		try
 		{
 			createResultsChain(getProject(), getDiagramView());
+			openDiagramProperties(getDiagramView());
 		}
 		catch (Exception e) 
 		{
