@@ -132,19 +132,6 @@ public class ProjectCalendar
 		return project;
 	}
 
-	private static int getFiscalYearMonthSkew(int fiscalYearFirstMonth)
-	{
-		switch(fiscalYearFirstMonth)
-		{
-			case 1: return 0;
-			case 4: return 3;
-			case 7: return -6;
-			case 10: return -3;
-		}
-		
-		throw new RuntimeException("Unknown fiscal year month start: " + fiscalYearFirstMonth);
-	}
-
 	public static String getShortDateUnit(DateUnit dateUnit, int fiscalYearFirstMonth)
 	{
 		if (dateUnit.isProjectTotal())
@@ -226,74 +213,59 @@ public class ProjectCalendar
 		String fullRange = dateRange.toString();
 		
 		MultiCalendar startDate = dateRange.getStartDate();
-		MultiCalendar afterEndDate = new MultiCalendar(dateRange.getEndDate());
-		afterEndDate.addDays(1);
+		MultiCalendar endDate = new MultiCalendar(dateRange.getEndDate());
+
+		MultiCalendar dayAfterEndDate = new MultiCalendar(dateRange.getEndDate());
+		dayAfterEndDate.addDays(1);
 		
 		if(startDate.getGregorianDay() != 1)
 			return fullRange;
-		if(afterEndDate.getGregorianDay() != 1)
+		if(dayAfterEndDate.getGregorianDay() != 1)
 			return fullRange;
-		
-		int skew = ProjectCalendar.getFiscalYearMonthSkew(fiscalYearFirstMonth);
 		
 		int startFiscalMonth = startDate.getGregorianMonth();
 		if((startFiscalMonth % 3) != 1)
 			return fullRange;
 	
-		int endFiscalMonth = afterEndDate.getGregorianMonth();
-		if((endFiscalMonth % 3) != 1)
+		int nextFiscalMonth = dayAfterEndDate.getGregorianMonth();
+		if((nextFiscalMonth % 3) != 1)
 			return fullRange;
-	
+
+		int skew = fiscalYearFirstMonth - 1;
+
 		int startFiscalYear = startDate.getGregorianYear();
+
 		startFiscalMonth -= skew;
-		while(startFiscalMonth < 1)
-		{
+
+		if (startFiscalMonth < 0)
 			startFiscalMonth += 12;
-			--startFiscalYear;
-		}
-		while(startFiscalMonth > 12)
-		{
-			startFiscalMonth -= 12;
-			++startFiscalYear;
-		}
-		
-		int endFiscalYear = afterEndDate.getGregorianYear();
+		else
+			if (fiscalYearFirstMonth != 1)
+				startFiscalYear += 1;
+
+		int endFiscalYear = endDate.getGregorianYear();
+		int endFiscalMonth = endDate.getGregorianMonth();
+
 		endFiscalMonth -= skew;
-		while(endFiscalMonth < 1)
-		{
+		if (endFiscalMonth == 0)
+			endFiscalMonth = 12;
+
+		if (endFiscalMonth < 0)
 			endFiscalMonth += 12;
-			--endFiscalYear;
-		}
-		while(endFiscalMonth > 12)
-		{
-			endFiscalMonth -= 12;
-			++endFiscalYear;
-		}
-		
+		else
+			if (endFiscalMonth != 12)
+				endFiscalYear += 1;
+
 		String startYearString = getFiscalYearString(startFiscalYear);
 		
-		if(startFiscalYear+1 == endFiscalYear && startFiscalMonth == endFiscalMonth && startFiscalMonth == 1)
+		if(startFiscalYear == endFiscalYear && startFiscalMonth == 1 && endFiscalMonth == 12)
 			return startYearString;
-		
+
 		String endYearString = getFiscalYearString(endFiscalYear);
 		
-		int startFiscalQuarter = (startFiscalMonth-1) / 3 + 1;
-		int endFiscalQuarter = (endFiscalMonth - 1) / 3;
-		if (endFiscalQuarter == 0)
-		{
-			endFiscalQuarter = 4;
-		}
-		
-		if(startFiscalQuarter == 4)
-		{
-			if(startFiscalYear+1 != endFiscalYear)
-				return fullRange;
-		}
-		else if(startFiscalYear != endFiscalYear)
-		{
-			return fullRange;
-		}
-		
+		int startFiscalQuarter = ((startFiscalMonth - 1) / 3) + 1;
+		int endFiscalQuarter = endFiscalMonth / 3;
+
 		String firstFiscalQuarter = getQuarterlyPrefixString() + startFiscalQuarter + " " + startYearString;
 		if (startFiscalQuarter == endFiscalQuarter)
 			return firstFiscalQuarter;
