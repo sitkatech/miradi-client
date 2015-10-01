@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-29 05:21-0700\n"
+"POT-Creation-Date: 2015-10-01 05:51-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/miradi-client/"
@@ -3831,11 +3831,11 @@ msgstr "Caratteristiche finanziarie future (Demo)"
 msgid "Financial Settings"
 msgstr "Impostazione dati finanziari"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:317
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:289
 msgid "Fiscal Quarter Prefix|FQ"
 msgstr "Trimestre Fiscale Prefix|FQ"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:307
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:279
 msgid "Fiscal Year|FY"
 msgstr "Anno Fiscale|FY"
 
@@ -6077,7 +6077,7 @@ msgstr ""
 "utilizza un calendario occidentale, in genere 1° è  trimestre Gen-Mar, il 2° "
 "è Apr-Giu, il 3° è Lug-Set, e quarto è Ott-Dic."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:312
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:284
 msgid "Quarter Prefix|Q"
 msgstr "prefisso Trimestre "
 
@@ -8596,7 +8596,7 @@ msgid "Title|XSL Template Properties"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:45
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:151
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:138
 msgid "Total"
 msgstr "Totale"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-29 05:21-0700\n"
+"POT-Creation-Date: 2015-10-01 05:51-0700\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3600,11 +3600,11 @@ msgstr ""
 msgid "Financial Settings"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:317
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:289
 msgid "Fiscal Quarter Prefix|FQ"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:307
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:279
 msgid "Fiscal Year|FY"
 msgstr ""
 
@@ -5747,7 +5747,7 @@ msgid ""
 "Jun, 3rd quarter is Jul - Sep, and 4th qtr is Oct - Dec. "
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:312
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:284
 msgid "Quarter Prefix|Q"
 msgstr ""
 
@@ -8130,7 +8130,7 @@ msgid "Title|XSL Template Properties"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:45
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:151
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:138
 msgid "Total"
 msgstr ""
 

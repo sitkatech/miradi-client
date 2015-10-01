@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-29 05:21-0700\n"
+"POT-Creation-Date: 2015-10-01 05:51-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/miradi-client/"
@@ -3898,11 +3898,11 @@ msgstr "Финансови бъдещи особености - демо-верс
 msgid "Financial Settings"
 msgstr "Финансови настройки"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:317
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:289
 msgid "Fiscal Quarter Prefix|FQ"
 msgstr "Fiscal Quarter Prefix|ФТ"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:307
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:279
 msgid "Fiscal Year|FY"
 msgstr "Fiscal Year|ФГ"
 
@@ -6157,7 +6157,7 @@ msgstr ""
 "календар, обикновено първото тримесечие е яну-мар, 2то тримесечие е апр-юни, "
 "3то тримесечие е юли-сеп и 4то тримесечие е окт-дек."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:312
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:284
 msgid "Quarter Prefix|Q"
 msgstr "Quarter Prefix|Т"
 
@@ -8679,7 +8679,7 @@ msgid "Title|XSL Template Properties"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:45
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:151
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:138
 msgid "Total"
 msgstr "Крайна сума"
 

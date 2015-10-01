@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-29 05:21-0700\n"
+"POT-Creation-Date: 2015-10-01 05:51-0700\n"
 "Language: psp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -3865,11 +3865,11 @@ msgstr "Financial Future Features Demo"
 msgid "Financial Settings"
 msgstr "Financial Settings"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:317
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:289
 msgid "Fiscal Quarter Prefix|FQ"
 msgstr "Fiscal Quarter Prefix|FQ"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:307
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:279
 msgid "Fiscal Year|FY"
 msgstr "Fiscal Year|FY"
 
@@ -6115,7 +6115,7 @@ msgstr ""
 "Western calendar, typically 1st quarter is Jan - Mar, 2nd quarter is Apr - "
 "Jun, 3rd quarter is Jul - Sep, and 4th qtr is Oct - Dec. "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:312
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:284
 msgid "Quarter Prefix|Q"
 msgstr "Quarter Prefix|Q"
 
@@ -8645,7 +8645,7 @@ msgid "Title|XSL Template Properties"
 msgstr "Title|XSL Template Properties"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:45
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:151
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:138
 msgid "Total"
 msgstr "Total"
 
