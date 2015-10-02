@@ -21,19 +21,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.viability;
 
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
-import org.miradi.dialogs.diagram.WorkPlanPanelPropertiesPanel;
 import org.miradi.dialogs.diagram.IndicatorSubPanel;
+import org.miradi.dialogs.diagram.WorkPlanPanelPropertiesPanel;
 import org.miradi.dialogs.progressReport.ProgressReportSubPanel;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.Project;
 import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.KeyEcologicalAttributeSchema;
 
 abstract public class AbstractIndicatorPropertiesPanel extends ObjectDataInputPanelWithSections
 {
@@ -58,15 +56,6 @@ abstract public class AbstractIndicatorPropertiesPanel extends ObjectDataInputPa
 	{
 	}
 
-	@Override
-	public void setObjectRefs(ORef[] orefsToUse)
-	{
-		super.setObjectRefs(orefsToUse);
-		
-		ORef foundRef = new ORefList(orefsToUse).getRefForType(KeyEcologicalAttributeSchema.getObjectType());
-		setTabEnabled(viabilityRatingsSubPanel.getPanelDescription(), foundRef.isValid());
-	}
-	
 	private static ORef getInvalidTargetRef()
 	{
 		return new ORef(ObjectType.TARGET, new FactorId(BaseId.INVALID.asInt()));
