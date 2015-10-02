@@ -34,7 +34,7 @@ public class ProjectNameRestrictedTextField extends PanelTextFieldWithSelectAllO
 
 	public ProjectNameRestrictedTextField(String initialValue)
 	{
-		super(AbstractObjectDataInputPanel.DEFAULT_TEXT_COLUM_COUNT);
+		super(AbstractObjectDataInputPanel.DEFAULT_TEXT_COLUMN_COUNT);
 		
 		initialize(initialValue);
 	}

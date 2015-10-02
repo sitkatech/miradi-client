@@ -504,7 +504,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createMultilineField(int objectType, String tag) throws Exception
 	{
-		return createMultilineField(objectType, tag, DEFAULT_TEXT_COLUM_COUNT);
+		return createMultilineField(objectType, tag, DEFAULT_TEXT_COLUMN_COUNT);
 	}
 	
 	public ObjectDataInputField createMultilineField(int objectType, String tag, int columns) throws Exception
@@ -986,7 +986,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	}
 
 	public static int STD_SHORT = 5;
-	public static final int DEFAULT_TEXT_COLUM_COUNT = 50;
+	public static final int DEFAULT_TEXT_COLUMN_COUNT = 50;
 	
 	private Project project;
 	private Picker picker;

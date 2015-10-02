@@ -49,7 +49,7 @@ public class ThreatRatingCommentsEditorComponent extends SavableField
 		
 		project = projectToUse;		
 		selectedHeirearchy = new ORefList();
-		panelTextArea = new EditableHtmlPane(EAM.getMainWindow(), AbstractObjectDataInputPanel.DEFAULT_TEXT_COLUM_COUNT, ObjectScrollingMultilineInputField.INITIAL_MULTI_LINE_TEXT_AREA_ROW_COUNT);
+		panelTextArea = new EditableHtmlPane(EAM.getMainWindow(), AbstractObjectDataInputPanel.DEFAULT_TEXT_COLUMN_COUNT, ObjectScrollingMultilineInputField.INITIAL_MULTI_LINE_TEXT_AREA_ROW_COUNT);
 		
 		panelTextArea.setForeground(EAM.EDITABLE_FOREGROUND_COLOR);
 		panelTextArea.setBackground(EAM.EDITABLE_BACKGROUND_COLOR);

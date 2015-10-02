@@ -57,7 +57,7 @@ abstract public class AbstractHtmlPane extends MiradiTextPane
 {
 	public AbstractHtmlPane(MainWindow mainWindow)
 	{
-		this(mainWindow, AbstractObjectDataInputPanel.DEFAULT_TEXT_COLUM_COUNT, ObjectScrollingMultilineInputField.INITIAL_MULTI_LINE_TEXT_AREA_ROW_COUNT);
+		this(mainWindow, AbstractObjectDataInputPanel.DEFAULT_TEXT_COLUMN_COUNT, ObjectScrollingMultilineInputField.INITIAL_MULTI_LINE_TEXT_AREA_ROW_COUNT);
 	}
 
 	public AbstractHtmlPane(MainWindow mainWindow, int fixedApproximateColumnCount, int initialApproximateRowCount)
