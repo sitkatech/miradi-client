@@ -85,6 +85,9 @@ public class ProgressPercentSubPanel extends EditableObjectListTableSubPanel
 		if (tagToUse.equals(Desire.PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE))
 			return true;
 		
+		if (tagToUse.equals(Desire.PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS))
+			return true;
+
 		return super.doesSectionContainFieldWithTag(tagToUse);
 	}
 }
