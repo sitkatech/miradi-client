@@ -189,7 +189,7 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 		{
 			super(projectToUse, objectTypeToUse);
 			title = titleToUse;
-			tags = new Vector<>();
+			tags = new Vector<String>();
 		}
 
 		public SimpleObjectDataInputPanel(Project projectToUse, int objectTypeToUse, String titleToUse, Vector<String> sectionTags)
