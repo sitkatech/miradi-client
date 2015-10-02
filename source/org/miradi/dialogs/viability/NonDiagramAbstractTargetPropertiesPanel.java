@@ -29,10 +29,13 @@ import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.TargetSchema;
+
+import java.util.Vector;
 
 public class NonDiagramAbstractTargetPropertiesPanel extends ObjectDataInputPanelWithSections
 {
@@ -47,8 +50,10 @@ public class NonDiagramAbstractTargetPropertiesPanel extends ObjectDataInputPane
 		
 		simpleModeStatusSubPanel = new SimpleModeStatusSubPanel(getProject(), ORef.createInvalidWithType(targetType));
 		viabilityModeStatusSubPanel = new ViabilityModeStatusSubPanel(getProject(), ORef.createInvalidWithType(targetType));
-		
-		createSingleSection(EAM.text("Status"));
+
+		Vector<String> sectionTags = new Vector<String>();
+		sectionTags.add(CustomPlanningColumnsQuestion.META_CURRENT_RATING);
+		createSingleSection(EAM.text("Status"), sectionTags);
 		addSubPanelField(simpleModeStatusSubPanel);
 		addSubPanelField(viabilityModeStatusSubPanel);
 		

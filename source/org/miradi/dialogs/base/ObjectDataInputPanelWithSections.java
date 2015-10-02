@@ -21,6 +21,7 @@ package org.miradi.dialogs.base;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.util.Vector;
 
 import javax.swing.Icon;
 import javax.swing.JPanel;
@@ -86,6 +87,13 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 		addSubPanelWithTitledBorder(singleSection);
 	}
 	
+	public void createSingleSection(String title, Vector<String> sectionTags)
+	{
+		singleSection = new SimpleObjectDataInputPanel(getProject(), objectType, title, sectionTags);
+		singleSection.setObjectRefs(getSelectedRefs());
+		addSubPanelWithTitledBorder(singleSection);
+	}
+
 	@Override
 	public void addSubPanelWithoutTitledBorder(AbstractObjectDataInputPanel subPanel)
 	{
@@ -181,8 +189,24 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 		{
 			super(projectToUse, objectTypeToUse);
 			title = titleToUse;
+			tags = new Vector<>();
 		}
-		
+
+		public SimpleObjectDataInputPanel(Project projectToUse, int objectTypeToUse, String titleToUse, Vector<String> sectionTags)
+		{
+			this(projectToUse, objectTypeToUse, titleToUse);
+			tags = sectionTags;
+		}
+
+		@Override
+		protected boolean doesSectionContainFieldWithTag(String tag)
+		{
+			if (tags.contains(tag))
+				return true;
+
+			return super.doesSectionContainFieldWithTag(tag);
+		}
+
 		@Override
 		public String getPanelDescription()
 		{
@@ -190,6 +214,7 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 		}
 
 		private String title;
+		private Vector<String> tags;
 	}
 	
 	private ObjectDataInputPanel singleSection;
