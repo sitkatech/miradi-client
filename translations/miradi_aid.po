@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-01 05:51-0700\n"
+"POT-Creation-Date: 2015-10-02 02:06-0700\n"
 "PO-Revision-Date: 2014-05-28 17:01+0000\n"
 "Last-Translator: nsalafsky <nick@fosonline.org>\n"
 "Language-Team: English (Estonia) (http://www.transifex.com/projects/p/miradi-"
@@ -8483,7 +8483,7 @@ msgstr "Title|Related Interest Properties"
 msgid "Title|IUCN Redlist Species"
 msgstr "Title|IUCN Redlist Species"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/AbstractIndicatorPropertiesPanel.java:78
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/AbstractIndicatorPropertiesPanel.java:67
 msgid "Title|Indicator Properties"
 msgstr "Title|Indicator Properties"
 

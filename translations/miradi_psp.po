@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-01 05:51-0700\n"
+"POT-Creation-Date: 2015-10-02 02:06-0700\n"
 "Language: psp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -8466,7 +8466,7 @@ msgstr "Title|Human Wellbeing Component Properties"
 msgid "Title|IUCN Redlist Species"
 msgstr "Title|IUCN Redlist Species"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/AbstractIndicatorPropertiesPanel.java:78
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/AbstractIndicatorPropertiesPanel.java:67
 msgid "Title|Indicator Properties"
 msgstr "Title|Indicator Properties"
 
