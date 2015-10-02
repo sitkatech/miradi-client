@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-02 02:06-0700\n"
+"POT-Creation-Date: 2015-10-02 08:06-0700\n"
 "Language: psp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -3228,7 +3228,7 @@ msgstr "Date"
 msgid "Date Chooser"
 msgstr "Date Chooser"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:46
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:47
 msgid "Dates can be set in the Work Plan view"
 msgstr "Dates can be set in the Work Plan view"
 
@@ -3338,7 +3338,7 @@ msgid "Detail methods, tasks, and responsibilities"
 msgstr "Detail methods, tasks, and responsibilities"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/MiradiShareDetailsPanel.java:39
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/ModelessTargetSubPanel.java:58
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/ModelessTargetSubPanel.java:67
 msgid "Details"
 msgstr "Details"
 
@@ -6700,7 +6700,7 @@ msgstr ""
 msgid "Start:"
 msgstr "Start:"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:51
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:56
 msgid "Status"
 msgstr "Status"
 
@@ -8458,7 +8458,7 @@ msgstr "Title|Funding Source Properties"
 msgid "Title|Goal Properties"
 msgstr "Title|Goal Properties"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:88
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:93
 msgid "Title|Human Wellbeing Target Properties"
 msgstr "Title|Human Wellbeing Component Properties"
 
@@ -8608,7 +8608,7 @@ msgstr "Title|Stress-Based Pressure Rating"
 msgid "Title|Tag Properties Panel"
 msgstr "Title|Tag Properties Panel"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:90
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:95
 msgid "Title|Target Properties"
 msgstr "Title|Component Properties"
 
@@ -9057,7 +9057,7 @@ msgstr ""
 msgid "White"
 msgstr "White"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:37
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:38
 msgid "Who"
 msgstr "Who"
 
@@ -9069,7 +9069,7 @@ msgstr "Who Override was: "
 msgid "Who Override was: %s"
 msgstr "Who Override was: %s"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:54
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:64
 msgid "Who and When"
 msgstr "Who and When"
 

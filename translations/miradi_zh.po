@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-02 02:06-0700\n"
+"POT-Creation-Date: 2015-10-02 08:06-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Chinese (http://www.transifex.com/projects/p/miradi-client/"
@@ -3046,7 +3046,7 @@ msgstr ""
 msgid "Date Chooser"
 msgstr "日期选择器 \t\t"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:46
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:47
 msgid "Dates can be set in the Work Plan view"
 msgstr ""
 
@@ -3153,7 +3153,7 @@ msgid "Detail methods, tasks, and responsibilities"
 msgstr "详尽的方法、任务及职责 \t\t"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/MiradiShareDetailsPanel.java:39
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/ModelessTargetSubPanel.java:58
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/ModelessTargetSubPanel.java:67
 msgid "Details"
 msgstr ""
 
@@ -6387,7 +6387,7 @@ msgstr ""
 msgid "Start:"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:51
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:56
 msgid "Status"
 msgstr ""
 
@@ -8086,7 +8086,7 @@ msgstr "资金来源属性 \t\t"
 msgid "Title|Goal Properties"
 msgstr "总目标属性 "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:88
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:93
 msgid "Title|Human Wellbeing Target Properties"
 msgstr ""
 
@@ -8236,7 +8236,7 @@ msgstr "基于压力的威胁因子分级 \t\t"
 msgid "Title|Tag Properties Panel"
 msgstr "标题|标签属性面板"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:90
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:95
 msgid "Title|Target Properties"
 msgstr ""
 
@@ -8663,7 +8663,7 @@ msgstr ""
 msgid "White"
 msgstr "白色"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:37
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:38
 msgid "Who"
 msgstr ""
 
@@ -8675,7 +8675,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:54
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:64
 msgid "Who and When"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-02 02:06-0700\n"
+"POT-Creation-Date: 2015-10-02 08:06-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/miradi-client/"
@@ -3197,7 +3197,7 @@ msgstr "data"
 msgid "Date Chooser"
 msgstr "Scegli Data"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:46
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:47
 msgid "Dates can be set in the Work Plan view"
 msgstr ""
 
@@ -3308,7 +3308,7 @@ msgid "Detail methods, tasks, and responsibilities"
 msgstr "Metodi di dettaglio, attività e responsibilità"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/MiradiShareDetailsPanel.java:39
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/ModelessTargetSubPanel.java:58
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/ModelessTargetSubPanel.java:67
 msgid "Details"
 msgstr "Dettagli"
 
@@ -6658,7 +6658,7 @@ msgstr ""
 msgid "Start:"
 msgstr "Inizio:"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:51
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:56
 msgid "Status"
 msgstr "Stato(Status)"
 
@@ -8409,7 +8409,7 @@ msgstr "Proprietà della risorsa di finanziamento"
 msgid "Title|Goal Properties"
 msgstr "Proprietà dell'Obiettivo di Conservazione"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:88
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:93
 msgid "Title|Human Wellbeing Target Properties"
 msgstr ""
 
@@ -8559,7 +8559,7 @@ msgstr "Analisi della Minacce basata su Stress"
 msgid "Title|Tag Properties Panel"
 msgstr "Pannello Proprietà Etichetta"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:90
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:95
 msgid "Title|Target Properties"
 msgstr "Proprietà del Target di Conservazione"
 
@@ -9008,7 +9008,7 @@ msgstr ""
 msgid "White"
 msgstr "Bianco"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:37
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:38
 msgid "Who"
 msgstr ""
 
@@ -9020,7 +9020,7 @@ msgstr "Il Chi ignorato è:"
 msgid "Who Override was: %s"
 msgstr "Il Chi ignorato è: %s"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:54
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:64
 msgid "Who and When"
 msgstr ""
 
