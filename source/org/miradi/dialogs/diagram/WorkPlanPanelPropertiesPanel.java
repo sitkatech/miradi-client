@@ -26,6 +26,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.FillerLabel;
 
 public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
@@ -46,6 +47,15 @@ public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
 		add(new PanelTitleLabel(EAM.text("Dates can be set in the Work Plan view")));
 		
 		updateFieldsFromProject();
+	}
+
+	@Override
+	protected boolean doesSectionContainFieldWithTag(String tag)
+	{
+		if (tag.equals(CustomPlanningColumnsQuestion.META_WHO_TOTAL))
+			return true;
+
+		return super.doesSectionContainFieldWithTag(tag);
 	}
 
 	@Override
