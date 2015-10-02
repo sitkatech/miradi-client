@@ -53,6 +53,15 @@ public class ModelessTargetSubPanel extends ObjectDataInputPanel
 	}
 
 	@Override
+	protected boolean doesSectionContainFieldWithTag(String tag)
+	{
+		if (tag.equals(Target.PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE))
+			return true;
+
+		return super.doesSectionContainFieldWithTag(tag);
+	}
+
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Details");
