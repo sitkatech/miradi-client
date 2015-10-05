@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-02 08:06-0700\n"
+"POT-Creation-Date: 2015-10-05 08:06-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/miradi-client/"
@@ -3871,7 +3871,7 @@ msgstr "Selettore cartella"
 msgid "FolderName|BackupsFromMigrationToMiradi4"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:71
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:58
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:52
 msgid "Font"
 msgstr "Font"
@@ -4042,7 +4042,7 @@ msgid "Goal Relevancy Panel"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:61
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:98
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:85
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:47
 msgid "Goals"
 msgstr "Obiettivi di Conservazione"
@@ -4806,7 +4806,7 @@ msgid "Learn about Miradi Share"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:58
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:96
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:83
 msgid "Legacy TNC Ratings"
 msgstr "Valutazione dell'ordinamento TNC"
 
@@ -5549,7 +5549,7 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:60
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:44
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:97
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:84
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:44
 msgid "Objectives"
 msgstr ""
@@ -6107,7 +6107,7 @@ msgid "Rapid Assessment"
 msgstr "Valutazione Rapida"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:56
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:95
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:82
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/StrategyCoreSubForm.java:37
 msgid "Rating"
 msgstr ""
@@ -6819,7 +6819,7 @@ msgstr "Forte Aumento"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:153
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:67
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:150
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:137
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:67
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:38
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:120
@@ -7755,7 +7755,7 @@ msgstr "Etichetta"
 msgid "Tagged Items"
 msgstr "Elementi Etichettati"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:129
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:116
 msgid "Tags"
 msgstr "Etichette"
 
@@ -9271,7 +9271,7 @@ msgstr ""
 msgid "FieldLabel|3.LeaderResource|Leader"
 msgstr ""
 
-msgid "FieldLabel|3.TaxonomyClassificationContainer|Taxonomies"
+msgid "FieldLabel|3.TaxonomyClassificationContainer|Classifications"
 msgstr ""
 
 msgid "FieldLabel|5.BudgetRollupReportTypes|Rollup Types"
@@ -9469,7 +9469,7 @@ msgstr ""
 msgid "FieldLabel|8.Unit|Unit"
 msgstr ""
 
-msgid "FieldLabel|8.TaxonomyClassificationContainer|Taxonomies"
+msgid "FieldLabel|8.TaxonomyClassificationContainer|Classifications"
 msgstr ""
 
 msgid "FieldLabel|9.Objective|Objective"
@@ -9520,7 +9520,7 @@ msgstr ""
 msgid "FieldLabel|9.PseudoRelevantStrategyRefs|Relevant Strategies"
 msgstr "Strategie rilevanti"
 
-msgid "FieldLabel|9.TaxonomyClassificationContainer|Taxonomies"
+msgid "FieldLabel|9.TaxonomyClassificationContainer|Classifications"
 msgstr ""
 
 msgid "FieldLabel|10.Goal|Goal"
@@ -9559,7 +9559,7 @@ msgstr "Indicatori rilevanti"
 msgid "FieldLabel|10.PseudoRelevantStrategyRefs|Relevant Strategies"
 msgstr "Strategie rilevanti"
 
-msgid "FieldLabel|10.TaxonomyClassificationContainer|Taxonomies"
+msgid "FieldLabel|10.TaxonomyClassificationContainer|Classifications"
 msgstr ""
 
 msgid "FieldLabel|11.ProjectMetadata|Project"
@@ -9955,7 +9955,7 @@ msgstr "Dettagli"
 msgid "FieldLabel|12.Summary|Future Value"
 msgstr ""
 
-msgid "FieldLabel|12.TaxonomyClassificationContainer|Taxonomies"
+msgid "FieldLabel|12.TaxonomyClassificationContainer|Classifications"
 msgstr ""
 
 msgid "FieldLabel|12.Rating|Rating"
@@ -10027,7 +10027,7 @@ msgstr "Articolo"
 msgid "FieldLabel|17.Status|Status"
 msgstr "Stato"
 
-msgid "FieldLabel|17.TaxonomyClassificationContainer|Taxonomies"
+msgid "FieldLabel|17.TaxonomyClassificationContainer|Classifications"
 msgstr ""
 
 msgid "FieldLabel|18.FontSize|Size"
@@ -10108,7 +10108,7 @@ msgstr "Dettagli"
 msgid "FieldLabel|20.IsDirectThreat|Direct Threat"
 msgstr "Minaccia Diretta"
 
-msgid "FieldLabel|20.TaxonomyClassificationContainer|Taxonomies"
+msgid "FieldLabel|20.TaxonomyClassificationContainer|Classifications"
 msgstr ""
 
 msgid "FieldLabel|21.Strategy|Strategy"
@@ -10192,7 +10192,7 @@ msgstr "Valutazione della Strategia Legacy di TNC"
 msgid "FieldLabel|21.LeaderResource|Leader"
 msgstr ""
 
-msgid "FieldLabel|21.TaxonomyClassificationContainer|Taxonomies"
+msgid "FieldLabel|21.TaxonomyClassificationContainer|Classifications"
 msgstr ""
 
 msgid "FieldLabel|22.Target|Target"
@@ -10240,7 +10240,7 @@ msgstr "Dettagli"
 msgid "FieldLabel|22.HabitatAssociation|Habitat Association (IUCN v3.0)"
 msgstr "Associazione Habitat (IUCN v3.0)"
 
-msgid "FieldLabel|22.TaxonomyClassificationContainer|Taxonomies"
+msgid "FieldLabel|22.TaxonomyClassificationContainer|Classifications"
 msgstr ""
 
 msgid "FieldLabel|23.IntermediateResult|Intermediate Result"
@@ -10282,7 +10282,7 @@ msgstr "Etichette"
 msgid "FieldLabel|24.Detail|Details"
 msgstr "Dettagli"
 
-msgid "FieldLabel|24.TaxonomyClassificationContainer|Taxonomies"
+msgid "FieldLabel|24.TaxonomyClassificationContainer|Classifications"
 msgstr ""
 
 msgid "FieldLabel|25.ThreatReductionResult|Threat Reduction Result"
@@ -10309,7 +10309,7 @@ msgstr "Dettagli"
 msgid "FieldLabel|25.Comments|Comment"
 msgstr "Commento"
 
-msgid "FieldLabel|25.TaxonomyClassificationContainer|Taxonomies"
+msgid "FieldLabel|25.TaxonomyClassificationContainer|Classifications"
 msgstr ""
 
 msgid "FieldLabel|26.Label|Text"
@@ -10441,7 +10441,7 @@ msgstr "Contributo"
 msgid "FieldLabel|33.Irreversibility|Irreversibility"
 msgstr "Irreversibilità"
 
-msgid "FieldLabel|33.TaxonomyClassificationContainer|Taxonomies"
+msgid "FieldLabel|33.TaxonomyClassificationContainer|Classifications"
 msgstr ""
 
 msgid "FieldLabel|34.ThreatStressRating|Threat-Stress Rating"
@@ -10815,7 +10815,7 @@ msgstr "Modalità Vitalità"
 msgid "FieldLabel|52.TargetViability|Target Viability Status"
 msgstr "Status della Vitalità del Target di Conservazione"
 
-msgid "FieldLabel|52.TaxonomyClassificationContainer|Taxonomies"
+msgid "FieldLabel|52.TaxonomyClassificationContainer|Classifications"
 msgstr ""
 
 msgid "FieldLabel|53.IucnRedlistSpecies|IUCN Redlist Species"
@@ -10933,7 +10933,7 @@ msgstr ""
 msgid "FieldLabel|60.ProgramTaxonomySetVersion|Program Taxonomy Set Version"
 msgstr ""
 
-msgid "FieldLabel|60.TaxonomyClassificationContainer|Taxonomies"
+msgid "FieldLabel|60.TaxonomyClassificationContainer|Classifications"
 msgstr ""
 
 msgid "FieldLabel|61.Taxonomy|Miradi Share Taxonomy"
@@ -10992,9 +10992,8 @@ msgstr "Catene dei Risultati"
 msgid "FieldLabel|65.Text|Details"
 msgstr "Dettagli"
 
-#, fuzzy
-msgid "FieldLabel|65.TaxonomyClassificationContainer|Taxonomies"
-msgstr "Classificazione Standard"
+msgid "FieldLabel|65.TaxonomyClassificationContainer|Classifications"
+msgstr ""
 
 #, fuzzy
 msgid "FieldLabel|66.BiophysicalResult|Biophysical Result"
@@ -28066,6 +28065,10 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#, fuzzy
+#~ msgid "FieldLabel|65.TaxonomyClassificationContainer|Taxonomies"
+#~ msgstr "Classificazione Standard"
 
 #~ msgid "Priority"
 #~ msgstr "Priorità"
