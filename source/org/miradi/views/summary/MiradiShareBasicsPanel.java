@@ -35,9 +35,9 @@ public class MiradiShareBasicsPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, orefsToUse);
 		
-		String upperHelpContant = getUpperHelpContent();
+		String upperHelpContent = getUpperHelpContent();
 		String lowerHelpContent = getLowerHelpContent();
-		createFieldsFromForm(new MiradiShareTaxonomyDataForm(upperHelpContant, lowerHelpContent));
+		createFieldsFromForm(new MiradiShareTaxonomyDataForm(upperHelpContent, lowerHelpContent));
 
 		updateFieldsFromProject();
 	}

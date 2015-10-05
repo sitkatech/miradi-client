@@ -22,7 +22,7 @@ package org.miradi.dialogfields;
 
 import org.miradi.questions.ChoiceQuestion;
 
-public class MultiSelectionEditorComponentWithHierarchies extends AbstractEditorComponentWithHiearchies
+public class MultiSelectionEditorComponentWithHierarchies extends AbstractEditorComponentWithHierarchies
 {
 	public MultiSelectionEditorComponentWithHierarchies(ChoiceQuestion questionToUse)
 	{

@@ -31,9 +31,9 @@ import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
-abstract public class AbstractEditorComponentWithHiearchies extends QuestionBasedEditorComponent
+abstract public class AbstractEditorComponentWithHierarchies extends QuestionBasedEditorComponent
 {
-	public AbstractEditorComponentWithHiearchies(ChoiceQuestion questionToUse)
+	public AbstractEditorComponentWithHierarchies(ChoiceQuestion questionToUse)
 	{
 		super(questionToUse);
 	}

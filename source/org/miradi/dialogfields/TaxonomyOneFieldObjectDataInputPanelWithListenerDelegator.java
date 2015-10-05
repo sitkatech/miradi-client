@@ -26,7 +26,7 @@ import org.miradi.project.Project;
 
 public class TaxonomyOneFieldObjectDataInputPanelWithListenerDelegator extends AbstractOneFieldObjectDataInputPanelWithListenerDelegator
 {
-	public TaxonomyOneFieldObjectDataInputPanelWithListenerDelegator(Project projectToUse, ORef refToUse, String tagToUse, TaxonomyAssociation taxonomyAssociation, AbstractEditorComponentWithHiearchies taxonomyLeftSideEditorComponent)
+	public TaxonomyOneFieldObjectDataInputPanelWithListenerDelegator(Project projectToUse, ORef refToUse, String tagToUse, TaxonomyAssociation taxonomyAssociation, AbstractEditorComponentWithHierarchies taxonomyLeftSideEditorComponent)
 	{
 		super(projectToUse, refToUse, tagToUse, new TaxonomyEditorComponentWrapperField(projectToUse, refToUse, tagToUse, taxonomyLeftSideEditorComponent, taxonomyAssociation), taxonomyLeftSideEditorComponent);
 	}	

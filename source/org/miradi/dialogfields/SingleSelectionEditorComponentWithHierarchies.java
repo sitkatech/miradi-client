@@ -29,7 +29,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 
-public class SingleSelectionEditorComponentWithHierarchies extends AbstractEditorComponentWithHiearchies
+public class SingleSelectionEditorComponentWithHierarchies extends AbstractEditorComponentWithHierarchies
 {
 	public SingleSelectionEditorComponentWithHierarchies(ChoiceQuestion questionToUse)
 	{
