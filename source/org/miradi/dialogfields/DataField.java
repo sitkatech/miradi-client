@@ -87,9 +87,9 @@ abstract public class DataField extends SavableField
 	{
 		Border lineBorder = BorderFactory.createLineBorder(Color.BLACK);
 		Border margin = BorderFactory.createEmptyBorder(2, 2, 2, 2);
-		CompoundBorder coumpoundBorder = BorderFactory.createCompoundBorder(lineBorder, margin);
+		CompoundBorder compoundBorder = BorderFactory.createCompoundBorder(lineBorder, margin);
 		
-		return coumpoundBorder;
+		return compoundBorder;
 	}
 	
 	public Project getProject()

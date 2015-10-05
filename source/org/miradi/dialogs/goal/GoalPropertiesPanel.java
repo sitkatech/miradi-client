@@ -49,7 +49,7 @@ public class GoalPropertiesPanel extends ObjectDataInputPanelWithSections
 		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(GoalSchema.getObjectType(), Goal.PSEUDO_TAG_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditGoalIndicatorRelevancyList.class), getPicker()));
 		addFieldWithEditButton(EAM.text("Strategies And Activities"), createReadOnlyObjectList(GoalSchema.getObjectType(), Goal.PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditGoalStrategyActivityRelevancyList.class), getPicker()));
 		addSubPanelWithTitledBorder(new ProgressPercentSubPanel(getProject()));
-		addField(createTaxonomyFields(GoalSchema.getObjectType()));
+		addTaxonomyFields(GoalSchema.getObjectType());
 		addField(createMultilineField(Goal.TAG_COMMENTS));
 		
 		updateFieldsFromProject();

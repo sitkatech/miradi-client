@@ -20,29 +20,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.base;
 
+import com.jhlabs.awt.Alignment;
+import com.jhlabs.awt.GridLayoutPlus;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.fieldComponents.HtmlFormViewer;
-import org.miradi.forms.AbstractFormFieldQuestionData;
-import org.miradi.forms.FieldPanelSpec;
-import org.miradi.forms.FieldRelatedFormItem;
-import org.miradi.forms.FormConstant;
-import org.miradi.forms.FormFieldData;
-import org.miradi.forms.FormFieldDisplayData;
-import org.miradi.forms.FormFieldExternalProjectIdData;
-import org.miradi.forms.FormFieldReadonlyClickableLinkField;
-import org.miradi.forms.FormFieldHtmlStaticText;
-import org.miradi.forms.FormFieldLabel;
-import org.miradi.forms.FormItem;
-import org.miradi.forms.FormRow;
-import org.miradi.forms.PropertiesPanelSpec;
+import org.miradi.forms.*;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.utils.DataPanelFlexibleWidthHtmlViewer;
 import org.miradi.utils.FillerLabel;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
-
-import com.jhlabs.awt.Alignment;
-import com.jhlabs.awt.GridLayoutPlus;
 
 abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends	AbstractObjectDataInputPanelWithActivation
 {
@@ -132,7 +119,7 @@ abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends	
 			int objectType = data.getObjectType();
 
 			add(new FillerLabel());
-			addField(createTaxonomyFields(objectType));
+			addTaxonomyFields(objectType);
 			return;
 		}
 		if (formItem.isFormQuestionFieldData())

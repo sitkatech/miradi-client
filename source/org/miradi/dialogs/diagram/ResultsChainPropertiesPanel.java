@@ -39,7 +39,7 @@ public class ResultsChainPropertiesPanel extends ObjectDataInputPanelWithSection
 		addFieldsOnOneLine(EAM.text("Page:"), new ObjectDataInputField[]{shortLabelField, labelField});
 	
 		addField(createMultilineField(ResultsChainDiagramSchema.getObjectType(), DiagramObject.TAG_DETAIL));
-		addField(createTaxonomyFields(ResultsChainDiagramSchema.getObjectType()));
+		addTaxonomyFields(ResultsChainDiagramSchema.getObjectType());
 
 		updateFieldsFromProject();
 	}

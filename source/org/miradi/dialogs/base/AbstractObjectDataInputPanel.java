@@ -19,27 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
-import java.util.LinkedHashMap;
-import java.util.Set;
-import java.util.Vector;
-
-import javax.swing.BorderFactory;
-import javax.swing.Icon;
-import javax.swing.JComponent;
-import javax.swing.JDialog;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-import javax.swing.border.AbstractBorder;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
 import org.martus.swing.UiLabel;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.dialogfields.*;
@@ -49,14 +28,11 @@ import org.miradi.dialogs.fieldComponents.PanelTitledBorder;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.ids.BaseId;
 import org.miradi.layout.OneColumnPanel;
-import org.miradi.main.AppPreferences;
-import org.miradi.main.CommandExecutedEvent;
-import org.miradi.main.CommandExecutedListener;
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
+import org.miradi.main.*;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.TaxonomyHelper;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
@@ -65,12 +41,22 @@ import org.miradi.questions.StaticQuestionManager;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.ObjectiveSchema;
-import org.miradi.utils.CodeList;
-import org.miradi.utils.FillerLabel;
-import org.miradi.utils.HtmlUtilities;
-import org.miradi.utils.TableExporter;
+import org.miradi.utils.*;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.views.umbrella.ObjectPicker;
+
+import javax.swing.*;
+import javax.swing.border.AbstractBorder;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.util.LinkedHashMap;
+import java.util.Set;
+import java.util.Vector;
 
 abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel implements CommandExecutedListener, MiradiTabContentsPanelInterface
 {
@@ -277,7 +263,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 
 		return field;
 	}
-	
+
 	public void addFieldWithoutLabel(ObjectDataField field)
 	{
 		addFieldToList(field);
@@ -294,6 +280,19 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public ObjectDataField addFieldToList(ObjectDataField field)
 	{
 		getFields().add(field);
+		return field;
+	}
+
+	public ObjectDataInputField addFieldWithCustomLabel(ObjectDataInputField field, String translatedLabel)
+	{
+		return addFieldWithCustomLabel(field, new PanelTitleLabel(translatedLabel));
+	}
+
+	public ObjectDataInputField addFieldWithCustomLabel(ObjectDataInputField field, UiLabel label)
+	{
+		addFieldToList(field);
+		addTopAlignedLabel(label);
+		addFieldComponent(field.getComponent());
 		return field;
 	}
 
@@ -649,12 +648,21 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	{
 		return new SingleCodeEditableField(getMainWindow(), getRefForType(objectType), tagToUse, question);
 	}
-	
-	public ObjectDataInputField createTaxonomyFields(int objectType)
+
+	private String getCustomLabelForTaxonomyFields(int objectType, String tagToUse)
 	{
-		return new TaxonomyEditorFields(getProject(), objectType);
+		String fieldLabel = Translation.fieldLabel(objectType, tagToUse);
+		String taxonomySetName = TaxonomyHelper.getProgramTaxonomySetName(this.getProject());
+		return taxonomySetName.isEmpty() ? fieldLabel : taxonomySetName + " " + fieldLabel;
 	}
-	
+
+	public ObjectDataInputField addTaxonomyFields(int objectType)
+	{
+		String customLabel = this.getCustomLabelForTaxonomyFields(objectType, BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
+		ObjectDataInputField taxonomyFields = new TaxonomyEditorFields(getProject(), objectType);
+		return addFieldWithCustomLabel(taxonomyFields, customLabel);
+	}
+
 	public ObjectDataInputField createReadOnlyChoiceField(String tagToUse, ChoiceQuestion question)
 	{
 		return new ObjectReadonlyChoiceField(project,  getFirstSelectedRef(), tagToUse, question);

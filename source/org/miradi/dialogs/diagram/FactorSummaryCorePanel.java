@@ -29,22 +29,9 @@ import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Cause;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.Factor;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Target;
+import org.miradi.objects.*;
 import org.miradi.project.Project;
-import org.miradi.questions.DiagramFactorFontColorQuestion;
-import org.miradi.questions.DiagramFactorFontSizeQuestion;
-import org.miradi.questions.DiagramFactorFontStyleQuestion;
-import org.miradi.questions.HabitatAssociationQuestion;
-import org.miradi.questions.StrategyClassificationQuestion;
-import org.miradi.questions.StrategyFeasibilityQuestion;
-import org.miradi.questions.StrategyImpactQuestion;
-import org.miradi.questions.StrategyRatingSummaryQuestion;
-import org.miradi.questions.StrategyStatusQuestion;
-import org.miradi.questions.ThreatClassificationQuestion;
+import org.miradi.questions.*;
 import org.miradi.schemas.*;
 import org.miradi.utils.ObjectsActionButton;
 
@@ -72,12 +59,12 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		
 		if (factorToEdit.isBiophysicalFactor())
 		{
-			addField(createTaxonomyFields(BiophysicalFactorSchema.getObjectType()));
+			addTaxonomyFields(BiophysicalFactorSchema.getObjectType());
 		}
 		if (factorToEdit.isCause())
 		{
 			addField(createCheckBoxField(CauseSchema.getObjectType(), Cause.TAG_IS_DIRECT_THREAT, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE));
-			addField(createTaxonomyFields(CauseSchema.getObjectType()));
+			addTaxonomyFields(CauseSchema.getObjectType());
 		}
 		if (factorToEdit.isDirectThreat())
 		{
@@ -96,7 +83,7 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 			addLabeledSubPanelWithoutBorder(new LegacyTncStrategyRankingEditorPropertiesSubPanel(getProject(), factorToEdit.getRef(), actions), EAM.text("Legacy TNC Ratings"));
 			addFieldWithEditButton(EAM.text("Objectives"), createReadOnlyObjectList(StrategySchema.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyObjectiveRelevancyList.class), getPicker()));
 			addFieldWithEditButton(EAM.text("Goals"), createReadOnlyObjectList(StrategySchema.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_GOAL_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyGoalRelevancyList.class), getPicker()));
-			addField(createTaxonomyFields(StrategySchema.getObjectType()));
+			addTaxonomyFields(StrategySchema.getObjectType());
 		}
 
 		if(factorToEdit.isTarget())
@@ -104,11 +91,11 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 			addField(createMultilineField(Target.TAG_CURRENT_STATUS_JUSTIFICATION));
 			addField(createStringField(Target.TAG_SPECIES_LATIN_NAME));
 			addField(createQuestionFieldWithDescriptionPanel(TargetSchema.getObjectType(), Target.TAG_HABITAT_ASSOCIATION, new HabitatAssociationQuestion()));
-			addField(createTaxonomyFields(TargetSchema.getObjectType()));
+			addTaxonomyFields(TargetSchema.getObjectType());
 		}
 		if (factorToEdit.isHumanWelfareTarget())
 		{
-			addField(createTaxonomyFields(HumanWelfareTargetSchema.getObjectType()));
+			addTaxonomyFields(HumanWelfareTargetSchema.getObjectType());
 		}
 		
 		addField(createReadOnlyObjectList(factorToEdit.getType(), Factor.PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS));
@@ -120,7 +107,7 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		
 		if (factorToEdit.isThreatReductionResult())
 		{
-			addField(createTaxonomyFields(ThreatReductionResultSchema.getObjectType()));
+			addTaxonomyFields(ThreatReductionResultSchema.getObjectType());
 		}
 	}
 	

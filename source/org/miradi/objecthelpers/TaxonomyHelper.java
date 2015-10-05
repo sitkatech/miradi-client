@@ -20,16 +20,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objecthelpers;
 
-import java.text.ParseException;
-import java.util.Vector;
-
 import org.miradi.objectpools.TaxonomyAssociationPool;
 import org.miradi.objects.*;
 import org.miradi.project.Project;
+import org.miradi.schemas.MiradiShareProjectDataSchema;
 import org.miradi.schemas.MiradiShareTaxonomySchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.Utility;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
+
+import java.util.Vector;
 
 public class TaxonomyHelper implements Xmpz2XmlConstants
 {
@@ -117,6 +117,13 @@ public class TaxonomyHelper implements Xmpz2XmlConstants
 			return TASK_TAXONOMY_ASSOCIATION_POOL;
 		
 		return null;
+	}
+
+	public static String getProgramTaxonomySetName(Project project)
+	{
+		ORef miradiShareProjectDataRef = project.getSingletonObjectRef(MiradiShareProjectDataSchema.getObjectType());
+		MiradiShareProjectData miradiShareProjectData = MiradiShareProjectData.find(project, miradiShareProjectDataRef);
+		return miradiShareProjectData.getData(MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_NAME);
 	}
 
 	private static Vector<String> convertToSingleItemVector(String item)

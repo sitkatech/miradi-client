@@ -41,7 +41,7 @@ public class IndicatorSubPanel extends ObjectDataInputPanel
 		
 		final int COLUMNS = 75;
 		addField(createMultilineField(IndicatorSchema.getObjectType(), Indicator.TAG_DETAIL, COLUMNS));
-		addField(createTaxonomyFields(IndicatorSchema.getObjectType()));
+		addTaxonomyFields(IndicatorSchema.getObjectType());
 		addField(createMultilineField(IndicatorSchema.getObjectType(), Indicator.TAG_COMMENTS, COLUMNS));
 		
 		updateFieldsFromProject();

@@ -146,19 +146,6 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 		return field;
 	}
 	
-	public ObjectDataInputField addFieldWithCustomLabel(ObjectDataInputField field, String translatedLabel)
-	{
-		return addFieldWithCustomLabel(field, new PanelTitleLabel(translatedLabel));
-	}
-
-	public ObjectDataInputField addFieldWithCustomLabel(ObjectDataInputField field, UiLabel label)
-	{
-		addFieldToList(field);
-		addTopAlignedLabel(label);
-		addFieldComponent(field.getComponent());
-		return field;
-	}
-	
 	public ObjectDataInputField addFieldWithCustomLabelAndHint(ObjectDataInputField field, String hint)
 	{
 		addFieldToList(field);
