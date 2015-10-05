@@ -35,7 +35,7 @@ abstract public class AbstractFutureStatusPropertiesForm extends FieldPanelSpec
 		if (isViabilityFutureStatus())
 			addChoiceField(type, FutureStatusSchema.TAG_FUTURE_STATUS_RATING, StatusQuestion.class);
 		
-		addLabelAndReadOnlySingeLineField(IndicatorSchema.getObjectType(), Indicator.TAG_UNIT);
+		addLabelAndReadOnlySingleLineField(IndicatorSchema.getObjectType(), Indicator.TAG_UNIT);
 		addDateField(type, FutureStatusSchema.TAG_FUTURE_STATUS_DATE);
 		addLabelAndField(type, FutureStatusSchema.TAG_FUTURE_STATUS_DETAIL, TYPE_MULTILINE_STRING);
 		addLabelAndField(type, FutureStatusSchema.TAG_FUTURE_STATUS_COMMENTS, TYPE_MULTILINE_STRING);

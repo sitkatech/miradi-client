@@ -22,9 +22,9 @@ package org.miradi.forms;
 
 public class FormFieldLabel extends FieldRelatedFormItem
 {
-	public FormFieldLabel(int objectTypeTouse, String objectTagToUse)
+	public FormFieldLabel(int objectTypeToUse, String objectTagToUse)
 	{
-		super(objectTypeTouse, objectTagToUse);
+		super(objectTypeToUse, objectTagToUse);
 	}
 	
 	@Override

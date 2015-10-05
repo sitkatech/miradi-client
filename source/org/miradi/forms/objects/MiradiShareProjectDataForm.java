@@ -31,17 +31,17 @@ public class MiradiShareProjectDataForm extends FieldPanelSpec
 {
 	public MiradiShareProjectDataForm()
 	{
-		addLabelAndReadOnlySingeLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROJECT_ID);
-		addLabelAndReadOnlySingeLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROJECT_URL);
-		addLabelAndReadOnlySingeLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_ID);
-		addLabelAndReadOnlySingeLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_NAME);
-		addLabelAndReadOnlySingeLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_URL);
-		addLabelAndReadOnlySingeLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROJECT_TEMPLATE_ID);
-		addLabelAndReadOnlySingeLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROJECT_TEMPLATE_NAME);
-		addLabelAndReadOnlySingeLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROJECT_VERSION);
-		addLabelAndReadOnlySingeLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_NAME);
-		addLabelAndReadOnlySingeLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_VERSION_ID);
-		addLabelAndReadOnlySingeLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_VERSION);
+		addLabelAndReadOnlySingleLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROJECT_ID);
+		addLabelAndReadOnlySingleLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROJECT_URL);
+		addLabelAndReadOnlySingleLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_ID);
+		addLabelAndReadOnlySingleLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_NAME);
+		addLabelAndReadOnlySingleLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_URL);
+		addLabelAndReadOnlySingleLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROJECT_TEMPLATE_ID);
+		addLabelAndReadOnlySingleLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROJECT_TEMPLATE_NAME);
+		addLabelAndReadOnlySingleLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROJECT_VERSION);
+		addLabelAndReadOnlySingleLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_NAME);
+		addLabelAndReadOnlySingleLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_VERSION_ID);
+		addLabelAndReadOnlySingleLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_VERSION);
 		addLabelAndExternalProjectIdField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, "Tanager", EAM.text("Miradi Share Project Id"));
 	}
 }

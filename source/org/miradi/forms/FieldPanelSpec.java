@@ -110,7 +110,7 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 		addField(objectType, fieldTag, new FormFieldData(objectType, fieldTag, dataEntryType));
 	}
 	
-	protected void addLabelAndReadOnlySingeLineField(int objectType, String fieldTag)
+	protected void addLabelAndReadOnlySingleLineField(int objectType, String fieldTag)
 	{
 		addField(objectType, fieldTag, new FormFieldData(objectType, fieldTag, TYPE_SINGLE_LINE_READONLY_STRING));
 	}
@@ -122,7 +122,7 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 	
 	protected void addMultipleTaxonomyWithEditButtonFields(int objectType, String fieldTag)
 	{
-		addFieldWithCustomLabel(objectType, fieldTag, new FormFieldMultipleTaxonomyWithEditButtonFields(objectType, fieldTag), "");
+		addFieldWithoutLabel(objectType, fieldTag, new FormFieldMultipleTaxonomyWithEditButtonFields(objectType, fieldTag));
 	}
 	
 	protected void addDisplayField(int objectType, String fieldTag)
