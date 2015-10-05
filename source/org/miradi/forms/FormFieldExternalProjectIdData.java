@@ -30,7 +30,7 @@ public class FormFieldExternalProjectIdData extends FieldRelatedFormItem
 	}
 	
 	@Override
-	public boolean isExternaProjectIdFieldData()
+	public boolean isExternalProjectIdFieldData()
 	{
 		return true;
 	}

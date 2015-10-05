@@ -117,7 +117,7 @@ abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends	
 			return;
 		}
 		
-		if(formItem.isExternaProjectIdFieldData())
+		if(formItem.isExternalProjectIdFieldData())
 		{
 			FormFieldExternalProjectIdData data = (FormFieldExternalProjectIdData) formItem;
 			String fieldTag = data.getObjectTag();

@@ -56,7 +56,7 @@ abstract public class FormItem
 		return false;
 	}
 	
-	public boolean isExternaProjectIdFieldData()
+	public boolean isExternalProjectIdFieldData()
 	{
 		return false;
 	}
