@@ -653,7 +653,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	{
 		String fieldLabel = Translation.fieldLabel(objectType, tagToUse);
 		String taxonomySetName = TaxonomyHelper.getProgramTaxonomySetName(this.getProject());
-		return taxonomySetName.isEmpty() ? fieldLabel : taxonomySetName + " " + fieldLabel;
+		return taxonomySetName.isEmpty() ? fieldLabel : taxonomySetName + " " + EAM.text("Classifications");
 	}
 
 	public ObjectDataInputField addTaxonomyFields(int objectType)
