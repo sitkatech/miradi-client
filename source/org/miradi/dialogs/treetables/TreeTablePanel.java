@@ -147,7 +147,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		return getTree().getTreeTableModel();
 	}
 	
-	public void addButtonsToBox(Class[] classes, JPanel box, Actions actions)
+	private void addButtonsToBox(Class[] classes, JPanel box, Actions actions)
 	{
 		for (int index = 0; index < classes.length; ++index)
 		{
