@@ -72,12 +72,12 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		this(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProviderToUse, new AbstractFixedHeightDirectlyAboveTreeTablePanel());
 	}
 	
-	protected PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, GenericTreeTableModel modelToUse, Class[] buttonActions, PlanningTreeRowColumnProvider rowColumnProviderToUse, JComponent filterStatusPanelToUse) throws Exception
+	protected PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, GenericTreeTableModel modelToUse, Class[] buttonActions, PlanningTreeRowColumnProvider rowColumnProviderToUse, JComponent treeTableHeaderPanelToUse) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, buttonActions);
 		
 		rowColumnProvider = rowColumnProviderToUse;
-		filterStatusPanel = filterStatusPanelToUse;
+		treeTableHeaderPanel = treeTableHeaderPanelToUse;
 		treeTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		
 		createModels();
@@ -101,7 +101,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	@Override
 	protected void addAboveTreeStatusPanel(JPanel leftPanel)
 	{
-		leftPanel.add(filterStatusPanel, BorderLayout.BEFORE_FIRST_LINE);
+		leftPanel.add(treeTableHeaderPanel, BorderLayout.BEFORE_FIRST_LINE);
 	}
 
 	@Override
@@ -520,5 +520,5 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	private BudgetCategoryOneBudgetDetailsTableModel budgetCategoryTwoBudgetDetailsModel;
 	
 	private MainTableSelectionHandler mainTableColumnSelectionListener;
-	private JComponent filterStatusPanel;
+	private JComponent treeTableHeaderPanel;
 }

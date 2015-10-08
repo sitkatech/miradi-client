@@ -45,9 +45,9 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 									 PlanningTreeTableModel modelToUse,
 									 Class[] buttonActions,
 									 PlanningTreeRowColumnProvider rowColumnProvider, 
-									 AbstractFixedHeightDirectlyAboveTreeTablePanel filterStatusPanelToUse) throws Exception
+									 AbstractFixedHeightDirectlyAboveTreeTablePanel treeTableHeaderPanel) throws Exception
 	{
-		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider, filterStatusPanelToUse);
+		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider, treeTableHeaderPanel);
 	}
 
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception
@@ -56,9 +56,9 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 		PlanningTreeRootNodeAlwaysExpanded rootNode = new PlanningTreeRootNodeAlwaysExpanded(mainWindowToUse.getProject());
 		PlanningTreeTableModel model = new WorkPlanTreeTableModel(mainWindowToUse.getProject(), rootNode, rowColumnProvider);
 		PlanningTreeTable treeTable = new PlanningTreeTableWithVisibleRootNode(mainWindowToUse, model);
-		AbstractFixedHeightDirectlyAboveTreeTablePanel filterStatusPanel = new AbstractFixedHeightDirectlyAboveTreeTablePanel();
+		AbstractFixedHeightDirectlyAboveTreeTablePanel treeTableHeaderPanel = new AbstractFixedHeightDirectlyAboveTreeTablePanel();
 
-		return new WorkPlanTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider, filterStatusPanel);
+		return new WorkPlanTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider, treeTableHeaderPanel);
 	}
 	
 	@Override
