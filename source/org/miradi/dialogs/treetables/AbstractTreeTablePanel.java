@@ -23,6 +23,7 @@ import com.jhlabs.awt.GridLayoutPlus;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.dialogs.base.MiradiPanel;
+import org.miradi.layout.OneRowGridLayout;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -55,9 +56,14 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		removeAll();
 
 		GridLayoutPlus buttonLayout = createButtonLayout();
-		GridLayoutPlus headerLayout = new GridLayoutPlus(buttonLayout.getRows(), 2, 1, 1);
+		GridLayoutPlus headerLayout = new GridLayoutPlus(buttonLayout.getRows(), 3, 1, 1);
 		JPanel headerPanel = new MiradiPanel(headerLayout);
 		add(headerPanel, BorderLayout.BEFORE_FIRST_LINE);
+
+//		JPanel diagramFilterPanel = new MiradiPanel(new BorderLayout());
+		JPanel diagramFilterPanel = new MiradiPanel(new OneRowGridLayout());
+		addDiagramFilterPanel(diagramFilterPanel);
+		headerPanel.add(diagramFilterPanel);
 
 		headerPanel.add(getButtonBox());
 
@@ -82,6 +88,10 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 	{
 		return new GridLayoutPlus();
 	};
+
+	protected void addDiagramFilterPanel(JPanel diagramFilterPanel)
+	{
+	}
 
 	protected void addFilterStatusPanel(JPanel filterStatusPanel)
 	{

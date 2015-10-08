@@ -32,6 +32,7 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.TableSettings;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
+import org.miradi.views.workplan.WorkPlanDiagramFilterPanel;
 
 import javax.swing.*;
 
@@ -89,6 +90,13 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 	}
 
 	@Override
+	protected void addDiagramFilterPanel(JPanel diagramFilterPanelToUse)
+	{
+		diagramFilterPanel = new WorkPlanDiagramFilterPanel(getProject(), getProject().getMetadata().getRef());
+		diagramFilterPanelToUse.add(diagramFilterPanel);
+	}
+
+	@Override
 	protected GridLayoutPlus createFilterStatusLayout()
 	{
 		return new GridLayoutPlus(2, 1, 0, 14, 0, 8);
@@ -135,6 +143,7 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 		filterResourceLabel = new PanelTitleLabel();
 	}
 
+	private WorkPlanDiagramFilterPanel diagramFilterPanel;
 	private PanelTitleLabel customizeTableLabel;
 	private PanelTitleLabel filterResourceLabel;
 }

@@ -42,14 +42,14 @@ public class WorkPlanBudgetCategoryManagementPanel extends PlanningTreeManagemen
 	{
 		super(mainWindowToUse, planningTreeTablePanelToUse, planningTreePropertiesPanel, managementConfiguration.getUniqueTreeTableIdentifier());
 		
-		mangementConfiguration = managementConfiguration;
+		this.managementConfiguration = managementConfiguration;
 	}
 	
 	@Override
 	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
 		PlanningTreeRootNodeAlwaysExpanded rootNode = new PlanningTreeRootNodeAlwaysExpanded(getMainWindow().getProject());
-		BudgetCategoryTreeModel model = new BudgetCategoryTreeModel(getProject(), rootNode, rowColumnProvider, mangementConfiguration.getUniqueTreeTableIdentifier());
+		BudgetCategoryTreeModel model = new BudgetCategoryTreeModel(getProject(), rootNode, rowColumnProvider, managementConfiguration.getUniqueTreeTableIdentifier());
 	
 		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtonsForExporting(getMainWindow(), rowColumnProvider, model);
 	}
@@ -68,19 +68,19 @@ public class WorkPlanBudgetCategoryManagementPanel extends PlanningTreeManagemen
 	@Override
 	public String getPanelDescription()
 	{
-		return getMangementConfiguration().getPanelDescription();
+		return getManagementConfiguration().getPanelDescription();
 	}
 
-	private WorkPlanManagementPanelConfiguration getMangementConfiguration()
+	private WorkPlanManagementPanelConfiguration getManagementConfiguration()
 	{
-		return mangementConfiguration;
+		return managementConfiguration;
 	}
 	
 	@Override
 	public Icon getIcon()
 	{
-		return getMangementConfiguration().getIcon();
+		return getManagementConfiguration().getIcon();
 	}
 
-	private WorkPlanManagementPanelConfiguration mangementConfiguration;
+	private WorkPlanManagementPanelConfiguration managementConfiguration;
 }
