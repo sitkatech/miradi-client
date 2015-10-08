@@ -1035,7 +1035,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 				getMainStatusBar().setWarningStatus(EAM.text("Project Resource Filter Is On"));
 			else if (hasNonMatchingFiscalYearStartMonth(getProject()))
 				getMainStatusBar().setWarningStatus(EAM.text("Existing data for a different fiscal year is being excluded"));
-			else if (isDataOutsideOfcurrentProjectDateRange())
+			else if (isDataOutsideOfCurrentProjectDateRange())
 				getMainStatusBar().setWarningStatus(("WorkPlan/Financial data outside project begin/end dates will not be shown"));
 			else
 				clearStatusBar();
@@ -1047,7 +1047,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		}
 	}
 	
-	private boolean areAnyProjectResourceFiltersOn() throws Exception
+	public boolean areAnyProjectResourceFiltersOn() throws Exception
 	{
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), AbstractWorkPlanStringMapEditorDoer.getTabSpecificModelIdentifier());
 		CodeToCodeListMap tableSettingsMap = tableSettings.getTableSettingsMap();
@@ -1095,7 +1095,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		return mainStatusBar;
 	}
 
-	private boolean isDataOutsideOfcurrentProjectDateRange()
+	private boolean isDataOutsideOfCurrentProjectDateRange()
 	{
 		String startDate = getProject().getProjectCalendar().getPlanningStartDate();
 		String endDate = getProject().getProjectCalendar().getPlanningEndDate();

@@ -23,6 +23,8 @@ package org.miradi.questions;
 import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 
+import javax.swing.*;
+
 public class WorkPlanVisibleRowsQuestion extends StaticChoiceQuestion
 {
 	public WorkPlanVisibleRowsQuestion()
@@ -33,12 +35,37 @@ public class WorkPlanVisibleRowsQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getStaticChoices()
 	{
 		return new ChoiceItem[] {
-			new ChoiceItem(SHOW_ALL_ROWS_CODE, EAM.text("Show All Rows")),	
-			new ChoiceItem(SHOW_ACTION_RELATED_ROWS_CODE, EAM.text("Action-Related"), IconManager.getStrategyIcon()),
-			new ChoiceItem(SHOW_MONITORING_RELATED_ROWS_CODE, EAM.text("Monitoring-Related"), IconManager.getIndicatorIcon()),
+			new ChoiceItem(SHOW_ALL_ROWS_CODE, getTextForChoice(SHOW_ALL_ROWS_CODE)),
+			new ChoiceItem(SHOW_ACTION_RELATED_ROWS_CODE, getTextForChoice(SHOW_ACTION_RELATED_ROWS_CODE), getIconForChoice(SHOW_ACTION_RELATED_ROWS_CODE)),
+			new ChoiceItem(SHOW_MONITORING_RELATED_ROWS_CODE, getTextForChoice(SHOW_MONITORING_RELATED_ROWS_CODE), getIconForChoice(SHOW_MONITORING_RELATED_ROWS_CODE)),
 		};
 	}
-	
+
+	public static String getTextForChoice(String choice)
+	{
+		if (choice.equals(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE))
+			return EAM.text("All rows");
+
+		if (choice.equals(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE))
+			return EAM.text("Action-Related");
+
+		if (choice.equals(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE))
+			return EAM.text("Monitoring-Related");
+
+		return "";
+	}
+
+	public static Icon getIconForChoice(String choice)
+	{
+		if (choice.equals(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE))
+			return IconManager.getStrategyIcon();
+
+		if (choice.equals(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE))
+			return IconManager.getIndicatorIcon();
+
+		return null;
+	}
+
 	public static final String SHOW_ALL_ROWS_CODE = "";
 	public static final String SHOW_ACTION_RELATED_ROWS_CODE = "ShowActionRelatedRowCodes";
 	public static final String SHOW_MONITORING_RELATED_ROWS_CODE = "ShowMonitoringRelatedRowCodes";

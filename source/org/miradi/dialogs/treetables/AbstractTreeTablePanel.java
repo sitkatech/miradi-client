@@ -19,10 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.treetables;
 
-import java.awt.BorderLayout;
-
-import javax.swing.JPanel;
-
+import com.jhlabs.awt.GridLayoutPlus;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.dialogs.base.MiradiPanel;
@@ -30,36 +27,12 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.AbstractTarget;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.ExpenseAssignment;
-import org.miradi.objects.Factor;
-import org.miradi.objects.HumanWelfareTarget;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.KeyEcologicalAttribute;
-import org.miradi.objects.Measurement;
-import org.miradi.objects.ObjectTreeTableConfiguration;
-import org.miradi.objects.Objective;
-import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.ResourceAssignment;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.TableSettings;
-import org.miradi.objects.Target;
-import org.miradi.objects.Task;
-import org.miradi.objects.ViewData;
-import org.miradi.schemas.FutureStatusSchema;
-import org.miradi.schemas.HumanWelfareTargetSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.KeyEcologicalAttributeSchema;
-import org.miradi.schemas.MeasurementSchema;
-import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
-import org.miradi.schemas.ProjectMetadataSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.TableSettingsSchema;
-import org.miradi.schemas.TargetSchema;
-import org.miradi.schemas.TaskSchema;
-import org.miradi.schemas.ViewDataSchema;
+import org.miradi.objects.*;
+import org.miradi.schemas.*;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
+
+import javax.swing.*;
+import java.awt.*;
 
 abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 {
@@ -75,15 +48,26 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		
 		super.dispose();
 	}
-	
+
 	protected void createTreeAndTablePanel() throws Exception
 	{
 		// NOTE: Replace treeScrollPane that super constructor added
 		removeAll();
-		add(getButtonBox(), BorderLayout.BEFORE_FIRST_LINE);
-		
+
+		GridLayoutPlus buttonLayout = createButtonLayout();
+		GridLayoutPlus headerLayout = new GridLayoutPlus(buttonLayout.getRows(), 2, 1, 1);
+		JPanel headerPanel = new MiradiPanel(headerLayout);
+		add(headerPanel, BorderLayout.BEFORE_FIRST_LINE);
+
+		headerPanel.add(getButtonBox());
+
+		GridLayoutPlus statusLayout = this.createFilterStatusLayout();
+		JPanel filterStatusPanel = new MiradiPanel(statusLayout);
+		addFilterStatusPanel(filterStatusPanel);
+		headerPanel.add(filterStatusPanel);
+
 		JPanel leftPanel = new MiradiPanel(new BorderLayout());
-		addAboveTreeStatusPanel(leftPanel);
+		addAboveTreeHeaderPanel(leftPanel);
 		leftPanel.add(getTreeTableScrollPane(), BorderLayout.CENTER);
 		
 		JPanel rightPanel = new MiradiPanel(new BorderLayout());
@@ -93,8 +77,17 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		add(leftPanel, BorderLayout.BEFORE_LINE_BEGINS);
 		add(rightPanel, BorderLayout.CENTER);
 	}
-	
-	protected void addAboveTreeStatusPanel(JPanel leftPanel)
+
+	protected GridLayoutPlus createFilterStatusLayout()
+	{
+		return new GridLayoutPlus();
+	};
+
+	protected void addFilterStatusPanel(JPanel filterStatusPanel)
+	{
+	}
+
+	protected void addAboveTreeHeaderPanel(JPanel leftPanel)
 	{
 	}
 

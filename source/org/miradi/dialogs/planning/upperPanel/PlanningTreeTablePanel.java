@@ -99,7 +99,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	}
 
 	@Override
-	protected void addAboveTreeStatusPanel(JPanel leftPanel)
+	protected void addAboveTreeHeaderPanel(JPanel leftPanel)
 	{
 		leftPanel.add(treeTableHeaderPanel, BorderLayout.BEFORE_FIRST_LINE);
 	}
@@ -187,6 +187,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		tree.rebuildTableCompletely();
 
 		updateResourceFilter();
+		updateCustomizeTableFilter();
 		multiTableModel.updateColumnsToShow();
 		
 		// NOTE: The following rebuild the tree but don't touch the columns
@@ -212,6 +213,10 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	}
 	
 	protected void updateResourceFilter() throws Exception
+	{
+	}
+
+	protected void updateCustomizeTableFilter() throws Exception
 	{
 	}
 

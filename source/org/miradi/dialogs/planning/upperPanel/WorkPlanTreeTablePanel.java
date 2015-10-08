@@ -19,24 +19,21 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
-import org.miradi.actions.ActionCollapseAllRows;
-import org.miradi.actions.ActionDeletePlanningViewTreeNode;
-import org.miradi.actions.ActionExpandAllRows;
-import org.miradi.actions.ActionFilterWorkPlanByProjectResource;
-import org.miradi.actions.ActionPlanningCreationMenu;
-import org.miradi.actions.ActionTreeNodeDown;
-import org.miradi.actions.ActionTreeNodeUp;
-import org.miradi.actions.ActionWorkPlanBudgetCustomizeTableEditor;
+import com.jhlabs.awt.GridLayoutPlus;
+import org.miradi.actions.*;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.AbstractFixedHeightDirectlyAboveTreeTablePanel;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNodeAlwaysExpanded;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.TableSettings;
+import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 
-import com.jhlabs.awt.GridLayoutPlus;
+import javax.swing.*;
 
 public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 {
@@ -73,8 +70,38 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 		getPlanningViewMainTableModel().setResourcesFilter(projectResourceRefsToRetain);
 
 		getMainWindow().updatePlanningDateRelatedStatus();
+
+		if (getMainWindow().areAnyProjectResourceFiltersOn())
+			filterResourceLabel.setText(EAM.text("Resource filter is on"));
+		else
+			filterResourceLabel.setText("");
 	}
-		
+
+	@Override
+	protected void updateCustomizeTableFilter() throws Exception
+	{
+		String workPlanBudgetMode = this.getRowColumnProvider().getWorkPlanBudgetMode();
+		String textToDisplay = WorkPlanVisibleRowsQuestion.getTextForChoice(workPlanBudgetMode);
+		Icon iconToDisplay = WorkPlanVisibleRowsQuestion.getIconForChoice(workPlanBudgetMode);
+
+		customizeTableLabel.setText(textToDisplay);
+		customizeTableLabel.setIcon(iconToDisplay);
+	}
+
+	@Override
+	protected GridLayoutPlus createFilterStatusLayout()
+	{
+		return new GridLayoutPlus(2, 1, 0, 14, 0, 8);
+	}
+
+	@Override
+	protected void addFilterStatusPanel(JPanel filterStatusPanel)
+	{
+		createFilterStatusLabels();
+		filterStatusPanel.add(customizeTableLabel);
+		filterStatusPanel.add(filterResourceLabel);
+	}
+
 	public static String getTabSpecificModelIdentifier()
 	{
 		final String TAB_TAG = "Tab_Tag";
@@ -101,4 +128,13 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 				ActionFilterWorkPlanByProjectResource.class,
 		};
 	}
+
+	private void createFilterStatusLabels()
+	{
+		customizeTableLabel = new PanelTitleLabel();
+		filterResourceLabel = new PanelTitleLabel();
+	}
+
+	private PanelTitleLabel customizeTableLabel;
+	private PanelTitleLabel filterResourceLabel;
 }
