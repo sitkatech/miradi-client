@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-06 02:06-0700\n"
+"POT-Creation-Date: 2015-10-08 11:21-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/miradi-client/"
@@ -1100,7 +1100,7 @@ msgstr ""
 msgid "Action Plan: Strategy-based"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:37
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:50
 msgid "Action-Related"
 msgstr ""
 
@@ -2044,6 +2044,10 @@ msgstr "Погодити ролі членів робочої групи"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:57
 msgid "All on One Page"
 msgstr "Усе на одну сторінку"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:47
+msgid "All rows"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:82
 msgid "All subtasks within this item will be removed as well."
@@ -3503,7 +3507,7 @@ msgstr "Редактор"
 msgid "Effective"
 msgstr "Ефективний"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:143
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:142
 msgid ""
 "Effective end date for project planning date range is before start date."
 msgstr ""
@@ -5296,7 +5300,7 @@ msgstr ""
 "знати про ваш проект. Хороший план включає індикатори, які ви будете "
 "простежувати протягом часу, а також методи, які ви будете використовувати."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:38
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:53
 msgid "Monitoring-Related"
 msgstr ""
 
@@ -5335,7 +5339,7 @@ msgstr ""
 "Примітка: Назви файлів проекту можуть містити  літери, числа, інтервали, "
 "крапки, _ , підкреслення."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:152
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:151
 msgid ""
 "NOTE: Quarter columns cannot be hidden because this project already has data "
 "for some quarters."
@@ -6116,6 +6120,10 @@ msgstr ""
 "Ресурс - особа або щось, необхідне для виконання заходу, методу або задачі. "
 "Є три основні види ресурсів - люди, матеріали і фінанси."
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/WorkPlanTreeTablePanel.java:76
+msgid "Resource filter is on"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:196
 msgid "Resources"
 msgstr "Ресурси"
@@ -6433,10 +6441,6 @@ msgstr "Розподіляти зворотню реакцію формальн�
 msgid "Share success and failures with other teams"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:36
-msgid "Show All Rows"
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:281
 msgid "Show Diagram Grid"
 msgstr "Показати Сітку діаграми"
@@ -6517,7 +6521,7 @@ msgstr "Малий"
 msgid "Smallest"
 msgstr "Найменший"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:129
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:128
 msgid ""
 "Some work plan data is currently hidden and not included in calculated "
 "totals. If the data is outside the planning date range, it will be visible "
@@ -8933,7 +8937,7 @@ msgstr ""
 msgid "Work Plan Column Editor"
 msgstr "Редактор колонок робочого плану"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:333
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:332
 msgid "Work Plan Settings"
 msgstr "Параметри робочого плану"
 
@@ -8948,7 +8952,7 @@ msgstr ""
 msgid "Work Planning"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:117
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:116
 msgid "Work plan data currently exists for %startDate - %endDate"
 msgstr "Дані робочого плану на даний момент існують для %startDate - %endDate"
 
@@ -9655,7 +9659,7 @@ msgstr "FieldLabel|11.AllThreatClassifications|Спрямовані загроз
 msgid "FieldLabel|11.QuarterColumnsVisibility|Quarter Column Visibility"
 msgstr ""
 
-msgid "FieldLabel|11.WorkPlanDiagramDataInclusion|Include Work Plan Data From"
+msgid "FieldLabel|11.WorkPlanDiagramDataInclusion|Diagrams - include data from"
 msgstr ""
 
 msgid "FieldLabel|12.ShortLabel|ID"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-06 02:06-0700\n"
+"POT-Creation-Date: 2015-10-08 11:21-0700\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/miradi-client/"
@@ -1153,7 +1153,7 @@ msgstr "Plano de Ação: Baseado nas Metas"
 msgid "Action Plan: Strategy-based"
 msgstr "Plano de Ação: Beaseado nas Estratégias"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:37
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:50
 msgid "Action-Related"
 msgstr "Relacionado às Ações"
 
@@ -2100,6 +2100,10 @@ msgstr "Chegar a um acordo sobre os papéis da equipe"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:57
 msgid "All on One Page"
 msgstr "Tudo numa única página"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:47
+msgid "All rows"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:82
 msgid "All subtasks within this item will be removed as well."
@@ -3586,7 +3590,7 @@ msgstr "Editora"
 msgid "Effective"
 msgstr "Efetivo"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:143
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:142
 msgid ""
 "Effective end date for project planning date range is before start date."
 msgstr ""
@@ -5422,7 +5426,7 @@ msgstr ""
 "que vai rastrear durante um período de tempo, bem como os métodos que vai "
 "usar."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:38
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:53
 msgid "Monitoring-Related"
 msgstr "Relacionado ao Monitoramento"
 
@@ -5465,7 +5469,7 @@ msgstr ""
 "NOTA: Os nomes de arquivos podem conter letras, números, pontos, traços, e "
 "sublinhas."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:152
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:151
 msgid ""
 "NOTE: Quarter columns cannot be hidden because this project already has data "
 "for some quarters."
@@ -6258,6 +6262,10 @@ msgstr ""
 "ou uma tarefa.  Há três tipos principais de recursos - humanos, materiais, e "
 "financeiros."
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/WorkPlanTreeTablePanel.java:76
+msgid "Resource filter is on"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:196
 msgid "Resources"
 msgstr "Recursos"
@@ -6578,10 +6586,6 @@ msgstr "Compartilhar retroalimentação (feedback) formalmente ou informalmente"
 msgid "Share success and failures with other teams"
 msgstr "Compartilhar os sucessos e os fracassos com outras equipes"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:36
-msgid "Show All Rows"
-msgstr "Exibir Todas as Linhas"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:281
 msgid "Show Diagram Grid"
 msgstr "Exibir Grid do Diagrama"
@@ -6662,7 +6666,7 @@ msgstr "Pequeno"
 msgid "Smallest"
 msgstr "O menor"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:129
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:128
 msgid ""
 "Some work plan data is currently hidden and not included in calculated "
 "totals. If the data is outside the planning date range, it will be visible "
@@ -9131,7 +9135,7 @@ msgstr ""
 msgid "Work Plan Column Editor"
 msgstr "Editora de Colunas do Plano de Trabalho "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:333
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:332
 msgid "Work Plan Settings"
 msgstr "Configurações do Plano de Trabalho"
 
@@ -9146,7 +9150,7 @@ msgstr ""
 msgid "Work Planning"
 msgstr "Planejamento de Trabalho"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:117
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:116
 msgid "Work plan data currently exists for %startDate - %endDate"
 msgstr ""
 "Dados de Plano de Trabalho atualmente existem para %startDate - %endDate"
@@ -9853,8 +9857,8 @@ msgstr "Ameaças Abordadas"
 msgid "FieldLabel|11.QuarterColumnsVisibility|Quarter Column Visibility"
 msgstr "Visibilidade de Colunas de Trimestre"
 
-msgid "FieldLabel|11.WorkPlanDiagramDataInclusion|Include Work Plan Data From"
-msgstr "Incluir Dados de Plano de Trabalho de"
+msgid "FieldLabel|11.WorkPlanDiagramDataInclusion|Diagrams - include data from"
+msgstr ""
 
 msgid "FieldLabel|12.ShortLabel|ID"
 msgstr "ID"
@@ -27918,6 +27922,13 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid "Show All Rows"
+#~ msgstr "Exibir Todas as Linhas"
+
+#~ msgid ""
+#~ "FieldLabel|11.WorkPlanDiagramDataInclusion|Include Work Plan Data From"
+#~ msgstr "Incluir Dados de Plano de Trabalho de"
 
 #, fuzzy
 #~ msgid "FieldLabel|65.TaxonomyClassificationContainer|Taxonomies"

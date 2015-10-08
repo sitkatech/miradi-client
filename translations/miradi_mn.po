@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-06 02:06-0700\n"
+"POT-Creation-Date: 2015-10-08 11:21-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Mongolian (http://www.transifex.com/projects/p/miradi-client/"
@@ -1114,7 +1114,7 @@ msgstr ""
 msgid "Action Plan: Strategy-based"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:37
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:50
 msgid "Action-Related"
 msgstr ""
 
@@ -2061,6 +2061,10 @@ msgstr "Багийн дүрмийг тохирох"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:57
 msgid "All on One Page"
 msgstr "Бүгдийг нэг хуудсанд"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:47
+msgid "All rows"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:82
 msgid "All subtasks within this item will be removed as well."
@@ -3517,7 +3521,7 @@ msgstr "Редактор"
 msgid "Effective"
 msgstr "Үр дүнтэй"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:143
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:142
 msgid ""
 "Effective end date for project planning date range is before start date."
 msgstr ""
@@ -5315,7 +5319,7 @@ msgstr ""
 "жилүүдийн туршид мөрдөн ажиллах шалгуур үзүүлэлтүүд болон хэрэглэх арга зүйг "
 "ч  өөртөө агуулдаг."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:38
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:53
 msgid "Monitoring-Related"
 msgstr ""
 
@@ -5354,7 +5358,7 @@ msgstr ""
 "Тайлбар: Төслийн файлын нэр нь үсэг, тоо, зай, үе, зураас, үгийн доогуур "
 "зурах зэргийг агуулсан байж болно."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:152
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:151
 msgid ""
 "NOTE: Quarter columns cannot be hidden because this project already has data "
 "for some quarters."
@@ -6138,6 +6142,10 @@ msgstr ""
 "шаардлагатай хүн аль эсвэл зүйл. Гурван гол нөөц байдаг - хүнийн, материалын "
 "болон санхүүгийн."
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/WorkPlanTreeTablePanel.java:76
+msgid "Resource filter is on"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:196
 msgid "Resources"
 msgstr "Нөөцүүд"
@@ -6458,10 +6466,6 @@ msgstr "Хариуг албан аль эсвэл албан бус арга з�
 msgid "Share success and failures with other teams"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:36
-msgid "Show All Rows"
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:281
 msgid "Show Diagram Grid"
 msgstr "Диаграммын холбоос сүлжээг харуулах"
@@ -6543,7 +6547,7 @@ msgstr "Жижиг"
 msgid "Smallest"
 msgstr "Хамгийн жижигхэн"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:129
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:128
 msgid ""
 "Some work plan data is currently hidden and not included in calculated "
 "totals. If the data is outside the planning date range, it will be visible "
@@ -9002,7 +9006,7 @@ msgstr ""
 msgid "Work Plan Column Editor"
 msgstr "Ажлын төлөвлөгөө баганан редактор"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:333
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:332
 msgid "Work Plan Settings"
 msgstr "Ажлын төлөвлөгөөний тохиргоо (Settings)"
 
@@ -9017,7 +9021,7 @@ msgstr ""
 msgid "Work Planning"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:117
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:116
 msgid "Work plan data currently exists for %startDate - %endDate"
 msgstr ""
 " %эхлэхОгноо - %дуусах огноо зориулсан ажлын төлөвлөгөөний одоогийн мэдээлэл "
@@ -9778,10 +9782,8 @@ msgid "FieldLabel|11.QuarterColumnsVisibility|Quarter Column Visibility"
 msgstr ""
 "БаганыХаяг|11.БаганыДөрөвнийНэгийнХарагдац|Баганы Дөрөвний Нэгийн Харагдац"
 
-msgid "FieldLabel|11.WorkPlanDiagramDataInclusion|Include Work Plan Data From"
+msgid "FieldLabel|11.WorkPlanDiagramDataInclusion|Diagrams - include data from"
 msgstr ""
-"БаганыХаяг|11.АжлынТөлөвлөгөөДиаграммМэдээлэлОруулах|-ээс Ажлын "
-"төлөвлөгөөний мэдээллийг оруулах"
 
 msgid "FieldLabel|12.ShortLabel|ID"
 msgstr "БаганыХаяг|12.ТовчХаяг|дугаар"
@@ -31985,6 +31987,12 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid ""
+#~ "FieldLabel|11.WorkPlanDiagramDataInclusion|Include Work Plan Data From"
+#~ msgstr ""
+#~ "БаганыХаяг|11.АжлынТөлөвлөгөөДиаграммМэдээлэлОруулах|-ээс Ажлын "
+#~ "төлөвлөгөөний мэдээллийг оруулах"
 
 #, fuzzy
 #~ msgid "FieldLabel|65.TaxonomyClassificationContainer|Taxonomies"
