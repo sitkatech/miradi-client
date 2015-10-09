@@ -60,7 +60,6 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		JPanel headerPanel = new MiradiPanel(headerLayout);
 		add(headerPanel, BorderLayout.BEFORE_FIRST_LINE);
 
-//		JPanel diagramFilterPanel = new MiradiPanel(new BorderLayout());
 		JPanel diagramFilterPanel = new MiradiPanel(new OneRowGridLayout());
 		addDiagramFilterPanel(diagramFilterPanel);
 		headerPanel.add(diagramFilterPanel);

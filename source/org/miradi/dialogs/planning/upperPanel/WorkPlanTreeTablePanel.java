@@ -75,7 +75,7 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 		if (getMainWindow().areAnyProjectResourceFiltersOn())
 			filterResourceLabel.setText(EAM.text("Resource filter is on"));
 		else
-			filterResourceLabel.setText("");
+			filterResourceLabel.setText(" ");
 	}
 
 	@Override
@@ -99,7 +99,7 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 	@Override
 	protected GridLayoutPlus createFilterStatusLayout()
 	{
-		return new GridLayoutPlus(2, 1, 0, 14, 0, 8);
+		return new GridLayoutPlus(2, 1, 0, 10, 0, 8);
 	}
 
 	@Override
@@ -139,8 +139,8 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 
 	private void createFilterStatusLabels()
 	{
-		customizeTableLabel = new PanelTitleLabel();
-		filterResourceLabel = new PanelTitleLabel();
+		customizeTableLabel = new PanelTitleLabel(" ");
+		filterResourceLabel = new PanelTitleLabel(" ");
 	}
 
 	private WorkPlanDiagramFilterPanel diagramFilterPanel;
