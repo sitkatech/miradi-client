@@ -87,6 +87,7 @@ public class WorkPlanView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		workPlanManagementPanel = WorkPlanManagementPanel.createWorkPlanPanel(getMainWindow());
+		settingsPanel = new WorkPlanSettingsPanel(getMainWindow(), getProject().getMetadata().getRef());
 		rollupReportsManagementPanel = WorkPlanBudgetCategoryManagementPanel.createManagementPanel(getMainWindow(), new AnalysisManagementConfiguration(getProject()));
 		resourceManagementPanel = WorkPlanBudgetCategoryManagementPanel.createManagementPanel(getMainWindow(), new ProjectResourceManagementConfiguration(getProject()));
 		accountingCodePoolManagementPanel = WorkPlanBudgetCategoryManagementPanel.createManagementPanel(getMainWindow(), new AccountingCodeManagementConfiguration(getProject()));
@@ -95,6 +96,7 @@ public class WorkPlanView extends TabbedView
 		categoryTwoPoolMangementPanel = WorkPlanBudgetCategoryManagementPanel.createManagementPanel(getMainWindow(), new BudgetCategoryTwoManagementConfiguration(getProject()));
 		
 		addNonScrollingTab(workPlanManagementPanel);
+		addNonScrollingTab(settingsPanel);
 		addNonScrollingTab(rollupReportsManagementPanel);
 		addNonScrollingTab(resourceManagementPanel);
 		addNonScrollingTab(accountingCodePoolManagementPanel);
@@ -108,7 +110,10 @@ public class WorkPlanView extends TabbedView
 	{
 		workPlanManagementPanel.dispose();
 		workPlanManagementPanel = null;
-		
+
+		settingsPanel.dispose();
+		settingsPanel = null;
+
 		rollupReportsManagementPanel.dispose();
 		rollupReportsManagementPanel = null;
 		
@@ -190,6 +195,7 @@ public class WorkPlanView extends TabbedView
 	}
 	
 	private PlanningTreeManagementPanel workPlanManagementPanel;
+	private WorkPlanSettingsPanel settingsPanel;
 	private PlanningTreeManagementPanel rollupReportsManagementPanel;
 	private PlanningTreeManagementPanel resourceManagementPanel;
 	private PlanningTreeManagementPanel accountingCodePoolManagementPanel;
