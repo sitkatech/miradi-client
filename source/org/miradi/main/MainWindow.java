@@ -413,9 +413,9 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	public void hideDivider()
 	{
 		getContentPane().removeAll();
-		if (spliterPane!=null)
+		if (splitterPane !=null)
 		{
-			spliterPane = null;
+			splitterPane = null;
 		}
 		
 		getContentPane().add(wizardPanel, BorderLayout.CENTER);
@@ -425,24 +425,24 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	{
 		getContentPane().removeAll();
 		
-		spliterPane = new ViewSplitPane(this, wizardPanel, viewHolder);
+		splitterPane = new ViewSplitPane(this, wizardPanel, viewHolder);
 
 		getContentPane().add(toolBarBox, BorderLayout.BEFORE_FIRST_LINE);
-		getContentPane().add(spliterPane, BorderLayout.CENTER);
+		getContentPane().add(splitterPane, BorderLayout.CENTER);
 		getContentPane().add(getMainStatusBar(), BorderLayout.AFTER_LAST_LINE);
 	}
 	
 	public void forceViewSplitterToMiddle()
 	{
-		if (spliterPane == null)
+		if (splitterPane == null)
 			return;
-		spliterPane.setDividerLocation(spliterPane.getHeight()/2);
+		splitterPane.setDividerLocation(splitterPane.getHeight()/2);
 	}
 	
 	public int getDividerLocation()
 	{
-		if (spliterPane!=null)
-			return spliterPane.getDividerLocation();
+		if (splitterPane !=null)
+			return splitterPane.getDividerLocation();
 		return 0;
 	}
 
@@ -1541,7 +1541,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	private MainMenuBar mainMenuBar;
 	private MainStatusBar mainStatusBar;
 	
-	private JSplitPane spliterPane;
+	private JSplitPane splitterPane;
 	private WizardManager wizardManager;
 	private WizardPanel wizardPanel;
 	
