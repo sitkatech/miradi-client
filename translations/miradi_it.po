@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-09 01:36-0700\n"
+"POT-Creation-Date: 2015-10-12 03:36-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/miradi-client/"
@@ -8429,7 +8429,7 @@ msgstr ""
 msgid "Title|IUCN Redlist Species"
 msgstr "Specie in ListaRossa IUCN"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/AbstractIndicatorPropertiesPanel.java:67
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/AbstractIndicatorPropertiesPanel.java:74
 msgid "Title|Indicator Properties"
 msgstr "Proprietà dell'indicatore"
 
@@ -8802,7 +8802,7 @@ msgid "Viability Analysis Mode"
 msgstr "Modalità Analisi Vitalità"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:322
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:109
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:121
 msgid "Viability Ratings"
 msgstr "Analisi Vitalità"
 

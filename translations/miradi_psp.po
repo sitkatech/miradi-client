@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-09 01:36-0700\n"
+"POT-Creation-Date: 2015-10-12 03:36-0700\n"
 "Language: psp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -8478,7 +8478,7 @@ msgstr "Title|Human Wellbeing Component Properties"
 msgid "Title|IUCN Redlist Species"
 msgstr "Title|IUCN Redlist Species"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/AbstractIndicatorPropertiesPanel.java:67
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/AbstractIndicatorPropertiesPanel.java:74
 msgid "Title|Indicator Properties"
 msgstr "Title|Indicator Properties"
 
@@ -8853,7 +8853,7 @@ msgid "Viability Analysis Mode"
 msgstr "Viability Analysis Mode"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:322
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:109
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:121
 msgid "Viability Ratings"
 msgstr "Viability Ratings"
 

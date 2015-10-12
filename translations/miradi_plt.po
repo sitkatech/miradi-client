@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-09 01:36-0700\n"
+"POT-Creation-Date: 2015-10-12 03:36-0700\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -7963,7 +7963,7 @@ msgstr ""
 msgid "Title|IUCN Redlist Species"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/AbstractIndicatorPropertiesPanel.java:67
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/AbstractIndicatorPropertiesPanel.java:74
 msgid "Title|Indicator Properties"
 msgstr ""
 
@@ -8329,7 +8329,7 @@ msgid "Viability Analysis Mode"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:322
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:109
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:121
 msgid "Viability Ratings"
 msgstr ""
 
