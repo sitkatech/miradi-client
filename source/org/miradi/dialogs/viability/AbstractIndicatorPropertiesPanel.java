@@ -56,6 +56,13 @@ abstract public class AbstractIndicatorPropertiesPanel extends ObjectDataInputPa
 	{
 	}
 
+	@Override
+	public void setObjectRefs(ORef[] orefsToUse)
+	{
+		super.setObjectRefs(orefsToUse);
+		setTabEnabled(viabilityRatingsSubPanel.getPanelDescription(), viabilityRatingsSubPanel.shouldBeEnabled());
+	}
+
 	private static ORef getInvalidTargetRef()
 	{
 		return new ORef(ObjectType.TARGET, new FactorId(BaseId.INVALID.asInt()));
@@ -66,6 +73,6 @@ abstract public class AbstractIndicatorPropertiesPanel extends ObjectDataInputPa
 	{
 		return EAM.text("Title|Indicator Properties");
 	}
-	
+
 	private IndicatorViabilityRatingsSubPanel viabilityRatingsSubPanel;
 }

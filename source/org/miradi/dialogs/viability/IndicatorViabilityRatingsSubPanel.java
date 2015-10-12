@@ -26,12 +26,14 @@ import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.project.Project;
 import org.miradi.questions.*;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
 
 public class IndicatorViabilityRatingsSubPanel extends ObjectDataInputPanel
 {
@@ -101,6 +103,16 @@ public class IndicatorViabilityRatingsSubPanel extends ObjectDataInputPanel
 			return true;
 
 		return false;
+	}
+
+	@Override
+	public boolean shouldBeEnabled()
+	{
+		if (getProject().isStressBaseMode())
+			return true;
+
+		ORef foundKeaRef = new ORefList(this.getSelectedRefs()).getRefForType(KeyEcologicalAttributeSchema.getObjectType());
+		return foundKeaRef.isValid();
 	}
 
 	@Override

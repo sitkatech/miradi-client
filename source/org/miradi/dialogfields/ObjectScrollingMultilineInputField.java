@@ -76,7 +76,7 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 	}
 	
 	@Override
-	protected void updateEditableState(boolean isEditable)
+	public void updateEditableState(boolean isEditable)
 	{
 		editButton.setEnabled(isEditable);
 		getTextField().setEnabled(isEditable);

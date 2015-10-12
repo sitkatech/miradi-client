@@ -25,6 +25,8 @@ import java.util.Vector;
 
 import javax.swing.Icon;
 import javax.swing.JPanel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import org.miradi.dialogfields.ObjectDataField;
 import org.miradi.dialogfields.ObjectDataInputField;
@@ -50,6 +52,9 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 		tabPanel.setTabPlacement(tabPanel.LEFT);
 		add(tabPanel, BorderLayout.CENTER);
 		setBackground(getMainWindow().getAppPreferences().getDarkPanelBackgroundColor());
+
+		tabChangeHandler = new TabChangeHandler();
+		tabPanel.addChangeListener(tabChangeHandler);
 	}
 	
 	@Override
@@ -69,10 +74,10 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 			for (int index = 0; index < tabPanel.getTabCount(); ++index)
 			{
 				AbstractObjectDataInputPanel panel = (AbstractObjectDataInputPanel) tabPanel.getComponentAt(index);
-				if (tag.equals(panel.getPanelDescription()))
+				if (tag.equals(panel.getPanelDescription()) && panel.shouldBeEnabled())
 					return index;
 
-				if (panel.doesSectionContainFieldWithTag(tag))
+				if (panel.doesSectionContainFieldWithTag(tag) && panel.shouldBeEnabled())
 					return index;
 			}
 		}
@@ -216,9 +221,32 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 		private String title;
 		private Vector<String> tags;
 	}
-	
+
+	private class TabChangeHandler implements ChangeListener
+	{
+		public void stateChanged(ChangeEvent e)
+		{
+			PanelTabbedPane sourceTabbedPane = (PanelTabbedPane) e.getSource();
+			int index = sourceTabbedPane.getSelectedIndex();
+			if (index != -1)
+			{
+				// work-around for os x where disabled tab can still be selected
+				AbstractObjectDataInputPanel panel = (AbstractObjectDataInputPanel) tabPanel.getComponentAt(index);
+				if (!panel.shouldBeEnabled())
+				{
+					Vector<ObjectDataField> thisFields = panel.getFields();
+					for(ObjectDataField field : thisFields)
+					{
+						field.updateEditableState(false);
+					}
+				}
+			}
+		}
+	}
+
 	private ObjectDataInputPanel singleSection;
 	private PanelTabbedPane tabPanel;
+	private TabChangeHandler tabChangeHandler;
 	private int objectType;
     private boolean firstTimeActive = true;
 }

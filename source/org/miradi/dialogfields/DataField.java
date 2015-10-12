@@ -57,7 +57,7 @@ abstract public class DataField extends SavableField
 		return false;
 	}
 
-	protected void updateEditableState(boolean isEditable)
+	public void updateEditableState(boolean isEditable)
 	{
 		getComponent().setEnabled(isEditable);
 		Color fg = EAM.READONLY_FOREGROUND_COLOR;

@@ -37,7 +37,7 @@ public class AbstractObjectMultilineDisplayField extends ObjectMultilineInputFie
 	}
 	
 	@Override
-	protected void updateEditableState(boolean isEditable)
+	public void updateEditableState(boolean isEditable)
 	{
 		getComponent().setBackground(EAM.READONLY_BACKGROUND_COLOR);
 	}

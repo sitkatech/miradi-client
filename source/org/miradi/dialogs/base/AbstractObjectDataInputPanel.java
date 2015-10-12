@@ -993,6 +993,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return false;
 	}
 
+	protected boolean shouldBeEnabled()
+	{
+		return true;
+	}
+
 	public static int STD_SHORT = 5;
 	public static final int DEFAULT_TEXT_COLUMN_COUNT = 50;
 	
