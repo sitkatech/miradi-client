@@ -108,9 +108,6 @@ public class IndicatorViabilityRatingsSubPanel extends ObjectDataInputPanel
 	@Override
 	public boolean shouldBeEnabled()
 	{
-		if (getProject().isStressBaseMode())
-			return true;
-
 		ORef foundKeaRef = new ORefList(this.getSelectedRefs()).getRefForType(KeyEcologicalAttributeSchema.getObjectType());
 		return foundKeaRef.isValid();
 	}
