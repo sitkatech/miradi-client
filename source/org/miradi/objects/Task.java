@@ -33,11 +33,7 @@ import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.schemas.GoalSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.ObjectiveSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.TaskSchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.OptionalDouble;
 
@@ -45,14 +41,19 @@ public class Task extends Factor
 {
 	public Task(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static TaskSchema createSchema()
+	public static TaskSchema createSchema(Project projectToUse)
 	{
-		return new TaskSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static TaskSchema createSchema(ObjectManager objectManager)
+	{
+		return (TaskSchema) objectManager.getSchemas().get(ObjectType.TASK);
+	}
+
 	public CommandVector getDeleteSelfAndSubtasksCommands(Project project) throws Exception
 	{
 		CommandVector deleteIds = new CommandVector();

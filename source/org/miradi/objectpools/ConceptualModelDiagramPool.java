@@ -55,6 +55,6 @@ public class ConceptualModelDiagramPool extends DiagramObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return ConceptualModelDiagram.createSchema();
+		return ConceptualModelDiagram.createSchema(projectToUse);
 	}
 }

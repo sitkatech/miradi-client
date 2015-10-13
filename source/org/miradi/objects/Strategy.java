@@ -25,10 +25,7 @@ import org.miradi.dialogs.planning.upperPanel.rebuilder.AbstractTreeRebuilder;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objecthelpers.RelevancyOverrideSet;
+import org.miradi.objecthelpers.*;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -46,14 +43,19 @@ public class Strategy extends Factor
 {
 	public Strategy(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static StrategySchema createSchema()
+	public static StrategySchema createSchema(Project projectToUse)
 	{
-		return new StrategySchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static StrategySchema createSchema(ObjectManager objectManager)
+	{
+		return (StrategySchema) objectManager.getSchemas().get(ObjectType.STRATEGY);
+	}
+
 	public ORefList getResultsChains()
 	{
 		

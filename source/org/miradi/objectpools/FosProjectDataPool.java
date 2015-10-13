@@ -54,6 +54,6 @@ public class FosProjectDataPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return FosProjectData.createSchema();
+		return FosProjectData.createSchema(projectToUse);
 	}
 }

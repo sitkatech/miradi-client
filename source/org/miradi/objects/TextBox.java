@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.TextBoxSchema;
@@ -29,14 +30,19 @@ public class TextBox extends Factor
 {
 	public TextBox(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static TextBoxSchema createSchema()
+	public static TextBoxSchema createSchema(Project projectToUse)
 	{
-		return new TextBoxSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static TextBoxSchema createSchema(ObjectManager objectManager)
+	{
+		return (TextBoxSchema) objectManager.getSchemas().get(ObjectType.TEXT_BOX);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

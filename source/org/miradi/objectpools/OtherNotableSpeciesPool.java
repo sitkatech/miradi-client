@@ -55,6 +55,6 @@ public class OtherNotableSpeciesPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return OtherNotableSpecies.createSchema();
+		return OtherNotableSpecies.createSchema(projectToUse);
 	}
 }

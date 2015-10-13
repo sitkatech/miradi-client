@@ -26,6 +26,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.DiagramModeQuestion;
@@ -36,12 +37,17 @@ public class ViewData extends BaseObject
 {
 	public ViewData(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, createSchema(objectManager.getProject()));
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static ViewDataSchema createSchema(final Project projectToUse)
+	public static ViewDataSchema createSchema(Project projectToUse)
 	{
-		return new ViewDataSchema(projectToUse);
+		return createSchema(projectToUse.getObjectManager());
+	}
+
+	public static ViewDataSchema createSchema(ObjectManager objectManager)
+	{
+		return (ViewDataSchema) objectManager.getSchemas().get(ObjectType.VIEW_DATA);
 	}
 
 	public Command[] buildCommandsToAddNode(ORef oRefToAdd) throws ParseException

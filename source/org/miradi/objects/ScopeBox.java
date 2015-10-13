@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.ScopeBoxSchema;
@@ -29,14 +30,19 @@ public class ScopeBox extends Factor
 {
 	public ScopeBox(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static ScopeBoxSchema createSchema()
+	public static ScopeBoxSchema createSchema(Project projectToUse)
 	{
-		return new ScopeBoxSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static ScopeBoxSchema createSchema(ObjectManager objectManager)
+	{
+		return (ScopeBoxSchema) objectManager.getSchemas().get(ObjectType.SCOPE_BOX);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

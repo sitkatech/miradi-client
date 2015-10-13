@@ -56,6 +56,6 @@ public class AudiencePool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return Audience.createSchema();
+		return Audience.createSchema(projectToUse);
 	}
 }

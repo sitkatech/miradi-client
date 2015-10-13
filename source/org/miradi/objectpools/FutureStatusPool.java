@@ -55,6 +55,6 @@ public class FutureStatusPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return FutureStatus.createSchema();
+		return FutureStatus.createSchema(projectToUse);
 	}
 }

@@ -22,6 +22,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.HumanWelfareTargetSchema;
@@ -30,14 +31,19 @@ public class HumanWelfareTarget extends AbstractTarget
 {
 	public HumanWelfareTarget(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static HumanWelfareTargetSchema createSchema()
+	public static HumanWelfareTargetSchema createSchema(Project projectToUse)
 	{
-		return new HumanWelfareTargetSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static HumanWelfareTargetSchema createSchema(ObjectManager objectManager)
+	{
+		return (HumanWelfareTargetSchema) objectManager.getSchemas().get(ObjectType.HUMAN_WELFARE_TARGET);
+	}
+
 	@Override
 	public boolean isHumanWelfareTarget()
 	{

@@ -128,6 +128,6 @@ public class StrategyPool extends FactorPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return Strategy.createSchema();
+		return Strategy.createSchema(projectToUse);
 	}
 }

@@ -44,6 +44,6 @@ public class ValueOptionPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return ValueOption.createSchema();
+		return ValueOption.createSchema(projectToUse);
 	}
 }

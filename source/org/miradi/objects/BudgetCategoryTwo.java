@@ -23,6 +23,7 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.BudgetCategoryTwoSchema;
@@ -31,14 +32,19 @@ public class BudgetCategoryTwo extends AbstractBudgetCategoryObject
 {
 	public BudgetCategoryTwo(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static BudgetCategoryTwoSchema createSchema()
+	public static BudgetCategoryTwoSchema createSchema(Project projectToUse)
 	{
-		return new BudgetCategoryTwoSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-		
+
+	public static BudgetCategoryTwoSchema createSchema(ObjectManager objectManager)
+	{
+		return (BudgetCategoryTwoSchema) objectManager.getSchemas().get(ObjectType.BUDGET_CATEGORY_TWO);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

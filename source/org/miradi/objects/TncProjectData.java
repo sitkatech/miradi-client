@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ProjectSharingQuestion;
@@ -30,7 +31,7 @@ public class TncProjectData extends BaseObject
 {
 	public TncProjectData(ObjectManager objectManager, BaseId id)
 	{
-		this(objectManager, id, createSchema());
+		this(objectManager, id, createSchema(objectManager));
 	}
 
 	public TncProjectData(ObjectManager objectManager, BaseId id, TncProjectDataSchema schema)
@@ -38,11 +39,16 @@ public class TncProjectData extends BaseObject
 		super(objectManager, id, schema);
 	}
 
-	public static TncProjectDataSchema createSchema()
+	public static TncProjectDataSchema createSchema(Project projectToUse)
 	{
-		return new TncProjectDataSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static TncProjectDataSchema createSchema(ObjectManager objectManager)
+	{
+		return (TncProjectDataSchema) objectManager.getSchemas().get(ObjectType.TNC_PROJECT_DATA);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

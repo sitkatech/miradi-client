@@ -55,6 +55,6 @@ public class ResultsChainDiagramPool extends DiagramObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return ResultsChainDiagram.createSchema();
+		return ResultsChainDiagram.createSchema(projectToUse);
 	}
 }

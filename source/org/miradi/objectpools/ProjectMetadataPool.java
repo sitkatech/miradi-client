@@ -49,6 +49,6 @@ public class ProjectMetadataPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return ProjectMetadata.createSchema();
+		return ProjectMetadata.createSchema(projectToUse);
 	}
 }

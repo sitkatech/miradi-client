@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
@@ -31,12 +32,17 @@ public class FactorLink extends BaseObject
 {
 	public FactorLink(ObjectManager objectManager, BaseId id) throws Exception
 	{
-		super(objectManager, id, createSchema());
+		super(objectManager, id, createSchema(objectManager));
 	}
 
-	public static FactorLinkSchema createSchema()
+	public static FactorLinkSchema createSchema(Project projectToUse)
 	{
-		return new FactorLinkSchema();
+		return createSchema(projectToUse.getObjectManager());
+	}
+
+	public static FactorLinkSchema createSchema(ObjectManager objectManager)
+	{
+		return (FactorLinkSchema) objectManager.getSchemas().get(ObjectType.FACTOR_LINK);
 	}
 
 	@Override

@@ -45,6 +45,6 @@ public class XslTemplatePool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return XslTemplate.createSchema();
+		return XslTemplate.createSchema(projectToUse);
 	}
 }

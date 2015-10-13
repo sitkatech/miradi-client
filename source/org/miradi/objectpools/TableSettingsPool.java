@@ -54,6 +54,6 @@ public class TableSettingsPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return TableSettings.createSchema();
+		return TableSettings.createSchema(projectToUse);
 	}
 }

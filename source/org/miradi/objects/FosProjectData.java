@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.FosProjectDataSchema;
@@ -29,14 +30,19 @@ public class FosProjectData extends BaseObject
 {
 	public FosProjectData(ObjectManager objectManager, BaseId id)
 	{
-		super(objectManager, id, createSchema());
+		super(objectManager, id, createSchema(objectManager));
 	}
 
-	public static FosProjectDataSchema createSchema()
+	public static FosProjectDataSchema createSchema(Project projectToUse)
 	{
-		return new FosProjectDataSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static FosProjectDataSchema createSchema(ObjectManager objectManager)
+	{
+		return (FosProjectDataSchema) objectManager.getSchemas().get(ObjectType.FOS_PROJECT_DATA);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

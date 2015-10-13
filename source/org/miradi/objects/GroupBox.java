@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.GroupBoxSchema;
@@ -29,14 +30,19 @@ public class GroupBox extends Factor
 {
 	public GroupBox(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static GroupBoxSchema createSchema()
+	public static GroupBoxSchema createSchema(Project projectToUse)
 	{
-		return new GroupBoxSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-		
+
+	public static GroupBoxSchema createSchema(ObjectManager objectManager)
+	{
+		return (GroupBoxSchema) objectManager.getSchemas().get(ObjectType.GROUP_BOX);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

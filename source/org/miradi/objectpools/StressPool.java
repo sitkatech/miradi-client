@@ -50,6 +50,6 @@ public class StressPool extends FactorPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return Stress.createSchema();
+		return Stress.createSchema(projectToUse);
 	}
 }

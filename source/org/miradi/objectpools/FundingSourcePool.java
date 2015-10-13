@@ -59,6 +59,6 @@ public class FundingSourcePool extends AbstractBudgetCategoryObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return FundingSource.createSchema();
+		return FundingSource.createSchema(projectToUse);
 	}
 }

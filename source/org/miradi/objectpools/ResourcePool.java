@@ -90,6 +90,6 @@ public class ResourcePool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return ProjectResource.createSchema();
+		return ProjectResource.createSchema(projectToUse);
 	}
 }

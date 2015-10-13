@@ -23,25 +23,28 @@ import org.miradi.ids.IdList;
 import org.miradi.ids.KeyEcologicalAttributeId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.TNCViabilityFormula;
-import org.miradi.schemas.HumanWelfareTargetSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.KeyEcologicalAttributeSchema;
-import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
 
 public class KeyEcologicalAttribute extends BaseObject
 {
 	public KeyEcologicalAttribute(ObjectManager objectManager, KeyEcologicalAttributeId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static KeyEcologicalAttributeSchema createSchema()
+	public static KeyEcologicalAttributeSchema createSchema(Project projectToUse)
 	{
-		return new KeyEcologicalAttributeSchema();
+		return createSchema(projectToUse.getObjectManager());
+	}
+
+	public static KeyEcologicalAttributeSchema createSchema(ObjectManager objectManager)
+	{
+		return (KeyEcologicalAttributeSchema) objectManager.getSchemas().get(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
 	}
 
 	@Override

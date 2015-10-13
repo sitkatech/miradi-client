@@ -22,6 +22,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.IucnRedlistSpeciesSchema;
@@ -30,14 +31,19 @@ public class IucnRedlistSpecies extends BaseObject
 {
 	public IucnRedlistSpecies(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static IucnRedlistSpeciesSchema createSchema()
+	public static IucnRedlistSpeciesSchema createSchema(Project projectToUse)
 	{
-		return new IucnRedlistSpeciesSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-		
+
+	public static IucnRedlistSpeciesSchema createSchema(ObjectManager objectManager)
+	{
+		return (IucnRedlistSpeciesSchema) objectManager.getSchemas().get(ObjectType.IUCN_REDLIST_SPECIES);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

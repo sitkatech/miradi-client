@@ -49,6 +49,6 @@ public class MeasurementPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return Measurement.createSchema();
+		return Measurement.createSchema(projectToUse);
 	}
 }

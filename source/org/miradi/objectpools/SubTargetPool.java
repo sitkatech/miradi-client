@@ -54,6 +54,6 @@ public class SubTargetPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return SubTarget.createSchema();
+		return SubTarget.createSchema(projectToUse);
 	}
 }

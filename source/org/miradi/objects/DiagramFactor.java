@@ -36,26 +36,28 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.TextBoxZOrderQuestion;
-import org.miradi.schemas.ConceptualModelDiagramSchema;
-import org.miradi.schemas.DiagramFactorSchema;
-import org.miradi.schemas.GroupBoxSchema;
-import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class DiagramFactor extends BaseObject
 {
 	public DiagramFactor(ObjectManager objectManager, DiagramFactorId diagramFactorIdToUse) throws Exception
 	{
-		super(objectManager, diagramFactorIdToUse, createSchema());
+		super(objectManager, diagramFactorIdToUse, createSchema(objectManager));
 		
 		setDimensionData(TAG_SIZE, getDefaultSize());
 	}
 
-	public static DiagramFactorSchema createSchema()
+	public static DiagramFactorSchema createSchema(Project projectToUse)
 	{
-		return new DiagramFactorSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static DiagramFactorSchema createSchema(ObjectManager objectManager)
+	{
+		return (DiagramFactorSchema) objectManager.getSchemas().get(ObjectType.DIAGRAM_FACTOR);
+	}
+
 	@Override
 	public EnhancedJsonObject toJson()
 	{

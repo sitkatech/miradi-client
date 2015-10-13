@@ -54,6 +54,6 @@ public class WwfProjectDataPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return WwfProjectData.createSchema();
+		return WwfProjectData.createSchema(projectToUse);
 	}
 }

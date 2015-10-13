@@ -25,13 +25,9 @@ import org.miradi.ids.IdAssigner;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.BiophysicalFactor;
-import org.miradi.objects.Cause;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.BaseObjectSchema;
-
-import java.util.Arrays;
-import java.util.Vector;
 
 public class BiophysicalFactorPool extends FactorPool
 {
@@ -59,6 +55,6 @@ public class BiophysicalFactorPool extends FactorPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return BiophysicalFactor.createSchema();
+		return BiophysicalFactor.createSchema(projectToUse);
 	}
 }

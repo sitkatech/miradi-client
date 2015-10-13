@@ -55,6 +55,6 @@ public class MiradiShareTaxonomyPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return MiradiShareTaxonomy.createSchema();
+		return MiradiShareTaxonomy.createSchema(projectToUse);
 	}
 }

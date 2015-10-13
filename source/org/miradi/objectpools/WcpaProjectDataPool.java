@@ -54,6 +54,6 @@ public class WcpaProjectDataPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return WcpaProjectData.createSchema();
+		return WcpaProjectData.createSchema(projectToUse);
 	}
 }

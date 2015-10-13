@@ -87,6 +87,6 @@ public class CausePool extends FactorPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return Cause.createSchema();
+		return Cause.createSchema(projectToUse);
 	}
 }

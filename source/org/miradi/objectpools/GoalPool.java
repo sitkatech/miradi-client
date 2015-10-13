@@ -49,6 +49,6 @@ public class GoalPool extends DesirePool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return Goal.createSchema();
+		return Goal.createSchema(projectToUse);
 	}
 }

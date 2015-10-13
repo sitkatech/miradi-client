@@ -23,6 +23,7 @@ package org.miradi.objects;
 import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -37,14 +38,19 @@ public class Target extends AbstractTarget
 {
 	public Target(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static TargetSchema createSchema()
+	public static TargetSchema createSchema(Project projectToUse)
 	{
-		return new TargetSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static TargetSchema createSchema(ObjectManager objectManager)
+	{
+		return (TargetSchema) objectManager.getSchemas().get(ObjectType.TARGET);
+	}
+
 	@Override
 	public boolean isTarget()
 	{

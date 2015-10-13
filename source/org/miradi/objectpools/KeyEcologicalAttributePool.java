@@ -65,7 +65,7 @@ public class KeyEcologicalAttributePool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return KeyEcologicalAttribute.createSchema();
+		return KeyEcologicalAttribute.createSchema(projectToUse);
 	}
 }
 

@@ -54,6 +54,6 @@ public class OrganizationPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return Organization.createSchema();
+		return Organization.createSchema(projectToUse);
 	}
 }

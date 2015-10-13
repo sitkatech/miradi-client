@@ -54,6 +54,6 @@ public class ResourceAssignmentPool extends AbstractAssignmentPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return ResourceAssignment.createSchema();
+		return ResourceAssignment.createSchema(projectToUse);
 	}
 }

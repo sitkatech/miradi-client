@@ -30,13 +30,11 @@ import org.miradi.ids.DiagramLinkId;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.schemas.ConceptualModelDiagramSchema;
-import org.miradi.schemas.DiagramFactorSchema;
-import org.miradi.schemas.DiagramLinkSchema;
-import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
@@ -45,14 +43,19 @@ public class DiagramLink extends BaseObject
 {
 	public DiagramLink(ObjectManager objectManager, BaseId idToUse) throws Exception
 	{
-		super(objectManager, new DiagramLinkId(idToUse.asInt()), createSchema());
+		super(objectManager, new DiagramLinkId(idToUse.asInt()), createSchema(objectManager));
 	}
 
-	public static DiagramLinkSchema createSchema()
+	public static DiagramLinkSchema createSchema(Project projectToUse)
 	{
-		return new DiagramLinkSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static DiagramLinkSchema createSchema(ObjectManager objectManager)
+	{
+		return (DiagramLinkSchema) objectManager.getSchemas().get(ObjectType.DIAGRAM_LINK);
+	}
+
 	@Override
 	public EnhancedJsonObject toJson()
 	{

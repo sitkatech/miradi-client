@@ -54,6 +54,6 @@ public class TncProjectDataPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return TncProjectData.createSchema();
+		return TncProjectData.createSchema(projectToUse);
 	}
 }

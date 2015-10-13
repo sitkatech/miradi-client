@@ -22,6 +22,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.OtherNotableSpeciesSchema;
@@ -30,14 +31,19 @@ public class OtherNotableSpecies extends BaseObject
 {
 	public OtherNotableSpecies(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static OtherNotableSpeciesSchema createSchema()
+	public static OtherNotableSpeciesSchema createSchema(Project projectToUse)
 	{
-		return new OtherNotableSpeciesSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-		
+
+	public static OtherNotableSpeciesSchema createSchema(ObjectManager objectManager)
+	{
+		return (OtherNotableSpeciesSchema) objectManager.getSchemas().get(ObjectType.OTHER_NOTABLE_SPECIES);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

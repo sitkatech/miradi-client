@@ -66,6 +66,6 @@ public class TargetPool extends AbstractTargetPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return Target.createSchema();
+		return Target.createSchema(projectToUse);
 	}
 }

@@ -55,6 +55,6 @@ public class IucnRedlistSpeciesPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return IucnRedlistSpecies.createSchema();
+		return IucnRedlistSpecies.createSchema(projectToUse);
 	}
 }

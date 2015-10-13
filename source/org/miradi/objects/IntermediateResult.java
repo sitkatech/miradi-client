@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.IntermediateResultSchema;
@@ -29,14 +30,19 @@ public class IntermediateResult extends Factor
 {
 	public IntermediateResult(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static IntermediateResultSchema createSchema()
+	public static IntermediateResultSchema createSchema(Project projectToUse)
 	{
-		return new IntermediateResultSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static IntermediateResultSchema createSchema(ObjectManager objectManager)
+	{
+		return (IntermediateResultSchema) objectManager.getSchemas().get(ObjectType.INTERMEDIATE_RESULT);
+	}
+
 	@Override
 	public boolean isIntermediateResult()
 	{

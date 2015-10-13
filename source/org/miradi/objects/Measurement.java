@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.StatusConfidenceQuestion;
@@ -31,14 +32,19 @@ public class Measurement extends BaseObject
 {
 	public Measurement(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static MeasurementSchema createSchema()
+	public static MeasurementSchema createSchema(Project projectToUse)
 	{
-		return new MeasurementSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static MeasurementSchema createSchema(ObjectManager objectManager)
+	{
+		return (MeasurementSchema) objectManager.getSchemas().get(ObjectType.MEASUREMENT);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

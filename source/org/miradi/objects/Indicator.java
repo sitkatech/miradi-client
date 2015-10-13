@@ -24,13 +24,7 @@ import java.util.Vector;
 import org.miradi.ids.IdList;
 import org.miradi.ids.IndicatorId;
 import org.miradi.objectdata.CodeToUserStringMapData;
-import org.miradi.objecthelpers.CodeToUserStringMap;
-import org.miradi.objecthelpers.DirectThreatSet;
-import org.miradi.objecthelpers.NonDraftStrategySet;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objecthelpers.TargetSet;
+import org.miradi.objecthelpers.*;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.StatusQuestion;
@@ -41,7 +35,7 @@ public class Indicator extends BaseObject
 {
 	public Indicator(final ObjectManager objectManager, final IndicatorId idToUse)
 	{
-		this(objectManager, idToUse, createSchema());
+		this(objectManager, idToUse, createSchema(objectManager));
 	}
 
 	protected Indicator(ObjectManager objectManager, IndicatorId idToUse, IndicatorSchema indicatorSchema)
@@ -49,11 +43,16 @@ public class Indicator extends BaseObject
 		super(objectManager, idToUse, indicatorSchema);
 	}
 
-	public static IndicatorSchema createSchema()
+	public static IndicatorSchema createSchema(Project projectToUse)
 	{
-		return new IndicatorSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static IndicatorSchema createSchema(ObjectManager objectManager)
+	{
+		return (IndicatorSchema) objectManager.getSchemas().get(ObjectType.INDICATOR);
+	}
+
 	public IdList getMethodIds()
 	{
 		return getSafeIdListData(TAG_METHOD_IDS);

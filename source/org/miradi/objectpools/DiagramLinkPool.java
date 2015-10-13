@@ -86,6 +86,6 @@ public class DiagramLinkPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return DiagramLink.createSchema();
+		return DiagramLink.createSchema(projectToUse);
 	}
 }

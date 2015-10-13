@@ -55,6 +55,6 @@ public class ThreatReductionResultPool extends FactorPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return ThreatReductionResult.createSchema();
+		return ThreatReductionResult.createSchema(projectToUse);
 	}
 }

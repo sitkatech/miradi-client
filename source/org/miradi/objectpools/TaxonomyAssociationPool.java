@@ -57,7 +57,7 @@ public class TaxonomyAssociationPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return TaxonomyAssociation.createSchema();
+		return TaxonomyAssociation.createSchema(projectToUse);
 	}
 	
 	public Vector<TaxonomyAssociation> findTaxonomyAssociationsForBaseObject(final BaseObject baseObjectToFindTaxonomyAssociationsFor)

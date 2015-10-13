@@ -70,6 +70,6 @@ public class DiagramFactorPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return DiagramFactor.createSchema();
+		return DiagramFactor.createSchema(projectToUse);
 	}
 }

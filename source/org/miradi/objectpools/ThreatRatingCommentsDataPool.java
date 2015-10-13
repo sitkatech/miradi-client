@@ -54,6 +54,6 @@ public class ThreatRatingCommentsDataPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return ThreatRatingCommentsData.createSchema();
+		return ThreatRatingCommentsData.createSchema(projectToUse);
 	}
 }

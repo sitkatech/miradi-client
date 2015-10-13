@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
@@ -34,14 +35,19 @@ public class ObjectTreeTableConfiguration extends BaseObject implements Planning
 {
 	public ObjectTreeTableConfiguration(ObjectManager objectManager, BaseId id)
 	{
-		super(objectManager, id, createSchema(objectManager.getProject()));
+		super(objectManager, id, createSchema(objectManager));
 	}
 
-	public static ObjectTreeTableConfigurationSchema createSchema(final Project projectToUse)
+	public static ObjectTreeTableConfigurationSchema createSchema(Project projectToUse)
 	{
-		return new ObjectTreeTableConfigurationSchema(projectToUse);
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static ObjectTreeTableConfigurationSchema createSchema(ObjectManager objectManager)
+	{
+		return (ObjectTreeTableConfigurationSchema) objectManager.getSchemas().get(ObjectType.OBJECT_TREE_TABLE_CONFIGURATION);
+	}
+
 	public CodeList getRowCodesToShow() throws Exception
 	{
 		return getCodeListData(TAG_ROW_CONFIGURATION);

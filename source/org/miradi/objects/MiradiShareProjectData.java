@@ -22,6 +22,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.MiradiShareProjectDataSchema;
@@ -30,14 +31,19 @@ public class MiradiShareProjectData extends BaseObject
 {
 	public MiradiShareProjectData(ObjectManager objectManager, BaseId id)
 	{
-		super(objectManager, id, createSchema());
+		super(objectManager, id, createSchema(objectManager));
 	}
 
-	public static MiradiShareProjectDataSchema createSchema()
+	public static MiradiShareProjectDataSchema createSchema(Project projectToUse)
 	{
-		return new MiradiShareProjectDataSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static MiradiShareProjectDataSchema createSchema(ObjectManager objectManager)
+	{
+		return (MiradiShareProjectDataSchema) objectManager.getSchemas().get(ObjectType.MIRADI_SHARE_PROJECT_DATA);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

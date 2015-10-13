@@ -27,6 +27,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.BaseObjectByFullNameSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ResourceRoleQuestion;
@@ -38,14 +39,19 @@ public class ProjectResource extends BaseObject
 {
 	public ProjectResource(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static ProjectResourceSchema createSchema()
+	public static ProjectResourceSchema createSchema(Project projectToUse)
 	{
-		return new ProjectResourceSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static ProjectResourceSchema createSchema(ObjectManager objectManager)
+	{
+		return (ProjectResourceSchema) objectManager.getSchemas().get(ObjectType.PROJECT_RESOURCE);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.WcpaProjectDataSchema;
@@ -29,14 +30,19 @@ public class WcpaProjectData extends BaseObject
 {
 	public WcpaProjectData(ObjectManager objectManager, BaseId id)
 	{
-		super(objectManager, id, createSchema());
+		super(objectManager, id, createSchema(objectManager));
 	}
 
-	public static WcpaProjectDataSchema createSchema()
+	public static WcpaProjectDataSchema createSchema(Project projectToUse)
 	{
-		return new WcpaProjectDataSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static WcpaProjectDataSchema createSchema(ObjectManager objectManager)
+	{
+		return (WcpaProjectDataSchema) objectManager.getSchemas().get(ObjectType.WCPA_PROJECT_DATA);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

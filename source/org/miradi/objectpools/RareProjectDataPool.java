@@ -54,6 +54,6 @@ public class RareProjectDataPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return RareProjectData.createSchema();
+		return RareProjectData.createSchema(projectToUse);
 	}
 }

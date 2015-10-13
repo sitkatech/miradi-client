@@ -55,6 +55,6 @@ public class IntermediateResultPool extends FactorPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return IntermediateResult.createSchema();
+		return IntermediateResult.createSchema(projectToUse);
 	}
 }

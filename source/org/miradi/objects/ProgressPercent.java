@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.GoalSchema;
@@ -31,14 +32,19 @@ public class ProgressPercent extends BaseObject
 {
 	public ProgressPercent(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static ProgressPercentSchema createSchema()
+	public static ProgressPercentSchema createSchema(Project projectToUse)
 	{
-		return new ProgressPercentSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-		
+
+	public static ProgressPercentSchema createSchema(ObjectManager objectManager)
+	{
+		return (ProgressPercentSchema) objectManager.getSchemas().get(ObjectType.PROGRESS_PERCENT);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

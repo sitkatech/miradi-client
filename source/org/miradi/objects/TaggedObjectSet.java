@@ -23,6 +23,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.TaggedObjectSetSchema;
@@ -31,14 +32,19 @@ public class TaggedObjectSet extends BaseObject
 {
 	public TaggedObjectSet(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static TaggedObjectSetSchema createSchema()
+	public static TaggedObjectSetSchema createSchema(Project projectToUse)
 	{
-		return new TaggedObjectSetSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-		
+
+	public static TaggedObjectSetSchema createSchema(ObjectManager objectManager)
+	{
+		return (TaggedObjectSetSchema) objectManager.getSchemas().get(ObjectType.TAGGED_OBJECT_SET);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

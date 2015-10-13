@@ -54,6 +54,6 @@ public class XenodataPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return Xenodata.createSchema();
+		return Xenodata.createSchema(projectToUse);
 	}
 }

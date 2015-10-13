@@ -30,46 +30,31 @@ import org.miradi.dialogs.dashboard.DashboardRowDefinitionManager;
 import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.CodeToChoiceMap;
-import org.miradi.objecthelpers.CodeToCodeListMap;
-import org.miradi.objecthelpers.CodeToUserStringMap;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
-import org.miradi.objecthelpers.TimePeriodCosts;
+import org.miradi.objecthelpers.*;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
-import org.miradi.schemas.CauseSchema;
-import org.miradi.schemas.DashboardSchema;
-import org.miradi.schemas.FutureStatusSchema;
-import org.miradi.schemas.GoalSchema;
-import org.miradi.schemas.HumanWelfareTargetSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.ObjectiveSchema;
-import org.miradi.schemas.OrganizationSchema;
-import org.miradi.schemas.ProjectResourceSchema;
-import org.miradi.schemas.ResultsChainDiagramSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.TargetSchema;
-import org.miradi.schemas.TaskSchema;
-import org.miradi.schemas.ThreatReductionResultSchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.OptionalDouble;
 
 public class Dashboard extends BaseObject
 {
 	public Dashboard(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static DashboardSchema createSchema()
+	public static DashboardSchema createSchema(Project projectToUse)
 	{
-		return new DashboardSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-		
+
+	public static DashboardSchema createSchema(ObjectManager objectManager)
+	{
+		return (DashboardSchema) objectManager.getSchemas().get(ObjectType.DASHBOARD);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

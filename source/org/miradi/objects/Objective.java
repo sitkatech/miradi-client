@@ -22,6 +22,7 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.ObjectiveId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.*;
@@ -31,14 +32,19 @@ public class Objective extends Desire
 {
 	public Objective(ObjectManager objectManager, BaseId id)
 	{
-		super(objectManager, new ObjectiveId(id.asInt()), createSchema());
+		super(objectManager, new ObjectiveId(id.asInt()), createSchema(objectManager));
 	}
 
-	public static ObjectiveSchema createSchema()
+	public static ObjectiveSchema createSchema(Project projectToUse)
 	{
-		return new ObjectiveSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static ObjectiveSchema createSchema(ObjectManager objectManager)
+	{
+		return (ObjectiveSchema) objectManager.getSchemas().get(ObjectType.OBJECTIVE);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

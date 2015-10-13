@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.RareProjectDataSchema;
@@ -29,14 +30,19 @@ public class RareProjectData extends BaseObject
 {
 	public RareProjectData(ObjectManager objectManager, BaseId id)
 	{
-		super(objectManager, id, createSchema());
+		super(objectManager, id, createSchema(objectManager));
 	}
 
-	public static RareProjectDataSchema createSchema()
+	public static RareProjectDataSchema createSchema(Project projectToUse)
 	{
-		return new RareProjectDataSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static RareProjectDataSchema createSchema(ObjectManager objectManager)
+	{
+		return (RareProjectDataSchema) objectManager.getSchemas().get(ObjectType.RARE_PROJECT_DATA);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

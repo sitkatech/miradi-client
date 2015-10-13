@@ -54,6 +54,6 @@ public class WcsProjectDataPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return WcsProjectData.createSchema();
+		return WcsProjectData.createSchema(projectToUse);
 	}
 }

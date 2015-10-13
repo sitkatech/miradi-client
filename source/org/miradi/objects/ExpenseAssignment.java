@@ -20,10 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objecthelpers.DateUnit;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.TimePeriodCosts;
-import org.miradi.objecthelpers.TimePeriodCostsMap;
+import org.miradi.objecthelpers.*;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.AccountingCodeSchema;
@@ -35,12 +32,17 @@ public class ExpenseAssignment extends Assignment
 {
 	public ExpenseAssignment(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static ExpenseAssignmentSchema createSchema()
+	public static ExpenseAssignmentSchema createSchema(Project projectToUse)
 	{
-		return new ExpenseAssignmentSchema();
+		return createSchema(projectToUse.getObjectManager());
+	}
+
+	public static ExpenseAssignmentSchema createSchema(ObjectManager objectManager)
+	{
+		return (ExpenseAssignmentSchema) objectManager.getSchemas().get(ObjectType.EXPENSE_ASSIGNMENT);
 	}
 		
 	@Override

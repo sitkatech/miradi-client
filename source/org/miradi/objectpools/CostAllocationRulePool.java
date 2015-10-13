@@ -54,6 +54,6 @@ public class CostAllocationRulePool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return CostAllocationRule.createSchema();
+		return CostAllocationRule.createSchema(projectToUse);
 	}
 }

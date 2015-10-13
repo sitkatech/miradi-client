@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.HumanWelfareTargetSchema;
@@ -31,14 +32,19 @@ public class SubTarget extends BaseObject
 {
 	public SubTarget(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static SubTargetSchema createSchema()
+	public static SubTargetSchema createSchema(Project projectToUse)
 	{
-		return new SubTargetSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-		
+
+	public static SubTargetSchema createSchema(ObjectManager objectManager)
+	{
+		return (SubTargetSchema) objectManager.getSchemas().get(ObjectType.SUB_TARGET);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -31,14 +32,19 @@ public class Cause extends Factor
 {
 	public Cause(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static CauseSchema createSchema()
+	public static CauseSchema createSchema(Project projectToUse)
 	{
-		return new CauseSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static CauseSchema createSchema(ObjectManager objectManager)
+	{
+		return (CauseSchema) objectManager.getSchemas().get(ObjectType.CAUSE);
+	}
+
 	@Override
 	public boolean isCause()
 	{

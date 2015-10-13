@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.WwfProjectDataSchema;
@@ -29,14 +30,19 @@ public class WwfProjectData extends BaseObject
 {
 	public WwfProjectData(ObjectManager objectManager, BaseId id)
 	{
-		super(objectManager, id, createSchema());
+		super(objectManager, id, createSchema(objectManager));
 	}
 
-	public static WwfProjectDataSchema createSchema()
+	public static WwfProjectDataSchema createSchema(Project projectToUse)
 	{
-		return new WwfProjectDataSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static WwfProjectDataSchema createSchema(ObjectManager objectManager)
+	{
+		return (WwfProjectDataSchema) objectManager.getSchemas().get(ObjectType.WWF_PROJECT_DATA);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

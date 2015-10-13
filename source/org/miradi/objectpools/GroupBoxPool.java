@@ -55,6 +55,6 @@ public class GroupBoxPool extends FactorPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return GroupBox.createSchema();
+		return GroupBox.createSchema(projectToUse);
 	}
 }

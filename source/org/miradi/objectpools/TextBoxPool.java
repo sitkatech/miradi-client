@@ -65,6 +65,6 @@ public class TextBoxPool extends FactorPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return TextBox.createSchema();
+		return TextBox.createSchema(projectToUse);
 	}
 }

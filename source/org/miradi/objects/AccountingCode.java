@@ -22,6 +22,7 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.AccountingCodeSchema;
@@ -30,14 +31,19 @@ public class AccountingCode extends AbstractBudgetCategoryObject
 {
 	public AccountingCode(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static AccountingCodeSchema createSchema()
+	public static AccountingCodeSchema createSchema(Project projectToUse)
 	{
-		return new AccountingCodeSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static AccountingCodeSchema createSchema(ObjectManager objectManager)
+	{
+		return (AccountingCodeSchema) objectManager.getSchemas().get(ObjectType.ACCOUNTING_CODE);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

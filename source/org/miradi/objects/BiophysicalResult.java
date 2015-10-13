@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.BiophysicalResultSchema;
@@ -29,12 +30,17 @@ public class BiophysicalResult extends Factor
 {
 	public BiophysicalResult(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static BiophysicalResultSchema createSchema()
+	public static BiophysicalResultSchema createSchema(Project projectToUse)
 	{
-		return new BiophysicalResultSchema();
+		return createSchema(projectToUse.getObjectManager());
+	}
+
+	public static BiophysicalResultSchema createSchema(ObjectManager objectManager)
+	{
+		return (BiophysicalResultSchema) objectManager.getSchemas().get(ObjectType.BIOPHYSICAL_RESULT);
 	}
 
     @Override

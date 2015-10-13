@@ -59,6 +59,6 @@ public class AccountingCodePool extends AbstractBudgetCategoryObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return AccountingCode.createSchema();
+		return AccountingCode.createSchema(projectToUse);
 	}
 }

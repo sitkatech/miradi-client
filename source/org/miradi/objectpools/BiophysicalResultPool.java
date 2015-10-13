@@ -55,6 +55,6 @@ public class BiophysicalResultPool extends FactorPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return BiophysicalResult.createSchema();
+		return BiophysicalResult.createSchema(projectToUse);
 	}
 }

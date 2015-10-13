@@ -22,6 +22,7 @@ package org.miradi.objects;
 import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.StressBasedThreatFormula;
@@ -34,14 +35,19 @@ public class Stress extends Factor
 {
 	public Stress(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static StressSchema createSchema()
+	public static StressSchema createSchema(Project projectToUse)
 	{
-		return new StressSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static StressSchema createSchema(ObjectManager objectManager)
+	{
+		return (StressSchema) objectManager.getSchemas().get(ObjectType.STRESS);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
@@ -49,7 +55,7 @@ public class Stress extends Factor
 			TargetSchema.getObjectType(),
 			};
 	}
-	
+
 	@Override
 	protected ORefList getNonOwnedObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
 	{

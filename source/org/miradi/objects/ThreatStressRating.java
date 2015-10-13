@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.StressBasedThreatFormula;
@@ -31,14 +32,19 @@ public class ThreatStressRating extends BaseObject
 {
 	public ThreatStressRating(ObjectManager objectManager, BaseId idToUse) throws Exception
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static ThreatStressRatingSchema createSchema()
+	public static ThreatStressRatingSchema createSchema(Project projectToUse)
 	{
-		return new ThreatStressRatingSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static ThreatStressRatingSchema createSchema(ObjectManager objectManager)
+	{
+		return (ThreatStressRatingSchema) objectManager.getSchemas().get(ObjectType.THREAT_STRESS_RATING);
+	}
+
 	public boolean isActive()
 	{
 		return getBooleanData(TAG_IS_ACTIVE);

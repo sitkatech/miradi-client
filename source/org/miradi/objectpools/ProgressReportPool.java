@@ -54,6 +54,6 @@ public class ProgressReportPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return ProgressReport.createSchema();
+		return ProgressReport.createSchema(projectToUse);
 	}
 }

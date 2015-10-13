@@ -22,6 +22,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.XslTemplateSchema;
@@ -30,14 +31,19 @@ public class XslTemplate extends BaseObject
 {
 	public XslTemplate(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static XslTemplateSchema createSchema()
+	public static XslTemplateSchema createSchema(Project projectToUse)
 	{
-		return new XslTemplateSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-		
+
+	public static XslTemplateSchema createSchema(ObjectManager objectManager)
+	{
+		return (XslTemplateSchema) objectManager.getSchemas().get(ObjectType.XSL_TEMPLATE);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

@@ -55,6 +55,6 @@ public class ScopeBoxPool extends FactorPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return ScopeBox.createSchema();
+		return ScopeBox.createSchema(projectToUse);
 	}
 }

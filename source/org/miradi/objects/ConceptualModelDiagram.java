@@ -26,6 +26,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
@@ -35,14 +36,19 @@ public class ConceptualModelDiagram extends DiagramObject
 {
 	public ConceptualModelDiagram(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static ConceptualModelDiagramSchema createSchema()
+	public static ConceptualModelDiagramSchema createSchema(Project projectToUse)
 	{
-		return new ConceptualModelDiagramSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static ConceptualModelDiagramSchema createSchema(ObjectManager objectManager)
+	{
+		return (ConceptualModelDiagramSchema) objectManager.getSchemas().get(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+	}
+
 	@Override
 	public boolean canContainFactorType(int objectType)
 	{

@@ -55,6 +55,6 @@ public class MiradiShareProjectDataPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return MiradiShareProjectData.createSchema();
+		return MiradiShareProjectData.createSchema(projectToUse);
 	}
 }

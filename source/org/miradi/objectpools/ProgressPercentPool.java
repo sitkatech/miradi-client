@@ -54,6 +54,6 @@ public class ProgressPercentPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return ProgressPercent.createSchema();
+		return ProgressPercent.createSchema(projectToUse);
 	}
 }

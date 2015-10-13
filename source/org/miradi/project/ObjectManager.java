@@ -106,7 +106,15 @@ public class ObjectManager
 		addNormalPool(new TaxonomyAssociationPool(ida), TaxonomyAssociationSchema.OBJECT_NAME);
 		addNormalPool(new FutureStatusPool(ida), FutureStatusSchema.OBJECT_NAME);
 	}
-	
+
+	public Schemas getSchemas()
+	{
+		if (schemas == null)
+			schemas = new Schemas(project);
+
+		return schemas;
+	}
+
 	public ChainWalker getDiagramChainWalker()
 	{
 		return diagramChainWalker;
@@ -453,4 +461,5 @@ public class ObjectManager
 	private ChainWalker diagramChainWalker;
 	private HashMap<Integer, BaseObjectInformation> pools;
 	private HashMap<ORef, ORefSet> referrerCache;
+	private Schemas schemas;
 }

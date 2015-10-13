@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.ResultsChainDiagramSchema;
@@ -29,12 +30,17 @@ public class ResultsChainDiagram extends DiagramObject
 {
 	public ResultsChainDiagram(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static ResultsChainDiagramSchema createSchema()
+	public static ResultsChainDiagramSchema createSchema(Project projectToUse)
 	{
-		return new ResultsChainDiagramSchema();
+		return createSchema(projectToUse.getObjectManager());
+	}
+
+	public static ResultsChainDiagramSchema createSchema(ObjectManager objectManager)
+	{
+		return (ResultsChainDiagramSchema) objectManager.getSchemas().get(ObjectType.RESULTS_CHAIN_DIAGRAM);
 	}
 
 	@Override

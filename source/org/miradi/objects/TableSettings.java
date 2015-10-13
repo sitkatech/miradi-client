@@ -24,11 +24,7 @@ import java.util.Vector;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
-import org.miradi.objecthelpers.CodeToCodeListMap;
-import org.miradi.objecthelpers.CodeToCodeMap;
-import org.miradi.objecthelpers.DateUnit;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.*;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.TableSettingsSchema;
@@ -38,14 +34,19 @@ public class TableSettings extends BaseObject
 {
 	public TableSettings(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static TableSettingsSchema createSchema()
+	public static TableSettingsSchema createSchema(Project projectToUse)
 	{
-		return new TableSettingsSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-		
+
+	public static TableSettingsSchema createSchema(ObjectManager objectManager)
+	{
+		return (TableSettingsSchema) objectManager.getSchemas().get(ObjectType.TABLE_SETTINGS);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

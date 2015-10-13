@@ -22,6 +22,7 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.FundingSourceSchema;
@@ -30,14 +31,19 @@ public class FundingSource extends AbstractBudgetCategoryObject
 {
 	public FundingSource(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static FundingSourceSchema createSchema()
+	public static FundingSourceSchema createSchema(Project projectToUse)
 	{
-		return new FundingSourceSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static FundingSourceSchema createSchema(ObjectManager objectManager)
+	{
+		return (FundingSourceSchema) objectManager.getSchemas().get(ObjectType.FUNDING_SOURCE);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

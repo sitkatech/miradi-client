@@ -27,6 +27,6 @@ public class ResultsChainDiagramImporter extends AbstractDiagramObjectImporter
 {
 	public ResultsChainDiagramImporter(Xmpz2XmlImporter importerToUse)
 	{
-		super(importerToUse, ResultsChainDiagram.createSchema());
+		super(importerToUse, ResultsChainDiagram.createSchema(importerToUse.getProject()));
 	}
 }

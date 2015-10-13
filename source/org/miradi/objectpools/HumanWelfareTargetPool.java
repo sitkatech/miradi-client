@@ -66,6 +66,6 @@ public class HumanWelfareTargetPool extends AbstractTargetPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return HumanWelfareTarget.createSchema();
+		return HumanWelfareTarget.createSchema(projectToUse);
 	}
 }

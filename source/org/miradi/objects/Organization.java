@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.OrganizationSchema;
@@ -29,14 +30,19 @@ public class Organization extends BaseObject
 {
 	public Organization(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static OrganizationSchema createSchema()
+	public static OrganizationSchema createSchema(Project projectToUse)
 	{
-		return new OrganizationSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-		
+
+	public static OrganizationSchema createSchema(ObjectManager objectManager)
+	{
+		return (OrganizationSchema) objectManager.getSchemas().get(ObjectType.ORGANIZATION);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

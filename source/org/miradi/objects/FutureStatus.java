@@ -23,6 +23,7 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.FutureStatusSchema;
@@ -32,14 +33,19 @@ public class FutureStatus extends BaseObject
 {
 	public FutureStatus(ObjectManager objectManager, BaseId id)
 	{
-		super(objectManager, id, createSchema());
+		super(objectManager, id, createSchema(objectManager));
 	}
 
-	public static FutureStatusSchema createSchema()
+	public static FutureStatusSchema createSchema(Project projectToUse)
 	{
-		return new FutureStatusSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static FutureStatusSchema createSchema(ObjectManager objectManager)
+	{
+		return (FutureStatusSchema) objectManager.getSchemas().get(ObjectType.FUTURE_STATUS);
+	}
+
 	@Override
 	public String getFullName()
 	{

@@ -44,6 +44,6 @@ public class RatingCriterionPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return RatingCriterion.createSchema();
+		return RatingCriterion.createSchema(projectToUse);
 	}
 }

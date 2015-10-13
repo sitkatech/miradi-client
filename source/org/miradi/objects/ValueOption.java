@@ -23,7 +23,9 @@ import java.awt.Color;
 
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.schemas.ValueOptionSchema;
 
@@ -31,16 +33,21 @@ public class ValueOption extends BaseObject
 {
 	public ValueOption(ObjectManager objectManager, BaseId idToUse) throws Exception
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 		
 		setData(TAG_COLOR, Integer.toString(Color.BLACK.getRGB()));
 	}
 
-	public static ValueOptionSchema createSchema()
+	public static ValueOptionSchema createSchema(Project projectToUse)
 	{
-		return new ValueOptionSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static ValueOptionSchema createSchema(ObjectManager objectManager)
+	{
+		return (ValueOptionSchema) objectManager.getSchemas().get(ObjectType.VALUE_OPTION);
+	}
+
 	public ValueOption(ObjectManager objectManager, BaseId idToUse, String labelToUse, int numericToUse, Color colorToUse) throws Exception
 	{
 		this(objectManager, idToUse);

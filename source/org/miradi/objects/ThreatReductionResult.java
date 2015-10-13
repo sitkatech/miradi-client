@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.ThreatReductionResultSchema;
@@ -29,12 +30,17 @@ public class ThreatReductionResult extends Factor
 {
 	public ThreatReductionResult(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static ThreatReductionResultSchema createSchema()
+	public static ThreatReductionResultSchema createSchema(Project projectToUse)
 	{
-		return new ThreatReductionResultSchema();
+		return createSchema(projectToUse.getObjectManager());
+	}
+
+	public static ThreatReductionResultSchema createSchema(ObjectManager objectManager)
+	{
+		return (ThreatReductionResultSchema) objectManager.getSchemas().get(ObjectType.THREAT_REDUCTION_RESULT);
 	}
 	
 	@Override

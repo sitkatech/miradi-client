@@ -22,6 +22,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TaxonomyElement;
 import org.miradi.objecthelpers.TaxonomyHelper;
 import org.miradi.project.ObjectManager;
@@ -34,14 +35,19 @@ public class TaxonomyAssociation extends BaseObject
 {
 	public TaxonomyAssociation(ObjectManager objectManager, BaseId id)
 	{
-		super(objectManager, id, createSchema());
+		super(objectManager, id, createSchema(objectManager));
 	}
 
-	public static TaxonomyAssociationSchema createSchema()
+	public static TaxonomyAssociationSchema createSchema(Project projectToUse)
 	{
-		return new TaxonomyAssociationSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static TaxonomyAssociationSchema createSchema(ObjectManager objectManager)
+	{
+		return (TaxonomyAssociationSchema) objectManager.getSchemas().get(ObjectType.TAXONOMY_ASSOCIATION);
+	}
+
 	public int getBaseObjectType()
 	{
 		return getIntegerData(TaxonomyAssociationSchema.TAG_BASE_OBJECT_TYPE);

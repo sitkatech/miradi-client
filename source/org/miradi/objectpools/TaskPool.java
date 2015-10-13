@@ -96,6 +96,6 @@ public class TaskPool extends FactorPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return Task.createSchema();
+		return Task.createSchema(projectToUse);
 	}
 }

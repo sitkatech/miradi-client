@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Aug 06 12:05:39 PDT 2015 $
+# $LastChangedDate: Mon Oct 12 17:44:55 BST 2015 $
 # $LastChangedRevision: 235 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/235'
 start = ConservationProject.element
@@ -805,6 +805,11 @@ ProjectLocationCountriesContainer.element = element miradi:ProjectLocationCountr
 element miradi:code { vocabulary_countries } *
 }
 
+TNCProjectDataTNCFreshwaterEcoRegionContainer.element = element miradi:TNCProjectDataTNCFreshwaterEcoRegionContainer
+{
+element miradi:code { vocabulary_tnc_freshwater_eco_region } *
+}
+
 TNCProjectDataTNCOperatingUnitsContainer.element = element miradi:TNCProjectDataTNCOperatingUnitsContainer
 {
 element miradi:code { vocabulary_tnc_operating_units } *
@@ -820,9 +825,9 @@ TNCProjectDataTNCMarineEcoRegionContainer.element = element miradi:TNCProjectDat
 element miradi:code { vocabulary_tnc_marine_eco_region } *
 }
 
-TNCProjectDataTNCFreshwaterEcoRegionContainer.element = element miradi:TNCProjectDataTNCFreshwaterEcoRegionContainer
+WWFProjectDataEcoRegionsContainer.element = element miradi:WWFProjectDataEcoRegionsContainer
 {
-element miradi:code { vocabulary_tnc_freshwater_eco_region } *
+element miradi:code { vocabulary_wwf_ecoregions } *
 }
 
 WWFProjectDataManagingOfficesContainer.element = element miradi:WWFProjectDataManagingOfficesContainer
@@ -833,11 +838,6 @@ element miradi:code { vocabulary_wwf_managing_offices } *
 WWFProjectDataRegionsContainer.element = element miradi:WWFProjectDataRegionsContainer
 {
 element miradi:code { vocabulary_wwf_regions } *
-}
-
-WWFProjectDataEcoRegionsContainer.element = element miradi:WWFProjectDataEcoRegionsContainer
-{
-element miradi:code { vocabulary_wwf_ecoregions } *
 }
 
 ResourceRoleCodesContainer.element = element miradi:ResourceRoleCodesContainer

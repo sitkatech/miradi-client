@@ -27,8 +27,10 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
 import org.miradi.questions.*;
 import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.utils.CodeList;
@@ -39,12 +41,17 @@ public class ProjectMetadata extends BaseObject
 {
 	public ProjectMetadata(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static ProjectMetadataSchema createSchema()
+	public static ProjectMetadataSchema createSchema(Project projectToUse)
 	{
-		return new ProjectMetadataSchema();
+		return createSchema(projectToUse.getObjectManager());
+	}
+
+	public static ProjectMetadataSchema createSchema(ObjectManager objectManager)
+	{
+		return (ProjectMetadataSchema) objectManager.getSchemas().get(ObjectType.PROJECT_METADATA);
 	}
 
 	@Override

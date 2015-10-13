@@ -49,6 +49,6 @@ public class ThreatStressRatingPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return ThreatStressRating.createSchema();
+		return ThreatStressRating.createSchema(projectToUse);
 	}
 }

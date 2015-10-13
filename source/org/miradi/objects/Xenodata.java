@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.XenodataSchema;
@@ -29,14 +30,19 @@ public class Xenodata extends BaseObject
 {
 	public Xenodata(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static XenodataSchema createSchema()
+	public static XenodataSchema createSchema(Project projectToUse)
 	{
-		return new XenodataSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-		
+
+	public static XenodataSchema createSchema(ObjectManager objectManager)
+	{
+		return (XenodataSchema) objectManager.getSchemas().get(ObjectType.XENODATA);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

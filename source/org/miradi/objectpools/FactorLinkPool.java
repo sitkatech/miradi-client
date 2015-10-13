@@ -86,6 +86,6 @@ public class FactorLinkPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return FactorLink.createSchema();
+		return FactorLink.createSchema(projectToUse);
 	}
 }

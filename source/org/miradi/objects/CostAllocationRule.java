@@ -20,21 +20,28 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
 import org.miradi.schemas.CostAllocationRuleSchema;
 
 public class CostAllocationRule extends BaseObject
 {
 	public CostAllocationRule(ObjectManager objectManager, BaseId id)
 	{
-		super(objectManager, id, createSchema());
+		super(objectManager, id, createSchema(objectManager));
 	}
 
-	public static CostAllocationRuleSchema createSchema()
+	public static CostAllocationRuleSchema createSchema(Project projectToUse)
 	{
-		return new CostAllocationRuleSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static CostAllocationRuleSchema createSchema(ObjectManager objectManager)
+	{
+		return (CostAllocationRuleSchema) objectManager.getSchemas().get(ObjectType.COST_ALLOCATION_RULE);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

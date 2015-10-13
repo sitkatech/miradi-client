@@ -49,6 +49,6 @@ public class ObjectivePool extends DesirePool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return Objective.createSchema();
+		return Objective.createSchema(projectToUse);
 	}
 }

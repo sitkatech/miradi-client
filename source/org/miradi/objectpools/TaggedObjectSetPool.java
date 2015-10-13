@@ -86,6 +86,6 @@ public class TaggedObjectSetPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return TaggedObjectSet.createSchema();
+		return TaggedObjectSet.createSchema(projectToUse);
 	}
 }

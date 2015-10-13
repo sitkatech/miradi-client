@@ -20,7 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Vector;
 
 import org.miradi.objectdata.ObjectData;
@@ -34,19 +36,17 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 {
 	public BaseObjectSchema()
 	{
-		fieldSchemas = new Vector<AbstractFieldSchema>();
+		fieldSchemas = new HashMap<String, AbstractFieldSchema>();
 		fillFieldSchemas();
 	}
 	
 	public AbstractFieldSchema getFieldSchema(final String tag)
 	{
-		for(AbstractFieldSchema fieldSchema : this)
-		{
-			if (fieldSchema.getTag().equals(tag))
-				return fieldSchema;
-		}
-		
-		throw new RuntimeException("Tag is not contained in this schema. Tag = " + tag);
+		AbstractFieldSchema retValue = fieldSchemas.get(tag);
+		if (retValue == null)
+			throw new RuntimeException("Tag is not contained in this schema. Tag = " + tag);
+
+		return retValue;
 	}
 	
 	protected AbstractFieldSchema addPseudoFieldSchema(final AbstractFieldSchema fieldSchema)
@@ -63,15 +63,15 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 	
 	protected AbstractFieldSchema addFieldSchema(final AbstractFieldSchema fieldSchema)
 	{
-		fieldSchemas.add(fieldSchema);
+		fieldSchemas.put(fieldSchema.getTag(), fieldSchema);
 		return fieldSchema;
 	}
 	
-	private Vector<AbstractFieldSchema> getFieldSchemas()
+	private Map<String, AbstractFieldSchema> getFieldSchemas()
 	{
 		return fieldSchemas;
 	}
-	
+
 	public AbstractFieldSchema createFieldSchemaSingleLineUserText(String fieldTag)
 	{
 		return addFieldSchema(new FieldSchemaSingleLineUserText(fieldTag));
@@ -288,7 +288,7 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 	public Vector<ObjectData> createFields(BaseObject baseObjectToUse)
 	{
 		Vector<ObjectData> fields = new Vector<ObjectData>();
-		for(AbstractFieldSchema fieldSchema : getFieldSchemas())
+		for(AbstractFieldSchema fieldSchema : getFieldSchemas().values())
 		{
 			ObjectData field = fieldSchema.createField(baseObjectToUse);
 			field.setNavigationField(fieldSchema.isNavigationField());
@@ -347,22 +347,17 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 	
 	public boolean containsField(String tag)
 	{
-		for(AbstractFieldSchema fieldSchema : this)
-		{
-			if (fieldSchema.getTag().equals(tag))
-				return true;
-		}
-		return false;
+		return fieldSchemas.containsKey(tag);
 	}
 	
 	public Iterator<AbstractFieldSchema> iterator()
 	{
-		return fieldSchemas.iterator();
+		return fieldSchemas.values().iterator();
 	}
 	
 	abstract public int getType();
 	
 	abstract public String getObjectName();
 	
-	private Vector<AbstractFieldSchema> fieldSchemas;
+	private Map<String, AbstractFieldSchema> fieldSchemas;
 }

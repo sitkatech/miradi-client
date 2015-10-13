@@ -21,26 +21,29 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.ProgressReportSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.TaskSchema;
+import org.miradi.schemas.*;
 
 public class ProgressReport extends BaseObject
 {
 	public ProgressReport(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static ProgressReportSchema createSchema()
+	public static ProgressReportSchema createSchema(Project projectToUse)
 	{
-		return new ProgressReportSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-		
+
+	public static ProgressReportSchema createSchema(ObjectManager objectManager)
+	{
+		return (ProgressReportSchema) objectManager.getSchemas().get(ObjectType.PROGRESS_REPORT);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

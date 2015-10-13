@@ -22,6 +22,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.AudienceSchema;
@@ -30,14 +31,19 @@ public class Audience extends BaseObject
 {
 	public Audience(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, createSchema());
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static AudienceSchema createSchema()
+	public static AudienceSchema createSchema(Project projectToUse)
 	{
-		return new AudienceSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-		
+
+	public static AudienceSchema createSchema(ObjectManager objectManager)
+	{
+		return (AudienceSchema) objectManager.getSchemas().get(ObjectType.AUDIENCE);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

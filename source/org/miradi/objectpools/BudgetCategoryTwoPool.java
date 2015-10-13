@@ -55,6 +55,6 @@ public class BudgetCategoryTwoPool extends AbstractBudgetCategoryObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return BudgetCategoryTwo.createSchema();
+		return BudgetCategoryTwo.createSchema(projectToUse);
 	}
 }

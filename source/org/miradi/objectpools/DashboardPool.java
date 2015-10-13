@@ -55,6 +55,6 @@ public class DashboardPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return Dashboard.createSchema();
+		return Dashboard.createSchema(projectToUse);
 	}
 }

@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.ReportTemplateSchema;
@@ -29,14 +30,19 @@ public class ReportTemplate extends BaseObject
 {
 	public ReportTemplate(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, createSchema(objectManager.getProject()));
+		super(objectManager, idToUse, createSchema(objectManager));
 	}
 
-	public static ReportTemplateSchema createSchema(final Project projectToUse)
+	public static ReportTemplateSchema createSchema(Project projectToUse)
 	{
-		return new ReportTemplateSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-		
+
+	public static ReportTemplateSchema createSchema(ObjectManager objectManager)
+	{
+		return (ReportTemplateSchema) objectManager.getSchemas().get(ObjectType.REPORT_TEMPLATE);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

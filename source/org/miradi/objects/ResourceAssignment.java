@@ -21,10 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.ResourceAssignmentId;
-import org.miradi.objecthelpers.DateUnit;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.TimePeriodCosts;
-import org.miradi.objecthelpers.TimePeriodCostsMap;
+import org.miradi.objecthelpers.*;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.ResourceAssignmentSchema;
@@ -35,14 +32,19 @@ public class ResourceAssignment extends Assignment
 {
 	public ResourceAssignment(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, new ResourceAssignmentId(idToUse.asInt()), createSchema());
+		super(objectManager, new ResourceAssignmentId(idToUse.asInt()), createSchema(objectManager));
 	}
 
-	public static ResourceAssignmentSchema createSchema()
+	public static ResourceAssignmentSchema createSchema(Project projectToUse)
 	{
-		return new ResourceAssignmentSchema();
+		return createSchema(projectToUse.getObjectManager());
 	}
-	
+
+	public static ResourceAssignmentSchema createSchema(ObjectManager objectManager)
+	{
+		return (ResourceAssignmentSchema) objectManager.getSchemas().get(ObjectType.RESOURCE_ASSIGNMENT);
+	}
+
 	@Override
 	public String getPseudoData(String fieldTag)
 	{

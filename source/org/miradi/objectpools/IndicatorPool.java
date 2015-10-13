@@ -65,6 +65,6 @@ public class IndicatorPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return Indicator.createSchema();
+		return Indicator.createSchema(projectToUse);
 	}
 }

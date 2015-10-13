@@ -54,6 +54,6 @@ public class ExpenseAssignmentPool extends AbstractAssignmentPool
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return ExpenseAssignment.createSchema();
+		return ExpenseAssignment.createSchema(projectToUse);
 	}
 }
