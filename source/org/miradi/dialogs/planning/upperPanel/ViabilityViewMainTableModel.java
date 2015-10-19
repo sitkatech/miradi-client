@@ -354,7 +354,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	{
 		String tag = COLUMN_TAGS_FOR_INDICATORS[column];
 		Indicator indicator = (Indicator)baseObject;
-		if (tag.equals(Indicator.PSEUDO_TAG_STATUS_VALUE) && isViabilityIndicator(indicator))
+		if (tag.equals(Indicator.PSEUDO_TAG_STATUS_VALUE))
 			return getStatusQuestion().findChoiceByCode(baseObject.getPseudoData(tag));
 		
 		if (tag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
