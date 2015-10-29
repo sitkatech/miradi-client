@@ -20,19 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import net.atlanticbb.tantlinger.ui.text.CompoundUndoManager;
+import org.miradi.main.EAM;
 
-import javax.swing.AbstractAction;
-import javax.swing.JEditorPane;
-import javax.swing.KeyStroke;
-import javax.swing.event.UndoableEditEvent;
-import javax.swing.event.UndoableEditListener;
+import javax.swing.*;
 import javax.swing.text.Document;
 import javax.swing.undo.CannotRedoException;
 import javax.swing.undo.UndoManager;
-
-import org.miradi.main.EAM;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class TextPaneUndoRedoHandler
 {
@@ -44,12 +40,13 @@ public class TextPaneUndoRedoHandler
 	
 	public void applyUndoRedoActions()
 	{
-		Document doc = getTextField().getDocument();
-		doc.addUndoableEditListener(new UndoEditHandler());
-		
+		Document document = getTextField().getDocument();
+		CompoundUndoManager compoundUndoManager = new CompoundUndoManager(document, undo);
+		document.addUndoableEditListener(compoundUndoManager);
+
 		getTextField().getActionMap().put(UNDO_TEXT, new UndoHandler());
 		getTextField().getInputMap().put(KeyStroke.getKeyStroke("control Z"), UNDO_TEXT);
-		
+
 		getTextField().getActionMap().put(REDO_TEXT,new RedoHandler());
 		getTextField().getInputMap().put(KeyStroke.getKeyStroke("control Y"), REDO_TEXT);
 	}
@@ -58,15 +55,7 @@ public class TextPaneUndoRedoHandler
 	{
 		return textField;
 	}
-	
-	private class UndoEditHandler implements UndoableEditListener
-	{
-	    public void undoableEditHappened(UndoableEditEvent evt) 
-	    {
-	        undo.addEdit(evt.getEdit());
-	    }
-	}
-	
+
 	private class UndoHandler extends AbstractAction implements ActionListener
 	{
 		public UndoHandler()

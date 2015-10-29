@@ -113,9 +113,9 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 		setText(getText());
 	}
 	
-	protected void setTextFromPopup(String textFronPopupEditor)
+	protected void setTextFromPopup(String textFromPopupEditor)
 	{
-		setText(textFronPopupEditor);
+		setText(textFromPopupEditor);
 	}
 
 	private class PopupButtonHandler implements ActionListener

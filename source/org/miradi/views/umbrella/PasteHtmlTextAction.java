@@ -109,10 +109,10 @@ public class PasteHtmlTextAction extends AbstractAction
 		removeSelectedText();
         JEditorPane editor = (JEditorPane) getEditorField();
         HTMLDocument document = (HTMLDocument)editor.getDocument();
-        final int insertAtCaretPostion = editor.getCaretPosition();
+        final int insertAtCaretPosition = editor.getCaretPosition();
 
         HtmlEditorKitWithNonSharedStyleSheet kit = (HtmlEditorKitWithNonSharedStyleSheet) editor.getEditorKit();
-        kit.read(new StringReader(textToInsert), document, insertAtCaretPostion);
+        kit.read(new StringReader(textToInsert), document, insertAtCaretPosition);
    	}
 	
 	private void removeSelectedText() throws Exception
