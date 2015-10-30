@@ -253,7 +253,7 @@ public class ProjectCalendar
 		if (endFiscalMonth < 0)
 			endFiscalMonth += 12;
 		else
-			if (endFiscalMonth != 12)
+			if (fiscalYearFirstMonth != 1 && endFiscalMonth != 12)
 				endFiscalYear += 1;
 
 		String startYearString = getFiscalYearString(startFiscalYear);
@@ -267,7 +267,7 @@ public class ProjectCalendar
 		int endFiscalQuarter = endFiscalMonth / 3;
 
 		String firstFiscalQuarter = getQuarterlyPrefixString() + startFiscalQuarter + " " + startYearString;
-		if (startFiscalQuarter == endFiscalQuarter)
+		if (startFiscalQuarter == endFiscalQuarter && startFiscalYear == endFiscalYear)
 			return firstFiscalQuarter;
 		
 		return firstFiscalQuarter + " - " + getQuarterlyPrefixString() + endFiscalQuarter + " " + endYearString;
