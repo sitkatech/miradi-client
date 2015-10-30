@@ -36,15 +36,15 @@ public class StringUtilities
 	{
 		final int firstIndexOf = value.indexOf(token);
 		if (firstIndexOf >= 0)
-			return value.substring(firstIndexOf + 1);
+			return value.substring(firstIndexOf + token.length());
 		
 		return "";
 	}
 	
-	public static String substringBetween(String line, final String delimeterBefore, final String delimeterAfter)
+	public static String substringBetween(String line, final String delimiterBefore, final String delimiterAfter)
 	{
-		final int indexAfterFirstFromChar = line.indexOf(delimeterBefore) + 1;
-		final int firstIndexOfToChar = line.indexOf(delimeterAfter, indexAfterFirstFromChar);
+		final int indexAfterFirstFromChar = line.indexOf(delimiterBefore) + 1;
+		final int firstIndexOfToChar = line.indexOf(delimiterAfter, indexAfterFirstFromChar);
 		
 		return line.substring(indexAfterFirstFromChar, firstIndexOfToChar);
 	}
@@ -82,15 +82,15 @@ public class StringUtilities
 	{
 		return actualMpf.getBytes("UTF-8");
 	}
-	
+
 	public static String safelyStripTrailingString(String name, String suffix) throws Exception
 	{
 		if (!name.endsWith(suffix))
 			return name;
-		
+
 		return stripTrailingString(name, suffix);
 	}
-	
+
 	public static String stripTrailingString(String name, final String suffix) throws Exception
 	{
 		int lastIndexOfSuffix = name.lastIndexOf(suffix);

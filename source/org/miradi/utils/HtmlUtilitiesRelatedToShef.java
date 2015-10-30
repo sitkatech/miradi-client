@@ -20,6 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class HtmlUtilitiesRelatedToShef
 {
 	//TODO medium : this method should be split into two: sanitize and normalize
@@ -28,11 +32,13 @@ public class HtmlUtilitiesRelatedToShef
 	{
 		if (text == null || text.length() == 0)
 			return text;
-		
+
+		String[] internalAllowedHtmlTags = getInternalAllowedHtmlTags(allowedHtmlTags);
+
 		text = HtmlUtilities.stripHtmlComments(text);
+		text = HtmlUtilities.stripOfficeNamespaceParagraphs(text);
 		text = HtmlUtilities.replaceAllEmptyDivsWithBrs(text);
-		text = HtmlUtilities.replaceEndParagraphTagsWithBrs(text);
-		
+
 		StringBuffer stringBuffer = new StringBuffer();
 		final String[] lines = text.split(HtmlUtilities.getNewlineRegex());
 		for (int index = 0; index < lines.length; ++index)
@@ -49,8 +55,7 @@ public class HtmlUtilitiesRelatedToShef
 		// NOTE: The Java HTML parser compresses all whitespace to a single space
 		// (http://java.sun.com/products/jfc/tsc/articles/bookmarks/)
 		trimmedText = HtmlUtilities.removeNonHtmlNewLines(trimmedText);
-		trimmedText = HtmlUtilities.appendNewlineToEndDivTags(trimmedText);
-		trimmedText = HtmlUtilities.removeAllExcept(trimmedText, allowedHtmlTags);
+		trimmedText = HtmlUtilities.removeAllExcept(trimmedText, internalAllowedHtmlTags);
 		trimmedText = HtmlUtilities.stripAttributesFromNonAnchorElements(trimmedText);
 		trimmedText = trimmedText.replaceAll("\\t", " ");
 		trimmedText = trimmedText.replaceAll(" +", " ");
@@ -64,11 +69,22 @@ public class HtmlUtilitiesRelatedToShef
 		trimmedText = XmlUtilities2.getXmlEncodedApostrophes(trimmedText);
 		trimmedText = XmlUtilities2.replaceNamedEntitiesWithNumericEntities(trimmedText);
 		HtmlUtilities.ensureNoCloseBrTags(trimmedText);
-		trimmedText = HtmlUtilities.fixAnchorElements(trimmedText, allowedHtmlTags);
+		trimmedText = HtmlUtilities.fixAnchorElements(trimmedText, internalAllowedHtmlTags);
 		
 		trimmedText = stripTrailingHtmlNewlinesBecauseHtmlPaneInitializeInsertsSome(trimmedText);
-		
+
+		trimmedText = HtmlUtilities.replaceAllParagraphsWithDivs(trimmedText);
+
 		return trimmedText;
+	}
+
+	private static String[] getInternalAllowedHtmlTags(String[] allowedHtmlTags)
+	{
+		// paras are allowed locally to accommodate paste from word, etc. but will be replaced by divs
+		List<String> internalAllowedHtmlTags =new ArrayList<String>();
+		Collections.addAll(internalAllowedHtmlTags, allowedHtmlTags);
+		internalAllowedHtmlTags.add(HtmlUtilities.PARA_TAG_NAME);
+		return internalAllowedHtmlTags.toArray(new String[internalAllowedHtmlTags.size()]);
 	}
 
 	private static String stripTrailingHtmlNewlinesBecauseHtmlPaneInitializeInsertsSome(String trimmedText) throws Exception

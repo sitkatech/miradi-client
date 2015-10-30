@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import org.miradi.main.MiradiTestCase;
+import org.miradi.objectdata.AbstractUserTextDataWithHtmlFormatting;
 
 public class TestHtmlUtilities extends MiradiTestCase
 {
@@ -163,26 +164,6 @@ public class TestHtmlUtilities extends MiradiTestCase
 		verifyGetFirstLineWithTruncationIndicated("Line 1 ...", "Line 1 <br/> line 2");
 	}
 
-	public void testGetNormalizedAndSanitizedHtmlText() throws Exception
-	{
-		String htmlText = 
-		  "<html>\n" +
-		  "<head>\n" +
-		  "	</head>\n" +
-		  "\t<body>\n" +
-		  "		<div>\n" +
-		  "	 	 text on\tline 1 \n" +
-		  "	 	 text on line 2\t\n" +
-		  "     </div>\n" +
-		  "     <div>\n" +
-		  "\t\ttext on line\t 3\n" +
-		  "		</div>\n" +
-		  "\t</body>\n" +
-		  "	</html>\n";
-
-		assertEquals("wrong new lines inserted?", "text on line 1 text on line 2<br/>text on line 3", HtmlUtilitiesRelatedToShef.getNormalizedAndSanitizedHtmlText(htmlText, getAllowedHtmlTags()));
-	}
-	
 	public void testIncorrectEncodingOfApostrophe() throws Exception
 	{
 		String htmlText = "we'll";
@@ -218,7 +199,7 @@ public class TestHtmlUtilities extends MiradiTestCase
 	
 	private static String[] getAllowedHtmlTags()
 	{
-		return new String[] {"br", "b", "i", "ul", "ol", "li", "u", "strike", "a", };
+		return AbstractUserTextDataWithHtmlFormatting.getAllowedHtmlTags();
 	}
 
 	public void testReplaceNonEmptyBrTags()
@@ -283,20 +264,7 @@ public class TestHtmlUtilities extends MiradiTestCase
 	
 	private String[] getTagsToKeep()
 	{
-		return new String[] {"br", "b", "i", "ul", "ol", "li", "u", "strike", };
-	}
-	
-	public void testAppendNewlineToEndDivTags()
-	{
-		verifyDivWasAppendedWithNewline("<div>sometext</div>\n", "<div>sometext</div>");
-		verifyDivWasAppendedWithNewline("sometext<div/>\nmore", "sometext<div/>more");
-		verifyDivWasAppendedWithNewline("<div>sometext</div>\n", "<div>sometext</div>");
-	}
-
-	protected void verifyDivWasAppendedWithNewline( String expectedValue, String htmlText)
-	{
-		final String actualValue = HtmlUtilities.appendNewlineToEndDivTags(htmlText);
-		assertEquals("div tag was not found and appended with newline, new line missing?", expectedValue, actualValue);
+		return AbstractUserTextDataWithHtmlFormatting.getAllowedHtmlTags();
 	}
 	
 	public void testReplaceHtmlTags()

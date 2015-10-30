@@ -71,7 +71,7 @@ abstract public class Xmpz2GroupedConstants implements Xmpz2XmlConstants
 
 	public static String[] getHtmlTagsAsElementNames()
 	{
-		return new String[] {"br", "b", "i", "u", "strike", "a", "ul", "ol",};
+		return new String[] {"br", "b", "i", "u", "strike", "a", "ul", "ol", "div",};
 	}
 
 	public static Vector<String> getObjectTypeNamesToCreateIdSchemaElements()

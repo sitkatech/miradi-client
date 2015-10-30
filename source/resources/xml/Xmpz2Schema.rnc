@@ -1,7 +1,7 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Mon Oct 12 17:44:55 BST 2015 $
-# $LastChangedRevision: 235 $
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/235'
+# $LastChangedDate: Fri Oct 30 14:01:10 GMT 2015 $
+# $LastChangedRevision: 236 $
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/236'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -993,11 +993,12 @@ LinkableFactorId.element = element miradi:LinkableFactorId
   BiodiversityTargetId.element|  HumanWellbeingTargetId.element|  BiophysicalFactorId.element|  BiophysicalResultId.element|  CauseId.element|  StrategyId.element|  ThreatReductionResultId.element|  IntermediateResultId.element|  GroupBoxId.element
 }
 
-formatted_text = ( text|element.br|element.b|element.i|element.u|element.strike|element.a|element.ul|element.ol
+formatted_text = ( text|element.br|element.b|element.i|element.u|element.strike|element.a|element.ul|element.ol|element.div
 )*
 element.br = element br { empty }
 element.b = element b { formatted_text }
 element.i = element i { formatted_text }
+element.div = element div { formatted_text }
 element.u = element u { formatted_text }
 element.strike = element strike { formatted_text }
 element.ul = element ul { element.li* }

@@ -662,6 +662,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().writeSchemaElement("br", "empty");
 		getSchemaWriter().writeSchemaElement("b", FORMATTED_TEXT_TYPE);
 		getSchemaWriter().writeSchemaElement("i", FORMATTED_TEXT_TYPE);
+		getSchemaWriter().writeSchemaElement("div", FORMATTED_TEXT_TYPE);
 		getSchemaWriter().writeSchemaElement("u", FORMATTED_TEXT_TYPE);
 		getSchemaWriter().writeSchemaElement("strike", FORMATTED_TEXT_TYPE);
 		getSchemaWriter().writeSchemaElement("ul", "element.li*");

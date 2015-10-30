@@ -174,10 +174,10 @@ public class HtmlUtilities
 	public static String replaceHtmlTags(String text, String tagToReplace, final String replacement)
 	{
 		final String START = createStartTagRegex(tagToReplace);
-		final String START_WITH_ATRIBUTE = createStartTagWithAttributeRegex(tagToReplace);
+		final String START_WITH_ATTRIBUTE = createStartTagWithAttributeRegex(tagToReplace);
 		final String END = createEndTagRegex(tagToReplace);
 		final String EMPTY = createEmptyTagRegex(tagToReplace);
-		final String regex = START + "|" + EMPTY + "|" + END + "|" + START_WITH_ATRIBUTE; 
+		final String regex = START + "|" + EMPTY + "|" + END + "|" + START_WITH_ATTRIBUTE;
 		
 		return replaceAll(regex, text, replacement);
 	}
@@ -185,8 +185,8 @@ public class HtmlUtilities
 	public static String replaceStartHtmlTags(String text, String tagToReplace, final String replacement)
 	{
 		final String START = createStartTagRegex(tagToReplace);
-		final String START_WITH_ATRIBUTE = createStartTagWithAttributeRegex(tagToReplace);
-		final String regex = START + "|" + START_WITH_ATRIBUTE;
+		final String START_WITH_ATTRIBUTE = createStartTagWithAttributeRegex(tagToReplace);
+		final String regex = START + "|" + START_WITH_ATTRIBUTE;
 		
 		return replaceAll(regex, text, replacement);
 	}
@@ -218,20 +218,11 @@ public class HtmlUtilities
 		return compiledRegex.matcher(text).replaceAll(replacement);
 	}
 	
-	public static String appendNewlineToEndDivTags(String text)
-	{
-		final String END_DIV_REGEX = createEndTagRegex(DIV_TAG_NAME);
-		text = replaceAll(END_DIV_REGEX, text, DIV_CLOSING_TAG + StringUtilities.NEW_LINE);
-		final String EMPTY_DIV_REGEX = createEmptyTagRegex(DIV_TAG_NAME);
-		text = replaceAll(EMPTY_DIV_REGEX, text, DIV_EMPTY_TAG + StringUtilities.NEW_LINE);
-		return text;
-	}
-	
 	public static String removeAllExcept(String text, String[] tagsToKeep)
 	{
-		String tagsSeperatedByOr = StringUtilities.joinWithOr(tagsToKeep);
+		String tagsSeparatedByOr = StringUtilities.joinWithOr(tagsToKeep);
 		
-		String regex = "<\\/*?(?![^>]*?\\b(?:" + tagsSeperatedByOr + ")\\b)[^>]*?>";;
+		String regex = "<\\/*?(?![^>]*?\\b(?:" + tagsSeparatedByOr + ")\\b)[^>]*?>";;
 		final Pattern compiledRegex = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
 		
 		return compiledRegex.matcher(text).replaceAll(StringUtilities.EMPTY_STRING);
@@ -247,19 +238,27 @@ public class HtmlUtilities
 		return result;
 	}
 
-	static String replaceAllEmptyDivsWithBrs(String text)
+	public static String replaceAllEmptyDivsWithBrs(String text)
 	{
 		final String START_DIV_REGEX = createStartTagRegex(DIV_TAG_NAME);
 		final String END_DIV_REGEX = createEndTagRegex(DIV_TAG_NAME);
 		text = text.replaceAll(START_DIV_REGEX + "\\s*" + END_DIV_REGEX, BR_TAG);
 		return text;
 	}
-	
-	public static String replaceEndParagraphTagsWithBrs(String html)
+
+	public static String stripOfficeNamespaceParagraphs(String text)
 	{
-		return replaceAll(createEndTagRegex("p"), html, BR_TAG);
+		return HtmlUtilities.replaceHtmlTags(text, OFFICE_PARA_TAG_NAME, "");
 	}
-	
+
+	public static String replaceAllParagraphsWithDivs(String text)
+	{
+		final String START_PARA_REGEX = createStartTagRegex(PARA_TAG_NAME);
+		final String END_PARA_REGEX = createEndTagRegex(PARA_TAG_NAME);
+		text = replaceAll(START_PARA_REGEX, text, DIV_START_TAG);
+		return replaceAll(END_PARA_REGEX, text, DIV_END_TAG);
+	}
+
 	public static int getLabelLineCount(String labelToUse)
 	{
 		String label = labelToUse + "AvoidSplitTrimmingTrailingNewlines";
@@ -515,8 +514,11 @@ public class HtmlUtilities
 	public static final String LI_START_TAG = "<li>";
 	public static final String LI_END_TAG = "</li>";
 	private static final String DIV_TAG_NAME = "div";
-	private static final String DIV_CLOSING_TAG = "</div>";
+	private static final String DIV_START_TAG = "<div>";
+	private static final String DIV_END_TAG = "</div>";
 	private static final String DIV_EMPTY_TAG = "<div/>";
+	private static final String OFFICE_PARA_TAG_NAME = "o:p";
+	public static final String PARA_TAG_NAME = "p";
 	public static final String ANCHOR_ELEMENT_NAME = "a";
 	public static final String HREF_ATTRIBUTE_NAME = "href";
 	public static final String NAME_ATTRIBUTE_NAME = "name";

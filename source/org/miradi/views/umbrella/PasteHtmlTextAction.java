@@ -93,7 +93,7 @@ public class PasteHtmlTextAction extends AbstractAction
     {
 		html = AbstractHtmlPane.getNormalizedAndSanitizedHtmlText(html);
 		//NOTE: We are right before release 4.0 and instead of splitting HtmlUtilitiesRelatedToShef
-		//into xml and hmtl, we chose a safe fix: undo the apostrophe encoding done by the normalizer. 
+		//into xml and html, we chose a safe fix: undo the apostrophe encoding done by the normalizer.
 		html = convertXmlToHtml(html);
 		
 		replaceTextAtCaretPosition(html);
