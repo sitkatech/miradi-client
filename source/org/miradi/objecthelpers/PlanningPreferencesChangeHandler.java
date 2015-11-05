@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objecthelpers;
 
+import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
@@ -27,7 +28,9 @@ import org.miradi.main.EAM;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.ProjectMetadataSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.utils.CodeList;
 
 public class PlanningPreferencesChangeHandler implements CommandExecutedListener
@@ -53,6 +56,9 @@ public class PlanningPreferencesChangeHandler implements CommandExecutedListener
 		{		
 			if (shouldCollapseAllBudgetColumns(event))
 				collapseAllBudgetColumns();
+
+			if(diagramDeleted(event))
+				resetWorkPlanDiagramFilter(event);
 		}
 		catch(Exception e)
 		{
@@ -93,7 +99,44 @@ public class PlanningPreferencesChangeHandler implements CommandExecutedListener
 			getProject().executeAsSideEffect(clearExpandedColumns);
 		}
 	}
-	
+
+	private boolean diagramDeleted(CommandExecutedEvent event)
+	{
+		if (event.isDeleteCommandForThisType(ConceptualModelDiagramSchema.getObjectType()))
+			return true;
+
+		if (event.isDeleteCommandForThisType(ResultsChainDiagramSchema.getObjectType()))
+			return true;
+
+		return false;
+	}
+
+	private void resetWorkPlanDiagramFilter(CommandExecutedEvent event) throws Exception
+	{
+		Project project = getProject();
+
+		CommandDeleteObject deleteCommand = (CommandDeleteObject) event.getCommand();
+		ORef deletedDiagramObjectRef = deleteCommand.getObjectRef();
+
+		ORefList tableSettingsRefs = project.getTableSettingsPool().getORefList();
+		for (int index = 0; index < tableSettingsRefs.size(); ++index)
+		{
+			ORef tableSettingsRef = tableSettingsRefs.get(index);
+			TableSettings tableSettings = TableSettings.find(project, tableSettingsRef);
+			String diagramFilter = tableSettings.getData(TableSettings.TAG_WORK_PLAN_DIAGRAM_FILTER);
+
+			if (!diagramFilter.isEmpty())
+			{
+				ORef diagramFilterObjectRef = ORef.createFromString(diagramFilter);
+				if (diagramFilterObjectRef.equals(deletedDiagramObjectRef))
+				{
+					CommandSetObjectData clearDiagramFilter = new CommandSetObjectData(tableSettingsRef, TableSettings.TAG_WORK_PLAN_DIAGRAM_FILTER, "");
+					project.executeAsSideEffect(clearDiagramFilter);
+				}
+			}
+		}
+	}
+
 	private Project getProject()
 	{
 		return project;

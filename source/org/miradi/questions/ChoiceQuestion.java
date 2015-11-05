@@ -24,6 +24,7 @@ import java.util.Comparator;
 import java.util.Vector;
 
 import org.miradi.main.EAM;
+import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.ColorManager;
 
@@ -197,6 +198,10 @@ public abstract class ChoiceQuestion implements Comparable<ChoiceQuestion>
 	{
 	}
 	
+	public void reloadQuestion(Project project)
+	{
+	}
+
 	public boolean hasAdditionalText()
 	{
 		return false;

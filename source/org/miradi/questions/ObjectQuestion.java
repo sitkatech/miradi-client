@@ -50,10 +50,15 @@ abstract public class ObjectQuestion extends ProjectBasedDynamicQuestion
 	
 	public ChoiceItem[] createChoiceItemListWithUnspecifiedItem(final ChoiceItem[] choices)
 	{
+		return createChoiceItemListWithUnspecifiedItem(choices, EAM.text("Unspecified"));
+	}
+
+	public ChoiceItem[] createChoiceItemListWithUnspecifiedItem(final ChoiceItem[] choices, final String unspecifiedChoiceLabel)
+	{
 		Vector<ChoiceItem> choicesWithUnspecified = new Vector<ChoiceItem>();
-		choicesWithUnspecified.add(new ChoiceItem("", EAM.text("Unspecified")));
+		choicesWithUnspecified.add(new ChoiceItem("", unspecifiedChoiceLabel));
 		choicesWithUnspecified.addAll(Arrays.asList(choices));
-		
+
 		return choicesWithUnspecified.toArray(new ChoiceItem[0]);
 	}
 

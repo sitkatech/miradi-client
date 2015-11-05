@@ -77,7 +77,7 @@ public class ProjectListTreeTableModel extends GenericTreeTableModel
 		nodeSorter.resortBy(columnTag);
 		fileSystemNode.recursivelySort();
 		
-		reloadNodesWithouRebuildingNodes();
+		reloadNodesWithoutRebuildingNodes();
 	}
 
 	private FileSystemTreeNode getFileSystemRootNode()

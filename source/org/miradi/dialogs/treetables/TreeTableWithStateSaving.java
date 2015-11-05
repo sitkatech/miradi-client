@@ -170,15 +170,15 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		{
 		    if (hierarchy.getFirstElement().getObjectType() == typeToExpandTo)
 		    {
-		        HashSet<ORefList> hiearchiesUpToType = createHiarchiesUpToLeaf(new ORefList(hierarchy));
-				hierarchiesToExpand.addAll(hiearchiesUpToType);
+		        HashSet<ORefList> hierarchiesUpToType = createHierarchiesUpToLeaf(new ORefList(hierarchy));
+				hierarchiesToExpand.addAll(hierarchiesUpToType);
 		    }
 		}
 
 		saveExpanded(new Vector<ORefList>(hierarchiesToExpand));
 	}
 
-	private HashSet<ORefList> createHiarchiesUpToLeaf(ORefList hierarchy)
+	private HashSet<ORefList> createHierarchiesUpToLeaf(ORefList hierarchy)
 	{
 		HashSet<ORefList> hierarchiesUpToLeaf = new HashSet<ORefList>();
 		while(hierarchy.size() > 1)

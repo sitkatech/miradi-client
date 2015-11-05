@@ -25,13 +25,17 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.AbstractFixedHeightDirectlyAboveTreeTablePanel;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNodeAlwaysExpanded;
+import org.miradi.exceptions.CommandFailedException;
+import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TableSettings;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
+import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.views.workplan.WorkPlanDiagramFilterPanel;
 
 import javax.swing.*;
@@ -58,7 +62,25 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 
 		return new WorkPlanTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider, treeTableHeaderPanel);
 	}
-	
+
+	@Override
+	public void handleCommandEventImmediately(CommandExecutedEvent event)
+	{
+		super.handleCommandEventImmediately(event);
+
+		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION))
+		{
+			try
+			{
+				diagramFilterPanel.updateDiagramFilterChoices();
+			}
+			catch(CommandFailedException e)
+			{
+				EAM.logException(e);
+			}
+		}
+	}
+
 	@Override
 	protected void updateResourceFilter() throws Exception
 	{
@@ -90,9 +112,10 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 	}
 
 	@Override
-	protected void addDiagramFilterPanel(JPanel diagramFilterPanelToUse)
+	protected void addDiagramFilterPanel(JPanel diagramFilterPanelToUse) throws Exception
 	{
-		diagramFilterPanel = new WorkPlanDiagramFilterPanel(getProject(), getProject().getMetadata().getRef());
+		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getTabSpecificModelIdentifier());
+		diagramFilterPanel = new WorkPlanDiagramFilterPanel(getProject(), getProject().getMetadata(), tableSettings);
 		diagramFilterPanelToUse.add(diagramFilterPanel);
 	}
 

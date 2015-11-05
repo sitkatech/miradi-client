@@ -176,6 +176,10 @@ public class ObjectTestCase extends TestCaseWithProject
 			return;
 		
 		String sampleData = getSampleData(object, tag);
+
+		if (sampleData.isEmpty())
+			return;
+
 		String emptyData = getEmptyData(object, tag);
 
 		assertTrue("field didn't start out empty?", object.getField(tag).isEmpty());

@@ -88,7 +88,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		return new GridLayoutPlus();
 	};
 
-	protected void addDiagramFilterPanel(JPanel diagramFilterPanel)
+	protected void addDiagramFilterPanel(JPanel diagramFilterPanel) throws Exception
 	{
 	}
 
@@ -250,7 +250,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		
 		if (event.isSetDataCommandWithThisTag(BaseObject.TAG_LEADER_RESOURCE))
 			return true;
-		
+
 		return false;
 	}
 	
@@ -385,7 +385,10 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		
 		if(event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION))
 			return true;
-		
+
+		if(event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), TableSettings.TAG_WORK_PLAN_DIAGRAM_FILTER))
+			return true;
+
 		if(event.isSetDataCommandWithThisTypeAndTag(ObjectTreeTableConfigurationSchema.getObjectType(), ObjectTreeTableConfiguration.TAG_COL_CONFIGURATION))
 			return true;
 		

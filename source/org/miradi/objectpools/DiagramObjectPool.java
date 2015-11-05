@@ -21,9 +21,11 @@ package org.miradi.objectpools;
 
 import java.util.Comparator;
 
+import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.DiagramObject;
 
 public abstract class DiagramObjectPool extends BaseObjectPool
 {
@@ -39,7 +41,22 @@ public abstract class DiagramObjectPool extends BaseObjectPool
 		refs.sort(new DiagramObjectComparator());
 		return refs;
 	}
-	
+
+	public DiagramObject findDiagramObject(BaseId id)
+	{
+		return (DiagramObject)getRawObject(id);
+	}
+
+	public DiagramObject[] getAllDiagramObjects()
+	{
+		BaseId[] allIds = getIds();
+		DiagramObject[] allDiagramObjects = new DiagramObject[allIds.length];
+		for (int i = 0; i < allDiagramObjects.length; i++)
+			allDiagramObjects[i] = findDiagramObject(allIds[i]);
+
+		return allDiagramObjects;
+	}
+
 	class DiagramObjectComparator implements Comparator<ORef>
 	{
 		public int compare(ORef ref1, ORef ref2)

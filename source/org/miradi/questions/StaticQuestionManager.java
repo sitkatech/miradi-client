@@ -115,6 +115,7 @@ public class StaticQuestionManager
 		addQuestion(new PrecisionTypeQuestion());
 		addQuestion(new ProjectFocusQuestion());
 		addQuestion(new ProjectScaleQuestion());
+		addQuestion(new DiagramChoiceQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)
@@ -126,11 +127,11 @@ public class StaticQuestionManager
 	private static void validateSingleSelectionQuestion(ChoiceQuestion question)
 	{
 		CodeList allCodes = question.getAllCodes();
-		final boolean containsDefaultEmpyChoice = allCodes.contains("");
-		if (isSingleSelectQuestion(question) && !containsDefaultEmpyChoice)
+		final boolean containsDefaultEmptyChoice = allCodes.contains("");
+		if (isSingleSelectQuestion(question) && !containsDefaultEmptyChoice)
 			EAM.logError("Single selection question does not contain default \"\" value.  Question class:" + question.getClass().getSimpleName());
 		
-		if (isMultipleSelectQuestion(question) && containsDefaultEmpyChoice)
+		if (isMultipleSelectQuestion(question) && containsDefaultEmptyChoice)
 			EAM.logError("Multi selection question can not contain default \"\" value.  Question class:" + question.getClass().getSimpleName());
 	}
 
