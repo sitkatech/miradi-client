@@ -80,7 +80,7 @@ public class WorkPlanDiagramFilterPanel extends ObjectDataInputPanel
 		for(FocusListener focusListener : focusListeners)
 			combo.removeFocusListener(focusListener);
 
-		DefaultComboBoxModel<ChoiceItem> comboBoxModel = new DefaultComboBoxModel<ChoiceItem>(diagramChoices);
+		DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel(diagramChoices);
 		combo.setModel(comboBoxModel);
 
 		String diagramFilter = tableSettings.getData(TableSettings.TAG_WORK_PLAN_DIAGRAM_FILTER);
