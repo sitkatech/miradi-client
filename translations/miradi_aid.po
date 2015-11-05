@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-13 03:36-0700\n"
+"POT-Creation-Date: 2015-11-05 06:36-0800\n"
 "PO-Revision-Date: 2014-05-28 17:01+0000\n"
 "Last-Translator: nsalafsky <nick@fosonline.org>\n"
 "Language-Team: English (Estonia) (http://www.transifex.com/projects/p/miradi-"
@@ -2123,6 +2123,10 @@ msgstr "Agree on roles and responsibilities"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpTeamRoles.java:35
 msgid "Agree upon team roles"
 msgstr "Agree upon team roles"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DiagramChoiceQuestion.java:64
+msgid "All Diagrams"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:57
 msgid "All on One Page"
@@ -6249,7 +6253,7 @@ msgstr ""
 "task. There are three main kinds of resources - human, material, and "
 "financial."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/WorkPlanTreeTablePanel.java:76
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/WorkPlanTreeTablePanel.java:98
 msgid "Resource filter is on"
 msgstr ""
 
@@ -8787,7 +8791,7 @@ msgstr ""
 "You are probably trying to load an old project that contains obsolete "
 "commands that are no longer supported"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ChoiceQuestion.java:134
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ChoiceQuestion.java:135
 msgid "Unknown code: "
 msgstr "Unknown code: "
 
@@ -8810,7 +8814,7 @@ msgstr "Unscheduled"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/AbstractLanguagesQuestion.java:57
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:46
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PrecisionTypeQuestion.java:35
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ObjectQuestion.java:54
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ObjectQuestion.java:53
 msgid "Unspecified"
 msgstr "Unspecified"
 
@@ -10840,6 +10844,9 @@ msgstr "FieldLabel|48.TagTableSettingsMap|Table Settings"
 
 msgid "FieldLabel|48.WorkPlanVisibleNodesCode|Include Data From"
 msgstr "FieldLabel|48.WorkPlanVisibleNodesCode|Include Data From"
+
+msgid "FieldLabel|48.WorkPlanDiagramFilter|Display this selection"
+msgstr ""
 
 msgid "FieldLabel|49.ThreatRatingCommentsData|Threat Rating Comments"
 msgstr "FieldLabel|49.ThreatRatingCommentsData|Pressure Rating Comments"

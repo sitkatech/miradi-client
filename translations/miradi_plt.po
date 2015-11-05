@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-13 03:36-0700\n"
+"POT-Creation-Date: 2015-11-05 06:36-0800\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1918,6 +1918,10 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpTeamRoles.java:35
 msgid "Agree upon team roles"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DiagramChoiceQuestion.java:64
+msgid "All Diagrams"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:57
@@ -5868,7 +5872,7 @@ msgid ""
 "financial."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/WorkPlanTreeTablePanel.java:76
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/WorkPlanTreeTablePanel.java:98
 msgid "Resource filter is on"
 msgstr ""
 
@@ -8246,7 +8250,7 @@ msgid ""
 "commands that are no longer supported"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ChoiceQuestion.java:134
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ChoiceQuestion.java:135
 msgid "Unknown code: "
 msgstr ""
 
@@ -8269,7 +8273,7 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/AbstractLanguagesQuestion.java:57
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:46
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PrecisionTypeQuestion.java:35
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ObjectQuestion.java:54
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ObjectQuestion.java:53
 msgid "Unspecified"
 msgstr ""
 
@@ -10242,6 +10246,9 @@ msgid "FieldLabel|48.TagTableSettingsMap|Table Settings"
 msgstr ""
 
 msgid "FieldLabel|48.WorkPlanVisibleNodesCode|Include Data From"
+msgstr ""
+
+msgid "FieldLabel|48.WorkPlanDiagramFilter|Display this selection"
 msgstr ""
 
 msgid "FieldLabel|49.ThreatRatingCommentsData|Threat Rating Comments"

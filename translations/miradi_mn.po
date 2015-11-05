@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-13 03:36-0700\n"
+"POT-Creation-Date: 2015-11-05 06:36-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Mongolian (http://www.transifex.com/projects/p/miradi-client/"
@@ -2057,6 +2057,10 @@ msgstr "Үүрэг ба хариуцлагыг тохиролцох"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpTeamRoles.java:35
 msgid "Agree upon team roles"
 msgstr "Багийн дүрмийг тохирох"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DiagramChoiceQuestion.java:64
+msgid "All Diagrams"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:57
 msgid "All on One Page"
@@ -6142,7 +6146,7 @@ msgstr ""
 "шаардлагатай хүн аль эсвэл зүйл. Гурван гол нөөц байдаг - хүнийн, материалын "
 "болон санхүүгийн."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/WorkPlanTreeTablePanel.java:76
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/WorkPlanTreeTablePanel.java:98
 msgid "Resource filter is on"
 msgstr ""
 
@@ -8644,7 +8648,7 @@ msgstr ""
 "Та магадгүй хэрэглээнээс хасагдсан хуучирсан коммандыг агуулсан хуучин "
 "төслийг нээхээр оролдсон байх"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ChoiceQuestion.java:134
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ChoiceQuestion.java:135
 msgid "Unknown code: "
 msgstr "Тодорхой бус код: "
 
@@ -8667,7 +8671,7 @@ msgstr "Цагийн хуваарьгүй"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/AbstractLanguagesQuestion.java:57
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:46
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PrecisionTypeQuestion.java:35
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ObjectQuestion.java:54
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ObjectQuestion.java:53
 msgid "Unspecified"
 msgstr "Тодорхой заагаагүй"
 
@@ -10826,6 +10830,9 @@ msgid "FieldLabel|48.TagTableSettingsMap|Table Settings"
 msgstr "БаганыХаяг|48.ТэмдэглэгээХүснэгтТохиргооЗураг|Хүснэгт Тохиргоо"
 
 msgid "FieldLabel|48.WorkPlanVisibleNodesCode|Include Data From"
+msgstr ""
+
+msgid "FieldLabel|48.WorkPlanDiagramFilter|Display this selection"
 msgstr ""
 
 msgid "FieldLabel|49.ThreatRatingCommentsData|Threat Rating Comments"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-13 03:36-0700\n"
+"POT-Creation-Date: 2015-11-05 06:36-0800\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/miradi-client/"
@@ -2115,6 +2115,10 @@ msgstr "Accepter les rôles et les responsabilités"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpTeamRoles.java:35
 msgid "Agree upon team roles"
 msgstr "Accepter les rôles de l'équipe"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DiagramChoiceQuestion.java:64
+msgid "All Diagrams"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:57
 msgid "All on One Page"
@@ -6291,7 +6295,7 @@ msgstr ""
 "méthode ou une tâche. Il y a trois types principaux de ressources : "
 "humaines, matérielles et financières."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/WorkPlanTreeTablePanel.java:76
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/WorkPlanTreeTablePanel.java:98
 msgid "Resource filter is on"
 msgstr ""
 
@@ -8848,7 +8852,7 @@ msgstr ""
 "Vous êtes probablement en train de charger un vieux projet contenant des "
 "commandes obsolètes qui ne sont plus utilisées"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ChoiceQuestion.java:134
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ChoiceQuestion.java:135
 msgid "Unknown code: "
 msgstr "Code inconnu :"
 
@@ -8871,7 +8875,7 @@ msgstr "Non planifié"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/AbstractLanguagesQuestion.java:57
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:46
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PrecisionTypeQuestion.java:35
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ObjectQuestion.java:54
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ObjectQuestion.java:53
 msgid "Unspecified"
 msgstr "Non spécifié"
 
@@ -10901,6 +10905,9 @@ msgstr "Paramètres du tableau"
 
 msgid "FieldLabel|48.WorkPlanVisibleNodesCode|Include Data From"
 msgstr "Inclure les Données de"
+
+msgid "FieldLabel|48.WorkPlanDiagramFilter|Display this selection"
+msgstr ""
 
 msgid "FieldLabel|49.ThreatRatingCommentsData|Threat Rating Comments"
 msgstr "Commentaires sur l'évaluation de la menace"

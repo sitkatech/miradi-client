@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-13 03:36-0700\n"
+"POT-Creation-Date: 2015-11-05 06:36-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/miradi-client/"
@@ -2137,6 +2137,10 @@ msgstr "Единодушие по отношение роли и отговор�
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpTeamRoles.java:35
 msgid "Agree upon team roles"
 msgstr "Единодушие по отношение роли в екипа"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DiagramChoiceQuestion.java:64
+msgid "All Diagrams"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:57
 msgid "All on One Page"
@@ -6281,7 +6285,7 @@ msgstr ""
 "метод или задача. Има три основни вида ресурси - човешки, материални и "
 "финансови."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/WorkPlanTreeTablePanel.java:76
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/WorkPlanTreeTablePanel.java:98
 msgid "Resource filter is on"
 msgstr ""
 
@@ -8805,7 +8809,7 @@ msgstr ""
 "Вероятно се опитвате да отворите стар проект, който съдържа излязли от "
 "употреба команди, които вече не се поддържат"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ChoiceQuestion.java:134
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ChoiceQuestion.java:135
 msgid "Unknown code: "
 msgstr "Неизвестен код:"
 
@@ -8828,7 +8832,7 @@ msgstr "Неплануван"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/AbstractLanguagesQuestion.java:57
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:46
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PrecisionTypeQuestion.java:35
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ObjectQuestion.java:54
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ObjectQuestion.java:53
 msgid "Unspecified"
 msgstr "Неуточнен"
 
@@ -10874,6 +10878,9 @@ msgstr "FieldLabel|48.TagTableSettingsMap|Таблични настройки"
 
 msgid "FieldLabel|48.WorkPlanVisibleNodesCode|Include Data From"
 msgstr "FieldLabel|48.WorkPlanVisibleNodesCode|Включване на данни от"
+
+msgid "FieldLabel|48.WorkPlanDiagramFilter|Display this selection"
+msgstr ""
 
 msgid "FieldLabel|49.ThreatRatingCommentsData|Threat Rating Comments"
 msgstr ""
