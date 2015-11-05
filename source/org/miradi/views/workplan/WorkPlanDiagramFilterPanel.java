@@ -53,6 +53,7 @@ public class WorkPlanDiagramFilterPanel extends ObjectDataInputPanel
 
 		diagramChoiceQuestion = new DiagramChoiceQuestion(projectToUse);
 		diagramFilterChoiceField = (ObjectChoiceField) createChoiceField(TableSettingsSchema.getObjectType(), TableSettings.TAG_WORK_PLAN_DIAGRAM_FILTER, diagramChoiceQuestion);
+		diagramFilterChoiceField.getComponent().setPreferredSize(diagramInclusionChoiceField.getComponent().getPreferredSize());
 		addField(diagramFilterChoiceField);
 
 		updateFieldsFromProject();
