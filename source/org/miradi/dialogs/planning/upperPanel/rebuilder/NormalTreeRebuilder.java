@@ -101,8 +101,8 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		EAM.logDebug("Don't know how to get children of " + parentRef);
 		return new ORefList();
 	}
-	
-	private ORefList getChildrenOfProjectNode(ORef parentRef) throws Exception
+
+	protected ORefList getChildrenOfProjectNode(ORef parentRef) throws Exception
 	{
 		ORefList childRefs = new ORefList();
 		if(getRowColumnProvider().shouldIncludeConceptualModelPage())

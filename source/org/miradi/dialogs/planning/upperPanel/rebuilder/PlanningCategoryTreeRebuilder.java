@@ -49,15 +49,15 @@ public class PlanningCategoryTreeRebuilder extends AbstractTreeRebuilder
 	public void rebuildTree(AbstractPlanningTreeNode rootNode) throws Exception
 	{
 		rootNode.clearChildren();
-		ORefList allAsignmentRefs = new ORefList();
-		allAsignmentRefs.addAll(getProject().getAssignmentPool().getRefList());
-		allAsignmentRefs.addAll(getProject().getExpenseAssignmentPool().getRefList());
+		ORefList allAssignmentRefs = new ORefList();
+		allAssignmentRefs.addAll(getProject().getAssignmentPool().getRefList());
+		allAssignmentRefs.addAll(getProject().getExpenseAssignmentPool().getRefList());
 
 		PlanningTreeBaseObjectNode projectNode = new PlanningTreeAlwaysExpandedBaseObjectNode(getProject(), rootNode, getProject().getMetadata());
 		rootNode.addChild(projectNode);
 		
 		int initialLevel = 0;
-		rebuild(projectNode, allAsignmentRefs, initialLevel);
+		rebuild(projectNode, allAssignmentRefs, initialLevel);
 	}
 	
 	private void rebuild(AbstractPlanningTreeNode parentNode, ORefList assignmentRefsThatApplyToThisNode, int currentLevel) throws Exception

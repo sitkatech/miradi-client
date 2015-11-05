@@ -21,6 +21,8 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNodeAlwaysExpanded;
+import org.miradi.dialogs.planning.upperPanel.rebuilder.AbstractTreeRebuilder;
+import org.miradi.dialogs.planning.upperPanel.rebuilder.WorkPlanTreeRebuilder;
 import org.miradi.project.Project;
 
 public class WorkPlanTreeTableModel extends TreeTableModelWithRebuilder
@@ -35,6 +37,12 @@ public class WorkPlanTreeTableModel extends TreeTableModelWithRebuilder
 	{
 		return UNIQUE_TREE_TABLE_IDENTIFIER;
 	}
-	
+
+	@Override
+	protected AbstractTreeRebuilder createTreeRebuilder()
+	{
+		return new WorkPlanTreeRebuilder(getProject(), getRowColumnProvider());
+	}
+
 	public static final String UNIQUE_TREE_TABLE_IDENTIFIER = "WorkPlanTreeTableModel";
 }

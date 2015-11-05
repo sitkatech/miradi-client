@@ -386,7 +386,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		if(event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION))
 			return true;
 
-		if(event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), TableSettings.TAG_WORK_PLAN_DIAGRAM_FILTER))
+		if(event.isSetDataCommandWithThisTypeAndTag(TableSettingsSchema.getObjectType(), TableSettings.TAG_WORK_PLAN_DIAGRAM_FILTER))
 			return true;
 
 		if(event.isSetDataCommandWithThisTypeAndTag(ObjectTreeTableConfigurationSchema.getObjectType(), ObjectTreeTableConfiguration.TAG_COL_CONFIGURATION))

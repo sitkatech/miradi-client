@@ -102,6 +102,12 @@ public class WorkPlanRowColumnProvider extends AbstractPlanningTreeRowColumnProv
 		return new CodeList();
 	}
 
+	public String getDiagramFilter() throws Exception
+	{
+		TableSettings tableSettings = this.getWorkPlanTableSettings();
+		return tableSettings.getData(TableSettings.TAG_WORK_PLAN_DIAGRAM_FILTER);
+	}
+
 	private CodeList createMonitoringRelatedRowCodeList()
 	{
 		return new CodeList(new String[] {
