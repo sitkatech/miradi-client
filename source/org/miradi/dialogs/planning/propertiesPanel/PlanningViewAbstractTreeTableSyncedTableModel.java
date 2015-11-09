@@ -29,8 +29,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.utils.OptionalDouble;
 
@@ -171,7 +170,10 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 	{
 		if (ProjectMetadata.is(baseObject))
 			return getProject().getTimePeriodCostsMapsCache().calculateProjectTotals(workPlanBudgetMode);
-			
+
+		if (ConceptualModelDiagram.is(baseObject.getRef()) || ResultsChainDiagram.is(baseObject.getRef()))
+			return getProject().getTimePeriodCostsMapsCache().calculateDiagramObjectTotals((DiagramObject) baseObject, workPlanBudgetMode);
+
 		return getTotalTimePeriodCostsMap(baseObject);
 	}
 

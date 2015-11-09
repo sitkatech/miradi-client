@@ -80,6 +80,21 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 		return modeToTimePeriodCostsMapMap.get(mode);
 	}
 
+	public TimePeriodCostsMap calculateDiagramObjectTotals(DiagramObject baseObject, String mode) throws Exception
+	{
+		if (shouldOnlyIncludeMonitoringData(mode))
+			return getTotalTimePeriodCostsMap(getIncludedDiagramIndicators(baseObject.getRef()));
+
+		if (shouldOnlyIncludeActionsData(mode))
+			return getTotalTimePeriodCostsMap(getIncludedNonDraftStrategies(baseObject.getRef()));
+
+		TimePeriodCostsMap merged = new TimePeriodCostsMap();
+		merged.mergeAll(getTotalTimePeriodCostsMap(getIncludedDiagramIndicators(baseObject.getRef())));
+		merged.mergeAll(getTotalTimePeriodCostsMap(getIncludedNonDraftStrategies(baseObject.getRef())));
+
+		return merged;
+	}
+
 	private TimePeriodCostsMap computeTotalTimePeriodCostsMap(String mode)	throws Exception
 	{
 		if (shouldOnlyIncludeMonitoringData(mode))
@@ -111,14 +126,22 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 		ORefList diagramRefsToExtractIndicatorsFrom = getIncludedDiagramRefs();
 		for (int index = 0; index < diagramRefsToExtractIndicatorsFrom.size(); ++index)
 		{
-			DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), diagramRefsToExtractIndicatorsFrom.get(index));
-			Factor[] allDiagramFactors = diagramObject.getAllWrappedFactorsExcludingDraftStrategies();
-			indicators.addAll(getAllIndicators(allDiagramFactors));
+			ORef diagramObjectRef = diagramRefsToExtractIndicatorsFrom.get(index);
+			indicators.addAll(getIncludedDiagramIndicators(diagramObjectRef));
 		}
 		
 		return indicators;
 	}
 	
+	private HashSet<BaseObject> getIncludedDiagramIndicators(ORef diagramObjectRef) throws Exception
+	{
+		HashSet<BaseObject> indicators = new HashSet<BaseObject>();
+		DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), diagramObjectRef);
+		Factor[] allDiagramFactors = diagramObject.getAllWrappedFactorsExcludingDraftStrategies();
+		indicators.addAll(getAllIndicators(allDiagramFactors));
+		return indicators;
+	}
+
 	private Set<Indicator> getAllIndicators(Factor[] allDiagramFactors)
 	{
 		ORefSet indicatorRefs = new ORefSet();
@@ -155,11 +178,18 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 		ORefList includedDiagramObjectRefs = getIncludedDiagramRefs();
 		for (ORef diagramObjectRef : includedDiagramObjectRefs)
 		{
-			DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), diagramObjectRef);
-			nonDraftStrategies.addAll(getNonDraftStrategies(diagramObject));
+			nonDraftStrategies.addAll(getIncludedNonDraftStrategies(diagramObjectRef));
 		}
 		
 		return nonDraftStrategies; 
+	}
+
+	private Set<BaseObject> getIncludedNonDraftStrategies(ORef diagramObjectRef) throws Exception
+	{
+		Set<BaseObject> nonDraftStrategies = new HashSet<BaseObject>();
+		DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), diagramObjectRef);
+		nonDraftStrategies.addAll(diagramObject.getNonDraftStrategies());
+		return nonDraftStrategies;
 	}
 
 	private ORefList getIncludedDiagramRefs() throws Exception
@@ -174,20 +204,6 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 		return diagramRefsToExtractIndicatorsFrom;
 	}
 
-	private Set<Strategy> getNonDraftStrategies(DiagramObject diagramObject)
-	{
-		Set<Strategy> nonDraftStrategies = new HashSet<Strategy>();
-		Set<Factor> strategies = diagramObject.getFactorsOfType(StrategySchema.getObjectType());
-		for(Factor factor : strategies)
-		{
-			Strategy strategy = (Strategy) factor;
-			if (strategy.isStatusReal())
-				nonDraftStrategies.add(strategy);
-		}
-		
-		return nonDraftStrategies;
-	}
-	
 	private Project getProject()
 	{
 		return project;

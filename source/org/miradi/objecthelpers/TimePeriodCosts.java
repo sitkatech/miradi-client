@@ -204,7 +204,7 @@ public class TimePeriodCosts
 		if (!snapShotTimePeriodCosts.hasExpenseData() || snapShotTimePeriodCosts.isZeroExpenseValue())
 			mergeAllExpenseCategorizedQuantityInPlace(timePeriodCostsToMerge);
 		
-		if (!snapShotTimePeriodCosts.hasTotalWorkUnitsData() || snapShotTimePeriodCosts.isZeroTotaWorkUnits())
+		if (!snapShotTimePeriodCosts.hasTotalWorkUnitsData() || snapShotTimePeriodCosts.isZeroTotalWorkUnits())
 			mergeAllWorkUnitCategorizedQuantityInPlace(timePeriodCostsToMerge);
 	}
 
@@ -390,7 +390,7 @@ public class TimePeriodCosts
 		return getTotalExpense().isZeroValue();
 	}
 
-	private boolean isZeroTotaWorkUnits()
+	private boolean isZeroTotalWorkUnits()
 	{
 		return getTotalWorkUnits().isZeroValue();
 	}

@@ -25,6 +25,7 @@ import java.util.HashMap;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.DiagramObject;
 import org.miradi.project.Project;
 
 public class TimePeriodCostsMapsCache implements CommandExecutedListener
@@ -104,6 +105,11 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 		}
 		
 		return result;
+	}
+
+	public TimePeriodCostsMap calculateDiagramObjectTotals(DiagramObject baseObject, String workPlanBudgetMode) throws Exception
+	{
+		return getProject().getProjectTotalCalculator().calculateDiagramObjectTotals(baseObject, workPlanBudgetMode);
 	}
 
 	public TimePeriodCostsMap getTotalTimePeriodCostsMapForSubTasks(BaseObject baseObjectForRow, String assignmentsTag) throws Exception

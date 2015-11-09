@@ -28,20 +28,10 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.*;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.schemas.ConceptualModelDiagramSchema;
-import org.miradi.schemas.DiagramFactorSchema;
-import org.miradi.schemas.DiagramLinkSchema;
-import org.miradi.schemas.FactorLinkSchema;
-import org.miradi.schemas.HumanWelfareTargetSchema;
-import org.miradi.schemas.ResultsChainDiagramSchema;
-import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
 
 abstract public class DiagramObject extends BaseObject
@@ -131,7 +121,21 @@ abstract public class DiagramObject extends BaseObject
 	{
 		return getSafeRefListData(TAG_SELECTED_TAGGED_OBJECT_SET_REFS);
 	}
-	
+
+	public Set<Strategy> getNonDraftStrategies()
+	{
+		Set<Strategy> nonDraftStrategies = new HashSet<Strategy>();
+		Set<Factor> strategies = getFactorsOfType(StrategySchema.getObjectType());
+		for(Factor factor : strategies)
+		{
+			Strategy strategy = (Strategy) factor;
+			if (strategy.isStatusReal())
+				nonDraftStrategies.add(strategy);
+		}
+
+		return nonDraftStrategies;
+	}
+
 	// TODO: This really should have a test
 	public ORefList getAllGoalRefs()
 	{
