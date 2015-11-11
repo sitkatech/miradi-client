@@ -43,15 +43,7 @@ import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.VersionConstants;
 import org.miradi.migrations.VersionRange;
-import org.miradi.objecthelpers.CodeToChoiceMap;
-import org.miradi.objecthelpers.CodeToCodeListMap;
-import org.miradi.objecthelpers.DashboardStatusMapsCache;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.PlanningPreferencesChangeHandler;
-import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
-import org.miradi.objecthelpers.TimePeriodCostsMapsCache;
+import org.miradi.objecthelpers.*;
 import org.miradi.objectpools.*;
 import org.miradi.objects.*;
 import org.miradi.project.threatrating.SimpleThreatFormula;
@@ -109,6 +101,8 @@ public class Project implements ProjectInterface
 		planningPreferencesChangeHandler = new PlanningPreferencesChangeHandler(this);
 		dashboardStatusMapsCache = new DashboardStatusMapsCache(this);
 		timePeriodCostsMapsCache = new TimePeriodCostsMapsCache(this);
+		relevantDesiresCache = new RelevantDesiresCache(this);
+
 		clear();
 
 		enableIsDoNothingCommandOptimization();
@@ -133,6 +127,7 @@ public class Project implements ProjectInterface
 		// after project close/open
 		dashboardStatusMapsCache.clear();
 		timePeriodCostsMapsCache.clear();
+		relevantDesiresCache.clear();
 		projectTotalCalculator.clear();
 		
 		quarantine = new StringBuilder();
@@ -508,6 +503,11 @@ public class Project implements ProjectInterface
 		return timePeriodCostsMapsCache;
 	}
 
+	public RelevantDesiresCache getRelevantDesiresCache()
+	{
+		return relevantDesiresCache;
+	}
+
 	public BaseObject findObject(ORef ref)
 	{
 		return objectManager.findObject(ref);
@@ -849,6 +849,7 @@ public class Project implements ProjectInterface
 		planningPreferencesChangeHandler.enable();
 		dashboardStatusMapsCache.enable();
 		timePeriodCostsMapsCache.enable();
+		relevantDesiresCache.enable();
 	}
 
 	protected void applyDefaultBehavior() throws Exception
@@ -979,6 +980,7 @@ public class Project implements ProjectInterface
 		planningPreferencesChangeHandler.disable();
 		dashboardStatusMapsCache.disable();
 		timePeriodCostsMapsCache.disable();
+		relevantDesiresCache.disable();
 	}
 
 	public void disableThreatStressRatingEnsurer()
@@ -1443,6 +1445,7 @@ public class Project implements ProjectInterface
 	private PlanningPreferencesChangeHandler planningPreferencesChangeHandler;
 	private DashboardStatusMapsCache dashboardStatusMapsCache;
 	private TimePeriodCostsMapsCache timePeriodCostsMapsCache;
+	private RelevantDesiresCache relevantDesiresCache;
 
 	// FIXME low: This should go away, but it's difficult
 	private String currentViewName;

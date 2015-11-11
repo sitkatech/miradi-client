@@ -392,10 +392,10 @@ abstract public class Desire extends BaseObject
         return getRelevantStrategyAndActivityRefs().getFilteredBy(TaskSchema.getObjectType());
 	}
 
-	public static CommandVector buildRemoveObjectFromRelevancyListCommands(Project project, int typeWithRelevacnyOverrideSetList, String relevancyTag, ORef relevantObjectRefToRemove) throws Exception
+	public static CommandVector buildRemoveObjectFromRelevancyListCommands(Project project, int typeWithRelevancyOverrideSetList, String relevancyTag, ORef relevantObjectRefToRemove) throws Exception
 	{
 		CommandVector removeFromRelevancyListCommands = new CommandVector();
-		ORefList objectRefsWithRelevancyOverrides = project.getPool(typeWithRelevacnyOverrideSetList).getORefList();
+		ORefList objectRefsWithRelevancyOverrides = project.getPool(typeWithRelevancyOverrideSetList).getORefList();
 		for (int index = 0; index < objectRefsWithRelevancyOverrides.size(); ++index)
 		{
 			BaseObject objectWithRelevancyOverrides = BaseObject.find(project, objectRefsWithRelevancyOverrides.get(index));
@@ -411,31 +411,15 @@ abstract public class Desire extends BaseObject
 		
 		return removeFromRelevancyListCommands;
 	}
-	
+
 	public static ORefList findRelevantDesires(Project projectToUse, ORef strategyRef, final int desireType) throws Exception
 	{
-		ORefSet desireRefs = projectToUse.getPool(desireType).getRefSet();
-		ORefList relevant = new ORefList();
-		for(ORef desireRef: desireRefs)
-		{
-			Desire desire = Desire.findDesire(projectToUse, desireRef);
-			if(desire.getRelevantStrategyRefs().contains(strategyRef))
-				relevant.add(desire.getRef());
-		}
-		return relevant;
+		return projectToUse.getRelevantDesiresCache().getRelevantDesiresForStrategy(strategyRef, desireType);
 	}
-	
+
 	public static ORefList findAllRelevantDesires(Project projectToUse, ORef strategyOrActivityRef, final int desireType) throws Exception
 	{
-		ORefSet desireRefs = projectToUse.getPool(desireType).getRefSet();
-		ORefList relevant = new ORefList();
-		for(ORef desireRef: desireRefs)
-		{
-			Desire desire = Desire.findDesire(projectToUse, desireRef);
-			if(desire.getRelevantStrategyAndActivityRefs().contains(strategyOrActivityRef))
-				relevant.add(desire.getRef());
-		}
-		return relevant;
+		return projectToUse.getRelevantDesiresCache().getAllRelevantDesiresForStrategyOrActivity(strategyOrActivityRef, desireType);
 	}
 	
 	private String getLatestProgressPercentDetails()
