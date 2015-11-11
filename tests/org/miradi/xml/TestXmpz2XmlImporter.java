@@ -341,7 +341,6 @@ public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 	public void testImportFilledProject() throws Exception
 	{
 		getProject().populateEverything();
-		getProject().populateBaseObjectWithSampleData(getProject().getMetadata());
 		AbstractTarget target = getProject().createAndPopulateHumanWelfareTarget();
         getProject().createAndPopulateBiophysicalFactor();
         getProject().createAndPopulateBiophysicalResult();

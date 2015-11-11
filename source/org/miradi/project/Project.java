@@ -129,7 +129,8 @@ public class Project implements ProjectInterface
 		timePeriodCostsMapsCache.clear();
 		relevantDesiresCache.clear();
 		projectTotalCalculator.clear();
-		
+		projectCalendar.clear();
+
 		quarantine = new StringBuilder();
 		exceptionLog = new StringBuilder();
 		lastModifiedMillis = System.currentTimeMillis();
@@ -850,6 +851,7 @@ public class Project implements ProjectInterface
 		dashboardStatusMapsCache.enable();
 		timePeriodCostsMapsCache.enable();
 		relevantDesiresCache.enable();
+		projectCalendar.enable();
 	}
 
 	protected void applyDefaultBehavior() throws Exception
@@ -981,6 +983,7 @@ public class Project implements ProjectInterface
 		dashboardStatusMapsCache.disable();
 		timePeriodCostsMapsCache.disable();
 		relevantDesiresCache.disable();
+		projectCalendar.disable();
 	}
 
 	public void disableThreatStressRatingEnsurer()

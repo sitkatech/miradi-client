@@ -24,21 +24,60 @@ import java.util.LinkedHashSet;
 import java.util.Vector;
 
 import org.martus.util.MultiCalendar;
+import org.miradi.main.CommandExecutedEvent;
+import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.MonthAbbreviationsQuestion;
+import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.utils.DateRange;
 
-public class ProjectCalendar
+public class ProjectCalendar implements CommandExecutedListener
 {
-	public ProjectCalendar(Project projectToUse) throws Exception
+	public ProjectCalendar(Project projectToUse)  throws Exception
 	{
 		project = projectToUse;
+		clear();
 	}
-	
+
+	public void clear()
+	{
+		clearAllCachedData();
+	}
+
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		if (commandInvalidatesCache(event))
+			clear();
+	}
+
+	private boolean commandInvalidatesCache(CommandExecutedEvent event)
+	{
+		if (event.isSetDataCommandWithThisType(ProjectMetadataSchema.getObjectType()))
+			return true;
+
+		return false;
+	}
+
+	private void clearAllCachedData()
+	{
+		cachedPlanningStartDate = "";
+		cachedPlanningEndDate = "";
+	}
+
+	public void enable()
+	{
+		getProject().addCommandExecutedListener(this);
+	}
+
+	public void disable()
+	{
+		getProject().removeCommandExecutedListener(this);
+	}
+
 	public String getLongDateUnitString(DateUnit dateUnit)
 	{
 		if (dateUnit.isProjectTotal())
@@ -86,34 +125,44 @@ public class ProjectCalendar
 	
 	public String getPlanningStartDate()
 	{
-		MultiCalendar now = new MultiCalendar();
-		MultiCalendar startOfCalendarYear = MultiCalendar.createFromGregorianYearMonthDay(now.getGregorianYear(), getFiscalYearFirstMonth(), 1);
+		if (cachedPlanningStartDate.isEmpty())
+		{
+			MultiCalendar now = new MultiCalendar();
+			MultiCalendar startOfCalendarYear = MultiCalendar.createFromGregorianYearMonthDay(now.getGregorianYear(), getFiscalYearFirstMonth(), 1);
 
-		ProjectMetadata metadata = project.getMetadata();
-		String candidatesBestFirst[] = new String[] {
-			metadata.getWorkPlanStartDateAsString(),
-			metadata.getStartDate(),
-			startOfCalendarYear.toIsoDateString(),
-		};
-		
-		return firstNonBlank(candidatesBestFirst);
+			ProjectMetadata metadata = project.getMetadata();
+			String candidatesBestFirst[] = new String[] {
+					metadata.getWorkPlanStartDateAsString(),
+					metadata.getStartDate(),
+					startOfCalendarYear.toIsoDateString(),
+			};
+
+			cachedPlanningStartDate = firstNonBlank(candidatesBestFirst);
+		}
+
+		return cachedPlanningStartDate;
 	}
 
 	public String getPlanningEndDate()
 	{
-		MultiCalendar now = new MultiCalendar();
-		MultiCalendar planningStartMultiCalendar = MultiCalendar.createFromGregorianYearMonthDay(now.getGregorianYear(), getFiscalYearFirstMonth(), 1);
-		MultiCalendar endOfCalendarYear = getOneYearLater(planningStartMultiCalendar);
-		endOfCalendarYear.addDays(-1);
+		if (cachedPlanningEndDate.isEmpty())
+		{
+			MultiCalendar now = new MultiCalendar();
+			MultiCalendar planningStartMultiCalendar = MultiCalendar.createFromGregorianYearMonthDay(now.getGregorianYear(), getFiscalYearFirstMonth(), 1);
+			MultiCalendar endOfCalendarYear = getOneYearLater(planningStartMultiCalendar);
+			endOfCalendarYear.addDays(-1);
 
-		ProjectMetadata metadata = project.getMetadata();
-		String candidatesBestFirst[] = new String[] {
-			metadata.getWorkPlanEndDate(),
-			metadata.getExpectedEndDate(),
-			endOfCalendarYear.toIsoDateString(),
-		};
-		
-		return firstNonBlank(candidatesBestFirst);
+			ProjectMetadata metadata = project.getMetadata();
+			String candidatesBestFirst[] = new String[] {
+					metadata.getWorkPlanEndDate(),
+					metadata.getExpectedEndDate(),
+					endOfCalendarYear.toIsoDateString(),
+			};
+
+			cachedPlanningEndDate = firstNonBlank(candidatesBestFirst);
+		}
+
+		return cachedPlanningEndDate;
 	}
 
 	private String firstNonBlank(String[] candidatesBestFirst)
@@ -495,4 +544,6 @@ public class ProjectCalendar
 	}
 
 	private Project project;
+	private String cachedPlanningStartDate;
+	private String cachedPlanningEndDate;
 }
