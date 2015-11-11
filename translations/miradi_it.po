@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-05 06:36-0800\n"
+"POT-Creation-Date: 2015-11-11 09:06-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/miradi-client/"
@@ -3843,11 +3843,11 @@ msgstr "Caratteristiche finanziarie future (Demo)"
 msgid "Financial Settings"
 msgstr "Impostazione dati finanziari"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:289
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:338
 msgid "Fiscal Quarter Prefix|FQ"
 msgstr "Trimestre Fiscale Prefix|FQ"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:279
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:328
 msgid "Fiscal Year|FY"
 msgstr "Anno Fiscale|FY"
 
@@ -6089,7 +6089,7 @@ msgstr ""
 "utilizza un calendario occidentale, in genere 1° è  trimestre Gen-Mar, il 2° "
 "è Apr-Giu, il 3° è Lug-Set, e quarto è Ott-Dic."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:284
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:333
 msgid "Quarter Prefix|Q"
 msgstr "prefisso Trimestre "
 
@@ -8611,8 +8611,8 @@ msgstr "Vista..."
 msgid "Title|XSL Template Properties"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:45
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:138
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:84
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:187
 msgid "Total"
 msgstr "Totale"
 
@@ -9190,7 +9190,7 @@ msgstr "[NON SPECIFICATO]"
 msgid "[New Results Chain]"
 msgstr "[Nuova catena dei risultati]"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:951
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:954
 msgid "[No Project]"
 msgstr "[Nessun Progetto]"
 

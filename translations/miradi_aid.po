@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-05 06:36-0800\n"
+"POT-Creation-Date: 2015-11-11 09:06-0800\n"
 "PO-Revision-Date: 2014-05-28 17:01+0000\n"
 "Last-Translator: nsalafsky <nick@fosonline.org>\n"
 "Language-Team: English (Estonia) (http://www.transifex.com/projects/p/miradi-"
@@ -3887,11 +3887,11 @@ msgstr "Financial Future Features Demo"
 msgid "Financial Settings"
 msgstr "Financial Settings"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:289
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:338
 msgid "Fiscal Quarter Prefix|FQ"
 msgstr "Fiscal Quarter Prefix|FQ"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:279
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:328
 msgid "Fiscal Year|FY"
 msgstr "Fiscal Year|FY"
 
@@ -6137,7 +6137,7 @@ msgstr ""
 "Western calendar, typically 1st quarter is Jan - Mar, 2nd quarter is Apr - "
 "Jun, 3rd quarter is Jul - Sep, and 4th qtr is Oct - Dec. "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:284
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:333
 msgid "Quarter Prefix|Q"
 msgstr "Quarter Prefix|Q"
 
@@ -8677,8 +8677,8 @@ msgstr "Title|View..."
 msgid "Title|XSL Template Properties"
 msgstr "Title|XSL Template Properties"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:45
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:138
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:84
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:187
 msgid "Total"
 msgstr "Total"
 
@@ -9260,7 +9260,7 @@ msgstr "[NOT SPECIFIED]"
 msgid "[New Results Chain]"
 msgstr "[New Theory of Change]"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:951
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:954
 msgid "[No Project]"
 msgstr "[No Project]"
 
