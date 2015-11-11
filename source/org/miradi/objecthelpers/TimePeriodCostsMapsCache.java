@@ -51,6 +51,7 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 		totalTimePeriodCostsMapsByBaseObject = new HashMap<ORef, TimePeriodCostsMap>();
 		whenTotalAsStringByBaseObject = new HashMap<ORef, String>();
 		projectTotalsByBudgetMode = new HashMap<String, TimePeriodCostsMap>();
+		diagramObjectTotalsByBudgetMode = new HashMap<DiagramTotalCacheKey, TimePeriodCostsMap>();
 		totalTimePeriodCostsMapForSubTasksByBaseObjectAndAssignmentsTag = new HashMap<String, TimePeriodCostsMap>();
 	}
 
@@ -109,7 +110,15 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 
 	public TimePeriodCostsMap calculateDiagramObjectTotals(DiagramObject baseObject, String workPlanBudgetMode) throws Exception
 	{
-		return getProject().getProjectTotalCalculator().calculateDiagramObjectTotals(baseObject, workPlanBudgetMode);
+		DiagramTotalCacheKey diagramTotalCacheKey = new DiagramTotalCacheKey(baseObject, workPlanBudgetMode);
+		TimePeriodCostsMap result = diagramObjectTotalsByBudgetMode.get(diagramTotalCacheKey);
+		if(result == null)
+		{
+			result = getProject().getProjectTotalCalculator().calculateDiagramObjectTotals(baseObject, workPlanBudgetMode);
+			diagramObjectTotalsByBudgetMode.put(diagramTotalCacheKey, result);
+		}
+
+		return result;
 	}
 
 	public TimePeriodCostsMap getTotalTimePeriodCostsMapForSubTasks(BaseObject baseObjectForRow, String assignmentsTag) throws Exception
@@ -126,9 +135,46 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 		return result;
 	}
 
+	class DiagramTotalCacheKey
+	{
+		public DiagramTotalCacheKey(DiagramObject diagramObjectToUse, String workPlanBudgetModeToUse)
+		{
+			diagramObject = diagramObjectToUse;
+			workPlanBudgetMode = workPlanBudgetModeToUse;
+		}
+
+		@Override
+		public String toString()
+		{
+			return diagramObject.toString() + ":" + workPlanBudgetMode;
+		}
+
+		@Override
+		public boolean equals(Object rawOther)
+		{
+			if(! (rawOther instanceof DiagramTotalCacheKey))
+				return false;
+
+			DiagramTotalCacheKey other = (DiagramTotalCacheKey)rawOther;
+			if(!diagramObject.equals(other.diagramObject))
+				return false;
+			return (workPlanBudgetMode.equals(other.workPlanBudgetMode));
+		}
+
+		@Override
+		public int hashCode()
+		{
+			return toString().hashCode();
+		}
+
+		private DiagramObject diagramObject;
+		private String workPlanBudgetMode;
+	}
+
 	private Project project;
 	private HashMap<ORef, TimePeriodCostsMap> totalTimePeriodCostsMapsByBaseObject;
 	private HashMap<ORef, String> whenTotalAsStringByBaseObject;
 	private HashMap<String, TimePeriodCostsMap> projectTotalsByBudgetMode;
+	private HashMap<DiagramTotalCacheKey, TimePeriodCostsMap> diagramObjectTotalsByBudgetMode;
 	private HashMap<String, TimePeriodCostsMap> totalTimePeriodCostsMapForSubTasksByBaseObjectAndAssignmentsTag;
 }
