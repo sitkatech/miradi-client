@@ -282,7 +282,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 			return;
 		if(DiagramView.is(currentView))
 		{
-			getDiagram().selectAllLinksAndThierBendPointsInsideGroupBox(getDiagram().getOnlySelectedFactorAndGroupChildCells());
+			getDiagram().selectAllLinksAndTheirBendPointsInsideGroupBox(getDiagram().getOnlySelectedFactorAndGroupChildCells());
 			selectedCells = getDiagram().getSelectionCells();
 
 			if(Arrays.equals(previouslySelected, selectedCells))

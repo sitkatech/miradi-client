@@ -55,10 +55,10 @@ public class CustomMarqueeHandler extends BasicMarqueeHandler
 	public void handleMarqueeEvent(MouseEvent e, JGraph graph, Rectangle2D bounds)
 	{
 		super.handleMarqueeEvent(e, graph, bounds);
-		selectAllBendPointsInBouds();
+		selectAllBendPointsInBounds();
 	}
 
-	private void selectAllBendPointsInBouds()
+	private void selectAllBendPointsInBounds()
 	{
 		DiagramModel model = diagram.getDiagramModel();
 		DiagramLink[] allLinks = model.getAllDiagramLinksAsArray();

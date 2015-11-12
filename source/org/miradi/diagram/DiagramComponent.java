@@ -516,7 +516,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		linkCell.clearBendPointSelectionList();
 	}
 
-	public void selectAllLinksAndThierBendPointsInsideGroupBox(HashSet<FactorCell> selectedFactorAndChildren)
+	public void selectAllLinksAndTheirBendPointsInsideGroupBox(HashSet<FactorCell> selectedFactorAndChildren)
 	{
 		HashSet<LinkCell> linksInsideGroupBoxes = getAllLinksInsideGroupBox(selectedFactorAndChildren);
 		for(LinkCell linkCell : linksInsideGroupBoxes)
