@@ -21,10 +21,13 @@ package org.miradi.dialogs.diagram;
 
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.viability.ViabilityTreeModel;
 import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.KeyEcologicalAttribute;
+import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.schemas.IndicatorSchema;
 
@@ -45,6 +48,21 @@ public class IndicatorSubPanel extends ObjectDataInputPanel
 		addField(createMultilineField(IndicatorSchema.getObjectType(), Indicator.TAG_COMMENTS, COLUMNS));
 		
 		updateFieldsFromProject();
+	}
+
+	@Override
+	protected boolean doesSectionContainFieldWithTag(String tagToUse)
+	{
+		if (tagToUse.equals(Target.TAG_VIABILITY_MODE))
+			return true;
+
+		if (tagToUse.equals(ViabilityTreeModel.VIRTUAL_TAG_STATUS))
+			return true;
+
+		if (tagToUse.equals(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE))
+			return true;
+
+		return super.doesSectionContainFieldWithTag(tagToUse);
 	}
 
 	@Override

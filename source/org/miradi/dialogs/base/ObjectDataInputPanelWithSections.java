@@ -63,8 +63,6 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 		int indexToSelect = findSectionWithTag(tag);
 		if (indexToSelect >= 0)
 			tabPanel.setSelectedIndex(indexToSelect);
-		else
-			tabPanel.setSelectedIndex(0);
 	}
 	
 	private int findSectionWithTag(String tag)
