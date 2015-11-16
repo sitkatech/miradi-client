@@ -95,6 +95,7 @@ public interface Xmpz2XmlConstants
 	public static final String TASK = TaskSchema.OBJECT_NAME;
 	public static final String SUB_TASK = "SubTask";
 	public static final String LEADER_RESURCE_ID = "LeaderResourceId";
+	public static final String RESOURCE_PLAN = "ResourcePlan";
 	public static final String RESOURCE_ASSIGNMENT = "ResourceAssignment";
 	public static final String EXPENSE_ASSIGNMENT = "ExpenseAssignment";
 	public static final String PROGRESS_REPORT = "ProgressReport";

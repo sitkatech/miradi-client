@@ -70,7 +70,7 @@ abstract public class AbstractAssignmentImporter extends BaseObjectImporter
 			Node dateUnitNode = getImporter().getNamedChildNode(dateUnitEffortNode, getDateUnitElementName());
 			DateUnit dateUnit = extractDateUnit(dateUnitNode);
 			
-			Node quantityNode = getImporter().getNamedChildNode(dateUnitEffortNode, getQuantatityElementName());
+			Node quantityNode = getImporter().getNamedChildNode(dateUnitEffortNode, getQuantityElementName());
 			String quantityAsString = quantityNode.getTextContent();
 			DateUnitEffort dateUnitEffort = new DateUnitEffort(dateUnit, DoubleUtilities.toDoubleFromDataFormat(quantityAsString));
 			dateUnitEffortList.add(dateUnitEffort);
@@ -144,5 +144,5 @@ abstract public class AbstractAssignmentImporter extends BaseObjectImporter
 	
 	abstract protected String getFullProjectTimespanElementName();
 	
-	abstract protected String getQuantatityElementName();
+	abstract protected String getQuantityElementName();
 }

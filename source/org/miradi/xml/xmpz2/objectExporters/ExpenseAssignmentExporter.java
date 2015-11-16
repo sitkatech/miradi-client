@@ -67,7 +67,7 @@ public class ExpenseAssignmentExporter extends AbstractAssignmentExporter
 	}
 	
 	@Override
-	protected String getQuantatityElementName()
+	protected String getQuantityElementName()
 	{
 		return EXPENSE;
 	}

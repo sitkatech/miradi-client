@@ -119,6 +119,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(DIAGRAM_LINK, createDiagramLinkMap());
 		map.put(EXPENSE_ASSIGNMENT, createExpenseAssignmentMap());
 		map.put(RESOURCE_ASSIGNMENT, createResourceAssignmentMap());
+		map.put(RESOURCE_PLAN, createResourcePlanMap());
 		map.put(IUCN_REDLIST_SPECIES, createBaseObjectMap());
 		map.put(OTHER_NOTABLE_SPECIES, createBaseObjectMap());
 		map.put(AUDIENCE, createBaseObjectMap());
@@ -401,6 +402,13 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(ResourceAssignment.TAG_FUNDING_SOURCE_ID, FUNDING_SOURCE_ID);
 		map.put(ResourceAssignment.TAG_ACCOUNTING_CODE_ID, ACCOUNTING_CODE_ID);
 		
+		return map;
+	}
+
+	private HashMap<String, String> createResourcePlanMap()
+	{
+		HashMap<String, String> map = createBaseObjectMap();
+
 		return map;
 	}
 

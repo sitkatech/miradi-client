@@ -34,6 +34,7 @@ public class ObjectTypeToExporterMap extends HashMap<Integer, BaseObjectExporter
 		addExporterToMap(new IndicatorExporter(getWriter()));
 		addExporterToMap(new GoalExporter(getWriter()));
 		addExporterToMap(new ObjectiveExporter(getWriter()));
+		addExporterToMap(new ResourcePlanExporter(getWriter()));
 		addExporterToMap(new ResourceAssignmentExporter(getWriter()));
 		addExporterToMap(new ExpenseAssignmentExporter(getWriter()));
 		addExporterToMap(new TaskExporter(getWriter()));

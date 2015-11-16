@@ -73,7 +73,7 @@ public class ResourceAssignmentImporter extends AbstractAssignmentImporter
 	}
 	
 	@Override
-	protected String getQuantatityElementName()
+	protected String getQuantityElementName()
 	{
 		return WORK_UNITS;
 	}

@@ -19,21 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objecthelpers;
 
-import org.miradi.ids.AccountingCodeId;
-import org.miradi.ids.BaseId;
-import org.miradi.ids.DiagramContentsId;
-import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.DiagramLinkId;
-import org.miradi.ids.FactorId;
-import org.miradi.ids.FundingSourceId;
-import org.miradi.ids.GoalId;
-import org.miradi.ids.IndicatorId;
-import org.miradi.ids.KeyEcologicalAttributeId;
-import org.miradi.ids.ObjectId;
-import org.miradi.ids.ProjectResourceId;
-import org.miradi.ids.ResourceAssignmentId;
-import org.miradi.ids.TaskId;
-import org.miradi.ids.ViewDataId;
+import org.miradi.ids.*;
 import org.miradi.main.EAM;
 import org.miradi.objects.Factor;
 import org.miradi.utils.EnhancedJsonObject;
@@ -94,6 +80,8 @@ public class ORef implements Comparable<ORef>
 				return new ProjectResourceId(idToUse);
 			case ObjectType.RESOURCE_ASSIGNMENT:
 				return new ResourceAssignmentId(idToUse);
+			case ObjectType.RESOURCE_PLAN:
+				return new ResourcePlanId(idToUse);
 			case ObjectType.TASK:
 				return new TaskId(idToUse);
 			case ObjectType.VIEW_DATA:

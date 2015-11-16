@@ -44,7 +44,7 @@ abstract public class AbstractAssignmentExporter extends BaseObjectExporter
 
 		Assignment assignment = (Assignment) baseObject;
 		if (assignment.getDateUnitEffortList().size() > 0)
-			exportDateUnitEfforList(assignment.getDateUnitEffortList(), getDateUnitsElementName());
+			exportDateUnitEffortList(assignment.getDateUnitEffortList(), getDateUnitsElementName());
 	}
 	
 	@Override
@@ -56,7 +56,7 @@ abstract public class AbstractAssignmentExporter extends BaseObjectExporter
 		return super.doesFieldRequireSpecialHandling(tag);
 	}
 	
-	private void exportDateUnitEfforList(DateUnitEffortList dateUnitEffortList, String dateUnitsElementName) throws Exception
+	private void exportDateUnitEffortList(DateUnitEffortList dateUnitEffortList, String dateUnitsElementName) throws Exception
 	{
 		final String dateUnitEffortsElementName = getPoolName() + Assignment.TAG_DATEUNIT_EFFORTS;
 		getWriter().writeStartElement(dateUnitEffortsElementName);
@@ -97,12 +97,12 @@ abstract public class AbstractAssignmentExporter extends BaseObjectExporter
 	
 	private void writeQuantity(double expense) throws Exception
 	{
-		getWriter().writeStartElement(getQuantatityElementName());
+		getWriter().writeStartElement(getQuantityElementName());
 		
 		String formattedForExpense = DoubleUtilities.toStringForData(expense);
 		getWriter().write(formattedForExpense);
 		
-		getWriter().writeEndElement(getQuantatityElementName());
+		getWriter().writeEndElement(getQuantityElementName());
 	}
 	
 	abstract protected String getDateUnitElementName();
@@ -117,7 +117,7 @@ abstract public class AbstractAssignmentExporter extends BaseObjectExporter
 	
 	abstract protected String getFullProjectTimespanElementName();
 	
-	abstract protected String getQuantatityElementName();
+	abstract protected String getQuantityElementName();
 	
 	abstract protected String getDateUnitsElementName();
 	

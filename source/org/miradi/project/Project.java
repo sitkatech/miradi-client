@@ -338,6 +338,11 @@ public class Project implements ProjectInterface
 		return objectManager.getAssignmentPool();
 	}
 	
+	public ResourcePlanPool getResourcePlanPool()
+	{
+		return objectManager.getResourcePlanPool();
+	}
+
 	public ExpenseAssignmentPool getExpenseAssignmentPool()
 	{
 		return objectManager.getExpenseAssignmentPool();

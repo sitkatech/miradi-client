@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Fri Oct 30 14:01:10 GMT 2015 $
+# $LastChangedDate: Mon Nov 16 13:30:27 GMT 2015 $
 # $LastChangedRevision: 236 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/236'
 start = ConservationProject.element
@@ -58,6 +58,7 @@ ConservationProject.element = element miradi:ConservationProject
   FutureStatusPool.element? &
   BiophysicalFactorPool.element? &
   BiophysicalResultPool.element? &
+  ResourcePlanPool.element? &
   SimpleThreatRatingPool.element? &
   StressBasedThreatRatingPool.element? &
   MiradiShareProjectDataTaxonomyAssociationPool.element? &
@@ -771,6 +772,13 @@ BiophysicalResult.element = element miradi:BiophysicalResult
   element miradi:BiophysicalResultIndicatorIds { IndicatorId.element* }? &
   element miradi:BiophysicalResultName { formatted_text }? &
   element miradi:BiophysicalResultObjectiveIds { ObjectiveId.element* }?
+}
+
+ResourcePlanPool.element = element miradi:ResourcePlanPool { ResourcePlan.element* }
+ResourcePlan.element = element miradi:ResourcePlan
+{
+  attribute Id {xsd:integer} &
+  element miradi:ResourcePlanName { formatted_text }?
 }
 
 SimpleThreatRatingPool.element = element miradi:SimpleThreatRatingPool { SimpleThreatRating.element* }
