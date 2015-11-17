@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2.objectExporters;
 
 import org.miradi.objecthelpers.DateUnit;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.AbstractPlanningObject;
 import org.miradi.objects.BaseObject;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.DateUnitEffort;
@@ -30,9 +30,9 @@ import org.miradi.utils.DoubleUtilities;
 import org.miradi.xml.xmpz2.BaseObjectExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
-abstract public class AbstractAssignmentExporter extends BaseObjectExporter
+abstract public class AbstractPlanningObjectExporter extends BaseObjectExporter
 {
-	public AbstractAssignmentExporter(Xmpz2XmlWriter writerToUse, final int objectTypeToUse)
+	public AbstractPlanningObjectExporter(Xmpz2XmlWriter writerToUse, final int objectTypeToUse)
 	{
 		super(writerToUse, objectTypeToUse);
 	}
@@ -42,15 +42,15 @@ abstract public class AbstractAssignmentExporter extends BaseObjectExporter
 	{
 		super.writeFields(baseObject, baseObjectSchema);
 
-		Assignment assignment = (Assignment) baseObject;
-		if (assignment.getDateUnitEffortList().size() > 0)
-			exportDateUnitEffortList(assignment.getDateUnitEffortList(), getDateUnitsElementName());
+		AbstractPlanningObject planningObject = (AbstractPlanningObject) baseObject;
+		if (planningObject.getDateUnitEffortList().size() > 0)
+			exportDateUnitEffortList(planningObject.getDateUnitEffortList(), getDateUnitsElementName());
 	}
 	
 	@Override
 	protected boolean doesFieldRequireSpecialHandling(String tag)
 	{
-		if (tag.equals(Assignment.TAG_DATEUNIT_EFFORTS))
+		if (tag.equals(AbstractPlanningObject.TAG_DATEUNIT_EFFORTS))
 			return true;
 		
 		return super.doesFieldRequireSpecialHandling(tag);
@@ -58,7 +58,7 @@ abstract public class AbstractAssignmentExporter extends BaseObjectExporter
 	
 	private void exportDateUnitEffortList(DateUnitEffortList dateUnitEffortList, String dateUnitsElementName) throws Exception
 	{
-		final String dateUnitEffortsElementName = getPoolName() + Assignment.TAG_DATEUNIT_EFFORTS;
+		final String dateUnitEffortsElementName = getPoolName() + AbstractPlanningObject.TAG_DATEUNIT_EFFORTS;
 		getWriter().writeStartElement(dateUnitEffortsElementName);
 		for (int index = 0; index < dateUnitEffortList.size(); ++index)
 		{

@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Mon Nov 16 13:30:27 GMT 2015 $
+# $LastChangedDate: Tue Nov 17 10:44:46 GMT 2015 $
 # $LastChangedRevision: 236 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/236'
 start = ConservationProject.element
@@ -251,6 +251,7 @@ Task.element = element miradi:Task
   element miradi:TaskOrderedSubTaskIds { SubTaskId.element* }? &
   element miradi:TaskProgressReportIds { ProgressReportId.element* }? &
   element miradi:TaskResourceAssignmentIds { ResourceAssignmentId.element* }? &
+  element miradi:TaskResourcePlanIds { ResourcePlanId.element* }? &
   TaxonomyClassificationContainer.element?
 }
 
@@ -300,6 +301,7 @@ Indicator.element = element miradi:Indicator
   element miradi:IndicatorProgressReportIds { ProgressReportId.element* }? &
   element miradi:IndicatorRatingSource { vocabulary_rating_source }? &
   element miradi:IndicatorResourceAssignmentIds { ResourceAssignmentId.element* }? &
+  element miradi:IndicatorResourcePlanIds { ResourcePlanId.element* }? &
   element miradi:IndicatorThresholds { IndicatorThreshold.element* }? &
   element miradi:IndicatorUnit { text }? &
   element miradi:IndicatorViabilityRatingsComments { formatted_text }? &
@@ -455,6 +457,7 @@ Strategy.element = element miradi:Strategy
   element miradi:StrategyOrderedActivityIds { ActivityId.element* }? &
   element miradi:StrategyProgressReportIds { ProgressReportId.element* }? &
   element miradi:StrategyResourceAssignmentIds { ResourceAssignmentId.element* }? &
+  element miradi:StrategyResourcePlanIds { ResourcePlanId.element* }? &
   element miradi:StrategyStandardClassification { vocabulary_strategy_taxonomy_code }? &
   element miradi:StrategyStatus { vocabulary_strategy_status } &
   TaxonomyClassificationContainer.element?
@@ -778,7 +781,9 @@ ResourcePlanPool.element = element miradi:ResourcePlanPool { ResourcePlan.elemen
 ResourcePlan.element = element miradi:ResourcePlan
 {
   attribute Id {xsd:integer} &
-  element miradi:ResourcePlanName { formatted_text }?
+  element miradi:ResourcePlanDetails { DateUnitWorkUnits.element* }? &
+  element miradi:ResourcePlanName { formatted_text }? &
+  element miradi:ResourcePlanResourceId { ResourceId.element }?
 }
 
 SimpleThreatRatingPool.element = element miradi:SimpleThreatRatingPool { SimpleThreatRating.element* }
@@ -986,6 +991,7 @@ ProgressReportId.element = element miradi:ProgressReportId { xsd:integer }
 ProgressPercentId.element = element miradi:ProgressPercentId { xsd:integer }
 ExpenseAssignmentId.element = element miradi:ExpenseAssignmentId { xsd:integer }
 ResourceAssignmentId.element = element miradi:ResourceAssignmentId { xsd:integer }
+ResourcePlanId.element = element miradi:ResourcePlanId { xsd:integer }
 ResourceId.element = element miradi:ResourceId { xsd:integer }
 MeasurementId.element = element miradi:MeasurementId { xsd:integer }
 MethodId.element = element miradi:MethodId { xsd:integer }

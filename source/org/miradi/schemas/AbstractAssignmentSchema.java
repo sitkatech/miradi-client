@@ -22,7 +22,7 @@ package org.miradi.schemas;
 
 import org.miradi.objects.Assignment;
 
-abstract public class AbstractAssignmentSchema extends BaseObjectSchema
+abstract public class AbstractAssignmentSchema extends AbstractPlanningObjectSchema
 {
 	public AbstractAssignmentSchema()
 	{
@@ -34,7 +34,6 @@ abstract public class AbstractAssignmentSchema extends BaseObjectSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaDateUnitEffortList(Assignment.TAG_DATEUNIT_EFFORTS);
 		createFieldSchemaOptionalRef(Assignment.TAG_CATEGORY_ONE_REF);
 		createFieldSchemaOptionalRef(Assignment.TAG_CATEGORY_TWO_REF);
 	}

@@ -21,8 +21,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.ResourcePlan;
 
-public class ResourcePlanSchema extends BaseObjectSchema
+public class ResourcePlanSchema extends AbstractPlanningObjectSchema
 {
 	public ResourcePlanSchema()
 	{
@@ -33,6 +34,11 @@ public class ResourcePlanSchema extends BaseObjectSchema
 	protected void fillFieldSchemas()
 	{
 		super.fillFieldSchemas();
+
+		createFieldSchemaOptionalBaseId(ResourcePlan.TAG_RESOURCE_ID, ProjectResourceSchema.getObjectType());
+
+		createPseudoFieldSchemaString(ResourcePlan.PSEUDO_TAG_PROJECT_RESOURCE_LABEL);
+		createPseudoFieldSchemaString(ResourcePlan.PSEUDO_TAG_OWNING_FACTOR_NAME);
 	}
 
 	public static int getObjectType()

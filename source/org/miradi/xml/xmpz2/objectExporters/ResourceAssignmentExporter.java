@@ -27,7 +27,7 @@ import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
 
-public class ResourceAssignmentExporter extends AbstractAssignmentExporter
+public class ResourceAssignmentExporter extends AbstractPlanningObjectExporter
 {
 	public ResourceAssignmentExporter(Xmpz2XmlWriter writerToUse)
 	{

@@ -109,6 +109,7 @@ abstract public class Xmpz2GroupedConstants implements Xmpz2XmlConstants
 		PROGRESS_PERCENT,
 		EXPENSE_ASSIGNMENT,
 		RESOURCE_ASSIGNMENT,
+		RESOURCE_PLAN,
 		RESOURCE_ID_ELEMENT_NAME,
 		MEASUREMENT,
 		METHOD,

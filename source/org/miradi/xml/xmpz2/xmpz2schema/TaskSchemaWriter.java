@@ -22,7 +22,7 @@ package org.miradi.xml.xmpz2.xmpz2schema;
 
 import org.miradi.schemas.BaseObjectSchema;
 
-public class TaskSchemaWriter extends BaseObjectSchemaWriterWithCalcualtedCostsElement
+public class TaskSchemaWriter extends BaseObjectSchemaWriterWithCalculatedCostsElement
 {
 	public TaskSchemaWriter(Xmpz2XmlSchemaCreator creatorToUse,	BaseObjectSchema baseObjectSchemaToUse)
 	{

@@ -23,7 +23,7 @@ package org.miradi.xml.xmpz2.objectImporters;
 import org.miradi.schemas.ResourcePlanSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 
-public class ResourcePlanImporter extends BaseObjectImporter
+public class ResourcePlanImporter extends AbstractResourcePlanImporter
 {
 	public ResourcePlanImporter(Xmpz2XmlImporter importerToUse)
 	{

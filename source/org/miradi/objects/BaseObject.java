@@ -80,10 +80,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StaticQuestionManager;
-import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.schemas.ProgressReportSchema;
-import org.miradi.schemas.ResourceAssignmentSchema;
-import org.miradi.schemas.TaggedObjectSetSchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateRange;
@@ -425,6 +422,9 @@ abstract public class BaseObject
 		if (tag.equals(TAG_RESOURCE_ASSIGNMENT_IDS))
 			return ResourceAssignmentSchema.getObjectType();
 		
+		if (tag.equals(TAG_RESOURCE_PLAN_IDS))
+			return ResourcePlanSchema.getObjectType();
+
 		if (tag.equals(TAG_PROGRESS_REPORT_REFS))
 			return ProgressReportSchema.getObjectType();
 		
@@ -1293,6 +1293,7 @@ abstract public class BaseObject
 	public static final String TAG_ID = "Id";
 	public static final String TAG_LABEL = "Label";
 	public static final String TAG_EMPTY = "EMPTY";
+	public static final String TAG_RESOURCE_PLAN_IDS = "PlanIds";
 	public static final String TAG_RESOURCE_ASSIGNMENT_IDS = "AssignmentIds";
 	public static final String TAG_EXPENSE_ASSIGNMENT_REFS = "ExpenseRefs";
 	public static final String TAG_PROGRESS_REPORT_REFS = "ProgressReportRefs";

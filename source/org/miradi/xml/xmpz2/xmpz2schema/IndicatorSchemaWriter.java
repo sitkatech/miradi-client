@@ -25,7 +25,7 @@ import java.util.Vector;
 import org.miradi.objects.Indicator;
 import org.miradi.schemas.BaseObjectSchema;
 
-public class IndicatorSchemaWriter extends BaseObjectSchemaWriterWithCalcualtedCostsElement
+public class IndicatorSchemaWriter extends BaseObjectSchemaWriterWithCalculatedCostsElement
 {
 	public IndicatorSchemaWriter(Xmpz2XmlSchemaCreator creatorToUse, BaseObjectSchema baseObjectSchemaToUse)
 	{

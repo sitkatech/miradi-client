@@ -586,6 +586,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		if (ResourceAssignment.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(ResourceAssignment.TAG_RESOURCE_ID))
 			return RESOURCE;
 		
+		if (ResourcePlan.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(ResourcePlan.TAG_RESOURCE_ID))
+			return RESOURCE;
+
 		if (DiagramLink.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID))
 			return LINKABLE_FACTOR;
 		
@@ -1193,7 +1196,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		if (ExpenseAssignment.is(objectType))
 			return EXPENSE;
 		
-		if (ResourceAssignment.is(objectType))
+		if (ResourceAssignment.is(objectType) || ResourcePlan.is(objectType))
 			return "WorkUnits";
 		
 		throw new RuntimeException("Object type " + objectType + " cannot have a dateunitEffortsList field");

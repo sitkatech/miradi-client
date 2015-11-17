@@ -18,82 +18,16 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.xmpz2.objectExporters;
+package org.miradi.xml.xmpz2.objectImporters;
 
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.ResourcePlan;
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.schemas.ResourcePlanSchema;
-import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
+import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 
-
-public class ResourcePlanExporter extends AbstractPlanningObjectExporter
+abstract class AbstractResourcePlanImporter extends AbstractAssignmentImporter
 {
-	public ResourcePlanExporter(Xmpz2XmlWriter writerToUse)
+	public AbstractResourcePlanImporter(Xmpz2XmlImporter importerToUse, BaseObjectSchema baseObjectSchemaToUse)
 	{
-		super(writerToUse, ResourcePlanSchema.getObjectType());
-	}
-	
-	@Override
-	protected void writeFields(BaseObject baseObject, final BaseObjectSchema baseObjectSchema) throws Exception
-	{
-		super.writeFields(baseObject, baseObjectSchema);
-
-		ResourcePlan resourcePlan = (ResourcePlan) baseObject;
-		String idElementName = RESOURCE_ID_ELEMENT_NAME + ID;
-
-		getWriter().writeRefIfValid(baseObjectSchema.getObjectName(), idElementName, resourcePlan.getResourceRef());
-	}
-	
-	@Override
-	protected boolean doesFieldRequireSpecialHandling(String tag)
-	{
-		if (tag.equals(ResourcePlan.TAG_RESOURCE_ID))
-			return true;
-
-		return super.doesFieldRequireSpecialHandling(tag);
-	}
-
-	@Override
-	protected String getDateUnitElementName()
-	{
-		return WORK_UNITS_DATE_UNIT;
-	}
-
-	@Override
-	protected String getDayElementName()
-	{
-		return WORK_UNITS_DAY;
-	}
-
-	@Override
-	protected String getMonthElementName()
-	{
-		return WORK_UNITS_MONTH;
-	}
-
-	@Override
-	protected String getQuarterElementName()
-	{
-		return WORK_UNITS_QUARTER;
-	}
-
-	@Override
-	protected String getYearElementName()
-	{
-		return WORK_UNITS_YEAR;
-	}
-
-	@Override
-	protected String getFullProjectTimespanElementName()
-	{
-		return WORK_UNITS_FULL_PROJECT_TIMESPAN;
-	}
-
-	@Override
-	protected String getQuantityElementName()
-	{
-		return WORK_UNITS;
+		super(importerToUse, baseObjectSchemaToUse);
 	}
 
 	@Override
@@ -101,11 +35,46 @@ public class ResourcePlanExporter extends AbstractPlanningObjectExporter
 	{
 		return DATE_UNIT_WORK_UNITS;
 	}
-
+	
 	@Override
-	protected String getPoolName()
+	protected String getDateUnitElementName()
 	{
-		return RESOURCE_PLAN;
+		return WORK_UNITS_DATE_UNIT;
 	}
-
+	
+	@Override
+	protected String getDayElementName()
+	{
+		return WORK_UNITS_DAY;
+	}
+	
+	@Override
+	protected String getMonthElementName()
+	{
+		return WORK_UNITS_MONTH;
+	}
+	
+	@Override
+	protected String getQuarterElementName()
+	{
+		return WORK_UNITS_QUARTER;
+	}
+	
+	@Override
+	protected String getYearElementName()
+	{
+		return WORK_UNITS_YEAR;
+	}
+	
+	@Override
+	protected String getFullProjectTimespanElementName()
+	{
+		return WORK_UNITS_FULL_PROJECT_TIMESPAN;
+	}
+	
+	@Override
+	protected String getQuantityElementName()
+	{
+		return WORK_UNITS;
+	}
 }

@@ -316,6 +316,7 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 
 	protected void createBudgetSchemas()
 	{
+		createOwnedFieldSchemaIdList(BaseObject.TAG_RESOURCE_PLAN_IDS, ResourcePlanSchema.getObjectType());
 		createOwnedFieldSchemaIdList(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignmentSchema.getObjectType());
 		createOwnedFieldSchemaReflist(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, EXPENSE_ASSIGNMENT);
 		

@@ -23,11 +23,13 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.ResourcePlanId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.*;
+import org.miradi.utils.OptionalDouble;
 
-public class ResourcePlan extends BaseObject
+public class ResourcePlan extends AbstractPlanningObject
 {
 	public ResourcePlan(ObjectManager objectManager, BaseId idToUse)
 	{
@@ -45,21 +47,62 @@ public class ResourcePlan extends BaseObject
 	}
 
 	@Override
-	public int[] getTypesThatCanOwnUs()
+	public String getPseudoData(String fieldTag)
 	{
-		return new int[] {
-				StrategySchema.getObjectType(),
-				IndicatorSchema.getObjectType(),
-				TaskSchema.getObjectType(),
-		};
+		if (fieldTag.equals(PSEUDO_TAG_PROJECT_RESOURCE_LABEL))
+			return getProjectResourceLabel();
+
+		if (fieldTag.equals(PSEUDO_TAG_OWNING_FACTOR_NAME))
+			return getOwningFactorName();
+
+		return super.getPseudoData(fieldTag);
+	}
+
+	private String getOwningFactorName()
+	{
+		Factor owningFactor = getDirectOrIndirectOwningFactor();
+		if (owningFactor == null)
+			return "";
+
+		return owningFactor.toString();
+	}
+
+	private String getProjectResourceLabel()
+	{
+		ProjectResource projectResource = getProjectResource();
+		if (projectResource == null)
+			return "";
+
+		return projectResource.getInitials();
+	}
+
+	private ProjectResource getProjectResource()
+	{
+		return ProjectResource.find(getProject(), getResourceRef());
 	}
 
 	@Override
-	public String getPseudoData(String fieldTag)
+	protected TimePeriodCosts createTimePeriodCosts(OptionalDouble quantity)
 	{
-		return super.getPseudoData(fieldTag);
+		// TODO: MRD-5939 - need to implement...
+		return null;
 	}
-	
+
+	@Override
+	public String toString()
+	{
+		ProjectResource projectResource = getProjectResource();
+		if (projectResource == null)
+			return "";
+
+		return projectResource.getFullName();
+	}
+
+	public ORef getResourceRef()
+	{
+		return getRefData(TAG_RESOURCE_ID);
+	}
+
 	public static boolean is(BaseObject baseObject)
 	{
 		return is(baseObject.getType());
@@ -84,4 +127,8 @@ public class ResourcePlan extends BaseObject
 	{
 		return find(project.getObjectManager(), resourcePlanRef);
 	}
+
+	public static final String TAG_RESOURCE_ID = "ResourceId";
+	public static final String PSEUDO_TAG_PROJECT_RESOURCE_LABEL = "PseudoTagProjectResourceLabel";
+	public static final String PSEUDO_TAG_OWNING_FACTOR_NAME = "PseudoTagOwningFactorName";
 }

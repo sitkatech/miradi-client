@@ -18,14 +18,22 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.xmpz2.xmpz2schema;
+package org.miradi.schemas;
 
-import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.objects.AbstractPlanningObject;
 
-public class StrategySchemaWriter extends BaseObjectSchemaWriterWithCalculatedCostsElement
+abstract public class AbstractPlanningObjectSchema extends BaseObjectSchema
 {
-	public StrategySchemaWriter(Xmpz2XmlSchemaCreator creatorToUse, BaseObjectSchema baseObjectSchemaToUse)
+	public AbstractPlanningObjectSchema()
 	{
-		super(creatorToUse, baseObjectSchemaToUse);
+		super();
+	}
+	
+	@Override
+	protected void fillFieldSchemas()
+	{
+		super.fillFieldSchemas();
+		
+		createFieldSchemaDateUnitEffortList(AbstractPlanningObject.TAG_DATEUNIT_EFFORTS);
 	}
 }
