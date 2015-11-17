@@ -248,7 +248,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		if (event.isSetDataCommandWithThisTypeAndTag(ViewDataSchema.getObjectType(), ViewData.TAG_MONITORING_TREE_CONFIGURATION_CHOICE))
 			return true;
 		
-		if (event.isSetDataCommandWithThisTag(BaseObject.TAG_LEADER_RESOURCE))
+		if (event.isSetDataCommandWithThisTag(BaseObject.TAG_ASSIGNED_LEADER_RESOURCE))
 			return true;
 
 		return false;

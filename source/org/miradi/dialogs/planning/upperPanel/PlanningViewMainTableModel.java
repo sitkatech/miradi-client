@@ -592,9 +592,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		ORefSet unspecifiedBaseObjectRefs = getInvalidRefs(filteredResources);
 		filteredResources.removeAll(unspecifiedBaseObjectRefs);
 		Vector<ProjectResource> sortedProjectResources = toProjectResources(filteredResources);
-		if (baseObject.doesFieldExist(BaseObject.TAG_LEADER_RESOURCE))
+		if (baseObject.doesFieldExist(BaseObject.TAG_ASSIGNED_LEADER_RESOURCE))
 		{
-			final ORef leaderResourceRef = baseObject.getRef(BaseObject.TAG_LEADER_RESOURCE);
+			final ORef leaderResourceRef = baseObject.getRef(BaseObject.TAG_ASSIGNED_LEADER_RESOURCE);
 			Collections.sort(sortedProjectResources, new ProjectResourceLeaderAtTopSorter(leaderResourceRef));
 		}
 	

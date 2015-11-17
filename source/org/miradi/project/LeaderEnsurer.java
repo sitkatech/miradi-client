@@ -110,7 +110,7 @@ public class LeaderEnsurer implements CommandExecutedListener
 
 	private void clearLeaderResourceRef(BaseObject objectToClearLeaderFrom) throws Exception
 	{
-		CommandSetObjectData clearCommand = new CommandSetObjectData(objectToClearLeaderFrom, BaseObject.TAG_LEADER_RESOURCE, "");
+		CommandSetObjectData clearCommand = new CommandSetObjectData(objectToClearLeaderFrom, BaseObject.TAG_ASSIGNED_LEADER_RESOURCE, "");
 		getProject().executeAsSideEffect(clearCommand);
 	}
 

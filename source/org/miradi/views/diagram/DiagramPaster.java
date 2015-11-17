@@ -187,7 +187,7 @@ abstract public class DiagramPaster
 				return getCommandToFixRef(pastedObjectMap, newObject, tag);
 		}
 		
-		if (tag.equals(BaseObject.TAG_LEADER_RESOURCE))
+		if (tag.equals(BaseObject.TAG_ASSIGNED_LEADER_RESOURCE))
 		{
 			return getCommandToFixRef(pastedObjectMap, newObject, tag);
 		}
@@ -833,7 +833,7 @@ abstract public class DiagramPaster
 			String jsonAsString = factorDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			int type = getTypeFromJson(json);
-			final ORef optRef = json.optRef(BaseObject.TAG_LEADER_RESOURCE);
+			final ORef optRef = json.optRef(BaseObject.TAG_ASSIGNED_LEADER_RESOURCE);
 			if (optRef.isValid())
 				return true;
 			if (ResourceAssignmentSchema.getObjectType() == type)

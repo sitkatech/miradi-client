@@ -138,7 +138,7 @@ public class TestDiagramPaster extends TestCaseWithProject
 	{
 		DiagramFactor strategyDiagramFactor = getProject().createAndAddFactorToDiagram(StrategySchema.getObjectType());
 		Task activity = getProject().createTask(strategyDiagramFactor.getWrappedFactor());
-		getProject().fillObjectUsingCommand(activity, Task.TAG_LEADER_RESOURCE, getProject().createProjectResource().getRef());
+		getProject().fillObjectUsingCommand(activity, Task.TAG_ASSIGNED_LEADER_RESOURCE, getProject().createProjectResource().getRef());
 		
 		ResourceAssignment resourceAssignment = getProject().createAndPopulateResourceAssignment();
 		ExpenseAssignment expenseAssignment = getProject().createExpenseAssignment();
@@ -154,7 +154,7 @@ public class TestDiagramPaster extends TestCaseWithProject
 		Vector<Task> activities = projectToPasteInto.getTaskPool().getAllActivities();
 		assertEquals("Incorrect activity count?", 1, activities.size());
 		Task pastedActitivy = activities.get(0);
-		verifyEmptyTag(pastedActitivy, BaseObject.TAG_LEADER_RESOURCE);
+		verifyEmptyTag(pastedActitivy, BaseObject.TAG_ASSIGNED_LEADER_RESOURCE);
 		
 		ORefList resourceAssignmentRefs = projectToPasteInto.getAssignmentPool().getRefList();
 		assertEquals("ResourceAssignment was not pasted?", 1, resourceAssignmentRefs.size());

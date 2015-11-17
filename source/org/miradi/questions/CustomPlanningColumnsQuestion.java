@@ -99,7 +99,7 @@ public class CustomPlanningColumnsQuestion extends MultipleSelectStaticChoiceQue
 	{
 		return new ChoiceItem(tag, EAM.fieldLabel(ObjectType.FAKE, tag));
 	}
-	
+
 	public final static String META_WHO_TOTAL = "MetaWhoTotal";
 	public final static String META_WHEN_TOTAL = BaseObject.PSEUDO_TAG_WHEN_TOTAL;
 	public final static String META_CURRENT_RATING = "ThreatRating";

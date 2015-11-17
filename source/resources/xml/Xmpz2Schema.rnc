@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Tue Nov 17 10:44:46 GMT 2015 $
+# $LastChangedDate: Tue Nov 17 14:35:24 GMT 2015 $
 # $LastChangedRevision: 236 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/236'
 start = ConservationProject.element
@@ -241,12 +241,12 @@ TaskPool.element = element miradi:TaskPool { Task.element* }
 Task.element = element miradi:Task
 {
   attribute Id {xsd:integer} &
+  element miradi:TaskAssignedLeaderResourceId { ResourceId.element }? &
   element miradi:TaskCalculatedCosts { CalculatedCosts.element }? &
   element miradi:TaskComments { formatted_text }? &
   element miradi:TaskDetails { formatted_text }? &
   element miradi:TaskExpenseAssignmentIds { ExpenseAssignmentId.element* }? &
   element miradi:TaskIdentifier { text }? &
-  element miradi:TaskLeaderResourceId { ResourceId.element }? &
   element miradi:TaskName { formatted_text }? &
   element miradi:TaskOrderedSubTaskIds { SubTaskId.element* }? &
   element miradi:TaskProgressReportIds { ProgressReportId.element* }? &
@@ -287,13 +287,13 @@ IndicatorPool.element = element miradi:IndicatorPool { Indicator.element* }
 Indicator.element = element miradi:Indicator
 {
   attribute Id {xsd:integer} &
+  element miradi:IndicatorAssignedLeaderResourceId { ResourceId.element }? &
   element miradi:IndicatorCalculatedCosts { CalculatedCosts.element }? &
   element miradi:IndicatorComments { formatted_text }? &
   element miradi:IndicatorDetails { formatted_text }? &
   element miradi:IndicatorExpenseAssignmentIds { ExpenseAssignmentId.element* }? &
   element miradi:IndicatorFutureStatusIds { FutureStatusId.element* }? &
   element miradi:IndicatorIdentifier { text }? &
-  element miradi:IndicatorLeaderResourceId { ResourceId.element }? &
   element miradi:IndicatorMeasurementIds { MeasurementId.element* }? &
   element miradi:IndicatorName { formatted_text }? &
   element miradi:IndicatorOrderedMethodIds { MethodId.element* }? &
@@ -442,6 +442,7 @@ StrategyPool.element = element miradi:StrategyPool { Strategy.element* }
 Strategy.element = element miradi:Strategy
 {
   attribute Id {xsd:integer} &
+  element miradi:StrategyAssignedLeaderResourceId { ResourceId.element }? &
   element miradi:StrategyCalculatedCosts { CalculatedCosts.element }? &
   element miradi:StrategyComments { formatted_text }? &
   element miradi:StrategyDetails { formatted_text }? &
@@ -450,7 +451,6 @@ Strategy.element = element miradi:Strategy
   element miradi:StrategyIdentifier { text }? &
   element miradi:StrategyImpactRating { vocabulary_strategy_impact_rating_code }? &
   element miradi:StrategyIndicatorIds { IndicatorId.element* }? &
-  element miradi:StrategyLeaderResourceId { ResourceId.element }? &
   element miradi:StrategyLegacyTncStrategyRanking { formatted_text }? &
   element miradi:StrategyName { formatted_text }? &
   element miradi:StrategyObjectiveIds { ObjectiveId.element* }? &

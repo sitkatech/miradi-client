@@ -36,7 +36,7 @@ public class TestLeaderEnsurer extends TestCaseWithProject
 	{
 		Strategy strategy = getProject().createStrategy();
 		ResourceAssignment resourceAssignment = getProject().addResourceAssignment(strategy);
-		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_LEADER_RESOURCE, resourceAssignment.getResourceRef());
+		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_ASSIGNED_LEADER_RESOURCE, resourceAssignment.getResourceRef());
 		verifyLeaderIsSet(strategy, resourceAssignment);
 		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_RESOURCE_ID, "");
 		verifyLeader(strategy);
@@ -46,7 +46,7 @@ public class TestLeaderEnsurer extends TestCaseWithProject
 	{
 		Strategy strategy = getProject().createStrategy();
 		ResourceAssignment resourceAssignment = getProject().addResourceAssignment(strategy);
-		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_LEADER_RESOURCE, resourceAssignment.getResourceRef());
+		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_ASSIGNED_LEADER_RESOURCE, resourceAssignment.getResourceRef());
 		verifyLeaderIsSet(strategy, resourceAssignment);
 		getProject().executeCommand(CommandSetObjectData.createRemoveIdCommand(strategy, Strategy.TAG_RESOURCE_ASSIGNMENT_IDS, resourceAssignment.getId()));
 		verifyLeader(strategy);
@@ -58,7 +58,7 @@ public class TestLeaderEnsurer extends TestCaseWithProject
 		ResourceAssignment resourceAssignmentWithSameResource1 = getProject().addResourceAssignment(strategy);
 		ResourceAssignment resourceAssignmentWithSameResource2 = getProject().addResourceAssignment(strategy);
 		getProject().fillObjectUsingCommand(resourceAssignmentWithSameResource2, ResourceAssignment.TAG_RESOURCE_ID, resourceAssignmentWithSameResource1.getId());
-		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_LEADER_RESOURCE, resourceAssignmentWithSameResource1.getResourceRef());
+		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_ASSIGNED_LEADER_RESOURCE, resourceAssignmentWithSameResource1.getResourceRef());
 		verifyLeaderIsSet(strategy, resourceAssignmentWithSameResource1);
 		getProject().fillObjectUsingCommand(resourceAssignmentWithSameResource2, ResourceAssignment.TAG_RESOURCE_ID, "");
 		verifyCorrectLeader(strategy, resourceAssignmentWithSameResource1);
@@ -70,7 +70,7 @@ public class TestLeaderEnsurer extends TestCaseWithProject
 		ResourceAssignment resourceAssignmentWithSameResource1 = getProject().addResourceAssignment(strategy);
 		ResourceAssignment resourceAssignmentWithSameResource2 = getProject().addResourceAssignment(strategy);
 		getProject().fillObjectUsingCommand(resourceAssignmentWithSameResource2, ResourceAssignment.TAG_RESOURCE_ID, resourceAssignmentWithSameResource1.getId());
-		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_LEADER_RESOURCE, resourceAssignmentWithSameResource1.getResourceRef());
+		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_ASSIGNED_LEADER_RESOURCE, resourceAssignmentWithSameResource1.getResourceRef());
 		verifyLeaderIsSet(strategy, resourceAssignmentWithSameResource1);
 		getProject().executeCommand(CommandSetObjectData.createRemoveIdCommand(strategy, Strategy.TAG_RESOURCE_ASSIGNMENT_IDS, resourceAssignmentWithSameResource2.getId()));
 		verifyCorrectLeader(strategy, resourceAssignmentWithSameResource1);

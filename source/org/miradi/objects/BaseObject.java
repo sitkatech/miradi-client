@@ -1243,8 +1243,8 @@ abstract public class BaseObject
 	
 	public ORef getLeaderResourceRef()
 	{
-		if (getTags().contains(TAG_LEADER_RESOURCE))
-			return getRef(TAG_LEADER_RESOURCE);
+		if (getTags().contains(TAG_ASSIGNED_LEADER_RESOURCE))
+			return getRef(TAG_ASSIGNED_LEADER_RESOURCE);
 		
 		return ORef.INVALID;
 	}
@@ -1297,7 +1297,7 @@ abstract public class BaseObject
 	public static final String TAG_RESOURCE_ASSIGNMENT_IDS = "AssignmentIds";
 	public static final String TAG_EXPENSE_ASSIGNMENT_REFS = "ExpenseRefs";
 	public static final String TAG_PROGRESS_REPORT_REFS = "ProgressReportRefs";
-	public static final String TAG_LEADER_RESOURCE = "LeaderResource";
+	public static final String TAG_ASSIGNED_LEADER_RESOURCE = "AssignedLeaderResource";
 	public static final String TAG_TAXONOMY_CLASSIFICATION_CONTAINER = "TaxonomyClassificationContainer";
 	
 	public final static String PSEUDO_TAG_WHEN_TOTAL = "EffortDatesTotal";

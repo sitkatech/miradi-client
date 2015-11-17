@@ -1535,7 +1535,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(strategy, Strategy.TAG_OBJECTIVE_IDS, objectiveIds.toString());
 		
 		fillObjectUsingCommand(strategy, Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING, "good, tnc legacy strategy rating");
-		fillObjectUsingCommand(strategy, Strategy.TAG_LEADER_RESOURCE, createProjectResource().getRef().toString());
+		fillObjectUsingCommand(strategy, Strategy.TAG_ASSIGNED_LEADER_RESOURCE, createProjectResource().getRef().toString());
 		
 		addExpenseWithValue(strategy);
 		addProgressReport(strategy);

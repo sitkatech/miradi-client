@@ -35,7 +35,7 @@ abstract public class BaseObjectSchemaWriterWithCalculatedCostsElement extends B
 	@Override
 	protected boolean doesFieldRequireSpecialHandling(String tag)
 	{
-		if (tag.equals(BaseObject.TAG_LEADER_RESOURCE))
+		if (tag.equals(BaseObject.TAG_ASSIGNED_LEADER_RESOURCE))
 			return true;
 		
 		return super.doesFieldRequireSpecialHandling(tag);
@@ -46,7 +46,7 @@ abstract public class BaseObjectSchemaWriterWithCalculatedCostsElement extends B
 	{
 		Vector<String> schemaElements = super.createCustomSchemaFields();
 		
-		schemaElements.add(getXmpz2XmlSchemaCreator().createOptionalSchemaElement(getBaseObjectSchema(), getBaseObjectSchema().getFieldSchema(BaseObject.TAG_LEADER_RESOURCE), RESOURCE_ID));
+		schemaElements.add(getXmpz2XmlSchemaCreator().createOptionalSchemaElement(getBaseObjectSchema(), getBaseObjectSchema().getFieldSchema(BaseObject.TAG_ASSIGNED_LEADER_RESOURCE), RESOURCE_ID));
 		
 		return schemaElements;
 	}
