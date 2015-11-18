@@ -35,7 +35,7 @@ public class WhoColumnTableCellEditorFactory extends AbstractPopupTableCellEdito
 	}	
 	
 	@Override
-	protected DisposablePanel createEditorComponenet(BaseObject baseObjectForRow)
+	protected DisposablePanel createEditorComponent(BaseObject baseObjectForRow)
 	{
 		final ProjectResourceQuestion question = new ProjectResourceQuestion(getProject());
 

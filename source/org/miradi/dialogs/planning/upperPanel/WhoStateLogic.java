@@ -39,7 +39,7 @@ public class WhoStateLogic
 		project = projectToUse;
 	}
 	
-	public boolean isWhoCellEditable(BaseObject baseObjectToUse)
+	public boolean isAssignedWhoCellEditable(BaseObject baseObjectToUse)
 	{
 		try
 		{

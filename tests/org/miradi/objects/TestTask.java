@@ -203,23 +203,23 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 		getProject().setProjectEndDate(2007);
 		
 		Task activityWithNoSubtasksNoAssignment = getProject().createActivity(); 
-		DateRange combinedDateRange = activityWithNoSubtasksNoAssignment.getWhenRollup();
+		DateRange combinedDateRange = activityWithNoSubtasksNoAssignment.getAssignedWhenRollup();
 		assertEquals("combined date range is not null?", null, combinedDateRange);
 		
 		Task activityWithNoSubTasksWithAssignment = getProject().createActivity();
 		addAssignment(activityWithNoSubTasksWithAssignment, 1.0, 2006, 2006);
 		assertEquals("assignment was not added?", 1, activityWithNoSubTasksWithAssignment.getSafeIdListData(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS).size());
-		DateRange whenRollup = activityWithNoSubTasksWithAssignment.getWhenRollup();
+		DateRange whenRollup = activityWithNoSubTasksWithAssignment.getAssignedWhenRollup();
 		assertEquals("wrong combined date range?", "2006", whenRollup.toString());
 		
 		Task activityWithoutUnits = getProject().createActivity();
 		addAssignment(activityWithoutUnits, 0, 2003, 2003);
 		assertEquals("assignment was not added?", 1, activityWithoutUnits.getSafeIdListData(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS).size());
-		assertEquals("wrong combined date range?", "2003", activityWithoutUnits.getWhenRollup().toString());
+		assertEquals("wrong combined date range?", "2003", activityWithoutUnits.getAssignedWhenRollup().toString());
 		
 		Task taskWithSubtasks = getProject().createActivity();
 		Task subTask = addSubTask(taskWithSubtasks);
-		assertEquals("sub task combined date range was not null?", null, taskWithSubtasks.getWhenRollup());
+		assertEquals("sub task combined date range was not null?", null, taskWithSubtasks.getAssignedWhenRollup());
 		
 		
 		MultiCalendar projectStartDate = ProjectForTesting.createStartYear(1995);
@@ -229,7 +229,7 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 		addAssignment(subTask, 1.0, 2000, 2010);
 		addAssignment(subTask, 1.0, 1995, 1998);
 		addAssignment(subTask, 0, 2011, 2013);
-		assertEquals("wrong sub task combined date range?", getProject().createDateRange(projectStartDate, projectEndDate), taskWithSubtasks.getWhenRollup());
+		assertEquals("wrong sub task combined date range?", getProject().createDateRange(projectStartDate, projectEndDate), taskWithSubtasks.getAssignedWhenRollup());
 	}
 
 	private Task addSubTask(BaseObject parentOfTask) throws Exception

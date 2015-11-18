@@ -89,10 +89,10 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	{
 		String columnTag = getColumnTag(column);
 		
-		if (isWhoColumn(columnTag))
+		if (isAssignedWhoColumn(columnTag))
 			return AppPreferences.RESOURCE_TABLE_BACKGROUND;
 		
-		if(isWhenColumn(columnTag))
+		if(isAssignedWhenColumn(columnTag))
 			return AppPreferences.getWorkUnitsBackgroundColor();
 		
 		return null;
@@ -102,11 +102,11 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	public boolean isCellEditable(int row, int modelColumn)
 	{
 		String columnTag = getColumnTag(modelColumn);
-		if (isWhoColumn(columnTag))
-			return new WhoStateLogic(getProject()).isWhoCellEditable(getBaseObjectForRowColumn(row, modelColumn));
+		if (isAssignedWhoColumn(columnTag))
+			return new WhoStateLogic(getProject()).isAssignedWhoCellEditable(getBaseObjectForRowColumn(row, modelColumn));
 		
-		if (isWhenColumn(columnTag))
-			return isWhenCellEditable(row, modelColumn);
+		if (isAssignedWhenColumn(columnTag))
+			return isAssignedWhenCellEditable(row, modelColumn);
 		
 		if (isCodeListColumn(modelColumn))
 			return false;
@@ -134,29 +134,29 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		return super.isFormattedColumn(modelColumn);
 	}
 
-	private boolean isWhoColumn(String columnTag)
+	private boolean isAssignedWhoColumn(String columnTag)
 	{
-		return columnTag.equals(CustomPlanningColumnsQuestion.META_WHO_TOTAL);
+		return columnTag.equals(CustomPlanningColumnsQuestion.META_ASSIGNED_WHO_TOTAL);
 	}
 	
-	private boolean isWhenColumn(String columnTag)
+	private boolean isAssignedWhenColumn(String columnTag)
 	{
-		return columnTag.equals(CustomPlanningColumnsQuestion.META_WHEN_TOTAL);
+		return columnTag.equals(CustomPlanningColumnsQuestion.META_ASSIGNED_WHEN_TOTAL);
 	}
 	
 	@Override
-	public boolean isWhenColumn(int modelColumn)
+	public boolean isAssignedWhenColumn(int modelColumn)
 	{
-		return isWhenColumn(getColumnTag(modelColumn));
+		return isAssignedWhenColumn(getColumnTag(modelColumn));
 	}
 	
-	private boolean isWhenCellEditable(int row, int modelColumn)
+	private boolean isAssignedWhenCellEditable(int row, int modelColumn)
 	{
 		BaseObject baseObjectForRow = getBaseObjectForRowColumn(row, modelColumn);
-		return isWhenEditable(baseObjectForRow);
+		return isAssignedWhenEditable(baseObjectForRow);
 	}
 	
-	public static boolean isWhenEditable(BaseObject baseObject)
+	public static boolean isAssignedWhenEditable(BaseObject baseObject)
 	{
 		try
 		{
@@ -241,7 +241,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (value == null)
 				return;
 			
-			if (isWhenColumn(column))
+			if (isAssignedWhenColumn(column))
 			{
 				setWhenValue(baseObjectForRow, createCodeList(value));
 			}
@@ -454,7 +454,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	
 	private boolean doesColumnHeaderNeedAsterisk(String columnTag)
 	{
-		boolean isAsteriskColumn = isWhenColumn(columnTag) || isWhoColumn(columnTag);
+		boolean isAsteriskColumn = isAssignedWhenColumn(columnTag) || isAssignedWhoColumn(columnTag);
 		if (!isAsteriskColumn)
 			return false;
 		
@@ -470,7 +470,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		try
 		{	
 			String columnTag = getTagForCell(baseObject.getType(), column);
-			if(isWhoColumn(columnTag))
+			if(isAssignedWhoColumn(columnTag))
 				return getAppendedProjectResourcesAsChoiceItem(baseObject);
 			if (columnTag.equals(CustomPlanningColumnsQuestion.META_CURRENT_RATING))
 				return getRatingChoiceItem(baseObject);
@@ -479,8 +479,8 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 				return new EmptyChoiceItem();
 
 			String rawValue = "";
-			if(columnTag.equals(BaseObject.PSEUDO_TAG_WHEN_TOTAL))
-				rawValue = getProject().getTimePeriodCostsMapsCache().getWhenTotalAsString(baseObject);
+			if(columnTag.equals(BaseObject.PSEUDO_TAG_ASSIGNED_WHEN_TOTAL))
+				rawValue = getProject().getTimePeriodCostsMapsCache().getAssignedWhenTotalAsString(baseObject);
 			else if (baseObject.isPseudoField(columnTag))
 				rawValue = baseObject.getPseudoData(columnTag);
 			else
@@ -504,7 +504,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (Desire.isDesire(baseObject.getRef()) && columnTag.equals(Desire.PSEUDO_TAG_RELEVANT_ACTIVITY_REFS))
 				return createAppendedRelevantActivityLabels((Desire)baseObject);
 			
-			if(isWhenColumn(columnTag))
+			if(isAssignedWhenColumn(columnTag))
 				return getFilteredWhen(baseObject);
 			
 			return new TaglessChoiceItem(rawValue);
@@ -772,7 +772,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		}
 		if(ResourceAssignment.is(nodeType))
 		{
-			if (isWhoColumn(columnTag))
+			if (isAssignedWhoColumn(columnTag))
 				return ResourceAssignment.PSEUDO_TAG_PROJECT_RESOURCE_LABEL;
 			if (columnTag.equals(Indicator.PSEUDO_TAG_FACTOR))
 				return ResourceAssignment.PSEUDO_TAG_OWNING_FACTOR_NAME;

@@ -49,7 +49,7 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 	private void clearAllCachedData()
 	{
 		totalTimePeriodCostsMapsByBaseObject = new HashMap<ORef, TimePeriodCostsMap>();
-		whenTotalAsStringByBaseObject = new HashMap<ORef, String>();
+		assignedWhenTotalAsStringByBaseObject = new HashMap<ORef, String>();
 		projectTotalsByBudgetMode = new HashMap<String, TimePeriodCostsMap>();
 		diagramObjectTotalsByBudgetMode = new HashMap<DiagramTotalCacheKey, TimePeriodCostsMap>();
 		totalTimePeriodCostsMapForSubTasksByBaseObjectAndAssignmentsTag = new HashMap<String, TimePeriodCostsMap>();
@@ -83,14 +83,14 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 		return result;
 	}
 
-	public String getWhenTotalAsString(BaseObject baseObject)
+	public String getAssignedWhenTotalAsString(BaseObject baseObject)
 	{
 		ORef ref = baseObject.getRef();
-		String result = whenTotalAsStringByBaseObject.get(ref);
+		String result = assignedWhenTotalAsStringByBaseObject.get(ref);
 		if(result == null)
 		{
-			result = baseObject.getWhenTotalAsString();
-			whenTotalAsStringByBaseObject.put(ref, result);
+			result = baseObject.getAssignedWhenTotalAsString();
+			assignedWhenTotalAsStringByBaseObject.put(ref, result);
 		}
 		
 		return result;
@@ -173,7 +173,7 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 
 	private Project project;
 	private HashMap<ORef, TimePeriodCostsMap> totalTimePeriodCostsMapsByBaseObject;
-	private HashMap<ORef, String> whenTotalAsStringByBaseObject;
+	private HashMap<ORef, String> assignedWhenTotalAsStringByBaseObject;
 	private HashMap<String, TimePeriodCostsMap> projectTotalsByBudgetMode;
 	private HashMap<DiagramTotalCacheKey, TimePeriodCostsMap> diagramObjectTotalsByBudgetMode;
 	private HashMap<String, TimePeriodCostsMap> totalTimePeriodCostsMapForSubTasksByBaseObjectAndAssignmentsTag;

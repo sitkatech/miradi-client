@@ -100,10 +100,10 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
 		String columnTag = getCastedModel().getColumnTag(modelColumn);
-		if (columnTag.equals(CustomPlanningColumnsQuestion.META_WHO_TOTAL))
+		if (columnTag.equals(CustomPlanningColumnsQuestion.META_ASSIGNED_WHO_TOTAL))
 			return whoColumnTableCellEditorFactory;
 		
-		if (getCastedModel().isWhenColumn(modelColumn))
+		if (getCastedModel().isAssignedWhenColumn(modelColumn))
 			return new WhenTableCellPopupEditorOrRendererFactory(getMainWindow(), this, new PlanningViewFontProvider(getMainWindow()));
 		
 		Class cellQuestionClass = getCastedModel().getCellQuestion(row, modelColumn);
@@ -155,7 +155,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 			factory = progressRendererFactory;
 		else if(getCastedModel().isDateUnitColumn(modelColumn))
 			factory = doubleRendererFactory;
-		else if (getCastedModel().isWhenColumn(modelColumn))
+		else if (getCastedModel().isAssignedWhenColumn(modelColumn))
 			factory = whenColumnTableCellEditorFactory;
 		
 		Color background = getCastedModel().getCellBackgroundColor(row, modelColumn);

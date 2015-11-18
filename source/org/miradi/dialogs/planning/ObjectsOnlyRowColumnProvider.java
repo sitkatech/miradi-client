@@ -159,8 +159,8 @@ public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnP
 	private static CodeList getActivityColumns()
 	{
 		String[] list = {
-				CustomPlanningColumnsQuestion.META_WHO_TOTAL,
-				BaseObject.PSEUDO_TAG_WHEN_TOTAL,
+				CustomPlanningColumnsQuestion.META_ASSIGNED_WHO_TOTAL,
+				BaseObject.PSEUDO_TAG_ASSIGNED_WHEN_TOTAL,
 				};
 			
 		return new CodeList(list);
@@ -182,8 +182,8 @@ public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnP
 	private static CodeList getMethodColumns()
 	{
 		String[] list = {
-				CustomPlanningColumnsQuestion.META_WHO_TOTAL,
-				BaseObject.PSEUDO_TAG_WHEN_TOTAL,
+				CustomPlanningColumnsQuestion.META_ASSIGNED_WHO_TOTAL,
+				BaseObject.PSEUDO_TAG_ASSIGNED_WHEN_TOTAL,
 				};
 	
 		return new CodeList(list);
@@ -192,8 +192,8 @@ public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnP
 	private static CodeList getTaskColumns()
 	{		
 		String[] list = {
-				CustomPlanningColumnsQuestion.META_WHO_TOTAL,
-				BaseObject.PSEUDO_TAG_WHEN_TOTAL,
+				CustomPlanningColumnsQuestion.META_ASSIGNED_WHO_TOTAL,
+				BaseObject.PSEUDO_TAG_ASSIGNED_WHEN_TOTAL,
 				};
 		
 		return new CodeList(list);

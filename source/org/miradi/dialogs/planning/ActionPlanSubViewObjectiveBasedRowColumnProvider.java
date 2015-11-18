@@ -43,7 +43,7 @@ public class ActionPlanSubViewObjectiveBasedRowColumnProvider extends AbstractPl
 	{
 		return new CodeList(new String[] {
 				CustomPlanningColumnsQuestion.META_CURRENT_RATING,
-				CustomPlanningColumnsQuestion.META_WHO_TOTAL,
+				CustomPlanningColumnsQuestion.META_ASSIGNED_WHO_TOTAL,
 				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 				Desire.TAG_FULL_TEXT,
 				});

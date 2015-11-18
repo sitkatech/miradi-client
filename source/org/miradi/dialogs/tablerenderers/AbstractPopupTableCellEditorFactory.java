@@ -77,7 +77,7 @@ abstract public class AbstractPopupTableCellEditorFactory extends AbstractCellEd
 		return mainWindow;
 	}
 	
-	abstract protected DisposablePanel createEditorComponenet(BaseObject baseObjectForRow);
+	abstract protected DisposablePanel createEditorComponent(BaseObject baseObjectForRow);
 	
 	abstract protected String getDialogTitle();
 	
@@ -89,7 +89,7 @@ abstract public class AbstractPopupTableCellEditorFactory extends AbstractCellEd
 			table.stopCellEditing();
 
 			final BaseObject baseObjectForRow = table.getBaseObjectForRowColumn(table.getSelectedRow(), table.getSelectedColumn());
-			DisposablePanel codeListEditor = createEditorComponenet(baseObjectForRow);
+			DisposablePanel codeListEditor = createEditorComponent(baseObjectForRow);
 			ModelessDialogWithClose dialog = new ModelessDialogWithClose(getMainWindow(), getDialogTitle());
 			String dialogObjectDescription = ObjectTreeTable.getToolTipString(baseObjectForRow);
 			dialog.add(new PanelTitleLabel(dialogObjectDescription), BorderLayout.BEFORE_FIRST_LINE);

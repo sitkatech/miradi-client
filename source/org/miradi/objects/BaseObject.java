@@ -720,11 +720,11 @@ abstract public class BaseObject
 		return formater.format(cost);
 	}
 	
-	public String getWhenTotalAsString()
+	public String getAssignedWhenTotalAsString()
 	{
 		try
 		{
-			return getProject().getProjectCalendar().convertToSafeString(getWhenRollup());
+			return getProject().getProjectCalendar().convertToSafeString(getAssignedWhenRollup());
 		}
 		catch (Exception e)
 		{
@@ -733,7 +733,7 @@ abstract public class BaseObject
 		} 
 	}
 	
-	public DateRange getWhenRollup() throws Exception
+	public DateRange getAssignedWhenRollup() throws Exception
 	{
 		final DateRange projectStartEndDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
 		return getTotalTimePeriodCostsMap().getRolledUpDateRange(projectStartEndDateRange);
@@ -1162,8 +1162,8 @@ abstract public class BaseObject
 	
 	public String getPseudoData(String fieldTag)
 	{
-		if (fieldTag.equals(PSEUDO_TAG_WHEN_TOTAL))
-			return getWhenTotalAsString();
+		if (fieldTag.equals(PSEUDO_TAG_ASSIGNED_WHEN_TOTAL))
+			return getAssignedWhenTotalAsString();
 		
 		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 			return getLatestProgressReportDate();
@@ -1300,7 +1300,7 @@ abstract public class BaseObject
 	public static final String TAG_ASSIGNED_LEADER_RESOURCE = "AssignedLeaderResource";
 	public static final String TAG_TAXONOMY_CLASSIFICATION_CONTAINER = "TaxonomyClassificationContainer";
 	
-	public final static String PSEUDO_TAG_WHEN_TOTAL = "EffortDatesTotal";
+	public final static String PSEUDO_TAG_ASSIGNED_WHEN_TOTAL = "EffortDatesTotal";
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE = "PseudoLatestProgressReportCode";
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS = "PseudoLatestProgressReportDetails";
 

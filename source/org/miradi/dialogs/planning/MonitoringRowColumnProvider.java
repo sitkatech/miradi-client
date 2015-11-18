@@ -44,8 +44,8 @@ public class MonitoringRowColumnProvider extends AbstractPlanningTreeRowColumnPr
 		return new CodeList(new String[] {
 				Indicator.PSEUDO_TAG_METHODS,
 				Indicator.TAG_PRIORITY,
-				CustomPlanningColumnsQuestion.META_WHO_TOTAL,
-				BaseObject.PSEUDO_TAG_WHEN_TOTAL,
+				CustomPlanningColumnsQuestion.META_ASSIGNED_WHO_TOTAL,
+				BaseObject.PSEUDO_TAG_ASSIGNED_WHEN_TOTAL,
 				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 				Desire.TAG_FULL_TEXT,
 		});

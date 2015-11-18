@@ -92,7 +92,7 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return false;
 	}
 	
-	public boolean isWhenColumn(int modelColumn)
+	public boolean isAssignedWhenColumn(int modelColumn)
 	{
 		return false;
 	}
