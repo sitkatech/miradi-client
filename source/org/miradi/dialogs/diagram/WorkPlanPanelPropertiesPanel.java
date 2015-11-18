@@ -40,7 +40,7 @@ public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
 
 		add(new FillerLabel());
 		add(new FillerLabel());
-		addField(createLeaderDropDownField(orefToUse.getObjectType(), BaseObject.TAG_ASSIGNED_LEADER_RESOURCE));
+		addField(createLeaderDropDownField(orefToUse.getObjectType(), BaseObject.TAG_PLANNED_LEADER_RESOURCE));
 		addField(createReadonlyTextField(BaseObject.PSEUDO_TAG_ASSIGNED_WHEN_TOTAL));
 		
 		updateFieldsFromProject();
