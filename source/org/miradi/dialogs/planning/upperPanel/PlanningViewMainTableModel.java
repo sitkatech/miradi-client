@@ -656,20 +656,20 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		Vector<String> names = new Vector<String>();
 		for(ORef resourceRef : filteredResources)
 		{
-			names.add(getWhoName(resourceRef, parentBaseObject));
+			names.add(getWhoAssignedName(resourceRef, parentBaseObject));
 		}
 		
 		return names;
 	}
 	
-	private String getWhoName(ORef resourceRef, BaseObject parentBaseObject)
+	private String getWhoAssignedName(ORef resourceRef, BaseObject parentBaseObject)
 	{
 		if (resourceRef.isInvalid())
 			return Translation.getNotSpecifiedText();
 
 		ProjectResource projectResource = ProjectResource.find(getProject(), resourceRef);
 		final String who = projectResource.getWho();
-		if (parentBaseObject.getLeaderResourceRef().equals(resourceRef))
+		if (parentBaseObject.getAssignedLeaderResourceRef().equals(resourceRef))
 			return who + "*";
 		
 		return who;	

@@ -32,9 +32,9 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.schemas.ResourceAssignmentSchema;
 
-public class LeaderEnsurer implements CommandExecutedListener
+public class LeaderAssignedEnsurer implements CommandExecutedListener
 {
-	public LeaderEnsurer(Project projectToUse)
+	public LeaderAssignedEnsurer(Project projectToUse)
 	{
 		project = projectToUse;
 	}
@@ -102,7 +102,7 @@ public class LeaderEnsurer implements CommandExecutedListener
 	private void ensureLeaderIsLegal(ORef objectContainingLeaderRef) throws Exception
 	{
 		BaseObject objectContainingLeader = BaseObject.find(getProject(), objectContainingLeaderRef);
-		ORef currentLeaderRef = objectContainingLeader.getLeaderResourceRef();
+		ORef currentLeaderRef = objectContainingLeader.getAssignedLeaderResourceRef();
 		ORefSet resourceRefs = objectContainingLeader.getTotalTimePeriodCostsMap().getAllProjectResourceRefs();
 		if (!resourceRefs.contains(currentLeaderRef))
 			clearLeaderResourceRef(objectContainingLeader);

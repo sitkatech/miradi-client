@@ -1241,7 +1241,7 @@ abstract public class BaseObject
 		return null;
 	}
 	
-	public ORef getLeaderResourceRef()
+	public ORef getAssignedLeaderResourceRef()
 	{
 		if (getTags().contains(TAG_ASSIGNED_LEADER_RESOURCE))
 			return getRef(TAG_ASSIGNED_LEADER_RESOURCE);

@@ -25,14 +25,14 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
 
-public class TestLeaderEnsurer extends TestCaseWithProject
+public class TestAssignedLeaderEnsurer extends TestCaseWithProject
 {
-	public TestLeaderEnsurer(String name)
+	public TestAssignedLeaderEnsurer(String name)
 	{
 		super(name);
 	}
 	
-	public void testResourceLeaderIsUpdatedWhenReourceAssignmentIsUpdated() throws Exception
+	public void testResourceLeaderIsUpdatedWhenResourceAssignmentIsUpdated() throws Exception
 	{
 		Strategy strategy = getProject().createStrategy();
 		ResourceAssignment resourceAssignment = getProject().addResourceAssignment(strategy);
@@ -52,7 +52,7 @@ public class TestLeaderEnsurer extends TestCaseWithProject
 		verifyLeader(strategy);
 	}
 
-	public void testResourceLeaderIsNotChangedWithMultpleResourceAssignemntReferrersAndOneIsUpdated() throws Exception
+	public void testResourceLeaderIsNotChangedWithMultipleResourceAssignmentReferrersAndOneIsUpdated() throws Exception
 	{
 		Strategy strategy = getProject().createStrategy();
 		ResourceAssignment resourceAssignmentWithSameResource1 = getProject().addResourceAssignment(strategy);
@@ -64,7 +64,7 @@ public class TestLeaderEnsurer extends TestCaseWithProject
 		verifyCorrectLeader(strategy, resourceAssignmentWithSameResource1);
 	}
 
-	public void testResourceLeaderIsNotChangedWithMultipleResourceAssignemntReferrersAndOneIsDeleted() throws Exception
+	public void testResourceLeaderIsNotChangedWithMultipleResourceAssignmentReferrersAndOneIsDeleted() throws Exception
 	{
 		Strategy strategy = getProject().createStrategy();
 		ResourceAssignment resourceAssignmentWithSameResource1 = getProject().addResourceAssignment(strategy);
@@ -78,17 +78,17 @@ public class TestLeaderEnsurer extends TestCaseWithProject
 
 	private void verifyLeaderIsSet(Strategy strategy, ResourceAssignment resourceAssignment)
 	{
-		assertEquals("leader not set?", resourceAssignment.getResourceRef(), strategy.getLeaderResourceRef());
+		assertEquals("leader not set?", resourceAssignment.getResourceRef(), strategy.getAssignedLeaderResourceRef());
 	}
 	
 	private void verifyCorrectLeader(Strategy strategy, ResourceAssignment resourceAssignment)
 	{
-		assertTrue("leader should not be invalid?", strategy.getLeaderResourceRef().isValid());
-		assertEquals("leader removed?", resourceAssignment.getResourceRef(), strategy.getLeaderResourceRef());
+		assertTrue("leader should not be invalid?", strategy.getAssignedLeaderResourceRef().isValid());
+		assertEquals("leader removed?", resourceAssignment.getResourceRef(), strategy.getAssignedLeaderResourceRef());
 	}
 	
 	public void verifyLeader(Strategy strategy)
 	{
-		assertEquals("leader not removed?", ORef.INVALID, strategy.getLeaderResourceRef());
+		assertEquals("leader not removed?", ORef.INVALID, strategy.getAssignedLeaderResourceRef());
 	}
 }
