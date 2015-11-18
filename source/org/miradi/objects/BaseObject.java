@@ -1297,6 +1297,7 @@ abstract public class BaseObject
 	public static final String TAG_RESOURCE_ASSIGNMENT_IDS = "AssignmentIds";
 	public static final String TAG_EXPENSE_ASSIGNMENT_REFS = "ExpenseRefs";
 	public static final String TAG_PROGRESS_REPORT_REFS = "ProgressReportRefs";
+	public static final String TAG_PLANNED_LEADER_RESOURCE = "PlannedLeaderResource";
 	public static final String TAG_ASSIGNED_LEADER_RESOURCE = "AssignedLeaderResource";
 	public static final String TAG_TAXONOMY_CLASSIFICATION_CONTAINER = "TaxonomyClassificationContainer";
 	

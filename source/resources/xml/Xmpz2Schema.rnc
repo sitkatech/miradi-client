@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Tue Nov 17 14:35:24 GMT 2015 $
+# $LastChangedDate: Wed Nov 18 11:59:43 GMT 2015 $
 # $LastChangedRevision: 236 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/236'
 start = ConservationProject.element
@@ -249,6 +249,7 @@ Task.element = element miradi:Task
   element miradi:TaskIdentifier { text }? &
   element miradi:TaskName { formatted_text }? &
   element miradi:TaskOrderedSubTaskIds { SubTaskId.element* }? &
+  element miradi:TaskPlannedLeaderResourceId { ResourceId.element }? &
   element miradi:TaskProgressReportIds { ProgressReportId.element* }? &
   element miradi:TaskResourceAssignmentIds { ResourceAssignmentId.element* }? &
   element miradi:TaskResourcePlanIds { ResourcePlanId.element* }? &
@@ -297,6 +298,7 @@ Indicator.element = element miradi:Indicator
   element miradi:IndicatorMeasurementIds { MeasurementId.element* }? &
   element miradi:IndicatorName { formatted_text }? &
   element miradi:IndicatorOrderedMethodIds { MethodId.element* }? &
+  element miradi:IndicatorPlannedLeaderResourceId { ResourceId.element }? &
   element miradi:IndicatorPriority { vocabulary_priority_rating_code }? &
   element miradi:IndicatorProgressReportIds { ProgressReportId.element* }? &
   element miradi:IndicatorRatingSource { vocabulary_rating_source }? &
@@ -455,6 +457,7 @@ Strategy.element = element miradi:Strategy
   element miradi:StrategyName { formatted_text }? &
   element miradi:StrategyObjectiveIds { ObjectiveId.element* }? &
   element miradi:StrategyOrderedActivityIds { ActivityId.element* }? &
+  element miradi:StrategyPlannedLeaderResourceId { ResourceId.element }? &
   element miradi:StrategyProgressReportIds { ProgressReportId.element* }? &
   element miradi:StrategyResourceAssignmentIds { ResourceAssignmentId.element* }? &
   element miradi:StrategyResourcePlanIds { ResourcePlanId.element* }? &
