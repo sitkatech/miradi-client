@@ -81,6 +81,7 @@ public interface Xmpz2XmlConstants
 	public static final String TEXT_BOX = TextBoxSchema.OBJECT_NAME;
 	public static final String SCOPE_BOX = ScopeBoxSchema.OBJECT_NAME;
 	public static final String KEY_ECOLOGICAL_ATTRIBUTE = KeyEcologicalAttributeSchema.OBJECT_NAME;
+	public static final String STRATEGY = StrategySchema.OBJECT_NAME;
 	public static final String STRESS = StressSchema.OBJECT_NAME;
 	public static final String STRESS_ID = STRESS + ID;
 	public static final String STRESS_IDS_ELEMENT = "StressIds";

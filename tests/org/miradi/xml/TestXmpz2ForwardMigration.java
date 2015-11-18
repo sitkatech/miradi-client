@@ -100,7 +100,7 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject
 		{
 			Node node = tncProjectDataNodes.item(index);
 			
-			appendContainerWithSampleCode(document, node, Xmpz2ForwardMigration.createLegacyTncOrganizationlPrioritesElementName());
+			appendContainerWithSampleCode(document, node, Xmpz2ForwardMigration.createLegacyTncOrganizationalPrioritiesElementName());
 			appendContainerWithSampleCode(document, node, Xmpz2ForwardMigration.createLegacyTncProjectPlaceTypesElementName());
 		}
 		

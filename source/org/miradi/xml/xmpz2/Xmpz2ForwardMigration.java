@@ -32,6 +32,7 @@ import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.exceptions.XmlVersionTooOldException;
 import org.miradi.migrations.forward.MigrationTo10;
 import org.miradi.migrations.forward.MigrationTo11;
+import org.miradi.migrations.forward.MigrationTo19;
 import org.miradi.utils.BiDirectionalHashMap;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.xml.AbstractXmlImporter;
@@ -52,6 +53,7 @@ public class Xmpz2ForwardMigration
 		removeLegacyTncFields(rootElement);
 		removeHumanWellbeingTargetCalculatedThreatRatingElement(rootElement);
 		renameTncFields(document);
+		renameLeaderResourceFields(document);
 		final String migratedXmlAsString = HtmlUtilities.toXmlString(document);
 
 		return new StringInputStreamWithSeek(migratedXmlAsString);
@@ -76,7 +78,7 @@ public class Xmpz2ForwardMigration
 		
 		return oldToNewTagMap;
 	}
-	
+
 	private void renameElements(Document document, Node parentNode, BiDirectionalHashMap fromToNameMap) throws Exception
 	{
 		final String alias = getNameSpaceAliasName(document.getDocumentElement());
@@ -86,12 +88,74 @@ public class Xmpz2ForwardMigration
 			Node childNode = findNode(parentNode, fromName);
 			if (childNode == null)
 				continue;
-			
+
 			String textToTransferToNewNode = childNode.getTextContent();
 			parentNode.removeChild(childNode);
 			final String toName = fromToNameMap.getValue(fromName);
 			Node newNode = document.createElement(alias + COLON +  toName);
 			newNode.setTextContent(textToTransferToNewNode);
+			parentNode.appendChild(newNode);
+		}
+	}
+
+	private void renameLeaderResourceFields(Document document) throws Exception
+	{
+		Element rootElement = document.getDocumentElement();
+
+		Node strategyPool = findNode(rootElement.getChildNodes(), Xmpz2XmlWriter.createPoolElementName(Xmpz2XmlConstants.STRATEGY));
+		BiDirectionalHashMap oldToNewTagMap = createLeaderResourceToNewFieldNamesMap(Xmpz2XmlConstants.STRATEGY);
+		renameLeaderResourceFields(document, strategyPool, oldToNewTagMap);
+
+		Node taskPool = findNode(rootElement.getChildNodes(), Xmpz2XmlWriter.createPoolElementName(Xmpz2XmlConstants.TASK));
+		oldToNewTagMap = createLeaderResourceToNewFieldNamesMap(Xmpz2XmlConstants.TASK);
+		renameLeaderResourceFields(document, taskPool, oldToNewTagMap);
+
+		Node indicatorPool = findNode(rootElement.getChildNodes(), Xmpz2XmlWriter.createPoolElementName(Xmpz2XmlConstants.INDICATOR));
+		oldToNewTagMap = createLeaderResourceToNewFieldNamesMap(Xmpz2XmlConstants.INDICATOR);
+		renameLeaderResourceFields(document, indicatorPool, oldToNewTagMap);
+	}
+
+	private void renameLeaderResourceFields(Document document, Node objectPool, BiDirectionalHashMap oldToNewTagMap) throws Exception
+	{
+		if (objectPool == null)
+			return;
+
+		NodeList children = objectPool.getChildNodes();
+		for (int index = 0; index < children.getLength(); ++index)
+		{
+			Node childNode = children.item(index);
+			if (childNode != null)
+				replaceElements(document, childNode, oldToNewTagMap);
+		}
+	}
+
+	private BiDirectionalHashMap createLeaderResourceToNewFieldNamesMap(String objectName)
+	{
+		BiDirectionalHashMap oldToNewTagMap = new BiDirectionalHashMap();
+		oldToNewTagMap.put(objectName + MigrationTo19.LEGACY_TAG_LEADER_RESOURCE + Xmpz2XmlConstants.ID, objectName + MigrationTo19.TAG_ASSIGNED_LEADER_RESOURCE + Xmpz2XmlConstants.ID);
+
+		return oldToNewTagMap;
+	}
+
+	private void replaceElements(Document document, Node parentNode, BiDirectionalHashMap fromToNameMap) throws Exception
+	{
+		final String alias = getNameSpaceAliasName(document.getDocumentElement());
+		HashSet<String> keys = fromToNameMap.getKeys();
+		for(String fromName : keys)
+		{
+			Node childNode = findNode(parentNode, fromName);
+			if (childNode == null)
+				continue;
+
+			NodeList childNodeList = childNode.getChildNodes();
+			parentNode.removeChild(childNode);
+			final String toName = fromToNameMap.getValue(fromName);
+			Node newNode = document.createElement(alias + COLON +  toName);
+			for (int index = 0; index < childNodeList.getLength(); ++index)
+			{
+				Node grandchildNode = childNodeList.item(index);
+				newNode.appendChild(grandchildNode);
+			}
 			parentNode.appendChild(newNode);
 		}
 	}
@@ -103,11 +167,11 @@ public class Xmpz2ForwardMigration
 
 	private void removeHumanWellbeingTargetCalculatedThreatRatingElement(Element rootElement)
 	{
-		Node humanWelbeignTargetPool = findNode(rootElement.getChildNodes(), Xmpz2XmlWriter.createPoolElementName(Xmpz2XmlConstants.HUMAN_WELFARE_TARGET));
-		if (humanWelbeignTargetPool == null)
+		Node humanWellbeingTargetPool = findNode(rootElement.getChildNodes(), Xmpz2XmlWriter.createPoolElementName(Xmpz2XmlConstants.HUMAN_WELFARE_TARGET));
+		if (humanWellbeingTargetPool == null)
 			return;
 		
-		NodeList children = humanWelbeignTargetPool.getChildNodes();
+		NodeList children = humanWellbeingTargetPool.getChildNodes();
 		for (int index = 0; index < children.getLength(); ++index)
 		{
 			Node humanWellbeingTarget = children.item(index);
@@ -139,7 +203,7 @@ public class Xmpz2ForwardMigration
 
 	private void removeLegacyTncChildren(Node tncProjectDataNode)
 	{
-		String[] elementNamesToRemove = new String[]{createLegacyTncOrganizationlPrioritesElementName(), createLegacyTncProjectPlaceTypesElementName(), };
+		String[] elementNamesToRemove = new String[]{createLegacyTncOrganizationalPrioritiesElementName(), createLegacyTncProjectPlaceTypesElementName(), };
 		removeChildren(tncProjectDataNode, elementNamesToRemove);
 	}
 	
@@ -165,7 +229,7 @@ public class Xmpz2ForwardMigration
 		return Xmpz2XmlConstants.TNC_PROJECT_DATA + "TNC" +  MigrationTo11.LEGACY_TAG_TNC_PROJECT_TYPES + Xmpz2XmlConstants.CONTAINER_ELEMENT_TAG;
 	}
 
-	public static String createLegacyTncOrganizationlPrioritesElementName()
+	public static String createLegacyTncOrganizationalPrioritiesElementName()
 	{
 		return Xmpz2XmlConstants.TNC_PROJECT_DATA + "TNC" + MigrationTo11.LEGACY_TAG_TNC_ORGANIZATIONAL_PRIORITIES + Xmpz2XmlConstants.CONTAINER_ELEMENT_TAG;
 	}
