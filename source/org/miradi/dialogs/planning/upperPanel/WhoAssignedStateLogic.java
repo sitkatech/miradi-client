@@ -32,9 +32,9 @@ import org.miradi.project.Project;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.OptionalDouble;
 
-public class WhoStateLogic
+public class WhoAssignedStateLogic
 {
-	public WhoStateLogic(Project projectToUse)
+	public WhoAssignedStateLogic(Project projectToUse)
 	{
 		project = projectToUse;
 	}

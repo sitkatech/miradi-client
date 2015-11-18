@@ -18,30 +18,33 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.dialogfields;
+package org.miradi.dialogs.tablerenderers;
 
-import org.miradi.dialogs.base.CodeListEditorPanel;
+import org.miradi.dialogfields.WhoAssignedCodeListEditorComponent;
 import org.miradi.dialogs.base.DisposablePanel;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.project.Project;
-import org.miradi.questions.ChoiceQuestion;
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
+import org.miradi.objects.BaseObject;
+import org.miradi.questions.ProjectResourceQuestion;
 
-public class WhoEditorInputField extends AbstractEditableCodeListField
+public class WhoAssignedColumnTableCellEditorFactory extends AbstractPopupTableCellEditorFactory
 {
-	public WhoEditorInputField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse)
+	public WhoAssignedColumnTableCellEditorFactory(MainWindow mainWindowToUse, RowColumnSelectionProvider tableToUse)
 	{
-		super(projectToUse, refToUse, tagToUse, questionToUse);
-	}
-
+		super(mainWindowToUse, tableToUse);
+	}	
+	
 	@Override
-	public DisposablePanel createEditorPanel() throws Exception
+	protected DisposablePanel createEditorComponent(BaseObject baseObjectForRow)
 	{
-		return new CodeListEditorPanel(getProject(), getORef(), getTag(), question, 1);
-	}
+		final ProjectResourceQuestion question = new ProjectResourceQuestion(getProject());
 
+		return new WhoAssignedCodeListEditorComponent(baseObjectForRow, question);
+	}
+	
 	@Override
-	public AbstractReadonlyChoiceComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)
+	protected String getDialogTitle()
 	{
-		return new ReadonlyMultiChoiceComponent(questionToUse, columnCount);
+		return EAM.text("Project Resource");
 	}
 }

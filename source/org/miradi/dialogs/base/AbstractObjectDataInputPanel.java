@@ -709,9 +709,9 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new PopupQuestionEditorField(parentDialog, getProject(), getRefForType(objectType), tagToUse, StaticQuestionManager.getQuestion(questionClass));
 	}
 	
-	public WhoEditorField createWhoEditorField(ORef refToUse)
+	public WhoAssignedEditorField createWhoEditorField(ORef refToUse)
 	{
-		return new WhoEditorField(getMainWindow(), refToUse);
+		return new WhoAssignedEditorField(getMainWindow(), refToUse);
 	}
 	
 	public ObjectDataInputField createReadonlyClickableLinkField(int objectType, String tag)

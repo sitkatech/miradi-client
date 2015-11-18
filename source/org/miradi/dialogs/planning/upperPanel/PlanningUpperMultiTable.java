@@ -55,7 +55,7 @@ import org.miradi.dialogs.tablerenderers.ProgressTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.RowColumnSelectionProvider;
 import org.miradi.dialogs.tablerenderers.SingleLineObjectTableCellEditorOrRendererFactory;
 import org.miradi.dialogs.tablerenderers.WhenTableCellPopupEditorOrRendererFactory;
-import org.miradi.dialogs.tablerenderers.WhoColumnTableCellEditorFactory;
+import org.miradi.dialogs.tablerenderers.WhoAssignedColumnTableCellEditorFactory;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
@@ -82,7 +82,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		choiceRendererFactory = new ChoiceItemTableCellRendererFactory(this, fontProvider);
 		progressRendererFactory = new ProgressTableCellRendererFactory(this, fontProvider);
 		doubleRendererFactory = new NumericTableCellRendererFactory(this, fontProvider);
-		whoColumnTableCellEditorFactory = new WhoColumnTableCellEditorFactory(getMainWindow(), this);
+		whoAssignedColumnTableCellEditorFactory = new WhoAssignedColumnTableCellEditorFactory(getMainWindow(), this);
 		whenColumnTableCellEditorFactory = new WhenTableCellPopupEditorOrRendererFactory(mainWindowToUse, this, fontProvider);
 		singleLineTextCellEditorFactory = new SingleLineObjectTableCellEditorOrRendererFactory(this, fontProvider);
 		multiLineTextCellEditorFactor = new ExpandingReadonlyTableCellEditorOrRendererFactory(mainWindowToUse, this, fontProvider);
@@ -101,7 +101,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		int modelColumn = convertColumnIndexToModel(tableColumn);
 		String columnTag = getCastedModel().getColumnTag(modelColumn);
 		if (columnTag.equals(CustomPlanningColumnsQuestion.META_ASSIGNED_WHO_TOTAL))
-			return whoColumnTableCellEditorFactory;
+			return whoAssignedColumnTableCellEditorFactory;
 		
 		if (getCastedModel().isAssignedWhenColumn(modelColumn))
 			return new WhenTableCellPopupEditorOrRendererFactory(getMainWindow(), this, new PlanningViewFontProvider(getMainWindow()));
@@ -266,7 +266,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	private BasicTableCellEditorOrRendererFactory choiceRendererFactory;
 	private BasicTableCellEditorOrRendererFactory progressRendererFactory;
 	private BasicTableCellEditorOrRendererFactory doubleRendererFactory;
-	private WhoColumnTableCellEditorFactory whoColumnTableCellEditorFactory;
+	private WhoAssignedColumnTableCellEditorFactory whoAssignedColumnTableCellEditorFactory;
 	private WhenTableCellPopupEditorOrRendererFactory whenColumnTableCellEditorFactory;
 	private SingleLineObjectTableCellEditorOrRendererFactory singleLineTextCellEditorFactory;
 	private ExpandingReadonlyTableCellEditorOrRendererFactory multiLineTextCellEditorFactor;

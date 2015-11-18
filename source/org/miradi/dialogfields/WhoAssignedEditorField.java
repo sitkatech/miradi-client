@@ -25,7 +25,7 @@ import javax.swing.JComponent;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.ReadonlyPanelWithPopupEditor;
 import org.miradi.dialogs.base.ReadonlyPanelWithPopupEditorWithMainScrollPane;
-import org.miradi.dialogs.planning.upperPanel.WhoStateLogic;
+import org.miradi.dialogs.planning.upperPanel.WhoAssignedStateLogic;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -34,9 +34,9 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ProjectResourceQuestion;
 import org.miradi.utils.CodeList;
 
-public class WhoEditorField extends ObjectDataField implements ReadonlyPanelAndPopupEditorProvider
+public class WhoAssignedEditorField extends ObjectDataField implements ReadonlyPanelAndPopupEditorProvider
 {
-	public WhoEditorField(MainWindow mainWindow, ORef refToUse)
+	public WhoAssignedEditorField(MainWindow mainWindow, ORef refToUse)
 	{
 		super(mainWindow.getProject(), refToUse);
 
@@ -57,7 +57,7 @@ public class WhoEditorField extends ObjectDataField implements ReadonlyPanelAndP
 			return;
 
 		BaseObject baseObject = BaseObject.find(getProject(), getORef());
-		CodeList whoTotals = WhoCodeListEditorComponent.getWhoTotalCodes(baseObject);
+		CodeList whoTotals = WhoAssignedCodeListEditorComponent.getAssignedWhoTotalCodes(baseObject);
 		readonlyPanelWithPopupEditor.setText(whoTotals.toString());
 	}
 	
@@ -74,7 +74,7 @@ public class WhoEditorField extends ObjectDataField implements ReadonlyPanelAndP
 	{
 		BaseObject baseObject = BaseObject.find(getProject(), getORef());
 		
-		return new WhoStateLogic(getProject()).isAssignedWhoCellEditable(baseObject);
+		return new WhoAssignedStateLogic(getProject()).isAssignedWhoCellEditable(baseObject);
 	}
 
 	@Override
@@ -99,7 +99,7 @@ public class WhoEditorField extends ObjectDataField implements ReadonlyPanelAndP
 
 		BaseObject baseObjectForRow = BaseObject.find(getProject(), getORef());
 		final ProjectResourceQuestion question = new ProjectResourceQuestion(getProject());		
-		return new WhoCodeListEditorComponent(baseObjectForRow, question);		
+		return new WhoAssignedCodeListEditorComponent(baseObjectForRow, question);
 	}
 
 	public AbstractReadonlyChoiceComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)

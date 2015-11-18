@@ -103,7 +103,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	{
 		String columnTag = getColumnTag(modelColumn);
 		if (isAssignedWhoColumn(columnTag))
-			return new WhoStateLogic(getProject()).isAssignedWhoCellEditable(getBaseObjectForRowColumn(row, modelColumn));
+			return new WhoAssignedStateLogic(getProject()).isAssignedWhoCellEditable(getBaseObjectForRowColumn(row, modelColumn));
 		
 		if (isAssignedWhenColumn(columnTag))
 			return isAssignedWhenCellEditable(row, modelColumn);
