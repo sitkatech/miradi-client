@@ -43,9 +43,6 @@ public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
 		addField(createLeaderDropDownField(orefToUse.getObjectType(), BaseObject.TAG_ASSIGNED_LEADER_RESOURCE));
 		addField(createReadonlyTextField(BaseObject.PSEUDO_TAG_WHEN_TOTAL));
 		
-		add(new FillerLabel());
-		add(new PanelTitleLabel(EAM.text("Dates can be set in the Work Plan view")));
-
 		updateFieldsFromProject();
 	}
 
@@ -61,6 +58,6 @@ public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Who and When");
+		return EAM.text("Who, When Plan");
 	}
 }

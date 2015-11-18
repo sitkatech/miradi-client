@@ -19,12 +19,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.assignment;
 
+import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.planning.propertiesPanel.ResourceAssignmentEditorComponent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.BaseObject;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
+import org.miradi.utils.FillerLabel;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class AssignmentsPropertiesPanel extends ObjectDataInputPanelWithSections
@@ -35,6 +38,12 @@ public class AssignmentsPropertiesPanel extends ObjectDataInputPanelWithSections
 
 		assignmentEditor = new ResourceAssignmentEditorComponent(mainWindowToUse, picker);
 		createSingleSection("");
+
+		ObjectDataInputField leaderDropDownField = createLeaderDropDownField(objectType, BaseObject.TAG_ASSIGNED_LEADER_RESOURCE);
+		addFieldsOnOneLine("", new ObjectDataInputField[]{leaderDropDownField});
+
+		add(new FillerLabel());
+
 		add(assignmentEditor);
 		updateFieldsFromProject();
 	}
