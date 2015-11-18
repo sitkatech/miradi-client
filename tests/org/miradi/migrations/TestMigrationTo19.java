@@ -32,22 +32,45 @@ public class TestMigrationTo19 extends AbstractTestMigration
 		super(name);
 	}
 	
-	public void testFieldsRenamedAfterMigration() throws Exception
+	public void testStrategyFieldsRenamedAfterMigration() throws Exception
 	{
 		ORef strategyRef = getProject().createStrategy().getRef();
 		String sampleResourceData = getProject().createProjectResource().getRef().toString();
 
-		getProject().fillObjectUsingCommand(strategyRef, Strategy.TAG_ASSIGNED_LEADER_RESOURCE, sampleResourceData);
+		testObjectFieldsRenamedAfterMigration(strategyRef, sampleResourceData);
+	}
+	
+	public void testTaskFieldsRenamedAfterMigration() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		ORef taskRef = getProject().createTask(strategy).getRef();
+		String sampleResourceData = getProject().createProjectResource().getRef().toString();
+
+		testObjectFieldsRenamedAfterMigration(taskRef, sampleResourceData);
+	}
+
+	public void testIndicatorFieldsRenamedAfterMigration() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		ORef indicatorRef = getProject().createIndicator(strategy).getRef();
+		String sampleResourceData = getProject().createProjectResource().getRef().toString();
+
+		testObjectFieldsRenamedAfterMigration(indicatorRef, sampleResourceData);
+	}
+
+	private void testObjectFieldsRenamedAfterMigration(ORef objectRef, String sampleData) throws Exception
+	{
+		getProject().fillObjectUsingCommand(objectRef, MigrationTo19.TAG_ASSIGNED_LEADER_RESOURCE, sampleData);
 
 		RawProject reverseMigratedProject = reverseMigrate(new VersionRange(MigrationTo19.VERSION_TO));
-		assertEquals("Data should not have been changed during field rename?", sampleResourceData, reverseMigratedProject.getData(strategyRef, MigrationTo19.LEGACY_TAG_LEADER_RESOURCE));
+		assertEquals("Data should not have been changed during field rename?", sampleData, reverseMigratedProject.getData(objectRef, MigrationTo19.LEGACY_TAG_LEADER_RESOURCE));
 
 		migrateProject(reverseMigratedProject, new VersionRange(Project.VERSION_HIGH));
-		assertEquals("Data should not have been changed during field rename?", sampleResourceData, reverseMigratedProject.getData(strategyRef, MigrationTo19.TAG_ASSIGNED_LEADER_RESOURCE));
+		assertEquals("Data should not have been changed during field rename?", sampleData, reverseMigratedProject.getData(objectRef, MigrationTo19.TAG_ASSIGNED_LEADER_RESOURCE));
 
 		verifyFullCircleMigrations(new VersionRange(18, 19));
 	}
-	
+
 	@Override
 	protected int getFromVersion()
 	{
