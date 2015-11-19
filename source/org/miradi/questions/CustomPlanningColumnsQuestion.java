@@ -100,7 +100,7 @@ public class CustomPlanningColumnsQuestion extends MultipleSelectStaticChoiceQue
 		return new ChoiceItem(tag, EAM.fieldLabel(ObjectType.FAKE, tag));
 	}
 
-	public final static String META_ASSIGNED_WHO_TOTAL = "MetaWhoTotal";
+	public final static String META_ASSIGNED_WHO_TOTAL = "MetaAssignedWhoTotal";
 	public final static String META_ASSIGNED_WHEN_TOTAL = BaseObject.PSEUDO_TAG_ASSIGNED_WHEN_TOTAL;
 	public final static String META_CURRENT_RATING = "ThreatRating";
 	
@@ -109,6 +109,6 @@ public class CustomPlanningColumnsQuestion extends MultipleSelectStaticChoiceQue
 	private final static String READABLE_INDICATORS = "Indicators";
 	private final static String READABLE_ACTIVITIES_CODE = "Activities";
 	private final static String READABLE_ASSOCIATED_FACTOR_CODE = "AssociatedFactor";
-	private final static String READABLE_ASSIGNED_WHO_TOTAL_CODE = "WhoTotal";
-	private final static String READABLE_ASSIGNED_WHEN_TOTAL_CODE = "WhenTotal";
+	private final static String READABLE_ASSIGNED_WHO_TOTAL_CODE = "AssignedWhoTotal";
+	private final static String READABLE_ASSIGNED_WHEN_TOTAL_CODE = "AssignedWhenTotal";
 }

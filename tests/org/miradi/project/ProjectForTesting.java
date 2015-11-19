@@ -34,6 +34,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.objectdata.BooleanData;
+import org.miradi.objectdata.DateUnitListData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.CodeToChoiceMap;
 import org.miradi.objecthelpers.CodeToCodeListMap;
@@ -52,52 +53,7 @@ import org.miradi.objecthelpers.TaxonomyHelper;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objects.*;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
-import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.CustomPlanningAllRowsQuestion;
-import org.miradi.questions.CustomPlanningColumnsQuestion;
-import org.miradi.questions.DashboardFlagsQuestion;
-import org.miradi.questions.DiagramFactorBackgroundQuestion;
-import org.miradi.questions.DiagramFactorFontColorQuestion;
-import org.miradi.questions.DiagramFactorFontStyleQuestion;
-import org.miradi.questions.DiagramLinkColorQuestion;
-import org.miradi.questions.DiagramObjectDataInclusionQuestion;
-import org.miradi.questions.FosTrainingTypeQuestion;
-import org.miradi.questions.HabitatAssociationQuestion;
-import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
-import org.miradi.questions.OpenStandardsConceptualizeQuestion;
-import org.miradi.questions.OpenStandardsProgressStatusQuestion;
-import org.miradi.questions.PlanningTreeTargetPositionQuestion;
-import org.miradi.questions.PrecisionTypeQuestion;
-import org.miradi.questions.PriorityRatingQuestion;
-import org.miradi.questions.ProgressReportLongStatusQuestion;
-import org.miradi.questions.ProjectFocusQuestion;
-import org.miradi.questions.ProjectScaleQuestion;
-import org.miradi.questions.ProjectSharingQuestion;
-import org.miradi.questions.QuarterColumnsVisibilityQuestion;
-import org.miradi.questions.RatingSourceQuestion;
-import org.miradi.questions.ResourceRoleQuestion;
-import org.miradi.questions.ResourceTypeQuestion;
-import org.miradi.questions.ScopeBoxTypeQuestion;
-import org.miradi.questions.StaticQuestionManager;
-import org.miradi.questions.StatusConfidenceQuestion;
-import org.miradi.questions.StatusQuestion;
-import org.miradi.questions.StrategyFeasibilityQuestion;
-import org.miradi.questions.StrategyImpactQuestion;
-import org.miradi.questions.StrategyObjectiveTreeOrderQuestion;
-import org.miradi.questions.StrategyStatusQuestion;
-import org.miradi.questions.StrategyTaxonomyQuestion;
-import org.miradi.questions.StressContributionQuestion;
-import org.miradi.questions.StressIrreversibilityQuestion;
-import org.miradi.questions.TaxonomyClassificationSelectionModeQuestion;
-import org.miradi.questions.TaxonomyMultiSelectModeQuestion;
-import org.miradi.questions.TextBoxZOrderQuestion;
-import org.miradi.questions.ThreatClassificationQuestion;
-import org.miradi.questions.ThreatRatingModeChoiceQuestion;
-import org.miradi.questions.TrendQuestion;
-import org.miradi.questions.ViabilityModeQuestion;
-import org.miradi.questions.WwfEcoRegionsQuestion;
-import org.miradi.questions.WwfManagingOfficesQuestion;
-import org.miradi.questions.WwfRegionsQuestion;
+import org.miradi.questions.*;
 import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
@@ -333,6 +289,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return objectTreeTableConfiguration;
 	}
 	
+	public TableSettings createAndPopulateTableSettings() throws Exception
+	{
+		TableSettings tableSettings = createTableSettings();
+		populateTableSettings(tableSettings);
+
+		return tableSettings;
+	}
+
 	public String createSampleTaxonomyElementListAsJsonString()
 	{
 		TaxonomyElementList taxonomyElementList = new TaxonomyElementList();
@@ -1098,6 +1062,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return ObjectTreeTableConfiguration.find(this, objectTreeTableConfigurationRef);
 	}
 	
+	public TableSettings createTableSettings() throws Exception
+	{
+		ORef tableSettingsRef = createObject(TableSettingsSchema.getObjectType());
+		return TableSettings.find(this, tableSettingsRef);
+	}
+
 	public void tagDiagramFactor(ORef refToTag) throws Exception
 	{
 		TaggedObjectSet taggedObjectSet = createTaggedObjectSet();
@@ -1597,6 +1567,33 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(objectTreeTableConfiguration, ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, DiagramObjectDataInclusionQuestion.INCLUDE_RESULTS_CHAIN_DATA_CODE);
 		fillObjectUsingCommand(objectTreeTableConfiguration, ObjectTreeTableConfiguration.TAG_STRATEGY_OBJECTIVE_ORDER, StrategyObjectiveTreeOrderQuestion.STRATEGY_CONTAINS_OBJECTIVE_CODE);
 		fillObjectUsingCommand(objectTreeTableConfiguration, ObjectTreeTableConfiguration.TAG_TARGET_NODE_POSITION, PlanningTreeTargetPositionQuestion.TARGET_NODES_TOP_OF_PLANNING_TREE_CODE);
+	}
+
+	public void populateTableSettings(TableSettings tableSettings) throws Exception
+	{
+		fillObjectWithSampleStringData(tableSettings, TableSettings.TAG_TABLE_IDENTIFIER);
+		fillObjectUsingCommand(tableSettings, TableSettings.TAG_ROW_HEIGHT, 100);
+
+		DateUnitListData dateUnitListData = new DateUnitListData("");
+		dateUnitListData.add("2009");
+		fillObjectUsingCommand(tableSettings, TableSettings.TAG_DATE_UNIT_LIST_DATA, dateUnitListData.toString());
+
+		CodeToCodeListMap tableSettingsMap = new CodeToCodeListMap();
+		CodeList settings = new CodeList();
+		settings.add(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
+		settings.add(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);
+		settings.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
+		tableSettingsMap.putCodeList(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, settings);
+		fillObjectUsingCommand(tableSettings, TableSettings.TAG_TABLE_SETTINGS_MAP, tableSettingsMap.toJsonString());
+
+		fillObjectUsingCommand(tableSettings, TableSettings.TAG_WORK_PLAN_VISIBLE_NODES_CODE, WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE);
+		fillObjectUsingCommand(tableSettings, TableSettings.TAG_TREE_EXPANSION_LIST, "");
+
+		fillObjectUsingCommand(tableSettings, TableSettings.TAG_COLUMN_SEQUENCE_CODES, "");
+		fillObjectUsingCommand(tableSettings, TableSettings.TAG_COLUMN_WIDTHS, "");
+		fillObjectUsingCommand(tableSettings, TableSettings.TAG_COLUMN_SORT_TAG, "");
+		fillObjectUsingCommand(tableSettings, TableSettings.TAG_COLUMN_SORT_DIRECTION, SortDirectionQuestion.DEFAULT_SORT_ORDER_CODE);
+		fillObjectUsingCommand(tableSettings, TableSettings.TAG_WORK_PLAN_DIAGRAM_FILTER, "");
 	}
 
 	public ProgressReport addProgressReport(BaseObject baseObject) throws Exception

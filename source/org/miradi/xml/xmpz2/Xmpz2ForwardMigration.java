@@ -33,6 +33,7 @@ import org.miradi.exceptions.XmlVersionTooOldException;
 import org.miradi.migrations.forward.MigrationTo10;
 import org.miradi.migrations.forward.MigrationTo11;
 import org.miradi.migrations.forward.MigrationTo19;
+import org.miradi.migrations.forward.MigrationTo21;
 import org.miradi.utils.BiDirectionalHashMap;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.xml.AbstractXmlImporter;
@@ -54,6 +55,7 @@ public class Xmpz2ForwardMigration
 		removeHumanWellbeingTargetCalculatedThreatRatingElement(rootElement);
 		renameTncFields(document);
 		renameLeaderResourceFields(document);
+		renameWhoWhenAssignedFields(document);
 		final String migratedXmlAsString = HtmlUtilities.toXmlString(document);
 
 		return new StringInputStreamWithSeek(migratedXmlAsString);
@@ -135,6 +137,38 @@ public class Xmpz2ForwardMigration
 		oldToNewTagMap.put(objectName + MigrationTo19.LEGACY_TAG_LEADER_RESOURCE + Xmpz2XmlConstants.ID, objectName + MigrationTo19.TAG_ASSIGNED_LEADER_RESOURCE + Xmpz2XmlConstants.ID);
 
 		return oldToNewTagMap;
+	}
+
+	private void renameWhoWhenAssignedFields(Document document)
+	{
+		Element rootElement = document.getDocumentElement();
+
+		Node planningViewConfigurationPool = findNode(rootElement.getChildNodes(), Xmpz2XmlWriter.createPoolElementName(Xmpz2XmlConstants.OBJECT_TREE_TABLE_CONFIGURATION));
+
+		if (planningViewConfigurationPool == null)
+			return;
+
+		NodeList planningViewConfigurationNodes = planningViewConfigurationPool.getChildNodes();
+		for (int index = 0; index < planningViewConfigurationNodes.getLength(); ++index)
+		{
+			Node planningViewConfiguration = planningViewConfigurationNodes.item(index);
+			if (planningViewConfiguration != null)
+			{
+				Node columnNamesContainer = findNode(planningViewConfiguration.getChildNodes(), Xmpz2XmlConstants.OBJECT_TREE_TABLE_CONFIGURATION + Xmpz2XmlConstants.COLUMN_CONFIGURATION_CODES + Xmpz2XmlConstants.CONTAINER_ELEMENT_TAG);
+				if (columnNamesContainer != null)
+				{
+					NodeList codeList = columnNamesContainer.getChildNodes();
+					for (int i = 0; i < codeList.getLength(); ++i)
+					{
+						Node code = codeList.item(i);
+						if (code.getTextContent().equals(MigrationTo21.LEGACY_READABLE_ASSIGNED_WHO_TOTAL_CODE))
+							code.setTextContent(MigrationTo21.READABLE_ASSIGNED_WHO_TOTAL_CODE);
+						if (code.getTextContent().equals(MigrationTo21.LEGACY_READABLE_ASSIGNED_WHEN_TOTAL_CODE))
+							code.setTextContent(MigrationTo21.READABLE_ASSIGNED_WHEN_TOTAL_CODE);
+					}
+				}
+			}
+		}
 	}
 
 	private void replaceElements(Document document, Node parentNode, BiDirectionalHashMap fromToNameMap) throws Exception
