@@ -1300,7 +1300,8 @@ abstract public class BaseObject
 	public static final String TAG_PLANNED_LEADER_RESOURCE = "PlannedLeaderResource";
 	public static final String TAG_ASSIGNED_LEADER_RESOURCE = "AssignedLeaderResource";
 	public static final String TAG_TAXONOMY_CLASSIFICATION_CONTAINER = "TaxonomyClassificationContainer";
-	
+
+	public final static String PSEUDO_TAG_PLANNED_WHEN_TOTAL = "PlannedEffortDatesTotal";
 	public final static String PSEUDO_TAG_ASSIGNED_WHEN_TOTAL = "AssignedEffortDatesTotal";
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE = "PseudoLatestProgressReportCode";
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS = "PseudoLatestProgressReportDetails";

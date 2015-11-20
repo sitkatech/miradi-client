@@ -148,9 +148,6 @@ public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnP
 					Indicator.TAG_PRIORITY,
 					Strategy.PSEUDO_TAG_TAXONOMY_CODE_VALUE,
 					Strategy.TAG_TEXT,
-	//				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
-	//				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
-	//				Task.PSEUDO_TAG_TASK_TOTAL, 
 			};
 				
 			return new CodeList(list);
@@ -159,8 +156,8 @@ public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnP
 	private static CodeList getActivityColumns()
 	{
 		String[] list = {
-				CustomPlanningColumnsQuestion.META_ASSIGNED_WHO_TOTAL,
-				BaseObject.PSEUDO_TAG_ASSIGNED_WHEN_TOTAL,
+				CustomPlanningColumnsQuestion.META_PLANNED_WHO_TOTAL,
+				BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL,
 				};
 			
 		return new CodeList(list);
@@ -171,9 +168,6 @@ public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnP
 			String[] list = {
 					Indicator.TAG_PRIORITY,
 					BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
-	//				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
-	//				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
-	//				Task.PSEUDO_TAG_TASK_TOTAL, 
 					};
 		
 			return new CodeList(list);
@@ -182,8 +176,8 @@ public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnP
 	private static CodeList getMethodColumns()
 	{
 		String[] list = {
-				CustomPlanningColumnsQuestion.META_ASSIGNED_WHO_TOTAL,
-				BaseObject.PSEUDO_TAG_ASSIGNED_WHEN_TOTAL,
+				CustomPlanningColumnsQuestion.META_PLANNED_WHO_TOTAL,
+				BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL,
 				};
 	
 		return new CodeList(list);
@@ -192,8 +186,8 @@ public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnP
 	private static CodeList getTaskColumns()
 	{		
 		String[] list = {
-				CustomPlanningColumnsQuestion.META_ASSIGNED_WHO_TOTAL,
-				BaseObject.PSEUDO_TAG_ASSIGNED_WHEN_TOTAL,
+				CustomPlanningColumnsQuestion.META_PLANNED_WHO_TOTAL,
+				BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL,
 				};
 		
 		return new CodeList(list);

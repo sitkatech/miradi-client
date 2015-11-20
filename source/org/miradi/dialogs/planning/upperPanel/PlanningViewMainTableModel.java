@@ -89,10 +89,10 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	{
 		String columnTag = getColumnTag(column);
 		
-		if (isAssignedWhoColumn(columnTag))
+		if (isPlannedWhoColumn(columnTag) || isAssignedWhoColumn(columnTag))
 			return AppPreferences.RESOURCE_TABLE_BACKGROUND;
 		
-		if(isAssignedWhenColumn(columnTag))
+		if(isPlannedWhenColumn(columnTag) || isAssignedWhenColumn(columnTag))
 			return AppPreferences.getWorkUnitsBackgroundColor();
 		
 		return null;
@@ -132,6 +132,16 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			return true;
 		
 		return super.isFormattedColumn(modelColumn);
+	}
+
+	private boolean isPlannedWhoColumn(String columnTag)
+	{
+		return columnTag.equals(CustomPlanningColumnsQuestion.META_PLANNED_WHO_TOTAL);
+	}
+
+	private boolean isPlannedWhenColumn(String columnTag)
+	{
+		return columnTag.equals(CustomPlanningColumnsQuestion.META_PLANNED_WHEN_TOTAL);
 	}
 
 	private boolean isAssignedWhoColumn(String columnTag)
@@ -454,7 +464,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	
 	private boolean doesColumnHeaderNeedAsterisk(String columnTag)
 	{
-		boolean isAsteriskColumn = isAssignedWhenColumn(columnTag) || isAssignedWhoColumn(columnTag);
+		boolean isAsteriskColumn = isPlannedWhenColumn(columnTag) || isPlannedWhoColumn(columnTag) || isAssignedWhenColumn(columnTag) || isAssignedWhoColumn(columnTag);
 		if (!isAsteriskColumn)
 			return false;
 		
@@ -776,6 +786,13 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 				return ResourceAssignment.PSEUDO_TAG_PROJECT_RESOURCE_LABEL;
 			if (columnTag.equals(Indicator.PSEUDO_TAG_FACTOR))
 				return ResourceAssignment.PSEUDO_TAG_OWNING_FACTOR_NAME;
+		}
+		if(ResourcePlan.is(nodeType))
+		{
+			if (isPlannedWhoColumn(columnTag))
+				return ResourcePlan.PSEUDO_TAG_PROJECT_RESOURCE_LABEL;
+			if (columnTag.equals(Indicator.PSEUDO_TAG_FACTOR))
+				return ResourcePlan.PSEUDO_TAG_OWNING_FACTOR_NAME;
 		}
 		if(Factor.isFactor(nodeType))
 		{

@@ -28,6 +28,8 @@ import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 
+import java.util.Vector;
+
 
 public class TestMigrationTo21 extends AbstractTestMigration
 {
@@ -73,6 +75,8 @@ public class TestMigrationTo21 extends AbstractTestMigration
 
 	public void testTableSettingsFieldsRenamedAfterMigration() throws Exception
 	{
+		Vector<String> newColumnSequenceCodesBeingAdded = getNewColumnSequenceCodesAddedByMigration();
+
 		ORef tableSettingsRef = getProject().createAndPopulateTableSettings().getRef();
 
 		CodeList columnCodes = new CodeList();
@@ -113,7 +117,7 @@ public class TestMigrationTo21 extends AbstractTestMigration
 
 		CodeList codeListAfterForwardMigration = new CodeList(reverseMigratedProject.getData(tableSettingsRef, MigrationTo21.TAG_COLUMN_SEQUENCE_CODES));
 
-		assertEquals("Forward migration should not have changed the number of codes", columnCodes.size(), codeListAfterForwardMigration.size());
+		assertEquals("Forward migration should not have changed the number of codes (other than new ones added)", columnCodes.size(), codeListAfterForwardMigration.size() - newColumnSequenceCodesBeingAdded.size());
 
 		assertFalse("Forward migration should have removed legacy code", codeListAfterForwardMigration.contains(MigrationTo21.LEGACY_META_ASSIGNED_WHO_TOTAL));
 		assertFalse("Forward migration should have removed legacy code", codeListAfterForwardMigration.contains(MigrationTo21.LEGACY_PSEUDO_TAG_ASSIGNED_WHEN_TOTAL));
@@ -132,6 +136,14 @@ public class TestMigrationTo21 extends AbstractTestMigration
 		assertTrue("Forward migration should have added new code", columnWidthMapAfterForwardMigration.contains(MigrationTo21.PSEUDO_TAG_ASSIGNED_WHEN_TOTAL));
 
 		verifyFullCircleMigrations(new VersionRange(20, 21));
+	}
+
+	private Vector<String> getNewColumnSequenceCodesAddedByMigration()
+	{
+		Vector<String> result = new Vector<>();
+		result.add(MigrationTo21.META_PLANNED_WHO_TOTAL);
+		result.add(MigrationTo21.PSEUDO_TAG_PLANNED_WHEN_TOTAL);
+		return result;
 	}
 
 	@Override

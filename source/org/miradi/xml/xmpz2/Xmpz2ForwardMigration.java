@@ -162,9 +162,9 @@ public class Xmpz2ForwardMigration
 					{
 						Node code = codeList.item(i);
 						if (code.getTextContent().equals(MigrationTo21.LEGACY_READABLE_ASSIGNED_WHO_TOTAL_CODE))
-							code.setTextContent(MigrationTo21.READABLE_ASSIGNED_WHO_TOTAL_CODE);
+							code.setTextContent(MigrationTo21.READABLE_PLANNED_WHO_TOTAL_CODE);
 						if (code.getTextContent().equals(MigrationTo21.LEGACY_READABLE_ASSIGNED_WHEN_TOTAL_CODE))
-							code.setTextContent(MigrationTo21.READABLE_ASSIGNED_WHEN_TOTAL_CODE);
+							code.setTextContent(MigrationTo21.READABLE_PLANNED_WHEN_TOTAL_CODE);
 					}
 				}
 			}

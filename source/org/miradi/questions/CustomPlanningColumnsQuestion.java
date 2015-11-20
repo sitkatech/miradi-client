@@ -47,8 +47,8 @@ public class CustomPlanningColumnsQuestion extends MultipleSelectStaticChoiceQue
 		internalToReadableCodeMap.put(Indicator.PSEUDO_TAG_FACTOR, READABLE_ASSOCIATED_FACTOR_CODE);
 		internalToReadableCodeMap.put(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, "LatestProjectReport");
 		internalToReadableCodeMap.put(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS, "LatestProgressReport");
-		internalToReadableCodeMap.put(META_ASSIGNED_WHO_TOTAL, READABLE_ASSIGNED_WHO_TOTAL_CODE);
-		internalToReadableCodeMap.put(META_ASSIGNED_WHEN_TOTAL, READABLE_ASSIGNED_WHEN_TOTAL_CODE);
+		internalToReadableCodeMap.put(META_PLANNED_WHO_TOTAL, READABLE_PLANNED_WHO_TOTAL_CODE);
+		internalToReadableCodeMap.put(META_PLANNED_WHEN_TOTAL, READABLE_PLANNED_WHEN_TOTAL_CODE);
 		internalToReadableCodeMap.put(Measurement.META_COLUMN_TAG, "Measurements");
 		internalToReadableCodeMap.put(Indicator.META_COLUMN_TAG, "FutureStatuses");
 		internalToReadableCodeMap.put(Desire.TAG_FULL_TEXT, "Details");
@@ -86,8 +86,8 @@ public class CustomPlanningColumnsQuestion extends MultipleSelectStaticChoiceQue
 				createChoiceItem(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE),
 				createChoiceItem(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS),
 				createChoiceItem(Factor.PSEUDO_TAG_TAXONOMY_CODE_VALUE),
-				createChoiceItem(META_ASSIGNED_WHO_TOTAL),
-				createChoiceItem(META_ASSIGNED_WHEN_TOTAL),
+				createChoiceItem(META_PLANNED_WHO_TOTAL),
+				createChoiceItem(META_PLANNED_WHEN_TOTAL),
 				createChoiceItem(Measurement.META_COLUMN_TAG),
 				createChoiceItem(Indicator.META_COLUMN_TAG),
 				createChoiceItem(Factor.TAG_COMMENTS),
@@ -100,15 +100,16 @@ public class CustomPlanningColumnsQuestion extends MultipleSelectStaticChoiceQue
 		return new ChoiceItem(tag, EAM.fieldLabel(ObjectType.FAKE, tag));
 	}
 
+	public final static String META_PLANNED_WHO_TOTAL = "MetaPlannedWhoTotal";
+	public final static String META_PLANNED_WHEN_TOTAL = BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL;
 	public final static String META_ASSIGNED_WHO_TOTAL = "MetaAssignedWhoTotal";
 	public final static String META_ASSIGNED_WHEN_TOTAL = BaseObject.PSEUDO_TAG_ASSIGNED_WHEN_TOTAL;
 	public final static String META_CURRENT_RATING = "ThreatRating";
-	
-	
+
 	private BiDirectionalHashMap internalToReadableCodeMap;
 	private final static String READABLE_INDICATORS = "Indicators";
 	private final static String READABLE_ACTIVITIES_CODE = "Activities";
 	private final static String READABLE_ASSOCIATED_FACTOR_CODE = "AssociatedFactor";
-	private final static String READABLE_ASSIGNED_WHO_TOTAL_CODE = "AssignedWhoTotal";
-	private final static String READABLE_ASSIGNED_WHEN_TOTAL_CODE = "AssignedWhenTotal";
+	private final static String READABLE_PLANNED_WHO_TOTAL_CODE = "PlannedWhoTotal";
+	private final static String READABLE_PLANNED_WHEN_TOTAL_CODE = "PlannedWhenTotal";
 }

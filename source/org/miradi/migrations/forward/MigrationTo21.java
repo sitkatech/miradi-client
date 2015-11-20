@@ -86,7 +86,7 @@ public class MigrationTo21 extends AbstractMigration
 	@Override
 	protected String getDescription()
 	{
-		return EAM.text("This migration renames the total who and total effort dates 'meta' fields on the object tree table and table setting objects.");
+		return EAM.text("This migration renames the total who and total effort dates 'meta' fields on the object tree table and table setting objects, and adds new 'meta' fields for the total planned who and effort dates.");
 	}
 
 	private Vector<Integer> getTypesToMigrate()
@@ -140,6 +140,12 @@ public class MigrationTo21 extends AbstractMigration
 				CodeList codeListToMigrate = getCodeList(rawObject, codeListTag);
 				CodeList codeListMigrated = new CodeList();
 
+				if (codeListTag.equals(TAG_COLUMN_SEQUENCE_CODES) && !isReverseMigration)
+				{
+					codeListMigrated.add(META_PLANNED_WHO_TOTAL);
+					codeListMigrated.add(PSEUDO_TAG_PLANNED_WHEN_TOTAL);
+				}
+
 				for (String code : codeListToMigrate)
 				{
 					if (legacyTags.contains(code))
@@ -152,6 +158,7 @@ public class MigrationTo21 extends AbstractMigration
 						codeListMigrated.add(code);
 					}
 				}
+
 				rawObject.setData(codeListTag, codeListMigrated.toJsonString());
 			}
 
@@ -239,7 +246,11 @@ public class MigrationTo21 extends AbstractMigration
 	public final static String PSEUDO_TAG_ASSIGNED_WHEN_TOTAL = "AssignedEffortDatesTotal";
 
 	public final static String LEGACY_READABLE_ASSIGNED_WHO_TOTAL_CODE = "WhoTotal";
-	public final static String READABLE_ASSIGNED_WHO_TOTAL_CODE = "AssignedWhoTotal";
 	public final static String LEGACY_READABLE_ASSIGNED_WHEN_TOTAL_CODE = "WhenTotal";
-	public final static String READABLE_ASSIGNED_WHEN_TOTAL_CODE = "AssignedWhenTotal";
+
+	public final static String READABLE_PLANNED_WHO_TOTAL_CODE = "PlannedWhoTotal";
+	public final static String READABLE_PLANNED_WHEN_TOTAL_CODE = "PlannedWhenTotal";
+
+	public final static String META_PLANNED_WHO_TOTAL = "MetaPlannedWhoTotal";
+	public final static String PSEUDO_TAG_PLANNED_WHEN_TOTAL = "PlannedEffortDatesTotal";
 }

@@ -39,8 +39,8 @@ public class MonitoringPlanSubViewEffectiveRowColumnProvider extends AbstractPla
 	public CodeList getColumnCodesToShow() throws Exception
 	{
 		return new CodeList(new String[] {
-				CustomPlanningColumnsQuestion.META_ASSIGNED_WHO_TOTAL,
-				BaseObject.PSEUDO_TAG_ASSIGNED_WHEN_TOTAL,
+				CustomPlanningColumnsQuestion.META_PLANNED_WHO_TOTAL,
+				BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL,
 				Desire.TAG_FULL_TEXT,
 		});
 	}

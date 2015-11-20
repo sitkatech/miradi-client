@@ -54,6 +54,8 @@ public class WorkPlanRowColumnProvider extends AbstractPlanningTreeRowColumnProv
 	public CodeList getColumnCodesToShow() throws Exception
 	{
 		CodeList columnCodesToShow = new CodeList(new String[] {
+				CustomPlanningColumnsQuestion.META_PLANNED_WHO_TOTAL,
+				BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL,
 				CustomPlanningColumnsQuestion.META_ASSIGNED_WHO_TOTAL,
 				BaseObject.PSEUDO_TAG_ASSIGNED_WHEN_TOTAL,
 				});
