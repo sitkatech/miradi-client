@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-12 02:06-0800\n"
+"POT-Creation-Date: 2015-11-24 07:21-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/miradi-client/"
@@ -33,7 +33,7 @@ msgstr ""
 "\n"
 "¿Está seguro de que desea eliminar la selección de %s? "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteResourceDoer.java:68
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
 msgid ""
 "\n"
 "Are you sure you want to delete this resource?"
@@ -254,6 +254,7 @@ msgstr ""
 msgid "%fieldName field data will be lost for %indicatorLabel (Indicator)"
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo20.java:159
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/AbstractModifyMultipleFieldMigration.java:70
 msgid "%fieldName will be removed. %label"
 msgstr "%fieldName will be removed. %label"
@@ -292,7 +293,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:115
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:118
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1478
 msgid "(%s)"
 msgstr ""
@@ -955,7 +956,7 @@ msgid ""
 "have a project open."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:81
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:78
 msgid ""
 "<html>Specifying when this work item will take place using this dialog "
 "<br>will enter zeros in the appropriate time period column(s)."
@@ -2311,7 +2312,7 @@ msgstr ""
 "Recurso asignado: recurso del proyecto asignado a una actividad, método o "
 "tarea específica. "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:75
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:85
 msgid "Assignments"
 msgstr "Asignaciones"
 
@@ -2807,7 +2808,7 @@ msgstr "Seleccione las etiquetas."
 msgid "Choose the colors that look best on your system:"
 msgstr "Seleccione los colores que mejor luzcan en su sistema."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:656
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:659
 msgid "Classifications"
 msgstr ""
 
@@ -3154,10 +3155,6 @@ msgstr "Fecha"
 msgid "Date Chooser"
 msgstr "Selector de fechas"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:47
-msgid "Dates can be set in the Work Plan view"
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/DayDateUnitStartAndEndCard.java:36
 msgid "Day Selection: "
 msgstr "Selección de día "
@@ -3197,7 +3194,7 @@ msgstr "Eliminar"
 msgid "Delete %s"
 msgstr "Eliminar %s"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteResourceDoer.java:70
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteResourceDoer.java:71
 msgid "Delete Resource"
 msgstr "Eliminar recurso "
 
@@ -3516,7 +3513,7 @@ msgstr "Habilitar revisión de ortografía"
 msgid "End:"
 msgstr "Fin:"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:88
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:85
 msgid "Enter As: "
 msgstr ""
 
@@ -3529,7 +3526,8 @@ msgstr "Ingrese un nombre nuevo."
 msgid "Enter Tag Name"
 msgstr "Ingrese el nombre de la etiqueta."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DateUnitTypeQuestion.java:47
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/AssignedDateUnitTypeQuestion.java:44
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PlannedDateUnitTypeQuestion.java:42
 msgid "Entire Project Duration"
 msgstr "Duración de todo el Proyecto"
 
@@ -4258,7 +4256,7 @@ msgstr "Importar…"
 msgid "Importing MPZ"
 msgstr "Importando MPZ"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:123
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:101
 msgid "Importing XML..."
 msgstr "Importando XML..."
 
@@ -4526,6 +4524,7 @@ msgstr "Atributo clave "
 msgid "Key Ecological Attribute (KEA)"
 msgstr "Atributos ecológicos clave (AEC)"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo20.java:154
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/AbstractModifyMultipleFieldMigration.java:65
 msgid "Label = %s"
 msgstr "Etiqueta = %s"
@@ -5438,7 +5437,7 @@ msgstr "Nombre de archivo del nuevo proyecto:"
 msgid "New project name: "
 msgstr "Nombre del nuevo proyecto: "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteResourceDoer.java:70
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:57
 msgid "No"
 msgstr "No"
@@ -5746,6 +5745,10 @@ msgstr "Plan para almacenamiento de datos"
 msgid "Plan project lifespan and exit strategy"
 msgstr "Planificar duración del proyecto y estrategia de salida"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo20.java:131
+msgid "Planned Leader resource"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningPanel.java:59
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:112
 msgid "Planning"
@@ -5962,7 +5965,8 @@ msgstr "Tipos de lugar de proyecto"
 msgid "Project Plan For "
 msgstr "Plan de proyecto para "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:48
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/tablerenderers/WhoPlannedColumnTableCellEditorFactory.java:48
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/tablerenderers/WhoAssignedColumnTableCellEditorFactory.java:48
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:47
 msgid "Project Resource"
 msgstr "Recurso del proyecto"
@@ -6366,7 +6370,7 @@ msgstr "Seleccione el paquete de idiomas que desea instalar."
 msgid "Select Location..."
 msgstr "Seleccione Localización…"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoEditorField.java:43
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoEditorField.java:42
 msgid "Select Project Resources"
 msgstr ""
 
@@ -6587,19 +6591,22 @@ msgid ""
 "visible if you set the fiscal year start back to its previous setting."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DateUnitTypeQuestion.java:53
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/AssignedDateUnitTypeQuestion.java:49
 msgid "Specific Day(s)"
 msgstr "Día(s) específico(s)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DateUnitTypeQuestion.java:52
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/AssignedDateUnitTypeQuestion.java:48
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PlannedDateUnitTypeQuestion.java:46
 msgid "Specific Month(s)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DateUnitTypeQuestion.java:50
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/AssignedDateUnitTypeQuestion.java:47
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PlannedDateUnitTypeQuestion.java:45
 msgid "Specific Quarter(s)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DateUnitTypeQuestion.java:48
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/AssignedDateUnitTypeQuestion.java:45
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PlannedDateUnitTypeQuestion.java:43
 msgid "Specific Year(s)"
 msgstr "Año(s) específico(s)"
 
@@ -8048,6 +8055,12 @@ msgstr ""
 msgid "This migration adds a new field to the Project Metadata properties."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo20.java:88
+msgid ""
+"This migration adds a new planned leader resource field on Strategy, Task "
+"and Indicator objects."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo5.java:69
 msgid "This migration changes default real status code to \"\""
 msgstr ""
@@ -8101,6 +8114,19 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo10.java:53
 msgid "This migration renames 2 fields"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo19.java:86
+msgid ""
+"This migration renames the leader resource assignment field on Strategy, "
+"Task and Indicator objects."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo21.java:89
+msgid ""
+"This migration renames the total who and total effort dates 'meta' fields on "
+"the object tree table and table setting objects, and adds new 'meta' fields "
+"for the total planned who and effort dates."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:89
@@ -8160,8 +8186,10 @@ msgstr ""
 "guardará una copia de seguridad en caso de que algo salga mal. ¿Ha realizado "
 "la migración automática?"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteResourceDoer.java:66
-msgid "This resource has been assigned work in the Work Plan"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteResourceDoer.java:67
+msgid ""
+"This resource has been planned for work in the Strategic Plan and / or "
+"assigned work in the Work Plan"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/ObjectDataInputField.java:181
@@ -8685,7 +8713,8 @@ msgstr "Un error desconocido impidió que se abriera ese proyecto."
 msgid "Unordered List"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DateUnitTypeQuestion.java:45
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/AssignedDateUnitTypeQuestion.java:43
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PlannedDateUnitTypeQuestion.java:41
 msgid "Unscheduled"
 msgstr ""
 
@@ -8934,9 +8963,9 @@ msgstr ""
 "Humedales - Humedales de Tundra [incluyen charcos y aguas temporales de "
 "deshielo]"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhenPopupEditorComponent.java:48
-msgid "When - %s"
-msgstr "Cuando - %s"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhenAssignedPopupEditorComponent.java:44
+msgid "When Assigned - %s"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/legacyprojects/migrations/RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration.java:82
 msgid "When Override was: "
@@ -8945,6 +8974,10 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/legacyprojects/migrations/ConvertHighLevelEstimatesIntoAssignments.java:137
 msgid "When Override was: %s"
 msgstr "Cuándo fue el reemplazo: %s "
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhenPlannedPopupEditorComponent.java:44
+msgid "When Planned - %s"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/ExportMpzDoer.java:81
 msgid ""
@@ -8980,9 +9013,9 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr "Quién hizo el reemplazo: %s"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:64
-msgid "Who and When"
-msgstr "Quién y cuándo"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:61
+msgid "Who, When Plan"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MiradiStrings.java:79
 msgid "Wintitle|Information"
@@ -9017,7 +9050,7 @@ msgstr ""
 msgid "Work Plan Column Editor"
 msgstr "Editor de columnas del plan de trabajo"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:332
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:375
 msgid "Work Plan Settings"
 msgstr "Configuraciones del Plan de Trabajo"
 
@@ -9083,7 +9116,7 @@ msgstr "Amarillo"
 msgid "Yen (Japan)"
 msgstr "Yen (Japón) "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteResourceDoer.java:70
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:57
 msgid "Yes"
 msgstr "Sí"
@@ -9118,7 +9151,7 @@ msgstr ""
 "comandos exportar e importar. Miradi también creará archivos zip para las "
 "copias de seguridad del proyecto creadas durante las migraciones de formato."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:515
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:710
 msgid "[Error]"
 msgstr "[Error]"
 
@@ -9134,7 +9167,7 @@ msgstr "[NO ESPECIFICADO]"
 msgid "[New Results Chain]"
 msgstr "[Nueva cadena de resultados]"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:954
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:960
 msgid "[No Project]"
 msgstr "[Sin proyecto]"
 
@@ -9205,8 +9238,11 @@ msgstr "Acumulación de presupuesto"
 msgid "FieldLabel|3.BudgetCostMode|Budget Cost Mode"
 msgstr "Modo de costo de presupuesto"
 
-msgid "FieldLabel|3.EffortDatesTotal|When"
-msgstr "Cuando"
+msgid "FieldLabel|3.PlannedEffortDatesTotal|When"
+msgstr ""
+
+msgid "FieldLabel|3.AssignedEffortDatesTotal|When"
+msgstr ""
 
 msgid "FieldLabel|3.PseudoWhenRollupAsString|When Rollup"
 msgstr "Cuando la acumulación"
@@ -9229,7 +9265,10 @@ msgstr "Informes de progreso "
 msgid "FieldLabel|3.Comments|Comments"
 msgstr ""
 
-msgid "FieldLabel|3.LeaderResource|Leader"
+msgid "FieldLabel|3.AssignedLeaderResource|Leader"
+msgstr ""
+
+msgid "FieldLabel|3.PlannedLeaderResource|Leader"
 msgstr ""
 
 msgid "FieldLabel|3.TaxonomyClassificationContainer|Program Classifications"
@@ -9397,8 +9436,11 @@ msgstr "Progreso"
 msgid "FieldLabel|8.ThresholdDetails|Details"
 msgstr "Detalles"
 
-msgid "FieldLabel|8.EffortDatesTotal|When"
-msgstr "Cuando"
+msgid "FieldLabel|8.PlannedEffortDatesTotal|When"
+msgstr ""
+
+msgid "FieldLabel|8.AssignedEffortDatesTotal|When"
+msgstr ""
 
 msgid "FieldLabel|8.PseudoWhenRollupAsString|When Rollup"
 msgstr "Cuando la acumulación"
@@ -9424,8 +9466,11 @@ msgstr "Modo de costo de presupuesto "
 msgid "FieldLabel|8.ProgressReportRefs|Progress Reports"
 msgstr "Informes de progreso"
 
-msgid "FieldLabel|8.LeaderResource|Leader"
-msgstr "Recursos para el líder"
+msgid "FieldLabel|8.AssignedLeaderResource|Leader"
+msgstr ""
+
+msgid "FieldLabel|8.PlannedLeaderResource|Leader"
+msgstr ""
 
 msgid "FieldLabel|8.Unit|Unit"
 msgstr "Unidad"
@@ -9764,8 +9809,14 @@ msgstr "Prioridad del Indicador"
 msgid "FieldLabel|12.PseudoTagStatusValue|Progress"
 msgstr "Progreso"
 
-msgid "FieldLabel|12.EffortDatesTotal|When"
-msgstr "Cuándo"
+msgid "FieldLabel|12.MetaPlannedWhoTotal|Who Plan"
+msgstr ""
+
+msgid "FieldLabel|12.PlannedEffortDatesTotal|When Plan"
+msgstr ""
+
+msgid "FieldLabel|12.AssignedEffortDatesTotal|When Assigned"
+msgstr ""
 
 msgid "FieldLabel|12.TaskBudgetDetail|Budget Totals"
 msgstr "Costos totales del Presupuesto"
@@ -9886,8 +9937,8 @@ msgstr "Correo electrónico"
 msgid "FieldLabel|12.Location|Location"
 msgstr "Ubicación"
 
-msgid "FieldLabel|12.MetaWhoTotal|Who"
-msgstr "Quién"
+msgid "FieldLabel|12.MetaAssignedWhoTotal|Who Assigned"
+msgstr ""
 
 msgid "FieldLabel|12.Label|Name"
 msgstr "Nombre"
@@ -10129,8 +10180,11 @@ msgstr "Detalles"
 msgid "FieldLabel|21.PseudoLatestProgressReportCode|Progress"
 msgstr "Progreso"
 
-msgid "FieldLabel|21.EffortDatesTotal|When"
-msgstr "Cuando"
+msgid "FieldLabel|21.PlannedEffortDatesTotal|When"
+msgstr ""
+
+msgid "FieldLabel|21.AssignedEffortDatesTotal|When"
+msgstr ""
 
 msgid "FieldLabel|21.PseudoWhenRollupAsString|When Rollup"
 msgstr "Cuando la acumulación"
@@ -10150,8 +10204,11 @@ msgstr "Informes de progreso "
 msgid "FieldLabel|21.LegacyTncStrategyRanking|Legacy Tnc Strategy Ranking"
 msgstr "Jerarquización de estrategias de TNC heredadas "
 
-msgid "FieldLabel|21.LeaderResource|Leader"
-msgstr "Líder"
+msgid "FieldLabel|21.AssignedLeaderResource|Leader"
+msgstr ""
+
+msgid "FieldLabel|21.PlannedLeaderResource|Leader"
+msgstr ""
 
 msgid "FieldLabel|21.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
@@ -10984,6 +11041,9 @@ msgstr "Cadenas de resultados"
 #, fuzzy
 msgid "FieldLabel|66.Text|Details"
 msgstr "Detalles"
+
+msgid "FieldLabel|67.ResourcePlan|Resource Plan"
+msgstr ""
 
 msgid ""
 "html|/resources/TNCMiradiHelp.html|  <p>For help with Miradi at The Nature "
@@ -31385,6 +31445,33 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "When - %s"
+#~ msgstr "Cuando - %s"
+
+#~ msgid "Who and When"
+#~ msgstr "Quién y cuándo"
+
+#~ msgid "FieldLabel|3.EffortDatesTotal|When"
+#~ msgstr "Cuando"
+
+#~ msgid "FieldLabel|8.EffortDatesTotal|When"
+#~ msgstr "Cuando"
+
+#~ msgid "FieldLabel|8.LeaderResource|Leader"
+#~ msgstr "Recursos para el líder"
+
+#~ msgid "FieldLabel|12.EffortDatesTotal|When"
+#~ msgstr "Cuándo"
+
+#~ msgid "FieldLabel|12.MetaWhoTotal|Who"
+#~ msgstr "Quién"
+
+#~ msgid "FieldLabel|21.EffortDatesTotal|When"
+#~ msgstr "Cuando"
+
+#~ msgid "FieldLabel|21.LeaderResource|Leader"
+#~ msgstr "Líder"
 
 #~ msgid ""
 #~ "FieldLabel|11.WorkPlanDiagramDataInclusion|Include Work Plan Data From"
