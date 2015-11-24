@@ -25,6 +25,7 @@ import org.miradi.migrations.*;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Indicator;
+import org.miradi.utils.HtmlUtilities;
 
 import java.util.HashMap;
 import java.util.Set;
@@ -149,7 +150,8 @@ public class MigrationTo20 extends AbstractMigration
 				{
 					rawObject.remove(tagToRemove);
 					String fieldName = fieldsToLabelMap.get(tagToRemove);
-					String baseObjectlabel = createMessage(EAM.text("Label = %s"), rawObject.get(Indicator.TAG_LABEL));
+					String label = HtmlUtilities.convertHtmlToPlainText(rawObject.get(Indicator.TAG_LABEL));
+					String baseObjectlabel = createMessage(EAM.text("Label = %s"), label);
 
 					HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 					tokenReplacementMap.put("%label", baseObjectlabel);
