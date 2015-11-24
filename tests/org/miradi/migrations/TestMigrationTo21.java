@@ -140,7 +140,7 @@ public class TestMigrationTo21 extends AbstractTestMigration
 
 	private Vector<String> getNewColumnSequenceCodesAddedByMigration()
 	{
-		Vector<String> result = new Vector<>();
+		Vector<String> result = new Vector<String>();
 		result.add(MigrationTo21.META_PLANNED_WHO_TOTAL);
 		result.add(MigrationTo21.PSEUDO_TAG_PLANNED_WHEN_TOTAL);
 		return result;
