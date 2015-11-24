@@ -90,8 +90,8 @@ public class WhoPlannedCodeListEditorComponent extends AbstractQuestionBasedComp
 
 	private void setResourcePlanResource(ResourcePlan resourcePlan, ORef resourceRef) throws Exception
 	{
-		CommandSetObjectData clearResourcePlanResourceRef = new CommandSetObjectData(resourcePlan, ResourcePlan.TAG_RESOURCE_ID, resourceRef.getObjectId().toString());
-		getProject().executeCommand(clearResourcePlanResourceRef);
+		CommandSetObjectData setResourcePlanResourceRef = new CommandSetObjectData(resourcePlan, ResourcePlan.TAG_RESOURCE_ID, resourceRef.getObjectId().toString());
+		getProject().executeCommand(setResourcePlanResourceRef);
 	}
 
 	private void removeResourcePlans(Vector<ResourcePlan> resourcePlansToDelete) throws Exception
