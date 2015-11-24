@@ -30,6 +30,7 @@ import org.miradi.objects.ResourcePlan;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.schemas.ResourcePlanSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
@@ -132,7 +133,7 @@ public class WhoPlannedCodeListEditorComponent extends AbstractQuestionBasedComp
 
 	private ResourcePlan findResourcePlanWithoutResource() throws Exception
 	{
-		ORef invalidResourceRef = ORef.createInvalidWithType(ResourcePlanSchema.getObjectType());
+		ORef invalidResourceRef = ORef.createInvalidWithType(ProjectResourceSchema.getObjectType());
 		Vector<ResourcePlan> resourcePlansWithoutResource = extractResourcePlans(invalidResourceRef);
 		if (resourcePlansWithoutResource.size() == 0)
 			return null;
