@@ -712,7 +712,7 @@ public class Dashboard extends BaseObject
 
 	private TimePeriodCosts calculateTotalProjectCost() throws Exception
 	{
-		return getProject().getProjectTotalCalculator().calculateProjectTotals().calculateTotalBudgetCost();
+		return getProject().getProjectTotalCalculator().calculateProjectAssignedTotals().calculateTotalBudgetCost();
 	}
 
 	private String getCurrencySymbol()

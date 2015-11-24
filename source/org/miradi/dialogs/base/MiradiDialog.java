@@ -71,7 +71,7 @@ public class MiradiDialog extends JDialog
 		{
 			// NOTE: We are not sure that windowClosing should call dispose,
 			// because some code retrieves data from the dialog later
-			// See: TextFieldPopupEditorComponent and WhenPopupEditorComponent
+			// See: TextFieldPopupEditorComponent and WhenAssignedPopupEditorComponent
 			window.dispose();
 		}
 

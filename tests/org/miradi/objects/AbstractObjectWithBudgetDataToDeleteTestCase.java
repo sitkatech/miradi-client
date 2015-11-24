@@ -36,10 +36,10 @@ abstract public class AbstractObjectWithBudgetDataToDeleteTestCase extends Objec
 	{
 		super.setUp();
 		
-		getProject().disableLeaderEnsurer();
+		getProject().disableLeaderEnsurers();
 	}
 
-	public void testDeletChildren() throws Exception
+	public void testDeleteChildren() throws Exception
 	{
 		verifyChildren(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS);
 		verifyChildren(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);

@@ -62,7 +62,7 @@ public class CategorizedQuantity
 		return allContainingRefs;
 	}
 	
-	public boolean containsAtleastOne(ORefSet refsToRetain)
+	public boolean containsAtLeastOne(ORefSet refsToRetain)
 	{
 		ORefSet containingRefs = getContainingRefs();
 		containingRefs.retainAll(refsToRetain);
@@ -72,9 +72,9 @@ public class CategorizedQuantity
 	
 	public boolean containsAll(ORefSet refsToRetain)
 	{
-		ORefSet containtingRefs = getContainingRefs();
+		ORefSet containingRefs = getContainingRefs();
 		
-		return containtingRefs.containsAll(refsToRetain);
+		return containingRefs.containsAll(refsToRetain);
 	}
 	
 	public boolean containsRef(ORef refToMatch)
@@ -143,7 +143,7 @@ public class CategorizedQuantity
 	@Override
 	public String toString()
 	{
-		return "rsourceRef=" + resourceRef + " fundingSourceRef=" + fundingSourceRef + " accountingCodeRef=" + accountingCodeRef + " quantiy=" + quantity; 
+		return "resourceRef=" + resourceRef + " fundingSourceRef=" + fundingSourceRef + " accountingCodeRef=" + accountingCodeRef + " quantity=" + quantity;
 	}
 	
 	public ORef getFundingSourceRef()

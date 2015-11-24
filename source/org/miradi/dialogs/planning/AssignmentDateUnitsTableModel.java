@@ -235,7 +235,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		if (baseObjectForRow.getSubTaskRefs().size() == 0)
 			return false;
 		
-		TimePeriodCostsMap timePeriodCostsMap = getProject().getTimePeriodCostsMapsCache().getTotalTimePeriodCostsMapForSubTasks(baseObjectForRow, getAssignmentsTag());
+		TimePeriodCostsMap timePeriodCostsMap = getProject().getTimePeriodCostsMapsCache().getTotalTimePeriodAssignedCostsMapForSubTasks(baseObjectForRow, getAssignmentsTag());
 		TimePeriodCosts timePeriodCosts = timePeriodCostsMap.calculateTimePeriodCosts(dateUnit);
 		OptionalDouble totalCost = timePeriodCosts.calculateTotalCost(getProject());
 
@@ -773,7 +773,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	private OptionalDouble getOptionalDoubleDataFilteredByResource(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
 		ORefSet resourcesFilter = getResourcesFilter();
-		TimePeriodCosts timePeriodCosts = calculateTimePeriodCosts(baseObject, dateUnit, getRowsColumnsProvider().getWorkPlanBudgetMode());
+		TimePeriodCosts timePeriodCosts = calculateTimePeriodAssignedCosts(baseObject, dateUnit, getRowsColumnsProvider().getWorkPlanBudgetMode());
 		timePeriodCosts.retainWorkUnitDataRelatedToAnyOf(resourcesFilter);
 		
 		return calculateValue(timePeriodCosts);
@@ -781,14 +781,14 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	private OptionalDouble getUnfilteredOptionalDoubleData(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
-		TimePeriodCosts timePeriodCosts = calculateTimePeriodCosts(baseObject, dateUnit, WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE);
+		TimePeriodCosts timePeriodCosts = calculateTimePeriodAssignedCosts(baseObject, dateUnit, WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE);
 		
 		return calculateValue(timePeriodCosts);
 	}
 
 	private TimePeriodCosts getProjectTotalTimePeriodCostFor(DateUnit dateUnit) throws Exception
 	{
-		TimePeriodCostsMap totalProject = getProject().getTimePeriodCostsMapsCache().calculateProjectTotals(getRowsColumnsProvider().getWorkPlanBudgetMode());
+		TimePeriodCostsMap totalProject = getProject().getTimePeriodCostsMapsCache().calculateProjectAssignedTotals(getRowsColumnsProvider().getWorkPlanBudgetMode());
 		
 		return totalProject.calculateTimePeriodCosts(dateUnit);
 	}

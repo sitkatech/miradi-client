@@ -24,7 +24,7 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.project.ProjectCalendar;
-import org.miradi.questions.DateUnitTypeQuestion;
+import org.miradi.questions.AbstractDateUnitTypeQuestion;
 import org.miradi.utils.FillerLabel;
 
 public class CalendarYearDateUnitStartAndEndCard extends DateUnitStartAndEndCard
@@ -55,7 +55,7 @@ public class CalendarYearDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	@Override
 	public String getPanelDescription()
 	{
-		return DateUnitTypeQuestion.YEAR_CODE;
+		return AbstractDateUnitTypeQuestion.YEAR_CODE;
 	}
 	
 	private YearPanel startYearPanel;

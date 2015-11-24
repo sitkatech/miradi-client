@@ -38,9 +38,9 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.ResourcePlan;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.FiscalYearStartQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.StaticQuestionManager;
@@ -210,7 +210,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		if (workPlanDataWarningPanel == null)
 			return;
 
-		boolean showWarning = hasDataOutsideOfProjectDateRange(getProject());
+		boolean showWarning = hasAssignedDataOutsideOfProjectDateRange(getProject());
 		workPlanDataWarningPanel.setVisible(showWarning);
 		workPlanDataWarningLabelFillerReplacement.setVisible(!showWarning);
 	}
@@ -252,16 +252,12 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		quarterVisibilityExplanationFillerReplacement.setVisible(!enableQuarterVisibilityOption);
 	}
 
-	public static boolean hasDataOutsideOfProjectDateRange(Project projectToUse)
+	public static boolean hasPlannedDataOutsideOfProjectDateRange(Project projectToUse)
 	{
 		try
 		{
-			DateRange allDataDateRange = getProjectDataDateRange(projectToUse);
-			if (allDataDateRange == null)
-				return false;
-			
-			DateRange projectPlanningDateRange = projectToUse.getProjectCalendar().getProjectPlanningDateRange();
-			return !projectPlanningDateRange.contains(allDataDateRange);
+			DateRange allDataDateRange = getProjectPlannedDataDateRange(projectToUse);
+			return hasDataOutsideOfProjectDateRange(projectToUse, allDataDateRange);
 		}
 		catch (Exception e)
 		{
@@ -269,10 +265,33 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 			return false;
 		}
 	}
-	
+
+	public static boolean hasAssignedDataOutsideOfProjectDateRange(Project projectToUse)
+	{
+		try
+		{
+			DateRange allDataDateRange = getProjectAssignedDataDateRange(projectToUse);
+			return hasDataOutsideOfProjectDateRange(projectToUse, allDataDateRange);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return false;
+		}
+	}
+
+	private static boolean hasDataOutsideOfProjectDateRange(Project projectToUse, DateRange allDataDateRange) throws Exception
+	{
+		if (allDataDateRange == null)
+			return false;
+
+		DateRange projectPlanningDateRange = projectToUse.getProjectCalendar().getProjectPlanningDateRange();
+		return !projectPlanningDateRange.contains(allDataDateRange);
+	}
+
 	private String getLastDateWithData() throws Exception
 	{
-		DateRange dateRange = getProjectDataDateRange(getProject());
+		DateRange dateRange = getProjectAssignedDataDateRange(getProject());
 		if (dateRange == null)
 			return "";
 		
@@ -281,19 +300,43 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 	
 	private String getFirstDateWithData() throws Exception
 	{
-		DateRange dateRange = getProjectDataDateRange(getProject());
+		DateRange dateRange = getProjectAssignedDataDateRange(getProject());
 		if (dateRange == null)
 			return "";
 		
 		return dateRange.getStartDate().toIsoDateString();
 	}
-	
-	private static DateRange getProjectDataDateRange(Project projectToUse) throws Exception
+
+	private static DateRange getProjectPlannedDataDateRange(Project projectToUse) throws Exception
+	{
+		DateRange projectDateRange = projectToUse.getProjectCalendar().getProjectPlanningDateRange();
+		TimePeriodCostsMap tpcm = getTimePeriodCostsMapForAllPlans(projectToUse);
+		
+		return tpcm.getRolledUpDateRange(projectDateRange);	
+	}
+
+
+	private static TimePeriodCostsMap getTimePeriodCostsMapForAllPlans(Project projectToUse) throws Exception
+	{
+		ORefList resourcePlanRefs = new ORefList();
+		resourcePlanRefs.addAll(projectToUse.getResourcePlanPool().getORefList());
+
+		TimePeriodCostsMap tpcm = new TimePeriodCostsMap();
+		for (int index = 0; index < resourcePlanRefs.size(); ++index)
+		{
+			ResourcePlan resourcePlan = ResourcePlan.find(projectToUse, resourcePlanRefs.get(index));
+			tpcm.mergeAll(resourcePlan.convertAllDateUnitEffortList());
+		}
+
+		return tpcm;
+	}
+
+	private static DateRange getProjectAssignedDataDateRange(Project projectToUse) throws Exception
 	{
 		DateRange projectDateRange = projectToUse.getProjectCalendar().getProjectPlanningDateRange();
 		TimePeriodCostsMap tpcm = getTimePeriodCostsMapForAllAssignments(projectToUse);
-		
-		return tpcm.getRolledUpDateRange(projectDateRange);	
+
+		return tpcm.getRolledUpDateRange(projectDateRange);
 	}
 
 	private static TimePeriodCostsMap getTimePeriodCostsMapForAllAssignments(Project projectToUse) throws Exception

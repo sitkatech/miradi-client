@@ -33,6 +33,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
+import org.miradi.objects.ResourcePlan;
 import org.miradi.project.Project;
 import org.miradi.utils.CommandVector;
 import org.miradi.views.ObjectsDoer;
@@ -63,7 +64,7 @@ public class DeleteResourceDoer extends ObjectsDoer
 		ORefList allThatUseThisResource = resource.findAllObjectsThatReferToUs();
 
 		if (allThatUseThisResource.size() > 0)
-			dialogText.add(EAM.text("This resource has been assigned work in the Work Plan"));
+			dialogText.add(EAM.text("This resource has been planned for work in the Strategic Plan and / or assigned work in the Work Plan"));
 		
 		dialogText.add(EAM.text("\nAre you sure you want to delete this resource?"));
 		String[] buttons = {EAM.text("Yes"), EAM.text("No"), };
@@ -76,7 +77,7 @@ public class DeleteResourceDoer extends ObjectsDoer
 			project.executeCommand(new CommandBeginTransaction());
 			try
 			{
-				project.executeCommands(createCommandsToRemoveFromReferrers(allThatUseThisResource, resource.getRef()));
+				project.executeCommands(createCommandsToRemoveFromReferrers(allThatUseThisResource));
 				project.executeCommands(resource.createCommandsToDeleteChildrenAndObject());
 			}
 			finally
@@ -95,24 +96,26 @@ public class DeleteResourceDoer extends ObjectsDoer
 		}
 	}
 
-	private Command[] createCommandsToRemoveFromReferrers(ORefList allThatUseThisResource, ORef resourceRef) throws Exception
+	private Command[] createCommandsToRemoveFromReferrers(ORefList allThatUseThisResource) throws Exception
 	{
 		CommandVector commands = new CommandVector();
 		for (int i = 0; i < allThatUseThisResource.size(); ++i)
 		{
 			ORef referrerRef = allThatUseThisResource.get(i);
-			commands.addAll(removeFromAssignment(referrerRef));
+			commands.addAll(removeFromReferrer(referrerRef));
 		}
 		
 		return commands.toArray(new Command[0]);
 	}
 
-	private CommandVector removeFromAssignment(ORef ref)
+	private CommandVector removeFromReferrer(ORef ref)
 	{
 		CommandVector commands = new CommandVector();
+		if (ResourcePlan.is(ref))
+			commands.add(new CommandSetObjectData(ref, ResourcePlan.TAG_RESOURCE_ID, BaseId.INVALID.toString()));
 		if (ResourceAssignment.is(ref))
 			commands.add(new CommandSetObjectData(ref, ResourceAssignment.TAG_RESOURCE_ID, BaseId.INVALID.toString()));
-		
+
 		return commands;
 	}
 }

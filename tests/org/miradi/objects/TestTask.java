@@ -273,7 +273,7 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 
 		Task task = getProject().createActivity();
 		DateUnit projectDateUnit = new DateUnit();
-		assertFalse("Empty task has work unit values?", task.calculateTimePeriodCosts(projectDateUnit).getTotalWorkUnits().hasValue());
+		assertFalse("Empty task has work unit values?", task.calculateTimePeriodCostsForAssignments(projectDateUnit).getTotalWorkUnits().hasValue());
 		addAssignment(task, 99, 2000, 2010);
 		
 		Task subTask = addSubTask(task);

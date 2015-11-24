@@ -601,13 +601,13 @@ abstract public class BaseObject
 	
 	public OptionalDouble getTotalBudgetCost() throws Exception
 	{
-		TimePeriodCostsMap totalTimePeriodCostsMap = getTotalTimePeriodCostsMap();
+		TimePeriodCostsMap totalTimePeriodCostsMap = getTotalTimePeriodCostsMapForAssignments();
 		return totalTimePeriodCostsMap.calculateTotalBudgetCost(getProject());
 	}
 
 	public OptionalDouble getTotalBudgetCostWithoutRollup() throws Exception
 	{
-		TimePeriodCostsMap mergedTimePeriodCostsMap = getTotalTimePeriodCostsWithoutRollup();
+		TimePeriodCostsMap mergedTimePeriodCostsMap = getTotalTimePeriodCostsForAssignmentsWithoutRollup();
 		
 		return mergedTimePeriodCostsMap.calculateTotalBudgetCost(getProject());
 	}
@@ -617,15 +617,15 @@ abstract public class BaseObject
 		return 1;
 	}
 	
-	public TimePeriodCosts calculateTimePeriodCosts(DateUnit dateUnitToUse)throws Exception
+	public TimePeriodCosts calculateTimePeriodCostsForAssignments(DateUnit dateUnitToUse)throws Exception
 	{
-		return getTotalTimePeriodCostsMap().calculateTimePeriodCosts(dateUnitToUse);
+		return getTotalTimePeriodCostsMapForAssignments().calculateTimePeriodCosts(dateUnitToUse);
 	}
 	
-	public TimePeriodCostsMap getTotalTimePeriodCostsWithoutRollup() throws Exception
+	public TimePeriodCostsMap getTotalTimePeriodCostsForAssignmentsWithoutRollup() throws Exception
 	{
-		TimePeriodCostsMap assignmentTimePeriodCostsMap = getTotalTimePeriodCostsMapForAssignments(TAG_RESOURCE_ASSIGNMENT_IDS);
-		TimePeriodCostsMap expenseTimePeriodCostsMap = getTotalTimePeriodCostsMapForAssignments(TAG_EXPENSE_ASSIGNMENT_REFS);
+		TimePeriodCostsMap assignmentTimePeriodCostsMap = getTotalTimePeriodCostsMapForTag(TAG_RESOURCE_ASSIGNMENT_IDS);
+		TimePeriodCostsMap expenseTimePeriodCostsMap = getTotalTimePeriodCostsMapForTag(TAG_EXPENSE_ASSIGNMENT_REFS);
 		
 		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
 		mergedTimePeriodCostsMap.mergeNonConflicting(expenseTimePeriodCostsMap);
@@ -634,7 +634,7 @@ abstract public class BaseObject
 		return mergedTimePeriodCostsMap;
 	}
 	
-	public TimePeriodCostsMap getTotalTimePeriodCostsMap() throws Exception
+	public TimePeriodCostsMap getTotalTimePeriodCostsMapForAssignments() throws Exception
 	{
 		TimePeriodCostsMap expenseAssignmentsTimePeriodCostsMap = getExpenseAssignmentsTimePeriodCostsMap();
 		TimePeriodCostsMap resourceAssignmentsTimePeriodCostsMap = getResourceAssignmentsTimePeriodCostsMap();
@@ -655,15 +655,40 @@ abstract public class BaseObject
 	{
 		return getTimePeriodCostsMap(TAG_RESOURCE_ASSIGNMENT_IDS);
 	}
+
+	public TimePeriodCostsMap getTotalTimePeriodCostsForPlansWithoutRollup() throws Exception
+	{
+		TimePeriodCostsMap planTimePeriodCostsMap = getTimePeriodCostsMap(TAG_RESOURCE_PLAN_IDS);
+
+		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
+		mergedTimePeriodCostsMap.mergeNonConflicting(planTimePeriodCostsMap);
+
+		return mergedTimePeriodCostsMap;
+	}
+
+	public TimePeriodCostsMap getTotalTimePeriodCostsMapForPlans() throws Exception
+	{
+		TimePeriodCostsMap planTimePeriodCostsMap = getResourcePlansTimePeriodCostsMap();
+
+		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
+		mergedTimePeriodCostsMap.mergeAll(planTimePeriodCostsMap);
+
+		return mergedTimePeriodCostsMap;
+	}
+
+	public TimePeriodCostsMap getResourcePlansTimePeriodCostsMap() throws Exception
+	{
+		return getTimePeriodCostsMap(TAG_RESOURCE_PLAN_IDS);
+	}
 	
 	protected TimePeriodCostsMap getTimePeriodCostsMap(String tag) throws Exception
 	{
 		TimePeriodCostsMap subTaskTimePeriodCosts = getTotalTimePeriodCostsMapForSubTasks(getSubTaskRefs(), tag);
-		TimePeriodCostsMap assignmentTimePeriodCostsMap = getTotalTimePeriodCostsMapForAssignments(tag);
+		TimePeriodCostsMap totalTimePeriodCostsMapForTag = getTotalTimePeriodCostsMapForTag(tag);
 		
 		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
 		mergedTimePeriodCostsMap.mergeNonConflicting(subTaskTimePeriodCosts);
-		mergedTimePeriodCostsMap.mergeNonConflicting(assignmentTimePeriodCostsMap);
+		mergedTimePeriodCostsMap.mergeNonConflicting(totalTimePeriodCostsMapForTag);
 		
 		return mergedTimePeriodCostsMap;	
 	}
@@ -680,14 +705,14 @@ abstract public class BaseObject
 		return timePeriodCostsMap;
 	}
 
-	protected TimePeriodCostsMap getTotalTimePeriodCostsMapForAssignments(String tag) throws Exception
+	protected TimePeriodCostsMap getTotalTimePeriodCostsMapForTag(String tag) throws Exception
 	{
 		TimePeriodCostsMap timePeriodCostsMap = new TimePeriodCostsMap();
-		ORefList assignmentRefs = getSafeRefListData(tag);
-		for(int i = 0; i < assignmentRefs.size(); ++i)
+		ORefList refs = getSafeRefListData(tag);
+		for(int i = 0; i < refs.size(); ++i)
 		{
-			BaseObject assignment = BaseObject.find(getObjectManager(), assignmentRefs.get(i));
-			timePeriodCostsMap.mergeAll(assignment.getTimePeriodCostsMap(tag));
+			BaseObject baseObject = BaseObject.find(getObjectManager(), refs.get(i));
+			timePeriodCostsMap.mergeAll(baseObject.getTimePeriodCostsMap(tag));
 		}
 		
 		return timePeriodCostsMap;
@@ -720,6 +745,25 @@ abstract public class BaseObject
 		return formater.format(cost);
 	}
 	
+	public String getPlannedWhenTotalAsString()
+	{
+		try
+		{
+			return getProject().getProjectCalendar().convertToSafeString(getPlannedWhenRollup());
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		} 
+	}
+
+	public DateRange getPlannedWhenRollup() throws Exception
+	{
+		final DateRange projectStartEndDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
+		return getTotalTimePeriodCostsMapForPlans().getRolledUpDateRange(projectStartEndDateRange);
+	}
+
 	public String getAssignedWhenTotalAsString()
 	{
 		try
@@ -730,15 +774,14 @@ abstract public class BaseObject
 		{
 			EAM.logException(e);
 			return "";
-		} 
+		}
 	}
-	
+
 	public DateRange getAssignedWhenRollup() throws Exception
 	{
 		final DateRange projectStartEndDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
-		return getTotalTimePeriodCostsMap().getRolledUpDateRange(projectStartEndDateRange);
+		return getTotalTimePeriodCostsMapForAssignments().getRolledUpDateRange(projectStartEndDateRange);
 	}
-	
 
 	protected ORefList calculateRelevantRefList(ORefSet relevantRefList, RelevancyOverrideSet relevantOverrides)
 	{
@@ -1121,11 +1164,16 @@ abstract public class BaseObject
 		return getSafeRefListData(TAG_EXPENSE_ASSIGNMENT_REFS);
 	}
 	
+	public ORefList getResourcePlanRefs()
+	{
+		return new ORefList(ResourcePlanSchema.getObjectType(), getSafeIdListData(TAG_RESOURCE_PLAN_IDS));
+	}
+	
 	public ORefList getResourceAssignmentRefs()
 	{
 		return new ORefList(ResourceAssignmentSchema.getObjectType(), getSafeIdListData(TAG_RESOURCE_ASSIGNMENT_IDS));
 	}
-	
+
 	public ORefList getOwnedAndRelatedObjectRefs(ORefList deepCopiedFactorRefs)
 	{
 		ORefList objectsToDeepCopy = new ORefList();
@@ -1162,9 +1210,12 @@ abstract public class BaseObject
 	
 	public String getPseudoData(String fieldTag)
 	{
+		if (fieldTag.equals(PSEUDO_TAG_PLANNED_WHEN_TOTAL))
+			return getPlannedWhenTotalAsString();
+		
 		if (fieldTag.equals(PSEUDO_TAG_ASSIGNED_WHEN_TOTAL))
 			return getAssignedWhenTotalAsString();
-		
+
 		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 			return getLatestProgressReportDate();
 		
@@ -1241,11 +1292,19 @@ abstract public class BaseObject
 		return null;
 	}
 	
+	public ORef getPlannedLeaderResourceRef()
+	{
+		if (getTags().contains(TAG_PLANNED_LEADER_RESOURCE))
+			return getRef(TAG_PLANNED_LEADER_RESOURCE);
+		
+		return ORef.INVALID;
+	}
+
 	public ORef getAssignedLeaderResourceRef()
 	{
 		if (getTags().contains(TAG_ASSIGNED_LEADER_RESOURCE))
 			return getRef(TAG_ASSIGNED_LEADER_RESOURCE);
-		
+
 		return ORef.INVALID;
 	}
 

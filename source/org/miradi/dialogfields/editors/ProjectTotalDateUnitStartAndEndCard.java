@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields.editors;
 
 import org.miradi.objecthelpers.DateUnit;
-import org.miradi.questions.DateUnitTypeQuestion;
+import org.miradi.questions.AbstractDateUnitTypeQuestion;
 
 public class ProjectTotalDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 {
@@ -40,6 +40,6 @@ public class ProjectTotalDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	@Override
 	public String getPanelDescription()
 	{
-		return DateUnitTypeQuestion.PROJECT_TOTAL_CODE;
+		return AbstractDateUnitTypeQuestion.PROJECT_TOTAL_CODE;
 	}
 }

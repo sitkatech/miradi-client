@@ -97,6 +97,7 @@ public class Project implements ProjectInterface
 		projectTotalCalculator = new ProjectTotalCalculator(this);
 		
 		threatStressRatingEnsurer = new ThreatStressRatingEnsurer(this);
+		leaderPlannedEnsurer = new LeaderPlannedEnsurer(this);
 		leaderAssignedEnsurer = new LeaderAssignedEnsurer(this);
 		planningPreferencesChangeHandler = new PlanningPreferencesChangeHandler(this);
 		dashboardStatusMapsCache = new DashboardStatusMapsCache(this);
@@ -851,7 +852,7 @@ public class Project implements ProjectInterface
 	{
 		getProjectTotalCalculator().enable();
 		enableThreatStressRatingEnsurer();
-		enableLeaderEnsurer();
+		enableLeaderEnsurers();
 		planningPreferencesChangeHandler.enable();
 		dashboardStatusMapsCache.enable();
 		timePeriodCostsMapsCache.enable();
@@ -983,7 +984,7 @@ public class Project implements ProjectInterface
 	{
 		getProjectTotalCalculator().disable();
 		disableThreatStressRatingEnsurer();
-		disableLeaderEnsurer();
+		disableLeaderEnsurers();
 		planningPreferencesChangeHandler.disable();
 		dashboardStatusMapsCache.disable();
 		timePeriodCostsMapsCache.disable();
@@ -1001,13 +1002,15 @@ public class Project implements ProjectInterface
 		threatStressRatingEnsurer.enable();
 	}
 	
-	public void disableLeaderEnsurer()
+	public void disableLeaderEnsurers()
 	{
+		leaderPlannedEnsurer.disable();
 		leaderAssignedEnsurer.disable();
 	}
 	
-	public void enableLeaderEnsurer()
+	public void enableLeaderEnsurers()
 	{
+		leaderPlannedEnsurer.enable();
 		leaderAssignedEnsurer.enable();
 	}
 	
@@ -1448,6 +1451,7 @@ public class Project implements ProjectInterface
 	private DiagramClipboard diagramClipboard;
 	private ProjectCalendar projectCalendar;
 	private ThreatStressRatingEnsurer threatStressRatingEnsurer;
+	private LeaderPlannedEnsurer leaderPlannedEnsurer;
 	private LeaderAssignedEnsurer leaderAssignedEnsurer;
 	private ProjectTotalCalculator projectTotalCalculator;
 	private PlanningPreferencesChangeHandler planningPreferencesChangeHandler;

@@ -48,10 +48,14 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 
 	private void clearAllCachedData()
 	{
-		totalTimePeriodCostsMapsByBaseObject = new HashMap<ORef, TimePeriodCostsMap>();
+		totalTimePeriodPlannedCostsMapsByBaseObject = new HashMap<ORef, TimePeriodCostsMap>();
+		totalTimePeriodAssignedCostsMapsByBaseObject = new HashMap<ORef, TimePeriodCostsMap>();
+		plannedWhenTotalAsStringByBaseObject = new HashMap<ORef, String>();
 		assignedWhenTotalAsStringByBaseObject = new HashMap<ORef, String>();
-		projectTotalsByBudgetMode = new HashMap<String, TimePeriodCostsMap>();
-		diagramObjectTotalsByBudgetMode = new HashMap<DiagramTotalCacheKey, TimePeriodCostsMap>();
+		projectPlannedTotalsByBudgetMode = new HashMap<String, TimePeriodCostsMap>();
+		projectAssignedTotalsByBudgetMode = new HashMap<String, TimePeriodCostsMap>();
+		diagramObjectPlannedTotalsByBudgetMode = new HashMap<DiagramTotalCacheKey, TimePeriodCostsMap>();
+		diagramObjectAssignedTotalsByBudgetMode = new HashMap<DiagramTotalCacheKey, TimePeriodCostsMap>();
 		totalTimePeriodCostsMapForSubTasksByBaseObjectAndAssignmentsTag = new HashMap<String, TimePeriodCostsMap>();
 	}
 
@@ -70,14 +74,40 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 		return project;
 	}
 
-	public TimePeriodCostsMap getTotalTimePeriodCostsMap(BaseObject baseObject) throws Exception
+	public TimePeriodCostsMap getTotalTimePeriodPlannedCostsMap(BaseObject baseObject) throws Exception
 	{
 		ORef ref = baseObject.getRef();
-		TimePeriodCostsMap result = totalTimePeriodCostsMapsByBaseObject.get(ref);
+		TimePeriodCostsMap result = totalTimePeriodPlannedCostsMapsByBaseObject.get(ref);
 		if(result == null)
 		{
-			result = baseObject.getTotalTimePeriodCostsMap();
-			totalTimePeriodCostsMapsByBaseObject.put(ref, result);
+			result = baseObject.getTotalTimePeriodCostsMapForPlans();
+			totalTimePeriodPlannedCostsMapsByBaseObject.put(ref, result);
+		}
+		
+		return result;
+	}
+
+	public TimePeriodCostsMap getTotalTimePeriodAssignedCostsMap(BaseObject baseObject) throws Exception
+	{
+		ORef ref = baseObject.getRef();
+		TimePeriodCostsMap result = totalTimePeriodAssignedCostsMapsByBaseObject.get(ref);
+		if(result == null)
+		{
+			result = baseObject.getTotalTimePeriodCostsMapForAssignments();
+			totalTimePeriodAssignedCostsMapsByBaseObject.put(ref, result);
+		}
+
+		return result;
+	}
+
+	public String getPlannedWhenTotalAsString(BaseObject baseObject)
+	{
+		ORef ref = baseObject.getRef();
+		String result = plannedWhenTotalAsStringByBaseObject.get(ref);
+		if(result == null)
+		{
+			result = baseObject.getPlannedWhenTotalAsString();
+			plannedWhenTotalAsStringByBaseObject.put(ref, result);
 		}
 		
 		return result;
@@ -92,36 +122,61 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 			result = baseObject.getAssignedWhenTotalAsString();
 			assignedWhenTotalAsStringByBaseObject.put(ref, result);
 		}
-		
+
 		return result;
 	}
 
-	public TimePeriodCostsMap calculateProjectTotals(String workPlanBudgetMode) throws Exception
+	public TimePeriodCostsMap calculateProjectPlannedTotals(String workPlanBudgetMode) throws Exception
 	{
-		TimePeriodCostsMap result = projectTotalsByBudgetMode.get(workPlanBudgetMode);
+		TimePeriodCostsMap result = projectPlannedTotalsByBudgetMode.get(workPlanBudgetMode);
 		if(result == null)
 		{
-			result = getProject().getProjectTotalCalculator().calculateProjectTotals(workPlanBudgetMode);
-			projectTotalsByBudgetMode.put(workPlanBudgetMode, result);
+			result = getProject().getProjectTotalCalculator().calculateProjectPlannedTotals(workPlanBudgetMode);
+			projectPlannedTotalsByBudgetMode.put(workPlanBudgetMode, result);
 		}
 		
 		return result;
 	}
 
-	public TimePeriodCostsMap calculateDiagramObjectTotals(DiagramObject baseObject, String workPlanBudgetMode) throws Exception
+	public TimePeriodCostsMap calculateProjectAssignedTotals(String workPlanBudgetMode) throws Exception
+	{
+		TimePeriodCostsMap result = projectAssignedTotalsByBudgetMode.get(workPlanBudgetMode);
+		if(result == null)
+		{
+			result = getProject().getProjectTotalCalculator().calculateProjectAssignedTotals(workPlanBudgetMode);
+			projectAssignedTotalsByBudgetMode.put(workPlanBudgetMode, result);
+		}
+
+		return result;
+	}
+
+	public TimePeriodCostsMap calculateDiagramObjectPlannedTotals(DiagramObject baseObject, String workPlanBudgetMode) throws Exception
 	{
 		DiagramTotalCacheKey diagramTotalCacheKey = new DiagramTotalCacheKey(baseObject, workPlanBudgetMode);
-		TimePeriodCostsMap result = diagramObjectTotalsByBudgetMode.get(diagramTotalCacheKey);
+		TimePeriodCostsMap result = diagramObjectPlannedTotalsByBudgetMode.get(diagramTotalCacheKey);
 		if(result == null)
 		{
-			result = getProject().getProjectTotalCalculator().calculateDiagramObjectTotals(baseObject, workPlanBudgetMode);
-			diagramObjectTotalsByBudgetMode.put(diagramTotalCacheKey, result);
+			result = getProject().getProjectTotalCalculator().calculateDiagramObjectPlannedTotals(baseObject, workPlanBudgetMode);
+			diagramObjectPlannedTotalsByBudgetMode.put(diagramTotalCacheKey, result);
 		}
 
 		return result;
 	}
 
-	public TimePeriodCostsMap getTotalTimePeriodCostsMapForSubTasks(BaseObject baseObjectForRow, String assignmentsTag) throws Exception
+	public TimePeriodCostsMap calculateDiagramObjectAssignedTotals(DiagramObject baseObject, String workPlanBudgetMode) throws Exception
+	{
+		DiagramTotalCacheKey diagramTotalCacheKey = new DiagramTotalCacheKey(baseObject, workPlanBudgetMode);
+		TimePeriodCostsMap result = diagramObjectAssignedTotalsByBudgetMode.get(diagramTotalCacheKey);
+		if(result == null)
+		{
+			result = getProject().getProjectTotalCalculator().calculateDiagramObjectAssignedTotals(baseObject, workPlanBudgetMode);
+			diagramObjectAssignedTotalsByBudgetMode.put(diagramTotalCacheKey, result);
+		}
+
+		return result;
+	}
+
+	public TimePeriodCostsMap getTotalTimePeriodAssignedCostsMapForSubTasks(BaseObject baseObjectForRow, String assignmentsTag) throws Exception
 	{
 		String key = baseObjectForRow.getRef().toString() + " " + assignmentsTag;
 		TimePeriodCostsMap result = totalTimePeriodCostsMapForSubTasksByBaseObjectAndAssignmentsTag.get(key);
@@ -172,9 +227,13 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 	}
 
 	private Project project;
-	private HashMap<ORef, TimePeriodCostsMap> totalTimePeriodCostsMapsByBaseObject;
+	private HashMap<ORef, TimePeriodCostsMap> totalTimePeriodPlannedCostsMapsByBaseObject;
+	private HashMap<ORef, TimePeriodCostsMap> totalTimePeriodAssignedCostsMapsByBaseObject;
+	private HashMap<ORef, String> plannedWhenTotalAsStringByBaseObject;
 	private HashMap<ORef, String> assignedWhenTotalAsStringByBaseObject;
-	private HashMap<String, TimePeriodCostsMap> projectTotalsByBudgetMode;
-	private HashMap<DiagramTotalCacheKey, TimePeriodCostsMap> diagramObjectTotalsByBudgetMode;
+	private HashMap<String, TimePeriodCostsMap> projectPlannedTotalsByBudgetMode;
+	private HashMap<String, TimePeriodCostsMap> projectAssignedTotalsByBudgetMode;
+	private HashMap<DiagramTotalCacheKey, TimePeriodCostsMap> diagramObjectPlannedTotalsByBudgetMode;
+	private HashMap<DiagramTotalCacheKey, TimePeriodCostsMap> diagramObjectAssignedTotalsByBudgetMode;
 	private HashMap<String, TimePeriodCostsMap> totalTimePeriodCostsMapForSubTasksByBaseObjectAndAssignmentsTag;
 }

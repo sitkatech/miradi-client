@@ -35,9 +35,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.TaxonomyHelper;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.ResourceLeaderQuestionWithUnspecifiedChoice;
-import org.miradi.questions.StaticQuestionManager;
+import org.miradi.questions.*;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.ObjectiveSchema;
@@ -634,11 +632,16 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new DropDownChoiceField(project, getRefForType(objectType), tagToUse, question);
 	}
 	
-	public ObjectDataInputField createLeaderDropDownField(int objectType, String tagToUse)
+	public ObjectDataInputField createPlannedLeaderDropDownField(int objectType, String tagToUse)
 	{
-		return new ResourceLeaderDropDownField(getProject(), getRefForType(objectType), tagToUse, new ResourceLeaderQuestionWithUnspecifiedChoice(getProject()));
+		return new ResourceLeaderDropDownField(getProject(), getRefForType(objectType), tagToUse, new ResourceLeaderPlannedQuestionWithUnspecifiedChoice(getProject()));
 	}
-	
+
+	public ObjectDataInputField createAssignedLeaderDropDownField(int objectType, String tagToUse)
+	{
+		return new ResourceLeaderDropDownField(getProject(), getRefForType(objectType), tagToUse, new ResourceLeaderAssignedQuestionWithUnspecifiedChoice(getProject()));
+	}
+
 	public ObjectDataInputField createDropdownWithIconField(int objectType, String tagToUse, ChoiceQuestion question)
 	{
 		return new ObjectIconChoiceField(project, getRefForType(objectType), tagToUse, question);
@@ -709,9 +712,9 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new PopupQuestionEditorField(parentDialog, getProject(), getRefForType(objectType), tagToUse, StaticQuestionManager.getQuestion(questionClass));
 	}
 	
-	public WhoAssignedEditorField createWhoEditorField(ORef refToUse)
+	public WhoEditorField createWhoPlannedEditorField(ORef refToUse)
 	{
-		return new WhoAssignedEditorField(getMainWindow(), refToUse);
+		return new WhoPlannedEditorField(getMainWindow(), refToUse);
 	}
 	
 	public ObjectDataInputField createReadonlyClickableLinkField(int objectType, String tag)

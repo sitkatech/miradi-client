@@ -63,7 +63,7 @@ public class TestBaseObjectRollupValues extends TestCaseWithProject
 		getProject().addResourceAssignment(methodWith2ResourceAssignments, 13.0, year2009Q1);
 		getProject().addResourceAssignment(methodWith2ResourceAssignments, 2.0, year2009);
 		
-		TimePeriodCostsMap timePeriodCostsMap = indicator.getTotalTimePeriodCostsMap();
+		TimePeriodCostsMap timePeriodCostsMap = indicator.getTotalTimePeriodCostsMapForAssignments();
 		TimePeriodCosts timePeriodCostsTotal = timePeriodCostsMap.calculateTimePeriodCosts(new DateUnit());
 		assertEquals("Wrong total for indicator rollup?", 15.0, timePeriodCostsTotal.getTotalWorkUnits().getValue());
 		
@@ -82,7 +82,7 @@ public class TestBaseObjectRollupValues extends TestCaseWithProject
 		Task activity = getProject().createTask(strategy);
 		getProject().addExpenseAssignment(activity, year2009, 0);
 
-		TimePeriodCosts strategyTimePeriodCosts = strategy.calculateTimePeriodCosts(year2009);
+		TimePeriodCosts strategyTimePeriodCosts = strategy.calculateTimePeriodCostsForAssignments(year2009);
 		OptionalDouble total = strategyTimePeriodCosts.getTotalExpense();
 		assertEquals("Super value should not be overriden by 0 value?", 3.0, total.getValue());
 	}
@@ -98,7 +98,7 @@ public class TestBaseObjectRollupValues extends TestCaseWithProject
 		Task activity = getProject().createTask(strategy);
 		getProject().addResourceAssignment(activity, 0, year2009);
 		
-		TimePeriodCosts strategyTimePeriodCosts = strategy.calculateTimePeriodCosts(year2009);
+		TimePeriodCosts strategyTimePeriodCosts = strategy.calculateTimePeriodCostsForAssignments(year2009);
 		OptionalDouble total = strategyTimePeriodCosts.getTotalWorkUnits();
 		assertEquals("Super value should not be overriden by 0 value?", 3.0, total.getValue());
 	}
@@ -114,7 +114,7 @@ public class TestBaseObjectRollupValues extends TestCaseWithProject
 		currentAssignmentIdList.add(assignment.getId());
 		activityWithResourceAssignment.setData(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, currentAssignmentIdList.toString());
 		
-		assertNotEquals("Ignored the resource assignment who?", 0, activityWithResourceAssignment.getTotalTimePeriodCostsMap().size());
+		assertNotEquals("Ignored the resource assignment who?", 0, activityWithResourceAssignment.getTotalTimePeriodCostsMapForAssignments().size());
 	}
 	
 	public void testRollupExpenseAssignmentsWithNoQuantities() throws Exception
@@ -123,13 +123,13 @@ public class TestBaseObjectRollupValues extends TestCaseWithProject
 		ExpenseAssignment expenseAssignment = getProject().addExpenseAssignment(activityWithExpenseAssignment, new DateUnitEffortList());
 		ORef accountingCodeRef = getProject().createAccountingCode().getRef();
 		expenseAssignment.setData(ExpenseAssignment.TAG_ACCOUNTING_CODE_REF, accountingCodeRef.toString());
-		assertNotEquals("Ignored the expense assignment who?", 0, activityWithExpenseAssignment.getTotalTimePeriodCostsMap().size());
+		assertNotEquals("Ignored the expense assignment who?", 0, activityWithExpenseAssignment.getTotalTimePeriodCostsMapForAssignments().size());
 	}
 	
 	public void testRollupExpenseAssignmentsWithNoAssignments() throws Exception
 	{
 		Task activityWithNoAssignments = getProject().createActivity();
-		assertEquals("Had a who?", 0, activityWithNoAssignments.getTotalTimePeriodCostsMap().size());
+		assertEquals("Had a who?", 0, activityWithNoAssignments.getTotalTimePeriodCostsMapForAssignments().size());
 	}
 	
 	private DateUnit year2009Q1;

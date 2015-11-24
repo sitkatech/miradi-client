@@ -57,7 +57,7 @@ public class TestAssignment extends ObjectTestCase
 		getProject().fillObjectUsingCommand(resourceAssignmentWithoutResource, ResourceAssignment.TAG_RESOURCE_ID, "");
 		
 		ORef resourceRef = resourceAssignment.getResourceRef();
-		ORefSet rolledUpResourceRefs = strategy.getTotalTimePeriodCostsMap().getAllProjectResourceRefs();
+		ORefSet rolledUpResourceRefs = strategy.getTotalTimePeriodCostsMapForAssignments().getAllProjectResourceRefs();
 		assertEquals("Incorrect activity resource assignments count?", 2, activity.getResourceAssignmentRefs().size());
 		assertEquals("Incorrect rolled up resources count?", 2, rolledUpResourceRefs.size());
 		assertTrue("Resource should be in rolled up resources list?", rolledUpResourceRefs.contains(resourceRef));
@@ -166,7 +166,7 @@ public class TestAssignment extends ObjectTestCase
 
 	private void verifyResourceAssignmentCount(ResourceAssignment assignment, int expectedResourcCount) throws Exception
 	{
-		TimePeriodCostsMap totalTimePeriodCostsMap = assignment.getTotalTimePeriodCostsMap();
+		TimePeriodCostsMap totalTimePeriodCostsMap = assignment.getTotalTimePeriodCostsMapForAssignments();
 		ORefSet resourceRefs = totalTimePeriodCostsMap.getAllProjectResourceRefs();
 		assertEquals("wrong resource refs count?", expectedResourcCount, resourceRefs.size());
 	}

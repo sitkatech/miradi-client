@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
-import java.util.Vector;
-
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefSet;
@@ -29,7 +27,9 @@ import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
-public class ResourceLeaderQuestionWithUnspecifiedChoice extends ObjectQuestion
+import java.util.Vector;
+
+abstract public class ResourceLeaderQuestionWithUnspecifiedChoice extends ObjectQuestion
 {
 	public ResourceLeaderQuestionWithUnspecifiedChoice(Project projectToUse)
 	{
@@ -50,15 +50,15 @@ public class ResourceLeaderQuestionWithUnspecifiedChoice extends ObjectQuestion
 		reloadObjects();
 		return createChoiceItemListWithUnspecifiedItem(super.getChoices());
 	}
-	
+
 	private void reloadObjects()
 	{
 		try
 		{
 			if (leaderReferrerRef.isValid())
-			{			
+			{
 				BaseObject baseObject = BaseObject.find(getProject(), leaderReferrerRef);
-				TimePeriodCostsMap timePeriodCostsMap = baseObject.getTotalTimePeriodCostsWithoutRollup();
+				TimePeriodCostsMap timePeriodCostsMap = getTimePeriodCostsMap(baseObject);
 				ORefSet projectResourceRefs = timePeriodCostsMap.getAllProjectResourceRefs();
 				setObjects(getBaseObjects(projectResourceRefs));
 			}
@@ -71,7 +71,7 @@ public class ResourceLeaderQuestionWithUnspecifiedChoice extends ObjectQuestion
 		{
 			EAM.logException(e);
 		}
-	}		
+	}
 
 	private BaseObject[] getBaseObjects(ORefSet projectResourceRefs)
 	{
@@ -81,15 +81,17 @@ public class ResourceLeaderQuestionWithUnspecifiedChoice extends ObjectQuestion
 			if (ref.isValid())
 				baseObjects.add(BaseObject.find(getProject(), ref));
 		}
-		
+
 		return baseObjects.toArray(new BaseObject[0]);
 	}
-	
-	private Project getProject()
+
+	abstract protected TimePeriodCostsMap getTimePeriodCostsMap(BaseObject baseObject) throws Exception;
+
+	protected Project getProject()
 	{
 		return project;
 	}
 
-	private Project project;
-	private ORef leaderReferrerRef;
+	protected Project project;
+	protected ORef leaderReferrerRef;
 }

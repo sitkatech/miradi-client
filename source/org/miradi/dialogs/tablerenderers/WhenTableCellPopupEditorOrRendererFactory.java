@@ -20,23 +20,24 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.tablerenderers;
 
-import java.awt.Component;
-
-import javax.swing.JTable;
-
 import org.miradi.dialogfields.editors.WhenPopupEditorComponent;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 
-public class WhenTableCellPopupEditorOrRendererFactory extends PopupEditableCellEditorOrRendererFactory
+import javax.swing.*;
+import java.awt.*;
+
+abstract public class WhenTableCellPopupEditorOrRendererFactory extends PopupEditableCellEditorOrRendererFactory
 {
 	public WhenTableCellPopupEditorOrRendererFactory(MainWindow mainWindowToUse, RowColumnBaseObjectProvider objectProvider, FontForObjectProvider fontProvider)
 	{
 		super(objectProvider, fontProvider);
 		
-		whenPopupEditorComponent = new WhenPopupEditorComponent(mainWindowToUse);
+		whenPopupEditorComponent = createWhenPopupEditorComponent(mainWindowToUse);
 	}
-	
+
+	abstract protected WhenPopupEditorComponent createWhenPopupEditorComponent(MainWindow mainWindowToUse);
+
 	@Override
 	public Object getCellEditorValue()
 	{

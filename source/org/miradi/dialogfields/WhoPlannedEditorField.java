@@ -21,16 +21,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import org.miradi.dialogs.base.DisposablePanel;
-import org.miradi.dialogs.planning.upperPanel.WhoAssignedStateLogic;
+import org.miradi.dialogs.planning.upperPanel.WhoPlannedStateLogic;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ProjectResourceQuestion;
 import org.miradi.utils.CodeList;
 
-public class WhoAssignedEditorField extends WhoEditorField
+public class WhoPlannedEditorField extends WhoEditorField
 {
-	public WhoAssignedEditorField(MainWindow mainWindow, ORef refToUse)
+	public WhoPlannedEditorField(MainWindow mainWindow, ORef refToUse)
 	{
 		super(mainWindow, refToUse);
 	}
@@ -38,7 +38,7 @@ public class WhoAssignedEditorField extends WhoEditorField
 	@Override
 	protected CodeList getWhoTotalsCodeList(BaseObject baseObject)
 	{
-		return WhoAssignedCodeListEditorComponent.getWhoTotalCodes(baseObject);
+		return WhoPlannedCodeListEditorComponent.getWhoTotalCodes(baseObject);
 	}
 
 	@Override
@@ -46,12 +46,12 @@ public class WhoAssignedEditorField extends WhoEditorField
 	{
 		BaseObject baseObject = BaseObject.find(getProject(), getORef());
 
-		return new WhoAssignedStateLogic(getProject()).isWhoCellEditable(baseObject);
+		return new WhoPlannedStateLogic(getProject()).isWhoCellEditable(baseObject);
 	}
 
 	@Override
 	protected DisposablePanel createEditorPanel(BaseObject baseObject, ProjectResourceQuestion question)
 	{
-		return new WhoAssignedCodeListEditorComponent(baseObject, question);
+		return new WhoPlannedCodeListEditorComponent(baseObject, question);
 	}
 }

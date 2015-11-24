@@ -58,7 +58,7 @@ public class ResourceAssignment extends Assignment
 	}
 	
 	@Override
-	public TimePeriodCostsMap getTotalTimePeriodCostsMap() throws Exception
+	public TimePeriodCostsMap getTotalTimePeriodCostsMapForAssignments() throws Exception
 	{
 		return getTimePeriodCostsMap(TAG_RESOURCE_ASSIGNMENT_IDS);
 	}

@@ -80,7 +80,7 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 
 	protected void verifyCalcuationBasedOnMode(String workPlanBudgetMode, double expectedTotal) throws Exception
 	{
-		TimePeriodCostsMap projectTotals = calculator.calculateProjectTotals(workPlanBudgetMode);
+		TimePeriodCostsMap projectTotals = calculator.calculateProjectAssignedTotals(workPlanBudgetMode);
 		assertEquals("Project totals time period costs map should not be empty?", 1, projectTotals.size());
 
 		OptionalDouble calculateTotalBudgetCost = projectTotals.calculateTotalBudgetCost(getProject());		
@@ -224,18 +224,18 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 	public void testEmptyProjectTotal() throws Exception
 	{
 		assertEquals("no results chains created?", 1, getProject().getResultsChainDiagramPool().size());
-		assertEquals("Empty project had non-zero totals data?", 0, calculator.calculateProjectTotals().size());
+		assertEquals("Empty project had non-zero totals data?", 0, calculator.calculateProjectAssignedTotals().size());
 	}
 	
 	private void verifyEmptyBudgetTotalCost() throws Exception
 	{
-		OptionalDouble totalBudgetCost = calculator.calculateProjectTotals().calculateTotalBudgetCost(getProject());
+		OptionalDouble totalBudgetCost = calculator.calculateProjectAssignedTotals().calculateTotalBudgetCost(getProject());
 		assertFalse("ConceptualModel Strategy is included in project totals?", totalBudgetCost.hasValue());
 	}
 	
 	private void verifyEmptyProjectTotalTimePeriodCostsMap() throws Exception
 	{
-		assertEquals("Should have empty project total time perdiod costs map?", 0, calculator.calculateProjectTotals().size());
+		assertEquals("Should have empty project total time perdiod costs map?", 0, calculator.calculateProjectAssignedTotals().size());
 	}
 	
 	private void verifyCalculatedValues() throws Exception
@@ -261,7 +261,7 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 
 	private TimePeriodCostsMap verifyProjectTotalTimePeriodCostsMap(final int expectedProjectTotalTimePeriodMapCount) throws Exception
 	{
-		TimePeriodCostsMap projectTotals = calculator.calculateProjectTotals();
+		TimePeriodCostsMap projectTotals = calculator.calculateProjectAssignedTotals();
 		assertEquals("Project totals time period costs map should not be empty?", expectedProjectTotalTimePeriodMapCount, projectTotals.size());
 		
 		return projectTotals;

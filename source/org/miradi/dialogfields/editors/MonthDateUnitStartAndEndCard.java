@@ -24,7 +24,7 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.project.ProjectCalendar;
-import org.miradi.questions.DateUnitTypeQuestion;
+import org.miradi.questions.AbstractDateUnitTypeQuestion;
 import org.miradi.utils.FillerLabel;
 
 public class MonthDateUnitStartAndEndCard extends DateUnitStartAndEndCard
@@ -55,7 +55,7 @@ public class MonthDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	@Override
 	public String getPanelDescription()
 	{
-		return DateUnitTypeQuestion.MONTH_CODE;
+		return AbstractDateUnitTypeQuestion.MONTH_CODE;
 	}
 	
 	private MonthPanel startMonthPanel;

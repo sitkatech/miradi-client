@@ -29,12 +29,12 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ResourceAssignment;
-import org.miradi.schemas.ResourceAssignmentSchema;
+import org.miradi.objects.ResourcePlan;
+import org.miradi.schemas.ResourcePlanSchema;
 
-public class LeaderAssignedEnsurer implements CommandExecutedListener
+public class LeaderPlannedEnsurer implements CommandExecutedListener
 {
-	public LeaderAssignedEnsurer(Project projectToUse)
+	public LeaderPlannedEnsurer(Project projectToUse)
 	{
 		project = projectToUse;
 	}
@@ -53,11 +53,11 @@ public class LeaderAssignedEnsurer implements CommandExecutedListener
 	{
 		try
 		{
-			if (event.isSetDataCommandWithThisTypeAndTag(ResourceAssignmentSchema.getObjectType(), ResourceAssignment.TAG_RESOURCE_ID))
-				possiblyClearResourceLeaderDueToResourceAssignmentResourceUpdate(event);
+			if (event.isSetDataCommandWithThisTypeAndTag(ResourcePlanSchema.getObjectType(), ResourcePlan.TAG_RESOURCE_ID))
+				possiblyClearResourceLeaderDueToResourcePlanResourceUpdate(event);
 			
-			if (event.isSetDataCommandWithThisTag(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS))
-				possiblyClearResourceLeaderDueToResourceAssignmentDeletion(event);
+			if (event.isSetDataCommandWithThisTag(BaseObject.TAG_RESOURCE_PLAN_IDS))
+				possiblyClearResourceLeaderDueToResourcePlanDeletion(event);
 		}
 		catch (Exception e)
 		{
@@ -66,11 +66,11 @@ public class LeaderAssignedEnsurer implements CommandExecutedListener
 		}
 	}
 
-	private void possiblyClearResourceLeaderDueToResourceAssignmentDeletion(CommandExecutedEvent event) throws Exception
+	private void possiblyClearResourceLeaderDueToResourcePlanDeletion(CommandExecutedEvent event) throws Exception
 	{
 		CommandSetObjectData setCommand = event.getSetCommand();
-		ORefList currentList = new ORefList(new IdList(ResourceAssignmentSchema.getObjectType(), setCommand.getDataValue()));
-		ORefList previousList = new ORefList(new IdList(ResourceAssignmentSchema.getObjectType(), setCommand.getPreviousDataValue()));
+		ORefList currentList = new ORefList(new IdList(ResourcePlanSchema.getObjectType(), setCommand.getDataValue()));
+		ORefList previousList = new ORefList(new IdList(ResourcePlanSchema.getObjectType(), setCommand.getPreviousDataValue()));
 		if (previousList.size() <= currentList.size())
 			return;
 		
@@ -81,20 +81,20 @@ public class LeaderAssignedEnsurer implements CommandExecutedListener
 		ensureLeaderIsLegal(setCommand.getObjectORef());
 	}
 
-	private void possiblyClearResourceLeaderDueToResourceAssignmentResourceUpdate(CommandExecutedEvent event) throws Exception
+	private void possiblyClearResourceLeaderDueToResourcePlanResourceUpdate(CommandExecutedEvent event) throws Exception
 	{
 		CommandSetObjectData setCommand = event.getSetCommand();
 		final String previousDataValue = setCommand.getPreviousDataValue();
 		if (previousDataValue.length() == 0)
 			return;
-		
-		ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), setCommand.getObjectORef());
-		ORefList referrers = resourceAssignment.findAllObjectsThatReferToUs();
+
+		ResourcePlan resourcePlan = ResourcePlan.find(getProject(), setCommand.getObjectORef());
+		ORefList referrers = resourcePlan.findAllObjectsThatReferToUs();
 		if (referrers.isEmpty())
 			return;
 		
 		if (referrers.size() > 1)
-			throw new Exception("ResourceAssignments cannot be shared");
+			throw new Exception("ResourcePlans cannot be shared");
 		
 		ensureLeaderIsLegal(referrers.getFirstElement());
 	}
@@ -102,15 +102,15 @@ public class LeaderAssignedEnsurer implements CommandExecutedListener
 	private void ensureLeaderIsLegal(ORef objectContainingLeaderRef) throws Exception
 	{
 		BaseObject objectContainingLeader = BaseObject.find(getProject(), objectContainingLeaderRef);
-		ORef currentLeaderRef = objectContainingLeader.getAssignedLeaderResourceRef();
-		ORefSet resourceRefs = objectContainingLeader.getTotalTimePeriodCostsMapForAssignments().getAllProjectResourceRefs();
+		ORef currentLeaderRef = objectContainingLeader.getPlannedLeaderResourceRef();
+		ORefSet resourceRefs = objectContainingLeader.getTotalTimePeriodCostsMapForPlans().getAllProjectResourceRefs();
 		if (!resourceRefs.contains(currentLeaderRef))
 			clearLeaderResourceRef(objectContainingLeader);
 	}
 
 	private void clearLeaderResourceRef(BaseObject objectToClearLeaderFrom) throws Exception
 	{
-		CommandSetObjectData clearCommand = new CommandSetObjectData(objectToClearLeaderFrom, BaseObject.TAG_ASSIGNED_LEADER_RESOURCE, "");
+		CommandSetObjectData clearCommand = new CommandSetObjectData(objectToClearLeaderFrom, BaseObject.TAG_PLANNED_LEADER_RESOURCE, "");
 		getProject().executeAsSideEffect(clearCommand);
 	}
 

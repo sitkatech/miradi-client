@@ -52,13 +52,13 @@ public class WhoAssignedCodeListEditorComponent extends AbstractQuestionBasedCom
 		super(questionToUse, SINGLE_COLUMN);
 		
 		parentObject = parentObjectToUse;
-		updateToggleButtonSelections(getAssignedWhoTotalCodes(parentObject));
+		updateToggleButtonSelections(getWhoTotalCodes(parentObject));
 	}
 	
 	@Override
 	public void toggleButtonStateChanged(ChoiceItem choiceItem, boolean isSelected)	throws Exception
 	{
-		CodeList currentCodes = getAssignedWhoTotalCodes(getParentObject());
+		CodeList currentCodes = getWhoTotalCodes(getParentObject());
 		boolean doesAssignmentExist = currentCodes.contains(choiceItem.getCode());
 		final boolean needToDelete = doesAssignmentExist && !isSelected;
 		final boolean needToCreate = !doesAssignmentExist && isSelected;
@@ -214,11 +214,11 @@ public class WhoAssignedCodeListEditorComponent extends AbstractQuestionBasedCom
 		return firstResourceAssignment.getDateUnitEffortList();
 	}
 	
-	public static CodeList getAssignedWhoTotalCodes(BaseObject baseObject)
+	public static CodeList getWhoTotalCodes(BaseObject baseObject)
 	{		
 		try
 		{
-			ORefSet resourcesRefs = baseObject.getTotalTimePeriodCostsMap().getAllProjectResourceRefs();		
+			ORefSet resourcesRefs = baseObject.getTotalTimePeriodCostsMapForAssignments().getAllProjectResourceRefs();
 			CodeList projectResourceCodes = new CodeList();
 			for(ORef resourceRef : resourcesRefs)
 			{

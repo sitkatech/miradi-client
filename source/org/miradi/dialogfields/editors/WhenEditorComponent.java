@@ -20,15 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
-import java.awt.BorderLayout;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.util.Set;
-import java.util.Vector;
-
-import javax.swing.BorderFactory;
-import javax.swing.border.Border;
-
 import org.martus.swing.UiComboBox;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
@@ -38,33 +29,39 @@ import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
-import org.miradi.project.ProjectCalendar;
+import org.miradi.questions.AbstractDateUnitTypeQuestion;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.DateUnitTypeQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateUnitEffortList;
 
-public class WhenEditorComponent extends DisposablePanel
+import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.Set;
+import java.util.Vector;
+
+abstract public class WhenEditorComponent extends DisposablePanel
 {
-	public WhenEditorComponent(ProjectCalendar projectCalendar, BaseObject baseObjectToUse) throws Exception
+	public WhenEditorComponent(Project projectToUse, ORefList planningObjectRefsToUse, AbstractDateUnitTypeQuestion dateUnitTypeQuestionToUse) throws Exception
 	{
+		project = projectToUse;
+		planningObjectRefs = planningObjectRefsToUse;
+		dateUnitTypeQuestion = dateUnitTypeQuestionToUse;
+
 		setLayout(new BorderLayout());
 
-		ORefList resourceAssignmentRefs = baseObjectToUse.getResourceAssignmentRefs();
-		DateUnitTypeQuestion dateUnitTypeQuestion = new DateUnitTypeQuestion(baseObjectToUse.getProject(), resourceAssignmentRefs);
 		dateUnitTypeCombo = new UiComboBox(dateUnitTypeQuestion.getChoices());
-		
-		String singleDateUnitTypeCode = getDefaultDateUnitTypeCode(baseObjectToUse.getProject(), resourceAssignmentRefs);
-		
+
+		String singleDateUnitTypeCode = getDefaultDateUnitTypeCode(planningObjectRefs);
+
 		Vector<DateUnit> dateUnits = new Vector<DateUnit>();
-		if (!singleDateUnitTypeCode.equals(DateUnitTypeQuestion.NONE_CODE) && resourceAssignmentRefs.hasRefs())
+		if (!singleDateUnitTypeCode.equals(AbstractDateUnitTypeQuestion.NONE_CODE) && planningObjectRefs.hasRefs())
 		{
-			ORef resourceAssignmentRef = resourceAssignmentRefs.getFirstElement();
-			ResourceAssignment resourceAssignment = ResourceAssignment.find(baseObjectToUse.getProject(), resourceAssignmentRef);
-			DateUnitEffortList dateUnitEffortList = resourceAssignment.getDateUnitEffortList();
+			ORef planningObjectRef = planningObjectRefs.getFirstElement();
+			DateUnitEffortList dateUnitEffortList = getDateUnitEffortList(planningObjectRef);
 			if (dateUnitEffortList.size() == 1)
 			{
 				dateUnits.add(dateUnitEffortList.getDateUnitEffort(0).getDateUnit());
@@ -82,24 +79,27 @@ public class WhenEditorComponent extends DisposablePanel
 						"Specifying when this work item will take place using this dialog <br>" +
 						"will enter zeros in the appropriate time period column(s)."));
 		explanation.setBorder(createSmallCushionBorder());
-		
+
 		TwoColumnPanel upperPanel = new TwoColumnPanel();
 		upperPanel.setBorder(BorderFactory.createEtchedBorder());
 		upperPanel.add(new PanelTitleLabel(EAM.text("Enter As: ")));
 		upperPanel.add(dateUnitTypeCombo);
 		upperPanel.setBorder(createSmallCushionBorder());
-		
+
 		StartEndDateUnitProvider dateUnitRange = new StartEndDateUnitProvider(dateUnits);
-		lowerPanel = new WhenEditorLowerPanel(projectCalendar, dateUnitRange);
+		lowerPanel = new WhenEditorLowerPanel(projectToUse.getProjectCalendar(), dateUnitRange);
 		lowerPanel.setBorder(createSmallCushionBorder());
 
 		add(explanation, BorderLayout.PAGE_START);
 		add(upperPanel, BorderLayout.CENTER);
 		add(lowerPanel, BorderLayout.PAGE_END);
-		
+
 		dateUnitTypeCombo.addItemListener(new ChangeHandler());
-		dateUnitTypeCombo.setSelectedItem(dateUnitTypeQuestion.findChoiceByCode(singleDateUnitTypeCode));
+		dateUnitTypeCombo.setSelectedItem(dateUnitTypeQuestionToUse.findChoiceByCode(singleDateUnitTypeCode));
 	}
+
+	abstract protected DateUnitEffortList getDateUnitEffortList(ORef planningObjectRef) throws Exception;
+	abstract protected TimePeriodCostsMap getTimePeriodCostsMap(ORef planningObjectRef) throws Exception;
 
 	private Border createSmallCushionBorder()
 	{
@@ -115,34 +115,39 @@ public class WhenEditorComponent extends DisposablePanel
 		super.dispose();
 	}
 
-	private String getDefaultDateUnitTypeCode(Project projectToUse, ORefList resourceAssignmentRefs) throws Exception
+	public Project getProject()
 	{
-		if (resourceAssignmentRefs.isEmpty())
-			return DateUnitTypeQuestion.NONE_CODE;
+		return project;
+	}
+
+	protected String getDefaultDateUnitTypeCode(ORefList planningObjectRefs) throws Exception
+	{
+		if (planningObjectRefs.isEmpty())
+			return AbstractDateUnitTypeQuestion.NONE_CODE;
 		
-		ORef resourceAssignmentRef = resourceAssignmentRefs.getFirstElement();
-		ResourceAssignment resourceAssignment = ResourceAssignment.find(projectToUse, resourceAssignmentRef);
-		TimePeriodCostsMap timePeriodCostsMap = resourceAssignment.getResourceAssignmentsTimePeriodCostsMap();		
+		ORef planningObjectRef = planningObjectRefs.getFirstElement();
+		TimePeriodCostsMap timePeriodCostsMap = getTimePeriodCostsMap(planningObjectRef);
+
 		Set<DateUnit> dateUnits = timePeriodCostsMap.getDateUnits();
 		for(DateUnit dateUnit : dateUnits)
 		{	
 			if (dateUnit.isDay())
-				return DateUnitTypeQuestion.DAY_CODE;
+				return AbstractDateUnitTypeQuestion.DAY_CODE;
 			
 			if (dateUnit.isMonth())
-				return DateUnitTypeQuestion.MONTH_CODE;
+				return AbstractDateUnitTypeQuestion.MONTH_CODE;
 			
 			if (dateUnit.isQuarter())
-				return DateUnitTypeQuestion.QUARTER_CODE;
+				return AbstractDateUnitTypeQuestion.QUARTER_CODE;
 			
 			if (dateUnit.isYear())
-				return DateUnitTypeQuestion.YEAR_CODE;
+				return AbstractDateUnitTypeQuestion.YEAR_CODE;
 			
 			if (dateUnit.isProjectTotal())
-				return DateUnitTypeQuestion.PROJECT_TOTAL_CODE;
+				return AbstractDateUnitTypeQuestion.PROJECT_TOTAL_CODE;
 		}
 		
-		return DateUnitTypeQuestion.NONE_CODE;
+		return AbstractDateUnitTypeQuestion.NONE_CODE;
 	}
 
 	public CodeList getStartEndCodes() throws Exception
@@ -175,7 +180,10 @@ public class WhenEditorComponent extends DisposablePanel
 			lowerPanel.showCard(selectedChoiceItem.getCode());
 		}
 	}
-	
+
+	private Project project;
+	private ORefList planningObjectRefs;
+	private AbstractDateUnitTypeQuestion dateUnitTypeQuestion;
 	private WhenEditorLowerPanel lowerPanel;
 	private UiComboBox dateUnitTypeCombo;
 }

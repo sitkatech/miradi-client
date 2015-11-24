@@ -18,40 +18,33 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.dialogfields;
+package org.miradi.dialogs.tablerenderers;
 
+import org.miradi.dialogfields.WhoPlannedCodeListEditorComponent;
 import org.miradi.dialogs.base.DisposablePanel;
-import org.miradi.dialogs.planning.upperPanel.WhoAssignedStateLogic;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ProjectResourceQuestion;
-import org.miradi.utils.CodeList;
 
-public class WhoAssignedEditorField extends WhoEditorField
+public class WhoPlannedColumnTableCellEditorFactory extends AbstractPopupTableCellEditorFactory
 {
-	public WhoAssignedEditorField(MainWindow mainWindow, ORef refToUse)
+	public WhoPlannedColumnTableCellEditorFactory(MainWindow mainWindowToUse, RowColumnSelectionProvider tableToUse)
 	{
-		super(mainWindow, refToUse);
-	}
-
+		super(mainWindowToUse, tableToUse);
+	}	
+	
 	@Override
-	protected CodeList getWhoTotalsCodeList(BaseObject baseObject)
+	protected DisposablePanel createEditorComponent(BaseObject baseObjectForRow)
 	{
-		return WhoAssignedCodeListEditorComponent.getWhoTotalCodes(baseObject);
+		final ProjectResourceQuestion question = new ProjectResourceQuestion(getProject());
+
+		return new WhoPlannedCodeListEditorComponent(baseObjectForRow, question);
 	}
-
+	
 	@Override
-	protected boolean isWhoCellEditable()
+	protected String getDialogTitle()
 	{
-		BaseObject baseObject = BaseObject.find(getProject(), getORef());
-
-		return new WhoAssignedStateLogic(getProject()).isWhoCellEditable(baseObject);
-	}
-
-	@Override
-	protected DisposablePanel createEditorPanel(BaseObject baseObject, ProjectResourceQuestion question)
-	{
-		return new WhoAssignedCodeListEditorComponent(baseObject, question);
+		return EAM.text("Project Resource");
 	}
 }

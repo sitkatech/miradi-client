@@ -27,14 +27,14 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ResourceAssignment;
+import org.miradi.objects.ResourcePlan;
 import org.miradi.project.Project;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.OptionalDouble;
 
-public class WhoAssignedStateLogic
+public class WhoPlannedStateLogic
 {
-	public WhoAssignedStateLogic(Project projectToUse)
+	public WhoPlannedStateLogic(Project projectToUse)
 	{
 		project = projectToUse;
 	}
@@ -49,32 +49,32 @@ public class WhoAssignedStateLogic
 			if (doAnySubTasksHaveAnyWorkUnitData(baseObjectToUse))
 				return false;
 
-			return doAllResourceAssignmentsHaveIdenticalWorkUnits(baseObjectToUse);
+			return doAllResourcePlansHaveIdenticalWorkUnits(baseObjectToUse);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return false;		
+			return false;
 		}
 	}
 	
 	private boolean doAnySubTasksHaveAnyWorkUnitData(BaseObject baseObjectForRow) throws Exception
 	{
-		TimePeriodCostsMap timePeriodCostsMap = baseObjectForRow.getTotalTimePeriodCostsMapForSubTasks(baseObjectForRow.getSubTaskRefs(), BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
+		TimePeriodCostsMap timePeriodCostsMap = baseObjectForRow.getTotalTimePeriodCostsMapForSubTasks(baseObjectForRow.getSubTaskRefs(), BaseObject.TAG_RESOURCE_PLAN_IDS);
 		TimePeriodCosts wholeProjectTimePeriodCosts = timePeriodCostsMap.calculateTimePeriodCosts(new DateUnit());
 		OptionalDouble totalSubTaskWorkUnitsForAllTimePeriods = wholeProjectTimePeriodCosts.getTotalWorkUnits();
 
 		return totalSubTaskWorkUnitsForAllTimePeriods.hasValue();
 	}
 	
-	private boolean doAllResourceAssignmentsHaveIdenticalWorkUnits(BaseObject baseObjectToUse) throws Exception
+	private boolean doAllResourcePlansHaveIdenticalWorkUnits(BaseObject baseObjectToUse) throws Exception
 	{
-			ORefList resourceAssignments = baseObjectToUse.getResourceAssignmentRefs();
+			ORefList resourcePlans = baseObjectToUse.getResourcePlanRefs();
 			DateUnitEffortList expectedDateUnitEffortList = null;
-			for (int index = 0; index < resourceAssignments.size(); ++index)
+			for (int index = 0; index < resourcePlans.size(); ++index)
 			{
-				ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignments.get(index));
-				DateUnitEffortList thisDateUnitEffortList = resourceAssignment.getDateUnitEffortList();
+				ResourcePlan resourcePlan = ResourcePlan.find(getProject(), resourcePlans.get(index));
+				DateUnitEffortList thisDateUnitEffortList = resourcePlan.getDateUnitEffortList();
 				if (expectedDateUnitEffortList == null)
 					expectedDateUnitEffortList = thisDateUnitEffortList;
 				

@@ -62,6 +62,14 @@ public class TimePeriodCosts
 		addToCategorizedQuantities(workUnitCategorizedQuantities, new CategorizedQuantity(resourceRef, fundingSourceRef, accountingCodeRef, categoryOneRef, categoryTwoRef, workUnits));
 	}
 
+	public TimePeriodCosts(ORef resourceRef, OptionalDouble workUnits)
+	{
+		this();
+
+		addWorkUnitsToTotal(workUnits);
+		addToCategorizedQuantities(workUnitCategorizedQuantities, new CategorizedQuantity(resourceRef, ORef.INVALID, ORef.INVALID, ORef.INVALID, ORef.INVALID, workUnits));
+	}
+
 	public void add(TimePeriodCosts timePeriodCosts)
 	{
 		addExpensesToTotal(timePeriodCosts);
@@ -254,7 +262,7 @@ public class TimePeriodCosts
 		Vector<CategorizedQuantity> categorizedQuantitiesToRetain = new Vector<CategorizedQuantity>();
 		for(CategorizedQuantity categorizedQuantityToFilter : categorizedQuantities)
 		{
-			if (categorizedQuantityToFilter.containsAtleastOne(refsToRetain))
+			if (categorizedQuantityToFilter.containsAtLeastOne(refsToRetain))
 				categorizedQuantitiesToRetain.add(categorizedQuantityToFilter);
 		}
 		

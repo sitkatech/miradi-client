@@ -71,8 +71,8 @@ public class TestCategorizedQuantity extends TestCaseWithProject
 
 	private void verifyContainsMethods(CategorizedQuantity categorizedQuantity, ORef ref)
 	{
-		assertTrue("sould contain atleast one of ref?", categorizedQuantity.containsAtleastOne(new ORefSet(ref)));
-		assertTrue("sould contain ref?", categorizedQuantity.containsRef(ref));
+		assertTrue("should contain at least one of ref?", categorizedQuantity.containsAtLeastOne(new ORefSet(ref)));
+		assertTrue("should contain ref?", categorizedQuantity.containsRef(ref));
 		assertTrue("should contain ref?", categorizedQuantity.getContainingRefs().contains(ref));
 	}
 	

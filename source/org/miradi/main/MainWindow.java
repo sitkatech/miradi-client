@@ -1106,7 +1106,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		if (multiStartDate.after(multiEndDate))
 			return false;
 
-		return SummaryPlanningWorkPlanSubPanel.hasDataOutsideOfProjectDateRange(getProject());
+		return SummaryPlanningWorkPlanSubPanel.hasAssignedDataOutsideOfProjectDateRange(getProject());
 	}
 
 	private void updateAfterCommand(CommandExecutedEvent event)

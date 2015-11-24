@@ -84,8 +84,7 @@ public class ResourcePlan extends AbstractPlanningObject
 	@Override
 	protected TimePeriodCosts createTimePeriodCosts(OptionalDouble quantity)
 	{
-		// TODO: MRD-5939 - need to implement...
-		return null;
+		return new TimePeriodCosts(getResourceRef(), quantity);
 	}
 
 	@Override

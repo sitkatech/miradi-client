@@ -34,16 +34,15 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
-import org.miradi.objects.Strategy;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
-import org.miradi.schemas.StrategySchema;
 
 public class ProjectTotalCalculator implements CommandExecutedListener
 {
 	public ProjectTotalCalculator(Project projectToUse)
 	{
 		project = projectToUse;
-		modeToTimePeriodCostsMapMap = new HashMap<String, TimePeriodCostsMap>();
+		modeToTimePeriodPlannedCostsMapMap = new HashMap<String, TimePeriodCostsMap>();
+		modeToTimePeriodAssignedCostsMapMap = new HashMap<String, TimePeriodCostsMap>();
 	}
 	
 	public void enable()
@@ -64,49 +63,88 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 	
 	public void clear()
 	{
-		modeToTimePeriodCostsMapMap.clear();
+		modeToTimePeriodAssignedCostsMapMap.clear();
+		modeToTimePeriodPlannedCostsMapMap.clear();
 	}
 
-	public TimePeriodCostsMap calculateProjectTotals() throws Exception
+	public TimePeriodCostsMap calculateProjectPlannedTotals(String mode) throws Exception
 	{
-		return calculateProjectTotals(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE);
-	}
-	
-	public TimePeriodCostsMap calculateProjectTotals(String mode) throws Exception
-	{
-		if(!modeToTimePeriodCostsMapMap.containsKey(mode))
-			modeToTimePeriodCostsMapMap.put(mode, computeTotalTimePeriodCostsMap(mode));
+		if(!modeToTimePeriodPlannedCostsMapMap.containsKey(mode))
+			modeToTimePeriodPlannedCostsMapMap.put(mode, computeTotalTimePeriodPlannedCostsMap(mode));
 		
-		return modeToTimePeriodCostsMapMap.get(mode);
+		return modeToTimePeriodPlannedCostsMapMap.get(mode);
 	}
 
-	public TimePeriodCostsMap calculateDiagramObjectTotals(DiagramObject baseObject, String mode) throws Exception
+	public TimePeriodCostsMap calculateProjectAssignedTotals() throws Exception
+	{
+		return calculateProjectAssignedTotals(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE);
+	}
+
+	public TimePeriodCostsMap calculateProjectAssignedTotals(String mode) throws Exception
+	{
+		if(!modeToTimePeriodAssignedCostsMapMap.containsKey(mode))
+			modeToTimePeriodAssignedCostsMapMap.put(mode, computeTotalTimePeriodAssignedCostsMap(mode));
+
+		return modeToTimePeriodAssignedCostsMapMap.get(mode);
+	}
+
+	public TimePeriodCostsMap calculateDiagramObjectPlannedTotals(DiagramObject baseObject, String mode) throws Exception
 	{
 		if (shouldOnlyIncludeMonitoringData(mode))
-			return getTotalTimePeriodCostsMap(getIncludedDiagramIndicators(baseObject.getRef()));
+			return getTotalTimePeriodPlannedCostsMap(getIncludedDiagramIndicators(baseObject.getRef()));
 
 		if (shouldOnlyIncludeActionsData(mode))
-			return getTotalTimePeriodCostsMap(getIncludedNonDraftStrategies(baseObject.getRef()));
+			return getTotalTimePeriodPlannedCostsMap(getIncludedNonDraftStrategies(baseObject.getRef()));
 
 		TimePeriodCostsMap merged = new TimePeriodCostsMap();
-		merged.mergeAll(getTotalTimePeriodCostsMap(getIncludedDiagramIndicators(baseObject.getRef())));
-		merged.mergeAll(getTotalTimePeriodCostsMap(getIncludedNonDraftStrategies(baseObject.getRef())));
+		merged.mergeAll(getTotalTimePeriodPlannedCostsMap(getIncludedDiagramIndicators(baseObject.getRef())));
+		merged.mergeAll(getTotalTimePeriodPlannedCostsMap(getIncludedNonDraftStrategies(baseObject.getRef())));
 
 		return merged;
 	}
 
-	private TimePeriodCostsMap computeTotalTimePeriodCostsMap(String mode)	throws Exception
+	public TimePeriodCostsMap calculateDiagramObjectAssignedTotals(DiagramObject baseObject, String mode) throws Exception
 	{
 		if (shouldOnlyIncludeMonitoringData(mode))
-			return getTotalTimePeriodCostsMap(getIncludedDiagramIndicators());
+			return getTotalTimePeriodAssignedCostsMap(getIncludedDiagramIndicators(baseObject.getRef()));
+
+		if (shouldOnlyIncludeActionsData(mode))
+			return getTotalTimePeriodAssignedCostsMap(getIncludedNonDraftStrategies(baseObject.getRef()));
+
+		TimePeriodCostsMap merged = new TimePeriodCostsMap();
+		merged.mergeAll(getTotalTimePeriodAssignedCostsMap(getIncludedDiagramIndicators(baseObject.getRef())));
+		merged.mergeAll(getTotalTimePeriodAssignedCostsMap(getIncludedNonDraftStrategies(baseObject.getRef())));
+
+		return merged;
+	}
+
+	private TimePeriodCostsMap computeTotalTimePeriodPlannedCostsMap(String mode)	throws Exception
+	{
+		if (shouldOnlyIncludeMonitoringData(mode))
+			return getTotalTimePeriodPlannedCostsMap(getIncludedDiagramIndicators());
 		
 		if (shouldOnlyIncludeActionsData(mode))
-			return getTotalTimePeriodCostsMap(getIncludedNonDraftStrategies());
+			return getTotalTimePeriodPlannedCostsMap(getIncludedNonDraftStrategies());
 		
 		TimePeriodCostsMap merged = new TimePeriodCostsMap();
-		merged.mergeAll(calculateProjectTotals(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE));
-		merged.mergeAll(calculateProjectTotals(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE));
+		merged.mergeAll(calculateProjectPlannedTotals(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE));
+		merged.mergeAll(calculateProjectPlannedTotals(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE));
 		
+		return merged;
+	}
+
+	private TimePeriodCostsMap computeTotalTimePeriodAssignedCostsMap(String mode)	throws Exception
+	{
+		if (shouldOnlyIncludeMonitoringData(mode))
+			return getTotalTimePeriodAssignedCostsMap(getIncludedDiagramIndicators());
+
+		if (shouldOnlyIncludeActionsData(mode))
+			return getTotalTimePeriodAssignedCostsMap(getIncludedNonDraftStrategies());
+
+		TimePeriodCostsMap merged = new TimePeriodCostsMap();
+		merged.mergeAll(calculateProjectAssignedTotals(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE));
+		merged.mergeAll(calculateProjectAssignedTotals(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE));
+
 		return merged;
 	}
 
@@ -160,15 +198,27 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 		return indicators;
 	}
 
-	private TimePeriodCostsMap getTotalTimePeriodCostsMap(Set<BaseObject> baseObjects) throws Exception
+	private TimePeriodCostsMap getTotalTimePeriodPlannedCostsMap(Set<BaseObject> baseObjects) throws Exception
 	{
 		TimePeriodCostsMap totalTimePeriodCostsMap = new TimePeriodCostsMap();
 		for(BaseObject baseObject : baseObjects)
 		{
-			TimePeriodCostsMap indicatorTimePeriodCostsMap = baseObject.getTotalTimePeriodCostsMap();
+			TimePeriodCostsMap indicatorTimePeriodCostsMap = baseObject.getTotalTimePeriodCostsMapForPlans();
 			totalTimePeriodCostsMap.mergeAll(indicatorTimePeriodCostsMap);
 		}
 		
+		return totalTimePeriodCostsMap;
+	}
+
+	private TimePeriodCostsMap getTotalTimePeriodAssignedCostsMap(Set<BaseObject> baseObjects) throws Exception
+	{
+		TimePeriodCostsMap totalTimePeriodCostsMap = new TimePeriodCostsMap();
+		for(BaseObject baseObject : baseObjects)
+		{
+			TimePeriodCostsMap indicatorTimePeriodCostsMap = baseObject.getTotalTimePeriodCostsMapForAssignments();
+			totalTimePeriodCostsMap.mergeAll(indicatorTimePeriodCostsMap);
+		}
+
 		return totalTimePeriodCostsMap;
 	}
 
@@ -210,5 +260,6 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 	}
 	
 	private Project project;
-	private HashMap<String, TimePeriodCostsMap> modeToTimePeriodCostsMapMap;
+	private HashMap<String, TimePeriodCostsMap> modeToTimePeriodAssignedCostsMapMap;
+	private HashMap<String, TimePeriodCostsMap> modeToTimePeriodPlannedCostsMapMap;
 }

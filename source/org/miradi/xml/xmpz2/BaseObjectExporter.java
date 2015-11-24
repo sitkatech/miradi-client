@@ -121,7 +121,7 @@ public class BaseObjectExporter implements Xmpz2XmlConstants
     protected void writeOptionalCalculatedTimePeriodCosts(BaseObject baseObject, BaseObjectSchema baseObjectSchema) throws Exception
     {
         // we need to check if any of these optional values should be exported before we write out the 2 container elements that surround them
-        final TimePeriodCostsMap totalBudgetCostsTimePeriodCostsMap = baseObject.getTotalTimePeriodCostsMap();
+        final TimePeriodCostsMap totalBudgetCostsTimePeriodCostsMap = baseObject.getTotalTimePeriodCostsMapForAssignments();
         final TimePeriodCosts totalBudgetCost = totalBudgetCostsTimePeriodCostsMap.calculateTotalBudgetCost();
         final DateRange projectPlanningDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
         final DateRange totalDateRange = totalBudgetCostsTimePeriodCostsMap.getRolledUpDateRange(projectPlanningDateRange);
@@ -172,7 +172,7 @@ public class BaseObjectExporter implements Xmpz2XmlConstants
             getWriter().writeEndElement(baseObjectSchema.getObjectName() + TIME_PERIOD_COSTS);
         }
     }
-	
+
 	private void writeResourceIds(String elementName, Set<ORef> resourceRefs) throws Exception
 	{
 		if(resourceRefs.isEmpty())

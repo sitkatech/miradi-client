@@ -92,11 +92,16 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return false;
 	}
 	
-	public boolean isAssignedWhenColumn(int modelColumn)
+	public boolean isPlannedWhenColumn(int modelColumn)
 	{
 		return false;
 	}
 	
+	public boolean isAssignedWhenColumn(int modelColumn)
+	{
+		return false;
+	}
+
 	public boolean isFormattedColumn(int modelColumn)
 	{
 		return false;
@@ -161,27 +166,48 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		resourceRefsFilter = resourceRefFiltersToUse;
 	}
 	
-	public TimePeriodCosts calculateTimePeriodCosts(BaseObject baseObject, DateUnit dateUnit, String workPlanBudgetMode) throws Exception
+	public TimePeriodCosts calculateTimePeriodPlannedCosts(BaseObject baseObject, DateUnit dateUnit, String workPlanBudgetMode) throws Exception
 	{
-		return calculateTimePeriodCostsMap(baseObject, workPlanBudgetMode).calculateTimePeriodCosts(dateUnit);
+		return calculateTimePeriodPlannedCostsMap(baseObject, workPlanBudgetMode).calculateTimePeriodCosts(dateUnit);
 	}
 
-	public TimePeriodCostsMap calculateTimePeriodCostsMap(BaseObject baseObject, String workPlanBudgetMode) throws Exception
+	public TimePeriodCostsMap calculateTimePeriodPlannedCostsMap(BaseObject baseObject, String workPlanBudgetMode) throws Exception
 	{
 		if (ProjectMetadata.is(baseObject))
-			return getProject().getTimePeriodCostsMapsCache().calculateProjectTotals(workPlanBudgetMode);
+			return getProject().getTimePeriodCostsMapsCache().calculateProjectPlannedTotals(workPlanBudgetMode);
 
 		if (ConceptualModelDiagram.is(baseObject.getRef()) || ResultsChainDiagram.is(baseObject.getRef()))
-			return getProject().getTimePeriodCostsMapsCache().calculateDiagramObjectTotals((DiagramObject) baseObject, workPlanBudgetMode);
+			return getProject().getTimePeriodCostsMapsCache().calculateDiagramObjectPlannedTotals((DiagramObject) baseObject, workPlanBudgetMode);
 
-		return getTotalTimePeriodCostsMap(baseObject);
+		return getTotalTimePeriodPlannedCostsMap(baseObject);
 	}
 
-	protected TimePeriodCostsMap getTotalTimePeriodCostsMap(BaseObject baseObject) throws Exception
+	protected TimePeriodCostsMap getTotalTimePeriodPlannedCostsMap(BaseObject baseObject) throws Exception
 	{
-		return getProject().getTimePeriodCostsMapsCache().getTotalTimePeriodCostsMap(baseObject);
+		return getProject().getTimePeriodCostsMapsCache().getTotalTimePeriodPlannedCostsMap(baseObject);
 	}
-	
+
+	public TimePeriodCosts calculateTimePeriodAssignedCosts(BaseObject baseObject, DateUnit dateUnit, String workPlanBudgetMode) throws Exception
+	{
+		return calculateTimePeriodAssignedCostsMap(baseObject, workPlanBudgetMode).calculateTimePeriodCosts(dateUnit);
+	}
+
+	public TimePeriodCostsMap calculateTimePeriodAssignedCostsMap(BaseObject baseObject, String workPlanBudgetMode) throws Exception
+	{
+		if (ProjectMetadata.is(baseObject))
+			return getProject().getTimePeriodCostsMapsCache().calculateProjectAssignedTotals(workPlanBudgetMode);
+
+		if (ConceptualModelDiagram.is(baseObject.getRef()) || ResultsChainDiagram.is(baseObject.getRef()))
+			return getProject().getTimePeriodCostsMapsCache().calculateDiagramObjectAssignedTotals((DiagramObject) baseObject, workPlanBudgetMode);
+
+		return getTotalTimePeriodAssignedCostsMap(baseObject);
+	}
+
+	protected TimePeriodCostsMap getTotalTimePeriodAssignedCostsMap(BaseObject baseObject) throws Exception
+	{
+		return getProject().getTimePeriodCostsMapsCache().getTotalTimePeriodAssignedCostsMap(baseObject);
+	}
+
 	protected RowColumnBaseObjectProvider getRowColumnObjectProvider()
 	{
 		return objectProvider;

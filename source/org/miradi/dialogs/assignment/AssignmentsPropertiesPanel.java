@@ -26,6 +26,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.FillerLabel;
 import org.miradi.views.umbrella.ObjectPicker;
@@ -39,7 +40,7 @@ public class AssignmentsPropertiesPanel extends ObjectDataInputPanelWithSections
 		assignmentEditor = new ResourceAssignmentEditorComponent(mainWindowToUse, picker);
 		createSingleSection("");
 
-		ObjectDataInputField leaderDropDownField = createLeaderDropDownField(objectType, BaseObject.TAG_ASSIGNED_LEADER_RESOURCE);
+		ObjectDataInputField leaderDropDownField = createAssignedLeaderDropDownField(objectType, BaseObject.TAG_ASSIGNED_LEADER_RESOURCE);
 		addFieldsOnOneLine("", new ObjectDataInputField[]{leaderDropDownField});
 
 		add(new FillerLabel());
@@ -90,6 +91,12 @@ public class AssignmentsPropertiesPanel extends ObjectDataInputPanelWithSections
 		if (tag.equals(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
 			return true;
 		
+		if (tag.equals(CustomPlanningColumnsQuestion.META_ASSIGNED_WHO_TOTAL))
+			return true;
+
+		if (tag.equals(CustomPlanningColumnsQuestion.META_ASSIGNED_WHEN_TOTAL))
+			return true;
+
 		return super.doesSectionContainFieldWithTag(tag);
 	}
 	

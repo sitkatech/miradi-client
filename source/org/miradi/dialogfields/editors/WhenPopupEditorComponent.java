@@ -26,28 +26,30 @@ import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
+import org.miradi.project.Project;
 import org.miradi.utils.AbstractPopupEditorComponent;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.HtmlUtilities;
 
-/*
- * FIXME medium: This code currently retrieves dialog data after the dialog has been disposed
- */
-public class WhenPopupEditorComponent extends AbstractPopupEditorComponent
+public abstract class WhenPopupEditorComponent extends AbstractPopupEditorComponent
 {
 	public WhenPopupEditorComponent(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
 	}
 
+	abstract protected WhenEditorComponent createWhenEditorComponent(Project projectToUse, BaseObject baseObjectForRow) throws Exception;
+
+	abstract protected String getDialogTitle();
+
 	@Override
 	protected void invokePopupEditor()
 	{
 		try
 		{
-			String title = EAM.substituteSingleString(EAM.text("When - %s"), getBaseObjectForRowLabel());
+			String title = getDialogTitle();
 			ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), title);
-			whenEditorPanel = new WhenEditorComponent(getMainWindow().getProject().getProjectCalendar(), baseObjectForRow);
+			whenEditorPanel = createWhenEditorComponent(getMainWindow().getProject(), baseObjectForRow);
 			dialog.setMainPanel(whenEditorPanel);
 			dialog.pack();
 			Utilities.centerFrame(dialog);
@@ -77,7 +79,7 @@ public class WhenPopupEditorComponent extends AbstractPopupEditorComponent
 		}
 	}
 	
-	private String getBaseObjectForRowLabel()
+	protected String getBaseObjectForRowLabel()
 	{
 		String combinedValue = baseObjectForRow.combineShortLabelAndLabel();
 		return HtmlUtilities.convertHtmlToPlainText(combinedValue);
