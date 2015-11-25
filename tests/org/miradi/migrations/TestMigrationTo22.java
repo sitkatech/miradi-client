@@ -44,7 +44,7 @@ public class TestMigrationTo22 extends AbstractTestMigration
 	{
 		ORef strategyRef = getProject().createStrategy().getRef();
 
-		ensureResourcePlansNotAdded(strategyRef);
+		ensureForwardMigrationResourcePlansNotAdded(strategyRef);
 	}
 
 	public void testStrategyForwardMigrationEmptyResourceAssignment() throws Exception
@@ -55,7 +55,7 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
 
-		ensureResourcePlansNotAdded(strategy.getRef());
+		ensureForwardMigrationResourcePlansNotAdded(strategy.getRef());
 	}
 
 	public void testStrategyForwardMigrationWithNonZeroEffortResourceAssignment() throws Exception
@@ -65,7 +65,7 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
 
-		ensureResourcePlansNotAdded(strategy.getRef());
+		ensureForwardMigrationResourcePlansNotAdded(strategy.getRef());
 	}
 
 	public void testStrategyForwardMigrationWithZeroEffortResourceAssignment() throws Exception
@@ -79,7 +79,7 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
 
-		ensureResourcePlansAdded(strategy.getRef(), resourceAssignment);
+		ensureForwardMigrationResourcePlansAdded(strategy.getRef(), resourceAssignment);
 	}
 
 	public void testStrategyForwardMigrationWithMixedEffortResourceAssignments() throws Exception
@@ -99,7 +99,7 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment1.getId(), resourceAssignment2.getId()});
 		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
 
-		ensureResourcePlansNotAdded(strategy.getRef());
+		ensureForwardMigrationResourcePlansNotAdded(strategy.getRef());
 	}
 
 	public void testStrategyForwardMigrationWithMixedEffortResourceAssignment() throws Exception
@@ -114,7 +114,7 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
 
-		ensureResourcePlansNotAdded(strategy.getRef());
+		ensureForwardMigrationResourcePlansNotAdded(strategy.getRef());
 	}
 
 	public void testStrategyForwardMigrationWithZeroEffortResourceAssignments() throws Exception
@@ -261,11 +261,25 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		assertEquals("Quantity on resource plan date unit effort should be 0", resourcePlanDateUnitEffort2.getQuantity(), 0.0);
 	}
 
+	public void testStrategyReverseMigration() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		ResourceAssignment resourceAssignment = getProject().createAndPopulateResourceAssignment();
+
+		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
+		dateUnitEffortList.add(getProject().createDateUnitEffort(2007, 2008, 0.0));
+		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toJson().toString());
+		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
+		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
+
+		ensureReverseMigrationResourcePlansRemoved(strategy.getRef());
+	}
+
 	public void testTaskForwardMigrationNoResourceAssignments() throws Exception
 	{
 		Strategy strategy = getProject().createStrategy();
 		ORef taskRef = getProject().createTask(strategy).getRef();
-		ensureResourcePlansNotAdded(taskRef);
+		ensureForwardMigrationResourcePlansNotAdded(taskRef);
 	}
 
 	public void testTaskForwardMigrationWithZeroEffortResourceAssignment() throws Exception
@@ -280,14 +294,29 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(task, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
 
-		ensureResourcePlansAdded(task.getRef(), resourceAssignment);
+		ensureForwardMigrationResourcePlansAdded(task.getRef(), resourceAssignment);
+	}
+
+	public void testTaskReverseMigration() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		Task task = getProject().createTask(strategy);
+		ResourceAssignment resourceAssignment = getProject().createAndPopulateResourceAssignment();
+
+		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
+		dateUnitEffortList.add(getProject().createDateUnitEffort(2007, 2008, 0.0));
+		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toJson().toString());
+		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
+		getProject().fillObjectUsingCommand(task, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
+
+		ensureReverseMigrationResourcePlansRemoved(task.getRef());
 	}
 
 	public void testIndicatorForwardMigrationNoResourceAssignments() throws Exception
 	{
 		Strategy strategy = getProject().createStrategy();
 		ORef indicatorRef = getProject().createIndicator(strategy).getRef();
-		ensureResourcePlansNotAdded(indicatorRef);
+		ensureForwardMigrationResourcePlansNotAdded(indicatorRef);
 	}
 
 	public void testIndicatorForwardMigrationWithZeroEffortResourceAssignment() throws Exception
@@ -302,10 +331,25 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(indicator, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
 
-		ensureResourcePlansAdded(indicator.getRef(), resourceAssignment);
+		ensureForwardMigrationResourcePlansAdded(indicator.getRef(), resourceAssignment);
 	}
 
-	private void ensureResourcePlansNotAdded(ORef objectRef) throws Exception
+	public void testIndicatorReverseMigration() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		Indicator indicator = getProject().createIndicator(strategy);
+		ResourceAssignment resourceAssignment = getProject().createAndPopulateResourceAssignment();
+
+		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
+		dateUnitEffortList.add(getProject().createDateUnitEffort(2007, 2008, 0.0));
+		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toJson().toString());
+		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
+		getProject().fillObjectUsingCommand(indicator, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
+
+		ensureReverseMigrationResourcePlansRemoved(indicator.getRef());
+	}
+
+	private void ensureForwardMigrationResourcePlansNotAdded(ORef objectRef) throws Exception
 	{
 		RawProject reverseMigratedProject = reverseMigrate(new VersionRange(MigrationTo22.VERSION_TO));
 		migrateProject(reverseMigratedProject, new VersionRange(Project.VERSION_HIGH));
@@ -321,7 +365,7 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		assertTrue("No resource plans should have been added during forward migration", rawResourcePlanPool == null || rawResourcePlanPool.isEmpty());
 	}
 
-	private void ensureResourcePlansAdded(ORef objectRef, ResourceAssignment resourceAssignment) throws Exception
+	private void ensureForwardMigrationResourcePlansAdded(ORef objectRef, ResourceAssignment resourceAssignment) throws Exception
 	{
 		RawProject reverseMigratedProject = reverseMigrate(new VersionRange(MigrationTo22.VERSION_TO));
 		migrateProject(reverseMigratedProject, new VersionRange(Project.VERSION_HIGH));
@@ -345,6 +389,21 @@ public class TestMigrationTo22 extends AbstractTestMigration
 
 		DateUnitEffort resourcePlanDateUnitEffort = resourcePlanDateUnitEffortList.getDateUnitEffort(0);
 		assertEquals("Quantity on resource plan date unit effort should be 0", resourcePlanDateUnitEffort.getQuantity(), 0.0);
+	}
+
+	private void ensureReverseMigrationResourcePlansRemoved(ORef objectRef) throws Exception
+	{
+		RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo22.VERSION_TO));
+
+		RawPool rawPoolForType = rawProject.getRawPoolForType(objectRef.getObjectType());
+		for(ORef ref : rawPoolForType.keySet())
+		{
+			RawObject rawObject = rawPoolForType.get(ref);
+			assertFalse("Field should have been removed during reverse migration?", rawObject.containsKey(MigrationTo22.TAG_RESOURCE_PLAN_IDS));
+		}
+
+		RawPool rawResourcePlanPool = rawProject.getRawPoolForType(ResourcePlanSchema.getObjectType());
+		assertTrue("Resource plans should have been removed during forward migration", rawResourcePlanPool == null || rawResourcePlanPool.isEmpty());
 	}
 
 	@Override
