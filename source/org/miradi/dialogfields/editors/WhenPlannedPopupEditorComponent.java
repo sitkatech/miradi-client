@@ -41,6 +41,6 @@ public class WhenPlannedPopupEditorComponent extends WhenPopupEditorComponent
 	@Override
 	protected String getDialogTitle()
 	{
-		return EAM.substituteSingleString(EAM.text("When Planned - %s"), getBaseObjectForRowLabel());
+		return EAM.substituteSingleString(EAM.text("When Plan - %s"), getBaseObjectForRowLabel());
 	}
 }
