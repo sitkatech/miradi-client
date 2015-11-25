@@ -20,15 +20,21 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations.forward;
 
+import org.martus.util.MultiCalendar;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.migrations.*;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResourcePlanSchema;
+import org.miradi.utils.DateUnitEffort;
+import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.HtmlUtilities;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Vector;
 
@@ -118,15 +124,110 @@ public class MigrationTo22 extends AbstractMigration
 		public MigrationResult internalVisit(ORef rawObjectRef) throws Exception
 		{
 			RawObject rawObject = getRawProject().findObject(rawObjectRef);
-			if (rawObject != null)
+			if (rawObject != null && rawObject.containsKey(TAG_RESOURCE_ASSIGNMENT_IDS))
 			{
-				// TODO: MRD-5939 - need to do the following:
-				//	- for each parent object, look at all of it's resource assignments
-				//	- if all of the assignments are 'empty', create resource plans for each
-				//	- update parent object's list of resource plan ids
+				boolean shouldCreateResourcePlans = true;
+
+				ArrayList<RawObject> resourceAssignments = getResourceAssignments(rawObject);
+				for (RawObject resourceAssignment : resourceAssignments)
+				{
+					if (!canMigrateResourceAssignment(resourceAssignment))
+					{
+						shouldCreateResourcePlans = false;
+						break;
+					}
+				}
+
+				if (shouldCreateResourcePlans)
+				{
+					IdList resourcePlanIdList = new IdList(ResourcePlanSchema.getObjectType());
+					RawPool resourcePlanPool = getOrCreateResourcePlanPool();
+
+					for (RawObject resourceAssignment : resourceAssignments)
+					{
+						if (resourceAssignment.containsKey(TAG_DATEUNIT_EFFORTS))
+						{
+							DateUnitEffortList resourceAssignmentDateUnitEffortList = new DateUnitEffortList(resourceAssignment.get(TAG_DATEUNIT_EFFORTS));
+							DateUnitEffortList resourcePlanDateUnitEffortList = new DateUnitEffortList();
+
+							for (int index = 0; index < resourceAssignmentDateUnitEffortList.size(); ++index)
+							{
+								DateUnitEffort resourceAssignmentDateUnitEffort = resourceAssignmentDateUnitEffortList.getDateUnitEffort(index);
+								if (resourceAssignmentDateUnitEffort.getDateUnit().isDay())
+								{
+									DateUnit resourceAssignmentDateUnit = resourceAssignmentDateUnitEffort.getDateUnit();
+									MultiCalendar cal = MultiCalendar.createFromGregorianYearMonthDay(resourceAssignmentDateUnit.getYear(), resourceAssignmentDateUnit.getMonth(), 1);
+									DateUnit resourcePlanDateUnit = DateUnit.createMonthDateUnit(cal.toIsoDateString());
+									DateUnitEffort resourcePlanDateUnitEffort = new DateUnitEffort(resourcePlanDateUnit, 0);
+									safeAddDateUnitEffort(resourcePlanDateUnitEffortList, resourcePlanDateUnitEffort);
+								}
+								else
+								{
+									safeAddDateUnitEffort(resourcePlanDateUnitEffortList, resourceAssignmentDateUnitEffort);
+								}
+							}
+
+							RawObject newResourcePlan = new RawObject(ResourcePlanSchema.getObjectType());
+							newResourcePlan.setData(TAG_DATEUNIT_EFFORTS, resourcePlanDateUnitEffortList.toJson().toString());
+							final BaseId nextHighestId = getRawProject().getNextHighestId();
+							final ORef newResourcePlanRef = new ORef(ObjectType.RESOURCE_PLAN, nextHighestId);
+							resourcePlanPool.put(newResourcePlanRef, newResourcePlan);
+							resourcePlanIdList.add(nextHighestId);
+						}
+					}
+
+					if (!resourcePlanIdList.isEmpty())
+						rawObject.setData(TAG_RESOURCE_PLAN_IDS, resourcePlanIdList.toJson().toString());
+				}
 			}
 
 			return MigrationResult.createSuccess();
+		}
+
+		private RawPool getOrCreateResourcePlanPool()
+		{
+			getRawProject().ensurePoolExists(ResourcePlanSchema.getObjectType());
+			return getRawProject().getRawPoolForType(ResourcePlanSchema.getObjectType());
+		}
+
+		private ArrayList<RawObject> getResourceAssignments(RawObject rawObject) throws Exception
+		{
+			ArrayList<RawObject> resourceAssignments = new ArrayList<RawObject>();
+
+			IdList resourceAssignmentIdList = new IdList(ResourceAssignmentSchema.getObjectType(), rawObject.get(TAG_RESOURCE_ASSIGNMENT_IDS));
+
+			for(BaseId resourceAssignmentId : resourceAssignmentIdList.asVector())
+			{
+				ORef resourceAssignmentRef = new ORef(ResourceAssignmentSchema.getObjectType(), resourceAssignmentId);
+				RawObject rawResourceAssignment = getRawProject().findObject(resourceAssignmentRef);
+				if (rawResourceAssignment != null)
+					resourceAssignments.add(rawResourceAssignment);
+			}
+
+			return resourceAssignments;
+		}
+
+		private boolean canMigrateResourceAssignment(RawObject resourceAssignment) throws Exception
+		{
+			if (resourceAssignment.containsKey(TAG_DATEUNIT_EFFORTS))
+			{
+				DateUnitEffortList dateUnitEffortList = new DateUnitEffortList(resourceAssignment.get(TAG_DATEUNIT_EFFORTS));
+				for (int index = 0; index < dateUnitEffortList.size(); ++index)
+				{
+					DateUnitEffort dateUnitEffort = dateUnitEffortList.getDateUnitEffort(index);
+					if (dateUnitEffort.getQuantity() > 0)
+						return false;
+
+				}
+			}
+
+			return true;
+		}
+
+		private void safeAddDateUnitEffort(DateUnitEffortList dateUnitEffortList, DateUnitEffort dateUnitEffortToAdd)
+		{
+			if (dateUnitEffortList.getDateUnitEffortForSpecificDateUnit(dateUnitEffortToAdd.getDateUnit()) == null)
+				dateUnitEffortList.add(dateUnitEffortToAdd);
 		}
 
 		private int type;
@@ -189,6 +290,8 @@ public class MigrationTo22 extends AbstractMigration
 		private int type;
 	}
 
+	public static final String TAG_RESOURCE_ASSIGNMENT_IDS = "AssignmentIds";
+	public static final String TAG_DATEUNIT_EFFORTS = "Details";
 	public static final String TAG_RESOURCE_PLAN_IDS = "PlanIds";
 	public static final String TAG_LABEL = "Label";
 
