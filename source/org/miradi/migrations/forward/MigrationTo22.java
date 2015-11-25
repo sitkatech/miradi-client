@@ -169,6 +169,8 @@ public class MigrationTo22 extends AbstractMigration
 
 							RawObject newResourcePlan = new RawObject(ResourcePlanSchema.getObjectType());
 							newResourcePlan.setData(TAG_DATEUNIT_EFFORTS, resourcePlanDateUnitEffortList.toJson().toString());
+							if (resourceAssignment.containsKey(TAG_RESOURCE_ID))
+								newResourcePlan.setData(TAG_RESOURCE_ID, resourceAssignment.getData(TAG_RESOURCE_ID));
 							final BaseId nextHighestId = getRawProject().getNextHighestId();
 							final ORef newResourcePlanRef = new ORef(ObjectType.RESOURCE_PLAN, nextHighestId);
 							resourcePlanPool.put(newResourcePlanRef, newResourcePlan);
@@ -292,6 +294,7 @@ public class MigrationTo22 extends AbstractMigration
 
 	public static final String TAG_RESOURCE_ASSIGNMENT_IDS = "AssignmentIds";
 	public static final String TAG_DATEUNIT_EFFORTS = "Details";
+	public static final String TAG_RESOURCE_ID = "ResourceId";
 	public static final String TAG_RESOURCE_PLAN_IDS = "PlanIds";
 	public static final String TAG_LABEL = "Label";
 

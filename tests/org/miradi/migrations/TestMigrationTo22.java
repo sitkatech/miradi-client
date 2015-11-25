@@ -159,6 +159,7 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		DateUnit resourcePlanDateUnit1 = resourcePlanDateUnitEffort1.getDateUnit();
 		assertEquals("Date unit of resource plan effort should match that on assignment", resourcePlanDateUnit1, dateUnitEffort1.getDateUnit());
 		assertEquals("Quantity on resource plan date unit effort should be 0", resourcePlanDateUnitEffort1.getQuantity(), 0.0);
+		assertEquals("Resource populated on resource plan should match that on resource assignment", resourcePlan1.getData(ResourcePlan.TAG_RESOURCE_ID), resourceAssignment1.getData(ResourcePlan.TAG_RESOURCE_ID));
 
 		ORef resourcePlanRef2 = rawResourcePlanPool.getSortedReflist().get(1);
 		RawObject resourcePlan2 = reverseMigratedProject.findObject(resourcePlanRef2);
@@ -169,6 +170,7 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		DateUnit resourcePlanDateUnit2 = resourcePlanDateUnitEffort2.getDateUnit();
 		assertEquals("Date unit of resource plan effort should match that on assignment", resourcePlanDateUnit2, dateUnitEffort2.getDateUnit());
 		assertEquals("Quantity on resource plan date unit effort should be 0", resourcePlanDateUnitEffort2.getQuantity(), 0.0);
+		assertEquals("Resource populated on resource plan should match that on resource assignment", resourcePlan2.getData(ResourcePlan.TAG_RESOURCE_ID), resourceAssignment2.getData(ResourcePlan.TAG_RESOURCE_ID));
 	}
 
 	public void testStrategyForwardMigrationWithResourceAssignmentMultipleDays() throws Exception
@@ -211,6 +213,7 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		assertTrue("Date unit for resource plan should be month", resourcePlanDateUnit.isMonth());
 		assertEquals("Month for resource plan date unit should match date on assignment date unit effort", resourcePlanDateUnit.getMonth(), cal1.getGregorianMonth());
 		assertEquals("Quantity on resource plan date unit effort should be 0", resourcePlanDateUnitEffort.getQuantity(), 0.0);
+		assertEquals("Resource populated on resource plan should match that on resource assignment", resourcePlan.getData(ResourcePlan.TAG_RESOURCE_ID), resourceAssignment.getData(ResourcePlan.TAG_RESOURCE_ID));
 	}
 
 	public void testStrategyForwardMigrationWithResourceAssignmentMultipleMonths() throws Exception
@@ -247,6 +250,7 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		RawObject resourcePlan = reverseMigratedProject.findObject(resourcePlanRef);
 		DateUnitEffortList resourcePlanDateUnitEffortList = new DateUnitEffortList(resourcePlan.getData(ResourcePlan.TAG_DATEUNIT_EFFORTS));
 		assertEquals("Two date unit efforts should have been added for the resource plan (since source date units for the assignment were for different month)", resourcePlanDateUnitEffortList.size(), 2);
+		assertEquals("Resource populated on resource plan should match that on resource assignment", resourcePlan.getData(ResourcePlan.TAG_RESOURCE_ID), resourceAssignment.getData(ResourcePlan.TAG_RESOURCE_ID));
 
 		DateUnitEffort resourcePlanDateUnitEffort1 = resourcePlanDateUnitEffortList.getDateUnitEffort(0);
 		DateUnit resourcePlanDateUnit1 = resourcePlanDateUnitEffort1.getDateUnit();
@@ -389,6 +393,7 @@ public class TestMigrationTo22 extends AbstractTestMigration
 
 		DateUnitEffort resourcePlanDateUnitEffort = resourcePlanDateUnitEffortList.getDateUnitEffort(0);
 		assertEquals("Quantity on resource plan date unit effort should be 0", resourcePlanDateUnitEffort.getQuantity(), 0.0);
+		assertEquals("Resource populated on resource plan should match that on resource assignment", resourcePlan.getData(ResourcePlan.TAG_RESOURCE_ID), resourceAssignment.getData(ResourcePlan.TAG_RESOURCE_ID));
 	}
 
 	private void ensureReverseMigrationResourcePlansRemoved(ORef objectRef) throws Exception
