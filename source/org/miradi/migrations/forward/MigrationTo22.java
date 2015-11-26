@@ -176,6 +176,15 @@ public class MigrationTo22 extends AbstractMigration
 							resourcePlanPool.put(newResourcePlanRef, newResourcePlan);
 							resourcePlanIdList.add(nextHighestId);
 						}
+						else if (resourceAssignment.containsKey(TAG_RESOURCE_ID))
+						{
+							RawObject newResourcePlan = new RawObject(ResourcePlanSchema.getObjectType());
+							newResourcePlan.setData(TAG_RESOURCE_ID, resourceAssignment.getData(TAG_RESOURCE_ID));
+							final BaseId nextHighestId = getRawProject().getNextHighestId();
+							final ORef newResourcePlanRef = new ORef(ObjectType.RESOURCE_PLAN, nextHighestId);
+							resourcePlanPool.put(newResourcePlanRef, newResourcePlan);
+							resourcePlanIdList.add(nextHighestId);
+						}
 					}
 
 					if (!resourcePlanIdList.isEmpty())

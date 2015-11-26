@@ -52,10 +52,22 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		Strategy strategy = getProject().createStrategy();
 		ResourceAssignment resourceAssignment = getProject().createAndPopulateResourceAssignment();
 		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, "");
+		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_RESOURCE_ID, "");
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
 
 		ensureForwardMigrationResourcePlansNotAdded(strategy.getRef());
+	}
+
+	public void testStrategyForwardMigrationResourceAssignmentWithOnlyResourceId() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		ResourceAssignment resourceAssignment = getProject().createAndPopulateResourceAssignment();
+		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, "");
+		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
+		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
+
+		ensureForwardMigrationResourcePlansAdded(strategy.getRef(), resourceAssignment);
 	}
 
 	public void testStrategyForwardMigrationWithNonZeroEffortResourceAssignment() throws Exception
@@ -387,13 +399,21 @@ public class TestMigrationTo22 extends AbstractTestMigration
 
 		ORef resourcePlanRef = rawResourcePlanPool.getSortedReflist().get(0);
 		RawObject resourcePlan = reverseMigratedProject.findObject(resourcePlanRef);
-		DateUnitEffortList resourcePlanDateUnitEffortList = new DateUnitEffortList(resourcePlan.getData(ResourcePlan.TAG_DATEUNIT_EFFORTS));
-		DateUnitEffortList resourceAssignmentDateUnitEffortList = new DateUnitEffortList(resourceAssignment.getData(ResourceAssignment.TAG_DATEUNIT_EFFORTS));
-		assertEquals("Resource plan date unit effort list should match that on resource assignment", resourceAssignmentDateUnitEffortList, resourcePlanDateUnitEffortList);
 
-		DateUnitEffort resourcePlanDateUnitEffort = resourcePlanDateUnitEffortList.getDateUnitEffort(0);
-		assertEquals("Quantity on resource plan date unit effort should be 0", resourcePlanDateUnitEffort.getQuantity(), 0.0);
-		assertEquals("Resource populated on resource plan should match that on resource assignment", resourcePlan.getData(ResourcePlan.TAG_RESOURCE_ID), resourceAssignment.getData(ResourcePlan.TAG_RESOURCE_ID));
+		if (!resourceAssignment.getData(ResourceAssignment.TAG_DATEUNIT_EFFORTS).isEmpty())
+		{
+			DateUnitEffortList resourcePlanDateUnitEffortList = new DateUnitEffortList(resourcePlan.getData(ResourcePlan.TAG_DATEUNIT_EFFORTS));
+			DateUnitEffortList resourceAssignmentDateUnitEffortList = new DateUnitEffortList(resourceAssignment.getData(ResourceAssignment.TAG_DATEUNIT_EFFORTS));
+			assertEquals("Resource plan date unit effort list should match that on resource assignment", resourceAssignmentDateUnitEffortList, resourcePlanDateUnitEffortList);
+
+			DateUnitEffort resourcePlanDateUnitEffort = resourcePlanDateUnitEffortList.getDateUnitEffort(0);
+			assertEquals("Quantity on resource plan date unit effort should be 0", resourcePlanDateUnitEffort.getQuantity(), 0.0);
+		}
+
+		if (!resourceAssignment.getData(ResourceAssignment.TAG_RESOURCE_ID).isEmpty())
+		{
+			assertEquals("Resource populated on resource plan should match that on resource assignment", resourcePlan.getData(ResourcePlan.TAG_RESOURCE_ID), resourceAssignment.getData(ResourcePlan.TAG_RESOURCE_ID));
+		}
 	}
 
 	private void ensureReverseMigrationResourcePlansRemoved(ORef objectRef) throws Exception
