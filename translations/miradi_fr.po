@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-26 02:51-0800\n"
+"POT-Creation-Date: 2015-11-30 08:21-0800\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/miradi-client/"
@@ -301,7 +301,7 @@ msgstr "(Créer, gérer et classer les stress pour cette cible)"
 msgid "(Definition Not Available)"
 msgstr "(Définition Non Disponible)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:120
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:118
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/UpperPanelBaseObjectTableModel.java:125
 msgid "(Error)"
 msgstr "(Erreur)"
@@ -1037,7 +1037,7 @@ msgid ""
 "have a project open."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:78
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:95
 msgid ""
 "<html>Specifying when this work item will take place using this dialog "
 "<br>will enter zeros in the appropriate time period column(s)."
@@ -3614,11 +3614,11 @@ msgstr ""
 msgid "Enable Spell Checking"
 msgstr "Activer la Vérification orthographique"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/DateUnitStartAndEndCard.java:36
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/DateUnitStartAndEndCard.java:37
 msgid "End:"
 msgstr "Terminer :"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:85
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:66
 msgid "Enter As: "
 msgstr "Entrer sous :"
 
@@ -5461,7 +5461,7 @@ msgstr ""
 msgid "Monitoring-Related"
 msgstr "Lié au suivi"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/MonthDateUnitStartAndEndCard.java:37
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/MonthDateUnitStartAndEndCard.java:40
 msgid "Month Selection: "
 msgstr "Sélection du mois :"
 
@@ -6189,7 +6189,7 @@ msgstr ""
 msgid "Quarter Prefix|Q"
 msgstr "T"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/QuarterDateUnitStartAndEndCard.java:37
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/QuarterDateUnitStartAndEndCard.java:40
 msgid "Quarter Selection: "
 msgstr "Sélection du trimestre :"
 
@@ -6781,7 +6781,7 @@ msgstr ""
 "La Date de début (actuellement %startDate) doit être antérieure à la date de "
 "fin (actuellement %endDate) "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/DateUnitStartAndEndCard.java:31
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/DateUnitStartAndEndCard.java:32
 msgid "Start:"
 msgstr "Début :"
 
@@ -9199,7 +9199,7 @@ msgstr ""
 msgid "White"
 msgstr "Blanc"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:38
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:87
 msgid "Who"
 msgstr "Qui"
 
@@ -9211,7 +9211,7 @@ msgstr "Qui la dérogation était :"
 msgid "Who Override was: %s"
 msgstr "Qui la dérogation était : %s"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:61
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:60
 msgid "Who, When Plan"
 msgstr ""
 
@@ -9308,7 +9308,7 @@ msgstr "Modèle XSL"
 msgid "XSLT File"
 msgstr "Fichier XSLT"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/CalendarYearDateUnitStartAndEndCard.java:37
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/CalendarYearDateUnitStartAndEndCard.java:40
 msgid "Year Selection: "
 msgstr "Sélection de l'année :"
 
@@ -9357,7 +9357,7 @@ msgstr ""
 "fichiers zip pour les sauvegardes du projet créées pendant les migrations au "
 "format. "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:710
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:381
 msgid "[Error]"
 msgstr "[Erreur]"
 

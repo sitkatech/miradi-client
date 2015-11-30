@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-26 02:51-0800\n"
+"POT-Creation-Date: 2015-11-30 08:21-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/projects/p/miradi-client/"
@@ -298,7 +298,7 @@ msgstr "(Membuat, mengelola, dan menilai tekanan-tekanan untuk target ini) "
 msgid "(Definition Not Available)"
 msgstr "(Definisi Tidak Ada) "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:120
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:118
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/UpperPanelBaseObjectTableModel.java:125
 msgid "(Error)"
 msgstr "(Kesalahan) "
@@ -913,7 +913,7 @@ msgid ""
 "have a project open."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:78
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:95
 msgid ""
 "<html>Specifying when this work item will take place using this dialog "
 "<br>will enter zeros in the appropriate time period column(s)."
@@ -3453,11 +3453,11 @@ msgstr ""
 msgid "Enable Spell Checking"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/DateUnitStartAndEndCard.java:36
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/DateUnitStartAndEndCard.java:37
 msgid "End:"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:85
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:66
 msgid "Enter As: "
 msgstr ""
 
@@ -5265,7 +5265,7 @@ msgstr ""
 msgid "Monitoring-Related"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/MonthDateUnitStartAndEndCard.java:37
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/MonthDateUnitStartAndEndCard.java:40
 msgid "Month Selection: "
 msgstr ""
 
@@ -5972,7 +5972,7 @@ msgstr ""
 msgid "Quarter Prefix|Q"
 msgstr "Kw "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/QuarterDateUnitStartAndEndCard.java:37
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/QuarterDateUnitStartAndEndCard.java:40
 msgid "Quarter Selection: "
 msgstr ""
 
@@ -6539,7 +6539,7 @@ msgid ""
 "%endDate)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/DateUnitStartAndEndCard.java:31
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/DateUnitStartAndEndCard.java:32
 msgid "Start:"
 msgstr ""
 
@@ -8915,7 +8915,7 @@ msgstr ""
 msgid "White"
 msgstr "Putih"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:38
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:87
 msgid "Who"
 msgstr ""
 
@@ -8927,7 +8927,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr "Yang Menambah adalah: %s "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:61
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:60
 msgid "Who, When Plan"
 msgstr ""
 
@@ -9017,7 +9017,7 @@ msgstr ""
 msgid "XSLT File"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/CalendarYearDateUnitStartAndEndCard.java:37
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/CalendarYearDateUnitStartAndEndCard.java:40
 msgid "Year Selection: "
 msgstr ""
 
@@ -9065,7 +9065,7 @@ msgstr ""
 "impor. Miradi juga akan membuat berkas zip untuk cadangan berkas proyek yang "
 "dibuat selama pemindahan format."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:710
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:381
 msgid "[Error]"
 msgstr "[Kesalahan] "
 
