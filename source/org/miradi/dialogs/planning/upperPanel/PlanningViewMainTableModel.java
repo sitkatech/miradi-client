@@ -19,53 +19,26 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
-import java.awt.Color;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Vector;
-
-import org.miradi.commands.Command;
-import org.miradi.commands.CommandCreateObject;
-import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogs.planning.AssignmentDateUnitsTableModel;
+import org.miradi.dialogfields.editors.WhenAssignedEditorComponent;
+import org.miradi.dialogfields.editors.WhenPlannedEditorComponent;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.DateUnit;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.ProjectResourceLeaderAtTopSorter;
-import org.miradi.objecthelpers.TimePeriodCosts;
-import org.miradi.objecthelpers.TimePeriodCostsMap;
+import org.miradi.objecthelpers.*;
 import org.miradi.objects.*;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.CustomPlanningColumnsQuestion;
-import org.miradi.questions.EmptyChoiceItem;
-import org.miradi.questions.PriorityRatingQuestion;
-import org.miradi.questions.ProgressReportShortStatusQuestion;
-import org.miradi.questions.ResourceTypeQuestion;
-import org.miradi.questions.StaticQuestionManager;
-import org.miradi.questions.StatusQuestion;
-import org.miradi.questions.TaglessChoiceItem;
-import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
+import org.miradi.questions.*;
 import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.ProjectResourceSchema;
-import org.miradi.schemas.ResourceAssignmentSchema;
-import org.miradi.schemas.ResourcePlanSchema;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateRange;
-import org.miradi.utils.DateUnitEffort;
-import org.miradi.utils.DateUnitEffortList;
-import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.Translation;
-import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
 import org.miradi.views.summary.SummaryPlanningWorkPlanSubPanel;
+
+import java.awt.*;
+import java.util.Collections;
+import java.util.Vector;
 
 public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyncedTableModel
 {
@@ -171,80 +144,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	private boolean isPlannedWhenCellEditable(int row, int modelColumn)
 	{
 		BaseObject baseObjectForRow = getBaseObjectForRowColumn(row, modelColumn);
-		return isPlannedWhenEditable(baseObjectForRow);
-	}
-
-	public static boolean isPlannedWhenEditable(BaseObject baseObject)
-	{
-		try
-		{
-			if (!AssignmentDateUnitsTableModel.canOwnAssignments(baseObject.getRef()))
-				return false;
-
-			if (hasSubTasksWithResourcePlans(baseObject))
-				return false;
-
-			if (baseObject.getResourcePlanRefs().isEmpty())
-				return true;
-
-			if (hasResourcePlansWithDifferentDateUnitEffortLists(baseObject))
-				return false;
-
-			if (hasResourcePlansWithUsableNumberOfDateUnitEfforts(baseObject))
-				return true;
-
-			return false;
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return false;
-		}
-	}
-
-	private static boolean hasSubTasksWithResourcePlans(BaseObject baseObject) throws Exception
-	{
-		ORefList subTaskRefs = baseObject.getSubTaskRefs();
-		for (int index = 0; index < subTaskRefs.size(); ++index)
-		{
-			Task task = Task.find(baseObject.getProject(), subTaskRefs.get(index));
-			if (task.getResourcePlanRefs().hasRefs())
-				return true;
-		}
-
-		return false;
-	}
-
-	private static boolean hasResourcePlansWithDifferentDateUnitEffortLists(BaseObject baseObject) throws Exception
-	{
-		ORefList resourcePlanRefs = baseObject.getResourcePlanRefs();
-		HashSet<DateUnitEffortList> dateUnitEffortLists = new HashSet<DateUnitEffortList>();
-		for (int index = 0; index < resourcePlanRefs.size(); ++index)
-		{
-			ResourcePlan resourcePlan = ResourcePlan.find(baseObject.getProject(), resourcePlanRefs.get(index));
-			dateUnitEffortLists.add(resourcePlan.getDateUnitEffortList());
-			if (dateUnitEffortLists.size() > 1)
-				return true;
-		}
-
-		return false;
-	}
-
-	private static boolean hasResourcePlansWithUsableNumberOfDateUnitEfforts(BaseObject baseObject) throws Exception
-	{
-		ORefList resourcePlanRefs = baseObject.getResourcePlanRefs();
-		ResourcePlan resourcePlan = ResourcePlan.find(baseObject.getProject(), resourcePlanRefs.getFirstElement());
-		DateUnitEffortList effortList = resourcePlan.getDateUnitEffortList();
-
-		TimePeriodCostsMap timePeriodCostsMap = resourcePlan.getResourcePlansTimePeriodCostsMap();
-		OptionalDouble totalWorkUnits = timePeriodCostsMap.calculateTimePeriodCosts(new DateUnit()).getTotalWorkUnits();
-		if (totalWorkUnits.hasNonZeroValue())
-			return false;
-
-		if (effortList.size() > 2)
-			return false;
-
-		return true;
+		return baseObjectForRow.isPlannedWhenEditable();
 	}
 
 	@Override
@@ -256,80 +156,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	private boolean isAssignedWhenCellEditable(int row, int modelColumn)
 	{
 		BaseObject baseObjectForRow = getBaseObjectForRowColumn(row, modelColumn);
-		return isAssignedWhenEditable(baseObjectForRow);
-	}
-	
-	public static boolean isAssignedWhenEditable(BaseObject baseObject)
-	{
-		try
-		{
-			if (!AssignmentDateUnitsTableModel.canOwnAssignments(baseObject.getRef()))
-				return false;
-			
-			if (hasSubTasksWithResourceAssignments(baseObject))
-				return false;
-			
-			if (baseObject.getResourceAssignmentRefs().isEmpty())
-				return true;
-			
-			if (hasResourceAssignmentsWithDifferentDateUnitEffortLists(baseObject))
-				return false;
-
-			if (hasResourceAssignmentsWithUsableNumberOfDateUnitEfforts(baseObject))
-				return true;
-				
-			return false;
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return false;
-		}
-	}
-
-	private static boolean hasSubTasksWithResourceAssignments(BaseObject baseObject) throws Exception
-	{
-		ORefList subTaskRefs = baseObject.getSubTaskRefs();
-		for (int index = 0; index < subTaskRefs.size(); ++index)
-		{
-			Task task = Task.find(baseObject.getProject(), subTaskRefs.get(index));
-			if (task.getResourceAssignmentRefs().hasRefs())
-				return true;
-		}
-		
-		return false;
-	}
-	
-	private static boolean hasResourceAssignmentsWithDifferentDateUnitEffortLists(BaseObject baseObject) throws Exception
-	{
-		ORefList resourceAssignmentRefs = baseObject.getResourceAssignmentRefs();
-		HashSet<DateUnitEffortList> dateUnitEffortLists = new HashSet<DateUnitEffortList>();
-		for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
-		{			
-			ResourceAssignment resourceAssignment = ResourceAssignment.find(baseObject.getProject(), resourceAssignmentRefs.get(index));
-			dateUnitEffortLists.add(resourceAssignment.getDateUnitEffortList());
-			if (dateUnitEffortLists.size() > 1)
-				return true;
-		}	
-		
-		return false;
-	}
-
-	private static boolean hasResourceAssignmentsWithUsableNumberOfDateUnitEfforts(BaseObject baseObject) throws Exception
-	{
-		ORefList assignmentRefs = baseObject.getResourceAssignmentRefs();
-		ResourceAssignment assignment = ResourceAssignment.find(baseObject.getProject(), assignmentRefs.getFirstElement());
-		DateUnitEffortList effortList = assignment.getDateUnitEffortList();
-		
-		TimePeriodCostsMap timePeriodCostsMap = assignment.getResourceAssignmentsTimePeriodCostsMap();
-		OptionalDouble totalWorkUnits = timePeriodCostsMap.calculateTimePeriodCosts(new DateUnit()).getTotalWorkUnits();
-		if (totalWorkUnits.hasNonZeroValue())
-			return false;
-		
-		if (effortList.size() > 2)
-			return false;
-		
-		return true;
+		return baseObjectForRow.isAssignedWhenEditable();
 	}
 
 	@Override
@@ -346,11 +173,11 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			
 			if (isPlannedWhenColumn(column))
 			{
-				setWhenPlannedValue(baseObjectForRow, createCodeList(value));
+				WhenPlannedEditorComponent.setWhenPlannedValue(getProject(), baseObjectForRow, createCodeList(value));
 			}
 			else if (isAssignedWhenColumn(column))
 			{
-				setWhenAssignedValue(baseObjectForRow, createCodeList(value));
+				WhenAssignedEditorComponent.setWhenAssignedValue(getProject(), baseObjectForRow, createCodeList(value));
 			}
 			else if (isChoiceItemColumn(column))
 			{
@@ -373,162 +200,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	private CodeList createCodeList(Object rawValue) throws Exception
 	{
 		return new CodeList(rawValue.toString());
-	}
-
-	private void setWhenPlannedValue(BaseObject baseObjectForRow, CodeList datesAsCodeList) throws Exception
-	{
-		getProject().executeBeginTransaction();
-		try
-		{
-			clearResourcePlanDateUnitEfforts(baseObjectForRow);
-			ORefList resourcePlanRefs = baseObjectForRow.getResourcePlanRefs();
-			if (datesAsCodeList.hasData() && resourcePlanRefs.isEmpty())
-				createResourcePlan(baseObjectForRow, datesAsCodeList);
-			
-			if (datesAsCodeList.hasData() && resourcePlanRefs.hasRefs())
-				updateResourcePlans(resourcePlanRefs, datesAsCodeList);
-			
-			if (datesAsCodeList.isEmpty() && resourcePlanRefs.size() == 1)
-				deleteEmptyResourcePlan(resourcePlanRefs.getFirstElement());
-		}
-		finally
-		{
-			getProject().executeEndTransaction();
-		}
-	}
-
-	private void updateResourcePlans(ORefList resourcePlanRefs, CodeList datesAsCodeList) throws Exception
-	{
-		DateUnitEffortList dateUnitEffortList = createDateUnitEffortList(datesAsCodeList);
-		for (int index = 0; index < resourcePlanRefs.size(); ++index)
-		{
-			setResourcePlanDateUnitEffortList(resourcePlanRefs.get(index), dateUnitEffortList);
-		}
-	}
-
-	private void clearResourcePlanDateUnitEfforts(BaseObject baseObjectForRow) throws Exception
-	{
-		ORefList resourcePlanRefs = baseObjectForRow.getResourcePlanRefs();
-		for (int index = 0; index < resourcePlanRefs.size(); ++index)
-		{
-			ResourcePlan resourcePlan = ResourcePlan.find(getProject(), resourcePlanRefs.get(index));
-			Command clearDateUnitEffortList = new CommandSetObjectData(resourcePlan, ResourceAssignment.TAG_DATEUNIT_EFFORTS, new DateUnitEffortList().toString());
-			getProject().executeCommand(clearDateUnitEffortList);
-		}
-	}
-
-	private void deleteEmptyResourcePlan(ORef resourcePlanRef) throws Exception
-	{
-		ResourcePlan resourcePlan = ResourcePlan.find(getProject(), resourcePlanRef);
-		if (resourcePlan.isEmpty())
-		{
-			CommandVector removePlanCommands = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), resourcePlan, BaseObject.TAG_RESOURCE_PLAN_IDS);
-			getProject().executeCommands(removePlanCommands);
-		}
-	}
-
-	private void createResourcePlan(BaseObject baseObjectForRow, CodeList datesAsCodeList) throws Exception
-	{
-		CommandCreateObject createResourcePlan = new CommandCreateObject(ResourcePlanSchema.getObjectType());
-		getProject().executeCommand(createResourcePlan);
-
-		ORef resourcePlanRef = createResourcePlan.getObjectRef();
-		DateUnitEffortList dateUnitEffortList = createDateUnitEffortList(datesAsCodeList);
-		setResourcePlanDateUnitEffortList(resourcePlanRef, dateUnitEffortList);
-
-		CommandSetObjectData appendResourcePlan = CommandSetObjectData.createAppendIdCommand(baseObjectForRow, BaseObject.TAG_RESOURCE_PLAN_IDS, resourcePlanRef);
-		getProject().executeCommand(appendResourcePlan);
-	}
-
-	private void setResourcePlanDateUnitEffortList(ORef resourcePlanRef, DateUnitEffortList dateUnitEffortList) throws Exception
-	{
-		CommandSetObjectData addEffortList = new CommandSetObjectData(resourcePlanRef, ResourcePlan.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
-		getProject().executeCommand(addEffortList);
-	}
-
-	private void setWhenAssignedValue(BaseObject baseObjectForRow, CodeList datesAsCodeList) throws Exception
-	{
-		getProject().executeBeginTransaction();
-		try
-		{
-			clearResourceAssignmentDateUnitEfforts(baseObjectForRow);
-			ORefList resourceAssignmentRefs = baseObjectForRow.getResourceAssignmentRefs();
-			if (datesAsCodeList.hasData() && resourceAssignmentRefs.isEmpty())
-				createResourceAssignment(baseObjectForRow, datesAsCodeList);
-
-			if (datesAsCodeList.hasData() && resourceAssignmentRefs.hasRefs())
-				updateResourceAssignments(resourceAssignmentRefs, datesAsCodeList);
-
-			if (datesAsCodeList.isEmpty() && resourceAssignmentRefs.size() == 1)
-				deleteEmptyResourceAssignment(resourceAssignmentRefs.getFirstElement());
-		}
-		finally
-		{
-			getProject().executeEndTransaction();
-		}
-	}
-
-	private void updateResourceAssignments(ORefList resourceAssignmentRefs, CodeList datesAsCodeList) throws Exception
-	{
-		DateUnitEffortList dateUnitEffortList = createDateUnitEffortList(datesAsCodeList);
-		for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
-		{			
-			setResourceAssignmentDateUnitEffortList(resourceAssignmentRefs.get(index), dateUnitEffortList);
-		}
-	}
-
-	private void clearResourceAssignmentDateUnitEfforts(BaseObject baseObjectForRow) throws Exception
-	{
-		ORefList resourceAssignmentRefs = baseObjectForRow.getResourceAssignmentRefs();
-		for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
-		{			
-			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRefs.get(index));
-			Command clearDateUnitEffortList = new CommandSetObjectData(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, new DateUnitEffortList().toString());
-			getProject().executeCommand(clearDateUnitEffortList);
-		}
-	}
-
-	private void deleteEmptyResourceAssignment(ORef resourceAssignmentRef) throws Exception
-	{	
-		ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRef);
-		if (resourceAssignment.isEmpty())
-		{
-			CommandVector removeAssignmentCommands = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), resourceAssignment, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
-			getProject().executeCommands(removeAssignmentCommands);
-		}
-	}
-
-	private void createResourceAssignment(BaseObject baseObjectForRow, CodeList datesAsCodeList) throws Exception
-	{
-		CommandCreateObject createResourceAssignment = new CommandCreateObject(ResourceAssignmentSchema.getObjectType());
-		getProject().executeCommand(createResourceAssignment);
-
-		ORef resourceAssignmentRef = createResourceAssignment.getObjectRef();
-		DateUnitEffortList dateUnitEffortList = createDateUnitEffortList(datesAsCodeList);
-		setResourceAssignmentDateUnitEffortList(resourceAssignmentRef, dateUnitEffortList);
-
-		CommandSetObjectData appendResourceAssignment = CommandSetObjectData.createAppendIdCommand(baseObjectForRow, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, resourceAssignmentRef);
-		getProject().executeCommand(appendResourceAssignment);
-	}
-
-	private void setResourceAssignmentDateUnitEffortList(ORef resourceAssignmentRef, DateUnitEffortList dateUnitEffortList) throws Exception
-	{
-		CommandSetObjectData addEffortList = new CommandSetObjectData(resourceAssignmentRef, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
-		getProject().executeCommand(addEffortList);
-	}
-
-	private DateUnitEffortList createDateUnitEffortList(CodeList datesAsCodeList)
-	{
-		final int NO_VALUE = 0;
-		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
-		for (int index = 0; index < datesAsCodeList.size(); ++index)
-		{
-			DateUnit dateUnit = new DateUnit(datesAsCodeList.get(index));
-			if (dateUnitEffortList.getDateUnitEffortForSpecificDateUnit(dateUnit) == null)
-				dateUnitEffortList.add(new DateUnitEffort(dateUnit, NO_VALUE));
-		}
-
-		return dateUnitEffortList;
 	}
 
 	@Override

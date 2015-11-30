@@ -26,7 +26,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.schemas.*;
+import org.miradi.schemas.ResourcePlanSchema;
 import org.miradi.utils.OptionalDouble;
 
 public class ResourcePlan extends AbstractPlanningObject

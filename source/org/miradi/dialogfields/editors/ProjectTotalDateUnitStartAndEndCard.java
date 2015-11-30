@@ -42,4 +42,7 @@ public class ProjectTotalDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	{
 		return AbstractDateUnitTypeQuestion.PROJECT_TOTAL_CODE;
 	}
+
+	@Override
+	public void setStartEndDateUnitProvider(StartEndDateUnitProvider startEndDateUnitProviderToUse) {}
 }

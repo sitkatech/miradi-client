@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
+import org.miradi.dialogfields.WhenPlannedEditorField;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
@@ -27,12 +28,14 @@ import org.miradi.project.ProjectCalendar;
 import org.miradi.questions.AbstractDateUnitTypeQuestion;
 import org.miradi.utils.FillerLabel;
 
+import java.awt.*;
+
 public class CalendarYearDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 {
-	public CalendarYearDateUnitStartAndEndCard(ProjectCalendar projectCalendar, StartEndDateUnitProvider dateUnitRange)
+	public CalendarYearDateUnitStartAndEndCard(ProjectCalendar projectCalendar, StartEndDateUnitProvider startEndDateUnitProvider)
 	{
-		startYearPanel = new YearPanel(projectCalendar, dateUnitRange.getStartDateUnit(), getStartText());
-		endYearPanel = new YearPanel(projectCalendar, dateUnitRange.getEndDateUnit(), getEndText());
+		startYearPanel = new YearPanel(projectCalendar, startEndDateUnitProvider.getStartDateUnit(), getStartText());
+		endYearPanel = new YearPanel(projectCalendar, startEndDateUnitProvider.getEndDateUnit(), getEndText());
 		
 		add(new PanelTitleLabel(EAM.text("Year Selection: ")));
 		add(new FillerLabel());
@@ -57,7 +60,33 @@ public class CalendarYearDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	{
 		return AbstractDateUnitTypeQuestion.YEAR_CODE;
 	}
-	
+
+	@Override
+	public void setStartEndDateUnitProvider(StartEndDateUnitProvider startEndDateUnitProviderToUse)
+	{
+		startYearPanel.setDateUnit(startEndDateUnitProviderToUse.getStartDateUnit());
+		endYearPanel.setDateUnit(startEndDateUnitProviderToUse.getEndDateUnit());
+	}
+
+	@Override
+	public void setBackground(Color bg)
+	{
+		super.setBackground(bg);
+		if (startYearPanel != null)
+			startYearPanel.setBackground(bg);
+		if (endYearPanel != null)
+			endYearPanel.setBackground(bg);
+	}
+
+	@Override
+	public void addActionListener(WhenPlannedEditorField.WhenPlannedEditorChangeHandler editorFieldChangeHandlerToUse)
+	{
+		if (startYearPanel != null)
+			startYearPanel.addActionListener(editorFieldChangeHandlerToUse);
+		if (endYearPanel != null)
+			endYearPanel.addActionListener(editorFieldChangeHandlerToUse);
+	}
+
 	private YearPanel startYearPanel;
 	private YearPanel endYearPanel;
 }

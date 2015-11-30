@@ -717,6 +717,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new WhoPlannedEditorField(getMainWindow(), refToUse);
 	}
 	
+	public WhenPlannedEditorField createWhenPlannedEditorField(ORef refToUse)
+	{
+		return new WhenPlannedEditorField(getMainWindow(), refToUse);
+	}
+
 	public ObjectDataInputField createReadonlyClickableLinkField(int objectType, String tag)
 	{
 		return new ReadonlyClickableLinkField(getMainWindow(), getRefForType(objectType), tag);

@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.planning;
 
-import org.miradi.dialogs.planning.AssignmentDateUnitsTableModel;
-import org.miradi.dialogs.planning.upperPanel.PlanningViewMainTableModel;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
@@ -122,7 +120,7 @@ public class TestPlanningViewMainTableModel extends TestCaseWithProject
 
 	private boolean isAssignedWhenEditable(BaseObject baseObject)
 	{
-		return PlanningViewMainTableModel.isAssignedWhenEditable(baseObject);
+		return baseObject.isAssignedWhenEditable();
 	}
 	
 	private DateUnitEffortList createSampleDateUnitEffortList(int listSize, int startYear, double effort) throws Exception
@@ -139,6 +137,6 @@ public class TestPlanningViewMainTableModel extends TestCaseWithProject
 
 	private boolean canOwnAssignments(int objectType)
 	{
-		return AssignmentDateUnitsTableModel.canOwnAssignments(ORef.createInvalidWithType(objectType));
+		return BaseObject.canOwnPlanningObjects(ORef.createInvalidWithType(objectType));
 	}
 }

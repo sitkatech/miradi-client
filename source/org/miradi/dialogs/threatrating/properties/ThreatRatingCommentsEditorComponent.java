@@ -48,7 +48,7 @@ public class ThreatRatingCommentsEditorComponent extends SavableField
 		super();
 		
 		project = projectToUse;		
-		selectedHeirearchy = new ORefList();
+		selectedHierarchy = new ORefList();
 		panelTextArea = new EditableHtmlPane(EAM.getMainWindow(), AbstractObjectDataInputPanel.DEFAULT_TEXT_COLUMN_COUNT, ObjectScrollingMultilineInputField.INITIAL_MULTI_LINE_TEXT_AREA_ROW_COUNT);
 		
 		panelTextArea.setForeground(EAM.EDITABLE_FOREGROUND_COLOR);
@@ -61,10 +61,10 @@ public class ThreatRatingCommentsEditorComponent extends SavableField
 			SpellChecker.register(panelTextArea, false, false, true);
 	}
 	
-	public void setObjectRefs(ORefList selectedHeirearchyToUse)
+	public void setObjectRefs(ORefList selectedHierarchyToUse)
 	{
 		FieldSaver.savePendingEdits();
-		selectedHeirearchy = selectedHeirearchyToUse;
+		selectedHierarchy = selectedHierarchyToUse;
 
 		updateText();
 	}
@@ -94,17 +94,17 @@ public class ThreatRatingCommentsEditorComponent extends SavableField
 	
 	private ORef getTargetRef()
 	{
-		return getSeletedHeirarchy().getRefForType(TargetSchema.getObjectType());
+		return getSelectedHierarchy().getRefForType(TargetSchema.getObjectType());
 	}
 
 	private ORef getThreatRef()
 	{
-		return getSeletedHeirarchy().getRefForType(CauseSchema.getObjectType());
+		return getSelectedHierarchy().getRefForType(CauseSchema.getObjectType());
 	}
 	
-	private ORefList getSeletedHeirarchy()
+	private ORefList getSelectedHierarchy()
 	{
-		return selectedHeirearchy;
+		return selectedHierarchy;
 	}
 	
 	private EditableHtmlPane getTextArea()
@@ -138,5 +138,5 @@ public class ThreatRatingCommentsEditorComponent extends SavableField
 	private Project project;
 	private MiradiScrollPane scrollPane;
 	private EditableHtmlPane panelTextArea;
-	private ORefList selectedHeirearchy;
+	private ORefList selectedHierarchy;
 }

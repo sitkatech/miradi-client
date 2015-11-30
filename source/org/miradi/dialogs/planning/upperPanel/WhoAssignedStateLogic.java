@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel;
 
-import org.miradi.dialogs.planning.AssignmentDateUnitsTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORefList;
@@ -43,7 +42,7 @@ public class WhoAssignedStateLogic
 	{
 		try
 		{
-			if (!AssignmentDateUnitsTableModel.canOwnAssignments(baseObjectToUse.getRef()))
+			if (!BaseObject.canOwnPlanningObjects(baseObjectToUse.getRef()))
 				return false;
 
 			if (doAnySubTasksHaveAnyWorkUnitData(baseObjectToUse))

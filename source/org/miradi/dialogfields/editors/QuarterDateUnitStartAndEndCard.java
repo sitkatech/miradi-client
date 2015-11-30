@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
+import org.miradi.dialogfields.WhenPlannedEditorField;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
@@ -27,12 +28,14 @@ import org.miradi.project.ProjectCalendar;
 import org.miradi.questions.AbstractDateUnitTypeQuestion;
 import org.miradi.utils.FillerLabel;
 
+import java.awt.*;
+
 public class QuarterDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 {
-	public QuarterDateUnitStartAndEndCard(ProjectCalendar projectCalendar, StartEndDateUnitProvider dateUnitRange)
+	public QuarterDateUnitStartAndEndCard(ProjectCalendar projectCalendar, StartEndDateUnitProvider startEndDateUnitProviderToUse)
 	{
-		startQuarterPanel = new QuarterPanel(projectCalendar, dateUnitRange.getStartDateUnit(), getStartText());
-		endQuarterPanel = new QuarterPanel(projectCalendar, dateUnitRange.getEndDateUnit(), getEndText());
+		startQuarterPanel = new QuarterPanel(projectCalendar, startEndDateUnitProviderToUse.getStartDateUnit(), getStartText());
+		endQuarterPanel = new QuarterPanel(projectCalendar, startEndDateUnitProviderToUse.getEndDateUnit(), getEndText());
 
 		add(new PanelTitleLabel(EAM.text("Quarter Selection: ")));
 		add(new FillerLabel());
@@ -47,6 +50,13 @@ public class QuarterDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	}
 
 	@Override
+	public void setStartEndDateUnitProvider(StartEndDateUnitProvider startEndDateUnitProviderToUse)
+	{
+		startQuarterPanel.setDateUnit(startEndDateUnitProviderToUse.getStartDateUnit());
+		endQuarterPanel.setDateUnit(startEndDateUnitProviderToUse.getEndDateUnit());
+	}
+
+	@Override
 	protected DateUnit getStartDate()
 	{
 		return startQuarterPanel.getDateUnit();
@@ -57,7 +67,26 @@ public class QuarterDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	{
 		return AbstractDateUnitTypeQuestion.QUARTER_CODE;
 	}
-	
+
+	@Override
+	public void setBackground(Color bg)
+	{
+		super.setBackground(bg);
+		if (startQuarterPanel != null)
+			startQuarterPanel.setBackground(bg);
+		if (endQuarterPanel != null)
+			endQuarterPanel.setBackground(bg);
+	}
+
+	@Override
+	public void addActionListener(WhenPlannedEditorField.WhenPlannedEditorChangeHandler editorFieldChangeHandlerToUse)
+	{
+		if (startQuarterPanel != null)
+			startQuarterPanel.addActionListener(editorFieldChangeHandlerToUse);
+		if (endQuarterPanel != null)
+			endQuarterPanel.addActionListener(editorFieldChangeHandlerToUse);
+	}
+
 	private QuarterPanel startQuarterPanel;
 	private QuarterPanel endQuarterPanel;
 }

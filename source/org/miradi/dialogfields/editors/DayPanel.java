@@ -59,6 +59,11 @@ public class DayPanel extends TwoColumnPanel
 			return null;
 		return DateUnit.createDayDateUnit(dateString); 
 	}
-	
+
+	public void setDateUnit(DateUnit dateUnitToUse)
+	{
+		setSelectedDateUnit(dateUnitToUse);
+	}
+
 	private DateEditorComponent dateEditor;
 }

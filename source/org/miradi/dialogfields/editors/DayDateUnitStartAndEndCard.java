@@ -28,10 +28,10 @@ import org.miradi.utils.FillerLabel;
 
 public class DayDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 {
-	public DayDateUnitStartAndEndCard(StartEndDateUnitProvider dateUnitRange)
+	public DayDateUnitStartAndEndCard(StartEndDateUnitProvider startEndDateUnitProvider)
 	{
-		startDayPanel = new DayPanel(dateUnitRange.getStartDateUnit(), getStartText());
-		endDayPanel = new DayPanel(dateUnitRange.getEndDateUnit(), getEndText());
+		startDayPanel = new DayPanel(startEndDateUnitProvider.getStartDateUnit(), getStartText());
+		endDayPanel = new DayPanel(startEndDateUnitProvider.getEndDateUnit(), getEndText());
 
 		add(new PanelTitleLabel(EAM.text("Day Selection: ")));
 		add(new FillerLabel());
@@ -68,7 +68,14 @@ public class DayDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	{
 		return AbstractDateUnitTypeQuestion.DAY_CODE;
 	}
-	
+
+	@Override
+	public void setStartEndDateUnitProvider(StartEndDateUnitProvider startEndDateUnitProviderToUse)
+	{
+		startDayPanel.setDateUnit(startEndDateUnitProviderToUse.getStartDateUnit());
+		endDayPanel.setDateUnit(startEndDateUnitProviderToUse.getEndDateUnit());
+	}
+
 	private DayPanel startDayPanel;
 	private DayPanel endDayPanel;
 }

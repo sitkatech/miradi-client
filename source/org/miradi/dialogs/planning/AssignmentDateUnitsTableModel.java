@@ -37,10 +37,8 @@ import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ExpenseAssignment;
-import org.miradi.objects.Indicator;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ResourceAssignment;
-import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.Task;
 import org.miradi.project.CurrencyFormat;
@@ -253,21 +251,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		if (Assignment.isAssignment(ref))
 			return true;
 		
-		return canOwnAssignments(ref);
-	}
-
-	public static boolean canOwnAssignments(ORef ref)
-	{
-		if (Indicator.is(ref))
-			return true;
-		
-		if (Strategy.is(ref))
-			return true;
-		
-		if (Task.is(ref))
-			return true;
-		
-		return false;
+		return BaseObject.canOwnPlanningObjects(ref);
 	}
 
 	private boolean isAssignmentCellEditable(Assignment assignment, DateUnit dateUnit) throws Exception

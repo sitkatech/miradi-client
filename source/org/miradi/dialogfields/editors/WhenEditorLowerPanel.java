@@ -20,26 +20,29 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
-import java.awt.CardLayout;
+import java.awt.*;
 
 import org.miradi.dialogfields.FieldSaver;
+import org.miradi.dialogfields.WhenPlannedEditorField;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.project.ProjectCalendar;
 
 public class WhenEditorLowerPanel extends DisposablePanel
 {
-	public WhenEditorLowerPanel(ProjectCalendar projectCalendar, StartEndDateUnitProvider dateUnitRange)
+	public WhenEditorLowerPanel(ProjectCalendar projectCalendar, StartEndDateUnitProvider startEndDateUnitProviderToUse)
 	{
 		cardLayout = new CardLayout();
 		setLayout(cardLayout);
-		
+
+		startEndDateUnitProvider = startEndDateUnitProviderToUse;
+
 		noneCard = new NoneCard();
 		projectTotalCard = new ProjectTotalDateUnitStartAndEndCard();
-		yearCard = new CalendarYearDateUnitStartAndEndCard(projectCalendar, dateUnitRange);
-		quarterCard = new QuarterDateUnitStartAndEndCard(projectCalendar, dateUnitRange);
-		monthCard = new MonthDateUnitStartAndEndCard(projectCalendar, dateUnitRange);
-		dayCard = new DayDateUnitStartAndEndCard(dateUnitRange);
+		yearCard = new CalendarYearDateUnitStartAndEndCard(projectCalendar, startEndDateUnitProviderToUse);
+		quarterCard = new QuarterDateUnitStartAndEndCard(projectCalendar, startEndDateUnitProviderToUse);
+		monthCard = new MonthDateUnitStartAndEndCard(projectCalendar, startEndDateUnitProviderToUse);
+		dayCard = new DayDateUnitStartAndEndCard(startEndDateUnitProviderToUse);
 		
 		add(noneCard, noneCard.getPanelDescription());
 		add(projectTotalCard, projectTotalCard.getPanelDescription());
@@ -47,7 +50,9 @@ public class WhenEditorLowerPanel extends DisposablePanel
 		add(quarterCard, quarterCard.getPanelDescription());
 		add(monthCard, monthCard.getPanelDescription());
 		add(dayCard, dayCard.getPanelDescription());
-		
+
+		backgroundColor = getBackground();
+
 		currentCard = noneCard;
 	}
 
@@ -57,10 +62,38 @@ public class WhenEditorLowerPanel extends DisposablePanel
 		FieldSaver.savePendingEdits();
 		disposePanel(dayCard);
 		dayCard = null;
-		
+
 		super.dispose();
 	}
-	
+
+	@Override
+	public void setBackground(Color bg)
+	{
+		super.setBackground(bg);
+		backgroundColor = bg;
+		if (currentCard != null)
+			currentCard.setBackground(backgroundColor);
+	}
+
+	public void addActionListener(WhenPlannedEditorField.WhenPlannedEditorChangeHandler editorFieldChangeHandlerToUse)
+	{
+		if (yearCard != null)
+			yearCard.addActionListener(editorFieldChangeHandlerToUse);
+		if (quarterCard != null)
+			quarterCard.addActionListener(editorFieldChangeHandlerToUse);
+		if (monthCard != null)
+			monthCard.addActionListener(editorFieldChangeHandlerToUse);
+	}
+
+	public void setStartEndDateUnitProvider(StartEndDateUnitProvider startEndDateUnitProviderToUse)
+	{
+		startEndDateUnitProvider = startEndDateUnitProviderToUse;
+		yearCard.setStartEndDateUnitProvider(startEndDateUnitProvider);
+		quarterCard.setStartEndDateUnitProvider(startEndDateUnitProvider);
+		monthCard.setStartEndDateUnitProvider(startEndDateUnitProvider);
+		dayCard.setStartEndDateUnitProvider(startEndDateUnitProvider);
+	}
+
 	public DateUnit getStartDateUnit()
 	{
 		return currentCard.getStartDate();
@@ -74,6 +107,7 @@ public class WhenEditorLowerPanel extends DisposablePanel
 	public void showCard(String cardName)
 	{
 		currentCard = findPanel(cardName);
+		currentCard.setBackground(backgroundColor);
 		cardLayout.show(this, currentCard.getPanelDescription());
 	}
 	
@@ -99,7 +133,9 @@ public class WhenEditorLowerPanel extends DisposablePanel
 		
 		throw new RuntimeException(cardName + " card could not be found");
 	}
-	
+
+	private StartEndDateUnitProvider startEndDateUnitProvider;
+	private Color backgroundColor;
 	private CardLayout cardLayout;
 	private DateUnitStartAndEndCard currentCard;
 	

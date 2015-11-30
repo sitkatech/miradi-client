@@ -22,11 +22,7 @@ package org.miradi.objects;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.text.ParseException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.Vector;
+import java.util.*;
 
 import org.martus.util.MultiCalendar;
 import org.miradi.commands.CommandDeleteObject;
@@ -81,15 +77,8 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.schemas.*;
-import org.miradi.utils.CodeList;
-import org.miradi.utils.CommandVector;
-import org.miradi.utils.DateRange;
-import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.utils.HtmlUtilities;
-import org.miradi.utils.InvalidNumberException;
+import org.miradi.utils.*;
 import org.miradi.utils.OptionalDouble;
-import org.miradi.utils.PointList;
-import org.miradi.utils.XmlUtilities2;
 
 abstract public class BaseObject
 {
@@ -565,7 +554,20 @@ abstract public class BaseObject
 		
 		return true;
 	}
-	
+
+	public static boolean canOwnPlanningObjects(ORef ref)
+	{
+		if (Indicator.is(ref))
+			return true;
+
+		if (Strategy.is(ref))
+			return true;
+
+		if (Task.is(ref))
+			return true;
+
+		return false;
+	}
 
 	public BaseId getId()
 	{
@@ -717,7 +719,97 @@ abstract public class BaseObject
 		
 		return timePeriodCostsMap;
 	}
-	
+
+	public boolean hasSubTasksWithResourcePlans() throws Exception
+	{
+		ORefList subTaskRefs = getSubTaskRefs();
+		for (int index = 0; index < subTaskRefs.size(); ++index)
+		{
+			Task task = Task.find(getProject(), subTaskRefs.get(index));
+			if (task.getResourcePlanRefs().hasRefs())
+				return true;
+		}
+
+		return false;
+	}
+
+	public boolean hasResourcePlansWithDifferentDateUnitEffortLists() throws Exception
+	{
+		ORefList resourcePlanRefs = getResourcePlanRefs();
+		HashSet<DateUnitEffortList> dateUnitEffortLists = new HashSet<DateUnitEffortList>();
+		for (int index = 0; index < resourcePlanRefs.size(); ++index)
+		{
+			ResourcePlan resourcePlan = ResourcePlan.find(getProject(), resourcePlanRefs.get(index));
+			dateUnitEffortLists.add(resourcePlan.getDateUnitEffortList());
+			if (dateUnitEffortLists.size() > 1)
+				return true;
+		}
+
+		return false;
+	}
+
+	public boolean hasResourcePlansWithUsableNumberOfDateUnitEfforts() throws Exception
+	{
+		ORefList resourcePlanRefs = getResourcePlanRefs();
+		ResourcePlan resourcePlan = ResourcePlan.find(getProject(), resourcePlanRefs.getFirstElement());
+		DateUnitEffortList effortList = resourcePlan.getDateUnitEffortList();
+
+		TimePeriodCostsMap timePeriodCostsMap = resourcePlan.getResourcePlansTimePeriodCostsMap();
+		OptionalDouble totalWorkUnits = timePeriodCostsMap.calculateTimePeriodCosts(new DateUnit()).getTotalWorkUnits();
+		if (totalWorkUnits.hasNonZeroValue())
+			return false;
+
+		if (effortList.size() > 2)
+			return false;
+
+		return true;
+	}
+
+	public boolean hasSubTasksWithResourceAssignments() throws Exception
+	{
+		ORefList subTaskRefs = getSubTaskRefs();
+		for (int index = 0; index < subTaskRefs.size(); ++index)
+		{
+			Task task = Task.find(getProject(), subTaskRefs.get(index));
+			if (task.getResourceAssignmentRefs().hasRefs())
+				return true;
+		}
+
+		return false;
+	}
+
+	public boolean hasResourceAssignmentsWithDifferentDateUnitEffortLists() throws Exception
+	{
+		ORefList resourceAssignmentRefs = getResourceAssignmentRefs();
+		HashSet<DateUnitEffortList> dateUnitEffortLists = new HashSet<DateUnitEffortList>();
+		for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
+		{
+			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRefs.get(index));
+			dateUnitEffortLists.add(resourceAssignment.getDateUnitEffortList());
+			if (dateUnitEffortLists.size() > 1)
+				return true;
+		}
+
+		return false;
+	}
+
+	public boolean hasResourceAssignmentsWithUsableNumberOfDateUnitEfforts() throws Exception
+	{
+		ORefList assignmentRefs = getResourceAssignmentRefs();
+		ResourceAssignment assignment = ResourceAssignment.find(getProject(), assignmentRefs.getFirstElement());
+		DateUnitEffortList effortList = assignment.getDateUnitEffortList();
+
+		TimePeriodCostsMap timePeriodCostsMap = assignment.getResourceAssignmentsTimePeriodCostsMap();
+		OptionalDouble totalWorkUnits = timePeriodCostsMap.calculateTimePeriodCosts(new DateUnit()).getTotalWorkUnits();
+		if (totalWorkUnits.hasNonZeroValue())
+			return false;
+
+		if (effortList.size() > 2)
+			return false;
+
+		return true;
+	}
+
 	public ORefList getSubTaskRefs()
 	{
 		return new ORefList();
@@ -744,7 +836,35 @@ abstract public class BaseObject
 		CurrencyFormat formater = objectManager.getProject().getCurrencyFormatterWithCommas();
 		return formater.format(cost);
 	}
-	
+
+	public boolean isPlannedWhenEditable()
+	{
+		try
+		{
+			if (!canOwnPlanningObjects(getRef()))
+				return false;
+
+			if (hasSubTasksWithResourcePlans())
+				return false;
+
+			if (getResourcePlanRefs().isEmpty())
+				return true;
+
+			if (hasResourcePlansWithDifferentDateUnitEffortLists())
+				return false;
+
+			if (hasResourcePlansWithUsableNumberOfDateUnitEfforts())
+				return true;
+
+			return false;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return false;
+		}
+	}
+
 	public String getPlannedWhenTotalAsString()
 	{
 		try
@@ -762,6 +882,34 @@ abstract public class BaseObject
 	{
 		final DateRange projectStartEndDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
 		return getTotalTimePeriodCostsMapForPlans().getRolledUpDateRange(projectStartEndDateRange);
+	}
+
+	public boolean isAssignedWhenEditable()
+	{
+		try
+		{
+			if (!canOwnPlanningObjects(getRef()))
+				return false;
+
+			if (hasSubTasksWithResourceAssignments())
+				return false;
+
+			if (getResourceAssignmentRefs().isEmpty())
+				return true;
+
+			if (hasResourceAssignmentsWithDifferentDateUnitEffortLists())
+				return false;
+
+			if (hasResourceAssignmentsWithUsableNumberOfDateUnitEfforts())
+				return true;
+
+			return false;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return false;
+		}
 	}
 
 	public String getAssignedWhenTotalAsString()

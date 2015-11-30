@@ -42,7 +42,10 @@ public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
 		add(new FillerLabel());
 		addField(createPlannedLeaderDropDownField(orefToUse.getObjectType(), BaseObject.TAG_PLANNED_LEADER_RESOURCE));
 		addField(createReadonlyTextField(BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL));
-		
+
+		add(new FillerLabel());
+		addFieldWithoutLabel(createWhenPlannedEditorField(orefToUse));
+
 		updateFieldsFromProject();
 	}
 
@@ -50,6 +53,9 @@ public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
 	protected boolean doesSectionContainFieldWithTag(String tag)
 	{
 		if (tag.equals(CustomPlanningColumnsQuestion.META_PLANNED_WHO_TOTAL))
+			return true;
+
+		if (tag.equals(BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL))
 			return true;
 
 		return super.doesSectionContainFieldWithTag(tag);

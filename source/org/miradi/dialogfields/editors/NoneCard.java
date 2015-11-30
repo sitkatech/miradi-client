@@ -42,4 +42,7 @@ public class NoneCard extends DateUnitStartAndEndCard
 	{
 		return AssignedDateUnitTypeQuestion.NONE_CODE;
 	}
+
+	@Override
+	public void setStartEndDateUnitProvider(StartEndDateUnitProvider startEndDateUnitProviderToUse) {}
 }
