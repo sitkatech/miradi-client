@@ -157,6 +157,7 @@ public class WhenPlannedEditorField extends ObjectDataField
 			whenPlannedEditor = new WhenPlannedEditorComponent(getProject(), planningObjectRefs);
 			whenPlannedEditor.setBackground(AppPreferences.getDataPanelBackgroundColor());
 			whenPlannedEditor.addActionListener(new WhenPlannedEditorChangeHandler());
+			whenPlannedEditor.setBorder(DataField.createLineBorderWithMargin());
 		}
 		catch (Exception e)
 		{
