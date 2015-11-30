@@ -161,7 +161,7 @@ public class WhenPlannedEditorField extends ObjectDataField
 		}
 		catch (Exception e)
 		{
-			EAM.alertUserOfNonFatalException(e);
+			EAM.panic(e);
 		}
 	}
 

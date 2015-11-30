@@ -22,11 +22,14 @@ package org.miradi.dialogs.diagram;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.utils.FillerLabel;
 
 public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
@@ -34,19 +37,9 @@ public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
 	public WorkPlanPanelPropertiesPanel(Project projectToUse, ORef orefToUse) throws Exception
 	{
 		super(projectToUse, orefToUse);
-		
-		add(new PanelTitleLabel(EAM.text("Who")));
-		addFieldWithoutLabel(createWhoPlannedEditorField(orefToUse));
 
-		add(new FillerLabel());
-		add(new FillerLabel());
-		addField(createPlannedLeaderDropDownField(orefToUse.getObjectType(), BaseObject.TAG_PLANNED_LEADER_RESOURCE));
-		addField(createReadonlyTextField(BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL));
-
-		add(new FillerLabel());
-		addFieldWithoutLabel(createWhenPlannedEditorField(orefToUse));
-
-		updateFieldsFromProject();
+		currentRef = orefToUse;
+		rebuild(orefToUse);
 	}
 
 	@Override
@@ -66,4 +59,66 @@ public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
 	{
 		return EAM.text("Who, When Plan");
 	}
+
+	@Override
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		try
+		{
+			super.commandExecuted(event);
+			if (eventForcesRebuild(event))
+			{
+				becomeInactive();
+				rebuild(currentRef);
+				becomeActive();
+			}
+		}
+		catch (Exception e)
+		{
+			EAM.panic(e);
+		}
+	}
+
+	private void rebuild(ORef orefToUse) throws Exception
+	{
+		removeAll();
+		getFields().clear();
+
+		add(new PanelTitleLabel(EAM.text("Who")));
+		addFieldWithoutLabel(createWhoPlannedEditorField(orefToUse));
+
+		add(new FillerLabel());
+		add(new FillerLabel());
+		addField(createPlannedLeaderDropDownField(orefToUse.getObjectType(), BaseObject.TAG_PLANNED_LEADER_RESOURCE));
+		addField(createReadonlyTextField(BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL));
+
+		add(new FillerLabel());
+		addFieldWithoutLabel(createWhenPlannedEditorField(orefToUse));
+
+		updateFieldsFromProject();
+
+		doLayout();
+
+		validate();
+		repaint();
+	}
+
+	private boolean eventForcesRebuild(CommandExecutedEvent event)
+	{
+		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_WORKPLAN_END_DATE))
+			return true;
+
+		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_WORKPLAN_START_DATE))
+			return true;
+
+		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_START_DATE))
+			return true;
+
+		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_EXPECTED_END_DATE))
+			return true;
+
+		return false;
+	}
+
+	private ORef currentRef;
 }
