@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-30 08:21-0800\n"
+"POT-Creation-Date: 2015-12-01 10:21-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/miradi-client/"
@@ -998,14 +998,29 @@ msgid ""
 "have a project open."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhenEditorComponent.java:95
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/tablerenderers/WhoAssignedColumnTableCellEditorFactory.java:54
 msgid ""
-"<html>Specifying when this work item will take place using this dialog "
-"<br>will enter zeros in the appropriate time period column(s)."
+"<html>Selecting resources from the list will create Assignments <br>and "
+"reallocate any existing Work Units for this item."
 msgstr ""
-"<html>Specificando quando questo lavoro verrà svolto utilizzando questa "
-"finestra di dialogo <br>si immetteranno zeri nelle opportune colonne di "
-"durata."
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhenAssignedEditorComponent.java:64
+msgid ""
+"<html>Specifying the Work Unit time span using this dialog <br>will enter "
+"zeros in the designated time period column(s)."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/tablerenderers/WhoPlannedColumnTableCellEditorFactory.java:54
+msgid ""
+"<html>This is a high-level resource estimate that does not <br>create Work "
+"Unit Assignments."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhenPlannedEditorComponent.java:60
+msgid ""
+"<html>This is a high-level time estimate that does not create <br>Work Unit "
+"Assignments."
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/SeverityStressBasedThreatRatingQuestion.java:58
 msgid ""
@@ -6004,8 +6019,6 @@ msgstr ""
 msgid "Project Plan For "
 msgstr "Piano del progetto per"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/tablerenderers/WhoPlannedColumnTableCellEditorFactory.java:48
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/tablerenderers/WhoAssignedColumnTableCellEditorFactory.java:48
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:47
 msgid "Project Resource"
 msgstr "Risorsa del progetto"
@@ -6408,10 +6421,6 @@ msgstr "Seleziona il pacchetto lingua da installare"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/DataLocationChooserPanel.java:55
 msgid "Select Location..."
 msgstr "Seleziona luogo..."
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoEditorField.java:42
-msgid "Select Project Resources"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpSelectAppropriateMethods.java:35
 msgid "Select appropriate methods"
@@ -9065,8 +9074,9 @@ msgstr ""
 msgid "White"
 msgstr "Bianco"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:87
-msgid "Who"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/tablerenderers/WhoAssignedColumnTableCellEditorFactory.java:48
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoAssignedEditorField.java:42
+msgid "Who Assigned"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/legacyprojects/migrations/RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration.java:84
@@ -9077,7 +9087,12 @@ msgstr "Il Chi ignorato è:"
 msgid "Who Override was: %s"
 msgstr "Il Chi ignorato è: %s"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:60
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/tablerenderers/WhoPlannedColumnTableCellEditorFactory.java:48
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoPlannedEditorField.java:42
+msgid "Who Plan"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:59
 msgid "Who, When Plan"
 msgstr ""
 
@@ -9215,7 +9230,7 @@ msgstr ""
 "Miradi creerà file compressi per i backup di progetto creati durante le "
 "migrazioni di formato."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:381
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:380
 msgid "[Error]"
 msgstr "[Errore]"
 
@@ -9335,6 +9350,9 @@ msgid "FieldLabel|3.PlannedLeaderResource|Leader"
 msgstr ""
 
 msgid "FieldLabel|3.TaxonomyClassificationContainer|Program Classifications"
+msgstr ""
+
+msgid "FieldLabel|3.MetaPlannedWhoTotal|Who"
 msgstr ""
 
 msgid "FieldLabel|5.BudgetRollupReportTypes|Rollup Types"
@@ -9539,6 +9557,9 @@ msgid "FieldLabel|8.Unit|Unit"
 msgstr ""
 
 msgid "FieldLabel|8.TaxonomyClassificationContainer|Program Classifications"
+msgstr ""
+
+msgid "FieldLabel|8.MetaPlannedWhoTotal|Who"
 msgstr ""
 
 msgid "FieldLabel|9.Objective|Objective"
@@ -10274,6 +10295,9 @@ msgid "FieldLabel|21.PlannedLeaderResource|Leader"
 msgstr ""
 
 msgid "FieldLabel|21.TaxonomyClassificationContainer|Program Classifications"
+msgstr ""
+
+msgid "FieldLabel|21.MetaPlannedWhoTotal|Who"
 msgstr ""
 
 msgid "FieldLabel|22.Target|Target"
@@ -28152,6 +28176,14 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid ""
+#~ "<html>Specifying when this work item will take place using this dialog "
+#~ "<br>will enter zeros in the appropriate time period column(s)."
+#~ msgstr ""
+#~ "<html>Specificando quando questo lavoro verrà svolto utilizzando questa "
+#~ "finestra di dialogo <br>si immetteranno zeri nelle opportune colonne di "
+#~ "durata."
 
 #~ msgid "When - %s"
 #~ msgstr "Quando - %s"
