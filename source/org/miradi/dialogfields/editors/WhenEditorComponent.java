@@ -88,14 +88,10 @@ abstract public class WhenEditorComponent extends DisposablePanel
 	}
 
 	abstract public DateUnitEffortList getDateUnitEffortList(ORef planningObjectRef) throws Exception;
+
 	abstract protected TimePeriodCostsMap getTimePeriodCostsMap(ORef planningObjectRef) throws Exception;
 
-	protected String getPanelTitle()
-	{
-		return EAM.text("<html>" +
-				"Specifying when this work item will take place using this dialog <br>" +
-				"will enter zeros in the appropriate time period column(s).");
-	}
+	abstract protected String getPanelTitle();
 
 	protected StartEndDateUnitProvider getStartEndDateUnitProvider(ORefList planningObjectRefs) throws Exception
 	{

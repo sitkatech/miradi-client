@@ -23,6 +23,7 @@ package org.miradi.dialogfields.editors;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
@@ -55,6 +56,14 @@ public class WhenAssignedEditorComponent extends WhenEditorComponent
 	{
 		ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), planningObjectRef);
 		return resourceAssignment.getResourceAssignmentsTimePeriodCostsMap();
+	}
+
+	@Override
+	protected String getPanelTitle()
+	{
+		return EAM.text("<html>" +
+				"Specifying the Work Unit time span using this dialog <br>" +
+				"will enter zeros in the designated time period column(s).");
 	}
 
 	public static void setWhenAssignedValue(Project project, BaseObject baseObjectForRow, CodeList datesAsCodeList) throws Exception

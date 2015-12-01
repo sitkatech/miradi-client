@@ -23,6 +23,7 @@ package org.miradi.dialogfields.editors;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
@@ -52,7 +53,9 @@ public class WhenPlannedEditorComponent extends WhenEditorComponent
 	@Override
 	protected String getPanelTitle()
 	{
-		return "";
+		return EAM.text("<html>" +
+				"This is a high-level time estimate that does not create <br>" +
+				"Work Unit Assignments.");
 	}
 
 	@Override
