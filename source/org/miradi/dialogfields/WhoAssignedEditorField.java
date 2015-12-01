@@ -45,7 +45,7 @@ public class WhoAssignedEditorField extends WhoEditorField
 	@Override
 	protected CodeList getWhoTotalsCodeList(BaseObject baseObject)
 	{
-		return WhoAssignedCodeListEditorComponent.getWhoTotalCodes(baseObject);
+		return baseObject.getAssignedWhoResourcesAsCodeList();
 	}
 
 	@Override

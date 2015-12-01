@@ -33,7 +33,6 @@ import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
-import org.miradi.utils.Translation;
 import org.miradi.views.summary.SummaryPlanningWorkPlanSubPanel;
 
 import java.awt.*;
@@ -485,7 +484,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 
 		ORefSet unspecifiedBaseObjectRefs = getInvalidRefs(filteredResources);
 		filteredResources.removeAll(unspecifiedBaseObjectRefs);
-		Vector<ProjectResource> sortedProjectResources = toProjectResources(filteredResources);
+		Vector<ProjectResource> sortedProjectResources = BaseObject.toProjectResources(getProject(), filteredResources);
 		ORef leaderResourceRef = ORef.INVALID;
 		if (baseObject.doesFieldExist(leaderResourceTag))
 		{
@@ -495,8 +494,8 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 
 		final ORefList sortedProjectResourceRefs = new ORefList(sortedProjectResources);
 		sortedProjectResourceRefs.addAll(new ORefList(unspecifiedBaseObjectRefs));
-		Vector<String> sortedNames = getResourceNames(sortedProjectResourceRefs, leaderResourceRef);
-		String appendedResources = createAppendedResourceNames(sortedNames);
+		Vector<String> sortedNames = BaseObject.getResourceNames(getProject(), sortedProjectResourceRefs, leaderResourceRef);
+		String appendedResources = BaseObject.createAppendedResourceNames(sortedNames);
 
 		return new TaglessChoiceItem(appendedResources);
 	}
@@ -513,63 +512,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		return invalidRefs;
 	}
 	
-	private Vector<ProjectResource> toProjectResources(ORefSet resourcesRefs) throws Exception
-	{
-		Vector<ProjectResource> resources = new Vector<ProjectResource>();
-		for(ORef resourceRef : resourcesRefs)
-		{
-			final ProjectResource projectResource = ProjectResource.find(getProject(), resourceRef);
-			if (projectResource == null)
-			{
-				EAM.logError("Could not find Project Resource object for ref:" + resourceRef);
-				continue;
-			}
-			
-			resources.add(projectResource);
-		}
-		
-		return resources;
-	}
-
-	private String createAppendedResourceNames(Vector<String> sortedNames)
-	{
-		boolean isFirstIteration = true; 
-		String appendedResources = "";
-		for(String resourceName : sortedNames)
-		{
-			if (!isFirstIteration)
-				appendedResources += ", ";
-			
-			appendedResources += resourceName;
-			isFirstIteration = false;	
-		}
-		return appendedResources;
-	}
-
-	private Vector<String> getResourceNames(ORefList filteredResources, ORef leaderResourceRef)
-	{
-		Vector<String> names = new Vector<String>();
-		for(ORef resourceRef : filteredResources)
-		{
-			names.add(getWhoName(resourceRef, leaderResourceRef));
-		}
-
-		return names;
-	}
-
-	private String getWhoName(ORef resourceRef, ORef leaderResourceRef)
-	{
-		if (resourceRef.isInvalid())
-			return Translation.getNotSpecifiedText();
-
-		ProjectResource projectResource = ProjectResource.find(getProject(), resourceRef);
-		final String who = projectResource.getWho();
-		if (leaderResourceRef.equals(resourceRef))
-			return who + "*";
-		
-		return who;	
-	}
-
 	public Object getValueAt(int row, int column)
 	{
 		return getChoiceItemAt(row, column);

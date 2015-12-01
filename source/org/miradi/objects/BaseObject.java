@@ -56,25 +56,12 @@ import org.miradi.objectdata.RelevancyOverrideSetData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objectdata.StringRefMapData;
 import org.miradi.objectdata.TagListData;
-import org.miradi.objecthelpers.CodeToChoiceMap;
-import org.miradi.objecthelpers.CodeToCodeListMap;
-import org.miradi.objecthelpers.CodeToCodeMap;
-import org.miradi.objecthelpers.CodeToUserStringMap;
-import org.miradi.objecthelpers.DateUnit;
-import org.miradi.objecthelpers.FactorSet;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objecthelpers.RelevancyOverride;
-import org.miradi.objecthelpers.RelevancyOverrideSet;
-import org.miradi.objecthelpers.StringRefMap;
-import org.miradi.objecthelpers.TimePeriodCosts;
-import org.miradi.objecthelpers.TimePeriodCostsMap;
-import org.miradi.project.CurrencyFormat;
+import org.miradi.objecthelpers.*;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.schemas.*;
 import org.miradi.utils.*;
@@ -805,13 +792,111 @@ abstract public class BaseObject
 		return new ORefList();
 	}
 					
-	public String formatCurrency(double cost)
+	public String getPlannedWhoRollupAsString()
 	{
-		if(cost == 0.0)
+		try
+		{
+			ORefSet resourcesRefs = getTotalTimePeriodCostsMapForPlans().getAllProjectResourceRefs();
+			Vector<ProjectResource> projectResources = toProjectResources(getProject(), resourcesRefs);
+
+			ORef leaderResourceRef = ORef.INVALID;
+			if (doesFieldExist(TAG_PLANNED_LEADER_RESOURCE))
+			{
+				leaderResourceRef = getRef(TAG_PLANNED_LEADER_RESOURCE);
+				Collections.sort(projectResources, new ProjectResourceLeaderAtTopSorter(leaderResourceRef));
+			}
+
+			final ORefList sortedProjectResourceRefs = new ORefList(projectResources);
+			Vector<String> sortedNames = getResourceNames(getProject(), sortedProjectResourceRefs, leaderResourceRef);
+			return createAppendedResourceNames(sortedNames);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
 			return "";
-		
-		CurrencyFormat formater = objectManager.getProject().getCurrencyFormatterWithCommas();
-		return formater.format(cost);
+		} 
+	}
+
+	public static Vector<ProjectResource> toProjectResources(Project project, ORefSet resourcesRefs) throws Exception
+	{
+		Vector<ProjectResource> resources = new Vector<ProjectResource>();
+		for(ORef resourceRef : resourcesRefs)
+		{
+			if (!resourceRef.isValid())
+				continue;
+
+			final ProjectResource projectResource = ProjectResource.find(project, resourceRef);
+			if (projectResource == null)
+			{
+				EAM.logError("Could not find Project Resource object for ref:" + resourceRef);
+				continue;
+			}
+
+			resources.add(projectResource);
+		}
+
+		return resources;
+	}
+
+	public static String createAppendedResourceNames(Vector<String> sortedNames)
+	{
+		boolean isFirstIteration = true;
+		String appendedResources = "";
+		for(String resourceName : sortedNames)
+		{
+			if (!isFirstIteration)
+				appendedResources += ", ";
+
+			appendedResources += resourceName;
+			isFirstIteration = false;
+		}
+		return appendedResources;
+	}
+
+	public static Vector<String> getResourceNames(Project project, ORefList filteredResources, ORef leaderResourceRef)
+	{
+		Vector<String> names = new Vector<String>();
+		for(ORef resourceRef : filteredResources)
+		{
+			names.add(getWhoName(project, resourceRef, leaderResourceRef));
+		}
+
+		return names;
+	}
+
+	public static String getWhoName(Project project, ORef resourceRef, ORef leaderResourceRef)
+	{
+		if (resourceRef.isInvalid())
+			return Translation.getNotSpecifiedText();
+
+		ProjectResource projectResource = ProjectResource.find(project, resourceRef);
+		final String who = projectResource.getWho();
+		if (leaderResourceRef.equals(resourceRef))
+			return who + "*";
+
+		return who;
+	}
+
+	public CodeList getPlannedWhoResourcesAsCodeList()
+	{
+		try
+		{
+			CodeList projectResourceCodes = new CodeList();
+			ORefList resourcePlanRefs = getResourcePlanRefs();
+
+			for (ORef resourcePlanRef : resourcePlanRefs)
+			{
+				ResourcePlan resourcePlan = ResourcePlan.find(getProject(), resourcePlanRef);
+				projectResourceCodes.add(resourcePlan.getResourceRef().toString());
+			}
+
+			return projectResourceCodes;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new CodeList();
+		}
 	}
 
 	public boolean isPlannedWhenEditable()
@@ -836,7 +921,7 @@ abstract public class BaseObject
 		}
 	}
 
-	public String getPlannedWhenTotalAsString()
+	public String getPlannedWhenRollupAsString()
 	{
 		try
 		{
@@ -846,7 +931,7 @@ abstract public class BaseObject
 		{
 			EAM.logException(e);
 			return "";
-		} 
+		}
 	}
 
 	public DateRange getPlannedWhenRollup() throws Exception
@@ -883,7 +968,27 @@ abstract public class BaseObject
 		}
 	}
 
-	public String getAssignedWhenTotalAsString()
+	public CodeList getAssignedWhoResourcesAsCodeList()
+	{
+		try
+		{
+			ORefSet resourcesRefs = getTotalTimePeriodCostsMapForAssignments().getAllProjectResourceRefs();
+			CodeList projectResourceCodes = new CodeList();
+			for(ORef resourceRef : resourcesRefs)
+			{
+				projectResourceCodes.add(resourceRef.toString());
+			}
+
+			return projectResourceCodes;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new CodeList();
+		}
+	}
+
+	public String getAssignedWhenRollupAsString()
 	{
 		try
 		{
@@ -1329,11 +1434,14 @@ abstract public class BaseObject
 	
 	public String getPseudoData(String fieldTag)
 	{
-		if (fieldTag.equals(PSEUDO_TAG_PLANNED_WHEN_TOTAL))
-			return getPlannedWhenTotalAsString();
+		if (fieldTag.equals(PSEUDO_TAG_PLANNED_WHO_TOTAL))
+			return getPlannedWhoRollupAsString();
 		
+		if (fieldTag.equals(PSEUDO_TAG_PLANNED_WHEN_TOTAL))
+			return getPlannedWhenRollupAsString();
+
 		if (fieldTag.equals(PSEUDO_TAG_ASSIGNED_WHEN_TOTAL))
-			return getAssignedWhenTotalAsString();
+			return getAssignedWhenRollupAsString();
 
 		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 			return getLatestProgressReportDate();
@@ -1479,6 +1587,7 @@ abstract public class BaseObject
 	public static final String TAG_ASSIGNED_LEADER_RESOURCE = "AssignedLeaderResource";
 	public static final String TAG_TAXONOMY_CLASSIFICATION_CONTAINER = "TaxonomyClassificationContainer";
 
+	public final static String PSEUDO_TAG_PLANNED_WHO_TOTAL = CustomPlanningColumnsQuestion.META_PLANNED_WHO_TOTAL;
 	public final static String PSEUDO_TAG_PLANNED_WHEN_TOTAL = "PlannedEffortDatesTotal";
 	public final static String PSEUDO_TAG_ASSIGNED_WHEN_TOTAL = "AssignedEffortDatesTotal";
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE = "PseudoLatestProgressReportCode";

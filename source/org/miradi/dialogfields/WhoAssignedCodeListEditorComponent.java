@@ -20,17 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import java.util.Vector;
-
-import org.miradi.commands.Command;
-import org.miradi.commands.CommandBeginTransaction;
-import org.miradi.commands.CommandCreateObject;
-import org.miradi.commands.CommandEndTransaction;
-import org.miradi.commands.CommandSetObjectData;
-import org.miradi.main.EAM;
+import org.miradi.commands.*;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
@@ -45,6 +37,8 @@ import org.miradi.utils.DateUnitEffortList;
 import org.miradi.views.diagram.CreateAnnotationDoer;
 import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
 
+import java.util.Vector;
+
 public class WhoAssignedCodeListEditorComponent extends AbstractQuestionBasedComponent
 {
 	public WhoAssignedCodeListEditorComponent(BaseObject parentObjectToUse, ChoiceQuestion questionToUse)
@@ -52,13 +46,13 @@ public class WhoAssignedCodeListEditorComponent extends AbstractQuestionBasedCom
 		super(questionToUse, SINGLE_COLUMN);
 		
 		parentObject = parentObjectToUse;
-		updateToggleButtonSelections(getWhoTotalCodes(parentObject));
+		updateToggleButtonSelections(parentObject.getAssignedWhoResourcesAsCodeList());
 	}
 	
 	@Override
 	public void toggleButtonStateChanged(ChoiceItem choiceItem, boolean isSelected)	throws Exception
 	{
-		CodeList currentCodes = getWhoTotalCodes(getParentObject());
+		CodeList currentCodes = getParentObject().getAssignedWhoResourcesAsCodeList();
 		boolean doesAssignmentExist = currentCodes.contains(choiceItem.getCode());
 		final boolean needToDelete = doesAssignmentExist && !isSelected;
 		final boolean needToCreate = !doesAssignmentExist && isSelected;
@@ -212,26 +206,6 @@ public class WhoAssignedCodeListEditorComponent extends AbstractQuestionBasedCom
 		
 		ResourceAssignment firstResourceAssignment = ResourceAssignment.find(getProject(), existingResourceAssignmentRefs.get(0));
 		return firstResourceAssignment.getDateUnitEffortList();
-	}
-	
-	public static CodeList getWhoTotalCodes(BaseObject baseObject)
-	{		
-		try
-		{
-			ORefSet resourcesRefs = baseObject.getTotalTimePeriodCostsMapForAssignments().getAllProjectResourceRefs();
-			CodeList projectResourceCodes = new CodeList();
-			for(ORef resourceRef : resourcesRefs)
-			{
-				projectResourceCodes.add(resourceRef.toString());
-			}
-
-			return projectResourceCodes;
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return new CodeList();
-		}
 	}
 	
 	private ORefList getResourceAssignmentRefs() throws Exception

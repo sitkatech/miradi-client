@@ -21,15 +21,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.TimePeriodCosts;
-import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ResourcePlan;
 import org.miradi.project.Project;
 import org.miradi.utils.DateUnitEffortList;
-import org.miradi.utils.OptionalDouble;
 
 public class WhoPlannedStateLogic
 {
@@ -45,9 +41,6 @@ public class WhoPlannedStateLogic
 			if (!BaseObject.canOwnPlanningObjects(baseObjectToUse.getRef()))
 				return false;
 
-			if (doAnySubTasksHaveAnyWorkUnitData(baseObjectToUse))
-				return false;
-
 			return doAllResourcePlansHaveIdenticalWorkUnits(baseObjectToUse);
 		}
 		catch (Exception e)
@@ -56,16 +49,7 @@ public class WhoPlannedStateLogic
 			return false;
 		}
 	}
-	
-	private boolean doAnySubTasksHaveAnyWorkUnitData(BaseObject baseObjectForRow) throws Exception
-	{
-		TimePeriodCostsMap timePeriodCostsMap = baseObjectForRow.getTotalTimePeriodCostsMapForSubTasks(baseObjectForRow.getSubTaskRefs(), BaseObject.TAG_RESOURCE_PLAN_IDS);
-		TimePeriodCosts wholeProjectTimePeriodCosts = timePeriodCostsMap.calculateTimePeriodCosts(new DateUnit());
-		OptionalDouble totalSubTaskWorkUnitsForAllTimePeriods = wholeProjectTimePeriodCosts.getTotalWorkUnits();
 
-		return totalSubTaskWorkUnitsForAllTimePeriods.hasValue();
-	}
-	
 	private boolean doAllResourcePlansHaveIdenticalWorkUnits(BaseObject baseObjectToUse) throws Exception
 	{
 			ORefList resourcePlans = baseObjectToUse.getResourcePlanRefs();

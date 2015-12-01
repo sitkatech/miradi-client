@@ -21,10 +21,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import org.miradi.commands.*;
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ResourcePlan;
 import org.miradi.project.Project;
@@ -43,18 +41,18 @@ import java.util.Vector;
 
 public class WhoPlannedCodeListEditorComponent extends AbstractQuestionBasedComponent
 {
-	public WhoPlannedCodeListEditorComponent(BaseObject parentObjectToUse, ChoiceQuestion questionToUse)
+	public WhoPlannedCodeListEditorComponent(BaseObject baseObjectToUse, ChoiceQuestion questionToUse)
 	{
 		super(questionToUse, SINGLE_COLUMN);
 		
-		parentObject = parentObjectToUse;
-		updateToggleButtonSelections(getWhoTotalCodes(parentObject));
+		baseObject = baseObjectToUse;
+		updateToggleButtonSelections(baseObject.getPlannedWhoResourcesAsCodeList());
 	}
 	
 	@Override
 	public void toggleButtonStateChanged(ChoiceItem choiceItem, boolean isSelected)	throws Exception
 	{
-		CodeList currentCodes = getWhoTotalCodes(getParentObject());
+		CodeList currentCodes = getBaseObject().getPlannedWhoResourcesAsCodeList();
 		boolean doesCodeExist = currentCodes.contains(choiceItem.getCode());
 		final boolean needToDelete = doesCodeExist && !isSelected;
 		final boolean needToCreate = !doesCodeExist && isSelected;
@@ -162,7 +160,7 @@ public class WhoPlannedCodeListEditorComponent extends AbstractQuestionBasedComp
 		getProject().executeCommand(createCommand);
 
 		ORef newResourcePlanRef = createCommand.getObjectRef();
-		Command appendCommand = CreateAnnotationDoer.createAppendCommand(getParentObject(), newResourcePlanRef, getResourcePlanTag());
+		Command appendCommand = CreateAnnotationDoer.createAppendCommand(getBaseObject(), newResourcePlanRef, getResourcePlanTag());
 		getProject().executeCommand(appendCommand);
 		
 		return ResourcePlan.find(getProject(), newResourcePlanRef);
@@ -210,29 +208,9 @@ public class WhoPlannedCodeListEditorComponent extends AbstractQuestionBasedComp
 		return firstResourcePlan.getDateUnitEffortList();
 	}
 	
-	public static CodeList getWhoTotalCodes(BaseObject baseObject)
-	{		
-		try
-		{
-			ORefSet resourcesRefs = baseObject.getTotalTimePeriodCostsMapForPlans().getAllProjectResourceRefs();
-			CodeList projectResourceCodes = new CodeList();
-			for(ORef resourceRef : resourcesRefs)
-			{
-				projectResourceCodes.add(resourceRef.toString());
-			}
-
-			return projectResourceCodes;
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return new CodeList();
-		}
-	}
-	
 	private ORefList getResourcePlanRefs() throws Exception
 	{
-		return getParentObject().getSafeRefListData(getResourcePlanTag());
+		return getBaseObject().getSafeRefListData(getResourcePlanTag());
 	}
 	
 	private String getResourcePlanTag()
@@ -240,15 +218,15 @@ public class WhoPlannedCodeListEditorComponent extends AbstractQuestionBasedComp
 		return BaseObject.TAG_RESOURCE_PLAN_IDS;
 	}
 	
-	private BaseObject getParentObject()
+	private BaseObject getBaseObject()
 	{
-		return parentObject;
+		return baseObject;
 	}
 	
 	private Project getProject()
 	{
-		return getParentObject().getProject();
+		return getBaseObject().getProject();
 	}
 	
-	private BaseObject parentObject;
+	private BaseObject baseObject;
 }

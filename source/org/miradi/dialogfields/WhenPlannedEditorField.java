@@ -55,7 +55,7 @@ public class WhenPlannedEditorField extends ObjectDataField
 			ORefList resourcePlansRefs = baseObject.getResourcePlanRefs();
 			if (!resourcePlansRefs.isEmpty())
 			{
-				ORef resourcePlanRef = baseObject.getResourcePlanRefs().get(0);
+				ORef resourcePlanRef = baseObject.getResourcePlanRefs().getFirstElement();
 				ResourcePlan resourcePlan = ResourcePlan.find(getProject(), resourcePlanRef);
 				resourcePlanDateUnitEffortList = resourcePlan.getDateUnitEffortList();
 			}

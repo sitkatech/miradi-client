@@ -320,6 +320,7 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 		createOwnedFieldSchemaIdList(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignmentSchema.getObjectType());
 		createOwnedFieldSchemaReflist(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, EXPENSE_ASSIGNMENT);
 		
+		createPseudoFieldSchemaString(BaseObject.PSEUDO_TAG_PLANNED_WHO_TOTAL);
 		createPseudoFieldSchemaString(BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL);
 		createPseudoFieldSchemaString(BaseObject.PSEUDO_TAG_ASSIGNED_WHEN_TOTAL);
 	}

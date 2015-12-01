@@ -106,7 +106,7 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 		String result = plannedWhenTotalAsStringByBaseObject.get(ref);
 		if(result == null)
 		{
-			result = baseObject.getPlannedWhenTotalAsString();
+			result = baseObject.getPlannedWhenRollupAsString();
 			plannedWhenTotalAsStringByBaseObject.put(ref, result);
 		}
 		
@@ -119,7 +119,7 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 		String result = assignedWhenTotalAsStringByBaseObject.get(ref);
 		if(result == null)
 		{
-			result = baseObject.getAssignedWhenTotalAsString();
+			result = baseObject.getAssignedWhenRollupAsString();
 			assignedWhenTotalAsStringByBaseObject.put(ref, result);
 		}
 

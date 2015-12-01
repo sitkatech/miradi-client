@@ -24,6 +24,7 @@ import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
@@ -31,12 +32,15 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ResourcePlan;
 import org.miradi.project.Project;
+import org.miradi.questions.AbstractDateUnitTypeQuestion;
 import org.miradi.questions.PlannedDateUnitTypeQuestion;
 import org.miradi.schemas.ResourcePlanSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
+
+import java.util.Set;
 
 public class WhenPlannedEditorComponent extends WhenEditorComponent
 {
@@ -72,13 +76,47 @@ public class WhenPlannedEditorComponent extends WhenEditorComponent
 		return resourcePlan.getResourcePlansTimePeriodCostsMap();
 	}
 
+	@Override
+	protected String getDefaultDateUnitTypeCode(ORefList planningObjectRefsToUse) throws Exception
+	{
+		if (planningObjectRefsToUse.isEmpty())
+			return AbstractDateUnitTypeQuestion.NONE_CODE;
+
+		ORef planningObjectRef = planningObjectRefsToUse.getFirstElement();
+		ResourcePlan resourcePlan = ResourcePlan.find(getProject(), planningObjectRef);
+		TimePeriodCostsMap timePeriodCostsMap = resourcePlan.convertAllDateUnitEffortList();
+
+		Set<DateUnit> dateUnits = timePeriodCostsMap.getDateUnits();
+		for(DateUnit dateUnit : dateUnits)
+		{
+			if (dateUnit.isDay())
+				return AbstractDateUnitTypeQuestion.DAY_CODE;
+
+			if (dateUnit.isMonth())
+				return AbstractDateUnitTypeQuestion.MONTH_CODE;
+
+			if (dateUnit.isQuarter())
+				return AbstractDateUnitTypeQuestion.QUARTER_CODE;
+
+			if (dateUnit.isYear())
+				return AbstractDateUnitTypeQuestion.YEAR_CODE;
+
+			if (dateUnit.isProjectTotal())
+				return AbstractDateUnitTypeQuestion.PROJECT_TOTAL_CODE;
+		}
+
+		return AbstractDateUnitTypeQuestion.NONE_CODE;
+	}
+
 	public static void setWhenPlannedValue(Project project, BaseObject baseObjectForRow, CodeList datesAsCodeList) throws Exception
 	{
 		project.executeBeginTransaction();
 		try
 		{
 			clearResourcePlanDateUnitEfforts(project, baseObjectForRow);
+
 			ORefList resourcePlanRefs = baseObjectForRow.getResourcePlanRefs();
+
 			if (datesAsCodeList.hasData() && resourcePlanRefs.isEmpty())
 				createResourcePlan(project, baseObjectForRow, datesAsCodeList);
 
@@ -86,7 +124,11 @@ public class WhenPlannedEditorComponent extends WhenEditorComponent
 				updateResourcePlans(project, resourcePlanRefs, datesAsCodeList);
 
 			if (datesAsCodeList.isEmpty() && resourcePlanRefs.size() == 1)
-				deleteEmptyResourcePlan(project, resourcePlanRefs.getFirstElement());
+			{
+				ResourcePlan resourcePlan = ResourcePlan.find(project, resourcePlanRefs.getFirstElement());
+				if (resourcePlan.getResourceRef().isInvalid())
+					deleteEmptyResourcePlan(project, resourcePlanRefs.getFirstElement());
+			}
 		}
 		finally
 		{

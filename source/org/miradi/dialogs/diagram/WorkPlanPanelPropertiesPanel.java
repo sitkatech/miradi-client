@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.diagram;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -84,11 +83,11 @@ public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
 		removeAll();
 		getFields().clear();
 
-		add(new PanelTitleLabel(EAM.text("Who")));
-		addFieldWithoutLabel(createWhoPlannedEditorField(orefToUse));
+		addField(createReadonlyTextField(BaseObject.PSEUDO_TAG_PLANNED_WHO_TOTAL));
 
 		add(new FillerLabel());
-		add(new FillerLabel());
+		addFieldWithoutLabel(createWhoPlannedEditorField(orefToUse));
+
 		addField(createPlannedLeaderDropDownField(orefToUse.getObjectType(), BaseObject.TAG_PLANNED_LEADER_RESOURCE));
 		addField(createReadonlyTextField(BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL));
 
