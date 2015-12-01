@@ -20,24 +20,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.tablerenderers;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
-import javax.swing.AbstractCellEditor;
-import javax.swing.JComponent;
-import javax.swing.JTable;
-import javax.swing.table.TableCellEditor;
-
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.ModelessDialogWithClose;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.dialogs.treetables.ObjectTreeTable;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
+import org.miradi.utils.HtmlUtilities;
+
+import javax.swing.*;
+import javax.swing.table.TableCellEditor;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 abstract public class AbstractPopupTableCellEditorFactory extends AbstractCellEditor implements TableCellEditor
 {
@@ -80,7 +76,9 @@ abstract public class AbstractPopupTableCellEditorFactory extends AbstractCellEd
 	abstract protected DisposablePanel createEditorComponent(BaseObject baseObjectForRow);
 	
 	abstract protected String getDialogTitle();
-	
+
+	abstract protected String getDialogHelpText();
+
 	private class LeftClickHandler extends MouseAdapter
 	{
 		@Override
@@ -89,12 +87,25 @@ abstract public class AbstractPopupTableCellEditorFactory extends AbstractCellEd
 			table.stopCellEditing();
 
 			final BaseObject baseObjectForRow = table.getBaseObjectForRowColumn(table.getSelectedRow(), table.getSelectedColumn());
+
+			String objectFullNameAsPlainText = HtmlUtilities.convertHtmlToPlainText(baseObjectForRow.getFullName());
+			String dialogTitle = getDialogTitle();
+			if (!objectFullNameAsPlainText.isEmpty())
+				dialogTitle += " - " + objectFullNameAsPlainText;
+
+			ModelessDialogWithClose dialog = new ModelessDialogWithClose(getMainWindow(), dialogTitle);
+
+			PanelTitleLabel panelTitleLabel = new PanelTitleLabel(getDialogHelpText());
+			panelTitleLabel.setBorder(BorderFactory.createEmptyBorder(4,4,4,4));
+			dialog.add(panelTitleLabel, BorderLayout.BEFORE_FIRST_LINE);
+
 			DisposablePanel codeListEditor = createEditorComponent(baseObjectForRow);
-			ModelessDialogWithClose dialog = new ModelessDialogWithClose(getMainWindow(), getDialogTitle());
-			String dialogObjectDescription = ObjectTreeTable.getToolTipString(baseObjectForRow);
-			dialog.add(new PanelTitleLabel(dialogObjectDescription), BorderLayout.BEFORE_FIRST_LINE);
 			dialog.setScrollableMainPanel(codeListEditor);
+
+			dialog.getWrappedPanel().setBackground(AppPreferences.getDataPanelBackgroundColor());
+
 			dialog.pack();
+
 			getMainWindow().getCurrentView().showFloatingPropertiesDialog(dialog);
 		}
 	}

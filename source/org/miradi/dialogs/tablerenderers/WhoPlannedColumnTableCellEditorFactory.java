@@ -45,6 +45,15 @@ public class WhoPlannedColumnTableCellEditorFactory extends AbstractPopupTableCe
 	@Override
 	protected String getDialogTitle()
 	{
-		return EAM.text("Project Resource");
+		return EAM.text("Who Plan");
 	}
+
+	@Override
+	protected String getDialogHelpText()
+	{
+		return EAM.text("<html>" +
+				"This is a high-level resource estimate that does not <br>" +
+				"create Work Unit Assignments.");
+	}
+
 }

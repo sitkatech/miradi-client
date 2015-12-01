@@ -22,6 +22,7 @@ package org.miradi.dialogfields;
 
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.planning.upperPanel.WhoAssignedStateLogic;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
@@ -33,6 +34,12 @@ public class WhoAssignedEditorField extends WhoEditorField
 	public WhoAssignedEditorField(MainWindow mainWindow, ORef refToUse)
 	{
 		super(mainWindow, refToUse);
+	}
+
+	@Override
+	protected String getPanelTitle()
+	{
+		return EAM.text("Who Assigned");
 	}
 
 	@Override

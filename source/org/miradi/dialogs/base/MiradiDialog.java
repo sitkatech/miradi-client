@@ -36,17 +36,17 @@ public class MiradiDialog extends JDialog
 	{
 		super(parent);
 		
-		intializeDialog();
+		initializeDialog();
 	}
 
 	public MiradiDialog(JDialog owner)
 	{
 		super(owner);
 		
-		intializeDialog();
+		initializeDialog();
 	}
 	
-	private void intializeDialog()
+	private void initializeDialog()
 	{
 		getContentPane().setBackground(AppPreferences.getDarkPanelBackgroundColor());
 		addWindowListener(new WindowEventHandler(this));

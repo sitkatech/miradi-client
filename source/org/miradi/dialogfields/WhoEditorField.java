@@ -23,7 +23,6 @@ package org.miradi.dialogfields;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.ReadonlyPanelWithPopupEditor;
 import org.miradi.dialogs.base.ReadonlyPanelWithPopupEditorWithMainScrollPane;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
@@ -39,7 +38,7 @@ abstract public class WhoEditorField extends ObjectDataField implements Readonly
 	{
 		super(mainWindow.getProject(), refToUse);
 
-		readonlyPanelWithPopupEditor = new ReadonlyPanelWithPopupEditorWithMainScrollPane(this, EAM.text("Select Project Resources"), new ProjectResourceQuestion(getProject()));		
+		readonlyPanelWithPopupEditor = new ReadonlyPanelWithPopupEditorWithMainScrollPane(this, getPanelTitle(), new ProjectResourceQuestion(getProject()));
 	}
 	
 	@Override
@@ -65,6 +64,8 @@ abstract public class WhoEditorField extends ObjectDataField implements Readonly
 	abstract protected boolean isWhoCellEditable();
 
 	abstract protected  DisposablePanel createEditorPanel(BaseObject baseObject, ProjectResourceQuestion question);
+
+	abstract protected String getPanelTitle();
 
 	private void updateEditableButtonState()
 	{
@@ -94,7 +95,6 @@ abstract public class WhoEditorField extends ObjectDataField implements Readonly
 	
 	public DisposablePanel createEditorPanel() throws Exception
 	{
-
 		BaseObject baseObjectForRow = BaseObject.find(getProject(), getORef());
 		final ProjectResourceQuestion question = new ProjectResourceQuestion(getProject());
 		return createEditorPanel(baseObjectForRow, question);

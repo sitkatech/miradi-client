@@ -45,6 +45,14 @@ public class WhoAssignedColumnTableCellEditorFactory extends AbstractPopupTableC
 	@Override
 	protected String getDialogTitle()
 	{
-		return EAM.text("Project Resource");
+		return EAM.text("Who Assigned");
+	}
+
+	@Override
+	protected String getDialogHelpText()
+	{
+		return EAM.text("<html>" +
+				"Selecting resources from the list will create Assignments <br>" +
+				"and reallocate any existing Work Units for this item.");
 	}
 }
