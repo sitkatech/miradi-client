@@ -720,19 +720,6 @@ abstract public class BaseObject
 		return timePeriodCostsMap;
 	}
 
-	public boolean hasSubTasksWithResourcePlans() throws Exception
-	{
-		ORefList subTaskRefs = getSubTaskRefs();
-		for (int index = 0; index < subTaskRefs.size(); ++index)
-		{
-			Task task = Task.find(getProject(), subTaskRefs.get(index));
-			if (task.getResourcePlanRefs().hasRefs())
-				return true;
-		}
-
-		return false;
-	}
-
 	public boolean hasResourcePlansWithDifferentDateUnitEffortLists() throws Exception
 	{
 		ORefList resourcePlanRefs = getResourcePlanRefs();
@@ -751,16 +738,19 @@ abstract public class BaseObject
 	public boolean hasResourcePlansWithUsableNumberOfDateUnitEfforts() throws Exception
 	{
 		ORefList resourcePlanRefs = getResourcePlanRefs();
-		ResourcePlan resourcePlan = ResourcePlan.find(getProject(), resourcePlanRefs.getFirstElement());
-		DateUnitEffortList effortList = resourcePlan.getDateUnitEffortList();
+		if (resourcePlanRefs != null && !resourcePlanRefs.isEmpty())
+		{
+			ResourcePlan resourcePlan = ResourcePlan.find(getProject(), resourcePlanRefs.getFirstElement());
 
-		TimePeriodCostsMap timePeriodCostsMap = resourcePlan.getResourcePlansTimePeriodCostsMap();
-		OptionalDouble totalWorkUnits = timePeriodCostsMap.calculateTimePeriodCosts(new DateUnit()).getTotalWorkUnits();
-		if (totalWorkUnits.hasNonZeroValue())
-			return false;
+			TimePeriodCostsMap timePeriodCostsMap = resourcePlan.getResourcePlansTimePeriodCostsMap();
+			OptionalDouble totalWorkUnits = timePeriodCostsMap.calculateTimePeriodCosts(new DateUnit()).getTotalWorkUnits();
+			if (totalWorkUnits.hasNonZeroValue())
+				return false;
 
-		if (effortList.size() > 2)
-			return false;
+			DateUnitEffortList effortList = resourcePlan.getDateUnitEffortList();
+			if (effortList.size() > 2)
+				return false;
+		}
 
 		return true;
 	}
@@ -815,19 +805,6 @@ abstract public class BaseObject
 		return new ORefList();
 	}
 					
-	public ORefSet getAssignedResourceRefs() throws Exception
-	{
-		ORefSet projectResourceRefs = new ORefSet();
-		ORefList resourceAssignmentRefs = getSafeRefListData(TAG_RESOURCE_ASSIGNMENT_IDS);
-		for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
-		{
-			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(),resourceAssignmentRefs.get(index)); 
-			projectResourceRefs.add(resourceAssignment.getResourceRef());
-		}
-		
-		return projectResourceRefs;
-	}
-
 	public String formatCurrency(double cost)
 	{
 		if(cost == 0.0)
@@ -843,12 +820,6 @@ abstract public class BaseObject
 		{
 			if (!canOwnPlanningObjects(getRef()))
 				return false;
-
-			if (hasSubTasksWithResourcePlans())
-				return false;
-
-			if (getResourcePlanRefs().isEmpty())
-				return true;
 
 			if (hasResourcePlansWithDifferentDateUnitEffortLists())
 				return false;
