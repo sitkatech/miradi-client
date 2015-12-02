@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-01 10:21-0800\n"
+"POT-Creation-Date: 2015-12-02 11:51-0800\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/miradi-client/"
@@ -249,7 +249,7 @@ msgid "%fieldName field data will be lost for %indicatorLabel (Indicator)"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo20.java:159
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo22.java:286
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo22.java:263
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/AbstractModifyMultipleFieldMigration.java:70
 msgid "%fieldName will be removed. %label"
 msgstr ""
@@ -288,7 +288,7 @@ msgstr "%s données de terrain seront perdues pour les mesures"
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:119
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:120
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1478
 msgid "(%s)"
 msgstr "(%s)"
@@ -4661,7 +4661,7 @@ msgid "Key Ecological Attribute (KEA)"
 msgstr "Attribut Ecologique Clé (AEC)"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo20.java:154
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo22.java:281
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo22.java:258
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/AbstractModifyMultipleFieldMigration.java:65
 msgid "Label = %s"
 msgstr "Label = %s"
@@ -8251,6 +8251,11 @@ msgid ""
 "and Indicator objects."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo23.java:88
+msgid ""
+"This migration adds new default columns to the work plan customize panel."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo5.java:69
 msgid "This migration changes default real status code to \"\""
 msgstr ""
@@ -8277,8 +8282,8 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo22.java:108
 msgid ""
-"This migration creates resource plan entries for resource assignments where "
-"there are no allocated work units."
+"This migration creates resource plan entries for resource assignments (where "
+"a resource or date range is specified)."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo7.java:105
@@ -9170,6 +9175,10 @@ msgstr ""
 "Zones humides - Zones humides de la Toundra [comprend les cuvettes et les "
 "eaux temporaires dérivant de la fonte des neiges]"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:95
+msgid "When"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhenAssignedPopupEditorComponent.java:44
 msgid "When Assigned - %s"
 msgstr ""
@@ -9208,6 +9217,10 @@ msgstr ""
 msgid "White"
 msgstr "Blanc"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:88
+msgid "Who"
+msgstr "Qui"
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/tablerenderers/WhoAssignedColumnTableCellEditorFactory.java:48
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoAssignedEditorField.java:42
 msgid "Who Assigned"
@@ -9226,7 +9239,7 @@ msgstr "Qui la dérogation était : %s"
 msgid "Who Plan"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:59
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:61
 msgid "Who, When Plan"
 msgstr ""
 
@@ -9388,7 +9401,7 @@ msgstr "[NON SPÉCIFIÉ]"
 msgid "[New Results Chain]"
 msgstr "[Nouvelle chaîne de résultats]"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:960
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:966
 msgid "[No Project]"
 msgstr "[Aucun projet]"
 
@@ -9459,7 +9472,7 @@ msgstr "Cumul du buget"
 msgid "FieldLabel|3.BudgetCostMode|Budget Cost Mode"
 msgstr "Mode coût du budget"
 
-msgid "FieldLabel|3.PlannedEffortDatesTotal|When"
+msgid "FieldLabel|3.PlannedEffortDatesTotal|When Total"
 msgstr ""
 
 msgid "FieldLabel|3.AssignedEffortDatesTotal|When"
@@ -9495,7 +9508,7 @@ msgstr ""
 msgid "FieldLabel|3.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
 
-msgid "FieldLabel|3.MetaPlannedWhoTotal|Who"
+msgid "FieldLabel|3.MetaPlannedWhoTotal|Who Total"
 msgstr ""
 
 msgid "FieldLabel|5.BudgetRollupReportTypes|Rollup Types"
@@ -9660,7 +9673,7 @@ msgstr "Avancement"
 msgid "FieldLabel|8.ThresholdDetails|Details"
 msgstr "Détails"
 
-msgid "FieldLabel|8.PlannedEffortDatesTotal|When"
+msgid "FieldLabel|8.PlannedEffortDatesTotal|When Total"
 msgstr ""
 
 msgid "FieldLabel|8.AssignedEffortDatesTotal|When"
@@ -9702,7 +9715,7 @@ msgstr ""
 msgid "FieldLabel|8.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
 
-msgid "FieldLabel|8.MetaPlannedWhoTotal|Who"
+msgid "FieldLabel|8.MetaPlannedWhoTotal|Who Total"
 msgstr ""
 
 msgid "FieldLabel|9.Objective|Objective"
@@ -10407,7 +10420,7 @@ msgstr "Détails"
 msgid "FieldLabel|21.PseudoLatestProgressReportCode|Progress"
 msgstr "Avancement"
 
-msgid "FieldLabel|21.PlannedEffortDatesTotal|When"
+msgid "FieldLabel|21.PlannedEffortDatesTotal|When Total"
 msgstr ""
 
 msgid "FieldLabel|21.AssignedEffortDatesTotal|When"
@@ -10440,7 +10453,7 @@ msgstr ""
 msgid "FieldLabel|21.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
 
-msgid "FieldLabel|21.MetaPlannedWhoTotal|Who"
+msgid "FieldLabel|21.MetaPlannedWhoTotal|Who Total"
 msgstr ""
 
 msgid "FieldLabel|22.Target|Target"
@@ -30960,9 +30973,6 @@ msgstr ""
 
 #~ msgid "Select Project Resources"
 #~ msgstr "Sélectionner les ressources du projet"
-
-#~ msgid "Who"
-#~ msgstr "Qui"
 
 #~ msgid "When - %s"
 #~ msgstr "Quand - %s"
