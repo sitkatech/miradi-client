@@ -23,6 +23,8 @@ package org.miradi.dialogs.strategicPlan;
 import org.miradi.dialogs.diagram.AbstractStrategyPropertiesPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewTaskPropertiesPanel;
+import org.miradi.dialogs.task.WorkPlanActivityPropertiesPanel;
+import org.miradi.dialogs.task.WorkPlanActivityPropertiesPanelWithoutBudgetPanels;
 import org.miradi.dialogs.viability.AbstractIndicatorPropertiesPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -33,7 +35,13 @@ public class ActionPlanMultiPropertiesPanel extends	PlanningTreeMultiPropertiesP
 	{
 		super(mainWindowToUse, orefToUse);
 	}
-	
+
+	@Override
+	protected WorkPlanActivityPropertiesPanel createActivityPropertiesPanel() throws Exception
+	{
+		return new WorkPlanActivityPropertiesPanelWithoutBudgetPanels(getMainWindow());
+	}
+
 	@Override
 	protected AbstractIndicatorPropertiesPanel createIndicatorPropertiesPanel() throws Exception
 	{

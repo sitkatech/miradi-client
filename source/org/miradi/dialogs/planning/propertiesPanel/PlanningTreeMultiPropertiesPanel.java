@@ -57,6 +57,11 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 		addPanel(blankPropertiesPanel);
 	}
 	
+	protected WorkPlanActivityPropertiesPanel createActivityPropertiesPanel() throws Exception
+	{
+		return new WorkPlanActivityPropertiesPanel(getMainWindow());
+	}
+
 	protected PlanningViewTaskPropertiesPanel createTaskPropertiesPanel() throws Exception
 	{
 		return new PlanningViewTaskPropertiesPanel(getMainWindow());
@@ -219,7 +224,7 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 	{
 		if (activityPropertiesPanel == null)
 		{
-			activityPropertiesPanel = new WorkPlanActivityPropertiesPanel(getMainWindow());
+			activityPropertiesPanel = createActivityPropertiesPanel();
 			addPanel(activityPropertiesPanel);
 		}
 		
