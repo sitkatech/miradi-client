@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.diagram;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -29,7 +30,8 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.schemas.ProjectMetadataSchema;
-import org.miradi.utils.FillerLabel;
+
+import javax.swing.*;
 
 public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
 {
@@ -83,16 +85,19 @@ public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
 		removeAll();
 		getFields().clear();
 
-		addField(createReadonlyTextField(BaseObject.PSEUDO_TAG_PLANNED_WHO_TOTAL));
-
-		add(new FillerLabel());
+		add(new PanelTitleLabel(EAM.text("Who")));
 		addFieldWithoutLabel(createWhoPlannedEditorField(orefToUse));
 
-		addField(createPlannedLeaderDropDownField(orefToUse.getObjectType(), BaseObject.TAG_PLANNED_LEADER_RESOURCE));
-		addField(createReadonlyTextField(BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL));
+		addField(createReadonlyTextField(BaseObject.PSEUDO_TAG_PLANNED_WHO_TOTAL));
 
-		add(new FillerLabel());
+		addField(createPlannedLeaderDropDownField(orefToUse.getObjectType(), BaseObject.TAG_PLANNED_LEADER_RESOURCE));
+
+		PanelTitleLabel label = new PanelTitleLabel(EAM.text("When"));
+		label.setVerticalAlignment(SwingConstants.TOP);
+		add(label);
 		addFieldWithoutLabel(createWhenPlannedEditorField(orefToUse));
+
+		addField(createReadonlyTextField(BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL));
 
 		updateFieldsFromProject();
 
