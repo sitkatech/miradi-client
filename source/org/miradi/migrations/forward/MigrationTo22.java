@@ -68,7 +68,7 @@ public class MigrationTo22 extends AbstractMigration
 			if (reverseMigration)
 				visitor = new RemoveResourcePlansVisitor(typeToVisit);
 			else
-				visitor = new CreateResourcePlansForEmptyResourceAssignmentsVisitor(typeToVisit);
+				visitor = new CreateResourcePlansForResourceAssignmentsVisitor(typeToVisit);
 			visitAllORefsInPool(visitor);
 			final MigrationResult thisMigrationResult = visitor.getMigrationResult();
 			if (migrationResult == null)
@@ -105,12 +105,12 @@ public class MigrationTo22 extends AbstractMigration
 	@Override
 	protected String getDescription()
 	{
-		return EAM.text("This migration creates resource plan entries for resource assignments where there are no allocated work units.");
+		return EAM.text("This migration creates resource plan entries for resource assignments (where a resource or date range is specified).");
 	}
 
-	private class CreateResourcePlansForEmptyResourceAssignmentsVisitor extends AbstractMigrationORefVisitor
+	private class CreateResourcePlansForResourceAssignmentsVisitor extends AbstractMigrationORefVisitor
 	{
-		public CreateResourcePlansForEmptyResourceAssignmentsVisitor(int typeToVisit)
+		public CreateResourcePlansForResourceAssignmentsVisitor(int typeToVisit)
 		{
 			type = typeToVisit;
 		}
@@ -126,70 +126,64 @@ public class MigrationTo22 extends AbstractMigration
 			RawObject rawObject = getRawProject().findObject(rawObjectRef);
 			if (rawObject != null && rawObject.containsKey(TAG_RESOURCE_ASSIGNMENT_IDS))
 			{
-				boolean shouldCreateResourcePlans = true;
+				IdList resourcePlanIdList = new IdList(ResourcePlanSchema.getObjectType());
+				RawPool resourcePlanPool = getOrCreateResourcePlanPool();
 
 				ArrayList<RawObject> resourceAssignments = getResourceAssignments(rawObject);
+
 				for (RawObject resourceAssignment : resourceAssignments)
 				{
-					if (!canMigrateResourceAssignment(resourceAssignment))
+					if (resourceAssignment.containsKey(TAG_DATEUNIT_EFFORTS))
 					{
-						shouldCreateResourcePlans = false;
-						break;
-					}
-				}
+						DateUnitEffortList resourceAssignmentDateUnitEffortList = new DateUnitEffortList(resourceAssignment.get(TAG_DATEUNIT_EFFORTS));
+						DateUnitEffortList resourcePlanDateUnitEffortList = new DateUnitEffortList();
 
-				if (shouldCreateResourcePlans)
-				{
-					IdList resourcePlanIdList = new IdList(ResourcePlanSchema.getObjectType());
-					RawPool resourcePlanPool = getOrCreateResourcePlanPool();
-
-					for (RawObject resourceAssignment : resourceAssignments)
-					{
-						if (resourceAssignment.containsKey(TAG_DATEUNIT_EFFORTS))
+						for (int index = 0; index < resourceAssignmentDateUnitEffortList.size(); ++index)
 						{
-							DateUnitEffortList resourceAssignmentDateUnitEffortList = new DateUnitEffortList(resourceAssignment.get(TAG_DATEUNIT_EFFORTS));
-							DateUnitEffortList resourcePlanDateUnitEffortList = new DateUnitEffortList();
-
-							for (int index = 0; index < resourceAssignmentDateUnitEffortList.size(); ++index)
+							DateUnitEffort resourceAssignmentDateUnitEffort = resourceAssignmentDateUnitEffortList.getDateUnitEffort(index);
+							if (resourceAssignmentDateUnitEffort.getDateUnit().isDay())
 							{
-								DateUnitEffort resourceAssignmentDateUnitEffort = resourceAssignmentDateUnitEffortList.getDateUnitEffort(index);
-								if (resourceAssignmentDateUnitEffort.getDateUnit().isDay())
-								{
-									DateUnit resourceAssignmentDateUnit = resourceAssignmentDateUnitEffort.getDateUnit();
-									MultiCalendar cal = MultiCalendar.createFromGregorianYearMonthDay(resourceAssignmentDateUnit.getYear(), resourceAssignmentDateUnit.getMonth(), 1);
-									DateUnit resourcePlanDateUnit = DateUnit.createMonthDateUnit(cal.toIsoDateString());
-									DateUnitEffort resourcePlanDateUnitEffort = new DateUnitEffort(resourcePlanDateUnit, 0);
-									safeAddDateUnitEffort(resourcePlanDateUnitEffortList, resourcePlanDateUnitEffort);
-								}
-								else
-								{
-									safeAddDateUnitEffort(resourcePlanDateUnitEffortList, resourceAssignmentDateUnitEffort);
-								}
+								DateUnit resourceAssignmentDateUnit = resourceAssignmentDateUnitEffort.getDateUnit();
+								MultiCalendar cal = MultiCalendar.createFromGregorianYearMonthDay(resourceAssignmentDateUnit.getYear(), resourceAssignmentDateUnit.getMonth(), 1);
+								DateUnit resourcePlanDateUnit = DateUnit.createMonthDateUnit(cal.toIsoDateString());
+								DateUnitEffort resourcePlanDateUnitEffort = new DateUnitEffort(resourcePlanDateUnit, 0);
+								safeAddDateUnitEffort(resourcePlanDateUnitEffortList, resourcePlanDateUnitEffort);
 							}
-
-							RawObject newResourcePlan = new RawObject(ResourcePlanSchema.getObjectType());
-							newResourcePlan.setData(TAG_DATEUNIT_EFFORTS, resourcePlanDateUnitEffortList.toJson().toString());
-							if (resourceAssignment.containsKey(TAG_RESOURCE_ID))
-								newResourcePlan.setData(TAG_RESOURCE_ID, resourceAssignment.getData(TAG_RESOURCE_ID));
-							final BaseId nextHighestId = getRawProject().getNextHighestId();
-							final ORef newResourcePlanRef = new ORef(ObjectType.RESOURCE_PLAN, nextHighestId);
-							resourcePlanPool.put(newResourcePlanRef, newResourcePlan);
-							resourcePlanIdList.add(nextHighestId);
+							else
+							{
+								DateUnitEffort resourcePlanDateUnitEffort = new DateUnitEffort(resourceAssignmentDateUnitEffort.getDateUnit(), 0);
+								safeAddDateUnitEffort(resourcePlanDateUnitEffortList, resourcePlanDateUnitEffort);
+							}
 						}
-						else if (resourceAssignment.containsKey(TAG_RESOURCE_ID))
-						{
-							RawObject newResourcePlan = new RawObject(ResourcePlanSchema.getObjectType());
+
+						RawObject newResourcePlan = new RawObject(ResourcePlanSchema.getObjectType());
+						newResourcePlan.setData(TAG_DATEUNIT_EFFORTS, resourcePlanDateUnitEffortList.toJson().toString());
+						if (resourceAssignment.containsKey(TAG_RESOURCE_ID))
 							newResourcePlan.setData(TAG_RESOURCE_ID, resourceAssignment.getData(TAG_RESOURCE_ID));
-							final BaseId nextHighestId = getRawProject().getNextHighestId();
-							final ORef newResourcePlanRef = new ORef(ObjectType.RESOURCE_PLAN, nextHighestId);
-							resourcePlanPool.put(newResourcePlanRef, newResourcePlan);
-							resourcePlanIdList.add(nextHighestId);
-						}
+						final BaseId nextHighestId = getRawProject().getNextHighestId();
+						final ORef newResourcePlanRef = new ORef(ObjectType.RESOURCE_PLAN, nextHighestId);
+						resourcePlanPool.put(newResourcePlanRef, newResourcePlan);
+						resourcePlanIdList.add(nextHighestId);
 					}
-
-					if (!resourcePlanIdList.isEmpty())
-						rawObject.setData(TAG_RESOURCE_PLAN_IDS, resourcePlanIdList.toJson().toString());
+					else if (resourceAssignment.containsKey(TAG_RESOURCE_ID))
+					{
+						RawObject newResourcePlan = new RawObject(ResourcePlanSchema.getObjectType());
+						newResourcePlan.setData(TAG_RESOURCE_ID, resourceAssignment.getData(TAG_RESOURCE_ID));
+						final BaseId nextHighestId = getRawProject().getNextHighestId();
+						final ORef newResourcePlanRef = new ORef(ObjectType.RESOURCE_PLAN, nextHighestId);
+						resourcePlanPool.put(newResourcePlanRef, newResourcePlan);
+						resourcePlanIdList.add(nextHighestId);
+					}
 				}
+
+				if (!resourcePlanIdList.isEmpty())
+					rawObject.setData(TAG_RESOURCE_PLAN_IDS, resourcePlanIdList.toJson().toString());
+			}
+
+			if (rawObject != null && rawObject.containsKey(TAG_ASSIGNED_LEADER_RESOURCE))
+			{
+				String data = rawObject.get(TAG_ASSIGNED_LEADER_RESOURCE);
+				rawObject.setData(TAG_PLANNED_LEADER_RESOURCE, data);
 			}
 
 			return MigrationResult.createSuccess();
@@ -216,23 +210,6 @@ public class MigrationTo22 extends AbstractMigration
 			}
 
 			return resourceAssignments;
-		}
-
-		private boolean canMigrateResourceAssignment(RawObject resourceAssignment) throws Exception
-		{
-			if (resourceAssignment.containsKey(TAG_DATEUNIT_EFFORTS))
-			{
-				DateUnitEffortList dateUnitEffortList = new DateUnitEffortList(resourceAssignment.get(TAG_DATEUNIT_EFFORTS));
-				for (int index = 0; index < dateUnitEffortList.size(); ++index)
-				{
-					DateUnitEffort dateUnitEffort = dateUnitEffortList.getDateUnitEffort(index);
-					if (dateUnitEffort.getQuantity() > 0)
-						return false;
-
-				}
-			}
-
-			return true;
 		}
 
 		private void safeAddDateUnitEffort(DateUnitEffortList dateUnitEffortList, DateUnitEffort dateUnitEffortToAdd)
@@ -301,6 +278,8 @@ public class MigrationTo22 extends AbstractMigration
 		private int type;
 	}
 
+	public static final String TAG_ASSIGNED_LEADER_RESOURCE = "AssignedLeaderResource";
+	public static final String TAG_PLANNED_LEADER_RESOURCE = "PlannedLeaderResource";
 	public static final String TAG_RESOURCE_ASSIGNMENT_IDS = "AssignmentIds";
 	public static final String TAG_DATEUNIT_EFFORTS = "Details";
 	public static final String TAG_RESOURCE_ID = "ResourceId";

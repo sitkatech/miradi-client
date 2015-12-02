@@ -30,8 +30,10 @@ import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResourcePlanSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
+
 
 public class TestMigrationTo22 extends AbstractTestMigration
 {
@@ -77,7 +79,7 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
 
-		ensureForwardMigrationResourcePlansNotAdded(strategy.getRef());
+		ensureForwardMigrationResourcePlansAdded(strategy.getRef(), resourceAssignment);
 	}
 
 	public void testStrategyForwardMigrationWithZeroEffortResourceAssignment() throws Exception
@@ -86,7 +88,7 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		ResourceAssignment resourceAssignment = getProject().createAndPopulateResourceAssignment();
 
 		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
-		dateUnitEffortList.add(getProject().createDateUnitEffort(2007, 2008, 0.0));
+		dateUnitEffortList.add(getProject().createDateUnitEffort(2007, 2007, 0.0));
 		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toJson().toString());
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
@@ -100,18 +102,38 @@ public class TestMigrationTo22 extends AbstractTestMigration
 
 		ResourceAssignment resourceAssignment1 = getProject().createAndPopulateResourceAssignment();
 		DateUnitEffortList dateUnitEffortList1 = new DateUnitEffortList();
-		dateUnitEffortList1.add(getProject().createDateUnitEffort(2007, 2008, 0.0));
+		dateUnitEffortList1.add(getProject().createDateUnitEffort(2007, 2007, 0.0));
 		getProject().fillObjectUsingCommand(resourceAssignment1, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList1.toJson().toString());
 
 		ResourceAssignment resourceAssignment2 = getProject().createAndPopulateResourceAssignment();
 		DateUnitEffortList dateUnitEffortList2 = new DateUnitEffortList();
-		dateUnitEffortList2.add(getProject().createDateUnitEffort(2007, 2008, 1.0));
+		dateUnitEffortList2.add(getProject().createDateUnitEffort(2007, 2007, 1.0));
 		getProject().fillObjectUsingCommand(resourceAssignment2, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList2.toJson().toString());
 
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment1.getId(), resourceAssignment2.getId()});
 		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
 
-		ensureForwardMigrationResourcePlansNotAdded(strategy.getRef());
+		RawProject reverseMigratedProject = reverseMigrate(new VersionRange(MigrationTo22.VERSION_TO));
+		migrateProject(reverseMigratedProject, new VersionRange(Project.VERSION_HIGH));
+
+		RawPool rawPoolForType = reverseMigratedProject.getRawPoolForType(StrategySchema.getObjectType());
+		for(ORef ref : rawPoolForType.keySet())
+		{
+			RawObject rawObject = rawPoolForType.get(ref);
+			assertTrue("Field should have been added during forward migration?", rawObject.containsKey(MigrationTo22.TAG_RESOURCE_PLAN_IDS));
+		}
+
+		RawPool rawResourcePlanPool = reverseMigratedProject.getRawPoolForType(ResourcePlanSchema.getObjectType());
+		assertFalse("Resource plans should have been added during forward migration", rawResourcePlanPool.isEmpty());
+		assertEquals("Two resource plans should have been added", rawResourcePlanPool.size(), 2);
+
+		ORef resourcePlanRef1 = rawResourcePlanPool.getSortedReflist().get(0);
+		RawObject resourcePlan1 = reverseMigratedProject.findObject(resourcePlanRef1);
+		verifyResourcePlanMatchesResourceAssignment(resourcePlan1, resourceAssignment1);
+
+		ORef resourcePlanRef2 = rawResourcePlanPool.getSortedReflist().get(1);
+		RawObject resourcePlan2 = reverseMigratedProject.findObject(resourcePlanRef2);
+		verifyResourcePlanMatchesResourceAssignment(resourcePlan2, resourceAssignment2);
 	}
 
 	public void testStrategyForwardMigrationWithMixedEffortResourceAssignment() throws Exception
@@ -120,13 +142,13 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		ResourceAssignment resourceAssignment = getProject().createAndPopulateResourceAssignment();
 
 		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
-		dateUnitEffortList.add(getProject().createDateUnitEffort(2007, 2008, 0.0));
-		dateUnitEffortList.add(getProject().createDateUnitEffort(2008, 2009, 1.0));
+		dateUnitEffortList.add(getProject().createDateUnitEffort(2007, 2007, 0.0));
+		dateUnitEffortList.add(getProject().createDateUnitEffort(2008, 2008, 1.0));
 		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toJson().toString());
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
 
-		ensureForwardMigrationResourcePlansNotAdded(strategy.getRef());
+		ensureForwardMigrationResourcePlansAdded(strategy.getRef(), resourceAssignment);
 	}
 
 	public void testStrategyForwardMigrationWithZeroEffortResourceAssignments() throws Exception
@@ -135,13 +157,13 @@ public class TestMigrationTo22 extends AbstractTestMigration
 
 		ResourceAssignment resourceAssignment1 = getProject().createAndPopulateResourceAssignment();
 		DateUnitEffortList dateUnitEffortList1 = new DateUnitEffortList();
-		DateUnitEffort dateUnitEffort1 = getProject().createDateUnitEffort(2007, 2008, 0.0);
+		DateUnitEffort dateUnitEffort1 = getProject().createDateUnitEffort(2007, 2007, 0.0);
 		dateUnitEffortList1.add(dateUnitEffort1);
 		getProject().fillObjectUsingCommand(resourceAssignment1, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList1.toJson().toString());
 
 		ResourceAssignment resourceAssignment2 = getProject().createAndPopulateResourceAssignment();
 		DateUnitEffortList dateUnitEffortList2 = new DateUnitEffortList();
-		DateUnitEffort dateUnitEffort2 = getProject().createDateUnitEffort(2008, 2009, 0.0);
+		DateUnitEffort dateUnitEffort2 = getProject().createDateUnitEffort(2008, 2008, 0.0);
 		dateUnitEffortList2.add(dateUnitEffort2);
 		getProject().fillObjectUsingCommand(resourceAssignment2, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList2.toJson().toString());
 
@@ -283,7 +305,7 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		ResourceAssignment resourceAssignment = getProject().createAndPopulateResourceAssignment();
 
 		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
-		dateUnitEffortList.add(getProject().createDateUnitEffort(2007, 2008, 0.0));
+		dateUnitEffortList.add(getProject().createDateUnitEffort(2007, 2007, 0.0));
 		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toJson().toString());
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
@@ -305,7 +327,7 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		ResourceAssignment resourceAssignment = getProject().createAndPopulateResourceAssignment();
 
 		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
-		dateUnitEffortList.add(getProject().createDateUnitEffort(2007, 2008, 0.0));
+		dateUnitEffortList.add(getProject().createDateUnitEffort(2007, 2007, 0.0));
 		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toJson().toString());
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(task, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
@@ -320,7 +342,7 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		ResourceAssignment resourceAssignment = getProject().createAndPopulateResourceAssignment();
 
 		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
-		dateUnitEffortList.add(getProject().createDateUnitEffort(2007, 2008, 0.0));
+		dateUnitEffortList.add(getProject().createDateUnitEffort(2007, 2007, 0.0));
 		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toJson().toString());
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(task, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
@@ -342,7 +364,7 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		ResourceAssignment resourceAssignment = getProject().createAndPopulateResourceAssignment();
 
 		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
-		dateUnitEffortList.add(getProject().createDateUnitEffort(2007, 2008, 0.0));
+		dateUnitEffortList.add(getProject().createDateUnitEffort(2007, 2007, 0.0));
 		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toJson().toString());
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(indicator, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
@@ -357,7 +379,7 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		ResourceAssignment resourceAssignment = getProject().createAndPopulateResourceAssignment();
 
 		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
-		dateUnitEffortList.add(getProject().createDateUnitEffort(2007, 2008, 0.0));
+		dateUnitEffortList.add(getProject().createDateUnitEffort(2007, 2007, 0.0));
 		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toJson().toString());
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(indicator, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
@@ -399,15 +421,22 @@ public class TestMigrationTo22 extends AbstractTestMigration
 
 		ORef resourcePlanRef = rawResourcePlanPool.getSortedReflist().get(0);
 		RawObject resourcePlan = reverseMigratedProject.findObject(resourcePlanRef);
+		verifyResourcePlanMatchesResourceAssignment(resourcePlan, resourceAssignment);
+	}
 
+	private void verifyResourcePlanMatchesResourceAssignment(RawObject resourcePlan, ResourceAssignment resourceAssignment) throws Exception
+	{
 		if (!resourceAssignment.getData(ResourceAssignment.TAG_DATEUNIT_EFFORTS).isEmpty())
 		{
 			DateUnitEffortList resourcePlanDateUnitEffortList = new DateUnitEffortList(resourcePlan.getData(ResourcePlan.TAG_DATEUNIT_EFFORTS));
 			DateUnitEffortList resourceAssignmentDateUnitEffortList = new DateUnitEffortList(resourceAssignment.getData(ResourceAssignment.TAG_DATEUNIT_EFFORTS));
-			assertEquals("Resource plan date unit effort list should match that on resource assignment", resourceAssignmentDateUnitEffortList, resourcePlanDateUnitEffortList);
+			assertEquals("Resource plan date unit effort list should match size of that on resource assignment", resourceAssignmentDateUnitEffortList.size(), resourcePlanDateUnitEffortList.size());
 
-			DateUnitEffort resourcePlanDateUnitEffort = resourcePlanDateUnitEffortList.getDateUnitEffort(0);
-			assertEquals("Quantity on resource plan date unit effort should be 0", resourcePlanDateUnitEffort.getQuantity(), 0.0);
+			for (int index = 0; index < resourceAssignmentDateUnitEffortList.size(); ++index)
+			{
+				assertEquals("Resource plan date units should match those on resource assignments", resourceAssignmentDateUnitEffortList.getDateUnitEffort(index).getDateUnit(), resourcePlanDateUnitEffortList.getDateUnitEffort(index).getDateUnit());
+				assertEquals("Quantity on resource plan date unit effort should be 0", resourcePlanDateUnitEffortList.getDateUnitEffort(index).getQuantity(), 0.0);
+			}
 		}
 
 		if (!resourceAssignment.getData(ResourceAssignment.TAG_RESOURCE_ID).isEmpty())
