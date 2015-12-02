@@ -689,6 +689,12 @@ public class Project implements ProjectInterface
 		
 		TableSettings newTableSettings = TableSettings.findOrCreate(this, WorkPlanTreeTablePanel.getTabSpecificModelIdentifier());
 		CodeList budgetColumnCodes = new CodeList();
+
+		budgetColumnCodes.add(WorkPlanColumnConfigurationQuestion.META_PLANNED_WHO_TOTAL);
+		budgetColumnCodes.add(WorkPlanColumnConfigurationQuestion.META_PLANNED_WHEN_TOTAL);
+		budgetColumnCodes.add(WorkPlanColumnConfigurationQuestion.META_ASSIGNED_WHO_TOTAL);
+		budgetColumnCodes.add(WorkPlanColumnConfigurationQuestion.META_ASSIGNED_WHEN_TOTAL);
+
 		budgetColumnCodes.add(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
 		budgetColumnCodes.add(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);
 		budgetColumnCodes.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
@@ -1464,6 +1470,6 @@ public class Project implements ProjectInterface
 	
 	public CommandExecutor commandExecutor;
 	
-	public static final int VERSION_LOW = 22;
-	public static final int VERSION_HIGH = 22;
+	public static final int VERSION_LOW = 23;
+	public static final int VERSION_HIGH = 23;
 }

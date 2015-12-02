@@ -117,16 +117,26 @@ public class MigrationTo21 extends AbstractMigration
 		@Override
 		public MigrationResult internalVisit(ORef rawObjectRef) throws Exception
 		{
+			MigrationResult migrationResult = MigrationResult.createUninitializedResult();
+
 			RawObject rawObject = getRawProject().findObject(rawObjectRef);
 			if (rawObject != null)
 			{
 				if (isReverseMigration)
-					return renameFields(rawObject, codeListTagsToVisit, stringMapTagsToVisit, oldToNewTagMap.reverseMap());
+				{
+					migrationResult = renameFields(rawObject, codeListTagsToVisit, stringMapTagsToVisit, oldToNewTagMap.reverseMap());
+					final MigrationResult thisMigrationResult = removeFields(rawObject, codeListTagsToVisit);
+					migrationResult.merge(thisMigrationResult);
+				}
 				else
-					return renameFields(rawObject, codeListTagsToVisit, stringMapTagsToVisit, oldToNewTagMap);
+				{
+					migrationResult = renameFields(rawObject, codeListTagsToVisit, stringMapTagsToVisit, oldToNewTagMap);
+					final MigrationResult thisMigrationResult = addFields(rawObject, codeListTagsToVisit);
+					migrationResult.merge(thisMigrationResult);
+				}
 			}
 
-			return MigrationResult.createSuccess();
+			return migrationResult;
 		}
 
 		private MigrationResult renameFields(RawObject rawObject, Vector<String> codeListTagsToVisit, Vector<String> stringMapTagsToVisit, BiDirectionalHashMap oldToNewTagMapToUse) throws Exception
@@ -139,12 +149,6 @@ public class MigrationTo21 extends AbstractMigration
 			{
 				CodeList codeListToMigrate = getCodeList(rawObject, codeListTag);
 				CodeList codeListMigrated = new CodeList();
-
-				if (codeListTag.equals(TAG_COLUMN_SEQUENCE_CODES) && !isReverseMigration)
-				{
-					codeListMigrated.add(META_PLANNED_WHO_TOTAL);
-					codeListMigrated.add(PSEUDO_TAG_PLANNED_WHEN_TOTAL);
-				}
 
 				for (String code : codeListToMigrate)
 				{
@@ -181,6 +185,56 @@ public class MigrationTo21 extends AbstractMigration
 			return migrationResult;
 		}
 
+		private MigrationResult addFields(RawObject rawObject, Vector<String> codeListTagsToVisit) throws Exception
+		{
+			MigrationResult migrationResult = MigrationResult.createSuccess();
+
+			for(String codeListTag : codeListTagsToVisit)
+			{
+				CodeList codeListToMigrate = getCodeList(rawObject, codeListTag);
+
+				if (codeListTag.equals(TAG_COLUMN_SEQUENCE_CODES))
+				{
+					CodeList codeListMigrated = new CodeList();
+
+					codeListMigrated.add(META_PLANNED_WHO_TOTAL);
+					codeListMigrated.add(PSEUDO_TAG_PLANNED_WHEN_TOTAL);
+
+					for (String code : codeListToMigrate)
+					{
+						codeListMigrated.add(code);
+					}
+
+					rawObject.setData(codeListTag, codeListMigrated.toJsonString());
+				}
+			}
+
+			return migrationResult;
+		}
+
+		private MigrationResult removeFields(RawObject rawObject, Vector<String> codeListTagsToVisit) throws Exception
+		{
+			MigrationResult migrationResult = MigrationResult.createSuccess();
+
+			for(String codeListTag : codeListTagsToVisit)
+			{
+				CodeList codeListToMigrate = getCodeList(rawObject, codeListTag);
+
+				if (codeListTag.equals(TAG_COLUMN_SEQUENCE_CODES))
+				{
+					if (codeListToMigrate.contains(META_PLANNED_WHO_TOTAL))
+						codeListToMigrate.removeCode(META_PLANNED_WHO_TOTAL);
+
+					if (codeListToMigrate.contains(PSEUDO_TAG_PLANNED_WHEN_TOTAL))
+						codeListToMigrate.removeCode(PSEUDO_TAG_PLANNED_WHEN_TOTAL);
+
+					rawObject.setData(codeListTag, codeListToMigrate.toJsonString());
+				}
+			}
+
+			return migrationResult;
+		}
+
 		private CodeList getCodeList(RawObject rawObject, String tag) throws Exception
 		{
 			String data = rawObject.getData(tag);
@@ -210,10 +264,10 @@ public class MigrationTo21 extends AbstractMigration
 
 		private Vector<String> getStringMapTagsToVisit()
 		{
-			Vector<String> codeListTagsToVisit = new Vector<String>();
-			codeListTagsToVisit.add(TAG_COLUMN_WIDTHS);
+			Vector<String> stringMapTagsToVisit = new Vector<String>();
+			stringMapTagsToVisit.add(TAG_COLUMN_WIDTHS);
 
-			return codeListTagsToVisit;
+			return stringMapTagsToVisit;
 		}
 
 		protected BiDirectionalHashMap createLegacyToNewMap()

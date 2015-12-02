@@ -35,7 +35,8 @@ public class WorkPlanColumnConfigurationQuestion extends MultipleSelectStaticCho
 	protected ChoiceItem[] createChoices()
 	{
 		Vector<ChoiceItem> choiceItems = new Vector<ChoiceItem>();
-		
+
+		choiceItems.addAll(createWhoWhenChoices());
 		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE));
 		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE));
 		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE));
@@ -46,15 +47,26 @@ public class WorkPlanColumnConfigurationQuestion extends MultipleSelectStaticCho
 		return choiceItems.toArray(new ChoiceItem[0]);
 	}
 
+	protected Vector<ChoiceItem> createWhoWhenChoices()
+	{
+		Vector<ChoiceItem> choiceItems = new Vector<ChoiceItem>();
+		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_PLANNED_WHO_TOTAL));
+		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_PLANNED_WHEN_TOTAL));
+		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_ASSIGNED_WHO_TOTAL));
+		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_ASSIGNED_WHEN_TOTAL));
+
+		return choiceItems;
+	}
+	
 	protected Vector<ChoiceItem> createCustomChoices()
 	{
 		Vector<ChoiceItem> choiceItems = new Vector<ChoiceItem>();
 		choiceItems.add(createChoiceItem(COMMENTS_COLUMN_CODE));
 		choiceItems.add(createChoiceItem(DETAILS_COLUMN_CODE));
-		
+
 		return choiceItems;
 	}
-	
+
 	protected static ChoiceItem createChoiceItem(String tag)
 	{
 		return CustomPlanningColumnsQuestion.createChoiceItem(tag);
@@ -71,7 +83,7 @@ public class WorkPlanColumnConfigurationQuestion extends MultipleSelectStaticCho
 		if (getAllPossibleBudgetTotalsColumnGroups().contains(budgetColumnGroupCode))
 			return WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE;
 		
-		throw new RuntimeException("Column code is not a budet column. Code: " + budgetColumnGroupCode);
+		throw new RuntimeException("Column code is not a budget column. Code: " + budgetColumnGroupCode);
 	}
 	
 	public static Vector<String> getAllPossibleWorkUnitsColumnGroups()
@@ -112,7 +124,12 @@ public class WorkPlanColumnConfigurationQuestion extends MultipleSelectStaticCho
 		
 		return columnGroups;
 	}
-	
+
+	public static final String META_PLANNED_WHO_TOTAL = CustomPlanningColumnsQuestion.META_PLANNED_WHO_TOTAL;
+	public static final String META_PLANNED_WHEN_TOTAL = BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL;
+	public static final String META_ASSIGNED_WHO_TOTAL = CustomPlanningColumnsQuestion.META_ASSIGNED_WHO_TOTAL;
+	public static final String META_ASSIGNED_WHEN_TOTAL = BaseObject.PSEUDO_TAG_ASSIGNED_WHEN_TOTAL;
+
 	public static final String META_ANALYSIS_WORK_UNITS_COLUMN_CODE = "MetaAnalysisWorkUnitsColumnCode";
 	public static final String META_ANALYSIS_EXPENSES_CODE = "MetaAnalysisExpensesColumnCode";
 	public static final String META_ANALYSIS_BUDGET_DETAILS_COLUMN_CODE = "MetaAnalysisBudgetDetailsColumnCode";

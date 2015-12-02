@@ -22,16 +22,10 @@ package org.miradi.dialogs.planning;
 import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.CodeToCodeListMap;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
-import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
-import org.miradi.schemas.ConceptualModelDiagramSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.ResultsChainDiagramSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.TaskSchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
 
 public class WorkPlanRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
@@ -53,12 +47,7 @@ public class WorkPlanRowColumnProvider extends AbstractPlanningTreeRowColumnProv
 	
 	public CodeList getColumnCodesToShow() throws Exception
 	{
-		CodeList columnCodesToShow = new CodeList(new String[] {
-				CustomPlanningColumnsQuestion.META_PLANNED_WHO_TOTAL,
-				BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL,
-				CustomPlanningColumnsQuestion.META_ASSIGNED_WHO_TOTAL,
-				BaseObject.PSEUDO_TAG_ASSIGNED_WHEN_TOTAL,
-				});
+		CodeList columnCodesToShow = new CodeList(new String[] {});
 		
 		columnCodesToShow.addAll(getBudgetColumnCodesFromTableSettingsMap());
 		
