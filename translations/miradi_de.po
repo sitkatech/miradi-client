@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-02 11:51-0800\n"
+"POT-Creation-Date: 2015-12-03 03:51-0800\n"
 "PO-Revision-Date: 2015-07-15 14:36+0000\n"
 "Last-Translator: Felix <felix.cybulla@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/miradi-client/"
@@ -256,7 +256,7 @@ msgid "%fieldName field data will be lost for %indicatorLabel (Indicator)"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo20.java:159
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo22.java:263
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo22.java:289
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/AbstractModifyMultipleFieldMigration.java:70
 msgid "%fieldName will be removed. %label"
 msgstr ""
@@ -4521,7 +4521,7 @@ msgid "Key Ecological Attribute (KEA)"
 msgstr "Ökologisches Schlüsselattribut (ÖSA)"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo20.java:154
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo22.java:258
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo22.java:284
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/AbstractModifyMultipleFieldMigration.java:65
 msgid "Label = %s"
 msgstr ""
@@ -8029,7 +8029,7 @@ msgid ""
 "status fields"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo22.java:108
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo22.java:109
 msgid ""
 "This migration creates resource plan entries for resource assignments (where "
 "a resource or date range is specified)."
