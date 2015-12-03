@@ -37,8 +37,9 @@ abstract public class AbstractZippedXmlImporter extends AbstractProjectImporter
 		super(mainWindowToUse);
 	}
 	
-	protected Project importProjectFromXmlEntry(MiradiZipFile zipFile, ProgressInterface progressIndicator) throws Exception
+	protected ImportXmlProjectResult importProjectFromXmlEntry(MiradiZipFile zipFile, ProgressInterface progressIndicator) throws Exception
 	{
+		boolean projectRequiresMigration = false;
 		Project projectToFill = createProjectToFill();
 
 		InputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
@@ -47,14 +48,14 @@ abstract public class AbstractZippedXmlImporter extends AbstractProjectImporter
 
 		try
 		{
-			importProjectXml(projectToFill, zipFile, projectAsInputStream, progressIndicator);
+			projectRequiresMigration = importProjectXml(projectToFill, zipFile, projectAsInputStream, progressIndicator);
 		}
 		finally
 		{
 			projectAsInputStream.close();
 		}
 		
-		return projectToFill;
+		return new ImportXmlProjectResult(projectToFill, projectRequiresMigration);
 	}
 
 	protected Project createProjectToFill() throws Exception
@@ -74,5 +75,20 @@ abstract public class AbstractZippedXmlImporter extends AbstractProjectImporter
 	
 	abstract protected void createOrOpenProject(Project projectToFill, File projectFile) throws Exception;
 
-	abstract protected void importProjectXml(Project projectToFill, MiradiZipFile zipFile, InputStreamWithSeek projectAsInputStream, ProgressInterface progressIndicator) throws Exception;
+	abstract protected boolean importProjectXml(Project projectToFill, MiradiZipFile zipFile, InputStreamWithSeek projectAsInputStream, ProgressInterface progressIndicator) throws Exception;
+
+	protected class ImportXmlProjectResult
+	{
+		public ImportXmlProjectResult(Project projectToUse, boolean projectRequiresMigrationToUse)
+		{
+			project = projectToUse;
+			projectRequiresMigration = projectRequiresMigrationToUse;
+		}
+
+		public Project getProject() { return project; }
+		public boolean getProjectRequiresMigration() { return projectRequiresMigration; }
+
+		private boolean projectRequiresMigration;
+		private Project project;
+	}
 }

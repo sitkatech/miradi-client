@@ -50,6 +50,7 @@ import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.generic.XmlConstants;
+import org.miradi.xml.xmpz2.Xmpz2MigrationResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -63,51 +64,49 @@ abstract public class AbstractXmlImporter
 		project = projectToFill;
 	}
 		
-	public void importProject(InputStreamWithSeek projectAsInputStream) throws Exception
+	public boolean importProject(InputStreamWithSeek projectAsInputStream) throws Exception
 	{
-		loadXml(projectAsInputStream);
+		boolean requiresMigration = loadXml(projectAsInputStream);
 		importXml();
+		return requiresMigration;
 	}
 	
-	private void loadXml(InputStreamWithSeek projectAsInputStream) throws Exception
+	private boolean loadXml(InputStreamWithSeek projectAsInputStream) throws Exception
 	{
-		projectAsInputStream = migrate(projectAsInputStream);
-		
+		Xmpz2MigrationResult migrationResult = migrate(projectAsInputStream);
+
+		projectAsInputStream = migrationResult.getStringInputStreamWithSeek();
+
 		InputSource inputSource = new InputSource(projectAsInputStream);
 		document = createDocument(inputSource);
-				
+
 		String nameSpaceUri = getNamespaceURI();
-		if (!isSameNameSpace(nameSpaceUri))
-		{
-			throw new Exception("Name space mismatch should be: " + getPartialNameSpace() + " <br> however it is: " + nameSpaceUri); 
+		if (!isSameNameSpace(nameSpaceUri)) {
+			throw new Exception("Name space mismatch should be: " + getPartialNameSpace() + " <br> however it is: " + nameSpaceUri);
 		}
-				
-		if (isUnsupportedNewVersion(nameSpaceUri))
-		{
+
+		if (isUnsupportedNewVersion(nameSpaceUri)) {
 			throw new UnsupportedNewVersionSchemaException(nameSpaceUri);
 		}
-		
-		if (isUnsupportedOldVersion(nameSpaceUri))
-		{
+
+		if (isUnsupportedOldVersion(nameSpaceUri)) {
 			throw new XmlVersionTooOldException(getNameSpaceVersion(), getSchemaVersionToImport(nameSpaceUri));
 		}
-		
+
 		projectAsInputStream.seek(0);
 		EAM.logVerbose("XML being imported:");
 		EAM.logVerbose(getXmlTextForDebugging(projectAsInputStream));
-		
-		if (!createXmlValidator().isValid(projectAsInputStream))
-		{
+
+		if (!createXmlValidator().isValid(projectAsInputStream)) {
 			throw new ValidationException(EAM.text("File to import does not validate."));
 		}
-		
+
 		xPath = createXPath();
+
+		return migrationResult.getSchemaVersionWasUpdated();
 	}
 
-	protected InputStreamWithSeek migrate(InputStreamWithSeek projectAsInputStream) throws Exception
-	{
-		return projectAsInputStream;
-	}
+	abstract protected Xmpz2MigrationResult migrate(InputStreamWithSeek projectAsInputStream) throws Exception;
 
 	private String getXmlTextForDebugging(InputStreamWithSeek projectAsInputStream) throws Exception
 	{

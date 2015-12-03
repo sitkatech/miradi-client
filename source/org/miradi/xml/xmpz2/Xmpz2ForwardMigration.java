@@ -46,11 +46,14 @@ import org.xml.sax.InputSource;
 
 public class Xmpz2ForwardMigration
 {
-	public StringInputStreamWithSeek migrate(InputStreamWithSeek projectAsInputStream) throws Exception
+	public Xmpz2MigrationResult migrate(InputStreamWithSeek projectAsInputStream) throws Exception
 	{
+		// note that this xmpz2 migration only handles structural migrations required to ensure that the resulting xml validates according to the current schema (rnc)
+		// project migrations are handled subsequently to this as part of the project opening processes (via MigrationManager)
+
 		Document document = convertToDocument(projectAsInputStream);
 		Element rootElement = document.getDocumentElement();
-		updateXmpz2SchemaVersionToCurrentVersion(rootElement);
+		boolean schemaVersionWasUpdated = updateXmpz2SchemaVersionToCurrentVersion(rootElement);
 		removeLegacyTncFields(rootElement);
 		removeHumanWellbeingTargetCalculatedThreatRatingElement(rootElement);
 		renameTncFields(document);
@@ -58,9 +61,9 @@ public class Xmpz2ForwardMigration
 		renameWhoWhenAssignedFields(document);
 		final String migratedXmlAsString = HtmlUtilities.toXmlString(document);
 
-		return new StringInputStreamWithSeek(migratedXmlAsString);
+		return new Xmpz2MigrationResult(new StringInputStreamWithSeek(migratedXmlAsString), schemaVersionWasUpdated);
 	}
-	
+
 	private void renameTncFields(Document document) throws Exception
 	{
 		Element rootElement = document.getDocumentElement();
@@ -268,8 +271,9 @@ public class Xmpz2ForwardMigration
 		return Xmpz2XmlConstants.TNC_PROJECT_DATA + "TNC" + MigrationTo11.LEGACY_TAG_TNC_ORGANIZATIONAL_PRIORITIES + Xmpz2XmlConstants.CONTAINER_ELEMENT_TAG;
 	}
 
-	private void updateXmpz2SchemaVersionToCurrentVersion(Element rootElement) throws Exception
+	private boolean updateXmpz2SchemaVersionToCurrentVersion(Element rootElement) throws Exception
 	{
+		boolean schemaVersionWasUpdated = false;
 		final String currentNamespace = getNameSpace(rootElement);
 		String readInSchemaVersionAsString = AbstractXmlImporter.getSchemaVersionToImport(currentNamespace);
 		int readInSchemaVersion = Integer.parseInt(readInSchemaVersionAsString);
@@ -281,7 +285,10 @@ public class Xmpz2ForwardMigration
 		if (readInSchemaVersion <  Integer.parseInt(NAME_SPACE_VERSION))
 		{
 			setNameSpaceVersion(rootElement, NAME_SPACE_VERSION);
+			schemaVersionWasUpdated = true;
 		}
+
+		return schemaVersionWasUpdated;
 	}
 
 	public static void setNameSpaceVersion(Element rootElement, String newNameSpaceVersion) throws Exception
@@ -333,7 +340,7 @@ public class Xmpz2ForwardMigration
 	}
 	
 	private static final int LOWEST_SCHEMA_VERSION = 228;
-	private static final String NAME_SPACE_VERSION = "236";
+	private static final String NAME_SPACE_VERSION = Xmpz2XmlConstants.NAME_SPACE_VERSION;
 	private static final String XMLNS = "xmlns";
 	private static final String COLON = ":";
 	private static final String PARTIAL_NAME_SPACE = "http://xml.miradi.org/schema/ConservationProject/";

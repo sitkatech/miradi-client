@@ -163,4 +163,6 @@ public class MigrationManager extends AbstractMigrationManager
 	public static final int TOO_OLD_TO_MIGRATE = 3;
 	
 	public static final int OLDEST_VERSION_TO_HANDLE = 3;
+
+	public static final int LAST_MIGRATION_PRIOR_TO_CURRENT_RELEASE = MigrationTo18.VERSION_TO;
 }

@@ -65,7 +65,7 @@ public abstract class AbstractProjectImporter
 			
 			fileChooser.setDialogType(JFileChooser.CUSTOM_DIALOG);
 			fileChooser.setApproveButtonToolTipText(EAM.text(getApproveButtonToolTipText()));
-			if (fileChooser.showDialog(getMainWindow(), getDialogApprovelButtonText()) != JFileChooser.APPROVE_OPTION)
+			if (fileChooser.showDialog(getMainWindow(), getDialogApproveButtonText()) != JFileChooser.APPROVE_OPTION)
 				return;
 			
 			File fileToImport = fileChooser.getSelectedFile();
@@ -221,7 +221,7 @@ public abstract class AbstractProjectImporter
 		return "Import";
 	}
 	
-	private String getDialogApprovelButtonText()
+	private String getDialogApproveButtonText()
 	{
 		return "Import";
 	}

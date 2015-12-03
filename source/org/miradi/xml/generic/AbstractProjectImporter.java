@@ -28,7 +28,6 @@ import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
-import org.miradi.project.ProjectSaver;
 import org.miradi.utils.MiradiZipFile;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.views.umbrella.AbstractZippedXmlImporter;
@@ -42,10 +41,10 @@ abstract public class AbstractProjectImporter extends AbstractZippedXmlImporter
 	}
 	
 	@Override
-	protected void importProjectXml(Project projectToFill, MiradiZipFile zipFile, InputStreamWithSeek projectAsInputStream, ProgressInterface progressIndicator) throws Exception
+	protected boolean importProjectXml(Project projectToFill, MiradiZipFile zipFile, InputStreamWithSeek projectAsInputStream, ProgressInterface progressIndicator) throws Exception
 	{
 		AbstractXmlImporter xmpzImporter = createXmpzXmlImporter(projectToFill, progressIndicator);
-		xmpzImporter.importProject(projectAsInputStream);
+		return xmpzImporter.importProject(projectAsInputStream);
 	}
 
 	@Override
@@ -54,14 +53,7 @@ abstract public class AbstractProjectImporter extends AbstractZippedXmlImporter
 		projectToFill.rawCreatorOpen();
 	}
 	
-	@Override
-	protected void createProject(File importFile, File newProjectFile, ProgressInterface progressIndicator) throws Exception
-	{
-		Project project = importProject(importFile, progressIndicator);
-		ProjectSaver.saveProject(project, newProjectFile);
-	}
-	
-	private Project importProject(File zipFileToImport, ProgressInterface progressIndicator) throws ZipException, IOException, Exception, ValidationException
+	protected ImportXmlProjectResult importProject(File zipFileToImport, ProgressInterface progressIndicator) throws ZipException, IOException, Exception, ValidationException
 	{
 		MiradiZipFile zipFile = new MiradiZipFile(zipFileToImport);
 		try
@@ -73,7 +65,7 @@ abstract public class AbstractProjectImporter extends AbstractZippedXmlImporter
 			zipFile.close();
 		}
 	}
-	
+
 	@Override
 	protected void possiblyNotifyUserOfAutomaticMigration(File file) throws Exception
 	{

@@ -85,12 +85,10 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	}
 	
 	@Override
-	protected InputStreamWithSeek migrate(InputStreamWithSeek projectAsInputStream) throws Exception
+	protected Xmpz2MigrationResult migrate(InputStreamWithSeek projectAsInputStream) throws Exception
 	{
 		Xmpz2ForwardMigration migration = new Xmpz2ForwardMigration();
-		projectAsInputStream = migration.migrate(projectAsInputStream);
-
-		return projectAsInputStream;
+		return migration.migrate(projectAsInputStream);
 	}
 		
 	@Override

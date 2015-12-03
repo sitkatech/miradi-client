@@ -1,20 +1,4 @@
-package org.miradi.xml;
-
-import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
-import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
-import org.miradi.main.TestCaseWithProject;
-import org.miradi.migrations.forward.MigrationTo10;
-import org.miradi.utils.HtmlUtilities;
-import org.miradi.utils.UnicodeXmlWriter;
-import org.miradi.xml.xmpz2.Xmpz2XmlValidator;
-import org.miradi.xml.xmpz2.Xmpz2ForwardMigration;
-import org.miradi.xml.xmpz2.Xmpz2XmlSilentValidatorForTesting;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
-/* 
+/*
 Copyright 2005-2015, Foundations of Success, Bethesda, Maryland
 on behalf of the Conservation Measures Partnership ("CMP").
 Material developed between 2005-2013 is jointly copyright by Beneficent Technology, Inc. ("The Benetech Initiative"), Palo Alto, California.
@@ -22,7 +6,7 @@ Material developed between 2005-2013 is jointly copyright by Beneficent Technolo
 This file is part of Miradi
 
 Miradi is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License version 3, 
+it under the terms of the GNU General Public License version 3,
 as published by the Free Software Foundation.
 
 Miradi is distributed in the hope that it will be useful,
@@ -31,8 +15,25 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
- */
+along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+package org.miradi.xml;
+
+import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
+import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
+import org.miradi.main.TestCaseWithProject;
+import org.miradi.migrations.forward.MigrationTo10;
+import org.miradi.migrations.forward.MigrationTo19;
+import org.miradi.migrations.forward.MigrationTo21;
+import org.miradi.utils.HtmlUtilities;
+import org.miradi.utils.UnicodeXmlWriter;
+import org.miradi.xml.xmpz2.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
 
 public class TestXmpz2ForwardMigration extends TestCaseWithProject
 {
@@ -60,6 +61,37 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject
 			appendChildNodeWithSampleText(document, node, TNC_PROJECT_DATA + MigrationTo10.LEGACY_TAG_CAPACITY_AND_FUNDING);
 		}
 		
+		verifyMigratedXmpz2(document);
+	}
+
+	public void testRenameLeaderResourceFieldsMigration() throws Exception
+	{
+		Document document = convertProjectToDocument();
+		Element rootElement = document.getDocumentElement();
+		NodeList strategyDataNodes = rootElement.getElementsByTagName(PREFIX + Xmpz2XmlConstants.STRATEGY);
+		for (int index = 0; index < strategyDataNodes.getLength(); ++index)
+		{
+			Node node = strategyDataNodes.item(index);
+
+			appendChildNodeWithSampleText(document, node, Xmpz2XmlConstants.STRATEGY + MigrationTo19.LEGACY_TAG_LEADER_RESOURCE + Xmpz2XmlConstants.ID);
+		}
+
+		verifyMigratedXmpz2(document);
+	}
+
+	public void testRenameWhoWhenAssignedFieldsMigration() throws Exception
+	{
+		Document document = convertProjectToDocument();
+		Element rootElement = document.getDocumentElement();
+		NodeList planningViewConfigurationColumnNamesNodes = rootElement.getElementsByTagName(PREFIX + Xmpz2XmlConstants.OBJECT_TREE_TABLE_CONFIGURATION + Xmpz2XmlConstants.COLUMN_CONFIGURATION_CODES + Xmpz2XmlConstants.CONTAINER_ELEMENT_TAG);
+		for (int index = 0; index < planningViewConfigurationColumnNamesNodes.getLength(); ++index)
+		{
+			Node node = planningViewConfigurationColumnNamesNodes.item(index);
+
+			appendChildNodeWithSampleText(document, node, MigrationTo21.LEGACY_READABLE_ASSIGNED_WHO_TOTAL_CODE);
+			appendChildNodeWithSampleText(document, node, MigrationTo21.LEGACY_READABLE_ASSIGNED_WHEN_TOTAL_CODE);
+		}
+
 		verifyMigratedXmpz2(document);
 	}
 
@@ -127,9 +159,11 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject
 			fail("Project should not validate due to incorrect schema?");
 		
 		Xmpz2ForwardMigration migration = new Xmpz2ForwardMigration();
-		InputStreamWithSeek inputStream = migration.migrate(new StringInputStreamWithSeek(updatedXmlAsString));
+		Xmpz2MigrationResult migrationResult = migration.migrate(new StringInputStreamWithSeek(updatedXmlAsString));
+		InputStreamWithSeek inputStream = migrationResult.getStringInputStreamWithSeek();
 		if (!new Xmpz2XmlValidator().isValid(inputStream))
 			fail("Project should validate after xml has been migrated?");
+		assertTrue("Expected schema version to be updated", migrationResult.getSchemaVersionWasUpdated());
 	}
 	
 	private Document convertProjectToDocument() throws Exception
@@ -145,7 +179,8 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject
 	{
 		String updatedXmlAsString = HtmlUtilities.toXmlString(document);
 		Xmpz2ForwardMigration migration = new Xmpz2ForwardMigration();
-		InputStreamWithSeek inputStream = migration.migrate(new StringInputStreamWithSeek(updatedXmlAsString));
+		Xmpz2MigrationResult migrationResult = migration.migrate(new StringInputStreamWithSeek(updatedXmlAsString));
+		InputStreamWithSeek inputStream = migrationResult.getStringInputStreamWithSeek();
 		if (!new Xmpz2XmlValidator().isValid(inputStream))
 			fail("Project should validate after xml has been migrated?");
 	}
