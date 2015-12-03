@@ -167,6 +167,10 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		dateUnitEffortList2.add(dateUnitEffort2);
 		getProject().fillObjectUsingCommand(resourceAssignment2, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList2.toJson().toString());
 
+		DateUnitEffortList combinedDateUnitEffortList = new DateUnitEffortList();
+		combinedDateUnitEffortList.add(dateUnitEffort1);
+		combinedDateUnitEffortList.add(dateUnitEffort2);
+
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment1.getId(), resourceAssignment2.getId()});
 		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
 
@@ -186,25 +190,32 @@ public class TestMigrationTo22 extends AbstractTestMigration
 
 		ORef resourcePlanRef1 = rawResourcePlanPool.getSortedReflist().get(0);
 		RawObject resourcePlan1 = reverseMigratedProject.findObject(resourcePlanRef1);
-		DateUnitEffortList resourcePlanDateUnitEffortList1 = new DateUnitEffortList(resourcePlan1.getData(ResourcePlan.TAG_DATEUNIT_EFFORTS));
-		assertEquals("Only one date unit effort should have been added for the resource plan", resourcePlanDateUnitEffortList1.size(), 1);
 
-		DateUnitEffort resourcePlanDateUnitEffort1 = resourcePlanDateUnitEffortList1.getDateUnitEffort(0);
-		DateUnit resourcePlanDateUnit1 = resourcePlanDateUnitEffort1.getDateUnit();
-		assertEquals("Date unit of resource plan effort should match that on assignment", resourcePlanDateUnit1, dateUnitEffort1.getDateUnit());
-		assertEquals("Quantity on resource plan date unit effort should be 0", resourcePlanDateUnitEffort1.getQuantity(), 0.0);
 		assertEquals("Resource populated on resource plan should match that on resource assignment", resourcePlan1.getData(ResourcePlan.TAG_RESOURCE_ID), resourceAssignment1.getData(ResourcePlan.TAG_RESOURCE_ID));
+
+		DateUnitEffortList resourcePlanDateUnitEffortList1 = new DateUnitEffortList(resourcePlan1.getData(ResourcePlan.TAG_DATEUNIT_EFFORTS));
+		verifyResourcePlanDateUnitEffortListMatchesThatOfResourceAssignment(resourcePlanDateUnitEffortList1, combinedDateUnitEffortList);
 
 		ORef resourcePlanRef2 = rawResourcePlanPool.getSortedReflist().get(1);
 		RawObject resourcePlan2 = reverseMigratedProject.findObject(resourcePlanRef2);
-		DateUnitEffortList resourcePlanDateUnitEffortList2 = new DateUnitEffortList(resourcePlan2.getData(ResourcePlan.TAG_DATEUNIT_EFFORTS));
-		assertEquals("Only one date unit effort should have been added for the resource plan", resourcePlanDateUnitEffortList2.size(), 1);
 
-		DateUnitEffort resourcePlanDateUnitEffort2 = resourcePlanDateUnitEffortList2.getDateUnitEffort(0);
-		DateUnit resourcePlanDateUnit2 = resourcePlanDateUnitEffort2.getDateUnit();
-		assertEquals("Date unit of resource plan effort should match that on assignment", resourcePlanDateUnit2, dateUnitEffort2.getDateUnit());
-		assertEquals("Quantity on resource plan date unit effort should be 0", resourcePlanDateUnitEffort2.getQuantity(), 0.0);
 		assertEquals("Resource populated on resource plan should match that on resource assignment", resourcePlan2.getData(ResourcePlan.TAG_RESOURCE_ID), resourceAssignment2.getData(ResourcePlan.TAG_RESOURCE_ID));
+
+		DateUnitEffortList resourcePlanDateUnitEffortList2 = new DateUnitEffortList(resourcePlan2.getData(ResourcePlan.TAG_DATEUNIT_EFFORTS));
+		verifyResourcePlanDateUnitEffortListMatchesThatOfResourceAssignment(resourcePlanDateUnitEffortList2, combinedDateUnitEffortList);
+	}
+
+	private void verifyResourcePlanDateUnitEffortListMatchesThatOfResourceAssignment(DateUnitEffortList resourcePlanDateUnitEffortList, DateUnitEffortList resourceAssignmentDateUnitEffortList) throws Exception
+	{
+		assertEquals("Resource plan date unit effort list should always be 1 (covering complete date range of resource assignment)", resourcePlanDateUnitEffortList.size(), 1);
+		assertEquals("Quantity on resource plan date unit effort should be 0", resourcePlanDateUnitEffortList.getDateUnitEffort(0).getQuantity(), 0.0);
+
+		DateUnit resourcePlanDateUnit = resourcePlanDateUnitEffortList.getDateUnitEffort(0).getDateUnit();
+
+		for (int index = 0; index < resourcePlanDateUnitEffortList.size(); ++index)
+		{
+			assertTrue("Resource plan date unit should encompass that on resource assignment", resourcePlanDateUnit.contains(resourceAssignmentDateUnitEffortList.getDateUnitEffort(index).getDateUnit()));
+		}
 	}
 
 	public void testStrategyForwardMigrationWithResourceAssignmentMultipleDays() throws Exception
@@ -283,20 +294,13 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		ORef resourcePlanRef = rawResourcePlanPool.getSortedReflist().get(0);
 		RawObject resourcePlan = reverseMigratedProject.findObject(resourcePlanRef);
 		DateUnitEffortList resourcePlanDateUnitEffortList = new DateUnitEffortList(resourcePlan.getData(ResourcePlan.TAG_DATEUNIT_EFFORTS));
-		assertEquals("Two date unit efforts should have been added for the resource plan (since source date units for the assignment were for different month)", resourcePlanDateUnitEffortList.size(), 2);
+		assertEquals("Only one date unit effort should have been added for the resource plan (to cover both months referenced by the assignments)", resourcePlanDateUnitEffortList.size(), 1);
 		assertEquals("Resource populated on resource plan should match that on resource assignment", resourcePlan.getData(ResourcePlan.TAG_RESOURCE_ID), resourceAssignment.getData(ResourcePlan.TAG_RESOURCE_ID));
 
-		DateUnitEffort resourcePlanDateUnitEffort1 = resourcePlanDateUnitEffortList.getDateUnitEffort(0);
-		DateUnit resourcePlanDateUnit1 = resourcePlanDateUnitEffort1.getDateUnit();
-		assertTrue("Date unit for resource plan should be month", resourcePlanDateUnit1.isMonth());
-		assertEquals("Month for resource plan date unit should match date on assignment date unit effort", resourcePlanDateUnit1.getMonth(), cal1.getGregorianMonth());
-		assertEquals("Quantity on resource plan date unit effort should be 0", resourcePlanDateUnitEffort1.getQuantity(), 0.0);
-
-		DateUnitEffort resourcePlanDateUnitEffort2 = resourcePlanDateUnitEffortList.getDateUnitEffort(1);
-		DateUnit resourcePlanDateUnit2 = resourcePlanDateUnitEffort2.getDateUnit();
-		assertTrue("Date unit for resource plan should be month", resourcePlanDateUnit2.isMonth());
-		assertEquals("Month for resource plan date unit should match date on assignment date unit effort", resourcePlanDateUnit2.getMonth(), cal2.getGregorianMonth());
-		assertEquals("Quantity on resource plan date unit effort should be 0", resourcePlanDateUnitEffort2.getQuantity(), 0.0);
+		DateUnitEffort resourcePlanDateUnitEffort = resourcePlanDateUnitEffortList.getDateUnitEffort(0);
+		DateUnit resourcePlanDateUnit = resourcePlanDateUnitEffort.getDateUnit();
+		assertEquals("Quantity on resource plan date unit effort should be 0", resourcePlanDateUnitEffort.getQuantity(), 0.0);
+		assertTrue("Date unit for resource plan should encompass both months on the resource assignment", resourcePlanDateUnit.contains(dateUnit1) && resourcePlanDateUnit.contains(dateUnit2));
 	}
 
 	public void testStrategyReverseMigration() throws Exception
@@ -430,12 +434,15 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		{
 			DateUnitEffortList resourcePlanDateUnitEffortList = new DateUnitEffortList(resourcePlan.getData(ResourcePlan.TAG_DATEUNIT_EFFORTS));
 			DateUnitEffortList resourceAssignmentDateUnitEffortList = new DateUnitEffortList(resourceAssignment.getData(ResourceAssignment.TAG_DATEUNIT_EFFORTS));
-			assertEquals("Resource plan date unit effort list should match size of that on resource assignment", resourceAssignmentDateUnitEffortList.size(), resourcePlanDateUnitEffortList.size());
+			assertEquals("Resource plan date unit effort list should always be 1 (covering complete date range of resource assignment)", resourcePlanDateUnitEffortList.size(), 1);
+
+			assertEquals("Quantity on resource plan date unit effort should be 0", resourcePlanDateUnitEffortList.getDateUnitEffort(0).getQuantity(), 0.0);
+
+			DateUnit resourcePlanDateUnit = resourcePlanDateUnitEffortList.getDateUnitEffort(0).getDateUnit();
 
 			for (int index = 0; index < resourceAssignmentDateUnitEffortList.size(); ++index)
 			{
-				assertEquals("Resource plan date units should match those on resource assignments", resourceAssignmentDateUnitEffortList.getDateUnitEffort(index).getDateUnit(), resourcePlanDateUnitEffortList.getDateUnitEffort(index).getDateUnit());
-				assertEquals("Quantity on resource plan date unit effort should be 0", resourcePlanDateUnitEffortList.getDateUnitEffort(index).getQuantity(), 0.0);
+				assertTrue("Resource plan date unit should encompass that on resource assignment", resourcePlanDateUnit.contains(resourceAssignmentDateUnitEffortList.getDateUnitEffort(index).getDateUnit()));
 			}
 		}
 

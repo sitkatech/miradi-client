@@ -30,6 +30,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResourcePlanSchema;
+import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.HtmlUtilities;
@@ -131,44 +132,16 @@ public class MigrationTo22 extends AbstractMigration
 
 				ArrayList<RawObject> resourceAssignments = getResourceAssignments(rawObject);
 
+				DateUnitEffortList resourcePlanDateUnitEffortList = buildResourcePlanDateUnitEffortList(resourceAssignments);
+
 				for (RawObject resourceAssignment : resourceAssignments)
 				{
-					if (resourceAssignment.containsKey(TAG_DATEUNIT_EFFORTS))
+					if (resourceAssignment.containsKey(TAG_DATEUNIT_EFFORTS) || resourceAssignment.containsKey(TAG_RESOURCE_ID))
 					{
-						DateUnitEffortList resourceAssignmentDateUnitEffortList = new DateUnitEffortList(resourceAssignment.get(TAG_DATEUNIT_EFFORTS));
-						DateUnitEffortList resourcePlanDateUnitEffortList = new DateUnitEffortList();
-
-						for (int index = 0; index < resourceAssignmentDateUnitEffortList.size(); ++index)
-						{
-							DateUnitEffort resourceAssignmentDateUnitEffort = resourceAssignmentDateUnitEffortList.getDateUnitEffort(index);
-							if (resourceAssignmentDateUnitEffort.getDateUnit().isDay())
-							{
-								DateUnit resourceAssignmentDateUnit = resourceAssignmentDateUnitEffort.getDateUnit();
-								MultiCalendar cal = MultiCalendar.createFromGregorianYearMonthDay(resourceAssignmentDateUnit.getYear(), resourceAssignmentDateUnit.getMonth(), 1);
-								DateUnit resourcePlanDateUnit = DateUnit.createMonthDateUnit(cal.toIsoDateString());
-								DateUnitEffort resourcePlanDateUnitEffort = new DateUnitEffort(resourcePlanDateUnit, 0);
-								safeAddDateUnitEffort(resourcePlanDateUnitEffortList, resourcePlanDateUnitEffort);
-							}
-							else
-							{
-								DateUnitEffort resourcePlanDateUnitEffort = new DateUnitEffort(resourceAssignmentDateUnitEffort.getDateUnit(), 0);
-								safeAddDateUnitEffort(resourcePlanDateUnitEffortList, resourcePlanDateUnitEffort);
-							}
-						}
-
 						RawObject newResourcePlan = new RawObject(ResourcePlanSchema.getObjectType());
 						newResourcePlan.setData(TAG_DATEUNIT_EFFORTS, resourcePlanDateUnitEffortList.toJson().toString());
 						if (resourceAssignment.containsKey(TAG_RESOURCE_ID))
 							newResourcePlan.setData(TAG_RESOURCE_ID, resourceAssignment.getData(TAG_RESOURCE_ID));
-						final BaseId nextHighestId = getRawProject().getNextHighestId();
-						final ORef newResourcePlanRef = new ORef(ObjectType.RESOURCE_PLAN, nextHighestId);
-						resourcePlanPool.put(newResourcePlanRef, newResourcePlan);
-						resourcePlanIdList.add(nextHighestId);
-					}
-					else if (resourceAssignment.containsKey(TAG_RESOURCE_ID))
-					{
-						RawObject newResourcePlan = new RawObject(ResourcePlanSchema.getObjectType());
-						newResourcePlan.setData(TAG_RESOURCE_ID, resourceAssignment.getData(TAG_RESOURCE_ID));
 						final BaseId nextHighestId = getRawProject().getNextHighestId();
 						final ORef newResourcePlanRef = new ORef(ObjectType.RESOURCE_PLAN, nextHighestId);
 						resourcePlanPool.put(newResourcePlanRef, newResourcePlan);
@@ -187,6 +160,65 @@ public class MigrationTo22 extends AbstractMigration
 			}
 
 			return MigrationResult.createSuccess();
+		}
+
+		private DateUnitEffortList buildResourcePlanDateUnitEffortList(ArrayList<RawObject> resourceAssignments) throws Exception
+		{
+			DateUnitEffortList resourcePlanDateUnitEffortList = new DateUnitEffortList();
+
+			DateRange resourcePlanDateRange = null;
+			boolean foundAtLeastOneProjectTotalDateUnit = false;
+
+			for (RawObject resourceAssignment : resourceAssignments)
+			{
+				if (resourceAssignment.containsKey(TAG_DATEUNIT_EFFORTS))
+				{
+					DateUnitEffortList resourceAssignmentDateUnitEffortList = new DateUnitEffortList(resourceAssignment.get(TAG_DATEUNIT_EFFORTS));
+
+					for (int index = 0; index < resourceAssignmentDateUnitEffortList.size(); ++index)
+					{
+						DateUnitEffort resourceAssignmentDateUnitEffort = resourceAssignmentDateUnitEffortList.getDateUnitEffort(index);
+						if (resourceAssignmentDateUnitEffort.getDateUnit().isProjectTotal())
+						{
+							foundAtLeastOneProjectTotalDateUnit = true;
+						}
+						else if (resourceAssignmentDateUnitEffort.getDateUnit().isDay())
+						{
+							DateUnit resourceAssignmentDateUnit = resourceAssignmentDateUnitEffort.getDateUnit();
+							MultiCalendar cal = MultiCalendar.createFromGregorianYearMonthDay(resourceAssignmentDateUnit.getYear(), resourceAssignmentDateUnit.getMonth(), 1);
+							DateUnit resourcePlanDateUnit = DateUnit.createMonthDateUnit(cal.toIsoDateString());
+							resourcePlanDateRange = addToDateRange(resourcePlanDateRange, resourcePlanDateUnit);
+						}
+						else
+						{
+							resourcePlanDateRange = addToDateRange(resourcePlanDateRange, resourceAssignmentDateUnitEffort.getDateUnit());
+						}
+					}
+				}
+			}
+
+			if (foundAtLeastOneProjectTotalDateUnit)
+			{
+				DateUnit resourcePlanDateUnit = new DateUnit();
+				DateUnitEffort resourcePlanDateUnitEffort = new DateUnitEffort(resourcePlanDateUnit, 0);
+				resourcePlanDateUnitEffortList.add(resourcePlanDateUnitEffort);
+			}
+			else if (resourcePlanDateRange != null)
+			{
+				DateUnit resourcePlanDateUnit = DateUnit.createFromDateRange(resourcePlanDateRange);
+				DateUnitEffort resourcePlanDateUnitEffort = new DateUnitEffort(resourcePlanDateUnit, 0);
+				resourcePlanDateUnitEffortList.add(resourcePlanDateUnitEffort);
+			}
+
+			return resourcePlanDateUnitEffortList;
+		}
+
+		private DateRange addToDateRange(DateRange dateRangeToAddTo, DateUnit dateUnit) throws Exception
+		{
+			if (dateRangeToAddTo == null)
+				return dateUnit.asDateRange();
+			else
+				return DateRange.combine(dateRangeToAddTo, dateUnit.asDateRange());
 		}
 
 		private RawPool getOrCreateResourcePlanPool()
@@ -210,12 +242,6 @@ public class MigrationTo22 extends AbstractMigration
 			}
 
 			return resourceAssignments;
-		}
-
-		private void safeAddDateUnitEffort(DateUnitEffortList dateUnitEffortList, DateUnitEffort dateUnitEffortToAdd)
-		{
-			if (dateUnitEffortList.getDateUnitEffortForSpecificDateUnit(dateUnitEffortToAdd.getDateUnit()) == null)
-				dateUnitEffortList.add(dateUnitEffortToAdd);
 		}
 
 		private int type;
