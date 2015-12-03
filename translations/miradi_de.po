@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-03 03:51-0800\n"
+"POT-Creation-Date: 2015-12-03 11:51-0800\n"
 "PO-Revision-Date: 2015-07-15 14:36+0000\n"
 "Last-Translator: Felix <felix.cybulla@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/miradi-client/"
@@ -41,7 +41,7 @@ msgstr ""
 msgid " 2) Connect threat to relevant targets"
 msgstr " 2) Direkte Bedrohung mit den relevanten Schutzobjekten verbinden"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractZippedXmlImporter.java:46
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractZippedXmlImporter.java:47
 msgid " was empty"
 msgstr "war leer"
 
@@ -3025,6 +3025,7 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/ExportMpzDoer.java:71
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/ExportMpf42VersionDoer.java:74
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/Xmpz2ProjectImporter.java:95
 msgid "Could not migrate!"
 msgstr ""
 
@@ -4264,7 +4265,7 @@ msgstr "Importieren..."
 msgid "Importing MPZ"
 msgstr "Importiere MPZ"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:101
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:99
 msgid "Importing XML..."
 msgstr "Importiere XML..."
 
@@ -8541,6 +8542,8 @@ msgid "Total Monitoring Budget %1 %2"
 msgstr "Summe Monitoringbudget %1 %2"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/ExportMpf42VersionDoer.java:59
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/Xmpz2ProjectImporter.java:78
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/Xmpz2ProjectImporter.java:86
 msgid ""
 "Unable to complete this migration.\n"
 "\n"
