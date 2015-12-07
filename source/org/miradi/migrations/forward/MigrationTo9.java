@@ -117,7 +117,7 @@ public class MigrationTo9 extends AbstractMigration
 	public static final String TAG_SAMPLE_SIZE ="SampleSize";
 	public static final String TAG_SAMPLE_PRECISION ="SamplePrecision";
 	public static final String TAG_SAMPLE_PRECISION_TYPE ="SamplePrecisionType";
-	
-	private static final int VERSION_LOW = 8;
-	private static final int VERSION_HIGH = 9;
+
+	public static final int VERSION_LOW = 8;
+	public static final int VERSION_HIGH = 9;
 }

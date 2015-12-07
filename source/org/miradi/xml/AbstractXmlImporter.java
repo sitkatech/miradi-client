@@ -64,14 +64,14 @@ abstract public class AbstractXmlImporter
 		project = projectToFill;
 	}
 		
-	public boolean importProject(InputStreamWithSeek projectAsInputStream) throws Exception
+	public Xmpz2MigrationResult importProjectXml(InputStreamWithSeek projectAsInputStream) throws Exception
 	{
-		boolean requiresMigration = loadXml(projectAsInputStream);
+		Xmpz2MigrationResult migrationResult = loadXml(projectAsInputStream);
 		importXml();
-		return requiresMigration;
+		return migrationResult;
 	}
 	
-	private boolean loadXml(InputStreamWithSeek projectAsInputStream) throws Exception
+	private Xmpz2MigrationResult loadXml(InputStreamWithSeek projectAsInputStream) throws Exception
 	{
 		Xmpz2MigrationResult migrationResult = migrate(projectAsInputStream);
 
@@ -103,7 +103,7 @@ abstract public class AbstractXmlImporter
 
 		xPath = createXPath();
 
-		return migrationResult.getSchemaVersionWasUpdated();
+		return migrationResult;
 	}
 
 	abstract protected Xmpz2MigrationResult migrate(InputStreamWithSeek projectAsInputStream) throws Exception;

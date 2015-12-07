@@ -24,15 +24,18 @@ import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 
 public class Xmpz2MigrationResult
 {
-	public Xmpz2MigrationResult(StringInputStreamWithSeek stringInputStreamWithSeekToUse, boolean schemaVersionWasUpdatedToUse)
+	public Xmpz2MigrationResult(StringInputStreamWithSeek stringInputStreamWithSeekToUse, boolean schemaVersionWasUpdatedToUse, int documentSchemaVersionToUse)
 	{
 		stringInputStreamWithSeek = stringInputStreamWithSeekToUse;
 		schemaVersionWasUpdated = schemaVersionWasUpdatedToUse;
+		documentSchemaVersion = documentSchemaVersionToUse;
 	}
 
 	public StringInputStreamWithSeek getStringInputStreamWithSeek() { return stringInputStreamWithSeek; }
 	public boolean getSchemaVersionWasUpdated() { return schemaVersionWasUpdated; }
+	public int getDocumentSchemaVersion() { return documentSchemaVersion; }
 
-	private boolean schemaVersionWasUpdated;
 	private StringInputStreamWithSeek stringInputStreamWithSeek;
+	private boolean schemaVersionWasUpdated;
+	private int documentSchemaVersion;
 }

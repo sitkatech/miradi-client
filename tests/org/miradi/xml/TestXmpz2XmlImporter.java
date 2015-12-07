@@ -379,7 +379,7 @@ public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 		StringInputStreamWithSeek stringInputStream = new StringInputStreamWithSeek(exportedProjectXml);
 		try
 		{
-			xmlImporter.importProject(stringInputStream);
+			xmlImporter.importProjectXml(stringInputStream);
 		}
 		finally
 		{

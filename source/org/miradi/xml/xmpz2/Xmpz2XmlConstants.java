@@ -34,6 +34,16 @@ public interface Xmpz2XmlConstants
 	public static final String DOT_ELEMENT = ".element";
 	
 	public static final String NAME_SPACE_VERSION = "236";
+
+	public static final String NAME_SPACE_VERSION_236 = "236";
+	public static final String NAME_SPACE_VERSION_235 = "235";
+	public static final String NAME_SPACE_VERSION_234 = "234";
+	public static final String NAME_SPACE_VERSION_233 = "233";
+	public static final String NAME_SPACE_VERSION_232 = "232";
+	public static final String NAME_SPACE_VERSION_228 = "228";
+
+	public static final int LOWEST_SCHEMA_VERSION = 228;
+
 	public static final String PARTIAL_NAME_SPACE = "http://xml.miradi.org/schema/ConservationProject/";
 	public static final String NAME_SPACE = PARTIAL_NAME_SPACE + NAME_SPACE_VERSION;
 	public static final String XMLNS = "xmlns";

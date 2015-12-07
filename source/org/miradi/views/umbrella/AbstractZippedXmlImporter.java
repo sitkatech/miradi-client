@@ -29,6 +29,7 @@ import org.miradi.project.Project;
 import org.miradi.utils.GenericMiradiFileFilter;
 import org.miradi.utils.MiradiZipFile;
 import org.miradi.utils.ProgressInterface;
+import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 
 abstract public class AbstractZippedXmlImporter extends AbstractProjectImporter
 {
@@ -39,8 +40,10 @@ abstract public class AbstractZippedXmlImporter extends AbstractProjectImporter
 	
 	protected ImportXmlProjectResult importProjectFromXmlEntry(MiradiZipFile zipFile, ProgressInterface progressIndicator) throws Exception
 	{
-		boolean projectRequiresMigration = false;
 		Project projectToFill = createProjectToFill();
+
+		int documentSchemaVersion = Integer.parseInt(Xmpz2XmlConstants.NAME_SPACE_VERSION);
+		ImportXmlProjectResult migrationResult = new ImportXmlProjectResult(projectToFill, false, documentSchemaVersion);
 
 		InputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
 		if (projectAsInputStream.available() == 0)
@@ -48,14 +51,14 @@ abstract public class AbstractZippedXmlImporter extends AbstractProjectImporter
 
 		try
 		{
-			projectRequiresMigration = importProjectXml(projectToFill, zipFile, projectAsInputStream, progressIndicator);
+			migrationResult = importProjectXml(projectToFill, zipFile, projectAsInputStream, progressIndicator);
 		}
 		finally
 		{
 			projectAsInputStream.close();
 		}
 		
-		return new ImportXmlProjectResult(projectToFill, projectRequiresMigration);
+		return migrationResult;
 	}
 
 	protected Project createProjectToFill() throws Exception
@@ -75,20 +78,23 @@ abstract public class AbstractZippedXmlImporter extends AbstractProjectImporter
 	
 	abstract protected void createOrOpenProject(Project projectToFill, File projectFile) throws Exception;
 
-	abstract protected boolean importProjectXml(Project projectToFill, MiradiZipFile zipFile, InputStreamWithSeek projectAsInputStream, ProgressInterface progressIndicator) throws Exception;
+	abstract protected ImportXmlProjectResult importProjectXml(Project projectToFill, MiradiZipFile zipFile, InputStreamWithSeek projectAsInputStream, ProgressInterface progressIndicator) throws Exception;
 
 	protected class ImportXmlProjectResult
 	{
-		public ImportXmlProjectResult(Project projectToUse, boolean projectRequiresMigrationToUse)
+		public ImportXmlProjectResult(Project projectToUse, boolean projectRequiresReverseMigrationToUse, int documentSchemaVersionToUse)
 		{
 			project = projectToUse;
-			projectRequiresMigration = projectRequiresMigrationToUse;
+			projectRequiresReverseMigration = projectRequiresReverseMigrationToUse;
+			documentSchemaVersion = documentSchemaVersionToUse;
 		}
 
 		public Project getProject() { return project; }
-		public boolean getProjectRequiresMigration() { return projectRequiresMigration; }
+		public boolean getProjectRequiresReverseMigration() { return projectRequiresReverseMigration; }
+		public int getDocumentSchemaVersion() { return documentSchemaVersion; }
 
-		private boolean projectRequiresMigration;
+		private boolean projectRequiresReverseMigration;
+		private int documentSchemaVersion;
 		private Project project;
 	}
 }

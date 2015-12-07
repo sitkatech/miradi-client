@@ -58,20 +58,21 @@ public class Xmpz2ProjectImporter extends AbstractProjectImporter
 	{
 		ImportXmlProjectResult importResult = importProject(importFile, progressIndicator);
 
-		if (importResult.getProjectRequiresMigration())
-			reverseMigrateProject(importResult.getProject(), newProjectFile);
+		if (importResult.getProjectRequiresReverseMigration())
+			reverseMigrateProject(importResult.getProject(), newProjectFile, importResult.getDocumentSchemaVersion());
 		else
 			ProjectSaver.saveProject(importResult.getProject(), newProjectFile);
 	}
 
-	private void reverseMigrateProject(Project project, File newProjectFile) throws Exception
+	private void reverseMigrateProject(Project project, File newProjectFile, int documentSchemaVersion) throws Exception
 	{
 		String projectMpfSnapShot = ProjectSaver.createSnapShot(project);
 		RawProject rawProjectToMigrate = RawProjectLoader.loadProject(projectMpfSnapShot);
 		MigrationManager migrationManager = new MigrationManager();
 
-		// reverse back to last migration prior to this version of Miradi...subsequent open project process will then forward migrate as necessary
-		MigrationResult migrationResult = migrationManager.migrate(rawProjectToMigrate, new VersionRange(MigrationManager.LAST_MIGRATION_PRIOR_TO_CURRENT_RELEASE));
+		// reverse back to appropriate version of Miradi for document version...subsequent open project process will then forward migrate as necessary
+		int versionToReverseMigrateTo = MigrationManager.getLatestMigrationForDocumentSchemaVersion(documentSchemaVersion);
+		MigrationResult migrationResult = migrationManager.migrate(rawProjectToMigrate, new VersionRange(versionToReverseMigrateTo));
 
 		if (migrationResult.cannotMigrate())
 		{

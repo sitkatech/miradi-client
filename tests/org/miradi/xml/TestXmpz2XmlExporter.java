@@ -202,7 +202,7 @@ public class TestXmpz2XmlExporter extends TestCaseForXmpz2ExportAndImport
 		StringInputStreamWithSeek stringInputputStream = new StringInputStreamWithSeek(exportedProjectXml);
 		try
 		{
-			xmlImporter.importProject(stringInputputStream);
+			xmlImporter.importProjectXml(stringInputputStream);
 			verifyCalculatedCostsElement(xmlImporter, new TaskImporter(xmlImporter), 5);
 			verifyCalculatedCostsElement(xmlImporter, new IndicatorImporter(xmlImporter), 3);
 			verifyCalculatedCostsElement(xmlImporter, new StrategyImporter(xmlImporter), 3);
@@ -224,10 +224,10 @@ public class TestXmpz2XmlExporter extends TestCaseForXmpz2ExportAndImport
 		Node baseObjectNode = baseObjectNodes.item(0);
 		
 		Node baseObjectCalculatedCostsNode = xmlImporter.getNamedChildNode(baseObjectNode, elementObjectName + Xmpz2XmlConstants.TIME_PERIOD_COSTS);
-		assertNotNull("should have object calcualted costs element?", baseObjectCalculatedCostsNode);
+		assertNotNull("should have object calculated costs element?", baseObjectCalculatedCostsNode);
 		
 		Node calculatedCostsNode = xmlImporter.getNamedChildNode(baseObjectCalculatedCostsNode, Xmpz2XmlConstants.TIME_PERIOD_COSTS);
-		assertNotNull("should have calcualted costs element?", calculatedCostsNode);
+		assertNotNull("should have calculated costs element?", calculatedCostsNode);
 		
 		Node calculatedTotalBudgetCostNode = xmlImporter.getNamedChildNode(calculatedCostsNode, XmlConstants.CALCULATED_TOTAL_BUDGET_COST);
 		assertEquals("incorrect total budget value for object?", "112", xmlImporter.getSafeNodeContent(calculatedTotalBudgetCostNode));

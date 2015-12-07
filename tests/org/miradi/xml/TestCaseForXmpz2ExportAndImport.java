@@ -70,15 +70,15 @@ public class TestCaseForXmpz2ExportAndImport extends TestCaseWithProject
 	{
 		ProjectForTesting projectToImportInto = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToImportInto");
 		Xmpz2XmlImporter xmlImporter = new Xmpz2XmlImporter(projectToImportInto, new NullProgressMeter());
-		StringInputStreamWithSeek stringInputputStream = new StringInputStreamWithSeek(xml);
+		StringInputStreamWithSeek stringInputStream = new StringInputStreamWithSeek(xml);
 		try
 		{
-			xmlImporter.importProject(stringInputputStream);
+			xmlImporter.importProjectXml(stringInputStream);
 			return xmlImporter.getProject();
 		}
 		finally
 		{
-			stringInputputStream.close();	
+			stringInputStream.close();
 		}
 		
 	}

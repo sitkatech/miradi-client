@@ -27,6 +27,7 @@ import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringReader;
 import org.miradi.exceptions.ProjectFileTooNewException;
 import org.miradi.exceptions.ProjectFileTooOldException;
+import org.miradi.exceptions.XmlVersionTooOldException;
 import org.miradi.main.EAM;
 import org.miradi.migrations.AbstractMigration;
 import org.miradi.migrations.AbstractMigrationManager;
@@ -36,6 +37,7 @@ import org.miradi.migrations.RawProjectLoader;
 import org.miradi.migrations.VersionRange;
 import org.miradi.project.Project;
 import org.miradi.utils.FileUtilities;
+import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 
 public class MigrationManager extends AbstractMigrationManager
 {
@@ -85,6 +87,8 @@ public class MigrationManager extends AbstractMigrationManager
 	
 	private Vector<AbstractMigration> createMigrations(RawProject rawProject)
 	{
+		// note: when adding new migration make sure to update getLatestMigrationForDocumentSchemaVersion below for xml migrations
+
 		Vector<AbstractMigration> migrations = new Vector<AbstractMigration>();
 		migrations.add(new MigrationTo4(rawProject));
 		migrations.add(new MigrationTo5(rawProject));
@@ -109,7 +113,30 @@ public class MigrationManager extends AbstractMigrationManager
 
 		return migrations;
 	}
-	
+
+	public static int getLatestMigrationForDocumentSchemaVersion(int documentSchemaVersion) throws Exception
+	{
+		String documentSchemaVersionAsString = String.valueOf(documentSchemaVersion);
+
+		// 4.4 -> 236
+		if (documentSchemaVersionAsString.equals(Xmpz2XmlConstants.NAME_SPACE_VERSION_236))
+			return MigrationTo23.VERSION_TO;
+
+		// 4.3.x -> 234/235
+		if (documentSchemaVersionAsString.equals(Xmpz2XmlConstants.NAME_SPACE_VERSION_234) || documentSchemaVersionAsString.equals(Xmpz2XmlConstants.NAME_SPACE_VERSION_235))
+			return MigrationTo18.VERSION_TO;
+
+		// 4.2.1 -> 233
+		if (documentSchemaVersionAsString.equals(Xmpz2XmlConstants.NAME_SPACE_VERSION_233))
+			return MigrationTo16.VERSION_TO;
+
+		// 4.1.x -> 228/232
+		if (documentSchemaVersionAsString.equals(Xmpz2XmlConstants.NAME_SPACE_VERSION_228) || documentSchemaVersionAsString.equals(Xmpz2XmlConstants.NAME_SPACE_VERSION_232))
+			return MigrationTo9.VERSION_HIGH;
+
+		throw new XmlVersionTooOldException(Integer.toString(Xmpz2XmlConstants.LOWEST_SCHEMA_VERSION), documentSchemaVersionAsString);
+	}
+
 	public static void createBackup(File projectFile) throws Exception
 	{
 		FileUtilities.createMpfBackup(projectFile, getBackupFolderTranslatedName());
@@ -163,6 +190,4 @@ public class MigrationManager extends AbstractMigrationManager
 	public static final int TOO_OLD_TO_MIGRATE = 3;
 	
 	public static final int OLDEST_VERSION_TO_HANDLE = 3;
-
-	public static final int LAST_MIGRATION_PRIOR_TO_CURRENT_RELEASE = MigrationTo18.VERSION_TO;
 }

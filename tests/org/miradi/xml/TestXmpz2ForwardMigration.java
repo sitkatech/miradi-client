@@ -150,9 +150,10 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject
 	
 	public void testImportingLegalOlderSchemaVersion() throws Exception
 	{
+		int olderSchemaVersion = 228;
 		Document document = convertProjectToDocument();
 		Element rootElement = document.getDocumentElement();
-		Xmpz2ForwardMigration.setNameSpaceVersion(rootElement, "228");
+		Xmpz2ForwardMigration.setNameSpaceVersion(rootElement, String.valueOf(olderSchemaVersion));
 		
 		String updatedXmlAsString = HtmlUtilities.toXmlString(document);
 		if (new Xmpz2XmlSilentValidatorForTesting().isValid(new StringInputStreamWithSeek(updatedXmlAsString)))
@@ -164,14 +165,15 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject
 		if (!new Xmpz2XmlValidator().isValid(inputStream))
 			fail("Project should validate after xml has been migrated?");
 		assertTrue("Expected schema version to be updated", migrationResult.getSchemaVersionWasUpdated());
+		assertEquals("Expected document schema version to match", migrationResult.getDocumentSchemaVersion(), olderSchemaVersion);
 	}
 	
 	private Document convertProjectToDocument() throws Exception
 	{
 		UnicodeXmlWriter projectWriter = TestXmpz2XmlImporter.createWriter(getProject());
 		String exportedProjectXml = projectWriter.toString();
-		StringInputStreamWithSeek stringInputputStream = new StringInputStreamWithSeek(exportedProjectXml);
-		Document document = Xmpz2ForwardMigration.convertToDocument(stringInputputStream);
+		StringInputStreamWithSeek stringInputStream = new StringInputStreamWithSeek(exportedProjectXml);
+		Document document = Xmpz2ForwardMigration.convertToDocument(stringInputStream);
 		return document;
 	}
 	

@@ -32,6 +32,7 @@ import org.miradi.utils.MiradiZipFile;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.views.umbrella.AbstractZippedXmlImporter;
 import org.miradi.xml.AbstractXmlImporter;
+import org.miradi.xml.xmpz2.Xmpz2MigrationResult;
 
 abstract public class AbstractProjectImporter extends AbstractZippedXmlImporter
 {
@@ -41,10 +42,11 @@ abstract public class AbstractProjectImporter extends AbstractZippedXmlImporter
 	}
 	
 	@Override
-	protected boolean importProjectXml(Project projectToFill, MiradiZipFile zipFile, InputStreamWithSeek projectAsInputStream, ProgressInterface progressIndicator) throws Exception
+	protected ImportXmlProjectResult importProjectXml(Project projectToFill, MiradiZipFile zipFile, InputStreamWithSeek projectAsInputStream, ProgressInterface progressIndicator) throws Exception
 	{
 		AbstractXmlImporter xmpzImporter = createXmpzXmlImporter(projectToFill, progressIndicator);
-		return xmpzImporter.importProject(projectAsInputStream);
+		Xmpz2MigrationResult migrationResult = xmpzImporter.importProjectXml(projectAsInputStream);
+		return new ImportXmlProjectResult(projectToFill, migrationResult.getSchemaVersionWasUpdated(), migrationResult.getDocumentSchemaVersion());
 	}
 
 	@Override

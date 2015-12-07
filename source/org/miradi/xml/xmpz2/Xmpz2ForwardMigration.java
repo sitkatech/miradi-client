@@ -53,6 +53,7 @@ public class Xmpz2ForwardMigration
 
 		Document document = convertToDocument(projectAsInputStream);
 		Element rootElement = document.getDocumentElement();
+		int xmpz2DocumentSchemaVersion = getXmpz2DocumentSchemaVersion(rootElement);
 		boolean schemaVersionWasUpdated = updateXmpz2SchemaVersionToCurrentVersion(rootElement);
 		removeLegacyTncFields(rootElement);
 		removeHumanWellbeingTargetCalculatedThreatRatingElement(rootElement);
@@ -61,7 +62,7 @@ public class Xmpz2ForwardMigration
 		renameWhoWhenAssignedFields(document);
 		final String migratedXmlAsString = HtmlUtilities.toXmlString(document);
 
-		return new Xmpz2MigrationResult(new StringInputStreamWithSeek(migratedXmlAsString), schemaVersionWasUpdated);
+		return new Xmpz2MigrationResult(new StringInputStreamWithSeek(migratedXmlAsString), schemaVersionWasUpdated, xmpz2DocumentSchemaVersion);
 	}
 
 	private void renameTncFields(Document document) throws Exception
@@ -274,12 +275,10 @@ public class Xmpz2ForwardMigration
 	private boolean updateXmpz2SchemaVersionToCurrentVersion(Element rootElement) throws Exception
 	{
 		boolean schemaVersionWasUpdated = false;
-		final String currentNamespace = getNameSpace(rootElement);
-		String readInSchemaVersionAsString = AbstractXmlImporter.getSchemaVersionToImport(currentNamespace);
-		int readInSchemaVersion = Integer.parseInt(readInSchemaVersionAsString);
+		int readInSchemaVersion = getXmpz2DocumentSchemaVersion(rootElement);
 		if (readInSchemaVersion < LOWEST_SCHEMA_VERSION)
 		{
-			throw new XmlVersionTooOldException(Integer.toString(LOWEST_SCHEMA_VERSION), readInSchemaVersionAsString);
+			throw new XmlVersionTooOldException(Integer.toString(LOWEST_SCHEMA_VERSION), Integer.toString(readInSchemaVersion));
 		}
 		
 		if (readInSchemaVersion <  Integer.parseInt(NAME_SPACE_VERSION))
@@ -289,6 +288,13 @@ public class Xmpz2ForwardMigration
 		}
 
 		return schemaVersionWasUpdated;
+	}
+
+	private int getXmpz2DocumentSchemaVersion(Element rootElement) throws Exception
+	{
+		final String currentNamespace = getNameSpace(rootElement);
+		String readInSchemaVersionAsString = AbstractXmlImporter.getSchemaVersionToImport(currentNamespace);
+		return Integer.parseInt(readInSchemaVersionAsString);
 	}
 
 	public static void setNameSpaceVersion(Element rootElement, String newNameSpaceVersion) throws Exception
@@ -339,7 +345,7 @@ public class Xmpz2ForwardMigration
 		return document;
 	}
 	
-	private static final int LOWEST_SCHEMA_VERSION = 228;
+	private static final int LOWEST_SCHEMA_VERSION = Xmpz2XmlConstants.LOWEST_SCHEMA_VERSION;
 	private static final String NAME_SPACE_VERSION = Xmpz2XmlConstants.NAME_SPACE_VERSION;
 	private static final String XMLNS = "xmlns";
 	private static final String COLON = ":";
