@@ -145,11 +145,11 @@ public class TestTreeRebuilder extends TestCaseWithProject
 		
 		AbstractPlanningTreeNode resultChainANode = findMatchingNode(resultChainA.getRef(), resultsChainNodes);
 		assertEquals("incorrect child count?", resultChainAExpectedChildCount, resultChainANode.getChildCount());
-		assertEquals("incorrect child count?", resultChainAExpectedGrandchildCount, resultChainANode.getChild(0).getChildCount());
+		assertEquals("incorrect grandchild count?", resultChainAExpectedGrandchildCount, resultChainANode.getChild(0).getChildCount());
 
 		AbstractPlanningTreeNode resultChainBNode = findMatchingNode(resultChainB.getRef(), resultsChainNodes);
 		assertEquals("incorrect child count?", resultChainBExpectedChildCount, resultChainBNode.getChildCount());
-		assertEquals("incorrect child count?", resultChainBExpectedGrandchildCount, resultChainBNode.getChild(0).getChildCount());
+		assertEquals("incorrect grandchild count?", resultChainBExpectedGrandchildCount, resultChainBNode.getChild(0).getChildCount());
 	}
 
     public void testStrategyContainsActivityNodes() throws Exception
@@ -462,7 +462,7 @@ public class TestTreeRebuilder extends TestCaseWithProject
 		assertEquals("More than one activity?", 1, rootNode.getChildCount());
 		AbstractPlanningTreeNode childNode = (AbstractPlanningTreeNode) rootNode.getChild(0);
 		assertEquals("Not the activity?", activityId, childNode.getObjectReference().getObjectId());
-		assertEquals(3, childNode.getProportionShares());
+		assertEquals(2, childNode.getProportionShares());
 		assertFalse("Full proportion task is allocated?", childNode.areBudgetValuesAllocated());
 	}
 	
@@ -528,17 +528,17 @@ public class TestTreeRebuilder extends TestCaseWithProject
 		return createAndBuildTree(rowCodes, StrategyObjectiveTreeOrderQuestion.STRATEGY_CONTAINS_OBJECTIVE_CODE);
 	}
 
-	private AbstractPlanningTreeNode createAndBuildTree(CodeList rowCodes, final String strategyObjeciveOrder) throws Exception
+	private AbstractPlanningTreeNode createAndBuildTree(CodeList rowCodes, final String strategyObjectiveOrder) throws Exception
 	{
-		return createAndBuildTree(rowCodes, strategyObjeciveOrder, PlanningTreeTargetPositionQuestion.TARGET_NODES_CHILDREN_OF_DIAGRAM_OBJECTS_CODE);
+		return createAndBuildTree(rowCodes, strategyObjectiveOrder, PlanningTreeTargetPositionQuestion.TARGET_NODES_CHILDREN_OF_DIAGRAM_OBJECTS_CODE);
 	}
 
-	public AbstractPlanningTreeNode createAndBuildTree(CodeList rowCodes, final String strategyObjeciveOrder, final String targetPositionCode) throws Exception
+	public AbstractPlanningTreeNode createAndBuildTree(CodeList rowCodes, final String strategyObjectiveOrder, final String targetPositionCode) throws Exception
 	{
 		AbstractPlanningTreeNode rootNode = new PlanningTreeRootNodeAlwaysExpanded(getProject());
 		ObjectTreeTableConfiguration configuration = new ObjectTreeTableConfiguration(getObjectManager(), BaseId.INVALID);
 		configuration.setData(ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION, rowCodes.toString());
-		configuration.setData(ObjectTreeTableConfiguration.TAG_STRATEGY_OBJECTIVE_ORDER, strategyObjeciveOrder);
+		configuration.setData(ObjectTreeTableConfiguration.TAG_STRATEGY_OBJECTIVE_ORDER, strategyObjectiveOrder);
 		configuration.setData(ObjectTreeTableConfiguration.TAG_TARGET_NODE_POSITION, targetPositionCode);
 		CustomTablePlanningTreeRowColumnProvider rowColumnProvider = new CustomTablePlanningTreeRowColumnProvider(getProject(), configuration);
 		NormalTreeRebuilder rebuilder = new NormalTreeRebuilder(getProject(), rowColumnProvider);

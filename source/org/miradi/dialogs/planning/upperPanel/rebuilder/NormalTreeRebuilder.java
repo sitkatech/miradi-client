@@ -223,12 +223,12 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		return childRefs;
 	}
 
-	public ORefList getRelevantIndicatorsInDiagram(DiagramObject diagram, Desire desire) throws Exception
+	private ORefList getRelevantIndicatorsInDiagram(DiagramObject diagram, Desire desire) throws Exception
 	{
 		return keepObjectsThatAreInDiagram(diagram, desire.getRelevantIndicatorRefList());
 	}
 
-    public ORefList getRelevantStrategiesInDiagram(DiagramObject diagram, Desire desire) throws Exception
+	private ORefList getRelevantStrategiesInDiagram(DiagramObject diagram, Desire desire) throws Exception
     {
         return keepObjectsThatAreInDiagram(diagram, desire.getRelevantStrategyRefs());
     }
@@ -236,9 +236,18 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
     private ORefList getRelevantStrategyAndActivityRefsInDiagram(DiagramObject diagram, Desire desire) throws Exception
 	{
         ORefList strategyAndActivityRefs = new ORefList();
-        strategyAndActivityRefs.addAll(getRelevantStrategiesInDiagram(diagram, desire));
-        strategyAndActivityRefs.addAll(desire.getRelevantActivityRefs());
-        return strategyAndActivityRefs;
+		strategyAndActivityRefs.addAll(getRelevantStrategiesInDiagram(diagram, desire));
+		if (willThisTypeEndUpInTheTree(desire.getTypeName()))
+		{
+			strategyAndActivityRefs.addAll(desire.getRelevantActivityRefs());
+		}
+		return strategyAndActivityRefs;
+	}
+
+	private boolean willThisTypeEndUpInTheTree(String taskTypeCode) throws Exception
+	{
+		CodeList visibleRowTypes = getRowColumnProvider().getRowCodesToShow();
+		return visibleRowTypes.contains(taskTypeCode);
 	}
 
     private ORefList getChildrenOfIndicator(ORef parentRef, DiagramObject diagram) throws Exception
@@ -260,19 +269,12 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		ORefList childRefs = new ORefList();
 
 		Task parentTask = Task.find(getProject(), parentTaskRef);
-		if(willThisTaskEndUpInTheTree(parentTask))
+		if(willThisTypeEndUpInTheTree(parentTask.getTypeName()))
 			childRefs.addAll(parentTask.getSubTaskRefs());
 		
 		return childRefs;
 	}
 
-	private boolean willThisTaskEndUpInTheTree(Task task) throws Exception
-	{
-		String taskTypeCode = task.getTypeName();
-		CodeList visibleRowTypes = getRowColumnProvider().getRowCodesToShow();
-		return visibleRowTypes.contains(taskTypeCode);
-	}
-	
 	private boolean doStrategiesContainObjectives() throws Exception
 	{
 		return !doObjectivesContainStrategies();
