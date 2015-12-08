@@ -184,9 +184,7 @@ public class MigrationTo22 extends AbstractMigration
 						}
 						else if (resourceAssignmentDateUnitEffort.getDateUnit().isDay())
 						{
-							DateUnit resourceAssignmentDateUnit = resourceAssignmentDateUnitEffort.getDateUnit();
-							MultiCalendar cal = MultiCalendar.createFromGregorianYearMonthDay(resourceAssignmentDateUnit.getYear(), resourceAssignmentDateUnit.getMonth(), 1);
-							DateUnit resourcePlanDateUnit = DateUnit.createMonthDateUnit(cal.toIsoDateString());
+							DateUnit resourcePlanDateUnit = createMonthDateUnit(resourceAssignmentDateUnitEffort.getDateUnit());
 							resourcePlanDateRange = addToDateRange(resourcePlanDateRange, resourcePlanDateUnit);
 						}
 						else
@@ -205,12 +203,28 @@ public class MigrationTo22 extends AbstractMigration
 			}
 			else if (resourcePlanDateRange != null)
 			{
-				DateUnit resourcePlanDateUnit = DateUnit.createFromDateRange(resourcePlanDateRange);
-				DateUnitEffort resourcePlanDateUnitEffort = new DateUnitEffort(resourcePlanDateUnit, 0);
-				resourcePlanDateUnitEffortList.add(resourcePlanDateUnitEffort);
+				DateRange startDateRange = new DateRange(resourcePlanDateRange.getStartDate(), resourcePlanDateRange.getStartDate());
+				DateUnit startDateUnit = DateUnit.createFromDateRange(startDateRange);
+
+				DateUnit resourcePlanStartDateUnit = createMonthDateUnit(startDateUnit);
+				DateUnitEffort resourcePlanStartDateUnitEffort = new DateUnitEffort(resourcePlanStartDateUnit, 0);
+				resourcePlanDateUnitEffortList.add(resourcePlanStartDateUnitEffort);
+
+				DateRange endDateRange = new DateRange(resourcePlanDateRange.getEndDate(), resourcePlanDateRange.getEndDate());
+				DateUnit endDateUnit = DateUnit.createFromDateRange(endDateRange);
+
+				DateUnit resourcePlanEndDateUnit = createMonthDateUnit(endDateUnit);
+				DateUnitEffort resourcePlanEndDateUnitEffort = new DateUnitEffort(resourcePlanEndDateUnit, 0);
+				resourcePlanDateUnitEffortList.add(resourcePlanEndDateUnitEffort);
 			}
 
 			return resourcePlanDateUnitEffortList;
+		}
+
+		private DateUnit createMonthDateUnit(DateUnit dateUnit)
+		{
+			MultiCalendar cal = MultiCalendar.createFromGregorianYearMonthDay(dateUnit.getYear(), dateUnit.getMonth(), 1);
+			return DateUnit.createMonthDateUnit(cal.toIsoDateString());
 		}
 
 		private DateRange addToDateRange(DateRange dateRangeToAddTo, DateUnit dateUnit) throws Exception
