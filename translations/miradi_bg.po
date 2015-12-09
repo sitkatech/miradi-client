@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-08 08:51-0800\n"
+"POT-Creation-Date: 2015-12-09 07:36-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/miradi-client/"
@@ -3290,7 +3290,7 @@ msgstr "Дата"
 msgid "Date Chooser"
 msgstr "Избор на дата"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/DayDateUnitStartAndEndCard.java:36
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/DayDateUnitStartAndEndCard.java:37
 msgid "Day Selection: "
 msgstr "Избор на ден:"
 
@@ -3635,7 +3635,7 @@ msgstr "Редактор"
 msgid "Effective"
 msgstr "Ефективен"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:142
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:141
 msgid ""
 "Effective end date for project planning date range is before start date."
 msgstr ""
@@ -3644,7 +3644,7 @@ msgstr ""
 msgid "Enable Spell Checking"
 msgstr "Включване на проверка на правопис"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/DateUnitStartAndEndCard.java:37
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/DateUnitStartAndEndCard.java:38
 msgid "End:"
 msgstr "Край:"
 
@@ -4816,7 +4816,7 @@ msgstr "Label|Организация"
 msgid "Label|Phone Numbers"
 msgstr "Label|Телефонни номера"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:68
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:67
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:35
 msgid "Label|Project Dates"
 msgstr "Label|Дати на проект"
@@ -4860,7 +4860,7 @@ msgstr "Label|WCS"
 msgid "Label|WWF"
 msgstr "Label|WWF"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:75
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:74
 msgid "Label|Work Plan Dates"
 msgstr "Label|Дати на работен план"
 
@@ -5510,7 +5510,7 @@ msgstr ""
 "БЕЛЕЖКА: Имената на проектовите файлове могат да съдържат букви, числа, "
 "празни интервали, точки, тирета и подчертавания."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:151
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:150
 msgid ""
 "NOTE: Quarter columns cannot be hidden because this project already has data "
 "for some quarters."
@@ -6708,7 +6708,7 @@ msgstr "Малък"
 msgid "Smallest"
 msgstr "Най-малък"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:128
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:127
 msgid ""
 "Some work plan data is currently hidden and not included in calculated "
 "totals. If the data is outside the planning date range, it will be visible "
@@ -6768,7 +6768,7 @@ msgstr ""
 "Началната дата (понастоящем %startDate) трябва да е по-рано от крайната дата "
 "(понастоящем %endDate)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/DateUnitStartAndEndCard.java:32
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/DateUnitStartAndEndCard.java:33
 msgid "Start:"
 msgstr "Начало:"
 
@@ -9227,7 +9227,7 @@ msgstr ""
 msgid "Work Plan Column Editor"
 msgstr "Редактор на колони на работен план"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:375
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:336
 msgid "Work Plan Settings"
 msgstr "Настройки на работен план"
 
@@ -9242,7 +9242,7 @@ msgstr ""
 msgid "Work Planning"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:116
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:115
 msgid "Work plan data currently exists for %startDate - %endDate"
 msgstr ""
 "Информацията от работния план понастоящем съществува за %начална дата - "
@@ -9332,7 +9332,7 @@ msgstr ""
 "Миради ще създава ZIP файлове и за резервни копия на проекти, които са "
 "създадени по време на форматови пренасяния."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:380
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:377
 msgid "[Error]"
 msgstr "[Грешка]"
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-08 08:51-0800\n"
+"POT-Creation-Date: 2015-12-09 07:36-0800\n"
 "PO-Revision-Date: 2014-05-28 17:01+0000\n"
 "Last-Translator: nsalafsky <nick@fosonline.org>\n"
 "Language-Team: English (Estonia) (http://www.transifex.com/projects/p/miradi-"
@@ -3269,7 +3269,7 @@ msgstr "Date"
 msgid "Date Chooser"
 msgstr "Date Chooser"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/DayDateUnitStartAndEndCard.java:36
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/DayDateUnitStartAndEndCard.java:37
 msgid "Day Selection: "
 msgstr "Day Selection: "
 
@@ -3622,7 +3622,7 @@ msgstr "Editor"
 msgid "Effective"
 msgstr "Effective"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:142
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:141
 msgid ""
 "Effective end date for project planning date range is before start date."
 msgstr ""
@@ -3631,7 +3631,7 @@ msgstr ""
 msgid "Enable Spell Checking"
 msgstr "Enable Spell Checking"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/DateUnitStartAndEndCard.java:37
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/DateUnitStartAndEndCard.java:38
 msgid "End:"
 msgstr "End:"
 
@@ -4798,7 +4798,7 @@ msgstr "Label|Organization"
 msgid "Label|Phone Numbers"
 msgstr "Label|Phone Numbers"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:68
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:67
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:35
 msgid "Label|Project Dates"
 msgstr "Label|Project Dates"
@@ -4842,7 +4842,7 @@ msgstr "Label|WCS"
 msgid "Label|WWF"
 msgstr "Label|WWF"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:75
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:74
 msgid "Label|Work Plan Dates"
 msgstr "Label|Work Plan Dates"
 
@@ -5480,7 +5480,7 @@ msgstr ""
 "NOTE: Project filenames can contain letters, numbers, spaces, periods, "
 "dashes, and underlines."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:151
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:150
 msgid ""
 "NOTE: Quarter columns cannot be hidden because this project already has data "
 "for some quarters."
@@ -6683,7 +6683,7 @@ msgstr "Small"
 msgid "Smallest"
 msgstr "Smallest"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:128
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:127
 msgid ""
 "Some work plan data is currently hidden and not included in calculated "
 "totals. If the data is outside the planning date range, it will be visible "
@@ -6742,7 +6742,7 @@ msgstr ""
 "Start date (currently %startDate) must be earlier than end date (currently "
 "%endDate)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/DateUnitStartAndEndCard.java:32
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/DateUnitStartAndEndCard.java:33
 msgid "Start:"
 msgstr "Start:"
 
@@ -9212,7 +9212,7 @@ msgstr ""
 msgid "Work Plan Column Editor"
 msgstr "Work Plan Column Editor"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:375
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:336
 msgid "Work Plan Settings"
 msgstr "Work Plan Settings"
 
@@ -9230,7 +9230,7 @@ msgstr ""
 msgid "Work Planning"
 msgstr "Work Planning"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:116
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:115
 msgid "Work plan data currently exists for %startDate - %endDate"
 msgstr "Work plan data currently exists for %startDate - %endDate"
 
@@ -9317,7 +9317,7 @@ msgstr ""
 "create zip files for project backups that are created during format "
 "migrations. "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:380
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:377
 msgid "[Error]"
 msgstr "[Error]"
 
