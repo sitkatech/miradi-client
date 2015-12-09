@@ -26,16 +26,11 @@ import org.miradi.layout.OneRowPanel;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.project.ProjectCalendar;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-
 abstract public class DateUnitPanel extends OneRowPanel
 {
 	public DateUnitPanel(ProjectCalendar projectCalendar, DateUnit dateUnit, String panelTitle)
 	{
 		dateUnitChooser = createDateUnitChooser(projectCalendar, dateUnit);
-		dateUnitChooser.addItemListener(new ChangeHandler());
 		add(new PanelTitleLabel(panelTitle));
 		add(dateUnitChooser);
 	}
@@ -50,22 +45,17 @@ abstract public class DateUnitPanel extends OneRowPanel
 		dateUnitChooser.setSelectedDateUnit(dateUnitToUse);
 	}
 
+	public void setProjectCalendar(ProjectCalendar projectCalendarToUse)
+	{
+		dateUnitChooser.setProjectCalendar(projectCalendarToUse);
+	}
+
 	public void addActionListener(WhenPlannedEditorField.WhenPlannedEditorChangeHandler editorFieldChangeHandlerToUse)
 	{
-		editorFieldChangeHandler = editorFieldChangeHandlerToUse;
+		dateUnitChooser.addActionListener(editorFieldChangeHandlerToUse);
 	}
 
 	abstract protected DateUnitComboBox createDateUnitChooser(ProjectCalendar projectCalendar,	DateUnit dateUnit);
 
-	private class ChangeHandler implements ItemListener
-	{
-		public void itemStateChanged(ItemEvent e)
-		{
-			if (e.getStateChange() == ItemEvent.SELECTED && editorFieldChangeHandler != null)
-				editorFieldChangeHandler.actionPerformed(new ActionEvent(e.getSource(), e.getID(), "DateUnitPanel"));
-		}
-	}
-
-	private WhenPlannedEditorField.WhenPlannedEditorChangeHandler editorFieldChangeHandler;
 	private DateUnitComboBox dateUnitChooser;
 }

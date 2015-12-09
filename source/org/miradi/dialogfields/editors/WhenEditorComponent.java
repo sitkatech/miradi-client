@@ -200,11 +200,6 @@ abstract public class WhenEditorComponent extends DisposablePanel
 		return dateUnitEffortList;
 	}
 
-	public ORefList getPlanningObjectRefs()
-	{
-		return planningObjectRefs;
-	}
-
 	public void setPlanningObjectRefs(ORefList planningObjectRefsToUse)
 	{
 		try
@@ -213,7 +208,7 @@ abstract public class WhenEditorComponent extends DisposablePanel
 			String singleDateUnitTypeCode = getDefaultDateUnitTypeCode(planningObjectRefs);
 			dateUnitTypeCombo.setSelectedItem(dateUnitTypeQuestion.findChoiceByCode(singleDateUnitTypeCode));
 			StartEndDateUnitProvider startEndDateUnitProvider = getStartEndDateUnitProvider(planningObjectRefs);
-			lowerPanel.setStartEndDateUnitProvider(startEndDateUnitProvider);
+			lowerPanel.setStartEndDateUnitProvider(project.getProjectCalendar(), startEndDateUnitProvider);
 		}
 		catch (Exception e)
 		{

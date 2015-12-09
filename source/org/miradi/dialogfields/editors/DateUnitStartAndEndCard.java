@@ -24,6 +24,7 @@ import org.miradi.dialogfields.WhenPlannedEditorField;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.project.ProjectCalendar;
 
 abstract public class DateUnitStartAndEndCard extends TwoColumnPanel
 {
@@ -43,7 +44,7 @@ abstract public class DateUnitStartAndEndCard extends TwoColumnPanel
 
 	abstract public String getPanelDescription();
 
-	abstract public void setStartEndDateUnitProvider(StartEndDateUnitProvider startEndDateUnitProviderToUse);
+	abstract public void setStartEndDateUnitProvider(ProjectCalendar projectCalendarToUse, StartEndDateUnitProvider startEndDateUnitProviderToUse);
 
 	public void addActionListener(WhenPlannedEditorField.WhenPlannedEditorChangeHandler editorFieldChangeHandlerToUse) {}
 }

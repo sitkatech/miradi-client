@@ -30,18 +30,19 @@ import org.miradi.project.ProjectCalendar;
 
 public class WhenEditorLowerPanel extends DisposablePanel
 {
-	public WhenEditorLowerPanel(ProjectCalendar projectCalendar, StartEndDateUnitProvider startEndDateUnitProviderToUse)
+	public WhenEditorLowerPanel(ProjectCalendar projectCalendarToUse, StartEndDateUnitProvider startEndDateUnitProviderToUse)
 	{
 		cardLayout = new CardLayout();
 		setLayout(cardLayout);
 
+		projectCalendar = projectCalendarToUse;
 		startEndDateUnitProvider = startEndDateUnitProviderToUse;
 
 		noneCard = new NoneCard();
 		projectTotalCard = new ProjectTotalDateUnitStartAndEndCard();
-		yearCard = new CalendarYearDateUnitStartAndEndCard(projectCalendar, startEndDateUnitProviderToUse);
-		quarterCard = new QuarterDateUnitStartAndEndCard(projectCalendar, startEndDateUnitProviderToUse);
-		monthCard = new MonthDateUnitStartAndEndCard(projectCalendar, startEndDateUnitProviderToUse);
+		yearCard = new CalendarYearDateUnitStartAndEndCard(projectCalendarToUse, startEndDateUnitProviderToUse);
+		quarterCard = new QuarterDateUnitStartAndEndCard(projectCalendarToUse, startEndDateUnitProviderToUse);
+		monthCard = new MonthDateUnitStartAndEndCard(projectCalendarToUse, startEndDateUnitProviderToUse);
 		dayCard = new DayDateUnitStartAndEndCard(startEndDateUnitProviderToUse);
 		
 		add(noneCard, noneCard.getPanelDescription());
@@ -85,13 +86,14 @@ public class WhenEditorLowerPanel extends DisposablePanel
 			monthCard.addActionListener(editorFieldChangeHandlerToUse);
 	}
 
-	public void setStartEndDateUnitProvider(StartEndDateUnitProvider startEndDateUnitProviderToUse)
+	public void setStartEndDateUnitProvider(ProjectCalendar projectCalendarToUse, StartEndDateUnitProvider startEndDateUnitProviderToUse)
 	{
+		projectCalendar = projectCalendarToUse;
 		startEndDateUnitProvider = startEndDateUnitProviderToUse;
-		yearCard.setStartEndDateUnitProvider(startEndDateUnitProvider);
-		quarterCard.setStartEndDateUnitProvider(startEndDateUnitProvider);
-		monthCard.setStartEndDateUnitProvider(startEndDateUnitProvider);
-		dayCard.setStartEndDateUnitProvider(startEndDateUnitProvider);
+		yearCard.setStartEndDateUnitProvider(projectCalendar, startEndDateUnitProvider);
+		quarterCard.setStartEndDateUnitProvider(projectCalendar, startEndDateUnitProvider);
+		monthCard.setStartEndDateUnitProvider(projectCalendar, startEndDateUnitProvider);
+		dayCard.setStartEndDateUnitProvider(projectCalendar, startEndDateUnitProvider);
 	}
 
 	public DateUnit getStartDateUnit()
@@ -134,6 +136,7 @@ public class WhenEditorLowerPanel extends DisposablePanel
 		throw new RuntimeException(cardName + " card could not be found");
 	}
 
+	private ProjectCalendar projectCalendar;
 	private StartEndDateUnitProvider startEndDateUnitProvider;
 	private Color backgroundColor;
 	private CardLayout cardLayout;

@@ -50,9 +50,11 @@ public class QuarterDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	}
 
 	@Override
-	public void setStartEndDateUnitProvider(StartEndDateUnitProvider startEndDateUnitProviderToUse)
+	public void setStartEndDateUnitProvider(ProjectCalendar projectCalendarToUse, StartEndDateUnitProvider startEndDateUnitProviderToUse)
 	{
+		startQuarterPanel.setProjectCalendar(projectCalendarToUse);
 		startQuarterPanel.setDateUnit(startEndDateUnitProviderToUse.getStartDateUnit());
+		endQuarterPanel.setProjectCalendar(projectCalendarToUse);
 		endQuarterPanel.setDateUnit(startEndDateUnitProviderToUse.getEndDateUnit());
 	}
 

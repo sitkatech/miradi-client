@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.ResourcePlanId;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TimePeriodCosts;
@@ -85,6 +86,12 @@ public class ResourcePlan extends AbstractPlanningObject
 	protected TimePeriodCosts createTimePeriodCosts(OptionalDouble quantity)
 	{
 		return new TimePeriodCosts(getResourceRef(), quantity);
+	}
+
+	@Override
+	protected boolean shouldIncludeEffort(DateUnit dateUnit) throws Exception
+	{
+		return true;
 	}
 
 	@Override

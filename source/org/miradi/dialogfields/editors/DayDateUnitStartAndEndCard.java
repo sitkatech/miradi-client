@@ -23,6 +23,7 @@ package org.miradi.dialogfields.editors;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.project.ProjectCalendar;
 import org.miradi.questions.AbstractDateUnitTypeQuestion;
 import org.miradi.utils.FillerLabel;
 
@@ -70,7 +71,7 @@ public class DayDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	}
 
 	@Override
-	public void setStartEndDateUnitProvider(StartEndDateUnitProvider startEndDateUnitProviderToUse)
+	public void setStartEndDateUnitProvider(ProjectCalendar projectCalendarToUse, StartEndDateUnitProvider startEndDateUnitProviderToUse)
 	{
 		startDayPanel.setDateUnit(startEndDateUnitProviderToUse.getStartDateUnit());
 		endDayPanel.setDateUnit(startEndDateUnitProviderToUse.getEndDateUnit());

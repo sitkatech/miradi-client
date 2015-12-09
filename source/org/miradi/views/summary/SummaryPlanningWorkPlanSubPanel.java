@@ -38,7 +38,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.ResourcePlan;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.FiscalYearStartQuestion;
@@ -252,20 +251,6 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		quarterVisibilityExplanationFillerReplacement.setVisible(!enableQuarterVisibilityOption);
 	}
 
-	public static boolean hasPlannedDataOutsideOfProjectDateRange(Project projectToUse)
-	{
-		try
-		{
-			DateRange allDataDateRange = getProjectPlannedDataDateRange(projectToUse);
-			return hasDataOutsideOfProjectDateRange(projectToUse, allDataDateRange);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return false;
-		}
-	}
-
 	public static boolean hasAssignedDataOutsideOfProjectDateRange(Project projectToUse)
 	{
 		try
@@ -305,30 +290,6 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 			return "";
 		
 		return dateRange.getStartDate().toIsoDateString();
-	}
-
-	private static DateRange getProjectPlannedDataDateRange(Project projectToUse) throws Exception
-	{
-		DateRange projectDateRange = projectToUse.getProjectCalendar().getProjectPlanningDateRange();
-		TimePeriodCostsMap tpcm = getTimePeriodCostsMapForAllPlans(projectToUse);
-		
-		return tpcm.getRolledUpDateRange(projectDateRange);	
-	}
-
-
-	private static TimePeriodCostsMap getTimePeriodCostsMapForAllPlans(Project projectToUse) throws Exception
-	{
-		ORefList resourcePlanRefs = new ORefList();
-		resourcePlanRefs.addAll(projectToUse.getResourcePlanPool().getORefList());
-
-		TimePeriodCostsMap tpcm = new TimePeriodCostsMap();
-		for (int index = 0; index < resourcePlanRefs.size(); ++index)
-		{
-			ResourcePlan resourcePlan = ResourcePlan.find(projectToUse, resourcePlanRefs.get(index));
-			tpcm.mergeAll(resourcePlan.convertAllDateUnitEffortList());
-		}
-
-		return tpcm;
 	}
 
 	private static DateRange getProjectAssignedDataDateRange(Project projectToUse) throws Exception

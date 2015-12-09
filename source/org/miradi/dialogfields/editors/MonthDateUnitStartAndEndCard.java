@@ -62,9 +62,11 @@ public class MonthDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	}
 
 	@Override
-	public void setStartEndDateUnitProvider(StartEndDateUnitProvider startEndDateUnitProviderToUse)
+	public void setStartEndDateUnitProvider(ProjectCalendar projectCalendarToUse, StartEndDateUnitProvider startEndDateUnitProviderToUse)
 	{
+		startMonthPanel.setProjectCalendar(projectCalendarToUse);
 		startMonthPanel.setDateUnit(startEndDateUnitProviderToUse.getStartDateUnit());
+		endMonthPanel.setProjectCalendar(projectCalendarToUse);
 		endMonthPanel.setDateUnit(startEndDateUnitProviderToUse.getEndDateUnit());
 	}
 

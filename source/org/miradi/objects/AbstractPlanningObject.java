@@ -83,7 +83,7 @@ abstract public class AbstractPlanningObject extends BaseObject
 		return tpcm;
 	}
 
-	private boolean shouldIncludeEffort(DateUnit dateUnit) throws Exception
+	protected boolean shouldIncludeEffort(DateUnit dateUnit) throws Exception
 	{
 		if (matchesCurrentFiscalYearStartMonth(dateUnit))
 			return false;

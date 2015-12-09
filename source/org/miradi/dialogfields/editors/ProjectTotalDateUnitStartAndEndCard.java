@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields.editors;
 
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.project.ProjectCalendar;
 import org.miradi.questions.AbstractDateUnitTypeQuestion;
 
 public class ProjectTotalDateUnitStartAndEndCard extends DateUnitStartAndEndCard
@@ -44,5 +45,5 @@ public class ProjectTotalDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	}
 
 	@Override
-	public void setStartEndDateUnitProvider(StartEndDateUnitProvider startEndDateUnitProviderToUse) {}
+	public void setStartEndDateUnitProvider(ProjectCalendar projectCalendarToUse, StartEndDateUnitProvider startEndDateUnitProviderToUse) {}
 }

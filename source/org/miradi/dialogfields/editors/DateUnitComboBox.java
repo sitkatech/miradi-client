@@ -28,18 +28,37 @@ import org.miradi.project.ProjectCalendar;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
+import java.util.Arrays;
+import java.util.HashSet;
+
 abstract public class DateUnitComboBox extends PanelComboBox
 {
 	public DateUnitComboBox(ProjectCalendar projectCalendarToUse, DateUnit dateUnit)
 	{
 		projectCalendar = projectCalendarToUse;
-		
-		ChoiceItem[] choices = createChoices();
-		setModel(new DefaultComboBoxModel(choices));
-		
+		setComboBoxModel(dateUnit);
 		setSelectedDateUnit(dateUnit);
 	}
-	
+
+	private void setComboBoxModel(DateUnit dateUnit)
+	{
+		Object[] choiceItems = getChoiceItems(dateUnit);
+		removeAllItems();
+		Arrays.sort(choiceItems);
+		setModel(new DefaultComboBoxModel(choiceItems));
+	}
+
+	private Object[] getChoiceItems(DateUnit dateUnit)
+	{
+		HashSet<ChoiceItem> choiceItems = new HashSet<ChoiceItem>(Arrays.asList(createChoices()));
+
+		ChoiceItem choiceItem = getChoiceItemForDateUnit(dateUnit);
+		if (choiceItem != null)
+			choiceItems.add(choiceItem);
+
+		return choiceItems.toArray();
+	}
+
 	public DateUnit getDateUnit()
 	{
 		ChoiceItem selectedItem = (ChoiceItem) getSelectedItem();
@@ -54,15 +73,36 @@ abstract public class DateUnitComboBox extends PanelComboBox
 		return projectCalendar;
 	}
 
-	public void setSelectedDateUnit(DateUnit dateUnit)
+	protected void setProjectCalendar(ProjectCalendar projectCalendarToUse)
 	{
-		if (dateUnit != null && isType(dateUnit))
-		{
-			ChoiceItem choiceItem = createQuestion().findChoiceByCode(dateUnit.getDateUnitCode());
+		projectCalendar = projectCalendarToUse;
+	}
+
+	protected void setSelectedDateUnit(DateUnit dateUnit)
+	{
+		setComboBoxModel(dateUnit);
+		ChoiceItem choiceItem = getChoiceItemForDateUnit(dateUnit);
+		if (choiceItem != null)
 			setSelectedItem(choiceItem);
-		}
 	}
 	
+	protected ChoiceItem getChoiceItemForDateUnit(DateUnit dateUnit)
+	{
+		ChoiceItem choiceItem = null;
+
+		if (dateUnit != null && isType(dateUnit))
+		{
+			choiceItem = createQuestion().findChoiceByCode(dateUnit.getDateUnitCode());
+			if (choiceItem == null)
+			{
+				String label = getProjectCalendar().getLongDateUnitString(dateUnit);
+				choiceItem = new ChoiceItem(dateUnit.getDateUnitCode(), label);
+			}
+		}
+
+		return choiceItem;
+	}
+
 	abstract protected ChoiceItem[] createChoices();
 	
 	abstract protected ChoiceQuestion createQuestion();

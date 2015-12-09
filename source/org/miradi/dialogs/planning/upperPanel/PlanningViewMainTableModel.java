@@ -306,9 +306,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		if (!isAsteriskColumn)
 			return false;
 
-		if (isPlannedWhenColumn(columnTag) || isPlannedWhoColumn(columnTag))
-			return SummaryPlanningWorkPlanSubPanel.hasPlannedDataOutsideOfProjectDateRange(getProject());
-
 		if (isAssignedWhenColumn(columnTag) || isAssignedWhoColumn(columnTag))
 			return SummaryPlanningWorkPlanSubPanel.hasAssignedDataOutsideOfProjectDateRange(getProject());
 

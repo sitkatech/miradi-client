@@ -1033,7 +1033,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			else if (hasNonMatchingFiscalYearStartMonth(getProject()))
 				getMainStatusBar().setWarningStatus(EAM.text("Existing data for a different fiscal year is being excluded"));
 			else if (isDataOutsideOfCurrentProjectDateRange())
-				getMainStatusBar().setWarningStatus(("WorkPlan / Financial data outside work plan begin/end dates will not be shown"));
+				getMainStatusBar().setWarningStatus(("* Work units and expenses outside the work plan begin/end dates are not shown"));
 			else
 				clearStatusBar();
 		}

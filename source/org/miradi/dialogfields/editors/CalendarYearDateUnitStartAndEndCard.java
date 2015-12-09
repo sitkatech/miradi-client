@@ -62,9 +62,11 @@ public class CalendarYearDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	}
 
 	@Override
-	public void setStartEndDateUnitProvider(StartEndDateUnitProvider startEndDateUnitProviderToUse)
+	public void setStartEndDateUnitProvider(ProjectCalendar projectCalendarToUse,StartEndDateUnitProvider startEndDateUnitProviderToUse)
 	{
+		startYearPanel.setProjectCalendar(projectCalendarToUse);
 		startYearPanel.setDateUnit(startEndDateUnitProviderToUse.getStartDateUnit());
+		endYearPanel.setProjectCalendar(projectCalendarToUse);
 		endYearPanel.setDateUnit(startEndDateUnitProviderToUse.getEndDateUnit());
 	}
 
