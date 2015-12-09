@@ -302,7 +302,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	
 	private boolean doesColumnHeaderNeedAsterisk(String columnTag)
 	{
-		boolean isAsteriskColumn = isPlannedWhenColumn(columnTag) || isPlannedWhoColumn(columnTag) || isAssignedWhenColumn(columnTag) || isAssignedWhoColumn(columnTag);
+		boolean isAsteriskColumn = isAssignedWhenColumn(columnTag) || isAssignedWhoColumn(columnTag);
 		if (!isAsteriskColumn)
 			return false;
 
