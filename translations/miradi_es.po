@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-09 07:36-0800\n"
+"POT-Creation-Date: 2015-12-10 02:36-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/miradi-client/"
@@ -6191,7 +6191,7 @@ msgstr ""
 "método o tarea. Existen tres tipos principales de recursos: humanos, "
 "materiales y financieros."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/WorkPlanTreeTablePanel.java:98
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/WorkPlanTreeTablePanel.java:109
 msgid "Resource filter is on"
 msgstr ""
 
