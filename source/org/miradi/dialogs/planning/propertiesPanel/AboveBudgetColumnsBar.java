@@ -36,6 +36,7 @@ import javax.swing.JScrollPane;
 import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;
 import org.miradi.main.AppPreferences;
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StaticQuestionManager;
@@ -43,8 +44,9 @@ import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 
 public class AboveBudgetColumnsBar extends AbstractFixedHeightDirectlyAboveTreeTablePanel implements AdjustmentListener
 {
-	public AboveBudgetColumnsBar(TableWithExpandableColumnsInterface tableToSitAbove)
+	public AboveBudgetColumnsBar(Project projectToUse, TableWithExpandableColumnsInterface tableToSitAbove)
 	{
+		project = projectToUse;
 		table = tableToSitAbove;
 	}
 	
@@ -66,9 +68,19 @@ public class AboveBudgetColumnsBar extends AbstractFixedHeightDirectlyAboveTreeT
 		g.setColor(getBackground());
 		g.fillRect(getX(), getY(), getWidth(), getHeight());
 		DateUnit forever = new DateUnit();
-		drawColumnGroupHeader(g, findColumnGroupBounds(WorkPlanColumnConfigurationQuestion.getAllPossibleWorkUnitsColumnGroups()), getWorkUnitsAboveColumnLabel(), AppPreferences.getWorkUnitsBackgroundColor(forever));
-		drawColumnGroupHeader(g, findColumnGroupBounds(WorkPlanColumnConfigurationQuestion.getAllPossibleExpensesColumnGroups()), getExpensesAboveColumnLabel(), AppPreferences.getExpenseAmountBackgroundColor(forever));
+		drawColumnGroupHeader(g, findColumnGroupBounds(WorkPlanColumnConfigurationQuestion.getAllPossibleWorkUnitsColumnGroups()), getWorkUnitsAboveColumnLabelLocal(), AppPreferences.getWorkUnitsBackgroundColor(forever));
+		drawColumnGroupHeader(g, findColumnGroupBounds(WorkPlanColumnConfigurationQuestion.getAllPossibleExpensesColumnGroups()), getExpensesAboveColumnLabelLocal(), AppPreferences.getExpenseAmountBackgroundColor(forever));
 		drawColumnGroupHeader(g, findColumnGroupBounds(WorkPlanColumnConfigurationQuestion.getAllPossibleBudgetTotalsColumnGroups()), getBudgetTotalsAboveColumnLabel(), AppPreferences.getBudgetDetailsBackgroundColor(forever));
+	}
+
+	protected String getWorkUnitsAboveColumnLabelLocal()
+	{
+		return getWorkUnitsAboveColumnLabel();
+	}
+
+	protected String getExpensesAboveColumnLabelLocal()
+	{
+		return getExpensesAboveColumnLabel();
 	}
 
 	public static String getWorkUnitsAboveColumnLabel()
@@ -86,14 +98,19 @@ public class AboveBudgetColumnsBar extends AbstractFixedHeightDirectlyAboveTreeT
 		return getChoiceLabel(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
 	}
 	
-	private static String getChoiceLabel(String metaResourceAssignmentColumnCode)
+	protected static String getChoiceLabel(String metaResourceAssignmentColumnCode)
 	{
 		ChoiceQuestion question = StaticQuestionManager.getQuestion(WorkPlanColumnConfigurationQuestion.class);
 		ChoiceItem choiceItem = question.findChoiceByCode(metaResourceAssignmentColumnCode);
 		
 		return choiceItem.getLabel();
 	}
-	
+
+	protected Project getProject()
+	{
+		return project;
+	}
+
 	private void drawColumnGroupHeader(Graphics g, Rectangle groupHeaderArea, String text, Color backgroundColor)
 	{
 		if(groupHeaderArea == null)
@@ -149,6 +166,7 @@ public class AboveBudgetColumnsBar extends AbstractFixedHeightDirectlyAboveTreeT
 		return rect;
 	}
 
+	private Project project;
 	private TableWithExpandableColumnsInterface table;
 	private JScrollPane tableScrollPane;
 }

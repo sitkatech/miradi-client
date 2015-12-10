@@ -33,6 +33,7 @@ import javax.swing.event.TableColumnModelEvent;
 import javax.swing.event.TableColumnModelListener;
 
 import org.miradi.dialogs.base.EditableObjectTableModel;
+import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;
 import org.miradi.dialogs.planning.propertiesPanel.AboveBudgetColumnsBar;
 import org.miradi.dialogs.planning.propertiesPanel.AbstractFixedHeightDirectlyAboveTreeTablePanel;
 import org.miradi.dialogs.planning.propertiesPanel.AbstractWorkUnitsTableModel;
@@ -113,7 +114,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 
 	public AboveBudgetColumnsBar createAboveColumnBar()
 	{
-		AboveBudgetColumnsBar aboveMainTableBar = new AboveBudgetColumnsBar(mainTable);
+		AboveBudgetColumnsBar aboveMainTableBar = new AboveBudgetColumnsBar(getProject(), mainTable);
 		aboveMainTableBar.setTableScrollPane(mainTableScrollPane);
 		
 		return aboveMainTableBar;
@@ -308,7 +309,12 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	{
 		return mainTable;
 	}
-	
+
+	protected TableWithExpandableColumnsInterface getMainTableInterface()
+	{
+		return mainTable;
+	}
+
 	public PlanningTreeRowColumnProvider getRowColumnProvider()
 	{
 		return rowColumnProvider;

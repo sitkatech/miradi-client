@@ -23,7 +23,9 @@ import com.jhlabs.awt.GridLayoutPlus;
 import org.miradi.actions.*;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
+import org.miradi.dialogs.planning.propertiesPanel.AboveBudgetColumnsBar;
 import org.miradi.dialogs.planning.propertiesPanel.AbstractFixedHeightDirectlyAboveTreeTablePanel;
+import org.miradi.dialogs.planning.propertiesPanel.WorkPlanAboveBudgetColumnsBar;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNodeAlwaysExpanded;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.CommandExecutedEvent;
@@ -79,6 +81,15 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 				EAM.logException(e);
 			}
 		}
+	}
+
+	@Override
+	public AboveBudgetColumnsBar createAboveColumnBar()
+	{
+		WorkPlanAboveBudgetColumnsBar aboveMainTableBar = new WorkPlanAboveBudgetColumnsBar(getProject(), getMainTableInterface());
+		aboveMainTableBar.setTableScrollPane(mainTableScrollPane);
+
+		return aboveMainTableBar;
 	}
 
 	@Override

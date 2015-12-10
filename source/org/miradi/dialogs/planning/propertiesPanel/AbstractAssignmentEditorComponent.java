@@ -144,7 +144,7 @@ abstract public class AbstractAssignmentEditorComponent extends MultiTablePanel 
 	
 		tablesPanel.add(new FillerPanel());
 		tablesPanel.add(new FillerPanel());
-		AboveBudgetColumnsBar aboveTableButtonRow = new AboveBudgetColumnsBar(assignmentDateUnitsTable);
+		AboveBudgetColumnsBar aboveTableButtonRow = new AboveBudgetColumnsBar(getProject(), assignmentDateUnitsTable);
 		tablesPanel.add(aboveTableButtonRow);
 		tablesPanel.add(new FillerPanel());
 		

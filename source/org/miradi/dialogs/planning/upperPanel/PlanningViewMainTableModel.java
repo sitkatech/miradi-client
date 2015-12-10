@@ -673,7 +673,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 				
 	private static final String UNIQUE_MODEL_IDENTIFIER = "PlanningViewMainTableModel";
 	
-	private static final String HAS_DATA_OUTSIDE_OF_PROJECT_DATE_ASTERISK = "*";
+	public static final String HAS_DATA_OUTSIDE_OF_PROJECT_DATE_ASTERISK = "*";
 
 	private CodeList columnsToShow;
 	private PlanningTreeRowColumnProvider rowColumnProvider;
