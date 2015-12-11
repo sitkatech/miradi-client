@@ -46,9 +46,10 @@ public class DayColumnsVisibilityQuestion extends StaticChoiceQuestion
 	@Override
 	protected String getReadableAlternativeDefaultCode()
 	{
-		return "ShowDayColumns";
+		return SHOW_DAY_COLUMNS_CODE_READABLE;
 	}
-	
+
+	public static final String SHOW_DAY_COLUMNS_CODE_READABLE = "ShowDayColumns";
 	public static final String SHOW_DAY_COLUMNS_CODE = "";
 	public static final String HIDE_DAY_COLUMNS_CODE = "HideDayColumns";
 

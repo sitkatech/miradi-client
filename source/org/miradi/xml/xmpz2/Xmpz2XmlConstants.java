@@ -70,6 +70,7 @@ public interface Xmpz2XmlConstants
 	public static final String PROJECT_SUMMARY_SCOPE = "ProjectScope";
 	public static final String PROJECT_SUMMARY_LOCATION = "ProjectLocation";
 	public static final String PROJECT_SUMMARY_PLANNING = "ProjectPlanning";
+	public static final String DAY_COLUMNS_VISIBILITY = "DayColumnsVisibility";
 	public static final String TNC_PROJECT_DATA = "TNCProjectData";
 	public static final String WWF_PROJECT_DATA = "WWFProjectData";
 	public static final String WCS_PROJECT_DATA = "WCSProjectData";

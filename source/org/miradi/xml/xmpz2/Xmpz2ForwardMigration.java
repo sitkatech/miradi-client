@@ -34,6 +34,7 @@ import org.miradi.migrations.forward.MigrationTo10;
 import org.miradi.migrations.forward.MigrationTo11;
 import org.miradi.migrations.forward.MigrationTo19;
 import org.miradi.migrations.forward.MigrationTo21;
+import org.miradi.questions.DayColumnsVisibilityQuestion;
 import org.miradi.utils.BiDirectionalHashMap;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.xml.AbstractXmlImporter;
@@ -60,6 +61,7 @@ public class Xmpz2ForwardMigration
 		renameTncFields(document);
 		renameLeaderResourceFields(document);
 		renameWhoWhenAssignedFields(document);
+		addDayColumnsVisibilityField(document);
 		final String migratedXmlAsString = HtmlUtilities.toXmlString(document);
 
 		return new Xmpz2MigrationResult(new StringInputStreamWithSeek(migratedXmlAsString), schemaVersionWasUpdated, xmpz2DocumentSchemaVersion);
@@ -172,6 +174,25 @@ public class Xmpz2ForwardMigration
 					}
 				}
 			}
+		}
+	}
+
+	private void addDayColumnsVisibilityField(Document document) throws Exception
+	{
+		Element rootElement = document.getDocumentElement();
+
+		Node projectPlanningElement = findNode(rootElement.getChildNodes(), Xmpz2XmlConstants.PROJECT_SUMMARY_PLANNING);
+
+		if (projectPlanningElement == null)
+			return;
+
+		Node dayColumnsVisibilityElement = findNode(projectPlanningElement.getChildNodes(), Xmpz2XmlConstants.PROJECT_SUMMARY_PLANNING + Xmpz2XmlConstants.DAY_COLUMNS_VISIBILITY);
+		if (dayColumnsVisibilityElement == null)
+		{
+			final String alias = getNameSpaceAliasName(document.getDocumentElement());
+			Node newNode = document.createElement(alias + COLON +  Xmpz2XmlConstants.PROJECT_SUMMARY_PLANNING + Xmpz2XmlConstants.DAY_COLUMNS_VISIBILITY);
+			newNode.setTextContent(DayColumnsVisibilityQuestion.SHOW_DAY_COLUMNS_CODE_READABLE);
+			projectPlanningElement.appendChild(newNode);
 		}
 	}
 
