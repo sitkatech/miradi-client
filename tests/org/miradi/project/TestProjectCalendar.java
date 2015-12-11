@@ -26,10 +26,11 @@ import java.util.Vector;
 import org.martus.util.MultiCalendar;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.questions.DayColumnsVisibilityQuestion;
+import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.utils.DateRange;
 
 public class TestProjectCalendar extends TestCaseWithProject
@@ -54,7 +55,7 @@ public class TestProjectCalendar extends TestCaseWithProject
 		assertContains("Missing Q3?", DateUnit.createQuarterDateUnit(2010, 3), quarters);
 		assertContains("Missing Q4?", DateUnit.createQuarterDateUnit(2010, 4), quarters);
 		
-		getProject().executeCommand(new CommandSetObjectData(metadataRef, ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, BooleanData.BOOLEAN_TRUE));
+		getProject().executeCommand(new CommandSetObjectData(metadataRef, ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, QuarterColumnsVisibilityQuestion.HIDE_QUARTER_COLUMNS_CODE));
 		assertFalse("Project including quarters?", pc.shouldShowQuarterColumns());
 		Vector<DateUnit> quartersWithQuartersHidden = pc.getAllProjectQuarterDateUnits();
 		assertEquals("Project included hidden quarters?", 0, quartersWithQuartersHidden.size());
@@ -74,7 +75,7 @@ public class TestProjectCalendar extends TestCaseWithProject
 		assertContains("Missing Feb?", DateUnit.createMonthDateUnit("2010-02-01"), months);
 		assertContains("Missing Mar?", DateUnit.createMonthDateUnit("2010-03-01"), months);
 
-		getProject().executeCommand(new CommandSetObjectData(metadataRef, ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, BooleanData.BOOLEAN_TRUE));
+		getProject().executeCommand(new CommandSetObjectData(metadataRef, ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, QuarterColumnsVisibilityQuestion.HIDE_QUARTER_COLUMNS_CODE));
 		assertFalse("Project including quarters?", pc.shouldShowQuarterColumns());
 		Vector<DateUnit> monthsWithoutQuarters = pc.getAllProjectMonthDateUnits();
 		assertEquals("Not 3 months?", 3, monthsWithoutQuarters.size());
@@ -82,7 +83,19 @@ public class TestProjectCalendar extends TestCaseWithProject
 		assertContains("Missing Feb without quarters?", DateUnit.createMonthDateUnit("2010-02-01"), monthsWithoutQuarters);
 		assertContains("Missing Mar without quarters?", DateUnit.createMonthDateUnit("2010-03-01"), monthsWithoutQuarters);
 	}
-	
+
+	public void testGetAllProjectDayDateUnits() throws Exception
+	{
+		ProjectCalendar pc = getProjectCalendar();
+		ORef metadataRef = getProject().getMetadata().getRef();
+		getProject().executeCommand(new CommandSetObjectData(metadataRef, ProjectMetadata.TAG_WORKPLAN_START_DATE, "2010-01-01"));
+		getProject().executeCommand(new CommandSetObjectData(metadataRef, ProjectMetadata.TAG_WORKPLAN_END_DATE, "2010-12-31"));
+
+		assertFalse("Project should not show days by default", pc.shouldShowDayColumns());
+		getProject().executeCommand(new CommandSetObjectData(metadataRef, ProjectMetadata.TAG_DAY_COLUMNS_VISIBILITY, DayColumnsVisibilityQuestion.SHOW_DAY_COLUMNS_CODE));
+		assertTrue("Project should show days", pc.shouldShowDayColumns());
+	}
+
 	public void testGettingDatesThatAreNotSet() throws Exception
 	{
 		ProjectCalendar pc = getProjectCalendar();
@@ -143,7 +156,6 @@ public class TestProjectCalendar extends TestCaseWithProject
 
 		verifyFiscalQuarterName("Q2 FY06 - Q1 FY07", "2006-01-01", "2006-12-31", 10);
 	}
-
 	
 	private void verifyFiscalQuarterName(String expectedName, String beginDate, String endDate, int fiscalYearFirstMonth) throws Exception
 	{
@@ -228,12 +240,12 @@ public class TestProjectCalendar extends TestCaseWithProject
 		for(DateUnit monthDateUnit : monthDateUnits)
 		{
 			assertTrue("is not month dateUnit", monthDateUnit.isMonth());
-			verifyMonthSuperHierachyDateUnits(monthDateUnit);
+			verifyMonthSuperHierarchyDateUnits(monthDateUnit);
 			verifyDaySubDateUnits(monthDateUnit);
 		}
 	}
 	
-	private void verifyMonthSuperHierachyDateUnits(DateUnit monthDateUnit)
+	private void verifyMonthSuperHierarchyDateUnits(DateUnit monthDateUnit)
 	{
 		Vector<DateUnit> monthSuperDateUnits = getProjectCalendar().getSuperDateUnitsHierarchy(monthDateUnit);
 		assertEquals("Incorrect super dateunit count?", 2, monthSuperDateUnits.size());

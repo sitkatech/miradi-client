@@ -98,6 +98,7 @@ public class StaticQuestionManager
 		addQuestion(new TncOrganizationalPrioritiesQuestion());
 		addQuestion(new SortDirectionQuestion());
 		addQuestion(new QuarterColumnsVisibilityQuestion());
+		addQuestion(new DayColumnsVisibilityQuestion());
 		addQuestion(new DiagramObjectDataInclusionQuestion());
 		addQuestion(new PlanningTreeTargetPositionQuestion());
 		addQuestion(new WorkPlanCategoryTypesQuestion());

@@ -39,10 +39,7 @@ import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.FiscalYearStartQuestion;
-import org.miradi.questions.QuarterColumnsVisibilityQuestion;
-import org.miradi.questions.StaticQuestionManager;
+import org.miradi.questions.*;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.utils.DateRange;
@@ -80,14 +77,21 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		addField(createChoiceField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_FISCAL_YEAR_START, new FiscalYearStartQuestion()));
 
 		addFieldWithPopUpInformation(createNumericField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR), "FteFieldDescription.html");
-		
+
 		ChoiceQuestion quarterColumnsVisibilityQuestion = StaticQuestionManager.getQuestion(QuarterColumnsVisibilityQuestion.class);
 		quarterColumnVisibilityComponent = addRadioButtonFieldWithCustomLabel(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, quarterColumnsVisibilityQuestion, "");
 		addQuarterColumnVisibilityExplanationLabel();
+
+		ChoiceQuestion dayColumnsVisibilityQuestion = StaticQuestionManager.getQuestion(DayColumnsVisibilityQuestion.class);
+		dayColumnVisibilityComponent = addRadioButtonFieldWithCustomLabel(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_DAY_COLUMNS_VISIBILITY, dayColumnsVisibilityQuestion, "");
+		addDayColumnVisibilityExplanationLabel();
+
 		addField(createMultilineField(ProjectMetadata.TAG_PLANNING_COMMENTS));
 		
 		updateQuarterColumnVisibilityEnableStatus();
 		
+		updateDayColumnVisibilityEnableStatus();
+
 		setObjectRefs(new ORef[] {oRefToUse, projectToUse.getSingletonObjectRef(ProjectMetadataSchema.getObjectType()), });
 		updateFieldsFromProject();
 	}
@@ -145,13 +149,21 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 	}
 
 	private void addQuarterColumnVisibilityExplanationLabel() throws Exception
-	{	
+	{
 		quarterVisibilityExplanationFillerReplacement = createAndAddFillerPanel();
 		String message = EAM.text("NOTE: Quarter columns cannot be hidden because this project already has data for some quarters.");
-		explanationPanel = createAndAddInformationalNotePanel(message);	
+		quarterColumnExplanationPanel = createAndAddInformationalNotePanel(message);
 		updateQuarterColumnVisibilityEnableStatus();
 	}
-	
+
+	private void addDayColumnVisibilityExplanationLabel() throws Exception
+	{
+		dayVisibilityExplanationFillerReplacement = createAndAddFillerPanel();
+		String message = EAM.text("NOTE: Day columns cannot be hidden because this project already has data for some days.");
+		dayColumnExplanationPanel = createAndAddInformationalNotePanel(message);
+		updateDayColumnVisibilityEnableStatus();
+	}
+
 	private FillerPanel createAndAddFillerPanel()
 	{
 		add(new FillerPanel());
@@ -236,19 +248,37 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		if (isOneOfOurFields(setCommand.getFieldTag()))
 		{
 			updateQuarterColumnVisibilityEnableStatus();
+			updateDayColumnVisibilityEnableStatus();
 			updateWorkPlanDataOutOfRangeWarningField();
 			updateProjectPlanningDateWarningField();
 			getMainWindow().updatePlanningDateRelatedStatus();
 		}
 	}
-	
+
+	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		updateQuarterColumnVisibilityEnableStatus();
+		updateDayColumnVisibilityEnableStatus();
+	}
+
 	private void updateQuarterColumnVisibilityEnableStatus()
 	{
 		final boolean enableQuarterVisibilityOption = hasQuarterData() && getProject().getMetadata().areQuarterColumnsVisible();
-		
+
 		quarterColumnVisibilityComponent.setEditable(!enableQuarterVisibilityOption);
-		explanationPanel.setVisible(enableQuarterVisibilityOption);
+		quarterColumnExplanationPanel.setVisible(enableQuarterVisibilityOption);
 		quarterVisibilityExplanationFillerReplacement.setVisible(!enableQuarterVisibilityOption);
+	}
+
+	private void updateDayColumnVisibilityEnableStatus()
+	{
+		final boolean enableDayVisibilityOption = hasDayData() && getProject().getMetadata().areDayColumnsVisible();
+
+		dayColumnVisibilityComponent.setEditable(!enableDayVisibilityOption);
+		dayColumnExplanationPanel.setVisible(enableDayVisibilityOption);
+		dayVisibilityExplanationFillerReplacement.setVisible(!enableDayVisibilityOption);
 	}
 
 	public static boolean hasAssignedDataOutsideOfProjectDateRange(Project projectToUse)
@@ -329,7 +359,21 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 			return false;
 		}
 	}
-	
+
+	private boolean hasDayData()
+	{
+		try
+		{
+			TimePeriodCostsMap tpcm = getTimePeriodCostsMapForAllAssignments(getProject());
+			return tpcm.containsDayDateUnit();
+		}
+		catch (Exception e)
+		{
+			EAM.alertUserOfNonFatalException(e);
+			return false;
+		}
+	}
+
 	@Override
 	public String getPanelDescription()
 	{
@@ -339,8 +383,11 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 	private FillerPanel workPlanDataWarningLabelFillerReplacement;
 	private FillerPanel projectPlanningDateWarningLabelFillerReplacement;
 	private FillerPanel quarterVisibilityExplanationFillerReplacement;
+	private FillerPanel dayVisibilityExplanationFillerReplacement;
 	private JComponent workPlanDataWarningPanel;
 	private JComponent projectPlanningDateWarningPanel;
-	private JComponent explanationPanel;
+	private JComponent quarterColumnExplanationPanel;
+	private JComponent dayColumnExplanationPanel;
 	private ObjectDataInputField quarterColumnVisibilityComponent;
+	private ObjectDataInputField dayColumnVisibilityComponent;
 }

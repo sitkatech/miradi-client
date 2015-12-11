@@ -80,6 +80,7 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(ThreatRatingModeChoiceQuestion.class, VOCABULARY_THREAT_RATING_MODE);
 		addItem(DashboardFlagsQuestion.class, VOCABULARY_DASHBOARD_ROW_FLAGS);
 		addItem(QuarterColumnsVisibilityQuestion.class, VOCABULARY_QUARTER_COLUMNS_VISIBILITY);
+		addItem(DayColumnsVisibilityQuestion.class, VOCABULARY_DAY_COLUMNS_VISIBILITY);
 		addItem(BudgetTimePeriodQuestion.class, VOCABULARY_WORK_PLAN_TIME_UNIT);
 		addItem(RatingSourceQuestion.class, VOCABULARY_RATING_SOURCE);
 		addItem(CurrencyTypeQuestion.class, VOCABULARY_CURRENCY_TYPE);

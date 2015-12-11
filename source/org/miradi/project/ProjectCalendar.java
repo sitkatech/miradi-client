@@ -346,26 +346,27 @@ public class ProjectCalendar implements CommandExecutedListener
 		return dateUnit.asDateRange();
 	}
 	
-	public boolean hasSubDateUnits(DateUnit dateUnit) throws Exception
-	{
-		return getSubDateUnits(dateUnit).size() > 0;
-	}
-	
 	public Vector<DateUnit> getSuperDateUnitsHierarchy(DateUnit dateUnit)
 	{
 		Vector<DateUnit> superDateUnits = dateUnit.getSuperDateUnitHierarchy(getFiscalYearFirstMonth());
 		if (shouldHideQuarterColumns())
 			return removeQuarterDateUnits(superDateUnits);
-		
+		if (shouldHideDayColumns())
+			return removeDayDateUnits(superDateUnits);
+
 		return superDateUnits;
 	}
 	
 	public Vector<DateUnit> getSubDateUnits(DateUnit dateUnit) throws Exception
 	{
 		Vector<DateUnit> subDateUnits = getSubDateUnitsWithinProjectPlanningDates(dateUnit);
+
 		if (dateUnit.isYear() && shouldHideQuarterColumns())
 			return getMonthAsSubDateUnitsOfYear(subDateUnits);
-		
+
+		if (dateUnit.isMonth() && shouldHideDayColumns())
+			return new Vector<DateUnit>();
+
 		return subDateUnits;
 	}
 	
@@ -413,6 +414,18 @@ public class ProjectCalendar implements CommandExecutedListener
 		return withoutQuarters;
 	}
 
+	private Vector<DateUnit> removeDayDateUnits(Vector<DateUnit> superDateUnits)
+	{
+		Vector<DateUnit> withoutDays = new Vector<DateUnit>();
+		for(DateUnit superDateUnit : superDateUnits)
+		{
+			if (!superDateUnit.isDay())
+				withoutDays.add(superDateUnit);
+		}
+
+		return withoutDays;
+	}
+
 	private Vector<DateUnit> getMonthAsSubDateUnitsOfYear(Vector<DateUnit> quarterDateUnits) throws Exception
 	{
 		LinkedHashSet<DateUnit> monthDateUnits = new LinkedHashSet<DateUnit>();
@@ -449,6 +462,16 @@ public class ProjectCalendar implements CommandExecutedListener
 	public boolean shouldShowQuarterColumns()
 	{
 		return getProject().getMetadata().areQuarterColumnsVisible();
+	}
+
+	public boolean shouldHideDayColumns()
+	{
+		return !shouldShowDayColumns();
+	}
+
+	public boolean shouldShowDayColumns()
+	{
+		return getProject().getMetadata().areDayColumnsVisible();
 	}
 
 	public Vector<DateUnit> getProjectYearsDateUnits(DateRange dateRange)
@@ -511,11 +534,6 @@ public class ProjectCalendar implements CommandExecutedListener
 		return isStartDateAfterEndDate(getPlanningStartMultiCalendar(), getPlanningEndMultiCalendar());
 	}
 	
-	public DateUnit getProjectPlanningDateUnit() throws Exception
-	{		
-		return DateUnit.createFromDateRange(getProjectPlanningDateRange());
-	}
-
 	private MultiCalendar getOneYearLater(MultiCalendar startOfFiscalYear)
 	{
 		return getShiftedByYears(startOfFiscalYear, 1);

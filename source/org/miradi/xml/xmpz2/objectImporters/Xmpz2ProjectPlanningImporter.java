@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2.objectImporters;
 
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.questions.DayColumnsVisibilityQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
@@ -54,6 +55,7 @@ public class Xmpz2ProjectPlanningImporter extends AbstractXmpz2ObjectImporter
 		importProjectMetadataField(projectSummaryPlanningNode, ProjectMetadata.TAG_FINANCIAL_COMMENTS);
 		importProjectMetadataField(projectSummaryPlanningNode, ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION);
 		getImporter().importCodeField(projectSummaryPlanningNode, PROJECT_SUMMARY_PLANNING, getMetadataRef(), ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, StaticQuestionManager.getQuestion(QuarterColumnsVisibilityQuestion.class));
+		getImporter().importCodeField(projectSummaryPlanningNode, PROJECT_SUMMARY_PLANNING, getMetadataRef(), ProjectMetadata.TAG_DAY_COLUMNS_VISIBILITY, StaticQuestionManager.getQuestion(DayColumnsVisibilityQuestion.class));
 	}
 	
 	private void importProjectMetadataField(Node projectSummaryNode, String tag) throws Exception

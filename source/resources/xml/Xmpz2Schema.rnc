@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Fri Nov 20 10:19:14 GMT 2015 $
+# $LastChangedDate: Thu Dec 10 14:48:01 GMT 2015 $
 # $LastChangedRevision: 236 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/236'
 start = ConservationProject.element
@@ -145,6 +145,7 @@ ProjectPlanning.element = element miradi:ProjectPlanning
   element miradi:ProjectPlanningCurrencyDecimalPlaces { xsd:integer }? &
   element miradi:ProjectPlanningCurrencySymbol { text }? &
   element miradi:ProjectPlanningCurrencyType { vocabulary_currency_type }? &
+  element miradi:ProjectPlanningDayColumnsVisibility { vocabulary_day_columns_visibility } &
   element miradi:ProjectPlanningExpectedEndDate { vocabulary_date }? &
   element miradi:ProjectPlanningFinancialComments { formatted_text }? &
   element miradi:ProjectPlanningFiscalYearStart { vocabulary_fiscal_year_start_month }? &
@@ -897,6 +898,7 @@ vocabulary_currency_type = ''|'EUR'|'GBP'|'JPY'|'CAD'|'AUD'|'CHF'|'RUB'|'CNY'|'Z
 vocabulary_custom_rows = 'ConceptualModel'|'ResultsChain'|'BiodiversityTarget'|'HumanWellbeingTarget'|'SubTarget'|'Goal'|'Objective'|'BiophysicalFactor'|'DirectThreat'|'ContributingFactor'|'BiophysicalResult'|'ThreatReductionResult'|'IntermediateResult'|'Strategy'|'Indicator'|'Activity'|'Method'|'Task'|'Measurement'|'FutureStatus'
 vocabulary_custom_columns = 'SpeciesLatinName'|'ThreatRating'|'Methods'|'Activities'|'Indicators'|'AssociatedFactor'|'Priority'|'LatestProjectReport'|'LatestProgressReport'|'TaxonomyCodeValue'|'PlannedWhoTotal'|'PlannedWhenTotal'|'Measurements'|'FutureStatuses'|'Comments'|'Details'
 vocabulary_dashboard_row_flags = 'needsAttention'
+vocabulary_day_columns_visibility = 'ShowDayColumns'|'HideDayColumns'
 vocabulary_diagram_factor_background_color = 'LightGray'|'White'|'Pink'|'Orange'|'LightYellow'|'LightGreen'|'LightBlue'|'LightPurple'|'Tan'|'Black'|'DarkGray'|'Red'|'DarkOrange'|'DarkYellow'|'DarkGreen'|'DarkBlue'|'DarkPurple'|'Brown'
 vocabulary_diagram_factor_foreground_color = '#000000'|'#4E4848'|'#FF0000'|'#FF6600'|'#FFCC00'|'#007F00'|'#0000CC'|'#9900FF'|'#C85A17'|'#6D7B8D'|'#FFFFFF'|'#FF00FF'|'#FF8040'|'#FFFFCC'|'#5FFB17'|'#00CCFF'|'#CC99FF'|'#EDE275'
 vocabulary_diagram_factor_font_size = '1.0'|'0.5'|'0.75'|'0.9'|'1.25'|'1.75'|'2.5'

@@ -820,6 +820,7 @@ public class Project implements ProjectInterface
 		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_DIAGRAM_FONT_SIZE, FontSizeQuestion.getDefaultSizeCode());
 		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE, TargetModeQuestion.HUMAN_WELFARE_TARGET_CODE);
 		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_BIOPHYSICAL_FACTOR_MODE, FactorModeQuestion.DEFAULT_CODE);
+		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_DAY_COLUMNS_VISIBILITY, DayColumnsVisibilityQuestion.HIDE_DAY_COLUMNS_CODE);
 	}
 	
 	private void createDefaultProjectDataObject(int objectType) throws Exception

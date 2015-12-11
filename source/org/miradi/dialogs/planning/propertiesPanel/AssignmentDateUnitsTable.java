@@ -122,11 +122,6 @@ abstract public class AssignmentDateUnitsTable extends AbstractAssignmentDetails
 	@Override
 	abstract public String getColumnGroupCode(int tableColumn);
 	
-	public int getColumnAlignment()
-	{
-		return JLabel.RIGHT;
-	}
-	
 	public boolean isColumnExpandable(int tableColumn)
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
@@ -139,16 +134,6 @@ abstract public class AssignmentDateUnitsTable extends AbstractAssignmentDetails
 		return getWorkUnitsTableModel().isColumnCollapsible(modelColumn);
 	}
 	
-	public boolean isDayColumnSelected()
-	{ 
-		return getWorkUnitsTableModel().isDayColumn(getSelectedModelColumn());
-	}
-
-	public boolean isSelectedDateUnitColumnExpanded()
-	{
-		return getWorkUnitsTableModel().isDateUnitColumnExpanded(getSelectedModelColumn());
-	}
-
 	public void respondToExpandOrCollapseColumnEvent(int tableColumnIndex) throws Exception
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumnIndex);
@@ -172,13 +157,6 @@ abstract public class AssignmentDateUnitsTable extends AbstractAssignmentDetails
 		return rightClickActions;		
 	}
 
-	private int getSelectedModelColumn()
-	{
-		int selectedTableColumn = getSelectedColumn();
-		
-		return convertColumnIndexToModel(selectedTableColumn);
-	}
-	
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
 		return getWorkUnitsTableModel().getBaseObjectForRow(row);

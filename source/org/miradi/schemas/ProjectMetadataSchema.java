@@ -57,6 +57,7 @@ public class ProjectMetadataSchema extends BaseObjectSchema
 		createFieldSchemaChoice(ProjectMetadata.TAG_FISCAL_YEAR_START, FiscalYearStartQuestion.class);
 		createFieldSchemaNumber(ProjectMetadata.TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR);
 		createFieldSchemaRequiredChoice(ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, QuarterColumnsVisibilityQuestion.class);
+		createFieldSchemaRequiredChoice(ProjectMetadata.TAG_DAY_COLUMNS_VISIBILITY, DayColumnsVisibilityQuestion.class);
 		createFieldSchemaRequiredChoice(ProjectMetadata.TAG_PLANNING_TREE_TARGET_NODE_POSITION, PlanningTreeTargetPositionQuestion.class);
 		
 		createFieldSchemaFloat(ProjectMetadata.TAG_PROJECT_LATITUDE);

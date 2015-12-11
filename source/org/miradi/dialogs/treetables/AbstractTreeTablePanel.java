@@ -109,7 +109,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 	{
 		try
 		{
-			if(doesCommandForceRebuild(event))
+			if(doesCommandForceRebuild(event) || isColumnExpandCollapseCommand(event))
 			{
 				needsFullRebuild = true;
 				EAM.logDebug("Queuing a rebuild for " + getClass().getSimpleName());

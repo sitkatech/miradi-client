@@ -1219,7 +1219,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		fillObjectUsingCommand(getMetadata(), ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, QuarterColumnsVisibilityQuestion.HIDE_QUARTER_COLUMNS_CODE);
 	}
-	
+
+	public void turnOffVisibleDayColumns() throws Exception
+	{
+		fillObjectUsingCommand(getMetadata(), ProjectMetadata.TAG_DAY_COLUMNS_VISIBILITY, DayColumnsVisibilityQuestion.HIDE_DAY_COLUMNS_CODE);
+	}
+
 	public void populateCause(Cause cause) throws Exception
 	{
 		fillObjectUsingCommand(cause.getRef(), Cause.TAG_LABEL, "SomeCauseLabel");

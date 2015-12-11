@@ -46,7 +46,8 @@ public class AssignedDateUnitTypeQuestion extends AbstractDateUnitTypeQuestion
 		if (getProjectCalendar().shouldShowQuarterColumns())
 			choices.add(new ChoiceItem(AbstractDateUnitTypeQuestion.QUARTER_CODE, EAM.text("Specific Quarter(s)")));
 		choices.add(new ChoiceItem(AbstractDateUnitTypeQuestion.MONTH_CODE, EAM.text("Specific Month(s)")));
-		choices.add(new ChoiceItem(AbstractDateUnitTypeQuestion.DAY_CODE, EAM.text("Specific Day(s)")));
+		if (getProjectCalendar().shouldShowDayColumns())
+			choices.add(new ChoiceItem(AbstractDateUnitTypeQuestion.DAY_CODE, EAM.text("Specific Day(s)")));
 
 		return choices.toArray(new ChoiceItem[0]);
 	}

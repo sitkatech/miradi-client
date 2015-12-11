@@ -308,22 +308,12 @@ public class ProjectMetadata extends BaseObject
 	{
 		return getData(TAG_QUARTER_COLUMNS_VISIBILITY).equals(QuarterColumnsVisibilityQuestion.SHOW_QUARTER_COLUMNS_CODE);
 	}
-	
-	public boolean isBudgetTimePeriodQuarterly()
+
+	public boolean areDayColumnsVisible()
 	{
-		return getData(TAG_WORKPLAN_TIME_UNIT).equals(BudgetTimePeriodQuestion.BUDGET_BY_QUARTER_CODE);
+		return getData(TAG_DAY_COLUMNS_VISIBILITY).equals(DayColumnsVisibilityQuestion.SHOW_DAY_COLUMNS_CODE);
 	}
 
-	public boolean isBudgetTimePeriodYearly()
-	{
-		return getData(TAG_WORKPLAN_TIME_UNIT).equals(BudgetTimePeriodQuestion.BUDGET_BY_YEAR_CODE);
-	}
-	
-	public CodeList getCountryCodes()
-	{
-		return getCodeListData(TAG_COUNTRIES);
-	}
-	
 	public static boolean is(BaseObject baseObject)
 	{
 		if(baseObject == null)
@@ -365,6 +355,7 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_CURRENCY_SYMBOL = "CurrencySymbol";
 	public static final String TAG_FISCAL_YEAR_START = "FiscalYearStart";
 	public static final String TAG_QUARTER_COLUMNS_VISIBILITY = "QuarterColumnsVisibility";
+	public static final String TAG_DAY_COLUMNS_VISIBILITY = "DayColumnsVisibility";
 	public static final String TAG_PLANNING_TREE_TARGET_NODE_POSITION = "PlanningTreeTargetNodePosition";
 	public static final String TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR = "FullTimeEmployeeDaysPerYear";
 	public static final String TAG_PROJECT_DESCRIPTION = "ProjectDescription";

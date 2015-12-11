@@ -243,7 +243,13 @@ public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, QuarterColumnsVisibilityQuestion.HIDE_QUARTER_COLUMNS_CODE);
 		validateUsingStringWriter();
 	}
-	
+
+	public void testDayColumnVisibility() throws Exception
+	{
+		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_DAY_COLUMNS_VISIBILITY, DayColumnsVisibilityQuestion.HIDE_DAY_COLUMNS_CODE);
+		validateUsingStringWriter();
+	}
+
 	public void testProjectWithStressBasedThreatRatingData() throws Exception
 	{
 		Cause threat = getProject().createCause();

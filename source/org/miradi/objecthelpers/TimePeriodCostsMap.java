@@ -193,10 +193,22 @@ public class TimePeriodCostsMap
 			if (dateUnit.isQuarter())
 				return true;
 		}
-		
+
 		return false;
 	}
-	
+
+	public boolean containsDayDateUnit()
+	{
+		Set<DateUnit> allDateUnits = data.keySet();
+		for(DateUnit dateUnit : allDateUnits)
+		{
+			if (dateUnit.isDay())
+				return true;
+		}
+
+		return false;
+	}
+
 	public boolean hasDateUnitsContained(DateUnit dateUnitToUse) throws Exception
 	{
 		Set<DateUnit> allDateUnits = data.keySet();

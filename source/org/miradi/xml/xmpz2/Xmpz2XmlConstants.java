@@ -388,6 +388,7 @@ public interface Xmpz2XmlConstants
 	public static final String VOCABULARY_DASHBOARD_ROW_FLAGS = "vocabulary_dashboard_row_flags";
 	public static final String VOCABULARY_PLANNING_TREE_OBJECTIVE_STRATEGY_NODE_ORDER = "vocabulary_planning_tree_objective_strategy_node_order";
 	public static final String VOCABULARY_QUARTER_COLUMNS_VISIBILITY = "vocabulary_quarter_columns_visibility";
+	public static final String VOCABULARY_DAY_COLUMNS_VISIBILITY = "vocabulary_day_columns_visibility";
 	public static final String VOCABULARY_WORK_PLAN_TIME_UNIT = "vocabulary_work_plan_time_unit";
 	public static final String VOCABULARY_RATING_SOURCE = "vocabulary_rating_source";
 	public static final String VOCABULARY_CURRENCY_TYPE = "vocabulary_currency_type";

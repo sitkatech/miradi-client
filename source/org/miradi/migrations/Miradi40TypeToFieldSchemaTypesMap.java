@@ -215,6 +215,7 @@ public final class Miradi40TypeToFieldSchemaTypesMap extends HashMap<Integer, Ha
 		fieldsForType11.put("FiscalYearStart", "ChoiceData");
 		fieldsForType11.put("FullTimeEmployeeDaysPerYear", NUMBER_DATA);
 		fieldsForType11.put("QuarterColumnsVisibility", "ChoiceData");
+		fieldsForType11.put("DayColumnsVisibility", "ChoiceData");
 		fieldsForType11.put("PlanningTreeTargetNodePosition", "ChoiceData");
 		fieldsForType11.put("ProjectLatitude", FLOAT_DATA);
 		fieldsForType11.put("ProjectLongitude", FLOAT_DATA);

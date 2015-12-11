@@ -126,7 +126,10 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		{
 			if(isDayColumn(modelColumn))
 				return false;
-		
+
+			if(isMonthColumn(modelColumn) && getProjectCalendar().shouldHideDayColumns())
+				return false;
+
 			return !isExpanded(modelColumn);
 		}
 		catch(Exception e)
@@ -143,6 +146,10 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		{
 			if(isDayColumn(modelColumn))
 				return false;
+
+			if(isMonthColumn(modelColumn) && getProjectCalendar().shouldHideDayColumns())
+				return false;
+
 			return isExpanded(modelColumn);
 		}
 		catch(Exception e)
@@ -537,28 +544,6 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return new Vector<DateUnit>(getDateUnits());
 	}
 	
-	public boolean isDateUnitColumnExpanded(int column)
-	{
-		DateUnit dateUnit = getDateUnit(column);
-		if (dateUnit == null)
-			return false;	
-		
-		try
-		{
-			Vector<DateUnit> currentDateUnits = getCopyOfDateUnits();
-			if (hasSubDateUnits(dateUnit))
-				return currentDateUnits.containsAll(getSubDateUnits(dateUnit));
-			
-			return currentDateUnits.contains(dateUnit);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			return false;
-			
-		}
-	}
-	
 	public boolean isDayColumn(int column)
 	{
 		DateUnit dateUnit = getDateUnit(column);
@@ -567,7 +552,16 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		
 		return dateUnit.isDay();
 	}
-	
+
+	public boolean isMonthColumn(int column)
+	{
+		DateUnit dateUnit = getDateUnit(column);
+		if (dateUnit == null)
+			return false;
+
+		return dateUnit.isMonth();
+	}
+
 	@Override
 	public void updateFullTimeEmployeeDaysPerYearFraction(int row, int modelColumn, double fraction) throws Exception
 	{
@@ -695,11 +689,6 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	private Vector<DateUnit> getSubDateUnits(DateUnit dateUnit)	throws Exception
 	{
 		return getProjectCalendar().getSubDateUnits(dateUnit);
-	}
-	
-	private boolean hasSubDateUnits(DateUnit dateUnit) throws Exception
-	{
-		return getProjectCalendar().hasSubDateUnits(dateUnit);
 	}
 	
 	public Object getValueAt(int row, int column)
