@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-10 02:36-0800\n"
+"POT-Creation-Date: 2015-12-11 07:36-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/miradi-client/"
@@ -292,7 +292,7 @@ msgstr "%s "
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%ОтИме' -> '%ЗаИме'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:147
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:148
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1478
 msgid "(%s)"
 msgstr "(%s)"
@@ -3290,6 +3290,10 @@ msgstr "Дата"
 msgid "Date Chooser"
 msgstr "Избор на дата"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo24.java:52
+msgid "Day Columns Visibility"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/DayDateUnitStartAndEndCard.java:37
 msgid "Day Selection: "
 msgstr "Избор на ден:"
@@ -3635,7 +3639,7 @@ msgstr "Редактор"
 msgid "Effective"
 msgstr "Ефективен"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:141
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:145
 msgid ""
 "Effective end date for project planning date range is before start date."
 msgstr ""
@@ -3740,7 +3744,7 @@ msgstr "Съществуващи данни за друга фискална г�
 msgid "Expand Selected Column"
 msgstr "Разширяване на избрана колона"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:655
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:608
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:37
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RatingSourceQuestion.java:37
 msgid "Expert Knowledge"
@@ -4217,6 +4221,10 @@ msgstr ""
 msgid "Help"
 msgstr "Помощ"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DayColumnsVisibilityQuestion.java:36
+msgid "Hide Day Columns"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/QuarterColumnsVisibilityQuestion.java:36
 msgid "Hide Quarter Columns"
 msgstr "Скриване на колоните за тримесечие"
@@ -4524,7 +4532,7 @@ msgstr "Инсталиран успешно"
 msgid "Instructions"
 msgstr "Инструкции"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:657
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:610
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:39
 msgid "Intensive Assessment"
 msgstr "Интензивна оценка"
@@ -4816,7 +4824,7 @@ msgstr "Label|Организация"
 msgid "Label|Phone Numbers"
 msgstr "Label|Телефонни номера"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:67
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:64
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:35
 msgid "Label|Project Dates"
 msgstr "Label|Дати на проект"
@@ -4860,7 +4868,7 @@ msgstr "Label|WCS"
 msgid "Label|WWF"
 msgstr "Label|WWF"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:74
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:71
 msgid "Label|Work Plan Dates"
 msgstr "Label|Дати на работен план"
 
@@ -5502,6 +5510,12 @@ msgstr ""
 "които действа тази настройка. За по-добро представяне, <br>изберете режим "
 "\"Ръчно подравняване на височина\"."
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:162
+msgid ""
+"NOTE: Day columns cannot be hidden because this project already has data for "
+"some days."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:112
 msgid ""
 "NOTE: Project filenames can contain letters, numbers, spaces, periods, "
@@ -5510,7 +5524,7 @@ msgstr ""
 "БЕЛЕЖКА: Имената на проектовите файлове могат да съдържат букви, числа, "
 "празни интервали, точки, тирета и подчертавания."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:150
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:154
 msgid ""
 "NOTE: Quarter columns cannot be hidden because this project already has data "
 "for some quarters."
@@ -5587,7 +5601,7 @@ msgstr "Не е ефективно"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:285
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/treenodes/UnspecifiedBaseObject.java:45
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/Translation.java:356
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:653
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:606
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:36
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/MiradiShareTaxonomyQuestion.java:58
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:35
@@ -6213,7 +6227,7 @@ msgstr "Оценяване на преки заплахи"
 msgid "Rank draft strategies"
 msgstr "Оценяване на чернови на стратегии"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:656
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:609
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:38
 msgid "Rapid Assessment"
 msgstr "Бърза преценка"
@@ -6369,7 +6383,7 @@ msgstr "Реки, притоци и потоци"
 msgid "Rocky Areas [e.g. inland cliffs, mountain peaks]"
 msgstr "Скалисти месности [напр., вътрешни скали, планински върхове]"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:654
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:607
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:36
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RatingSourceQuestion.java:36
 msgid "Rough Guess"
@@ -6628,6 +6642,10 @@ msgstr "Формален и неформален обмен на обратна 
 msgid "Share success and failures with other teams"
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DayColumnsVisibilityQuestion.java:35
+msgid "Show Day Columns"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:281
 msgid "Show Diagram Grid"
 msgstr "Показване на координатната мрежа на диаграма"
@@ -6708,7 +6726,7 @@ msgstr "Малък"
 msgid "Smallest"
 msgstr "Най-малък"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:127
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:131
 msgid ""
 "Some work plan data is currently hidden and not included in calculated "
 "totals. If the data is outside the planning date range, it will be visible "
@@ -6725,7 +6743,7 @@ msgstr ""
 "фискална година, в който случай информацията ще бъде видима, ако настроите "
 "фискалната година да започва от предишната настройка."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/AssignedDateUnitTypeQuestion.java:49
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/AssignedDateUnitTypeQuestion.java:50
 msgid "Specific Day(s)"
 msgstr "Специфичен(ни) ден(дни)"
 
@@ -8199,6 +8217,12 @@ msgstr ""
 msgid "This migration adds 2 new TNC fields."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo24.java:72
+msgid ""
+"This migration adds a new day columns visibility field to the Project "
+"Metadata properties."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo16.java:61
 msgid "This migration adds a new field to the Diagram Factor properties."
 msgstr ""
@@ -9227,7 +9251,7 @@ msgstr ""
 msgid "Work Plan Column Editor"
 msgstr "Редактор на колони на работен план"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:336
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:380
 msgid "Work Plan Settings"
 msgstr "Настройки на работен план"
 
@@ -9242,7 +9266,7 @@ msgstr ""
 msgid "Work Planning"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:115
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:119
 msgid "Work plan data currently exists for %startDate - %endDate"
 msgstr ""
 "Информацията от работния план понастоящем съществува за %начална дата - "
@@ -9348,7 +9372,7 @@ msgstr "[НЕУТОЧНЕН]"
 msgid "[New Results Chain]"
 msgstr "[Нова верига на резултатите]"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:966
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:967
 msgid "[No Project]"
 msgstr "[Няма проект]"
 
@@ -9974,6 +9998,9 @@ msgstr "FieldLabel|11.AllThreatClassifications|Адресирани заплах
 msgid "FieldLabel|11.QuarterColumnsVisibility|Quarter Column Visibility"
 msgstr ""
 "FieldLabel|11.QuarterColumnsVisibility|Визуализиране на колони за тримесечия"
+
+msgid "FieldLabel|11.DayColumnsVisibility|Day Column Visibility"
+msgstr ""
 
 msgid "FieldLabel|11.WorkPlanDiagramDataInclusion|Diagrams - include data from"
 msgstr ""

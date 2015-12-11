@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-10 02:36-0800\n"
+"POT-Creation-Date: 2015-12-11 07:36-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/projects/p/miradi-client/"
@@ -285,7 +285,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br> "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:147
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:148
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1478
 msgid "(%s)"
 msgstr ""
@@ -3118,6 +3118,10 @@ msgstr "Tanggal "
 msgid "Date Chooser"
 msgstr "Pemilih Tanggal "
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo24.java:52
+msgid "Day Columns Visibility"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/DayDateUnitStartAndEndCard.java:37
 msgid "Day Selection: "
 msgstr ""
@@ -3463,7 +3467,7 @@ msgstr "Editor "
 msgid "Effective"
 msgstr "Efektif"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:141
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:145
 msgid ""
 "Effective end date for project planning date range is before start date."
 msgstr ""
@@ -3568,7 +3572,7 @@ msgstr ""
 msgid "Expand Selected Column"
 msgstr "Perluas Kolom yang Dipilih "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:655
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:608
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:37
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RatingSourceQuestion.java:37
 msgid "Expert Knowledge"
@@ -4044,6 +4048,10 @@ msgstr ""
 msgid "Help"
 msgstr "Bantuan "
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DayColumnsVisibilityQuestion.java:36
+msgid "Hide Day Columns"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/QuarterColumnsVisibilityQuestion.java:36
 msgid "Hide Quarter Columns"
 msgstr ""
@@ -4342,7 +4350,7 @@ msgstr "Berhasil diinstal "
 msgid "Instructions"
 msgstr "Instruksi "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:657
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:610
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:39
 msgid "Intensive Assessment"
 msgstr "Penilaian Intensif"
@@ -4635,7 +4643,7 @@ msgstr "Organisasi "
 msgid "Label|Phone Numbers"
 msgstr "Nomor Telepon "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:67
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:64
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:35
 msgid "Label|Project Dates"
 msgstr "Tanggal Proyek "
@@ -4679,7 +4687,7 @@ msgstr "WCS "
 msgid "Label|WWF"
 msgstr "WWF "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:74
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:71
 msgid "Label|Work Plan Dates"
 msgstr ""
 
@@ -5311,6 +5319,12 @@ msgid ""
 "performance, <br>select Manual Row Height Mode."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:162
+msgid ""
+"NOTE: Day columns cannot be hidden because this project already has data for "
+"some days."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:112
 msgid ""
 "NOTE: Project filenames can contain letters, numbers, spaces, periods, "
@@ -5319,7 +5333,7 @@ msgstr ""
 "CATATAN: Nama berkas proyek bisa mengandung huruf, angka, spasi, titik, "
 "tanda sambung dan garis bawah. "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:150
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:154
 msgid ""
 "NOTE: Quarter columns cannot be hidden because this project already has data "
 "for some quarters."
@@ -5390,7 +5404,7 @@ msgstr "Tidak Efektif"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:285
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/treenodes/UnspecifiedBaseObject.java:45
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/Translation.java:356
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:653
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:606
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:36
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/MiradiShareTaxonomyQuestion.java:58
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:35
@@ -6009,7 +6023,7 @@ msgstr "Buat peringkat ancaman langsung "
 msgid "Rank draft strategies"
 msgstr "Buat peringkat rancangan strategi \t"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:656
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:609
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:38
 msgid "Rapid Assessment"
 msgstr "Penilaian Cepat"
@@ -6165,7 +6179,7 @@ msgstr "Sungai, Anak Sungai dan Aliran Air "
 msgid "Rocky Areas [e.g. inland cliffs, mountain peaks]"
 msgstr "Kawasan Berbatu [misalnya puncak pegunungan, tebing di pedalaman]"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:654
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:607
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:36
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RatingSourceQuestion.java:36
 msgid "Rough Guess"
@@ -6423,6 +6437,10 @@ msgstr "Berikan umpan balik secara formal atau tidak formal "
 msgid "Share success and failures with other teams"
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DayColumnsVisibilityQuestion.java:35
+msgid "Show Day Columns"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:281
 msgid "Show Diagram Grid"
 msgstr "Tampakkan Kisi-kisi Diagram "
@@ -6503,7 +6521,7 @@ msgstr "Kecil"
 msgid "Smallest"
 msgstr "Paling Kecil"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:127
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:131
 msgid ""
 "Some work plan data is currently hidden and not included in calculated "
 "totals. If the data is outside the planning date range, it will be visible "
@@ -6513,7 +6531,7 @@ msgid ""
 "visible if you set the fiscal year start back to its previous setting."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/AssignedDateUnitTypeQuestion.java:49
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/AssignedDateUnitTypeQuestion.java:50
 msgid "Specific Day(s)"
 msgstr ""
 
@@ -7966,6 +7984,12 @@ msgstr ""
 msgid "This migration adds 2 new TNC fields."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo24.java:72
+msgid ""
+"This migration adds a new day columns visibility field to the Project "
+"Metadata properties."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo16.java:61
 msgid "This migration adds a new field to the Diagram Factor properties."
 msgstr ""
@@ -8998,7 +9022,7 @@ msgstr ""
 msgid "Work Plan Column Editor"
 msgstr "Editor Kolom Rencana Kerja "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:336
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:380
 msgid "Work Plan Settings"
 msgstr "Pengaturan Rencana Kerja "
 
@@ -9013,7 +9037,7 @@ msgstr ""
 msgid "Work Planning"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:115
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:119
 msgid "Work plan data currently exists for %startDate - %endDate"
 msgstr ""
 
@@ -9115,7 +9139,7 @@ msgstr "[TIDAK TERSPESIFIKASI] "
 msgid "[New Results Chain]"
 msgstr "[Rangkaian Hasil Baru] "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:966
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:967
 msgid "[No Project]"
 msgstr "[Tidak Ada Proyek] "
 
@@ -9733,6 +9757,9 @@ msgid "FieldLabel|11.AllThreatClassifications|Threats Addressed"
 msgstr ""
 
 msgid "FieldLabel|11.QuarterColumnsVisibility|Quarter Column Visibility"
+msgstr ""
+
+msgid "FieldLabel|11.DayColumnsVisibility|Day Column Visibility"
 msgstr ""
 
 msgid "FieldLabel|11.WorkPlanDiagramDataInclusion|Diagrams - include data from"
