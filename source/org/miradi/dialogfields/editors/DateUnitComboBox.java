@@ -26,6 +26,7 @@ import org.miradi.dialogs.fieldComponents.PanelComboBox;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.project.ProjectCalendar;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceItemCodeComparator;
 import org.miradi.questions.ChoiceQuestion;
 
 import java.util.Arrays;
@@ -44,7 +45,6 @@ abstract public class DateUnitComboBox extends PanelComboBox
 	{
 		Object[] choiceItems = getChoiceItems(dateUnit);
 		removeAllItems();
-		Arrays.sort(choiceItems);
 		setModel(new DefaultComboBoxModel(choiceItems));
 	}
 
@@ -56,7 +56,10 @@ abstract public class DateUnitComboBox extends PanelComboBox
 		if (choiceItem != null)
 			choiceItems.add(choiceItem);
 
-		return choiceItems.toArray();
+		ChoiceItem[] sortedChoices = choiceItems.toArray(new ChoiceItem[0]);
+		Arrays.sort(sortedChoices, new ChoiceItemCodeComparator());
+
+		return sortedChoices;
 	}
 
 	public DateUnit getDateUnit()
