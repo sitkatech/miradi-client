@@ -43,6 +43,11 @@ abstract public class AbstractPlanningViewRowColumnProvider implements RowColumn
 	{
 		return true;
 	}
-	
+
+	public String getDiagramFilter() throws Exception
+	{
+		return "";
+	}
+
 	private Project project;
 }

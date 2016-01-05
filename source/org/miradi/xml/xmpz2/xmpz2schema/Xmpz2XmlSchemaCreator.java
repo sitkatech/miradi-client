@@ -100,6 +100,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeObjectTypeIdElements();
 		writeWrappedByDiagramFactorSchemaElement();
 		writeLinkableFactorIds();
+		writeDiagramIds();
 		writeHtmlTagSchemaElements();
 		writeGeospacialLocationElement();
 		writeDiagramPointElement();
@@ -618,6 +619,13 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		String[] factorNames = Xmpz2GroupedConstants.getLinkableFactorNames();
 		
 		writeOredSchemaElements(LINKABLE_FACTOR_ID, factorNames);
+	}
+
+	private void writeDiagramIds()
+	{
+		String[] diagramNames = Xmpz2GroupedConstants.getDiagramNames();
+
+		writeOredSchemaElements(DIAGRAM_ID, diagramNames);
 	}
 
 	private void writeWrappedByDiagramFactorSchemaElement()

@@ -69,6 +69,14 @@ abstract public class Xmpz2GroupedConstants implements Xmpz2XmlConstants
 		};
 	}
 
+	public static String[] getDiagramNames()
+	{
+		return new String[]{
+				CONCEPTUAL_MODEL,
+				RESULTS_CHAIN,
+		};
+	}
+
 	public static String[] getHtmlTagsAsElementNames()
 	{
 		return new String[] {"br", "b", "i", "u", "strike", "a", "ul", "ol", "div",};

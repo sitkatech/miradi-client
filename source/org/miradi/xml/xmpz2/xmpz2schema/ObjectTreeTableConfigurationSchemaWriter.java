@@ -39,6 +39,9 @@ public class ObjectTreeTableConfigurationSchemaWriter extends BaseObjectSchemaWr
 		if (tag.equals(ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION))
 			return true;
 		
+		if (tag.equals(ObjectTreeTableConfiguration.TAG_DIAGRAM_FILTER))
+			return true;
+
 		return super.doesFieldRequireSpecialHandling(tag);
 	}
 	
@@ -49,7 +52,10 @@ public class ObjectTreeTableConfigurationSchemaWriter extends BaseObjectSchemaWr
 		
 		String customRowsSchemaElement = getXmpz2XmlSchemaCreator().createCodelistSchemaElement(getBaseObjectSchema(), getBaseObjectSchema().getFieldSchema(ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION), new CustomPlanningAllRowsQuestion());
 		schemaElements.add(customRowsSchemaElement);
-		
+
+		String diagramFilterSchemaElement = getXmpz2XmlSchemaCreator().createOptionalSchemaElement(getBaseObjectSchema(), getBaseObjectSchema().getFieldSchema(ObjectTreeTableConfiguration.TAG_DIAGRAM_FILTER), DIAGRAM_ID);
+		schemaElements.add(diagramFilterSchemaElement);
+
 		return schemaElements;
 	}
 }

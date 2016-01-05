@@ -126,7 +126,7 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 	protected void addDiagramFilterPanel(JPanel diagramFilterPanelToUse) throws Exception
 	{
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getTabSpecificModelIdentifier());
-		diagramFilterPanel = new WorkPlanDiagramFilterPanel(getProject(), getProject().getMetadata(), tableSettings);
+		diagramFilterPanel = new WorkPlanDiagramFilterPanel(getProject(), getProject().getMetadata(), tableSettings, getRowColumnProvider());
 		diagramFilterPanelToUse.add(diagramFilterPanel);
 	}
 

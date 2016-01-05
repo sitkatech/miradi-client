@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Dec 10 14:48:01 GMT 2015 $
+# $LastChangedDate: Mon Jan 04 15:33:24 GMT 2016 $
 # $LastChangedRevision: 236 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/236'
 start = ConservationProject.element
@@ -546,6 +546,7 @@ PlanningViewConfiguration.element = element miradi:PlanningViewConfiguration
 {
   attribute Id {xsd:integer} &
   element miradi:PlanningViewConfigurationDiagramDataInclusion { vocabulary_included_diagram_types } &
+  element miradi:PlanningViewConfigurationDiagramFilter { DiagramId.element }? &
   element miradi:PlanningViewConfigurationName { formatted_text }? &
   element miradi:PlanningViewConfigurationStrategyObjectiveOrder { vocabulary_planning_tree_objective_strategy_node_order } &
   element miradi:PlanningViewConfigurationTargetNodePosition { vocabulary_planning_tree_target_node_position } &
@@ -1010,6 +1011,11 @@ WrappedByDiagramFactorId.element = element miradi:WrappedByDiagramFactorId
 LinkableFactorId.element = element miradi:LinkableFactorId
 {
   BiodiversityTargetId.element|  HumanWellbeingTargetId.element|  BiophysicalFactorId.element|  BiophysicalResultId.element|  CauseId.element|  StrategyId.element|  ThreatReductionResultId.element|  IntermediateResultId.element|  GroupBoxId.element
+}
+
+DiagramId.element = element miradi:DiagramId
+{
+  ConceptualModelId.element|  ResultsChainId.element
 }
 
 formatted_text = ( text|element.br|element.b|element.i|element.u|element.strike|element.a|element.ul|element.ol|element.div

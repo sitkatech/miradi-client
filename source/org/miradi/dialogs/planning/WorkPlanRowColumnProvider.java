@@ -93,6 +93,7 @@ public class WorkPlanRowColumnProvider extends AbstractPlanningTreeRowColumnProv
 		return new CodeList();
 	}
 
+	@Override
 	public String getDiagramFilter() throws Exception
 	{
 		TableSettings tableSettings = this.getWorkPlanTableSettings();

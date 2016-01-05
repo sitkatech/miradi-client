@@ -22,8 +22,8 @@ package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.TableSettings;
-import org.miradi.questions.DiagramChoiceQuestion;
 import org.miradi.questions.SortDirectionQuestion;
+import org.miradi.questions.DiagramChoiceQuestion;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 
 public class TableSettingsSchema extends BaseObjectSchema

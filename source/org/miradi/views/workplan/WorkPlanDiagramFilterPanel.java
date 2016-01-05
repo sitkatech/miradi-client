@@ -25,14 +25,12 @@ import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.DiagramObject;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.questions.*;
-import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.ProjectMetadataSchema;
-import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.TableSettingsSchema;
 
 import javax.swing.*;
@@ -41,8 +39,7 @@ import java.awt.event.FocusListener;
 
 public class WorkPlanDiagramFilterPanel extends ObjectDataInputPanel
 {
-
-	public WorkPlanDiagramFilterPanel(Project projectToUse, ProjectMetadata projectMetadata, TableSettings tableSettingsToUse)
+	public WorkPlanDiagramFilterPanel(Project projectToUse, ProjectMetadata projectMetadata, TableSettings tableSettingsToUse, PlanningTreeRowColumnProvider rowColumnProvider)
 	{
 		super(projectToUse, new ORef[] {projectMetadata.getRef(), tableSettingsToUse.getRef()});
 
@@ -51,7 +48,7 @@ public class WorkPlanDiagramFilterPanel extends ObjectDataInputPanel
 		diagramInclusionChoiceField = (ObjectChoiceField) createChoiceField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION, StaticQuestionManager.getQuestion(DiagramObjectDataInclusionQuestion.class));
 		addField(diagramInclusionChoiceField);
 
-		diagramChoiceQuestion = new DiagramChoiceQuestion(projectToUse);
+		diagramChoiceQuestion = new DiagramChoiceQuestion(projectToUse, rowColumnProvider);
 		diagramFilterChoiceField = (ObjectChoiceField) createChoiceField(TableSettingsSchema.getObjectType(), TableSettings.TAG_WORK_PLAN_DIAGRAM_FILTER, diagramChoiceQuestion);
 		diagramFilterChoiceField.getComponent().setPreferredSize(diagramInclusionChoiceField.getComponent().getPreferredSize());
 		addField(diagramFilterChoiceField);
@@ -84,7 +81,7 @@ public class WorkPlanDiagramFilterPanel extends ObjectDataInputPanel
 		combo.setModel(comboBoxModel);
 
 		String diagramFilter = tableSettings.getData(TableSettings.TAG_WORK_PLAN_DIAGRAM_FILTER);
-		ChoiceItem selectedChoiceItem = getSelectedChoiceItem(diagramFilter);
+		ChoiceItem selectedChoiceItem = diagramChoiceQuestion.getSelectedChoiceItem(this.getProject(), diagramFilter);
 		combo.setSelectedItem(selectedChoiceItem);
 
 		CommandSetObjectData setDiagramFilter = new CommandSetObjectData(tableSettings.getRef(), TableSettings.TAG_WORK_PLAN_DIAGRAM_FILTER, selectedChoiceItem.getCode());
@@ -95,36 +92,6 @@ public class WorkPlanDiagramFilterPanel extends ObjectDataInputPanel
 
 		for(FocusListener focusListener : focusListeners)
 			combo.addFocusListener(focusListener);
-	}
-
-	private ChoiceItem getSelectedChoiceItem(String diagramFilter)
-	{
-		if (shouldResetDiagramFilter(diagramFilter))
-		{
-			return new ChoiceItem("", DiagramChoiceQuestion.getUnspecifiedChoiceText());
-		}
-		else
-		{
-			ORef diagramFilterObjectRef = ORef.createFromString(diagramFilter);
-			DiagramObject diagramFilterObject = DiagramObject.findDiagramObject(this.getProject(), diagramFilterObjectRef);
-			return new ChoiceItem(diagramFilterObjectRef.toString(), diagramFilterObject.getFullName());
-		}
-	}
-
-	private boolean shouldResetDiagramFilter(String diagramFilter)
-	{
-		if (diagramFilter.isEmpty())
-			return true;
-
-		ORef diagramFilterObjectRef = ORef.createFromString(diagramFilter);
-
-		if (diagramFilterObjectRef.getObjectType() == ConceptualModelDiagramSchema.getObjectType() && !this.getProject().getMetadata().shouldIncludeConceptualModelPage())
-			return true;
-
-		if (diagramFilterObjectRef.getObjectType() == ResultsChainDiagramSchema.getObjectType() && !this.getProject().getMetadata().shouldIncludeResultsChain())
-			return true;
-
-		return false;
 	}
 
 	private final TableSettings tableSettings;

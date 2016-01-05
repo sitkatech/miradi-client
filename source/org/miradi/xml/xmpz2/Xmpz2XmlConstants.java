@@ -153,6 +153,7 @@ public interface Xmpz2XmlConstants
 	public static final String LINKABLE_FACTOR_ID = "LinkableFactorId";
 	public static final String FROM_DIAGRAM_FACTOR_ID = "FromDiagramFactorId";
 	public static final String TO_DIAGRAM_FACTOR_ID = "ToDiagramFactorId";
+	public static final String DIAGRAM_ID = "DiagramId";
 	public static final String BEND_POINTS_ELEMENT_NAME = "BendPoints";
 	public static final String GROUP_BOX_CHILDREN_IDS = "GroupBoxChildrenIds";
 	public static final String GROUP_BOX_DIAGRAM_LINK_CHILDREN_ID = "GroupedDiagramLinkIds";
@@ -283,6 +284,7 @@ public interface Xmpz2XmlConstants
 	public static final String SCOPE_NAME = "ScopeName";
 	public static final String SCOPE_DESCRIPTION = "ScopeDescription";
 	public static final String DIAGRAM_DATA_INCLUSION = "DiagramDataInclusion";
+	public static final String DIAGRAM_FILTER = "DiagramFilter";
 	public static final String COLUMN_CONFIGURATION_CODES = "ColumnNames";
 	public static final String ROW_CONFIGURATION_CODES = "RowObjectTypes";
 

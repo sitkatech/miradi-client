@@ -40,4 +40,9 @@ abstract public class AbstractPlanningTreeRowColumnProvider extends AbstractPlan
 	{
 		return WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE;
 	}
+
+	public String getDiagramFilter() throws Exception
+	{
+		return "";
+	}
 }

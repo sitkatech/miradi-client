@@ -25,6 +25,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
+import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
@@ -58,7 +59,15 @@ public class PlanningPreferencesChangeHandler implements CommandExecutedListener
 				collapseAllBudgetColumns();
 
 			if(diagramDeleted(event))
-				resetWorkPlanDiagramFilter(event);
+			{
+				Project project = getProject();
+
+				CommandDeleteObject deleteCommand = (CommandDeleteObject) event.getCommand();
+				ORef deletedDiagramObjectRef = deleteCommand.getObjectRef();
+
+				resetWorkPlanDiagramFilter(project, deletedDiagramObjectRef);
+				resetPlanningViewConfigurationDiagramFilter(project, deletedDiagramObjectRef);
+			}
 		}
 		catch(Exception e)
 		{
@@ -114,28 +123,39 @@ public class PlanningPreferencesChangeHandler implements CommandExecutedListener
 		return false;
 	}
 
-	private void resetWorkPlanDiagramFilter(CommandExecutedEvent event) throws Exception
+	private void resetWorkPlanDiagramFilter(Project project, ORef deletedDiagramObjectRef) throws Exception
 	{
-		Project project = getProject();
-
-		CommandDeleteObject deleteCommand = (CommandDeleteObject) event.getCommand();
-		ORef deletedDiagramObjectRef = deleteCommand.getObjectRef();
-
 		ORefList tableSettingsRefs = project.getTableSettingsPool().getORefList();
 		for (int index = 0; index < tableSettingsRefs.size(); ++index)
 		{
 			ORef tableSettingsRef = tableSettingsRefs.get(index);
 			TableSettings tableSettings = TableSettings.find(project, tableSettingsRef);
 			String diagramFilter = tableSettings.getData(TableSettings.TAG_WORK_PLAN_DIAGRAM_FILTER);
+			resetDiagramFilter(project, diagramFilter, deletedDiagramObjectRef, tableSettingsRef, TableSettings.TAG_WORK_PLAN_DIAGRAM_FILTER);
+		}
+	}
 
-			if (!diagramFilter.isEmpty())
+	private void resetPlanningViewConfigurationDiagramFilter(Project project, ORef deletedDiagramObjectRef) throws Exception
+	{
+		ORefList planningViewConfigurationRefs = project.getPlanningViewConfigurationPool().getORefList();
+		for (int index = 0; index < planningViewConfigurationRefs.size(); ++index)
+		{
+			ORef planningViewConfigurationRef = planningViewConfigurationRefs.get(index);
+			ObjectTreeTableConfiguration treeTableConfiguration = ObjectTreeTableConfiguration.find(project, planningViewConfigurationRef);
+			String diagramFilter = treeTableConfiguration.getData(ObjectTreeTableConfiguration.TAG_DIAGRAM_FILTER);
+			resetDiagramFilter(project, diagramFilter, deletedDiagramObjectRef, planningViewConfigurationRef, ObjectTreeTableConfiguration.TAG_DIAGRAM_FILTER);
+		}
+	}
+
+	private void resetDiagramFilter(Project project, String diagramFilter, ORef deletedDiagramObjectRef, ORef filterObjectRef, String filterTag) throws Exception
+	{
+		if (!diagramFilter.isEmpty())
+		{
+			ORef diagramFilterObjectRef = ORef.createFromString(diagramFilter);
+			if (diagramFilterObjectRef.equals(deletedDiagramObjectRef))
 			{
-				ORef diagramFilterObjectRef = ORef.createFromString(diagramFilter);
-				if (diagramFilterObjectRef.equals(deletedDiagramObjectRef))
-				{
-					CommandSetObjectData clearDiagramFilter = new CommandSetObjectData(tableSettingsRef, TableSettings.TAG_WORK_PLAN_DIAGRAM_FILTER, "");
-					project.executeAsSideEffect(clearDiagramFilter);
-				}
+				CommandSetObjectData clearDiagramFilter = new CommandSetObjectData(filterObjectRef, filterTag, "");
+				project.executeAsSideEffect(clearDiagramFilter);
 			}
 		}
 	}

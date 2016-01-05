@@ -20,7 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectExporters;
 
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.questions.CustomPlanningAllRowsQuestion;
 import org.miradi.schemas.AbstractFieldSchema;
@@ -42,6 +44,9 @@ public class ObjectTreeTableConfigurationExporter extends BaseObjectExporter
 		if (tag.equals(ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION))
 			return true;
 		
+		if (tag.equals(ObjectTreeTableConfiguration.TAG_DIAGRAM_FILTER))
+			return true;
+
 		return super.doesFieldRequireSpecialHandling(tag);
 	}
 	
@@ -53,5 +58,20 @@ public class ObjectTreeTableConfigurationExporter extends BaseObjectExporter
 		final String selectedRowCodes = baseObject.getCodeList(ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION).toJsonString();
 		final AbstractFieldSchema rowFieldSchema = baseObjectSchema.getFieldSchema(ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION);
 		getWriter().writeCodeListData(baseObjectSchema, rowFieldSchema, new CustomPlanningAllRowsQuestion(), selectedRowCodes);
+
+		ORef diagramFilterRef = baseObject.getRef(ObjectTreeTableConfiguration.TAG_DIAGRAM_FILTER);
+		if (diagramFilterRef.isValid())
+		{
+			String wrappedDiagramIdTag;
+
+			if (ConceptualModelDiagram.is(diagramFilterRef.getObjectType()))
+				wrappedDiagramIdTag = CONCEPTUAL_MODEL + ID;
+			else
+				wrappedDiagramIdTag = RESULTS_CHAIN + ID;
+
+			getWriter().writeStartElement(baseObjectSchema.getXmpz2ElementName() + DIAGRAM_FILTER);
+			getWriter().writeRef(diagramFilterRef, DIAGRAM_ID, wrappedDiagramIdTag);
+			getWriter().writeEndElement(baseObjectSchema.getXmpz2ElementName() + DIAGRAM_FILTER);
+		}
 	}
 }

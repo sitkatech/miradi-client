@@ -95,7 +95,12 @@ public class ObjectTreeTableConfiguration extends BaseObject implements Planning
 	{
 		return WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE;
 	}
-	
+
+	public String getDiagramFilter() throws Exception
+	{
+		return getData(TAG_DIAGRAM_FILTER);
+	}
+
 	@Override
 	public String toString()
 	{
@@ -125,6 +130,7 @@ public class ObjectTreeTableConfiguration extends BaseObject implements Planning
 	public static final String TAG_ROW_CONFIGURATION = "TagRowConfiguration";
 	public static final String TAG_COL_CONFIGURATION = "TagColConfiguration";
 	public static final String TAG_DIAGRAM_DATA_INCLUSION = "TagDiagramDataInclusion";
+	public static final String TAG_DIAGRAM_FILTER = "TagDiagramFilter";
 	public static final String TAG_STRATEGY_OBJECTIVE_ORDER = "StrategyObjectiveOrder";
 	public static final String TAG_TARGET_NODE_POSITION = "TargetNodePosition";
 }

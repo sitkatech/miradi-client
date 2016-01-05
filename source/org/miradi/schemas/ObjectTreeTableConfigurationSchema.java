@@ -23,11 +23,7 @@ package org.miradi.schemas;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.project.Project;
-import org.miradi.questions.CustomPlanningColumnsQuestion;
-import org.miradi.questions.CustomPlanningRowsQuestion;
-import org.miradi.questions.DiagramObjectDataInclusionQuestion;
-import org.miradi.questions.PlanningTreeTargetPositionQuestion;
-import org.miradi.questions.StrategyObjectiveTreeOrderQuestion;
+import org.miradi.questions.*;
 
 public class ObjectTreeTableConfigurationSchema extends BaseObjectSchema
 {
@@ -46,6 +42,7 @@ public class ObjectTreeTableConfigurationSchema extends BaseObjectSchema
 		createFieldSchemaCodeList(ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION, new CustomPlanningRowsQuestion(getProject()));
 		createFieldSchemaCodeList(ObjectTreeTableConfiguration.TAG_COL_CONFIGURATION, getQuestion(CustomPlanningColumnsQuestion.class));
 		createFieldSchemaRequiredChoice(ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, DiagramObjectDataInclusionQuestion.class);
+		createFieldSchemaOptionalRef(ObjectTreeTableConfiguration.TAG_DIAGRAM_FILTER);
 		createFieldSchemaRequiredChoice(ObjectTreeTableConfiguration.TAG_STRATEGY_OBJECTIVE_ORDER, StrategyObjectiveTreeOrderQuestion.class);
 		createFieldSchemaRequiredChoice(ObjectTreeTableConfiguration.TAG_TARGET_NODE_POSITION, PlanningTreeTargetPositionQuestion.class);
 	}

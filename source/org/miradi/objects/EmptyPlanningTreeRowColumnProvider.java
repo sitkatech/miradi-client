@@ -59,4 +59,9 @@ public class EmptyPlanningTreeRowColumnProvider implements PlanningTreeRowColumn
 	{
 		return WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE;
 	}
+
+	public String getDiagramFilter() throws Exception
+	{
+		throw new RuntimeException("This method should never be called");
+	}
 }

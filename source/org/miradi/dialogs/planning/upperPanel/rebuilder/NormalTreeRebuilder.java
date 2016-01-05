@@ -105,25 +105,39 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 	protected ORefList getChildrenOfProjectNode(ORef parentRef) throws Exception
 	{
 		ORefList childRefs = new ORefList();
-		if(getRowColumnProvider().shouldIncludeConceptualModelPage())
+
+		PlanningTreeRowColumnProvider rowColumnProvider = getRowColumnProvider();
+		String diagramFilter = rowColumnProvider.getDiagramFilter();
+
+		if (!diagramFilter.isEmpty())
 		{
-			ORefList conceptualModelRefs = getProject().getConceptualModelDiagramPool().getORefList();
-			childRefs.addAll(conceptualModelRefs);
+			ORef diagramFilterObjectRef = ORef.createFromString(diagramFilter);
+			childRefs.add(diagramFilterObjectRef);
 		}
-		if(getRowColumnProvider().shouldIncludeResultsChain())
+		else
 		{
-			ORefList resultsChainRefs = getProject().getResultsChainDiagramPool().getORefList();
-			childRefs.addAll(resultsChainRefs);
+			if(getRowColumnProvider().shouldIncludeConceptualModelPage())
+			{
+				ORefList conceptualModelRefs = getProject().getConceptualModelDiagramPool().getORefList();
+				childRefs.addAll(conceptualModelRefs);
+			}
+			if(getRowColumnProvider().shouldIncludeResultsChain())
+			{
+				ORefList resultsChainRefs = getProject().getResultsChainDiagramPool().getORefList();
+				childRefs.addAll(resultsChainRefs);
+			}
 		}
+
 		if(shouldTargetsBeAtSameLevelAsDiagrams())
 		{
 			childRefs.addAll(getProject().getTargetPool().getRefList());
 			if(getProject().getMetadata().isHumanWelfareTargetMode())
 				childRefs.addAll(getProject().getHumanWelfareTargetPool().getRefList());
 		}
+
 		return childRefs;
 	}
-	
+
 	private ORefList getChildrenOfDiagramNode(ORef diagramRef) throws Exception
 	{
 		ORefList childRefs = new ORefList();

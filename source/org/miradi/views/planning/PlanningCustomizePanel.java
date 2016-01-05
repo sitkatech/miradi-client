@@ -20,24 +20,27 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.planning;
 
+import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogfields.ObjectChoiceField;
 import org.miradi.dialogfields.ObjectDataField;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.CodeListEditorPanel;
 import org.miradi.dialogs.base.MiradiDialog;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
+import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.CommandExecutedEvent;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.ObjectTreeTableConfiguration;
-import org.miradi.objects.ViewData;
+import org.miradi.objects.*;
 import org.miradi.project.Project;
-import org.miradi.questions.CustomPlanningColumnsQuestion;
-import org.miradi.questions.CustomPlanningRowsQuestion;
-import org.miradi.questions.DiagramObjectDataInclusionQuestion;
-import org.miradi.questions.PlanningTreeTargetPositionQuestion;
-import org.miradi.questions.StaticQuestionManager;
-import org.miradi.questions.StrategyObjectiveTreeOrderQuestion;
+import org.miradi.questions.*;
 import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 import org.miradi.schemas.ViewDataSchema;
+
+import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusListener;
 
 public class PlanningCustomizePanel extends ObjectDataInputPanel
 {
@@ -46,12 +49,19 @@ public class PlanningCustomizePanel extends ObjectDataInputPanel
 		super(projectToUse, planningConfigurationRef);
 		
 		parentDialog = parentDialogToUse;
-		
+		objectTreeTableConfiguration = ObjectTreeTableConfiguration.find(projectToUse, planningConfigurationRef);
+
 		addField(createStringField(ObjectTreeTableConfiguration.TAG_LABEL));
 		
 		ObjectDataInputField dataInclusion = createChoiceField(ObjectTreeTableConfigurationSchema.getObjectType(), ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, StaticQuestionManager.getQuestion(DiagramObjectDataInclusionQuestion.class));
 		addField(dataInclusion);
-		
+
+		PlanningTreeRowColumnProvider rowColumnProvider = ObjectTreeTableConfiguration.find(getProject(), planningConfigurationRef);
+		diagramChoiceQuestion = new DiagramChoiceQuestion(getProject(), rowColumnProvider);
+		diagramFilterChoiceField = (ObjectChoiceField) createChoiceField(ObjectTreeTableConfigurationSchema.getObjectType(), ObjectTreeTableConfiguration.TAG_DIAGRAM_FILTER, diagramChoiceQuestion);
+		diagramFilterChoiceField.getComponent().setPreferredSize(dataInclusion.getComponent().getPreferredSize());
+		addField(diagramFilterChoiceField);
+
 		ObjectDataInputField objectiveStrategyNodeOrder = createChoiceField(ObjectTreeTableConfigurationSchema.getObjectType(), ObjectTreeTableConfiguration.TAG_STRATEGY_OBJECTIVE_ORDER, new StrategyObjectiveTreeOrderQuestion());
 		addField(objectiveStrategyNodeOrder);
 		
@@ -66,7 +76,39 @@ public class PlanningCustomizePanel extends ObjectDataInputPanel
 		
 		updateFieldsFromProject();
 	}
-	
+
+	public void updateDiagramFilterChoices() throws CommandFailedException
+	{
+		diagramChoiceQuestion.reloadQuestion(this.getProject());
+		ChoiceItem[] diagramChoices = diagramChoiceQuestion.getChoices();
+
+		ChoiceItemComboBox combo = (ChoiceItemComboBox) diagramFilterChoiceField.getComponent();
+
+		ActionListener[] actionListeners = combo.getActionListeners();
+		for(ActionListener actionListener : actionListeners)
+			combo.removeActionListener(actionListener);
+
+		FocusListener[] focusListeners = combo.getFocusListeners();
+		for(FocusListener focusListener : focusListeners)
+			combo.removeFocusListener(focusListener);
+
+		DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel(diagramChoices);
+		combo.setModel(comboBoxModel);
+
+		String diagramFilter = objectTreeTableConfiguration.getData(ObjectTreeTableConfiguration.TAG_DIAGRAM_FILTER);
+		ChoiceItem selectedChoiceItem = diagramChoiceQuestion.getSelectedChoiceItem(this.getProject(), diagramFilter);
+		combo.setSelectedItem(selectedChoiceItem);
+
+		CommandSetObjectData setDiagramFilter = new CommandSetObjectData(objectTreeTableConfiguration.getRef(), ObjectTreeTableConfiguration.TAG_DIAGRAM_FILTER, selectedChoiceItem.getCode());
+		this.getProject().executeAsSideEffect(setDiagramFilter);
+
+		for(ActionListener actionListener : actionListeners)
+			combo.addActionListener(actionListener);
+
+		for(FocusListener focusListener : focusListeners)
+			combo.addFocusListener(focusListener);
+	}
+
 	@Override
 	public void commandExecuted(CommandExecutedEvent event)
 	{
@@ -75,6 +117,18 @@ public class PlanningCustomizePanel extends ObjectDataInputPanel
 		if (event.isSetDataCommandWithThisTypeAndTag(ViewDataSchema.getObjectType(), ViewData.TAG_TREE_CONFIGURATION_REF))
 		{
 			parentDialog.dispose();
+		}
+
+		if (event.isSetDataCommandWithThisTypeAndTag(ObjectTreeTableConfigurationSchema.getObjectType(), ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION))
+		{
+			try
+			{
+				updateDiagramFilterChoices();
+			}
+			catch(CommandFailedException e)
+			{
+				EAM.logException(e);
+			}
 		}
 	}
 	
@@ -85,4 +139,7 @@ public class PlanningCustomizePanel extends ObjectDataInputPanel
 	}
 	
 	private MiradiDialog parentDialog;
+	private ObjectTreeTableConfiguration objectTreeTableConfiguration;
+	private DiagramChoiceQuestion diagramChoiceQuestion;
+	private ObjectChoiceField diagramFilterChoiceField;
 }

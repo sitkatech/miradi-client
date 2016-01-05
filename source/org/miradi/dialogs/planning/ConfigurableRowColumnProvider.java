@@ -95,7 +95,21 @@ public class ConfigurableRowColumnProvider extends AbstractPlanningTreeRowColumn
 	@Override
 	public boolean shouldPutTargetsAtTopLevelOfTree() throws Exception
 	{
-		return getCurrentCustomization().shouldPutTargetsAtTopLevelOfTree();
+		PlanningTreeRowColumnProvider customization = getCurrentCustomization();
+		if(customization == null)
+			return false;
+
+		return customization.shouldPutTargetsAtTopLevelOfTree();
+	}
+
+	@Override
+	public String getDiagramFilter() throws Exception
+	{
+		PlanningTreeRowColumnProvider customization = getCurrentCustomization();
+		if(customization == null)
+			return "";
+
+		return customization.getDiagramFilter();
 	}
 
 	private PlanningTreeRowColumnProvider getCurrentCustomization() throws Exception

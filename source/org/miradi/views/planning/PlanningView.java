@@ -117,8 +117,8 @@ public class PlanningView extends TabbedView
 
 	public RowColumnProvider getRowColumnProvider()
 	{
-		ObjectManagementPanel managmentPanel = (ObjectManagementPanel)getCurrentTabContents();
-		String panelDescriptionAsKey = managmentPanel.getPanelDescription();
+		ObjectManagementPanel managementPanel = (ObjectManagementPanel)getCurrentTabContents();
+		String panelDescriptionAsKey = managementPanel.getPanelDescription();
 		if (getManagementPanelMap().containsKey(panelDescriptionAsKey))
 			return getManagementPanelMap().get(panelDescriptionAsKey).getRowColumnProvider();
 		

@@ -173,6 +173,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 	{
 		HashMap<String, String> map = createBaseObjectMap();
 		map.put(ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, DIAGRAM_DATA_INCLUSION);
+		map.put(ObjectTreeTableConfiguration.TAG_DIAGRAM_FILTER, DIAGRAM_FILTER);
 		map.put(ObjectTreeTableConfiguration.TAG_COL_CONFIGURATION, COLUMN_CONFIGURATION_CODES);
 		map.put(ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION, ROW_CONFIGURATION_CODES);
 		
@@ -297,7 +298,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		return map;
 	}
 
-		private HashMap<String, String> createCauseMap()
+	private HashMap<String, String> createCauseMap()
 	{
 		HashMap<String, String> map = createFactorMap();
 		map.put(Cause.TAG_TAXONOMY_CODE, STANDARD_CLASSIFICATION);

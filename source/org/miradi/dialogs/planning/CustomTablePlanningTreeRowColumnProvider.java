@@ -65,5 +65,11 @@ public class CustomTablePlanningTreeRowColumnProvider extends AbstractPlanningTr
 		return configuration.doObjectivesContainStrategies();
 	}
 
+	@Override
+	public String getDiagramFilter() throws Exception
+	{
+		return configuration.getDiagramFilter();
+	}
+
 	private ObjectTreeTableConfiguration configuration;
 }

@@ -72,4 +72,9 @@ public class ProgressReportRowColumnProvider implements RowColumnProvider, Plann
 	{
 		return WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE;
 	}
+
+	public String getDiagramFilter() throws Exception
+	{
+		return "";
+	}
 }

@@ -20,9 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.questions;
 
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.project.Project;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -35,20 +39,29 @@ public class DiagramChoiceQuestion extends ObjectQuestion
 		super(new BaseObject[]{});
 	}
 
-	public DiagramChoiceQuestion(Project projectToUse)
+	public DiagramChoiceQuestion(Project projectToUse, PlanningTreeRowColumnProvider rowColumnProviderToUse)
 	{
-		super(getAllDiagramObjects(projectToUse));
+		super(new BaseObject[]{});
+		rowColumnProvider = rowColumnProviderToUse;
+		setObjects(getAllDiagramObjects(projectToUse, rowColumnProvider));
 	}
 
-	private static DiagramObject[] getAllDiagramObjects(Project projectToUse)
+	private DiagramObject[] getAllDiagramObjects(Project projectToUse, PlanningTreeRowColumnProvider rowColumnProvider)
 	{
 		List<DiagramObject> diagramObjects =new ArrayList<DiagramObject>();
 
-		if (projectToUse.getMetadata().shouldIncludeConceptualModelPage())
-			Collections.addAll(diagramObjects, projectToUse.getConceptualModelDiagramPool().getAllDiagramObjects());
+		try
+		{
+			if (rowColumnProvider.shouldIncludeConceptualModelPage())
+                Collections.addAll(diagramObjects, projectToUse.getConceptualModelDiagramPool().getAllDiagramObjects());
 
-		if (projectToUse.getMetadata().shouldIncludeResultsChain())
-			Collections.addAll(diagramObjects, projectToUse.getResultsChainDiagramPool().getAllDiagramObjects());
+			if (rowColumnProvider.shouldIncludeResultsChain())
+				Collections.addAll(diagramObjects, projectToUse.getResultsChainDiagramPool().getAllDiagramObjects());
+		}
+		catch (Exception e)
+		{
+			EAM.panic(e);
+		}
 
 		return diagramObjects.toArray(new DiagramObject[diagramObjects.size()]);
 	}
@@ -68,7 +81,7 @@ public class DiagramChoiceQuestion extends ObjectQuestion
 	public void reloadQuestion(Project projectToUse)
 	{
 		super.reloadQuestion();
-		setObjects(getAllDiagramObjects(projectToUse));
+		setObjects(getAllDiagramObjects(projectToUse, rowColumnProvider));
 	}
 
 	@Override
@@ -76,4 +89,44 @@ public class DiagramChoiceQuestion extends ObjectQuestion
 	{
 		return false;
 	}
+
+	public ChoiceItem getSelectedChoiceItem(Project project, String diagramFilter)
+	{
+		if (shouldResetDiagramFilter(diagramFilter))
+		{
+			return new ChoiceItem("", DiagramChoiceQuestion.getUnspecifiedChoiceText());
+		}
+		else
+		{
+			ORef diagramFilterObjectRef = ORef.createFromString(diagramFilter);
+			DiagramObject diagramFilterObject = DiagramObject.findDiagramObject(project, diagramFilterObjectRef);
+			return new ChoiceItem(diagramFilterObjectRef.toString(), diagramFilterObject.getFullName());
+		}
+	}
+
+	public boolean shouldResetDiagramFilter(String diagramFilter)
+	{
+		try
+		{
+			if (diagramFilter.isEmpty())
+				return true;
+
+			ORef diagramFilterObjectRef = ORef.createFromString(diagramFilter);
+
+			if (diagramFilterObjectRef.getObjectType() == ConceptualModelDiagramSchema.getObjectType() && !rowColumnProvider.shouldIncludeConceptualModelPage())
+				return true;
+
+			if (diagramFilterObjectRef.getObjectType() == ResultsChainDiagramSchema.getObjectType() && !rowColumnProvider.shouldIncludeResultsChain())
+				return true;
+
+		}
+		catch (Exception e)
+		{
+			EAM.panic(e);
+		}
+
+		return false;
+	}
+
+	private PlanningTreeRowColumnProvider rowColumnProvider;
 }
