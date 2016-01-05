@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-11 07:36-0800\n"
+"POT-Creation-Date: 2016-01-05 03:36-0800\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/miradi-client/"
@@ -2133,7 +2133,7 @@ msgstr "Accepter les rôles et les responsabilités"
 msgid "Agree upon team roles"
 msgstr "Accepter les rôles de l'équipe"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DiagramChoiceQuestion.java:64
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DiagramChoiceQuestion.java:77
 msgid "All Diagrams"
 msgstr ""
 
@@ -10635,6 +10635,9 @@ msgstr "Colonnes"
 
 msgid "FieldLabel|29.TagDiagramDataInclusion|Include Data From"
 msgstr "Inclure les données de"
+
+msgid "FieldLabel|29.TagDiagramFilter|Display this selection"
+msgstr ""
 
 msgid "FieldLabel|29.StrategyObjectiveOrder|Objective/Strategy Display"
 msgstr "Affichage de l'Objectif/Stratégie"
