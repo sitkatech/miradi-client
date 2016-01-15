@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-05 03:36-0800\n"
+"POT-Creation-Date: 2016-01-15 08:36-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/miradi-client/"
@@ -1950,7 +1950,7 @@ msgstr "Action|Tree|Пересунути деталь вгору"
 msgid "Action|Undo"
 msgstr "Action|Вернути"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionViewLegacyTncStrategtyRanking.java:34
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionViewLegacyTncStrategyRanking.java:34
 msgid "Action|View..."
 msgstr "Action|Вид..."
 
@@ -1993,7 +1993,7 @@ msgid ""
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:203
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:93
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:105
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:57
 msgid "Activity"
 msgstr "Діяльність"
@@ -3706,7 +3706,7 @@ msgstr "FTE днів на рік"
 msgid "Factor Mode"
 msgstr "Фактори"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:429
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:423
 msgid "Factor Properties"
 msgstr "Фактори"
 
@@ -5086,7 +5086,7 @@ msgstr "Травень"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:52
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:53
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/MeasurementPropertiesForm.java:33
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:58
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:59
 msgid "Measurement"
 msgstr "Вимірювання"
 
@@ -5191,7 +5191,7 @@ msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr "Menu|Забрати тег з %n вибраного пункту (ів)"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:151
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:95
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:108
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:56
 msgid "Method"
 msgstr "Метод"
@@ -5305,6 +5305,11 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectRepairer.java:158
 msgid "Missing Indicator(s) was removed!"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:102
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:58
+msgid "Monitoring Activity"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/MonitoringTreeConfigurationQuestion.java:36
@@ -6778,7 +6783,7 @@ msgstr "Сильне збільшення"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:137
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:67
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:38
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:120
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:140
 msgid "Summary"
 msgstr "Резюме"
 
@@ -7600,7 +7605,7 @@ msgstr "TT|Переключити на Вид оцінки загроз"
 msgid "TT|Undo last action"
 msgstr "TT|Повернути останню дію"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionViewLegacyTncStrategtyRanking.java:40
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionViewLegacyTncStrategyRanking.java:40
 msgid "TT|View Legacy TNC Strategy Ranking."
 msgstr "TT|Вид функції TNC Ранжирування стратегій."
 
@@ -7787,7 +7792,7 @@ msgid "Targets within Diagrams"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:207
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:97
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:110
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:55
 msgid "Task"
 msgstr "Задача"
@@ -7802,7 +7807,7 @@ msgstr ""
 "задача при потребі може бути розбита на підзадачі. У Міраді задача "
 "показується сірим сплющеним овалом."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/Task.java:332
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/Task.java:338
 msgid "Task does not have a parent"
 msgstr "Задача не має автора"
 
@@ -8301,7 +8306,7 @@ msgstr "Title|Про Міраді"
 msgid "Title|Accounting Code Properties"
 msgstr "Title|Складові бухгалтерських кодів"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/ActivityPropertiesPanelWithoutBudgetPanels.java:50
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/ActivityPropertiesPanelWithoutBudgetPanels.java:56
 msgid "Title|Activity Properties"
 msgstr "Title|Складові Діяльності"
 
@@ -8768,7 +8773,7 @@ msgstr "Дуже великий"
 msgid "Very Small"
 msgstr "Дуже маленький"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:366
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:360
 msgid "Viability Analysis Mode"
 msgstr "Опція аналізу життєздатності"
 
@@ -9267,6 +9272,9 @@ msgid "FieldLabel|3.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
 
 msgid "FieldLabel|3.MetaPlannedWhoTotal|Who Total"
+msgstr ""
+
+msgid "FieldLabel|3.IsMonitoringActivity|Monitoring Activity"
 msgstr ""
 
 msgid "FieldLabel|5.BudgetRollupReportTypes|Rollup Types"

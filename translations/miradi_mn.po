@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-05 03:36-0800\n"
+"POT-Creation-Date: 2016-01-15 08:36-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Mongolian (http://www.transifex.com/projects/p/miradi-client/"
@@ -1962,7 +1962,7 @@ msgstr "Арга хэмжээ|Мод|Зүйлийг дээш нь шилжүүл
 msgid "Action|Undo"
 msgstr "Арга хэмжээ|Буцаах"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionViewLegacyTncStrategtyRanking.java:34
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionViewLegacyTncStrategyRanking.java:34
 msgid "Action|View..."
 msgstr "Арга хэмжээ|Харагдац..."
 
@@ -2007,7 +2007,7 @@ msgstr ""
 "харуулах боломжтой"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:203
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:93
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:105
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:57
 msgid "Activity"
 msgstr "Үйл ажиллагаа"
@@ -3718,7 +3718,7 @@ msgstr "Үндсэн ажилтны нэг жил дэх ажлын өдрүүд
 msgid "Factor Mode"
 msgstr "Хүчин зүйлийн шинж чанар"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:429
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:423
 msgid "Factor Properties"
 msgstr "Хүчин зүйлийн шинж чанар"
 
@@ -5096,7 +5096,7 @@ msgstr "Таван сар"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:52
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:53
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/MeasurementPropertiesForm.java:33
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:58
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:59
 msgid "Measurement"
 msgstr "Хэмжилт"
 
@@ -5201,7 +5201,7 @@ msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr "Цэс|Сонгосон Зүйлээс(үүдээс) Тэмдэглэгээг арилгах"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:151
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:95
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:108
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:56
 msgid "Method"
 msgstr "Арга зүй"
@@ -5321,6 +5321,11 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectRepairer.java:158
 msgid "Missing Indicator(s) was removed!"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:102
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:58
+msgid "Monitoring Activity"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/MonitoringTreeConfigurationQuestion.java:36
@@ -6814,7 +6819,7 @@ msgstr "Эрчтэй өсөлт"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:137
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:67
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:38
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:120
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:140
 msgid "Summary"
 msgstr "Дүгнэлт"
 
@@ -7634,7 +7639,7 @@ msgstr "TT|Аюул заналын үнэлгээний харагдац руу 
 msgid "TT|Undo last action"
 msgstr "TT|Сүүлийн үйлдлийг буцаах(Undo)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionViewLegacyTncStrategtyRanking.java:40
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionViewLegacyTncStrategyRanking.java:40
 msgid "TT|View Legacy TNC Strategy Ranking."
 msgstr "TT|TNC-ийн өвлөн ирсэн стратегийн зэрэглэлийг харах."
 
@@ -7819,7 +7824,7 @@ msgid "Targets within Diagrams"
 msgstr "Диаграмм дахь хамгаалах зүйлс"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:207
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:97
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:110
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:55
 msgid "Task"
 msgstr "Даалгавар"
@@ -7835,7 +7840,7 @@ msgstr ""
 "хуваагдаж болно. Даалгаварыг Miradi-д хавтгай саарал зууван дүрсээр "
 "төлөөлүүлсэн."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/Task.java:332
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/Task.java:338
 msgid "Task does not have a parent"
 msgstr "Даалгавар гарал үүсэлгүй байна."
 
@@ -8337,7 +8342,7 @@ msgstr "Гарчиг|Miradi-ийн тухай"
 msgid "Title|Accounting Code Properties"
 msgstr "Гарчиг|Тооцооны кодын Properties"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/ActivityPropertiesPanelWithoutBudgetPanels.java:50
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/ActivityPropertiesPanelWithoutBudgetPanels.java:56
 msgid "Title|Activity Properties"
 msgstr "Гарчиг|Үйл ажиллагааны агуулга"
 
@@ -8805,7 +8810,7 @@ msgstr "Маш том"
 msgid "Very Small"
 msgstr "Маш жижиг"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:366
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:360
 msgid "Viability Analysis Mode"
 msgstr "Амьдрах чадварын дүн шинжилгээний горим"
 
@@ -9336,6 +9341,9 @@ msgid "FieldLabel|3.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
 
 msgid "FieldLabel|3.MetaPlannedWhoTotal|Who Total"
+msgstr ""
+
+msgid "FieldLabel|3.IsMonitoringActivity|Monitoring Activity"
 msgstr ""
 
 msgid "FieldLabel|5.BudgetRollupReportTypes|Rollup Types"
