@@ -84,7 +84,7 @@ public class TestBaseObjectRollupValues extends TestCaseWithProject
 
 		TimePeriodCosts strategyTimePeriodCosts = strategy.calculateTimePeriodCostsForAssignments(year2009);
 		OptionalDouble total = strategyTimePeriodCosts.getTotalExpense();
-		assertEquals("Super value should not be overriden by 0 value?", 3.0, total.getValue());
+		assertEquals("Super value should not be overridden by 0 value?", 3.0, total.getValue());
 	}
 	
 	public void testDoNotOverrideWorkUnitsWithZero() throws Exception
@@ -100,7 +100,7 @@ public class TestBaseObjectRollupValues extends TestCaseWithProject
 		
 		TimePeriodCosts strategyTimePeriodCosts = strategy.calculateTimePeriodCostsForAssignments(year2009);
 		OptionalDouble total = strategyTimePeriodCosts.getTotalWorkUnits();
-		assertEquals("Super value should not be overriden by 0 value?", 3.0, total.getValue());
+		assertEquals("Super value should not be overridden by 0 value?", 3.0, total.getValue());
 	}
 	
 	public void testRollupResourceAssignmentsWithNoQuantities() throws Exception

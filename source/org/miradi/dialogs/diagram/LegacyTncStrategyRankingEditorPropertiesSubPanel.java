@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.diagram;
 
 import org.miradi.actions.ActionDeleteLegacyTncStrategyRanking;
-import org.miradi.actions.ActionViewLegacyTncStrategtyRanking;
+import org.miradi.actions.ActionViewLegacyTncStrategyRanking;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
@@ -43,7 +43,7 @@ public class LegacyTncStrategyRankingEditorPropertiesSubPanel extends ObjectData
 	
 		buttonsPanel = new MiradiPanel();
 		buttonsPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		ObjectsActionButton viewButton = createObjectsActionButton(actions.getObjectsAction(ActionViewLegacyTncStrategtyRanking.class), getPicker());
+		ObjectsActionButton viewButton = createObjectsActionButton(actions.getObjectsAction(ActionViewLegacyTncStrategyRanking.class), getPicker());
 		ObjectsActionButton deleteButton = createObjectsActionButton(actions.getObjectsAction(ActionDeleteLegacyTncStrategyRanking.class), getPicker());
 
 		buttonsPanel.add(viewButton);

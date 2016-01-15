@@ -1475,7 +1475,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
                 if (!shouldOverwrite)
                     continue;
 
-                FileUtilities.createMpfBackup(proposedProjectFile, EAM.substituteSingleString(EAM.text("(%s)"), "Overriden-backup"));
+                FileUtilities.createMpfBackup(proposedProjectFile, EAM.substituteSingleString(EAM.text("(%s)"), "Overridden-backup"));
             }
 
             if (!Project.isValidProjectName(projectName))

@@ -213,12 +213,12 @@ abstract public class ObjectData
 	
 	public void readAsXmpz2XmlData(Xmpz2XmlImporter importer, Node node, ORef destinationRefToUse, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		throw new RuntimeException("This method should be overriden and must call back into the importer. Type name = " + baseObjectSchema.getObjectName() + ". Tag = " + fieldSchema.getTag() + ". Class needing to override = " +  getClass().getSimpleName());
+		throw new RuntimeException("This method should be overridden and must call back into the importer. Type name = " + baseObjectSchema.getObjectName() + ". Tag = " + fieldSchema.getTag() + ". Class needing to override = " +  getClass().getSimpleName());
 	}
 	
 	public String createXmpz2SchemaElementString(Xmpz2XmlSchemaCreator creator, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		throw new RuntimeException("This method should be overriden and must call back into the importer. Type name = " + baseObjectSchema.getObjectName() + ". Tag = " + fieldSchema.getTag() + ". Class needing to override = " +  getClass().getSimpleName());
+		throw new RuntimeException("This method should be overridden and must call back into the importer. Type name = " + baseObjectSchema.getObjectName() + ". Tag = " + fieldSchema.getTag() + ". Class needing to override = " +  getClass().getSimpleName());
 	}
 	
 	private String tag;

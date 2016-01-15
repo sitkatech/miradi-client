@@ -265,15 +265,15 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		
 		addDoerToMap(ActionEditObjectiveIndicatorRelevancyList.class, new EditObjectiveIndicatorRelevancyListDoer());
 		addDoerToMap(ActionEditGoalIndicatorRelevancyList.class, new EditGoalIndicatorRelevancyListDoer());
-		addDoerToMap(ActionEditObjectiveStrategyActivityRelevancyList.class, new EditObjectiveStrategyActivityRelevacyListDoer());
-		addDoerToMap(ActionEditGoalStrategyActivityRelevancyList.class, new EditGoalStrategyActivityRelevacyListDoer());
+		addDoerToMap(ActionEditObjectiveStrategyActivityRelevancyList.class, new EditObjectiveStrategyActivityRelevancyListDoer());
+		addDoerToMap(ActionEditGoalStrategyActivityRelevancyList.class, new EditGoalStrategyActivityRelevancyListDoer());
 		
 		addDoerToMap(ActionEditStrategyObjectiveRelevancyList.class, new EditStrategyObjectiveRelevancyListDoer());
 		addDoerToMap(ActionEditStrategyGoalRelevancyList.class, new EditStrategyGoalRelevancyListDoer());
 		addDoerToMap(ActionEditActivityObjectiveRelevancyList.class, new EditActivityObjectiveRelevancyListDoer());
 		addDoerToMap(ActionEditActivityGoalRelevancyList.class, new EditActivityGoalRelevancyListDoer());
 		
-		addDoerToMap(ActionViewLegacyTncStrategtyRanking.class, new ViewLegacyTncStrategyRankingDoer());
+		addDoerToMap(ActionViewLegacyTncStrategyRanking.class, new ViewLegacyTncStrategyRankingDoer());
 		addDoerToMap(ActionDeleteLegacyTncStrategyRanking.class, new DeleteLegacyTncStrategyRankingDoer());
 		
 		addDoerToMap(ActionExpandAllRows.class, new ExpandAllRowsDoer());

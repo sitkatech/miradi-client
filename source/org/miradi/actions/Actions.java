@@ -433,7 +433,7 @@ public class Actions
 		registerAction(new ActionDeleteTaskProgressReport(mainWindow));
 		registerAction(new ActionCreateProgressPercent(mainWindow));
 		registerAction(new ActionDeleteProgressPercent(mainWindow));
-		registerAction(new ActionViewLegacyTncStrategtyRanking(mainWindow));
+		registerAction(new ActionViewLegacyTncStrategyRanking(mainWindow));
 		registerAction(new ActionDeleteLegacyTncStrategyRanking(mainWindow));
 		registerAction(new ActionActivityMoveUp(mainWindow));
 		registerAction(new ActionActivityMoveDown(mainWindow));
