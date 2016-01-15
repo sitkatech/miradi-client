@@ -21,10 +21,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 
+import org.miradi.objects.Task;
+
 public class TaskObjectSchemaElement extends AbstractTaskObjectSchemaElement
 {
 	public TaskObjectSchemaElement()
 	{
 		super(XmlConstants.TASK);
+
+		createOptionalBooleanField(Task.TAG_IS_MONITORING_ACTIVITY);
 	}
 }

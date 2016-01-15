@@ -55,6 +55,7 @@ public class RtfLegendObjectsQuestion extends MultipleSelectStaticChoiceQuestion
 				new ChoiceItem(TaskSchema.OBJECT_NAME, EAM.text("Task"), new TaskIcon()),
 				new ChoiceItem(TaskSchema.METHOD_NAME, EAM.text("Method"), new MethodIcon()),
 				new ChoiceItem(TaskSchema.ACTIVITY_NAME, EAM.text("Activity"), new ActivityIcon()),
+				new ChoiceItem(TaskSchema.MONITORING_ACTIVITY_NAME, EAM.text("Monitoring Activity"), new MonitoringActivityIcon()),
 				new ChoiceItem(MeasurementSchema.OBJECT_NAME, EAM.text("Measurement"), new MeasurementIcon()),
 		};
 	}

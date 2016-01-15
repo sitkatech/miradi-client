@@ -34,7 +34,8 @@ public class TaskSchema extends FactorSchema
 	protected void fillFieldSchemas()
 	{
 		super.fillFieldSchemas();
-		
+
+		createFieldSchemaBoolean(Task.TAG_IS_MONITORING_ACTIVITY);
 		createOwnedFieldSchemaIdList(Task.TAG_SUBTASK_IDS, TaskSchema.getObjectType());
 		createFieldSchemaOptionalRef(Task.TAG_PLANNED_LEADER_RESOURCE);
 		createFieldSchemaOptionalRef(Task.TAG_ASSIGNED_LEADER_RESOURCE);
@@ -74,4 +75,5 @@ public class TaskSchema extends FactorSchema
 	public static final String OBJECT_NAME = "Task";
 	public static final String METHOD_NAME = "Method";
 	public static final String ACTIVITY_NAME = "Activity";
+	public static final String MONITORING_ACTIVITY_NAME = "MonitoringActivity";
 }

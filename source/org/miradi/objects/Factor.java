@@ -263,6 +263,11 @@ abstract public class Factor extends BaseObject
 		return false;
 	}
 
+	public boolean isMonitoringActivity()
+	{
+		return false;
+	}
+
 	public boolean isBiophysicalFactor()
 	{
 		return false;

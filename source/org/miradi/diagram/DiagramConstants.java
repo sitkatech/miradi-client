@@ -31,7 +31,8 @@ public class DiagramConstants
 	public static final Color COLOR_DRAFT_STRATEGY = new Color(255, 255, 190);
 	public static final Color COLOR_FACTOR_CLUSTER = Color.LIGHT_GRAY;
 	public static final Color DEFAULT_ACTIVITIES_COLOR = new Color(255, 255, 0);
-	
+	public static final Color DEFAULT_MONITORING_ACTIVITIES_COLOR = new Color(204,153,255);
+
 	public static final Color[] strategyColorChoices = {
 		new Color(255, 255, 0), 
 		new Color(240, 240, 0), 

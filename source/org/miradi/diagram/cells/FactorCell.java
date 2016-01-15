@@ -360,7 +360,12 @@ abstract public class FactorCell extends EAMGraphCell
 	{
 		return getWrappedFactor().isActivity();
 	}
-	
+
+	public boolean isMonitoringActivity()
+	{
+		return getWrappedFactor().isMonitoringActivity();
+	}
+
 	public boolean isStrategy()
 	{
 		return getWrappedFactor().isStrategy();

@@ -34,7 +34,10 @@ public class DiagramActivityCell extends FactorCell
 
 	@Override
 	public Color getColor()
-	{		
+	{
+		if(isMonitoringActivity())
+			return DiagramConstants.DEFAULT_MONITORING_ACTIVITIES_COLOR;
+
 		return DiagramConstants.DEFAULT_ACTIVITIES_COLOR;
 	}
 }

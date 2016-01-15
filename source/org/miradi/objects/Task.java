@@ -140,6 +140,12 @@ public class Task extends Factor
 		return is(TaskSchema.ACTIVITY_NAME);
 	}
 
+	@Override
+	public boolean isMonitoringActivity()
+	{
+		return is(TaskSchema.ACTIVITY_NAME) && getBooleanData(TAG_IS_MONITORING_ACTIVITY);
+	}
+
 	public boolean isMethod()
 	{
 		return is(TaskSchema.METHOD_NAME);
@@ -191,7 +197,7 @@ public class Task extends Factor
 		EAM.logVerbose("Task with no owner: " + getRef());
 	}
 	
-	public boolean isOrphandTask()
+	public boolean isOrphanedTask()
 	{
 		return !hasReferrers();
 	}
@@ -467,7 +473,8 @@ public class Task extends Factor
 	
 	public final static String TAG_SUBTASK_IDS = "SubtaskIds";
 	public final static String TAG_DETAILS = "Details";
-	
+	public final static String TAG_IS_MONITORING_ACTIVITY = "IsMonitoringActivity";
+
 	public final static String PSEUDO_TAG_STRATEGY_LABEL = "StrategyLabel";
 	public final static String PSEUDO_TAG_INDICATOR_LABEL = "IndicatorLabel";
 	public static final String PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS = "PseudoTaskRelevantObjectiveRefs";

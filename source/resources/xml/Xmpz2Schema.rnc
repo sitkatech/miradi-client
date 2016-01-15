@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Mon Jan 04 15:33:24 GMT 2016 $
+# $LastChangedDate: Fri Jan 15 10:37:05 GMT 2016 $
 # $LastChangedRevision: 236 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/236'
 start = ConservationProject.element
@@ -248,6 +248,7 @@ Task.element = element miradi:Task
   element miradi:TaskDetails { formatted_text }? &
   element miradi:TaskExpenseAssignmentIds { ExpenseAssignmentId.element* }? &
   element miradi:TaskIdentifier { text }? &
+  element miradi:TaskIsMonitoringActivity { xsd:boolean }? &
   element miradi:TaskName { formatted_text }? &
   element miradi:TaskOrderedSubTaskIds { SubTaskId.element* }? &
   element miradi:TaskPlannedLeaderResourceId { ResourceId.element }? &

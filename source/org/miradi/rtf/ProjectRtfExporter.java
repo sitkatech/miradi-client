@@ -41,7 +41,7 @@ public class ProjectRtfExporter
 	
 	public void exportProject(RtfWriter writer, CodeList reportTemplateContent) throws Exception
 	{
-		writeProjectReporteHeader(writer);
+		writeProjectReportHeader(writer);
 		new SummaryViewRtfExporter(getMainWindow()).exportView(writer, reportTemplateContent);
 		new DiagramViewRtfExporter(getMainWindow()).exportView(writer, reportTemplateContent);
 		new ViabilityViewRtfExporter(getMainWindow()).exportView(writer, reportTemplateContent);
@@ -50,7 +50,7 @@ public class ProjectRtfExporter
 		exportLegend(writer, reportTemplateContent);
 	}
 	
-	private void writeProjectReporteHeader(RtfWriter writer) throws Exception
+	private void writeProjectReportHeader(RtfWriter writer) throws Exception
 	{
 		writer.startBlock();
 		writer.writeHeading1Style();

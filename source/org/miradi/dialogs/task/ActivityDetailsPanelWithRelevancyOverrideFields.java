@@ -32,9 +32,9 @@ import org.miradi.schemas.TaskSchema;
 
 public class ActivityDetailsPanelWithRelevancyOverrideFields extends TaskDetailsPanel
 {
-	public ActivityDetailsPanelWithRelevancyOverrideFields(Project projectToUse, Actions actionsToUse, ActivityFactorVisibilityControlPanel activityVisibilityButtonPanel) throws Exception
+	public ActivityDetailsPanelWithRelevancyOverrideFields(Project projectToUse, Actions actionsToUse, ActivityFactorVisibilityControlPanel activityVisibilityButtonPanel, boolean shouldHaveIsMonitoringActivityField) throws Exception
 	{
-		super(projectToUse, actionsToUse, activityVisibilityButtonPanel);
+		super(projectToUse, actionsToUse, activityVisibilityButtonPanel, shouldHaveIsMonitoringActivityField);
 	}
 
 	@Override

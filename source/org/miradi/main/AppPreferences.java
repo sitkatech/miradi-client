@@ -205,6 +205,8 @@ public class AppPreferences
 			return strategyColor;
 		if(tag.equals(TAG_COLOR_ACTIVITIES))
 			return activitiesColor;
+		if(tag.equals(TAG_COLOR_MONITORING_ACTIVITIES))
+			return monitoringActivitiesColor;
 		if(tag.equals(TAG_COLOR_CONTRIBUTING_FACTOR))
 			return contributingFactorColor;
 		if(tag.equals(TAG_COLOR_DIRECT_THREAT))
@@ -235,6 +237,8 @@ public class AppPreferences
 			strategyColor = colorToUse;
 		else if(tag.equals(TAG_COLOR_ACTIVITIES))
 			activitiesColor = colorToUse;
+		else if(tag.equals(TAG_COLOR_MONITORING_ACTIVITIES))
+			monitoringActivitiesColor = colorToUse;
 		else if(tag.equals(TAG_COLOR_CONTRIBUTING_FACTOR))
 			contributingFactorColor = colorToUse;
 		else if(tag.equals(TAG_COLOR_DIRECT_THREAT))
@@ -376,6 +380,7 @@ public class AppPreferences
 		EnhancedJsonObject json = new EnhancedJsonObject();
 		json.put(TAG_COLOR_STRATEGY, strategyColor);
 		json.put(TAG_COLOR_ACTIVITIES, activitiesColor);
+		json.put(TAG_COLOR_MONITORING_ACTIVITIES, monitoringActivitiesColor);
 		json.put(TAG_COLOR_CONTRIBUTING_FACTOR, contributingFactorColor);
 		json.put(TAG_COLOR_DIRECT_THREAT, directThreatColor);
 		json.put(TAG_COLOR_BIOPHYSICAL_FACTOR, biophysicalFactorColor);
@@ -447,6 +452,7 @@ public class AppPreferences
 	{
 		strategyColor = json.optColor(TAG_COLOR_STRATEGY, DiagramConstants.DEFAULT_STRATEGY_COLOR);
 		activitiesColor = json.optColor(TAG_COLOR_ACTIVITIES, DiagramConstants.DEFAULT_ACTIVITIES_COLOR);
+		monitoringActivitiesColor = json.optColor(TAG_COLOR_MONITORING_ACTIVITIES, DiagramConstants.DEFAULT_MONITORING_ACTIVITIES_COLOR);
 		contributingFactorColor = json.optColor(TAG_COLOR_CONTRIBUTING_FACTOR, DiagramConstants.DEFAULT_CONTRIBUTING_FACTOR_COLOR);
 		directThreatColor = json.optColor(TAG_COLOR_DIRECT_THREAT, DiagramConstants.DEFAULT_DIRECT_THREAT_COLOR);
 		biophysicalFactorColor = json.optColor(TAG_COLOR_BIOPHYSICAL_FACTOR, DiagramConstants.DEFAULT_BIOPHYSICAL_FACTOR_COLOR);
@@ -675,6 +681,7 @@ public class AppPreferences
 
 	public static final String TAG_COLOR_STRATEGY = "ColorIntervention";
 	public static final String TAG_COLOR_ACTIVITIES = "ColorActivities";
+	public static final String TAG_COLOR_MONITORING_ACTIVITIES = "ColorMonitoringActivities";
 	public static final String TAG_COLOR_CONTRIBUTING_FACTOR = "ColorIndirectFactor";
 	public static final String TAG_COLOR_BIOPHYSICAL_FACTOR = "ColorBiophysicalFactor";
 	public static final String TAG_COLOR_BIOPHYSICAL_RESULT = "ColorBiophysicalResult";
@@ -766,6 +773,7 @@ public class AppPreferences
 
 	public Color strategyColor;
 	public Color activitiesColor;
+	public Color monitoringActivitiesColor;
 	public Color contributingFactorColor;
 	public Color directThreatColor;
 	public Color biophysicalFactorColor;

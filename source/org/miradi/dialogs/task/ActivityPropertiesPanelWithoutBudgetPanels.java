@@ -35,7 +35,7 @@ public class ActivityPropertiesPanelWithoutBudgetPanels extends TaskPropertiesPa
 	@Override
 	protected ObjectDataInputPanel createDetailsPanel(MainWindow mainWindow, ActivityFactorVisibilityControlPanel activityVisibilityButtonPanel) throws Exception
 	{
-		return new ActivityDetailsPanelWithRelevancyOverrideFields(getProject(), mainWindow.getActions(), activityVisibilityButtonPanel);
+		return new ActivityDetailsPanelWithRelevancyOverrideFields(getProject(), mainWindow.getActions(), activityVisibilityButtonPanel, shouldHaveIsMonitoringActivityField());
 	}
 	
 	@Override
@@ -44,6 +44,12 @@ public class ActivityPropertiesPanelWithoutBudgetPanels extends TaskPropertiesPa
 		return true;
 	}
 	
+	@Override
+	protected boolean shouldHaveIsMonitoringActivityField()
+	{
+		return true;
+	}
+
 	@Override
 	public String getPanelDescription()
 	{

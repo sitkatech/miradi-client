@@ -64,6 +64,7 @@ public class IconManager
 		addIcon(new ResultsChainIcon());
 		addIcon(new ConceptualModelIcon());
 		addIcon(new ActivityIcon());
+		addIcon(new MonitoringActivityIcon());
 		addIcon(new MethodIcon());
 		addIcon(new TaskIcon());
 		addIcon(new DraftStrategyIcon());
@@ -230,7 +231,7 @@ public class IconManager
 			return getStressIcon();
 		
 		if (factor.isActivity())
-			return getActivityIcon();
+			return getActivityIcon(factor);
 		
 		if (factor.isIntermediateResult())
 			return getIntermediateResultIcon();
@@ -256,7 +257,7 @@ public class IconManager
 			return getMethodIcon();
 		
 		if (task.isActivity())
-			return getActivityIcon();
+			return getActivityIcon(task);
 		
 		return getTaskIcon();
 	}
@@ -416,8 +417,11 @@ public class IconManager
 		return getIcon(MethodIcon.class);
 	}
 
-	public static Icon getActivityIcon()
+	public static Icon getActivityIcon(Factor factor)
 	{
+		if (factor.isMonitoringActivity())
+			return getIcon(MonitoringActivityIcon.class);
+
 		return getIcon(ActivityIcon.class);
 	}
 	

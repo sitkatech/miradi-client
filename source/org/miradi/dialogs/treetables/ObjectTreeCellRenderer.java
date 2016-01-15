@@ -98,6 +98,9 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		activityRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(activityRenderer, new ActivityIcon(), getPlainFont());
 
+		monitoringActivityRenderer = createRenderer(treeTableToUse);
+		setRendererDefaults(monitoringActivityRenderer, new MonitoringActivityIcon(), getPlainFont());
+
 		stressRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(stressRenderer, new StressIcon(), getPlainFont());
 		
@@ -258,6 +261,8 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 
 	private TreeCellRenderer getTaskRenderer(Task task, int proportionShares)
 	{
+		if(task.isMonitoringActivity())
+			return getRendererWithSetSharedTaskItalicFont(monitoringActivityRenderer, task, proportionShares);
 		if(task.isActivity())
 			return getRendererWithSetSharedTaskItalicFont(activityRenderer, task, proportionShares);
 		if(task.isMethod())
@@ -302,6 +307,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 	protected VariableHeightTreeCellRenderer goalRenderer;
 	protected VariableHeightTreeCellRenderer indicatorRenderer;
 	private VariableHeightTreeCellRenderer activityRenderer;
+	private VariableHeightTreeCellRenderer monitoringActivityRenderer;
 	private VariableHeightTreeCellRenderer stressRenderer;
 	private VariableHeightTreeCellRenderer subTargetRenderer;
 	private VariableHeightTreeCellRenderer methodRenderer;

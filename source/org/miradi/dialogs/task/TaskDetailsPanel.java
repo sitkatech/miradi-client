@@ -26,11 +26,9 @@ import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.activity.ActivityFactorVisibilityControlPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.icons.ActivityIcon;
-import org.miradi.icons.EmptyIcon;
-import org.miradi.icons.MethodIcon;
-import org.miradi.icons.TaskIcon;
+import org.miradi.icons.*;
 import org.miradi.main.EAM;
+import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Task;
@@ -40,7 +38,7 @@ import org.miradi.utils.FillerLabel;
 
 public class TaskDetailsPanel extends ObjectDataInputPanel
 {
-	public TaskDetailsPanel(Project projectToUse, Actions actionsToUse, ActivityFactorVisibilityControlPanel activityVisibilityButtonPanel) throws Exception
+	public TaskDetailsPanel(Project projectToUse, Actions actionsToUse, ActivityFactorVisibilityControlPanel activityVisibilityButtonPanel, boolean shouldHaveIsMonitoringActivityField) throws Exception
 	{
 		super(projectToUse, TaskSchema.getObjectType());
 		
@@ -48,6 +46,10 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 		ObjectDataInputField taskNameField = createExpandableField(ObjectType.TASK, Task.TAG_LABEL);
 		ObjectDataInputField taskIdField = createShortStringField(ObjectType.TASK, Task.TAG_SHORT_LABEL);
 		addFieldsOnOneLine(taskNameLabel, new ObjectDataInputField[] {taskIdField, taskNameField,} );
+
+		if (shouldHaveIsMonitoringActivityField)
+			addField(createCheckBoxField(TaskSchema.getObjectType(), Task.TAG_IS_MONITORING_ACTIVITY, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE));
+
 		if (activityVisibilityButtonPanel != null)
 		{
 			add(new FillerLabel());
@@ -73,11 +75,16 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 	private Icon getTaskTypeIcon()
 	{
 		Task task = getTask();
+
 		if(task == null)
 			return new EmptyIcon();
-		
+
+		if(task.isMonitoringActivity())
+			return new MonitoringActivityIcon();
+
 		if(task.isActivity())
 			return new ActivityIcon();
+
 		if(task.isMethod())
 			return new MethodIcon();
 		
@@ -87,10 +94,16 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 	private String getTaskTypeLabel()
 	{
 		Task task = getTask();
+
 		if(task == null)
 			return "";
+
+		if(task.isMonitoringActivity())
+			return EAM.text("Monitoring Activity");
+
 		if(task.isActivity())
 			return EAM.text("Activity");
+
 		if(task.isMethod())
 			return EAM.text("Method");
 		
@@ -111,6 +124,13 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		super.setObjectRefs(orefsToUse);
+		updateTaskNameLabel();
+	}
+
+	@Override
+	public void updateFieldsFromProject()
+	{
+		super.updateFieldsFromProject();
 		updateTaskNameLabel();
 	}
 
