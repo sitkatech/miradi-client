@@ -44,6 +44,12 @@ public class WorkPlanActivityPropertiesPanel extends TaskPropertiesPanel
 	}
 
 	@Override
+	protected boolean shouldHaveIsMonitoringActivityField()
+	{
+		return true;
+	}
+
+	@Override
 	public String getPanelDescription()
 	{
 		return "WorkPlanActivityPropertiesPanel";
