@@ -75,7 +75,7 @@ abstract public class AbstractHtmlPane extends MiradiTextPane
 
 	protected void initializeEditorComponent()
 	{
-		insertHtml("<div></div>", 0);
+		insertHtml("", 0);
 	}
 
 	private void insertHtml(String html, int location) 
