@@ -22,6 +22,7 @@ package org.miradi.xml.xmpz2.xmpz2schema;
 
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
+import org.miradi.questions.WorkPlanDisplayModeQuestion;
 import org.miradi.schemas.ProjectMetadataSchema;
 
 public class ProjectSummaryPlanningSchema extends AbstractProjectSummarySchema
@@ -48,6 +49,7 @@ public class ProjectSummaryPlanningSchema extends AbstractProjectSummarySchema
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_DAY_COLUMNS_VISIBILITY));
 		createFieldSchemaChoice(INCLUDE_WORK_PLAN_DIAGRAM_DATA, new DiagramObjectDataInclusionQuestion());
+		createFieldSchemaChoice(ProjectMetadata.TAG_WORKPLAN_DISPLAY_MODE, WorkPlanDisplayModeQuestion.class);
 	}
 	
 	@Override

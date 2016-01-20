@@ -59,6 +59,7 @@ public class IconManager
 		addIcon(new DirectThreatIcon());
 		addIcon(new ReportTemplateIcon());
 		addIcon(new WorkPlanIcon());
+		addIcon(new SharedWorkPlanIcon());
 		addIcon(new PlanningIcon());
 		addIcon(new AllocatedCostIcon());
 		addIcon(new ResultsChainIcon());
@@ -445,6 +446,11 @@ public class IconManager
 		return getIcon(PlanningIcon.class);
 	}
 	
+	public static Icon getSharedWorkPlanIcon()
+	{
+		return getIcon(SharedWorkPlanIcon.class);
+	}
+
 	public static Icon getWorkPlanIcon()
 	{
 		return getIcon(WorkPlanIcon.class);

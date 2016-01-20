@@ -314,6 +314,20 @@ public class ProjectMetadata extends BaseObject
 		return getData(TAG_DAY_COLUMNS_VISIBILITY).equals(DayColumnsVisibilityQuestion.SHOW_DAY_COLUMNS_CODE);
 	}
 
+	public boolean shouldDisplaySharedWorkPlan()
+	{
+		String code = getData(TAG_WORKPLAN_DISPLAY_MODE);
+		return code.equals(WorkPlanDisplayModeQuestion.SHOW_BOTH_WORK_PLANS_CODE) || code.equals(WorkPlanDisplayModeQuestion.SHOW_ONLY_SHARED_WORK_PLAN_CODE);
+
+	}
+
+	public boolean shouldDisplayLegacyWorkPlan()
+	{
+		String code = getData(TAG_WORKPLAN_DISPLAY_MODE);
+		return code.equals(WorkPlanDisplayModeQuestion.SHOW_BOTH_WORK_PLANS_CODE) || code.equals(WorkPlanDisplayModeQuestion.SHOW_ONLY_LEGACY_WORK_PLAN_CODE);
+
+	}
+
 	public static boolean is(BaseObject baseObject)
 	{
 		if(baseObject == null)
@@ -374,6 +388,7 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_WORKPLAN_START_DATE = "WorkPlanStartDate";
 	public static final String TAG_WORKPLAN_END_DATE = "WorkPlanEndDate";
 	public static final String TAG_WORKPLAN_TIME_UNIT = "WorkPlanTimeUnit";
+	public static final String TAG_WORKPLAN_DISPLAY_MODE = "WorkPlanDisplayMode";
 	public static final String TAG_PLANNING_COMMENTS = "PlanningComments";
 	public static final String TAG_HUMAN_POPULATION = "HumanPopulation";
 	public static final String TAG_HUMAN_POPULATION_NOTES = "HumanPopulationNotes";

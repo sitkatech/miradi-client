@@ -117,6 +117,7 @@ public class XmlSchemaCreator implements XmlConstants
 		defineVocabulary(writer, VOCABULARY_DAY_COLUMNS_VISIBILITY, new DayColumnsVisibilityQuestion());
 		defineVocabulary(writer, VOCABULARY_WORK_PLAN_TIME_UNIT, new BudgetTimePeriodQuestion());
 		defineVocabulary(writer, VOCABULARY_RATING_SOURCE, new RatingSourceQuestion());
+		defineVocabulary(writer, VOCABULARY_WORKPLAN_DISPLAY_MODE, new WorkPlanDisplayModeQuestion());
 		defineDashboardStatusesVocabulary(writer);
 		
 		defineIdElement(writer, "ConceptualModel");
@@ -676,10 +677,11 @@ public class XmlSchemaCreator implements XmlConstants
 	public static final String VOCABULARY_DASHBOARD_ROW_FLAG = "vocabulary_dashboard_row_flag";
 	public static final String VOCABULARY_PLANNING_TREE_OBJECTIVE_STRATEGY_NODE_ORDER = "vocabulary_planning_tree_objective_strategy_node_order";
 	public static final String VOCABULARY_QUARTER_COLUMNS_VISIBILITY = "vocabulary_quarter_columns_visibility";
-	public static final String VOCABULARY_DAY_COLUMNS_VISIBILITY = "vocabulary_quarter_columns_visibility";
+	public static final String VOCABULARY_DAY_COLUMNS_VISIBILITY = "vocabulary_day_columns_visibility";
 	public static final String VOCABULARY_WORK_PLAN_TIME_UNIT = "vocabulary_work_plan_time_unit";
+	public static final String VOCABULARY_WORKPLAN_DISPLAY_MODE = "vocabulary_work_plan_display_mode";
 	public static final String VOCABULARY_RATING_SOURCE = "vocabulary_rating_source";
-	
+
 	public static final String PROTECTED_AREA_CATEGORIES_ELEMENT_NAME = ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES;
 	public static final String RESOURCE_TYPE_ELEMENT_NAME = ProjectResource.TAG_RESOURCE_TYPE;
 	public static final String RESOURCE_ROLE_CODES_ELEMENT_NAME = ProjectResource.TAG_ROLE_CODES;
