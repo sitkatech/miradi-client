@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-15 08:36-0800\n"
+"POT-Creation-Date: 2016-01-20 03:51-0800\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -278,7 +278,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:148
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:149
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1478
 msgid "(%s)"
 msgstr ""
@@ -3357,7 +3357,7 @@ msgstr ""
 msgid "Effective"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:145
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:146
 msgid ""
 "Effective end date for project planning date range is before start date."
 msgstr ""
@@ -3457,7 +3457,7 @@ msgstr ""
 msgid "Expand Selected Column"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:608
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:609
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:37
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RatingSourceQuestion.java:37
 msgid "Expert Knowledge"
@@ -4207,7 +4207,7 @@ msgstr ""
 msgid "Instructions"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:610
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:611
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:39
 msgid "Intensive Assessment"
 msgstr ""
@@ -5145,7 +5145,7 @@ msgid ""
 "performance, <br>select Manual Row Height Mode."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:162
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:163
 msgid ""
 "NOTE: Day columns cannot be hidden because this project already has data for "
 "some days."
@@ -5157,7 +5157,7 @@ msgid ""
 "dashes, and underlines."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:154
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:155
 msgid ""
 "NOTE: Quarter columns cannot be hidden because this project already has data "
 "for some quarters."
@@ -5224,7 +5224,7 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:285
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/treenodes/UnspecifiedBaseObject.java:45
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/Translation.java:356
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:606
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:607
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:36
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/MiradiShareTaxonomyQuestion.java:58
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:35
@@ -5336,6 +5336,14 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DiagramObjectDataInclusionQuestion.java:40
 msgid "Only Results Chains"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanDisplayModeQuestion.java:50
+msgid "Only Shared Work Plan"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanDisplayModeQuestion.java:53
+msgid "Only legacy Work Plan"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RatingSourceQuestion.java:39
@@ -5825,7 +5833,7 @@ msgstr ""
 msgid "Rank draft strategies"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:609
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:610
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:38
 msgid "Rapid Assessment"
 msgstr ""
@@ -5978,7 +5986,7 @@ msgstr ""
 msgid "Rocky Areas [e.g. inland cliffs, mountain peaks]"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:607
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:608
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:36
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RatingSourceQuestion.java:36
 msgid "Rough Guess"
@@ -6210,6 +6218,10 @@ msgstr ""
 msgid "Share success and failures with other teams"
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanDisplayModeQuestion.java:47
+msgid "Shared Work Plan and legacy Work Plan"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DayColumnsVisibilityQuestion.java:35
 msgid "Show Day Columns"
 msgstr ""
@@ -6294,7 +6306,7 @@ msgstr ""
 msgid "Smallest"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:131
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:132
 msgid ""
 "Some work plan data is currently hidden and not included in calculated "
 "totals. If the data is outside the planning date range, it will be visible "
@@ -7709,6 +7721,7 @@ msgid "This migration adds a new field to the Diagram Factor properties."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo18.java:61
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:61
 msgid "This migration adds a new field to the Project Metadata properties."
 msgstr ""
 
@@ -8673,7 +8686,11 @@ msgstr ""
 msgid "Work Plan Column Editor"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:380
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:41
+msgid "Work Plan Display Mode"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:381
 msgid "Work Plan Settings"
 msgstr ""
 
@@ -8688,7 +8705,7 @@ msgstr ""
 msgid "Work Planning"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:119
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:120
 msgid "Work plan data currently exists for %startDate - %endDate"
 msgstr ""
 
@@ -9406,6 +9423,9 @@ msgid "FieldLabel|11.DayColumnsVisibility|Day Column Visibility"
 msgstr ""
 
 msgid "FieldLabel|11.WorkPlanDiagramDataInclusion|Diagrams - include data from"
+msgstr ""
+
+msgid "FieldLabel|11.WorkPlanDisplayMode|Display Work Plans from"
 msgstr ""
 
 msgid "FieldLabel|12.ShortLabel|ID"

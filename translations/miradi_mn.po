@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-15 08:36-0800\n"
+"POT-Creation-Date: 2016-01-20 03:51-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Mongolian (http://www.transifex.com/projects/p/miradi-client/"
@@ -285,7 +285,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%нэрээс' -> '%нэрэнд'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:148
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:149
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1478
 msgid "(%s)"
 msgstr ""
@@ -3544,7 +3544,7 @@ msgstr "Редактор"
 msgid "Effective"
 msgstr "Үр дүнтэй"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:145
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:146
 msgid ""
 "Effective end date for project planning date range is before start date."
 msgstr ""
@@ -3644,7 +3644,7 @@ msgstr "Өөр санхүүгийн жилийн байгаа мэдээлэл �
 msgid "Expand Selected Column"
 msgstr "Сонгосон баганыг өргөжүүлэх"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:608
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:609
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:37
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RatingSourceQuestion.java:37
 msgid "Expert Knowledge"
@@ -4417,7 +4417,7 @@ msgstr "Суурьлуулалт амжилттай болсон "
 msgid "Instructions"
 msgstr "Зааварчилга"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:610
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:611
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:39
 msgid "Intensive Assessment"
 msgstr "Нарийн үнэлгээ"
@@ -5385,7 +5385,7 @@ msgid ""
 "performance, <br>select Manual Row Height Mode."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:162
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:163
 msgid ""
 "NOTE: Day columns cannot be hidden because this project already has data for "
 "some days."
@@ -5399,7 +5399,7 @@ msgstr ""
 "Тайлбар: Төслийн файлын нэр нь үсэг, тоо, зай, үе, зураас, үгийн доогуур "
 "зурах зэргийг агуулсан байж болно."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:154
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:155
 msgid ""
 "NOTE: Quarter columns cannot be hidden because this project already has data "
 "for some quarters."
@@ -5473,7 +5473,7 @@ msgstr "Үр ашиггүй"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:285
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/treenodes/UnspecifiedBaseObject.java:45
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/Translation.java:356
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:606
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:607
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:36
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/MiradiShareTaxonomyQuestion.java:58
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:35
@@ -5589,6 +5589,14 @@ msgstr "Зөвхөн Концепцийн загвар хуудасууд"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DiagramObjectDataInclusionQuestion.java:40
 msgid "Only Results Chains"
 msgstr "Зөвхөн Үр дүнгийн хэлхээс"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanDisplayModeQuestion.java:50
+msgid "Only Shared Work Plan"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanDisplayModeQuestion.java:53
+msgid "Only legacy Work Plan"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RatingSourceQuestion.java:39
 msgid "Onsite Research"
@@ -6094,7 +6102,7 @@ msgstr "Шууд аюул заналыг зэрэглэх"
 msgid "Rank draft strategies"
 msgstr "Стратегийн төслийг зэрэглэх"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:609
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:610
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:38
 msgid "Rapid Assessment"
 msgstr "Шуурхай үнэлгээ"
@@ -6250,7 +6258,7 @@ msgstr "Гол, голын цутгал ба горхи"
 msgid "Rocky Areas [e.g. inland cliffs, mountain peaks]"
 msgstr "Хад чулуутуй газар нутаг [жишээ, нутгийн гүний хад цохио, уулын оргил]"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:607
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:608
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:36
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RatingSourceQuestion.java:36
 msgid "Rough Guess"
@@ -6510,6 +6518,10 @@ msgstr "Хариуг албан аль эсвэл албан бус арга з�
 msgid "Share success and failures with other teams"
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanDisplayModeQuestion.java:47
+msgid "Shared Work Plan and legacy Work Plan"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DayColumnsVisibilityQuestion.java:35
 msgid "Show Day Columns"
 msgstr ""
@@ -6595,7 +6607,7 @@ msgstr "Жижиг"
 msgid "Smallest"
 msgstr "Хамгийн жижигхэн"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:131
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:132
 msgid ""
 "Some work plan data is currently hidden and not included in calculated "
 "totals. If the data is outside the planning date range, it will be visible "
@@ -8076,6 +8088,7 @@ msgid "This migration adds a new field to the Diagram Factor properties."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo18.java:61
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:61
 msgid "This migration adds a new field to the Project Metadata properties."
 msgstr ""
 
@@ -9116,7 +9129,11 @@ msgstr ""
 msgid "Work Plan Column Editor"
 msgstr "Ажлын төлөвлөгөө баганан редактор"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:380
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:41
+msgid "Work Plan Display Mode"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:381
 msgid "Work Plan Settings"
 msgstr "Ажлын төлөвлөгөөний тохиргоо (Settings)"
 
@@ -9131,7 +9148,7 @@ msgstr ""
 msgid "Work Planning"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:119
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:120
 msgid "Work plan data currently exists for %startDate - %endDate"
 msgstr ""
 " %эхлэхОгноо - %дуусах огноо зориулсан ажлын төлөвлөгөөний одоогийн мэдээлэл "
@@ -9917,6 +9934,9 @@ msgid "FieldLabel|11.DayColumnsVisibility|Day Column Visibility"
 msgstr ""
 
 msgid "FieldLabel|11.WorkPlanDiagramDataInclusion|Diagrams - include data from"
+msgstr ""
+
+msgid "FieldLabel|11.WorkPlanDisplayMode|Display Work Plans from"
 msgstr ""
 
 msgid "FieldLabel|12.ShortLabel|ID"
