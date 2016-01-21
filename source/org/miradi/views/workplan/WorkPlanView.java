@@ -20,47 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.workplan;
 
 
-import org.miradi.actions.ActionCreateAccountingCode;
-import org.miradi.actions.ActionCreateCategoryOne;
-import org.miradi.actions.ActionCreateCategoryTwo;
-import org.miradi.actions.ActionCreateChildTask;
-import org.miradi.actions.ActionCreateFundingSource;
-import org.miradi.actions.ActionCreateResource;
-import org.miradi.actions.ActionCreateSameLevelTask;
-import org.miradi.actions.ActionDeleteAccountingCode;
-import org.miradi.actions.ActionDeleteCategoryOne;
-import org.miradi.actions.ActionDeleteCategoryTwo;
-import org.miradi.actions.ActionDeleteFundingSource;
-import org.miradi.actions.ActionDeletePlanningViewTreeNode;
-import org.miradi.actions.ActionDeleteResource;
-import org.miradi.actions.ActionEditAnalysisRows;
-import org.miradi.actions.ActionFilterWorkPlanByProjectResource;
-import org.miradi.actions.ActionImportAccountingCodes;
-import org.miradi.actions.ActionPlanningCreationMenu;
-import org.miradi.actions.ActionTreeCreateActivity;
-import org.miradi.actions.ActionTreeCreateMethod;
-import org.miradi.actions.ActionTreeNodeDown;
-import org.miradi.actions.ActionTreeNodeUp;
-import org.miradi.actions.ActionTreeShareActivity;
-import org.miradi.actions.ActionTreeShareMethod;
-import org.miradi.actions.ActionWorkPlanBudgetCustomizeTableEditor;
+import org.miradi.actions.*;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
-import org.miradi.main.MainWindow;
-import org.miradi.main.MiradiToolBar;
+import org.miradi.main.*;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
+import org.miradi.schemas.ProjectMetadataSchema;
+import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.views.TabbedView;
-import org.miradi.views.planning.doers.CreateAccountingCodeDoer;
-import org.miradi.views.planning.doers.CreateActivityNodeDoer;
-import org.miradi.views.planning.doers.CreateChildTaskDoer;
-import org.miradi.views.planning.doers.CreateFundingSourceDoer;
-import org.miradi.views.planning.doers.CreateMethodNodeDoer;
-import org.miradi.views.planning.doers.CreateSameLevelTaskDoer;
-import org.miradi.views.planning.doers.DeleteAccountingCodeDoer;
-import org.miradi.views.planning.doers.DeleteFundingSourceDoer;
-import org.miradi.views.planning.doers.ImportAccountingCodesDoer;
-import org.miradi.views.planning.doers.PlanningTreeNodeCreationMenuDoer;
-import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
-import org.miradi.views.planning.doers.WorkPlanCustomizeTableEditorDoer;
+import org.miradi.views.planning.doers.*;
 import org.miradi.views.umbrella.CreateResource;
 import org.miradi.views.umbrella.DeleteResourceDoer;
 import org.miradi.views.umbrella.UmbrellaView;
@@ -68,48 +36,95 @@ import org.miradi.views.umbrella.doers.TaskMoveDownDoer;
 import org.miradi.views.umbrella.doers.TaskMoveUpDoer;
 import org.miradi.views.umbrella.doers.TreeNodeShareActivityDoer;
 import org.miradi.views.umbrella.doers.TreeNodeShareMethodDoer;
-import org.miradi.views.workplan.doers.CreateCategoryOneDoer;
-import org.miradi.views.workplan.doers.CreateCategoryTwoDoer;
-import org.miradi.views.workplan.doers.DeleteCategoryOneDoer;
-import org.miradi.views.workplan.doers.DeleteCategoryTwoDoer;
-import org.miradi.views.workplan.doers.EditAnalysisRowsDoer;
-import org.miradi.views.workplan.doers.ProjectResourceWorkPlanFilterEditDoer;
+import org.miradi.views.workplan.doers.*;
 
-public class WorkPlanView extends TabbedView
+public class WorkPlanView extends TabbedView implements CommandExecutedListener
 {
 	public WorkPlanView(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
 		addPlanningViewDoersToMap();
 	}
-	
+
 	@Override
 	public void createTabs() throws Exception
 	{
-		workPlanManagementPanel = WorkPlanManagementPanel.createWorkPlanPanel(getMainWindow());
+		ProjectMetadata projectMetadata = getProject().getMetadata();
+
+		if (projectMetadata.shouldDisplaySharedWorkPlan())
+			sharedWorkPlanManagementPanel = SharedWorkPlanManagementPanel.createWorkPlanPanel(getMainWindow());
+
+		if (projectMetadata.shouldDisplayLegacyWorkPlan())
+			workPlanManagementPanel = WorkPlanManagementPanel.createWorkPlanPanel(getMainWindow());
+
 		settingsPanel = new WorkPlanSettingsPanel(getMainWindow(), getProject().getMetadata().getRef());
 		rollupReportsManagementPanel = WorkPlanBudgetCategoryManagementPanel.createManagementPanel(getMainWindow(), new AnalysisManagementConfiguration(getProject()));
 		resourceManagementPanel = WorkPlanBudgetCategoryManagementPanel.createManagementPanel(getMainWindow(), new ProjectResourceManagementConfiguration(getProject()));
 		accountingCodePoolManagementPanel = WorkPlanBudgetCategoryManagementPanel.createManagementPanel(getMainWindow(), new AccountingCodeManagementConfiguration(getProject()));
 		fundingSourcePoolManagementPanel = WorkPlanBudgetCategoryManagementPanel.createManagementPanel(getMainWindow(), new FundingSourceManagementConfiguration(getProject())); 
-		categoryOnePoolMangementPanel = WorkPlanBudgetCategoryManagementPanel.createManagementPanel(getMainWindow(), new BudgetCategoryOneManagementConfiguration(getProject()));
-		categoryTwoPoolMangementPanel = WorkPlanBudgetCategoryManagementPanel.createManagementPanel(getMainWindow(), new BudgetCategoryTwoManagementConfiguration(getProject()));
-		
-		addNonScrollingTab(workPlanManagementPanel);
+		categoryOnePoolManagementPanel = WorkPlanBudgetCategoryManagementPanel.createManagementPanel(getMainWindow(), new BudgetCategoryOneManagementConfiguration(getProject()));
+		categoryTwoPoolManagementPanel = WorkPlanBudgetCategoryManagementPanel.createManagementPanel(getMainWindow(), new BudgetCategoryTwoManagementConfiguration(getProject()));
+
+		if (projectMetadata.shouldDisplaySharedWorkPlan())
+			addNonScrollingTab(sharedWorkPlanManagementPanel);
+
+		if (projectMetadata.shouldDisplayLegacyWorkPlan())
+			addNonScrollingTab(workPlanManagementPanel);
+
 		addNonScrollingTab(settingsPanel);
 		addNonScrollingTab(rollupReportsManagementPanel);
 		addNonScrollingTab(resourceManagementPanel);
 		addNonScrollingTab(accountingCodePoolManagementPanel);
 		addNonScrollingTab(fundingSourcePoolManagementPanel);
-		addNonScrollingTab(categoryOnePoolMangementPanel);
-		addNonScrollingTab(categoryTwoPoolMangementPanel);
+		addNonScrollingTab(categoryOnePoolManagementPanel);
+		addNonScrollingTab(categoryTwoPoolManagementPanel);
 	}
-	
+
+	@Override
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		super.commandExecuted(event);
+
+		try
+		{
+			if(event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_WORKPLAN_DISPLAY_MODE))
+			{
+				ProjectMetadata projectMetadata = getProject().getMetadata();
+				MiradiTabContentsPanelInterface currentTab = getCurrentTabPanel();
+				String newTabName = currentTab.getClass().getSimpleName();
+
+				if(currentTab instanceof SharedWorkPlanManagementPanel && !projectMetadata.shouldDisplaySharedWorkPlan())
+					newTabName = WorkPlanManagementPanel.class.getSimpleName();
+
+				if(currentTab instanceof WorkPlanManagementPanel && !projectMetadata.shouldDisplayLegacyWorkPlan())
+					newTabName = SharedWorkPlanManagementPanel.class.getSimpleName();
+
+				this.refresh();
+
+				int settingsTabIndex = getTabIndex(newTabName);
+				getProject().executeAsSideEffect(getViewData().createTabChangeCommand(settingsTabIndex));
+			}
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
+
 	@Override
 	public void deleteTabs() throws Exception
 	{
-		workPlanManagementPanel.dispose();
-		workPlanManagementPanel = null;
+		if (sharedWorkPlanManagementPanel != null)
+		{
+			sharedWorkPlanManagementPanel.dispose();
+			sharedWorkPlanManagementPanel = null;
+		}
+
+		if (workPlanManagementPanel != null)
+		{
+			workPlanManagementPanel.dispose();
+			workPlanManagementPanel = null;
+		}
 
 		settingsPanel.dispose();
 		settingsPanel = null;
@@ -126,11 +141,11 @@ public class WorkPlanView extends TabbedView
 		fundingSourcePoolManagementPanel.dispose();
 		fundingSourcePoolManagementPanel = null;
 		
-		categoryOnePoolMangementPanel.dispose();
-		categoryOnePoolMangementPanel = null;
+		categoryOnePoolManagementPanel.dispose();
+		categoryOnePoolManagementPanel = null;
 		
-		categoryTwoPoolMangementPanel.dispose();
-		categoryTwoPoolMangementPanel = null;
+		categoryTwoPoolManagementPanel.dispose();
+		categoryTwoPoolManagementPanel = null;
 		
 		super.deleteTabs();
 	}
@@ -194,12 +209,13 @@ public class WorkPlanView extends TabbedView
 		return view.cardName().equals(getViewName());
 	}
 	
+	private PlanningTreeManagementPanel sharedWorkPlanManagementPanel;
 	private PlanningTreeManagementPanel workPlanManagementPanel;
 	private WorkPlanSettingsPanel settingsPanel;
 	private PlanningTreeManagementPanel rollupReportsManagementPanel;
 	private PlanningTreeManagementPanel resourceManagementPanel;
 	private PlanningTreeManagementPanel accountingCodePoolManagementPanel;
 	private PlanningTreeManagementPanel fundingSourcePoolManagementPanel;
-	private PlanningTreeManagementPanel categoryOnePoolMangementPanel;
-	private PlanningTreeManagementPanel categoryTwoPoolMangementPanel;
+	private PlanningTreeManagementPanel categoryOnePoolManagementPanel;
+	private PlanningTreeManagementPanel categoryTwoPoolManagementPanel;
 }

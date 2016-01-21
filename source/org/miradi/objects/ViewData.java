@@ -71,7 +71,12 @@ public class ViewData extends BaseObject
 		CommandSetObjectData cmd = CommandSetObjectData.createRemoveORefCommand(this, TAG_CHAIN_MODE_FACTOR_REFS, oRefToRemove);
 		return new Command[] {cmd};
 	}
-	
+
+	public CommandSetObjectData createTabChangeCommand(int newTab) throws Exception
+	{
+		return new CommandSetObjectData(ObjectType.VIEW_DATA, getId(), ViewData.TAG_CURRENT_TAB, Integer.toString(newTab));
+	}
+
 	public String getTreeConfigurationChoice()
 	{
 		return getData(TAG_TREE_CONFIGURATION_REF);

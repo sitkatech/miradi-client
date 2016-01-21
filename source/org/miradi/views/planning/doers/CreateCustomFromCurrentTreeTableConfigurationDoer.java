@@ -22,11 +22,8 @@ package org.miradi.views.planning.doers;
 
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
-import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.RowColumnProvider;
-import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.ViewData;
 import org.miradi.utils.CodeList;
 import org.miradi.views.ObjectsDoer;
@@ -84,15 +81,10 @@ public class CreateCustomFromCurrentTreeTableConfigurationDoer extends ObjectsDo
 		TabbedView view = (TabbedView) getView();	
 		String customTabName = ConfigurablePlanningManagementPanel.class.getSimpleName();
 		int customTabIndex = view.getTabIndex(customTabName);
-		getProject().executeCommand(createTabChangeCommand(customTabIndex));
+		getProject().executeCommand(getViewData().createTabChangeCommand(customTabIndex));
 	}
 
-	private CommandSetObjectData createTabChangeCommand(int newTab) throws Exception
-	{
-		return new CommandSetObjectData(ObjectType.VIEW_DATA, getViewData().getId(), ViewData.TAG_CURRENT_TAB, Integer.toString(newTab));
-	}
-
-	private BaseObject getViewData() throws Exception
+	private ViewData getViewData() throws Exception
 	{
 		return getProject().getViewData(PlanningView.getViewName());
 	}

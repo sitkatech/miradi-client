@@ -443,8 +443,6 @@ abstract public class TabbedView extends UmbrellaView
 		{
 			EAM.logException(e);
 		}
-		
-		
 	}
 
 	void handleRightClick(MouseEvent event)
