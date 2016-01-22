@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-20 03:51-0800\n"
+"POT-Creation-Date: 2016-01-22 03:36-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/miradi-client/"
@@ -1215,6 +1215,14 @@ msgstr "План на действие: на основа стратегия"
 msgid "Action-Related"
 msgstr "Действие-свързано"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/SharedWorkPlanVisibleRowsQuestion.java:50
+msgid "Actions"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/SharedWorkPlanVisibleRowsQuestion.java:47
+msgid "Actions & Monitoring"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionWizardPrevious.java:36
 msgid "Action|< Previous"
 msgstr "Action|< Предишно"
@@ -1354,10 +1362,10 @@ msgstr "Action|Създаване на таблица"
 msgid "Action|Credits"
 msgstr "Action|Кредити"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/AbstractActionWorkPlanBudgetCustomizeTableEditor.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditAnalysisRows.java:36
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionPlanningCustomizeDialogPopup.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateCustomFromCurrentTreeTableConfiguration.java:35
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionWorkPlanBudgetCustomizeTableEditor.java:35
 msgid "Action|Customize Table..."
 msgstr "Action|Персонализиране на таблица..."
 
@@ -2971,7 +2979,7 @@ msgid "Collapse Selected Column"
 msgstr "Сриване на маркирани колони"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:52
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:45
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:44
 msgid "Column groups"
 msgstr "Групи от колони"
 
@@ -5260,11 +5268,11 @@ msgstr "MenuBar|Редактиране"
 msgid "MenuBar|File"
 msgstr "MenuBar|Файл"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:582
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:583
 msgid "MenuBar|Help"
 msgstr "MenuBar|Помощ"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:514
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:515
 msgid "MenuBar|Step-by-Step"
 msgstr "MenuBar|Стъпка по стъпка"
 
@@ -5447,6 +5455,10 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectRepairer.java:158
 msgid "Missing Indicator(s) was removed!"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/SharedWorkPlanVisibleRowsQuestion.java:53
+msgid "Monitoring"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:102
@@ -6332,7 +6344,7 @@ msgstr ""
 "метод или задача. Има три основни вида ресурси - човешки, материални и "
 "финансови."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/WorkPlanTreeTablePanel.java:109
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/AbstractWorkPlanTreeTablePanel.java:94
 msgid "Resource filter is on"
 msgstr ""
 
@@ -6583,7 +6595,7 @@ msgstr ""
 "<code class='toolbarbutton'>&lt;Файл/ Експортиране на&nbsp;текуща&nbsp;"
 "страница&nbsp;като.../ RTF&nbsp;файл&gt;</code> от този иглед."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:42
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:41
 msgid "Select which column groups to display."
 msgstr ""
 
@@ -7284,7 +7296,7 @@ msgstr "TT|Създаване, изтриване или редактиране 
 msgid "TT|Customize View"
 msgstr "TT|Персонализиране на изглед"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionWorkPlanBudgetCustomizeTableEditor.java:41
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/AbstractActionWorkPlanBudgetCustomizeTableEditor.java:41
 msgid "TT|Customize Work Plan Table"
 msgstr "TT|Персонализиране на таблица на работен план"
 
@@ -7874,6 +7886,10 @@ msgstr "Tab|Междинни цели"
 msgid "Tab|Report Templates"
 msgstr "Tab|Образци на доклади"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/SharedWorkPlanManagementPanel.java:43
+msgid "Tab|Shared Work Plan"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/stress/StressListManagementPanel.java:77
 msgid "Tab|Stresses"
 msgstr "Tab|Стрес"
@@ -7883,7 +7899,7 @@ msgstr "Tab|Стрес"
 msgid "Tab|Viability"
 msgstr "Tab|Жизнеспособност"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/WorkPlanManagementPanel.java:58
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/WorkPlanManagementPanel.java:43
 msgid "Tab|Work Plan"
 msgstr "Tab|Работен план"
 
@@ -8552,7 +8568,8 @@ msgstr ""
 msgid "Title|Contributing Factor Properties"
 msgstr "Title|Свойства на фактор"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/doers/WorkPlanCustomizeTableEditorDoer.java:39
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/doers/WorkPlanCustomizeTableEditorDoer.java:41
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/doers/SharedWorkPlanCustomizeTableEditorDoer.java:41
 msgid "Title|Customize Table"
 msgstr "Title|Персонализиране на таблица"
 
@@ -9265,7 +9282,7 @@ msgstr ""
 "планове. Добрият работен план показва времетраенето и последователността на "
 "всяка задача както и конкретните ресурси, необходими за извършването й."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:53
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:52
 msgid "Work Plan Column Editor"
 msgstr "Редактор на колони на работен план"
 

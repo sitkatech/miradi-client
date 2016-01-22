@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-20 03:51-0800\n"
+"POT-Creation-Date: 2016-01-22 03:36-0800\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/miradi-client/"
@@ -1193,6 +1193,14 @@ msgstr "Plan d'action : basé sur les stratégies"
 msgid "Action-Related"
 msgstr "Lié aux actions"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/SharedWorkPlanVisibleRowsQuestion.java:50
+msgid "Actions"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/SharedWorkPlanVisibleRowsQuestion.java:47
+msgid "Actions & Monitoring"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionWizardPrevious.java:36
 msgid "Action|< Previous"
 msgstr "< Précédent"
@@ -1332,10 +1340,10 @@ msgstr "Créer un Tableau"
 msgid "Action|Credits"
 msgstr "Crédits"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/AbstractActionWorkPlanBudgetCustomizeTableEditor.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditAnalysisRows.java:36
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionPlanningCustomizeDialogPopup.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateCustomFromCurrentTreeTableConfiguration.java:35
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionWorkPlanBudgetCustomizeTableEditor.java:35
 msgid "Action|Customize Table..."
 msgstr "Personnaliser un tableau"
 
@@ -2952,7 +2960,7 @@ msgid "Collapse Selected Column"
 msgstr "Réduire la colonne sélectionnée"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:52
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:45
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:44
 msgid "Column groups"
 msgstr "Groupes de colonnes"
 
@@ -5266,11 +5274,11 @@ msgstr "Modifier"
 msgid "MenuBar|File"
 msgstr "Fichier"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:582
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:583
 msgid "MenuBar|Help"
 msgstr "Aide"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:514
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:515
 msgid "MenuBar|Step-by-Step"
 msgstr "Étape par étape"
 
@@ -5453,6 +5461,10 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectRepairer.java:158
 msgid "Missing Indicator(s) was removed!"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/SharedWorkPlanVisibleRowsQuestion.java:53
+msgid "Monitoring"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:102
@@ -6342,7 +6354,7 @@ msgstr ""
 "méthode ou une tâche. Il y a trois types principaux de ressources : "
 "humaines, matérielles et financières."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/WorkPlanTreeTablePanel.java:109
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/AbstractWorkPlanTreeTablePanel.java:94
 msgid "Resource filter is on"
 msgstr ""
 
@@ -6601,7 +6613,7 @@ msgstr ""
 "Export&nbsp;Current&nbsp;Page&nbsp;As.../ RTF&nbsp;File&gt;</code> depuis "
 "cette affichage.</span>"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:42
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:41
 msgid "Select which column groups to display."
 msgstr "Sélectionner les groupes de colonnes à afficher. "
 
@@ -7309,7 +7321,7 @@ msgstr "Créer, supprimer ou modifier les Stress"
 msgid "TT|Customize View"
 msgstr "Personnaliser l'affichage"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionWorkPlanBudgetCustomizeTableEditor.java:41
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/AbstractActionWorkPlanBudgetCustomizeTableEditor.java:41
 msgid "TT|Customize Work Plan Table"
 msgstr "Personnaliser le Tableau de plan de travail"
 
@@ -7904,6 +7916,10 @@ msgstr "Objectifs"
 msgid "Tab|Report Templates"
 msgstr "Modèles de rapport"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/SharedWorkPlanManagementPanel.java:43
+msgid "Tab|Shared Work Plan"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/stress/StressListManagementPanel.java:77
 msgid "Tab|Stresses"
 msgstr "Stress"
@@ -7913,7 +7929,7 @@ msgstr "Stress"
 msgid "Tab|Viability"
 msgstr "Viabilité"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/WorkPlanManagementPanel.java:58
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/WorkPlanManagementPanel.java:43
 msgid "Tab|Work Plan"
 msgstr "Plan de travail"
 
@@ -8594,7 +8610,8 @@ msgstr "Choisir un dossier"
 msgid "Title|Contributing Factor Properties"
 msgstr "Propriétés du facteur contribuant"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/doers/WorkPlanCustomizeTableEditorDoer.java:39
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/doers/WorkPlanCustomizeTableEditorDoer.java:41
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/doers/SharedWorkPlanCustomizeTableEditorDoer.java:41
 msgid "Title|Customize Table"
 msgstr "Personnaliser le tableau"
 
@@ -9317,7 +9334,7 @@ msgstr ""
 "bon plan de travail montre la programmation et la séquence de chaque tâche "
 "ainsi que les ressources spécifiques requises pour le mettre en œuvre."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:53
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:52
 msgid "Work Plan Column Editor"
 msgstr "Éditeur de colonne du plan de travail"
 
