@@ -36,8 +36,8 @@ abstract public class AbstractTreeNodeTaskDoer extends AbstractTreeNodeDoer
 		
 		try
 		{
-			ORefList selecionHiearchy = getSelectionHierarchy();
-			BaseObject parent = extractParentFromSelectionHiearchy(selecionHiearchy);
+			ORefList selectionHierarchy = getSelectionHierarchy();
+			BaseObject parent = extractParentFromSelectionHiearchy(selectionHierarchy);
 			if (parent == null)
 				return false;
 

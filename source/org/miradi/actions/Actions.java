@@ -166,6 +166,7 @@ public class Actions
 		registerAction(new ActionTreeShareActivity(mainWindow));
 		registerAction(new ActionTreeShareMethod(mainWindow));
 		registerAction(new ActionPlanningCreationMenu(mainWindow));
+		registerAction(new ActionSharedWorkPlanningCreationMenu(mainWindow));
 		registerAction(new ActionPlanningRowsEditor(mainWindow));
 		registerAction(new ActionPlanningColumnsEditor(mainWindow));
 		registerAction(new ActionWorkPlanBudgetCustomizeTableEditor(mainWindow));

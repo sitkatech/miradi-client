@@ -22,6 +22,7 @@ package org.miradi.views;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.views.planning.PlanningView;
 import org.miradi.views.umbrella.UmbrellaView;
+import org.miradi.views.workplan.WorkPlanView;
 
 abstract public class ViewDoer extends MainWindowDoer
 {
@@ -66,6 +67,22 @@ abstract public class ViewDoer extends MainWindowDoer
 		return true;
 	}
 	
+	public WorkPlanView getWorkPlanView() throws RuntimeException
+	{
+		if (isWorkPlanView())
+			return (WorkPlanView) getView();
+
+		throw new RuntimeException("Not in WorkPlanView");
+	}
+
+	public boolean isWorkPlanView()
+	{
+		if (! getView().cardName().equals(WorkPlanView.getViewName()))
+			return false;
+
+		return true;
+	}
+
 	public boolean isInDiagram()
 	{
 		if (! DiagramView.is(getView()))

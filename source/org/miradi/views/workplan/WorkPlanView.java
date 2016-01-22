@@ -21,7 +21,10 @@ package org.miradi.views.workplan;
 
 
 import org.miradi.actions.*;
+import org.miradi.dialogs.base.ObjectManagementPanel;
+import org.miradi.dialogs.planning.EmptyRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
+import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.main.*;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
@@ -37,6 +40,8 @@ import org.miradi.views.umbrella.doers.TaskMoveUpDoer;
 import org.miradi.views.umbrella.doers.TreeNodeShareActivityDoer;
 import org.miradi.views.umbrella.doers.TreeNodeShareMethodDoer;
 import org.miradi.views.workplan.doers.*;
+
+import java.util.HashMap;
 
 public class WorkPlanView extends TabbedView implements CommandExecutedListener
 {
@@ -65,19 +70,38 @@ public class WorkPlanView extends TabbedView implements CommandExecutedListener
 		categoryOnePoolManagementPanel = WorkPlanBudgetCategoryManagementPanel.createManagementPanel(getMainWindow(), new BudgetCategoryOneManagementConfiguration(getProject()));
 		categoryTwoPoolManagementPanel = WorkPlanBudgetCategoryManagementPanel.createManagementPanel(getMainWindow(), new BudgetCategoryTwoManagementConfiguration(getProject()));
 
+		managementPanelMap = new HashMap<String, PlanningTreeManagementPanel>();
+
 		if (projectMetadata.shouldDisplaySharedWorkPlan())
-			addNonScrollingTab(sharedWorkPlanManagementPanel);
+			addPlanningManagementTab(sharedWorkPlanManagementPanel);
 
 		if (projectMetadata.shouldDisplayLegacyWorkPlan())
-			addNonScrollingTab(workPlanManagementPanel);
+			addPlanningManagementTab(workPlanManagementPanel);
 
 		addNonScrollingTab(settingsPanel);
-		addNonScrollingTab(rollupReportsManagementPanel);
-		addNonScrollingTab(resourceManagementPanel);
-		addNonScrollingTab(accountingCodePoolManagementPanel);
-		addNonScrollingTab(fundingSourcePoolManagementPanel);
-		addNonScrollingTab(categoryOnePoolManagementPanel);
-		addNonScrollingTab(categoryTwoPoolManagementPanel);
+
+		addPlanningManagementTab(rollupReportsManagementPanel);
+		addPlanningManagementTab(resourceManagementPanel);
+		addPlanningManagementTab(accountingCodePoolManagementPanel);
+		addPlanningManagementTab(fundingSourcePoolManagementPanel);
+		addPlanningManagementTab(categoryOnePoolManagementPanel);
+		addPlanningManagementTab(categoryTwoPoolManagementPanel);
+	}
+
+	private void addPlanningManagementTab(PlanningTreeManagementPanel managementPanel)
+	{
+		addNonScrollingTab(managementPanel);
+		managementPanelMap.put(managementPanel.getPanelDescription(), managementPanel);
+	}
+
+	public RowColumnProvider getRowColumnProvider()
+	{
+		ObjectManagementPanel managementPanel = (ObjectManagementPanel)getCurrentTabContents();
+		String panelDescriptionAsKey = managementPanel.getPanelDescription();
+		if (getManagementPanelMap().containsKey(panelDescriptionAsKey))
+			return getManagementPanelMap().get(panelDescriptionAsKey).getRowColumnProvider();
+
+		return new EmptyRowColumnProvider();
 	}
 
 	@Override
@@ -200,6 +224,7 @@ public class WorkPlanView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionEditAnalysisRows.class, new EditAnalysisRowsDoer());
 		
 		addDoerToMap(ActionPlanningCreationMenu.class, new PlanningTreeNodeCreationMenuDoer());
+		addDoerToMap(ActionSharedWorkPlanningCreationMenu.class, new SharedWorkPlanningTreeNodeCreationMenuDoer());
 		addDoerToMap(ActionWorkPlanBudgetCustomizeTableEditor.class, new WorkPlanCustomizeTableEditorDoer());
 		addDoerToMap(ActionSharedWorkPlanBudgetCustomizeTableEditor.class, new SharedWorkPlanCustomizeTableEditorDoer());
 		addDoerToMap(ActionFilterWorkPlanByProjectResource.class, new ProjectResourceWorkPlanFilterEditDoer());
@@ -209,7 +234,12 @@ public class WorkPlanView extends TabbedView implements CommandExecutedListener
 	{
 		return view.cardName().equals(getViewName());
 	}
-	
+
+	private HashMap<String, PlanningTreeManagementPanel> getManagementPanelMap()
+	{
+		return managementPanelMap;
+	}
+
 	private PlanningTreeManagementPanel sharedWorkPlanManagementPanel;
 	private PlanningTreeManagementPanel workPlanManagementPanel;
 	private WorkPlanSettingsPanel settingsPanel;
@@ -219,4 +249,6 @@ public class WorkPlanView extends TabbedView implements CommandExecutedListener
 	private PlanningTreeManagementPanel fundingSourcePoolManagementPanel;
 	private PlanningTreeManagementPanel categoryOnePoolManagementPanel;
 	private PlanningTreeManagementPanel categoryTwoPoolManagementPanel;
+
+	private HashMap<String, PlanningTreeManagementPanel> managementPanelMap;
 }

@@ -69,7 +69,7 @@ public class SharedWorkPlanTreeTablePanel extends AbstractWorkPlanTreeTablePanel
 		return new Class[] {
 				ActionExpandAllRows.class,
 				ActionTreeNodeUp.class,
-				ActionPlanningCreationMenu.class,
+				ActionSharedWorkPlanningCreationMenu.class,
 				ActionSharedWorkPlanBudgetCustomizeTableEditor.class,
 
 				ActionCollapseAllRows.class,
