@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.actions.*;
-import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
+import org.miradi.dialogs.planning.SharedWorkPlanRowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.AbstractFixedHeightDirectlyAboveTreeTablePanel;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNodeAlwaysExpanded;
 import org.miradi.main.MainWindow;
@@ -43,7 +43,7 @@ public class SharedWorkPlanTreeTablePanel extends AbstractWorkPlanTreeTablePanel
 
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception
 	{
-		WorkPlanRowColumnProvider rowColumnProvider = new WorkPlanRowColumnProvider(mainWindowToUse.getProject());
+		SharedWorkPlanRowColumnProvider rowColumnProvider = new SharedWorkPlanRowColumnProvider(mainWindowToUse.getProject());
 		PlanningTreeRootNodeAlwaysExpanded rootNode = new PlanningTreeRootNodeAlwaysExpanded(mainWindowToUse.getProject());
 		PlanningTreeTableModel model = new WorkPlanTreeTableModel(mainWindowToUse.getProject(), rootNode, rowColumnProvider);
 		PlanningTreeTable treeTable = new PlanningTreeTableWithVisibleRootNode(mainWindowToUse, model);

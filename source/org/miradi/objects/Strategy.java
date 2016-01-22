@@ -111,6 +111,12 @@ public class Strategy extends Factor
 		return new ORefList(TaskSchema.getObjectType(), getActivityIds());
 	}
 	
+	public ORefList getMonitoringActivityRefs()
+	{
+		Vector<Task> monitoringActivities = getMonitoringActivities();
+		return new ORefList(monitoringActivities);
+	}
+
 	public Vector<Task> getActivities()
 	{
 		Vector<Task> activities = new Vector<Task>();
@@ -124,6 +130,20 @@ public class Strategy extends Factor
 		return activities;
 	}
 	
+	public Vector<Task> getMonitoringActivities()
+	{
+		Vector<Task> activities = new Vector<Task>();
+		ORefList activityRefs = getActivityRefs();
+		for (int index = 0; index < activityRefs.size(); ++index)
+		{
+			Task activity = Task.find(getProject(), activityRefs.get(index));
+			if (activity.isMonitoringActivity())
+				activities.add(activity);
+		}
+
+		return activities;
+	}
+
 	@Override
 	public String getPseudoData(String fieldTag)
 	{

@@ -19,88 +19,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning;
 
-import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
-import org.miradi.main.EAM;
-import org.miradi.objecthelpers.CodeToCodeListMap;
-import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
-import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
 
-public class WorkPlanRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
+public class WorkPlanRowColumnProvider extends AbstractWorkPlanRowColumnProvider
 {
 	public WorkPlanRowColumnProvider(Project projectToUse)
 	{
 		super(projectToUse);
 	}
-	
-	public boolean shouldIncludeResultsChain()
-	{
-		return getProject().getMetadata().shouldIncludeResultsChain();
-	}
 
-	public boolean shouldIncludeConceptualModelPage()
-	{
-		return getProject().getMetadata().shouldIncludeConceptualModelPage();
-	}
-	
-	public CodeList getColumnCodesToShow() throws Exception
-	{
-		CodeList columnCodesToShow = new CodeList(new String[] {});
-		
-		columnCodesToShow.addAll(getBudgetColumnCodesFromTableSettingsMap());
-		
-		return columnCodesToShow;
-	}
-	
-	protected CodeList getBudgetColumnCodesFromTableSettingsMap()
-	{
-		try
-		{
-			TableSettings tableSettings = getWorkPlanTableSettings();
-			CodeToCodeListMap tableSettingsMap = tableSettings.getTableSettingsMap();
-			return tableSettingsMap.getCodeList(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return new CodeList();
-		}
-	}
-
-	public CodeList getRowCodesToShow() throws Exception
-	{
-		
-		TableSettings tableSettings = getWorkPlanTableSettings();
-		String code = tableSettings.getData(TableSettings.TAG_WORK_PLAN_VISIBLE_NODES_CODE);
-		
-		return getRowCodes(code);
-	}
-
-	protected CodeList getRowCodes(String code)
-	{
-		if (code.equals(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE))
-			return createAllRowCodeList();
-		
-		if (code.equals(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE))
-			return createActionRelatedRowCodeList();
-		
-		if (code.equals(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE))
-			return createMonitoringRelatedRowCodeList();
-		
-		EAM.logDebug("No proper code found, returning empty row codes for work plan tree table");
-		return new CodeList();
-	}
-
-	@Override
-	public String getDiagramFilter() throws Exception
-	{
-		TableSettings tableSettings = this.getWorkPlanTableSettings();
-		return tableSettings.getData(TableSettings.TAG_WORK_PLAN_DIAGRAM_FILTER);
-	}
-
-	private CodeList createMonitoringRelatedRowCodeList()
+	protected CodeList createMonitoringRelatedRowCodeList()
 	{
 		return new CodeList(new String[] {
 				ConceptualModelDiagramSchema.OBJECT_NAME,
@@ -108,10 +38,10 @@ public class WorkPlanRowColumnProvider extends AbstractPlanningTreeRowColumnProv
 				IndicatorSchema.OBJECT_NAME,
 				TaskSchema.METHOD_NAME,
 				TaskSchema.OBJECT_NAME,
-				});
+		});
 	}
 
-	private CodeList createActionRelatedRowCodeList()
+	protected CodeList createActionRelatedRowCodeList()
 	{
 		return new CodeList(new String[] {
 				ConceptualModelDiagramSchema.OBJECT_NAME,
@@ -119,7 +49,7 @@ public class WorkPlanRowColumnProvider extends AbstractPlanningTreeRowColumnProv
 				StrategySchema.OBJECT_NAME,
 				TaskSchema.ACTIVITY_NAME,
 				TaskSchema.OBJECT_NAME,
-				});
+		});
 	}
 
 	protected CodeList createAllRowCodeList()
@@ -132,17 +62,6 @@ public class WorkPlanRowColumnProvider extends AbstractPlanningTreeRowColumnProv
 				IndicatorSchema.OBJECT_NAME,
 				TaskSchema.METHOD_NAME,
 				TaskSchema.OBJECT_NAME,
-				});
-	}
-	
-	private TableSettings getWorkPlanTableSettings() throws Exception
-	{
-		return TableSettings.findOrCreate(getProject(), WorkPlanTreeTablePanel.getTabSpecificModelIdentifier());
-	}
-	
-	@Override
-	public String getWorkPlanBudgetMode() throws Exception
-	{
-		return getWorkPlanTableSettings().getData(TableSettings.TAG_WORK_PLAN_VISIBLE_NODES_CODE);
+		});
 	}
 }
