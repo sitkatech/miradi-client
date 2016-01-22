@@ -27,16 +27,15 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
-import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.schemas.TableSettingsSchema;
 
 public class WorkPlanColumnConfigurationEditorPanel extends ObjectDataInputPanel
 {
-	public WorkPlanColumnConfigurationEditorPanel(Project projectToUse, ORef orefToUse)
+	public WorkPlanColumnConfigurationEditorPanel(Project projectToUse, ORef orefToUse, ChoiceQuestion workPlanVisibleRowsQuestion)
 	{
 		super(projectToUse, orefToUse);
 
-		addField(createChoiceField(TableSettingsSchema.getObjectType(), TableSettings.TAG_WORK_PLAN_VISIBLE_NODES_CODE, StaticQuestionManager.getQuestion(WorkPlanVisibleRowsQuestion.class)));
+		addField(createChoiceField(TableSettingsSchema.getObjectType(), TableSettings.TAG_WORK_PLAN_VISIBLE_NODES_CODE, workPlanVisibleRowsQuestion));
 		
 		addHtmlWrappedLabel("");
 		addHtmlWrappedLabel(EAM.text("Select which column groups to display."));

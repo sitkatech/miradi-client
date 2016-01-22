@@ -169,6 +169,7 @@ public class Actions
 		registerAction(new ActionPlanningRowsEditor(mainWindow));
 		registerAction(new ActionPlanningColumnsEditor(mainWindow));
 		registerAction(new ActionWorkPlanBudgetCustomizeTableEditor(mainWindow));
+		registerAction(new ActionSharedWorkPlanBudgetCustomizeTableEditor(mainWindow));
 		registerAction(new ActionEditAnalysisRows(mainWindow));
 		registerAction(new ActionFilterWorkPlanByProjectResource(mainWindow));
 		registerAction(new ActionExpandToMenu(mainWindow));

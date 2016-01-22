@@ -21,7 +21,7 @@ package org.miradi.views.workplan;
 
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
-import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
+import org.miradi.dialogs.planning.upperPanel.SharedWorkPlanTreeTablePanel;
 import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -32,7 +32,7 @@ import javax.swing.*;
 
 class SharedWorkPlanManagementPanel extends AbstractWorkPlanManagementPanel
 {
-	public SharedWorkPlanManagementPanel(MainWindow mainWindowToUse, PlanningTreeTablePanel planningTreeTablePanel, PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel)	throws Exception
+	public SharedWorkPlanManagementPanel(MainWindow mainWindowToUse, PlanningTreeTablePanel planningTreeTablePanel, PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel) throws Exception
 	{
 		super(mainWindowToUse, planningTreeTablePanel, planningTreePropertiesPanel);
 	}
@@ -49,17 +49,15 @@ class SharedWorkPlanManagementPanel extends AbstractWorkPlanManagementPanel
 		return IconManager.getSharedWorkPlanIcon();
 	}
 
-	// TODO: MRD-5935 - need to implement different tree table panel, etc.
-
 	@Override
 	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
-		return WorkPlanTreeTablePanel.createPlanningTreeTablePanel(getMainWindow());
+		return SharedWorkPlanTreeTablePanel.createPlanningTreeTablePanel(getMainWindow());
 	}
 	
 	public static SharedWorkPlanManagementPanel createWorkPlanPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		PlanningTreeTablePanel workPlanTreeTablePanel = WorkPlanTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse);
+		PlanningTreeTablePanel workPlanTreeTablePanel = SharedWorkPlanTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse);
 		PlanningTreeMultiPropertiesPanel workPlanPropertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 
 		return new SharedWorkPlanManagementPanel(mainWindowToUse, workPlanTreeTablePanel, workPlanPropertiesPanel);

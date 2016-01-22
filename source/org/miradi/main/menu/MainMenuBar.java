@@ -481,6 +481,7 @@ public class MainMenuBar extends JMenuBar
 		if(isWorkPlanView())
 		{
 			addMenuItem(actions, menu, ActionWorkPlanBudgetCustomizeTableEditor.class);
+			addMenuItem(actions, menu, ActionSharedWorkPlanBudgetCustomizeTableEditor.class);
 			addMenuItem(actions, menu, ActionFilterWorkPlanByProjectResource.class);
 		}
 		if (isViabilityView())

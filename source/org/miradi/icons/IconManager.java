@@ -426,6 +426,16 @@ public class IconManager
 		return getIcon(ActivityIcon.class);
 	}
 	
+	public static Icon getActivityIcon()
+	{
+		return getIcon(ActivityIcon.class);
+	}
+
+	public static Icon getMonitoringActivityIcon()
+	{
+		return getIcon(MonitoringActivityIcon.class);
+	}
+
 	public static Icon getConceptualModelIcon()
 	{
 		return getIcon(ConceptualModelIcon.class);

@@ -201,6 +201,7 @@ public class WorkPlanView extends TabbedView implements CommandExecutedListener
 		
 		addDoerToMap(ActionPlanningCreationMenu.class, new PlanningTreeNodeCreationMenuDoer());
 		addDoerToMap(ActionWorkPlanBudgetCustomizeTableEditor.class, new WorkPlanCustomizeTableEditorDoer());
+		addDoerToMap(ActionSharedWorkPlanBudgetCustomizeTableEditor.class, new SharedWorkPlanCustomizeTableEditorDoer());
 		addDoerToMap(ActionFilterWorkPlanByProjectResource.class, new ProjectResourceWorkPlanFilterEditDoer());
 	}
 	
