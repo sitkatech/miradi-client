@@ -45,7 +45,8 @@ public class WorkPlanDiagramFilterPanel extends ObjectDataInputPanel
 
 		tableSettings = tableSettingsToUse;
 
-		diagramInclusionChoiceField = (ObjectChoiceField) createChoiceField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION, StaticQuestionManager.getQuestion(DiagramObjectDataInclusionQuestion.class));
+		diagramInclusionChoiceQuestion = StaticQuestionManager.getQuestion(DiagramObjectDataInclusionQuestion.class);
+		diagramInclusionChoiceField = (ObjectChoiceField) createChoiceField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION, diagramInclusionChoiceQuestion);
 		addField(diagramInclusionChoiceField);
 
 		diagramChoiceQuestion = new DiagramChoiceQuestion(projectToUse, rowColumnProvider);
@@ -67,34 +68,41 @@ public class WorkPlanDiagramFilterPanel extends ObjectDataInputPanel
 		diagramChoiceQuestion.reloadQuestion(this.getProject());
 		ChoiceItem[] diagramChoices = diagramChoiceQuestion.getChoices();
 
-		ChoiceItemComboBox combo = (ChoiceItemComboBox) diagramFilterChoiceField.getComponent();
+		ChoiceItemComboBox diagramInclusionCombo = (ChoiceItemComboBox) diagramInclusionChoiceField.getComponent();
+		ChoiceItemComboBox diagramFilterCombo = (ChoiceItemComboBox) diagramFilterChoiceField.getComponent();
 
-		ActionListener[] actionListeners = combo.getActionListeners();
+		ActionListener[] actionListeners = diagramFilterCombo.getActionListeners();
 		for(ActionListener actionListener : actionListeners)
-			combo.removeActionListener(actionListener);
+			diagramFilterCombo.removeActionListener(actionListener);
 
-		FocusListener[] focusListeners = combo.getFocusListeners();
+		FocusListener[] focusListeners = diagramFilterCombo.getFocusListeners();
 		for(FocusListener focusListener : focusListeners)
-			combo.removeFocusListener(focusListener);
+			diagramFilterCombo.removeFocusListener(focusListener);
+
+		ProjectMetadata metadata = this.getProject().getMetadata();
+		String diagramInclusion = metadata.getData(ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION);
+		ChoiceItem selectedInclusionChoiceItem = diagramInclusionChoiceQuestion.findChoiceByCode(diagramInclusion);
+		diagramInclusionCombo.setSelectedItem(selectedInclusionChoiceItem);
 
 		DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel(diagramChoices);
-		combo.setModel(comboBoxModel);
+		diagramFilterCombo.setModel(comboBoxModel);
 
 		String diagramFilter = tableSettings.getData(TableSettings.TAG_WORK_PLAN_DIAGRAM_FILTER);
-		ChoiceItem selectedChoiceItem = diagramChoiceQuestion.getSelectedChoiceItem(this.getProject(), diagramFilter);
-		combo.setSelectedItem(selectedChoiceItem);
+		ChoiceItem selectedFilterChoiceItem = diagramChoiceQuestion.getSelectedChoiceItem(this.getProject(), diagramFilter);
+		diagramFilterCombo.setSelectedItem(selectedFilterChoiceItem);
 
-		CommandSetObjectData setDiagramFilter = new CommandSetObjectData(tableSettings.getRef(), TableSettings.TAG_WORK_PLAN_DIAGRAM_FILTER, selectedChoiceItem.getCode());
+		CommandSetObjectData setDiagramFilter = new CommandSetObjectData(tableSettings.getRef(), TableSettings.TAG_WORK_PLAN_DIAGRAM_FILTER, selectedFilterChoiceItem.getCode());
 		this.getProject().executeAsSideEffect(setDiagramFilter);
 
 		for(ActionListener actionListener : actionListeners)
-			combo.addActionListener(actionListener);
+			diagramFilterCombo.addActionListener(actionListener);
 
 		for(FocusListener focusListener : focusListeners)
-			combo.addFocusListener(focusListener);
+			diagramFilterCombo.addFocusListener(focusListener);
 	}
 
 	private final TableSettings tableSettings;
+	private final ChoiceQuestion diagramInclusionChoiceQuestion;
 	private final ObjectChoiceField diagramInclusionChoiceField;
 	private final DiagramChoiceQuestion diagramChoiceQuestion;
 	private final ObjectChoiceField diagramFilterChoiceField;

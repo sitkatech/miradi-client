@@ -24,16 +24,12 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.planning.propertiesPanel.AboveBudgetColumnsBar;
 import org.miradi.dialogs.planning.propertiesPanel.AbstractFixedHeightDirectlyAboveTreeTablePanel;
 import org.miradi.dialogs.planning.propertiesPanel.WorkPlanAboveBudgetColumnsBar;
-import org.miradi.exceptions.CommandFailedException;
-import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
-import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TableSettings;
-import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.views.workplan.WorkPlanDiagramFilterPanel;
 
 import javax.swing.*;
@@ -48,24 +44,6 @@ abstract class AbstractWorkPlanTreeTablePanel extends PlanningTreeTablePanel
 											 AbstractFixedHeightDirectlyAboveTreeTablePanel treeTableHeaderPanel) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider, treeTableHeaderPanel);
-	}
-
-	@Override
-	public void handleCommandEventImmediately(CommandExecutedEvent event)
-	{
-		super.handleCommandEventImmediately(event);
-
-		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION))
-		{
-			try
-			{
-				diagramFilterPanel.updateDiagramFilterChoices();
-			}
-			catch(CommandFailedException e)
-			{
-				EAM.logException(e);
-			}
-		}
 	}
 
 	@Override
@@ -122,6 +100,12 @@ abstract class AbstractWorkPlanTreeTablePanel extends PlanningTreeTablePanel
 	protected GridLayoutPlus createButtonLayout()
 	{
 		return new GridLayoutPlus(2, 4, 1, 1);
+	}
+
+	@Override
+	protected void updateDiagramFilter() throws Exception
+	{
+		diagramFilterPanel.updateDiagramFilterChoices();
 	}
 
 	@Override

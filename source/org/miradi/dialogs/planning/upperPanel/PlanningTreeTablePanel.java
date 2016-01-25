@@ -188,6 +188,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		tree.rebuildTableCompletely();
 
 		updateResourceFilter();
+		updateDiagramFilter();
 		updateCustomizeTableFilter();
 		multiTableModel.updateColumnsToShow();
 		
@@ -214,6 +215,10 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	}
 	
 	protected void updateResourceFilter() throws Exception
+	{
+	}
+
+	protected void updateDiagramFilter() throws Exception
 	{
 	}
 
