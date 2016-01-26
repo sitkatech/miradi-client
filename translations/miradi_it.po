@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-25 06:51-0800\n"
+"POT-Creation-Date: 2016-01-26 05:21-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/miradi-client/"
@@ -6264,7 +6264,7 @@ msgstr ""
 "attività/metodo o un compito. Ci sono tre principali tipi di risorse - "
 "umane, materiali e finanziarie."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/AbstractWorkPlanTreeTablePanel.java:72
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/AbstractWorkPlanTreeTablePanel.java:70
 msgid "Resource filter is on"
 msgstr ""
 
@@ -6897,6 +6897,10 @@ msgstr "Forte Abbassamento"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/TrendQuestion.java:39
 msgid "Strong Increase"
 msgstr "Forte Aumento"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/SharedWorkPlanTreeTablePanel.java:79
+msgid "Sub-tasks are not shown; use the legacy Work Plan tab to view sub-tasks"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:153
