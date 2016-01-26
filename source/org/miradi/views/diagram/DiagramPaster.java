@@ -57,7 +57,7 @@ abstract public class DiagramPaster
 		project = currentModel.getProject();
 		transferableList = transferableListToUse;
 		oldToNewPastedObjectMap = new HashMap<ORef, ORef>();
-        doesPasteDiscardInvalidTaxonomyClassifcationList = false;
+        doesPasteDiscardInvalidTaxonomyClassificationList = false;
 
 		factorDeepCopies = transferableList.getFactorDeepCopies();
 		diagramFactorDeepCopies = transferableList.getDiagramFactorDeepCopies();
@@ -133,6 +133,12 @@ abstract public class DiagramPaster
 	
 	private Command[] getCommandToFixUpIdRefs(HashMap pastedObjectMap, BaseObject newObject, String tag) throws Exception
 	{
+		if (ResourcePlanSchema.getObjectType() == newObject.getType())
+		{
+			if (ResourcePlan.TAG_RESOURCE_ID.equals(tag))
+				return getCommandToFixId(pastedObjectMap, newObject, ProjectResourceSchema.getObjectType(), tag);
+		}
+		
 		if (ResourceAssignmentSchema.getObjectType() == newObject.getType())
 		{
 			if (ResourceAssignment.TAG_ACCOUNTING_CODE_ID.equals(tag))
@@ -143,14 +149,14 @@ abstract public class DiagramPaster
 
 			if (ResourceAssignment.TAG_RESOURCE_ID.equals(tag))
 				return getCommandToFixId(pastedObjectMap, newObject, ProjectResourceSchema.getObjectType(), tag);
-			
+
 			if (ResourceAssignment.TAG_CATEGORY_ONE_REF.equals(tag))
 				return getCommandToFixRef(pastedObjectMap, newObject, tag);
-			
+
 			if (ResourceAssignment.TAG_CATEGORY_TWO_REF.equals(tag))
 				return getCommandToFixRef(pastedObjectMap, newObject, tag);
 		}
-		
+
 		if (ExpenseAssignment.is(newObject))
 		{
 			if (ExpenseAssignment.TAG_ACCOUNTING_CODE_REF.equals(tag))
@@ -187,11 +193,16 @@ abstract public class DiagramPaster
 				return getCommandToFixRef(pastedObjectMap, newObject, tag);
 		}
 		
+		if (tag.equals(BaseObject.TAG_PLANNED_LEADER_RESOURCE))
+		{
+			return getCommandToFixRef(pastedObjectMap, newObject, tag);
+		}
+
 		if (tag.equals(BaseObject.TAG_ASSIGNED_LEADER_RESOURCE))
 		{
 			return getCommandToFixRef(pastedObjectMap, newObject, tag);
 		}
-					
+
 		return new Command[0];
 	}
 
@@ -375,9 +386,9 @@ abstract public class DiagramPaster
 	{
 		Point originalLocation = json.getPoint(DiagramFactor.TAG_LOCATION);
 		int offsetToAvoidOverlaying = dataHelper.getOffset(getProject());
-		Point transLatedPoint = dataHelper.getSnappedTranslatedPoint(getProject(), originalLocation, offsetToAvoidOverlaying);
+		Point translatedPoint = dataHelper.getSnappedTranslatedPoint(getProject(), originalLocation, offsetToAvoidOverlaying);
 		
-		return EnhancedJsonObject.convertFromPoint(transLatedPoint);
+		return EnhancedJsonObject.convertFromPoint(translatedPoint);
 	}
 
 	private String movePoints(PointList originalBendPoints, int offsetToAvoidOverlaying) throws Exception
@@ -825,7 +836,7 @@ abstract public class DiagramPaster
 		if (!isInBetweenProjectPaste())
 			return false;
 
-        if (doesPasteDiscardInvalidTaxonomyClassifcationList)
+        if (doesPasteDiscardInvalidTaxonomyClassificationList)
             return true;
 
 		for (int i = 0; i < factorDeepCopies.size(); ++i)
@@ -833,8 +844,13 @@ abstract public class DiagramPaster
 			String jsonAsString = factorDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			int type = getTypeFromJson(json);
-			final ORef optRef = json.optRef(BaseObject.TAG_ASSIGNED_LEADER_RESOURCE);
-			if (optRef.isValid())
+			final ORef plannedLeaderResourceRef = json.optRef(BaseObject.TAG_PLANNED_LEADER_RESOURCE);
+			if (plannedLeaderResourceRef.isValid())
+				return true;
+			final ORef assignedLeaderResourceRef = json.optRef(BaseObject.TAG_ASSIGNED_LEADER_RESOURCE);
+			if (assignedLeaderResourceRef.isValid())
+				return true;
+			if (ResourcePlanSchema.getObjectType() == type)
 				return true;
 			if (ResourceAssignmentSchema.getObjectType() == type)
 				return true;
@@ -988,7 +1004,7 @@ abstract public class DiagramPaster
 
             if (tag.equals(BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER) && !isValidTaxonomyClassificationList(project, baseObject, value))
             {
-                doesPasteDiscardInvalidTaxonomyClassifcationList = true;
+                doesPasteDiscardInvalidTaxonomyClassificationList = true;
                 continue;
             }
 
@@ -1066,7 +1082,7 @@ abstract public class DiagramPaster
 	protected AbstractTransferableMiradiList transferableList;
 	private Vector<EAMGraphCell> pastedCellsToSelect;
 
-    private boolean doesPasteDiscardInvalidTaxonomyClassifcationList;
+    private boolean doesPasteDiscardInvalidTaxonomyClassificationList;
 
 	public static final String FAKE_TAG_TYPE = "Type";
 	public static final String FAKE_TAG_TAG_NAMES = "TagNames";
