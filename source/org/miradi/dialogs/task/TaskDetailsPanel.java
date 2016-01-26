@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.task;
 
-import javax.swing.Icon;
+import javax.swing.*;
 
 import org.miradi.actions.Actions;
 import org.miradi.dialogfields.ObjectDataInputField;
@@ -68,8 +68,12 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 
 	private void updateTaskNameLabel()
 	{
-		taskNameLabel.setIcon(getTaskTypeIcon());
-		taskNameLabel.setText(getTaskTypeLabel());
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				taskNameLabel.setIcon(getTaskTypeIcon());
+				taskNameLabel.setText(getTaskTypeLabel());
+			}
+		});
 	}
 	
 	private Icon getTaskTypeIcon()
