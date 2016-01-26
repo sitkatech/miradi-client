@@ -212,6 +212,8 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		updateRightSideTablePanels();
 
 		selectObjectAfterSwingClearsItDueToTreeStructureChange(getMainTable(), selectionHierarchy, selectedRow, selectedColumn);
+
+		updateStatusBar();
 	}
 	
 	protected void updateResourceFilter() throws Exception
@@ -223,6 +225,10 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	}
 
 	protected void updateCustomizeTableFilter() throws Exception
+	{
+	}
+
+	public void updateStatusBar()
 	{
 	}
 

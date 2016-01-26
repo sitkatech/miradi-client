@@ -1087,7 +1087,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		getMainStatusBar().clear();
 	}
 	
-	private MainStatusBar getMainStatusBar()
+	public MainStatusBar getMainStatusBar()
 	{
 		return mainStatusBar;
 	}

@@ -40,6 +40,11 @@ public class MainStatusBar extends JPanel
 		statusSummary.setIcon(IconManager.getWarningIcon());
 	}
 	
+	public String getWarningStatus()
+	{
+		return statusSummary.getText();
+	}
+
 	public void clear()
 	{
 		statusSummary.setText("");

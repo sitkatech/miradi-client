@@ -66,8 +66,6 @@ abstract class AbstractWorkPlanTreeTablePanel extends PlanningTreeTablePanel
 		getBudgetDetailsTableModel().setResourcesFilter(projectResourceRefsToRetain);
 		getPlanningViewMainTableModel().setResourcesFilter(projectResourceRefsToRetain);
 
-		getMainWindow().updatePlanningDateRelatedStatus();
-
 		if (getMainWindow().areAnyProjectResourceFiltersOn())
 			filterResourceLabel.setText(EAM.text("Resource filter is on"));
 		else
@@ -126,6 +124,12 @@ abstract class AbstractWorkPlanTreeTablePanel extends PlanningTreeTablePanel
 	{
 		final String TAB_TAG = "Tab_Tag";
 		return WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER + TAB_TAG;
+	}
+
+	@Override
+	public void updateStatusBar()
+	{
+		getMainWindow().updatePlanningDateRelatedStatus();
 	}
 
 	abstract protected String getTextForCustomizeTableFilter(String workPlanBudgetMode);
