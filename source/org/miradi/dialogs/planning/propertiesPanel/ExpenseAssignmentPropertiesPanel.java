@@ -33,7 +33,7 @@ public class ExpenseAssignmentPropertiesPanel extends ObjectDataInputPanelWithSe
 		super(mainWindow.getProject(), ExpenseAssignmentSchema.getObjectType());
 		
 		setLayout(new OneColumnGridLayout());
-		
+
 		addSubPanelWithTitledBorder(new ExpenseAssignmentSubPanel(getProject(), ExpenseAssignmentSchema.getObjectType()));
 
 		updateFieldsFromProject();

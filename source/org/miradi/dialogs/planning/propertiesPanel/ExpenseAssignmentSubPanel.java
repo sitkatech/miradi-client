@@ -1,4 +1,4 @@
-/* 
+/*
 Copyright 2005-2015, Foundations of Success, Bethesda, Maryland
 on behalf of the Conservation Measures Partnership ("CMP").
 Material developed between 2005-2013 is jointly copyright by Beneficent Technology, Inc. ("The Benetech Initiative"), Palo Alto, California.
@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.dialogfields.ObjectDataInputField;
-import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.objects.ExpenseAssignment;
@@ -32,11 +31,23 @@ import org.miradi.questions.FundingSourceQuestionWithUnspecifiedChoice;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 
 
-public class ExpenseAssignmentSubPanel extends ObjectDataInputPanel
+public class ExpenseAssignmentSubPanel extends AbstractAssignmentSubPanel
 {
 	public ExpenseAssignmentSubPanel(Project projectToUse, int objectType) throws Exception
 	{
 		super(projectToUse, objectType);
+	}
+
+	@Override
+	public String getPanelDescription()
+	{
+		return EAM.text("Expense");
+	}
+
+	protected void rebuild() throws Exception
+	{
+		removeAll();
+		getFields().clear();
 
 		ObjectDataInputField expenseNameField = createExpandableField(ExpenseAssignmentSchema.getObjectType(), ExpenseAssignment.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Expense"), IconManager.getExpenseIcon(), new ObjectDataInputField[]{expenseNameField});
@@ -52,12 +63,12 @@ public class ExpenseAssignmentSubPanel extends ObjectDataInputPanel
 
 		ObjectDataInputField budgetCategoryTwoDropdownField = createChoiceField(ExpenseAssignmentSchema.getObjectType(), ExpenseAssignment.TAG_CATEGORY_TWO_REF, new BudgetCategoryTwoQuestionWithUnspecifiedChoice(getProject()));
 		addField(budgetCategoryTwoDropdownField);
-	}
 
-	@Override
-	public String getPanelDescription()
-	{
-		return EAM.text("Expense");
-	}
+		updateFieldsFromProject();
 
+		doLayout();
+
+		validate();
+		repaint();
+	}
 }
