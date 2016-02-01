@@ -40,6 +40,7 @@ public class ResourceAssignmentSchema extends AbstractAssignmentSchema
 		createFieldSchemaOptionalBaseId(ResourceAssignment.TAG_FUNDING_SOURCE_ID, FundingSourceSchema.getObjectType());
 		
 		createPseudoFieldSchemaString(ResourceAssignment.PSEUDO_TAG_PROJECT_RESOURCE_LABEL);
+		createPseudoFieldSchemaString(ResourceAssignment.PSEUDO_TAG_PROJECT_RESOURCE_COST_PER_UNIT);
 		createPseudoFieldSchemaString(ResourceAssignment.PSEUDO_TAG_OWNING_FACTOR_NAME);
 	}
 

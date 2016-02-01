@@ -71,6 +71,8 @@ abstract public class ObjectQuestion extends ProjectBasedDynamicQuestion
 	{
 		objects = objectsToUse;
 	}
-	
+
+	protected BaseObject[] getObjects() { return objects; }
+
 	private BaseObject[] objects;
 }

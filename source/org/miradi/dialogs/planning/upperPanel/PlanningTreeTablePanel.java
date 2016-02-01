@@ -32,6 +32,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableColumnModelEvent;
 import javax.swing.event.TableColumnModelListener;
 
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;
 import org.miradi.dialogs.planning.propertiesPanel.AboveBudgetColumnsBar;
@@ -52,10 +53,7 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.Measurement;
-import org.miradi.objects.PlanningTreeRowColumnProvider;
+import org.miradi.objects.*;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
@@ -169,6 +167,26 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		if (rowCodes.contains(ExpenseAssignmentSchema.OBJECT_NAME) && event.isSetDataCommandWithThisTag(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS))
 			return true;
 		
+		return false;
+	}
+
+	@Override
+	protected boolean didAffectAssignmentInTree(CommandExecutedEvent event) throws Exception
+	{
+		if (! event.isSetDataCommand())
+			return false;
+
+		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
+		int type = setCommand.getObjectType();
+		String tag = setCommand.getFieldTag();
+		CodeList rowCodes = getRowColumnProvider().getRowCodesToShow();
+
+		if(rowCodes.contains(ResourceAssignmentSchema.OBJECT_NAME) && type == ResourceAssignmentSchema.getObjectType() && tag.equals(ResourceAssignment.TAG_RESOURCE_ID))
+			return true;
+
+		if(rowCodes.contains(ExpenseAssignmentSchema.OBJECT_NAME) && type == ExpenseAssignmentSchema.getObjectType() && tag.equals(ExpenseAssignment.TAG_LABEL))
+			return true;
+
 		return false;
 	}
 

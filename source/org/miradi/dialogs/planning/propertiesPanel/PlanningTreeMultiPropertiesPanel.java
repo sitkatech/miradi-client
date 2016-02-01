@@ -77,6 +77,16 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 		return new IndicatorPropertiesPanelWithBudgetPanels(getMainWindow());
 	}
 	
+	protected ResourceAssignmentPropertiesPanel createResourceAssignmentPropertiesPanel() throws Exception
+	{
+		return new ResourceAssignmentPropertiesPanel(getMainWindow());
+	}
+
+	protected ExpenseAssignmentPropertiesPanel createExpenseAssignmentPropertiesPanel() throws Exception
+	{
+		return new ExpenseAssignmentPropertiesPanel(getMainWindow());
+	}
+
 	@Override
 	public String getPanelDescription()
 	{
@@ -161,6 +171,12 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 			
 			if (SubTarget.is(objectType))
 				return getSubTargetPropertiesPanel();
+
+			if (ResourceAssignment.is(objectType))
+				return getResourceAssignmentPropertiesPanel();
+
+			if (ExpenseAssignment.is(objectType))
+				return getExpenseAssignmentPropertiesPanel();
 		}
 		catch(Exception e)
 		{
@@ -410,6 +426,28 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 		return threatPropertiesPanel;
 	}
 
+	private AbstractObjectDataInputPanel getResourceAssignmentPropertiesPanel() throws Exception
+	{
+		if (resourceAssignmentPropertiesPanel == null)
+		{
+			resourceAssignmentPropertiesPanel = createResourceAssignmentPropertiesPanel();
+			addPanel(resourceAssignmentPropertiesPanel);
+		}
+
+		return resourceAssignmentPropertiesPanel;
+	}
+
+	private AbstractObjectDataInputPanel getExpenseAssignmentPropertiesPanel() throws Exception
+	{
+		if (expenseAssignmentPropertiesPanel == null)
+		{
+			expenseAssignmentPropertiesPanel = createExpenseAssignmentPropertiesPanel();
+			addPanel(expenseAssignmentPropertiesPanel);
+		}
+
+		return expenseAssignmentPropertiesPanel;
+	}
+
 	@Override
 	public void commandExecuted(CommandExecutedEvent event)
 	{
@@ -446,5 +484,7 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 	private BudgetCategoryOnePropertiesPanel categoryOnePropertiesPanel;
 	private BudgetCategoryTwoPropertiesPanel categoryTwoPropertiesPanel;
 	private SubTargetPropertiesPanel subTargetPropertiesPanel;
+	private ResourceAssignmentPropertiesPanel resourceAssignmentPropertiesPanel;
+	private ExpenseAssignmentPropertiesPanel expenseAssignmentPropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;
 }

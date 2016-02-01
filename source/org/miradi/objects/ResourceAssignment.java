@@ -21,7 +21,9 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.ResourceAssignmentId;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.*;
+import org.miradi.project.CurrencyFormat;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.ResourceAssignmentSchema;
@@ -51,6 +53,9 @@ public class ResourceAssignment extends Assignment
 		if (fieldTag.equals(PSEUDO_TAG_PROJECT_RESOURCE_LABEL))
 			return getProjectResourceLabel();
 		
+		if (fieldTag.equals(PSEUDO_TAG_PROJECT_RESOURCE_COST_PER_UNIT))
+			return getProjectResourceCostPerUnit();
+
 		if (fieldTag.equals(PSEUDO_TAG_OWNING_FACTOR_NAME))
 			return getOwningFactorName();
 		
@@ -79,6 +84,25 @@ public class ResourceAssignment extends Assignment
 			return "";
 		
 		return projectResource.getInitials();
+	}
+
+	private String getProjectResourceCostPerUnit()
+	{
+		ProjectResource projectResource = getProjectResource();
+		if (projectResource == null)
+			return "";
+
+		try
+		{
+			double cost = projectResource.getCostPerUnit();
+			CurrencyFormat currencyFormatter = getProject().getCurrencyFormatterWithCommas();
+			return currencyFormatter.format(cost);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
 	}
 
 	private ProjectResource getProjectResource()
@@ -147,7 +171,13 @@ public class ResourceAssignment extends Assignment
 	{
 		return getOwner().hasAnySubtaskResourceData(dateUnit);
 	}
-	
+
+	@Override
+	public String getFullName()
+	{
+		return toString();
+	}
+
 	@Override
 	public String toString()
 	{
@@ -187,5 +217,6 @@ public class ResourceAssignment extends Assignment
 	public static final String TAG_ACCOUNTING_CODE_ID = "AccountingCode";
 	public static final String TAG_FUNDING_SOURCE_ID = "FundingSource";
 	public static final String PSEUDO_TAG_PROJECT_RESOURCE_LABEL = "PseudoTagProjectResourceLabel";
+	public static final String PSEUDO_TAG_PROJECT_RESOURCE_COST_PER_UNIT = "PseudoTagProjectResourceCostPerUnit";
 	public static final String PSEUDO_TAG_OWNING_FACTOR_NAME = "PseudoTagOwningFactorName";
 }

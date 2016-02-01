@@ -205,7 +205,10 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 	{
 		if(wereAssignmentNodesAddedOrRemoved(event))
 			return true;
-		
+
+		if(didAffectAssignmentInTree(event))
+			return true;
+
 		if(wereProgressReportsAddedOrRemoved(event))
 			return true;
 		
@@ -270,6 +273,11 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 			return true;
 		
 		return event.isSetDataCommandWithThisTypeAndTag(TargetSchema.getObjectType(), Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
+	}
+
+	protected boolean didAffectAssignmentInTree(CommandExecutedEvent event) throws Exception
+	{
+		return false;
 	}
 	
 	//TODO this should use that getTasksTag (or something like that) method
@@ -372,7 +380,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		
 		return false;
 	}
-	
+
 	private boolean didAffectTableSettingsMapForBudgetColumns(CommandExecutedEvent event)
 	{
 		return event.isSetDataCommandWithThisTypeAndTag(TableSettingsSchema.getObjectType(), TableSettings.TAG_TABLE_SETTINGS_MAP);

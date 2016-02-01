@@ -328,12 +328,12 @@ public class IconManager
 		return getIcon(BudgetCategoryTwoIcon.class);
 	}
 
-	private static Icon getExpenseIcon()
+	public static Icon getExpenseIcon()
 	{
 		return getIcon(ExpenseAssignmentIcon.class);
 	}
 
-	private static Icon getAssignmentIcon()
+	public static Icon getAssignmentIcon()
 	{
 		return getIcon(AssignmentIcon.class);
 	}
