@@ -30,7 +30,6 @@ import org.miradi.questions.BudgetCategoryTwoQuestionWithUnspecifiedChoice;
 import org.miradi.questions.FundingSourceQuestionWithUnspecifiedChoice;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 
-
 public class ExpenseAssignmentSubPanel extends AbstractAssignmentSubPanel
 {
 	public ExpenseAssignmentSubPanel(Project projectToUse, int objectType) throws Exception
