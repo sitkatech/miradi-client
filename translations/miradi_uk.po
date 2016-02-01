@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-26 08:36-0800\n"
+"POT-Creation-Date: 2016-02-01 10:36-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/miradi-client/"
@@ -2359,6 +2359,11 @@ msgstr ""
 "Призначений ресурс - ресурс проекту, який був призначений для спеціальної "
 "діяльності, методу або задачі."
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSubPanel.java:40
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSubPanel.java:49
+msgid "Assignment"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:85
 msgid "Assignments"
 msgstr "Призначення"
@@ -3639,6 +3644,11 @@ msgstr "Існуючі дані за інший фінансовий рік ви
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/AbstractExpandColumnAction.java:29
 msgid "Expand Selected Column"
 msgstr "Розтягнути вибрану колонку"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentSubPanel.java:43
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentSubPanel.java:52
+msgid "Expense"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:609
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:37
@@ -8347,6 +8357,10 @@ msgstr "Title|Складові Діяльності"
 msgid "Title|Activity Visibility"
 msgstr "Title|Видимість діяльності"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentPropertiesPanel.java:45
+msgid "Title|Assignment Properties"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/audience/AudienceSubPanel.java:60
 msgid "Title|Audiences"
 msgstr "Title|Аудиторії"
@@ -8401,6 +8415,10 @@ msgstr "Title|Складові Прямої загрози"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MiradiStrings.java:64
 msgid "Title|Error"
 msgstr "Title|Помилка"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentPropertiesPanel.java:45
+msgid "Title|Expense Properties"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/ImageExportScaleDialog.java:49
 msgid "Title|Export Image Scale"
@@ -10049,6 +10067,24 @@ msgstr ""
 msgid "FieldLabel|14.ResourceAssignment|Assignment"
 msgstr "FieldLabel|14.ResourceAssignment|Призначення"
 
+msgid "FieldLabel|14.ResourceId|Resource"
+msgstr ""
+
+msgid "FieldLabel|14.AccountingCode|Accounting Code"
+msgstr ""
+
+msgid "FieldLabel|14.FundingSource|Funding Source"
+msgstr ""
+
+msgid "FieldLabel|14.CategoryOneRef|Category One"
+msgstr ""
+
+msgid "FieldLabel|14.CategoryTwoRef|Category Two"
+msgstr ""
+
+msgid "FieldLabel|14.PseudoTagProjectResourceCostPerUnit|Daily Rate"
+msgstr ""
+
 msgid "FieldLabel|15.Label|Accounting Code Name"
 msgstr ""
 
@@ -10875,6 +10911,21 @@ msgstr ""
 
 msgid "FieldLabel|51.ExpenseAssignment|Expense"
 msgstr "FieldLabel|51.ExpenseAssignment|Витрати"
+
+msgid "FieldLabel|51.Label|Name"
+msgstr ""
+
+msgid "FieldLabel|51.AccountingCodeRef|Accounting Code"
+msgstr ""
+
+msgid "FieldLabel|51.FundingSourceRef|Funding Source"
+msgstr ""
+
+msgid "FieldLabel|51.CategoryOneRef|Category One"
+msgstr ""
+
+msgid "FieldLabel|51.CategoryTwoRef|Category Two"
+msgstr ""
 
 msgid "FieldLabel|52.HumanWelfareTarget|Human Wellbeing Target"
 msgstr ""
