@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-01 10:36-0800\n"
+"POT-Creation-Date: 2016-02-02 04:21-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/miradi-client/"
@@ -305,7 +305,7 @@ msgstr "(Създаване, управление и оценяване на с�
 msgid "(Definition Not Available)"
 msgstr "(Дефиниция не е налична)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:118
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:112
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/UpperPanelBaseObjectTableModel.java:125
 msgid "(Error)"
 msgstr "(Грешка)"

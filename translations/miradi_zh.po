@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-01 10:36-0800\n"
+"POT-Creation-Date: 2016-02-02 04:21-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Chinese (http://www.transifex.com/projects/p/miradi-client/"
@@ -296,7 +296,7 @@ msgstr "（对本对象进行创建、管理、以及压力分级） \t\t"
 msgid "(Definition Not Available)"
 msgstr "（无可用定义） \t\t"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:118
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:112
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/UpperPanelBaseObjectTableModel.java:125
 msgid "(Error)"
 msgstr "（错误） \t\t"
