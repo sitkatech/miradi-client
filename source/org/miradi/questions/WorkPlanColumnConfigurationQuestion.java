@@ -131,13 +131,20 @@ public class WorkPlanColumnConfigurationQuestion extends MultipleSelectStaticCho
 	}
 
 	public static final String META_PLANNED_WHO_TOTAL = CustomPlanningColumnsQuestion.META_PLANNED_WHO_TOTAL;
-	public static final String META_PLANNED_WHO_TOTAL_ALT = CustomPlanningColumnsQuestion.META_PLANNED_WHO_TOTAL + "Alt";
+	public static final String META_PLANNED_WHO_TOTAL_ALT = META_PLANNED_WHO_TOTAL + "Alt";
+	public static final String META_PLANNED_WHO_TOTAL_ALT_SHORT = META_PLANNED_WHO_TOTAL_ALT + "Short";
+
 	public static final String META_PLANNED_WHEN_TOTAL = BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL;
-	public static final String META_PLANNED_WHEN_TOTAL_ALT = BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL + "Alt";
+	public static final String META_PLANNED_WHEN_TOTAL_ALT = META_PLANNED_WHEN_TOTAL + "Alt";
+	public static final String META_PLANNED_WHEN_TOTAL_ALT_SHORT = META_PLANNED_WHEN_TOTAL_ALT + "Short";
+
 	public static final String META_ASSIGNED_WHO_TOTAL = CustomPlanningColumnsQuestion.META_ASSIGNED_WHO_TOTAL;
-	public static final String META_ASSIGNED_WHO_TOTAL_ALT = CustomPlanningColumnsQuestion.META_ASSIGNED_WHO_TOTAL + "Alt";
+	public static final String META_ASSIGNED_WHO_TOTAL_ALT = META_ASSIGNED_WHO_TOTAL + "Alt";
+	public static final String META_ASSIGNED_WHO_TOTAL_ALT_SHORT = META_ASSIGNED_WHO_TOTAL_ALT + "Short";
+
 	public static final String META_ASSIGNED_WHEN_TOTAL = BaseObject.PSEUDO_TAG_ASSIGNED_WHEN_TOTAL;
-	public static final String META_ASSIGNED_WHEN_TOTAL_ALT = BaseObject.PSEUDO_TAG_ASSIGNED_WHEN_TOTAL + "Alt";
+	public static final String META_ASSIGNED_WHEN_TOTAL_ALT = META_ASSIGNED_WHEN_TOTAL + "Alt";
+	public static final String META_ASSIGNED_WHEN_TOTAL_ALT_SHORT = META_ASSIGNED_WHEN_TOTAL_ALT + "Short";
 
 	public static final String META_ANALYSIS_WORK_UNITS_COLUMN_CODE = "MetaAnalysisWorkUnitsColumnCode";
 	public static final String META_ANALYSIS_EXPENSES_CODE = "MetaAnalysisExpensesColumnCode";

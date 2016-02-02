@@ -20,19 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.Shape;
-import java.awt.event.AdjustmentEvent;
-import java.awt.event.AdjustmentListener;
-import java.util.Vector;
-
-import javax.swing.JScrollPane;
-
 import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;
 import org.miradi.main.AppPreferences;
 import org.miradi.objecthelpers.DateUnit;
@@ -41,6 +28,12 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
+import java.util.Vector;
 
 public class AboveBudgetColumnsBar extends AbstractFixedHeightDirectlyAboveTreeTablePanel implements AdjustmentListener
 {
@@ -111,7 +104,7 @@ public class AboveBudgetColumnsBar extends AbstractFixedHeightDirectlyAboveTreeT
 		return project;
 	}
 
-	private void drawColumnGroupHeader(Graphics g, Rectangle groupHeaderArea, String text, Color backgroundColor)
+	protected void drawColumnGroupHeader(Graphics g, Rectangle groupHeaderArea, String text, Color backgroundColor)
 	{
 		if(groupHeaderArea == null)
 			return;
@@ -137,7 +130,7 @@ public class AboveBudgetColumnsBar extends AbstractFixedHeightDirectlyAboveTreeT
 		}
 	}
 
-	private Rectangle findColumnGroupBounds(Vector<String> columnGroups)
+	protected Rectangle findColumnGroupBounds(Vector<String> columnGroups)
 	{
 		int startColumn = -1;
 		int startX = 0;

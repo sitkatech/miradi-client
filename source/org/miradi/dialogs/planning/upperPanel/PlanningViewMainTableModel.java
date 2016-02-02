@@ -33,7 +33,6 @@ import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
-import org.miradi.views.summary.SummaryPlanningWorkPlanSubPanel;
 
 import java.awt.*;
 import java.util.Collections;
@@ -293,23 +292,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	public String getColumnName(int column)
 	{
 		String columnTag = getColumnTag(column);
-		String columnName = EAM.fieldLabel(ObjectType.FAKE, columnTag);
-		if (doesColumnHeaderNeedAsterisk(columnTag))
-			columnName += HAS_DATA_OUTSIDE_OF_PROJECT_DATE_ASTERISK;
-		
-		return columnName;
-	}
-	
-	private boolean doesColumnHeaderNeedAsterisk(String columnTag)
-	{
-		boolean isAsteriskColumn = isAssignedWhenColumn(columnTag) || isAssignedWhoColumn(columnTag);
-		if (!isAsteriskColumn)
-			return false;
-
-		if (isAssignedWhenColumn(columnTag) || isAssignedWhoColumn(columnTag))
-			return SummaryPlanningWorkPlanSubPanel.hasAssignedDataOutsideOfProjectDateRange(getProject());
-
-		return false;
+		return EAM.fieldLabel(ObjectType.FAKE, columnTag);
 	}
 	
 	public ChoiceItem getChoiceItemAt(int row, int column)
@@ -673,8 +656,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 				
 	private static final String UNIQUE_MODEL_IDENTIFIER = "PlanningViewMainTableModel";
 	
-	public static final String HAS_DATA_OUTSIDE_OF_PROJECT_DATE_ASTERISK = "*";
-
 	private CodeList columnsToShow;
 	private PlanningTreeRowColumnProvider rowColumnProvider;
 }
