@@ -100,6 +100,11 @@ public class CustomPlanningColumnsQuestion extends MultipleSelectStaticChoiceQue
 		return new ChoiceItem(tag, EAM.fieldLabel(ObjectType.FAKE, tag));
 	}
 
+	public static ChoiceItem createChoiceItem(String tag, String customLabel)
+	{
+		return new ChoiceItem(tag, EAM.fieldLabel(ObjectType.FAKE, customLabel));
+	}
+
 	public final static String META_PLANNED_WHO_TOTAL = "MetaPlannedWhoTotal";
 	public final static String META_PLANNED_WHEN_TOTAL = BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL;
 	public final static String META_ASSIGNED_WHO_TOTAL = "MetaAssignedWhoTotal";

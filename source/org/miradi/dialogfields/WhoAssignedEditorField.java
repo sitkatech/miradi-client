@@ -39,7 +39,7 @@ public class WhoAssignedEditorField extends WhoEditorField
 	@Override
 	protected String getPanelTitle()
 	{
-		return EAM.text("Who Assigned");
+		return EAM.text("Who Work Assignments");
 	}
 
 	@Override

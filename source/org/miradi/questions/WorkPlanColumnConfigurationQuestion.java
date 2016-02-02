@@ -50,10 +50,10 @@ public class WorkPlanColumnConfigurationQuestion extends MultipleSelectStaticCho
 	protected Vector<ChoiceItem> createWhoWhenChoices()
 	{
 		Vector<ChoiceItem> choiceItems = new Vector<ChoiceItem>();
-		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_PLANNED_WHO_TOTAL));
-		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_PLANNED_WHEN_TOTAL));
-		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_ASSIGNED_WHO_TOTAL));
-		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_ASSIGNED_WHEN_TOTAL));
+		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_PLANNED_WHO_TOTAL, WorkPlanColumnConfigurationQuestion.META_PLANNED_WHO_TOTAL_ALT));
+		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_PLANNED_WHEN_TOTAL, WorkPlanColumnConfigurationQuestion.META_PLANNED_WHEN_TOTAL_ALT));
+		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_ASSIGNED_WHO_TOTAL, WorkPlanColumnConfigurationQuestion.META_ASSIGNED_WHO_TOTAL_ALT));
+		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_ASSIGNED_WHEN_TOTAL, WorkPlanColumnConfigurationQuestion.META_ASSIGNED_WHEN_TOTAL_ALT));
 
 		return choiceItems;
 	}
@@ -70,6 +70,11 @@ public class WorkPlanColumnConfigurationQuestion extends MultipleSelectStaticCho
 	protected static ChoiceItem createChoiceItem(String tag)
 	{
 		return CustomPlanningColumnsQuestion.createChoiceItem(tag);
+	}
+
+	protected static ChoiceItem createChoiceItem(String tag, String customLabel)
+	{
+		return CustomPlanningColumnsQuestion.createChoiceItem(tag, customLabel);
 	}
 
 	public static String getNormalizedBudgetGroupColumnCode(String budgetColumnGroupCode)
@@ -126,9 +131,13 @@ public class WorkPlanColumnConfigurationQuestion extends MultipleSelectStaticCho
 	}
 
 	public static final String META_PLANNED_WHO_TOTAL = CustomPlanningColumnsQuestion.META_PLANNED_WHO_TOTAL;
+	public static final String META_PLANNED_WHO_TOTAL_ALT = CustomPlanningColumnsQuestion.META_PLANNED_WHO_TOTAL + "Alt";
 	public static final String META_PLANNED_WHEN_TOTAL = BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL;
+	public static final String META_PLANNED_WHEN_TOTAL_ALT = BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL + "Alt";
 	public static final String META_ASSIGNED_WHO_TOTAL = CustomPlanningColumnsQuestion.META_ASSIGNED_WHO_TOTAL;
+	public static final String META_ASSIGNED_WHO_TOTAL_ALT = CustomPlanningColumnsQuestion.META_ASSIGNED_WHO_TOTAL + "Alt";
 	public static final String META_ASSIGNED_WHEN_TOTAL = BaseObject.PSEUDO_TAG_ASSIGNED_WHEN_TOTAL;
+	public static final String META_ASSIGNED_WHEN_TOTAL_ALT = BaseObject.PSEUDO_TAG_ASSIGNED_WHEN_TOTAL + "Alt";
 
 	public static final String META_ANALYSIS_WORK_UNITS_COLUMN_CODE = "MetaAnalysisWorkUnitsColumnCode";
 	public static final String META_ANALYSIS_EXPENSES_CODE = "MetaAnalysisExpensesColumnCode";

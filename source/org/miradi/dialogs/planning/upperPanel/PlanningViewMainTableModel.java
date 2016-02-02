@@ -62,10 +62,10 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	{
 		String columnTag = getColumnTag(column);
 		
-		if (isPlannedWhoColumn(columnTag) || isAssignedWhoColumn(columnTag))
+		if (isPlannedWhoColumn(columnTag) || isPlannedWhenColumn(columnTag))
 			return AppPreferences.RESOURCE_TABLE_BACKGROUND;
 		
-		if(isPlannedWhenColumn(columnTag) || isAssignedWhenColumn(columnTag))
+		if(isAssignedWhoColumn(columnTag) || isAssignedWhenColumn(columnTag))
 			return AppPreferences.getWorkUnitsBackgroundColor();
 		
 		return null;

@@ -45,7 +45,7 @@ public class WhoAssignedColumnTableCellEditorFactory extends AbstractPopupTableC
 	@Override
 	protected String getDialogTitle()
 	{
-		return EAM.text("Who Assigned");
+		return EAM.text("Who Work Assignments");
 	}
 
 	@Override

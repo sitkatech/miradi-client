@@ -45,7 +45,7 @@ public class WhoPlannedColumnTableCellEditorFactory extends AbstractPopupTableCe
 	@Override
 	protected String getDialogTitle()
 	{
-		return EAM.text("Who Plan");
+		return EAM.text("Who High-Level Planning");
 	}
 
 	@Override

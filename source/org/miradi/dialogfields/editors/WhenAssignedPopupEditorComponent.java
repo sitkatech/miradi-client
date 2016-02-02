@@ -41,6 +41,6 @@ public class WhenAssignedPopupEditorComponent extends WhenPopupEditorComponent
 	@Override
 	protected String getDialogTitle()
 	{
-		return EAM.substituteSingleString(EAM.text("When Assigned - %s"), getBaseObjectForRowLabel());
+		return EAM.substituteSingleString(EAM.text("When Work Assignments - %s"), getBaseObjectForRowLabel());
 	}
 }

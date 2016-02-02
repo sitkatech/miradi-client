@@ -27,6 +27,7 @@ import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.TableSettings;
+import org.miradi.schemas.ResourcePlanSchema;
 import org.miradi.utils.CodeList;
 
 import java.util.Vector;
@@ -126,6 +127,11 @@ public class MigrationTo23 extends AbstractMigration
 			return migrationResult;
 		}
 
+		private boolean projectHasResourcePlans()
+		{
+			return getRawProject().containsAnyObjectsOfType(ResourcePlanSchema.getObjectType());
+		}
+
 		private MigrationResult addFields(RawObject rawObject) throws Exception
 		{
 			MigrationResult migrationResult = MigrationResult.createSuccess();
@@ -135,10 +141,14 @@ public class MigrationTo23 extends AbstractMigration
 			{
 				CodeList workPlanBudgetColumnCodeList = tableSettingsMap.getCodeList(WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
 
-				if (!workPlanBudgetColumnCodeList.contains(META_PLANNED_WHO_TOTAL))
-					workPlanBudgetColumnCodeList.add(META_PLANNED_WHO_TOTAL);
-				if (!workPlanBudgetColumnCodeList.contains(META_PLANNED_WHEN_TOTAL))
-					workPlanBudgetColumnCodeList.add(META_PLANNED_WHEN_TOTAL);
+				if (projectHasResourcePlans())
+				{
+					if (!workPlanBudgetColumnCodeList.contains(META_PLANNED_WHO_TOTAL))
+						workPlanBudgetColumnCodeList.add(META_PLANNED_WHO_TOTAL);
+					if (!workPlanBudgetColumnCodeList.contains(META_PLANNED_WHEN_TOTAL))
+						workPlanBudgetColumnCodeList.add(META_PLANNED_WHEN_TOTAL);
+				}
+
 				if (!workPlanBudgetColumnCodeList.contains(META_ASSIGNED_WHO_TOTAL))
 					workPlanBudgetColumnCodeList.add(META_ASSIGNED_WHO_TOTAL);
 				if (!workPlanBudgetColumnCodeList.contains(META_ASSIGNED_WHEN_TOTAL))

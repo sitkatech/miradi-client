@@ -39,7 +39,7 @@ public class WhoPlannedEditorField extends WhoEditorField
 	@Override
 	protected String getPanelTitle()
 	{
-		return EAM.text("Who Plan");
+		return EAM.text("Who High-Level Planning");
 	}
 
 	@Override

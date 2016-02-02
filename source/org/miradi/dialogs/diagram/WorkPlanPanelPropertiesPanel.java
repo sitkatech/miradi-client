@@ -58,7 +58,7 @@ public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Who, When Plan");
+		return EAM.text("Who and When");
 	}
 
 	@Override
