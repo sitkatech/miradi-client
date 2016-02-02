@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-02 04:21-0800\n"
+"POT-Creation-Date: 2016-02-02 08:06-0800\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/miradi-client/"
@@ -8277,7 +8277,7 @@ msgid ""
 "and Indicator objects."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo23.java:88
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo23.java:89
 msgid ""
 "This migration adds new default columns to the work plan customize panel."
 msgstr ""
@@ -9199,8 +9199,8 @@ msgstr ""
 msgid "When"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhenAssignedPopupEditorComponent.java:44
-msgid "When Assigned - %s"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhenPlannedPopupEditorComponent.java:44
+msgid "When High-Level Planning - %s"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/legacyprojects/migrations/RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration.java:82
@@ -9211,8 +9211,8 @@ msgstr "Quando foi Sobreposto (overridden):"
 msgid "When Override was: %s"
 msgstr "Quando foi Sobreposto (overridden): %s"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhenPlannedPopupEditorComponent.java:44
-msgid "When Plan - %s"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhenAssignedPopupEditorComponent.java:44
+msgid "When Work Assignments - %s"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/ExportMpzDoer.java:81
@@ -9241,9 +9241,9 @@ msgstr "Branco"
 msgid "Who"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/tablerenderers/WhoAssignedColumnTableCellEditorFactory.java:48
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoAssignedEditorField.java:42
-msgid "Who Assigned"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/tablerenderers/WhoPlannedColumnTableCellEditorFactory.java:48
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoPlannedEditorField.java:42
+msgid "Who High-Level Planning"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/legacyprojects/migrations/RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration.java:84
@@ -9254,13 +9254,13 @@ msgstr "Quem fez a sobreposição (override):"
 msgid "Who Override was: %s"
 msgstr "Quem fez a sobreposição (override): %s"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/tablerenderers/WhoPlannedColumnTableCellEditorFactory.java:48
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoPlannedEditorField.java:42
-msgid "Who Plan"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/tablerenderers/WhoAssignedColumnTableCellEditorFactory.java:48
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoAssignedEditorField.java:42
+msgid "Who Work Assignments"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:61
-msgid "Who, When Plan"
+msgid "Who and When"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MiradiStrings.java:79
@@ -9404,7 +9404,7 @@ msgstr ""
 "as comandas exportar e importar.  Miradi também  criará arquivos de zip para "
 "'backups' de projetos que são crados durante migrações de formatos. "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:377
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:360
 msgid "[Error]"
 msgstr "[Erro]"
 
@@ -9420,7 +9420,7 @@ msgstr "[NÃO ESPECIFICADO]"
 msgid "[New Results Chain]"
 msgstr "[Nova Cadeia de Resultados]"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:967
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:963
 msgid "[No Project]"
 msgstr "[Sem Projeto]"
 
@@ -10076,13 +10076,40 @@ msgstr "Prioridade de Indicador"
 msgid "FieldLabel|12.PseudoTagStatusValue|Progress"
 msgstr "Progresso"
 
-msgid "FieldLabel|12.MetaPlannedWhoTotal|Who Plan"
+msgid "FieldLabel|12.MetaPlannedWhoTotal|Who"
 msgstr ""
 
-msgid "FieldLabel|12.PlannedEffortDatesTotal|When Plan"
+msgid "FieldLabel|12.PlannedEffortDatesTotal|When"
 msgstr ""
 
-msgid "FieldLabel|12.AssignedEffortDatesTotal|When Assigned"
+msgid "FieldLabel|12.MetaAssignedWhoTotal|Who"
+msgstr ""
+
+msgid "FieldLabel|12.AssignedEffortDatesTotal|When"
+msgstr ""
+
+msgid "FieldLabel|12.MetaPlannedWhoTotalAlt|Who High-Level Planning"
+msgstr ""
+
+msgid "FieldLabel|12.PlannedEffortDatesTotalAlt|When High-Level Planning"
+msgstr ""
+
+msgid "FieldLabel|12.MetaAssignedWhoTotalAlt|Who Work Assignments"
+msgstr ""
+
+msgid "FieldLabel|12.AssignedEffortDatesTotalAlt|When Work Assignments"
+msgstr ""
+
+msgid "FieldLabel|12.MetaPlannedWhoTotalAltShort|High-Level Planning"
+msgstr ""
+
+msgid "FieldLabel|12.PlannedEffortDatesTotalAltShort|High-Level Planning"
+msgstr ""
+
+msgid "FieldLabel|12.MetaAssignedWhoTotalAltShort|Work Assignments"
+msgstr ""
+
+msgid "FieldLabel|12.AssignedEffortDatesTotalAltShort|Work Assignments"
 msgstr ""
 
 msgid "FieldLabel|12.TaskBudgetDetail|Budget Totals"
@@ -10203,9 +10230,6 @@ msgstr "Email"
 
 msgid "FieldLabel|12.Location|Location"
 msgstr "Localização"
-
-msgid "FieldLabel|12.MetaAssignedWhoTotal|Who Assigned"
-msgstr ""
 
 msgid "FieldLabel|12.Label|Name"
 msgstr "Nome"
