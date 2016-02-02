@@ -22,6 +22,7 @@ package org.miradi.dialogs.tablerenderers;
 import java.awt.Font;
 
 import org.miradi.main.MainWindow;
+import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
 import org.miradi.schemas.GoalSchema;
@@ -45,6 +46,9 @@ public class PlanningViewFontProvider extends FontForObjectProvider
 	
 		if(Task.is(baseObject))
 			font = deriveTaskFont((Task) baseObject);
+
+		if(Assignment.is(baseObject))
+			font = deriveAssignmentFont((Assignment) baseObject);
 
 		return font;
 	}
@@ -77,6 +81,15 @@ public class PlanningViewFontProvider extends FontForObjectProvider
 		if (task.isMethod())
 			font = font.deriveFont(Font.BOLD + font.getStyle());
 		
+		return font;
+	}
+
+	public Font deriveAssignmentFont(Assignment assignment)
+	{
+		Font font = super.getFont(assignment);
+		if (assignment.isPartOfASharedTaskTree())
+			font = font.deriveFont(Font.ITALIC);
+
 		return font;
 	}
 }

@@ -37,7 +37,7 @@ import org.miradi.utils.OptionalDouble;
 
 abstract public class AbstractWorkUnitsTableModel extends AssignmentDateUnitsTableModel
 {
-	public AbstractWorkUnitsTableModel(Project projectToUse, PlanningTreeRowColumnProvider rowColumnProviderToUse, RowColumnBaseObjectProvider providerToUse,	String treeModelIdentifierAsTagToUse) throws Exception
+	public AbstractWorkUnitsTableModel(Project projectToUse, PlanningTreeRowColumnProvider rowColumnProviderToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
 		super(projectToUse, rowColumnProviderToUse, providerToUse, treeModelIdentifierAsTagToUse);
 	}

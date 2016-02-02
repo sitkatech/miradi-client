@@ -88,7 +88,7 @@ public class WorkPlanWorkUnitsTableModel extends AbstractWorkUnitsTableModel
 	{
 		return true;
 	}
-	
+
 	@Override
 	protected CommandSetObjectData createAppendAssignmentCommand(BaseObject baseObjectForRowColumn, ORef assignmentRef) throws ParseException
 	{

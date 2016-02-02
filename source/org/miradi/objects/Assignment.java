@@ -92,7 +92,16 @@ abstract public class Assignment extends AbstractPlanningObject
 	{
 		return getRef(TAG_CATEGORY_TWO_REF);
 	}
-	
+
+	public boolean isPartOfASharedTaskTree()
+	{
+		Factor owner = getDirectOrIndirectOwningFactor();
+		if (isSharedTask(owner))
+			return true;
+
+		return false;
+	}
+
 	public static boolean isAssignment(ORef ref)
 	{
 		return isAssignment(ref.getObjectType());
@@ -102,7 +111,14 @@ abstract public class Assignment extends AbstractPlanningObject
 	{
 		return isAssignment(ref.getObjectType());
 	}
-	
+
+	public static boolean is(BaseObject object)
+	{
+		if(object == null)
+			return false;
+		return is(object.getRef());
+	}
+
 	public static boolean isAssignment(BaseObject baseObject)
 	{
 		return isAssignment(baseObject.getType());

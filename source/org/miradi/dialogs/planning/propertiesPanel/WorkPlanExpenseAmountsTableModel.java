@@ -46,7 +46,7 @@ public class WorkPlanExpenseAmountsTableModel extends AbstractExpenseTableModel
 	{
 		return true;
 	}
-	
+
 	@Override
 	protected CommandSetObjectData createAppendAssignmentCommand(BaseObject baseObjectForRowColumn, ORef assignmentRef) throws ParseException
 	{

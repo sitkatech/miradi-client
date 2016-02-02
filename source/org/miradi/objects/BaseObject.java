@@ -1544,7 +1544,16 @@ abstract public class BaseObject
 	{
 		return find(project.getObjectManager(), objectRef);
 	}
-	
+
+	public static boolean isSharedTask(BaseObject baseObject)
+	{
+		if (!Task.is(baseObject))
+			return false;
+
+		Task task = (Task) baseObject;
+		return task.isPartOfASharedTaskTree();
+	}
+
 	public boolean isType(int typeToUse)
 	{
 		return getType() == typeToUse;

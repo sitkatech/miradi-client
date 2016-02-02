@@ -34,13 +34,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
-import org.miradi.objects.Assignment;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.ExpenseAssignment;
-import org.miradi.objects.PlanningTreeRowColumnProvider;
-import org.miradi.objects.ResourceAssignment;
-import org.miradi.objects.TableSettings;
-import org.miradi.objects.Task;
+import org.miradi.objects.*;
 import org.miradi.project.CurrencyFormat;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectCalendar;
@@ -193,15 +187,16 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 			if (!isOrCanReferToAssignments(baseObjectForRow.getRef()))
 				return false;
 			
-			if (isSharedTask(baseObjectForRow))
+			if (BaseObject.isSharedTask(baseObjectForRow))
 				return false;
 
 			if (!isEditableModel())
 				return false;
-		
-			if (getAssignment(row) != null)
-				return isAssignmentCellEditable(getAssignment(row), getDateUnit(column));
-			
+
+			Assignment assignment = getAssignment(row);
+			if (assignment != null)
+				return isAssignmentCellEditable(assignment, getDateUnit(column));
+
 			if (hasConflictingValue(baseObjectForRow, getDateUnit(column)))
 				return false;
 			
@@ -221,15 +216,6 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		}
 	}
 	
-	private boolean isSharedTask(BaseObject baseObjectForRow)
-	{
-		if (!Task.is(baseObjectForRow))
-			return false;
-		
-		Task task = (Task) baseObjectForRow;
-		return task.isPartOfASharedTaskTree();
-	}
-
 	protected boolean canEditMultipleAssignments(BaseObject baseObjectForRow, DateUnit dateUnit) throws Exception
 	{
 		return false;
@@ -265,7 +251,10 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	{
 		if (!isAssignmentForModel(assignment))
 			return false;
-		
+
+		if (isAssignmentReadOnlyWhenOwnerIsSharedTask() && assignment.isPartOfASharedTaskTree())
+			return false;
+
 		return isHorizontallyEditable(assignment, dateUnit);
 	}
 
@@ -784,6 +773,11 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	abstract protected OptionalDouble calculateValue(TimePeriodCosts timePeriodCosts) throws Exception;
 	
 	abstract protected boolean isAssignmentForModel(Assignment assignment);
+
+	protected boolean isAssignmentReadOnlyWhenOwnerIsSharedTask()
+	{
+		return true;
+	}
 
     protected boolean isEditableModel()
     {
