@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-26 08:36-0800\n"
+"POT-Creation-Date: 2016-02-01 10:36-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Mongolian (http://www.transifex.com/projects/p/miradi-client/"
@@ -2377,6 +2377,11 @@ msgstr ""
 "Товлосон нөөц - Тодорхой үйл ажиллагаа, арга зүй, аль эсвэл даалгаврыг "
 "гүйцэтгэхэд хуваарилсан төслийн нөөц."
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSubPanel.java:40
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSubPanel.java:49
+msgid "Assignment"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:85
 msgid "Assignments"
 msgstr "Үүрэг даалгавар"
@@ -3651,6 +3656,11 @@ msgstr "Өөр санхүүгийн жилийн байгаа мэдээлэл �
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/AbstractExpandColumnAction.java:29
 msgid "Expand Selected Column"
 msgstr "Сонгосон баганыг өргөжүүлэх"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentSubPanel.java:43
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentSubPanel.java:52
+msgid "Expense"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:609
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:37
@@ -8383,6 +8393,10 @@ msgstr "Гарчиг|Үйл ажиллагааны агуулга"
 msgid "Title|Activity Visibility"
 msgstr "Гарчиг|Харагдахуйц  үйл ажиллагаа"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentPropertiesPanel.java:45
+msgid "Title|Assignment Properties"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/audience/AudienceSubPanel.java:60
 msgid "Title|Audiences"
 msgstr "Гарчиг|Сонсогчид"
@@ -8437,6 +8451,10 @@ msgstr "Гарчиг|Шууд үйлчлэх аюул заналын  агуул
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MiradiStrings.java:64
 msgid "Title|Error"
 msgstr "Гарчиг|Алдаа"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentPropertiesPanel.java:45
+msgid "Title|Expense Properties"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/ImageExportScaleDialog.java:49
 msgid "Title|Export Image Scale"
@@ -10176,6 +10194,24 @@ msgstr ""
 msgid "FieldLabel|14.ResourceAssignment|Assignment"
 msgstr "БаганыХаяг|14.НөөцХуваарилалт|Хуваарилалт"
 
+msgid "FieldLabel|14.ResourceId|Resource"
+msgstr ""
+
+msgid "FieldLabel|14.AccountingCode|Accounting Code"
+msgstr ""
+
+msgid "FieldLabel|14.FundingSource|Funding Source"
+msgstr ""
+
+msgid "FieldLabel|14.CategoryOneRef|Category One"
+msgstr ""
+
+msgid "FieldLabel|14.CategoryTwoRef|Category Two"
+msgstr ""
+
+msgid "FieldLabel|14.PseudoTagProjectResourceCostPerUnit|Daily Rate"
+msgstr ""
+
 msgid "FieldLabel|15.Label|Accounting Code Name"
 msgstr ""
 
@@ -11056,6 +11092,21 @@ msgstr "БаганыХаяг|50.ЦарХүрээХайрцагӨнгөнийКо
 
 msgid "FieldLabel|51.ExpenseAssignment|Expense"
 msgstr "БаганыХаяг|51.ЗардлынХувиарлалт|Зардал"
+
+msgid "FieldLabel|51.Label|Name"
+msgstr ""
+
+msgid "FieldLabel|51.AccountingCodeRef|Accounting Code"
+msgstr ""
+
+msgid "FieldLabel|51.FundingSourceRef|Funding Source"
+msgstr ""
+
+msgid "FieldLabel|51.CategoryOneRef|Category One"
+msgstr ""
+
+msgid "FieldLabel|51.CategoryTwoRef|Category Two"
+msgstr ""
 
 msgid "FieldLabel|52.HumanWelfareTarget|Human Wellbeing Target"
 msgstr ""
