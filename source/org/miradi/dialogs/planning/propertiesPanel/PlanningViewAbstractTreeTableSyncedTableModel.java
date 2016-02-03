@@ -179,6 +179,9 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		if (ConceptualModelDiagram.is(baseObject.getRef()) || ResultsChainDiagram.is(baseObject.getRef()))
 			return getProject().getTimePeriodCostsMapsCache().calculateDiagramObjectPlannedTotals((DiagramObject) baseObject, workPlanBudgetMode);
 
+		if (Assignment.is(baseObject))
+			return new TimePeriodCostsMap();
+
 		return getTotalTimePeriodPlannedCostsMap(baseObject);
 	}
 
