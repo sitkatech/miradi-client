@@ -27,7 +27,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.*;
 import org.miradi.project.Project;
-import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
 
@@ -166,12 +165,17 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		AbstractTarget target = AbstractTarget.findTarget(getProject(), targetRef);
 		childRefs.addAll(target.getSubTargetRefs());
 		childRefs.addAll(target.getOwnedObjectRefs().getFilteredBy(GoalSchema.getObjectType()));
-		childRefs.addAll(new ORefList(IndicatorSchema.getObjectType(), target.getDirectOrIndirectIndicators()));
+		childRefs.addAll(getIndicatorsForTarget(target));
 		childRefs.addAll(getDirectlyLinkedNonDraftStrategies(target, diagram));
 		
 		return childRefs;
 	}
-	
+
+	protected ORefList getIndicatorsForTarget(AbstractTarget target)
+	{
+		return new ORefList(IndicatorSchema.getObjectType(), target.getDirectOrIndirectIndicators());
+	}
+
 	private ORefList getDirectlyLinkedNonDraftStrategies(AbstractTarget target, DiagramObject diagram)
 	{
 		if(diagram == null)
@@ -214,24 +218,18 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		if (doStrategiesContainObjectives())
 			childRefs.addAll(getRelevantObjectivesAndGoalsOnDiagram(diagram, parentRef));
 
-		childRefs.addAll(strategy.getOwnedObjectRefs().getFilteredBy(IndicatorSchema.getObjectType()));
+		childRefs.addAll(getIndicatorsForStrategy(strategy));
 		return childRefs;
 	}
 
-	private ORefList getActivities(Strategy strategy) throws Exception
+	protected ORefList getIndicatorsForStrategy(Strategy strategy)
 	{
-		String workPlanBudgetMode = getRowColumnProvider().getWorkPlanBudgetMode();
+		return strategy.getOwnedObjectRefs().getFilteredBy(IndicatorSchema.getObjectType());
+	}
 
-		if (workPlanBudgetMode.equals(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE))
-			return strategy.getActivityRefs();
-
-		if (workPlanBudgetMode.equals(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE))
-			return ORefList.subtract(strategy.getActivityRefs(), strategy.getMonitoringActivityRefs());
-
-		if (workPlanBudgetMode.equals(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE))
-			return strategy.getMonitoringActivityRefs();
-
-		throw new Exception("getActivities called for unknown work plan budget mode " + workPlanBudgetMode);
+	protected ORefList getActivities(Strategy strategy) throws Exception
+	{
+		return strategy.getActivityRefs();
 	}
 
 	private ORefList getChildrenOfDesire(ORef parentRef, DiagramObject diagram) throws Exception
@@ -254,7 +252,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		return childRefs;
 	}
 
-	private ORefList getRelevantIndicatorsInDiagram(DiagramObject diagram, Desire desire) throws Exception
+	protected ORefList getRelevantIndicatorsInDiagram(DiagramObject diagram, Desire desire) throws Exception
 	{
 		return keepObjectsThatAreInDiagram(diagram, desire.getRelevantIndicatorRefList());
 	}
