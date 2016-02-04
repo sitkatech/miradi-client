@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel.rebuilder;
 
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.*;
 import org.miradi.project.Project;
@@ -51,6 +52,12 @@ public class SharedWorkPlanTreeRebuilder extends NormalTreeRebuilder
 
 	@Override
 	protected ORefList getRelevantIndicatorsInDiagram(DiagramObject diagram, Desire desire) throws Exception
+	{
+		return new ORefList(){};
+	}
+
+	@Override
+	protected ORefList getChildrenOfTask(ORef parentTaskRef, DiagramObject diagram) throws Exception
 	{
 		return new ORefList(){};
 	}

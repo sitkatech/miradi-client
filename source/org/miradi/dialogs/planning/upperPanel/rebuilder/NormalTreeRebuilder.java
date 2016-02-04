@@ -293,7 +293,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		return childRefs;
 	}
 
-	private ORefList getChildrenOfTask(ORef parentTaskRef, DiagramObject diagram) throws Exception
+	protected ORefList getChildrenOfTask(ORef parentTaskRef, DiagramObject diagram) throws Exception
 	{
 		ORefList childRefs = new ORefList();
 
