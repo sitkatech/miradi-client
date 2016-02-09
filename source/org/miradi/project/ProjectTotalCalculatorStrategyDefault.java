@@ -73,7 +73,7 @@ public class ProjectTotalCalculatorStrategyDefault extends ProjectTotalCalculato
 
 	public HashSet<BaseObject> getAllData(Project project) throws Exception
 	{
-		HashSet<BaseObject> allData = new HashSet<>();
+		HashSet<BaseObject> allData = new HashSet<BaseObject>();
 		allData.addAll(getMonitoringData(project));
 		allData.addAll(getActionsData(project));
 		return allData;
@@ -81,7 +81,7 @@ public class ProjectTotalCalculatorStrategyDefault extends ProjectTotalCalculato
 
 	public HashSet<BaseObject> getAllData(Project project, ORef diagramObjectRef) throws Exception
 	{
-		HashSet<BaseObject> allData = new HashSet<>();
+		HashSet<BaseObject> allData = new HashSet<BaseObject>();
 		allData.addAll(getMonitoringData(project, diagramObjectRef));
 		allData.addAll(getActionsData(project, diagramObjectRef));
 		return allData;
