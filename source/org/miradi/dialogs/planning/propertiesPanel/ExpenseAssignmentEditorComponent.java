@@ -39,7 +39,7 @@ public class ExpenseAssignmentEditorComponent extends AbstractAssignmentEditorCo
 	{
 		abstractSummaryTableModel = new ExpenseAssignmentMainTableModel(getProject());
 		abstractSummaryTable = new ExpenseAssignmentDetailsMainTable(getMainWindow(), abstractSummaryTableModel);
-		
+
 		assignmentDateUnitsTableModel = new WorkPlanExpenseAmountsSharedTaskTableModel(getProject(), new EmptyPlanningTreeRowColumnProvider(), abstractSummaryTableModel, WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
 		assignmentDateUnitsTable = new AssignmentExpensesTable(getMainWindow(), assignmentDateUnitsTableModel);		
 	}

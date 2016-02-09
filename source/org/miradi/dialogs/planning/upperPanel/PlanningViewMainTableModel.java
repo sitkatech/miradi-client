@@ -43,15 +43,15 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	public PlanningViewMainTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, PlanningTreeRowColumnProvider rowColumnProviderToUse) throws Exception
 	{
 		super(projectToUse, providerToUse);
-		
+
 		rowColumnProvider = rowColumnProviderToUse;
-		
+
 		updateColumnsToShow();
 	}
 
 	public void updateColumnsToShow() throws Exception
 	{
-		columnsToShow = new CodeList(getVisibleColumnCodes(project));
+		columnsToShow = new CodeList(getVisibleColumnCodes());
 		omitColumnTagsRepresentedByColumnTables();
 		fireTableStructureChanged();
 	}
@@ -414,13 +414,13 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 
 	private ChoiceItem getFilteredWhenForPlans(BaseObject baseObject) throws Exception
 	{
-		TimePeriodCostsMap totalTimePeriodCostsMap = calculateTimePeriodPlannedCostsMap(baseObject, getRowColumnProvider().getWorkPlanBudgetMode());
+		TimePeriodCostsMap totalTimePeriodCostsMap = calculateTimePeriodPlannedCostsMap(baseObject);
 		return getFilteredWhen(totalTimePeriodCostsMap);
 	}
 
 	private ChoiceItem getFilteredWhenForAssignments(BaseObject baseObject) throws Exception
 	{
-		TimePeriodCostsMap totalTimePeriodCostsMap = calculateTimePeriodAssignedCostsMap(baseObject, getRowColumnProvider().getWorkPlanBudgetMode());
+		TimePeriodCostsMap totalTimePeriodCostsMap = calculateTimePeriodAssignedCostsMap(baseObject);
 		return getFilteredWhen(totalTimePeriodCostsMap);
 	}
 
@@ -435,7 +435,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 
 	@Override
 	protected TimePeriodCostsMap getTotalTimePeriodPlannedCostsMap(BaseObject baseObject) throws Exception
-	{		
+	{
 		return baseObject.getResourcePlansTimePeriodCostsMap();
 	}
 	
@@ -447,13 +447,13 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 
 	private ChoiceItem getPlannedProjectResourcesAsChoiceItem(BaseObject baseObject) throws Exception
 	{
-		TimePeriodCosts timePeriodCosts = calculateTimePeriodPlannedCosts(baseObject, new DateUnit(), getRowColumnProvider().getWorkPlanBudgetMode());
+		TimePeriodCosts timePeriodCosts = calculateTimePeriodPlannedCosts(baseObject, new DateUnit());
 		return getProjectResourcesAsChoiceItem(timePeriodCosts, baseObject, BaseObject.TAG_PLANNED_LEADER_RESOURCE);
 	}
 
 	private ChoiceItem getAssignedProjectResourcesAsChoiceItem(BaseObject baseObject) throws Exception
 	{
-		TimePeriodCosts timePeriodCosts = calculateTimePeriodAssignedCosts(baseObject, new DateUnit(), getRowColumnProvider().getWorkPlanBudgetMode());
+		TimePeriodCosts timePeriodCosts = calculateTimePeriodAssignedCosts(baseObject, new DateUnit());
 		return getProjectResourcesAsChoiceItem(timePeriodCosts, baseObject, BaseObject.TAG_ASSIGNED_LEADER_RESOURCE);
 	}
 
@@ -638,16 +638,16 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		return getColumnTag(column).equals(Desire.TAG_FULL_TEXT);
 	}
 	
-	private CodeList getVisibleColumnCodes(Project projectToUse) throws Exception
+	private CodeList getVisibleColumnCodes() throws Exception
 	{
 		return getRowColumnProvider().getColumnCodesToShow();
 	}
 	
-	private PlanningTreeRowColumnProvider getRowColumnProvider()
+	protected PlanningTreeRowColumnProvider getRowColumnProvider()
 	{
 		return rowColumnProvider;
 	}
-	
+
 	@Override
 	public String getUniqueTableModelIdentifier()
 	{

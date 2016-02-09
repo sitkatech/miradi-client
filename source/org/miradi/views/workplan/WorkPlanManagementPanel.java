@@ -48,7 +48,21 @@ class WorkPlanManagementPanel extends AbstractWorkPlanManagementPanel
 	{
 		return IconManager.getWorkPlanIcon();
 	}
-	
+
+	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		updateStatusBar();
+	}
+
+	@Override
+	public void becomeInactive()
+	{
+		clearStatusBar();
+		super.becomeInactive();
+	}
+
 	@Override
 	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
@@ -62,5 +76,4 @@ class WorkPlanManagementPanel extends AbstractWorkPlanManagementPanel
 
 		return new WorkPlanManagementPanel(mainWindowToUse, workPlanTreeTablePanel, workPlanPropertiesPanel);
 	}
-
 }

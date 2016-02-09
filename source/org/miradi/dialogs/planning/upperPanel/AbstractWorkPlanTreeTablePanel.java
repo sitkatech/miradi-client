@@ -109,7 +109,7 @@ abstract class AbstractWorkPlanTreeTablePanel extends PlanningTreeTablePanel
 	@Override
 	protected void updateCustomizeTableFilter() throws Exception
 	{
-		String workPlanBudgetMode = this.getRowColumnProvider().getWorkPlanBudgetMode();
+		String workPlanBudgetMode = getProject().getTimePeriodCostsMapsCache().getWorkPlanBudgetMode();
 
 		customizeTableLabel.setText(getTextForCustomizeTableFilter(workPlanBudgetMode));
 		customizeTableLabel.setIcon(getIconForCustomizeTableFilter(workPlanBudgetMode));

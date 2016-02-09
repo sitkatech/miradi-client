@@ -24,26 +24,28 @@ import java.awt.Color;
 import org.miradi.dialogs.base.ChoiceItemTableModel;
 import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
-import org.miradi.objecthelpers.DateUnit;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objecthelpers.TimePeriodCosts;
-import org.miradi.objecthelpers.TimePeriodCostsMap;
+import org.miradi.objecthelpers.*;
 import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.utils.OptionalDouble;
 
 abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends EditableObjectTableModel implements ChoiceItemTableModel
 {
+	public PlanningViewAbstractTreeTableSyncedTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, PlanningTreeRowColumnProvider rowColumnProviderToUse) throws Exception
+	{
+		this(projectToUse, providerToUse);
+		rowColumnProvider = rowColumnProviderToUse;
+	}
+
 	public PlanningViewAbstractTreeTableSyncedTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse) throws Exception
 	{
 		super(projectToUse);
-		
+
 		project = projectToUse;
 		objectProvider = providerToUse;
 		resourceRefsFilter = new ORefSet();
 	}
-	
+
 	public int getRowCount()
 	{
 		return getRowColumnObjectProvider().getRowCount();
@@ -165,19 +167,24 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 	{
 		resourceRefsFilter = resourceRefFiltersToUse;
 	}
-	
-	public TimePeriodCosts calculateTimePeriodPlannedCosts(BaseObject baseObject, DateUnit dateUnit, String workPlanBudgetMode) throws Exception
+
+	protected TimePeriodCostsMapsCache getTimePeriodCostsMapsCache()
 	{
-		return calculateTimePeriodPlannedCostsMap(baseObject, workPlanBudgetMode).calculateTimePeriodCosts(dateUnit);
+		return getProject().getTimePeriodCostsMapsCache();
 	}
 
-	public TimePeriodCostsMap calculateTimePeriodPlannedCostsMap(BaseObject baseObject, String workPlanBudgetMode) throws Exception
+	protected TimePeriodCosts calculateTimePeriodPlannedCosts(BaseObject baseObject, DateUnit dateUnit) throws Exception
+	{
+		return calculateTimePeriodPlannedCostsMap(baseObject).calculateTimePeriodCosts(dateUnit);
+	}
+
+	protected TimePeriodCostsMap calculateTimePeriodPlannedCostsMap(BaseObject baseObject) throws Exception
 	{
 		if (ProjectMetadata.is(baseObject))
-			return getProject().getTimePeriodCostsMapsCache().calculateProjectPlannedTotals(workPlanBudgetMode);
+			return getTimePeriodCostsMapsCache().calculateProjectPlannedTotals();
 
 		if (ConceptualModelDiagram.is(baseObject.getRef()) || ResultsChainDiagram.is(baseObject.getRef()))
-			return getProject().getTimePeriodCostsMapsCache().calculateDiagramObjectPlannedTotals((DiagramObject) baseObject, workPlanBudgetMode);
+			return getTimePeriodCostsMapsCache().calculateDiagramObjectPlannedTotals((DiagramObject) baseObject);
 
 		if (Assignment.is(baseObject))
 			return new TimePeriodCostsMap();
@@ -187,38 +194,41 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 
 	protected TimePeriodCostsMap getTotalTimePeriodPlannedCostsMap(BaseObject baseObject) throws Exception
 	{
-		return getProject().getTimePeriodCostsMapsCache().getTotalTimePeriodPlannedCostsMap(baseObject);
+		return getTimePeriodCostsMapsCache().getTotalTimePeriodPlannedCostsMap(baseObject);
 	}
 
-	public TimePeriodCosts calculateTimePeriodAssignedCosts(BaseObject baseObject, DateUnit dateUnit, String workPlanBudgetMode) throws Exception
+	protected TimePeriodCosts calculateTimePeriodAssignedCosts(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
-		return calculateTimePeriodAssignedCostsMap(baseObject, workPlanBudgetMode).calculateTimePeriodCosts(dateUnit);
+		return calculateTimePeriodAssignedCostsMap(baseObject).calculateTimePeriodCosts(dateUnit);
 	}
 
-	public TimePeriodCostsMap calculateTimePeriodAssignedCostsMap(BaseObject baseObject, String workPlanBudgetMode) throws Exception
+	protected TimePeriodCostsMap calculateTimePeriodAssignedCostsMap(BaseObject baseObject) throws Exception
 	{
 		if (ProjectMetadata.is(baseObject))
-			return getProject().getTimePeriodCostsMapsCache().calculateProjectAssignedTotals(workPlanBudgetMode);
+			return getTimePeriodCostsMapsCache().calculateProjectAssignedTotals();
 
 		if (ConceptualModelDiagram.is(baseObject.getRef()) || ResultsChainDiagram.is(baseObject.getRef()))
-			return getProject().getTimePeriodCostsMapsCache().calculateDiagramObjectAssignedTotals((DiagramObject) baseObject, workPlanBudgetMode);
+			return getTimePeriodCostsMapsCache().calculateDiagramObjectAssignedTotals((DiagramObject) baseObject);
 
 		return getTotalTimePeriodAssignedCostsMap(baseObject);
 	}
 
 	protected TimePeriodCostsMap getTotalTimePeriodAssignedCostsMap(BaseObject baseObject) throws Exception
 	{
-		return getProject().getTimePeriodCostsMapsCache().getTotalTimePeriodAssignedCostsMap(baseObject);
+		return getTimePeriodCostsMapsCache().getTotalTimePeriodAssignedCostsMap(baseObject);
 	}
 
 	protected RowColumnBaseObjectProvider getRowColumnObjectProvider()
 	{
 		return objectProvider;
 	}
-	
+
+	protected PlanningTreeRowColumnProvider getRowColumnProvider() { return rowColumnProvider; }
+
 	abstract public Color getCellBackgroundColor(int column);
 
 	protected Project project;
 	private RowColumnBaseObjectProvider objectProvider;
+	private PlanningTreeRowColumnProvider rowColumnProvider;
 	protected ORefSet resourceRefsFilter;
 }

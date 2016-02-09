@@ -53,6 +53,6 @@ public class TaskExporter extends BaseObjectWithLeaderResourceFieldExporter
 	
 	private void writeSubTaskIds(Task baseObject) throws Exception
 	{
-		getWriter().writeReflist(TASK + SUB_TASK_IDS, SUB_TASK, baseObject.getSubTaskRefs());
+		getWriter().writeReflist(TASK + SUB_TASK_IDS, SUB_TASK, baseObject.getChildTaskRefs());
 	}
 }

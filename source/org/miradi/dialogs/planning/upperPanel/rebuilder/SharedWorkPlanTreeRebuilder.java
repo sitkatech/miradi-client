@@ -36,7 +36,7 @@ public class SharedWorkPlanTreeRebuilder extends NormalTreeRebuilder
 	@Override
 	protected ORefList getActivities(Strategy strategy) throws Exception
 	{
-		String workPlanBudgetMode = getRowColumnProvider().getWorkPlanBudgetMode();
+		String workPlanBudgetMode = getProject().getTimePeriodCostsMapsCache().getWorkPlanBudgetMode();
 
 		if (workPlanBudgetMode.equals(SharedWorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE))
 			return strategy.getActivityRefs();
@@ -62,6 +62,7 @@ public class SharedWorkPlanTreeRebuilder extends NormalTreeRebuilder
 		return new ORefList(){};
 	}
 
+	@Override
 	protected ORefList getIndicatorsForTarget(AbstractTarget target)
 	{
 		return new ORefList(){};

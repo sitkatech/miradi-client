@@ -205,7 +205,7 @@ public class Indicator extends BaseObject
 	}
 
 	@Override
-	public ORefList getSubTaskRefs()
+	public ORefList getChildTaskRefs()
 	{
 		return getMethodRefs();
 	}

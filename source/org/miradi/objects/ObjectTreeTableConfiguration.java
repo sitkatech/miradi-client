@@ -27,7 +27,6 @@ import org.miradi.project.Project;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 import org.miradi.questions.StrategyObjectiveTreeOrderQuestion;
-import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 import org.miradi.utils.CodeList;
 
@@ -91,11 +90,6 @@ public class ObjectTreeTableConfiguration extends BaseObject implements Planning
 		return order.equals(StrategyObjectiveTreeOrderQuestion.OBJECTIVE_CONTAINS_STRATEGY_CODE);
 	}
 	
-	public String getWorkPlanBudgetMode() throws Exception
-	{
-		return WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE;
-	}
-
 	public String getDiagramFilter() throws Exception
 	{
 		return getData(TAG_DIAGRAM_FILTER);

@@ -278,7 +278,7 @@ public class Strategy extends Factor
 	}
 	
 	@Override
-	public ORefList getSubTaskRefs()
+	public ORefList getChildTaskRefs()
 	{
 		return getActivityRefs();
 	}

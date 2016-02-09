@@ -94,8 +94,6 @@ public class Project implements ProjectInterface
 		commandExecutor = new CommandExecutor(this);
 		projectCalendar = new ProjectCalendar(this);
 		
-		projectTotalCalculator = new ProjectTotalCalculator(this);
-		
 		threatStressRatingEnsurer = new ThreatStressRatingEnsurer(this);
 		leaderPlannedEnsurer = new LeaderPlannedEnsurer(this);
 		leaderAssignedEnsurer = new LeaderAssignedEnsurer(this);
@@ -129,7 +127,6 @@ public class Project implements ProjectInterface
 		dashboardStatusMapsCache.clear();
 		timePeriodCostsMapsCache.clear();
 		relevantDesiresCache.clear();
-		projectTotalCalculator.clear();
 		projectCalendar.clear();
 
 		quarantine = new StringBuilder();
@@ -489,12 +486,7 @@ public class Project implements ProjectInterface
 	{
 		return projectCalendar;
 	}
-	
-	public ProjectTotalCalculator getProjectTotalCalculator()
-	{
-		return projectTotalCalculator;
-	}
-	
+
 	public CodeToChoiceMap getCachedDashboardEffectiveMap() throws Exception
 	{
 		return getDashboardStatusMapsCache().getEffectiveMap();
@@ -504,7 +496,7 @@ public class Project implements ProjectInterface
 	{
 		return dashboardStatusMapsCache;
 	}
-	
+
 	public TimePeriodCostsMapsCache getTimePeriodCostsMapsCache()
 	{
 		return timePeriodCostsMapsCache;
@@ -853,7 +845,6 @@ public class Project implements ProjectInterface
 	
 	protected void enableListeners()
 	{
-		getProjectTotalCalculator().enable();
 		enableThreatStressRatingEnsurer();
 		enableLeaderEnsurers();
 		planningPreferencesChangeHandler.enable();
@@ -985,7 +976,6 @@ public class Project implements ProjectInterface
 
 	protected void disableListeners()
 	{
-		getProjectTotalCalculator().disable();
 		disableThreatStressRatingEnsurer();
 		disableLeaderEnsurers();
 		planningPreferencesChangeHandler.disable();
@@ -1456,7 +1446,6 @@ public class Project implements ProjectInterface
 	private ThreatStressRatingEnsurer threatStressRatingEnsurer;
 	private LeaderPlannedEnsurer leaderPlannedEnsurer;
 	private LeaderAssignedEnsurer leaderAssignedEnsurer;
-	private ProjectTotalCalculator projectTotalCalculator;
 	private PlanningPreferencesChangeHandler planningPreferencesChangeHandler;
 	private DashboardStatusMapsCache dashboardStatusMapsCache;
 	private TimePeriodCostsMapsCache timePeriodCostsMapsCache;

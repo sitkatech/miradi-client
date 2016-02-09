@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning;
 
-import java.util.Vector;
-
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
@@ -28,12 +26,7 @@ import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTable
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.DateUnitListData;
-import org.miradi.objecthelpers.DateUnit;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objecthelpers.TimePeriodCosts;
-import org.miradi.objecthelpers.TimePeriodCostsMap;
+import org.miradi.objecthelpers.*;
 import org.miradi.objects.*;
 import org.miradi.project.CurrencyFormat;
 import org.miradi.project.Project;
@@ -41,22 +34,16 @@ import org.miradi.project.ProjectCalendar;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
-import org.miradi.questions.WorkPlanVisibleRowsQuestion;
-import org.miradi.utils.CodeList;
-import org.miradi.utils.ModelColumnTagProvider;
-import org.miradi.utils.DateUnitEffort;
-import org.miradi.utils.DateUnitEffortList;
-import org.miradi.utils.DoubleUtilities;
-import org.miradi.utils.FloatingPointFormatter;
-import org.miradi.utils.OptionalDouble;
+import org.miradi.utils.*;
+
+import java.util.Vector;
 
 abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTableModel implements ModelColumnTagProvider
 {
 	public AssignmentDateUnitsTableModel(Project projectToUse, PlanningTreeRowColumnProvider rowColumnProviderToUse, RowColumnBaseObjectProvider rowColumnBaseObjectProviderToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
-		super(projectToUse, rowColumnBaseObjectProviderToUse);
+		super(projectToUse, rowColumnBaseObjectProviderToUse, rowColumnProviderToUse);
 
-		rowsColumnsProvider = rowColumnProviderToUse;
 		rowColumnBaseObjectProvider = rowColumnBaseObjectProviderToUse;
 		resourceRefsFilter = new ORefSet();
 		treeModelIdentifierAsTag = treeModelIdentifierAsTagToUse;
@@ -223,10 +210,10 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	private boolean hasConflictingValue(BaseObject baseObjectForRow, DateUnit dateUnit) throws Exception
 	{
-		if (baseObjectForRow.getSubTaskRefs().size() == 0)
+		if (baseObjectForRow.getChildTaskRefs().size() == 0)
 			return false;
 		
-		TimePeriodCostsMap timePeriodCostsMap = getProject().getTimePeriodCostsMapsCache().getTotalTimePeriodAssignedCostsMapForSubTasks(baseObjectForRow, getAssignmentsTag());
+		TimePeriodCostsMap timePeriodCostsMap = getTimePeriodCostsMapsCache().getTotalTimePeriodAssignedCostsMapForSubTasks(baseObjectForRow, getAssignmentsTag());
 		TimePeriodCosts timePeriodCosts = timePeriodCostsMap.calculateTimePeriodCosts(dateUnit);
 		OptionalDouble totalCost = timePeriodCosts.calculateTotalCost(getProject());
 
@@ -497,7 +484,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	{
 		return dateUnits;
 	}
-	
+
 	protected OptionalDouble calculateRollupValue(int row, int column)
 	{		
 		try	
@@ -700,7 +687,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		
 		return new ChoiceItem(formattedValue, formattedValue);
 	}
-	
+
 	protected OptionalDouble getOptionalDoubleAt(int row, int column)
 	{
 		try	
@@ -731,11 +718,11 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	{
 		return getDateUnit(column) != null;
 	}
-	
+
 	private OptionalDouble getOptionalDoubleDataFilteredByResource(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
 		ORefSet resourcesFilter = getResourcesFilter();
-		TimePeriodCosts timePeriodCosts = calculateTimePeriodAssignedCosts(baseObject, dateUnit, getRowsColumnsProvider().getWorkPlanBudgetMode());
+		TimePeriodCosts timePeriodCosts = calculateTimePeriodAssignedCosts(baseObject, dateUnit);
 		timePeriodCosts.retainWorkUnitDataRelatedToAnyOf(resourcesFilter);
 		
 		return calculateValue(timePeriodCosts);
@@ -743,14 +730,14 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	private OptionalDouble getUnfilteredOptionalDoubleData(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
-		TimePeriodCosts timePeriodCosts = calculateTimePeriodAssignedCosts(baseObject, dateUnit, WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE);
-		
+		TimePeriodCosts timePeriodCosts = calculateTimePeriodAssignedCosts(baseObject, dateUnit);
+
 		return calculateValue(timePeriodCosts);
 	}
 
 	private TimePeriodCosts getProjectTotalTimePeriodCostFor(DateUnit dateUnit) throws Exception
 	{
-		TimePeriodCostsMap totalProject = getProject().getTimePeriodCostsMapsCache().calculateProjectAssignedTotals(getRowsColumnsProvider().getWorkPlanBudgetMode());
+		TimePeriodCostsMap totalProject = getTimePeriodCostsMapsCache().calculateProjectAssignedTotals();
 		
 		return totalProject.calculateTimePeriodCosts(dateUnit);
 	}
@@ -764,12 +751,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	{
 		return currencyFormatter;
 	}
-	
-	private PlanningTreeRowColumnProvider getRowsColumnsProvider()
-	{
-		return rowsColumnsProvider;
-	}
-	
+
 	abstract protected OptionalDouble calculateValue(TimePeriodCosts timePeriodCosts) throws Exception;
 	
 	abstract protected boolean isAssignmentForModel(Assignment assignment);
@@ -794,7 +776,6 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
     }
 	
 	private Vector<DateUnit> dateUnits;
-	private PlanningTreeRowColumnProvider rowsColumnsProvider;
 	private RowColumnBaseObjectProvider rowColumnBaseObjectProvider;
 	private String treeModelIdentifierAsTag;
 	private CurrencyFormat currencyFormatter;

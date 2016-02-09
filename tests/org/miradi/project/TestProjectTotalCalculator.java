@@ -64,7 +64,7 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		resultsChainDiagramModel.fillFrom(resultsChain);
 		
 		fred = getProject().createAndPopulateProjectResource();
-		calculator = getProject().getProjectTotalCalculator();
+		calculator = getProject().getTimePeriodCostsMapsCache().getProjectTotalCalculator();
 		dateUnit = getProject().createDateUnit(YEAR_2008, YEAR_2009);
 	}
 	
@@ -73,14 +73,15 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		createNonDraftStrategyWithAssignment(getConceptualModelDiagramObject());
 		createCauseWithIndicatorWithAssignment(getConceptualModelDiagramObject());
 		
-		verifyCalcuationBasedOnMode(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE, 100.0);
-		verifyCalcuationBasedOnMode(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE, 100.0);
-		verifyCalcuationBasedOnMode(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE, 200.0);
+		verifyCalculationBasedOnMode(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE, 100.0);
+		verifyCalculationBasedOnMode(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE, 100.0);
+		verifyCalculationBasedOnMode(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE, 200.0);
 	}
 
-	protected void verifyCalcuationBasedOnMode(String workPlanBudgetMode, double expectedTotal) throws Exception
+	protected void verifyCalculationBasedOnMode(String workPlanBudgetMode, double expectedTotal) throws Exception
 	{
-		TimePeriodCostsMap projectTotals = calculator.calculateProjectAssignedTotals(workPlanBudgetMode);
+		calculator.setProjectTotalCalculatorStrategy(new ProjectTotalCalculatorStrategyDefault(workPlanBudgetMode));
+		TimePeriodCostsMap projectTotals = calculator.calculateProjectAssignedTotals();
 		assertEquals("Project totals time period costs map should not be empty?", 1, projectTotals.size());
 
 		OptionalDouble calculateTotalBudgetCost = projectTotals.calculateTotalBudgetCost(getProject());		

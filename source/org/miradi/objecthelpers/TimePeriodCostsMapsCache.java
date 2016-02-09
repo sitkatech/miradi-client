@@ -20,22 +20,35 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objecthelpers;
 
-import java.util.HashMap;
-
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
+import org.miradi.project.ProjectTotalCalculator;
+import org.miradi.project.ProjectTotalCalculatorStrategy;
+import org.miradi.project.ProjectTotalCalculatorStrategyDefault;
+import org.miradi.questions.WorkPlanVisibleRowsQuestion;
+import org.miradi.schemas.TableSettingsSchema;
+
+import java.util.HashMap;
 
 public class TimePeriodCostsMapsCache implements CommandExecutedListener
 {
 	public TimePeriodCostsMapsCache(Project projectToUse)
 	{
-		project = projectToUse;
-		clear();
+		this(projectToUse, new ProjectTotalCalculatorStrategyDefault(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE));
 	}
 	
+	public TimePeriodCostsMapsCache(Project projectToUse, ProjectTotalCalculatorStrategy projectTotalCalculatorStrategyToUse)
+	{
+		project = projectToUse;
+		projectTotalCalculator = new ProjectTotalCalculator(projectToUse, projectTotalCalculatorStrategyToUse);
+		clear();
+	}
+
 	public void clear()
 	{
 		clearAllCachedData();
@@ -44,10 +57,30 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		clear();
+
+		if (doesCommandImpactWorkPlanBudgetMode(event))
+		{
+			ProjectTotalCalculatorStrategy currentCalculatorStrategy = projectTotalCalculator.getProjectTotalCalculatorStrategy();
+			CommandSetObjectData command = (CommandSetObjectData) event.getCommand();
+			currentCalculatorStrategy.setWorkPlanBudgetMode(command.getDataValue());
+		}
+	}
+
+	public void setProjectTotalCalculatorStrategy(ProjectTotalCalculatorStrategy projectTotalCalculatorStrategyToUse)
+	{
+		clear();
+
+		projectTotalCalculator = new ProjectTotalCalculator(getProject(), projectTotalCalculatorStrategyToUse);
+	}
+
+	private boolean doesCommandImpactWorkPlanBudgetMode(CommandExecutedEvent event)
+	{
+		return event.isSetDataCommandWithThisTypeAndTag(TableSettingsSchema.getObjectType(), TableSettings.TAG_WORK_PLAN_VISIBLE_NODES_CODE);
 	}
 
 	private void clearAllCachedData()
 	{
+		projectTotalCalculator.clear();
 		totalTimePeriodPlannedCostsMapsByBaseObject = new HashMap<ORef, TimePeriodCostsMap>();
 		totalTimePeriodAssignedCostsMapsByBaseObject = new HashMap<ORef, TimePeriodCostsMap>();
 		plannedWhenTotalAsStringByBaseObject = new HashMap<ORef, String>();
@@ -62,16 +95,28 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 	public void enable()
 	{
 		getProject().addCommandExecutedListener(this);
+		projectTotalCalculator.enable();
 	}
 	
 	public void disable()
 	{
 		getProject().removeCommandExecutedListener(this);
+		projectTotalCalculator.disable();
 	}
 	
 	private Project getProject()
 	{
 		return project;
+	}
+
+	public String getWorkPlanBudgetMode()
+	{
+		return projectTotalCalculator.getProjectTotalCalculatorStrategy().getWorkPlanBudgetMode();
+	}
+
+	public ProjectTotalCalculator getProjectTotalCalculator()
+	{
+		return projectTotalCalculator;
 	}
 
 	public TimePeriodCostsMap getTotalTimePeriodPlannedCostsMap(BaseObject baseObject) throws Exception
@@ -80,7 +125,7 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 		TimePeriodCostsMap result = totalTimePeriodPlannedCostsMapsByBaseObject.get(ref);
 		if(result == null)
 		{
-			result = baseObject.getTotalTimePeriodCostsMapForPlans();
+			result = getProjectTotalCalculator().getTotalTimePeriodCostsMapForPlans(baseObject);
 			totalTimePeriodPlannedCostsMapsByBaseObject.put(ref, result);
 		}
 		
@@ -93,7 +138,7 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 		TimePeriodCostsMap result = totalTimePeriodAssignedCostsMapsByBaseObject.get(ref);
 		if(result == null)
 		{
-			result = baseObject.getTotalTimePeriodCostsMapForAssignments();
+			result = getProjectTotalCalculator().getTotalTimePeriodCostsMapForAssignments(baseObject);
 			totalTimePeriodAssignedCostsMapsByBaseObject.put(ref, result);
 		}
 
@@ -106,7 +151,7 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 		String result = plannedWhenTotalAsStringByBaseObject.get(ref);
 		if(result == null)
 		{
-			result = baseObject.getPlannedWhenRollupAsString();
+			result = getProjectTotalCalculator().getPlannedWhenRollupAsString(baseObject);
 			plannedWhenTotalAsStringByBaseObject.put(ref, result);
 		}
 		
@@ -119,57 +164,61 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 		String result = assignedWhenTotalAsStringByBaseObject.get(ref);
 		if(result == null)
 		{
-			result = baseObject.getAssignedWhenRollupAsString();
+			result = getProjectTotalCalculator().getAssignedWhenRollupAsString(baseObject);
 			assignedWhenTotalAsStringByBaseObject.put(ref, result);
 		}
 
 		return result;
 	}
 
-	public TimePeriodCostsMap calculateProjectPlannedTotals(String workPlanBudgetMode) throws Exception
+	public TimePeriodCostsMap calculateProjectPlannedTotals() throws Exception
 	{
+		String workPlanBudgetMode = getProjectTotalCalculator().getProjectTotalCalculatorStrategy().getWorkPlanBudgetMode();
 		TimePeriodCostsMap result = projectPlannedTotalsByBudgetMode.get(workPlanBudgetMode);
 		if(result == null)
 		{
-			result = getProject().getProjectTotalCalculator().calculateProjectPlannedTotals(workPlanBudgetMode);
+			result = getProjectTotalCalculator().calculateProjectPlannedTotals();
 			projectPlannedTotalsByBudgetMode.put(workPlanBudgetMode, result);
 		}
 		
 		return result;
 	}
 
-	public TimePeriodCostsMap calculateProjectAssignedTotals(String workPlanBudgetMode) throws Exception
+	public TimePeriodCostsMap calculateProjectAssignedTotals() throws Exception
 	{
+		String workPlanBudgetMode = getProjectTotalCalculator().getProjectTotalCalculatorStrategy().getWorkPlanBudgetMode();
 		TimePeriodCostsMap result = projectAssignedTotalsByBudgetMode.get(workPlanBudgetMode);
 		if(result == null)
 		{
-			result = getProject().getProjectTotalCalculator().calculateProjectAssignedTotals(workPlanBudgetMode);
+			result = getProjectTotalCalculator().calculateProjectAssignedTotals();
 			projectAssignedTotalsByBudgetMode.put(workPlanBudgetMode, result);
 		}
 
 		return result;
 	}
 
-	public TimePeriodCostsMap calculateDiagramObjectPlannedTotals(DiagramObject baseObject, String workPlanBudgetMode) throws Exception
+	public TimePeriodCostsMap calculateDiagramObjectPlannedTotals(DiagramObject baseObject) throws Exception
 	{
+		String workPlanBudgetMode = getProjectTotalCalculator().getProjectTotalCalculatorStrategy().getWorkPlanBudgetMode();
 		DiagramTotalCacheKey diagramTotalCacheKey = new DiagramTotalCacheKey(baseObject, workPlanBudgetMode);
 		TimePeriodCostsMap result = diagramObjectPlannedTotalsByBudgetMode.get(diagramTotalCacheKey);
 		if(result == null)
 		{
-			result = getProject().getProjectTotalCalculator().calculateDiagramObjectPlannedTotals(baseObject, workPlanBudgetMode);
+			result = getProjectTotalCalculator().calculateDiagramObjectPlannedTotals(baseObject);
 			diagramObjectPlannedTotalsByBudgetMode.put(diagramTotalCacheKey, result);
 		}
 
 		return result;
 	}
 
-	public TimePeriodCostsMap calculateDiagramObjectAssignedTotals(DiagramObject baseObject, String workPlanBudgetMode) throws Exception
+	public TimePeriodCostsMap calculateDiagramObjectAssignedTotals(DiagramObject baseObject) throws Exception
 	{
+		String workPlanBudgetMode = getProjectTotalCalculator().getProjectTotalCalculatorStrategy().getWorkPlanBudgetMode();
 		DiagramTotalCacheKey diagramTotalCacheKey = new DiagramTotalCacheKey(baseObject, workPlanBudgetMode);
 		TimePeriodCostsMap result = diagramObjectAssignedTotalsByBudgetMode.get(diagramTotalCacheKey);
 		if(result == null)
 		{
-			result = getProject().getProjectTotalCalculator().calculateDiagramObjectAssignedTotals(baseObject, workPlanBudgetMode);
+			result = getProjectTotalCalculator().calculateDiagramObjectAssignedTotals(baseObject);
 			diagramObjectAssignedTotalsByBudgetMode.put(diagramTotalCacheKey, result);
 		}
 
@@ -182,8 +231,7 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 		TimePeriodCostsMap result = totalTimePeriodCostsMapForSubTasksByBaseObjectAndAssignmentsTag.get(key);
 		if(result == null)
 		{
-			ORefList subTaskRefs = baseObjectForRow.getSubTaskRefs();
-			result = baseObjectForRow.getTotalTimePeriodCostsMapForSubTasks(subTaskRefs, assignmentsTag);
+			result = getProjectTotalCalculator().getTotalTimePeriodCostsMapForChildTasks(baseObjectForRow, assignmentsTag);
 			totalTimePeriodCostsMapForSubTasksByBaseObjectAndAssignmentsTag.put(key, result);
 		}
 		
@@ -227,6 +275,7 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 	}
 
 	private Project project;
+	private ProjectTotalCalculator projectTotalCalculator;
 	private HashMap<ORef, TimePeriodCostsMap> totalTimePeriodPlannedCostsMapsByBaseObject;
 	private HashMap<ORef, TimePeriodCostsMap> totalTimePeriodAssignedCostsMapsByBaseObject;
 	private HashMap<ORef, String> plannedWhenTotalAsStringByBaseObject;

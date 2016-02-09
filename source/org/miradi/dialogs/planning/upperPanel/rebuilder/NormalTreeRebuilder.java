@@ -299,7 +299,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 
 		Task parentTask = Task.find(getProject(), parentTaskRef);
 		if(willThisTypeEndUpInTheTree(parentTask.getTypeName()))
-			childRefs.addAll(parentTask.getSubTaskRefs());
+			childRefs.addAll(parentTask.getChildTaskRefs());
 
 		return childRefs;
 	}

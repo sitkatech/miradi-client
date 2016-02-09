@@ -37,20 +37,6 @@ class AbstractWorkPlanManagementPanel extends PlanningTreeManagementPanel
 		return "";
 	}
 
-	@Override
-	public void becomeActive()
-	{
-		super.becomeActive();
-		updateStatusBar();
-	}
-	
-	@Override
-	public void becomeInactive()
-	{
-		clearStatusBar();
-		super.becomeInactive();
-	}
-
 	protected void updateStatusBar()
 	{
 		getMainWindow().updatePlanningDateRelatedStatus();

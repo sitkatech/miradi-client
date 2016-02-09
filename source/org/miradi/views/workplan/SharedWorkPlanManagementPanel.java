@@ -26,7 +26,10 @@ import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.TimePeriodCostsMapsCache;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
+import org.miradi.project.ProjectTotalCalculatorStrategyDefault;
+import org.miradi.project.ProjectTotalCalculatorStrategySharedWorkPlan;
 
 import javax.swing.*;
 
@@ -50,6 +53,28 @@ class SharedWorkPlanManagementPanel extends AbstractWorkPlanManagementPanel
 	}
 
 	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		updateStatusBar();
+
+		TimePeriodCostsMapsCache cache = getProject().getTimePeriodCostsMapsCache();
+		String workPlanBudgetMode = cache.getWorkPlanBudgetMode();
+		cache.setProjectTotalCalculatorStrategy(new ProjectTotalCalculatorStrategySharedWorkPlan(workPlanBudgetMode));
+	}
+
+	@Override
+	public void becomeInactive()
+	{
+		clearStatusBar();
+		super.becomeInactive();
+
+		TimePeriodCostsMapsCache cache = getProject().getTimePeriodCostsMapsCache();
+		String workPlanBudgetMode = cache.getWorkPlanBudgetMode();
+		cache.setProjectTotalCalculatorStrategy(new ProjectTotalCalculatorStrategyDefault(workPlanBudgetMode));
+	}
+
+	@Override
 	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
 		return SharedWorkPlanTreeTablePanel.createPlanningTreeTablePanel(getMainWindow());
@@ -69,5 +94,4 @@ class SharedWorkPlanManagementPanel extends AbstractWorkPlanManagementPanel
 
 		return new SharedWorkPlanManagementPanel(mainWindowToUse, workPlanTreeTablePanel, workPlanPropertiesPanel);
 	}
-
 }

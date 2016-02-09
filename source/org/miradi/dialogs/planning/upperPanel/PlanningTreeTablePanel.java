@@ -128,7 +128,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		resourceWorkUnitsTableModel = new ProjectResourceWorkUnitsTableModel(getProject(), getRowColumnProvider(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		resourceBudgetDetailsTableModel = new ProjectResourceBudgetDetailsTableModel(getProject(), getRowColumnProvider(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		expenseAmountsTableModel = new WorkPlanExpenseAmountsTableModel(getProject(), getRowColumnProvider(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
-		budgetDetailsTableModel = new WorkPlanBudgetDetailsTableModel(getProject(), getRowColumnProvider(),getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
+		budgetDetailsTableModel = new WorkPlanBudgetDetailsTableModel(getProject(), getRowColumnProvider(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		fundingSourceBudgetDetailsTableModel = new FundingSourceBudgetDetailsTableModel(getProject(), getRowColumnProvider(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		accountingCodeBudgetDetailsTableModel = new AccountingCodeBudgetDetailsTableModel(getProject(), getRowColumnProvider(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		fundingSourceExpenseTableModel = new FundingSourceExpenseTableModel(getProject(), getRowColumnProvider(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());

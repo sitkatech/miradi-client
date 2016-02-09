@@ -59,10 +59,8 @@ import org.miradi.objectdata.TagListData;
 import org.miradi.objecthelpers.*;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.CustomPlanningColumnsQuestion;
-import org.miradi.questions.StaticQuestionManager;
+import org.miradi.project.ProjectTotalCalculatorStrategy;
+import org.miradi.questions.*;
 import org.miradi.schemas.*;
 import org.miradi.utils.*;
 import org.miradi.utils.OptionalDouble;
@@ -571,19 +569,19 @@ abstract public class BaseObject
 		return false;
 	}
 	
-	protected boolean hasAnySubtaskResourceData(DateUnit dateUnit) throws Exception
+	protected boolean hasAnyChildTaskResourceData(DateUnit dateUnit) throws Exception
 	{
-		return hasAnySubtaskAssignmentData(dateUnit, TAG_RESOURCE_ASSIGNMENT_IDS);
+		return hasAnyChildTaskAssignmentData(dateUnit, TAG_RESOURCE_ASSIGNMENT_IDS);
 	}
 	
-	protected boolean hasAnySubtaskExpenseData(DateUnit dateUnit) throws Exception
+	protected boolean hasAnyChildTaskExpenseData(DateUnit dateUnit) throws Exception
 	{	
-		return hasAnySubtaskAssignmentData(dateUnit, TAG_EXPENSE_ASSIGNMENT_REFS);
+		return hasAnyChildTaskAssignmentData(dateUnit, TAG_EXPENSE_ASSIGNMENT_REFS);
 	}
 
-	private boolean hasAnySubtaskAssignmentData(DateUnit dateUnit, String assignmentRefsTag) throws Exception
+	private boolean hasAnyChildTaskAssignmentData(DateUnit dateUnit, String assignmentRefsTag) throws Exception
 	{
-		TimePeriodCostsMap subTaskTimePeriodCostsMap = getTotalTimePeriodCostsMapForSubTasks(getSubTaskRefs(), assignmentRefsTag);
+		TimePeriodCostsMap subTaskTimePeriodCostsMap = getTotalTimePeriodCostsMapForChildTasks(assignmentRefsTag);
 		
 		return subTaskTimePeriodCostsMap.hasDateUnitsContained(dateUnit);
 	}
@@ -594,13 +592,6 @@ abstract public class BaseObject
 		return totalTimePeriodCostsMap.calculateTotalBudgetCost(getProject());
 	}
 
-	public OptionalDouble getTotalBudgetCostWithoutRollup() throws Exception
-	{
-		TimePeriodCostsMap mergedTimePeriodCostsMap = getTotalTimePeriodCostsForAssignmentsWithoutRollup();
-		
-		return mergedTimePeriodCostsMap.calculateTotalBudgetCost(getProject());
-	}
-	
 	public int getTotalShareCount()
 	{
 		return 1;
@@ -622,7 +613,7 @@ abstract public class BaseObject
 
 		return mergedTimePeriodCostsMap;
 	}
-	
+
 	public TimePeriodCostsMap getTotalTimePeriodCostsMapForAssignments() throws Exception
 	{
 		TimePeriodCostsMap expenseAssignmentsTimePeriodCostsMap = getExpenseAssignmentsTimePeriodCostsMap();
@@ -669,10 +660,10 @@ abstract public class BaseObject
 	{
 		return getTimePeriodCostsMap(TAG_RESOURCE_PLAN_IDS);
 	}
-	
+
 	protected TimePeriodCostsMap getTimePeriodCostsMap(String tag) throws Exception
 	{
-		TimePeriodCostsMap subTaskTimePeriodCosts = getTotalTimePeriodCostsMapForSubTasks(getSubTaskRefs(), tag);
+		TimePeriodCostsMap subTaskTimePeriodCosts = getTotalTimePeriodCostsMapForChildTasks(tag);
 		TimePeriodCostsMap totalTimePeriodCostsMapForTag = getTotalTimePeriodCostsMapForTag(tag);
 		
 		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
@@ -682,12 +673,14 @@ abstract public class BaseObject
 		return mergedTimePeriodCostsMap;	
 	}
 	
-	public TimePeriodCostsMap getTotalTimePeriodCostsMapForSubTasks(ORefList subTaskRefs, String tag) throws Exception
+	public TimePeriodCostsMap getTotalTimePeriodCostsMapForChildTasks(String tag) throws Exception
 	{
 		TimePeriodCostsMap timePeriodCostsMap = new TimePeriodCostsMap();
-		for (int index = 0; index < subTaskRefs.size(); ++index)
+		ProjectTotalCalculatorStrategy projectTotalCalculatorStrategy = getProject().getTimePeriodCostsMapsCache().getProjectTotalCalculator().getProjectTotalCalculatorStrategy();
+		ORefList childTaskRefs = projectTotalCalculatorStrategy.getChildTaskRefs(this);
+		for (int index = 0; index < childTaskRefs.size(); ++index)
 		{
-			Task task = Task.find(getProject(), subTaskRefs.get(index));
+			Task task = Task.find(getProject(), childTaskRefs.get(index));
 			timePeriodCostsMap.mergeAll(task.getTimePeriodCostsMap(tag));
 		}
 		
@@ -744,7 +737,7 @@ abstract public class BaseObject
 
 	public boolean hasSubTasksWithResourceAssignments() throws Exception
 	{
-		ORefList subTaskRefs = getSubTaskRefs();
+		ORefList subTaskRefs = getChildTaskRefs();
 		for (int index = 0; index < subTaskRefs.size(); ++index)
 		{
 			Task task = Task.find(getProject(), subTaskRefs.get(index));
@@ -787,36 +780,11 @@ abstract public class BaseObject
 		return true;
 	}
 
-	public ORefList getSubTaskRefs()
+	public ORefList getChildTaskRefs()
 	{
 		return new ORefList();
 	}
 					
-	public String getPlannedWhoRollupAsString()
-	{
-		try
-		{
-			ORefSet resourcesRefs = getTotalTimePeriodCostsMapForPlans().getAllProjectResourceRefs();
-			Vector<ProjectResource> projectResources = toProjectResources(getProject(), resourcesRefs);
-
-			ORef leaderResourceRef = ORef.INVALID;
-			if (doesFieldExist(TAG_PLANNED_LEADER_RESOURCE))
-			{
-				leaderResourceRef = getRef(TAG_PLANNED_LEADER_RESOURCE);
-				Collections.sort(projectResources, new ProjectResourceLeaderAtTopSorter(leaderResourceRef));
-			}
-
-			final ORefList sortedProjectResourceRefs = new ORefList(projectResources);
-			Vector<String> sortedNames = getResourceNames(getProject(), sortedProjectResourceRefs, leaderResourceRef);
-			return createAppendedResourceNames(sortedNames);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return "";
-		} 
-	}
-
 	public static Vector<ProjectResource> toProjectResources(Project project, ORefSet resourcesRefs) throws Exception
 	{
 		Vector<ProjectResource> resources = new Vector<ProjectResource>();
@@ -875,6 +843,31 @@ abstract public class BaseObject
 			return who + "*";
 
 		return who;
+	}
+
+	public String getPlannedWhoRollupAsString()
+	{
+		try
+		{
+			ORefSet resourcesRefs = getTotalTimePeriodCostsMapForPlans().getAllProjectResourceRefs();
+			Vector<ProjectResource> projectResources = toProjectResources(getProject(), resourcesRefs);
+
+			ORef leaderResourceRef = ORef.INVALID;
+			if (doesFieldExist(TAG_PLANNED_LEADER_RESOURCE))
+			{
+				leaderResourceRef = getRef(TAG_PLANNED_LEADER_RESOURCE);
+				Collections.sort(projectResources, new ProjectResourceLeaderAtTopSorter(leaderResourceRef));
+			}
+
+			final ORefList sortedProjectResourceRefs = new ORefList(projectResources);
+			Vector<String> sortedNames = getResourceNames(getProject(), sortedProjectResourceRefs, leaderResourceRef);
+			return createAppendedResourceNames(sortedNames);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
 	}
 
 	public CodeList getPlannedWhoResourcesAsCodeList()
