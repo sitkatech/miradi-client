@@ -75,11 +75,11 @@ public class TreeRebuilderNodeSorter extends NodeSorter
 			FundingSourceSchema.OBJECT_NAME,
 			BudgetCategoryOneSchema.OBJECT_NAME,
 			BudgetCategoryTwoSchema.OBJECT_NAME,
+			ResourceAssignmentSchema.OBJECT_NAME,
+			ExpenseAssignmentSchema.OBJECT_NAME,
 			TaskSchema.ACTIVITY_NAME,
 			TaskSchema.METHOD_NAME,
 			TaskSchema.OBJECT_NAME,
-			ResourceAssignmentSchema.OBJECT_NAME,
-			ExpenseAssignmentSchema.OBJECT_NAME,
 		};
 	}
 	
