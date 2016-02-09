@@ -65,10 +65,23 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		
 		fred = getProject().createAndPopulateProjectResource();
 		calculator = getProject().getTimePeriodCostsMapsCache().getProjectTotalCalculator();
+
 		dateUnit = getProject().createDateUnit(YEAR_2008, YEAR_2009);
 	}
-	
-	public void testMonitoringBudgetMode() throws Exception
+
+	protected void setUpDefaultCalculatorStrategy()
+	{
+		String currentWorkBudgetMode = calculator.getProjectTotalCalculatorStrategy().getWorkPlanBudgetMode();
+		calculator.setProjectTotalCalculatorStrategy(new ProjectTotalCalculatorStrategyDefault(currentWorkBudgetMode));
+	}
+
+	protected void setUpSharedWorkPlanCalculatorStrategy()
+	{
+		String currentWorkBudgetMode = calculator.getProjectTotalCalculatorStrategy().getWorkPlanBudgetMode();
+		calculator.setProjectTotalCalculatorStrategy(new ProjectTotalCalculatorStrategySharedWorkPlan(currentWorkBudgetMode));
+	}
+
+	protected void testMonitoringBudgetMode() throws Exception
 	{
 		createNonDraftStrategyWithAssignment(getConceptualModelDiagramObject());
 		createCauseWithIndicatorWithAssignment(getConceptualModelDiagramObject());
@@ -87,41 +100,51 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		OptionalDouble calculateTotalBudgetCost = projectTotals.calculateTotalBudgetCost(getProject());		
 		assertEquals("Incorrect project total", expectedTotal, calculateTotalBudgetCost.getValue());
 	}
-	
-	public void testKeaIndicatorInResultsChain() throws Exception
+
+	protected void testKeaIndicatorInResultsChain() throws Exception
+	{
+		testKeaIndicatorInResultsChain(1);
+	}
+
+	protected void testKeaIndicatorInResultsChain(final int expectedProjectTotalTimePeriodMapCount) throws Exception
 	{
 		DiagramFactor target = getProject().createAndAddFactorToDiagram(getResultsChainDiagramObject(), TargetSchema.getObjectType());
 		getProject().turnOnTncMode((Target) target.getWrappedFactor());
 		KeyEcologicalAttribute kea = getProject().createKea();
 		ORefList keaRefs = new ORefList(kea);
 		getProject().fillObjectUsingCommand(target.getWrappedORef(), Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaRefs.convertToIdList(KeyEcologicalAttributeSchema.getObjectType()).toString());
-		
+
 		Indicator indicatorWithResourceAssignment = getProject().createIndicator(kea);
 		addResourceAssignment(indicatorWithResourceAssignment);
-		
+
 		turnOnDataFromResultsChainOnly();
-		verifyCalculatedValues();
-		
+		verifyCalculatedValues(expectedProjectTotalTimePeriodMapCount);
+
 		turnOnDataFromBothDiagramTypes();
-		verifyCalculatedValues();
-		
+		verifyCalculatedValues(expectedProjectTotalTimePeriodMapCount);
+
 		turnOnDataFromConceptualDiagramOnly();
 		verifyEmptyProjectTotalTimePeriodCostsMap();
 	}
-	
-	public void testProjectTotalWithDraftStrategyIndicator() throws Exception
+
+	protected void testProjectTotalWithDraftStrategyIndicator() throws Exception
+	{
+		testProjectTotalWithDraftStrategyIndicator(20.0, 200.0);
+	}
+
+	protected void testProjectTotalWithDraftStrategyIndicator(final double expectedWorkUnits, final double expectedTotalBudgetCost) throws Exception
 	{
 		DiagramFactor diagramFactor = createNonDraftStrategyWithAssignment(getConceptualModelDiagramObject());
 		Strategy strategy = Strategy.find(getProject(), diagramFactor.getWrappedORef());
 		Indicator indicator = getProject().createIndicator(strategy);
 		getProject().addResourceAssignment(indicator, 10.0, new DateUnit());
-		verifyCalculatedValues(20.0, 200.0);
-		
+		verifyCalculatedValues(expectedWorkUnits, expectedTotalBudgetCost);
+
 		getProject().turnOnDraft(strategy);
 		verifyProjectTotalTimePeriodCostsMap(0);
 	}
 
-	public void testResultsChainDraftStrategyProjectTotal() throws Exception
+	protected void testResultsChainDraftStrategyProjectTotal() throws Exception
 	{
 		createDraftStrategyWithAssignment(getResultsChainDiagramObject());
 		
@@ -135,7 +158,7 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		verifyEmptyProjectTotalTimePeriodCostsMap();
 	}
 
-	public void testResultsChainStrategyProjectTotal() throws Exception
+	protected void testResultsChainStrategyProjectTotal() throws Exception
 	{
 		createNonDraftStrategyWithAssignment(getResultsChainDiagramObject());
 		
@@ -149,35 +172,45 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		verifyEmptyProjectTotalTimePeriodCostsMap();
 	}
 
-	public void testConceptualModelIndicatorProjectTotal() throws Exception
+	protected void testConceptualModelIndicatorProjectTotal() throws Exception
+	{
+		testConceptualModelIndicatorProjectTotal(1);
+	}
+
+	protected void testConceptualModelIndicatorProjectTotal(final int expectedProjectTotalTimePeriodMapCount) throws Exception
 	{
 		createCauseWithIndicatorWithAssignment(getConceptualModelDiagramObject());
-	
+
 		turnOnDataFromConceptualDiagramOnly();
-		verifyCalculatedValues();
-		
+		verifyCalculatedValues(expectedProjectTotalTimePeriodMapCount);
+
 		turnOnDataFromBothDiagramTypes();
-		verifyCalculatedValues();
-		
+		verifyCalculatedValues(expectedProjectTotalTimePeriodMapCount);
+
 		turnOnDataFromResultsChainOnly();
 		verifyEmptyBudgetTotalCost();
 	}
 
-	public void testResultsChainIndicatorProjectTotal() throws Exception
+	protected void testResultsChainIndicatorProjectTotal() throws Exception
+	{
+		testResultsChainIndicatorProjectTotal(1);
+	}
+
+	protected void testResultsChainIndicatorProjectTotal(final int expectedProjectTotalTimePeriodMapCount) throws Exception
 	{
 		createCauseWithIndicatorWithAssignment(getResultsChainDiagramObject());
 
 		turnOnDataFromResultsChainOnly();
-		verifyCalculatedValues();
-		
+		verifyCalculatedValues(expectedProjectTotalTimePeriodMapCount);
+
 		turnOnDataFromBothDiagramTypes();
-		verifyCalculatedValues();
-		
+		verifyCalculatedValues(expectedProjectTotalTimePeriodMapCount);
+
 		turnOnDataFromConceptualDiagramOnly();
 		verifyEmptyBudgetTotalCost();
 	}
 
-	public void testConceptualModelDraftStrategyProjectTotal() throws Exception
+	protected void testConceptualModelDraftStrategyProjectTotal() throws Exception
 	{
 		createDraftStrategyWithAssignment(getConceptualModelDiagramObject());
 	
@@ -191,7 +224,7 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		verifyEmptyProjectTotalTimePeriodCostsMap();
 	}
 
-	public void testConceptualModelStrategyProjectTotal() throws Exception
+	protected void testConceptualModelStrategyProjectTotal() throws Exception
 	{
 		createNonDraftStrategyWithAssignment(getConceptualModelDiagramObject());
 		
@@ -204,122 +237,144 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		turnOnDataFromResultsChainOnly();
 		verifyEmptyBudgetTotalCost();
 	}
-	
-	public void testStrategyOnEachDiagramProjectTotal() throws Exception
+
+	protected void testStrategyOnEachDiagramProjectTotal() throws Exception
+	{
+		testStrategyOnEachDiagramProjectTotal(true);
+	}
+
+	protected void testStrategyOnEachDiagramProjectTotal(final boolean expectIndicatorAssignmentsToBeCounted) throws Exception
 	{
 		createNonDraftStrategyWithAssignment(getConceptualModelDiagramObject());
 		createNonDraftStrategyWithAssignment(getResultsChainDiagramObject());
 		createCauseWithIndicatorWithAssignment(getConceptualModelDiagramObject());
 		createCauseWithIndicatorWithAssignment(getResultsChainDiagramObject());
-		
+
 		turnOnDataFromConceptualDiagramOnly();
-		verifyCalculatedValues(TEN_WORK_UNITS * 2, 200.00);
-		
+		if (expectIndicatorAssignmentsToBeCounted)
+			verifyCalculatedValues(TEN_WORK_UNITS * 2, 200.00);
+		else
+			verifyCalculatedValues(TEN_WORK_UNITS, 100.00);
+
 		turnOnDataFromBothDiagramTypes();
-		verifyCalculatedValues(TEN_WORK_UNITS * 4, 400.0);
-		
+		if (expectIndicatorAssignmentsToBeCounted)
+			verifyCalculatedValues(TEN_WORK_UNITS * 4, 400.0);
+		else
+			verifyCalculatedValues(TEN_WORK_UNITS * 2, 200.0);
+
 		turnOnDataFromResultsChainOnly();
-		verifyCalculatedValues(TEN_WORK_UNITS * 2, 200.0);
+		if (expectIndicatorAssignmentsToBeCounted)
+			verifyCalculatedValues(TEN_WORK_UNITS * 2, 200.0);
+		else
+			verifyCalculatedValues(TEN_WORK_UNITS, 100.00);
 	}
 
-	public void testEmptyProjectTotal() throws Exception
+	protected void testEmptyProjectTotal() throws Exception
 	{
 		assertEquals("no results chains created?", 1, getProject().getResultsChainDiagramPool().size());
 		assertEquals("Empty project had non-zero totals data?", 0, calculator.calculateProjectAssignedTotals().size());
 	}
-	
-	private void verifyEmptyBudgetTotalCost() throws Exception
+
+	protected void verifyEmptyBudgetTotalCost() throws Exception
 	{
 		OptionalDouble totalBudgetCost = calculator.calculateProjectAssignedTotals().calculateTotalBudgetCost(getProject());
 		assertFalse("ConceptualModel Strategy is included in project totals?", totalBudgetCost.hasValue());
 	}
-	
-	private void verifyEmptyProjectTotalTimePeriodCostsMap() throws Exception
+
+	protected void verifyEmptyProjectTotalTimePeriodCostsMap() throws Exception
 	{
 		assertEquals("Should have empty project total time perdiod costs map?", 0, calculator.calculateProjectAssignedTotals().size());
 	}
-	
-	private void verifyCalculatedValues() throws Exception
+
+	protected void verifyCalculatedValues() throws Exception
 	{
 		verifyCalculatedValues(TEN_WORK_UNITS, 100.0);
 	}
 
-	private void verifyCalculatedValues(final double expectedWorkUnits,	final double expectedTotalBudgetCost) throws Exception
+	protected void verifyCalculatedValues(final int expectedProjectTotalTimePeriodMapCount) throws Exception
+	{
+		verifyCalculatedValues(expectedProjectTotalTimePeriodMapCount, TEN_WORK_UNITS, 100.0);
+	}
+
+	protected void verifyCalculatedValues(final double expectedWorkUnits, final double expectedTotalBudgetCost) throws Exception
 	{
 		verifyCalculatedValues(1, expectedWorkUnits, expectedTotalBudgetCost);
 	}
 
-	private void verifyCalculatedValues(final int expectedProjectTotalTimePeriodMapCount, final double expectedWorkUnits, final double expectedTotalBudgetCost) throws Exception
+	protected void verifyCalculatedValues(final int expectedProjectTotalTimePeriodMapCount, final double expectedWorkUnits, final double expectedTotalBudgetCost) throws Exception
 	{
 		TimePeriodCostsMap projectTotals = verifyProjectTotalTimePeriodCostsMap(expectedProjectTotalTimePeriodMapCount);
 
-		TimePeriodCosts timePeriodCosts = projectTotals.getTimePeriodCostsForSpecificDateUnit(dateUnit);
-		assertEquals("Incorrect total work units?", expectedWorkUnits, timePeriodCosts.getTotalWorkUnits().getValue());
-		
-		OptionalDouble calculateTotalBudgetCost = projectTotals.calculateTotalBudgetCost(getProject());		
-		assertEquals("Incorrect project total", expectedTotalBudgetCost, calculateTotalBudgetCost.getValue());
+		if (expectedProjectTotalTimePeriodMapCount > 0)
+		{
+			TimePeriodCosts timePeriodCosts = projectTotals.getTimePeriodCostsForSpecificDateUnit(dateUnit);
+			assertEquals("Incorrect total work units?", expectedWorkUnits, timePeriodCosts.getTotalWorkUnits().getValue());
+
+			OptionalDouble calculateTotalBudgetCost = projectTotals.calculateTotalBudgetCost(getProject());
+			assertEquals("Incorrect project total", expectedTotalBudgetCost, calculateTotalBudgetCost.getValue());
+		}
 	}
 
-	private TimePeriodCostsMap verifyProjectTotalTimePeriodCostsMap(final int expectedProjectTotalTimePeriodMapCount) throws Exception
+	protected TimePeriodCostsMap verifyProjectTotalTimePeriodCostsMap(final int expectedProjectTotalTimePeriodMapCount) throws Exception
 	{
 		TimePeriodCostsMap projectTotals = calculator.calculateProjectAssignedTotals();
 		assertEquals("Project totals time period costs map should not be empty?", expectedProjectTotalTimePeriodMapCount, projectTotals.size());
 		
 		return projectTotals;
 	}
-	
-	private void turnOnDataFromResultsChainOnly() throws Exception
+
+	protected void turnOnDataFromResultsChainOnly() throws Exception
 	{
 		turnOnDiagramObjectDataFromCode(DiagramObjectDataInclusionQuestion.INCLUDE_RESULTS_CHAIN_DATA_CODE);
 	}
-	
-	private void turnOnDataFromConceptualDiagramOnly() throws Exception
+
+	protected void turnOnDataFromConceptualDiagramOnly() throws Exception
 	{
 		turnOnDiagramObjectDataFromCode(DiagramObjectDataInclusionQuestion.INCLUDE_CONCEPTUAL_MODEL_DATA_CODE);
 	}
-	
-	private void turnOnDataFromBothDiagramTypes() throws Exception
+
+	protected void turnOnDataFromBothDiagramTypes() throws Exception
 	{
 		turnOnDiagramObjectDataFromCode(DiagramObjectDataInclusionQuestion.INCLUDE_BOTH_DIAGRAM_DATA_CODE);
 	}
-	
-	private void turnOnDiagramObjectDataFromCode(String code) throws Exception
+
+	protected void turnOnDiagramObjectDataFromCode(String code) throws Exception
 	{
 		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION, code);	
 	}
-	
-	private void createDraftStrategyWithAssignment(DiagramObject diagramModel) throws Exception
+
+	protected void createDraftStrategyWithAssignment(DiagramObject diagramModel) throws Exception
 	{
 		DiagramFactor draftStrategy = createNonDraftStrategyWithAssignment(diagramModel);
 		getProject().turnOnDraft((Strategy)draftStrategy.getWrappedFactor());
 	}
-	
-	private DiagramFactor createNonDraftStrategyWithAssignment(DiagramObject diagramObject) throws Exception
+
+	protected DiagramFactor createNonDraftStrategyWithAssignment(DiagramObject diagramObject) throws Exception
 	{
 		DiagramFactor nonDraftStrategy = getProject().createAndAddFactorToDiagram(diagramObject, StrategySchema.getObjectType());
 		addResourceAssignment(nonDraftStrategy.getWrappedFactor());
 		
 		return nonDraftStrategy;
 	}
-	
-	private void createCauseWithIndicatorWithAssignment(DiagramObject diagramObject) throws Exception
+
+	protected void createCauseWithIndicatorWithAssignment(DiagramObject diagramObject) throws Exception
 	{
 		DiagramFactor diagramFactor = getProject().createAndAddFactorToDiagram(diagramObject, CauseSchema.getObjectType());
 		Indicator indicator = getProject().createIndicator(diagramFactor.getWrappedFactor());
 		addResourceAssignment(indicator);
 	}
-	
-	private DiagramObject getConceptualModelDiagramObject()
+
+	protected DiagramObject getConceptualModelDiagramObject()
 	{
 		return getProject().getTestingDiagramModel().getDiagramObject();
 	}
-	
-	private DiagramObject getResultsChainDiagramObject()
+
+	protected DiagramObject getResultsChainDiagramObject()
 	{
 		return resultsChainDiagramModel.getDiagramObject();
 	}
-	
-	private void addResourceAssignment(BaseObject wrappedFactor) throws Exception
+
+	protected void addResourceAssignment(BaseObject wrappedFactor) throws Exception
 	{
 		getProject().addResourceAssignment(wrappedFactor, fred, TEN_WORK_UNITS, YEAR_2008, YEAR_2009);
 	}
