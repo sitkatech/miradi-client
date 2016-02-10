@@ -17,33 +17,28 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.planning.doers;
+package org.miradi.actions;
 
-import org.miradi.actions.*;
-import org.miradi.views.umbrella.doers.AbstractPopDownMenuDoer;
+import org.miradi.icons.AssignmentIcon;
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
-public class SharedWorkPlanningTreeNodeCreationMenuDoer extends AbstractPopDownMenuDoer
+public class ActionTreeCreateResourceAssignment extends ObjectsAction
 {
-	@Override
-	protected Class[] getAllPossibleActionClasses()
+	public ActionTreeCreateResourceAssignment(MainWindow mainWindowToUse)
 	{
-		return new Class[] {
-				ActionTreeCreateObjective.class,
-				ActionTreeCreateIndicator.class,
-				null,
-				ActionTreeCreateActivity.class,
-				ActionTreeShareActivity.class,
-				null,
-				ActionTreeCreateResourceAssignment.class,
-				ActionTreeCreateExpenseAssignment.class,
-				null,
-				ActionTreeCreateMethod.class,
-				ActionTreeShareMethod.class,
-				null,
-				ActionCreateSameLevelTask.class,
-				null,
-				ActionCreateIndicatorMeasurement.class,
-				ActionCreateFutureStatus.class,
-			};
+		super(mainWindowToUse, getLabel(), new AssignmentIcon());
+	}
+
+	private static String getLabel()
+	{
+		return EAM.text("Action|Manage|  Create Assignment");
+	}
+
+
+	@Override
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Create an Assignment for the selected Activity");
 	}
 }

@@ -352,6 +352,10 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionTreeShareActivity.class);
 
 		menu.addSeparator();
+		addMenuItem(actions, menu, ActionTreeCreateResourceAssignment.class);
+		addMenuItem(actions, menu, ActionTreeCreateExpenseAssignment.class);
+
+		menu.addSeparator();
 		addMenuItem(actions, menu, ActionTreeCreateMethod.class);
 		addMenuItem(actions, menu, ActionTreeShareMethod.class);
 

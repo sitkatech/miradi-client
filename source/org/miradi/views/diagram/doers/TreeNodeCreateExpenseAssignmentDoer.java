@@ -17,33 +17,37 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.planning.doers;
 
-import org.miradi.actions.*;
-import org.miradi.views.umbrella.doers.AbstractPopDownMenuDoer;
+package org.miradi.views.diagram.doers;
 
-public class SharedWorkPlanningTreeNodeCreationMenuDoer extends AbstractPopDownMenuDoer
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.Task;
+import org.miradi.schemas.ExpenseAssignmentSchema;
+import org.miradi.views.planning.doers.AbstractTreeCreateAnnotationDoer;
+
+public class TreeNodeCreateExpenseAssignmentDoer extends AbstractTreeCreateAnnotationDoer
 {
 	@Override
-	protected Class[] getAllPossibleActionClasses()
+	protected boolean isCorrectOwner(BaseObject selectedObject)
 	{
-		return new Class[] {
-				ActionTreeCreateObjective.class,
-				ActionTreeCreateIndicator.class,
-				null,
-				ActionTreeCreateActivity.class,
-				ActionTreeShareActivity.class,
-				null,
-				ActionTreeCreateResourceAssignment.class,
-				ActionTreeCreateExpenseAssignment.class,
-				null,
-				ActionTreeCreateMethod.class,
-				ActionTreeShareMethod.class,
-				null,
-				ActionCreateSameLevelTask.class,
-				null,
-				ActionCreateIndicatorMeasurement.class,
-				ActionCreateFutureStatus.class,
-			};
+		return Task.is(selectedObject);
+	}
+	
+	@Override
+	protected int getAnnotationType()
+	{
+		return ExpenseAssignmentSchema.getObjectType();
+	}
+
+	@Override
+	protected String getAnnotationTag()
+	{
+		return BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS;
+	}
+
+	@Override
+	protected String getObjectName()
+	{
+		return ExpenseAssignmentSchema.OBJECT_NAME;
 	}
 }

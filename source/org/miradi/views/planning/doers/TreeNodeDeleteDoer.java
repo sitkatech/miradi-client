@@ -27,16 +27,7 @@ import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.AbstractTarget;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Factor;
-import org.miradi.objects.FutureStatus;
-import org.miradi.objects.Goal;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.Measurement;
-import org.miradi.objects.Objective;
-import org.miradi.objects.ResourceAssignment;
-import org.miradi.objects.Task;
+import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.utils.CommandVector;
 import org.miradi.views.umbrella.DeleteActivityDoer;
@@ -71,6 +62,9 @@ public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 		if (ResourceAssignment.is(selected))
 			return true;
 		
+		if (ExpenseAssignment.is(selected))
+			return true;
+
 		if (FutureStatus.is(selected))
 			return true;
 		
@@ -110,6 +104,9 @@ public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 			if (ResourceAssignment.is(selected))
 				deleteAnnotation(selected, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
 			
+			if (ExpenseAssignment.is(selected))
+				deleteAnnotation(selected, BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS);
+
 			if (FutureStatus.is(selected))
 				deleteAnnotation(selected, Indicator.TAG_FUTURE_STATUS_REFS);
 		}

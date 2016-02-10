@@ -17,33 +17,28 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.planning.doers;
+package org.miradi.actions;
 
-import org.miradi.actions.*;
-import org.miradi.views.umbrella.doers.AbstractPopDownMenuDoer;
+import org.miradi.icons.ExpenseAssignmentIcon;
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
-public class SharedWorkPlanningTreeNodeCreationMenuDoer extends AbstractPopDownMenuDoer
+public class ActionTreeCreateExpenseAssignment extends ObjectsAction
 {
-	@Override
-	protected Class[] getAllPossibleActionClasses()
+	public ActionTreeCreateExpenseAssignment(MainWindow mainWindowToUse)
 	{
-		return new Class[] {
-				ActionTreeCreateObjective.class,
-				ActionTreeCreateIndicator.class,
-				null,
-				ActionTreeCreateActivity.class,
-				ActionTreeShareActivity.class,
-				null,
-				ActionTreeCreateResourceAssignment.class,
-				ActionTreeCreateExpenseAssignment.class,
-				null,
-				ActionTreeCreateMethod.class,
-				ActionTreeShareMethod.class,
-				null,
-				ActionCreateSameLevelTask.class,
-				null,
-				ActionCreateIndicatorMeasurement.class,
-				ActionCreateFutureStatus.class,
-			};
+		super(mainWindowToUse, getLabel(), new ExpenseAssignmentIcon());
+	}
+
+	private static String getLabel()
+	{
+		return EAM.text("Action|Manage|Create Projected Expense");
+	}
+
+
+	@Override
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Create a Projected Expense for the selected Activity");
 	}
 }

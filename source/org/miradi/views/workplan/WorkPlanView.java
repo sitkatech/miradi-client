@@ -31,6 +31,8 @@ import org.miradi.project.Project;
 import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.views.TabbedView;
+import org.miradi.views.diagram.doers.TreeNodeCreateExpenseAssignmentDoer;
+import org.miradi.views.diagram.doers.TreeNodeCreateResourceAssignmentDoer;
 import org.miradi.views.planning.doers.*;
 import org.miradi.views.umbrella.CreateResource;
 import org.miradi.views.umbrella.DeleteResourceDoer;
@@ -204,6 +206,9 @@ public class WorkPlanView extends TabbedView implements CommandExecutedListener
 
 		addDoerToMap(ActionTreeShareActivity.class, new TreeNodeShareActivityDoer());
 		addDoerToMap(ActionTreeShareMethod.class, new TreeNodeShareMethodDoer());
+
+		addDoerToMap(ActionTreeCreateResourceAssignment.class, new TreeNodeCreateResourceAssignmentDoer());
+		addDoerToMap(ActionTreeCreateExpenseAssignment.class, new TreeNodeCreateExpenseAssignmentDoer());
 
 		addDoerToMap(ActionCreateResource.class, new CreateResource());
 		addDoerToMap(ActionDeleteResource.class, new DeleteResourceDoer());

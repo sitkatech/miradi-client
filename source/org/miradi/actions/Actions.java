@@ -157,6 +157,10 @@ public class Actions
 		registerAction(new ActionCreateSameLevelTask(mainWindow));
 		registerAction(new ActionTreeCreateIndicator(mainWindow));
 		registerAction(new ActionTreeCreateObjective(mainWindow));
+
+		registerAction(new ActionTreeCreateResourceAssignment(mainWindow));
+		registerAction(new ActionTreeCreateExpenseAssignment(mainWindow));
+
 		registerAction(new ActionCreateActivity(mainWindow));
 		registerAction(new ActionDeleteActivity(mainWindow));
 		registerAction(new ActionCreateResource(mainWindow));
@@ -182,7 +186,7 @@ public class Actions
 		registerAction(new ActionExpandToFutureStatus(mainWindow));
 		registerAction(new ActionPlanningCustomizeDialogPopup(mainWindow));
 		registerAction(new ActionCreateCustomFromCurrentTreeTableConfiguration(mainWindow));
-		
+
 		registerAction(new ActionCreateIndicator(mainWindow));
 		registerAction(new ActionCloneIndicator(mainWindow));
 		
@@ -260,7 +264,7 @@ public class Actions
 		registerAction(new ActionManageFactorTags(mainWindow));
 		registerAction(new ActionCreateNamedTaggedObjectSet(mainWindow));
 		registerAction(new ActionInvokeDashboard(mainWindow));
-		
+
 		registerNonMenuJumpAction(new ActionJumpWelcomeCreateStep(mainWindow));
 		registerNonMenuJumpAction(new ActionJumpWelcomeImportStep(mainWindow));
 		registerNonMenuJumpAction(new ActionJumpSummaryWizardDefineProjectLeader(mainWindow));
