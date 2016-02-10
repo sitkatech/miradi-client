@@ -125,7 +125,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 
 	private boolean isAssignedWhoColumn(String columnTag)
 	{
-		return columnTag.equals(CustomPlanningColumnsQuestion.META_ASSIGNED_WHO_TOTAL);
+		return columnTag.equals(CustomPlanningColumnsQuestion.META_ASSIGNED_WHO_TOTAL) || columnTag.equals(ResourceAssignment.PSEUDO_TAG_PROJECT_RESOURCE_LABEL);
 	}
 	
 	private boolean isAssignedWhenColumn(String columnTag)
