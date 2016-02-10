@@ -33,4 +33,10 @@ public class WorkPlanActivityPropertiesPanelWithoutBudgetPanels extends WorkPlan
 	protected void addBudgetSubPanels() throws Exception
 	{
 	}
+
+	@Override
+	protected boolean shouldHaveIsMonitoringActivityField()
+	{
+		return true;
+	}
 }

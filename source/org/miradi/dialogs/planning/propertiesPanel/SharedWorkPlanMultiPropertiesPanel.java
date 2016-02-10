@@ -18,34 +18,23 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.dialogs.task;
+package org.miradi.dialogs.planning.propertiesPanel;
 
-import org.miradi.dialogs.activity.ActivityFactorVisibilityControlPanel;
-import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.task.SharedWorkPlanActivityPropertiesPanel;
+import org.miradi.dialogs.task.WorkPlanActivityPropertiesPanel;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
 
-public class WorkPlanActivityPropertiesPanel extends TaskPropertiesPanel
+public class SharedWorkPlanMultiPropertiesPanel extends	PlanningTreeMultiPropertiesPanel
 {
-	public WorkPlanActivityPropertiesPanel(MainWindow mainWindow) throws Exception
+	public SharedWorkPlanMultiPropertiesPanel(MainWindow mainWindowToUse, ORef orefToUse) throws Exception
 	{
-		super(mainWindow);
-	}
-	
-	@Override
-	protected ObjectDataInputPanel createDetailsPanel(MainWindow mainWindow, ActivityFactorVisibilityControlPanel activityVisibilityButtonPanel) throws Exception
-	{
-		return new ActivityDetailsPanelWithRelevancyOverrideFields(getProject(), mainWindow.getActions(), activityVisibilityButtonPanel, shouldHaveIsMonitoringActivityField());
+		super(mainWindowToUse, orefToUse);
 	}
 
 	@Override
-	protected boolean shouldHaveVisibilityPanel()
+	protected WorkPlanActivityPropertiesPanel createActivityPropertiesPanel() throws Exception
 	{
-		return false;
-	}
-
-	@Override
-	public String getPanelDescription()
-	{
-		return "WorkPlanActivityPropertiesPanel";
+		return new SharedWorkPlanActivityPropertiesPanel(getMainWindow());
 	}
 }

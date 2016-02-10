@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.workplan;
 
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
+import org.miradi.dialogs.planning.propertiesPanel.SharedWorkPlanMultiPropertiesPanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.SharedWorkPlanTreeTablePanel;
 import org.miradi.icons.IconManager;
@@ -90,7 +91,7 @@ class SharedWorkPlanManagementPanel extends AbstractWorkPlanManagementPanel
 	public static SharedWorkPlanManagementPanel createWorkPlanPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		PlanningTreeTablePanel workPlanTreeTablePanel = SharedWorkPlanTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse);
-		PlanningTreeMultiPropertiesPanel workPlanPropertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
+		PlanningTreeMultiPropertiesPanel workPlanPropertiesPanel = new SharedWorkPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 
 		return new SharedWorkPlanManagementPanel(mainWindowToUse, workPlanTreeTablePanel, workPlanPropertiesPanel);
 	}

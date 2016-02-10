@@ -20,32 +20,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.task;
 
-import org.miradi.dialogs.activity.ActivityFactorVisibilityControlPanel;
-import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.MainWindow;
 
-public class WorkPlanActivityPropertiesPanel extends TaskPropertiesPanel
+public class SharedWorkPlanActivityPropertiesPanel extends WorkPlanActivityPropertiesPanel
 {
-	public WorkPlanActivityPropertiesPanel(MainWindow mainWindow) throws Exception
+	public SharedWorkPlanActivityPropertiesPanel(MainWindow mainWindow) throws Exception
 	{
 		super(mainWindow);
 	}
 	
 	@Override
-	protected ObjectDataInputPanel createDetailsPanel(MainWindow mainWindow, ActivityFactorVisibilityControlPanel activityVisibilityButtonPanel) throws Exception
+	protected boolean shouldHaveIsMonitoringActivityField()
 	{
-		return new ActivityDetailsPanelWithRelevancyOverrideFields(getProject(), mainWindow.getActions(), activityVisibilityButtonPanel, shouldHaveIsMonitoringActivityField());
-	}
-
-	@Override
-	protected boolean shouldHaveVisibilityPanel()
-	{
-		return false;
-	}
-
-	@Override
-	public String getPanelDescription()
-	{
-		return "WorkPlanActivityPropertiesPanel";
+		return true;
 	}
 }
