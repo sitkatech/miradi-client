@@ -22,10 +22,7 @@ package org.miradi.project;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.DiagramObject;
-import org.miradi.objects.Factor;
-import org.miradi.objects.Indicator;
+import org.miradi.objects.*;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 
 import java.util.HashSet;
@@ -40,6 +37,12 @@ public class ProjectTotalCalculatorStrategyDefault extends ProjectTotalCalculato
 
 	public ORefList getChildTaskRefs(BaseObject baseObject)
 	{
+		if (Strategy.is(baseObject))
+		{
+			Strategy strategy = (Strategy) baseObject;
+			return ORefList.subtract(strategy.getActivityRefs(), strategy.getMonitoringActivityRefs());
+		}
+
 		return baseObject.getChildTaskRefs();
 	}
 

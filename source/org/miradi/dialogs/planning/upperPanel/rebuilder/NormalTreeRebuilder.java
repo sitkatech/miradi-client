@@ -229,7 +229,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 
 	protected ORefList getActivities(Strategy strategy) throws Exception
 	{
-		return strategy.getActivityRefs();
+		return ORefList.subtract(strategy.getActivityRefs(), strategy.getMonitoringActivityRefs());
 	}
 
 	private ORefList getChildrenOfDesire(ORef parentRef, DiagramObject diagram) throws Exception
