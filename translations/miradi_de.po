@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-09 06:36-0800\n"
+"POT-Creation-Date: 2016-02-10 09:06-0800\n"
 "PO-Revision-Date: 2015-07-15 14:36+0000\n"
 "Last-Translator: Felix <felix.cybulla@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/miradi-client/"
@@ -1540,6 +1540,10 @@ msgstr "Bibliothek"
 msgid "Action|Manage Stresses..."
 msgstr "Stresse verwalten..."
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeCreateResourceAssignment.java:35
+msgid "Action|Manage|  Create Assignment"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionResourceListAdd.java:34
 msgid "Action|Manage|Add Resource"
 msgstr "Ressource hinzufügen"
@@ -1629,6 +1633,10 @@ msgstr "Fortschrittsanzeige erstellen"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateTaskProgressReport.java:35
 msgid "Action|Manage|Create Progress Report"
 msgstr "Fortschrittsbericht erstellen"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeCreateExpenseAssignment.java:35
+msgid "Action|Manage|Create Projected Expense"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateResource.java:35
 msgid "Action|Manage|Create Resource"
@@ -5133,15 +5141,15 @@ msgstr "Bearbeiten"
 msgid "MenuBar|File"
 msgstr "Datei"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:583
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:587
 msgid "MenuBar|Help"
 msgstr "Hilfe"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:515
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:519
 msgid "MenuBar|Step-by-Step"
 msgstr "Schritt-für-Schritt"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:443
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:447
 msgid "MenuBar|View"
 msgstr "Ansicht"
 
@@ -5178,7 +5186,7 @@ msgid "Menu|Export Current Project as..."
 msgstr "Aktuelles Projekt exportieren als..."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:243
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:431
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:435
 msgid "Menu|Group Box"
 msgstr "Gruppenbox"
 
@@ -6965,6 +6973,10 @@ msgstr "Eingebettetes Schutzobjekt einfügen"
 msgid "TT|Create a Other Notable Species"
 msgstr "Andere nennenswerte Art erstellen"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeCreateExpenseAssignment.java:42
+msgid "TT|Create a Projected Expense for the selected Activity"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateReportTemplate.java:41
 msgid "TT|Create a Report Template"
 msgstr ""
@@ -7049,6 +7061,10 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/AbstractActionCreateActivity.java:43
 msgid "TT|Create an Activity for the selected Strategy"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeCreateResourceAssignment.java:42
+msgid "TT|Create an Assignment for the selected Activity"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateIncomingJunction.java:40
@@ -7695,7 +7711,7 @@ msgstr "Zwischenziel"
 msgid "Tab|Report Templates"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/SharedWorkPlanManagementPanel.java:46
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/SharedWorkPlanManagementPanel.java:47
 msgid "Tab|Shared Work Plan"
 msgstr ""
 

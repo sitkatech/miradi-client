@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-09 06:36-0800\n"
+"POT-Creation-Date: 2016-02-10 09:06-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/miradi-client/"
@@ -1493,6 +1493,10 @@ msgstr "Action|Бібліотека"
 msgid "Action|Manage Stresses..."
 msgstr "Action|Керовані акценти"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeCreateResourceAssignment.java:35
+msgid "Action|Manage|  Create Assignment"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionResourceListAdd.java:34
 msgid "Action|Manage|Add Resource"
 msgstr "Action|Manage|Додати ресурс"
@@ -1582,6 +1586,10 @@ msgstr "Action|Manage|Створити відсоток прогресу"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateTaskProgressReport.java:35
 msgid "Action|Manage|Create Progress Report"
 msgstr "Action|Manage|Створити звіт про виконану роботу"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeCreateExpenseAssignment.java:35
+msgid "Action|Manage|Create Projected Expense"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateResource.java:35
 msgid "Action|Manage|Create Resource"
@@ -5147,15 +5155,15 @@ msgstr "MenuBar|Редагувати"
 msgid "MenuBar|File"
 msgstr "MenuBar|Файл"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:583
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:587
 msgid "MenuBar|Help"
 msgstr "MenuBar|Допомога"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:515
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:519
 msgid "MenuBar|Step-by-Step"
 msgstr "MenuBar|Крок-за-Кроком"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:443
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:447
 msgid "MenuBar|View"
 msgstr "MenuBar|Вид"
 
@@ -5192,7 +5200,7 @@ msgid "Menu|Export Current Project as..."
 msgstr "Menu|Експортувати даний проект як..."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:243
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:431
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:435
 msgid "Menu|Group Box"
 msgstr "Menu|Групова рамка"
 
@@ -6996,6 +7004,10 @@ msgstr "TT|Створити ущільнену ціль"
 msgid "TT|Create a Other Notable Species"
 msgstr "TT|Створити Інші важливі види"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeCreateExpenseAssignment.java:42
+msgid "TT|Create a Projected Expense for the selected Activity"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateReportTemplate.java:41
 msgid "TT|Create a Report Template"
 msgstr "TT|Створити шаблон звіту"
@@ -7081,6 +7093,10 @@ msgstr "TT|Створити Бухгалтерський код"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/AbstractActionCreateActivity.java:43
 msgid "TT|Create an Activity for the selected Strategy"
 msgstr "TT|Створити Діяльність для вибраної Стратегії"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeCreateResourceAssignment.java:42
+msgid "TT|Create an Assignment for the selected Activity"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateIncomingJunction.java:40
 msgid "TT|Create an Incoming Junction Bend Point"
@@ -7722,7 +7738,7 @@ msgstr "Tab|Завдання"
 msgid "Tab|Report Templates"
 msgstr "Tab|Шаблони звітів"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/SharedWorkPlanManagementPanel.java:46
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/SharedWorkPlanManagementPanel.java:47
 msgid "Tab|Shared Work Plan"
 msgstr ""
 

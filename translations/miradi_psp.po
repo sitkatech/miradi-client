@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-09 06:36-0800\n"
+"POT-Creation-Date: 2016-02-10 09:06-0800\n"
 "Language: psp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1564,6 +1564,10 @@ msgstr "Action|Library"
 msgid "Action|Manage Stresses..."
 msgstr "Action|Manage Stresses..."
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeCreateResourceAssignment.java:35
+msgid "Action|Manage|  Create Assignment"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionResourceListAdd.java:34
 msgid "Action|Manage|Add Resource"
 msgstr "Action|Manage|Add Resource"
@@ -1653,6 +1657,10 @@ msgstr "Action|Manage|Create Progress Percent"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateTaskProgressReport.java:35
 msgid "Action|Manage|Create Progress Report"
 msgstr "Action|Manage|Create Progress Report"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeCreateExpenseAssignment.java:35
+msgid "Action|Manage|Create Projected Expense"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateResource.java:35
 msgid "Action|Manage|Create Resource"
@@ -5242,15 +5250,15 @@ msgstr "MenuBar|Edit"
 msgid "MenuBar|File"
 msgstr "MenuBar|File"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:583
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:587
 msgid "MenuBar|Help"
 msgstr "MenuBar|Help"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:515
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:519
 msgid "MenuBar|Step-by-Step"
 msgstr "MenuBar|Step-by-Step"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:443
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:447
 msgid "MenuBar|View"
 msgstr "MenuBar|View"
 
@@ -5287,7 +5295,7 @@ msgid "Menu|Export Current Project as..."
 msgstr "Menu|Export Current Project as..."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:243
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:431
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:435
 msgid "Menu|Group Box"
 msgstr "Menu|Group Box"
 
@@ -7131,6 +7139,10 @@ msgstr "TT|Create a Nested Component"
 msgid "TT|Create a Other Notable Species"
 msgstr "TT|Create a Other Notable Species"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeCreateExpenseAssignment.java:42
+msgid "TT|Create a Projected Expense for the selected Activity"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateReportTemplate.java:41
 msgid "TT|Create a Report Template"
 msgstr "TT|Create a Report Template"
@@ -7216,6 +7228,10 @@ msgstr "TT|Create an Accounting Code"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/AbstractActionCreateActivity.java:43
 msgid "TT|Create an Activity for the selected Strategy"
 msgstr "TT|Create an Activity for the selected Strategy"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeCreateResourceAssignment.java:42
+msgid "TT|Create an Assignment for the selected Activity"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateIncomingJunction.java:40
 msgid "TT|Create an Incoming Junction Bend Point"
@@ -7850,7 +7866,7 @@ msgstr "Tab|Objectives"
 msgid "Tab|Report Templates"
 msgstr "Tab|Report Templates"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/SharedWorkPlanManagementPanel.java:46
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/SharedWorkPlanManagementPanel.java:47
 msgid "Tab|Shared Work Plan"
 msgstr ""
 
