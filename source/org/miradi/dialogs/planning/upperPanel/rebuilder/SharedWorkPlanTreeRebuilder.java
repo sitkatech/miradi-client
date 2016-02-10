@@ -20,6 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel.rebuilder;
 
+import org.miradi.dialogs.planning.treenodes.PlanningTaskNode;
+import org.miradi.dialogs.planning.treenodes.SharedWorkPlanningTaskNode;
+import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.*;
@@ -31,6 +34,12 @@ public class SharedWorkPlanTreeRebuilder extends NormalTreeRebuilder
 	public SharedWorkPlanTreeRebuilder(Project projectToUse, PlanningTreeRowColumnProvider rowColumnProviderToUse)
 	{
 		super(projectToUse, rowColumnProviderToUse);
+	}
+
+	@Override
+	protected PlanningTaskNode createPlanningTaskNode(Project project, ORef contextNodeRef, TreeTableNode parentNode, ORef objectRef) throws Exception
+	{
+		return new SharedWorkPlanningTaskNode(project, contextNodeRef, parentNode, objectRef);
 	}
 
 	@Override
