@@ -76,7 +76,7 @@ public class SharedWorkPlanTreeTablePanel extends AbstractWorkPlanTreeTablePanel
 			if (treeTableModel.treeHasSubTasks())
 			{
 				String currentStatus = getMainWindow().getMainStatusBar().getWarningStatus();
-				String newStatus = currentStatus + SharedWorkPlanTreeTableModel.HAS_HIDDEN_SUB_TASKS_DOUBLE_ASTERISK + EAM.text("Sub-tasks are not shown; use the legacy Work Plan tab to view sub-tasks");
+				String newStatus = currentStatus + SharedWorkPlanTreeTableModel.HAS_HIDDEN_SUB_TASKS_DOUBLE_ASTERISK + EAM.text("Sub-tasks are not included in this work plan; use the legacy Work Plan tab to view sub-tasks");
 				getMainWindow().setStatusBarWarningMessage(newStatus);
 			}
 		}
