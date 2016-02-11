@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-10 11:36-0800\n"
+"POT-Creation-Date: 2016-02-11 07:21-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Mongolian (http://www.transifex.com/projects/p/miradi-client/"
@@ -1283,10 +1283,10 @@ msgstr ""
 msgid "Action|Credits"
 msgstr "Арга хэмжээ|Зээл"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/AbstractActionWorkPlanBudgetCustomizeTableEditor.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditAnalysisRows.java:36
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionPlanningCustomizeDialogPopup.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateCustomFromCurrentTreeTableConfiguration.java:35
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionWorkPlanBudgetCustomizeTableEditor.java:35
 msgid "Action|Customize Table..."
 msgstr ""
 
@@ -1898,9 +1898,17 @@ msgstr "Арга хэмжээ|Дэмжих"
 msgid "Action|Tab-Delimited Table"
 msgstr "Арга хэмжээ|Tab-аар тусгаарлагдсан Хүснэгт"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToResourceAssignment.java:36
+msgid "Action|Table|  Expand To Assignment"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionPlanningCreationMenu.java:34
 msgid "Action|Table|Create..."
 msgstr "Арга хэмжээ|Хүснэгт|Үүсгэх..."
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToTask.java:36
+msgid "Action|Table|Expand To Activity"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToFutureStatus.java:36
 msgid "Action|Table|Expand To Future Status"
@@ -1921,6 +1929,14 @@ msgstr "Арга хэмжээ|Хүснэгт|Экологийн чухал хү�
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToMeasurement.java:36
 msgid "Action|Table|Expand To Measurement"
 msgstr "Арга хэмжээ|Хүснэгт|Хэмжээгдэхүүнд хүртэл өргөжүүлэх"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToExpenseAssignment.java:36
+msgid "Action|Table|Expand To Projected Expense"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToStrategy.java:36
+msgid "Action|Table|Expand To Strategy"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToTarget.java:36
 msgid "Action|Table|Expand To Target"
@@ -5165,11 +5181,11 @@ msgstr "Цэсийн системийн команд|Засах"
 msgid "MenuBar|File"
 msgstr "Цэсийн системийн команд|Файл"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:587
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:590
 msgid "MenuBar|Help"
 msgstr "Цэсийн системийн команд|Тусламж"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:519
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:522
 msgid "MenuBar|Step-by-Step"
 msgstr "Цэсийн системийн команд|Алхам алхамаар"
 
@@ -7188,7 +7204,7 @@ msgstr "TT|Дарамтыг үүсгэх, устгах ба хянан засв�
 msgid "TT|Customize View"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/AbstractActionWorkPlanBudgetCustomizeTableEditor.java:41
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionWorkPlanBudgetCustomizeTableEditor.java:41
 msgid "TT|Customize Work Plan Table"
 msgstr ""
 
@@ -7335,6 +7351,14 @@ msgstr "TT|Энэ шалгуур үзүүлэлтийн арга зүйг хян
 msgid "TT|Expand All Tree Rows"
 msgstr "TT|Бүх тулгуур эгнээнүүдийг өргөжүүлэх"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToTask.java:42
+msgid "TT|Expand To Activity"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToResourceAssignment.java:42
+msgid "TT|Expand To Assignment"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToFutureStatus.java:42
 msgid "TT|Expand To Future Status"
 msgstr ""
@@ -7354,6 +7378,14 @@ msgstr "TT|Экологийн гол хүчин зүйл болгож өргөж
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToMeasurement.java:42
 msgid "TT|Expand To Measurement"
 msgstr "TT|Хэмжих нэгж болгож өргөжүүлэх"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToExpenseAssignment.java:42
+msgid "TT|Expand To Projected Expense"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToStrategy.java:42
+msgid "TT|Expand To Strategy"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToTarget.java:42
 msgid "TT|Expand To Target"

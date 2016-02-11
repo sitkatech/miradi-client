@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-10 11:36-0800\n"
+"POT-Creation-Date: 2016-02-11 07:21-0800\n"
 "PO-Revision-Date: 2014-05-28 17:01+0000\n"
 "Last-Translator: nsalafsky <nick@fosonline.org>\n"
 "Language-Team: English (Estonia) (http://www.transifex.com/projects/p/miradi-"
@@ -1352,10 +1352,10 @@ msgstr "Action|Create Table"
 msgid "Action|Credits"
 msgstr "Action|Credits"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/AbstractActionWorkPlanBudgetCustomizeTableEditor.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditAnalysisRows.java:36
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionPlanningCustomizeDialogPopup.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateCustomFromCurrentTreeTableConfiguration.java:35
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionWorkPlanBudgetCustomizeTableEditor.java:35
 msgid "Action|Customize Table..."
 msgstr "Action|Customize Table..."
 
@@ -1965,9 +1965,17 @@ msgstr "Action|Support"
 msgid "Action|Tab-Delimited Table"
 msgstr "Action|Tab-Delimited Table"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToResourceAssignment.java:36
+msgid "Action|Table|  Expand To Assignment"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionPlanningCreationMenu.java:34
 msgid "Action|Table|Create..."
 msgstr "Action|Table|Create..."
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToTask.java:36
+msgid "Action|Table|Expand To Activity"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToFutureStatus.java:36
 msgid "Action|Table|Expand To Future Status"
@@ -1988,6 +1996,14 @@ msgstr "Action|Table|Expand To Key Attribute"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToMeasurement.java:36
 msgid "Action|Table|Expand To Measurement"
 msgstr "Action|Table|Expand To Measurement"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToExpenseAssignment.java:36
+msgid "Action|Table|Expand To Projected Expense"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToStrategy.java:36
+msgid "Action|Table|Expand To Strategy"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToTarget.java:36
 msgid "Action|Table|Expand To Target"
@@ -5260,11 +5276,11 @@ msgstr "MenuBar|Edit"
 msgid "MenuBar|File"
 msgstr "MenuBar|File"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:587
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:590
 msgid "MenuBar|Help"
 msgstr "MenuBar|Help"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:519
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:522
 msgid "MenuBar|Step-by-Step"
 msgstr "MenuBar|Step-by-Step"
 
@@ -7299,7 +7315,7 @@ msgstr "TT|Create, Delete, or Edit Stresses"
 msgid "TT|Customize View"
 msgstr "TT|Customize View"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/AbstractActionWorkPlanBudgetCustomizeTableEditor.java:41
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionWorkPlanBudgetCustomizeTableEditor.java:41
 msgid "TT|Customize Work Plan Table"
 msgstr "TT|Customize Work Plan Table"
 
@@ -7446,6 +7462,14 @@ msgstr "TT|Edit the methods for this indicator"
 msgid "TT|Expand All Tree Rows"
 msgstr "TT|Expand All Tree Rows"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToTask.java:42
+msgid "TT|Expand To Activity"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToResourceAssignment.java:42
+msgid "TT|Expand To Assignment"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToFutureStatus.java:42
 msgid "TT|Expand To Future Status"
 msgstr "TT|Expand To Performance Target"
@@ -7465,6 +7489,14 @@ msgstr "TT|Expand To Key Attribute"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToMeasurement.java:42
 msgid "TT|Expand To Measurement"
 msgstr "TT|Expand To Measurement"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToExpenseAssignment.java:42
+msgid "TT|Expand To Projected Expense"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToStrategy.java:42
+msgid "TT|Expand To Strategy"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToTarget.java:42
 msgid "TT|Expand To Target"
