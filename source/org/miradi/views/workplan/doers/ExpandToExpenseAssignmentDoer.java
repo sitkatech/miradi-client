@@ -17,46 +17,16 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.icons;
 
-import java.awt.Color;
+package org.miradi.views.workplan.doers;
 
-import javax.swing.Icon;
+import org.miradi.schemas.ExpenseAssignmentSchema;
 
-import org.miradi.diagram.renderers.FactorRenderer;
-import org.miradi.diagram.renderers.IconHexagonRenderer;
-import org.miradi.main.AppPreferences;
-import org.miradi.main.EAM;
-
-public class StrategyIcon extends AbstractShapeIcon
+public class ExpandToExpenseAssignmentDoer extends AbstractSharedWorkPlanExpandToDoer
 {
-	public StrategyIcon()
-	{
-	}
-	
 	@Override
-	FactorRenderer getRenderer()
+	protected int getTypeToExpandTo()
 	{
-		return new IconHexagonRenderer(false);
-	}
-	
-	@Override
-	Color getIconColor()
-	{
-		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_STRATEGY);
-	}
-	
-	static public Icon createDisabledIcon()
-	{
-		return new StrategyIconDisabledIcon();
-	}
-	
-	private static final class StrategyIconDisabledIcon extends StrategyIcon
-	{
-		@Override
-		Color getIconColor()
-		{
-			return Color.LIGHT_GRAY;
-		}
+		return ExpenseAssignmentSchema.getObjectType();
 	}
 }

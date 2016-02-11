@@ -29,6 +29,7 @@ import org.miradi.main.*;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.schemas.ProjectMetadataSchema;
+import org.miradi.views.Doer;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.views.TabbedView;
 import org.miradi.views.diagram.doers.TreeNodeCreateExpenseAssignmentDoer;
@@ -192,7 +193,22 @@ public class WorkPlanView extends TabbedView implements CommandExecutedListener
 	{
 		return new WorkPlanToolBar(getActions());
 	}
-	
+
+	@Override
+	public Doer getDoer(Class actionClass)
+	{
+		if (actionClass.equals(ActionWorkPlanBudgetCustomizeTableEditor.class))
+		{
+			MiradiTabContentsPanelInterface currentTab = getCurrentTabPanel();
+			if (currentTab instanceof SharedWorkPlanManagementPanel)
+				return new SharedWorkPlanCustomizeTableEditorDoer();
+			else
+				return new WorkPlanCustomizeTableEditorDoer();
+		}
+
+		return super.getDoer(actionClass);
+	}
+
 	private void addPlanningViewDoersToMap()
 	{				
 		addDoerToMap(ActionTreeNodeUp.class, new TaskMoveUpDoer());
@@ -231,8 +247,13 @@ public class WorkPlanView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionPlanningCreationMenu.class, new PlanningTreeNodeCreationMenuDoer());
 		addDoerToMap(ActionSharedWorkPlanningCreationMenu.class, new SharedWorkPlanningTreeNodeCreationMenuDoer());
 		addDoerToMap(ActionWorkPlanBudgetCustomizeTableEditor.class, new WorkPlanCustomizeTableEditorDoer());
-		addDoerToMap(ActionSharedWorkPlanBudgetCustomizeTableEditor.class, new SharedWorkPlanCustomizeTableEditorDoer());
 		addDoerToMap(ActionFilterWorkPlanByProjectResource.class, new ProjectResourceWorkPlanFilterEditDoer());
+
+		addDoerToMap(ActionExpandToMenu.class, new ExpandToMenuSharedWorkPlanDoer());
+		addDoerToMap(ActionExpandToStrategy.class, new ExpandToStrategyDoer());
+		addDoerToMap(ActionExpandToTask.class, new ExpandToTaskDoer());
+		addDoerToMap(ActionExpandToResourceAssignment.class, new ExpandToResourceAssignmentDoer());
+		addDoerToMap(ActionExpandToExpenseAssignment.class, new ExpandToExpenseAssignmentDoer());
 	}
 	
 	public static boolean is(UmbrellaView view)

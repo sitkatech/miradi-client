@@ -34,7 +34,7 @@ import org.miradi.project.ProjectTotalCalculatorStrategySharedWorkPlan;
 
 import javax.swing.*;
 
-class SharedWorkPlanManagementPanel extends AbstractWorkPlanManagementPanel
+public class SharedWorkPlanManagementPanel extends AbstractWorkPlanManagementPanel
 {
 	public SharedWorkPlanManagementPanel(MainWindow mainWindowToUse, PlanningTreeTablePanel planningTreeTablePanel, PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel) throws Exception
 	{

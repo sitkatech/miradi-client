@@ -20,12 +20,24 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.actions;
 
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionWorkPlanBudgetCustomizeTableEditor extends AbstractActionWorkPlanBudgetCustomizeTableEditor
+public class ActionWorkPlanBudgetCustomizeTableEditor extends ObjectsAction
 {
 	public ActionWorkPlanBudgetCustomizeTableEditor(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse);
+		super(mainWindowToUse, getLabel());
+	}
+
+	protected static String getLabel()
+	{
+		return EAM.text("Action|Customize Table...");
+	}
+
+	@Override
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Customize Work Plan Table");
 	}
 }

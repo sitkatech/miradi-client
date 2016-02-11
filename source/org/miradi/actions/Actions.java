@@ -174,7 +174,6 @@ public class Actions
 		registerAction(new ActionPlanningRowsEditor(mainWindow));
 		registerAction(new ActionPlanningColumnsEditor(mainWindow));
 		registerAction(new ActionWorkPlanBudgetCustomizeTableEditor(mainWindow));
-		registerAction(new ActionSharedWorkPlanBudgetCustomizeTableEditor(mainWindow));
 		registerAction(new ActionEditAnalysisRows(mainWindow));
 		registerAction(new ActionFilterWorkPlanByProjectResource(mainWindow));
 		registerAction(new ActionExpandToMenu(mainWindow));
@@ -184,6 +183,10 @@ public class Actions
 		registerAction(new ActionExpandToIndicator(mainWindow));
 		registerAction(new ActionExpandToMeasurement(mainWindow));
 		registerAction(new ActionExpandToFutureStatus(mainWindow));
+		registerAction(new ActionExpandToStrategy(mainWindow));
+		registerAction(new ActionExpandToTask(mainWindow));
+		registerAction(new ActionExpandToResourceAssignment(mainWindow));
+		registerAction(new ActionExpandToExpenseAssignment(mainWindow));
 		registerAction(new ActionPlanningCustomizeDialogPopup(mainWindow));
 		registerAction(new ActionCreateCustomFromCurrentTreeTableConfiguration(mainWindow));
 

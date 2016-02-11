@@ -20,10 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel;
 
+import org.miradi.actions.*;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.main.MainWindow;
 
 import javax.swing.event.TableModelEvent;
+import java.util.HashSet;
+import java.util.Set;
 
 public class SharedWorkPlanningTreeTableWithVisibleRootNode extends PlanningTreeTableWithVisibleRootNode
 {
@@ -37,6 +40,22 @@ public class SharedWorkPlanningTreeTableWithVisibleRootNode extends PlanningTree
 	{
 		super.tableChanged(e);
 		updateColumnHeader();
+	}
+
+	@Override
+	protected Set<Class> getRelevantActions()
+	{
+		HashSet<Class> relevantActions = new HashSet<Class>();
+		relevantActions.addAll(super.getRelevantActions());
+		relevantActions.add(ActionTreeCreateResourceAssignment.class);
+		relevantActions.add(ActionTreeCreateExpenseAssignment.class);
+		relevantActions.add(ActionExpandToMenu.class);
+		relevantActions.add(ActionExpandToStrategy.class);
+		relevantActions.add(ActionExpandToTask.class);
+		relevantActions.add(ActionExpandToResourceAssignment.class);
+		relevantActions.add(ActionExpandToExpenseAssignment.class);
+
+		return relevantActions;
 	}
 
 	private void updateColumnHeader()

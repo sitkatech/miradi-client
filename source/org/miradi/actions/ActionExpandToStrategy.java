@@ -17,46 +17,28 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.icons;
 
-import java.awt.Color;
+package org.miradi.actions;
 
-import javax.swing.Icon;
-
-import org.miradi.diagram.renderers.FactorRenderer;
-import org.miradi.diagram.renderers.IconHexagonRenderer;
-import org.miradi.main.AppPreferences;
+import org.miradi.icons.StrategyIcon;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
-public class StrategyIcon extends AbstractShapeIcon
+public class ActionExpandToStrategy extends ObjectsAction
 {
-	public StrategyIcon()
+	public ActionExpandToStrategy(MainWindow mainWindowToUse)
 	{
+		super(mainWindowToUse, getLabel(), new StrategyIcon());
 	}
-	
+
+	private static String getLabel()
+	{
+		return EAM.text("Action|Table|Expand To Strategy");
+	}
+
 	@Override
-	FactorRenderer getRenderer()
+	public String getToolTipText()
 	{
-		return new IconHexagonRenderer(false);
-	}
-	
-	@Override
-	Color getIconColor()
-	{
-		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_STRATEGY);
-	}
-	
-	static public Icon createDisabledIcon()
-	{
-		return new StrategyIconDisabledIcon();
-	}
-	
-	private static final class StrategyIconDisabledIcon extends StrategyIcon
-	{
-		@Override
-		Color getIconColor()
-		{
-			return Color.LIGHT_GRAY;
-		}
+		return EAM.text("TT|Expand To Strategy");
 	}
 }

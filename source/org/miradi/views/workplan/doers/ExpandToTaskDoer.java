@@ -18,26 +18,15 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.actions;
+package org.miradi.views.workplan.doers;
 
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
+import org.miradi.schemas.TaskSchema;
 
-public class AbstractActionWorkPlanBudgetCustomizeTableEditor extends ObjectsAction
+public class ExpandToTaskDoer extends AbstractSharedWorkPlanExpandToDoer
 {
-	public AbstractActionWorkPlanBudgetCustomizeTableEditor(MainWindow mainWindowToUse)
-	{
-		super(mainWindowToUse, getLabel());
-	}
-
-	private static String getLabel()
-	{
-		return EAM.text("Action|Customize Table...");
-	}
-
 	@Override
-	public String getToolTipText()
+	protected int getTypeToExpandTo()
 	{
-		return EAM.text("TT|Customize Work Plan Table");
+		return TaskSchema.getObjectType();
 	}
 }

@@ -18,14 +18,15 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.actions;
+package org.miradi.views.workplan.doers;
 
-import org.miradi.main.MainWindow;
+import org.miradi.schemas.ResourceAssignmentSchema;
 
-public class ActionSharedWorkPlanBudgetCustomizeTableEditor extends AbstractActionWorkPlanBudgetCustomizeTableEditor
+public class ExpandToResourceAssignmentDoer extends AbstractSharedWorkPlanExpandToDoer
 {
-	public ActionSharedWorkPlanBudgetCustomizeTableEditor(MainWindow mainWindowToUse)
+	@Override
+	protected int getTypeToExpandTo()
 	{
-		super(mainWindowToUse);
+		return ResourceAssignmentSchema.getObjectType();
 	}
 }
