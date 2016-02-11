@@ -294,6 +294,8 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		String tag = setCommand.getFieldTag();
 		if(type == TaskSchema.getObjectType() && tag.equals(Task.TAG_SUBTASK_IDS))
 			return true;
+		if(type == TaskSchema.getObjectType() && tag.equals(Task.TAG_IS_MONITORING_ACTIVITY))
+			return true;
 		if(type == StrategySchema.getObjectType() && tag.equals(Strategy.TAG_ACTIVITY_IDS))
 			return true;
 		if(type == IndicatorSchema.getObjectType() && tag.equals(Indicator.TAG_METHOD_IDS))
