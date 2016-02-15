@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning;
 
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
@@ -44,10 +43,10 @@ public class ConfigurableRowColumnProvider extends AbstractPlanningTreeRowColumn
 
 	public CodeList getRowCodesToShow() throws Exception
 	{
-		return getVisibleRowsForCustomization(getCurrentViewData());
+		return getVisibleRowsForCustomization();
 	}
 
-	private CodeList getVisibleRowsForCustomization(ViewData viewData) throws Exception
+	private CodeList getVisibleRowsForCustomization() throws Exception
 	{
 		PlanningTreeRowColumnProvider customization = getCurrentCustomization();
 		if(customization == null)
@@ -110,16 +109,6 @@ public class ConfigurableRowColumnProvider extends AbstractPlanningTreeRowColumn
 			return "";
 
 		return customization.getDiagramFilter();
-	}
-
-	private PlanningTreeRowColumnProvider getCurrentCustomization() throws Exception
-	{
-		ViewData viewData = getCurrentViewData();
-		ORef customizationRef = viewData.getORef(ViewData.TAG_TREE_CONFIGURATION_REF);
-		if(customizationRef.isInvalid())
-			return null;
-		PlanningTreeRowColumnProvider customization = (PlanningTreeRowColumnProvider)viewData.getProject().findObject(customizationRef);
-		return customization;
 	}
 
 	private static void omitUnknownColumnTagsInPlace(Project project, CodeList rawCodes)

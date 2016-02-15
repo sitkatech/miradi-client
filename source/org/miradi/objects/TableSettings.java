@@ -156,6 +156,8 @@ public class TableSettings extends BaseObject
 		
 	public static final String WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY = "WorkPlanProjectResourceFilterCodeListKey";
 	public static final String WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY = "WorkPlanBudgetColumnCodeListKey";
+	public static final String WORK_PLAN_ROW_CONFIGURATION_CODELIST_KEY = "WorkPlanRowConfigurationCodeListKey";
+
 	public static final String ANALYSIS_BUDGET_COLUMNS_CODELIST_KEY = "AnalysisBudgetColumnCodeListKey";
 	
 	public static final String TAG_TABLE_IDENTIFIER = "TableIdentifier";

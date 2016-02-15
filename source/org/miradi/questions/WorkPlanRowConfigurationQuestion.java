@@ -18,25 +18,31 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.views.planning.doers;
+package org.miradi.questions;
 
-import org.miradi.dialogfields.AbstractWorkPlanStringMapEditorDoer;
-import org.miradi.dialogs.base.AbstractWorkPlanColumnConfigurationEditorPanel;
-import org.miradi.dialogs.base.SharedWorkPlanColumnConfigurationEditorPanel;
 import org.miradi.main.EAM;
-import org.miradi.objects.TableSettings;
+import org.miradi.schemas.ExpenseAssignmentSchema;
+import org.miradi.schemas.ResourceAssignmentSchema;
 
-public class SharedWorkPlanCustomizeTableEditorDoer extends AbstractWorkPlanStringMapEditorDoer
+import java.util.Vector;
+
+public class WorkPlanRowConfigurationQuestion extends MultipleSelectStaticChoiceQuestion
 {
-	@Override
-	protected AbstractWorkPlanColumnConfigurationEditorPanel createEditorPanel(TableSettings workPlanTableSettings)
+	public WorkPlanRowConfigurationQuestion()
 	{
-		return new SharedWorkPlanColumnConfigurationEditorPanel(getProject(), workPlanTableSettings.getRef());
+		super();
 	}
 
 	@Override
-	protected String getDialogTitle()
+	protected ChoiceItem[] createChoices()
 	{
-		return EAM.text("Title|Customize Table");
+		Vector<ChoiceItem> choiceItems = new Vector<ChoiceItem>();
+		choiceItems.add(new ChoiceItem(RESOURCE_ASSIGNMENT, EAM.text("Assignments")));
+		choiceItems.add(new ChoiceItem(EXPENSE_ASSIGNMENT, EAM.text("Projected Expenses")));
+
+		return choiceItems.toArray(new ChoiceItem[0]);
 	}
+
+	public static final String RESOURCE_ASSIGNMENT = ResourceAssignmentSchema.OBJECT_NAME;
+	public static final String EXPENSE_ASSIGNMENT = ExpenseAssignmentSchema.OBJECT_NAME;
 }

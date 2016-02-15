@@ -20,7 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning;
 
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
+import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 
@@ -44,5 +46,15 @@ abstract public class AbstractPlanningTreeRowColumnProvider extends AbstractPlan
 	public String getDiagramFilter() throws Exception
 	{
 		return "";
+	}
+
+	protected PlanningTreeRowColumnProvider getCurrentCustomization() throws Exception
+	{
+		ViewData viewData = getCurrentViewData();
+		ORef customizationRef = viewData.getORef(ViewData.TAG_TREE_CONFIGURATION_REF);
+		if(customizationRef.isInvalid())
+			return null;
+		PlanningTreeRowColumnProvider customization = (PlanningTreeRowColumnProvider)viewData.getProject().findObject(customizationRef);
+		return customization;
 	}
 }

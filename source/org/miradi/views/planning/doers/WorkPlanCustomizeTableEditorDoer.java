@@ -24,15 +24,13 @@ import org.miradi.dialogfields.AbstractWorkPlanStringMapEditorDoer;
 import org.miradi.dialogs.base.WorkPlanColumnConfigurationEditorPanel;
 import org.miradi.main.EAM;
 import org.miradi.objects.TableSettings;
-import org.miradi.questions.StaticQuestionManager;
-import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 
 public class WorkPlanCustomizeTableEditorDoer extends AbstractWorkPlanStringMapEditorDoer
 {
 	@Override
 	protected WorkPlanColumnConfigurationEditorPanel createEditorPanel(TableSettings workPlanTableSettings)
 	{
-		return new WorkPlanColumnConfigurationEditorPanel(getProject(), workPlanTableSettings.getRef(), StaticQuestionManager.getQuestion(WorkPlanVisibleRowsQuestion.class));
+		return new WorkPlanColumnConfigurationEditorPanel(getProject(), workPlanTableSettings.getRef());
 	}
 
 	@Override

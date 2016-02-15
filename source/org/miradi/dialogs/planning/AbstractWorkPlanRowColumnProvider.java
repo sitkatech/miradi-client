@@ -105,7 +105,7 @@ public abstract class AbstractWorkPlanRowColumnProvider extends AbstractPlanning
 
 	abstract protected CodeList createAllRowCodeList();
 
-	private TableSettings getWorkPlanTableSettings() throws Exception
+	protected TableSettings getWorkPlanTableSettings() throws Exception
 	{
 		return TableSettings.findOrCreate(getProject(), WorkPlanTreeTablePanel.getTabSpecificModelIdentifier());
 	}

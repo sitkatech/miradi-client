@@ -1584,15 +1584,21 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(tableSettings, TableSettings.TAG_DATE_UNIT_LIST_DATA, dateUnitListData.toString());
 
 		CodeToCodeListMap tableSettingsMap = new CodeToCodeListMap();
-		CodeList settings = new CodeList();
-		settings.add(WorkPlanColumnConfigurationQuestion.META_PLANNED_WHO_TOTAL);
-		settings.add(WorkPlanColumnConfigurationQuestion.META_PLANNED_WHEN_TOTAL);
-		settings.add(WorkPlanColumnConfigurationQuestion.META_ASSIGNED_WHO_TOTAL);
-		settings.add(WorkPlanColumnConfigurationQuestion.META_ASSIGNED_WHEN_TOTAL);
-		settings.add(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
-		settings.add(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);
-		settings.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
-		tableSettingsMap.putCodeList(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, settings);
+		CodeList colSettings = new CodeList();
+		colSettings.add(WorkPlanColumnConfigurationQuestion.META_PLANNED_WHO_TOTAL);
+		colSettings.add(WorkPlanColumnConfigurationQuestion.META_PLANNED_WHEN_TOTAL);
+		colSettings.add(WorkPlanColumnConfigurationQuestion.META_ASSIGNED_WHO_TOTAL);
+		colSettings.add(WorkPlanColumnConfigurationQuestion.META_ASSIGNED_WHEN_TOTAL);
+		colSettings.add(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
+		colSettings.add(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);
+		colSettings.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
+		tableSettingsMap.putCodeList(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, colSettings);
+
+		CodeList rowSettings = new CodeList();
+		rowSettings.add(WorkPlanRowConfigurationQuestion.RESOURCE_ASSIGNMENT);
+		rowSettings.add(WorkPlanRowConfigurationQuestion.EXPENSE_ASSIGNMENT);
+		tableSettingsMap.putCodeList(TableSettings.WORK_PLAN_ROW_CONFIGURATION_CODELIST_KEY, rowSettings);
+
 		fillObjectUsingCommand(tableSettings, TableSettings.TAG_TABLE_SETTINGS_MAP, tableSettingsMap.toJsonString());
 
 		fillObjectUsingCommand(tableSettings, TableSettings.TAG_WORK_PLAN_VISIBLE_NODES_CODE, WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE);

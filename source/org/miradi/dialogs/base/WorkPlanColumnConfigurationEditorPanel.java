@@ -22,33 +22,21 @@ package org.miradi.dialogs.base;
 
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StaticQuestionManager;
-import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
-import org.miradi.schemas.TableSettingsSchema;
+import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 
-public class WorkPlanColumnConfigurationEditorPanel extends ObjectDataInputPanel
+public class WorkPlanColumnConfigurationEditorPanel extends AbstractWorkPlanColumnConfigurationEditorPanel
 {
-	public WorkPlanColumnConfigurationEditorPanel(Project projectToUse, ORef orefToUse, ChoiceQuestion workPlanVisibleRowsQuestion)
+	public WorkPlanColumnConfigurationEditorPanel(Project projectToUse, ORef orefToUse)
 	{
 		super(projectToUse, orefToUse);
-
-		addField(createChoiceField(TableSettingsSchema.getObjectType(), TableSettings.TAG_WORK_PLAN_VISIBLE_NODES_CODE, workPlanVisibleRowsQuestion));
-		
-		addHtmlWrappedLabel("");
-		addHtmlWrappedLabel(EAM.text("Select which column groups to display."));
-		
-		ChoiceQuestion columnConfigurationQuestion = StaticQuestionManager.getQuestion(WorkPlanColumnConfigurationQuestion.class);
-		addFieldWithCustomLabel(createWorkPlanBudgetColumnCodeListEditor(orefToUse.getObjectType(), TableSettings.TAG_TABLE_SETTINGS_MAP, columnConfigurationQuestion, TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY), EAM.text("Column groups"));
-		
-		updateFieldsFromProject();
+		createPanel(orefToUse, StaticQuestionManager.getQuestion(WorkPlanVisibleRowsQuestion.class));
 	}
 
 	@Override
-	public String getPanelDescription()
+	protected String getConfigurationLabel()
 	{
-		return EAM.text("Work Plan Column Editor");
+		return EAM.text("Select which column groups to display.");
 	}
 }

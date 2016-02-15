@@ -674,22 +674,30 @@ public class Project implements ProjectInterface
 		EAM.logVerbose("Project Opened by Miradi " + VersionConstants.getVersionAndTimestamp());
 	}
 
-	private void turnOnBudgetRelatedColumnsInWorkPlan() throws Exception
+	private void turnOnBudgetRelatedColumnsAndRowsInWorkPlan() throws Exception
 	{
 		if (TableSettings.exists(this, WorkPlanTreeTablePanel.getTabSpecificModelIdentifier()))
 			return;
 		
 		TableSettings newTableSettings = TableSettings.findOrCreate(this, WorkPlanTreeTablePanel.getTabSpecificModelIdentifier());
+		CodeToCodeListMap newTableSettingsMap = new CodeToCodeListMap();
+
 		CodeList budgetColumnCodes = new CodeList();
 
 		budgetColumnCodes.add(WorkPlanColumnConfigurationQuestion.META_ASSIGNED_WHO_TOTAL);
 		budgetColumnCodes.add(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
 		budgetColumnCodes.add(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);
 		budgetColumnCodes.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
-		
-		CodeToCodeListMap newTableSettingsMap = new CodeToCodeListMap();
+
 		newTableSettingsMap.putCodeList(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, budgetColumnCodes);
-		
+
+		CodeList rowCodes = new CodeList();
+
+		rowCodes.add(WorkPlanRowConfigurationQuestion.RESOURCE_ASSIGNMENT);
+		rowCodes.add(WorkPlanRowConfigurationQuestion.EXPENSE_ASSIGNMENT);
+
+		newTableSettingsMap.putCodeList(TableSettings.WORK_PLAN_ROW_CONFIGURATION_CODELIST_KEY, rowCodes);
+
 		CommandSetObjectData setColumnCodes = new CommandSetObjectData(newTableSettings, TableSettings.TAG_TABLE_SETTINGS_MAP, newTableSettingsMap.toJsonString());
 		executeWithoutRecording(setColumnCodes);
 	}
@@ -857,8 +865,8 @@ public class Project implements ProjectInterface
 	protected void applyDefaultBehavior() throws Exception
 	{
 		selectDefaultPlanningCustomization();
-		turnOnBudgetRelatedColumnsInWorkPlan();
-		
+		turnOnBudgetRelatedColumnsAndRowsInWorkPlan();
+
 		ensureAllConceptualModelPagesHaveLabels();
 		ensureAllDiagramFactorsAreVisible();
 		setDefaultDiagramPage(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);

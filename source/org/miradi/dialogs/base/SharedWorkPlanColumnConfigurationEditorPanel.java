@@ -18,25 +18,25 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.views.planning.doers;
+package org.miradi.dialogs.base;
 
-import org.miradi.dialogfields.AbstractWorkPlanStringMapEditorDoer;
-import org.miradi.dialogs.base.AbstractWorkPlanColumnConfigurationEditorPanel;
-import org.miradi.dialogs.base.SharedWorkPlanColumnConfigurationEditorPanel;
 import org.miradi.main.EAM;
-import org.miradi.objects.TableSettings;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.project.Project;
+import org.miradi.questions.SharedWorkPlanVisibleRowsQuestion;
+import org.miradi.questions.StaticQuestionManager;
 
-public class SharedWorkPlanCustomizeTableEditorDoer extends AbstractWorkPlanStringMapEditorDoer
+public class SharedWorkPlanColumnConfigurationEditorPanel extends AbstractWorkPlanColumnConfigurationEditorPanel
 {
-	@Override
-	protected AbstractWorkPlanColumnConfigurationEditorPanel createEditorPanel(TableSettings workPlanTableSettings)
+	public SharedWorkPlanColumnConfigurationEditorPanel(Project projectToUse, ORef orefToUse)
 	{
-		return new SharedWorkPlanColumnConfigurationEditorPanel(getProject(), workPlanTableSettings.getRef());
+		super(projectToUse, orefToUse);
+		createPanel(orefToUse, StaticQuestionManager.getQuestion(SharedWorkPlanVisibleRowsQuestion.class), true);
 	}
 
 	@Override
-	protected String getDialogTitle()
+	protected String getConfigurationLabel()
 	{
-		return EAM.text("Title|Customize Table");
+		return EAM.text("Select which rows and column groups to display.");
 	}
 }

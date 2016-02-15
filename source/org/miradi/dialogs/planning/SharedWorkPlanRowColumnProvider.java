@@ -19,8 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning;
 
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.CodeToCodeListMap;
+import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
-import org.miradi.schemas.*;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CodeList;
 
 public class SharedWorkPlanRowColumnProvider extends AbstractWorkPlanRowColumnProvider
@@ -65,9 +71,21 @@ public class SharedWorkPlanRowColumnProvider extends AbstractWorkPlanRowColumnPr
 
 	private CodeList getConfiguredRowCodeList()
 	{
-		return new CodeList(new String[] {
-				ResourceAssignmentSchema.OBJECT_NAME,
-				ExpenseAssignmentSchema.OBJECT_NAME,
-		});
+		return getRowCodeListFromTableSettingsMap();
+	}
+
+	private CodeList getRowCodeListFromTableSettingsMap()
+	{
+		try
+		{
+			TableSettings tableSettings = getWorkPlanTableSettings();
+			CodeToCodeListMap tableSettingsMap = tableSettings.getTableSettingsMap();
+			return tableSettingsMap.getCodeList(TableSettings.WORK_PLAN_ROW_CONFIGURATION_CODELIST_KEY);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new CodeList();
+		}
 	}
 }
