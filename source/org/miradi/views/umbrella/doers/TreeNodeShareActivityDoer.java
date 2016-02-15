@@ -23,6 +23,9 @@ import org.miradi.dialogs.activity.ShareableActivityPoolTablePanel;
 import org.miradi.dialogs.base.ObjectPoolTablePanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.ExpenseAssignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaskSchema;
@@ -30,6 +33,19 @@ import org.miradi.views.planning.doers.AbstractShareDoer;
 
 public class TreeNodeShareActivityDoer extends AbstractShareDoer
 {
+	@Override
+	public boolean isAvailable()
+	{
+		if(!super.isAvailable())
+			return false;
+
+		BaseObject selected = getSingleSelectedObject();
+		if (selected instanceof ResourceAssignment || selected instanceof ExpenseAssignment)
+			return false;
+
+		return true;
+	}
+
 	@Override
 	protected String getTaskTypeName()
 	{

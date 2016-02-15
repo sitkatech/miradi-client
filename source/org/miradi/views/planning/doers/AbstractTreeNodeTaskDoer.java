@@ -37,7 +37,7 @@ abstract public class AbstractTreeNodeTaskDoer extends AbstractTreeNodeDoer
 		try
 		{
 			ORefList selectionHierarchy = getSelectionHierarchy();
-			BaseObject parent = extractParentFromSelectionHiearchy(selectionHierarchy);
+			BaseObject parent = extractParentFromSelectionHierarchy(selectionHierarchy);
 			if (parent == null)
 				return false;
 
@@ -56,22 +56,22 @@ abstract public class AbstractTreeNodeTaskDoer extends AbstractTreeNodeDoer
 		}
 	}
 	
-	protected BaseObject extractParentFromSelectionHiearchy(ORefList selectionHiearchy)
+	protected BaseObject extractParentFromSelectionHierarchy(ORefList selectionHierarchy)
 	{
-		for (int index = 0; index < selectionHiearchy.size(); ++index)
+		for (int index = 0; index < selectionHierarchy.size(); ++index)
 		{
-			ORef objectRef = selectionHiearchy.get(index);
+			ORef objectRef = selectionHierarchy.get(index);
 			if (objectRef.isInvalid())
 				continue;
 			
-			BaseObject objectInHieararchy = BaseObject.find(getProject(), objectRef);
+			BaseObject objectInHierarchy = BaseObject.find(getProject(), objectRef);
 			//FIXME low, look at the FIXME in AbstractCreateTaskNodeDoer.  Sometimes a deleted
 			//object will not get removed from the selection hiearchy in time.
-			if (objectInHieararchy == null)
+			if (objectInHierarchy == null)
 				continue;
 			
-			if (objectInHieararchy.getType() == getParentType())
-				return objectInHieararchy;
+			if (objectInHierarchy.getType() == getParentType())
+				return objectInHierarchy;
 		}
 		
 		return null;
