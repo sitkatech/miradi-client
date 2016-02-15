@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-11 07:21-0800\n"
+"POT-Creation-Date: 2016-02-15 07:06-0800\n"
 "PO-Revision-Date: 2014-05-28 17:01+0000\n"
 "Last-Translator: nsalafsky <nick@fosonline.org>\n"
 "Language-Team: English (Estonia) (http://www.transifex.com/projects/p/miradi-"
@@ -288,7 +288,7 @@ msgstr "%s field data will be lost for measurement"
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:149
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:150
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1478
 msgid "(%s)"
 msgstr "(%s)"
@@ -1965,10 +1965,6 @@ msgstr "Action|Support"
 msgid "Action|Tab-Delimited Table"
 msgstr "Action|Tab-Delimited Table"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToResourceAssignment.java:36
-msgid "Action|Table|  Expand To Assignment"
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionPlanningCreationMenu.java:34
 msgid "Action|Table|Create..."
 msgstr "Action|Table|Create..."
@@ -1996,10 +1992,6 @@ msgstr "Action|Table|Expand To Key Attribute"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToMeasurement.java:36
 msgid "Action|Table|Expand To Measurement"
 msgstr "Action|Table|Expand To Measurement"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToExpenseAssignment.java:36
-msgid "Action|Table|Expand To Projected Expense"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToStrategy.java:36
 msgid "Action|Table|Expand To Strategy"
@@ -2470,6 +2462,7 @@ msgid "Assignment"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:85
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanRowConfigurationQuestion.java:40
 msgid "Assignments"
 msgstr "Assignments"
 
@@ -2984,7 +2977,7 @@ msgid "Collapse Selected Column"
 msgstr "Collapse Selected Column"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:52
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:44
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractWorkPlanColumnConfigurationEditorPanel.java:56
 msgid "Column groups"
 msgstr "Column groups"
 
@@ -5276,11 +5269,11 @@ msgstr "MenuBar|Edit"
 msgid "MenuBar|File"
 msgstr "MenuBar|File"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:590
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:588
 msgid "MenuBar|Help"
 msgstr "MenuBar|Help"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:522
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:520
 msgid "MenuBar|Step-by-Step"
 msgstr "MenuBar|Step-by-Step"
 
@@ -6196,6 +6189,7 @@ msgid "Project was migrated to the current data format"
 msgstr "Project was migrated to the current data format"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/expense/ExpensesPropertiesPanel.java:74
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanRowConfigurationQuestion.java:41
 msgid "Projected Expenses"
 msgstr "Projected Expenses"
 
@@ -6421,6 +6415,10 @@ msgstr "Rocky Areas [e.g. inland cliffs, mountain peaks]"
 msgid "Rough Guess"
 msgstr "Rough Guess"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractWorkPlanColumnConfigurationEditorPanel.java:52
+msgid "Rows"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/CurrencyTypeQuestion.java:42
 msgid "Ruble (Russia)"
 msgstr "Ruble (Russia)"
@@ -6601,9 +6599,13 @@ msgstr ""
 "<code class='toolbarbutton'>&lt;File/ Export&nbsp;Current&nbsp;Page&nbsp;"
 "As.../ RTF&nbsp;File&gt;</code> menu command from within that view.</span>"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:41
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:40
 msgid "Select which column groups to display."
 msgstr "Select which column groups to display."
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/SharedWorkPlanColumnConfigurationEditorPanel.java:40
+msgid "Select which rows and column groups to display."
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/ReadonlyPanelWithPopupEditor.java:50
 msgid "Select..."
@@ -7466,10 +7468,6 @@ msgstr "TT|Expand All Tree Rows"
 msgid "TT|Expand To Activity"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToResourceAssignment.java:42
-msgid "TT|Expand To Assignment"
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToFutureStatus.java:42
 msgid "TT|Expand To Future Status"
 msgstr "TT|Expand To Performance Target"
@@ -7489,10 +7487,6 @@ msgstr "TT|Expand To Key Attribute"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToMeasurement.java:42
 msgid "TT|Expand To Measurement"
 msgstr "TT|Expand To Measurement"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToExpenseAssignment.java:42
-msgid "TT|Expand To Projected Expense"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToStrategy.java:42
 msgid "TT|Expand To Strategy"
@@ -8327,6 +8321,10 @@ msgid ""
 "This migration adds new default columns to the work plan customize panel."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:90
+msgid "This migration adds new default rows to the work plan customize panel."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo5.java:69
 msgid "This migration changes default real status code to \"\""
 msgstr "This migration changes default real status code to \"\""
@@ -8620,8 +8618,8 @@ msgstr "Title|Choose a directory"
 msgid "Title|Contributing Factor Properties"
 msgstr "Title|Driver Properties"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/doers/WorkPlanCustomizeTableEditorDoer.java:41
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/doers/SharedWorkPlanCustomizeTableEditorDoer.java:41
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/doers/WorkPlanCustomizeTableEditorDoer.java:39
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/doers/SharedWorkPlanCustomizeTableEditorDoer.java:40
 msgid "Title|Customize Table"
 msgstr "Title|Customize Table"
 
@@ -9339,7 +9337,7 @@ msgstr ""
 "shows the timing and sequence of each task as well as the specific resources "
 "required to carry it out."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:52
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractWorkPlanColumnConfigurationEditorPanel.java:64
 msgid "Work Plan Column Editor"
 msgstr "Work Plan Column Editor"
 
@@ -9468,7 +9466,7 @@ msgstr "[NOT SPECIFIED]"
 msgid "[New Results Chain]"
 msgstr "[New Theory of Change]"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:954
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:962
 msgid "[No Project]"
 msgstr "[No Project]"
 

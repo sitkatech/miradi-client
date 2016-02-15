@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-11 07:21-0800\n"
+"POT-Creation-Date: 2016-02-15 07:06-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/miradi-client/"
@@ -292,7 +292,7 @@ msgstr "%s "
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%ОтИме' -> '%ЗаИме'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:149
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:150
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1478
 msgid "(%s)"
 msgstr "(%s)"
@@ -1977,10 +1977,6 @@ msgstr "Action|Поддръжка"
 msgid "Action|Tab-Delimited Table"
 msgstr "Action|Таблица на табулатори"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToResourceAssignment.java:36
-msgid "Action|Table|  Expand To Assignment"
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionPlanningCreationMenu.java:34
 msgid "Action|Table|Create..."
 msgstr "Action|Table|Създаване"
@@ -2008,10 +2004,6 @@ msgstr "Action|Table|Разширяване до ключова екологич
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToMeasurement.java:36
 msgid "Action|Table|Expand To Measurement"
 msgstr "Action|Table|Разширяване до измерване"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToExpenseAssignment.java:36
-msgid "Action|Table|Expand To Projected Expense"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToStrategy.java:36
 msgid "Action|Table|Expand To Strategy"
@@ -2489,6 +2481,7 @@ msgid "Assignment"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:85
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanRowConfigurationQuestion.java:40
 msgid "Assignments"
 msgstr "Задания"
 
@@ -3008,7 +3001,7 @@ msgid "Collapse Selected Column"
 msgstr "Сриване на маркирани колони"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:52
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:44
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractWorkPlanColumnConfigurationEditorPanel.java:56
 msgid "Column groups"
 msgstr "Групи от колони"
 
@@ -5302,11 +5295,11 @@ msgstr "MenuBar|Редактиране"
 msgid "MenuBar|File"
 msgstr "MenuBar|Файл"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:590
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:588
 msgid "MenuBar|Help"
 msgstr "MenuBar|Помощ"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:522
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:520
 msgid "MenuBar|Step-by-Step"
 msgstr "MenuBar|Стъпка по стъпка"
 
@@ -6227,6 +6220,7 @@ msgid "Project was migrated to the current data format"
 msgstr "Проектът беше пренесен в текущия формат на данните."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/expense/ExpensesPropertiesPanel.java:74
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanRowConfigurationQuestion.java:41
 msgid "Projected Expenses"
 msgstr "Планувани разходи"
 
@@ -6448,6 +6442,10 @@ msgstr "Скалисти месности [напр., вътрешни скал�
 msgid "Rough Guess"
 msgstr "Грубо предположение"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractWorkPlanColumnConfigurationEditorPanel.java:52
+msgid "Rows"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/CurrencyTypeQuestion.java:42
 msgid "Ruble (Russia)"
 msgstr "Рубла (Русия)"
@@ -6629,8 +6627,12 @@ msgstr ""
 "<code class='toolbarbutton'>&lt;Файл/ Експортиране на&nbsp;текуща&nbsp;"
 "страница&nbsp;като.../ RTF&nbsp;файл&gt;</code> от този иглед."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:41
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:40
 msgid "Select which column groups to display."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/SharedWorkPlanColumnConfigurationEditorPanel.java:40
+msgid "Select which rows and column groups to display."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/ReadonlyPanelWithPopupEditor.java:50
@@ -7495,10 +7497,6 @@ msgstr "TT|Разшираване на всички редове от дърво
 msgid "TT|Expand To Activity"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToResourceAssignment.java:42
-msgid "TT|Expand To Assignment"
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToFutureStatus.java:42
 msgid "TT|Expand To Future Status"
 msgstr ""
@@ -7518,10 +7516,6 @@ msgstr "TT|Разширяване до ключова екологична ха�
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToMeasurement.java:42
 msgid "TT|Expand To Measurement"
 msgstr "TT|Разширяване до измерване"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToExpenseAssignment.java:42
-msgid "TT|Expand To Projected Expense"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToStrategy.java:42
 msgid "TT|Expand To Strategy"
@@ -8340,6 +8334,10 @@ msgid ""
 "This migration adds new default columns to the work plan customize panel."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:90
+msgid "This migration adds new default rows to the work plan customize panel."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo5.java:69
 msgid "This migration changes default real status code to \"\""
 msgstr ""
@@ -8636,8 +8634,8 @@ msgstr ""
 msgid "Title|Contributing Factor Properties"
 msgstr "Title|Свойства на фактор"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/doers/WorkPlanCustomizeTableEditorDoer.java:41
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/doers/SharedWorkPlanCustomizeTableEditorDoer.java:41
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/doers/WorkPlanCustomizeTableEditorDoer.java:39
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/doers/SharedWorkPlanCustomizeTableEditorDoer.java:40
 msgid "Title|Customize Table"
 msgstr "Title|Персонализиране на таблица"
 
@@ -9354,7 +9352,7 @@ msgstr ""
 "планове. Добрият работен план показва времетраенето и последователността на "
 "всяка задача както и конкретните ресурси, необходими за извършването й."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:52
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractWorkPlanColumnConfigurationEditorPanel.java:64
 msgid "Work Plan Column Editor"
 msgstr "Редактор на колони на работен план"
 
@@ -9483,7 +9481,7 @@ msgstr "[НЕУТОЧНЕН]"
 msgid "[New Results Chain]"
 msgstr "[Нова верига на резултатите]"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:954
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:962
 msgid "[No Project]"
 msgstr "[Няма проект]"
 
