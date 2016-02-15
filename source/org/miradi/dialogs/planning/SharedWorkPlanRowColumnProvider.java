@@ -32,35 +32,40 @@ public class SharedWorkPlanRowColumnProvider extends AbstractWorkPlanRowColumnPr
 
 	protected CodeList createMonitoringRelatedRowCodeList()
 	{
-		return new CodeList(new String[] {
-				ConceptualModelDiagramSchema.OBJECT_NAME,
-				ResultsChainDiagramSchema.OBJECT_NAME,
-				StrategySchema.OBJECT_NAME,
-				TaskSchema.ACTIVITY_NAME,
-				ResourceAssignmentSchema.OBJECT_NAME,
-				ExpenseAssignmentSchema.OBJECT_NAME,
-		});
+		return getRowCodeList();
 	}
 
 	protected CodeList createActionRelatedRowCodeList()
 	{
-		return new CodeList(new String[] {
-				ConceptualModelDiagramSchema.OBJECT_NAME,
-				ResultsChainDiagramSchema.OBJECT_NAME,
-				StrategySchema.OBJECT_NAME,
-				TaskSchema.ACTIVITY_NAME,
-				ResourceAssignmentSchema.OBJECT_NAME,
-				ExpenseAssignmentSchema.OBJECT_NAME,
-		});
+		return getRowCodeList();
 	}
 
 	protected CodeList createAllRowCodeList()
+	{
+		return getRowCodeList();
+	}
+
+	private CodeList getRowCodeList()
+	{
+		CodeList codeList = new CodeList();
+		codeList.addAll(getDefaultRowCodeList());
+		codeList.addAll(getConfiguredRowCodeList());
+		return codeList;
+	}
+
+	private CodeList getDefaultRowCodeList()
 	{
 		return new CodeList(new String[] {
 				ConceptualModelDiagramSchema.OBJECT_NAME,
 				ResultsChainDiagramSchema.OBJECT_NAME,
 				StrategySchema.OBJECT_NAME,
 				TaskSchema.ACTIVITY_NAME,
+		});
+	}
+
+	private CodeList getConfiguredRowCodeList()
+	{
+		return new CodeList(new String[] {
 				ResourceAssignmentSchema.OBJECT_NAME,
 				ExpenseAssignmentSchema.OBJECT_NAME,
 		});
