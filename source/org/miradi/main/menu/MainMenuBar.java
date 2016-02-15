@@ -486,8 +486,6 @@ public class MainMenuBar extends JMenuBar
 		{
 			addMenuItem(actions, menu, ActionExpandToStrategy.class);
 			addMenuItem(actions, menu, ActionExpandToTask.class);
-			addMenuItem(actions, menu, ActionExpandToResourceAssignment.class);
-			addMenuItem(actions, menu, ActionExpandToExpenseAssignment.class);
 			addMenuItem(actions, menu, ActionWorkPlanBudgetCustomizeTableEditor.class);
 			addMenuItem(actions, menu, ActionFilterWorkPlanByProjectResource.class);
 		}

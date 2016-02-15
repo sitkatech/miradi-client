@@ -52,8 +52,6 @@ public class SharedWorkPlanningTreeTableWithVisibleRootNode extends PlanningTree
 		relevantActions.add(ActionExpandToMenu.class);
 		relevantActions.add(ActionExpandToStrategy.class);
 		relevantActions.add(ActionExpandToTask.class);
-		relevantActions.add(ActionExpandToResourceAssignment.class);
-		relevantActions.add(ActionExpandToExpenseAssignment.class);
 
 		return relevantActions;
 	}

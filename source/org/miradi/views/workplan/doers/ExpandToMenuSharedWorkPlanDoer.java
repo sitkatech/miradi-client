@@ -33,8 +33,6 @@ public class ExpandToMenuSharedWorkPlanDoer extends AbstractPopDownMenuDoer
 				ActionCollapseAllRows.class,
 				ActionExpandToStrategy.class,
 				ActionExpandToTask.class,
-				ActionExpandToResourceAssignment.class,
-				ActionExpandToExpenseAssignment.class,
 			};
 	}
 }

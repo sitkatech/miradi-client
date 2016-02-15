@@ -185,8 +185,6 @@ public class Actions
 		registerAction(new ActionExpandToFutureStatus(mainWindow));
 		registerAction(new ActionExpandToStrategy(mainWindow));
 		registerAction(new ActionExpandToTask(mainWindow));
-		registerAction(new ActionExpandToResourceAssignment(mainWindow));
-		registerAction(new ActionExpandToExpenseAssignment(mainWindow));
 		registerAction(new ActionPlanningCustomizeDialogPopup(mainWindow));
 		registerAction(new ActionCreateCustomFromCurrentTreeTableConfiguration(mainWindow));
 
