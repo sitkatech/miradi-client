@@ -83,6 +83,9 @@ abstract public class ObjectsDoer extends ViewDoer
 	protected BaseObject getSingleSelectedObject()
 	{
 		BaseObject[] selectedObjects = getObjects();
+		if (selectedObjects == null)
+			return null;
+
 		if(selectedObjects.length != 1)
 			return null;
 		

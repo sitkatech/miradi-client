@@ -40,8 +40,9 @@ public class TreeNodeShareActivityDoer extends AbstractShareDoer
 			return false;
 
 		BaseObject selected = getSingleSelectedObject();
-		if (selected instanceof ResourceAssignment || selected instanceof ExpenseAssignment)
-			return false;
+		if (selected != null)
+			if (selected instanceof ResourceAssignment || selected instanceof ExpenseAssignment)
+				return false;
 
 		return true;
 	}
