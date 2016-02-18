@@ -37,7 +37,7 @@ abstract public class AbstractRelevancyEditListDoer extends AbstractEditListDoer
 	@Override
 	protected DisposablePanel createEditPanel()
 	{
-		return new RelevancyIndicatorPanel(getProject(), getSelectionRef());
+		return new RelevancyIndicatorPanel(getProject(), getSelectionRef(), getIndicatorSetTag());
 	}
 	
 	protected ORef getSelectionRef()
@@ -61,4 +61,6 @@ abstract public class AbstractRelevancyEditListDoer extends AbstractEditListDoer
 	
 	@Override
 	abstract protected int getObjectType();
+
+	abstract protected String getIndicatorSetTag();
 }

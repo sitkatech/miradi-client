@@ -334,7 +334,9 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		
 		return false;
 	}
-	
+
+	// TODO: MRD-5939 - need to investigate...why only objective test here...what about other relevancy linkages...?
+	// ...depending on how we treat Strategy / Activity -> Indicator relevancy wrt tree structure this might need to change...
 	private boolean didAffectRelevancyInTree(CommandExecutedEvent event)
 	{
 		if (! event.isSetDataCommand())

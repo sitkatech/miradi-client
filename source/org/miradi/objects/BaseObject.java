@@ -293,7 +293,7 @@ abstract public class BaseObject
 	{
 		return ((RelevancyOverrideSetData)getField(tag)).getRawRelevancyOverrideSet();
 	}
-	
+
 	public void loadFromJson(EnhancedJsonObject json) throws Exception
 	{
 		Set<String> tags = getTags();
@@ -1021,7 +1021,7 @@ abstract public class BaseObject
 		return new ORefList(relevantRefList);
 	}
 	
-	protected RelevancyOverrideSet computeRelevancyOverrides(ORefList refList1, ORefList refList2,	boolean relevancyValue)
+	protected RelevancyOverrideSet computeRelevancyOverrides(ORefList refList1, ORefList refList2, boolean relevancyValue)
 	{
 		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
 		ORefList overrideRefs = ORefList.subtract(refList1, refList2);
@@ -1032,6 +1032,49 @@ abstract public class BaseObject
 		}
 		
 		return relevantOverrides;
+	}
+
+	public RelevancyOverrideSet getCalculatedRelevantIndicatorOverrides(ORefList all) throws Exception
+	{
+		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
+		ORefList defaultRelevantRefList = getIndicatorsOnSameFactor();
+		relevantOverrides.addAll(computeRelevancyOverrides(all, defaultRelevantRefList, true));
+		relevantOverrides.addAll(computeRelevancyOverrides(defaultRelevantRefList, all , false));
+
+		return relevantOverrides;
+	}
+
+	private ORefSet indicatorsOnSameFactorAsRefSet()
+	{
+		ORefSet indicatorsOnSameFactor = new ORefSet();
+		ORef[] indicators = getIndicatorsOnSameFactor().toArray();
+		indicatorsOnSameFactor.addAll(Arrays.asList(indicators));
+
+		return indicatorsOnSameFactor;
+	}
+
+	public ORefList getIndicatorsOnSameFactor()
+	{
+		return new ORefList();
+	}
+
+	public ORefList getRelevantIndicatorRefList() throws Exception
+	{
+		ORefSet relevantRefList = getDefaultRelevantIndicatorRefs();
+		RelevancyOverrideSet relevantOverrides = getIndicatorRelevancyOverrideSet();
+
+		return calculateRelevantRefList(relevantRefList, relevantOverrides);
+	}
+
+	protected ORefSet getDefaultRelevantIndicatorRefs()
+	{
+		ORefSet relevantRefList = indicatorsOnSameFactorAsRefSet();
+		return relevantRefList;
+	}
+
+	protected RelevancyOverrideSet getIndicatorRelevancyOverrideSet()
+	{
+		return new RelevancyOverrideSet();
 	}
 
 	protected final void clear()
@@ -1155,7 +1198,27 @@ abstract public class BaseObject
 		
 		return commandsToShallowDelete;
 	}
-	
+
+	public static CommandVector buildRemoveObjectFromRelevancyListCommands(Project project, int typeWithRelevancyOverrideSetList, String relevancyTag, ORef relevantObjectRefToRemove) throws Exception
+	{
+		CommandVector removeFromRelevancyListCommands = new CommandVector();
+		ORefList objectRefsWithRelevancyOverrides = project.getPool(typeWithRelevancyOverrideSetList).getORefList();
+		for (int index = 0; index < objectRefsWithRelevancyOverrides.size(); ++index)
+		{
+			BaseObject objectWithRelevancyOverrides = BaseObject.find(project, objectRefsWithRelevancyOverrides.get(index));
+			String relevancySetAsString = objectWithRelevancyOverrides.getData(relevancyTag);
+			RelevancyOverrideSet relevancyOverrideSet = new RelevancyOverrideSet(relevancySetAsString);
+			if (relevancyOverrideSet.contains(relevantObjectRefToRemove))
+			{
+				relevancyOverrideSet.remove(relevantObjectRefToRemove);
+				CommandSetObjectData removeFromRelevancyListCommand = new CommandSetObjectData(objectWithRelevancyOverrides.getRef(), relevancyTag, relevancyOverrideSet.toString());
+				removeFromRelevancyListCommands.add(removeFromRelevancyListCommand);
+			}
+		}
+
+		return removeFromRelevancyListCommands;
+	}
+
 	//Note this method does not clone referenced or owned objects
 	public CommandSetObjectData[] createCommandsToClone(BaseId baseId)
 	{

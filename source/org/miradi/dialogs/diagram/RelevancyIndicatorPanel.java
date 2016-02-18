@@ -27,11 +27,11 @@ import org.miradi.questions.IndicatorChoiceQuestion;
 
 public class RelevancyIndicatorPanel extends ObjectDataInputPanel
 {
-	public RelevancyIndicatorPanel(Project projectToUse, ORef orefToUse)
+	public RelevancyIndicatorPanel(Project projectToUse, ORef orefToUse, String tagToUse)
 	{
 		super(projectToUse, orefToUse);
 		
-		addField(createIndicatorRelevancyOverrideListField(new IndicatorChoiceQuestion(getProject())));
+		addField(createIndicatorRelevancyOverrideListField(new IndicatorChoiceQuestion(getProject()), tagToUse));
 		
 		updateFieldsFromProject();
 	}

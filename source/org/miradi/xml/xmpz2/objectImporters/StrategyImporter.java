@@ -21,6 +21,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2.objectImporters;
 
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objects.Strategy;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaskSchema;
@@ -38,7 +40,7 @@ public class StrategyImporter extends BaseObjectWithLeaderResourceFieldImporter
 	public void importFields(Node baseObjectNode, ORef refToUse) throws Exception
 	{
 		super.importFields(baseObjectNode, refToUse);
-		
+		importRelevantIndicatorIds(baseObjectNode, refToUse);
 		getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), Strategy.TAG_ACTIVITY_IDS, ACTIVITY, TaskSchema.getObjectType());
 	}
 	
@@ -47,7 +49,18 @@ public class StrategyImporter extends BaseObjectWithLeaderResourceFieldImporter
 	{
 		if (tag.equals(Strategy.TAG_ACTIVITY_IDS))
 			return true;
-		
+
+		if (tag.equals(Strategy.TAG_RELEVANT_INDICATOR_SET))
+			return true;
+
 		return super.isCustomImportField(tag);
+	}
+
+	private void importRelevantIndicatorIds(Node node, ORef destinationStrategyRef) throws Exception
+	{
+		ORefList importedRelevantRefs = getImporter().extractRefs(node, getXmpz2ElementName(), RELEVANT_INDICATOR_IDS, INDICATOR);
+		Strategy strategy = Strategy.find(getProject(), destinationStrategyRef);
+		RelevancyOverrideSet set = strategy.getCalculatedRelevantIndicatorOverrides(importedRelevantRefs);
+		getImporter().setData(destinationStrategyRef, Strategy.TAG_RELEVANT_INDICATOR_SET, set.toString());
 	}
 }

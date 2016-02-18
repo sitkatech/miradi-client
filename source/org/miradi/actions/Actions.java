@@ -420,6 +420,7 @@ public class Actions
 		registerAction(new ActionEditGoalStrategyActivityRelevancyList(mainWindow));
 		registerAction(new ActionEditStrategyGoalRelevancyList(mainWindow));
 		registerAction(new ActionEditStrategyObjectiveRelevancyList(mainWindow));
+		registerAction(new ActionEditStrategyIndicatorRelevancyList(mainWindow));
 		registerAction(new ActionEditActivityObjectiveRelevancyList(mainWindow));
 		registerAction(new ActionEditActivityGoalRelevancyList(mainWindow));
 		registerAction(new ActionDeleteGroupBox(mainWindow));

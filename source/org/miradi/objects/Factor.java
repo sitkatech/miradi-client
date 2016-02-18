@@ -54,7 +54,11 @@ abstract public class Factor extends BaseObject
 	{
 		return new FactorId(getId().asInt());
 	}
-	
+
+	// TODO: MRD-5979 - need to confirm that relevancy rules have no bearing on planning or viability tree view, default calc strategy or dashboard counts all of which utilize these access paths...
+	// ...i.e. if an 'owned' indicator is marked irrelevant should it be excluded...?
+	// ...looking at getObjectiveRefs below suggests relevancy rules ignored for objectives in these scenarios...?
+
 	public ORefSet getDirectOrIndirectIndicatorRefSet()
 	{
 		return new ORefSet(getDirectOrIndirectIndicatorRefs());
@@ -392,7 +396,6 @@ abstract public class Factor extends BaseObject
 	{
 		try
 		{
-			// FIXME low: This psuedotag does not seem to be used
 			if(fieldTag.equals(PSEUDO_TAG_OBJECTIVES))
 				return getFactorObjectivesAsMultiline();
 			
@@ -490,9 +493,7 @@ abstract public class Factor extends BaseObject
 	public static final String TAG_INDICATOR_IDS = "IndicatorIds";
 	public static final String TAG_OBJECTIVE_IDS = "ObjectiveIds";
 	
-	// FIXME low: This code does not seem to be used
 	public static final String PSEUDO_TAG_OBJECTIVES = "PseudoTagObjectives";
-	
 	public static final String PSEUDO_TAG_DIRECT_THREATS = "PseudoTagDirectThreats";
 	public static final String PSEUDO_TAG_TARGETS = "PseudoTagTargets";
 	public static final String PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS = "PseudoTagDiagramRefs";

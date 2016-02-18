@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.diagram;
 
 import org.miradi.actions.ActionEditStrategyGoalRelevancyList;
+import org.miradi.actions.ActionEditStrategyIndicatorRelevancyList;
 import org.miradi.actions.ActionEditStrategyObjectiveRelevancyList;
 import org.miradi.actions.Actions;
 import org.miradi.dialogfields.ObjectDataInputField;
@@ -59,6 +60,7 @@ public class StrategyCoreSubpanel extends ObjectDataInputPanel
 		
 		addFieldWithEditButton(EAM.text("Objectives"), createReadOnlyObjectList(StrategySchema.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyObjectiveRelevancyList.class), getPicker()));
 		addFieldWithEditButton(EAM.text("Goals"), createReadOnlyObjectList(StrategySchema.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_GOAL_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyGoalRelevancyList.class), getPicker()));
+		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(StrategySchema.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyIndicatorRelevancyList.class), getPicker()));
 	}
 
 	@Override

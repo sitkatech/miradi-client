@@ -19,10 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.diagram;
 
-import org.miradi.actions.ActionEditStrategyGoalRelevancyList;
-import org.miradi.actions.ActionEditStrategyObjectiveRelevancyList;
-import org.miradi.actions.ActionManageFactorTags;
-import org.miradi.actions.Actions;
+import org.miradi.actions.*;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.icons.IconManager;
@@ -83,6 +80,7 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 			addLabeledSubPanelWithoutBorder(new LegacyTncStrategyRankingEditorPropertiesSubPanel(getProject(), factorToEdit.getRef(), actions), EAM.text("Legacy TNC Ratings"));
 			addFieldWithEditButton(EAM.text("Objectives"), createReadOnlyObjectList(StrategySchema.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyObjectiveRelevancyList.class), getPicker()));
 			addFieldWithEditButton(EAM.text("Goals"), createReadOnlyObjectList(StrategySchema.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_GOAL_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyGoalRelevancyList.class), getPicker()));
+			addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(StrategySchema.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyIndicatorRelevancyList.class), getPicker()));
 			addTaxonomyFields(StrategySchema.getObjectType());
 		}
 
@@ -110,7 +108,14 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 			addTaxonomyFields(ThreatReductionResultSchema.getObjectType());
 		}
 	}
-	
+
+	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		updateFieldsFromProject();
+	}
+
 	public static String getTagsLabel()
 	{
 		return EAM.text("Tags");

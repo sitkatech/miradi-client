@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Wed Jan 20 10:52:47 GMT 2016 $
+# $LastChangedDate: Tue Feb 16 12:36:26 GMT 2016 $
 # $LastChangedRevision: 236 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/236'
 start = ConservationProject.element
@@ -462,6 +462,7 @@ Strategy.element = element miradi:Strategy
   element miradi:StrategyOrderedActivityIds { ActivityId.element* }? &
   element miradi:StrategyPlannedLeaderResourceId { ResourceId.element }? &
   element miradi:StrategyProgressReportIds { ProgressReportId.element* }? &
+  element miradi:StrategyRelevantIndicatorIds { IndicatorId.element* }? &
   element miradi:StrategyResourceAssignmentIds { ResourceAssignmentId.element* }? &
   element miradi:StrategyResourcePlanIds { ResourcePlanId.element* }? &
   element miradi:StrategyStandardClassification { vocabulary_strategy_taxonomy_code }? &

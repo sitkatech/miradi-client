@@ -22,15 +22,15 @@ package org.miradi.dialogfields;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.Desire;
+import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 
 public class IndicatorRelevancyOverrideListField extends RefListEditorField
 {
-	public IndicatorRelevancyOverrideListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse)
+	public IndicatorRelevancyOverrideListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, Desire.TAG_RELEVANT_INDICATOR_SET, questionToUse);
+		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse);
 	}
 	
 	@Override
@@ -38,9 +38,9 @@ public class IndicatorRelevancyOverrideListField extends RefListEditorField
 	{
 		try
 		{
-			Desire desire = Desire.findDesire(getProject(), getORef());
+			BaseObject baseObject = BaseObject.find(getProject(), getORef());
 			ORefList all = new ORefList(refListEditor.getText());
-			return desire.getCalculatedRelevantIndicatorOverrides(all).toString();
+			return baseObject.getCalculatedRelevantIndicatorOverrides(all).toString();
 		}
 		catch(Exception e)
 		{
@@ -55,8 +55,8 @@ public class IndicatorRelevancyOverrideListField extends RefListEditorField
 	{
 		try
 		{
-			Desire desire = Desire.findDesire(getProject(), getORef());
-			ORefList relevantRefList = desire.getRelevantIndicatorRefList();
+			BaseObject baseObject = BaseObject.find(getProject(), getORef());
+			ORefList relevantRefList = baseObject.getRelevantIndicatorRefList();
 			refListEditor.setText(relevantRefList.toString());
 		}
 		catch(Exception e)

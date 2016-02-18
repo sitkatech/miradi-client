@@ -41,7 +41,8 @@ public class StrategySchema extends FactorSchema
 		
 		createFieldSchemaRequiredChoice(Strategy.TAG_STATUS, StrategyStatusQuestion.class);
 		createFieldSchemaIdList(Strategy.TAG_ACTIVITY_IDS, TaskSchema.getObjectType());
-	
+		createFieldSchemaRelevancyOverrideSet(Strategy.TAG_RELEVANT_INDICATOR_SET);
+
 		createFieldSchemaChoice(Strategy.TAG_TAXONOMY_CODE, StrategyTaxonomyQuestion.class);
 		createFieldSchemaChoice(Strategy.TAG_IMPACT_RATING, StrategyImpactQuestion.class);
 		createFieldSchemaChoice(Strategy.TAG_FEASIBILITY_RATING, StrategyFeasibilityQuestion.class);
@@ -62,6 +63,7 @@ public class StrategySchema extends FactorSchema
 		createPseudoFieldSchemaString(Strategy.PSEUDO_TAG_ACTIVITIES);
 		createPseudoFieldSchemaRefList(Strategy.PSEUDO_TAG_RELEVANT_GOAL_REFS);
 		createPseudoFieldSchemaRefList(Strategy.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
+		createPseudoFieldSchemaRefList(Strategy.PSEUDO_TAG_RELEVANT_INDICATOR_REFS);
 	}
 
 	public static int getObjectType()

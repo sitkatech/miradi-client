@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
+import org.miradi.objects.Objective;
 import org.miradi.schemas.ObjectiveSchema;
 
 public class EditObjectiveIndicatorRelevancyListDoer extends AbstractRelevancyEditListDoer
@@ -28,4 +29,11 @@ public class EditObjectiveIndicatorRelevancyListDoer extends AbstractRelevancyEd
 	{
 		return ObjectiveSchema.getObjectType();
 	}
+
+	@Override
+	protected String getIndicatorSetTag()
+	{
+		return Objective.TAG_RELEVANT_INDICATOR_SET;
+	}
+
 }

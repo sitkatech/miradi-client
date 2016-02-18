@@ -77,7 +77,6 @@ public class Strategy extends Factor
 		return diagramRefs;
 	}
 
-	
 	@Override
 	public boolean isStrategy()
 	{
@@ -161,7 +160,10 @@ public class Strategy extends Factor
 
 		if (fieldTag.equals(PSEUDO_TAG_RELEVANT_GOAL_REFS))
 			return getRelevantGoalRefsAsString();
-		
+
+		if (fieldTag.equals(PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
+			return getRelevantIndicatorRefsAsString();
+
 		return super.getPseudoData(fieldTag);
 	}
 	
@@ -191,6 +193,33 @@ public class Strategy extends Factor
 		}
 	}
 
+	@Override
+	protected RelevancyOverrideSet getIndicatorRelevancyOverrideSet()
+	{
+		return getRawRelevancyOverrideData(TAG_RELEVANT_INDICATOR_SET);
+	}
+
+	@Override
+	public ORefList getIndicatorsOnSameFactor()
+	{
+		return getOnlyDirectIndicatorRefs();
+	}
+
+	protected String getRelevantIndicatorRefsAsString()
+	{
+		ORefList refList;
+		try
+		{
+			refList = getRelevantIndicatorRefList();
+			return refList.toString();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+	}
+
 	public ORefList getRelevantObjectiveRefs() throws Exception
 	{
 		ORefSet relevantObjectives = new ORefSet(Desire.findAllRelevantDesires(getProject(), getRef(), ObjectiveSchema.getObjectType()));
@@ -205,7 +234,7 @@ public class Strategy extends Factor
 	
 		return calculateRelevantRefList(relevantGoals, relevantOverrides);
 	}
-	
+
 	public String getTaxonomyCode()
 	{
 		return getData(TAG_TAXONOMY_CODE);
@@ -261,7 +290,7 @@ public class Strategy extends Factor
 		
 		return commandsToDereferences;
 	}
-	
+
 	@Override
 	public int getAnnotationType(String tag)
 	{
@@ -315,7 +344,8 @@ public class Strategy extends Factor
 	public static final String TAG_IMPACT_RATING = "ImpactRating";
 	public static final String TAG_FEASIBILITY_RATING = "FeasibilityRating";
 	public static final String TAG_LEGACY_TNC_STRATEGY_RANKING = "LegacyTncStrategyRanking";
-	
+	public static final String TAG_RELEVANT_INDICATOR_SET = "RelevantIndicatorSet";
+
 	public static final String PSEUDO_TAG_RATING_SUMMARY = "RatingSummary";
 	public static final String PSEUDO_TAG_IMPACT_RATING_VALUE = "ImpactRatingValue";
 	public static final String PSEUDO_TAG_FEASIBILITY_RATING_VALUE = "FeasibilityRatingValue";
@@ -323,7 +353,7 @@ public class Strategy extends Factor
 	public static final String PSEUDO_TAG_ACTIVITIES = "PseudoTagActivities";
 	public static final String PSEUDO_TAG_RELEVANT_GOAL_REFS = "PseudoStrategyRelevantGoalRefs";
 	public static final String PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS = "PseudoStrategyRelevantObjectiveRefs";
-	
+	public static final String PSEUDO_TAG_RELEVANT_INDICATOR_REFS = "PseudoRelevantIndicatorRefs";
+
 	public static final String OBJECT_NAME_DRAFT = "Draft" + StrategySchema.OBJECT_NAME;
-	
 }

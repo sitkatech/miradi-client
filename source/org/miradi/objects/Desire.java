@@ -120,41 +120,6 @@ abstract public class Desire extends BaseObject
 		
 		return super.getPseudoData(fieldTag);
 	}
-	
-	public ORefSet indicatorsOnSameFactorAsRefSet()
-	{
-		ORefSet indicatorsOnSameFactor = new ORefSet();
-		ORef[] indicators = getIndicatorsOnSameFactor().toArray();
-		indicatorsOnSameFactor.addAll(Arrays.asList(indicators));
-		
-		return indicatorsOnSameFactor;
-	}
-	
-	public ORefList getIndicatorsOnSameFactor()
-	{
-		ORefList indicatorRefs = new ORefList();
-		
-		ORefList referrers = findAllObjectsThatReferToUs();
-		for(int i = 0; i < referrers.size(); ++i)
-		{
-			ORef thisRef = referrers.get(i);
-			if(!Factor.isFactor(thisRef))
-				continue;
-			
-			Factor factor = Factor.findFactor(getObjectManager(), thisRef);
-			IdList indicatorIds = factor.getDirectOrIndirectIndicators();
-			for(int idIndex = 0; idIndex < indicatorIds.size(); ++idIndex)
-			{
-				BaseId indicatorId = indicatorIds.get(idIndex);
-				if(indicatorId.isInvalid())
-					continue;
-				indicatorRefs.add(new ORef(IndicatorSchema.getObjectType(), indicatorId));
-			}
-		}
-		
-		return indicatorRefs;
-		
-	}
 
 	@Override
 	public boolean isRelevancyOverrideSet(String tag)
@@ -241,13 +206,15 @@ abstract public class Desire extends BaseObject
 				strategyOrActivityRef, shouldBeRelevant);
 	}
 
+	// TODO: MRD-5979 - need to investigate...used only by tests...START
+
 	public CommandVector createCommandsToEnsureIndicatorIsIrrelevant(ORef indicatorRef) throws Exception
 	{
 		boolean shouldBeRelevant = false;
 		
 		return createCommandsToEnsureProperIndicatorRelevancy(indicatorRef, shouldBeRelevant);
 	}
-	
+
 	public CommandVector createCommandsToEnsureIndicatorIsRelevant(ORef indicatorRef) throws Exception
 	{
 		boolean shouldBeRelevant = true;
@@ -302,6 +269,8 @@ abstract public class Desire extends BaseObject
 		return getDefaultRelevantIndicatorRefs().contains(indicatorRef) == shouldBeRelevant;
 	}
 
+	// ...used only by tests...END
+
 	private boolean isCorrectDefaultStrategyOrActivityRelevancy(ORef strategyOrActivityRef, boolean shouldBeRelevant) throws Exception
 	{
 		ORefList defaultRelevantStrategyRefs = getDefaultRelevantStrategyAndActivityRefs();
@@ -312,16 +281,6 @@ abstract public class Desire extends BaseObject
 	private boolean isAlreadyCorrectlyOverridden(RelevancyOverride existingOverride, boolean shouldBeRelevant)
 	{
 		return (existingOverride != null) && (existingOverride.isOverride() == shouldBeRelevant);
-	}
-
-	public RelevancyOverrideSet getCalculatedRelevantIndicatorOverrides(ORefList all) throws Exception
-	{
-		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
-		ORefList defaultRelevantRefList = getIndicatorsOnSameFactor();
-		relevantOverrides.addAll(computeRelevancyOverrides(all, defaultRelevantRefList, true));
-		relevantOverrides.addAll(computeRelevancyOverrides(defaultRelevantRefList, all , false));	
-	
-		return relevantOverrides;
 	}
 
 	public RelevancyOverrideSet getCalculatedRelevantStrategyActivityOverrides(ORefList selectedStrategyAndActivityRefs) throws Exception
@@ -354,24 +313,37 @@ abstract public class Desire extends BaseObject
 	{
 		return getRawRelevancyOverrideData(TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
 	}
-	
-	public RelevancyOverrideSet getIndicatorRelevancyOverrideSet()
+
+	@Override
+	protected RelevancyOverrideSet getIndicatorRelevancyOverrideSet()
 	{
 		return getRawRelevancyOverrideData(TAG_RELEVANT_INDICATOR_SET);
 	}
-	
-	public ORefList getRelevantIndicatorRefList() throws Exception
-	{
-		ORefSet relevantRefList = getDefaultRelevantIndicatorRefs();
-		RelevancyOverrideSet relevantOverrides = getIndicatorRelevancyOverrideSet();
-	
-		return calculateRelevantRefList(relevantRefList, relevantOverrides);
-	}
 
-	private ORefSet getDefaultRelevantIndicatorRefs()
+	@Override
+	public ORefList getIndicatorsOnSameFactor()
 	{
-		ORefSet relevantRefList = indicatorsOnSameFactorAsRefSet();
-		return relevantRefList;
+		ORefList indicatorRefs = new ORefList();
+
+		ORefList referrers = findAllObjectsThatReferToUs();
+		for(int i = 0; i < referrers.size(); ++i)
+		{
+			ORef thisRef = referrers.get(i);
+			if(!Factor.isFactor(thisRef))
+				continue;
+
+			Factor factor = Factor.findFactor(getObjectManager(), thisRef);
+			IdList indicatorIds = factor.getDirectOrIndirectIndicators();
+			for(int idIndex = 0; idIndex < indicatorIds.size(); ++idIndex)
+			{
+				BaseId indicatorId = indicatorIds.get(idIndex);
+				if(indicatorId.isInvalid())
+					continue;
+				indicatorRefs.add(new ORef(IndicatorSchema.getObjectType(), indicatorId));
+			}
+		}
+
+		return indicatorRefs;
 	}
 
 	public ORefList getRelevantStrategyAndActivityRefs() throws Exception
@@ -390,26 +362,6 @@ abstract public class Desire extends BaseObject
 	public ORefList getRelevantActivityRefs() throws Exception
 	{
         return getRelevantStrategyAndActivityRefs().getFilteredBy(TaskSchema.getObjectType());
-	}
-
-	public static CommandVector buildRemoveObjectFromRelevancyListCommands(Project project, int typeWithRelevancyOverrideSetList, String relevancyTag, ORef relevantObjectRefToRemove) throws Exception
-	{
-		CommandVector removeFromRelevancyListCommands = new CommandVector();
-		ORefList objectRefsWithRelevancyOverrides = project.getPool(typeWithRelevancyOverrideSetList).getORefList();
-		for (int index = 0; index < objectRefsWithRelevancyOverrides.size(); ++index)
-		{
-			BaseObject objectWithRelevancyOverrides = BaseObject.find(project, objectRefsWithRelevancyOverrides.get(index));
-			String relevancySetAsString = objectWithRelevancyOverrides.getData(relevancyTag);
-			RelevancyOverrideSet relevancyOverrideSet = new RelevancyOverrideSet(relevancySetAsString);
-			if (relevancyOverrideSet.contains(relevantObjectRefToRemove))
-			{
-				relevancyOverrideSet.remove(relevantObjectRefToRemove);
-				CommandSetObjectData removeFromRelevancyListCommand = new CommandSetObjectData(objectWithRelevancyOverrides.getRef(), relevancyTag, relevancyOverrideSet.toString());
-				removeFromRelevancyListCommands.add(removeFromRelevancyListCommand);
-			}
-		}
-		
-		return removeFromRelevancyListCommands;
 	}
 
 	public static ORefList findRelevantDesires(Project projectToUse, ORef strategyRef, final int desireType) throws Exception
@@ -470,7 +422,7 @@ abstract public class Desire extends BaseObject
 
 	public final static String TAG_SHORT_LABEL = "ShortLabel";
 	public final static String TAG_FULL_TEXT = "FullText";
-	public final static String TAG_COMMENTS = "Comments";	
+	public final static String TAG_COMMENTS = "Comments";
 	public static final String TAG_RELEVANT_INDICATOR_SET = "RelevantIndicatorSet";
 	public static final String TAG_RELEVANT_STRATEGY_ACTIVITY_SET = "RelevantStrategySet";
 	public static final String TAG_PROGRESS_PERCENT_REFS = "ProgressPrecentRefs";

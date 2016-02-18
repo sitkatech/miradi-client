@@ -339,13 +339,16 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			
 			if(columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 				return new ProgressReportShortStatusQuestion().findChoiceByCode(rawValue);
-			
+
 			if (Desire.isDesire(baseObject.getRef()) && columnTag.equals(Desire.PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
-				return createAppendedRelevantIndicatorLabels((Desire)baseObject);
+				return createAppendedRelevantIndicatorLabels(baseObject);
 			
 			if (Desire.isDesire(baseObject.getRef()) && columnTag.equals(Desire.PSEUDO_TAG_RELEVANT_ACTIVITY_REFS))
 				return createAppendedRelevantActivityLabels((Desire)baseObject);
-			
+
+			if (Strategy.is(baseObject.getRef()) && columnTag.equals(Strategy.PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
+				return createAppendedRelevantIndicatorLabels(baseObject);
+
 			if(isPlannedWhenColumn(columnTag))
 				return getFilteredWhenForPlans(baseObject);
 
@@ -366,14 +369,14 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		return createLabelsOnSingleLine(desire, desire.getRelevantActivityRefs());
 	}
 
-	private ChoiceItem createAppendedRelevantIndicatorLabels(Desire desire) throws Exception
+	private ChoiceItem createAppendedRelevantIndicatorLabels(BaseObject baseObject) throws Exception
 	{
-		return createLabelsOnSingleLine(desire, desire.getRelevantIndicatorRefList());
+		return createLabelsOnSingleLine(baseObject, baseObject.getRelevantIndicatorRefList());
 	}
 	
-	private ChoiceItem createLabelsOnSingleLine(Desire desire, ORefList refs)
+	private ChoiceItem createLabelsOnSingleLine(BaseObject baseObject, ORefList refs)
 	{
-		String labelsOnASingleLine = desire.getLabelsAsMultiline(refs);
+		String labelsOnASingleLine = baseObject.getLabelsAsMultiline(refs);
 		
 		return new TaglessChoiceItem(labelsOnASingleLine);
 	}
@@ -539,12 +542,17 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		{
 			if (columnTag.equals(Factor.TAG_COMMENTS))
 				return Desire.TAG_COMMENTS;
-			
+
 			if (columnTag.equals(Factor.PSEUDO_TAG_INDICATORS))
 				return Desire.PSEUDO_TAG_RELEVANT_INDICATOR_REFS;
 			
 			if (columnTag.equals(Strategy.PSEUDO_TAG_ACTIVITIES))
 				return Desire.PSEUDO_TAG_RELEVANT_ACTIVITY_REFS;
+		}
+		if(Strategy.is(nodeType))
+		{
+			if (columnTag.equals(Factor.PSEUDO_TAG_INDICATORS))
+				return Strategy.PSEUDO_TAG_RELEVANT_INDICATOR_REFS;
 		}
 		if(Goal.is(nodeType))
 		{
