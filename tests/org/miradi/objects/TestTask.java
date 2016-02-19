@@ -26,9 +26,7 @@ import org.miradi.ids.FactorId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.DateUnit;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.*;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.IndicatorSchema;
@@ -315,7 +313,29 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 		Task subTask = getProject().createTask(task);
 		assertTrue("subtask should be shared, since parent task is shared?", subTask.isPartOfASharedTaskTree());
 	}
-	
+
+	public void testGetRelevantIndicatorRefList() throws Exception
+	{
+		ORef strategyRef = getProject().createObject(ObjectType.STRATEGY);
+		Strategy strategy = Strategy.find(getProject(), strategyRef);
+		BaseId indicatorId = getProject().addItemToFactorList(strategyRef, ObjectType.INDICATOR, Factor.TAG_INDICATOR_IDS);
+		ORef indicatorRef = getProject().findObject(ObjectType.INDICATOR, indicatorId).getRef();
+		Task activity = getProject().createActivity(strategy);
+
+		assertEquals("wrong indicator count?", 1, activity.getIndicatorsOnSameFactor().size());
+
+		verifyRelevancy(indicatorRef, activity, true, 1);
+		verifyRelevancy(indicatorRef, activity, false, 0);
+	}
+
+	private void verifyRelevancy(ORef indicatorRef, Task activity, boolean overrideBoolean, int expectedValue) throws Exception
+	{
+		RelevancyOverrideSet relevancyOverrides = new RelevancyOverrideSet();
+		relevancyOverrides.add(new RelevancyOverride(indicatorRef, overrideBoolean));
+		activity.setData(Task.TAG_RELEVANT_INDICATOR_SET, relevancyOverrides.toString());
+		assertEquals("wrong indicator count?", expectedValue, activity.getRelevantIndicatorRefList().size());
+	}
+
 	public MultiCalendar createMultiCalendar(int year)
 	{
 		return getProject().createMultiCalendar(year);

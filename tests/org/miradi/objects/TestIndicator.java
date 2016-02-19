@@ -156,12 +156,18 @@ public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 		Cause indicatorOwner = getProject().createCause();
 		Indicator indicator = getProject().createIndicator(indicatorOwner);
 		Strategy strategy = getProject().createStrategy();
+		Task activity = getProject().createActivity(strategy);
 		Objective objective = getProject().createObjective(strategy);
 
 		RelevancyOverrideSet relevantIndicatorsForStrategy = new RelevancyOverrideSet();
 		relevantIndicatorsForStrategy.add(new RelevancyOverride(indicator.getRef(), true));
 		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorsForStrategy.toString());
 		assertEquals("Strategy's indicator relevancy list was not updated?", 1, getAllIndicatorRefsFromRelevancyOverrides(strategy).size());
+
+		RelevancyOverrideSet relevantIndicatorsForActivity = new RelevancyOverrideSet();
+		relevantIndicatorsForActivity.add(new RelevancyOverride(indicator.getRef(), true));
+		getProject().fillObjectUsingCommand(activity, Task.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorsForActivity.toString());
+		assertEquals("Activity's indicator relevancy list was not updated?", 1, getAllIndicatorRefsFromRelevancyOverrides(activity).size());
 
 		RelevancyOverrideSet relevantIndicatorsForObjective = new RelevancyOverrideSet();
 		relevantIndicatorsForObjective.add(new RelevancyOverride(indicator.getRef(), true));
@@ -179,6 +185,11 @@ public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 		return ((RelevancyOverrideSetData)strategy.getField(strategy.TAG_RELEVANT_INDICATOR_SET)).extractRelevantRefs();
 	}
 	
+	public ORefSet getAllIndicatorRefsFromRelevancyOverrides(Task activity) throws Exception
+	{
+		return ((RelevancyOverrideSetData)activity.getField(activity.TAG_RELEVANT_INDICATOR_SET)).extractRelevantRefs();
+	}
+
 	public ORefSet getAllIndicatorRefsFromRelevancyOverrides(Desire desire) throws Exception
 	{
 		return ((RelevancyOverrideSetData)desire.getField(desire.TAG_RELEVANT_INDICATOR_SET)).extractRelevantRefs();
