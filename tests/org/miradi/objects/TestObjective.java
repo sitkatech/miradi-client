@@ -45,7 +45,7 @@ public class TestObjective extends TestDesire
 		verifyFields(ObjectType.OBJECTIVE);
 	}
 	
-	public void testGetRelevantRefList() throws Exception
+	public void testGetRelevantIndicatorRefList() throws Exception
 	{		
 		ORef causeRef = getProject().createObject(CauseSchema.getObjectType());
 
@@ -62,9 +62,9 @@ public class TestObjective extends TestDesire
 
 	private void verifyRelevancy(ORef indicatorRef, Objective objective, boolean overrideBoolean, int expectedValue) throws Exception
 	{
-		RelevancyOverrideSet relvancyOverrides = new RelevancyOverrideSet();
-		relvancyOverrides.add(new RelevancyOverride(indicatorRef, overrideBoolean));
-		objective.setData(Objective.TAG_RELEVANT_INDICATOR_SET, relvancyOverrides.toString());
+		RelevancyOverrideSet relevancyOverrides = new RelevancyOverrideSet();
+		relevancyOverrides.add(new RelevancyOverride(indicatorRef, overrideBoolean));
+		objective.setData(Objective.TAG_RELEVANT_INDICATOR_SET, relevancyOverrides.toString());
 		assertEquals("wrong indicator count?", expectedValue, objective.getRelevantIndicatorRefList().size());
 	}
 	

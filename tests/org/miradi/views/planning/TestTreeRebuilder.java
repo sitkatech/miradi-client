@@ -188,45 +188,45 @@ public class TestTreeRebuilder extends TestCaseWithProject
     //region tests that illustrate defect analysis outlined on https://bugs.benetech.org/browse/MRD-5842
     public void testRelevancyStrategyObjectiveDefaultAssociations() throws Exception
     {
-        createAndVerifyTreeForRelevancyTests(true, false, StrategyObjectiveTreeOrderQuestion.STRATEGY_CONTAINS_OBJECTIVE_CODE);
+        createAndVerifyTreeForStrategyObjectiveRelevancyTests(true, false, StrategyObjectiveTreeOrderQuestion.STRATEGY_CONTAINS_OBJECTIVE_CODE);
     }
 
     public void testRelevancyObjectiveStrategyDefaultAssociations() throws Exception
     {
-        createAndVerifyTreeForRelevancyTests(true, false, StrategyObjectiveTreeOrderQuestion.OBJECTIVE_CONTAINS_STRATEGY_CODE);
+        createAndVerifyTreeForStrategyObjectiveRelevancyTests(true, false, StrategyObjectiveTreeOrderQuestion.OBJECTIVE_CONTAINS_STRATEGY_CODE);
     }
 
     public void testRelevancyStrategyObjectiveDefaultAssociationsHideStrategy() throws Exception
     {
-        createAndVerifyTreeForRelevancyTests(true, true, StrategyObjectiveTreeOrderQuestion.STRATEGY_CONTAINS_OBJECTIVE_CODE);
+        createAndVerifyTreeForStrategyObjectiveRelevancyTests(true, true, StrategyObjectiveTreeOrderQuestion.STRATEGY_CONTAINS_OBJECTIVE_CODE);
     }
 
     public void testRelevancyObjectiveStrategyDefaultAssociationsHideStrategy() throws Exception
     {
-        createAndVerifyTreeForRelevancyTests(true, true, StrategyObjectiveTreeOrderQuestion.OBJECTIVE_CONTAINS_STRATEGY_CODE);
+        createAndVerifyTreeForStrategyObjectiveRelevancyTests(true, true, StrategyObjectiveTreeOrderQuestion.OBJECTIVE_CONTAINS_STRATEGY_CODE);
     }
 
     public void testRelevancyStrategyObjectiveUserAssertedAssociations() throws Exception
     {
-        createAndVerifyTreeForRelevancyTests(false, false, StrategyObjectiveTreeOrderQuestion.STRATEGY_CONTAINS_OBJECTIVE_CODE);
+        createAndVerifyTreeForStrategyObjectiveRelevancyTests(false, false, StrategyObjectiveTreeOrderQuestion.STRATEGY_CONTAINS_OBJECTIVE_CODE);
     }
 
     public void testRelevancyObjectiveStrategyUserAssertedAssociations() throws Exception
     {
-        createAndVerifyTreeForRelevancyTests(false, false, StrategyObjectiveTreeOrderQuestion.OBJECTIVE_CONTAINS_STRATEGY_CODE);
+        createAndVerifyTreeForStrategyObjectiveRelevancyTests(false, false, StrategyObjectiveTreeOrderQuestion.OBJECTIVE_CONTAINS_STRATEGY_CODE);
     }
 
     public void testRelevancyStrategyObjectiveUserAssertedAssociationsHideStrategy() throws Exception
     {
-        createAndVerifyTreeForRelevancyTests(false, true, StrategyObjectiveTreeOrderQuestion.STRATEGY_CONTAINS_OBJECTIVE_CODE);
+        createAndVerifyTreeForStrategyObjectiveRelevancyTests(false, true, StrategyObjectiveTreeOrderQuestion.STRATEGY_CONTAINS_OBJECTIVE_CODE);
     }
 
     public void testRelevancyObjectiveStrategyUserAssertedAssociationsHideStrategy() throws Exception
     {
-        createAndVerifyTreeForRelevancyTests(false, true, StrategyObjectiveTreeOrderQuestion.OBJECTIVE_CONTAINS_STRATEGY_CODE);
+        createAndVerifyTreeForStrategyObjectiveRelevancyTests(false, true, StrategyObjectiveTreeOrderQuestion.OBJECTIVE_CONTAINS_STRATEGY_CODE);
     }
 
-    private void createAndVerifyTreeForRelevancyTests(final boolean defaultAssociations, final boolean hideStrategies, final String strategyContainsObjectiveCode) throws Exception
+    private void createAndVerifyTreeForStrategyObjectiveRelevancyTests(final boolean defaultAssociations, final boolean hideStrategies, final String strategyContainsObjectiveCode) throws Exception
     {
         ResultsChainDiagram resultChainDiagram = ResultsChainDiagram.find(getProject(), getProject().createResultsChainDiagram());
 

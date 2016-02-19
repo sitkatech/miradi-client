@@ -24,15 +24,9 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.objectdata.RelevancyOverrideSetData;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.RelevancyOverride;
-import org.miradi.objecthelpers.RelevancyOverrideSet;
+import org.miradi.objecthelpers.*;
 import org.miradi.questions.StrategyStatusQuestion;
-import org.miradi.schemas.ProgressReportSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.TaskSchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.CommandVector;
 
 public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
@@ -182,6 +176,25 @@ public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
 		return ((RelevancyOverrideSetData)desire.getField(desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET)).extractRelevantRefs();
 	}
 
+	public void testGetRelevantIndicatorRefList() throws Exception
+	{
+		ORef strategyRef = getProject().createObject(ObjectType.STRATEGY);
+		Strategy strategy = Strategy.find(getProject(), strategyRef);
+		BaseId indicatorId = getProject().addItemToFactorList(strategyRef, ObjectType.INDICATOR, Factor.TAG_INDICATOR_IDS);
+		ORef indicatorRef = getProject().findObject(ObjectType.INDICATOR, indicatorId).getRef();
+		assertEquals("wrong indicator count?", 1, strategy.getIndicatorsOnSameFactor().size());
+
+		verifyRelevancy(indicatorRef, strategy, true, 1);
+		verifyRelevancy(indicatorRef, strategy, false, 0);
+	}
+
+	private void verifyRelevancy(ORef indicatorRef, Strategy strategy, boolean overrideBoolean, int expectedValue) throws Exception
+	{
+		RelevancyOverrideSet relevancyOverrides = new RelevancyOverrideSet();
+		relevancyOverrides.add(new RelevancyOverride(indicatorRef, overrideBoolean));
+		strategy.setData(Strategy.TAG_RELEVANT_INDICATOR_SET, relevancyOverrides.toString());
+		assertEquals("wrong indicator count?", expectedValue, strategy.getRelevantIndicatorRefList().size());
+	}
 	
 	static final BaseId criterionId1 = new BaseId(17);
 	static final BaseId criterionId2 = new BaseId(952);

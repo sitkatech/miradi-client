@@ -199,28 +199,28 @@ public class TestXmpz2XmlExporter extends TestCaseForXmpz2ExportAndImport
 		ProjectForTesting projectToImportInto = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToImportInto");
 		Xmpz2XmlImporter xmlImporter = new Xmpz2XmlImporter(projectToImportInto, new NullProgressMeter());
 		String exportedProjectXml = validateProject();
-		StringInputStreamWithSeek stringInputputStream = new StringInputStreamWithSeek(exportedProjectXml);
+		StringInputStreamWithSeek stringInputStream = new StringInputStreamWithSeek(exportedProjectXml);
 		try
 		{
-			xmlImporter.importProjectXml(stringInputputStream);
+			xmlImporter.importProjectXml(stringInputStream);
 			verifyCalculatedCostsElement(xmlImporter, new TaskImporter(xmlImporter), 5);
-			verifyCalculatedCostsElement(xmlImporter, new IndicatorImporter(xmlImporter), 3);
+			verifyCalculatedCostsElement(xmlImporter, new IndicatorImporter(xmlImporter), 4);
 			verifyCalculatedCostsElement(xmlImporter, new StrategyImporter(xmlImporter), 3);
 		}
 		finally
 		{
-			stringInputputStream.close();	
+			stringInputStream.close();
 		}
 	}
 
-	public void verifyCalculatedCostsElement(Xmpz2XmlImporter xmlImporter, BaseObjectImporter objectImporter, int expectedTaskCount) throws Exception
+	public void verifyCalculatedCostsElement(Xmpz2XmlImporter xmlImporter, BaseObjectImporter objectImporter, int expectedNodeCount) throws Exception
 	{
 		final String elementObjectName = objectImporter.getBaseObjectSchema().getXmpz2ElementName();
 		final String containerElementName = Xmpz2XmlWriter.createPoolElementName(elementObjectName);
 		final Node rootNode = xmlImporter.getRootNode();
 		final NodeList baseObjectNodes = xmlImporter.getNodes(rootNode, new String[]{containerElementName, elementObjectName, });
 		
-		assertEquals("should have one task node?", expectedTaskCount, baseObjectNodes.getLength());
+		assertEquals("should have expected node count?", expectedNodeCount, baseObjectNodes.getLength());
 		Node baseObjectNode = baseObjectNodes.item(0);
 		
 		Node baseObjectCalculatedCostsNode = xmlImporter.getNamedChildNode(baseObjectNode, elementObjectName + Xmpz2XmlConstants.TIME_PERIOD_COSTS);

@@ -155,24 +155,35 @@ public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 	{
 		Cause indicatorOwner = getProject().createCause();
 		Indicator indicator = getProject().createIndicator(indicatorOwner);
-		Strategy objectiveOwner = getProject().createStrategy();
-		Objective objective = getProject().createObjective(objectiveOwner);
-		RelevancyOverrideSet relevantIndicators = new RelevancyOverrideSet();
-		relevantIndicators.add(new RelevancyOverride(indicator.getRef(), true));
-		getProject().fillObjectUsingCommand(objective, Objective.TAG_RELEVANT_INDICATOR_SET, relevantIndicators.toString());
-		assertEquals("Object's indicator relevancy list was not updated?", 1, getAllIndicatorRefsFromRelevancyOverrides(objective).size());
-		
+		Strategy strategy = getProject().createStrategy();
+		Objective objective = getProject().createObjective(strategy);
+
+		RelevancyOverrideSet relevantIndicatorsForStrategy = new RelevancyOverrideSet();
+		relevantIndicatorsForStrategy.add(new RelevancyOverride(indicator.getRef(), true));
+		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorsForStrategy.toString());
+		assertEquals("Strategy's indicator relevancy list was not updated?", 1, getAllIndicatorRefsFromRelevancyOverrides(strategy).size());
+
+		RelevancyOverrideSet relevantIndicatorsForObjective = new RelevancyOverrideSet();
+		relevantIndicatorsForObjective.add(new RelevancyOverride(indicator.getRef(), true));
+		getProject().fillObjectUsingCommand(objective, Objective.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorsForObjective.toString());
+		assertEquals("Objective's indicator relevancy list was not updated?", 1, getAllIndicatorRefsFromRelevancyOverrides(objective).size());
+
 		CommandVector commandsToDeleteIndicator = indicator.createCommandsToDeleteChildrenAndObject();
 		getProject().executeCommands(commandsToDeleteIndicator);
 		
 		assertEquals("Indicator was not removed from objective relevancy list?", 0, getAllIndicatorRefsFromRelevancyOverrides(objective).size());
 	}
 	
+	public ORefSet getAllIndicatorRefsFromRelevancyOverrides(Strategy strategy) throws Exception
+	{
+		return ((RelevancyOverrideSetData)strategy.getField(strategy.TAG_RELEVANT_INDICATOR_SET)).extractRelevantRefs();
+	}
+	
 	public ORefSet getAllIndicatorRefsFromRelevancyOverrides(Desire desire) throws Exception
 	{
 		return ((RelevancyOverrideSetData)desire.getField(desire.TAG_RELEVANT_INDICATOR_SET)).extractRelevantRefs();
 	}
-	
+
 	public void testCreateCommandsToClone() throws Exception
 	{
 		Cause indicatorOwner = getProject().createCause();
