@@ -20,10 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.task;
 
-import org.miradi.actions.ActionEditActivityGoalRelevancyList;
-import org.miradi.actions.ActionEditActivityObjectiveRelevancyList;
-import org.miradi.actions.Actions;
-import org.miradi.actions.ObjectsAction;
+import org.miradi.actions.*;
 import org.miradi.dialogs.activity.ActivityFactorVisibilityControlPanel;
 import org.miradi.main.EAM;
 import org.miradi.objects.Task;
@@ -45,5 +42,8 @@ public class ActivityDetailsPanelWithRelevancyOverrideFields extends TaskDetails
 		
 		ObjectsAction goalRelevancyEditAction = actionsToUse.getObjectsAction(ActionEditActivityGoalRelevancyList.class);
 		addFieldWithEditButton(EAM.text("Goals"), createReadOnlyObjectList(TaskSchema.getObjectType(), Task.PSEUDO_TAG_RELEVANT_GOAL_REFS), createObjectsActionButton(goalRelevancyEditAction, getPicker()));
+
+		ObjectsAction indicatorRelevancyEditAction = actionsToUse.getObjectsAction(ActionEditActivityIndicatorRelevancyList.class);
+		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(TaskSchema.getObjectType(), Task.PSEUDO_TAG_RELEVANT_INDICATOR_REFS), createObjectsActionButton(indicatorRelevancyEditAction, getPicker()));
 	}
 }

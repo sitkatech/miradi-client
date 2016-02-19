@@ -349,6 +349,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (Strategy.is(baseObject.getRef()) && columnTag.equals(Strategy.PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
 				return createAppendedRelevantIndicatorLabels(baseObject);
 
+			if (Task.is(baseObject.getRef()) && columnTag.equals(Task.PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
+				return createAppendedRelevantIndicatorLabels(baseObject);
+
 			if(isPlannedWhenColumn(columnTag))
 				return getFilteredWhenForPlans(baseObject);
 
@@ -582,6 +585,8 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		{
 			if(isDetailsColumn(column))
 				return Task.TAG_DETAILS;
+			if (columnTag.equals(Factor.PSEUDO_TAG_INDICATORS))
+				return Task.PSEUDO_TAG_RELEVANT_INDICATOR_REFS;
 		}
 		if(Indicator.is(nodeType))
 		{

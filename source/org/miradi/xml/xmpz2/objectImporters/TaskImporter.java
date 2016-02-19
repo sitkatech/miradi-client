@@ -21,6 +21,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2.objectImporters;
 
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
 import org.miradi.schemas.ResourceAssignmentSchema;
@@ -40,7 +42,9 @@ public class TaskImporter extends BaseObjectWithLeaderResourceFieldImporter
 	public void importFields(Node baseObjectNode, ORef refToUse) throws Exception
 	{
 		super.importFields(baseObjectNode, refToUse);
-		
+
+		importRelevantIndicatorIds(baseObjectNode, refToUse);
+
 		getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, RESOURCE_ASSIGNMENT, ResourceAssignmentSchema.getObjectType());
 		getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), BaseObject.TAG_RESOURCE_PLAN_IDS, RESOURCE_PLAN, ResourcePlanSchema.getObjectType());
 		getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), Task.TAG_SUBTASK_IDS, SUB_TASK, TaskSchema.getObjectType());
@@ -55,6 +59,17 @@ public class TaskImporter extends BaseObjectWithLeaderResourceFieldImporter
 		if (tag.equals(BaseObject.TAG_RESOURCE_PLAN_IDS))
 			return true;
 
+		if (tag.equals(Task.TAG_RELEVANT_INDICATOR_SET))
+			return true;
+
 		return super.isCustomImportField(tag);
+	}
+
+	private void importRelevantIndicatorIds(Node node, ORef destinationTaskRef) throws Exception
+	{
+		ORefList importedRelevantRefs = getImporter().extractRefs(node, getXmpz2ElementName(), RELEVANT_INDICATOR_IDS, INDICATOR);
+		Task task = Task.find(getProject(), destinationTaskRef);
+		RelevancyOverrideSet set = task.getCalculatedRelevantIndicatorOverrides(importedRelevantRefs);
+		getImporter().setData(destinationTaskRef, Task.TAG_RELEVANT_INDICATOR_SET, set.toString());
 	}
 }

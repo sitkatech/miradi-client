@@ -37,6 +37,7 @@ public class TaskSchema extends FactorSchema
 
 		createFieldSchemaBoolean(Task.TAG_IS_MONITORING_ACTIVITY);
 		createOwnedFieldSchemaIdList(Task.TAG_SUBTASK_IDS, TaskSchema.getObjectType());
+		createFieldSchemaRelevancyOverrideSet(Task.TAG_RELEVANT_INDICATOR_SET);
 		createFieldSchemaOptionalRef(Task.TAG_PLANNED_LEADER_RESOURCE);
 		createFieldSchemaOptionalRef(Task.TAG_ASSIGNED_LEADER_RESOURCE);
 		createBudgetSchemas();
@@ -47,6 +48,7 @@ public class TaskSchema extends FactorSchema
 		createPseudoFieldSchemaString(Task.PSEUDO_TAG_INDICATOR_LABEL);
 		createPseudoFieldSchemaRefList(Task.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
 		createPseudoFieldSchemaRefList(Task.PSEUDO_TAG_RELEVANT_GOAL_REFS);
+		createPseudoFieldSchemaRefList(Task.PSEUDO_TAG_RELEVANT_INDICATOR_REFS);
 	}
 	
 	@Override

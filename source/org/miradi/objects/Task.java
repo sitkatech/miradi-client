@@ -242,7 +242,10 @@ public class Task extends Factor
 		
 		if (fieldTag.equals(PSEUDO_TAG_RELEVANT_GOAL_REFS))
 			return getRelevantDesireRefsAsString(GoalSchema.getObjectType());
-		
+
+		if (fieldTag.equals(PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
+			return getRelevantIndicatorRefsAsString();
+
 		return super.getPseudoData(fieldTag);
 	}
 	
@@ -264,6 +267,46 @@ public class Task extends Factor
 		ORefSet relevantObjectives = new ORefSet(Desire.findAllRelevantDesires(getProject(), getRef(), desireType));
 		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
 		return calculateRelevantRefList(relevantObjectives, relevantOverrides);
+	}
+
+	@Override
+	protected RelevancyOverrideSet getIndicatorRelevancyOverrideSet()
+	{
+		return getRawRelevancyOverrideData(TAG_RELEVANT_INDICATOR_SET);
+	}
+
+	@Override
+	public ORefList getIndicatorsOnSameFactor()
+	{
+		ORefSet indicatorRefs = new ORefSet();
+
+		if (isActivity())
+		{
+			ORefList strategyReferrerRefs = findObjectsThatReferToUs(StrategySchema.getObjectType());
+			for (int index = 0; index < strategyReferrerRefs.size(); ++index)
+			{
+				ORef strategyRef = strategyReferrerRefs.get(index);
+				Strategy strategy = Strategy.find(getProject(), strategyRef);
+				indicatorRefs.addAllRefs(strategy.getIndicatorsOnSameFactor());
+			}
+		}
+
+		return indicatorRefs.toRefList();
+	}
+
+	protected String getRelevantIndicatorRefsAsString()
+	{
+		ORefList refList;
+		try
+		{
+			refList = getRelevantIndicatorRefList();
+			return refList.toString();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
 	}
 
 	public boolean hasSubTasks()
@@ -474,11 +517,13 @@ public class Task extends Factor
 	public final static String TAG_SUBTASK_IDS = "SubtaskIds";
 	public final static String TAG_DETAILS = "Details";
 	public final static String TAG_IS_MONITORING_ACTIVITY = "IsMonitoringActivity";
+	public static final String TAG_RELEVANT_INDICATOR_SET = "RelevantIndicatorSet";
 
 	public final static String PSEUDO_TAG_STRATEGY_LABEL = "StrategyLabel";
 	public final static String PSEUDO_TAG_INDICATOR_LABEL = "IndicatorLabel";
 	public static final String PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS = "PseudoTaskRelevantObjectiveRefs";
 	public static final String PSEUDO_TAG_RELEVANT_GOAL_REFS = "PseudoTaskRelevantGoalRefs";
-	
+	public static final String PSEUDO_TAG_RELEVANT_INDICATOR_REFS = "PseudoRelevantIndicatorRefs";
+
 	private String cachedObjectTypeName;
 }

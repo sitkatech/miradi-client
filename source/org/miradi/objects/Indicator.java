@@ -88,6 +88,7 @@ public class Indicator extends BaseObject
 		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(getProject(), ObjectiveSchema.getObjectType(), Objective.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
 		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(getProject(), GoalSchema.getObjectType(), Goal.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
 		removeFromRelevancyListCommands.addAll(Strategy.buildRemoveObjectFromRelevancyListCommands(getProject(), StrategySchema.getObjectType(), Strategy.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
+		removeFromRelevancyListCommands.addAll(Task.buildRemoveObjectFromRelevancyListCommands(getProject(), TaskSchema.getObjectType(), Task.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
 
 		return removeFromRelevancyListCommands;
 	}

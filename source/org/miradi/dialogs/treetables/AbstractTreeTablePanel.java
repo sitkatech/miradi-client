@@ -359,6 +359,12 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 				return true;
 		}
 
+		if(Task.is(ref))
+		{
+			if(tag.equals(Task.TAG_RELEVANT_INDICATOR_SET))
+				return true;
+		}
+
 		return false;
 	}
 	

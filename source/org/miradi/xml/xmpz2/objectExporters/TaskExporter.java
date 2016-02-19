@@ -40,6 +40,10 @@ public class TaskExporter extends BaseObjectWithLeaderResourceFieldExporter
 
 		writeSubTaskIds((Task)baseObject);
 		writeOptionalCalculatedTimePeriodCosts(baseObject, baseObjectSchema);
+
+		final String objectName = baseObjectSchema.getObjectName();
+		final Task task = (Task) baseObject;
+		writeRelevantIndicatorIds(objectName, task);
 	}
 
 	@Override
@@ -47,12 +51,20 @@ public class TaskExporter extends BaseObjectWithLeaderResourceFieldExporter
 	{
 		if (tag.equals(Task.TAG_SUBTASK_IDS))
 			return true;
-		
+
+		if (tag.equals(Task.TAG_RELEVANT_INDICATOR_SET))
+			return true;
+
 		return super.doesFieldRequireSpecialHandling(tag);
 	}
 	
 	private void writeSubTaskIds(Task baseObject) throws Exception
 	{
 		getWriter().writeReflist(TASK + SUB_TASK_IDS, SUB_TASK, baseObject.getChildTaskRefs());
+	}
+
+	private void writeRelevantIndicatorIds(final String objectName, Task task) throws Exception
+	{
+		getWriter().writeReflist(objectName, RELEVANT_INDICATOR_IDS, INDICATOR, task.getRelevantIndicatorRefList());
 	}
 }

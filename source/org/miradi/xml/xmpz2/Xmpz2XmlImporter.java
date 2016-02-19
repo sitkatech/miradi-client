@@ -151,6 +151,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		// NOTE: Must import all KEA's before importing objectives/goals, for relevancy
 		addImporterToMap(typeToImporterMap, new BaseObjectImporter(this, new KeyEcologicalAttributeSchema()));
 
+		// NOTE: Must import all indicators before importing strategies, for relevancy
 		addImporterToMap(typeToImporterMap, new IndicatorImporter(this));
 		addImporterToMap(typeToImporterMap, new StrategyImporter(this));
 
