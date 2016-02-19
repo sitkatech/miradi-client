@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.main.EAM;
 import org.miradi.project.Project;
 
 abstract class AbstractAssignmentSubPanel extends ObjectDataInputPanel
@@ -34,16 +33,8 @@ abstract class AbstractAssignmentSubPanel extends ObjectDataInputPanel
 	@Override
 	public void becomeActive()
 	{
-		try
-		{
-			becomeInactive();
-			rebuild();
-			super.becomeActive();
-		}
-		catch (Exception e)
-		{
-			EAM.panic(e);
-		}
+		super.becomeActive();
+		updateFieldsFromProject();
 	}
 
 	abstract protected void rebuild() throws Exception;

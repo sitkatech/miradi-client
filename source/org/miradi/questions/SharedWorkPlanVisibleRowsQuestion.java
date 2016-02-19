@@ -44,7 +44,7 @@ public class SharedWorkPlanVisibleRowsQuestion extends StaticChoiceQuestion
 	public static String getTextForChoice(String choice)
 	{
 		if (choice.equals(SharedWorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE))
-			return EAM.text("Actions & Monitoring");
+			return EAM.text("Actions and Monitoring");
 
 		if (choice.equals(SharedWorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE))
 			return EAM.text("Actions");
