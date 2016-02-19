@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-16 06:51-0800\n"
+"POT-Creation-Date: 2016-02-19 07:36-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/miradi-client/"
@@ -1173,11 +1173,13 @@ msgid "Action|CMP Open Standards"
 msgstr "Action|CMP відкриті стандарти"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditActivityGoalRelevancyList.java:35
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditActivityIndicatorRelevancyList.java:34
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditObjectiveStrategyActivityRelevancyList.java:34
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditGoalStrategyActivityRelevancyList.java:34
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditActivityObjectiveRelevancyList.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditStrategyObjectiveRelevancyList.java:36
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditStrategyGoalRelevancyList.java:35
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditStrategyIndicatorRelevancyList.java:34
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditGoalIndicatorRelevancyList.java:34
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditObjectiveIndicatorRelevancyList.java:34
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionManageFactorTags.java:35
@@ -3883,7 +3885,7 @@ msgstr "Вибирач папки"
 msgid "FolderName|BackupsFromMigrationToMiradi4"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:58
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:55
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:52
 msgid "Font"
 msgstr "Шрифт"
@@ -4047,9 +4049,9 @@ msgstr ""
 msgid "Goal Relevancy Panel"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:61
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:85
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:47
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:62
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:82
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:44
 msgid "Goals"
 msgstr "Мета"
 
@@ -4371,8 +4373,11 @@ msgstr ""
 msgid "Indicator Relevancy Panel"
 msgstr "Панель індикатора важливості"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:63
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:83
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:54
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:49
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:47
 msgid "Indicators"
 msgstr "Індикатори"
 
@@ -4810,8 +4815,8 @@ msgstr ""
 msgid "Learn about Miradi Share"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:58
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:83
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:59
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:80
 msgid "Legacy TNC Ratings"
 msgstr "Оцінки функції TNC"
 
@@ -5557,10 +5562,10 @@ msgstr ""
 msgid "Objective Relevancy Panel"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:60
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:61
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:44
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:84
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:44
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:81
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:41
 msgid "Objectives"
 msgstr ""
 
@@ -6128,8 +6133,8 @@ msgstr "Ранжирувати проекти стратегій"
 msgid "Rapid Assessment"
 msgstr "Швидка оцінка"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:56
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:82
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:57
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:79
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/StrategyCoreSubForm.java:37
 msgid "Rating"
 msgstr ""
@@ -6743,7 +6748,7 @@ msgid "Strategies contain Objectives"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:185
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:47
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:48
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/StrategyCoreSubForm.java:34
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:48
 msgid "Strategy"
@@ -6845,8 +6850,8 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:153
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:67
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:137
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:69
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:142
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:67
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:38
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:144
@@ -6935,6 +6940,10 @@ msgstr ""
 msgid "TT|Choose which goals are relevant to this strategy"
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditActivityIndicatorRelevancyList.java:40
+msgid "TT|Choose which indicators are relevant to this activity"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditGoalIndicatorRelevancyList.java:40
 msgid "TT|Choose which indicators are relevant to this goal"
 msgstr "TT|Вибрати який індикатор є підходящим для цієї мети"
@@ -6942,6 +6951,10 @@ msgstr "TT|Вибрати який індикатор є підходящим д
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditObjectiveIndicatorRelevancyList.java:40
 msgid "TT|Choose which indicators are relevant to this objective"
 msgstr "TT|Вибрати, який індикатор є відповідним для цього завдання"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditStrategyIndicatorRelevancyList.java:40
+msgid "TT|Choose which indicators are relevant to this strategy"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditActivityObjectiveRelevancyList.java:41
 msgid "TT|Choose which objectives are relevant to this activity"
@@ -7797,7 +7810,7 @@ msgstr "Тег"
 msgid "Tagged Items"
 msgstr "Мічені пункти"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:116
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:121
 msgid "Tags"
 msgstr "Ярлички"
 
@@ -7893,7 +7906,7 @@ msgstr ""
 "задача при потребі може бути розбита на підзадачі. У Міраді задача "
 "показується сірим сплющеним овалом."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/Task.java:338
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/Task.java:381
 msgid "Task does not have a parent"
 msgstr "Задача не має автора"
 
@@ -9253,7 +9266,7 @@ msgstr ""
 "команди експорту та  імпорту. Міраді також створить зіп-файли для дублікатів "
 "проекту, що були створені протягом форматувальних переходів."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:360
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:366
 msgid "[Error]"
 msgstr "[Помилка]"
 
@@ -9379,6 +9392,12 @@ msgid "FieldLabel|3.MetaPlannedWhoTotal|Who Total"
 msgstr ""
 
 msgid "FieldLabel|3.IsMonitoringActivity|Monitoring Activity"
+msgstr ""
+
+msgid "FieldLabel|3.RelevantIndicatorSet|Relevant Indicators"
+msgstr ""
+
+msgid "FieldLabel|3.PseudoRelevantIndicatorRefs|Relevant Indicators"
 msgstr ""
 
 msgid "FieldLabel|5.BudgetRollupReportTypes|Rollup Types"
@@ -10381,6 +10400,12 @@ msgid "FieldLabel|21.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
 
 msgid "FieldLabel|21.MetaPlannedWhoTotal|Who Total"
+msgstr ""
+
+msgid "FieldLabel|21.RelevantIndicatorSet|Relevant Indicators"
+msgstr ""
+
+msgid "FieldLabel|21.PseudoRelevantIndicatorRefs|Relevant Indicators"
 msgstr ""
 
 msgid "FieldLabel|22.Target|Target"
