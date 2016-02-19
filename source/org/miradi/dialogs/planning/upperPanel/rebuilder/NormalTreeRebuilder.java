@@ -51,22 +51,22 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 			return getChildrenOfAbstractTarget(parentRef, diagram);
 
 		if(BiophysicalFactor.is(parentRef))
-			return getChildrenOfBasicFactor(parentRef, diagram);
+			return getChildrenOfBasicFactor(parentRef);
 
 		if(BiophysicalResult.is(parentRef))
-			return getChildrenOfBasicFactor(parentRef, diagram);
+			return getChildrenOfBasicFactor(parentRef);
 
 		if(Cause.is(parentRef))
-			return getChildrenOfBasicFactor(parentRef, diagram);
+			return getChildrenOfBasicFactor(parentRef);
 
 		if(Strategy.is(parentRef))
 			return getChildrenOfStrategy(grandparentRef, parentRef, diagram);
 
 		if(ThreatReductionResult.is(parentRef))
-			return getChildrenOfBasicFactor(parentRef, diagram);
+			return getChildrenOfBasicFactor(parentRef);
 
 		if(IntermediateResult.is(parentRef))
-			return getChildrenOfBasicFactor(parentRef, diagram);
+			return getChildrenOfBasicFactor(parentRef);
 
 		if(Desire.isDesire(parentRef))
             return getChildrenOfDesire(parentRef, diagram);
@@ -194,7 +194,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		return strategyRefs;
 	}
 	
-	private ORefList getChildrenOfBasicFactor(ORef parentRef, DiagramObject diagram)
+	private ORefList getChildrenOfBasicFactor(ORef parentRef)
 	{
 		ORefList childRefs = new ORefList();
 		Factor factor = Factor.findFactor(getProject(), parentRef);
@@ -218,13 +218,21 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		if (doStrategiesContainObjectives())
 			childRefs.addAll(getRelevantObjectivesAndGoalsOnDiagram(diagram, parentRef));
 
-		childRefs.addAll(getIndicatorsForStrategy(strategy));
+		childRefs.addAll(getRelevantIndicatorsForStrategy(strategy));
 		return childRefs;
 	}
 
-	protected ORefList getIndicatorsForStrategy(Strategy strategy)
+	protected ORefList getRelevantIndicatorsForStrategy(Strategy strategy)
 	{
-		return strategy.getOwnedObjectRefs().getFilteredBy(IndicatorSchema.getObjectType());
+		try
+		{
+			return strategy.getRelevantIndicatorRefList();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return new ORefList();
+		}
 	}
 
 	protected ORefList getActivities(Strategy strategy) throws Exception
@@ -254,7 +262,10 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 
 	protected ORefList getRelevantIndicatorsInDiagram(DiagramObject diagram, Desire desire) throws Exception
 	{
-		return keepObjectsThatAreInDiagram(diagram, desire.getRelevantIndicatorRefList());
+		if (willThisTypeEndUpInTheTree(desire.getTypeName()))
+			return keepObjectsThatAreInDiagram(diagram, desire.getRelevantIndicatorRefList());
+
+		return new ORefList();
 	}
 
 	private ORefList getRelevantStrategiesInDiagram(DiagramObject diagram, Desire desire) throws Exception

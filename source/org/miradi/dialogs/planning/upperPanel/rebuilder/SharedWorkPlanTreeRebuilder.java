@@ -78,7 +78,7 @@ public class SharedWorkPlanTreeRebuilder extends NormalTreeRebuilder
 	}
 
 	@Override
-	protected ORefList getIndicatorsForStrategy(Strategy strategy)
+	protected ORefList getRelevantIndicatorsForStrategy(Strategy strategy)
 	{
 		return new ORefList(){};
 	}

@@ -55,15 +55,11 @@ abstract public class Factor extends BaseObject
 		return new FactorId(getId().asInt());
 	}
 
-	// TODO: MRD-5979 - need to confirm that relevancy rules have no bearing on planning or viability tree view, default calc strategy or dashboard counts all of which utilize these access paths...
-	// ...i.e. if an 'owned' indicator is marked irrelevant should it be excluded...?
-	// ...looking at getObjectiveRefs below suggests relevancy rules ignored for objectives in these scenarios...?
-
 	public ORefSet getDirectOrIndirectIndicatorRefSet()
 	{
 		return new ORefSet(getDirectOrIndirectIndicatorRefs());
 	}
-	
+
 	public ORefList getDirectOrIndirectIndicatorRefs()
 	{
 		return new ORefList(IndicatorSchema.getObjectType(), getDirectOrIndirectIndicators()); 

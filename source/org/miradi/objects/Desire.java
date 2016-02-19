@@ -206,8 +206,6 @@ abstract public class Desire extends BaseObject
 				strategyOrActivityRef, shouldBeRelevant);
 	}
 
-	// TODO: MRD-5979 - need to investigate...used only by tests...START
-
 	public CommandVector createCommandsToEnsureIndicatorIsIrrelevant(ORef indicatorRef) throws Exception
 	{
 		boolean shouldBeRelevant = false;
@@ -268,8 +266,6 @@ abstract public class Desire extends BaseObject
 	{
 		return getDefaultRelevantIndicatorRefs().contains(indicatorRef) == shouldBeRelevant;
 	}
-
-	// ...used only by tests...END
 
 	private boolean isCorrectDefaultStrategyOrActivityRelevancy(ORef strategyOrActivityRef, boolean shouldBeRelevant) throws Exception
 	{
