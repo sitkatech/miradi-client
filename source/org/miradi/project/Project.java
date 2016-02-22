@@ -659,6 +659,7 @@ public class Project implements ProjectInterface
 	public void finishOpeningAfterLoad(String openedProjectName) throws Exception
 	{
 		createMissingBuiltInObjects();
+		timePeriodCostsMapsCache.initializeWorkPlanBudgetMode();
 		projectName = openedProjectName;
 		isOpen = true;
 	}

@@ -21,8 +21,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objecthelpers;
 
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
+import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.TableSettings;
@@ -39,13 +41,9 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 {
 	public TimePeriodCostsMapsCache(Project projectToUse)
 	{
-		this(projectToUse, new ProjectTotalCalculatorStrategyDefault(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE));
-	}
-	
-	public TimePeriodCostsMapsCache(Project projectToUse, ProjectTotalCalculatorStrategy projectTotalCalculatorStrategyToUse)
-	{
 		project = projectToUse;
-		projectTotalCalculator = new ProjectTotalCalculator(projectToUse, projectTotalCalculatorStrategyToUse);
+		ProjectTotalCalculatorStrategy projectTotalCalculatorStrategy = new ProjectTotalCalculatorStrategyDefault(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE);
+		projectTotalCalculator = new ProjectTotalCalculator(projectToUse, projectTotalCalculatorStrategy);
 		clear();
 	}
 
@@ -107,6 +105,24 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 	private Project getProject()
 	{
 		return project;
+	}
+
+	public void initializeWorkPlanBudgetMode()
+	{
+		String workPlanBudgetMode = WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE;
+
+		try
+		{
+			TableSettings tableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTablePanel.getTabSpecificModelIdentifier());
+			workPlanBudgetMode = tableSettings.getData(TableSettings.TAG_WORK_PLAN_VISIBLE_NODES_CODE);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+
+		ProjectTotalCalculatorStrategy currentCalculatorStrategy = projectTotalCalculator.getProjectTotalCalculatorStrategy();
+		currentCalculatorStrategy.setWorkPlanBudgetMode(workPlanBudgetMode);
 	}
 
 	public String getWorkPlanBudgetMode()
