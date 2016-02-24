@@ -24,6 +24,7 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.planning.propertiesPanel.AboveBudgetColumnsBar;
 import org.miradi.dialogs.planning.propertiesPanel.AbstractFixedHeightDirectlyAboveTreeTablePanel;
 import org.miradi.dialogs.planning.propertiesPanel.WorkPlanAboveBudgetColumnsBar;
+import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
@@ -67,9 +68,15 @@ abstract class AbstractWorkPlanTreeTablePanel extends PlanningTreeTablePanel
 		getPlanningViewMainTableModel().setResourcesFilter(projectResourceRefsToRetain);
 
 		if (getMainWindow().areAnyProjectResourceFiltersOn())
+		{
 			filterResourceLabel.setText(EAM.text("Resource filter is on"));
+			filterResourceLabel.setIcon(IconManager.getWarningIcon());
+		}
 		else
+		{
 			filterResourceLabel.setText(" ");
+			filterResourceLabel.setIcon(null);
+		}
 	}
 
 	@Override
