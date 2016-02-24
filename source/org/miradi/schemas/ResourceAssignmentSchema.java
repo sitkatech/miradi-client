@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.ResourceAssignment;
 
 public class ResourceAssignmentSchema extends AbstractAssignmentSchema
@@ -42,6 +43,7 @@ public class ResourceAssignmentSchema extends AbstractAssignmentSchema
 		createPseudoFieldSchemaString(ResourceAssignment.PSEUDO_TAG_PROJECT_RESOURCE_LABEL);
 		createPseudoFieldSchemaString(ResourceAssignment.PSEUDO_TAG_PROJECT_RESOURCE_COST_PER_UNIT);
 		createPseudoFieldSchemaString(ResourceAssignment.PSEUDO_TAG_OWNING_FACTOR_NAME);
+		createPseudoFieldSchemaString(BaseObject.PSEUDO_TAG_ASSIGNED_WHEN_TOTAL);
 	}
 
 	public static int getObjectType()
