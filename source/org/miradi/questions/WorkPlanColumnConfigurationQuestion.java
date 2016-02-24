@@ -63,6 +63,7 @@ public class WorkPlanColumnConfigurationQuestion extends MultipleSelectStaticCho
 		Vector<ChoiceItem> choiceItems = new Vector<ChoiceItem>();
 		choiceItems.add(createChoiceItem(COMMENTS_COLUMN_CODE));
 		choiceItems.add(createChoiceItem(DETAILS_COLUMN_CODE));
+		choiceItems.add(createChoiceItem(INDICATORS_COLUMN_CODE));
 
 		return choiceItems;
 	}
@@ -169,4 +170,5 @@ public class WorkPlanColumnConfigurationQuestion extends MultipleSelectStaticCho
 	
 	public static final String COMMENTS_COLUMN_CODE = "CommentsColumnCode";
 	public static final String DETAILS_COLUMN_CODE = "DetailsColumnCode";
+	public static final String INDICATORS_COLUMN_CODE = "IndicatorsColumnCode";
 }

@@ -511,7 +511,12 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		{
 			columnTag = Factor.TAG_COMMENTS;
 		}
-		
+
+		if (isIndicatorsColumn(column))
+		{
+			columnTag = Factor.PSEUDO_TAG_INDICATORS;
+		}
+
 		if(ProjectMetadata.is(nodeType))
 		{
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
@@ -650,7 +655,12 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		
 		return getColumnTag(column).equals(Desire.TAG_FULL_TEXT);
 	}
-	
+
+	private boolean isIndicatorsColumn(int column)
+	{
+		return getColumnTag(column).equals(WorkPlanColumnConfigurationQuestion.INDICATORS_COLUMN_CODE);
+	}
+
 	private CodeList getVisibleColumnCodes() throws Exception
 	{
 		return getRowColumnProvider().getColumnCodesToShow();
