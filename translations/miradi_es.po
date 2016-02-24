@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-19 12:36-0800\n"
+"POT-Creation-Date: 2016-02-24 04:51-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/miradi-client/"
@@ -6263,7 +6263,7 @@ msgstr ""
 "método o tarea. Existen tres tipos principales de recursos: humanos, "
 "materiales y financieros."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/AbstractWorkPlanTreeTablePanel.java:70
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/AbstractWorkPlanTreeTablePanel.java:72
 msgid "Resource filter is on"
 msgstr ""
 
@@ -7961,7 +7961,7 @@ msgstr ""
 "necesario, las tareas en sí mismas pueden dividirse en subtareas. En Miradi, "
 "una tarea está representada por un óvalo plano gris."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/Task.java:381
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/Task.java:368
 msgid "Task does not have a parent"
 msgstr ""
 
@@ -9355,7 +9355,7 @@ msgstr "[NO ESPECIFICADO]"
 msgid "[New Results Chain]"
 msgstr "[Nueva cadena de resultados]"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:962
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:963
 msgid "[No Project]"
 msgstr "[Sin proyecto]"
 
@@ -10193,6 +10193,9 @@ msgstr "Actividades"
 
 msgid "FieldLabel|12.CommentsColumnCode|Comments"
 msgstr "Comentarios"
+
+msgid "FieldLabel|12.IndicatorsColumnCode|Indicators"
+msgstr ""
 
 msgid "FieldLabel|12.DetailsColumnCode|Details"
 msgstr "Detalles"

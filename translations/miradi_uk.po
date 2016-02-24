@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-19 12:36-0800\n"
+"POT-Creation-Date: 2016-02-24 04:51-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/miradi-client/"
@@ -6219,7 +6219,7 @@ msgstr ""
 "Ресурс - особа або щось, необхідне для виконання заходу, методу або задачі. "
 "Є три основні види ресурсів - люди, матеріали і фінанси."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/AbstractWorkPlanTreeTablePanel.java:70
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/AbstractWorkPlanTreeTablePanel.java:72
 msgid "Resource filter is on"
 msgstr ""
 
@@ -7906,7 +7906,7 @@ msgstr ""
 "задача при потребі може бути розбита на підзадачі. У Міраді задача "
 "показується сірим сплющеним овалом."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/Task.java:381
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/Task.java:368
 msgid "Task does not have a parent"
 msgstr "Задача не має автора"
 
@@ -9282,7 +9282,7 @@ msgstr "[НЕ ВКАЗАНИЙ]"
 msgid "[New Results Chain]"
 msgstr "[Новий ланцюг результатів]"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:962
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:963
 msgid "[No Project]"
 msgstr "[Проект не вибраний]"
 
@@ -10126,6 +10126,9 @@ msgid "FieldLabel|12.PseudoTagActivities|Activities"
 msgstr ""
 
 msgid "FieldLabel|12.CommentsColumnCode|Comments"
+msgstr ""
+
+msgid "FieldLabel|12.IndicatorsColumnCode|Indicators"
 msgstr ""
 
 msgid "FieldLabel|12.DetailsColumnCode|Details"

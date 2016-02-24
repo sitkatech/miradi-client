@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-19 12:36-0800\n"
+"POT-Creation-Date: 2016-02-24 04:51-0800\n"
 "PO-Revision-Date: 2014-05-28 17:01+0000\n"
 "Last-Translator: nsalafsky <nick@fosonline.org>\n"
 "Language-Team: English (Estonia) (http://www.transifex.com/projects/p/miradi-"
@@ -6346,7 +6346,7 @@ msgstr ""
 "task. There are three main kinds of resources - human, material, and "
 "financial."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/AbstractWorkPlanTreeTablePanel.java:70
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/AbstractWorkPlanTreeTablePanel.java:72
 msgid "Resource filter is on"
 msgstr ""
 
@@ -8048,7 +8048,7 @@ msgstr ""
 "themselves can be broken into sub-tasks if necessary. In Miradi, a task is "
 "represented by a grey flattened oval."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/Task.java:381
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/Task.java:368
 msgid "Task does not have a parent"
 msgstr "Task does not have a parent"
 
@@ -9479,7 +9479,7 @@ msgstr "[NOT SPECIFIED]"
 msgid "[New Results Chain]"
 msgstr "[New Theory of Change]"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:962
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:963
 msgid "[No Project]"
 msgstr "[No Project]"
 
@@ -10317,6 +10317,9 @@ msgstr "FieldLabel|12.PseudoTagActivities|Outputs"
 
 msgid "FieldLabel|12.CommentsColumnCode|Comments"
 msgstr "FieldLabel|12.CommentsColumnCode|Comments"
+
+msgid "FieldLabel|12.IndicatorsColumnCode|Indicators"
+msgstr ""
 
 msgid "FieldLabel|12.DetailsColumnCode|Details"
 msgstr "FieldLabel|12.DetailsColumnCode|Details"

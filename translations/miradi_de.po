@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-19 12:36-0800\n"
+"POT-Creation-Date: 2016-02-24 04:51-0800\n"
 "PO-Revision-Date: 2015-07-15 14:36+0000\n"
 "Last-Translator: Felix <felix.cybulla@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/miradi-client/"
@@ -6187,7 +6187,7 @@ msgstr ""
 "Aktivität oder einer Aufgabe benötigt wird. Es gibt drei Kategorien von "
 "Ressourcen: Menschliche, Materielle und Finanzielle Ressourcen"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/AbstractWorkPlanTreeTablePanel.java:70
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/AbstractWorkPlanTreeTablePanel.java:72
 msgid "Resource filter is on"
 msgstr ""
 
@@ -7873,7 +7873,7 @@ msgstr ""
 "notwendig ist. Aufgaben können in Teilaufgaben untergliedert werden. In "
 "Miradi wird eine Aufgabe durch ein graues, abgeflachtes Oval dargestellt.  "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/Task.java:381
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/Task.java:368
 msgid "Task does not have a parent"
 msgstr "Für diese Aufgabe ist noch niemand zuständig"
 
@@ -9237,7 +9237,7 @@ msgstr "[NICHT GENAUER BESCHRIEBEN]"
 msgid "[New Results Chain]"
 msgstr "[Neue Ergebniswirkungskette]"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:962
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:963
 msgid "[No Project]"
 msgstr "[Kein Projekt]"
 
@@ -10075,6 +10075,9 @@ msgstr "Aktivitäten"
 
 msgid "FieldLabel|12.CommentsColumnCode|Comments"
 msgstr "Kommenatre"
+
+msgid "FieldLabel|12.IndicatorsColumnCode|Indicators"
+msgstr ""
 
 msgid "FieldLabel|12.DetailsColumnCode|Details"
 msgstr "Details"
