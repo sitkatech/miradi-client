@@ -322,7 +322,7 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 		ORef indicatorRef = getProject().findObject(ObjectType.INDICATOR, indicatorId).getRef();
 		Task activity = getProject().createActivity(strategy);
 
-		assertEquals("wrong indicator count?", 1, activity.getIndicatorsOnSameFactor().size());
+		assertEquals("wrong indicator count?", 0, activity.getIndicatorsOnSameFactor().size());
 
 		verifyRelevancy(indicatorRef, activity, true, 1);
 		verifyRelevancy(indicatorRef, activity, false, 0);

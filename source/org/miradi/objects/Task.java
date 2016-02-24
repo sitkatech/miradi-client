@@ -276,22 +276,9 @@ public class Task extends Factor
 	}
 
 	@Override
-	public ORefList getIndicatorsOnSameFactor()
+	protected ORefSet getDefaultRelevantIndicatorRefs()
 	{
-		ORefSet indicatorRefs = new ORefSet();
-
-		if (isActivity())
-		{
-			ORefList strategyReferrerRefs = findObjectsThatReferToUs(StrategySchema.getObjectType());
-			for (int index = 0; index < strategyReferrerRefs.size(); ++index)
-			{
-				ORef strategyRef = strategyReferrerRefs.get(index);
-				Strategy strategy = Strategy.find(getProject(), strategyRef);
-				indicatorRefs.addAllRefs(strategy.getIndicatorsOnSameFactor());
-			}
-		}
-
-		return indicatorRefs.toRefList();
+		return new ORefSet();
 	}
 
 	protected String getRelevantIndicatorRefsAsString()
