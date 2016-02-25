@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-24 04:51-0800\n"
+"POT-Creation-Date: 2016-02-25 08:36-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/miradi-client/"
@@ -2064,6 +2064,10 @@ msgstr "Acordar funciones del equipo"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DiagramChoiceQuestion.java:77
 msgid "All Diagrams"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanProjectResourceConfigurationQuestion.java:36
+msgid "All Project Resources"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:57
@@ -9230,6 +9234,10 @@ msgstr ""
 "trabajo muestra el tiempo y la secuencia de cada tarea, así como los "
 "recursos específicos necesarios para realizarlas. "
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanProjectResourceConfigurationQuestion.java:37
+msgid "Work Plan Assignment Resources Only"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractWorkPlanColumnConfigurationEditorPanel.java:64
 msgid "Work Plan Column Editor"
 msgstr "Editor de columnas del plan de trabajo"
@@ -9339,7 +9347,7 @@ msgstr ""
 "comandos exportar e importar. Miradi también creará archivos zip para las "
 "copias de seguridad del proyecto creadas durante las migraciones de formato."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:366
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:398
 msgid "[Error]"
 msgstr "[Error]"
 
@@ -11032,6 +11040,9 @@ msgid "FieldLabel|48.WorkPlanVisibleNodesCode|Include Data From"
 msgstr "Incluir datos desde"
 
 msgid "FieldLabel|48.WorkPlanDiagramFilter|Display this selection"
+msgstr ""
+
+msgid "FieldLabel|48.WorkPlanProjectResourceConfiguration|Display"
 msgstr ""
 
 msgid "FieldLabel|49.ThreatRatingCommentsData|Threat Rating Comments"

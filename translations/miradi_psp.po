@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-24 04:51-0800\n"
+"POT-Creation-Date: 2016-02-25 08:36-0800\n"
 "Language: psp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2160,6 +2160,10 @@ msgstr "Agree upon team roles"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DiagramChoiceQuestion.java:77
 msgid "All Diagrams"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanProjectResourceConfigurationQuestion.java:36
+msgid "All Project Resources"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:57
@@ -9333,6 +9337,10 @@ msgstr ""
 "shows the timing and sequence of each task as well as the specific resources "
 "required to carry it out."
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanProjectResourceConfigurationQuestion.java:37
+msgid "Work Plan Assignment Resources Only"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractWorkPlanColumnConfigurationEditorPanel.java:64
 msgid "Work Plan Column Editor"
 msgstr "Work Plan Column Editor"
@@ -9446,7 +9454,7 @@ msgstr ""
 "create zip files for project backups that are created during format "
 "migrations. "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:366
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:398
 msgid "[Error]"
 msgstr "[Error]"
 
@@ -11151,6 +11159,9 @@ msgid "FieldLabel|48.WorkPlanVisibleNodesCode|Include Data From"
 msgstr "FieldLabel|48.WorkPlanVisibleNodesCode|Include Data From"
 
 msgid "FieldLabel|48.WorkPlanDiagramFilter|Display this selection"
+msgstr ""
+
+msgid "FieldLabel|48.WorkPlanProjectResourceConfiguration|Display"
 msgstr ""
 
 msgid "FieldLabel|49.ThreatRatingCommentsData|Threat Rating Comments"

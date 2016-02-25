@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-24 04:51-0800\n"
+"POT-Creation-Date: 2016-02-25 08:36-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/miradi-client/"
@@ -2089,6 +2089,10 @@ msgstr "Погодити ролі членів робочої групи"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DiagramChoiceQuestion.java:77
 msgid "All Diagrams"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanProjectResourceConfigurationQuestion.java:36
+msgid "All Project Resources"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:57
@@ -9158,6 +9162,10 @@ msgstr ""
 "Робочий план - опис спеціальних дій, методів і задач, які ви повинні "
 "здійснити згідно з вашими стратегічним планом і планом моніторингу"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanProjectResourceConfigurationQuestion.java:37
+msgid "Work Plan Assignment Resources Only"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractWorkPlanColumnConfigurationEditorPanel.java:64
 msgid "Work Plan Column Editor"
 msgstr "Редактор колонок робочого плану"
@@ -9266,7 +9274,7 @@ msgstr ""
 "команди експорту та  імпорту. Міраді також створить зіп-файли для дублікатів "
 "проекту, що були створені протягом форматувальних переходів."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:366
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:398
 msgid "[Error]"
 msgstr "[Помилка]"
 
@@ -10977,6 +10985,9 @@ msgid "FieldLabel|48.WorkPlanVisibleNodesCode|Include Data From"
 msgstr ""
 
 msgid "FieldLabel|48.WorkPlanDiagramFilter|Display this selection"
+msgstr ""
+
+msgid "FieldLabel|48.WorkPlanProjectResourceConfiguration|Display"
 msgstr ""
 
 msgid "FieldLabel|49.ThreatRatingCommentsData|Threat Rating Comments"

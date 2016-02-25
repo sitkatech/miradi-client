@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-24 04:51-0800\n"
+"POT-Creation-Date: 2016-02-25 08:36-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Chinese (http://www.transifex.com/projects/p/miradi-client/"
@@ -2000,6 +2000,10 @@ msgstr "就团队角色达成一致 \t\t"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DiagramChoiceQuestion.java:77
 msgid "All Diagrams"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanProjectResourceConfigurationQuestion.java:36
+msgid "All Project Resources"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:57
@@ -8939,6 +8943,10 @@ msgstr ""
 "工作计划——描述了为实施您的策略和监控计划所需的专门活动/方法和任务。良好的工作"
 "计划显示了各个任务的时间表及执行顺序，以及执行各任务所需的特定资源。"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanProjectResourceConfigurationQuestion.java:37
+msgid "Work Plan Assignment Resources Only"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractWorkPlanColumnConfigurationEditorPanel.java:64
 msgid "Work Plan Column Editor"
 msgstr ""
@@ -9044,7 +9052,7 @@ msgstr ""
 "意：如果您使用导出和导入命令，Miradi将自动为您压缩或解压文件夹。Mirad也会为在"
 "格式迁移过程中创建的项目备份文件而创建压缩文件。"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:366
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:398
 msgid "[Error]"
 msgstr ""
 
@@ -10736,6 +10744,9 @@ msgid "FieldLabel|48.WorkPlanVisibleNodesCode|Include Data From"
 msgstr ""
 
 msgid "FieldLabel|48.WorkPlanDiagramFilter|Display this selection"
+msgstr ""
+
+msgid "FieldLabel|48.WorkPlanProjectResourceConfiguration|Display"
 msgstr ""
 
 msgid "FieldLabel|49.ThreatRatingCommentsData|Threat Rating Comments"
