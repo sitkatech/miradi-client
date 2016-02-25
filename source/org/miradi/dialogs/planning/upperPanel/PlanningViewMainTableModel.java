@@ -237,7 +237,39 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	{
 		return getColumnTag(column).equals(Indicator.TAG_PRIORITY);
 	}
-	
+
+	@Override
+	public boolean isAppendedLabelsOnSingleLineColumn(int column)
+	{
+		String columnTag = getColumnTag(column);
+
+		if (columnTag.equals(Factor.PSEUDO_TAG_INDICATORS))
+			return true;
+
+		if (columnTag.equals(Desire.PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
+			return true;
+
+		if (columnTag.equals(Desire.PSEUDO_TAG_RELEVANT_ACTIVITY_REFS))
+			return true;
+
+		if (columnTag.equals(Strategy.PSEUDO_TAG_ACTIVITIES))
+			return true;
+
+		if (columnTag.equals(Strategy.PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
+			return true;
+
+		if (columnTag.equals(Task.PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
+			return true;
+
+		if (columnTag.equals(Indicator.PSEUDO_TAG_METHODS))
+			return true;
+
+		if (columnTag.equals(WorkPlanColumnConfigurationQuestion.INDICATORS_COLUMN_CODE))
+			return true;
+
+		return false;
+	}
+
 	@Override
 	public boolean isProgressColumn(int column)
 	{

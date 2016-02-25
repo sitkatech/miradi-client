@@ -68,6 +68,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		defaultRendererFactory = new MultiLineObjectTableCellRendererOnlyFactory(mainWindowToUse, this, fontProvider);
 		currencyRendererFactory = new BudgetCostTreeTableCellRendererFactory(this, fontProvider);
 		choiceRendererFactory = new ChoiceItemTableCellRendererFactory(this, fontProvider);
+		appendedLabelsOnSingleLineRendererFactory = new SingleLineAppendedLabelsObjectTableCellRendererOnlyFactory(mainWindowToUse, this, fontProvider);
 		progressRendererFactory = new ProgressTableCellRendererFactory(this, fontProvider);
 		doubleRendererFactory = new NumericTableCellRendererFactory(this, fontProvider);
 		whoPlannedColumnTableCellEditorFactory = new WhoPlannedColumnTableCellEditorFactory(getMainWindow(), this);
@@ -156,6 +157,8 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 			factory = whenPlannedColumnTableCellEditorFactory;
 		else if (getCastedModel().isAssignedWhenColumn(modelColumn))
 			factory = whenAssignedColumnTableCellEditorFactory;
+		else if (getCastedModel().isAppendedLabelsOnSingleLineColumn(modelColumn))
+			factory = appendedLabelsOnSingleLineRendererFactory;
 
 		Color background = getCastedModel().getCellBackgroundColor(row, modelColumn);
 		factory.setCellBackgroundColor(background);
@@ -263,6 +266,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	private BasicTableCellEditorOrRendererFactory defaultRendererFactory;
 	private BasicTableCellEditorOrRendererFactory currencyRendererFactory;
 	private BasicTableCellEditorOrRendererFactory choiceRendererFactory;
+	private BasicTableCellEditorOrRendererFactory appendedLabelsOnSingleLineRendererFactory;
 	private BasicTableCellEditorOrRendererFactory progressRendererFactory;
 	private BasicTableCellEditorOrRendererFactory doubleRendererFactory;
 	private WhoPlannedColumnTableCellEditorFactory whoPlannedColumnTableCellEditorFactory;

@@ -76,6 +76,11 @@ public class HtmlUtilities
 		style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix("body {color:" + AppPreferences.convertToHexString(color) + ";}"));
 	}
 	
+	public static void addCustomListItemStyle(StyleSheet style)
+	{
+		style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix("ul {margin-left: 0; margin-top: 0; padding-left: 12px;}"));
+	}
+
 	public static String makeSureRuleHasRightPrefix(String rule)
 	{
 		if (cssDotPrefixWorksCorrectly())

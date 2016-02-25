@@ -84,11 +84,16 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return false;
 	}
 	
-	public boolean isProgressColumn(int column)
+	public boolean isAppendedLabelsOnSingleLineColumn(int column)
 	{
 		return false;
 	}
 	
+	public boolean isProgressColumn(int column)
+	{
+		return false;
+	}
+
 	public boolean isDateUnitColumn(int column)
 	{
 		return false;

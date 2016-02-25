@@ -36,9 +36,14 @@ public class MultiLineObjectTableCellRendererOnlyFactory extends ObjectTableCell
 	{
 		super(providerToUse, fontProviderToUse);
 		
-		rendererComponent = new TableCellHtmlRendererComponent(mainWindowToUse);
+		rendererComponent = createTableCellHtmlRendererComponent(mainWindowToUse);
 	}
-	
+
+	protected TableCellHtmlRendererComponent createTableCellHtmlRendererComponent(MainWindow mainWindowToUse)
+	{
+		return new TableCellHtmlRendererComponent(mainWindowToUse);
+	}
+
 	@Override
 	public Object getCellEditorValue()
 	{

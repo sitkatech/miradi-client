@@ -63,25 +63,25 @@ public class CodeListRendererFactory extends MultiLineObjectTableCellRendererOnl
 		if(codeList == null)
 			return "";
 		
-		return convertToCommaSeperatedValues(codeList); 
+		return convertToCommaSeparatedValues(codeList);
 	}
 
-	private String convertToCommaSeperatedValues(CodeList codeList)
+	private String convertToCommaSeparatedValues(CodeList codeList)
 	{
-		String commaSeperatedValues = "";
+		String commaSeparatedValues = "";
 		for (int i = 0; i < codeList.size(); ++i)
 		{
 			if (i > 0)
-				commaSeperatedValues +=", ";
+				commaSeparatedValues +=", ";
 			
 			String code = codeList.get(i);
 			if(question.findChoiceByCode(code) != null)
-				commaSeperatedValues += question.getValue(code);
+				commaSeparatedValues += question.getValue(code);
 			else
-				commaSeperatedValues += Translation.getNotSpecifiedText();
+				commaSeparatedValues += Translation.getNotSpecifiedText();
 		}
 		
-		return commaSeperatedValues;
+		return commaSeparatedValues;
 	}
 
 	private CodeList getCodeList(Object value)

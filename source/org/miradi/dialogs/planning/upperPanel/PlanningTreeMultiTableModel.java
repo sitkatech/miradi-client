@@ -66,6 +66,11 @@ public class PlanningTreeMultiTableModel extends MultiTableModel implements Mode
 		return getCastedModel(modelColumn).isChoiceItemColumn(findColumnWithinSubTable(modelColumn));
 	}
 
+	public boolean isAppendedLabelsOnSingleLineColumn(int modelColumn)
+	{
+		return getCastedModel(modelColumn).isAppendedLabelsOnSingleLineColumn(findColumnWithinSubTable(modelColumn));
+	}
+
 	public boolean isProgressColumn(int modelColumn)
 	{
 		return getCastedModel(modelColumn).isProgressColumn(findColumnWithinSubTable(modelColumn));
