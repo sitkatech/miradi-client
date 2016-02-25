@@ -67,7 +67,7 @@ public class WorkPlanView extends TabbedView implements CommandExecutedListener
 
 		settingsPanel = new WorkPlanSettingsPanel(getMainWindow(), getProject().getMetadata().getRef());
 		rollupReportsManagementPanel = WorkPlanBudgetCategoryManagementPanel.createManagementPanel(getMainWindow(), new AnalysisManagementConfiguration(getProject()));
-		resourceManagementPanel = WorkPlanBudgetCategoryManagementPanel.createManagementPanel(getMainWindow(), new ProjectResourceManagementConfiguration(getProject()));
+		resourceManagementPanel = WorkPlanProjectResourceManagementPanel.createManagementPanel(getMainWindow(), new ProjectResourceManagementConfiguration(getProject()));
 		accountingCodePoolManagementPanel = WorkPlanBudgetCategoryManagementPanel.createManagementPanel(getMainWindow(), new AccountingCodeManagementConfiguration(getProject()));
 		fundingSourcePoolManagementPanel = WorkPlanBudgetCategoryManagementPanel.createManagementPanel(getMainWindow(), new FundingSourceManagementConfiguration(getProject())); 
 		categoryOnePoolManagementPanel = WorkPlanBudgetCategoryManagementPanel.createManagementPanel(getMainWindow(), new BudgetCategoryOneManagementConfiguration(getProject()));

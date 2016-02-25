@@ -18,24 +18,29 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.dialogs.treetables;
+package org.miradi.views.workplan;
 
-import org.miradi.dialogs.planning.upperPanel.TreeTableModelWithRebuilder;
-import org.miradi.dialogs.planning.upperPanel.rebuilder.AbstractTreeRebuilder;
-import org.miradi.dialogs.planning.upperPanel.rebuilder.PlanningCategoryTreeRebuilder;
-import org.miradi.objects.PlanningTreeRowColumnProvider;
+import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
+import org.miradi.questions.WorkPlanProjectResourceConfigurationQuestion;
+import org.miradi.schemas.TableSettingsSchema;
 
-public class BudgetCategoryTreeModel extends TreeTableModelWithRebuilder
+public class WorkPlanProjectResourceConfigurationPanel extends ObjectDataInputPanel
 {
-	public BudgetCategoryTreeModel(Project projectToUse, TreeTableNode rootNode, PlanningTreeRowColumnProvider rowColumnProvider, String uniqueTreeTableModelIdentifierToUse) throws Exception
+	public WorkPlanProjectResourceConfigurationPanel(Project projectToUse, TableSettings tableSettingsToUse) throws Exception
 	{
-		super(projectToUse, rootNode, rowColumnProvider, uniqueTreeTableModelIdentifierToUse);
+		super(projectToUse, TableSettingsSchema.getObjectType());
+		
+		addFieldWithoutLabelAlignment(createChoiceField(TableSettingsSchema.getObjectType(), TableSettings.TAG_WORK_PLAN_PROJECT_RESOURCE_CONFIGURATION, getQuestion(WorkPlanProjectResourceConfigurationQuestion.class)));
+		
+		setObjectRef(tableSettingsToUse.getRef());
+		updateFieldsFromProject();
 	}
 
 	@Override
-	protected AbstractTreeRebuilder createTreeRebuilder()
+	public String getPanelDescription()
 	{
-		return new PlanningCategoryTreeRebuilder(getProject(), getRowColumnProvider());
+		return "WorkPlanProjectResourceConfigurationPanel";
 	}
 }

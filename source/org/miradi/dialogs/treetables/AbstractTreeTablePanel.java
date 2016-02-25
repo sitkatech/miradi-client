@@ -61,7 +61,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		add(headerPanel, BorderLayout.BEFORE_FIRST_LINE);
 
 		JPanel diagramFilterPanel = new MiradiPanel(new OneRowGridLayout());
-		addDiagramFilterPanel(diagramFilterPanel);
+		addFilterPanel(diagramFilterPanel);
 		headerPanel.add(diagramFilterPanel);
 
 		headerPanel.add(getButtonBox());
@@ -88,7 +88,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		return new GridLayoutPlus();
 	};
 
-	protected void addDiagramFilterPanel(JPanel diagramFilterPanel) throws Exception
+	protected void addFilterPanel(JPanel filterPanel) throws Exception
 	{
 	}
 

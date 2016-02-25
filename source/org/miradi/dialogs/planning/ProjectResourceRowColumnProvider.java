@@ -20,9 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning;
 
+import org.miradi.main.EAM;
 import org.miradi.objects.ProjectResource;
+import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
+import org.miradi.questions.WorkPlanProjectResourceConfigurationQuestion;
 import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.utils.CodeList;
 
@@ -30,7 +33,14 @@ public class ProjectResourceRowColumnProvider extends AbstractBudgetCategoryRowC
 {
 	public ProjectResourceRowColumnProvider(Project projectToUse)
 	{
+		this(projectToUse, "");
+	}
+
+	public ProjectResourceRowColumnProvider(Project projectToUse, String uniqueTreeTableIdentifierToUse)
+	{
 		super(projectToUse);
+
+		uniqueTreeTableIdentifier = uniqueTreeTableIdentifierToUse;
 	}
 
 	@Override
@@ -45,6 +55,26 @@ public class ProjectResourceRowColumnProvider extends AbstractBudgetCategoryRowC
 	}
 
 	@Override
+	public boolean shouldIncludeEmptyRows()
+	{
+		try
+		{
+			if (!uniqueTreeTableIdentifier.isEmpty())
+			{
+				TableSettings tableSettings = TableSettings.findOrCreate(getProject(), uniqueTreeTableIdentifier);
+				String projectResourceConfiguration = tableSettings.getData(TableSettings.TAG_WORK_PLAN_PROJECT_RESOURCE_CONFIGURATION);
+				return projectResourceConfiguration.equals(WorkPlanProjectResourceConfigurationQuestion.ALL_PROJECT_RESOURCES_CODE);
+			}
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+
+		return true;
+	}
+
+	@Override
 	public int getObjectType()
 	{
 		return ProjectResourceSchema.getObjectType();
@@ -55,4 +85,6 @@ public class ProjectResourceRowColumnProvider extends AbstractBudgetCategoryRowC
 	{
 		return ProjectResourceSchema.OBJECT_NAME;
 	}
+
+	private final String uniqueTreeTableIdentifier;
 }

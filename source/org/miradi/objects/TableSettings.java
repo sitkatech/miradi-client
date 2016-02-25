@@ -171,4 +171,5 @@ public class TableSettings extends BaseObject
 	public static final String TAG_COLUMN_SORT_DIRECTION = "ColumnSortDirection";
 	public static final String TAG_WORK_PLAN_VISIBLE_NODES_CODE = "WorkPlanVisibleNodesCode";
 	public static final String TAG_WORK_PLAN_DIAGRAM_FILTER = "WorkPlanDiagramFilter";
+	public static final String TAG_WORK_PLAN_PROJECT_RESOURCE_CONFIGURATION = "WorkPlanProjectResourceConfiguration";
 }

@@ -24,6 +24,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.TableSettings;
 import org.miradi.questions.SortDirectionQuestion;
 import org.miradi.questions.DiagramChoiceQuestion;
+import org.miradi.questions.WorkPlanProjectResourceConfigurationQuestion;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 
 public class TableSettingsSchema extends BaseObjectSchema
@@ -48,6 +49,7 @@ public class TableSettingsSchema extends BaseObjectSchema
 		createFieldSchemaCode(TableSettings.TAG_COLUMN_SORT_TAG).setNavigationField();
 		createFieldSchemaChoice(TableSettings.TAG_COLUMN_SORT_DIRECTION, SortDirectionQuestion.class).setNavigationField();
 		createFieldSchemaChoice(TableSettings.TAG_WORK_PLAN_DIAGRAM_FILTER, DiagramChoiceQuestion.class);
+		createFieldSchemaChoice(TableSettings.TAG_WORK_PLAN_PROJECT_RESOURCE_CONFIGURATION, WorkPlanProjectResourceConfigurationQuestion.class);
 	}
 
 	public static int getObjectType()

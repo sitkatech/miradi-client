@@ -120,6 +120,7 @@ public class StaticQuestionManager
 		addQuestion(new ProjectScaleQuestion());
 		addQuestion(new DiagramChoiceQuestion());
 		addQuestion(new WorkPlanDisplayModeQuestion());
+		addQuestion(new WorkPlanProjectResourceConfigurationQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)

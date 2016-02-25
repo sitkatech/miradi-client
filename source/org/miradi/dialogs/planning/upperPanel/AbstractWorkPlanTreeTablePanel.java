@@ -80,11 +80,11 @@ abstract class AbstractWorkPlanTreeTablePanel extends PlanningTreeTablePanel
 	}
 
 	@Override
-	protected void addDiagramFilterPanel(JPanel diagramFilterPanelToUse) throws Exception
+	protected void addFilterPanel(JPanel filterPanel) throws Exception
 	{
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getIdentifier());
 		diagramFilterPanel = new WorkPlanDiagramFilterPanel(getProject(), getProject().getMetadata(), tableSettings, getRowColumnProvider());
-		diagramFilterPanelToUse.add(diagramFilterPanel);
+		filterPanel.add(diagramFilterPanel);
 	}
 
 	@Override

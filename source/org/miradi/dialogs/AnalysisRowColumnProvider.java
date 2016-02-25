@@ -79,7 +79,7 @@ public class AnalysisRowColumnProvider extends AbstractBudgetCategoryRowColumnPr
 	{
 		return TableSettings.findOrCreate(getProject(), WorkPlanTreeTablePanel.getTabSpecificModelIdentifier());
 	}
-	
+
 	@Override
 	public boolean shouldIncludeResultsChain() throws Exception
 	{

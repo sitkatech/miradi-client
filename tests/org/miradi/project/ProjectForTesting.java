@@ -1633,6 +1633,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(tableSettings, TableSettings.TAG_COLUMN_SORT_TAG, "");
 		fillObjectUsingCommand(tableSettings, TableSettings.TAG_COLUMN_SORT_DIRECTION, SortDirectionQuestion.DEFAULT_SORT_ORDER_CODE);
 		fillObjectUsingCommand(tableSettings, TableSettings.TAG_WORK_PLAN_DIAGRAM_FILTER, "");
+		fillObjectUsingCommand(tableSettings, TableSettings.TAG_WORK_PLAN_PROJECT_RESOURCE_CONFIGURATION, "");
 	}
 
 	public ProgressReport addProgressReport(BaseObject baseObject) throws Exception

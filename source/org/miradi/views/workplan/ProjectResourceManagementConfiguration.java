@@ -61,7 +61,7 @@ public class ProjectResourceManagementConfiguration extends	WorkPlanManagementPa
 	@Override
 	public WorkPlanCategoryTreeRowColumnProvider getRowColumnProvider() throws Exception
 	{
-		return new ProjectResourceRowColumnProvider(getProject());
+		return new ProjectResourceRowColumnProvider(getProject(), getUniqueTreeTableIdentifier());
 	}
 
 	@Override
