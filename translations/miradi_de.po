@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-25 08:36-0800\n"
+"POT-Creation-Date: 2016-02-26 07:36-0800\n"
 "PO-Revision-Date: 2015-07-15 14:36+0000\n"
 "Last-Translator: Felix <felix.cybulla@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/miradi-client/"
@@ -36,6 +36,12 @@ msgid ""
 msgstr ""
 "\n"
 "Sind Sie sicher, dass Sie diese Ressource löschen möchten?"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningFinancialSubPanel.java:48
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:59
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:63
+msgid " "
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/diagram/DiagramWizardLinkDirectThreatsToTargetsStep.java:51
 msgid " 2) Connect threat to relevant targets"
@@ -2903,7 +2909,7 @@ msgid "Choose the colors that look best on your system:"
 msgstr ""
 "Wählen Sie die Farben aus die auf Ihrem Computer am besten dargestellt werden"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:659
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:661
 msgid "Classifications"
 msgstr ""
 
@@ -2968,7 +2974,7 @@ msgstr "Konzeptionelles Modell Eignschaften"
 msgid "Conceptual Model Pages and Results Chains"
 msgstr "Konzeptionelle(s) Modell(e) und Ergebniswirkungskette(n)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:52
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:51
 msgid ""
 "Conceptual Model diagrams (including Brainstorm mode to capture all draft "
 "strategies considered that were not selected). Strategy Ranking fields of: "
@@ -3001,7 +3007,7 @@ msgstr "Bestätigung"
 msgid "Conservation Targets"
 msgstr "Schutzobjekt"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:61
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:60
 msgid "Context"
 msgstr "Kontext"
 
@@ -3170,10 +3176,6 @@ msgstr "Anpassen..."
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:98
 msgid "Cut"
 msgstr "Ausschneiden"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:61
-msgid "Daily Rate"
-msgstr "Tägliche Rate"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DiagramLinkColorQuestion.java:42
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DiagramFactorFontColorQuestion.java:43
@@ -3429,7 +3431,7 @@ msgstr ""
 msgid "Diagram Link Color Panel"
 msgstr "Liste der Farben für Verbindungen"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:48
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:47
 msgid ""
 "Diagram View - Conceptual Model diagram showing key drivers and "
 "opportunities and their relationships to ultimate outcomes. Text field for "
@@ -3437,13 +3439,13 @@ msgid ""
 "(available via right-click menu on all diagrams - Diagram Properties)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:57
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:56
 msgid ""
 "Diagram View - Indicators explicitly linked to outcomes captured as either "
 "goals or objectives"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:46
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:45
 msgid ""
 "Diagram View - Use Targets and Target Goals for describing ultimate desired "
 "outcomes for both biodiversity and human well-being targets.  Use Objectives "
@@ -3854,7 +3856,7 @@ msgstr ""
 msgid "Financial Future Features Demo"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningFinancialSubPanel.java:53
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningFinancialSubPanel.java:57
 msgid "Financial Settings"
 msgstr "Einstellungen - Finanzierung"
 
@@ -4612,7 +4614,7 @@ msgstr "Budgekategorie Eins"
 msgid "Label|Budget Category Two"
 msgstr "Budgekategorie Zwei"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:97
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:88
 msgid "Label|Business Planning"
 msgstr ""
 
@@ -4632,7 +4634,7 @@ msgstr "Kampagnenplanung"
 msgid "Label|Comments"
 msgstr "Kommentare"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningFinancialSubPanel.java:39
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningFinancialSubPanel.java:40
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/summary/PlanningTabFinancialSubPanelForm.java:35
 msgid "Label|Currency"
 msgstr "Währung"
@@ -4650,7 +4652,7 @@ msgstr "FOS"
 msgid "Label|Human Stakeholder Pop Size"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:76
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:84
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:72
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:39
 msgid "Label|IM Address"
@@ -4725,7 +4727,7 @@ msgstr "Org. Kontakt"
 msgid "Label|Organization"
 msgstr "Organisation"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:65
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:73
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:61
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:35
 msgid "Label|Phone Numbers"
@@ -4758,7 +4760,7 @@ msgstr "Rare Tracking"
 msgid "Label|Resource"
 msgstr "Ressource"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:58
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:66
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:34
 msgid "Label|Roles (people only)"
 msgstr "Rollen (Nur Personen)"
@@ -5128,7 +5130,7 @@ msgstr ""
 "Messung - Ermittlung eines indikatorenwertes zu einem bestimmten Zeitpunkt. "
 "Messungen können sowohl quantitativ als auch qualitativ sein."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:73
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:72
 msgid "Measures"
 msgstr ""
 
@@ -5680,7 +5682,7 @@ msgstr "Andere Org."
 msgid "Other confidence interval"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:64
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:63
 msgid "Outcomes"
 msgstr ""
 
@@ -6142,7 +6144,7 @@ msgstr "Zugehörige(s) Projekt(e)"
 msgid "Relevant Strategies and Activities"
 msgstr "Relevante Strategien und Aktivitäten"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:144
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:170
 msgid "Remove Team Member"
 msgstr "Teammitglied entfernen"
 
@@ -6213,7 +6215,7 @@ msgstr "Ergebniswirkungskette"
 msgid "Results Chain Properties"
 msgstr "Eigenschaften - Ergebniswirkungskette"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:54
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:53
 msgid ""
 "Results Chain diagrams for entering intermediate results linking strategies "
 "to targets. Text field for alternative or supplemental narrative description "
@@ -6611,7 +6613,7 @@ msgstr "Einfache Lebensfähigkeit"
 msgid "Single Selection"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:66
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:65
 msgid "Situation Analysis"
 msgstr ""
 
@@ -6844,7 +6846,7 @@ msgstr "Zusammenfassung Schutzobjektsbewertung"
 msgid "Summary Threat Rating"
 msgstr "Zusammenfassung Bedrohungsbewertung"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:45
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:44
 msgid "Summary View - Project Description, Scope, and Vision fields"
 msgstr ""
 
@@ -8085,11 +8087,11 @@ msgstr ""
 msgid "Then by"
 msgstr "Dann nach"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:70
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:69
 msgid "Theory of Change<br/>- Strategy Logic"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:68
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:67
 msgid "Theory of Change<br/>- Strategy Selection"
 msgstr ""
 
@@ -8276,6 +8278,12 @@ msgstr ""
 msgid ""
 "This resource has been planned for work in the Strategic Plan and / or "
 "assigned work in the Work Plan"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningFinancialSubPanel.java:48
+msgid ""
+"This text displays next to the Work Unit Rate. It should explain and provide "
+"guidance for that entry."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/ObjectDataInputField.java:181
@@ -8582,7 +8590,7 @@ msgstr "Projektdateiname"
 msgid "Title|Report Template Properties"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:93
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:101
 msgid "Title|Resource Properties"
 msgstr "Eigenschaften - Ressource"
 
@@ -9140,15 +9148,19 @@ msgstr ""
 msgid "Work Plan Settings"
 msgstr "Einstellungen - Arbeitsplan"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:58
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:57
 msgid ""
 "Work Plan View - Flexible management of work planning content (including "
 "Strategies, Activities, and Tasks with who and when information) and budget "
 "information (including work effort, expenses, and funding sources)."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:75
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:74
 msgid "Work Planning"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:61
+msgid "Work Unit Rate"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:120
@@ -9208,7 +9220,7 @@ msgstr "Yen (Japan)"
 msgid "Yes"
 msgstr "Ja"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:145
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:171
 msgid ""
 "You are removing this resource from the project team, so he/she will no "
 "longer appear in the list of Team Members in the Summary View. "
@@ -9397,16 +9409,16 @@ msgstr "Ressourcentyp"
 msgid "FieldLabel|7.Initials|Resource ID"
 msgstr "Ressourcen ID"
 
-msgid "FieldLabel|7.Name|Given Name"
-msgstr "Vorname"
+msgid "FieldLabel|7.Name|First Name"
+msgstr ""
 
-msgid "FieldLabel|7.SurName|Surname"
-msgstr "Nachname"
+msgid "FieldLabel|7.SurName|Last Name"
+msgstr ""
 
 msgid "FieldLabel|7.PhoneNumber|Office"
 msgstr "Büro"
 
-msgid "FieldLabel|7.CostPerUnit|Daily Rate"
+msgid "FieldLabel|7.CostPerUnit|Work Unit Rate"
 msgstr ""
 
 msgid "FieldLabel|7.RoleCodes|Roles"
@@ -9884,6 +9896,9 @@ msgstr ""
 msgid "FieldLabel|11.WorkPlanDisplayMode|Display Work Plans from"
 msgstr ""
 
+msgid "FieldLabel|11.WorkUnitRateDescription|Work Unit Rate Description"
+msgstr ""
+
 msgid "FieldLabel|12.ShortLabel|ID"
 msgstr "ID"
 
@@ -10042,11 +10057,11 @@ msgstr "Ressouce art"
 msgid "FieldLabel|12.Initials|Resource ID"
 msgstr ""
 
-msgid "FieldLabel|12.Name|Given Name"
-msgstr "Vorname"
+msgid "FieldLabel|12.Name|First Name"
+msgstr ""
 
-msgid "FieldLabel|12.SurName|Surname"
-msgstr "Nachname"
+msgid "FieldLabel|12.SurName|Last Name"
+msgstr ""
 
 msgid "FieldLabel|12.PhoneNumber|Office"
 msgstr "Büro"
@@ -10132,7 +10147,7 @@ msgstr ""
 msgid "FieldLabel|14.CategoryTwoRef|Category Two"
 msgstr ""
 
-msgid "FieldLabel|14.PseudoTagProjectResourceCostPerUnit|Daily Rate"
+msgid "FieldLabel|14.PseudoTagProjectResourceCostPerUnit|Work Unit Rate"
 msgstr ""
 
 msgid "FieldLabel|15.Label|Accounting Code Name"
@@ -10813,11 +10828,11 @@ msgstr "ID"
 msgid "FieldLabel|42.RolesDescription|Role(s)"
 msgstr "Rolle(n)"
 
-msgid "FieldLabel|42.ContactFirstName|Given Name"
-msgstr "Vorname"
+msgid "FieldLabel|42.ContactFirstName|First Name"
+msgstr ""
 
-msgid "FieldLabel|42.ContactLastName|Surname"
-msgstr "Nachname"
+msgid "FieldLabel|42.ContactLastName|Last Name"
+msgstr ""
 
 msgid "FieldLabel|42.Email|Email"
 msgstr "Email"
@@ -30266,6 +30281,27 @@ msgid ""
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
 "Marine___Western Tropical Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "Daily Rate"
+#~ msgstr "Tägliche Rate"
+
+#~ msgid "FieldLabel|7.Name|Given Name"
+#~ msgstr "Vorname"
+
+#~ msgid "FieldLabel|7.SurName|Surname"
+#~ msgstr "Nachname"
+
+#~ msgid "FieldLabel|12.Name|Given Name"
+#~ msgstr "Vorname"
+
+#~ msgid "FieldLabel|12.SurName|Surname"
+#~ msgstr "Nachname"
+
+#~ msgid "FieldLabel|42.ContactFirstName|Given Name"
+#~ msgstr "Vorname"
+
+#~ msgid "FieldLabel|42.ContactLastName|Surname"
+#~ msgstr "Nachname"
 
 #~ msgid "FieldLabel|12.PseudoTagIndicators|Indicators"
 #~ msgstr "Indikator"
