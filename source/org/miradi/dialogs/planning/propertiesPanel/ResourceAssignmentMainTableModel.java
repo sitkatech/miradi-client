@@ -58,7 +58,7 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 			return EAM.text("Resource (Who)");
 		
 		if (isResourceCostPerUnitColumn(column))
-			return EAM.text("Daily Rate");
+			return EAM.text("Work Unit Rate");
 			
 		return super.getColumnName(column);
 	}
