@@ -21,6 +21,7 @@ package org.miradi.views.summary;
 
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.forms.FormRow;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.ProjectMetadata;
@@ -44,6 +45,8 @@ public class SummaryPlanningFinancialSubPanel extends ObjectDataInputPanel
 		addField(createMultilineField(ProjectMetadata.TAG_KEY_FUNDING_SOURCES));
 		addField(createMultilineField(ProjectMetadata.TAG_FINANCIAL_COMMENTS));
 		addField(createStringField(ProjectMetadata.TAG_WORK_UNIT_RATE_DESCRIPTION));
+		FormRow workUnitRateDescriptionHint = createReadonlyTextFormRow(EAM.text(" "), EAM.text("This text displays next to the Work Unit Rate. It should explain and provide guidance for that entry."));
+		addLabelAndFieldFromForm(workUnitRateDescriptionHint);
 
 		updateFieldsFromProject();
 	}

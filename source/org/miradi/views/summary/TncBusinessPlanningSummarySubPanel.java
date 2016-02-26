@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.summary;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.forms.FormConstant;
 import org.miradi.forms.FormRow;
 import org.miradi.layout.TwoColumnGridLayout;
 import org.miradi.main.EAM;
@@ -78,14 +77,6 @@ public class TncBusinessPlanningSummarySubPanel extends ObjectDataInputPanel
 		addField(createMultilineField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_CAPACITY_AND_FUNDING));
 		
 		updateFieldsFromProject();
-	}
-
-	private FormRow createReadonlyTextFormRow(String labelText, String rightSideText)
-	{
-		FormConstant contextLabel = new FormConstant(labelText);
-		FormConstant contextText = new FormConstant(rightSideText);
-		FormRow contextRow = new FormRow(contextLabel, contextText);
-		return contextRow;
 	}
 
 	@Override

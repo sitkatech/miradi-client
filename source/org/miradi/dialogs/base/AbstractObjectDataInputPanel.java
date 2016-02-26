@@ -26,6 +26,8 @@ import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitledBorder;
 import org.miradi.dialogs.treetables.TreeTableNode;
+import org.miradi.forms.FormConstant;
+import org.miradi.forms.FormRow;
 import org.miradi.ids.BaseId;
 import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.*;
@@ -731,7 +733,15 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	{
 		return new ReadonlyStaticClickableLinkField(getMainWindow(), getRefForType(objectType), htmlText, tabIdentifier);
 	}
-	
+
+	public FormRow createReadonlyTextFormRow(String labelText, String rightSideText)
+	{
+		FormConstant contextLabel = new FormConstant(labelText);
+		FormConstant contextText = new FormConstant(rightSideText);
+		FormRow contextRow = new FormRow(contextLabel, contextText);
+		return contextRow;
+	}
+
 	public ORef getRefForType(int objectType)
 	{
 		return new ORef(objectType, getObjectIdForType(objectType));
