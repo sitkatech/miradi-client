@@ -26,6 +26,7 @@ import org.miradi.dialogfields.ChoiceItemListSelectionEvent;
 import org.miradi.dialogfields.ObjectCodeEditorField;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.ids.BaseId;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
@@ -77,7 +78,7 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 
 		addField(createDateChooserField(ProjectResource.TAG_DATE_UPDATED));
 
-		addField(createCurrencyField(ProjectResource.TAG_COST_PER_UNIT));
+		costPerUnitFieldHint = addFieldWithCustomLabelAndDynamicHint(createCurrencyField(ProjectResource.TAG_COST_PER_UNIT), getWorkUnitRateDescriptionHint());
 
 		addField(createMultilineField(ProjectResource.TAG_COMMENTS));
 		
@@ -122,12 +123,19 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 		boolean isPerson = beingEdited.isPerson();
 		roleCodeField.setEditable(isPerson);
 	}
-	
+
+	private String getWorkUnitRateDescriptionHint()
+	{
+		return getProject().getMetadata().getWorkUnitRateDescription();
+	}
+
 	@Override
 	public void becomeActive()
 	{
 		super.becomeActive();
-		
+
+		costPerUnitFieldHint.setText(getWorkUnitRateDescriptionHint());
+
 		roleCodeField.getCodeListEditor().addListSelectionListener(teamMemberCheckBoxHandler);
 	}
 	
@@ -171,5 +179,6 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 	}
 
 	private ObjectCodeEditorField roleCodeField;
-	private TeamMemberHandler teamMemberCheckBoxHandler; 
+	private PanelTitleLabel costPerUnitFieldHint;
+	private TeamMemberHandler teamMemberCheckBoxHandler;
 }

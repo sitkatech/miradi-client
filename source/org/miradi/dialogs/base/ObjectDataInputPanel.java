@@ -150,15 +150,29 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 	{
 		addFieldToList(field);
 		addLabel(field.getObjectType(), field.getTag());
+		createPanelForFieldWithCustomLabelAndHint(field, hint);
+		return field;
+	}
+
+	public PanelTitleLabel addFieldWithCustomLabelAndDynamicHint(ObjectDataInputField field, String hint)
+	{
+		addFieldToList(field);
+		addLabel(field.getObjectType(), field.getTag());
+		return createPanelForFieldWithCustomLabelAndHint(field, hint);
+	}
+
+	private PanelTitleLabel createPanelForFieldWithCustomLabelAndHint(ObjectDataInputField field, String hint)
+	{
 		Box box = Box.createHorizontalBox();
 		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		box.add(field.getComponent());
 		box.add(Box.createHorizontalStrut(20));
-		box.add(new PanelTitleLabel(hint));
+		PanelTitleLabel panelTitleLabel = new PanelTitleLabel(hint);
+		box.add(panelTitleLabel);
 		addFieldComponent(box);
-		return field;
+		return panelTitleLabel;
 	}
-	
+
 	protected void addFieldsOnOneLine(String translatedString, Icon icon, ObjectDataInputField[] fields)
 	{
 		JPanel fieldPanel = createFieldPanel(fields);		

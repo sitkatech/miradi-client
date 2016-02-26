@@ -222,7 +222,12 @@ public class ProjectMetadata extends BaseObject
 	{
 		return getData(TAG_PROJECT_LATITUDE);
 	}
-	
+
+	public String getWorkUnitRateDescription()
+	{
+		return getData(TAG_WORK_UNIT_RATE_DESCRIPTION);
+	}
+
 	public int getCurrencyDecimalPlaces()
 	{
 		return getIntegerData(TAG_CURRENCY_DECIMAL_PLACES);
