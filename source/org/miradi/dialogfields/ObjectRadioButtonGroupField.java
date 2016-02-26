@@ -19,15 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.HashMap;
-
-import javax.swing.ButtonGroup;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
@@ -36,16 +27,26 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
+import javax.swing.*;
+import javax.swing.event.ListSelectionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Vector;
+
 public class ObjectRadioButtonGroupField extends ObjectDataInputField
 {
 	public ObjectRadioButtonGroupField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
 		super(projectToUse, refToUse, tagToUse);
+
+		question = questionToUse;
 		group = new ButtonGroup();
 		panel = new OneRowPanel();
 		panel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		buttonsByCode = new HashMap<String, JRadioButton>();
-		
+		listSelectionListeners = new Vector<ListSelectionListener>();
+
 		for(int i = 0; i < questionToUse.size(); ++i)
 		{
 			ChoiceItem choiceItem = questionToUse.getChoices()[i];
@@ -57,6 +58,17 @@ public class ObjectRadioButtonGroupField extends ObjectDataInputField
 		}
 		addFocusListener();
 		setText("");
+	}
+
+	public void addListSelectionListener(ListSelectionListener listSelectionListenerToAdd)
+	{
+		if (!listSelectionListeners.contains(listSelectionListenerToAdd))
+			listSelectionListeners.add(listSelectionListenerToAdd);
+	}
+
+	public void removeListSelectionListener(ListSelectionListener listSelectionListenerToRemove)
+	{
+		listSelectionListeners.remove(listSelectionListenerToRemove);
 	}
 
 	@Override
@@ -89,6 +101,13 @@ public class ObjectRadioButtonGroupField extends ObjectDataInputField
 	void buttonWasPressed(String newCode)
 	{
 		saveSelection();
+
+		for(ListSelectionListener listSelectionListener : listSelectionListeners)
+		{
+			ChoiceItem choiceItem = question.findChoiceByCode(newCode);
+			ChoiceItemListSelectionEvent event = new ChoiceItemListSelectionEvent(choiceItem, 0, 0, false);
+			listSelectionListener.valueChanged(event);
+		}
 	}
 	
 	@Override
@@ -108,7 +127,7 @@ public class ObjectRadioButtonGroupField extends ObjectDataInputField
 	{
 		forceSave();
 	}
-	
+
 	class ButtonPressHandler implements ActionListener
 	{
 		public ButtonPressHandler(String codeToUse)
@@ -122,10 +141,11 @@ public class ObjectRadioButtonGroupField extends ObjectDataInputField
 		}
 
 		private String code;
-
 	}
 
+	ChoiceQuestion question;
 	private JPanel panel;
 	private ButtonGroup group;
 	HashMap<String,JRadioButton> buttonsByCode;
+	private Vector<ListSelectionListener> listSelectionListeners;
 }

@@ -22,9 +22,7 @@ package org.miradi.dialogs.resource;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import org.miradi.dialogfields.ChoiceItemListSelectionEvent;
-import org.miradi.dialogfields.ObjectCodeEditorField;
-import org.miradi.dialogfields.ObjectDataInputField;
+import org.miradi.dialogfields.*;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.ids.BaseId;
@@ -45,15 +43,24 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ObjectType.PROJECT_RESOURCE);
 
+		resourceTypeRadioButtonHandler = new ResourceTypeHandler();
 		teamMemberCheckBoxHandler = new TeamMemberHandler();
 		
 		ResourceTypeQuestion resourceTypeQuestion = new ResourceTypeQuestion();
-		addField(createRadioChoiceField(new ORef(ProjectResourceSchema.getObjectType(), idToEdit), ProjectResource.TAG_RESOURCE_TYPE, resourceTypeQuestion));
+		resourceTypeField = createRadioChoiceField(new ORef(ProjectResourceSchema.getObjectType(), idToEdit), ProjectResource.TAG_RESOURCE_TYPE, resourceTypeQuestion);
+		addField(resourceTypeField);
 
+		firstNameLabel = new PanelTitleLabel(EAM.text(FIRST_NAME_LABEL_PERSON));
 		ObjectDataInputField givenNameField = createMediumStringField(ProjectResource.TAG_GIVEN_NAME);
+		addFieldsOnOneLine(new PanelTitleLabel(EAM.text("Label|Resource")), new Object[]{firstNameLabel, givenNameField});
+
+		lastNameLabel = new PanelTitleLabel(EAM.text(LAST_NAME_LABEL_PERSON));
 		ObjectDataInputField surNameField = createMediumStringField(ProjectResource.TAG_SUR_NAME);
+		addFieldsOnOneLine(new PanelTitleLabel(EAM.text(" ")), new Object[]{lastNameLabel, surNameField});
+
+		initialLabel = new PanelTitleLabel(EAM.text(INITIAL_LABEL_PERSON));
 		ObjectDataInputField initialField = createStringField(ProjectResource.TAG_INITIALS,STD_SHORT);
-		addFieldsOnOneLine(EAM.text("Label|Resource"), new ObjectDataInputField[]{givenNameField, surNameField, initialField});
+		addFieldsOnOneLine(new PanelTitleLabel(EAM.text(" ")), new Object[]{initialLabel, initialField});
 
 		roleCodeField = createMultiCodeField(ProjectResource.TAG_ROLE_CODES, new ResourceRoleQuestion(), 3);
 		addFieldWithCustomLabel(roleCodeField, EAM.text("Label|Roles (people only)"));
@@ -99,6 +106,7 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 	{
 		super.setObjectRefs(orefsToUse);
 		updateVisibilityOfRoleCodeField();
+		updateNameLabels();
 	}
 
 	@Override
@@ -114,14 +122,23 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 	
 	private void updateVisibilityOfRoleCodeField()
 	{
+		ORef ref = getProjectResourceRefBeingEdited();
+
+		if (ref.isValid())
+		{
+			ProjectResource projectResource = ProjectResource.find(getProject(), ref);
+			boolean isPerson = projectResource.isPerson();
+			roleCodeField.setEditable(isPerson);
+		}
+	}
+
+	private ORef getProjectResourceRefBeingEdited()
+	{
 		BaseId idBeingEdited = getObjectIdForType(ProjectResourceSchema.getObjectType());
 		if(idBeingEdited == null || idBeingEdited.isInvalid())
-			return;
-		
-		ORef ref = new ORef(ProjectResourceSchema.getObjectType(), idBeingEdited);
-		ProjectResource beingEdited = ProjectResource.find(getProject(), ref);
-		boolean isPerson = beingEdited.isPerson();
-		roleCodeField.setEditable(isPerson);
+			return ORef.INVALID;
+
+		return new ORef(ProjectResourceSchema.getObjectType(), idBeingEdited);
 	}
 
 	private String getWorkUnitRateDescriptionHint()
@@ -134,14 +151,15 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 	{
 		super.becomeActive();
 
+		resourceTypeField.addListSelectionListener(resourceTypeRadioButtonHandler);
 		costPerUnitFieldHint.setText(getWorkUnitRateDescriptionHint());
-
 		roleCodeField.getCodeListEditor().addListSelectionListener(teamMemberCheckBoxHandler);
 	}
 	
 	@Override
 	public void becomeInactive()
 	{
+		resourceTypeField.removeListSelectionListener(resourceTypeRadioButtonHandler);
 		roleCodeField.getCodeListEditor().removeListSelectionListener(teamMemberCheckBoxHandler);
 		
 		super.becomeInactive();
@@ -153,6 +171,37 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 			EAM.text("You are removing this resource from the project team, " +
 					 "so he/she will no longer appear in " +
 					 "the list of Team Members in the Summary View. ")});
+	}
+
+	private void updateNameLabels()
+	{
+		ORef ref = getProjectResourceRefBeingEdited();
+
+		if (ref.isValid())
+		{
+			ProjectResource projectResource = ProjectResource.find(getProject(), ref);
+			updateNameLabels(projectResource.isPerson());
+		}
+		else
+		{
+			updateNameLabels(true);
+		}
+	}
+
+	private void updateNameLabels(boolean isPerson)
+	{
+		if (isPerson)
+		{
+			firstNameLabel.setText(FIRST_NAME_LABEL_PERSON);
+			lastNameLabel.setText(LAST_NAME_LABEL_PERSON);
+			initialLabel.setText(INITIAL_LABEL_PERSON);
+		}
+		else
+		{
+			firstNameLabel.setText(FIRST_NAME_LABEL_GROUP);
+			lastNameLabel.setText(LAST_NAME_LABEL_GROUP);
+			initialLabel.setText(INITIAL_LABEL_GROUP);
+		}
 	}
 
 	class TeamMemberHandler implements ListSelectionListener
@@ -178,7 +227,36 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 		}
 	}
 
+	class ResourceTypeHandler implements ListSelectionListener
+	{
+		public void valueChanged(ListSelectionEvent event)
+		{
+			try
+			{
+				String code = ((ChoiceItemListSelectionEvent)event).getCode();
+				updateNameLabels(code.equals(ResourceTypeQuestion.PERSON_CODE));
+			}
+			catch(Exception e)
+			{
+				EAM.logException(e);
+			}
+		}
+	}
+
+	private PanelTitleLabel firstNameLabel;
+	private PanelTitleLabel lastNameLabel;
+	private PanelTitleLabel initialLabel;
+	private ObjectRadioButtonGroupField resourceTypeField;
 	private ObjectCodeEditorField roleCodeField;
 	private PanelTitleLabel costPerUnitFieldHint;
 	private TeamMemberHandler teamMemberCheckBoxHandler;
+	private ResourceTypeHandler resourceTypeRadioButtonHandler;
+
+	// note: whitespace is a hacktastic attempt to align columns
+	private static final String FIRST_NAME_LABEL_PERSON = "First Name   ";
+	private static final String FIRST_NAME_LABEL_GROUP = "Group Name";
+	private static final String LAST_NAME_LABEL_PERSON = "Last Name    ";
+	private static final String LAST_NAME_LABEL_GROUP = "                      ";
+	private static final String INITIAL_LABEL_PERSON = "Resource ID ";
+	private static final String INITIAL_LABEL_GROUP = "Resource ID  ";
 }
