@@ -40,6 +40,7 @@ public class PlanningTabFinancialSubPanelForm extends FieldPanelSpec
 		addLabelAndField(type, ProjectMetadata.TAG_BUDGET_SECURED_PERCENT);
 		addLabelAndField(type, ProjectMetadata.TAG_KEY_FUNDING_SOURCES);
 		addLabelAndField(type, ProjectMetadata.TAG_FINANCIAL_COMMENTS);
-		
+		addLabelAndField(type, ProjectMetadata.TAG_WORK_UNIT_RATE_DESCRIPTION);
+
 	}
 }

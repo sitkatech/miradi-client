@@ -59,7 +59,8 @@ public class ProjectMetadataSchema extends BaseObjectSchema
 		createFieldSchemaRequiredChoice(ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, QuarterColumnsVisibilityQuestion.class);
 		createFieldSchemaRequiredChoice(ProjectMetadata.TAG_DAY_COLUMNS_VISIBILITY, DayColumnsVisibilityQuestion.class);
 		createFieldSchemaRequiredChoice(ProjectMetadata.TAG_PLANNING_TREE_TARGET_NODE_POSITION, PlanningTreeTargetPositionQuestion.class);
-		
+		createFieldSchemaSingleLineUserText(ProjectMetadata.TAG_WORK_UNIT_RATE_DESCRIPTION);
+
 		createFieldSchemaFloat(ProjectMetadata.TAG_PROJECT_LATITUDE);
 		createFieldSchemaFloat(ProjectMetadata.TAG_PROJECT_LONGITUDE);
 		// NOTE: ProjectArea should be a float, but can't be for legacy reasons

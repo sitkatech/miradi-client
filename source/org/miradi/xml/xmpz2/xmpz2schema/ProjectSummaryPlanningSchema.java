@@ -48,6 +48,7 @@ public class ProjectSummaryPlanningSchema extends AbstractProjectSummarySchema
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_FINANCIAL_COMMENTS));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_DAY_COLUMNS_VISIBILITY));
+		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_WORK_UNIT_RATE_DESCRIPTION));
 		createFieldSchemaChoice(INCLUDE_WORK_PLAN_DIAGRAM_DATA, new DiagramObjectDataInclusionQuestion());
 		createFieldSchemaChoice(ProjectMetadata.TAG_WORKPLAN_DISPLAY_MODE, WorkPlanDisplayModeQuestion.class);
 	}

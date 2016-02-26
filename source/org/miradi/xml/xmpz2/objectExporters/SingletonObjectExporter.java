@@ -263,7 +263,8 @@ public class SingletonObjectExporter implements Xmpz2XmlConstants
 		writeProjectSummaryPlanningElement(ProjectMetadata.TAG_KEY_FUNDING_SOURCES);
 		writeProjectSummaryPlanningElement(ProjectMetadata.TAG_FINANCIAL_COMMENTS);
 		writeProjectSummaryPlanningElement(ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION);
-		
+		writeProjectSummaryPlanningElement(ProjectMetadata.TAG_WORK_UNIT_RATE_DESCRIPTION);
+
 		ChoiceQuestion quarterColumnsVisibilityQuestion = StaticQuestionManager.getQuestion(QuarterColumnsVisibilityQuestion.class);
 		getWriter().writeNonOptionalCodeElement(PROJECT_SUMMARY_PLANNING, ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, quarterColumnsVisibilityQuestion, getMetadata().getData(ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY));
 

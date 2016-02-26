@@ -398,7 +398,8 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_PROTECTED_AREA_CATEGORY_NOTES = "ProtectedAreaCategoryNotes";
 	public static final String TAG_PROJECT_STATUS = "ProjectStatus";
 	public static final String TAG_NEXT_STEPS = "NextSteps";
-	
+	public static final String TAG_WORK_UNIT_RATE_DESCRIPTION = "WorkUnitRateDescription";
+
 	public static final String PSEUDO_TAG_PROJECT_FILENAME = "PseudoTagProjectFilename";
 	public static final String PSEUDO_TAG_ALL_THREAT_CLASSIFICATIONS = "AllThreatClassifications";
 	

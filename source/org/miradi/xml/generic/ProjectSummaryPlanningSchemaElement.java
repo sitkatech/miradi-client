@@ -43,6 +43,7 @@ public class ProjectSummaryPlanningSchemaElement extends ObjectSchemaElement
 		createOptionalNumericField(ProjectMetadata.TAG_BUDGET_SECURED_PERCENT);
 		createOptionalTextField(ProjectMetadata.TAG_KEY_FUNDING_SOURCES);
 		createOptionalTextField(ProjectMetadata.TAG_FINANCIAL_COMMENTS);
+		createOptionalTextField(ProjectMetadata.TAG_WORKPLAN_DISPLAY_MODE);
 		createCodeField(ProjectMetadata.TAG_WORKPLAN_DISPLAY_MODE, XmlSchemaCreator.VOCABULARY_WORKPLAN_DISPLAY_MODE);
 	}
 }
