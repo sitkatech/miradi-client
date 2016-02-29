@@ -189,23 +189,30 @@ public class MigrationTo21 extends AbstractMigration
 		{
 			MigrationResult migrationResult = MigrationResult.createSuccess();
 
-			for(String codeListTag : codeListTagsToVisit)
+			if (getTypeToVisit() == ObjectType.OBJECT_TREE_TABLE_CONFIGURATION)
+				return migrationResult;
+
+			String tableIdentifier = rawObject.getData(TAG_TABLE_IDENTIFIER);
+			if (tableIdentifier.equals(WORK_PLAN_MULTI_TABLE_MODEL_UNIQUE_TREE_TABLE_IDENTIFIER))
 			{
-				CodeList codeListToMigrate = getCodeList(rawObject, codeListTag);
-
-				if (codeListTag.equals(TAG_COLUMN_SEQUENCE_CODES))
+				for(String codeListTag : codeListTagsToVisit)
 				{
-					CodeList codeListMigrated = new CodeList();
+					CodeList codeListToMigrate = getCodeList(rawObject, codeListTag);
 
-					codeListMigrated.add(META_PLANNED_WHO_TOTAL);
-					codeListMigrated.add(PSEUDO_TAG_PLANNED_WHEN_TOTAL);
-
-					for (String code : codeListToMigrate)
+					if (codeListTag.equals(TAG_COLUMN_SEQUENCE_CODES))
 					{
-						codeListMigrated.add(code);
-					}
+						CodeList codeListMigrated = new CodeList();
 
-					rawObject.setData(codeListTag, codeListMigrated.toJsonString());
+						codeListMigrated.add(META_PLANNED_WHO_TOTAL);
+						codeListMigrated.add(PSEUDO_TAG_PLANNED_WHEN_TOTAL);
+
+						for (String code : codeListToMigrate)
+						{
+							codeListMigrated.add(code);
+						}
+
+						rawObject.setData(codeListTag, codeListMigrated.toJsonString());
+					}
 				}
 			}
 
@@ -288,6 +295,9 @@ public class MigrationTo21 extends AbstractMigration
 
 	public static final int VERSION_FROM = 20;
 	public static final int VERSION_TO = 21;
+
+	public static final String TAG_TABLE_IDENTIFIER = "TableIdentifier";
+	public static final String WORK_PLAN_MULTI_TABLE_MODEL_UNIQUE_TREE_TABLE_IDENTIFIER = "MultiTableModelWorkPlanTreeTableModel";
 
 	public static final String TAG_COL_CONFIGURATION = "TagColConfiguration";
 	public static final String TAG_COLUMN_SEQUENCE_CODES = "ColumnSequenceCodes";

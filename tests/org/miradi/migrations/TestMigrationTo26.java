@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
+import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
 import org.miradi.migrations.forward.MigrationTo26;
 import org.miradi.objectdata.CodeToCodeListMapData;
 import org.miradi.objecthelpers.CodeToCodeListMap;
@@ -43,6 +44,8 @@ public class TestMigrationTo26 extends AbstractTestMigration
 		Vector<String> newRowCodesBeingAdded = getNewRowCodesAddedByMigration();
 
 		TableSettings tableSettingsBefore = getProject().createAndPopulateTableSettings();
+
+		getProject().setObjectData(tableSettingsBefore, TableSettings.TAG_TABLE_IDENTIFIER, WorkPlanTreeTablePanel.getTabSpecificModelIdentifier());
 
 		CodeToCodeListMap tableSettingsMapBefore = tableSettingsBefore.getTableSettingsMap();
 

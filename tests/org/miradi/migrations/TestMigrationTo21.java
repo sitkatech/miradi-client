@@ -24,6 +24,7 @@ import org.miradi.migrations.forward.MigrationTo21;
 import org.miradi.objecthelpers.CodeToCodeMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
@@ -77,7 +78,10 @@ public class TestMigrationTo21 extends AbstractTestMigration
 	{
 		Vector<String> newColumnSequenceCodesBeingAdded = getNewColumnSequenceCodesAddedByMigration();
 
-		ORef tableSettingsRef = getProject().createAndPopulateTableSettings().getRef();
+		TableSettings tableSettingsBefore = getProject().createAndPopulateTableSettings();
+		ORef tableSettingsRef = tableSettingsBefore.getRef();
+
+		getProject().setObjectData(tableSettingsBefore, TableSettings.TAG_TABLE_IDENTIFIER, MigrationTo21.WORK_PLAN_MULTI_TABLE_MODEL_UNIQUE_TREE_TABLE_IDENTIFIER);
 
 		CodeList columnCodes = new CodeList();
 		columnCodes.add(MigrationTo21.LEGACY_META_ASSIGNED_WHO_TOTAL);

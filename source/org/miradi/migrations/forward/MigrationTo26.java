@@ -132,16 +132,20 @@ public class MigrationTo26 extends AbstractMigration
 		{
 			MigrationResult migrationResult = MigrationResult.createSuccess();
 
-			CodeToCodeListMap tableSettingsMap = getCodeToCodeListMapData(rawObject, TAG_TABLE_SETTINGS_MAP);
+			String tableIdentifier = rawObject.getData(TAG_TABLE_IDENTIFIER);
+			if (tableIdentifier.equals(WORK_PLAN_UNIQUE_TREE_TABLE_IDENTIFIER + TAB_TAG))
+			{
+				CodeToCodeListMap tableSettingsMap = getCodeToCodeListMapData(rawObject, TAG_TABLE_SETTINGS_MAP);
 
-			CodeList rowCodes = new CodeList();
+				CodeList rowCodes = new CodeList();
 
-			rowCodes.add(RESOURCE_ASSIGNMENT);
-			rowCodes.add(EXPENSE_ASSIGNMENT);
+				rowCodes.add(RESOURCE_ASSIGNMENT);
+				rowCodes.add(EXPENSE_ASSIGNMENT);
 
-			tableSettingsMap.putCodeList(TableSettings.WORK_PLAN_ROW_CONFIGURATION_CODELIST_KEY, rowCodes);
+				tableSettingsMap.putCodeList(TableSettings.WORK_PLAN_ROW_CONFIGURATION_CODELIST_KEY, rowCodes);
 
-			rawObject.setData(TAG_TABLE_SETTINGS_MAP, tableSettingsMap.toJsonString());
+				rawObject.setData(TAG_TABLE_SETTINGS_MAP, tableSettingsMap.toJsonString());
+			}
 
 			return migrationResult;
 		}
@@ -185,6 +189,9 @@ public class MigrationTo26 extends AbstractMigration
 	public static final int VERSION_TO = 26;
 
 	public static final String TAG_TABLE_SETTINGS_MAP = "TagTableSettingsMap";
+	public static final String TAG_TABLE_IDENTIFIER = "TableIdentifier";
+	public static final String WORK_PLAN_UNIQUE_TREE_TABLE_IDENTIFIER = "WorkPlanTreeTableModel";
+	public static final String TAB_TAG = "Tab_Tag";
 	public static final String WORK_PLAN_ROW_CONFIGURATION_CODELIST_KEY = "WorkPlanRowConfigurationCodeListKey";
 	public static final String RESOURCE_ASSIGNMENT = ResourceAssignmentSchema.OBJECT_NAME;
 	public static final String EXPENSE_ASSIGNMENT = ExpenseAssignmentSchema.OBJECT_NAME;
