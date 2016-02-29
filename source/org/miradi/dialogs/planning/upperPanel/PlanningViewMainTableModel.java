@@ -171,11 +171,11 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			
 			if (isPlannedWhenColumn(column))
 			{
-				WhenPlannedEditorComponent.setWhenPlannedValue(getProject(), baseObjectForRow, createCodeList(value));
+				WhenPlannedEditorComponent.setWhenPlannedValue(getProject(), baseObjectForRow, WhenPlannedEditorComponent.createCodeList(value));
 			}
 			else if (isAssignedWhenColumn(column))
 			{
-				WhenAssignedEditorComponent.setWhenAssignedValue(getProject(), baseObjectForRow, createCodeList(value));
+				WhenAssignedEditorComponent.setWhenAssignedValue(getProject(), baseObjectForRow, WhenPlannedEditorComponent.createCodeList(value));
 			}
 			else if (isChoiceItemColumn(column))
 			{
@@ -193,11 +193,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		}
 		
  		super.setValueAt(value, row, column);	
-	}
-
-	private CodeList createCodeList(Object rawValue) throws Exception
-	{
-		return new CodeList(rawValue.toString());
 	}
 
 	@Override

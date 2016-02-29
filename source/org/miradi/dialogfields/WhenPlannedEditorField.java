@@ -111,9 +111,6 @@ public class WhenPlannedEditorField extends ObjectDataField
 		if(!isValidObject())
 			return;
 
-		if(!hasDataChanged())
-			return;
-
 		try
 		{
 			BaseObject baseObject = BaseObject.find(getProject(), getORef());

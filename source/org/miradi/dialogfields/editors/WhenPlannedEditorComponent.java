@@ -87,25 +87,7 @@ public class WhenPlannedEditorComponent extends WhenEditorComponent
 		TimePeriodCostsMap timePeriodCostsMap = resourcePlan.convertAllDateUnitEffortList();
 
 		Set<DateUnit> dateUnits = timePeriodCostsMap.getDateUnits();
-		for(DateUnit dateUnit : dateUnits)
-		{
-			if (dateUnit.isDay())
-				return AbstractDateUnitTypeQuestion.DAY_CODE;
-
-			if (dateUnit.isMonth())
-				return AbstractDateUnitTypeQuestion.MONTH_CODE;
-
-			if (dateUnit.isQuarter())
-				return AbstractDateUnitTypeQuestion.QUARTER_CODE;
-
-			if (dateUnit.isYear())
-				return AbstractDateUnitTypeQuestion.YEAR_CODE;
-
-			if (dateUnit.isProjectTotal())
-				return AbstractDateUnitTypeQuestion.PROJECT_TOTAL_CODE;
-		}
-
-		return AbstractDateUnitTypeQuestion.NONE_CODE;
+		return getDateUnitCode(dateUnits);
 	}
 
 	public static void setWhenPlannedValue(Project project, BaseObject baseObjectForRow, CodeList datesAsCodeList) throws Exception

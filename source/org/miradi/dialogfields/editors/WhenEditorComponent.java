@@ -165,24 +165,29 @@ abstract public class WhenEditorComponent extends DisposablePanel
 		TimePeriodCostsMap timePeriodCostsMap = getTimePeriodCostsMap(planningObjectRef);
 
 		Set<DateUnit> dateUnits = timePeriodCostsMap.getDateUnits();
+		return getDateUnitCode(dateUnits);
+	}
+
+	protected String getDateUnitCode(Set<DateUnit> dateUnits)
+	{
 		for(DateUnit dateUnit : dateUnits)
-		{	
+		{
 			if (dateUnit.isDay())
 				return AbstractDateUnitTypeQuestion.DAY_CODE;
-			
+
 			if (dateUnit.isMonth())
 				return AbstractDateUnitTypeQuestion.MONTH_CODE;
-			
+
 			if (dateUnit.isQuarter())
 				return AbstractDateUnitTypeQuestion.QUARTER_CODE;
-			
+
 			if (dateUnit.isYear())
 				return AbstractDateUnitTypeQuestion.YEAR_CODE;
-			
+
 			if (dateUnit.isProjectTotal())
 				return AbstractDateUnitTypeQuestion.PROJECT_TOTAL_CODE;
 		}
-		
+
 		return AbstractDateUnitTypeQuestion.NONE_CODE;
 	}
 
@@ -198,6 +203,11 @@ abstract public class WhenEditorComponent extends DisposablePanel
 		}
 
 		return dateUnitEffortList;
+	}
+
+	public static CodeList createCodeList(Object rawValue) throws Exception
+	{
+		return new CodeList(rawValue.toString());
 	}
 
 	public void setPlanningObjectRefs(ORefList planningObjectRefsToUse)
@@ -219,15 +229,23 @@ abstract public class WhenEditorComponent extends DisposablePanel
 	public CodeList getStartEndCodes() throws Exception
 	{
 		CodeList startEndCodes = new CodeList();
-		if (getStartDateUnit() != null)
-			startEndCodes.add(getStartDateUnit().getDateUnitCode());
-		
-		if (getEndDateUnit() != null)
-			startEndCodes.add(getEndDateUnit().getDateUnitCode());
+
+		DateUnit startDateUnit = getStartDateUnit();
+		DateUnit endDateUnit = getEndDateUnit();
+
+		// if both dates supplied, then end date must be >= start date
+		if (startDateUnit != null && endDateUnit != null && startDateUnit.compareTo(endDateUnit) > 0)
+			endDateUnit = startDateUnit;
+
+		if (startDateUnit != null)
+			startEndCodes.add(startDateUnit.getDateUnitCode());
+
+		if (endDateUnit != null)
+			startEndCodes.add(endDateUnit.getDateUnitCode());
 		
 		return startEndCodes;
 	}
-	
+
 	private DateUnit getStartDateUnit() throws Exception
 	{
 		return lowerPanel.getStartDateUnit();
