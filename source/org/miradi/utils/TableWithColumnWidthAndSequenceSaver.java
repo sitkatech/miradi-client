@@ -23,6 +23,7 @@ import java.util.EventObject;
 import java.util.HashMap;
 
 import javax.swing.JTable;
+import javax.swing.event.TableModelEvent;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
@@ -226,6 +227,14 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 	
 	//NOTE: This method is duplicated from JTable.  
 	//We want to create our own custom TableColumn
+
+	@Override
+	public void tableChanged(TableModelEvent e)
+	{
+		createDefaultColumnsFromModel();
+		super.tableChanged(e);
+	}
+
 	@Override
 	public void createDefaultColumnsFromModel() 
 	{

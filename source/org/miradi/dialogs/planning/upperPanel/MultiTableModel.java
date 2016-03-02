@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Vector;
 
 import javax.swing.event.TableModelEvent;
@@ -36,17 +38,27 @@ public class MultiTableModel extends AbstractTableModel implements ChoiceItemTab
 	{
 		subViewModelIdentifier = subViewModelIdentifierToUse;
 		models = new Vector<ChoiceItemTableModel>();
+		modelListenerMap = new HashMap<ChoiceItemTableModel, TableModelListener>();
 	}
 	
 	public void removeAllModels()
 	{
+		for (Map.Entry<ChoiceItemTableModel, TableModelListener> modelToRemove: modelListenerMap.entrySet())
+		{
+			modelToRemove.getKey().removeTableModelListener(modelToRemove.getValue());
+		}
+
+		modelListenerMap.clear();
 		models.clear();
 	}
 
 	public void addModel(ChoiceItemTableModel modelToAdd)
 	{
 		models.add(modelToAdd);
-		modelToAdd.addTableModelListener(new EventPropagator());
+		EventPropagator eventPropagator = new EventPropagator();
+		modelToAdd.addTableModelListener(eventPropagator);
+		modelListenerMap.put(modelToAdd, eventPropagator);
+
 		fireTableStructureChanged();
 	}
 	
@@ -158,5 +170,6 @@ public class MultiTableModel extends AbstractTableModel implements ChoiceItemTab
 	}
 	
 	private Vector<ChoiceItemTableModel> models;
+	private HashMap<ChoiceItemTableModel, TableModelListener> modelListenerMap;
 	private String subViewModelIdentifier;
 }
