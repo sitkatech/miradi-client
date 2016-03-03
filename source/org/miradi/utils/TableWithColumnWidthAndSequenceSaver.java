@@ -224,16 +224,17 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 		int defaultWidth = getColumnModel().getColumn(tableColumn).getWidth();
 		return Math.max(columnHeaderWidth, defaultWidth);
 	}
-	
-	//NOTE: This method is duplicated from JTable.  
-	//We want to create our own custom TableColumn
 
 	@Override
 	public void tableChanged(TableModelEvent e)
 	{
-		createDefaultColumnsFromModel();
+		if (e.getFirstRow() == TableModelEvent.HEADER_ROW)
+			createDefaultColumnsFromModel();
 		super.tableChanged(e);
 	}
+
+	//NOTE: This method is duplicated from JTable.
+	//We want to create our own custom TableColumn
 
 	@Override
 	public void createDefaultColumnsFromModel() 
