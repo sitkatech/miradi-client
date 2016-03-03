@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-29 02:51-0800\n"
+"POT-Creation-Date: 2016-03-03 04:36-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Mongolian (http://www.transifex.com/projects/p/miradi-client/"
@@ -4675,9 +4675,9 @@ msgstr "Хаяг|FOS"
 msgid "Label|Human Stakeholder Pop Size"
 msgstr "Хаяг|Оролцогч  хүмүүсийн тоо"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:84
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:86
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:72
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:39
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:40
 msgid "Label|IM Address"
 msgstr "Хаяг|IM хаяг"
 
@@ -4750,9 +4750,9 @@ msgstr "Хаяг|Байгууллагуудтай харьцах"
 msgid "Label|Organization"
 msgstr "Хаяг|Байгууллага"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:73
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:75
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:61
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:35
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:36
 msgid "Label|Phone Numbers"
 msgstr "Хаяг|Утасны дугаарууд"
 
@@ -4783,8 +4783,8 @@ msgstr "Хаяг|Ховор ажиглалт"
 msgid "Label|Resource"
 msgstr "Хаяг|Нөөц"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:66
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:34
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:68
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:35
 msgid "Label|Roles (people only)"
 msgstr "Хаяг|Үүрэг роль (зөвхөн хүмүүс)"
 
@@ -6196,7 +6196,7 @@ msgstr "Хамааралтай төслүүд"
 msgid "Relevant Strategies and Activities"
 msgstr "Холбогдох стратеги ба үйл ажиллагаа"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:170
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:172
 msgid "Remove Team Member"
 msgstr "Багийн гишүүнийг хасах"
 
@@ -8652,7 +8652,7 @@ msgstr "Гарчиг|Төслийн Файлын нэр"
 msgid "Title|Report Template Properties"
 msgstr "Гарчиг|Тайлангийн загварын агуулга"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:101
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:103
 msgid "Title|Resource Properties"
 msgstr "Гарчиг|Нөөцийн агуулга"
 
@@ -9325,7 +9325,7 @@ msgstr "Иен (Япон)"
 msgid "Yes"
 msgstr "Тийм"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:171
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:173
 msgid ""
 "You are removing this resource from the project team, so he/she will no "
 "longer appear in the list of Team Members in the Summary View. "
@@ -9583,6 +9583,9 @@ msgid "FieldLabel|7.ProjectResource|Resource"
 msgstr "БаганыХаяг|7.Төслийн Нөөц|Нөөц"
 
 msgid "FieldLabel|7.IsCcnCoach|CCN Coach"
+msgstr ""
+
+msgid "FieldLabel|7.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
 
 msgid "FieldLabel|8.Indicator|Indicator"

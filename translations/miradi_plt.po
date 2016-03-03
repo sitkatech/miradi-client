@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-29 02:51-0800\n"
+"POT-Creation-Date: 2016-03-03 04:36-0800\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -4457,9 +4457,9 @@ msgstr ""
 msgid "Label|Human Stakeholder Pop Size"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:84
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:86
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:72
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:39
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:40
 msgid "Label|IM Address"
 msgstr ""
 
@@ -4530,9 +4530,9 @@ msgstr ""
 msgid "Label|Organization"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:73
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:75
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:61
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:35
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:36
 msgid "Label|Phone Numbers"
 msgstr ""
 
@@ -4563,8 +4563,8 @@ msgstr ""
 msgid "Label|Resource"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:66
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:34
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:68
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:35
 msgid "Label|Roles (people only)"
 msgstr ""
 
@@ -5927,7 +5927,7 @@ msgstr ""
 msgid "Relevant Strategies and Activities"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:170
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:172
 msgid "Remove Team Member"
 msgstr ""
 
@@ -8265,7 +8265,7 @@ msgstr ""
 msgid "Title|Report Template Properties"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:101
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:103
 msgid "Title|Resource Properties"
 msgstr ""
 
@@ -8880,7 +8880,7 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:171
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:173
 msgid ""
 "You are removing this resource from the project team, so he/she will no "
 "longer appear in the list of Team Members in the Summary View. "
@@ -9129,6 +9129,9 @@ msgid "FieldLabel|7.ProjectResource|Resource"
 msgstr ""
 
 msgid "FieldLabel|7.IsCcnCoach|CCN Coach"
+msgstr ""
+
+msgid "FieldLabel|7.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
 
 msgid "FieldLabel|8.Indicator|Indicator"

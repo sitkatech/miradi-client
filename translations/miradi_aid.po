@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-29 02:51-0800\n"
+"POT-Creation-Date: 2016-03-03 04:36-0800\n"
 "PO-Revision-Date: 2014-05-28 17:01+0000\n"
 "Last-Translator: nsalafsky <nick@fosonline.org>\n"
 "Language-Team: English (Estonia) (http://www.transifex.com/projects/p/miradi-"
@@ -4773,9 +4773,9 @@ msgstr "Label|FOS"
 msgid "Label|Human Stakeholder Pop Size"
 msgstr "Label|Human Stakeholder Pop Size"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:84
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:86
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:72
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:39
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:40
 msgid "Label|IM Address"
 msgstr "Label|IM Address"
 
@@ -4846,9 +4846,9 @@ msgstr "Label|Org Contact"
 msgid "Label|Organization"
 msgstr "Label|Organization"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:73
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:75
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:61
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:35
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:36
 msgid "Label|Phone Numbers"
 msgstr "Label|Phone Numbers"
 
@@ -4879,8 +4879,8 @@ msgstr "Label|Rare Tracking"
 msgid "Label|Resource"
 msgstr "Label|Resource"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:66
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:34
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:68
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:35
 msgid "Label|Roles (people only)"
 msgstr "Label|Roles (people only)"
 
@@ -6303,7 +6303,7 @@ msgstr "Related Projects"
 msgid "Relevant Strategies and Activities"
 msgstr "Relevant Interventions and Outputs"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:170
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:172
 msgid "Remove Team Member"
 msgstr "Remove Team Member"
 
@@ -8795,7 +8795,7 @@ msgstr "Title|Project Filename"
 msgid "Title|Report Template Properties"
 msgstr "Title|Report Template Properties"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:101
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:103
 msgid "Title|Resource Properties"
 msgstr "Title|Resource Properties"
 
@@ -9453,7 +9453,7 @@ msgstr "Yen (Japan)"
 msgid "Yes"
 msgstr "Yes"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:171
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:173
 msgid ""
 "You are removing this resource from the project team, so he/she will no "
 "longer appear in the list of Team Members in the Summary View. "
@@ -9712,6 +9712,9 @@ msgstr "FieldLabel|7.ProjectResource|Resource"
 
 msgid "FieldLabel|7.IsCcnCoach|CCN Coach"
 msgstr "FieldLabel|7.IsCcnCoach|CCN Coach"
+
+msgid "FieldLabel|7.TaxonomyClassificationContainer|Program Classifications"
+msgstr ""
 
 msgid "FieldLabel|8.Indicator|Indicator"
 msgstr "FieldLabel|8.Indicator|Indicator"
