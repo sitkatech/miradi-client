@@ -59,6 +59,7 @@ public class ProjectResourceSchema extends BaseObjectSchema
 		createFieldSchemaBoolean(ProjectResource.TAG_IS_CCN_COACH);
 		createFieldSchemaSingleLineUserText(ProjectResource.TAG_CUSTOM_FIELD_1);
 		createFieldSchemaSingleLineUserText(ProjectResource.TAG_CUSTOM_FIELD_2);
+		createTaxonomyClassificationSchemaField();
 	}
 	
 	public static int getObjectType()

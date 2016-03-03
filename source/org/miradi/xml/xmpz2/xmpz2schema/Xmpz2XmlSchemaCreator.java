@@ -151,6 +151,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(OBJECTIVE_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(STRESS_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(TASK_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
+		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(PROJECT_RESOURCE_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(TAXONOMY_CLASSIFICATION_CONTAINER, TAXONOMY_CLASSIFICATION);
 	}
 
@@ -199,6 +200,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		elementNames.add(createOptionalSchemaElement(OBJECTIVE_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(STRESS_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(TASK_TAXONOMY_ASSOCIATION_POOL));
+		elementNames.add(createOptionalSchemaElement(PROJECT_RESOURCE_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(ELEMENT_NAME + PREFIX + DELETED_ORPHANS_ELEMENT_NAME +  "{ text }?");
 		getSchemaWriter().defineElements(elementNames);
 		

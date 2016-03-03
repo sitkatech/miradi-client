@@ -30,7 +30,8 @@ public class ResourcePropertiesForm extends FieldPanelSpec
 	{
 		int type = ProjectResourceSchema.getObjectType();
 		addLabelAndField(type, ProjectResource.TAG_RESOURCE_TYPE);
-		addLabelAndFieldsWithLabels(EAM.text("Label|Resource"), type, new String[]{ProjectResource.TAG_GIVEN_NAME, ProjectResource.TAG_SUR_NAME, ProjectResource.TAG_INITIALS});		
+		addLabelAndFieldsWithLabels(EAM.text("Label|Resource"), type, new String[]{ProjectResource.TAG_GIVEN_NAME, ProjectResource.TAG_SUR_NAME, ProjectResource.TAG_INITIALS});
+		addMultipleTaxonomyWithEditButtonFields(type, ProjectResource.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
 		addLabelAndFieldsWithLabels(EAM.text("Label|Roles (people only)"), type, new String[]{ProjectResource.TAG_ORGANIZATION, ProjectResource.TAG_POSITION, ProjectResource.TAG_LOCATION});
 		addLabelAndFieldsWithLabels(EAM.text("Label|Phone Numbers"), type, new String[]{ProjectResource.TAG_PHONE_NUMBER, ProjectResource.TAG_PHONE_NUMBER_MOBILE, });
 		addLabelAndFieldsWithLabels(" ", type, new String[]{ProjectResource.TAG_PHONE_NUMBER_HOME, ProjectResource.TAG_PHONE_NUMBER_OTHER, });

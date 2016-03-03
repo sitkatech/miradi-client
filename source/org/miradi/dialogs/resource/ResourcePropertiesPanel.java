@@ -62,6 +62,8 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 		ObjectDataInputField initialField = createStringField(ProjectResource.TAG_INITIALS,STD_SHORT);
 		addFieldsOnOneLine(new PanelTitleLabel(EAM.text(" ")), new Object[]{initialLabel, initialField});
 
+		addTaxonomyFields(ProjectResourceSchema.getObjectType());
+
 		roleCodeField = createMultiCodeField(ProjectResource.TAG_ROLE_CODES, new ResourceRoleQuestion(), 3);
 		addFieldWithCustomLabel(roleCodeField, EAM.text("Label|Roles (people only)"));
 		addField(createStringField(ProjectResource.TAG_ORGANIZATION));
