@@ -51,6 +51,8 @@ public class ExpenseAssignmentSubPanel extends AbstractAssignmentSubPanel
 		ObjectDataInputField expenseNameField = createExpandableField(ExpenseAssignmentSchema.getObjectType(), ExpenseAssignment.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Expense"), IconManager.getExpenseIcon(), new ObjectDataInputField[]{expenseNameField});
 
+		addTaxonomyFields(ExpenseAssignmentSchema.getObjectType());
+
 		ObjectDataInputField accountingCodeDropdownField = createChoiceField(ExpenseAssignmentSchema.getObjectType(), ExpenseAssignment.TAG_ACCOUNTING_CODE_REF, new AccountingCodeQuestionWithUnspecifiedChoice(getProject()));
 		addField(accountingCodeDropdownField);
 

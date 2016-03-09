@@ -36,5 +36,6 @@ abstract public class AbstractAssignmentSchema extends AbstractPlanningObjectSch
 		
 		createFieldSchemaOptionalRef(Assignment.TAG_CATEGORY_ONE_REF);
 		createFieldSchemaOptionalRef(Assignment.TAG_CATEGORY_TWO_REF);
+		createTaxonomyClassificationSchemaField();
 	}
 }

@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Mar 03 11:56:27 GMT 2016 $
+# $LastChangedDate: Wed Mar 09 15:10:04 GMT 2016 $
 # $LastChangedRevision: 236 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/236'
 start = ConservationProject.element
@@ -77,6 +77,8 @@ ConservationProject.element = element miradi:ConservationProject
   StressTaxonomyAssociationPool.element? &
   TaskTaxonomyAssociationPool.element? &
   ProjectResourceTaxonomyAssociationPool.element? &
+  ResourceAssignmentTaxonomyAssociationPool.element? &
+  ExpenseAssignmentTaxonomyAssociationPool.element? &
   element miradi:DeletedOrphans{ text }?
 }
 
@@ -370,7 +372,8 @@ ResourceAssignment.element = element miradi:ResourceAssignment
   element miradi:ResourceAssignmentDetails { DateUnitWorkUnits.element* }? &
   element miradi:ResourceAssignmentFundingSourceId { FundingSourceId.element }? &
   element miradi:ResourceAssignmentName { formatted_text }? &
-  element miradi:ResourceAssignmentResourceId { ResourceId.element }?
+  element miradi:ResourceAssignmentResourceId { ResourceId.element }? &
+  TaxonomyClassificationContainer.element?
 }
 
 AccountingCodePool.element = element miradi:AccountingCodePool { AccountingCode.element* }
@@ -673,7 +676,8 @@ ExpenseAssignment.element = element miradi:ExpenseAssignment
   element miradi:ExpenseAssignmentBudgetCategoryTwoId { BudgetCategoryTwoId.element }? &
   element miradi:ExpenseAssignmentDetails { DateUnitExpense.element* }? &
   element miradi:ExpenseAssignmentFundingSourceId { FundingSourceId.element }? &
-  element miradi:ExpenseAssignmentName { formatted_text }?
+  element miradi:ExpenseAssignmentName { formatted_text }? &
+  TaxonomyClassificationContainer.element?
 }
 
 HumanWellbeingTargetPool.element = element miradi:HumanWellbeingTargetPool { HumanWellbeingTarget.element* }
@@ -1150,6 +1154,8 @@ ObjectiveTaxonomyAssociationPool.element = element miradi:ObjectiveTaxonomyAssoc
 StressTaxonomyAssociationPool.element = element miradi:StressTaxonomyAssociationPool { TaxonomyAssociation.element* }
 TaskTaxonomyAssociationPool.element = element miradi:TaskTaxonomyAssociationPool { TaxonomyAssociation.element* }
 ProjectResourceTaxonomyAssociationPool.element = element miradi:ProjectResourceTaxonomyAssociationPool { TaxonomyAssociation.element* }
+ResourceAssignmentTaxonomyAssociationPool.element = element miradi:ResourceAssignmentTaxonomyAssociationPool { TaxonomyAssociation.element* }
+ExpenseAssignmentTaxonomyAssociationPool.element = element miradi:ExpenseAssignmentTaxonomyAssociationPool { TaxonomyAssociation.element* }
 TaxonomyClassificationContainer.element = element miradi:TaxonomyClassificationContainer { TaxonomyClassification.element* }
 TaxonomyElementCode.element = element miradi:TaxonomyElementCode { text }
 

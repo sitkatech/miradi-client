@@ -311,6 +311,8 @@ public interface Xmpz2XmlConstants
 	public static final String STRESS_TAXONOMY_ASSOCIATION_POOL = "StressTaxonomyAssociationPool";
 	public static final String TASK_TAXONOMY_ASSOCIATION_POOL = "TaskTaxonomyAssociationPool";
 	public static final String PROJECT_RESOURCE_TAXONOMY_ASSOCIATION_POOL = "ProjectResourceTaxonomyAssociationPool";
+	public static final String RESOURCE_ASSIGNMENT_TAXONOMY_ASSOCIATION_POOL = "ResourceAssignmentTaxonomyAssociationPool";
+	public static final String EXPENSE_ASSIGNMENT_TAXONOMY_ASSOCIATION_POOL = "ExpenseAssignmentTaxonomyAssociationPool";
 	public static final String TAXONOMY = "Taxonomy";
 	public static final String TAXONOMY_POOL = "TaxonomyPool";
 	public static final String TAXONOMY_ASSOCIATION = "TaxonomyAssociation";
