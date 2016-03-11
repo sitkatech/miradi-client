@@ -49,7 +49,9 @@ public class TeamMemberPropertiesPanel extends ObjectDataInputPanel
 				EAM.fieldLabel(ProjectResourceSchema.getObjectType(), ProjectResource.TAG_INITIALS),
 				};
 		addFieldsOnOneLine(EAM.text("Label|Team Member"), new ProjectResourceIcon(), nameLabelTexts, nameFields);
-		
+
+		addTaxonomyFields(ProjectResourceSchema.getObjectType());
+
 		CodeList disabledRoleCodes = new CodeList(new String[] {ResourceRoleQuestion.TEAM_MEMBER_ROLE_CODE});
 		addField(createMultiCodeEditorField(ProjectResource.TAG_ROLE_CODES, new ResourceRoleQuestion(), disabledRoleCodes, 3));
 		addField(createStringField(ProjectResource.TAG_ORGANIZATION));
@@ -88,4 +90,5 @@ public class TeamMemberPropertiesPanel extends ObjectDataInputPanel
 	{
 		return EAM.text("Title|Team Properties");
 	}
+
 }

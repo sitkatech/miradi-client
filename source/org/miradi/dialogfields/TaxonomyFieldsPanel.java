@@ -89,6 +89,9 @@ public class TaxonomyFieldsPanel extends MiradiPanel
 			add(readonlyPanelPopupEditor);
 			add(new FillerLabel());
 		}
+
+		validate();
+		repaint();
 	}		
 	
 	@Override

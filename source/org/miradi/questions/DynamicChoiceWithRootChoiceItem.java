@@ -56,20 +56,20 @@ abstract public class DynamicChoiceWithRootChoiceItem extends MultiSelectDynamic
 		for (int index = 0; index < choices.length; ++index)
 		{
 			ChoiceItem choiceItem = choices[index];
-			allCodes.addAll(getCodesOfItemAndChidren(choiceItem));
+			allCodes.addAll(getCodesOfItemAndChildren(choiceItem));
 		}
 		
 		return allCodes;
 	}
 
-	private CodeList getCodesOfItemAndChidren(ChoiceItem parentChoiceItem)
+	private CodeList getCodesOfItemAndChildren(ChoiceItem parentChoiceItem)
 	{
 		CodeList allCodes = new CodeList();
 		allCodes.add(parentChoiceItem.getCode());
 		Vector<ChoiceItem> children = parentChoiceItem.getChildren();
 		for (ChoiceItem choiceItem: children)
 		{
-			allCodes.addAll(getCodesOfItemAndChidren(choiceItem));
+			allCodes.addAll(getCodesOfItemAndChildren(choiceItem));
 		}
 		
 		return allCodes;
