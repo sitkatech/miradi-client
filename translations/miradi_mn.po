@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-09 08:21-0800\n"
+"POT-Creation-Date: 2016-03-11 07:51-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Mongolian (http://www.transifex.com/projects/p/miradi-client/"
@@ -4676,7 +4676,7 @@ msgid "Label|Human Stakeholder Pop Size"
 msgstr "Хаяг|Оролцогч  хүмүүсийн тоо"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:86
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:72
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:74
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:40
 msgid "Label|IM Address"
 msgstr "Хаяг|IM хаяг"
@@ -4751,7 +4751,7 @@ msgid "Label|Organization"
 msgstr "Хаяг|Байгууллага"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:75
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:61
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:63
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:36
 msgid "Label|Phone Numbers"
 msgstr "Хаяг|Утасны дугаарууд"
@@ -8281,7 +8281,7 @@ msgstr ""
 "Энэхүү загвар нь ганц нэг даалгаварт зориулагдаагүй ба даалгаварын мэдээлэл "
 "байхгүй байна."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:78
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:80
 msgid "This person is a coach within the Conservation Coaches Network"
 msgstr ""
 
@@ -8720,7 +8720,7 @@ msgstr "Гарчиг|Даалгаврын агуулга"
 msgid "Title|Team"
 msgstr "Гарчиг|Баг"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:89
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:91
 msgid "Title|Team Properties"
 msgstr "Гарчиг|Багийн шинж чанарууд"
 

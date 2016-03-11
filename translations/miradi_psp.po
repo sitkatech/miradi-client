@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-09 08:21-0800\n"
+"POT-Creation-Date: 2016-03-11 07:51-0800\n"
 "Language: psp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -4764,7 +4764,7 @@ msgid "Label|Human Stakeholder Pop Size"
 msgstr "Label|Human Stakeholder Pop Size"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:86
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:72
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:74
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:40
 msgid "Label|IM Address"
 msgstr "Label|IM Address"
@@ -4837,7 +4837,7 @@ msgid "Label|Organization"
 msgstr "Label|Organization"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:75
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:61
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:63
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:36
 msgid "Label|Phone Numbers"
 msgstr "Label|Phone Numbers"
@@ -8409,7 +8409,7 @@ msgid ""
 msgstr ""
 "This model is not for a single assignment and has no assignment information"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:78
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:80
 msgid "This person is a coach within the Conservation Coaches Network"
 msgstr "This person is a coach within the Conservation Coaches Network"
 
@@ -8846,7 +8846,7 @@ msgstr "Title|Task Properties"
 msgid "Title|Team"
 msgstr "Title|Team"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:89
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:91
 msgid "Title|Team Properties"
 msgstr "Title|Team Properties"
 
