@@ -68,7 +68,9 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 	{
 		clear();
 
+		projectTotalCalculator.disable();
 		projectTotalCalculator = new ProjectTotalCalculator(getProject(), projectTotalCalculatorStrategyToUse);
+		projectTotalCalculator.enable();
 	}
 
 	private boolean doesCommandImpactWorkPlanBudgetMode(CommandExecutedEvent event)
