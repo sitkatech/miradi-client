@@ -22,12 +22,16 @@ package org.miradi.objectpools;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
+import org.miradi.objecthelpers.AccountingClassificationAssociationBySequenceNoSorter;
+import org.miradi.objects.AbstractTaxonomyAssociation;
 import org.miradi.objects.AccountingClassificationAssociation;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.AccountingClassificationAssociationSchema;
 import org.miradi.schemas.BaseObjectSchema;
+
+import java.util.Comparator;
 
 public class AccountingClassificationAssociationPool extends AbstractTaxonomyAssociationPool
 {
@@ -46,5 +50,11 @@ public class AccountingClassificationAssociationPool extends AbstractTaxonomyAss
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
 		return AccountingClassificationAssociation.createSchema(projectToUse);
+	}
+
+	@Override
+	public Comparator<AbstractTaxonomyAssociation> getSorter()
+	{
+		return new AccountingClassificationAssociationBySequenceNoSorter();
 	}
 }

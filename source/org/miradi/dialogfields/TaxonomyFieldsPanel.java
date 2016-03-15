@@ -26,7 +26,6 @@ import org.miradi.dialogs.base.ReadonlyPanelWithPopupEditorWithoutMainScrollPane
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.AppPreferences;
-import org.miradi.objecthelpers.BaseObjectByNameSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.TaxonomyHelper;
 import org.miradi.objectpools.AbstractTaxonomyAssociationPool;
@@ -75,7 +74,7 @@ public class TaxonomyFieldsPanel extends MiradiPanel
 		
 		BaseObject baseObject = BaseObject.find(getProject(), refToUse);
 		Vector<AbstractTaxonomyAssociation> sortedTaxonomyAssociationsForType = taxonomyAssociationPool.findTaxonomyAssociationsForBaseObject(baseObject);
-		Collections.sort(sortedTaxonomyAssociationsForType, new BaseObjectByNameSorter());
+		Collections.sort(sortedTaxonomyAssociationsForType, taxonomyAssociationPool.getSorter());
 		for(AbstractTaxonomyAssociation taxonomyAssociation : sortedTaxonomyAssociationsForType)
 		{
 			MiradiShareTaxonomy miradiShareTaxonomy = TaxonomyHelper.getTaxonomyElementList(taxonomyAssociation);

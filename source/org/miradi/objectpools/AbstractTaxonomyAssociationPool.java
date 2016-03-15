@@ -25,6 +25,7 @@ import org.miradi.ids.IdAssigner;
 import org.miradi.objects.AbstractTaxonomyAssociation;
 import org.miradi.objects.BaseObject;
 
+import java.util.Comparator;
 import java.util.Vector;
 
 abstract public class AbstractTaxonomyAssociationPool extends BaseObjectPool
@@ -38,7 +39,9 @@ abstract public class AbstractTaxonomyAssociationPool extends BaseObjectPool
 	{
 		put(miradiShareTaxonomyAssociation.getId(), miradiShareTaxonomyAssociation);
 	}
-	
+
+	abstract public Comparator<AbstractTaxonomyAssociation> getSorter();
+
 	public AbstractTaxonomyAssociation find(BaseId id)
 	{
 		return (AbstractTaxonomyAssociation) getRawObject(id);

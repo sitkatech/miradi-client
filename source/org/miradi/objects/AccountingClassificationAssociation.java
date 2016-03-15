@@ -55,7 +55,12 @@ public class AccountingClassificationAssociation extends AbstractTaxonomyAssocia
 	{
 		return false;
 	}
-	
+
+	public int getSequenceNo()
+	{
+		return getIntegerData(AccountingClassificationAssociationSchema.TAG_SEQUENCE_NO);
+	}
+
 	public static boolean canOwnThisType(int type)
 	{
 		return false;

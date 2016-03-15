@@ -22,12 +22,16 @@ package org.miradi.objectpools;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
+import org.miradi.objecthelpers.TaxonomyAssociationByNameSorter;
+import org.miradi.objects.AbstractTaxonomyAssociation;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.TaxonomyAssociationSchema;
+
+import java.util.Comparator;
 
 public class TaxonomyAssociationPool extends AbstractTaxonomyAssociationPool
 {
@@ -46,5 +50,11 @@ public class TaxonomyAssociationPool extends AbstractTaxonomyAssociationPool
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
 		return TaxonomyAssociation.createSchema(projectToUse);
+	}
+
+	@Override
+	public Comparator<AbstractTaxonomyAssociation> getSorter()
+	{
+		return new TaxonomyAssociationByNameSorter();
 	}
 }

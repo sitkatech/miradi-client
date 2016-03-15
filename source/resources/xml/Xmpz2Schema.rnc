@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Tue Mar 15 09:46:28 GMT 2016 $
+# $LastChangedDate: Tue Mar 15 14:46:40 GMT 2016 $
 # $LastChangedRevision: 236 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/236'
 start = ConservationProject.element
@@ -1293,7 +1293,7 @@ AccountingClassificationAssociation.element = element miradi:AccountingClassific
   element miradi:AccountingClassificationAssociationSelectionType { vocabulary_taxonomy_classification_selection_mode } &
   element miradi:AccountingClassificationAssociationLabel { text } &
   element miradi:AccountingClassificationAssociationDescription { text }? &
-  element miradi:AccountingClassificationAssociationSequenceNo { xsd:integer }? &
+  element miradi:AccountingClassificationAssociationSequenceNo { xsd:integer } &
   element miradi:AccountingClassificationAssociationTaxonomyCode { uri_restricted_text }
 }
 
