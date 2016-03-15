@@ -1279,6 +1279,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(projectResource, ProjectResource.TAG_RESOURCE_TYPE, ResourceTypeQuestion.GROUP_CODE);
 		fillCostPerUnitField(projectResource, "10");
 		fillObjectUsingCommand(projectResource, ProjectResource.TAG_IS_CCN_COACH, BooleanData.BOOLEAN_TRUE);
+		fillObjectUsingCommand(projectResource, BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER, createSampleTaxonomyClassificationsList());
 	}
 	
 	public void populateSubTarget(SubTarget subTarget) throws Exception
@@ -1756,6 +1757,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
 		dateUnitEffortList.add(createDateUnitEffort(2008, 2008, 10.0));
 		fillObjectUsingCommand(expenseAssignment, ExpenseAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
+		fillObjectUsingCommand(expenseAssignment, BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER, createSampleTaxonomyClassificationsList());
 	}
 	
 	public void populateResourceAssignment(ResourceAssignment resourceAssignment) throws Exception
@@ -1770,6 +1772,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
 		dateUnitEffortList.add(createDateUnitEffort(2007, 2008, 11.0));
 		fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
+		fillObjectUsingCommand(resourceAssignment, BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER, createSampleTaxonomyClassificationsList());
 	}
 	
 	public void populateEverything() throws Exception
