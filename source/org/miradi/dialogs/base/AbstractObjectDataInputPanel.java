@@ -669,9 +669,16 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return addFieldWithCustomLabel(taxonomyFields, customLabel);
 	}
 
+	private String getCustomLabelForAccountingClassificationFields(int objectType, String tagToUse)
+	{
+		String fieldLabel = Translation.fieldLabel(objectType, tagToUse);
+		String taxonomySetName = TaxonomyHelper.getProgramTaxonomySetName(this.getProject());
+		return taxonomySetName.isEmpty() ? fieldLabel : taxonomySetName + " " + EAM.text("Accounting");
+	}
+
 	public ObjectDataInputField addAccountingClassificationFields(int objectType)
 	{
-		String customLabel = this.getCustomLabelForTaxonomyFields(objectType, AbstractAssignmentSchema.TAG_ACCOUNTING_CLASSIFICATION_CONTAINER);
+		String customLabel = this.getCustomLabelForAccountingClassificationFields(objectType, AbstractAssignmentSchema.TAG_ACCOUNTING_CLASSIFICATION_CONTAINER);
 		ObjectDataInputField taxonomyFields = new TaxonomyEditorFields(getProject(), objectType, AbstractAssignmentSchema.TAG_ACCOUNTING_CLASSIFICATION_CONTAINER, getProject().getAccountingClassificationAssociationPool());
 		return addFieldWithCustomLabel(taxonomyFields, customLabel);
 	}
