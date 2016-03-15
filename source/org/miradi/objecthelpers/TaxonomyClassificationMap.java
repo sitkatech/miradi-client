@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objecthelpers;
 
 import org.miradi.main.EAM;
-import org.miradi.objects.TaxonomyAssociation;
+import org.miradi.objects.AbstractTaxonomyAssociation;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
@@ -52,7 +52,7 @@ public class TaxonomyClassificationMap extends CodeToCodeListMap
 	{
 		try
 		{
-			TaxonomyAssociation taxonomyAssociation = TaxonomyHelper.findTaxonomyAssociation(projectToUse, taxonomyAssociationCode);
+			AbstractTaxonomyAssociation taxonomyAssociation = TaxonomyHelper.findTaxonomyAssociation(projectToUse, taxonomyAssociationCode);
 			if (taxonomyAssociation == null)
 				return new CodeList();
 			

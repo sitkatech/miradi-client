@@ -331,13 +331,30 @@ public interface Xmpz2XmlConstants
 	public static final String TAXONOMY_CODE = TAXONOMY + CODE;
 	public static final String TAXONOMY_CLASSIFICATION_TAXONOMY_CODE = TAXONOMY_CLASSIFICATION + TAXONOMY + CODE;
 	public static final String TAXONOMY_TOP_LEVEL_ELEMENT_CODE = "TopLevelElementCode";
-	
+
+	public static final String RESOURCE_ASSIGNMENT_ACCOUNTING_CLASSIFICATION_ASSOCIATION_POOL = "ResourceAssignmentAccountingClassificationAssociationPool";
+	public static final String EXPENSE_ASSIGNMENT_ACCOUNTING_CLASSIFICATION_ASSOCIATION_POOL = "ExpenseAssignmentAccountingClassificationAssociationPool";
+	public static final String ACCOUNTING_CLASSIFICATION_ASSOCIATION = "AccountingClassificationAssociation";
+
+	public static final String ACCOUNTING_CLASSIFICATION = "AccountingClassification";
+	public static final String ACCOUNTING_CLASSIFICATION_CONTAINER = ACCOUNTING_CLASSIFICATION + "Container";
+	public static final String ACCOUNTING_CLASSIFICATION_TAXONOMY_ELEMENT_CODE = ACCOUNTING_CLASSIFICATION + TAXONOMY_ELEMENT_CODE;
+	public static final String ACCOUNTING_CLASSIFICATION_TAXONOMY_CODE = ACCOUNTING_CLASSIFICATION + TAXONOMY + CODE;
+
+	public static final String ACCOUNTING_CLASSIFICATION_ASSOCIATION_SELECTION_TYPE= "AccountingClassificationAssociationSelectionType";
+	public static final String ACCOUNTING_CLASSIFICATION_ASSOCIATION_LABEL = "AccountingClassificationAssociationLabel";
+	public static final String ACCOUNTING_CLASSIFICATION_ASSOCIATION_DESCRIPTION = "AccountingClassificationAssociationDescription";
+	public static final String ACCOUNTING_CLASSIFICATION_ASSOCIATION_TAXONOMY_CODE = "AccountingClassificationAssociationTaxonomyCode";
+	public static final String ACCOUNTING_CLASSIFICATION_ASSOCIATION_SEQUENCE_NO = "AccountingClassificationAssociationSequenceNo";
+	public static final String ACCOUNTING_CLASSIFICATION_ASSOCIATION_CODE = ACCOUNTING_CLASSIFICATION_ASSOCIATION + CODE;
+
 	public static final String TAXONOMY_ASSOCIATION_MULTI_SELECT = "TaxonomyAssociationMultiSelect";
 	public static final String TAXONOMY_ASSOCIATION_SELECTION_TYPE= "TaxonomyAssociationSelectionType";
 	public static final String TAXONOMY_ASSOCIATION_LABEL = "TaxonomyAssociationLabel";
 	public static final String TAXONOMY_ASSOCIATION_DESCRIPTION = "TaxonomyAssociationDescription";
 	public static final String TAXONOMY_ASSOCIATION_TAXONOMY_CODE = "TaxonomyAssociationTaxonomyCode";
 	public static final String TAXONOMY_ASSOCIATION_CODE = TAXONOMY_ASSOCIATION + CODE;
+
 	public static final String INCLUDE_WORK_PLAN_DIAGRAM_DATA = "IncludeWorkPlanDiagramData";
 	
 	public static final String VOCABULARY_TAXONOMY_CLASSIFICATION_MULTISELECT_MODE = "vocabulary_taxonomy_classification_multiselect_mode";

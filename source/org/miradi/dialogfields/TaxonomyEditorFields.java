@@ -20,19 +20,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import javax.swing.JComponent;
-
-import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.BaseObject;
+import org.miradi.objectpools.AbstractTaxonomyAssociationPool;
 import org.miradi.project.Project;
+
+import javax.swing.*;
 
 public class TaxonomyEditorFields extends ObjectDataInputField
 {
-	public TaxonomyEditorFields(Project projectToUse, int objectType)
+	public TaxonomyEditorFields(Project projectToUse, int objectType, String tagToUse, AbstractTaxonomyAssociationPool taxonomyAssociationPoolToUse)
 	{
-		super(projectToUse, ORef.createInvalidWithType(objectType), BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
+		super(projectToUse, ORef.createInvalidWithType(objectType), tagToUse);
+		taxonomyAssociationPool = taxonomyAssociationPoolToUse;
 	}
 	
 	@Override
@@ -51,10 +51,8 @@ public class TaxonomyEditorFields extends ObjectDataInputField
 	public JComponent getComponent()
 	{
 		if (panelWithFields == null)
-		{
-			panelWithFields = new TaxonomyFieldsPanel(getProject());
-		}
-		
+			panelWithFields = new TaxonomyFieldsPanel(getProject(), getTag(), taxonomyAssociationPool);
+
 		return panelWithFields;
 	}
 	
@@ -78,5 +76,6 @@ public class TaxonomyEditorFields extends ObjectDataInputField
 	
 	
 	private ORef currentRef; 
-	private TaxonomyFieldsPanel panelWithFields; 
+	private TaxonomyFieldsPanel panelWithFields;
+	private AbstractTaxonomyAssociationPool taxonomyAssociationPool;
 }

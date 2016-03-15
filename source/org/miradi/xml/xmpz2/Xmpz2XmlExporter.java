@@ -30,11 +30,12 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TaxonomyHelper;
+import org.miradi.objectpools.AccountingClassificationAssociationPool;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objectpools.TaxonomyAssociationPool;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.TaxonomyAssociation;
+import org.miradi.objects.*;
 import org.miradi.project.Project;
+import org.miradi.schemas.AccountingClassificationAssociationSchema;
 import org.miradi.schemas.TaxonomyAssociationSchema;
 import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.utils.XmlUtilities2;
@@ -115,6 +116,10 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 		for(int objectType = ObjectType.FIRST_OBJECT_TYPE; objectType < ObjectType.OBJECT_TYPE_COUNT; ++objectType)
 		{
 			exportTaxonomyAssociations(objectType);
+
+			if (ResourceAssignment.is(objectType) || ExpenseAssignment.is(objectType))
+				exportAccountingClassificationAssociations(objectType);
+
 			if (!getObjectTypeToExporterMap().containsKey(objectType))
 				continue;
 
@@ -154,11 +159,35 @@ public class Xmpz2XmlExporter extends XmlExporter implements Xmpz2XmlConstants
 	{
 		TaxonomyAssociationExporter taxonomyAssociationExporter = new TaxonomyAssociationExporter(getWriter(), TaxonomyAssociationSchema.getObjectType());
 		TaxonomyAssociationPool taxonomyAssociationPool = (TaxonomyAssociationPool) getProject().getPool(TaxonomyAssociationSchema.getObjectType());
-		Vector<TaxonomyAssociation> taxonomyAssociationsForPoolName = taxonomyAssociationPool.findTaxonomyAssociationsForPoolName(taxonomyAssociationPoolName);
+		Vector<AbstractTaxonomyAssociation> taxonomyAssociationsForPoolName = taxonomyAssociationPool.findTaxonomyAssociationsForPoolName(taxonomyAssociationPoolName);
 		getWriter().writeStartElement(taxonomyAssociationPoolName);
-		for(TaxonomyAssociation taxonomyAssociation : taxonomyAssociationsForPoolName)
+		for(AbstractTaxonomyAssociation taxonomyAssociation : taxonomyAssociationsForPoolName)
 		{
-			taxonomyAssociationExporter.writeBaseObjectDataSchemaElement(taxonomyAssociation);
+			TaxonomyAssociation typedTaxonomyAssociation = (TaxonomyAssociation) taxonomyAssociation;
+			taxonomyAssociationExporter.writeBaseObjectDataSchemaElement(typedTaxonomyAssociation);
+		}
+		getWriter().writeEndElement(taxonomyAssociationPoolName);
+	}
+
+	private void exportAccountingClassificationAssociations(int objectType) throws Exception
+	{
+		Vector<String> poolNamesForType = TaxonomyHelper.getAccountingClassificationAssociationPoolNamesForType(objectType);
+		for(String poolName : poolNamesForType)
+		{
+			exportAccountingClassificationAssociationsForBaseObjectType(poolName);
+		}
+	}
+
+	private void exportAccountingClassificationAssociationsForBaseObjectType(String taxonomyAssociationPoolName) throws Exception
+	{
+		AccountingClassificationAssociationExporter accountingClassificationAssociationExporter = new AccountingClassificationAssociationExporter(getWriter(), AccountingClassificationAssociationSchema.getObjectType());
+		AccountingClassificationAssociationPool accountingClassificationAssociationPool = (AccountingClassificationAssociationPool) getProject().getPool(AccountingClassificationAssociationSchema.getObjectType());
+		Vector<AbstractTaxonomyAssociation> accountingClassificationAssociationsForPoolName = accountingClassificationAssociationPool.findTaxonomyAssociationsForPoolName(taxonomyAssociationPoolName);
+		getWriter().writeStartElement(taxonomyAssociationPoolName);
+		for(AbstractTaxonomyAssociation accountingClassificationAssociation : accountingClassificationAssociationsForPoolName)
+		{
+			AccountingClassificationAssociation typedaccountingClassificationAssociation = (AccountingClassificationAssociation) accountingClassificationAssociation;
+			accountingClassificationAssociationExporter.writeBaseObjectDataSchemaElement(typedaccountingClassificationAssociation);
 		}
 		getWriter().writeEndElement(taxonomyAssociationPoolName);
 	}

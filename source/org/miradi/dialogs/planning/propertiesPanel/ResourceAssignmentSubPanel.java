@@ -51,6 +51,8 @@ public class ResourceAssignmentSubPanel extends AbstractAssignmentSubPanel
 		ObjectDataInputField readonlyResourceDailyRateField = createReadonlyShortTextField(ResourceAssignmentSchema.getObjectType(), ResourceAssignment.PSEUDO_TAG_PROJECT_RESOURCE_COST_PER_UNIT);
 		addField(readonlyResourceDailyRateField);
 
+		addAccountingClassificationFields(ResourceAssignmentSchema.getObjectType());
+
 		addTaxonomyFields(ResourceAssignmentSchema.getObjectType());
 
 		ObjectDataInputField accountingCodeDropdownField = createChoiceField(ResourceAssignmentSchema.getObjectType(), ResourceAssignment.TAG_ACCOUNTING_CODE_ID, new AccountingCodeIdQuestionWithUnspecifiedChoice(getProject()));

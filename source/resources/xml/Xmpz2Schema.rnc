@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Wed Mar 09 15:10:04 GMT 2016 $
+# $LastChangedDate: Tue Mar 15 09:46:28 GMT 2016 $
 # $LastChangedRevision: 236 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/236'
 start = ConservationProject.element
@@ -78,7 +78,9 @@ ConservationProject.element = element miradi:ConservationProject
   TaskTaxonomyAssociationPool.element? &
   ProjectResourceTaxonomyAssociationPool.element? &
   ResourceAssignmentTaxonomyAssociationPool.element? &
+  ResourceAssignmentAccountingClassificationAssociationPool.element? &
   ExpenseAssignmentTaxonomyAssociationPool.element? &
+  ExpenseAssignmentAccountingClassificationAssociationPool.element? &
   element miradi:DeletedOrphans{ text }?
 }
 
@@ -365,6 +367,7 @@ DiagramLink.element = element miradi:DiagramLink
 ResourceAssignmentPool.element = element miradi:ResourceAssignmentPool { ResourceAssignment.element* }
 ResourceAssignment.element = element miradi:ResourceAssignment
 {
+  AccountingClassificationContainer.element? &
   attribute Id {xsd:integer} &
   element miradi:ResourceAssignmentAccountingCodeId { AccountingCodeId.element }? &
   element miradi:ResourceAssignmentBudgetCategoryOneId { BudgetCategoryOneId.element }? &
@@ -670,6 +673,7 @@ ScopeBox.element = element miradi:ScopeBox
 ExpenseAssignmentPool.element = element miradi:ExpenseAssignmentPool { ExpenseAssignment.element* }
 ExpenseAssignment.element = element miradi:ExpenseAssignment
 {
+  AccountingClassificationContainer.element? &
   attribute Id {xsd:integer} &
   element miradi:ExpenseAssignmentAccountingCodeId { AccountingCodeId.element }? &
   element miradi:ExpenseAssignmentBudgetCategoryOneId { BudgetCategoryOneId.element }? &
@@ -1157,6 +1161,9 @@ ProjectResourceTaxonomyAssociationPool.element = element miradi:ProjectResourceT
 ResourceAssignmentTaxonomyAssociationPool.element = element miradi:ResourceAssignmentTaxonomyAssociationPool { TaxonomyAssociation.element* }
 ExpenseAssignmentTaxonomyAssociationPool.element = element miradi:ExpenseAssignmentTaxonomyAssociationPool { TaxonomyAssociation.element* }
 TaxonomyClassificationContainer.element = element miradi:TaxonomyClassificationContainer { TaxonomyClassification.element* }
+ResourceAssignmentAccountingClassificationAssociationPool.element = element miradi:ResourceAssignmentAccountingClassificationAssociationPool { AccountingClassificationAssociation.element* }
+ExpenseAssignmentAccountingClassificationAssociationPool.element = element miradi:ExpenseAssignmentAccountingClassificationAssociationPool { AccountingClassificationAssociation.element* }
+AccountingClassificationContainer.element = element miradi:AccountingClassificationContainer { AccountingClassification.element* }
 TaxonomyElementCode.element = element miradi:TaxonomyElementCode { text }
 
 ExportDetails.element = element miradi:ExportDetails
@@ -1280,12 +1287,33 @@ TaxonomyElement.element = element miradi:TaxonomyElement
   element miradi:TaxonomyElementUserCode { text }
 }
 
+AccountingClassificationAssociation.element = element miradi:AccountingClassificationAssociation
+{
+  attribute AccountingClassificationAssociationCode { uri_restricted_text } &
+  element miradi:AccountingClassificationAssociationSelectionType { vocabulary_taxonomy_classification_selection_mode } &
+  element miradi:AccountingClassificationAssociationLabel { text } &
+  element miradi:AccountingClassificationAssociationDescription { text }? &
+  element miradi:AccountingClassificationAssociationSequenceNo { xsd:integer }? &
+  element miradi:AccountingClassificationAssociationTaxonomyCode { uri_restricted_text }
+}
+
+AccountingClassification.element = element miradi:AccountingClassification
+{
+  element miradi:AccountingClassificationTaxonomyCode { uri_restricted_text } &
+  AccountingClassificationTaxonomyElementCodeContainer.element ?
+}
+
 DashboardFlagsContainer.element = element miradi:DashboardFlagsContainer
 {
 element miradi:code { vocabulary_dashboard_row_flags } *
 }
 
 TaxonomyClassificationTaxonomyElementCodeContainer.element = element miradi:TaxonomyClassificationTaxonomyElementCodeContainer
+{
+element miradi:code { uri_restricted_text } *
+}
+
+AccountingClassificationTaxonomyElementCodeContainer.element = element miradi:AccountingClassificationTaxonomyElementCodeContainer
 {
 element miradi:code { uri_restricted_text } *
 }

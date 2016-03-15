@@ -35,10 +35,10 @@ public class ReadonlyTaxonomyMultiChoiceComponent extends AbstractReadonlyChoice
 		project = projectToUse;
 		taxonomyAssociationCode = taxonomyAssociationCodeToUse;
 		taxonomyElementCodes = new CodeList();
-		initiliazeReadonlyChoices();
+		initializeReadonlyChoices();
 	}
 
-	private void initiliazeReadonlyChoices()
+	private void initializeReadonlyChoices()
 	{
 		createAndAddReadonlyLabels(new CodeList(new String[]{""}));
 	}

@@ -18,33 +18,22 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.objectpools;
+package org.miradi.schemas;
 
-import org.miradi.ids.BaseId;
-import org.miradi.ids.IdAssigner;
+import org.miradi.objectdata.AccountingClassificationMapData;
+import org.miradi.objectdata.ObjectData;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.TaxonomyAssociation;
-import org.miradi.project.ObjectManager;
-import org.miradi.project.Project;
-import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.schemas.TaxonomyAssociationSchema;
 
-public class TaxonomyAssociationPool extends AbstractTaxonomyAssociationPool
+public class FieldSchemaAccountingClassifications extends AbstractFieldSchema
 {
-	public TaxonomyAssociationPool(IdAssigner idAssignerToUse)
+	public FieldSchemaAccountingClassifications(String tagToUse)
 	{
-		super(idAssignerToUse, TaxonomyAssociationSchema.getObjectType());
+		super(tagToUse);
 	}
-	
+
 	@Override
-	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId)
+	public ObjectData createField(BaseObject baseObjectToUse)
 	{
-		return new TaxonomyAssociation(objectManager, new BaseId(actualId.asInt()));
-	}
-	
-	@Override
-	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
-	{
-		return TaxonomyAssociation.createSchema(projectToUse);
+		return new AccountingClassificationMapData(getTag());
 	}
 }

@@ -38,23 +38,9 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.AbstractUserTextDataWithHtmlFormatting;
 import org.miradi.objectdata.BooleanData;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.TaxonomyClassificationMap;
-import org.miradi.objecthelpers.TaxonomyElement;
-import org.miradi.objecthelpers.TaxonomyElementList;
-import org.miradi.objecthelpers.TaxonomyHelper;
+import org.miradi.objecthelpers.*;
 import org.miradi.objectpools.BaseObjectPool;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Cause;
-import org.miradi.objects.Dashboard;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramLink;
-import org.miradi.objects.RatingCriterion;
-import org.miradi.objects.ReportTemplate;
-import org.miradi.objects.Task;
-import org.miradi.objects.XslTemplate;
+import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.schemas.*;
@@ -197,6 +183,10 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 			BaseObjectImporter importer = typeToImporterMap.get(objectType);
 			importBaseObjects(importer);
 			importTaxonomyAssociationsForType(objectType);
+
+			if (ResourceAssignment.is(objectType) || (ExpenseAssignment.is(objectType)))
+				importAccountingClassificationAssociationsForType(objectType);
+
 			incrementProgress();
 		}
 	}
@@ -207,6 +197,16 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		for (String poolNameForType : poolNamesForType)
 		{
 			TaxonomyAssociationImporter importer = new TaxonomyAssociationImporter(this, poolNameForType, objectType);
+			importBaseObjects(importer, poolNameForType);
+		}
+	}
+
+	private void importAccountingClassificationAssociationsForType(final int objectType) throws Exception
+	{
+		Vector<String> poolNamesForType = TaxonomyHelper.getAccountingClassificationAssociationPoolNamesForType(objectType);
+		for (String poolNameForType : poolNamesForType)
+		{
+			AccountingClassificationAssociationImporter importer = new AccountingClassificationAssociationImporter(this, poolNameForType, objectType);
 			importBaseObjects(importer, poolNameForType);
 		}
 	}
@@ -654,6 +654,27 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		}
 
 		setData(destinationRef, BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER, taxonomyClassificationsList.toJsonString());
+	}
+
+	public void importAccountingClassificationList(Node node, ORef destinationRef, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		Node AccountingClassificationContainerNode = getNamedChildNode(node, ACCOUNTING_CLASSIFICATION_CONTAINER);
+		if (AccountingClassificationContainerNode == null)
+			return;
+		
+		NodeList accountingClassificationNodeList = getNodes(AccountingClassificationContainerNode, new String[]{ACCOUNTING_CLASSIFICATION, });
+		TaxonomyClassificationMap accountingClassificationsList = new TaxonomyClassificationMap();
+		for (int index = 0; index < accountingClassificationNodeList.getLength(); ++index)
+		{
+			Node accountingClassificationNode = accountingClassificationNodeList.item(index);
+			Node accountingClassificationTaxonomyCodeNode = getNamedChildNode(accountingClassificationNode, ACCOUNTING_CLASSIFICATION_TAXONOMY_CODE);
+			final String taxonomyCode = accountingClassificationTaxonomyCodeNode.getTextContent();
+			String containerElementName = Xmpz2XmlWriter.createContainerElementName(ACCOUNTING_CLASSIFICATION_TAXONOMY_ELEMENT_CODE);
+			final CodeList taxonomyElementCodes = getCodeList(accountingClassificationNode, containerElementName);
+			accountingClassificationsList.putCodeList(taxonomyCode, taxonomyElementCodes);
+		}
+
+		setData(destinationRef, AbstractAssignmentSchema.TAG_ACCOUNTING_CLASSIFICATION_CONTAINER, accountingClassificationsList.toJsonString());
 	}
 
 	@Override

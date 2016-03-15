@@ -92,6 +92,7 @@ public class Schemas
 		registerSchema(new BiophysicalFactorSchema());
 		registerSchema(new BiophysicalResultSchema());
 		registerSchema(new ResourcePlanSchema());
+		registerSchema(new AccountingClassificationAssociationSchema());
 	}
 	
 	public BaseObjectSchema get(final int objectType)

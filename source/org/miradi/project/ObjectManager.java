@@ -106,6 +106,7 @@ public class ObjectManager
 		addNormalPool(new MiradiShareTaxonomyPool(ida), MiradiShareTaxonomySchema.OBJECT_NAME);
 		addNormalPool(new TaxonomyAssociationPool(ida), TaxonomyAssociationSchema.OBJECT_NAME);
 		addNormalPool(new FutureStatusPool(ida), FutureStatusSchema.OBJECT_NAME);
+		addNormalPool(new AccountingClassificationAssociationPool(ida), AccountingClassificationAssociationSchema.OBJECT_NAME);
 	}
 
 	public Schemas getSchemas()

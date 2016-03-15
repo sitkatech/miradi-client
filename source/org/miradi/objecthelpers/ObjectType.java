@@ -25,39 +25,7 @@ import java.util.Set;
 
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
-import org.miradi.schemas.AccountingCodeSchema;
-import org.miradi.schemas.AudienceSchema;
-import org.miradi.schemas.BudgetCategoryOneSchema;
-import org.miradi.schemas.BudgetCategoryTwoSchema;
-import org.miradi.schemas.ConceptualModelDiagramSchema;
-import org.miradi.schemas.CostAllocationRuleSchema;
-import org.miradi.schemas.DashboardSchema;
-import org.miradi.schemas.FosProjectDataSchema;
-import org.miradi.schemas.FundingSourceSchema;
-import org.miradi.schemas.IucnRedlistSpeciesSchema;
-import org.miradi.schemas.MiradiShareProjectDataSchema;
-import org.miradi.schemas.MiradiShareTaxonomySchema;
-import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
-import org.miradi.schemas.OrganizationSchema;
-import org.miradi.schemas.OtherNotableSpeciesSchema;
-import org.miradi.schemas.ProjectMetadataSchema;
-import org.miradi.schemas.ProjectResourceSchema;
-import org.miradi.schemas.RareProjectDataSchema;
-import org.miradi.schemas.RatingCriterionSchema;
-import org.miradi.schemas.ReportTemplateSchema;
-import org.miradi.schemas.ResultsChainDiagramSchema;
-import org.miradi.schemas.TableSettingsSchema;
-import org.miradi.schemas.TaggedObjectSetSchema;
-import org.miradi.schemas.TaxonomyAssociationSchema;
-import org.miradi.schemas.ThreatRatingCommentsDataSchema;
-import org.miradi.schemas.ThreatStressRatingSchema;
-import org.miradi.schemas.TncProjectDataSchema;
-import org.miradi.schemas.ValueOptionSchema;
-import org.miradi.schemas.ViewDataSchema;
-import org.miradi.schemas.WcpaProjectDataSchema;
-import org.miradi.schemas.WcsProjectDataSchema;
-import org.miradi.schemas.WwfProjectDataSchema;
-import org.miradi.schemas.XslTemplateSchema;
+import org.miradi.schemas.*;
 
 public class ObjectType
 {
@@ -132,6 +100,7 @@ public class ObjectType
 	public static final int BIOPHYSICAL_FACTOR = 65;
 	public static final int BIOPHYSICAL_RESULT = 66;
 	public static final int RESOURCE_PLAN = 67;
+	public static final int ACCOUNTING_CLASSIFICATION_ASSOCIATION = 68;
 
 	// When you add a new type, be sure to:
 	// - increment OBJECT_TYPE_COUNT
@@ -139,7 +108,7 @@ public class ObjectType
 	// - IF it is a top-level object, add it to getTopLevelObjectTypes below
 	// - add appropriate entry to FieldLabels.properties file
 
-	public static final int OBJECT_TYPE_COUNT = 68;
+	public static final int OBJECT_TYPE_COUNT = 69;
 
 	public static String getUserFriendlyObjectTypeName(Project project, int objectType)
 	{
@@ -183,6 +152,7 @@ public class ObjectType
 			MiradiShareProjectDataSchema.getObjectType(),
 			MiradiShareTaxonomySchema.getObjectType(),
 			TaxonomyAssociationSchema.getObjectType(),
+			AccountingClassificationAssociationSchema.getObjectType(),
 		};
 		
 		return new HashSet<Integer>(Arrays.asList(types));

@@ -22,18 +22,18 @@ package org.miradi.xml.xmpz2.objectImporters;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.schemas.AbstractTaxonomyAssociationSchema;
-import org.miradi.schemas.TaxonomyAssociationSchema;
+import org.miradi.schemas.AccountingClassificationAssociationSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 
 
-public class TaxonomyAssociationImporter extends BaseObjectImporter
+public class AccountingClassificationAssociationImporter extends BaseObjectImporter
 {
-	public TaxonomyAssociationImporter(Xmpz2XmlImporter importerToUse, String poolNameForTypeToUse, int parentTypeToUse)
+	public AccountingClassificationAssociationImporter(Xmpz2XmlImporter importerToUse, String poolNameForTypeToUse, int parentTypeToUse)
 	{
-		super(importerToUse, new TaxonomyAssociationSchema());
+		super(importerToUse, new AccountingClassificationAssociationSchema());
 		
-		taxonomyAssociationPoolName = poolNameForTypeToUse;
+		accountingClassificationAssociationPoolName = poolNameForTypeToUse;
 		parentType = parentTypeToUse;
 	}
 	
@@ -42,7 +42,7 @@ public class TaxonomyAssociationImporter extends BaseObjectImporter
 	{
 		super.importFields(baseObjectNode, refToUse);
 
-		getImporter().setData(refToUse, TaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_POOL_NAME, taxonomyAssociationPoolName);
+		getImporter().setData(refToUse, AccountingClassificationAssociationSchema.TAG_ACCOUNTING_CLASSIFICATION_ASSOCIATION_POOL_NAME, accountingClassificationAssociationPoolName);
 		getImporter().setData(refToUse, AbstractTaxonomyAssociationSchema.TAG_BASE_OBJECT_TYPE, parentType);
 	}
 
@@ -55,7 +55,7 @@ public class TaxonomyAssociationImporter extends BaseObjectImporter
 		if (tag.equals(AbstractTaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_CODE))
 			return true;
 		
-		if (tag.equals(TaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_POOL_NAME))
+		if (tag.equals(AccountingClassificationAssociationSchema.TAG_ACCOUNTING_CLASSIFICATION_ASSOCIATION_POOL_NAME))
 			return true;
 		
 		return false;
@@ -64,8 +64,8 @@ public class TaxonomyAssociationImporter extends BaseObjectImporter
 	@Override
 	public ORef createBaseObject(final BaseObjectImporter importer,	Node baseObjectNode) throws Exception
 	{
-		ORef newTaxonomyAssociationRef = getProject().createObject(TaxonomyAssociationSchema.getObjectType());
-		String taxonomyAssociationCode = getImporter().getAttributeValue(baseObjectNode, TAXONOMY_ASSOCIATION_CODE);
+		ORef newTaxonomyAssociationRef = getProject().createObject(AccountingClassificationAssociationSchema.getObjectType());
+		String taxonomyAssociationCode = getImporter().getAttributeValue(baseObjectNode, ACCOUNTING_CLASSIFICATION_ASSOCIATION_CODE);
 		getImporter().setData(newTaxonomyAssociationRef, AbstractTaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_CODE, taxonomyAssociationCode);
 		
 		return newTaxonomyAssociationRef;
@@ -74,15 +74,15 @@ public class TaxonomyAssociationImporter extends BaseObjectImporter
 	@Override
 	public String createPoolElementName() throws Exception
 	{
-		return taxonomyAssociationPoolName;
+		return accountingClassificationAssociationPoolName;
 	}
 	
 	@Override
 	protected String getXmpz2ElementName() throws Exception 
 	{
-		return taxonomyAssociationPoolName;
+		return accountingClassificationAssociationPoolName;
 	}
 
-	private String taxonomyAssociationPoolName;
+	private String accountingClassificationAssociationPoolName;
 	private int parentType;
 }

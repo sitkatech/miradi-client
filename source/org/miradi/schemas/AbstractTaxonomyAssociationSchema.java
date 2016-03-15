@@ -20,11 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
-import org.miradi.objects.Assignment;
+import org.miradi.questions.TaxonomyClassificationSelectionModeQuestion;
 
-abstract public class AbstractAssignmentSchema extends AbstractPlanningObjectSchema
+abstract public class AbstractTaxonomyAssociationSchema extends BaseObjectSchema
 {
-	public AbstractAssignmentSchema()
+	public AbstractTaxonomyAssociationSchema()
 	{
 		super();
 	}
@@ -32,18 +32,18 @@ abstract public class AbstractAssignmentSchema extends AbstractPlanningObjectSch
 	@Override
 	protected void fillFieldSchemas()
 	{
-		super.fillFieldSchemas();
+		super.fillFieldSchemas();	
 		
-		createFieldSchemaOptionalRef(Assignment.TAG_CATEGORY_ONE_REF);
-		createFieldSchemaOptionalRef(Assignment.TAG_CATEGORY_TWO_REF);
-		createTaxonomyClassificationSchemaField();
-		createAccountingClassificationSchemaField();
+		createFieldSchemaSingleLineUserText(TAG_TAXONOMY_ASSOCIATION_CODE);
+		createFieldSchemaChoice(TAG_SELECTION_TYPE, TaxonomyClassificationSelectionModeQuestion.class);
+		createFieldSchemaMultiLineUserText(TAG_DESCRIPTION);
+		createFieldSchemaSingleLineUserText(TAG_TAXONOMY_CODE);
+		createFieldSchemaInteger(TAG_BASE_OBJECT_TYPE);
 	}
 
-	protected void createAccountingClassificationSchemaField()
-	{
-		createAccountingClassifications(TAG_ACCOUNTING_CLASSIFICATION_CONTAINER);
-	}
-
-	public static final String TAG_ACCOUNTING_CLASSIFICATION_CONTAINER = "AccountingClassificationContainer";
+	public static final String TAG_TAXONOMY_ASSOCIATION_CODE = "Code";
+	public static final String TAG_SELECTION_TYPE = "SelectionType";
+	public static final String TAG_DESCRIPTION  = "Description";
+	public static final String TAG_TAXONOMY_CODE  = "TaxonomyCode";
+	public static final String TAG_BASE_OBJECT_TYPE = "BaseObjectType";
 }

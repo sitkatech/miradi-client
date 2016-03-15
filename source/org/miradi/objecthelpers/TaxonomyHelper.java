@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objecthelpers;
 
-import org.miradi.objectpools.TaxonomyAssociationPool;
+import org.miradi.objectpools.AbstractTaxonomyAssociationPool;
 import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.schemas.MiradiShareProjectDataSchema;
@@ -33,13 +33,22 @@ import java.util.Vector;
 
 public class TaxonomyHelper implements Xmpz2XmlConstants
 {
-	public static TaxonomyAssociation findTaxonomyAssociation(Project project, String taxonomyAssociationCode)
+	public static AbstractTaxonomyAssociation findTaxonomyAssociation(Project project, String taxonomyAssociationCode)
 	{
-		TaxonomyAssociationPool taxonomyAssociationPool = project.getTaxonomyAssociationPool();
+		AbstractTaxonomyAssociationPool accountingClassificationAssociationPool = project.getAccountingClassificationAssociationPool();
+		ORefList accountingClassificationAssociationsForType = accountingClassificationAssociationPool.getRefList();
+		for(ORef accountingClassificationAssociationRef : accountingClassificationAssociationsForType)
+		{
+			AbstractTaxonomyAssociation taxonomyAssociation = AccountingClassificationAssociation.find(project, accountingClassificationAssociationRef);
+			if (taxonomyAssociation.getTaxonomyAssociationCode().equals(taxonomyAssociationCode))
+				return taxonomyAssociation;
+		}
+
+		AbstractTaxonomyAssociationPool taxonomyAssociationPool = project.getTaxonomyAssociationPool();
 		ORefList taxonomyAssociationsForType = taxonomyAssociationPool.getRefList();
 		for(ORef taxonomyAssociationRef : taxonomyAssociationsForType)
 		{
-			TaxonomyAssociation taxonomyAssociation = TaxonomyAssociation.find(project, taxonomyAssociationRef);
+			AbstractTaxonomyAssociation taxonomyAssociation = TaxonomyAssociation.find(project, taxonomyAssociationRef);
 			if (taxonomyAssociation.getTaxonomyAssociationCode().equals(taxonomyAssociationCode))
 				return taxonomyAssociation;
 		}
@@ -47,7 +56,7 @@ public class TaxonomyHelper implements Xmpz2XmlConstants
 		return null;
 	}
 	
-	public static MiradiShareTaxonomy getTaxonomyElementList(final TaxonomyAssociation taxonomyAssociation) throws Exception
+	public static MiradiShareTaxonomy getTaxonomyElementList(final AbstractTaxonomyAssociation taxonomyAssociation) throws Exception
 	{
 		String taxonomyCode = taxonomyAssociation.getTaxonomyCode();
 		final Project projectToUse = taxonomyAssociation.getProject();
@@ -71,6 +80,17 @@ public class TaxonomyHelper implements Xmpz2XmlConstants
 		String singleItemPoolName = getSingleItemTaxonomyAssociationPoolName(objectType);
 		if (singleItemPoolName != null)
 			return convertToSingleItemVector(singleItemPoolName);
+
+		return new Vector<String>();
+	}
+
+	public static Vector<String> getAccountingClassificationAssociationPoolNamesForType(final int objectType)
+	{
+		if (ResourceAssignment.is(objectType))
+			return convertToSingleItemVector(RESOURCE_ASSIGNMENT_ACCOUNTING_CLASSIFICATION_ASSOCIATION_POOL);
+
+		if (ExpenseAssignment.is(objectType))
+			return convertToSingleItemVector(EXPENSE_ASSIGNMENT_ACCOUNTING_CLASSIFICATION_ASSOCIATION_POOL);
 
 		return new Vector<String>();
 	}
@@ -173,7 +193,7 @@ public class TaxonomyHelper implements Xmpz2XmlConstants
 
         for(String taxonomyCode : taxonomyClassificationMap.getCodes())
         {
-            TaxonomyAssociation taxonomyAssociation = findTaxonomyAssociation(project, baseObject, taxonomyCode);
+            AbstractTaxonomyAssociation taxonomyAssociation = findTaxonomyAssociation(project, baseObject, taxonomyCode);
             if (taxonomyAssociation == null)
                 return false;
 
@@ -190,12 +210,21 @@ public class TaxonomyHelper implements Xmpz2XmlConstants
         return true;
     }
 
-    private static TaxonomyAssociation findTaxonomyAssociation(Project project, BaseObject baseObject, String taxonomyCode)
+    private static AbstractTaxonomyAssociation findTaxonomyAssociation(Project project, BaseObject baseObject, String taxonomyCode)
     {
-        TaxonomyAssociationPool taxonomyAssociationPool = project.getTaxonomyAssociationPool();
-        Vector<TaxonomyAssociation> taxonomyAssociationsForBaseObject = taxonomyAssociationPool.findTaxonomyAssociationsForBaseObject(baseObject);
+        AbstractTaxonomyAssociationPool accountingClassificationAssociationPool = project.getAccountingClassificationAssociationPool();
+        Vector<AbstractTaxonomyAssociation> accountingClassificationAssociationsForBaseObject = accountingClassificationAssociationPool.findTaxonomyAssociationsForBaseObject(baseObject);
 
-        for (TaxonomyAssociation taxonomyAssociation : taxonomyAssociationsForBaseObject)
+        for (AbstractTaxonomyAssociation taxonomyAssociation : accountingClassificationAssociationsForBaseObject)
+        {
+            if (taxonomyAssociation.getTaxonomyCode().equals(taxonomyCode))
+                return taxonomyAssociation;
+        }
+
+        AbstractTaxonomyAssociationPool taxonomyAssociationPool = project.getTaxonomyAssociationPool();
+        Vector<AbstractTaxonomyAssociation> taxonomyAssociationsForBaseObject = taxonomyAssociationPool.findTaxonomyAssociationsForBaseObject(baseObject);
+
+        for (AbstractTaxonomyAssociation taxonomyAssociation : taxonomyAssociationsForBaseObject)
         {
             if (taxonomyAssociation.getTaxonomyCode().equals(taxonomyCode))
                 return taxonomyAssociation;

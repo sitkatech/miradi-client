@@ -41,7 +41,7 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.main.TransferableMiradiListVersion4;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.*;
-import org.miradi.objectpools.TaxonomyAssociationPool;
+import org.miradi.objectpools.AbstractTaxonomyAssociationPool;
 import org.miradi.objects.*;
 import org.miradi.project.FactorDeleteHelper;
 import org.miradi.project.Project;
@@ -480,13 +480,13 @@ public class TestDiagramPaster extends TestCaseWithProject
 
     private void deleteTaxonomyAssociationsForObject(Project project, int objectType) throws Exception
     {
-        TaxonomyAssociationPool taxonomyAssociationPool = project.getTaxonomyAssociationPool();
+        AbstractTaxonomyAssociationPool taxonomyAssociationPool = project.getTaxonomyAssociationPool();
 
         Vector<String> poolNamesForType = TaxonomyHelper.getTaxonomyAssociationPoolNamesForType(objectType);
         for(String taxonomyAssociationPoolName : poolNamesForType)
         {
-            Vector<TaxonomyAssociation> taxonomyAssociationsForBaseObject = taxonomyAssociationPool.findTaxonomyAssociationsForPoolName(taxonomyAssociationPoolName);
-            for (TaxonomyAssociation taxonomyAssociation : taxonomyAssociationsForBaseObject)
+            Vector<AbstractTaxonomyAssociation> taxonomyAssociationsForBaseObject = taxonomyAssociationPool.findTaxonomyAssociationsForPoolName(taxonomyAssociationPoolName);
+            for (AbstractTaxonomyAssociation taxonomyAssociation : taxonomyAssociationsForBaseObject)
             {
                 project.deleteObject(taxonomyAssociation);
             }

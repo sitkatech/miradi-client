@@ -36,21 +36,7 @@ import org.miradi.ids.IdList;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.DateUnitListData;
 import org.miradi.objectdata.ObjectData;
-import org.miradi.objecthelpers.CodeToChoiceMap;
-import org.miradi.objecthelpers.CodeToCodeListMap;
-import org.miradi.objecthelpers.CodeToUserStringMap;
-import org.miradi.objecthelpers.DateUnit;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.RelevancyOverride;
-import org.miradi.objecthelpers.RelevancyOverrideSet;
-import org.miradi.objecthelpers.StringRefMap;
-import org.miradi.objecthelpers.TaxonomyClassificationMap;
-import org.miradi.objecthelpers.TaxonomyElement;
-import org.miradi.objecthelpers.TaxonomyElementList;
-import org.miradi.objecthelpers.TaxonomyHelper;
-import org.miradi.objecthelpers.TimePeriodCosts;
+import org.miradi.objecthelpers.*;
 import org.miradi.objects.*;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.questions.*;
@@ -341,6 +327,14 @@ public class ProjectForTesting extends ProjectWithHelpers
         return taxonomyClassificationList.toJsonString();
     }
 
+    public String createSampleAccountingClassificationsList()
+    {
+		TaxonomyClassificationMap accountingClassificationMap = new TaxonomyClassificationMap();
+        accountingClassificationMap.putCodeList("randomTaxonomyCode1", createSampleFreshwaterEcoregionsCodeList());
+
+        return accountingClassificationMap.toJsonString();
+    }
+
     public void populateTaxonomyAssociationsForBaseObjectTypes() throws Exception
 	{
 		Vector<Integer> objectTypesWithTaxonomyAssociationPool = getTypesWithTaxonomyAssociationPools();
@@ -359,12 +353,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 		ORef taxonomyAssociationRef = createObject(TaxonomyAssociationSchema.getObjectType());
 		TaxonomyAssociation taxonomyAssociation = TaxonomyAssociation.find(this, taxonomyAssociationRef);
 		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_POOL_NAME, taxonomyAssociationPoolName);
-		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_BASE_OBJECT_TYPE, taxonomyAssociationParentType);
-		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_CODE, "RandomAssociationCodeFor?" + taxonomyAssociationPoolName);
+		fillObjectUsingCommand(taxonomyAssociation, AbstractTaxonomyAssociationSchema.TAG_BASE_OBJECT_TYPE, taxonomyAssociationParentType);
+		fillObjectUsingCommand(taxonomyAssociation, AbstractTaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_CODE, "RandomAssociationCodeFor?" + taxonomyAssociationPoolName);
 		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_MULTI_SELECT, TaxonomyMultiSelectModeQuestion.MULTI_SELECT_CODE);
-		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_SELECTION_TYPE, TaxonomyClassificationSelectionModeQuestion.ANY_NODE_CODE);
-		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_DESCRIPTION, "Some random description");
-		fillObjectUsingCommand(taxonomyAssociation, TaxonomyAssociationSchema.TAG_TAXONOMY_CODE, "randomTaxonomyCode1");
+		fillObjectUsingCommand(taxonomyAssociation, AbstractTaxonomyAssociationSchema.TAG_SELECTION_TYPE, TaxonomyClassificationSelectionModeQuestion.ANY_NODE_CODE);
+		fillObjectUsingCommand(taxonomyAssociation, AbstractTaxonomyAssociationSchema.TAG_DESCRIPTION, "Some random description");
+		fillObjectUsingCommand(taxonomyAssociation, AbstractTaxonomyAssociationSchema.TAG_TAXONOMY_CODE, "randomTaxonomyCode1");
 		fillObjectUsingCommand(taxonomyAssociation, BaseObject.TAG_LABEL, "RandomLabel");
 	}
 	
@@ -384,8 +378,47 @@ public class ProjectForTesting extends ProjectWithHelpers
 		typesWithTaxonomyAssociationPools.add(ObjectiveSchema.getObjectType());
 		typesWithTaxonomyAssociationPools.add(StressSchema.getObjectType());
 		typesWithTaxonomyAssociationPools.add(TaskSchema.getObjectType());
-		
+		typesWithTaxonomyAssociationPools.add(ProjectResourceSchema.getObjectType());
+		typesWithTaxonomyAssociationPools.add(ResourceAssignmentSchema.getObjectType());
+		typesWithTaxonomyAssociationPools.add(ExpenseAssignmentSchema.getObjectType());
+
 		return typesWithTaxonomyAssociationPools;
+	}
+
+	public void populateAccountingClassificationAssociationsForBaseObjectTypes() throws Exception
+	{
+		Vector<Integer> objectTypesWithAccountingClassificationAssociationPool = getTypesWithAccountingClassificationAssociationPools();
+		for(Integer accountingClassificationAssociationParentType : objectTypesWithAccountingClassificationAssociationPool)
+		{
+			Vector<String> poolNamesForType = TaxonomyHelper.getAccountingClassificationAssociationPoolNamesForType(accountingClassificationAssociationParentType);
+			for(String accountingClassificationAssociationPoolName : poolNamesForType)
+			{
+				createAndPopulateAccountingClassificationAssociation(accountingClassificationAssociationParentType, accountingClassificationAssociationPoolName);
+			}
+		}
+	}
+
+	private void createAndPopulateAccountingClassificationAssociation(Integer accountingClassificationAssociationParentType, final String accountingClassificationAssociationPoolName) throws Exception
+	{
+		ORef accountingClassificationAssociationRef = createObject(AccountingClassificationAssociationSchema.getObjectType());
+		AccountingClassificationAssociation accountingClassificationAssociation = AccountingClassificationAssociation.find(this, accountingClassificationAssociationRef);
+		fillObjectUsingCommand(accountingClassificationAssociation, AccountingClassificationAssociationSchema.TAG_ACCOUNTING_CLASSIFICATION_ASSOCIATION_POOL_NAME, accountingClassificationAssociationPoolName);
+		fillObjectUsingCommand(accountingClassificationAssociation, AbstractTaxonomyAssociationSchema.TAG_BASE_OBJECT_TYPE, accountingClassificationAssociationParentType);
+		fillObjectUsingCommand(accountingClassificationAssociation, AbstractTaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_CODE, "RandomAssociationCodeFor?" + accountingClassificationAssociationPoolName);
+		fillObjectUsingCommand(accountingClassificationAssociation, AbstractTaxonomyAssociationSchema.TAG_SELECTION_TYPE, TaxonomyClassificationSelectionModeQuestion.ANY_NODE_CODE);
+		fillObjectUsingCommand(accountingClassificationAssociation, AbstractTaxonomyAssociationSchema.TAG_DESCRIPTION, "Some random description");
+		fillObjectUsingCommand(accountingClassificationAssociation, AbstractTaxonomyAssociationSchema.TAG_TAXONOMY_CODE, "randomTaxonomyCode1");
+		fillObjectUsingCommand(accountingClassificationAssociation, AccountingClassificationAssociationSchema.TAG_SEQUENCE_NO, 1);
+		fillObjectUsingCommand(accountingClassificationAssociation, BaseObject.TAG_LABEL, "RandomLabel");
+	}
+
+	public Vector<Integer> getTypesWithAccountingClassificationAssociationPools()
+	{
+		Vector<Integer> typesWithAccountingClassificationAssociationPools = new Vector<Integer>();
+		typesWithAccountingClassificationAssociationPools.add(ResourceAssignmentSchema.getObjectType());
+		typesWithAccountingClassificationAssociationPools.add(ExpenseAssignmentSchema.getObjectType());
+
+		return typesWithAccountingClassificationAssociationPools;
 	}
 
     public ORef createResultsChainDiagram() throws Exception
@@ -1758,6 +1791,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		dateUnitEffortList.add(createDateUnitEffort(2008, 2008, 10.0));
 		fillObjectUsingCommand(expenseAssignment, ExpenseAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
 		fillObjectUsingCommand(expenseAssignment, BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER, createSampleTaxonomyClassificationsList());
+		fillObjectUsingCommand(expenseAssignment, ExpenseAssignmentSchema.TAG_ACCOUNTING_CLASSIFICATION_CONTAINER, createSampleAccountingClassificationsList());
 	}
 	
 	public void populateResourceAssignment(ResourceAssignment resourceAssignment) throws Exception
@@ -1773,6 +1807,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		dateUnitEffortList.add(createDateUnitEffort(2007, 2008, 11.0));
 		fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
 		fillObjectUsingCommand(resourceAssignment, BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER, createSampleTaxonomyClassificationsList());
+		fillObjectUsingCommand(resourceAssignment, ResourceAssignmentSchema.TAG_ACCOUNTING_CLASSIFICATION_CONTAINER, createSampleAccountingClassificationsList());
 	}
 	
 	public void populateEverything() throws Exception

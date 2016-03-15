@@ -21,12 +21,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.TaxonomyAssociation;
+import org.miradi.objects.AbstractTaxonomyAssociation;
 import org.miradi.project.Project;
 
 public class TaxonomyOneFieldObjectDataInputPanelWithListenerDelegator extends AbstractOneFieldObjectDataInputPanelWithListenerDelegator
 {
-	public TaxonomyOneFieldObjectDataInputPanelWithListenerDelegator(Project projectToUse, ORef refToUse, String tagToUse, TaxonomyAssociation taxonomyAssociation, AbstractEditorComponentWithHierarchies taxonomyLeftSideEditorComponent)
+	public TaxonomyOneFieldObjectDataInputPanelWithListenerDelegator(Project projectToUse, ORef refToUse, String tagToUse, AbstractTaxonomyAssociation taxonomyAssociation, AbstractEditorComponentWithHierarchies taxonomyLeftSideEditorComponent)
 	{
 		super(projectToUse, refToUse, tagToUse, new TaxonomyEditorComponentWrapperField(projectToUse, refToUse, tagToUse, taxonomyLeftSideEditorComponent, taxonomyAssociation), taxonomyLeftSideEditorComponent);
 	}	

@@ -32,13 +32,7 @@ import org.miradi.main.EAM;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.ObjectData;
-import org.miradi.objecthelpers.DateUnit;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.StringRefMap;
-import org.miradi.objecthelpers.TaxonomyClassificationMap;
-import org.miradi.objecthelpers.TaxonomyElement;
-import org.miradi.objecthelpers.TaxonomyElementList;
+import org.miradi.objecthelpers.*;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
@@ -434,6 +428,27 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 		writeElement(TAXONOMY_CLASSIFICATION_TAXONOMY_CODE, taxonomyCode);
 		writeCodeList(TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODE, taxonomyElementCodes);
 		writeEndElement(TAXONOMY_CLASSIFICATION);
+	}
+
+	public void writeAccountingClassifications(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, TaxonomyClassificationMap AccountingClassificationData) throws Exception
+	{
+		writeStartElement(ACCOUNTING_CLASSIFICATION_CONTAINER);
+		Set<String> taxonomyCodes = AccountingClassificationData.toHashMap().keySet();
+		for(String taxonomyCode : taxonomyCodes)
+		{
+			CodeList taxonomyElementCodes = AccountingClassificationData.getCodeList(taxonomyCode);
+			writeAccountingClassification(taxonomyCode, taxonomyElementCodes);
+		}
+		
+		writeEndElement(ACCOUNTING_CLASSIFICATION_CONTAINER);
+	}
+
+	private void writeAccountingClassification(String taxonomyCode, CodeList taxonomyElementCodes) throws Exception
+	{
+		writeStartElement(ACCOUNTING_CLASSIFICATION);
+		writeElement(ACCOUNTING_CLASSIFICATION_TAXONOMY_CODE, taxonomyCode);
+		writeCodeList(ACCOUNTING_CLASSIFICATION_TAXONOMY_ELEMENT_CODE, taxonomyElementCodes);
+		writeEndElement(ACCOUNTING_CLASSIFICATION);
 	}
 
 	private void writeField(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String data) throws Exception

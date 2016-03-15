@@ -23,14 +23,14 @@ package org.miradi.dialogfields;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.TaxonomyClassificationMap;
+import org.miradi.objects.AbstractTaxonomyAssociation;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
 public class TaxonomyEditorComponentWrapperField extends ComponentWrapperObjectDataInputField
 {
-	public TaxonomyEditorComponentWrapperField(Project projectToUse, ORef refToUse, String tagToUse, SavebleComponent componentToUse, TaxonomyAssociation taxonomyAssociationToUse)
+	public TaxonomyEditorComponentWrapperField(Project projectToUse, ORef refToUse, String tagToUse, SavebleComponent componentToUse, AbstractTaxonomyAssociation taxonomyAssociationToUse)
 	{
 		super(projectToUse, refToUse, tagToUse, componentToUse);
 		
@@ -43,7 +43,7 @@ public class TaxonomyEditorComponentWrapperField extends ComponentWrapperObjectD
 		try
 		{
 			BaseObject baseObject = BaseObject.find(getProject(), getORef());
-			TaxonomyClassificationMap taxonomyClassificationList = new TaxonomyClassificationMap(baseObject.getData(BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER));
+			TaxonomyClassificationMap taxonomyClassificationList = new TaxonomyClassificationMap(baseObject.getData(this.getTag()));
 			CodeList selectedTaxonomyElementCodes = new CodeList(super.getText());
 			final String taxonomyCode = getTaxonomyAssociation().getTaxonomyCode();
 			taxonomyClassificationList.safelyRemoveCode(taxonomyCode);
@@ -73,10 +73,10 @@ public class TaxonomyEditorComponentWrapperField extends ComponentWrapperObjectD
 		}
 	}
 
-	private TaxonomyAssociation getTaxonomyAssociation()
+	private AbstractTaxonomyAssociation getTaxonomyAssociation()
 	{
 		return taxonomyAssociation;
 	}
 	
-	private TaxonomyAssociation taxonomyAssociation;
+	private AbstractTaxonomyAssociation taxonomyAssociation;
 }

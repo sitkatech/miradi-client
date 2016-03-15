@@ -22,11 +22,11 @@ package org.miradi.xml.xmpz2;
 
 import org.miradi.objects.BaseObject;
 import org.miradi.schemas.AbstractTaxonomyAssociationSchema;
-import org.miradi.schemas.TaxonomyAssociationSchema;
+import org.miradi.schemas.AccountingClassificationAssociationSchema;
 
-public class TaxonomyAssociationExporter extends BaseObjectExporter
+public class AccountingClassificationAssociationExporter extends BaseObjectExporter
 {
-	public TaxonomyAssociationExporter(Xmpz2XmlWriter writerToUse, int objectTypeToUse)
+	public AccountingClassificationAssociationExporter(Xmpz2XmlWriter writerToUse, int objectTypeToUse)
 	{
 		super(writerToUse, objectTypeToUse);
 	}
@@ -35,7 +35,7 @@ public class TaxonomyAssociationExporter extends BaseObjectExporter
 	protected void writeStartElement(final BaseObject baseObject) throws Exception
 	{
 		final String data = baseObject.getData(AbstractTaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_CODE);
-		getWriter().writeObjectStartElementWithAttribute(baseObject, TAXONOMY_ASSOCIATION_CODE, data);
+		getWriter().writeObjectStartElementWithAttribute(baseObject, ACCOUNTING_CLASSIFICATION_ASSOCIATION_CODE, data);
 	}
 	
 	@Override
@@ -53,7 +53,7 @@ public class TaxonomyAssociationExporter extends BaseObjectExporter
 		if (tag.equals(AbstractTaxonomyAssociationSchema.TAG_BASE_OBJECT_TYPE))
 			return true;
 		
-		if (tag.equals(TaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_POOL_NAME))
+		if (tag.equals(AccountingClassificationAssociationSchema.TAG_ACCOUNTING_CLASSIFICATION_ASSOCIATION_POOL_NAME))
 			return true;
 		
 		return false;

@@ -25,7 +25,8 @@ import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.TaxonomyHelper;
-import org.miradi.objectpools.TaxonomyAssociationPool;
+import org.miradi.objectpools.AbstractTaxonomyAssociationPool;
+import org.miradi.objectpools.AccountingClassificationAssociationPool;
 import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
@@ -161,12 +162,34 @@ public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 		Vector<String> taxonomyAssociationPoolNamesForType = TaxonomyHelper.getTaxonomyAssociationPoolNamesForType(taxonomyAssociationParentType);
 		for(String taxonomyPoolNameForType : taxonomyAssociationPoolNamesForType)
 		{
-			final TaxonomyAssociationPool taxonomyAssociationPool = project.getTaxonomyAssociationPool();
-			Vector<TaxonomyAssociation> taxonomyAssociationsForType = taxonomyAssociationPool.findTaxonomyAssociationsForPoolName(taxonomyPoolNameForType);
+			final AbstractTaxonomyAssociationPool taxonomyAssociationPool = project.getTaxonomyAssociationPool();
+			Vector<AbstractTaxonomyAssociation> taxonomyAssociationsForType = taxonomyAssociationPool.findTaxonomyAssociationsForPoolName(taxonomyPoolNameForType);
 			assertEquals("Incorrect taxonomy associations imported for type:"+ taxonomyPoolNameForType + "?", 1, taxonomyAssociationsForType.size());
 		}
 	}
-	
+
+	public void testAccountingClassificationAssociations() throws Exception
+	{
+		getProject().populateAccountingClassificationAssociationsForBaseObjectTypes();
+		ProjectForTesting project = validateUsingStringWriter();
+		Vector<Integer> objectTypesWithAccountingClassificationAssociationPool = getProject().getTypesWithAccountingClassificationAssociationPools();
+		for(Integer accountingClassificationAssociationParentType : objectTypesWithAccountingClassificationAssociationPool)
+		{
+			verifyAccountingClassificationAssociationsForType(project, accountingClassificationAssociationParentType);
+		}
+	}
+
+	private void verifyAccountingClassificationAssociationsForType(ProjectForTesting project, Integer accountingClassificationAssociationParentType)
+	{
+		Vector<String> accountingClassificationAssociationPoolNamesForType = TaxonomyHelper.getAccountingClassificationAssociationPoolNamesForType(accountingClassificationAssociationParentType);
+		for(String accountingClassificationPoolNameForType : accountingClassificationAssociationPoolNamesForType)
+		{
+			final AccountingClassificationAssociationPool accountingClassificationAssociationPool = project.getAccountingClassificationAssociationPool();
+			Vector<AbstractTaxonomyAssociation> taxonomyAssociationsForType = accountingClassificationAssociationPool.findTaxonomyAssociationsForPoolName(accountingClassificationPoolNameForType);
+			assertEquals("Incorrect taxonomy associations imported for type:"+ accountingClassificationPoolNameForType + "?", 1, taxonomyAssociationsForType.size());
+		}
+	}
+
 	public void testMiradiShareProjectData() throws Exception
 	{
 		getProject().createAndPopulateMiradiShareProjectData();
@@ -472,6 +495,12 @@ public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 	{
 		Target target = getProject().createTarget();
 		getProject().populateBaseObject(target);
+		verifyRoundTripExportImport();
+	}
+
+	public void testAccountingClassificationContainer() throws Exception
+	{
+		getProject().createAndPopulateExpenseAssignment();
 		verifyRoundTripExportImport();
 	}
 

@@ -22,13 +22,13 @@ package org.miradi.questions;
 
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.TaxonomyElement;
+import org.miradi.objects.AbstractTaxonomyAssociation;
 import org.miradi.objects.MiradiShareTaxonomy;
-import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.utils.CodeList;
 
 public class MiradiShareTaxonomyQuestion extends DynamicChoiceWithRootChoiceItem
 {
-	public MiradiShareTaxonomyQuestion(MiradiShareTaxonomy miradiShareTaxonomyToUse, TaxonomyAssociation taxonomyAssociationToUse)
+	public MiradiShareTaxonomyQuestion(MiradiShareTaxonomy miradiShareTaxonomyToUse, AbstractTaxonomyAssociation taxonomyAssociationToUse)
 	{
 		miradiShareTaxonomy = miradiShareTaxonomyToUse;
 		taxonomyAssociation = taxonomyAssociationToUse;
@@ -74,7 +74,7 @@ public class MiradiShareTaxonomyQuestion extends DynamicChoiceWithRootChoiceItem
 		}
 	}
 
-	private TaxonomyAssociation getTaxonomyAssociation()
+	private AbstractTaxonomyAssociation getTaxonomyAssociation()
 	{
 		return taxonomyAssociation;
 	}
@@ -85,6 +85,6 @@ public class MiradiShareTaxonomyQuestion extends DynamicChoiceWithRootChoiceItem
 	}
 	
 	private MiradiShareTaxonomy miradiShareTaxonomy;
-	private TaxonomyAssociation taxonomyAssociation;
+	private AbstractTaxonomyAssociation taxonomyAssociation;
 	private ChoiceItemWithChildren createChoiceItems;
 }

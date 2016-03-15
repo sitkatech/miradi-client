@@ -68,6 +68,11 @@ public class Xmpz2CustomSchemaDefinitionCreator implements Xmpz2XmlConstants
 		addOptionalChildElement(elementName, getSchemaWriter().createDecimalType());
 	}
 	
+	public void addOptionalIntegerElement(String elementName)
+	{
+		addOptionalChildElement(elementName, getSchemaWriter().createIntegerType());
+	}
+
 	public void addOptionalTextSchemaElement(String elementName)
 	{
 		addChildElement(getSchemaWriter().createOptionalTextSchemaElement(elementName));

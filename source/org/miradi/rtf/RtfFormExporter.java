@@ -37,6 +37,7 @@ import org.miradi.forms.FormRow;
 import org.miradi.forms.PropertiesPanelSpec;
 import org.miradi.forms.objects.FormFieldCodeListData;
 import org.miradi.main.EAM;
+import org.miradi.objectdata.AccountingClassificationMapData;
 import org.miradi.objectdata.CodeToUserStringMapData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.TaxonomyClassificationMapData;
@@ -45,10 +46,10 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.TaxonomyClassificationMap;
 import org.miradi.objecthelpers.TaxonomyHelper;
-import org.miradi.objectpools.TaxonomyAssociationPool;
+import org.miradi.objectpools.AbstractTaxonomyAssociationPool;
+import org.miradi.objects.AbstractTaxonomyAssociation;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.MiradiShareTaxonomy;
-import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.project.CurrencyFormat;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -229,12 +230,12 @@ public class RtfFormExporter
 	{
 		ORef ref = getRefs().getRefForType(formItem.getObjectType());
 		BaseObject baseObject = getProject().findObject(ref);
-		TaxonomyAssociationPool taxonomyAssociationPool = getProject().getTaxonomyAssociationPool();		
-		Vector<TaxonomyAssociation> taxonomyAssociationsForType = taxonomyAssociationPool.findTaxonomyAssociationsForBaseObject(baseObject);
+		AbstractTaxonomyAssociationPool taxonomyAssociationPool = getProject().getTaxonomyAssociationPool();
+		Vector<AbstractTaxonomyAssociation> taxonomyAssociationsForType = taxonomyAssociationPool.findTaxonomyAssociationsForBaseObject(baseObject);
 		StringBuffer concatinatedTaxonomies = new StringBuffer();
 		for(int index = 0; index < taxonomyAssociationsForType.size(); ++index)
 		{
-			TaxonomyAssociation taxonomyAssociation = taxonomyAssociationsForType.get(index);
+			AbstractTaxonomyAssociation taxonomyAssociation = taxonomyAssociationsForType.get(index);
 			MiradiShareTaxonomy miradiShareTaxonomy = TaxonomyHelper.getTaxonomyElementList(taxonomyAssociation);
 			final MiradiShareTaxonomyQuestion miradiShareTaxonomyQuestion = new MiradiShareTaxonomyQuestion(miradiShareTaxonomy, taxonomyAssociation);
 			String choicesAsString = createLabelFromTaxonomyChoices(map, taxonomyAssociation, miradiShareTaxonomyQuestion);
@@ -251,7 +252,7 @@ public class RtfFormExporter
 		return concatinatedTaxonomies.toString();
 	}
 
-	private String createLabelFromTaxonomyChoices(TaxonomyClassificationMap map, TaxonomyAssociation taxonomyAssociation, MiradiShareTaxonomyQuestion miradiShareTaxonomyQuestion) throws Exception
+	private String createLabelFromTaxonomyChoices(TaxonomyClassificationMap map, AbstractTaxonomyAssociation taxonomyAssociation, MiradiShareTaxonomyQuestion miradiShareTaxonomyQuestion) throws Exception
 	{
 		final String taxonomyAssociationCode = taxonomyAssociation.getTaxonomyAssociationCode();
 		CodeList taxonomyElementCodes = map.getTaxonomyElementCodes(getProject(), taxonomyAssociationCode);
@@ -314,12 +315,20 @@ public class RtfFormExporter
 		if (rawObjectData.isTaxonomyClassificationMapData())
 			return createFromTaxonomyClassificationMapData((TaxonomyClassificationMapData) rawObjectData, formRow);
 	
+		if (rawObjectData.isAccountingClassificationMapData())
+			return createFromAccountingClassificationMapData((AccountingClassificationMapData) rawObjectData, formRow);
+
 		return rawObjectData.get();
 	}
 
 	private String createFromTaxonomyClassificationMapData(TaxonomyClassificationMapData rawObjectData, FormRow formRow)
 	{
 		return rawObjectData.getTaxonomyClassifications().toJsonString();
+	}
+
+	private String createFromAccountingClassificationMapData(AccountingClassificationMapData rawObjectData, FormRow formRow)
+	{
+		return rawObjectData.getAccountingClassifications().toJsonString();
 	}
 
 	private String createFromChoiceData(ObjectData choiceData)

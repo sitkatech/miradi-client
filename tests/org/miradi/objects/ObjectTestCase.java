@@ -31,34 +31,7 @@ import org.miradi.ids.IdList;
 import org.miradi.ids.TaskId;
 import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.objectdata.AbstractUserTextDataWithHtmlFormatting;
-import org.miradi.objectdata.BaseIdData;
-import org.miradi.objectdata.BooleanData;
-import org.miradi.objectdata.ChoiceData;
-import org.miradi.objectdata.CodeData;
-import org.miradi.objectdata.CodeListData;
-import org.miradi.objectdata.CodeToChoiceMapData;
-import org.miradi.objectdata.CodeToCodeListMapData;
-import org.miradi.objectdata.CodeToCodeMapData;
-import org.miradi.objectdata.CodeToUserStringMapData;
-import org.miradi.objectdata.DateData;
-import org.miradi.objectdata.DateUnitEffortListData;
-import org.miradi.objectdata.DateUnitListData;
-import org.miradi.objectdata.IdListData;
-import org.miradi.objectdata.IntegerData;
-import org.miradi.objectdata.NumberData;
-import org.miradi.objectdata.ORefData;
-import org.miradi.objectdata.ObjectData;
-import org.miradi.objectdata.PointListData;
-import org.miradi.objectdata.PseudoQuestionData;
-import org.miradi.objectdata.PseudoStringData;
-import org.miradi.objectdata.RefListData;
-import org.miradi.objectdata.RefListListData;
-import org.miradi.objectdata.RelevancyOverrideSetData;
-import org.miradi.objectdata.SingleLineUserTextData;
-import org.miradi.objectdata.TagListData;
-import org.miradi.objectdata.TaxonomyClassificationMapData;
-import org.miradi.objectdata.TaxonomyElementListData;
+import org.miradi.objectdata.*;
 import org.miradi.objecthelpers.CodeToChoiceMap;
 import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.CodeToCodeMap;
@@ -388,6 +361,10 @@ public class ObjectTestCase extends TestCaseWithProject
 		else if (field instanceof TaxonomyClassificationMapData)
 		{
 			return getProject().createSampleTaxonomyClassificationsList();
+		}
+		else if (field instanceof AccountingClassificationMapData)
+		{
+			return getProject().createSampleAccountingClassificationsList();
 		}
 		else if (field instanceof TaxonomyElementListData)
 		{

@@ -29,12 +29,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.BaseObjectPool;
 import org.miradi.objects.*;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.DashboardFlagsQuestion;
-import org.miradi.questions.InternalQuestionWithoutValues;
-import org.miradi.questions.StaticQuestionManager;
-import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
-import org.miradi.questions.TwoLetterLanguagesQuestion;
+import org.miradi.questions.*;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.CostAllocationRuleSchema;
@@ -107,6 +102,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeDiagramSizeElement();
 		writeDateUnitSchemaElements();
 		writeMiradiShareTaxonomyAssociationsPools();
+		writeMiradiShareAccountingClassificationAssociationsPools();
 		writeTaxonomyElementCode();
 		creators.add(createExporterDetailsElementCreator());
 		creators.add(creatorThresholdsElementSchemaCreator());
@@ -123,14 +119,17 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		creators.add(defineTaxonomyAssociationsElement());
 		creators.add(defineTaxonomyClassificationContainerElement());
 		creators.add(defineTaxonomyElement());
-		
+		creators.add(defineAccountingClassificationAssociationsElement());
+		creators.add(defineAccountingClassificationContainerElement());
+
 		for(Xmpz2CustomSchemaDefinitionCreator creator : creators)
 		{
 			getSchemaWriter().write(creator.createSchemaElement());
 		}
 		
 		writeDashboardFlagsContainer();
-		writeTaxonomyClassicationTaxonomyElementCodeContainer();
+		writeTaxonomyClassificationTaxonomyElementCodeContainer();
+		writeAccountingClassificationTaxonomyElementCodeContainer();
 		writeTaxonomyElementChildElementCodeContainer();
 	}
 
@@ -155,6 +154,13 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(RESOURCE_ASSIGNMENT_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(EXPENSE_ASSIGNMENT_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(TAXONOMY_CLASSIFICATION_CONTAINER, TAXONOMY_CLASSIFICATION);
+	}
+
+	private void writeMiradiShareAccountingClassificationAssociationsPools()
+	{
+		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(RESOURCE_ASSIGNMENT_ACCOUNTING_CLASSIFICATION_ASSOCIATION_POOL, ACCOUNTING_CLASSIFICATION_ASSOCIATION);
+		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(EXPENSE_ASSIGNMENT_ACCOUNTING_CLASSIFICATION_ASSOCIATION_POOL, ACCOUNTING_CLASSIFICATION_ASSOCIATION);
+		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(ACCOUNTING_CLASSIFICATION_CONTAINER, ACCOUNTING_CLASSIFICATION);
 	}
 
 	private void writeHeader()
@@ -204,7 +210,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		elementNames.add(createOptionalSchemaElement(TASK_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(PROJECT_RESOURCE_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(RESOURCE_ASSIGNMENT_TAXONOMY_ASSOCIATION_POOL));
+		elementNames.add(createOptionalSchemaElement(RESOURCE_ASSIGNMENT_ACCOUNTING_CLASSIFICATION_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(EXPENSE_ASSIGNMENT_TAXONOMY_ASSOCIATION_POOL));
+		elementNames.add(createOptionalSchemaElement(EXPENSE_ASSIGNMENT_ACCOUNTING_CLASSIFICATION_ASSOCIATION_POOL));
 		elementNames.add(ELEMENT_NAME + PREFIX + DELETED_ORPHANS_ELEMENT_NAME +  "{ text }?");
 		getSchemaWriter().defineElements(elementNames);
 		
@@ -494,7 +502,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		if (vocabularyName.equals(VOCABULARY_TNC_TERRESTRIAL_ECO_REGION))
 			return true;
-		
+
 		return vocabularyName.equals(VOCABULARY_LANGUAGE_CODE);
 	}
 	
@@ -512,7 +520,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		Vector<String> subList1 = new Vector<String>(codes.subList(0, almostHalf));
 		Vector<String> subList2 = new Vector<String>(codes);
 		subList2.removeAll(subList1);
-		
+
 		getSchemaWriter().println(VOCABULARY_TNC_TERRESTRIAL_ECO_REGION  + " = " + VOCABULARY_TNC_TERRESTRIAL_ECO_REGION_SUBSET_1 + "|" + VOCABULARY_TNC_TERRESTRIAL_ECO_REGION_SUBSET_2);
 		getSchemaWriter().println(VOCABULARY_TNC_TERRESTRIAL_ECO_REGION_SUBSET_1 + " = " + StringUtilities.joinWithOr(subList1, "'", "'"));
 		getSchemaWriter().println(VOCABULARY_TNC_TERRESTRIAL_ECO_REGION_SUBSET_2 + " = " + StringUtilities.joinWithOr(subList2, "'", "'"));
@@ -945,6 +953,19 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return creator;
 	}
 	
+	private Xmpz2CustomSchemaDefinitionCreator defineAccountingClassificationAssociationsElement()
+	{
+		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), ACCOUNTING_CLASSIFICATION_ASSOCIATION);
+		creator.addUriRestrictedAttributeElement(ACCOUNTING_CLASSIFICATION_ASSOCIATION_CODE);
+		creator.addChildElement(ACCOUNTING_CLASSIFICATION_ASSOCIATION_SELECTION_TYPE, VOCABULARY_TAXONOMY_CLASSIFICATION_SELECTION_MODE);
+		creator.addTextSchemaElement(ACCOUNTING_CLASSIFICATION_ASSOCIATION_LABEL);
+		creator.addOptionalTextSchemaElement(ACCOUNTING_CLASSIFICATION_ASSOCIATION_DESCRIPTION);
+		creator.addOptionalIntegerElement(ACCOUNTING_CLASSIFICATION_ASSOCIATION_SEQUENCE_NO);
+		creator.addUriTextSchemaElement(ACCOUNTING_CLASSIFICATION_ASSOCIATION_TAXONOMY_CODE);
+
+		return creator;
+	}
+	
 	private Xmpz2CustomSchemaDefinitionCreator defineTaxonomyAssociationsElement()
 	{
 		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), TAXONOMY_ASSOCIATION);
@@ -954,10 +975,10 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		creator.addTextSchemaElement(TAXONOMY_ASSOCIATION_LABEL);
 		creator.addOptionalTextSchemaElement(TAXONOMY_ASSOCIATION_DESCRIPTION);
 		creator.addUriTextSchemaElement(TAXONOMY_ASSOCIATION_TAXONOMY_CODE);
-		
+
 		return creator;
 	}
-	
+
 	private Xmpz2CustomSchemaDefinitionCreator defineTaxonomyElement()
 	{
 		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), TAXONOMY_ELEMENT);
@@ -975,16 +996,31 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), TAXONOMY_CLASSIFICATION);
 		creator.addChildElement(TAXONOMY_CLASSIFICATION_TAXONOMY_CODE, URI_RESTRICTED_TEXT);
 		creator.addChildElement(createContainerElement(TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODE));
-		
+
 		return creator;
 	}
-	
-	private void writeTaxonomyClassicationTaxonomyElementCodeContainer()
+
+	private void writeTaxonomyClassificationTaxonomyElementCodeContainer()
 	{
 		String containerDefinition = createCodelistSchemaElement(TAXONOMY_CLASSIFICATION_TAXONOMY_ELEMENT_CODE, new InternalQuestionWithoutValues());
 		getSchemaWriter().println(containerDefinition);
 	}
-	
+
+	private Xmpz2CustomSchemaDefinitionCreator defineAccountingClassificationContainerElement()
+	{
+		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), ACCOUNTING_CLASSIFICATION);
+		creator.addChildElement(ACCOUNTING_CLASSIFICATION_TAXONOMY_CODE, URI_RESTRICTED_TEXT);
+		creator.addChildElement(createContainerElement(ACCOUNTING_CLASSIFICATION_TAXONOMY_ELEMENT_CODE));
+
+		return creator;
+	}
+
+	private void writeAccountingClassificationTaxonomyElementCodeContainer()
+	{
+		String containerDefinition = createCodelistSchemaElement(ACCOUNTING_CLASSIFICATION_TAXONOMY_ELEMENT_CODE, new InternalQuestionWithoutValues());
+		getSchemaWriter().println(containerDefinition);
+	}
+
 	private void writeTaxonomyElementChildElementCodeContainer()
 	{
 		String containerDefinition = createCodelistSchemaElement(TAXONOMY_ELEMENT_CHILD_CODE, new InternalQuestionWithoutValues());
@@ -1208,6 +1244,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		if (TaxonomyAssociation.is(objectType))
 			return false;
 		
+		if (AccountingClassificationAssociation.is(objectType))
+			return false;
+
 		return true;
 	}
 	

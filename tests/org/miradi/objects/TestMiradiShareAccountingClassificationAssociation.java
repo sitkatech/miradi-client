@@ -18,32 +18,19 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.schemas;
+package org.miradi.objects;
 
-import org.miradi.objects.Assignment;
+import org.miradi.schemas.AccountingClassificationAssociationSchema;
 
-abstract public class AbstractAssignmentSchema extends AbstractPlanningObjectSchema
+public class TestMiradiShareAccountingClassificationAssociation extends ObjectTestCase
 {
-	public AbstractAssignmentSchema()
+	public TestMiradiShareAccountingClassificationAssociation(String name)
 	{
-		super();
+		super(name);
 	}
 	
-	@Override
-	protected void fillFieldSchemas()
+	public void testFields() throws Exception
 	{
-		super.fillFieldSchemas();
-		
-		createFieldSchemaOptionalRef(Assignment.TAG_CATEGORY_ONE_REF);
-		createFieldSchemaOptionalRef(Assignment.TAG_CATEGORY_TWO_REF);
-		createTaxonomyClassificationSchemaField();
-		createAccountingClassificationSchemaField();
+		verifyFields(AccountingClassificationAssociationSchema.getObjectType());
 	}
-
-	protected void createAccountingClassificationSchemaField()
-	{
-		createAccountingClassifications(TAG_ACCOUNTING_CLASSIFICATION_CONTAINER);
-	}
-
-	public static final String TAG_ACCOUNTING_CLASSIFICATION_CONTAINER = "AccountingClassificationContainer";
 }

@@ -39,6 +39,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.*;
 import org.miradi.rtf.RtfWriter;
+import org.miradi.schemas.AbstractAssignmentSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.utils.*;
@@ -664,7 +665,14 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public ObjectDataInputField addTaxonomyFields(int objectType)
 	{
 		String customLabel = this.getCustomLabelForTaxonomyFields(objectType, BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
-		ObjectDataInputField taxonomyFields = new TaxonomyEditorFields(getProject(), objectType);
+		ObjectDataInputField taxonomyFields = new TaxonomyEditorFields(getProject(), objectType, BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER, getProject().getTaxonomyAssociationPool());
+		return addFieldWithCustomLabel(taxonomyFields, customLabel);
+	}
+
+	public ObjectDataInputField addAccountingClassificationFields(int objectType)
+	{
+		String customLabel = this.getCustomLabelForTaxonomyFields(objectType, AbstractAssignmentSchema.TAG_ACCOUNTING_CLASSIFICATION_CONTAINER);
+		ObjectDataInputField taxonomyFields = new TaxonomyEditorFields(getProject(), objectType, AbstractAssignmentSchema.TAG_ACCOUNTING_CLASSIFICATION_CONTAINER, getProject().getAccountingClassificationAssociationPool());
 		return addFieldWithCustomLabel(taxonomyFields, customLabel);
 	}
 

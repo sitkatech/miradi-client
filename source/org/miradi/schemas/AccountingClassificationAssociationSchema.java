@@ -20,11 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
-import org.miradi.objects.Assignment;
+import org.miradi.objecthelpers.ObjectType;
 
-abstract public class AbstractAssignmentSchema extends AbstractPlanningObjectSchema
+public class AccountingClassificationAssociationSchema extends AbstractTaxonomyAssociationSchema
 {
-	public AbstractAssignmentSchema()
+	public AccountingClassificationAssociationSchema()
 	{
 		super();
 	}
@@ -32,18 +32,31 @@ abstract public class AbstractAssignmentSchema extends AbstractPlanningObjectSch
 	@Override
 	protected void fillFieldSchemas()
 	{
-		super.fillFieldSchemas();
+		super.fillFieldSchemas();	
 		
-		createFieldSchemaOptionalRef(Assignment.TAG_CATEGORY_ONE_REF);
-		createFieldSchemaOptionalRef(Assignment.TAG_CATEGORY_TWO_REF);
-		createTaxonomyClassificationSchemaField();
-		createAccountingClassificationSchemaField();
+		createFieldSchemaInteger(TAG_SEQUENCE_NO);
+		createFieldSchemaCode(TAG_ACCOUNTING_CLASSIFICATION_ASSOCIATION_POOL_NAME);
 	}
-
-	protected void createAccountingClassificationSchemaField()
+	
+	public static int getObjectType()
 	{
-		createAccountingClassifications(TAG_ACCOUNTING_CLASSIFICATION_CONTAINER);
+		return ObjectType.ACCOUNTING_CLASSIFICATION_ASSOCIATION;
+	}
+	
+	@Override
+	public int getType()
+	{
+		return getObjectType();
 	}
 
-	public static final String TAG_ACCOUNTING_CLASSIFICATION_CONTAINER = "AccountingClassificationContainer";
+	@Override
+	public String getObjectName()
+	{
+		return OBJECT_NAME;
+	}
+	
+	public static final String OBJECT_NAME = "AccountingClassificationAssociation";
+	
+	public static final String TAG_SEQUENCE_NO  = "SequenceNo";
+	public static final String TAG_ACCOUNTING_CLASSIFICATION_ASSOCIATION_POOL_NAME = "AccountingClassificationAssociationPoolName";
 }

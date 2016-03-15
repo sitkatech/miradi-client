@@ -20,10 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import java.awt.Color;
-import java.util.Collections;
-import java.util.Vector;
-
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.base.ReadonlyPanelWithPopupEditor;
 import org.miradi.dialogs.base.ReadonlyPanelWithPopupEditorWithoutMainScrollPane;
@@ -33,21 +29,27 @@ import org.miradi.main.AppPreferences;
 import org.miradi.objecthelpers.BaseObjectByNameSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.TaxonomyHelper;
-import org.miradi.objectpools.TaxonomyAssociationPool;
+import org.miradi.objectpools.AbstractTaxonomyAssociationPool;
+import org.miradi.objects.AbstractTaxonomyAssociation;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.MiradiShareTaxonomy;
-import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.project.Project;
 import org.miradi.questions.MiradiShareTaxonomyQuestion;
 import org.miradi.utils.FillerLabel;
 
+import java.awt.*;
+import java.util.Collections;
+import java.util.Vector;
+
 public class TaxonomyFieldsPanel extends MiradiPanel 
 {
-	public TaxonomyFieldsPanel(Project projectToUse)
+	public TaxonomyFieldsPanel(Project projectToUse, String tagToUse, AbstractTaxonomyAssociationPool taxonomyAssociationPoolToUse)
 	{
 		super(new OneColumnGridLayout());
 		
 		project = projectToUse;
+		tag = tagToUse;
+		taxonomyAssociationPool = taxonomyAssociationPoolToUse;
 		clearFieldsToLabelMap();
 	}
 
@@ -72,16 +74,15 @@ public class TaxonomyFieldsPanel extends MiradiPanel
 			return;
 		
 		BaseObject baseObject = BaseObject.find(getProject(), refToUse);
-		TaxonomyAssociationPool taxonomyAssociationPool = getProject().getTaxonomyAssociationPool();
-		Vector<TaxonomyAssociation> sortedTaxonomyAssociationsForType = taxonomyAssociationPool.findTaxonomyAssociationsForBaseObject(baseObject);
+		Vector<AbstractTaxonomyAssociation> sortedTaxonomyAssociationsForType = taxonomyAssociationPool.findTaxonomyAssociationsForBaseObject(baseObject);
 		Collections.sort(sortedTaxonomyAssociationsForType, new BaseObjectByNameSorter());
-		for(TaxonomyAssociation taxonomyAssociation : sortedTaxonomyAssociationsForType)
+		for(AbstractTaxonomyAssociation taxonomyAssociation : sortedTaxonomyAssociationsForType)
 		{
 			MiradiShareTaxonomy miradiShareTaxonomy = TaxonomyHelper.getTaxonomyElementList(taxonomyAssociation);
 			final MiradiShareTaxonomyQuestion miradiShareTaxonomyQuestion = new MiradiShareTaxonomyQuestion(miradiShareTaxonomy, taxonomyAssociation);
 			final String taxonomyAssociationCode = taxonomyAssociation.getTaxonomyAssociationCode();
 			
-			TaxonomyReadonlyPanelWithPopupEditorProvider provider = new TaxonomyReadonlyPanelWithPopupEditorProvider(getProject(), refToUse, miradiShareTaxonomyQuestion, taxonomyAssociationCode);
+			TaxonomyReadonlyPanelWithPopupEditorProvider provider = new TaxonomyReadonlyPanelWithPopupEditorProvider(getProject(), refToUse, miradiShareTaxonomyQuestion, taxonomyAssociationCode, tag, taxonomyAssociation);
 			ReadonlyPanelWithPopupEditor readonlyPanelPopupEditor = new ReadonlyPanelWithPopupEditorWithoutMainScrollPane(provider, taxonomyAssociation.getLabel(), miradiShareTaxonomyQuestion);
 			taxonomyReadonlyWithPopupEditorPanels.add(readonlyPanelPopupEditor);
 			
@@ -111,5 +112,7 @@ public class TaxonomyFieldsPanel extends MiradiPanel
 	}
 	
 	private Project project;
+	private String tag;
+	private AbstractTaxonomyAssociationPool taxonomyAssociationPool;
 	private Vector<ReadonlyPanelWithPopupEditor> taxonomyReadonlyWithPopupEditorPanels;
 }

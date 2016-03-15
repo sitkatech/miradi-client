@@ -22,29 +22,29 @@ package org.miradi.objectpools;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
+import org.miradi.objects.AccountingClassificationAssociation;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.TaxonomyAssociation;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.AccountingClassificationAssociationSchema;
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.schemas.TaxonomyAssociationSchema;
 
-public class TaxonomyAssociationPool extends AbstractTaxonomyAssociationPool
+public class AccountingClassificationAssociationPool extends AbstractTaxonomyAssociationPool
 {
-	public TaxonomyAssociationPool(IdAssigner idAssignerToUse)
+	public AccountingClassificationAssociationPool(IdAssigner idAssignerToUse)
 	{
-		super(idAssignerToUse, TaxonomyAssociationSchema.getObjectType());
+		super(idAssignerToUse, AccountingClassificationAssociationSchema.getObjectType());
 	}
 	
 	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId)
 	{
-		return new TaxonomyAssociation(objectManager, new BaseId(actualId.asInt()));
+		return new AccountingClassificationAssociation(objectManager, new BaseId(actualId.asInt()));
 	}
 	
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return TaxonomyAssociation.createSchema(projectToUse);
+		return AccountingClassificationAssociation.createSchema(projectToUse);
 	}
 }

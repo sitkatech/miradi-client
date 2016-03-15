@@ -25,38 +25,35 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.TaxonomyMultiSelectModeQuestion;
-import org.miradi.schemas.TaxonomyAssociationSchema;
+import org.miradi.schemas.AccountingClassificationAssociationSchema;
 
-public class TaxonomyAssociation extends AbstractTaxonomyAssociation
+public class AccountingClassificationAssociation extends AbstractTaxonomyAssociation
 {
-	public TaxonomyAssociation(ObjectManager objectManager, BaseId id)
+	public AccountingClassificationAssociation(ObjectManager objectManager, BaseId id)
 	{
 		super(objectManager, id, createSchema(objectManager));
 	}
 
-	public static TaxonomyAssociationSchema createSchema(Project projectToUse)
+	public static AccountingClassificationAssociationSchema createSchema(Project projectToUse)
 	{
 		return createSchema(projectToUse.getObjectManager());
 	}
 
-	public static TaxonomyAssociationSchema createSchema(ObjectManager objectManager)
+	public static AccountingClassificationAssociationSchema createSchema(ObjectManager objectManager)
 	{
-		return (TaxonomyAssociationSchema) objectManager.getSchemas().get(ObjectType.TAXONOMY_ASSOCIATION);
+		return (AccountingClassificationAssociationSchema) objectManager.getSchemas().get(ObjectType.ACCOUNTING_CLASSIFICATION_ASSOCIATION);
 	}
 
 	@Override
 	protected String getTaxonomyAssociationPoolName()
 	{
-		return getStringData(TaxonomyAssociationSchema.TAG_TAXONOMY_ASSOCIATION_POOL_NAME);
+		return getStringData(AccountingClassificationAssociationSchema.TAG_ACCOUNTING_CLASSIFICATION_ASSOCIATION_POOL_NAME);
 	}
 
 	@Override
 	public boolean isMultiSelectionTaxonomy()
 	{
-		String multiSelectCode = getData(TaxonomyAssociationSchema.TAG_MULTI_SELECT);
-		
-		return multiSelectCode.equals(TaxonomyMultiSelectModeQuestion.MULTI_SELECT_CODE);
+		return false;
 	}
 	
 	public static boolean canOwnThisType(int type)
@@ -71,16 +68,16 @@ public class TaxonomyAssociation extends AbstractTaxonomyAssociation
 	
 	public static boolean is(final int onbjectType)
 	{
-		return TaxonomyAssociationSchema.getObjectType() == onbjectType;
+		return AccountingClassificationAssociationSchema.getObjectType() == onbjectType;
 	}
 	
-	public static TaxonomyAssociation find(ObjectManager objectManager, ORef miradiShareTaxonomyAssociationRef)
+	public static AccountingClassificationAssociation find(ObjectManager objectManager, ORef miradiShareAccountingClassificationAssociationRef)
 	{
-		return (TaxonomyAssociation) objectManager.findObject(miradiShareTaxonomyAssociationRef);
+		return (AccountingClassificationAssociation) objectManager.findObject(miradiShareAccountingClassificationAssociationRef);
 	}
 	
-	public static TaxonomyAssociation find(Project project, ORef miradiShareTaxonomyAssociationRef)
+	public static AccountingClassificationAssociation find(Project project, ORef miradiShareAccountingClassificationAssociationRef)
 	{
-		return find(project.getObjectManager(), miradiShareTaxonomyAssociationRef);
+		return find(project.getObjectManager(), miradiShareAccountingClassificationAssociationRef);
 	}
 }

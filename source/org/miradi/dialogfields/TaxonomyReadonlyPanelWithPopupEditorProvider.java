@@ -24,21 +24,20 @@ import org.miradi.dialogfields.editors.SplitterPanelWithStaticRightSideTextPanel
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.TaxonomyHelper;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.TaxonomyAssociation;
+import org.miradi.objects.AbstractTaxonomyAssociation;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 
 public class TaxonomyReadonlyPanelWithPopupEditorProvider implements ReadonlyPanelAndPopupEditorProvider
 {
-	public TaxonomyReadonlyPanelWithPopupEditorProvider(Project projectToUse, ORef refToUse, ChoiceQuestion questionToUse, String taxonomyAssociationCodeToUse)
+	public TaxonomyReadonlyPanelWithPopupEditorProvider(Project projectToUse, ORef refToUse, ChoiceQuestion questionToUse, String taxonomyAssociationCodeToUse, String tagToUse, AbstractTaxonomyAssociation taxonomyAssociationToUse)
 	{
 		project = projectToUse;
 		ref = refToUse;
 		question = questionToUse;
 		taxonomyAssociationCode = taxonomyAssociationCodeToUse;
-		taxonomyAssociation = TaxonomyHelper.findTaxonomyAssociation(getProject(), taxonomyAssociationCodeToUse);
+		tag = tagToUse;
+		taxonomyAssociation = taxonomyAssociationToUse;
 	}
 	
 	public AbstractReadonlyChoiceComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)
@@ -49,7 +48,7 @@ public class TaxonomyReadonlyPanelWithPopupEditorProvider implements ReadonlyPan
 	public DisposablePanel createEditorPanel() throws Exception
 	{
 		AbstractEditorComponentWithHierarchies taxonomyLeftSideEditorComponent = createTaxonomyEditorComponent(question);
-		TaxonomyOneFieldObjectDataInputPanelWithListenerDelegator leftPanel = new TaxonomyOneFieldObjectDataInputPanelWithListenerDelegator(getProject(), getRef(), BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER, taxonomyAssociation, taxonomyLeftSideEditorComponent);
+		TaxonomyOneFieldObjectDataInputPanelWithListenerDelegator leftPanel = new TaxonomyOneFieldObjectDataInputPanelWithListenerDelegator(getProject(), getRef(), tag, taxonomyAssociation, taxonomyLeftSideEditorComponent);
 		
 		//FIXME urgent : only display splitter if right side description exists
 		return new SplitterPanelWithStaticRightSideTextPanel(EAM.getMainWindow(), leftPanel);
@@ -68,7 +67,7 @@ public class TaxonomyReadonlyPanelWithPopupEditorProvider implements ReadonlyPan
 		return project;
 	}
 	
-	private TaxonomyAssociation getTaxonomyAssociation()
+	private AbstractTaxonomyAssociation getTaxonomyAssociation()
 	{
 		return taxonomyAssociation;
 	}
@@ -81,6 +80,7 @@ public class TaxonomyReadonlyPanelWithPopupEditorProvider implements ReadonlyPan
 	private ORef ref; 
 	private ChoiceQuestion question; 
 	private String taxonomyAssociationCode;
-	private TaxonomyAssociation taxonomyAssociation;
+	private AbstractTaxonomyAssociation taxonomyAssociation;
+	private String tag;
 	private Project project;
 }

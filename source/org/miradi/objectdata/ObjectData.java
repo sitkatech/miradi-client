@@ -176,6 +176,11 @@ abstract public class ObjectData
 		return false;
 	}
 
+	public boolean isAccountingClassificationMapData()
+	{
+		return false;
+	}
+
 	public ChoiceQuestion getChoiceQuestion()
 	{
 		return null;

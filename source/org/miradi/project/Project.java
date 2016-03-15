@@ -53,25 +53,7 @@ import org.miradi.project.threatrating.StressBasedThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.*;
-import org.miradi.schemas.ConceptualModelDiagramSchema;
-import org.miradi.schemas.DashboardSchema;
-import org.miradi.schemas.DiagramFactorSchema;
-import org.miradi.schemas.FosProjectDataSchema;
-import org.miradi.schemas.MiradiShareProjectDataSchema;
-import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
-import org.miradi.schemas.RareProjectDataSchema;
-import org.miradi.schemas.RatingCriterionSchema;
-import org.miradi.schemas.ScopeBoxSchema;
-import org.miradi.schemas.TaggedObjectSetSchema;
-import org.miradi.schemas.TaxonomyAssociationSchema;
-import org.miradi.schemas.TextBoxSchema;
-import org.miradi.schemas.ThreatRatingCommentsDataSchema;
-import org.miradi.schemas.ThreatStressRatingSchema;
-import org.miradi.schemas.TncProjectDataSchema;
-import org.miradi.schemas.ValueOptionSchema;
-import org.miradi.schemas.WcpaProjectDataSchema;
-import org.miradi.schemas.WcsProjectDataSchema;
-import org.miradi.schemas.WwfProjectDataSchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
@@ -171,11 +153,16 @@ public class Project implements ProjectInterface
 		return objectManager.getAllDiagramObjectRefs();
 	}
 
-	public TaxonomyAssociationPool getTaxonomyAssociationPool()
+	public AbstractTaxonomyAssociationPool getTaxonomyAssociationPool()
 	{
-		return (TaxonomyAssociationPool) getPool(TaxonomyAssociationSchema.getObjectType());
+		return (AbstractTaxonomyAssociationPool) getPool(TaxonomyAssociationSchema.getObjectType());
 	}
 	
+	public AccountingClassificationAssociationPool getAccountingClassificationAssociationPool()
+	{
+		return (AccountingClassificationAssociationPool) getPool(AccountingClassificationAssociationSchema.getObjectType());
+	}
+
 	public TaggedObjectSetPool getTaggedObjectSetPool()
 	{
 		return (TaggedObjectSetPool) getPool(TaggedObjectSetSchema.getObjectType());
