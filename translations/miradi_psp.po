@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-11 07:51-0800\n"
+"POT-Creation-Date: 2016-03-17 05:07-0700\n"
 "Language: psp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -272,6 +272,8 @@ msgstr "%s Goals"
 msgid "%s Objs"
 msgstr "%s Objs"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:108
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:109
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo7.java:126
 msgid "%s field data will be lost"
 msgstr "%s field data will be lost"
@@ -284,7 +286,7 @@ msgstr "%s field data will be lost for measurement"
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:150
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:152
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1478
 msgid "(%s)"
 msgstr "(%s)"
@@ -1165,6 +1167,10 @@ msgstr ""
 "establishes the minimum criteria for identifying a conservation component as "
 "\"conserved\" or not.  If the attribute lies outside this acceptable range, "
 "it is a \"degraded\" attribute."
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:676
+msgid "Accounting"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:34
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:48
@@ -2954,7 +2960,7 @@ msgstr "Choose Tags"
 msgid "Choose the colors that look best on your system:"
 msgstr "Choose the colors that look best on your system:"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:661
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:662
 msgid "Classifications"
 msgstr ""
 
@@ -4417,7 +4423,7 @@ msgstr "Import..."
 msgid "Importing MPZ"
 msgstr "Importing MPZ"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:99
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:85
 msgid "Importing XML..."
 msgstr "Importing XML..."
 
@@ -8359,6 +8365,13 @@ msgid ""
 "a resource or date range is specified)."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:88
+msgid ""
+"This migration only has reverse to remove Miradi share accounting "
+"classification related objects."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:87
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo7.java:105
 msgid ""
 "This migration only has reverse to remove Miradi share taxonomy related "
@@ -9482,7 +9495,7 @@ msgstr "[NOT SPECIFIED]"
 msgid "[New Results Chain]"
 msgstr "[New Results Chain]"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:963
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:950
 msgid "[No Project]"
 msgstr "[No Project]"
 
@@ -10381,6 +10394,9 @@ msgstr ""
 msgid "FieldLabel|14.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
 
+msgid "FieldLabel|14.AccountingClassificationContainer|Program Classifications"
+msgstr ""
+
 msgid "FieldLabel|15.Label|Accounting Code Name"
 msgstr "FieldLabel|15.Label|Accounting Code Name"
 
@@ -11236,6 +11252,9 @@ msgstr ""
 msgid "FieldLabel|51.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
 
+msgid "FieldLabel|51.AccountingClassificationContainer|Program Classifications"
+msgstr ""
+
 msgid "FieldLabel|52.HumanWelfareTarget|Human Wellbeing Target"
 msgstr "FieldLabel|52.HumanWelfareTarget|Human Wellbeing Component"
 
@@ -11464,6 +11483,11 @@ msgid "FieldLabel|66.Text|Details"
 msgstr ""
 
 msgid "FieldLabel|67.ResourcePlan|Resource Plan"
+msgstr ""
+
+msgid ""
+"FieldLabel|68.AccountingClassificationAssociation|Accounting Configuration "
+"Association"
 msgstr ""
 
 msgid ""

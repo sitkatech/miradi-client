@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-11 07:51-0800\n"
+"POT-Creation-Date: 2016-03-17 05:07-0700\n"
 "PO-Revision-Date: 2011-03-17 08:35-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -272,6 +272,8 @@ msgstr ""
 msgid "%s Objs"
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:108
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:109
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo7.java:126
 msgid "%s field data will be lost"
 msgstr ""
@@ -284,7 +286,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:150
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:152
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1478
 msgid "(%s)"
 msgstr ""
@@ -985,6 +987,10 @@ msgid ""
 "establishes the minimum criteria for identifying a conservation target as "
 "\"conserved\" or not.  If the attribute lies outside this acceptable range, "
 "it is a \"degraded\" attribute."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:676
+msgid "Accounting"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:34
@@ -2740,7 +2746,7 @@ msgstr ""
 msgid "Choose the colors that look best on your system:"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:661
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:662
 msgid "Classifications"
 msgstr ""
 
@@ -4130,7 +4136,7 @@ msgstr ""
 msgid "Importing MPZ"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:99
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:85
 msgid "Importing XML..."
 msgstr ""
 
@@ -7863,6 +7869,13 @@ msgid ""
 "a resource or date range is specified)."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:88
+msgid ""
+"This migration only has reverse to remove Miradi share accounting "
+"classification related objects."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:87
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo7.java:105
 msgid ""
 "This migration only has reverse to remove Miradi share taxonomy related "
@@ -8917,7 +8930,7 @@ msgstr ""
 msgid "[New Results Chain]"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:963
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:950
 msgid "[No Project]"
 msgstr ""
 
@@ -9814,6 +9827,9 @@ msgstr ""
 msgid "FieldLabel|14.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
 
+msgid "FieldLabel|14.AccountingClassificationContainer|Program Classifications"
+msgstr ""
+
 msgid "FieldLabel|15.Label|Accounting Code Name"
 msgstr ""
 
@@ -10657,6 +10673,9 @@ msgstr ""
 msgid "FieldLabel|51.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
 
+msgid "FieldLabel|51.AccountingClassificationContainer|Program Classifications"
+msgstr ""
+
 msgid "FieldLabel|52.HumanWelfareTarget|Human Wellbeing Target"
 msgstr ""
 
@@ -10884,6 +10903,11 @@ msgid "FieldLabel|66.Text|Details"
 msgstr ""
 
 msgid "FieldLabel|67.ResourcePlan|Resource Plan"
+msgstr ""
+
+msgid ""
+"FieldLabel|68.AccountingClassificationAssociation|Accounting Configuration "
+"Association"
 msgstr ""
 
 msgid ""
