@@ -27,13 +27,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashSet;
 
-import javax.swing.JComponent;
-import javax.swing.JDialog;
+import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.martus.swing.UiLabel;
-import org.martus.swing.Utilities;
 import org.miradi.dialogfields.ChoiceItemListSelectionEvent;
 import org.miradi.dialogfields.ControlPanelRadioButtonEditorComponent;
 import org.miradi.dialogfields.FieldSaver;
@@ -186,8 +184,8 @@ public class QuestionPopupEditorComponent extends PopupEditorComponent
 		editorDialog.pack();
 		//NOTE: packing twice due to preferences height not being set correctly.
 		editorDialog.pack();
-		Utilities.centerFrame(editorDialog);
-		editorDialog.setVisible(true);	
+		editorDialog.setLocationRelativeTo(this);
+		editorDialog.setVisible(true);
 	}
 
 	private DialogWithCloseAfterSelectionHandler createDialogWithProperParent()
@@ -231,7 +229,7 @@ public class QuestionPopupEditorComponent extends PopupEditorComponent
 		popupInvokeButton.setEnabled(isEnabled);
 	}
 
-	private class PopUpEditorHandler extends MouseAdapter implements ActionListener 
+	private class PopUpEditorHandler extends MouseAdapter implements ActionListener
 	{
 		@Override
 		public void mouseReleased(MouseEvent e)
