@@ -247,7 +247,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		if (columnTag.equals(Desire.PSEUDO_TAG_RELEVANT_ACTIVITY_REFS))
 			return true;
 
-		if (columnTag.equals(Strategy.PSEUDO_TAG_ACTIVITIES))
+		if (columnTag.equals(Factor.PSEUDO_TAG_ACTIVITIES))
 			return true;
 
 		if (columnTag.equals(Strategy.PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
@@ -371,7 +371,10 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 				return createAppendedRelevantIndicatorLabels(baseObject);
 			
 			if (Desire.isDesire(baseObject.getRef()) && columnTag.equals(Desire.PSEUDO_TAG_RELEVANT_ACTIVITY_REFS))
-				return createAppendedRelevantActivityLabels((Desire)baseObject);
+				return createAppendedRelevantActivityLabels(baseObject);
+
+			if (Indicator.is(baseObject.getRef()) && columnTag.equals(Indicator.PSEUDO_TAG_RELEVANT_ACTIVITY_REFS))
+				return createAppendedRelevantActivityLabels(baseObject);
 
 			if (Strategy.is(baseObject.getRef()) && columnTag.equals(Strategy.PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
 				return createAppendedRelevantIndicatorLabels(baseObject);
@@ -394,9 +397,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		}
 	}
 	
-	private ChoiceItem createAppendedRelevantActivityLabels(Desire desire) throws Exception
+	private ChoiceItem createAppendedRelevantActivityLabels(BaseObject baseObject) throws Exception
 	{
-		return createLabelsOnSingleLine(desire, desire.getRelevantActivityRefs());
+		return createLabelsOnSingleLine(baseObject, baseObject.getRelevantActivityRefs());
 	}
 
 	private ChoiceItem createAppendedRelevantIndicatorLabels(BaseObject baseObject) throws Exception
@@ -624,6 +627,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		{
 			if (isDetailsColumn(column))
 				return Indicator.TAG_DETAIL;
+
+			if (columnTag.equals(Factor.PSEUDO_TAG_ACTIVITIES))
+				return Indicator.PSEUDO_TAG_RELEVANT_ACTIVITY_REFS;
 		}
 		if(Measurement.is(nodeType))
 		{

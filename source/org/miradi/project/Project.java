@@ -83,6 +83,7 @@ public class Project implements ProjectInterface
 		dashboardStatusMapsCache = new DashboardStatusMapsCache(this);
 		timePeriodCostsMapsCache = new TimePeriodCostsMapsCache(this);
 		relevantDesiresCache = new RelevantDesiresCache(this);
+		relevantActivitiesCache = new RelevantActivitiesCache(this);
 
 		clear();
 
@@ -109,6 +110,7 @@ public class Project implements ProjectInterface
 		dashboardStatusMapsCache.clear();
 		timePeriodCostsMapsCache.clear();
 		relevantDesiresCache.clear();
+		relevantActivitiesCache.clear();
 		projectCalendar.clear();
 
 		quarantine = new StringBuilder();
@@ -494,6 +496,11 @@ public class Project implements ProjectInterface
 		return relevantDesiresCache;
 	}
 
+	public RelevantActivitiesCache getRelevantActivitiesCache()
+	{
+		return relevantActivitiesCache;
+	}
+
 	public BaseObject findObject(ORef ref)
 	{
 		return objectManager.findObject(ref);
@@ -847,6 +854,7 @@ public class Project implements ProjectInterface
 		dashboardStatusMapsCache.enable();
 		timePeriodCostsMapsCache.enable();
 		relevantDesiresCache.enable();
+		relevantActivitiesCache.enable();
 		projectCalendar.enable();
 	}
 
@@ -978,6 +986,7 @@ public class Project implements ProjectInterface
 		dashboardStatusMapsCache.disable();
 		timePeriodCostsMapsCache.disable();
 		relevantDesiresCache.disable();
+		relevantActivitiesCache.disable();
 		projectCalendar.disable();
 	}
 
@@ -1446,6 +1455,7 @@ public class Project implements ProjectInterface
 	private DashboardStatusMapsCache dashboardStatusMapsCache;
 	private TimePeriodCostsMapsCache timePeriodCostsMapsCache;
 	private RelevantDesiresCache relevantDesiresCache;
+	private RelevantActivitiesCache relevantActivitiesCache;
 
 	// FIXME low: This should go away, but it's difficult
 	private String currentViewName;

@@ -1077,6 +1077,26 @@ abstract public class BaseObject
 		return new RelevancyOverrideSet();
 	}
 
+	public ORefList getRelevantActivityRefs() throws Exception
+	{
+		return new ORefList();
+	}
+
+	protected String getRelevantActivityRefsAsString()
+	{
+		ORefList refList;
+		try
+		{
+			refList = getRelevantActivityRefs();
+			return refList.toString();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+	}
+
 	protected final void clear()
 	{
 		createFieldsFromBaseObjectSchema();

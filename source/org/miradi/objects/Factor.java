@@ -492,4 +492,5 @@ abstract public class Factor extends BaseObject
 	public static final String PSEUDO_TAG_REFERRING_TAG_REFS = "PseudoTagReferringTagRefs";
 	public static final String PSEUDO_TAG_TAXONOMY_CODE_VALUE = "TaxonomyCodeValue";
 	public static final String PSEUDO_TAG_INDICATORS = "PseudoTagIndicators";
+	public static final String PSEUDO_TAG_ACTIVITIES = "PseudoTagActivities";
 }

@@ -147,7 +147,10 @@ public class Indicator extends BaseObject
 		
 		if(fieldTag.equals(PSEUDO_TAG_STRATEGIES))
 			return getRelatedLabelsAsMultiLine(new NonDraftStrategySet());
-		
+
+		if (fieldTag.equals(PSEUDO_TAG_RELEVANT_ACTIVITY_REFS))
+			return getRelevantActivityRefsAsString();
+
 		if(fieldTag.equals(PSEUDO_TAG_FACTOR))
 			return getSafeLabel(getDirectOrIndirectOwningFactor());
 		
@@ -309,6 +312,11 @@ public class Indicator extends BaseObject
 		return relevantDesireRefs;
 	}
 
+	public ORefList getRelevantActivityRefs() throws Exception
+	{
+		return getProject().getRelevantActivitiesCache().getRelevantActivitiesForIndicator(this.getRef());
+	}
+
 	private ORefList extractRelevantDesireRefs(ORefSet desireRefs) throws Exception
 	{
 		ORefList relevantDesireRefs = new ORefList();
@@ -405,7 +413,8 @@ public class Indicator extends BaseObject
 	public static final String PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE  = "FutureStatusRatingValue";
 	public static final String PSEUDO_TAG_STATUS_VALUE  = "StatusValue";
 	public static final String PSEUDO_TAG_LATEST_MEASUREMENT_REF = "LatestMeasurementRef";
-	
+	public static final String PSEUDO_TAG_RELEVANT_ACTIVITY_REFS = "PseudoRelevantActivityRefs";
+
 	public static final String PSEUDO_TAG_RELATED_METHOD_OREF_LIST = "PseudoTagRelatedMethodORefList";
 
 	public static final String META_COLUMN_TAG = "IndicatorMetaColumnTag";

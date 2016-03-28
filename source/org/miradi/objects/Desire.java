@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import java.util.Arrays;
-
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.ChainWalker;
 import org.miradi.ids.BaseId;
@@ -154,21 +152,6 @@ abstract public class Desire extends BaseObject
 		try
 		{
 			refList = getRelevantStrategyAndActivityRefs();
-			return refList.toString();
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			return "";
-		}
-	}
-
-	protected String getRelevantActivityRefsAsString()
-	{
-		ORefList refList;
-		try
-		{
-			refList = getRelevantActivityRefs();
 			return refList.toString();
 		}
 		catch(Exception e)
