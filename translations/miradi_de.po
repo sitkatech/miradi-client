@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-17 05:07-0700\n"
+"POT-Creation-Date: 2016-03-28 08:37-0700\n"
 "PO-Revision-Date: 2015-07-15 14:36+0000\n"
 "Last-Translator: Felix <felix.cybulla@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/miradi-client/"
@@ -9254,7 +9254,7 @@ msgid ""
 "migrations. "
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:393
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:396
 msgid "[Error]"
 msgstr "[Fehler]"
 
@@ -9270,7 +9270,7 @@ msgstr "[NICHT GENAUER BESCHRIEBEN]"
 msgid "[New Results Chain]"
 msgstr "[Neue Ergebniswirkungskette]"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:950
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:958
 msgid "[No Project]"
 msgstr "[Kein Projekt]"
 

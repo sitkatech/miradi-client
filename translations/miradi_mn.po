@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-17 05:07-0700\n"
+"POT-Creation-Date: 2016-03-28 08:37-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Mongolian (http://www.transifex.com/projects/p/miradi-client/"
@@ -9368,7 +9368,7 @@ msgstr ""
 "уу. Форматыг шилжүүлж байхад үүссэн төслийн нөөц хувийг ч Миради мөн адил  "
 "zip файл үүсгэнэ.  "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:393
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:396
 msgid "[Error]"
 msgstr "[Алдаа]"
 
@@ -9384,7 +9384,7 @@ msgstr "[ТОДОРХОЙ ЗААГДААГҮЙ]"
 msgid "[New Results Chain]"
 msgstr "[Шинэ үр дүнгийн хэлхээс]"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:950
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:958
 msgid "[No Project]"
 msgstr "[Төсөл байхгүй]"
 
