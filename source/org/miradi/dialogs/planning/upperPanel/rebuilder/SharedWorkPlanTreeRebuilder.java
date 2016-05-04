@@ -66,6 +66,12 @@ public class SharedWorkPlanTreeRebuilder extends NormalTreeRebuilder
 	}
 
 	@Override
+	protected ORefList getChildrenOfIndicator(ORef parentRef, DiagramObject diagram) throws Exception
+	{
+		return new ORefList(){};
+	}
+
+	@Override
 	protected ORefList getChildrenOfTask(ORef parentTaskRef, DiagramObject diagram) throws Exception
 	{
 		return new ORefList(){};

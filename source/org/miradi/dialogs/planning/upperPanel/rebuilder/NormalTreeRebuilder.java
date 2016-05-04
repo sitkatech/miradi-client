@@ -290,7 +290,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		return visibleRowTypes.contains(taskTypeCode);
 	}
 
-    private ORefList getChildrenOfIndicator(ORef parentRef, DiagramObject diagram) throws Exception
+	protected ORefList getChildrenOfIndicator(ORef parentRef, DiagramObject diagram) throws Exception
 	{
 		ORefList childRefs = new ORefList();
 		Indicator indicator = Indicator.find(getProject(), parentRef);
