@@ -165,7 +165,7 @@ public class MigrationTo29 extends AbstractMigration
 
 		private HashMap<BaseId, BaseId> createSubTaskIdToParentIdMap() throws ParseException
 		{
-			HashMap<BaseId, BaseId> subTaskIdMap = new HashMap<>();
+			HashMap<BaseId, BaseId> subTaskIdMap = new HashMap<BaseId, BaseId>();
 
 			ORefList taskRefs = getRawProject().getAllRefsForType(ObjectType.TASK);
 			for (ORef taskRef : taskRefs)
