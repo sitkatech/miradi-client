@@ -131,11 +131,14 @@ public class HtmlUtilities
 	
 	public static String convertHtmlToPlainText(String htmlDataValue)
 	{
-		htmlDataValue = replaceHtmlBrsWithNewlines(htmlDataValue);
-		htmlDataValue = XmlUtilities2.getXmlDecoded(htmlDataValue);
-		htmlDataValue = HtmlUtilities.replaceHtmlBullets(htmlDataValue);
-		htmlDataValue = stripAllHtmlTags(htmlDataValue);
-		
+		if (htmlDataValue != null)
+		{
+			htmlDataValue = replaceHtmlBrsWithNewlines(htmlDataValue);
+			htmlDataValue = XmlUtilities2.getXmlDecoded(htmlDataValue);
+			htmlDataValue = HtmlUtilities.replaceHtmlBullets(htmlDataValue);
+			htmlDataValue = stripAllHtmlTags(htmlDataValue);
+		}
+
 		return htmlDataValue;
 	}
 

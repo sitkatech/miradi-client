@@ -20,12 +20,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
+import org.miradi.ids.BaseId;
+import org.miradi.ids.IdList;
 import org.miradi.migrations.forward.MigrationTo23;
 import org.miradi.objectdata.CodeToCodeListMapData;
 import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.ResourceAssignment;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
+import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.CodeList;
 
 import java.util.Vector;
@@ -40,6 +46,13 @@ public class TestMigrationTo23 extends AbstractTestMigration
 
 	public void testTableSettingsFieldsChangedByMigration() throws Exception
 	{
+		// create resource assignments so we have something to migrate
+		Strategy strategy = getProject().createStrategy();
+		ResourceAssignment resourceAssignment = getProject().createAndPopulateResourceAssignment();
+		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, "");
+		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
+		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
+
 		Vector<String> newColumnCodesBeingAdded = getNewColumnCodesAddedByMigration();
 
 		TableSettings tableSettingsBefore = getProject().createAndPopulateTableSettings();

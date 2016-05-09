@@ -93,13 +93,20 @@ public class TestMigrationTo15 extends AbstractTestMigration
         String goalRelevancyOverrideBeforeForceReset = goal.getStrategyActivityRelevancyOverrideSet().toString();
         String objectiveRelevancyOverrideBeforeForceReset = objective.getStrategyActivityRelevancyOverrideSet().toString();
 
-        // for objective force reset of relevancy json string based on old rules
+        // force reset of relevancy json string based on old rules
         forceRelevancyOverride(objective, "");
         if (!strategyRelevant)
             forceRelevancyOverride(strategy, objective, false);
 
         if (activityRelevant)
             forceRelevancyOverride(activity, objective, true);
+
+        forceRelevancyOverride(goal, "");
+        if (!strategyRelevant)
+            forceRelevancyOverride(strategy, goal, false);
+
+        if (activityRelevant)
+            forceRelevancyOverride(activity, goal, true);
 
         String objectiveRelevancyOverrideAfterForceReset = objective.getStrategyActivityRelevancyOverrideSet().toString();
         assertNotEquals(objectiveRelevancyOverrideBeforeForceReset, objectiveRelevancyOverrideAfterForceReset);

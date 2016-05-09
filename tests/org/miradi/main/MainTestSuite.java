@@ -65,21 +65,7 @@ import org.miradi.ids.TestBaseId;
 import org.miradi.ids.TestIdList;
 import org.miradi.legacyprojects.TestDataUpgrader;
 import org.miradi.legacyprojects.TestDataUpgraderForMiradi3;
-import org.miradi.migrations.TestMigrationManager;
-import org.miradi.migrations.TestMigrationResult;
-import org.miradi.migrations.TestMigrationTo10;
-import org.miradi.migrations.TestMigrationTo11;
-import org.miradi.migrations.TestMigrationTo12;
-import org.miradi.migrations.TestMigrationTo13;
-import org.miradi.migrations.TestMigrationTo14;
-import org.miradi.migrations.TestMigrationTo4;
-import org.miradi.migrations.TestMigrationTo5;
-import org.miradi.migrations.TestMigrationTo6;
-import org.miradi.migrations.TestMigrationTo8;
-import org.miradi.migrations.TestMigrationTo9;
-import org.miradi.migrations.TestRawProject;
-import org.miradi.migrations.TestReverseMigration;
-import org.miradi.migrations.TestVersionRange;
+import org.miradi.migrations.*;
 import org.miradi.objectdata.TestAbstractUserStringDataWithHtmlFormatting;
 import org.miradi.objectdata.TestDateData;
 import org.miradi.objectdata.TestIntegerData;
@@ -108,76 +94,7 @@ import org.miradi.objecthelpers.TestThreatStressRatingEnsurer;
 import org.miradi.objecthelpers.TestThreatTargetVirtualLinkHelper;
 import org.miradi.objecthelpers.TestTimePeriodCosts;
 import org.miradi.objecthelpers.TestTimePeriodCostsMap;
-import org.miradi.objects.TestAccountingCode;
-import org.miradi.objects.TestAssignment;
-import org.miradi.objects.TestAudience;
-import org.miradi.objects.TestBaseObject;
-import org.miradi.objects.TestCategoryOne;
-import org.miradi.objects.TestCategoryTwo;
-import org.miradi.objects.TestCause;
-import org.miradi.objects.TestChainWalker;
-import org.miradi.objects.TestConceptualModelDiagram;
-import org.miradi.objects.TestConceptualModelThreatRatings;
-import org.miradi.objects.TestCostAllocationRule;
-import org.miradi.objects.TestDashboard;
-import org.miradi.objects.TestDashboardStatusMapsCache;
-import org.miradi.objects.TestDiagramChainObject;
-import org.miradi.objects.TestDiagramContentsObject;
-import org.miradi.objects.TestDiagramLink;
-import org.miradi.objects.TestDiagramObject;
-import org.miradi.objects.TestExpense;
-import org.miradi.objects.TestFactor;
-import org.miradi.objects.TestFactorLink;
-import org.miradi.objects.TestFosProjectData;
-import org.miradi.objects.TestFundingSource;
-import org.miradi.objects.TestFutureStatus;
-import org.miradi.objects.TestGoal;
-import org.miradi.objects.TestHumanWelfareTarget;
-import org.miradi.objects.TestIndicator;
-import org.miradi.objects.TestIntermediateResult;
-import org.miradi.objects.TestIucnRedlistSpecies;
-import org.miradi.objects.TestKeyEcologicalAttribute;
-import org.miradi.objects.TestMeasurement;
-import org.miradi.objects.TestMiradiShareProjectData;
-import org.miradi.objects.TestMiradiShareTaxonomy;
-import org.miradi.objects.TestMiradiShareTaxonomyAssociation;
-import org.miradi.objects.TestObjectFindOwnerAndFindReferrer;
-import org.miradi.objects.TestObjectManager;
-import org.miradi.objects.TestObjective;
-import org.miradi.objects.TestOrganization;
-import org.miradi.objects.TestOtherNotableSpecies;
-import org.miradi.objects.TestOwnedBaseObjects;
-import org.miradi.objects.TestPlanningViewConfiguration;
-import org.miradi.objects.TestProgressPercent;
-import org.miradi.objects.TestProgressReport;
-import org.miradi.objects.TestProjectMetadata;
-import org.miradi.objects.TestProjectResource;
-import org.miradi.objects.TestRareProjectData;
-import org.miradi.objects.TestRatingCriterion;
-import org.miradi.objects.TestReportTemplate;
-import org.miradi.objects.TestResultsChainDiagram;
-import org.miradi.objects.TestScopeBox;
-import org.miradi.objects.TestStrategy;
-import org.miradi.objects.TestStress;
-import org.miradi.objects.TestSubTarget;
-import org.miradi.objects.TestTableSettings;
-import org.miradi.objects.TestTaggedObjectSet;
-import org.miradi.objects.TestTarget;
-import org.miradi.objects.TestTask;
-import org.miradi.objects.TestTextBox;
-import org.miradi.objects.TestThreatRatingBundle;
-import org.miradi.objects.TestThreatRatingCommentsData;
-import org.miradi.objects.TestThreatReductionResult;
-import org.miradi.objects.TestThreatStressRating;
-import org.miradi.objects.TestThreatTargetChainObject;
-import org.miradi.objects.TestTncProjectData;
-import org.miradi.objects.TestValueOption;
-import org.miradi.objects.TestViewData;
-import org.miradi.objects.TestWcpaProjectData;
-import org.miradi.objects.TestWcsProjectData;
-import org.miradi.objects.TestWwfProjectData;
-import org.miradi.objects.TestXenodata;
-import org.miradi.objects.TestXslTemplate;
+import org.miradi.objects.*;
 import org.miradi.project.*;
 import org.miradi.questions.TestChoiceItem;
 import org.miradi.questions.TestChoiceQuestion;
@@ -455,7 +372,11 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestMiradiShareTaxonomyAssociation.class));
 		addTest(new TestSuite(TestFutureStatus.class));
 		addTest(new TestSuite(TestBiDirectionalHashMap.class));
-			
+		addTest(new TestSuite(TestBiophysicalResult.class));
+		addTest(new TestSuite(TestBiophysicalFactor.class));
+		addTest(new TestSuite(TestResourcePlan.class));
+		addTest(new TestSuite(TestMiradiShareAccountingClassificationAssociation.class));
+
 		// commands package
 		addTest(new TestSuite(TestCommands.class));
 		addTest(new TestSuite(TestCommandCreateObject.class));
@@ -489,7 +410,7 @@ public class MainTestSuite extends TestSuite
 		// view.strategicplan package
 		addTest(new TestSuite(TestDeleteActivity.class));
 		
-		// view.buget
+		// view.budget
 		addTest(new TestSuite(TestImportAccountingCodesDoer.class));
 		
 		// view.threatmatrix package
@@ -499,9 +420,7 @@ public class MainTestSuite extends TestSuite
 
 		// view.umbrella package
 		addTest(new TestSuite(TestUndoRedo.class));
-		
 
-		
 		// martus-utils
 		addTest(new TestSuite(TestSimpleXmlParser.class));
 		addTest(new TestSuite(TestMultiCalendar.class));
@@ -528,7 +447,22 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestMigrationTo12.class));
 		addTest(new TestSuite(TestMigrationTo13.class));
 		addTest(new TestSuite(TestMigrationTo14.class));
-		
+		addTest(new TestSuite(TestMigrationTo15.class));
+		addTest(new TestSuite(TestMigrationTo16.class));
+		addTest(new TestSuite(TestMigrationTo17.class));
+		addTest(new TestSuite(TestMigrationTo18.class));
+		addTest(new TestSuite(TestMigrationTo19.class));
+		addTest(new TestSuite(TestMigrationTo20.class));
+		addTest(new TestSuite(TestMigrationTo21.class));
+		addTest(new TestSuite(TestMigrationTo22.class));
+		addTest(new TestSuite(TestMigrationTo23.class));
+		addTest(new TestSuite(TestMigrationTo24.class));
+		addTest(new TestSuite(TestMigrationTo25.class));
+		addTest(new TestSuite(TestMigrationTo26.class));
+		addTest(new TestSuite(TestMigrationTo27.class));
+		addTest(new TestSuite(TestMigrationTo28.class));
+		addTest(new TestSuite(TestMigrationTo29.class));
+
 		addTest(new TestSuite(TestReverseMigration.class));
 		addTest(new TestSuite(TestVersionRange.class));
 		addTest(new TestSuite(TestRawProject.class));
