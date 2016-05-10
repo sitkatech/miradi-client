@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram.doers;
 
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.views.planning.doers.AbstractTreeCreateAnnotationDoer;
@@ -30,7 +31,7 @@ public class TreeNodeCreateResourceAssignmentDoer extends AbstractTreeCreateAnno
 	@Override
 	protected boolean isCorrectOwner(BaseObject selectedObject)
 	{
-		return Task.is(selectedObject);
+		return Strategy.is(selectedObject) || Task.is(selectedObject);
 	}
 	
 	@Override

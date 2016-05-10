@@ -23,7 +23,6 @@ import org.miradi.actions.*;
 import org.miradi.dialogs.planning.SharedWorkPlanRowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.AbstractFixedHeightDirectlyAboveTreeTablePanel;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNodeAlwaysExpanded;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.questions.SharedWorkPlanVisibleRowsQuestion;
@@ -63,23 +62,6 @@ public class SharedWorkPlanTreeTablePanel extends AbstractWorkPlanTreeTablePanel
 	protected Icon getIconForCustomizeTableFilter(String workPlanBudgetMode)
 	{
 		return SharedWorkPlanVisibleRowsQuestion.getIconForChoice(workPlanBudgetMode);
-	}
-
-	@Override
-	public void updateStatusBar()
-	{
-		super.updateStatusBar();
-
-		SharedWorkPlanTreeTableModel treeTableModel = (SharedWorkPlanTreeTableModel) getTreeTableModel();
-		if (treeTableModel != null)
-		{
-			if (treeTableModel.treeHasSubTasks())
-			{
-				String currentStatus = getMainWindow().getMainStatusBar().getWarningStatus();
-				String newStatus = currentStatus + SharedWorkPlanTreeTableModel.HAS_HIDDEN_SUB_TASKS_DOUBLE_ASTERISK + EAM.text("Sub-tasks are not included in this work plan; use the legacy Work Plan tab to view sub-tasks");
-				getMainWindow().setStatusBarWarningMessage(newStatus);
-			}
-		}
 	}
 
 	private static Class[] getButtonActions()

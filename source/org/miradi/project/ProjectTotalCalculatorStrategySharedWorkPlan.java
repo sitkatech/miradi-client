@@ -50,7 +50,7 @@ public class ProjectTotalCalculatorStrategySharedWorkPlan extends ProjectTotalCa
 				return ORefList.subtract(strategy.getActivityRefs(), strategy.getMonitoringActivityRefs());
 		}
 
-		return new ORefList();
+		return baseObject.getChildTaskRefs();
 	}
 
 	public boolean shouldOnlyIncludeActionsData()

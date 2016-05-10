@@ -81,13 +81,6 @@ public class SharedWorkPlanManagementPanel extends AbstractWorkPlanManagementPan
 		return SharedWorkPlanTreeTablePanel.createPlanningTreeTablePanel(getMainWindow());
 	}
 
-	@Override
-	protected void updateStatusBar()
-	{
-		SharedWorkPlanTreeTablePanel workPlanTreeTablePanel = (SharedWorkPlanTreeTablePanel) getPlanningTreeTablePanel();
-		workPlanTreeTablePanel.updateStatusBar();
-	}
-
 	public static SharedWorkPlanManagementPanel createWorkPlanPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		PlanningTreeTablePanel workPlanTreeTablePanel = SharedWorkPlanTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse);

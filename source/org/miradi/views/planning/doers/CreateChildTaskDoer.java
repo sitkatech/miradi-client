@@ -27,6 +27,16 @@ import org.miradi.objects.Task;
 public class CreateChildTaskDoer extends AbstractCreateTaskNodeDoer
 {
 	@Override
+	public boolean isAvailable()
+	{
+		if (!super.isAvailable())
+			return false;
+
+		final ORef selectedRef = getSelectedRef();
+		return Task.isActivity(getProject(), selectedRef);
+	}
+
+	@Override
 	protected ORef getParentRef()
 	{
 		ORefList selectionHierarchy = getSelectionHierarchy();

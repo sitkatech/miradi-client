@@ -24,7 +24,6 @@ import org.miradi.actions.*;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.main.MainWindow;
 
-import javax.swing.event.TableModelEvent;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -33,13 +32,6 @@ public class SharedWorkPlanningTreeTableWithVisibleRootNode extends PlanningTree
 	public SharedWorkPlanningTreeTableWithVisibleRootNode(MainWindow mainWindowToUse, GenericTreeTableModel planningTreeModelToUse)
 	{
 		super(mainWindowToUse, planningTreeModelToUse);
-	}
-
-	@Override
-	public void tableChanged(TableModelEvent e)
-	{
-		super.tableChanged(e);
-		updateColumnHeader();
 	}
 
 	@Override
@@ -54,19 +46,5 @@ public class SharedWorkPlanningTreeTableWithVisibleRootNode extends PlanningTree
 		relevantActions.add(ActionExpandToTask.class);
 
 		return relevantActions;
-	}
-
-	private void updateColumnHeader()
-	{
-		SharedWorkPlanTreeTableModel treeTableModel = (SharedWorkPlanTreeTableModel) getTreeTableModel();
-		if (treeTableModel != null)
-		{
-			String columnName = treeTableModel.getColumnName(0);
-
-			if (treeTableModel.treeHasSubTasks())
-				columnName += SharedWorkPlanTreeTableModel.HAS_HIDDEN_SUB_TASKS_DOUBLE_ASTERISK;
-
-			this.columnModel.getColumn(0).setHeaderValue(columnName);
-		}
 	}
 }

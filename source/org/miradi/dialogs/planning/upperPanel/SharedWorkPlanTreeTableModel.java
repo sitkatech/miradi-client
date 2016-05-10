@@ -23,14 +23,7 @@ import org.miradi.dialogs.planning.AbstractWorkPlanRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNodeAlwaysExpanded;
 import org.miradi.dialogs.planning.upperPanel.rebuilder.AbstractTreeRebuilder;
 import org.miradi.dialogs.planning.upperPanel.rebuilder.SharedWorkPlanTreeRebuilder;
-import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.Task;
 import org.miradi.project.Project;
-import org.miradi.schemas.TaskSchema;
-
-import java.util.Vector;
 
 public class SharedWorkPlanTreeTableModel extends WorkPlanTreeTableModel
 {
@@ -44,34 +37,4 @@ public class SharedWorkPlanTreeTableModel extends WorkPlanTreeTableModel
 	{
 		return new SharedWorkPlanTreeRebuilder(getProject(), getRowColumnProvider());
 	}
-
-	public boolean treeHasSubTasks()
-	{
-		try
-		{
-			Vector<ORefList> fullyExpandedRefs = getFullyExpandedHierarchyRefListListIncludingLeafNodes();
-			for(ORefList expandedRefList : fullyExpandedRefs)
-			{
-				if (expandedRefList.getFirstElement().getObjectType() == TaskSchema.getObjectType())
-				{
-					ORefList taskRefList = expandedRefList.getFilteredBy(TaskSchema.getObjectType());
-					for (ORef taskRef : taskRefList)
-					{
-						Task task = Task.find(getProject(), taskRef);
-						if (task.hasSubTasks())
-							return true;
-					}
-				}
-			}
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return false;
-		}
-
-		return false;
-	}
-
-	public static final String HAS_HIDDEN_SUB_TASKS_DOUBLE_ASTERISK = " ** ";
 }

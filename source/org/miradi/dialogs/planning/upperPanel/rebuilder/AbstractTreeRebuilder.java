@@ -171,7 +171,7 @@ abstract public class AbstractTreeRebuilder
 		try
 		{
 			if(Task.is(refToAdd))
-				return createPlanningTaskNode(getProject(), parentNode.getContextRef(), parentNode, refToAdd);
+				return new PlanningTaskNode(project, parentNode.getContextRef(), parentNode, refToAdd);
 			
 			int type = refToAdd.getObjectType();
 			for(int i = 0; i < supportedTypes.length; ++i)
@@ -339,11 +339,6 @@ abstract public class AbstractTreeRebuilder
 	}
 	
 	abstract protected ORefList getChildRefs(ORef grandparentRef, ORef parentRef, DiagramObject diagram) throws Exception;
-
-	protected PlanningTaskNode createPlanningTaskNode(Project project, ORef contextNodeRef, TreeTableNode parentNode, ORef objectRef) throws Exception
-	{
-		return new PlanningTaskNode(project, contextNodeRef, parentNode, objectRef);
-	}
 
 	public static void dumpTreeToConsole(TreeTableNode node, int level)
 	{
