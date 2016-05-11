@@ -284,7 +284,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		return strategyAndActivityRefs;
 	}
 
-	private boolean willThisTypeEndUpInTheTree(String taskTypeCode) throws Exception
+	protected boolean willThisTypeEndUpInTheTree(String taskTypeCode) throws Exception
 	{
 		CodeList visibleRowTypes = getRowColumnProvider().getRowCodesToShow();
 		return visibleRowTypes.contains(taskTypeCode);

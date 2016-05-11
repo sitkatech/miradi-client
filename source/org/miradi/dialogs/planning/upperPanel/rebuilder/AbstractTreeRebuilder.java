@@ -71,8 +71,8 @@ abstract public class AbstractTreeRebuilder
             ORef grandparentRef = (grandparentNode != null) ? grandparentNode.getObjectReference() : ORef.INVALID;
 
 			ORefList candidateChildRefs = getChildRefs(grandparentRef, parentNode.getObjectReference(), diagram);
-			candidateChildRefs.addAll(parentNode.getObject().getResourceAssignmentRefs());
-			candidateChildRefs.addAll(parentNode.getObject().getExpenseAssignmentRefs());
+			candidateChildRefs.addAll(getResourceAssignmentsForParent(parentNode));
+			candidateChildRefs.addAll(getExpenseAssignmentsForParent(parentNode));
 			ORefList childRefs = getListWithoutChildrenThatWouldCauseRecursion(parentNode, candidateChildRefs);
 			createAndAddChildren(parentNode, childRefs);
 
@@ -86,6 +86,17 @@ abstract public class AbstractTreeRebuilder
 		{
 			EAM.panic(e);
 		}
+	}
+
+
+	protected ORefList getResourceAssignmentsForParent(AbstractPlanningTreeNode parentNode) throws Exception
+	{
+		return parentNode.getObject().getResourceAssignmentRefs();
+	}
+
+	protected ORefList getExpenseAssignmentsForParent(AbstractPlanningTreeNode parentNode) throws Exception
+	{
+		return parentNode.getObject().getExpenseAssignmentRefs();
 	}
 
 	private ORefList getListWithoutChildrenThatWouldCauseRecursion(AbstractPlanningTreeNode parentNode, ORefList candidateChildRefs) throws Exception

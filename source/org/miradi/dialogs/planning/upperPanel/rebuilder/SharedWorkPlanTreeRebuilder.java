@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel.rebuilder;
 
+import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.*;
@@ -48,6 +49,26 @@ public class SharedWorkPlanTreeRebuilder extends NormalTreeRebuilder
 			return strategy.getMonitoringActivityRefs();
 
 		throw new Exception("getActivities called for unknown work plan budget mode " + workPlanBudgetMode);
+	}
+
+	@Override
+	protected ORefList getResourceAssignmentsForParent(AbstractPlanningTreeNode parentNode) throws Exception
+	{
+		BaseObject parentObject = parentNode.getObject();
+		if(willThisTypeEndUpInTheTree(parentObject.getTypeName()))
+			return parentObject.getResourceAssignmentRefs();
+
+		return new ORefList(){};
+	}
+
+	@Override
+	protected ORefList getExpenseAssignmentsForParent(AbstractPlanningTreeNode parentNode) throws Exception
+	{
+		BaseObject parentObject = parentNode.getObject();
+		if(willThisTypeEndUpInTheTree(parentObject.getTypeName()))
+			return parentObject.getExpenseAssignmentRefs();
+
+		return new ORefList(){};
 	}
 
 	@Override
